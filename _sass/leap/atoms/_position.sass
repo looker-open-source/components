@@ -1,0 +1,78 @@
+// Local positioning variables
+$position-types: relative, absolute, fixed, static
+$position-sides: (top: t, bottom: b, left: l, right: r)
+$z-indexes: (100: 1, 200: 2, 300: 3, 400: 4)
+
+
+// Creates position: type styles
+@mixin position-type($suffix)
+
+  // Iterate through each position type to create classes
+  @each $type in $position-types
+    .#{$type}-#{$suffix}
+      position: #{$type} !important
+
+
+
+// Creates styles for position side values based on our spacing units
+@mixin position-side($suffix)
+
+  // Iterate through each position side to create classes
+  @each $side, $shorthand in $position-sides
+
+    // Iterate through each unit inside our $spacing map
+    @each $unit, $value in $spacing
+
+      // We don't want a class of "0.5" so we use a conditional to
+      // let us rename is at "05" in this instance
+      @if $unit == 0.5
+        .pos-#{$shorthand}-05-#{$suffix}
+          #{$side}: spacing($unit) !important
+      @else
+        .pos-#{$shorthand}-#{$unit}-#{$suffix}
+          #{$side}: spacing($unit) !important
+
+
+
+// Creates z-index classes
+@mixin z-index($suffix)
+
+  // Iterate through each z-index and create classes for it
+  @each $value, $num in $z-indexes
+    .z-#{$num}-#{$suffix}
+      z-index: $value !important
+
+
+
+// Adds the media queries to the position-sides mixin
+@mixin position($suffix, $media: null)
+
+  // We want to use @media screen whenever no $media
+  // is passed into the mixin
+  @if length($media) == 2
+    +media($media)
+      +position-type($suffix)
+      +position-side($suffix)
+      +z-index($suffix)
+  @else
+    @media screen
+      +position-type($suffix)
+      +position-side($suffix)
+      +z-index($suffix)
+
+
+
+// Extra Small position classes
++position(xs)
+
+// Small position classes
++position(sm, min-width $sm)
+
+// Medium position classes
++position(md, min-width $md)
+
+// Large position classes
++position(lg, min-width $lg)
+
+// Extra Large position classes
++margin(xl, min-width $xl)

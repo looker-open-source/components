@@ -1,0 +1,35 @@
+{
+  "name": "project-leap",
+  "homepage": "https://github.com/treehouse/project-leap",
+  "authors": [
+    "Chris Michel <cm@teamtreehouse.com>"
+  ],
+  "description": "An internal CSS library made for Treehouse, which contains immutable utility classes",
+  "main": "_sass/leap/",
+  "keywords": [
+    "styleguide",
+    "css",
+    "sass"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "config.yml",
+    "_data",
+    "_includes",
+    "_layouts",
+    "*.html",
+    "favicon.ico",
+    "fonts",
+    "Gemfile",
+    "Gemfile.lock",
+    "img",
+    "js",
+    "*.md",
+    "_config.yml"
+  ]
+}

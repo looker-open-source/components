@@ -1,0 +1,41 @@
+$rotation-angles: 0, 45, 90, 135, 180, 225, 270, 315
+
+
+
+// Creates the style declarations for each rotation type
+@mixin rotation-style($suffix)
+  @each $angle in $rotation-angles
+    .rotate-#{$angle}-#{$suffix}
+      -webkit-transform: rotate(#{$angle}deg) !important
+      transform: rotate(#{$angle}deg) !important
+
+
+
+// Adds media queries to rotation style mixin
+@mixin rotation($suffix, $media: null)
+
+  // We want to use @media screen whenever no $media
+  // is passed into the mixin
+  @if length($media) == 2
+    +media($media)
+      +rotation-style($suffix)
+  @else
+    @media screen
+      +rotation-style($suffix)
+
+
+
+// Extra Small rotation classes
++rotation(xs)
+
+// Small rotation classes
++rotation(sm, min-width $sm)
+
+// Medium rotation classes
++rotation(md, min-width $md)
+
+// Large rotation classes
++rotation(lg, min-width $lg)
+
+// Extra Large rotation classes
++rotation(xl, min-width $xl)

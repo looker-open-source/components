@@ -1,0 +1,55 @@
+// Local width and height variables
+$width-height-types: auto, full, fit
+
+
+
+// Create the style declerations of each width-height type
+@mixin width-height-style($suffix)
+
+  // Iterate though each $type in $width-height-types
+  @each $type in $width-height-types
+
+    // Width is the only property that needs auto
+    // so we call that out here
+    @if $type == auto
+      .w-#{$type}-#{$suffix}
+        width: #{$type} !important
+    @else if $type == full
+      .w-#{$type}-#{$suffix}
+        width: 100% !important
+      .h-#{$type}-#{$suffix}
+        height: 100% !important
+    @else if $type == fit
+      .w-#{$type}-#{$suffix}
+        max-width: 100% !important
+
+
+
+// Adds media queries to width-height style mixin
+@mixin width-height($suffix, $media: null)
+
+  // We want to use @media screen whenever no $media
+  // is passed into the mixin
+  @if length($media) == 2
+    +media($media)
+      +width-height-style($suffix)
+  @else
+    @media screen
+      +width-height-style($suffix)
+
+
+
+// Extra Small width-height classes
++width-height(xs)
+
+// Small width-height classes
++width-height(sm, min-width $sm)
+
+// Medium width-height classes
++width-height(md, min-width $md)
+
+// Large width-height classes
++width-height(lg, min-width $lg)
+
+// Extra Large width-height classes
++width-height(xl, min-width $xl)

@@ -1,0 +1,9 @@
+<div class="m-l-4-lg p-3-lg p-r-0-lg border-l-lg">
+  <ul class="subnav list-unstyled">
+    {% for p in page.subnav %}
+      <li class="subnav-item">
+        <a class="subnav-link" href="#{{ p }}">{{ p }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

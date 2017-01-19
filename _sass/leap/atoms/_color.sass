@@ -1,0 +1,127 @@
+$properties: fill stroke color border-color background-color
+
+
+
+// Iterate through brand-colors map to create colors for classes
+@each $color-name, $color in $brand-colors
+
+  // Iterate through properties var to create properties for classes
+  @each $property in $properties
+
+    // We want to use 'bg' for the class name when using the
+    // background-color property
+    //
+    // We want to use 'border' for the class name when using the
+    // border-color property
+    //
+    // Else just use the regular property name
+    @if $property == background-color
+      .brand-bg-#{$color-name}
+        #{$property}: brand-color($color-name) !important
+    @else if $property == border-color
+      .brand-border-#{$color-name}
+        #{$property}: brand-color($color-name) !important
+    @else
+      .brand-#{$property}-#{$color-name}
+        #{$property}: brand-color($color-name) !important
+
+
+
+// Iterate through ui-colors map to create colors for classes
+@each $color-name, $color in $ui-colors
+
+  // Iterate through properties var to create properties for classes
+  @each $property in $properties
+
+    // We want to use 'bg' for the class name when using the
+    // background-color property
+    //
+    // We want to use 'border' for the class name when using the
+    // border-color property
+    //
+    // Else just use the regular property name
+    @if $property == background-color
+      .bg-#{$color-name}
+        #{$property}: ui-color($color-name) !important
+    @else if $property == border-color
+      .border-#{$color-name}
+        #{$property}: ui-color($color-name) !important
+    @else
+      .#{$property}-#{$color-name}
+        #{$property}: ui-color($color-name) !important
+
+
+
+// Iterate through gray-colors map to create colors for classes
+@each $color-name, $color in $gray-colors
+
+  // Iterate through properties var to create properties for classes
+  @each $property in $properties
+
+    // We want to use 'bg' for the class name when using the
+    // background-color property
+    //
+    // We want to use 'border' for the class name when using the
+    // border-color property
+    //
+    // Else just use the regular property name
+    @if $property == background-color
+      .bg-#{$color-name}
+        #{$property}: gray-color($color-name) !important
+    @else if $property == border-color
+      .border-#{$color-name}
+        #{$property}: gray-color($color-name) !important
+    @else
+      .#{$property}-#{$color-name}
+        #{$property}: gray-color($color-name) !important
+
+
+
+// Iterate through text-colors map to create colors for classes
+@each $color-name, $color in $text-colors
+
+  // Iterate through properties var to create properties for classes
+  @each $property in $properties
+
+    // We want to use 'bg' for the class name when using the
+    // background-color property
+    //
+    // We want to use 'border' for the class name when using the
+    // border-color property
+    //
+    // Else just use the regular property name
+    @if $property == background-color
+      .text-bg-#{$color-name}
+        #{$property}: text-color($color-name) !important
+    @else if $property == border-color
+      .text-border-#{$color-name}
+        #{$property}: text-color($color-name) !important
+    @else
+      .text-#{$property}-#{$color-name}
+        #{$property}: text-color($color-name) !important
+
+
+
+// Iterate through topic-colors map to create colors for classes
+@each $color-name, $color in $topic-colors
+  @each $color-value, $color-hex in $color
+
+    // Iterate through properties var to create properties for classes
+    @each $property in $properties
+
+      // We want to use 'bg' for the class name when using the
+      // background-color property
+      //
+      // We want to use 'border' for the class name when using the
+      // border-color property
+      //
+      // Else just use the regular property name
+      @if $property == background-color
+        .topic-bg-#{$color-name}-#{$color-value}
+          #{$property}: map-get($color, $color-value) !important
+      @else if $property == border-color
+        .topic-border-#{$color-name}-#{$color-value}
+          #{$property}: map-get($color, $color-value) !important
+      @else
+        .topic-#{$property}-#{$color-name}-#{$color-value}
+          #{$property}: map-get($color, $color-value) !important

@@ -1,0 +1,35 @@
+filename: atoms
+name: Atoms
+pages:
+  - slug: /typography.html
+    name: Typography
+
+  - slug: /grid.html
+    name: Grid
+
+  - slug: /block-grid.html
+    name: Block Grid
+
+  - slug: /layout.html
+    name: Layout
+
+  - slug: /flexbox.html
+    name: Flex Box
+
+  - slug: /buttons.html
+    name: Buttons
+
+  - slug: /colors.html
+    name: Colors
+
+  - slug: /borders.html
+    name: Borders
+
+  - slug: /forms.html
+    name: Forms
+
+  - slug: /icons.html
+    name: Icons
+
+  - slug: /tables.html
+    name: Tables

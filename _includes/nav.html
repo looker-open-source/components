@@ -1,0 +1,38 @@
+<li class="guide-navigation-item">
+  <a href="getting-started.html" {% if page.title == "Getting Started" %}class="guide-navigation-link guide-navigation-link--active"{% else %}class="guide-navigation-link"{% endif %}>
+    Getting Started
+  </a>
+</li>
+<li class="guide-navigation-item">
+  <a href="sass.html" {% if page.title == "Sass" %}class="guide-navigation-link guide-navigation-link--active"{% else %}class="guide-navigation-link"{% endif %}>
+    Sass
+  </a>
+</li>
+<li class="guide-navigation-item">
+  <a href="responsive.html" {% if page.title == "Responsive" %}class="guide-navigation-link guide-navigation-link--active"{% else %}class="guide-navigation-link"{% endif %}>
+    Responsive
+  </a>
+</li>
+{% for p in site.data.navs %}
+{% assign nav = p[1] %}
+  <li class="guide-navigation-item guide-navigation-item-parent">
+    <a href="javascript:void(0)" class="guide-navigation-link">
+      {{ nav.name }}
+      <span class="guide-navigation-chevron fill-gray">{% include icon.html icon="chevron" class="rotate-90-xs" %}</span>
+    </a>
+    <ul class="guide-navigation-list-child">
+      {% for sub_p in nav.pages %}
+      <li class="guide-navigation-item-child">
+        <a href="{{ site.baseurl }}{{ sub_p.slug }}" {% if sub_p.slug == page.url %}class="guide-navigation-link guide-navigation-link-child guide-navigation-link-child--active"{% else %}class="guide-navigation-link guide-navigation-link-child"{% endif %}>
+          {{ sub_p.name }}
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </li>
+{% endfor %}
+<li class="guide-navigation-item">
+  <a href="release-notes.html" {% if page.title == "Release Notes" %}class="guide-navigation-link guide-navigation-link--active"{% else %}class="guide-navigation-link"{% endif %}>
+    Release Notes
+  </a>
+</li>

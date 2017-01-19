@@ -1,0 +1,10 @@
+// This function returns a border variable to be used within a mixin loop
+@function border-var($value)
+  @if $value == normal
+    @return $border-color-normal
+  @else if $value == dark
+    @return $border-color-dark
+  @else if $value == mid
+    @return $border-color-mid
+  @else if $value == light
+    @return $border-color-light

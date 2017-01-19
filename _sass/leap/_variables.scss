@@ -1,0 +1,190 @@
+$leap-version: "0.8.0";
+
+// Brand Colors
+$brand-colors: (
+  "green": #5fcf80,
+  "gray":  #3e474f
+);
+
+// Text Colors
+$text-colors: (
+  "dark":     #40484a,
+  "medium":   #4b5658,
+  "base":     #576366,
+  "light":    #7b8b8e,
+  "white":    #fff
+);
+
+// Gray Colors
+$gray-colors: (
+  "gray-darker":  #2d3339,
+  "gray-dark":    #3f4850,
+  "gray":         #c6ccd2,
+  "gray-light":   #edeff0,
+  "gray-lighter": #f9fafa
+);
+
+// UI Colors
+$ui-colors: (
+  "blue":         #3f8abf,
+  "green":        #36b55c,
+  "yellow":       #ffd466,
+  "orange":       #ff9f1f,
+  "red":          #ed5a5a
+);
+
+// Topic Colors
+$topic-colors: (
+  "html": (
+    light:  #62bedb,
+    base:     #39ADD1,
+    dark:   #298fae,
+  ),
+  "css": (
+    light:  #4494ca,
+    base:     #3079AB,
+    dark:   #255d83,
+  ),
+  "js": (
+    light:  #d07e94,
+    base:     #c25975,
+    dark:   #aa3e5b,
+  ),
+  "ruby": (
+    light:  #e97d82,
+    base:     #e15258,
+    dark:   #d9272e,
+  ),
+  "business": (
+    light:  #fba98c,
+    base:     #F9845B,
+    dark:   #f75f2a,
+  ),
+  "wordpress": (
+    light:  #a6add7,
+    base:     #838CC7,
+    dark:   #606bb7,
+  ),
+  "php": (
+    light:  #9885b2,
+    base:     #7D669E,
+    dark:   #645180,
+  ),
+  "ios": (
+    light:  #78c9c4,
+    base:     #53BBB4,
+    dark:   #3e9d97,
+  ),
+  "android": (
+    light:  #80c783,
+    base:     #5cb860,
+    dark:   #449d48,
+  ),
+  "design": (
+    light:  #efaf3c,
+    base:     #e59a13,
+    dark:   #b67a0f,
+  ),
+  "devtools": (
+    light:  #7f94a8,
+    base:     #637a91,
+    dark:   #4e6173,
+  ),
+  "java": (
+    light:  #38bd95,
+    base:     #2c9676,
+    dark:   #206f57,
+  ),
+  "python": (
+    light:  #f6bfd0,
+    base:     #f092b0,
+    dark:   #ea6590,
+  ),
+  "diglit": (
+    light:  #d6b1e2,
+    base:     #c38cd4,
+    dark:   #b067c6,
+  ),
+  "gamedev": (
+    light:  #29b2b6,
+    base:     #20898c,
+    dark:   #176062,
+  ),
+  "csharp": (
+    light:  #b6689c,
+    base:     #9e4d83,
+    dark:   #7c3c67,
+  ),
+  "databases": (
+    light:  #ef9557,
+    base:     #eb7728,
+    dark:   #cd5e13,
+  ),
+  "undefined": (
+    light:  #8c959d,
+    base:     #717b85,
+    dark:   #5a6269,
+  )
+);
+
+// Spacing Units
+//   0   = 0px
+//   0.5 = 8px
+//   1   = 16px
+//   2   = 24px
+//   3   = 32px
+//   4   = 48px
+//   5   = 64px
+//   6   = 80px
+$spacing: (
+  0:   0rem,
+  0.5: 0.5rem,
+  1:   1rem,
+  2:   1.5rem,
+  3:   2rem,
+  4:   3rem,
+  5:   4rem,
+  6:   5rem
+);
+
+// Spacing Sides
+$spacing-sides: (
+  all: all,
+  t:   top,
+  b:   bottom,
+  l:   left,
+  r:   right,
+  lr:  null,
+  tb:  null
+);
+
+// Type Variables
+$text-size: (
+  0: 3rem,
+  1: 2.25rem,
+  2: 1.75rem,
+  3: 1.25rem,
+  4: 1.125rem,
+  5: 1rem,
+  6: 0.875rem
+);
+$gotham: "Gotham Rounded A", "Gotham Rounded B", "Helvetica", Helvetica, Arial, sans-serif;
+$bold: 500;
+
+
+
+// Global Border Variables
+$border-color-dark:   #b7c0c7;
+$border-color-mid:    #d4d9dd;
+$border-color-normal: #e8ebed;
+$border-color-light:  #f0f2f4;
+$border-radius: 4px;
+
+// Grid max width
+$grid-width: 1260px;
+
+// Global Responsive Breakpoints
+$sm: 480px;
+$md: 680px;
+$lg: 960px;
+$xl: 1140px;

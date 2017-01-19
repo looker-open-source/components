@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+  {% include head.html %}
+
+  <body>
+
+    {% include sprite.svg %}
+
+    {% include header.html %}
+
+    <main class="guide-main" role="main">
+      <div class="guide-content">
+
+        <h1 class="border-b-xs p-b-05-xs m-b-4-xs">{{ page.title }}</h1>
+
+          {{ content }}
+          
+      </div>
+    </main>
+
+    {% include footer.html %}
+
+  </body>
+
+</html>

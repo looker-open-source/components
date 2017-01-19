@@ -1,0 +1,41 @@
+$vertical-alignment-types: top, middle, bottom
+
+
+
+@mixin vertical-alignment-style($suffix)
+
+  // Iterare through each type of $vertical-alignment-types
+  @each $type in $vertical-alignment-types
+    .align-#{$type}-#{$suffix}
+      vertical-align: #{$type} !important
+
+
+
+// Adds media queries to overflow style mixin
+@mixin vertical-alignment($suffix, $media: null)
+
+  // We want to use @media screen whenever no $media
+  // is passed into the mixin
+  @if length($media) == 2
+    +media($media)
+      +vertical-alignment-style($suffix)
+  @else
+    @media screen
+      +vertical-alignment-style($suffix)
+
+
+
+// Extra Small vertical-alignment classes
++vertical-alignment(xs)
+
+// Small vertical-alignment classes
++vertical-alignment(sm, min-width $sm)
+
+// Medium vertical-alignment classes
++vertical-alignment(md, min-width $md)
+
+// Large vertical-alignment classes
++vertical-alignment(lg, min-width $lg)
+
+// Extra Large vertical-alignment classes
++vertical-alignment(xl, min-width $xl)

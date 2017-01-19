@@ -1,0 +1,11 @@
+{% capture id %}{% increment uniqueid %}{% endcapture %}
+<svg viewBox="{% if include.icon-size %}0 0 {{ include.icon-size }} {{ include.icon-size }}{% else %} 0 0 16 16{% endif %}" role="img" class="icon {% if include.icon-size %}icon-{{ include.icon-size }}{% else %}icon-16{% endif %} icon-{{ include.icon }} {{include.class}}"
+     aria-labelledby="{% if include.title %}title-{{ id }}{% endif %}{% if include.desc %} desc-{{ id }}{% endif %}">
+  {% if include.title %}
+  <title id="title-{{ id }}">{{ include.title }}</title>
+  {% endif %}
+  {% if include.desc %}
+  <desc id="title-{{ id }}">{{ include.desc }}</desc>
+  {% endif %}
+  <use xlink:href="#icon-{{ include.icon }}"></use>
+</svg>

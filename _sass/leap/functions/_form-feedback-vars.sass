@@ -1,0 +1,16 @@
+// This function returns a form feedback variable to be used within a mixin loop
+@function form-feedback-var($value)
+  @if $value == success
+    @return $form-feedback-success
+  @else if $value == warning
+    @return $form-feedback-warning
+  @else if $value == error
+    @return $form-feedback-error
+
+@function form-feedback-var-active($value)
+  @if $value == success
+    @return $form-feedback-active-success
+  @else if $value == warning
+    @return $form-feedback-active-warning
+  @else if $value == error
+    @return $form-feedback-active-error

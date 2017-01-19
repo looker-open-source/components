@@ -1,0 +1,49 @@
+// Base table styles
+table
+  width: 100%
+  border-collapse: collapse
+  th
+    font-weight: 600
+  th,
+  td
+    text-align: left
+    padding: .5rem
+
+
+
+$table-types: rows, cells, columns
+$table-border-colors: normal, dark, mid, light
+
+// Loop through each table layout, and include border color options
+@mixin table-border($color, $options: rows)
+  border: 1px solid $color !important
+  th,
+  td
+    // We want to apply the right styles to each layout
+    @if $options == rows
+      border-bottom: 1px solid $color !important
+    @else if $options == cells
+      border-bottom: 1px solid $color !important
+      border-left: 1px solid $color !important
+    @else if $options == columns
+      border-left: 1px solid $color !important
+  tr
+    // We want to make sure there is no border at the
+    // bottom of the last cell
+    &:last-child
+      td
+        border-bottom: none
+
+
+
+// Build the styles for each table layout
+// and include border color options
+.table-border
+  @each $type in $table-types
+    @each $color in $table-border-colors
+      &-#{$type}
+        @if $color == normal
+          +table-border(border-var($color), #{$type})
+        @else
+          &-#{$color}
+            +table-border(border-var($color), #{$type})

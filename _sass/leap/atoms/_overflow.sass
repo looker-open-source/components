@@ -1,0 +1,41 @@
+$overflow-types: hidden, auto, scroll, visible
+
+
+// Create the style declarations for each overflow type
+@mixin overflow-style($suffix)
+
+  // Iterate through each type in $overflow-types
+  @each $type in $overflow-types
+    .overflow-#{$type}-#{$suffix}
+      overflow: #{$type} !important
+
+
+
+// Adds media queries to overflow style mixin
+@mixin overflow($suffix, $media: null)
+
+  // We want to use @media screen whenever no $media
+  // is passed into the mixin
+  @if length($media) == 2
+    +media($media)
+      +overflow-style($suffix)
+  @else
+    @media screen
+      +overflow-style($suffix)
+
+
+
+// Extra Small overflow classes
++overflow(xs)
+
+// Small overflow classes
++overflow(sm, min-width $sm)
+
+// Medium overflow classes
++overflow(md, min-width $md)
+
+// Large overflow classes
++overflow(lg, min-width $lg)
+
+// Extra Large overflow classes
++overflow(xl, min-width $xl)
