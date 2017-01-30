@@ -1,5 +1,7 @@
 webpack  = require 'webpack'
 HtmlWebpackPlugin = require 'html-webpack-plugin'
+devServer:
+  inline: true
 module.exports =
   entry:
     app: './src/javascripts/app.coffee'
