@@ -6,8 +6,8 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-title: Leap
-baseurl: "/project-leap" # the subpath of your site, e.g. /blog
+title: Lens
+baseurl: "/project-Lens" # the subpath of your site, e.g. /blog
 url: "https://treehouse.github.io" # the base hostname & protocol for your site
 
 sass:

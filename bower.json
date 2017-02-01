@@ -1,11 +1,11 @@
 {
-  "name": "project-leap",
-  "homepage": "https://github.com/treehouse/project-leap",
+  "name": "project-Lens",
+  "homepage": "https://github.com/treehouse/project-Lens",
   "authors": [
     "Chris Michel <cm@teamtreehouse.com>"
   ],
   "description": "An internal CSS library made for Treehouse, which contains immutable utility classes",
-  "main": "_sass/leap/",
+  "main": "_sass/Lens/",
   "keywords": [
     "styleguide",
     "css",
