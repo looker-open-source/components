@@ -7,8 +7,8 @@
 
 # Site settings
 title: Leap
-baseurl: "/project-leap" # the subpath of your site, e.g. /blog
-url: "https://treehouse.github.io" # the base hostname & protocol for your site
+baseurl: "/lens" # the subpath of your site, e.g. /blog
+url: "https://looker.github.io" # the base hostname & protocol for your site
 
 sass:
   sass_dir: _sass
