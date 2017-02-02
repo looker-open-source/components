@@ -1,12 +1,20 @@
----
-layout: default
-title: Sass
-subnav:
-  - Variables
-  - Functions
-  - Mixins
----
+m = angular.module "lens.sass", []
 
+
+m.controller "SassController", (
+  $scope
+) ->
+  return this
+
+
+m.directive "sass", ->
+  controller: "SassController"
+  restrict: "E"
+  scope: {}
+  template: template
+
+
+template = """
 <section>
   <p class="text-4-xs m-b-4-xs">Lens uses Sass to compile its CSS and has a <a href="http://bourbon.io/">Bourbon</a> dependency to give us access to many handy mixins. On top of that, we include many variables, mixins and functions that are specific to our needs at Treehouse.</p>
 
@@ -296,3 +304,4 @@ subnav:
     +width-height($width, $height)
   </code></p>
 </section>
+"""

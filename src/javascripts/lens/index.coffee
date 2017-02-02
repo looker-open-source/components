@@ -1,8 +1,20 @@
----
-layout: home
-title: What the bleep is Lens?
----
+m = angular.module "lens.index", []
 
+
+m.controller "IndexController", (
+  $scope
+) ->
+  return this
+
+
+m.directive "index", ->
+  controller: "IndexController"
+  restrict: "E"
+  scope: {}
+  template: template
+
+
+template = """
 <section id="index">
   <p class="text-4-xs m-b-4-xs">Lens is a front-end framework and style guide that is used internally at Treehouse to build our app. We've architected it in a way that gives the entire Engineering team a way to quickly prototype or write front-end code. It contains atomic helper classes and components that ensure everything we build is consistent and flexible. For most thing we build, additional CSS won't be necessary. Lens gets the entire Engineering team to speak the same language, whether dev or designer.</p>
 
@@ -41,3 +53,4 @@ title: What the bleep is Lens?
 
 
 </section>
+"""

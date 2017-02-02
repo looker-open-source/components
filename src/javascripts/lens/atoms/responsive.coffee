@@ -1,12 +1,21 @@
----
-layout: default
-title: Responsive
-subnav:
-  - Suffixes
-  - Breakpoints
----
+m = angular.module "lens.atoms.responsive", []
 
-<section>
+
+m.controller "ResponsiveController", (
+  $scope
+) ->
+  return this
+
+
+m.directive "responsive", ->
+  controller: "ResponsiveController"
+  restrict: "E"
+  scope: {}
+  template: template
+
+
+template = """
+<section id="responsive">
   <h2 id="Suffixes" class="m-b-1-xs">Responsive Suffixes</h2>
   <p class="m-b-1-xs">Our grid classes, utility classes and typography are built in a way that give flexibility across breakpoints. To change things at different breakpoints, we have 5 suffixes to add to your classes: <code>-xs</code>, <code>-sm</code>, <code>-md</code>, <code>-lg</code>, and <code>-xl</code>.</p>
   <p class="m-b-3-xs">To see this in action, resize your browser and pay attention to how this grid layout changes.</p>
@@ -175,3 +184,4 @@ subnav:
     </tbody>
   </table>
 </section>
+"""

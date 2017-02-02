@@ -1,8 +1,20 @@
----
-layout: home
-title: Release Notes
----
+m = angular.module "lens.release_notes", []
 
+
+m.controller "ReleaseNotesController", (
+  $scope
+) ->
+  return this
+
+
+m.directive "releaseNotes", ->
+  controller: "ReleaseNotesController"
+  restrict: "E"
+  scope: {}
+  template: template
+
+
+template = """
 <section id="index">
   <div class="col-container border-b-xs p-b-2-xs">
     <div class="col col-10-md">
@@ -148,3 +160,4 @@ title: Release Notes
     </div>
   </div>
 </section>
+"""

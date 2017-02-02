@@ -1,21 +1,21 @@
----
-layout: default
-title: Forms
-subnav:
-  - Labels
-  - Inputs
-  - Helper
-  - Textareas
-  - Selects
-  - Radios
-  - Checkboxes
-  - Uploads
-  - Success
-  - Warning
-  - Error
----
+m = angular.module "lens.atoms.forms", []
 
-<section id="float">
+
+m.controller "FormsController", (
+  $scope
+) ->
+  return this
+
+
+m.directive "forms", ->
+  controller: "FormsController"
+  restrict: "E"
+  scope: {}
+  template: template
+
+
+template = """
+<section id="forms">
 
   <!-- Labels -->
   <h2 id="Labels" class="m-b-1-xs">Labels</h2>
@@ -246,3 +246,4 @@ subnav:
   </div>
 
 </section>
+"""

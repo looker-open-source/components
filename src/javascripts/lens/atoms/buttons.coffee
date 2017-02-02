@@ -1,21 +1,20 @@
----
-layout: default
-title: Buttons
-subnav:
-  - Default
-  - Primary
-  - Secondary
-  - Alert
-  - Inverse
-  - Disabled
-  - X-Large
-  - Inline
-  - Topics
-  - Full
-  - Pill
-  - Split
----
+m = angular.module "lens.atoms.buttons", []
 
+
+m.controller "ButtonsController", (
+  $scope
+) ->
+  return this
+
+
+m.directive "buttons", ->
+  controller: "ButtonsController"
+  restrict: "E"
+  scope: {}
+  template: template
+
+
+template = """
 <section id="Buttons">
   <h2 id="Default" class="m-b-1-xs" id="default">Default</h2>
   <p class="m-b-3-xs">Use the class, <code>button</code> for this default style button. If you are using the <code>&lt;button&gt;</code> element, always specify a <code>type</code>. When using the <code>&lt;a&gt;</code> tag, include <code>role="button"</code> for accessibility. Each button is available in multiple sizes, take note of examples for classes.</p>
@@ -281,3 +280,4 @@ subnav:
   </div>
   -->
 </section>
+"""

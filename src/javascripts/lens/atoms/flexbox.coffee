@@ -1,14 +1,22 @@
----
-layout: default
-title: Flex Box
-subnav:
-  - Container
-  - Items
----
+m = angular.module "lens.atoms.flexbox", []
 
-<p class="m-b-4-xs">Flexbox is perfect for aligning items inside components. It typically isn't used for large scale layouts but for smaller parts of a page or component. All of the flex box utility classes can be used with our breakpoint suffixes.</p>
 
-<section id="Container">
+m.controller "FlexboxController", (
+  $scope
+) ->
+  return this
+
+
+m.directive "flexbox", ->
+  controller: "FlexboxController"
+  restrict: "E"
+  scope: {}
+  template: template
+
+
+template = """
+<section id="flexbox">
+  <p class="m-b-4-xs">Flexbox is perfect for aligning items inside components. It typically isn't used for large scale layouts but for smaller parts of a page or component. All of the flex box utility classes can be used with our breakpoint suffixes.</p>
   <h2 class="m-b-1-xs">Flex Container</h2>
   <p class="m-b-3-xs">This is the parent of the items that will be laid out using flex box.</p>
 
@@ -652,3 +660,4 @@ subnav:
 &lt;/div&gt;</code></pre>
   </div>
 </section>
+"""

@@ -1,11 +1,20 @@
----
-layout: default
-title: Block Grid
-subnav:
-  - Default
-  - Gutters
----
+m = angular.module "lens.atoms.block_grid", []
 
+
+m.controller "BlockGridController", (
+  $scope
+) ->
+  return this
+
+
+m.directive "blockGrid", ->
+  controller: "BlockGridController"
+  restrict: "E"
+  scope: {}
+  template: template
+
+
+template = """
 <section id="grid">
   <h2 class="m-b-1-xs">The Block Grid</h2>
   <p class="m-b-1-xs">The block grid is used when you need a grid of an unknown number of items. The recommended way to build block grids is with <code>ul</code> elements, but the classes work just fine on any element, like a <code>div</code>. Use your best judgement to keep the markup as semantic as possible.</p>
@@ -102,3 +111,4 @@ subnav:
 &lt;/ul&gt;</code></pre>
   </div>
 </section>
+"""

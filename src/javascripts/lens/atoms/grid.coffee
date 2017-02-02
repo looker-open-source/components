@@ -1,16 +1,20 @@
----
-layout: default
-title: Grid
-subnav:
-  - Grid
-  - Max-Width
-  - Nesting
-  - Gutters
-  - Centering
-  - Offsets
-  - Responsive
----
+m = angular.module "lens.atoms.grid", []
 
+
+m.controller "GridController", (
+  $scope
+) ->
+  return this
+
+
+m.directive "grid", ->
+  controller: "GridController"
+  restrict: "E"
+  scope: {}
+  template: template
+
+
+template = """
 <section id="grid">
   <h2 id="Grid" class="m-b-1-xs">The Grid</h2>
   <p class="m-b-1-xs">We provide a mobile-first, fluid grid to help layout pages with ease. To start a new grid, create a div with the class of <code>.col-container</code>. Then add columns inside it using <code>.col .col-n-xs</code>, where n = 5-100 in increments of 5, with the addition of 33 to let us do columns in thirds.</p>
@@ -218,3 +222,4 @@ subnav:
 &lt;/div&gt;</code></pre>
   </div>
 </section>
+"""

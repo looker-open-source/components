@@ -1,13 +1,20 @@
----
-layout: default
-title: Tables
-subnav:
-  - Default
-  - Rows
-  - Columns
-  - Cells
----
+m = angular.module "lens.atoms.tables", []
 
+
+m.controller "TablesController", (
+  $scope
+) ->
+  return this
+
+
+m.directive "tables", ->
+  controller: "TablesController"
+  restrict: "E"
+  scope: {}
+  template: template
+
+
+template = """
 <section>
   <h2 id="Default" class="m-b-1-xs">Default Table</h2>
   <p class="m-b-2-xs">Our base table style should not require any atomic classes. Additionally, the width of columns in tables can be set by using Lens's <a href="grid.html">grid classes</a>.</p>
@@ -180,3 +187,4 @@ subnav:
 &lt;/table&gt;</code></pre>
   </div>
 </section>
+"""
