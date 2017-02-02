@@ -1,0 +1,8 @@
+$color: #0086b3;
+
+#message {
+  background-color: $color;
+  font-weight: bold;
+  border: solid darken($color, 10%);
+  padding: 0.5rem;
+}
