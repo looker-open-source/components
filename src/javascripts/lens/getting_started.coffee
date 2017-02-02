@@ -1,13 +1,20 @@
----
-layout: default
-title: Getting Started
-subnav:
-  - Markup
-  - BEM
-  - Utilities
-  - Mixins
----
+m = angular.module "lens.getting_started", []
 
+
+m.controller "GettingStartedController", (
+  $scope
+) ->
+  return this
+
+
+m.directive "gettingStarted", ->
+  controller: "GettingStartedController"
+  restrict: "E"
+  scope: {}
+  template: template
+
+
+template = """
 <section id="getting-started">
   <p class="text-4-xs m-b-4-xs">Leap includes resources to create user interfaces consistent with the Treehouse brand and best practices. Here are few things to consider before you start using Leap on your next project.</p>
 
@@ -31,3 +38,4 @@ subnav:
   <p class="m-b-4-xs">Leap comes with different mixins, variables and functions that make it easy to apply its styles to elements or components that aren't contained within Leap. To learn more about the Sassy goodness within Leap, read through the <a href="sass.html">Sass</a> page.</p>
 
 </section>
+"""
