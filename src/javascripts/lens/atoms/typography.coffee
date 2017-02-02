@@ -1,13 +1,20 @@
----
-layout: default
-title: Typography
-subnav:
-  - Headers
-  - Emphasis
-  - Alignment
-  - Lists
----
+m = angular.module "lens.atoms.typography", []
 
+
+m.controller "TypographyController", (
+  $scope
+) ->
+  return this
+
+
+m.directive "typography", ->
+  controller: "TypographyController"
+  restrict: "E"
+  scope: {}
+  template: template
+
+
+template = """
 <section id="Headers">
   <h2 class="m-b-1-xs">Headers and Text Sizing</h2>
   <p class="m-b-2-xs">Headers are built using typical html elements <code>h1 - h6</code>. To give ourselves a bit more control, we've created utility classes for applying different sizes to the default elements so that we can control markup hierarchy while still applying the sizes we want visually (<code>.text-0-xs</code>, <code>.text-1-xs</code>, <code>.text-2-xs</code>, <code>.text-3-xs</code>, <code>.text-4-xs</code>, <code>.text-5-xs</code>, <code>.text-6-xs</code>). By default, headers have no margin/padding applied to them and are bold.</p>
@@ -211,3 +218,4 @@ Resize your browser to see this text size change.
 &lt;/ul&gt;</code></pre>
   </div>
 </section>
+"""

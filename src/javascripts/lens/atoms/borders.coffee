@@ -1,13 +1,20 @@
----
-layout: default
-title: Borders
-subnav:
-  - Border
-  - Removal
-  - Rounded
-  - Circle
----
+m = angular.module "lens.atoms.borders", []
 
+
+m.controller "BordersController", (
+  $scope
+) ->
+  return this
+
+
+m.directive "borders", ->
+  controller: "BordersController"
+  restrict: "E"
+  scope: {}
+  template: template
+
+
+template = """
 <section id="borders">
   <h2 id="Border" class="m-b-1-xs">Border</h2>
   <p class="m-b-1-xs">To adjust borders on elements, use the following classes: <code>.border-xs</code>, <code>.border-t-xs</code>, <code>.border-m-xs</code>, <code>.border-l-xs</code>, <code>.border-r-xs</code>. Use <code>dark</code>, <code>mid</code>, <code>light</code> modifiers to change the color of the border.</p>
@@ -95,3 +102,4 @@ subnav:
 <pre><code class="language-html">&lt;div class="border-dark-xs circle" style="width: 100px; height: 100px;"&gt;&lt;/div&gt;</code></pre>
   </div>
 </section>
+"""

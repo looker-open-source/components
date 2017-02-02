@@ -1,18 +1,20 @@
----
-layout: default
-title: Layout
-subnav:
-  - Floats
-  - Display
-  - Overflow
-  - Width/Height
-  - Units
-  - Spacing
-  - Positioning
-  - Alignment
-  - Rotation
----
+m = angular.module "lens.atoms.layout", []
 
+
+m.controller "LayoutController", (
+  $scope
+) ->
+  return this
+
+
+m.directive "layout", ->
+  controller: "LayoutController"
+  restrict: "E"
+  scope: {}
+  template: template
+
+
+template = """
 <section id="Floats">
   <h2 class="m-b-1-xs">Floats</h2>
   <p class="m-b-1-xs">To float elements, use the following classes: <code>.float-l-xs</code>, <code>.float-r-xs</code>, and <code>.float-none-xs</code></p>
@@ -409,3 +411,4 @@ This is our friend Gratt Spore and the &lt;code&gt;img&lt;/code&gt; tag has the 
 &lt;span class="rotate-270-xs border-dark-xs border-none-t-xs inline-block-xs p-2-xs m-r-2-xs" style="height:60px;"&gt;&lt;/span&gt;
 &lt;span class="rotate-315-xs border-dark-xs border-none-t-xs inline-block-xs p-2-xs" style="height:60px;"&gt;&lt;/span&gt;</code></pre></</div>
 </section>
+"""

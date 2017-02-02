@@ -1,9 +1,20 @@
----
-layout: default
-title: Icons
-subnav: UI
----
+m = angular.module "lens.atoms.icons", []
 
+
+m.controller "IconsController", (
+  $scope
+) ->
+  return this
+
+
+m.directive "icons", ->
+  controller: "IconsController"
+  restrict: "E"
+  scope: {}
+  template: template
+
+
+template = """
 <section id="icons">
 
   <h2 id="UI" class="m-b-1-xs inline-block-xs">Common UI Icons</h2><span class="button button--small-xs circle relative-xs pos-t-05-xs pos-l-1-xs">WIP: Only use in docs</span>
@@ -80,3 +91,4 @@ subnav: UI
   </table>
 
 </section>
+"""

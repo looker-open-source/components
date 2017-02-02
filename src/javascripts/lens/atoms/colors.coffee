@@ -1,14 +1,20 @@
----
-layout: default
-title: Colors
-subnav:
-  - Brand
-  - UI
-  - Gray
-  - Text
-  - Topics
----
+m = angular.module "lens.atoms.colors", []
 
+
+m.controller "ColorsController", (
+  $scope
+) ->
+  return this
+
+
+m.directive "colors", ->
+  controller: "ColorsController"
+  restrict: "E"
+  scope: {}
+  template: template
+
+
+template = """
 <section id="brand-colors">
   <h2 id="Brand" class="m-b-1-xs">Brand Colors</h2>
   <p class="m-b-2-xs">There are only 2 main brand colors for Treehouse. Use the color class for any of these classes, just replace <code>[color]</code> with the name of the color you want.</p>
@@ -202,3 +208,4 @@ subnav:
 <script src="js/prism.js"></script>
 <script src="js/sass-to-js.js"></script>
 <script src="js/sass-to-js-custom-functions.js"></script>
+"""

@@ -5,6 +5,7 @@ devServer:
 module.exports =
   entry:
     app: './src/javascripts/app.coffee'
+    main: './src/javascripts/main.coffee'
     vendor: './src/javascripts/vendor.coffee'
   output:
     path: './src/javascripts/dist'
