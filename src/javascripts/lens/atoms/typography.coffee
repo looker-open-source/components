@@ -163,7 +163,7 @@ Resize your browser to see this text size change.
 
 <section id="Lists">
   <h2 class="m-b-1-xs">Lists</h2>
-  <p class="m-b-2-xs">Leap comes with basic styles for unordered and ordered lists. You can remove the styling on either of them by using the class, <code>.list-unstyled</code>.</p>
+  <p class="m-b-2-xs">Lens comes with basic styles for unordered and ordered lists. You can remove the styling on either of them by using the class, <code>.list-unstyled</code>.</p>
 
   <div class="m-b-2-xs">
     <div><code>ul</code></div>

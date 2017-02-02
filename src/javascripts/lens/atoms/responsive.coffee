@@ -67,7 +67,7 @@ template = """
   </div>
 
   <h2 id="Breakpoints" class="m-b-1-xs">Breakpoints</h2>
-  <p class="m-b-1-xs">Everything in Leap is built with a mobile first approach. This means that if you want the same style across all breakpoints you'd use the <code>-xs</code> suffix. Here's a rundown of which breakpoint applies to which suffix.</p>
+  <p class="m-b-1-xs">Everything in Lens is built with a mobile first approach. This means that if you want the same style across all breakpoints you'd use the <code>-xs</code> suffix. Here's a rundown of which breakpoint applies to which suffix.</p>
   <table class="table-border-rows w-full-xs m-b-4-xs" style="text-align: left">
     <thead>
       <th>Suffixes</th>
@@ -98,7 +98,7 @@ template = """
   </table>
 
   <h2 class="m-b-1-xs">What can be suffixed?</h2>
-  <p class="m-b-1-xs">We apply suffixes to a lot of classes within Leap, but not so many that we end up creating a bunch of wasted code. We decided that this list of utilities, text and grid classes gave us the most flexibility without going overboard.</p>
+  <p class="m-b-1-xs">We apply suffixes to a lot of classes within Lens, but not so many that we end up creating a bunch of wasted code. We decided that this list of utilities, text and grid classes gave us the most flexibility without going overboard.</p>
   <table class="table-border-rows w-full-xs" style="text-align: left">
     <thead>
       <th>Element</th>

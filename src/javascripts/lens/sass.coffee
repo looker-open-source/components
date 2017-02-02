@@ -16,7 +16,7 @@ m.directive "sass", ->
 
 template = """
 <section>
-  <p class="text-4-xs m-b-4-xs">Leap uses Sass to compile its CSS and has a <a href="http://bourbon.io/">Bourbon</a> dependency to give us access to many handy mixins. On top of that, we include many variables, mixins and functions that are specific to our needs at Treehouse.</p>
+  <p class="text-4-xs m-b-4-xs">Lens uses Sass to compile its CSS and has a <a href="http://bourbon.io/">Bourbon</a> dependency to give us access to many handy mixins. On top of that, we include many variables, mixins and functions that are specific to our needs at Treehouse.</p>
 
   <h2 id="Variables" class="m-b-1-xs">Variables</h2>
   <p class="m-b-2-xs">Most of our variables are built using Sass maps, which means they aren't easily accessible with a simple variable name. We've made functions to make access to those variables easier, we'll cover those below. Here are the variables that use regular variable names:</p>
@@ -26,9 +26,9 @@ template = """
   <p class="bold">Font-family</p>
   <div class="guide-code">
 <pre class="m-tb-05-xs"><code class="language-css">.custom-element
-  font-family: $gotham
+  font-family: $brand-font
 </code></pre>
-  <p class="m-b-2-xs"><code>$gotham</code></p>
+  <p class="m-b-2-xs"><code>$brand-font</code></p>
 
   <p class="bold">Font-weight</p>
   <div class="guide-code">
@@ -240,7 +240,7 @@ template = """
 
 
   <h2 id="Mixins" class="m-b-1-xs">Mixins</h2>
-  <p class="m-b-2-xs">Leap includes a few helpful mixins for common occuring styles or selectors.</p>
+  <p class="m-b-2-xs">Lens includes a few helpful mixins for common occuring styles or selectors.</p>
 
   <p class="bold">Clearfix</p>
   <div class="guide-code">

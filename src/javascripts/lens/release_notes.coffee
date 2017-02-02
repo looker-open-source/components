@@ -24,8 +24,8 @@ template = """
       <p class="bold">Initial beta release</p>
       <p class="text-6-xs text-color-light">August 18, 2016</p>
       <ul class="m-t-1-xs text-6-xs">
-        <li>Leap has been released as a Beta with initial atomic utility classes.</li>
-        <li>Leap is now a Bower package and can be installed via Bower.</li>
+        <li>Lens has been released as a Beta with initial atomic utility classes.</li>
+        <li>Lens is now a Bower package and can be installed via Bower.</li>
       </ul>
     </div>
   </div>

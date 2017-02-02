@@ -108,7 +108,7 @@ template = """
 
 <section id="Width/Height">
   <h2 class="m-b-1-xs">Width &amp; Height</h2>
-  <p class="m-b-3-xs">Most widths will be set using our grid layout. However, Leap provides <code>.w-fit-xs</code> to set an elements max-width to 100%, additionally it has <code>.w-full-xs</code> and <code>.h-full-xs</code> to set an elements width to 100%. You can use <code>.w-auto-xs</code> to set an elements width to auto.</p>
+  <p class="m-b-3-xs">Most widths will be set using our grid layout. However, Lens provides <code>.w-fit-xs</code> to set an elements max-width to 100%, additionally it has <code>.w-full-xs</code> and <code>.h-full-xs</code> to set an elements width to 100%. You can use <code>.w-auto-xs</code> to set an elements width to auto.</p>
   <div class="w-fit-xs border-dark-xs p-1-xs m-b-1-xs">.w-fit-xs</div>
   <div class="w-full-xs border-dark-xs p-1-xs m-b-1-xs">.w-full-xs</div>
   <div class="border-xs p-05-xs m-b-1-xs" style="height: 100px">
@@ -279,7 +279,7 @@ template = """
 
 <section id="Positioning">
   <h2 class="m-b-1-xs">Positioning</h2>
-  <p class="m-b-1-xs">Positioning is simple with Leap. Just add <code>.relative-xs</code>, <code>.absolute-xs</code>, <code>.fixed-xs</code>, or <code>.static-xs</code> to control the type of positioning on an element. From there, you can apply values based on our spacing units of 0-6 and a half unit of 05. Use <code>.pos-t-n-xs</code>, where t is the side and n is one of our spacing units.</p>
+  <p class="m-b-1-xs">Positioning is simple with Lens. Just add <code>.relative-xs</code>, <code>.absolute-xs</code>, <code>.fixed-xs</code>, or <code>.static-xs</code> to control the type of positioning on an element. From there, you can apply values based on our spacing units of 0-6 and a half unit of 05. Use <code>.pos-t-n-xs</code>, where t is the side and n is one of our spacing units.</p>
   <p class="m-b-1-xs"><strong>Note:</strong> There is no demo for position fixed because it will always be fixed to the viewport, not a parent container.</p>
   <div class="col-container m-b-3-xs">
     <div class="col col-50-sm">

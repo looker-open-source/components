@@ -4,7 +4,8 @@
   "description": "Lens is an internal design system made for Looker.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack": "./node_modules/.bin/webpack-dev-server --inline"
   },
   "repository": {
     "type": "git",

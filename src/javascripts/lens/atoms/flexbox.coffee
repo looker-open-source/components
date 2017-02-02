@@ -424,7 +424,7 @@ template = """
   <p class="m-b-1-xs">These are the children of the parent container. Flex items are what take on the flexible box layout for components and pages.</p>
 
   <h3 class="m-b-1-xs">Order</h3>
-  <p class="m-b-1-xs">By default, items are laid out in source order. By using the <code>order</code> property, we can control the order inside the flex container. Leap contains built in ordering classes of <code>.flex-order-[n]-xs</code>, where n is an integer from 1 to 6. Any item without an order will default to 1 and matching orders will be grouped together in the appropriate order. You can rearrange the order across breakpoints with breakpoint suffixes.</p>
+  <p class="m-b-1-xs">By default, items are laid out in source order. By using the <code>order</code> property, we can control the order inside the flex container. Lens contains built in ordering classes of <code>.flex-order-[n]-xs</code>, where n is an integer from 1 to 6. Any item without an order will default to 1 and matching orders will be grouped together in the appropriate order. You can rearrange the order across breakpoints with breakpoint suffixes.</p>
   <div class="flex-block-xs border-xs p-05-xs">
     <div class="flex-order-2-xs border-dark-xs text-center-xs m-05-xs" style="width: 50px; height: 50px; line-height: 50px;">1</div>
     <div class="border-dark-xs text-center-xs m-05-xs" style="width: 50px; height: 50px; line-height: 50px;">2</div>
