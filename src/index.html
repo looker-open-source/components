@@ -5,24 +5,131 @@
     <title>Webpack Hello World</title>
 </head>
 <body ng-app="Lens">
+  <header class="guide-banner" role="banner">
+    <a ui-sref="index" ui-sref-active="active" class="guide-name">Lens</a>
+    <div class="guide-skip-content">
+      <a href="#navigation">Skip to Navigation</a>
+    </div>
+    <a href="#" id="hamburger" class="hamburger-button">
+      <span class="hamburger"></span>
+    </a>
+  </header>
 
-  <a ui-sref="index" ui-sref-active="active">Home</a>
-  <a ui-sref="getting-started" ui-sref-active="active">Getting Started</a>
-  <a ui-sref="block-grid" ui-sref-active="active">Block Grid</a>
-  <a ui-sref="borders" ui-sref-active="active">Borders</a>
-  <a ui-sref="buttons" ui-sref-active="active">Buttons</a>
-  <a ui-sref="colors" ui-sref-active="active">Colors</a>
-  <a ui-sref="flexbox" ui-sref-active="active">Flexbox</a>
-  <a ui-sref="forms" ui-sref-active="active">Forms</a>
-  <a ui-sref="grid" ui-sref-active="active">Grid</a>
-  <a ui-sref="icons" ui-sref-active="active">Icons</a>
-  <a ui-sref="layout" ui-sref-active="active">Layout</a>
-  <a ui-sref="responsive" ui-sref-active="active">Responsive</a>
-  <a ui-sref="tables" ui-sref-active="active">Tables</a>
-  <a ui-sref="typography" ui-sref-active="active">Typography</a>
-  <a ui-sref="sass" ui-sref-active="active">Sass</a>
-  <a ui-sref="release-notes" ui-sref-active="active">Release Notes</a>
+  <main class="guide-main" role="main">
+    <div class="guide-content">
 
-  <ui-view></ui-view>
+      <h1 class="border-b-xs p-b-05-xs m-b-4-xs">{{ title }}</h1>
+
+      <div class="col-container">
+        <div class="col col-80-lg">
+          <ui-view></ui-view>
+        </div>
+        <div class="hide-xs block-lg col col-20-lg subnav-container">
+          <!-- {% include subnav.html %} -->
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <div id="guide_navigation" class="guide-navigation">
+    <nav id="navigation" role="navigation" tabindex="-1">
+      <ul class="guide-navigation-list">
+        <li class="guide-navigation-item">
+          <a ui-sref="getting-started" ui-sref-active="active" class="guide-navigation-link">Getting Started</a>
+        </li>
+        <li class="guide-navigation-item">
+          <a ui-sref="sass" ui-sref-active="active" class="guide-navigation-link">Sass</a>
+        </li>
+        <li class="guide-navigation-item">
+          <a ui-sref="responsive" ui-sref-active="active" class="guide-navigation-link">Responsive</a>
+        </li>
+        <li class="guide-navigation-item guide-navigation-item-parent">
+          <a href="javascript:void(0)" class="guide-navigation-link">
+            Atoms
+            <span class="guide-navigation-chevron fill-gray"><!-- {% include icon.html icon="chevron" class="rotate-90-xs" %}  --></span>
+          </a>
+          <ul class="guide-navigation-list-child">
+            <li class="guide-navigation-item-child">
+              <a ui-sref="typography" ui-sref-active="active" class="guide-navigation-link guide-navigation-link-child">Typography</a>
+            </li>
+            <li class="guide-navigation-item-child">
+              <a ui-sref="grid" ui-sref-active="active" class="guide-navigation-link guide-navigation-link-child">Grid</a>
+            </li>
+            <li class="guide-navigation-item-child">
+              <a ui-sref="block-grid" ui-sref-active="active" class="guide-navigation-link guide-navigation-link-child">Block Grid</a>
+            </li>
+            <li class="guide-navigation-item-child">
+              <a ui-sref="layout" ui-sref-active="active" class="guide-navigation-link guide-navigation-link-child">Layout</a>
+            </li>
+            <li class="guide-navigation-item-child">
+              <a ui-sref="flexbox" ui-sref-active="active" class="guide-navigation-link guide-navigation-link-child">Flexbox</a>
+            </li>
+            <li class="guide-navigation-item-child">
+              <a ui-sref="buttons" ui-sref-active="active" class="guide-navigation-link guide-navigation-link-child">Buttons</a>
+            </li>
+            <li class="guide-navigation-item-child">
+              <a ui-sref="colors" ui-sref-active="active" class="guide-navigation-link guide-navigation-link-child">Colors</a>
+            </li>
+            <li class="guide-navigation-item-child">
+              <a ui-sref="borders" ui-sref-active="active" class="guide-navigation-link guide-navigation-link-child">Borders</a>
+            </li>
+            <li class="guide-navigation-item-child">
+              <a ui-sref="forms" ui-sref-active="active" class="guide-navigation-link guide-navigation-link-child">Forms</a>
+            </li>
+            <li class="guide-navigation-item-child">
+              <a ui-sref="icons" ui-sref-active="active" class="guide-navigation-link guide-navigation-link-child">Icons</a>
+            </li>
+            <li class="guide-navigation-item-child">
+              <a ui-sref="tables" ui-sref-active="active" class="guide-navigation-link guide-navigation-link-child">Tables</a>
+            </li>
+          </ul>
+        </li>
+        <li class="guide-navigation-item">
+          <a ui-sref="release-notes" ui-sref-active="active" class="guide-navigation-link">Release Notes</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <footer class="guide-contentinfo" role="contentinfo">
+    <p class="guide-contentinfo-copy">Copyright &copy; 2016 Treehouse. All rights reserved.</p>
+  </footer>
+
+  <!-- <script src="js/prism.js"></script> -->
+  <script>
+    // Hamburger
+    var $hamburger = document.getElementById('hamburger');
+    var $hamburger_menu = document.getElementById('guide_navigation');
+    document.querySelector('#hamburger').addEventListener('click', function(e) {
+      e.preventDefault();
+      $hamburger.classList.toggle('hamburger-button-clicked');
+      $hamburger_menu.classList.toggle('guide-navigation-active');
+    });
+
+    // Main Nav
+    var nav = document.querySelectorAll('.guide-navigation-item-parent');
+    for (var i = 0; i < nav.length; i++) {
+      nav[i].addEventListener('click', function(e) {
+        var svg = this.getElementsByTagName('svg')[0];
+        this.classList.toggle('guide-navigation-item-parent--active');
+        svg.classList.toggle('rotate-180-xs');
+        return false;
+      });
+    }
+
+    // Subnav Scrolly Fun
+    // var subNav = document.querySelector('.subnav-container');
+    // var subNavItem = document.querySelectorAll('.subnav-link');
+    // var pageTitleHeight = 128;
+    // window.onscroll = function() {
+    //   if (document.body.scrollTop >= pageTitleHeight) {
+    //     subNav.classList.add('subnav-container--fixed');
+    //   } else {
+    //     subNav.classList.remove('subnav-container--fixed');
+    //   }
+    // }
+  </script>
+
 </body>
 </html>

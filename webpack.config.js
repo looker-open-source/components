@@ -24,8 +24,8 @@ module.exports = {
         test: /\.coffee$/,
         loader: 'coffee'
       }, {
-        test: /\.scss$/,
-        loader: "style!css?sourceMap!sass?sourceMap"
+        test: /\.sass$/,
+        loader: "style!css!sass"
       }
     ]
   },
