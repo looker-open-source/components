@@ -12,9 +12,7 @@ HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    app: './src/javascripts/app.coffee',
-    main: './src/javascripts/main.coffee',
-    vendor: './src/javascripts/vendor.coffee'
+    main: './src/javascripts/main.coffee'
   },
   output: {
     path: './src/javascripts/dist',
@@ -35,8 +33,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.html',
       inject: 'body'
-    }), new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor'
     })
   ]
 };

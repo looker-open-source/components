@@ -1,27 +1,28 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="Lens">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Webpack Hello World</title>
 </head>
-<body>
-  <index></index>
-  <getting-started></getting-started>
+<body ng-app="Lens">
 
-  <block-grid></block-grid>
-  <borders></borders>
-  <buttons></buttons>
-  <colors></colors>
-  <flexbox></flexbox>
-  <forms></forms>
-  <grid></grid>
-  <icons></icons>
-  <layout></layout>
-  <responsive></responsive>
-  <tables></tables>
-  <typography></typography>
+  <a ui-sref="index" ui-sref-active="active">Home</a>
+  <a ui-sref="getting-started" ui-sref-active="active">Getting Started</a>
+  <a ui-sref="block-grid" ui-sref-active="active">Block Grid</a>
+  <a ui-sref="borders" ui-sref-active="active">Borders</a>
+  <a ui-sref="buttons" ui-sref-active="active">Buttons</a>
+  <a ui-sref="colors" ui-sref-active="active">Colors</a>
+  <a ui-sref="flexbox" ui-sref-active="active">Flexbox</a>
+  <a ui-sref="forms" ui-sref-active="active">Forms</a>
+  <a ui-sref="grid" ui-sref-active="active">Grid</a>
+  <a ui-sref="icons" ui-sref-active="active">Icons</a>
+  <a ui-sref="layout" ui-sref-active="active">Layout</a>
+  <a ui-sref="responsive" ui-sref-active="active">Responsive</a>
+  <a ui-sref="tables" ui-sref-active="active">Tables</a>
+  <a ui-sref="typography" ui-sref-active="active">Typography</a>
+  <a ui-sref="sass" ui-sref-active="active">Sass</a>
+  <a ui-sref="release-notes" ui-sref-active="active">Release Notes</a>
 
-  <sass></sass>
-  <release-notes></release-notes>
+  <ui-view></ui-view>
 </body>
 </html>
