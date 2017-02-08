@@ -16,74 +16,55 @@ m.directive "buttons", ->
 
 template = """
 <section id="Buttons">
+
   <h2 id="Default" class="m-b-1-xs" id="default">Default</h2>
   <p class="m-b-3-xs">Use the class, <code>button</code> for this default style button. If you are using the <code>&lt;button&gt;</code> element, always specify a <code>type</code>. When using the <code>&lt;a&gt;</code> tag, include <code>role="button"</code> for accessibility. Each button is available in multiple sizes, take note of examples for classes.</p>
-  <a class="m-b-05-xs button button--large-xs" href>Large</a>
   <a class="m-b-05-xs button" href>Normal</a>
   <a class="m-b-05-xs button button--small-xs" href>Small</a>
   <a class="m-b-05-xs button button--xsmall-xs" href>X-Small</a>
   <div class="guide-code m-b-4-xs">
-<pre><code class="language-html">&lt;a class="m-b-05-xs button button--large-xs" href&gt;Large&lt;/a&gt;
-&lt;a class="m-b-05-xs button" href&gt;Normal&lt;/a&gt;
+<pre><code class="language-html">&lt;a class="m-b-05-xs button" href&gt;Normal&lt;/a&gt;
 &lt;a class="m-b-05-xs button button--small-xs" href&gt;Small&lt;/a&gt;
 &lt;a class="m-b-05-xs button button--xsmall-xs" href&gt;X-Small&lt;/a&gt;</code></pre>
   </div>
-
-  <h3 class="text-4-xs m-b-1-xs">Size Across Breakpoints</h3>
-  <p class="m-b-3-xs">You can control the size of a button across breakpoints by tacking any of our breakpoint suffixes to the end of the button size class.</p>
-  <a class="m-b-05-xs button button--small-xs button--base-md button--large-xl" href>
-    <span class="block-xs hide-md">Small</span>
-    <span class="hide-xs block-md hide-xl">Normal</span>
-    <span class="hide-xs block-xl">Large</span>
-  </a>
-  <div class="guide-code m-b-4-xs">
-<pre><code class="language-html">&lt;a class="m-b-05-xs button button--large-xs" href&gt;Large&lt;/a&gt;</code></pre>
-  </div>
-
 
 
 
   <h2 id="Primary" class="m-b-1-xs" id="primary">Primary</h2>
   <p class="m-b-3-xs">Primary buttons are used to indicate a <em>primary</em> action on the page. Use the class, <code>.button.button--primary</code>, to get a primary button on your page.</p>
-    <a class="m-b-05-xs button button--primary button--large-xs" href>Large</a>
     <a class="m-b-05-xs button button--primary" href>Normal</a>
     <a class="m-b-05-xs button button--primary button--small-xs" href>Small</a>
     <a class="m-b-05-xs button button--primary button--xsmall-xs" href>X-Small</a>
   <div class="guide-code m-b-4-xs">
-<pre><code class="language-html">&lt;a class="m-b-05-xs button button--primary button--large-xs" href&gt;Large&lt;/a&gt;
-&lt;a class="m-b-05-xs button button--primary" href&gt;Normal&lt;/a&gt;
+<pre><code class="language-html">&lt;a class="m-b-05-xs button button--primary" href&gt;Normal&lt;/a&gt;
 &lt;a class="m-b-05-xs button button--primary button--small-xs" href&gt;Small&lt;/a&gt;
 &lt;a class="m-b-05-xs button button--primary button--xsmall-xs" href&gt;X-Small&lt;/a&gt;</code></pre>
   </div>
 
 
 
-  <h2 id="Secondary" class="m-b-1-xs" id="secondary">Secondary</h2>
-  <p class="m-b-3-xs">Secondary buttons are used to indicate a <em>secondary</em> action on the page. To access these styles, use the class, <code>.button.button--secondary</code>.</p>
-    <a class="m-b-05-xs button button--secondary button--large-xs" href>Large</a>
-    <a class="m-b-05-xs button button--secondary" href>Normal</a>
-    <a class="m-b-05-xs button button--secondary button--small-xs" href>Small</a>
-    <a class="m-b-05-xs button button--secondary button--xsmall-xs" href>X-Small</a>
-  <div class="guide-code m-b-4-xs">
-<pre><code class="language-html">&lt;a class="m-b-05-xs button button--secondary button--large-xs" href&gt;Large&lt;/a&gt;
-&lt;a class="m-b-05-xs button button--secondary" href&gt;Normal&lt;/a&gt;
-&lt;a class="m-b-05-xs button button--secondary button--small-xs" href&gt;Small&lt;/a&gt;
-&lt;a class="m-b-05-xs button button--secondary button--xsmall-xs" href&gt;X-Small&lt;/a&gt;</code></pre>
-  </div>
-
-
-
   <h2 id="Alert" class="m-b-1-xs" id="alert">Alert</h2>
   <p class="m-b-3-xs">Alert buttons are used to indicate a urgent or negative action on the page. To access these styles, use the class, <code>.button.button--alert</code>.</p>
-    <a class="m-b-05-xs button button--alert button--large-xs" href>Large</a>
     <a class="m-b-05-xs button button--alert" href>Normal</a>
     <a class="m-b-05-xs button button--alert button--small-xs" href>Small</a>
     <a class="m-b-05-xs button button--alert button--xsmall-xs" href>X-Small</a>
   <div class="guide-code m-b-4-xs">
-<pre><code class="language-html">&lt;a class="m-b-05-xs button alert button--large-xs" href&gt;Large&lt;/a&gt;
-&lt;a class="m-b-05-xs button alert" href&gt;Normal&lt;/a&gt;
+<pre><code class="language-html">&lt;a class="m-b-05-xs button alert" href&gt;Normal&lt;/a&gt;
 &lt;a class="m-b-05-xs button alert button--small-xs" href&gt;Small&lt;/a&gt;
 &lt;a class="m-b-05-xs button alert button--xsmall-xs" href&gt;X-Small&lt;/a&gt;</code></pre>
+  </div>
+
+
+
+  <h2 id="Neural" class="m-b-1-xs" id="neutral">Neutral</h2>
+  <p class="m-b-3-xs">Neutral buttons are used for <em>neutral</em> buttons on the page, like for whitelabeling. To access these styles, use the class, <code>.button.button--neutral</code>.</p>
+    <a class="m-b-05-xs button button--neutral" href>Normal</a>
+    <a class="m-b-05-xs button button--neutral button--small-xs" href>Small</a>
+    <a class="m-b-05-xs button button--neutral button--xsmall-xs" href>X-Small</a>
+  <div class="guide-code m-b-4-xs">
+<pre><code class="language-html">&lt;a class="m-b-05-xs button button--neutral" href&gt;Normal&lt;/a&gt;
+&lt;a class="m-b-05-xs button button--neutral button--small-xs" href&gt;Small&lt;/a&gt;
+&lt;a class="m-b-05-xs button button--neutral button--xsmall-xs" href&gt;X-Small&lt;/a&gt;</code></pre>
   </div>
 
 
@@ -106,130 +87,59 @@ template = """
 
 
   <h2 id="Disabled" class="m-b-1-xs" id="disabled">Disabled</h2>
-  <p class="m-b-3-xs">Disabled buttons are used when the action on the page is blocked to the user. Get this button on a page by using the class, <code>.button.button--disabled</code>.</p>
-    <a class="m-b-05-xs button button--disabled button--large-xs" href>Large</a>
-    <a class="m-b-05-xs button button--disabled" href>Normal</a>
-    <a class="m-b-05-xs button button--disabled button--small-xs" href>Small</a>
-    <a class="m-b-05-xs button button--disabled button--xsmall-xs" href>X-Small</a>
+  <p class="m-b-3-xs">Disabled buttons are used when the action on the page is blocked to the user. Get this button on a page by using the class, <code>.button.button--disabled-light</code>.</p>
+    <a class="m-b-05-xs button button--disabled-light" href>Normal</a>
+    <a class="m-b-05-xs button button--disabled-light button--small-xs" href>Small</a>
+    <a class="m-b-05-xs button button--disabled-light button--xsmall-xs" href>X-Small</a>
+<pre><code class="language-html">&lt;a class="m-b-05-xs button button--disabled-light" href&gt;Normal&lt;/a&gt;
+&lt;a class="m-b-05-xs button button--disabled-light button--small-xs" href&gt;Small&lt;/a&gt;
+&lt;a class="m-b-05-xs button button--disabled-light button--xsmall-xs" href&gt;X-Small&lt;/a&gt;</code></pre>
+  <p class="m-b-3-xs">Disabled buttons are used when the action on the page is blocked to the user. Get this button on a page by using the class, <code>.button.button--disabled-dark</code>.</p>
+    <a class="m-b-05-xs button button--disabled-dark" href>Normal</a>
+    <a class="m-b-05-xs button button--disabled-dark button--small-xs" href>Small</a>
+    <a class="m-b-05-xs button button--disabled-dark button--xsmall-xs" href>X-Small</a>
   <div class="guide-code m-b-4-xs">
-<pre><code class="language-html">&lt;a class="m-b-05-xs button button--disabled button--large-xs" href&gt;Large&lt;/a&gt;
-&lt;a class="m-b-05-xs button button--disabled" href&gt;Normal&lt;/a&gt;
-&lt;a class="m-b-05-xs button button--disabled button--small-xs" href&gt;Small&lt;/a&gt;
-&lt;a class="m-b-05-xs button button--disabled button--xsmall-xs" href&gt;X-Small&lt;/a&gt;</code></pre>
+<pre><code class="language-html">&lt;a class="m-b-05-xs button button--disabled-light" href&gt;Normal&lt;/a&gt;
+&lt;a class="m-b-05-xs button button--disabled-light button--small-xs" href&gt;Small&lt;/a&gt;
+&lt;a class="m-b-05-xs button button--disabled-light button--xsmall-xs" href&gt;X-Small&lt;/a&gt;</code></pre>
   </div>
 
 
 
-  <h2 id="X-Large" class="m-b-1-xs" id="disabled">Extra Large Buttons</h2>
-  <p class="m-b-3-xs">These buttons should typically be reserved for marketing pages since the scale is pretty large and works better visually on marketing layouts.</p>
-  <a class="m-b-05-xs button button--xlarge-xs" href>Default</a>
-  <a class="m-b-05-xs button button--primary button--xlarge-xs" href>Primary</a>
-  <a class="m-b-05-xs button button--secondary button--xlarge-xs" href>Secondary</a>
-  <a class="m-b-05-xs button button--alert button--xlarge-xs" href>Alert</a>
-  <a class="m-b-05-xs button button--disabled button--xlarge-xs" href>Disabled</a>
-  <div class="guide-code m-b-4-xs">
-<pre><code class="language-html">&lt;a class="m-b-05-xs button button--xlarge-xs" href&gt;Default&lt;/a&gt;
-&lt;a class="m-b-05-xs button button--primary button--xlarge-xs" href&gt;Primary&lt;/a&gt;
-&lt;a class="m-b-05-xs button button--secondary button--xlarge-xs" href&gt;Secondary&lt;/a&gt;
-&lt;a class="m-b-05-xs button button--alert button--xlarge-xs" href&gt;Alert&lt;/a&gt;
-&lt;a class="m-b-05-xs button button--disabled button--xlarge-xs" href&gt;Disabled&lt;/a&gt;</code></pre>
-  </div>
-
-
-
-  <h2 id="Inline" class="m-b-1-xs" id="disabled">Inline Buttons</h2>
-  <p class="m-b-0-xs">These buttons are used when you have some inline text inputs and need a button at the end. It changes the padding and height to match the size of text inputs.</p>
-  <a class="m-b-05-xs button button--inline" href>Default</a>
-  <div class="guide-code m-b-4-xs">
-<pre><code class="language-html">&lt;a class="m-b-05-xs button button--inline" href&gt;Default&lt;/a&gt;</code></pre>
-  </div>
-
-
-  <h2 id="Full" class="m-b-1-xs" id="disabled">Full Width</h2>
-  <p class="m-b-3-xs">Make any button span the full width of its container by using the class, <code>w-full-xs</code>. The padding and text size will be controlled by whichever size class you add. You can control the full-width aspect of the button with breakpoint suffixes.</p>
-    <a class="m-b-05-xs button w-full-xs m-b-05-xs" href>Button</a>
-    <a class="m-b-05-xs button w-full-xs button--primary m-b-05-xs" href>Button</a>
-    <a class="m-b-05-xs button w-full-xs button--secondary m-b-05-xs" href>Button</a>
-    <a class="m-b-05-xs button w-full-xs button--alert m-b-05-xs" href>Button</a>
-  <div class="guide-code m-b-4-xs">
-<pre><code class="language-html">&lt;a class="m-b-05-xs button w-full-xs m-b-05-xs" href&gt;Button&lt;/a&gt;
-&lt;a class="m-b-05-xs button w-full-xs button--primary m-b-05-xs" href&gt;Button&lt;/a&gt;
-&lt;a class="m-b-05-xs button w-full-xs button--secondary m-b-05-xs" href&gt;Button&lt;/a&gt;
-&lt;a class="m-b-05-xs button w-full-xs button--alert m-b-05-xs" href&gt;Button&lt;/a&gt;</code></pre>
-  </div>
-  <p class="m-b-3-xs">These buttons will only be full width on screen that are <code>xs</code>, <code>md</code>, and <code>lg</code>.</p>
-  <a class="m-b-05-xs button w-full-xs w-auto-lg m-b-05-xs" href>Button</a>
-  <a class="m-b-05-xs button w-full-xs w-auto-lg button--primary m-b-05-xs" href>Button</a>
-  <a class="m-b-05-xs button w-full-xs w-auto-lg button--secondary m-b-05-xs" href>Button</a>
-  <a class="m-b-05-xs button w-full-xs w-auto-lg button--alert m-b-05-xs" href>Button</a>
-  <div class="guide-code m-b-4-xs">
-<pre><code class="language-html">&lt;a class="m-b-05-xs button w-full-xs w-auto-lg m-b-05-xs" href&gt;Button&lt;/a&gt;
-&lt;a class="m-b-05-xs button w-full-xs w-auto-lg button--primary m-b-05-xs" href&gt;Button&lt;/a&gt;
-&lt;a class="m-b-05-xs button w-full-xs w-auto-lg button--secondary m-b-05-xs" href&gt;Button&lt;/a&gt;
-&lt;a class="m-b-05-xs button w-full-xs w-auto-lg button--alert m-b-05-xs" href&gt;Button&lt;/a&gt;</code></pre>
-  </div>
-
-  <h2 id="Pill" class="m-b-1-xs" id="disabled">Pill Buttons (Tags)</h2>
-  <p class="m-b-3-xs">Any button can become a pill button by adding the class <code>circle</code> alongside button classes.</p>
-    <a class="m-b-05-xs button circle m-b-05-xs" href>Button</a>
-    <a class="m-b-05-xs button circle button--primary m-b-05-xs" href>Button</a>
-    <a class="m-b-05-xs button circle button--secondary m-b-05-xs" href>Button</a>
-    <a class="m-b-05-xs button circle button--alert m-b-05-xs" href>Button</a>
-  <div class="guide-code m-b-4-xs">
-<pre><code class="language-html">&lt;a class="m-b-05-xs button circle m-b-05-xs" href&gt;Button&lt;/a&gt;
-&lt;a class="m-b-05-xs button circle button--primary m-b-05-xs" href&gt;Button&lt;/a&gt;
-&lt;a class="m-b-05-xs button circle button--secondary m-b-05-xs" href&gt;Button&lt;/a&gt;
-&lt;a class="m-b-05-xs button circle button--alert m-b-05-xs" href&gt;Button&lt;/a&gt;</code></pre>
-  </div>
-
-  <h2 id="Split" class="m-b-1-xs" id="split-buttons">Split Buttons</h2>
-  <p class="m-b-3-xs">Split buttons are used when you need a button that contains two actions. To accomplish this, wrap your buttons in <code>&lt;div class="split-button"&gt;</code>.</p>
+  <h2 id="Split" class="m-b-1-xs" id="split-buttons">Split buttons</h2>
+  <p class="m-b-3-xs">Split buttons are used when you need a button that contains two actions. To accomplish this, wrap your buttons in <code>&lt;div class="split-button"&gt;</code> or <code>&lt;div class="split-button w-full"&gt;</code> to take up the full width.</p>
   <div class="split-button">
-    <a class="m-b-05-xs button" href>Add</a>
-    <a class="m-b-05-xs button" href>Remove</a>
+    <a class="m-b-05-xs button" href ng-class="{active: active == 'left'}" ng-click="active = 'left'">Left</a>
+    <a class="m-b-05-xs button" href ng-class="{active: active == 'middle'}" ng-click="active = 'middle'">Middle</a>
+    <a class="m-b-05-xs button" href ng-class="{active: active == 'right'}" ng-click="active = 'right'">Right</a>
   </div>
   <div class="split-button">
-    <a class="m-b-05-xs button button--primary" href>Add</a>
-    <a class="m-b-05-xs button button--primary" href>Remove</a>
+    <a class="m-b-05-xs button button--neutral" href ng-class="{active: active == 'left'}" ng-click="active = 'left'">Left</a>
+    <a class="m-b-05-xs button button--neutral" href ng-class="{active: active == 'middle'}" ng-click="active = 'middle'">Middle</a>
+    <a class="m-b-05-xs button button--neutral" href ng-class="{active: active == 'right'}" ng-click="active = 'right'">Right</a>
   </div>
-  <div class="split-button">
-    <a class="m-b-05-xs button button--secondary" href>Add</a>
-    <a class="m-b-05-xs button button--secondary" href>Remove</a>
-  </div>
-  <div class="split-button">
-    <a class="m-b-05-xs button button--alert" href>Add</a>
-    <a class="m-b-05-xs button button--alert" href>Remove</a>
+  <div class="split-button w-full">
+    <a class="m-b-05-xs button" href ng-class="{active: active == 'left'}" ng-click="active = 'left'">Left</a>
+    <a class="m-b-05-xs button" href ng-class="{active: active == 'middle'}" ng-click="active = 'middle'">Middle</a>
+    <a class="m-b-05-xs button" href ng-class="{active: active == 'right'}" ng-click="active = 'right'">Right</a>
   </div>
   <div class="guide-code m-b-4-xs">
 <pre><code class="language-html">&lt;div class="split-button"&gt;
-  &lt;a class="m-b-05-xs button" href&gt;Add&lt;/a&gt;
-  &lt;a class="m-b-05-xs button" href&gt;&lt;%= icon('add') %&gt;&lt;/a&gt;
+  &lt;a class="m-b-05-xs button" href&gt;Left&lt;/a&gt;
+  &lt;a class="m-b-05-xs button" href&gt;Middle&lt;/a&gt;
+  &lt;a class="m-b-05-xs button" href&gt;&lt;Right&gt;&lt;/a&gt;
 &lt;/div&gt;
 &lt;div class="split-button"&gt;
-  &lt;a class="m-b-05-xs button button--primary" href&gt;Add&lt;/a&gt;
-  &lt;a class="m-b-05-xs button button--primary" href&gt;Remove&lt;/a&gt;
+  &lt;a class="m-b-05-xs button button--neutral" href&gt;Left&lt;/a&gt;
+  &lt;a class="m-b-05-xs button button--neutral" href&gt;Middle&lt;/a&gt;
+  &lt;a class="m-b-05-xs button button--neutral" href&gt;Right&lt;/a&gt;
 &lt;/div&gt;
-&lt;div class="split-button"&gt;
-  &lt;a class="m-b-05-xs button button--secondary" href&gt;Add&lt;/a&gt;
-  &lt;a class="m-b-05-xs button button--secondary" href&gt;Remove&lt;/a&gt;
-&lt;/div&gt;
-&lt;div class="split-button"&gt;
-  &lt;a class="m-b-05-xs button button--alert" href&gt;Add&lt;/a&gt;
-  &lt;a class="m-b-05-xs button button--alert" href&gt;Remove&lt;/a&gt;
+&lt;div class="split-button w-full"&gt;
+  &lt;a class="m-b-05-xs button" href&gt;Left&lt;/a&gt;
+  &lt;a class="m-b-05-xs button" href&gt;Middle&lt;/a&gt;
+  &lt;a class="m-b-05-xs button" href&gt;&lt;Right&gt;&lt;/a&gt;
 &lt;/div&gt;</code></pre>
   </div>
 
-  <!-- Coming Soon
-  <h2 class="m-b-1-xs" id="with-icon">With Icon</h2>
-  <p class="m-b-3-xs">Each button type can handle the addition of an icon. Depending on whether you are adding the icon before or after the text, you'll use the classes <code>icon-on-left</code> or <code>icon-on-right</code>. Each icon is given the default text color of the button it's contained in. All other styles, such as width, height, position, etc. should be applied as a custom, page-specific style</p>
-    <button class="m-b-05-xs button icon-on-left"><%= icon('add') %> Add</button>
-    <button class="m-b-05-xs button icon-on-left"><%= icon('remove') %> Remove</button>
-    <button class="m-b-05-xs button icon-on-left"><%= icon('resume') %> Resume</button>
-  <div class="guide-code m-b-4-xs">
-<pre><code class="language-html">&lt;button class="m-b-05-xs button icon-on-left"&gt;&lt;&#37;&#61; icon&#40;'add'&#41; &#37;&gt; Add&lt;/button&gt;
-&lt;button class="m-b-05-xs button icon-on-left"&gt;&lt;&#37;&#61; icon&#40;'close'&#41; &#37;&gt; Close&lt;/button&gt;
-&lt;button class="m-b-05-xs button icon-on-left"&gt;&lt;&#37;&#61; icon&#40;'resume'&#41; &#37;&gt; Resume &lt;/button&gt;</code></pre>
-  </div>
-  -->
 </section>
 """
