@@ -3,7 +3,8 @@ $lens-version: "0.1.0";
 // Brand Colors
 $brand-colors: (
   "green": #5fcf80,
-  "gray":  #3e474f
+  "gray":  #3e474f,
+  "gray-dark": #2e343f // from Looker! TODO(nat) this will probably eventually replace gray one line above
 );
 
 // Text Colors
@@ -17,11 +18,11 @@ $text-colors: (
 
 // Gray Colors
 $gray-colors: (
-  "gray-darker":  #2d3339,
-  "gray-dark":    #3f4850,
-  "gray":         #c6ccd2,
-  "gray-light":   #edeff0,
-  "gray-lighter": #f9fafa
+  "gray-darker":  #61656d,
+  "gray-dark":    #7f889b,
+  "gray":         #A4A6A9,
+  "gray-light":   #e4e5e6,
+  "gray-lighter": #f6f6f7
 );
 
 // UI Colors
@@ -33,6 +34,13 @@ $ui-colors: (
   "red":          #ed5a5a
 );
 
+// Button Colors
+$button-colors: (
+  "purple-dark":  #473764,
+  "purple":       #64518A,
+  "purple-light": #8B7DA8,
+  "red-dark":     #980C11,
+  "red":          #D01B1B,
   "red-light":    #E1332C
 );
 
@@ -87,7 +95,7 @@ $border-color-dark:   #b7c0c7;
 $border-color-mid:    #d4d9dd;
 $border-color-normal: #e8ebed;
 $border-color-light:  #f0f2f4;
-$border-radius: 4px;
+$border-radius: 2px;
 
 // Grid max width
 $grid-width: 1260px;
