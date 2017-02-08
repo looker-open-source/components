@@ -145,54 +145,6 @@ template = """
   </div>
 
 
-
-  <h2 id="Topics" class="m-b-1-xs" id="topic-color-button">Topic Color Buttons</h2>
-  <p class="m-b-3-xs">Each button supports the full array of topic colors by adding the name of the topic to the class. Use classes like, <code>button--topic-css</code>, in conjunction with any other button class combo to set it as a topic color. By default, this will effect the border and text color of the button. To use the primary button style with topic colors apply the topic color class in conjunction with the <code>button--primary</code> class.</p>
-  <div class="m-b-05-xs">
-    <a class="m-b-05-xs button button--topic-html">HTML</a>
-    <a class="m-b-05-xs button button--topic-css">CSS</a>
-    <a class="m-b-05-xs button button--topic-java">Java</a>
-    <a class="m-b-05-xs button button--topic-python">Python</a>
-    <a class="m-b-05-xs button button--topic-php">PHP</a>
-    <a class="m-b-05-xs button button--topic-android">Android</a>
-    <a class="m-b-05-xs button button--topic-ios">iOS</a>
-    <a class="m-b-05-xs button button--topic-diglit">Digital Literacy</a>
-  </div>
-  <div>
-    <a class="m-b-05-xs button button--primary button--topic-html">HTML</a>
-    <a class="m-b-05-xs button button--primary button--topic-css">CSS</a>
-    <a class="m-b-05-xs button button--primary button--topic-java">Java</a>
-    <a class="m-b-05-xs button button--primary button--topic-python">Python</a>
-    <a class="m-b-05-xs button button--primary button--topic-php">PHP</a>
-    <a class="m-b-05-xs button button--primary button--topic-android">Android</a>
-    <a class="m-b-05-xs button button--primary button--topic-ios">iOS</a>
-    <a class="m-b-05-xs button button--primary button--topic-diglit">Digital Literacy</a>
-  </div>
-  <div class="guide-code m-b-4-xs">
-<pre><code class="language-html">&lt;div class="m-b-05-xs"&gt;
-  &lt;a class="m-b-05-xs button button--topic-html"&gt;HTML&lt;/a&gt;
-  &lt;a class="m-b-05-xs button button--topic-css"&gt;CSS&lt;/a&gt;
-  &lt;a class="m-b-05-xs button button--topic-java"&gt;Java&lt;/a&gt;
-  &lt;a class="m-b-05-xs button button--topic-python"&gt;Python&lt;/a&gt;
-  &lt;a class="m-b-05-xs button button--topic-php"&gt;PHP&lt;/a&gt;
-  &lt;a class="m-b-05-xs button button--topic-android"&gt;Android&lt;/a&gt;
-  &lt;a class="m-b-05-xs button button--topic-ios"&gt;iOS&lt;/a&gt;
-  &lt;a class="m-b-05-xs button button--topic-diglit"&gt;Digital Literacy&lt;/a&gt;
-&lt;/div&gt;
-&lt;div&gt;
-  &lt;a class="m-b-05-xs button button--primary button--topic-html"&gt;HTML&lt;/a&gt;
-  &lt;a class="m-b-05-xs button button--primary button--topic-css"&gt;CSS&lt;/a&gt;
-  &lt;a class="m-b-05-xs button button--primary button--topic-java"&gt;Java&lt;/a&gt;
-  &lt;a class="m-b-05-xs button button--primary button--topic-python"&gt;Python&lt;/a&gt;
-  &lt;a class="m-b-05-xs button button--primary button--topic-php"&gt;PHP&lt;/a&gt;
-  &lt;a class="m-b-05-xs button button--primary button--topic-android"&gt;Android&lt;/a&gt;
-  &lt;a class="m-b-05-xs button button--primary button--topic-ios"&gt;iOS&lt;/a&gt;
-  &lt;a class="m-b-05-xs button button--primary button--topic-diglit"&gt;Digital Literacy&lt;/a&gt;
-&lt;/div&gt;</code></pre>
-  </div>
-
-
-
   <h2 id="Full" class="m-b-1-xs" id="disabled">Full Width</h2>
   <p class="m-b-3-xs">Make any button span the full width of its container by using the class, <code>w-full-xs</code>. The padding and text size will be controlled by whichever size class you add. You can control the full-width aspect of the button with breakpoint suffixes.</p>
     <a class="m-b-05-xs button w-full-xs m-b-05-xs" href>Button</a>
