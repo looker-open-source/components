@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Webpack Hello World</title>
 </head>
+
 <body ng-app="Lens">
   <header class="guide-banner" role="banner">
     <a ui-sref="index" ui-sref-active="active" class="guide-name">Lens</a>
@@ -15,22 +16,9 @@
     </a>
   </header>
 
-  <main class="guide-main" role="main">
-    <div class="guide-content">
-
-      <h1 class="border-b-xs p-b-05-xs m-b-4-xs">{{ title }}</h1>
-
-      <div class="col-container">
-        <div class="col col-80-lg">
-          <ui-view></ui-view>
-        </div>
-        <div class="hide-xs block-lg col col-20-lg subnav-container">
-          <!-- {% include subnav.html %} -->
-        </div>
-      </div>
-
-    </div>
-  </main>
+  <lens-main>
+    <ui-view></ui-view>
+  </lens-main>
 
   <div id="guide_navigation" class="guide-navigation">
     <nav id="navigation" role="navigation" tabindex="-1">
@@ -96,7 +84,6 @@
     <p class="guide-contentinfo-copy">Copyright &copy; 2017 Looker. All rights reserved.</p>
   </footer>
 
-  <script src="./node_modules/sass-to-js/js/dist/sass-to-js.min.js"></script>
   <script>
     // Hamburger
     var $hamburger = document.getElementById('hamburger');

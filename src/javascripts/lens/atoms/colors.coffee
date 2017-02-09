@@ -12,6 +12,8 @@ m.directive "colors", ->
   restrict: "E"
   scope: {}
   template: template
+  link: () ->
+    require "../../sass-to-js-custom-functions.js"
 
 
 template = """

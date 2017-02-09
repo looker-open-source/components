@@ -1,5 +1,3 @@
 require "./lens/lens_module.coffee"
 require "prismjs"
-require "sass-to-js"
 require "../stylesheets/styleguide/_styleguide.sass"
-require "./sass-to-js-custom-functions.js"
