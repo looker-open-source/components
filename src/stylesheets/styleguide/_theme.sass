@@ -1,5 +1,5 @@
 body
-  background-color: gray-color(gray-light)
+  background-color: #fff
 
 .guide
 
@@ -7,24 +7,22 @@ body
   // Guide Banner
   // =========================================
   &-banner
-    @media screen
-      background-color: gray-color(gray-darker)
-    +media(min-width $lg)
-      background-color: gray-color(gray-dark)
+    background-color: #fff
+    border-right: solid 1px gray-color(gray-light)
 
   // =========================================
   // A11y Skip
   // =========================================
   &-skip-content a
-    color: #fff
-    font-size: 0.875rem
+    color: gray-color(gray)
+    font-size: 0.75rem
     text-decoration: none
 
   // =========================================
   // Guide Name
   // =========================================
   &-name
-    color: #fff
+    color: brand-color(purple)
     font-weight: $bold
     text-decoration: none
     @media screen
@@ -32,46 +30,47 @@ body
     +media(min-width $lg)
       font-size: 2rem
     +selected
-      color: #fff
+      color: darken(brand-color(purple), 10%)
 
   // =========================================
   // Guide Navigation
   // =========================================
   &-navigation
-    background-color: gray-color(gray-dark)
+    background-color: #fff
+    border-right: solid 1px gray-color(gray-light)
     &-item-parent
       &--active
-        background-color: gray-color(gray-darker)
+        background-color: gray-color(gray-light)
         .guide-navigation-list-child
           display: block
     &-item-child
-      background-color: lighten(gray-color(gray-dark), 7%)
+      background-color: gray-color(gray-lighter)
     &-list-child
       list-style: none
       display: none
     &-link
-      color: #fff
-      font-size: 0.875rem
+      color: gray-color(gray-dark)
+      font-size: 0.75rem
       text-decoration: none
       position: relative
       &:focus
-        color: #fff
+        color: gray-color(gray-dark)
       &:hover,
       &:active,
-      &--active
-        background-color: gray-color(gray-darker)
-        color: #fff
+      &.active
+        background-color: gray-color(gray-light)
+        color: gray-color(gray-dark)
       &-child
-        font-size: 0.8125rem
+        font-size: 0.75rem
         &:focus
-          color: #fff
+          color: gray-color(gray-dark)
         &:hover,
         &:active
-          background-color: gray-color(gray-dark)
-          color: #fff
+          background-color: gray-color(gray-light)
+          color: gray-color(gray-dark)
         &--active
-          background-color: lighten(gray-color(gray-dark), 3%)
-          color: #fff
+          background-color: lighten(gray-color(gray), 3%)
+          color: gray-color(gray-dark)
     &-chevron svg
       width: 12px
       +absolute(right 1rem top 12px)

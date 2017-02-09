@@ -12,7 +12,7 @@ m.directive "flexbox", ->
   restrict: "E"
   scope: {}
   template: template
-
+  
 
 template = """
 <section id="flexbox">

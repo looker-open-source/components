@@ -14,6 +14,7 @@ m.directive "colors", ->
   template: template
   link: () ->
     require "../../sass-to-js-custom-functions.js"
+    require "prismjs"
 
 
 template = """

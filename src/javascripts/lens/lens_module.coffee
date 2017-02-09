@@ -5,7 +5,7 @@ require "./atoms/atoms_module.coffee"
 require "./getting_started.coffee"
 require "./index.coffee"
 require "./release_notes.coffee"
-require "./lens-main.coffee"
+require "./lens_main.coffee"
 require "./sass.coffee"
 
 module.exports = m = angular.module "Lens", [
@@ -14,7 +14,7 @@ module.exports = m = angular.module "Lens", [
   "lens.getting_started"
   "lens.index"
   "lens.release_notes"
-  "lens.lens-main"
+  "lens.lens_main"
   "lens.sass"
 ]
 

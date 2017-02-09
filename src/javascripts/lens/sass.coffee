@@ -129,10 +129,10 @@ template = """
   <p class="bold">Brand Colors</p>
   <div class="guide-code">
 <pre class="m-tb-05-xs"><code class="language-css">.custom-element
-  background-color: brand-color(green)
+  background-color: brand-color(purple)
 </code></pre>
   <p class="m-b-3-xs"><code>
-    brand-color(green)<br />
+    brand-color(purple)<br />
     brand-color(gray)
   </code></p>
 

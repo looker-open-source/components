@@ -1,4 +1,4 @@
-m = angular.module "lens.lens-main", []
+m = angular.module "lens.lens_main", []
 
 
 m.controller "LensMainController", (
