@@ -7,8 +7,7 @@ body
   // Guide Banner
   // =========================================
   &-banner
-    background-color: #fff
-    border-right: solid 1px gray-color(gray-light)
+    background-color: gray-color(gray-darker)
 
   // =========================================
   // A11y Skip
@@ -22,15 +21,15 @@ body
   // Guide Name
   // =========================================
   &-name
-    color: brand-color(purple)
-    font-weight: $bold
+    color: #fff
+    font-weight: $light
     text-decoration: none
     @media screen
       font-size: 1.5rem
     +media(min-width $lg)
-      font-size: 2rem
+      font-size: 1.5rem
     +selected
-      color: darken(brand-color(purple), 10%)
+      color: #fff
 
   // =========================================
   // Guide Navigation
@@ -41,6 +40,10 @@ body
     &-item-parent
       &--active
         background-color: gray-color(gray-light)
+        box-shadow: 7px 0 0 brand-color(purple) inset
+        .guide-navigation-link
+          +selected
+            box-shadow: 7px 0 0 brand-color(purple) inset
         .guide-navigation-list-child
           display: block
     &-item-child
@@ -60,20 +63,20 @@ body
       &.active
         background-color: gray-color(gray-light)
         color: gray-color(gray-dark)
+      &.active
+        box-shadow: 7px 0 0 brand-color(purple) inset
+        +selected
+          box-shadow: 7px 0 0 brand-color(purple) inset
       &-child
         font-size: 0.75rem
-        &:focus
-          color: gray-color(gray-dark)
+        &:focus,
         &:hover,
         &:active
           background-color: gray-color(gray-light)
           color: gray-color(gray-dark)
-        &--active
-          background-color: lighten(gray-color(gray), 3%)
-          color: gray-color(gray-dark)
-    &-chevron svg
-      width: 12px
-      +absolute(right 1rem top 12px)
+          box-shadow: none !important
+        &.active
+          box-shadow: 7px 0 0 gray-color(gray) inset !important
 
   // =========================================
   // Guide Main
@@ -154,7 +157,7 @@ body
     background: none
     cursor: pointer
     position: absolute
-    right: 2rem
+    right: 1rem
     top: 0
     padding: 26px 0
     height: 30px

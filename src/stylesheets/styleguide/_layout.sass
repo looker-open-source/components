@@ -6,15 +6,11 @@
   &-banner
     @media screen
       +fixed(top 0 left 0)
-      padding: spacing(0.5) spacing(3)
+      padding: 13px 1rem
       width: 100%
-      z-index: 51
-    +media(min-width $lg)
-      +fixed(top 0)
-      height: spacing(6) + 10rem
-      width: 13rem
-      padding: 2rem 2rem
       line-height: 1
+    +media(min-width $lg)
+      padding: 13px 1rem
       z-index: 50
 
   // =========================================
@@ -30,10 +26,9 @@
       +absolute(left -9999em)
       display: block
       margin-top: 0
-      padding-left: spacing(3)
-      width: 100%
       &:focus
-        left: 0
+        left: 80px
+        top: 24px
 
   // =========================================
   // Site Navigation
@@ -42,20 +37,19 @@
     padding-top: 0
     transition: height 300ms ease, padding 300ms ease
     @media screen
-      +fixed(top 0 bottom 0)
+      +fixed(top 50px bottom 0)
       height: 0
       padding-top: 0
       width: 100%
       z-index: 50
     +media(min-width $lg)
-      +fixed(top 5.25rem bottom 0)
+      +fixed(top 50px bottom 0)
       padding-top: 0
       width: 13rem
       height: auto
       z-index: 51
     &-active
       height: 100%
-      padding-top: 3.25rem
     nav
       position: absolute
       height: 100%
@@ -64,13 +58,12 @@
       outline: 0
       @media screen
         width: 100%
-        padding-bottom: 3.25rem
       +media(min-width $lg)
         width: 13rem
     &-list
       margin: 0
       @media screen
-        padding: 1rem 0 0 0
+        padding: 0 0 0 0
       +media(min-width $lg)
         padding: 0
       &-child
@@ -78,7 +71,9 @@
         padding: 0
     &-link
       display: block
-      padding: spacing(0.5) spacing(3)
+      padding: 7px 32px 9px
+      &-child
+        padding: 7px 32px
       &-child
         padding-left: spacing(4)
 
@@ -89,6 +84,7 @@
   &-contentinfo
     +media(min-width $lg)
       margin-left: 13rem
+      padding-top: 45px
   &-content
     margin: spacing(3)
     @media screen
@@ -100,9 +96,3 @@
   &-contentinfo-copy
     padding: spacing(1) spacing(3)
     margin: 0
-
-
-.table-icon
-  width: 20%
-  .icon
-    +relative(top 3px)

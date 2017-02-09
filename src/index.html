@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Looker Lens</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
 </head>
 
 <body ng-app="Lens">
@@ -95,13 +96,17 @@
     });
 
     // Main Nav
-    var nav = document.querySelectorAll('.guide-navigation-item-parent');
-    for (var i = 0; i < nav.length; i++) {
-      nav[i].addEventListener('click', function(e) {
-        var svg = this.getElementsByTagName('svg')[0];
-        this.classList.toggle('guide-navigation-item-parent--active');
+    var nav_parent = document.querySelectorAll('.guide-navigation-item-parent');
+    [].forEach.call(nav_parent, function(el) {
+      el.addEventListener('click', function(e) {
+        document.getElementsByClassName('guide-navigation-item')[0].classList.remove('active');
+        this.classList.add('guide-navigation-item-parent--active');
+        e.stopPropagation();
         return false;
       });
+    });
+    document.getElementsByClassName('guide-navigation-item').onclick = function(){
+       document.getElementsByClassName('guide-navigation-item-parent')[0].classList.remove('guide-navigation-item-parent--active');
     }
 
     // Subnav Scrolly Fun
