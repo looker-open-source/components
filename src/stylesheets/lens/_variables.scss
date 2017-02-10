@@ -3,7 +3,8 @@ $lens-version: "0.1.0";
 // Brand Colors
 $brand-colors: (
   "green": #5fcf80,
-  "gray":  #3e474f
+  "gray":  #3e474f,
+  "gray-dark": #2e343f // from Looker! TODO(nat) this will probably eventually replace gray one line above
 );
 
 // Text Colors
@@ -17,11 +18,11 @@ $text-colors: (
 
 // Gray Colors
 $gray-colors: (
-  "gray-darker":  #2d3339,
-  "gray-dark":    #3f4850,
-  "gray":         #c6ccd2,
-  "gray-light":   #edeff0,
-  "gray-lighter": #f9fafa
+  "gray-darker":  #61656d,
+  "gray-dark":    #7f889b,
+  "gray":         #A4A6A9,
+  "gray-light":   #e4e5e6,
+  "gray-lighter": #f6f6f7
 );
 
 // UI Colors
@@ -33,98 +34,14 @@ $ui-colors: (
   "red":          #ed5a5a
 );
 
-// Topic Colors
-$topic-colors: (
-  "html": (
-    light:  #62bedb,
-    base:     #39ADD1,
-    dark:   #298fae,
-  ),
-  "css": (
-    light:  #4494ca,
-    base:     #3079AB,
-    dark:   #255d83,
-  ),
-  "js": (
-    light:  #d07e94,
-    base:     #c25975,
-    dark:   #aa3e5b,
-  ),
-  "ruby": (
-    light:  #e97d82,
-    base:     #e15258,
-    dark:   #d9272e,
-  ),
-  "business": (
-    light:  #fba98c,
-    base:     #F9845B,
-    dark:   #f75f2a,
-  ),
-  "wordpress": (
-    light:  #a6add7,
-    base:     #838CC7,
-    dark:   #606bb7,
-  ),
-  "php": (
-    light:  #9885b2,
-    base:     #7D669E,
-    dark:   #645180,
-  ),
-  "ios": (
-    light:  #78c9c4,
-    base:     #53BBB4,
-    dark:   #3e9d97,
-  ),
-  "android": (
-    light:  #80c783,
-    base:     #5cb860,
-    dark:   #449d48,
-  ),
-  "design": (
-    light:  #efaf3c,
-    base:     #e59a13,
-    dark:   #b67a0f,
-  ),
-  "devtools": (
-    light:  #7f94a8,
-    base:     #637a91,
-    dark:   #4e6173,
-  ),
-  "java": (
-    light:  #38bd95,
-    base:     #2c9676,
-    dark:   #206f57,
-  ),
-  "python": (
-    light:  #f6bfd0,
-    base:     #f092b0,
-    dark:   #ea6590,
-  ),
-  "diglit": (
-    light:  #d6b1e2,
-    base:     #c38cd4,
-    dark:   #b067c6,
-  ),
-  "gamedev": (
-    light:  #29b2b6,
-    base:     #20898c,
-    dark:   #176062,
-  ),
-  "csharp": (
-    light:  #b6689c,
-    base:     #9e4d83,
-    dark:   #7c3c67,
-  ),
-  "databases": (
-    light:  #ef9557,
-    base:     #eb7728,
-    dark:   #cd5e13,
-  ),
-  "undefined": (
-    light:  #8c959d,
-    base:     #717b85,
-    dark:   #5a6269,
-  )
+// Button Colors
+$button-colors: (
+  "purple-dark":  #473764,
+  "purple":       #64518A,
+  "purple-light": #8B7DA8,
+  "red-dark":     #980C11,
+  "red":          #D01B1B,
+  "red-light":    #E1332C
 );
 
 // Spacing Units
@@ -178,7 +95,7 @@ $border-color-dark:   #b7c0c7;
 $border-color-mid:    #d4d9dd;
 $border-color-normal: #e8ebed;
 $border-color-light:  #f0f2f4;
-$border-radius: 4px;
+$border-radius: 2px;
 
 // Grid max width
 $grid-width: 1260px;
