@@ -18,7 +18,7 @@ template = """
 <section id="icons">
 
   <h2 id="UI" class="m-b-1-xs inline-block-xs">Common UI Icons</h2><span class="button button--small-xs circle relative-xs pos-t-05-xs pos-l-1-xs">WIP: Only use in docs</span>
-  <p class="m-b-2-xs">Currently, Lens only comes with a few basic icons that will cover a lot of common UI pieces. For all other icons, continue using our rails helper that is built into the Treehouse app.</p>
+  <p class="m-b-2-xs">Currently, Lens only comes with a few basic icons that will cover a lot of common UI pieces. For all other icons, continue using our rails helper that is built into the Looker app.</p>
   <table class="table-border-rows m-b-4-xs">
     <thead>
       <tr>

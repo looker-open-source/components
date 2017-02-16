@@ -16,7 +16,7 @@ m.directive "gettingStarted", ->
 
 template = """
 <section id="getting-started">
-  <p class="text-4-xs m-b-4-xs">Lens includes resources to create user interfaces consistent with the Treehouse brand and best practices. Here are few things to consider before you start using Lens on your next project.</p>
+  <p class="text-4-xs m-b-4-xs">Lens includes resources to create user interfaces consistent with the Looker brand and best practices. Here are few things to consider before you start using Lens on your next project.</p>
 
   <h2 id="Markup" class="m-b-2-xs">Markup Considerations</h2>
   <p class="m-b-4-xs">Lens contains a lot of utility classes that can be stacked up to quickly create layouts and components. While it may look a little messier than you are used to on the markup side of things, this saves us a ton of extra CSS. These classes also make it much more clear what styles are applied to an element to anyone looking at the markup. When building layouts and such with Lens, make sure you don't apply extra styles on containers and grid columns. Anything needing styles outside of utility classes should typically be nested inside those types of containers.</p>
