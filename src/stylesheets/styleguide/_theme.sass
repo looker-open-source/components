@@ -1,5 +1,5 @@
 body
-  background-color: gray-color(gray-light)
+  background-color: #fff
 
 .guide
 
@@ -7,17 +7,14 @@ body
   // Guide Banner
   // =========================================
   &-banner
-    @media screen
-      background-color: gray-color(gray-darker)
-    +media(min-width $lg)
-      background-color: gray-color(gray-dark)
+    background-color: brand-color(gray-dark)
 
   // =========================================
   // A11y Skip
   // =========================================
   &-skip-content a
-    color: #fff
-    font-size: 0.875rem
+    color: gray-color(gray)
+    font-size: 0.75rem
     text-decoration: none
 
   // =========================================
@@ -25,12 +22,12 @@ body
   // =========================================
   &-name
     color: #fff
-    font-weight: $bold
+    font-weight: $light
     text-decoration: none
     @media screen
       font-size: 1.5rem
     +media(min-width $lg)
-      font-size: 2rem
+      font-size: 1.5rem
     +selected
       color: #fff
 
@@ -38,43 +35,64 @@ body
   // Guide Navigation
   // =========================================
   &-navigation
-    background-color: gray-color(gray-dark)
+    background-color: #fff
+    border-right: solid 1px gray-color(gray-light)
+    &-icon
+      +absolute(right 20px top 9px)
+      font-size: 15px
+      transform: rotate(-45deg)
+      transition: transform 50ms ease-in-out
     &-item-parent
+      .guide-navigation-icon:after
+        content: '\00D7'
       &--active
-        background-color: gray-color(gray-darker)
+        background-color: gray-color(gray-lighter)
+        border-right: solid 1px gray-color(gray-light)
+        box-shadow: 7px 0 0 brand-color(purple) inset
+        .guide-navigation-icon
+          +absolute(right 19px top 9px)
+          transform: rotate(0deg)
+        .guide-navigation-link
+          +selected
+            box-shadow: 7px 0 0 button-color(purple) inset
+            border-right: none
         .guide-navigation-list-child
           display: block
     &-item-child
-      background-color: lighten(gray-color(gray-dark), 7%)
+      background-color: gray-color(gray-lighter)
     &-list-child
       list-style: none
       display: none
     &-link
-      color: #fff
-      font-size: 0.875rem
+      color: gray-color(gray-dark)
+      font-size: 0.75rem
       text-decoration: none
       position: relative
+      border-right: solid 1px transparent
       &:focus
-        color: #fff
+        color: gray-color(gray-dark)
       &:hover,
       &:active,
-      &--active
-        background-color: gray-color(gray-darker)
-        color: #fff
+      &.active
+        background-color: gray-color(gray-lighter)
+        color: gray-color(gray-dark)
+        border-right: solid 1px gray-color(gray-light)
+      &.active
+        box-shadow: 7px 0 0 button-color(purple) inset
+        +selected
+          box-shadow: 7px 0 0 button-color(purple) inset
       &-child
-        font-size: 0.8125rem
-        &:focus
-          color: #fff
+        font-size: 0.75rem
+        &:focus,
         &:hover,
         &:active
-          background-color: gray-color(gray-dark)
-          color: #fff
-        &--active
-          background-color: lighten(gray-color(gray-dark), 3%)
-          color: #fff
-    &-chevron svg
-      width: 12px
-      +absolute(right 1rem top 12px)
+          background-color: gray-color(gray-lighter)
+          color: gray-color(gray-darker)
+          box-shadow: none !important
+          border-right: none
+        &.active
+          font-weight: $bold
+          box-shadow: none !important
 
   // =========================================
   // Guide Main
@@ -155,7 +173,7 @@ body
     background: none
     cursor: pointer
     position: absolute
-    right: 2rem
+    right: 1rem
     top: 0
     padding: 26px 0
     height: 30px

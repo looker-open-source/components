@@ -1,11 +1,11 @@
+var sassToJs = require("sass-to-js");
+
 // Apply automation to elements in the Guide
 var brandColors = function(elementId, $elementId, guideClass) {
 
   var colorDataEl = document.getElementById(elementId);
   var colorData = sassToJs(colorDataEl);
-  var colorString = JSON.parse(window.getComputedStyle (
-                    document.querySelector($elementId), ':before'
-                  ).getPropertyValue('content'));
+  var colorString = JSON.parse(window.getComputedStyle(document.querySelector($elementId), ':before').getPropertyValue('content'));
   var colorJSON = JSON.parse(colorString);
 
   for (var colorClass in colorJSON) {
@@ -44,6 +44,7 @@ var brandColors = function(elementId, $elementId, guideClass) {
   }
 }
 brandColors('brandColorData', '#brandColorData', '.guide-colors-brand');
+
 
 
 

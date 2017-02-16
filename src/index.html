@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Webpack Hello World</title>
+    <title>Looker Lens</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
 </head>
+
 <body ng-app="Lens">
   <header class="guide-banner" role="banner">
     <a ui-sref="index" ui-sref-active="active" class="guide-name">Lens</a>
@@ -15,22 +17,9 @@
     </a>
   </header>
 
-  <main class="guide-main" role="main">
-    <div class="guide-content">
-
-      <h1 class="border-b-xs p-b-05-xs m-b-4-xs">{{ title }}</h1>
-
-      <div class="col-container">
-        <div class="col col-80-lg">
-          <ui-view></ui-view>
-        </div>
-        <div class="hide-xs block-lg col col-20-lg subnav-container">
-          <!-- {% include subnav.html %} -->
-        </div>
-      </div>
-
-    </div>
-  </main>
+  <lens-main>
+    <ui-view></ui-view>
+  </lens-main>
 
   <div id="guide_navigation" class="guide-navigation">
     <nav id="navigation" role="navigation" tabindex="-1">
@@ -47,7 +36,7 @@
         <li class="guide-navigation-item guide-navigation-item-parent">
           <a href="javascript:void(0)" class="guide-navigation-link">
             Atoms
-            <span class="guide-navigation-chevron fill-gray"><!-- {% include icon.html icon="chevron" class="rotate-90-xs" %}  --></span>
+            <span class="guide-navigation-icon"></span>
           </a>
           <ul class="guide-navigation-list-child">
             <li class="guide-navigation-item-child">
@@ -93,10 +82,9 @@
   </div>
 
   <footer class="guide-contentinfo" role="contentinfo">
-    <p class="guide-contentinfo-copy">Copyright &copy; 2016 Treehouse. All rights reserved.</p>
+    <p class="guide-contentinfo-copy">Copyright &copy; 2017 Looker. All rights reserved.</p>
   </footer>
 
-  <!-- <script src="js/prism.js"></script> -->
   <script>
     // Hamburger
     var $hamburger = document.getElementById('hamburger');
@@ -108,14 +96,17 @@
     });
 
     // Main Nav
-    var nav = document.querySelectorAll('.guide-navigation-item-parent');
-    for (var i = 0; i < nav.length; i++) {
-      nav[i].addEventListener('click', function(e) {
-        var svg = this.getElementsByTagName('svg')[0];
-        this.classList.toggle('guide-navigation-item-parent--active');
-        svg.classList.toggle('rotate-180-xs');
+    var nav_parent = document.querySelectorAll('.guide-navigation-item-parent');
+    [].forEach.call(nav_parent, function(el) {
+      el.addEventListener('click', function(e) {
+        document.getElementsByClassName('guide-navigation-item')[0].classList.remove('active');
+        this.classList.add('guide-navigation-item-parent--active');
+        e.stopPropagation();
         return false;
       });
+    });
+    document.getElementsByClassName('guide-navigation-item').onclick = function(){
+       document.getElementsByClassName('guide-navigation-item-parent')[0].classList.remove('guide-navigation-item-parent--active');
     }
 
     // Subnav Scrolly Fun

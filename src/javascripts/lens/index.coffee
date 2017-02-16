@@ -16,7 +16,7 @@ m.directive "index", ->
 
 template = """
 <section id="index">
-  <p class="text-4-xs m-b-4-xs">Lens is a front-end framework and style guide that is used internally at Treehouse to build our app. We've architected it in a way that gives the entire Engineering team a way to quickly prototype or write front-end code. It contains atomic helper classes and components that ensure everything we build is consistent and flexible. For most thing we build, additional CSS won't be necessary. Lens gets the entire Engineering team to speak the same language, whether dev or designer.</p>
+  <p class="text-4-xs m-b-4-xs">Lens is a front-end framework and style guide that is used internally at Looker to build our app. We've architected it in a way that gives the entire Engineering team a way to quickly prototype or write front-end code. It contains atomic helper classes and components that ensure everything we build is consistent and flexible. For most thing we build, additional CSS won't be necessary. Lens gets the entire Engineering team to speak the same language, whether dev or designer.</p>
 
   <h2 class="m-b-2-xs">Why build our own framework?</h2>
   <div class="col-container col-gutters m-b-4-xs">
@@ -43,12 +43,12 @@ template = """
   <a class="button button--primary button--large-xs m-b-4-xs w-full-xs w-auto-md" href="getting-started.html">Get Started</a>
 
   <h2 class="m-b-1-xs">Installation</h2>
-  <p class="m-b-4-xs">In your project directory: <code>bower install Lens --save</code></p>
+  <p class="m-b-4-xs">In your project directory: <code>coming soon</code></p>
 
   <h2 class="m-b-1-xs">Download</h2>
-  <a href="https://github.com/treehouse/project-lens/archive/v0.8.0.zip" class="button button--large-xs w-full-xs w-auto-lg">Source Files</a>
-  <a href="http://treehouse.github.io/project-lens/css/Lens.css" class="button button--large-xs w-full-xs w-auto-lg">Compiled CSS</a>
-  <a href="http://treehouse.github.io/project-lens/css/Lens.min.css" class="button button--large-xs w-full-xs w-auto-lg">Compiled CSS (minified)</a>
+  <a href="https://github.com/looker/lens/archive/v0.8.0.zip" class="button button--large-xs w-full-xs w-auto-lg">Source Files</a>
+  <a href="http://looker.github.io/lens/css/Lens.css" class="button button--large-xs w-full-xs w-auto-lg">Compiled CSS</a>
+  <a href="http://looker.github.io/lens/css/Lens.min.css" class="button button--large-xs w-full-xs w-auto-lg">Compiled CSS (minified)</a>
 
 
 
