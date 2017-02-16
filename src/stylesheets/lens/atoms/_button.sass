@@ -1,136 +1,142 @@
 .button
   +appearance(none)
   +user-select(none)
-  background-color: transparent
   border-radius: $border-radius
-  border: solid 2px brand-color(purple)
-  color: brand-color(purple)
   cursor: pointer
+  text-align: center
   display: inline-block
   font-family: $brand-font
-  font-size: text-size(5)
-  font-weight: $bold
-  height: 40px
-  line-height: 36px
-  padding: 0 15px
-  position: relative
-  margin: 0 10px 0 0
-  text-align: center
+  font-size: 12px
+  padding: 4px 12px
+  margin: 0 12px 0 0
   text-decoration: none
-  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, width 0.3s ease, opacity 0.3s ease
-  vertical-align: baseline
   white-space: nowrap
   overflow: hidden
   text-overflow: ellipsis
+  background-color: white
+  border: 1px solid gray-color(gray-light)
+  color: button-color(purple)
   +selected
-    color: darken(brand-color(purple), 15%)
-    border-color: darken(brand-color(purple), 15%)
-    svg
-      fill: darken(brand-color(purple), 15%)
+    background-color: white
+    color: button-color(purple)
+    border-color: button-color(purple-light)
   &:last-child
     margin-right: 0
-  svg
-    fill: brand-color(purple)
 
 
 
   // Primary buttons
   &--primary
-    background-color: brand-color(purple) !important
-    border-color: brand-color(purple) !important
+    background-color: button-color(purple) !important
+    border-color: button-color(purple) !important
     color: #fff !important
-    svg
-      fill: #fff !important
     +selected
-      background-color: darken(brand-color(purple), 10%) !important
-      border-color: darken(brand-color(purple), 10%) !important
+      background-color: button-color(purple-dark) !important
+      border-color: button-color(purple-dark) !important
       color: #fff !important
-
-
-
-  // Secondary buttons
-  &--secondary
-    background-color: transparent !important
-    border-color: $border-color-normal !important
-    color: text-color(base) !important
-    svg
-      fill: text-color(base) !important
-    +selected
-      border-color: darken($border-color-normal, 15%) !important
-      color: darken(text-color(base), 3%) !important
 
 
 
   // Alert buttons
   &--alert
-    background-color: transparent !important
-    border-color: ui-color(red) !important
-    color: ui-color(red) !important
-    svg
-      fill: ui-color(red) !important
+    background-color: button-color(red-dark) !important
+    border-color: button-color(red-dark) !important
+    color: #fff !important
     +selected
-      border-color: darken(ui-color(red), 20%) !important
-      color: darken(ui-color(red), 20%) !important
+      background-color: button-color(red) !important
+      border-color: button-color(red) !important
+      color: #fff !important
+
+
+
+  // Neutral buttons
+  &--neutral
+    background-color: gray-color(gray-lighter) !important
+    border-color: gray-color(gray-light) !important
+    color: gray-color(gray-darker) !important
+    +selected
+      background-color: darken(gray-color(gray-light), 10%) !important
+      border-color: gray-color(gray-light) !important
+      color: gray-color(gray-darker) !important
 
 
 
   // Default disabled buttons
   &--disabled
-    background-color: transparent !important
-    border-color: $border-color-normal !important
-    color: text-color(light) !important
-    svg
-      fill: text-color(light) !important
-    +selected
-      background-color: transparent !important
-      border-color: $border-color-normal !important
-      color: text-color(light) !important
-      svg
-        fill: text-color(base) !important
+    cursor: not-allowed !important
+    pointer-events: none !important
+    opacity: 0.65 !important
+
+    &-light
+      cursor: not-allowed !important
+      pointer-events: none !important
+      opacity: 0.65 !important
+
+      background-color: gray-color(gray-lighter) !important
+      border-color: gray-color(gray) !important
+      color: gray-color(gray) !important
+      +selected
+        background-color: gray-color(gray-lighter) !important
+        border-color: gray-color(gray) !important
+        color: gray-color(gray) !important
+
+    &-dark
+      cursor: not-allowed !important
+      pointer-events: none !important
+      opacity: 0.65 !important
+
+      background-color: gray-color(gray) !important
+      border-color: gray-color(gray) !important
+      color: gray-color(gray-lighter) !important
+      +selected
+        background-color: gray-color(gray) !important
+        border-color: gray-color(gray) !important
+        color: gray-color(gray-lighter) !important
 
 
 
   // Inverse buttons
   &--inverse
+    background-color: #fff !important
     border-color: #fff !important
-    color: #fff !important
-    opacity: 0.88 !important
-    svg
-      fill: #fff !important
+    color: button-color(purple) !important
+    opacity: 0.88
     +selected
-      border-color: #fff !important
-      color: #fff !important
       opacity: 1 !important
 
     &-primary
-      background-color: #fff !important
-      border-color: #fff !important
-      color: text-color(medium) !important
+      background-color: button-color(purple-light) !important
+      border-color: button-color(purple-light) !important
+      color: white !important
       opacity: 0.88
-      svg
-        fill: text-color(medium) !important
       +selected
         opacity: 1 !important
 
     &-disabled
-      border-color: #fff !important
-      color: #fff !important
-      opacity: 0.15 !important
+      cursor: not-allowed !important
+      pointer-events: none !important
+      opacity: 0.65 !important
+
+      background-color: gray-color(gray-lighter) !important
+      border-color: gray-color(gray) !important
+      color: gray-color(gray) !important
       +selected
-        border-color: #fff !important
-        color: #fff !important
-        opacity: 0.15 !important
+        background-color: gray-color(gray-lighter) !important
+        border-color: gray-color(gray) !important
+        color: gray-color(gray) !important
 
     &-primary-disabled
-      background-color: #fff !important
-      border-color: #fff !important
-      color: text-color(medium) !important
-      opacity: 0.15 !important
+      cursor: not-allowed !important
+      pointer-events: none !important
+      opacity: 0.65 !important
+
+      background-color: gray-color(gray) !important
+      border-color: gray-color(gray) !important
+      color: gray-color(gray-lighter) !important
       +selected
-        background-color: #fff !important
-        border-color: #fff !important
-        color: text-color(medium) !important
-        opacity: 0.15 !important
+        background-color: gray-color(gray) !important
+        border-color: gray-color(gray) !important
+        color: gray-color(gray-lighter) !important
 
 
 
@@ -144,7 +150,9 @@
 
 
   // Button size style maps
-  $button-sizes: (xlarge: (font-size: 18px, height: 58px, padding: 28px), large: (font-size: 16px, height: 50px, padding: 22px), normal: (font-size: 16px, height: 40px, padding: 15px), small: (font-size: 12px, height: 34px, padding: 12px), xsmall: (font-size: 12px, height: 30px, padding: 10px))
+  $button-sizes: (normal: (font-size: 12px, padding-x: 4px, padding-y: 12px), small: (font-size: 11px, padding-x: 5px,padding-y: 5px), xsmall: (font-size: 11px, padding-x: 1px, padding-y: 5px))
+
+
 
   // Create button sizes classes to use across breakpoints
   @mixin button-size($suffix)
@@ -153,14 +161,9 @@
     @each $size, $property in $button-sizes
       &--#{$size}-#{$suffix}
         font-size: map-get($property, font-size) !important
-        height: map-get($property, height) !important
-        line-height: map-get($property, height) - 4px !important
-        padding: 0 map-get($property, padding) !important
+        padding: map-get($property, padding-x) map-get($property, padding-y) !important
         &.square
           width: map-get($property, height) !important
-        @if $size == large
-          svg
-            top: -2px
 
 
 
@@ -187,52 +190,41 @@
   // Medium button classes
   +button(md, min-width $md)
 
-  // Large button classes
-  +button(lg, min-width $lg)
 
-  // Extra Large button classes
-  +button(xl, min-width $xl)
-
-  // Topic color buttons
-  @each $topic, $name in $topic-colors
-    &--topic-#{$topic}
-      border-color: topic-color(#{$topic}, base) !important
-      color: topic-color(#{$topic}, base) !important
-      svg
-        fill: topic-color(#{$topic}, base) !important
-      +selected
-        border-color: darken(topic-color(#{$topic}, base), 10%) !important
-        color: darken(topic-color(#{$topic}, base), 10%) !important
-        svg
-          fill: darken(topic-color(#{$topic}, base), 10%) !important
-      &.button--primary
-        background-color: topic-color(#{$topic}, base) !important
-        border-color: topic-color(#{$topic}, base) !important
-        color: #fff !important
-        +selected
-          background-color: darken(topic-color(#{$topic}, base), 10%) !important
-          border-color: darken(topic-color(#{$topic}, base), 10%) !important
-          svg
-            fill: #fff !important
 
   // Split Buttons
   .split-button &
     float: left
     z-index: 1
     margin: 0 !important
-    border-radius: $border-radius 0 0 $border-radius
-    padding: 0 20px
+    border-radius: 0
+    position: relative
+    + .button
+      margin-left: -2px !important
+    &:first-child
+      border-radius: $border-radius 0 0 $border-radius
+    &:last-child
+      border-radius: 0 $border-radius $border-radius 0
     +selected
       z-index: 2
-    &.button--primary
-      border-right-color: rgba(#000, 0.1)
-    + .button
-      border-radius: 0 $border-radius $border-radius 0
-      margin-left: -2px !important
-      &.button--primary
-        border-left-color: rgba(#000, 0.1)
+      &:active, &.active
+        background: button-color(purple)
+        border-color: button-color(purple)
+        color: white
+      &:after
+        content: ""
+        width: 1px
+        height: calc(100% + 2px)
+        background-color: white
+        position: absolute
+        left: -1px
+        top: -1px
 
 .split-button
   +clearfix
   display: inline-block
   margin: 0 15px 0 0
+  &.w-full
+    +display-box
+    .button
+      +flex(1 0 auto)
