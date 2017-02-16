@@ -46,9 +46,9 @@ template = """
   <p class="m-b-4-xs">In your project directory: <code>coming soon</code></p>
 
   <h2 class="m-b-1-xs">Download</h2>
-  <a href="https://github.com/looker/project-lens/archive/v0.8.0.zip" class="button button--large-xs w-full-xs w-auto-lg">Source Files</a>
-  <a href="http://looker.github.io/project-lens/css/Lens.css" class="button button--large-xs w-full-xs w-auto-lg">Compiled CSS</a>
-  <a href="http://looker.github.io/project-lens/css/Lens.min.css" class="button button--large-xs w-full-xs w-auto-lg">Compiled CSS (minified)</a>
+  <a href="https://github.com/looker/lens/archive/v0.8.0.zip" class="button button--large-xs w-full-xs w-auto-lg">Source Files</a>
+  <a href="http://looker.github.io/lens/css/Lens.css" class="button button--large-xs w-full-xs w-auto-lg">Compiled CSS</a>
+  <a href="http://looker.github.io/lens/css/Lens.min.css" class="button button--large-xs w-full-xs w-auto-lg">Compiled CSS (minified)</a>
 
 
 
