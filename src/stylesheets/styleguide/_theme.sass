@@ -49,9 +49,6 @@ body
         background-color: gray-color(gray-lighter)
         border-right: solid 1px gray-color(gray-light)
         box-shadow: 7px 0 0 brand-color(purple) inset
-        .guide-navigation-icon
-          +absolute(right 19px top 9px)
-          transform: rotate(0deg)
         .guide-navigation-link
           +selected
             box-shadow: 7px 0 0 button-color(purple) inset
@@ -80,6 +77,9 @@ body
         box-shadow: 7px 0 0 button-color(purple) inset
         +selected
           box-shadow: 7px 0 0 button-color(purple) inset
+        .guide-navigation-icon
+          +absolute(right 19px top 9px)
+          transform: rotate(0deg)
       &-child
         font-size: 0.75rem
         &:focus,
