@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Looker Lens</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
+    <script src='js/jquery.min.js' type='text/javascript'></script>
 </head>
 
 <body ng-app="Lens">
@@ -21,65 +22,7 @@
     <ui-view></ui-view>
   </lens-main>
 
-  <div id="guide_navigation" class="guide-navigation">
-    <nav id="navigation" role="navigation" tabindex="-1">
-      <ul class="guide-navigation-list">
-        <li class="guide-navigation-item">
-          <a ui-sref="getting-started" ui-sref-active="active" class="guide-navigation-link">Getting Started</a>
-        </li>
-        <li class="guide-navigation-item">
-          <a ui-sref="sass" ui-sref-active="active" class="guide-navigation-link">Sass</a>
-        </li>
-        <li class="guide-navigation-item">
-          <a ui-sref="responsive" ui-sref-active="active" class="guide-navigation-link">Responsive</a>
-        </li>
-        <li class="guide-navigation-item guide-navigation-item-parent">
-          <a href="javascript:void(0)" class="guide-navigation-link">
-            Atoms
-            <span class="guide-navigation-icon"></span>
-          </a>
-          <ul class="guide-navigation-list-child">
-            <li class="guide-navigation-item-child">
-              <a ui-sref="typography" ui-sref-active="active" class="guide-navigation-link guide-navigation-link-child">Typography</a>
-            </li>
-            <li class="guide-navigation-item-child">
-              <a ui-sref="grid" ui-sref-active="active" class="guide-navigation-link guide-navigation-link-child">Grid</a>
-            </li>
-            <li class="guide-navigation-item-child">
-              <a ui-sref="block-grid" ui-sref-active="active" class="guide-navigation-link guide-navigation-link-child">Block Grid</a>
-            </li>
-            <li class="guide-navigation-item-child">
-              <a ui-sref="layout" ui-sref-active="active" class="guide-navigation-link guide-navigation-link-child">Layout</a>
-            </li>
-            <li class="guide-navigation-item-child">
-              <a ui-sref="flexbox" ui-sref-active="active" class="guide-navigation-link guide-navigation-link-child">Flexbox</a>
-            </li>
-            <li class="guide-navigation-item-child">
-              <a ui-sref="buttons" ui-sref-active="active" class="guide-navigation-link guide-navigation-link-child">Buttons</a>
-            </li>
-            <li class="guide-navigation-item-child">
-              <a ui-sref="colors" ui-sref-active="active" class="guide-navigation-link guide-navigation-link-child">Colors</a>
-            </li>
-            <li class="guide-navigation-item-child">
-              <a ui-sref="borders" ui-sref-active="active" class="guide-navigation-link guide-navigation-link-child">Borders</a>
-            </li>
-            <li class="guide-navigation-item-child">
-              <a ui-sref="forms" ui-sref-active="active" class="guide-navigation-link guide-navigation-link-child">Forms</a>
-            </li>
-            <li class="guide-navigation-item-child">
-              <a ui-sref="icons" ui-sref-active="active" class="guide-navigation-link guide-navigation-link-child">Icons</a>
-            </li>
-            <li class="guide-navigation-item-child">
-              <a ui-sref="tables" ui-sref-active="active" class="guide-navigation-link guide-navigation-link-child">Tables</a>
-            </li>
-          </ul>
-        </li>
-        <li class="guide-navigation-item">
-          <a ui-sref="release-notes" ui-sref-active="active" class="guide-navigation-link">Release Notes</a>
-        </li>
-      </ul>
-    </nav>
-  </div>
+  <main-nav></main-nav>
 
   <footer class="guide-contentinfo" role="contentinfo">
     <p class="guide-contentinfo-copy">Copyright &copy; 2017 Looker. All rights reserved.</p>
@@ -94,20 +37,6 @@
       $hamburger.classList.toggle('hamburger-button-clicked');
       $hamburger_menu.classList.toggle('guide-navigation-active');
     });
-
-    // Main Nav
-    var nav_parent = document.querySelectorAll('.guide-navigation-item-parent');
-    [].forEach.call(nav_parent, function(el) {
-      el.addEventListener('click', function(e) {
-        document.getElementsByClassName('guide-navigation-item')[0].classList.remove('active');
-        this.classList.add('guide-navigation-item-parent--active');
-        e.stopPropagation();
-        return false;
-      });
-    });
-    document.getElementsByClassName('guide-navigation-item').onclick = function(){
-       document.getElementsByClassName('guide-navigation-item-parent')[0].classList.remove('guide-navigation-item-parent--active');
-    }
 
     // Subnav Scrolly Fun
     // var subNav = document.querySelector('.subnav-container');

@@ -5,11 +5,7 @@ m.controller "LensMainController", (
   $scope
   $state
 ) ->
-  $scope.$watch(
-    -> $state.current.title,
-    ->
-      $scope.title = $state.current.title
-  )
+  $scope.$watch "$state.current.title", -> $scope.title = $state.current.title
 
   return this
 
@@ -31,9 +27,6 @@ template = """
     <div class="col-container">
       <div class="col col-80-lg">
         <ng-transclude></ng-transclude>
-      </div>
-      <div class="hide-xs block-lg col col-20-lg subnav-container">
-        <!-- {% include subnav.html %} -->
       </div>
     </div>
 

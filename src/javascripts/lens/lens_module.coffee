@@ -6,6 +6,7 @@ require "./getting_started.coffee"
 require "./index.coffee"
 require "./release_notes.coffee"
 require "./lens_main.coffee"
+require "./main_nav.coffee"
 require "./sass.coffee"
 
 module.exports = m = angular.module "Lens", [
@@ -15,6 +16,7 @@ module.exports = m = angular.module "Lens", [
   "lens.index"
   "lens.release_notes"
   "lens.lens_main"
+  "lens.main_nav"
   "lens.sass"
 ]
 
