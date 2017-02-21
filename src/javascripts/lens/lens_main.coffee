@@ -5,7 +5,10 @@ m.controller "LensMainController", (
   $scope
   $state
 ) ->
-  $scope.$watch "$state.current.title", -> $scope.title = $state.current.title
+  $scope.$watch(
+    -> $state.current.title
+    -> $scope.title = $state.current.title
+  )
 
   return this
 
