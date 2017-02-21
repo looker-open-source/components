@@ -14,12 +14,12 @@
   overflow: hidden
   text-overflow: ellipsis
   background-color: white
-  border: 1px solid gray-color(gray-light)
-  color: button-color(purple)
+  border: 1px solid gray-color(gray-2)
+  color: ui-color(purple)
   +selected
     background-color: white
-    color: button-color(purple)
-    border-color: button-color(purple-light)
+    color: ui-color(purple)
+    border-color: ui-color(purple-light)
   &:last-child
     margin-right: 0
 
@@ -27,37 +27,37 @@
 
   // Primary buttons
   &--primary
-    background-color: button-color(purple) !important
-    border-color: button-color(purple) !important
+    background-color: ui-color(purple) !important
+    border-color: ui-color(purple) !important
     color: #fff !important
     +selected
-      background-color: button-color(purple-dark) !important
-      border-color: button-color(purple-dark) !important
+      background-color: ui-color(purple-dark) !important
+      border-color: ui-color(purple-dark) !important
       color: #fff !important
 
 
 
   // Alert buttons
   &--alert
-    background-color: button-color(red-dark) !important
-    border-color: button-color(red-dark) !important
+    background-color: ui-color(red-dark) !important
+    border-color: ui-color(red-dark) !important
     color: #fff !important
     +selected
-      background-color: button-color(red) !important
-      border-color: button-color(red) !important
+      background-color: ui-color(red) !important
+      border-color: ui-color(red) !important
       color: #fff !important
 
 
 
   // Neutral buttons
   &--neutral
-    background-color: gray-color(gray-lighter) !important
-    border-color: gray-color(gray-light) !important
-    color: gray-color(gray-darker) !important
+    background-color: gray-color(gray-2) !important
+    border-color: gray-color(gray-2) !important
+    color: gray-color(gray-7) !important
     +selected
-      background-color: darken(gray-color(gray-light), 10%) !important
-      border-color: gray-color(gray-light) !important
-      color: gray-color(gray-darker) !important
+      background-color: darken(gray-color(gray-2), 10%) !important
+      border-color: gray-color(gray-2) !important
+      color: gray-color(gray-7) !important
 
 
 
@@ -72,11 +72,11 @@
       pointer-events: none !important
       opacity: 0.65 !important
 
-      background-color: gray-color(gray-lighter) !important
+      background-color: gray-color(gray-2er) !important
       border-color: gray-color(gray) !important
       color: gray-color(gray) !important
       +selected
-        background-color: gray-color(gray-lighter) !important
+        background-color: gray-color(gray-2er) !important
         border-color: gray-color(gray) !important
         color: gray-color(gray) !important
 
@@ -87,11 +87,11 @@
 
       background-color: gray-color(gray) !important
       border-color: gray-color(gray) !important
-      color: gray-color(gray-lighter) !important
+      color: gray-color(gray-2er) !important
       +selected
         background-color: gray-color(gray) !important
         border-color: gray-color(gray) !important
-        color: gray-color(gray-lighter) !important
+        color: gray-color(gray-2er) !important
 
 
 
@@ -99,14 +99,14 @@
   &--inverse
     background-color: #fff !important
     border-color: #fff !important
-    color: button-color(purple) !important
+    color: ui-color(purple) !important
     opacity: 0.88
     +selected
       opacity: 1 !important
 
     &-primary
-      background-color: button-color(purple-light) !important
-      border-color: button-color(purple-light) !important
+      background-color: ui-color(purple-light) !important
+      border-color: ui-color(purple-light) !important
       color: white !important
       opacity: 0.88
       +selected
@@ -117,11 +117,11 @@
       pointer-events: none !important
       opacity: 0.65 !important
 
-      background-color: gray-color(gray-lighter) !important
+      background-color: gray-color(gray-2er) !important
       border-color: gray-color(gray) !important
       color: gray-color(gray) !important
       +selected
-        background-color: gray-color(gray-lighter) !important
+        background-color: gray-color(gray-2er) !important
         border-color: gray-color(gray) !important
         color: gray-color(gray) !important
 
@@ -132,11 +132,11 @@
 
       background-color: gray-color(gray) !important
       border-color: gray-color(gray) !important
-      color: gray-color(gray-lighter) !important
+      color: gray-color(gray-2er) !important
       +selected
         background-color: gray-color(gray) !important
         border-color: gray-color(gray) !important
-        color: gray-color(gray-lighter) !important
+        color: gray-color(gray-2er) !important
 
 
 
@@ -208,8 +208,8 @@
     +selected
       z-index: 2
       &:active, &.active
-        background: button-color(purple)
-        border-color: button-color(purple)
+        background: ui-color(purple)
+        border-color: ui-color(purple)
         color: white
       &:after
         content: ""

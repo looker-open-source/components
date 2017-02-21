@@ -5,7 +5,7 @@ $text-alignments: left, right, center, justify
 
 // Headings shared styles
 h1, h2, h3, h4, h5, h6
-  color: text-color(dark)
+  color: gray-color(dark)
   display: block
   font-weight: $light
   margin: 0
@@ -72,7 +72,7 @@ hr
 
 // General text styles
 p
-  color: text-color(base)
+  color: gray-color(gray-5)
   font-size: 1rem
   line-height: 1.5
   margin: 0
@@ -92,11 +92,11 @@ em,
   text-transform: uppercase
 
 a
-  color: ui-color(blue)
+  color: brand-color(blue)
   cursor: pointer
   text-decoration: none
   +selected
-    color: darken(ui-color(blue), 10%)
+    color: darken(brand-color(blue), 10%)
 
 code
   font-family: monospace
@@ -151,7 +151,7 @@ address
 // List styles
 ul,
 ol
-  color: text-color(base)
+  color: gray-color(gray-5)
   margin: 0
   padding: 0 0 0 2rem
 

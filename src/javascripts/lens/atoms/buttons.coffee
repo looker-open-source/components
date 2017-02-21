@@ -139,7 +139,7 @@ template = """
 
   <h2 id='Inverse' class="m-b-1-xs" id="inverse">Inverse</h2>
   <p class="m-b-3-xs">Inverse buttons are used when the background color a container is too dark for normal buttons to have enough contrast. Invert the style with the classes, <code>.button--inverse</code>. <code>.button--inverse-primary</code>. <code>.button--inverse-disabled</code>. <code>.button--inverse-primary-disabled</code>.</p>
-  <div class="bg-gray-darker p-2-xs p-b-05-xs">
+  <div class="bg-gray-7 p-2-xs p-b-05-xs">
     <a class="m-b-05-xs button button--inverse" href>Inverse</a>
     <a class="m-b-05-xs button button--inverse-primary" href>Inverse Primary</a>
     <a class="m-b-05-xs button button--inverse-disabled" href>Inverse Disabled</a>

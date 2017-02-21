@@ -7,7 +7,7 @@ body
   // Guide Banner
   // =========================================
   &-banner
-    background-color: brand-color(gray-dark)
+    background-color: brand-color(gray)
 
   // =========================================
   // A11y Skip
@@ -36,7 +36,7 @@ body
   // =========================================
   &-navigation
     background-color: #fff
-    border-right: solid 1px gray-color(gray-light)
+    border-right: solid 1px gray-color(gray-2)
     &-icon
       +absolute(right 20px top 9px)
       font-size: 15px
@@ -46,8 +46,8 @@ body
       .guide-navigation-icon:after
         content: '\00D7'
       &--active
-        background-color: gray-color(gray-lighter)
-        border-right: solid 1px gray-color(gray-light)
+        background-color: gray-color(gray-1)
+        border-right: solid 1px gray-color(gray-2)
         box-shadow: 7px 0 0 brand-color(purple) inset
         .guide-navigation-link
           +selected
@@ -56,23 +56,23 @@ body
         .guide-navigation-list-child
           display: block
     &-item-child
-      background-color: gray-color(gray-lighter)
+      background-color: gray-color(gray-1)
     &-list-child
       list-style: none
     &-link
-      color: gray-color(gray-dark)
+      color: gray-color(gray-5)
       font-size: 0.75rem
       text-decoration: none
       position: relative
       border-right: solid 1px transparent
       &:focus
-        color: gray-color(gray-dark)
+        color: gray-color(gray-6)
       &:hover,
       &:active,
       &.active
-        background-color: gray-color(gray-lighter)
-        color: gray-color(gray-dark)
-        border-right: solid 1px gray-color(gray-light)
+        background-color: gray-color(gray-1)
+        color: gray-color(gray-6)
+        border-right: solid 1px gray-color(gray-2)
       &.active
         box-shadow: 7px 0 0 button-color(purple) inset
         +selected
@@ -85,8 +85,8 @@ body
         &:focus,
         &:hover,
         &:active
-          background-color: gray-color(gray-lighter)
-          color: gray-color(gray-darker)
+          background-color: gray-color(gray-1)
+          color: gray-color(gray-7)
           box-shadow: none !important
           border-right: none
         &.active
@@ -121,17 +121,22 @@ body
           em
             color: topic-color(diglit, lighter)
         &.bg-gray,
-        &.bg-gray-light,
-        &.bg-gray-lighter
-          color: gray-color(gray-dark)
+        &.bg-gray-2,
+        &.bg-gray-3,
+        &.bg-gray-1,
+        &.bg-white
+          color: gray-color(gray-6)
           em
-            color: lighten(gray-color(gray-dark), 25%)
+            color: lighten(gray-color(gray-6), 25%)
+        &.bg-white
+          border: solid 1px gray-color(gray-1)
+          border-bottom: 0
       .bg-yellow
         color: darken(#ffd466, 50%)
         em
           color: darken(#ffd466, 25%)
       .text-bg-white
-        border: solid 1px gray-color(gray-light)
+        border: solid 1px gray-color(gray-3)
         span
           color: text-color(dark)
         em
@@ -185,7 +190,7 @@ body
       .hamburger,
       .hamburger::before,
       .hamburger::after
-        background-color: gray-color(gray-lighter)
+        background-color: gray-color(gray-1)
     &-clicked
       .hamburger, .hamburger-button:hover .hamburger
         background-color: transparent !important
