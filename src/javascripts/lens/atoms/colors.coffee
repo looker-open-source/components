@@ -38,14 +38,6 @@ template = """
         <td><code>.brand-border-[color]</code></td>
         <td><code>border-color</code></td>
       </tr>
-      <tr>
-        <td><code>.brand-fill-[color]</code></td>
-        <td><code>fill</code> <em class="text-6-xs">(Used for SVGs)</em></td>
-      </tr>
-      <tr>
-        <td><code>.brand-stroke-[color]</code></td>
-        <td><code>stroke</code> <em class="text-6-xs">(Used for SVGs)</em></td>
-      </tr>
     </tbody>
   </table>
 
@@ -73,14 +65,6 @@ template = """
       <tr>
         <td><code>.border-[color]</code></td>
         <td><code>border-color</code></td>
-      </tr>
-      <tr>
-        <td><code>.fill-[color]</code></td>
-        <td><code>fill</code> <em class="text-6-xs">(Used for SVGs)</em></td>
-      </tr>
-      <tr>
-        <td><code>.stroke-[color]</code></td>
-        <td><code>stroke</code> <em class="text-6-xs">(Used for SVGs)</em></td>
       </tr>
     </tbody>
   </table>
@@ -110,14 +94,6 @@ template = """
       <tr>
         <td><code>.border-[color]</code></td>
         <td><code>border-color</code></td>
-      </tr>
-      <tr>
-        <td><code>.fill-[color]</code></td>
-        <td><code>fill</code> <em class="text-6-xs">(Used for SVGs)</em></td>
-      </tr>
-      <tr>
-        <td><code>.stroke-[color]</code></td>
-        <td><code>stroke</code> <em class="text-6-xs">(Used for SVGs)</em></td>
       </tr>
     </tbody>
   </table>
