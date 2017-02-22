@@ -1,4 +1,4 @@
-$widths: 5, 10, 15, 20, 25, 30, 33, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100
+$widths: 5, 10, 15, 20, 25, 30, 33, 35, 40, 45, 50, 55, 60, 65, 66, 70, 75, 80, 85, 90, 95, 100
 
 
 
@@ -16,17 +16,6 @@ $widths: 5, 10, 15, 20, 25, 30, 33, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 
   // Wrap each set of columns that adds up to 100 within .col-container
   &-container
     +clearfix
-
-  // Include this alongside .col-container to add our default max-width
-  &-max
-    max-width: $grid-width !important
-    margin: 0 auto !important
-    @media screen
-      padding: 0
-    +media(min-width $md)
-      padding: 0 5px
-    +media(min-width $lg)
-      padding: 0 15px
 
   // Center a single column inside of a .col-container
   &-center
@@ -46,6 +35,11 @@ $widths: 5, 10, 15, 20, 25, 30, 33, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 
           width: 33.3% !important
         &-offset-#{$width}-#{$suffix}
           margin-left: 33.3% !important
+      @else if $width == 66
+        &-#{$width}-#{$suffix}
+          width: 66.6% !important
+        &-offset-#{$width}-#{$suffix}
+          margin-left: 66.6% !important
       @else
         &-#{$width}-#{$suffix}
           width: percentage($width/100) !important
