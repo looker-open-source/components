@@ -17,28 +17,28 @@ m.directive "typography", ->
 template = """
 <section id="Headers">
   <h2 class="m-b-1-xs">Headers and Text Sizing</h2>
-  <p class="m-b-2-xs">Headers are built using typical html elements <code>h1 - h6</code>. To give ourselves a bit more control, we've created utility classes for applying different sizes to the default elements so that we can control markup hierarchy while still applying the sizes we want visually (<code>.text-0-xs</code>, <code>.text-1-xs</code>, <code>.text-2-xs</code>, <code>.text-3-xs</code>, <code>.text-4-xs</code>, <code>.text-5-xs</code>, <code>.text-6-xs</code>). By default, headers have no margin/padding applied to them and are bold.</p>
+  <p class="m-b-2-xs">Headers are built using typical html elements <code>h1 - h6</code>. To give ourselves a bit more control, we've created utility classes for applying different sizes to the default elements so that we can control markup hierarchy while still applying the sizes we want visually (<code>.text-0-xs</code>, <code>.text-1-xs</code>, <code>.text-2-xs</code>, <code>.text-3-xs</code>, <code>.text-4-xs</code>, <code>.text-5-xs</code>, <code>.text-6-xs</code>, <code>.text-7-xs</code>). By default, headers have no margin/padding applied to them and are bold.</p>
 
-  <div><code>h1, .text-0-xs</code> <em class="m-l-05-xs">3rem, 48px</em></div>
-  <div class="m-b-2-xs"><h1 class="text-0-xs">Looker is located in Santa Cruz, CA.</h1></div>
-
-  <div><code>h1, .text-1-xs</code> <em class="m-l-05-xs">2.25rem, 36px</em></div>
+  <div><code>h1, .text-1-xs</code> <em class="m-l-05-xs">1.3125rem, 21px</em></div>
   <div class="m-b-2-xs"><h1>Looker is located in Santa Cruz, CA.</h1></div>
 
-  <div><code>h2, .text-2-xs</code> <em class="m-l-05-xs">1.75rem, 28px</em></div>
+  <div><code>h2, .text-2-xs</code> <em class="m-l-05-xs">1.125rem, 18px</em></div>
   <div class="m-b-2-xs"><h2>Looker is located in Santa Cruz, CA.</h2></div>
 
-  <div><code>h3, .text-3-xs</code> <em class="m-l-05-xs">1.25rem, 20px</em></div>
+  <div><code>h3, .text-3-xs</code> <em class="m-l-05-xs">0.9375rem, 15px</em></div>
   <div class="m-b-2-xs"><h3>Looker is located in Santa Cruz, CA.</h3></div>
 
-  <div><code>h4, .text-4-xs</code> <em class="m-l-05-xs">1.125rem, 18px</em></div>
+  <div><code>h4, .text-4-xs</code> <em class="m-l-05-xs">0.875rem, 14px</em></div>
   <div class="m-b-2-xs"><h4>Looker is located in Santa Cruz, CA.</h4></div>
 
-  <div><code>h5, .text-5-xs</code> <em class="m-l-05-xs">1rem, 16px</em></div>
+  <div><code>h5, .text-5-xs</code> <em class="m-l-05-xs">0.8125rem, 13px</em></div>
   <div class="m-b-2-xs"><h5>Looker is located in Santa Cruz, CA.</h5></div>
 
-  <div><code>h6, .text-6-xs</code> <em class="m-l-05-xs">0.875rem, 14px</em></div>
+  <div><code>h6, .text-6-xs</code> <em class="m-l-05-xs">0.75rem, 12px</em></div>
   <div class="m-b-2-xs"><h6>Looker is located in Santa Cruz, CA.</h6></div>
+
+  <div><code>Size 7, .text-7-xs</code> <em class="m-l-05-xs">0.6875rem, 11px</em></div>
+  <div class="m-b-2-xs"><p class="text-7-xs">Looker is located in Santa Cruz, CA.</p></div>
 
   <div class="guide-code">
 <pre><code class="language-html">&lt;h1 class="text-0-xs"&gt;Looker is located in Santa Cruz, CA.&lt;/h1&gt;
@@ -54,7 +54,8 @@ template = """
 &lt;h5&gt;Looker is located in Santa Cruz, CA.&lt;/h5&gt;
 &lt;p class="text-5-xs"&gt;Looker is located in Santa Cruz, CA.&lt;/p&gt;
 &lt;h6&gt;Looker is located in Santa Cruz, CA.&lt;/h6&gt;
-&lt;p class="text-6-xs"&gt;Looker is located in Santa Cruz, CA.&lt;/p&gt;</code></pre>
+&lt;p class="text-6-xs"&gt;Looker is located in Santa Cruz, CA.&lt;/p&gt;
+&lt;p class="text-7-xs"&gt;Looker is located in Santa Cruz, CA.&lt;/p&gt;</code></pre></code></pre>
   </div>
 
   <div class="border-mid-xs m-b-1-xs p-1-xs">
