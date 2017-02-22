@@ -17,7 +17,7 @@ m.directive "grid", ->
 template = """
 <section id="grid">
   <h2 id="Grid" class="m-b-1-xs">The Grid</h2>
-  <p class="m-b-1-xs">We provide a mobile-first, fluid grid to help layout pages with ease. To start a new grid, create a div with the class of <code>.col-container</code>. Then add columns inside it using <code>.col .col-n-xs</code>, where n = 5-100 in increments of 5, with the addition of 33 to let us do columns in thirds.</p>
+  <p class="m-b-1-xs">We provide a mobile-first, fluid grid to help layout pages with ease. To start a new grid, create a div with the class of <code>.col-container</code>. Then add columns inside it using <code>.col .col-n-xs</code>, where n = 5-100 in increments of 5, with the addition of 33 and 66 to let us do columns in thirds.</p>
   <p class="m-b-3-xs"><strong>Important:</strong> Column classes should generally be used on container elements. It's bad practice to apply grid-based widths directly to elements such as form fields, headers or images. Also, avoid applying styles directly to a column element. Instead, nest your content within the column and apply styling there.</p>
   <div class="col-container">
     <div class="col col-30-xs col-50-lg border-mid-xs">.col .col-30-xs</div>
@@ -29,17 +29,6 @@ template = """
 &lt;div class="col col-30-xs border-mid-xs"&gt;.col .col-30-xs&lt;/div&gt;
 &lt;div class="col col-20-xs border-mid-xs"&gt;.col .col-20-xs&lt;/div&gt;
 &lt;div class="col col-50-xs border-mid-xs"&gt;.col .col-50-xs&lt;/div&gt;
-&lt;/div&gt;</code></pre>
-  </div>
-
-  <h2 id="Max-Width" class="m-b-1-xs">Grid Max-Width</h2>
-  <p class="m-b-1-xs">By default, our grid will span 100% of the browser viewport. If you want to control that, add <code>.col-max</code> next to your <code>.col-container</code> class. This will limit the width of the grid to <code>1260px</code>.</p>
-  <div class="col-container col-max">
-    <div class="border-dark-xs p-2-xs">1260px max-width</div>
-  </div>
-  <div class="guide-code m-b-4-xs">
-<pre><code class="language-html">&lt;div class="col-container col-max"&gt;
-&lt;div class="border-dark-xs p-2-xs"&gt;1260px max-width&lt;/div&gt;
 &lt;/div&gt;</code></pre>
   </div>
 
