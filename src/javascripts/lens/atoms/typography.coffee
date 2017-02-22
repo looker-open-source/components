@@ -20,41 +20,41 @@ template = """
   <p class="m-b-2-xs">Headers are built using typical html elements <code>h1 - h6</code>. To give ourselves a bit more control, we've created utility classes for applying different sizes to the default elements so that we can control markup hierarchy while still applying the sizes we want visually (<code>.text-0-xs</code>, <code>.text-1-xs</code>, <code>.text-2-xs</code>, <code>.text-3-xs</code>, <code>.text-4-xs</code>, <code>.text-5-xs</code>, <code>.text-6-xs</code>). By default, headers have no margin/padding applied to them and are bold.</p>
 
   <div><code>h1, .text-0-xs</code> <em class="m-l-05-xs">3rem, 48px</em></div>
-  <div class="m-b-2-xs"><h1 class="text-0-xs">Looker is a business intelligence tool for creating stellar analytics.</h1></div>
+  <div class="m-b-2-xs"><h1 class="text-0-xs">Looker is located in Santa Cruz, CA.</h1></div>
 
   <div><code>h1, .text-1-xs</code> <em class="m-l-05-xs">2.25rem, 36px</em></div>
-  <div class="m-b-2-xs"><h1>Looker is a business intelligence tool for creating stellar analytics.</h1></div>
+  <div class="m-b-2-xs"><h1>Looker is located in Santa Cruz, CA.</h1></div>
 
   <div><code>h2, .text-2-xs</code> <em class="m-l-05-xs">1.75rem, 28px</em></div>
-  <div class="m-b-2-xs"><h2>Looker is a business intelligence tool for creating stellar analytics.</h2></div>
+  <div class="m-b-2-xs"><h2>Looker is located in Santa Cruz, CA.</h2></div>
 
   <div><code>h3, .text-3-xs</code> <em class="m-l-05-xs">1.25rem, 20px</em></div>
-  <div class="m-b-2-xs"><h3>Looker is a business intelligence tool for creating stellar analytics.</h3></div>
+  <div class="m-b-2-xs"><h3>Looker is located in Santa Cruz, CA.</h3></div>
 
   <div><code>h4, .text-4-xs</code> <em class="m-l-05-xs">1.125rem, 18px</em></div>
-  <div class="m-b-2-xs"><h4>Looker is a business intelligence tool for creating stellar analytics.</h4></div>
+  <div class="m-b-2-xs"><h4>Looker is located in Santa Cruz, CA.</h4></div>
 
   <div><code>h5, .text-5-xs</code> <em class="m-l-05-xs">1rem, 16px</em></div>
-  <div class="m-b-2-xs"><h5>Looker is a business intelligence tool for creating stellar analytics.</h5></div>
+  <div class="m-b-2-xs"><h5>Looker is located in Santa Cruz, CA.</h5></div>
 
   <div><code>h6, .text-6-xs</code> <em class="m-l-05-xs">0.875rem, 14px</em></div>
-  <div class="m-b-2-xs"><h6>Looker is a business intelligence tool for creating stellar analytics.</h6></div>
+  <div class="m-b-2-xs"><h6>Looker is located in Santa Cruz, CA.</h6></div>
 
   <div class="guide-code">
-<pre><code class="language-html">&lt;h1 class="text-0-xs"&gt;Looker is a business intelligence tool for creating stellar analytics.&lt;/h1&gt;
-&lt;p class="text-0-xs"&gt;Looker is a business intelligence tool for creating stellar analytics.&lt;/p&gt;
-&lt;h1&gt;Looker is a business intelligence tool for creating stellar analytics.&lt;/h1&gt;
-&lt;p class="text-1-xs"&gt;Looker is a business intelligence tool for creating stellar analytics.&lt;/p&gt;
-&lt;h2&gt;Looker is a business intelligence tool for creating stellar analytics.&lt;/h2&gt;
-&lt;p class="text-2-xs"&gt;Looker is a business intelligence tool for creating stellar analytics.&lt;/p&gt;
-&lt;h3&gt;Looker is a business intelligence tool for creating stellar analytics.&lt;/h3&gt;
-&lt;p class="text-3-xs"&gt;Looker is a business intelligence tool for creating stellar analytics.&lt;/p&gt;
-&lt;h4&gt;Looker is a business intelligence tool for creating stellar analytics.&lt;/h4&gt;
-&lt;p class="text-4-xs"&gt;Looker is a business intelligence tool for creating stellar analytics.&lt;/p&gt;
-&lt;h5&gt;Looker is a business intelligence tool for creating stellar analytics.&lt;/h5&gt;
-&lt;p class="text-5-xs"&gt;Looker is a business intelligence tool for creating stellar analytics.&lt;/p&gt;
-&lt;h6&gt;Looker is a business intelligence tool for creating stellar analytics.&lt;/h6&gt;
-&lt;p class="text-6-xs"&gt;Looker is a business intelligence tool for creating stellar analytics.&lt;/p&gt;</code></pre>
+<pre><code class="language-html">&lt;h1 class="text-0-xs"&gt;Looker is located in Santa Cruz, CA.&lt;/h1&gt;
+&lt;p class="text-0-xs"&gt;Looker is located in Santa Cruz, CA.&lt;/p&gt;
+&lt;h1&gt;Looker is located in Santa Cruz, CA.&lt;/h1&gt;
+&lt;p class="text-1-xs"&gt;Looker is located in Santa Cruz, CA.&lt;/p&gt;
+&lt;h2&gt;Looker is located in Santa Cruz, CA.&lt;/h2&gt;
+&lt;p class="text-2-xs"&gt;Looker is located in Santa Cruz, CA.&lt;/p&gt;
+&lt;h3&gt;Looker is located in Santa Cruz, CA.&lt;/h3&gt;
+&lt;p class="text-3-xs"&gt;Looker is located in Santa Cruz, CA.&lt;/p&gt;
+&lt;h4&gt;Looker is located in Santa Cruz, CA.&lt;/h4&gt;
+&lt;p class="text-4-xs"&gt;Looker is located in Santa Cruz, CA.&lt;/p&gt;
+&lt;h5&gt;Looker is located in Santa Cruz, CA.&lt;/h5&gt;
+&lt;p class="text-5-xs"&gt;Looker is located in Santa Cruz, CA.&lt;/p&gt;
+&lt;h6&gt;Looker is located in Santa Cruz, CA.&lt;/h6&gt;
+&lt;p class="text-6-xs"&gt;Looker is located in Santa Cruz, CA.&lt;/p&gt;</code></pre>
   </div>
 
   <div class="border-mid-xs m-b-1-xs p-1-xs">
@@ -88,27 +88,27 @@ Resize your browser to see this text size change.
   <p class="m-b-2-xs">Using the following tags will add some emphasis to your text elements</p>
 
   <div><code>.regular</code></div>
-  <p class="bold"><span class="regular">Looker is</span> an online school that teaches you code</p>
+  <p class="bold"><span class="regular">Looker is located in Santa Cruz, CA.</p>
   <div class="guide-code m-b-3-xs">
 <pre><code class="language-html">&lt;p class="bold"&gt;&lt;span class="regular"&gt;Looker is&lt;/span&gt; an online school that teaches you code&lt;/p&gt;</code></pre>
   </div>
 
   <div><code>strong, .bold</code></div>
-  <p class="bold">Looker is a business intelligence tool for creating stellar analytics.</p>
+  <p class="bold">Looker is located in Santa Cruz, CA.</p>
   <div class="guide-code m-b-3-xs">
-<pre><code class="language-html">&lt;p class="bold"&gt;Looker is a business intelligence tool for creating stellar analytics.&lt;/p&gt;</code></pre>
+<pre><code class="language-html">&lt;p class="bold"&gt;Looker is located in Santa Cruz, CA.&lt;/p&gt;</code></pre>
   </div>
 
   <div><code>em, .italic</code></div>
-  <p class="italic">Looker is a business intelligence tool for creating stellar analytics.</p>
+  <p class="italic">Looker is located in Santa Cruz, CA.</p>
   <div class="guide-code m-b-3-xs">
-<pre><code class="language-html">&lt;p class="italic"&gt;Looker is a business intelligence tool for creating stellar analytics.&lt;/p&gt;</code></pre>
+<pre><code class="language-html">&lt;p class="italic"&gt;Looker is located in Santa Cruz, CA.&lt;/p&gt;</code></pre>
   </div>
 
   <div><code>.caps</code></div>
-  <p class="caps">Looker is a business intelligence tool for creating stellar analytics.</p>
+  <p class="caps">Looker is located in Santa Cruz, CA.</p>
   <div class="guide-code m-b-3-xs">
-<pre><code class="language-html">&lt;p class="caps"&gt;Looker is a business intelligence tool for creating stellar analytics.&lt;/p&gt;</code></pre>
+<pre><code class="language-html">&lt;p class="caps"&gt;Looker is located in Santa Cruz, CA.&lt;/p&gt;</code></pre>
   </div>
 </section>
 
