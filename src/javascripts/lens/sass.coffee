@@ -134,18 +134,7 @@ template = """
   <p class="m-b-3-xs"><code>
     brand-color(purple)<br />
     brand-color(gray)
-  </code></p>
-
-  <p class="bold">Text Colors</p>
-  <div class="guide-code">
-<pre class="m-tb-05-xs"><code class="language-css">.custom-element
-  color: text-color(dark)
-</code></pre>
-  <p class="m-b-3-xs"><code>
-    text-color(dark)<br />
-    text-color(medium)<br />
-    text-color(base)<br />
-    text-color(light)
+    brand-color(blue)
   </code></p>
 
   <p class="bold">Gray Colors</p>
@@ -154,11 +143,14 @@ template = """
   fill: gray-color(gray-dark)
 </code></pre>
   <p class="m-b-3-xs"><code>
-    gray-color(gray-darker)<br />
-    gray-color(gray-dark)<br />
-    gray-color(gray)<br />
-    gray-color(gray-light)<br />
-    gray-color(gray-lighter)
+    gray-color(white)<br />
+    gray-color(gray-1)<br />
+    gray-color(gray-2)<br />
+    gray-color(gray-3)<br />
+    gray-color(gray-4)<br />
+    gray-color(gray-5)<br />
+    gray-color(gray-6)<br />
+    gray-color(gray-7)
   </code></p>
 
   <p class="bold">UI Colors</p>
@@ -167,77 +159,19 @@ template = """
   background-color: ui-color(blue)
 </code></pre>
   <p class="m-b-3-xs"><code>
-    ui-color(blue)<br />
+    ui-color(purple)<br />
+    ui-color(purple-light)<br />
+    ui-color(purple-dark)<br />
+    ui-color(red)<br />
+    ui-color(red-light)<br />
+    ui-color(red-dark)<br />
     ui-color(green)<br />
+    ui-color(teal)<br />
+    ui-color(teal-dark)<br />
     ui-color(yellow)<br />
     ui-color(orange)<br />
-    ui-color(red)
+    ui-color(orange-dark)
   </code></p>
-
-  <p class="bold">Topic Colors</p>
-  <div class="guide-code">
-<pre class="m-tb-05-xs"><code class="language-css">.custom-element
-  color: topic-color(css, base)
-  border: topic-color(css, dark)
-</code></pre>
-  <p class="m-b-4-xs"><code>
-    topic-color(html, light)<br />
-    topic-color(html, base)<br />
-    topic-color(html, dark)<br />
-    topic-color(css, light)<br />
-    topic-color(css, base)<br />
-    topic-color(css, dark)<br />
-    topic-color(js, light)<br />
-    topic-color(js, base)<br />
-    topic-color(js, dark)<br />
-    topic-color(ruby, light)<br />
-    topic-color(ruby, base)<br />
-    topic-color(ruby, dark)<br />
-    topic-color(business, light)<br />
-    topic-color(business, base)<br />
-    topic-color(business, dark)<br />
-    topic-color(wordpress, light)<br />
-    topic-color(wordpress, base)<br />
-    topic-color(wordpress, dark)<br />
-    topic-color(php, light)<br />
-    topic-color(php, base)<br />
-    topic-color(php, dark)<br />
-    topic-color(ios, light)<br />
-    topic-color(ios, base)<br />
-    topic-color(ios, dark)<br />
-    topic-color(android, light)<br />
-    topic-color(android, base)<br />
-    topic-color(android, dark)<br />
-    topic-color(design, light)<br />
-    topic-color(design, base)<br />
-    topic-color(design, dark)<br />
-    topic-color(devtools, light)<br />
-    topic-color(devtools, base)<br />
-    topic-color(devtools, dark)<br />
-    topic-color(java, light)<br />
-    topic-color(java, base)<br />
-    topic-color(java, dark)<br />
-    topic-color(python, light)<br />
-    topic-color(python, base)<br />
-    topic-color(python, dark)<br />
-    topic-color(diglit, light)<br />
-    topic-color(diglit, base)<br />
-    topic-color(diglit, dark)<br />
-    topic-color(gamedev, light)<br />
-    topic-color(gamedev, base)<br />
-    topic-color(gamedev, dark)<br />
-    topic-color(csharp, light)<br />
-    topic-color(csharp, base)<br />
-    topic-color(csharp, dark)<br />
-    topic-color(databases, light)<br />
-    topic-color(databases, base)<br />
-    topic-color(databases, dark)<br />
-    topic-color(undefined, light)<br />
-    topic-color(undefined, base)<br />
-    topic-color(undefined, dark)<br />
-  </code></p>
-
-
 
   <h2 id="Mixins" class="m-b-1-xs">Mixins</h2>
   <p class="m-b-2-xs">Lens includes a few helpful mixins for common occuring styles or selectors.</p>
