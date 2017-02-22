@@ -142,8 +142,6 @@ template = """
         <li><code>2</code> = 1.5rem</li>
         <li><code>3</code> = 2rem</li>
         <li><code>4</code> = 3rem</li>
-        <li><code>5</code> = 4rem</li>
-        <li><code>6</code> = 5rem</li>
       </ul>
     </div>
     <div class="col col-30-lg">
@@ -183,8 +181,6 @@ template = """
         <li><code>.m-2-xs</code></li>
         <li><code>.m-3-xs</code></li>
         <li><code>.m-4-xs</code></li>
-        <li><code>.m-5-xs</code></li>
-        <li><code>.m-6-xs</code></li>
       </ul>
     </div>
     <div class="col col-30-md">
@@ -196,8 +192,6 @@ template = """
         <li><code>.p-2-xs</code></li>
         <li><code>.p-3-xs</code></li>
         <li><code>.p-4-xs</code></li>
-        <li><code>.p-5-xs</code></li>
-        <li><code>.p-6-xs</code></li>
       </ul>
     </div>
   </div>
@@ -254,23 +248,15 @@ template = """
   <div class="col-container border-xs">
     <div class="border-dark-xs float-l-xs inline-block-xs m-t-3-xs">m-t-3-xs</div>
     <div class="border-dark-xs float-l-xs inline-block-xs m-t-4-xs">m-t-4-xs</div>
-    <div class="border-dark-xs float-l-xs inline-block-xs m-t-5-xs">m-t-5-xs</div>
-    <div class="border-dark-xs float-l-xs inline-block-xs m-t-6-xs">m-t-6-xs</div>
     <div class="border-dark-xs float-l-xs inline-block-xs p-l-3-xs">p-l-3-xs</div>
     <div class="border-dark-xs float-l-xs inline-block-xs p-l-4-xs">p-l-4-xs</div>
-    <div class="border-dark-xs float-l-xs inline-block-xs p-l-5-xs">p-l-5-xs</div>
-    <div class="border-dark-xs float-l-xs inline-block-xs p-l-6-xs">p-l-6-xs</div>
   </div>
   <div class="guide-code m-b-4-xs">
 <pre><code class="language-html">&lt;div class="col-container border-xs"&gt;
 &lt;div class="border-dark-xs float-l-xs inline-block-xs m-t-3-xs"&gt;m-t-3-xs&lt;/div&gt;
 &lt;div class="border-dark-xs float-l-xs inline-block-xs m-t-4-xs"&gt;m-t-4-xs&lt;/div&gt;
-&lt;div class="border-dark-xs float-l-xs inline-block-xs m-t-5-xs"&gt;m-t-5-xs&lt;/div&gt;
-&lt;div class="border-dark-xs float-l-xs inline-block-xs m-t-6-xs"&gt;m-t-6-xs&lt;/div&gt;
 &lt;div class="border-dark-xs float-l-xs inline-block-xs p-l-3-xs"&gt;p-l-3-xs&lt;/div&gt;
 &lt;div class="border-dark-xs float-l-xs inline-block-xs p-l-4-xs"&gt;p-l-4-xs&lt;/div&gt;
-&lt;div class="border-dark-xs float-l-xs inline-block-xs p-l-5-xs"&gt;p-l-5-xs&lt;/div&gt;
-&lt;div class="border-dark-xs float-l-xs inline-block-xs p-l-6-xs"&gt;p-l-6-xs&lt;/div&gt;
 &lt;/div&gt;</code></pre>
   </div>
 </section>
@@ -310,17 +296,17 @@ template = """
   </div>
 
   <div class="border-xs p-2-xs m-b-1-xs">
-    <div class="relative-xs pos-t-2-xs pos-l-5-xs border-dark-xs inline-xs">
-      .relative-xs .pos-t-2-xs .pos-l-5-xs
+    <div class="relative-xs pos-t-2-xs pos-l-4-xs border-dark-xs inline-xs">
+      .relative-xs .pos-t-2-xs .pos-l-4-xs
     </div>
   </div>
   <div class="relative-xs border-xs p-3-xs m-b-1-xs">
     .relative-xs
-    <div class="absolute-xs pos-t-4-xs pos-l-5-xs border-dark-xs">
-      .absolute-xs .pos-t-4-xs .pos-l-5-xs
+    <div class="absolute-xs pos-t-4-xs pos-l-4-xs border-dark-xs">
+      .absolute-xs .pos-t-4-xs .pos-l-4-xs
     </div>
   </div>
-  <div class="relative-xs border-xs p-5-xs">
+  <div class="relative-xs border-xs p-4-xs">
     <div class="absolute-xs pos-t-1-xs pos-l-2-xs border-dark-xs p-05-xs z-2-xs" style="background: #fff">
       .absolute-xs .pos-t-1-xs .pos-l-2-xs
     </div>
@@ -330,17 +316,17 @@ template = """
   </div>
   <div class="guide-code m-b-4-xs">
 <pre><code class="language-html">&lt;div class="border-xs p-2-xs m-b-1-xs"&gt;
-&lt;div class="relative-xs pos-t-2-xs pos-l-5-xs border-dark-xs inline-xs"&gt;
-.relative-xs .pos-t-2-xs .pos-l-5-xs
+&lt;div class="relative-xs pos-t-2-xs pos-l-4-xs border-dark-xs inline-xs"&gt;
+.relative-xs .pos-t-2-xs .pos-l-4-xs
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="relative-xs border-xs p-3-xs m-b-1-xs"&gt;
 .relative-xs
-&lt;div class="absolute-xs pos-t-4-xs pos-l-5-xs border-dark-xs"&gt;
-.absolute-xs .pos-t-4-xs .pos-l-5-xs
+&lt;div class="absolute-xs pos-t-4-xs pos-l-4-xs border-dark-xs"&gt;
+.absolute-xs .pos-t-4-xs .pos-l-4-xs
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;div class="relative-xs border-xs p-5-xs"&gt;
+&lt;div class="relative-xs border-xs p-4-xs"&gt;
 &lt;div class="absolute-xs pos-t-1-xs pos-l-2-xs border-dark-xs p-05-xs z-2-xs" style="background: #fff"&gt;
 .absolute-xs .pos-t-1-xs .pos-l-2-xs
 &lt;/div&gt;
@@ -358,15 +344,15 @@ template = """
   <p class="m-b-3-xs">You can vertically align elements with the <code>.align-top-xs</code>, <code>.align-middle-xs</code>, or <code>.align-bottom-xs</code> classes.</p>
 
   <div class="m-b-2-xs">
-    <img src="img/gratt-spore.svg" alt="Gratt Spore" height="50px" Width="50px" class="align-top-xs m-r-1">
+    <img src="http://placehold.it/50x50" alt="Gratt Spore" height="50px" Width="50px" class="align-top-xs m-r-1 circle">
     This is our friend Gratt Spore and the <code>img</code> tag has the class <code>align-top-xs</code> on it.
   </div>
   <div class="m-b-2-xs">
-    <img src="img/gratt-spore.svg" alt="Gratt Spore" height="50px" Width="50px" class="align-middle-xs m-r-1">
+    <img src="http://placehold.it/50x50" alt="Gratt Spore" height="50px" Width="50px" class="align-middle-xs m-r-1 circle">
     This is our friend Gratt Spore and the <code>img</code> tag has the class <code>align-middle-xs</code> on it.
   </div>
   <div>
-    <img src="img/gratt-spore.svg" alt="Gratt Spore" height="50px" Width="50px" class="align-bottom-xs m-r-1">
+    <img src="http://placehold.it/50x50" alt="Gratt Spore" height="50px" Width="50px" class="align-bottom-xs m-r-1 circle">
     This is our friend Gratt Spore and the <code>img</code> tag has the class <code>align-bottom-xs</code> on it.
   </div>
 

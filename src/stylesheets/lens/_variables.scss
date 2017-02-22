@@ -46,22 +46,18 @@ $button-colors: (
 
 // Spacing Units
 //   0   = 0px
-//   0.5 = 8px
-//   1   = 16px
-//   2   = 24px
-//   3   = 32px
-//   4   = 48px
-//   5   = 64px
-//   6   = 80px
+//   0.5 = 5px
+//   1   = 10px
+//   2   = 20px
+//   3   = 25px
+//   4   = 50px
 $spacing: (
   0:   0rem,
-  0.5: 0.5rem,
-  1:   1rem,
-  2:   1.5rem,
-  3:   2rem,
-  4:   3rem,
-  5:   4rem,
-  6:   5rem
+  0.5: 0.3125rem,
+  1:   0.625rem,
+  2:   1.25rem,
+  3:   1.5625rem,
+  4:   3.125rem
 );
 
 // Spacing Sides
