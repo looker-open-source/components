@@ -16,9 +16,9 @@ m.directive "index", ->
 
 template = """
 <section id="index">
-  <p class="text-4-xs m-b-4-xs">Lens is a front-end framework and style guide that is used internally at Looker to build our app. We've architected it in a way that gives the entire Engineering team a way to quickly prototype or write front-end code. It contains atomic helper classes and components that ensure everything we build is consistent and flexible. For most thing we build, additional CSS won't be necessary. Lens gets the entire Engineering team to speak the same language, whether dev or designer.</p>
+  <p class="text-4-xs m-b-4-xs">Lens is a front-end framework and style guide that is used internally at Looker to build our app. We've architected it in a way that gives the entire Engineering team a way to quickly prototype or write front-end code. It contains atomic helper classes and components that ensure everything we build is consistent and flexible. For most thing we build, additional CSS won't be necessary. Lens gets the entire Engineering team to speak the same language, whether engineer or designer.</p>
 
-  <h2 class="m-b-2-xs">Why build our own framework?</h2>
+  <h2 class="m-b-2-xs">Why build our own Design System?</h2>
   <div class="col-container col-gutters m-b-4-xs">
     <div class="col col-50-md col-25-lg">
       <h3 class="text-4-xs m-b-05-xs">Consistency</h3>
@@ -34,7 +34,7 @@ template = """
     </div>
     <div class="col col-50-md col-25-lg">
       <h3 class="text-4-xs m-b-05-xs">Rapidness</h3>
-      <p>Designers and devs can both create rapid prototypes to help get features off the ground. From there, its easy to change how things look and feel by just making simple changes to your markup.</p>
+      <p>Designers and Engineers can both create rapid prototypes to help get features off the ground. From there, its easy to change how things look and feel by just making simple changes to your markup.</p>
     </div>
   </div>
 

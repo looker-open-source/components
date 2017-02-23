@@ -39,22 +39,18 @@ $ui-colors: (
 
 // Spacing Units
 //   0   = 0px
-//   0.5 = 8px
-//   1   = 16px
-//   2   = 24px
-//   3   = 32px
-//   4   = 48px
-//   5   = 64px
-//   6   = 80px
+//   0.5 = 5px
+//   1   = 10px
+//   2   = 20px
+//   3   = 25px
+//   4   = 50px
 $spacing: (
   0:   0rem,
-  0.5: 0.5rem,
-  1:   1rem,
-  2:   1.5rem,
-  3:   2rem,
-  4:   3rem,
-  5:   4rem,
-  6:   5rem
+  0.5: 0.3125rem,
+  1:   0.625rem,
+  2:   1.25rem,
+  3:   1.5625rem,
+  4:   3.125rem
 );
 
 // Spacing Sides
@@ -70,13 +66,13 @@ $spacing-sides: (
 
 // Type Variables
 $text-size: (
-  0: 3rem,
-  1: 2.25rem,
-  2: 1.75rem,
-  3: 1.25rem,
-  4: 1.125rem,
-  5: 1rem,
-  6: 0.875rem
+  1: 1.3125rem, // 21px
+  2: 1.125rem,  // 18px
+  3: 0.9375rem, // 15px
+  4: 0.875rem,  // 14px
+  5: 0.8125rem, // 13px
+  6: 0.75rem,   // 12px
+  7: 0.6875rem  // 11px
 );
 $brand-font: 'Open Sans', sans-serif;
 $light: 300;
@@ -91,8 +87,7 @@ $border-color-normal: #e8ebed;
 $border-color-light:  #f0f2f4;
 $border-radius: 2px;
 
-// Grid max width
-$grid-width: 1260px;
+
 
 // Global Responsive Breakpoints
 $sm: 480px;
