@@ -1,6 +1,6 @@
 // Non-Active State Styling Defaults
 $form-background-inactive: gray-color(gray-lighter)
-$form-border-inactive: $border-color-mid
+$form-border-inactive: $border-color-normal
 $form-color-inactive: text-color(medium)
 
 // Active State Styling Defaults
@@ -173,7 +173,7 @@ $form-states: success, warning, error
   &-radio
     &+.form-label:before
       border-radius: 50%
-      border: 1px solid $border-color-mid
+      border: 1px solid $border-color-normal
     // Selected Radio Styles
     &:checked+.form-label:before
       border: 5px solid ui-color(blue)
@@ -185,7 +185,7 @@ $form-states: success, warning, error
       width: 1rem
       height: 1rem
       border-radius: $border-radius
-      border: 1px solid $border-color-mid
+      border: 1px solid $border-color-normal
     // Slected Checkbox Styles
     &:checked+.form-label:before
       border: none
