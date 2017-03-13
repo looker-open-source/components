@@ -7,7 +7,9 @@ m.controller "LensMainController", (
 ) ->
   $scope.$watch(
     -> $state.current.title
-    -> $scope.title = $state.current.title
+    ->
+      $scope.title = $state.current.title
+      Prism.highlightAll()
   )
 
   return this

@@ -17,7 +17,7 @@ m.directive "borders", ->
 template = """
 <section id="borders">
   <h2 id="Border" class="m-b-1-xs">Border</h2>
-  <p class="m-b-1-xs">To adjust borders on elements, use the following classes: <code>.border-xs</code>, <code>.border-t-xs</code>, <code>.border-m-xs</code>, <code>.border-l-xs</code>, <code>.border-r-xs</code>. Use <code>dark</code>, <code>mid</code>, <code>light</code> modifiers to change the color of the border.</p>
+  <p class="m-b-1-xs">To adjust borders on elements, use the following classes: <code>.border-xs</code>, <code>.border-t-xs</code>, <code>.border-m-xs</code>, <code>.border-l-xs</code>, <code>.border-r-xs</code>. Use <code>dark</code>, <code>light</code> modifiers to change the color of the border.</p>
   <div class="col">
     <div class="col col-40-sm">
       <p><strong>Sides</strong></p>
@@ -43,13 +43,6 @@ template = """
   <div class="border-b-dark-xs inline-xs p-05-xs m-r-1-xs">.border-b-dark-xs</div>
   <div class="border-l-dark-xs inline-xs p-05-xs m-r-1-xs">.border-l-dark-xs</div>
   <div class="border-r-dark-xs inline-xs p-05-xs">.border-r-dark-xs</div>
-
-  <h4 class="m-b-1-xs m-t-3-xs">Mid</h4>
-  <div class="border-mid-xs inline-xs p-05-xs m-r-1-xs">.border-mid-xs</div>
-  <div class="border-t-mid-xs inline-xs p-05-xs m-r-1-xs">.border-t-mid-xs</div>
-  <div class="border-b-mid-xs inline-xs p-05-xs m-r-1-xs">.border-b-mid-xs</div>
-  <div class="border-l-mid-xs inline-xs p-05-xs m-r-1-xs">.border-l-mid-xs</div>
-  <div class="border-r-mid-xs inline-xs p-05-xs">.border-r-mid-xs</div>
 
   <h4 class="m-b-1-xs m-t-3-xs">Light</h4>
   <div class="border-light-xs inline-xs p-05-xs m-r-1-xs">.border-light-xs</div>
