@@ -16,20 +16,30 @@ m.directive "tables", ->
 
 template = """
 <section>
-  <h2 id="Default" class="m-b-1-xs">Default Table</h2>
-  <p class="m-b-2-xs">Our base table style should not require any atomic classes. Additionally, the width of columns in tables can be set by using Lens's <a href="grid.html">grid classes</a>.</p>
+  <h2 id="Rows" class="m-b-1-xs">Just A Regular Table</h2>
+  <p class="m-b-2-xs">Use a regular table by using a <code>&lt;table&gt;&lt;/table&gt;</code> element and not adding any extra table classes. Additionally, the width of columns in tables can be set by using Lens's <a href="grid.html">grid classes</a>.</p>
 
-  <table class="m-b-2-xs col-70-lg">
+  <table class="m-b-2-xs col-100-lg">
     <tbody>
       <tr>
-        <th class="col-20-xs">Heading 1</th>
+        <th class="col-80-xs">Heading 1</th>
         <th>Heading 2</th>
         <th>Heading 3</th>
       </tr>
       <tr>
-        <td>Cell 1</td>
-        <td>Cell 2</td>
-        <td>Cell 3</td>
+        <td>hello</td>
+        <td>it's</td>
+        <td>me</td>
+      </tr>
+      <tr>
+        <td>I</td>
+        <td>was</td>
+        <td>wondering</td>
+      </tr>
+      <tr>
+        <td>if</td>
+        <td>after</td>
+        <td>all</td>
       </tr>
     </tbody>
   </table>
@@ -37,154 +47,134 @@ template = """
 <pre><code class="language-html">&lt;table&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;th class="col-20-xs"&gt;Heading 1&lt;/th&gt;
+      &lt;th class="col-80-xs"&gt;Heading 1&lt;/th&gt;
       &lt;th&gt;Heading 2&lt;/th&gt;
       &lt;th&gt;Heading 3&lt;/th&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt;Cell 1&lt;/td&gt;
-      &lt;td&gt;Cell 2&lt;/td&gt;
-      &lt;td&gt;Cell 3&lt;/td&gt;
+      &lt;td&gt;hello&lt;/td&gt;
+      &lt;td&gt;it's&lt;/td&gt;
+      &lt;td&gt;me&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;I&lt;/td&gt;
+      &lt;td&gt;was&lt;/td&gt;
+      &lt;td&gt;wondering&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;if&lt;/td&gt;
+      &lt;td&gt;after&lt;/td&gt;
+      &lt;td&gt;all&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+  </div>
+
+
+  <h2 id="Rows" class="m-b-1-xs">Striped Table</h2>
+  <p class="m-b-2-xs">Use a striped table by adding the class <code>.table-striped</code>. Additionally, the width of columns in tables can be set by using Lens's <a href="grid.html">grid classes</a>.</p>
+
+  <table class="table-striped m-b-2-xs col-100-lg">
+    <tbody>
+      <tr>
+        <th class="col-80-xs">Heading 1</th>
+        <th>Heading 2</th>
+        <th>Heading 3</th>
+      </tr>
+      <tr>
+        <td>hello</td>
+        <td>it's</td>
+        <td>me</td>
+      </tr>
+      <tr>
+        <td>I</td>
+        <td>was</td>
+        <td>wondering</td>
+      </tr>
+      <tr>
+        <td>if</td>
+        <td>after</td>
+        <td>all</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="guide-code m-b-4-xs">
+<pre><code class="language-html">&lt;table class="table-striped"&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th class="col-80-xs"&gt;Heading 1&lt;/th&gt;
+      &lt;th&gt;Heading 2&lt;/th&gt;
+      &lt;th&gt;Heading 3&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;hello&lt;/td&gt;
+      &lt;td&gt;it's&lt;/td&gt;
+      &lt;td&gt;me&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;I&lt;/td&gt;
+      &lt;td&gt;was&lt;/td&gt;
+      &lt;td&gt;wondering&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;if&lt;/td&gt;
+      &lt;td&gt;after&lt;/td&gt;
+      &lt;td&gt;all&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+  </div>
+
+
+  <h2 id="Default" class="m-b-1-xs">Content Table</h2>
+  <p class="m-b-2-xs">Use our content table style with the class <code>.table-content</code>. Use <code>.sub-text</code> for any sub text (like a description). Additionally, the width of columns in tables can be set by using Lens's <a href="grid.html">grid classes</a>.</p>
+
+  <table class="table-content m-b-2-xs col-100-lg">
+    <tbody>
+      <tr>
+        <th class="col-80-xs">Heading 1</th>
+        <th>Heading 2</th>
+        <th>Heading 3</th>
+      </tr>
+      <tr>
+        <td>hello</td>
+        <td>it's</td>
+        <td>me</td>
+      </tr>
+      <tr>
+        <td>
+          <div>here</div>
+          <div class="sub-text">A description or something.</div>
+        </td>
+        <td>I</td>
+        <td>am</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="guide-code m-b-4-xs">
+<pre><code class="language-html">&lt;table class="table-content"&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th class="col-80-xs"&gt;Heading 1&lt;/th&gt;
+      &lt;th&gt;Heading 2&lt;/th&gt;
+      &lt;th&gt;Heading 3&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;hello&lt;/td&gt;
+      &lt;td&gt;it's&lt;/td&gt;
+      &lt;td&gt;me&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;
+        &lt;div&gt;here&lt;/div&gt;
+        &lt;div class="sub-text"&gt;A description or something.&lt;/div&gt;
+      &lt;/td&gt;
+      &lt;td&gt;I&lt;/td&gt;
+      &lt;td&gt;am&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;</code></pre>
 </div>
 
-
-
-  <h2 id="Rows" class="m-b-1-xs">Table with Rows</h2>
-  <p class="m-b-2-xs">You can add borders on all the rows in a table by adding the class <code>.table-border-rows</code> class. Additionally, you can change the color of the border by adding an additional modifier to the end of the class.</p>
-  <div class="col-container">
-    <div class="col col-50-lg">
-      <p class="bold">Table Border Colors</p>
-      <ul class="list-unstyled m-b-3-xs">
-        <li><code>.table-border-rows</code></li>
-        <li><code>.table-border-rows-light</code></li>
-        <li><code>.table-border-rows-mid</code></li>
-        <li><code>.table-border-rows-dark</code></li>
-      </ul>
-    </div>
-  </div>
-
-  <table class="table-border-rows-light m-b-2-xs col-70-lg">
-    <tbody>
-      <tr>
-        <th>Heading 1</th>
-        <th>Heading 2</th>
-        <th>Heading 3</th>
-      </tr>
-      <tr>
-        <td>Cell 1</td>
-        <td>Cell 2</td>
-        <td>Cell 3</td>
-      </tr>
-    </tbody>
-  </table>
-  <div class="guide-code m-b-4-xs">
-<pre><code class="language-html">&lt;table class="table-border-rows-light"&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;th&gt;Heading 1&lt;/th&gt;
-      &lt;th&gt;Heading 2&lt;/th&gt;
-      &lt;th&gt;Heading 3&lt;/th&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Cell 1&lt;/td&gt;
-      &lt;td&gt;Cell 2&lt;/td&gt;
-      &lt;td&gt;Cell 3&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;</code></pre>
-  </div>
-
-  <h2 id="Columns" class="m-b-1-xs">Table with Columns</h2>
-  <p class="m-b-2-xs">You can add borders on all the columns in a table by adding the class <code>.table-border-columns</code> class. Additionally, you can change the color of the border by adding an additional modifier to the end of the class.</p>
-  <div class="col-container">
-    <div class="col col-50-lg">
-      <p class="bold">Table Border Colors</p>
-      <ul class="list-unstyled m-b-3-xs">
-        <li><code>.table-border-columns</code></li>
-        <li><code>.table-border-columns-light</code></li>
-        <li><code>.table-border-columns-mid</code></li>
-        <li><code>.table-border-columns-dark</code></li>
-      </ul>
-    </div>
-  </div>
-
-  <table class="table-border-columns-dark">
-    <tbody>
-      <tr>
-        <th>Heading 1</th>
-        <th>Heading 2</th>
-        <th>Heading 3</th>
-      </tr>
-      <tr>
-        <td>Cell 1</td>
-        <td>Cell 2</td>
-        <td>Cell 3</td>
-      </tr>
-    </tbody>
-  </table>
-  <div class="guide-code m-b-4-xs">
-<pre><code class="language-html">&lt;table class="table-border-column-dark"&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;th&gt;Heading 1&lt;/th&gt;
-      &lt;th&gt;Heading 2&lt;/th&gt;
-      &lt;th&gt;Heading 3&lt;/th&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Cell 1&lt;/td&gt;
-      &lt;td&gt;Cell 2&lt;/td&gt;
-      &lt;td&gt;Cell 3&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;</code></pre>
-  </div>
-
-  <h2 id="Cells" class="m-b-1-xs">Table with Cells</h2>
-  <p class="m-b-2-xs">You can add borders on all the cells in a table by adding the class <code>.table-border-cells</code> class.</p>
-  <div class="col-container">
-    <div class="col col-50-lg">
-      <p class="bold">Table Border Colors</p>
-      <ul class="list-unstyled m-b-3-xs">
-        <li><code>.table-border-cells</code></li>
-        <li><code>.table-border-cells-light</code></li>
-        <li><code>.table-border-cells-mid</code></li>
-        <li><code>.table-border-cells-dark</code></li>
-      </ul>
-    </div>
-  </div>
-
-  <table class="table-border-cells">
-    <tbody>
-      <tr>
-        <th>Heading 1</th>
-        <th>Heading 2</th>
-        <th>Heading 3</th>
-      </tr>
-      <tr>
-        <td>Cell 1</td>
-        <td>Cell 2</td>
-        <td>Cell 3</td>
-      </tr>
-    </tbody>
-  </table>
-  <div class="guide-code m-b-4-xs">
-<pre><code class="language-html">&lt;table class="table-border-cells"&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;th&gt;Heading 1&lt;/th&gt;
-      &lt;th&gt;Heading 2&lt;/th&gt;
-      &lt;th&gt;Heading 3&lt;/th&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Cell 1&lt;/td&gt;
-      &lt;td&gt;Cell 2&lt;/td&gt;
-      &lt;td&gt;Cell 3&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;</code></pre>
-  </div>
 </section>
 """
