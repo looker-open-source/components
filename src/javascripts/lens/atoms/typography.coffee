@@ -119,7 +119,7 @@ Resize your browser to see this text size change.
   <h2 class="m-b-1-xs">Text Alignment</h2>
   <p class="m-b-2-xs">Use the following classes to control text alignment in your layouts.</p>
 
-  <div><code>.text-left</code></div>
+  <div><code>.text-left-xs</code></div>
   <div class="p-2-xs border-mid-xs">
     <p class="text-left-xs">Left aligned text</p>
   </div>

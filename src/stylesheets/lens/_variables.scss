@@ -1,5 +1,8 @@
 $lens-version: "0.1.0";
 
+@import "functions/all";
+
+
 // Brand Colors
 $brand-colors: (
   "purple": #41327B,
@@ -77,6 +80,7 @@ $text-size: (
 $brand-font: 'Open Sans', sans-serif;
 $light: 300;
 $bold: 600;
+$extra-bold: 700;
 
 
 
@@ -93,3 +97,22 @@ $sm: 480px;
 $md: 680px;
 $lg: 960px;
 $xl: 1140px;
+
+
+
+// Form Variables
+$form-font-size: 12px;
+$form-input-height: 28px;
+$form-token-height: 18px;
+$form-background-inactive: #fff;
+$form-border-inactive: #DDDDDD;
+$form-color-inactive: gray-color(gray-4);
+$form-color-disabled: #e8e8e8;
+$form-background-active: #fff;
+$form-border-active: #A3D4DA;
+$form-color-active: gray-color(gray-5);
+$form-shadow-active: rgba(163, 212, 218, 0.7);
+$form-feedback-error: lighten(ui-color(red), 57%);
+$form-feedback-error-text: ui-color(red);
+$lk-switch-active-bg: #a07bc7;
+$lk-switch-inactive-bg: #7f889b;

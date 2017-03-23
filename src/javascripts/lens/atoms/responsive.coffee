@@ -43,26 +43,26 @@ template = """
   </div>
   <div class="guide-code m-b-4-xs">
 <pre><code class="language-html">&lt;div class="col-container"&gt;
-&lt;div class="col col-100-xs col-50-md col-25-lg border-dark-xs"&gt;
-&lt;span class="block-xs hide-md hide-lg"&gt;.col-100-xs&lt;/span&gt;
-&lt;span class="hide-xs block-md hide-lg"&gt;.col-50-md&lt;/span&gt;
-&lt;span class="hide-xs block-lg"&gt;.col-25-lg&lt;/span&gt;
-&lt;/div&gt;
-&lt;div class="col col-100-xs col-50-md col-25-lg border-dark-xs"&gt;
-&lt;span class="block-xs hide-md hide-lg"&gt;.col-100-xs&lt;/span&gt;
-&lt;span class="hide-xs block-md hide-lg"&gt;.col-50-md&lt;/span&gt;
-&lt;span class="hide-xs block-lg"&gt;.col-25-lg&lt;/span&gt;
-&lt;/div&gt;
-&lt;div class="col col-100-xs col-50-md col-25-lg border-dark-xs"&gt;
-&lt;span class="block-xs hide-md hide-lg"&gt;.col-100-xs&lt;/span&gt;
-&lt;span class="hide-xs block-md hide-lg"&gt;.col-50-md&lt;/span&gt;
-&lt;span class="hide-xs block-lg"&gt;.col-25-lg&lt;/span&gt;
-&lt;/div&gt;
-&lt;div class="col col-100-xs col-50-md col-25-lg border-dark-xs"&gt;
-&lt;span class="block-xs hide-md hide-lg"&gt;.col-100-xs&lt;/span&gt;
-&lt;span class="hide-xs block-md hide-lg"&gt;.col-50-md&lt;/span&gt;
-&lt;span class="hide-xs block-lg"&gt;.col-25-lg&lt;/span&gt;
-&lt;/div&gt;
+  &lt;div class="col col-100-xs col-50-md col-25-lg border-dark-xs"&gt;
+    &lt;span class="block-xs hide-md hide-lg"&gt;.col-100-xs&lt;/span&gt;
+    &lt;span class="hide-xs block-md hide-lg"&gt;.col-50-md&lt;/span&gt;
+    &lt;span class="hide-xs block-lg"&gt;.col-25-lg&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="col col-100-xs col-50-md col-25-lg border-dark-xs"&gt;
+    &lt;span class="block-xs hide-md hide-lg"&gt;.col-100-xs&lt;/span&gt;
+    &lt;span class="hide-xs block-md hide-lg"&gt;.col-50-md&lt;/span&gt;
+    &lt;span class="hide-xs block-lg"&gt;.col-25-lg&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="col col-100-xs col-50-md col-25-lg border-dark-xs"&gt;
+    &lt;span class="block-xs hide-md hide-lg"&gt;.col-100-xs&lt;/span&gt;
+    &lt;span class="hide-xs block-md hide-lg"&gt;.col-50-md&lt;/span&gt;
+    &lt;span class="hide-xs block-lg"&gt;.col-25-lg&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="col col-100-xs col-50-md col-25-lg border-dark-xs"&gt;
+    &lt;span class="block-xs hide-md hide-lg"&gt;.col-100-xs&lt;/span&gt;
+    &lt;span class="hide-xs block-md hide-lg"&gt;.col-50-md&lt;/span&gt;
+    &lt;span class="hide-xs block-lg"&gt;.col-25-lg&lt;/span&gt;
+  &lt;/div&gt;
 &lt;/div&gt;</code></pre>
   </div>
 
