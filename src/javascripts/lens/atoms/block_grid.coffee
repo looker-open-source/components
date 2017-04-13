@@ -15,100 +15,120 @@ m.directive "blockGrid", ->
 
 
 template = """
-<section id="grid">
-  <h2 class="m-b-1-xs">The Block Grid</h2>
-  <p class="m-b-1-xs">The block grid is used when you need a grid of an unknown number of items. The recommended way to build block grids is with <code>ul</code> elements, but the classes work just fine on any element, like a <code>div</code>. Use your best judgement to keep the markup as semantic as possible.</p>
-  <p class="m-b-1-xs">To build a block grid, start with a <code>&lt;ul class="block-grid block-n-xs"&gt;</code>, where n is a number from 1-6. These divisions can be changed across breakpoints by applying one or more of our <a href="responsive.html">grid suffix classes</a>. Then, inside that list, create your items with <code>&lt;li class="block-grid__item"&gt;</code>. If you want the same grid division across all breakpoints, use the default <code>.block-n-xs</code> class. <em>Resize your browser to see the block grid suffixes in effect.</em></p>
-  <p class="m-b-3-xs"><strong>Note:</strong> Do not put any style utility classes on the block grid containers, nest them inside the list items instead.</p>
-
-  <h3 id="Default" class="text-5-xs">No Gutters (Default)</h3>
-  <p class="m-b-3-xs">By default, the block grid comes with no gutters.</p>
-  <ul class="block-grid block-4-xs block-5-md block-6-xl">
-    <li class="block-grid__item">
-      <div class="border-dark-xs round text-center-xs p-tb-05-xs">1</div>
-    </li>
-    <li class="block-grid__item">
-      <div class="border-dark-xs round text-center-xs p-tb-05-xs">2</div>
-    </li>
-    <li class="block-grid__item">
-      <div class="border-dark-xs round text-center-xs p-tb-05-xs">3</div>
-    </li>
-    <li class="block-grid__item">
-      <div class="border-dark-xs round text-center-xs p-tb-05-xs">4</div>
-    </li>
-    <li class="block-grid__item">
-      <div class="border-dark-xs round text-center-xs p-tb-05-xs">5</div>
-    </li>
-    <li class="block-grid__item">
-      <div class="border-dark-xs round text-center-xs p-tb-05-xs">6</div>
-    </li>
-  </ul>
-  <div class="guide-code m-b-4-xs">
-<pre><code class="language-html">&lt;ul class="block-grid block-4-xs block-5-md block-6-xl"&gt;
-&lt;li class="block-grid__item"&gt;
-&lt;div class="border-dark-xs round text-center-xs p-tb-05-xs"&gt;1&lt;/div&gt;
-&lt;/li&gt;
-&lt;li class="block-grid__item"&gt;
-&lt;div class="border-dark-xs round text-center-xs p-tb-05-xs"&gt;2&lt;/div&gt;
-&lt;/li&gt;
-&lt;li class="block-grid__item"&gt;
-&lt;div class="border-dark-xs round text-center-xs p-tb-05-xs"&gt;3&lt;/div&gt;
-&lt;/li&gt;
-&lt;li class="block-grid__item"&gt;
-&lt;div class="border-dark-xs round text-center-xs p-tb-05-xs"&gt;4&lt;/div&gt;
-&lt;/li&gt;
-&lt;li class="block-grid__item"&gt;
-&lt;div class="border-dark-xs round text-center-xs p-tb-05-xs"&gt;5&lt;/div&gt;
-&lt;/li&gt;
-&lt;li class="block-grid__item"&gt;
-&lt;div class="border-dark-xs round text-center-xs p-tb-05-xs"&gt;6&lt;/div&gt;
-&lt;/li&gt;
-&lt;/ul&gt;</code></pre>
+<header class="guide-banner" role="banner">
+  <a ui-sref="index" ui-sref-active="active" class="guide-name">Lens</a>
+  <div class="guide-skip-content">
+    <a href="#navigation">Skip to Navigation</a>
   </div>
+  <a href="#" id="hamburger" class="hamburger-button">
+    <span class="hamburger"></span>
+  </a>
+</header>
 
-  <h3 id="Gutters" class="text-5-xs">Auto Gutters</h3>
-  <p class="m-b-3-xs">To add automatic gutters between items in the block grid, apply the class <code>.block-grid-gutters</code> alongside your <code>.block-grid</code> class.</p>
-  <ul class="block-grid block-2-xs block-3-lg block-6-xl block-grid-gutters">
-    <li class="block-grid__item">
-      <div class="border-dark-xs round text-center-xs p-tb-05-xs">1</div>
-    </li>
-    <li class="block-grid__item">
-      <div class="border-dark-xs round text-center-xs p-tb-05-xs">2</div>
-    </li>
-    <li class="block-grid__item">
-      <div class="border-dark-xs round text-center-xs p-tb-05-xs">3</div>
-    </li>
-    <li class="block-grid__item">
-      <div class="border-dark-xs round text-center-xs p-tb-05-xs">4</div>
-    </li>
-    <li class="block-grid__item">
-      <div class="border-dark-xs round text-center-xs p-tb-05-xs">5</div>
-    </li>
-    <li class="block-grid__item">
-      <div class="border-dark-xs round text-center-xs p-tb-05-xs">6</div>
-    </li>
-  </ul>
-  <div class="guide-code">
-<pre><code class="language-html">&lt;ul class="block-grid block-2-xs block-3-lg block-6-xl block-grid-gutters"&gt;
-&lt;li class="block-grid__item"&gt;
-&lt;div class="border-dark-xs round text-center-xs p-tb-05-xs"&gt;1&lt;/div&gt;
-&lt;/li&gt;
-&lt;li class="block-grid__item"&gt;
-&lt;div class="border-dark-xs round text-center-xs p-tb-05-xs"&gt;2&lt;/div&gt;
-&lt;/li&gt;
-&lt;li class="block-grid__item"&gt;
-&lt;div class="border-dark-xs round text-center-xs p-tb-05-xs"&gt;3&lt;/div&gt;
-&lt;/li&gt;
-&lt;li class="block-grid__item"&gt;
-&lt;div class="border-dark-xs round text-center-xs p-tb-05-xs"&gt;4&lt;/div&gt;
-&lt;/li&gt;
-&lt;li class="block-grid__item"&gt;
-&lt;div class="border-dark-xs round text-center-xs p-tb-05-xs"&gt;5&lt;/div&gt;
-&lt;/li&gt;
-&lt;li class="block-grid__item"&gt;
-&lt;div class="border-dark-xs round text-center-xs p-tb-05-xs"&gt;6&lt;/div&gt;
-&lt;/li&gt;
-&lt;/ul&gt;</code></pre>
-  </div>
-</section>
+<lens-main>
+
+  <section id="grid">
+    <h2 class="m-b-1-xs">The Block Grid</h2>
+    <p class="m-b-1-xs">The block grid is used when you need a grid of an unknown number of items. The recommended way to build block grids is with <code>ul</code> elements, but the classes work just fine on any element, like a <code>div</code>. Use your best judgement to keep the markup as semantic as possible.</p>
+    <p class="m-b-1-xs">To build a block grid, start with a <code>&lt;ul class="block-grid block-n-xs"&gt;</code>, where n is a number from 1-6. These divisions can be changed across breakpoints by applying one or more of our <a href="responsive.html">grid suffix classes</a>. Then, inside that list, create your items with <code>&lt;li class="block-grid__item"&gt;</code>. If you want the same grid division across all breakpoints, use the default <code>.block-n-xs</code> class. <em>Resize your browser to see the block grid suffixes in effect.</em></p>
+    <p class="m-b-3-xs"><strong>Note:</strong> Do not put any style utility classes on the block grid containers, nest them inside the list items instead.</p>
+
+    <h3 id="Default" class="text-5-xs">No Gutters (Default)</h3>
+    <p class="m-b-3-xs">By default, the block grid comes with no gutters.</p>
+    <ul class="block-grid block-4-xs block-5-md block-6-xl">
+      <li class="block-grid__item">
+        <div class="border-dark-xs round text-center-xs p-tb-05-xs">1</div>
+      </li>
+      <li class="block-grid__item">
+        <div class="border-dark-xs round text-center-xs p-tb-05-xs">2</div>
+      </li>
+      <li class="block-grid__item">
+        <div class="border-dark-xs round text-center-xs p-tb-05-xs">3</div>
+      </li>
+      <li class="block-grid__item">
+        <div class="border-dark-xs round text-center-xs p-tb-05-xs">4</div>
+      </li>
+      <li class="block-grid__item">
+        <div class="border-dark-xs round text-center-xs p-tb-05-xs">5</div>
+      </li>
+      <li class="block-grid__item">
+        <div class="border-dark-xs round text-center-xs p-tb-05-xs">6</div>
+      </li>
+    </ul>
+    <div class="guide-code m-b-4-xs">
+  <pre><code class="language-html">&lt;ul class="block-grid block-4-xs block-5-md block-6-xl"&gt;
+  &lt;li class="block-grid__item"&gt;
+  &lt;div class="border-dark-xs round text-center-xs p-tb-05-xs"&gt;1&lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li class="block-grid__item"&gt;
+  &lt;div class="border-dark-xs round text-center-xs p-tb-05-xs"&gt;2&lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li class="block-grid__item"&gt;
+  &lt;div class="border-dark-xs round text-center-xs p-tb-05-xs"&gt;3&lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li class="block-grid__item"&gt;
+  &lt;div class="border-dark-xs round text-center-xs p-tb-05-xs"&gt;4&lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li class="block-grid__item"&gt;
+  &lt;div class="border-dark-xs round text-center-xs p-tb-05-xs"&gt;5&lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li class="block-grid__item"&gt;
+  &lt;div class="border-dark-xs round text-center-xs p-tb-05-xs"&gt;6&lt;/div&gt;
+  &lt;/li&gt;
+  &lt;/ul&gt;</code></pre>
+    </div>
+
+    <h3 id="Gutters" class="text-5-xs">Auto Gutters</h3>
+    <p class="m-b-3-xs">To add automatic gutters between items in the block grid, apply the class <code>.block-grid-gutters</code> alongside your <code>.block-grid</code> class.</p>
+    <ul class="block-grid block-2-xs block-3-lg block-6-xl block-grid-gutters">
+      <li class="block-grid__item">
+        <div class="border-dark-xs round text-center-xs p-tb-05-xs">1</div>
+      </li>
+      <li class="block-grid__item">
+        <div class="border-dark-xs round text-center-xs p-tb-05-xs">2</div>
+      </li>
+      <li class="block-grid__item">
+        <div class="border-dark-xs round text-center-xs p-tb-05-xs">3</div>
+      </li>
+      <li class="block-grid__item">
+        <div class="border-dark-xs round text-center-xs p-tb-05-xs">4</div>
+      </li>
+      <li class="block-grid__item">
+        <div class="border-dark-xs round text-center-xs p-tb-05-xs">5</div>
+      </li>
+      <li class="block-grid__item">
+        <div class="border-dark-xs round text-center-xs p-tb-05-xs">6</div>
+      </li>
+    </ul>
+    <div class="guide-code">
+  <pre><code class="language-html">&lt;ul class="block-grid block-2-xs block-3-lg block-6-xl block-grid-gutters"&gt;
+  &lt;li class="block-grid__item"&gt;
+  &lt;div class="border-dark-xs round text-center-xs p-tb-05-xs"&gt;1&lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li class="block-grid__item"&gt;
+  &lt;div class="border-dark-xs round text-center-xs p-tb-05-xs"&gt;2&lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li class="block-grid__item"&gt;
+  &lt;div class="border-dark-xs round text-center-xs p-tb-05-xs"&gt;3&lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li class="block-grid__item"&gt;
+  &lt;div class="border-dark-xs round text-center-xs p-tb-05-xs"&gt;4&lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li class="block-grid__item"&gt;
+  &lt;div class="border-dark-xs round text-center-xs p-tb-05-xs"&gt;5&lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li class="block-grid__item"&gt;
+  &lt;div class="border-dark-xs round text-center-xs p-tb-05-xs"&gt;6&lt;/div&gt;
+  &lt;/li&gt;
+  &lt;/ul&gt;</code></pre>
+    </div>
+  </section>
+  
+</lens-main>
+
+<main-nav></main-nav>
+
+<footer class="guide-contentinfo" role="contentinfo">
+  <p class="guide-contentinfo-copy">Copyright &copy; 2017 Looker. All rights reserved.</p>
+</footer>
 """

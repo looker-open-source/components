@@ -3,6 +3,7 @@ angular = require "angular"
 require "angular-ui-router"
 require "./atoms/atoms_module.coffee"
 require "./getting_started.coffee"
+require "./login.coffee"
 require "./index.coffee"
 require "./release_notes.coffee"
 require "./lens_main.coffee"
@@ -14,6 +15,7 @@ module.exports = m = angular.module "Lens", [
   "lens.atoms"
   "lens.getting_started"
   "lens.index"
+  "lens.login"
   "lens.release_notes"
   "lens.lens_main"
   "lens.main_nav"
@@ -21,6 +23,11 @@ module.exports = m = angular.module "Lens", [
 ]
 
 m.config ($stateProvider) ->
+  loginState =
+    name: 'login'
+    url: '/login'
+    template: '<login></login>'
+    title: 'Login to view Lens'
   indexState =
     name: 'index'
     url: '/'
@@ -102,6 +109,7 @@ m.config ($stateProvider) ->
     template: '<release-notes></release-notes>'
     title: 'Release Notes'
 
+  $stateProvider.state loginState
   $stateProvider.state indexState
   $stateProvider.state gettingStartedState
   $stateProvider.state blockGridState

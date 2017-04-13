@@ -15,84 +15,105 @@ m.directive "borders", ->
 
 
 template = """
-<section id="borders">
-  <h2 id="Border" class="m-b-1-xs">Border</h2>
-  <p class="m-b-1-xs">To adjust borders on elements, use the following classes: <code>.border-xs</code>, <code>.border-t-xs</code>, <code>.border-m-xs</code>, <code>.border-l-xs</code>, <code>.border-r-xs</code>. Use <code>dark</code>, <code>light</code> modifiers to change the color of the border.</p>
-  <div class="col">
-    <div class="col col-40-sm">
-      <p><strong>Sides</strong></p>
-      <ul class="list-unstyled m-b-3-xs">
-        <li><code>t</code> = top</li>
-        <li><code>b</code> = bottom</li>
-        <li><code>l</code> = left</li>
-        <li><code>r</code> = right</li>
-      </ul>
+<header class="guide-banner" role="banner">
+  <a ui-sref="index" ui-sref-active="active" class="guide-name">Lens</a>
+  <div class="guide-skip-content">
+    <a href="#navigation">Skip to Navigation</a>
+  </div>
+  <a href="#" id="hamburger" class="hamburger-button">
+    <span class="hamburger"></span>
+  </a>
+</header>
+
+<lens-main>
+
+  <section id="borders">
+    <h2 id="Border" class="m-b-1-xs">Border</h2>
+    <p class="m-b-1-xs">To adjust borders on elements, use the following classes: <code>.border-xs</code>, <code>.border-t-xs</code>, <code>.border-m-xs</code>, <code>.border-l-xs</code>, <code>.border-r-xs</code>. Use <code>dark</code>, <code>light</code> modifiers to change the color of the border.</p>
+    <div class="col">
+      <div class="col col-40-sm">
+        <p><strong>Sides</strong></p>
+        <ul class="list-unstyled m-b-3-xs">
+          <li><code>t</code> = top</li>
+          <li><code>b</code> = bottom</li>
+          <li><code>l</code> = left</li>
+          <li><code>r</code> = right</li>
+        </ul>
+      </div>
     </div>
-  </div>
 
-  <h4 class="m-b-1-xs">Normal</h4>
-  <div class="border-xs inline-xs p-05-xs m-r-1-xs">.border-xs</div>
-  <div class="border-t-xs inline-xs p-05-xs m-r-1-xs">.border-t-xs</div>
-  <div class="border-b-xs inline-xs p-05-xs m-r-1-xs">.border-b-xs</div>
-  <div class="border-l-xs inline-xs p-05-xs m-r-1-xs">.border-l-xs</div>
-  <div class="border-r-xs inline-xs p-05-xs">.border-r-xs</div>
+    <h4 class="m-b-1-xs">Normal</h4>
+    <div class="border-xs inline-xs p-05-xs m-r-1-xs">.border-xs</div>
+    <div class="border-t-xs inline-xs p-05-xs m-r-1-xs">.border-t-xs</div>
+    <div class="border-b-xs inline-xs p-05-xs m-r-1-xs">.border-b-xs</div>
+    <div class="border-l-xs inline-xs p-05-xs m-r-1-xs">.border-l-xs</div>
+    <div class="border-r-xs inline-xs p-05-xs">.border-r-xs</div>
 
-  <h4 class="m-b-1-xs m-t-3-xs">Dark</h4>
-  <div class="border-dark-xs inline-xs p-05-xs m-r-1-xs">.border-dark-xs</div>
-  <div class="border-t-dark-xs inline-xs p-05-xs m-r-1-xs">.border-t-dark-xs</div>
-  <div class="border-b-dark-xs inline-xs p-05-xs m-r-1-xs">.border-b-dark-xs</div>
-  <div class="border-l-dark-xs inline-xs p-05-xs m-r-1-xs">.border-l-dark-xs</div>
-  <div class="border-r-dark-xs inline-xs p-05-xs">.border-r-dark-xs</div>
+    <h4 class="m-b-1-xs m-t-3-xs">Dark</h4>
+    <div class="border-dark-xs inline-xs p-05-xs m-r-1-xs">.border-dark-xs</div>
+    <div class="border-t-dark-xs inline-xs p-05-xs m-r-1-xs">.border-t-dark-xs</div>
+    <div class="border-b-dark-xs inline-xs p-05-xs m-r-1-xs">.border-b-dark-xs</div>
+    <div class="border-l-dark-xs inline-xs p-05-xs m-r-1-xs">.border-l-dark-xs</div>
+    <div class="border-r-dark-xs inline-xs p-05-xs">.border-r-dark-xs</div>
 
-  <h4 class="m-b-1-xs m-t-3-xs">Light</h4>
-  <div class="border-light-xs inline-xs p-05-xs m-r-1-xs">.border-light-xs</div>
-  <div class="border-t-light-xs inline-xs p-05-xs m-r-1-xs">.border-t-light-xs</div>
-  <div class="border-b-light-xs inline-xs p-05-xs m-r-1-xs">.border-b-light-xs</div>
-  <div class="border-l-light-xs inline-xs p-05-xs m-r-1-xs">.border-l-light-xs</div>
-  <div class="border-r-light-xs inline-xs p-05-xs">.border-r-light-xs</div>
-  <div class="guide-code m-b-4-xs">
-<pre><code class="language-html">&lt;div class="border-xs inline-xs p-05-xs m-r-1-xs"&gt;.border-xs&lt;/div&gt;
-&lt;div class="border-t-xs inline-xs p-05-xs m-r-1-xs"&gt;.border-t-xs&lt;/div&gt;
-&lt;div class="border-b-xs inline-xs p-05-xs m-r-1-xs"&gt;.border-b-xs&lt;/div&gt;
-&lt;div class="border-l-xs inline-xs p-05-xs m-r-1-xs"&gt;.border-l-xs&lt;/div&gt;
-&lt;div class="border-r-xs inline-xs p-05-xs m-r-1-xs"&gt;.border-r-xs&lt;/div&gt;</code></pre>
-  </div>
+    <h4 class="m-b-1-xs m-t-3-xs">Light</h4>
+    <div class="border-light-xs inline-xs p-05-xs m-r-1-xs">.border-light-xs</div>
+    <div class="border-t-light-xs inline-xs p-05-xs m-r-1-xs">.border-t-light-xs</div>
+    <div class="border-b-light-xs inline-xs p-05-xs m-r-1-xs">.border-b-light-xs</div>
+    <div class="border-l-light-xs inline-xs p-05-xs m-r-1-xs">.border-l-light-xs</div>
+    <div class="border-r-light-xs inline-xs p-05-xs">.border-r-light-xs</div>
+    <div class="guide-code m-b-4-xs">
+  <pre><code class="language-html">&lt;div class="border-xs inline-xs p-05-xs m-r-1-xs"&gt;.border-xs&lt;/div&gt;
+  &lt;div class="border-t-xs inline-xs p-05-xs m-r-1-xs"&gt;.border-t-xs&lt;/div&gt;
+  &lt;div class="border-b-xs inline-xs p-05-xs m-r-1-xs"&gt;.border-b-xs&lt;/div&gt;
+  &lt;div class="border-l-xs inline-xs p-05-xs m-r-1-xs"&gt;.border-l-xs&lt;/div&gt;
+  &lt;div class="border-r-xs inline-xs p-05-xs m-r-1-xs"&gt;.border-r-xs&lt;/div&gt;</code></pre>
+    </div>
 
-  <h2 id="Removal" class="m-b-1-xs">Removing Borders</h2>
-  <p class="m-b-3-xs">To get a little more control over borders at different breakpoints, we've included a <code>.border-none-xs</code> utility classes. These can be applied to all borders or to specific sides.</p>
-  <div class="border-dark-xs border-none-xs inline-xs p-05-xs m-r-1-xs">.border-none-xs</div>
-  <div class="border-dark-xs border-none-t-xs inline-xs p-05-xs m-r-1-xs">.border-none-t-xs</div>
-  <div class="border-dark-xs border-none-r-xs inline-xs p-05-xs m-r-1-xs">.border-none-r-xs</div>
-  <div class="border-dark-xs border-none-b-xs inline-xs p-05-xs m-r-1-xs">.border-none-b-xs</div>
-  <div class="border-dark-xs border-none-l-xs inline-xs p-05-xs">.border-none-l-xs</div>
-  <div class="guide-code m-b-4-xs">
-<pre><code class="language-html">&lt;div class="border-dark-xs border-none-xs inline-xs p-05-xs m-r-1-xs"&gt;.border-none-xs&lt;/div&gt;
-&lt;div class="border-dark-xs border-none-t-xs inline-xs p-05-xs m-r-1-xs"&gt;.border-t-xs&lt;/div&gt;
-&lt;div class="border-dark-xs border-none-r-xs inline-xs p-05-xs m-r-1-xs"&gt;.border-r-xs&lt;/div&gt;
-&lt;div class="border-dark-xs border-none-b-xs inline-xs p-05-xs m-r-1-xs"&gt;.border-b-xs&lt;/div&gt;
-&lt;div class="border-dark-xs border-none-l-xs inline-xs p-05-xs"&gt;.border-l-xs&lt;/div&gt;</code></pre>
-  </div>
+    <h2 id="Removal" class="m-b-1-xs">Removing Borders</h2>
+    <p class="m-b-3-xs">To get a little more control over borders at different breakpoints, we've included a <code>.border-none-xs</code> utility classes. These can be applied to all borders or to specific sides.</p>
+    <div class="border-dark-xs border-none-xs inline-xs p-05-xs m-r-1-xs">.border-none-xs</div>
+    <div class="border-dark-xs border-none-t-xs inline-xs p-05-xs m-r-1-xs">.border-none-t-xs</div>
+    <div class="border-dark-xs border-none-r-xs inline-xs p-05-xs m-r-1-xs">.border-none-r-xs</div>
+    <div class="border-dark-xs border-none-b-xs inline-xs p-05-xs m-r-1-xs">.border-none-b-xs</div>
+    <div class="border-dark-xs border-none-l-xs inline-xs p-05-xs">.border-none-l-xs</div>
+    <div class="guide-code m-b-4-xs">
+  <pre><code class="language-html">&lt;div class="border-dark-xs border-none-xs inline-xs p-05-xs m-r-1-xs"&gt;.border-none-xs&lt;/div&gt;
+  &lt;div class="border-dark-xs border-none-t-xs inline-xs p-05-xs m-r-1-xs"&gt;.border-t-xs&lt;/div&gt;
+  &lt;div class="border-dark-xs border-none-r-xs inline-xs p-05-xs m-r-1-xs"&gt;.border-r-xs&lt;/div&gt;
+  &lt;div class="border-dark-xs border-none-b-xs inline-xs p-05-xs m-r-1-xs"&gt;.border-b-xs&lt;/div&gt;
+  &lt;div class="border-dark-xs border-none-l-xs inline-xs p-05-xs"&gt;.border-l-xs&lt;/div&gt;</code></pre>
+    </div>
 
-  <h2 id="Rounded" class="m-b-1-xs">Rounded Borders</h2>
-  <p class="m-b-3-xs">Its never been easier to add border radius to different corners of an elements. Using <code>.round</code>, <code>.round-t</code>, <code>.round-b</code>, <code>.round-l</code>, <code>.round-r</code> will apply border radius to elements.</p>
-  <div class="border-dark-xs round inline-xs p-05-xs m-r-1-xs">.round</div>
-  <div class="border-dark-xs round-t inline-xs p-05-xs m-r-1-xs">.round-t</div>
-  <div class="border-dark-xs round-b inline-xs p-05-xs m-r-1-xs">.round-b</div>
-  <div class="border-dark-xs round-l inline-xs p-05-xs m-r-1-xs">.round-l</div>
-  <div class="border-dark-xs round-r inline-xs p-05-xs">.round-r</div>
-  <div class="guide-code m-b-4-xs">
-<pre><code class="language-html">&lt;div class="border-dark-xs round inline-xs p-05-xs m-r-1-xs"&gt;.round&lt;/div&gt;
-&lt;div class="border-dark-xs round-t inline-xs p-05-xs m-r-1-xs"&gt;.round-t&lt;/div&gt;
-&lt;div class="border-dark-xs round-b inline-xs p-05-xs m-r-1-xs"&gt;.round-b&lt;/div&gt;
-&lt;div class="border-dark-xs round-l inline-xs p-05-xs m-r-1-xs"&gt;.round-l&lt;/div&gt;
-&lt;div class="border-dark-xs round-r inline-xs p-05-xs"&gt;.round-r&lt;/div&gt;</code></pre>
-  </div>
+    <h2 id="Rounded" class="m-b-1-xs">Rounded Borders</h2>
+    <p class="m-b-3-xs">Its never been easier to add border radius to different corners of an elements. Using <code>.round</code>, <code>.round-t</code>, <code>.round-b</code>, <code>.round-l</code>, <code>.round-r</code> will apply border radius to elements.</p>
+    <div class="border-dark-xs round inline-xs p-05-xs m-r-1-xs">.round</div>
+    <div class="border-dark-xs round-t inline-xs p-05-xs m-r-1-xs">.round-t</div>
+    <div class="border-dark-xs round-b inline-xs p-05-xs m-r-1-xs">.round-b</div>
+    <div class="border-dark-xs round-l inline-xs p-05-xs m-r-1-xs">.round-l</div>
+    <div class="border-dark-xs round-r inline-xs p-05-xs">.round-r</div>
+    <div class="guide-code m-b-4-xs">
+  <pre><code class="language-html">&lt;div class="border-dark-xs round inline-xs p-05-xs m-r-1-xs"&gt;.round&lt;/div&gt;
+  &lt;div class="border-dark-xs round-t inline-xs p-05-xs m-r-1-xs"&gt;.round-t&lt;/div&gt;
+  &lt;div class="border-dark-xs round-b inline-xs p-05-xs m-r-1-xs"&gt;.round-b&lt;/div&gt;
+  &lt;div class="border-dark-xs round-l inline-xs p-05-xs m-r-1-xs"&gt;.round-l&lt;/div&gt;
+  &lt;div class="border-dark-xs round-r inline-xs p-05-xs"&gt;.round-r&lt;/div&gt;</code></pre>
+    </div>
 
-  <h2 id="Circle" class="m-b-1-xs">Circle</h2>
-  <p class="m-b-3-xs">To turn an element into a circle, use the <code>.circle</code> class.</p>
-  <div class="border-dark-xs circle" style="width: 100px; height: 100px;"></div>
-  <div class="guide-code">
-<pre><code class="language-html">&lt;div class="border-dark-xs circle" style="width: 100px; height: 100px;"&gt;&lt;/div&gt;</code></pre>
-  </div>
-</section>
+    <h2 id="Circle" class="m-b-1-xs">Circle</h2>
+    <p class="m-b-3-xs">To turn an element into a circle, use the <code>.circle</code> class.</p>
+    <div class="border-dark-xs circle" style="width: 100px; height: 100px;"></div>
+    <div class="guide-code">
+  <pre><code class="language-html">&lt;div class="border-dark-xs circle" style="width: 100px; height: 100px;"&gt;&lt;/div&gt;</code></pre>
+    </div>
+  </section>
+  
+</lens-main>
+
+<main-nav></main-nav>
+
+<footer class="guide-contentinfo" role="contentinfo">
+  <p class="guide-contentinfo-copy">Copyright &copy; 2017 Looker. All rights reserved.</p>
+</footer>
+
 """
