@@ -8,29 +8,6 @@
 </head>
 
 <body ng-app="Lens">
-    <ui-view></ui-view>
-  <script>
-    // Hamburger
-    var $hamburger = document.getElementById('hamburger');
-    var $hamburger_menu = document.getElementById('guide_navigation');
-    document.querySelector('#hamburger').addEventListener('click', function(e) {
-      e.preventDefault();
-      $hamburger.classList.toggle('hamburger-button-clicked');
-      $hamburger_menu.classList.toggle('guide-navigation-active');
-    });
-
-    // Subnav Scrolly Fun
-    // var subNav = document.querySelector('.subnav-container');
-    // var subNavItem = document.querySelectorAll('.subnav-link');
-    // var pageTitleHeight = 128;
-    // window.onscroll = function() {
-    //   if (document.body.scrollTop >= pageTitleHeight) {
-    //     subNav.classList.add('subnav-container--fixed');
-    //   } else {
-    //     subNav.classList.remove('subnav-container--fixed');
-    //   }
-    // }
-  </script>
-
+  <ui-view></ui-view>
 </body>
 </html>

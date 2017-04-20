@@ -1,10 +1,8 @@
-angular = require "angular"
-
 require "angular-ui-router"
 require "./atoms/atoms_module.coffee"
 require "./getting_started.coffee"
-require "./login.coffee"
 require "./index.coffee"
+require "./login.coffee"
 require "./release_notes.coffee"
 require "./lens_main.coffee"
 require "./main_nav.coffee"
