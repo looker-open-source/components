@@ -1,5 +1,8 @@
-m = angular.module "lens.atoms.colors", []
+brandColors = require("./../../utils/sass-to-js-custom/brand_colors.js")
+uiColors = require("./../../utils/sass-to-js-custom/ui_colors.js")
+grayColors = require("./../../utils/sass-to-js-custom/gray_colors.js")
 
+m = angular.module "lens.atoms.colors", []
 
 m.controller "ColorsController", (
   $scope
@@ -13,7 +16,9 @@ m.directive "colors", ->
   scope: {}
   template: template
   link: ->
-    require "../../sass-to-js-custom-functions.js"
+    brandColors('brandColorData', '#brandColorData', '.guide-colors-brand')
+    uiColors('uiColorData', '#uiColorData', '.guide-colors-ui')
+    grayColors('grayColorData', '#grayColorData', '.guide-colors-gray')
 
 
 template = """
@@ -132,6 +137,6 @@ template = """
 <div id="uiColorData"></div>
 <div id="grayColorData"></div>
 
-<script src="js/prism.js"></script>
-<script src="js/sass-to-js.js"></script>
+<script src="vendor/js/prism.js"></script>
+<script src="vendor/js/sass-to-js.js"></script>
 """

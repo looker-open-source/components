@@ -1,8 +1,5 @@
-var HtmlWebpackPlugin, webpack;
-
-webpack = require('webpack');
-
-HtmlWebpackPlugin = require('html-webpack-plugin');
+var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 ({
   devServer: {
@@ -11,27 +8,38 @@ HtmlWebpackPlugin = require('html-webpack-plugin');
 });
 
 module.exports = {
+  context: __dirname + "/src",
   entry: {
-    main: './src/javascripts/main.coffee'
+    main: './javascripts/main.js',
+    vendor: './javascripts/vendor.js'
   },
   output: {
-    path: './src/javascripts/dist',
-    filename: '[name].coffee'
+    path: __dirname + "/dist",
+    filename: "[name].bundle.js"
   },
   module: {
     loaders: [
       {
         test: /\.coffee$/,
         loader: 'coffee'
-      }, {
+      },
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        query: {
+          presets: ['es2015']
+        },
+        exclude: /node_modules/
+      },
+      {
         test: /\.sass$/,
-        loader: "style!css!sass"
+        loader: 'style!css!sass'
       }
     ]
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html',
+      template: './index.html',
       inject: 'body'
     })
   ]
