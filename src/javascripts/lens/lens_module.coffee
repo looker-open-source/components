@@ -20,7 +20,12 @@ module.exports = m = angular.module "Lens", [
   "lens.sass"
 ]
 
-m.config ($stateProvider) ->
+m.config (
+  $locationProvider
+  $stateProvider
+) ->
+  $locationProvider.html5Mode true
+
   loginState =
     name: 'login'
     url: '/login'

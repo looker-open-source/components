@@ -1,21 +1,30 @@
+var path = require("path");
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
-({
-  devServer: {
-    inline: true
-  }
-});
-
 module.exports = {
-  context: __dirname + "/src",
+  context: path.resolve(__dirname, 'src'),
   entry: {
-    main: './javascripts/main.js',
+    main: ['./javascripts/main.js'],
     vendor: './javascripts/vendor.js'
   },
   output: {
-    path: __dirname + "/dist",
+    path: path.resolve(__dirname, 'dist'),
     filename: "[name].bundle.js"
+  },
+  devServer: {
+    historyApiFallback: true,
+    hot: true,
+    inline: true,
+    // host: 'localhost', // TODO: set up to work with prod env
+    // port: 3000, // TODO: set up to work with prod env
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000', // TODO: set up to work with prod env
+        pathRewrite: {'^/api' : ''},
+        secure: false
+      }
+    }
   },
   module: {
     loaders: [
@@ -41,6 +50,9 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './index.html',
       inject: 'body'
+    }),
+    new webpack.HotModuleReplacementPlugin({
+      multiStep: true
     })
   ]
 };

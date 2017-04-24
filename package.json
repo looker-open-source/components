@@ -4,7 +4,9 @@
   "description": "Lens is an internal design system made for Looker.",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server"
+    "start": "nodemon ./server.js localhost 3000 | webpack-dev-server --port 8080",
+    "dev-server": "nodemon ./server.js localhost 3000",
+    "dev-client": "webpack-dev-server --port 8080"
   },
   "repository": {
     "type": "git",
@@ -26,6 +28,7 @@
     "html-webpack-plugin": "^2.28.0",
     "jquery": "3.1.1",
     "node-sass": "^4.4.0",
+    "nodemon": "^1.11.0",
     "sass-loader": "^4.1.1",
     "style-loader": "^0.13.1",
     "webpack": "^1.14.0",
