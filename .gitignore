@@ -6,3 +6,6 @@ node_modules
 Gemfile.lock
 npm_debug.log
 dist/
+yarn.lock
+.nvmrc
+Procfile
