@@ -19,8 +19,8 @@ You can run Lens live to view documentation and live-compile to CSS.
 
 1. Navigate to project folder
 2. Install Node dependencies with `yarn`
-3. Build assets with `yarn run webpack`
-4. Open browser to http://localhost:8080/index.html#/
+3. Build assets and run servers with `yarn start`
+4. Open browser to http://localhost:8080/
 
 ## Copyright and license
 ©2017 Looker Data Sciences, Inc.

@@ -1,38 +1,58 @@
-var HtmlWebpackPlugin, webpack;
-
-webpack = require('webpack');
-
-HtmlWebpackPlugin = require('html-webpack-plugin');
-
-({
-  devServer: {
-    inline: true
-  }
-});
+var path = require("path");
+var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
+  context: path.resolve(__dirname, 'src'),
   entry: {
-    main: './src/javascripts/main.coffee'
+    main: ['./javascripts/main.js'],
+    vendor: './javascripts/vendor.js'
   },
   output: {
-    path: './src/javascripts/dist',
-    filename: '[name].coffee'
+    path: path.resolve(__dirname, 'dist'),
+    filename: "[name].bundle.js"
+  },
+  devServer: {
+    historyApiFallback: true,
+    hot: true,
+    inline: true,
+    // host: 'localhost', // TODO: set up to work with prod env
+    // port: 3000, // TODO: set up to work with prod env
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000', // TODO: set up to work with prod env
+        pathRewrite: {'^/api' : ''},
+        secure: false
+      }
+    }
   },
   module: {
     loaders: [
       {
         test: /\.coffee$/,
         loader: 'coffee'
-      }, {
+      },
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        query: {
+          presets: ['es2015']
+        },
+        exclude: /node_modules/
+      },
+      {
         test: /\.sass$/,
-        loader: "style!css!sass"
+        loader: 'style!css!sass'
       }
     ]
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html',
+      template: './index.html',
       inject: 'body'
+    }),
+    new webpack.HotModuleReplacementPlugin({
+      multiStep: true
     })
   ]
 };
