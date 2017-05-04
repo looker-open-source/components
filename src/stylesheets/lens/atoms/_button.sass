@@ -1,25 +1,30 @@
 .button
   +appearance(none)
   +user-select(none)
-  border-radius: $border-radius
+  border-radius: $button-border-radius
   cursor: pointer
   text-align: center
   display: inline-block
-  font-family: $brand-font
-  font-size: 12px
-  padding: 4px 12px
-  margin: 0 12px 0 0
+  font-family: $button-font
+  font-size: $button-font-size
+  text-transform: $button-text-transform
+  font-weight: $button-font-weight
+  letter-spacing: $button-letter-spacing
+  padding: $button-padding
+  margin: $button-margin
+  line-height: $button-line-height
+  transition: $button-transition
   text-decoration: none
   white-space: nowrap
   overflow: hidden
   text-overflow: ellipsis
-  background-color: white
-  border: 1px solid gray-color(gray-2)
-  color: ui-color(purple)
+  background-color: $button-default-bg
+  border: $button-default-border
+  color: $button-default-font-color
   +selected
-    background-color: white
-    color: ui-color(purple)
-    border-color: ui-color(purple-light)
+    background-color: $button-default-bg-hover
+    color: $button-default-font-color-hover
+    border: $button-default-border-hover
   &:last-child
     margin-right: 0
 
@@ -27,116 +32,116 @@
 
   // Primary buttons
   &--primary
-    background-color: ui-color(purple) !important
-    border-color: ui-color(purple) !important
-    color: #fff !important
+    background-color: $button-primary-bg !important
+    border-color: $button-primary-border-color !important
+    color: $button-primary-font-color !important
     +selected
-      background-color: ui-color(purple-dark) !important
-      border-color: ui-color(purple-dark) !important
-      color: #fff !important
-
-
-
-  // Alert buttons
-  &--alert
-    background-color: ui-color(red-dark) !important
-    border-color: ui-color(red-dark) !important
-    color: #fff !important
-    +selected
-      background-color: ui-color(red) !important
-      border-color: ui-color(red) !important
-      color: #fff !important
+      background-color: $button-primary-bg-hover !important
+      border-color: $button-primary-border-color-hover !important
+      color: $button-primary-font-color-hover !important
 
 
 
   // Neutral buttons
-  &--neutral
-    background-color: gray-color(gray-2) !important
-    border-color: gray-color(gray-2) !important
-    color: gray-color(gray-7) !important
-    +selected
-      background-color: darken(gray-color(gray-2), 10%) !important
-      border-color: gray-color(gray-2) !important
-      color: gray-color(gray-7) !important
-
-
-
-  // Default disabled buttons
-  &--disabled
-    cursor: not-allowed !important
-    pointer-events: none !important
-    opacity: 0.65 !important
-
-    &-light
-      cursor: not-allowed !important
-      pointer-events: none !important
-      opacity: 0.65 !important
-
-      background-color: gray-color(gray-2er) !important
-      border-color: gray-color(gray) !important
-      color: gray-color(gray) !important
+  @if $neutral-buttons
+    &--neutral
+      background-color: $button-neutral-bg !important
+      border-color: $button-neutral-border-color !important
+      color: $button-neutral-font-color !important
       +selected
-        background-color: gray-color(gray-2er) !important
-        border-color: gray-color(gray) !important
-        color: gray-color(gray) !important
+        background-color: $button-neutral-bg-hover !important
+        border-color: $button-neutral-border-color-hover !important
+        color: $button-neutral-font-color-hover !important
 
-    &-dark
-      cursor: not-allowed !important
-      pointer-events: none !important
-      opacity: 0.65 !important
 
-      background-color: gray-color(gray) !important
-      border-color: gray-color(gray) !important
-      color: gray-color(gray-2er) !important
+
+  // Alert buttons
+  @if $alert-buttons
+    &--alert
+      background-color: $button-alert-bg !important
+      border-color: $button-alert-border-color !important
+      color: $button-alert-font-color !important
       +selected
-        background-color: gray-color(gray) !important
-        border-color: gray-color(gray) !important
-        color: gray-color(gray-2er) !important
+        background-color: $button-alert-bg-hover !important
+        border-color: $button-alert-border-color-hover !important
+        color: $button-alert-font-color-hover !important
 
 
 
   // Inverse buttons
-  &--inverse
-    background-color: #fff !important
-    border-color: #fff !important
-    color: ui-color(purple) !important
-    opacity: 0.88
-    +selected
-      opacity: 1 !important
-
-    &-primary
-      background-color: ui-color(purple-light) !important
-      border-color: ui-color(purple-light) !important
-      color: white !important
-      opacity: 0.88
+  @if $inverse-buttons
+    &--inverse
+      background-color: $button-inverse-bg !important
+      border-color: $button-inverse-border-color !important
+      color: $button-inverse-font-color !important
+      opacity: $button-inverse-opacity
       +selected
-        opacity: 1 !important
+        background-color: $button-inverse-bg-hover !important
+        border-color: $button-inverse-border-color-hover !important
+        color: $button-inverse-font-color-hover !important
+        opacity: $button-inverse-opacity-hover !important
 
-    &-disabled
+      &-primary
+        background-color: ui-color(purple-light) !important
+        border-color: ui-color(purple-light) !important
+        color: white !important
+        opacity: 0.88
+        +selected
+          opacity: 1 !important
+
+      @if $disabled-buttons
+        &-disabled
+          cursor: not-allowed !important
+          pointer-events: none !important
+          opacity: 0.65 !important
+
+          background-color: gray-color(gray-2er) !important
+          border-color: gray-color(gray) !important
+          color: gray-color(gray) !important
+          +selected
+            background-color: gray-color(gray-2er) !important
+            border-color: gray-color(gray) !important
+            color: gray-color(gray) !important
+
+        &-primary-disabled
+          cursor: not-allowed !important
+          pointer-events: none !important
+          opacity: 0.65 !important
+
+          background-color: gray-color(gray) !important
+          border-color: gray-color(gray) !important
+          color: gray-color(gray-2er) !important
+          +selected
+            background-color: gray-color(gray) !important
+            border-color: gray-color(gray) !important
+            color: gray-color(gray-2er) !important
+
+
+
+  // Default disabled buttons
+  @if $disabled-buttons
+    &--disabled
       cursor: not-allowed !important
       pointer-events: none !important
       opacity: 0.65 !important
 
-      background-color: gray-color(gray-2er) !important
-      border-color: gray-color(gray) !important
-      color: gray-color(gray) !important
-      +selected
+      &-light
         background-color: gray-color(gray-2er) !important
         border-color: gray-color(gray) !important
         color: gray-color(gray) !important
+        +selected
+          background-color: gray-color(gray-2er) !important
+          border-color: gray-color(gray) !important
+          color: gray-color(gray) !important
 
-    &-primary-disabled
-      cursor: not-allowed !important
-      pointer-events: none !important
-      opacity: 0.65 !important
-
-      background-color: gray-color(gray) !important
-      border-color: gray-color(gray) !important
-      color: gray-color(gray-2er) !important
-      +selected
+      &-dark
         background-color: gray-color(gray) !important
         border-color: gray-color(gray) !important
         color: gray-color(gray-2er) !important
+        +selected
+          background-color: gray-color(gray) !important
+          border-color: gray-color(gray) !important
+          color: gray-color(gray-2er) !important
 
 
 
@@ -149,21 +154,17 @@
 
 
 
-  // Button size style maps
-  $button-sizes: (normal: (font-size: 12px, padding-x: 4px, padding-y: 12px), small: (font-size: 11px, padding-x: 5px,padding-y: 5px), xsmall: (font-size: 11px, padding-x: 1px, padding-y: 5px))
-
-
-
   // Create button sizes classes to use across breakpoints
   @mixin button-size($suffix)
 
     // Iterate through each size map to create appropriate styles
     @each $size, $property in $button-sizes
-      &--#{$size}-#{$suffix}
-        font-size: map-get($property, font-size) !important
-        padding: map-get($property, padding-x) map-get($property, padding-y) !important
-        &.square
-          width: map-get($property, height) !important
+      @if $size and $property
+        &--#{$size}-#{$suffix}
+          font-size: map-get($property, font-size) !important
+          padding: map-get($property, padding-x) map-get($property, padding-y) !important
+          &.square
+            width: map-get($property, height) !important
 
 
 

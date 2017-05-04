@@ -28,12 +28,12 @@ template = """
 <lens-main>
 
   <section>
-    <p class="text-4-xs m-b-4-xs">Lens uses Sass to compile its CSS and has a <a href="http://bourbon.io/">Bourbon</a> dependency to give us access to many handy mixins. On top of that, we include many variables, mixins and functions that are specific to our needs at Looker.</p>
+    <p class="guide-content-description m-b-4-xs">Lens uses Sass to compile its CSS and has a <a href="http://bourbon.io/">Bourbon</a> dependency to give us access to many handy mixins. On top of that, we include many variables, mixins and functions that are specific to our needs at Looker.</p>
 
-    <h2 id="Variables" class="m-b-1-xs">Variables</h2>
+    <h2 id="Variables" class="guide-content-subtitle m-b-1-xs">Variables</h2>
     <p class="m-b-2-xs">Most of our variables are built using Sass maps, which means they aren't easily accessible with a simple variable name. We've made functions to make access to those variables easier, we'll cover those below. Here are the variables that use regular variable names:</p>
 
-    <h3 class="m-b-05-xs">Typography</h3>
+    <h3 class="guide-content-h3 m-b-05-xs">Typography</h3>
     <p class="m-b-1-xs">Used to set font family a font size.</p>
     <p class="bold">Font-family</p>
     <div class="guide-code">
@@ -50,7 +50,7 @@ template = """
     <p class="m-b-3-xs"><code>$bold</code></p>
     </div>
 
-    <h3 class="m-b-05-xs">Borders</h3>
+    <h3 class="guide-content-h3 m-b-05-xs">Borders</h3>
     <p class="m-b-1-xs">Used in the <a href="border.html">border</a> utility classes.</p>
     <p class="bold">Border Color</p>
     <div class="guide-code">
@@ -73,7 +73,7 @@ template = """
       $border-radius<br />
     </code></p>
 
-    <h3 class="m-b-05-xs">Grid</h3>
+    <h3 class="guide-content-h3 m-b-05-xs">Grid</h3>
     <p class="m-b-1-xs">Used in the <a href="grid.html">grid</a> and <a href="responsive.html">breakpoint</a> utility classes. Our <code>-xs</code> breakpoint doesn't have a variable because it is simply styling <code>@media screen</code>.</p>
     <p class="bold">Grid Container</p>
     <div class="guide-code">
@@ -98,10 +98,10 @@ template = """
 
 
 
-    <h2 id="Functions" class="m-b-1-xs">Functions</h2>
+    <h2 id="Functions" class="guide-content-subtitle m-b-1-xs">Functions</h2>
     <p class="m-b-2-xs">The rest of our variables are made with Sass maps, so we've created handy functions that make accessing them super easy. <strong>Note:</strong> these don't use the typical <code>$</code> variable naming scheme, just the function name.</p>
 
-    <h3 class="m-b-05-xs">Typography</h3>
+    <h3 class="guide-content-h3 m-b-05-xs">Typography</h3>
     <p class="m-b-1-xs">Used in our <a href="typography.html">font size</a> utility classes.</p>
     <p class="bold">Font Size</p>
     <div class="guide-code">
@@ -117,7 +117,7 @@ template = """
       text-size(6)
     </code></p>
 
-    <h3 class="m-b-05-xs">Spacing</h3>
+    <h3 class="guide-content-h3 m-b-05-xs">Spacing</h3>
     <p class="m-b-1-xs">Used in our <a href="layout.html">layout</a> utility classes.</p>
     <p class="bold">Spacing Units</p>
     <div class="guide-code">
@@ -136,7 +136,7 @@ template = """
       spacing(6)
     </code></p>
 
-    <h3 class="m-b-05-xs">Colors</h3>
+    <h3 class="guide-content-h3 m-b-05-xs">Colors</h3>
     <p class="m-b-1-xs">Used in our <a href="color.html">color</a> utility classes.</p>
     <p class="bold">Brand Colors</p>
     <div class="guide-code">
@@ -185,7 +185,7 @@ template = """
       ui-color(orange-dark)
     </code></p>
 
-    <h2 id="Mixins" class="m-b-1-xs">Mixins</h2>
+    <h2 id="Mixins" class="guide-content-subtitle m-b-1-xs">Mixins</h2>
     <p class="m-b-2-xs">Lens includes a few helpful mixins for common occuring styles or selectors.</p>
 
     <p class="bold">Clearfix</p>
@@ -250,7 +250,7 @@ template = """
       +width-height($width, $height)
     </code></p>
   </section>
-  
+
 </lens-main>
 
 <main-nav></main-nav>

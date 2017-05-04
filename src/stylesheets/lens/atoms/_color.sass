@@ -1,12 +1,8 @@
-$properties: color border-color background-color
-
-
-
 // Iterate through brand-colors map to create colors for classes
 @each $color-name, $color in $brand-colors
 
-  // Iterate through properties var to create properties for classes
-  @each $property in $properties
+  // Iterate through color-properties var to create color-properties for classes
+  @each $property in $color-properties
 
     // We want to use 'bg' for the class name when using the
     // background-color property
@@ -30,8 +26,8 @@ $properties: color border-color background-color
 // Iterate through ui-colors map to create colors for classes
 @each $color-name, $color in $ui-colors
 
-  // Iterate through properties var to create properties for classes
-  @each $property in $properties
+  // Iterate through color-properties var to create color-properties for classes
+  @each $property in $color-properties
 
     // We want to use 'bg' for the class name when using the
     // background-color property
@@ -55,8 +51,8 @@ $properties: color border-color background-color
 // Iterate through gray-colors map to create colors for classes
 @each $color-name, $color in $gray-colors
 
-  // Iterate through properties var to create properties for classes
-  @each $property in $properties
+  // Iterate through color-properties var to create color-properties for classes
+  @each $property in $color-properties
 
     // We want to use 'bg' for the class name when using the
     // background-color property

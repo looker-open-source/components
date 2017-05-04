@@ -18,7 +18,7 @@ template = """
 <header class="login-header brand-bg-gray">
   <div class="login-header-wrap">
     <h1 class="login-name color-white">Lens</h1>
-    <p class="login-copy color-white text-size-3-xs text-2-lg">The Looker Design System</p>
+    <p class="login-copy color-white">The Looker Design System</p>
   </div>
 </header>
 

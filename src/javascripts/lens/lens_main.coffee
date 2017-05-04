@@ -27,7 +27,7 @@ template = """
 <main class="guide-main" role="main">
   <div class="guide-content">
 
-    <h1 class="border-b-xs p-b-05-xs m-b-2-xs">{{ title }}</h1>
+    <h1 class="guide-content-title border-b-xs p-b-05-xs m-b-2-xs">{{ title }}</h1>
 
     <div class="col-container">
       <div class="col col-80-lg">

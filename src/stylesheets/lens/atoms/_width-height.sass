@@ -1,8 +1,3 @@
-// Local width and height variables
-$width-height-types: auto, full, fit
-
-
-
 // Create the style declerations of each width-height type
 @mixin width-height-style($suffix)
 
@@ -26,7 +21,7 @@ $width-height-types: auto, full, fit
 
 
 // Adds media queries to width-height style mixin
-@mixin width-height($suffix, $media: null)
+@mixin width-height-adjust($suffix, $media: null)
 
   // We want to use @media screen whenever no $media
   // is passed into the mixin
@@ -39,17 +34,17 @@ $width-height-types: auto, full, fit
 
 
 
-// Extra Small width-height classes
-+width-height(xs)
+// Extra Small width-height-adjust classes
++width-height-adjust(xs)
 
-// Small width-height classes
-+width-height(sm, min-width $sm)
+// Small width-height-adjust classes
++width-height-adjust(sm, min-width $sm)
 
-// Medium width-height classes
-+width-height(md, min-width $md)
+// Medium width-height-adjust classes
++width-height-adjust(md, min-width $md)
 
-// Large width-height classes
-+width-height(lg, min-width $lg)
+// Large width-height-adjust classes
++width-height-adjust(lg, min-width $lg)
 
-// Extra Large width-height classes
-+width-height(xl, min-width $xl)
+// Extra Large width-height-adjust classes
++width-height-adjust(xl, min-width $xl)

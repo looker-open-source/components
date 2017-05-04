@@ -28,7 +28,7 @@ template = """
 <lens-main>
 
   <section id="Floats">
-    <h2 class="m-b-1-xs">Floats</h2>
+    <h2 class="guide-content-subtitle m-b-1-xs">Floats</h2>
     <p class="m-b-1-xs">To float elements, use the following classes: <code>.float-l-xs</code>, <code>.float-r-xs</code>, and <code>.float-none-xs</code></p>
     <div class="col-container">
       <div class="col col-30-sm">
@@ -48,32 +48,32 @@ template = """
   <pre><code class="language-html">&lt;div class="col-container"&gt;
   &lt;div class="float-l-xs border-dark-xs"&gt;.float-l-xs&lt;/div&gt;
   &lt;div class="float-r-xs border-dark-xs"&gt;.float-r-xs&lt;/div&gt;
-  &lt;/div&gt;
-  &lt;div class="float-none-xs border-dark-xs m-t-05-xs"&gt;.float-none-xs&lt;/div&gt;</code></pre>
+&lt;/div&gt;
+&lt;div class="float-none-xs border-dark-xs m-t-05-xs"&gt;.float-none-xs&lt;/div&gt;</code></pre>
     </div>
   </section>
 
 
 
   <section id="Display">
-    <h2 class="m-b-1-xs">Display</h2>
+    <h2 class="guide-content-subtitle m-b-1-xs">Display</h2>
     <p class="m-b-3-xs">Use <code>.hide-xs</code>, <code>.block-xs</code>, <code>.inline-xs</code> and <code>.inline-block-xs</code> to change an element's display.</p>
     <div class="hide-xs">.hide-xs</div>
-    <div class="block-xs border-mid-xs m-b-05-xs">.block-xs</div>
-    <div class="inline-xs border-mid-xs">.inline-xs</div>
-    <div class="inline-block-xs border-mid-xs">.inline-block-xs</div>
+    <div class="block-xs border-dark-xs m-b-05-xs">.block-xs</div>
+    <div class="inline-xs border-dark-xs">.inline-xs</div>
+    <div class="inline-block-xs border-dark-xs">.inline-block-xs</div>
     <div class="guide-code m-b-4-xs">
   <pre><code class="language-html">&lt;div class="hide-xs"&gt;.hide-xs&lt;/div&gt;
-  &lt;div class="block-xs border-mid-xs"&gt;.block-xs&lt;/div&gt;
-  &lt;div class="inline-xs border-mid-xs"&gt;.inline-xs&lt;/div&gt;
-  &lt;div class="inline-block-xs border-mid-xs"&gt;.inline-block-xs&lt;/div&gt;</code></pre>
+&lt;div class="block-xs border-dark-xs"&gt;.block-xs&lt;/div&gt;
+&lt;div class="inline-xs border-dark-xs"&gt;.inline-xs&lt;/div&gt;
+&lt;div class="inline-block-xs border-dark-xs"&gt;.inline-block-xs&lt;/div&gt;</code></pre>
     </div>
   </section>
 
 
 
   <section id="Overflow">
-    <h2 class="m-b-1-xs">Overflow</h2>
+    <h2 class="guide-content-subtitle m-b-1-xs">Overflow</h2>
     <p class="m-b-3-xs">Use <code>.overflow-hidden-xs</code>, <code>.overflow-auto-xs</code>, <code>.overflow-scroll-xs</code> and <code>.overflow-visible-xs</code> to change an element's overflow.</p>
     <div class="overflow-hidden-xs p-1-xs m-b-1-xs border-dark-xs" style="height: 110px">
       <p>.overflow-hidden-xs</p>
@@ -97,29 +97,29 @@ template = """
   <pre><code class="language-html">&lt;div class="overflow-hidden-xs p-1-xs m-b-1-xs border-dark-xs" style="height: 110px"&gt;
   &lt;p&gt;.overflow-hidden-xs&lt;/p&gt;
   &lt;p&gt;...&lt;/p&gt;
-  &lt;/div&gt;
+&lt;/div&gt;
 
-  &lt;div class="overflow-auto-xs p-1-xs m-b-1-xs border-dark-xs" style="height: 110px"&gt;
+&lt;div class="overflow-auto-xs p-1-xs m-b-1-xs border-dark-xs" style="height: 110px"&gt;
   &lt;p&gt;.overflow-auto-xs&lt;/p&gt;
   &lt;p&gt;...&lt;/p&gt;
-  &lt;/div&gt;
+&lt;/div&gt;
 
-  &lt;div class="overflow-scroll-xs p-1-xs m-b-1-xs border-dark-xs" style="height: 110px"&gt;
+&lt;div class="overflow-scroll-xs p-1-xs m-b-1-xs border-dark-xs" style="height: 110px"&gt;
   &lt;p&gt;.overflow-scroll-xs&lt;/p&gt;
   &lt;p&gt;...&lt;/p&gt;
-  &lt;/div&gt;
+&lt;/div&gt;
 
-  &lt;div class="overflow-visible-xs p-1-xs m-b-3-xs border-dark-xs" style="height: 110px"&gt;
+&lt;div class="overflow-visible-xs p-1-xs m-b-3-xs border-dark-xs" style="height: 110px"&gt;
   &lt;p&gt;.overflow-visible-xs&lt;/p&gt;
   &lt;p&gt;...&lt;/p&gt;
-  &lt;/div&gt;</code></pre>
+&lt;/div&gt;</code></pre>
     </div>
   </section>
 
 
 
   <section id="Width/Height">
-    <h2 class="m-b-1-xs">Width &amp; Height</h2>
+    <h2 class="guide-content-subtitle m-b-1-xs">Width &amp; Height</h2>
     <p class="m-b-3-xs">Most widths will be set using our grid layout. However, Lens provides <code>.w-fit-xs</code> to set an elements max-width to 100%, additionally it has <code>.w-full-xs</code> and <code>.h-full-xs</code> to set an elements width to 100%. You can use <code>.w-auto-xs</code> to set an elements width to auto.</p>
     <div class="w-fit-xs border-dark-xs p-1-xs m-b-1-xs">.w-fit-xs</div>
     <div class="w-full-xs border-dark-xs p-1-xs m-b-1-xs">.w-full-xs</div>
@@ -130,11 +130,11 @@ template = """
 
     <div class="guide-code m-b-4-xs">
   <pre><code class="language-html">&lt;div class="w-fit-xs border-dark-xs p-1-xs m-b-1-xs"&gt;.w-fit-xs&lt;/div&gt;
-  &lt;div class="w-full-xs border-dark-xs p-1-xs m-b-1-xs"&gt;.w-full-xs&lt;/div&gt;
-  &lt;div class="border-xs p-05-xs m-b-1-xs" style="height: 100px"&gt;
+&lt;div class="w-full-xs border-dark-xs p-1-xs m-b-1-xs"&gt;.w-full-xs&lt;/div&gt;
+&lt;div class="border-xs p-05-xs m-b-1-xs" style="height: 100px"&gt;
   &lt;div class="h-full-xs col-20-xs border-dark-xs p-1-xs"&gt;.h-full-xs&lt;/div&gt;
-  &lt;/div&gt;
-  &lt;div class="w-auto-xs border-dark-xs p-1-xs"&gt;.w-auto-xs&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="w-auto-xs border-dark-xs p-1-xs"&gt;.w-auto-xs&lt;/div&gt;
   </code></pre>
     </div>
   </section>
@@ -142,7 +142,7 @@ template = """
 
 
   <section id="Units">
-    <h2 class="m-b-1-xs">Spacing Units and Naming</h2>
+    <h2 class="guide-content-subtitle m-b-1-xs">Spacing Units and Naming</h2>
     <p class="m-b-1-xs">We use our spacial units across margin, padding, and positioning. These comes in values from 0-6 and a half space unit of 0.5. Each value represents a unit based on 1rem=16px. Each class uses a shorthand of its name to indicate properties and direction.</p>
     <div class="col-container m-b-3-xs">
       <div class="col col-30-lg">
@@ -180,8 +180,8 @@ template = """
 
 
   <section id="Spacing">
-    <h2 class="m-b-1-xs">Spacing</h2>
-    <h3 class="m-b-1-xs">Uniform Spacing</h3>
+    <h2 class="guide-content-subtitle m-b-1-xs">Spacing</h2>
+    <h3 class="guide-content-h3 m-b-1-xs">Uniform Spacing</h3>
     <p class="m-b-1-xs">These classes are used to apply equal spacing around the entire element.</p>
     <div class="col-container m-b-2-xs">
       <div class="col col-30-md">
@@ -227,10 +227,10 @@ template = """
   &lt;div class="border-dark-xs float-l-xs inline-block-xs p-1-xs"&gt;p-1-xs&lt;/div&gt;
   &lt;div class="border-dark-xs float-l-xs inline-block-xs p-2-xs"&gt;p-2-xs&lt;/div&gt;
   &lt;div class="border-dark-xs float-l-xs inline-block-xs p-3-xs"&gt;p-3-xs&lt;/div&gt;
-  &lt;/div&gt;</code></pre>
+&lt;/div&gt;</code></pre>
     </div>
 
-    <h3 class="m-b-1-xs">Individual Spacing</h3>
+    <h3 class="guide-content-h3 m-b-1-xs">Individual Spacing</h3>
     <p class="m-b-1-xs">These classes are used to apply spacing to a particular side of an element.</p>
     <div class="col-container m-b-2-xs">
       <div class="col col-50-lg">
@@ -269,14 +269,14 @@ template = """
   &lt;div class="border-dark-xs float-l-xs inline-block-xs m-t-4-xs"&gt;m-t-4-xs&lt;/div&gt;
   &lt;div class="border-dark-xs float-l-xs inline-block-xs p-l-3-xs"&gt;p-l-3-xs&lt;/div&gt;
   &lt;div class="border-dark-xs float-l-xs inline-block-xs p-l-4-xs"&gt;p-l-4-xs&lt;/div&gt;
-  &lt;/div&gt;</code></pre>
+&lt;/div&gt;</code></pre>
     </div>
   </section>
 
 
 
   <section id="Positioning">
-    <h2 class="m-b-1-xs">Positioning</h2>
+    <h2 class="guide-content-subtitle m-b-1-xs">Positioning</h2>
     <p class="m-b-1-xs">Positioning is simple with Lens. Just add <code>.relative-xs</code>, <code>.absolute-xs</code>, <code>.fixed-xs</code>, or <code>.static-xs</code> to control the type of positioning on an element. From there, you can apply values based on our spacing units of 0-6 and a half unit of 05. Use <code>.pos-t-n-xs</code>, where t is the side and n is one of our spacing units.</p>
     <p class="m-b-1-xs"><strong>Note:</strong> There is no demo for position fixed because it will always be fixed to the viewport, not a parent container.</p>
     <div class="col-container m-b-3-xs">
@@ -294,7 +294,7 @@ template = """
       </div>
     </div>
 
-    <h3 class="m-b-1-xs">Z-Index</h3>
+    <h3 class="guide-content-h3 m-b-1-xs">Z-Index</h3>
     <p class="m-b-1-xs">Use a z-index class to assign the stack order of elements. We've created classes for values 1-4, which end up as 100-400 in the property value.</p>
     <div class="col-container m-b-3-xs">
       <div class="col col-50-sm">
@@ -329,30 +329,30 @@ template = """
     <div class="guide-code m-b-4-xs">
   <pre><code class="language-html">&lt;div class="border-xs p-2-xs m-b-1-xs"&gt;
   &lt;div class="relative-xs pos-t-2-xs pos-l-4-xs border-dark-xs inline-xs"&gt;
-  .relative-xs .pos-t-2-xs .pos-l-4-xs
+    .relative-xs .pos-t-2-xs .pos-l-4-xs
   &lt;/div&gt;
-  &lt;/div&gt;
-  &lt;div class="relative-xs border-xs p-3-xs m-b-1-xs"&gt;
+&lt;/div&gt;
+&lt;div class="relative-xs border-xs p-3-xs m-b-1-xs"&gt;
   .relative-xs
   &lt;div class="absolute-xs pos-t-4-xs pos-l-4-xs border-dark-xs"&gt;
-  .absolute-xs .pos-t-4-xs .pos-l-4-xs
+    .absolute-xs .pos-t-4-xs .pos-l-4-xs
   &lt;/div&gt;
-  &lt;/div&gt;
-  &lt;div class="relative-xs border-xs p-4-xs"&gt;
+&lt;/div&gt;
+&lt;div class="relative-xs border-xs p-4-xs"&gt;
   &lt;div class="absolute-xs pos-t-1-xs pos-l-2-xs border-dark-xs p-05-xs z-2-xs" style="background: #fff"&gt;
-  .absolute-xs .pos-t-1-xs .pos-l-2-xs
+    .absolute-xs .pos-t-1-xs .pos-l-2-xs
   &lt;/div&gt;
   &lt;div class="absolute-xs pos-t-4-xs pos-l-4-xs border-dark-xs p-05-xs z-1-xs"&gt;
-  .absolute-xs .pos-t-4-xs .pos-l-4-xs
+    .absolute-xs .pos-t-4-xs .pos-l-4-xs
   &lt;/div&gt;
-  &lt;/div&gt;</code></pre>
+&lt;/div&gt;</code></pre>
     </div>
   </section>
 
 
 
   <section id="Alignment">
-    <h2 class="m-b-1-xs">Vertical Alignment</h2>
+    <h2 class="guide-content-subtitle m-b-1-xs">Vertical Alignment</h2>
     <p class="m-b-3-xs">You can vertically align elements with the <code>.align-top-xs</code>, <code>.align-middle-xs</code>, or <code>.align-bottom-xs</code> classes.</p>
 
     <div class="m-b-2-xs">
@@ -368,26 +368,25 @@ template = """
       This is our friend Gratt Spore and the <code>img</code> tag has the class <code>align-bottom-xs</code> on it.
     </div>
 
-    <div class="guide-code">
+    <div class="guide-code m-b-4-xs">
   <pre><code class="language-html">&lt;div class="m-b-2-xs"&gt;
   &lt;img src="img/gratt-spore.svg" alt="Gratt Spore" height="50px" Width="50px" class="align-top-xs m-r-1"&gt;
   This is our friend Gratt Spore and the &lt;code&gt;img&lt;/code&gt; tag has the class &lt;code&gt;align-top-xs&lt;/code&gt; on it.
-  &lt;/div&gt;
-  &lt;div class="m-b-2-xs"&gt;
+&lt;/div&gt;
+&lt;div class="m-b-2-xs"&gt;
   &lt;img src="img/gratt-spore.svg" alt="Gratt Spore" height="50px" Width="50px" class="align-middle-xs m-r-1"&gt;
   This is our friend Gratt Spore and the &lt;code&gt;img&lt;/code&gt; tag has the class &lt;code&gt;align-middle-xs&lt;/code&gt; on it.
-  &lt;/div&gt;
-  &lt;div&gt;
+&lt;/div&gt;
+&lt;div&gt;
   &lt;img src="img/gratt-spore.svg" alt="Gratt Spore" height="50px" Width="50px" class="align-bottom-xs m-r-1"&gt;
   This is our friend Gratt Spore and the &lt;code&gt;img&lt;/code&gt; tag has the class &lt;code&gt;align-bottom-xs&lt;/code&gt; on it.
-  &lt;/div&gt;
-  </code></pre></</div>
+&lt;/div&gt;</code></pre></</div>
   </section>
 
 
 
   <section id="Rotation">
-    <h2 class="m-b-1-xs">Rotation</h2>
+    <h2 class="guide-content-subtitle m-b-1-xs">Rotation</h2>
     <p class="m-b-3-xs">You can rotate elements by using <code>.rotate-n-xs</code>, where n is 0, 45, 90, 135, 180, 225, 270, or 315. You can also change rotation across breakpoints (using our breakpoint suffixes) to accomodate different layouts.</p>
 
     <span class="rotate-0-xs border-dark-xs border-none-t-xs inline-block-xs p-2-xs m-r-2-xs" style="height:60px;"></span>
@@ -401,15 +400,15 @@ template = """
 
     <div class="guide-code">
   <pre><code class="language-html">&lt;span class="rotate-0-xs border-dark-xs border-none-t-xs inline-block-xs p-2-xs m-r-2-xs" style="height:60px;"&gt;&lt;/span&gt;
-  &lt;span class="rotate-45-xs border-dark-xs border-none-t-xs inline-block-xs p-2-xs m-r-2-xs" style="height:60px;"&gt;&lt;/span&gt;
-  &lt;span class="rotate-90-xs border-dark-xs border-none-t-xs inline-block-xs p-2-xs m-r-2-xs" style="height:60px;"&gt;&lt;/span&gt;
-  &lt;span class="rotate-135-xs border-dark-xs border-none-t-xs inline-block-xs p-2-xs m-r-2-xs" style="height:60px;"&gt;&lt;/span&gt;
-  &lt;span class="rotate-180-xs border-dark-xs border-none-t-xs inline-block-xs p-2-xs m-r-2-xs" style="height:60px;"&gt;&lt;/span&gt;
-  &lt;span class="rotate-225-xs border-dark-xs border-none-t-xs inline-block-xs p-2-xs m-r-2-xs" style="height:60px;"&gt;&lt;/span&gt;
-  &lt;span class="rotate-270-xs border-dark-xs border-none-t-xs inline-block-xs p-2-xs m-r-2-xs" style="height:60px;"&gt;&lt;/span&gt;
-  &lt;span class="rotate-315-xs border-dark-xs border-none-t-xs inline-block-xs p-2-xs" style="height:60px;"&gt;&lt;/span&gt;</code></pre></</div>
+&lt;span class="rotate-45-xs border-dark-xs border-none-t-xs inline-block-xs p-2-xs m-r-2-xs" style="height:60px;"&gt;&lt;/span&gt;
+&lt;span class="rotate-90-xs border-dark-xs border-none-t-xs inline-block-xs p-2-xs m-r-2-xs" style="height:60px;"&gt;&lt;/span&gt;
+&lt;span class="rotate-135-xs border-dark-xs border-none-t-xs inline-block-xs p-2-xs m-r-2-xs" style="height:60px;"&gt;&lt;/span&gt;
+&lt;span class="rotate-180-xs border-dark-xs border-none-t-xs inline-block-xs p-2-xs m-r-2-xs" style="height:60px;"&gt;&lt;/span&gt;
+&lt;span class="rotate-225-xs border-dark-xs border-none-t-xs inline-block-xs p-2-xs m-r-2-xs" style="height:60px;"&gt;&lt;/span&gt;
+&lt;span class="rotate-270-xs border-dark-xs border-none-t-xs inline-block-xs p-2-xs m-r-2-xs" style="height:60px;"&gt;&lt;/span&gt;
+&lt;span class="rotate-315-xs border-dark-xs border-none-t-xs inline-block-xs p-2-xs" style="height:60px;"&gt;&lt;/span&gt;</code></pre></</div>
   </section>
-  
+
 </lens-main>
 
 <main-nav></main-nav>

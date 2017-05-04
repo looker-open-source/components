@@ -35,7 +35,7 @@ template = """
 <lens-main>
 
   <section id="brand-colors">
-    <h2 id="Brand" class="m-b-1-xs">Brand Colors</h2>
+    <h2 id="Brand" class="guide-content-subtitle m-b-1-xs">Brand Colors</h2>
     <p class="m-b-2-xs">There are only 2 main brand colors for Looker. Use the color class for any of these classes, just replace <code>[color]</code> with the name of the color you want.</p>
     <table class="table-border-rows col-60-xl m-b-3-xs">
       <thead>
@@ -63,7 +63,7 @@ template = """
 
 
   <section id="ui-colors">
-    <h2 id="UI" class="m-b-1-xs">UI Colors</h2>
+    <h2 id="UI" class="guide-content-subtitle m-b-1-xs">UI Colors</h2>
     <p class="m-b-2-xs">Looker utilizes colors in various parts of our app UI. Most of our app is gray, so color is rather important. Each of the UI colors has utility classes you can use to apply the color to different parts of an element. Use the color class for any of these classes, just replace <code>[color]</code> with the name of the color you want.</p>
     <table class="table-border-rows col-60-xl m-b-3-xs">
       <thead>
@@ -92,7 +92,7 @@ template = """
 
 
   <section id="gray-colors">
-    <h2 id="Gray" class="m-b-1-xs">Gray Colors</h2>
+    <h2 id="Gray" class="guide-content-subtitle m-b-1-xs">Gray Colors</h2>
     <p class="m-b-2-xs">Use the color class for any of these classes, just replace <code>[color]</code> with the name of the color you want.</p>
     <table class="table-border-rows col-60-xl m-b-3-xs">
       <thead>

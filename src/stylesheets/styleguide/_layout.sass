@@ -75,7 +75,7 @@
       &-child
         padding: 7px 32px
       &-child
-        padding-left: spacing(4)
+        padding-left: 50px
 
   // =========================================
   // Main Content Area and Footer
@@ -91,8 +91,47 @@
       margin-top: 5.25rem
     +media(min-width $lg)
       margin-top: spacing(3)
+    p
+      font-size: 14px
   &-main
     min-height: calc(100vh - 8rem)
   &-contentinfo-copy
     padding: spacing(1) spacing(3)
     margin: 0
+    font-size: 14px
+
+
+
+// =========================================
+// Conditional Styles Message
+// =========================================
+@if $alert-buttons == false
+  .guide-alert-conditional
+    display: none
+@if $disabled-buttons == false
+  .guide-disabled-conditional,
+  .button--inverse-disabled,
+  .button--inverse-primary-disabled
+    display: none
+@if $neutral-buttons == false
+  .guide-neutral-conditional
+    display: none
+@if $inverse-buttons == false
+  .guide-inverse-conditional,
+  .button--inverse-primary-disabled
+    display: none
+@if $split-buttons == false
+  .guide-split-button-conditional
+    display: none
+@if map-get($button-sizes, small) == false
+  [class*="button--small"]
+    display: none
+@if map-get($button-sizes, xsmall) == false
+  [class*="button--xsmall"]
+    display: none
+@if map-get($button-sizes, large) == false
+  [class*="button--large"]
+    display: none
+@if map-get($button-sizes, xlarge) == false
+  [class*="button--xlarge"]
+    display: none

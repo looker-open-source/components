@@ -100,6 +100,18 @@ body
   &-content
     background-color: #fff
     border-radius: $border-radius
+    &-title
+      font-size: 21px !important
+    &-subtitle
+      font-size: 18px !important
+    &-description
+      font-size: 14px !important
+    &-h3
+      font-size: 15px !important
+    &-h4
+      font-size: 14px !important
+
+
 
   // =========================================
   // Color Lists
@@ -113,14 +125,6 @@ body
         em
           color: rgba(#fff, 0.5)
           font-family: Helvetica, Arial, sans-serif
-        &.topic-bg-python-lightest
-          color: topic-color(python, base)
-          em
-            color: topic-color(python, lighter)
-        &.topic-bg-diglit-lightest
-          color: topic-color(diglit, base)
-          em
-            color: topic-color(diglit, lighter)
         &.bg-gray,
         &.bg-gray-2,
         &.bg-gray-3,
@@ -142,7 +146,6 @@ body
           color: text-color(dark)
         em
           color: text-color(light)
-  &-colors-topic,
   &-colors-gray,
   &-colors-text
     .guide-color-item
@@ -217,7 +220,7 @@ body
   &-item
     line-height: 1.7
   &-link
-    font-size: text-size(6)
+    font-size: 12px
     &:focus
       font-weight: bold
     &--active
@@ -238,6 +241,10 @@ body
     &-wrap
       +media(min-width $lg)
         +relative(top 35% left 20%)
+  &-copy
+    font-size: 15px
+    +media(min-width $lg)
+      font-size: 18px
   &-name
     +media(min-width 0 max-width ($lg - 1))
       font-size: 42px !important
