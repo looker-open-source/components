@@ -1,0 +1,12 @@
+// Should be nested under some sort of input or textarea element
+@mixin placeholder-style
+  &::-webkit-input-placeholder
+    @content
+  &:-moz-placeholder
+    @content
+  &::-moz-placeholder
+    @content
+  &:-ms-input-placeholder
+    @content
+  .placeholder
+    @content

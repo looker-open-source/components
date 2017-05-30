@@ -1,0 +1,90 @@
+// Creates the style declarations for each border type and value
+@mixin padding-style($suffix)
+
+  // Iterate through each value in $spacing-sides
+  @each $type, $side in $spacing-sides
+
+    // We don't want a modifier on the padding for all sides,
+    // so we need a conditional to control that
+    @if $type == all
+
+      // Iterate through each unit inside our $spacing map
+      @each $unit, $value in $spacing
+
+        // We don't want a class of "0.5" so we use a conditional to
+        // let us rename is at "05" in this instance
+        @if $unit == 0.5
+          .p-05-#{$suffix}
+            padding: spacing($unit) !important
+        @else
+          .p-#{$unit}-#{$suffix}
+            padding: spacing($unit) !important
+
+    @else
+
+      // Iterate through each unit inside our $spacing map
+      @each $unit, $value in $spacing
+
+        // We don't want a class of "0.5" so we use a conditional to
+        // let us rename is at "05" in this instance
+        @if $unit == 0.5
+
+          // We need to control printing out two properties for
+          // the lt and tb case and a single for the others
+          @if $type == lr
+            .p-#{$type}-05-#{$suffix}
+              padding-left: spacing($unit) !important
+              padding-right: spacing($unit) !important
+          @else if $type == tb
+            .p-#{$type}-05-#{$suffix}
+              padding-top: spacing($unit) !important
+              padding-bottom: spacing($unit) !important
+          @else
+            .p-#{$type}-05-#{$suffix}
+              padding-#{$side}: spacing($unit) !important
+        @else
+
+          // We need to control printing out two properties for
+          // the lt and tb case and a single for the others
+          @if $type == lr
+            .p-#{$type}-#{$unit}-#{$suffix}
+              padding-left: spacing($unit) !important
+              padding-right: spacing($unit) !important
+          @else if $type == tb
+            .p-#{$type}-#{$unit}-#{$suffix}
+              padding-top: spacing($unit) !important
+              padding-bottom: spacing($unit) !important
+          @else
+            .p-#{$type}-#{$unit}-#{$suffix}
+              padding-#{$side}: spacing($unit) !important
+
+
+
+// Adds the media queries to the padding-style mixin
+@mixin padding($suffix, $media: null)
+
+  // We want to use @media screen whenever no $media
+  // is passed into the mixin
+  @if length($media) == 2
+    +media($media)
+      +padding-style($suffix)
+  @else
+    @media screen
+      +padding-style($suffix)
+
+
+
+// Extra Small padding classes
++padding(xs)
+
+// Small padding classes
++padding(sm, min-width $sm)
+
+// Medium padding classes
++padding(md, min-width $md)
+
+// Large padding classes
++padding(lg, min-width $lg)
+
+// Extra Large padding classes
++padding(xl, min-width $xl)

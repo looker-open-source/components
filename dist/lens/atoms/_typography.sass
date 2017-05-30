@@ -1,0 +1,155 @@
+// Headings shared styles
+h1, h2, h3, h4, h5, h6
+  color: gray-color(dark)
+  display: block
+  font-weight: $light
+  margin: 0
+  line-height: 1.3 !important
+  text-rendering: optimizeLegibility
+
+
+
+// text sizes for each header
+@for $num from 0 through 6
+  h#{$num}
+    font-size: text-size($num) !important
+
+
+
+// Create text size classes
+@mixin header-size($suffix)
+
+  // Iterate through each text-size create text size classes
+  @each $size, $number in $text-size
+    .text-#{$size}-#{$suffix}
+      font-size: #{$number} !important
+
+
+
+// Adds the media queries to the header mixin
+@mixin header-classes($suffix, $media: null)
+
+  // We want to use @media screen whenever no $media
+  // is passed into the mixin
+  @if length($media) == 2
+    +media($media)
+      +header-size($suffix)
+  @else
+    @media screen
+      +header-size($suffix)
+
+
+
+// Extra Small header classes
++header-classes(xs)
+
+// Small header classes
++header-classes(sm, min-width $sm)
+
+// Medium header classes
++header-classes(md, min-width $md)
+
+// Large header classes
++header-classes(lg, min-width $lg)
+
+// Extra Large header classes
++header-classes(xl, min-width $xl)
+
+
+
+// Horizontal Rule
+hr
+  height: 0
+  margin: 30px 0
+  border-top: 1px solid $border-color-light
+
+
+
+// General text styles
+p
+  color: gray-color(gray-5)
+  font-size: text-size(4)
+  line-height: 1.5
+  margin: 0
+
+.regular
+  font-weight: normal !important
+
+strong,
+.bold
+  font-weight: $bold !important
+
+em,
+.italic
+  font-style: italic !important
+
+.caps
+  text-transform: uppercase
+
+a
+  color: brand-color(blue)
+  cursor: pointer
+  text-decoration: none
+  +selected
+    color: darken(brand-color(blue), 10%)
+
+code
+  font-family: monospace
+  font-size: 15px
+
+address
+  font-size: 0.875rem
+
+
+
+// Creates the text align styles for each alignment style
+@mixin text-align-styles($suffix)
+
+  // Iterate through align types and create the classes
+  @each $type in $text-alignments
+    .text-#{$type}-#{$suffix}
+      text-align: #{$type} !important
+
+
+
+// Adds the media queries to the text align style mixin
+@mixin text-align($suffix, $media: null)
+
+  // We want to use @media screen whenever no $media
+  // is passed into the mixin
+  @if length($media) == 2
+    +media($media)
+      +text-align-styles($suffix)
+  @else
+    @media screen
+      +text-align-styles($suffix)
+
+
+
+// Extra Small text-align classes
++text-align(xs)
+
+// Small text-align classes
++text-align(sm, min-width $sm)
+
+// Medium text-align classes
++text-align(md, min-width $md)
+
+// Large text-align classes
++text-align(lg, min-width $lg)
+
+// Extra Large text-align classes
++text-align(xl, min-width $xl)
+
+
+
+// List styles
+ul,
+ol
+  color: gray-color(gray-5)
+  margin: 0
+  padding: 0 0 0 2rem
+
+.list-unstyled
+  list-style: none
+  padding: 0
