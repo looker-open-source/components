@@ -4,7 +4,6 @@ node_modules
 .DS_Store
 .npm
 Gemfile.lock
-yarn.lock
 .nvmrc
 Procfile
 *.log
