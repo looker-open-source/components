@@ -1,0 +1,11 @@
+// Easily create hover, active and focus states with a single mixin
+@mixin selected($focus: true)
+  @if $focus
+    &:hover,
+    &:active,
+    &:focus
+      @content
+  @else
+    &:hover,
+    &:active,
+      @content

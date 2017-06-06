@@ -55,8 +55,7 @@ module.exports = {
       inject: 'body'
     }),
     new CopyWebpackPlugin([
-      { from: 'stylesheets/lens', to: path.resolve(__dirname, 'dist/lens') },
-      { from: './../vendor/bourbon', to: path.resolve(__dirname, 'dist/lens/vendor/bourbon') }
+      { from: 'stylesheets/lens', to: path.resolve(__dirname, 'dist/lens') }
     ]),
     new CleanWebpackPlugin(['dist'])
   ]

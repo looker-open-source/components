@@ -1,0 +1,67 @@
+// Block grid structures
+.block
+  &-grid
+    padding: 0 !important
+    list-style: none !important
+    font-size: 0 !important
+    display: block !important
+    overflow: hidden !important
+    margin-bottom: 2rem !important
+    
+    &-gutters
+      margin: -1rem -1rem 1rem -1rem !important
+      .block-grid__item
+        padding: 1rem !important
+
+    &__item
+      display: block !important
+      float: left !important
+      font-size: 16px !important
+
+
+
+// Create block width classes
+@mixin block-width($suffix)
+
+  // Iterate from 1-6 to create different block division classes
+  @for $num from 1 through 6
+    .block-#{$num}-#{$suffix} .block-grid__item
+      width: 100%/$num !important
+
+      // If we aren't a block-1 we need to reset and set clear
+      @if $num == 2 or $num == 3 $num == 4 $num == 5 $num == 6
+        &:nth-of-type(1n)
+          clear: none !important
+        &:nth-of-type(#{$num}n + 1)
+          clear: both !important
+
+
+
+// Adds the media queries to the block-width mixin
+@mixin block($suffix, $media: null)
+
+  // We want to use @media screen whenever no $media
+  // is passed into the mixin
+  @if length($media) == 2
+    +media($media)
+      +block-width($suffix)
+  @else
+    @media screen
+      +block-width($suffix)
+
+
+
+// Extra Small block classes
++block(xs)
+
+// Small block classes
++block(sm, min-width $sm)
+
+// Medium block classes
++block(md, min-width $md)
+
+// Large block classes
++block(lg, min-width $lg)
+
+// Extra Large block classes
++block(xl, min-width $xl)

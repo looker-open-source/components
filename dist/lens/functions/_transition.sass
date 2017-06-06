@@ -1,0 +1,24 @@
+// Useful for click, active, & hover states
+//
+// Example Usage:
+//
+// - fast(color) -> 300ms
+// - fast(color, 2) -> 150ms
+// - fast(color, 3) -> 100ms
+// - fast(color, 4) -> 75ms
+//
+@function fast($attribute, $multiplier: 1, $delay: 0s)
+  @return $attribute (300ms / $multiplier) $delay ease
+
+
+// Useful for toggling things open/close
+//
+// Example Usage:
+//
+// - slow(color) -> 600ms
+// - slow(color, 2) -> 1.2s
+// - slow(color, 3) -> 1.8s
+// - slow(color, 4) -> 2.4s
+//
+@function slow($attribute, $multiplier: 1, $delay: 0s)
+  @return $attribute (600ms * $multiplier) $delay ease

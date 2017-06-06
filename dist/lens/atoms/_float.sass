@@ -1,0 +1,42 @@
+// Creates the style declarations for each float type
+@mixin float-style($suffix)
+  .float
+    &-l-#{$suffix}
+      float: left !important
+
+    &-r-#{$suffix}
+      float: right !important
+
+    &-none-#{$suffix}
+      float: none !important
+
+
+
+// Adds media queries to float style mixin
+@mixin float($suffix, $media: null)
+
+  // We want to use @media screen whenever no $media
+  // is passed into the mixin
+  @if length($media) == 2
+    +media($media)
+      +float-style($suffix)
+  @else
+    @media screen
+      +float-style($suffix)
+
+
+
+// Extra Small float classes
++float(xs)
+
+// Small float classes
++float(sm, min-width $sm)
+
+// Medium float classes
++float(md, min-width $md)
+
+// Large float classes
++float(lg, min-width $lg)
+
+// Extra Large float classes
++float(xl, min-width $xl)

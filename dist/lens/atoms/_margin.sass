@@ -1,0 +1,99 @@
+// Creates the style declarations for each border type and value
+@mixin margin-style($suffix)
+
+  // Iterate through each value in $spacing-sides
+  @each $type, $side in $spacing-sides
+
+    // We don't want a modifier on the margin for all sides,
+    // so we need a conditional to control that
+    @if $type == all
+
+      // Iterate through each unit inside our $spacing map
+      @each $unit, $value in $spacing
+
+        // We don't want a class of "0.5" so we use a conditional to
+        // let us rename is at "05" in this instance
+        @if $unit == 0.5
+          .m-05-#{$suffix}
+            margin: spacing($unit) !important
+        @else
+          .m-#{$unit}-#{$suffix}
+            margin: spacing($unit) !important
+
+    @else
+
+      // Iterate through each unit inside our $spacing map
+      @each $unit, $value in $spacing
+
+        // We don't want a class of "0.5" so we use a conditional to
+        // let us rename is at "05" in this instance
+        @if $unit == 0.5
+
+          // We need to control printing out two properties for
+          // the lt and tb case and a single for the others
+          @if $type == lr
+            .m-#{$type}-05-#{$suffix}
+              margin-left: spacing($unit) !important
+              margin-right: spacing($unit) !important
+          @else if $type == tb
+            .m-#{$type}-05-#{$suffix}
+              margin-top: spacing($unit) !important
+              margin-bottom: spacing($unit) !important
+          @else
+            .m-#{$type}-05-#{$suffix}
+              margin-#{$side}: spacing($unit) !important
+        @else
+
+          // We need to control printing out two properties for
+          // the lt and tb case and a single for the others
+          @if $type == lr
+            .m-#{$type}-#{$unit}-#{$suffix}
+              margin-left: spacing($unit) !important
+              margin-right: spacing($unit) !important
+          @else if $type == tb
+            .m-#{$type}-#{$unit}-#{$suffix}
+              margin-top: spacing($unit) !important
+              margin-bottom: spacing($unit) !important
+          @else
+            .m-#{$type}-#{$unit}-#{$suffix}
+              margin-#{$side}: spacing($unit) !important
+
+
+
+// Creates the styles for margin: 0 auto for horizontal centering
+@mixin margin-auto($suffix)
+  .m-auto-#{$suffix}
+    margin: 0 auto !important
+
+
+
+// Adds the media queries to the margin-style mixin
+@mixin margin($suffix, $media: null)
+
+  // We want to use @media screen whenever no $media
+  // is passed into the mixin
+  @if length($media) == 2
+    +media($media)
+      +margin-style($suffix)
+      +margin-auto($suffix)
+  @else
+    @media screen
+      +margin-style($suffix)
+      +margin-auto($suffix)
+
+
+
+// Extra Small margin classes
++margin(xs)
+
+// Small margin classes
++margin(sm, min-width $sm)
+
+// Medium margin classes
++margin(md, min-width $md)
+
+// Large margin classes
++margin(lg, min-width $lg)
+
+// Extra Large margin classes
++margin(xl, min-width $xl)
