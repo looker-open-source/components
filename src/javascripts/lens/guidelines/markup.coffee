@@ -1,14 +1,14 @@
-m = angular.module "lens.atoms.icons", []
+m = angular.module "lens.guidelines.markup", []
 
 
-m.controller "IconsController", (
+m.controller "MarkupController", (
   $scope
 ) ->
   return this
 
 
-m.directive "icons", ->
-  controller: "IconsController"
+m.directive "markup", ->
+  controller: "MarkupController"
   restrict: "E"
   scope: {}
   template: template
@@ -26,6 +26,10 @@ template = """
 </header>
 
 <lens-main>
-  <section>Coming Soon...</section>
+
+  <section id="markup">
+    coming soon...
+  </section>
+
 </lens-main>
 """

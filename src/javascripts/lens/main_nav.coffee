@@ -4,13 +4,43 @@ m.controller "MainNavController", (
   $scope
 ) ->
 
-  $scope.toggleAtomsNav = =>
-    $scope.showAtomsNav = !$scope.showAtomsNav
-    if $scope.showAtomsNav
-      @deactivate()
-      @activate("atoms")
-    else
-      @deactivate()
+  $scope.menuItems = [
+    { title: "Getting Started", uiSref: "getting-started" },
+    { title: "Guidelines", id: "guidelines", subNav: [
+#        { title: "Design Principles", uiSref: "design-principles" },
+        { title: "Markup", uiSref: "markup" }
+#        { title: "Platform Adaptation", uiSref: "platform-adaptation" },
+#        { title: "Environment Properties", uiSref: "environment-properties" },
+#        { title: "Nouns and Verbs", uiSref: "nouns-verbs" },
+#        { title: "Logo and Identity", uiSref: "logo-identity" }
+      ]
+    },
+    { title: "Components", id: "components", subNav: [
+        { title: "Buttons", uiSref: "buttons"},
+        { title: "Forms", uiSref: "forms"},
+        { title: "Tables", uiSref: "tables"}
+      ]
+    },
+    { title: "Atoms", id: "atoms", subNav: [
+        { title: "Block Grid", uiSref: "block-grid"},
+        { title: "Borders", uiSref: "borders"},
+        { title: "Colors", uiSref: "colors"},
+        { title: "Flexbox", uiSref: "flexbox"}
+        { title: "Grid", uiSref: "grid"},
+        { title: "Icons", uiSref: "icons"},
+        { title: "Layout", uiSref: "layout"},
+        { title: "Typography", uiSref: "typography"}
+      ]
+    },
+    { title: "Sass", uiSref: "sass" },
+    { title: "Responsive", uiSref: "responsive" },
+    { title: "Installation", uiSref: "installation" },
+    { title: "Release Notes", uiSref: "release-notes" }
+  ]
+
+  $scope.toggleSubNav = (id) =>
+    @toggleSubNav(id)
+    return true
 
   return this
 
@@ -18,79 +48,33 @@ m.controller "MainNavController", (
 m.directive "mainNav", ->
   controller: "MainNavController"
   restrict: "E"
-  scope: {}
+  scope: { }
   template: template
   link: (scope, $el, attrs, ctrl) ->
-    $el.find(".guide-navigation-link").on "click", ->
-      return if $(this).hasClass("guide-navigation-link-child")
-      if $(this).attr("id") != "atoms" && scope.showAtomsNav
-        scope.toggleAtomsNav()
 
-    ctrl.deactivate = ->
-      $el.find(".guide-navigation-link").removeClass("active")
-      return
-
-    ctrl.activate = (id) ->
-      $el.find("##{id}").addClass("active")
-      return
+    ctrl.toggleSubNav = (id) ->
+      $el.find("##{id}").toggleClass("active")
+      $el.find("##{id}-sub-nav").toggle()
 
 
 template = """
 <div id="guide_navigation" class="guide-navigation">
   <nav id="navigation" role="navigation" tabindex="-1">
     <ul class="guide-navigation-list">
-      <li class="guide-navigation-item">
-        <a ui-sref="getting-started" ui-sref-active="active" class="guide-navigation-link">Getting Started</a>
-      </li>
-      <li class="guide-navigation-item">
-        <a ui-sref="sass" ui-sref-active="active" class="guide-navigation-link">Sass</a>
-      </li>
-      <li class="guide-navigation-item">
-        <a ui-sref="responsive" ui-sref-active="active" class="guide-navigation-link">Responsive</a>
-      </li>
-      <li class="guide-navigation-item guide-navigation-item-parent">
-        <a id="atoms" class="guide-navigation-link"ng-click="toggleAtomsNav()">
-          Atoms
+      <li ng-repeat="item in menuItems" class="guide-navaigation-item">
+        <!-- sub menu -->
+        <a ng-if="item.subNav" id="{{ item.id }}" class="guide-navigation-link guide-navigation-item-parent"  ng-click="toggleSubNav(item.id)">
+          {{ item.title }}
           <span class="guide-navigation-icon"></span>
         </a>
-        <ul ng-show="showAtomsNav" class="guide-navigation-list-child">
-          <li class="guide-navigation-item-child">
-            <a ui-sref="typography" ui-sref-active="active" class="guide-navigation-link guide-navigation-link-child">Typography</a>
-          </li>
-          <li class="guide-navigation-item-child">
-            <a ui-sref="grid" ui-sref-active="active" class="guide-navigation-link guide-navigation-link-child">Grid</a>
-          </li>
-          <li class="guide-navigation-item-child">
-            <a ui-sref="block-grid" ui-sref-active="active" class="guide-navigation-link guide-navigation-link-child">Block Grid</a>
-          </li>
-          <li class="guide-navigation-item-child">
-            <a ui-sref="layout" ui-sref-active="active" class="guide-navigation-link guide-navigation-link-child">Layout</a>
-          </li>
-          <li class="guide-navigation-item-child">
-            <a ui-sref="flexbox" ui-sref-active="active" class="guide-navigation-link guide-navigation-link-child">Flexbox</a>
-          </li>
-          <li class="guide-navigation-item-child">
-            <a ui-sref="buttons" ui-sref-active="active" class="guide-navigation-link guide-navigation-link-child">Buttons</a>
-          </li>
-          <li class="guide-navigation-item-child">
-            <a ui-sref="colors" ui-sref-active="active" class="guide-navigation-link guide-navigation-link-child">Colors</a>
-          </li>
-          <li class="guide-navigation-item-child">
-            <a ui-sref="borders" ui-sref-active="active" class="guide-navigation-link guide-navigation-link-child">Borders</a>
-          </li>
-          <li class="guide-navigation-item-child">
-            <a ui-sref="forms" ui-sref-active="active" class="guide-navigation-link guide-navigation-link-child">Forms</a>
-          </li>
-          <li class="guide-navigation-item-child">
-            <a ui-sref="icons" ui-sref-active="active" class="guide-navigation-link guide-navigation-link-child">Icons</a>
-          </li>
-          <li class="guide-navigation-item-child">
-            <a ui-sref="tables" ui-sref-active="active" class="guide-navigation-link guide-navigation-link-child">Tables</a>
+        <ul ng-if="item.subNav" id="{{ item.id }}-sub-nav" class="guide-navigation-list-child">
+          <li ng-repeat="child in item.subNav" class="guide-navigation-item-child">
+            <a ui-sref="{{ child.uiSref }}" ui-sref-active="active" class="guide-navigation-link guide-navigation-link-child">{{ child.title }}</a>
           </li>
         </ul>
-      </li>
-      <li class="guide-navigation-item">
-        <a ui-sref="release-notes" ui-sref-active="active" class="guide-navigation-link">Release Notes</a>
+
+        <!-- single item -->
+        <a ng-if="item.uiSref" ui-sref="{{ item.uiSref }}" ui-sref-active="active" class="guide-navigation-link">{{ item.title }}</a>
       </li>
     </ul>
   </nav>

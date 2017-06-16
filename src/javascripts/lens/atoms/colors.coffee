@@ -123,15 +123,6 @@ template = """
 
 </lens-main>
 
-<main-nav></main-nav>
-
-<footer class="guide-contentinfo" role="contentinfo">
-  <p class="guide-contentinfo-copy">Copyright &copy; 2017 Looker. All rights reserved.</p>
-</footer>
-
-
-
-
 <!-- Sass to JS goodness -->
 <div id="brandColorData"></div>
 <div id="uiColorData"></div>

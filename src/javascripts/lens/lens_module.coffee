@@ -1,23 +1,37 @@
 require "angular-ui-router"
-require "./atoms/atoms_module.coffee"
-require "./getting_started.coffee"
-require "./index.coffee"
-require "./login.coffee"
-require "./release_notes.coffee"
 require "./lens_main.coffee"
 require "./main_nav.coffee"
+require "./page_footer.coffee"
+
+require "./login.coffee"
+require "./index.coffee"
+require "./getting_started.coffee"
+require "./responsive.coffee"
+require "./release_notes.coffee"
+require "./installation.coffee"
 require "./sass.coffee"
+
+require "./guidelines/guidelines_module.coffee"
+require "./atoms/atoms_module.coffee"
+require "./components/components_module.coffee"
 
 module.exports = m = angular.module "Lens", [
   "ui.router"
-  "lens.atoms"
-  "lens.getting_started"
   "lens.index"
   "lens.login"
-  "lens.release_notes"
   "lens.lens_main"
   "lens.main_nav"
+  "lens.page_footer"
+
+  "lens.getting_started"
   "lens.sass"
+  "lens.responsive"
+  "lens.installation"
+  "lens.release_notes"
+
+  "lens.guidelines"
+  "lens.components"
+  "lens.atoms"
 ]
 
 m.config (
@@ -41,71 +55,85 @@ m.config (
     url: '/getting-started'
     template: '<getting-started></getting-started>'
     title: 'Getting Started'
+# Guidelines
+  markupState =
+    name: 'markup'
+    url: '/guidelines/markup'
+    template: '<markup></markup>'
+    title: 'Markup'
+# Components
+  buttonsState =
+    name: 'buttons'
+    url: '/components/buttons'
+    template: '<buttons></buttons>'
+    title: 'Buttons'
+  formsState =
+    name: 'forms'
+    url: '/components/forms'
+    template: '<forms></forms>'
+    title: 'Forms'
+  tablesState =
+    name: 'tables'
+    url: '/components/tables'
+    template: '<tables></tables>'
+    title: 'Tables'
+# Atoms
   blockGridState =
     name: 'block-grid'
-    url: '/block-grid'
+    url: '/atoms/block-grid'
     template: '<block-grid></block-grid>'
     title: 'Block Grid'
   bordersState =
     name: 'borders'
-    url: '/borders'
+    url: '/atoms/borders'
     template: '<borders></borders>'
     title: 'Borders'
-  buttonsState =
-    name: 'buttons'
-    url: '/buttons'
-    template: '<buttons></buttons>'
-    title: 'Buttons'
   colorsState =
     name: 'colors'
-    url: '/colors'
+    url: '/atoms/colors'
     template: '<colors></colors>'
     title: 'Colors'
   flexboxState =
     name: 'flexbox'
-    url: '/flexbox'
+    url: '/atoms/flexbox'
     template: '<flexbox></flexbox>'
     title: 'Flexbox'
-  formsState =
-    name: 'forms'
-    url: '/forms'
-    template: '<forms></forms>'
-    title: 'Forms'
   gridState =
     name: 'grid'
-    url: '/grid'
+    url: '/atoms/grid'
     template: '<grid></grid>'
     title: 'Grid'
   iconsState =
     name: 'icons'
-    url: '/icons'
+    url: '/atoms/icons'
     template: '<icons></icons>'
     title: 'Icons'
   layoutState =
     name: 'layout'
-    url: '/layout'
+    url: '/atoms/layout'
     template: '<layout></layout>'
     title: 'Layout'
-  responsiveState =
-    name: 'responsive'
-    url: '/responsive'
-    template: '<responsive></responsive>'
-    title: 'Responsive'
-  tablesState =
-    name: 'tables'
-    url: '/tables'
-    template: '<tables></tables>'
-    title: 'Tables'
   typographyState =
     name: 'typography'
-    url: '/typography'
+    url: '/atoms/typography'
     template: '<typography></typography>'
     title: 'Typography'
+
   sassState =
     name: 'sass'
     url: '/sass'
     template: '<sass></sass>'
     title: 'Sass'
+  responsiveState =
+    name: 'responsive'
+    url: '/responsive'
+    template: '<responsive></responsive>'
+    title: 'Responsive'
+  installationState =
+    name: 'installation'
+    url: '/installation'
+    template: '<installation></installation>'
+    title: 'Installation'
   releaseNotesState =
     name: 'release-notes'
     url: '/release-notes'
@@ -115,19 +143,25 @@ m.config (
   $stateProvider.state loginState
   $stateProvider.state indexState
   $stateProvider.state gettingStartedState
+
+  $stateProvider.state markupState
+
+  $stateProvider.state buttonsState
+  $stateProvider.state formsState
+  $stateProvider.state tablesState
+
   $stateProvider.state blockGridState
   $stateProvider.state bordersState
-  $stateProvider.state buttonsState
   $stateProvider.state colorsState
   $stateProvider.state flexboxState
-  $stateProvider.state formsState
   $stateProvider.state gridState
   $stateProvider.state iconsState
   $stateProvider.state layoutState
-  $stateProvider.state responsiveState
-  $stateProvider.state tablesState
   $stateProvider.state typographyState
+
   $stateProvider.state sassState
+  $stateProvider.state responsiveState
+  $stateProvider.state installationState
   $stateProvider.state releaseNotesState
   return
 

@@ -34,7 +34,7 @@ template = """
     <p class="m-b-2-xs">Most of our variables are built using Sass maps, which means they aren't easily accessible with a simple variable name. We've made functions to make access to those variables easier, we'll cover those below. Here are the variables that use regular variable names:</p>
 
     <h3 class="guide-content-h3 m-b-05-xs">Typography</h3>
-    <p class="m-b-1-xs">Used to set font family a font size.</p>
+    <p class="m-b-1-xs">Used to set font family and font size.</p>
     <p class="bold">Font-family</p>
     <div class="guide-code">
   <pre class="m-tb-05-xs"><code class="language-css">.custom-element
@@ -252,10 +252,4 @@ template = """
   </section>
 
 </lens-main>
-
-<main-nav></main-nav>
-
-<footer class="guide-contentinfo" role="contentinfo">
-  <p class="guide-contentinfo-copy">Copyright &copy; 2017 Looker. All rights reserved.</p>
-</footer>
 """

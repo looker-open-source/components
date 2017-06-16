@@ -1,4 +1,4 @@
-m = angular.module "lens.atoms.responsive", []
+m = angular.module "lens.responsive", []
 
 
 m.controller "ResponsiveController", (
@@ -198,12 +198,4 @@ template = """
   </section>
 
 </lens-main>
-
-<main-nav></main-nav>
-
-<footer class="guide-contentinfo" role="contentinfo">
-  <p class="guide-contentinfo-copy">Copyright &copy; 2017 Looker. All rights reserved.</p>
-</footer>
-
-
 """

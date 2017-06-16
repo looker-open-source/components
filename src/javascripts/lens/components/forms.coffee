@@ -1,4 +1,4 @@
-m = angular.module "lens.atoms.forms", []
+m = angular.module "lens.components.forms", []
 
 
 m.controller "FormsController", (
@@ -500,12 +500,4 @@ template = """
   </section>
 
 </lens-main>
-
-<main-nav></main-nav>
-
-<footer class="guide-contentinfo" role="contentinfo">
-  <p class="guide-contentinfo-copy">Copyright &copy; 2017 Looker. All rights reserved.</p>
-</footer>
-
-
 """

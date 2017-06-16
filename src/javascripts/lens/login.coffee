@@ -12,7 +12,10 @@ m.directive "login", ->
   restrict: "E"
   scope: {}
   template: template
+  link: (scope, $el, attrs, ctrl) ->
 
+    $("main-nav").hide()
+    $("footer").hide()
 
 template = """
 <header class="login-header brand-bg-gray">

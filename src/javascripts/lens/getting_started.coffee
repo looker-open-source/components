@@ -27,7 +27,6 @@ template = """
 
 <lens-main>
 
-
   <section id="getting-started">
     <p class="guide-content-description m-b-4-xs">Lens includes resources to create user interfaces consistent with the Looker brand and best practices. Here are few things to consider before you start using Lens on your next project.</p>
 
@@ -54,11 +53,4 @@ template = """
 
 
 </lens-main>
-
-<main-nav></main-nav>
-
-<footer class="guide-contentinfo" role="contentinfo">
-  <p class="guide-contentinfo-copy">Copyright &copy; 2017 Looker. All rights reserved.</p>
-</footer>
-
 """
