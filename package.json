@@ -1,5 +1,5 @@
 {
-  "name": "looker-design-system",
+  "name": "lens",
   "version": "1.0.0",
   "description": "Lens is an internal design system made for Looker.",
   "private": true,
@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/looker/looker-design-system.git"
+    "url": "git+https://github.com/looker/lens.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/looker/looker-design-system/issues"
+    "url": "https://github.com/looker/lens/issues"
   },
-  "homepage": "https://github.com/looker/looker-design-system#readme",
+  "homepage": "https://github.com/looker/lens#readme",
   "devDependencies": {
     "babel-core": "^6.3.26",
     "babel-loader": "^6.2.0",

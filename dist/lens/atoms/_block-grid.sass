@@ -7,7 +7,7 @@
     display: block !important
     overflow: hidden !important
     margin-bottom: 2rem !important
-    
+
     &-gutters
       margin: -1rem -1rem 1rem -1rem !important
       .block-grid__item
@@ -50,18 +50,11 @@
       +block-width($suffix)
 
 
+// Building classes
 
-// Extra Small block classes
+// Default
 +block(xs)
 
-// Small block classes
-+block(sm, min-width $sm)
-
-// Medium block classes
-+block(md, min-width $md)
-
-// Large block classes
-+block(lg, min-width $lg)
-
-// Extra Large block classes
-+block(xl, min-width $xl)
+// Other breakpoints
+@each $value, $breakpoint in $breakpoints
+  +block($value, min-width $breakpoint)

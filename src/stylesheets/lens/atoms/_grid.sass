@@ -13,6 +13,12 @@
   &-container
     +clearfix
 
+  // Include this alongside .col-container to add a max-width
+  &-max
+    max-width: $grid-max-width !important
+    margin: 0 auto !important
+    padding: 0 15px
+
   // Center a single column inside of a .col-container
   &-center
     float: none !important
@@ -23,6 +29,9 @@
     margin: 0 -6px !important
     > .col
       padding: 0 6px
+
+
+
   // Creates style declarations for each grid width
   @mixin col-width($suffix)
     @each $width in $widths
@@ -57,18 +66,11 @@
         +col-width($suffix)
 
 
+  // Building classes
 
-  // Extra Small column classes
+  // Default
   +build-col(xs)
 
-  // Small column classes
-  +build-col(sm, min-width $sm)
-
-  // Medium column classes
-  +build-col(md, min-width $md)
-
-  // Large column classes
-  +build-col(lg, min-width $lg)
-
-  // Extra Large column classes
-  +build-col(xl, min-width $xl)
+  // Other breakpoints
+  @each $value, $breakpoint in $breakpoints
+    +build-col($value, min-width $breakpoint)

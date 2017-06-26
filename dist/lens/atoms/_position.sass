@@ -55,18 +55,11 @@
       +z-index($suffix)
 
 
+// Building classes
 
-// Extra Small position classes
+// Default
 +position(xs)
 
-// Small position classes
-+position(sm, min-width $sm)
-
-// Medium position classes
-+position(md, min-width $md)
-
-// Large position classes
-+position(lg, min-width $lg)
-
-// Extra Large position classes
-+margin(xl, min-width $xl)
+// Other breakpoints
+@each $value, $breakpoint in $breakpoints
+  +position($value, min-width $breakpoint)

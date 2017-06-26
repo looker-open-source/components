@@ -73,18 +73,11 @@
       +padding-style($suffix)
 
 
+// Building classes
 
-// Extra Small padding classes
+// Default
 +padding(xs)
 
-// Small padding classes
-+padding(sm, min-width $sm)
-
-// Medium padding classes
-+padding(md, min-width $md)
-
-// Large padding classes
-+padding(lg, min-width $lg)
-
-// Extra Large padding classes
-+padding(xl, min-width $xl)
+// Other breakpoints
+@each $value, $breakpoint in $breakpoints
+  +padding($value, min-width $breakpoint)

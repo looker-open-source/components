@@ -27,18 +27,11 @@
       +display-style($suffix)
 
 
+// Building classes
 
-// Extra Small display classes
+// Default
 +display(xs)
 
-// Small display classes
-+display(sm, min-width $sm)
-
-// Medium display classes
-+display(md, min-width $md)
-
-// Large display classes
-+display(lg, min-width $lg)
-
-// Extra Large display classes
-+display(xl, min-width $xl)
+// Other breakpoints
+@each $value, $breakpoint in $breakpoints
+  +display($value, min-width $breakpoint)

@@ -9,7 +9,7 @@
       padding: 13px 1rem
       width: 100%
       line-height: 1
-    +media(min-width $lg)
+    +media(min-width 960px)
       padding: 13px 1rem
       z-index: 50
 
@@ -22,7 +22,7 @@
   &-skip-content a
     @media screen
       display: none
-    +media(min-width $lg)
+    +media(min-width 960px)
       +absolute(left -9999em)
       display: block
       margin-top: 0
@@ -42,7 +42,7 @@
       padding-top: 0
       width: 100%
       z-index: 50
-    +media(min-width $lg)
+    +media(min-width 960px)
       +fixed(top 50px bottom 0)
       padding-top: 0
       width: 13rem
@@ -58,13 +58,13 @@
       outline: 0
       @media screen
         width: 100%
-      +media(min-width $lg)
+      +media(min-width 960px)
         width: 13rem
     &-list
       margin: 0
       @media screen
         padding: 0 0 0 0
-      +media(min-width $lg)
+      +media(min-width 960px)
         padding: 0
       &-child
         margin: 0
@@ -82,14 +82,14 @@
   // =========================================
   &-main,
   &-contentinfo
-    +media(min-width $lg)
+    +media(min-width 960px)
       margin-left: 13rem
       padding-top: 45px
   &-content
     margin: spacing(3)
     @media screen
       margin-top: 5.25rem
-    +media(min-width $lg)
+    +media(min-width 960px)
       margin-top: spacing(3)
     p
       font-size: 14px

@@ -46,20 +46,13 @@ $color-properties: color border-color background-color;
 // =========================================
 // Spacing Units
 // =========================================
-// Spacing Units
-//   0   = 0px
-//   0.5 = 5px
-//   1   = 10px
-//   2   = 20px
-//   3   = 25px
-//   4   = 50px
 $spacing: (
-  0:   0rem,
-  0.5: 0.3125rem,
-  1:   0.625rem,
-  2:   1.25rem,
-  3:   1.5625rem,
-  4:   3.125rem
+  0:   0px,
+  0.5: 5px,
+  1:   10px,
+  2:   20px,
+  3:   25px,
+  4:   50px
 );
 
 $spacing-sides: (
@@ -99,10 +92,13 @@ $text-alignments: left, right, center, justify;
 // =========================================
 // Responsive Breakpoints
 // =========================================
-$sm: 480px;
-$md: 680px;
-$lg: 960px;
-$xl: 1140px;
+$breakpoints: (
+  sm: 480px,
+  md: 680px,
+  lg: 960px,
+  xl: 1140px
+);
+$grid-max-width: 1260px;
 
 
 
@@ -125,7 +121,7 @@ $button-letter-spacing: normal;
 $button-line-height: null;
 $button-transition: none;
 $button-padding: 4px 12px;
-$button-margin: 0 12px 0 0;
+$button-margin: 12px;
 $button-default-bg: white;
 $button-default-border: 1px solid gray-color(gray-2);
 $button-default-font-color: ui-color(purple);

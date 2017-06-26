@@ -39,21 +39,14 @@ h1, h2, h3, h4, h5, h6
       +header-size($suffix)
 
 
+// Building classes
 
-// Extra Small header classes
+// Default
 +header-classes(xs)
 
-// Small header classes
-+header-classes(sm, min-width $sm)
-
-// Medium header classes
-+header-classes(md, min-width $md)
-
-// Large header classes
-+header-classes(lg, min-width $lg)
-
-// Extra Large header classes
-+header-classes(xl, min-width $xl)
+// Other breakpoints
+@each $value, $breakpoint in $breakpoints
+  +header-classes($value, min-width $breakpoint)
 
 
 
@@ -124,21 +117,14 @@ address
       +text-align-styles($suffix)
 
 
+// Building classes
 
-// Extra Small text-align classes
+// Default
 +text-align(xs)
 
-// Small text-align classes
-+text-align(sm, min-width $sm)
-
-// Medium text-align classes
-+text-align(md, min-width $md)
-
-// Large text-align classes
-+text-align(lg, min-width $lg)
-
-// Extra Large text-align classes
-+text-align(xl, min-width $xl)
+// Other breakpoints
+@each $value, $breakpoint in $breakpoints
+  +text-align($value, min-width $breakpoint)
 
 
 

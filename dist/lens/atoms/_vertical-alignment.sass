@@ -20,18 +20,11 @@
       +vertical-alignment-style($suffix)
 
 
+// Building classes
 
-// Extra Small vertical-alignment classes
+// Default
 +vertical-alignment(xs)
 
-// Small vertical-alignment classes
-+vertical-alignment(sm, min-width $sm)
-
-// Medium vertical-alignment classes
-+vertical-alignment(md, min-width $md)
-
-// Large vertical-alignment classes
-+vertical-alignment(lg, min-width $lg)
-
-// Extra Large vertical-alignment classes
-+vertical-alignment(xl, min-width $xl)
+// Other breakpoints
+@each $value, $breakpoint in $breakpoints
+  +vertical-alignment($value, min-width $breakpoint)

@@ -85,6 +85,17 @@ template = """
 &lt;/div&gt;</code></pre>
     </div>
 
+    <h2 id="Max-Width" class="m-b-1-xs">Grid Max-Width</h2>
+    <p class="m-b-1-xs">By default, our grid will span 100% of the browser viewport. If you want to control that, add <code>.col-max</code> next to your <code>.col-container</code> class. This will limit the width of the grid to <code>1260px</code>.</p>
+    <div class="col-container col-max">
+      <div class="border-dark-xs p-2-xs">1260px max-width</div>
+    </div>
+    <div class="guide-code m-b-4-xs">
+<pre><code class="language-html">&lt;div class="col-container col-max"&gt;
+  &lt;div class="border-dark-xs p-2-xs"&gt;1260px max-width&lt;/div&gt;		
+  &lt;/div&gt;</code></pre>
+    </div>
+
     <h2 id="Gutters" class="guide-content-subtitle m-b-1-xs">Gutters</h2>
     <p class="m-b-3-xs">The Lens grid doesn't include gutter by default. But there are times when you want to include gutters between your grid. For those times, we have <code>.col-gutters</code>, which can be added next to <code>.col-container</code> to automatically assign gutters to the internal columns. You may also choose to apply gutters manually (for a little more control) by using our padding utility classes next to the column classes.</p>
 

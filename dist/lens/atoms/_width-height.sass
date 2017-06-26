@@ -33,18 +33,11 @@
       +width-height-style($suffix)
 
 
+// Building classes
 
-// Extra Small width-height-adjust classes
+// Default
 +width-height-adjust(xs)
 
-// Small width-height-adjust classes
-+width-height-adjust(sm, min-width $sm)
-
-// Medium width-height-adjust classes
-+width-height-adjust(md, min-width $md)
-
-// Large width-height-adjust classes
-+width-height-adjust(lg, min-width $lg)
-
-// Extra Large width-height-adjust classes
-+width-height-adjust(xl, min-width $xl)
+// Other breakpoints
+@each $value, $breakpoint in $breakpoints
+  +width-height-adjust($value, min-width $breakpoint)

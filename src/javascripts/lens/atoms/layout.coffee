@@ -248,12 +248,12 @@ template = """
       <div class="col col-50-lg">
         <p><strong>Padding</strong></p>
         <ul class="list-unstyled">
-          <li><code>.p-0-xs</code> <span class="m-l-1-xs">padding-top</span></li>
-          <li><code>.p-05-xs</code> <span class="m-l-1-xs">padding-bottom</span></li>
-          <li><code>.p-1-xs</code> <span class="m-l-1-xs">padding-left</span></li>
-          <li><code>.p-2-xs</code> <span class="m-l-1-xs">padding-right</span></li>
-          <li><code>.p-3-xs</code> <span class="m-l-1-xs">padding left + right</span></li>
-          <li><code>.p-4-xs</code> <span class="m-l-1-xs">padding top + bottom</span></li>
+          <li><code>.p-t-0-xs</code> <span class="m-l-1-xs">padding-top</span></li>
+          <li><code>.p-b-05-xs</code> <span class="m-l-1-xs">padding-bottom</span></li>
+          <li><code>.p-l-1-xs</code> <span class="m-l-1-xs">padding-left</span></li>
+          <li><code>.p-r-2-xs</code> <span class="m-l-1-xs">padding-right</span></li>
+          <li><code>.p-lr-3-xs</code> <span class="m-l-1-xs">padding left + right</span></li>
+          <li><code>.p-tb-4-xs</code> <span class="m-l-1-xs">padding top + bottom</span></li>
         </ul>
       </div>
     </div>

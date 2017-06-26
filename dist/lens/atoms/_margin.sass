@@ -82,18 +82,11 @@
       +margin-auto($suffix)
 
 
+// Building classes
 
-// Extra Small margin classes
+// Default
 +margin(xs)
 
-// Small margin classes
-+margin(sm, min-width $sm)
-
-// Medium margin classes
-+margin(md, min-width $md)
-
-// Large margin classes
-+margin(lg, min-width $lg)
-
-// Extra Large margin classes
-+margin(xl, min-width $xl)
+// Other breakpoints
+@each $value, $breakpoint in $breakpoints
+  +margin($value, min-width $breakpoint)

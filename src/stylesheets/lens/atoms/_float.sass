@@ -25,18 +25,11 @@
       +float-style($suffix)
 
 
+// Building classes
 
-// Extra Small float classes
+// Default
 +float(xs)
 
-// Small float classes
-+float(sm, min-width $sm)
-
-// Medium float classes
-+float(md, min-width $md)
-
-// Large float classes
-+float(lg, min-width $lg)
-
-// Extra Large float classes
-+float(xl, min-width $xl)
+// Other breakpoints
+@each $value, $breakpoint in $breakpoints
+  +float($value, min-width $breakpoint)

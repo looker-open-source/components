@@ -80,17 +80,11 @@
 
 
 
-// Extra Small border classes
+// Building classes
+
+// Default
 +border(xs)
 
-// Small border classes
-+border(sm, min-width $sm)
-
-// Medium border classes
-+border(md, min-width $md)
-
-// Large border classes
-+border(lg, min-width $lg)
-
-// Extra Large border classes
-+border(xl, min-width $xl)
+// Other breakpoints
+@each $value, $breakpoint in $breakpoints
+  +border($value, min-width $breakpoint)

@@ -20,18 +20,11 @@
       +rotation-style($suffix)
 
 
+// Building classes
 
-// Extra Small rotation classes
+// Default
 +rotation(xs)
 
-// Small rotation classes
-+rotation(sm, min-width $sm)
-
-// Medium rotation classes
-+rotation(md, min-width $md)
-
-// Large rotation classes
-+rotation(lg, min-width $lg)
-
-// Extra Large rotation classes
-+rotation(xl, min-width $xl)
+// Other breakpoints
+@each $value, $breakpoint in $breakpoints
+  +rotation($value, min-width $breakpoint)

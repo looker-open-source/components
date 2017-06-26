@@ -11,7 +11,6 @@
   font-weight: $button-font-weight
   letter-spacing: $button-letter-spacing
   padding: $button-padding
-  margin: $button-margin
   line-height: $button-line-height
   transition: $button-transition
   text-decoration: none
@@ -27,7 +26,8 @@
     border: $button-default-border-hover
   &:last-child
     margin-right: 0
-
+  & + &
+    margin: $button-margin
 
 
   // Primary buttons
@@ -181,16 +181,14 @@
         +button-size($suffix)
 
 
+  // Building classes
 
-  // Extra Small button classes
+  // Default
   +button(xs)
 
-  // Small button classes
-  +button(sm, min-width $sm)
-
-  // Medium button classes
-  +button(md, min-width $md)
-
+  // Other breakpoints
+  @each $value, $breakpoint in $breakpoints
+    +button($value, min-width $breakpoint)
 
 
   // Split Buttons

@@ -151,18 +151,11 @@
       +flex-align-self($suffix)
 
 
+// Building classes
 
-// Extra Small flex classes
+// Default
 +flex(xs)
 
-// Small flex classes
-+flex(sm, min-width $sm)
-
-// Medium flex classes
-+flex(md, min-width $md)
-
-// Large flex classes
-+flex(lg, min-width $lg)
-
-// Extra Large flex classes
-+flex(xl, min-width $xl)
+// Other breakpoints
+@each $value, $breakpoint in $breakpoints
+  +flex($value, min-width $breakpoint)
