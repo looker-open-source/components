@@ -14,8 +14,9 @@ m.directive "login", ->
   template: template
   link: (scope, $el, attrs, ctrl) ->
 
-    $("main-nav").hide()
-    $("footer").hide()
+    $("main-nav").remove()
+    $("page-footer").remove()
+    $("page-header").remove()
 
 template = """
 <header class="login-header brand-bg-gray">

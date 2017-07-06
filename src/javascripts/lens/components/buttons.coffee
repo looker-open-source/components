@@ -15,21 +15,11 @@ m.directive "buttons", ->
 
 
 template = """
-<header class="guide-banner" role="banner">
-  <a ui-sref="index" ui-sref-active="active" class="guide-name">Lens</a>
-  <div class="guide-skip-content">
-    <a href="#navigation">Skip to Navigation</a>
-  </div>
-  <a href="#" id="hamburger" class="hamburger-button">
-    <span class="hamburger"></span>
-  </a>
-</header>
-
 <lens-main>
 
   <section id="Buttons">
 
-    <h2 id="Default" class="guide-content-subtitle m-b-1-xs">Default</h2>
+    <h2 id="Default" class="m-b-1-xs">Default</h2>
     <p class="m-b-3-xs">Use the class, <code>button</code> for this default style button. If you are using the <code>&lt;button&gt;</code> element, always specify a <code>type</code>. When using the <code>&lt;a&gt;</code> tag, include <code>role="button"</code> for accessibility. Each button is available in multiple sizes, take note of examples for classes.</p>
     <a class="m-b-05-xs button" href>Normal</a>
     <a class="m-b-05-xs button button--small-xs" href>Small</a>
@@ -54,7 +44,7 @@ template = """
 
 
 
-    <h2 id="Primary" class="guide-content-subtitle m-b-1-xs">Primary</h2>
+    <h2 id="Primary" class="m-b-1-xs">Primary</h2>
     <p class="m-b-3-xs">Primary buttons are used to indicate a <em>primary</em> action on the page. Use the class, <code>.button.button--primary</code>, to get a primary button on your page.</p>
     <a class="m-b-05-xs button button--primary" href>Normal</a>
     <a class="m-b-05-xs button button--primary button--small-xs" href>Small</a>
@@ -79,7 +69,7 @@ template = """
 
 
   <div class="guide-neutral-conditional">
-    <h2 id="Neutral" class="guide-content-subtitle m-b-1-xs">Neutral</h2>
+    <h2 id="Neutral" class="m-b-1-xs">Neutral</h2>
     <p class="m-b-3-xs">Neutral buttons are used for <em>neutral</em> buttons on the page, like for whitelabeling. To access these styles, use the class, <code>.button.button--neutral</code>.</p>
     <a class="m-b-05-xs button button--neutral" href>Normal</a>
     <a class="m-b-05-xs button button--neutral button--small-xs" href>Small</a>
@@ -106,7 +96,7 @@ template = """
 
 
   <div class="guide-alert-conditional">
-    <h2 id="Alert" class="guide-content-subtitle m-b-1-xs">Alert</h2>
+    <h2 id="Alert" class="m-b-1-xs">Alert</h2>
     <p class="m-b-3-xs">Alert buttons are used to indicate a urgent or negative action on the page. To access these styles, use the class, <code>.button.button--alert</code>.</p>
     <a class="m-b-05-xs button button--alert" href>Normal</a>
     <a class="m-b-05-xs button button--alert button--small-xs" href>Small</a>
@@ -132,7 +122,7 @@ template = """
 
 
   <div class="guide-inverse-conditional">
-    <h2 id='Inverse' class="guide-content-subtitle m-b-1-xs">Inverse</h2>
+    <h2 id='Inverse' class="m-b-1-xs">Inverse</h2>
     <p class="m-b-3-xs">Inverse buttons are used when the background color a container is too dark for normal buttons to have enough contrast. Invert the style with the classes, <code>.button--inverse</code>. <code>.button--inverse-primary</code>. <code>.button--inverse-disabled</code>. <code>.button--inverse-primary-disabled</code>.</p>
     <div class="bg-gray-7 p-2-xs p-b-05-xs">
     <a class="m-b-05-xs button button--inverse" href>Inverse</a>
@@ -150,7 +140,7 @@ template = """
 
 
   <div class="guide-disabled-conditional">
-    <h2 id="Disabled" class="guide-content-subtitle m-b-1-xs">Disabled</h2>
+    <h2 id="Disabled" class="m-b-1-xs">Disabled</h2>
     <p class="m-b-3-xs">Disabled buttons are used when the action on the page is blocked to the user. Get this button on a page by using the class, <code>.button.button--disabled-light</code>.</p>
     <a class="m-b-05-xs button button--disabled button--disabled-light" href>Normal</a>
     <a class="m-b-05-xs button button--disabled button--disabled-light button--small-xs" href>Small</a>
@@ -198,7 +188,7 @@ template = """
 
 
   <div class="guide-split-button-conditional">
-    <h2 id="Split" class="guide-content-subtitle m-b-1-xs">Split buttons</h2>
+    <h2 id="Split" class="m-b-1-xs">Split buttons</h2>
     <p class="m-b-3-xs">Split buttons are used when you need a button that contains two actions. To accomplish this, wrap your buttons in <code>&lt;div class="split-button"&gt;</code>. Use <code>&lt;div class="split-button w-full"&gt;</code> for your buttons to take up the full width of the container.</p>
     <div class="split-button">
       <a class="m-b-05-xs button" href ng-class="{active: active == 'left'}" ng-click="active = 'left'">Left</a>

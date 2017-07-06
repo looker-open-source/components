@@ -15,20 +15,10 @@ m.directive "grid", ->
 
 
 template = """
-<header class="guide-banner" role="banner">
-  <a ui-sref="index" ui-sref-active="active" class="guide-name">Lens</a>
-  <div class="guide-skip-content">
-    <a href="#navigation">Skip to Navigation</a>
-  </div>
-  <a href="#" id="hamburger" class="hamburger-button">
-    <span class="hamburger"></span>
-  </a>
-</header>
-
 <lens-main>
 
   <section id="grid">
-    <h2 id="Grid" class="guide-content-subtitle m-b-1-xs">The Grid</h2>
+    <h2 id="Grid" class="m-b-1-xs">The Grid</h2>
     <p class="m-b-1-xs">We provide a mobile-first, fluid grid to help layout pages with ease. To start a new grid, create a div with the class of <code>.col-container</code>. Then add columns inside it using <code>.col .col-n-xs</code>, where n = 5-100 in increments of 5, with the addition of 33 and 66 to let us do columns in thirds.</p>
     <p class="m-b-3-xs"><strong>Important:</strong> Column classes should generally be used on container elements. It's bad practice to apply grid-based widths directly to elements such as form fields, headers or images. Also, avoid applying styles directly to a column element. Instead, nest your content within the column and apply styling there.</p>
     <div class="col-container">
@@ -44,7 +34,7 @@ template = """
 &lt;/div&gt;</code></pre>
     </div>
 
-    <h2 id="Nesting" class="guide-content-subtitle m-b-1-xs">Nesting Columns</h2>
+    <h2 id="Nesting" class="m-b-1-xs">Nesting Columns</h2>
     <p class="m-b-3-xs">Each column in our grid can hold another set of columns inside of it. To make things work properly nest another <code>.col-container</code> inside the <code>.col</code>.</p>
     <div class="col-container">
       <div class="col col-50-xs border-xs">
@@ -96,10 +86,10 @@ template = """
   &lt;/div&gt;</code></pre>
     </div>
 
-    <h2 id="Gutters" class="guide-content-subtitle m-b-1-xs">Gutters</h2>
+    <h2 id="Gutters" class="m-b-1-xs">Gutters</h2>
     <p class="m-b-3-xs">The Lens grid doesn't include gutter by default. But there are times when you want to include gutters between your grid. For those times, we have <code>.col-gutters</code>, which can be added next to <code>.col-container</code> to automatically assign gutters to the internal columns. You may also choose to apply gutters manually (for a little more control) by using our padding utility classes next to the column classes.</p>
 
-    <h3 class="guide-content-h3 m-b-1-xs">Automatic Gutters</h3>
+    <h3 class="m-b-1-xs">Automatic Gutters</h3>
     <p class="m-b-3-xs">Gutters will not be applied to nested columns unless applied to its parent container.</p>
     <div class="col-container col-gutters">
       <div class="col col-40-xs">
@@ -128,7 +118,7 @@ template = """
 &lt;/div&gt;</code></pre>
     </div>
 
-    <h3 class="guide-content-h3 m-b-1-xs">Manual Gutters</h3>
+    <h3 class="m-b-1-xs">Manual Gutters</h3>
     <p class="m-b-3-xs">With manual gutters, any styling should be applied to a nested element, not the columns themselves.</p>
     <div class="col-container">
       <div class="col col-30-xs p-r-1-xs">
@@ -155,7 +145,7 @@ template = """
 &lt;/div&gt;</code></pre>
     </div>
 
-    <h2 id="Centering" class="guide-content-subtitle m-b-1-xs">Centering Columns</h2>
+    <h2 id="Centering" class="m-b-1-xs">Centering Columns</h2>
     <p class="m-b-3-xs">Sometimes you want to center a single column within its container. This is possible by adding <code>.col-center</code> next to your <code>.col col-n-xs</code> class. You may also control column centering by using our margin and float utility classes. Simply apply <code>.m-auto-xs .float-none-xs</code> and you'll get the same styles as <code>.col-center</code>.</p>
     <div class="col-container border-xs p-1-xs m-b-1-xs">
       <div class="col col-50-xs col-center border-dark-xs">.col .col-50-xs .col-center</div>
@@ -172,7 +162,7 @@ template = """
 &lt;/div&gt;</code></pre>
     </div>
 
-    <h2 id="Offsets" class="guide-content-subtitle m-b-1-xs">Column Offsets</h2>
+    <h2 id="Offsets" class="m-b-1-xs">Column Offsets</h2>
     <p class="m-b-3-xs">Move columns over by different grid widths by using <code>.col-offset-n-xs</code>. Keep in mind that the columns and offsets used within a <code>.col-container</code> shouldn't add up to more than 100.</p>
     <div class="col-container border-xs p-1-xs m-b-1-xs">
       <div class="col col-40-xs border-dark-xs">.col-40-xs</div>
@@ -185,7 +175,7 @@ template = """
 &lt;/div&gt;</code></pre>
     </div>
 
-    <h2 id="Responsive" class="guide-content-subtitle m-b-1-xs">Responsive Breakpoint Classes</h2>
+    <h2 id="Responsive" class="m-b-1-xs">Responsive Breakpoint Classes</h2>
     <p class="m-b-3-xs">Our mobile first grid comes with a set of breakpoint class suffixes that can be used to override columns across breakpoints. For example, if a div needs to take up the full width of the page across all display sizes, use <code>.col-100-xs</code>. If that same div needs to be half width at the medium breakpoint and a quarter at our large breakpoints, add <code>.col-50-md</code> and <code>.col-33-lg</code>. Resize the browser to see the effect in action. Note that there are also suffixes for small and extra large. You can learn more about the breakpoints in our <a href="responsive.html">responsive documentation</a></p>
     <div class="col-container">
       <div class="col col-100-xs col-50-md col-25-lg border-dark-xs">
@@ -235,5 +225,17 @@ template = """
     </div>
   </section>
 
+    <section id="Variables">
+      <h2 class="m-b-1-xs">Variables</h2>
+    <p class="m-b-1-xs">Used in the grid and <a href="/guidelines/responsive">responsive breakpoint</a> utility classes. Our <code>-xs</code> breakpoint doesn't have a variable because it is simply styling <code>@media screen</code>.</p>
+    <p class="bold">Grid Container</p>
+    <div class="guide-code">
+  <pre class="m-tb-05-xs"><code class="language-css">.custom-element
+    border-color: $grid-width
+  </code></pre>
+    <p class="m-b-3-xs"><code>
+      $grid-width
+    </code></p>
+  </section>
 </lens-main>
 """

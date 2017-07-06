@@ -15,22 +15,12 @@ m.directive "forms", ->
 
 
 template = """
-<header class="guide-banner" role="banner">
-  <a ui-sref="index" ui-sref-active="active" class="guide-name">Lens</a>
-  <div class="guide-skip-content">
-    <a href="#navigation">Skip to Navigation</a>
-  </div>
-  <a href="#" id="hamburger" class="hamburger-button">
-    <span class="hamburger"></span>
-  </a>
-</header>
-
 <lens-main>
 
   <section id="forms">
 
     <!-- Labels -->
-    <h2 id="Labels" class="guide-content-subtitle m-b-1-xs">Labels</h2>
+    <h2 id="Labels" class="m-b-1-xs">Labels</h2>
     <p class="m-b-2-xs">Use the <code>.form-label</code> class to set the default styles on a label. You can also change the text alignment with <code>.text-right-xs</code>.</p>
     <div class="col-container col-max col-gutters">
       <div class="col col-30-lg">
@@ -48,7 +38,7 @@ template = """
 
 
     <!-- Text Inputs -->
-    <h2 id="Inputs" class="guide-content-subtitle m-b-1-xs">Text Inputs</h2>
+    <h2 id="Inputs" class="m-b-1-xs">Text Inputs</h2>
     <p class="m-b-2-xs">Use the <code>.form-text-input</code> class to apply the default styling for text inputs. Inputs should always be paired with a label to make them accessible. You can use placeholder text for additional context when necessary. <strong>NEVER</strong> use placeholder text in place of a label.</p>
 
     <form class="m-b-2-xs">
@@ -74,7 +64,7 @@ template = """
 &lt;/form&gt;</code></pre>
     </div>
 
-    <h4 class="guide-content-h4 m-b-1-xs">Disabled Inputs</h4>
+    <h4 class="m-b-1-xs">Disabled Inputs</h4>
     <p class="m-b-2-xs">You may have an text input that needs to be disabled. To do that, use the class <code>.form-text-input-disabled</code> in addition to the default class.</p>
 
     <form class="m-b-2-xs">
@@ -102,7 +92,7 @@ template = """
 
 
     <!-- Inputs Groups-->
-    <h2 id="Input-Groups" class="guide-content-subtitle m-b-1-xs">Inputs Groups</h2>
+    <h2 id="Input-Groups" class="m-b-1-xs">Inputs Groups</h2>
     <p class="m-b-2-xs">For a number that contains dashes, use our <code>.form-input-group</code> class on a <code>div</code> with <code>input.form-text-input</code> inside. Between each input, use <code>.form-input-group-addon</code> with a dash inside it.</p>
 
     <div class="col-container">
@@ -140,7 +130,7 @@ template = """
 
 
     <!-- Textareas -->
-    <h2 id="Textareas" class="guide-content-subtitle m-b-1-xs">Textareas</h2>
+    <h2 id="Textareas" class="m-b-1-xs">Textareas</h2>
     <p class="m-b-2-xs">Use the <code>.form-textarea</code> class to get the default styling. When setting a typesize and width, we recommend aiming for a measure of 52-78 characters.</p>
 
     <form class="m-b-2-xs">
@@ -168,7 +158,7 @@ template = """
 
 
     <!-- Tokens -->
-    <h2 id="Textareas" class="guide-content-subtitle m-b-1-xs">Tokens</h2>
+    <h2 id="Textareas" class="m-b-1-xs">Tokens</h2>
     <p class="m-b-2-xs">Tokens are great for using autocomplete inside an input or for anytime you need a token that can be closed. To use them, you'll need to copy the look of a text input for a div by including <code>.tokenfield.form-text-input</code> on it. Then inside, you'll have tokens, which are made up of divs with the <code>.tokenfield-token</code> class on them. Finally, you'll have a span with a class of <code>.tokenfield-token-label</code> and a close anchor.</p>
 
     <div class="col-container col-max col-gutters">
@@ -206,7 +196,7 @@ template = """
 
 
     <!-- Selects -->
-    <h2 id="Selects" class="guide-content-subtitle m-b-1-xs">Selects</h2>
+    <h2 id="Selects" class="m-b-1-xs">Selects</h2>
     <p class="m-b-2-xs">Use the <code>.form-select</code> class to get the default styling.</p>
 
     <form class="m-b-2-xs">
@@ -244,7 +234,7 @@ template = """
 
 
     <!-- Select Multiples -->
-    <h2 id="Selects" class="guide-content-subtitle m-b-1-xs">Select Multiple</h2>
+    <h2 id="Selects" class="m-b-1-xs">Select Multiple</h2>
     <p class="m-b-2-xs">Use the <code>.form-select-multiple</code> class and add the attribute, <code>multiple</code> to get the default styling. If you'd only like a user to be able to select one option, just remove the <code>multiple</code> attribute and add a <code>size</code> attribute that takes a value of how ever many options you want shown.</p>
 
     <form class="m-b-2-xs">
@@ -306,7 +296,7 @@ template = """
 
 
     <!-- Radios -->
-    <h2 id="Radios" class="guide-content-subtitle m-b-1-xs">Radios</h2>
+    <h2 id="Radios" class="m-b-1-xs">Radios</h2>
     <p class="m-b-1-xs">Use <code>div.form-radio</code> to wrap an <code>label.form-radio-label</code> inside. Within that label you'll nest <code>input.form-radio-input</code> to get a radio input with the correct styles.</p>
 
     <form>
@@ -356,7 +346,7 @@ template = """
 
 
     <!-- Checkboxes -->
-    <h2 id="Checkboxes" class="guide-content-subtitle m-b-1-xs">Checkboxes</h2>
+    <h2 id="Checkboxes" class="m-b-1-xs">Checkboxes</h2>
     <p class="m-b-1-xs">Use <code>div.form-checkbox</code> to wrap an <code>label.form-checkbox-label</code> inside. Within that label you'll nest <code>input.form-checkbox-input</code> to get a radio input with the correct styles.</p>
 
     <form>
@@ -406,7 +396,7 @@ template = """
 
 
     <!-- Helpers -->
-    <h2 id="Helper" class="guide-content-subtitle m-b-1-xs">Helper Text</h2>
+    <h2 id="Helper" class="m-b-1-xs">Helper Text</h2>
     <p class="m-b-2-xs">When necessary, you can place additional text below the input in a <code>div</code> with a <code>.form-helper</code> class to add helper text.</p>
 
     <form class="m-b-2-xs">
@@ -436,7 +426,7 @@ template = """
 
 
     <!-- Form Errors -->
-    <h2 id="Error" class="guide-content-subtitle m-b-1-xs">Form Error</h2>
+    <h2 id="Error" class="m-b-1-xs">Form Error</h2>
     <p class="m-b-2-xs">Add the <code>.form-error</code> class to the form element to apply Lens's default for feedback styling. Additionally, add a <code>div</code> with the class of <code>.form-helper.form-helper-error</code> to inform the user what the feedback is.</p>
 
     <div class="col-container col-max col-gutters">
@@ -470,7 +460,7 @@ template = """
 
 
     <!-- Switches -->
-    <h2 id="Switches" class="guide-content-subtitle m-b-1-xs">Switches</h2>
+    <h2 id="Switches" class="m-b-1-xs">Switches</h2>
     <p class="m-b-2-xs">Switches are a stylized checkbox that lets a user toggle on/off some sort of option. To build one, wrap a div with the class of <code>.lk-switch-outer</code> around an input and a label. The input has the class <code>.lk-switch</code> and the label has the class <code>.lk-switch-label</code>. That label then has two spans inside it. These are <code>.lk-switch-on</code> and <code>.lk-switch-off</code>.</p>
 
     <div class="col-container col-max col-gutters">
@@ -497,6 +487,20 @@ template = """
   &lt;/div&gt;
 &lt;/form&gt;</code></pre>
     </div>
+  </section>
+
+  <section id="Mixins">
+    <h2 class="m-b-1-xs">Mixins</h2>
+
+    <p class="bold">Placeholder Style</p>
+    <div class="guide-code">
+  <pre class="m-tb-05-xs"><code class="language-css">.custom-selector
+    +placeholder-style
+      property: value
+  </code></pre>
+    <p class="m-b-3-xs"><code>
+      +placeholder-style
+    </code></p>
   </section>
 
 </lens-main>

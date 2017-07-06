@@ -4,6 +4,8 @@ m.controller "PageFooterController", (
   $scope
 ) ->
 
+  $scope.currentYear = new Date().getFullYear()
+
   return this
 
 
@@ -12,13 +14,9 @@ m.directive "pageFooter", ->
   restrict: "E"
   scope: { }
   template: template
-  link: (scope, $el, attrs, ctrl) ->
-
-    # do something to return the current year?
-
 
 template = """
 <footer class="guide-contentinfo" role="contentinfo">
-  <p class="guide-contentinfo-copy">Copyright &copy; 2017 Looker. All rights reserved.</p>
+  <p class="guide-contentinfo-copy">Copyright &copy; {{ currentYear }} Looker. All rights reserved.</p>
 </footer>
 """

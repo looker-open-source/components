@@ -15,21 +15,11 @@ m.directive "typography", ->
 
 
 template = """
-<header class="guide-banner" role="banner">
-  <a ui-sref="index" ui-sref-active="active" class="guide-name">Lens</a>
-  <div class="guide-skip-content">
-    <a href="#navigation">Skip to Navigation</a>
-  </div>
-  <a href="#" id="hamburger" class="hamburger-button">
-    <span class="hamburger"></span>
-  </a>
-</header>
-
 <lens-main>
 
   <section id="Headers">
-    <h2 class="guide-content-subtitle m-b-1-xs">Headers and Text Sizing</h2>
-    <p class="guide-content-description m-b-2-xs">Headers are built using typical html elements <code>h1 - h6</code>. To give ourselves a bit more control, we've created utility classes for applying different sizes to the default elements so that we can control markup hierarchy while still applying the sizes we want visually (<code>.text-0-xs</code>, <code>.text-1-xs</code>, <code>.text-2-xs</code>, <code>.text-3-xs</code>, <code>.text-4-xs</code>, <code>.text-5-xs</code>, <code>.text-6-xs</code>, <code>.text-7-xs</code>). By default, headers have no margin/padding applied to them and are bold.</p>
+    <h2 class="m-b-1-xs">Headers and Text Sizing</h2>
+    <p class="m-b-2-xs">Headers are built using typical html elements <code>h1 - h6</code>. To give ourselves a bit more control, we've created utility classes for applying different sizes to the default elements so that we can control markup hierarchy while still applying the sizes we want visually (<code>.text-0-xs</code>, <code>.text-1-xs</code>, <code>.text-2-xs</code>, <code>.text-3-xs</code>, <code>.text-4-xs</code>, <code>.text-5-xs</code>, <code>.text-6-xs</code>, <code>.text-7-xs</code>). By default, headers have no margin/padding applied to them and are bold.</p>
 
     <div><code>h1, .text-1-xs</code></div>
     <div class="m-b-2-xs"><h1>Looker is located in Santa Cruz, CA.</h1></div>
@@ -97,7 +87,7 @@ template = """
 
 
   <section id="Emphasis">
-    <h2 class="guide-content-subtitle m-b-1-xs">Emphasis</h2>
+    <h2 class="m-b-1-xs">Emphasis</h2>
     <p class="m-b-2-xs">Using the following tags will add some emphasis to your text elements</p>
 
     <div><code>.regular</code></div>
@@ -128,7 +118,7 @@ template = """
 
 
   <section id="Alignment">
-    <h2 class="guide-content-subtitle m-b-1-xs">Text Alignment</h2>
+    <h2 class="m-b-1-xs">Text Alignment</h2>
     <p class="m-b-2-xs">Use the following classes to control text alignment in your layouts.</p>
 
     <div><code>.text-left-xs</code></div>
@@ -175,7 +165,7 @@ template = """
 
 
   <section id="Lists">
-    <h2 class="guide-content-subtitle m-b-1-xs">Lists</h2>
+    <h2 class="m-b-1-xs">Lists</h2>
     <p class="m-b-2-xs">Lens comes with basic styles for unordered and ordered lists. You can remove the styling on either of them by using the class, <code>.list-unstyled</code>.</p>
 
     <div class="m-b-2-xs">
@@ -230,6 +220,60 @@ template = """
   &lt;li&gt;List item 4&lt;/li&gt;
 &lt;/ul&gt;</code></pre>
     </div>
+  </section>
+
+  <section id="Variables">
+    <h2 class="m-b-1-xs">Variables</h2>
+    <p class="m-b-1-xs">Used to set font family and font size.</p>
+    <p class="bold">Font-family</p>
+    <div class="guide-code">
+      <pre class="m-tb-05-xs"><code class="language-css">.custom-element
+        font-family: $brand-font
+      </code></pre>
+      <p class="m-b-2-xs"><code>$brand-font</code></p>
+    </div>
+
+    <p class="bold">Font-weight</p>
+    <div class="guide-code">
+      <pre class="m-tb-05-xs"><code class="language-css">.custom-element
+        font-weight: $bold
+      </code></pre>
+      <p class="m-b-3-xs"><code>$bold</code></p>
+    </div>
+
+  </section>
+
+  <section id="Functions">
+    <h2 class="m-b-1-xs">Functions</h2>
+    <p class="m-b-1-xs">Used in our  utility classes.</p>
+    <p class="bold">Font Size</p>
+    <div class="guide-code">
+  <pre class="m-tb-05-xs"><code class="language-css">.custom-element
+    font-size: text-size(1)
+  </code></pre>
+    <p class="m-b-3-xs"><code>
+      text-size(1)<br />
+      text-size(2)<br />
+      text-size(3)<br />
+      text-size(4)<br />
+      text-size(5)<br />
+      text-size(6)
+    </code></p>
+  </section>
+
+  <section id="Functions">
+    <h2 class="m-b-1-xs">Functions</h2>
+    <p class="bold">Hover, Active, Focus</p>
+    <p>Can remove <code>:focus</code> by passing <code>false</code> into the mixin.</p>
+    <div class="guide-code">
+  <pre class="m-tb-05-xs"><code class="language-css">.custom-selector
+    +selected
+      property: value
+  </code></pre>
+    <p class="m-b-3-xs"><code>
+      +selected<br />
+      +selected(false)
+    </code></p>
   </section>
 
 </lens-main>

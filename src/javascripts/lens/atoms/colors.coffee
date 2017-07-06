@@ -22,20 +22,10 @@ m.directive "colors", ->
 
 
 template = """
-<header class="guide-banner" role="banner">
-  <a ui-sref="index" ui-sref-active="active" class="guide-name">Lens</a>
-  <div class="guide-skip-content">
-    <a href="#navigation">Skip to Navigation</a>
-  </div>
-  <a href="#" id="hamburger" class="hamburger-button">
-    <span class="hamburger"></span>
-  </a>
-</header>
-
 <lens-main>
 
   <section id="brand-colors">
-    <h2 id="Brand" class="guide-content-subtitle m-b-1-xs">Brand Colors</h2>
+    <h2 id="Brand" class="m-b-1-xs">Brand Colors</h2>
     <p class="m-b-2-xs">There are only 2 main brand colors for Looker. Use the color class for any of these classes, just replace <code>[color]</code> with the name of the color you want.</p>
     <table class="table-border-rows col-60-xl m-b-3-xs">
       <thead>
@@ -63,7 +53,7 @@ template = """
 
 
   <section id="ui-colors">
-    <h2 id="UI" class="guide-content-subtitle m-b-1-xs">UI Colors</h2>
+    <h2 id="UI" class="m-b-1-xs">UI Colors</h2>
     <p class="m-b-2-xs">Looker utilizes colors in various parts of our app UI. Most of our app is gray, so color is rather important. Each of the UI colors has utility classes you can use to apply the color to different parts of an element. Use the color class for any of these classes, just replace <code>[color]</code> with the name of the color you want.</p>
     <table class="table-border-rows col-60-xl m-b-3-xs">
       <thead>
@@ -92,7 +82,7 @@ template = """
 
 
   <section id="gray-colors">
-    <h2 id="Gray" class="guide-content-subtitle m-b-1-xs">Gray Colors</h2>
+    <h2 id="Gray" class="m-b-1-xs">Gray Colors</h2>
     <p class="m-b-2-xs">Use the color class for any of these classes, just replace <code>[color]</code> with the name of the color you want.</p>
     <table class="table-border-rows col-60-xl m-b-3-xs">
       <thead>
@@ -118,6 +108,57 @@ template = """
     <ul class="list-unstyled guide-color guide-colors-gray overflow-hidden-xs m-b-4-xs"></ul><!-- List items built by JS -->
   </section>
 
+
+  <section id="Functions">
+    <h2 class="m-b-1-xs">Functions</h2>
+    <h3 class="m-b-05-xs">Colors</h3>
+    <p class="m-b-1-xs">Used in our <a href="color.html">color</a> utility classes.</p>
+    <p class="bold">Brand Colors</p>
+    <div class="guide-code">
+  <pre class="m-tb-05-xs"><code class="language-css">.custom-element
+    background-color: brand-color(purple)
+  </code></pre>
+    <p class="m-b-3-xs"><code>
+      brand-color(purple)<br />
+      brand-color(gray)
+      brand-color(blue)
+    </code></p>
+
+    <p class="bold">Gray Colors</p>
+    <div class="guide-code">
+  <pre class="m-tb-05-xs"><code class="language-css">.custom-element
+    fill: gray-color(gray-dark)
+  </code></pre>
+    <p class="m-b-3-xs"><code>
+      gray-color(white)<br />
+      gray-color(gray-1)<br />
+      gray-color(gray-2)<br />
+      gray-color(gray-3)<br />
+      gray-color(gray-4)<br />
+      gray-color(gray-5)<br />
+      gray-color(gray-6)<br />
+      gray-color(gray-7)
+    </code></p>
+
+    <p class="bold">UI Colors</p>
+    <div class="guide-code">
+  <pre class="m-tb-05-xs"><code class="language-css">.custom-element
+    background-color: ui-color(blue)
+  </code></pre>
+    <p class="m-b-3-xs"><code>
+      ui-color(purple)<br />
+      ui-color(purple-light)<br />
+      ui-color(purple-dark)<br />
+      ui-color(red)<br />
+      ui-color(red-light)<br />
+      ui-color(red-dark)<br />
+      ui-color(green)<br />
+      ui-color(teal)<br />
+      ui-color(teal-dark)<br />
+      ui-color(yellow)<br />
+      ui-color(orange)<br />
+      ui-color(orange-dark)
+    </code></p>
 
   </section>
 

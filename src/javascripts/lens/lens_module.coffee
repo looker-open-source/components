@@ -1,15 +1,14 @@
 require "angular-ui-router"
 require "./lens_main.coffee"
 require "./main_nav.coffee"
+require "./page_header.coffee"
 require "./page_footer.coffee"
 
 require "./login.coffee"
 require "./index.coffee"
 require "./getting_started.coffee"
-require "./responsive.coffee"
 require "./release_notes.coffee"
 require "./installation.coffee"
-require "./sass.coffee"
 
 require "./guidelines/guidelines_module.coffee"
 require "./atoms/atoms_module.coffee"
@@ -21,11 +20,10 @@ module.exports = m = angular.module "Lens", [
   "lens.login"
   "lens.lens_main"
   "lens.main_nav"
+  "lens.page_header"
   "lens.page_footer"
 
   "lens.getting_started"
-  "lens.sass"
-  "lens.responsive"
   "lens.installation"
   "lens.release_notes"
 
@@ -61,6 +59,12 @@ m.config (
     url: '/guidelines/markup'
     template: '<markup></markup>'
     title: 'Markup'
+  responsiveState =
+    name: 'responsive'
+    url: '/guidelines/responsive'
+    template: '<responsive></responsive>'
+    title: 'Responsive'
+
 # Components
   buttonsState =
     name: 'buttons'
@@ -119,16 +123,6 @@ m.config (
     template: '<typography></typography>'
     title: 'Typography'
 
-  sassState =
-    name: 'sass'
-    url: '/sass'
-    template: '<sass></sass>'
-    title: 'Sass'
-  responsiveState =
-    name: 'responsive'
-    url: '/responsive'
-    template: '<responsive></responsive>'
-    title: 'Responsive'
   installationState =
     name: 'installation'
     url: '/installation'
@@ -145,6 +139,7 @@ m.config (
   $stateProvider.state gettingStartedState
 
   $stateProvider.state markupState
+  $stateProvider.state responsiveState
 
   $stateProvider.state buttonsState
   $stateProvider.state formsState
@@ -159,8 +154,6 @@ m.config (
   $stateProvider.state layoutState
   $stateProvider.state typographyState
 
-  $stateProvider.state sassState
-  $stateProvider.state responsiveState
   $stateProvider.state installationState
   $stateProvider.state releaseNotesState
   return

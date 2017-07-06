@@ -1,4 +1,4 @@
-m = angular.module "lens.responsive", []
+m = angular.module "lens.guidelines.responsive", []
 
 
 m.controller "ResponsiveController", (
@@ -15,20 +15,10 @@ m.directive "responsive", ->
 
 
 template = """
-<header class="guide-banner" role="banner">
-  <a ui-sref="index" ui-sref-active="active" class="guide-name">Lens</a>
-  <div class="guide-skip-content">
-    <a href="#navigation">Skip to Navigation</a>
-  </div>
-  <a href="#" id="hamburger" class="hamburger-button">
-    <span class="hamburger"></span>
-  </a>
-</header>
-
 <lens-main>
 
   <section id="responsive">
-    <h2 id="Suffixes" class="guide-content-subtitle m-b-1-xs">Responsive Suffixes</h2>
+    <h2 id="Suffixes" class="m-b-1-xs">Responsive Suffixes</h2>
     <p class="m-b-1-xs">Our grid classes, utility classes and typography are built in a way that give flexibility across breakpoints. To change things at different breakpoints, we have 5 suffixes to add to your classes: <code>-xs</code>, <code>-sm</code>, <code>-md</code>, <code>-lg</code>, and <code>-xl</code>.</p>
     <p class="m-b-3-xs">To see this in action, resize your browser and pay attention to how this grid layout changes.</p>
     <div class="col-container">
@@ -78,7 +68,7 @@ template = """
   &lt;/div&gt;</code></pre>
     </div>
 
-    <h2 id="Breakpoints" class="guide-content-subtitle m-b-1-xs">Breakpoints</h2>
+    <h2 id="Breakpoints" class="m-b-1-xs">Breakpoints</h2>
     <p class="m-b-1-xs">Everything in Lens is built with a mobile first approach. This means that if you want the same style across all breakpoints you'd use the <code>-xs</code> suffix. Here's a rundown of which breakpoint applies to which suffix.</p>
     <table class="table-border-rows w-full-xs m-b-4-xs" style="text-align: left">
       <thead>
@@ -109,7 +99,7 @@ template = """
       </tbody>
     </table>
 
-    <h2 class="guide-content-subtitle m-b-1-xs">What can be suffixed?</h2>
+    <h2 class="m-b-1-xs">What can be suffixed?</h2>
     <p class="m-b-1-xs">We apply suffixes to a lot of classes within Lens, but not so many that we end up creating a bunch of wasted code. We decided that this list of utilities, text and grid classes gave us the most flexibility without going overboard.</p>
     <table class="table-border-rows w-full-xs" style="text-align: left">
       <thead>
@@ -196,6 +186,36 @@ template = """
       </tbody>
     </table>
   </section>
+
+  <section id="Variables">
+    <h2 class="m-b-1-xs">Variables</h2>
+    <p class="bold">Breakpoints</p>
+    <div class="guide-code">
+  <pre class="m-tb-05-xs"><code class="language-css">+media(min-width $sm)
+    property: value
+  </code></pre>
+    <p class="m-b-4-xs"><code>
+      $sm <br />
+      $md <br />
+      $lg <br />
+      $xl
+    </code></p>
+  </section>
+
+    <section id="Mixins">
+      <h2 class="m-b-1-xs">Mixins</h2>
+    <p class="bold">Media</p>
+    <div class="guide-code">
+  <pre class="m-tb-05-xs"><code class="language-css">.custom-selector
+    +media(min-width $sm) {
+      property: value
+    }
+  </code></pre>
+    <p class="m-b-3-xs"><code>
+      +media($rule $breakpoint)
+    </code></p>
+
+    </section>
 
 </lens-main>
 """

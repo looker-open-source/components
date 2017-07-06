@@ -6,11 +6,11 @@
   &-banner
     @media screen
       +fixed(top 0 left 0)
-      padding: 13px 1rem
+      height: spacing(4)
+      padding: spacing(1) spacing(2)
       width: 100%
       line-height: 1
     +media(min-width 960px)
-      padding: 13px 1rem
       z-index: 50
 
   // =========================================
@@ -45,7 +45,7 @@
     +media(min-width 960px)
       +fixed(top 50px bottom 0)
       padding-top: 0
-      width: 13rem
+      width: 190px
       height: auto
       z-index: 51
     &-active
@@ -59,7 +59,7 @@
       @media screen
         width: 100%
       +media(min-width 960px)
-        width: 13rem
+        width: 190px
     &-list
       margin: 0
       @media screen
@@ -69,13 +69,13 @@
       &-child
         margin: 0
         padding: 0
-    &-link
+    &-link,
+    &-item-parent
       display: block
-      padding: 7px 32px 9px
+      position: relative
+      padding: 11px 32px
       &-child
-        padding: 7px 32px
-      &-child
-        padding-left: 50px
+        padding: 11px 32px 11px 50px
 
   // =========================================
   // Main Content Area and Footer
@@ -83,23 +83,22 @@
   &-main,
   &-contentinfo
     +media(min-width 960px)
-      margin-left: 13rem
-      padding-top: 45px
+      margin-left: 190px
+      padding-top: spacing(4)
+  &-header
+    height: spacing(4)
+    padding: 0 spacing(2)
   &-content
-    margin: spacing(3)
+    margin: spacing(2)
     @media screen
-      margin-top: 5.25rem
+      margin-top: spacing(2)
     +media(min-width 960px)
-      margin-top: spacing(3)
-    p
-      font-size: 14px
+      margin-top: spacing(2)
   &-main
     min-height: calc(100vh - 8rem)
   &-contentinfo-copy
-    padding: spacing(1) spacing(3)
+    padding: spacing(1) spacing(2)
     margin: 0
-    font-size: 14px
-
 
 
 // =========================================

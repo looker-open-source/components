@@ -15,20 +15,10 @@ m.directive "layout", ->
 
 
 template = """
-<header class="guide-banner" role="banner">
-  <a ui-sref="index" ui-sref-active="active" class="guide-name">Lens</a>
-  <div class="guide-skip-content">
-    <a href="#navigation">Skip to Navigation</a>
-  </div>
-  <a href="#" id="hamburger" class="hamburger-button">
-    <span class="hamburger"></span>
-  </a>
-</header>
-
 <lens-main>
 
   <section id="Floats">
-    <h2 class="guide-content-subtitle m-b-1-xs">Floats</h2>
+    <h2 class="m-b-1-xs">Floats</h2>
     <p class="m-b-1-xs">To float elements, use the following classes: <code>.float-l-xs</code>, <code>.float-r-xs</code>, and <code>.float-none-xs</code></p>
     <div class="col-container">
       <div class="col col-30-sm">
@@ -56,7 +46,7 @@ template = """
 
 
   <section id="Display">
-    <h2 class="guide-content-subtitle m-b-1-xs">Display</h2>
+    <h2 class="m-b-1-xs">Display</h2>
     <p class="m-b-3-xs">Use <code>.hide-xs</code>, <code>.block-xs</code>, <code>.inline-xs</code> and <code>.inline-block-xs</code> to change an element's display.</p>
     <div class="hide-xs">.hide-xs</div>
     <div class="block-xs border-dark-xs m-b-05-xs">.block-xs</div>
@@ -73,7 +63,7 @@ template = """
 
 
   <section id="Overflow">
-    <h2 class="guide-content-subtitle m-b-1-xs">Overflow</h2>
+    <h2 class="m-b-1-xs">Overflow</h2>
     <p class="m-b-3-xs">Use <code>.overflow-hidden-xs</code>, <code>.overflow-auto-xs</code>, <code>.overflow-scroll-xs</code> and <code>.overflow-visible-xs</code> to change an element's overflow.</p>
     <div class="overflow-hidden-xs p-1-xs m-b-1-xs border-dark-xs" style="height: 110px">
       <p>.overflow-hidden-xs</p>
@@ -119,7 +109,7 @@ template = """
 
 
   <section id="Width/Height">
-    <h2 class="guide-content-subtitle m-b-1-xs">Width &amp; Height</h2>
+    <h2 class="m-b-1-xs">Width &amp; Height</h2>
     <p class="m-b-3-xs">Most widths will be set using our grid layout. However, Lens provides <code>.w-fit-xs</code> to set an elements max-width to 100%, additionally it has <code>.w-full-xs</code> and <code>.h-full-xs</code> to set an elements width to 100%. You can use <code>.w-auto-xs</code> to set an elements width to auto.</p>
     <div class="w-fit-xs border-dark-xs p-1-xs m-b-1-xs">.w-fit-xs</div>
     <div class="w-full-xs border-dark-xs p-1-xs m-b-1-xs">.w-full-xs</div>
@@ -142,7 +132,7 @@ template = """
 
 
   <section id="Units">
-    <h2 class="guide-content-subtitle m-b-1-xs">Spacing Units and Naming</h2>
+    <h2 class="m-b-1-xs">Spacing Units and Naming</h2>
     <p class="m-b-1-xs">We use our spacial units across margin, padding, and positioning. These comes in values from 0-6 and a half space unit of 0.5. Each value represents a unit based on 1rem=16px. Each class uses a shorthand of its name to indicate properties and direction.</p>
     <div class="col-container m-b-3-xs">
       <div class="col col-30-lg">
@@ -180,8 +170,8 @@ template = """
 
 
   <section id="Spacing">
-    <h2 class="guide-content-subtitle m-b-1-xs">Spacing</h2>
-    <h3 class="guide-content-h3 m-b-1-xs">Uniform Spacing</h3>
+    <h2 class="m-b-1-xs">Spacing</h2>
+    <h3 class="m-b-1-xs">Uniform Spacing</h3>
     <p class="m-b-1-xs">These classes are used to apply equal spacing around the entire element.</p>
     <div class="col-container m-b-2-xs">
       <div class="col col-30-md">
@@ -230,7 +220,7 @@ template = """
 &lt;/div&gt;</code></pre>
     </div>
 
-    <h3 class="guide-content-h3 m-b-1-xs">Individual Spacing</h3>
+    <h3 class="m-b-1-xs">Individual Spacing</h3>
     <p class="m-b-1-xs">These classes are used to apply spacing to a particular side of an element.</p>
     <div class="col-container m-b-2-xs">
       <div class="col col-50-lg">
@@ -276,7 +266,7 @@ template = """
 
 
   <section id="Positioning">
-    <h2 class="guide-content-subtitle m-b-1-xs">Positioning</h2>
+    <h2 class="m-b-1-xs">Positioning</h2>
     <p class="m-b-1-xs">Positioning is simple with Lens. Just add <code>.relative-xs</code>, <code>.absolute-xs</code>, <code>.fixed-xs</code>, or <code>.static-xs</code> to control the type of positioning on an element. From there, you can apply values based on our spacing units of 0-6 and a half unit of 05. Use <code>.pos-t-n-xs</code>, where t is the side and n is one of our spacing units.</p>
     <p class="m-b-1-xs"><strong>Note:</strong> There is no demo for position fixed because it will always be fixed to the viewport, not a parent container.</p>
     <div class="col-container m-b-3-xs">
@@ -294,7 +284,7 @@ template = """
       </div>
     </div>
 
-    <h3 class="guide-content-h3 m-b-1-xs">Z-Index</h3>
+    <h3 class="m-b-1-xs">Z-Index</h3>
     <p class="m-b-1-xs">Use a z-index class to assign the stack order of elements. We've created classes for values 1-4, which end up as 100-400 in the property value.</p>
     <div class="col-container m-b-3-xs">
       <div class="col col-50-sm">
@@ -352,7 +342,7 @@ template = """
 
 
   <section id="Alignment">
-    <h2 class="guide-content-subtitle m-b-1-xs">Vertical Alignment</h2>
+    <h2 class="m-b-1-xs">Vertical Alignment</h2>
     <p class="m-b-3-xs">You can vertically align elements with the <code>.align-top-xs</code>, <code>.align-middle-xs</code>, or <code>.align-bottom-xs</code> classes.</p>
 
     <div class="m-b-2-xs">
@@ -386,7 +376,7 @@ template = """
 
 
   <section id="Rotation">
-    <h2 class="guide-content-subtitle m-b-1-xs">Rotation</h2>
+    <h2 class="m-b-1-xs">Rotation</h2>
     <p class="m-b-3-xs">You can rotate elements by using <code>.rotate-n-xs</code>, where n is 0, 45, 90, 135, 180, 225, 270, or 315. You can also change rotation across breakpoints (using our breakpoint suffixes) to accomodate different layouts.</p>
 
     <span class="rotate-0-xs border-dark-xs border-none-t-xs inline-block-xs p-2-xs m-r-2-xs" style="height:60px;"></span>
@@ -408,6 +398,62 @@ template = """
 &lt;span class="rotate-270-xs border-dark-xs border-none-t-xs inline-block-xs p-2-xs m-r-2-xs" style="height:60px;"&gt;&lt;/span&gt;
 &lt;span class="rotate-315-xs border-dark-xs border-none-t-xs inline-block-xs p-2-xs" style="height:60px;"&gt;&lt;/span&gt;</code></pre></</div>
   </section>
+
+  <section id="Functions">
+    <h2 class="m-b-1-xs">Functions</h2>
+    <h3 class="m-b-05-xs">Spacing</h3>
+    <p class="m-b-1-xs">Used in our <a href="layout.html">layout</a> utility classes.</p>
+    <p class="bold">Spacing Units</p>
+    <div class="guide-code">
+    <pre class="m-tb-05-xs"><code class="language-css">.custom-element
+      margin: spacing(1)
+      padding: spacing(2)
+    </code></pre>
+      <p class="m-b-3-xs"><code>
+        spacing(0)<br />
+        spacing(0.5)<br />
+        spacing(1)<br />
+        spacing(2)<br />
+        spacing(3)<br />
+        spacing(4)<br />
+        spacing(5)<br />
+        spacing(6)
+      </code></p>
+  </section>
+
+  <section id="Mixins">
+    <h2 class="m-b-1-xs">Mixins</h2>
+    <p class="bold">Clearfix</p>
+    <div class="guide-code">
+  <pre class="m-tb-05-xs"><code class="language-css">.custom-selector
+    +clearfix
+  </code></pre>
+    <p class="m-b-3-xs"><code>
+      +clearfix
+    </code></p>
+
+    <p class="bold">Positioning</p>
+    <div class="guide-code">
+  <pre class="m-tb-05-xs"><code class="language-css">.custom-selector
+    +absolute(top 0 left 10px)
+  </code></pre>
+    <p class="m-b-3-xs"><code>
+      +absolute($direction $amount)
+      +relative($direction $amount)
+      +fixed($direction $amount)
+    </code></p>
+
+    <p class="bold">Width and Height</p>
+    <div class="guide-code">
+  <pre class="m-tb-05-xs"><code class="language-css">.custom-selector
+    +width-height(100px, 200px)
+  </code></pre>
+    <p><code>
+      +width-height($width, $height)
+    </code></p>
+    
+  </section>
+
 
 </lens-main>
 """

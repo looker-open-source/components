@@ -37,82 +37,53 @@ body
   &-navigation
     background-color: #fff
     border-right: solid 1px gray-color(gray-2)
+    &-list,
+      list-style: none
+    &-item-parent,
+    &-link
+      color: gray-color(gray-7)
+      font-size: text-size(6)
+      text-decoration: none
+      border-right: solid 1px gray-color(gray-2)
+      &:focus,
+      &:hover,
+      &:active
+        color: gray-color(gray-7)
+        background-color: gray-color(gray-1)
+      &.active
+        color: gray-color(gray-7)
     &-icon
       +absolute(right 20px top 9px)
-      font-size: 15px
+      font-size: text-size(3)
       transform: rotate(-45deg)
       transition: transform 50ms ease-in-out
     &-item-parent
       .guide-navigation-icon:after
         content: '\00D7'
-      &--active
-        background-color: gray-color(gray-1)
-        border-right: solid 1px gray-color(gray-2)
-        box-shadow: 7px 0 0 brand-color(purple) inset
-        .guide-navigation-link
-          +selected
-            box-shadow: 7px 0 0 button-color(purple) inset
-            border-right: none
+      &.active
         .guide-navigation-list-child
           display: block
-    &-item-child
-      background-color: gray-color(gray-1)
-    &-list-child
-      list-style: none
-      border-right: solid 1px gray-color(gray-2)
-      display: none
-    &-link
-      color: gray-color(gray-5)
-      font-size: 0.75rem
-      text-decoration: none
-      position: relative
-      border-right: solid 1px transparent
-      &:focus
-        color: gray-color(gray-6)
-      &:hover,
-      &:active,
-      &.active
-        background-color: gray-color(gray-1)
-        color: gray-color(gray-6)
-        border-right: solid 1px gray-color(gray-2)
-      &.active
-        box-shadow: 7px 0 0 button-color(purple) inset
-        +selected
-          box-shadow: 7px 0 0 button-color(purple) inset
         .guide-navigation-icon
           +absolute(right 19px top 9px)
           transform: rotate(0deg)
-      &-child
-        font-size: 0.75rem
-        &:focus,
-        &:hover,
-        &:active
-          background-color: gray-color(gray-1)
-          color: gray-color(gray-7)
-          box-shadow: none !important
-          border-right: none
-        &.active
-          font-weight: $bold
-          box-shadow: none !important
+    &-list-child
+      list-style: none
+      display: none
+    &-link
+      &.active
+        font-weight: $bold
+        &::after
+          content: ""
+          +absolute(left 0 top 0)
+          width: 7px
+          height: 100%
+          background-color: gray-color(gray-7)
 
   // =========================================
   // Guide Main
   // =========================================
-  &-content
-    background-color: #fff
-    border-radius: $border-radius
-    &-title
-      font-size: 21px
-    &-subtitle
-      font-size: 18px
-    &-description
-      font-size: 14px
-    &-h3
-      font-size: 15px
-    &-h4
-      font-size: 14px
-
-
+  // hmmm... should we be over-riding anything?
+  // Shouldn't we be leveraging Lens defaults...?
 
   // =========================================
   // Color Lists
@@ -209,24 +180,6 @@ body
       .hamburger::before,
       .hamburger::after
         transition: background 300ms 0s ease, transform 300ms 0.2s ease, top 300ms 0s ease, bottom 300ms 0s ease
-
-// =========================================
-// Subnav
-// =========================================
-.subnav
-  &-container
-    margin-top: - spacing(4) !important
-    &--fixed
-      +fixed(top spacing(4) right -3px)
-  &-item
-    line-height: 1.7
-  &-link
-    font-size: 12px
-    &:focus
-      font-weight: bold
-    &--active
-      font-weight: bold
-
 
 // =========================================
 // Login Page

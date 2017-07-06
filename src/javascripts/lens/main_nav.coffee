@@ -1,14 +1,21 @@
 m = angular.module "lens.main_nav", []
 
+m.config (
+  $locationProvider
+) ->
+  $locationProvider.html5Mode true
+
 m.controller "MainNavController", (
   $scope
+  $location
 ) ->
 
   $scope.menuItems = [
     { title: "Getting Started", uiSref: "getting-started" },
     { title: "Guidelines", id: "guidelines", subNav: [
 #        { title: "Design Principles", uiSref: "design-principles" },
-        { title: "Markup", uiSref: "markup" }
+        { title: "Markup", uiSref: "markup" },
+        { title: "Responsive", uiSref: "responsive" } # This could become Platform Adaptation...
 #        { title: "Platform Adaptation", uiSref: "platform-adaptation" },
 #        { title: "Environment Properties", uiSref: "environment-properties" },
 #        { title: "Nouns and Verbs", uiSref: "nouns-verbs" },
@@ -32,8 +39,6 @@ m.controller "MainNavController", (
         { title: "Typography", uiSref: "typography"}
       ]
     },
-    { title: "Sass", uiSref: "sass" },
-    { title: "Responsive", uiSref: "responsive" },
     { title: "Installation", uiSref: "installation" },
     { title: "Release Notes", uiSref: "release-notes" }
   ]
@@ -41,6 +46,8 @@ m.controller "MainNavController", (
   $scope.toggleSubNav = (id) =>
     @toggleSubNav(id)
     return true
+
+  $scope.currentSection = $location.path().split("/")[1]
 
   return this
 
@@ -56,6 +63,10 @@ m.directive "mainNav", ->
       $el.find("##{id}").toggleClass("active")
       $el.find("##{id}-sub-nav").toggle()
 
+    $(document).ready( ->
+      # set nav open if a sub-page. have to wait for dom to be ready
+      ctrl.toggleSubNav(scope.currentSection)
+      )
 
 template = """
 <div id="guide_navigation" class="guide-navigation">
@@ -63,7 +74,7 @@ template = """
     <ul class="guide-navigation-list">
       <li ng-repeat="item in menuItems" class="guide-navaigation-item">
         <!-- sub menu -->
-        <a ng-if="item.subNav" id="{{ item.id }}" class="guide-navigation-link guide-navigation-item-parent"  ng-click="toggleSubNav(item.id)">
+        <a ng-if="item.subNav" id="{{ item.id }}" class="guide-navigation-item-parent"  ng-click="toggleSubNav(item.id)">
           {{ item.title }}
           <span class="guide-navigation-icon"></span>
         </a>
