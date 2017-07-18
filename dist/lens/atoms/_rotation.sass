@@ -1,9 +1,9 @@
 // Creates the style declarations for each rotation type
 @mixin rotation-style($suffix)
   @each $angle in $rotation-angles
-    .rotate-#{$angle}-#{$suffix}
-      -webkit-transform: rotate(#{$angle}deg) !important
-      transform: rotate(#{$angle}deg) !important
+    %rotate-#{$angle}-#{$suffix}
+      -webkit-transform: rotate(#{$angle}deg)
+      transform: rotate(#{$angle}deg)
 
 
 

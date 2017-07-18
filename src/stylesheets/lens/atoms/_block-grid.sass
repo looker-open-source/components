@@ -1,22 +1,22 @@
 // Block grid structures
 .block
   &-grid
-    padding: 0 !important
-    list-style: none !important
-    font-size: 0 !important
-    display: block !important
-    overflow: hidden !important
-    margin-bottom: 2rem !important
+    padding: 0  
+    list-style: none  
+    font-size: 0  
+    display: block  
+    overflow: hidden  
+    margin-bottom: 2rem  
 
     &-gutters
-      margin: -1rem -1rem 1rem -1rem !important
+      margin: -1rem -1rem 1rem -1rem  
       .block-grid__item
-        padding: 1rem !important
+        padding: 1rem  
 
     &__item
-      display: block !important
-      float: left !important
-      font-size: 16px !important
+      display: block  
+      float: left  
+      font-size: 16px  
 
 
 
@@ -26,14 +26,14 @@
   // Iterate from 1-6 to create different block division classes
   @for $num from 1 through 6
     .block-#{$num}-#{$suffix} .block-grid__item
-      width: 100%/$num !important
+      width: 100%/$num  
 
       // If we aren't a block-1 we need to reset and set clear
       @if $num == 2 or $num == 3 $num == 4 $num == 5 $num == 6
         &:nth-of-type(1n)
-          clear: none !important
+          clear: none  
         &:nth-of-type(#{$num}n + 1)
-          clear: both !important
+          clear: both  
 
 
 

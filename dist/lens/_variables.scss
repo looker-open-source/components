@@ -47,24 +47,41 @@ $color-properties: color border-color background-color;
 // Spacing Units
 // =========================================
 $spacing: (
-  0:   0px,
-  0.5: 6px,
-  1:   12px,
-  2:   14px,
-  3:   16px,
-  4:   19px,
-  5:   22px,
-  6:   28px,
-  7:   38px,
-  8:   52px,
-  9:   62px
+  0:  0px,
+  1:  1px,
+  2:  2px,
+  3:  3px,
+  4:  4px,
+  5:  5px,
+  6:  6px,
+  7:  7px,
+  8:  12px,
+  9:  14px,
+  10: 16px,
+  11: 20px,
+  12: 24px,
+  13: 27px,
+  14: 30px,
+  15: 36px,
+  16: 46px,
+  17: 60px,
+  18: 72px,
+  19: 81px,
+  20: 96px,
+  21: 121px,
+  22: 144px,
+  23: 182px,
+  24: 216px,
+  25: 273px,
+  26: 324px,
+  27: 410px
 );
 
 $spacing-sides: (
   all: all,
   t:   top,
   b:   bottom,
-  l:   left,  
+  l:   left,
   r:   right,
   lr:  null,
   tb:  null
@@ -78,13 +95,15 @@ $spacing-sides: (
 $body-font-size: 14px;
 
 $text-size: (
-  1: 21px,
-  2: 18px,
-  3: 15px,
-  4: 14px,
-  5: 13px,
-  6: 12px,
-  7: 11px
+  n2: (12px, 20px),
+  n1: (14px, 24px),
+  0:  (16px, 24px),
+  1:  (19px, 27px),
+  2:  (22px, 30px),
+  3:  (28px, 36px),
+  4:  (38px, 46px),
+  5:  (52px, 60px),
+  6:  (62px, 72px)
 );
 $brand-font: 'Open Sans', sans-serif;
 $light: 300;

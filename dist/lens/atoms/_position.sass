@@ -3,8 +3,8 @@
 
   // Iterate through each position type to create classes
   @each $type in $position-types
-    .#{$type}-#{$suffix}
-      position: #{$type} !important
+    %#{$type}-#{$suffix}
+      position: #{$type}
 
 
 
@@ -20,11 +20,11 @@
       // We don't want a class of "0.5" so we use a conditional to
       // let us rename is at "05" in this instance
       @if $unit == 0.5
-        .pos-#{$shorthand}-05-#{$suffix}
-          #{$side}: spacing($unit) !important
+        %pos-#{$shorthand}-05-#{$suffix}
+          #{$side}: spacing($unit)
       @else
-        .pos-#{$shorthand}-#{$unit}-#{$suffix}
-          #{$side}: spacing($unit) !important
+        %pos-#{$shorthand}-#{$unit}-#{$suffix}
+          #{$side}: spacing($unit)
 
 
 
@@ -33,8 +33,8 @@
 
   // Iterate through each z-index and create classes for it
   @each $value, $num in $z-indexes
-    .z-#{$num}-#{$suffix}
-      z-index: $value !important
+    %z-#{$num}-#{$suffix}
+      z-index: $value
 
 
 

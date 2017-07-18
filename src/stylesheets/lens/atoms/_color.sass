@@ -12,14 +12,14 @@
     //
     // Else just use the regular property name
     @if $property == background-color
-      .brand-bg-#{$color-name}
-        #{$property}: brand-color($color-name) !important
+      %brand-bg-#{$color-name}
+        #{$property}: brand-color($color-name)
     @else if $property == border-color
-      .brand-border-#{$color-name}
-        #{$property}: brand-color($color-name) !important
+      %brand-border-#{$color-name}
+        #{$property}: brand-color($color-name)
     @else
-      .brand-#{$property}-#{$color-name}
-        #{$property}: brand-color($color-name) !important
+      %brand-#{$property}-#{$color-name}
+        #{$property}: brand-color($color-name)
 
 
 
@@ -37,14 +37,14 @@
     //
     // Else just use the regular property name
     @if $property == background-color
-      .bg-#{$color-name}
-        #{$property}: ui-color($color-name) !important
+      %bg-#{$color-name}
+        #{$property}: ui-color($color-name)
     @else if $property == border-color
-      .border-#{$color-name}
-        #{$property}: ui-color($color-name) !important
+      %border-#{$color-name}
+        #{$property}: ui-color($color-name)
     @else
-      .#{$property}-#{$color-name}
-        #{$property}: ui-color($color-name) !important
+      %#{$property}-#{$color-name}
+        #{$property}: ui-color($color-name)
 
 
 
@@ -62,11 +62,11 @@
     //
     // Else just use the regular property name
     @if $property == background-color
-      .bg-#{$color-name}
-        #{$property}: gray-color($color-name) !important
+      %bg-#{$color-name}
+        #{$property}: gray-color($color-name)
     @else if $property == border-color
-      .border-#{$color-name}
-        #{$property}: gray-color($color-name) !important
+      %border-#{$color-name}
+        #{$property}: gray-color($color-name)
     @else
-      .#{$property}-#{$color-name}
-        #{$property}: gray-color($color-name) !important
+      %#{$property}-#{$color-name}
+        #{$property}: gray-color($color-name)

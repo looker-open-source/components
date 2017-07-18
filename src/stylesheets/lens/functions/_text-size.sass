@@ -1,3 +1,4 @@
 // Easily grab spacing within the $spacing map
 @function text-size($value)
-  @return map-get($text-size, $value)
+  $map: map-get($text-size, $value)
+  @return nth($map,1)
