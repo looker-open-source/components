@@ -25,8 +25,10 @@ m.controller "MainNavController", (
     { title: "Components", id: "components", subNav: [
         { title: "Buttons", uiSref: "buttons"},
         { title: "Forms", uiSref: "forms"},
-        { title: "Tables", uiSref: "tables"}
+        { title: "Tables", uiSref: "tables"},
         { title: "Modals", uiSref: "modals"}
+        { title: "Body Copy", uiSref: "body-copy"}
+        { title: "Headings", uiSref: "headings"}
       ]
     },
     { title: "Atoms", id: "atoms", subNav: [

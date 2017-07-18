@@ -87,6 +87,16 @@ m.config (
     url: '/components/modals'
     template: '<modals></modals>'
     title: 'Modals'
+  bodyCopyState =
+    name: 'body-copy'
+    url: '/components/body-copy'
+    template: '<body-copy></body-copy>'
+    title: 'Body Copy'
+  headingsState =
+    name: 'headings'
+    url: '/components/headings'
+    template: '<headings></headings>'
+    title: 'Headings'
 
 # Atoms
   blockGridState =
@@ -162,6 +172,8 @@ m.config (
   $stateProvider.state formsState
   $stateProvider.state tablesState
   $stateProvider.state modalsState
+  $stateProvider.state bodyCopyState
+  $stateProvider.state headingsState
 
   $stateProvider.state blockGridState
   $stateProvider.state bordersState
