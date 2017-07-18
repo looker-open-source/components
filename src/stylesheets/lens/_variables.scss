@@ -120,7 +120,8 @@ $breakpoints: (
   sm: 480px,
   md: 680px,
   lg: 960px,
-  xl: 1140px
+  xl: 1140px,
+  xxl: 1440px
 );
 $grid-max-width: 1260px;
 
@@ -135,7 +136,7 @@ $neutral-buttons: true;
 $inverse-buttons: true;
 $split-buttons: true;
 
-$border-radius: 2px;
+$border-radius: 5px;
 $button-font-size: 12px;
 $button-border-radius: $border-radius;
 $button-font: $brand-font;

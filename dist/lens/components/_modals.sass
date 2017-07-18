@@ -1,24 +1,27 @@
 .modal
   @extend %relative-xs
   @extend %bg-white
-  @extend %p-6-xs
+  @extend %p-lr-14-xs, %p-b-13-xs, %p-t-12-xs
   @extend %flex-item-center-xs
   @extend %flex-justify-center-xs
   border-radius: 5px
-  width: 570px
+
+  &--header
+    &-title
+      @extend %text-2-xs
 
   &--body
-    @extend %p-t-6-xs
+    @extend %p-t-14-xs
 
   &--footer
-    @extend %p-t-6-xs
+    @extend %p-t-14-xs
 
     &-actions
       @extend %text-right-xs
 
   &--close
     @extend %absolute-xs
-    @extend %pos-r-6-xs
+    @extend %pos-r-14-xs
     margin-top: 5px
     opacity: 0.65
     +selected
