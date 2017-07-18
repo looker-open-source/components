@@ -113,27 +113,21 @@ body
   &-navigation
     @extend %fixed-xs, %pos-t-16-xs, %pos-b-0-xs
     @extend %p-t-0-xs
-    @extend %w-full-xs
+    width: 216px
     @extend %bg-white
     @extend %border-r-xs
-    @extend %h-auto-xs
+    @extend %h-full-xs
     @extend %z-1-xs
     transition: height 300ms ease, padding 300ms ease
-    +media(min-width 960px)
-      width: 216px
-    &-active
-      @extend %h-full-xs
     nav
       @extend %absolute-xs
       @extend %h-full-xs
       @extend %overflow-hidden-xs
-      @extend %w-full-xs
       @extend %p-t-12-xs
       @extend %p-b-15-xs
+      width: 216px
       overflow-y: auto
       outline: 0
-      +media(min-width 960px)
-        width: 216px
     &-list,
     &-list-child
       @extend %m-0-xs
@@ -212,21 +206,19 @@ body
     height: 20px
 
   &-example
-    margin: spacing(2) 0 spacing(4)
+    @extend %m-b-14-xs
     &::before
+      @extend %block-xs
+      @extend %caps
+      @extend %text-n2-xs
+      @extend %color-gray-4
+      @extend %m-b-8-xs
       content: "Example"
-      display: block
-      text-transform: uppercase
-      font-size: text-size(7)
-      color: gray-color(gray-4)
-      margin-bottom: spacing(2)
     &-demo
-      // the demo bits
-      padding: 0 0 spacing(1) 0
+      @extend %p-b-0-xs
     &-code
-      // the code-y bits
       pre
-        margin: 0
+        @extend %m-0-xs
 
   // =========================================
   // Color Lists

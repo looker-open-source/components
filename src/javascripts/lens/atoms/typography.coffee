@@ -17,24 +17,9 @@ m.directive "typography", ->
 template = """
 <lens-main>
 
-  <ul>
-    <li><a href="#typefaces">Typefaces</a></li>
-    <li><a href="#sizes">Sizes</a></li>
-    <li><a href="#weights">Weights</a></li>
-    <li><a href="#emphasis">Emphasis</a></li>
-    <li><a href="#alignment">Alignment</a></li>
-  </ul>
-  <h4>Components...? These include color, spacing, etc. Or, they should...</h4>
-  <ul>
-    <li><a href="#">Headings</a></li>
-    <li><a href="#body-copy">Body Copy</a></li>
-    <li><a href="#">Lists</a></li>
-    <li><a href="#">Links</a></li>
-  </ul>
-
   <section id="typefaces-section">
     <div id="typefaces" class="inpage-anchor"></div>
-    <h2>Typefaces</h2>
+    <h2 class="title-1">Typefaces</h2>
     <p><a href="https://fonts.google.com/specimen/Open+Sans">Open-Sans</a>
        is the default font family used in the majority of the interface.
        When displaying any code,
@@ -42,7 +27,7 @@ template = """
       is the fixed-width font.
     </p>
 
-    <h3>SCSS</h3>
+    <h3 class="subheading">SCSS</h3>
     <table>
       <thead>
         <tr>
@@ -65,53 +50,63 @@ template = """
 
   <section id="sizes-section">
     <div id="sizes" class="inpage-anchor"></div>
-    <h2>Type Sizes</h2>
-    <p>The default body font size is 14px/1.5.</p>
+    <h2 class="title-1">Type Sizes</h2>
+    <p>The default body font size and line weight is 16px/24px.</p>
 
-    <h3>SCSS</h3>
+    <h3 class="subheading">SCSS</h3>
     <table>
       <thead>
         <tr>
           <th>Class</th>
-          <th>PX Value</th>
+          <th>PX Values</th>
           <th>Actual Size</th>
         </tr>
       </thead>
       <tbody>
         <tr>
+          <td><code>.text-n2-xs</code></td>
+          <td>12px/20px</td>
+          <td><span class="text-n2-xs">Data analytics everybody loves.</span></td>
+        </tr>
+        <tr>
+          <td><code>.text-n1-xs</code></td>
+          <td>14px/24px</td>
+          <td><span class="text-n1-xs">Data analytics everybody loves.</span></td>
+        </tr>
+        <tr>
+          <td><code>.text-0-xs</code></td>
+          <td>16px/24px</td>
+          <td><span class="text-0-xs">Data analytics everybody loves.</span></td>
+        </tr>
+        <tr>
           <td><code>.text-1-xs</code></td>
-          <td>21px</td>
+          <td>19px/27px</td>
           <td><span class="text-1-xs">Data analytics everybody loves.</span></td>
         </tr>
         <tr>
           <td><code>.text-2-xs</code></td>
-          <td>18px</td>
+          <td>22px/30px</td>
           <td><span class="text-2-xs">Data analytics everybody loves.</span></td>
         </tr>
         <tr>
           <td><code>.text-3-xs</code></td>
-          <td>15px</td>
+          <td>28px/36px</td>
           <td><span class="text-3-xs">Data analytics everybody loves.</span></td>
         </tr>
         <tr>
           <td><code>.text-4-xs</code></td>
-          <td>14px</td>
+          <td>38px/46px</td>
           <td><span class="text-4-xs">Data analytics everybody loves.</span></td>
         </tr>
         <tr>
           <td><code>.text-5-xs</code></td>
-          <td>13px</td>
+          <td>52px/60px</td>
           <td><span class="text-5-xs">Data analytics everybody loves.</span></td>
         </tr>
         <tr>
           <td><code>.text-6-xs</code></td>
-          <td>12px</td>
+          <td>62px/72px</td>
           <td><span class="text-6-xs">Data analytics everybody loves.</span></td>
-        </tr>
-        <tr>
-          <td><code>.text-7-xs</code></td>
-          <td>11px</td>
-          <td><span class="text-7-xs">Data analytics everybody loves.</span></td>
         </tr>
       </tbody>
     </table>
@@ -133,6 +128,7 @@ template = """
       </tbody>
     </table>
 
+<!--
     <h3>Responsive Text Sizing</h3>
     <p>You can use the <a ui-sref="responsive">responsive suffixes</a> to control
     text size at different screen widths.</p>
@@ -162,7 +158,7 @@ template = """
 &lt;/div&gt;</code></pre>
       </div>
     </div>
-
+-->
   </section>
 
 
