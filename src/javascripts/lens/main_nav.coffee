@@ -79,7 +79,7 @@ template = """
     <ul class="guide-navigation-list">
       <li ng-repeat="item in menuItems" class="guide-navaigation-item">
         <!-- sub menu -->
-        <a ng-if="item.subNav" id="{{ item.id }}" class="guide-navigation-item-parent"  ng-click="toggleSubNav(item.id)">
+        <a ng-if="item.subNav" id="{{ item.id }}" class="guide-navigation-link guide-navigation-link-parent"  ng-click="toggleSubNav(item.id)">
           {{ item.title }}
           <span class="guide-navigation-icon"></span>
         </a>
@@ -90,7 +90,7 @@ template = """
         </ul>
 
         <!-- single item -->
-        <a ng-if="item.uiSref" ui-sref="{{ item.uiSref }}" ui-sref-active="active" class="guide-navigation-link">{{ item.title }}</a>
+        <a ng-if="item.uiSref" ui-sref="{{ item.uiSref }}" ui-sref-active="active" class="guide-navigation-link guide-navigation-link-single">{{ item.title }}</a>
       </li>
     </ul>
   </nav>

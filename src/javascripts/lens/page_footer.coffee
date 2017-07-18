@@ -17,6 +17,6 @@ m.directive "pageFooter", ->
 
 template = """
 <footer class="guide-contentinfo" role="contentinfo">
-  <p class="guide-contentinfo-copy">Copyright &copy; {{ currentYear }} Looker. All rights reserved.</p>
+  Copyright &copy; {{ currentYear }} Looker. All rights reserved.
 </footer>
 """

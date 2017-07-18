@@ -1,5 +1,5 @@
 body
-  background-color: gray-color(white)
+  @extend %bg-white
 
 // =========================================
 // Hamburger Button
@@ -60,9 +60,7 @@ body
   // =========================================
   // A11y Skip
   // =========================================
-  //
   //   - Only shows us on focus
-  //
   &-skip-content a
     color: gray-color(gray)
     font-size: 0.75rem
@@ -81,35 +79,29 @@ body
   // Guide Banner
   // =========================================
   &-banner
-    @media screen
-      +fixed(top 0 left 0)
-      height: 50px
-      padding: spacing(1) spacing(2)
-      width: 100%
-      line-height: 1
-      background-color: brand-color(gray)
-    +media(min-width 960px)
-      z-index: 50
+    @extend %fixed-xs, %pos-t-0-xs, %pos-l-0-xs
+    @extend %p-tb-7-xs, %p-lr-15-xs
+    @extend %w-full-xs
+    @extend %brand-bg-gray
+    height: 46px
+    z-index: 50
 
 
   // =========================================
   // Guide Name
   // =========================================
   &-name
-    color: gray-color(white)
-    font-weight: $light
+    @extend %color-white
+    @extend %text-3-xs
     text-decoration: none
-    @media screen
-      font-size: 1.5rem
-    +media(min-width 960px)
-      font-size: 1.5rem
     +selected
-      color: gray-color(white)
+      @extend %color-white
 
   &-version
-    color: gray-color(gray-4)
-    font-size: text-size(7)
-    padding: 0 spacing(1)
+    @extend %color-gray-4
+    @extend %text-n2-xs
+    @extend %p-l-8-xs
+    text-decoration: none
     &::after
       content: $lens-version
     &:hover
@@ -119,113 +111,104 @@ body
   // Guide Navigation
   // =========================================
   &-navigation
-    @media screen
-      +fixed(top 50px bottom 0)
-      height: 0
-      padding-top: 0
-      width: 100%
-      background-color: #fff
-      border-right: solid 1px gray-color(gray-2)
-      transition: height 300ms ease, padding 300ms ease
+    @extend %fixed-xs, %pos-t-16-xs, %pos-b-0-xs
+    @extend %p-t-0-xs
+    @extend %w-full-xs
+    @extend %bg-white
+    @extend %border-r-xs
+    @extend %h-auto-xs
+    @extend %z-1-xs
+    transition: height 300ms ease, padding 300ms ease
     +media(min-width 960px)
-      width: 190px
-      height: auto
-      z-index: 50
+      width: 216px
     &-active
-      height: 100%
+      @extend %h-full-xs
     nav
-      position: absolute
-      height: 100%
-      overflow: hidden
+      @extend %absolute-xs
+      @extend %h-full-xs
+      @extend %overflow-hidden-xs
+      @extend %w-full-xs
+      @extend %p-t-12-xs
+      @extend %p-b-15-xs
       overflow-y: auto
       outline: 0
-      @media screen
-        width: 100%
       +media(min-width 960px)
-        width: 190px
-    &-list
-      margin: 0
+        width: 216px
+    &-list,
+    &-list-child
+      @extend %m-0-xs
+      @extend %p-0-xs
       list-style: none
-      @media screen
-        padding: 0 0 0 0
-      +media(min-width 960px)
-        padding: 0
-      &-child
-        margin: 0
-        padding: 0
-    &-link,
-    &-item-parent
-      display: block
-      position: relative
-      padding: 11px 32px
-      color: gray-color(gray-7)
-      font-size: text-size(6)
+    &-list-child
+      @extend %hide-xs
+    &-link
+      @extend %block-xs
+      @extend %relative-xs
+      @extend %text-n1-xs
+      @extend %color-gray-7
+      @extend %border-r-xs
+      cursor: pointer
       text-decoration: none
-      border-right: solid 1px gray-color(gray-2)
-      &-child
-        padding: 11px 32px 11px 50px
       &:focus,
       &:hover,
       &:active
-        color: gray-color(gray-7)
-        background-color: gray-color(gray-1)
+        @extend %color-gray-7
+        @extend %bg-gray-1
       &.active
-        color: gray-color(gray-7)
+        @extend %color-gray-7
+      &-parent,
+      &-single
+        @extend %p-tb-3-xs, %p-lr-15-xs
+      &-child
+        @extend %p-tb-3-xs, %p-l-16-xs, %p-r-15-xs
     &-icon
-      +absolute(right 20px top 9px)
-      font-size: text-size(3)
-      transform: rotate(-45deg)
+      @extend %absolute-xs, %pos-r-10-xs, %pos-t-0-xs
+      @extend %rotate-45-xs
+      height: 30px
+      line-height: 30px
       transition: transform 50ms ease-in-out
-    &-item-parent
-      .guide-navigation-icon:after
+      &::after
+        @extend %block-xs
         content: '\00D7'
+    &-link-parent
       &.active
-        .guide-navigation-list-child
-          display: block
         .guide-navigation-icon
-          +absolute(right 19px top 9px)
+          @extend %rotate-0-xs
           transform: rotate(0deg)
-    &-list-child
-      list-style: none
-      display: none
-    &-link
+        .guide-navigation-list-child
+          @extend %block-xs
+    &-link-single,
+    &-link-child
       &.active
-        font-weight: $bold
+        @extend %bold
         &::after
+          @extend %absolute-xs, %pos-l-0-xs, %pos-t-0-xs
+          @extend %h-full-xs
+          @extend %bg-gray-7
           content: ""
-          +absolute(left 0 top 0)
           width: 7px
-          height: 100%
-          background-color: gray-color(gray-7)
 
   // =========================================
   // Guide Main Layout
   // =========================================
   &-main,
   &-contentinfo
-    +media(min-width 960px)
-      margin-left: 190px
+    @extend %m-l-24-xs, %p-lr-15-xs
   &-main
-    min-height: calc(100vh - 8rem)
-    padding-top: 50px
+    @extend %p-t-12-xs, %m-b-15-xs
+    min-height: calc(100vh - 66px)
   &-header
-    height: 50px
-    padding: 0 spacing(2)
+    @extend %p-t-15-xs
   &-content
-    @media screen
-      margin: spacing(2)
-    +media(min-width 960px)
-      margin-top: spacing(2)
     section
-      margin: 0 0 spacing(4) 0
+      @extend %m-b-15-xs
       .inpage-anchor
-        display: block
-        position: relative
-        top: spacing(6)
+        @extend %block-xs
+        @extend %relative-xs, %pos-t-17-xs
         visibility: hidden
-  &-contentinfo-copy
-    padding: spacing(1) spacing(2)
-    margin: 0
+  &-contentinfo
+    @extend %text-n2-xs
+    height: 20px
 
   &-example
     margin: spacing(2) 0 spacing(4)
