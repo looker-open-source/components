@@ -7,11 +7,11 @@
     // We don't want a modifier on the normal style,
     // so we need a conditional to control that
     @if $value == normal
-      .border-#{$suffix}
-        border: solid 1px border-var($value) !important
+      %border-#{$suffix}
+        border: solid 1px border-var($value)
     @else
-      .border-#{$value}-#{$suffix}
-        border: solid 1px border-var($value) !important
+      %border-#{$value}-#{$suffix}
+        border: solid 1px border-var($value)
 
     // Iterate through each type in $border-types
     @each $border, $shorthand in $border-types
@@ -19,11 +19,11 @@
       // We don't want a modifier on the normal style,
       // so we need a conditional to control that
       @if $value == normal
-        .border-#{$shorthand}-#{$suffix}
-          border-#{$border}: solid 1px border-var($value) !important
+        %border-#{$shorthand}-#{$suffix}
+          border-#{$border}: solid 1px border-var($value)
       @else
-        .border-#{$shorthand}-#{$value}-#{$suffix}
-          border-#{$border}: solid 1px border-var($value) !important
+        %border-#{$shorthand}-#{$value}-#{$suffix}
+          border-#{$border}: solid 1px border-var($value)
 
 
 
@@ -31,13 +31,13 @@
 @mixin border-none($suffix)
 
   // Create style for border none on all sides
-  .border-none-#{$suffix}
-    border: none !important
+  %border-none-#{$suffix}
+    border: none
 
   // Iterate through border sides and create border none styles
   @each $border, $shorthand in $border-types
-    .border-none-#{$shorthand}-#{$suffix}
-      border-#{$border}: none !important
+    %border-none-#{$shorthand}-#{$suffix}
+      border-#{$border}: none
 
 
 
@@ -45,20 +45,20 @@
 @mixin border-radius
 
   // Create style for border radius classes
-  .round
-    border-radius: $border-radius !important
+  %round
+    border-radius: $border-radius
     &-t
-      border-radius: $border-radius $border-radius 0 0 !important
+      border-radius: $border-radius $border-radius 0 0
     &-b
-      border-radius: 0 0 $border-radius $border-radius !important
+      border-radius: 0 0 $border-radius $border-radius
     &-l
-      border-radius: $border-radius 0 0 $border-radius !important
+      border-radius: $border-radius 0 0 $border-radius
     &-r
-      border-radius: 0 $border-radius $border-radius 0 !important
+      border-radius: 0 $border-radius $border-radius 0
 
   // Create the circle class
-  .circle
-    border-radius: 9999px !important
+  %circle
+    border-radius: 9999px
 
 
 

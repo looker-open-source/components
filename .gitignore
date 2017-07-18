@@ -7,3 +7,4 @@ Gemfile.lock
 .nvmrc
 Procfile
 *.log
+src/stylesheets/lens/lens.css

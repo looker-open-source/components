@@ -11,52 +11,28 @@
       // Iterate through each unit inside our $spacing map
       @each $unit, $value in $spacing
 
-        // We don't want a class of "0.5" so we use a conditional to
-        // let us rename is at "05" in this instance
-        @if $unit == 0.5
-          .p-05-#{$suffix}
-            padding: spacing($unit) !important
-        @else
-          .p-#{$unit}-#{$suffix}
-            padding: spacing($unit) !important
+        %p-#{$unit}-#{$suffix}
+          padding: spacing($unit)
 
     @else
 
       // Iterate through each unit inside our $spacing map
       @each $unit, $value in $spacing
 
-        // We don't want a class of "0.5" so we use a conditional to
-        // let us rename is at "05" in this instance
-        @if $unit == 0.5
 
-          // We need to control printing out two properties for
-          // the lt and tb case and a single for the others
-          @if $type == lr
-            .p-#{$type}-05-#{$suffix}
-              padding-left: spacing($unit) !important
-              padding-right: spacing($unit) !important
-          @else if $type == tb
-            .p-#{$type}-05-#{$suffix}
-              padding-top: spacing($unit) !important
-              padding-bottom: spacing($unit) !important
-          @else
-            .p-#{$type}-05-#{$suffix}
-              padding-#{$side}: spacing($unit) !important
+        // We need to control printing out two properties for
+        // the lt and tb case and a single for the others
+        @if $type == lr
+          %p-#{$type}-#{$unit}-#{$suffix}
+            padding-left: spacing($unit)
+            padding-right: spacing($unit)
+        @else if $type == tb
+          %p-#{$type}-#{$unit}-#{$suffix}
+            padding-top: spacing($unit)
+            padding-bottom: spacing($unit)
         @else
-
-          // We need to control printing out two properties for
-          // the lt and tb case and a single for the others
-          @if $type == lr
-            .p-#{$type}-#{$unit}-#{$suffix}
-              padding-left: spacing($unit) !important
-              padding-right: spacing($unit) !important
-          @else if $type == tb
-            .p-#{$type}-#{$unit}-#{$suffix}
-              padding-top: spacing($unit) !important
-              padding-bottom: spacing($unit) !important
-          @else
-            .p-#{$type}-#{$unit}-#{$suffix}
-              padding-#{$side}: spacing($unit) !important
+          %p-#{$type}-#{$unit}-#{$suffix}
+            padding-#{$side}: spacing($unit)
 
 
 

@@ -11,59 +11,34 @@
       // Iterate through each unit inside our $spacing map
       @each $unit, $value in $spacing
 
-        // We don't want a class of "0.5" so we use a conditional to
-        // let us rename is at "05" in this instance
-        @if $unit == 0.5
-          .m-05-#{$suffix}
-            margin: spacing($unit) !important
-        @else
-          .m-#{$unit}-#{$suffix}
-            margin: spacing($unit) !important
+        %m-#{$unit}-#{$suffix}
+          margin: spacing($unit)
 
     @else
 
       // Iterate through each unit inside our $spacing map
       @each $unit, $value in $spacing
 
-        // We don't want a class of "0.5" so we use a conditional to
-        // let us rename is at "05" in this instance
-        @if $unit == 0.5
-
-          // We need to control printing out two properties for
-          // the lt and tb case and a single for the others
-          @if $type == lr
-            .m-#{$type}-05-#{$suffix}
-              margin-left: spacing($unit) !important
-              margin-right: spacing($unit) !important
-          @else if $type == tb
-            .m-#{$type}-05-#{$suffix}
-              margin-top: spacing($unit) !important
-              margin-bottom: spacing($unit) !important
-          @else
-            .m-#{$type}-05-#{$suffix}
-              margin-#{$side}: spacing($unit) !important
+        // We need to control printing out two properties for
+        // the lt and tb case and a single for the others
+        @if $type == lr
+          %m-#{$type}-#{$unit}-#{$suffix}
+            margin-left: spacing($unit)
+            margin-right: spacing($unit)
+        @else if $type == tb
+          %m-#{$type}-#{$unit}-#{$suffix}
+            margin-top: spacing($unit)
+            margin-bottom: spacing($unit)
         @else
-
-          // We need to control printing out two properties for
-          // the lt and tb case and a single for the others
-          @if $type == lr
-            .m-#{$type}-#{$unit}-#{$suffix}
-              margin-left: spacing($unit) !important
-              margin-right: spacing($unit) !important
-          @else if $type == tb
-            .m-#{$type}-#{$unit}-#{$suffix}
-              margin-top: spacing($unit) !important
-              margin-bottom: spacing($unit) !important
-          @else
-            .m-#{$type}-#{$unit}-#{$suffix}
-              margin-#{$side}: spacing($unit) !important
+          %m-#{$type}-#{$unit}-#{$suffix}
+            margin-#{$side}: spacing($unit)
 
 
 
 // Creates the styles for margin: 0 auto for horizontal centering
 @mixin margin-auto($suffix)
-  .m-auto-#{$suffix}
-    margin: 0 auto !important
+  %m-auto-#{$suffix}
+    margin: 0 auto
 
 
 

@@ -7,16 +7,16 @@
     // Width is the only property that needs auto
     // so we call that out here
     @if $type == auto
-      .w-#{$type}-#{$suffix}
-        width: #{$type} !important
+      %w-#{$type}-#{$suffix}
+        width: #{$type}
     @else if $type == full
-      .w-#{$type}-#{$suffix}
-        width: 100% !important
-      .h-#{$type}-#{$suffix}
-        height: 100% !important
+      %w-#{$type}-#{$suffix}
+        width: 100%
+      %h-#{$type}-#{$suffix}
+        height: 100%
     @else if $type == fit
-      .w-#{$type}-#{$suffix}
-        max-width: 100% !important
+      %w-#{$type}-#{$suffix}
+        max-width: 100%
 
 
 
