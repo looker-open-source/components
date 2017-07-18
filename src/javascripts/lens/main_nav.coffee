@@ -26,6 +26,7 @@ m.controller "MainNavController", (
         { title: "Buttons", uiSref: "buttons"},
         { title: "Forms", uiSref: "forms"},
         { title: "Tables", uiSref: "tables"}
+        { title: "Modals", uiSref: "modals"}
       ]
     },
     { title: "Atoms", id: "atoms", subNav: [

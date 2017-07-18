@@ -48,18 +48,23 @@ $color-properties: color border-color background-color;
 // =========================================
 $spacing: (
   0:   0px,
-  0.5: 5px,
-  1:   10px,
-  2:   20px,
-  3:   25px,
-  4:   50px
+  0.5: 6px,
+  1:   12px,
+  2:   14px,
+  3:   16px,
+  4:   19px,
+  5:   22px,
+  6:   28px,
+  7:   38px,
+  8:   52px,
+  9:   62px
 );
 
 $spacing-sides: (
   all: all,
   t:   top,
   b:   bottom,
-  l:   left,
+  l:   left,  
   r:   right,
   lr:  null,
   tb:  null

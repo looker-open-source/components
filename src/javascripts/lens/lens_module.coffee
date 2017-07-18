@@ -53,6 +53,7 @@ m.config (
     url: '/getting-started'
     template: '<getting-started></getting-started>'
     title: 'Getting Started'
+
 # Guidelines
   markupState =
     name: 'markup'
@@ -81,6 +82,12 @@ m.config (
     url: '/components/tables'
     template: '<tables></tables>'
     title: 'Tables'
+  modalsState =
+    name: 'modals'
+    url: '/components/modals'
+    template: '<modals></modals>'
+    title: 'Modals'
+
 # Atoms
   blockGridState =
     name: 'block-grid'
@@ -144,6 +151,7 @@ m.config (
   $stateProvider.state buttonsState
   $stateProvider.state formsState
   $stateProvider.state tablesState
+  $stateProvider.state modalsState
 
   $stateProvider.state blockGridState
   $stateProvider.state bordersState

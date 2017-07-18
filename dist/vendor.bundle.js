@@ -47,14 +47,14 @@
 
 	'use strict';
 
-	window.jQuery = window.$ = __webpack_require__(31);
-	window.angular = __webpack_require__(32);
-	window.Prism = __webpack_require__(34);
-	window.sassToJs = __webpack_require__(35);
+	window.jQuery = window.$ = __webpack_require__(37);
+	window.angular = __webpack_require__(38);
+	window.Prism = __webpack_require__(40);
+	window.sassToJs = __webpack_require__(41);
 
 /***/ }),
 
-/***/ 31:
+/***/ 37:
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -10281,16 +10281,16 @@
 
 /***/ }),
 
-/***/ 32:
+/***/ 38:
 /***/ (function(module, exports, __webpack_require__) {
 
-	__webpack_require__(33);
+	__webpack_require__(39);
 	module.exports = angular;
 
 
 /***/ }),
 
-/***/ 33:
+/***/ 39:
 /***/ (function(module, exports) {
 
 	/**
@@ -42064,7 +42064,7 @@
 
 /***/ }),
 
-/***/ 34:
+/***/ 40:
 /***/ (function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {
@@ -42867,18 +42867,18 @@
 
 /***/ }),
 
-/***/ 35:
+/***/ 41:
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;//! sass-to-js - v1.3.0 - 2016-07-28
 	//! author : Sergey Hospodarets
 	//! license : MIT
 	//! https://github.com/malyw/sass-to-js
-	!function(a){function b(a,b){return b=b||{},a?(b.cssProperty=b.cssProperty||"font-family",d(a,b)):(b.debug&&f([a," is not an HTML element"]),{})}function c(a){return b(this[0],a)}function d(b,c){var d,g={};if(d=c.pseudoEl?a.getComputedStyle(b,c.pseudoEl).getPropertyValue(c.cssProperty):a.getComputedStyle(b).getPropertyValue(c.cssProperty),null===d)return c.debug&&f(["CSS value for ",b," with params ",c," is empty"]),g;d=e(d);try{g=JSON.parse(d)}catch(a){c.debug&&f(["Cannot parse JSON from ",b," with params ",c])}return g}function e(a){return a=a.replace(/^['"]+|\s+|\\|(;\s?})+|['"]$/g,"")}function f(b){a.console&&console.error&&console.error(b)}var g=!1;"function"==typeof a.jQuery&&($.fn.sassToJs=c,$.fn.sassToJsOriginal=b,g=!0),"function"==typeof a.angular&&(angular.element.prototype.sassToJs=c,angular.element.prototype.sassToJsOriginal=b,g=!0),"function"=="function"&&__webpack_require__(36)&&(!(__WEBPACK_AMD_DEFINE_RESULT__ = function(){return b}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)),g=!0),"undefined"!=typeof module&&module.exports&&(module.exports=b,g=!0),g||(a.sassToJs=b)}(window);
+	!function(a){function b(a,b){return b=b||{},a?(b.cssProperty=b.cssProperty||"font-family",d(a,b)):(b.debug&&f([a," is not an HTML element"]),{})}function c(a){return b(this[0],a)}function d(b,c){var d,g={};if(d=c.pseudoEl?a.getComputedStyle(b,c.pseudoEl).getPropertyValue(c.cssProperty):a.getComputedStyle(b).getPropertyValue(c.cssProperty),null===d)return c.debug&&f(["CSS value for ",b," with params ",c," is empty"]),g;d=e(d);try{g=JSON.parse(d)}catch(a){c.debug&&f(["Cannot parse JSON from ",b," with params ",c])}return g}function e(a){return a=a.replace(/^['"]+|\s+|\\|(;\s?})+|['"]$/g,"")}function f(b){a.console&&console.error&&console.error(b)}var g=!1;"function"==typeof a.jQuery&&($.fn.sassToJs=c,$.fn.sassToJsOriginal=b,g=!0),"function"==typeof a.angular&&(angular.element.prototype.sassToJs=c,angular.element.prototype.sassToJsOriginal=b,g=!0),"function"=="function"&&__webpack_require__(42)&&(!(__WEBPACK_AMD_DEFINE_RESULT__ = function(){return b}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)),g=!0),"undefined"!=typeof module&&module.exports&&(module.exports=b,g=!0),g||(a.sassToJs=b)}(window);
 
 /***/ }),
 
-/***/ 36:
+/***/ 42:
 /***/ (function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {module.exports = __webpack_amd_options__;
