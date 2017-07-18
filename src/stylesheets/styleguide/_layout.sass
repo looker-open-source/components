@@ -6,8 +6,8 @@
   &-banner
     @media screen
       +fixed(top 0 left 0)
-      height: spacing(8)
-      padding: spacing(2)
+      height: spacing(4)
+      padding: spacing(1) spacing(2)
       width: 100%
       line-height: 1
     +media(min-width 960px)
@@ -84,17 +84,19 @@
   &-contentinfo
     +media(min-width 960px)
       margin-left: 190px
-      padding-top: spacing(8)
+      padding-top: spacing(4)
   &-header
-    padding: 0 spacing(5)
+    height: 50px
+    padding: 0 spacing(2)
   &-content
-    margin: spacing(5)
+    margin: spacing(2)
     @media screen
-      margin-top: spacing(5)
+      margin-top: spacing(2)
     +media(min-width 960px)
-      margin-top: spacing(5)
+      margin-top: spacing(2)
   &-main
     min-height: calc(100vh - 8rem)
+    padding-top: 50px
   &-contentinfo-copy
     padding: spacing(1) spacing(2)
     margin: 0

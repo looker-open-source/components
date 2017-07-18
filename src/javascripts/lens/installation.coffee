@@ -18,17 +18,17 @@ template = """
 <lens-main>
 
   <section>
-    <h2 class="m-b-2-xs">Lens and Helltool</h2>
-    <p class="m-b-4-xs"><code>coming soon</code></p>
-    <h2 class="m-b-2-xs">Using Lens in your own project</h2>
-    <ul class="m-b-2-xs">
+    <h2>Lens and Helltool</h2>
+    <p class="todo"></p>
+    <h2>Using Lens in your own project</h2>
+    <ul>
       <li>As is...</li>
       <li>Forking/branching</li>
     </ul>
 
-    <p class="m-b-4-xs"> <code>coming soon</code></p>
+    <p class="todo"></p>
 
-    <h2 class="m-b-2-xs">Download</h2>
+    <h2>Download</h2>
     <a href="https://github.com/looker/lens/archive/v0.8.0.zip" class="button button--large-xs w-full-xs w-auto-lg">Source Files</a>
     <a href="http://looker.github.io/lens/css/Lens.css" class="button button--large-xs w-full-xs w-auto-lg">Compiled CSS</a>
     <a href="http://looker.github.io/lens/css/Lens.min.css" class="button button--large-xs w-full-xs w-auto-lg">Compiled CSS (minified)</a>

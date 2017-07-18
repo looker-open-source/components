@@ -18,6 +18,7 @@ m.directive "pageHeader", ->
 template = """
 <header class="guide-banner" role="banner">
   <a ui-sref="index" ui-sref-active="active" class="guide-name">Lens</a>
+  <a ui-sref="release-notes" ui-sref-active="active" class="guide-version">version </a>
   <div class="guide-skip-content">
     <a href="#navigation">Skip to Navigation</a>
   </div>

@@ -25,9 +25,9 @@ template = """
 <lens-main>
 
   <section id="brand-colors">
-    <h2 id="Brand" class="m-b-1-xs">Brand Colors</h2>
-    <p class="m-b-2-xs">There are only 2 main brand colors for Looker. Use the color class for any of these classes, just replace <code>[color]</code> with the name of the color you want.</p>
-    <table class="table-border-rows col-60-xl m-b-3-xs">
+    <h2 id="Brand">Brand Colors</h2>
+    <p>There are only 2 main brand colors for Looker. Use the color class for any of these classes, just replace <code>[color]</code> with the name of the color you want.</p>
+    <table class="table-border-rows col-60-xl">
       <thead>
         <th>Class</th>
         <th>Property</th>
@@ -48,14 +48,14 @@ template = """
       </tbody>
     </table>
 
-    <ul class="list-unstyled guide-color guide-colors-brand overflow-hidden-xs m-b-4-xs"></ul><!-- List items built by JS -->
+    <ul class="list-unstyled guide-color guide-colors-brand overflow-hidden-xs"></ul><!-- List items built by JS -->
   </section>
 
 
   <section id="ui-colors">
-    <h2 id="UI" class="m-b-1-xs">UI Colors</h2>
-    <p class="m-b-2-xs">Looker utilizes colors in various parts of our app UI. Most of our app is gray, so color is rather important. Each of the UI colors has utility classes you can use to apply the color to different parts of an element. Use the color class for any of these classes, just replace <code>[color]</code> with the name of the color you want.</p>
-    <table class="table-border-rows col-60-xl m-b-3-xs">
+    <h2 id="UI">UI Colors</h2>
+    <p>Looker utilizes colors in various parts of our app UI. Most of our app is gray, so color is rather important. Each of the UI colors has utility classes you can use to apply the color to different parts of an element. Use the color class for any of these classes, just replace <code>[color]</code> with the name of the color you want.</p>
+    <table class="table-border-rows col-60-xl">
       <thead>
         <th>Class</th>
         <th>Property</th>
@@ -76,15 +76,16 @@ template = """
       </tbody>
     </table>
 
-    <ul class="list-unstyled guide-color guide-colors-ui overflow-hidden-xs m-b-4-xs"></ul><!-- List items built by JS -->
+    <ul class="list-unstyled guide-color guide-colors-ui overflow-hidden-xs"></ul><!-- List items built by JS -->
   </section>
 
 
 
-  <section id="gray-colors">
-    <h2 id="Gray" class="m-b-1-xs">Gray Colors</h2>
-    <p class="m-b-2-xs">Use the color class for any of these classes, just replace <code>[color]</code> with the name of the color you want.</p>
-    <table class="table-border-rows col-60-xl m-b-3-xs">
+  <section id="gray-colors-section">
+    <div id="gray-colors" class="inpage-anchor"></div>
+    <h2 id="Gray">Gray Colors</h2>
+    <p>Use the color class for any of these classes, just replace <code>[color]</code> with the name of the color you want.</p>
+    <table class="table-border-rows col-60-xl">
       <thead>
         <th>Class</th>
         <th>Property</th>
@@ -105,31 +106,30 @@ template = """
       </tbody>
     </table>
 
-    <ul class="list-unstyled guide-color guide-colors-gray overflow-hidden-xs m-b-4-xs"></ul><!-- List items built by JS -->
+    <ul class="list-unstyled guide-color guide-colors-gray overflow-hidden-xs"></ul><!-- List items built by JS -->
   </section>
 
 
   <section id="Functions">
-    <h2 class="m-b-1-xs">Functions</h2>
-    <h3 class="m-b-05-xs">Colors</h3>
-    <p class="m-b-1-xs">Used in our <a href="color.html">color</a> utility classes.</p>
-    <p class="bold">Brand Colors</p>
+    <h2>Functions</h2>
+    <h3>Colors</h3>
+    <p>Brand Colors</p>
     <div class="guide-code">
-  <pre class="m-tb-05-xs"><code class="language-css">.custom-element
+  <pre><code class="language-css">.custom-element
     background-color: brand-color(purple)
   </code></pre>
-    <p class="m-b-3-xs"><code>
+    <p><code>
       brand-color(purple)<br />
-      brand-color(gray)
+      brand-color(gray)<br />
       brand-color(blue)
     </code></p>
 
-    <p class="bold">Gray Colors</p>
+    <p>Gray Colors</p>
     <div class="guide-code">
-  <pre class="m-tb-05-xs"><code class="language-css">.custom-element
+  <pre><code class="language-css">.custom-element
     fill: gray-color(gray-dark)
   </code></pre>
-    <p class="m-b-3-xs"><code>
+    <p><code>
       gray-color(white)<br />
       gray-color(gray-1)<br />
       gray-color(gray-2)<br />
@@ -142,10 +142,10 @@ template = """
 
     <p class="bold">UI Colors</p>
     <div class="guide-code">
-  <pre class="m-tb-05-xs"><code class="language-css">.custom-element
+  <pre><code class="language-css">.custom-element
     background-color: ui-color(blue)
   </code></pre>
-    <p class="m-b-3-xs"><code>
+    <p><code>
       ui-color(purple)<br />
       ui-color(purple-light)<br />
       ui-color(purple-dark)<br />

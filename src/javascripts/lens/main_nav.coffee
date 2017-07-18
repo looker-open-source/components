@@ -33,10 +33,12 @@ m.controller "MainNavController", (
         { title: "Block Grid", uiSref: "block-grid"},
         { title: "Borders", uiSref: "borders"},
         { title: "Colors", uiSref: "colors"},
+        { title: "Effects", uiSref: "effects"},
         { title: "Flexbox", uiSref: "flexbox"}
         { title: "Grid", uiSref: "grid"},
         { title: "Icons", uiSref: "icons"},
         { title: "Layout", uiSref: "layout"},
+        { title: "Spacing and Sizing", uiSref: "spacing-sizing"},
         { title: "Typography", uiSref: "typography"}
       ]
     },

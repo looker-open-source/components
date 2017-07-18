@@ -99,11 +99,21 @@ m.config (
     url: '/atoms/borders'
     template: '<borders></borders>'
     title: 'Borders'
+  boxPropertiesState =
+    name: 'spacing-sizing'
+    url: '/atoms/spacing-sizing'
+    template: '<spacing-sizing></spacing-sizing>'
+    title: 'Spacing and Sizing'
   colorsState =
     name: 'colors'
     url: '/atoms/colors'
     template: '<colors></colors>'
     title: 'Colors'
+  effectsState =
+    name: 'effects'
+    url: '/atoms/effects'
+    template: '<effects></effects>'
+    title: 'Effects'
   flexboxState =
     name: 'flexbox'
     url: '/atoms/flexbox'
@@ -155,7 +165,9 @@ m.config (
 
   $stateProvider.state blockGridState
   $stateProvider.state bordersState
+  $stateProvider.state boxPropertiesState
   $stateProvider.state colorsState
+  $stateProvider.state effectsState
   $stateProvider.state flexboxState
   $stateProvider.state gridState
   $stateProvider.state iconsState

@@ -19,7 +19,7 @@ template = """
   <section id="developers">
     <h2>Developers</h2>
     <code>Coming Soon!</code>
-    <ul class="m-b-4-xs">
+    <ul>
       <li>How we use this in helltool</li>
       <li>Extending and using Lens elsewhere (see <a href="/installation">Installation</a> section)
       <li><a href="/guidelines/markup">markup considerations</a></li>
@@ -30,7 +30,7 @@ template = """
   <section id="designers">
     <h2>Designers</h2>
     <code>Coming Soon!</code>
-    <ul class="m-b-4-xs">
+    <ul>
       <li>design principles, etc.</li>
       <li>link to downloadable design resources.</li>
       <li>...</li>

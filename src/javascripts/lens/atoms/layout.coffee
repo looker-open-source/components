@@ -17,443 +17,257 @@ m.directive "layout", ->
 template = """
 <lens-main>
 
-  <section id="Floats">
-    <h2 class="m-b-1-xs">Floats</h2>
-    <p class="m-b-1-xs">To float elements, use the following classes: <code>.float-l-xs</code>, <code>.float-r-xs</code>, and <code>.float-none-xs</code></p>
-    <div class="col-container">
-      <div class="col col-30-sm">
-        <p><strong>Directions</strong></p>
-        <ul class="list-unstyled m-b-3-xs">
-          <li><code>l</code> = left</li>
-          <li><code>r</code> = right</li>
-        </ul>
+<!-- these relative anchor links only work in-page. Need to
+     figure out how to deal with the autoScroll = true on
+     the <ui-view> element. That allows the nav to take you to the top
+     of the page by default. If you set to "false" then these anchors
+     work but the nav between pages doesn't. blarg.
+-->
+  <ul>
+    <li><a href="#display">Display</a></li>
+    <li><a href="#position">Position</a></li>
+    <li><a href="#floats">Floats</a></li>
+    <li><a href="#z-index">Z-Index</a></li>
+    <li><a href="#vertical-alignment">Vertical Alignment</a></li>
+    <li><a href="#rotation">Rotation</a></li>
+  </ul>
+
+  <section id="display-section">
+    <div id="display" class="inpage-anchor"></div>
+    <h2>Display</h2>
+    <ul class="list-unstyled">
+      <li><code>.block-xs</code></li>
+      <li><code>.inline-xs</code></li>
+      <li><code>.inline-block-xs</code></li>
+      <li><code>.hide-xs</code> will hide an element. Remove to un-hide.</ui>
+    </ul>
+    <p>See the <a ui-sref="grid">grid</a>, <a ui-sref="block-grid">block grid</a> and
+       <a ui-sref="flexbox">flexbox</a> sections for more advanced layouts.
+    </p>
+    <!--
+    <div class="guide-example">
+      <div class="guide-example-demo">
+        <div class="block-xs border-dark-xs m-b-05-xs">.block-xs</div>
+        <div class="inline-xs border-dark-xs">.inline-xs</div>
+        <div class="inline-block-xs border-dark-xs p-1-xs">.inline-block-xs</div>
+      </div>
+      <div class="guide-code">
+  <pre><code class="language-html">&lt;div class="block-xs border-dark-xs"&gt;.block-xs&lt;/div&gt;
+&lt;div class="inline-xs border-dark-xs"&gt;.inline-xs&lt;/div&gt;
+&lt;div class="inline-block-xs border-dark-xs p-1-xs"&gt;.inline-block-xs&lt;/div&gt;</code></pre>
       </div>
     </div>
-    <div class="col-container">
-      <div class="float-l-xs border-dark-xs">.float-l-xs</div>
-      <div class="float-r-xs border-dark-xs">.float-r-xs</div>
+  -->
+  </section>
+
+
+
+
+
+  <section id="position-section">
+    <div id="position" class="inpage-anchor"></div>
+    <h2>Position</h2>
+    <p>To control the type of positioning on an element, use:</p>
+    <ul class="list-unstyled">
+      <li><code>.relative-xs</code> = relative</li>
+      <li><code>.absolute-xs</code> = absolute</li>
+      <li><code>.fixed-xs</code> = fixed</li>
+      <li><code>.static-xs</code> = static</li>
+    </ul>
+
+    <p>Set the position with <code>.pos-$s-$n-xs</code>, where <code>$s</code> is the side
+       and <code>$n</code> is one of our spacing units.
+    </p>
+    <ul class="list-unstyled">
+      <li><code>.pos-t-$n-xs</code> = top</li>
+      <li><code>.pos-b-$n-xs</code> = bottom</li>
+      <li><code>.pos-l-$n-xs</code> = left</li>
+      <li><code>.pos-r-$n-xs</code> = right</li>
+    </ul>
+
+    <h3>Mixins</h3>
+    <pre><code>+absolute($direction $amount)
++relative($direction $amount)
++fixed($direction $amount)</code></pre>
+
+<!--
+    <div class="guide-example">
+      <div class="guide-example-demo">
+        <div class="border-xs p-2-xs m-b-1-xs">
+          <div class="relative-xs pos-t-2-xs pos-l-4-xs border-dark-xs inline-xs">
+            .relative-xs .pos-t-2-xs .pos-l-4-xs
+          </div>
+        </div>
+        <div class="relative-xs border-xs p-3-xs m-b-1-xs">
+          .relative-xs
+          <div class="absolute-xs pos-t-4-xs pos-l-4-xs border-dark-xs">
+            .absolute-xs .pos-t-4-xs .pos-l-4-xs
+          </div>
+        </div>
+        <div class="relative-xs border-xs p-4-xs">
+          <div class="absolute-xs pos-t-1-xs pos-l-2-xs border-dark-xs p-05-xs z-2-xs" style="background: #fff">
+            .absolute-xs .pos-t-1-xs .pos-l-2-xs
+          </div>
+          <div class="absolute-xs pos-t-4-xs pos-l-4-xs border-dark-xs p-05-xs z-1-xs">
+            .absolute-xs .pos-t-4-xs .pos-l-4-xs
+          </div>
+        </div>
+      </div>
+      <div class="guide-example-code">
+    <pre><code class="language-html">&lt;div class="border-xs p-2-xs m-b-1-xs"&gt;
+    &lt;div class="relative-xs pos-t-2-xs pos-l-4-xs border-dark-xs inline-xs"&gt;
+      .relative-xs .pos-t-2-xs .pos-l-4-xs
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="relative-xs border-xs p-3-xs m-b-1-xs"&gt;
+    .relative-xs
+    &lt;div class="absolute-xs pos-t-4-xs pos-l-4-xs border-dark-xs"&gt;
+      .absolute-xs .pos-t-4-xs .pos-l-4-xs
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="relative-xs border-xs p-4-xs"&gt;
+    &lt;div class="absolute-xs pos-t-1-xs pos-l-2-xs border-dark-xs p-05-xs z-2-xs" style="background: #fff"&gt;
+      .absolute-xs .pos-t-1-xs .pos-l-2-xs
+    &lt;/div&gt;
+    &lt;div class="absolute-xs pos-t-4-xs pos-l-4-xs border-dark-xs p-05-xs z-1-xs"&gt;
+      .absolute-xs .pos-t-4-xs .pos-l-4-xs
+    &lt;/div&gt;
+  &lt;/div&gt;</code></pre>
+      </div>
     </div>
-    <div class="float-none-xs border-dark-xs m-t-05-xs">.float-none-xs</div>
-    <div class="guide-code m-b-4-xs">
-  <pre><code class="language-html">&lt;div class="col-container"&gt;
+-->
+  </section>
+
+
+  <section id="floats-section">
+    <div id="floats" class="inpage-anchor"></div>
+    <h2>Floats</h2>
+    <ul class="list-unstyled">
+      <li><code>.float-l-xs</code> to float left</li>
+      <li><code>.float-r-xs</code> to float right</li>
+      <li><code>.float-none-xs</code> to stop the float!</li>
+    </ul>
+    <!--
+    <div class="guide-example">
+      <div class="guide-example-demo">
+        <div class="col-container">
+          <div class="float-l-xs border-dark-xs">.float-l-xs</div>
+          <div class="float-r-xs border-dark-xs">.float-r-xs</div>
+        </div>
+        <div class="float-none-xs border-dark-xs m-t-05-xs">.float-none-xs</div>
+      </div>
+      <div class="guide-example-code">
+        <pre><code class="language-html">&lt;div class="col-container"&gt;
   &lt;div class="float-l-xs border-dark-xs"&gt;.float-l-xs&lt;/div&gt;
   &lt;div class="float-r-xs border-dark-xs"&gt;.float-r-xs&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="float-none-xs border-dark-xs m-t-05-xs"&gt;.float-none-xs&lt;/div&gt;</code></pre>
+      </div>
     </div>
+  -->
+    <h3>Mixins</h3>
+    <p><code>+clearfix</code> will allow your element to clear its child elements.</p>
+<!--
+    <div class="guide-example">
+      <div class="guide-code">
+        <pre><code class="language-css">.custom-selector
+  +clearfix</code></pre>
+      </div>
+    </div>
+-->
   </section>
 
 
 
-  <section id="Display">
-    <h2 class="m-b-1-xs">Display</h2>
-    <p class="m-b-3-xs">Use <code>.hide-xs</code>, <code>.block-xs</code>, <code>.inline-xs</code> and <code>.inline-block-xs</code> to change an element's display.</p>
-    <div class="hide-xs">.hide-xs</div>
-    <div class="block-xs border-dark-xs m-b-05-xs">.block-xs</div>
-    <div class="inline-xs border-dark-xs">.inline-xs</div>
-    <div class="inline-block-xs border-dark-xs">.inline-block-xs</div>
-    <div class="guide-code m-b-4-xs">
-  <pre><code class="language-html">&lt;div class="hide-xs"&gt;.hide-xs&lt;/div&gt;
-&lt;div class="block-xs border-dark-xs"&gt;.block-xs&lt;/div&gt;
-&lt;div class="inline-xs border-dark-xs"&gt;.inline-xs&lt;/div&gt;
-&lt;div class="inline-block-xs border-dark-xs"&gt;.inline-block-xs&lt;/div&gt;</code></pre>
-    </div>
+  <section id="z-index-section">
+    <div id="z-index" class="inpage-anchor"></div>
+    <h2>Z-Index</h2>
+    <p>Use a z-index class to assign the stack order of elements.
+      Lens has classes for values 1-4, which end up as 100-400 in the property value.</p>
+    <ul class="list-unstyled">
+      <li><code>.z-1-xs</code> = z-index: 100</li>
+      <li><code>.z-2-xs</code> = z-index: 200</li>
+      <li><code>.z-3-xs</code> = z-index: 300</li>
+      <li><code>.z-4-xs</code> = z-index: 400</li>
+    </ul>
   </section>
 
 
 
-  <section id="Overflow">
-    <h2 class="m-b-1-xs">Overflow</h2>
-    <p class="m-b-3-xs">Use <code>.overflow-hidden-xs</code>, <code>.overflow-auto-xs</code>, <code>.overflow-scroll-xs</code> and <code>.overflow-visible-xs</code> to change an element's overflow.</p>
-    <div class="overflow-hidden-xs p-1-xs m-b-1-xs border-dark-xs" style="height: 110px">
-      <p>.overflow-hidden-xs</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum maiores esse vel quia, voluptates quos. Tempora natus iste aperiam sequi mollitia, doloremque quas recusandae, rerum minima dolorum, veritatis vitae maxime.</p>
-    </div>
-    <div class="overflow-auto-xs p-1-xs m-b-1-xs border-dark-xs" style="height: 110px">
-      <p>.overflow-auto-xs</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum maiores esse vel quia, voluptates quos. Tempora natus iste aperiam sequi mollitia, doloremque quas recusandae, rerum minima dolorum, veritatis vitae maxime.</p>
-    </div>
+  <section id="vertical-alignment-section">
+    <div id="vertical-alignment" class="inpage-anchor"></div>
+    <h2>Vertical Alignment</h2>
+    <p>A sub-set of the vertical alignment options.
+      Note that it only works on inline or table-cell elements.</p>
+    <ul class="list-unstyled">
+      <li><code>.align-top-xs</code> aligns the top of the element with the top of the entire line.</li>
+      <li><code>.align-middle-xs</code> aligns the middle of the element with the baseline + &half; the x-height of the parent.</li>
+      <li><code>.align-bottom-xs</code> aligns the bottom of the element with the bottom of the entire line.</li>
+    </ul>
 
-    <div class="overflow-scroll-xs p-1-xs m-b-1-xs border-dark-xs" style="height: 110px">
-      <p>.overflow-scroll-xs</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum maiores esse vel quia, voluptates quos. Tempora natus iste aperiam sequi mollitia, doloremque quas recusandae, rerum minima dolorum, veritatis vitae maxime.</p>
-    </div>
-
-    <div class="overflow-visible-xs p-1-xs m-b-3-xs border-dark-xs" style="height: 110px">
-      <p>.overflow-visible-xs</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum maiores esse vel quia, voluptates quos. Tempora natus iste aperiam sequi mollitia, doloremque quas recusandae, rerum minima dolorum, veritatis vitae maxime.</p>
-    </div>
-    <div class="guide-code m-b-4-xs">
-  <pre><code class="language-html">&lt;div class="overflow-hidden-xs p-1-xs m-b-1-xs border-dark-xs" style="height: 110px"&gt;
-  &lt;p&gt;.overflow-hidden-xs&lt;/p&gt;
-  &lt;p&gt;...&lt;/p&gt;
-&lt;/div&gt;
-
-&lt;div class="overflow-auto-xs p-1-xs m-b-1-xs border-dark-xs" style="height: 110px"&gt;
-  &lt;p&gt;.overflow-auto-xs&lt;/p&gt;
-  &lt;p&gt;...&lt;/p&gt;
-&lt;/div&gt;
-
-&lt;div class="overflow-scroll-xs p-1-xs m-b-1-xs border-dark-xs" style="height: 110px"&gt;
-  &lt;p&gt;.overflow-scroll-xs&lt;/p&gt;
-  &lt;p&gt;...&lt;/p&gt;
-&lt;/div&gt;
-
-&lt;div class="overflow-visible-xs p-1-xs m-b-3-xs border-dark-xs" style="height: 110px"&gt;
-  &lt;p&gt;.overflow-visible-xs&lt;/p&gt;
-  &lt;p&gt;...&lt;/p&gt;
-&lt;/div&gt;</code></pre>
-    </div>
-  </section>
-
-
-
-  <section id="Width/Height">
-    <h2 class="m-b-1-xs">Width &amp; Height</h2>
-    <p class="m-b-3-xs">Most widths will be set using our grid layout. However, Lens provides <code>.w-fit-xs</code> to set an elements max-width to 100%, additionally it has <code>.w-full-xs</code> and <code>.h-full-xs</code> to set an elements width to 100%. You can use <code>.w-auto-xs</code> to set an elements width to auto.</p>
-    <div class="w-fit-xs border-dark-xs p-1-xs m-b-1-xs">.w-fit-xs</div>
-    <div class="w-full-xs border-dark-xs p-1-xs m-b-1-xs">.w-full-xs</div>
-    <div class="border-xs p-05-xs m-b-1-xs" style="height: 100px">
-      <div class="h-full-xs col-20-xs border-dark-xs p-1-xs">.h-full-xs</div>
-    </div>
-    <div class="w-auto-xs border-dark-xs p-1-xs">.w-auto-xs</div>
-
-    <div class="guide-code m-b-4-xs">
-  <pre><code class="language-html">&lt;div class="w-fit-xs border-dark-xs p-1-xs m-b-1-xs"&gt;.w-fit-xs&lt;/div&gt;
-&lt;div class="w-full-xs border-dark-xs p-1-xs m-b-1-xs"&gt;.w-full-xs&lt;/div&gt;
-&lt;div class="border-xs p-05-xs m-b-1-xs" style="height: 100px"&gt;
-  &lt;div class="h-full-xs col-20-xs border-dark-xs p-1-xs"&gt;.h-full-xs&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="w-auto-xs border-dark-xs p-1-xs"&gt;.w-auto-xs&lt;/div&gt;
-  </code></pre>
-    </div>
-  </section>
-
-
-
-  <section id="Units">
-    <h2 class="m-b-1-xs">Spacing Units and Naming</h2>
-    <p class="m-b-1-xs">We use our spacial units across margin, padding, and positioning. These comes in values from 0-6 and a half space unit of 0.5. Each value represents a unit based on 1rem=16px. Each class uses a shorthand of its name to indicate properties and direction.</p>
-    <div class="col-container m-b-3-xs">
-      <div class="col col-30-lg">
-        <p><strong>Units</strong></p>
-        <ul class="list-unstyled">
-          <li><code>0</code> = 0</li>
-          <li><code>0.5</code> = 0.5rem</li>
-          <li><code>1</code> = 1rem</li>
-          <li><code>2</code> = 1.5rem</li>
-          <li><code>3</code> = 2rem</li>
-          <li><code>4</code> = 3rem</li>
-        </ul>
+    <div class="guide-example">
+      <div class="guide-example-demo">
+        <div>
+          <img src="http://placehold.it/50x50" alt="Gratt Spore" height="50px" Width="50px" class="align-top-xs circle">
+          This is our friend Gratt Spore and the <code>img</code> tag has the class <code>align-top-xs</code> on it.
+        </div>
+        <div>
+          <img src="http://placehold.it/50x50" alt="Gratt Spore" height="50px" Width="50px" class="align-middle-xs circle">
+          This is our friend Gratt Spore and the <code>img</code> tag has the class <code>align-middle-xs</code> on it.
+        </div>
+        <div>
+          <img src="http://placehold.it/50x50" alt="Gratt Spore" height="50px" Width="50px" class="align-bottom-xs circle">
+          This is our friend Gratt Spore and the <code>img</code> tag has the class <code>align-bottom-xs</code> on it.
+        </div>
       </div>
-      <div class="col col-30-lg">
-        <p><strong>Properties</strong></p>
-        <ul class="list-unstyled">
-          <li><code>m</code> = margin</li>
-          <li><code>p</code> = padding</li>
-        </ul>
-      </div>
-      <div class="col col-30-lg">
-        <p><strong>Sides</strong></p>
-        <ul class="list-unstyled">
-          <li><code>t</code> = top</li>
-          <li><code>b</code> = bottom</li>
-          <li><code>l</code> = left</li>
-          <li><code>r</code> = right</li>
-          <li><code>lr</code> = left + right</li>
-          <li><code>tb</code> = top + bottom</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-
-
-  <section id="Spacing">
-    <h2 class="m-b-1-xs">Spacing</h2>
-    <h3 class="m-b-1-xs">Uniform Spacing</h3>
-    <p class="m-b-1-xs">These classes are used to apply equal spacing around the entire element.</p>
-    <div class="col-container m-b-2-xs">
-      <div class="col col-30-md">
-        <p><strong>Margin</strong></p>
-        <ul class="list-unstyled">
-          <li><code>.m-0-xs</code></li>
-          <li><code>.m-05-xs</code></li>
-          <li><code>.m-1-xs</code></li>
-          <li><code>.m-2-xs</code></li>
-          <li><code>.m-3-xs</code></li>
-          <li><code>.m-4-xs</code></li>
-        </ul>
-      </div>
-      <div class="col col-30-md">
-        <p><strong>Padding</strong></p>
-        <ul class="list-unstyled">
-          <li><code>.p-0-xs</code></li>
-          <li><code>.p-05-xs</code></li>
-          <li><code>.p-1-xs</code></li>
-          <li><code>.p-2-xs</code></li>
-          <li><code>.p-3-xs</code></li>
-          <li><code>.p-4-xs</code></li>
-        </ul>
-      </div>
-    </div>
-    <div class="col-container border-xs">
-      <div class="border-dark-xs float-l-xs inline-block-xs m-05-xs">m-05-xs</div>
-      <div class="border-dark-xs float-l-xs inline-block-xs m-1-xs">m-1-xs</div>
-      <div class="border-dark-xs float-l-xs inline-block-xs m-2-xs">m-2-xs</div>
-      <div class="border-dark-xs float-l-xs inline-block-xs m-3-xs">m-3-xs</div>
-      <div class="border-dark-xs float-l-xs inline-block-xs p-05-xs">p-05-xs</div>
-      <div class="border-dark-xs float-l-xs inline-block-xs p-1-xs">p-1-xs</div>
-      <div class="border-dark-xs float-l-xs inline-block-xs p-2-xs">p-2-xs</div>
-      <div class="border-dark-xs float-l-xs inline-block-xs p-3-xs">p-3-xs</div>
-    </div>
-    <div class="guide-code m-b-4-xs">
-  <pre><code class="language-html">&lt;div class="col-container border-xs"&gt;
-  &lt;div class="border-dark-xs float-l-xs inline-block-xs m-05-xs"&gt;m-05-xs&lt;/div&gt;
-  &lt;div class="border-dark-xs float-l-xs inline-block-xs m-1-xs"&gt;m-1-xs&lt;/div&gt;
-  &lt;div class="border-dark-xs float-l-xs inline-block-xs m-2-xs"&gt;m-2-xs&lt;/div&gt;
-  &lt;div class="border-dark-xs float-l-xs inline-block-xs m-3-xs"&gt;m-3-xs&lt;/div&gt;
-  &lt;div class="border-dark-xs float-l-xs inline-block-xs p-05-xs"&gt;p-05-xs&lt;/div&gt;
-  &lt;div class="border-dark-xs float-l-xs inline-block-xs p-1-xs"&gt;p-1-xs&lt;/div&gt;
-  &lt;div class="border-dark-xs float-l-xs inline-block-xs p-2-xs"&gt;p-2-xs&lt;/div&gt;
-  &lt;div class="border-dark-xs float-l-xs inline-block-xs p-3-xs"&gt;p-3-xs&lt;/div&gt;
-&lt;/div&gt;</code></pre>
-    </div>
-
-    <h3 class="m-b-1-xs">Individual Spacing</h3>
-    <p class="m-b-1-xs">These classes are used to apply spacing to a particular side of an element.</p>
-    <div class="col-container m-b-2-xs">
-      <div class="col col-50-lg">
-        <p><strong>Margin</strong></p>
-        <ul class="list-unstyled">
-          <li><code>.m-t-1-xs</code> <span class="m-l-1-xs">margin-top</span></li>
-          <li><code>.m-b-1-xs</code> <span class="m-l-1-xs">margin-bottom</span></li>
-          <li><code>.m-l-1-xs</code> <span class="m-l-1-xs">margin-left</span></li>
-          <li><code>.m-r-1-xs</code> <span class="m-l-1-xs">margin-right</span></li>
-          <li><code>.m-lr-1-xs</code> <span class="m-l-1-xs">margin left + right</span></li>
-          <li><code>.m-tb-1-xs</code> <span class="m-l-1-xs">margin top + bottom</span></li>
-          <li><code>.m-auto-xs</code> <span class="m-l-1-xs">horizontal center</span></li>
-        </ul>
-      </div>
-      <div class="col col-50-lg">
-        <p><strong>Padding</strong></p>
-        <ul class="list-unstyled">
-          <li><code>.p-t-0-xs</code> <span class="m-l-1-xs">padding-top</span></li>
-          <li><code>.p-b-05-xs</code> <span class="m-l-1-xs">padding-bottom</span></li>
-          <li><code>.p-l-1-xs</code> <span class="m-l-1-xs">padding-left</span></li>
-          <li><code>.p-r-2-xs</code> <span class="m-l-1-xs">padding-right</span></li>
-          <li><code>.p-lr-3-xs</code> <span class="m-l-1-xs">padding left + right</span></li>
-          <li><code>.p-tb-4-xs</code> <span class="m-l-1-xs">padding top + bottom</span></li>
-        </ul>
-      </div>
-    </div>
-    <div class="col-container border-xs">
-      <div class="border-dark-xs float-l-xs inline-block-xs m-t-3-xs">m-t-3-xs</div>
-      <div class="border-dark-xs float-l-xs inline-block-xs m-t-4-xs">m-t-4-xs</div>
-      <div class="border-dark-xs float-l-xs inline-block-xs p-l-3-xs">p-l-3-xs</div>
-      <div class="border-dark-xs float-l-xs inline-block-xs p-l-4-xs">p-l-4-xs</div>
-    </div>
-    <div class="guide-code m-b-4-xs">
-  <pre><code class="language-html">&lt;div class="col-container border-xs"&gt;
-  &lt;div class="border-dark-xs float-l-xs inline-block-xs m-t-3-xs"&gt;m-t-3-xs&lt;/div&gt;
-  &lt;div class="border-dark-xs float-l-xs inline-block-xs m-t-4-xs"&gt;m-t-4-xs&lt;/div&gt;
-  &lt;div class="border-dark-xs float-l-xs inline-block-xs p-l-3-xs"&gt;p-l-3-xs&lt;/div&gt;
-  &lt;div class="border-dark-xs float-l-xs inline-block-xs p-l-4-xs"&gt;p-l-4-xs&lt;/div&gt;
-&lt;/div&gt;</code></pre>
-    </div>
-  </section>
-
-
-
-  <section id="Positioning">
-    <h2 class="m-b-1-xs">Positioning</h2>
-    <p class="m-b-1-xs">Positioning is simple with Lens. Just add <code>.relative-xs</code>, <code>.absolute-xs</code>, <code>.fixed-xs</code>, or <code>.static-xs</code> to control the type of positioning on an element. From there, you can apply values based on our spacing units of 0-6 and a half unit of 05. Use <code>.pos-t-n-xs</code>, where t is the side and n is one of our spacing units.</p>
-    <p class="m-b-1-xs"><strong>Note:</strong> There is no demo for position fixed because it will always be fixed to the viewport, not a parent container.</p>
-    <div class="col-container m-b-3-xs">
-      <div class="col col-50-sm">
-        <ul class="list-unstyled">
-          <li><code>.relative-xs</code> = relative</li>
-          <li><code>.absolute-xs</code> = absolute</li>
-          <li><code>.fixed-xs</code> = fixed</li>
-          <li><code>.static-xs</code> = static</li>
-          <li><code>.pos-t-n-xs</code> = top</li>
-          <li><code>.pos-b-n-xs</code> = bottom</li>
-          <li><code>.pos-l-n-xs</code> = left</li>
-          <li><code>.pos-r-n-xs</code> = right</li>
-        </ul>
-      </div>
-    </div>
-
-    <h3 class="m-b-1-xs">Z-Index</h3>
-    <p class="m-b-1-xs">Use a z-index class to assign the stack order of elements. We've created classes for values 1-4, which end up as 100-400 in the property value.</p>
-    <div class="col-container m-b-3-xs">
-      <div class="col col-50-sm">
-        <ul class="list-unstyled">
-          <li><code>.z-1-xs</code> = z-index: 100</li>
-          <li><code>.z-2-xs</code> = z-index: 200</li>
-          <li><code>.z-3-xs</code> = z-index: 300</li>
-          <li><code>.z-4-xs</code> = z-index: 400</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="border-xs p-2-xs m-b-1-xs">
-      <div class="relative-xs pos-t-2-xs pos-l-4-xs border-dark-xs inline-xs">
-        .relative-xs .pos-t-2-xs .pos-l-4-xs
-      </div>
-    </div>
-    <div class="relative-xs border-xs p-3-xs m-b-1-xs">
-      .relative-xs
-      <div class="absolute-xs pos-t-4-xs pos-l-4-xs border-dark-xs">
-        .absolute-xs .pos-t-4-xs .pos-l-4-xs
-      </div>
-    </div>
-    <div class="relative-xs border-xs p-4-xs">
-      <div class="absolute-xs pos-t-1-xs pos-l-2-xs border-dark-xs p-05-xs z-2-xs" style="background: #fff">
-        .absolute-xs .pos-t-1-xs .pos-l-2-xs
-      </div>
-      <div class="absolute-xs pos-t-4-xs pos-l-4-xs border-dark-xs p-05-xs z-1-xs">
-        .absolute-xs .pos-t-4-xs .pos-l-4-xs
-      </div>
-    </div>
-    <div class="guide-code m-b-4-xs">
-  <pre><code class="language-html">&lt;div class="border-xs p-2-xs m-b-1-xs"&gt;
-  &lt;div class="relative-xs pos-t-2-xs pos-l-4-xs border-dark-xs inline-xs"&gt;
-    .relative-xs .pos-t-2-xs .pos-l-4-xs
-  &lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="relative-xs border-xs p-3-xs m-b-1-xs"&gt;
-  .relative-xs
-  &lt;div class="absolute-xs pos-t-4-xs pos-l-4-xs border-dark-xs"&gt;
-    .absolute-xs .pos-t-4-xs .pos-l-4-xs
-  &lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="relative-xs border-xs p-4-xs"&gt;
-  &lt;div class="absolute-xs pos-t-1-xs pos-l-2-xs border-dark-xs p-05-xs z-2-xs" style="background: #fff"&gt;
-    .absolute-xs .pos-t-1-xs .pos-l-2-xs
-  &lt;/div&gt;
-  &lt;div class="absolute-xs pos-t-4-xs pos-l-4-xs border-dark-xs p-05-xs z-1-xs"&gt;
-    .absolute-xs .pos-t-4-xs .pos-l-4-xs
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre>
-    </div>
-  </section>
-
-
-
-  <section id="Alignment">
-    <h2 class="m-b-1-xs">Vertical Alignment</h2>
-    <p class="m-b-3-xs">You can vertically align elements with the <code>.align-top-xs</code>, <code>.align-middle-xs</code>, or <code>.align-bottom-xs</code> classes.</p>
-
-    <div class="m-b-2-xs">
-      <img src="http://placehold.it/50x50" alt="Gratt Spore" height="50px" Width="50px" class="align-top-xs m-r-1 circle">
-      This is our friend Gratt Spore and the <code>img</code> tag has the class <code>align-top-xs</code> on it.
-    </div>
-    <div class="m-b-2-xs">
-      <img src="http://placehold.it/50x50" alt="Gratt Spore" height="50px" Width="50px" class="align-middle-xs m-r-1 circle">
-      This is our friend Gratt Spore and the <code>img</code> tag has the class <code>align-middle-xs</code> on it.
-    </div>
-    <div>
-      <img src="http://placehold.it/50x50" alt="Gratt Spore" height="50px" Width="50px" class="align-bottom-xs m-r-1 circle">
-      This is our friend Gratt Spore and the <code>img</code> tag has the class <code>align-bottom-xs</code> on it.
-    </div>
-
-    <div class="guide-code m-b-4-xs">
-  <pre><code class="language-html">&lt;div class="m-b-2-xs"&gt;
-  &lt;img src="img/gratt-spore.svg" alt="Gratt Spore" height="50px" Width="50px" class="align-top-xs m-r-1"&gt;
+      <div class="guide-example-code">
+        <pre><code class="language-html">&lt;div&gt;
+  &lt;img src="img/gratt-spore.svg" alt="Gratt Spore" height="50px" Width="50px" class="align-top-xs"&gt;
   This is our friend Gratt Spore and the &lt;code&gt;img&lt;/code&gt; tag has the class &lt;code&gt;align-top-xs&lt;/code&gt; on it.
 &lt;/div&gt;
-&lt;div class="m-b-2-xs"&gt;
-  &lt;img src="img/gratt-spore.svg" alt="Gratt Spore" height="50px" Width="50px" class="align-middle-xs m-r-1"&gt;
+&lt;div&gt;
+  &lt;img src="img/gratt-spore.svg" alt="Gratt Spore" height="50px" Width="50px" class="align-middle-xs"&gt;
   This is our friend Gratt Spore and the &lt;code&gt;img&lt;/code&gt; tag has the class &lt;code&gt;align-middle-xs&lt;/code&gt; on it.
 &lt;/div&gt;
 &lt;div&gt;
-  &lt;img src="img/gratt-spore.svg" alt="Gratt Spore" height="50px" Width="50px" class="align-bottom-xs m-r-1"&gt;
+  &lt;img src="img/gratt-spore.svg" alt="Gratt Spore" height="50px" Width="50px" class="align-bottom-xs"&gt;
   This is our friend Gratt Spore and the &lt;code&gt;img&lt;/code&gt; tag has the class &lt;code&gt;align-bottom-xs&lt;/code&gt; on it.
-&lt;/div&gt;</code></pre></</div>
+&lt;/div&gt;</code></pre>
+      </div>
+    </div>
   </section>
 
 
 
-  <section id="Rotation">
-    <h2 class="m-b-1-xs">Rotation</h2>
-    <p class="m-b-3-xs">You can rotate elements by using <code>.rotate-n-xs</code>, where n is 0, 45, 90, 135, 180, 225, 270, or 315. You can also change rotation across breakpoints (using our breakpoint suffixes) to accomodate different layouts.</p>
+  <section id="rotation-section">
+    <div id="rotation" class="inpage-anchor"></div>
+    <h2>Rotation</h2>
+    <p>You can rotate elements by using <code>.rotate-n-xs</code>, where n is 0, 45, 90, 135, 180, 225, 270, or 315. You can also change rotation across breakpoints (using our breakpoint suffixes) to accomodate different layouts.</p>
 
-    <span class="rotate-0-xs border-dark-xs border-none-t-xs inline-block-xs p-2-xs m-r-2-xs" style="height:60px;"></span>
-    <span class="rotate-45-xs border-dark-xs border-none-t-xs inline-block-xs p-2-xs m-r-2-xs" style="height:60px;"></span>
-    <span class="rotate-90-xs border-dark-xs border-none-t-xs inline-block-xs p-2-xs m-r-2-xs" style="height:60px;"></span>
-    <span class="rotate-135-xs border-dark-xs border-none-t-xs inline-block-xs p-2-xs m-r-2-xs" style="height:60px;"></span>
-    <span class="rotate-180-xs border-dark-xs border-none-t-xs inline-block-xs p-2-xs m-r-2-xs" style="height:60px;"></span>
-    <span class="rotate-225-xs border-dark-xs border-none-t-xs inline-block-xs p-2-xs m-r-2-xs" style="height:60px;"></span>
-    <span class="rotate-270-xs border-dark-xs border-none-t-xs inline-block-xs p-2-xs m-r-2-xs" style="height:60px;"></span>
-    <span class="rotate-315-xs border-dark-xs border-none-t-xs inline-block-xs p-2-xs" style="height:60px;"></span>
+    <div class="guide-example">
+      <div class="guide-example-demo">
+        <span class="rotate-0-xs border-dark-xs border-none-t-xs inline-block-xs p-2-xs m-r-4-xs" style="height:60px;"></span>
+        <span class="rotate-45-xs border-dark-xs border-none-t-xs inline-block-xs p-2-xs m-r-4-xs" style="height:60px;"></span>
+        <span class="rotate-90-xs border-dark-xs border-none-t-xs inline-block-xs p-2-xs m-r-4-xs" style="height:60px;"></span>
+        <span class="rotate-135-xs border-dark-xs border-none-t-xs inline-block-xs p-2-xs m-r-4-xs" style="height:60px;"></span>
+        <span class="rotate-180-xs border-dark-xs border-none-t-xs inline-block-xs p-2-xs m-r-4-xs" style="height:60px;"></span>
+        <span class="rotate-225-xs border-dark-xs border-none-t-xs inline-block-xs p-2-xs m-r-4-xs" style="height:60px;"></span>
+        <span class="rotate-270-xs border-dark-xs border-none-t-xs inline-block-xs p-2-xs m-r-4-xs" style="height:60px;"></span>
+        <span class="rotate-315-xs border-dark-xs border-none-t-xs inline-block-xs p-2-xs" style="height:60px;"></span>
+      </div>
+      <div class="guide-example-code">
+<pre><code class="language-html">&lt;span class="rotate-0-xs border-dark-xs border-none-t-xs inline-block-xs p-2-xs m-r-4-xs" style="height:60px;"&gt;&lt;/span&gt;
+&lt;span class="rotate-45-xs border-dark-xs border-none-t-xs inline-block-xs p-2-xs m-r-4-xs" style="height:60px;"&gt;&lt;/span&gt;
+&lt;span class="rotate-90-xs border-dark-xs border-none-t-xs inline-block-xs p-2-xs m-r-4-xs" style="height:60px;"&gt;&lt;/span&gt;
+&lt;span class="rotate-135-xs border-dark-xs border-none-t-xs inline-block-xs p-2-xs m-r-4-xs" style="height:60px;"&gt;&lt;/span&gt;
+&lt;span class="rotate-180-xs border-dark-xs border-none-t-xs inline-block-xs p-2-xs m-r-4-xs" style="height:60px;"&gt;&lt;/span&gt;
+&lt;span class="rotate-225-xs border-dark-xs border-none-t-xs inline-block-xs p-2-xs m-r-4-xs" style="height:60px;"&gt;&lt;/span&gt;
+&lt;span class="rotate-270-xs border-dark-xs border-none-t-xs inline-block-xs p-2-xs m-r-4-xs" style="height:60px;"&gt;&lt;/span&gt;
+&lt;span class="rotate-315-xs border-dark-xs border-none-t-xs inline-block-xs p-2-xs" style="height:60px;"&gt;&lt;/span&gt;</code></pre>
+      </div>
+    </div>
 
-    <div class="guide-code">
-  <pre><code class="language-html">&lt;span class="rotate-0-xs border-dark-xs border-none-t-xs inline-block-xs p-2-xs m-r-2-xs" style="height:60px;"&gt;&lt;/span&gt;
-&lt;span class="rotate-45-xs border-dark-xs border-none-t-xs inline-block-xs p-2-xs m-r-2-xs" style="height:60px;"&gt;&lt;/span&gt;
-&lt;span class="rotate-90-xs border-dark-xs border-none-t-xs inline-block-xs p-2-xs m-r-2-xs" style="height:60px;"&gt;&lt;/span&gt;
-&lt;span class="rotate-135-xs border-dark-xs border-none-t-xs inline-block-xs p-2-xs m-r-2-xs" style="height:60px;"&gt;&lt;/span&gt;
-&lt;span class="rotate-180-xs border-dark-xs border-none-t-xs inline-block-xs p-2-xs m-r-2-xs" style="height:60px;"&gt;&lt;/span&gt;
-&lt;span class="rotate-225-xs border-dark-xs border-none-t-xs inline-block-xs p-2-xs m-r-2-xs" style="height:60px;"&gt;&lt;/span&gt;
-&lt;span class="rotate-270-xs border-dark-xs border-none-t-xs inline-block-xs p-2-xs m-r-2-xs" style="height:60px;"&gt;&lt;/span&gt;
-&lt;span class="rotate-315-xs border-dark-xs border-none-t-xs inline-block-xs p-2-xs" style="height:60px;"&gt;&lt;/span&gt;</code></pre></</div>
   </section>
-
-  <section id="Functions">
-    <h2 class="m-b-1-xs">Functions</h2>
-    <h3 class="m-b-05-xs">Spacing</h3>
-    <p class="m-b-1-xs">Used in our <a href="layout.html">layout</a> utility classes.</p>
-    <p class="bold">Spacing Units</p>
-    <div class="guide-code">
-    <pre class="m-tb-05-xs"><code class="language-css">.custom-element
-      margin: spacing(1)
-      padding: spacing(2)
-    </code></pre>
-      <p class="m-b-3-xs"><code>
-        spacing(0)<br />
-        spacing(0.5)<br />
-        spacing(1)<br />
-        spacing(2)<br />
-        spacing(3)<br />
-        spacing(4)<br />
-        spacing(5)<br />
-        spacing(6)
-      </code></p>
-  </section>
-
-  <section id="Mixins">
-    <h2 class="m-b-1-xs">Mixins</h2>
-    <p class="bold">Clearfix</p>
-    <div class="guide-code">
-  <pre class="m-tb-05-xs"><code class="language-css">.custom-selector
-    +clearfix
-  </code></pre>
-    <p class="m-b-3-xs"><code>
-      +clearfix
-    </code></p>
-
-    <p class="bold">Positioning</p>
-    <div class="guide-code">
-  <pre class="m-tb-05-xs"><code class="language-css">.custom-selector
-    +absolute(top 0 left 10px)
-  </code></pre>
-    <p class="m-b-3-xs"><code>
-      +absolute($direction $amount)
-      +relative($direction $amount)
-      +fixed($direction $amount)
-    </code></p>
-
-    <p class="bold">Width and Height</p>
-    <div class="guide-code">
-  <pre class="m-tb-05-xs"><code class="language-css">.custom-selector
-    +width-height(100px, 200px)
-  </code></pre>
-    <p><code>
-      +width-height($width, $height)
-    </code></p>
-    
-  </section>
-
 
 </lens-main>
 """
