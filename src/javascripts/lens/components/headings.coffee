@@ -18,8 +18,57 @@ template = """
 <lens-main>
 
   <section id="Headings">
-    <h2>Headings</h2>
     <p>Feel free to use whatever heading element you need for the hierarchy of what you are working on. But to style them to match our type ramp, you'll need to apply one of the classes from this page.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Class</th>
+          <th>PX Value</th>
+          <th>Actual Size</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>.subheading</code></td>
+          <td>21px</td>
+          <td><span class="subheading">Data analytics everybody loves.</span></td>
+        </tr>
+        <tr>
+          <td><code>.title-1</code></td>
+          <td>18px</td>
+          <td><span class="title-1">Data analytics everybody loves.</span></td>
+        </tr>
+        <tr>
+          <td><code>.title-2</code></td>
+          <td>15px</td>
+          <td><span class="title-2">Data analytics everybody loves.</span></td>
+        </tr>
+        <tr>
+          <td><code>.headline</code></td>
+          <td>14px</td>
+          <td><span class="headline">Data analytics everybody loves.</span></td>
+        </tr>
+        <tr>
+          <td><code>.display-1</code></td>
+          <td>13px</td>
+          <td><span class="display-1">Data analytics everybody loves.</span></td>
+        </tr>
+        <tr>
+          <td><code>.display-2</code></td>
+          <td>12px</td>
+          <td><span class="display-2">Data analytics everybody loves.</span></td>
+        </tr>
+        <tr>
+          <td><code>.display-3</code></td>
+          <td>11px</td>
+          <td><span class="display-3">Data analytics everybody loves.</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+
+
 
     <h3>Subheading</h3>
     <p>To use our subheading style on an element, use the <code>.subheading</code> class on the element.</p>
