@@ -26,7 +26,7 @@ m.directive "lensMain", ->
 template = """
 <main class="guide-main" role="main" id="guideMain">
   <div class="guide-header border-b-xs bg-gray-1">
-    <h1>{{ title }}</h1>
+    <h1 class="headline">{{ title }}</h1>
   </div>
 
   <div class="guide-content">
