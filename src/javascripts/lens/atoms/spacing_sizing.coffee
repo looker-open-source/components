@@ -23,12 +23,6 @@ template = """
      of the page by default. If you set to "false" then these anchors
      work but the nav between pages doesn't. blarg.
 -->
-  <ul>
-    <li><a href="#spacing-units">Spacing Units</a></li>
-    <li><a href="#margin-padding">Margin and Padding</a></li>
-    <li><a href="#width-height">Width and Height</a></li>
-    <li><a href="#overflow">Overflow</a></li>
-  </ul>
 
   <section id="spacing-units-section">
     <div id="spacing-units" class="inpage-anchor"></div>

@@ -9,6 +9,8 @@
     @if $type == auto
       %w-#{$type}-#{$suffix}
         width: #{$type}
+      %h-#{$type}-#{$suffix}
+        height: #{$type}
     @else if $type == full
       %w-#{$type}-#{$suffix}
         width: 100%
