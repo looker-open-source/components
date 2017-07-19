@@ -25,13 +25,13 @@ m.directive "lensMain", ->
 
 template = """
 <main class="guide-main" role="main" id="guideMain">
-  <div class="guide-header border-b-xs bg-gray-1">
-    <h1 class="headline">{{ title }}</h1>
-  </div>
 
   <div class="guide-content">
     <div class="col-container">
       <div class="col col-80-lg">
+        <div class="guide-header border-b-xs bg-gray-1">
+          <h1 class="headline">{{ title }}</h1>
+        </div>
         <ng-transclude></ng-transclude>
       </div>
       <div class="col col-20-lg">

@@ -39,6 +39,16 @@ m.directive "subnav", ->
         i++
       return
 
+    $(document).ready ->
+      # Handling clicks and states of subnav link-single
+      $subnav_link = $('.guide-subnav-anchor')
+
+      $subnav_link.on 'click', ->
+        $subnav_link.removeClass('active')
+        $(this).addClass('active')
+
+
+
 template = """
 <ul id="subnav" class="guide-subnav"></ul>
 """

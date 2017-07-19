@@ -1,3 +1,5 @@
+@import ../lens/functions/all
+
 body
   @extend %bg-white
 
@@ -186,6 +188,35 @@ body
 
 
   // =========================================
+  // Page Subnav
+  // =========================================
+  &-subnav
+    @extend %m-r-0-xs, %m-t-17-xs, %m-l-16-xs
+    @extend %p-lr-0-xs, %p-t-8-xs
+    @extend %fixed-xs
+    width: spacing(23)
+    border-top: solid spacing(3) gray-color(gray-2)
+    list-style: none
+    &-item
+      @extend %text-n2-xs
+      line-height: 2.2
+    &-anchor
+      @extend %color-gray-5
+      @extend %w-full-xs
+      @extend %block-xs
+      @extend %p-l-6-xs
+      text-decoration: none
+      &:hover,
+      &:active,
+      &:focus,
+        @extend %bg-gray-1
+      &.active
+        @extend %bold
+        @extend %color-gray-7
+
+
+
+  // =========================================
   // Guide Main Layout
   // =========================================
   &-main,
@@ -222,7 +253,6 @@ body
     &-code
       pre
         @extend %m-0-xs
-
 
   // =========================================
   // Color Lists
