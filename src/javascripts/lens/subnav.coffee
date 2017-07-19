@@ -14,9 +14,9 @@ m.directive "subnav", ->
   template: template
   link: (scope, $el, attrs, ctrl) ->
 
+    sections = $('section').children('div:first-child')
     $(document).ready ->
       subnav = $('#subnav')
-      sections = $('section').children('div:first-child')
 
       # Title Case function from https://www.sitepoint.com/community/t/capitalizing-first-letter-of-each-word-in-string/209644/2
       titleCase = (str) ->
@@ -46,6 +46,9 @@ m.directive "subnav", ->
       $subnav_link.on 'click', ->
         $subnav_link.removeClass('active')
         $(this).addClass('active')
+
+      if sections.length == 0
+        $('.guide-subnav').hide()
 
 
 

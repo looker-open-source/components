@@ -6309,10 +6309,11 @@
 	    scope: {},
 	    template: template,
 	    link: function(scope, $el, attrs, ctrl) {
+	      var sections;
+	      sections = $('section').children('div:first-child');
 	      $(document).ready(function() {
-	        var i, section_ids, section_ids_no_dash, section_titles, sections, subnav, titleCase;
+	        var i, section_ids, section_ids_no_dash, section_titles, subnav, titleCase;
 	        subnav = $('#subnav');
-	        sections = $('section').children('div:first-child');
 	        titleCase = function(str) {
 	          var i, letters, words;
 	          words = str.toLowerCase().split(' ');
@@ -6337,10 +6338,13 @@
 	      return $(document).ready(function() {
 	        var $subnav_link;
 	        $subnav_link = $('.guide-subnav-anchor');
-	        return $subnav_link.on('click', function() {
+	        $subnav_link.on('click', function() {
 	          $subnav_link.removeClass('active');
 	          return $(this).addClass('active');
 	        });
+	        if (sections.length === 0) {
+	          return $('.guide-subnav').hide();
+	        }
 	      });
 	    }
 	  };
