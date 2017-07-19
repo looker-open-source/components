@@ -72,6 +72,8 @@
 
 	__webpack_require__(7);
 
+	__webpack_require__(47);
+
 	__webpack_require__(8);
 
 	__webpack_require__(9);
@@ -88,7 +90,7 @@
 
 	__webpack_require__(28);
 
-	module.exports = m = angular.module("Lens", ["ui.router", "lens.index", "lens.login", "lens.lens_main", "lens.main_nav", "lens.page_header", "lens.page_footer", "lens.getting_started", "lens.installation", "lens.release_notes", "lens.guidelines", "lens.components", "lens.atoms"]);
+	module.exports = m = angular.module("Lens", ["ui.router", "lens.index", "lens.login", "lens.lens_main", "lens.main_nav", "lens.page_header", "lens.page_footer", "lens.subnav", "lens.getting_started", "lens.installation", "lens.release_notes", "lens.guidelines", "lens.components", "lens.atoms"]);
 
 	m.config(function($locationProvider, $stateProvider) {
 	  var blockGridState, bodyCopyState, bordersState, boxPropertiesState, buttonsState, colorsState, effectsState, flexboxState, formsState, gettingStartedState, gridState, headingsState, iconsState, indexState, installationState, layoutState, loginState, markupState, modalsState, releaseNotesState, responsiveState, tablesState, typographyState;
@@ -4976,7 +4978,7 @@
 	  };
 	});
 
-	template = "<main class=\"guide-main\" role=\"main\" id=\"guideMain\">\n  <div class=\"guide-header border-b-xs bg-gray-1\">\n    <h1 class=\"headline\">{{ title }}</h1>\n  </div>\n\n  <div class=\"guide-content\">\n    <div class=\"col-container\">\n      <div class=\"col col-80-lg\">\n        <ng-transclude></ng-transclude>\n      </div>\n      <div class=\"col col-20-lg\">\n        <ul id=\"subnav\" class=\"guide-subnav\"></ul>\n      </div>\n    </div>\n  </div>\n\n</main>\n\n<script>\n  $(document).ready(function() {\n    var subnav = $(\"#subnav\");\n    var sections = $(\"section\").children('div:first-child');\n\n    // Looping through section ids to make titles to use for subnav\n    for (var i = 0; i < sections.length; i++) {\n      section_ids = sections[i].id;\n      section_ids_no_dash = section_ids.replace(/-/g, ' ');\n      section_titles = titleCase(section_ids_no_dash);\n      subnav.append('<li><a href=\"#' + section_ids + '\">' + section_titles + '</a></li>');\n    }\n\n    // Title Case function from https://www.sitepoint.com/community/t/capitalizing-first-letter-of-each-word-in-string/209644/2\n    function titleCase(str) {\n      words = str.toLowerCase().split(' ');\n\n      for(var i = 0; i < words.length; i++) {\n        var letters = words[i].split('');\n        letters[0] = letters[0].toUpperCase();\n        words[i] = letters.join('');\n      }\n      return words.join(' ');\n    }\n  });\n</script>";
+	template = "<main class=\"guide-main\" role=\"main\" id=\"guideMain\">\n  <div class=\"guide-header border-b-xs bg-gray-1\">\n    <h1 class=\"headline\">{{ title }}</h1>\n  </div>\n\n  <div class=\"guide-content\">\n    <div class=\"col-container\">\n      <div class=\"col col-80-lg\">\n        <ng-transclude></ng-transclude>\n      </div>\n      <div class=\"col col-20-lg\">\n        <subnav></subnav>\n      </div>\n    </div>\n  </div>\n\n</main>";
 
 
 /***/ }),
@@ -6292,6 +6294,57 @@
 	});
 
 	template = "<lens-main>\n\n  <section id=\"Headings\">\n    <p>When styling page headings, use the appropriate semantic tags, such as\n      <code>&lt;h1&gt;</code> and <code>&lt;h2&gt;</code>. You'll also need to include\n      the appropriate class to give the visual styling.\n    </p>\n    <p class=\"todo\"> Write some nice examples for building a page.</p>\n\n    <table>\n      <thead>\n        <tr>\n          <th>Class</th>\n          <th style=\"width: 20%\">Style</th>\n          <th>Actual Size</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>.subheading</code></td>\n          <td>Regular 19px/27px</td>\n          <td><span class=\"subheading overflow-hidden-xs\">Data analytics everybody loves.</span></td>\n        </tr>\n        <tr>\n          <td><code>.title-1</code></td>\n          <td>Bold 19px/27px</td>\n          <td><span class=\"title-1\">Data analytics everybody loves.</span></td>\n        </tr>\n        <tr>\n          <td><code>.title-2</code></td>\n          <td>Bold 22px/30px</td>\n          <td><span class=\"title-2\">Data analytics everybody loves.</span></td>\n        </tr>\n        <tr>\n          <td><code>.headline</code></td>\n          <td>Regular 28px/36px</td>\n          <td><span class=\"headline\">Data analytics everybody loves.</span></td>\n        </tr>\n        <tr>\n          <td><code>.display-1</code></td>\n          <td>Regular 38px/46px</td>\n          <td><span class=\"display-1\">Data analytics everybody loves.</span></td>\n        </tr>\n        <tr>\n          <td><code>.display-2</code></td>\n          <td>Light 52px/60px</td>\n          <td><span class=\"display-2\">Data analytics everybody loves.</span></td>\n        </tr>\n        <tr>\n          <td><code>.display-3</code></td>\n          <td>Light 62px/72px</td>\n          <td><span class=\"display-3\">Data analytics everybody loves.</span></td>\n        </tr>\n      </tbody>\n    </table>\n\n  </section>\n\n</lens-main>";
+
+
+/***/ }),
+/* 47 */
+/***/ (function(module, exports) {
+
+	var m, template;
+
+	m = angular.module("lens.subnav", []);
+
+	m.controller("SubnavController", function($scope) {
+	  return this;
+	});
+
+	m.directive("subnav", function() {
+	  return {
+	    controller: "SubnavController",
+	    restrict: "E",
+	    scope: {},
+	    template: template,
+	    link: function(scope, $el, attrs, ctrl) {
+	      return $(document).ready(function() {
+	        var i, section_ids, section_ids_no_dash, section_titles, sections, subnav, titleCase;
+	        subnav = $('#subnav');
+	        sections = $('section').children('div:first-child');
+	        titleCase = function(str) {
+	          var i, letters, words;
+	          words = str.toLowerCase().split(' ');
+	          i = 0;
+	          while (i < words.length) {
+	            letters = words[i].split('');
+	            letters[0] = letters[0].toUpperCase();
+	            words[i] = letters.join('');
+	            i++;
+	          }
+	          return words.join(' ');
+	        };
+	        i = 0;
+	        while (i < sections.length) {
+	          section_ids = sections[i].id;
+	          section_ids_no_dash = section_ids.replace(/-/g, ' ');
+	          section_titles = titleCase(section_ids_no_dash);
+	          subnav.append('<li><a href="#' + section_ids + '">' + section_titles + '</a></li>');
+	          i++;
+	        }
+	      });
+	    }
+	  };
+	});
+
+	template = "<ul id=\"subnav\" class=\"guide-subnav\"></ul>";
 
 
 /***/ })

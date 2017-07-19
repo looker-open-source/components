@@ -3,6 +3,7 @@ require "./lens_main.coffee"
 require "./main_nav.coffee"
 require "./page_header.coffee"
 require "./page_footer.coffee"
+require "./subnav.coffee"
 
 require "./login.coffee"
 require "./index.coffee"
@@ -22,6 +23,7 @@ module.exports = m = angular.module "Lens", [
   "lens.main_nav"
   "lens.page_header"
   "lens.page_footer"
+  "lens.subnav"
 
   "lens.getting_started"
   "lens.installation"
