@@ -13,19 +13,17 @@ var uiColors = function(elementId, $elementId, guideClass) {
 
     // Create LI and add class name to it
     var li = document.createElement("li");
-    li.className = 'guide-color-item float-l-xs m-b-3-xs col-100-sm col-33-lg col-20-xl';
+    li.className = 'guide-color-item col-100-sm col-33-lg col-20-xl';
 
     // Create span to hold color
     var colorSpan = document.createElement('span');
-    colorSpan.className = 'p-2-xs m-lr-1-xs block-xs round bg-' + colorClass;
+    colorSpan.className = 'bg-' + colorClass;
 
     // Create code element to hold var function and hex
     var nameSpan = document.createElement('span');
-    nameSpan.className = 'block-xs text-6-xs';
 
     // Create em to hold hex value
     var hexSpan = document.createElement('em');
-    hexSpan.className = 'block-xs text-6-xs color-text-color';
 
     // Create var function for nameSpan
     var colorName = document.createTextNode(colorClass);

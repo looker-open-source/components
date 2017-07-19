@@ -35,7 +35,7 @@ m.directive "subnav", ->
         section_ids = sections[i].id
         section_ids_no_dash = section_ids.replace(/-/g, ' ')
         section_titles = titleCase(section_ids_no_dash)
-        subnav.append '<li><a href="#' + section_ids + '">' + section_titles + '</a></li>'
+        subnav.append '<li class="guide-subnav-item"><a class="guide-subnav-anchor" href="#' + section_ids + '">' + section_titles + '</a></li>'
         i++
       return
 

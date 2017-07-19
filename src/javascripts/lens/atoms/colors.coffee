@@ -48,7 +48,7 @@ template = """
       </tbody>
     </table>
 
-    <ul class="list-unstyled guide-color guide-colors-brand overflow-hidden-xs"></ul><!-- List items built by JS -->
+    <ul class="guide-color guide-colors-brand"></ul><!-- List items built by JS -->
   </section>
 
 
@@ -76,7 +76,7 @@ template = """
       </tbody>
     </table>
 
-    <ul class="list-unstyled guide-color guide-colors-ui overflow-hidden-xs"></ul><!-- List items built by JS -->
+    <ul class="guide-color guide-colors-ui"></ul><!-- List items built by JS -->
   </section>
 
 
@@ -106,60 +106,7 @@ template = """
       </tbody>
     </table>
 
-    <ul class="list-unstyled guide-color guide-colors-gray overflow-hidden-xs"></ul><!-- List items built by JS -->
-  </section>
-
-
-  <section id="Functions">
-    <h2>Functions</h2>
-    <h3>Colors</h3>
-    <p>Brand Colors</p>
-    <div class="guide-code">
-  <pre><code class="language-css">.custom-element
-    background-color: brand-color(purple)
-  </code></pre>
-    <p><code>
-      brand-color(purple)<br />
-      brand-color(gray)<br />
-      brand-color(blue)
-    </code></p>
-
-    <p>Gray Colors</p>
-    <div class="guide-code">
-  <pre><code class="language-css">.custom-element
-    fill: gray-color(gray-dark)
-  </code></pre>
-    <p><code>
-      gray-color(white)<br />
-      gray-color(gray-1)<br />
-      gray-color(gray-2)<br />
-      gray-color(gray-3)<br />
-      gray-color(gray-4)<br />
-      gray-color(gray-5)<br />
-      gray-color(gray-6)<br />
-      gray-color(gray-7)
-    </code></p>
-
-    <p class="bold">UI Colors</p>
-    <div class="guide-code">
-  <pre><code class="language-css">.custom-element
-    background-color: ui-color(blue)
-  </code></pre>
-    <p><code>
-      ui-color(purple)<br />
-      ui-color(purple-light)<br />
-      ui-color(purple-dark)<br />
-      ui-color(red)<br />
-      ui-color(red-light)<br />
-      ui-color(red-dark)<br />
-      ui-color(green)<br />
-      ui-color(teal)<br />
-      ui-color(teal-dark)<br />
-      ui-color(yellow)<br />
-      ui-color(orange)<br />
-      ui-color(orange-dark)
-    </code></p>
-
+    <ul class="guide-color guide-colors-gray"></ul><!-- List items built by JS -->
   </section>
 
 </lens-main>

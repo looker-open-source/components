@@ -75,6 +75,7 @@ body
         left: 80px
         top: 24px
 
+
   // =========================================
   // Guide Banner
   // =========================================
@@ -106,6 +107,7 @@ body
       content: $lens-version
     &:hover
       color: gray-color(white)
+
 
   // =========================================
   // Guide Navigation
@@ -182,6 +184,7 @@ body
           content: ""
           width: 7px
 
+
   // =========================================
   // Guide Main Layout
   // =========================================
@@ -220,16 +223,32 @@ body
       pre
         @extend %m-0-xs
 
+
   // =========================================
   // Color Lists
   // =========================================
   &-color
-    margin: 0 -1rem
+    @extend %p-lr-0-xs
+    margin: 20px -12px 0 -12px
+    list-style: none
+    overflow: hidden
     &-item
+      @extend %float-l-xs
+      @extend %m-b-12-xs
       > span
+        @extend %p-lr-12-xs, %p-tb-11-xs
+        @extend %m-lr-8-xs
+        @extend %block-xs
+        @extend %round
         color: rgba(#fff, 0.9)
         font-family: Monaco, monospace
+        > span
+          @extend %block-xs
+          @extend %text-n1-xs
+          line-height: 1
         em
+          @extend %block-xs
+          @extend %text-n1-xs
           color: rgba(#fff, 0.5)
           font-family: Helvetica, Arial, sans-serif
         &.bg-gray,
@@ -237,12 +256,21 @@ body
         &.bg-gray-3,
         &.bg-gray-1,
         &.bg-white
-          color: gray-color(gray-6)
+          @extend %color-gray-6
           em
             color: lighten(gray-color(gray-6), 25%)
         &.bg-white
           border: solid 1px gray-color(gray-1)
           border-bottom: 0
+      @each $color, $brand-color in $brand-colors
+        .brand-bg-#{$color}
+          @extend %brand-bg-#{$color}
+      @each $color, $ui-color in $ui-colors
+        .bg-#{$color}
+          @extend %bg-#{$color}
+      @each $color, $gray-color in $gray-colors
+        .bg-#{$color}
+          @extend %bg-#{$color}
       .bg-yellow
         color: darken(#ffd466, 50%)
         em
@@ -253,9 +281,10 @@ body
           color: text-color(dark)
         em
           color: text-color(light)
-  &-colors-gray,
-  &-colors-text
+  &-colors-gray
     .guide-color-item
+      span
+        border-radius: 0
       span:first-child
         border-radius: $border-radius $border-radius 0 0
       span:last-child
