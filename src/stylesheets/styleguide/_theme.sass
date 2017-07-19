@@ -139,6 +139,7 @@ body
       list-style: none
     &-list-child
       @extend %hide-xs
+      @extend %m-b-10-xs
     &-link
       @extend %block-xs
       @extend %relative-xs
@@ -223,10 +224,10 @@ body
   &-contentinfo
     @extend %m-l-24-xs, %p-lr-15-xs
   &-main
-    @extend %p-t-12-xs, %m-b-15-xs
+    @extend %p-t-16-xs, %m-b-16-xs
     min-height: calc(100vh - 66px)
   &-header
-    @extend %p-t-15-xs
+    @extend %p-t-12-xs
   &-content
     section
       @extend %m-b-15-xs
@@ -335,6 +336,10 @@ body
     display: inline-block
     padding: 4px 8px
     border-radius: 2px
+
+.sample-text
+  &::before
+    content: "Data analytics everybody loves."
 
 // =========================================
 // Modal Docs

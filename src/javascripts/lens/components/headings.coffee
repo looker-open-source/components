@@ -16,61 +16,64 @@ m.directive "headings", ->
 
 template = """
 <lens-main>
-
-  <section id="Headings">
-    <p>When styling page headings, use the appropriate semantic tags, such as
-      <code>&lt;h1&gt;</code> and <code>&lt;h2&gt;</code>. You'll also need to include
-      the appropriate class to give the visual styling.
-    </p>
-    <p class="todo"> Write some nice examples for building a page.</p>
-
-    <table>
+  <section id="headings-section">
+    <p class="todo">Add some rules about how to use...</p>
+    <table class="table-content">
       <thead>
         <tr>
           <th>Class</th>
-          <th style="width: 20%">Style</th>
-          <th>Actual Size</th>
+          <th>Tag</th>
+          <th>Example</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><code>.subheading</code></td>
-          <td>Regular 19px/27px</td>
-          <td><span class="subheading overflow-hidden-xs">Data analytics everybody loves.</span></td>
-        </tr>
-        <tr>
-          <td><code>.title-1</code></td>
-          <td>Bold 19px/27px</td>
-          <td><span class="title-1">Data analytics everybody loves.</span></td>
-        </tr>
-        <tr>
-          <td><code>.title-2</code></td>
-          <td>Bold 22px/30px</td>
-          <td><span class="title-2">Data analytics everybody loves.</span></td>
-        </tr>
-        <tr>
-          <td><code>.headline</code></td>
-          <td>Regular 28px/36px</td>
-          <td><span class="headline">Data analytics everybody loves.</span></td>
-        </tr>
-        <tr>
-          <td><code>.display-1</code></td>
-          <td>Regular 38px/46px</td>
-          <td><span class="display-1">Data analytics everybody loves.</span></td>
+          <td><code>.display-3</code></td>
+          <td></td>
+          <td><h1 class="display-3"><span class="sample-text"></span></h1></td>
         </tr>
         <tr>
           <td><code>.display-2</code></td>
-          <td>Light 52px/60px</td>
-          <td><span class="display-2">Data analytics everybody loves.</span></td>
+          <td></td>
+          <td><h1 class="display-2"><span class="sample-text"></span></h1></td>
         </tr>
         <tr>
-          <td><code>.display-3</code></td>
-          <td>Light 62px/72px</td>
-          <td><span class="display-3">Data analytics everybody loves.</span></td>
+          <td><code>.display-1</code></td>
+          <td></td>
+          <td><h1 class="display-1"><span class="sample-text"></span></h1></td>
+        </tr>
+        <tr>
+          <td><code>.headline</code></td>
+          <td><code>&lt;h1&gt;</code></td>
+          <td><h1><span class="sample-text"></span></h1></td>
+        </tr>
+        <tr>
+          <td><code>.title-2</code></td>
+          <td><code>&lt;h2&gt;</code></td>
+          <td><h2><span class="sample-text"></span></h2></td>
+        </tr>
+        <tr>
+          <td><code>.title-1</code></td>
+          <td><code>&lt;h3&gt;</code></td>
+          <td><h3><span class="sample-text"></span></h3></td>
+        </tr>
+        <tr>
+          <td><code>.subheading</code></td>
+          <td><code>&lt;h4&gt;</code></td>
+          <td><h4><span class="sample-text"></span></h4></td>
+        </tr>
+        <tr>
+          <td><code></code></td>
+          <td><code>&lt;h5&gt;</code></td>
+          <td><h5><span class="sample-text"></span></h5></td>
+        </tr>
+        <tr>
+          <td><code></code></td>
+          <td><code>&lt;h6&gt;</code></td>
+          <td><h6><span class="sample-text"></span></h6></td>
         </tr>
       </tbody>
     </table>
-
   </section>
 
 </lens-main>
