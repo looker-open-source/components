@@ -18,7 +18,7 @@ template = """
 <lens-main>
 
   <section id="typefaces-section">
-    <div id="typefaces" class="inpage-anchor"></div>
+    <div id="typefaces" title="Typefaces" class="inpage-anchor"></div>
     <h2>Typefaces</h2>
     <table class="table-content">
       <thead>
@@ -30,21 +30,21 @@ template = """
       </thead>
       <tbody>
         <tr>
-          <td><code>$brand-font</code></td>
-          <td>Open Sans, sans-serif</td>
+          <td><code>%brand-font</code></td>
+          <td>'Open Sans', Helvetica, Arial, sans-serif</td>
           <td>This is the Lens default</td>
         </tr>
         <tr>
-          <td><code>$code-font</code></td>
-          <td><span class="todo"></span></td>
-          <td>Use when displaying LookML, SQL, etc.</td>
+          <td><code>%code-font</code></td>
+          <td>'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace</td>
+          <td>Used in the ACE editor. Use when displaying LookML, SQL, etc.</td>
         </tr>
       </tbody>
     </table>
   </section>
 
   <section id="sizes-section">
-    <div id="sizes" class="inpage-anchor"></div>
+    <div id="sizes" title="Sizes" class="inpage-anchor"></div>
     <h2>Type Scale</h2>
     <p>Type size is specified as both the text size and the line height.</p>
     <table class="table-content">
@@ -107,6 +107,7 @@ template = """
 
 
   <section id="weights-section">
+    <div id="weights" title="Weights" class="inpage-anchor"></div>
     <h2>Weights</h2>
     <table class="table-content">
       <thead>
@@ -142,7 +143,7 @@ template = """
   </section>
 
   <section id="emphasis-section">
-    <div id="emphasis" class="inpage-anchor"></div>
+    <div id="emphasis" title="Emphasis" class="inpage-anchor"></div>
     <h2>Emphasis</h2>
     <table class="table-content">
       <thead>
@@ -178,7 +179,7 @@ template = """
   </section>
 
   <section id="alignment-section">
-    <div id="alignment" class="inpage-anchor"></div>
+    <div id="alignment" title="Alignment" class="inpage-anchor"></div>
     <h2>Alignment</h2>
     <table class="table-content">
       <thead>

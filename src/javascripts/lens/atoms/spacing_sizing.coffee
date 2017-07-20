@@ -16,41 +16,74 @@ m.directive "spacingSizing", ->
 
 template = """
 <lens-main>
-
-<!-- these relative anchor links only work in-page. Need to
-     figure out how to deal with the autoScroll = true on
-     the <ui-view> element. That allows the nav to take you to the top
-     of the page by default. If you set to "false" then these anchors
-     work but the nav between pages doesn't. blarg.
--->
-
   <section id="spacing-units-section">
-    <div id="spacing-units" class="inpage-anchor"></div>
+    <div id="spacing-units" title="Spacing Units" class="inpage-anchor"></div>
     <h2>Spacing Units</h2>
-    <p>Spatial units are used for margin, padding, and positioning.
-       These comes in values from 0-4 and a half space unit of 05. Each class
-       uses a shorthand of its name to indicate properties and direction.</p>
+    <p>Spacing units are used for margin, padding, and <a ui-sref="layout">positioning</a>.
+       These comes in values from 0-27. </p>
+     <p class="todo"> Add theory from Jeremy here on the scale ramp.</p>
     <div class="col-container">
       <div class="col col-30-lg">
-        <p><strong>Units</strong></p>
         <ul class="list-unstyled">
           <li><code>0</code> = 0px</li>
-          <li><code>05</code> = 5px</li>
-          <li><code>1</code> = 10px</li>
-          <li><code>2</code> = 20px</li>
-          <li><code>3</code> = 25px</li>
-          <li><code>4</code> = 50px</li>
+          <li><code>1</code> = 1px</li>
+          <li><code>2</code> = 2px</li>
+          <li><code>3</code> = 3px</li>
+          <li><code>4</code> = 4px</li>
+          <li><code>5</code> = 5px</li>
+          <li><code>6</code> = 6px</li>
+          <li><code>7</code> = 7px</li>
+          <li><code>8</code> = 12px</li>
+          <li><code>9</code> = 14px</li>
         </ul>
       </div>
       <div class="col col-30-lg">
-        <p><strong>Properties</strong></p>
+        <ul>
+          <li><code>10</code> = 16px</li>
+          <li><code>11</code> = 20px</li>
+          <li><code>12</code> = 24px</li>
+          <li><code>13</code> = 27px</li>
+          <li><code>14</code> = 30px</li>
+          <li><code>15</code> = 36px</li>
+          <li><code>16</code> = 46px</li>
+          <li><code>17</code> = 60px</li>
+          <li><code>18</code> = 72px</li>
+          <li><code>19</code> = 81px</li>
+        </ul>
+      </div>
+      <div class="col col-30-lg">
+        <ul>
+          <li><code>20</code> = 96px</li>
+          <li><code>21</code> = 121px</li>
+          <li><code>22</code> = 144px</li>
+          <li><code>23</code> = 182px</li>
+          <li><code>24</code> = 216px</li>
+          <li><code>25</code> = 273px</li>
+          <li><code>26</code> = 324px</li>
+          <li><code>27</code> = 410px</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+
+
+  <section id="margin-padding-section">
+    <div id="margin-padding" title="Margin &amp; Padding" class="inpage-anchor"></div>
+    <h2>Margin &amp; Padding</h2>
+    <p>To specify margin and padding, Lens uses a shorthand of the property name,
+       side, spacing unit value and <a ui-sref="responsive">breakpoint</a> in the following format:
+       <code>%property-side-unit-breakpoint</code>.</p>
+    <div class="col-container">
+      <div class="col col-30-lg">
+        <h4>Properties</h4>
         <ul class="list-unstyled">
           <li><code>m</code> = margin</li>
           <li><code>p</code> = padding</li>
         </ul>
       </div>
       <div class="col col-30-lg">
-        <p><strong>Sides</strong></p>
+        <h4>Sides</h4>
         <ul class="list-unstyled">
           <li><code>t</code> = top</li>
           <li><code>b</code> = bottom</li>
@@ -61,121 +94,116 @@ template = """
         </ul>
       </div>
     </div>
-  </section>
 
+    <h3>Margin</h3>
+    <table class="table-content">
+      <thead>
+        <tr>
+          <th><code>@extend</code></th>
+          <th>Property</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>%m-$n-xs</code></td>
+          <td>margin: $n</td>
+          <td>Equal margin on all sides of the element.</td>
+        </tr>
+        <tr>
+          <td><code>%m-t-$n-xs</code></td>
+          <td>margin-top: $n</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>%m-b-$n-xs</code></td>
+          <td>margin-bottom: $n</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>%m-l-$n-xs</code></td>
+          <td>margin-left: $n</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>%m-r-$n-xs</code></td>
+          <td>margin-right: $n</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>%m-tb-$n-xs</code></td>
+          <td>margin-top: $n<br/>margin-bottom: $n</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>%m-lr-$n-xs</code></td>
+          <td>margin-left: $n<br/>margin-right: $n</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>%m-auto-xs</code></td>
+          <td>margin-left: auto<br/>margin-right: auto</td>
+          <td>horizontal center</td>
+        </tr>
+      </tbody>
+    </table>
 
-
-  <section id="margin-padding-section">
-    <div id="margin-padding" class="inpage-anchor"></div>
-    <h2>Margin &amp; Padding</h2>
-    <h3>Uniform Spacing</h3>
-    <p>These classes are used to apply equal spacing around the
-       entire element.</p>
-    <div class="col-container">
-      <div class="col col-30-md">
-        <p><strong>Margin</strong></p>
-        <ul class="list-unstyled">
-          <li><code>.m-0-xs</code></li>
-          <li><code>.m-05-xs</code></li>
-          <li><code>.m-1-xs</code></li>
-          <li><code>.m-2-xs</code></li>
-          <li><code>.m-3-xs</code></li>
-          <li><code>.m-4-xs</code></li>
-        </ul>
-      </div>
-      <div class="col col-30-md">
-        <p><strong>Padding</strong></p>
-        <ul class="list-unstyled">
-          <li><code>.p-0-xs</code></li>
-          <li><code>.p-05-xs</code></li>
-          <li><code>.p-1-xs</code></li>
-          <li><code>.p-2-xs</code></li>
-          <li><code>.p-3-xs</code></li>
-          <li><code>.p-4-xs</code></li>
-        </ul>
-      </div>
-    </div>
-    <div class="guide-example">
-      <div class="guide-example-demo col-container">
-        <div class="border-dark-xs float-l-xs inline-block-xs m-05-xs">m-05-xs</div>
-        <div class="border-dark-xs float-l-xs inline-block-xs m-1-xs">m-1-xs</div>
-        <div class="border-dark-xs float-l-xs inline-block-xs m-2-xs">m-2-xs</div>
-        <div class="border-dark-xs float-l-xs inline-block-xs m-3-xs">m-3-xs</div>
-        <div class="border-dark-xs float-l-xs inline-block-xs p-05-xs">p-05-xs</div>
-        <div class="border-dark-xs float-l-xs inline-block-xs p-1-xs">p-1-xs</div>
-        <div class="border-dark-xs float-l-xs inline-block-xs p-2-xs">p-2-xs</div>
-        <div class="border-dark-xs float-l-xs inline-block-xs p-3-xs">p-3-xs</div>
-      </div>
-      <div class="guide-example-code">
-        <pre><code class="language-html">&lt;div class="col-container border-xs"&gt;
-    &lt;div class="border-dark-xs float-l-xs inline-block-xs m-05-xs"&gt;m-05-xs&lt;/div&gt;
-    &lt;div class="border-dark-xs float-l-xs inline-block-xs m-1-xs"&gt;m-1-xs&lt;/div&gt;
-    &lt;div class="border-dark-xs float-l-xs inline-block-xs m-2-xs"&gt;m-2-xs&lt;/div&gt;
-    &lt;div class="border-dark-xs float-l-xs inline-block-xs m-3-xs"&gt;m-3-xs&lt;/div&gt;
-    &lt;div class="border-dark-xs float-l-xs inline-block-xs p-05-xs"&gt;p-05-xs&lt;/div&gt;
-    &lt;div class="border-dark-xs float-l-xs inline-block-xs p-1-xs"&gt;p-1-xs&lt;/div&gt;
-    &lt;div class="border-dark-xs float-l-xs inline-block-xs p-2-xs"&gt;p-2-xs&lt;/div&gt;
-    &lt;div class="border-dark-xs float-l-xs inline-block-xs p-3-xs"&gt;p-3-xs&lt;/div&gt;
-  &lt;/div&gt;</code></pre>
-      </div>
-    </div>
-
-    <h3>Individual Spacing</h3>
-    <p>These classes are used to apply spacing to a particular
-      side of an element.</p>
-    <div class="col-container">
-      <div class="col col-50-lg">
-        <p><strong>Margin</strong></p>
-        <ul class="list-unstyled">
-          <li><code>.m-t-1-xs</code> <span class="m-l-1-xs">margin-top</span></li>
-          <li><code>.m-b-1-xs</code> <span class="m-l-1-xs">margin-bottom</span></li>
-          <li><code>.m-l-1-xs</code> <span class="m-l-1-xs">margin-left</span></li>
-          <li><code>.m-r-1-xs</code> <span class="m-l-1-xs">margin-right</span></li>
-          <li><code>.m-lr-1-xs</code> <span class="m-l-1-xs">margin left + right</span></li>
-          <li><code>.m-tb-1-xs</code> <span class="m-l-1-xs">margin top + bottom</span></li>
-          <li><code>.m-auto-xs</code> <span class="m-l-1-xs">horizontal center</span></li>
-        </ul>
-      </div>
-      <div class="col col-50-lg">
-        <p><strong>Padding</strong></p>
-        <ul class="list-unstyled">
-          <li><code>.p-t-0-xs</code> <span class="m-l-1-xs">padding-top</span></li>
-          <li><code>.p-b-05-xs</code> <span class="m-l-1-xs">padding-bottom</span></li>
-          <li><code>.p-l-1-xs</code> <span class="m-l-1-xs">padding-left</span></li>
-          <li><code>.p-r-2-xs</code> <span class="m-l-1-xs">padding-right</span></li>
-          <li><code>.p-lr-3-xs</code> <span class="m-l-1-xs">padding left + right</span></li>
-          <li><code>.p-tb-4-xs</code> <span class="m-l-1-xs">padding top + bottom</span></li>
-        </ul>
-      </div>
-    </div>
-    <div class="guide-example">
-      <div class="guide-example-demo">
-        <div class="col-container">
-          <div class="border-dark-xs float-l-xs inline-block-xs m-t-3-xs">m-t-3-xs</div>
-          <div class="border-dark-xs float-l-xs inline-block-xs m-t-4-xs">m-t-4-xs</div>
-          <div class="border-dark-xs float-l-xs inline-block-xs p-l-3-xs">p-l-3-xs</div>
-          <div class="border-dark-xs float-l-xs inline-block-xs p-l-4-xs">p-l-4-xs</div>
-        </div>
-      </div>
-      <div class="guide-example-code">
-  <pre><code class="language-html">&lt;div class="col-container border-xs"&gt;
-  &lt;div class="border-dark-xs float-l-xs inline-block-xs m-t-3-xs"&gt;m-t-3-xs&lt;/div&gt;
-  &lt;div class="border-dark-xs float-l-xs inline-block-xs m-t-4-xs"&gt;m-t-4-xs&lt;/div&gt;
-  &lt;div class="border-dark-xs float-l-xs inline-block-xs p-l-3-xs"&gt;p-l-3-xs&lt;/div&gt;
-  &lt;div class="border-dark-xs float-l-xs inline-block-xs p-l-4-xs"&gt;p-l-4-xs&lt;/div&gt;
-&lt;/div&gt;</code></pre>
-      </div>
-    </div>
+    <h3>Padding</h3>
+    <table class="table-content">
+      <thead>
+        <tr>
+          <th><code>@extend</code></th>
+          <th>Property</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>%p-$n-xs</code></td>
+          <td>padding: $n</td>
+          <td>Equal padding on all sides of the element.</td>
+        </tr>
+        <tr>
+          <td><code>%p-t-$n-xs</code></td>
+          <td>padding-top: $n</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>%p-b-$n-xs</code></td>
+          <td>padding-bottom: $n</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>%p-l-$n-xs</code></td>
+          <td>padding-left: $n</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>%p-r-$n-xs</code></td>
+          <td>padding-right: $n</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>%p-tb-$n-xs</code></td>
+          <td>padding-top: $n<br/>padding-bottom: $n</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>%p-lr-$n-xs</code></td>
+          <td>padding-left: $n<br/>padding-right: $n</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
 
     <h3>Functions</h3>
-    <p>The <code>spacing(n)</code> function can also be used to
+    <p>The <code>spacing($n)</code> function can also be used to
       apply spacing units to your class definitions.</p>
     <div class="guide-example">
       <div class="guide-example-code">
         <pre><code class="language-css">.custom-element
   margin: spacing(1)
-  padding: spacing(2)
-  height: spacing(05)</code></pre>
+  padding: spacing(2)</code></pre>
       </div>
     </div>
 
@@ -183,40 +211,48 @@ template = """
 
 
   <section id="widht-height-section">
-    <div id="width-height" class="inpage-anchor"></div>
+    <div id="width-height" title="Width &amp; Height" class="inpage-anchor"></div>
     <h2>Width &amp; Height</h2>
-    <p>Most widths will be set using a <a href="/atoms/grid">grid
-       layout</a>. However, Lens provides classes to set the following:</p>
-    <ul>
-      <li><code>.w-fit-xs</code> to set an elements max-width to 100%</li>
-      <li><code>.w-full-xs</code> and <code>.h-full-xs</code>
-       to set an element's width and height respectively to 100%</li>
-       <li><code>.w-auto-xs</code> to set an element's width to auto</li>
-    </ul>
-    <div class="guide-example">
-      <div class="guide-example-demo">
-        <div class="w-fit-xs border-dark-xs p-1-xs m-b-1-xs">.w-fit-xs</div>
-        <div class="w-full-xs border-dark-xs p-1-xs m-b-1-xs">.w-full-xs</div>
-        <div class="border-xs p-05-xs m-b-1-xs" style="height: 100px">
-          <div class="h-full-xs col-20-xs border-dark-xs p-1-xs">.h-full-xs</div>
-        </div>
-        <div class="w-auto-xs border-dark-xs p-1-xs">.w-auto-xs</div>
-      </div>
-      <div class="guide-example-code">
-        <pre><code class="language-html">&lt;div class="w-fit-xs border-dark-xs p-1-xs m-b-1-xs"&gt;.w-fit-xs&lt;/div&gt;
-  &lt;div class="w-full-xs border-dark-xs p-1-xs m-b-1-xs"&gt;.w-full-xs&lt;/div&gt;
-  &lt;div class="border-xs p-05-xs m-b-1-xs" style="height: 100px"&gt;
-    &lt;div class="h-full-xs col-20-xs border-dark-xs p-1-xs"&gt;.h-full-xs&lt;/div&gt;
-  &lt;/div&gt;
-  &lt;div class="w-auto-xs border-dark-xs p-1-xs"&gt;.w-auto-xs&lt;/div&gt;</code></pre>
-      </div>
-    </div>
+    <p>Most widths will be set using a <a ui-sref="grid">grid layout</a> the following
+    styles are also provided.</p>
+    <table class="table-content">
+      <thead>
+        <tr>
+          <th><code>@extend</code></th>
+          <th>Property</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>%w-fit-xs</code> </td>
+          <td>max-width: 100%</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>%w-full-xs</code> </td>
+          <td>width: 100%</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>%h-full-xs</code> </td>
+          <td>height: 100%</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>%w-auto-xs</code> </td>
+          <td>width: auto</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
 
     <h3>Mixins</h3>
-    <p>When defining your classes, you can also use the <code>width-height(n, n)</code> mixin.</p>
+    <p>When defining your custom elements, you can also use the <code>width-height($n, $n)</code> mixin
+    where <code>$n</code> is either a Lens spacing unit or a custom width/height value.
+    <span class="todo">is that true that $n can be a spacing unit....?</span></p>
     <div class="guide-example">
-      <div class="guide-example-code">
-        <pre class="m-tb-05-xs"><code class="language-css">.custom-selector
+      <div class="guide-example-code"><pre><code class="language-css">.custom-selector
   +width-height(100px, 200px)</code></pre>
       </div>
     </div>
@@ -225,39 +261,40 @@ template = """
 
 
   <section id="overflow-section">
-    <div id="overflow" class="inpage-anchor"></div>
+    <div id="overflow" title="Overflow" class="inpage-anchor"></div>
     <h2>Overflow</h2>
-    <p>Overflow controls what happens to content when it is
-      bigger than its container.</p>
-
-    <p><code>.overflow-hidden-xs</code> will clip content and not add scrollbars.</p>
-    <div class="overflow-hidden-xs p-1-xs m-l-2-xs m-b-2-xs border-dark-xs" style="height: 45px">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum maiores esse vel quia, voluptates quos. Tempora natus iste aperiam sequi mollitia, doloremque quas recusandae, rerum minima dolorum, veritatis vitae maxime.
-    </div>
-
-    <p><code>.overflow-auto-xs</code> will automatically add horizonal and/or vertical scrollbars if needed.</p>
-    <div class="overflow-auto-xs p-1-xs m-l-2-xs m-b-2-xs border-dark-xs" style="height: 45px">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum maiores esse vel quia, voluptates quos. Tempora natus iste aperiam sequi mollitia, doloremque quas recusandae, rerum minima dolorum, veritatis vitae maxime.
-    </div>
-
-    <p><code>.overflow-scroll-xs</code> will always show a scrollbar.</p>
-    <div class="overflow-scroll-xs p-1-xs m-l-2-xs m-b-2-xs border-dark-xs" style="height: 45px">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum maiores esse vel quia, voluptates quos. Tempora natus iste aperiam sequi mollitia, doloremque quas recusandae, rerum minima dolorum, veritatis vitae maxime.
-    </div>
-
-    <p><code>.overflow-visible-xs</code> will allow the contents to extend past the container with no scrollbars.</p>
-    <div class="overflow-visible-xs p-1-xs m-l-2-xs m-b-4-xs border-dark-xs" style="height: 45px">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum maiores esse vel quia, voluptates quos. Tempora natus iste aperiam sequi mollitia, doloremque quas recusandae, rerum minima dolorum, veritatis vitae maxime.
-    </div>
-    <div class="guide-code">
-  <pre><code class="language-html">&lt;div class="overflow-hidden-xs p-1-xs m-l-2-xs m-b-2-xs border-dark-xs" style="height: 45px"&gt;...&lt;/div&gt;
-
-&lt;div class="overflow-auto-xs p-1-xs m-l-2-xs m-b-2-xs border-dark-xs" style="height: 45px"&gt;...&lt;/div&gt;
-
-&lt;div class="overflow-scroll-xs p-1-xs m-l-2-xs m-b-2-xs border-dark-xs" style="height: 45px"&gt;...&lt;/div&gt;
-
-&lt;div class="overflow-visible-xs p-1-xs m-l-2-xs m-b-4-xs border-dark-xs" style="height: 45px"&gt;...&lt;/div&gt;</code></pre>
-    </div>
+    <p>Overflow controls what happens to content when it is bigger than its container.</p>
+    <table class="table-content">
+      <thead>
+        <tr>
+          <th><code>@extend</code></th>
+          <th>Overflow Value</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>%overflow-hidden-xs</code> </td>
+          <td>hidden</td>
+          <td>clip content</td>
+        </tr>
+        <tr>
+          <td><code>%overflow-auto-xs</code> </td>
+          <td>auto</td>
+          <td>only add scrollbars if content is too big</td>
+        </tr>
+        <tr>
+          <td><code>%overflow-scroll-xs</code> </td>
+          <td>scroll</td>
+          <td>always have scrollbars</td>
+        </tr>
+        <tr>
+          <td><code>%overflow-visible-xs</code> </td>
+          <td>visible</td>
+          <td>allow content to extend outside of container</td>
+        </tr>
+      </tbody>
+    </table>
   </section>
 
 

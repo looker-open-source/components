@@ -26,63 +26,71 @@ template = """
           <th>Class</th>
           <th>Tag</th>
           <th>Example</th>
+<!--
           <th>Markup</th>
+-->
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><code>.body</code></td>
-          <td><code>&lt;p&gt;</code></td>
-          <td><p>Data analytics everyone loves.</p></td>
-          <td><code class="language-html">&lt;p&gt;Data analytics everyone loves.&lt;/p&gt;</code></td>
+          <td class="top"><p><code>.body</code></p></td>
+          <td class="top"><p><code>&lt;p&gt;</code></p></td>
+          <td><p>Data analytics everyone loves.</p>
+              <pre><code class="language-html">&lt;p&gt;Data analytics everyone loves.&lt;/p&gt;</code></pre></td>
         </tr>
         <tr>
-          <td><code>.caption</code></td>
-          <td></td>
-          <td><p class="caption">Data analytics everyone loves.</td>
-          <td><code class="language-html">&lt;p class="caption"&gt;Data analytics everyone loves.&lt;/p&gt;</code></td>
+          <td class="top"><p><code>.caption</code></p></td>
+          <td class="top"></td>
+          <td><p class="caption">Data analytics everyone loves.
+              <pre><code class="language-html">&lt;p class="caption"&gt;Data analytics everyone loves.&lt;/p&gt;</code></pre></td>
         </tr>
         <tr>
-          <td><code>.bold</code></td>
-          <td><code>&lt;strong&gt;</code></td>
-          <td><p>Data <strong>analytics</strong> everyone loves.</p></td>
-          <td><code class="language-html">&lt;p&gt;Data &lt;strong&gt;analytics&lt;/strong&gt; everyone loves.&lt;/p&gt;</code></td>
+          <td class="top"><p><code>.bold</code></p></td>
+          <td class="top"><p><code>&lt;strong&gt;</code></p></td>
+          <td><p>Data <strong>analytics</strong> everyone loves.</p>
+              <pre><code class="language-html">&lt;p&gt;Data &lt;strong&gt;analytics&lt;/strong&gt; everyone loves.&lt;/p&gt;</code></pre></td>
         </tr>
         <tr>
-          <td><code>.regular</code></td>
-          <td></td>
-          <td><p class="bold">Data <span class="regular">analytics</span> everyone loves.</p></td>
-          <td><code class="language-html">&lt;p class="bold"&gt;Data &lt;span class="regular"&gt;analytics&lt;/span&gt; everyone loves.&lt;/p&gt;</code></td>
+          <td class="top"><p><code>.regular</code></p></td>
+          <td class="top"></td>
+          <td><p class="bold">Data <span class="regular">analytics</span> everyone loves.</p>
+              <pre><code class="language-html">&lt;p class="bold"&gt;Data &lt;span class="regular"&gt;analytics&lt;/span&gt; everyone loves.&lt;/p&gt;</code></pre></td>
         </tr>
         <tr>
-          <td><code>.light</code></td>
-          <td></td>
-          <td><p class="light"><span class="sample-text"></span></td>
-          <td><code class="language-html">&lt;p class="light"&gt;Data analytics everyone loves.&lt;/p&gt;</code></td>
+          <td class="top"><p><code>.light</code></p></td>
+          <td class="top"></td>
+          <td><p class="light"><span class="sample-text"></span>
+              <pre><code class="language-html">&lt;p class="light"&gt;Data analytics everyone loves.&lt;/p&gt;</code></pre></td>
         </tr>
         <tr>
-          <td><code>.italic</code></td>
-          <td><code>&lt;em&gt;</code></td>
-          <td><p>Data <em>analytics</em> everyone loves.</p></td>
-          <td><code class="language-html">&lt;p&gt;Data &lt;em&gt;analytics&lt;/em&gt; everyone loves.&lt;/p&gt;</code></td>
+          <td class="top"><p><code>.italic</code></p></td>
+          <td class="top"><p><code>&lt;em&gt;</code></p></td>
+          <td><p>Data <em>analytics</em> everyone loves.</p>
+              <pre><code class="language-html">&lt;p&gt;Data &lt;em&gt;analytics&lt;/em&gt; everyone loves.&lt;/p&gt;</code></pre></td>
         </tr>
         <tr>
-          <td><code>.caps</code></td>
-          <td></td>
-          <td><p class="caps"><span class="sample-text"></span></td>
-          <td><code class="language-html">&lt;p class="caps"&gt;Data analytics everyone loves.&lt;/p&gt;</code></td>
+          <td class="top"><p><code>.caps</code></p></td>
+          <td class="top"></td>
+          <td><p class="caps"><span class="sample-text"></span>
+              <pre><code class="language-html">&lt;p class="caps"&gt;Data analytics everyone loves.&lt;/p&gt;</code></pre></td>
         </tr>
         <tr>
-          <td><code>.lowercase</code></td>
-          <td></td>
-          <td><p class="lowercase"><span class="sample-text"></span></td>
-          <td><code class="language-html">&lt;p class="lowercase"&gt;Data analytics everyone loves.&lt;/p&gt;</code></td>
+          <td class="top"><p><code>.lowercase</code></p></td>
+          <td class="top"></td>
+          <td><p class="lowercase"><span class="sample-text"></span>
+              <pre><code class="language-html">&lt;p class="lowercase"&gt;Data analytics everyone loves.&lt;/p&gt;</code></pre></td>
         </tr>
         <tr>
-          <td><code>.titlecase</code></td>
-          <td></td>
-          <td><p class="titlecase"><span class="sample-text"></span></td>
-          <td><code class="language-html">&lt;p class="titlecase"&gt;Data analytics everyone loves.&lt;/p&gt;</code></td>
+          <td class="top"><p><code>.titlecase</code></p></td>
+          <td class="top"></td>
+          <td><p class="titlecase"><span class="sample-text"></span>
+              <pre><code class="language-html">&lt;p class="titlecase"&gt;Data analytics everyone loves.&lt;/p&gt;</code></pre></td>
+        </tr>
+        <tr>
+          <td class="top"><p><code>.code</code></p></td>
+          <td class="top"></td>
+          <td><p class="code"><span class="sample-text"></span>
+              <pre><code class="language-html">&lt;p class="code"&gt;Data analytics everyone loves.&lt;/p&gt;</code></pre></td>
         </tr>
       </tbody>
     </table>

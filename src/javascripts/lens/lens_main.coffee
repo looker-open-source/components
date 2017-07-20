@@ -25,7 +25,6 @@ m.directive "lensMain", ->
 
 template = """
 <main class="guide-main" role="main" id="guideMain">
-
   <div class="guide-content">
     <div class="col-container">
       <div class="col col-80-lg">
