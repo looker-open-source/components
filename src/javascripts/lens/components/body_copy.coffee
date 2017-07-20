@@ -17,18 +17,15 @@ m.directive "bodyCopy", ->
 template = """
 <lens-main>
 
-  <section id="body-copy-section">
-    <div id="body-copy" class="inpage-anchor"></div>
-    <h2>Body Copy</h2>
+  <section id="style-emphasis-section">
+    <div id="style-emphasis" title="Style &amp; Emphasis" class="inpage-anchor"></div>
+    <h2>Style &amp; Emphasis</h2>
     <table class="table-content">
       <thead>
         <tr>
           <th>Class</th>
           <th>Tag</th>
           <th>Example</th>
-<!--
-          <th>Markup</th>
--->
         </tr>
       </thead>
       <tbody>
@@ -97,7 +94,7 @@ template = """
   </section>
 
   <section id="links-section">
-    <div id="links" class="inpage-anchor"></div>
+    <div id="links" title="Links" class="inpage-anchor"></div>
     <h2>Links</h2>
     <table>
       <thead>
@@ -134,7 +131,7 @@ template = """
   </section>
 
   <section id="lists-section">
-    <div id="lists" class="inpage-anchor"></div>
+    <div id="lists" title="Lists" class="inpage-anchor"></div>
     <h2>Lists</h2>
     <p>Lens comes with basic styles for unordered and ordered
       lists. You can remove the styling on either of them by using the

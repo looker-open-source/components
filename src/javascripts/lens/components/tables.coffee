@@ -17,8 +17,9 @@ m.directive "tables", ->
 template = """
 <lens-main>
 
-  <section id="default-table-section">
-    <div id="default-table" class="inpage-anchor"></div>
+  <section id="basic-table-section">
+    <div id="basic-table" title="Basic Table" class="inpage-anchor"></div>
+    <h2>Basic Table</h2>
     <p>Use a regular table by using a <code>&lt;table&gt;&lt;/table&gt;</code>
        element and not adding any extra table classes. By default, the table
          will be set to the width of the content, with a max-width of 100%.
@@ -81,8 +82,8 @@ template = """
   </section>
 
   <section id="alignment-widths-section">
-    <div id="alignment-widths" class="inpage-anchor"></div>
-    <h2 class="title-1">Column Width and Cell Alignment</h2>
+    <div id="alignment-widths" title="Column Width &amp; Cell Alignment" class="inpage-anchor"></div>
+    <h2>Column Width &amp; Cell Alignment</h2>
     <p>The width of columns in tables can be set by using Lens's
       <a ui-sref="grid">grid classes</a>. Use the following classes
     to align content within a cell:</p>
@@ -149,8 +150,8 @@ template = """
   </section>
 
   <section id="zebra-stripes-section">
-    <div id="zebra-stripes" class="inpage-anchor"></div>
-    <h2 class="title-1">Zebra Stripes</h2>
+    <div id="zebra-stripes" title="Zebra Stripes" class="inpage-anchor"></div>
+    <h2>Zebra Stripes</h2>
     <p>Add the class <code>.table-striped</code> to include zebra striping of
     alternate rows.</p>
 
@@ -211,8 +212,8 @@ template = """
   </section>
 
   <section id="content-table-section">
-    <div id="content-table" class="inpage-anchor"></div>
-    <h2 class="title-1">Content Table</h2>
+    <div id="content-table" title="Content Table" class="inpage-anchor"></div>
+    <h2>Content Table</h2>
     <p>Use our content table style with the class <code>.table-content</code>.
       Use <code>.sub-text</code> for any sub text (like a description).</p>
 

@@ -17,8 +17,9 @@ m.directive "borders", ->
 template = """
 <lens-main>
 
-  <section id="borders">
-    <h2 id="Border">Border</h2>
+  <section id="borders-section">
+    <div id="borders" title="Adding Borders" class="inpage-anchor"></div>
+    <h2>Border</h2>
     <p>To adjust borders on elements, use the following classes: <code>.border-xs</code>, <code>.border-t-xs</code>, <code>.border-m-xs</code>, <code>.border-l-xs</code>, <code>.border-r-xs</code>. Use <code>dark</code>, <code>light</code> modifiers to change the color of the border.</p>
     <div class="col">
       <div class="col col-40-sm">
@@ -32,21 +33,21 @@ template = """
       </div>
     </div>
 
-    <h4>Normal</h4>
+    <h3>Normal</h3>
     <div class="border-xs inline-xs p-1-xs m-r-1-xs">.border-xs</div>
     <div class="border-t-xs inline-xs p-1-xs m-r-1-xs">.border-t-xs</div>
     <div class="border-b-xs inline-xs p-1-xs m-r-1-xs">.border-b-xs</div>
     <div class="border-l-xs inline-xs p-1-xs m-r-1-xs">.border-l-xs</div>
     <div class="border-r-xs inline-xs p-1-xs">.border-r-xs</div>
 
-    <h4>Dark</h4>
+    <h3>Dark</h3>
     <div class="border-dark-xs inline-xs p-1-xs m-r-1-xs">.border-dark-xs</div>
     <div class="border-t-dark-xs inline-xs p-1-xs m-r-1-xs">.border-t-dark-xs</div>
     <div class="border-b-dark-xs inline-xs p-1-xs m-r-1-xs">.border-b-dark-xs</div>
     <div class="border-l-dark-xs inline-xs p-1-xs m-r-1-xs">.border-l-dark-xs</div>
     <div class="border-r-dark-xs inline-xs p-1-xs">.border-r-dark-xs</div>
 
-    <h4>Light</h4>
+    <h3>Light</h3>
     <div class="border-light-xs inline-xs p-1-xs m-r-1-xs">.border-light-xs</div>
     <div class="border-t-light-xs inline-xs p-1-xs m-r-1-xs">.border-t-light-xs</div>
     <div class="border-b-light-xs inline-xs p-1-xs m-r-1-xs">.border-b-light-xs</div>
@@ -59,8 +60,11 @@ template = """
   &lt;div class="border-l-xs inline-xs p-1-xs m-r-1-xs"&gt;.border-l-xs&lt;/div&gt;
   &lt;div class="border-r-xs inline-xs p-1-xs m-r-1-xs"&gt;.border-r-xs&lt;/div&gt;</code></pre>
     </div>
+  </section>
 
-    <h2 id="Removal">Removing Borders</h2>
+  <section id="removing-borders-section">
+    <div id="removing-borders" title="Removing Borders" class="inpage-anchor"></div>
+    <h2>Removing Borders</h2>
     <p>To get a little more control over borders at different breakpoints, we've included a <code>.border-none-xs</code> utility classes. These can be applied to all borders or to specific sides.</p>
     <div class="border-dark-xs border-none-xs inline-xs p-1-xs m-r-1-xs">.border-none-xs</div>
     <div class="border-dark-xs border-none-t-xs inline-xs p-1-xs m-r-1-xs">.border-none-t-xs</div>
@@ -74,8 +78,11 @@ template = """
   &lt;div class="border-dark-xs border-none-b-xs inline-xs p-1-xs m-r-1-xs"&gt;.border-b-xs&lt;/div&gt;
   &lt;div class="border-dark-xs border-none-l-xs inline-xs p-1-xs"&gt;.border-l-xs&lt;/div&gt;</code></pre>
     </div>
+  </section>
 
-    <h2 id="Rounded">Rounded Borders</h2>
+  <section id="rounded-corners-section">
+    <div id="rounded-corners" title="Rounded Corners" class="inpage-anchor"></div>
+    <h2>Rounded Corners</h2>
     <p>Its never been easier to add border radius to different corners of an elements. Using <code>.round</code>, <code>.round-t</code>, <code>.round-b</code>, <code>.round-l</code>, <code>.round-r</code> will apply border radius to elements.</p>
     <div class="border-dark-xs round inline-xs p-1-xs m-r-1-xs">.round</div>
     <div class="border-dark-xs round-t inline-xs p-1-xs m-r-1-xs">.round-t</div>
@@ -89,8 +96,11 @@ template = """
   &lt;div class="border-dark-xs round-l inline-xs p-1-xs m-r-1-xs"&gt;.round-l&lt;/div&gt;
   &lt;div class="border-dark-xs round-r inline-xs p-1-xs"&gt;.round-r&lt;/div&gt;</code></pre>
     </div>
+  </section>
 
-    <h2 id="Circle">Circle</h2>
+  <section id="circles-section">
+    <div id="circles" title="Circles" class="inpage-anchor"></div>
+    <h2>Circle</h2>
     <p>To turn an element into a circle, use the <code>.circle</code> class.</p>
     <div class="guide-example">
       <div class="guide-example-demo">
@@ -100,6 +110,13 @@ template = """
         <pre><code class="language-html">&lt;div class="border-dark-xs circle" style="width: 100px; height: 100px;"&gt;&lt;/div&gt;</code></pre>
       </div>
     </div>
+  </section>
+
+  <section id="horizontal-rules-section">
+    <div id="horizontal-rules" title="Horizontal Rules" class="inpage-anchor"></div>
+    <h2>Horizontal Rules</h2>
+    <hr>
+  </section>
 
   <h2>Variables</h2>
     <p>Used in the utility classes above.</p>
@@ -123,15 +140,6 @@ template = """
     <p><code>
       $border-radius<br />
     </code></p>
-
-
-  </section>
-
-  <section id="horizontal-rules-section">
-    <div id="horizontal-rules" class="inpage-anchor"></div>
-    <h2>Horizontal Rules</h2>
-    <hr>
-  </section>
 
 </lens-main>
 """

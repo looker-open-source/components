@@ -24,8 +24,9 @@ m.directive "colors", ->
 template = """
 <lens-main>
 
-  <section id="brand-colors">
-    <h2 id="Brand">Brand Colors</h2>
+  <section id="brand-colors-section">
+    <div id="brand-colors" title="Brand Colors" class="inpage-anchor"></div>
+    <h2>Brand Colors</h2>
     <p>There are only 2 main brand colors for Looker. Use the color class for any of these classes, just replace <code>[color]</code> with the name of the color you want.</p>
     <table class="table-border-rows col-60-xl">
       <thead>
@@ -52,8 +53,9 @@ template = """
   </section>
 
 
-  <section id="ui-colors">
-    <h2 id="UI">UI Colors</h2>
+  <section id="ui-colors-section">
+    <div id="ui-colors" title="UI Colors" class="inpage-anchor"></div>
+    <h2>UI Colors</h2>
     <p>Looker utilizes colors in various parts of our app UI. Most of our app is gray, so color is rather important. Each of the UI colors has utility classes you can use to apply the color to different parts of an element. Use the color class for any of these classes, just replace <code>[color]</code> with the name of the color you want.</p>
     <table class="table-border-rows col-60-xl">
       <thead>
@@ -82,8 +84,8 @@ template = """
 
 
   <section id="gray-colors-section">
-    <div id="gray-colors" class="inpage-anchor"></div>
-    <h2 id="Gray">Gray Colors</h2>
+    <div id="gray-colors" title="Gray Colors" class="inpage-anchor"></div>
+    <h2>Gray Colors</h2>
     <p>Use the color class for any of these classes, just replace <code>[color]</code> with the name of the color you want.</p>
     <table class="table-border-rows col-60-xl">
       <thead>

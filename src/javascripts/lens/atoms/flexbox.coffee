@@ -17,11 +17,12 @@ m.directive "flexbox", ->
 template = """
 <lens-main>
 
-  <section id="flexbox">
-    <p>Flexbox is perfect for aligning items inside components. It typically
-      isn't used for large scale layouts but for smaller parts of a page or
-      component. All of the flex box utility classes can be used with our
-      breakpoint suffixes.</p>
+  <p>Flexbox is perfect for aligning items inside components. It typically
+    isn't used for large scale layouts but for smaller parts of a page or
+    component. All of the flex box utility classes can be used with our
+    breakpoint suffixes.</p>
+  <section id="flex-container-section">
+    <div id="flex-container" title="Flex Container" class="inpage-anchor"></div>
     <h2>Flex Container</h2>
     <p>This is the parent of the items that will be laid out using flex box.</p>
 
@@ -429,7 +430,8 @@ template = """
     </div>
   </section>
 
-  <section id="Items">
+  <section id="flex-items-section">
+    <div id="flex-items" title="Flex Items" class="inpage-anchor"></div>
     <h2>Flex Items</h2>
     <p>These are the children of the parent container. Flex items are what take on the flexible box layout for components and pages.</p>
 

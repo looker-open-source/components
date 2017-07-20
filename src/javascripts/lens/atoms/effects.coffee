@@ -16,15 +16,8 @@ m.directive "effects", ->
 
 template = """
 <lens-main>
-
-  <ul>
-    <li><a href="#hover">Hover, Active &amp; Focus</a></li>
-    <li><a href="#transitions">Transitions</a></li>
-  </ul>
-
-
   <section id="hover-section">
-    <div id="hover" class="inpage-anchor"></div>
+    <div id="hover" title="Hover, Focus &amp; Active" class="inpage-anchor"></div>
     <h2>Hover, Active &amp; Focus</h2>
     <p class="todo"></p>
     <p>Write a bit about hover, active and focus states and our philosophy (hover == active == focus)?</p>
@@ -44,11 +37,10 @@ template = """
     background-color: purple</code></pre>
       </div>
     </div>
-
   </section>
 
   <section id="transitions-section">
-    <div id="transitions" class="inpage-anchor"></div>
+    <div id="transitions" title="Transitions" class="inpage-anchor"></div>
     <h2>Transitions</h2>
     <p>CSS transitions? default times/speeds? etc.</p>
     <p class="todo"></p>

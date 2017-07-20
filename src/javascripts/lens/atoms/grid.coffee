@@ -17,8 +17,9 @@ m.directive "grid", ->
 template = """
 <lens-main>
 
-  <section id="grid">
-    <h2 id="Grid">The Grid</h2>
+  <section id="grid-section">
+    <div id="grid" title="The Grid" class="inpage-anchor"></div>
+    <h2>The Grid</h2>
     <p>We provide a mobile-first, fluid grid to help layout pages with ease. To
        start a new grid, create a div with the class of <code>.col-container</code>.
        Then add columns inside it using <code>.col .col-$n-xs</code>, where
@@ -41,8 +42,11 @@ template = """
   &lt;div class="col col-50-xs border-dark-xs"&gt;.col .col-50-xs&lt;/div&gt;
 &lt;/div&gt;</code></pre>
     </div>
+  </section>
 
-    <h2 id="Nesting">Nesting Columns</h2>
+  <section id="nesting-section">
+    <div id="nesting" title="Nesting Columns" class="inpage-anchor"></div>
+    <h2>Nesting Columns</h2>
     <p>Each column in our grid can hold another set of columns inside of it. To
       make things work properly nest another <code>.col-container</code> inside
       the <code>.col</code>.</p>
@@ -84,9 +88,14 @@ template = """
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
     </div>
+  </section>
 
-    <h2 id="Max-Width">Grid Max-Width</h2>
-    <p>By default, our grid will span 100% of the browser viewport. If you want to control that, add <code>.col-max</code> next to your <code>.col-container</code> class. This will limit the width of the grid to <code>1260px</code>.</p>
+  <section id="max-width-section">
+    <div id="max-width" title="Max-Width" class="inpage-anchor"></div>
+    <h2>Max-Width</h2>
+    <p>By default, our grid will span 100% of the browser viewport. If you want
+      to control that, add <code>.col-max</code> next to your <code>.col-container</code>
+      class. This will limit the width of the grid to <code>1260px</code>.</p>
     <div class="col-container col-max">
       <div class="border-dark-xs p-2-xs">1260px max-width</div>
     </div>
@@ -95,9 +104,17 @@ template = """
   &lt;div class="border-dark-xs p-2-xs"&gt;1260px max-width&lt;/div&gt;
   &lt;/div&gt;</code></pre>
     </div>
+  </section>
 
-    <h2 id="Gutters">Gutters</h2>
-    <p>The Lens grid doesn't include gutter by default. But there are times when you want to include gutters between your grid. For those times, we have <code>.col-gutters</code>, which can be added next to <code>.col-container</code> to automatically assign gutters to the internal columns. You may also choose to apply gutters manually (for a little more control) by using our padding utility classes next to the column classes.</p>
+  <section id="gutters-section">
+    <div id="gutters" title="Gutters" class="inpage-anchor"></div>
+    <h2>Gutters</h2>
+    <p>The Lens grid doesn't include gutter by default. But there are times when
+       you want to include gutters between your grid. For those times, we have
+       <code>.col-gutters</code>, which can be added next to <code>.col-container</code>
+       to automatically assign gutters to the internal columns. You may also
+       choose to apply gutters manually (for a little more control) by using our
+       padding utility classes next to the column classes.</p>
 
     <h3>Automatic Gutters</h3>
     <p>Gutters will not be applied to nested columns unless applied to its parent container.</p>
@@ -154,8 +171,11 @@ template = """
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
     </div>
+  </section>
 
-    <h2 id="Centering">Centering Columns</h2>
+  <section id="centering-section">
+    <div id="centering" title="Centering Columns" class="inpage-anchor"></div>
+    <h2>Centering Columns</h2>
     <p>Sometimes you want to center a single column within its container. This is possible by adding <code>.col-center</code> next to your <code>.col col-n-xs</code> class. You may also control column centering by using our margin and float utility classes. Simply apply <code>.m-auto-xs .float-none-xs</code> and you'll get the same styles as <code>.col-center</code>.</p>
     <div class="col-container border-xs p-1-xs m-b-1-xs">
       <div class="col col-50-xs col-center border-dark-xs">.col .col-50-xs .col-center</div>
@@ -171,8 +191,11 @@ template = """
   &lt;div class="col col-30-xs col-center border-dark-xs"&gt;.col .col-30-xs .col-center&lt;/div&gt;
 &lt;/div&gt;</code></pre>
     </div>
+  </section>
 
-    <h2 id="Offsets">Column Offsets</h2>
+  <section id="offsets-section">
+    <div id="offsets" title="Offsets" class="inpage-anchor"></div>
+    <h2>Column Offsets</h2>
     <p>Move columns over by different grid widths by using <code>.col-offset-n-xs</code>. Keep in
       mind that the columns and offsets used within a <code>.col-container</code> shouldn't add
       up to more than 100.</p>
@@ -186,8 +209,11 @@ template = """
   &lt;div class="col col-40-xs col-offset-20-xs border-dark-xs"&gt;.col-40-xs .col-offset-30-xs&lt;/div&gt;
 &lt;/div&gt;</code></pre>
     </div>
+  </section>
 
-    <h2 id="Responsive">Responsive Breakpoint Classes</h2>
+  <section id="responsive-section">
+    <div id="responsive" title="Responsive Breakpoints" class="inpage-anchor"></div>
+    <h2>Responsive Breakpoint</h2>
     <p>Our mobile first grid comes with a set of breakpoint class suffixes that can be used to
       override columns across breakpoints. For example, if a div needs to take up the full width of
       the page across all display sizes, use <code>.col-100-xs</code>. If that same
@@ -244,16 +270,17 @@ template = """
     </div>
   </section>
 
-    <section id="Variables">
-      <h2 >Variables</h2>
+  <section id="variables-section">
+    <div id="variables" title="Variables" class="inpage-anchor"></div>
+    <h2 >Variables</h2>
     <p>Used in the grid and <a href="/guidelines/responsive">responsive breakpoint</a>
       utility classes. Our <code>-xs</code> breakpoint doesn't have a variable
       because it is simply styling <code>@media screen</code>.</p>
     <p class="bold">Grid Container</p>
     <div class="guide-code">
-  <pre><code class="language-css">.custom-element
-    border-color: $grid-width
-  </code></pre>
+<pre><code class="language-css">.custom-element
+  border-color: $grid-width
+</code></pre>
     <p><code>
       $grid-width
     </code></p>
