@@ -26,10 +26,9 @@ m.directive "subnav", ->
           section_title = sections[i].title
           subnav.append '<li class="guide-subnav-item"><a class="guide-subnav-anchor" href="#' + section_id + '">' + section_title + '</a></li>'
           i++
-        return
 
-        subnav.on 'click', '.guide-subnav-anchor', () ->
-          $subnav_link.removeClass('active')
+        $(subnav).on 'click', '.guide-subnav-anchor', () ->
+          $(this).closest('#subnav').find('.guide-subnav-anchor').removeClass('active')
           $(this).addClass('active')
 
       else
