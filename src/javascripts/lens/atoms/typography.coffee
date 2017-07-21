@@ -44,8 +44,8 @@ template = """
   </section>
 
   <section id="sizes-section">
-    <div id="sizes" title="Sizes" class="inpage-anchor"></div>
-    <h2>Type Scale</h2>
+    <div id="sizes" title="Size" class="inpage-anchor"></div>
+    <h2>Type Size</h2>
     <p>Type size is specified as both the text size and the line height.</p>
     <table class="table-content">
       <thead>
