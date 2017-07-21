@@ -105,7 +105,8 @@ $text-size: (
   5:  (52px, 60px),
   6:  (62px, 72px)
 );
-$brand-font: 'Open Sans', sans-serif;
+$brand-font: 'Open Sans', Helvetica, Arial, sans-serif;
+$code-font: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;
 $light: 300;
 $bold: 600;
 $extra-bold: 700;

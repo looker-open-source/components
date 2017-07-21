@@ -11,6 +11,7 @@ m.controller "MainNavController", (
 ) ->
 
   $scope.menuItems = [
+    { title: "Lens design", uiSref: "index" },
     { title: "Getting Started", uiSref: "getting-started" },
     { title: "Guidelines", id: "guidelines", subNav: [
 #        { title: "Design Principles", uiSref: "design-principles" },
