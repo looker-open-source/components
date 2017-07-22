@@ -29,7 +29,7 @@ template = """
     <div class="col-container">
       <div class="col col-80-lg">
         <div class="guide-header">
-          <h1 class="headline">{{ title }}</h1>
+          <h1 class="display-2">{{ title }}</h1>
         </div>
         <ng-transclude></ng-transclude>
       </div>

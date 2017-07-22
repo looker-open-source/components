@@ -18,9 +18,9 @@ template = """
 <lens-main>
 
   <section id="index">
-    <p>
-      Lens is a design infrastructure enabling developers and designers to build
-       consistent and scalable Looker experiences.</p>
+    <h4 class="subheading">
+      Lens is a design system enabling developers and designers to build
+       beautiful, usable, consistent, and scalable Looker experiences.</h4>
 
     <h2>Design Principles</h2>
     <p>What are design principles and how should you use them? Design Principles...</p>
