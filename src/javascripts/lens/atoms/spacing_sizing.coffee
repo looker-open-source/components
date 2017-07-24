@@ -71,9 +71,9 @@ template = """
   <section id="margin-padding-section">
     <div id="margin-padding" title="Margin &amp; Padding" class="inpage-anchor"></div>
     <h2>Margin &amp; Padding</h2>
-    <p>To specify margin and padding, Lens uses a shorthand of the property name,
+    <p>To specify margin and padding, Lens uses a shorthand of the Resolves to... name,
        side, spacing unit value and <a ui-sref="responsive">breakpoint</a> in the following format:
-       <code>%property-side-unit-breakpoint</code>.</p>
+       <code>%Resolves to...-side-unit-breakpoint</code>.</p>
     <div class="col-container">
       <div class="col col-30-lg">
         <h4>Properties</h4>
@@ -100,7 +100,7 @@ template = """
       <thead>
         <tr>
           <th><code>@extend</code></th>
-          <th>Property</th>
+          <th>Resolves to...</th>
           <th>Notes</th>
         </tr>
       </thead>
@@ -153,7 +153,7 @@ template = """
       <thead>
         <tr>
           <th><code>@extend</code></th>
-          <th>Property</th>
+          <th>Resolves to...</th>
           <th>Notes</th>
         </tr>
       </thead>
@@ -219,30 +219,25 @@ template = """
       <thead>
         <tr>
           <th><code>@extend</code></th>
-          <th>Property</th>
-          <th>Notes</th>
+          <th>Resolves to...</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td><code>%w-fit-xs</code> </td>
           <td>max-width: 100%</td>
-          <td></td>
         </tr>
         <tr>
           <td><code>%w-full-xs</code> </td>
           <td>width: 100%</td>
-          <td></td>
         </tr>
         <tr>
           <td><code>%h-full-xs</code> </td>
           <td>height: 100%</td>
-          <td></td>
         </tr>
         <tr>
           <td><code>%w-auto-xs</code> </td>
           <td>width: auto</td>
-          <td></td>
         </tr>
       </tbody>
     </table>
@@ -268,29 +263,29 @@ template = """
       <thead>
         <tr>
           <th><code>@extend</code></th>
-          <th>Overflow Value</th>
+          <th>Resolves to...</th>
           <th>Notes</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td><code>%overflow-hidden-xs</code> </td>
-          <td>hidden</td>
+          <td>overflow: hidden</td>
           <td>clip content</td>
         </tr>
         <tr>
           <td><code>%overflow-auto-xs</code> </td>
-          <td>auto</td>
+          <td>overflow: auto</td>
           <td>only add scrollbars if content is too big</td>
         </tr>
         <tr>
           <td><code>%overflow-scroll-xs</code> </td>
-          <td>scroll</td>
+          <td>overflow: scroll</td>
           <td>always have scrollbars</td>
         </tr>
         <tr>
           <td><code>%overflow-visible-xs</code> </td>
-          <td>visible</td>
+          <td>overflow: visible</td>
           <td>allow content to extend outside of container</td>
         </tr>
       </tbody>

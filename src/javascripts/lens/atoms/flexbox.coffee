@@ -33,7 +33,7 @@ template = """
     <table class="table-content">
       <thead>
         <tr>
-          <th><code>@extend</code> Class</th>
+          <th><code>@extend</code></th>
           <th>Resolves to...</th>
           <th>Notes</th>
         </tr>
@@ -58,7 +58,7 @@ template = """
     <table class="table-content">
       <thead>
         <tr>
-          <th><code>@extend</code> Class</th>
+          <th><code>@extend</code></th>
           <th>Resolves to...</th>
           <th>Notes</th>
         </tr>
@@ -94,7 +94,7 @@ template = """
     <table class="table-content">
       <thead>
         <tr>
-          <th><code>@extend</code> Class</th>
+          <th><code>@extend</code></th>
           <th>Resolves to...</th>
           <th>Notes</th>
         </tr>
@@ -124,8 +124,8 @@ template = """
     <table class="table-content">
       <thead>
         <tr>
-          <th><code>@extend</code> Class</th>
-          <th>Resolves to...</th>
+          <th class="col-30-xs"><code>@extend</code></th>
+          <th class="col-30-xs">Resolves to...</th>
           <th>Notes</th>
         </tr>
       </thead>
@@ -163,8 +163,8 @@ template = """
     <table class="table-content">
       <thead>
         <tr>
-          <th><code>@extend</code> Class</th>
-          <th>Resolves to...</th>
+          <th class="col-30-xs"><code>@extend</code></th>
+          <th class="col-30-xs">Resolves to...</th>
           <th>Notes</th>
         </tr>
       </thead>
@@ -205,8 +205,8 @@ template = """
     <table class="table-content">
       <thead>
         <tr>
-          <th><code>@extend</code> Class</th>
-          <th>Resolves to...</th>
+          <th class="col-30-xs"><code>@extend</code></th>
+          <th class="col-30-xs">Resolves to...</th>
           <th>Notes</th>
         </tr>
       </thead>
@@ -264,7 +264,7 @@ template = """
     <table class="table-content">
       <thead>
         <tr>
-          <th><code>@extend</code> Class</th>
+          <th><code>@extend</code></th>
           <th>Resolves to...</th>
           <th>Notes</th>
         </tr>
@@ -284,7 +284,7 @@ template = """
     <table class="table-content">
       <thead>
         <tr>
-          <th><code>@extend</code> Class</th>
+          <th><code>@extend</code></th>
           <th>Resolves to...</th>
           <th>Notes</th>
         </tr>
@@ -304,7 +304,7 @@ template = """
     <table class="table-content">
       <thead>
         <tr>
-          <th><code>@extend</code> Class</th>
+          <th><code>@extend</code></th>
           <th>Resolves to...</th>
           <th>Notes</th>
         </tr>
@@ -328,7 +328,7 @@ template = """
     <table class="table-content">
       <thead>
         <tr>
-          <th><code>@extend</code> Class</th>
+          <th class="col-30-xs"><code>@extend</code></th>
           <th>Resolves to...</th>
           <th>Notes</th>
           <th>Example</th>
@@ -363,7 +363,7 @@ template = """
     <table class="table-content">
       <thead>
         <tr>
-          <th><code>@extend</code> Class</th>
+          <th><code>@extend</code></th>
           <th>Resolves to...</th>
           <th>Notes</th>
         </tr>

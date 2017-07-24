@@ -24,19 +24,19 @@ template = """
       <thead>
         <tr>
           <th><code>@extend</code></th>
-          <th>font-family</th>
+          <th>Resolves to...</th>
           <th>Notes</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td><code>%brand-font</code></td>
-          <td>'Open Sans', Helvetica, Arial, sans-serif</td>
+          <td>font-family: 'Open Sans', Helvetica, Arial, sans-serif</td>
           <td>This is the Lens default</td>
         </tr>
         <tr>
           <td><code>%code-font</code></td>
-          <td>'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace</td>
+          <td>font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace</td>
           <td>Used in the ACE editor. Use when displaying LookML, SQL, etc.</td>
         </tr>
       </tbody>
@@ -51,54 +51,54 @@ template = """
       <thead>
         <tr>
           <th><code>@extend</code></th>
-          <th>font-size/line-height</th>
+          <th>Resolves to...</th>
           <th>Notes</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td><code>%text-n2-xs</code></td>
-          <td>12px/20px</td>
+          <td>font-size: 12px<br />line-height: 20px</td>
           <td></td>
         </tr>
         <tr>
           <td><code>%text-n1-xs</code></td>
-          <td>14px/24px</td>
+          <td>font-size: 14px<br />line-height: 24px</td>
           <td></td>
         </tr>
         <tr>
           <td><code>%text-0-xs</code></td>
-          <td>16px/24px</td>
+          <td>font-size: 16px<br />line-height: 24px</td>
           <td>This is the base font size and line-height</td>
         </tr>
         <tr>
           <td><code>%text-1-xs</code></td>
-          <td>19px/27px</td>
+          <td>font-size: 19px<br />line-height: 27px</td>
           <td></td>
         </tr>
         <tr>
           <td><code>%text-2-xs</code></td>
-          <td>22px/30px</td>
+          <td>font-size: 22px<br />line-height: 30px</td>
           <td></td>
         </tr>
         <tr>
           <td><code>%text-3-xs</code></td>
-          <td>28px/36px</td>
+          <td>font-size: 28px<br />line-height: 36px</td>
           <td></td>
         </tr>
         <tr>
           <td><code>%text-4-xs</code></td>
-          <td>38px/46px</td>
+          <td>font-size: 38px<br />line-height: 46px</td>
           <td></td>
         </tr>
         <tr>
           <td><code>%text-5-xs</code></td>
-          <td>52px/60px</td>
+          <td>font-size: 52px<br />line-height: 60px</td>
           <td></td>
         </tr>
         <tr>
           <td><code>%text-6-xs</code></td>
-          <td>62px/72px</td>
+          <td>font-size: 62px<br />line-height: 72px</td>
           <td></td>
         </tr>
       </tbody>
@@ -113,29 +113,29 @@ template = """
       <thead>
         <tr>
           <th><code>@extend</code></th>
-          <th>font-weight</th>
+          <th>Resolves to...</th>
           <th>Notes</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td><code>%regular</code></td>
-          <td>normal/400</td>
+          <td>font-weight: normal/400</td>
           <td>Default font-weight</td>
         </tr>
         <tr>
           <td><code>%light</code></td>
-          <td>300</td>
+          <td>font-weight: 300</td>
           <td></td>
         </tr>
         <tr>
           <td><code>%bold</code></td>
-          <td>600</td>
+          <td>font-weight: 600</td>
           <td></td>
         </tr>
         <tr>
           <td><code>%extra-bold</code></td>
-          <td>700</td>
+          <td>font-weight: 700</td>
           <td></td>
         </tr>
       </tbody>
@@ -149,7 +149,7 @@ template = """
       <thead>
         <tr>
           <th><code>@extend</code></th>
-          <th>Property: value</th>
+          <th>Resolves to...</th>
           <th>Notes</th>
         </tr>
       </thead>
@@ -185,29 +185,29 @@ template = """
       <thead>
         <tr>
           <th><code>@extend</code></th>
-          <th>text-align</th>
+          <th>Resolves to...</th>
           <th>Notes</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td><code>%text-left-xs</code></td>
-          <td>left</td>
+          <td>text-align: left</td>
           <td></td>
         </tr>
         <tr>
           <td><code>%text-right-xs</code></td>
-          <td>right</td>
+          <td>text-align: right</td>
           <td></td>
         </tr>
         <tr>
           <td><code>%text-center-xs</code></td>
-          <td>center</td>
+          <td>text-align: center</td>
           <td></td>
         </tr>
         <tr>
           <td><code>%text-justify-xs</code></td>
-          <td>justify</td>
+          <td>text-align: justify</td>
           <td></td>
         </tr>
       </tbody>

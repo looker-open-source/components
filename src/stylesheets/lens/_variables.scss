@@ -223,9 +223,9 @@ $th-border-color: #d2d3d4;
 // =========================================
 // Borders
 // =========================================
-$border-color-dark:   #d2d3d4;
-$border-color-normal: #e4e5e6;
-$border-color-light:  #f6f6f7;
+$border-color-dark:   gray-color(gray-3);
+$border-color-normal: gray-color(gray-2);
+$border-color-light:  gray-color(gray-1);
 $border-types: (top: t, bottom: b, left: l, right: r);
 $border-values: normal, dark, light;
 

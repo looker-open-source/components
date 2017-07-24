@@ -23,30 +23,25 @@ template = """
       <thead>
         <tr>
           <th><code>@extend</code></th>
-          <th>Display value</th>
-          <th>Notes</th>
+          <th>Resolves to...</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td><code>%block-xs</code></td>
-          <td>block</td>
-          <td></td>
+          <td>dislay: block</td>
         </tr>
         <tr>
           <td><code>%inline-xs</code></td>
-          <td>inline</td>
-          <td></td>
+          <td>dislay: inline</td>
         </tr>
         <tr>
           <td><code>%inline-block-xs</code></td>
-          <td>inline-block</td>
-          <td></td>
+          <td>dislay: inline-block</td>
         </tr>
         <tr>
           <td><code>%hide-xs</code></td>
-          <td>none</td>
-          <td></td>
+          <td>dislay: none</td>
         </tr>
       </tbody>
     </table>
@@ -63,30 +58,25 @@ template = """
       <thead>
         <tr>
           <th><code>@extend</code></th>
-          <th>Position value</th>
-          <th>Notes</th>
+          <th>Resolves to...</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td><code>%relative-xs</code></td>
-          <td>relative</td>
-          <td></td>
+          <td>position: relative</td>
         </tr>
         <tr>
           <td><code>%absolute-xs</code></td>
-          <td>absolute</td>
-          <td></td>
+          <td>position: absolute</td>
         </tr>
         <tr>
           <td><code>%fixed-xs</code></td>
-          <td>fixed</td>
-          <td></td>
+          <td>position: fixed</td>
         </tr>
         <tr>
           <td><code>%static-xs</code></td>
-          <td>static</td>
-          <td></td>
+          <td>position: static</td>
         </tr>
       </tbody>
     </table>
@@ -98,30 +88,25 @@ template = """
       <thead>
         <tr>
           <th><code>@extend</code></th>
-          <th>value</th>
-          <th>Notes</th>
+          <th>Resolves to...</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td><code>%pos-t-$n-xs</code></td>
           <td>top: $n</td>
-          <td></td>
         </tr>
         <tr>
           <td><code>%pos-b-$n-xs</code></td>
           <td>bottom: $n</td>
-          <td></td>
         </tr>
         <tr>
           <td><code>%pos-l-$n-xs</code></td>
           <td>left: $n</td>
-          <td></td>
         </tr>
         <tr>
           <td><code>%pos-r-$n-xs</code></td>
           <td>right: $n</td>
-          <td></td>
         </tr>
       </tbody>
     </table>
@@ -147,25 +132,21 @@ template = """
       <thead>
         <tr>
           <th><code>@extend</code></th>
-          <th>Float value</th>
-          <th>Notes</th>
+          <th>Resolves to...</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td><code>%float-l-xs</code></td>
-          <td>left</td>
-          <td></td>
+          <td>float: left</td>
         </tr>
         <tr>
           <td><code>%float-r-xs</code></td>
-          <td>right</td>
-          <td></td>
+          <td>float: right</td>
         </tr>
         <tr>
           <td><code>%float-none-xs</code></td>
-          <td>none</td>
-          <td></td>
+          <td>float: none</td>
         </tr>
       </tbody>
     </table>
@@ -187,30 +168,25 @@ template = """
       <thead>
         <tr>
           <th><code>@extend</code></th>
-          <th>z-index value</th>
-          <th>Notes</th>
+          <th>Resolves to...</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td><code>%z-1-xs</code></td>
-          <td>100</td>
-          <td></td>
+          <td>z-index: 100</td>
         </tr>
         <tr>
           <td><code>%z-2-xs</code></td>
-          <td>200</td>
-          <td></td>
+          <td>z-index: 200</td>
         </tr>
         <tr>
           <td><code>%z-3-xs</code></td>
-          <td>300</td>
-          <td></td>
+          <td>z-index: 300</td>
         </tr>
         <tr>
           <td><code>%z-4-xs</code></td>
-          <td>400</td>
-          <td></td>
+          <td>z-index: 400</td>
         </tr>
       </tbody>
     </table>
@@ -224,25 +200,21 @@ template = """
       <thead>
         <tr>
           <th><code>@extend</code></th>
-          <th>vertical-align value</th>
-          <th>Notes</th>
+          <th>Resolves to...</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td><code>%align-top-xs</code></td>
-          <td>top</td>
-          <td></td>
+          <td>vertical-align: top</td>
         </tr>
         <tr>
           <td><code>%align-middle-xs</code></td>
-          <td>middle</td>
-          <td></td>
+          <td>vertical-align: middle</td>
         </tr>
         <tr>
           <td><code>%align-bottom-xs</code></td>
-          <td>bottom</td>
-          <td></td>
+          <td>vertical-align: bottom</td>
         </tr>
       </tbody>
     </table>
@@ -257,7 +229,7 @@ template = """
       <thead>
         <tr>
           <th><code>@extend</code></th>
-          <th>transform value</th>
+          <th>Resolves to...</th>
           <th>Notes</th>
         </tr>
       </thead>

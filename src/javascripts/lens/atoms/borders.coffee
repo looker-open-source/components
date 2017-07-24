@@ -19,127 +19,227 @@ template = """
 
   <section id="borders-section">
     <div id="borders" title="Adding Borders" class="inpage-anchor"></div>
-    <h2>Border</h2>
-    <p>To adjust borders on elements, use the following classes: <code>.border-xs</code>, <code>.border-t-xs</code>, <code>.border-m-xs</code>, <code>.border-l-xs</code>, <code>.border-r-xs</code>. Use <code>dark</code>, <code>light</code> modifiers to change the color of the border.</p>
-    <div class="col">
-      <div class="col col-40-sm">
-        <p><strong>Sides</strong></p>
-        <ul class="list-unstyled">
-          <li><code>t</code> = top</li>
-          <li><code>b</code> = bottom</li>
-          <li><code>l</code> = left</li>
-          <li><code>r</code> = right</li>
-        </ul>
-      </div>
-    </div>
+    <h2>Adding Borders</h2>
+    <h3>Default Border</h3>
+    <table class="table-content">
+      <thead>
+        <tr>
+          <th><code>@extend</code></th>
+          <th>Resolves to...</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>%border-xs</code></td>
+          <td>border: 1px solid $border-color-normal</td>
+          <td>All sides of the element</td>
+        </tr>
+        <tr>
+          <td><code>%border-t-xs</code></td>
+          <td>border-top: 1px solid $border-color-normal</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>%border-b-xs</code></td>
+          <td>border-bottom: 1px solid $border-color-normal</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>%border-r-xs</code></td>
+          <td>border-right: 1px solid $border-color-normal</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>%border-l-xs</code></td>
+          <td>border-left: 1px solid $border-color-normal</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
 
-    <h3>Normal</h3>
-    <div class="border-xs inline-xs p-1-xs m-r-1-xs">.border-xs</div>
-    <div class="border-t-xs inline-xs p-1-xs m-r-1-xs">.border-t-xs</div>
-    <div class="border-b-xs inline-xs p-1-xs m-r-1-xs">.border-b-xs</div>
-    <div class="border-l-xs inline-xs p-1-xs m-r-1-xs">.border-l-xs</div>
-    <div class="border-r-xs inline-xs p-1-xs">.border-r-xs</div>
+    <h3>Different Colors</h3>
+    <p>Lens provides an easy way to add lighter or darker gray borders. Simply
+      insert <code>light</code> or <code>dark</code> into the class name.</p>
+    <p>To use any other Lens color as a border for your custom element,
+      extend the <code>%border-color-[color]</code> classes as outlined in the
+      <a ui-sref="colors">colors</a> section.
+    <table class="table-content">
+      <thead>
+        <tr>
+          <th class="col-30-xs"><code>@extend</code></th>
+          <th>Resolves to...</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>%border-light-xs</code></td>
+          <td>border: 1px solid $border-color-light</td>
+          <td>All sides of the element</td>
+        </tr>
+        <tr>
+          <td><code>%border-dark-xs</code></td>
+          <td>border: 1px solid $border-color-dark</td>
+          <td>All sides of the element</td>
+        </tr>
+        <tr>
+          <td><code>%border-[side]-light-xs</code></td>
+          <td>border-[side]: 1px solid $border-color-normal</td>
+          <td><code>[side]</code> is t, b, r, l for top, bottom, right or left.</td>
+        </tr>
+        <tr>
+          <td><code>%border-[side]-dark-xs</code></td>
+          <td>border-[side]: 1px solid $border-color-dark</td>
+          <td><code>[side]</code> is t, b, r, l for top, bottom, right or left.</td>
+        </tr>
+      </tbody>
+    </table>
 
-    <h3>Dark</h3>
-    <div class="border-dark-xs inline-xs p-1-xs m-r-1-xs">.border-dark-xs</div>
-    <div class="border-t-dark-xs inline-xs p-1-xs m-r-1-xs">.border-t-dark-xs</div>
-    <div class="border-b-dark-xs inline-xs p-1-xs m-r-1-xs">.border-b-dark-xs</div>
-    <div class="border-l-dark-xs inline-xs p-1-xs m-r-1-xs">.border-l-dark-xs</div>
-    <div class="border-r-dark-xs inline-xs p-1-xs">.border-r-dark-xs</div>
-
-    <h3>Light</h3>
-    <div class="border-light-xs inline-xs p-1-xs m-r-1-xs">.border-light-xs</div>
-    <div class="border-t-light-xs inline-xs p-1-xs m-r-1-xs">.border-t-light-xs</div>
-    <div class="border-b-light-xs inline-xs p-1-xs m-r-1-xs">.border-b-light-xs</div>
-    <div class="border-l-light-xs inline-xs p-1-xs m-r-1-xs">.border-l-light-xs</div>
-    <div class="border-r-light-xs inline-xs p-1-xs">.border-r-light-xs</div>
-    <div class="guide-code">
-  <pre><code class="language-html">&lt;div class="border-xs inline-xs p-1-xs m-r-1-xs"&gt;.border-xs&lt;/div&gt;
-  &lt;div class="border-t-xs inline-xs p-1-xs m-r-1-xs"&gt;.border-t-xs&lt;/div&gt;
-  &lt;div class="border-b-xs inline-xs p-1-xs m-r-1-xs"&gt;.border-b-xs&lt;/div&gt;
-  &lt;div class="border-l-xs inline-xs p-1-xs m-r-1-xs"&gt;.border-l-xs&lt;/div&gt;
-  &lt;div class="border-r-xs inline-xs p-1-xs m-r-1-xs"&gt;.border-r-xs&lt;/div&gt;</code></pre>
-    </div>
   </section>
 
   <section id="removing-borders-section">
     <div id="removing-borders" title="Removing Borders" class="inpage-anchor"></div>
     <h2>Removing Borders</h2>
-    <p>To get a little more control over borders at different breakpoints, we've included a <code>.border-none-xs</code> utility classes. These can be applied to all borders or to specific sides.</p>
-    <div class="border-dark-xs border-none-xs inline-xs p-1-xs m-r-1-xs">.border-none-xs</div>
-    <div class="border-dark-xs border-none-t-xs inline-xs p-1-xs m-r-1-xs">.border-none-t-xs</div>
-    <div class="border-dark-xs border-none-r-xs inline-xs p-1-xs m-r-1-xs">.border-none-r-xs</div>
-    <div class="border-dark-xs border-none-b-xs inline-xs p-1-xs m-r-1-xs">.border-none-b-xs</div>
-    <div class="border-dark-xs border-none-l-xs inline-xs p-1-xs">.border-none-l-xs</div>
-    <div class="guide-code">
-  <pre><code class="language-html">&lt;div class="border-dark-xs border-none-xs inline-xs p-1-xs m-r-1-xs"&gt;.border-none-xs&lt;/div&gt;
-  &lt;div class="border-dark-xs border-none-t-xs inline-xs p-1-xs m-r-1-xs"&gt;.border-t-xs&lt;/div&gt;
-  &lt;div class="border-dark-xs border-none-r-xs inline-xs p-1-xs m-r-1-xs"&gt;.border-r-xs&lt;/div&gt;
-  &lt;div class="border-dark-xs border-none-b-xs inline-xs p-1-xs m-r-1-xs"&gt;.border-b-xs&lt;/div&gt;
-  &lt;div class="border-dark-xs border-none-l-xs inline-xs p-1-xs"&gt;.border-l-xs&lt;/div&gt;</code></pre>
-    </div>
+    <p>To get a little more control over borders at different breakpoints
+       <code>.border-none-xs</code> can be applied to remove all borders or borders on specific sides.</p>
+    <table class="table-content">
+      <thead>
+        <tr>
+          <th><code>@extend</code> Class</th>
+          <th>Resolves to...</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>%border-none-xs</code></td>
+          <td>border: none</td>
+          <td>removes all borders on the element</td>
+        </tr>
+        <tr>
+          <td><code>%border-none-t-xs</code></td>
+          <td>border-top: none</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>%border-none-b-xs</code></td>
+          <td>border-bottom: none</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>%border-none-r-xs</code></td>
+          <td>border-right: none</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>%border-none-l-xs</code></td>
+          <td>border-left: none</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
   </section>
 
   <section id="rounded-corners-section">
     <div id="rounded-corners" title="Rounded Corners" class="inpage-anchor"></div>
     <h2>Rounded Corners</h2>
-    <p>Its never been easier to add border radius to different corners of an elements. Using <code>.round</code>, <code>.round-t</code>, <code>.round-b</code>, <code>.round-l</code>, <code>.round-r</code> will apply border radius to elements.</p>
-    <div class="border-dark-xs round inline-xs p-1-xs m-r-1-xs">.round</div>
-    <div class="border-dark-xs round-t inline-xs p-1-xs m-r-1-xs">.round-t</div>
-    <div class="border-dark-xs round-b inline-xs p-1-xs m-r-1-xs">.round-b</div>
-    <div class="border-dark-xs round-l inline-xs p-1-xs m-r-1-xs">.round-l</div>
-    <div class="border-dark-xs round-r inline-xs p-1-xs">.round-r</div>
-    <div class="guide-code">
-  <pre><code class="language-html">&lt;div class="border-dark-xs round inline-xs p-1-xs m-r-1-xs"&gt;.round&lt;/div&gt;
-  &lt;div class="border-dark-xs round-t inline-xs p-1-xs m-r-1-xs"&gt;.round-t&lt;/div&gt;
-  &lt;div class="border-dark-xs round-b inline-xs p-1-xs m-r-1-xs"&gt;.round-b&lt;/div&gt;
-  &lt;div class="border-dark-xs round-l inline-xs p-1-xs m-r-1-xs"&gt;.round-l&lt;/div&gt;
-  &lt;div class="border-dark-xs round-r inline-xs p-1-xs"&gt;.round-r&lt;/div&gt;</code></pre>
-    </div>
+    <p>Use the following to apply the default border-radius to any element.</p>
+    <table class="table-content">
+      <thead>
+        <tr>
+          <th><code>@extend</code></th>
+          <th>Resolves to...</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>%round</code></td>
+          <td>border-radius: $border-radius</td>
+          <td>All corners of the element</td>
+        </tr>
+        <tr>
+          <td><code>%round-t</code></td>
+          <td>border-radius: $border-radius, $border-radius, 0, 0 </td>
+          <td>Top two corners</td>
+        </tr>
+        <tr>
+          <td><code>%round-b</code></td>
+          <td>border-radius: 0, 0, $border-radius, $border-radius</td>
+          <td>Bottom two corners</td>
+        </tr>
+        <tr>
+          <td><code>%round-r</code></td>
+          <td>border-radius: 0, $border-radius, $border-radius, 0</td>
+          <td>Right two corners</td>
+        </tr>
+        <tr>
+          <td><code>%round-l</code></td>
+          <td>border-radius: $border-radius, 0, 0, $border-radius</td>
+          <td>Left two corners</td>
+        </tr>
+      </tbody>
+    </table>
   </section>
 
   <section id="circles-section">
     <div id="circles" title="Circles" class="inpage-anchor"></div>
     <h2>Circle</h2>
     <p>To turn an element into a circle, use the <code>.circle</code> class.</p>
-    <div class="guide-example">
-      <div class="guide-example-demo">
-        <div class="border-dark-xs circle" style="width: 100px; height: 100px;"></div>
-      </div>
-      <div class="guide-example-code">
-        <pre><code class="language-html">&lt;div class="border-dark-xs circle" style="width: 100px; height: 100px;"&gt;&lt;/div&gt;</code></pre>
-      </div>
-    </div>
+    <table class="table-content">
+      <thead>
+        <tr>
+          <th><code>@extend</code></th>
+          <th>Resolves to...</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>%circle</code></td>
+          <td>border-radius: 9999px</td>
+          <td>Works unless you're making something wider or taller than 9999 px</td>
+        </tr>
+      </tbody>
+    </table>
   </section>
 
-  <section id="horizontal-rules-section">
-    <div id="horizontal-rules" title="Horizontal Rules" class="inpage-anchor"></div>
-    <h2>Horizontal Rules</h2>
-    <hr>
+  <section id="variables-section">
+    <div id="variables" title="Variables" class="inpage-anchor"></div>
+    <h2 >Variables</h2>
+    <table class="table-content">
+      <thead>
+        <tr>
+          <th>Variable</th>
+          <th>Value</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>$border-color-normal</code></td>
+          <td>gray-color(gray-2)</td>
+          <td>the default border color #e4e5e6</td>
+        </tr>
+        <tr>
+          <td><code>$border-color-light</code></td>
+          <td>gray-color(gray-1)</td>
+          <td>#f6f6f7</td>
+        </tr>
+        <tr>
+          <td><code>$border-color-dark</code></td>
+          <td>gray-color(gray-2)</td>
+          <td>#d2d3d4</td>
+        </tr>
+        <tr>
+          <td><code>$border-radius</code></td>
+          <td>5px</td>
+          <td>Used in buttons, modal corners, etc.</td>
+        </tr>
+      </tbody>
+    </table>
   </section>
-
-  <h2>Variables</h2>
-    <p>Used in the utility classes above.</p>
-    <p class="bold">Border Color</p>
-    <div class="guide-code">
-  <pre><code class="language-css">.custom-element
-    border-color: $border-color-dark
-  </code></pre>
-    <p><code>
-      $border-color-dark<br />
-      $border-color-mid<br />
-      $border-color-normal<br />
-      $border-color-light
-    </code></p>
-
-    <p class="bold">Border Radius</p>
-    <div class="guide-code">
-  <pre><code class="language-css">.custom-element
-    border-radius: $border-radius
-  </code></pre>
-    <p><code>
-      $border-radius<br />
-    </code></p>
 
 </lens-main>
 """
