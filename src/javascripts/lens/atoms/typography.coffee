@@ -114,28 +114,39 @@ template = """
         <tr>
           <th><code>@extend</code></th>
           <th>Resolves to...</th>
+          <th>Variable Value</th>
           <th>Notes</th>
         </tr>
       </thead>
       <tbody>
         <tr>
+          <td><code>%light</code></td>
+          <td>font-weight: <code>$light</code></td>
+          <td>300</td>
+          <td></td>
+        </tr>
+        <tr>
           <td><code>%regular</code></td>
-          <td>font-weight: normal/400</td>
+          <td>font-weight: <code>$regular</code></td>
+          <td>400</code></td>
           <td>Default font-weight</td>
         </tr>
         <tr>
-          <td><code>%light</code></td>
-          <td>font-weight: 300</td>
+          <td><code>%semi-bold</code></td>
+          <td>font-weight: <code>$semi-bold</code></td>
+          <td>600</td>
           <td></td>
         </tr>
         <tr>
           <td><code>%bold</code></td>
-          <td>font-weight: 600</td>
+          <td>font-weight: <code>$bold</code></td>
+          <td>700</td>
           <td></td>
         </tr>
         <tr>
           <td><code>%extra-bold</code></td>
-          <td>font-weight: 700</td>
+          <td>font-weight: <code>$extra-bold</code></td>
+          <td>900</td>
           <td></td>
         </tr>
       </tbody>

@@ -17,135 +17,132 @@ m.directive "buttons", ->
 template = """
 <lens-main>
 
-  <section id="default-section">
-    <div id="default" title="Default" class="inpage-anchor"></div>
-    <h2>Default</h2>
-    <p>Use the class, <code>button</code> for this default style button. If you are using the <code>&lt;button&gt;</code> element, always specify a <code>type</code>. When using the <code>&lt;a&gt;</code> tag, include <code>role="button"</code> for accessibility. Each button is available in multiple sizes, take note of examples for classes.</p>
-    <a class="button" href>Normal</a>
-    <a class="button button--small-xs" href>Small</a>
-    <a class="button button--xsmall-xs" href>X-Small</a>
-    <a class="button button--large-xs" href>Large</a>
-    <a class="button button--xlarge-xs" href>X-Large</a>
-    <div class="guide-code">
-      <pre><code class="language-html">&lt;a class="button" href&gt;Normal&lt;/a&gt;</code></pre>
-      <span class="button--small">
-        <pre><code class="language-html">&lt;a class="button button--small-xs" href&gt;Small&lt;/a&gt;</code></pre>
-      </span>
-      <span class="button--xsmall">
-        <pre><code class="language-html">&lt;a class="button button--xsmall-xs" href&gt;X-Small&lt;/a&gt;</code></pre>
-      </span>
-      <span class="button--large">
-        <pre><code class="language-html">&lt;a class="button button--large-xs" href&gt;Large&lt;/a&gt;</code></pre>
-      </span>
-      <span class="button--xlarge">
-        <pre><code class="language-html">&lt;a class="button button--xlarge-xs" href&gt;X-Large&lt;/a&gt;</code></pre>
-      </span>
+  <p>Buttons should be used for in-page or contextual
+  actions. For navigation actions, use a link instead of a button.</p>
+
+  <section id="code-section">
+    <div id="code" title="Code" class="inpage-anchor"></div>
+    <h2>Code</h2>
+    <p>Buttons can be built using either the <code>&lt;a&gt;</code> or
+      <code>&lt;button&gt;</code> element. If you are using the <code>&lt;button&gt;</code> element,
+      always specify a <code>type</code> (button, sumbit, reset). When using the
+      <code>&lt;a&gt;</code>, include <code>role="button"</code> for accessibility.</p>
+    <p>To change the button type, size or state, add modifiers to the class.</p>
+    <div class="guide-example">
+      <div class="guide-example-demo">
+        <a class="button" role="button" href>A Normal Button</a>
+        <button type="button" class="button button--primary">Primary Button</button>
+      </div>
+      <div class="guide-example-code">
+<pre><code class="language-html">&lt;a role="button" class="button" href&gt;A Normal Button&lt;/button&gt;
+&lt;button type="button" class="button button--primary" href&gt;Primary Button&lt;/button&gt;
+</code></pre>
+      </div>
     </div>
   </section>
 
-  <section id="primary-section">
-    <div id="primary" title="Primary" class="inpage-anchor"></div>
-    <h2>Primary</h2>
-    <p>Primary buttons are used to indicate a <em>primary</em> action on the page. Use the class, <code>.button.button--primary</code>, to get a primary button on your page.</p>
-    <a class="button button--primary" href>Normal</a>
-    <a class="button button--primary button--small-xs" href>Small</a>
-    <a class="button button--primary button--xsmall-xs" href>X-Small</a>
-    <a class="button button--primary button--large-xs" href>Large</a>
-    <a class="button button--primary button--xlarge-xs" href>X-Large</a>
-    <div class="guide-code">
-      <pre><code class="language-html">&lt;a class="button button--primary" href>Normal&lt;/a&gt;</code></pre>
-      <span class="button--small">
-        <pre><code class="language-html">&lt;a class="button button--primary button--small-xs" href&gt;Small&lt;/a&gt;</code></pre>
-      </span>
-      <span class="button--xsmall">
-        <pre><code class="language-html">&lt;a class="button button--primary button--xsmall-xs" href&gt;X-Small&lt;/a&gt;</code></pre>
-      </span>
-      <span class="button--large">
-        <pre><code class="language-html">&lt;a class="button button--primary button--large-xs" href&gt;Large&lt;/a&gt;</code></pre>
-      </span>
-      <span class="button--xlarge">
-        <pre><code class="language-html">&lt;a class="button button--primary button--xlarge-xs" href&gt;X-Large&lt;/a&gt;</code></pre>
-      </span>
-    </div>
+  <section id="types-section">
+    <div id="types" title="Types" class="inpage-anchor"></div>
+    <h2>Types</h2>
+    <p>Button types signal to the user key properties of the action
+      they are about to take.</p>
+    <table class="table-content">
+      <thead>
+        <tr>
+          <th>Button Type</th>
+          <th class="col-20-xs">Modifier</th>
+          <th>Example</th>
+          <th>Use</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Normal</td>
+          <td>Not needed</td>
+          <td><a class="button" role="button" href>Normal</a></td>
+          <td>Use when there are additional actions or no primary action for the user.</td>
+        </tr>
+        <tr>
+          <td>Primary</td>
+          <td><code>.button--primary</code></td>
+          <td><a class="button button--primary" role="button" href>Primary</a></td>
+          <td>A primary button indicates the key action the user should take. There should only be one primary action in any situation.</td>
+        </tr>
+        <tr>
+          <td>Alert</td>
+          <td><code>.button--alert</code></td>
+          <td><a class="button button--alert" role="button" href>Alert</a></td>
+          <td>Alert buttons are used to indicate a urgent or negative action on the page.</td>
+        </tr>
+      </tbody>
+    </table>
   </section>
 
-  <section id="alert-section">
-    <div id="alert" title="Alert" class="inpage-anchor"></div>
-    <h2>Alert</h2>
-    <p>Alert buttons are used to indicate a urgent or negative action on the page. To access these styles, use the class, <code>.button.button--alert</code>.</p>
-    <a class="button button--alert" href>Normal</a>
-    <a class="button button--alert button--small-xs" href>Small</a>
-    <a class="button button--alert button--xsmall-xs" href>X-Small</a>
-    <a class="button button--alert button--large-xs" href>Large</a>
-    <a class="button button--alert button--xlarge-xs" href>X-Large</a>
-    <div class="guide-code">
-      <pre><code class="language-html">&lt;a class="button button--alert" href&gt;Normal&lt;/a&gt;</code></pre>
-      <span class="button--small">
-        <pre><code class="language-html">&lt;a class="button button--alert button--small-xs" href&gt;Small&lt;/a&gt;</code></pre>
-      </span>
-      <span class="button--xsmall">
-        <pre><code class="language-html">&lt;a class="button button--alert button--xsmall-xs" href&gt;X-Small&lt;/a&gt;</code></pre>
-      </span>
-      <span class="button--large">
-        <pre><code class="language-html">&lt;a class="button button--alert button--large-xs" href&gt;Large&lt;/a&gt;</code></pre>
-      </span>
-      <span class="button--xlarge">
-        <pre><code class="language-html">&lt;a class="button button--alert button--xlarge-xs" href&gt;X-Large&lt;/a&gt;</code></pre>
-      </span>
-    </div>
-  </div>
-  </section>
+  <section id="sizes-section">
+    <div id="sizes" title="Sizes" class="inpage-anchor"></div>
+    <h2>Sizes</h2>
+    <p>Lens has 4 button sizes that can be controlled using the <a ui-sref="responsive">responsive suffixes</a>.
+    <table class="table-content">
+      <thead>
+        <tr>
+          <th>Size</th>
+          <th>Modifier</th>
+          <th>Example</th>
+          <th>Use</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Extra Small</td>
+          <td><code>.button--xsmall-xs</td>
+          <td><a class="button button--xsmall-xs" role="button" href>Extra Small</a></td>
+          <td>for super tiny things.</td>
+        </tr>
+        <tr>
+          <td>Small</td>
+          <td><code>.button--small-xs</td>
+          <td><a class="button button--small-xs" role="button" href>Small</a></td>
+          <td>for kinda tiny things.</td>
+        </tr>
+        <tr>
+          <td>Normal</td>
+          <td><code>.button--xsmall-xs</td>
+          <td><a class="button button--normal-xs" role="button" href>Normal</a></td>
+          <td>Typically what you'll use...</td>
+        </tr>
+        <tr>
+          <td>Large</td>
+          <td><code>.button--large-xs</td>
+          <td><a class="button button--large-xs" role="button" href>Large</a></td>
+          <td>for attention!</td>
+        </tr>
+      </tbody>
+    </table>
 
+  </section>
 
   <section id="disabled-section">
-    <div id="disabled" title="Disabled" class="inpage-anchor"></div>
-    <h2>Disabled</h2>
-    <p>Disabled buttons are used when the action on the page is blocked to the user. Get this button on a page by using the class, <code>.button.button--disabled-light</code>.</p>
-    <a class="button button--disabled button--disabled-light" href>Normal</a>
-    <a class="button button--disabled button--disabled-light button--small-xs" href>Small</a>
-    <a class="button button--disabled button--disabled-light button--xsmall-xs" href>X-Small</a>
-    <a class="button button--disabled button--disabled-light button--large-xs" href>Large</a>
-    <a class="button button--disabled button--disabled-light button--xlarge-xs" href>X-Large</a>
-    <div class="guide-code">
-      <pre><code class="language-html">&lt;a class="button button--disabled-light" href&gt;Normal&lt;/a&gt;</code></pre>
-      <span class="button--small">
-        <pre><code class="language-html">&lt;a class="button button--disabled button--disabled-light button--small-xs" href&gt;Small&lt;/a&gt;</code></pre>
-      </span>
-      <span class="button--xsmall">
-        <pre><code class="language-html">&lt;a class="button button--disabled button--disabled-light button--xsmall-xs" href&gt;X-Small&lt;/a&gt;</code></pre>
-      </span>
-      <span class="button--large">
-        <pre><code class="language-html">&lt;a class="button button--disabled button--disabled-light button--large-xs" href&gt;Large&lt;/a&gt;</code></pre>
-      </span>
-      <span class="button--xlarge">
-        <pre><code class="language-html">&lt;a class="button button--disabled button--disabled-light button--xlarge-xs" href&gt;X-Large&lt;/a&gt;</code></pre>
-      </span>
+    <div id="disabled" title="Disabling" class="inpage-anchor"></div>
+    <h2>Disabling</h2>
+    <p>Disable a button when the action on the page is blocked to the user.
+      Appply the modifier <code>.button--disabled</code> to any size or type
+      of button to disable it.</p>
+    <div class="guide-example">
+      <div class="guide-example-demo">
+        <a role="button" class="button button--disabled" href>Normal</a>
+        <a role="button" class="button button--primary button--disabled" role="button" href>Primary</a>
+        <a role="button" class="button button--alert button--disabled" role="button" href>Primary</a>
+      </div>
+      <div class="guide-example-code">
+<pre><code class="language-html">&lt;a role="button" class="button button--disabled" href&gt;Normal&lt;/button&gt;
+&lt;a role="button" class="button button--primary button--disabled" href&gt;Normal&lt;/button&gt;
+&lt;a role="button" class="button button--alert button--disabled" href&gt;Normal&lt;/button&gt;
+</code></pre>
+      </div>
     </div>
-
-    <p>Use the class, <code>.button.button--disabled-dark</code>, to get a disabled button that works well on a dark background.</p>
-    <a class="button button--disabled button--disabled-dark" href>Normal</a>
-    <a class="button button--disabled button--disabled-dark button--small-xs" href>Small</a>
-    <a class="button button--disabled button--disabled-dark button--xsmall-xs" href>X-Small</a>
-    <a class="button button--disabled button--disabled-dark button--large-xs" href>Large</a>
-    <a class="button button--disabled button--disabled-dark button--xlarge-xs" href>X-Large</a>
-    <div class="guide-code">
-      <pre><code class="language-html">&lt;a class="button button--disabled-dark" href&gt;Normal&lt;/a&gt;</code></pre>
-      <span class="button--small">
-        <pre><code class="language-html">&lt;a class="button button--disabled button--disabled-dark button--small-xs" href&gt;Small&lt;/a&gt;</code></pre>
-      </span>
-      <span class="button--xsmall">
-        <pre><code class="language-html">&lt;a class="button button--disabled button--disabled-dark button--xsmall-xs" href&gt;X-Small&lt;/a&gt;</code></pre>
-      </span>
-      <span class="button--large">
-        <pre><code class="language-html">&lt;a class="button button--disabled button--disabled-dark button--large-xs" href&gt;Large&lt;/a&gt;</code></pre>
-      </span>
-      <span class="button--xlarge">
-        <pre><code class="language-html">&lt;a class="button button--disabled button--disabled-dark button--xlarge-xs" href&gt;X-Large&lt;/a&gt;</code></pre>
-      </span>
-    </div>
-  </div>
   </section>
 
+<!--
   <section id="inverse-section">
     <div id="inverse" title="Inverse" class="inpage-anchor"></div>
     <h2>Inverse</h2>
@@ -165,94 +162,42 @@ template = """
     </div>
   </div>
   </section>
+-->
 
   <section id="split-button-section">
     <div id="split-button" title="Split Button" class="inpage-anchor"></div>
     <h2>Split buttons</h2>
-    <p>Split buttons are used when you need a button that contains two actions. To accomplish this, wrap your buttons in <code>&lt;div class="split-button"&gt;</code>. Use <code>&lt;div class="split-button w-full"&gt;</code> for your buttons to take up the full width of the container.</p>
-    <div class="split-button">
-      <a class="button" href ng-class="{active: active == 'left'}" ng-click="active = 'left'">Left</a>
-      <a class="button" href ng-class="{active: active == 'middle'}" ng-click="active = 'middle'">Middle</a>
-      <a class="button" href ng-class="{active: active == 'right'}" ng-click="active = 'right'">Right</a>
-    </div>
-    <div class="split-button">
-      <a class="button button--small-xs" href ng-class="{active: active == 'left'}" ng-click="active = 'left'">Left</a>
-      <a class="button button--small-xs" href ng-class="{active: active == 'middle'}" ng-click="active = 'middle'">Middle</a>
-      <a class="button button--small-xs" href ng-class="{active: active == 'right'}" ng-click="active = 'right'">Right</a>
-    </div>
-    <div class="split-button">
-      <a class="button button--xsmall-xs" href ng-class="{active: active == 'left'}" ng-click="active = 'left'">Left</a>
-      <a class="button button--xsmall-xs" href ng-class="{active: active == 'middle'}" ng-click="active = 'middle'">Middle</a>
-      <a class="button button--xsmall-xs" href ng-class="{active: active == 'right'}" ng-click="active = 'right'">Right</a>
-    </div>
-    <div>
-      <div class="split-button">
-        <a class="button button--neutral" href ng-class="{active: active == 'left'}" ng-click="active = 'left'">Left</a>
-        <a class="button button--neutral" href ng-class="{active: active == 'middle'}" ng-click="active = 'middle'">Middle</a>
-        <a class="button button--neutral" href ng-class="{active: active == 'right'}" ng-click="active = 'right'">Right</a>
+    <p class="todo">This is maybe it's own separate component...? when do we use this?
+    right now it's for filtering states on Explore page... one should always be selected, eh?
+    might also need to tweak - thar be some funkiness with active/hover here.</p>
+    <p>Split buttons are used when you need a button that contains two or more actions.
+       To accomplish this, wrap your buttons in <code>&lt;div class="split-button"&gt;</code>.
+    </p>
+    <div class="guide-example">
+      <div class="guide-example-demo">
+        <div class="split-button">
+          <a class="button" href ng-class="{active: active == 'left'}" ng-click="active = 'left'">Left</a>
+          <a class="button" href ng-class="{active: active == 'middle'}" ng-click="active = 'middle'">Middle</a>
+          <a class="button" href ng-class="{active: active == 'right'}" ng-click="active = 'right'">Right</a>
+        </div>
       </div>
-      <div class="split-button">
-        <a class="button button--neutral button--small-xs" href ng-class="{active: active == 'left'}" ng-click="active = 'left'">Left</a>
-        <a class="button button--neutral button--small-xs" href ng-class="{active: active == 'middle'}" ng-click="active = 'middle'">Middle</a>
-        <a class="button button--neutral button--small-xs" href ng-class="{active: active == 'right'}" ng-click="active = 'right'">Right</a>
-      </div>
-      <div class="split-button">
-        <a class="button button--neutral button--xsmall-xs" href ng-class="{active: active == 'left'}" ng-click="active = 'left'">Left</a>
-        <a class="button button--neutral button--xsmall-xs" href ng-class="{active: active == 'middle'}" ng-click="active = 'middle'">Middle</a>
-        <a class="button button--neutral button--xsmall-xs" href ng-class="{active: active == 'right'}" ng-click="active = 'right'">Right</a>
+      <div class="guide-example-code">
+        <pre><code class="language-html">&lt;div class="split-button"&gt;
+  &lt;a class="button" href&gt;Left&lt;/a&gt;
+  &lt;a class="button" href&gt;Middle&lt;/a&gt;
+  &lt;a class="button" href&gt;Right&lt;/a&gt;
+&lt;/div&gt;</code></pre>
       </div>
     </div>
+
+
+    <p>Use <code>&lt;div class="split-button w-full"&gt;</code> for your buttons to take up the full width of the container.</p>
     <div class="split-button w-full">
       <a class="button" href ng-class="{active: active == 'left'}" ng-click="active = 'left'">Left</a>
       <a class="button" href ng-class="{active: active == 'middle'}" ng-click="active = 'middle'">Middle</a>
       <a class="button" href ng-class="{active: active == 'right'}" ng-click="active = 'right'">Right</a>
     </div>
       <div class="guide-code">
-        <pre><code class="language-html">&lt;div class="split-button"&gt;
-  &lt;a class="button" href&gt;Left&lt;/a&gt;
-  &lt;a class="button" href&gt;Middle&lt;/a&gt;
-  &lt;a class="button" href&gt;Right&lt;/a&gt;
-&lt;/div&gt;</code></pre>
-        <span class="button--small">
-          <pre><code class="language-html">
-&lt;div class="split-button"&gt;
-  &lt;a class="button button--small-xs" href&gt;Left&lt;/a&gt;
-  &lt;a class="button button--small-xs" href&gt;Middle&lt;/a&gt;
-  &lt;a class="button button--small-xs" href&gt;Right&lt;/a&gt;
-&lt;/div&gt;</code></pre>
-        </span>
-        <span class="button--xsmall">
-          <pre><code class="language-html">
-&lt;div class="split-button"&gt;
-  &lt;a class="button button--xsmall-xs" href&gt;Left&lt;/a&gt;
-  &lt;a class="button button--xsmall-xs" href&gt;Middle&lt;/a&gt;
-  &lt;a class="button button--xsmall-xs" href&gt;Right&lt;/a&gt;
-&lt;/div&gt;</code></pre>
-        </span>
-
-        <pre><code class="language-html">&lt;div class="split-button"&gt;
-  &lt;a class="button button--neutral" href&gt;Left&lt;/a&gt;
-  &lt;a class="button button--neutral" href&gt;Middle&lt;/a&gt;
-  &lt;a class="button button--neutral" href&gt;Right&lt;/a&gt;
-&lt;/div&gt;</code></pre>
-
-        <span class="button--small">
-          <pre><code class="language-html">
-&lt;div class="split-button"&gt;
-  &lt;a class="button button--neutral button--small-xs" href&gt;Left&lt;/a&gt;
-  &lt;a class="button button--neutral button--small-xs" href&gt;Middle&lt;/a&gt;
-  &lt;a class="button button--neutral button--small-xs" href&gt;Right&lt;/a&gt;
-&lt;/div&gt;</code></pre>
-        </span>
-        <span class="button--xsmall">
-          <pre><code class="language-html">
-&lt;div class="split-button"&gt;
-  &lt;a class="button button--neutral button--xsmall-xs" href&gt;Left&lt;/a&gt;
-  &lt;a class="button button--neutral button--xsmall-xs" href&gt;Middle&lt;/a&gt;
-  &lt;a class="button button--neutral button--xsmall-xs" href&gt;Right&lt;/a&gt;
-&lt;/div&gt;</code></pre>
-        </span>
-
         <pre><code class="language-html">&lt;div class="split-button w-full"&gt;
   &lt;a class="button" href&gt;Left&lt;/a&gt;
   &lt;a class="button" href&gt;Middle&lt;/a&gt;
@@ -261,34 +206,6 @@ template = """
       </div>
     </div>
 
-  </section>
-
-  <section id="neutral-section">
-    <div id="neutral" title="Neutral" class="inpage-anchor"></div>
-    <h2>Neutral</h2>
-    <p class="todo">discuss if we really need this option....</p>
-    <p>Neutral buttons are used for <em>neutral</em> buttons on the page, like for whitelabeling. To access these styles, use the class, <code>.button.button--neutral</code>.</p>
-    <a class="button button--neutral" href>Normal</a>
-    <a class="button button--neutral button--small-xs" href>Small</a>
-    <a class="button button--neutral button--xsmall-xs" href>X-Small</a>
-    <a class="button button--neutral button--large-xs" href>Large</a>
-    <a class="button button--neutral button--xlarge-xs" href>X-Large</a>
-    <div class="guide-code">
-      <pre><code class="language-html">&lt;a class="button button--neutral" href&gt;Normal&lt;/a&gt;</code></pre>
-      <span class="button--small">
-        <pre><code class="language-html">&lt;a class="button button--neutral button--small-xs" href&gt;Small&lt;/a&gt;</code></pre>
-      </span>
-      <span class="button--xsmall">
-        <pre><code class="language-html">&lt;a class="button button--neutral button--xsmall-xs" href&gt;X-Small&lt;/a&gt;</code></pre>
-      </span>
-      <span class="button--large">
-        <pre><code class="language-html">&lt;a class="button button--neutral button--large-xs" href&gt;Large&lt;/a&gt;</code></pre>
-      </span>
-      <span class="button--xlarge">
-        <pre><code class="language-html">&lt;a class="button button--neutral button--xlarge-xs" href&gt;X-Large&lt;/a&gt;</code></pre>
-      </span>
-    </div>
-  </div>
   </section>
 
 

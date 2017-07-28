@@ -8,7 +8,7 @@ $lens-version: "0.1.0";
 // Colors
 // =========================================
 $brand-colors: (
-  "purple": #41327B,
+  "purple": #7E64E0,
   "gray":   #1C2027,
   "blue":   #0E88F1
 );
@@ -108,8 +108,10 @@ $text-size: (
 $brand-font: 'Open Sans', Helvetica, Arial, sans-serif;
 $code-font: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;
 $light: 300;
-$bold: 600;
-$extra-bold: 700;
+$normal: 400;
+$semi-bold: 600;
+$bold: 700;
+$extra-bold: 900;
 $text-alignments: left, right, center, justify;
 
 
@@ -125,74 +127,6 @@ $breakpoints: (
   xxl: 1440px
 );
 $grid-max-width: 1260px;
-
-
-
-// =========================================
-// Buttons
-// =========================================
-$alert-buttons: true;
-$disabled-buttons: true;
-$neutral-buttons: true;
-$inverse-buttons: true;
-$split-buttons: true;
-
-$border-radius: 5px;
-$button-font-size: 12px;
-$button-border-radius: $border-radius;
-$button-font: $brand-font;
-$button-text-transform: none;
-$button-font-weight: normal;
-$button-letter-spacing: normal;
-$button-line-height: null;
-$button-transition: none;
-$button-padding: 4px 12px;
-$button-margin: 12px;
-$button-default-bg: white;
-$button-default-border: 1px solid gray-color(gray-2);
-$button-default-font-color: ui-color(purple);
-$button-default-bg-hover: white;
-$button-default-font-color-hover: ui-color(purple);
-$button-default-border-hover: 1px solid ui-color(purple-light);
-
-$button-primary-bg: ui-color(purple);
-$button-primary-border-color: ui-color(purple);
-$button-primary-font-color: #fff;
-$button-primary-bg-hover: ui-color(purple-dark);
-$button-primary-border-color-hover: ui-color(purple-dark);
-$button-primary-font-color-hover: #fff;
-
-$button-alert-bg: ui-color(red-dark);
-$button-alert-border-color: ui-color(red-dark);
-$button-alert-font-color: #fff;
-$button-alert-bg-hover: ui-color(red);
-$button-alert-border-color-hover: ui-color(red);
-$button-alert-font-color-hover: #fff;
-
-$button-neutral-bg: gray-color(gray-2);
-$button-neutral-border-color: gray-color(gray-2);
-$button-neutral-font-color: gray-color(gray-7);
-$button-neutral-bg-hover: darken(gray-color(gray-2), 10%);
-$button-neutral-border-color-hover: gray-color(gray-2);
-$button-neutral-font-color-hover: gray-color(gray-7);
-
-$button-inverse-bg: #fff;
-$button-inverse-border-color: #fff;
-$button-inverse-font-color: ui-color(purple);
-$button-inverse-opacity: 0.88;
-$button-inverse-opacity-hover: 1;
-$button-inverse-bg-hover: #fff;
-$button-inverse-border-color-hover: #fff;
-$button-inverse-font-color-hover: ui-color(purple);
-
-// Button size style maps
-$button-sizes: (
-  normal: (font-size: 12px, padding-x: 4px, padding-y: 12px),
-  small: (font-size: 11px, padding-x: 5px,padding-y: 5px),
-  xsmall: (font-size: 11px, padding-x: 1px, padding-y: 5px),
-  large: false,
-  xlarge: false
-);
 
 
 
@@ -214,20 +148,92 @@ $widths: 5, 10, 15, 20, 25, 30, 33, 35, 40, 45, 50, 55, 60, 65, 66, 70, 75, 80, 
 // =========================================
 // Table
 // =========================================
-$th-color: #696969;
-$td-color: #3a4245;
-$th-border-color: #d2d3d4;
+$th-color: gray-color(gray-5);
+$td-color: gray-color(gray-7);
 
 
 
 // =========================================
 // Borders
 // =========================================
+$border-radius: 5px;
 $border-color-dark:   gray-color(gray-3);
 $border-color-normal: gray-color(gray-2);
 $border-color-light:  gray-color(gray-1);
 $border-types: (top: t, bottom: b, left: l, right: r);
 $border-values: normal, dark, light;
+
+
+
+// =========================================
+// Buttons
+// =========================================
+$alert-buttons: true;
+$disabled-buttons: true;
+$neutral-buttons: false;
+$inverse-buttons: false;
+$split-buttons: true;
+
+// Button size style maps
+$button-default-font-size: 16px;
+$button-default-line-height: 24px;
+$button-default-padding-x: 23px;
+$button-default-padding-y: 5px;
+$button-sizes: (
+  xsmall: (font-size: 12px, line-height: 20px, padding-x: 7px, padding-y: 1px),
+  small: (font-size: 14px, line-height: 24px, padding-x: 15px,padding-y: 2px),
+  normal: (font-size: $button-default-font-size, line-height: $button-default-line-height, padding-x: $button-default-padding-x, padding-y: button-default-padding-y),
+  large: (font-size: 22px, line-height: 30px, padding-x: 23px, padding-y: 7px),
+  xlarge: false
+);
+
+$button-border-radius: $border-radius;
+$button-font: $brand-font;
+$button-font-size: $button-default-font-size;
+$button-text-transform: none;
+$button-font-weight: $semi-bold;
+$button-letter-spacing: normal;
+$button-line-height: $button-default-line-height;
+$button-transition: none;
+$button-padding: $button-default-padding-y $button-default-padding-x;
+$button-margin: 12px;
+$button-default-bg: gray-color(white);
+$button-default-border: 1px solid ui-color(purple-light);
+$button-default-font-color: ui-color(purple-light);
+$button-default-bg-hover: white;
+$button-default-border-hover: 1px solid ui-color(purple);
+$button-default-font-color-hover: ui-color(purple);
+
+$button-primary-bg: ui-color(purple-light);
+$button-primary-border-color: ui-color(purple-light);
+$button-primary-font-color: gray-color(white);
+$button-primary-bg-hover: ui-color(purple);
+$button-primary-border-color-hover: ui-color(purple);
+$button-primary-font-color-hover: gray-color(white);
+
+$button-alert-bg: ui-color(red-dark);
+$button-alert-border-color: ui-color(red-dark);
+$button-alert-font-color: #fff;
+$button-alert-bg-hover: ui-color(red);
+$button-alert-border-color-hover: ui-color(red);
+$button-alert-font-color-hover: #fff;
+
+
+$button-neutral-bg: gray-color(gray-2);
+$button-neutral-border-color: gray-color(gray-2);
+$button-neutral-font-color: gray-color(gray-7);
+$button-neutral-bg-hover: darken(gray-color(gray-2), 10%);
+$button-neutral-border-color-hover: gray-color(gray-2);
+$button-neutral-font-color-hover: gray-color(gray-7);
+
+$button-inverse-bg: #fff;
+$button-inverse-border-color: #fff;
+$button-inverse-font-color: ui-color(purple);
+$button-inverse-opacity: 0.88;
+$button-inverse-opacity-hover: 1;
+$button-inverse-bg-hover: #fff;
+$button-inverse-border-color-hover: #fff;
+$button-inverse-font-color-hover: ui-color(purple);
 
 
 
