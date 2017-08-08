@@ -1,10 +1,11 @@
 m = angular.module "lens.atoms.block_grid", []
 
 
-m.controller "BlockGridController", (
+m.controller "BlockGridController", ['$scope', (
   $scope
 ) ->
   return this
+]
 
 
 m.directive "blockGrid", ->

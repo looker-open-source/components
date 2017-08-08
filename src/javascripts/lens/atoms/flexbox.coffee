@@ -1,10 +1,11 @@
 m = angular.module "lens.atoms.flexbox", []
 
 
-m.controller "FlexboxController", (
+m.controller "FlexboxController", ['$scope', (
   $scope
 ) ->
   return this
+]
 
 
 m.directive "flexbox", ->

@@ -1,10 +1,11 @@
 m = angular.module "lens.atoms.borders", []
 
 
-m.controller "BordersController", (
+m.controller "BordersController", ['$scope', (
   $scope
 ) ->
   return this
+]
 
 
 m.directive "borders", ->

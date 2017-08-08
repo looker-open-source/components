@@ -7,9 +7,9 @@ m = angular.module "lens.components", [
   "lens.components.headings"
 ]
 
-require "./buttons.coffee"
-require "./forms.coffee"
-require "./tables.coffee"
-require "./modals.coffee"
-require "./body_copy.coffee"
-require "./headings.coffee"
+require "./buttons"
+require "./forms"
+require "./tables"
+require "./modals"
+require "./body_copy"
+require "./headings"

@@ -1,10 +1,11 @@
 m = angular.module "lens.components.buttons", []
 
 
-m.controller "ButtonsController", (
+m.controller "ButtonsController", ['$scope', (
   $scope
 ) ->
   return this
+]
 
 
 m.directive "buttons", ->

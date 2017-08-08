@@ -1,10 +1,11 @@
 m = angular.module "lens.components.headings", []
 
 
-m.controller "HeadingsController", (
+m.controller "HeadingsController", ['$scope', (
   $scope
 ) ->
   return this
+]
 
 
 m.directive "headings", ->

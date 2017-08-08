@@ -1,10 +1,11 @@
 m = angular.module "lens.installation", []
 
 
-m.controller "InstallationController", (
+m.controller "InstallationController", ["$scope", (
   $scope
 ) ->
   return this
+]
 
 
 m.directive "installation", ->

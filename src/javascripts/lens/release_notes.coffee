@@ -1,10 +1,11 @@
 m = angular.module "lens.release_notes", []
 
 
-m.controller "ReleaseNotesController", (
+m.controller "ReleaseNotesController", ['$scope', (
   $scope
 ) ->
   return this
+]
 
 
 m.directive "releaseNotes", ->

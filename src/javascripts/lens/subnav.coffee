@@ -1,10 +1,11 @@
 m = angular.module "lens.subnav", []
 
 
-m.controller "SubnavController", (
+m.controller "SubnavController", ['$scope', (
   $scope
 ) ->
   return this
+]
 
 
 m.directive "subnav", ->

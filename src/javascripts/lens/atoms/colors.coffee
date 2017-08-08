@@ -1,13 +1,14 @@
-brandColors = require("./../../utils/sass-to-js-custom/brand_colors.js")
-uiColors = require("./../../utils/sass-to-js-custom/ui_colors.js")
-grayColors = require("./../../utils/sass-to-js-custom/gray_colors.js")
+brandColors = require("./../../utils/sass-to-js-custom/brand_colors")
+uiColors = require("./../../utils/sass-to-js-custom/ui_colors")
+grayColors = require("./../../utils/sass-to-js-custom/gray_colors")
 
 m = angular.module "lens.atoms.colors", []
 
-m.controller "ColorsController", (
+m.controller "ColorsController", ['$scope', (
   $scope
 ) ->
   return this
+]
 
 
 m.directive "colors", ->

@@ -1,10 +1,11 @@
 m = angular.module "lens.getting_started", []
 
 
-m.controller "GettingStartedController", (
+m.controller "GettingStartedController", ['$scope', (
   $scope
 ) ->
   return this
+]
 
 
 m.directive "gettingStarted", ->

@@ -1,2 +1,2 @@
-require("./lens/lens_module.coffee");
-require("../stylesheets/styleguide/_styleguide.sass");
+require("./lens/lens_module");
+require("./../stylesheets/styleguide/_styleguide.sass");

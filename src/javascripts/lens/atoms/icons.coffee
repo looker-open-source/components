@@ -1,10 +1,11 @@
 m = angular.module "lens.atoms.icons", []
 
 
-m.controller "IconsController", (
+m.controller "IconsController", ['$scope', (
   $scope
 ) ->
   return this
+]
 
 
 m.directive "icons", ->

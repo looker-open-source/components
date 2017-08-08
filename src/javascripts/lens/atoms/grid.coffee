@@ -1,10 +1,11 @@
 m = angular.module "lens.atoms.grid", []
 
 
-m.controller "GridController", (
+m.controller "GridController", ['$scope', (
   $scope
 ) ->
   return this
+]
 
 
 m.directive "grid", ->

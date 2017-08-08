@@ -1,10 +1,11 @@
 m = angular.module "lens.components.body_copy", []
 
 
-m.controller "BodyCopyController", (
+m.controller "BodyCopyController", ['$scope', (
   $scope
 ) ->
   return this
+]
 
 
 m.directive "bodyCopy", ->

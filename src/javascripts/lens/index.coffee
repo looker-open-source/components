@@ -1,10 +1,11 @@
 m = angular.module "lens.index", []
 
 
-m.controller "IndexController", (
+m.controller "IndexController", ["$scope", (
   $scope
 ) ->
   return this
+]
 
 
 m.directive "index", ->

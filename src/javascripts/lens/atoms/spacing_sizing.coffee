@@ -1,10 +1,11 @@
 m = angular.module "lens.atoms.spacing_sizing", []
 
 
-m.controller "SpacingSizingController", (
+m.controller "SpacingSizingController", ['$scope', (
   $scope
 ) ->
   return this
+]
 
 
 m.directive "spacingSizing", ->

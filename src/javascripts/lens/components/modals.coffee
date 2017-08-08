@@ -1,10 +1,11 @@
 m = angular.module "lens.components.modals", []
 
 
-m.controller "ModalsController", (
+m.controller "ModalsController", ['$scope', (
   $scope
 ) ->
   return this
+]
 
 
 m.directive "modals", ->

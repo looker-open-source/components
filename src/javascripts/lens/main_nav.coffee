@@ -1,11 +1,6 @@
 m = angular.module "lens.main_nav", []
 
-m.config (
-  $locationProvider
-) ->
-  $locationProvider.html5Mode true
-
-m.controller "MainNavController", (
+m.controller "MainNavController", ['$scope', '$location', (
   $scope
   $location
 ) ->
@@ -56,6 +51,7 @@ m.controller "MainNavController", (
   $scope.currentSection = $location.path().split("/")[1]
 
   return this
+]
 
 
 m.directive "mainNav", ->
@@ -66,13 +62,14 @@ m.directive "mainNav", ->
   link: (scope, $el, attrs, ctrl) ->
 
     ctrl.toggleSubNav = (id) ->
+      return unless id
       $el.find("##{id}").toggleClass("active")
       $el.find("##{id}-sub-nav").toggle()
 
     $(document).ready( ->
       # set nav open if a sub-page. have to wait for dom to be ready
       ctrl.toggleSubNav(scope.currentSection)
-      )
+    )
 
 template = """
 <div id="guide_navigation" class="guide-navigation">

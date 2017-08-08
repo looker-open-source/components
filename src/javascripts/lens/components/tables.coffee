@@ -1,10 +1,11 @@
 m = angular.module "lens.components.tables", []
 
 
-m.controller "TablesController", (
+m.controller "TablesController", ['$scope', (
   $scope
 ) ->
   return this
+]
 
 
 m.directive "tables", ->

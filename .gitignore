@@ -6,5 +6,7 @@ node_modules
 Gemfile.lock
 .nvmrc
 Procfile
+.env
 *.log
+status.json
 src/stylesheets/lens/lens.css

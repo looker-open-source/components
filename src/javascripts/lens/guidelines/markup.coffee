@@ -1,11 +1,11 @@
 m = angular.module "lens.guidelines.markup", []
 
 
-m.controller "MarkupController", (
+m.controller "MarkupController", ['$scope', (
   $scope
 ) ->
   return this
-
+]
 
 m.directive "markup", ->
   controller: "MarkupController"

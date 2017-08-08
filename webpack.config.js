@@ -19,13 +19,11 @@ module.exports = {
     historyApiFallback: true,
     hot: true,
     inline: true,
-    // host: 'localhost', // TODO: set up to work with prod env
-    // port: 3000, // TODO: set up to work with prod env
     proxy: {
       '/api': {
-        target: 'http://localhost:3000', // TODO: set up to work with prod env
-        pathRewrite: {'^/api' : ''},
-        secure: false
+        target: 'http://localhost:3000',
+        secure: false,
+        disableHostCheck: true
       }
     }
   },
@@ -37,7 +35,7 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        loader: 'babel-loader',
+        loader: 'babel',
         query: {
           presets: ['es2015']
         },
@@ -48,6 +46,9 @@ module.exports = {
         loader: 'style!css!sass'
       }
     ]
+  },
+  resolve: {
+    extensions: ['', '.coffee', '.js']
   },
   plugins: [
     new HtmlWebpackPlugin({

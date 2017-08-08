@@ -1,10 +1,11 @@
 m = angular.module "lens.atoms.layout", []
 
 
-m.controller "LayoutController", (
+m.controller "LayoutController", ['$scope', (
   $scope
 ) ->
   return this
+]
 
 
 m.directive "layout", ->

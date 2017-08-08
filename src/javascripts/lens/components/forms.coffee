@@ -1,10 +1,11 @@
 m = angular.module "lens.components.forms", []
 
 
-m.controller "FormsController", (
+m.controller "FormsController", ['$scope', (
   $scope
 ) ->
   return this
+]
 
 
 m.directive "forms", ->

@@ -1,10 +1,11 @@
 m = angular.module "lens.guidelines.responsive", []
 
 
-m.controller "ResponsiveController", (
+m.controller "ResponsiveController", ['$scope', (
   $scope
 ) ->
   return this
+]
 
 
 m.directive "responsive", ->

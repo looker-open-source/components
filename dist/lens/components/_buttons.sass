@@ -5,6 +5,7 @@
   cursor: pointer
   text-align: center
   display: inline-block
+  vertical-align: middle
   font-family: $button-font
   font-size: $button-font-size
   text-transform: $button-text-transform
@@ -40,8 +41,6 @@
       border-color: $button-primary-border-color-hover !important
       color: $button-primary-font-color-hover !important
 
-
-
   // Neutral buttons
   @if $neutral-buttons
     &--neutral
@@ -53,8 +52,6 @@
         border-color: $button-neutral-border-color-hover !important
         color: $button-neutral-font-color-hover !important
 
-
-
   // Alert buttons
   @if $alert-buttons
     &--alert
@@ -65,7 +62,6 @@
         background-color: $button-alert-bg-hover !important
         border-color: $button-alert-border-color-hover !important
         color: $button-alert-font-color-hover !important
-
 
 
   // Inverse buttons
@@ -80,7 +76,6 @@
         border-color: $button-inverse-border-color-hover !important
         color: $button-inverse-font-color-hover !important
         opacity: $button-inverse-opacity-hover !important
-
       &-primary
         background-color: ui-color(purple-light) !important
         border-color: ui-color(purple-light) !important
@@ -88,13 +83,11 @@
         opacity: 0.88
         +selected
           opacity: 1 !important
-
       @if $disabled-buttons
         &-disabled
           cursor: not-allowed !important
           pointer-events: none !important
           opacity: 0.65 !important
-
           background-color: gray-color(gray-2er) !important
           border-color: gray-color(gray) !important
           color: gray-color(gray) !important
@@ -102,12 +95,10 @@
             background-color: gray-color(gray-2er) !important
             border-color: gray-color(gray) !important
             color: gray-color(gray) !important
-
         &-primary-disabled
           cursor: not-allowed !important
           pointer-events: none !important
           opacity: 0.65 !important
-
           background-color: gray-color(gray) !important
           border-color: gray-color(gray) !important
           color: gray-color(gray-2er) !important
@@ -115,7 +106,6 @@
             background-color: gray-color(gray) !important
             border-color: gray-color(gray) !important
             color: gray-color(gray-2er) !important
-
 
 
   // Default disabled buttons
@@ -162,7 +152,8 @@
       @if $size and $property
         &--#{$size}-#{$suffix}
           font-size: map-get($property, font-size) !important
-          padding: map-get($property, padding-x) map-get($property, padding-y) !important
+          line-height: map-get($property, line-height) !important
+          padding: map-get($property, padding-y) map-get($property, padding-x) !important
           &.square
             width: map-get($property, height) !important
 

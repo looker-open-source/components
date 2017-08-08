@@ -1,10 +1,11 @@
 m = angular.module "lens.atoms.effects", []
 
 
-m.controller "EffectsController", (
+m.controller "EffectsController", ['$scope', (
   $scope
 ) ->
   return this
+]
 
 
 m.directive "effects", ->

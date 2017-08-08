@@ -1,7 +1,6 @@
 m = angular.module "lens.lens_main", []
 
-
-m.controller "LensMainController", (
+m.controller "LensMainController", ['$scope', '$state', (
   $scope
   $state
 ) ->
@@ -13,6 +12,7 @@ m.controller "LensMainController", (
   )
 
   return this
+]
 
 
 m.directive "lensMain", ->

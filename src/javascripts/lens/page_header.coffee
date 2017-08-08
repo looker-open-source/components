@@ -1,10 +1,10 @@
 m = angular.module "lens.page_header", []
 
-m.controller "PageHeaderController", (
+m.controller "PageHeaderController", ['$scope', (
   $scope
 ) ->
-
   return this
+]
 
 
 m.directive "pageHeader", ->
@@ -12,7 +12,6 @@ m.directive "pageHeader", ->
   restrict: "E"
   scope: { }
   template: template
-  link: (scope, $el, attrs, ctrl) ->
 
 
 template = """

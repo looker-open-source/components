@@ -1,10 +1,11 @@
 m = angular.module "lens.atoms.typography", []
 
 
-m.controller "TypographyController", (
+m.controller "TypographyController", ['$scope', (
   $scope
 ) ->
   return this
+]
 
 
 m.directive "typography", ->
