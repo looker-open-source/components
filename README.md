@@ -32,7 +32,7 @@ _**(Once you've made local changes and are ready to deploy them to Lens in produ
 To test your production build:
 1. Make sure your local (git ignored!) `.env` file contains the correct credentials (ask ops-requests if you need help getting them)
 2. `$ yarn run production` runs the production server
-3. Open browser to http://localhost:3000/ to make sure it works as expected! You should be prompted to log in with Google via your looker email.
+3. Open browser to http://localhost:3000/ to make sure it works as expected! You should be prompted to log in via Google with your looker email.
 
 ### Re-deploying to lens.dev.looker.com:
 _**(Only when your PR is merged to master and you've tested the build with the steps above)**_
