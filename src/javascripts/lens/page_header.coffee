@@ -8,9 +8,11 @@ m.controller "PageHeaderController", ['$scope', (
     @hambugerClick()
     return true
 
+  $scope.$on 'toggleMobileNav', (event) =>
+    $scope.clicked = !$scope.clicked
+
   return this
 ]
-
 
 m.directive "pageHeader", ->
   controller: "PageHeaderController"
@@ -19,8 +21,7 @@ m.directive "pageHeader", ->
   template: template
   link: (scope, $el, attrs, ctrl) ->
     ctrl.hambugerClick = () ->
-      $("#hamburger").toggleClass('hamburger-button-clicked')
-      $('#guide_navigation').toggleClass('guide-navigation-mobile-show')
+      scope.$parent.$broadcast('toggleMobileNav')
 
 
 template = """
@@ -30,7 +31,7 @@ template = """
   <div class="guide-skip-content">
     <a href="#navigation">Skip to Navigation</a>
   </div>
-  <a href="#" id="hamburger" class="hamburger-button" ng-click="hambugerClick()">
+  <a href="#" id="hamburger" class="hamburger-button" ng-class="{'hamburger-button-clicked': clicked}" ng-click="hambugerClick()">
     <span class="hamburger"></span>
   </a>
 </header>
