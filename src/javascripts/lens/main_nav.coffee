@@ -48,11 +48,17 @@ m.controller "MainNavController", ['$scope', '$location', (
     @toggleSubNav(id)
     return true
 
+  $scope.showNavOnMobile = () =>
+    @showNavOnMobile()
+    return true
+
+  $scope.$on 'toggleMobileNav', (event) =>
+    $scope.toggleMobileNav = !$scope.toggleMobileNav
+
   $scope.currentSection = $location.path().split("/")[1]
 
   return this
 ]
-
 
 m.directive "mainNav", ->
   controller: "MainNavController"
@@ -66,13 +72,17 @@ m.directive "mainNav", ->
       $el.find("##{id}").toggleClass("active")
       $el.find("##{id}-sub-nav").toggle()
 
+    ctrl.showNavOnMobile = () ->
+      return unless scope.toggleMobileNav
+      scope.$parent.$broadcast('toggleMobileNav')
+
     $(document).ready( ->
       # set nav open if a sub-page. have to wait for dom to be ready
       ctrl.toggleSubNav(scope.currentSection)
     )
 
 template = """
-<div id="guide_navigation" class="guide-navigation">
+<div id="guide_navigation" class="guide-navigation" ng-class="{'guide-navigation-mobile-show' : toggleMobileNav}">
   <nav id="navigation" role="navigation" tabindex="-1">
     <ul class="guide-navigation-list">
       <li ng-repeat="item in menuItems" class="guide-navaigation-item">
@@ -83,12 +93,12 @@ template = """
         </a>
         <ul ng-if="item.subNav" id="{{ item.id }}-sub-nav" class="guide-navigation-list-child">
           <li ng-repeat="child in item.subNav" class="guide-navigation-item-child">
-            <a ui-sref="{{ child.uiSref }}" ui-sref-active="active" class="guide-navigation-link guide-navigation-link-child">{{ child.title }}</a>
+            <a ui-sref="{{ child.uiSref }}" ui-sref-active="active" class="guide-navigation-link guide-navigation-link-child" ng-click="showNavOnMobile()"~>{{ child.title }}</a>
           </li>
         </ul>
 
         <!-- single item -->
-        <a ng-if="item.uiSref" ui-sref="{{ item.uiSref }}" ui-sref-active="active" class="guide-navigation-link guide-navigation-link-single">{{ item.title }}</a>
+        <a ng-if="item.uiSref" ui-sref="{{ item.uiSref }}" ui-sref-active="active" class="guide-navigation-link guide-navigation-link-single" ng-click="showNavOnMobile()">{{ item.title }}</a>
       </li>
     </ul>
   </nav>
