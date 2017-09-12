@@ -22,8 +22,8 @@ template = """
     <code>Coming Soon!</code>
     <ul>
       <li>How we use this in helltool</li>
-      <li>Extending and using Lens elsewhere (see <a href="/installation">Installation</a> section)
-      <li><a href="/guidelines/markup">markup considerations</a></li>
+      <li>Extending and using Lens elsewhere (see <a ui-sref="installation">Installation</a> section)
+      <li><a ui-sref="markup">markup considerations</a></li>
       <li>...</li>
     </ul>
   </section>

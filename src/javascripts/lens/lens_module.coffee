@@ -108,6 +108,12 @@ m.config ['$stateProvider', '$locationProvider', '$urlRouterProvider', (
     template: '<responsive></responsive>'
     title: 'Responsive'
     resolve: {authenticate: authenticate}
+  environmentPropertiesState =
+    name: 'environment-properties'
+    url: '/guidelines/environment-properties'
+    template: '<environment-properties></environment-properties>'
+    title: 'Environment Properties'
+    resolve: {authenticate: authenticate}
 
 # Components
   buttonsState =
@@ -227,6 +233,7 @@ m.config ['$stateProvider', '$locationProvider', '$urlRouterProvider', (
 
   $stateProvider.state markupState
   $stateProvider.state responsiveState
+  $stateProvider.state environmentPropertiesState
 
   $stateProvider.state buttonsState
   $stateProvider.state formsState

@@ -23,7 +23,7 @@ template = """
       Lens is a design system enabling developers and designers to build
        beautiful, usable, consistent, and scalable Looker experiences.</h4>
 
-    <h2>Design Principles</h2>
+    <h2 class="headline">Design Principles</h2>
     <p>What are design principles and how should you use them? Design Principles...</p>
     <ul>
       <li>are simple</li>
@@ -31,52 +31,63 @@ template = """
       <li>reflect your brand</li>
       <li>have real world examples</li>
     </ul>
-    <div class="col-container col-gutters">
-      <div class="col col-50-md col-25-lg">
-        <h3>Eliminate Ambiguity</h3>
-        <p>Be clear. Enable people to see, understand, and feel secure so they
-          can act with confidence.</p>
-      </div>
-      <div class="col col-50-md col-25-lg">
-        <h3>Champion Efficiency</h3>
-        <p>Be respectful of people’s time, streamline processes and be fast and
-          performant.</p>
-      </div>
-      <div class="col col-50-md col-25-lg">
-        <h3>Encourage Confidence</h3>
-        <p>The design experience should feel safe to work with and provide
-           orientation and security to gain the user’s trust.</p>
-      </div>
-      <div class="col col-50-md col-25-lg">
-        <h3>Strive for Simplicity</h3>
-        <p>Make it inviting and simple so it’s easy, orderly, and agile. Provide
-           opportunities and affordances for growth.</p>
-      </div>
-    </div>
 
-    <h2>Environment &amp; Properties <code>Coming Soon!</code></h2>
-    <p>The rules for how Lens elements look, behave, and interact.</p>
+    <p><strong>Eliminate Ambiguity</strong>: Be clear. Enable people to see, understand, and feel secure so they
+      can act with confidence.</p>
 
-    <h2>Nouns &amp; Verbs <code>Coming Soon!</code></h2>
-    <p>The words that define Looker's core objects, actions, and the relationships between them.</p>
-    <dl>
-      <dt>Model</dt>
-      <dd>...</dd>
+    <p><strong>Champion Efficiency</strong>: Be respectful of people’s time, streamline processes and be fast and
+      performant.</p>
 
-      <dt>Explore</dt>
-      <dd>...</dd>
+    <p><strong>Encourage Confidence</strong>: The design experience should feel safe to work with and provide
+       orientation and security to gain the user’s trust.</p>
 
-      <dt>Query</dt>
-      <dd>A question made up of fields from an explore that asks your database for a result.</dd>
+    <p><strong>Strive for Simplicity</strong>: Make it inviting and simple so it’s easy, orderly, and agile. Provide
+       opportunities and affordances for growth.</p>
 
-      <dt>Result</dt>
-      <dd>...</dd>
+    <h2 class="headline">Environment Properties</h2>
+    <p><a ui-sref="environment-properties">Environment properties</a> provide rules for how Lens elements look, interact
+       and behave. The following themes are used to communicate the product
+       principles and guide the design.</p>
+    <p><strong>Visibility</strong> allows you to see the information
+      you care about and have a clear path to understanding and insights.
+      Presenting relevant content helps <em>eliminate ambiguity</em>.
+    </p>
 
-      <dt>Report</dt>
-      <dd>...</dd>
-    </dl>
+    <p><strong>Transparency</strong> means it is clear where you are and
+      what action you can take on your data. To provide this clairty the design
+      must <em>strive for simplicity</em>.
+    </p>
 
-    <h2>Platform Adaptation <code>Coming Soon!</code></h2>
+    <p><strong>Fluidity</strong> for Looker is providing a versatile platform
+       where you can easily move between tasks. By adapting to and anticipating
+       different user needs, the design can <em>champion efficiency</em>.
+    </p>
+
+    <p><strong>Discovery</strong> means using clear signs and feedback to help
+      you know where you and navigate your way. Providing orientation
+      <em>encourages confidence</em> when using Looker.
+    </p>
+
+    <h2 class="headline">Core Objects</h2>
+    <p>The words that define Looker's core objects, actions, and the relationships
+       between them.</p>
+
+    <p><strong>Model</strong>: A model defines the structure of your data for
+       exploring.</p>
+
+    <p><strong>Explore</strong>: An explore contains all the fields that allow
+      you to construct a query.</p>
+
+    <p><strong>Query</strong>: A query is a question made up of fields from an
+       explore that asks your database for a result.</p>
+
+    <p><strong>Result</strong>: A result is an answer that comes back from your
+       database once you send it a query.</p>
+
+    <p><strong>Report</strong>: A report is a saved result that can be copied,
+       shared, and can serve as a starting point for further exploration.</p>
+
+    <h2 class="headline">Platform Adaptation <code>Coming Soon!</code></h2>
     <p>How does Lens adapt in different situations? The goal is
        to have Looker products look and behave similarly across platforms for all of our users.</p>
 

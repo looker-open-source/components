@@ -6,14 +6,14 @@ m.controller "MainNavController", ['$scope', '$location', (
 ) ->
 
   $scope.menuItems = [
-    { title: "Lens design", uiSref: "index" },
+    { title: "Lens Design", uiSref: "index" },
     { title: "Getting Started", uiSref: "getting-started" },
     { title: "Guidelines", id: "guidelines", subNav: [
 #        { title: "Design Principles", uiSref: "design-principles" },
         { title: "Markup", uiSref: "markup" },
         { title: "Responsive", uiSref: "responsive" } # This could become Platform Adaptation...
 #        { title: "Platform Adaptation", uiSref: "platform-adaptation" },
-#        { title: "Environment Properties", uiSref: "environment-properties" },
+        { title: "Environment Properties", uiSref: "environment-properties" },
 #        { title: "Nouns and Verbs", uiSref: "nouns-verbs" },
 #        { title: "Logo and Identity", uiSref: "logo-identity" }
       ]
