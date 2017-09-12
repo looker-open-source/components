@@ -68,37 +68,37 @@ template = """
           <td></td>
         </tr>
         <tr>
-          <td><code>%text-0-xs</code></td>
+          <td><code>%text-1-xs</code></td>
           <td>font-size: 16px<br />line-height: 24px</td>
           <td>This is the base font size and line-height</td>
         </tr>
         <tr>
-          <td><code>%text-1-xs</code></td>
+          <td><code>%text-2-xs</code></td>
           <td>font-size: 19px<br />line-height: 27px</td>
           <td></td>
         </tr>
         <tr>
-          <td><code>%text-2-xs</code></td>
+          <td><code>%text-3-xs</code></td>
           <td>font-size: 22px<br />line-height: 30px</td>
           <td></td>
         </tr>
         <tr>
-          <td><code>%text-3-xs</code></td>
+          <td><code>%text-4-xs</code></td>
           <td>font-size: 28px<br />line-height: 36px</td>
           <td></td>
         </tr>
         <tr>
-          <td><code>%text-4-xs</code></td>
+          <td><code>%text-5-xs</code></td>
           <td>font-size: 38px<br />line-height: 46px</td>
           <td></td>
         </tr>
         <tr>
-          <td><code>%text-5-xs</code></td>
+          <td><code>%text-6-xs</code></td>
           <td>font-size: 52px<br />line-height: 60px</td>
           <td></td>
         </tr>
         <tr>
-          <td><code>%text-6-xs</code></td>
+          <td><code>%text-7-xs</code></td>
           <td>font-size: 62px<br />line-height: 72px</td>
           <td></td>
         </tr>

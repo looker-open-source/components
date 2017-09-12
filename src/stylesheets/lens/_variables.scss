@@ -46,35 +46,25 @@ $color-properties: color border-color background-color;
 // =========================================
 // Spacing Units
 // =========================================
+// n2: 4px
+// n1: 8px
+// 1: 16px
+// 2: 20px
+// 3: 24px
+// 4: 30px
+// 5: 36px
+// 6: 46px
+$spacing-base: 16px;
 $spacing: (
-  0:  0px,
-  1:  1px,
-  2:  2px,
-  3:  3px,
-  4:  4px,
-  5:  5px,
-  6:  6px,
-  7:  7px,
-  8:  12px,
-  9:  14px,
-  10: 16px,
-  11: 20px,
-  12: 24px,
-  13: 27px,
-  14: 30px,
-  15: 36px,
-  16: 46px,
-  17: 60px,
-  18: 72px,
-  19: 81px,
-  20: 96px,
-  21: 121px,
-  22: 144px,
-  23: 182px,
-  24: 216px,
-  25: 273px,
-  26: 324px,
-  27: 410px
+  n2: $spacing-base * 0.25,
+  n1: $spacing-base * 0.5,
+  0:  0,
+  1:  $spacing-base,
+  2:  $spacing-base * 1.25,
+  3:  $spacing-base * 1.5,
+  4:  $spacing-base * 1.875,
+  5:  $spacing-base * 2.25,
+  6:  $spacing-base * 2.875
 );
 
 $spacing-sides: (
@@ -97,13 +87,13 @@ $body-font-size: 16px;
 $text-size: (
   n2: (12px, 20px),
   n1: (14px, 24px),
-  0:  (16px, 24px),
-  1:  (19px, 27px),
-  2:  (22px, 30px),
-  3:  (28px, 36px),
-  4:  (38px, 46px),
-  5:  (52px, 60px),
-  6:  (62px, 72px)
+  1:  (16px, 24px),
+  2:  (19px, 27px),
+  3:  (22px, 30px),
+  4:  (28px, 36px),
+  5:  (38px, 46px),
+  6:  (52px, 60px),
+  7:  (62px, 72px)
 );
 $brand-font: 'Open Sans', Helvetica, Arial, sans-serif;
 $code-font: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;
