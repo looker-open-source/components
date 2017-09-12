@@ -1,0 +1,76 @@
+// Default column class that needs to be applied to all columns within .col-container
+.col
+  float: left  
+  width: 100%  
+
+  // Add auto gutters to columns by applying this next to .col-container
+  &-gutters
+    margin: 0 -15px
+    > .col
+      padding: 0 15px
+
+  // Wrap each set of columns that adds up to 100 within .col-container
+  &-container
+    +clearfix
+
+  // Include this alongside .col-container to add a max-width
+  &-max
+    max-width: $grid-max-width  
+    margin: 0 auto  
+    padding: 0 15px
+
+  // Center a single column inside of a .col-container
+  &-center
+    float: none  
+    margin: 0 auto  
+
+  // Column gutters when using in forms
+  &-form
+    margin: 0 -6px  
+    > .col
+      padding: 0 6px
+
+
+
+  // Creates style declarations for each grid width
+  @mixin col-width($suffix)
+    @each $width in $widths
+      @if $width == 33
+        &-#{$width}-#{$suffix}
+          width: 33.3%  
+        &-offset-#{$width}-#{$suffix}
+          margin-left: 33.3%  
+      @else if $width == 66
+        &-#{$width}-#{$suffix}
+          width: 66.6%  
+        &-offset-#{$width}-#{$suffix}
+          margin-left: 66.6%  
+      @else
+        &-#{$width}-#{$suffix}
+          width: percentage($width/100)  
+        &-offset-#{$width}-#{$suffix}
+          margin-left: percentage($width/100)  
+
+
+
+  // Adds media queries to col-width mixin
+  @mixin build-col($suffix, $media: null)
+
+    // We want to use @media screen whenever no $media
+    // is passed into the mixin
+    @if length($media) == 2
+      +media(nth($media, 1) nth($media, 2))
+        +col-width($suffix)
+    @else
+      @media screen
+        +col-width($suffix)
+
+
+  // Building classes
+
+  // Default
+  +build-col(xs)
+
+  // Other breakpoints
+  @each $value, $breakpoint in $breakpoints
+    +build-col($value, min-width $breakpoint)

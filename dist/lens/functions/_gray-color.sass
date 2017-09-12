@@ -1,0 +1,6 @@
+@function gray-color($key)
+  // "white" needs to be force interpolated because of yarn in production
+  @if $key == white
+    @return map-get($gray-colors, #{white})
+  @else
+    @return map-get($gray-colors, #{$key})
