@@ -85,7 +85,7 @@ body
     @extend %fixed-xs, %pos-t-0-xs, %pos-l-0-xs
     @extend %p-tb-n1-xs, %p-lr-5-xs
     @extend %w-full-xs
-    @extend %brand-bg-gray
+    @extend %bg-gray-7
     height: spacing(6)
     z-index: 50
 
@@ -298,11 +298,7 @@ body
           em
             color: lighten(gray-color(gray-6), 25%)
         &.bg-white
-          border: solid 1px gray-color(gray-1)
-          border-bottom: 0
-      @each $color, $brand-color in $brand-colors
-        .brand-bg-#{$color}
-          @extend %brand-bg-#{$color}
+          border: solid 1px gray-color(gray-2)
       @each $color, $ui-color in $ui-colors
         .bg-#{$color}
           @extend %bg-#{$color}
@@ -319,14 +315,8 @@ body
           color: text-color(dark)
         em
           color: text-color(light)
-  &-colors-gray
-    .guide-color-item
-      span
-        border-radius: 0
-      span:first-child
-        border-radius: $border-radius $border-radius 0 0
-      span:last-child
-        border-radius: 0 0 $border-radius $border-radius
+    .guide-color-item > span
+      @extend %m-b-1-xs
 
 // =========================================
 // Documentation Components
@@ -357,7 +347,7 @@ body
 // Modal Docs
 // =========================================
 .modal-tarp__styleguide
-  @extend %brand-bg-gray
+  @extend %bg-gray-7
   @extend %flex-block-xs
   padding: 40px
   opacity: 0.65

@@ -7,13 +7,13 @@ var uiColors = function(elementId, $elementId, guideClass) {
                   ).getPropertyValue('content'));
   var colorJSON = JSON.parse(colorString);
 
+  // Create LI and add class name to it
+  var li = document.createElement("li");
+  li.className = 'guide-color-item col-100-sm col-50-lg col-33-xl';
+
   for (var colorClass in colorJSON) {
     var colorObj = colorJSON[colorClass];
     var colorHexValue = colorObj;
-
-    // Create LI and add class name to it
-    var li = document.createElement("li");
-    li.className = 'guide-color-item col-100-sm col-33-lg col-20-xl';
 
     // Create span to hold color
     var colorSpan = document.createElement('span');

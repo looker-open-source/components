@@ -7,12 +7,6 @@ $lens-version: "0.1.0";
 // =========================================
 // Colors
 // =========================================
-$brand-colors: (
-  "purple": #7E64E0,
-  "gray":   #1C2027,
-  "blue":   #0E88F1
-);
-
 $gray-colors: (
   "white":   #fff,
   "gray-1":  #F6F6F7,
@@ -36,7 +30,8 @@ $ui-colors: (
   "teal":         #5DCCCC,
   "yellow":       #FFD822,
   "orange-dark":  #E57200,
-  "orange":       #FB9331
+  "orange":       #FB9331,
+  "blue":         #0E88F1
 );
 
 $color-properties: color border-color background-color;

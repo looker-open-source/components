@@ -58,7 +58,7 @@ m.directive "login", ['$window', (
 ]
 
 template = """
-<header class="login-header brand-bg-gray">
+<header class="login-header bg-gray-7">
   <div class="login-header-wrap">
     <h1 class="login-name color-white">Lens</h1>
     <p class="login-copy color-white">The Looker Design System</p>
