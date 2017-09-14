@@ -24,7 +24,7 @@ template = """
     <table class="table-content">
       <thead>
         <tr>
-          <th><code>@extend</code></th>
+          <th class="col-15-xs"><code>@extend</code></th>
           <th>Resolves to...</th>
           <th>Notes</th>
         </tr>

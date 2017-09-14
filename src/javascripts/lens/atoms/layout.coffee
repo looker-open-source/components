@@ -83,7 +83,7 @@ template = """
     </table>
 
     <p>Set the position with <code>.pos-$s-$n-xs</code>, where <code>$s</code> is the side
-       and <code>$n</code> is one of our spacing units.
+       and <code>$n</code> is one of our <a ui-sref="spacing-sizing">spacing units</a>.
     </p>
     <table class="table-content">
       <thead>

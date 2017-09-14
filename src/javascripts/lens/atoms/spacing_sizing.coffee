@@ -21,50 +21,65 @@ template = """
     <div id="spacing-units" title="Spacing Units" class="inpage-anchor"></div>
     <h2>Spacing Units</h2>
     <p>Spacing units are used for margin, padding, and <a ui-sref="layout">positioning</a>.
-       These comes in values from 0-27. </p>
-     <p class="todo"> Add theory from Jeremy here on the scale ramp.</p>
-    <div class="col-container">
-      <div class="col col-30-lg">
-        <ul class="list-unstyled">
-          <li><code>0</code> = 0px</li>
-          <li><code>1</code> = 1px</li>
-          <li><code>2</code> = 2px</li>
-          <li><code>3</code> = 3px</li>
-          <li><code>4</code> = 4px</li>
-          <li><code>5</code> = 5px</li>
-          <li><code>6</code> = 6px</li>
-          <li><code>7</code> = 7px</li>
-          <li><code>8</code> = 12px</li>
-          <li><code>9</code> = 14px</li>
-        </ul>
-      </div>
-      <div class="col col-30-lg">
-        <ul>
-          <li><code>10</code> = 16px</li>
-          <li><code>11</code> = 20px</li>
-          <li><code>12</code> = 24px</li>
-          <li><code>13</code> = 27px</li>
-          <li><code>14</code> = 30px</li>
-          <li><code>15</code> = 36px</li>
-          <li><code>16</code> = 46px</li>
-          <li><code>17</code> = 60px</li>
-          <li><code>18</code> = 72px</li>
-          <li><code>19</code> = 81px</li>
-        </ul>
-      </div>
-      <div class="col col-30-lg">
-        <ul>
-          <li><code>20</code> = 96px</li>
-          <li><code>21</code> = 121px</li>
-          <li><code>22</code> = 144px</li>
-          <li><code>23</code> = 182px</li>
-          <li><code>24</code> = 216px</li>
-          <li><code>25</code> = 273px</li>
-          <li><code>26</code> = 324px</li>
-          <li><code>27</code> = 410px</li>
-        </ul>
-      </div>
-    </div>
+       The values came from two interleaved scales roughly set at 1:1.6 with some
+       adjustment. The values are intended to build shapes and layouts that feel
+     balanced.</p>
+    <table class="table-content">
+      <thead>
+        <tr>
+          <th>Spacing Unit</th>
+          <th>Calculation</th>
+          <th>Resolves to...</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>n2</code></td>
+          <td><code>$spacing-base * 0.25</td>
+          <td>4px</td>
+        </tr>
+        <tr>
+          <td><code>n1</code></td>
+          <td><code>$spacing-base * 0.5</td>
+          <td>8px</td>
+        </tr>
+        <tr>
+          <td><code>0</code></td>
+          <td><code>0</td>
+          <td>0px</td>
+        </tr>
+        <tr>
+          <td><code>1</code></td>
+          <td><code>$spacing-base</td>
+          <td>16px</td>
+        </tr>
+        <tr>
+          <td><code>2</code></td>
+          <td><code>$spacing-base * 1.25</td>
+          <td>20px</td>
+        </tr>
+        <tr>
+          <td><code>3</code></td>
+          <td><code>$spacing-base * 1.5</td>
+          <td>24px</td>
+        </tr>
+        <tr>
+          <td><code>4</code></td>
+          <td><code>$spacing-base * 1.875</td>
+          <td>30px</td>
+        </tr>
+        <tr>
+          <td><code>5</code></td>
+          <td><code>$spacing-base * 2.25</td>
+          <td>36px</td>
+        </tr>
+        <tr>
+          <td><code>6</code></td>
+          <td><code>$spacing-base * 2.875</td>
+          <td>46px</td>
+        </tr>
+      </tbody>
+    </table>
   </section>
 
 
@@ -72,9 +87,9 @@ template = """
   <section id="margin-padding-section">
     <div id="margin-padding" title="Margin &amp; Padding" class="inpage-anchor"></div>
     <h2>Margin &amp; Padding</h2>
-    <p>To specify margin and padding, Lens uses a shorthand of the Resolves to... name,
-       side, spacing unit value and <a ui-sref="responsive">breakpoint</a> in the following format:
-       <code>%Resolves to...-side-unit-breakpoint</code>.</p>
+    <p>To specify margin and padding, Lens uses a shorthand of the property name,
+       side, the above spacing units, and the <a ui-sref="responsive">breakpoint</a> in the following format:
+       <code>%property-side-unit-breakpoint</code>.</p>
     <div class="col-container">
       <div class="col col-30-lg">
         <h4>Properties</h4>
@@ -214,8 +229,9 @@ template = """
   <section id="widht-height-section">
     <div id="width-height" title="Width &amp; Height" class="inpage-anchor"></div>
     <h2>Width &amp; Height</h2>
-    <p>Most widths will be set using a <a ui-sref="grid">grid layout</a> the following
-    styles are also provided.</p>
+    <p>Although most widths in a layout will be set using a
+      <a ui-sref="grid">grid layout</a>, the following styles are also useful
+      in building components.</p>
     <table class="table-content">
       <thead>
         <tr>
@@ -244,12 +260,12 @@ template = """
     </table>
 
     <h3>Mixins</h3>
-    <p>When defining your custom elements, you can also use the <code>width-height($n, $n)</code> mixin
-    where <code>$n</code> is either a Lens spacing unit or a custom width/height value.
-    <span class="todo">is that true that $n can be a spacing unit....?</span></p>
+    <p>When defining your custom elements, you can also use the <code>width-height(x, y)</code> mixin
+    where <code>x</code> and <code>y</code> are either a custom CSS width/height value or the spacing
+    function from above.</p>
     <div class="guide-example">
       <div class="guide-example-code"><pre><code class="language-css">.custom-selector
-  +width-height(100px, 200px)</code></pre>
+  +width-height(100px, spacing(6))</code></pre>
       </div>
     </div>
 
