@@ -1,6 +1,4 @@
 .button
-  +appearance(none)
-  +user-select(none)
   border-radius: $button-border-radius
   cursor: pointer
   text-align: center
@@ -21,6 +19,10 @@
   background-color: $button-default-bg
   border: $button-default-border
   color: $button-default-font-color
+  +appearance(none)
+  +user-select(none)
+
+
   +selected
     background-color: $button-default-bg-hover
     color: $button-default-font-color-hover

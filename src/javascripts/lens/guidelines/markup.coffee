@@ -111,10 +111,7 @@ template = """
       variable naming scheme, just the function name.</p>
 
     <h3>Mixins</h3>
-    <p>Lens has a
-      <a href="http://bourbon.io/">Bourbon</a> dependency to give us access to
-      many handy mixins. On top of that, we include many variables, mixins and
-      functions that are specific to our needs at Looker.</p>
+    <p>TODO add mixin info here</p>
 
 
 
