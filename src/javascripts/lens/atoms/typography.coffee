@@ -24,7 +24,7 @@ template = """
     <table class="table-content">
       <thead>
         <tr>
-          <th class="col-15-xs"><code>@extend</code></th>
+          <th class="col-15"><code>@extend</code></th>
           <th>Resolves to...</th>
           <th>Notes</th>
         </tr>
@@ -58,47 +58,47 @@ template = """
       </thead>
       <tbody>
         <tr>
-          <td><code>%text-n2-xs</code></td>
+          <td><code>%text-n2</code></td>
           <td>font-size: 12px<br />line-height: 20px</td>
           <td></td>
         </tr>
         <tr>
-          <td><code>%text-n1-xs</code></td>
+          <td><code>%text-n1</code></td>
           <td>font-size: 14px<br />line-height: 24px</td>
           <td></td>
         </tr>
         <tr>
-          <td><code>%text-1-xs</code></td>
+          <td><code>%text-1</code></td>
           <td>font-size: 16px<br />line-height: 24px</td>
           <td>This is the base font size and line-height</td>
         </tr>
         <tr>
-          <td><code>%text-2-xs</code></td>
+          <td><code>%text-2</code></td>
           <td>font-size: 19px<br />line-height: 27px</td>
           <td></td>
         </tr>
         <tr>
-          <td><code>%text-3-xs</code></td>
+          <td><code>%text-3</code></td>
           <td>font-size: 22px<br />line-height: 30px</td>
           <td></td>
         </tr>
         <tr>
-          <td><code>%text-4-xs</code></td>
+          <td><code>%text-4</code></td>
           <td>font-size: 28px<br />line-height: 36px</td>
           <td></td>
         </tr>
         <tr>
-          <td><code>%text-5-xs</code></td>
+          <td><code>%text-5</code></td>
           <td>font-size: 38px<br />line-height: 46px</td>
           <td></td>
         </tr>
         <tr>
-          <td><code>%text-6-xs</code></td>
+          <td><code>%text-6</code></td>
           <td>font-size: 52px<br />line-height: 60px</td>
           <td></td>
         </tr>
         <tr>
-          <td><code>%text-7-xs</code></td>
+          <td><code>%text-7</code></td>
           <td>font-size: 62px<br />line-height: 72px</td>
           <td></td>
         </tr>
@@ -203,22 +203,22 @@ template = """
       </thead>
       <tbody>
         <tr>
-          <td><code>%text-left-xs</code></td>
+          <td><code>%text-left</code></td>
           <td>text-align: left</td>
           <td></td>
         </tr>
         <tr>
-          <td><code>%text-right-xs</code></td>
+          <td><code>%text-right</code></td>
           <td>text-align: right</td>
           <td></td>
         </tr>
         <tr>
-          <td><code>%text-center-xs</code></td>
+          <td><code>%text-center</code></td>
           <td>text-align: center</td>
           <td></td>
         </tr>
         <tr>
-          <td><code>%text-justify-xs</code></td>
+          <td><code>%text-justify</code></td>
           <td>text-align: justify</td>
           <td></td>
         </tr>

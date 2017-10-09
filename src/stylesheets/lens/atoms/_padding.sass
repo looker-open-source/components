@@ -10,8 +10,7 @@
 
       // Iterate through each unit inside our $spacing map
       @each $unit, $value in $spacing
-
-        %p-#{$unit}-#{$suffix}
+        @include suffixer($suffix, "%p-#{$unit}")
           padding: spacing($unit)
 
     @else
@@ -19,19 +18,18 @@
       // Iterate through each unit inside our $spacing map
       @each $unit, $value in $spacing
 
-
         // We need to control printing out two properties for
         // the lt and tb case and a single for the others
         @if $type == lr
-          %p-#{$type}-#{$unit}-#{$suffix}
+          @include suffixer($suffix, "%p-#{$type}-#{$unit}")
             padding-left: spacing($unit)
             padding-right: spacing($unit)
         @else if $type == tb
-          %p-#{$type}-#{$unit}-#{$suffix}
+          @include suffixer($suffix, "%p-#{$type}-#{$unit}")
             padding-top: spacing($unit)
             padding-bottom: spacing($unit)
         @else
-          %p-#{$type}-#{$unit}-#{$suffix}
+          @include suffixer($suffix, "%p-#{$type}-#{$unit}")
             padding-#{$side}: spacing($unit)
 
 

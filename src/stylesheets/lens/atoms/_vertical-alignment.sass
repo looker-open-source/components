@@ -2,7 +2,7 @@
 
   // Iterare through each type of $vertical-alignment-types
   @each $type in $vertical-alignment-types
-    %align-#{$type}-#{$suffix}
+    @include suffixer($suffix, "%align-#{$type}")
       vertical-align: #{$type}
 
 

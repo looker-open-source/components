@@ -32,27 +32,27 @@ template = """
       </thead>
       <tbody>
         <tr>
-          <td><code>%border-xs</code></td>
+          <td><code>%border</code></td>
           <td>border: 1px solid $border-color-normal</td>
           <td>All sides of the element</td>
         </tr>
         <tr>
-          <td><code>%border-t-xs</code></td>
+          <td><code>%border-t</code></td>
           <td>border-top: 1px solid $border-color-normal</td>
           <td></td>
         </tr>
         <tr>
-          <td><code>%border-b-xs</code></td>
+          <td><code>%border-b</code></td>
           <td>border-bottom: 1px solid $border-color-normal</td>
           <td></td>
         </tr>
         <tr>
-          <td><code>%border-r-xs</code></td>
+          <td><code>%border-r</code></td>
           <td>border-right: 1px solid $border-color-normal</td>
           <td></td>
         </tr>
         <tr>
-          <td><code>%border-l-xs</code></td>
+          <td><code>%border-l</code></td>
           <td>border-left: 1px solid $border-color-normal</td>
           <td></td>
         </tr>
@@ -68,29 +68,29 @@ template = """
     <table class="table-content">
       <thead>
         <tr>
-          <th class="col-30-xs"><code>@extend</code></th>
+          <th class="col-30"><code>@extend</code></th>
           <th>Resolves to...</th>
           <th>Notes</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><code>%border-light-xs</code></td>
+          <td><code>%border-light</code></td>
           <td>border: 1px solid $border-color-light</td>
           <td>All sides of the element</td>
         </tr>
         <tr>
-          <td><code>%border-dark-xs</code></td>
+          <td><code>%border-dark</code></td>
           <td>border: 1px solid $border-color-dark</td>
           <td>All sides of the element</td>
         </tr>
         <tr>
-          <td><code>%border-[side]-light-xs</code></td>
+          <td><code>%border-[side]-light</code></td>
           <td>border-[side]: 1px solid $border-color-normal</td>
           <td><code>[side]</code> is t, b, r, l for top, bottom, right or left.</td>
         </tr>
         <tr>
-          <td><code>%border-[side]-dark-xs</code></td>
+          <td><code>%border-[side]-dark</code></td>
           <td>border-[side]: 1px solid $border-color-dark</td>
           <td><code>[side]</code> is t, b, r, l for top, bottom, right or left.</td>
         </tr>
@@ -103,7 +103,7 @@ template = """
     <div id="removing-borders" title="Removing Borders" class="inpage-anchor"></div>
     <h2>Removing Borders</h2>
     <p>To get a little more control over borders at different breakpoints
-       <code>.border-none-xs</code> can be applied to remove all borders or borders on specific sides.</p>
+       <code>.border-none</code> can be applied to remove all borders or borders on specific sides.</p>
     <table class="table-content">
       <thead>
         <tr>
@@ -114,27 +114,27 @@ template = """
       </thead>
       <tbody>
         <tr>
-          <td><code>%border-none-xs</code></td>
+          <td><code>%border-none</code></td>
           <td>border: none</td>
           <td>removes all borders on the element</td>
         </tr>
         <tr>
-          <td><code>%border-none-t-xs</code></td>
+          <td><code>%border-none-t</code></td>
           <td>border-top: none</td>
           <td></td>
         </tr>
         <tr>
-          <td><code>%border-none-b-xs</code></td>
+          <td><code>%border-none-b</code></td>
           <td>border-bottom: none</td>
           <td></td>
         </tr>
         <tr>
-          <td><code>%border-none-r-xs</code></td>
+          <td><code>%border-none-r</code></td>
           <td>border-right: none</td>
           <td></td>
         </tr>
         <tr>
-          <td><code>%border-none-l-xs</code></td>
+          <td><code>%border-none-l</code></td>
           <td>border-left: none</td>
           <td></td>
         </tr>

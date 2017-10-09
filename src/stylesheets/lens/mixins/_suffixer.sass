@@ -1,0 +1,7 @@
+@mixin suffixer($suffix, $selector: null)
+  @if $suffix == "xs"
+    #{$selector}
+      @content
+  @else
+    #{$selector}-#{$suffix}
+      @content

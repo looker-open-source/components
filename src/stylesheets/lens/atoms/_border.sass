@@ -7,10 +7,10 @@
     // We don't want a modifier on the normal style,
     // so we need a conditional to control that
     @if $value == normal
-      %border-#{$suffix}
+      @include suffixer($suffix, "%border")
         border: solid 1px border-var($value)
     @else
-      %border-#{$value}-#{$suffix}
+      @include suffixer($suffix, "%border-#{$value}")
         border: solid 1px border-var($value)
 
     // Iterate through each type in $border-types
@@ -19,10 +19,10 @@
       // We don't want a modifier on the normal style,
       // so we need a conditional to control that
       @if $value == normal
-        %border-#{$shorthand}-#{$suffix}
+        @include suffixer($suffix, "%border-#{$shorthand}")
           border-#{$border}: solid 1px border-var($value)
       @else
-        %border-#{$shorthand}-#{$value}-#{$suffix}
+        @include suffixer($suffix, "%border-#{$shorthand}-#{$value}")
           border-#{$border}: solid 1px border-var($value)
 
 
@@ -31,12 +31,12 @@
 @mixin border-none($suffix)
 
   // Create style for border none on all sides
-  %border-none-#{$suffix}
+  @include suffixer($suffix, "%border-none")
     border: none
 
   // Iterate through border sides and create border none styles
   @each $border, $shorthand in $border-types
-    %border-none-#{$shorthand}-#{$suffix}
+    @include suffixer($suffix, "%border-none-#{$shorthand}")
       border-#{$border}: none
 
 
@@ -47,14 +47,14 @@
   // Create style for border radius classes
   %round
     border-radius: $border-radius
-    &-t
-      border-radius: $border-radius $border-radius 0 0
-    &-b
-      border-radius: 0 0 $border-radius $border-radius
-    &-l
-      border-radius: $border-radius 0 0 $border-radius
-    &-r
-      border-radius: 0 $border-radius $border-radius 0
+  %round-t
+    border-radius: $border-radius $border-radius 0 0
+  %round-b
+    border-radius: 0 0 $border-radius $border-radius
+  %round-l
+    border-radius: $border-radius 0 0 $border-radius
+  %round-r
+    border-radius: 0 $border-radius $border-radius 0
 
   // Create the circle class
   %circle

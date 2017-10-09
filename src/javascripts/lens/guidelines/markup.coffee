@@ -84,10 +84,9 @@ template = """
        declaration on them. Lens's utility classes should be used whenever
        possible to create the layout and style of a page or element. Each
        utility class end with a breakpoint suffix. Since Lens is built
-       mobile-first, you'd apply the <code>-xs</code> suffix to make those s
-       tyles work across all breakpoints. To modify those styles at a larger
-       breakpoint, you'd apply an additional utility class that employs one of
-       the other suffixes, such as <code>-sm</code>, <code>-md</code>,
+       mobile-first, you'd apply the default class make those styles work across all breakpoints.
+       To modify those styles at a larger breakpoint, you'd apply an additional utility
+       class that employs one of the other suffixes, such as <code>-sm</code>, <code>-md</code>,
        <code>-lg</code>, <code>-xl</code>. Whichever the highest suffix is,
        those styles will apply all the way up through any screen size. To learn
        more about these suffixes, take a gander at the

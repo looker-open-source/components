@@ -11,7 +11,7 @@
       // Iterate through each unit inside our $spacing map
       @each $unit, $value in $spacing
 
-        %m-#{$unit}-#{$suffix}
+        @include suffixer($suffix, "%m-#{$unit}")
           margin: spacing($unit)
 
     @else
@@ -22,22 +22,22 @@
         // We need to control printing out two properties for
         // the lt and tb case and a single for the others
         @if $type == lr
-          %m-#{$type}-#{$unit}-#{$suffix}
+          @include suffixer($suffix, "%m-#{$type}-#{$unit}")
             margin-left: spacing($unit)
             margin-right: spacing($unit)
         @else if $type == tb
-          %m-#{$type}-#{$unit}-#{$suffix}
+          @include suffixer($suffix, "%m-#{$type}-#{$unit}")
             margin-top: spacing($unit)
             margin-bottom: spacing($unit)
         @else
-          %m-#{$type}-#{$unit}-#{$suffix}
+          @include suffixer($suffix, "%m-#{$type}-#{$unit}")
             margin-#{$side}: spacing($unit)
 
 
 
 // Creates the styles for margin: 0 auto for horizontal centering
 @mixin margin-auto($suffix)
-  %m-auto-#{$suffix}
+  @include suffixer($suffix, "%m-auto")
     margin: 0 auto
 
 

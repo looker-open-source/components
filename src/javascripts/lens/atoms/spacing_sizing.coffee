@@ -122,42 +122,42 @@ template = """
       </thead>
       <tbody>
         <tr>
-          <td><code>%m-$n-xs</code></td>
+          <td><code>%m-$n</code></td>
           <td>margin: $n</td>
           <td>Equal margin on all sides of the element.</td>
         </tr>
         <tr>
-          <td><code>%m-t-$n-xs</code></td>
+          <td><code>%m-t-$n</code></td>
           <td>margin-top: $n</td>
           <td></td>
         </tr>
         <tr>
-          <td><code>%m-b-$n-xs</code></td>
+          <td><code>%m-b-$n</code></td>
           <td>margin-bottom: $n</td>
           <td></td>
         </tr>
         <tr>
-          <td><code>%m-l-$n-xs</code></td>
+          <td><code>%m-l-$n</code></td>
           <td>margin-left: $n</td>
           <td></td>
         </tr>
         <tr>
-          <td><code>%m-r-$n-xs</code></td>
+          <td><code>%m-r-$n</code></td>
           <td>margin-right: $n</td>
           <td></td>
         </tr>
         <tr>
-          <td><code>%m-tb-$n-xs</code></td>
+          <td><code>%m-tb-$n</code></td>
           <td>margin-top: $n<br/>margin-bottom: $n</td>
           <td></td>
         </tr>
         <tr>
-          <td><code>%m-lr-$n-xs</code></td>
+          <td><code>%m-lr-$n</code></td>
           <td>margin-left: $n<br/>margin-right: $n</td>
           <td></td>
         </tr>
         <tr>
-          <td><code>%m-auto-xs</code></td>
+          <td><code>%m-auto</code></td>
           <td>margin-left: auto<br/>margin-right: auto</td>
           <td>horizontal center</td>
         </tr>
@@ -175,37 +175,37 @@ template = """
       </thead>
       <tbody>
         <tr>
-          <td><code>%p-$n-xs</code></td>
+          <td><code>%p-$n</code></td>
           <td>padding: $n</td>
           <td>Equal padding on all sides of the element.</td>
         </tr>
         <tr>
-          <td><code>%p-t-$n-xs</code></td>
+          <td><code>%p-t-$n</code></td>
           <td>padding-top: $n</td>
           <td></td>
         </tr>
         <tr>
-          <td><code>%p-b-$n-xs</code></td>
+          <td><code>%p-b-$n</code></td>
           <td>padding-bottom: $n</td>
           <td></td>
         </tr>
         <tr>
-          <td><code>%p-l-$n-xs</code></td>
+          <td><code>%p-l-$n</code></td>
           <td>padding-left: $n</td>
           <td></td>
         </tr>
         <tr>
-          <td><code>%p-r-$n-xs</code></td>
+          <td><code>%p-r-$n</code></td>
           <td>padding-right: $n</td>
           <td></td>
         </tr>
         <tr>
-          <td><code>%p-tb-$n-xs</code></td>
+          <td><code>%p-tb-$n</code></td>
           <td>padding-top: $n<br/>padding-bottom: $n</td>
           <td></td>
         </tr>
         <tr>
-          <td><code>%p-lr-$n-xs</code></td>
+          <td><code>%p-lr-$n</code></td>
           <td>padding-left: $n<br/>padding-right: $n</td>
           <td></td>
         </tr>
@@ -241,19 +241,19 @@ template = """
       </thead>
       <tbody>
         <tr>
-          <td><code>%w-fit-xs</code> </td>
+          <td><code>%w-fit</code> </td>
           <td>max-width: 100%</td>
         </tr>
         <tr>
-          <td><code>%w-full-xs</code> </td>
+          <td><code>%w-full</code> </td>
           <td>width: 100%</td>
         </tr>
         <tr>
-          <td><code>%h-full-xs</code> </td>
+          <td><code>%h-full</code> </td>
           <td>height: 100%</td>
         </tr>
         <tr>
-          <td><code>%w-auto-xs</code> </td>
+          <td><code>%w-auto</code> </td>
           <td>width: auto</td>
         </tr>
       </tbody>
@@ -286,22 +286,22 @@ template = """
       </thead>
       <tbody>
         <tr>
-          <td><code>%overflow-hidden-xs</code> </td>
+          <td><code>%overflow-hidden</code> </td>
           <td>overflow: hidden</td>
           <td>clip content</td>
         </tr>
         <tr>
-          <td><code>%overflow-auto-xs</code> </td>
+          <td><code>%overflow-auto</code> </td>
           <td>overflow: auto</td>
           <td>only add scrollbars if content is too big</td>
         </tr>
         <tr>
-          <td><code>%overflow-scroll-xs</code> </td>
+          <td><code>%overflow-scroll</code> </td>
           <td>overflow: scroll</td>
           <td>always have scrollbars</td>
         </tr>
         <tr>
-          <td><code>%overflow-visible-xs</code> </td>
+          <td><code>%overflow-visible</code> </td>
           <td>overflow: visible</td>
           <td>allow content to extend outside of container</td>
         </tr>

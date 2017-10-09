@@ -51,7 +51,7 @@ template = """
       <thead>
         <tr>
           <th>Button Type</th>
-          <th class="col-20-xs">Modifier</th>
+          <th class="col-20">Modifier</th>
           <th>Example</th>
           <th>Use</th>
         </tr>
@@ -95,26 +95,26 @@ template = """
       <tbody>
         <tr>
           <td>Extra Small</td>
-          <td><code>.button--xsmall-xs</td>
-          <td><a class="button button--xsmall-xs" role="button" href>Extra Small</a></td>
+          <td><code>.button--xsmall</td>
+          <td><a class="button button--xsmall" role="button" href>Extra Small</a></td>
           <td>for super tiny things.</td>
         </tr>
         <tr>
           <td>Small</td>
-          <td><code>.button--small-xs</td>
-          <td><a class="button button--small-xs" role="button" href>Small</a></td>
+          <td><code>.button--small</td>
+          <td><a class="button button--small" role="button" href>Small</a></td>
           <td>for kinda tiny things.</td>
         </tr>
         <tr>
           <td>Normal</td>
-          <td><code>.button--xsmall-xs</td>
-          <td><a class="button button--normal-xs" role="button" href>Normal</a></td>
+          <td><code>.button--xsmall</td>
+          <td><a class="button button--normal" role="button" href>Normal</a></td>
           <td>Typically what you'll use...</td>
         </tr>
         <tr>
           <td>Large</td>
-          <td><code>.button--large-xs</td>
-          <td><a class="button button--large-xs" role="button" href>Large</a></td>
+          <td><code>.button--large</td>
+          <td><a class="button button--large" role="button" href>Large</a></td>
           <td>for attention!</td>
         </tr>
       </tbody>

@@ -30,9 +30,9 @@ template = """
     <p class="todo"></p>
 
     <h2>Download</h2>
-    <a href="https://github.com/looker/lens/archive/v0.8.0.zip" class="button button--large-xs w-full-xs w-auto-lg">Source Files</a>
-    <a href="http://looker.github.io/lens/css/Lens.css" class="button button--large-xs w-full-xs w-auto-lg">Compiled CSS</a>
-    <a href="http://looker.github.io/lens/css/Lens.min.css" class="button button--large-xs w-full-xs w-auto-lg">Compiled CSS (minified)</a>
+    <a href="https://github.com/looker/lens/archive/v0.8.0.zip" class="button button--large w-full w-auto-lg">Source Files</a>
+    <a href="http://looker.github.io/lens/css/Lens.css" class="button button--large w-full w-auto-lg">Compiled CSS</a>
+    <a href="http://looker.github.io/lens/css/Lens.min.css" class="button button--large w-full w-auto-lg">Compiled CSS (minified)</a>
   </section>
 
 </lens-main>

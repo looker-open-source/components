@@ -67,7 +67,7 @@ template = """
 
 <section class="login-auth">
   <div class="login-auth-wrap">
-    <h1 class="m-b-2-xs">Login to Lens</h1>
+    <h1>Login to Lens</h1>
     <div id="custom-google-btn" class="button button--primary">Authenticate with Google</div>
     <div class="g-signin2" style="display:none;"></div>
   </div>

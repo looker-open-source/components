@@ -96,10 +96,10 @@ template = """
 
     <div class="guide-example">
       <div class="guide-example-demo">
-        <table class="col-100-xs">
+        <table class="col-100">
           <tbody>
             <tr>
-              <th class="col-80-xs">Heading 1</th>
+              <th class="col-80">Heading 1</th>
               <th>Heading 2</th>
               <th>Heading 3</th>
             </tr>
@@ -122,10 +122,10 @@ template = """
         </table>
       </div>
       <div class="guide-example-code">
-<pre><code class="language-html">&lt;table class="col-100-xs"&gt;
+<pre><code class="language-html">&lt;table class="col-100"&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;th class="col-80-xs"&gt;Heading 1&lt;/th&gt;
+      &lt;th class="col-80"&gt;Heading 1&lt;/th&gt;
       &lt;th&gt;Heading 2&lt;/th&gt;
       &lt;th&gt;Heading 3&lt;/th&gt;
     &lt;/tr&gt;
@@ -223,7 +223,7 @@ template = """
         <table class="table-content col-100-lg">
           <tbody>
             <tr>
-              <th class="col-80-xs">Heading 1</th>
+              <th class="col-80">Heading 1</th>
               <th>Heading 2</th>
               <th>Heading 3</th>
             </tr>
@@ -247,7 +247,7 @@ template = """
 <pre><code class="language-html">&lt;table class="table-content"&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;th class="col-80-xs"&gt;Heading 1&lt;/th&gt;
+      &lt;th class="col-80"&gt;Heading 1&lt;/th&gt;
       &lt;th&gt;Heading 2&lt;/th&gt;
       &lt;th&gt;Heading 3&lt;/th&gt;
     &lt;/tr&gt;

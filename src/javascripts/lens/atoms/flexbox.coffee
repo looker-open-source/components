@@ -41,12 +41,12 @@ template = """
       </thead>
       <tbody>
         <tr>
-          <td><code>%flex-block-xs</code></td>
+          <td><code>%flex-block</code></td>
           <td>display: flex</td>
           <td>Used on block elements</td>
         </tr>
         <tr>
-          <td><code>%flex-inline-xs</code></td>
+          <td><code>%flex-inline</code></td>
           <td>display: flex-inline</td>
           <td>Used on inline elements</td>
         </tr>
@@ -66,22 +66,22 @@ template = """
       </thead>
       <tbody>
         <tr>
-          <td><code>%flex-row-xs</code></td>
+          <td><code>%flex-row</code></td>
           <td>flex-direction: row</td>
           <td>(Default) Left to right.</td>
         </tr>
         <tr>
-          <td><code>%flex-row-reverse-xs</code></td>
+          <td><code>%flex-row-reverse</code></td>
           <td>flex-direction: row-reverse</td>
           <td>Right to left</td>
         </tr>
         <tr>
-          <td><code>%flex-column-xs</code></td>
+          <td><code>%flex-column</code></td>
           <td>flex-direction: column</td>
           <td>Top to bottom</td>
         </tr>
         <tr>
-          <td><code>%flex-column-reverse-xs</code></td>
+          <td><code>%flex-column-reverse</code></td>
           <td>flex-direction: column-reverse</td>
           <td>Bottom to top</td>
         </tr>
@@ -102,17 +102,17 @@ template = """
       </thead>
       <tbody>
         <tr>
-          <td><code>%flex-nowrap-xs</code></td>
+          <td><code>%flex-nowrap</code></td>
           <td>flex-wrap: nowrap</td>
           <td>(Default) Single-line with no wrapping</td>
         </tr>
         <tr>
-          <td><code>%flex-wrap-xs</code></td>
+          <td><code>%flex-wrap</code></td>
           <td>flex-wrap: wrap</td>
           <td>Multi-line from left to right</td>
         </tr>
         <tr>
-          <td><code>%flex-wrap-reverse-xs</code></td>
+          <td><code>%flex-wrap-reverse</code></td>
           <td>flex-wrap: wrap-reverse</td>
           <td>Multi-line from right to left</td>
         </tr>
@@ -125,34 +125,34 @@ template = """
     <table class="table-content">
       <thead>
         <tr>
-          <th class="col-30-xs"><code>@extend</code></th>
-          <th class="col-30-xs">Resolves to...</th>
+          <th class="col-30"><code>@extend</code></th>
+          <th class="col-30">Resolves to...</th>
           <th>Notes</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><code>%flex-justify-start-xs</code></td>
+          <td><code>%flex-justify-start</code></td>
           <td>justify-content: flex-start</td>
           <td>(Default) Items are packed toward the start line</td>
         </tr>
         <tr>
-          <td><code>%flex-justify-end-xs</code></td>
+          <td><code>%flex-justify-end</code></td>
           <td>justify-content: flex-end</td>
           <td>Items are packed toward the end line</td>
         </tr>
         <tr>
-          <td><code>%flex-justify-center-xs</code></td>
+          <td><code>%flex-justify-center</code></td>
           <td>justify-content: center</td>
           <td>Items are centered along the line</td>
         </tr>
         <tr>
-          <td><code>%flex-justify-between-xs</code></td>
+          <td><code>%flex-justify-between</code></td>
           <td>justify-content: space-between</td>
           <td>Items are evenly distributed in the line. First item on the start line, last item on the end line.</td>
         </tr>
         <tr>
-          <td><code>%flex-justify-around-xs</code></td>
+          <td><code>%flex-justify-around</code></td>
           <td>justify-content: space-around</td>
           <td>Items are evently distributed in the line with equal space around them. Note that visually the spaces aren't equal because each item has equal space on both sides.</td>
         </tr>
@@ -164,34 +164,34 @@ template = """
     <table class="table-content">
       <thead>
         <tr>
-          <th class="col-30-xs"><code>@extend</code></th>
-          <th class="col-30-xs">Resolves to...</th>
+          <th class="col-30"><code>@extend</code></th>
+          <th class="col-30">Resolves to...</th>
           <th>Notes</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><code>%flex-item-stretch-xs</code></td>
+          <td><code>%flex-item-stretch</code></td>
           <td>align-items: stretch</td>
           <td>(Default) Stretch to fill the container but still respects min/max-width</td>
         </tr>
         <tr>
-          <td><code>%flex-item-start-xs</code></td>
+          <td><code>%flex-item-start</code></td>
           <td>align-items: flex-start</td>
           <td>Cross-start margin edge of the items is placed on the cross-start line</td>
         </tr>
         <tr>
-          <td><code>%flex-item-end-xs</code></td>
+          <td><code>%flex-item-end</code></td>
           <td>align-items: flex-end</td>
           <td>Cross-end margin edge of the items is placed on the cross-end line</td>
         </tr>
         <tr>
-          <td><code>%flex-item-center-xs</code></td>
+          <td><code>%flex-item-center</code></td>
           <td>align-items: center</td>
           <td>Items are centered in the cross-axis</td>
         </tr>
         <tr>
-          <td><code>%flex-item-baseline-xs</code></td>
+          <td><code>%flex-item-baseline</code></td>
           <td>align-items: baseline</td>
           <td>Items are aligned along their baselines</td>
         </tr>
@@ -206,39 +206,39 @@ template = """
     <table class="table-content">
       <thead>
         <tr>
-          <th class="col-30-xs"><code>@extend</code></th>
-          <th class="col-30-xs">Resolves to...</th>
+          <th class="col-30"><code>@extend</code></th>
+          <th class="col-30">Resolves to...</th>
           <th>Notes</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><code>%flex-content-stretch-xs</code></td>
+          <td><code>%flex-content-stretch</code></td>
           <td>align-content: stretch</td>
           <td>(Default) Lines stretch to take up the remaining space</td>
         </tr>
         <tr>
-          <td><code>%flex-content-start-xs</code></td>
+          <td><code>%flex-content-start</code></td>
           <td>align-content: flex-start</td>
           <td>Lines packed to the start of the container</td>
         </tr>
         <tr>
-          <td><code>%flex-content-end-xs</code></td>
+          <td><code>%flex-content-end</code></td>
           <td>align-content: flex-end</td>
           <td>Lines packed to the end of the container</td>
         </tr>
         <tr>
-          <td><code>%flex-content-center-xs</code></td>
+          <td><code>%flex-content-center</code></td>
           <td>align-content: center</td>
           <td>Lines packed to the center of the container</td>
         </tr>
         <tr>
-          <td><code>%flex-content-around-xs</code></td>
+          <td><code>%flex-content-around</code></td>
           <td>align-content: space-around</td>
           <td>Lines evenly distributed with the first line at the start and the last at the end of the container.</td>
         </tr>
         <tr>
-          <td><code>%flex-content-between-xs</code></td>
+          <td><code>%flex-content-between</code></td>
           <td>align-content: space-between</td>
           <td>Lines evenly distributed with equal space around each line.</td>
         </tr>
@@ -257,7 +257,7 @@ template = """
     <p>By default, items are laid out in source order. Use the <code>order</code>
       property to control the order inside the flex container.
     </p>
-    <p>Lens contains built in ordering classes of <code>.flex-order-$n-xs</code>,
+    <p>Lens contains built in ordering classes of <code>.flex-order-$n</code>,
        where <code>$n</code> is an integer
       from 1 to 6. Any item without an order will default to 1 and matching orders
       will be grouped together in the appropriate order. You can rearrange the
@@ -272,7 +272,7 @@ template = """
       </thead>
       <tbody>
         <tr>
-          <td><code>%flex-order-$n-xs</code></td>
+          <td><code>%flex-order-$n</code></td>
           <td>order: $n</td>
           <td><code>$n</code> is a an integer from 1 to 6</td>
         </tr>
@@ -292,7 +292,7 @@ template = """
       </thead>
       <tbody>
         <tr>
-          <td><code>%flex-grow-$n-xs</code></td>
+          <td><code>%flex-grow-$n</code></td>
           <td>flex-grow: $n</td>
           <td><code>$n</code> is a an integer from 0 to 6</td>
         </tr>
@@ -312,7 +312,7 @@ template = """
       </thead>
       <tbody>
         <tr>
-          <td><code>%flex-shrink-$n-xs</code></td>
+          <td><code>%flex-shrink-$n</code></td>
           <td>flex-shrink: $n</td>
           <td><code>$n</code> is a an integer from 1 to 6</td>
         </tr>
@@ -329,7 +329,7 @@ template = """
     <table class="table-content">
       <thead>
         <tr>
-          <th class="col-30-xs"><code>@extend</code></th>
+          <th class="col-30"><code>@extend</code></th>
           <th>Resolves to...</th>
           <th>Notes</th>
           <th>Example</th>
@@ -337,22 +337,22 @@ template = """
       </thead>
       <tbody>
         <tr>
-          <td><code>%flex-basis-auto-xs</code></td>
+          <td><code>%flex-basis-auto</code></td>
           <td>flex-basis: auto</td>
           <td>Default</td>
           <td></td>
         </tr>
         <tr>
-          <td><code>%flex-basis-$n-xs</code></td>
+          <td><code>%flex-basis-$n</code></td>
           <td>flex-basis: percentage($n/100)</td>
           <td><code>$n</code> is a an integer from 5-100 in increments of 5, plus 33 and 66</td>
-          <td><code>%flex-basis-33-xs</code> resolves to flex-basis: 0.33</td>
+          <td><code>%flex-basis-33</code> resolves to flex-basis: 0.33</td>
         </tr>
         <tr>
-          <td><code>%flex-basis-s$size-xs</code></td>
+          <td><code>%flex-basis-s$size</code></td>
           <td>flex-basis: s$size</td>
           <td><code>$size</code> is a <a ui-sref="spaces-sizing">sizing unit</a></td>
-          <td><code>%flex-basis-s4-xs</code> resolves to flex-basis: 4px</td>
+          <td><code>%flex-basis-s4</code> resolves to flex-basis: 4px</td>
         </tr>
       </tbody>
     </table>
@@ -371,32 +371,32 @@ template = """
       </thead>
       <tbody>
         <tr>
-          <td><code>%flex-self-auto-xs</code></td>
+          <td><code>%flex-self-auto</code></td>
           <td>align-self: auto</td>
           <td>(Default) Auto align, which inherits the align-items property</td>
         </tr>
         <tr>
-          <td><code>%flex-self-start-xs</code></td>
+          <td><code>%flex-self-start</code></td>
           <td>align-self: flex-start</td>
           <td>Cross-start margin edge of the items is placed on the cross-start line</td>
         </tr>
         <tr>
-          <td><code>%flex-self-end-xs</code></td>
+          <td><code>%flex-self-end</code></td>
           <td>align-self: flex-end</td>
           <td>Cross-end margin edge of the items is placed on the cross-end line</td>
         </tr>
         <tr>
-          <td><code>%flex-self-center-xs</code></td>
+          <td><code>%flex-self-center</code></td>
           <td>align-self: center</td>
           <td>Items are centered in the cross-axis</td>
         </tr>
         <tr>
-          <td><code>%flex-self-stretch-xs</code></td>
+          <td><code>%flex-self-stretch</code></td>
           <td>align-self: stretch</td>
           <td>Stretch to fill the container but still respects min/max-width</td>
         </tr>
         <tr>
-          <td><code>%flex-self-baseline-xs</code></td>
+          <td><code>%flex-self-baseline</code></td>
           <td>align-self: baseline</td>
           <td>Items are aligned such as their baselines align</td>
         </tr>

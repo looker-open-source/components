@@ -82,9 +82,9 @@ body
   // Guide Banner
   // =========================================
   &-banner
-    @extend %fixed-xs, %pos-t-0-xs, %pos-l-0-xs
-    @extend %p-tb-n1-xs, %p-lr-5-xs
-    @extend %w-full-xs
+    @extend %fixed, %pos-t-0, %pos-l-0
+    @extend %p-tb-n1, %p-lr-5
+    @extend %w-full
     @extend %bg-gray-7
     height: spacing(6)
     z-index: 50
@@ -95,15 +95,15 @@ body
   // =========================================
   &-name
     @extend %color-white
-    @extend %text-3-xs
+    @extend %text-3
     text-decoration: none
     +selected
       @extend %color-white
 
   &-version
     @extend %color-gray-4
-    @extend %text-n2-xs
-    @extend %p-l-1-xs
+    @extend %text-n2
+    @extend %p-l-1
     text-decoration: none
     &::after
       content: $lens-version
@@ -115,13 +115,13 @@ body
   // Guide Navigation
   // =========================================
   &-navigation
-    @extend %fixed-xs, %pos-t-6-xs, %pos-b-0-xs
-    @extend %p-t-0-xs
+    @extend %fixed, %pos-t-6, %pos-b-0
+    @extend %p-t-0
     width: 216px
     @extend %bg-white
-    @extend %border-r-xs
-    @extend %h-full-xs
-    @extend %z-1-xs
+    @extend %border-r
+    @extend %h-full
+    @extend %z-1
     transform: translateX(-100%);
     transition: height 300ms ease, padding 300ms ease, transform 200ms ease
     +media(min-width 960px)
@@ -129,28 +129,28 @@ body
     &-mobile-show
       transform: translateX(0)
     nav
-      @extend %absolute-xs
-      @extend %h-full-xs
-      @extend %overflow-hidden-xs
-      @extend %p-t-3-xs
-      @extend %p-b-5-xs
+      @extend %absolute
+      @extend %h-full
+      @extend %overflow-hidden
+      @extend %p-t-3
+      @extend %p-b-5
       width: 216px
       overflow-y: auto
       outline: 0
     &-list,
     &-list-child
-      @extend %m-0-xs
-      @extend %p-0-xs
+      @extend %m-0
+      @extend %p-0
       list-style: none
     &-list-child
-      @extend %hide-xs
-      @extend %m-b-1-xs
+      @extend %hide
+      @extend %m-b-1
     &-link
-      @extend %block-xs
-      @extend %relative-xs
-      @extend %text-n1-xs
+      @extend %block
+      @extend %relative
+      @extend %text-n1
       @extend %color-gray-7
-      @extend %border-r-xs
+      @extend %border-r
       cursor: pointer
       text-decoration: none
       &:focus,
@@ -162,32 +162,32 @@ body
         @extend %color-gray-7
       &-parent,
       &-single
-        @extend %p-tb-n2-xs, %p-lr-5-xs
+        @extend %p-tb-n2, %p-lr-5
       &-child
-        @extend %p-tb-n2-xs, %p-l-6-xs, %p-r-5-xs
+        @extend %p-tb-n2, %p-l-6, %p-r-5
     &-icon
-      @extend %absolute-xs, %pos-r-1-xs, %pos-t-0-xs
-      @extend %rotate-45-xs
+      @extend %absolute, %pos-r-1, %pos-t-0
+      @extend %rotate-45
       height: 30px
       line-height: 30px
       transition: transform 50ms ease-in-out
       &::after
-        @extend %block-xs
+        @extend %block
         content: '\00D7'
     &-link-parent
       &.active
         .guide-navigation-icon
-          @extend %rotate-0-xs
+          @extend %rotate-0
           transform: rotate(0deg)
         .guide-navigation-list-child
-          @extend %block-xs
+          @extend %block
     &-link-single,
     &-link-child
       &.active
         @extend %bold
         &::after
-          @extend %absolute-xs, %pos-l-0-xs, %pos-t-0-xs
-          @extend %h-full-xs
+          @extend %absolute, %pos-l-0, %pos-t-0
+          @extend %h-full
           @extend %bg-gray-7
           content: ""
           width: 7px
@@ -197,21 +197,21 @@ body
   // Page Subnav
   // =========================================
   &-subnav
-    @extend %m-r-0-xs, %m-t-5-xs, %m-l-6-xs
-    @extend %p-lr-0-xs, %p-t-1-xs
-    @extend %fixed-xs
+    @extend %m-r-0, %m-t-5, %m-l-6
+    @extend %p-lr-0, %p-t-1
+    @extend %fixed
     width: spacing(23)
     border-top: solid 3px gray-color(gray-2)
     list-style: none
     &-item
-      @extend %text-n2-xs
+      @extend %text-n2
       line-height: 2.2
     &-anchor
       @extend %titlecase
       @extend %color-gray-4
-      @extend %w-full-xs
-      @extend %block-xs
-      @extend %p-l-n1-xs
+      @extend %w-full
+      @extend %block
+      @extend %p-l-n1
       text-decoration: none
       &:hover,
       &:active,
@@ -228,65 +228,65 @@ body
   // =========================================
   &-main,
   &-contentinfo
-    @extend %p-lr-5-xs
+    @extend %p-lr-5
     margin-left: 216px
   &-main
-    @extend %p-t-6-xs, %m-b-6-xs
+    @extend %p-t-6, %m-b-6
     min-height: calc(100vh - 66px)
   &-header
-    @extend %p-t-3-xs
+    @extend %p-t-3
   &-content
     section
-      @extend %m-b-5-xs
+      @extend %m-b-5
       .inpage-anchor
-        @extend %block-xs
-        @extend %relative-xs
+        @extend %block
+        @extend %relative
         top: -70px
         visibility: hidden
   &-contentinfo
-    @extend %text-n2-xs
+    @extend %text-n2
     height: 20px
 
   &-example
-    @extend %m-b-4-xs
+    @extend %m-b-4
     &::before
-      @extend %block-xs
+      @extend %block
       @extend %caps
-      @extend %text-n2-xs
+      @extend %text-n2
       @extend %color-gray-4
-      @extend %m-b-1-xs
+      @extend %m-b-1
       content: "Example"
     &-demo
-      @extend %p-b-0-xs
+      @extend %p-b-0
     &-code
       pre
-        @extend %m-0-xs
+        @extend %m-0
 
   // =========================================
   // Color Lists
   // =========================================
   &-color
-    @extend %p-lr-0-xs
+    @extend %p-lr-0
     margin: 20px -12px 0 -12px
     list-style: none
     overflow: hidden
     &-item
-      @extend %float-l-xs
-      @extend %m-b-3-xs
+      @extend %float-l
+      @extend %m-b-3
       > span
-        @extend %p-lr-3-xs, %p-tb-2-xs
-        @extend %m-lr-1-xs
-        @extend %block-xs
+        @extend %p-lr-3, %p-tb-2
+        @extend %m-lr-1
+        @extend %block
         @extend %round
         color: rgba(#fff, 0.9)
         font-family: Monaco, monospace
         > span
-          @extend %block-xs
-          @extend %text-n1-xs
+          @extend %block
+          @extend %text-n1
           line-height: 1
         em
-          @extend %block-xs
-          @extend %text-n1-xs
+          @extend %block
+          @extend %text-n1
           color: rgba(#fff, 0.5)
           font-family: Helvetica, Arial, sans-serif
         &.bg-gray,
@@ -316,7 +316,7 @@ body
         em
           color: text-color(light)
     .guide-color-item > span
-      @extend %m-b-1-xs
+      @extend %m-b-1
 
 // =========================================
 // Documentation Components
@@ -339,8 +339,7 @@ body
     content: "Data analytics everybody loves."
 
 .guide-demo-box
-  @extend %border-xs
-//  @extend %p-8-xs
+  @extend %border
 
 
 // =========================================
@@ -348,7 +347,7 @@ body
 // =========================================
 .modal-tarp__styleguide
   @extend %bg-gray-7
-  @extend %flex-block-xs
+  @extend %flex-block
   padding: 40px
   opacity: 0.65
 

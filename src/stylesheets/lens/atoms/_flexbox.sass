@@ -1,83 +1,79 @@
 // Adds flex and flex-inline classes
 @mixin flex-container($suffix)
-  %flex
-    &-block-#{$suffix}
-      display: flex
-    &-inline-#{$suffix}
-      display: flex-inline
+  @include suffixer($suffix, "%flex-block")
+    display: flex
+  @include suffixer($suffix, "%flex-inline")
+    display: flex-inline
 
 // Adds flex direction classes
 @mixin flex-direction($suffix)
   @each $direction in row, row-reverse, column, column-reverse
-    %flex-#{$direction}-#{$suffix}
+    @include suffixer($suffix, "%flex-#{$direction}")
       flex-direction: $direction
 
 // Adds flex wrap classes
 @mixin flex-wrap($suffix)
   @each $type in wrap, nowrap, wrap-reverse
-    %flex-#{$type}-#{$suffix}
+    @include suffixer($suffix, "%flex-#{$type}")
       flex-wrap: $type
 
 // Adds justify-content classes
 @mixin flex-justify-content($suffix)
-  %flex-justify
-    &-start-#{$suffix}
-      justify-content: flex-start
-    &-end-#{$suffix}
-      justify-content: flex-end
-    &-center-#{$suffix}
-      justify-content: center
-    &-between-#{$suffix}
-      justify-content: space-between
-    &-around-#{$suffix}
-      justify-content: space-around
+  @include suffixer($suffix, "%flex-justify")
+    justify-content: flex-start
+  @include suffixer($suffix, "%flex-justify-end")
+    justify-content: flex-end
+  @include suffixer($suffix, "%flex-justify-center")
+    justify-content: center
+  @include suffixer($suffix, "%flex-justify-between")
+    justify-content: space-between
+  @include suffixer($suffix, "%flex-justify-around")
+    justify-content: space-around
 
 // Adds align-items classes
 @mixin flex-align-items($suffix)
-  %flex-item
-    &-start-#{$suffix}
-      align-items: flex-start
-    &-end-#{$suffix}
-      align-items: flex-end
-    &-center-#{$suffix}
-      align-items: center
-    &-stretch-#{$suffix}
-      align-items: stretch
-    &-baseline-#{$suffix}
-      align-items: baseline
+  @include suffixer($suffix, "%flex-item-start")
+    align-items: flex-start
+  @include suffixer($suffix, "%flex-item-end")
+    align-items: flex-end
+  @include suffixer($suffix, "%flex-item-center")
+    align-items: center
+  @include suffixer($suffix, "%flex-item-stretch")
+    align-items: stretch
+  @include suffixer($suffix, "%flex-item-baseline")
+    align-items: baseline
 
 // Adds align-content classes
 @mixin flex-align-content($suffix)
-  %flex-content
-    &-start-#{$suffix}
-      align-content: flex-start
-    &-end-#{$suffix}
-      align-content: flex-end
-    &-center-#{$suffix}
-      align-content: center
-    &-around-#{$suffix}
-      align-content: space-around
-    &-between-#{$suffix}
-      align-content: space-between
-    &-stretch-#{$suffix}
-      align-content: stretch
+  @include suffixer($suffix, "%flex-content-start")
+    align-content: flex-start
+  @include suffixer($suffix, "%flex-content-end")
+    align-content: flex-end
+  @include suffixer($suffix, "%flex-content-center")
+    align-content: center
+  @include suffixer($suffix, "%flex-content-space-around")
+    align-content: space-around
+  @include suffixer($suffix, "%flex-content-space-between")
+    align-content: space-between
+  @include suffixer($suffix, "%flex-content-stretch")
+    align-content: stretch
 
 // Adds flex-order classes
 @mixin flex-order($suffix)
   @each $num in 1,2,3,4,5,6
-    %flex-order-#{$num}-#{$suffix}
+    @include suffixer($suffix, "%flex-order-#{$num}")
       order: $num
 
 // Adds flex-grow classes
 @mixin flex-grow($suffix)
   @each $num in 0,1,2,3,4,5,6
-    %flex-grow-#{$num}-#{$suffix}
+    @include suffixer($suffix, "%flex-grow-#{$num}")
       flex-grow: $num
 
 // Adds flex-shrink classes
 @mixin flex-shrink($suffix)
   @each $num in 1,2,3,4,5,6
-    %flex-shrink-#{$num}-#{$suffix}
+    @include suffixer($suffix, "%flex-shrink-#{$num}")
       flex-shrink: $num
 
 // Adds flex-basis classes
@@ -85,30 +81,29 @@
   $widths: 5, 10, 15, 20, 25, 30, 33, 35, 40, 45, 50, 55, 60, 65, 66, 70, 75, 80, 85, 90, 95, 100, auto
   @each $width in $widths
     @if $width == auto
-      %flex-basis-auto-#{$suffix}
+      @include suffixer($suffix, "%flex-basis-auto")
         flex-basis: $width
     @else
-      %flex-basis-#{$width}-#{$suffix}
+      @include suffixer($suffix, "%flex-order-#{$width}")
         flex-basis: percentage($width/100)
   @each $unit, $value in $spacing
-    %flex-basis-s#{$unit}-#{$suffix}
+    @include suffixer($suffix, "%flex-basis-s#{$unit}")
       flex-basis: spacing($unit)
 
 // Adds align-self classes
 @mixin flex-align-self($suffix)
-  %flex-self
-    &-auto-#{$suffix}
-      align-self: auto
-    &-start-#{$suffix}
-      align-self: flex-start
-    &-end-#{$suffix}
-      align-self: flex-end
-    &-center-#{$suffix}
-      align-self: center
-    &-stretch-#{$suffix}
-      align-self: stretch
-    &-baseline-#{$suffix}
-      align-self: baseline
+  @include suffixer($suffix, "%flex-self-auto")
+    align-self: auto
+  @include suffixer($suffix, "%flex-self-start")
+    align-self: flex-start
+  @include suffixer($suffix, "%flex-self-e")
+    align-self: flex-end
+  @include suffixer($suffix, "%flex-self-center")
+    align-self: center
+  @include suffixer($suffix, "%flex-self-stretch")
+    align-self: stretch
+  @include suffixer($suffix, "%flex-self-baseline")
+    align-self: baseline
 
 
 

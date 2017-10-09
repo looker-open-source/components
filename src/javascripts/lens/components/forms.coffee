@@ -22,7 +22,7 @@ template = """
     <div id="label" title="Label" class="inpage-anchor"></div>
     <h2>Labels</h2>
     <p>Use the <code>.form-label</code> class to set the default styles on a label.
-      You can also change the text alignment with <code>.text-right-xs</code>.</p>
+      You can also change the text alignment with <code>.text-right</code>.</p>
     <div class="col-container col-max col-gutters">
       <div class="col col-30-lg">
         <form>
@@ -34,7 +34,7 @@ template = """
     <div class="guide-code">
     <pre><code class="language-html">&lt;form&gt;
   &lt;label class="form-label"&gt;Form Label&lt;/label&gt;
-  &lt;label class="form-label text-right-xs"&gt;Form Label&lt;/label&gt;
+  &lt;label class="form-label text-right"&gt;Form Label&lt;/label&gt;
 &lt;/form&gt;</code></pre></div>
   </section>
 
@@ -49,7 +49,7 @@ template = """
     <form>
       <div class="col-container col-max col-gutters">
         <div class="col col-15-lg">
-          <label for="form-text-input-1" class="form-label text-right-lg m-b-05-xs m-b-0-lg">Label</label>
+          <label for="form-text-input-1" class="form-label text-right-lg m-b-05 m-b-0-lg">Label</label>
         </div>
         <div class="col col-50-lg">
             <input type="text" class="form-text-input" id="form-text-input-1" placeholder="this is placeholder text">
@@ -60,7 +60,7 @@ template = """
     <pre><code class="language-html">&lt;form&gt;
   &lt;div class="col-container col-max col-gutters"&gt;
     &lt;div class="col col-15-lg"&gt;
-      &lt;label for="form-text-input-1" class="form-label text-right-lg m-b-05-xs m-b-0-lg"&gt;Label&lt;/label&gt;
+      &lt;label for="form-text-input-1" class="form-label text-right-lg m-b-05 m-b-0-lg"&gt;Label&lt;/label&gt;
     &lt;/div&gt;
     &lt;div class="col col-50-lg"&gt;
         &lt;input type="text" class="form-text-input" id="form-text-input-1" placeholder="this is placeholder text"&gt;
@@ -76,7 +76,7 @@ template = """
     <form>
       <div class="col-container col-max col-gutters">
         <div class="col col-15-lg">
-          <label for="form-text-input-1" class="form-label text-right-lg m-b-05-xs m-b-0-lg">Disabled</label>
+          <label for="form-text-input-1" class="form-label text-right-lg m-b-05 m-b-0-lg">Disabled</label>
         </div>
         <div class="col col-50-lg">
             <input type="text" readonly="true" class="form-text-input form-text-input-disabled" id="form-text-input-1">
@@ -87,7 +87,7 @@ template = """
     <pre><code class="language-html">&lt;form&gt;
   &lt;div class="col-container col-max col-gutters"&gt;
     &lt;div class="col col-15-lg"&gt;
-      &lt;label for="form-text-input-1" class="form-label text-right-lg m-b-05-xs m-b-0-lg"&gt;Disabled&lt;/label&gt;
+      &lt;label for="form-text-input-1" class="form-label text-right-lg m-b-05 m-b-0-lg"&gt;Disabled&lt;/label&gt;
     &lt;/div&gt;
     &lt;div class="col col-50-lg"&gt;
         &lt;input type="text" readonly="true" class="form-text-input form-text-input-disabled" id="form-text-input-1"&gt;
@@ -106,7 +106,7 @@ template = """
     <form>
       <div class="col-container col-max col-gutters">
         <div class="col col-15-lg">
-          <label for="form-text-input-1" class="form-label text-right-lg m-b-05-xs m-b-0-lg">Label</label>
+          <label for="form-text-input-1" class="form-label text-right-lg m-b-05 m-b-0-lg">Label</label>
         </div>
         <div class="col col-50-lg">
           <textarea name="form-textarea-1" id="form-textarea-1" class="form-textarea"></textarea>
@@ -117,7 +117,7 @@ template = """
     <pre><code class="language-html">&lt;form&gt;
   &lt;div class="col-container col-max col-gutters"&gt;
     &lt;div class="col col-15-lg"&gt;
-      &lt;label for="form-text-input-1" class="form-label text-right-lg m-b-05-xs m-b-0-lg"&gt;Label&lt;/label&gt;
+      &lt;label for="form-text-input-1" class="form-label text-right-lg m-b-05 m-b-0-lg"&gt;Label&lt;/label&gt;
     &lt;/div&gt;
     &lt;div class="col col-50-lg"&gt;
       &lt;textarea name="form-textarea-1" id="form-textarea-1" class="form-textarea"&gt;&lt;/textarea&gt;
@@ -179,7 +179,7 @@ template = """
     <form>
       <div class="col-container col-max col-gutters">
         <div class="col col-15-lg">
-          <label for="form-select-1" class="form-label text-right-lg m-b-05-xs m-b-0-lg">Multiple</label>
+          <label for="form-select-1" class="form-label text-right-lg m-b-05 m-b-0-lg">Multiple</label>
         </div>
         <div class="col col-50-lg">
           <select id="form-select-1" class="form-select-multiple" multiple>
@@ -220,7 +220,7 @@ template = """
   &lt;/div&gt;
   &lt;div class="col-container col-max col-gutters"&gt;
     &lt;div class="col col-15-lg"&gt;
-      &lt;label for="form-select-1" class="form-label text-right-lg m-b-05-xs m-b-0-lg"&gt;Single&lt;/label&gt;
+      &lt;label for="form-select-1" class="form-label text-right-lg m-b-05 m-b-0-lg"&gt;Single&lt;/label&gt;
     &lt;/div&gt;
     &lt;div class="col col-50-lg"&gt;
       &lt;select id="form-select-1" class="form-select-multiple" size="3"&gt;
@@ -473,7 +473,7 @@ template = """
     <form>
       <div class="col-container col-max col-gutters">
         <div class="col col-15-lg">
-          <label for="form-text-input-1" class="form-label text-right-lg m-b-05-xs m-b-0-lg">Label</label>
+          <label for="form-text-input-1" class="form-label text-right-lg m-b-05 m-b-0-lg">Label</label>
         </div>
         <div class="col col-50-lg">
             <input type="text" class="form-text-input" id="form-text-input-1" placeholder="this is placeholder text">
@@ -485,7 +485,7 @@ template = """
     <pre><code class="language-html">&lt;form&gt;
   &lt;div class="col-container col-max col-gutters"&gt;
     &lt;div class="col col-15-lg"&gt;
-      &lt;label for="form-text-input-1" class="form-label text-right-lg m-b-05-xs m-b-0-lg"&gt;Label&lt;/label&gt;
+      &lt;label for="form-text-input-1" class="form-label text-right-lg m-b-05 m-b-0-lg"&gt;Label&lt;/label&gt;
     &lt;/div&gt;
     &lt;div class="col col-50-lg"&gt;
         &lt;input type="text" class="form-text-input" id="form-text-input-1" placeholder="this is placeholder text"&gt;
@@ -529,7 +529,7 @@ template = """
             <option value="">Item 3</option>
             <option value="">Item 4</option>
           </select>
-          <div class="form-helper form-helper-error m-b-2-xs">Get to the chopper!</div>
+          <div class="form-helper form-helper-error m-b-2">Get to the chopper!</div>
           <input type="text" class="form-text-input form-error" id="form-text-input-1">
           <div class="form-helper form-helper-error">Don't forget to this!</div>
         </form>
@@ -543,7 +543,7 @@ template = """
     &lt;option value=""&gt;Item 3&lt;/option&gt;
     &lt;option value=""&gt;Item 4&lt;/option&gt;
   &lt;/select&gt;
-  &lt;div class="form-helper form-helper-error m-b-2-xs"&gt;Get to the chopper!&lt;/div&gt;
+  &lt;div class="form-helper form-helper-error m-b-2"&gt;Get to the chopper!&lt;/div&gt;
   &lt;input type="text" class="form-text-input form-error" id="form-text-input-1"&gt;
   &lt;div class="form-helper form-helper-error"&gt;Don't forget to this!&lt;/div&gt;
 &lt;/form&gt;</code></pre>

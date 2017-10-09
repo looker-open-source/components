@@ -23,9 +23,9 @@ template = """
     <h2>The Grid</h2>
     <p>Lens provides mobile-first, fluid grid to layout pages with ease. To
        start a new grid, create a div with the class of <code>.col-container</code>.
-       Then add columns inside it using <code>.col .col-$n-xs</code>, where
+       Then add columns inside it using <code>.col .col-$n</code>, where
        <code>$n</code> = a % value between 5-100 in increments of 5, with the addition of 33 and 66
-       to let us do columns in thirds.</p>
+       to let us do columns in thirds. To apply different grid width for breakpoints, apply the suffix to the column class like so: <code>.col .col-$n-md</code>, where "md" can be any of our <a href="guidelines/responsive">suffixes</a>.</p>
     <p><strong>Tips for building a happy grid:</strong>
       <ul>
         <li>Column classes should be used on container elements and <strong><em>not</em></strong>
@@ -37,16 +37,16 @@ template = """
     <div class="guide-example">
       <div class="guide-example-demo">
         <div class="col-container">
-          <div class="col col-30-xs"><div class="guide-demo-box">.col .col-30-xs</div></div>
-          <div class="col col-20-xs"><div class="guide-demo-box">.col .col-20-xs</div></div>
-          <div class="col col-50-xs"><div class="guide-demo-box">.col .col-50-xs</div></div>
+          <div class="col col-30"><div class="guide-demo-box">.col .col-30</div></div>
+          <div class="col col-20"><div class="guide-demo-box">.col .col-20</div></div>
+          <div class="col col-50"><div class="guide-demo-box">.col .col-50</div></div>
         </div>
       </div>
       <div class="guide-example-code">
 <pre><code class="language-html">&lt;div class="col-container"&gt;
-  &lt;div class="col col-30-xs"&gt;&lt;div class="guide-demo-box"&gt;.col .col-30-xs&lt;/div&gt;&lt;/div&gt;
-  &lt;div class="col col-20-xs"&gt;&lt;div class="guide-demo-box"&gt;.col .col-20-xs&lt;/div&gt;&lt;/div&gt
-  &lt;div class="col col-50-xs"&gt;&lt;div class="guide-demo-box"&gt;.col .col-50-xs&lt;/div&gt;&lt;/div&gt
+  &lt;div class="col col-30"&gt;&lt;div class="guide-demo-box"&gt;.col .col-30&lt;/div&gt;&lt;/div&gt;
+  &lt;div class="col col-20"&gt;&lt;div class="guide-demo-box"&gt;.col .col-20&lt;/div&gt;&lt;/div&gt
+  &lt;div class="col col-50"&gt;&lt;div class="guide-demo-box"&gt;.col .col-50&lt;/div&gt;&lt;/div&gt
 &lt;/div&gt;</code></pre>
       </div>
     </div>
@@ -61,22 +61,22 @@ template = """
     <div class="guide-example">
       <div class="guide-example-demo">
         <div class="col-container">
-          <div class="col col-50-xs">
+          <div class="col col-50">
             <div class="guide-demo-box">
-              <div>.col .col-50-xs</div>
+              <div>.col .col-50</div>
               <div class="col-container">
-                <div class="col col-30-xs"><div class="guide-demo-box">.col .col-30-xs</div></div>
-                <div class="col col-30-xs"><div class="guide-demo-box">.col .col-30-xs</div></div>
-                <div class="col col-40-xs"><div class="guide-demo-box">.col .col-40-xs</div></div>
+                <div class="col col-30"><div class="guide-demo-box">.col .col-30</div></div>
+                <div class="col col-30"><div class="guide-demo-box">.col .col-30</div></div>
+                <div class="col col-40"><div class="guide-demo-box">.col .col-40</div></div>
               </div>
             </div>
           </div>
-          <div class="col col-50-xs">
+          <div class="col col-50">
             <div class="guide-demo-box">
-              <div>.col .col-50-xs</div>
+              <div>.col .col-50</div>
               <div class="col-container">
-                <div class="col col-40-xs"><div class="guide-demo-box">.col .col-40-xs</div></div>
-                <div class="col col-60-xs"><div class="guide-demo-box">.col .col-60-xs</div></div>
+                <div class="col col-40"><div class="guide-demo-box">.col .col-40</div></div>
+                <div class="col col-60"><div class="guide-demo-box">.col .col-60</div></div>
               </div>
             </div>
           </div>
@@ -84,22 +84,22 @@ template = """
       </div>
       <div class="guide-example-code">
 <pre><code class="language-html">&lt;div class="col-container"&gt;
-  &lt;div class="col col-50-xs"&gt;
+  &lt;div class="col col-50"&gt;
     &lt;div class="guide-demo-box"&gt;
-      &lt;div&gt;.col .col-50-xs&lt;/div&gt;
+      &lt;div&gt;.col .col-50&lt;/div&gt;
       &lt;div class="col-container"&gt;
-        &lt;div class="col col-30-xs"&gt;&lt;div class="guide-demo-box"&gt;.col .col-30-xs&lt;/div&gt;&lt;/div&gt;
-        &lt;div class="col col-30-xs"&gt;&lt;div class="guide-demo-box"&gt;.col .col-30-xs&lt;/div&gt;&lt;/div&gt
-        &lt;div class="col col-40-xs"&gt;&lt;div class="guide-demo-box"&gt;.col .col-40-xs&lt;/div&gt;&lt;/div&gt
+        &lt;div class="col col-30"&gt;&lt;div class="guide-demo-box"&gt;.col .col-30&lt;/div&gt;&lt;/div&gt;
+        &lt;div class="col col-30"&gt;&lt;div class="guide-demo-box"&gt;.col .col-30&lt;/div&gt;&lt;/div&gt
+        &lt;div class="col col-40"&gt;&lt;div class="guide-demo-box"&gt;.col .col-40&lt;/div&gt;&lt;/div&gt
       &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-  &lt;div class="col col-50-xs"&gt;
+  &lt;div class="col col-50"&gt;
     &lt;div class="guide-demo-box"&gt;
-      &lt;div&gt;.col .col-50-xs&lt;/div&gt;
+      &lt;div&gt;.col .col-50&lt;/div&gt;
       &lt;div class="col-container"&gt;
-        &lt;div class="col col-40-xs"&gt;&lt;div class="guide-demo-box"&gt;.col .col-40-xs&lt;/div&gt;&lt;/div&gt;
-        &lt;div class="col col-60-xs"&gt;&lt;div class="guide-demo-box"&gt;.col .col-60-xs&lt;/div&gt;&lt;/div&gt
+        &lt;div class="col col-40"&gt;&lt;div class="guide-demo-box"&gt;.col .col-40&lt;/div&gt;&lt;/div&gt;
+        &lt;div class="col col-60"&gt;&lt;div class="guide-demo-box"&gt;.col .col-60&lt;/div&gt;&lt;/div&gt
       &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
@@ -149,15 +149,15 @@ template = """
     <div class="guide-example">
       <div class="guide-example-demo guide-demo-box">
         <div class="col-container col-gutters">
-          <div class="col col-40-xs">
-            <div class="guide-demo-box">.col .col-40-xs</div>
+          <div class="col col-40">
+            <div class="guide-demo-box">.col .col-40</div>
           </div>
-          <div class="col col-60-xs">
-            <div class="guide-demo-box">.col .col-60-xs
+          <div class="col col-60">
+            <div class="guide-demo-box">.col .col-60
               <div class="col-container">
-                <div class="col col-33-xs"><div class="guide-demo-box">.col .col-33</div></div>
-                <div class="col col-33-xs"><div class="guide-demo-box">.col .col-33</div></div>
-                <div class="col col-33-xs"><div class="guide-demo-box">.col .col-33</div></div>
+                <div class="col col-33"><div class="guide-demo-box">.col .col-33</div></div>
+                <div class="col col-33"><div class="guide-demo-box">.col .col-33</div></div>
+                <div class="col col-33"><div class="guide-demo-box">.col .col-33</div></div>
               </div>
             </div>
           </div>
@@ -165,15 +165,15 @@ template = """
       </div>
       <div class="guide-example-code">
   <pre><code class="language-html">&lt;div class="col-container col-gutters"&gt;
-  &lt;div class="col col-40-xs"&gt;
-    &lt;div class="guide-demo-box"&gt;.col .col-40-xs&lt;/div&gt;
+  &lt;div class="col col-40"&gt;
+    &lt;div class="guide-demo-box"&gt;.col .col-40&lt;/div&gt;
   &lt;/div&gt;
-  &lt;div class="col col-60-xs"&gt;
-    &lt;div class="guide-demo-box"&gt;.col .col-60-xs
+  &lt;div class="col col-60"&gt;
+    &lt;div class="guide-demo-box"&gt;.col .col-60
       &lt;div class="col-container"&gt;
-        &lt;div class="col col-33-xs"&gt;&lt;div class="guide-demo-box"&gt;.col .col-33&lt;/div&gt;&lt;/div&gt;
-        &lt;div class="col col-33-xs"&gt;&lt;div class="guide-demo-box"&gt;.col .col-33&lt;/div&gt;&lt;/div&gt;
-        &lt;div class="col col-33-xs"&gt;&lt;div class="guide-demo-box"&gt;.col .col-33&lt;/div&gt;&lt;/div&gt;
+        &lt;div class="col col-33"&gt;&lt;div class="guide-demo-box"&gt;.col .col-33&lt;/div&gt;&lt;/div&gt;
+        &lt;div class="col col-33"&gt;&lt;div class="guide-demo-box"&gt;.col .col-33&lt;/div&gt;&lt;/div&gt;
+        &lt;div class="col col-33"&gt;&lt;div class="guide-demo-box"&gt;.col .col-33&lt;/div&gt;&lt;/div&gt;
       &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
@@ -186,19 +186,19 @@ template = """
     <div id="centering" title="Centering Columns" class="inpage-anchor"></div>
     <h2>Centering Columns</h2>
     <p>Sometimes you want to center a single column within its container. This is
-      possible by adding <code>.col-center</code> next to your <code>.col col-$n-xs</code> class. </p>
+      possible by adding <code>.col-center</code> next to your <code>.col col-$n</code> class. </p>
     <div class="col-container">
-      <div class="col col-50-xs col-center"><div class="guide-demo-box">.col .col-50-xs .col-center</div></div>
+      <div class="col col-50 col-center"><div class="guide-demo-box">.col .col-50 .col-center</div></div>
     </div>
     <div class="col-container">
-      <div class="col col-30-xs col-center"><div class="guide-demo-box">.col .col-30-xs .col-center</div></div>
+      <div class="col col-30 col-center"><div class="guide-demo-box">.col .col-30 .col-center</div></div>
     </div>
     <div class="guide-code">
   <pre><code class="language-html">&lt;div class="col-container"&gt;
-  &lt;div class="col col-50-xs col-center"&gt;&lt;div class="guide-demo-box"&gt;.col .col-50-xs .col-center&lt;/div&gt;&lt;/div&gt;
+  &lt;div class="col col-50 col-center"&gt;&lt;div class="guide-demo-box"&gt;.col .col-50 .col-center&lt;/div&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="col-container"&gt;
-  &lt;div class="col col-30-xs col-center"&gt;&lt;div class="guide-demo-box"&gt;.col .col-30-xs .col-center&lt;/div&gt;&lt;/div&gt;
+  &lt;div class="col col-30 col-center"&gt;&lt;div class="guide-demo-box"&gt;.col .col-30 .col-center&lt;/div&gt;&lt;/div&gt;
 &lt;/div&gt;</code></pre>
     </div>
   </section>
@@ -206,21 +206,21 @@ template = """
   <section id="offsets-section">
     <div id="offsets" title="Offsets" class="inpage-anchor"></div>
     <h2>Column Offsets</h2>
-    <p>Move columns over by different grid widths by using <code>.col-offset-$n-xs</code> where
+    <p>Move columns over by different grid widths by using <code>.col-offset-$n</code> where
       <code>$n</code> has the same values as the column percentage widths. Keep in
       mind that the columns and offsets used within a <code>.col-container</code> shouldn't add
       up to more than 100.</p>
     <div class="guide-example">
       <div class="guide-example-demo">
         <div class="col-container">
-          <div class="col col-40-xs"><div class="guide-demo-box">.col-40-xs</div></div>
-          <div class="col col-40-xs col-offset-20-xs"><div class="guide-demo-box">.col-40-xs .col-offset-30-xs</div>
+          <div class="col col-40"><div class="guide-demo-box">.col-40</div></div>
+          <div class="col col-40 col-offset-20"><div class="guide-demo-box">.col-40 .col-offset-30</div>
         </div>
       </div>
       <div class="guide-example-code">
 <pre><code class="language-html">&lt;div class="col-container"&gt;
-  &lt;div class="col col-40-xs"&gt;&lt;div class="guide-demo-box"&gt;.col-40-xs&lt;/div&gt;&lt;/div&gt;
-  &lt;div class="col col-40-xs col-offset-20-xs"&gt;&lt;div class="guide-demo-box"&gt;.col-40-xs .col-offset-30-xs&lt;/div&gt;&lt;/div&gt;
+  &lt;div class="col col-40"&gt;&lt;div class="guide-demo-box"&gt;.col-40&lt;/div&gt;&lt;/div&gt;
+  &lt;div class="col col-40 col-offset-20"&gt;&lt;div class="guide-demo-box"&gt;.col-40 .col-offset-30&lt;/div&gt;&lt;/div&gt;
 &lt;/div&gt;</code></pre>
       </div>
     </div>
@@ -232,7 +232,7 @@ template = """
     <p>Our mobile first grid comes with a set of breakpoint class suffixes that can be used to
       override columns across breakpoints. For example, if a <code>&lt;div&gt;</code>
        needs to take up the full width of
-      the page across all display sizes, use <code>.col-100-xs</code>. If that
+      the page across all display sizes, use <code>.col-100</code>. If that
       div needs to be half width at the medium breakpoint and a quarter at our
       large breakpoints, add <code>.col-50-md</code> and <code>.col-33-lg</code>.
       Resize the browser to see the effect in action. You can learn more about the breakpoints
@@ -240,41 +240,41 @@ template = """
     <div class="guide-example">
       <div class="guide-example-demo">
         <div class="col-container">
-          <div class="col col-100-xs col-50-md col-25-lg">
+          <div class="col col-100 col-50-md col-25-lg">
             <div class="guide-demo-box">
-              .col-100-xs .col-50-md .col-25-lg
+              .col-100 .col-50-md .col-25-lg
             </div>
           </div>
-          <div class="col col-100-xs col-50-md col-25-lg">
+          <div class="col col-100 col-50-md col-25-lg">
             <div class="guide-demo-box">
-              .col-100-xs .col-50-md .col-25-lg
+              .col-100 .col-50-md .col-25-lg
             </div>
           </div>
-          <div class="col col-100-xs col-50-md col-25-lg">
+          <div class="col col-100 col-50-md col-25-lg">
             <div class="guide-demo-box">
-              .col-100-xs .col-50-md .col-25-lg
+              .col-100 .col-50-md .col-25-lg
             </div>
           </div>
-          <div class="col col-100-xs col-50-md col-25-lg">
+          <div class="col col-100 col-50-md col-25-lg">
             <div class="guide-demo-box">
-              .col-100-xs .col-50-md .col-25-lg
+              .col-100 .col-50-md .col-25-lg
             </div>
           </div>
         </div>
       </div>
       <div class="guide-example-code">
 <pre><code class="language-html">&lt;div class="col-container"&gt;
-  &lt;div class="col col-100-xs col-50-md col-25-lg"&gt;
-    &lt;div class="guide-demo-box"&gt;.col-100-xs .col-50-md .col-25-lg&lt;/div&gt;
+  &lt;div class="col col-100 col-50-md col-25-lg"&gt;
+    &lt;div class="guide-demo-box"&gt;.col-100 .col-50-md .col-25-lg&lt;/div&gt;
   &lt;/div&gt;
-  &lt;div class="col col-100-xs col-50-md col-25-lg guide-demo-box"&gt;
-    &lt;div class="guide-demo-box"&gt;.col-100-xs .col-50-md .col-25-lg&lt;/div&gt;
+  &lt;div class="col col-100 col-50-md col-25-lg guide-demo-box"&gt;
+    &lt;div class="guide-demo-box"&gt;.col-100 .col-50-md .col-25-lg&lt;/div&gt;
   &lt;/div&gt;
-  &lt;div class="col col-100-xs col-50-md col-25-lg guide-demo-box"&gt;
-    &lt;div class="guide-demo-box"&gt;.col-100-xs .col-50-md .col-25-lg&lt;/div&gt;
+  &lt;div class="col col-100 col-50-md col-25-lg guide-demo-box"&gt;
+    &lt;div class="guide-demo-box"&gt;.col-100 .col-50-md .col-25-lg&lt;/div&gt;
   &lt;/div&gt;
-  &lt;div class="col col-100-xs col-50-md col-25-lg guide-demo-box"&gt;
-    &lt;div class="guide-demo-box"&gt;.col-100-xs .col-50-md .col-25-lg&lt;/div&gt;
+  &lt;div class="col col-100 col-50-md col-25-lg guide-demo-box"&gt;
+    &lt;div class="guide-demo-box"&gt;.col-100 .col-50-md .col-25-lg&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
       </div>

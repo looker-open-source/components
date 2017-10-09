@@ -1,49 +1,49 @@
 table
-  @extend %w-fit-xs
+  @extend %w-fit
   border-collapse: collapse
-  @extend %m-t-1-xs
-  @extend %m-b-3-xs
+  @extend %m-t-1
+  @extend %m-b-3
   th,
   td
-    @extend %text-left-xs
-    @extend %align-middle-xs
-    @extend %p-tb-n1-xs
-    @extend %p-lr-2-xs
+    @extend %text-left
+    @extend %align-middle
+    @extend %p-tb-n1
+    @extend %p-lr-2
     &.right
-      @extend %text-right-xs
+      @extend %text-right
     &.top
-      @extend %align-top-xs
+      @extend %align-top
     &.bottom
-      @extend %align-bottom-xs
+      @extend %align-bottom
 
   th
     @extend %bold
-    @extend %border-b-dark-xs
+    @extend %border-b-dark
     background: transparent
     color: $th-color
   td
-    @extend %border-none-xs
+    @extend %border-none
     color: $td-color
 
-  &.table-striped
-    tr:nth-child(even) > td
-      background-color: transparent
+table.table-striped
+  tr:nth-child(even) > td
+    background-color: transparent
 
-    tr:nth-child(odd) > td
-      @extend %bg-gray-1
+  tr:nth-child(odd) > td
+    @extend %bg-gray-1
 
-  &.table-content
-    th, td
-      &:first-child
-        @extend %p-l-0-xs
-      &:last-child
-        @extend %p-r-0-xs
-    th
-      @extend %regular
-      @extend %text-n2-xs
-      white-space: nowrap
-    td
-      @extend %border-b-xs
-      .sub-text
-        @extend %text-n2-xs
-        @extend %color-gray-5
+table.table-content
+  th, td
+    &:first-child
+      @extend %p-l-0
+    &:last-child
+      @extend %p-r-0
+  th
+    @extend %regular
+    @extend %text-n2
+    white-space: nowrap
+  td
+    @extend %border-b
+    .sub-text
+      @extend %text-n2
+      @extend %color-gray-5

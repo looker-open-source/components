@@ -22,11 +22,11 @@ template = """
     The recommended way to build block grids is with <code>ul</code> elements,
     but the classes work just fine on any element, like a <code>div</code>.
      Use your best judgement to keep the markup as semantic as possible.</p>
-  <p>To build a block grid, start with a <code>&lt;ul class="block-grid block-$n-xs"&gt;</code>,
+  <p>To build a block grid, start with a <code>&lt;ul class="block-grid block-$n"&gt;</code>,
     where <code>$n</code> is a number from 1-6. These divisions can be
     changed across breakpoints by applying one or more of our
     <a ui-sref="responsive">grid suffix classes</a>. If you want the same grid division
-    across all breakpoints, use <code>.block-$n-xs</code> class. </p>
+    across all breakpoints, use <code>.block-$n</code> class. </p>
   <p>Inside that list,
     create your items with <code>&lt;li class="block-grid__item"&gt;</code>.</p>
   <p><strong>Important:</strong> Do not put any style utility classes on the block
@@ -38,7 +38,7 @@ template = """
     <p>By default, the block grid comes with no gutters. Resize your browser to see the breakpoint changes.</p>
     <div class="guide-example">
       <div class="guide-example-demo">
-        <ul class="block-grid block-4-xs block-5-md block-6-xl">
+        <ul class="block-grid block-4 block-5-md block-6-xl">
           <li class="block-grid__item">
             <div class="guide-demo-box">1</div>
           </li>
@@ -60,7 +60,7 @@ template = """
         </ul>
       </div>
       <div class="guide-example-code">
-  <pre><code class="language-html">&lt;ul class="block-grid block-4-xs block-5-md block-6-xl"&gt;
+  <pre><code class="language-html">&lt;ul class="block-grid block-4 block-5-md block-6-xl"&gt;
   &lt;li class="block-grid__item"&gt;
     &lt;div class="guide-demo-box"&gt;1&lt;/div&gt;
   &lt;/li&gt;
@@ -94,7 +94,7 @@ template = """
     <p class="todo">Probably should revisit that 1rem value...?</p>
     <div class="guide-example">
       <div class="guide-example-demo">
-        <ul class="block-grid block-2-xs block-3-lg block-6-xl block-grid-gutters">
+        <ul class="block-grid block-2 block-3-lg block-6-xl block-grid-gutters">
           <li class="block-grid__item">
             <div class="guide-demo-box">1</div>
           </li>
@@ -116,7 +116,7 @@ template = """
         </ul>
       </div>
       <div class="guide-example-code">
-  <pre><code class="language-html">&lt;ul class="block-grid block-2-xs block-3-lg block-6-xl block-grid-gutters"&gt;
+  <pre><code class="language-html">&lt;ul class="block-grid block-2 block-3-lg block-6-xl block-grid-gutters"&gt;
   &lt;li class="block-grid__item"&gt;
     &lt;div class="guide-demo-box"&gt;1&lt;/div&gt;
   &lt;/li&gt;

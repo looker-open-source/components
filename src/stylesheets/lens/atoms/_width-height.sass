@@ -7,17 +7,17 @@
     // Width is the only property that needs auto
     // so we call that out here
     @if $type == auto
-      %w-#{$type}-#{$suffix}
+      @include suffixer($suffix, "%w-#{$type}")
         width: #{$type}
-      %h-#{$type}-#{$suffix}
+      @include suffixer($suffix, "%h-#{$type}")
         height: #{$type}
     @else if $type == full
-      %w-#{$type}-#{$suffix}
+      @include suffixer($suffix, "%w-#{$type}")
         width: 100%
-      %h-#{$type}-#{$suffix}
+      @include suffixer($suffix, "%h-#{$type}")
         height: 100%
     @else if $type == fit
-      %w-#{$type}-#{$suffix}
+      @include suffixer($suffix, "%w-#{$type}")
         max-width: 100%
 
 

@@ -19,15 +19,29 @@ template = """
 <lens-main>
 
   <section id="release-notes">
-    <div class="col-container" border-b-xs p-b-2-xs"">
+    <div class="col-container">
       <div class="col col-10-md">
         <p class="text-color-light">0.1.0</p>
       </div>
       <div class="col col-90-md">
         <p class="bold">The Initial Vector</p>
-        <p class="text-6-xs text-color-light">[Infection Date]</p>
-        <ul class="m-t-1-xs text-6-xs">
-          <li>You won't feel a thing... right?</li>
+        <p class="text-6 text-color-light">September 19, 2017</p>
+        <ul class="text-6">
+          <li>Initial merge into Helltool.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-container">
+      <div class="col col-10-md">
+        <p class="text-color-light">0.1.1</p>
+      </div>
+      <div class="col col-90-md">
+        <p class="bold">Removing <code>-xs</code> and unnecessary nesting</p>
+        <p class="text-6 text-color-light">October 9, 2017</p>
+        <ul class="text-6">
+          <li>Remove <code>-xs</code> suffix for all default atom styles.</li>
+          <li>Refactor all stylesheets to use nesting more sparingly, which meant removing almost all instances of <code>&-</code> nesting.
         </ul>
       </div>
     </div>

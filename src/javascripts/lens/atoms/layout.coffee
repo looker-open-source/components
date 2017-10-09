@@ -29,19 +29,19 @@ template = """
       </thead>
       <tbody>
         <tr>
-          <td><code>%block-xs</code></td>
+          <td><code>%block</code></td>
           <td>dislay: block</td>
         </tr>
         <tr>
-          <td><code>%inline-xs</code></td>
+          <td><code>%inline</code></td>
           <td>dislay: inline</td>
         </tr>
         <tr>
-          <td><code>%inline-block-xs</code></td>
+          <td><code>%inline-block</code></td>
           <td>dislay: inline-block</td>
         </tr>
         <tr>
-          <td><code>%hide-xs</code></td>
+          <td><code>%hide</code></td>
           <td>dislay: none</td>
         </tr>
       </tbody>
@@ -64,25 +64,25 @@ template = """
       </thead>
       <tbody>
         <tr>
-          <td><code>%relative-xs</code></td>
+          <td><code>%relative</code></td>
           <td>position: relative</td>
         </tr>
         <tr>
-          <td><code>%absolute-xs</code></td>
+          <td><code>%absolute</code></td>
           <td>position: absolute</td>
         </tr>
         <tr>
-          <td><code>%fixed-xs</code></td>
+          <td><code>%fixed</code></td>
           <td>position: fixed</td>
         </tr>
         <tr>
-          <td><code>%static-xs</code></td>
+          <td><code>%static</code></td>
           <td>position: static</td>
         </tr>
       </tbody>
     </table>
 
-    <p>Set the position with <code>.pos-$s-$n-xs</code>, where <code>$s</code> is the side
+    <p>Set the position with <code>.pos-$s-$n</code>, where <code>$s</code> is the side
        and <code>$n</code> is one of our <a ui-sref="spacing-sizing">spacing units</a>.
     </p>
     <table class="table-content">
@@ -94,19 +94,19 @@ template = """
       </thead>
       <tbody>
         <tr>
-          <td><code>%pos-t-$n-xs</code></td>
+          <td><code>%pos-t-$n</code></td>
           <td>top: $n</td>
         </tr>
         <tr>
-          <td><code>%pos-b-$n-xs</code></td>
+          <td><code>%pos-b-$n</code></td>
           <td>bottom: $n</td>
         </tr>
         <tr>
-          <td><code>%pos-l-$n-xs</code></td>
+          <td><code>%pos-l-$n</code></td>
           <td>left: $n</td>
         </tr>
         <tr>
-          <td><code>%pos-r-$n-xs</code></td>
+          <td><code>%pos-r-$n</code></td>
           <td>right: $n</td>
         </tr>
       </tbody>
@@ -138,15 +138,15 @@ template = """
       </thead>
       <tbody>
         <tr>
-          <td><code>%float-l-xs</code></td>
+          <td><code>%float-l</code></td>
           <td>float: left</td>
         </tr>
         <tr>
-          <td><code>%float-r-xs</code></td>
+          <td><code>%float-r</code></td>
           <td>float: right</td>
         </tr>
         <tr>
-          <td><code>%float-none-xs</code></td>
+          <td><code>%float-none</code></td>
           <td>float: none</td>
         </tr>
       </tbody>
@@ -174,19 +174,19 @@ template = """
       </thead>
       <tbody>
         <tr>
-          <td><code>%z-1-xs</code></td>
+          <td><code>%z-1</code></td>
           <td>z-index: 100</td>
         </tr>
         <tr>
-          <td><code>%z-2-xs</code></td>
+          <td><code>%z-2</code></td>
           <td>z-index: 200</td>
         </tr>
         <tr>
-          <td><code>%z-3-xs</code></td>
+          <td><code>%z-3</code></td>
           <td>z-index: 300</td>
         </tr>
         <tr>
-          <td><code>%z-4-xs</code></td>
+          <td><code>%z-4</code></td>
           <td>z-index: 400</td>
         </tr>
       </tbody>
@@ -206,15 +206,15 @@ template = """
       </thead>
       <tbody>
         <tr>
-          <td><code>%align-top-xs</code></td>
+          <td><code>%align-top</code></td>
           <td>vertical-align: top</td>
         </tr>
         <tr>
-          <td><code>%align-middle-xs</code></td>
+          <td><code>%align-middle</code></td>
           <td>vertical-align: middle</td>
         </tr>
         <tr>
-          <td><code>%align-bottom-xs</code></td>
+          <td><code>%align-bottom</code></td>
           <td>vertical-align: bottom</td>
         </tr>
       </tbody>
@@ -236,7 +236,7 @@ template = """
       </thead>
       <tbody>
         <tr>
-          <td><code>%rotate-$n-xs</code></td>
+          <td><code>%rotate-$n</code></td>
           <td>transform: rotate(<code>$n</code>deg)</td>
           <td><code>$n</code> is one of 0, 45, 90, 135, 180, 225, 270, or 315</td>
         </tr>

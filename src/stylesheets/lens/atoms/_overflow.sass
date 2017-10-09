@@ -3,7 +3,7 @@
 
   // Iterate through each type in $overflow-types
   @each $type in $overflow-types
-    %overflow-#{$type}-#{$suffix}
+    @include suffixer($suffix, "%overflow-#{$type}")
       overflow: #{$type}
 
 

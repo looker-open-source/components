@@ -1,14 +1,11 @@
 // Creates the style declarations for each float type
 @mixin float-style($suffix)
-  %float
-    &-l-#{$suffix}
-      float: left
-
-    &-r-#{$suffix}
-      float: right
-
-    &-none-#{$suffix}
-      float: none
+  @include suffixer($suffix, "%float-l")
+    float: left
+  @include suffixer($suffix, "%float-r")
+    float: right
+  @include suffixer($suffix, "%float-none")
+    float: none
 
 
 

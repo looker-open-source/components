@@ -3,7 +3,7 @@
 
   // Iterate through each text-size create text size classes
   @each $size, $number in $text-size
-    %text-#{$size}-#{$suffix}
+    @include suffixer($suffix, "%text-#{$size}")
       font-size: #{nth($number, 1)}
       line-height: #{nth($number, 2)}
 
@@ -73,7 +73,7 @@
 
   // Iterate through align types and create the classes
   @each $type in $text-alignments
-    %text-#{$type}-#{$suffix}
+    @include suffixer($suffix, "%text-#{$type}")
       text-align: #{$type}
 
 
