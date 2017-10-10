@@ -1,21 +1,3 @@
-m = angular.module "lens.atoms.layout", []
-
-
-m.controller "LayoutController", ['$scope', (
-  $scope
-) ->
-  return this
-]
-
-
-m.directive "layout", ->
-  controller: "LayoutController"
-  restrict: "E"
-  scope: {}
-  template: template
-
-
-template = """
 <lens-main>
   <section id="display-section">
     <div id="display" title="Display" class="inpage-anchor"></div>
@@ -245,4 +227,3 @@ template = """
   </section>
 
 </lens-main>
-"""

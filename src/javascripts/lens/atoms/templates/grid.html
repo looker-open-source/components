@@ -1,21 +1,3 @@
-m = angular.module "lens.atoms.grid", []
-
-
-m.controller "GridController", ['$scope', (
-  $scope
-) ->
-  return this
-]
-
-
-m.directive "grid", ->
-  controller: "GridController"
-  restrict: "E"
-  scope: {}
-  template: template
-
-
-template = """
 <lens-main>
 
   <section id="grid-section">
@@ -302,4 +284,3 @@ template = """
     </table>
   </section>
 </lens-main>
-"""

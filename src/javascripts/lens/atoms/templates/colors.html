@@ -1,26 +1,3 @@
-uiColors = require("./../../utils/sass-to-js-custom/ui_colors")
-grayColors = require("./../../utils/sass-to-js-custom/gray_colors")
-
-m = angular.module "lens.atoms.colors", []
-
-m.controller "ColorsController", ['$scope', (
-  $scope
-) ->
-  return this
-]
-
-
-m.directive "colors", ->
-  controller: "ColorsController"
-  restrict: "E"
-  scope: {}
-  template: template
-  link: ->
-    uiColors('uiColorData', '#uiColorData', '.guide-colors-ui')
-    grayColors('grayColorData', '#grayColorData', '.guide-colors-gray')
-
-
-template = """
 <lens-main>
   <p class="todo">Some rules about how we use color.</p>
   <p>To use the colors, replace <code>[color]</code> with the name of the color you want in the classes below.</p>
@@ -91,4 +68,3 @@ template = """
 
 <script src="vendor/js/prism.js"></script>
 <script src="vendor/js/sass-to-js.js"></script>
-"""

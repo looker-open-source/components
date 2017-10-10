@@ -1,21 +1,3 @@
-m = angular.module "lens.atoms.block_grid", []
-
-
-m.controller "BlockGridController", ['$scope', (
-  $scope
-) ->
-  return this
-]
-
-
-m.directive "blockGrid", ->
-  controller: "BlockGridController"
-  restrict: "E"
-  scope: {}
-  template: template
-
-
-template = """
 <lens-main>
 
   <p>The block grid is used when you need a grid of an unknown number of items.
@@ -141,4 +123,3 @@ template = """
   </section>
 
 </lens-main>
-"""

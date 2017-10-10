@@ -1,21 +1,3 @@
-m = angular.module "lens.atoms.borders", []
-
-
-m.controller "BordersController", ['$scope', (
-  $scope
-) ->
-  return this
-]
-
-
-m.directive "borders", ->
-  controller: "BordersController"
-  restrict: "E"
-  scope: {}
-  template: template
-
-
-template = """
 <lens-main>
 
   <section id="borders-section">
@@ -243,4 +225,3 @@ template = """
   </section>
 
 </lens-main>
-"""
