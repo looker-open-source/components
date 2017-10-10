@@ -1,21 +1,3 @@
-m = angular.module "lens.components.modals", []
-
-
-m.controller "ModalsController", ['$scope', (
-  $scope
-) ->
-  return this
-]
-
-
-m.directive "modals", ->
-  controller: "ModalsController"
-  restrict: "E"
-  scope: {}
-  template: template
-
-
-template = """
 <lens-main>
 
   <section id="Modals">
@@ -26,7 +8,7 @@ template = """
       <div class="modal col-65">
         <div class="modal--header">
           <a href="#" class="modal--close">
-            <img class="modal--close-icon" src="src/images/icons/close.svg" />
+            <img class="modal--close-icon" src="/src/images/icons/close.svg" />
           </a>
           <h2 class="modal--header-title regular">Create Dashboard</h2>
         </div>
@@ -45,4 +27,3 @@ template = """
   </section>
 
 </lens-main>
-"""

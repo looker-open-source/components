@@ -1,21 +1,3 @@
-m = angular.module "lens.components.buttons", []
-
-
-m.controller "ButtonsController", ['$scope', (
-  $scope
-) ->
-  return this
-]
-
-
-m.directive "buttons", ->
-  controller: "ButtonsController"
-  restrict: "E"
-  scope: {}
-  template: template
-
-
-template = """
 <lens-main>
 
   <p>Buttons should be used for in-page or contextual
@@ -211,4 +193,3 @@ template = """
 
 
 </lens-main>
-"""
