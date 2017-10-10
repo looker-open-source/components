@@ -1,0 +1,37 @@
+// Creates the style declarations for each display type
+@mixin display-style($suffix)
+
+  // Iterate through each type in $display-types
+  @each $type in $display-types
+    @include suffixer($suffix, "%#{$type}")
+
+      // We want to use the class "hide" for display: none,
+      // so we need a conditional to make that happen.
+      @if $type == hide
+        display: none
+      @else
+        display: #{$type}
+
+
+
+// Adds media queries to displa style mixin
+@mixin display($suffix, $media: null)
+
+  // We want to use @media screen whenever no $media
+  // is passed into the mixin
+  @if length($media) == 2
+    +media($media)
+      +display-style($suffix)
+  @else
+    @media screen
+      +display-style($suffix)
+
+
+// Building classes
+
+// Default
++display(xs)
+
+// Other breakpoints
+@each $value, $breakpoint in $breakpoints
+  +display($value, min-width $breakpoint)

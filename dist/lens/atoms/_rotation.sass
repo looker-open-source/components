@@ -1,0 +1,30 @@
+// Creates the style declarations for each rotation type
+@mixin rotation-style($suffix)
+  @each $angle in $rotation-angles
+    @include suffixer($suffix, "%rotate-#{$angle}")
+      -webkit-transform: rotate(#{$angle}deg)
+      transform: rotate(#{$angle}deg)
+
+
+
+// Adds media queries to rotation style mixin
+@mixin rotation($suffix, $media: null)
+
+  // We want to use @media screen whenever no $media
+  // is passed into the mixin
+  @if length($media) == 2
+    +media($media)
+      +rotation-style($suffix)
+  @else
+    @media screen
+      +rotation-style($suffix)
+
+
+// Building classes
+
+// Default
++rotation(xs)
+
+// Other breakpoints
+@each $value, $breakpoint in $breakpoints
+  +rotation($value, min-width $breakpoint)

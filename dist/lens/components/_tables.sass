@@ -1,0 +1,49 @@
+table
+  @extend %w-fit
+  border-collapse: collapse
+  @extend %m-t-1
+  @extend %m-b-3
+  th,
+  td
+    @extend %text-left
+    @extend %align-middle
+    @extend %p-tb-n1
+    @extend %p-lr-2
+    &.right
+      @extend %text-right
+    &.top
+      @extend %align-top
+    &.bottom
+      @extend %align-bottom
+
+  th
+    @extend %bold
+    @extend %border-b-dark
+    background: transparent
+    color: $th-color
+  td
+    @extend %border-none
+    color: $td-color
+
+table.table-striped
+  tr:nth-child(even) > td
+    background-color: transparent
+
+  tr:nth-child(odd) > td
+    @extend %bg-gray-1
+
+table.table-content
+  th, td
+    &:first-child
+      @extend %p-l-0
+    &:last-child
+      @extend %p-r-0
+  th
+    @extend %regular
+    @extend %text-n2
+    white-space: nowrap
+  td
+    @extend %border-b
+    .sub-text
+      @extend %text-n2
+      @extend %color-gray-5

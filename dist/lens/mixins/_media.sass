@@ -1,0 +1,28 @@
+// --------------------------------------------------
+// Responsive Mixins (Utilities)
+// --------------------------------------------------
+// Usage:
+// +media(max-width $mobile-max)                          -> styles any screens *smaller* then $mobile-max
+// +media(min-width $tablet-min)                          -> styles any screens *larger* then $tablet-min
+// +media(max-width $tablet-max)                          -> styles any screens *smaller* then $tablet-max
+// +media(min-width $desktop-min)                         -> styles any screens *larger* then $desktop-min
+// +media(min-width 500px)                                -> styles any screens *larger* then 500px
+// +media(max-width 500px)                                -> styles any screens *smaller* then 500px
+// +media(min-height 500px)                               -> styles any screens *taller* then 500px
+// +media(max-height 500px)                               -> styles any screens *shorter* then 500px
+// +media(min-width $tablet-min max-width $tablet-max)    -> styles any screens *between* $tablet-min and $tablet-max
+// +media(min-width 500px max-width 1000px)               -> styles any screens *between* 500px and 1000px wide
+// +media(min-height 500px max-height 1000px)             -> styles any screens *between* 500px and 1000px tall
+@mixin media($args)
+  @if length($args) > 6
+    @media screen and (#{nth($args, 1)}: nth($args, 2)) and (#{nth($args, 3)}: nth($args, 4)), screen and (#{nth($args, 5)}: nth($args, 6)) and (#{nth($args, 7)}: nth($args, 8))
+      @content
+  @else if length($args) > 4
+    @media screen and (#{nth($args, 1)}: nth($args, 2)), screen and (#{nth($args, 3)}: nth($args, 4)) and (#{nth($args, 5)}: nth($args, 6))
+      @content
+  @else if length($args) > 2
+    @media screen and (#{nth($args, 1)}: nth($args, 2)) and (#{nth($args, 3)}: nth($args, 4))
+      @content
+  @else
+    @media screen and (#{nth($args, 1)}: nth($args, 2))
+      @content
