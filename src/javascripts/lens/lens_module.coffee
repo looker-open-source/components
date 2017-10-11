@@ -3,7 +3,6 @@ require "angular-ui-router"
 require "./../app_config/app_config"
 require "./../user/current_user"
 
-require "./lens_main"
 require "./main_nav"
 require "./page_header"
 require "./page_footer"
@@ -19,7 +18,6 @@ require "./guidelines/guidelines_module"
 module.exports = m = angular.module "Lens", [
   "ui.router"
 
-  "lens.lens_main"
   "lens.main_nav"
   "lens.page_header"
   "lens.page_footer"
