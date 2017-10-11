@@ -1,21 +1,3 @@
-m = angular.module "lens.getting_started", []
-
-
-m.controller "GettingStartedController", ['$scope', (
-  $scope
-) ->
-  return this
-]
-
-
-m.directive "gettingStarted", ->
-  controller: "GettingStartedController"
-  restrict: "E"
-  scope: {}
-  template: template
-
-
-template = """
 <lens-main>
   <section id="developers">
     <h2>Developers</h2>
@@ -38,4 +20,3 @@ template = """
     </ul>
   </section>
 </lens-main>
-"""
