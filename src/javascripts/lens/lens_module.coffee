@@ -9,13 +9,9 @@ require "./page_header"
 require "./page_footer"
 require "./subnav"
 
-require "./index"
 require "./login"
 
-require "./getting_started"
-require "./release_notes"
-require "./installation"
-
+require "./main/main_module"
 require "./atoms/atoms_module"
 require "./components/components_module"
 require "./guidelines/guidelines_module"
@@ -32,13 +28,9 @@ module.exports = m = angular.module "Lens", [
   "lens.app_config"
   "lens.current_user"
 
-  "lens.index"
   "lens.login"
 
-  "lens.getting_started"
-  "lens.installation"
-  "lens.release_notes"
-
+  "lens.main"
   "lens.atoms"
   "lens.components"
   "lens.guidelines"
@@ -82,10 +74,10 @@ m.config ['$stateProvider', '$locationProvider', '$urlRouterProvider', (
     template: '<login></login>'
     title: 'Login to view Lens'
     isLogin: true
-  indexState =
-    name: 'index'
+  homeState =
+    name: 'home'
     url: '/'
-    template: '<index></index>'
+    template: '<home></home>'
     title: 'Welcome to Lens'
     resolve: {authenticate: authenticate}
   gettingStartedState =
@@ -228,7 +220,7 @@ m.config ['$stateProvider', '$locationProvider', '$urlRouterProvider', (
     resolve: {authenticate: authenticate}
 
   $stateProvider.state loginState
-  $stateProvider.state indexState
+  $stateProvider.state homeState
   $stateProvider.state gettingStartedState
 
   $stateProvider.state markupState
