@@ -1,11 +1,11 @@
 import angular from 'angular'
 
-import bodyCopyTemplate from './templates/body_copy.html'
-import buttonsTemplate from './templates/buttons.html'
-import formsTemplate from './templates/forms.html'
-import headingsTemplate from './templates/headings.html'
-import modalsTemplate from './templates/modals.html'
-import tablesTemplate from './templates/tables.html'
+import bodyCopyTemplate from './templates/body_copy'
+import buttonsTemplate from './templates/buttons'
+import formsTemplate from './templates/forms'
+import headingsTemplate from './templates/headings'
+import modalsTemplate from './templates/modals'
+import tablesTemplate from './templates/tables'
 
 const m = angular.module('lens.components', [])
 

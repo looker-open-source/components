@@ -1,8 +1,8 @@
 import angular from 'angular'
 
-import environmentPropertiesTemplate from './templates/environment_properties.html'
-import markupTemplate from './templates/markup.html'
-import responsiveTemplate from './templates/responsive.html'
+import environmentPropertiesTemplate from './templates/environment_properties'
+import markupTemplate from './templates/markup'
+import responsiveTemplate from './templates/responsive'
 
 const m = angular.module('lens.guidelines', [])
 

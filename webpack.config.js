@@ -52,7 +52,7 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['', '.coffee', '.js']
+    extensions: ['', '.coffee', '.js', '.html']
   },
   plugins: [
     new HtmlWebpackPlugin({
