@@ -30,8 +30,8 @@ module.exports = m = angular.module "Lens", [
 
   "lens.login"
 
-  "lens.main"
   "lens.atoms"
+  "lens.main"
   "lens.components"
   "lens.guidelines"
 ]

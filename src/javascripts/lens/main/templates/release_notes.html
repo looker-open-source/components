@@ -1,21 +1,3 @@
-m = angular.module "lens.release_notes", []
-
-
-m.controller "ReleaseNotesController", ['$scope', (
-  $scope
-) ->
-  return this
-]
-
-
-m.directive "releaseNotes", ->
-  controller: "ReleaseNotesController"
-  restrict: "E"
-  scope: {}
-  template: template
-
-
-template = """
 <lens-main>
 
   <section id="release-notes">
@@ -48,4 +30,3 @@ template = """
   </section>
 
 </lens-main>
-"""

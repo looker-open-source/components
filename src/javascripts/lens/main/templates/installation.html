@@ -1,21 +1,3 @@
-m = angular.module "lens.installation", []
-
-
-m.controller "InstallationController", ["$scope", (
-  $scope
-) ->
-  return this
-]
-
-
-m.directive "installation", ->
-  controller: "InstallationController"
-  restrict: "E"
-  scope: {}
-  template: template
-
-
-template = """
 <lens-main>
 
   <section>
@@ -36,4 +18,3 @@ template = """
   </section>
 
 </lens-main>
-"""
