@@ -1,0 +1,21 @@
+<div id="guide_navigation" class="guide-navigation" ng-class="{'guide-navigation-mobile-show' : $ctrl.showMobileNav}">
+  <nav id="navigation" role="navigation" tabindex="-1">
+    <ul class="guide-navigation-list">
+      <li ng-repeat="item in $ctrl.menuItems" class="guide-navigation-item">
+        <!-- sub menu -->
+        <a ng-if="item.subNav" id="{{ item.id }}" class="guide-navigation-link guide-navigation-link-parent" toggle-sub-nav>
+          {{ item.title }}
+          <span class="guide-navigation-icon"></span>
+        </a>
+        <ul ng-if="item.subNav" id="{{ item.id }}-sub-nav" class="guide-navigation-list-child">
+          <li ng-repeat="child in item.subNav" class="guide-navigation-item-child">
+            <a ui-sref="{{ child.uiSref }}" ui-sref-active="active" class="guide-navigation-link guide-navigation-link-child" toggle-mobile-nav>{{ child.title }}</a>
+          </li>
+        </ul>
+
+        <!-- single item -->
+        <a ng-if="item.uiSref" ui-sref="{{ item.uiSref }}" ui-sref-active="active" class="guide-navigation-link guide-navigation-link-single" toggle-mobile-nav>{{ item.title }}</a>
+      </li>
+    </ul>
+  </nav>
+</div>
