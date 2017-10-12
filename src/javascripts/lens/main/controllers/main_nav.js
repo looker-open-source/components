@@ -45,7 +45,8 @@ class NavController {
         ]
       },
       { title: "Installation", uiSref: "installation" },
-      { title: "Release Notes", uiSref: "release-notes" }
+      { title: "Release Notes", uiSref: "release-notes" },
+      { title: "Playground", uiSref: "playground" }
     ]
   }
 

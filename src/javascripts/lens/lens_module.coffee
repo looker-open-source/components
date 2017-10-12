@@ -75,6 +75,13 @@ m.config ['$stateProvider', '$locationProvider', '$urlRouterProvider', (
     title: 'Getting Started'
     resolve: {authenticate: authenticate}
 
+  playgroundState =
+    name: 'playground'
+    url: '/playground'
+    template: '<playground></playground>'
+    title: 'Playground'
+    resolve: {authenticate: authenticate}
+
 # Guidelines
   markupState =
     name: 'markup'
@@ -210,6 +217,8 @@ m.config ['$stateProvider', '$locationProvider', '$urlRouterProvider', (
   $stateProvider.state loginState
   $stateProvider.state homeState
   $stateProvider.state gettingStartedState
+
+  $stateProvider.state playgroundState
 
   $stateProvider.state markupState
   $stateProvider.state responsiveState

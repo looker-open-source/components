@@ -22,6 +22,10 @@ import pageHeaderTemplate from './templates/page_header'
 import PageFooterController from './controllers/page_footer'
 import pageFooterTemplate from './templates/page_footer'
 
+// playground
+import PlaygroundController from './controllers/playground'
+import playgroundTemplate from './templates/playground'
+
 // "legacy" coffeescript
 import subnav from './subnav'
 
@@ -40,3 +44,4 @@ m.component('lensMain', { controller: MainController, template: mainTemplate, tr
 m.component('mainNav', { controller: NavController, template: navTemplate })
 m.component('pageHeader', { controller: PageHeaderController, template: pageHeaderTemplate })
 m.component('pageFooter', { controller: PageFooterController, template: pageFooterTemplate })
+m.component('playground', { controller: PlaygroundController, template: playgroundTemplate })
