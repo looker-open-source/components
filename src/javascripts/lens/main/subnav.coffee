@@ -1,15 +1,6 @@
 m = angular.module "lens.subnav", []
 
-
-m.controller "SubnavController", ['$scope', (
-  $scope
-) ->
-  return this
-]
-
-
 m.directive "subnav", ->
-  controller: "SubnavController"
   restrict: "E"
   scope: {}
   template: template

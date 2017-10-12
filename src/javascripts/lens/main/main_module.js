@@ -22,9 +22,14 @@ import pageHeaderTemplate from './templates/page_header'
 import PageFooterController from './controllers/page_footer'
 import pageFooterTemplate from './templates/page_footer'
 
+// "legacy" coffeescript
+import subnav from './subnav'
+
 const m = angular.module('lens.main', [
   'lens.main.directives.main_nav',
+  'lens.subnav' // TODO: refactor out to .js component
 ])
+
 m.component('home', { template: homeTemplate })
 m.component('gettingStarted', { template: gettingStartedTemplate })
 m.component('installation', { template: installationTemplate })

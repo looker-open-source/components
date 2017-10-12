@@ -3,8 +3,6 @@ require "angular-ui-router"
 require "./../app_config/app_config"
 require "./../user/current_user"
 
-require "./subnav"
-
 require "./login"
 
 require "./main/main_module"
@@ -14,8 +12,6 @@ require "./guidelines/guidelines_module"
 
 module.exports = m = angular.module "Lens", [
   "ui.router"
-
-  "lens.subnav"
 
   "lens.app_config"
   "lens.current_user"
