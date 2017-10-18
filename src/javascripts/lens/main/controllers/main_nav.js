@@ -44,9 +44,9 @@ class NavController {
           { title: "Typography", uiSref: "typography"}
         ]
       },
+      { title: "Playground", uiSref: "playground" },
       { title: "Installation", uiSref: "installation" },
-      { title: "Release Notes", uiSref: "release-notes" },
-      { title: "Playground", uiSref: "playground" }
+      { title: "Release Notes", uiSref: "release-notes" }
     ]
   }
 

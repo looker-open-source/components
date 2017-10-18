@@ -74,7 +74,6 @@ m.config ['$stateProvider', '$locationProvider', '$urlRouterProvider', (
     template: '<getting-started></getting-started>'
     title: 'Getting Started'
     resolve: {authenticate: authenticate}
-
   playgroundState =
     name: 'playground'
     url: '/playground'
