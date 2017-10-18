@@ -229,7 +229,8 @@ body
   &-main,
   &-contentinfo
     @extend %p-lr-5
-    margin-left: 216px
+    +media(min-width 960px)
+      margin-left: 216px
   &-main
     @extend %p-t-6, %m-b-6
     min-height: calc(100vh - 66px)

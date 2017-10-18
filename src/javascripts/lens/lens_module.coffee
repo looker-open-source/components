@@ -3,19 +3,9 @@ require "angular-ui-router"
 require "./../app_config/app_config"
 require "./../user/current_user"
 
-require "./lens_main"
-require "./main_nav"
-require "./page_header"
-require "./page_footer"
-require "./subnav"
-
-require "./index"
 require "./login"
 
-require "./getting_started"
-require "./release_notes"
-require "./installation"
-
+require "./main/main_module"
 require "./atoms/atoms_module"
 require "./components/components_module"
 require "./guidelines/guidelines_module"
@@ -23,23 +13,13 @@ require "./guidelines/guidelines_module"
 module.exports = m = angular.module "Lens", [
   "ui.router"
 
-  "lens.lens_main"
-  "lens.main_nav"
-  "lens.page_header"
-  "lens.page_footer"
-  "lens.subnav"
-
   "lens.app_config"
   "lens.current_user"
 
-  "lens.index"
   "lens.login"
 
-  "lens.getting_started"
-  "lens.installation"
-  "lens.release_notes"
-
   "lens.atoms"
+  "lens.main"
   "lens.components"
   "lens.guidelines"
 ]
@@ -82,10 +62,10 @@ m.config ['$stateProvider', '$locationProvider', '$urlRouterProvider', (
     template: '<login></login>'
     title: 'Login to view Lens'
     isLogin: true
-  indexState =
-    name: 'index'
+  homeState =
+    name: 'home'
     url: '/'
-    template: '<index></index>'
+    template: '<home></home>'
     title: 'Welcome to Lens'
     resolve: {authenticate: authenticate}
   gettingStartedState =
@@ -93,6 +73,12 @@ m.config ['$stateProvider', '$locationProvider', '$urlRouterProvider', (
     url: '/getting-started'
     template: '<getting-started></getting-started>'
     title: 'Getting Started'
+    resolve: {authenticate: authenticate}
+  playgroundState =
+    name: 'playground'
+    url: '/playground'
+    template: '<playground></playground>'
+    title: 'Playground'
     resolve: {authenticate: authenticate}
 
 # Guidelines
@@ -228,8 +214,10 @@ m.config ['$stateProvider', '$locationProvider', '$urlRouterProvider', (
     resolve: {authenticate: authenticate}
 
   $stateProvider.state loginState
-  $stateProvider.state indexState
+  $stateProvider.state homeState
   $stateProvider.state gettingStartedState
+
+  $stateProvider.state playgroundState
 
   $stateProvider.state markupState
   $stateProvider.state responsiveState
