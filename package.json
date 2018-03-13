@@ -2,5 +2,25 @@
   "name": "relens",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@storybook/react": "3.3.15",
+    "babel-core": "6.26.0",
+    "ts-loader": "3.5.0",
+    "typescript": "2.7.2"
+  },
+  "dependencies": {
+    "@types/react-dom": "15.5.7",
+    "@types/storybook__react": "3.0.7",
+    "prop-types": "15.6.1",
+    "react": "16.2.0",
+    "react-dom": "16.2.0",
+    "styled-components": "3.2.1"
+  },
+  "resolutions": {
+    "**/@types/react": "16.0.40"
+  },
+  "scripts": {
+    "storybook": "start-storybook -p 6006"
+  }
 }
