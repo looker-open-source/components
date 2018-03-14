@@ -4,6 +4,7 @@ export const Button = styled.button`
   :hover {
     background: #473764;
     border: 1px solid #473764;
+    color: white;
   }
 
   background: #64518A;
@@ -21,4 +22,12 @@ export const Button = styled.button`
   vertical-align: middle;
 `
 
-export const LinkButton = Button.withComponent('a')
+export const LinkButton = Button.withComponent('a').extend`
+
+  :hover {
+    text-decoration: none;
+  }
+  
+  user-select: none;
+
+`

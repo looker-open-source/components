@@ -1,17 +1,17 @@
 {
   "name": "relens",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "index.tsx",
   "license": "MIT",
   "devDependencies": {
-    "@storybook/react": "3.3.15",
+    "@types/react-dom": "16.0.4",
+    "@types/storybook__react": "3.0.7",
     "babel-core": "6.26.0",
     "ts-loader": "3.5.0",
     "typescript": "2.7.2"
   },
   "dependencies": {
-    "@types/react-dom": "15.5.7",
-    "@types/storybook__react": "3.0.7",
+    "@storybook/react": "3.3.15",
     "prop-types": "15.6.1",
     "react": "16.2.0",
     "react-dom": "16.2.0",
