@@ -4,14 +4,20 @@
   "main": "index.tsx",
   "license": "MIT",
   "devDependencies": {
+    "@types/classnames": "2.2.3",
     "@types/react-dom": "16.0.4",
+    "@types/storybook__addon-knobs": "3.2.3",
     "@types/storybook__react": "3.0.7",
     "babel-core": "6.26.0",
+    "node-sass": "4.7.2",
+    "sass-loader": "6.0.7",
     "ts-loader": "3.5.0",
     "typescript": "2.7.2"
   },
   "dependencies": {
+    "@storybook/addon-knobs": "3.3.15",
     "@storybook/react": "3.3.15",
+    "classnames": "2.2.5",
     "prop-types": "15.6.1",
     "react": "16.2.0",
     "react-dom": "16.2.0",
