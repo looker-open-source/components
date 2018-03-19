@@ -11,12 +11,12 @@ stories.add("Button", () => {
   const danger = boolean('Danger', false)
   return (
     <div>
-      <div>
+      <p>
         <Button danger={danger} onClick={action('Button Clicked')}>A Button</Button>
-      </div>
-      <div>
+      </p>
+      <p>
         <LinkButton danger={danger} onClick={action('LinkButton Clicked')}>I'm really a link</LinkButton>
-      </div>
+      </p>
     </div>
   )
 })

@@ -10,14 +10,14 @@ interface ButtonProps {
 }
 
 export const Button: SFC<ButtonProps> = ({children, className, danger, onClick}) => {
-  const btnClass = classNames(styles.btn, className, {[styles.btnDanger]: danger})
+  const btnClass = classNames(styles.lensBtn, className, {[styles.lensBtnDanger]: danger})
   return (
     <button className={btnClass} onClick={onClick}>{children}</button>
   )
 }
 
 export const LinkButton: SFC<ButtonProps> = ({children, className, danger, onClick}) => {
-  const cName = classNames(styles.btn, className, {[styles.btnDanger]: danger})
+  const cName = classNames(styles.lensBtn, className, {[styles.lensBtnDanger]: danger})
   return (
     <a className={cName} onClick={onClick}>{children}</a>
   )
