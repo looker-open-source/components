@@ -2,7 +2,7 @@ import * as React from 'react'
 import { storiesOf } from "@storybook/react"
 import { withKnobs, boolean } from "@storybook/addon-knobs"
 
-import { Button } from '../src/components/buttons/Buttons'
+import {Button, LinkButton} from '../src/components/buttons/Buttons'
 import {List, ListItem, OrderedList} from '../src/components/list/lists'
 
 const stories = storiesOf("Typescript and Storybook", module)
@@ -14,7 +14,12 @@ stories.add("Button", () => {
 
   return (
     <div>
-      <Button danger={danger} onClick={() => alert('hi')}>A Button</Button>
+      <div>
+        <Button danger={danger} onClick={() => alert('hi')}>A Button</Button>
+      </div>
+      <div>
+        <LinkButton danger={danger} onClick={() => alert('hi')}>I'm really a link</LinkButton>
+      </div>
     </div>
   )
 })
