@@ -6,7 +6,6 @@ interface ButtonProps {
   className?: string
   danger?: boolean
   onClick?: (...args: any[]) => void
-  style: object
 }
 
 const Button: React.StatelessComponent<ButtonProps> = ({children, className, danger, onClick}) => {
