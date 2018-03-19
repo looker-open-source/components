@@ -21,8 +21,7 @@
     "classnames": "2.2.5",
     "prop-types": "15.6.1",
     "react": "16.2.0",
-    "react-dom": "16.2.0",
-    "semantic-ui-react": "0.78.3"
+    "react-dom": "16.2.0"
   },
   "resolutions": {
     "**/@types/react": "16.0.40"

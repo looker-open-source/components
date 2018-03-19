@@ -1,7 +1,6 @@
 import * as React from 'react'
 import * as classNames from 'classnames'
 import * as styles from './buttons.scss'
-import { Button as SButton } from 'semantic-ui-react'
 
 interface ButtonProps {
   className?: string
@@ -17,6 +16,6 @@ export const Button: React.StatelessComponent<ButtonProps> = ({children, classNa
       [styles.btnDanger]: danger
     })
 
-  return <SButton className={btnClass} onClick={onClick ? onClick : () => {}}>{children}</SButton>
+  return <button className={btnClass} onClick={onClick ? onClick : () => {}}>{children}</button>
 }
 
