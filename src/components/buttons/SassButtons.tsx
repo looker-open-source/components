@@ -1,6 +1,7 @@
 import * as React from 'react'
 import * as classNames from 'classnames'
 import * as styles from './buttons.scss'
+import { Button as SButton } from 'semantic-ui-react'
 
 interface ButtonProps {
   className?: string
@@ -9,11 +10,14 @@ interface ButtonProps {
 }
 
 const Button: React.StatelessComponent<ButtonProps> = ({children, className, danger, onClick}) => {
-  const btnClass = classNames(styles.btn, className, {
-    [styles.btnDanger]: danger
-  })
+  const btnClass = classNames(
+    styles.btn,
+    className,
+    {
+      [styles.btnDanger]: danger
+    })
 
-  return <button className={btnClass} onClick={onClick ? onClick : () => {}}>{children}</button>
+  return <SButton className={btnClass} onClick={onClick ? onClick : () => {}}>{children}</SButton>
 }
 
 export default Button
