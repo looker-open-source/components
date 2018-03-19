@@ -12,7 +12,8 @@
     "node-sass": "4.7.2",
     "sass-loader": "6.0.7",
     "ts-loader": "3.5.0",
-    "typescript": "2.7.2"
+    "typescript": "2.7.2",
+    "typings-for-css-modules-loader": "1.7.0"
   },
   "dependencies": {
     "@storybook/addon-knobs": "3.3.15",

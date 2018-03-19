@@ -1,11 +1,5 @@
 .btn {
-  &:hover {
-    background: #473764;
-    border: 1px solid #473764;
-    color: white;
-  }
-
-  background: #64518A;
+  background-color: #64518A;
   border: 1px solid #64518A;
   border-radius: 2px;
   color: white;
@@ -18,6 +12,12 @@
   white-space: nowrap;
   padding: 4px 8px;
   vertical-align: middle;
+
+  &:hover {
+    background-color: #473764;
+    border: 1px solid #473764;
+    color: white;
+  }
 }
 
 .btn-danger {
