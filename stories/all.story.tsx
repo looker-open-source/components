@@ -4,7 +4,7 @@ import { withKnobs, boolean } from "@storybook/addon-knobs"
 import { action } from '@storybook/addon-actions'
 import { Button, LinkButton } from '../src/components/buttons/Buttons'
 import { FormattedMessage } from 'react-intl'
-import {List, ListItem, OrderedList} from "../src/components/list/lists";
+import { List, ListItem, OrderedList } from "../src/components/list/lists";
 
 
 const stories = storiesOf("All", module)
