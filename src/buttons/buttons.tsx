@@ -3,7 +3,7 @@ import * as classNames from 'classnames'
 import * as styles from './buttons.scss'
 import { SFC } from 'react'
 
-interface ButtonProps {
+export interface ButtonProps {
   className?: string
   danger?: boolean
   onClick?: (...args: any[]) => void

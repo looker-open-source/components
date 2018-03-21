@@ -1,7 +1,7 @@
 {
   "name": "relens",
   "version": "1.0.0",
-  "main": "index.tsx",
+  "main": "dist/components/index",
   "license": "MIT",
   "devDependencies": {
     "@types/classnames": "2.2.3",
@@ -33,5 +33,6 @@
   },
   "scripts": {
     "storybook": "start-storybook -p 6006"
-  }
+  },
+  "types": "dist/types"
 }
