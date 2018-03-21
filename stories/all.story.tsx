@@ -2,9 +2,9 @@ import * as React from 'react'
 import { storiesOf } from "@storybook/react"
 import { withKnobs, boolean } from "@storybook/addon-knobs"
 import { action } from '@storybook/addon-actions'
-import { Button, LinkButton } from '../src/components/buttons/Buttons'
+import { Button, LinkButton } from '../src/components/buttons/buttons'
 import { FormattedMessage } from 'react-intl'
-import { List, ListItem, OrderedList } from "../src/components/list/lists";
+import { List, ListItem, OrderedList } from "../src/components/lists/lists";
 
 
 const stories = storiesOf("All", module)
