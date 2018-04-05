@@ -2,7 +2,7 @@ import * as React from 'react'
 import { storiesOf } from "@storybook/react"
 import { withKnobs, boolean } from "@storybook/addon-knobs"
 import { action } from '@storybook/addon-actions'
-import { Button, LinkButton } from '../src/buttons/buttons'
+import { Button } from '../src/buttons/buttons'
 import { FormattedMessage } from 'react-intl'
 import { List, ListItem, OrderedList } from "../src/lists/lists";
 
@@ -18,11 +18,6 @@ stories.add("All", () => {
         <Button danger={danger} onClick={action('Button Clicked')}>
           <FormattedMessage id='button.label' />
         </Button>
-      </p>
-      <p>
-        <LinkButton danger={danger} onClick={action('LinkButton Clicked')}>
-          <FormattedMessage id='button.label' />
-        </LinkButton>
       </p>
       <p>
         <OrderedList>

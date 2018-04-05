@@ -21,14 +21,13 @@
         "alwaysShowRuleFailuresAsWarnings": true
       }
     ],
-    "rootDir": "src",
     "skipLibCheck": true,
     "sourceMap": true,
     "strict": true,
     "target": "es6"
   },
   "include": [
-    "./src/**/*"
-//    "./stories/**/*"
+    "./src/**/*",
+    "./stories/**/*"
   ]
 }

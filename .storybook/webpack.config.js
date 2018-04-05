@@ -4,7 +4,7 @@ module.exports = (storybookBaseConfig) => {
 
   // Handle SASS
   storybookBaseConfig.module.rules.push({
-    test: /\.scss$/,
+    test: /.scss$/,
     include: path.resolve(__dirname, '../'),
     use: [
       'style-loader',
@@ -15,7 +15,8 @@ module.exports = (storybookBaseConfig) => {
           modules: true,
           namedExport: true,
           importLoaders: true,
-          localIdentName: '[name]__[local]___[hash:base64:5]'
+          // localIdentName: '[name]__[local]___[hash:base64:5]'
+          localIdentName: 'lens--[local]'
         }
       },
       {
@@ -23,7 +24,8 @@ module.exports = (storybookBaseConfig) => {
         options: {
           modules: true,
           importLoaders: true,
-          localIdentName: '[name]__[local]___[hash:base64:5]'
+          // localIdentName: '[name]__[local]___[hash:base64:5]'
+          localIdentName: 'lens--[local]'
         }
       }
     ]
@@ -35,6 +37,6 @@ module.exports = (storybookBaseConfig) => {
     loader: require.resolve('ts-loader')
   })
 
-  storybookBaseConfig.resolve.extensions.push('.ts', '.tsx')
+  storybookBaseConfig.resolve.extensions.push('.ts', '.tsx', '.scss')
   return storybookBaseConfig
 }

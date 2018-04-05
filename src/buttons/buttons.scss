@@ -1,26 +1,64 @@
-.lens-btn {
-  background-color: #64518A;
-  border: 1px solid #64518A;
-  border-radius: 2px;
-  color: white;
+$button-default-color: #64518A;
+$button-default-highlight: #473764;
+$button-light-color: transparent;
+$button-scary-color: #E1332C;
+
+$button-font-color: white;
+$button-font-color-light: $button-default-color;
+
+$button-font-size-xs: 12px;
+$button-font-size-small: 14px;
+$button-font-size-medium: 16px;
+$button-font-size-large: 22px;
+
+.button {
+  background-color: $button-default-color;
+  border: 1px solid $button-default-color;
+  border-radius: 6px;
+  color: $button-font-color;
   cursor: pointer;
   display: inline-block;
-  font-size: 12px;
-  font-weight: normal;
-  line-height: 1.5;
-  margin: 0;
+  font-size: $button-font-size-medium;
+  line-height: 24px;
+  padding: 6px 16px;
   white-space: nowrap;
-  padding: 4px 8px;
   vertical-align: middle;
 
   &:hover {
-    background-color: #473764;
-    border: 1px solid #473764;
-    color: white;
+    background-color: $button-default-highlight;
+    border: 1px solid $button-default-highlight;
   }
-}
 
-.lens-btn-danger {
-  background: red;
-  border-color: red;
+  &.size-extra-small {
+    font-size: $button-font-size-xs;
+    line-height: 20px;
+    padding: 2px 8px;
+  }
+
+  &.size-small {
+    font-size: $button-font-size-small;
+    padding: 3px 14px;
+  }
+
+  &.size-large {
+    font-size: $button-font-size-large;
+    line-height: 30px;
+    padding: 8px 24px;
+  }
+
+  &.mode-light {
+    background: $button-light-color;
+    color: $button-font-color-light;
+  }
+
+  &.mode-ghost {
+    background: $button-light-color;
+    border: none;
+    color: $button-font-color-light;
+  }
+
+  &.mode-scary {
+    background: $button-scary-color;
+    border-color: $button-scary-color;
+  }
 }
