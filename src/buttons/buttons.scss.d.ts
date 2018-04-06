@@ -5,3 +5,4 @@ export const sizeLarge: string;
 export const modeLight: string;
 export const modeGhost: string;
 export const modeScary: string;
+export const modeDisabled: string;

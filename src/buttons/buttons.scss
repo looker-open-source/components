@@ -1,19 +1,33 @@
 @import '../styles/font-utils';
 
-$button-default-color: #64518A;
-$button-default-highlight: #473764;
-$button-light-color: transparent;
-$button-scary-color: #E1332C;
-$button-font-color: white;
-$button-font-color-light: $button-default-color;
+$purple-normal-button: #64518A;
+$purple-hover-button: #473764;
+$purple-active-button: #2A1B60;
+
+$light-normal-button: #FFFFFF;
+$light-hover-button: #EAE6FA;
+$light-active-button: #D6CDF5;
+$light-normal-button-border: #7E64E0;
+$light-hover-button-border: #4C33AA;
+$light-active-button-border: #4C33AA;
+
+$scary-normal-button: #E1332C;
+$scary-hover-button: #B00505;
+$scary-active-button: #92100E;
+
+$disabled-grey-button: #E4E5E6;
+
+$text-white: #FFFFFF;
+$text-grey: #A4A6A9;
+$text-purple: #7E64E0;
 
 .button {
   @include fontSize(16px);
 
-  background-color: $button-default-color;
-  border: 1px solid $button-default-color;
+  background-color: $purple-normal-button;
+  border: pxToRem(1px) solid $purple-normal-button;
   border-radius: pxToRem(6px);
-  color: $button-font-color;
+  color: $text-white;
   cursor: pointer;
   display: inline-block;
   line-height: pxToRem(24px);
@@ -22,8 +36,13 @@ $button-font-color-light: $button-default-color;
   vertical-align: middle;
 
   &:hover {
-    background-color: $button-default-highlight;
-    border: pxToRem(1px) solid $button-default-highlight;
+    background-color: $purple-hover-button;
+    border-color: $purple-hover-button;
+  }
+
+  &:active {
+    background-color: $purple-active-button;
+    border-color: $purple-active-button;
   }
 
   &.size-extra-small {
@@ -44,18 +63,53 @@ $button-font-color-light: $button-default-color;
   }
 
   &.mode-light {
-    background: $button-light-color;
-    color: $button-font-color-light;
+    background: $light-normal-button;
+    color: $text-purple;
+    border-color: $light-normal-button-border;
+
+    &:hover {
+      background-color: $light-hover-button;
+      border-color: $light-hover-button-border;
+    }
+
+    &:active {
+      background-color: $light-active-button;
+      border-color: $light-active-button-border;
+    }
   }
 
   &.mode-ghost {
-    background: $button-light-color;
+    background: $light-normal-button;
     border: none;
-    color: $button-font-color-light;
+    color: $text-purple;
+
+    &:hover {
+      background-color: $light-hover-button;
+    }
+
+    &:active {
+      background-color: $light-active-button;
+    }
   }
 
   &.mode-scary {
-    background: $button-scary-color;
-    border-color: $button-scary-color;
+    background: $scary-normal-button;
+    border-color: $scary-normal-button;
+
+    &:hover {
+      border-color: $scary-hover-button;
+      background-color: $scary-hover-button;
+    }
+
+    &:active {
+      border-color: $scary-active-button;
+      background-color: $scary-active-button;
+    }
+  }
+
+  &.mode-disabled {
+    background: $disabled-grey-button;
+    border-color: $disabled-grey-button;
+    color: #A4A6A9;
   }
 }
