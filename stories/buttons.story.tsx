@@ -4,10 +4,13 @@ import { withKnobs } from "@storybook/addon-knobs"
 import { action } from '@storybook/addon-actions'
 import { Button, buttonStyles, LookerButtonHTMLAttributes } from '../src/buttons/buttons'
 import { ReactElement } from "react"
-import {decapitalize} from '../src/utils/strings'
+import { decapitalize } from '../src/utils/strings'
+import { checkA11y } from '@storybook/addon-a11y'
+import { withInfo } from '@storybook/addon-info'
 
 const stories = storiesOf("Buttons", module)
 stories.addDecorator(withKnobs)
+stories.addDecorator(checkA11y)
 
 function propsFromStyles (styles: object, prefix: string, includeUndefined = false): Array<string | undefined> {
   const props: Array<string | undefined> = Object.keys(styles)
@@ -18,7 +21,7 @@ function propsFromStyles (styles: object, prefix: string, includeUndefined = fal
   return props
 }
 
-stories.add("Button", () => {
+stories.add("Button", withInfo(`foo`)(() => {
   const modes = propsFromStyles(buttonStyles, 'mode')
   const sizes = propsFromStyles(buttonStyles, 'size')
   modes.push(undefined)
@@ -63,5 +66,5 @@ stories.add("Button", () => {
     </table>
     </div>
   )
-})
+}))
 
