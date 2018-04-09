@@ -23,7 +23,6 @@ $text-purple: #7E64E0;
 
 .button {
   @include fontSize(16px);
-
   background-color: $purple-normal-button;
   border: pxToRem(1px) solid $purple-normal-button;
   border-radius: pxToRem(6px);
@@ -32,6 +31,7 @@ $text-purple: #7E64E0;
   display: inline-block;
   line-height: pxToRem(24px);
   padding: pxToRem(6px) pxToRem(16px);
+
   white-space: nowrap;
   vertical-align: middle;
 

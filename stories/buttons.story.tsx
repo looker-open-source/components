@@ -2,33 +2,41 @@ import * as React from 'react'
 import { storiesOf } from "@storybook/react"
 import { withKnobs } from "@storybook/addon-knobs"
 import { action } from '@storybook/addon-actions'
-import { Button, buttonStyles, ButtonModes, ButtonSizes, ButtonProps } from '../src/buttons/buttons'
+import { Button, buttonStyles, LookerButtonHTMLAttributes } from '../src/buttons/buttons'
 import { ReactElement } from "react"
+import {decapitalize} from '../src/utils/strings'
 
 const stories = storiesOf("Buttons", module)
 stories.addDecorator(withKnobs)
 
-stories.add("Button", () => {
-  const styleKeys = Object.keys(buttonStyles)
+function propsFromStyles (styles: object, prefix: string, includeUndefined = false): Array<string | undefined> {
+  const props: Array<string | undefined> = Object.keys(styles)
+    .filter((key) => key.includes(prefix) && !key.includes('-'))
+    .map((key) => key.replace(new RegExp(`^${prefix}`), ''))
+    .map((key) => decapitalize(key))
+  if (includeUndefined) props.push(undefined)
+  return props
+}
 
-  const modes = styleKeys.filter((key) => key.includes('mode') && !key.includes('-')) as ButtonModes[]
-  const sizes = styleKeys.filter((key) => key.includes('size') && !key.includes('-')) as ButtonSizes[]
-  modes.unshift(undefined)
-  sizes.unshift(undefined)
-  const matrix: ReactElement<ButtonProps>[][] = []
+stories.add("Button", () => {
+  const modes = propsFromStyles(buttonStyles, 'mode')
+  const sizes = propsFromStyles(buttonStyles, 'size')
+  modes.push(undefined)
+  sizes.push(undefined)
+  const matrix: ReactElement<LookerButtonHTMLAttributes>[][] = []
 
   modes.forEach((mode) => {
-    const buttonRow: ReactElement<ButtonProps>[] = []
+    const buttonRow: ReactElement<LookerButtonHTMLAttributes>[] = []
     sizes.forEach((size) => {
       let desc = ''
       switch (size) {
-        case 'sizeExtraSmall':
+        case 'extraSmall':
           desc = 'X-Small'
           break
-        case 'sizeSmall':
+        case 'small':
           desc = 'Small'
           break
-        case 'sizeLarge':
+        case 'large':
           desc = 'Large'
           break
         default:
@@ -41,6 +49,7 @@ stories.add("Button", () => {
   })
 
   return (
+    <div>
     <table>
       {matrix.map((row) => {
         return (
@@ -50,6 +59,7 @@ stories.add("Button", () => {
         )
       })}
     </table>
+    </div>
   )
 })
 
