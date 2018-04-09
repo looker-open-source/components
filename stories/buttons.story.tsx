@@ -51,13 +51,15 @@ stories.add("Button", () => {
   return (
     <div>
     <table>
-      {matrix.map((row) => {
+      <tbody>
+      {matrix.map((row, idx) => {
         return (
-          <tr>
-            {row.map((button) => (<td>{button}</td>))}
+          <tr key={idx}>
+            {row.map((button, idx) => (<td key={idx}>{button}</td>))}
           </tr>
         )
       })}
+      </tbody>
     </table>
     </div>
   )
