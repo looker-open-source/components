@@ -2,7 +2,7 @@ import * as React from 'react'
 import { storiesOf } from "@storybook/react"
 import { withKnobs } from "@storybook/addon-knobs"
 import { action } from '@storybook/addon-actions'
-import { Button, buttonStyles, LookerButtonHTMLAttributes } from '../src/buttons/buttons'
+import { Button, buttonStyles, LookerButtonHTMLAttributes } from '../src/components/buttons/buttons'
 import { ReactElement } from "react"
 import {decapitalize} from '../src/utils/strings'
 

@@ -2,7 +2,7 @@ import * as React from 'react'
 import * as classNames from 'classnames'
 import * as styles from './buttons.scss'
 import { SFC } from 'react'
-import { capitalize } from '../utils/strings'
+import { capitalize } from '../../utils/strings'
 
 export interface LookerButtonHTMLAttributes extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   [key: string]: any
