@@ -5,6 +5,7 @@
   "license": "MIT",
   "devDependencies": {
     "@types/classnames": "2.2.3",
+    "@types/jest": "22.2.2",
     "@types/react-dom": "16.0.4",
     "@types/react-intl": "2.3.5",
     "@types/storybook__addon-a11y": "3.3.0",
@@ -13,8 +14,10 @@
     "@types/storybook__addon-knobs": "3.2.3",
     "@types/storybook__react": "3.0.7",
     "babel-core": "6.26.0",
+    "jest": "22.4.3",
     "node-sass": "4.7.2",
     "sass-loader": "6.0.7",
+    "ts-jest": "22.4.2",
     "ts-loader": "3.5.0",
     "typescript": "2.7.2",
     "typings-for-css-modules-loader": "1.7.0"
@@ -24,6 +27,7 @@
     "@storybook/addon-actions": "3.3.15",
     "@storybook/addon-info": "3.4.0",
     "@storybook/addon-knobs": "3.3.15",
+    "@storybook/addon-storyshots": "3.4.0",
     "@storybook/react": "3.3.15",
     "classnames": "2.2.5",
     "prop-types": "15.6.1",
@@ -36,7 +40,21 @@
     "**/@types/react": "16.0.40"
   },
   "scripts": {
-    "storybook": "start-storybook -p 6006"
+    "storybook": "start-storybook -p 6006",
+    "test": "jest"
   },
-  "types": "dist/types"
+  "types": "dist/types",
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "ts",
+      "tsx"
+    ],
+    "transform": {
+      "^.+\\.(ts|tsx)$": "ts-jest"
+    },
+    "testMatch": [
+      "**/?(*.)(spec|test).ts?(x)"
+    ]
+  }
 }
