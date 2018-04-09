@@ -12,6 +12,7 @@
     "@types/storybook__react": "3.0.7",
     "babel-core": "6.26.0",
     "node-sass": "4.7.2",
+    "react-docgen-typescript": "1.2.6",
     "sass-loader": "6.0.7",
     "ts-loader": "3.5.0",
     "typescript": "2.7.2",
@@ -26,6 +27,7 @@
     "react": "16.2.0",
     "react-dom": "16.2.0",
     "react-intl": "2.4.0",
+    "react-styleguidist": "7.0.5",
     "storybook-addon-intl": "2.3.0"
   },
   "resolutions": {
