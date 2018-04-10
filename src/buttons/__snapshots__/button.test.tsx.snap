@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button ghost 1`] = `
+<button
+  className="button modeGhost"
+>
+  🥑
+</button>
+`;
+
+exports[`Button states 1`] = `
+<button
+  className="button"
+>
+  🥑
+</button>
+`;

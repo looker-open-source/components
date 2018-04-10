@@ -62,6 +62,10 @@ $text-purple: #7E64E0;
     padding: pxToRem(8px) pxToRem(24px);
   }
 
+  &.foo {
+    background-color: aqua;
+  }
+
   &.mode-light {
     background: $light-normal-button;
     color: $text-purple;

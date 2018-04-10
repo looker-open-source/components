@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { storiesOf } from "@storybook/react"
-import { withKnobs } from "@storybook/addon-knobs"
+import { withKnobs, text } from "@storybook/addon-knobs"
 import { action } from '@storybook/addon-actions'
 import { Button, buttonStyles, LookerButtonHTMLAttributes } from '../src/buttons/buttons'
 import { ReactElement } from "react"
@@ -28,6 +28,8 @@ stories.add("Button", withInfo(`foo`)(() => {
   sizes.push(undefined)
   const matrix: ReactElement<LookerButtonHTMLAttributes>[][] = []
 
+  const classNames = text('Classes', '')
+
   modes.forEach((mode) => {
     const buttonRow: ReactElement<LookerButtonHTMLAttributes>[] = []
     sizes.forEach((size) => {
@@ -46,24 +48,24 @@ stories.add("Button", withInfo(`foo`)(() => {
           desc = 'Normal'
           break
       }
-      buttonRow.push(<Button onClick={action('clicked')} size={size} mode={mode}>{desc}</Button>)
+      buttonRow.push(<Button onClick={action('clicked')} size={size} mode={mode} className={classNames}>{desc}</Button>)
     })
     matrix.push(buttonRow)
   })
 
   return (
     <div>
-    <table>
-      <tbody>
-      {matrix.map((row, idx) => {
-        return (
-          <tr key={idx}>
-            {row.map((button, idx) => (<td key={idx}>{button}</td>))}
-          </tr>
-        )
-      })}
-      </tbody>
-    </table>
+      <table className="fizzbuzz">
+        <tbody>
+        {matrix.map((row, idx) => {
+          return (
+            <tr key={idx}>
+              {row.map((button, idx) => (<td key={idx}>{button}</td>))}
+            </tr>
+          )
+        })}
+        </tbody>
+      </table>
     </div>
   )
 }))

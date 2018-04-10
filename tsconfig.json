@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
     "baseUrl": "src",
     "declaration": true,
     "declarationDir": "dist/types",
