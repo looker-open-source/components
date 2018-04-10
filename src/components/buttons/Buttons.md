@@ -1,7 +1,3 @@
-# Buttons
-
-Buttons communicate what action will occur on a page when the user interacts with them. All buttons use sentence-casing (only capitalize the first letter of the first word). Copy used within a button should be unambiguous and concise, making it clear to the user what action will occur once the button is clicked.
-
 ---
 
 ## Primary

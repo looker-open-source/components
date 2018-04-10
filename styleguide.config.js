@@ -2,7 +2,19 @@ const path = require('path')
 const typescriptPropsParser = require('react-docgen-typescript').withDefaultConfig().parse
 
 module.exports = {
+  pagePerSection: true,
   propsParser: typescriptPropsParser,
+  sections: [
+    {
+      name: 'Lens',
+      content: 'docs/intro.md'
+    },
+    {
+      name: 'Components',
+      components: 'src/components/**/*.tsx'
+    }
+  ],
+  title: 'Lens',
   webpackConfig: {
     resolve: {
       extensions: ['.ts', '.tsx', '.js', '.jsx', '.scss']
