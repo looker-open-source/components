@@ -6,7 +6,6 @@ import { Button, buttonStyles, LookerButtonHTMLAttributes } from '../src/compone
 import { ReactElement } from "react"
 import { decapitalize } from '../src/utils/strings'
 import { checkA11y } from '@storybook/addon-a11y'
-import { withInfo } from '@storybook/addon-info'
 
 const stories = storiesOf("Buttons", module)
 stories.addDecorator(withKnobs)
@@ -21,7 +20,7 @@ function propsFromStyles (styles: object, prefix: string, includeUndefined = fal
   return props
 }
 
-stories.add("Button", withInfo({inline: true})(() => {
+stories.add("Button", () => {
   const modes = propsFromStyles(buttonStyles, 'mode')
   const sizes = propsFromStyles(buttonStyles, 'size')
   modes.push(undefined)
@@ -66,5 +65,5 @@ stories.add("Button", withInfo({inline: true})(() => {
       </table>
     </div>
   )
-}))
+})
 
