@@ -1,7 +1,7 @@
 const path = require('path')
 const typescriptPropsParser = require('react-docgen-typescript').withDefaultConfig().parse
 
-module.exports = {
+const styleguidistConfig = {
   propsParser: typescriptPropsParser,
   webpackConfig: {
     resolve: {
@@ -41,3 +41,5 @@ module.exports = {
     }
   }
 }
+
+module.exports = styleguidistConfig
