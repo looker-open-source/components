@@ -1,14 +1,13 @@
 import * as React from 'react'
 import * as classNames from 'classnames'
 import * as styles from './buttons.scss'
-import { SFC } from 'react'
-import { capitalize } from '../utils/strings'
+import { capitalize } from '../../utils/strings'
 
 export interface LookerButtonHTMLAttributes extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   [key: string]: any
-  mode?: string | undefined
+  /** mode is the color style */
+  mode?: 'default' | 'ghost' | undefined
   size?: string | undefined
-  danger?: boolean
 }
 
 export {
@@ -19,7 +18,16 @@ type PropertyBag = {
   [key: string]: any
 }
 
-export const Button: SFC<LookerButtonHTMLAttributes> = ({className, size, mode, ...args}) => {
+/**
+ * Here's a basic button
+ * @param {string} className
+ * @param {string | undefined} size
+ * @param {"default" | "ghost" | undefined} mode
+ * @param {*} args
+ * @returns {any}
+ * @constructor
+ */
+export const Button = ({className, size, mode, ...args}: LookerButtonHTMLAttributes) => {
   const styleableProps: PropertyBag = {}
   if (size) styleableProps[(styles as PropertyBag)[`size${capitalize(size)}`]] = true
   if (mode) styleableProps[(styles as PropertyBag)[`mode${capitalize(mode)}`]] = true
