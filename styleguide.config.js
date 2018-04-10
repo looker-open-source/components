@@ -24,6 +24,9 @@ module.exports = {
                 importLoaders: true,
                 // localIdentName: '[name]__[local]___[hash:base64:5]'
                 localIdentName: 'lens--[local]'
+                // getLocalIdent: (context, localIdentName, localName) => {
+                //   return `lens--${localName}`
+                // }
               }
             },
             {
@@ -33,6 +36,9 @@ module.exports = {
                 importLoaders: true,
                 // localIdentName: '[name]__[local]___[hash:base64:5]'
                 localIdentName: 'lens--[local]'
+                // getLocalIdent: (context, localIdentName, localName) => {
+                //   return `lens--${localName}`
+                // }
               }
             }
           ]

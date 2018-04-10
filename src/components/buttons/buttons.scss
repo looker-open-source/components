@@ -35,12 +35,12 @@ $text-purple: #7E64E0;
   white-space: nowrap;
   vertical-align: middle;
 
-  &:hover {
+  &:hover, &.hover {
     background-color: $purple-hover-button;
     border-color: $purple-hover-button;
   }
 
-  &:active {
+  &:active, &.active {
     background-color: $purple-active-button;
     border-color: $purple-active-button;
   }
@@ -60,10 +60,6 @@ $text-purple: #7E64E0;
     @include fontSize(22px);
     line-height: pxToRem(30px);
     padding: pxToRem(8px) pxToRem(24px);
-  }
-
-  &.foo {
-    background-color: aqua;
   }
 
   &.mode-light {

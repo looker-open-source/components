@@ -18,12 +18,12 @@ Use a primary button for the most frequently used action or most important actio
     </tr>
     <tr>
       <td>
-        <Button>Primary Hover</Button>
+        <Button state="hover">Primary Hover</Button>
       </td>
     </tr>
     <tr>
       <td>
-          <Button>Primary Active</Button>
+          <Button state="active">Primary Active</Button>
       </td>
     </tr>
   </tbody>

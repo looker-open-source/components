@@ -8,6 +8,7 @@ export interface LookerButtonHTMLAttributes extends React.ButtonHTMLAttributes<H
   /** mode is the color style */
   mode?: string | undefined
   size?: string | undefined
+  state?: 'active' | 'hover' | undefined
 }
 
 export {
@@ -27,8 +28,11 @@ type PropertyBag = {
  * @returns {any}
  * @constructor
  */
-export const Button = ({className, size, mode, ...args}: LookerButtonHTMLAttributes) => {
-  const styleableProps: PropertyBag = {}
+export const Button = ({className, size, mode, state, ...args}: LookerButtonHTMLAttributes) => {
+  const styleableProps: PropertyBag = {
+    [styles.active]: state == 'active',
+    [styles.hover]: state == 'hover'
+  }
   if (size) styleableProps[(styles as PropertyBag)[`size${capitalize(size)}`]] = true
   if (mode) styleableProps[(styles as PropertyBag)[`mode${capitalize(mode)}`]] = true
   if (args.disabled) styleableProps['modeDisabled'] = true
