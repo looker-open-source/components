@@ -15,7 +15,6 @@ module.exports = (storybookBaseConfig) => {
           modules: true,
           namedExport: true,
           importLoaders: true,
-          // localIdentName: '[name]__[local]___[hash:base64:5]'
           localIdentName: 'lens--[local]'
         }
       },
@@ -24,7 +23,6 @@ module.exports = (storybookBaseConfig) => {
         options: {
           modules: true,
           importLoaders: true,
-          // localIdentName: '[name]__[local]___[hash:base64:5]'
           localIdentName: 'lens--[local]'
         }
       }
@@ -34,7 +32,9 @@ module.exports = (storybookBaseConfig) => {
   // Load Typescript and TSX parsing
   storybookBaseConfig.module.rules.push({
     test: /\.(ts|tsx)$/,
-    loader: require.resolve('ts-loader')
+    use: [
+      require.resolve('ts-loader')
+    ]
   })
 
   storybookBaseConfig.resolve.extensions.push('.ts', '.tsx', '.scss')

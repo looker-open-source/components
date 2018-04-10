@@ -6,7 +6,7 @@ import { capitalize } from '../../utils/strings'
 export interface LookerButtonHTMLAttributes extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   [key: string]: any
   /** mode is the color style */
-  mode?: 'default' | 'ghost' | undefined
+  mode?: string | undefined
   size?: string | undefined
 }
 
