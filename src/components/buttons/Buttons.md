@@ -46,26 +46,66 @@ Use a light button alongside a primary button to provide alternative actions on 
 ## Sizes
 
 ```js
-<table>
-  <tbody>
-    <tr>
-      <td><Button size="extraSmall">X-Small</Button></td>
-    </tr>
-    <tr>
-      <td>
-        <Button size="small">Small</Button>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <Button size="">Normal</Button>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <Button size="large">Large</Button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+class Inputer extends React.Component {
+  
+  constructor () {
+    super()
+    this.state = {
+      checked: false,
+      text: 'small',
+      mode: undefined
+    }
+  }
+  
+  onCheck (event) {
+    this.setState({checked: event.target.checked ? 'active': 'hover' })
+  }
+  
+  onChangeText (event) {
+    this.setState({text: event.target.value})
+  }
+  
+  onChangeMode (event) {
+    
+    
+    this.setState({
+      mode: event.target.value == '' ? undefined : event.target.value
+    })
+  }
+  
+  render () {
+    return (<div>
+    <select onChange={this.onChangeMode.bind(this)}>
+      <option value="" selected>Default</option>
+      <option value="light">Light</option>
+      <option value="ghost">Ghost</option>
+      <option value="scary">Scary</option>
+    </select>
+    <table>
+      <tbody>
+        <tr>
+          <td><Button size="extraSmall" mode={this.state.mode}>X-Small</Button></td>
+        </tr>
+        <tr>
+          <td>
+            <Button size="small" mode={this.state.mode}>{this.state.text}</Button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <Button size="" mode={this.state.mode}>Normal</Button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <Button size="large" mode={this.state.mode}>Large</Button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    </div>)
+  }
+}
+
+<Inputer />
 ```

@@ -80,7 +80,7 @@ $text-purple: #7E64E0;
 
   &.mode-ghost {
     background: $light-normal-button;
-    border: none;
+    border-color: transparent;
     color: $text-purple;
 
     &:hover {
