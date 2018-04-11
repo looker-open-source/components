@@ -2,6 +2,7 @@ const path = require('path')
 const typescriptPropsParser = require('react-docgen-typescript').withDefaultConfig().parse
 
 module.exports = {
+  assetsDir: 'static',
   pagePerSection: true,
   propsParser: typescriptPropsParser,
   sections: [
@@ -56,6 +57,24 @@ module.exports = {
           ]
         }
       ]
+    }
+  },
+  styles: {
+    Logo: {
+      logo: {
+        backgroundImage: 'url(/img/lens-logo.svg)',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: '20px',
+        backgroundPosition: 'left',
+        textIndent: '1.8rem',
+        fontFamily: '"Open Sans", sans-serif',
+        fontSize: '19px',
+        fontWeight: '600',
+        textTransform: 'uppercase',
+        letterSpacing: '1.5px',
+        color: '#3C4345',
+
+      }
     }
   }
 }
