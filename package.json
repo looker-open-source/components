@@ -9,6 +9,7 @@
     "@babel/plugin-proposal-class-properties": "7.0.0-beta.44",
     "@babel/plugin-proposal-object-rest-spread": "7.0.0-beta.44",
     "@babel/preset-env": "7.0.0-beta.44",
+    "@babel/preset-react": "7.0.0-beta.44",
     "@babel/preset-typescript": "7.0.0-beta.44",
     "@types/classnames": "2.2.3",
     "@types/jest": "22.2.2",
@@ -64,6 +65,7 @@
   },
   "scripts": {
     "start": "styleguidist server",
+    "babel-build": "tsc --emitDeclarationOnly && babel src --out-dir dist --extensions \".ts,.tsx\"",
     "build": "yarn build-components && yarn build-styleguide",
     "build-components": "tsc",
     "build-styleguide": "styleguidist build",

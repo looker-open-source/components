@@ -13,4 +13,3 @@ test('Button ghost', () => {
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
 })
-

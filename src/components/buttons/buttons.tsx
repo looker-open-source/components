@@ -6,13 +6,9 @@ import { capitalize } from '../../utils/strings'
 export interface LookerButtonHTMLAttributes extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   [key: string]: any
   /** mode is the color style */
-  mode?: string | undefined
+  mode?: "ghost" | string | undefined
   size?: string | undefined
   state?: 'active' | 'hover' | undefined
-}
-
-export {
-  styles as buttonStyles
 }
 
 type PropertyBag = {
@@ -31,7 +27,8 @@ type PropertyBag = {
 export const Button = ({className, size, mode, state, ...args}: LookerButtonHTMLAttributes) => {
   const styleableProps: PropertyBag = {
     [styles.active]: state == 'active',
-    [styles.hover]: state == 'hover'
+    [styles.hover]: state == 'hover',
+    [styles.modeGhost]: mode == 'ghost'
   }
   if (size) styleableProps[(styles as PropertyBag)[`size${capitalize(size)}`]] = true
   if (mode) styleableProps[(styles as PropertyBag)[`mode${capitalize(mode)}`]] = true
