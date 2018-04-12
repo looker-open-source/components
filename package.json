@@ -1,7 +1,7 @@
 {
   "name": "relens",
   "version": "1.0.0",
-  "main": "dist/components/index",
+  "main": "dist/index",
   "license": "MIT",
   "devDependencies": {
     "@types/classnames": "2.2.3",
@@ -47,14 +47,6 @@
     "react-intl": "2.4.0",
     "storybook-addon-intl": "2.3.0"
   },
-  "resolutions": {
-    "**/@types/react": "16.0.40"
-  },
-  "scripts": {
-    "storybook": "start-storybook -p 6006",
-    "test": "jest"
-  },
-  "types": "dist/types",
   "jest": {
     "moduleFileExtensions": [
       "js",
@@ -73,5 +65,17 @@
     "testMatch": [
       "**/?(*.)(spec|test).(ts|js)?(x)"
     ]
-  }
+  },
+  "resolutions": {
+    "**/@types/react": "16.0.40"
+  },
+  "scripts": {
+    "start": "styleguidist server",
+    "build": "yarn build-components && yarn build-styleguide",
+    "build-components": "tsc",
+    "build-styleguide": "styleguidist build",
+    "clean": "rm -r dist && rm -r styleguide",
+    "test": "jest"
+  },
+  "types": "dist"
 }
