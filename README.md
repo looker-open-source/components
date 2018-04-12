@@ -8,5 +8,5 @@ This is a holding tank for the next iteration of Lens, the Looker style and comp
 1. Run the commands below:
 1. `git clone git@github.com:looker/relens.git` 
 1. `yarn`
-1. `yarn storybook`
-1. Open http://localhost:6006 in a browser
+1. `yarn start`
+1. Open [http://localhost:6060](http://localhost:6060) in a browser
