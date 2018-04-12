@@ -9,10 +9,6 @@
     "@types/react-dom": "16.0.4",
     "@types/react-intl": "2.3.5",
     "@types/react-test-renderer": "16.0.1",
-    "@types/storybook__addon-a11y": "3.3.0",
-    "@types/storybook__addon-actions": "3.0.3",
-    "@types/storybook__addon-knobs": "3.2.3",
-    "@types/storybook__react": "3.0.7",
     "babel-core": "6.26.0",
     "babel-jest": "22.4.3",
     "babel-preset-env": "1.6.1",
@@ -35,17 +31,10 @@
     "typings-for-css-modules-loader": "1.7.0"
   },
   "dependencies": {
-    "@storybook/addon-a11y": "3.4.0",
-    "@storybook/addon-actions": "3.3.15",
-    "@storybook/addon-knobs": "3.3.15",
-    "@storybook/addon-storyshots": "3.4.0",
-    "@storybook/addons": "^3.3.0",
-    "@storybook/react": "3.3.15",
     "classnames": "2.2.5",
     "react": "16.2.0",
     "react-dom": "16.2.0",
-    "react-intl": "2.4.0",
-    "storybook-addon-intl": "2.3.0"
+    "webpack": "3"
   },
   "jest": {
     "moduleFileExtensions": [
