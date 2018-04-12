@@ -2,7 +2,6 @@
   "compilerOptions": {
     "baseUrl": "src",
     "declaration": true,
-    "declarationDir": "dist/types",
     "jsx": "react",
     "module": "commonjs",
     "noFallthroughCasesInSwitch": true,
@@ -10,7 +9,7 @@
     "noImplicitReturns": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "outDir": "dist/components",
+    "outDir": "dist",
     "paths": {
       "*": ["*"]
     },
@@ -26,7 +25,6 @@
     "target": "es6"
   },
   "include": [
-    "./src/**/*",
-    "./stories/**/*"
+    "./src/**/*"
   ]
 }

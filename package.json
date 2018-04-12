@@ -1,7 +1,7 @@
 {
   "name": "relens",
   "version": "1.0.0",
-  "main": "dist/components/index",
+  "main": "dist/index",
   "license": "MIT",
   "devDependencies": {
     "@types/classnames": "2.2.3",
@@ -23,6 +23,8 @@
     "jest": "22.4.3",
     "node-sass": "4.7.2",
     "prop-types": "15.6.1",
+    "react-docgen-typescript": "1.2.6",
+    "react-styleguidist": "7.0.5",
     "react-test-renderer": "16.3.1",
     "regenerator-runtime": "0.11.1",
     "request": "2.85.0",
@@ -30,8 +32,7 @@
     "ts-jest": "22.4.2",
     "ts-loader": "3.5.0",
     "typescript": "2.7.2",
-    "typings-for-css-modules-loader": "1.7.0",
-    "webpack": "4.5.0"
+    "typings-for-css-modules-loader": "1.7.0"
   },
   "dependencies": {
     "@storybook/addon-a11y": "3.4.0",
@@ -46,14 +47,6 @@
     "react-intl": "2.4.0",
     "storybook-addon-intl": "2.3.0"
   },
-  "resolutions": {
-    "**/@types/react": "16.0.40"
-  },
-  "scripts": {
-    "storybook": "start-storybook -p 6006",
-    "test": "jest"
-  },
-  "types": "dist/types",
   "jest": {
     "moduleFileExtensions": [
       "js",
@@ -72,5 +65,17 @@
     "testMatch": [
       "**/?(*.)(spec|test).(ts|js)?(x)"
     ]
-  }
+  },
+  "resolutions": {
+    "**/@types/react": "16.0.40"
+  },
+  "scripts": {
+    "start": "styleguidist server",
+    "build": "yarn build-components && yarn build-styleguide",
+    "build-components": "tsc",
+    "build-styleguide": "styleguidist build",
+    "clean": "rm -r dist && rm -r styleguide",
+    "test": "jest"
+  },
+  "types": "dist"
 }

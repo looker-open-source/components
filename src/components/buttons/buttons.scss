@@ -35,12 +35,12 @@ $text-purple: #7E64E0;
   white-space: nowrap;
   vertical-align: middle;
 
-  &:hover {
+  &:hover, &.hover {
     background-color: $purple-hover-button;
     border-color: $purple-hover-button;
   }
 
-  &:active {
+  &:active, &.active {
     background-color: $purple-active-button;
     border-color: $purple-active-button;
   }
@@ -62,10 +62,6 @@ $text-purple: #7E64E0;
     padding: pxToRem(8px) pxToRem(24px);
   }
 
-  &.foo {
-    background-color: aqua;
-  }
-
   &.mode-light {
     background: $light-normal-button;
     color: $text-purple;
@@ -84,7 +80,7 @@ $text-purple: #7E64E0;
 
   &.mode-ghost {
     background: $light-normal-button;
-    border: none;
+    border-color: transparent;
     color: $text-purple;
 
     &:hover {
