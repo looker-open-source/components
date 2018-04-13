@@ -12,7 +12,6 @@
     "@babel/preset-env": "7.0.0-beta.44",
     "@babel/preset-react": "7.0.0-beta.44",
     "@babel/preset-typescript": "7.0.0-beta.44",
-    "@types/classnames": "2.2.3",
     "@types/jest": "22.2.2",
     "@types/react-dom": "16.0.4",
     "@types/react-intl": "2.3.5",
@@ -37,7 +36,10 @@
     "typings-for-css-modules-loader": "1.7.0"
   },
   "dependencies": {
+    "@babel/runtime": "7.0.0-beta.44",
+    "@types/classnames": "2.2.3",
     "classnames": "2.2.5",
+    "insert-css": "2.0.0",
     "react": "16.2.0",
     "react-dom": "16.2.0",
     "webpack": "3"

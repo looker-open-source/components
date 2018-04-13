@@ -1,40 +1,39 @@
 import * as React from 'react'
-import * as classNames from 'classnames'
+import classNames from 'classnames'
 import * as styles from './buttons.scss'
-import { capitalize } from '../../utils/strings'
+import { insertCss } from 'insert-css'
 
 export interface LookerButtonHTMLAttributes extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   [key: string]: any
-  /** mode is the color style */
-  mode?: "ghost" | string | undefined
-  size?: string | undefined
-  state?: 'active' | 'hover' | undefined
+  mode?: 'light' | 'ghost' | 'scary' | undefined
+  size?: 'xsmall' | 'small' | 'large' | undefined
+  state?: 'active' | 'hover' | undefined,
+  disabled?: boolean
 }
 
 type PropertyBag = {
   [key: string]: any
 }
 
+insertCss(styles.code)
+
 /**
  * Buttons communicate what action will occur on a page when the user interacts with them. All buttons use sentence-casing (only capitalize the first letter of the first word). Copy used within a button should be unambiguous and concise, making it clear to the user what action will occur once the button is clicked.
- * @param {string} className
- * @param {string | undefined} size
- * @param {"default" | "ghost" | undefined} mode
- * @param {*} args
- * @returns {any}
- * @constructor
  */
-export const Button = ({className, size, mode, state, ...args}: LookerButtonHTMLAttributes) => {
+export const Button = ({className, size, mode, state, disabled, ...args}: LookerButtonHTMLAttributes) => {
   const styleableProps: PropertyBag = {
-    [styles.active]: state == 'active',
-    [styles.hover]: state == 'hover',
-    [styles.modeGhost]: mode == 'ghost'
+    [styles.classNames.active]: state == 'active',
+    [styles.classNames.hover]: state == 'hover',
+    [styles.classNames.modeScary]: mode == 'scary',
+    [styles.classNames.modeGhost]: mode == 'ghost',
+    [styles.classNames.modeLight]: mode == 'light',
+    [styles.classNames.sizeExtraSmall]: size == 'xsmall',
+    [styles.classNames.sizeSmall]: size == 'small',
+    [styles.classNames.sizeLarge]: size == 'large',
+    [styles.classNames.modeDisabled]: !!disabled
   }
-  if (size) styleableProps[(styles as PropertyBag)[`size${capitalize(size)}`]] = true
-  if (mode) styleableProps[(styles as PropertyBag)[`mode${capitalize(mode)}`]] = true
-  if (args.disabled) styleableProps['modeDisabled'] = true
 
   return (
-    <button className={classNames(styles.button, className, styleableProps)} {...args}>{args.children}</button>
+    <button className={classNames(styles.classNames.button, className, styleableProps)} {...args}>{args.children}</button>
   )
 }

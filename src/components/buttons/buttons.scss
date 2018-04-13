@@ -45,24 +45,24 @@ $text-purple: #7E64E0;
     border-color: $purple-active-button;
   }
 
-  &.size-extra-small {
+  &.sizeExtraSmall {
     @include fontSize(12px);
     line-height: pxToRem(20px);
     padding: pxToRem(2px) pxToRem(8px);
   }
 
-  &.size-small {
+  &.sizeSmall {
     @include fontSize(14px);
     padding: pxToRem(3px) pxToRem(14px);
   }
 
-  &.size-large {
+  &.sizeLarge {
     @include fontSize(22px);
     line-height: pxToRem(30px);
     padding: pxToRem(8px) pxToRem(24px);
   }
 
-  &.mode-light {
+  &.modeLight {
     background: $light-normal-button;
     color: $text-purple;
     border-color: $light-normal-button-border;
@@ -78,7 +78,7 @@ $text-purple: #7E64E0;
     }
   }
 
-  &.mode-ghost {
+  &.modeGhost {
     background: $light-normal-button;
     border-color: transparent;
     color: $text-purple;
@@ -92,7 +92,7 @@ $text-purple: #7E64E0;
     }
   }
 
-  &.mode-scary {
+  &.modeScary {
     background: $scary-normal-button;
     border-color: $scary-normal-button;
 
@@ -107,7 +107,7 @@ $text-purple: #7E64E0;
     }
   }
 
-  &.mode-disabled {
+  &.modeDisabled {
     background: $disabled-grey-button;
     border-color: $disabled-grey-button;
     color: #A4A6A9;
