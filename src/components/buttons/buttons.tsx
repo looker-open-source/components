@@ -3,10 +3,9 @@ import classNames from 'classnames'
 import * as styles from './buttons.scss'
 
 export interface LookerButtonHTMLAttributes extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  [key: string]: any
   mode?: 'light' | 'ghost' | 'scary' | undefined
   size?: 'xsmall' | 'small' | 'large' | undefined
-  state?: 'active' | 'hover' | undefined,
+  state?: 'active' | 'hover' | undefined
   disabled?: boolean
 }
 

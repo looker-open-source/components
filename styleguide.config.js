@@ -22,7 +22,10 @@ module.exports = {
     },
     module: {
       rules: [
-        {test: /\.(ts|tsx)$/, loader: require.resolve('ts-loader')},
+        {
+          test: /\.(ts|tsx)$/,
+          loader: require.resolve('ts-loader')
+        },
         {
           test: /.scss$/,
           include: path.resolve(__dirname, '../'),
@@ -35,11 +38,7 @@ module.exports = {
                 modules: true,
                 namedExport: true,
                 importLoaders: true,
-                // localIdentName: '[name]__[local]___[hash:base64:5]'
-                localIdentName: 'lens--[local]'
-                // getLocalIdent: (context, localIdentName, localName) => {
-                //   return `lens--${localName}`
-                // }
+                localIdentName: '[name]__[local]___[hash:base64:5]'
               }
             },
             {
@@ -47,11 +46,7 @@ module.exports = {
               options: {
                 modules: true,
                 importLoaders: true,
-                // localIdentName: '[name]__[local]___[hash:base64:5]'
-                localIdentName: 'lens--[local]'
-                // getLocalIdent: (context, localIdentName, localName) => {
-                //   return `lens--${localName}`
-                // }
+                localIdentName: '[name]__[local]___[hash:base64:5]'
               }
             }
           ]
