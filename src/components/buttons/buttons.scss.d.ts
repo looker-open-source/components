@@ -1,18 +1,10 @@
-
-export interface IClassNames {
-  button: string;
-  hover: string;
-  active: string;
-  sizeExtraSmall: string;
-  sizeSmall: string;
-  sizeLarge: string;
-  modeLight: string;
-  modeGhost: string;
-  modeScary: string;
-  modeDisabled: string;
-}
-
-
-
-export const code: string
-export const classNames: IClassNames
+export const button: string;
+export const hover: string;
+export const active: string;
+export const sizeExtraSmall: string;
+export const sizeSmall: string;
+export const sizeLarge: string;
+export const modeLight: string;
+export const modeGhost: string;
+export const modeScary: string;
+export const modeDisabled: string;

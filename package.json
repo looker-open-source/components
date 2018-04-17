@@ -22,7 +22,7 @@
     "css-loader": "0.28.11",
     "identity-obj-proxy": "3.0.0",
     "jest": "22.4.3",
-    "node-sass": "4.7.2",
+    "node-sass": "4.8.3",
     "prop-types": "15.6.1",
     "react-docgen-typescript": "1.2.6",
     "react-styleguidist": "7.0.5",
