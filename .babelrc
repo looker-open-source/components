@@ -18,10 +18,6 @@
     "@babel/proposal-class-properties",
     "@babel/proposal-object-rest-spread",
     "@babel/plugin-transform-runtime",
-//    "../babel-plugin-transform-inline-localize-css-import"
-//    ["../babel-plugin-looker-inline-sass", {
-//      "code": "foobar"
-//    }],
-    "../babel-plugin-looker-inline-sass"
+    "babel-plugin-looker-inline-sass"
   ]
 }

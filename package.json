@@ -17,6 +17,7 @@
     "@types/react-intl": "2.3.5",
     "@types/react-test-renderer": "16.0.1",
     "babel-jest": "22.4.3",
+    "babel-plugin-looker-inline-sass": "1.0.1",
     "babel-preset-env": "1.6.1",
     "babel-preset-react": "6.24.1",
     "css-loader": "0.28.11",
@@ -29,11 +30,13 @@
     "react-test-renderer": "16.3.1",
     "regenerator-runtime": "0.11.1",
     "request": "2.85.0",
+    "rimraf": "2.6.2",
     "sass-loader": "6.0.7",
     "ts-jest": "22.4.2",
     "ts-loader": "3.5.0",
     "typescript": "2.7.2",
-    "typings-for-css-modules-loader": "1.7.0"
+    "typings-for-css-modules-loader": "1.7.0",
+    "webpack": "3.5.0"
   },
   "dependencies": {
     "@babel/runtime": "7.0.0-beta.44",
@@ -41,9 +44,11 @@
     "classnames": "2.2.5",
     "insert-css": "2.0.0",
     "react": "16.2.0",
-    "react-dom": "16.2.0",
-    "webpack": "3"
+    "react-dom": "16.2.0"
   },
+  "files": [
+    "dist"
+  ],
   "jest": {
     "moduleFileExtensions": [
       "js",
@@ -66,13 +71,17 @@
   "resolutions": {
     "**/@types/react": "16.0.40"
   },
+  "publishConfig": {
+    "registry": "https://nexusrepo.looker.com/repository/looker-npm-private/"
+  },
   "scripts": {
     "start": "styleguidist server",
-    "babel-build": "tsc --emitDeclarationOnly && babel src --out-dir dist --extensions \".ts,.tsx\"",
     "build": "yarn build-components && yarn build-styleguide",
-    "build-components": "tsc",
+    "build-components": "tsc --emitDeclarationOnly && babel src --out-dir dist --extensions \".ts,.tsx\"",
     "build-styleguide": "styleguidist build",
-    "clean": "rm -r dist && rm -r styleguide",
+    "clean": "rimraf dist && rimraf styleguide",
+    "prepublishOnly": "yarn clean && yarn build-components",
+    "release": "npm run publish",
     "test": "jest"
   },
   "types": "dist"
