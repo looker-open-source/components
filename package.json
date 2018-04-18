@@ -81,7 +81,7 @@
     "build-styleguide": "styleguidist build",
     "clean": "rimraf dist && rimraf styleguide",
     "prepublishOnly": "yarn clean && yarn build-components",
-    "release": "npm run publish",
+    "release": "npm publish",
     "test": "jest"
   },
   "types": "dist"
