@@ -4,49 +4,51 @@
   "main": "dist/index",
   "license": "MIT",
   "devDependencies": {
-    "@types/classnames": "2.2.3",
+    "@babel/cli": "7.0.0-beta.44",
+    "@babel/core": "7.0.0-beta.44",
+    "@babel/plugin-proposal-class-properties": "7.0.0-beta.44",
+    "@babel/plugin-proposal-object-rest-spread": "7.0.0-beta.44",
+    "@babel/plugin-transform-runtime": "7.0.0-beta.44",
+    "@babel/preset-env": "7.0.0-beta.44",
+    "@babel/preset-react": "7.0.0-beta.44",
+    "@babel/preset-typescript": "7.0.0-beta.44",
     "@types/jest": "22.2.2",
     "@types/react-dom": "16.0.4",
     "@types/react-intl": "2.3.5",
     "@types/react-test-renderer": "16.0.1",
-    "@types/storybook__addon-a11y": "3.3.0",
-    "@types/storybook__addon-actions": "3.0.3",
-    "@types/storybook__addon-knobs": "3.2.3",
-    "@types/storybook__react": "3.0.7",
-    "babel-core": "6.26.0",
     "babel-jest": "22.4.3",
+    "babel-plugin-looker-inline-sass": "1.0.1",
     "babel-preset-env": "1.6.1",
     "babel-preset-react": "6.24.1",
-    "babel-runtime": "6.26.0",
     "css-loader": "0.28.11",
     "identity-obj-proxy": "3.0.0",
     "jest": "22.4.3",
-    "node-sass": "4.7.2",
+    "node-sass": "4.8.3",
     "prop-types": "15.6.1",
     "react-docgen-typescript": "1.2.6",
     "react-styleguidist": "7.0.5",
     "react-test-renderer": "16.3.1",
     "regenerator-runtime": "0.11.1",
     "request": "2.85.0",
+    "rimraf": "2.6.2",
     "sass-loader": "6.0.7",
     "ts-jest": "22.4.2",
     "ts-loader": "3.5.0",
     "typescript": "2.7.2",
-    "typings-for-css-modules-loader": "1.7.0"
+    "typings-for-css-modules-loader": "1.7.0",
+    "webpack": "3.5.0"
   },
   "dependencies": {
-    "@storybook/addon-a11y": "3.4.0",
-    "@storybook/addon-actions": "3.3.15",
-    "@storybook/addon-knobs": "3.3.15",
-    "@storybook/addon-storyshots": "3.4.0",
-    "@storybook/addons": "^3.3.0",
-    "@storybook/react": "3.3.15",
+    "@babel/runtime": "7.0.0-beta.44",
+    "@types/classnames": "2.2.3",
     "classnames": "2.2.5",
+    "insert-css": "2.0.0",
     "react": "16.2.0",
-    "react-dom": "16.2.0",
-    "react-intl": "2.4.0",
-    "storybook-addon-intl": "2.3.0"
+    "react-dom": "16.2.0"
   },
+  "files": [
+    "dist"
+  ],
   "jest": {
     "moduleFileExtensions": [
       "js",
@@ -69,12 +71,17 @@
   "resolutions": {
     "**/@types/react": "16.0.40"
   },
+  "publishConfig": {
+    "registry": "https://nexusrepo.looker.com/repository/looker-npm-private/"
+  },
   "scripts": {
     "start": "styleguidist server",
     "build": "yarn build-components && yarn build-styleguide",
-    "build-components": "tsc",
+    "build-components": "tsc --emitDeclarationOnly && babel src --out-dir dist --extensions \".ts,.tsx\"",
     "build-styleguide": "styleguidist build",
-    "clean": "rm -r dist && rm -r styleguide",
+    "clean": "rimraf dist && rimraf styleguide",
+    "prepublishOnly": "yarn clean && yarn build-components",
+    "release": "npm publish",
     "test": "jest"
   },
   "types": "dist"
