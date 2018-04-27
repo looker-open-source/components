@@ -1187,9 +1187,9 @@ babel-plugin-jest-hoist@^22.4.3:
   version "22.4.3"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/babel-plugin-jest-hoist/-/babel-plugin-jest-hoist-22.4.3.tgz#7d8bcccadc2667f96a0dcc6afe1891875ee6c14a"
 
-babel-plugin-looker-inline-sass@1.0.1:
-  version "1.0.1"
-  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/babel-plugin-looker-inline-sass/-/babel-plugin-looker-inline-sass-1.0.1.tgz#e169b981c5a3275755dba392231b2b0040969738"
+babel-plugin-looker-inline-sass@1.0.4:
+  version "1.0.4"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/babel-plugin-looker-inline-sass/-/babel-plugin-looker-inline-sass-1.0.4.tgz#c4dc7806432e00ddc6aa434ee33343f9b62c7c09"
   dependencies:
     clean-css "4.1.11"
     insert-css "2.0.0"
