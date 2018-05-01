@@ -54,6 +54,11 @@ module.exports = {
       ]
     }
   },
+  theme: {
+    fontFamily: {
+      base: '"Open Sans", sans-serif'
+    }
+  },
   styles: {
     Logo: {
       logo: {

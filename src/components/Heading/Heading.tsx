@@ -6,6 +6,7 @@ export interface HeadingProps {
   level?: '1' | '2' | '3' | '4' | '5' | '6' | undefined,
   size?:  'd1' | 'd2' | 'd3' | '1'| '2' | '3' | '4' | '5' | '6' | undefined,
   weight?: 'light' | 'normal' | 'semi-bold' | 'bold' | 'extra-bold' | undefined,
+  transform: 'upper' | 'caps' | 'lower' | 'none' | undefined,
   className: undefined
 }
 
@@ -14,10 +15,10 @@ type PropertyBag = {
 }
 
 /**
-Headings are used as the titles of each major section of a page in the interface..
+Headings are used as the titles of each major section of a page in the interface.
 */
 
-export const Heading: React.SFC<HeadingProps> = ({className, level, size, weight,...args}) => {
+export const Heading: React.SFC<HeadingProps> = ({className, level, size, weight, transform, ...args}) => {
   const Tag = level? `h${level}` : 'h3'
 
   const styleableProps: PropertyBag = {
@@ -35,7 +36,12 @@ export const Heading: React.SFC<HeadingProps> = ({className, level, size, weight
     [styles.fontWeightNormal]: weight == 'normal',
     [styles.fontWeightSemiBold]: weight == 'semi-bold',
     [styles.fontWeightBold]: weight == 'bold',
-    [styles.fontWeightExtraBold]: weight == 'extra-bold'
+    [styles.fontWeightExtraBold]: weight == 'extra-bold',
+
+    [styles.transformUpper]: transform == 'upper',
+    [styles.transformCaps]: transform == 'caps',
+    [styles.transformLower]: transform == 'lower',
+    [styles.transformNone]: transform == 'none',
   }
 
   return (

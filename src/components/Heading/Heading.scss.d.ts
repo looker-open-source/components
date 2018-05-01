@@ -13,3 +13,7 @@ export const fontWeightNormal: string;
 export const fontWeightSemiBold: string;
 export const fontWeightBold: string;
 export const fontWeightExtraBold: string;
+export const transformUpper: string;
+export const transformLower: string;
+export const transformCaps: string;
+export const transformNone: string;

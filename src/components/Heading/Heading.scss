@@ -4,6 +4,8 @@
 .lens-heading {
   margin: 0;
   text-rendering: optimizeLegibility;
+  font-family: $brand-font;
+  font-weight: $default-font-weight;
 }
 
 .is-display-1 {
@@ -70,3 +72,20 @@ h6, .is-heading-6 {
 .font-weight-extra-bold {
   font-weight: 600;
 }
+
+.transform-upper {
+  text-transform: uppercase;
+}
+
+.transform-lower {
+  text-transform: lowercase;
+}
+
+.transform-caps {
+  text-transform: capitalize;
+}
+
+.transform-none {
+  text-transform: none;
+}
+
