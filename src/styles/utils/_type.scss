@@ -1,0 +1,14 @@
+// Returns a value from the $test-size list
+@function font-size($key) {
+  @return map-lookup($text-size, $key, '$text-size');
+ }
+
+ // Returns a value from the $line-height list
+ @function line-height($key) {
+   @return map-lookup($line-height, $key, '$line-height');
+ }
+
+ @mixin fontSize($size) {
+  font-size: $size;
+  font-size: pxToRem($size);
+}
