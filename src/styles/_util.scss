@@ -14,7 +14,7 @@
 //// @returns {Number} The pixel value converted in rems (1rem)
 
 @function pxToRem($sizeInPx) {
-  $sizeInRem: $sizeInPx / $base-font-size;
+  $sizeInRem: $sizeInPx / 16px;
   @return $sizeInRem * 1rem;
 }
 
