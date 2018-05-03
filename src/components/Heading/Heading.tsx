@@ -9,7 +9,7 @@ export interface HeadingProps {
   size?:  'd1' | 'd2' | 'd3' | '1'| '2' | '3' | '4' | '5' | '6' | undefined,
   weight?: 'light' | 'normal' | 'semi-bold' | 'bold' | 'extra-bold' | undefined,
   transform?: 'upper' | 'caps' | 'lower' | 'none' | undefined,
-  className: undefined
+  className?: undefined
 }
 
 type PropertyBag = {
@@ -47,9 +47,8 @@ export const Heading: React.SFC<HeadingProps> = ({className, level, size, weight
   }
 
   return (
-    <Tag className={classNames(styles.lensHeading, className, styleableProps)}>
+    <Tag className={classNames(styles.lensHeading, className, styleableProps)} {...args}>
       {args.children}
     </Tag>
   )
 }
-

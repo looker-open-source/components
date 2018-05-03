@@ -12,5 +12,20 @@
   @return $sizeInRem * 1rem;
 }
 
+@function color($color, $value: 500) {
+  $colorlist: map-get($colors, $color);
+  @return map-get($colorlist, $value);
+}
+
+@mixin var($property, $varName) {
+  #{$property}: map-get($vars, $varName);
+  #{$property}: var(--#{$varName}, map-get($vars, $varName));
+}
+
+// Returns a value from the $spacing list
+@function spacing($key) {
+  @return map-lookup($spacing, $key, '$spacing');
+}
+
 @import "utils/type";
 @import "utils/layout";

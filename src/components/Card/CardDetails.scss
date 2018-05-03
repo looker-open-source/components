@@ -1,0 +1,31 @@
+@import '../../styles/variables';
+
+.heading {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: color('gray', 600);
+}
+
+.subtitle {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: color('gray', 500);
+}
+
+.body {
+  font-size: font-size(6);
+  line-height: line-height(6);
+  color: color('gray', 500);
+}
+
+.metadata {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: font-size(6);
+  line-height: line-height(6);
+  color: color('gray', 400);
+}
+
