@@ -2,7 +2,7 @@
 
 exports[`Button ghost 1`] = `
 <button
-  className="button modeGhost"
+  className=""
 >
   🥑
 </button>
@@ -10,7 +10,7 @@ exports[`Button ghost 1`] = `
 
 exports[`Button states 1`] = `
 <button
-  className="button"
+  className=""
 >
   🥑
 </button>

@@ -42,7 +42,6 @@
     </CardDetails>
   </CardContent>
 </Card>
-
 </CardGroup>
 
 ```

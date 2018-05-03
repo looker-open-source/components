@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`A Card 1`] = `
+<div
+  className=""
+>
+  🥑
+</div>
+`;
+
+exports[`A raised Card 1`] = `
+<div
+  className=""
+  raised={true}
+>
+  🥑
+</div>
+`;
+
+exports[`A raised Card with a CardContent and CardDetails block 1`] = `
+<div
+  className=""
+  raised={true}
+>
+  <div
+    className=""
+  >
+     
+    <div
+      className=""
+      subtitle="A subtitle"
+    >
+      <div
+        className={undefined}
+      >
+        <h2
+          className=""
+        >
+          Card Details Title
+        </h2>
+      </div>
+      <div>
+        <h3
+          className=""
+        >
+          A subtitle
+        </h3>
+      </div>
+    </div>
+     
+  </div>
+</div>
+`;
+
+exports[`A raised Card with a CardMedia block 1`] = `
+<div
+  className=""
+  raised={true}
+>
+  <div
+    className=""
+    style={
+      Object {
+        "backgroundImage": "url(http://placekitten.com/200/300)",
+      }
+    }
+  >
+     
+  </div>
+</div>
+`;

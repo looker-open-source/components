@@ -26,18 +26,8 @@ export const CardDetails: React.SFC<CardDetailsProps> = ({className, title, ...a
   }
 
   const subtitle = args.subtitle?
-    <div className={styles.subtitle}>
+    <div>
       <Heading level="3" size="6" weight="semi-bold">{args.subtitle}</Heading>
-    </div>
-    : ''
-  const body = args.body?
-    <div className={styles.body}>
-      <Text>{args.body}</Text>
-    </div>
-    : ''
-  const metaData = args.metaData?
-    <div className={styles.metadata}>
-      <Text element="span">{args.metaData}</Text>
     </div>
     : ''
 
@@ -47,8 +37,6 @@ export const CardDetails: React.SFC<CardDetailsProps> = ({className, title, ...a
       <Heading level="2" size="4" weight="semi-bold">{title}</Heading>
       </div>
       {subtitle}
-      {body}
-      {metaData}
       {args.children}
     </div>
   )
