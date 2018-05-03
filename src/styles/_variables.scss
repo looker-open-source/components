@@ -1,3 +1,5 @@
+
+
 $colors: (
   "gray": (
     100: #F6F6F7,
@@ -25,10 +27,10 @@ $colors: (
 $text-size: (
   6:    pxToRem(12px),
   5:    pxToRem(14px),
-  4:  pxToRem(16px),
+  4:    pxToRem(16px),
   3:    pxToRem(19px),
   2:    pxToRem(22px),
-  1:   pxToRem(28px),
+  1:    pxToRem(28px),
   d3:   pxToRem(38px),
   d2:   pxToRem(52px),
   d1:   pxToRem(62px)
@@ -37,15 +39,16 @@ $text-size: (
 $line-height: (
   6:    pxToRem(20px),
   5:    pxToRem(24px),
-  4:  pxToRem(24px),
+  4:    pxToRem(24px),
   3:    pxToRem(27px),
   2:    pxToRem(30px),
-  1:   pxToRem(36px),
+  1:    pxToRem(36px),
   d3:   pxToRem(46px),
   d2:   pxToRem(60px),
   d1:   pxToRem(72px)
 );
 
+$base-font-size: 16px;
 $brand-font: 'Open Sans', Helvetica, Arial, sans-serif;
 $code-font: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;
 $light: 300;

@@ -1,3 +1,6 @@
+//// Returns a value for a provided key from a Sass map
+//// Will raise an error is the key provided does not exist in the map
+
 @function map-lookup($map, $key, $map-name: '') {
   @if map-has-key($map, $key) {
     @return map-get($map, $key);
@@ -6,23 +9,38 @@
   @error '`#{$key}` is not a valid key for the list #{$map-name}';
 }
 
+//// Convert a pixel value to a rem value
+//// @param {Number} $sizeInPx - The pixel value to be converted (16px)
+//// @returns {Number} The pixel value converted in rems (1rem)
 
 @function pxToRem($sizeInPx) {
-  $sizeInRem: $sizeInPx / 16px;
+  $sizeInRem: $sizeInPx / $base-font-size;
   @return $sizeInRem * 1rem;
 }
+
+//// Returns a color value for a given name and an optional tint/shade
+//// @param {String} $color - The name of the color
+//// @param {Number} $value - The tint or shade, defaults to 500
+//// @returns {Color} - A hex value of the requested color
 
 @function color($color, $value: 500) {
   $colorlist: map-get($colors, $color);
   @return map-get($colorlist, $value);
 }
 
+//// Returns two delcrations one with a CSS Custom Property, a.k.a Variable, and a fallback value for a provided property and variable name
+//// @param {String} $property - The property to apply the variable too (e.g. background-color, font-family)
+//// @param {String} $varName -  The key name of the variable stored in the $vars map
+//// @returns {Declarations} - A declaration with a CSS custom property and a fallback with the variables value
 @mixin var($property, $varName) {
   #{$property}: map-get($vars, $varName);
   #{$property}: var(--#{$varName}, map-get($vars, $varName));
 }
 
-// Returns a value from the $spacing list
+//// Returns a rem value from the $spacing map
+//// @param {String} $key - The spacing variant
+//// @return {Numger} a rem value for the spacing variant
+
 @function spacing($key) {
   @return map-lookup($spacing, $key, '$spacing');
 }
