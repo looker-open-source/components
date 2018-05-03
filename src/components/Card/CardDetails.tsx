@@ -1,7 +1,6 @@
 import * as React from 'react'
 import classNames from 'classnames'
 import { Heading } from '../Heading/Heading'
-import { Text } from '../Text/Text'
 import * as styles from './CardDetails.scss'
 
 export interface CardDetailsProps {
@@ -16,8 +15,6 @@ export interface CardDetailsProps {
 type PropertyBag = {
   [key: string]: any
 }
-
-
 
 export const CardDetails: React.SFC<CardDetailsProps> = ({className, title, ...args}) => {
 
