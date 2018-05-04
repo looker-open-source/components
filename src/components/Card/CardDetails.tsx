@@ -6,8 +6,6 @@ import * as styles from './CardDetails.scss'
 export interface CardDetailsProps {
   title?: string,
   subtitle?: string,
-  body?: string,
-  metaData?: string,
   className?: undefined
 }
 
@@ -24,14 +22,14 @@ export const CardDetails: React.SFC<CardDetailsProps> = ({className, title, ...a
 
   const subtitle = args.subtitle?
     <div>
-      <Heading level="3" size="6" weight="semi-bold">{args.subtitle}</Heading>
+      <Heading level="3" size="6" weight="semi-bold" truncate>{args.subtitle}</Heading>
     </div>
     : ''
 
   return (
     <div className={classNames(className, styleableProps,)} {...args} >
       <div className={styles.heading}>
-      <Heading level="2" size="4" weight="semi-bold">{title}</Heading>
+      <Heading level="2" size="4" weight="semi-bold" truncate>{title}</Heading>
       </div>
       {subtitle}
       {args.children}
@@ -46,9 +44,7 @@ export interface CardDetailsMetaDataProps {
 
 export const CardDetailsMetaData: React.SFC<CardDetailsMetaDataProps> = ({className, ...args}) => {
   return(
-    <div className={classNames(className)} {...args}>
-
-    </div>
+    <div className={classNames(className)} {...args}></div>
   )
 }
 

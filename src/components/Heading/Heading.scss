@@ -89,3 +89,13 @@ h6, .is-heading-6 {
   text-transform: none;
 }
 
+.is-truncated {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.test-class {
+  width: 500px;
+  background: red;
+}

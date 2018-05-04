@@ -5,6 +5,7 @@ module.exports = {
   assetsDir: 'static',
   pagePerSection: true,
   propsParser: typescriptPropsParser,
+  showCode: true,
   sections: [
     {
       name: 'Lens',
@@ -55,7 +56,7 @@ module.exports = {
     }
   },
   theme: {
-    fontFamily: {
+      fontFamily: {
       base: '"Open Sans", sans-serif'
     }
   },
@@ -75,6 +76,34 @@ module.exports = {
         color: '#3C4345',
 
       }
+    },
+    Code: {
+      code: {
+        color: '#4C33AA',
+        padding: '2px 4px',
+        borderRadius: '4px',
+        background: '#F6F6F7  '
+      }
+    },
+    Playground: {
+        preview: {
+          backgroundColor: '#F2F2F9',
+          border: 'none',
+          borderRadius: '6px'
+      }
+    },
+    Para: {
+      para: {
+        maxWidth: '750px'
+      }
+    },
+    StyleGuide: {
+      '@global body': {
+        fontFamily: '"Open Sans", sans-serif'
+      },
     }
+  },
+  editorConfig: {
+    theme: 'oceanic-next'
   }
 }

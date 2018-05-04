@@ -111,3 +111,7 @@ p {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.is-code {
+  font-family: $code-font;
+}

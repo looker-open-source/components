@@ -3,13 +3,17 @@ import classNames from 'classnames'
 import * as styles from './Heading.scss'
 
 export interface HeadingProps {
-  // Semantic mapping for h1-h6
+  /** Headling tag level mapping for h1-h6 */
   level?: '1' | '2' | '3' | '4' | '5' | '6' | undefined,
-  // Size is mapped from type ramp in https://www.figma.com/file/E7RbrrXwL1ZdL5Nyq4j8s2Oh/Typography?node-id=55%3A7
+  /** Size mapping from type ramp */
   size?:  'd1' | 'd2' | 'd3' | '1'| '2' | '3' | '4' | '5' | '6' | undefined,
+  /** Font weight */
   weight?: 'light' | 'normal' | 'semi-bold' | 'bold' | 'extra-bold' | undefined,
+  /** Text tranform  */
   transform?: 'upper' | 'caps' | 'lower' | 'none' | undefined,
-  className?: undefined
+  className?: string
+  /** Truncate text on overflow */
+  truncate?: boolean
 }
 
 type PropertyBag = {
@@ -17,7 +21,7 @@ type PropertyBag = {
 }
 
 /**
-Headings are used as the titles of each major section of a page in the interface.
+Headings are used to help users understand  what a marjor section of an interface is about, for example the labeling of a page or a title of a card component.
 */
 
 export const Heading: React.SFC<HeadingProps> = ({className, level, size, weight, transform, ...args}) => {
@@ -44,6 +48,10 @@ export const Heading: React.SFC<HeadingProps> = ({className, level, size, weight
     [styles.transformCaps]: transform == 'caps',
     [styles.transformLower]: transform == 'lower',
     [styles.transformNone]: transform == 'none',
+
+    [styles.isTruncated]: !!args.truncate
+
+
   }
 
   return (

@@ -4,9 +4,13 @@ import * as styles from './Text.scss'
 
 export interface TextProps {
   // Semantic mapping for a text elements
-  element?: 'p' | 'span' | 'sub' | 'sup' | 'small' | 'abbr' | 'cite' | undefined,
+  element?: 'p' | 'span' | 'code' | undefined,
   // Size is mapped from type ramp in https://www.figma.com/file/E7RbrrXwL1ZdL5Nyq4j8s2Oh/Typography?node-id=55%3A7
   size?:  'd1' | 'd2' | 'd3' | '1'| '2' | '3' | '4' | '5' | '6' | undefined,
+  /*
+  * @ignore
+  */
+  heading?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | undefined,
   mode?:  'secondary' | 'subdued' | 'positive' | 'critical' | undefined,
   weight?: 'light' | 'normal' | 'semi-bold' | 'bold' | 'extra-bold' | undefined,
   transform?: 'upper' | 'caps' | 'lower' | 'none' | undefined,
@@ -51,6 +55,8 @@ export const Text: React.SFC<TextProps> = ({className, ...args}) => {
     [styles.isSubdued]:     args.mode == 'subdued',
     [styles.isCritical]:    args.mode == 'critical',
     [styles.isPositive]:    args.mode == 'positive',
+
+    [styles.isCode]: args.element == 'code',
 
     [styles.isTruncated]: !!args.truncate
 

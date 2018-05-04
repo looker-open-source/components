@@ -22,3 +22,4 @@ export const isSubdued: string;
 export const isPositive: string;
 export const isCritical: string;
 export const isTruncated: string;
+export const isCode: string;
