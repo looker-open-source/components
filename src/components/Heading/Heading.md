@@ -34,7 +34,7 @@ When creating accessible pages it is important that headings create a [logical d
 <div>
   <Heading size="d1">h3 sized to d1</Heading>
   <Heading size="d2">h3 sized to d2</Heading>
-  <Heading size="d3">h3 sized to d1</Heading>
+  <Heading size="d3">h3 sized to d3</Heading>
   <Heading level="4" size="1">h4 sized to 1 </Heading>
   <Heading level="4" size="2">h4 sized to 2 </Heading>
   <Heading level="4" size="3">h4 sized to 3 </Heading>
@@ -100,7 +100,7 @@ class Inputer extends React.Component {
 
 
   render () {
-    return (<div style={{backgroundColor: "#F2F2F9", padding: '16px', borderRadius: '6px'}}>
+    return (<div>
     <div style={{display: 'flex', marginBottom: '32px'}}>
     <div style={{marginRight: '16px'}}>
     <Text element="span" size="6" weight="semi-bold" style={{marginRight: '8px'}}><label>Level:</label></Text>
@@ -154,10 +154,12 @@ class Inputer extends React.Component {
     </div>
     </div>
 
+    <div style={{backgroundColor: "#F2F2F9", padding: '30px 16px', borderRadius: '6px'}}>
+
 
     <Heading level={this.state.level} size={this.state.size} weight={this.state.weight} transform={this.state.transform}> {this.state.levelString} {this.state.sizeString} {this.state.text}</Heading>
 
-    <div style={{backgroundColor: '#304148', padding: '12px', color: "#C594C5", marginTop: '32px'}}>
+    <div style={{backgroundColor: '#304148', padding: '12px', color: "#C594C5", marginTop: '30px'}}>
     <Text element="code" size="6">
       &lt;Heading{this.state.level.length > 0 && ` level="${this.state.level}"` }
                   {this.state.size.length > 0 && ` size="${this.state.size}"` }
@@ -166,8 +168,7 @@ class Inputer extends React.Component {
                   <Text element="code" style={{color:"#fff"}}>{this.state.levelString}</Text>
                   &lt;/Heading&gt;</Text>
     </div>
-
-
+    </div>
     </div>)
   }
 }
