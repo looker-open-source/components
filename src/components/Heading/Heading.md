@@ -32,15 +32,15 @@ When creating accessible pages it is important that headings create a [logical d
 // Heading components using the level and size attribute (font-size / line-height)
 
 <div>
-  <Heading level="3" size="d1">h3 sized to d1 (62px/72px)</Heading>
-  <Heading level="3" size="d2">h3 sized to d2 (52px/60px)</Heading>
-  <Heading level="3" size="d3">h3 sized to d1 (38px/46px)</Heading>
-  <Heading level="4" size="1">h4 sized to 1 (28px/38px)</Heading>
-  <Heading level="4" size="2">h4 sized to 2 (22px/30px)</Heading>
-  <Heading level="4" size="3">h4 sized to 3 element (19px/27px)</Heading>
-  <Heading level="2" size="4">h2 sized to 4 (16/24px)</Heading>
-  <Heading level="2" size="5">h2 sized to 5 (14px/24px)</Heading>
-  <Heading level="2" size="6">h2 sized to 6 (12px/16px)</Heading>
+  <Heading size="d1">h3 sized to d1</Heading>
+  <Heading size="d2">h3 sized to d2</Heading>
+  <Heading size="d3">h3 sized to d1</Heading>
+  <Heading level="4" size="1">h4 sized to 1 </Heading>
+  <Heading level="4" size="2">h4 sized to 2 </Heading>
+  <Heading level="4" size="3">h4 sized to 3 </Heading>
+  <Heading level="2" size="4">h2 sized to 4 </Heading>
+  <Heading level="2" size="5">h2 sized to 5 </Heading>
+  <Heading level="2" size="6">h2 sized to 6 </Heading>
 </div>
 ```
 
@@ -103,7 +103,7 @@ class Inputer extends React.Component {
     return (<div style={{backgroundColor: "#F2F2F9", padding: '16px', borderRadius: '6px'}}>
     <div style={{display: 'flex', marginBottom: '32px'}}>
     <div style={{marginRight: '16px'}}>
-    <Text element="span" size="5" weight="semi-bold" style={{marginRight: '8px'}}><label>Level:</label></Text>
+    <Text element="span" size="6" weight="semi-bold" style={{marginRight: '8px'}}><label>Level:</label></Text>
     <select onChange={this.onChangeLevel.bind(this)}>
       <option value="">Default</option>
       <option value="1">1</option>
@@ -116,7 +116,7 @@ class Inputer extends React.Component {
     </div>
 
     <div style={{marginRight: '16px'}}>
-     <Text element="span" size="5" weight="semi-bold" style={{marginRight: '8px'}}><label>Size</label></Text>
+     <Text element="span" size="6" weight="semi-bold" style={{marginRight: '8px'}}><label>Size</label></Text>
     <select onChange={this.onChangeSize.bind(this)}>
       <option value="">Default</option>
       <option value="d1">d1</option>
@@ -132,7 +132,7 @@ class Inputer extends React.Component {
     </div>
 
     <div style={{marginRight: '16px'}}>
-     <Text element="span" size="5" weight="semi-bold" style={{marginRight: '8px'}}><label>Weight</label></Text>
+     <Text element="span" size="6" weight="semi-bold" style={{marginRight: '8px'}}><label>Weight</label></Text>
     <select onChange={this.onChangeWeight.bind(this)}>
       <option value="">-</option>
       <option value="light">Light</option>
