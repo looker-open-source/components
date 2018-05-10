@@ -14,6 +14,7 @@ export interface HeadingProps {
   className?: string
   /** Truncate text on overflow */
   truncate?: boolean
+
 }
 
 type PropertyBag = {
