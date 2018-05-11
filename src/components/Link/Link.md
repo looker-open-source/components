@@ -1,3 +1,3 @@
 ```js
-<Link url="https://looker.com"> hello </Link>
+<Link href="https://looker.com"> hello </Link>
 ```
