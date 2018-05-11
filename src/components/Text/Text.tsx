@@ -7,10 +7,6 @@ export interface TextProps {
   element?: 'p' | 'span' | 'code' | undefined,
   // Size is mapped from type ramp in https://www.figma.com/file/E7RbrrXwL1ZdL5Nyq4j8s2Oh/Typography?node-id=55%3A7
   size?:  'd1' | 'd2' | 'd3' | '1'| '2' | '3' | '4' | '5' | '6' | undefined,
-  /*
-  * @ignore
-  */
-  heading?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | undefined,
   mode?:  'secondary' | 'subdued' | 'positive' | 'critical' | undefined,
   weight?: 'light' | 'normal' | 'semi-bold' | 'bold' | 'extra-bold' | undefined,
   transform?: 'upper' | 'caps' | 'lower' | 'none' | undefined,
@@ -26,39 +22,39 @@ type PropertyBag = {
 Text.
 */
 
-export const Text: React.SFC<TextProps> = ({className, ...args}) => {
-  const Tag = args.element? args.element : 'p'
+export const Text: React.SFC<TextProps> = ({className, element, size, mode, weight, transform, truncate, ...args}) => {
+  const Tag = element? element : 'p'
 
   const styleableProps: PropertyBag = {
-    [styles.isDisplay1]: args.size == 'd1',
-    [styles.isDisplay2]: args.size == 'd2',
-    [styles.isDisplay3]: args.size == 'd3',
-    [styles.isHeading1]: args.size == '1',
-    [styles.isHeading2]: args.size == '2',
-    [styles.isHeading3]: args.size == '3',
-    [styles.isHeading4]: args.size == '4',
-    [styles.isHeading5]: args.size == '5',
-    [styles.isHeading6]: args.size == '6',
+    [styles.isDisplay1]: size == 'd1',
+    [styles.isDisplay2]: size == 'd2',
+    [styles.isDisplay3]: size == 'd3',
+    [styles.isHeading1]: size == '1',
+    [styles.isHeading2]: size == '2',
+    [styles.isHeading3]: size == '3',
+    [styles.isHeading4]: size == '4',
+    [styles.isHeading5]: size == '5',
+    [styles.isHeading6]: size == '6',
 
-    [styles.fontWeightLight]:     args.weight == 'light',
-    [styles.fontWeightNormal]:    args.weight == 'normal',
-    [styles.fontWeightSemiBold]:  args.weight == 'semi-bold',
-    [styles.fontWeightBold]:      args.weight == 'bold',
-    [styles.fontWeightExtraBold]: args.weight == 'extra-bold',
+    [styles.fontWeightLight]:     weight == 'light',
+    [styles.fontWeightNormal]:    weight == 'normal',
+    [styles.fontWeightSemiBold]:  weight == 'semi-bold',
+    [styles.fontWeightBold]:      weight == 'bold',
+    [styles.fontWeightExtraBold]: weight == 'extra-bold',
 
-    [styles.transformUpper]:  args.transform == 'upper',
-    [styles.transformCaps]:   args.transform == 'caps',
-    [styles.transformLower]:  args.transform == 'lower',
-    [styles.transformNone]:   args.transform == 'none',
+    [styles.transformUpper]:  transform == 'upper',
+    [styles.transformCaps]:   transform == 'caps',
+    [styles.transformLower]:  transform == 'lower',
+    [styles.transformNone]:   transform == 'none',
 
-    [styles.isSecondary]:   args.mode == 'secondary',
-    [styles.isSubdued]:     args.mode == 'subdued',
-    [styles.isCritical]:    args.mode == 'critical',
-    [styles.isPositive]:    args.mode == 'positive',
+    [styles.isSecondary]:   mode == 'secondary',
+    [styles.isSubdued]:     mode == 'subdued',
+    [styles.isCritical]:    mode == 'critical',
+    [styles.isPositive]:    mode == 'positive',
 
-    [styles.isCode]: args.element == 'code',
+    [styles.isCode]: element == 'code',
 
-    [styles.isTruncated]: !!args.truncate
+    [styles.isTruncated]: !!truncate
 
   }
 

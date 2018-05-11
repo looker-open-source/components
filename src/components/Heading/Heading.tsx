@@ -25,7 +25,7 @@ type PropertyBag = {
 Headings are used to help users understand  what a marjor section of an interface is about, for example the labeling of a page or a title of a card component.
 */
 
-export const Heading: React.SFC<HeadingProps> = ({className, level, size, weight, transform, ...args}) => {
+export const Heading: React.SFC<HeadingProps> = ({className, level, size, weight, transform, truncate, ...args}) => {
   const Tag = level? `h${level}` : 'h3'
 
   const styleableProps: PropertyBag = {
@@ -50,7 +50,7 @@ export const Heading: React.SFC<HeadingProps> = ({className, level, size, weight
     [styles.transformLower]: transform == 'lower',
     [styles.transformNone]: transform == 'none',
 
-    [styles.isTruncated]: !!args.truncate
+    [styles.isTruncated]: !!truncate
 
 
   }

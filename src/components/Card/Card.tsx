@@ -15,13 +15,13 @@ type PropertyBag = {
   [key: string]: any
 }
 
-export const Card: React.SFC<CardProps> = ({className, ...args}) => {
+export const Card: React.SFC<CardProps> = ({className, raised, stacked, url, ...args}) => {
 
-  const cardURL = (args.url != undefined && args.url.length > 0) ? args.url : false
+  const cardURL = (url != undefined && url.length > 0) ? url : false
 
   const styleableProps: PropertyBag = {
-    [styles.isRaised]: !!args.raised,
-    [styles.isStacked] : !!args.stacked
+    [styles.isRaised]: !!raised,
+    [styles.isStacked] : !!stacked
   }
 
   return (

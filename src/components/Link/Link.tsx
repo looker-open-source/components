@@ -18,7 +18,7 @@ type PropertyBag = {
 Link are cool and this works thdhdhfds'f sl;fks;lfkds ;;sdkf;sdkf;dsk ;kdsf;dskf;dks;
 */
 
-export const Link: React.SFC<LinkProps> = ({className, href, ...args}) => {
+export const Link: React.SFC<LinkProps> = ({className, href, id, external,...args}) => {
   const styleableProps: PropertyBag = {
     [styles.cardLink]: className == 'card-link',
   }
@@ -26,8 +26,8 @@ export const Link: React.SFC<LinkProps> = ({className, href, ...args}) => {
   return (
     <a  className={classNames(styles.lensLink, className, styleableProps)}
         href={href}
-        target={args.external ? '_blank' : undefined}
-        id={args.id ? args.id : undefined}
+        target={external ? '_blank' : undefined}
+        id={id}
         {...args}>
       {args.children}
     </a>
