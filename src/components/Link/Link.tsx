@@ -3,7 +3,6 @@ import classNames from 'classnames'
 import * as styles from './Link.scss'
 
 export interface LinkProps {
-  // Semantic mapping for a text elements
   href: string,
   id?: string,
   external?: boolean,
@@ -15,7 +14,7 @@ type PropertyBag = {
 }
 
 /**
-Link are cool
+
 */
 
 export const Link: React.SFC<LinkProps> = ({className, href, id, external,...args}) => {

@@ -1,0 +1,27 @@
+@import '../../styles/variables';
+
+.lens-data-table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th {
+    padding: spacing(sm) 0;
+    font-size: font-size(6);
+    color: color('gray', 400);
+    font-weight: 600;
+  }
+
+  td {
+    padding: spacing(sm) 0;
+    border-top: solid 1px color('gray', 200);
+  }
+}
+
+
+// .is-borderd {
+
+// }
+
+// .is-responsive {
+
+// }
