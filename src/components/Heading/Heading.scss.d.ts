@@ -18,4 +18,3 @@ export const transformLower: string;
 export const transformCaps: string;
 export const transformNone: string;
 export const isTruncated: string;
-export const testClass: string;

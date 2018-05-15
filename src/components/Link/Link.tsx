@@ -15,7 +15,7 @@ type PropertyBag = {
 }
 
 /**
-Link are cool and this works thdhdhfds'f sl;fks;lfkds ;;sdkf;sdkf;dsk ;kdsf;dskf;dks;
+Link are cool
 */
 
 export const Link: React.SFC<LinkProps> = ({className, href, id, external,...args}) => {

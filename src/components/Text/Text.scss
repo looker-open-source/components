@@ -4,6 +4,9 @@
   text-rendering: optimizeLegibility;
   font-family: $brand-font;
   font-weight: $default-font-weight;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smoothing: antialiased;
 }
 
 p {
@@ -92,10 +95,10 @@ p {
 }
 
 .is-secondary {
-  color: color('gray', 500);
+  color: color('gray', 600);
 }
 .is-subdued {
-  color: color('gray', 400);
+  color: color('gray', 500);
 }
 
 .is-positive {

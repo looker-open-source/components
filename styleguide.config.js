@@ -12,6 +12,13 @@ module.exports = {
       content: 'docs/intro.md'
     },
     {
+      name: 'Style',
+      sections: [{
+        name: 'Typography',
+        content: 'docs/style/Typography.md'
+      }]
+    },
+    {
       name: 'Components',
       components: 'src/components/**/*.tsx'
     }
@@ -93,14 +100,15 @@ module.exports = {
       }
     },
     Para: {
-      para: {
-        maxWidth: '750px'
-      }
+
     },
     StyleGuide: {
       '@global body': {
         fontFamily: '"Open Sans", sans-serif'
       },
+      '@global p': {
+        maxWidth: '765px !important'
+      }
     }
   },
   editorConfig: {
