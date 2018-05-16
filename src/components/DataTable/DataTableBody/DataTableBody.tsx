@@ -3,8 +3,8 @@ import classNames from 'classnames'
 import * as styles from './DataTableBody.scss'
 
 export interface DataTableBodyProps {
-  align: 'top' | 'middle' | 'bottom' | undefined
-  textAlign: 'left' | 'center' | 'right' | undefined
+  align?: 'top' | 'middle' | 'bottom' | undefined
+  textAlign?: 'left' | 'center' | 'right' | undefined
   className?: string | undefined
 }
 
