@@ -1,11 +1,16 @@
 <div class="component-desc"><p>Typography sets the tone and flow of an interface’s content. Lens typography aims to create a harmonious hierarchy, maximize legibility, and present the content as clearly as possible.</p></div>
 
+<div class="doc-section-divider"></div>
+
+<section id="family" class="doc-section">
+
 ## Family
 
 ### Open Sans
 
 Lens’ primary font is Open Sans, a humanist sans serif typeface. It was chosen for its open and friendly appearance as well as having excellent legibility for digital applications.
 
+</section>
 
 ```js noeditor
   const specimen = "Open Sans is the typographic base for the tone and content of Lens’, Lookers design system"
@@ -39,13 +44,15 @@ Lens’ primary font is Open Sans, a humanist sans serif typeface. It was chosen
 
   </DataTable>
 ```
+<div class="doc-section-divider"></div>
 
+<section id="scale" class="doc-section">
 
-
-
-## Typescale
+## Type scale
 
 The Lens type scale is designed to provide consistent and harmonious typographic styles.
+
+</section>
 
 ```js noeditor
   const specimen = "Data analytics ❤️"

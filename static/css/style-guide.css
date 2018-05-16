@@ -1,8 +1,17 @@
 .component-desc {
   margin-top: var(--lens-spacing-4xl);
-  margin-bottom: var(--lens-spacing-4xl);
-  padding-bottom: var(--lens-spacing-2xl);
-  border-bottom: solid 1px var(--lens-border-color);
+
   font-size: var(--lens-font-size-2);
   line-height: var(--lens-line-height-2);
+}
+
+.doc-section {
+  margin-bottom: var(--lens-spacing-3xl);
+}
+
+.doc-section-divider {
+  margin-top: var(--lens-spacing-4xl);
+  height: 1px;
+  background: var(--lens-border-color);
+  margin-bottom: var(--lens-spacing-4xl);
 }

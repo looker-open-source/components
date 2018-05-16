@@ -53,3 +53,8 @@
 
 ```
 
+
+```js
+<Card raised><CardContent><CardDetails title="Card Details Title" subtitle="A subtitle"></CardDetails></CardContent></Card>
+```
+
