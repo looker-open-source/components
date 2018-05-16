@@ -113,7 +113,18 @@ module.exports = {
     },
     Heading: {
       heading1: {
-        fontSize: '52px'
+        fontSize: 'var(--lens-font-size-d2)',
+        lineHeight: 'var(--lens-line-height-d2)',
+      },
+      heading2: {
+        fontSize: 'var(--lens-font-size-d3)',
+        lineHeight: 'var(--lens-line-height-d3)',
+        marginBottom: 'var(--lens-spacing-xl)'
+      },
+      heading3: {
+        fontSize: 'var(--lens-font-size-2)',
+        lineHeight: 'var(--lens-line-height-2)',
+        fontWeight: 600
       }
     },
     StyleGuide: {

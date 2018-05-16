@@ -10,8 +10,8 @@
 }
 
 .doc-section-divider {
-  margin-top: var(--lens-spacing-4xl);
+  margin: var(--lens-spacing-3xl) 0;
   height: 1px;
   background: var(--lens-border-color);
-  margin-bottom: var(--lens-spacing-4xl);
+
 }
