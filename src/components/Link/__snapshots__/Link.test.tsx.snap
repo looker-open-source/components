@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`A Link with an id 1`] = `
+<a
+  className=""
+  href="https://looker.com"
+  id="link-id"
+  target={undefined}
+>
+  🥑
+</a>
+`;
+
+exports[`A default Link 1`] = `
+<a
+  className=""
+  href="https://looker.com"
+  id={undefined}
+  target={undefined}
+>
+  🥑
+</a>
+`;
+
+exports[`A external Link 1`] = `
+<a
+  className=""
+  href="https://looker.com"
+  id={undefined}
+  target="_blank"
+>
+  🥑
+</a>
+`;
