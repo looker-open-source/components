@@ -1,4 +1,11 @@
 ```js
+<Card raised>
+    <div style={{margin: "150px"}}></div>
+</Card>
+```
+
+
+```js
 <Card raised url="https://looker.com">
     <CardMedia image="https://placeimg.com/650/480/tech"></CardMedia>
     <CardContent>
@@ -18,7 +25,7 @@
     <CardContent>
       <CardDetails title="Looker Pulse" subtitle="Overview of Lookers Performance">
         <Text size="6" mode="secondary">This could be some body text</Text>
-        <Text mode="subdued" size="6" truncate>41,999 Views, 205 Favorites, <Link href="http://google.com" target="_blank">Created by</Link> Andrew Searson</Text>
+        <Text mode="subdued" size="6" truncate>41,999 Views, 205 Favorites, <Link href="http://google.com">Created by</Link> Andrew Searson</Text>
       </CardDetails>
     </CardContent>
   </Card>

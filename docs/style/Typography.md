@@ -1,5 +1,4 @@
-Typography sets the tone and flow of an interface’s content. Lens typography aims to create a harmonious hierarchy, maximize legibility, and present the content as clearly as possible.
-
+<div class="component-desc"><p>Typography sets the tone and flow of an interface’s content. Lens typography aims to create a harmonious hierarchy, maximize legibility, and present the content as clearly as possible.</p></div>
 
 ## Family
 
@@ -46,7 +45,7 @@ Lens’ primary font is Open Sans, a humanist sans serif typeface. It was chosen
 
 ## Typescale
 
-The Lens typescale is designed to provide consistent and harmonious typographic styles.
+The Lens type scale is designed to provide consistent and harmonious typographic styles.
 
 ```js noeditor
   const specimen = "Data analytics ❤️"

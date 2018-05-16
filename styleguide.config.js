@@ -6,6 +6,9 @@ module.exports = {
   pagePerSection: true,
   propsParser: typescriptPropsParser,
   showCode: true,
+  require: [
+    path.join(__dirname, '/static/css/style-guide.css')
+  ],
   sections: [
     {
       name: 'Lens',
@@ -58,6 +61,10 @@ module.exports = {
               }
             }
           ]
+        },
+        {
+          test: /\.css$/,
+          use: [ 'style-loader', 'css-loader' ]
         }
       ]
     }
@@ -99,8 +106,15 @@ module.exports = {
           borderRadius: '6px'
       }
     },
-    Para: {
-
+    Typography: {
+      heading1: {
+        fontSize: '52px'
+      }
+    },
+    Heading: {
+      heading1: {
+        fontSize: '52px'
+      }
     },
     StyleGuide: {
       '@global body': {
