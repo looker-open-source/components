@@ -4,11 +4,13 @@ import * as styles from './Icon.scss'
 import {
   external,
   favorite,
+  gear,
 } from '../../icons/IconList'
 
 export const ICON_BUNDLE = {
   external,
-  favorite
+  favorite,
+  gear
 }
 
 
@@ -17,6 +19,7 @@ export type IconSource = keyof typeof ICON_BUNDLE
 export interface IconProps {
   name: IconSource,
   accessibilityLabel?: string | undefined
+  color?: string | undefined
   className?: string | undefined
 }
 

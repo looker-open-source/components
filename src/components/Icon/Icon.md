@@ -1,4 +1,5 @@
 ```js
-<Icon name="external"></Icon>
-<Icon name="favorite"></Icon>
+<Icon name="external" />
+<Icon name="favorite" />
+<Icon name="gear" />
 ```
