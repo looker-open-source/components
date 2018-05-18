@@ -22,7 +22,7 @@ export const CardMedia: React.SFC<CardMediaProps> = ({className, image, ...args}
   const cardImage = { backgroundImage: `url(${image})` }
 
   return (
-    <div className={classNames(styles.cardMedia, className, styleableProps,)} style={cardImage} {...args} > </div>
+    <div className={classNames(styles.cardMedia, className, styleableProps)} style={cardImage} {...args} > </div>
   )
 }
 

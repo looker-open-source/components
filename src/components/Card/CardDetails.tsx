@@ -20,11 +20,7 @@ export const CardDetails: React.SFC<CardDetailsProps> = ({className, title, ...a
 
   }
 
-  const subtitle = args.subtitle?
-    <div>
-      <Heading level="3" size="6" weight="semi-bold" truncate>{args.subtitle}</Heading>
-    </div>
-    : ''
+  const subtitle = args.subtitle? <Heading level="3" size="6" weight="semi-bold" truncate>{args.subtitle}</Heading> : ''
 
   return (
     <div className={classNames(className, styleableProps,)} {...args} >

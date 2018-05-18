@@ -1,4 +1,23 @@
 $config: (
+
+  primary-color: color('purple'),
+  primary-color-hover: color('purple', 600),
+  primary-color-active: color('purple', 700),
+  primary-color-border:  color('purple'),
+  primary-color-text: #fff,
+
+  secondary-color: #ffffff,
+  secondary-color-hover: #EAE6FA,
+  secondary-color-active: #D6CDF5,
+  secondary-color-border: #64518A,
+  secondary-color-text: #64518A,
+
+  scary-color: #E1332C,
+  scary-color-hover: #B00505,
+  scary-color-active: #92100E,
+  scary-color-border: #E1332C,
+  scary-color-text: #FFFFFF,
+
   spacing-xs: spacing(xs),
   spacing-sm: spacing(sm),
   spacing-base: spacing(base),
@@ -30,6 +49,7 @@ $config: (
 
 
   border-color: color('gray', 200),
+
 )
 
 :root {

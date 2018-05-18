@@ -30,12 +30,15 @@
     </CardContent>
   </Card>
 
-  <Card raised>
+   <Card raised>
     <CardMedia image="https://placeimg.com/630/480/tech"></CardMedia>
     <CardContent>
       <CardDetails title="Looker Pulse" subtitle="Overview of Lookers Performance">
-        <Text size="6" mode="secondary">This could be some body text</Text>
-        <Text mode="subdued" size="6" truncate>41,999 Views, 205 Favorites, Created by Andrew Searson</Text>
+      	<div style={{width: '85%'}}>
+        	<Text size="6" mode="secondary">This could be some body text</Text>
+        	<Text mode="subdued" size="6" truncate>41,999 Views, 205 Favorites, Created by Andrew Searson</Text>
+        </div>
+        <Icon name="favorite" style={{float: 'right', marginTop: 'var(--lens-spacing-lg)'}} />
       </CardDetails>
     </CardContent>
   </Card>
