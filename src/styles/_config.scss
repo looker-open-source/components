@@ -19,9 +19,9 @@ $config: (
   scary-color-text: #FFFFFF,
 
   spacing-xs: spacing(xs),
-  spacing-sm: spacing(sm),
-  spacing-base: spacing(base),
-  spacing-lg: spacing(lg),
+  spacing-sm: spacing(s),
+  spacing-base: spacing(m),
+  spacing-lg: spacing(l),
   spacing-xl: spacing(xl),
   spacing-2xl: spacing(2xl),
   spacing-3xl: spacing(3xl),
@@ -49,7 +49,6 @@ $config: (
 
 
   border-color: color('gray', 200),
-
 )
 
 :root {

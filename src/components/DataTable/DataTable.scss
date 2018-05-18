@@ -5,14 +5,14 @@
   border-collapse: collapse;
 
   th {
-    padding: spacing(sm) 0;
+    padding: spacing(s) 0;
     font-size: font-size(6);
     color: color('gray', 400);
     font-weight: 600;
   }
 
   td {
-    padding: spacing(sm) 0;
+    padding: spacing(s) 0;
     border-top: solid 1px color('gray', 200);
   }
 }

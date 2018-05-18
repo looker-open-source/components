@@ -16,10 +16,16 @@ module.exports = {
     },
     {
       name: 'Style',
-      sections: [{
+      sections: [
+      {
         name: 'Typography',
         content: 'docs/style/Typography.md'
-      }]
+      },
+      {
+        name: 'Spacing',
+        content: 'docs/style/Spacing.md'
+      },
+    ]
     },
     {
       name: 'Components',

@@ -47,7 +47,7 @@ Use a light button alongside a primary button to provide alternative actions on 
 
 ```js
 class Inputer extends React.Component {
-  
+
   constructor () {
     super()
     this.state = {
@@ -56,23 +56,23 @@ class Inputer extends React.Component {
       mode: undefined
     }
   }
-  
+
   onCheck (event) {
     this.setState({checked: event.target.checked ? 'active': 'hover' })
   }
-  
+
   onChangeText (event) {
     this.setState({text: event.target.value})
   }
-  
+
   onChangeMode (event) {
-    
-    
+
+
     this.setState({
       mode: event.target.value == '' ? undefined : event.target.value
     })
   }
-  
+
   render () {
     return (<div>
     <select onChange={this.onChangeMode.bind(this)}>

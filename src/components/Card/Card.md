@@ -1,6 +1,6 @@
 ```js
 <Card raised>
-    <div style={{margin: "150px"}}></div>
+    <Block p="2xl"></Block>
 </Card>
 ```
 
