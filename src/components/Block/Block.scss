@@ -42,11 +42,11 @@ $sizes: (xs, s, m, l, xl, 2xl, 3xl, 4xl);
 
   //// Loop through each value of the $spacing-side map
   //// @returns {Rule}
-  //// Each rule returned is made up of interoplated values from looping through a series of maps
+  //// Each rule returned is made up of interpolated values from looping through a series of maps
   //// #{$prefix} adds a unique letter to the the front of each rule: '.p' for padding and '.m' for margin
-  //// #{size} apends the unique size to the rule: '.pxs' for padding extra small and '.pl' for padding large. this also looks up the correct value in the spacing variables.
+  //// #{size} appends the unique size to the rule: '.pxs' for padding extra small and '.pl' for padding large. this also looks up the correct value in the spacing variables.
   //// #{prop} adds the property that the spacing is applied to: either 'padding: ...' or 'margin...'
-  //// #{side} apends a side to the property: 'padding-left:...' or 'padding-right:...'
+  //// #{side} appends a side to the property: 'padding-left:...' or 'padding-right:...'
   @each $direction, $side in $spacing-sides {
 
       // Loop through each of the $size options to create a class for each
@@ -56,15 +56,21 @@ $sizes: (xs, s, m, l, xl, 2xl, 3xl, 4xl);
           .#{$prefix}#{$size} { #{$prop}: map-get($spacing, $size); }
         }
         //// If $direction is 'lr', apply spacing to the left and right sides
-        //// in this loop and 'lr' is being inserted in between the $prefix and $size
+        //// in this loop 'lr' is being inserted in between the $prefix and $size
         @else if $direction == 'lr' {
-          .#{$prefix}lr#{$size} { #{$prop}-left: map-get($spacing, $size); #{$prop}-right: map-get($spacing, $size); }
+          .#{$prefix}lr#{$size} {
+            #{$prop}-left: map-get($spacing, $size);
+            #{$prop}-right: map-get($spacing, $size);
+          }
         }
 
-        //// If $direction is 'tb', apply spacing the top and bottomn sides
-        //// in this loop and 'tb' is being inserted in between the $prefix and $size
+        //// If $direction is 'tb', apply spacing the top and bottom sides
+        //// in this loop 'tb' is being inserted in between the $prefix and $size
         @else if $direction == 'tb' {
-          .#{$prefix}tb#{$size} { #{$prop}-top: map-get($spacing, $size); #{$prop}-bottom: map-get($spacing, $size); }
+          .#{$prefix}tb#{$size} {
+            #{$prop}-top: map-get($spacing, $size);
+            #{$prop}-bottom: map-get($spacing, $size);
+          }
         }
 
         //// If $direction is either 'top', 'bottom', 'left', 'right', apply the spacing to the corresponding side
