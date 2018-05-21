@@ -1,3 +1,9 @@
+<div class="component-desc"><p>Cards provide scannable organized groups of content that is limited to one concept or thought per a card.</p></div>
+
+<div class="doc-section-divider"></div>
+
+### A Basic card
+
 ```js
 <Card raised>
     <Block p="2xl"></Block>
