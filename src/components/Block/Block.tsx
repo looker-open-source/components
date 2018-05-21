@@ -15,8 +15,10 @@ export type SpacingValues =
 
 export interface BlockProps {
   background?: string
-
   width?: number
+  align?: 'center' | 'start' | 'end' | 'baseline' | undefined
+
+  // padding properties
   p: SpacingValues
   pt: SpacingValues
   pr: SpacingValues
@@ -25,6 +27,7 @@ export interface BlockProps {
   px: SpacingValues
   py: SpacingValues
 
+  // margin properties
   m: SpacingValues
   mt: SpacingValues
   mr: SpacingValues
@@ -44,8 +47,7 @@ type PropertyBag = {
 Block.
 */
 
-export const Block: React.SFC<BlockProps> = ({className, p, pt, pr, pb, pl, px, py, m, mt, mr, mb, ml, mx, my, ...args}) => {
-  console.log(p)
+export const Block: React.SFC<BlockProps> = ({className, p, pt, pr, pb, pl, px, py, m, mt, mr, mb, ml, mx, my, align,...args}) => {
 
   const styleableProps: PropertyBag = {
     [styles.pxs]:   p == "xs",
@@ -178,6 +180,12 @@ export const Block: React.SFC<BlockProps> = ({className, p, pt, pr, pb, pl, px, 
     [styles.mtb2xl]:  my == "2xl",
     [styles.mtb3xl]:  my == "3xl",
     [styles.mtb4xl]:  my == "4xl",
+
+
+    [styles.alignCenter]: align == 'center',
+    [styles.alignFlexStart]: align == 'start',
+    [styles.alignFlexEnd]: align == 'end',
+    [styles.alignBaseline]: align == 'baseline',
 
   }
 

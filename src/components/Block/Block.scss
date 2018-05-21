@@ -4,8 +4,14 @@
 
 .block {
   box-sizing: border-box;
+  min-width: 0;
 }
 
+
+.align-center { align-self: center; }
+.align-flex-start { align-self: flex-start; }
+.align-flex-end { align-self: flex-end; }
+.align-baseline { align-self: baseline; }
 
 
 $spacing-sides: (
