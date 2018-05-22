@@ -4,12 +4,12 @@ import * as styles from './Text.scss'
 
 export interface TextProps {
   // Semantic mapping for a text elements
-  element?: 'p' | 'span' | 'code' | undefined,
+  element?: 'p' | 'span' | 'code'
   // Size is mapped from type ramp in https://www.figma.com/file/E7RbrrXwL1ZdL5Nyq4j8s2Oh/Typography?node-id=55%3A7
-  size?:  'd1' | 'd2' | 'd3' | '1'| '2' | '3' | '4' | '5' | '6' | undefined,
-  mode?:  'secondary' | 'subdued' | 'positive' | 'critical' | undefined,
-  weight?: 'light' | 'normal' | 'semi-bold' | 'bold' | 'extra-bold' | undefined,
-  transform?: 'upper' | 'caps' | 'lower' | 'none' | undefined,
+  size?:  'd1' | 'd2' | 'd3' | '1'| '2' | '3' | '4' | '5' | '6',
+  mode?:  'secondary' | 'subdued' | 'positive' | 'critical'
+  weight?: 'light' | 'normal' | 'semi-bold' | 'bold' | 'extra-bold'
+  transform?: 'upper' | 'caps' | 'lower' | 'none'
   truncate?: boolean,
   className?: undefined
 }

@@ -19,22 +19,22 @@ export interface BlockProps {
   align?: 'center' | 'start' | 'end' | 'baseline' | undefined
 
   // padding properties
-  p: SpacingValues
-  pt: SpacingValues
-  pr: SpacingValues
-  pb: SpacingValues
-  pl: SpacingValues
-  px: SpacingValues
-  py: SpacingValues
+  p?: SpacingValues
+  pt?: SpacingValues
+  pr?: SpacingValues
+  pb?: SpacingValues
+  pl?: SpacingValues
+  px?: SpacingValues
+  py?: SpacingValues
 
   // margin properties
-  m: SpacingValues
-  mt: SpacingValues
-  mr: SpacingValues
-  mb: SpacingValues
-  ml: SpacingValues
-  mx: SpacingValues
-  my: SpacingValues
+  m?: SpacingValues
+  mt?: SpacingValues
+  mr?: SpacingValues
+  mb?: SpacingValues
+  ml?: SpacingValues
+  mx?: SpacingValues
+  my?: SpacingValues
 
   className?: undefined
 }

@@ -4,13 +4,13 @@ import * as styles from './Heading.scss'
 
 export interface HeadingProps {
   /** Headling tag level mapping for h1-h6 */
-  level?: '1' | '2' | '3' | '4' | '5' | '6' | undefined,
+  level?: '1' | '2' | '3' | '4' | '5' | '6',
   /** Size mapping from type ramp */
-  size?:  'd1' | 'd2' | 'd3' | '1'| '2' | '3' | '4' | '5' | '6' | undefined,
+  size?:  'd1' | 'd2' | 'd3' | '1'| '2' | '3' | '4' | '5' | '6',
   /** Font weight */
-  weight?: 'light' | 'normal' | 'semi-bold' | 'bold' | 'extra-bold' | undefined,
+  weight?: 'light' | 'normal' | 'semi-bold' | 'bold' | 'extra-bold',
   /** Text tranform  */
-  transform?: 'upper' | 'caps' | 'lower' | 'none' | undefined,
+  transform?: 'upper' | 'caps' | 'lower' | 'none',
   className?: string
   /** Truncate text on overflow */
   truncate?: boolean

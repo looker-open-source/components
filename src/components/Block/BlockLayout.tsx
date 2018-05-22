@@ -3,9 +3,9 @@ import classNames from 'classnames'
 import * as styles from './BlockLayout.scss'
 
 export interface BlockLayoutProps {
-  direction?: 'row' | 'column' | 'row-reverse' | 'column-reverse'  | undefined
-  align?: 'center' | 'start' | 'end' | 'baseline' | undefined
-  justify?: 'center' | 'start' | 'end' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch' | undefined
+  direction?: 'row' | 'column' | 'row-reverse' | 'column-reverse'
+  align?: 'center' | 'start' | 'end' | 'baseline'
+  justify?: 'center' | 'start' | 'end' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch'
   wrap?: 'yes' | 'no' | 'reverse'
   className?: undefined
 }

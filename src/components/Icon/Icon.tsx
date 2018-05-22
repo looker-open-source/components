@@ -18,9 +18,9 @@ export type IconSource = keyof typeof ICON_BUNDLE
 
 export interface IconProps {
   name: IconSource,
-  accessibilityLabel?: string | undefined
-  color?: string | undefined
-  className?: string | undefined
+  accessibilityLabel?: string
+  color?: string
+  className?: string
 }
 
 

@@ -3,8 +3,8 @@ import classNames from 'classnames'
 import * as styles from './List.scss'
 
 export interface ListProps {
-  type?: 'bullet' | 'number' | undefined,
-  className?: string | undefined
+  type?: 'bullet' | 'number'
+  className?: string
 }
 
 type PropertyBag = {
