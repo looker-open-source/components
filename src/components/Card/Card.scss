@@ -1,3 +1,4 @@
+@import '../../styles/variables';
 .card {
   display: flex;
   flex-direction: column;
@@ -5,7 +6,12 @@
   border-radius: 4px;
   overflow: hidden;
   min-width: 200px;
-  border: 1px solid #E4E5E6
+  border: 1px solid color('gray', 200);
+  transition: border 100ms;
+
+  &:hover {
+    border-color: color('gray', 300);
+  }
 }
 
 .is-raised {

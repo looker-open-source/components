@@ -101,6 +101,11 @@ module.exports = {
 
       }
     },
+    Para: {
+      para: {
+        maxWidth: '765px'
+      }
+    },
     Code: {
       code: {
         color: '#4C33AA',
@@ -142,7 +147,7 @@ module.exports = {
         fontFamily: '"Open Sans", sans-serif'
       },
       '@global p': {
-        maxWidth: '765px !important'
+
       }
     }
   },
