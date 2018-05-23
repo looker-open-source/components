@@ -11,6 +11,8 @@ export interface HeadingProps {
   weight?: 'light' | 'normal' | 'semi-bold' | 'bold' | 'extra-bold',
   /** Text tranform  */
   transform?: 'upper' | 'caps' | 'lower' | 'none',
+  /** Text align */
+  align?: 'left' | 'center' | 'right'
   className?: string
   /** Truncate text on overflow */
   truncate?: boolean
@@ -25,7 +27,7 @@ type PropertyBag = {
 Headings are used to help users understand  what a marjor section of an interface is about, for example the labeling of a page or a title of a card component.
 */
 
-export const Heading: React.SFC<HeadingProps> = ({className, level, size, weight, transform, truncate, ...args}) => {
+export const Heading: React.SFC<HeadingProps> = ({className, level, size, weight, transform, align, truncate, ...args}) => {
   const Tag = level? `h${level}` : 'h3'
 
   const styleableProps: PropertyBag = {
@@ -49,6 +51,10 @@ export const Heading: React.SFC<HeadingProps> = ({className, level, size, weight
     [styles.transformCaps]: transform == 'caps',
     [styles.transformLower]: transform == 'lower',
     [styles.transformNone]: transform == 'none',
+
+    [styles.alignLeft]: align == 'left',
+    [styles.alignCenter]: align == 'center',
+    [styles.alignRight]: align == 'right',
 
     [styles.isTruncated]: !!truncate
 

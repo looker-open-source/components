@@ -17,4 +17,7 @@ export const transformUpper: string;
 export const transformLower: string;
 export const transformCaps: string;
 export const transformNone: string;
+export const alignLeft: string;
+export const alignRight: string;
+export const alignCenter: string;
 export const isTruncated: string;

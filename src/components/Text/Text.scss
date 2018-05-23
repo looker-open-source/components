@@ -94,6 +94,23 @@ p {
   text-transform: none;
 }
 
+.align-left {
+  text-align: left;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.align-justify {
+  text-align: justify;
+}
+
+
 .is-secondary {
   color: color('gray', 600);
 }

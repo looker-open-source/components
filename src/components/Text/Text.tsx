@@ -10,6 +10,7 @@ export interface TextProps {
   mode?:  'secondary' | 'subdued' | 'positive' | 'critical'
   weight?: 'light' | 'normal' | 'semi-bold' | 'bold' | 'extra-bold'
   transform?: 'upper' | 'caps' | 'lower' | 'none'
+  align?: 'left' | 'center' | 'right' | 'justify'
   truncate?: boolean,
   className?: undefined
 }
@@ -22,7 +23,7 @@ type PropertyBag = {
 Text.
 */
 
-export const Text: React.SFC<TextProps> = ({className, element, size, mode, weight, transform, truncate, ...args}) => {
+export const Text: React.SFC<TextProps> = ({className, element, size, mode, weight, transform, align, truncate, ...args}) => {
   const Tag = element? element : 'p'
 
   const styleableProps: PropertyBag = {
@@ -46,6 +47,11 @@ export const Text: React.SFC<TextProps> = ({className, element, size, mode, weig
     [styles.transformCaps]:   transform == 'caps',
     [styles.transformLower]:  transform == 'lower',
     [styles.transformNone]:   transform == 'none',
+
+    [styles.alignLeft]: align == 'left',
+    [styles.alignCenter]: align == 'center',
+    [styles.alignRight]: align == 'right',
+    [styles.alignJustify]: align == 'justify',
 
     [styles.isSecondary]:   mode == 'secondary',
     [styles.isSubdued]:     mode == 'subdued',

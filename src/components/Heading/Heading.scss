@@ -89,6 +89,18 @@ h6, .is-heading-6 {
   text-transform: none;
 }
 
+.align-left {
+  text-align: left;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.align-center {
+  text-align: center;
+}
+
 .is-truncated {
   white-space: nowrap;
   overflow: hidden;
