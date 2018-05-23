@@ -25,7 +25,7 @@ Using the `CardContent` component quickly gives your content consistent spacing 
 ```js
 <Card raised url="https://docs.looker.com/relnotes">
   <CardContent>
-    <Heading size="2">Looker Release Notes</Heading>
+    <Heading size="2">🎉 Looker Release Notes 🎉</Heading>
     <Heading level="4" size="5">Read all about our latest features</Heading>
     <Text size="6" mode="subdued">Last updated 3 days ago</Text>
   </CardContent>

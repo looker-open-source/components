@@ -146,8 +146,8 @@ module.exports = {
       '@global body': {
         fontFamily: '"Open Sans", sans-serif'
       },
-      '@global p': {
-
+      sidebar: {
+        width: '300px'
       }
     }
   },
