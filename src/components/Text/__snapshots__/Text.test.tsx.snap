@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`A Text component resized 1`] = `
+<p
+  className=""
+>
+  🥑
+</p>
+`;
+
+exports[`A Text component transformed 1`] = `
+<p
+  className=""
+>
+  🥑
+</p>
+`;
+
+exports[`A Text component tuncated 1`] = `
+<p
+  className="undefined"
+>
+  🥑
+</p>
+`;
+
+exports[`A Text component weight 1`] = `
+<p
+  className=""
+>
+  🥑
+</p>
+`;
+
+exports[`A Text component with mode 1`] = `
+<p
+  className=""
+>
+  🥑
+</p>
+`;
+
+exports[`A code Text component 1`] = `
+<code
+  className=""
+>
+  🥑
+</code>
+`;
+
+exports[`A default Text component 1`] = `
+<p
+  className=""
+>
+  🥑
+</p>
+`;
+
+exports[`A span Text component 1`] = `
+<span
+  className=""
+>
+  🥑
+</span>
+`;

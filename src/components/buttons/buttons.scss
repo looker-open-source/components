@@ -1,9 +1,5 @@
 @import '../../styles/font-utils';
 
-$purple-normal-button: #64518A;
-$purple-hover-button: #473764;
-$purple-active-button: #2A1B60;
-
 $light-normal-button: #FFFFFF;
 $light-hover-button: #EAE6FA;
 $light-active-button: #D6CDF5;
@@ -23,10 +19,10 @@ $text-purple: #7E64E0;
 
 .button {
   @include fontSize(16px);
-  background-color: $purple-normal-button;
-  border: pxToRem(1px) solid $purple-normal-button;
+  background-color: var(--lens-primary-color);
+  border: pxToRem(1px) solid var(--lens-primary-color-border);
   border-radius: pxToRem(6px);
-  color: $text-white;
+  color: var(--lens-primary-color-text);
   cursor: pointer;
   display: inline-block;
   line-height: pxToRem(24px);
@@ -36,13 +32,13 @@ $text-purple: #7E64E0;
   vertical-align: middle;
 
   &:hover, &.hover {
-    background-color: $purple-hover-button;
-    border-color: $purple-hover-button;
+    background-color:  var(--lens-primary-color-hover);
+    border-color: var(--lens-primary-color-hover);
   }
 
   &:active, &.active {
-    background-color: $purple-active-button;
-    border-color: $purple-active-button;
+    background-color: var(--lens-primary-color-active);
+    border-color: var(--lens-primary-color-active);
   }
 
   &.size-extra-small {

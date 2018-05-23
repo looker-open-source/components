@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`A <h1> Heading 1`] = `
+<h1
+  className=""
+>
+  🥑
+</h1>
+`;
+
+exports[`A <h1> Heading sized to <h2> 1`] = `
+<h1
+  className=""
+>
+  🥑
+</h1>
+`;
+
+exports[`A Heading to semi-bold 1`] = `
+<h3
+  className=""
+>
+  🥑
+</h3>
+`;
+
+exports[`A Heading transformed 1`] = `
+<h3
+  className=""
+>
+  🥑
+</h3>
+`;
+
+exports[`A default Heading 1`] = `
+<h3
+  className=""
+>
+  🥑
+</h3>
+`;

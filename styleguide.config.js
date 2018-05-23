@@ -5,10 +5,27 @@ module.exports = {
   assetsDir: 'static',
   pagePerSection: true,
   propsParser: typescriptPropsParser,
+  showCode: true,
+  require: [
+    path.join(__dirname, '/static/css/style-guide.css')
+  ],
   sections: [
     {
       name: 'Lens',
       content: 'docs/intro.md'
+    },
+    {
+      name: 'Style',
+      sections: [
+      {
+        name: 'Typography',
+        content: 'docs/style/Typography.md'
+      },
+      {
+        name: 'Spacing',
+        content: 'docs/style/Spacing.md'
+      },
+    ]
     },
     {
       name: 'Components',
@@ -50,8 +67,21 @@ module.exports = {
               }
             }
           ]
-        }
+        },
+        {
+          test: /\.css$/,
+          use: [ 'style-loader', 'css-loader' ]
+        },
+        {
+          test: /\.svg$/,
+          loader: 'svg-inline-loader?classPrefix'
+        },
       ]
+    }
+  },
+  theme: {
+      fontFamily: {
+      base: '"Open Sans", sans-serif'
     }
   },
   styles: {
@@ -70,6 +100,58 @@ module.exports = {
         color: '#3C4345',
 
       }
+    },
+    Para: {
+      para: {
+        maxWidth: '765px'
+      }
+    },
+    Code: {
+      code: {
+        color: '#4C33AA',
+        padding: '2px 4px',
+        borderRadius: '4px',
+        background: '#F6F6F7  '
+      }
+    },
+    Playground: {
+        preview: {
+          backgroundColor: '#F2F2F9',
+          border: 'none',
+          borderRadius: '6px'
+      }
+    },
+    Typography: {
+      heading1: {
+        fontSize: '52px'
+      }
+    },
+    Heading: {
+      heading1: {
+        fontSize: 'var(--lens-font-size-d2)',
+        lineHeight: 'var(--lens-line-height-d2)',
+      },
+      heading2: {
+        fontSize: 'var(--lens-font-size-d3)',
+        lineHeight: 'var(--lens-line-height-d3)',
+        marginBottom: 'var(--lens-spacing-xl)'
+      },
+      heading3: {
+        fontSize: 'var(--lens-font-size-2)',
+        lineHeight: 'var(--lens-line-height-2)',
+        fontWeight: 600
+      }
+    },
+    StyleGuide: {
+      '@global body': {
+        fontFamily: '"Open Sans", sans-serif'
+      },
+      sidebar: {
+        width: '300px'
+      }
     }
+  },
+  editorConfig: {
+    theme: 'oceanic-next'
   }
 }

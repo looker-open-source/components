@@ -1,0 +1,137 @@
+@import '../../styles/variables';
+
+.lens-text {
+  text-rendering: optimizeLegibility;
+  font-family: $brand-font;
+  font-weight: $default-font-weight;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smoothing: antialiased;
+}
+
+p {
+  margin: 0;
+}
+
+.is-display-1 {
+  font-size: font-size(d1);
+  line-height: line-height(d1);
+}
+
+.is-display-2 {
+  font-size: font-size(d2);
+  line-height: line-height(d2);
+}
+
+.is-display-3 {
+  font-size: font-size(d3);
+  line-height: line-height(d3);
+}
+
+.is-heading-1 {
+  font-size: font-size(1);
+  line-height: line-height(1);
+}
+
+.is-heading-2 {
+  font-size: font-size(2);
+  line-height: line-height(2);
+}
+
+.is-heading-3 {
+  font-size: font-size(3);
+  line-height: line-height(3);
+}
+
+.is-heading-4 {
+  font-size: font-size(4);
+  line-height: line-height(4);
+}
+
+.is-heading-5 {
+  font-size: font-size(5);
+  line-height: line-height(5);
+}
+
+.is-heading-6 {
+  font-size: font-size(6);
+  line-height: line-height(6);
+}
+
+.font-weight-light {
+  font-weight: 300;
+}
+
+.font-weight-normal {
+  font-weight: 400;
+}
+
+.font-weight-semi-bold {
+  font-weight: 600;
+}
+
+.font-weight-bold {
+  font-weight: 700;
+}
+
+.font-weight-extra-bold {
+  font-weight: 600;
+}
+
+.transform-upper {
+  text-transform: uppercase;
+}
+
+.transform-lower {
+  text-transform: lowercase;
+}
+
+.transform-caps {
+  text-transform: capitalize;
+}
+
+.transform-none {
+  text-transform: none;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.align-justify {
+  text-align: justify;
+}
+
+
+.is-secondary {
+  color: color('gray', 600);
+}
+.is-subdued {
+  color: color('gray', 500);
+}
+
+.is-positive {
+  color: green;
+}
+
+.is-critical {
+  color: red;
+}
+
+.is-truncated {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.is-code {
+  font-family: $code-font;
+}

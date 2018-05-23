@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`A bullet List 1`] = `
+<ul
+  className=""
+>
+  <li
+    className=""
+  >
+    🥑
+  </li>
+  <li
+    className=""
+  >
+    🍕
+  </li>
+  <li
+    className=""
+  >
+    🥨
+  </li>
+</ul>
+`;
+
+exports[`A default List, should be a ul 1`] = `
+<ul
+  className=""
+>
+  <li
+    className=""
+  >
+    🥑
+  </li>
+  <li
+    className=""
+  >
+    🍕
+  </li>
+  <li
+    className=""
+  >
+    🥨
+  </li>
+</ul>
+`;
+
+exports[`A ordered List 1`] = `
+<ol
+  className=""
+>
+  <li
+    className=""
+  >
+    🥑
+  </li>
+  <li
+    className=""
+  >
+    🍕
+  </li>
+  <li
+    className=""
+  >
+    🥨
+  </li>
+</ol>
+`;

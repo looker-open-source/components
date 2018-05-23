@@ -1,0 +1,99 @@
+
+@import "util";
+
+
+
+
+// =========================================
+// Typography
+// =========================================
+
+// List of text sizes and line heights, first value is the font size, second value is line height
+// They are converted from pixels to rem values inline
+// Use function `font-size($key)` to get font-size value (e.g. font-size(xs))
+// Use function `line-height($key) to get line-height value
+
+$text-size: (
+  6:    pxToRem(12px),
+  5:    pxToRem(14px),
+  4:    pxToRem(16px),
+  3:    pxToRem(19px),
+  2:    pxToRem(22px),
+  1:    pxToRem(28px),
+  d3:   pxToRem(38px),
+  d2:   pxToRem(52px),
+  d1:   pxToRem(62px)
+);
+
+$line-height: (
+  6:    pxToRem(20px),
+  5:    pxToRem(24px),
+  4:    pxToRem(24px),
+  3:    pxToRem(27px),
+  2:    pxToRem(30px),
+  1:    pxToRem(36px),
+  d3:   pxToRem(46px),
+  d2:   pxToRem(60px),
+  d1:   pxToRem(72px)
+);
+
+$base-font-size: 16px;
+$brand-font: 'Open Sans', Helvetica, Arial, sans-serif;
+$code-font: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;
+$light: 300;
+$normal: 400;
+$semi-bold: 600;
+$bold: 700;
+$extra-bold: 900;
+$text-alignments: left, right, center, justify;
+$default-font-weight: 400;
+
+// =========================================
+// Spacing Units
+// =========================================
+// xs: 4px
+// sm: 8px
+// base: 16px
+// lg: 20px
+// xl: 24px
+// 2xl: 30px
+// 3xl: 36px
+// 4xl: 46px
+
+$spacing-base: pxToRem(16px);
+$spacing: (
+  xs:     $spacing-base * 0.25,
+  s:      $spacing-base * 0.5,
+  m:      $spacing-base,
+  l:      $spacing-base * 1.25,
+  xl:     $spacing-base * 1.5,
+  2xl:    $spacing-base * 1.875,
+  3xl:    $spacing-base * 2.25,
+  4xl:    $spacing-base * 2.875
+);
+
+
+// =========================================
+// Color
+// =========================================
+
+$colors: (
+  "purple": (
+    500: #64518A,
+    600: #473764,
+    700: #2A1B60
+  ),
+  "gray": (
+    100: #F6F6F7,
+    200: #E4E5E6,
+    300: #D2D3D4,
+    400: #A4A6A9,
+    500: #77797E,
+    600: #3C4345,
+    700: #1C2027
+  )
+);
+
+
+
+@import "config";
