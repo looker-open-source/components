@@ -18,7 +18,7 @@ At its most basic, a `Card` is a slightly styled container that organizes groups
 
 <div class="doc-section-divider"></div>
 
-### A more complex Card
+### A Card with content
 
 Using the `CardContent` component quickly gives your content consistent spacing inside your `Card`. You can then use other components to layout your `Card`.
 
