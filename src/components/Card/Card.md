@@ -42,7 +42,9 @@ A few common patterns for `Cards` are displaying them in groups and using images
 <CardGroup>
 
   <Card raised url="https://google.com/search?q=summer+activities">
+
     <CardMedia image="https://placeimg.com/640/480/nature" title="Summer Nature"></CardMedia>
+
     <CardContent>
       <Text size="6" transform="upper" weight="semi-bold" mode="subdued">Summer</Text>
       <Heading level="4" size="3" weight="semi-bold" truncate>Life in The Great Outdoors</Heading>
@@ -53,7 +55,9 @@ A few common patterns for `Cards` are displaying them in groups and using images
   </Card>
 
    <Card raised url="https://google.com/search?q=scenic+hikes">
+
     <CardMedia image="https://placeimg.com/630/480/nature" title="A Scenic Valley"></CardMedia>
+
     <CardContent>
       <Text size="6" transform="upper" weight="semi-bold" mode="subdued">Explore</Text>
       <Heading level="4" size="3" weight="semi-bold" truncate>Best Scenic Hikes</Heading>
@@ -64,7 +68,9 @@ A few common patterns for `Cards` are displaying them in groups and using images
   </Card>
 
   <Card raised url="https://google.com/search?q=relax+outdoors">
+
     <CardMedia image="https://placeimg.com/620/480/nature" title="Relaxing Views"></CardMedia>
+
     <CardContent>
       <Text size="6" transform="upper" weight="semi-bold" mode="subdued">Relax</Text>
       <Heading level="4" size="3" weight="semi-bold" truncate>Mindfull Wilderness</Heading>
