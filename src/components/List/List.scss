@@ -2,5 +2,26 @@
 
 .lens-list {
   margin: 0;
-  padding: 0 0 0 spacing(l);
+  padding: 0;
+  list-style-type: none;
+}
+
+.is-bullet {
+  list-style-type: disc;
+  padding-left: spacing(m);
+}
+
+.is-number {
+  list-style-type: decimal;
+  padding-left: spacing(m);
+}
+
+.is-letter {
+  list-style-type: upper-alpha;
+  padding-left: spacing(m);
+}
+
+.no-marker {
+  list-style-type: none;
+  padding-left: 0;
 }
