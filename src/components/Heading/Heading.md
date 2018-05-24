@@ -67,10 +67,20 @@ Another common pattern for headings is to control the font-weight and the text-t
 
 ### Heading alignment
 
-The `align` property allows you to adjust the `text-align` property of your `Heading` component. This is useful if you need to center or right align the text.
+The `align` property allows you to adjust the `text-align` property of your `<Heading />` component. This is useful if you need to center or right align the text.
 
 ```js
 <Heading align="left">◀️ Align left (Default) </Heading>
 <Heading align="center">◀️ Align Center ▶️</Heading>
 <Heading align="right">Align Right ▶️</Heading>
+```
+
+<div class="doc-section-divider"></div>
+
+### Truncation
+
+At times you may want your `<Heading />` to truncate instead of the text wrapping, the `truncate` property will do that for you.
+
+```js
+<Heading size="d3" truncate>I am some long text that will truncate instead of wrapping</Heading>
 ```
