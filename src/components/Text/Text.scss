@@ -112,18 +112,18 @@ p {
 
 
 .is-secondary {
-  color: color('gray', 600);
+  color: var(--lens-color-gray-600);
 }
 .is-subdued {
-  color: color('gray', 500);
+  color: var(--lens-color-gray);
 }
 
 .is-positive {
-  color: green;
+  color: var(--lens-color-positive);
 }
 
 .is-critical {
-  color: red;
+  color: var(--lens-color-critical);
 }
 
 .is-truncated {
