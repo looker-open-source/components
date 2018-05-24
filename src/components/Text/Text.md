@@ -1,0 +1,92 @@
+### Text Element
+
+By default the `<Text />` component will render text wrapped in a `<div>`,  if you need another html element for semantic purposes you can use the `element` property
+
+```js
+<Text>I get wrapped in a div</Text>
+<Text element="span">Wrapped in a span</Text>
+<Text element="p">Wrapped in a paragraph tag</Text>
+<Text element="code">Wrapped in a code tag</Text>
+```
+
+<div class="doc-section-divider"></div>
+
+### Text Size
+
+If you need to adjust the font-size of the rendered text, you can use the `size` property and a value from the [type scale](/#!/Typography)
+
+```js
+ <Text size="d1">Sized to d1</Text>
+ <Text size="1">Sized to 1</Text>
+ <Text size="6">Sized to 6</Text>
+```
+
+<div class="doc-section-divider"></div>
+
+### Weight & Transform
+
+Common patterns for text is to adjust the font weight and transform the text. Below is an example of using the `weight` and `transform` properties to modify the rendered text
+
+```js
+  <Text size="6" transform="upper" weight="semi-bold">A great story</Text>
+  <Text size="d3" weight="light">This is a great headline</Text>
+  <Text size="6" transform="caps">Some metadata about this story</Text>
+```
+
+<div class="doc-section-divider"></div>
+
+### Text Alignment
+
+You can use the `align` property to change the alignment of the rendered text, below is an example with aligned text put into `<Card />`s.
+
+```js
+<CardGroup>
+  <Card>
+    <CardContent>
+      <Text> I am aligned left by default</Text>
+    </CardContent>
+  </Card>
+  <Card>
+    <CardContent>
+      <Text align="center">This is how you can center align text</Text>
+    </CardContent>
+  </Card>
+  <Card>
+    <CardContent>
+      <Text align="right">This is how you can right align text</Text>
+    </CardContent>
+  </Card>
+  <Card>
+    <CardContent>
+     <Text align="justify">In some cases you may want to justify the text, this is how</Text>
+    </CardContent>
+  </Card>
+</CardGroup>
+```
+
+<div class="doc-section-divider"></div>
+
+### Text Mode
+
+Lens provides a few modes for the `<Text />` component based on common patterns we use in our applications, the `mode` property will change that will change the color the rendered text.
+
+```js
+<Text>Regular Text</Text>
+<Text mode="secondary">Secondary Text</Text>
+<Text mode="subdued">Subdued Text</Text>
+<Text mode="critical">Critical Text</Text>
+<Text mode="positive">Positive Text</Text>
+```
+
+
+<div class="doc-section-divider"></div>
+
+### Truncate
+
+At times you may want your `<Text />` to truncate instead of the text wrapping, the `truncate` property will do that for you.
+
+```js
+<div style={{width: "40%"}}>
+<Text truncate>Hello there I am some text that will truncate 🍕🥑🍪🥓</Text>
+</div>
+```
