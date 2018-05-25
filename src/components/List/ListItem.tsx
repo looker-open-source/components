@@ -11,7 +11,7 @@ type PropertyBag = {
 }
 
 /**
-
+ Renders a `<li>` tag inside a `<List>`
 */
 
 export const ListItem: React.SFC<ListItemProps> = ({className, ...args}) => {
