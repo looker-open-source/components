@@ -2,12 +2,13 @@
 
 By default a `<Block>` is just a full width `<div>` tag. It's main use is breaking content into blocks and facilitating the building up of component and layout patterns.
 
-
+```js
+<Block>⬛️◾️Blocks are really just divs, but they can do some cool things ◾️⬛ ️ </Block>
+```
 
 <div class="doc-section-divider"></div>
 
 ## Spacing with Blocks
-
 
 One powerful feature of a `<Block />` is the ability to control padding and margins for a chosen side. The available padding and margin values come from the [Lens Spacing Values](/#!/Spacing), which helps maintain consistent spacing throughout the UI.
 
@@ -74,7 +75,11 @@ const codeStyle = { border: 'solid 1px #E4E5E6', background: '#F6F6F7', padding:
     <code>spacing recipe: p="xs"</code>
   </Block>
 ```
+<div class="doc-section-divider"></div>
 
+## Layout with Blocks
+
+Another great feature of a `<Block>` is being able to compose layouts quickly using spacing and alignment. `<Block /`> layouts are based on [flex-box](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox) and require you to wrap your `<Block>` components in a `<BlockLayout>`..
 
 ```js
   <BlockLayout>
