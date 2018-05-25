@@ -57,6 +57,8 @@ $config: (
   color-gray-600: color('gray', 600),
   color-gray-700: color('gray', 700),
 
+  link-color: map-get($colors, 'link'),
+
   border-color: color('gray', 200),
 
 )

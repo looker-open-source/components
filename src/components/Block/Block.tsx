@@ -36,7 +36,7 @@ export interface BlockProps {
   mx?: SpacingValues
   my?: SpacingValues
 
-  className?: undefined
+  className?: string | undefined
 }
 
 type PropertyBag = {

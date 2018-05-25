@@ -3,9 +3,9 @@
 By default a `<List />` component will render as an unordered list, `<ul>` tag, with no marker. Each item in the list should be wrapped in the `<ListItem />` component. Below is an example of creating a list of links using the default list behavior.
 ```js
 <List>
-  <ListItem><Link href="/!#/Cards">Lens Card</Link></ListItem>
-  <ListItem><Link href="/!#/Link">Lens Link</Link></ListItem>
-  <ListItem><Link href="/!#/Heading">Lens Heading</Link></ListItem>
+  <ListItem><Link href="/#!/Cards">Lens Card</Link></ListItem>
+  <ListItem><Link href="/#!/Link">Lens Link</Link></ListItem>
+  <ListItem><Link href="/#!/Heading">Lens Heading</Link></ListItem>
 </List>
 ```
 
