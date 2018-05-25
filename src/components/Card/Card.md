@@ -20,7 +20,7 @@ At its most basic, a `Card` is a slightly styled container that organizes groups
 
 ### A Card with content
 
-Using the `CardContent` component quickly gives your content consistent spacing inside your `Card`. You can then use other components to layout your `Card`.
+Using the [`CardContent`](/#!/CardContent) component quickly gives your content consistent spacing inside your `Card`. You can then use other components to layout your `Card`.
 
 ```js
 <Card raised url="https://docs.looker.com/relnotes">

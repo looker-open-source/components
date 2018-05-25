@@ -13,6 +13,7 @@ type PropertyBag = {
   [key: string]: any
 }
 
+/** Ensures consistent spacing around the content within the `Card` component  */
 export const CardContent: React.SFC<CardContentProps> = ({className, pad, ...args}) => {
 
   const styleableProps: PropertyBag = {

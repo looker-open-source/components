@@ -5,14 +5,14 @@ import * as styles from './CardMedia.scss'
 export interface CardMediaProps {
   image: string
   title?: string
-  className?: undefined
+  className?: string | undefined
 }
-
 
 type PropertyBag = {
   [key: string]: any
 }
 
+/** Displays an image that reinforces the Card's content */
 export const CardMedia: React.SFC<CardMediaProps> = ({className, image, ...args}) => {
 
   const styleableProps: PropertyBag = {
