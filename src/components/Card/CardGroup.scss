@@ -2,10 +2,12 @@
 
 .card-group {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  grid-gap: spacing(xl);
 
-  .card {
-    margin-right: 20px;
-  }
+  //grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
+  //grid-gap: spacing(m);
 }
+
+.gap-s  { grid-gap: spacing(s); }
+.gap-m  { grid-gap: spacing(m); }
+.gap-l  { grid-gap: spacing(l); }
+.gap-xl { grid-gap: spacing(xl);}
