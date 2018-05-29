@@ -11,7 +11,7 @@ type PropertyBag = {
 }
 
 /**
-
+  Defines the table header for a `<DataTable />`
 */
 
 export const DataTableHead: React.SFC<DataTableHeadProps> = ({className, ...args}) => {

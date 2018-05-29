@@ -11,7 +11,7 @@ type PropertyBag = {
 }
 
 /**
-
+Used to display tabular data.
 */
 
 export const DataTable: React.SFC<DataTableProps> = ({className, ...args}) => {
