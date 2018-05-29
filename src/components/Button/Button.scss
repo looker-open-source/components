@@ -24,6 +24,7 @@ $text-purple: #7E64E0;
   border: pxToRem(1px) solid var(--lens-primary-color-border);
   border-radius: pxToRem(6px);
   color: var(--lens-primary-color-text);
+  font-family: var(--lens-brand-font);
   cursor: pointer;
   display: inline-block;
   line-height: pxToRem(24px);

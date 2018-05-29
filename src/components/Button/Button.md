@@ -90,9 +90,15 @@ Use the size property on a `<Button />` to modify the size the button rendered. 
 <List>
   <ListItem><Button size="large">Large Button</Button></ListItem>
   <ListItem><Button>Default Button</Button></ListItem>
-  <ListItem><Button size="small" mode="light">Small Light Button</Button></ListItem>
-  <ListItem><Button size="xsmall" mode="scary">Extra-Small Scary Button</Button></ListItem>
-
+  <ListItem><Button size="small">Small Light Button</Button></ListItem>
+  <ListItem><Button size="xsmall">Extra-Small Scary Button</Button></ListItem>
 </List>
 ```
+
+## Disabled
+Use a disabled button to indicate to the user what action will be possible on a page once a prerequisite action is taken. Disabled buttons do not respond to user interaction.
+```js
+<Button disabled>I am disabled</Button>
+```
+
 
