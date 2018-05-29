@@ -16,27 +16,41 @@ export type SpacingValues =
 export interface BlockProps {
   background?: string
   width?: number
+  /** Sets the align-self property when in a BlockGroup */
   align?: 'center' | 'start' | 'end' | 'baseline' | undefined
-
   // padding properties
+  /** Sets padding on all sides */
   p?: SpacingValues
+  /** Sets padding top */
   pt?: SpacingValues
+  /** Sets padding right */
   pr?: SpacingValues
+  /** Sets padding bottom */
   pb?: SpacingValues
+  /** Sets padding left */
   pl?: SpacingValues
+  /** Sets padding on left and right sides */
   px?: SpacingValues
+  /** Sets padding on top and bottom sides */
   py?: SpacingValues
 
   // margin properties
+  /** Sets margin on all sides */
   m?: SpacingValues
+  /** Sets margin top */
   mt?: SpacingValues
+  /** Sets margin right */
   mr?: SpacingValues
+   /** Sets margin bottom */
   mb?: SpacingValues
+  /** Sets margin left */
   ml?: SpacingValues
+  /** Sets margin on left and right sides */
   mx?: SpacingValues
+  /** Sets margin on top and bottom sides */
   my?: SpacingValues
 
-  className?: undefined
+  className?: string | undefined
 }
 
 type PropertyBag = {
@@ -44,7 +58,7 @@ type PropertyBag = {
 }
 
 /**
-Block.
+A building block for facilitating consistent layout, spacing, and alignment throughout an interface.
 */
 
 export const Block: React.SFC<BlockProps> = ({className, p, pt, pr, pb, pl, px, py, m, mt, mr, mb, ml, mx, my, align,...args}) => {

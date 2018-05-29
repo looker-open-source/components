@@ -126,6 +126,17 @@ module.exports = {
         fontSize: '52px'
       }
     },
+    Table: {
+
+      tableHead: {
+
+      },
+      cellHeading: {
+        '&:nth-child(2)': {
+          width: '55%'
+        }
+      },
+    },
     Heading: {
       heading1: {
         fontSize: 'var(--lens-font-size-d2)',

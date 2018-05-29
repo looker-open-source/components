@@ -14,7 +14,7 @@ type PropertyBag = {
 }
 
 /**
-
+Links navigate to other pages or additional information.
 */
 
 export const Link: React.SFC<LinkProps> = ({className, href, id, external,...args}) => {

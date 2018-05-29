@@ -1,8 +1,17 @@
 .lens-link {
-  color: blue;
+  color: var(--lens-link-color);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .card-link {
   color: inherit;
   text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+  }
 }

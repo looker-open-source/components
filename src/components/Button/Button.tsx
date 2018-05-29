@@ -1,6 +1,6 @@
 import * as React from 'react'
 import classNames from 'classnames'
-import * as styles from './buttons.scss'
+import * as styles from './Button.scss'
 
 export interface LookerButtonHTMLAttributes extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   mode?: 'light' | 'ghost' | 'scary' | undefined
@@ -18,11 +18,13 @@ type PropertyBag = {
  */
 export const Button = ({className, size, mode, state, disabled, ...args}: LookerButtonHTMLAttributes) => {
   const styleableProps: PropertyBag = {
-    [styles.active]: state == 'active',
-    [styles.hover]: state == 'hover',
     [styles.modeScary]: mode == 'scary',
     [styles.modeGhost]: mode == 'ghost',
     [styles.modeLight]: mode == 'light',
+
+    [styles.active]: state == 'active',
+    [styles.hover]: state == 'hover',
+
     [styles.sizeExtraSmall]: size == 'xsmall',
     [styles.sizeSmall]: size == 'small',
     [styles.sizeLarge]: size == 'large',

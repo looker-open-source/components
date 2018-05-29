@@ -3,7 +3,8 @@ import classNames from 'classnames'
 import * as styles from './List.scss'
 
 export interface ListProps {
-  type?: 'bullet' | 'number'
+  type?: 'bullet' | 'number' | 'letter'
+  nomarker?: boolean
   className?: string
 }
 
@@ -12,12 +13,16 @@ type PropertyBag = {
 }
 
 /**
-
+List are stacked groups of related content that can be useful in many contexts.
 */
 
-export const List: React.SFC<ListProps> = ({className, type,...args}) => {
+export const List: React.SFC<ListProps> = ({className, type, nomarker, ...args}) => {
   const styleableProps: PropertyBag = {
     [styles.lensList]: className == 'lens-list',
+    [styles.isBullet]: type == 'bullet',
+    [styles.isNumber]: type == 'number',
+    [styles.isLetter]: type == 'letter',
+    [styles.noMarker]: !!nomarker
   }
 
   let Tag = undefined
@@ -26,6 +31,9 @@ export const List: React.SFC<ListProps> = ({className, type,...args}) => {
       Tag = 'ul'
       break
     case 'number':
+      Tag = 'ol'
+      break
+    case 'letter':
       Tag = 'ol'
       break
     default:

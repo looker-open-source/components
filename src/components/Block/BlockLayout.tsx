@@ -3,11 +3,15 @@ import classNames from 'classnames'
 import * as styles from './BlockLayout.scss'
 
 export interface BlockLayoutProps {
+  /** Direction to layout the children */
   direction?: 'row' | 'column' | 'row-reverse' | 'column-reverse'
+  /** How to align the content inside the parent */
   align?: 'center' | 'start' | 'end' | 'baseline'
-  justify?: 'center' | 'start' | 'end' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch'
+  /** How to justify the content insidne the parent */
+  justify?: 'center' | 'start' | 'end' | 'between' | 'around' | 'evenly' | 'stretch'
+  /** Should the columns wrap and what direction to wrap them */
   wrap?: 'yes' | 'no' | 'reverse'
-  className?: undefined
+  className?: string
 }
 
 type PropertyBag = {
@@ -15,7 +19,7 @@ type PropertyBag = {
 }
 
 /**
-Block Layout.
+Flexbox wrapper for creating layouts using the `<Block />` component .
 */
 
 export const BlockLayout: React.SFC<BlockLayoutProps> = ({className, direction, align, justify, wrap, ...args}) => {
@@ -35,9 +39,9 @@ export const BlockLayout: React.SFC<BlockLayoutProps> = ({className, direction, 
     [styles.justifyCenter]: justify == 'center',
     [styles.justifyFlexStart]: justify == 'start',
     [styles.justifyFlexEnd]: justify == 'end',
-    [styles.justifySpaceBetween]: justify == 'space-between',
-    [styles.justifySpaceAround]: justify == 'space-around',
-    [styles.justifySpaceEvenly]: justify == 'space-evenly',
+    [styles.justifySpaceBetween]: justify == 'between',
+    [styles.justifySpaceAround]: justify == 'around',
+    [styles.justifySpaceEvenly]: justify == 'evenly',
     [styles.justifyStretch]: justify == 'stretch',
 
     [styles.wrap]: wrap == 'yes',

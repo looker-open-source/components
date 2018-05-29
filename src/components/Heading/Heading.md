@@ -1,5 +1,5 @@
 
-### **Heading Default**
+### Heading Default
 The `<Heading />` component is used to render a HTML `<h1>` - `<h6>` element, by default it will render a `<h3>` element
 ```js
 // A heading component that defaults to a h3
@@ -7,9 +7,11 @@ The `<Heading />` component is used to render a HTML `<h1>` - `<h6>` element, by
 <Heading>Hello Good Looker 👋</Heading>
 ```
 
-### **Heading Levels**
+<div class="doc-section-divider"></div>
 
-To use a different HTML heading element,  the `<Heading />` component accepts a `level` attribute that corresponds to the `<h1>` - `<h6>` elements. The font-size of each heading element maps to the Lens type ramp
+### Heading Levels
+
+To use a different HTML heading element,  the `<Heading />` component accepts a `level` attribute that corresponds to the `<h1>` - `<h6>` elements. The font-size of each heading element maps to the Lens [type ramp](/#!/Typography)
 
 ```js
 // Heading components using the level attribute (font-size / line-height)
@@ -23,10 +25,11 @@ To use a different HTML heading element,  the `<Heading />` component accepts a 
   <Heading level="6">I’m a h6 element (12px/16px)</Heading>
 </div>
 ```
+<div class="doc-section-divider"></div>
 
-### **Heading Sizes**
+### Heading Sizes
 
-When creating accessible pages it is important that headings create a [logical document outline](https://bitsofco.de/using-heading-elements-to-create-a-document-outline/), but sometimes the font-size of the heading element doesn't match to the needs of the design or layout. Composing the `level` and the `size` attributes lets you choose the semantically correct level heading and the desired size. The available size values come from the type ramp.
+When creating accessible pages it is important that headings create a [logical document outline](https://bitsofco.de/using-heading-elements-to-create-a-document-outline/), but sometimes the font-size of the heading element doesn't match to the needs of the design or layout. Composing the `level` and the `size` attributes lets you choose the semantically correct level heading and the desired size. The available size values come from the [type ramp](/#!/Typography).
 
 ```js
 // Heading components using the level and size attribute (font-size / line-height)
@@ -44,6 +47,8 @@ When creating accessible pages it is important that headings create a [logical d
 </div>
 ```
 
+<div class="doc-section-divider"></div>
+
 ### **Weight and Transform**
 
 Another common pattern for headings is to control the font-weight and the text-transform properties. The `<Heading />` component allows you to adjust those with the `weight` and `transform` attributes.
@@ -58,120 +63,24 @@ Another common pattern for headings is to control the font-weight and the text-t
 </div>
 ```
 
-### **Heading Playground**
+<div class="doc-section-divider"></div>
 
-```js noeditor
-class Inputer extends React.Component {
+### Heading alignment
 
-  constructor () {
-    super()
-    this.state = {
-      level: '',
-      size: '',
-      weight: '',
-      transform: '',
-      levelString: '🎉 - Hello, I am a <h3> - 🎉',
-      sizeString: '',
-      weightString: '',
-      transformString: ''
-    }
-  }
+The `align` property allows you to adjust the `text-align` property of your `<Heading />` component. This is useful if you need to center or right align the text.
 
-  onChangeLevel (event) {
-    let string = ((event.target.value.length) && (event.target.value !=='-'))?  `🎉 - Hello, I am a <h${event.target.value}> - 🎉 ` : '🎉 - Hello, I am a <h3> - 🎉'
-    this.setState({level: event.target.value, levelString: string})
-  }
+```js
+<Heading align="left">◀️ Align left (Default) </Heading>
+<Heading align="center">◀️ Align Center ▶️</Heading>
+<Heading align="right">Align Right ▶️</Heading>
+```
 
-  onChangeSize (event) {
-    //let string = event.target.value.length?  `at size ${event.target.value}` : ''
-    this.setState({size: event.target.value})
-  }
+<div class="doc-section-divider"></div>
 
-  onChangeWeight (event) {
-     //let string = event.target.value.length?  `at size ${event.target.value}` : ''
-     this.setState({weight: event.target.value})
-  }
+### Truncation
 
-  onChangeTransform (event) {
-     //let string = event.target.value.length?  `at size ${event.target.value}` : ''
-     this.setState({transform: event.target.value})
-  }
+At times you may want your `<Heading />` to truncate instead of the text wrapping, the `truncate` property will do that for you.
 
-
-
-  render () {
-    return (<div>
-    <div style={{display: 'flex', marginBottom: '32px'}}>
-    <div style={{marginRight: '16px'}}>
-    <Text element="span" size="6" weight="semi-bold" style={{marginRight: '8px'}}><label>Level:</label></Text>
-    <select onChange={this.onChangeLevel.bind(this)}>
-      <option value="">Default</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-    </select>
-    </div>
-
-    <div style={{marginRight: '16px'}}>
-     <Text element="span" size="6" weight="semi-bold" style={{marginRight: '8px'}}><label>Size</label></Text>
-    <select onChange={this.onChangeSize.bind(this)}>
-      <option value="">Default</option>
-      <option value="d1">d1</option>
-      <option value="d2">d2</option>
-      <option value="d3">d3</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-    </select>
-    </div>
-
-    <div style={{marginRight: '16px'}}>
-     <Text element="span" size="6" weight="semi-bold" style={{marginRight: '8px'}}><label>Weight</label></Text>
-    <select onChange={this.onChangeWeight.bind(this)}>
-      <option value="">-</option>
-      <option value="light">Light</option>
-      <option value="normal">Normal(Default)</option>
-      <option value="semi-bold">Semi-Bold</option>
-      <option value="bold">Bold</option>
-    </select>
-    </div>
-
-    <div style={{marginRight: '16px'}}>
-     <Text element="span" size="5" weight="semi-bold" style={{marginRight: '8px'}}><label>Transform</label></Text>
-    <select onChange={this.onChangeTransform.bind(this)}>
-      <option value="">-</option>
-      <option value="lower">Lower</option>
-      <option value="none">None</option>
-      <option value="upper">Upper</option>
-      <option value="caps">Caps</option>
-    </select>
-    </div>
-    </div>
-
-    <div style={{backgroundColor: "#F2F2F9", padding: '30px 16px', borderRadius: '6px'}}>
-
-
-    <Heading level={this.state.level} size={this.state.size} weight={this.state.weight} transform={this.state.transform}> {this.state.levelString} {this.state.sizeString} {this.state.text}</Heading>
-
-    <div style={{backgroundColor: '#304148', padding: '12px', color: "#C594C5", marginTop: '30px'}}>
-    <Text element="code" size="6">
-      &lt;Heading{this.state.level.length > 0 && ` level="${this.state.level}"` }
-                  {this.state.size.length > 0 && ` size="${this.state.size}"` }
-                  {this.state.weight.length > 0 && ` weight="${this.state.weight}"` }
-                  {this.state.transform.length > 0 && ` transform="${this.state.transform}"` }&gt;
-                  <Text element="code" style={{color:"#fff"}}>{this.state.levelString}</Text>
-                  &lt;/Heading&gt;</Text>
-    </div>
-    </div>
-    </div>)
-  }
-}
-
-<Inputer />
+```js
+<Heading size="d3" truncate>I am some long text that will truncate instead of wrapping</Heading>
 ```

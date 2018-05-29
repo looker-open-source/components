@@ -27,6 +27,9 @@ $config: (
   spacing-3xl: spacing(3xl),
   spacing-4xl: spacing(4xl),
 
+  brand-font: $brand-font,
+  code-font: $code-font,
+
   font-size-d1: font-size(d1),
   font-size-d2: font-size(d2),
   font-size-d3: font-size(d3),
@@ -47,8 +50,20 @@ $config: (
   line-height-5: line-height(5),
   line-height-6: line-height(6),
 
+  color-critical: color('red'),
+  color-positive: color('green'),
+  color-gray-100: color('gray', 100),
+  color-gray-200: color('gray', 200),
+  color-gray-300: color('gray', 300),
+  color-gray-400: color('gray', 400),
+  color-gray: color('gray', 500),
+  color-gray-600: color('gray', 600),
+  color-gray-700: color('gray', 700),
+
+  link-color: map-get($colors, 'link'),
 
   border-color: color('gray', 200),
+
 )
 
 :root {
