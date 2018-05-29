@@ -79,12 +79,20 @@ const codeStyle = { border: 'solid 1px #E4E5E6', background: '#F6F6F7', padding:
 
 ## Layout with Blocks
 
-Another great feature of a `<Block>` is being able to compose layouts quickly using spacing and alignment. `<Block /`> layouts are based on [flex-box](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox) and require you to wrap your `<Block>` components in a `<BlockLayout>`..
+Another great feature of a `<Block>` is being able to compose layouts quickly using spacing and alignment. `<Block /`> layouts are based on [flex-box](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox) and require you to wrap your `<Block />` components in a `<BlockLayout />`.
+
+### Default Layout Behavior
+
+By default a `<BlockLayout />` will render the children `<Block />` components inline and sized to it's content. The `<Block />` components will no longer be 100% width.
 
 ```js
   <BlockLayout>
-    <Block>Block 1</Block>
-    <Block>Block 2</Block>
-    <Block>Block 3</Block>
+    <Block>Apples 🍎</Block>
+    <Block>Oranges 🍊</Block>
+    <Block>Grapes 🍇</Block>
   </BlockLayout>
 ```
+
+### More layout examples
+
+See more in depth examples of layout in the [Block Layout](/#!/BlockLayout) component page.
