@@ -1,111 +1,98 @@
----
+## Mode
 
-## Primary
+The `<Button />` component accepts a `mode` property which allows you to select the proper button style for the context and action the button is for.
+
+### Primary
 
 Use a primary button for the most frequently used action or most important action on a page. Primary buttons should only appear once on a page. They are sometimes accompanied by a secondary button.
 
 ```js
-<table>
-  <tbody>
-    <tr>
-      <td>
-        <Button>Primary Idle</Button>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <Button state="hover">Primary Hover</Button>
-      </td>
-    </tr>
-    <tr>
-      <td>
-          <Button state="active">Primary Active</Button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<List>
+  <ListItem>
+    <Button>Primary Idle</Button>
+  </ListItem>
+  <ListItem>
+    <Button state="hover">Primary Hover</Button>
+  </ListItem>
+  <ListItem>
+     <Button state="active">Primary Active</Button>
+  </ListItem>
+</List>
 ```
 
-## Light
+<div class="doc-section-divider"></div>
 
-Use a light button alongside a primary button to provide alternative actions on a page. Secondary buttons should only appear alongside primary buttons. Use no more than two secondary buttons on a page.
+### Light
+Use a light button alongside a primary button to provide alternative actions on a page. Light buttons should only appear alongside primary buttons. Use no more than two secondary buttons on a page.
 
 ```js
-<table>
-  <tbody>
-    <tr>
-      <td>
-        <Button mode="light">Light Idle</Button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+
+<List>
+  <ListItem>
+    <Button mode="light">Light Idle</Button>
+  </ListItem>
+  <ListItem>
+    <Button mode="light"state="hover">Light Hover</Button>
+  </ListItem>
+  <ListItem>
+     <Button mode="light"state="active">Light Active</Button>
+  </ListItem>
+</List>
 ```
 
+<div class="doc-section-divider"></div>
 
-## Sizes
+### Ghost
+
+Use a ghost button as a tertiary action on a screen, they are often used as a Cancel button on a form. Typically it performs the opposite action of a Light button
 
 ```js
-class Inputer extends React.Component {
 
-  constructor () {
-    super()
-    this.state = {
-      checked: false,
-      text: 'small',
-      mode: undefined
-    }
-  }
-
-  onCheck (event) {
-    this.setState({checked: event.target.checked ? 'active': 'hover' })
-  }
-
-  onChangeText (event) {
-    this.setState({text: event.target.value})
-  }
-
-  onChangeMode (event) {
-
-
-    this.setState({
-      mode: event.target.value == '' ? undefined : event.target.value
-    })
-  }
-
-  render () {
-    return (<div>
-    <select onChange={this.onChangeMode.bind(this)}>
-      <option value="" selected>Default</option>
-      <option value="light">Light</option>
-      <option value="ghost">Ghost</option>
-      <option value="scary">Scary</option>
-    </select>
-    <table>
-      <tbody>
-        <tr>
-          <td><Button size="extraSmall" mode={this.state.mode}>X-Small</Button></td>
-        </tr>
-        <tr>
-          <td>
-            <Button size="small" mode={this.state.mode}>{this.state.text}</Button>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <Button size="" mode={this.state.mode}>Normal</Button>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <Button size="large" mode={this.state.mode}>Large</Button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    </div>)
-  }
-}
-
-<Inputer />
+<List>
+  <ListItem>
+    <Button mode="ghost">Ghost Idle</Button>
+  </ListItem>
+  <ListItem>
+    <Button mode="ghost"state="hover">Ghost Hover</Button>
+  </ListItem>
+  <ListItem>
+     <Button mode="ghost"state="active">Ghost Active</Button>
+  </ListItem>
+</List>
 ```
+
+<div class="doc-section-divider"></div>
+
+### Scary
+
+Scary Buttons are to be used in situations where you need to convey some very important, potentially irreversible consequence of pressing this button.
+
+```js
+<List>
+  <ListItem>
+    <Button mode="scary">Scary Idle</Button>
+  </ListItem>
+  <ListItem>
+    <Button mode="scary"state="hover">Scary Hover</Button>
+  </ListItem>
+  <ListItem>
+     <Button mode="scary"state="active">Scary Active</Button>
+  </ListItem>
+</List>
+```
+
+
+## Size
+
+Use the size property on a `<Button />` to modify the size the button rendered. You can combine it with the `mode` property to get the correct style and size of button you need.
+
+```js
+<List>
+  <ListItem><Button size="large">Large Button</Button></ListItem>
+  <ListItem><Button>Default Button</Button></ListItem>
+  <ListItem><Button size="small" mode="light">Small Light Button</Button></ListItem>
+  <ListItem><Button size="xsmall" mode="scary">Extra-Small Scary Button</Button></ListItem>
+
+</List>
+```
+

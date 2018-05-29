@@ -3,6 +3,7 @@
 $light-normal-button: #FFFFFF;
 $light-hover-button: #EAE6FA;
 $light-active-button: #D6CDF5;
+
 $light-normal-button-border: #7E64E0;
 $light-hover-button-border: #4C33AA;
 $light-active-button-border: #4C33AA;
@@ -59,31 +60,31 @@ $text-purple: #7E64E0;
   }
 
   &.mode-light {
-    background: $light-normal-button;
+    background-color: $light-normal-button;
     color: $text-purple;
     border-color: $light-normal-button-border;
 
-    &:hover {
+    &:hover,&:focus, &.hover {
       background-color: $light-hover-button;
       border-color: $light-hover-button-border;
     }
 
-    &:active {
+    &:active, &.active {
       background-color: $light-active-button;
       border-color: $light-active-button-border;
     }
   }
 
   &.mode-ghost {
-    background: $light-normal-button;
+    background: transparent;
     border-color: transparent;
     color: $text-purple;
 
-    &:hover {
+    &:hover, &:focus, &.hover {
       background-color: $light-hover-button;
     }
 
-    &:active {
+    &:active, &.active {
       background-color: $light-active-button;
     }
   }
@@ -92,12 +93,12 @@ $text-purple: #7E64E0;
     background: $scary-normal-button;
     border-color: $scary-normal-button;
 
-    &:hover {
+    &:hover, &:focus, &.hover {
       border-color: $scary-hover-button;
       background-color: $scary-hover-button;
     }
 
-    &:active {
+    &:active, &.active {
       border-color: $scary-active-button;
       background-color: $scary-active-button;
     }

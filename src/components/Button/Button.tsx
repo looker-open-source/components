@@ -18,11 +18,13 @@ type PropertyBag = {
  */
 export const Button = ({className, size, mode, state, disabled, ...args}: LookerButtonHTMLAttributes) => {
   const styleableProps: PropertyBag = {
-    [styles.active]: state == 'active',
-    [styles.hover]: state == 'hover',
     [styles.modeScary]: mode == 'scary',
     [styles.modeGhost]: mode == 'ghost',
     [styles.modeLight]: mode == 'light',
+
+    [styles.active]: state == 'active',
+    [styles.hover]: state == 'hover',
+
     [styles.sizeExtraSmall]: size == 'xsmall',
     [styles.sizeSmall]: size == 'small',
     [styles.sizeLarge]: size == 'large',
