@@ -10,27 +10,27 @@ Using the `<BlockLayout />` component you can control the direction in which the
 ```js
 <BlockLayout>
   <BlockLayout style={{marginRight: '1rem'}}>
-    <Block p="s" style={{background: 'rgba(255, 0,0, 0.3)'}}>One</Block>
-    <Block p="s" style={{background: 'rgba(0, 255,0, 0.3)'}}>Two</Block>
-    <Block p="s" style={{background: 'rgba(0, 0,255, 0.3)'}}>Three</Block>
+    <Block p="s" background="red-400">One</Block>
+    <Block p="s" background="green-400">Two</Block>
+    <Block p="s" background="blue-400">Three</Block>
   </BlockLayout>
 
   <BlockLayout direction="column" style={{marginRight: '1rem'}}>
-    <Block p="s" style={{background: 'rgba(255, 0,0, 0.3)'}}>One</Block>
-    <Block p="s" style={{background: 'rgba(0, 255,0, 0.3)'}}>Two</Block>
-    <Block p="s" style={{background: 'rgba(0, 0,255, 0.3)'}}>Three</Block>
+    <Block p="s" background="red-400">One</Block>
+    <Block p="s" background="green-400">Two</Block>
+    <Block p="s" background="blue-400">Three</Block>
   </BlockLayout>
 
   <BlockLayout direction="row-reverse" style={{marginRight: '1rem'}}>
-    <Block p="s" style={{background: 'rgba(255, 0,0, 0.3)'}}>One</Block>
-    <Block p="s" style={{background: 'rgba(0, 255,0, 0.3)'}}>Two</Block>
-    <Block p="s" style={{background: 'rgba(0, 0,255, 0.3)'}}>Three</Block>
+    <Block p="s" background="red-400">One</Block>
+    <Block p="s" background="green-400">Two</Block>
+    <Block p="s" background="blue-400">Three</Block>
   </BlockLayout>
 
   <BlockLayout direction="column-reverse" style={{marginRight: '1rem'}}>
-    <Block p="s" style={{background: 'rgba(255, 0,0, 0.3)'}}>One</Block>
-    <Block p="s" style={{background: 'rgba(0, 255,0, 0.3)'}}>Two</Block>
-    <Block p="s" style={{background: 'rgba(0, 0,255, 0.3)'}}>Three</Block>
+    <Block p="s" background="red-400">One</Block>
+    <Block p="s" background="green-400">Two</Block>
+    <Block p="s" background="blue-400">Three</Block>
   </BlockLayout>
 </BlockLayout>
 ```
@@ -43,41 +43,41 @@ Using the `justify` property you can choose how to align the items in the direct
 
 
 <BlockLayout style={{marginBottom: '1rem', borderBottom: 'solid 1px #ddd'}}>
-  <Block><Text size="d3">🍎</Text></Block>
   <Block><Text size="d3">🤲</Text></Block>
+  <Block><Text size="d3">🍎</Text></Block>
   <Block><Text size="d3">🦄</Text></Block>
 </BlockLayout>
 
 <BlockLayout justify="between" style={{marginBottom: '1rem', borderBottom: 'solid 1px #ddd'}}>
-  <Block><Text size="d3">🍎</Text></Block>
   <Block><Text size="d3">🤲</Text></Block>
+  <Block><Text size="d3">🍎</Text></Block>
   <Block><Text size="d3">🦄</Text></Block>
 </BlockLayout>
 
 
 <BlockLayout justify="around" style={{marginBottom: '1rem', borderBottom: 'solid 1px #ddd'}}>
-  <Block><Text size="d3">🍎</Text></Block>
   <Block><Text size="d3">🤲</Text></Block>
+  <Block><Text size="d3">🍎</Text></Block>
   <Block><Text size="d3">🦄</Text></Block>
 </BlockLayout>
 
 
 <BlockLayout justify="evenly" style={{marginBottom: '1rem', borderBottom: 'solid 1px #ddd'}}>
-  <Block><Text size="d3">🍎</Text></Block>
   <Block><Text size="d3">🤲</Text></Block>
+  <Block><Text size="d3">🍎</Text></Block>
   <Block><Text size="d3">🦄</Text></Block>
 </BlockLayout>
 
 <BlockLayout justify="center" style={{marginBottom: '1rem', borderBottom: 'solid 1px #ddd'}}>
-  <Block><Text size="d3">🍎</Text></Block>
   <Block><Text size="d3">🤲</Text></Block>
+  <Block><Text size="d3">🍎</Text></Block>
   <Block><Text size="d3">🦄</Text></Block>
 </BlockLayout>
 
 
 <BlockLayout justify="end" style={{marginBottom: '1rem', borderBottom: 'solid 1px #ddd'}}>
-  <Block><Text size="d3">🍎</Text></Block>
   <Block><Text size="d3">🤲</Text></Block>
+  <Block><Text size="d3">🍎</Text></Block>
   <Block><Text size="d3">🦄</Text></Block>
 </BlockLayout>
 ```
@@ -92,9 +92,9 @@ Use the `align` property to change how the child `<Block />` components align th
 <Block mb="l">
  <Text size="6" weight="semi-bold">Stretch - default</Text>
   <BlockLayout align="stretch">
-    <Block p="4xl" style={{background: 'rgba(255, 0,0, 0.3)'}}>One</Block>
-    <Block p="xl" style={{background: 'rgba(0, 255,0, 0.3)'}}>Two</Block>
-    <Block p="s" style={{background: 'rgba(0, 0,255, 0.3)'}}>Three</Block>
+    <Block p="4xl" background="red-400">One</Block>
+    <Block p="xl" background="green-400">Two</Block>
+    <Block p="s" background="blue-400">Three</Block>
   </BlockLayout>
 </Block>
 
@@ -102,9 +102,9 @@ Use the `align` property to change how the child `<Block />` components align th
 <Block mb="l">
   <Text size="6" weight="semi-bold">Align to Baseline</Text>
   <BlockLayout align="baseline">
-    <Block p="4xl" style={{background: 'rgba(255, 0,0, 0.3)'}}>One</Block>
-    <Block p="xl" style={{background: 'rgba(0, 255,0, 0.3)'}}>Two</Block>
-    <Block p="s" style={{background: 'rgba(0, 0,255, 0.3)'}}>Three</Block>
+    <Block p="4xl" background="red-400">One</Block>
+    <Block p="xl" background="green-400">Two</Block>
+    <Block p="s" background="blue-400">Three</Block>
   </BlockLayout>
 </Block>
 
@@ -112,27 +112,27 @@ Use the `align` property to change how the child `<Block />` components align th
 <Block mb="l">
   <Text size="6" weight="semi-bold">Aligned Center</Text>
   <BlockLayout align="center">
-    <Block p="4xl" style={{background: 'rgba(255, 0,0, 0.3)'}}>One</Block>
-    <Block p="xl" style={{background: 'rgba(0, 255,0, 0.3)'}}>Two</Block>
-    <Block p="s" style={{background: 'rgba(0, 0,255, 0.3)'}}>Three</Block>
+    <Block p="4xl" background="red-400">One</Block>
+    <Block p="xl" background="green-400">Two</Block>
+    <Block p="s" background="blue-400">Three</Block>
   </BlockLayout>
 </Block>
 
 <Block mb="l">
   <Text size="6" weight="semi-bold">Align to Start</Text>
   <BlockLayout align="start">
-    <Block p="4xl" style={{background: 'rgba(255, 0,0, 0.3)'}}>One</Block>
-    <Block p="xl" style={{background: 'rgba(0, 255,0, 0.3)'}}>Two</Block>
-    <Block p="s" style={{background: 'rgba(0, 0,255, 0.3)'}}>Three</Block>
+    <Block p="4xl" background="red-400">One</Block>
+    <Block p="xl" background="green-400">Two</Block>
+    <Block p="s" background="blue-400">Three</Block>
   </BlockLayout>
 </Block>
 
 <Block mb="l">
   <Text size="6" weight="semi-bold">Align to End</Text>
   <BlockLayout align="end">
-    <Block p="4xl" style={{background: 'rgba(255, 0,0, 0.3)'}}>One</Block>
-    <Block p="xl" style={{background: 'rgba(0, 255,0, 0.3)'}}>Two</Block>
-    <Block p="s" style={{background: 'rgba(0, 0,255, 0.3)'}}>Three</Block>
+    <Block p="4xl" background="red-400">One</Block>
+    <Block p="xl" background="green-400">Two</Block>
+    <Block p="s" background="blue-400">Three</Block>
   </BlockLayout>
 </Block>
 

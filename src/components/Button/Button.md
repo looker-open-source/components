@@ -91,7 +91,7 @@ Use the size property on a `<Button />` to modify the size the button rendered. 
   <ListItem><Button size="large">Large Button</Button></ListItem>
   <ListItem><Button>Default Button</Button></ListItem>
   <ListItem><Button size="small">Small Light Button</Button></ListItem>
-  <ListItem><Button size="xsmall">Extra-Small Scary Button</Button></ListItem>
+  <ListItem><Button size="xsmall">Extra-Small Button</Button></ListItem>
 </List>
 ```
 
