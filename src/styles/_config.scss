@@ -1,9 +1,9 @@
 $config: (
 
-  primary-color: color('purple'),
-  primary-color-hover: color('purple', 600),
-  primary-color-active: color('purple', 700),
-  primary-color-border:  color('purple'),
+  primary-color: color('primary'),
+  primary-color-hover: color('primary', 600),
+  primary-color-active: color('primary', 700),
+  primary-color-border:  color('primary'),
   primary-color-text: #fff,
 
   secondary-color: #ffffff,
@@ -17,6 +17,7 @@ $config: (
   scary-color-active: #92100E,
   scary-color-border: #E1332C,
   scary-color-text: #FFFFFF,
+
 
   spacing-xs: spacing(xs),
   spacing-sm: spacing(s),
@@ -59,6 +60,46 @@ $config: (
   color-gray: color('gray', 500),
   color-gray-600: color('gray', 600),
   color-gray-700: color('gray', 700),
+
+  color-purple: color('purple'),
+  color-purple-300: color('purple', 300),
+  color-purple-400: color('purple', 400),
+  color-purple-600: color('purple', 600),
+  color-purple-700: color('purple', 700),
+
+  color-blue: color('blue'),
+  color-blue-300: color('blue', 300),
+  color-blue-400: color('blue', 400),
+  color-blue-600: color('blue', 600),
+  color-blue-700: color('blue', 700),
+
+  color-yellow: color('yellow'),
+  color-yellow-300: color('yellow', 300),
+  color-yellow-400: color('yellow', 400),
+  color-yellow-600: color('yellow', 600),
+  color-yellow-700: color('yellow', 700),
+
+  color-green: color('green'),
+  color-green-300: color('green', 300),
+  color-green-400: color('green', 400),
+  color-green-600: color('green', 600),
+  color-green-700: color('green', 700),
+
+  color-red: color('red'),
+  color-red-300: color('red', 300),
+  color-red-400: color('red', 400),
+  color-red-600: color('red', 600),
+  color-red-700: color('red', 700),
+
+  color-fog: color('fog'),
+  color-fog-200: color('fog', 200),
+  color-fog-300: color('fog', 300),
+  color-fog-400: color('fog', 400),
+
+  color-space: color('space'),
+  color-space-200: color('space', 200),
+  color-space-300: color('space', 300),
+  color-space-400: color('space', 400),
 
   link-color: map-get($colors, 'link'),
 

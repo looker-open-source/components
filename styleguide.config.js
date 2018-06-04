@@ -7,6 +7,7 @@ module.exports = {
   propsParser: typescriptPropsParser,
   showCode: true,
   require: [
+    'chroma-js',
     path.join(__dirname, '/static/css/style-guide.css')
   ],
   sections: [
@@ -17,6 +18,10 @@ module.exports = {
     {
       name: 'Style',
       sections: [
+      {
+        name: 'Color',
+        content: 'docs/style/Color.md'
+      },
       {
         name: 'Typography',
         content: 'docs/style/Typography.md'

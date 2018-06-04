@@ -1,6 +1,6 @@
 ### Table Headings
 
-This component is used to define the heading of the table, and describes the rows of data below. The `<DataTableHeader>` should have one `<tr>` tag and then use the `<th>` tags to be semantically correct.
+This component is used to define the heading of the table and describes the rows of data below. The `<DataTableHeader>` should have one `<tr>` tag and then use the `<th>` tags to be semantically correct.
 
 ```js
 <DataTable>
