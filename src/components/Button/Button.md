@@ -101,4 +101,11 @@ Use a disabled button to indicate to the user what action will be possible on a 
 <Button disabled>I am disabled</Button>
 ```
 
-
+## Additional Action Considerations 
+When a call to action requires additional steps, include an ellipsis at the end of the button text as a visual clue. This helps reinforce that there are aditional steps that can take place before the action takes effect.
+```js
+<List>
+  <ListItem><Button mode="scary">Move to Trash...</Button></ListItem>
+  <ListItem><Button>Print...</Button></ListItem>
+</List>
+```
