@@ -12,25 +12,13 @@ Inside this repository are both the core components Lens provides and the code f
  
 ### .npmrc 
  
-You must add an .npmrc file in order to pull packages and publish to our private npm registry.
+An .npmrc file is needed in order to pull packages and publish to our private npm registry.
 
-Create a `.npmrc` file in the root of the project. `.npmrc` is already ignored by .gitignore, so you should never check it in. Copy and paste the below content into it:
+If you have Helltool installed and running you've likely already setup your gradle.properties file to connect to our Nexus server. [If not take a look at those directions and follow them so you can get the Nexus server user and password first](https://github.com/looker/helltool#dependencies).
 
-```bash
-registry=https://nexusrepo.looker.com/repository/looker-npm-group/
-always-auth=true
-_auth=<REPLACE_THIS>
-```
-
-Now we'll generate the auth token. If you have Helltool installed and running you've likely already setup your gradle.properties file to connect to our Nexus server. [If not take a look at those directions and follow them so you can get the Nexus server user and password first](https://github.com/looker/helltool#dependencies).
-
-Find `~/.gradle/gradle.properties`, from it extract the `nexusUser` and `nexusPass` values. Run them through the following command, replacing `<nexusUser>` and `<nexusPass>` with the values in the gradle.properties file.
-
-`echo -n '<nexusUser>:<nexusPass>' | openssl base64`
-
-> Note the `:` between nexusUser and nexusPass, you must include that colon! 
-
-Take the resulting value and replace the `<REPLACE_THIS>` token in your `.npmrc` file with it, save the file and close it.
+```export NEXUS_USER=<nexusUser>
+export NEXUS_PASS=<nexusPass>```
+Run `ci/setup.sh create_npmrc` to generate the `.npmrc` file
 
 You should now be able to run `yarn` in the project root without error.
 
