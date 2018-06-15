@@ -162,6 +162,9 @@ module.exports = {
       '@global body': {
         fontFamily: '"Open Sans", sans-serif'
       },
+      hasSidebar: {
+        paddingLeft: '300px'
+      },
       sidebar: {
         width: '300px'
       }
