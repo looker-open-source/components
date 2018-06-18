@@ -30,6 +30,10 @@ module.exports = {
         name: 'Spacing',
         content: 'docs/style/Spacing.md'
       },
+      {
+        name: 'Borders & Dividers',
+        content: 'docs/style/Borders.md'
+      },
     ]
     },
     {

@@ -103,7 +103,10 @@ $config: (
 
   link-color: map-get($colors, 'link'),
 
-  border-color: color('gray', 200),
+  border-color: color('fog', 400),
+  border-color-dark: color('fog', 500),
+  border-color-light: color('space', 300)
+
 
 )
 
