@@ -31,20 +31,20 @@ For a border or divider on a dark background use the light border color.
 
 ```js noeditor
 <Block p="xl" mb="m" style={{background: 'var(--lens-color-space)'}}>
-  <Block p="xl" style={{border: 'solid 1px var(--lens-border-color-light)'}}>
+  <Block p="xl" style={{border: 'solid 1px var(--lens-border-color-on-dark)'}}>
   <BlockLayout justify="between" style={{color: '#fff'}}>
-    <Block>Light</Block>
-    <Block><Text element="code" size="6">var(--lens-border-color-light)</Text></Block>
+    <Block>On Dark</Block>
+    <Block><Text element="code" size="6">var(--lens-border-color-on-dark)</Text></Block>
     <Block><Text element="code" size="6">solid 1px #627081</Text></Block>
   </BlockLayout>
   </Block>
 </Block>
 
 <Block p="xl" mb="m" style={{background: 'var(--lens-color-space-400)'}}>
-  <Block p="xl" style={{border: 'solid 1px var(--lens-border-color-light)'}}>
+  <Block p="xl" style={{border: 'solid 1px var(--lens-border-color-on-dark)'}}>
   <BlockLayout justify="between" style={{color: '#fff'}}>
-    <Block>Light</Block>
-    <Block><Text element="code" size="6">var(--lens-border-color-light)</Text></Block>
+    <Block>On Dark</Block>
+    <Block><Text element="code" size="6">var(--lens-border-color-on-dark)</Text></Block>
     <Block><Text element="code" size="6">solid 1px #627081</Text></Block>
   </BlockLayout>
   </Block>
