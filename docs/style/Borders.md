@@ -23,8 +23,11 @@ Lens provides two border colors that are used on light backgrounds, default and 
   </BlockLayout>
 </Block>
 ```
+<div class="doc-section-divider"></div>
 
 ## Borders on dark backgrounds
+
+For a border or divider on a dark background use the light border color.
 
 ```js noeditor
 <Block p="xl" mb="m" style={{background: 'var(--lens-color-space)'}}>
