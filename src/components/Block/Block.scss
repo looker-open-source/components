@@ -84,33 +84,3 @@ $sizes: (xs, s, m, l, xl, 2xl, 3xl, 4xl);
 @include generate-spacing('p');
 //// Build all margin spacing classes, prefix with a 'm'
 @include generate-spacing('m');
-
-
-$backgroundColors: (
-  'space',
-  'fog',
-  'purple',
-  'blue',
-  'green',
-  'yellow',
-  'red'
-);
-
-@mixin generateBackgroundColors() {
-  @each $color in $backgroundColors {
-
-    .bg-#{$color} {background-color: var(--lens-color-#{$color}); }
-    .bg-#{$color}400 {background-color: var(--lens-color-#{$color}-400); }
-    .bg-#{$color}300 {background-color: var(--lens-color-#{$color}-300); }
-
-    @if $color == 'fog' or $color == 'space' {
-      .bg-#{$color}200 {background-color: var(--lens-color-#{$color}-200); }
-    } @else {
-      .bg-#{$color}600 {background-color: var(--lens-color-#{$color}-600); }
-      .bg-#{$color}700 {background-color: var(--lens-color-#{$color}-700); }
-    }
-  }
-}
-
-@include generateBackgroundColors();
-

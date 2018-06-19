@@ -62,34 +62,44 @@ $config: (
   color-gray-700: color('gray', 700),
 
   color-purple: color('purple'),
+  color-purple-200: color('purple', 200),
   color-purple-300: color('purple', 300),
   color-purple-400: color('purple', 400),
   color-purple-600: color('purple', 600),
   color-purple-700: color('purple', 700),
+  color-purple-800: color('purple', 800),
 
   color-blue: color('blue'),
+  color-blue-200: color('blue', 200),
   color-blue-300: color('blue', 300),
   color-blue-400: color('blue', 400),
   color-blue-600: color('blue', 600),
   color-blue-700: color('blue', 700),
+  color-blue-800: color('blue', 800),
 
   color-yellow: color('yellow'),
+  color-yellow-200: color('yellow', 200),
   color-yellow-300: color('yellow', 300),
   color-yellow-400: color('yellow', 400),
   color-yellow-600: color('yellow', 600),
   color-yellow-700: color('yellow', 700),
+  color-yellow-800: color('yellow', 800),
 
   color-green: color('green'),
+  color-green-200: color('green', 200),
   color-green-300: color('green', 300),
   color-green-400: color('green', 400),
   color-green-600: color('green', 600),
   color-green-700: color('green', 700),
+  color-green-800: color('green', 800),
 
   color-red: color('red'),
+  color-red-200: color('red', 200),
   color-red-300: color('red', 300),
   color-red-400: color('red', 400),
   color-red-600: color('red', 600),
   color-red-700: color('red', 700),
+  color-red-800: color('red', 800),
 
   color-fog: color('fog'),
   color-fog-200: color('fog', 200),
@@ -100,6 +110,7 @@ $config: (
   color-space-200: color('space', 200),
   color-space-300: color('space', 300),
   color-space-400: color('space', 400),
+
 
   link-color: map-get($colors, 'link'),
 

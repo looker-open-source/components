@@ -12,44 +12,7 @@ export type SpacingValues =
   | '3xl'
   | '4xl'
 
-  export type ColorValues =
-  | 'space'
-  | 'space-400'
-  | 'space-300'
-  | 'space-200'
-  | 'fog'
-  | 'fog-400'
-  | 'fog-300'
-  | 'fog-200'
-  | 'purple'
-  | 'purple-400'
-  | 'purple-300'
-  | 'purple-600'
-  | 'purple-700'
-  | 'blue'
-  | 'blue-400'
-  | 'blue-300'
-  | 'blue-600'
-  | 'blue-700'
-  | 'green'
-  | 'green-400'
-  | 'green-300'
-  | 'green-600'
-  | 'green-700'
-  | 'yellow'
-  | 'yellow-400'
-  | 'yellow-300'
-  | 'yellow-600'
-  | 'yellow-700'
-  | 'red'
-  | 'red-400'
-  | 'red-300'
-  | 'red-600'
-  | 'red-700'
-
-
 export interface BlockProps {
-  background?: ColorValues
   width?: number
   /** Sets the align-self property when in a BlockGroup */
   align?: 'center' | 'start' | 'end' | 'baseline' | undefined
@@ -96,7 +59,7 @@ type PropertyBag = {
 A building block for facilitating consistent layout, spacing, and alignment throughout an interface.
 */
 
-export const Block: React.SFC<BlockProps> = ({className, p, pt, pr, pb, pl, px, py, m, mt, mr, mb, ml, mx, my, background, align,...args}) => {
+export const Block: React.SFC<BlockProps> = ({className, p, pt, pr, pb, pl, px, py, m, mt, mr, mb, ml, mx, my, align,...args}) => {
 
   const styleableProps: PropertyBag = {
     [styles.pxs]:   p == "xs",
@@ -236,45 +199,6 @@ export const Block: React.SFC<BlockProps> = ({className, p, pt, pr, pb, pl, px, 
     [styles.alignFlexEnd]: align == 'end',
     [styles.alignBaseline]: align == 'baseline',
 
-    [styles.bgPurple]: background == 'purple',
-    [styles.bgPurple400]: background == 'purple-400',
-    [styles.bgPurple300]: background == 'purple-300',
-    [styles.bgPurple600]: background == 'purple-600',
-    [styles.bgPurple700]: background == 'purple-700',
-
-    [styles.bgBlue]: background == 'blue',
-    [styles.bgBlue400]: background == 'blue-400',
-    [styles.bgBlue300]: background == 'blue-300',
-    [styles.bgBlue600]: background == 'blue-600',
-    [styles.bgBlue700]: background == 'blue-700',
-
-    [styles.bgGreen]: background == 'green',
-    [styles.bgGreen400]: background == 'green-400',
-    [styles.bgGreen300]: background == 'green-300',
-    [styles.bgGreen600]: background == 'green-600',
-    [styles.bgGreen700]: background == 'green-700',
-
-    [styles.bgYellow]: background == 'yellow',
-    [styles.bgYellow400]: background == 'yellow-400',
-    [styles.bgYellow300]: background == 'yellow-300',
-    [styles.bgYellow600]: background == 'yellow-600',
-    [styles.bgYellow700]: background == 'yellow-700',
-
-    [styles.bgRed]: background == 'red',
-    [styles.bgRed400]: background == 'red-400',
-    [styles.bgRed300]: background == 'red-300',
-    [styles.bgRed600]: background == 'red-600',
-    [styles.bgRed700]: background == 'red-700',
-
-    [styles.bgSpace]: background == 'space',
-    [styles.bgSpace400]: background == 'space-400',
-    [styles.bgSpace300]: background == 'space-300',
-    [styles.bgSpace200]: background == 'space-200',
-
-    [styles.bgFog]: background == 'fog',
-    [styles.bgFog400]: background == 'fog-400',
-    [styles.bgFog300]: background == 'fog-300',
-    [styles.bgFog200]: background == 'fog-200',
   }
 
   return (
