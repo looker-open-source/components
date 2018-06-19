@@ -23,7 +23,6 @@ We want Looker to be accessible to the widest audience possible. Our color palet
 const chroma = require('chroma-js');
 
 checkContrast = (color) => {
-  //console.log(color)
   let swatchList = []
   let groupName = color.name
   color.children.forEach((swatch, i) => {
@@ -60,17 +59,16 @@ checkContrast = (color) => {
 }
 
 renderSwatch = (swatchList, key) => {
-  console.log(swatchList[0])
   let color = swatchList[0].group
   let fill = color.toLowerCase();
   return(
     <div className="swatch-holder" key={key}>
-      <Block background={fill} px="m" py="xl">
+      <Block px="m" py="xl" style={{background: `var(--lens-color-${fill})`}}>
         <Text size="2" weight="semi-bold" style={{color:'#fff'}} >{color}</Text>
         <Text size="4" weight="semi-bold" style={{color:'#fff'}}>500</Text>
       </Block>
       {swatchList.map((swatch, index) => (
-        <Swatch key={index} fill={swatch.fill} contrastLevel={swatch.contrastLevel} labelColor={swatch.labelColor} hexValue={swatch.hexValue} group={swatch.group}>{swatch.label}</Swatch>
+        <Swatch key={index} contrastLevel={swatch.contrastLevel} labelColor={swatch.labelColor} hexValue={swatch.hexValue} group={swatch.group}>{swatch.label}</Swatch>
       ))}
     </div>
   )
@@ -84,7 +82,7 @@ class Swatch extends React.Component {
     let bgColor = `${this.props.group}${modifier}`.toLowerCase()
 
     return(
-      <Block className="swatch" background={bgColor}>
+      <Block className="swatch" style={{background: `var(--lens-color-${bgColor})`}}>
         <Text className="swatch-label" weight="semi-bold" style={{color: this.props.labelColor}}>{this.props.children}</Text>
         <Text className="swatch-hex" weight="semi-bold" style={{color: this.props.labelColor}}>{this.props.hexValue}</Text>
 
