@@ -16,8 +16,11 @@ An .npmrc file is needed in order to pull packages and publish to our private np
 
 If you have Helltool installed and running you've likely already setup your gradle.properties file to connect to our Nexus server. [If not take a look at those directions and follow them so you can get the Nexus server user and password first](https://github.com/looker/helltool#dependencies).
 
-```export NEXUS_USER=<nexusUser>
-export NEXUS_PASS=<nexusPass>```
+```
+export NEXUS_USER=<nexusUser>
+export NEXUS_PASS=<nexusPass>
+```
+
 Run `ci/setup.sh create_npmrc` to generate the `.npmrc` file
 
 You should now be able to run `yarn` in the project root without error.
