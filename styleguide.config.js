@@ -15,6 +15,15 @@ module.exports = {
       name: 'Lens',
       content: 'docs/intro.md'
     },
+    
+    {
+      name: 'Principles',
+      sections: [ {
+        name:'Accessibility',
+        content: 'docs/principles/accessibility.md'
+      }
+    ]
+    },
     {
       name: 'Style',
       sections: [

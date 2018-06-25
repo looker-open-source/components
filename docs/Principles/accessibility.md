@@ -1,0 +1,2 @@
+The goal of accessibility is to provide a seamless experience for all users by increasing the usability of our UI, a clear understanding of guidelines, and the ability to navigate all of our products and resources.
+### Understanding Accessibility
