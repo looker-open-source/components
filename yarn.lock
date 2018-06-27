@@ -625,9 +625,9 @@
   version "9.6.5"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/@types/node/-/node-9.6.5.tgz#ee700810fdf49ac1c399fc5980b7559b3e5a381d"
 
-"@types/react-dom@16.0.4":
-  version "16.0.4"
-  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/@types/react-dom/-/react-dom-16.0.4.tgz#2e8fd45f5443780ed49bf2cdd9809e6091177a7d"
+"@types/react-dom@16.0.6":
+  version "16.0.6"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/@types/react-dom/-/react-dom-16.0.6.tgz#f1a65a4e7be8ed5d123f8b3b9eacc913e35a1a3c"
   dependencies:
     "@types/node" "*"
     "@types/react" "*"
@@ -642,9 +642,11 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@16.0.40":
-  version "16.0.40"
-  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/@types/react/-/react-16.0.40.tgz#caabc2296886f40b67f6fc80f0f3464476461df9"
+"@types/react@*", "@types/react@16.4.2":
+  version "16.4.2"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/@types/react/-/react-16.4.2.tgz#f1a9cf1ee85221530def2ac26aee20f910a9dac8"
+  dependencies:
+    csstype "^2.2.0"
 
 "@vxna/mini-html-webpack-template@^0.1.6":
   version "0.1.6"
@@ -2527,6 +2529,10 @@ cssom@0.3.x, "cssom@>= 0.3.2 < 0.4.0":
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/cssstyle/-/cssstyle-0.2.37.tgz#541097234cb2513c83ceed3acddc27ff27987d54"
   dependencies:
     cssom "0.3.x"
+
+csstype@^2.2.0:
+  version "2.5.5"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/csstype/-/csstype-2.5.5.tgz#4125484a3d42189a863943f23b9e4b80fedfa106"
 
 currently-unhandled@^0.4.1:
   version "0.4.1"
@@ -6407,9 +6413,9 @@ react-docgen@^3.0.0-beta11:
     node-dir "^0.1.10"
     recast "^0.12.6"
 
-react-dom@16.2.0:
-  version "16.2.0"
-  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/react-dom/-/react-dom-16.2.0.tgz#69003178601c0ca19b709b33a83369fe6124c044"
+react-dom@16.4.1:
+  version "16.4.1"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/react-dom/-/react-dom-16.4.1.tgz#7f8b0223b3a5fbe205116c56deb85de32685dad6"
   dependencies:
     fbjs "^0.8.16"
     loose-envify "^1.1.0"
@@ -6511,9 +6517,9 @@ react-test-renderer@16.3.1:
     prop-types "^15.6.0"
     react-is "^16.3.1"
 
-react@16.2.0:
-  version "16.2.0"
-  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/react/-/react-16.2.0.tgz#a31bd2dab89bff65d42134fa187f24d054c273ba"
+react@16.4.1:
+  version "16.4.1"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/react/-/react-16.4.1.tgz#de51ba5764b5dbcd1f9079037b862bd26b82fe32"
   dependencies:
     fbjs "^0.8.16"
     loose-envify "^1.1.0"
