@@ -1,6 +1,6 @@
 import * as React from 'react'
-import classNames from 'classnames'
 import * as styles from './Button.scss'
+const classNames = require('classnames')
 
 export interface LookerButtonHTMLAttributes extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   mode?: 'light' | 'ghost' | 'scary' | undefined

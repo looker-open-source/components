@@ -1,5 +1,5 @@
 import * as React from 'react'
-import classNames from 'classnames'
+const classNames = require('classnames')
 import * as styles from './Heading.scss'
 
 export interface HeadingProps {
