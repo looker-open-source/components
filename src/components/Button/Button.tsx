@@ -1,37 +1,45 @@
 import * as React from 'react'
-import * as styles from './Button.scss'
-const classNames = require('classnames')
+import sc, { StyledComponentClass } from 'styled-components'
+import { rem } from 'polished'
+import { brandFont } from '../../styles/typography'
 
-export interface LookerButtonHTMLAttributes extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  mode?: 'light' | 'ghost' | 'scary' | undefined
-  size?: 'xsmall' | 'small' | 'large' | undefined
-  state?: 'active' | 'hover' | undefined
-  disabled?: boolean
-}
+export interface ButtonProps {}
 
-type PropertyBag = {
-  [key: string]: any
-}
+export const Button = sc<ButtonProps, 'button'>('button')`
+  --background-color: ${(props) => props.theme.colors.action };
+  --color: ${(props) => props.theme.colors.text };
+  --border-color: var(--background-color);
 
-/**
- * Buttons communicate what action will occur on a page when the user interacts with them. All buttons use sentence-casing (only capitalize the first letter of the first word). Copy used within a button should be unambiguous and concise, making it clear to the user what action will occur once the button is clicked.
- */
-export const Button = ({className, size, mode, state, disabled, ...args}: LookerButtonHTMLAttributes) => {
-  const styleableProps: PropertyBag = {
-    [styles.modeScary]: mode == 'scary',
-    [styles.modeGhost]: mode == 'ghost',
-    [styles.modeLight]: mode == 'light',
+  background-color: var(--background-color);
+  border: ${rem(1)} solid var(--border-color);
+  border-radius: ${rem(6)};
+  color: var(--color);
+  cursor: pointer;
+  display: inline-block;
+  font-family: ${brandFont};
+  font-size: ${rem(16)};
+  line-height: ${rem(24)};
+  padding: ${rem(6)} ${rem(16)};
+  white-space: nowrap;
+  vertical-align: middle;
 
-    [styles.active]: state == 'active',
-    [styles.hover]: state == 'hover',
-
-    [styles.sizeExtraSmall]: size == 'xsmall',
-    [styles.sizeSmall]: size == 'small',
-    [styles.sizeLarge]: size == 'large',
-    [styles.modeDisabled]: !!disabled
+  &:hover {
+    --background-color: ${props => props.theme.colors.interact};
   }
 
-  return (
-    <button className={classNames(styles.button, className, styleableProps)} {...args}>{args.children}</button>
-  )
-}
+  &:active {
+    --background-color: ${props => props.theme.colors.activate};
+  }
+
+  &[disabled] {
+
+    --background-color: ${props => props.theme.colors.disabled};
+    --color: ${props => props.theme.colors.disabled};
+    cursor: default;
+    
+    &:hover, &:active {
+      --background-color: ${props => props.theme.colors.disabled};
+      --color: ${props => props.theme.colors.disabled};
+    }
+  }
+`

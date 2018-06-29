@@ -6,6 +6,9 @@ module.exports = {
   pagePerSection: true,
   propsParser: typescriptPropsParser,
   showCode: true,
+  styleguideComponents: {
+    Wrapper: path.join(__dirname, 'styleguide_components/ThemeWrapper')
+  },
   require: [
     'chroma-js',
     path.join(__dirname, '/static/css/style-guide.css')
@@ -15,7 +18,7 @@ module.exports = {
       name: 'Lens',
       content: 'docs/intro.md'
     },
-    
+
     {
       name: 'Principles',
       sections: [ {
