@@ -2,6 +2,7 @@ import * as React from 'react'
 import sc, { StyledComponentClass } from 'styled-components'
 import { rem } from 'polished'
 import { brandFont } from '../../styles/typography'
+import { Theme } from '../../themes'
 
 export enum ButtonSizes {
   ExtraSmall = "xsmall",
@@ -12,6 +13,7 @@ export enum ButtonSizes {
 
 export interface ButtonProps {
   size: ButtonSizes
+  theme: Theme
 }
 
 function buttonSize(size: string) {
@@ -44,7 +46,7 @@ function buttonSize(size: string) {
 }
 
 export const Button = sc<ButtonProps, 'button'>('button')`
-  --background-color: ${props => props.theme.colors.action };
+  --background-color: ${props => props.theme.colors.actions };
   --color: ${props => props.theme.colors.text };
   --border-color: var(--background-color);
 
@@ -62,11 +64,11 @@ export const Button = sc<ButtonProps, 'button'>('button')`
   vertical-align: middle;
 
   &:hover {
-    --background-color: ${props => props.theme.colors.interact};
+    --background-color: ${props => props.theme.colors.actionInteractive};
   }
 
   &:active {
-    --background-color: ${props => props.theme.colors.activate};
+    --background-color: ${props => props.theme.colors.actionActive};
   }
 
   &[disabled] {
@@ -74,7 +76,7 @@ export const Button = sc<ButtonProps, 'button'>('button')`
     --background-color: ${props => props.theme.colors.disabled};
     --color: ${props => props.theme.colors.disabled};
     cursor: default;
-    
+
     &:hover, &:active {
       --background-color: ${props => props.theme.colors.disabled};
       --color: ${props => props.theme.colors.disabled};
