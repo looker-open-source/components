@@ -1,8 +1,8 @@
 import * as React from 'react'
-import sc, { StyledComponentClass } from 'styled-components'
+import styled, { StyledComponentClass } from '../../styled_components'
 import { rem } from 'polished'
 import { brandFont } from '../../styles/typography'
-import { Theme } from '../../themes'
+import { ThemeInterface } from '../../themes'
 
 export enum ButtonSizes {
   ExtraSmall = "xsmall",
@@ -13,7 +13,6 @@ export enum ButtonSizes {
 
 export interface ButtonProps {
   size: ButtonSizes
-  theme: Theme
 }
 
 function buttonSize(size: string) {
@@ -36,6 +35,7 @@ function buttonSize(size: string) {
         lineHeight: rem(30),
         padding: `${rem(8)} ${rem(24)}`
       }
+    case ButtonSizes.Medium:
     default:
       return {
         fontSize: rem(16),
@@ -45,8 +45,8 @@ function buttonSize(size: string) {
   }
 }
 
-export const Button = sc<ButtonProps, 'button'>('button')`
-  --background-color: ${props => props.theme.colors.actions };
+export const Button = styled<ButtonProps, 'button'>('button')`
+  --background-color: ${props => props.theme.colors.action };
   --color: ${props => props.theme.colors.text };
   --border-color: var(--background-color);
 

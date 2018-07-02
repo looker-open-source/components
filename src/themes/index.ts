@@ -1,6 +1,6 @@
 import { themeColors, ThemeColors } from './theme_colors'
 
-export interface Theme {
+export interface ThemeInterface {
   colors: ThemeColors
 }
 
