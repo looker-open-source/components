@@ -1,4 +1,4 @@
-## Mode
+## Variants
 
 The `<Button />` component accepts a `variant` property which allows you to select the proper button style for the context and action the button is for.
 
