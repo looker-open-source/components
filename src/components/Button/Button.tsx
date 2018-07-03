@@ -52,11 +52,11 @@ function buttonSize(size: string) {
 }
 
 export const Button = styled<ButtonProps, 'button'>('button')`
-  --background-color: ${props => props.variant? 'transparent' : props.theme.colors.primary };
-  --color: ${props => props.variant? props.theme.colors.primary : props.theme.colors.primaryText };
-  --border-color: ${props => props.variant == 'transparent'? 'transparnet' : props.theme.colors.primary };
-  --hover-color: ${props => props.variant? props.theme.colors.primaryLightOver : props.theme.colors.primaryOver };
-  --active-color: ${props => props.variant? props.theme.colors.primaryLightPress : props.theme.colors.primaryPress };
+  --background-color: ${props => props.variant ? 'transparent' : props.theme.colors.primary };
+  --color: ${props => props.variant ? props.theme.colors.primary : props.theme.colors.primaryText };
+  --border-color: ${props => props.variant == 'transparent' ? 'transparent' : props.theme.colors.primary };
+  --hover-color: ${props => props.variant ? props.theme.colors.primaryLightOver : props.theme.colors.primaryOver };
+  --active-color: ${props => props.variant ? props.theme.colors.primaryLightPress : props.theme.colors.primaryPress };
 
   background-color: var(--background-color);
   border: ${rem(1)} solid var(--border-color);
