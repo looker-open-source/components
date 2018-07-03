@@ -11,8 +11,14 @@ export enum ButtonSizes {
   Large = "large"
 }
 
+export enum ButtonVariants {
+  Outline = 'outline',
+  Transparent = 'transparent'
+}
+
 export interface ButtonProps {
   size: ButtonSizes
+  variant: ButtonVariants
 }
 
 function buttonSize(size: string) {
@@ -46,16 +52,18 @@ function buttonSize(size: string) {
 }
 
 export const Button = styled<ButtonProps, 'button'>('button')`
-  --background-color: ${props => props.theme.colors.action };
-  --color: ${props => props.theme.colors.text };
-  --border-color: var(--background-color);
+  --background-color: ${props => props.variant? 'transparent' : props.theme.colors.primary };
+  --color: ${props => props.variant? props.theme.colors.primary : props.theme.colors.primaryText };
+  --border-color: ${props => props.variant == 'transparent'? 'transparnet' : props.theme.colors.primary };
+  --hover-color: ${props => props.variant? props.theme.colors.primaryLightOver : props.theme.colors.primaryOver };
+  --active-color: ${props => props.variant? props.theme.colors.primaryLightPress : props.theme.colors.primaryPress };
 
   background-color: var(--background-color);
   border: ${rem(1)} solid var(--border-color);
   border-radius: ${rem(6)};
   color: var(--color);
   cursor: pointer;
-  display: inline-block;
+  display: inline-flex;
   font-family: ${brandFont};
   font-size: ${props => buttonSize(props.size).fontSize};
   line-height: ${props => buttonSize(props.size).lineHeight};
@@ -63,23 +71,21 @@ export const Button = styled<ButtonProps, 'button'>('button')`
   white-space: nowrap;
   vertical-align: middle;
 
-  &:hover {
-    --background-color: ${props => props.theme.colors.actionInteractive};
+  &:hover, &:focus {
+    background-color: var(--hover-color)
   }
 
-  &:active {
-    --background-color: ${props => props.theme.colors.actionActive};
+  &:active  {
+    background-color: var(--active-color)
   }
 
   &[disabled] {
-
-    --background-color: ${props => props.theme.colors.disabled};
-    --color: ${props => props.theme.colors.disabled};
+    filter: grayscale(0.3);
+    opacity: 0.25;
     cursor: default;
 
-    &:hover, &:active {
-      --background-color: ${props => props.theme.colors.disabled};
-      --color: ${props => props.theme.colors.disabled};
+    &:hover, &:active, &:focus {
+      background-color: var(--background-color);
     }
   }
 `

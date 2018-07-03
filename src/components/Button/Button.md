@@ -1,6 +1,6 @@
 ## Mode
 
-The `<Button />` component accepts a `mode` property which allows you to select the proper button style for the context and action the button is for.
+The `<Button />` component accepts a `variant` property which allows you to select the proper button style for the context and action the button is for.
 
 ### Primary
 
@@ -22,65 +22,81 @@ Use a primary button for the most frequently used action or most important actio
 
 <div class="doc-section-divider"></div>
 
-### Light
-Use a light button alongside a primary button to provide alternative actions on a page. Light buttons should only appear alongside primary buttons. Use no more than two secondary buttons on a page.
+### Outline
+Use an outline button alongside a primary button to provide alternative actions on a page. Outline buttons should only appear alongside primary buttons for secondary actions. Use no more than two secondary buttons on a page.
 
 ```js
 
 <List>
   <ListItem>
-    <Button mode="light">Light Idle</Button>
+    <Button variant="outline">Light Idle</Button>
   </ListItem>
   <ListItem>
-    <Button mode="light"state="hover">Light Hover</Button>
+    <Button variant="outline" state="hover">Light Hover</Button>
   </ListItem>
   <ListItem>
-     <Button mode="light"state="active">Light Active</Button>
+     <Button variant="outline" state="active">Light Active</Button>
   </ListItem>
 </List>
 ```
 
 <div class="doc-section-divider"></div>
 
-### Ghost
+### Transparent
 
-Use a ghost button as a tertiary action on a screen, they are often used as a Cancel button on a form. Typically it performs the opposite action of a Light button
+Use a transparent button as a tertiary action on a screen, they are often used as a Cancel button on a form. Typically it performs the opposite action of a primary button
 
 ```js
 
 <List>
   <ListItem>
-    <Button mode="ghost">Ghost Idle</Button>
+    <Button variant="transparent">Ghost Idle</Button>
   </ListItem>
   <ListItem>
-    <Button mode="ghost"state="hover">Ghost Hover</Button>
+    <Button variant="transparent" state="hover">Ghost Hover</Button>
   </ListItem>
   <ListItem>
-     <Button mode="ghost"state="active">Ghost Active</Button>
+     <Button variant="transparent" state="active">Ghost Active</Button>
   </ListItem>
 </List>
 ```
 
 <div class="doc-section-divider"></div>
 
-### Scary
+### Destructive
 
-Scary Buttons are to be used in situations where you need to convey some very important, potentially irreversible consequence of pressing this button.
+Destructive Buttons are to be used in situations where you need to convey some very important, potentially irreversible consequence of pressing this button.
 
 ```js
 <List>
   <ListItem>
-    <Button mode="scary">Scary Idle</Button>
+    <ButtonDestructive>Destructive Button</ButtonDestructive>
   </ListItem>
   <ListItem>
-    <Button mode="scary"state="hover">Scary Hover</Button>
+    <ButtonDestructive state="hover">Destructive Hover</ButtonDestructive>
   </ListItem>
   <ListItem>
-     <Button mode="scary"state="active">Scary Active</Button>
+     <ButtonDestructive state="active">Destructive Active</ButtonDestructive>
   </ListItem>
 </List>
 ```
 
+### Destructive Variants
+
+Destructive Buttons extend the default button, so they also have different variants
+```js
+<List>
+  <ListItem>
+    <ButtonDestructive>Destructive Button</ButtonDestructive>
+  </ListItem>
+  <ListItem>
+    <ButtonDestructive variant="outline">Destructive Outline</ButtonDestructive>
+  </ListItem>
+  <ListItem>
+     <ButtonDestructive variant="transparent">Destructive Transparent</ButtonDestructive>
+  </ListItem>
+</List>
+```
 
 ## Size
 
@@ -101,7 +117,7 @@ Use a disabled button to indicate to the user what action will be possible on a 
 <Button disabled>I am disabled</Button>
 ```
 
-## Additional Action Considerations 
+## Additional Action Considerations
 When a call to action requires additional steps, include an ellipsis at the end of the button text as a visual clue. This helps reinforce that there are additional steps that can take place before the action takes effect.
 ```js
 <List>
