@@ -1,4 +1,9 @@
-import {gray200, purple200, purple300,  primary500, primary600, primary700, red200, red300, red500, red600, red700, white} from '../styles/colors'
+import {
+  gray200,
+  purple200, purple300,
+  primary500, primary600, primary700,
+  red200, red300, red500, red600, red700,
+  white} from '../styles/colors'
 
 export interface ThemeColors {
   // Primary color in application, mainly used for primary actions
