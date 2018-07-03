@@ -80,8 +80,8 @@ export const Button = styled<ButtonProps, 'button'>('button')`
   }
 
   &[disabled] {
-    filter: grayscale(0.3);
-    opacity: 0.25;
+    filter: grayscale(.3);
+    opacity: .25;
     cursor: default;
 
     &:hover, &:active, &:focus {
