@@ -25,7 +25,9 @@
     "css-loader": "0.28.11",
     "identity-obj-proxy": "3.0.0",
     "jest": "22.4.3",
+    "lint-staged": "7.2.0",
     "node-sass": "4.8.3",
+    "prettier": "1.13.7",
     "prop-types": "15.6.1",
     "react-docgen-typescript": "1.2.6",
     "react-styleguidist": "7.0.5",
@@ -39,6 +41,7 @@
     "ts-jest": "22.4.2",
     "ts-loader": "3.5.0",
     "tslint": "5.10.0",
+    "tslint-config-prettier": "1.13.0",
     "tslint-config-standard": "7.1.0",
     "tslint-react": "3.6.0",
     "typescript": "2.9.2",
@@ -92,11 +95,20 @@
     "build-components": "tsc --emitDeclarationOnly && babel src --out-dir dist --extensions \".ts,.tsx\"",
     "build-styleguide": "styleguidist build",
     "clean": "rimraf dist && rimraf styleguide",
-    "lint": "tsc --noEmit && tslint --project tsconfig.json --format stylish",
-    "lint-fix": "tsc --noEmit && tslint --fix --project tsconfig.json --format stylish",
+    "lint-staged": "$(yarn bin)/lint-staged",
     "prepublishOnly": "yarn clean && yarn build-components",
     "release": "npm publish",
     "test": "jest"
   },
+  "lint-staged": {
+    "src/**/*.ts?(x)": [
+      "prettier --write",
+      "tslint --project tsconfig.json",
+      "git add"
+    ]
+  },
+  "pre-commit": [
+    "lint-staged"
+  ],
   "types": "dist"
 }

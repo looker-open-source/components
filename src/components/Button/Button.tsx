@@ -14,11 +14,11 @@ export enum ButtonSizes {
 }
 
 export interface ButtonProps {
-  size: ButtonSizes,
+  size: ButtonSizes
   theme: ThemeInterface
 }
 
-function buttonSize (size: string) {
+function buttonSize(size: string) {
   switch (size) {
     case ButtonSizes.ExtraSmall:
       return {
@@ -49,8 +49,8 @@ function buttonSize (size: string) {
 }
 
 export const Button = styled<ButtonProps, 'button'>('button')`
-  --background-color: ${(props) => props.theme.colors.action };
-  --color: ${(props) => props.theme.colors.text };
+  --background-color: ${props => props.theme.colors.action};
+  --color: ${props => props.theme.colors.text};
   --border-color: var(--background-color);
 
   background-color: var(--background-color);
@@ -60,29 +60,29 @@ export const Button = styled<ButtonProps, 'button'>('button')`
   cursor: pointer;
   display: inline-block;
   font-family: ${brandFont};
-  font-size: ${(props) => buttonSize(props.size).fontSize};
-  line-height: ${(props) => buttonSize(props.size).lineHeight};
-  padding: ${(props) => buttonSize(props.size).padding};
+  font-size: ${props => buttonSize(props.size).fontSize};
+  line-height: ${props => buttonSize(props.size).lineHeight};
+  padding: ${props => buttonSize(props.size).padding};
   white-space: nowrap;
   vertical-align: middle;
 
   &:hover {
-    --background-color: ${(props) => props.theme.colors.actionInteractive};
+    --background-color: ${props => props.theme.colors.actionInteractive};
   }
 
   &:active {
-    --background-color: ${(props) => props.theme.colors.actionActive};
+    --background-color: ${props => props.theme.colors.actionActive};
   }
 
   &[disabled] {
-
-    --background-color: ${(props) => props.theme.colors.disabled};
-    --color: ${(props) => props.theme.colors.disabled};
+    --background-color: ${props => props.theme.colors.disabled};
+    --color: ${props => props.theme.colors.disabled};
     cursor: default;
 
-    &:hover, &:active {
-      --background-color: ${(props) => props.theme.colors.disabled};
-      --color: ${(props) => props.theme.colors.disabled};
+    &:hover,
+    &:active {
+      --background-color: ${props => props.theme.colors.disabled};
+      --color: ${props => props.theme.colors.disabled};
     }
   }
 `

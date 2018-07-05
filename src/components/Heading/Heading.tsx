@@ -4,19 +4,18 @@ import * as styles from './Heading.scss'
 
 export interface HeadingProps {
   /** Headling tag level mapping for h1-h6 */
-  level?: '1' | '2' | '3' | '4' | '5' | '6',
+  level?: '1' | '2' | '3' | '4' | '5' | '6'
   /** Size mapping from type ramp */
-  size?: 'd1' | 'd2' | 'd3' | '1' | '2' | '3' | '4' | '5' | '6',
+  size?: 'd1' | 'd2' | 'd3' | '1' | '2' | '3' | '4' | '5' | '6'
   /** Font weight */
-  weight?: 'light' | 'normal' | 'semi-bold' | 'bold' | 'extra-bold',
+  weight?: 'light' | 'normal' | 'semi-bold' | 'bold' | 'extra-bold'
   /** Text tranform  */
-  transform?: 'upper' | 'caps' | 'lower' | 'none',
+  transform?: 'upper' | 'caps' | 'lower' | 'none'
   /** Text align */
   align?: 'left' | 'center' | 'right'
   className?: string
   /** Truncate text on overflow */
   truncate?: boolean
-
 }
 
 interface PropertyBag {
@@ -27,8 +26,16 @@ interface PropertyBag {
  * Headings are used to help users understand  what a marjor section of an interface is about, for example the labeling
  * of a page or a title of a card component.
  */
-export const Heading: React.SFC<HeadingProps> = ({ className, level, size, weight, transform, align, truncate,
-                                                   ...args }) => {
+export const Heading: React.SFC<HeadingProps> = ({
+  className,
+  level,
+  size,
+  weight,
+  transform,
+  align,
+  truncate,
+  ...args
+}) => {
   const Tag = level ? `h${level}` : 'h3'
 
   const styleableProps: PropertyBag = {
@@ -58,11 +65,13 @@ export const Heading: React.SFC<HeadingProps> = ({ className, level, size, weigh
     [styles.alignRight]: align === 'right',
 
     [styles.isTruncated]: !!truncate
-
   }
 
   return (
-    <Tag className={classNames(styles.lensHeading, className, styleableProps)} {...args}>
+    <Tag
+      className={classNames(styles.lensHeading, className, styleableProps)}
+      {...args}
+    >
       {args.children}
     </Tag>
   )

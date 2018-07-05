@@ -1,4 +1,11 @@
-import { gray200, primary500, primary600, primary700, red500, white } from '../styles/colors'
+import {
+  gray200,
+  primary500,
+  primary600,
+  primary700,
+  red500,
+  white
+} from '../styles/colors'
 
 export interface ThemeColors {
   // Indicates a piece of UI that may be interactive

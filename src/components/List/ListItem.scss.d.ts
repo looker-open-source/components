@@ -1,1 +1,1 @@
-export const lensListItem: string;
+export const lensListItem: string

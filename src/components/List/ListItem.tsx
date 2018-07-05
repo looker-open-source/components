@@ -20,7 +20,10 @@ export const ListItem: React.SFC<ListItemProps> = ({ className, ...args }) => {
   }
 
   return (
-    <li className={classNames(styles.lensListItem, className, styleableProps)} {...args}>
+    <li
+      className={classNames(styles.lensListItem, className, styleableProps)}
+      {...args}
+    >
       {args.children}
     </li>
   )

@@ -12,7 +12,11 @@ interface PropertyBag {
 }
 
 /** Utility component that lays `Cards` out on a grid */
-export const CardGroup: React.SFC<CardGroupProps> = ({ className, gap, ...args }) => {
+export const CardGroup: React.SFC<CardGroupProps> = ({
+  className,
+  gap,
+  ...args
+}) => {
   const gapSize = gap ? gap : 'l'
 
   const styleableProps: PropertyBag = {
@@ -27,7 +31,10 @@ export const CardGroup: React.SFC<CardGroupProps> = ({ className, gap, ...args }
   }
 
   return (
-    <div className={classNames(styles.cardGroup, className, styleableProps)}{...args} >
+    <div
+      className={classNames(styles.cardGroup, className, styleableProps)}
+      {...args}
+    >
       {args.children}
     </div>
   )

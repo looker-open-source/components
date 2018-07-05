@@ -10,15 +10,21 @@ test('A default Link', () => {
 })
 
 test('A external Link', () => {
-  const component = create(<Link href="https://looker.com" external>🥑</Link>)
+  const component = create(
+    <Link href="https://looker.com" external>
+      🥑
+    </Link>
+  )
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
 })
-
 
 test('A Link with an id', () => {
-  const component = create(<Link href="https://looker.com" id="link-id">🥑</Link>)
+  const component = create(
+    <Link href="https://looker.com" id="link-id">
+      🥑
+    </Link>
+  )
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
 })
-
