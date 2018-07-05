@@ -6,21 +6,21 @@ export interface ListItemProps {
   className?: string | undefined
 }
 
-type PropertyBag = {
+interface PropertyBag {
   [key: string]: any
 }
 
 /**
- Renders a `<li>` tag inside a `<List>`
-*/
+ * Renders a `<li>` tag inside a `<List>`
+ */
 
-export const ListItem: React.SFC<ListItemProps> = ({className, ...args}) => {
+export const ListItem: React.SFC<ListItemProps> = ({ className, ...args }) => {
   const styleableProps: PropertyBag = {
-    [styles.lensListItem]: className == 'lens-list-item',
+    [styles.lensListItem]: className === 'lens-list-item'
   }
 
   return (
-    <li  className={classNames(styles.lensListItem, className, styleableProps)} {...args}>
+    <li className={classNames(styles.lensListItem, className, styleableProps)} {...args}>
       {args.children}
     </li>
   )

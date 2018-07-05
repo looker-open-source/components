@@ -1,4 +1,4 @@
-import {gray200, primary500, primary600, primary700, red500, white} from '../styles/colors'
+import { gray200, primary500, primary600, primary700, red500, white } from '../styles/colors'
 
 export interface ThemeColors {
   // Indicates a piece of UI that may be interactive
@@ -16,11 +16,11 @@ export interface ThemeColors {
 
 export const themeColors: ThemeColors = {
   action: primary500,
-  actionInteractive: primary600,
   actionActive: primary700,
+  actionInteractive: primary600,
+  border: primary500,
   danger: red500,
   disabled: gray200,
-  border: primary500,
   interact: primary600,
   text: white
 }

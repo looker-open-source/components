@@ -8,12 +8,12 @@ export interface CardMediaProps {
   className?: string | undefined
 }
 
-type PropertyBag = {
+interface PropertyBag {
   [key: string]: any
 }
 
 /** Displays an image that reinforces the Card's content */
-export const CardMedia: React.SFC<CardMediaProps> = ({className, image, ...args}) => {
+export const CardMedia: React.SFC<CardMediaProps> = ({ className, image, ...args }) => {
 
   const styleableProps: PropertyBag = {
 
@@ -22,7 +22,6 @@ export const CardMedia: React.SFC<CardMediaProps> = ({className, image, ...args}
   const cardImage = { backgroundImage: `url(${image})` }
 
   return (
-    <div className={classNames(styles.cardMedia, className, styleableProps)} style={cardImage} {...args} > </div>
+    <div className={classNames(styles.cardMedia, className, styleableProps)} style={cardImage} {...args} />
   )
 }
-

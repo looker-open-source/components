@@ -9,25 +9,26 @@ export interface LinkProps {
   className?: string | undefined
 }
 
-type PropertyBag = {
+interface PropertyBag {
   [key: string]: any
 }
 
 /**
-Links navigate to other pages or additional information.
-*/
-
-export const Link: React.SFC<LinkProps> = ({className, href, id, external,...args}) => {
+ * Links navigate to other pages or additional information.
+ */
+export const Link: React.SFC<LinkProps> = ({ className, href, id, external,...args }) => {
   const styleableProps: PropertyBag = {
-    [styles.cardLink]: className == 'card-link',
+    [styles.cardLink]: className === 'card-link'
   }
 
   return (
-    <a  className={classNames(styles.lensLink, className, styleableProps)}
-        href={href}
-        target={external ? '_blank' : undefined}
-        id={id}
-        {...args}>
+    <a
+      className={classNames(styles.lensLink, className, styleableProps)}
+      href={href}
+      target={external ? '_blank' : undefined}
+      id={id}
+      {...args}
+    >
       {args.children}
     </a>
   )

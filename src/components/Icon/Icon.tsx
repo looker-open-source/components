@@ -1,6 +1,5 @@
 import * as React from 'react'
 const classNames = require('classnames')
-import * as styles from './Icon.scss'
 import {
   AddCircle,
   ArrowDropDown,
@@ -35,6 +34,7 @@ import {
   TrashOutline,
   Undo
 } from '../../icons/IconList'
+import * as styles from './Icon.scss'
 
 export const ICON_BUNDLE = {
   AddCircle,
@@ -80,23 +80,21 @@ export interface IconProps {
   className?: string
 }
 
-
-type PropertyBag = {
+interface PropertyBag {
   [key: string]: any
 }
 
-/**
+export const Icon: React.SFC<IconProps> = ({ className, glyph ,accessibilityLabel,...args }) => {
+  const styleableProps: PropertyBag = {}
 
-*/
-
-export const Icon: React.SFC<IconProps> = ({className, glyph ,accessibilityLabel,...args}) => {
-  const styleableProps: PropertyBag = {
-
-  }
-
-  let icon = ICON_BUNDLE[glyph]
+  const icon = ICON_BUNDLE[glyph]
 
   return (
-    <span className={classNames(styles.lensIcon, className, styleableProps)} {...args} dangerouslySetInnerHTML={{__html: icon}} aria-label={accessibilityLabel}></span>
+    <span
+      className={classNames(styles.lensIcon, className, styleableProps)}
+      {...args}
+      dangerouslySetInnerHTML={{ __html: icon }}
+      aria-label={accessibilityLabel}
+    />
   )
 }

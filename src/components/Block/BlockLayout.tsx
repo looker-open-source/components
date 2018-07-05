@@ -14,39 +14,37 @@ export interface BlockLayoutProps {
   className?: string
 }
 
-type PropertyBag = {
+interface PropertyBag {
   [key: string]: any
 }
 
 /**
-Flexbox wrapper for creating layouts using the `<Block />` component .
-*/
-
-export const BlockLayout: React.SFC<BlockLayoutProps> = ({className, direction, align, justify, wrap, ...args}) => {
-
+ * Flexbox wrapper for creating layouts using the `<Block />` component .
+ */
+export const BlockLayout: React.SFC<BlockLayoutProps> = ({ className, direction, align, justify, wrap, ...args }) => {
 
   const styleableProps: PropertyBag = {
-    [styles.directionRow]: direction == 'row',
-    [styles.directionColumn]: direction == 'column',
-    [styles.directionRowReverse]: direction == 'row-reverse',
-    [styles.directionColumnReverse]: direction == 'column-reverse',
+    [styles.directionRow]: direction === 'row',
+    [styles.directionColumn]: direction === 'column',
+    [styles.directionRowReverse]: direction === 'row-reverse',
+    [styles.directionColumnReverse]: direction === 'column-reverse',
 
-    [styles.alignCenter]: align == 'center',
-    [styles.alignFlexStart]: align == 'start',
-    [styles.alignFlexEnd]: align == 'end',
-    [styles.alignBaseline]: align == 'baseline',
+    [styles.alignCenter]: align === 'center',
+    [styles.alignFlexStart]: align === 'start',
+    [styles.alignFlexEnd]: align === 'end',
+    [styles.alignBaseline]: align === 'baseline',
 
-    [styles.justifyCenter]: justify == 'center',
-    [styles.justifyFlexStart]: justify == 'start',
-    [styles.justifyFlexEnd]: justify == 'end',
-    [styles.justifySpaceBetween]: justify == 'between',
-    [styles.justifySpaceAround]: justify == 'around',
-    [styles.justifySpaceEvenly]: justify == 'evenly',
-    [styles.justifyStretch]: justify == 'stretch',
+    [styles.justifyCenter]: justify === 'center',
+    [styles.justifyFlexStart]: justify === 'start',
+    [styles.justifyFlexEnd]: justify === 'end',
+    [styles.justifySpaceBetween]: justify === 'between',
+    [styles.justifySpaceAround]: justify === 'around',
+    [styles.justifySpaceEvenly]: justify === 'evenly',
+    [styles.justifyStretch]: justify === 'stretch',
 
-    [styles.wrap]: wrap == 'yes',
-    [styles.nowrap]: wrap == 'no',
-    [styles.wrapReverse]: wrap == 'reverse'
+    [styles.wrap]: wrap === 'yes',
+    [styles.nowrap]: wrap === 'no',
+    [styles.wrapReverse]: wrap === 'reverse'
 
   }
 
