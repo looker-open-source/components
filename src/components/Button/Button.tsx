@@ -1,10 +1,10 @@
-// tslint:disable-next-line:no-unused-variable
-import * as React from 'react'
 import { rem } from 'polished'
-// tslint:disable-next-line:no-unused-variable
 import styled, { StyledComponentClass } from '../../styled_components'
 import { brandFont } from '../../styles/typography'
 import { ThemeInterface } from '../../themes'
+
+import * as React from 'react'
+export { React, StyledComponentClass }
 
 export enum ButtonSizes {
   ExtraSmall = 'xsmall',
