@@ -79,7 +79,7 @@ export const Button = styled<ButtonProps, 'button'>('button')`
   }
 
   &:focus {
-    box-shadow: 0 0 0 .2em var(--outline-color);
+    box-shadow: 0 0 0 .15em var(--outline-color);
   }
 
   &:active  {
