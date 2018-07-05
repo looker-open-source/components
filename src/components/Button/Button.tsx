@@ -1,9 +1,8 @@
+import * as React from 'react'
 import { rem } from 'polished'
 import styled, { StyledComponentClass } from '../../styled_components'
 import { brandFont } from '../../styles/typography'
 import { ThemeInterface } from '../../themes'
-
-import * as React from 'react'
 export { React, StyledComponentClass }
 
 export enum ButtonSizes {
@@ -13,7 +12,8 @@ export enum ButtonSizes {
   Large = 'large'
 }
 
-export interface                        ButtonProps {size: ButtonSizes
+export interface ButtonProps {
+  size: ButtonSizes
   theme: ThemeInterface
 }
 
