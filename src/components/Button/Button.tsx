@@ -13,8 +13,7 @@ export enum ButtonSizes {
   Large = 'large'
 }
 
-export interface ButtonProps {
-  size: ButtonSizes
+export interface                        ButtonProps {size: ButtonSizes
   theme: ThemeInterface
 }
 
