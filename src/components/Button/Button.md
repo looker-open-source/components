@@ -70,13 +70,13 @@ Destructive Buttons are to be used in situations where you need to convey some v
 ```js
 <List>
   <ListItem>
-    <ButtonDestructive>Destructive Button</ButtonDestructive>
+    <DestructiveButton>Destructive Button</DestructiveButton>
   </ListItem>
   <ListItem>
-    <ButtonDestructive state="hover">Destructive Hover</ButtonDestructive>
+    <DestructiveButton state="hover">Destructive Hover</DestructiveButton>
   </ListItem>
   <ListItem>
-     <ButtonDestructive state="active">Destructive Active</ButtonDestructive>
+     <DestructiveButton state="active">Destructive Active</DestructiveButton>
   </ListItem>
 </List>
 ```
@@ -87,13 +87,13 @@ Destructive Buttons extend the default button, so they also have different varia
 ```js
 <List>
   <ListItem>
-    <ButtonDestructive>Destructive Button</ButtonDestructive>
+    <DestructiveButton>Destructive Button</DestructiveButton>
   </ListItem>
   <ListItem>
-    <ButtonDestructive variant="outline">Destructive Outline</ButtonDestructive>
+    <DestructiveButton variant="outline">Destructive Outline</DestructiveButton>
   </ListItem>
   <ListItem>
-     <ButtonDestructive variant="transparent">Destructive Transparent</ButtonDestructive>
+     <DestructiveButton variant="transparent">Destructive Transparent</DestructiveButton>
   </ListItem>
 </List>
 ```
