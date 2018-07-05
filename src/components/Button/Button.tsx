@@ -1,6 +1,6 @@
 import * as React from 'react'
 import styled, { StyledComponentClass } from '../../styled_components'
-import { rem } from 'polished'
+import { rem, rgba } from 'polished'
 import { brandFont } from '../../styles/typography'
 import { ThemeInterface } from '../../themes'
 
@@ -57,6 +57,7 @@ export const Button = styled<ButtonProps, 'button'>('button')`
   --border-color: ${props => props.variant == 'transparent' ? 'transparent' : props.theme.colors.primary };
   --hover-color: ${props => props.variant ? props.theme.colors.primaryLightOver : props.theme.colors.primaryOver };
   --active-color: ${props => props.variant ? props.theme.colors.primaryLightPress : props.theme.colors.primaryPress };
+  --outline-color: ${props => rgba(props.theme.colors.primary, .25)};
 
   background-color: var(--background-color);
   border: ${rem(1)} solid var(--border-color);
@@ -68,15 +69,23 @@ export const Button = styled<ButtonProps, 'button'>('button')`
   font-size: ${props => buttonSize(props.size).fontSize};
   line-height: ${props => buttonSize(props.size).lineHeight};
   padding: ${props => buttonSize(props.size).padding};
-  white-space: nowrap;
+  transition: border 180ms, background 180ms;
   vertical-align: middle;
+  white-space: nowrap;
+  outline: none;
 
   &:hover, &:focus {
-    background-color: var(--hover-color)
+    background-color: var(--hover-color);
+
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 .2em var(--outline-color);
   }
 
   &:active  {
-    background-color: var(--active-color)
+    background-color: var(--active-color);
+    box-shadow: none;
   }
 
   &[disabled] {
