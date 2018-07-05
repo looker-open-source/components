@@ -9,43 +9,43 @@ export interface ThemeColors {
   // Primary color in application, mainly used for primary actions
   primary: string
   // Color for the  primary action's interactive state, a button hover for example
-  primaryOver: string
+  primaryDark: string
   // Color for the primary action's pressed state, a mouse click on a button for example
-  primaryPress: string
-  // Tint for alternate lighter styling of primary action interactive state
-  primaryLightOver: string
+  primaryDarker: string
   // Tint for alternate lighter styling of primary action pressed state
-  primaryLightPress: string
+  primaryLight: string
+  // Tint for alternate lighter styling of primary action interactive state
+  primaryLighter: string
   // Color of text for a default primary action
   primaryText: string
 
   // Destructive color in application, used for signaling a destructive or dangerous action
   destructive: string
   // Color for the destructive action's interactive state, a button hover for example
-  destructiveOver: string
+  destructiveDark: string
   // Color for the destructive action's pressed state a mouse click on a button for example
-  destructivePress: string
-  // Tint for alternate lighter styling of destructive action interactive state
-  destructiveLightOver: string
+  destructiveDarker: string
   // Tint for alternate lighter styling of destructive action pressed state
-  destructiveLightPress: string
+  destructiveLight: string
+  // Tint for alternate lighter styling of destructive action interactive state
+  destructiveLighter: string
   // Color of text for a default destructive action
   destructiveText: string
 
 }
 
 export const themeColors: ThemeColors = {
-  primaryLightOver: purple200,
-  primaryLightPress: purple300,
+  primaryLighter: purple200,
+  primaryLight: purple300,
   primary: primary500,
-  primaryOver: primary600,
-  primaryPress: primary700,
+  primaryDark: primary600,
+  primaryDarker: primary700,
   primaryText: white,
 
-  destructiveLightOver: red200,
-  destructiveLightPress: red300,
+  destructiveLighter: red200,
+  destructiveLight: red300,
   destructive: red500,
-  destructiveOver: red600,
-  destructivePress: red700,
+  destructiveDark: red600,
+  destructiveDarker: red700,
   destructiveText: white
 }
