@@ -5936,6 +5936,10 @@ pn@^1.1.0:
   version "1.1.0"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/pn/-/pn-1.1.0.tgz#e2f4cef0e219f463c179ab37463e4e1ecdccbafb"
 
+polished@1.9.3:
+  version "1.9.3"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/polished/-/polished-1.9.3.tgz#d61b8a0c4624efe31e2583ff24a358932b6b75e1"
+
 portfinder@^1.0.9:
   version "1.0.13"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/portfinder/-/portfinder-1.0.13.tgz#bb32ecd87c27104ae6ee44b5a3ccbf0ebb1aede9"
@@ -7877,9 +7881,9 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
 
-typescript@2.7.2:
-  version "2.7.2"
-  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/typescript/-/typescript-2.7.2.tgz#2d615a1ef4aee4f574425cdff7026edf81919836"
+typescript@2.9.2:
+  version "2.9.2"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/typescript/-/typescript-2.9.2.tgz#1cbf61d05d6b96269244eb6a3bce4bd914e0f00c"
 
 typings-for-css-modules-loader@1.7.0:
   version "1.7.0"

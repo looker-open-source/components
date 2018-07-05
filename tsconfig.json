@@ -5,7 +5,6 @@
     "jsx": "react",
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,
-    "noUnusedLocals": true,
     "noUnusedParameters": true,
     "outDir": "dist",
     "plugins": [

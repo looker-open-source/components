@@ -1,37 +1,85 @@
 import * as React from 'react'
-import * as styles from './Button.scss'
-const classNames = require('classnames')
+import styled, { StyledComponentClass } from '../../styled_components'
+import { rem } from 'polished'
+import { brandFont } from '../../styles/typography'
+import { ThemeInterface } from '../../themes'
 
-export interface LookerButtonHTMLAttributes extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  mode?: 'light' | 'ghost' | 'scary' | undefined
-  size?: 'xsmall' | 'small' | 'large' | undefined
-  state?: 'active' | 'hover' | undefined
-  disabled?: boolean
+export enum ButtonSizes {
+  ExtraSmall = "xsmall",
+  Small = "small",
+  Medium = "medium",
+  Large = "large"
 }
 
-type PropertyBag = {
-  [key: string]: any
+export interface ButtonProps {
+  size: ButtonSizes
 }
 
-/**
- * Buttons communicate what action will occur on a page when the user interacts with them. All buttons use sentence-casing (only capitalize the first letter of the first word). Copy used within a button should be unambiguous and concise, making it clear to the user what action will occur once the button is clicked.
- */
-export const Button = ({className, size, mode, state, disabled, ...args}: LookerButtonHTMLAttributes) => {
-  const styleableProps: PropertyBag = {
-    [styles.modeScary]: mode == 'scary',
-    [styles.modeGhost]: mode == 'ghost',
-    [styles.modeLight]: mode == 'light',
+function buttonSize(size: string) {
+  switch (size) {
+    case ButtonSizes.ExtraSmall:
+      return {
+        fontSize: rem(12),
+        lineHeight: rem(20),
+        padding: `${rem(2)} ${rem(8)}`
+      }
+    case ButtonSizes.Small:
+      return {
+        fontSize: rem(14),
+        lineHeight: rem(24),
+        padding: `${rem(3)} ${rem(14)}`
+      }
+    case ButtonSizes.Large:
+      return {
+        fontSize: rem(22),
+        lineHeight: rem(30),
+        padding: `${rem(8)} ${rem(24)}`
+      }
+    case ButtonSizes.Medium:
+    default:
+      return {
+        fontSize: rem(16),
+        lineHeight: rem(24),
+        padding: `${rem(6)} ${rem(16)}`
+      }
+  }
+}
 
-    [styles.active]: state == 'active',
-    [styles.hover]: state == 'hover',
+export const Button = styled<ButtonProps, 'button'>('button')`
+  --background-color: ${props => props.theme.colors.action };
+  --color: ${props => props.theme.colors.text };
+  --border-color: var(--background-color);
 
-    [styles.sizeExtraSmall]: size == 'xsmall',
-    [styles.sizeSmall]: size == 'small',
-    [styles.sizeLarge]: size == 'large',
-    [styles.modeDisabled]: !!disabled
+  background-color: var(--background-color);
+  border: ${rem(1)} solid var(--border-color);
+  border-radius: ${rem(6)};
+  color: var(--color);
+  cursor: pointer;
+  display: inline-block;
+  font-family: ${brandFont};
+  font-size: ${props => buttonSize(props.size).fontSize};
+  line-height: ${props => buttonSize(props.size).lineHeight};
+  padding: ${props => buttonSize(props.size).padding};
+  white-space: nowrap;
+  vertical-align: middle;
+
+  &:hover {
+    --background-color: ${props => props.theme.colors.actionInteractive};
   }
 
-  return (
-    <button className={classNames(styles.button, className, styleableProps)} {...args}>{args.children}</button>
-  )
-}
+  &:active {
+    --background-color: ${props => props.theme.colors.actionActive};
+  }
+
+  &[disabled] {
+
+    --background-color: ${props => props.theme.colors.disabled};
+    --color: ${props => props.theme.colors.disabled};
+    cursor: default;
+
+    &:hover, &:active {
+      --background-color: ${props => props.theme.colors.disabled};
+      --color: ${props => props.theme.colors.disabled};
+    }
+  }
+`
