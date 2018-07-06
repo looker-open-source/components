@@ -63,9 +63,6 @@
     "react-dom": "16.4.1",
     "svg-inline-loader": "^0.8.0"
   },
-  "peerDependencies": {
-    "styled-components": "3.3.3"
-  },
   "files": [
     "dist"
   ],
@@ -88,23 +85,6 @@
       "**/?(*.)(spec|test).(ts|js)?(x)"
     ]
   },
-  "resolutions": {
-    "**/@types/react": "16.4.2"
-  },
-  "publishConfig": {
-    "registry": "https://nexusrepo.looker.com/repository/looker-npm-private/"
-  },
-  "scripts": {
-    "start": "styleguidist server",
-    "build": "yarn build-components && yarn build-styleguide",
-    "build-components": "tsc --emitDeclarationOnly && babel src --out-dir dist --extensions \".ts,.tsx\"",
-    "build-styleguide": "styleguidist build",
-    "clean": "rimraf dist && rimraf styleguide",
-    "lint-staged": "$(yarn bin)/lint-staged",
-    "prepublishOnly": "yarn clean && yarn build-components",
-    "release": "npm publish",
-    "test": "jest"
-  },
   "lint-staged": {
     "src/**/*.ts?(x)": [
       "prettier --write",
@@ -118,8 +98,31 @@
       "git add"
     ]
   },
+  "peerDependencies": {
+    "styled-components": "3.3.3"
+  },
   "pre-commit": [
     "lint-staged"
   ],
+  "publishConfig": {
+    "registry": "https://nexusrepo.looker.com/repository/looker-npm-private/"
+  },
+  "resolutions": {
+    "**/@types/react": "16.4.2"
+  },
+  "scripts": {
+    "start": "styleguidist server",
+    "build": "yarn build-components && yarn build-styleguide",
+    "build-components": "tsc --emitDeclarationOnly && babel src --out-dir dist --extensions \".ts,.tsx\"",
+    "build-styleguide": "styleguidist build",
+    "clean": "rimraf dist && rimraf styleguide",
+    "lint": "yarn lint:ts && yarn lint:css",
+    "lint:css": "stylelint \"**/*.ts?(x) **/*.?(s)css\"",
+    "lint:ts": "tslint --project tsconfig.json",
+    "lint-staged": "$(yarn bin)/lint-staged",
+    "prepublishOnly": "yarn clean && yarn build-components",
+    "release": "npm publish",
+    "test": "jest"
+  },
   "types": "dist"
 }
