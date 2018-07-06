@@ -5,10 +5,12 @@ import { ThemeInterface } from '../../themes'
 import { Button, ButtonProps } from './Button'
 
 export const DestructiveButton = Button.extend`
-  --background-color: ${props => props.variant ? 'transparent' : props.theme.colors.destructive };
-  --color: ${props => props.variant ? props.theme.colors.destructive : props.theme.colors.destructiveText };
-  --border-color: ${props => props.variant == 'transparent' ? 'transparent' : props.theme.colors.destructive };
-  --hover-color: ${props => props.variant ? props.theme.colors.destructiveLighter : props.theme.colors.destructiveDark };
-  --active-color: ${props => props.variant ? props.theme.colors.destructiveLight : props.theme.colors.destructiveDarker };
-  --outline-color: ${props => rgba(props.theme.colors.destructive, .25)};
+
+--primary: ${props => props.theme.colors.destructive };
+--hover: ${props =>props.theme.colors.destructiveDark };
+--active: ${props => props.theme.colors.destructiveDarker };
+--variantLight: ${props => props.theme.colors.destructiveLight };
+--variantLighter: ${props => props.theme.colors.destructiveLighter };
+--textColor: ${props => props.theme.colors.destructiveText };
+--accessibilityOutline ${props => rgba(props.theme.colors.destructive, .25)};
 `
