@@ -63,8 +63,7 @@ export const Button = styled<ButtonProps, 'button'>('button')`
   --primary: ${props => props.theme.colors.primary };
   --hover: ${props => props.theme.colors.primaryDark };
   --active: ${props => props.theme.colors.primaryDarker };
-  --variantLight: ${props => props.theme.colors.primaryLight };
-  --variantLighter: ${props => props.theme.colors.primaryLighter };
+  --transparentActive: ${props => props.theme.colors.primaryLighter };
   --variantBorder: ${props => props.theme.colors.borderColor };
   --textColor: ${props => props.theme.colors.primaryText };
   --accessibilityOutline ${props => rgba(props.theme.colors.primary, .25)};
@@ -140,7 +139,7 @@ export const Button = styled<ButtonProps, 'button'>('button')`
     }
 
     &:active {
-      background: var(--variantLighter);
+      background: var(--transparentActive);
     }
   `};
 `

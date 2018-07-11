@@ -9,8 +9,7 @@ export const DestructiveButton = Button.extend`
 --primary: ${props => props.theme.colors.destructive };
 --hover: ${props =>props.theme.colors.destructiveDark };
 --active: ${props => props.theme.colors.destructiveDarker };
---variantLight: ${props => props.theme.colors.destructiveLight };
---variantLighter: ${props => props.theme.colors.destructiveLighter };
+--transparentActive: ${props => props.theme.colors.destructiveLighter };
 --textColor: ${props => props.theme.colors.destructiveText };
 --accessibilityOutline ${props => rgba(props.theme.colors.destructive, .25)};
 `
