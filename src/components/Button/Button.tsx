@@ -4,6 +4,7 @@ import { rem, rgba } from 'polished'
 import { brandFont } from '../../styles/typography'
 import { ThemeInterface } from '../../themes'
 import { themeColors } from '../../themes/theme_colors';
+import { EPROTONOSUPPORT } from 'constants';
 
 export enum ButtonSizes {
   ExtraSmall = "xsmall",
@@ -64,13 +65,15 @@ export const Button = styled<ButtonProps, 'button'>('button')`
   --active: ${props => props.theme.colors.primaryDarker };
   --variantLight: ${props => props.theme.colors.primaryLight };
   --variantLighter: ${props => props.theme.colors.primaryLighter };
+  --variantBorder: ${props => props.theme.colors.borderColor };
   --textColor: ${props => props.theme.colors.primaryText };
   --accessibilityOutline ${props => rgba(props.theme.colors.primary, .25)};
 
 
+
   background-color: var(--primary);
   border: ${rem(1)} solid var(--primary);
-  border-radius: ${rem(6)};
+  border-radius: ${rem(4)};
   color: var(--textColor);
   cursor: pointer;
   display: inline-flex;
@@ -79,12 +82,13 @@ export const Button = styled<ButtonProps, 'button'>('button')`
   line-height: ${props => buttonSize(props.size).lineHeight};
   outline: none;
   padding: ${props => buttonSize(props.size).padding};
-  transition: border 180ms, background 180ms, text 180ms;
+  transition: border 80ms,
   vertical-align: middle;
   white-space: nowrap;
 
 
   &:hover, &:focus {
+    border-color: var(--hover);
     background-color: var(--hover);
   }
 
@@ -93,6 +97,7 @@ export const Button = styled<ButtonProps, 'button'>('button')`
   }
 
   &:active  {
+    border-color: var(--active);
     background-color: var(--active);
     box-shadow: none;
   }
@@ -108,17 +113,19 @@ export const Button = styled<ButtonProps, 'button'>('button')`
   }
 
   ${props => (props.variant === 'outline') && css`
-    background: transparent;
-    border-color: var(--primary);
+    background: #fff;
+    border-color: var(--variantBorder);
     color: var(--primary);
 
     &:hover, &:focus {
-      background: var(--variantLighter);
+      background: #fff;
+      color: var(--primary);
+      border-color: var(--primary)
     }
 
     &:active {
-      background: var(--variantLight);
-      color: var(--hover);
+      background: var(--primary);
+      color: var(--textColor);
     }
   `};
 

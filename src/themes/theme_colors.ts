@@ -1,8 +1,9 @@
 import {
-  gray200,
+  fog300,
   purple200, purple300,
   primary500, primary600, primary700,
-  red200, red300, red500, red600, red700,
+  red200, red300, red400, red500, red600, red700,
+
   white} from '../styles/colors'
 
 export interface ThemeColors {
@@ -32,6 +33,9 @@ export interface ThemeColors {
   // Color of text for a default destructive action
   destructiveText: string
 
+  // Default border and divider color
+  borderColor: string
+
 }
 
 export const themeColors: ThemeColors = {
@@ -47,5 +51,8 @@ export const themeColors: ThemeColors = {
   destructive: red500,
   destructiveDark: red600,
   destructiveDarker: red700,
-  destructiveText: white
+  destructiveText: white,
+
+  borderColor: fog300,
+
 }
