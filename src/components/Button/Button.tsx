@@ -1,5 +1,5 @@
-import { rem } from 'polished'
-import styled, { StyledComponentClass } from '../../styled_components'
+import { rem, rgba } from 'polished'
+import styled, { StyledComponentClass, css } from '../../styled_components'
 import { brandFont } from '../../styles/typography'
 import { ThemeInterface } from '../../themes'
 
@@ -13,9 +13,21 @@ export enum ButtonSizes {
   Large = 'large'
 }
 
+export enum ButtonVariants {
+  Outline = 'outline',
+  Transparent = 'transparent'
+}
+
+export enum ButtonStates {
+  Active = 'active',
+  Hover = 'hover'
+}
+
 export interface ButtonProps {
-  size: ButtonSizes,
+  size: ButtonSizes
+  state: ButtonStates
   theme: ThemeInterface
+  variant: ButtonVariants
 }
 
 function buttonSize (size: string) {
@@ -49,40 +61,81 @@ function buttonSize (size: string) {
 }
 
 export const Button = styled<ButtonProps, 'button'>('button')`
-  --background-color: ${(props) => props.theme.colors.action };
-  --color: ${(props) => props.theme.colors.text };
-  --border-color: var(--background-color);
+  --primary: ${props => props.theme.colors.primary };
+  --hover: ${props => props.theme.colors.primaryDark };
+  --active: ${props => props.theme.colors.primaryDarker };
+  --variantLight: ${props => props.theme.colors.primaryLight };
+  --variantLighter: ${(props) => props.theme.colors.primaryLighter };
+  --textColor: ${(props) => props.theme.colors.primaryText };
+  --accessibilityOutline ${props => rgba(props.theme.colors.primary, .25)};
 
-  background-color: var(--background-color);
-  border: ${rem(1)} solid var(--border-color);
+
+  background-color: var(--primary);
+  border: ${rem(1)} solid var(--primary);
   border-radius: ${rem(6)};
-  color: var(--color);
+  color: var(--textColor);
   cursor: pointer;
-  display: inline-block;
+  display: inline-flex;
   font-family: ${brandFont};
   font-size: ${(props) => buttonSize(props.size).fontSize};
   line-height: ${(props) => buttonSize(props.size).lineHeight};
+  outline: none;
   padding: ${(props) => buttonSize(props.size).padding};
-  white-space: nowrap;
+  transition: border 180ms, background 180ms, text 180ms;
   vertical-align: middle;
+  white-space: nowrap;
 
-  &:hover {
-    --background-color: ${(props) => props.theme.colors.actionInteractive};
+
+  &:hover, &:focus {
+    background-color: var(--hover);
   }
 
-  &:active {
-    --background-color: ${(props) => props.theme.colors.actionActive};
+  &:focus {
+    box-shadow: 0 0 0 .15em var(--accessibilityOutline);
+  }
+
+  &:active  {
+    background-color: var(--active);
+    box-shadow: none;
   }
 
   &[disabled] {
-
-    --background-color: ${(props) => props.theme.colors.disabled};
-    --color: ${(props) => props.theme.colors.disabled};
+    filter: grayscale(.3);
+    opacity: .25;
     cursor: default;
 
-    &:hover, &:active {
-      --background-color: ${(props) => props.theme.colors.disabled};
-      --color: ${(props) => props.theme.colors.disabled};
+    &:hover, &:active, &:focus {
+      background-color: var(--primary);
     }
   }
+
+  ${props => (props.variant === 'outline') && css`
+    background: transparent;
+    border-color: var(--primary);
+    color: var(--primary);
+
+    &:hover, &:focus {
+      background: var(--variantLighter);
+    }
+
+    &:active {
+      background: var(--variantLight);
+      color: var(--hover);
+    }
+  `};
+
+  ${props => (props.variant === 'transparent') && css`
+    background: transparent;
+    border: transparent;
+    color: var(--primary);
+
+    &:hover, &:focus {
+      color: var(--hover);
+      background: transparent;
+    }
+
+    &:active {
+      background: var(--variantLighter);
+    }
+  `};
 `

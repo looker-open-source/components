@@ -1,26 +1,46 @@
-import { gray200, primary500, primary600, primary700, red500, white } from '../styles/colors'
+import {gray200,purple200, purple300, primary500, primary600, primary700,red200, red300, red500, red600, red700,white} from '../styles/colors'
 
 export interface ThemeColors {
-  // Indicates a piece of UI that may be interactive
-  action: string
-  // Indicates a piece of interactive UI that is currently active, for example a pressed button.
-  actionActive: string
-  // Indicates interaction with a piece of UI, for example a hovered button.
-  actionInteractive: string
-  border: string
-  danger: string
-  disabled: string
-  interact: string
-  text: string
+  // Primary color in application, mainly used for primary actions
+  primary: string
+  // Color for the  primary action's interactive state, a button hover for example
+  primaryDark: string
+  // Color for the primary action's pressed state, a mouse click on a button for example
+  primaryDarker: string
+  // Tint for alternate lighter styling of primary action pressed state
+  primaryLight: string
+  // Tint for alternate lighter styling of primary action interactive state
+  primaryLighter: string
+  // Color of text for a default primary action
+  primaryText: string
+
+  // Destructive color in application, used for signaling a destructive or dangerous action
+  destructive: string
+  // Color for the destructive action's interactive state, a button hover for example
+  destructiveDark: string
+  // Color for the destructive action's pressed state a mouse click on a button for example
+  destructiveDarker: string
+  // Tint for alternate lighter styling of destructive action pressed state
+  destructiveLight: string
+  // Tint for alternate lighter styling of destructive action interactive state
+  destructiveLighter: string
+  // Color of text for a default destructive action
+  destructiveText: string
+
 }
 
 export const themeColors: ThemeColors = {
-  action: primary500,
-  actionActive: primary700,
-  actionInteractive: primary600,
-  border: primary500,
-  danger: red500,
-  disabled: gray200,
-  interact: primary600,
-  text: white
+  primaryLighter: purple200,
+  primaryLight: purple300,
+  primary: primary500,
+  primaryDark: primary600,
+  primaryDarker: primary700,
+  primaryText: white,
+
+  destructiveLighter: red200,
+  destructiveLight: red300,
+  destructive: red500,
+  destructiveDark: red600,
+  destructiveDarker: red700,
+  destructiveText: white
 }
