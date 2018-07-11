@@ -4,7 +4,6 @@ import { rem, rgba } from 'polished'
 import { brandFont } from '../../styles/typography'
 import { ThemeInterface } from '../../themes'
 import { themeColors } from '../../themes/theme_colors';
-import { EPROTONOSUPPORT } from 'constants';
 
 export enum ButtonSizes {
   ExtraSmall = "xsmall",
