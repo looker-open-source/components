@@ -1,10 +1,7 @@
 import { rem, rgba } from 'polished'
-import styled, { StyledComponentClass, css } from '../../styled_components'
+import styled, { css } from '../../styled_components'
 import { brandFont } from '../../styles/typography'
 import { ThemeInterface } from '../../themes'
-
-import * as React from 'react'
-export { React, StyledComponentClass }
 
 export enum ButtonSizes {
   ExtraSmall = 'xsmall',

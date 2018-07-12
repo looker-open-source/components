@@ -15,7 +15,6 @@ export const fog700 = '#414242'
 export const fog800 = '#323333'
 export const fog900 = '#252626'
 
-
 export const gray100 = '#F6F6F7'
 export const gray200 = '#E4E5E6'
 export const gray300 = '#D2D3D4'

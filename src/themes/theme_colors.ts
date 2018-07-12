@@ -39,19 +39,17 @@ export interface ThemeColors {
 }
 
 export const themeColors: ThemeColors = {
-  primaryLighter: purple200,
-  primaryLight: purple300,
-  primary: primary500,
-  primaryDark: primary600,
-  primaryDarker: primary700,
-  primaryText: white,
-
-  destructiveLighter: red200,
-  destructiveLight: red300,
+  borderColor: fog300,
   destructive: red500,
   destructiveDark: red600,
   destructiveDarker: red700,
+  destructiveLight: red300,
+  destructiveLighter: red200,
   destructiveText: white,
-
-  borderColor: fog300
+  primary: primary500,
+  primaryDark: primary600,
+  primaryDarker: primary700,
+  primaryLight: purple300,
+  primaryLighter: purple200,
+  primaryText: white
 }
