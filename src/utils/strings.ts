@@ -1,7 +1,7 @@
-export function capitalize (str: string) {
+export function capitalize(str: string) {
   return `${str.charAt(0).toUpperCase()}${str.slice(1)}`
 }
 
-export function decapitalize (str: string) {
+export function decapitalize(str: string) {
   return `${str.charAt(0).toLowerCase()}${str.slice(1)}`
 }

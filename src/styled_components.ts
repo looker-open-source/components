@@ -1,23 +1,18 @@
-import * as React from 'react'
 import * as styledComponents from 'styled-components'
-import { ThemedStyledComponentsModule } from 'styled-components'
 import { ThemeInterface } from './themes'
-import { StyledComponentClass } from 'styled-components'
+export { StyledComponentClass } from 'styled-components'
 
-const {
-  default: styled,
-  css,
-  injectGlobal,
-  keyframes,
-  ThemeProvider,
-} = styledComponents as ThemedStyledComponentsModule<ThemeInterface>
+const { css, injectGlobal, keyframes, ThemeProvider } = styledComponents
 
-export {
-  css,
-  injectGlobal,
-  keyframes,
-  ThemeProvider,
-  StyledComponentClass
-}
+// Typescript complains that the `as ThemedStyledComponentsModule` performs
+// unnecessary casting, which is not true. Without this line the Themes
+// attached to component prop types would not type-check correctly.
+//
+// tslint:disable-next-line:no-unnecessary-type-assertion
+const styled = (styledComponents as styledComponents.ThemedStyledComponentsModule<
+  ThemeInterface
+>).default
+
+export { css, injectGlobal, keyframes, ThemeProvider }
 
 export default styled

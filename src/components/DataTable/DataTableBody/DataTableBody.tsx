@@ -8,23 +8,18 @@ export interface DataTableBodyProps {
   className?: string | undefined
 }
 
-type PropertyBag = {
+interface PropertyBag {
   [key: string]: any
 }
 
-/**
+export const DataTableBody: React.SFC<DataTableBodyProps> = ({ className, align, textAlign, ...args }) => {
 
-*/
-
-export const DataTableBody: React.SFC<DataTableBodyProps> = ({className, align, textAlign, ...args}) => {
   const styleableProps: PropertyBag = {
-    [styles.alignMiddle]: align == 'middle',
-    [styles.alignBottom]: align == 'bottom',
-    [styles.textAlignLeft]: textAlign == 'left',
-    [styles.textAlignRight]: textAlign == 'right',
-    [styles.textAlignCenter]: textAlign == 'center'
-
-
+    [styles.alignMiddle]: align === 'middle',
+    [styles.alignBottom]: align === 'bottom',
+    [styles.textAlignLeft]: textAlign === 'left',
+    [styles.textAlignRight]: textAlign === 'right',
+    [styles.textAlignCenter]: textAlign === 'center'
   }
 
   return (

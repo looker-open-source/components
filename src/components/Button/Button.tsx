@@ -1,15 +1,13 @@
-import * as React from 'react'
-import styled, { StyledComponentClass, css } from '../../styled_components'
 import { rem, rgba } from 'polished'
+import styled, { css } from '../../styled_components'
 import { brandFont } from '../../styles/typography'
 import { ThemeInterface } from '../../themes'
-import { themeColors } from '../../themes/theme_colors';
 
 export enum ButtonSizes {
-  ExtraSmall = "xsmall",
-  Small = "small",
-  Medium = "medium",
-  Large = "large"
+  ExtraSmall = 'xsmall',
+  Small = 'small',
+  Medium = 'medium',
+  Large = 'large'
 }
 
 export enum ButtonVariants {
@@ -24,8 +22,9 @@ export enum ButtonStates {
 
 export interface ButtonProps {
   size: ButtonSizes
-  variant: ButtonVariants
   state: ButtonStates
+  theme: ThemeInterface
+  variant: ButtonVariants
 }
 
 function buttonSize(size: string) {
@@ -59,13 +58,13 @@ function buttonSize(size: string) {
 }
 
 export const Button = styled<ButtonProps, 'button'>('button')`
-  --primary: ${props => props.theme.colors.primary };
-  --hover: ${props => props.theme.colors.primaryDark };
-  --active: ${props => props.theme.colors.primaryDarker };
-  --transparentActive: ${props => props.theme.colors.primaryLighter };
-  --variantBorder: ${props => props.theme.colors.borderColor };
-  --textColor: ${props => props.theme.colors.primaryText };
-  --accessibilityOutline ${props => rgba(props.theme.colors.primary, .25)};
+  --primary: ${props => props.theme.colors.primary};
+  --hover: ${props => props.theme.colors.primaryDark};
+  --active: ${props => props.theme.colors.primaryDarker};
+  --transparentActive: ${props => props.theme.colors.primaryLighter};
+  --variantBorder: ${props => props.theme.colors.borderColor};
+  --textColor: ${props => props.theme.colors.primaryText};
+  --accessibilityOutline ${props => rgba(props.theme.colors.primary, 0.25)};
 
 
 
@@ -110,35 +109,41 @@ export const Button = styled<ButtonProps, 'button'>('button')`
     }
   }
 
-  ${props => (props.variant === 'outline') && css`
-    background: #fff;
-    border-color: var(--variantBorder);
-    color: var(--primary);
-
-    &:hover, &:focus {
+  ${props =>
+    props.variant === 'outline' &&
+    css`
       background: #fff;
+      border-color: var(--variantBorder);
       color: var(--primary);
-      border-color: var(--primary)
-    }
 
-    &:active {
-      background: var(--primary);
-      color: var(--textColor);
-    }
-  `};
+      &:hover,
+      &:focus {
+        background: #fff;
+        color: var(--primary);
+        border-color: var(--primary);
+      }
 
-  ${props => (props.variant === 'transparent') && css`
-    background: transparent;
-    border: transparent;
-    color: var(--primary);
+      &:active {
+        background: var(--primary);
+        color: var(--textColor);
+      }
+    `};
 
-    &:hover, &:focus {
-      color: var(--hover);
+  ${props =>
+    props.variant === 'transparent' &&
+    css`
       background: transparent;
-    }
+      border: transparent;
+      color: var(--primary);
 
-    &:active {
-      background: var(--transparentActive);
-    }
-  `};
+      &:hover,
+      &:focus {
+        color: var(--hover);
+        background: transparent;
+      }
+
+      &:active {
+        background: var(--transparentActive);
+      }
+    `};
 `

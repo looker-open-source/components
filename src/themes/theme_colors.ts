@@ -1,10 +1,17 @@
 import {
   fog300,
-  purple200, purple300,
-  primary500, primary600, primary700,
-  red200, red300, red400, red500, red600, red700,
-
-  white} from '../styles/colors'
+  purple200,
+  purple300,
+  primary500,
+  primary600,
+  primary700,
+  red200,
+  red300,
+  red500,
+  red600,
+  red700,
+  white
+} from '../styles/colors'
 
 export interface ThemeColors {
   // Primary color in application, mainly used for primary actions
@@ -35,24 +42,20 @@ export interface ThemeColors {
 
   // Default border and divider color
   borderColor: string
-
 }
 
 export const themeColors: ThemeColors = {
-  primaryLighter: purple200,
-  primaryLight: purple300,
-  primary: primary500,
-  primaryDark: primary600,
-  primaryDarker: primary700,
-  primaryText: white,
-
-  destructiveLighter: red200,
-  destructiveLight: red300,
+  borderColor: fog300,
   destructive: red500,
   destructiveDark: red600,
   destructiveDarker: red700,
+  destructiveLight: red300,
+  destructiveLighter: red200,
   destructiveText: white,
-
-  borderColor: fog300,
-
+  primary: primary500,
+  primaryDark: primary600,
+  primaryDarker: primary700,
+  primaryLight: purple300,
+  primaryLighter: purple200,
+  primaryText: white
 }
