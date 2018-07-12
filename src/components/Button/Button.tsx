@@ -17,15 +17,9 @@ export enum ButtonVariants {
   Transparent = 'transparent'
 }
 
-export enum ButtonStates {
-  Active = 'active',
-  Hover = 'hover'
-}
-
 export interface ButtonProps {
   size: ButtonSizes
   variant: ButtonVariants
-  state: ButtonStates
 }
 
 function buttonSize(size: string) {
