@@ -27,7 +27,7 @@ export interface ButtonProps {
   variant: ButtonVariants
 }
 
-function buttonSize (size: string) {
+function buttonSize(size: string) {
   switch (size) {
     case ButtonSizes.ExtraSmall:
       return {
@@ -58,13 +58,13 @@ function buttonSize (size: string) {
 }
 
 export const Button = styled<ButtonProps, 'button'>('button')`
-  --primary: ${(props) => props.theme.colors.primary };
-  --hover: ${(props) => props.theme.colors.primaryDark };
-  --active: ${(props) => props.theme.colors.primaryDarker };
-  --transparentActive: ${(props) => props.theme.colors.primaryLighter };
-  --variantBorder: ${(props) => props.theme.colors.borderColor };
-  --textColor: ${(props) => props.theme.colors.primaryText };
-  --accessibilityOutline ${(props) => rgba(props.theme.colors.primary, .25)};
+  --primary: ${props => props.theme.colors.primary};
+  --hover: ${props => props.theme.colors.primaryDark};
+  --active: ${props => props.theme.colors.primaryDarker};
+  --transparentActive: ${props => props.theme.colors.primaryLighter};
+  --variantBorder: ${props => props.theme.colors.borderColor};
+  --textColor: ${props => props.theme.colors.primaryText};
+  --accessibilityOutline ${props => rgba(props.theme.colors.primary, 0.25)};
 
 
 
@@ -75,10 +75,10 @@ export const Button = styled<ButtonProps, 'button'>('button')`
   cursor: pointer;
   display: inline-flex;
   font-family: ${brandFont};
-  font-size: ${(props) => buttonSize(props.size).fontSize};
-  line-height: ${(props) => buttonSize(props.size).lineHeight};
+  font-size: ${props => buttonSize(props.size).fontSize};
+  line-height: ${props => buttonSize(props.size).lineHeight};
   outline: none;
-  padding: ${(props) => buttonSize(props.size).padding};
+  padding: ${props => buttonSize(props.size).padding};
   transition: border 80ms,
   vertical-align: middle;
   white-space: nowrap;
@@ -109,35 +109,41 @@ export const Button = styled<ButtonProps, 'button'>('button')`
     }
   }
 
-  ${(props) => (props.variant === 'outline') && css`
-    background: #fff;
-    border-color: var(--variantBorder);
-    color: var(--primary);
-
-    &:hover, &:focus {
+  ${props =>
+    props.variant === 'outline' &&
+    css`
       background: #fff;
+      border-color: var(--variantBorder);
       color: var(--primary);
-      border-color: var(--primary)
-    }
 
-    &:active {
-      background: var(--primary);
-      color: var(--textColor);
-    }
-  `};
+      &:hover,
+      &:focus {
+        background: #fff;
+        color: var(--primary);
+        border-color: var(--primary);
+      }
 
-  ${(props) => (props.variant === 'transparent') && css`
-    background: transparent;
-    border: transparent;
-    color: var(--primary);
+      &:active {
+        background: var(--primary);
+        color: var(--textColor);
+      }
+    `};
 
-    &:hover, &:focus {
-      color: var(--hover);
+  ${props =>
+    props.variant === 'transparent' &&
+    css`
       background: transparent;
-    }
+      border: transparent;
+      color: var(--primary);
 
-    &:active {
-      background: var(--transparentActive);
-    }
-  `};
+      &:hover,
+      &:focus {
+        color: var(--hover);
+        background: transparent;
+      }
+
+      &:active {
+        background: var(--transparentActive);
+      }
+    `};
 `

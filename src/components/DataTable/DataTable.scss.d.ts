@@ -1,1 +1,1 @@
-export const lensDataTable: string;
+export const lensDataTable: string

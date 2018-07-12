@@ -1,1 +1,1 @@
-export const cardMedia: string;
+export const cardMedia: string

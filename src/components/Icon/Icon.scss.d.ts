@@ -1,1 +1,1 @@
-export const lensIcon: string;
+export const lensIcon: string

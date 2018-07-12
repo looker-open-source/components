@@ -15,13 +15,11 @@ test('A span Text component', () => {
   expect(tree).toMatchSnapshot()
 })
 
-
 test('A code Text component', () => {
   const component = create(<Text element="code">🥑</Text>)
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
 })
-
 
 test('A Text component resized', () => {
   const component = create(<Text size="d1">🥑</Text>)
@@ -36,11 +34,14 @@ test('A Text component weight', () => {
 })
 
 test('A Text component tuncated', () => {
-  const component = create(<Text weight="light" truncate>🥑</Text>)
+  const component = create(
+    <Text weight="light" truncate>
+      🥑
+    </Text>
+  )
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
 })
-
 
 test('A Text component with mode', () => {
   const component = create(<Text mode="subdued">🥑</Text>)
@@ -53,6 +54,3 @@ test('A Text component transformed', () => {
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
 })
-
-
-

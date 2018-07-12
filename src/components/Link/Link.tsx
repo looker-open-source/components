@@ -3,9 +3,9 @@ const classNames = require('classnames')
 import * as styles from './Link.scss'
 
 export interface LinkProps {
-  href: string,
-  id?: string,
-  external?: boolean,
+  href: string
+  id?: string
+  external?: boolean
   className?: string | undefined
 }
 
@@ -16,7 +16,13 @@ interface PropertyBag {
 /**
  * Links navigate to other pages or additional information.
  */
-export const Link: React.SFC<LinkProps> = ({ className, href, id, external,...args }) => {
+export const Link: React.SFC<LinkProps> = ({
+  className,
+  href,
+  id,
+  external,
+  ...args
+}) => {
   const styleableProps: PropertyBag = {
     [styles.cardLink]: className === 'card-link'
   }

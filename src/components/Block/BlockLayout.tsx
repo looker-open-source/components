@@ -8,7 +8,14 @@ export interface BlockLayoutProps {
   /** How to align the content inside the parent */
   align?: 'center' | 'start' | 'end' | 'baseline'
   /** How to justify the content insidne the parent */
-  justify?: 'center' | 'start' | 'end' | 'between' | 'around' | 'evenly' | 'stretch'
+  justify?:
+    | 'center'
+    | 'start'
+    | 'end'
+    | 'between'
+    | 'around'
+    | 'evenly'
+    | 'stretch'
   /** Should the columns wrap and what direction to wrap them */
   wrap?: 'yes' | 'no' | 'reverse'
   className?: string
@@ -21,8 +28,14 @@ interface PropertyBag {
 /**
  * Flexbox wrapper for creating layouts using the `<Block />` component .
  */
-export const BlockLayout: React.SFC<BlockLayoutProps> = ({ className, direction, align, justify, wrap, ...args }) => {
-
+export const BlockLayout: React.SFC<BlockLayoutProps> = ({
+  className,
+  direction,
+  align,
+  justify,
+  wrap,
+  ...args
+}) => {
   const styleableProps: PropertyBag = {
     [styles.directionRow]: direction === 'row',
     [styles.directionColumn]: direction === 'column',
@@ -45,11 +58,13 @@ export const BlockLayout: React.SFC<BlockLayoutProps> = ({ className, direction,
     [styles.wrap]: wrap === 'yes',
     [styles.nowrap]: wrap === 'no',
     [styles.wrapReverse]: wrap === 'reverse'
-
   }
 
   return (
-    <div className={classNames(styles.blockLayout, className, styleableProps)} {...args}>
+    <div
+      className={classNames(styles.blockLayout, className, styleableProps)}
+      {...args}
+    >
       {args.children}
     </div>
   )

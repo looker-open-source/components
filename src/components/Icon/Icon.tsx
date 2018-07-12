@@ -74,7 +74,7 @@ export const ICON_BUNDLE = {
 export type IconSource = keyof typeof ICON_BUNDLE
 
 export interface IconProps {
-  glyph: IconSource,
+  glyph: IconSource
   accessibilityLabel?: string
   color?: string
   className?: string
@@ -84,7 +84,12 @@ interface PropertyBag {
   [key: string]: any
 }
 
-export const Icon: React.SFC<IconProps> = ({ className, glyph ,accessibilityLabel,...args }) => {
+export const Icon: React.SFC<IconProps> = ({
+  className,
+  glyph,
+  accessibilityLabel,
+  ...args
+}) => {
   const styleableProps: PropertyBag = {}
 
   const icon = ICON_BUNDLE[glyph]
