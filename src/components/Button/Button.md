@@ -7,17 +7,20 @@ The `<Button />` component accepts a `variant` property which allows you to sele
 Use a primary button for the most frequently used action or most important action on a page. Primary buttons should only appear once on a page. They are sometimes accompanied by a secondary button.
 
 ```js
-<List>
-  <ListItem>
-    <Button>Primary Idle</Button>
-  </ListItem>
-  <ListItem>
-    <Button state="hover">Primary Hover</Button>
-  </ListItem>
-  <ListItem>
-     <Button state="active">Primary Active</Button>
-  </ListItem>
-</List>
+ <Button>Primary Button</Button>
+```
+##### **Primary states**
+
+```js noeditor
+<table>
+  <tr>
+    <td><Button>Primary Idle</Button></td>
+    <td><Button className="hover">Primary Hover</Button></td>
+    <td><Button className="active">Primary Active</Button></td>
+     <td><Button disabled>Disabled Active</Button></td>
+  </tr>
+</table>
+
 ```
 
 <div class="doc-section-divider"></div>

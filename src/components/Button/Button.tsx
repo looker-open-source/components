@@ -84,8 +84,7 @@ export const Button = styled<ButtonProps, 'button'>('button')`
   vertical-align: middle;
   white-space: nowrap;
 
-
-  &:hover, &:focus {
+  &:hover, &:focus, &.hover {
     border-color: var(--hover);
     background-color: var(--hover);
   }
@@ -94,7 +93,7 @@ export const Button = styled<ButtonProps, 'button'>('button')`
     box-shadow: 0 0 0 .15em var(--accessibilityOutline);
   }
 
-  &:active  {
+  &:active, &.active  {
     border-color: var(--active);
     background-color: var(--active);
     box-shadow: none;
@@ -115,13 +114,13 @@ export const Button = styled<ButtonProps, 'button'>('button')`
     border-color: var(--variantBorder);
     color: var(--primary);
 
-    &:hover, &:focus {
+    &:hover, &:focus, &.hover {
       background: #fff;
       color: var(--primary);
       border-color: var(--primary)
     }
 
-    &:active {
+    &:active, &.active {
       background: var(--primary);
       color: var(--textColor);
     }
@@ -132,12 +131,12 @@ export const Button = styled<ButtonProps, 'button'>('button')`
     border: transparent;
     color: var(--primary);
 
-    &:hover, &:focus {
+    &:hover, &:focus, &.hover {
       color: var(--hover);
       background: transparent;
     }
 
-    &:active {
+    &:active, &.active {
       background: var(--transparentActive);
     }
   `};
