@@ -41,7 +41,7 @@
     "tslint": "5.10.0",
     "tslint-config-standard": "7.1.0",
     "tslint-react": "3.6.0",
-    "typescript": "2.9.2",
+    "typescript": "3.0.0-dev.20180711",
     "typings-for-css-modules-loader": "1.7.0",
     "webpack": "3.5.0"
   },

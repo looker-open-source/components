@@ -61,13 +61,13 @@ function buttonSize (size: string) {
 }
 
 export const Button = styled<ButtonProps, 'button'>('button')`
-  --primary: ${props => props.theme.colors.primary };
-  --hover: ${props => props.theme.colors.primaryDark };
-  --active: ${props => props.theme.colors.primaryDarker };
-  --variantLight: ${props => props.theme.colors.primaryLight };
+  --primary: ${(props) => props.theme.colors.primary };
+  --hover: ${(props) => props.theme.colors.primaryDark };
+  --active: ${(props) => props.theme.colors.primaryDarker };
+  --variantLight: ${(props) => props.theme.colors.primaryLight };
   --variantLighter: ${(props) => props.theme.colors.primaryLighter };
   --textColor: ${(props) => props.theme.colors.primaryText };
-  --accessibilityOutline ${props => rgba(props.theme.colors.primary, .25)};
+  --accessibilityOutline ${(props) => rgba(props.theme.colors.primary, .25)};
 
 
   background-color: var(--primary);
@@ -109,7 +109,7 @@ export const Button = styled<ButtonProps, 'button'>('button')`
     }
   }
 
-  ${props => (props.variant === 'outline') && css`
+  ${(props) => (props.variant === 'outline') && css`
     background: transparent;
     border-color: var(--primary);
     color: var(--primary);
@@ -124,7 +124,7 @@ export const Button = styled<ButtonProps, 'button'>('button')`
     }
   `};
 
-  ${props => (props.variant === 'transparent') && css`
+  ${(props) => (props.variant === 'transparent') && css`
     background: transparent;
     border: transparent;
     color: var(--primary);

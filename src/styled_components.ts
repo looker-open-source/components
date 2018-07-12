@@ -7,7 +7,7 @@
 // no-unused-variable: React import is required to build the correct declaration files.
 // Sadly, Typescript has a hard time understanding this until compile time.
 //
-/* tslint:disable:no-unnecessary-type-assertion  no-unused-variable */
+//
 
 // Required by ThemeProvider to compile the proper declaration files.
 import * as React from 'react'
@@ -16,17 +16,19 @@ import { ThemeInterface } from './themes'
 export { StyledComponentClass } from 'styled-components'
 
 const {
-  default: styled,
   css,
   injectGlobal,
   keyframes,
   ThemeProvider
-} = styledComponents as styledComponents.ThemedStyledComponentsModule<ThemeInterface>
+} = styledComponents
+
+const styled = (styledComponents as styledComponents.ThemedStyledComponentsModule<ThemeInterface>).default
 
 export {
   css,
   injectGlobal,
   keyframes,
+  React,
   ThemeProvider
 }
 
