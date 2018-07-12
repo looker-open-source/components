@@ -62,8 +62,8 @@ export const Button = styled<ButtonProps, 'button'>('button')`
   font-size: ${props => buttonSize(props.size).fontSize};
   line-height: ${props => buttonSize(props.size).lineHeight};
   padding: ${props => buttonSize(props.size).padding};
-  white-space: nowrap;
   vertical-align: middle;
+  white-space: nowrap;
 
   &:hover {
     --background-color: ${props => props.theme.colors.actionInteractive};

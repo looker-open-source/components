@@ -1,7 +1,71 @@
 {
-  "processors": ["stylelint-processor-styled-components"],
+  "plugins": [
+    "stylelint-order"
+  ],
+  "processors": [
+    "stylelint-processor-styled-components"
+  ],
   "extends": [
     "stylelint-config-recommended",
     "stylelint-config-styled-components"
-  ]
+  ],
+  "rules": {
+    "order/order": [ "custom-properties", "declarations", "rules", "at-rules" ],
+    "order/properties-alphabetical-order": true,
+
+    "color-no-invalid-hex": true,
+    "function-calc-no-unspaced-operator": true,
+    "unit-no-unknown": true,
+    "declaration-block-no-duplicate-properties": true,
+    "declaration-block-no-shorthand-property-overrides": true,
+
+    "no-descending-specificity": true,
+    "no-duplicate-selectors": true,
+    "no-extra-semicolons": true,
+
+    "color-named": "never",
+    "shorthand-property-no-redundant-values": true,
+    "value-no-vendor-prefix": true,
+    "declaration-no-important": true,
+
+    "unit-whitelist": [ "s", "fr", "px", "deg", "rem", "vh", "vw", "%" ],
+    "max-nesting-depth": 2,
+    "no-unknown-animations": true,
+
+    "color-hex-case": "lower",
+    "font-weight-notation": "named-where-possible",
+    "number-leading-zero": "never",
+    "number-no-trailing-zeros": true,
+    "string-quotes": "double",
+    "length-zero-no-unit": true,
+    "unit-case": "lower",
+    "value-keyword-case": "lower",
+
+    "declaration-block-semicolon-newline-after": "always",
+    "declaration-block-trailing-semicolon": "always",
+
+    "block-closing-brace-empty-line-before": "never",
+    "block-closing-brace-newline-after": "always",
+    "block-opening-brace-newline-after": "always-multi-line",
+    "selector-attribute-quotes": "always",
+
+    "selector-combinator-space-after": "always",
+    "selector-combinator-space-before": "always",
+
+    "selector-attribute-brackets-space-inside": "never",
+    "selector-attribute-operator-space-after": "never",
+    "selector-attribute-operator-space-before": "never",
+
+    "selector-pseudo-class-case": "lower",
+    "selector-pseudo-class-parentheses-space-inside": "never",
+    "selector-pseudo-element-case": "lower",
+    "selector-pseudo-element-colon-notation": "single",
+    "selector-type-case": "lower",
+
+    "selector-list-comma-newline-after": "always",
+    "selector-list-comma-space-before": "never",
+
+    "indentation": 2,
+    "max-empty-lines": 1
+  }
 }
