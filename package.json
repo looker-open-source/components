@@ -113,10 +113,11 @@
     "build-styleguide": "styleguidist build",
     "clean": "rimraf dist && rimraf styleguide",
     "lint": "yarn lint:ts && yarn lint:css",
-    "lint:css": "stylelint \"**/*.ts?(x)\"",
+    "lint:css": "stylelint \"src/**/*.ts?(x)\"",
     "lint:ts": "tslint --project tsconfig.json",
     "lint-staged": "$(yarn bin)/lint-staged",
     "prepublishOnly": "yarn clean && yarn build-components",
+    "prettify": "yarn prettier \"src/**/*.ts?(x)\" --write",
     "release": "npm publish",
     "test": "jest"
   },
