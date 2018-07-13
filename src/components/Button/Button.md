@@ -7,17 +7,20 @@ The `<Button />` component accepts a `variant` property which allows you to sele
 Use a primary button for the most frequently used action or most important action on a page. Primary buttons should only appear once on a page. They are sometimes accompanied by a secondary button.
 
 ```js
-<List>
-  <ListItem>
-    <Button>Primary Idle</Button>
-  </ListItem>
-  <ListItem>
-    <Button state="hover">Primary Hover</Button>
-  </ListItem>
-  <ListItem>
-     <Button state="active">Primary Active</Button>
-  </ListItem>
-</List>
+ <Button>Primary Button</Button>
+```
+##### **Primary states**
+
+```js noeditor
+<table>
+  <tr>
+    <td><Button>Primary Idle</Button></td>
+    <td><Button className="hover">Primary Hover</Button></td>
+    <td><Button className="active">Primary Active</Button></td>
+     <td><Button disabled>Disabled</Button></td>
+  </tr>
+</table>
+
 ```
 
 <div class="doc-section-divider"></div>
@@ -32,10 +35,10 @@ Use an outline button alongside a primary button to provide alternative actions 
     <Button variant="outline">Light Idle</Button>
   </ListItem>
   <ListItem>
-    <Button variant="outline" state="hover">Light Hover</Button>
+    <Button variant="outline">Light Hover</Button>
   </ListItem>
   <ListItem>
-     <Button variant="outline" state="active">Light Active</Button>
+     <Button variant="outline">Light Active</Button>
   </ListItem>
 </List>
 ```
@@ -53,10 +56,10 @@ Use a transparent button as a tertiary action on a screen, they are often used a
     <Button variant="transparent">Ghost Idle</Button>
   </ListItem>
   <ListItem>
-    <Button variant="transparent" state="hover">Ghost Hover</Button>
+    <Button variant="transparent">Ghost Hover</Button>
   </ListItem>
   <ListItem>
-     <Button variant="transparent" state="active">Ghost Active</Button>
+     <Button variant="transparent">Ghost Active</Button>
   </ListItem>
 </List>
 ```
@@ -73,10 +76,10 @@ Destructive Buttons are to be used in situations where you need to convey some v
     <DestructiveButton>Destructive Button</DestructiveButton>
   </ListItem>
   <ListItem>
-    <DestructiveButton state="hover">Destructive Hover</DestructiveButton>
+    <DestructiveButton>Destructive Hover</DestructiveButton>
   </ListItem>
   <ListItem>
-     <DestructiveButton state="active">Destructive Active</DestructiveButton>
+     <DestructiveButton>Destructive Active</DestructiveButton>
   </ListItem>
 </List>
 ```

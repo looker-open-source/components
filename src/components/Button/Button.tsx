@@ -15,14 +15,8 @@ export enum ButtonVariants {
   Transparent = 'transparent'
 }
 
-export enum ButtonStates {
-  Active = 'active',
-  Hover = 'hover'
-}
-
 export interface ButtonProps {
   size: ButtonSizes
-  state: ButtonStates
   theme: ThemeInterface
   variant: ButtonVariants
 }
@@ -91,7 +85,8 @@ export const Button = styled<ButtonProps, 'button'>('button')`
     box-shadow: 0 0 0 0.15rem var(--accessibilityOutline);
   }
 
-  &:active {
+  &:active,
+  &.active {
     background-color: var(--active);
     border-color: var(--active);
     box-shadow: none;
