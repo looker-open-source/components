@@ -12,8 +12,12 @@ interface PropertyBag {
   [key: string]: any
 }
 
-export const DataTableBody: React.SFC<DataTableBodyProps> = ({ className, align, textAlign, ...args }) => {
-
+export const DataTableBody: React.SFC<DataTableBodyProps> = ({
+  className,
+  align,
+  textAlign,
+  ...args
+}) => {
   const styleableProps: PropertyBag = {
     [styles.alignMiddle]: align === 'middle',
     [styles.alignBottom]: align === 'bottom',
@@ -23,7 +27,14 @@ export const DataTableBody: React.SFC<DataTableBodyProps> = ({ className, align,
   }
 
   return (
-    <tbody className={classNames(styles.lensDataTableBody, className, styleableProps)} {...args}>
+    <tbody
+      className={classNames(
+        styles.lensDataTableBody,
+        className,
+        styleableProps
+      )}
+      {...args}
+    >
       {args.children}
     </tbody>
   )
