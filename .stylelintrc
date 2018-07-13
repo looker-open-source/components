@@ -1,7 +1,4 @@
 {
-  "plugins": [
-    "stylelint-order"
-  ],
   "processors": [
     "stylelint-processor-styled-components"
   ],
@@ -10,9 +7,6 @@
     "stylelint-config-styled-components"
   ],
   "rules": {
-    "order/order": [ "custom-properties", "declarations", "rules", "at-rules" ],
-    "order/properties-alphabetical-order": true,
-
     "color-no-invalid-hex": true,
     "function-calc-no-unspaced-operator": true,
     "unit-no-unknown": true,
@@ -28,18 +22,16 @@
     "value-no-vendor-prefix": true,
     "declaration-no-important": true,
 
-    "unit-whitelist": [ "s", "fr", "px", "deg", "rem", "vh", "vw", "%" ],
+    "unit-whitelist": [ "s", "fr", "px", "deg", "rem", "vh", "vw", "%", "ms" ],
     "max-nesting-depth": 2,
     "no-unknown-animations": true,
 
     "color-hex-case": "lower",
     "font-weight-notation": "named-where-possible",
-    "number-leading-zero": "never",
     "number-no-trailing-zeros": true,
     "string-quotes": "double",
     "length-zero-no-unit": true,
     "unit-case": "lower",
-    "value-keyword-case": "lower",
 
     "declaration-block-semicolon-newline-after": "always",
     "declaration-block-trailing-semicolon": "always",

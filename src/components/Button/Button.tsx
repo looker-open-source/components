@@ -1,9 +1,7 @@
-import * as React from 'react'
-import { rem } from 'polished'
-import styled, { StyledComponentClass } from '../../styled_components'
+import { rem, rgba } from 'polished'
+import styled, { css } from '../../styled_components'
 import { brandFont } from '../../styles/typography'
 import { ThemeInterface } from '../../themes'
-export { React, StyledComponentClass }
 
 export enum ButtonSizes {
   ExtraSmall = 'xsmall',
@@ -12,9 +10,21 @@ export enum ButtonSizes {
   Large = 'large'
 }
 
+export enum ButtonVariants {
+  Outline = 'outline',
+  Transparent = 'transparent'
+}
+
+export enum ButtonStates {
+  Active = 'active',
+  Hover = 'hover'
+}
+
 export interface ButtonProps {
   size: ButtonSizes
+  state: ButtonStates
   theme: ThemeInterface
+  variant: ButtonVariants
 }
 
 function buttonSize(size: string) {
@@ -48,40 +58,96 @@ function buttonSize(size: string) {
 }
 
 export const Button = styled<ButtonProps, 'button'>('button')`
-  --background-color: ${props => props.theme.colors.action};
-  --color: ${props => props.theme.colors.text};
-  --border-color: var(--background-color);
+  --primary: ${props => props.theme.colors.primary};
+  --hover: ${props => props.theme.colors.primaryDark};
+  --active: ${props => props.theme.colors.primaryDarker};
+  --transparentActive: ${props => props.theme.colors.primaryLighter};
+  --variantBorder: ${props => props.theme.colors.borderColor};
+  --textColor: ${props => props.theme.colors.primaryText};
+  --accessibilityOutline: ${props => rgba(props.theme.colors.primary, 0.25)};
 
-  background-color: var(--background-color);
-  border: ${rem(1)} solid var(--border-color);
-  border-radius: ${rem(6)};
-  color: var(--color);
+  background-color: var(--primary);
+  border: ${rem(1)} solid var(--primary);
+  border-radius: ${rem(4)};
+  color: var(--textColor);
   cursor: pointer;
-  display: inline-block;
+  display: inline-flex;
   font-family: ${brandFont};
   font-size: ${props => buttonSize(props.size).fontSize};
   line-height: ${props => buttonSize(props.size).lineHeight};
+  outline: none;
   padding: ${props => buttonSize(props.size).padding};
+  transition: border 80ms;
   vertical-align: middle;
   white-space: nowrap;
 
-  &:hover {
-    --background-color: ${props => props.theme.colors.actionInteractive};
+  &:hover,
+  &:focus {
+    background-color: var(--hover);
+    border-color: var(--hover);
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 0.15rem var(--accessibilityOutline);
   }
 
   &:active {
-    --background-color: ${props => props.theme.colors.actionActive};
+    background-color: var(--active);
+    border-color: var(--active);
+    box-shadow: none;
   }
 
   &[disabled] {
-    --background-color: ${props => props.theme.colors.disabled};
-    --color: ${props => props.theme.colors.disabled};
     cursor: default;
+    filter: grayscale(0.3);
+    opacity: 0.25;
 
     &:hover,
-    &:active {
-      --background-color: ${props => props.theme.colors.disabled};
-      --color: ${props => props.theme.colors.disabled};
+    &:active,
+    &:focus {
+      background-color: var(--primary);
     }
   }
+
+  ${props =>
+    props.variant === ButtonVariants.Outline &&
+    css`
+      background: #fff;
+      border-color: var(--variantBorder);
+      color: var(--primary);
+
+      &:hover,
+      &:focus,
+      &.hover {
+        background: #fff;
+        color: var(--primary);
+        border-color: var(--primary);
+      }
+
+      &:active,
+      &.active {
+        background: var(--primary);
+        color: var(--textColor);
+      }
+    `};
+
+  ${props =>
+    props.variant === ButtonVariants.Transparent &&
+    css`
+      background: transparent;
+      border: transparent;
+      color: var(--primary);
+
+      &:hover,
+      &:focus,
+      &.hover {
+        color: var(--hover);
+        background: transparent;
+      }
+
+      &:active,
+      &.active {
+        background: var(--transparentActive);
+      }
+    `};
 `
