@@ -6,21 +6,24 @@ export interface DataTableProps {
   className?: string | undefined
 }
 
-type PropertyBag = {
+interface PropertyBag {
   [key: string]: any
 }
 
 /**
-Used to display tabular data.
-*/
-
-export const DataTable: React.SFC<DataTableProps> = ({className, ...args}) => {
-  const styleableProps: PropertyBag = {
-
-  }
+ * Used to display tabular data.
+ */
+export const DataTable: React.SFC<DataTableProps> = ({
+  className,
+  ...args
+}) => {
+  const styleableProps: PropertyBag = {}
 
   return (
-    <table className={classNames(styles.lensDataTable, className, styleableProps)} {...args}>
+    <table
+      className={classNames(styles.lensDataTable, className, styleableProps)}
+      {...args}
+    >
       {args.children}
     </table>
   )

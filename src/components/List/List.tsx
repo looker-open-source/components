@@ -8,24 +8,29 @@ export interface ListProps {
   className?: string
 }
 
-type PropertyBag = {
+interface PropertyBag {
   [key: string]: any
 }
 
 /**
-List are stacked groups of related content that can be useful in many contexts.
-*/
+ * List are stacked groups of related content that can be useful in many contexts.
+ */
 
-export const List: React.SFC<ListProps> = ({className, type, nomarker, ...args}) => {
+export const List: React.SFC<ListProps> = ({
+  className,
+  type,
+  nomarker,
+  ...args
+}) => {
   const styleableProps: PropertyBag = {
-    [styles.lensList]: className == 'lens-list',
-    [styles.isBullet]: type == 'bullet',
-    [styles.isNumber]: type == 'number',
-    [styles.isLetter]: type == 'letter',
+    [styles.lensList]: className === 'lens-list',
+    [styles.isBullet]: type === 'bullet',
+    [styles.isNumber]: type === 'number',
+    [styles.isLetter]: type === 'letter',
     [styles.noMarker]: !!nomarker
   }
 
-  let Tag = undefined
+  let Tag
   switch (type) {
     case 'bullet':
       Tag = 'ul'
@@ -41,7 +46,10 @@ export const List: React.SFC<ListProps> = ({className, type, nomarker, ...args})
   }
 
   return (
-    <Tag  className={classNames(styles.lensList, className, styleableProps)} {...args}>
+    <Tag
+      className={classNames(styles.lensList, className, styleableProps)}
+      {...args}
+    >
       {args.children}
     </Tag>
   )

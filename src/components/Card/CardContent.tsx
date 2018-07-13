@@ -1,6 +1,6 @@
 import * as React from 'react'
 const classNames = require('classnames')
-//import * as styles from './CardContent.scss'
+// import * as styles from './CardContent.scss'
 import { Block } from '../Block/Block'
 
 export interface CardContentProps {
@@ -8,23 +8,28 @@ export interface CardContentProps {
   pad?: 's' | 'm' | 'l' | 'xl'
 }
 
-
-type PropertyBag = {
+interface PropertyBag {
   [key: string]: any
 }
 
 /** Ensures consistent spacing around the content within the `Card` component  */
-export const CardContent: React.SFC<CardContentProps> = ({className, pad, ...args}) => {
-
-  const styleableProps: PropertyBag = {
-
-  }
+export const CardContent: React.SFC<CardContentProps> = ({
+  className,
+  pad,
+  ...args
+}) => {
+  const styleableProps: PropertyBag = {}
 
   // Use default padding if no pad is supplied
-  let padAmount = pad? pad : 'm'
+  const padAmount = pad ? pad : 'm'
 
   return (
-    <Block p={padAmount} className={classNames(className, styleableProps,)} {...args}>{args.children}</Block>
+    <Block
+      p={padAmount}
+      className={classNames(className, styleableProps)}
+      {...args}
+    >
+      {args.children}
+    </Block>
   )
 }
-

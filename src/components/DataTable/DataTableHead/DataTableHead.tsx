@@ -6,15 +6,14 @@ export interface DataTableHeadProps {
   className?: string | undefined
 }
 
-type PropertyBag = {
+interface PropertyBag {
   [key: string]: any
 }
 
 /**
-  Defines the table header for a `<DataTable />`
-*/
-
-export const DataTableHead: React.SFC<DataTableHeadProps> = ({className, ...args}) => {
+ * Defines the table header for a `<DataTable />`
+ */
+export const DataTableHead: React.SFC<DataTableHeadProps> = ({ className, ...args }) => {
   const styleableProps: PropertyBag = {
 
   }

@@ -1,2 +1,2 @@
-export const lensLink: string;
-export const cardLink: string;
+export const lensLink: string
+export const cardLink: string

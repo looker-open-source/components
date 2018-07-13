@@ -10,7 +10,8 @@ test('A default List, should be a ul', () => {
       <ListItem>🥑</ListItem>
       <ListItem>🍕</ListItem>
       <ListItem>🥨</ListItem>
-    </List>)
+    </List>
+  )
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
 })
@@ -21,7 +22,8 @@ test('A bullet List', () => {
       <ListItem>🥑</ListItem>
       <ListItem>🍕</ListItem>
       <ListItem>🥨</ListItem>
-    </List>)
+    </List>
+  )
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
 })
@@ -32,8 +34,8 @@ test('A ordered List', () => {
       <ListItem>🥑</ListItem>
       <ListItem>🍕</ListItem>
       <ListItem>🥨</ListItem>
-    </List>)
+    </List>
+  )
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
 })
-
