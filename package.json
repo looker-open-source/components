@@ -89,13 +89,8 @@
   "lint-staged": {
     "src/**/*.ts?(x)": [
       "prettier --write",
-      "stylelint --fix",
-      "tslint --project tsconfig.json",
-      "git add"
-    ],
-    "src/**/*.?(s)css": [
-      "prettier --write",
-      "stylelint --fix",
+      "stylelint",
+      "tslint --fix",
       "git add"
     ]
   },
