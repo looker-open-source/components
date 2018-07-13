@@ -15,14 +15,8 @@ export enum ButtonVariants {
   Transparent = 'transparent'
 }
 
-export enum ButtonStates {
-  Active = 'active',
-  Hover = 'hover'
-}
-
 export interface ButtonProps {
   size: ButtonSizes
-  state: ButtonStates
   theme: ThemeInterface
   variant: ButtonVariants
 }
@@ -83,8 +77,7 @@ export const Button = styled<ButtonProps, 'button'>('button')`
   vertical-align: middle;
   white-space: nowrap;
 
-
-  &:hover, &:focus {
+  &:hover, &:focus, &.hover {
     border-color: var(--hover);
     background-color: var(--hover);
   }
@@ -93,7 +86,7 @@ export const Button = styled<ButtonProps, 'button'>('button')`
     box-shadow: 0 0 0 .15em var(--accessibilityOutline);
   }
 
-  &:active  {
+  &:active, &.active  {
     border-color: var(--active);
     background-color: var(--active);
     box-shadow: none;
@@ -109,41 +102,35 @@ export const Button = styled<ButtonProps, 'button'>('button')`
     }
   }
 
-  ${props =>
-    props.variant === 'outline' &&
-    css`
+${props => (props.variant === 'outline') && css`
+    background: #fff;
+    border-color: var(--variantBorder);
+    color: var(--primary);
+
+    &:hover, &:focus, &.hover {
       background: #fff;
-      border-color: var(--variantBorder);
       color: var(--primary);
+      border-color: var(--primary)
+    }
 
-      &:hover,
-      &:focus {
-        background: #fff;
-        color: var(--primary);
-        border-color: var(--primary);
-      }
+    &:active, &.active {
+      background: var(--primary);
+      color: var(--textColor);
+    }
+  `};
 
-      &:active {
-        background: var(--primary);
-        color: var(--textColor);
-      }
-    `};
+  ${props => (props.variant === 'transparent') && css`
+    background: transparent;
+    border: transparent;
+    color: var(--primary);
 
-  ${props =>
-    props.variant === 'transparent' &&
-    css`
+    &:hover, &:focus, &.hover {
+      color: var(--hover);
       background: transparent;
-      border: transparent;
-      color: var(--primary);
+    }
 
-      &:hover,
-      &:focus {
-        color: var(--hover);
-        background: transparent;
-      }
-
-      &:active {
-        background: var(--transparentActive);
-      }
-    `};
+    &:active, &.active {
+      background: var(--transparentActive);
+    }
+  `};
 `
