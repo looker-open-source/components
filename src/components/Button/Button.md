@@ -96,10 +96,12 @@ Destructive Buttons extend the default button, so they also have different varia
 
 ```js noeditor
 <table>
-  <tr>
-    <td><Button color="destructive" variant="outline">Destructive Outline</Button></td>
-    <td><Button color="destructive" variant="transparent">Destructive Transparent</Button></td>
-  </tr>
+  <tbody>
+    <tr>
+      <td><Button color="destructive" variant="outline">Destructive Outline</Button></td>
+      <td><Button color="destructive" variant="transparent">Destructive Transparent</Button></td>
+    </tr>
+  </tbody>
 </table>
 ```
 
@@ -129,4 +131,46 @@ When a call to action requires additional steps, include an ellipsis at the end 
   <ListItem><Button mode="scary">Move to Trash...</Button></ListItem>
   <ListItem><Button>Print...</Button></ListItem>
 </List>
+```
+
+## Extending Button
+
+Sometimes you may want to extend the Button defaults to create a specific styling effect. That should be straightforward using StyledComponent's `.extend` method like so:
+
+```js
+const RoundButton = Button.extend`
+  border-radius: 3rem;
+`;
+
+<RoundButton>Hello RoundButton</RoundButton>
+```
+
+## Theming Button
+
+Button uses the following theme classes...
+
+```js
+const mildTheme = (theme) => {
+  const themeColors = Object.assign({}, theme.colors, {
+    primary: '#2db264',
+    primaryDark: '#198044',
+    primaryDarker: '#12593c',
+    destructive: '#ffd200',
+    destructiveDark: '#e5ae17',
+    destructiveDarker: '#a67e11',
+    destructiveLighter: '#fff1bf'
+  })
+  
+  return Object.assign({}, theme, {colors: themeColors})
+}
+
+<React.Fragment>
+  <ThemeProvider theme={mildTheme}>
+    <Button>Mild Button</Button>
+  </ThemeProvider>
+  <span> </span>
+  <ThemeProvider theme={mildTheme}>
+    <Button color="destructive" variant="outline">Mild Destructive Outline Button</Button>
+  </ThemeProvider>
+</React.Fragment>
 ```

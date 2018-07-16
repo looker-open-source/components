@@ -16,6 +16,7 @@ module.exports = {
   },
   require: [
     'chroma-js',
+    path.join(__dirname, 'styleguide_components/ThemeProvider'),
     path.join(__dirname, '/static/css/style-guide.css')
   ],
   sections: [
