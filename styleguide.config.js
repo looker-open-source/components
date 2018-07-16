@@ -3,6 +3,11 @@ const typescriptPropsParser = require('react-docgen-typescript').withDefaultConf
 
 module.exports = {
   assetsDir: 'static',
+  compilerConfig: {
+    transforms: {
+      dangerousTaggedTemplateString: true
+    }
+  },
   pagePerSection: true,
   propsParser: typescriptPropsParser,
   showCode: true,
