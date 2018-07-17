@@ -1,3 +1,5 @@
+// Required by ThemeProvider to compile the proper declaration files.
+import * as React from 'react'
 import * as styledComponents from 'styled-components'
 import { ThemeInterface } from './themes'
 export { StyledComponentClass } from 'styled-components'
