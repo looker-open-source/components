@@ -745,6 +745,12 @@
   dependencies:
     csstype "^2.2.0"
 
+"@types/react@16.4.6":
+  version "16.4.6"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/@types/react/-/react-16.4.6.tgz#5024957c6bcef4f02823accf5974faba2e54fada"
+  dependencies:
+    csstype "^2.2.0"
+
 "@vxna/mini-html-webpack-template@^0.1.6":
   version "0.1.6"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/@vxna/mini-html-webpack-template/-/mini-html-webpack-template-0.1.6.tgz#64225d564da5fe610b6445523c245572923c00b8"

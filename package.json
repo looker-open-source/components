@@ -1,6 +1,6 @@
 {
   "name": "relens",
-  "version": "1.0.5-alpha.2",
+  "version": "1.0.5-alpha.3",
   "main": "dist/index",
   "license": "MIT",
   "devDependencies": {
@@ -14,7 +14,7 @@
     "@babel/preset-typescript": "7.0.0-beta.44",
     "@types/classnames": "2.2.3",
     "@types/jest": "22.2.2",
-    "@types/react": "16.4.2",
+    "@types/react": "16.4.6",
     "@types/react-dom": "16.0.6",
     "@types/react-intl": "2.3.5",
     "@types/react-test-renderer": "16.0.1",
