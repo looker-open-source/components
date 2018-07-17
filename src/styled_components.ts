@@ -15,6 +15,6 @@ const styled = (styledComponents as styledComponents.ThemedStyledComponentsModul
   ThemeInterface
 >).default
 
-export { css, injectGlobal, keyframes, ThemeProvider }
+export { css, injectGlobal, keyframes, ThemeProvider, React }
 
 export default styled
