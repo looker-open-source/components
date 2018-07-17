@@ -100,6 +100,9 @@ module.exports = {
       ]
     }
   },
+  template: {
+    favicon: 'favicon.ico'
+  },
   theme: {
       fontFamily: {
       base: '"Open Sans", sans-serif'
