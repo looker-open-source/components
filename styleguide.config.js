@@ -3,6 +3,11 @@ const typescriptPropsParser = require('react-docgen-typescript').withDefaultConf
 
 module.exports = {
   assetsDir: 'static',
+  compilerConfig: {
+    transforms: {
+      dangerousTaggedTemplateString: true
+    }
+  },
   pagePerSection: true,
   propsParser: typescriptPropsParser,
   showCode: true,
@@ -11,6 +16,7 @@ module.exports = {
   },
   require: [
     'chroma-js',
+    path.join(__dirname, 'styleguide_components/ThemeProvider'),
     path.join(__dirname, '/static/css/style-guide.css')
   ],
   sections: [

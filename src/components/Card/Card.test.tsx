@@ -2,7 +2,6 @@ import * as React from 'react'
 import { Card } from './Card'
 import { CardMedia } from './CardMedia'
 import { CardContent } from './CardContent'
-import { CardDetails } from './CardDetails'
 import { create } from 'react-test-renderer'
 
 test('A Card', () => {
@@ -12,27 +11,15 @@ test('A Card', () => {
 })
 
 test('A raised Card', () => {
-  const component = create(<Card raised>🥑</Card>)
+  const component = create(<Card raised={true}>🥑</Card>)
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
 })
 
 test('A raised Card with a CardMedia block', () => {
   const component = create(
-    <Card raised>
+    <Card raised={true}>
       <CardMedia image="http://placekitten.com/200/300" />
-    </Card>
-  )
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
-})
-
-test('A raised Card with a CardContent and CardDetails block', () => {
-  const component = create(
-    <Card raised>
-      <CardContent>
-        <CardDetails title="Card Details Title" subtitle="A subtitle" />
-      </CardContent>
     </Card>
   )
   const tree = component.toJSON()
