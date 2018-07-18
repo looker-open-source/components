@@ -23,7 +23,7 @@ At its most basic, a `Card` is a slightly styled container that organizes groups
 Using the [`CardContent`](/#!/CardContent) component quickly gives your content consistent spacing inside your `Card`. You can then use other components to layout your `Card`.
 
 ```js
-<Card raised url="https://docs.looker.com/relnotes">
+<Card raised>
   <CardContent>
     <Heading size="2">🎉 Looker Release Notes 🎉</Heading>
     <Heading level="4" size="5">Read all about our latest features</Heading>
@@ -41,7 +41,7 @@ A few common patterns for `Cards` are displaying them in groups and using images
 ```js
 <CardGroup>
 
-  <Card raised url="https://google.com/search?q=summer+activities">
+  <Card raised>
 
     <CardMedia image="https://placeimg.com/640/480/nature" title="Summer Nature"></CardMedia>
 
@@ -54,7 +54,7 @@ A few common patterns for `Cards` are displaying them in groups and using images
     </CardContent>
   </Card>
 
-   <Card raised url="https://google.com/search?q=scenic+hikes">
+   <Card raised>
 
     <CardMedia image="https://placeimg.com/630/480/nature" title="A Scenic Valley"></CardMedia>
 
@@ -67,7 +67,7 @@ A few common patterns for `Cards` are displaying them in groups and using images
     </CardContent>
   </Card>
 
-  <Card raised url="https://google.com/search?q=relax+outdoors">
+  <Card raised>
 
     <CardMedia image="https://placeimg.com/620/480/nature" title="Relaxing Views"></CardMedia>
 
