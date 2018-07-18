@@ -4,8 +4,6 @@ import { fog400 } from '../../styles/colors'
 
 export interface CardProps {
   raised?: boolean
-  url?: string
-  className?: string
 }
 
 export const Card = styled<CardProps, 'div'>('div')`
