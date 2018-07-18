@@ -54,6 +54,42 @@ function sizingMixin(
   `
 }
 
+function colorVariantMixin(
+  backgroundColor: string,
+  borderColor: string,
+  textColor: string,
+  boxShadowColor: string,
+  hoverBackgroundColor: string,
+  hoverBorderColor: string,
+  activeBackgroundColor: string,
+  activeBorderColor: string,
+  activeTextColor: string
+) {
+  return css`
+    background: ${backgroundColor};
+    border: ${rem(1)} solid ${borderColor};
+    color: ${textColor};
+
+    &:focus {
+      box-shadow: 0 0 0 0.15rem ${rgba(boxShadowColor, 0.25)};
+    }
+
+    &:hover,
+    &:focus,
+    &.hover {
+      background: ${hoverBackgroundColor};
+      border-color: ${hoverBorderColor};
+    }
+
+    &:active,
+    &.active {
+      background: ${activeBackgroundColor};
+      border-color: ${activeBorderColor};
+      color: ${activeTextColor};
+    }
+  `
+}
+
 function buttonVariant(
   color: ButtonColors | undefined,
   variant: ButtonVariants | undefined,
@@ -90,76 +126,42 @@ function buttonVariant(
 
   switch (variant) {
     case ButtonVariants.Outline:
-      return css`
-        background: #fff;
-        border: ${rem(1)} solid ${colors.secondary};
-        color: ${colors.primary};
-
-        &:focus {
-          box-shadow: 0 0 0 0.15rem ${rgba(colors.primary, 0.25)};
-        }
-
-        &:hover,
-        &:focus,
-        &.hover {
-          background: #fff;
-          border-color: ${colors.primary};
-        }
-
-        &:active,
-        &.active {
-          background: ${colors.primary};
-          border-color: ${colors.primary};
-          color: ${colors.text};
-        }
-      `
+      return colorVariantMixin(
+        '#fff',
+        colors.secondary,
+        colors.primary,
+        colors.primary,
+        '#fff',
+        colors.primary,
+        colors.primary,
+        colors.primary,
+        colors.text
+      )
     case ButtonVariants.Transparent:
-      return css`
-        background: transparent;
-        border: ${rem(1)} solid transparent;
-        color: ${colors.primary};
-
-        &:focus {
-          box-shadow: 0 0 0 0.15rem ${rgba(colors.primary, 0.25)};
-        }
-
-        &:hover,
-        &:focus,
-        &.hover {
-          background: transparent;
-          color: ${colors.hover};
-        }
-
-        &:active,
-        &.active {
-          background: ${colors.activeLight};
-        }
-      `
+      return colorVariantMixin(
+        'transparent',
+        'transparent',
+        colors.primary,
+        colors.primary,
+        'transparent',
+        'transparent',
+        colors.activeLight,
+        'transparent',
+        'inherit'
+      )
     case ButtonVariants.Default:
     default:
-      return css`
-        background: ${colors.primary};
-        border: ${rem(1)} solid ${colors.primary};
-        color: ${colors.text};
-
-        &:focus {
-          box-shadow: 0 0 0 0.15rem ${rgba(colors.primary, 0.25)};
-        }
-
-        &:hover,
-        &.hover,
-        &:focus {
-          background-color: ${colors.hover};
-          border-color: ${colors.hover};
-        }
-
-        &:active,
-        &.active {
-          background-color: ${colors.active};
-          border-color: ${colors.active};
-          box-shadow: none;
-        }
-      `
+      return colorVariantMixin(
+        colors.primary,
+        colors.primary,
+        colors.text,
+        colors.primary,
+        colors.hover,
+        colors.hover,
+        colors.active,
+        colors.active,
+        colors.text
+      )
   }
 }
 
