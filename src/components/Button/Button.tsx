@@ -21,9 +21,19 @@ export enum ButtonColors {
   Destructive = 'destructive'
 }
 
+export interface ButtonStyleableProps {
+  active: string
+  activeLight: string
+  hover: string
+  primary: string
+  secondary: string
+  text: string
+}
+
 export interface ButtonProps {
   color?: ButtonColors
   size?: ButtonSizes
+  styleableProps?: ButtonStyleableProps
   theme: ThemeInterface
   variant?: ButtonVariants
 }
@@ -93,9 +103,10 @@ function colorVariantMixin(
 function buttonVariant(
   color: ButtonColors | undefined,
   variant: ButtonVariants | undefined,
-  theme: ThemeInterface
+  theme: ThemeInterface,
+  styleableProps: ButtonStyleableProps | undefined
 ) {
-  const colors = {
+  const colors: ButtonStyleableProps = {
     active: '',
     activeLight: '',
     hover: '',
@@ -104,24 +115,28 @@ function buttonVariant(
     text: ''
   }
 
-  switch (color) {
-    case ButtonColors.Destructive:
-      colors.active = theme.colors.destructiveDarker
-      colors.activeLight = theme.colors.destructiveLighter
-      colors.hover = theme.colors.destructiveDark
-      colors.primary = theme.colors.destructive
-      colors.secondary = theme.colors.destructive
-      colors.text = theme.colors.primaryText
-      break
-    case ButtonColors.Default:
-    default:
-      colors.active = theme.colors.primaryDarker
-      colors.activeLight = theme.colors.primaryLighter
-      colors.hover = theme.colors.primaryDark
-      colors.primary = theme.colors.primary
-      colors.secondary = theme.colors.borderColor
-      colors.text = theme.colors.primaryText
-      break
+  if (styleableProps) {
+    Object.assign(colors, styleableProps)
+  } else {
+    switch (color) {
+      case ButtonColors.Destructive:
+        colors.active = theme.colors.destructiveDarker
+        colors.activeLight = theme.colors.destructiveLighter
+        colors.hover = theme.colors.destructiveDark
+        colors.primary = theme.colors.destructive
+        colors.secondary = theme.colors.destructive
+        colors.text = theme.colors.primaryText
+        break
+      case ButtonColors.Default:
+      default:
+        colors.active = theme.colors.primaryDarker
+        colors.activeLight = theme.colors.primaryLighter
+        colors.hover = theme.colors.primaryDark
+        colors.primary = theme.colors.primary
+        colors.secondary = theme.colors.borderColor
+        colors.text = theme.colors.primaryText
+        break
+    }
   }
 
   switch (variant) {
@@ -188,5 +203,11 @@ export const Button = styled<ButtonProps, 'button'>('button')`
   }
 
   ${props => buttonSize(props.size)};
-  ${props => buttonVariant(props.color, props.variant, props.theme)};
+  ${props =>
+    buttonVariant(
+      props.color,
+      props.variant,
+      props.theme,
+      props.styleableProps
+    )};
 `
