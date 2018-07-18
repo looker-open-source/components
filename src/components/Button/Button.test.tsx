@@ -1,15 +1,21 @@
 import * as React from 'react'
-import { Button } from './buttons'
+import { Button, ButtonVariants } from './Button'
 import { create } from 'react-test-renderer'
+import 'jest-styled-components'
+import theme from '../../themes'
 
 test('Button states', () => {
-  const component = create(<Button>🥑</Button>)
+  const component = create(<Button theme={theme}>🥑</Button>)
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
 })
 
-test('Button ghost', () => {
-  const component = create(<Button mode="ghost">🥑</Button>)
+test('Button variant transparent', () => {
+  const component = create(
+    <Button theme={theme} variant={ButtonVariants.Transparent}>
+      🥑
+    </Button>
+  )
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
 })
