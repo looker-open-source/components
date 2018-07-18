@@ -1,7 +1,5 @@
-import { rem, rgba } from 'polished'
-import styled, { css } from '../../styled_components'
-import { brandFont } from '../../styles/typography'
-import theme, { ThemeInterface } from '../../themes'
+import styled from '../../styled_components'
+import theme from '../../themes'
 import { fog400 } from '../../styles/colors'
 
 export interface CardProps {
@@ -19,7 +17,7 @@ export const Card = styled<CardProps, 'div'>('div')`
   flex-direction: column;
   overflow: hidden;
   min-width: 200px;
-  transition: border 150ms ease;
+  transition: border ${props => props.theme.transitions.durationShorter} ease;
 
   &:hover {
     border-color: ${fog400};
