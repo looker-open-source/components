@@ -1,32 +1,16 @@
-import * as React from 'react'
-const classNames = require('classnames')
-import * as styles from './CardMedia.scss'
+import styled from '../../styled_components'
 
 export interface CardMediaProps {
   image: string
-  title?: string
-  className?: string | undefined
 }
 
-interface PropertyBag {
-  [key: string]: any
-}
-
-/** Displays an image that reinforces the Card's content */
-export const CardMedia: React.SFC<CardMediaProps> = ({
-  className,
-  image,
-  ...args
-}) => {
-  const styleableProps: PropertyBag = {}
-
-  const cardImage = { backgroundImage: `url(${image})` }
-
-  return (
-    <div
-      className={classNames(styles.cardMedia, className, styleableProps)}
-      style={cardImage}
-      {...args}
-    />
-  )
-}
+export const CardMedia = styled<CardMediaProps, 'div'>('div')`
+  display: block;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(${props => props.image});
+  overflow: hidden;
+  height: 0;
+  padding-top: 56%;
+`
