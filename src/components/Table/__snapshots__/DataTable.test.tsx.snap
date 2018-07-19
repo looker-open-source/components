@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`A DataTable should accept html table children 1`] = `
+exports[`A Table should accept html table children 1`] = `
 <table
   className=""
 >

@@ -1,12 +1,12 @@
 import * as React from 'react'
-import { DataTable } from './DataTable'
-import { DataTableHead } from './DataTableHead/DataTableHead'
-import { DataTableBody } from './DataTableBody/DataTableBody'
+import { Table } from './Table'
+import { DataTableHead } from './TableHead/DataTableHead'
+import { DataTableBody } from './TableBody/DataTableBody'
 import { create } from 'react-test-renderer'
 
 test('A Table should accept html table children', () => {
   const component = create(
-    <DataTable>
+    <Table>
       <DataTableHead>
         <tr>
           <th>Header 1</th>
@@ -19,7 +19,7 @@ test('A Table should accept html table children', () => {
           <td>Header 1</td>
         </tr>
       </DataTableBody>
-    </DataTable>
+    </Table>
   )
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()

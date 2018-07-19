@@ -11,7 +11,7 @@ interface PropertyBag {
 }
 
 /**
- * Defines the table header for a `<DataTable />`
+ * Defines the table header for a `<Table />`
  */
 export const DataTableHead: React.SFC<DataTableHeadProps> = ({
   className,
