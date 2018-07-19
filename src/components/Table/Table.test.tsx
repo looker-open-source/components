@@ -1,18 +1,18 @@
 import * as React from 'react'
 import { Table } from './Table'
-import { DataTableHead } from './TableHead/DataTableHead'
-import { DataTableBody } from './TableBody/DataTableBody'
+import { TableHead } from './TableHead/TableHead'
+import { DataTableBody } from './TableBody/TableBody'
 import { create } from 'react-test-renderer'
 
 test('A Table should accept html table children', () => {
   const component = create(
     <Table>
-      <DataTableHead>
+      <TableHead>
         <tr>
           <th>Header 1</th>
           <th>Header 1</th>
         </tr>
-      </DataTableHead>
+      </TableHead>
       <DataTableBody>
         <tr>
           <td>Header 1</td>

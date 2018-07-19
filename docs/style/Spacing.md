@@ -43,14 +43,14 @@ All spacing for components align to a 8px grid, this grid allows for flexibility
   });
 
   <Table>
-    <DataTableHead>
+    <TableHead>
       <tr>
         <th width="15%"><Text size="6" weight="semi-bold" element="span" mode="subdued">SIZE</Text></th>
         <th><Text size="6" weight="semi-bold" element="span" mode="subdued">PX VALUE</Text></th>
         <th> <Text size="6" weight="semi-bold" element="span" mode="subdued">REM VALUE</Text></th>
         <th><Text size="6" weight="semi-bold" element="span" mode="subdued">LENS REFERENCE</Text></th>
       </tr>
-    </DataTableHead>
+    </TableHead>
     <DataTableBody>
       {tableRows}
     </DataTableBody>

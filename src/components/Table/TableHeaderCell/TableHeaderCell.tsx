@@ -1,5 +1,5 @@
-import styled from '../../styled_components'
-import { gray400 } from '../../styles/colors'
+import styled from '../../../styled_components'
+import { gray400 } from '../../../styles/colors'
 
 export const TableHeaderCell = styled('th')`
   padding: ${props => props.theme.spacing.s} 0;

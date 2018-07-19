@@ -4,12 +4,12 @@ The `<Table />` component defines a structure for the display of tabular data. A
 
 ```js
 <Table>
-  <DataTableHead>
+  <TableHead>
     <TableRow>
       <TableHeaderCell>Header 1</TableHeaderCell>
       <TableHeaderCell>Header 2</TableHeaderCell>
     </TableRow>
-  </DataTableHead>
+  </TableHead>
   <DataTableBody>
     <TableRow>
       <TableDataCell>Cell 1</TableDataCell>

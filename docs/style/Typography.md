@@ -31,13 +31,13 @@ Lens’ primary font is Open Sans, a humanist sans serif typeface. It was chosen
   });
 
   <Table>
-    <DataTableHead>
+    <TableHead>
       <tr>
         <th><Text size="6" weight="semi-bold" element="span" mode="subdued">STYLE</Text></th>
         <th><Text size="6" weight="semi-bold" element="span" mode="subdued">WEIGHT</Text></th>
         <th width="60%"><Text size="6" weight="semi-bold" element="span" mode="subdued">SPECIMEN</Text></th>
       </tr>
-    </DataTableHead>
+    </TableHead>
     <DataTableBody>
       {tableRows}
     </DataTableBody>
@@ -79,14 +79,14 @@ The Lens type scale is designed to provide consistent and harmonious typographic
   });
 
   <Table>
-    <DataTableHead>
+    <TableHead>
       <tr>
         <th><Text size="6" weight="semi-bold" element="span" mode="subdued">SPECIMEN</Text></th>
         <th><Text size="6" weight="semi-bold" element="span" mode="subdued">FONT-SIZE</Text></th>
         <th><Text size="6" weight="semi-bold" element="span" mode="subdued">LINE-HEIGHT</Text></th>
         <th><Text size="6" weight="semi-bold" element="span" mode="subdued">SIZE</Text></th>
       </tr>
-    </DataTableHead>
+    </TableHead>
     <DataTableBody>
       {tableRows}
     </DataTableBody>

@@ -4,13 +4,13 @@ This component is used to define the body of the table and holds the data for th
 
 ```js
 <Table>
-  <DataTableHead>
+  <TableHead>
     <tr>
       <th>Column 1</th>
       <th>Column 2</th>
       <th>Column 3</th>
     </tr>
-  </DataTableHead>
+  </TableHead>
   <DataTableBody>
     <tr>
       <td>1</td>

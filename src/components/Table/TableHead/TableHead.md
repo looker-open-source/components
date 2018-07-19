@@ -4,13 +4,13 @@ This component is used to define the heading of the table and describes the rows
 
 ```js
 <Table>
-  <DataTableHead>
+  <TableHead>
     <tr>
       <th>Column 1</th>
       <th>Column 2</th>
       <th>Column 3</th>
     </tr>
-  </DataTableHead>
+  </TableHead>
   <DataTableBody>
     <tr>
       <td>1</td>
