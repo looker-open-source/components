@@ -4,7 +4,7 @@ import { DataTableHead } from './DataTableHead/DataTableHead'
 import { DataTableBody } from './DataTableBody/DataTableBody'
 import { create } from 'react-test-renderer'
 
-test('A DataTable should accept html table children', () => {
+test('A Table should accept html table children', () => {
   const component = create(
     <DataTable>
       <DataTableHead>
