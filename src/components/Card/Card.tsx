@@ -1,46 +1,23 @@
-import * as React from 'react'
-const classNames = require('classnames')
-import { Link } from '../Link/Link'
-import * as styles from './Card.scss'
+import styled from '../../styled_components'
+import theme from '../../themes'
+import { fog400 } from '../../styles/colors'
 
 export interface CardProps {
   raised?: boolean
-  url?: string
-  className?: string
 }
 
-interface PropertyBag {
-  [key: string]: any
-}
+export const Card = styled<CardProps, 'div'>('div')`
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: ${props => (props.raised ? theme.shadows.small : 'none')};
+  border: solid 1px ${props => props.theme.colors.borderColor};
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-width: 200px;
+  transition: border ${props => props.theme.transitions.durationShorter} ease;
 
-function linkOrChildren(url: string | undefined, children: React.ReactNode) {
-  if (url) {
-    return (
-      <Link href={url} className="card-link">
-        {children}
-      </Link>
-    )
+  &:hover {
+    border-color: ${fog400};
   }
-  return children
-}
-
-/** Cards provide scannable organized groups of content that is limited to one concept or thought per a card. */
-export const Card: React.SFC<CardProps> = ({
-  className,
-  raised,
-  url,
-  ...args
-}) => {
-  const styleableProps: PropertyBag = {
-    [styles.isRaised]: !!raised
-  }
-
-  return (
-    <div
-      className={classNames(styles.card, className, styleableProps)}
-      {...args}
-    >
-      {linkOrChildren(url, args.children)}
-    </div>
-  )
-}
+`
