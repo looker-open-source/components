@@ -1,6 +1,6 @@
 ### Displaying tabular data
 
-The `<Table />` component defines a structure for the display of tabular data. A `<DataTableHeader />` is used to display the table header and the `<DataTableBody />` is used to show the data rows.
+The `<Table />` component defines a structure for the display of tabular data. A `<TableHeader />` is used to display the table header and the `<TableBody />` is used to show the data rows.
 
 ```js
 <Table>
@@ -10,12 +10,12 @@ The `<Table />` component defines a structure for the display of tabular data. A
       <TableHeaderCell>Header 2</TableHeaderCell>
     </TableRow>
   </TableHead>
-  <DataTableBody>
+  <TableBody>
     <TableRow>
       <TableDataCell>Cell 1</TableDataCell>
       <TableDataCell>Cell 2</TableDataCell>
     </TableRow>
-  </DataTableBody>
+  </TableBody>
 </Table>
 ```
 

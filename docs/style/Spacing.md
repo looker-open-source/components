@@ -51,9 +51,9 @@ All spacing for components align to a 8px grid, this grid allows for flexibility
         <th><Text size="6" weight="semi-bold" element="span" mode="subdued">LENS REFERENCE</Text></th>
       </tr>
     </TableHead>
-    <DataTableBody>
+    <TableBody>
       {tableRows}
-    </DataTableBody>
+    </TableBody>
 
   </Table>
 ```

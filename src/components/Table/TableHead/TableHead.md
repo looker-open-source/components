@@ -1,32 +1,32 @@
 ### Table Headings
 
-This component is used to define the heading of the table and describes the rows of data below. The `<DataTableHeader>` should have one `<tr>` tag and then use the `<th>` tags to be semantically correct.
+This component is used to define the heading of the table and describes the rows of data below. The `<DataTableHeader>` should have one `<TableRow>` tag and then use the `<TableHeaderCell>` tags to be semantically correct.
 
 ```js
 <Table>
   <TableHead>
-    <tr>
-      <th>Column 1</th>
-      <th>Column 2</th>
-      <th>Column 3</th>
-    </tr>
+    <TableRow>
+      <TableHeaderCell>Column 1</TableHeaderCell>
+      <TableHeaderCell>Column 2</TableHeaderCell>
+      <TableHeaderCell>Column 3</TableHeaderCell>
+    </TableRow>
   </TableHead>
-  <DataTableBody>
-    <tr>
-      <td>1</td>
-      <td>2</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>2</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>2</td>
-      <td>3</td>
-    </tr>
-  </DataTableBody>
+  <TableBody>
+    <TableRow>
+      <TableDataCell>1</TableDataCell>
+      <TableDataCell>2</TableDataCell>
+      <TableDataCell>3</TableDataCell>
+    </TableRow>
+    <TableRow>
+      <TableDataCell>1</TableDataCell>
+      <TableDataCell>2</TableDataCell>
+      <TableDataCell>3</TableDataCell>
+    </TableRow>
+    <TableRow>
+      <TableDataCell>1</TableDataCell>
+      <TableDataCell>2</TableDataCell>
+      <TableDataCell>3</TableDataCell>
+    </TableRow>
+  </TableBody>
 </Table>
 ```

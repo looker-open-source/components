@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Table } from './Table'
 import { TableHead } from './TableHead/TableHead'
-import { DataTableBody } from './TableBody/TableBody'
+import { TableBody } from './TableBody/TableBody'
 import { create } from 'react-test-renderer'
 
 test('A Table should accept html table children', () => {
@@ -13,12 +13,12 @@ test('A Table should accept html table children', () => {
           <th>Header 1</th>
         </tr>
       </TableHead>
-      <DataTableBody>
+      <TableBody>
         <tr>
           <td>Header 1</td>
           <td>Header 1</td>
         </tr>
-      </DataTableBody>
+      </TableBody>
     </Table>
   )
   const tree = component.toJSON()

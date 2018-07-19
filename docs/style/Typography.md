@@ -38,9 +38,9 @@ Lens’ primary font is Open Sans, a humanist sans serif typeface. It was chosen
         <th width="60%"><Text size="6" weight="semi-bold" element="span" mode="subdued">SPECIMEN</Text></th>
       </tr>
     </TableHead>
-    <DataTableBody>
+    <TableBody>
       {tableRows}
-    </DataTableBody>
+    </TableBody>
 
   </Table>
 ```
@@ -87,9 +87,9 @@ The Lens type scale is designed to provide consistent and harmonious typographic
         <th><Text size="6" weight="semi-bold" element="span" mode="subdued">SIZE</Text></th>
       </tr>
     </TableHead>
-    <DataTableBody>
+    <TableBody>
       {tableRows}
-    </DataTableBody>
+    </TableBody>
   </Table>
 ```
 

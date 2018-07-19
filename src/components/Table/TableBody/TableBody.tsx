@@ -1,41 +1,23 @@
-import * as React from 'react'
-const classNames = require('classnames')
-import * as styles from './DataTableBody.scss'
+import styled from '../../../styled_components'
 
-export interface DataTableBodyProps {
-  align?: 'top' | 'middle' | 'bottom' | undefined
-  textAlign?: 'left' | 'center' | 'right' | undefined
-  className?: string | undefined
+export enum TableBodyAlignment {
+  Bottom = 'botton',
+  Middle = 'middle',
+  Top = 'top'
 }
 
-interface PropertyBag {
-  [key: string]: any
+export enum TableTextAlignment {
+  Center = 'center',
+  Left = 'left',
+  Right = 'right'
 }
 
-export const DataTableBody: React.SFC<DataTableBodyProps> = ({
-  className,
-  align,
-  textAlign,
-  ...args
-}) => {
-  const styleableProps: PropertyBag = {
-    [styles.alignMiddle]: align === 'middle',
-    [styles.alignBottom]: align === 'bottom',
-    [styles.textAlignLeft]: textAlign === 'left',
-    [styles.textAlignRight]: textAlign === 'right',
-    [styles.textAlignCenter]: textAlign === 'center'
-  }
-
-  return (
-    <tbody
-      className={classNames(
-        styles.lensDataTableBody,
-        className,
-        styleableProps
-      )}
-      {...args}
-    >
-      {args.children}
-    </tbody>
-  )
+export interface TableBodyProps {
+  align?: TableBodyAlignment
+  textAlign?: TableTextAlignment
 }
+
+export const TableBody = styled<TableBodyProps, 'tbody'>('tbody')`
+  vertical-align: ${props => props.align || TableBodyAlignment.Top};
+  text-align: ${props => props.textAlign || TableTextAlignment.Left};
+`
