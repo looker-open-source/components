@@ -1,41 +1,10 @@
-import * as React from 'react'
-const classNames = require('classnames')
-import * as styles from './Link.scss'
+import styled from '../../styled_components'
 
-export interface LinkProps {
-  href: string
-  id?: string
-  external?: boolean
-  className?: string | undefined
-}
+export const Link = styled('a')`
+  color: ${props => props.theme.colors.linkColor};
+  text-decoration: none;
 
-interface PropertyBag {
-  [key: string]: any
-}
-
-/**
- * Links navigate to other pages or additional information.
- */
-export const Link: React.SFC<LinkProps> = ({
-  className,
-  href,
-  id,
-  external,
-  ...args
-}) => {
-  const styleableProps: PropertyBag = {
-    [styles.cardLink]: className === 'card-link'
+  &:hover {
+    text-decoration: underline;
   }
-
-  return (
-    <a
-      className={classNames(styles.lensLink, className, styleableProps)}
-      href={href}
-      target={external ? '_blank' : undefined}
-      id={id}
-      {...args}
-    >
-      {args.children}
-    </a>
-  )
-}
+`
