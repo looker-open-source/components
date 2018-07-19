@@ -1,7 +1,7 @@
 import * as React from 'react'
 const classNames = require('classnames')
 // import * as styles from './CardContent.scss'
-import { Block } from '../Block/Block'
+import { Block } from '../../prototypes/Block/Block'
 
 export interface CardContentProps {
   className?: undefined

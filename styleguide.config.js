@@ -24,7 +24,6 @@ module.exports = {
       name: 'Lens',
       content: 'docs/intro.md'
     },
-
     {
       name: 'Principles',
       sections: [ {
@@ -57,6 +56,11 @@ module.exports = {
     {
       name: 'Components',
       components: 'src/components/**/*.tsx'
+    },
+    {
+      name: 'Prototype Components',
+      content: 'src/prototypes/prototypes.md',
+      components: 'src/prototypes/**/*.tsx'
     }
   ],
   title: 'Lens',
