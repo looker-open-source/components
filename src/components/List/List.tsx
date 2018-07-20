@@ -1,4 +1,7 @@
+// Typescript component boilerplate for generating meaningful declaration files.
 import * as React from 'react'
+// End Typescript component boilerplate
+
 const classNames = require('classnames')
 import * as styles from './List.scss'
 
