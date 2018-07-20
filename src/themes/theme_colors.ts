@@ -1,4 +1,5 @@
 import {
+  blue500,
   fog300,
   purple200,
   purple300,
@@ -14,19 +15,8 @@ import {
 } from '../styles/colors'
 
 export interface ThemeColors {
-  // Primary color in application, mainly used for primary actions
-  primary: string
-  // Color for the  primary action's interactive state, a button hover for example
-  primaryDark: string
-  // Color for the primary action's pressed state, a mouse click on a button for example
-  primaryDarker: string
-  // Tint for alternate lighter styling of primary action pressed state
-  primaryLight: string
-  // Tint for alternate lighter styling of primary action interactive state
-  primaryLighter: string
-  // Color of text for a default primary action
-  primaryText: string
-
+  // Default border and divider color
+  borderColor: string
   // Destructive color in application, used for signaling a destructive or dangerous action
   destructive: string
   // Color for the destructive action's interactive state, a button hover for example
@@ -39,9 +29,20 @@ export interface ThemeColors {
   destructiveLighter: string
   // Color of text for a default destructive action
   destructiveText: string
-
-  // Default border and divider color
-  borderColor: string
+  // Color for links
+  linkColor: string
+  // Primary color in application, mainly used for primary actions
+  primary: string
+  // Color for the  primary action's interactive state, a button hover for example
+  primaryDark: string
+  // Color for the primary action's pressed state, a mouse click on a button for example
+  primaryDarker: string
+  // Tint for alternate lighter styling of primary action pressed state
+  primaryLight: string
+  // Tint for alternate lighter styling of primary action interactive state
+  primaryLighter: string
+  // Color of text for a default primary action
+  primaryText: string
 }
 
 export const themeColors: ThemeColors = {
@@ -52,6 +53,7 @@ export const themeColors: ThemeColors = {
   destructiveLight: red300,
   destructiveLighter: red200,
   destructiveText: white,
+  linkColor: blue500,
   primary: primary500,
   primaryDark: primary600,
   primaryDarker: primary700,
