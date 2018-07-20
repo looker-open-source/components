@@ -1,5 +1,10 @@
-import styled from '../../styled_components'
-import theme from '../../themes'
+// Typescript component boilerplate for generating meaningful declaration files.
+import * as React from 'react'
+import styled, { StyledComponentClass } from '../../styled_components'
+export { StyledComponentClass }
+import { ThemeInterface } from '../../themes'
+export { ThemeInterface }
+// End Typescript component boilerplate
 import { fog400 } from '../../styles/colors'
 
 export interface CardProps {
@@ -9,7 +14,7 @@ export interface CardProps {
 export const Card = styled<CardProps, 'div'>('div')`
   background: #fff;
   border-radius: 4px;
-  box-shadow: ${props => (props.raised ? theme.shadows.small : 'none')};
+  box-shadow: ${props => (props.raised ? props.theme.shadows.small : 'none')};
   border: solid 1px ${props => props.theme.colors.borderColor};
   display: flex;
   flex-direction: column;

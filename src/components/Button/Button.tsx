@@ -1,5 +1,9 @@
+// Typescript component boilerplate for generating meaningful declaration files.
+import * as React from 'react'
+import styled, { css, StyledComponentClass } from '../../styled_components'
+export { StyledComponentClass }
+// End Typescript component boilerplate
 import { rem, rgba } from 'polished'
-import styled, { css } from '../../styled_components'
 import { brandFont } from '../../styles/typography'
 import { ThemeInterface } from '../../themes'
 
