@@ -58,7 +58,7 @@ Another common pattern for headings is to control the font-weight and the text-t
 <div>
   <Heading weight="light" transform="lower">Light and lower</Heading>
   <Heading weight="normal" transform="none">Normal and none (default)</Heading>
-  <Heading weight="semi-bold" transform="upper">Semi-bold and upper</Heading>
+  <Heading weight="semiBold" transform="upper">Semi-bold and upper</Heading>
   <Heading weight="bold" transform="caps">Bold and caps</Heading>
 </div>
 ```
