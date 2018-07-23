@@ -117,6 +117,8 @@
     "lint:css": "stylelint \"src/**/*.ts?(x)\"",
     "lint:ts": "tslint --project tsconfig.json",
     "lint-staged": "$(yarn bin)/lint-staged",
+    "npmrc": "bin/create_npmrc.sh",
+    "npmrc:clean": "rm .npmrc",
     "prepublishOnly": "yarn clean && yarn build-components",
     "prettify": "yarn prettier \"src/**/*.ts?(x)\" --write",
     "release": "npm publish",
