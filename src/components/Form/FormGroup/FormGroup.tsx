@@ -4,10 +4,11 @@ import styled, { StyledComponentClass } from '../../../styled_components'
 export { StyledComponentClass }
 import { ThemeInterface } from '../../../themes'
 export { ThemeInterface }
+import { themeSpacing } from '../../../themes/theme_spacing'
 // End Typescript component boilerplate
 
 export const FormGroup = styled('div')`
   display: flex;
   align-items: center;
-  margin-bottom: 8px;
+  margin-bottom: ${themeSpacing.s};
 `
