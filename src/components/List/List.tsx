@@ -1,59 +1,64 @@
 // Typescript component boilerplate for generating meaningful declaration files.
 import * as React from 'react'
+import styled, { css, StyledComponentClass } from '../../styled_components'
+export { StyledComponentClass }
+import { ThemeInterface } from '../../themes'
+import { spacing } from '../../styles/spacing'
+export { ThemeInterface }
 // End Typescript component boilerplate
 
-const classNames = require('classnames')
-import * as styles from './List.scss'
-
 export interface ListProps {
-  type?: 'bullet' | 'number' | 'letter'
+  type?: ListTypes
   nomarker?: boolean
-  className?: string
 }
 
-interface PropertyBag {
-  [key: string]: any
+export enum ListTypes {
+  Bullet = 'bullet',
+  Number = 'number',
+  Letter = 'letter'
 }
 
 /**
  * List are stacked groups of related content that can be useful in many contexts.
  */
+const ListGenerator: React.SFC<ListProps> = ({ type, ...args }) => {
+  const props = Object.assign({}, args)
+  delete props.nomarker
 
-export const List: React.SFC<ListProps> = ({
-  className,
-  type,
-  nomarker,
-  ...args
-}) => {
-  const styleableProps: PropertyBag = {
-    [styles.lensList]: className === 'lens-list',
-    [styles.isBullet]: type === 'bullet',
-    [styles.isNumber]: type === 'number',
-    [styles.isLetter]: type === 'letter',
-    [styles.noMarker]: !!nomarker
-  }
-
-  let Tag
   switch (type) {
-    case 'bullet':
-      Tag = 'ul'
-      break
-    case 'number':
-      Tag = 'ol'
-      break
-    case 'letter':
-      Tag = 'ol'
-      break
+    case ListTypes.Number:
+    case ListTypes.Letter:
+      return <ol {...props}>{props.children}</ol>
+    case ListTypes.Bullet:
     default:
-      Tag = 'ul'
+      return <ul {...props}>{props.children}</ul>
   }
-
-  return (
-    <Tag
-      className={classNames(styles.lensList, className, styleableProps)}
-      {...args}
-    >
-      {args.children}
-    </Tag>
-  )
 }
+
+function listStyleType(type: string | undefined) {
+  switch (type) {
+    case ListTypes.Bullet:
+      return css`
+        list-style-type: disc;
+      `
+    case ListTypes.Number:
+      return css`
+        list-style-type: decimal;
+      `
+    case ListTypes.Letter:
+      return css`
+        list-style-type: upper-alpha;
+      `
+    default:
+      return css`
+        list-style-type: none;
+      `
+  }
+}
+
+export const List = styled<ListProps>(ListGenerator)`
+  margin: 0;
+  padding: 0 0 0 ${props => (props.nomarker ? 0 : spacing.m)};
+  ${props =>
+    props.nomarker ? listStyleType(undefined) : listStyleType(props.type)};
+`
