@@ -4,6 +4,8 @@ import styled, { StyledComponentClass } from '../../../styled_components'
 export { StyledComponentClass }
 import { ThemeInterface } from '../../../themes'
 export { ThemeInterface }
+import { themeSpacing } from '../../../themes/theme_spacing'
+import { FontRamp, fontSizes } from '../../../styles/font_sizes'
 // End Typescript component boilerplate
 
 import { FormGroup } from '../FormGroup/FormGroup'
@@ -62,7 +64,7 @@ const TextInputGenerator: React.SFC<TextInputProps> = ({
 export const Input = styled<TextInputProps>(TextInputGenerator)`
   border: solid 1px ${props => props.theme.colors.borderColor};
   height: 28px;
-  padding: 0 8px;
+  padding: 0 ${themeSpacing.s};
   border-radius: 4px;
-  font-size: 14px;
+  font-size: ${fontSizes[5]};
 `

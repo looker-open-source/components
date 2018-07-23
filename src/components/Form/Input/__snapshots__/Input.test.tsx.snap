@@ -4,9 +4,9 @@ exports[`A required Input 1`] = `
 .c0 {
   border: solid 1px #C8CBCC;
   height: 28px;
-  padding: 0 8px;
+  padding: 0 0.5rem;
   border-radius: 4px;
-  font-size: 14px;
+  font-size: 0.875rem;
 }
 
 <input
@@ -65,9 +65,9 @@ exports[`An Input 1`] = `
 .c0 {
   border: solid 1px #C8CBCC;
   height: 28px;
-  padding: 0 8px;
+  padding: 0 0.5rem;
   border-radius: 4px;
-  font-size: 14px;
+  font-size: 0.875rem;
 }
 
 <input
@@ -126,9 +126,9 @@ exports[`An Input with a placeholder 1`] = `
 .c0 {
   border: solid 1px #C8CBCC;
   height: 28px;
-  padding: 0 8px;
+  padding: 0 0.5rem;
   border-radius: 4px;
-  font-size: 14px;
+  font-size: 0.875rem;
 }
 
 <input

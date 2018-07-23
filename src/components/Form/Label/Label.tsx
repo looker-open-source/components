@@ -4,6 +4,8 @@ import styled, { StyledComponentClass } from '../../../styled_components'
 export { StyledComponentClass }
 import { ThemeInterface } from '../../../themes'
 export { ThemeInterface }
+import { themeSpacing } from '../../../themes/theme_spacing'
+import { FontRamp, fontSizes } from '../../../styles/font_sizes'
 // End Typescript component boilerplate
 import { space800 } from '../../../styles/colors'
 
@@ -33,8 +35,8 @@ const LabelGenerator: React.SFC<LabelProps> = ({ htmlFor, ...args }) => {
 export const Label = styled<LabelProps>(LabelGenerator)`
   font-weight: 600;
   color: ${space800};
-  margin-right: 8px;
-  font-size: 14px;
+  margin-right: ${themeSpacing.s};
+  font-size: ${fontSizes[5]};
   min-width: 175px;
   text-align: right;
 `

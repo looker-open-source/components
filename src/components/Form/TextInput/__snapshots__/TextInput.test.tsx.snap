@@ -13,29 +13,21 @@ exports[`A TextInput 1`] = `
   margin-bottom: 8px;
 }
 
-.c3 {
+.c2 {
   border: solid 1px #C8CBCC;
   height: 28px;
-  padding: 0 8px;
+  padding: 0 0.5rem;
   border-radius: 4px;
-  font-size: 14px;
+  font-size: 0.875rem;
 }
 
 .c1 {
   font-weight: 600;
   color: #1E2933;
-  margin-right: 8px;
-  font-size: 14px;
+  margin-right: 0.5rem;
+  font-size: 0.875rem;
   min-width: 175px;
   text-align: right;
-}
-
-.c2 {
-  border: solid 1px #C8CBCC;
-  height: 28px;
-  padding: 0 8px;
-  border-radius: 4px;
-  font-size: 14px;
 }
 
 <div
@@ -48,7 +40,7 @@ exports[`A TextInput 1`] = `
     🍕🎉
   </label>
   <input
-    className="c2 c3"
+    className="c2"
     id="pizza-party"
     name="pizzaParty"
     placeholder={undefined}

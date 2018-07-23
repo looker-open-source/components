@@ -16,8 +16,8 @@ exports[`A TextInput 1`] = `
 .c1 {
   font-weight: 600;
   color: #1E2933;
-  margin-right: 8px;
-  font-size: 14px;
+  margin-right: 0.5rem;
+  font-size: 0.875rem;
   min-width: 175px;
   text-align: right;
 }
