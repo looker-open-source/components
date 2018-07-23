@@ -50,5 +50,7 @@ test('A numerically ordered List marked as nomarker', () => {
     </List>
   )
   const tree = component.toJSON()
+  expect(tree).toHaveStyleRule('list-style-type', 'none')
+  expect(tree).toHaveStyleRule('padding', '0 0 0 0')
   expect(tree).toMatchSnapshot()
 })
