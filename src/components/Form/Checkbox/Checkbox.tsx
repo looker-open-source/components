@@ -19,8 +19,7 @@ export interface CheckboxProps {
 }
 
 /**
- * Headings are used to help users understand  what a major section of an interface is about, for example the labeling
- * of a page or a title of a card component.
+ *   Checkbox are a way for a user to make a range of selections
  */
 const CheckboxGenerator: React.SFC<CheckboxProps> = ({
   id,
@@ -38,7 +37,6 @@ const CheckboxGenerator: React.SFC<CheckboxProps> = ({
   // delete props.id
   // delete props.label
   // delete props.name
-  // delete props.placeholder
   // delete props.required
 
   return (
