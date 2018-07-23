@@ -1,32 +1,12 @@
 // Typescript component boilerplate for generating meaningful declaration files.
 import * as React from 'react'
+import styled, { StyledComponentClass } from '../../styled_components'
+export { StyledComponentClass }
+import { ThemeInterface } from '../../themes'
+export { ThemeInterface }
 // End Typescript component boilerplate
-const classNames = require('classnames')
-import * as styles from './ListItem.scss'
+import { themeSpacing } from '../../themes/theme_spacing'
 
-export interface ListItemProps {
-  className?: string | undefined
-}
-
-interface PropertyBag {
-  [key: string]: any
-}
-
-/**
- * Renders a `<li>` tag inside a `<List>`
- */
-
-export const ListItem: React.SFC<ListItemProps> = ({ className, ...args }) => {
-  const styleableProps: PropertyBag = {
-    [styles.lensListItem]: className === 'lens-list-item'
-  }
-
-  return (
-    <li
-      className={classNames(styles.lensListItem, className, styleableProps)}
-      {...args}
-    >
-      {args.children}
-    </li>
-  )
-}
+export const ListItem = styled('li')`
+  margin-bottom: ${themeSpacing.xs};
+`
