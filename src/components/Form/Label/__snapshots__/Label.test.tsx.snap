@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`A Label 1`] = `
+.c0 {
+  font-weight: 600;
+  color: #1E2933;
+  margin-right: 8px;
+  font-size: 14px;
+  min-width: 175px;
+  text-align: right;
+}
+
+<label
+  className="c0"
+  htmlFor="party"
+>
+  🎉
+</label>
+`;
