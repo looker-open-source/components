@@ -7,6 +7,7 @@ export { ThemeInterface }
 // End Typescript component boilerplate
 
 import { FormGroup } from '../FormGroup/FormGroup'
+import { Input, InputTypes } from '../Input/Input'
 import { Label } from '../Label/Label'
 
 export interface TextInputProps {
@@ -29,24 +30,24 @@ const TextInputGenerator: React.SFC<TextInputProps> = ({
   required,
   ...args
 }) => {
-  // // This prevents our props from being passed directly to the underlying h* tags, which ultimately
+  // // This prevents our props from being passed directly to the underlying tags, which ultimately
   // // would cause some warnings. Ideally we would define the return type for this function, and
   // // Typescript would warn us when passing props that are invalid.
   // //
   // // See https://reactjs.org/warnings/unknown-prop.html
   // const props = Object.assign({}, args)
-  // delete props.align
-  // delete props.size
-  // delete props.transform
-  // delete props.truncate
-  // delete props.weight
+  // delete props.id
+  // delete props.label
+  // delete props.name
+  // delete props.placeholder
+  // delete props.required
 
   return (
     <FormGroup>
-      <Label for={id}>{label}</Label>
-      <input
+      <Label htmlFor={id}>{label}</Label>
+      <Input
         id={id}
-        type="text"
+        type={InputTypes.Text}
         name={name}
         placeholder={placeholder}
         required={required}
