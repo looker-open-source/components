@@ -3,7 +3,7 @@ import * as React from 'react'
 import styled, { css, StyledComponentClass } from '../../styled_components'
 export { StyledComponentClass }
 import { ThemeInterface } from '../../themes'
-import { spacing } from '../../styles/spacing'
+import { themeSpacing } from '../../themes/theme_spacing'
 export { ThemeInterface }
 // End Typescript component boilerplate
 
@@ -58,7 +58,7 @@ function listStyleType(type: string | undefined) {
 
 export const List = styled<ListProps>(ListGenerator)`
   margin: 0;
-  padding: 0 0 0 ${props => (props.nomarker ? 0 : spacing.m)};
+  padding: 0 0 0 ${props => (props.nomarker ? 0 : themeSpacing.m)};
   ${props =>
     props.nomarker ? listStyleType(undefined) : listStyleType(props.type)};
 `

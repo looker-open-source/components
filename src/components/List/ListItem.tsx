@@ -5,8 +5,8 @@ export { StyledComponentClass }
 import { ThemeInterface } from '../../themes'
 export { ThemeInterface }
 // End Typescript component boilerplate
-import { spacing } from '../../styles/spacing'
+import { themeSpacing } from '../../themes/theme_spacing'
 
 export const ListItem = styled('li')`
-  margin-bottom: ${spacing.xs};
+  margin-bottom: ${themeSpacing.xs};
 `
