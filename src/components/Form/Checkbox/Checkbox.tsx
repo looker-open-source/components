@@ -55,9 +55,4 @@ const CheckboxGenerator: React.SFC<CheckboxProps> = ({
   )
 }
 
-export const Checkbox = styled<CheckboxProps>(CheckboxGenerator)`
-  border: solid 1px ${props => props.theme.colors.borderColor};
-  padding: 0 8px;
-  border-radius: 4px;
-  font-size: 14px;
-`
+export const Checkbox = styled<CheckboxProps>(CheckboxGenerator)``
