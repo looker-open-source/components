@@ -8,22 +8,13 @@ Inside this repository are both the core components Lens provides and the code f
 
 ### Yarn
 
-[`yarn`](https://yarnpkg.com/en/) must be installed. If you don't, have a look at https://yarnpkg.com/en/docs/install and decide what's the best option for you.
+[`yarn`](https://yarnpkg.com/en/) must be installed. If you don't have yarn installed, have a look at https://yarnpkg.com/en/docs/install and choose the appropriate install for your environment.
  
-### .npmrc 
+### gradle.properties
  
-An .npmrc file is needed in order to pull packages and publish to our private npm registry.
+We need to connect to our private npm registry, powered by Nexus. Lens has some scripts that take care of this setup automatically, but they depend on some setup from a Helltool environment, specifically configuration of a gradle.properties file.
 
 If you have Helltool installed and running you've likely already setup your gradle.properties file to connect to our Nexus server. [If not take a look at those directions and follow them so you can get the Nexus server user and password first](https://github.com/looker/helltool#dependencies).
-
-```
-export NEXUS_USER=<nexusUser>
-export NEXUS_PASS=<nexusPass>
-```
-
-Run `ci/setup.sh create_npmrc` to generate the `.npmrc` file
-
-You should now be able to run `yarn` in the project root without error.
 
 # Project Scripts
 
@@ -35,6 +26,7 @@ Each of these scripts can be run with `yarn <command>`. They are defined in the 
  * **build-styleguide** builds just the Styleguidist guide
  * **clean** removes the `dist` and `styleguide` directories if they exist
  * **release** runs the publishing process, distributing the package to Looker's private package repository
+ * **setup** sets up the Lens environment and installs dependencies
  * **test** runs the unit tests
 
 # Running the Styleguide
@@ -43,7 +35,7 @@ Lens is based on the [Styleguidist](https://react-styleguidist.js.org/) library.
 
 1. Run the commands below:
 1. `git clone git@github.com:looker/relens.git` 
-1. `yarn`
+1. `yarn setup`
 1. `yarn start`
 1. Open [http://localhost:6060](http://localhost:6060) in a browser
 
