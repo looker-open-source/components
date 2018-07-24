@@ -1,4 +1,4 @@
-# What is Relens? 🍉
+# What is Relens? [![Jenkins Status](https://jenkinsexternal.looker.com/buildStatus/icon?job=relens-master)](https://jenkins.looker.com/job/relens-master/) 🍉
 
 This is a holding tank for the next iteration of Lens, the Looker style and component resource. This repository will likely take over looker/lens when appropriate.
 
