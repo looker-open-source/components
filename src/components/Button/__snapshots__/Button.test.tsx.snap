@@ -40,17 +40,17 @@ exports[`Button states 1`] = `
 }
 
 .c0:hover,
-.c0.hover,
-.c0:focus {
-  background-color: #473764;
+.c0:focus,
+.c0.hover {
+  background: #473764;
   border-color: #473764;
 }
 
 .c0:active,
 .c0.active {
-  background-color: #2A1B60;
+  background: #2A1B60;
   border-color: #2A1B60;
-  box-shadow: none;
+  color: #FFFFFF;
 }
 
 <button
@@ -103,12 +103,14 @@ exports[`Button variant transparent 1`] = `
 .c0:focus,
 .c0.hover {
   background: transparent;
-  color: #473764;
+  border-color: transparent;
 }
 
 .c0:active,
 .c0.active {
   background: #F1EBFF;
+  border-color: transparent;
+  color: inherit;
 }
 
 <button
