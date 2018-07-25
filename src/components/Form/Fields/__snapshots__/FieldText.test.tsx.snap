@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`A FieldText 1`] = `
+Array [
+  .c0 {
+  font-weight: 600;
+  color: #1E2933;
+  margin-right: 0.5rem;
+  font-size: 0.875rem;
+  min-width: 175px;
+  text-align: right;
+}
+
+<label
+    className="c0"
+    htmlFor="thumbs-up"
+  >
+    👍
+  </label>,
+  .c0 {
+  border: solid 1px #C8CBCC;
+  height: 28px;
+  padding: 0 0.5rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+}
+
+<input
+    className="c0"
+    id="thumbs-up"
+    name="thumbsUp"
+  />,
+]
+`;

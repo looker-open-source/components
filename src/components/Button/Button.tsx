@@ -38,7 +38,6 @@ export interface ButtonProps {
   color?: ButtonColors
   size?: ButtonSizes
   styleableProps?: ButtonStyleableProps
-  theme: ThemeInterface
   variant?: ButtonVariants
 }
 

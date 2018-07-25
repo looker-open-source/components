@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`An InputText 1`] = `
+.c0 {
+  border: solid 1px #C8CBCC;
+  height: 28px;
+  padding: 0 0.5rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+}
+
+<input
+  className="c0"
+  id="thumbs-up"
+  label="👍"
+  name="thumbsUp"
+/>
+`;

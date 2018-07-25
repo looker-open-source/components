@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`An InputCheckbox 1`] = `
+.c0 {
+  padding: 0 0.5rem;
+}
+
+<input
+  className="c0"
+  id="thumbs-up"
+  name="thumbsUp"
+  type="checkbox"
+/>
+`;
