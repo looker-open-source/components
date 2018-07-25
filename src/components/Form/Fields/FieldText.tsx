@@ -5,7 +5,7 @@ export { StyledComponentClass }
 import { ThemeInterface } from '../../../themes/index'
 import { Label } from '../Label/Label'
 import { InputText } from '../Inputs/InputText'
-import { FormGroup } from '../FormGroup/FormGroup'
+import { FormControl } from '../FormGroup/FormGroup'
 export { ThemeInterface }
 // End Typescript component boilerplate
 
@@ -13,21 +13,13 @@ export interface FieldTextProps {
   id: string
   label: string
   name: string
-  theme: ThemeInterface
 }
 
-export const FieldText: React.SFC<FieldTextProps> = ({
-  id,
-  label,
-  name,
-  theme
-}) => {
+export const FieldText: React.SFC<FieldTextProps> = ({ id, label, name }) => {
   return (
-    <FormGroup>
-      <Label htmlFor={id} theme={theme}>
-        {label}
-      </Label>
-      <InputText id={id} name={name} theme={theme} />
-    </FormGroup>
+    <FormControl>
+      <Label htmlFor={id}>{label}</Label>
+      <InputText id={id} name={name} />
+    </FormControl>
   )
 }

@@ -14,6 +14,4 @@ export const Label = styled.label`
   color: ${space800};
   margin-right: ${themeSpacing.s};
   font-size: ${fontSizes[5]};
-  min-width: 175px;
-  text-align: right;
 `

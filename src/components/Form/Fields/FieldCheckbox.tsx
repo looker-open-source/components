@@ -3,7 +3,7 @@ import * as React from 'react'
 import { ThemeInterface } from '../../../themes/index'
 import { Label } from '../Label/Label'
 import { InputCheckbox } from '../Inputs/InputCheckbox'
-import { FormGroup } from '../FormGroup/FormGroup'
+import { FormControl, FormControlDirections } from '../FormGroup/FormGroup'
 export { ThemeInterface }
 // End Typescript component boilerplate
 
@@ -22,11 +22,11 @@ export const FieldCheckbox: React.SFC<FieldCheckboxProps> = ({
   ...props
 }) => {
   return (
-    <FormGroup>
+    <FormControl alignLabel={FormControlDirections.Left}>
       <Label htmlFor={id} theme={theme}>
         {label}
       </Label>
       <InputCheckbox id={id} name={name} theme={theme} {...props} />
-    </FormGroup>
+    </FormControl>
   )
 }

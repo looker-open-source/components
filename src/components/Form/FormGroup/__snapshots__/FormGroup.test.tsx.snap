@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`A FormGroup 1`] = `
+exports[`A FormControl 1`] = `
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
