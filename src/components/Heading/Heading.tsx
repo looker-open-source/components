@@ -6,9 +6,9 @@ import { ThemeInterface } from '../../themes'
 export { ThemeInterface }
 // End Typescript component boilerplate
 import { truncate } from '../../styles/typography'
-import { FontRamp, fontSizes } from '../../styles/font_sizes'
 import { lineHeights } from '../../styles/line_heights'
 import { fontWeights } from '../../styles/font_weights'
+import { RampSizes } from '../../styles/ramp_sizes'
 
 export enum HeadingAlignments {
   Left = 'left',
@@ -47,7 +47,7 @@ export interface HeadingGeneratorProps {
 
 export interface HeadingProps extends HeadingGeneratorProps {
   /** Size mapping from type ramp */
-  size?: FontRamp
+  size?: RampSizes
   /** Font weight */
   weight?: HeadingWeights
   /** Text tranform  */
@@ -59,13 +59,30 @@ export interface HeadingProps extends HeadingGeneratorProps {
   truncate?: boolean
 }
 
+const convertHeadingLevelToRampSize = (level: HeadingLevels | undefined) => {
+  switch (level) {
+    case HeadingLevels.L1:
+      return RampSizes.One
+    case HeadingLevels.L2:
+      return RampSizes.Two
+    case HeadingLevels.L3:
+      return RampSizes.Three
+    case HeadingLevels.L4:
+      return RampSizes.Four
+    case HeadingLevels.L5:
+      return RampSizes.Five
+    case HeadingLevels.L6:
+      return RampSizes.Six
+    default:
+      return RampSizes.Three
+  }
+}
+
 /**
  * Headings are used to help users understand  what a major section of an interface is about, for example the labeling
  * of a page or a title of a card component.
  */
 const HeadingGenerator: React.SFC<HeadingProps> = ({ level, ...args }) => {
-  const Tag = `h${level || HeadingLevels.L3}`
-
   // This prevents our props from being passed directly to the underlying h* tags, which ultimately
   // would cause some warnings. Ideally we would define the return type for this function, and
   // Typescript would warn us when passing props that are invalid.
@@ -78,7 +95,21 @@ const HeadingGenerator: React.SFC<HeadingProps> = ({ level, ...args }) => {
   delete props.truncate
   delete props.weight
 
-  return <Tag {...props}>{props.children}</Tag>
+  switch (level) {
+    case HeadingLevels.L1:
+      return <h1 {...props}>{props.children}</h1>
+    case HeadingLevels.L2:
+      return <h2 {...props}>{props.children}</h2>
+    case HeadingLevels.L4:
+      return <h4 {...props}>{props.children}</h4>
+    case HeadingLevels.L5:
+      return <h5 {...props}>{props.children}</h5>
+    case HeadingLevels.L6:
+      return <h6 {...props}>{props.children}</h6>
+    case HeadingLevels.L3:
+    default:
+      return <h3 {...props}>{props.children}</h3>
+  }
 }
 
 function textTransform(transform: HeadingTextTransforms | undefined) {
@@ -111,9 +142,11 @@ function alignment(align: HeadingAlignments | undefined) {
 
 export const Heading = styled<HeadingProps>(HeadingGenerator)`
   font-size: ${props =>
-    fontSizes[props.size || props.level || HeadingLevels.L3]};
+    props.theme.fontRamp[
+      props.size || convertHeadingLevelToRampSize(props.level)
+    ]};
   line-height: ${props =>
-    lineHeights[props.size || props.level || HeadingLevels.L3]};
+    lineHeights[props.size || convertHeadingLevelToRampSize(props.level)]};
   font-weight: ${props => fontWeights[props.weight || HeadingWeights.Normal]};
   ${props => textTransform(props.transform)}
   ${props => alignment(props.align)}

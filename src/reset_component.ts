@@ -11,7 +11,7 @@ const Reset = styled.div`
   ${reset};
 `
 
-export const component = <P, TTag extends keyof JSX.IntrinsicElements>(
+export const resetComponent = <P, TTag extends keyof JSX.IntrinsicElements>(
   tagName: TTag
 ) => {
   return (
