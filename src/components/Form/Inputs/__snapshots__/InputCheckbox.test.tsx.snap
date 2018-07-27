@@ -2,6 +2,12 @@
 
 exports[`An InputCheckbox 1`] = `
 .c0 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
   padding: 0 0.5rem;
 }
 

@@ -2,6 +2,12 @@
 
 exports[`An InputText 1`] = `
 .c0 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
   border: solid 1px #C8CBCC;
   height: 28px;
   padding: 0 0.5rem;
