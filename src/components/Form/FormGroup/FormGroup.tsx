@@ -15,6 +15,7 @@ export enum FormControlDirections {
 
 export interface FormControlProps {
   alignLabel?: FormControlDirections
+  alignCenter?: boolean
 }
 
 const alignLabels = (direction: FormControlDirections | undefined) => {
@@ -45,4 +46,5 @@ export const FormControl = styled<FormControlProps, 'div'>('div')`
   display: flex;
   margin-bottom: ${themeSpacing.s};
   ${props => alignLabels(props.alignLabel)};
+  align-items: ${props => (props.alignCenter ? 'center' : 'normal')};
 `

@@ -7,12 +7,13 @@ import { ThemeInterface } from './themes'
 import { reset } from './styles/reset'
 import styled from './styled_components'
 
-const Reset = styled.div`
+const Reset = styled<{}, 'div'>('div')`
   ${reset};
 `
 
 export const resetComponent = <P, TTag extends keyof JSX.IntrinsicElements>(
-  tagName: TTag
+  tagName: TTag,
+  attrs = {}
 ) => {
   return (
     strings: TemplateStringsArray,
@@ -20,9 +21,8 @@ export const resetComponent = <P, TTag extends keyof JSX.IntrinsicElements>(
       Interpolation<ThemedStyledProps<P, ThemeInterface>>
     >
   ): StyledComponentClass<P & JSX.IntrinsicElements[TTag], ThemeInterface> => {
-    return Reset.withComponent<TTag>(tagName).extend.apply(null, [
-      strings,
-      ...interpolations
-    ])
+    return Reset.withComponent<TTag>(tagName)
+      .extend.attrs(attrs)
+      .apply(null, [strings, ...interpolations])
   }
 }

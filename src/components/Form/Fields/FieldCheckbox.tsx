@@ -20,7 +20,7 @@ export const FieldCheckbox: React.SFC<FieldCheckboxProps> = ({
   ...props
 }) => {
   return (
-    <FormControl alignLabel={FormControlDirections.Left}>
+    <FormControl alignLabel={FormControlDirections.Left} alignCenter>
       <Label htmlFor={id}>{label}</Label>
       <InputCheckbox id={id} name={name} {...props} />
     </FormControl>
