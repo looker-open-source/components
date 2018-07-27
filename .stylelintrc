@@ -7,7 +7,6 @@
     "stylelint-config-styled-components"
   ],
   "rules": {
-    "block-no-empty": false,
     "color-no-invalid-hex": true,
     "function-calc-no-unspaced-operator": true,
     "unit-no-unknown": true,

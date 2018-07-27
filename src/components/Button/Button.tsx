@@ -1,7 +1,7 @@
 // Typescript component boilerplate for generating meaningful declaration files.
 import * as React from 'react'
 import styled, { css, StyledComponentClass } from '../../styled_components'
-export { StyledComponentClass }
+export { React, StyledComponentClass }
 // End Typescript component boilerplate
 import { rem, rgba } from 'polished'
 import { brandFont } from '../../styles/typography'
@@ -38,7 +38,6 @@ export interface ButtonProps {
   color?: ButtonColors
   size?: ButtonSizes
   styleableProps?: ButtonStyleableProps
-  theme: ThemeInterface
   variant?: ButtonVariants
 }
 

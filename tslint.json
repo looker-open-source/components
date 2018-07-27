@@ -9,6 +9,7 @@
   "jsRules": {},
   "rules": {
     "interface-name": [true, "never-prefix"],
+    "jsx-boolean-value": false,
     "no-namespace": [true, "allow-declarations"],
     "no-var-requires": false,
     "ordered-imports": false

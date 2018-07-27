@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`A FieldCheckbox 1`] = `
+.c1 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+  font-weight: 600;
+  color: #1E2933;
+  margin-right: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.c2 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+  padding: 0 0.5rem;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 0.5rem;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+<div
+  className="c0"
+>
+  <label
+    className="c1"
+    htmlFor="thumbs-up"
+  >
+    👍
+  </label>
+  <input
+    className="c2"
+    id="thumbs-up"
+    name="thumbsUp"
+    type="checkbox"
+  />
+</div>
+`;

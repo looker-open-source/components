@@ -8,6 +8,10 @@ module.exports = {
       dangerousTaggedTemplateString: true
     }
   },
+  ignore: [
+    '**/index.tsx',
+    '**/*.test.tsx'
+  ],
   pagePerSection: true,
   propsParser: typescriptPropsParser,
   showCode: true,

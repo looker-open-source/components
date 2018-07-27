@@ -1,13 +1,14 @@
 import { rem } from 'polished'
+import { RampSizes } from './ramp_sizes'
 
 export const lineHeights = {
-  '1': rem(36),
-  '2': rem(30),
-  '3': rem(27),
-  '4': rem(24),
-  '5': rem(24),
-  '6': rem(20),
-  d1: rem(72),
-  d2: rem(60),
-  d3: rem(46)
+  [RampSizes.One]: rem(36),
+  [RampSizes.Two]: rem(30),
+  [RampSizes.Three]: rem(27),
+  [RampSizes.Four]: rem(24),
+  [RampSizes.Five]: rem(24),
+  [RampSizes.Six]: rem(20),
+  [RampSizes.D1]: rem(72),
+  [RampSizes.D2]: rem(60),
+  [RampSizes.D3]: rem(46)
 }
