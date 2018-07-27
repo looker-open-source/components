@@ -36,15 +36,13 @@ Using the [`CardContent`](/#!/CardContent) component quickly gives your content 
 
 ### A group of media Cards
 
-A few common patterns for `Cards` are displaying them in groups and using images to reinforce the content of the card. Below is an example of using `CardGroup` and `CardMedia` components to create a layout of grouped cards.
+A few common patterns for `Cards` are displaying them in groups and using images to reinforce the content of the card.
 
 ```js
-<CardGroup>
+<div>
 
   <Card raised>
-
     <CardMedia image="https://placeimg.com/640/480/nature" title="Summer Nature"></CardMedia>
-
     <CardContent>
       <Text size="6" transform="upper" weight="semi-bold" mode="subdued">Summer</Text>
       <Heading level="4" size="3" weight="semi-bold" truncate>Life in The Great Outdoors</Heading>
@@ -53,11 +51,9 @@ A few common patterns for `Cards` are displaying them in groups and using images
       </Block>
     </CardContent>
   </Card>
-
+  
    <Card raised>
-
     <CardMedia image="https://placeimg.com/630/480/nature" title="A Scenic Valley"></CardMedia>
-
     <CardContent>
       <Text size="6" transform="upper" weight="semi-bold" mode="subdued">Explore</Text>
       <Heading level="4" size="3" weight="semi-bold" truncate>Best Scenic Hikes</Heading>
@@ -68,9 +64,7 @@ A few common patterns for `Cards` are displaying them in groups and using images
   </Card>
 
   <Card raised>
-
     <CardMedia image="https://placeimg.com/620/480/nature" title="Relaxing Views"></CardMedia>
-
     <CardContent>
       <Text size="6" transform="upper" weight="semi-bold" mode="subdued">Relax</Text>
       <Heading level="4" size="3" weight="semi-bold" truncate>Mindfull Wilderness</Heading>
@@ -80,6 +74,6 @@ A few common patterns for `Cards` are displaying them in groups and using images
     </CardContent>
   </Card>
 
-</CardGroup>
+</div>
 ```
 
