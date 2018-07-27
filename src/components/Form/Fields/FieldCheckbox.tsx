@@ -11,22 +11,18 @@ export interface FieldCheckboxProps {
   id: string
   label: string
   name: string
-  theme: ThemeInterface
 }
 
 export const FieldCheckbox: React.SFC<FieldCheckboxProps> = ({
   id,
   label,
   name,
-  theme,
   ...props
 }) => {
   return (
     <FormControl alignLabel={FormControlDirections.Left}>
-      <Label htmlFor={id} theme={theme}>
-        {label}
-      </Label>
-      <InputCheckbox id={id} name={name} theme={theme} {...props} />
+      <Label htmlFor={id}>{label}</Label>
+      <InputCheckbox id={id} name={name} {...props} />
     </FormControl>
   )
 }

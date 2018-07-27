@@ -1,6 +1,6 @@
 // Typescript component boilerplate for generating meaningful declaration files.
 import * as React from 'react'
-import styled, { StyledComponentClass } from '../../../styled_components'
+import { StyledComponentClass } from '../../../styled_components'
 export { StyledComponentClass }
 import { ThemeInterface } from '../../../themes/index'
 import { Label } from '../Label/Label'
