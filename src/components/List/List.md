@@ -14,39 +14,29 @@ By default a `<List />` component will render as an unordered list, `<ul>` tag, 
 Often times you want to have a marker before each item in your list, you can use the `type` property to change list marker and also the semantic html tag used to wrap the list.
 
 ```js
+<List>
+  <ListItem>An unordered list</ListItem>
+  <ListItem>Wraps in a <Text element="code">&lt;ul&gt;</Text> tag</ListItem>
+  <ListItem>No marker</ListItem>
+</List>
 
-<Block mb="xl">
-  <List>
-    <ListItem>An unordered list</ListItem>
-    <ListItem>Wraps in a <Text element="code">&lt;ul&gt;</Text> tag</ListItem>
-    <ListItem>No marker</ListItem>
-  </List>
-</Block>
+<List type="bullet">
+  <ListItem>An unordered list</ListItem>
+  <ListItem>Wraps in a <Text element="code">&lt;ul&gt;</Text> tag</ListItem>
+  <ListItem>Bullet marker</ListItem>
+</List>
 
-<Block mb="xl">
-  <List type="bullet">
-    <ListItem>An unordered list</ListItem>
-    <ListItem>Wraps in a <Text element="code">&lt;ul&gt;</Text> tag</ListItem>
-    <ListItem>Bullet marker</ListItem>
-  </List>
-</Block>
+<List type="number">
+  <ListItem>An orderd list</ListItem>
+  <ListItem>Wraps in a <Text element="code">&lt;ol&gt;</Text> tag</ListItem>
+  <ListItem>Number marker</ListItem>
+</List>
 
-<Block mb="xl">
-  <List type="number">
-    <ListItem>An orderd list</ListItem>
-    <ListItem>Wraps in a <Text element="code">&lt;ol&gt;</Text> tag</ListItem>
-    <ListItem>Number marker</ListItem>
-  </List>
-</Block>
-
-<Block mb="xl">
-  <List type="letter">
-    <ListItem>An ordered list</ListItem>
-    <ListItem>Wraps in a <Text element="code">&lt;ol&gt;</Text> tag</ListItem>
-    <ListItem>Alpha marker</ListItem>
-  </List>
-</Block>
-
+<List type="letter">
+  <ListItem>An ordered list</ListItem>
+  <ListItem>Wraps in a <Text element="code">&lt;ol&gt;</Text> tag</ListItem>
+  <ListItem>Alpha marker</ListItem>
+</List>
 ```
 
 ### Hiding the List marker

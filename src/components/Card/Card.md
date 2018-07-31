@@ -8,12 +8,10 @@ At its most basic, a `Card` is a slightly styled container that organizes groups
 
 ```js
 
-// A Card with Block component to add spacing
-// Try typing some content into the Block or Card to see how it handles content by default
+// A Card
+// Try typing some content into the Card to see how it handles content by default
 
-<Card raised>
-  <Block p="4xl"></Block>
-</Card>
+<Card raised></Card>
 ```
 
 <div class="doc-section-divider"></div>
@@ -48,9 +46,9 @@ A few common patterns for `Cards` are displaying them in groups and using images
     <CardContent>
       <Text size="6" transform="upper" weight="semi-bold" mode="subdued">Summer</Text>
       <Heading level="4" size="3" weight="semi-bold" truncate>Life in The Great Outdoors</Heading>
-      <Block mt="xs">
+      <div>
         <Text size="5">10 reasons to get off the couch and head outside this summer.</Text>
-      </Block>
+      </div>
     </CardContent>
   </Card>
 
@@ -61,9 +59,9 @@ A few common patterns for `Cards` are displaying them in groups and using images
     <CardContent>
       <Text size="6" transform="upper" weight="semi-bold" mode="subdued">Explore</Text>
       <Heading level="4" size="3" weight="semi-bold" truncate>Best Scenic Hikes</Heading>
-      <Block mt="xs">
+      <div>
         <Text size="5">Looking for a new place to trailblaze? Make sure it has a great view!</Text>
-      </Block>
+      </div>
     </CardContent>
   </Card>
 
@@ -74,9 +72,9 @@ A few common patterns for `Cards` are displaying them in groups and using images
     <CardContent>
       <Text size="6" transform="upper" weight="semi-bold" mode="subdued">Relax</Text>
       <Heading level="4" size="3" weight="semi-bold" truncate>Mindfull Wilderness</Heading>
-      <Block mt="xs">
+      <div>
         <Text size="5">Find a place to find your self.</Text>
-      </Block>
+      </div>
     </CardContent>
   </Card>
 

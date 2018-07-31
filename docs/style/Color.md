@@ -63,10 +63,10 @@ renderSwatch = (swatchList, key) => {
   let fill = color.toLowerCase();
   return(
     <div className="swatch-holder" key={key}>
-      <Block px="m" py="xl" style={{background: `var(--lens-color-${fill})`}}>
+      <div style={{background: `var(--lens-color-${fill})`}}>
         <Text size="2" weight="semi-bold" style={{color:'#fff'}} >{color}</Text>
         <Text size="4" weight="semi-bold" style={{color:'#fff'}}>500</Text>
-      </Block>
+      </div>
       {swatchList.map((swatch, index) => (
         <Swatch key={index} contrastLevel={swatch.contrastLevel} labelColor={swatch.labelColor} hexValue={swatch.hexValue} group={swatch.group}>{swatch.label}</Swatch>
       ))}
@@ -82,12 +82,12 @@ class Swatch extends React.Component {
     let bgColor = `${this.props.group}${modifier}`.toLowerCase()
 
     return(
-      <Block className="swatch" style={{background: `var(--lens-color-${bgColor})`}}>
+      <div className="swatch" style={{background: `var(--lens-color-${bgColor})`}}>
         <Text className="swatch-label" weight="semi-bold" style={{color: this.props.labelColor}}>{this.props.children}</Text>
         <Text className="swatch-hex" weight="semi-bold" style={{color: this.props.labelColor}}>{this.props.hexValue}</Text>
 
         <div className="contrast-box">{this.props.contrastLevel}</div>
-      </Block>
+      </div>
     )
   }
 }
