@@ -15,13 +15,12 @@ const charcoal800 = '#262D33';
 const charcoal900 = '#262D33';
 
 renderBorder = (border, index) => {
-  console.log(border)
   let labels = [['Theme Name', border.themeName], ['Lens Color' , border.name], ['Hex Value', border.hex]];
   let headerCells = ["Theme Name", "Lens Color","Hex"]
   let tableCells = [border.themeName, border.name, border.hex]
 
    return(
-     <div>
+     <div key={index}>
      <Heading size="6" weight="semiBold">{border.label}</Heading>
 
       <div className="border-examples">
