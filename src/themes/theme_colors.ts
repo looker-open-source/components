@@ -1,6 +1,6 @@
 import {
   blue500,
-  fog300,
+  charcoal200,
   purple200,
   purple300,
   primary500,
@@ -46,7 +46,7 @@ export interface ThemeColors {
 }
 
 export const themeColors: ThemeColors = {
-  borderColor: fog300,
+  borderColor: charcoal200,
   destructive: red500,
   destructiveDark: red600,
   destructiveDarker: red700,
