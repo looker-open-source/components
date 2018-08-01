@@ -1,6 +1,9 @@
 import {
   blue500,
   charcoal200,
+  charcoal300,
+  charcoal400,
+  charcoal500,
   purple200,
   purple300,
   primary500,
@@ -17,6 +20,12 @@ import {
 export interface ThemeColors {
   // Default border and divider color
   borderColor: string
+  // Dark border & divider color
+  borderColorDark: string
+  // Light border & divider color
+  borderColorLight: string
+  // Border color for dividers on dark background
+  borderColorOnDark: string
   // Destructive color in application, used for signaling a destructive or dangerous action
   destructive: string
   // Color for the destructive action's interactive state, a button hover for example
@@ -46,7 +55,10 @@ export interface ThemeColors {
 }
 
 export const themeColors: ThemeColors = {
-  borderColor: charcoal200,
+  borderColor: charcoal300,
+  borderColorDark: charcoal400,
+  borderColorLight: charcoal200,
+  borderColorOnDark: charcoal500,
   destructive: red500,
   destructiveDark: red600,
   destructiveDarker: red700,

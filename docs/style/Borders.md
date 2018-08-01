@@ -40,9 +40,6 @@ renderBorder = (border, index) => {
             </div>
         ))}
       </div>
-
-
-
     </div>
   )
 }
@@ -91,7 +88,7 @@ class BorderRender extends React.Component{
           textClass: 'border-on-dark-text',
           hex:  charcoal500,
           name: 'charcoal500',
-          themeName: 'borderOnDark',
+          themeName: 'borderColorOnDark',
           examples: [
             {name: 'Charcoal800', bgColor: charcoal800},
             {name: 'Charcoal700', bgColor: charcoal700 },
