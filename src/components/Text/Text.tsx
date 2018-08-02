@@ -1,82 +1,131 @@
-import * as React from 'react'
-const classNames = require('classnames')
-import * as styles from './Text.scss'
+// import * as React from 'react'
+// const classNames = require('classnames')
+// import * as styles from './Text.scss'
 
-export interface TextProps {
-  element?: 'p' | 'span' | 'code'
-  size?: 'd1' | 'd2' | 'd3' | '1' | '2' | '3' | '4' | '5' | '6'
-  mode?: 'secondary' | 'subdued' | 'positive' | 'critical'
-  weight?: 'light' | 'normal' | 'semi-bold' | 'bold' | 'extra-bold'
-  transform?: 'upper' | 'caps' | 'lower' | 'none'
-  align?: 'left' | 'center' | 'right' | 'justify'
-  truncate?: boolean
-  className?: undefined
+import * as React from 'react'
+import styled, { css, StyledComponentClass } from '../../styled_components'
+export { StyledComponentClass }
+import { ThemeInterface } from '../../themes'
+export { ThemeInterface }
+// End Typescript component boilerplate
+import { truncate } from '../../styles/typography'
+import { lineHeights } from '../../styles/line_heights'
+import { fontWeights } from '../../styles/font_weights'
+import { RampSizes } from '../../styles/ramp_sizes'
+
+export enum TextWeights {
+  Bold = 'bold',
+  Light = 'light',
+  Normal = 'normal',
+  SemiBold = 'semiBold'
 }
 
-interface PropertyBag {
-  [key: string]: any
+export enum TextElement {
+  P = 'p',
+  Span = 'span',
+  Code = 'code'
+}
+
+export enum TextTransforms {
+  Caps = 'caps',
+  Lower = 'lower',
+  None = 'none',
+  Upper = 'upper'
+}
+
+export enum TextAlignments {
+  Left = 'left',
+  Center = 'center',
+  Right = 'right'
+}
+
+export enum TextVariants {
+  Critical = 'critical',
+  Positive = 'positive',
+  Secondary = 'secondary',
+  Subdued = 'subdued'
+}
+
+export interface TextGeneratorProps {
+  // Text wrapping element
+  element?: TextElement
+}
+
+export interface TextProps extends TextGeneratorProps {
+  align?: TextAlignments
+  variant?: TextVariants
+  size?: RampSizes
+  transform?: TextTransforms
+  truncate?: boolean
+  weight?: TextWeights
 }
 
 /**
- * A general purpose component for controlling the font-size, color, weight, and alignment of text.
+ * Headings are used to help users understand  what a major section of an interface is about, for example the labeling
+ * of a page or a title of a card component.
  */
+const TextGenerator: React.SFC<TextProps> = ({ element, ...args }) => {
+  // This prevents our props from being passed directly to the underlying h* tags, which ultimately
+  // would cause some warnings. Ideally we would define the return type for this function, and
+  // Typescript would warn us when passing props that are invalid.
+  //
+  // See https://reactjs.org/warnings/unknown-prop.html
+  const props = Object.assign({}, args)
+  delete props.align
+  delete props.size
+  delete props.transform
+  delete props.truncate
+  delete props.weight
+  delete props.weight
 
-export const Text: React.SFC<TextProps> = ({
-  className,
-  element,
-  size,
-  mode,
-  weight,
-  transform,
-  align,
-  truncate,
-  ...args
-}) => {
-  const Tag = element ? element : 'div'
-
-  const styleableProps: PropertyBag = {
-    [styles.isDisplay1]: size === 'd1',
-    [styles.isDisplay2]: size === 'd2',
-    [styles.isDisplay3]: size === 'd3',
-    [styles.isHeading1]: size === '1',
-    [styles.isHeading2]: size === '2',
-    [styles.isHeading3]: size === '3',
-    [styles.isHeading4]: size === '4',
-    [styles.isHeading5]: size === '5',
-    [styles.isHeading6]: size === '6',
-
-    [styles.fontWeightLight]: weight === 'light',
-    [styles.fontWeightNormal]: weight === 'normal',
-    [styles.fontWeightSemiBold]: weight === 'semi-bold',
-    [styles.fontWeightBold]: weight === 'bold',
-    [styles.fontWeightExtraBold]: weight === 'extra-bold',
-
-    [styles.transformUpper]: transform === 'upper',
-    [styles.transformCaps]: transform === 'caps',
-    [styles.transformLower]: transform === 'lower',
-    [styles.transformNone]: transform === 'none',
-
-    [styles.alignLeft]: align === 'left',
-    [styles.alignCenter]: align === 'center',
-    [styles.alignRight]: align === 'right',
-    [styles.alignJustify]: align === 'justify',
-
-    [styles.isSecondary]: mode === 'secondary',
-    [styles.isSubdued]: mode === 'subdued',
-    [styles.isCritical]: mode === 'critical',
-    [styles.isPositive]: mode === 'positive',
-
-    [styles.isCode]: element === 'code',
-
-    [styles.isTruncated]: !!truncate
+  switch (element) {
+    case TextElement.Code:
+      return <code {...props}>{props.children}</code>
+    case TextElement.P:
+      return <p {...props}>{props.children}</p>
+    case TextElement.Span:
+      return <span {...props}>{props.children}</span>
+    default:
+      return <div {...props}>{props.children}</div>
   }
-
-  return (
-    <Tag
-      className={classNames(styles.lensText, className, styleableProps)}
-      {...args}
-    >
-      {args.children}
-    </Tag>
-  )
 }
+
+function textTransform(transform: TextTransforms | undefined) {
+  switch (transform) {
+    case TextTransforms.Upper:
+      return css`
+        text-transform: uppercase;
+      `
+    case TextTransforms.Lower:
+      return css`
+        text-transform: lowercase;
+      `
+    case TextTransforms.Caps:
+      return css`
+        text-transform: capitalize;
+      `
+    case TextTransforms.None:
+    default:
+      return css`
+        text-transform: none;
+      `
+  }
+}
+
+function alignment(align: TextAlignments | undefined) {
+  return css`
+    text-align: ${align || TextAlignments.Left};
+  `
+}
+
+export const Text = styled<TextProps>(TextGenerator)`
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: ${props => props.theme.fontRamp[props.size || RampSizes.Four]};
+  line-height: ${props => lineHeights[props.size || RampSizes.Four]};
+  font-weight: ${props => fontWeights[props.weight || TextWeights.Normal]};
+  ${props => textTransform(props.transform)}
+  ${props => alignment(props.align)}
+  ${props => truncate(props.truncate || false)}
+`

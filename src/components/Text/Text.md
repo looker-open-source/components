@@ -17,8 +17,8 @@ If you need to adjust the font-size of the rendered text, you can use the `size`
 
 ```js
  <Text size="d1">Sized to d1</Text>
- <Text size="1">Sized to 1</Text>
- <Text size="6">Sized to 6</Text>
+ <Text size="one">Sized to 1</Text>
+ <Text size="six">Sized to 6</Text>
 ```
 
 <div class="doc-section-divider"></div>
@@ -28,9 +28,9 @@ If you need to adjust the font-size of the rendered text, you can use the `size`
 Common patterns for text is to adjust the font weight and transform the text. Below is an example of using the `weight` and `transform` properties to modify the rendered text
 
 ```js
-  <Text size="6" transform="upper" weight="semi-bold">A great story</Text>
+  <Text size="six" transform="upper" weight="semi-bold">A great story</Text>
   <Text size="d3" weight="light">This is a great headline</Text>
-  <Text size="6" transform="caps">Some metadata about this story</Text>
+  <Text size="six" transform="caps">Some metadata about this story</Text>
 ```
 
 <div class="doc-section-divider"></div>
