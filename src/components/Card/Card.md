@@ -11,7 +11,9 @@ At its most basic, a `Card` is a slightly styled container that organizes groups
 // A Card
 // Try typing some content into the Card to see how it handles content by default
 
-<Card raised></Card>
+<Card raised>
+  <Text mode="subdued" size="2">Hello World!</Text>
+</Card>
 ```
 
 <div class="doc-section-divider"></div>
@@ -34,50 +36,46 @@ Using the [`CardContent`](/#!/CardContent) component quickly gives your content 
 
 ### A group of media Cards
 
-A few common patterns for `Cards` are displaying them in groups and using images to reinforce the content of the card. Below is an example of using `CardGroup` and `CardMedia` components to create a layout of grouped cards.
+A few common patterns for `Cards` are displaying them in groups and using images to reinforce the content of the card.
 
 ```js
-<CardGroup>
-
-  <Card raised>
-
-    <CardMedia image="https://placeimg.com/640/480/nature" title="Summer Nature"></CardMedia>
-
-    <CardContent>
-      <Text size="6" transform="upper" weight="semi-bold" mode="subdued">Summer</Text>
-      <Heading level="4" size="3" weight="semi-bold" truncate>Life in The Great Outdoors</Heading>
-      <div>
-        <Text size="5">10 reasons to get off the couch and head outside this summer.</Text>
-      </div>
-    </CardContent>
-  </Card>
-
-   <Card raised>
-
-    <CardMedia image="https://placeimg.com/630/480/nature" title="A Scenic Valley"></CardMedia>
-
-    <CardContent>
-      <Text size="6" transform="upper" weight="semi-bold" mode="subdued">Explore</Text>
-      <Heading level="4" size="3" weight="semi-bold" truncate>Best Scenic Hikes</Heading>
-      <div>
-        <Text size="5">Looking for a new place to trailblaze? Make sure it has a great view!</Text>
-      </div>
-    </CardContent>
-  </Card>
-
-  <Card raised>
-
-    <CardMedia image="https://placeimg.com/620/480/nature" title="Relaxing Views"></CardMedia>
-
-    <CardContent>
-      <Text size="6" transform="upper" weight="semi-bold" mode="subdued">Relax</Text>
-      <Heading level="4" size="3" weight="semi-bold" truncate>Mindfull Wilderness</Heading>
-      <div>
-        <Text size="5">Find a place to find your self.</Text>
-      </div>
-    </CardContent>
-  </Card>
-
-</CardGroup>
+<div style={{display: 'flex'}}>
+  <div style={{flex: 1, margin: '10px'}}>
+    <Card raised>
+      <CardMedia image="https://placeimg.com/640/480/nature" title="Summer Nature"></CardMedia>
+      <CardContent>
+        <Text size="6" transform="upper" weight="semi-bold" mode="subdued">Summer</Text>
+        <Heading level="4" size="3" weight="semi-bold" truncate>Life in The Great Outdoors</Heading>
+        <div>
+          <Text size="5">10 reasons to get off the couch and head outside this summer.</Text>
+        </div>
+      </CardContent>
+    </Card>
+  </div>
+  <div style={{flex: 1, margin: '10px'}}>
+    <Card raised>
+      <CardMedia image="https://placeimg.com/630/480/nature" title="A Scenic Valley"></CardMedia>
+      <CardContent>
+        <Text size="6" transform="upper" weight="semi-bold" mode="subdued">Explore</Text>
+        <Heading level="4" size="3" weight="semi-bold" truncate>Best Scenic Hikes</Heading>
+        <div mt="xs">
+          <Text size="5">Looking for a new place to trailblaze? Make sure it has a great view!</Text>
+        </div>
+      </CardContent>
+    </Card>
+  </div>
+  <div style={{flex: 1, margin: '10px'}}>
+    <Card raised>
+      <CardMedia image="https://placeimg.com/620/480/nature" title="Relaxing Views"></CardMedia>
+      <CardContent>
+        <Text size="6" transform="upper" weight="semi-bold" mode="subdued">Relax</Text>
+        <Heading level="4" size="3" weight="semi-bold" truncate>Mindfull Wilderness</Heading>
+        <div mt="xs">
+          <Text size="5">Find a place to find your self.</Text>
+        </div>
+      </CardContent>
+    </Card>
+  </div>
+</div>
 ```
 
