@@ -17,8 +17,9 @@ export const Card = styled<CardProps, 'div'>('div')`
   border: solid 1px ${props => props.theme.colors.borderColor};
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  height: 100%;
   min-width: 200px;
+  overflow: hidden;
   transition: border ${props => props.theme.transitions.durationShorter} ease;
 
   &:hover {
