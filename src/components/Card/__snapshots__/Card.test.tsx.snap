@@ -5,7 +5,7 @@ exports[`A Card 1`] = `
   background: #fff;
   border-radius: 4px;
   box-shadow: none;
-  border: solid 1px #C8CBCC;
+  border: solid 1px #DEE1E5;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -20,7 +20,7 @@ exports[`A Card 1`] = `
 }
 
 .c0:hover {
-  border-color: #A2A4A5;
+  border-color: #C1C6CC;
 }
 
 <div
@@ -35,7 +35,7 @@ exports[`A raised Card 1`] = `
   background: #fff;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.08);
-  border: solid 1px #C8CBCC;
+  border: solid 1px #DEE1E5;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -50,7 +50,7 @@ exports[`A raised Card 1`] = `
 }
 
 .c0:hover {
-  border-color: #A2A4A5;
+  border-color: #C1C6CC;
 }
 
 <div
@@ -65,7 +65,7 @@ exports[`A raised Card with a CardMedia block 1`] = `
   background: #fff;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.08);
-  border: solid 1px #C8CBCC;
+  border: solid 1px #DEE1E5;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -80,7 +80,7 @@ exports[`A raised Card with a CardMedia block 1`] = `
 }
 
 .c0:hover {
-  border-color: #A2A4A5;
+  border-color: #C1C6CC;
 }
 
 .c1 {

@@ -4,7 +4,7 @@ exports[`A <TableHeaderCell> should render 1`] = `
 .c0 {
   padding: 0.5rem 0;
   font-size: font-size(6);
-  color: #A4A6A9;
+  color: #939BA5;
   font-weight: 600;
 }
 
