@@ -34,7 +34,7 @@ Use this to indicate that when the buttons is pressed a popup is triggered. A po
 For example say you have an icon-only button that reveals a set of options in a context menu when clicked, you would do the following:
 
 ```
-<IconGearButton aria-haspopup="true" aria-label="Look Settings">
+<Button aria-haspopup="true" aria-label="Look Settings"><IconGear /></Button>
 ```
 This would be announced as "Look Settings popup button" by a screen reader.
 
