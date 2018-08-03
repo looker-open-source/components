@@ -32,6 +32,7 @@
     "jest-styled-components": "5.0.1",
     "lint-staged": "7.2.0",
     "node-sass": "4.8.3",
+    "ora": "3.0.0",
     "pre-commit": "1.2.2",
     "prettier": "1.13.7",
     "prop-types": "15.6.1",

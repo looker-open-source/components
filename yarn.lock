@@ -6571,6 +6571,17 @@ optionator@^0.8.1:
     type-check "~0.3.2"
     wordwrap "~1.0.0"
 
+ora@3.0.0:
+  version "3.0.0"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/ora/-/ora-3.0.0.tgz#8179e3525b9aafd99242d63cc206fd64732741d0"
+  dependencies:
+    chalk "^2.3.1"
+    cli-cursor "^2.1.0"
+    cli-spinners "^1.1.0"
+    log-symbols "^2.2.0"
+    strip-ansi "^4.0.0"
+    wcwidth "^1.0.1"
+
 ora@^0.2.3:
   version "0.2.3"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/ora/-/ora-0.2.3.tgz#37527d220adcd53c39b73571d754156d5db657a4"

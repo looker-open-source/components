@@ -5,6 +5,7 @@ const mkdir = util.promisify(require('fs').mkdir)
 const rimraf = util.promisify(require('rimraf'))
 const writeFile = util.promisify(require('fs').writeFile)
 const path = require('path')
+const ora = require('ora')
 
 // Paths to assets
 const iconFileHelpers = require('./icon_file_helpers')
@@ -132,10 +133,23 @@ async function updateChecksum() {
 
 // Step 5: Actually run everything in order
 async function run() {
+  const spinner = ora('Cleaning icons...')
+  spinner.color = 'magenta'
+  spinner.start()
   await cleanGlyphsAndComponents()
+  spinner.color = 'cyan'
+  spinner.text = 'Converting SVG to components...'
   await convertSVGToComponent()
+  spinner.color = 'green'
+  spinner.text = 'Generating Typescript Interfaces...'
   await generateTypescriptInterfaces()
+  spinner.color = 'blue'
+  spinner.text = 'Generating Typescript Components...'
   await generateLensTypescriptIconComponents()
+  spinner.color = 'white'
+  spinner.text = 'Updating checksum...'
   await updateChecksum()
+  spinner.succeed('Done building icons!')
+  spinner.stop()
 }
 run()
