@@ -6,6 +6,8 @@ const rimraf = util.promisify(require('rimraf'))
 const writeFile = util.promisify(require('fs').writeFile)
 const path = require('path')
 const ora = require('ora')
+const prettier = require('prettier')
+const prettierConfig = require('../../.prettierrc.json')
 
 // Paths to assets
 const iconFileHelpers = require('./icon_file_helpers')
@@ -112,7 +114,7 @@ async function generateLensTypescriptIconComponents() {
         iconFileHelpers.ICON_COMPONENTS_PATH,
         `Icon${name}.md`
       )
-      await writeFile(iconFilename, typescriptIconFileDefinition(name))
+      await writeFile(iconFilename, prettier.format(typescriptIconFileDefinition(name), Object.assign({}, prettierConfig, {parser: 'babylon'})))
       return await writeFile(iconMarkdownFile, styleguidistIconMarkdown(name))
     })
   )
