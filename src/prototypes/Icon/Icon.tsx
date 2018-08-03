@@ -36,12 +36,6 @@ import {
 } from '../../icons/IconList'
 import * as styles from './Icon.scss'
 
-import AddCirclez from '../../icons/AddCircle'
-
-function f() {
-  return <AddCirclez fill="blue" />
-}
-
 export const ICON_BUNDLE = {
   AddCircle,
   ArrowDropDown,

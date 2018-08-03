@@ -12,6 +12,8 @@
     "@babel/preset-env": "7.0.0-beta.44",
     "@babel/preset-react": "7.0.0-beta.44",
     "@babel/preset-typescript": "7.0.0-beta.44",
+    "@babel/runtime": "7.0.0-beta.44",
+    "@svgr/cli": "2.1.1",
     "@types/classnames": "2.2.3",
     "@types/jest": "22.2.2",
     "@types/react": "16.4.6",
@@ -19,10 +21,12 @@
     "@types/react-intl": "2.3.5",
     "@types/react-test-renderer": "16.0.1",
     "babel-jest": "22.4.3",
+    "babel-loader": "8.0.0-beta.4",
     "babel-plugin-looker-inline-sass": "1.0.4",
     "babel-preset-env": "1.6.1",
     "babel-preset-react": "6.24.1",
     "css-loader": "0.28.11",
+    "glob": "7.1.2",
     "identity-obj-proxy": "3.0.0",
     "jest": "22.4.3",
     "jest-styled-components": "5.0.1",
@@ -56,7 +60,6 @@
     "webpack": "3.5.0"
   },
   "dependencies": {
-    "@babel/runtime": "7.0.0-beta.44",
     "chroma-js": "^1.3.7",
     "classnames": "2.2.5",
     "insert-css": "2.0.0",
@@ -80,7 +83,7 @@
       "^.+\\.(css|scss)$": "identity-obj-proxy"
     },
     "transform": {
-      "^.+\\.js$": "babel-jest",
+      "^.+\\.(jsx)$": "babel-jest",
       "^.+\\.(ts|tsx)$": "ts-jest"
     },
     "testMatch": [
@@ -110,7 +113,8 @@
   "scripts": {
     "start": "styleguidist server",
     "build": "yarn build-components && yarn build-styleguide",
-    "build-components": "tsc --emitDeclarationOnly && babel src --out-dir dist --extensions \".ts,.tsx\"",
+    "build-icons": "node src/icons/scripts/build_icon_components.js",
+    "build-components": "tsc --emitDeclarationOnly && babel src --out-dir dist --extensions \".js,.jsx,.ts,.tsx\"",
     "build-styleguide": "styleguidist build",
     "clean": "rimraf dist && rimraf styleguide",
     "lint": "yarn lint:ts && yarn lint:css",
@@ -120,7 +124,7 @@
     "npmrc": "bin/create_npmrc.sh",
     "npmrc:clean": "rm .npmrc",
     "prepublishOnly": "yarn clean && yarn build-components",
-    "prettify": "yarn prettier \"src/**/*.ts?(x)\" --write",
+    "prettify": "yarn prettier \"src/**/*.ts?(x)\" \"src/**/*.js?(x)\" --write",
     "release": "npm publish",
     "setup": "ci/setup.sh",
     "test": "jest"

@@ -62,6 +62,10 @@ module.exports = {
       components: 'src/components/**/*.tsx'
     },
     {
+      name: 'Icons',
+      components: 'src/icons/components/*.tsx'
+    },
+    {
       name: 'Prototype Components',
       content: 'src/prototypes/prototypes.md',
       components: 'src/prototypes/**/*.tsx'
@@ -76,7 +80,13 @@ module.exports = {
       rules: [
         {
           test: /\.(ts|tsx)$/,
+          exclude: /node_modules/,
           loader: require.resolve('ts-loader')
+        },
+        {
+          test: /\.jsx?$/,
+          exclude: /node_modules/,
+          loader: 'babel-loader'
         },
         {
           test: /.scss$/,
