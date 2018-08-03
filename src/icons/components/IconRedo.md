@@ -1,0 +1,5 @@
+# IconRedo
+
+```js
+<IconRedo />
+```

@@ -1,0 +1,5 @@
+# IconDragHandle
+
+```js
+<IconDragHandle />
+```

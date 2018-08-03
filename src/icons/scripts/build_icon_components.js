@@ -21,6 +21,27 @@ export const Icon${ComponentName}: React.SFC<React.SVGAttributes<SVGElement>> = 
 `
 }
 
+function styleguidistIconMarkdown(ComponentName) {
+  return `# Icon${ComponentName}
+
+\`\`\`js
+<Icon${ComponentName} />
+\`\`\`
+`
+}
+
+function styleguidistAllIconsMarkdown(ComponentNames) {
+  const componentIconTags = ComponentNames.map(
+    name => `<Icon${name} width="40" height="40" />`
+  ).join('\n')
+  return `# All Icons
+
+\`\`\`js
+${componentIconTags}
+\`\`\`
+`
+}
+
 async function getBasenames(globpath, ext) {
   const filenames = await glob(path.join(globpath, `*.${ext}`))
   const basenames = filenames.map(n => path.basename(n, `.${ext}`))
@@ -48,13 +69,15 @@ async function generateTypescriptInterfaces() {
     iconFileHelpers.ICON_GLYPH_PATH,
     iconFileHelpers.ICON_GLYPH_EXTENSION
   )
-  basenames.forEach(async name => {
-    const declarationFilename = path.join(
-      iconFileHelpers.ICON_GLYPH_PATH,
-      `${name}.${TYPESCRIPT_DECLARATION_EXTENSION}`
-    )
-    await writeFile(declarationFilename, typescriptDeclaration)
-  })
+  await Promise.all(
+    basenames.map(async name => {
+      const declarationFilename = path.join(
+        iconFileHelpers.ICON_GLYPH_PATH,
+        `${name}.${TYPESCRIPT_DECLARATION_EXTENSION}`
+      )
+      return await writeFile(declarationFilename, typescriptDeclaration)
+    })
+  )
 }
 
 // Step 3: Generate Icon*.tsx component files from the icon component glyphs. These are the Typescript files Lens exports
@@ -64,13 +87,24 @@ async function generateLensTypescriptIconComponents() {
     iconFileHelpers.ICON_GLYPH_PATH,
     iconFileHelpers.ICON_GLYPH_EXTENSION
   )
-  basenames.forEach(async name => {
-    const iconFilename = path.join(
-      iconFileHelpers.ICON_COMPONENTS_PATH,
-      `Icon${name}.${TYPESCRIPT_COMPONENT_EXTENTION}`
-    )
-    await writeFile(iconFilename, typescriptIconFileDefinition(name))
-  })
+  await writeFile(
+    path.join(iconFileHelpers.ICON_COMPONENTS_PATH, 'ALL_ICONS.md'),
+    styleguidistAllIconsMarkdown(basenames)
+  )
+  await Promise.all(
+    basenames.map(async name => {
+      const iconFilename = path.join(
+        iconFileHelpers.ICON_COMPONENTS_PATH,
+        `Icon${name}.${TYPESCRIPT_COMPONENT_EXTENTION}`
+      )
+      const iconMarkdownFile = path.join(
+        iconFileHelpers.ICON_COMPONENTS_PATH,
+        `Icon${name}.md`
+      )
+      await writeFile(iconFilename, typescriptIconFileDefinition(name))
+      return await writeFile(iconMarkdownFile, styleguidistIconMarkdown(name))
+    })
+  )
 }
 
 // Step 4: Update the md5 checksum for the src/icons/svg directory to ensure

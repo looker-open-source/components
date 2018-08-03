@@ -1,0 +1,5 @@
+# IconExpandMore
+
+```js
+<IconExpandMore />
+```

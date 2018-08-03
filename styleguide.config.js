@@ -63,7 +63,8 @@ module.exports = {
     },
     {
       name: 'Icons',
-      components: 'src/icons/components/*.tsx'
+      components: 'src/icons/components/*.tsx',
+      content: 'src/icons/components/ALL_ICONS.md'
     }
   ],
   title: 'Lens',

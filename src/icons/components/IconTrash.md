@@ -1,0 +1,5 @@
+# IconTrash
+
+```js
+<IconTrash />
+```
