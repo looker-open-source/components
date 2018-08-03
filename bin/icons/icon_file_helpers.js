@@ -4,7 +4,7 @@ const util = require('util')
 const glob = util.promisify(require('glob'))
 const readFile = util.promisify(require('fs').readFile)
 
-const ICON_SRC_PATH = path.join(__dirname, '..')
+const ICON_SRC_PATH = path.join(__dirname, '..', '..', 'src', 'icons')
 const ICON_SVG_PATH = path.join(ICON_SRC_PATH, 'svg')
 const ICON_SVG_CHECKSUM_FILE_PATH = path.join(
   ICON_SRC_PATH,

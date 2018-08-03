@@ -1,5 +1,5 @@
 const checksum = require('./icon_checksum.json')
-const iconFileHelpers = require('./scripts/icon_file_helpers')
+const iconFileHelpers = require('../../bin/icons/icon_file_helpers')
 
 test('icon SVG directory checksum should match the icon checksum from the icon build process', async () => {
   const iconChecksum = await iconFileHelpers.getFilesChecksum(
