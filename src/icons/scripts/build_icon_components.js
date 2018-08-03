@@ -1,6 +1,8 @@
 const util = require('util')
 const exec = util.promisify(require('child_process').exec)
 const glob = util.promisify(require('glob'))
+const mkdir = util.promisify(require('fs').mkdir)
+const rimraf = util.promisify(require('rimraf'))
 const writeFile = util.promisify(require('fs').writeFile)
 const path = require('path')
 
@@ -47,6 +49,14 @@ async function getBasenames(globpath, ext) {
   const basenames = filenames.map(n => path.basename(n, `.${ext}`))
   basenames.sort()
   return basenames
+}
+
+// Step 0: clean up
+async function cleanGlyphsAndComponents() {
+  await rimraf(iconFileHelpers.ICON_GLYPH_PATH)
+  await rimraf(iconFileHelpers.ICON_COMPONENTS_PATH)
+  await mkdir(iconFileHelpers.ICON_GLYPH_PATH)
+  await mkdir(iconFileHelpers.ICON_COMPONENTS_PATH)
 }
 
 // Step 1: convert the SVG to React components using CLI `svgr` command.
@@ -122,6 +132,7 @@ async function updateChecksum() {
 
 // Step 5: Actually run everything in order
 async function run() {
+  await cleanGlyphsAndComponents()
   await convertSVGToComponent()
   await generateTypescriptInterfaces()
   await generateLensTypescriptIconComponents()
