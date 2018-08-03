@@ -34,7 +34,7 @@ All spacing for components align to a 8px grid, this grid allows for flexibility
     }
     return(
       <tr>
-      <td><Block style={divStyle}></Block></td>
+      <td><div style={divStyle}></div></td>
       <td>{t.px}px</td>
       <td>{t.rem}</td>
       <td><Text element="code" >{t.space}</Text></td>

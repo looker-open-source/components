@@ -13,8 +13,9 @@ exports[`A Card 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  overflow: hidden;
+  height: 100%;
   min-width: 200px;
+  overflow: hidden;
   -webkit-transition: border 150 ease;
   transition: border 150 ease;
 }
@@ -43,8 +44,9 @@ exports[`A raised Card 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  overflow: hidden;
+  height: 100%;
   min-width: 200px;
+  overflow: hidden;
   -webkit-transition: border 150 ease;
   transition: border 150 ease;
 }
@@ -73,8 +75,9 @@ exports[`A raised Card with a CardMedia block 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  overflow: hidden;
+  height: 100%;
   min-width: 200px;
+  overflow: hidden;
   -webkit-transition: border 150 ease;
   transition: border 150 ease;
 }
