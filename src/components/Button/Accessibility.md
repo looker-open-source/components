@@ -1,10 +1,8 @@
 # Accessibility
 
-
-
 ## Best Practices
 - Buttons **do not** open a new page, use links instead
-- Buttons can open dialogs and menus, but should use the proper ARIA properties
+- Buttons can open dialogs and menus, but should use the proper [ARIA attributes](#related-aria-attributes)
 
 ## Labeling Expectations
 - Use clear and descriptive labels. By default this is the text inside the `<Button>` component.
@@ -20,7 +18,7 @@
 - Buttons with focus should be activated when user hits the `ENTER` and `SPACEBAR` keys
 - If button has focus, `TAB` and `SHIFT+TAB` should move focus to next focusable element.
 
-## Aria Properties
+## Related Aria Attributes
 
 ### `aria-label`
 Use this to provide more context and an accessible label for `<Button>` components. **Must be** used for buttons with ambiguous labels and icon only buttons.
