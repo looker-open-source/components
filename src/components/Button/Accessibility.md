@@ -4,6 +4,9 @@
 - Buttons **do not** open a new page, use links instead
 - Buttons can open dialogs and menus, but should use the proper [ARIA attributes](#related-aria-attributes)
 
+## Markup Expectations
+- **Always** use the `<button>` element. This solves most of the accessibly concerns for free.
+
 ## Labeling Expectations
 - Use clear and descriptive labels. By default this is the text inside the `<Button>` component.
 - Ambiguous labels like "click here", "run", "save" are ok for sighted users but can lack context for users using assistive technology. Use the `aria-label` attribute to provide an accessible label for all `<Button>` components with potentially ambiguous labels.
