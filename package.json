@@ -114,7 +114,7 @@
     "start": "styleguidist server",
     "build": "yarn build-components && yarn build-styleguide",
     "build-icons": "node src/icons/scripts/build_icon_components.js",
-    "build-components": "tsc --emitDeclarationOnly && babel src --out-dir dist --extensions \".js,.jsx,.ts,.tsx\"",
+    "build-components": "tsc --emitDeclarationOnly && babel src --out-dir dist --extensions \".jsx,.ts,.tsx\"",
     "build-styleguide": "styleguidist build",
     "clean": "rimraf dist && rimraf styleguide",
     "lint": "yarn lint:ts && yarn lint:css",
