@@ -13,33 +13,30 @@
 
 ## Focus Expectations
 
-- Buttons with `:focus` should have an outline and/or a visible change to show it has focus/
+- Buttons with `:focus` should have an outline and/or a visible change to show it has focus.
 
 ## Keyboard Expectations
 
-- Buttons with focus should be activated with user hits the `ENTER` and `SPACEBAR` keys
+- Buttons with focus should be activated when user hits the `ENTER` and `SPACEBAR` keys
 - If button has focus, `TAB` and `SHIFT+TAB` should move focus to next focusable element.
 
 ## Aria Properties
 
 ### `aria-label`
-Use this to provide an accessible label for `<Button>` components. Good for buttons with ambiguous labels and icon buttons
+Use this to provide more context and an accessible label for `<Button>` components. **Must be** used for buttons with ambiguous labels and icon only buttons.
 
-For example `<Button aria-label="Save Dashboard">Save</Button>` would be announced as "Save Dashboard Button" by a screen reader instead of just "Save Button"
+For example `<Button aria-label="Save Dashboard">Save</Button>` would be announced as "Save Dashboard Button" by a screen reader instead of just "Save Button".
 
 ### `aria-haspopup`
 Use this to indicate that when the buttons is pressed a popup is triggered. A popup can be a dialog or menu.
 
-For example clicking an icon buttons to reveal a set of options in a context menu you do the following
+For example clicking an icon buttons to reveal a set of options in a context menu you do the following:
 
 ```
-<IconGearButton aria-haspopup="true">
+<IconGearButton aria-haspopup="true" aria-label="Look Settings">
 ```
+This would be announced as "Look Settings popup button" by a screen reader.
 
-If a button opens a modal dialog window you would the following
 
-```
-<Button aria-haspopup="dialog">New Schedule</Button>
-```
 
 
