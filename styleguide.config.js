@@ -64,11 +64,6 @@ module.exports = {
     {
       name: 'Icons',
       components: 'src/icons/components/*.tsx'
-    },
-    {
-      name: 'Prototype Components',
-      content: 'src/prototypes/prototypes.md',
-      components: 'src/prototypes/**/*.tsx'
     }
   ],
   title: 'Lens',
