@@ -28,7 +28,7 @@ For example `<Button aria-label="Save Dashboard">Save</Button>` would be announc
 ### `aria-haspopup`
 Use this to indicate that when the buttons is pressed a popup is triggered. A popup can be a dialog or menu.
 
-For example clicking an icon buttons to reveal a set of options in a context menu you do the following:
+For example say you have an icon-only button that reveals a set of options in a context menu when clicked, you would do the following:
 
 ```
 <IconGearButton aria-haspopup="true" aria-label="Look Settings">
