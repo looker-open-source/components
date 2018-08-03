@@ -1,13 +1,13 @@
 import {
   blue500,
-  fog300,
-  purple200,
-  purple300,
+  charcoal200,
+  purple000,
+  purple100,
   primary500,
   primary600,
   primary700,
-  red200,
-  red300,
+  red000,
+  red100,
   red500,
   red600,
   red700,
@@ -46,18 +46,18 @@ export interface ThemeColors {
 }
 
 export const themeColors: ThemeColors = {
-  borderColor: fog300,
+  borderColor: charcoal200,
   destructive: red500,
   destructiveDark: red600,
   destructiveDarker: red700,
-  destructiveLight: red300,
-  destructiveLighter: red200,
+  destructiveLight: red100,
+  destructiveLighter: red000,
   destructiveText: white,
   linkColor: blue500,
   primary: primary500,
   primaryDark: primary600,
   primaryDarker: primary700,
-  primaryLight: purple300,
-  primaryLighter: purple200,
+  primaryLight: purple100,
+  primaryLighter: purple000,
   primaryText: white
 }

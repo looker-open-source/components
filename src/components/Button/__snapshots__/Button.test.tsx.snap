@@ -108,7 +108,7 @@ exports[`Button variant transparent 1`] = `
 
 .c0:active,
 .c0.active {
-  background: #F1EBFF;
+  background: #F3F2FF;
   border-color: transparent;
   color: inherit;
 }

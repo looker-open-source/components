@@ -10,7 +10,7 @@ These guidelines lay a few ground rules on how to most effectively use color whe
 It is important to use color with intent. Color should support the content and not the other way around. Avoid only using color as a way to show intent.
 
 ### Respectful
-Use color to create heierachy and focus attention. Understand that color can have different cultural connotations. Be judicious and use color to draw attention to things the user should take action on.
+Use color to create hierarchy and focus attention. Understand that color can have different cultural connotations. Be judicious and use color to draw attention to things the user should take action on.
 
 ### Accessible
 We want Looker to be accessible to the widest audience possible. Our color palettes are designed to meet or exceed the accessibility guidelines.
@@ -60,10 +60,11 @@ checkContrast = (color) => {
 
 renderSwatch = (swatchList, key) => {
   let color = swatchList[0].group
+  let fillColor = swatchList[5].fill
   let fill = color.toLowerCase();
   return(
     <div className="swatch-holder" key={key}>
-      <div style={{background: `var(--lens-color-${fill})`}}>
+      <div className="swatch-header" style={{background: fillColor}}>
         <Text size="2" weight="semi-bold" style={{color:'#fff'}} >{color}</Text>
         <Text size="4" weight="semi-bold" style={{color:'#fff'}}>500</Text>
       </div>
@@ -77,15 +78,10 @@ renderSwatch = (swatchList, key) => {
 
 class Swatch extends React.Component {
   render(props) {
-
-    let modifier = this.props.children === '500' ? '' : `-${this.props.children}`
-    let bgColor = `${this.props.group}${modifier}`.toLowerCase()
-
     return(
-      <div className="swatch" style={{background: `var(--lens-color-${bgColor})`}}>
+      <div className="swatch" style={{background: this.props.hexValue}}>
         <Text className="swatch-label" weight="semi-bold" style={{color: this.props.labelColor}}>{this.props.children}</Text>
         <Text className="swatch-hex" weight="semi-bold" style={{color: this.props.labelColor}}>{this.props.hexValue}</Text>
-
         <div className="contrast-box">{this.props.contrastLevel}</div>
       </div>
     )
@@ -122,11 +118,10 @@ class SwatchRender extends React.Component{
 
   loadFile() {
 
-    let that = this;
     this.apiRequest('/files/' + this.state.file)
-    .then(function (response) {
-        let page = that.getComponentPage(response.document.children, that.state.page)
-        let pageSwatches = that.getComponentPage(page.children, that.state.frame)
+    .then((response) => {
+        let page = this.getComponentPage(response.document.children, this.state.page)
+        let pageSwatches = this.getComponentPage(page.children, this.state.frame)
         let swatchList = []
         let palettes = pageSwatches.children;
 
@@ -134,7 +129,7 @@ class SwatchRender extends React.Component{
           swatchList.push(checkContrast(palette))
         })
 
-        that.setState({
+        this.setState({
           swatches: swatchList
         })
     })
@@ -155,7 +150,6 @@ render() {
     )
   }
 }
-
 
 <SwatchRender />
 

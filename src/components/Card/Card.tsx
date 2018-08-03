@@ -4,7 +4,7 @@ import styled, { StyledComponentClass } from '../../styled_components'
 import { ThemeInterface } from '../../themes'
 export { React, StyledComponentClass, ThemeInterface }
 // End Typescript component boilerplate
-import { fog400 } from '../../styles/colors'
+import { charcoal300 } from '../../styles/colors'
 
 export interface CardProps {
   raised?: boolean
@@ -23,6 +23,6 @@ export const Card = styled<CardProps, 'div'>('div')`
   transition: border ${props => props.theme.transitions.durationShorter} ease;
 
   &:hover {
-    border-color: ${fog400};
+    border-color: ${charcoal300};
   }
 `

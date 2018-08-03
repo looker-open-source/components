@@ -8,7 +8,7 @@ exports[`An InputText 1`] = `
   font: inherit;
   font-size: 100%;
   vertical-align: baseline;
-  border: solid 1px #C8CBCC;
+  border: solid 1px #DEE1E5;
   height: 28px;
   padding: 0 0.5rem;
   border-radius: 4px;
