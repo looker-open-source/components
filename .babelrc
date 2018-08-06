@@ -1,7 +1,8 @@
-
 {
   "ignore": [
     "**/*.d.ts",
+    "**/*.test.js",
+    "**/*.test.jsx",
     "**/*.test.ts",
     "**/*.test.tsx"
   ],

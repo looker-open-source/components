@@ -1,0 +1,5 @@
+# IconChartLine
+
+```js
+<IconChartLine />
+```

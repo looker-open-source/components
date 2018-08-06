@@ -1,0 +1,5 @@
+# IconDotsVert
+
+```js
+<IconDotsVert />
+```

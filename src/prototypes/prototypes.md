@@ -1,5 +1,0 @@
-# 💥💥💥 
-
-# THESE COMPONENTS ARE UNSUPPORTED AND MAY BE REMOVED AT ANY TIME
-
-# 💥💥💥
