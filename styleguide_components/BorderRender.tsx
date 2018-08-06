@@ -81,7 +81,7 @@ export class BorderRender extends React.Component<
   {},
   { borders: BorderType[] }
 > {
-  constructor(props: object) {
+  constructor(props: {}) {
     super(props)
     this.state = {
       borders: [
