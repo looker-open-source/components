@@ -66,7 +66,7 @@ async function cleanGlyphsAndComponents() {
 // This by default converts all components to PascalCased filenames.
 async function convertSVGToComponent() {
   const result = await exec(
-    `yarn svgr --icon --ext ${iconFileHelpers.ICON_GLYPH_EXTENSION} -d ${
+    `yarn svgr --icon --ext ${iconFileHelpers.ICON_GLYPH_EXTENSION} --out-dir ${
       iconFileHelpers.ICON_GLYPH_PATH
     } ${iconFileHelpers.ICON_SVG_PATH}`
   )
