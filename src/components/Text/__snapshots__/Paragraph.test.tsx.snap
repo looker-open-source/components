@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`A Text component aligned 1`] = `
+exports[`A Paragraph component Aligned 1`] = `
 .c0 {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -13,14 +13,14 @@ exports[`A Text component aligned 1`] = `
   color: #262D33;
 }
 
-<div
+<p
   className="c0"
 >
-  🥑
-</div>
+  🥨 Yum yum!
+</p>
 `;
 
-exports[`A Text component resized 1`] = `
+exports[`A Paragraph component resized 1`] = `
 .c0 {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -33,15 +33,15 @@ exports[`A Text component resized 1`] = `
   color: #262D33;
 }
 
-<div
+<p
   className="c0"
   size="d2"
 >
-  🥑
-</div>
+  🥨
+</p>
 `;
 
-exports[`A Text component transformed 1`] = `
+exports[`A Paragraph component transformed 1`] = `
 .c0 {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -54,11 +54,51 @@ exports[`A Text component transformed 1`] = `
   color: #262D33;
 }
 
-<div
+<p
   className="c0"
 >
-  🥑
-</div>
+  🥨 Yum yum!
+</p>
+`;
+
+exports[`A Paragraph component with variant 1`] = `
+.c0 {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 400;
+  text-transform: none;
+  text-align: left;
+  color: #CC1F36;
+}
+
+<p
+  className="c0"
+>
+  🥨
+</p>
+`;
+
+exports[`A Paragrapht component weight 1`] = `
+.c0 {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 700;
+  text-transform: none;
+  text-align: left;
+  color: #262D33;
+}
+
+<p
+  className="c0"
+>
+  🥨
+</p>
 `;
 
 exports[`A Text component tuncated 1`] = `
@@ -77,54 +117,14 @@ exports[`A Text component tuncated 1`] = `
   color: #262D33;
 }
 
-<div
+<p
   className="c0"
 >
-  🥑
-</div>
+  🥨
+</p>
 `;
 
-exports[`A Text component weight 1`] = `
-.c0 {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  font-weight: 700;
-  text-transform: none;
-  text-align: left;
-  color: #262D33;
-}
-
-<div
-  className="c0"
->
-  🥑
-</div>
-`;
-
-exports[`A Text component with variant 1`] = `
-.c0 {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  font-weight: 400;
-  text-transform: none;
-  text-align: left;
-  color: #CC1F36;
-}
-
-<div
-  className="c0"
->
-  🥑
-</div>
-`;
-
-exports[`A default Text component 1`] = `
+exports[`A default Paragraph component 1`] = `
 .c0 {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -137,9 +137,9 @@ exports[`A default Text component 1`] = `
   color: #262D33;
 }
 
-<div
+<p
   className="c0"
 >
-  🥑
-</div>
+  🥨
+</p>
 `;
