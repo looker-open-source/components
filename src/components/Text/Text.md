@@ -4,9 +4,9 @@ By default the `<Text />` component will render text wrapped in a `<div>`,  if y
 
 ```js
 <Text>I get wrapped in a div</Text>
-<Text element="span">Wrapped in a span</Text>
-<Text element="p">Wrapped in a paragraph tag</Text>
-<Text element="code">Wrapped in a code tag</Text>
+<Span>Wrapped in a span</Span>
+<Paragraph>Wrapped in a paragraph tag</Paragraph>
+<Code>Wrapped in a code tag</Code>
 ```
 
 <div class="doc-section-divider"></div>
@@ -28,7 +28,7 @@ If you need to adjust the font-size of the rendered text, you can use the `size`
 Common patterns for text is to adjust the font weight and transform the text. Below is an example of using the `weight` and `transform` properties to modify the rendered text
 
 ```js
-  <Text size="six" transform="upper" weight="semi-bold">A great story</Text>
+  <Text size="six" transform="upper" weight="semiBold">A great story</Text>
   <Text size="d3" weight="light">This is a great headline</Text>
   <Text size="six" transform="caps">Some metadata about this story</Text>
 ```
@@ -56,11 +56,6 @@ You can use the `align` property to change the alignment of the rendered text, b
       <Text align="right">This is how you can right align text</Text>
     </CardContent>
   </Card>
-  <Card>
-    <CardContent>
-     <Text align="justify">In some cases you may want to justify the text, this is how</Text>
-    </CardContent>
-  </Card>
 </div>
 ```
 
@@ -72,10 +67,10 @@ Lens provides a few modes for the `<Text />` component based on common patterns 
 
 ```js
 <Text>Regular Text</Text>
-<Text mode="secondary">Secondary Text</Text>
-<Text mode="subdued">Subdued Text</Text>
-<Text mode="critical">Critical Text</Text>
-<Text mode="positive">Positive Text</Text>
+<Text variant="secondary">Secondary Text</Text>
+<Text variant="subdued">Subdued Text</Text>
+<Text variant="critical">Critical Text</Text>
+<Text variant="positive">Positive Text</Text>
 ```
 
 

@@ -8,6 +8,13 @@ import { truncate } from '../../styles/typography'
 import { lineHeights } from '../../styles/line_heights'
 import { fontWeights } from '../../styles/font_weights'
 import { RampSizes } from '../../styles/ramp_sizes'
+import {
+  red500,
+  green500,
+  charcoal900,
+  charcoal500,
+  charcoal400
+} from '../../styles/colors'
 
 export enum TextWeights {
   Bold = 'bold',
@@ -15,13 +22,6 @@ export enum TextWeights {
   Normal = 'normal',
   SemiBold = 'semiBold'
 }
-
-export enum TextElement {
-  P = 'p',
-  Span = 'span',
-  Code = 'code'
-}
-
 export enum TextTransforms {
   Caps = 'caps',
   Lower = 'lower',
@@ -42,12 +42,7 @@ export enum TextVariants {
   Subdued = 'subdued'
 }
 
-export interface TextGeneratorProps {
-  // Text wrapping element
-  element?: TextElement
-}
-
-export interface TextProps extends TextGeneratorProps {
+export interface TextProps {
   align?: TextAlignments
   variant?: TextVariants
   size?: RampSizes
@@ -78,6 +73,31 @@ function textTransform(transform: TextTransforms | undefined) {
   }
 }
 
+function textVariant(variant: TextVariants | undefined) {
+  switch (variant) {
+    case TextVariants.Critical:
+      return css`
+        color: ${red500};
+      `
+    case TextVariants.Positive:
+      return css`
+        color: ${green500};
+      `
+    case TextVariants.Secondary:
+      return css`
+        color: ${charcoal500};
+      `
+    case TextVariants.Subdued:
+      return css`
+        color: ${charcoal400};
+      `
+    default:
+      return css`
+        color: ${charcoal900};
+      `
+  }
+}
+
 function alignment(align: TextAlignments | undefined) {
   return css`
     text-align: ${align || TextAlignments.Left};
@@ -91,7 +111,8 @@ export const Text = styled<TextProps, 'div'>('div')`
   font-size: ${props => props.theme.fontRamp[props.size || RampSizes.Four]};
   line-height: ${props => lineHeights[props.size || RampSizes.Four]};
   font-weight: ${props => fontWeights[props.weight || TextWeights.Normal]};
-  ${props => textTransform(props.transform)}
-  ${props => alignment(props.align)}
-  ${props => truncate(props.truncate || false)}
+  ${props => textTransform(props.transform)};
+  ${props => alignment(props.align)};
+  ${props => truncate(props.truncate || false)};
+  ${props => textVariant(props.variant)};
 `

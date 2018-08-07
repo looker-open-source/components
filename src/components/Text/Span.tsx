@@ -7,4 +7,4 @@ export { ThemeInterface }
 
 import { Text, TextProps } from '../Text/Text'
 
-export const Paragraph = Text.withComponent('span')
+export const Span = Text.withComponent('span')
