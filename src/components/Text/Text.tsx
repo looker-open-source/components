@@ -46,7 +46,7 @@ export interface TextProps {
   align?: TextAlignments
   variant?: TextVariants
   size?: RampSizes
-  transform?: TextTransforms
+  textTransform?: TextTransforms
   truncate?: boolean
   weight?: TextWeights
 }
@@ -111,7 +111,7 @@ export const Text = styled<TextProps, 'div'>('div')`
   font-size: ${props => props.theme.fontRamp[props.size || RampSizes.Four]};
   line-height: ${props => lineHeights[props.size || RampSizes.Four]};
   font-weight: ${props => fontWeights[props.weight || TextWeights.Normal]};
-  ${props => textTransform(props.transform)};
+  ${props => textTransform(props.textTransform)};
   ${props => alignment(props.align)};
   ${props => truncate(props.truncate || false)};
   ${props => textVariant(props.variant)};

@@ -1,7 +1,6 @@
 import * as React from 'react'
 import {
   Text,
-  TextElement,
   TextTransforms,
   TextWeights,
   TextAlignments,
@@ -12,18 +11,6 @@ import { createWithTheme } from '../../../test/utils/create_with_theme'
 
 test('A default Text component', () => {
   const component = createWithTheme(<Text>🥑</Text>)
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
-})
-
-test('A span Text component', () => {
-  const component = createWithTheme(<Text element={TextElement.Span}>🥑</Text>)
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
-})
-
-test('A code Text component', () => {
-  const component = createWithTheme(<Text element={TextElement.Code}>🥑</Text>)
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
 })
@@ -56,7 +43,7 @@ test('A Text component with variant', () => {
 
 test('A Text component transformed', () => {
   const component = createWithTheme(
-    <Text transform={TextTransforms.Upper}>🥑</Text>
+    <Text textTransform={TextTransforms.Upper}>🥑</Text>
   )
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
