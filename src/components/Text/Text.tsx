@@ -1,7 +1,3 @@
-// import * as React from 'react'
-// const classNames = require('classnames')
-// import * as styles from './Text.scss'
-
 import * as React from 'react'
 import styled, { css, StyledComponentClass } from '../../styled_components'
 export { StyledComponentClass }
@@ -60,36 +56,6 @@ export interface TextProps extends TextGeneratorProps {
   weight?: TextWeights
 }
 
-/**
- * Headings are used to help users understand  what a major section of an interface is about, for example the labeling
- * of a page or a title of a card component.
- */
-const TextGenerator: React.SFC<TextProps> = ({ element, ...args }) => {
-  // This prevents our props from being passed directly to the underlying h* tags, which ultimately
-  // would cause some warnings. Ideally we would define the return type for this function, and
-  // Typescript would warn us when passing props that are invalid.
-  //
-  // See https://reactjs.org/warnings/unknown-prop.html
-  const props = Object.assign({}, args)
-  delete props.align
-  delete props.size
-  delete props.transform
-  delete props.truncate
-  delete props.weight
-  delete props.weight
-
-  switch (element) {
-    case TextElement.Code:
-      return <code {...props}>{props.children}</code>
-    case TextElement.P:
-      return <p {...props}>{props.children}</p>
-    case TextElement.Span:
-      return <span {...props}>{props.children}</span>
-    default:
-      return <div {...props}>{props.children}</div>
-  }
-}
-
 function textTransform(transform: TextTransforms | undefined) {
   switch (transform) {
     case TextTransforms.Upper:
@@ -118,7 +84,7 @@ function alignment(align: TextAlignments | undefined) {
   `
 }
 
-export const Text = styled<TextProps>(TextGenerator)`
+export const Text = styled<TextProps, 'div'>('div')`
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
