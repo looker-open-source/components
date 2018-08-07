@@ -1,0 +1,5 @@
+# IconChartBubble
+
+```js
+<IconChartBubble />
+```

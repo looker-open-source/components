@@ -1,0 +1,5 @@
+# IconChartMulti
+
+```js
+<IconChartMulti />
+```

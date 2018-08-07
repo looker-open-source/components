@@ -1,0 +1,5 @@
+# IconChartBar
+
+```js
+<IconChartBar />
+```

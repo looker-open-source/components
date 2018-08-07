@@ -1,0 +1,5 @@
+# IconExternal
+
+```js
+<IconExternal />
+```

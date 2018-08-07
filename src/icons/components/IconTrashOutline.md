@@ -1,0 +1,5 @@
+# IconTrashOutline
+
+```js
+<IconTrashOutline />
+```

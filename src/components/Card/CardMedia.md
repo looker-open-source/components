@@ -5,7 +5,7 @@ A common pattern for `Cards` is to display an image that reinforces what the con
 The `CardMedia` component accepts and `image` property that will render the image as a background image and the optional `title` property used to give the image an accessible title if needed.
 
 ```js
-<CardGroup>
+<div>
   <Card>
     <CardMedia image="http://fillmurray.com/200/300" title="Bill 1"></CardMedia>
     <CardContent>
@@ -19,5 +19,5 @@ The `CardMedia` component accepts and `image` property that will render the imag
       <Heading>Another Bill spoting</Heading>
     </CardContent>
   </Card>
-</CardGroup>
+</div>
 ```
