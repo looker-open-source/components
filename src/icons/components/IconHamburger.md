@@ -1,0 +1,5 @@
+# IconHamburger
+
+```js
+<IconHamburger />
+```

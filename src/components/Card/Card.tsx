@@ -4,7 +4,7 @@ import styled, { StyledComponentClass } from '../../styled_components'
 import { ThemeInterface } from '../../themes'
 export { React, StyledComponentClass, ThemeInterface }
 // End Typescript component boilerplate
-import { fog400 } from '../../styles/colors'
+import { charcoal300 } from '../../styles/colors'
 
 export interface CardProps {
   raised?: boolean
@@ -17,11 +17,12 @@ export const Card = styled<CardProps, 'div'>('div')`
   border: solid 1px ${props => props.theme.colors.borderColor};
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  height: 100%;
   min-width: 200px;
+  overflow: hidden;
   transition: border ${props => props.theme.transitions.durationShorter} ease;
 
   &:hover {
-    border-color: ${fog400};
+    border-color: ${charcoal300};
   }
 `

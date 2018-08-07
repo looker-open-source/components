@@ -710,6 +710,29 @@
   dependencies:
     any-observable "^0.3.0"
 
+"@svgr/cli@2.1.1":
+  version "2.1.1"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/@svgr/cli/-/cli-2.1.1.tgz#be5027bcacb0efdc95adb1ef8a6a329383af669d"
+  dependencies:
+    "@svgr/core" "^2.1.1"
+    chalk "^2.4.1"
+    commander "^2.16.0"
+    glob "^7.1.2"
+    lodash "^4.17.10"
+    output-file-sync "^2.0.1"
+    recursive-readdir "^2.2.2"
+
+"@svgr/core@^2.1.1":
+  version "2.1.1"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/@svgr/core/-/core-2.1.1.tgz#e241576eeb42142a971c07dd83c10a0e60928cdc"
+  dependencies:
+    cosmiconfig "^5.0.5"
+    h2x-core "^1.0.0"
+    h2x-plugin-jsx "^1.0.0"
+    lodash "^4.17.10"
+    prettier "^1.13.7"
+    svgo "^1.0.5"
+
 "@types/classnames@2.2.3":
   version "2.2.3"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/@types/classnames/-/classnames-2.2.3.tgz#3f0ff6873da793870e20a260cada55982f38a9e5"
@@ -760,6 +783,10 @@
 abab@^1.0.4:
   version "1.0.4"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/abab/-/abab-1.0.4.tgz#5faad9c2c07f60dd76770f71cf025b62a63cfd4e"
+
+abab@^2.0.0:
+  version "2.0.0"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/abab/-/abab-2.0.0.tgz#aba0ab4c5eee2d4c79d3487d85450fb2376ebb0f"
 
 abbrev@1:
   version "1.1.1"
@@ -1307,6 +1334,15 @@ babel-jest@22.4.3, babel-jest@^22.4.3:
     babel-plugin-istanbul "^4.1.5"
     babel-preset-jest "^22.4.3"
 
+babel-loader@8.0.0-beta.4:
+  version "8.0.0-beta.4"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/babel-loader/-/babel-loader-8.0.0-beta.4.tgz#c3fab00696c385c70c04dbe486391f0eb996f345"
+  dependencies:
+    find-cache-dir "^1.0.0"
+    loader-utils "^1.0.2"
+    mkdirp "^0.5.1"
+    util.promisify "^1.0.0"
+
 babel-messages@^6.23.0:
   version "6.23.0"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/babel-messages/-/babel-messages-6.23.0.tgz#f3cdf4703858035b2a2951c6ec5edf6c62f2630e"
@@ -1811,6 +1847,10 @@ bonjour@^3.5.0:
     dns-txt "^2.0.2"
     multicast-dns "^6.0.1"
     multicast-dns-service-types "^1.1.0"
+
+boolbase@^1.0.0, boolbase@~1.0.0:
+  version "1.0.0"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
 
 boom@2.x.x:
   version "2.10.1"
@@ -2345,6 +2385,12 @@ coa@~1.0.1:
   dependencies:
     q "^1.1.2"
 
+coa@~2.0.1:
+  version "2.0.1"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/coa/-/coa-2.0.1.tgz#f3f8b0b15073e35d70263fb1042cb2c023db38af"
+  dependencies:
+    q "^1.1.2"
+
 code-point-at@^1.0.0:
   version "1.1.0"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/code-point-at/-/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"
@@ -2414,7 +2460,7 @@ combined-stream@1.0.6, combined-stream@^1.0.5, combined-stream@~1.0.5:
   dependencies:
     delayed-stream "~1.0.0"
 
-commander@^2.12.1, commander@^2.14.1:
+commander@^2.12.1, commander@^2.14.1, commander@^2.16.0:
   version "2.16.0"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/commander/-/commander-2.16.0.tgz#f16390593996ceb4f3eeb020b31d78528f7f8a50"
 
@@ -2567,7 +2613,7 @@ core-util-is@1.0.2, core-util-is@~1.0.0:
   version "1.0.2"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/core-util-is/-/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
 
-cosmiconfig@^5.0.0, cosmiconfig@^5.0.2:
+cosmiconfig@^5.0.0, cosmiconfig@^5.0.2, cosmiconfig@^5.0.5:
   version "5.0.5"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/cosmiconfig/-/cosmiconfig-5.0.5.tgz#a809e3c2306891ce17ab70359dc8bdf661fe2cd0"
   dependencies:
@@ -2693,6 +2739,19 @@ css-loader@0.28.11, css-loader@^0.28.11:
     postcss-value-parser "^3.3.0"
     source-list-map "^2.0.0"
 
+css-select-base-adapter@~0.1.0:
+  version "0.1.0"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/css-select-base-adapter/-/css-select-base-adapter-0.1.0.tgz#0102b3d14630df86c3eb9fa9f5456270106cf990"
+
+css-select@~1.3.0-rc0:
+  version "1.3.0-rc0"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/css-select/-/css-select-1.3.0-rc0.tgz#6f93196aaae737666ea1036a8cb14a8fcb7a9231"
+  dependencies:
+    boolbase "^1.0.0"
+    css-what "2.1"
+    domutils "1.5.1"
+    nth-check "^1.0.1"
+
 css-selector-tokenizer@^0.7.0:
   version "0.7.0"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/css-selector-tokenizer/-/css-selector-tokenizer-0.7.0.tgz#e6988474ae8c953477bf5e7efecfceccd9cf4c86"
@@ -2708,6 +2767,28 @@ css-to-react-native@^2.0.3:
     css-color-keywords "^1.0.0"
     fbjs "^0.8.5"
     postcss-value-parser "^3.3.0"
+
+css-tree@1.0.0-alpha.29:
+  version "1.0.0-alpha.29"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/css-tree/-/css-tree-1.0.0-alpha.29.tgz#3fa9d4ef3142cbd1c301e7664c1f352bd82f5a39"
+  dependencies:
+    mdn-data "~1.1.0"
+    source-map "^0.5.3"
+
+css-tree@1.0.0-alpha25:
+  version "1.0.0-alpha25"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/css-tree/-/css-tree-1.0.0-alpha25.tgz#1bbfabfbf6eeef4f01d9108ff2edd0be2fe35597"
+  dependencies:
+    mdn-data "^1.0.0"
+    source-map "^0.5.3"
+
+css-url-regex@^1.1.0:
+  version "1.1.0"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/css-url-regex/-/css-url-regex-1.1.0.tgz#83834230cc9f74c457de59eebd1543feeb83b7ec"
+
+css-what@2.1:
+  version "2.1.0"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/css-what/-/css-what-2.1.0.tgz#9467d032c38cfaefb9f2d79501253062f87fa1bd"
 
 css@^2.2.1:
   version "2.2.3"
@@ -2759,6 +2840,12 @@ cssnano@^3.10.0:
     postcss-value-parser "^3.2.3"
     postcss-zindex "^2.0.1"
 
+csso@^3.5.0:
+  version "3.5.1"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/csso/-/csso-3.5.1.tgz#7b9eb8be61628973c1b261e169d2f024008e758b"
+  dependencies:
+    css-tree "1.0.0-alpha.29"
+
 csso@~2.3.1:
   version "2.3.2"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/csso/-/csso-2.3.2.tgz#ddd52c587033f49e94b71fc55569f252e8ff5f85"
@@ -2773,6 +2860,12 @@ cssom@0.3.x, "cssom@>= 0.3.2 < 0.4.0":
 "cssstyle@>= 0.2.37 < 0.3.0":
   version "0.2.37"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/cssstyle/-/cssstyle-0.2.37.tgz#541097234cb2513c83ceed3acddc27ff27987d54"
+  dependencies:
+    cssom "0.3.x"
+
+cssstyle@^1.0.0:
+  version "1.0.0"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/cssstyle/-/cssstyle-1.0.0.tgz#79b16d51ec5591faec60e688891f15d2a5705129"
   dependencies:
     cssom "0.3.x"
 
@@ -3056,7 +3149,7 @@ domelementtype@~1.1.1:
   version "1.1.3"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/domelementtype/-/domelementtype-1.1.3.tgz#bd28773e2642881aec51544924299c5cd822185b"
 
-domexception@^1.0.0:
+domexception@^1.0.0, domexception@^1.0.1:
   version "1.0.1"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/domexception/-/domexception-1.0.1.tgz#937442644ca6a31261ef36e3ec677fe805582c90"
   dependencies:
@@ -3066,6 +3159,13 @@ domhandler@^2.3.0:
   version "2.4.2"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/domhandler/-/domhandler-2.4.2.tgz#8805097e933d65e85546f726d60f5eb88b44f803"
   dependencies:
+    domelementtype "1"
+
+domutils@1.5.1:
+  version "1.5.1"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/domutils/-/domutils-1.5.1.tgz#dcd8488a26f563d61079e48c9f7b7e32373682cf"
+  dependencies:
+    dom-serializer "0"
     domelementtype "1"
 
 domutils@^1.5.1:
@@ -3186,6 +3286,16 @@ error-ex@^1.3.1:
 es-abstract@^1.5.1, es-abstract@^1.7.0:
   version "1.11.0"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/es-abstract/-/es-abstract-1.11.0.tgz#cce87d518f0496893b1a30cd8461835535480681"
+  dependencies:
+    es-to-primitive "^1.1.1"
+    function-bind "^1.1.1"
+    has "^1.0.1"
+    is-callable "^1.1.3"
+    is-regex "^1.0.4"
+
+es-abstract@^1.6.1:
+  version "1.12.0"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/es-abstract/-/es-abstract-1.12.0.tgz#9dbbdd27c6856f0001421ca18782d786bf8a6165"
   dependencies:
     es-to-primitive "^1.1.1"
     function-bind "^1.1.1"
@@ -3839,7 +3949,7 @@ fstream@^1.0.0, fstream@^1.0.10, fstream@^1.0.2:
     mkdirp ">=0.5 0"
     rimraf "2"
 
-function-bind@^1.0.2, function-bind@^1.1.1:
+function-bind@^1.0.2, function-bind@^1.1.0, function-bind@^1.1.1:
   version "1.1.1"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/function-bind/-/function-bind-1.1.1.tgz#a56899d3ea3c9bab874bb9773b7c5ede92f4895d"
 
@@ -3948,17 +4058,7 @@ glob2base@^0.0.12:
   dependencies:
     find-index "^0.1.1"
 
-glob@^6.0.4:
-  version "6.0.4"
-  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/glob/-/glob-6.0.4.tgz#0f08860f6a155127b2fadd4f9ce24b1aab6e4d22"
-  dependencies:
-    inflight "^1.0.4"
-    inherits "2"
-    minimatch "2 || 3"
-    once "^1.3.0"
-    path-is-absolute "^1.0.0"
-
-glob@^7.0.0, glob@^7.0.3, glob@^7.0.5, glob@^7.1.1, glob@^7.1.2, glob@~7.1.1:
+glob@7.1.2, glob@^7.0.0, glob@^7.0.3, glob@^7.0.5, glob@^7.1.1, glob@^7.1.2, glob@~7.1.1:
   version "7.1.2"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/glob/-/glob-7.1.2.tgz#c19c9df9a028702d678612384a6552404c636d15"
   dependencies:
@@ -3966,6 +4066,16 @@ glob@^7.0.0, glob@^7.0.3, glob@^7.0.5, glob@^7.1.1, glob@^7.1.2, glob@~7.1.1:
     inflight "^1.0.4"
     inherits "2"
     minimatch "^3.0.4"
+    once "^1.3.0"
+    path-is-absolute "^1.0.0"
+
+glob@^6.0.4:
+  version "6.0.4"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/glob/-/glob-6.0.4.tgz#0f08860f6a155127b2fadd4f9ce24b1aab6e4d22"
+  dependencies:
+    inflight "^1.0.4"
+    inherits "2"
+    minimatch "2 || 3"
     once "^1.3.0"
     path-is-absolute "^1.0.0"
 
@@ -4080,6 +4190,43 @@ gzip-size@3.0.0:
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/gzip-size/-/gzip-size-3.0.0.tgz#546188e9bdc337f673772f81660464b389dce520"
   dependencies:
     duplexer "^0.1.1"
+
+h2x-core@^1.0.0:
+  version "1.0.0"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/h2x-core/-/h2x-core-1.0.0.tgz#5135fda1a8688ebc8ce2450d89f1dc6837511e7b"
+  dependencies:
+    h2x-generate "^1.0.0"
+    h2x-parse "^1.0.0"
+    h2x-traverse "^1.0.0"
+
+h2x-generate@^1.0.0:
+  version "1.0.0"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/h2x-generate/-/h2x-generate-1.0.0.tgz#72e8020ecede3e589f7acab81e85a8346cc54126"
+  dependencies:
+    h2x-traverse "^1.0.0"
+
+h2x-parse@^1.0.0:
+  version "1.0.0"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/h2x-parse/-/h2x-parse-1.0.0.tgz#3d377642d6d5f5e3fa9940e3620f11ba2d072e99"
+  dependencies:
+    h2x-types "^1.0.0"
+    jsdom "^11.10.0"
+
+h2x-plugin-jsx@^1.0.0:
+  version "1.0.0"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/h2x-plugin-jsx/-/h2x-plugin-jsx-1.0.0.tgz#9307cc58d75bd241f6c25aef152501fda2bdf43d"
+  dependencies:
+    h2x-types "^1.0.0"
+
+h2x-traverse@^1.0.0:
+  version "1.0.0"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/h2x-traverse/-/h2x-traverse-1.0.0.tgz#6f651d41f14e3b4362ea2a909213a43511982de1"
+  dependencies:
+    h2x-types "^1.0.0"
+
+h2x-types@^1.0.0:
+  version "1.0.0"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/h2x-types/-/h2x-types-1.0.0.tgz#4822816ffddf51e4a383aa00594770e8ce230d1f"
 
 handle-thing@^1.2.5:
   version "1.2.5"
@@ -5243,6 +5390,13 @@ js-yaml@^3.9.0:
     argparse "^1.0.7"
     esprima "^4.0.0"
 
+js-yaml@~3.10.0:
+  version "3.10.0"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/js-yaml/-/js-yaml-3.10.0.tgz#2e78441646bd4682e963f22b6e92823c309c62dc"
+  dependencies:
+    argparse "^1.0.7"
+    esprima "^4.0.0"
+
 js-yaml@~3.7.0:
   version "3.7.0"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/js-yaml/-/js-yaml-3.7.0.tgz#5c967ddd837a9bfdca5f2de84253abe8a1c03b80"
@@ -5253,6 +5407,37 @@ js-yaml@~3.7.0:
 jsbn@~0.1.0:
   version "0.1.1"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/jsbn/-/jsbn-0.1.1.tgz#a5e654c2e5a2deb5f201d96cefbca80c0ef2f513"
+
+jsdom@^11.10.0:
+  version "11.12.0"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/jsdom/-/jsdom-11.12.0.tgz#1a80d40ddd378a1de59656e9e6dc5a3ba8657bc8"
+  dependencies:
+    abab "^2.0.0"
+    acorn "^5.5.3"
+    acorn-globals "^4.1.0"
+    array-equal "^1.0.0"
+    cssom ">= 0.3.2 < 0.4.0"
+    cssstyle "^1.0.0"
+    data-urls "^1.0.0"
+    domexception "^1.0.1"
+    escodegen "^1.9.1"
+    html-encoding-sniffer "^1.0.2"
+    left-pad "^1.3.0"
+    nwsapi "^2.0.7"
+    parse5 "4.0.0"
+    pn "^1.1.0"
+    request "^2.87.0"
+    request-promise-native "^1.0.5"
+    sax "^1.2.4"
+    symbol-tree "^3.2.2"
+    tough-cookie "^2.3.4"
+    w3c-hr-time "^1.0.1"
+    webidl-conversions "^4.0.2"
+    whatwg-encoding "^1.0.3"
+    whatwg-mimetype "^2.1.0"
+    whatwg-url "^6.4.1"
+    ws "^5.2.0"
+    xml-name-validator "^3.0.0"
 
 jsdom@^11.5.1:
   version "11.8.0"
@@ -5436,7 +5621,7 @@ lcid@^1.0.0:
   dependencies:
     invert-kv "^1.0.0"
 
-left-pad@^1.2.0:
+left-pad@^1.2.0, left-pad@^1.3.0:
   version "1.3.0"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/left-pad/-/left-pad-1.3.0.tgz#5b8a3a7765dfe001261dde915589e782f8c94d1e"
 
@@ -5631,6 +5816,10 @@ lodash@^4.0.0, lodash@^4.13.1, lodash@^4.14.0, lodash@^4.17.2, lodash@^4.17.4, l
   version "4.17.5"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/lodash/-/lodash-4.17.5.tgz#99a92d65c0272debe8c96b6057bc8fbfa3bed511"
 
+lodash@^4.17.10:
+  version "4.17.10"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/lodash/-/lodash-4.17.10.tgz#1b7793cf7259ea38fb3661d4d38b3260af8ae4e7"
+
 log-symbols@^1.0.2:
   version "1.0.2"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/log-symbols/-/log-symbols-1.0.2.tgz#376ff7b58ea3086a0f09facc74617eca501e1a18"
@@ -5762,6 +5951,10 @@ mdast-util-compact@^1.0.0:
   dependencies:
     unist-util-modify-children "^1.0.0"
     unist-util-visit "^1.1.0"
+
+mdn-data@^1.0.0, mdn-data@~1.1.0:
+  version "1.1.4"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/mdn-data/-/mdn-data-1.1.4.tgz#50b5d4ffc4575276573c4eedb8780812a8419f01"
 
 media-typer@0.3.0:
   version "0.3.0"
@@ -5910,7 +6103,7 @@ minimalistic-crypto-utils@^1.0.0, minimalistic-crypto-utils@^1.0.1:
   version "1.0.1"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/minimalistic-crypto-utils/-/minimalistic-crypto-utils-1.0.1.tgz#f6c00c1c0b082246e5c4d99dfb8c7c083b2b582a"
 
-"minimatch@2 || 3", minimatch@^3.0.0, minimatch@^3.0.2, minimatch@^3.0.3, minimatch@^3.0.4, minimatch@~3.0.2:
+"minimatch@2 || 3", minimatch@3.0.4, minimatch@^3.0.0, minimatch@^3.0.2, minimatch@^3.0.3, minimatch@^3.0.4, minimatch@~3.0.2:
   version "3.0.4"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/minimatch/-/minimatch-3.0.4.tgz#5166e286457f03306064be5497e8dbb0c3d32083"
   dependencies:
@@ -6241,6 +6434,12 @@ npm-which@^3.0.1:
     gauge "~2.7.3"
     set-blocking "~2.0.0"
 
+nth-check@^1.0.1:
+  version "1.0.1"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/nth-check/-/nth-check-1.0.1.tgz#9929acdf628fc2c41098deab82ac580cf149aae4"
+  dependencies:
+    boolbase "~1.0.0"
+
 num2fraction@^1.2.2:
   version "1.2.2"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/num2fraction/-/num2fraction-1.2.2.tgz#6f682b6a027a4e9ddfa4564cd2589d1d4e669ede"
@@ -6252,6 +6451,10 @@ number-is-nan@^1.0.0:
 nwmatcher@^1.4.3:
   version "1.4.4"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/nwmatcher/-/nwmatcher-1.4.4.tgz#2285631f34a95f0d0395cd900c96ed39b58f346e"
+
+nwsapi@^2.0.7:
+  version "2.0.8"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/nwsapi/-/nwsapi-2.0.8.tgz#e3603579b7e162b3dbedae4fb24e46f771d8fa24"
 
 oauth-sign@~0.8.1, oauth-sign@~0.8.2:
   version "0.8.2"
@@ -6298,6 +6501,15 @@ object.pick@^1.3.0:
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/object.pick/-/object.pick-1.3.0.tgz#87a10ac4c1694bd2e1cbf53591a66141fb5dd747"
   dependencies:
     isobject "^3.0.1"
+
+object.values@^1.0.4:
+  version "1.0.4"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/object.values/-/object.values-1.0.4.tgz#e524da09b4f66ff05df457546ec72ac99f13069a"
+  dependencies:
+    define-properties "^1.1.2"
+    es-abstract "^1.6.1"
+    function-bind "^1.1.0"
+    has "^1.0.1"
 
 obuf@^1.0.0, obuf@^1.1.1:
   version "1.1.2"
@@ -6358,6 +6570,17 @@ optionator@^0.8.1:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
     wordwrap "~1.0.0"
+
+ora@3.0.0:
+  version "3.0.0"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/ora/-/ora-3.0.0.tgz#8179e3525b9aafd99242d63cc206fd64732741d0"
+  dependencies:
+    chalk "^2.3.1"
+    cli-cursor "^2.1.0"
+    cli-spinners "^1.1.0"
+    log-symbols "^2.2.0"
+    strip-ansi "^4.0.0"
+    wcwidth "^1.0.1"
 
 ora@^0.2.3:
   version "0.2.3"
@@ -6422,7 +6645,7 @@ osenv@0, osenv@^0.1.4:
     os-homedir "^1.0.0"
     os-tmpdir "^1.0.0"
 
-output-file-sync@^2.0.0:
+output-file-sync@^2.0.0, output-file-sync@^2.0.1:
   version "2.0.1"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/output-file-sync/-/output-file-sync-2.0.1.tgz#f53118282f5f553c2799541792b723a4c71430c0"
   dependencies:
@@ -7022,6 +7245,10 @@ prettier@1.13.7:
   version "1.13.7"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/prettier/-/prettier-1.13.7.tgz#850f3b8af784a49a6ea2d2eaa7ed1428a34b7281"
 
+prettier@^1.13.7:
+  version "1.14.0"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/prettier/-/prettier-1.14.0.tgz#847c235522035fd988100f1f43cf20a7d24f9372"
+
 pretty-format@^22.4.3:
   version "22.4.3"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/pretty-format/-/pretty-format-22.4.3.tgz#f873d780839a9c02e9664c8a082e9ee79eaac16f"
@@ -7087,6 +7314,10 @@ prr@~1.0.1:
 pseudomap@^1.0.2:
   version "1.0.2"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/pseudomap/-/pseudomap-1.0.2.tgz#f052a28da70e618917ef0a8ac34c1ae5a68286b3"
+
+psl@^1.1.24:
+  version "1.1.28"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/psl/-/psl-1.1.28.tgz#4fb6ceb08a1e2214d4fd4de0ca22dae13740bc7b"
 
 public-encrypt@^4.0.0:
   version "4.0.2"
@@ -7482,6 +7713,12 @@ recursive-readdir@2.2.1:
   dependencies:
     minimatch "3.0.3"
 
+recursive-readdir@^2.2.2:
+  version "2.2.2"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/recursive-readdir/-/recursive-readdir-2.2.2.tgz#9946fb3274e1628de6e36b2f6714953b4845094f"
+  dependencies:
+    minimatch "3.0.4"
+
 redent@^1.0.0:
   version "1.0.0"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/redent/-/redent-1.0.0.tgz#cf916ab1fd5f1f16dfb20822dd6ec7f730c2afde"
@@ -7735,6 +7972,31 @@ request@2.81.0:
     tunnel-agent "^0.6.0"
     uuid "^3.0.0"
 
+request@^2.87.0:
+  version "2.87.0"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/request/-/request-2.87.0.tgz#32f00235cd08d482b4d0d68db93a829c0ed5756e"
+  dependencies:
+    aws-sign2 "~0.7.0"
+    aws4 "^1.6.0"
+    caseless "~0.12.0"
+    combined-stream "~1.0.5"
+    extend "~3.0.1"
+    forever-agent "~0.6.1"
+    form-data "~2.3.1"
+    har-validator "~5.0.3"
+    http-signature "~1.2.0"
+    is-typedarray "~1.0.0"
+    isstream "~0.1.2"
+    json-stringify-safe "~5.0.1"
+    mime-types "~2.1.17"
+    oauth-sign "~0.8.2"
+    performance-now "^2.1.0"
+    qs "~6.5.1"
+    safe-buffer "^5.1.1"
+    tough-cookie "~2.3.3"
+    tunnel-agent "^0.6.0"
+    uuid "^3.1.0"
+
 request@~2.79.0:
   version "2.79.0"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/request/-/request-2.79.0.tgz#4dfe5bf6be8b8cdc37fcf93e04b65577722710de"
@@ -7919,7 +8181,7 @@ sass-loader@6.0.7:
     neo-async "^2.5.0"
     pify "^3.0.0"
 
-sax@^1.2.4, sax@~1.2.1:
+sax@^1.2.4, sax@~1.2.1, sax@~1.2.4:
   version "1.2.4"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/sax/-/sax-1.2.4.tgz#2816234e2378bddc4e5354fab5caa895df7100d9"
 
@@ -8313,6 +8575,10 @@ ssri@^5.2.4:
   dependencies:
     safe-buffer "^5.1.1"
 
+stable@~0.1.6:
+  version "0.1.8"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/stable/-/stable-0.1.8.tgz#836eb3c8382fe2936feaf544631017ce7d47a3cf"
+
 stack-utils@^1.0.1:
   version "1.0.1"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/stack-utils/-/stack-utils-1.0.1.tgz#d4f33ab54e8e38778b0ca5cfd3b3afb12db68620"
@@ -8650,6 +8916,25 @@ svgo@^0.7.0:
     sax "~1.2.1"
     whet.extend "~0.9.9"
 
+svgo@^1.0.5:
+  version "1.0.5"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/svgo/-/svgo-1.0.5.tgz#7040364c062a0538abacff4401cea6a26a7a389a"
+  dependencies:
+    coa "~2.0.1"
+    colors "~1.1.2"
+    css-select "~1.3.0-rc0"
+    css-select-base-adapter "~0.1.0"
+    css-tree "1.0.0-alpha25"
+    css-url-regex "^1.1.0"
+    csso "^3.5.0"
+    js-yaml "~3.10.0"
+    mkdirp "~0.5.1"
+    object.values "^1.0.4"
+    sax "~1.2.4"
+    stable "~0.1.6"
+    unquote "~1.1.1"
+    util.promisify "~1.0.0"
+
 symbol-observable@^1.1.0:
   version "1.2.0"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/symbol-observable/-/symbol-observable-1.2.0.tgz#c22688aed4eab3cdc2dfeacbb561660560a00804"
@@ -8794,7 +9079,14 @@ tough-cookie@>=2.3.3, tough-cookie@^2.3.3, tough-cookie@~2.3.0, tough-cookie@~2.
   dependencies:
     punycode "^1.4.1"
 
-tr46@^1.0.0:
+tough-cookie@^2.3.4:
+  version "2.4.3"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/tough-cookie/-/tough-cookie-2.4.3.tgz#53f36da3f47783b0925afa06ff9f3b165280f781"
+  dependencies:
+    psl "^1.1.24"
+    punycode "^1.4.1"
+
+tr46@^1.0.0, tr46@^1.0.1:
   version "1.0.1"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/tr46/-/tr46-1.0.1.tgz#a8b13fd6bfd2489519674ccde55ba3693b706d09"
   dependencies:
@@ -9136,7 +9428,7 @@ unpipe@1.0.0, unpipe@~1.0.0:
   version "1.0.0"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/unpipe/-/unpipe-1.0.0.tgz#b2bf4ee8514aae6165b4817829d21b2ef49904ec"
 
-unquote@^1.1.0:
+unquote@^1.1.0, unquote@~1.1.1:
   version "1.1.1"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/unquote/-/unquote-1.1.1.tgz#8fded7324ec6e88a0ff8b905e7c098cdc086d544"
 
@@ -9198,7 +9490,7 @@ util-deprecate@~1.0.1:
   version "1.0.2"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
 
-util.promisify@^1.0.0:
+util.promisify@^1.0.0, util.promisify@~1.0.0:
   version "1.0.0"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/util.promisify/-/util.promisify-1.0.0.tgz#440f7165a459c9a16dc145eb8e72f35687097030"
   dependencies:
@@ -9439,6 +9731,14 @@ whatwg-url@^6.4.0:
     tr46 "^1.0.0"
     webidl-conversions "^4.0.1"
 
+whatwg-url@^6.4.1:
+  version "6.5.0"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/whatwg-url/-/whatwg-url-6.5.0.tgz#f2df02bff176fd65070df74ad5ccbb5a199965a8"
+  dependencies:
+    lodash.sortby "^4.7.0"
+    tr46 "^1.0.1"
+    webidl-conversions "^4.0.2"
+
 whet.extend@~0.9.9:
   version "0.9.9"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/whet.extend/-/whet.extend-0.9.9.tgz#f877d5bf648c97e5aa542fadc16d6a259b9c11a1"
@@ -9528,6 +9828,12 @@ ws@^4.0.0:
   dependencies:
     async-limiter "~1.0.0"
     safe-buffer "~5.1.0"
+
+ws@^5.2.0:
+  version "5.2.2"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/ws/-/ws-5.2.2.tgz#dffef14866b8e8dc9133582514d1befaf96e980f"
+  dependencies:
+    async-limiter "~1.0.0"
 
 x-is-function@^1.0.4:
   version "1.0.4"

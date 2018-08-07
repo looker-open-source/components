@@ -1,0 +1,5 @@
+# IconTextFormat
+
+```js
+<IconTextFormat />
+```

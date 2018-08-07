@@ -40,7 +40,7 @@ Common patterns for text is to adjust the font weight and transform the text. Be
 You can use the `align` property to change the alignment of the rendered text, below is an example with aligned text put into `<Card />`s.
 
 ```js
-<CardGroup>
+<div>
   <Card>
     <CardContent>
       <Text> I am aligned left by default</Text>
@@ -61,7 +61,7 @@ You can use the `align` property to change the alignment of the rendered text, b
      <Text align="justify">In some cases you may want to justify the text, this is how</Text>
     </CardContent>
   </Card>
-</CardGroup>
+</div>
 ```
 
 <div class="doc-section-divider"></div>

@@ -1,0 +1,5 @@
+# IconChartPie
+
+```js
+<IconChartPie />
+```
