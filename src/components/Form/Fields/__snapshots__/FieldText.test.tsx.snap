@@ -9,7 +9,7 @@ exports[`A FieldText 1`] = `
   font-size: 100%;
   vertical-align: baseline;
   font-weight: 600;
-  color: #1E2933;
+  color: #262D33;
   margin-right: 0.5rem;
   font-size: 0.875rem;
 }
@@ -21,7 +21,7 @@ exports[`A FieldText 1`] = `
   font: inherit;
   font-size: 100%;
   vertical-align: baseline;
-  border: solid 1px #C8CBCC;
+  border: solid 1px #C1C6CC;
   height: 28px;
   padding: 0 0.5rem;
   border-radius: 4px;
