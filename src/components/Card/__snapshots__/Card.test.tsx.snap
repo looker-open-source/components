@@ -5,7 +5,7 @@ exports[`A Card 1`] = `
   background: #fff;
   border-radius: 4px;
   box-shadow: none;
-  border: solid 1px #DEE1E5;
+  border: solid 1px #C1C6CC;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -36,7 +36,7 @@ exports[`A raised Card 1`] = `
   background: #fff;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.08);
-  border: solid 1px #DEE1E5;
+  border: solid 1px #C1C6CC;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -67,7 +67,7 @@ exports[`A raised Card with a CardMedia block 1`] = `
   background: #fff;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.08);
-  border: solid 1px #DEE1E5;
+  border: solid 1px #C1C6CC;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;

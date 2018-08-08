@@ -60,5 +60,38 @@
   background: rgba(255, 255, 255, 0.45);
   padding: 2px 8px;
   border-radius: 10px;
+}
 
+.border-examples {
+  margin-bottom: 1rem;
+}
+.border-example {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1rem;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.border-divider-example{
+  width: 70%;
+  height: 1px;
+}
+
+.border-example:not(:last-child) {
+  border-bottom: none;
+}
+
+.border-labels {
+  display: flex;
+  margin-bottom: 3rem;
+}
+
+.border-label-group {
+  width: 25%;
+}
+
+.border-on-dark-text {
+  color: #fff;
 }

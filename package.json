@@ -92,7 +92,7 @@
     ]
   },
   "lint-staged": {
-    "src/**/*.ts?(x)": [
+    "**/*.ts?(x)": [
       "prettier --write",
       "stylelint",
       "tslint --fix",
