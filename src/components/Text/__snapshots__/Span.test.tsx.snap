@@ -16,7 +16,7 @@ exports[`A Span component aligned 1`] = `
 <span
   className="c0"
 >
-  🥨 Yum yum!
+  Hello
 </span>
 `;
 
@@ -37,7 +37,7 @@ exports[`A Span component resized 1`] = `
   className="c0"
   size="d2"
 >
-  🥨
+  Hello
 </span>
 `;
 
@@ -57,7 +57,7 @@ exports[`A Span component transformed 1`] = `
 <span
   className="c0"
 >
-  🥨 Yum yum!
+  Hello
 </span>
 `;
 
@@ -80,7 +80,7 @@ exports[`A Span component tuncated 1`] = `
 <span
   className="c0"
 >
-  🥨
+  Hello
 </span>
 `;
 
@@ -100,7 +100,7 @@ exports[`A Span component weight 1`] = `
 <span
   className="c0"
 >
-  🥨
+  Hello
 </span>
 `;
 
@@ -120,7 +120,7 @@ exports[`A Span component with variant 1`] = `
 <span
   className="c0"
 >
-  🥨
+  Hello
 </span>
 `;
 
@@ -140,6 +140,6 @@ exports[`A default Span component 1`] = `
 <span
   className="c0"
 >
-  🥨
+  Hello
 </span>
 `;

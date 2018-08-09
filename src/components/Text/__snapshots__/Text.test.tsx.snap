@@ -16,7 +16,7 @@ exports[`A Text component aligned 1`] = `
 <div
   className="c0"
 >
-  🥑
+  Hello
 </div>
 `;
 
@@ -37,7 +37,7 @@ exports[`A Text component resized 1`] = `
   className="c0"
   size="d2"
 >
-  🥑
+  Hello
 </div>
 `;
 
@@ -57,7 +57,7 @@ exports[`A Text component transformed 1`] = `
 <div
   className="c0"
 >
-  🥑
+  Hello
 </div>
 `;
 
@@ -80,7 +80,7 @@ exports[`A Text component tuncated 1`] = `
 <div
   className="c0"
 >
-  🥑
+  Hello
 </div>
 `;
 
@@ -100,7 +100,7 @@ exports[`A Text component weight 1`] = `
 <div
   className="c0"
 >
-  🥑
+  Hello
 </div>
 `;
 
@@ -120,7 +120,7 @@ exports[`A Text component with variant 1`] = `
 <div
   className="c0"
 >
-  🥑
+  Hello
 </div>
 `;
 
@@ -140,6 +140,6 @@ exports[`A default Text component 1`] = `
 <div
   className="c0"
 >
-  🥑
+  Hello
 </div>
 `;

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`A Code component aligned 1`] = `
+exports[`A Code component Aligned 1`] = `
 .c0 {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -17,7 +17,7 @@ exports[`A Code component aligned 1`] = `
 <code
   className="c0"
 >
-  🥨 Yum yum!
+  Hello
 </code>
 `;
 
@@ -39,7 +39,7 @@ exports[`A Code component resized 1`] = `
   className="c0"
   size="d2"
 >
-  🥨
+  Hello
 </code>
 `;
 
@@ -60,52 +60,7 @@ exports[`A Code component transformed 1`] = `
 <code
   className="c0"
 >
-  🥨 Yum yum!
-</code>
-`;
-
-exports[`A Code component tuncated 1`] = `
-.c0 {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  font-weight: 400;
-  text-transform: none;
-  text-align: left;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  color: #262D33;
-  font-family: 'Monaco','Menlo','Ubuntu Mono','Consolas','source-code-pro',monospace;
-}
-
-<code
-  className="c0"
->
-  🥨
-</code>
-`;
-
-exports[`A Code component weight 1`] = `
-.c0 {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  font-weight: 700;
-  text-transform: none;
-  text-align: left;
-  color: #262D33;
-  font-family: 'Monaco','Menlo','Ubuntu Mono','Consolas','source-code-pro',monospace;
-}
-
-<code
-  className="c0"
->
-  🥨
+  Hello
 </code>
 `;
 
@@ -126,7 +81,52 @@ exports[`A Code component with variant 1`] = `
 <code
   className="c0"
 >
-  🥨
+  Hello
+</code>
+`;
+
+exports[`A Codet component weight 1`] = `
+.c0 {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 700;
+  text-transform: none;
+  text-align: left;
+  color: #262D33;
+  font-family: 'Monaco','Menlo','Ubuntu Mono','Consolas','source-code-pro',monospace;
+}
+
+<code
+  className="c0"
+>
+  Hello
+</code>
+`;
+
+exports[`A Text component tuncated 1`] = `
+.c0 {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 400;
+  text-transform: none;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #262D33;
+  font-family: 'Monaco','Menlo','Ubuntu Mono','Consolas','source-code-pro',monospace;
+}
+
+<code
+  className="c0"
+>
+  Hello
 </code>
 `;
 
@@ -147,6 +147,6 @@ exports[`A default Code component 1`] = `
 <code
   className="c0"
 >
-  🥨
+  Hello
 </code>
 `;
