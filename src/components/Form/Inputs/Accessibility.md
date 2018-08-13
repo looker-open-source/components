@@ -1,7 +1,7 @@
 # Accessibility
 
 ## Best Practices
-- Avoid using the placeholder attribute, if you do use one ensure there is still a label with the input.
+- Placeholders are not a substitute for labels.
 - Use the correct [input type](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Form_%3Cinput%3E_types_) for the required data to get more accessible fields for free.
 - See related [ARIA attributes](#related-aria-attributes)
 
@@ -31,7 +31,8 @@
 - If the input field with `:focus` has an error, the error should be read by a screen reader
 
 ## Keyboard Expectations
-- If input has focus, `TAB` and `SHIFT+TAB` should move focus to next focusable element.
+- If input has focus, `TAB` and `SHIFT+TAB` should move focus to next focusable element...
+- If input has focus the `Enter` key should submit the form.
 
 ## Related Aria Attributes
 
