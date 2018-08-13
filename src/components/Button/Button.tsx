@@ -100,6 +100,20 @@ function colorVariantMixin(
       border-color: ${activeBorderColor};
       color: ${activeTextColor};
     }
+
+    &[disabled] {
+      cursor: default;
+      filter: grayscale(0.3);
+      opacity: 0.25;
+
+      &:hover,
+      &:active,
+      &:focus {
+        background-color: ${backgroundColor};
+        border-color: ${borderColor};
+        color: ${textColor};
+      }
+    }
   `
 }
 
@@ -165,7 +179,7 @@ function buttonVariant(
         'transparent',
         colors.activeLight,
         'transparent',
-        'inherit'
+        colors.primary
       )
     case ButtonVariants.Default:
     default:
@@ -192,18 +206,6 @@ export const Button = styled<ButtonProps, 'button'>('button')`
   transition: border 80ms;
   vertical-align: middle;
   white-space: nowrap;
-
-  &[disabled] {
-    cursor: default;
-    filter: grayscale(0.3);
-    opacity: 0.25;
-
-    &:hover,
-    &:active,
-    &:focus {
-      background-color: ${props => props.theme.colors.primary};
-    }
-  }
 
   ${props => buttonSize(props.size)};
   ${props =>
