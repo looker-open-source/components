@@ -11,7 +11,8 @@ import {
   charcoal800
 } from '../src/styles/colors'
 import { Heading, HeadingWeights } from '../src/components/Heading/Heading'
-import { Text } from '../src/components/Text/Text'
+import { Text, TextWeights, TextVariants } from '../src/components/Text/Text'
+import { Code } from '../src/components/Text/Code'
 import { RampSizes } from '../src/styles/ramp_sizes'
 
 const renderBorder = (border: BorderType, index: number) => {
@@ -34,7 +35,7 @@ const renderBorder = (border: BorderType, index: number) => {
             key={`border-${idx}`}
           >
             <div className={border.textClass}>
-              <Text size="6" weight="semi-bold">
+              <Text size={RampSizes.Six} weight={TextWeights.SemiBold}>
                 On {example.name}
               </Text>
             </div>
@@ -50,12 +51,14 @@ const renderBorder = (border: BorderType, index: number) => {
       <div className="border-labels">
         {labels.map((label, idx) => (
           <div className="border-label-group" key={`label-${idx}`}>
-            <Text mode="subdued" size="5" weight="semi-bold">
+            <Text
+              variant={TextVariants.Subdued}
+              size={RampSizes.Five}
+              weight={TextWeights.SemiBold}
+            >
               {label[0]}
             </Text>
-            <Text size="5" element="code">
-              {label[1]}
-            </Text>
+            <Code size={RampSizes.Five}>{label[1]}</Code>
           </div>
         ))}
       </div>
