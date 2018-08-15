@@ -5,7 +5,8 @@ export { React, StyledComponentClass }
 // End Typescript component boilerplate
 import { rem, rgba } from 'polished'
 import { brandFont } from '../../styles/typography'
-import { ThemeInterface } from '../../themes'
+import theme, { ThemeInterface } from '../../themes'
+import { themeSpacing } from '../../themes/theme_spacing'
 
 export enum ButtonSizes {
   ExtraSmall = 'xsmall',
@@ -100,13 +101,27 @@ function colorVariantMixin(
       border-color: ${activeBorderColor};
       color: ${activeTextColor};
     }
+
+    &[disabled] {
+      cursor: default;
+      filter: grayscale(0.3);
+      opacity: 0.25;
+
+      &:hover,
+      &:active,
+      &:focus {
+        background-color: ${backgroundColor};
+        border-color: ${borderColor};
+        color: ${textColor};
+      }
+    }
   `
 }
 
 function buttonVariant(
   color: ButtonColors | undefined,
   variant: ButtonVariants | undefined,
-  theme: ThemeInterface,
+  themeForVariants: ThemeInterface,
   styleableProps: ButtonStyleableProps | undefined
 ) {
   const colors: ButtonStyleableProps = {
@@ -123,21 +138,21 @@ function buttonVariant(
   } else {
     switch (color) {
       case ButtonColors.Destructive:
-        colors.active = theme.colors.destructiveDarker
-        colors.activeLight = theme.colors.destructiveLighter
-        colors.hover = theme.colors.destructiveDark
-        colors.primary = theme.colors.destructive
-        colors.secondary = theme.colors.destructive
-        colors.text = theme.colors.primaryText
+        colors.active = themeForVariants.colors.destructiveDarker
+        colors.activeLight = themeForVariants.colors.destructiveLighter
+        colors.hover = themeForVariants.colors.destructiveDark
+        colors.primary = themeForVariants.colors.destructive
+        colors.secondary = themeForVariants.colors.destructive
+        colors.text = themeForVariants.colors.primaryText
         break
       case ButtonColors.Default:
       default:
-        colors.active = theme.colors.primaryDarker
-        colors.activeLight = theme.colors.primaryLighter
-        colors.hover = theme.colors.primaryDark
-        colors.primary = theme.colors.primary
-        colors.secondary = theme.colors.borderColor
-        colors.text = theme.colors.primaryText
+        colors.active = themeForVariants.colors.primaryDarker
+        colors.activeLight = themeForVariants.colors.primaryLighter
+        colors.hover = themeForVariants.colors.primaryDark
+        colors.primary = themeForVariants.colors.primary
+        colors.secondary = themeForVariants.colors.borderColor
+        colors.text = themeForVariants.colors.primaryText
         break
     }
   }
@@ -165,7 +180,7 @@ function buttonVariant(
         'transparent',
         colors.activeLight,
         'transparent',
-        'inherit'
+        colors.primary
       )
     case ButtonVariants.Default:
     default:
@@ -193,18 +208,6 @@ export const Button = styled<ButtonProps, 'button'>('button')`
   vertical-align: middle;
   white-space: nowrap;
 
-  &[disabled] {
-    cursor: default;
-    filter: grayscale(0.3);
-    opacity: 0.25;
-
-    &:hover,
-    &:active,
-    &:focus {
-      background-color: ${props => props.theme.colors.primary};
-    }
-  }
-
   ${props => buttonSize(props.size)};
   ${props =>
     buttonVariant(
@@ -213,4 +216,7 @@ export const Button = styled<ButtonProps, 'button'>('button')`
       props.theme,
       props.styleableProps
     )};
+  & + button {
+    margin-left: ${themeSpacing.s};
+  }
 `

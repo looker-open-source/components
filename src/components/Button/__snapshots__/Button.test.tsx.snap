@@ -22,19 +22,6 @@ exports[`Button states 1`] = `
   color: #FFFFFF;
 }
 
-.c0[disabled] {
-  cursor: default;
-  -webkit-filter: grayscale(0.3);
-  filter: grayscale(0.3);
-  opacity: 0.25;
-}
-
-.c0[disabled]:hover,
-.c0[disabled]:active,
-.c0[disabled]:focus {
-  background-color: #64518A;
-}
-
 .c0:focus {
   box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
 }
@@ -51,6 +38,25 @@ exports[`Button states 1`] = `
   background: #2A1B60;
   border-color: #2A1B60;
   color: #FFFFFF;
+}
+
+.c0[disabled] {
+  cursor: default;
+  -webkit-filter: grayscale(0.3);
+  filter: grayscale(0.3);
+  opacity: 0.25;
+}
+
+.c0[disabled]:hover,
+.c0[disabled]:active,
+.c0[disabled]:focus {
+  background-color: #64518A;
+  border-color: #64518A;
+  color: #FFFFFF;
+}
+
+.c0 + button {
+  margin-left: 0.5rem;
 }
 
 <button
@@ -82,19 +88,6 @@ exports[`Button variant transparent 1`] = `
   color: #64518A;
 }
 
-.c0[disabled] {
-  cursor: default;
-  -webkit-filter: grayscale(0.3);
-  filter: grayscale(0.3);
-  opacity: 0.25;
-}
-
-.c0[disabled]:hover,
-.c0[disabled]:active,
-.c0[disabled]:focus {
-  background-color: #64518A;
-}
-
 .c0:focus {
   box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
 }
@@ -110,7 +103,26 @@ exports[`Button variant transparent 1`] = `
 .c0.active {
   background: #F3F2FF;
   border-color: transparent;
-  color: inherit;
+  color: #64518A;
+}
+
+.c0[disabled] {
+  cursor: default;
+  -webkit-filter: grayscale(0.3);
+  filter: grayscale(0.3);
+  opacity: 0.25;
+}
+
+.c0[disabled]:hover,
+.c0[disabled]:active,
+.c0[disabled]:focus {
+  background-color: transparent;
+  border-color: transparent;
+  color: #64518A;
+}
+
+.c0 + button {
+  margin-left: 0.5rem;
 }
 
 <button

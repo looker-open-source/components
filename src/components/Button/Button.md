@@ -12,14 +12,10 @@ Use a primary button for the most frequently used action or most important actio
 ##### **Primary states**
 
 ```js noeditor
-<table>
-  <tr>
-    <td><Button>Primary Idle</Button></td>
-    <td><Button className="hover">Primary Hover</Button></td>
-    <td><Button className="active">Primary Active</Button></td>
-    <td><Button disabled>Disabled</Button></td>
-  </tr>
-</table>
+<Button>Primary Idle</Button>
+<Button className="hover">Primary Hover</Button>
+<Button className="active">Primary Active</Button>
+<Button disabled>Disabled</Button>
 ```
 
 ---
@@ -34,14 +30,10 @@ Use an outline button alongside a primary button to provide alternative actions 
 ##### **Primary states**
 
 ```js noeditor
-<table>
-  <tr>
-    <td><Button variant="outline">Outline Idle</Button></td>
-    <td><Button variant="outline" className="hover">Outline Hover</Button></td>
-    <td><Button variant="outline" className="active">Outline Active</Button></td>
-    <td><Button variant="outline" disabled>Outline Disabled</Button></td>
-  </tr>
-</table>
+<Button variant="outline">Outline Idle</Button>
+<Button variant="outline" className="hover">Outline Hover</Button>
+<Button variant="outline" className="active">Outline Active</Button>
+<Button variant="outline" disabled>Outline Disabled</Button>
 ```
 
 ---
@@ -57,14 +49,10 @@ Use a transparent button as a tertiary action on a screen, they are often used a
 ##### **Primary states**
 
 ```js noeditor
-<table>
-  <tr>
-    <td><Button variant="transparent">Transparent Idle</Button></td>
-    <td><Button variant="transparent" className="hover">Transparent Hover</Button></td>
-    <td><Button variant="transparent" className="active">Transparent Active</Button></td>
-    <td><Button variant="transparent" disabled>Transparent Disabled</Button></td>
-  </tr>
-</table>
+<Button variant="transparent">Transparent Idle</Button>
+<Button variant="transparent" className="hover">Transparent Hover</Button>
+<Button variant="transparent" className="active">Transparent Active</Button>
+<Button variant="transparent" disabled>Transparent Disabled</Button>
 ```
 
 ---
@@ -80,14 +68,10 @@ Destructive Buttons are to be used in situations where you need to convey some v
 ##### **Primary states**
 
 ```js noeditor
-<table>
-  <tr>
-    <td><Button color="destructive">Destructive Idle</Button></td>
-    <td><Button color="destructive" className="hover">Destructive Hover</Button></td>
-    <td><Button color="destructive" className="active">Destructive Active</Button></td>
-    <td><Button color="destructive" disabled>Destructive Disabled</Button></td>
-  </tr>
-</table>
+<Button color="destructive">Destructive Idle</Button>
+<Button color="destructive" className="hover">Destructive Hover</Button>
+<Button color="destructive" className="active">Destructive Active</Button>
+<Button color="destructive" disabled>Destructive Disabled</Button>
 ```
 
 ### Destructive Variants
@@ -95,14 +79,8 @@ Destructive Buttons are to be used in situations where you need to convey some v
 Destructive Buttons extend the default button, so they also have different variants
 
 ```js noeditor
-<table>
-  <tbody>
-    <tr>
-      <td><Button color="destructive" variant="outline">Destructive Outline</Button></td>
-      <td><Button color="destructive" variant="transparent">Destructive Transparent</Button></td>
-    </tr>
-  </tbody>
-</table>
+<Button color="destructive" variant="outline">Destructive Outline</Button>
+<Button color="destructive" variant="transparent">Destructive Transparent</Button>
 ```
 
 ## Size
@@ -160,7 +138,7 @@ const mildTheme = (theme) => {
     destructiveDarker: '#a67e11',
     destructiveLighter: '#fff1bf'
   })
-  
+
   return Object.assign({}, theme, {colors: themeColors})
 }
 
