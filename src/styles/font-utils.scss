@@ -1,9 +1,0 @@
-@function pxToRem($sizeInPx) {
-  $sizeInRem: $sizeInPx / 16px;
-  @return #{$sizeInRem}rem;
-}
-
-@mixin fontSize($size) {
-  font-size: $size;
-  font-size: pxToRem($size);
-}
