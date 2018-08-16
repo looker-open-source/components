@@ -20,9 +20,12 @@ export const Card = styled<CardProps, 'div'>('div')`
   height: 100%;
   min-width: 200px;
   overflow: hidden;
-  transition: border ${props => props.theme.transitions.durationQuick} ease,
-    box-shadow ${props => props.theme.transitions.durationQuick} ease;
-
+  /* stylelint-disable */
+  transition: border ${props => props.theme.transitions.durationQuick}
+      ${props => props.theme.easings.ease},
+    box-shadow ${props => props.theme.transitions.durationQuick}
+      ${props => props.theme.easings.ease};
+  /* stylelint-enable */
   &:hover {
     border-color: ${charcoal300};
     box-shadow: ${props => (props.raised ? props.theme.shadows.two : 'none')};

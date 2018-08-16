@@ -7,9 +7,11 @@ import {
   themeLineHeightRamp,
   ThemeFontRamp
 } from './theme_font_sizes'
+import { ThemeEasings, themeEasings } from './theme_easings'
 
 export interface ThemeInterface {
   colors: ThemeColors
+  easings: ThemeEasings
   fontRamp: ThemeFontRamp
   lineHeightRamp: ThemeFontRamp
   shadows: ThemeShadows
@@ -19,6 +21,7 @@ export interface ThemeInterface {
 
 const theme = {
   colors: themeColors,
+  easings: themeEasings,
   fontRamp: themeFontRamp,
   lineHeightRamp: themeLineHeightRamp,
   shadows: themeShadows,
