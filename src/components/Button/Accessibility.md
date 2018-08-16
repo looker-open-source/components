@@ -1,4 +1,4 @@
-# Accessibility
+# Accessibility Buttons
 
 ## Best Practices
 - Buttons **do not** open a new page, use links instead

@@ -48,12 +48,12 @@
 Use this to provide a detailed descriptions of a field that contains errors.
 
 ```
-  <label for="email">Email Address</label>
-  <input id="email" type="email" aria-describedby="email-error-message" />
-  <p id="email-error-message">Please enter a valid email address</p>
+  <label for="approve">Approve Changes</label>
+  <input id="approve" type="checkbox" aria-describedby="confirm-error-message" />
+  <p id="confirm-error-message">Confirm you approve these changes</p>
 ```
 
-This would announce "Email Address, edit text. Please enter a valid email address"
+This would announce "Approve, unchecked checkbox. Confirm you approve these changes"
 
 
 
