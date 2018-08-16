@@ -10,16 +10,15 @@ export interface ThemeSpacing {
   xs: string
   xxl: string
   xxxl: string
-  xxxxl: string
 }
 
+// tslint:disable:object-literal-sort-keys
 export const themeSpacing: ThemeSpacing = {
-  l: rem(spacingBase * 1.25),
-  m: rem(spacingBase),
-  s: rem(spacingBase * 0.5),
-  xl: rem(spacingBase * 1.5),
   xs: rem(spacingBase * 0.25),
-  xxl: rem(spacingBase * 1.875),
-  xxxl: rem(spacingBase * 2.25),
-  xxxxl: rem(spacingBase * 2.875)
+  s: rem(spacingBase * 0.5),
+  m: rem(spacingBase),
+  l: rem(spacingBase * 1.25),
+  xl: rem(spacingBase * 2),
+  xxl: rem(spacingBase * 2.5),
+  xxxl: rem(spacingBase * 3.75)
 }
