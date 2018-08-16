@@ -72,9 +72,10 @@ function colorVariantMixin(
   backgroundColor: string,
   borderColor: string,
   textColor: string,
-  boxShadowColor: string,
+  foucsIndicatorColor: string,
   hoverBackgroundColor: string,
   hoverBorderColor: string,
+  hoverTextColor: string,
   activeBackgroundColor: string,
   activeBorderColor: string,
   activeTextColor: string
@@ -85,7 +86,7 @@ function colorVariantMixin(
     color: ${textColor};
 
     &:focus {
-      box-shadow: 0 0 0 0.15rem ${rgba(boxShadowColor, 0.25)};
+      box-shadow: 0 0 0 0.15rem ${rgba(foucsIndicatorColor, 0.25)};
     }
 
     &:hover,
@@ -93,6 +94,7 @@ function colorVariantMixin(
     &.hover {
       background: ${hoverBackgroundColor};
       border-color: ${hoverBorderColor};
+      color: ${hoverTextColor};
     }
 
     &:active,
@@ -160,39 +162,72 @@ function buttonVariant(
   switch (variant) {
     case ButtonVariants.Outline:
       return colorVariantMixin(
+        // backgroundColor
         '#fff',
+        // borderColor
         colors.secondary,
+        // textColor
         colors.primary,
+        // foucsIndicatorColor
         colors.primary,
+        // hoverBackgroundColor
         '#fff',
+        // hoverBorderColor
         colors.primary,
+        // hoverTextColor
+        colors.active,
+        // activeBackgroundColor
         colors.primary,
+        // activeBorderColor
         colors.primary,
+        // activeTextColor
         colors.text
       )
     case ButtonVariants.Transparent:
       return colorVariantMixin(
+        // backgroundColor
         'transparent',
+        // borderColor
         'transparent',
+        // textColor
         colors.primary,
+        // foucsIndicatorColor
         colors.primary,
+        // hoverBackgroundColor
         'transparent',
+        // hoverBorderColor
         'transparent',
+        // hoverTextColor
+        colors.active,
+        // activeBackgroundColor
         colors.activeLight,
+        // activeBorderColor
         'transparent',
-        colors.primary
+        // activeTextColor
+        colors.active
       )
     case ButtonVariants.Default:
     default:
       return colorVariantMixin(
+        // backgroundColor
         colors.primary,
+        // borderColor
         colors.primary,
+        // textColor
         colors.text,
+        // foucsIndicatorColor
         colors.primary,
+        // hoverBackgroundColor
         colors.hover,
+        // hoverBorderColor
         colors.hover,
+        // hoverTextColor
+        colors.text,
+        // activeBackgroundColor
         colors.active,
+        // activeBorderColor
         colors.active,
+        // activeTextColor
         colors.text
       )
   }
