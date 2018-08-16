@@ -141,6 +141,10 @@ function alignment(align: HeadingAlignments | undefined) {
 }
 
 export const Heading = styled<HeadingProps>(HeadingGenerator)`
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
   font-size: ${props =>
     props.theme.fontRamp[
       props.size || convertHeadingLevelToRampSize(props.level)
