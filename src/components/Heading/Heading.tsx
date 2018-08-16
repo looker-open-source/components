@@ -6,7 +6,7 @@ import { ThemeInterface } from '../../themes'
 export { ThemeInterface }
 // End Typescript component boilerplate
 import { truncate } from '../../styles/typography'
-import { lineHeights } from '../../styles/line_heights'
+// import { lineHeights } from '../../styles/line_heights'
 import { fontWeights } from '../../styles/font_weights'
 import { RampSizes } from '../../styles/ramp_sizes'
 
@@ -146,7 +146,9 @@ export const Heading = styled<HeadingProps>(HeadingGenerator)`
       props.size || convertHeadingLevelToRampSize(props.level)
     ]};
   line-height: ${props =>
-    lineHeights[props.size || convertHeadingLevelToRampSize(props.level)]};
+    props.theme.lineHeightRamp[
+      props.size || convertHeadingLevelToRampSize(props.level)
+    ]};
   font-weight: ${props => fontWeights[props.weight || HeadingWeights.Normal]};
   ${props => textTransform(props.transform)}
   ${props => alignment(props.align)}
