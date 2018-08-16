@@ -13,16 +13,18 @@ export interface CardProps {
 export const Card = styled<CardProps, 'div'>('div')`
   background: #fff;
   border-radius: 4px;
-  box-shadow: ${props => (props.raised ? props.theme.shadows.small : 'none')};
+  box-shadow: ${props => (props.raised ? props.theme.shadows.one : 'none')};
   border: solid 1px ${props => props.theme.colors.borderColor};
   display: flex;
   flex-direction: column;
   height: 100%;
   min-width: 200px;
   overflow: hidden;
-  transition: border ${props => props.theme.transitions.durationShorter} ease;
+  transition: border ${props => props.theme.transitions.durationQuick} ease,
+    box-shadow ${props => props.theme.transitions.durationQuick} ease;
 
   &:hover {
     border-color: ${charcoal300};
+    box-shadow: ${props => (props.raised ? props.theme.shadows.two : 'none')};
   }
 `
