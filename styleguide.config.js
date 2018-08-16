@@ -98,14 +98,6 @@ module.exports = {
                 importLoaders: true,
                 localIdentName: '[name]__[local]___[hash:base64:5]'
               }
-            },
-            {
-              loader: 'sass-loader',
-              options: {
-                modules: true,
-                importLoaders: true,
-                localIdentName: '[name]__[local]___[hash:base64:5]'
-              }
             }
           ]
         },

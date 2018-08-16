@@ -1,4 +1,0 @@
-// Returns a value from the $spacing list
-@function spacing($key) {
-  @return map-lookup($spacing, $key, '$spacing');
-}
