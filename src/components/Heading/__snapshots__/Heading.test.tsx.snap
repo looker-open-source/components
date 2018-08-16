@@ -2,8 +2,12 @@
 
 exports[`A <h1> Heading 1`] = `
 .c0 {
-  font-size: 1.75rem;
-  line-height: 2.25rem;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  font-size: 1.5625rem;
+  line-height: 2.5rem;
   font-weight: 400;
   text-transform: none;
   text-align: left;
@@ -18,8 +22,12 @@ exports[`A <h1> Heading 1`] = `
 
 exports[`A <h1> Heading sized to <h2> 1`] = `
 .c0 {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
   font-size: 1.375rem;
-  line-height: 1.875rem;
+  line-height: 2rem;
   font-weight: 400;
   text-transform: none;
   text-align: left;
@@ -34,8 +42,12 @@ exports[`A <h1> Heading sized to <h2> 1`] = `
 
 exports[`A Heading to semi-bold 1`] = `
 .c0 {
-  font-size: 1.1875rem;
-  line-height: 1.6875rem;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
   font-weight: 700;
   text-transform: none;
   text-align: left;
@@ -50,8 +62,12 @@ exports[`A Heading to semi-bold 1`] = `
 
 exports[`A Heading transformed 1`] = `
 .c0 {
-  font-size: 1.1875rem;
-  line-height: 1.6875rem;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
   font-weight: 400;
   text-transform: capitalize;
   text-align: left;
@@ -66,8 +82,12 @@ exports[`A Heading transformed 1`] = `
 
 exports[`A default Heading 1`] = `
 .c0 {
-  font-size: 1.1875rem;
-  line-height: 1.6875rem;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
   font-weight: 400;
   text-transform: none;
   text-align: left;
