@@ -64,7 +64,7 @@
     "insert-css": "2.0.0",
     "polished": "1.9.3",
     "react": "16.4.1",
-    "react-dom": "16.4.1",
+    "react-dom": "16.4.2",
     "svg-inline-loader": "^0.8.0"
   },
   "files": [
