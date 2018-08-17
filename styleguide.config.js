@@ -175,17 +175,27 @@ module.exports = {
     },
     Heading: {
       heading1: {
-        fontSize: 'var(--lens-font-size-d2)',
-        lineHeight: 'var(--lens-line-height-d2)',
+        fontSize: '46px',
+        lineHeight: '64px',
       },
       heading2: {
-        fontSize: 'var(--lens-font-size-d3)',
-        lineHeight: 'var(--lens-line-height-d3)',
-        marginBottom: 'var(--lens-spacing-xl)'
+        fontSize: '46px',
+        lineHeight: '64px',
       },
       heading3: {
-        fontSize: 'var(--lens-font-size-2)',
-        lineHeight: 'var(--lens-line-height-2)',
+        fontSize: '25px'  ,
+        lineHeight: '40px',
+        fontWeight: 600,
+      },
+      heading4: {
+        fontSize: '22px'  ,
+        lineHeight: '32px',
+        margin: '40px 0 0',
+        fontWeight: 600
+      },
+      heading5: {
+        fontSize: '16px',
+        lineHeight: '28px',
         fontWeight: 600
       }
     },
@@ -197,7 +207,9 @@ module.exports = {
         paddingLeft: '300px'
       },
       sidebar: {
-        width: '300px'
+        width: '300px',
+        background: '#F4F6F7',
+        padding: '0 12px'
       }
     }
   },

@@ -1,15 +1,15 @@
-## Variants
+### Variants
 
 The `<Button />` component accepts a `variant` property which allows you to select the proper button style for the context and action the button is for.
 
-### Primary
+#### Primary
 
 Use a primary button for the most frequently used action or most important action on a page. Primary buttons should only appear once on a page. They are sometimes accompanied by a secondary button.
 
 ```js
  <Button>Primary Button</Button>
 ```
-##### **Primary states**
+##### Primary states
 
 ```js noeditor
 <Button>Primary Idle</Button>
@@ -20,14 +20,14 @@ Use a primary button for the most frequently used action or most important actio
 
 ---
 
-### Outline
+#### Outline
 Use an outline button alongside a primary button to provide alternative actions on a page. Outline buttons should only appear alongside primary buttons for secondary actions. Use no more than two secondary buttons on a page.
 
 ```js
 <Button variant="outline">Outline</Button>
 ```
 
-##### **Primary states**
+##### Outline states
 
 ```js noeditor
 <Button variant="outline">Outline Idle</Button>
@@ -38,7 +38,7 @@ Use an outline button alongside a primary button to provide alternative actions 
 
 ---
 
-### Transparent
+#### Transparent
 
 Use a transparent button as a tertiary action on a screen, they are often used as a Cancel button on a form. Typically it performs the opposite action of a primary button
 
@@ -46,7 +46,7 @@ Use a transparent button as a tertiary action on a screen, they are often used a
 <Button variant="transparent">Transparent</Button>
 ```
 
-##### **Primary states**
+##### Transparent states
 
 ```js noeditor
 <Button variant="transparent">Transparent Idle</Button>
@@ -57,7 +57,7 @@ Use a transparent button as a tertiary action on a screen, they are often used a
 
 ---
 
-### Destructive
+#### Destructive
 
 Destructive Buttons are to be used in situations where you need to convey some very important, potentially irreversible consequence of pressing this button.
 
@@ -65,7 +65,7 @@ Destructive Buttons are to be used in situations where you need to convey some v
 <Button color="destructive">Destructive</Button>
 ```
 
-##### **Primary states**
+##### Destructive states
 
 ```js noeditor
 <Button color="destructive">Destructive Idle</Button>
@@ -74,7 +74,7 @@ Destructive Buttons are to be used in situations where you need to convey some v
 <Button color="destructive" disabled>Destructive Disabled</Button>
 ```
 
-### Destructive Variants
+#### Destructive Variants
 
 Destructive Buttons extend the default button, so they also have different variants
 
@@ -83,7 +83,7 @@ Destructive Buttons extend the default button, so they also have different varia
 <Button color="destructive" variant="transparent">Destructive Transparent</Button>
 ```
 
-## Size
+### Size
 
 Use the size property on a `<Button />` to modify the size the button rendered. You can combine it with the `mode` property to get the correct style and size of button you need.
 
@@ -96,13 +96,13 @@ Use the size property on a `<Button />` to modify the size the button rendered. 
 </List>
 ```
 
-## Disabled
+### Disabled
 Use a disabled button to indicate to the user what action will be possible on a page once a prerequisite action is taken. Disabled buttons do not respond to user interaction.
 ```js
 <Button disabled>I am disabled</Button>
 ```
 
-## Additional Action Considerations
+### Additional Action Considerations
 When a call to action requires additional steps, include an ellipsis at the end of the button text as a visual clue. This helps reinforce that there are additional steps that can take place before the action takes effect.
 ```js
 <List>
@@ -111,7 +111,7 @@ When a call to action requires additional steps, include an ellipsis at the end 
 </List>
 ```
 
-## Extending Button
+### Extending Button
 
 Sometimes you may want to extend the Button defaults to create a specific styling effect. That should be straightforward using StyledComponent's `.extend` method like so:
 
@@ -123,7 +123,7 @@ const RoundButton = Button.extend`
 <RoundButton>Hello RoundButton</RoundButton>
 ```
 
-## Theming Button
+### Theming Button
 
 Button uses the following theme classes...
 

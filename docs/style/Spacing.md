@@ -3,7 +3,7 @@
 <div class="doc-section-divider"></div>
 
 <section id="rules" class="doc-section">
-## Spacing Values
+### Spacing Values
 
 All spacing for components align to a 8px grid, this grid allows for flexibility and consistency when designing for various screen sizes and devices. Below is the available spacing sizes as well as a visual representation of that size.
 </section>

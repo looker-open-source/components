@@ -2,22 +2,22 @@
 
 <div class="doc-section-divider"></div>
 
-## Guidelines
+#### Guidelines
 
 These guidelines lay a few ground rules on how to most effectively use color when creating Looker experiences.
 
-### Purposeful
+##### **Purposeful**
 It is important to use color with intent. Color should support the content and not the other way around. Avoid only using color as a way to show intent.
 
-### Respectful
+##### **Respectful**
 Use color to create hierarchy and focus attention. Understand that color can have different cultural connotations. Be judicious and use color to draw attention to things the user should take action on.
 
-### Accessible
+##### **Accessible**
 We want Looker to be accessible to the widest audience possible. Our color palettes are designed to meet or exceed the accessibility guidelines.
 
 <div class="doc-section-divider"></div>
 
-### Color Palette
+#### Color Palette
 
 ```js noeditor
 const chroma = require('chroma-js');
