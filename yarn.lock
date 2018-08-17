@@ -7456,9 +7456,9 @@ react-docgen-displayname-handler@^1.0.1:
   dependencies:
     recast "0.12.6"
 
-react-docgen-typescript@1.2.6:
-  version "1.2.6"
-  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/react-docgen-typescript/-/react-docgen-typescript-1.2.6.tgz#d1140c58ee9bfff5481320b9ebd1d0659ecf9913"
+react-docgen-typescript@1.6.3:
+  version "1.6.3"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/react-docgen-typescript/-/react-docgen-typescript-1.6.3.tgz#20b805904885f1848373937063a92b1f7dc28444"
 
 react-docgen@^3.0.0-beta11:
   version "3.0.0-beta9"
