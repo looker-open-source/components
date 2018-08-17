@@ -1,10 +1,7 @@
 // Typescript component boilerplate for generating meaningful declaration files.
 import * as React from 'react'
-import styled, { css, StyledComponentClass } from '../../styled_components'
-export { StyledComponentClass }
-import { ThemeInterface } from '../../themes'
+import styled, { css } from '../../styled_components'
 import { themeSpacing } from '../../themes/theme_spacing'
-export { ThemeInterface }
 // End Typescript component boilerplate
 
 export interface ListProps {
