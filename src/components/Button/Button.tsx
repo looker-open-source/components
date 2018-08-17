@@ -1,11 +1,7 @@
-// Typescript component boilerplate for generating meaningful declaration files.
-import * as React from 'react'
-import styled, { css, StyledComponentClass } from '../../styled_components'
-export { React, StyledComponentClass }
-// End Typescript component boilerplate
+import styled, { css } from '../../styled_components'
 import { rem, rgba } from 'polished'
 import { brandFont } from '../../styles/typography'
-import theme, { ThemeInterface } from '../../themes'
+import { ThemeInterface } from '../../themes'
 import { themeSpacing } from '../../themes/theme_spacing'
 
 export enum ButtonSizes {
