@@ -6,8 +6,6 @@ import {
   charcoal500,
   purple000,
   purple100,
-  purple200,
-  purple300,
   primary500,
   primary600,
   primary700,

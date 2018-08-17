@@ -1,9 +1,4 @@
-import * as React from 'react'
-import styled, { css, StyledComponentClass } from '../../styled_components'
-export { StyledComponentClass }
-import { ThemeInterface } from '../../themes'
-export { ThemeInterface }
-// End Typescript component boilerplate
+import styled, { css } from '../../styled_components'
 import { truncate } from '../../styles/typography'
 import { lineHeights } from '../../styles/line_heights'
 import { fontWeights } from '../../styles/font_weights'

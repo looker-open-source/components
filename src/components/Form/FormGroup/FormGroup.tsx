@@ -1,10 +1,5 @@
-// Typescript component boilerplate for generating meaningful declaration files.
-import * as React from 'react'
-import styled, { css, StyledComponentClass } from '../../../styled_components'
-import { ThemeInterface } from '../../../themes'
-export { React, StyledComponentClass, ThemeInterface }
+import styled, { css } from '../../../styled_components'
 import { themeSpacing } from '../../../themes/theme_spacing'
-// End Typescript component boilerplate
 
 export enum FormControlDirections {
   Left = 'left',

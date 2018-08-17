@@ -7456,9 +7456,9 @@ react-docgen-displayname-handler@^1.0.1:
   dependencies:
     recast "0.12.6"
 
-react-docgen-typescript@1.2.6:
-  version "1.2.6"
-  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/react-docgen-typescript/-/react-docgen-typescript-1.2.6.tgz#d1140c58ee9bfff5481320b9ebd1d0659ecf9913"
+react-docgen-typescript@1.6.3:
+  version "1.6.3"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/react-docgen-typescript/-/react-docgen-typescript-1.6.3.tgz#20b805904885f1848373937063a92b1f7dc28444"
 
 react-docgen@^3.0.0-beta11:
   version "3.0.0-beta9"
@@ -9198,9 +9198,9 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
 
-typescript@2.8.4:
-  version "2.8.4"
-  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/typescript/-/typescript-2.8.4.tgz#0b1db68e6bdfb0b767fa2ab642136a35b059b199"
+typescript@3.0.1:
+  version "3.0.1"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/typescript/-/typescript-3.0.1.tgz#43738f29585d3a87575520a4b93ab6026ef11fdb"
 
 typings-for-css-modules-loader@1.7.0:
   version "1.7.0"
