@@ -93,8 +93,7 @@
     "**/*.ts?(x)": [
       "prettier --write",
       "stylelint",
-      "tslint",
-      "tslint --fix",
+      "tslint --fix --project tsconfig.json",
       "git add"
     ]
   },
