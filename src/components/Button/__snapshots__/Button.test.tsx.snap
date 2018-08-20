@@ -31,6 +31,7 @@ exports[`Button states 1`] = `
 .c0.hover {
   background: #473764;
   border-color: #473764;
+  color: #FFFFFF;
 }
 
 .c0:active,
@@ -97,13 +98,14 @@ exports[`Button variant transparent 1`] = `
 .c0.hover {
   background: transparent;
   border-color: transparent;
+  color: #2A1B60;
 }
 
 .c0:active,
 .c0.active {
   background: #F3F2FF;
   border-color: transparent;
-  color: #64518A;
+  color: #2A1B60;
 }
 
 .c0[disabled] {
