@@ -95,3 +95,33 @@
 .border-on-dark-text {
   color: #fff;
 }
+
+[class*='rsg--sidebar-']  [class*='rsg--heading-'] {
+  display: block !important;
+  //text-transform: uppercase !important;
+  color: #434E5B !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  margin-bottom: 8px !important;
+
+}
+
+[class*='rsg--sidebar-']  [class*='rsg--item-'] [class*='rsg--list-'] {
+  padding-left: 12px !important;
+  margin-bottom: 16px !important;
+}
+
+
+[class*='rsg--sidebar-']  [class*='rsg--item-'] [class*='rsg--isChild-'] a {
+  color: #434C4F !important;
+  font-size: 14px !important;
+}
+
+[class*='rsg--sidebar-']  [class*='rsg--item-'] [class*='rsg--isChild-'] a:hover {
+  color: #0087E1 !important;
+}
+
+button[name="rsg-code-editor"][class*='rsg--isActive-'] {
+  display: none !important;
+  border-bottom-color: #4F2ABA !important;
+}

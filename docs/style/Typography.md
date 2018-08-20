@@ -4,9 +4,9 @@
 
 <section id="family" class="doc-section">
 
-## Family
+### Family
 
-### Open Sans
+#### Open Sans
 
 Lens’ primary font is Open Sans, a humanist sans serif typeface. It was chosen for its open and friendly appearance as well as having excellent legibility for digital applications.
 
@@ -48,7 +48,7 @@ Lens’ primary font is Open Sans, a humanist sans serif typeface. It was chosen
 
 <section id="scale" class="doc-section">
 
-## Type scale
+### Type scale
 
 The Lens type scale is designed to provide consistent and harmonious typographic styles.
 
@@ -60,12 +60,12 @@ The Lens type scale is designed to provide consistent and harmonious typographic
     {level: 'd1', px: '62px', lh: '72px' },
     {level: 'd2', px: '52px', lh: '60px' },
     {level: 'd3', px: '38px', lh: '46px' },
-    {level: '1', px: '28px', lh: '36px' },
-    {level: '2', px: '22px', lh: '30px' },
-    {level: '3', px: '19px', lh: '27px' },
-    {level: '4', px: '16px', lh: '24px' },
-    {level: '5', px: '14px', lh: '24px' },
-    {level: '6', px: '12px', lh: '20px' },]
+    {level: 'one', px: '28px', lh: '36px' },
+    {level: 'two', px: '22px', lh: '30px' },
+    {level: 'three', px: '19px', lh: '27px' },
+    {level: 'four', px: '16px', lh: '24px' },
+    {level: 'five', px: '14px', lh: '24px' },
+    {level: 'six', px: '12px', lh: '20px' },]
 
   const tableRows = typeRamp.map((t) => {
     return(
@@ -81,10 +81,10 @@ The Lens type scale is designed to provide consistent and harmonious typographic
   <Table>
     <TableHead>
       <tr>
-        <th><Text size="6" weight="semi-bold" element="span" mode="subdued">SPECIMEN</Text></th>
-        <th><Text size="6" weight="semi-bold" element="span" mode="subdued">FONT-SIZE</Text></th>
-        <th><Text size="6" weight="semi-bold" element="span" mode="subdued">LINE-HEIGHT</Text></th>
-        <th><Text size="6" weight="semi-bold" element="span" mode="subdued">SIZE</Text></th>
+        <th><Text size="six" weight="semi-bold" element="span" mode="subdued">SPECIMEN</Text></th>
+        <th><Text size="six" weight="semi-bold" element="span" mode="subdued">FONT-SIZE</Text></th>
+        <th><Text size="six" weight="semi-bold" element="span" mode="subdued">LINE-HEIGHT</Text></th>
+        <th><Text size="six" weight="semi-bold" element="span" mode="subdued">SIZE</Text></th>
       </tr>
     </TableHead>
     <TableBody>
