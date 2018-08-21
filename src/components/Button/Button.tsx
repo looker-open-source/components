@@ -1,5 +1,5 @@
-import styled, { css } from '../../styled_components'
 import { rem, rgba } from 'polished'
+import styled, { css } from '../../styled_components'
 import { brandFont } from '../../styles/typography'
 import { ThemeInterface } from '../../themes'
 import { themeSpacing } from '../../themes/theme_spacing'

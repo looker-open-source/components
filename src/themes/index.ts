@@ -1,8 +1,8 @@
 import { themeColors, ThemeColors } from './theme_colors'
 import { themeShadows, ThemeShadows } from './theme_elevation'
-import { themeTransitions, ThemeTransitions } from './theme_transitions'
-import { themeSpacing, ThemeSpacing } from './theme_spacing'
 import { themeFontRamp, ThemeFontRamp } from './theme_font_sizes'
+import { themeSpacing, ThemeSpacing } from './theme_spacing'
+import { themeTransitions, ThemeTransitions } from './theme_transitions'
 
 export interface ThemeInterface {
   colors: ThemeColors

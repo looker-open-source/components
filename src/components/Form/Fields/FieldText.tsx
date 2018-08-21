@@ -1,7 +1,7 @@
 import * as React from 'react'
-import { Label } from '../Label/Label'
-import { InputText } from '../Inputs/InputText'
 import { FormControl } from '../FormGroup/FormGroup'
+import { InputText } from '../Inputs/InputText'
+import { Label } from '../Label/Label'
 
 export interface FieldTextProps {
   id: string
