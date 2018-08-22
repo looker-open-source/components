@@ -1,7 +1,7 @@
 import * as React from 'react'
-import { Label } from '../Label/Label'
-import { InputCheckbox } from '../Inputs/InputCheckbox'
 import { FormControl, FormControlDirections } from '../FormGroup/FormGroup'
+import { InputCheckbox } from '../Inputs/InputCheckbox'
+import { Label } from '../Label/Label'
 
 export interface FieldCheckboxProps {
   id: string

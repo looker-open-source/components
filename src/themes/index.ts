@@ -1,13 +1,13 @@
 import { themeColors, ThemeColors } from './theme_colors'
+import { ThemeEasings, themeEasings } from './theme_easings'
 import { themeShadows, ThemeShadows } from './theme_elevation'
-import { themeTransitions, ThemeTransitions } from './theme_transitions'
-import { themeSpacing, ThemeSpacing } from './theme_spacing'
 import {
   themeFontRamp,
-  themeLineHeightRamp,
-  ThemeFontRamp
+  ThemeFontRamp,
+  themeLineHeightRamp
 } from './theme_font_sizes'
-import { ThemeEasings, themeEasings } from './theme_easings'
+import { themeSpacing, ThemeSpacing } from './theme_spacing'
+import { themeTransitions, ThemeTransitions } from './theme_transitions'
 
 export interface ThemeInterface {
   colors: ThemeColors

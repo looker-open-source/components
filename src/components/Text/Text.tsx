@@ -1,14 +1,14 @@
 import styled, { css } from '../../styled_components'
-import { truncate } from '../../styles/typography'
+import {
+  charcoal400,
+  charcoal500,
+  charcoal900,
+  green500,
+  red500
+} from '../../styles/colors'
 import { fontWeights } from '../../styles/font_weights'
 import { RampSizes } from '../../styles/ramp_sizes'
-import {
-  red500,
-  green500,
-  charcoal900,
-  charcoal500,
-  charcoal400
-} from '../../styles/colors'
+import { truncate } from '../../styles/typography'
 
 export enum TextWeights {
   Bold = 'bold',

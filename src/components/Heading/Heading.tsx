@@ -1,9 +1,8 @@
 import * as React from 'react'
 import styled, { css } from '../../styled_components'
-import { truncate } from '../../styles/typography'
-// import { lineHeights } from '../../styles/line_heights'
 import { fontWeights } from '../../styles/font_weights'
 import { RampSizes } from '../../styles/ramp_sizes'
+import { truncate } from '../../styles/typography'
 
 export enum HeadingAlignments {
   Left = 'left',

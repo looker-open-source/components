@@ -3,9 +3,9 @@ import {
   StyledComponentClass,
   ThemedStyledProps
 } from 'styled-components'
-import { ThemeInterface } from './themes'
-import { reset } from './styles/reset'
 import styled from './styled_components'
+import { reset } from './styles/reset'
+import { ThemeInterface } from './themes'
 
 const Reset = styled<{}, 'div'>('div')`
   ${reset};
