@@ -1,7 +1,6 @@
 import * as React from 'react'
 import styled, { css } from '../../styled_components'
 import { fontWeights } from '../../styles/font_weights'
-import { lineHeights } from '../../styles/line_heights'
 import { RampSizes } from '../../styles/ramp_sizes'
 import { truncate } from '../../styles/typography'
 
@@ -136,12 +135,18 @@ function alignment(align: HeadingAlignments | undefined) {
 }
 
 export const Heading = styled<HeadingProps>(HeadingGenerator)`
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
   font-size: ${props =>
     props.theme.fontRamp[
       props.size || convertHeadingLevelToRampSize(props.level)
     ]};
   line-height: ${props =>
-    lineHeights[props.size || convertHeadingLevelToRampSize(props.level)]};
+    props.theme.lineHeightRamp[
+      props.size || convertHeadingLevelToRampSize(props.level)
+    ]};
   font-weight: ${props => fontWeights[props.weight || HeadingWeights.Normal]};
   ${props => textTransform(props.transform)}
   ${props => alignment(props.align)}

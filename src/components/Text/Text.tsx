@@ -7,7 +7,6 @@ import {
   red500
 } from '../../styles/colors'
 import { fontWeights } from '../../styles/font_weights'
-import { lineHeights } from '../../styles/line_heights'
 import { RampSizes } from '../../styles/ramp_sizes'
 import { truncate } from '../../styles/typography'
 
@@ -104,7 +103,8 @@ export const Text = styled<TextProps, 'div'>('div')`
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: ${props => props.theme.fontRamp[props.size || RampSizes.Four]};
-  line-height: ${props => lineHeights[props.size || RampSizes.Four]};
+  line-height: ${props =>
+    props.theme.lineHeightRamp[props.size || RampSizes.Four]};
   font-weight: ${props => fontWeights[props.weight || TextWeights.Normal]};
   ${props => textTransform(props.textTransform)};
   ${props => alignment(props.align)};

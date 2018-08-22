@@ -17,11 +17,11 @@ To use a different HTML heading element,  the `<Heading />` component accepts a 
 // Heading components using the level attribute (font-size / line-height)
 
 <div>
-  <Heading level="1">I’m a h1 element (28px/38px)</Heading>
-  <Heading level="2">I’m a h2 element (22px/30px)</Heading>
-  <Heading level="3">I’m a h3 element (19px/27px)</Heading>
+  <Heading level="1">I’m a h1 element (25px/40px)</Heading>
+  <Heading level="2">I’m a h2 element (22px/32px)</Heading>
+  <Heading level="3">I’m a h3 element (18px/28px)</Heading>
   <Heading level="4">I’m a h4 element (16/24px)</Heading>
-  <Heading level="5">I’m a h5 element (14px/24px)</Heading>
+  <Heading level="5">I’m a h5 element (14px/20px)</Heading>
   <Heading level="6">I’m a h6 element (12px/16px)</Heading>
 </div>
 ```
@@ -38,12 +38,12 @@ When creating accessible pages it is important that headings create a [logical d
   <Heading size="d1">h3 sized to d1</Heading>
   <Heading size="d2">h3 sized to d2</Heading>
   <Heading size="d3">h3 sized to d3</Heading>
-  <Heading level="4" size="1">h4 sized to 1 </Heading>
-  <Heading level="4" size="2">h4 sized to 2 </Heading>
-  <Heading level="4" size="3">h4 sized to 3 </Heading>
-  <Heading level="2" size="4">h2 sized to 4 </Heading>
-  <Heading level="2" size="5">h2 sized to 5 </Heading>
-  <Heading level="2" size="6">h2 sized to 6 </Heading>
+  <Heading level="4" size="one">h4 sized to 1 </Heading>
+  <Heading level="4" size="two">h4 sized to 2 </Heading>
+  <Heading level="4" size="three">h4 sized to 3 </Heading>
+  <Heading level="2" size="four">h2 sized to 4 </Heading>
+  <Heading level="2" size="five">h2 sized to 5 </Heading>
+  <Heading level="2" size="six">h2 sized to 6 </Heading>
 </div>
 ```
 
