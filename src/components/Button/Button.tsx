@@ -1,8 +1,9 @@
 import { rem, rgba } from 'polished'
-import { mixed } from 'styled-system'
-import styled, { css } from '../../styled_components'
+import { merge, mixed } from 'styled-system'
+import styled from '../../styled_components'
 import { brandFont } from '../../styles/typography'
 import { ThemeInterface } from '../../themes'
+import { Color } from '../../themes/theme_colors'
 
 export type ButtonSizes = 'xs' | 's' | 'm' | 'l'
 
@@ -10,11 +11,6 @@ export enum ButtonVariants {
   Default = 'default',
   Outline = 'outline',
   Transparent = 'transparent'
-}
-
-export enum ButtonColors {
-  Default = 'default',
-  Destructive = 'destructive'
 }
 
 export interface ButtonStyleableProps {
@@ -27,7 +23,7 @@ export interface ButtonStyleableProps {
 }
 
 export interface ButtonProps {
-  color?: ButtonColors
+  color?: 'primary' | 'destructive' | string
   size?: ButtonSizes
   styleableProps?: ButtonStyleableProps
   variant?: ButtonVariants
@@ -37,168 +33,107 @@ interface ThemedButtonProps extends ButtonProps {
   theme: ThemeInterface
 }
 
-function colorVariantMixin(
-  backgroundColor: string,
-  borderColor: string,
-  textColor: string,
-  foucsIndicatorColor: string,
-  hoverBackgroundColor: string,
-  hoverBorderColor: string,
-  hoverTextColor: string,
-  activeBackgroundColor: string,
-  activeBorderColor: string,
-  activeTextColor: string
-) {
-  return css`
-    background: ${backgroundColor};
-    border: ${rem(1)} solid ${borderColor};
-    color: ${textColor};
-
-    &:focus {
-      box-shadow: 0 0 0 0.15rem ${rgba(foucsIndicatorColor, 0.25)};
+const variantCommonProps = (color: Color) => {
+  return {
+    borderStyle: 'solid',
+    borderWidth: rem(1),
+    // tslint:disable-next-line:object-literal-sort-keys
+    '&:focus': {
+      boxShadow: `0 0 0 0.15rem ${rgba(color.main, 0.25)}`
+    },
+    '&[disabled]': {
+      cursor: 'default',
+      filter: 'grayscale(0.3)',
+      opacity: '0.25'
     }
-
-    &:hover,
-    &:focus,
-    &.hover {
-      background: ${hoverBackgroundColor};
-      border-color: ${hoverBorderColor};
-      color: ${hoverTextColor};
-    }
-
-    &:active,
-    &.active {
-      background: ${activeBackgroundColor};
-      border-color: ${activeBorderColor};
-      color: ${activeTextColor};
-    }
-
-    &[disabled] {
-      cursor: default;
-      filter: grayscale(0.3);
-      opacity: 0.25;
-
-      &:hover,
-      &:active,
-      &:focus {
-        background-color: ${backgroundColor};
-        border-color: ${borderColor};
-        color: ${textColor};
-      }
-    }
-  `
+  }
 }
 
-function buttonVariant(
-  color: ButtonColors | undefined,
-  variant: ButtonVariants | undefined,
-  themeForVariants: ThemeInterface,
-  styleableProps: ButtonStyleableProps | undefined
-) {
-  const colors: ButtonStyleableProps = {
-    active: '',
-    activeLight: '',
-    hover: '',
-    primary: '',
-    secondary: '',
-    text: ''
-  }
-
-  if (styleableProps) {
-    Object.assign(colors, styleableProps)
-  } else {
-    switch (color) {
-      case ButtonColors.Destructive:
-        colors.active = themeForVariants.colors.destructiveDarker
-        colors.activeLight = themeForVariants.colors.destructiveLighter
-        colors.hover = themeForVariants.colors.destructiveDark
-        colors.primary = themeForVariants.colors.destructive
-        colors.secondary = themeForVariants.colors.destructive
-        colors.text = themeForVariants.colors.primaryText
-        break
-      case ButtonColors.Default:
-      default:
-        colors.active = themeForVariants.colors.primaryDarker
-        colors.activeLight = themeForVariants.colors.primaryLighter
-        colors.hover = themeForVariants.colors.primaryDark
-        colors.primary = themeForVariants.colors.primary
-        colors.secondary = themeForVariants.colors.borderColor
-        colors.text = themeForVariants.colors.primaryText
-        break
+const defaultVariant = (color: Color) => {
+  return merge(variantCommonProps(color), {
+    background: color.main,
+    borderColor: color.borderColor,
+    color: color.text,
+    // tslint:disable-next-line:object-literal-sort-keys
+    '&:hover, &:focus, &.hover': {
+      background: color.dark,
+      borderColor: color.dark
+    },
+    '&:active, &.active': {
+      background: color.darker,
+      borderColor: color.darker
+    },
+    '&[disabled]': {
+      '&:hover, &:active, &:focus': {
+        backgroundColor: color.main,
+        borderColor: color.borderColor
+      }
     }
-  }
+  })
+}
 
-  switch (variant) {
-    case ButtonVariants.Outline:
-      return colorVariantMixin(
-        // backgroundColor
-        '#fff',
-        // borderColor
-        colors.secondary,
-        // textColor
-        colors.primary,
-        // foucsIndicatorColor
-        colors.primary,
-        // hoverBackgroundColor
-        '#fff',
-        // hoverBorderColor
-        colors.primary,
-        // hoverTextColor
-        colors.active,
-        // activeBackgroundColor
-        colors.primary,
-        // activeBorderColor
-        colors.primary,
-        // activeTextColor
-        colors.text
-      )
+const outlineVariant = (color: Color, props: ThemedButtonProps) => {
+  return merge(variantCommonProps(color), {
+    background: props.theme.colors.white,
+    borderColor: color.borderColor,
+    color: color.main,
+    // tslint:disable-next-line:object-literal-sort-keys
+    '&:hover, &:focus, &.hover': {
+      background: props.theme.colors.white,
+      borderColor: color.main,
+      color: color.darker
+    },
+    '&:active, &.active': {
+      background: color.main,
+      borderColor: color.main,
+      color: color.text
+    },
+    '&[disabled]': {
+      '&:hover, &:active, &:focus': {
+        backgroundColor: props.theme.colors.white,
+        borderColor: color.borderColor,
+        color: color.main
+      }
+    }
+  })
+}
+
+const transparentVariant = (color: Color, props: ThemedButtonProps) => {
+  return merge(variantCommonProps(color), {
+    background: props.theme.colors.transparent,
+    borderColor: props.theme.colors.transparent,
+    color: color.main,
+    // tslint:disable-next-line:object-literal-sort-keys
+    '&:hover, &:focus, &.hover': {
+      background: props.theme.colors.transparent,
+      borderColor: props.theme.colors.transparent,
+      color: color.darker
+    },
+    '&:active, &.active': {
+      background: color.lighter,
+      borderColor: props.theme.colors.transparent,
+      color: color.darker
+    },
+    '&[disabled]': {
+      '&:hover, &:active, &:focus': {
+        backgroundColor: props.theme.colors.transparent,
+        borderColor: props.theme.colors.transparent,
+        color: color.main
+      }
+    }
+  })
+}
+
+const variantHelper = (props: ThemedButtonProps) => {
+  const color = props.theme.colors.namedColors[props.color || 'primary']
+  switch (props.variant || 'default') {
     case ButtonVariants.Transparent:
-      return colorVariantMixin(
-        // backgroundColor
-        'transparent',
-        // borderColor
-        'transparent',
-        // textColor
-        colors.primary,
-        // foucsIndicatorColor
-        colors.primary,
-        // hoverBackgroundColor
-        'transparent',
-        // hoverBorderColor
-        'transparent',
-        // hoverTextColor
-        colors.active,
-        // activeBackgroundColor
-        colors.activeLight,
-        // activeBorderColor
-        'transparent',
-        // activeTextColor
-        colors.active
-      )
+      return transparentVariant(color, props)
+    case ButtonVariants.Outline:
+      return outlineVariant(color, props)
     case ButtonVariants.Default:
     default:
-      return colorVariantMixin(
-        // backgroundColor
-        colors.primary,
-        // borderColor
-        colors.primary,
-        // textColor
-        colors.text,
-        // foucsIndicatorColor
-        colors.primary,
-        // hoverBackgroundColor
-        colors.hover,
-        // hoverBorderColor
-        colors.hover,
-        // hoverTextColor
-        colors.text,
-        // activeBackgroundColor
-        colors.active,
-        // activeBorderColor
-        colors.active,
-        // activeTextColor
-        colors.text
-      )
+      return defaultVariant(color)
   }
 }
 
@@ -229,13 +164,7 @@ export const Button = styled<ButtonProps, 'button'>('button')`
   vertical-align: middle;
   white-space: nowrap;
   ${sizeHelper};
-  ${props =>
-    buttonVariant(
-      props.color,
-      props.variant,
-      props.theme,
-      props.styleableProps
-    )};
+  ${variantHelper};
   & + button {
     margin-left: ${props => props.theme.spacing.s};
   }

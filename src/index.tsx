@@ -2,7 +2,6 @@ export { Card, CardContent, CardMedia } from './components/Card'
 export {
   Button,
   ButtonVariants,
-  ButtonColors,
   ButtonProps,
   ButtonSizes,
   ButtonStyleableProps

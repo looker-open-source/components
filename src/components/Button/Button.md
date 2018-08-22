@@ -129,26 +129,33 @@ Button uses the following theme classes...
 
 ```js
 const mildTheme = (theme) => {
-  const themeColors = Object.assign({}, theme.colors, {
-    primary: '#2db264',
-    primaryDark: '#198044',
-    primaryDarker: '#12593c',
-    destructive: '#ffd200',
-    destructiveDark: '#e5ae17',
-    destructiveDarker: '#a67e11',
-    destructiveLighter: '#fff1bf'
+  const primary = Object.assign({}, theme.colors.namedColors.primary, {
+    main: '#2db264',
+    dark: '#198044',
+    darker: '#12593c'
+  })
+  const destructive = Object.assign({}, theme.colors.namedColors.destructive, {
+    main: '#ffd200',
+    dark: '#e5ae17',
+    darker: '#a67e11',
+    lighter: '#fff1bf',
+    borderColor: '#ffd200'
   })
 
-  return Object.assign({}, theme, {colors: themeColors})
+  const newTheme = Object.assign({}, theme)
+  newTheme.colors = Object.assign({}, theme.colors)
+  newTheme.colors.namedColors = {}
+  newTheme.colors.namedColors.primary = primary
+  newTheme.colors.namedColors.destructive = destructive
+  return newTheme
 }
 
 <React.Fragment>
   <ThemeProvider theme={mildTheme}>
-    <Button>Mild Button</Button>
-  </ThemeProvider>
-  <span> </span>
-  <ThemeProvider theme={mildTheme}>
-    <Button color="destructive" variant="outline">Mild Destructive Outline Button</Button>
+    <div>
+      <Button>Mild Button</Button>
+      <Button color="destructive" variant="outline">Mild Destructive Outline Button</Button>
+    </div>
   </ThemeProvider>
 </React.Fragment>
 ```

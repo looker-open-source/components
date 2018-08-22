@@ -17,6 +17,20 @@ import {
   white
 } from '../styles/colors'
 
+export interface Color {
+  main: string
+  light: string
+  lighter: string
+  dark: string
+  darker: string
+  borderColor: string
+  text: string
+}
+
+interface ColorProps {
+  [k: string]: Color
+}
+
 export interface ThemeColors {
   // Default border and divider color
   borderColor: string
@@ -52,6 +66,10 @@ export interface ThemeColors {
   primaryLighter: string
   // Color of text for a default primary action
   primaryText: string
+
+  white: string
+  transparent: string
+  namedColors: ColorProps
 }
 
 export const themeColors: ThemeColors = {
@@ -66,10 +84,32 @@ export const themeColors: ThemeColors = {
   destructiveLighter: red000,
   destructiveText: white,
   linkColor: blue500,
+  namedColors: {
+    destructive: {
+      borderColor: red500,
+      dark: red600,
+      darker: red700,
+      light: red100,
+      lighter: red000,
+      main: red500,
+      text: white
+    },
+    primary: {
+      borderColor: charcoal300,
+      dark: primary600,
+      darker: primary700,
+      light: purple100,
+      lighter: purple000,
+      main: primary500,
+      text: white
+    }
+  },
   primary: primary500,
   primaryDark: primary600,
   primaryDarker: primary700,
   primaryLight: purple100,
   primaryLighter: purple000,
-  primaryText: white
+  primaryText: white,
+  transparent: 'transparent',
+  white
 }
