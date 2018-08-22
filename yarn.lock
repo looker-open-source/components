@@ -774,6 +774,10 @@
   dependencies:
     csstype "^2.2.0"
 
+"@types/styled-system@^3.0.2":
+  version "3.0.2"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/@types/styled-system/-/styled-system-3.0.2.tgz#a153495c58c8679fb512084164dc3f441ae4d1a3"
+
 "@vxna/mini-html-webpack-template@^0.1.6":
   version "0.1.6"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/@vxna/mini-html-webpack-template/-/mini-html-webpack-template-0.1.6.tgz#64225d564da5fe610b6445523c245572923c00b8"
@@ -7263,7 +7267,7 @@ prop-types@15.6.1, prop-types@^15.5.10, prop-types@^15.6.0, prop-types@^15.6.1:
     loose-envify "^1.3.1"
     object-assign "^4.1.1"
 
-prop-types@^15.5.4:
+prop-types@^15.5.4, prop-types@^15.6.2:
   version "15.6.2"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/prop-types/-/prop-types-15.6.2.tgz#05d5ca77b4453e985d60fc7ff8c859094a497102"
   dependencies:
@@ -8722,6 +8726,12 @@ styled-components@3.3.3:
     stylis "^3.5.0"
     stylis-rule-sheet "^0.0.10"
     supports-color "^3.2.3"
+
+styled-system@^3.0.2:
+  version "3.0.2"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/styled-system/-/styled-system-3.0.2.tgz#2189a6d829117d212fb6ac8ebc4260fdb75d1109"
+  dependencies:
+    prop-types "^15.6.2"
 
 stylelint-config-recommended@2.1.0:
   version "2.1.0"
