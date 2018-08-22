@@ -1,4 +1,5 @@
 import { rem, rgba } from 'polished'
+import { mixed } from 'styled-system'
 import styled, { css } from '../../styled_components'
 import { brandFont } from '../../styles/typography'
 import { ThemeInterface } from '../../themes'
@@ -38,30 +39,8 @@ export interface ButtonProps {
   variant?: ButtonVariants
 }
 
-function buttonSize(size: ButtonSizes | undefined) {
-  switch (size) {
-    case ButtonSizes.ExtraSmall:
-      return sizingMixin(12, 20, [2, 8])
-    case ButtonSizes.Small:
-      return sizingMixin(14, 24, [3, 14])
-    case ButtonSizes.Large:
-      return sizingMixin(22, 30, [8, 24])
-    case ButtonSizes.Medium:
-    default:
-      return sizingMixin(16, 24, [6, 16])
-  }
-}
-
-function sizingMixin(
-  fontSize: number,
-  lineHeight: number,
-  [tbPadding, lrPadding]: number[]
-) {
-  return css`
-    font-size: ${rem(fontSize)};
-    line-height: ${rem(lineHeight)};
-    padding: ${rem(tbPadding)} ${rem(lrPadding)};
-  `
+interface ThemedButtonProps extends ButtonProps {
+  theme: ThemeInterface
 }
 
 function colorVariantMixin(
@@ -229,6 +208,25 @@ function buttonVariant(
   }
 }
 
+function sizeHelper(props: ThemedButtonProps) {
+  const sizes: Record<ButtonSizes, number[]> = {
+    [ButtonSizes.Large]: [5, 5, 3, 6],
+    [ButtonSizes.Medium]: [3, 3, 3, 4],
+    [ButtonSizes.Small]: [2, 2, 1, 4],
+    [ButtonSizes.ExtraSmall]: [1, 1, 1, 3]
+  }
+
+  const [fontSize, lineHeight, py, px] = sizes[props.size || ButtonSizes.Medium]
+
+  return mixed({
+    fontSize,
+    lineHeight,
+    px,
+    py,
+    theme: props.theme
+  })
+}
+
 export const Button = styled<ButtonProps, 'button'>('button')`
   border-radius: ${rem(4)};
   cursor: pointer;
@@ -238,8 +236,7 @@ export const Button = styled<ButtonProps, 'button'>('button')`
   transition: border 80ms;
   vertical-align: middle;
   white-space: nowrap;
-
-  ${props => buttonSize(props.size)};
+  ${sizeHelper};
   ${props =>
     buttonVariant(
       props.color,

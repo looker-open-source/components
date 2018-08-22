@@ -35,9 +35,9 @@ const theme = {
 
   // styled-system theme properties
   // tslint:disable-next-line:object-literal-sort-keys
-  fontSizes: [0, 12, 14, 16, 18, 22, 25, 36, 46, 58].map(rem),
-  lineHeights: [0, 16, 20, 24, 28, 32, 40, 52, 64, 84].map(rem),
-  space: [0, 4, 6, 8, 16, 20, 24, 30, 36, 46].map(rem)
+  fontSizes: [0, 12, 14, 16, 18, 22, 25, 36, 46, 58].map(p => rem(p)),
+  lineHeights: [0, 16, 20, 24, 28, 32, 40, 52, 64, 84].map(p => rem(p)),
+  space: [0, 4, 6, 8, 16, 20, 24, 30, 36, 46].map(p => rem(p))
 }
 
 export default theme
