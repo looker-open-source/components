@@ -14,9 +14,12 @@ exports[`Button states 1`] = `
   transition: border 80ms;
   vertical-align: middle;
   white-space: nowrap;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   font-size: 1rem;
   line-height: 1.5rem;
-  padding: 0.375rem 1rem;
   background: #64518A;
   border: 0.0625rem solid #64518A;
   color: #FFFFFF;
@@ -81,9 +84,12 @@ exports[`Button variant transparent 1`] = `
   transition: border 80ms;
   vertical-align: middle;
   white-space: nowrap;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   font-size: 1rem;
   line-height: 1.5rem;
-  padding: 0.375rem 1rem;
   background: transparent;
   border: 0.0625rem solid transparent;
   color: #64518A;

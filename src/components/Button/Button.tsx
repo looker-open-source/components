@@ -3,7 +3,6 @@ import { mixed } from 'styled-system'
 import styled, { css } from '../../styled_components'
 import { brandFont } from '../../styles/typography'
 import { ThemeInterface } from '../../themes'
-import { themeSpacing } from '../../themes/theme_spacing'
 
 export enum ButtonSizes {
   ExtraSmall = 'xsmall',
@@ -245,6 +244,6 @@ export const Button = styled<ButtonProps, 'button'>('button')`
       props.styleableProps
     )};
   & + button {
-    margin-left: ${themeSpacing.s};
+    margin-left: ${props => props.theme.spacing.s};
   }
 `
