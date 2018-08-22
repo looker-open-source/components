@@ -89,10 +89,10 @@ Use the size property on a `<Button />` to modify the size the button rendered. 
 
 ```js
 <List>
-  <ListItem><Button size="large">Large Button</Button></ListItem>
-  <ListItem><Button>Default Button</Button></ListItem>
-  <ListItem><Button size="small">Small Light Button</Button></ListItem>
-  <ListItem><Button size="xsmall">Extra-Small Button</Button></ListItem>
+  <ListItem><Button size="l">Large Button</Button></ListItem>
+  <ListItem><Button>Medium (default) Button</Button></ListItem>
+  <ListItem><Button size="s">Small Button</Button></ListItem>
+  <ListItem><Button size="xs">Extra-Small Button</Button></ListItem>
 </List>
 ```
 
