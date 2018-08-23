@@ -1,5 +1,85 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Button accepts a NamedColor object for the color property 1`] = `
+.c0 {
+  border-radius: 0.25rem;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  outline: none;
+  -webkit-transition: border 80ms;
+  transition: border 80ms;
+  vertical-align: middle;
+  white-space: nowrap;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  border-style: solid;
+  border-width: 0.0625rem;
+  background: DeepPink;
+  border-color: DeepPink;
+  color: White;
+}
+
+.c0:focus {
+  box-shadow: 0 0 0 0.15rem rgba(255,20,147,0.25);
+}
+
+.c0[disabled] {
+  cursor: default;
+  -webkit-filter: grayscale(0.3);
+  filter: grayscale(0.3);
+  opacity: 0.25;
+}
+
+.c0[disabled]:hover,
+.c0[disabled]:active,
+.c0[disabled]:focus {
+  background-color: DeepPink;
+  border-color: MediumVioletRed;
+}
+
+.c0:hover,
+.c0:focus,
+.c0.hover {
+  background: PaleVioletRed;
+  border-color: PaleVioletRed;
+}
+
+.c0:active,
+.c0.active {
+  background: MediumVioletRed;
+  border-color: MediumVioletRed;
+}
+
+.c0 + button {
+  margin-left: 0.5rem;
+}
+
+<button
+  className="c0"
+  color={
+    Object {
+      "borderColor": "MediumVioletRed",
+      "dark": "PaleVioletRed",
+      "darker": "MediumVioletRed",
+      "light": "HotPink",
+      "lighter": "LightPink",
+      "main": "DeepPink",
+      "text": "White",
+    }
+  }
+>
+  🥑
+</button>
+`;
+
 exports[`Button default 1`] = `
 .c0 {
   border-radius: 0.25rem;

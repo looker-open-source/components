@@ -3,7 +3,7 @@ import { merge, mixed } from 'styled-system'
 import styled from '../../styled_components'
 import { brandFont } from '../../styles/typography'
 import { ThemeInterface } from '../../themes'
-import { Color } from '../../themes/theme_colors'
+import { NamedColor, NamedColors } from '../../themes/theme_colors'
 import { SizeLarge, SizeMedium, SizeSmall, SizeXSmall } from '../../types'
 
 export type ButtonSizes = SizeXSmall | SizeSmall | SizeMedium | SizeLarge
@@ -14,19 +14,9 @@ export enum ButtonVariants {
   Transparent = 'transparent'
 }
 
-export interface ButtonStyleableProps {
-  active: string
-  activeLight: string
-  hover: string
-  primary: string
-  secondary: string
-  text: string
-}
-
 export interface ButtonProps {
-  color?: 'primary' | 'destructive' | string
+  kind?: keyof NamedColors | NamedColor
   size?: ButtonSizes
-  styleableProps?: ButtonStyleableProps
   variant?: ButtonVariants
 }
 
@@ -34,7 +24,7 @@ interface ThemedButtonProps extends ButtonProps {
   theme: ThemeInterface
 }
 
-const variantCommonProps = (color: Color) => {
+const variantCommonProps = (color: NamedColor) => {
   return {
     borderStyle: 'solid',
     borderWidth: rem(1),
@@ -50,7 +40,7 @@ const variantCommonProps = (color: Color) => {
   }
 }
 
-const defaultVariant = (color: Color) => {
+const defaultVariant = (color: NamedColor) => {
   return merge(variantCommonProps(color), {
     background: color.main,
     borderColor: color.main,
@@ -73,7 +63,7 @@ const defaultVariant = (color: Color) => {
   })
 }
 
-const outlineVariant = (color: Color, props: ThemedButtonProps) => {
+const outlineVariant = (color: NamedColor, props: ThemedButtonProps) => {
   return merge(variantCommonProps(color), {
     background: props.theme.colors.white,
     borderColor: color.borderColor,
@@ -99,7 +89,7 @@ const outlineVariant = (color: Color, props: ThemedButtonProps) => {
   })
 }
 
-const transparentVariant = (color: Color, props: ThemedButtonProps) => {
+const transparentVariant = (color: NamedColor, props: ThemedButtonProps) => {
   return merge(variantCommonProps(color), {
     background: props.theme.colors.transparent,
     borderColor: props.theme.colors.transparent,
@@ -126,7 +116,12 @@ const transparentVariant = (color: Color, props: ThemedButtonProps) => {
 }
 
 const variantHelper = (props: ThemedButtonProps) => {
-  const color = props.theme.colors.namedColors[props.color || 'primary']
+  let color
+  if (typeof props.kind === 'string' || props.kind === undefined) {
+    color = props.theme.colors.namedColors[props.kind || 'primary']
+  } else {
+    color = props.kind
+  }
   switch (props.variant || 'default') {
     case ButtonVariants.Transparent:
       return transparentVariant(color, props)

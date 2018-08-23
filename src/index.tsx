@@ -3,8 +3,7 @@ export {
   Button,
   ButtonVariants,
   ButtonProps,
-  ButtonSizes,
-  ButtonStyleableProps
+  ButtonSizes
 } from './components/Button/Button'
 export { Heading } from './components/Heading/Heading'
 export { Label, FieldCheckbox, FieldText } from './components/Form'
