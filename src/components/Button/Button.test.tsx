@@ -31,9 +31,9 @@ test('Button variant transparent', () => {
   expect(tree).toMatchSnapshot()
 })
 
-test('Button primary color', () => {
+test('Button primary kind', () => {
   const component = create(
-    <Button theme={theme} color="primary">
+    <Button theme={theme} kind="primary">
       🥑
     </Button>
   )
@@ -41,9 +41,9 @@ test('Button primary color', () => {
   expect(tree).toMatchSnapshot()
 })
 
-test('Button destructive color', () => {
+test('Button destructive kind', () => {
   const component = create(
-    <Button theme={theme} color="destructive">
+    <Button theme={theme} kind="destructive">
       🥑
     </Button>
   )
