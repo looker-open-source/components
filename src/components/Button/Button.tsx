@@ -53,7 +53,7 @@ const variantCommonProps = (color: Color) => {
 const defaultVariant = (color: Color) => {
   return merge(variantCommonProps(color), {
     background: color.main,
-    borderColor: color.borderColor,
+    borderColor: color.main,
     color: color.text,
     // tslint:disable-next-line:object-literal-sort-keys
     '&:hover, &:focus, &.hover': {

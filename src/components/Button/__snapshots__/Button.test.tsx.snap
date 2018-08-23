@@ -23,7 +23,7 @@ exports[`Button default 1`] = `
   border-style: solid;
   border-width: 0.0625rem;
   background: #64518A;
-  border-color: #C1C6CC;
+  border-color: #64518A;
   color: #FFFFFF;
 }
 
@@ -162,7 +162,7 @@ exports[`Button primary color 1`] = `
   border-style: solid;
   border-width: 0.0625rem;
   background: #64518A;
-  border-color: #C1C6CC;
+  border-color: #64518A;
   color: #FFFFFF;
 }
 
