@@ -1,5 +1,13 @@
 const path = require('path')
-const typescriptPropsParser = require('react-docgen-typescript').withDefaultConfig().parse
+const typescriptPropsParser = require('react-docgen-typescript').withDefaultConfig({
+  propFilter: (prop) => {
+    if (prop.parent == null) {
+      return true;
+    }
+
+    return prop.parent.fileName.indexOf('node_modules/@types/react') < 0;
+  }
+}).parse
 
 module.exports = {
   assetsDir: 'static',
