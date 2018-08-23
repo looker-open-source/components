@@ -4,8 +4,9 @@ import styled from '../../styled_components'
 import { brandFont } from '../../styles/typography'
 import { ThemeInterface } from '../../themes'
 import { Color } from '../../themes/theme_colors'
+import { SizeLarge, SizeMedium, SizeSmall, SizeXSmall } from '../../types'
 
-export type ButtonSizes = 'xs' | 's' | 'm' | 'l'
+export type ButtonSizes = SizeXSmall | SizeSmall | SizeMedium | SizeLarge
 
 export enum ButtonVariants {
   Default = 'default',
@@ -139,12 +140,12 @@ const variantHelper = (props: ThemedButtonProps) => {
 
 function sizeHelper(props: ThemedButtonProps) {
   const sizes: Record<ButtonSizes, number[]> = {
-    l: [5, 5, 3, 6],
-    m: [3, 3, 3, 4],
-    s: [2, 2, 1, 4],
-    xs: [1, 1, 1, 3]
+    large: [5, 5, 3, 6],
+    medium: [3, 3, 3, 4],
+    small: [2, 2, 1, 4],
+    xsmall: [1, 1, 1, 3]
   }
-  const [fontSize, lineHeight, py, px] = sizes[props.size || 'm']
+  const [fontSize, lineHeight, py, px] = sizes[props.size || 'medium']
   return mixed({
     fontSize,
     lineHeight,
