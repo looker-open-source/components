@@ -58,10 +58,6 @@ exports[`Button accepts a NamedColor object for the color property 1`] = `
   border-color: MediumVioletRed;
 }
 
-.c0 + button {
-  margin-left: 0.5rem;
-}
-
 <button
   className="c0"
 >
@@ -125,10 +121,6 @@ exports[`Button default 1`] = `
 .c0.active {
   background: #2A1B60;
   border-color: #2A1B60;
-}
-
-.c0 + button {
-  margin-left: 0.5rem;
 }
 
 <button
@@ -196,10 +188,6 @@ exports[`Button destructive color 1`] = `
   border-color: #990F14;
 }
 
-.c0 + button {
-  margin-left: 0.5rem;
-}
-
 <button
   className="c0"
 >
@@ -263,10 +251,6 @@ exports[`Button primary color 1`] = `
 .c0.active {
   background: #2A1B60;
   border-color: #2A1B60;
-}
-
-.c0 + button {
-  margin-left: 0.5rem;
 }
 
 <button
@@ -337,10 +321,6 @@ exports[`Button variant outline 1`] = `
   color: #FFFFFF;
 }
 
-.c0 + button {
-  margin-left: 0.5rem;
-}
-
 <button
   className="c0"
 >
@@ -407,10 +387,6 @@ exports[`Button variant transparent 1`] = `
   background: #F3F2FF;
   border-color: transparent;
   color: #2A1B60;
-}
-
-.c0 + button {
-  margin-left: 0.5rem;
 }
 
 <button
