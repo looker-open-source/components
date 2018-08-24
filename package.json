@@ -98,7 +98,6 @@
     ],
     "**/*.js?(x)": [
       "prettier --write",
-      "stylelint",
       "git add"
     ]
   },
