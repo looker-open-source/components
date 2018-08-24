@@ -34,19 +34,33 @@ function getCorrectStatusColor(status: StatusLabels) {
   switch (status) {
     case StatusLabels.Experimental:
       return css`
-        background-color: ${yellow500};
+        &:before {
+          background-color: ${yellow500};
+        }
       `
     case StatusLabels.Deprecated:
       return css`
         background-color: ${red500};
+        border-color: ${red500};
+        color: #fff;
+        font-weight: 600;
+        flex-grow: 1;
+
+        &:before {
+          background-color: #fff;
+        }
       `
     case StatusLabels.Stable:
       return css`
-        background-color: ${green500};
+        &:before {
+          background-color: ${green500};
+        }
       `
     default:
       return css`
-        background-color: ${yellow500};
+        &:before {
+          background-color: ${yellow500};
+        }
       `
   }
 }
@@ -67,8 +81,9 @@ export const StatusDiv = styled<StatusProps>(statusIndicator)`
     height: ${themeSpacing.s};
     border-radius: 50%;
     margin-right: ${themeSpacing.s};
-    ${props => getCorrectStatusColor(props.status)};
   }
+
+  ${props => getCorrectStatusColor(props.status)};
 `
 
 export interface ResourceProps {
