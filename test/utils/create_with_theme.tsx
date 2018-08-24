@@ -4,6 +4,6 @@ import { create } from 'react-test-renderer'
 import { ThemeProvider } from 'styled-components'
 import theme from '../../src/themes'
 
-export const createWithTheme = Component => {
+export const createWithTheme = (Component: React.ReactElement<any>) => {
   return create(<ThemeProvider theme={theme}>{Component}</ThemeProvider>)
 }
