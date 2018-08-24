@@ -169,7 +169,4 @@ export const Button = styled<ButtonProps>(InternalButton)`
   white-space: nowrap;
   ${sizeHelper};
   ${variantHelper};
-  & + button {
-    margin-left: ${props => props.theme.spacing.s};
-  }
 `
