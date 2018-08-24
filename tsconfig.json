@@ -21,6 +21,12 @@
     "target": "es6"
   },
   "include": [
-    "./src/index.tsx"
+    "./src/**/*.ts",
+    "./src/**/*.tsx",	
+    "./config/typescript/**/*"	
+  ],	
+  "exclude": [	
+    "./src/**/*.test.ts",	
+    "./src/**/*.test.tsx",
   ]
 }
