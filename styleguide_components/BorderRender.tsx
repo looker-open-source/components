@@ -11,7 +11,7 @@ import {
   charcoal500,
   charcoal600,
   charcoal700,
-  charcoal800
+  charcoal800,
 } from '../src/styles/colors'
 import { RampSizes } from '../src/styles/ramp_sizes'
 
@@ -19,7 +19,7 @@ const renderBorder = (border: BorderType, index: number) => {
   const labels = [
     ['Theme Name', border.themeName],
     ['Lens Color', border.name],
-    ['Hex Value', border.hex]
+    ['Hex Value', border.hex],
   ]
 
   return (
@@ -92,49 +92,49 @@ export class BorderRender extends React.Component<
           examples: [
             { name: 'White', bgColor: '#ffffff' },
             { name: 'Charcoal000', bgColor: charcoal000 },
-            { name: 'Charcoal100', bgColor: charcoal100 }
+            { name: 'Charcoal100', bgColor: charcoal100 },
           ],
           hex: charcoal300,
           label: 'Default Border',
           name: 'charcoal300',
-          themeName: 'borderColor'
+          themeName: 'borderColor',
         },
         {
           examples: [
             { name: 'White', bgColor: '#ffffff' },
             { name: 'Charcoal000', bgColor: charcoal000 },
             { name: 'Charcoal100', bgColor: charcoal100 },
-            { name: 'Charcoal200', bgColor: charcoal200 }
+            { name: 'Charcoal200', bgColor: charcoal200 },
           ],
           hex: charcoal400,
           label: 'Dark Border',
           name: 'charcoal400',
-          themeName: 'borderColorDark'
+          themeName: 'borderColorDark',
         },
         {
           examples: [
             { name: 'White', bgColor: '#ffffff' },
             { name: 'Charcoal000', bgColor: charcoal000 },
-            { name: 'Charcoal100', bgColor: charcoal100 }
+            { name: 'Charcoal100', bgColor: charcoal100 },
           ],
           hex: charcoal200,
           label: 'Light Border',
           name: 'charcoal200',
-          themeName: 'borderColorLight'
+          themeName: 'borderColorLight',
         },
         {
           examples: [
             { name: 'Charcoal800', bgColor: charcoal800 },
             { name: 'Charcoal700', bgColor: charcoal700 },
-            { name: 'Charcoal600', bgColor: charcoal600 }
+            { name: 'Charcoal600', bgColor: charcoal600 },
           ],
           hex: charcoal500,
           label: 'Border on Dark',
           name: 'charcoal500',
           textClass: 'border-on-dark-text',
-          themeName: 'borderColorOnDark'
-        }
-      ]
+          themeName: 'borderColorOnDark',
+        },
+      ],
     }
   }
 

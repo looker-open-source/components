@@ -14,7 +14,7 @@ import {
   red500,
   red600,
   red700,
-  white
+  white,
 } from '../styles/colors'
 
 export interface ThemeColors {
@@ -71,5 +71,5 @@ export const themeColors: ThemeColors = {
   primaryDarker: primary700,
   primaryLight: purple100,
   primaryLighter: purple000,
-  primaryText: white
+  primaryText: white,
 }

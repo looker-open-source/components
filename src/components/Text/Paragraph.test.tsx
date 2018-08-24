@@ -5,7 +5,7 @@ import {
   snapshotTestTextComponentFontWeight,
   snapshotTestTextComponentTransform,
   snapshotTestTextComponentTruncate,
-  snapshotTestTextComponentVariant
+  snapshotTestTextComponentVariant,
 } from '../../../test/text'
 import { Paragraph } from './Paragraph'
 

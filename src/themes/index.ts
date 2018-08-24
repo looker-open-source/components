@@ -4,7 +4,7 @@ import { themeShadows, ThemeShadows } from './theme_elevation'
 import {
   themeFontRamp,
   ThemeFontRamp,
-  themeLineHeightRamp
+  themeLineHeightRamp,
 } from './theme_font_sizes'
 import { themeSpacing, ThemeSpacing } from './theme_spacing'
 import { themeTransitions, ThemeTransitions } from './theme_transitions'
@@ -26,7 +26,7 @@ const theme = {
   lineHeightRamp: themeLineHeightRamp,
   shadows: themeShadows,
   spacing: themeSpacing,
-  transitions: themeTransitions
+  transitions: themeTransitions,
 }
 
 export default theme

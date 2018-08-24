@@ -4,7 +4,7 @@ import {
   TextProps,
   TextTransforms,
   TextVariants,
-  TextWeights
+  TextWeights,
 } from '../src/components/Text/Text'
 import { RampSizes } from '../src/styles/ramp_sizes'
 import { createWithTheme } from './utils/create_with_theme'

@@ -7,7 +7,7 @@ import {
   snapshotTestTextComponentFontWeight,
   snapshotTestTextComponentTransform,
   snapshotTestTextComponentTruncate,
-  snapshotTestTextComponentVariant
+  snapshotTestTextComponentVariant,
 } from '../../../test/text'
 
 test('A default Text component', () => {
