@@ -95,6 +95,11 @@
       "stylelint",
       "tslint --fix",
       "git add"
+    ],
+    "**/*.js?(x)": [
+      "prettier --write",
+      "stylelint",
+      "git add"
     ]
   },
   "peerDependencies": {
@@ -123,7 +128,7 @@
     "npmrc": "bin/create_npmrc.sh",
     "npmrc:clean": "rm .npmrc",
     "prepublishOnly": "yarn clean && yarn build-components",
-    "prettify": "yarn prettier \"src/**/*.ts?(x)\" \"src/**/*.js?(x)\" --write",
+    "prettify": "yarn prettier \"./**/*.ts?(x)\" \"./**/*.js?(x)\" '!./node_modules/**' '!./dist/**' --write",
     "release": "npm publish",
     "setup": "ci/setup.sh",
     "test": "jest"

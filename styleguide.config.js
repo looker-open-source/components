@@ -1,13 +1,15 @@
 const path = require('path')
-const typescriptPropsParser = require('react-docgen-typescript').withDefaultConfig({
-  propFilter: (prop) => {
-    if (prop.parent == null) {
-      return true;
-    }
+const typescriptPropsParser = require('react-docgen-typescript').withDefaultConfig(
+  {
+    propFilter: prop => {
+      if (prop.parent == null) {
+        return true
+      }
 
-    return prop.parent.fileName.indexOf('node_modules/@types/react') < 0;
+      return prop.parent.fileName.indexOf('node_modules/@types/react') < 0
+    }
   }
-}).parse
+).parse
 
 module.exports = {
   assetsDir: 'static',
@@ -16,10 +18,7 @@ module.exports = {
       dangerousTaggedTemplateString: true
     }
   },
-  ignore: [
-    '**/index.tsx',
-    '**/*.test.tsx'
-  ],
+  ignore: ['**/index.tsx', '**/*.test.tsx'],
   pagePerSection: true,
   propsParser: typescriptPropsParser,
   showCode: true,
@@ -38,32 +37,33 @@ module.exports = {
     },
     {
       name: 'Principles',
-      sections: [ {
-        name:'Accessibility',
-        content: 'docs/principles/accessibility.md'
-      }
-    ]
+      sections: [
+        {
+          name: 'Accessibility',
+          content: 'docs/principles/accessibility.md'
+        }
+      ]
     },
     {
       name: 'Style',
       sections: [
-      {
-        name: 'Color',
-        content: 'docs/style/Color.md'
-      },
-      {
-        name: 'Typography',
-        content: 'docs/style/Typography.md'
-      },
-      {
-        name: 'Spacing',
-        content: 'docs/style/Spacing.md'
-      },
-      {
-        name: 'Borders & Dividers',
-        content: 'docs/style/Borders.md'
-      },
-    ]
+        {
+          name: 'Color',
+          content: 'docs/style/Color.md'
+        },
+        {
+          name: 'Typography',
+          content: 'docs/style/Typography.md'
+        },
+        {
+          name: 'Spacing',
+          content: 'docs/style/Spacing.md'
+        },
+        {
+          name: 'Borders & Dividers',
+          content: 'docs/style/Borders.md'
+        }
+      ]
     },
     {
       name: 'Components',
@@ -111,12 +111,12 @@ module.exports = {
         },
         {
           test: /\.css$/,
-          use: [ 'style-loader', 'css-loader' ]
+          use: ['style-loader', 'css-loader']
         },
         {
           test: /\.svg$/,
           loader: 'svg-inline-loader?classPrefix'
-        },
+        }
       ]
     }
   },
@@ -124,7 +124,7 @@ module.exports = {
     favicon: 'favicon.ico'
   },
   theme: {
-      fontFamily: {
+    fontFamily: {
       base: '"Open Sans", sans-serif'
     }
   },
@@ -141,8 +141,7 @@ module.exports = {
         fontWeight: '600',
         textTransform: 'uppercase',
         letterSpacing: '1.5px',
-        color: '#3C4345',
-
+        color: '#3C4345'
       }
     },
     Para: {
@@ -159,10 +158,10 @@ module.exports = {
       }
     },
     Playground: {
-        preview: {
-          backgroundColor: '#F2F2F9',
-          border: 'none',
-          borderRadius: '6px'
+      preview: {
+        backgroundColor: '#F2F2F9',
+        border: 'none',
+        borderRadius: '6px'
       }
     },
     Typography: {
@@ -171,32 +170,29 @@ module.exports = {
       }
     },
     Table: {
-
-      tableHead: {
-
-      },
+      tableHead: {},
       cellHeading: {
         '&:nth-child(2)': {
           width: '55%'
         }
-      },
+      }
     },
     Heading: {
       heading1: {
         fontSize: '46px',
-        lineHeight: '64px',
+        lineHeight: '64px'
       },
       heading2: {
         fontSize: '46px',
-        lineHeight: '64px',
+        lineHeight: '64px'
       },
       heading3: {
-        fontSize: '25px'  ,
+        fontSize: '25px',
         lineHeight: '40px',
-        fontWeight: 600,
+        fontWeight: 600
       },
       heading4: {
-        fontSize: '22px'  ,
+        fontSize: '22px',
         lineHeight: '32px',
         margin: '40px 0 0',
         fontWeight: 600
