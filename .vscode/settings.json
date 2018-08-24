@@ -1,4 +1,6 @@
 {
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
   "spellright.language": "en",
   "spellright.documentTypes": [
     "markdown",

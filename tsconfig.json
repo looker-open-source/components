@@ -22,11 +22,11 @@
   },
   "include": [
     "./src/**/*.ts",
-    "./src/**/*.tsx",	
-    "./config/typescript/**/*"	
-  ],	
-  "exclude": [	
-    "./src/**/*.test.ts",	
+    "./src/**/*.tsx",
+    "./config/typescript/**/*"
+  ],
+  "exclude": [
+    "./src/**/*.test.ts",
     "./src/**/*.test.tsx",
   ]
 }
