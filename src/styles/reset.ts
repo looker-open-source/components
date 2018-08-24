@@ -1,5 +1,4 @@
-import { css, StyledComponentClass, Styles } from '../styled_components'
-export { StyledComponentClass, Styles }
+import { css } from '../styled_components'
 
 export const reset = css`
   margin: 0;

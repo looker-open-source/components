@@ -1,13 +1,13 @@
-import { Paragraph } from './Paragraph'
 import {
   snapshotTestTextComponent,
   snapshotTestTextComponentAlign,
-  snapshotTestTextComponentTransform,
-  snapshotTestTextComponentVariant,
-  snapshotTestTextComponentTruncate,
+  snapshotTestTextComponentFontRamp,
   snapshotTestTextComponentFontWeight,
-  snapshotTestTextComponentFontRamp
+  snapshotTestTextComponentTransform,
+  snapshotTestTextComponentTruncate,
+  snapshotTestTextComponentVariant
 } from '../../../test/text'
+import { Paragraph } from './Paragraph'
 
 test('A default Paragraph component', () => {
   snapshotTestTextComponent(Paragraph)

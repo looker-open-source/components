@@ -1,4 +1,7 @@
 import * as React from 'react'
+import { Heading, HeadingWeights } from '../src/components/Heading/Heading'
+import { Code } from '../src/components/Text/Code'
+import { Text, TextVariants, TextWeights } from '../src/components/Text/Text'
 import {
   charcoal000,
   charcoal100,
@@ -10,9 +13,6 @@ import {
   charcoal700,
   charcoal800
 } from '../src/styles/colors'
-import { Heading, HeadingWeights } from '../src/components/Heading/Heading'
-import { Text, TextWeights, TextVariants } from '../src/components/Text/Text'
-import { Code } from '../src/components/Text/Code'
 import { RampSizes } from '../src/styles/ramp_sizes'
 
 const renderBorder = (border: BorderType, index: number) => {

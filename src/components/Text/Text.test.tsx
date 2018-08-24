@@ -3,11 +3,11 @@ import { Text } from './Text'
 import {
   snapshotTestTextComponent,
   snapshotTestTextComponentAlign,
-  snapshotTestTextComponentTransform,
-  snapshotTestTextComponentVariant,
-  snapshotTestTextComponentTruncate,
+  snapshotTestTextComponentFontRamp,
   snapshotTestTextComponentFontWeight,
-  snapshotTestTextComponentFontRamp
+  snapshotTestTextComponentTransform,
+  snapshotTestTextComponentTruncate,
+  snapshotTestTextComponentVariant
 } from '../../../test/text'
 
 test('A default Text component', () => {

@@ -2,8 +2,8 @@ import * as React from 'react'
 import { List, ListTypes } from './List'
 import { ListItem } from './ListItem'
 
-import { create } from 'react-test-renderer'
 import 'jest-styled-components'
+import { create } from 'react-test-renderer'
 
 test('A default List, should be a ul', () => {
   const component = create(

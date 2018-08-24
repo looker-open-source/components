@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { FieldText } from './FieldText'
 import { createWithTheme } from '../../../../test/utils/create_with_theme'
+import { FieldText } from './FieldText'
 
 test('A FieldText', () => {
   const component = createWithTheme(

@@ -1,6 +1,6 @@
+import 'jest-styled-components'
 import * as React from 'react'
 import { create } from 'react-test-renderer'
-import 'jest-styled-components'
 import theme from '../../../themes'
 import { InputCheckbox } from './InputCheckbox'
 

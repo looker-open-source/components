@@ -1,13 +1,13 @@
-import { Code } from './Code'
 import {
   snapshotTestTextComponent,
   snapshotTestTextComponentAlign,
-  snapshotTestTextComponentTransform,
-  snapshotTestTextComponentVariant,
-  snapshotTestTextComponentTruncate,
+  snapshotTestTextComponentFontRamp,
   snapshotTestTextComponentFontWeight,
-  snapshotTestTextComponentFontRamp
+  snapshotTestTextComponentTransform,
+  snapshotTestTextComponentTruncate,
+  snapshotTestTextComponentVariant
 } from '../../../test/text'
+import { Code } from './Code'
 
 test('A default Code component', () => {
   snapshotTestTextComponent(Code)

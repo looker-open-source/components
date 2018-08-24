@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { Label } from './Label'
 import { createWithTheme } from '../../../../test/utils/create_with_theme'
+import { Label } from './Label'
 
 test('A Label', () => {
   const component = createWithTheme(<Label htmlFor="party">🎉</Label>)
