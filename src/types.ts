@@ -1,0 +1,6 @@
+export type SizeXSmall = 'xsmall'
+export type SizeSmall = 'small'
+export type SizeMedium = 'medium'
+export type SizeLarge = 'large'
+export type SizeXLarge = 'xlarge'
+export type SizeXXLarge = 'xxlarge'
