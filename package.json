@@ -93,7 +93,7 @@
     "**/*.ts?(x)": [
       "prettier --write",
       "stylelint",
-      "tslint --fix --project tsconfig.json",
+      "tslint --fix",
       "git add"
     ]
   },
@@ -118,7 +118,7 @@
     "clean": "rimraf dist && rimraf styleguide",
     "lint": "yarn lint:ts && yarn lint:css",
     "lint:css": "stylelint \"src/**/*.ts?(x)\"",
-    "lint:ts": "tslint --project tsconfig.json",
+    "lint:ts": "tslint -p tsconfig.linter.json --format stylish",
     "lint-staged": "$(yarn bin)/lint-staged",
     "npmrc": "bin/create_npmrc.sh",
     "npmrc:clean": "rm .npmrc",

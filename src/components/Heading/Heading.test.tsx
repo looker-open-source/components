@@ -1,12 +1,12 @@
 import * as React from 'react'
+import { createWithTheme } from '../../../test/utils/create_with_theme'
+import { RampSizes } from '../../styles/ramp_sizes'
 import {
   Heading,
   HeadingLevels,
   HeadingTextTransforms,
   HeadingWeights
 } from './Heading'
-import { RampSizes } from '../../styles/ramp_sizes'
-import { createWithTheme } from '../../../test/utils/create_with_theme'
 
 test('A default Heading', () => {
   const component = createWithTheme(<Heading>🥑</Heading>)

@@ -1,19 +1,31 @@
-// Required by ThemeProvider to compile the proper declaration files.
-import * as React from 'react'
 import * as styledComponents from 'styled-components'
+// tslint:disable-next-line:no-duplicate-imports
+import {
+  ThemedStyledComponentsModule,
+  ThemedStyledProps
+} from 'styled-components'
 import { ThemeInterface } from './themes'
-export { StyledComponentClass, Styles } from 'styled-components'
 
-const { css, injectGlobal, keyframes, ThemeProvider } = styledComponents
+const {
+  default: styled,
+  css,
+  injectGlobal,
+  keyframes,
+  ThemeProvider
+  // tslint:disable-next-line:no-unnecessary-type-assertion
+} = styledComponents as ThemedStyledComponentsModule<ThemeInterface>
+
+export { css, injectGlobal, keyframes, ThemeProvider, ThemedStyledProps }
+export default styled
 
 // Typescript complains that the `as ThemedStyledComponentsModule` performs
 // unnecessary casting, which is not true. Without this line the Themes
 // attached to component prop types would not type-check correctly.
 //
 // tslint:disable-next-line:no-unnecessary-type-assertion
-const styled = (styledComponents as styledComponents.ThemedStyledComponentsModule<
-  ThemeInterface
->).default
+// const styled = (styledComponents as styledComponents.ThemedStyledComponentsModule<
+//   ThemeInterface
+// >).default
 
-export { css, injectGlobal, keyframes, React, ThemeProvider }
-export default styled
+// export { css, injectGlobal, keyframes, ThemeProvider }
+// export default styled

@@ -1,13 +1,13 @@
-import { Span } from './Span'
 import {
   snapshotTestTextComponent,
   snapshotTestTextComponentAlign,
-  snapshotTestTextComponentTransform,
-  snapshotTestTextComponentVariant,
-  snapshotTestTextComponentTruncate,
+  snapshotTestTextComponentFontRamp,
   snapshotTestTextComponentFontWeight,
-  snapshotTestTextComponentFontRamp
+  snapshotTestTextComponentTransform,
+  snapshotTestTextComponentTruncate,
+  snapshotTestTextComponentVariant
 } from '../../../test/text'
+import { Span } from './Span'
 
 test('A default Span component', () => {
   snapshotTestTextComponent(Span)
