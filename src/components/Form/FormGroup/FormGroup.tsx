@@ -5,7 +5,7 @@ export enum FormControlDirections {
   Left = 'left',
   Right = 'right',
   Top = 'top',
-  Bottom = 'bottom'
+  Bottom = 'bottom',
 }
 
 export interface FormControlProps {

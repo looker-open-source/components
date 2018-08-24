@@ -14,7 +14,7 @@ import {
   red500,
   red600,
   red700,
-  white
+  white,
 } from '../styles/colors'
 
 export interface NamedColor {
@@ -93,7 +93,7 @@ export const themeColors: ThemeColors = {
       light: red100,
       lighter: red000,
       main: red500,
-      text: white
+      text: white,
     },
     primary: {
       borderColor: charcoal300,
@@ -102,8 +102,8 @@ export const themeColors: ThemeColors = {
       light: purple100,
       lighter: purple000,
       main: primary500,
-      text: white
-    }
+      text: white,
+    },
   },
   primary: primary500,
   primaryDark: primary600,
@@ -112,5 +112,5 @@ export const themeColors: ThemeColors = {
   primaryLighter: purple000,
   primaryText: white,
   transparent: 'transparent',
-  white
+  white,
 }

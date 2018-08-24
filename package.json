@@ -35,7 +35,7 @@
     "pre-commit": "1.2.2",
     "prettier": "1.13.7",
     "prop-types": "15.6.1",
-    "react-docgen-typescript": "1.6.3",
+    "react-docgen-typescript": "1.7.0",
     "react-styleguidist": "7.0.5",
     "react-test-renderer": "16.3.1",
     "regenerator-runtime": "0.11.1",
@@ -95,7 +95,11 @@
     "**/*.ts?(x)": [
       "prettier --write",
       "stylelint",
-      "tslint --fix --format stylish",
+      "tslint --fix",
+      "git add"
+    ],
+    "**/*.js?(x)": [
+      "prettier --write",
       "git add"
     ]
   },
@@ -120,12 +124,12 @@
     "clean": "rimraf dist && rimraf styleguide",
     "lint": "yarn lint:ts && yarn lint:css",
     "lint:css": "stylelint \"src/**/*.ts?(x)\"",
-    "lint:ts": "tslint --format stylish -e 'node_modules/**/*' -e 'dist/**/*' '**/*.ts?(x)'",
+    "lint:ts": "tslint -p tsconfig.linter.json --format stylish",
     "lint-staged": "$(yarn bin)/lint-staged",
     "npmrc": "bin/create_npmrc.sh",
     "npmrc:clean": "rm .npmrc",
     "prepublishOnly": "yarn clean && yarn build-components",
-    "prettify": "yarn prettier \"src/**/*.ts?(x)\" \"src/**/*.js?(x)\" --write",
+    "prettify": "yarn prettier \"./**/*.ts?(x)\" \"./**/*.js?(x)\" '!./node_modules/**' '!./dist/**' --write",
     "release": "npm publish",
     "setup": "ci/setup.sh",
     "test": "jest"

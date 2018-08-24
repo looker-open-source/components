@@ -1,7 +1,7 @@
-import * as React from 'react'
 import 'jest-styled-components'
-import { FieldCheckbox } from './FieldCheckbox'
+import * as React from 'react'
 import { createWithTheme } from '../../../../test/utils/create_with_theme'
+import { FieldCheckbox } from './FieldCheckbox'
 
 test('A FieldCheckbox', () => {
   const component = createWithTheme(

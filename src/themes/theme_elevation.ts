@@ -6,7 +6,7 @@ export enum ElevationLayers {
   Five = 'five',
   Six = 'six',
   Seven = 'seven',
-  Max = 'max'
+  Max = 'max',
 }
 
 export interface ThemeShadows {
@@ -30,5 +30,5 @@ export const themeShadows: ThemeShadows = {
   [ElevationLayers.Five]:
     '0 14px 20px rgba(0, 0, 0,.15), 0 1px 1px rgba(0, 0, 0, 0.04),  0 14px 10px 8px rgba(0, 0, 0, 0.02)',
   [ElevationLayers.Six]:
-    '0 22px 42px 0px rgba(0, 0, 0,.18),  0 1px 1px rgba(0, 0, 0, 0.05), 0 16px 20px 10px rgba(0, 0, 0, 0.025)'
+    '0 22px 42px 0px rgba(0, 0, 0,.18),  0 1px 1px rgba(0, 0, 0, 0.05), 0 16px 20px 10px rgba(0, 0, 0, 0.025)',
 }

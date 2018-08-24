@@ -1,5 +1,5 @@
-import * as React from 'react'
 import 'jest-styled-components'
+import * as React from 'react'
 import { create } from 'react-test-renderer'
 
 import theme from '../../../themes'

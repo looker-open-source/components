@@ -13,7 +13,7 @@ export type ButtonSizes = SizeXSmall | SizeSmall | SizeMedium | SizeLarge
 export enum ButtonVariants {
   Default = 'default',
   Outline = 'outline',
-  Transparent = 'transparent'
+  Transparent = 'transparent',
 }
 
 export interface ButtonProps {
@@ -31,13 +31,13 @@ const variantCommonProps = (color: NamedColor) => {
     borderWidth: rem(1),
     // tslint:disable-next-line:object-literal-sort-keys
     '&:focus': {
-      boxShadow: `0 0 0 0.15rem ${rgba(color.main, 0.25)}`
+      boxShadow: `0 0 0 0.15rem ${rgba(color.main, 0.25)}`,
     },
     '&[disabled]': {
       cursor: 'default',
       filter: 'grayscale(0.3)',
-      opacity: '0.25'
-    }
+      opacity: '0.25',
+    },
   }
 }
 
@@ -49,18 +49,18 @@ const defaultVariant = (color: NamedColor) => {
     // tslint:disable-next-line:object-literal-sort-keys
     '&:hover, &:focus, &.hover': {
       background: color.dark,
-      borderColor: color.dark
+      borderColor: color.dark,
     },
     '&:active, &.active': {
       background: color.darker,
-      borderColor: color.darker
+      borderColor: color.darker,
     },
     '&[disabled]': {
       '&:hover, &:active, &:focus': {
         backgroundColor: color.main,
-        borderColor: color.borderColor
-      }
-    }
+        borderColor: color.borderColor,
+      },
+    },
   })
 }
 
@@ -73,20 +73,20 @@ const outlineVariant = (color: NamedColor, props: ThemedProps<ButtonProps>) => {
     '&:hover, &:focus, &.hover': {
       background: props.theme.colors.white,
       borderColor: color.main,
-      color: color.darker
+      color: color.darker,
     },
     '&:active, &.active': {
       background: color.main,
       borderColor: color.main,
-      color: color.text
+      color: color.text,
     },
     '&[disabled]': {
       '&:hover, &:active, &:focus': {
         backgroundColor: props.theme.colors.white,
         borderColor: color.borderColor,
-        color: color.main
-      }
-    }
+        color: color.main,
+      },
+    },
   })
 }
 
@@ -102,20 +102,20 @@ const transparentVariant = (
     '&:hover, &:focus, &.hover': {
       background: props.theme.colors.transparent,
       borderColor: props.theme.colors.transparent,
-      color: color.darker
+      color: color.darker,
     },
     '&:active, &.active': {
       background: color.lighter,
       borderColor: props.theme.colors.transparent,
-      color: color.darker
+      color: color.darker,
     },
     '&[disabled]': {
       '&:hover, &:active, &:focus': {
         backgroundColor: props.theme.colors.transparent,
         borderColor: props.theme.colors.transparent,
-        color: color.main
-      }
-    }
+        color: color.main,
+      },
+    },
   })
 }
 
@@ -142,7 +142,7 @@ function sizeHelper(props: ThemedProps<ButtonProps>) {
     large: [5, 5, 3, 6],
     medium: [3, 3, 3, 4],
     small: [2, 2, 1, 4],
-    xsmall: [1, 1, 1, 3]
+    xsmall: [1, 1, 1, 3],
   }
   const [fontSize, lineHeight, py, px] = sizes[props.size || 'medium']
   return mixed({
@@ -150,7 +150,7 @@ function sizeHelper(props: ThemedProps<ButtonProps>) {
     lineHeight,
     px,
     py,
-    theme: props.theme
+    theme: props.theme,
   })
 }
 

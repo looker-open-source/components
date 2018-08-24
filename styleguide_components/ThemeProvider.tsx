@@ -1,3 +1,2 @@
 import { ThemeProvider } from 'styled-components'
-
-(global as any).ThemeProvider = ThemeProvider
+;(global as any).ThemeProvider = ThemeProvider

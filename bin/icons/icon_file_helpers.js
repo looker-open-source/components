@@ -36,5 +36,5 @@ module.exports = {
   ICON_SRC_PATH,
   ICON_SVG_CHECKSUM_FILE_PATH,
   ICON_SVG_PATH,
-  getFilesChecksum
+  getFilesChecksum,
 }

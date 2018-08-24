@@ -23,7 +23,7 @@ export const themeFontRamp: ThemeFontRamp = {
   [RampSizes.Three]: rem(18),
   [RampSizes.Four]: rem(16),
   [RampSizes.Five]: rem(14),
-  [RampSizes.Six]: rem(12)
+  [RampSizes.Six]: rem(12),
 }
 
 // tslint:disable:object-literal-sort-keys
@@ -36,5 +36,5 @@ export const themeLineHeightRamp: ThemeFontRamp = {
   [RampSizes.Three]: rem(28),
   [RampSizes.Four]: rem(24),
   [RampSizes.Five]: rem(20),
-  [RampSizes.Six]: rem(16)
+  [RampSizes.Six]: rem(16),
 }

@@ -12,7 +12,7 @@ export interface ListProps {
 export enum ListTypes {
   Bullet = 'bullet',
   Number = 'number',
-  Letter = 'letter'
+  Letter = 'letter',
 }
 
 /**

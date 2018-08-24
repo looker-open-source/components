@@ -5,7 +5,7 @@ export enum InputTextTypes {
   Email = 'email',
   Number = 'number',
   Password = 'password',
-  Text = 'text'
+  Text = 'text',
 }
 
 export interface InputTextProps extends React.HTMLProps<HTMLInputElement> {

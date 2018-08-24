@@ -60,7 +60,7 @@ test('Button accepts a NamedColor object for the color property', () => {
     light: 'HotPink',
     lighter: 'LightPink',
     main: 'DeepPink',
-    text: 'White'
+    text: 'White',
   }
 
   const component = create(
@@ -73,7 +73,7 @@ test('Button accepts a NamedColor object for the color property', () => {
 })
 
 test('Should not require a theme when in a ThemeProvider', () => {
-  const component = create(
+  create(
     <ThemeProvider theme={theme}>
       <Button>Mild Button</Button>
     </ThemeProvider>
