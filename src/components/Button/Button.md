@@ -62,16 +62,16 @@ Use a transparent button as a tertiary action on a screen, they are often used a
 Destructive Buttons are to be used in situations where you need to convey some very important, potentially irreversible consequence of pressing this button.
 
 ```js
-<Button kind="destructive">Destructive</Button>
+<Button color="destructive">Destructive</Button>
 ```
 
 ##### Destructive states
 
 ```js noeditor
-<Button kind="destructive">Destructive Idle</Button>
-<Button kind="destructive" className="hover">Destructive Hover</Button>
-<Button kind="destructive" className="active">Destructive Active</Button>
-<Button kind="destructive" disabled>Destructive Disabled</Button>
+<Button color="destructive">Destructive Idle</Button>
+<Button color="destructive" className="hover">Destructive Hover</Button>
+<Button color="destructive" className="active">Destructive Active</Button>
+<Button color="destructive" disabled>Destructive Disabled</Button>
 ```
 
 #### Destructive Variants
@@ -79,8 +79,8 @@ Destructive Buttons are to be used in situations where you need to convey some v
 Destructive Buttons extend the default button, so they also have different variants
 
 ```js noeditor
-<Button kind="destructive" variant="outline">Destructive Outline</Button>
-<Button kind="destructive" variant="transparent">Destructive Transparent</Button>
+<Button color="destructive" variant="outline">Destructive Outline</Button>
+<Button color="destructive" variant="transparent">Destructive Transparent</Button>
 ```
 
 ### Size
@@ -138,7 +138,7 @@ const punkRockColor = {
   text: 'White'
 };
 
-<Button kind={punkRockColor}>I'm a Punk Rock Button</Button>
+<Button color={punkRockColor}>I'm a Punk Rock Button</Button>
 ```
 
 ### Theming Button
@@ -172,7 +172,7 @@ const mildTheme = (theme) => {
   <ThemeProvider theme={mildTheme}>
     <div>
       <Button>Mild Button</Button>
-      <Button kind="destructive" variant="outline">Mild Destructive Outline Button</Button>
+      <Button color="destructive" variant="outline">Mild Destructive Outline Button</Button>
     </div>
   </ThemeProvider>
 </React.Fragment>

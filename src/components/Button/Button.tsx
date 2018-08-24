@@ -1,6 +1,8 @@
+import tag from 'clean-tag'
 import { rem, rgba } from 'polished'
+import * as React from 'react'
 import { merge, mixed } from 'styled-system'
-import styled from '../../styled_components'
+import styled, { ThemedStyledProps } from '../../styled_components'
 import { brandFont } from '../../styles/typography'
 import { ThemeInterface } from '../../themes'
 import { NamedColor, NamedColors } from '../../themes/theme_colors'
@@ -15,14 +17,13 @@ export enum ButtonVariants {
 }
 
 export interface ButtonProps {
-  kind?: keyof NamedColors | NamedColor
+  color?: keyof NamedColors | NamedColor
   size?: ButtonSizes
   variant?: ButtonVariants
+  onClick?: React.MouseEventHandler<HTMLButtonElement>
 }
 
-interface ThemedButtonProps extends ButtonProps {
-  theme: ThemeInterface
-}
+type ThemedProps<P> = ThemedStyledProps<P, ThemeInterface>
 
 const variantCommonProps = (color: NamedColor) => {
   return {
@@ -63,7 +64,7 @@ const defaultVariant = (color: NamedColor) => {
   })
 }
 
-const outlineVariant = (color: NamedColor, props: ThemedButtonProps) => {
+const outlineVariant = (color: NamedColor, props: ThemedProps<ButtonProps>) => {
   return merge(variantCommonProps(color), {
     background: props.theme.colors.white,
     borderColor: color.borderColor,
@@ -89,7 +90,10 @@ const outlineVariant = (color: NamedColor, props: ThemedButtonProps) => {
   })
 }
 
-const transparentVariant = (color: NamedColor, props: ThemedButtonProps) => {
+const transparentVariant = (
+  color: NamedColor,
+  props: ThemedProps<ButtonProps>
+) => {
   return merge(variantCommonProps(color), {
     background: props.theme.colors.transparent,
     borderColor: props.theme.colors.transparent,
@@ -115,12 +119,12 @@ const transparentVariant = (color: NamedColor, props: ThemedButtonProps) => {
   })
 }
 
-const variantHelper = (props: ThemedButtonProps) => {
+const variantHelper = (props: ThemedProps<ButtonProps>) => {
   let color
-  if (typeof props.kind === 'string' || props.kind === undefined) {
-    color = props.theme.colors.namedColors[props.kind || 'primary']
+  if (typeof props.color === 'string' || props.color === undefined) {
+    color = props.theme.colors.namedColors[props.color || 'primary']
   } else {
-    color = props.kind
+    color = props.color
   }
   switch (props.variant || 'default') {
     case ButtonVariants.Transparent:
@@ -133,7 +137,7 @@ const variantHelper = (props: ThemedButtonProps) => {
   }
 }
 
-function sizeHelper(props: ThemedButtonProps) {
+function sizeHelper(props: ThemedProps<ButtonProps>) {
   const sizes: Record<ButtonSizes, number[]> = {
     large: [5, 5, 3, 6],
     medium: [3, 3, 3, 4],
@@ -150,7 +154,11 @@ function sizeHelper(props: ThemedButtonProps) {
   })
 }
 
-export const Button = styled<ButtonProps, 'button'>('button')`
+const InternalButton: React.SFC<ButtonProps> = ({ ...props }) => {
+  return <tag.button {...props}>{props.children}</tag.button>
+}
+
+export const Button = styled<ButtonProps>(InternalButton)`
   border-radius: ${rem(4)};
   cursor: pointer;
   display: inline-flex;

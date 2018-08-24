@@ -1,6 +1,7 @@
 import 'jest-styled-components'
 import * as React from 'react'
 import { create } from 'react-test-renderer'
+import { ThemeProvider } from '../../styled_components'
 import theme from '../../themes'
 import { NamedColor } from '../../themes/theme_colors'
 import { Button, ButtonVariants } from './Button'
@@ -31,9 +32,9 @@ test('Button variant transparent', () => {
   expect(tree).toMatchSnapshot()
 })
 
-test('Button primary kind', () => {
+test('Button primary color', () => {
   const component = create(
-    <Button theme={theme} kind="primary">
+    <Button theme={theme} color="primary">
       🥑
     </Button>
   )
@@ -41,9 +42,9 @@ test('Button primary kind', () => {
   expect(tree).toMatchSnapshot()
 })
 
-test('Button destructive kind', () => {
+test('Button destructive color', () => {
   const component = create(
-    <Button theme={theme} kind="destructive">
+    <Button theme={theme} color="destructive">
       🥑
     </Button>
   )
@@ -63,10 +64,18 @@ test('Button accepts a NamedColor object for the color property', () => {
   }
 
   const component = create(
-    <Button theme={theme} kind={punkRockColor}>
+    <Button theme={theme} color={punkRockColor}>
       🥑
     </Button>
   )
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
+})
+
+test('Should not require a theme when in a ThemeProvider', () => {
+  const component = create(
+    <ThemeProvider theme={theme}>
+      <Button>Mild Button</Button>
+    </ThemeProvider>
+  )
 })

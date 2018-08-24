@@ -64,17 +64,6 @@ exports[`Button accepts a NamedColor object for the color property 1`] = `
 
 <button
   className="c0"
-  kind={
-    Object {
-      "borderColor": "MediumVioletRed",
-      "dark": "PaleVioletRed",
-      "darker": "MediumVioletRed",
-      "light": "HotPink",
-      "lighter": "LightPink",
-      "main": "DeepPink",
-      "text": "White",
-    }
-  }
 >
   🥑
 </button>
@@ -149,7 +138,7 @@ exports[`Button default 1`] = `
 </button>
 `;
 
-exports[`Button destructive kind 1`] = `
+exports[`Button destructive color 1`] = `
 .c0 {
   border-radius: 0.25rem;
   cursor: pointer;
@@ -213,13 +202,12 @@ exports[`Button destructive kind 1`] = `
 
 <button
   className="c0"
-  kind="destructive"
 >
   🥑
 </button>
 `;
 
-exports[`Button primary kind 1`] = `
+exports[`Button primary color 1`] = `
 .c0 {
   border-radius: 0.25rem;
   cursor: pointer;
@@ -283,7 +271,6 @@ exports[`Button primary kind 1`] = `
 
 <button
   className="c0"
-  kind="primary"
 >
   🥑
 </button>

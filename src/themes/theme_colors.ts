@@ -17,7 +17,7 @@ import {
   white
 } from '../styles/colors'
 
-export interface Color {
+export interface NamedColor {
   main: string
   light: string
   lighter: string
@@ -27,8 +27,9 @@ export interface Color {
   text: string
 }
 
-interface ColorProps {
-  [k: string]: Color
+export interface NamedColors {
+  primary: NamedColor
+  destructive: NamedColor
 }
 
 export interface ThemeColors {
@@ -69,7 +70,7 @@ export interface ThemeColors {
 
   white: string
   transparent: string
-  namedColors: ColorProps
+  namedColors: NamedColors
 }
 
 export const themeColors: ThemeColors = {
