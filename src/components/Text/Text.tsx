@@ -4,7 +4,7 @@ import {
   charcoal500,
   charcoal900,
   green500,
-  red500
+  red500,
 } from '../../styles/colors'
 import { fontWeights } from '../../styles/font_weights'
 import { RampSizes } from '../../styles/ramp_sizes'
@@ -14,26 +14,26 @@ export enum TextWeights {
   Bold = 'bold',
   Light = 'light',
   Normal = 'normal',
-  SemiBold = 'semiBold'
+  SemiBold = 'semiBold',
 }
 export enum TextTransforms {
   Caps = 'caps',
   Lower = 'lower',
   None = 'none',
-  Upper = 'upper'
+  Upper = 'upper',
 }
 
 export enum TextAlignments {
   Left = 'left',
   Center = 'center',
-  Right = 'right'
+  Right = 'right',
 }
 
 export enum TextVariants {
   Critical = 'critical',
   Positive = 'positive',
   Secondary = 'secondary',
-  Subdued = 'subdued'
+  Subdued = 'subdued',
 }
 
 export interface TextProps {

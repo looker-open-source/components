@@ -5,7 +5,7 @@ import {
   Heading,
   HeadingLevels,
   HeadingTextTransforms,
-  HeadingWeights
+  HeadingWeights,
 } from './Heading'
 
 test('A default Heading', () => {

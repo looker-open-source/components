@@ -2,7 +2,7 @@ import * as styledComponents from 'styled-components'
 // tslint:disable-next-line:no-duplicate-imports
 import {
   ThemedStyledComponentsModule,
-  ThemedStyledProps
+  ThemedStyledProps,
 } from 'styled-components'
 import { ThemeInterface } from './themes'
 
@@ -11,7 +11,7 @@ const {
   css,
   injectGlobal,
   keyframes,
-  ThemeProvider
+  ThemeProvider,
   // tslint:disable-next-line:no-unnecessary-type-assertion
 } = styledComponents as ThemedStyledComponentsModule<ThemeInterface>
 

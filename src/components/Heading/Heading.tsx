@@ -7,7 +7,7 @@ import { truncate } from '../../styles/typography'
 export enum HeadingAlignments {
   Left = 'left',
   Center = 'center',
-  Right = 'right'
+  Right = 'right',
 }
 
 export enum HeadingLevels {
@@ -16,14 +16,14 @@ export enum HeadingLevels {
   L3 = '3',
   L4 = '4',
   L5 = '5',
-  L6 = '6'
+  L6 = '6',
 }
 
 export enum HeadingTextTransforms {
   Caps = 'caps',
   Lower = 'lower',
   None = 'none',
-  Upper = 'upper'
+  Upper = 'upper',
 }
 
 export enum HeadingWeights {
@@ -31,7 +31,7 @@ export enum HeadingWeights {
   ExtraBold = 'extraBold',
   Light = 'light',
   Normal = 'normal',
-  SemiBold = 'semiBold'
+  SemiBold = 'semiBold',
 }
 
 export interface HeadingGeneratorProps {

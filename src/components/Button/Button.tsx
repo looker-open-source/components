@@ -8,18 +8,18 @@ export enum ButtonSizes {
   ExtraSmall = 'xsmall',
   Small = 'small',
   Medium = 'medium',
-  Large = 'large'
+  Large = 'large',
 }
 
 export enum ButtonVariants {
   Default = 'default',
   Outline = 'outline',
-  Transparent = 'transparent'
+  Transparent = 'transparent',
 }
 
 export enum ButtonColors {
   Default = 'default',
-  Destructive = 'destructive'
+  Destructive = 'destructive',
 }
 
 export interface ButtonStyleableProps {
@@ -128,7 +128,7 @@ function buttonVariant(
     hover: '',
     primary: '',
     secondary: '',
-    text: ''
+    text: '',
   }
 
   if (styleableProps) {

@@ -20,5 +20,5 @@ export const themeSpacing: ThemeSpacing = {
   l: rem(spacingBase * 1.25),
   xl: rem(spacingBase * 2),
   xxl: rem(spacingBase * 2.5),
-  xxxl: rem(spacingBase * 3.75)
+  xxxl: rem(spacingBase * 3.75),
 }

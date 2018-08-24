@@ -114,7 +114,13 @@ async function generateLensTypescriptIconComponents() {
         iconFileHelpers.ICON_COMPONENTS_PATH,
         `Icon${name}.md`
       )
-      await writeFile(iconFilename, prettier.format(typescriptIconFileDefinition(name), Object.assign({}, prettierConfig, {parser: 'typescript'})))
+      await writeFile(
+        iconFilename,
+        prettier.format(
+          typescriptIconFileDefinition(name),
+          Object.assign({}, prettierConfig, { parser: 'typescript' })
+        )
+      )
       return await writeFile(iconMarkdownFile, styleguidistIconMarkdown(name))
     })
   )

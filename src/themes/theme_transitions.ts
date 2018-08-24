@@ -14,5 +14,5 @@ export const themeTransitions = {
   durationSimple: '200ms',
   durationModerate: '300ms',
   durationComplex: '300ms',
-  durationIntricate: '500ms'
+  durationIntricate: '500ms',
 }
