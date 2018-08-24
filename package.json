@@ -126,7 +126,7 @@
     "prettify": "yarn prettier \"src/**/*.ts?(x)\" \"src/**/*.js?(x)\" --write",
     "release": "npm publish",
     "setup": "ci/setup.sh",
-    "test": "jest"
+    "test": "tsc --noEmit -p tsconfig.compileAllFiles.json && yarn jest"
   },
   "types": "dist"
 }
