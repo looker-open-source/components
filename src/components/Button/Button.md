@@ -1,3 +1,11 @@
+```js noeditor
+const StatusAndResources = require('../../../styleguide_components/StatusAndResources').StatusAndResources;
+
+<StatusAndResources status="deprecated" figma="https://www.figma.com/file/Dirjx0RKbOOrLacqHq61By/Button-%26-Links?node-id=914%3A981&viewport=1741%2C951%2C1" github="https://github.com/looker/relens/tree/master/src/components/Button" feedback="Button Component Feedback" />
+
+```
+
+
 ### Variants
 
 The `<Button />` component accepts a `variant` property which allows you to select the proper button style for the context and action the button is for.
