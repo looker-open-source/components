@@ -1,7 +1,13 @@
 import * as React from 'react'
 import styled, { css } from 'styled-components'
 import { Text } from '../src/components/Text/Text'
-import { green500, red500, yellow500 } from '../src/styles/colors'
+import {
+  blue600,
+  red100,
+  red500,
+  yellow000,
+  yellow400
+} from '../src/styles/colors'
 import { RampSizes } from '../src/styles/ramp_sizes'
 import { themeColors } from '../src/themes/theme_colors'
 import { themeEasings } from '../src/themes/theme_easings'
@@ -24,9 +30,11 @@ export interface StatusProps {
 
 const statusIndicator: React.SFC<StatusProps> = ({ status, ...args }) => {
   return (
-    <Text size={RampSizes.Five} {...args}>
-      {status}
-    </Text>
+    <a href="https://github.com/looker/relens/wiki/Support-Levels">
+      <Text size={RampSizes.Five} {...args}>
+        {status}
+      </Text>
+    </a>
   )
 }
 
@@ -34,53 +42,77 @@ function getCorrectStatusColor(status: StatusLabels) {
   switch (status) {
     case StatusLabels.Experimental:
       return css`
+        background-color: ${yellow000};
+        border-left: solid 4px ${yellow400};
+        flex-grow: 1;
+
         &:before {
-          background-color: ${yellow500};
+          /* stylelint-disable */
+          content: '⚠️';
+          /* stylelint-enable */
         }
       `
     case StatusLabels.Deprecated:
       return css`
-        background-color: ${red500};
-        border-color: ${red500};
-        color: #fff;
-        font-weight: 600;
+        background-color: ${red100};
+        border-left: solid 5px ${red500};
         flex-grow: 1;
 
         &:before {
-          background-color: #fff;
+          /* stylelint-disable */
+          content: '🚫';
+          /* stylelint-enable */
         }
       `
     case StatusLabels.Stable:
       return css`
+        &:hover {
+          color: ${blue600};
+        }
         &:before {
-          background-color: ${green500};
+          /* stylelint-disable */
+          content: '✅';
+          /* stylelint-enable */
         }
       `
     default:
       return css`
+        background-color: ${yellow000};
+        border-left: solid 4px ${yellow400};
+        flex-grow: 1;
+
         &:before {
-          background-color: ${yellow500};
+          /* stylelint-disable */
+          content: '⚠️';
+          /* stylelint-enable */
         }
       `
   }
 }
 
 export const StatusDiv = styled<StatusProps>(statusIndicator)`
-  position: relative;
+  display: flex;
   text-transform: capitalize;
-  border: solid 1px ${themeColors.borderColorLight};
-  padding: 4px 8px;
-  border-radius: 4px;
+  padding: 8px;
+  border-radius: 2px;
+  margin-right: ${themeSpacing.m};
 
   &:before {
     /* stylelint-disable */
     content: '';
     /* stylelint-enable */
-    display: inline-flex;
-    width: ${themeSpacing.s};
-    height: ${themeSpacing.s};
-    border-radius: 50%;
-    margin-right: ${themeSpacing.s};
+    font-size: 16px;
+    margin-right: ${themeSpacing.xs};
+    transition: transform ${themeTransitions.durationSimple}
+      ${themeEasings.easeOut};
+  }
+
+  &:hover {
+    color: ${blue600};
+
+    &:before {
+      transform: scale(1.12);
+    }
   }
 
   ${props => getCorrectStatusColor(props.status)};
@@ -103,7 +135,7 @@ const ResourceIconRender: React.SFC<ResourceProps> = ({ url, ...args }) => {
 }
 
 const ResourceIcon = styled<ResourceProps>(ResourceIconRender)`
-  margin-left: 16px;
+  margin-right: ${themeSpacing.m};
   svg {
     transition: transform ${themeTransitions.durationModerate}
       ${themeEasings.easeOut};
@@ -157,4 +189,9 @@ export const StatusAndResources = styled<StatusAndResourcesProps>(
   padding: 16px 8px;
   justify-content: space-between;
   align-items: center;
+
+  a {
+    text-decoration: none;
+    flex-grow: 1;
+  }
 `
