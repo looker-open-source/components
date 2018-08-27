@@ -3,5 +3,5 @@ export const fontWeights = {
   extraBold: 600,
   light: 300,
   normal: 400,
-  semiBold: 600
+  semiBold: 600,
 }

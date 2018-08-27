@@ -1,8 +1,8 @@
-import * as React from 'react'
-import { Link } from './Link'
-import theme from '../../themes'
-import { create } from 'react-test-renderer'
 import 'jest-styled-components'
+import * as React from 'react'
+import { create } from 'react-test-renderer'
+import theme from '../../themes'
+import { Link } from './Link'
 
 test('A default Link', () => {
   const component = create(

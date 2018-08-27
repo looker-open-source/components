@@ -100,8 +100,8 @@ Use the size property on a `<Button />` to modify the size the button rendered. 
 ```js
 <List>
   <ListItem><Button size="large">Large Button</Button></ListItem>
-  <ListItem><Button>Default Button</Button></ListItem>
-  <ListItem><Button size="small">Small Light Button</Button></ListItem>
+  <ListItem><Button>Medium (default) Button</Button></ListItem>
+  <ListItem><Button size="small">Small Button</Button></ListItem>
   <ListItem><Button size="xsmall">Extra-Small Button</Button></ListItem>
 </List>
 ```
@@ -133,32 +133,57 @@ const RoundButton = Button.extend`
 <RoundButton>Hello RoundButton</RoundButton>
 ```
 
+### Overriding A Color
+
+Buttons can be passed a NamedColor object like so:
+
+```js
+const punkRockColor = {
+  main: 'DeepPink',
+  light: 'HotPink',
+  lighter: 'LightPink',
+  dark: 'PaleVioletRed',
+  darker: 'MediumVioletRed',
+  borderColor: 'MediumVioletRed',
+  text: 'White'
+};
+
+<Button color={punkRockColor}>I'm a Punk Rock Button</Button>
+```
+
 ### Theming Button
 
 Button uses the following theme classes...
 
 ```js
 const mildTheme = (theme) => {
-  const themeColors = Object.assign({}, theme.colors, {
-    primary: '#2db264',
-    primaryDark: '#198044',
-    primaryDarker: '#12593c',
-    destructive: '#ffd200',
-    destructiveDark: '#e5ae17',
-    destructiveDarker: '#a67e11',
-    destructiveLighter: '#fff1bf'
+  const primary = Object.assign({}, theme.colors.namedColors.primary, {
+    main: '#2db264',
+    dark: '#198044',
+    darker: '#12593c'
+  })
+  const destructive = Object.assign({}, theme.colors.namedColors.destructive, {
+    main: '#ffd200',
+    dark: '#e5ae17',
+    darker: '#a67e11',
+    lighter: '#fff1bf',
+    borderColor: '#ffd200'
   })
 
-  return Object.assign({}, theme, {colors: themeColors})
+  const newTheme = Object.assign({}, theme)
+  newTheme.colors = Object.assign({}, theme.colors)
+  newTheme.colors.namedColors = {}
+  newTheme.colors.namedColors.primary = primary
+  newTheme.colors.namedColors.destructive = destructive
+  return newTheme
 }
 
 <React.Fragment>
   <ThemeProvider theme={mildTheme}>
-    <Button>Mild Button</Button>
-  </ThemeProvider>
-  <span> </span>
-  <ThemeProvider theme={mildTheme}>
-    <Button color="destructive" variant="outline">Mild Destructive Outline Button</Button>
+    <div>
+      <Button>Mild Button</Button>
+      <Button color="destructive" variant="outline">Mild Destructive Outline Button</Button>
+    </div>
   </ThemeProvider>
 </React.Fragment>
 ```

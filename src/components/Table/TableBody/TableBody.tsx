@@ -3,13 +3,13 @@ import styled from '../../../styled_components'
 export enum TableBodyAlignment {
   Bottom = 'botton',
   Middle = 'middle',
-  Top = 'top'
+  Top = 'top',
 }
 
 export enum TableTextAlignment {
   Center = 'center',
   Left = 'left',
-  Right = 'right'
+  Right = 'right',
 }
 
 export interface TableBodyProps {
