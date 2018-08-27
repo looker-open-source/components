@@ -18,73 +18,40 @@ import {
 } from '../styles/colors'
 
 export interface NamedColor {
+  /** The base color for a named color set. */
   main: string
+  /** Usually a tint of the main color, used in cases like visited links or pressed buttons. */
   light: string
+  /** Usually an even lighter tint of the main color. */
   lighter: string
+  /** Usually a dark tint of the main color, used to indicate interactivity such as button hover. */
   dark: string
+  /** Usually an even darker tint of the main color, used to indicate an action like button press. */
   darker: string
   borderColor: string
   text: string
 }
 
 export interface NamedColors {
+  /** Colors used for primary actions */
   primary: NamedColor
+  /** Colors used for dangerous actions */
   destructive: NamedColor
 }
 
 export interface ThemeColors {
-  // Default border and divider color
-  borderColor: string
-  // Dark border & divider color
-  borderColorDark: string
-  // Light border & divider color
-  borderColorLight: string
-  // Border color for dividers on dark background
-  borderColorOnDark: string
-  // Destructive color in application, used for signaling a destructive or dangerous action
-  destructive: string
-  // Color for the destructive action's interactive state, a button hover for example
-  destructiveDark: string
-  // Color for the destructive action's pressed state a mouse click on a button for example
-  destructiveDarker: string
-  // Tint for alternate lighter styling of destructive action pressed state
-  destructiveLight: string
-  // Tint for alternate lighter styling of destructive action interactive state
-  destructiveLighter: string
-  // Color of text for a default destructive action
-  destructiveText: string
   // Color for links
   linkColor: string
-  // Primary color in application, mainly used for primary actions
-  primary: string
-  // Color for the  primary action's interactive state, a button hover for example
-  primaryDark: string
-  // Color for the primary action's pressed state, a mouse click on a button for example
-  primaryDarker: string
-  // Tint for alternate lighter styling of primary action pressed state
-  primaryLight: string
-  // Tint for alternate lighter styling of primary action interactive state
-  primaryLighter: string
-  // Color of text for a default primary action
-  primaryText: string
-
   white: string
   transparent: string
   namedColors: NamedColors
 }
 
 export const themeColors: ThemeColors = {
-  borderColor: charcoal300,
-  borderColorDark: charcoal400,
-  borderColorLight: charcoal200,
-  borderColorOnDark: charcoal500,
-  destructive: red500,
-  destructiveDark: red600,
-  destructiveDarker: red700,
-  destructiveLight: red100,
-  destructiveLighter: red000,
-  destructiveText: white,
   linkColor: blue500,
+  transparent: 'transparent',
+  white,
+
   namedColors: {
     destructive: {
       borderColor: red500,
@@ -105,12 +72,4 @@ export const themeColors: ThemeColors = {
       text: white,
     },
   },
-  primary: primary500,
-  primaryDark: primary600,
-  primaryDarker: primary700,
-  primaryLight: purple100,
-  primaryLighter: purple000,
-  primaryText: white,
-  transparent: 'transparent',
-  white,
 }

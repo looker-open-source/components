@@ -13,7 +13,8 @@ export interface InputTextProps extends React.HTMLProps<HTMLInputElement> {
 }
 
 export const InputText = styled<InputTextProps, 'input'>('input')`
-  border: solid 1px ${props => props.theme.colors.borderColor};
+  border: solid 1px
+    ${props => props.theme.colors.namedColors.primary.borderColor};
   height: 28px;
   padding: 0 ${props => props.theme.spacing.s};
   border-radius: 4px;
