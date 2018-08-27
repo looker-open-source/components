@@ -91,11 +91,15 @@ export interface ResourceProps {
 }
 
 const ResourceIconRender: React.SFC<ResourceProps> = ({ url, ...args }) => {
-  return (
-    <a href={url} target="_blank" {...args}>
-      {args.children}
-    </a>
-  )
+  if (!url) {
+    return null
+  } else {
+    return (
+      <a href={url} target="_blank" {...args}>
+        {args.children}
+      </a>
+    )
+  }
 }
 
 const ResourceIcon = styled<ResourceProps>(ResourceIconRender)`
@@ -112,30 +116,30 @@ const ResourceIcon = styled<ResourceProps>(ResourceIconRender)`
 
 export interface StatusAndResourcesProps {
   status: StatusLabels
-  figma: string
-  github: string
-  feedback: string
+  figmaURL: string
+  githubURL: string
+  feedbackTitle: string
 }
 
 const StatusAndResourcesRenderer: React.SFC<StatusAndResourcesProps> = ({
   status,
-  figma,
-  github,
-  feedback,
+  figmaURL,
+  githubURL,
+  feedbackTitle,
   ...args
 }) => {
   return (
     <div {...args}>
       <StatusDiv status={status} />
       <div>
-        <ResourceIcon url={figma}>
+        <ResourceIcon url={figmaURL}>
           <FigmaSvg />
         </ResourceIcon>
-        <ResourceIcon url={github}>
+        <ResourceIcon url={githubURL}>
           <GithubSvg />
         </ResourceIcon>
         <ResourceIcon
-          url={`https://github.com/looker/relens/issues/new?title=${feedback}`}
+          url={`https://github.com/looker/relens/issues/new?title=${feedbackTitle}`}
         >
           <FeedbackSvg />
         </ResourceIcon>
