@@ -3,26 +3,26 @@ import styled, { css } from 'styled-components'
 import { Text } from '../src/components/Text/Text'
 import {
   blue600,
+  charcoal200,
   red100,
   red500,
   yellow000,
-  yellow400
+  yellow400,
 } from '../src/styles/colors'
 import { RampSizes } from '../src/styles/ramp_sizes'
-import { themeColors } from '../src/themes/theme_colors'
 import { themeEasings } from '../src/themes/theme_easings'
 import { themeSpacing } from '../src/themes/theme_spacing'
 import { themeTransitions } from '../src/themes/theme_transitions'
 import {
   FeedbackSvg,
   FigmaSvg,
-  GithubSvg
+  GithubSvg,
 } from '../styleguide_components/ResourceIcons'
 
 export enum StatusLabels {
   Experimental = 'experimental',
   Deprecated = 'deprecated',
-  Stable = 'stable'
+  Stable = 'stable',
 }
 export interface StatusProps {
   status: StatusLabels
@@ -30,7 +30,7 @@ export interface StatusProps {
 
 const statusIndicator: React.SFC<StatusProps> = ({ status, ...args }) => {
   return (
-    <a href="https://github.com/looker/relens/wiki/Support-Levels">
+    <a href="https://github.com/looker/relens/blob/master/internal_docs/support_levels.md">
       <Text size={RampSizes.Five} {...args}>
         {status}
       </Text>
@@ -183,8 +183,8 @@ const StatusAndResourcesRenderer: React.SFC<StatusAndResourcesProps> = ({
 export const StatusAndResources = styled<StatusAndResourcesProps>(
   StatusAndResourcesRenderer
 )`
-  border-top: solid 1px ${themeColors.borderColorLight};
-  border-bottom: solid 1px ${themeColors.borderColorLight};
+  border-top: solid 1px ${charcoal200};
+  border-bottom: solid 1px ${charcoal200};
   display: flex;
   padding: 16px 8px;
   justify-content: space-between;
