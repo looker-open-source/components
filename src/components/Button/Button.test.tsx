@@ -4,7 +4,7 @@ import { create } from 'react-test-renderer'
 import { ThemeProvider } from '../../styled_components'
 import theme from '../../themes'
 import { NamedColor } from '../../themes/theme_colors'
-import { Button, ButtonVariants } from './Button'
+import { Button } from './Button'
 
 test('Button default', () => {
   const component = create(<Button theme={theme}>🥑</Button>)
@@ -14,7 +14,7 @@ test('Button default', () => {
 
 test('Button variant outline', () => {
   const component = create(
-    <Button theme={theme} variant={ButtonVariants.Outline}>
+    <Button theme={theme} variant="outline">
       🥑
     </Button>
   )
@@ -24,7 +24,7 @@ test('Button variant outline', () => {
 
 test('Button variant transparent', () => {
   const component = create(
-    <Button theme={theme} variant={ButtonVariants.Transparent}>
+    <Button theme={theme} variant="transparent">
       🥑
     </Button>
   )

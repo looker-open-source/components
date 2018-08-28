@@ -1,10 +1,5 @@
 export { Card, CardContent, CardMedia } from './components/Card'
-export {
-  Button,
-  ButtonVariants,
-  ButtonProps,
-  ButtonSizes,
-} from './components/Button/Button'
+export { Button, ButtonProps, ButtonSizes } from './components/Button/Button'
 export { Heading } from './components/Heading/Heading'
 export { Label, FieldCheckbox, FieldText } from './components/Form'
 export { Link } from './components/Link/Link'
