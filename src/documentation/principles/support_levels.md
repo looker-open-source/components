@@ -1,5 +1,3 @@
-## Support Levels
-
 ### ✅ Stable
 These components are safe to use in production and are not in the process of being updated.
 

@@ -30,7 +30,7 @@ export interface StatusProps {
 
 const statusIndicator: React.SFC<StatusProps> = ({ status, ...args }) => {
   return (
-    <a href="https://github.com/looker/relens/blob/master/internal_docs/support_levels.md">
+    <a href="/#!/Support%20Levels">
       <Text size={RampSizes.Five} {...args}>
         {status}
       </Text>
@@ -93,7 +93,7 @@ function getCorrectStatusColor(status: StatusLabels) {
 export const StatusDiv = styled<StatusProps>(statusIndicator)`
   display: flex;
   text-transform: capitalize;
-  padding: 8px;
+  padding: ${themeSpacing.s};
   border-radius: 2px;
   margin-right: ${themeSpacing.m};
 
@@ -186,7 +186,7 @@ export const StatusAndResources = styled<StatusAndResourcesProps>(
   border-top: solid 1px ${charcoal200};
   border-bottom: solid 1px ${charcoal200};
   display: flex;
-  padding: 16px 8px;
+  padding: ${themeSpacing.m} ${themeSpacing.s};
   justify-content: space-between;
   align-items: center;
 
