@@ -41,9 +41,15 @@ Lens' style guide is based on the [Styleguidist](https://react-styleguidist.js.o
 
 # Publishing Lens Components
 
+Lens follows a [semantic versioning scheme](https://semver.org/). That means:
+
+1.  API changes are only allowed in major version changes.
+1.  Backwards compatible API changes can occur in minor version changes.
+1.  Bug fixes occur in patch version changes.
+
 To publish components:
 
-1.  Increment the version number in [package.json](package.json) using `yarn version`
+1.  Increment the version number according to Lens' sematic versioning philosophy in [package.json](package.json) using `yarn version`
 1.  `git push origin --tags`
 1.  `yarn release`
 
