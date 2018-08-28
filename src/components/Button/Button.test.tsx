@@ -4,7 +4,7 @@ import { create } from 'react-test-renderer'
 import { ThemeProvider } from '../../styled_components'
 import theme from '../../themes'
 import { NamedColor } from '../../themes/theme_colors'
-import { Button, ButtonTypes, ButtonVariants } from './Button'
+import { Button, ButtonVariants } from './Button'
 
 test('Button default', () => {
   const component = create(<Button theme={theme}>🥑</Button>)
@@ -34,7 +34,7 @@ test('Button variant transparent', () => {
 
 test('Button type submit', () => {
   const component = create(
-    <Button theme={theme} type={ButtonTypes.Submit}>
+    <Button theme={theme} type={'submit'}>
       🥑
     </Button>
   )
@@ -44,7 +44,7 @@ test('Button type submit', () => {
 
 test('Button type reset', () => {
   const component = create(
-    <Button theme={theme} type={ButtonTypes.Reset}>
+    <Button theme={theme} type={'reset'}>
       🥑
     </Button>
   )
@@ -54,7 +54,7 @@ test('Button type reset', () => {
 
 test('Button type button', () => {
   const component = create(
-    <Button theme={theme} type={ButtonTypes.Button}>
+    <Button theme={theme} type={'button'}>
       🥑
     </Button>
   )
@@ -64,7 +64,7 @@ test('Button type button', () => {
 
 test('Button type menu', () => {
   const component = create(
-    <Button theme={theme} type={ButtonTypes.Menu}>
+    <Button theme={theme} type={'menu'}>
       🥑
     </Button>
   )
