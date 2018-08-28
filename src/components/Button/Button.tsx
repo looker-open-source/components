@@ -11,9 +11,24 @@ import { SizeLarge, SizeMedium, SizeSmall, SizeXSmall } from '../../types'
 export type ButtonSizes = SizeXSmall | SizeSmall | SizeMedium | SizeLarge
 
 export interface ButtonProps {
+  /**
+   * Defines the color of the button. Can be the string name of a color listed in the color theme, or a color object.
+   * @default "primary"
+   */
   color?: keyof NamedColors | NamedColor
+  /**
+   * Defines the size of the button.
+   * @default "medium"
+   */
   size?: ButtonSizes
+  /**
+   * Defines the variant or mapping of colors to style properties, like border of the button.
+   * @default "default"
+   */
   variant?: 'default' | 'outline' | 'transparent'
+  /**
+   * Optional function to be triggered when a user clicks a button.
+   */
   onClick?: React.MouseEventHandler<HTMLButtonElement>
 }
 
