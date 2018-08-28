@@ -34,7 +34,7 @@ test('Button variant transparent', () => {
 
 test('Button type submit', () => {
   const component = create(
-    <Button theme={theme} type={'submit'}>
+    <Button theme={theme} type="submit">
       🥑
     </Button>
   )
@@ -44,7 +44,7 @@ test('Button type submit', () => {
 
 test('Button type reset', () => {
   const component = create(
-    <Button theme={theme} type={'reset'}>
+    <Button theme={theme} type="reset">
       🥑
     </Button>
   )
@@ -54,7 +54,7 @@ test('Button type reset', () => {
 
 test('Button type button', () => {
   const component = create(
-    <Button theme={theme} type={'button'}>
+    <Button theme={theme} type="button">
       🥑
     </Button>
   )
@@ -64,7 +64,7 @@ test('Button type button', () => {
 
 test('Button type menu', () => {
   const component = create(
-    <Button theme={theme} type={'menu'}>
+    <Button theme={theme} type="menu">
       🥑
     </Button>
   )
