@@ -21,6 +21,7 @@ export interface ButtonProps {
   size?: ButtonSizes
   variant?: ButtonVariants
   onClick?: React.MouseEventHandler<HTMLButtonElement>
+  type?: 'submit' | 'reset' | 'button' | 'menu'
 }
 
 type ThemedProps<P> = ThemedStyledProps<P, ThemeInterface>

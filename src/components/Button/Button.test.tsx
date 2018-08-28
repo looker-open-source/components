@@ -32,6 +32,46 @@ test('Button variant transparent', () => {
   expect(tree).toMatchSnapshot()
 })
 
+test('Button type submit', () => {
+  const component = create(
+    <Button theme={theme} type="submit">
+      🥑
+    </Button>
+  )
+  const tree = component.toJSON()
+  expect(tree).toMatchSnapshot()
+})
+
+test('Button type reset', () => {
+  const component = create(
+    <Button theme={theme} type="reset">
+      🥑
+    </Button>
+  )
+  const tree = component.toJSON()
+  expect(tree).toMatchSnapshot()
+})
+
+test('Button type button', () => {
+  const component = create(
+    <Button theme={theme} type="button">
+      🥑
+    </Button>
+  )
+  const tree = component.toJSON()
+  expect(tree).toMatchSnapshot()
+})
+
+test('Button type menu', () => {
+  const component = create(
+    <Button theme={theme} type="menu">
+      🥑
+    </Button>
+  )
+  const tree = component.toJSON()
+  expect(tree).toMatchSnapshot()
+})
+
 test('Button primary color', () => {
   const component = create(
     <Button theme={theme} color="primary">
