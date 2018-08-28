@@ -3,7 +3,7 @@ import * as React from 'react'
 import { create } from 'react-test-renderer'
 import { ThemeProvider } from '../../styled_components'
 import theme from '../../themes'
-import { NamedColor } from '../../themes/theme_colors'
+import { SemanticColor } from '../../themes/theme_semantic_colors'
 import { Button } from './Button'
 
 test('Button default', () => {
@@ -93,12 +93,13 @@ test('Button destructive color', () => {
 })
 
 test('Button accepts a NamedColor object for the color property', () => {
-  const punkRockColor: NamedColor = {
+  const punkRockColor: SemanticColor = {
     borderColor: 'MediumVioletRed',
     dark: 'PaleVioletRed',
     darker: 'MediumVioletRed',
     light: 'HotPink',
     lighter: 'LightPink',
+    linkColor: 'DeepPink',
     main: 'DeepPink',
     text: 'White',
   }
