@@ -16,11 +16,19 @@ export enum ButtonVariants {
   Transparent = 'transparent',
 }
 
+export enum ButtonTypes {
+  Submit = 'submit',
+  Reset = 'reset',
+  Button = 'button',
+  Menu = 'menu',
+}
+
 export interface ButtonProps {
   color?: keyof NamedColors | NamedColor
   size?: ButtonSizes
   variant?: ButtonVariants
   onClick?: React.MouseEventHandler<HTMLButtonElement>
+  type?: ButtonTypes
 }
 
 type ThemedProps<P> = ThemedStyledProps<P, ThemeInterface>

@@ -4,7 +4,7 @@ import { create } from 'react-test-renderer'
 import { ThemeProvider } from '../../styled_components'
 import theme from '../../themes'
 import { NamedColor } from '../../themes/theme_colors'
-import { Button, ButtonVariants } from './Button'
+import { Button, ButtonTypes, ButtonVariants } from './Button'
 
 test('Button default', () => {
   const component = create(<Button theme={theme}>🥑</Button>)
@@ -25,6 +25,46 @@ test('Button variant outline', () => {
 test('Button variant transparent', () => {
   const component = create(
     <Button theme={theme} variant={ButtonVariants.Transparent}>
+      🥑
+    </Button>
+  )
+  const tree = component.toJSON()
+  expect(tree).toMatchSnapshot()
+})
+
+test('Button type submit', () => {
+  const component = create(
+    <Button theme={theme} type={ButtonTypes.Submit}>
+      🥑
+    </Button>
+  )
+  const tree = component.toJSON()
+  expect(tree).toMatchSnapshot()
+})
+
+test('Button type reset', () => {
+  const component = create(
+    <Button theme={theme} type={ButtonTypes.Reset}>
+      🥑
+    </Button>
+  )
+  const tree = component.toJSON()
+  expect(tree).toMatchSnapshot()
+})
+
+test('Button type button', () => {
+  const component = create(
+    <Button theme={theme} type={ButtonTypes.Button}>
+      🥑
+    </Button>
+  )
+  const tree = component.toJSON()
+  expect(tree).toMatchSnapshot()
+})
+
+test('Button type menu', () => {
+  const component = create(
+    <Button theme={theme} type={ButtonTypes.Menu}>
       🥑
     </Button>
   )
