@@ -137,7 +137,6 @@ Sometimes you may want to extend the Button defaults to create a specific stylin
 const RoundButton = Button.extend`
   border-radius: 3rem;
 `
-
 ;<RoundButton>Hello RoundButton</RoundButton>
 ```
 
@@ -155,7 +154,6 @@ const punkRockColor = {
   borderColor: 'MediumVioletRed',
   text: 'White',
 }
-
 ;<Button color={punkRockColor}>I'm a Punk Rock Button</Button>
 ```
 
@@ -179,10 +177,9 @@ const mildTheme = (theme) => {
   })
 
   const newTheme = Object.assign({}, theme)
-  newTheme.colors = Object.assign({}, theme.colors)
-  newTheme.colors.semanticColors = {}
-  newTheme.colors.semanticColors.primary = primary
-  newTheme.colors.semanticColors.destructive = destructive
+  newTheme.semanticColors = {}
+  newTheme.semanticColors.primary = primary
+  newTheme.semanticColors.destructive = destructive
   return newTheme
 }
 
