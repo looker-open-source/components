@@ -3,7 +3,7 @@
 <div class="doc-section-divider"></div>
 
 ```js noeditor
-const BorderRender = require('../../styleguide_components/BorderRender').BorderRender;
+const BorderRender = require('../../../styleguide_components/BorderRender').BorderRender;
 
 <BorderRender />
 ```
