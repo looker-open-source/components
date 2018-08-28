@@ -92,7 +92,7 @@ test('Button destructive color', () => {
   expect(tree).toMatchSnapshot()
 })
 
-test('Button accepts a NamedColor object for the color property', () => {
+test('Button accepts a SemanticColor object for the color property', () => {
   const punkRockColor: SemanticColor = {
     borderColor: 'MediumVioletRed',
     dark: 'PaleVioletRed',

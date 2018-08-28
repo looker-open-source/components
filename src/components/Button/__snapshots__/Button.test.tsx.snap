@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Button accepts a NamedColor object for the color property 1`] = `
+exports[`Button accepts a SemanticColor object for the color property 1`] = `
 .c0 {
   border-radius: 0.25rem;
   cursor: pointer;
