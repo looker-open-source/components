@@ -1,96 +1,96 @@
 const path = require('path')
-const typescriptPropsParser = require('react-docgen-typescript').withDefaultConfig({
-  propFilter: (prop) => {
-    if (prop.parent == null) {
-      return true;
-    }
+const typescriptPropsParser = require('react-docgen-typescript').withDefaultConfig(
+  {
+    propFilter: prop => {
+      if (prop.parent == null) {
+        return true
+      }
 
-    return prop.parent.fileName.indexOf('node_modules/@types/react') < 0;
+      return prop.parent.fileName.indexOf('node_modules/@types/react') < 0
+    },
   }
-}).parse
+).parse
 
 module.exports = {
   assetsDir: 'static',
   compilerConfig: {
     transforms: {
-      dangerousTaggedTemplateString: true
-    }
+      dangerousTaggedTemplateString: true,
+    },
   },
-  ignore: [
-    '**/index.tsx',
-    '**/*.test.tsx'
-  ],
+  ignore: ['**/index.tsx', '**/*.test.tsx'],
   pagePerSection: true,
   propsParser: typescriptPropsParser,
   showCode: true,
   styleguideComponents: {
-    Wrapper: path.join(__dirname, 'styleguide_components/ThemeWrapper')
+    Wrapper: path.join(__dirname, 'styleguide_components/ThemeWrapper'),
   },
   require: [
     'chroma-js',
     path.join(__dirname, 'styleguide_components/ThemeProvider'),
-    path.join(__dirname, '/static/css/style-guide.css')
+    path.join(__dirname, '/static/css/style-guide.css'),
   ],
   sections: [
     {
       name: 'Lens',
-      content: 'docs/intro.md'
+      content: 'src/documentation/intro.md',
     },
     {
       name: 'Principles',
-      sections: [ {
-        name:'Accessibility',
-        content: 'docs/principles/accessibility.md'
-      }
-    ]
+      sections: [
+        {
+          name: 'Accessibility',
+          content: 'src/documentation/principles/accessibility.md',
+        },
+      ],
     },
     {
       name: 'Style',
       sections: [
-      {
-        name: 'Color',
-        content: 'docs/style/Color.md'
-      },
-      {
-        name: 'Typography',
-        content: 'docs/style/Typography.md'
-      },
-      {
-        name: 'Spacing',
-        content: 'docs/style/Spacing.md'
-      },
-      {
-        name: 'Borders & Dividers',
-        content: 'docs/style/Borders.md'
-      },
-    ]
+        {
+          name: 'Color',
+          content: 'src/documentation/style/Color.md',
+        },
+        {
+          name: 'Typography',
+          content: 'src/documentation/style/Typography.md',
+        },
+        {
+          name: 'Spacing',
+          content: 'src/documentation/style/Spacing.md',
+        },
+        {
+          name: 'Borders & Dividers',
+          content: 'src/documentation/style/Borders.md',
+        },
+      ],
     },
     {
       name: 'Components',
-      components: 'src/components/**/*.tsx'
+      components: 'src/components/**/*.tsx',
     },
     {
       name: 'Icons',
       components: 'src/icons/components/*.tsx',
-      content: 'src/icons/components/ALL_ICONS.md'
-    }
+      content: 'src/icons/components/ALL_ICONS.md',
+    },
   ],
   title: 'Lens',
   webpackConfig: {
     resolve: {
-      extensions: ['.ts', '.tsx', '.js', '.jsx', '.scss']
+      extensions: ['.ts', '.tsx', '.js', '.jsx', '.scss'],
     },
     module: {
       rules: [
         {
           test: /\.(ts|tsx)$/,
           exclude: /node_modules/,
-          loader: require.resolve('ts-loader')
+          loader: require.resolve('ts-loader'),
         },
         {
           test: /\.jsx?$/,
           exclude: /node_modules/,
-          loader: 'babel-loader'
+          loader: 'babel-loader',
         },
         {
           test: /.scss$/,
@@ -104,29 +104,29 @@ module.exports = {
                 modules: true,
                 namedExport: true,
                 importLoaders: true,
-                localIdentName: '[name]__[local]___[hash:base64:5]'
-              }
-            }
-          ]
+                localIdentName: '[name]__[local]___[hash:base64:5]',
+              },
+            },
+          ],
         },
         {
           test: /\.css$/,
-          use: [ 'style-loader', 'css-loader' ]
+          use: ['style-loader', 'css-loader'],
         },
         {
           test: /\.svg$/,
-          loader: 'svg-inline-loader?classPrefix'
+          loader: 'svg-inline-loader?classPrefix',
         },
-      ]
-    }
+      ],
+    },
   },
   template: {
-    favicon: 'favicon.ico'
+    favicon: 'favicon.ico',
   },
   theme: {
-      fontFamily: {
-      base: '"Open Sans", sans-serif'
-    }
+    fontFamily: {
+      base: '"Open Sans", sans-serif',
+    },
   },
   styles: {
     Logo: {
@@ -142,43 +142,39 @@ module.exports = {
         textTransform: 'uppercase',
         letterSpacing: '1.5px',
         color: '#3C4345',
-
-      }
+      },
     },
     Para: {
       para: {
-        maxWidth: '765px'
-      }
+        maxWidth: '765px',
+      },
     },
     Code: {
       code: {
         color: '#4C33AA',
         padding: '2px 4px',
         borderRadius: '4px',
-        background: '#F6F6F7  '
-      }
+        background: '#F6F6F7  ',
+      },
     },
     Playground: {
-        preview: {
-          backgroundColor: '#F2F2F9',
-          border: 'none',
-          borderRadius: '6px'
-      }
+      preview: {
+        backgroundColor: '#F2F2F9',
+        border: 'none',
+        borderRadius: '6px',
+      },
     },
     Typography: {
       heading1: {
-        fontSize: '52px'
-      }
+        fontSize: '52px',
+      },
     },
     Table: {
-
-      tableHead: {
-
-      },
+      tableHead: {},
       cellHeading: {
         '&:nth-child(2)': {
-          width: '55%'
-        }
+          width: '55%',
+        },
       },
     },
     Heading: {
@@ -191,37 +187,37 @@ module.exports = {
         lineHeight: '64px',
       },
       heading3: {
-        fontSize: '25px'  ,
+        fontSize: '25px',
         lineHeight: '40px',
         fontWeight: 600,
       },
       heading4: {
-        fontSize: '22px'  ,
+        fontSize: '22px',
         lineHeight: '32px',
         margin: '40px 0 0',
-        fontWeight: 600
+        fontWeight: 600,
       },
       heading5: {
         fontSize: '16px',
         lineHeight: '28px',
-        fontWeight: 600
-      }
+        fontWeight: 600,
+      },
     },
     StyleGuide: {
       '@global body': {
-        fontFamily: '"Open Sans", sans-serif'
+        fontFamily: '"Open Sans", sans-serif',
       },
       hasSidebar: {
-        paddingLeft: '300px'
+        paddingLeft: '300px',
       },
       sidebar: {
         width: '300px',
         background: '#F4F6F7',
-        padding: '0 12px'
-      }
-    }
+        padding: '0 12px',
+      },
+    },
   },
   editorConfig: {
-    theme: 'oceanic-next'
-  }
+    theme: 'oceanic-next',
+  },
 }

@@ -1,7 +1,7 @@
 import {
   Interpolation,
   StyledComponentClass,
-  ThemedStyledProps
+  ThemedStyledProps,
 } from 'styled-components'
 import styled from './styled_components'
 import { reset } from './styles/reset'

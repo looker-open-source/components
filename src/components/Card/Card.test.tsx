@@ -1,9 +1,9 @@
+import 'jest-styled-components'
 import * as React from 'react'
+import { create } from 'react-test-renderer'
+import theme from '../../themes'
 import { Card } from './Card'
 import { CardMedia } from './CardMedia'
-import { create } from 'react-test-renderer'
-import 'jest-styled-components'
-import theme from '../../themes'
 
 test('A Card', () => {
   const component = create(<Card theme={theme}>🥑</Card>)

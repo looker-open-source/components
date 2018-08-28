@@ -1,9 +1,9 @@
-import * as React from 'react'
 import 'jest-styled-components'
+import * as React from 'react'
 import { create } from 'react-test-renderer'
 
-import { Table } from './Table'
 import theme from '../../themes'
+import { Table } from './Table'
 
 test('A Table should render', () => {
   const component = create(<Table theme={theme} />)

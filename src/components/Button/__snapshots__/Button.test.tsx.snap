@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Button states 1`] = `
+exports[`Button accepts a SemanticColor object for the color property 1`] = `
 .c0 {
   border-radius: 0.25rem;
   cursor: pointer;
@@ -14,31 +14,86 @@ exports[`Button states 1`] = `
   transition: border 80ms;
   vertical-align: middle;
   white-space: nowrap;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   font-size: 1rem;
   line-height: 1.5rem;
-  padding: 0.375rem 1rem;
-  background: #64518A;
-  border: 0.0625rem solid #64518A;
-  color: #FFFFFF;
+  border-style: solid;
+  border-width: 0.0625rem;
+  background: DeepPink;
+  border-color: DeepPink;
+  color: White;
 }
 
 .c0:focus {
-  box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
+  box-shadow: 0 0 0 0.15rem rgba(255,20,147,0.25);
+}
+
+.c0[disabled] {
+  cursor: default;
+  -webkit-filter: grayscale(0.3);
+  filter: grayscale(0.3);
+  opacity: 0.25;
+}
+
+.c0[disabled]:hover,
+.c0[disabled]:active,
+.c0[disabled]:focus {
+  background-color: DeepPink;
+  border-color: MediumVioletRed;
 }
 
 .c0:hover,
 .c0:focus,
 .c0.hover {
-  background: #473764;
-  border-color: #473764;
-  color: #FFFFFF;
+  background: PaleVioletRed;
+  border-color: PaleVioletRed;
 }
 
 .c0:active,
 .c0.active {
-  background: #2A1B60;
-  border-color: #2A1B60;
+  background: MediumVioletRed;
+  border-color: MediumVioletRed;
+}
+
+<button
+  className="c0"
+>
+  🥑
+</button>
+`;
+
+exports[`Button default 1`] = `
+.c0 {
+  border-radius: 0.25rem;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  outline: none;
+  -webkit-transition: border 80ms;
+  transition: border 80ms;
+  vertical-align: middle;
+  white-space: nowrap;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  border-style: solid;
+  border-width: 0.0625rem;
+  background: #64518A;
+  border-color: #64518A;
   color: #FFFFFF;
+}
+
+.c0:focus {
+  box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
 }
 
 .c0[disabled] {
@@ -52,12 +107,482 @@ exports[`Button states 1`] = `
 .c0[disabled]:active,
 .c0[disabled]:focus {
   background-color: #64518A;
+  border-color: #C1C6CC;
+}
+
+.c0:hover,
+.c0:focus,
+.c0.hover {
+  background: #473764;
+  border-color: #473764;
+}
+
+.c0:active,
+.c0.active {
+  background: #2A1B60;
+  border-color: #2A1B60;
+}
+
+<button
+  className="c0"
+>
+  🥑
+</button>
+`;
+
+exports[`Button destructive color 1`] = `
+.c0 {
+  border-radius: 0.25rem;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  outline: none;
+  -webkit-transition: border 80ms;
+  transition: border 80ms;
+  vertical-align: middle;
+  white-space: nowrap;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  border-style: solid;
+  border-width: 0.0625rem;
+  background: #CC1F36;
+  border-color: #CC1F36;
+  color: #FFFFFF;
+}
+
+.c0:focus {
+  box-shadow: 0 0 0 0.15rem rgba(204,31,54,0.25);
+}
+
+.c0[disabled] {
+  cursor: default;
+  -webkit-filter: grayscale(0.3);
+  filter: grayscale(0.3);
+  opacity: 0.25;
+}
+
+.c0[disabled]:hover,
+.c0[disabled]:active,
+.c0[disabled]:focus {
+  background-color: #CC1F36;
+  border-color: #CC1F36;
+}
+
+.c0:hover,
+.c0:focus,
+.c0.hover {
+  background: #B2121F;
+  border-color: #B2121F;
+}
+
+.c0:active,
+.c0.active {
+  background: #990F14;
+  border-color: #990F14;
+}
+
+<button
+  className="c0"
+>
+  🥑
+</button>
+`;
+
+exports[`Button primary color 1`] = `
+.c0 {
+  border-radius: 0.25rem;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  outline: none;
+  -webkit-transition: border 80ms;
+  transition: border 80ms;
+  vertical-align: middle;
+  white-space: nowrap;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  border-style: solid;
+  border-width: 0.0625rem;
+  background: #64518A;
   border-color: #64518A;
   color: #FFFFFF;
 }
 
-.c0 + button {
-  margin-left: 0.5rem;
+.c0:focus {
+  box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
+}
+
+.c0[disabled] {
+  cursor: default;
+  -webkit-filter: grayscale(0.3);
+  filter: grayscale(0.3);
+  opacity: 0.25;
+}
+
+.c0[disabled]:hover,
+.c0[disabled]:active,
+.c0[disabled]:focus {
+  background-color: #64518A;
+  border-color: #C1C6CC;
+}
+
+.c0:hover,
+.c0:focus,
+.c0.hover {
+  background: #473764;
+  border-color: #473764;
+}
+
+.c0:active,
+.c0.active {
+  background: #2A1B60;
+  border-color: #2A1B60;
+}
+
+<button
+  className="c0"
+>
+  🥑
+</button>
+`;
+
+exports[`Button type button 1`] = `
+.c0 {
+  border-radius: 0.25rem;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  outline: none;
+  -webkit-transition: border 80ms;
+  transition: border 80ms;
+  vertical-align: middle;
+  white-space: nowrap;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  border-style: solid;
+  border-width: 0.0625rem;
+  background: #64518A;
+  border-color: #64518A;
+  color: #FFFFFF;
+}
+
+.c0:focus {
+  box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
+}
+
+.c0[disabled] {
+  cursor: default;
+  -webkit-filter: grayscale(0.3);
+  filter: grayscale(0.3);
+  opacity: 0.25;
+}
+
+.c0[disabled]:hover,
+.c0[disabled]:active,
+.c0[disabled]:focus {
+  background-color: #64518A;
+  border-color: #C1C6CC;
+}
+
+.c0:hover,
+.c0:focus,
+.c0.hover {
+  background: #473764;
+  border-color: #473764;
+}
+
+.c0:active,
+.c0.active {
+  background: #2A1B60;
+  border-color: #2A1B60;
+}
+
+<button
+  className="c0"
+  type="button"
+>
+  🥑
+</button>
+`;
+
+exports[`Button type menu 1`] = `
+.c0 {
+  border-radius: 0.25rem;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  outline: none;
+  -webkit-transition: border 80ms;
+  transition: border 80ms;
+  vertical-align: middle;
+  white-space: nowrap;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  border-style: solid;
+  border-width: 0.0625rem;
+  background: #64518A;
+  border-color: #64518A;
+  color: #FFFFFF;
+}
+
+.c0:focus {
+  box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
+}
+
+.c0[disabled] {
+  cursor: default;
+  -webkit-filter: grayscale(0.3);
+  filter: grayscale(0.3);
+  opacity: 0.25;
+}
+
+.c0[disabled]:hover,
+.c0[disabled]:active,
+.c0[disabled]:focus {
+  background-color: #64518A;
+  border-color: #C1C6CC;
+}
+
+.c0:hover,
+.c0:focus,
+.c0.hover {
+  background: #473764;
+  border-color: #473764;
+}
+
+.c0:active,
+.c0.active {
+  background: #2A1B60;
+  border-color: #2A1B60;
+}
+
+<button
+  className="c0"
+  type="menu"
+>
+  🥑
+</button>
+`;
+
+exports[`Button type reset 1`] = `
+.c0 {
+  border-radius: 0.25rem;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  outline: none;
+  -webkit-transition: border 80ms;
+  transition: border 80ms;
+  vertical-align: middle;
+  white-space: nowrap;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  border-style: solid;
+  border-width: 0.0625rem;
+  background: #64518A;
+  border-color: #64518A;
+  color: #FFFFFF;
+}
+
+.c0:focus {
+  box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
+}
+
+.c0[disabled] {
+  cursor: default;
+  -webkit-filter: grayscale(0.3);
+  filter: grayscale(0.3);
+  opacity: 0.25;
+}
+
+.c0[disabled]:hover,
+.c0[disabled]:active,
+.c0[disabled]:focus {
+  background-color: #64518A;
+  border-color: #C1C6CC;
+}
+
+.c0:hover,
+.c0:focus,
+.c0.hover {
+  background: #473764;
+  border-color: #473764;
+}
+
+.c0:active,
+.c0.active {
+  background: #2A1B60;
+  border-color: #2A1B60;
+}
+
+<button
+  className="c0"
+  type="reset"
+>
+  🥑
+</button>
+`;
+
+exports[`Button type submit 1`] = `
+.c0 {
+  border-radius: 0.25rem;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  outline: none;
+  -webkit-transition: border 80ms;
+  transition: border 80ms;
+  vertical-align: middle;
+  white-space: nowrap;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  border-style: solid;
+  border-width: 0.0625rem;
+  background: #64518A;
+  border-color: #64518A;
+  color: #FFFFFF;
+}
+
+.c0:focus {
+  box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
+}
+
+.c0[disabled] {
+  cursor: default;
+  -webkit-filter: grayscale(0.3);
+  filter: grayscale(0.3);
+  opacity: 0.25;
+}
+
+.c0[disabled]:hover,
+.c0[disabled]:active,
+.c0[disabled]:focus {
+  background-color: #64518A;
+  border-color: #C1C6CC;
+}
+
+.c0:hover,
+.c0:focus,
+.c0.hover {
+  background: #473764;
+  border-color: #473764;
+}
+
+.c0:active,
+.c0.active {
+  background: #2A1B60;
+  border-color: #2A1B60;
+}
+
+<button
+  className="c0"
+  type="submit"
+>
+  🥑
+</button>
+`;
+
+exports[`Button variant outline 1`] = `
+.c0 {
+  border-radius: 0.25rem;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  outline: none;
+  -webkit-transition: border 80ms;
+  transition: border 80ms;
+  vertical-align: middle;
+  white-space: nowrap;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  border-style: solid;
+  border-width: 0.0625rem;
+  background: #FFFFFF;
+  border-color: #C1C6CC;
+  color: #64518A;
+}
+
+.c0:focus {
+  box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
+}
+
+.c0[disabled] {
+  cursor: default;
+  -webkit-filter: grayscale(0.3);
+  filter: grayscale(0.3);
+  opacity: 0.25;
+}
+
+.c0[disabled]:hover,
+.c0[disabled]:active,
+.c0[disabled]:focus {
+  background-color: #FFFFFF;
+  border-color: #C1C6CC;
+  color: #64518A;
+}
+
+.c0:hover,
+.c0:focus,
+.c0.hover {
+  background: #FFFFFF;
+  border-color: #64518A;
+  color: #2A1B60;
+}
+
+.c0:active,
+.c0.active {
+  background: #64518A;
+  border-color: #64518A;
+  color: #FFFFFF;
 }
 
 <button
@@ -81,31 +606,21 @@ exports[`Button variant transparent 1`] = `
   transition: border 80ms;
   vertical-align: middle;
   white-space: nowrap;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   font-size: 1rem;
   line-height: 1.5rem;
-  padding: 0.375rem 1rem;
+  border-style: solid;
+  border-width: 0.0625rem;
   background: transparent;
-  border: 0.0625rem solid transparent;
+  border-color: transparent;
   color: #64518A;
 }
 
 .c0:focus {
   box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
-}
-
-.c0:hover,
-.c0:focus,
-.c0.hover {
-  background: transparent;
-  border-color: transparent;
-  color: #2A1B60;
-}
-
-.c0:active,
-.c0.active {
-  background: #F3F2FF;
-  border-color: transparent;
-  color: #2A1B60;
 }
 
 .c0[disabled] {
@@ -123,8 +638,19 @@ exports[`Button variant transparent 1`] = `
   color: #64518A;
 }
 
-.c0 + button {
-  margin-left: 0.5rem;
+.c0:hover,
+.c0:focus,
+.c0.hover {
+  background: transparent;
+  border-color: transparent;
+  color: #2A1B60;
+}
+
+.c0:active,
+.c0.active {
+  background: #F3F2FF;
+  border-color: transparent;
+  color: #2A1B60;
 }
 
 <button

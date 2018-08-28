@@ -17,8 +17,9 @@ The `<Button />` component accepts a `variant` property which allows you to sele
 Use a primary button for the most frequently used action or most important action on a page. Primary buttons should only appear once on a page. They are sometimes accompanied by a secondary button.
 
 ```js
- <Button>Primary Button</Button>
+<Button>Primary Button</Button>
 ```
+
 ##### Primary states
 
 ```js noeditor
@@ -31,6 +32,7 @@ Use a primary button for the most frequently used action or most important actio
 ---
 
 #### Outline
+
 Use an outline button alongside a primary button to provide alternative actions on a page. Outline buttons should only appear alongside primary buttons for secondary actions. Use no more than two secondary buttons on a page.
 
 ```js
@@ -99,25 +101,41 @@ Use the size property on a `<Button />` to modify the size the button rendered. 
 
 ```js
 <List>
-  <ListItem><Button size="large">Large Button</Button></ListItem>
-  <ListItem><Button>Default Button</Button></ListItem>
-  <ListItem><Button size="small">Small Light Button</Button></ListItem>
-  <ListItem><Button size="xsmall">Extra-Small Button</Button></ListItem>
+  <ListItem>
+    <Button size="large">Large Button</Button>
+  </ListItem>
+  <ListItem>
+    <Button>Medium (default) Button</Button>
+  </ListItem>
+  <ListItem>
+    <Button size="small">Small Button</Button>
+  </ListItem>
+  <ListItem>
+    <Button size="xsmall">Extra-Small Button</Button>
+  </ListItem>
 </List>
 ```
 
 ### Disabled
+
 Use a disabled button to indicate to the user what action will be possible on a page once a prerequisite action is taken. Disabled buttons do not respond to user interaction.
+
 ```js
 <Button disabled>I am disabled</Button>
 ```
 
 ### Additional Action Considerations
+
 When a call to action requires additional steps, include an ellipsis at the end of the button text as a visual clue. This helps reinforce that there are additional steps that can take place before the action takes effect.
+
 ```js
 <List>
-  <ListItem><Button mode="scary">Move to Trash...</Button></ListItem>
-  <ListItem><Button>Print...</Button></ListItem>
+  <ListItem>
+    <Button mode="scary">Move to Trash...</Button>
+  </ListItem>
+  <ListItem>
+    <Button>Print...</Button>
+  </ListItem>
 </List>
 ```
 
@@ -128,9 +146,25 @@ Sometimes you may want to extend the Button defaults to create a specific stylin
 ```js
 const RoundButton = Button.extend`
   border-radius: 3rem;
-`;
+`
+;<RoundButton>Hello RoundButton</RoundButton>
+```
 
-<RoundButton>Hello RoundButton</RoundButton>
+### Overriding A Color
+
+Buttons can be passed a SemanticColor object like so:
+
+```js
+const punkRockColor = {
+  main: 'DeepPink',
+  light: 'HotPink',
+  lighter: 'LightPink',
+  dark: 'PaleVioletRed',
+  darker: 'MediumVioletRed',
+  borderColor: 'MediumVioletRed',
+  text: 'White',
+}
+;<Button color={punkRockColor}>I'm a Punk Rock Button</Button>
 ```
 
 ### Theming Button
@@ -139,26 +173,32 @@ Button uses the following theme classes...
 
 ```js
 const mildTheme = (theme) => {
-  const themeColors = Object.assign({}, theme.colors, {
-    primary: '#2db264',
-    primaryDark: '#198044',
-    primaryDarker: '#12593c',
-    destructive: '#ffd200',
-    destructiveDark: '#e5ae17',
-    destructiveDarker: '#a67e11',
-    destructiveLighter: '#fff1bf'
+  const primary = Object.assign({}, theme.semanticColors.primary, {
+    main: '#2db264',
+    dark: '#198044',
+    darker: '#12593c'
+  })
+  const destructive = Object.assign({}, theme.semanticColors.destructive, {
+    main: '#ffd200',
+    dark: '#e5ae17',
+    darker: '#a67e11',
+    lighter: '#fff1bf',
+    borderColor: '#ffd200'
   })
 
-  return Object.assign({}, theme, {colors: themeColors})
+  const newTheme = Object.assign({}, theme)
+  newTheme.semanticColors = {}
+  newTheme.semanticColors.primary = primary
+  newTheme.semanticColors.destructive = destructive
+  return newTheme
 }
 
 <React.Fragment>
   <ThemeProvider theme={mildTheme}>
-    <Button>Mild Button</Button>
-  </ThemeProvider>
-  <span> </span>
-  <ThemeProvider theme={mildTheme}>
-    <Button color="destructive" variant="outline">Mild Destructive Outline Button</Button>
+    <div>
+      <Button>Mild Button</Button>
+      <Button color="destructive" variant="outline">Mild Destructive Outline Button</Button>
+    </div>
   </ThemeProvider>
 </React.Fragment>
 ```

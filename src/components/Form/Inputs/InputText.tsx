@@ -5,7 +5,7 @@ export enum InputTextTypes {
   Email = 'email',
   Number = 'number',
   Password = 'password',
-  Text = 'text'
+  Text = 'text',
 }
 
 export interface InputTextProps extends React.HTMLProps<HTMLInputElement> {
@@ -13,7 +13,7 @@ export interface InputTextProps extends React.HTMLProps<HTMLInputElement> {
 }
 
 export const InputText = styled<InputTextProps, 'input'>('input')`
-  border: solid 1px ${props => props.theme.colors.borderColor};
+  border: solid 1px ${props => props.theme.semanticColors.primary.borderColor};
   height: 28px;
   padding: 0 ${props => props.theme.spacing.s};
   border-radius: 4px;

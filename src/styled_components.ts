@@ -1,6 +1,8 @@
 // Required by ThemeProvider to compile the proper declaration files.
 import * as React from 'react'
 import * as styledComponents from 'styled-components'
+// tslint:disable-next-line:no-duplicate-imports
+import { ThemedStyledProps } from 'styled-components'
 import { ThemeInterface } from './themes'
 export { StyledComponentClass, Styles } from 'styled-components'
 
@@ -15,5 +17,5 @@ const styled = (styledComponents as styledComponents.ThemedStyledComponentsModul
   ThemeInterface
 >).default
 
-export { css, injectGlobal, keyframes, React, ThemeProvider }
+export { css, injectGlobal, keyframes, React, ThemeProvider, ThemedStyledProps }
 export default styled
