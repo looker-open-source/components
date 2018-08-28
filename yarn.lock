@@ -745,6 +745,12 @@
   version "9.6.5"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/@types/node/-/node-9.6.5.tgz#ee700810fdf49ac1c399fc5980b7559b3e5a381d"
 
+"@types/prop-types@*":
+  version "15.5.5"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/@types/prop-types/-/prop-types-15.5.5.tgz#17038dd322c2325f5da650a94d5f9974943625e3"
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-dom@16.0.6":
   version "16.0.6"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/@types/react-dom/-/react-dom-16.0.6.tgz#f1a65a4e7be8ed5d123f8b3b9eacc913e35a1a3c"
@@ -762,16 +768,11 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@16.4.2":
-  version "16.4.2"
-  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/@types/react/-/react-16.4.2.tgz#f1a9cf1ee85221530def2ac26aee20f910a9dac8"
+"@types/react@*", "@types/react@16.4.8":
+  version "16.4.8"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/@types/react/-/react-16.4.8.tgz#ff0440429783df0927bdcd430fa1225f7c08cf36"
   dependencies:
-    csstype "^2.2.0"
-
-"@types/react@16.4.6":
-  version "16.4.6"
-  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/@types/react/-/react-16.4.6.tgz#5024957c6bcef4f02823accf5974faba2e54fada"
-  dependencies:
+    "@types/prop-types" "*"
     csstype "^2.2.0"
 
 "@types/styled-system@^3.0.2":
