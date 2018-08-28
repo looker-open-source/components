@@ -13,17 +13,27 @@ import { SizeLarge, SizeMedium, SizeSmall, SizeXSmall } from '../../types'
 
 export type ButtonSizes = SizeXSmall | SizeSmall | SizeMedium | SizeLarge
 
-export enum ButtonVariants {
-  Default = 'default',
-  Outline = 'outline',
-  Transparent = 'transparent',
-}
-
 export interface ButtonProps {
+  /**
+   * Defines the color of the button. Can be the string name of a color listed in the color theme, or a color object.
+   * @default "primary"
+   */
   color?: keyof SemanticColors | SemanticColor
+  /**
+   * Defines the size of the button.
+   * @default "medium"
+   */
   size?: ButtonSizes
-  variant?: ButtonVariants
+  /**
+   * Defines the variant or mapping of colors to style properties, like border of the button.
+   * @default "default"
+   */
+  variant?: 'default' | 'outline' | 'transparent'
+  /**
+   * Optional function to be triggered when a user clicks a button.
+   */
   onClick?: React.MouseEventHandler<HTMLButtonElement>
+  type?: 'submit' | 'reset' | 'button' | 'menu'
 }
 
 type ThemedProps<P> = ThemedStyledProps<P, ThemeInterface>
@@ -133,11 +143,11 @@ const variantHelper = (props: ThemedProps<ButtonProps>) => {
     color = props.color
   }
   switch (props.variant || 'default') {
-    case ButtonVariants.Transparent:
+    case 'transparent':
       return transparentVariant(color, props)
-    case ButtonVariants.Outline:
+    case 'outline':
       return outlineVariant(color, props)
-    case ButtonVariants.Default:
+    case 'default':
     default:
       return defaultVariant(color)
   }
