@@ -36,6 +36,24 @@ export interface SemanticColor {
   text: string
 }
 
+/**
+ * Defines color values for specific color groups.
+ *
+ * SemanticColors is one part of a two part color system, which also includes
+ * Palette. The values defined here can be thought of as color groups that may
+ * be used directly by components.
+ *
+ * Each SemanticColor should define the full set of possible color values, such
+ * as main, linkColor, etc so that a color objects can be interchanged without
+ * error across components.
+ *
+ * Some components accept entire color groups to define their appearance.
+ * <Button/> is a good example of this.
+ *
+ * This idea is borrowed directly from the Office UI Fabric component
+ * implementation:
+ * https://github.com/officedev/office-ui-fabric-react/wiki/Theming#what-are-theme-slots
+ */
 export interface SemanticColors {
   /** Colors used for primary actions. */
   primary: SemanticColor
