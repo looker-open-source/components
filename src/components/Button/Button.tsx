@@ -5,7 +5,10 @@ import { merge, mixed } from 'styled-system'
 import styled, { ThemedStyledProps } from '../../styled_components'
 import { brandFont } from '../../styles/typography'
 import { ThemeInterface } from '../../themes'
-import { NamedColor, NamedColors } from '../../themes/theme_colors'
+import {
+  SemanticColor,
+  SemanticColors,
+} from '../../themes/theme_semantic_colors'
 import { SizeLarge, SizeMedium, SizeSmall, SizeXSmall } from '../../types'
 
 export type ButtonSizes = SizeXSmall | SizeSmall | SizeMedium | SizeLarge
@@ -17,7 +20,7 @@ export enum ButtonVariants {
 }
 
 export interface ButtonProps {
-  color?: keyof NamedColors | NamedColor
+  color?: keyof SemanticColors | SemanticColor
   size?: ButtonSizes
   variant?: ButtonVariants
   onClick?: React.MouseEventHandler<HTMLButtonElement>
@@ -25,7 +28,7 @@ export interface ButtonProps {
 
 type ThemedProps<P> = ThemedStyledProps<P, ThemeInterface>
 
-const variantCommonProps = (color: NamedColor) => {
+const variantCommonProps = (color: SemanticColor) => {
   return {
     borderStyle: 'solid',
     borderWidth: rem(1),
@@ -41,7 +44,7 @@ const variantCommonProps = (color: NamedColor) => {
   }
 }
 
-const defaultVariant = (color: NamedColor) => {
+const defaultVariant = (color: SemanticColor) => {
   return merge(variantCommonProps(color), {
     background: color.main,
     borderColor: color.main,
@@ -64,14 +67,17 @@ const defaultVariant = (color: NamedColor) => {
   })
 }
 
-const outlineVariant = (color: NamedColor, props: ThemedProps<ButtonProps>) => {
+const outlineVariant = (
+  color: SemanticColor,
+  props: ThemedProps<ButtonProps>
+) => {
   return merge(variantCommonProps(color), {
-    background: props.theme.colors.white,
+    background: props.theme.palette.white,
     borderColor: color.borderColor,
     color: color.main,
     // tslint:disable-next-line:object-literal-sort-keys
     '&:hover, &:focus, &.hover': {
-      background: props.theme.colors.white,
+      background: props.theme.palette.white,
       borderColor: color.main,
       color: color.darker,
     },
@@ -82,7 +88,7 @@ const outlineVariant = (color: NamedColor, props: ThemedProps<ButtonProps>) => {
     },
     '&[disabled]': {
       '&:hover, &:active, &:focus': {
-        backgroundColor: props.theme.colors.white,
+        backgroundColor: props.theme.palette.white,
         borderColor: color.borderColor,
         color: color.main,
       },
@@ -91,28 +97,28 @@ const outlineVariant = (color: NamedColor, props: ThemedProps<ButtonProps>) => {
 }
 
 const transparentVariant = (
-  color: NamedColor,
+  color: SemanticColor,
   props: ThemedProps<ButtonProps>
 ) => {
   return merge(variantCommonProps(color), {
-    background: props.theme.colors.transparent,
-    borderColor: props.theme.colors.transparent,
+    background: props.theme.palette.transparent,
+    borderColor: props.theme.palette.transparent,
     color: color.main,
     // tslint:disable-next-line:object-literal-sort-keys
     '&:hover, &:focus, &.hover': {
-      background: props.theme.colors.transparent,
-      borderColor: props.theme.colors.transparent,
+      background: props.theme.palette.transparent,
+      borderColor: props.theme.palette.transparent,
       color: color.darker,
     },
     '&:active, &.active': {
       background: color.lighter,
-      borderColor: props.theme.colors.transparent,
+      borderColor: props.theme.palette.transparent,
       color: color.darker,
     },
     '&[disabled]': {
       '&:hover, &:active, &:focus': {
-        backgroundColor: props.theme.colors.transparent,
-        borderColor: props.theme.colors.transparent,
+        backgroundColor: props.theme.palette.transparent,
+        borderColor: props.theme.palette.transparent,
         color: color.main,
       },
     },
@@ -122,7 +128,7 @@ const transparentVariant = (
 const variantHelper = (props: ThemedProps<ButtonProps>) => {
   let color
   if (typeof props.color === 'string' || props.color === undefined) {
-    color = props.theme.colors.namedColors[props.color || 'primary']
+    color = props.theme.semanticColors[props.color || 'primary']
   } else {
     color = props.color
   }

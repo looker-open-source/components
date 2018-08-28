@@ -9,8 +9,7 @@ export const Card = styled<CardProps, 'div'>('div')`
   background: #fff;
   border-radius: 4px;
   box-shadow: ${props => (props.raised ? props.theme.shadows.one : 'none')};
-  border: solid 1px
-    ${props => props.theme.colors.namedColors.primary.borderColor};
+  border: solid 1px ${props => props.theme.semanticColors.primary.borderColor};
   display: flex;
   flex-direction: column;
   height: 100%;
