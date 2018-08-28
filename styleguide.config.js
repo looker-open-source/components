@@ -33,14 +33,14 @@ module.exports = {
   sections: [
     {
       name: 'Lens',
-      content: 'docs/intro.md',
+      content: 'src/documentation/intro.md',
     },
     {
       name: 'Principles',
       sections: [
         {
           name: 'Accessibility',
-          content: 'docs/principles/accessibility.md',
+          content: 'src/documentation/principles/accessibility.md',
         },
       ],
     },
@@ -49,19 +49,19 @@ module.exports = {
       sections: [
         {
           name: 'Color',
-          content: 'docs/style/Color.md',
+          content: 'src/documentation/style/Color.md',
         },
         {
           name: 'Typography',
-          content: 'docs/style/Typography.md',
+          content: 'src/documentation/style/Typography.md',
         },
         {
           name: 'Spacing',
-          content: 'docs/style/Spacing.md',
+          content: 'src/documentation/style/Spacing.md',
         },
         {
           name: 'Borders & Dividers',
-          content: 'docs/style/Borders.md',
+          content: 'src/documentation/style/Borders.md',
         },
       ],
     },
