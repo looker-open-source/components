@@ -10,16 +10,10 @@ import { SizeLarge, SizeMedium, SizeSmall, SizeXSmall } from '../../types'
 
 export type ButtonSizes = SizeXSmall | SizeSmall | SizeMedium | SizeLarge
 
-export enum ButtonVariants {
-  Default = 'default',
-  Outline = 'outline',
-  Transparent = 'transparent',
-}
-
 export interface ButtonProps {
   color?: keyof NamedColors | NamedColor
   size?: ButtonSizes
-  variant?: ButtonVariants
+  variant?: 'default' | 'outline' | 'transparent'
   onClick?: React.MouseEventHandler<HTMLButtonElement>
 }
 
@@ -127,11 +121,11 @@ const variantHelper = (props: ThemedProps<ButtonProps>) => {
     color = props.color
   }
   switch (props.variant || 'default') {
-    case ButtonVariants.Transparent:
+    case 'transparent':
       return transparentVariant(color, props)
-    case ButtonVariants.Outline:
+    case 'outline':
       return outlineVariant(color, props)
-    case ButtonVariants.Default:
+    case 'default':
     default:
       return defaultVariant(color)
   }
