@@ -59,13 +59,55 @@ Additionally a simplistic [launch.json](.vscode/launch.json) file is also includ
 2.  In the top left choose either "Jest All" or "Jest Current File"
 3.  Click the Play button
 
-#### Recommended Plugins
+#### Strongly Recommended Plugins
+
+- [Styled Components](https://github.com/styled-components/vscode-styled-components) enables sytax highlighting and intellisense for inline CSS.
+- [TSLint](https://github.com/Microsoft/vscode-tslint) enables inline linting and fixing of code on save
+
+#### Very Helpful Plugins
 
 - [Spell Check](https://github.com/Jason-Rev/vscode-spell-checker) enables spell checking in code
 - [Colorize](https://github.com/kamikillerto/vscode-colorize) displays known colors (string values, hex, rgb, etc) as their actual color value
 - [Prettier](https://github.com/prettier/prettier-vscode) enables Prettier code formatting on save
-- [TSLint](https://github.com/Microsoft/vscode-tslint) enables inline linting and fixing of code on save
 - [Rewrap](https://github.com/stkb/Rewrap) wraps comments at the 80 character column mark automatically
 - [Sort Lines](https://github.com/Tyriar/vscode-sort-lines) quickly resort lines of code
 
 ### Intellij
+
+Intellij comes mostly setup for working with Typescript out of the box, however you'll want to configure a few things and install a few recommended plugins to get the most out of your Lens coding experience.
+
+#### Configuring Typescript
+
+In preferences `(Cmd + ,)` find "Languages & Frameworks" > Typescript. Ensure your configuration looks like the following screenshot:
+
+![Configure Typescript](images/typescript_config.jpg)
+
+#### Configuring TSLint
+
+In preferences `(Cmd + ,)` find "Languages & Frameworks" > Typescript > TSLint. Ensure your configuration looks like the following screenshot:
+
+![Configure TSLint](images/tslint_config.jpg)
+
+#### Running Tests
+
+Intellij should automatically detect Jest tests and provide inline test running tools. Creating a task to run all tests requires a few extra steps.
+
+##### Run all tests
+
+1. Create a new test configuration by selecting "Edit Configurations...":
+    ![New Test Configuration](images/intellij_test_configuration.jpg)
+1. Click the `+` icon in the top left and choose "Jest":
+    ![Add Jest Configuration](images/intellij_test_configuration_add.jpg)
+1. Name the configuration something like "All tests" and click "OK".
+1. Click the play button (or debug button) to run all the tests:
+    ![Run all tests](images/intellij_run_all_tests.jpg)
+1. Your output should look something like:
+    ![Run output](images/intellij_run_all_tests_output.jpg)
+
+##### Run an individual test
+
+![Running a single test](images/intellij_run_individual_test.gif)
+
+#### Strongly Recommended Plugins
+
+- [Intellij Styled Components](https://github.com/styled-components/webstorm-styled-components) enables syntax highlighting and typeahead for inline CSS
