@@ -35,7 +35,7 @@ exports[`A bulleted List 1`] = `
 exports[`A default List, should be a ul 1`] = `
 .c0 {
   margin: 0;
-  padding: 0 0 0 1rem;
+  padding: 0 0 0 0;
   list-style-type: none;
 }
 
