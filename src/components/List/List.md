@@ -1,3 +1,13 @@
+```js noeditor
+const StatusAndResources = require('../../../styleguide_components/StatusAndResources').StatusAndResources;
+
+<StatusAndResources
+  status="experimental"
+  githubURL="https://github.com/looker/relens/blob/master/src/components/List/List.tsx"
+  feedbackTitle="List Component Feedback" />
+```
+
+
 ### The Default List
 
 By default a `<List />` component will render as an unordered list, `<ul>` tag, with no marker. Each item in the list should be wrapped in the `<ListItem />` component. Below is an example of creating a list of links using the default list behavior.

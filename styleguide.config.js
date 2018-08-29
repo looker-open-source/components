@@ -42,6 +42,10 @@ module.exports = {
           name: 'Accessibility',
           content: 'src/documentation/principles/accessibility.md',
         },
+        {
+          name: 'Support Levels',
+          content: 'src/documentation/principles/support_levels.md',
+        },
       ],
     },
     {

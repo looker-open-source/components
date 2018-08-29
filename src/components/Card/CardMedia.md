@@ -1,3 +1,13 @@
+```js noeditor
+const StatusAndResources = require('../../../styleguide_components/StatusAndResources').StatusAndResources;
+
+<StatusAndResources
+  status="experimental"
+  figmaURL="https://www.figma.com/file/PUkKDfseVgoPGNJng7TJ2TIJ/Card"
+  githubURL="https://github.com/looker/relens/blob/master/src/components/Card/CardMedia.tsx"
+  feedbackTitle="Card Media Component Feedback" />
+```
+
 ### Displaying an image in your card
 
 A common pattern for `Cards` is to display an image that reinforces what the content is about.

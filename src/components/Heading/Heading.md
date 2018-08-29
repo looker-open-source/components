@@ -1,3 +1,13 @@
+```js noeditor
+const StatusAndResources = require('../../../styleguide_components/StatusAndResources').StatusAndResources;
+
+<StatusAndResources
+  status="experimental"
+  figmaURL="https://www.figma.com/file/SmIM3VUQUgo8xb4o7UUxflkT/Typography"
+  githubURL="https://github.com/looker/relens/blob/master/src/components/Heading/Heading.tsx"
+  feedbackTitle="Heading Component Feedback" />
+```
+
 
 ### Heading Default
 The `<Heading />` component is used to render a HTML `<h1>` - `<h6>` element, by default it will render a `<h3>` element

@@ -4,6 +4,6 @@ const StatusAndResources = require('../../../../styleguide_components/StatusAndR
 <StatusAndResources
   status="experimental"
   figmaURL="https://www.figma.com/file/2MG6DoSjk4IaLnjjFCnKFf/Forms"
-  githubURL="https://github.com/looker/relens/blob/master/src/components/Form/Inputs/InputText.tsx"
-  feedbackTitle="InputText Component Feedback" />
+  githubURL="https://github.com/looker/relens/blob/master/src/components/Form/FormGroup/FormGroup.tsx"
+  feedbackTitle="FormGroup Component Feedback" />
 ```

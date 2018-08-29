@@ -1,3 +1,13 @@
+```js noeditor
+const StatusAndResources = require('../../../styleguide_components/StatusAndResources').StatusAndResources;
+
+<StatusAndResources
+  status="experimental"
+  figmaURL="https://www.figma.com/file/PUkKDfseVgoPGNJng7TJ2TIJ/Card"
+  githubURL="https://github.com/looker/relens/blob/master/src/components/Card/Card.tsx"
+  feedbackTitle="Card Component Feedback" />
+```
+
 
 <div class="doc-section-divider"></div>
 

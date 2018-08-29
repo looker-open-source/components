@@ -1,3 +1,14 @@
+```js noeditor
+const StatusAndResources = require('../../../styleguide_components/StatusAndResources').StatusAndResources;
+
+<StatusAndResources
+  status="experimental"
+  figmaURL="https://www.figma.com/file/SmIM3VUQUgo8xb4o7UUxflkT/Typography"
+  githubURL="https://github.com/looker/relens/blob/master/src/components/Text/Text.tsx"
+  feedbackTitle="Text Component Feedback" />
+```
+
+
 ### Text Element
 
 By default the `<Text />` component will render text wrapped in a `<div>`,  if you need another html element for semantic purposes you can use the `element` property
