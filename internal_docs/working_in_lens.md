@@ -95,13 +95,17 @@ Intellij should automatically detect Jest tests and provide inline test running 
 ##### Run all tests
 
 1. Create a new test configuration by selecting "Edit Configurations...":
+
     ![New Test Configuration](images/intellij_test_configuration.jpg)
 1. Click the `+` icon in the top left and choose "Jest":
+
     ![Add Jest Configuration](images/intellij_test_configuration_add.jpg)
 1. Name the configuration something like "All tests" and click "OK".
 1. Click the play button (or debug button) to run all the tests:
+
     ![Run all tests](images/intellij_run_all_tests.jpg)
 1. Your output should look something like:
+
     ![Run output](images/intellij_run_all_tests_output.jpg)
 
 ##### Run an individual test
