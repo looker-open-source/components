@@ -3,7 +3,7 @@ const StatusAndResources = require('../../../styleguide_components/StatusAndReso
 
 <StatusAndResources
   status="experimental"
-  figmaURL="https://www.figma.com/file/VyHO1Hv1XaW1v3lE9I4PVT/Lists?node-id=1%3A3&viewport=1737%2C947%2C1"
+  figmaURL="https://www.figma.com/file/VyHO1Hv1XaW1v3lE9I4PVT/Lists"
   githubURL="https://github.com/looker/relens/blob/master/src/components/List/List.tsx"
   feedbackTitle="List Component Feedback" />
 ```
