@@ -25,19 +25,19 @@ By default a `<List />` component will render as an unordered list, `<ul>` tag, 
 Often times you want to have a marker before each item in your list, you can use the `type` property to change list marker and also the semantic html tag used to wrap the list.
 
 ```js
-<List mb={5}>
+<List>
   <ListItem>An unordered list</ListItem>
   <ListItem>Wraps in a <Code>&lt;ul&gt;</Code> tag</ListItem>
   <ListItem>No marker</ListItem>
 </List>
 
-<List type="bullet" mb={5}>
+<List type="bullet">
   <ListItem>An unordered list</ListItem>
   <ListItem>Wraps in a <Code>&lt;ul&gt;</Code> tag</ListItem>
   <ListItem>Bullet marker</ListItem>
 </List>
 
-<List type="number" mb={5}>
+<List type="number">
   <ListItem>An orderd list</ListItem>
   <ListItem>Wraps in a <Code element="code">&lt;ol&gt;</Code> tag</ListItem>
   <ListItem>Number marker</ListItem>
