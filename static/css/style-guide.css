@@ -125,3 +125,8 @@ button[name="rsg-code-editor"][class*='rsg--isActive-'] {
   display: none !important;
   border-bottom-color: #4F2ABA !important;
 }
+
+
+.support-link {
+  text-decoration: none;
+}

@@ -30,7 +30,7 @@ export interface StatusProps {
 
 const statusIndicator: React.SFC<StatusProps> = ({ status, ...args }) => {
   return (
-    <a href="/#!/Support%20Levels">
+    <a className="support-link" href="/#!/Support%20Levels">
       <Text size={RampSizes.Five} {...args}>
         {status}
       </Text>
