@@ -20,6 +20,10 @@ export interface ButtonProps {
    */
   color?: keyof SemanticColors | SemanticColor
   /**
+   * Determines if the button is disabled.
+   */
+  disabled?: boolean
+  /**
    * Defines the size of the button.
    * @default "medium"
    */
@@ -33,6 +37,9 @@ export interface ButtonProps {
    * Optional function to be triggered when a user clicks a button.
    */
   onClick?: React.MouseEventHandler<HTMLButtonElement>
+  /**
+   * The type of button to define
+   */
   type?: 'submit' | 'reset' | 'button' | 'menu'
 }
 
