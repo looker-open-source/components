@@ -92,6 +92,16 @@ test('Button destructive color', () => {
   expect(tree).toMatchSnapshot()
 })
 
+test('Button should accept disabled', () => {
+  const component = create(
+    <Button theme={theme} disabled>
+      🥑
+    </Button>
+  )
+  const tree = component.toJSON()
+  expect(tree).toMatchSnapshot()
+})
+
 test('Button accepts a SemanticColor object for the color property', () => {
   const punkRockColor: SemanticColor = {
     borderColor: 'MediumVioletRed',
