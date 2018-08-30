@@ -58,11 +58,11 @@ export interface SemanticColors {
   /** Colors used for primary actions. */
   primary: SemanticColor
   /** Colors used for dangerous actions. */
-  destructive: SemanticColor
+  danger: SemanticColor
 }
 
 export const semanticColors: SemanticColors = {
-  destructive: {
+  danger: {
     borderColor: red500,
     dark: red600,
     darker: red700,

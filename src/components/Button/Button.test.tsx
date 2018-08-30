@@ -82,9 +82,9 @@ test('Button primary color', () => {
   expect(tree).toMatchSnapshot()
 })
 
-test('Button destructive color', () => {
+test('Button danger color', () => {
   const component = create(
-    <Button theme={theme} color="destructive">
+    <Button theme={theme} color="danger">
       🥑
     </Button>
   )
