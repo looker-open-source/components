@@ -10,7 +10,7 @@ import {
   yellow400,
 } from '../src/styles/colors'
 import { RampSizes } from '../src/styles/ramp_sizes'
-import { themeEasings } from '../src/themes/theme_easings'
+import { easings } from '../src/themes/theme_easings'
 import { themeSpacing } from '../src/themes/theme_spacing'
 import { themeTransitions } from '../src/themes/theme_transitions'
 import {
@@ -103,8 +103,7 @@ export const StatusDiv = styled<StatusProps>(statusIndicator)`
     /* stylelint-enable */
     font-size: 16px;
     margin-right: ${themeSpacing.xs};
-    transition: transform ${themeTransitions.durationSimple}
-      ${themeEasings.easeOut};
+    transition: transform ${themeTransitions.durationSimple} ${easings.easeOut};
   }
 
   &:hover {
@@ -138,7 +137,7 @@ const ResourceIcon = styled<ResourceProps>(ResourceIconRender)`
   margin-right: ${themeSpacing.m};
   svg {
     transition: transform ${themeTransitions.durationModerate}
-      ${themeEasings.easeOut};
+      ${easings.easeOut};
   }
 
   &:hover svg {

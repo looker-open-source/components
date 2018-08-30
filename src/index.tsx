@@ -15,6 +15,5 @@ export { Text } from './components/Text/Text'
 export { Code } from './components/Text/Code'
 export { Span } from './components/Text/Span'
 export { Paragraph } from './components/Text/Paragraph'
-export { SemanticColor } from './themes/theme_semantic_colors'
 
-import { easings } from './themes'
+export * from './themes'
