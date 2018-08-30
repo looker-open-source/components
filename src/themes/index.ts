@@ -1,5 +1,5 @@
 import { rem } from 'polished'
-import { ThemeEasings, themeEasings } from './theme_easings'
+import { Easings, easings } from './theme_easings'
 import { themeShadows, ThemeShadows } from './theme_elevation'
 import {
   themeFontRamp,
@@ -11,8 +11,10 @@ import { SemanticColors, semanticColors } from './theme_semantic_colors'
 import { themeSpacing, ThemeSpacing } from './theme_spacing'
 import { themeTransitions, ThemeTransitions } from './theme_transitions'
 
+export * from './theme_easings'
+
 export interface ThemeInterface {
-  easings: ThemeEasings
+  easings: Easings
   fontRamp: ThemeFontRamp
   fontSizes: string[]
   lineHeightRamp: ThemeFontRamp
@@ -25,8 +27,8 @@ export interface ThemeInterface {
   transitions: ThemeTransitions
 }
 
-const theme = {
-  easings: themeEasings,
+export const theme = {
+  easings,
   fontRamp: themeFontRamp,
   fontSizes: [0, 12, 14, 16, 18, 22, 25, 36, 46, 58].map(p => rem(p)),
   lineHeightRamp: themeLineHeightRamp,
@@ -38,5 +40,3 @@ const theme = {
   spacing: themeSpacing,
   transitions: themeTransitions,
 }
-
-export default theme
