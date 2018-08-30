@@ -22,6 +22,7 @@ export interface ThemeInterface {
   shadows: ThemeShadows
   space: string[]
   spacing: ThemeSpacing
+  spaced: object
   transitions: ThemeTransitions
 }
 
@@ -34,7 +35,17 @@ const theme = {
   palette,
   semanticColors,
   shadows: themeShadows,
-  space: [0, 4, 6, 8, 16, 20, 24, 30, 36, 46].map(p => rem(p)),
+  // tslint:disable:object-literal-sort-keys
+  space: {
+    none: 0,
+    xsmall: rem(4),
+    small: rem(8),
+    medium: rem(16),
+    large: rem(20),
+    xlarge: rem(30),
+    xxlarge: rem(40),
+    xxxlarge: rem(60),
+  },
   spacing: themeSpacing,
   transitions: themeTransitions,
 }

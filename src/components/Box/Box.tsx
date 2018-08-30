@@ -1,3 +1,4 @@
+import tag from 'clean-tag'
 import * as React from 'react'
 import styled from 'styled-components'
 import { space, SpaceProps } from 'styled-system'
@@ -82,6 +83,10 @@ export interface BoxProps {
   py?: SpaceProps
 }
 
-export const Box = styled<BoxProps, 'div'>('div')`
+const InternalBox: React.SFC<BoxProps> = ({ ...props }) => {
+  return <tag.div {...props}>{props.children}</tag.div>
+}
+
+export const Box = styled<BoxProps>(InternalBox)`
   ${space};
 `
