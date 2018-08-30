@@ -1,9 +1,6 @@
 import {
   blue500,
-  charcoal200,
   charcoal300,
-  charcoal400,
-  charcoal500,
   primary500,
   primary600,
   primary700,

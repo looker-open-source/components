@@ -18,6 +18,7 @@ export interface ButtonProps {
   color?: keyof SemanticColors | SemanticColor
   /**
    * Determines if the button is disabled.
+   * @default false
    */
   disabled?: boolean
   /**
@@ -36,6 +37,7 @@ export interface ButtonProps {
   onClick?: React.MouseEventHandler<HTMLButtonElement>
   /**
    * The type of button to define
+   * @default "button"
    */
   type?: 'submit' | 'reset' | 'button' | 'menu'
 }
