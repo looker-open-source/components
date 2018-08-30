@@ -3,6 +3,7 @@ const StatusAndResources = require('../../../styleguide_components/StatusAndReso
 
 <StatusAndResources
   status="experimental"
+  figmaURL="https://www.figma.com/file/VyHO1Hv1XaW1v3lE9I4PVT/Lists"
   githubURL="https://github.com/looker/relens/blob/master/src/components/List/List.tsx"
   feedbackTitle="List Component Feedback" />
 ```
@@ -26,25 +27,25 @@ Often times you want to have a marker before each item in your list, you can use
 ```js
 <List>
   <ListItem>An unordered list</ListItem>
-  <ListItem>Wraps in a <Text element="code">&lt;ul&gt;</Text> tag</ListItem>
+  <ListItem>Wraps in a <Code>&lt;ul&gt;</Code> tag</ListItem>
   <ListItem>No marker</ListItem>
 </List>
 
 <List type="bullet">
   <ListItem>An unordered list</ListItem>
-  <ListItem>Wraps in a <Text element="code">&lt;ul&gt;</Text> tag</ListItem>
+  <ListItem>Wraps in a <Code>&lt;ul&gt;</Code> tag</ListItem>
   <ListItem>Bullet marker</ListItem>
 </List>
 
 <List type="number">
   <ListItem>An orderd list</ListItem>
-  <ListItem>Wraps in a <Text element="code">&lt;ol&gt;</Text> tag</ListItem>
+  <ListItem>Wraps in a <Code element="code">&lt;ol&gt;</Code> tag</ListItem>
   <ListItem>Number marker</ListItem>
 </List>
 
 <List type="letter">
   <ListItem>An ordered list</ListItem>
-  <ListItem>Wraps in a <Text element="code">&lt;ol&gt;</Text> tag</ListItem>
+  <ListItem>Wraps in a <Code>&lt;ol&gt;</Code> tag</ListItem>
   <ListItem>Alpha marker</ListItem>
 </List>
 ```
