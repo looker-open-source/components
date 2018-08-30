@@ -6659,9 +6659,9 @@ pn@^1.1.0:
   version "1.1.0"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/pn/-/pn-1.1.0.tgz#e2f4cef0e219f463c179ab37463e4e1ecdccbafb"
 
-polished@1.9.3:
-  version "1.9.3"
-  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/polished/-/polished-1.9.3.tgz#d61b8a0c4624efe31e2583ff24a358932b6b75e1"
+polished@2.0.3:
+  version "2.0.3"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/polished/-/polished-2.0.3.tgz#54bb5f474bebe149e760d4015ed04207817fd38e"
 
 portfinder@^1.0.9:
   version "1.0.13"
@@ -7399,18 +7399,18 @@ react-test-renderer@16.3.1:
     prop-types "^15.6.0"
     react-is "^16.3.1"
 
-react@>=16.0.0:
-  version "16.4.1"
-  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/react/-/react-16.4.1.tgz#de51ba5764b5dbcd1f9079037b862bd26b82fe32"
+react@16.4.2:
+  version "16.4.2"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/react/-/react-16.4.2.tgz#2cd90154e3a9d9dd8da2991149fdca3c260e129f"
   dependencies:
     fbjs "^0.8.16"
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
     prop-types "^15.6.0"
 
-react@^16.4.2:
-  version "16.4.2"
-  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/react/-/react-16.4.2.tgz#2cd90154e3a9d9dd8da2991149fdca3c260e129f"
+react@>=16.0.0:
+  version "16.4.1"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/react/-/react-16.4.1.tgz#de51ba5764b5dbcd1f9079037b862bd26b82fe32"
   dependencies:
     fbjs "^0.8.16"
     loose-envify "^1.1.0"
