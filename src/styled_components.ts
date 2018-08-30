@@ -3,7 +3,7 @@ import * as React from 'react'
 import * as styledComponents from 'styled-components'
 // tslint:disable-next-line:no-duplicate-imports
 import { ThemedStyledProps } from 'styled-components'
-import { ThemeInterface } from './themes'
+import { Theme } from './themes'
 export { StyledComponentClass, Styles } from 'styled-components'
 
 const { css, injectGlobal, keyframes, ThemeProvider } = styledComponents
@@ -14,7 +14,7 @@ const { css, injectGlobal, keyframes, ThemeProvider } = styledComponents
 //
 // tslint:disable-next-line:no-unnecessary-type-assertion
 const styled = (styledComponents as styledComponents.ThemedStyledComponentsModule<
-  ThemeInterface
+  Theme
 >).default
 
 export { css, injectGlobal, keyframes, React, ThemeProvider, ThemedStyledProps }
