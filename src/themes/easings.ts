@@ -1,4 +1,4 @@
-export interface ThemeEasings {
+export interface Easings {
   ease: string
   easeIn: string
   easeInBack: string
@@ -6,7 +6,7 @@ export interface ThemeEasings {
   easeOutBack: string
 }
 
-export const themeEasings = {
+export const easings = {
   ease: 'cubic-bezier(0.86, 0, 0.07, 1)',
   easeIn: 'cubic-bezier(0.895, 0.03, 0.685, 0.22);',
   easeInBack: 'cubic-bezier(0.6, -0.28, 0.735, 0.045)',

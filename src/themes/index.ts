@@ -1,41 +1,45 @@
 import { rem } from 'polished'
-import { ThemeEasings, themeEasings } from './theme_easings'
-import { themeShadows, ThemeShadows } from './theme_elevation'
-import {
-  themeFontRamp,
-  ThemeFontRamp,
-  themeLineHeightRamp,
-} from './theme_font_sizes'
-import { palette, Palette } from './theme_palette'
-import { SemanticColors, semanticColors } from './theme_semantic_colors'
-import { themeSpacing, ThemeSpacing } from './theme_spacing'
-import { themeTransitions, ThemeTransitions } from './theme_transitions'
+import { Easings, easings } from './easings'
+import { shadows, Shadows } from './elevation'
+import { fontRamp, FontRamp, lineHeightRamp } from './font_sizes'
+import { palette, Palette } from './palette'
+import { SemanticColors, semanticColors } from './semantic_colors'
+import { spacing, Spacing } from './spacing'
+import { themeTransitions, ThemeTransitions } from './transitions'
+
+export * from './easings'
+export * from './elevation'
+export * from './font_sizes'
+export * from './palette'
+export * from './semantic_colors'
+export * from './spacing'
+export * from './transitions'
 
 export interface ThemeInterface {
-  easings: ThemeEasings
-  fontRamp: ThemeFontRamp
+  easings: Easings
+  fontRamp: FontRamp
   fontSizes: string[]
-  lineHeightRamp: ThemeFontRamp
+  lineHeightRamp: FontRamp
   lineHeights: string[]
   palette: Palette
   semanticColors: SemanticColors
-  shadows: ThemeShadows
+  shadows: Shadows
   space: string[]
-  spacing: ThemeSpacing
+  spacing: Spacing
   transitions: ThemeTransitions
 }
 
-const theme = {
-  easings: themeEasings,
-  fontRamp: themeFontRamp,
+export const theme = {
+  easings,
+  fontRamp,
   fontSizes: [0, 12, 14, 16, 18, 22, 25, 36, 46, 58].map(p => rem(p)),
-  lineHeightRamp: themeLineHeightRamp,
+  lineHeightRamp,
   lineHeights: [0, 16, 20, 24, 28, 32, 40, 52, 64, 84].map(p => rem(p)),
   palette,
   semanticColors,
-  shadows: themeShadows,
+  shadows,
   space: [0, 4, 6, 8, 16, 20, 24, 30, 36, 46].map(p => rem(p)),
-  spacing: themeSpacing,
+  spacing,
   transitions: themeTransitions,
 }
 

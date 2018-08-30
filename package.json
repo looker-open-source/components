@@ -63,8 +63,8 @@
     "classnames": "2.2.5",
     "clean-tag": "^2.0.0",
     "insert-css": "2.0.0",
-    "polished": "1.9.3",
-    "react": "16.4.1",
+    "polished": "2.0.3",
+    "react": "16.4.2",
     "react-dom": "16.4.2",
     "styled-system": "^3.0.2",
     "svg-inline-loader": "^0.8.0"

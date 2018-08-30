@@ -10,9 +10,9 @@ import {
   yellow400,
 } from '../src/styles/colors'
 import { RampSizes } from '../src/styles/ramp_sizes'
-import { themeEasings } from '../src/themes/theme_easings'
-import { themeSpacing } from '../src/themes/theme_spacing'
-import { themeTransitions } from '../src/themes/theme_transitions'
+import { easings } from '../src/themes/easings'
+import { spacing } from '../src/themes/spacing'
+import { themeTransitions } from '../src/themes/transitions'
 import {
   FeedbackSvg,
   FigmaSvg,
@@ -93,18 +93,17 @@ function getCorrectStatusColor(status: StatusLabels) {
 export const StatusDiv = styled<StatusProps>(statusIndicator)`
   display: flex;
   text-transform: capitalize;
-  padding: ${themeSpacing.s};
+  padding: ${spacing.s};
   border-radius: 2px;
-  margin-right: ${themeSpacing.m};
+  margin-right: ${spacing.m};
 
   &:before {
     /* stylelint-disable */
     content: '';
     /* stylelint-enable */
     font-size: 16px;
-    margin-right: ${themeSpacing.xs};
-    transition: transform ${themeTransitions.durationSimple}
-      ${themeEasings.easeOut};
+    margin-right: ${spacing.xs};
+    transition: transform ${themeTransitions.durationSimple} ${easings.easeOut};
   }
 
   &:hover {
@@ -135,10 +134,10 @@ const ResourceIconRender: React.SFC<ResourceProps> = ({ url, ...args }) => {
 }
 
 const ResourceIcon = styled<ResourceProps>(ResourceIconRender)`
-  margin-right: ${themeSpacing.m};
+  margin-right: ${spacing.m};
   svg {
     transition: transform ${themeTransitions.durationModerate}
-      ${themeEasings.easeOut};
+      ${easings.easeOut};
   }
 
   &:hover svg {
@@ -186,7 +185,7 @@ export const StatusAndResources = styled<StatusAndResourcesProps>(
   border-top: solid 1px ${charcoal200};
   border-bottom: solid 1px ${charcoal200};
   display: flex;
-  padding: ${themeSpacing.m} ${themeSpacing.s};
+  padding: ${spacing.m} ${spacing.s};
   justify-content: space-between;
   align-items: center;
 

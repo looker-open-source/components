@@ -3,7 +3,7 @@ import * as React from 'react'
 import { create } from 'react-test-renderer'
 import { ThemeProvider } from '../../styled_components'
 import theme from '../../themes'
-import { SemanticColor } from '../../themes/theme_semantic_colors'
+import { SemanticColor } from '../../themes/semantic_colors'
 import { Button } from './Button'
 
 test('Button default', () => {
@@ -82,9 +82,9 @@ test('Button primary color', () => {
   expect(tree).toMatchSnapshot()
 })
 
-test('Button destructive color', () => {
+test('Button danger color', () => {
   const component = create(
-    <Button theme={theme} color="destructive">
+    <Button theme={theme} color="danger">
       🥑
     </Button>
   )
