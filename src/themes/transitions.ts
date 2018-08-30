@@ -8,7 +8,7 @@ export interface Transitions {
 }
 
 // tslint:disable:object-literal-sort-keys
-export const transitions = {
+export const transitions: Transitions = {
   durationRapid: '100ms',
   durationQuick: '150ms',
   durationSimple: '200ms',
