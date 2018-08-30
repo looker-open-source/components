@@ -8,7 +8,7 @@ export interface ThemeTransitions {
 }
 
 // tslint:disable:object-literal-sort-keys
-export const themeTransitions = {
+export const themeTransitions: ThemeTransitions = {
   durationRapid: '100ms',
   durationQuick: '150ms',
   durationSimple: '200ms',

@@ -6,7 +6,7 @@ export interface Easings {
   easeOutBack: string
 }
 
-export const easings = {
+export const easings: Easings = {
   ease: 'cubic-bezier(0.86, 0, 0.07, 1)',
   easeIn: 'cubic-bezier(0.895, 0.03, 0.685, 0.22);',
   easeInBack: 'cubic-bezier(0.6, -0.28, 0.735, 0.045)',

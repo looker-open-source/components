@@ -29,7 +29,7 @@ export interface ThemeInterface {
   transitions: ThemeTransitions
 }
 
-export const theme = {
+export const theme: ThemeInterface = {
   easings,
   fontRamp,
   fontSizes: [0, 12, 14, 16, 18, 22, 25, 36, 46, 58].map(p => rem(p)),
