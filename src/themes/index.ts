@@ -1,10 +1,10 @@
 import { rem } from 'polished'
 import { Easings, easings } from './theme_easings'
-import { themeShadows, ThemeShadows } from './theme_elevation'
+import { shadows, Shadows } from './theme_elevation'
 import { fontRamp, FontRamp, lineHeightRamp } from './theme_font_sizes'
 import { palette, Palette } from './theme_palette'
 import { SemanticColors, semanticColors } from './theme_semantic_colors'
-import { themeSpacing, ThemeSpacing } from './theme_spacing'
+import { spacing, Spacing } from './theme_spacing'
 import { themeTransitions, ThemeTransitions } from './theme_transitions'
 
 export * from './theme_easings'
@@ -23,9 +23,9 @@ export interface ThemeInterface {
   lineHeights: string[]
   palette: Palette
   semanticColors: SemanticColors
-  shadows: ThemeShadows
+  shadows: Shadows
   space: string[]
-  spacing: ThemeSpacing
+  spacing: Spacing
   transitions: ThemeTransitions
 }
 
@@ -37,9 +37,9 @@ export const theme = {
   lineHeights: [0, 16, 20, 24, 28, 32, 40, 52, 64, 84].map(p => rem(p)),
   palette,
   semanticColors,
-  shadows: themeShadows,
+  shadows,
   space: [0, 4, 6, 8, 16, 20, 24, 30, 36, 46].map(p => rem(p)),
-  spacing: themeSpacing,
+  spacing,
   transitions: themeTransitions,
 }
 
