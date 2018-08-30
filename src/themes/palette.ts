@@ -1,21 +1,4 @@
-import {
-  blue500,
-  charcoal200,
-  charcoal300,
-  charcoal400,
-  charcoal500,
-  primary500,
-  primary600,
-  primary700,
-  purple000,
-  purple100,
-  red000,
-  red100,
-  red500,
-  red600,
-  red700,
-  white,
-} from '../styles/colors'
+import { white } from '../styles/colors'
 
 /**
  * Defines color values for specific named colors. This is analogous to HTML's

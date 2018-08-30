@@ -1,5 +1,5 @@
 import styled, { css } from '../../../styled_components'
-import { spacing } from '../../../themes/theme_spacing'
+import { spacing } from '../../../themes/spacing'
 
 export enum FormControlDirections {
   Left = 'left',

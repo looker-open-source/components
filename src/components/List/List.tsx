@@ -1,7 +1,7 @@
 // Typescript component boilerplate for generating meaningful declaration files.
 import * as React from 'react'
 import styled, { css } from '../../styled_components'
-import { spacing } from '../../themes/theme_spacing'
+import { spacing } from '../../themes/spacing'
 // End Typescript component boilerplate
 
 export interface ListProps {

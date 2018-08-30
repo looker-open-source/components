@@ -10,9 +10,9 @@ import {
   yellow400,
 } from '../src/styles/colors'
 import { RampSizes } from '../src/styles/ramp_sizes'
-import { easings } from '../src/themes/theme_easings'
-import { spacing } from '../src/themes/theme_spacing'
-import { themeTransitions } from '../src/themes/theme_transitions'
+import { easings } from '../src/themes/easings'
+import { spacing } from '../src/themes/spacing'
+import { themeTransitions } from '../src/themes/transitions'
 import {
   FeedbackSvg,
   FigmaSvg,

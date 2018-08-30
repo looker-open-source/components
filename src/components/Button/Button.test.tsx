@@ -3,7 +3,7 @@ import * as React from 'react'
 import { create } from 'react-test-renderer'
 import { ThemeProvider } from '../../styled_components'
 import theme from '../../themes'
-import { SemanticColor } from '../../themes/theme_semantic_colors'
+import { SemanticColor } from '../../themes/semantic_colors'
 import { Button } from './Button'
 
 test('Button default', () => {
