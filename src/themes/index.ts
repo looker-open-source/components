@@ -20,9 +20,8 @@ export interface ThemeInterface {
   palette: Palette
   semanticColors: SemanticColors
   shadows: ThemeShadows
-  space: string[]
+  space: object
   spacing: ThemeSpacing
-  spaced: object
   transitions: ThemeTransitions
 }
 

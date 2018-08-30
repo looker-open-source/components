@@ -161,13 +161,13 @@ const variantHelper = (props: ThemedProps<ButtonProps>) => {
 }
 
 function sizeHelper(props: ThemedProps<ButtonProps>) {
-  const sizes: Record<ButtonSizes, number[]> = {
-    large: [5, 5, 3, 6],
-    medium: [3, 3, 3, 4],
-    small: [2, 2, 1, 4],
-    xsmall: [1, 1, 1, 3],
+  const sizes: Record<ButtonSizes, [number, number, string, string]> = {
+    large: [5, 5, 'large', 'small'],
+    medium: [3, 3, 'medium', 'small'],
+    small: [2, 2, 'medium', 'xmall'],
+    xsmall: [1, 1, 'xsmall', 'xsmall'],
   }
-  const [fontSize, lineHeight, py, px] = sizes[props.size || 'medium']
+  const [fontSize, lineHeight, px, py] = sizes[props.size || 'medium']
   return mixed({
     fontSize,
     lineHeight,
