@@ -33,12 +33,18 @@ If you are more of a learn-by-doing type of person, Figma has a fantastic set of
 ### File Organization and Structure
 All of the Lens related Files are in the Lens Project which you can find in the list of projects. If you star the project it will be listed in your sidebar so you can access it quickly.
 
+#### File Location
+
 ![Fimga Project List](/static/img/fimga_shots/figma-1.png)
+
+#### File Cover and Status
 
 Every Lens file has a cover page so that you can quickly scan what type of file it is (e.g.a component, a pattern, a style). There cover page also has a color background which denotes the current state of the file.
 
 ![Lens Color key](/static/img/fimga_shots/files.png)
 ![Lens Color key](/static/img/fimga_shots/color-key.png)
+
+#### File Organization
 
 Inside each file is a series of pages that maps to our design roadmap workflow. The page list is:
 - Title (cover page)
