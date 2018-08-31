@@ -48,6 +48,8 @@ Inside each file is a series of pages that maps to our design roadmap workflow. 
 - Spec (finalized specs & best practices)
 - Launch (Final page, contains finalized files and library assets)
 
+### File Structure
+All of the Lens related Files are in the **Lens Project** which you can find in the list of projects. If you star the project it will be listed in your sidebar so you can access it quickly.
 
 ### Team Library
 
