@@ -39,7 +39,7 @@ All of the Lens related Files are in the **Lens Project** which you can find in 
 
 #### File Cover and Status
 
-Every Lens file has a cover page so that you can quickly scan what type of file it is (e.g.a component, a pattern, a style). There cover page also has a color background which denotes the current state of the file.
+Every Lens file has a cover page so that you can quickly scan what type of file it is (e.g.a component, a pattern, a style). The cover page also has a color background which denotes the current state of the file.
 
 ![Lens Color key](/static/img/fimga_shots/files.png)
 ![Lens Color key](/static/img/fimga_shots/color-key.png)
