@@ -5,7 +5,7 @@ The product design team uses [Figma](https://www.figma.com/) for creating and ma
 
 ### Contents
 - [Getting Started With Figma](#getting-started)
-- [Navigating Figma Files](#file-structure)
+- [File Organization & Structure](#file-organization-and-structure)
 - [Team Library](#team-library)
 - [Giving Feedback & Collaboration](#giving-feedback)
 
@@ -30,11 +30,44 @@ If you are more of a learn-by-doing type of person, Figma has a fantastic set of
 - [Figma Blog](https://blog.figma.com/product/home)
   - Great for quick tips and tricks and new features in the tool
 
-### File Structure
-All of the Lens related Files are in the **Lens Project** which you can
+### File Organization and Structure
+All of the Lens related Files are in the Lens Project which you can find in the list of projects. If you star the project it will be listed in your sidebar so you can access it quickly.
+
+![Fimga Project List](/static/img/fimga_shots/figma-1.png)
+
+Every Lens file has a cover page so that you can quickly scan what type of file it is (e.g.a component, a pattern, a style). There cover page also has a color background which denotes the current state of the file.
+
+![Lens Color key](/static/img/fimga_shots/files.png)
+![Lens Color key](/static/img/fimga_shots/color-key.png)
+
+Inside each file is a series of pages that maps to our design roadmap workflow. The page list it:
+- Title (cover page)
+- Define (scoping of file and design work)
+- Explore (design explorations and iterations)
+- Refine (refinement of explorations )
+- Spec (finalized specs & best practices)
+- Launch (Final page, contains finalized files and library assets)
 
 
 ### Team Library
 
+Our team library is where we share design assets like components and styles. These include things like color swatches, drop shadows, spacing, low level ui elements like buttons and input boxes, all the way to high level components like Cards and Modals.
+
+#### Using the team library
+
+- Figma has a [great document on using the team library](https://help.figma.com/editor/team-library).
+- [Figma team library tutorial](https://www.youtube.com/watch?v=PgRUEyw9xpo) video on youtube.
+
+#### Adding items to the library
+
+We are still working on the work flow for proposing new components and styles to the team library. Please reach out to the [#lens](https://looker.slack.com/messages/C9NHFLY0G) team to learn more about this process.
 
 ### Giving Feedback & Collaboration
+
+Figma allows you to give feedback right in the file you are looking at. You can leave a comment on a screen to start a conversation about any feedback you may have.
+
+Read about using [Figma's commenting system here](https://help.figma.com/editor/1322329-toolbar/comments).
+
+The Lens team also uses Github to track our issues and we welcome you to open an issue if you discover a bug or have feedback related to the design or functionality of a component or style in Figma.
+
+You can open an issue [quickly here with the correct labels](https://github.com/looker/relens/issues/new?title=Design+Feedback&labels=design,figma) to ensure the design team will see it
