@@ -13,7 +13,7 @@ The product design team uses [Figma](https://www.figma.com/) for creating and ma
 
 #### Getting access to Figma
 
-Reach out to someone on the [#design slack channel](https://looker.slack.com/messages/C45GCJ410) and we can get you an invite to the Figma.
+Reach out to someone on the [#design slack channel](https://looker.slack.com/messages/C45GCJ410) and we can get you an invite to Figma.
 
 Figma is available as a web app but you can also download the [desktop app](https://www.figma.com/downloads/), which performs a bit better for larger files.
 
