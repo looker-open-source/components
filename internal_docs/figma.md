@@ -40,7 +40,7 @@ Every Lens file has a cover page so that you can quickly scan what type of file 
 ![Lens Color key](/static/img/fimga_shots/files.png)
 ![Lens Color key](/static/img/fimga_shots/color-key.png)
 
-Inside each file is a series of pages that maps to our design roadmap workflow. The page list it:
+Inside each file is a series of pages that maps to our design roadmap workflow. The page list is:
 - Title (cover page)
 - Define (scoping of file and design work)
 - Explore (design explorations and iterations)
