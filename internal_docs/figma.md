@@ -31,7 +31,7 @@ If you are more of a learn-by-doing type of person, Figma has a fantastic set of
   - Great for quick tips and tricks and new features in the tool
 
 ### File Organization and Structure
-All of the Lens related Files are in the Lens Project which you can find in the list of projects. If you star the project it will be listed in your sidebar so you can access it quickly.
+All of the Lens related Files are in the **Lens Project** which you can find in the list of projects. If you star the project it will be listed in your sidebar so you can access it quickly.
 
 #### File Location
 
@@ -55,9 +55,6 @@ Inside each file is a series of pages that maps to our design roadmap workflow. 
 - Launch (Final page, contains finalized files and library assets)
 
 By nature of how the design process works, these pages are a bit fluid and you may encounter documents with more pages, but as a team we do our best to standardize on the format above.
-
-### File Structure
-All of the Lens related Files are in the **Lens Project** which you can find in the list of projects. If you star the project it will be listed in your sidebar so you can access it quickly.
 
 ### Team Library
 
