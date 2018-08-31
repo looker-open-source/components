@@ -5,7 +5,7 @@ import { fontRamp, FontRamp, lineHeightRamp } from './font_sizes'
 import { palette, Palette } from './palette'
 import { SemanticColors, semanticColors } from './semantic_colors'
 import { spacing, Spacing } from './spacing'
-import { themeTransitions, ThemeTransitions } from './transitions'
+import { transitions, Transitions } from './transitions'
 
 export * from './easings'
 export * from './elevation'
@@ -15,7 +15,7 @@ export * from './semantic_colors'
 export * from './spacing'
 export * from './transitions'
 
-export interface ThemeInterface {
+export interface Theme {
   easings: Easings
   fontRamp: FontRamp
   fontSizes: string[]
@@ -26,10 +26,10 @@ export interface ThemeInterface {
   shadows: Shadows
   space: string[]
   spacing: Spacing
-  transitions: ThemeTransitions
+  transitions: Transitions
 }
 
-export const theme: ThemeInterface = {
+export const theme: Theme = {
   easings,
   fontRamp,
   fontSizes: [0, 12, 14, 16, 18, 22, 25, 36, 46, 58].map(p => rem(p)),
@@ -40,7 +40,7 @@ export const theme: ThemeInterface = {
   shadows,
   space: [0, 4, 6, 8, 16, 20, 24, 30, 36, 46].map(p => rem(p)),
   spacing,
-  transitions: themeTransitions,
+  transitions,
 }
 
 export default theme

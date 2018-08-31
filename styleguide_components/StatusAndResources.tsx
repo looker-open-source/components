@@ -12,7 +12,7 @@ import {
 import { RampSizes } from '../src/styles/ramp_sizes'
 import { easings } from '../src/themes/easings'
 import { spacing } from '../src/themes/spacing'
-import { themeTransitions } from '../src/themes/transitions'
+import { transitions } from '../src/themes/transitions'
 import {
   FeedbackSvg,
   FigmaSvg,
@@ -103,7 +103,7 @@ export const StatusDiv = styled<StatusProps>(statusIndicator)`
     /* stylelint-enable */
     font-size: 16px;
     margin-right: ${spacing.xs};
-    transition: transform ${themeTransitions.durationSimple} ${easings.easeOut};
+    transition: transform ${transitions.durationSimple} ${easings.easeOut};
   }
 
   &:hover {
@@ -136,8 +136,7 @@ const ResourceIconRender: React.SFC<ResourceProps> = ({ url, ...args }) => {
 const ResourceIcon = styled<ResourceProps>(ResourceIconRender)`
   margin-right: ${spacing.m};
   svg {
-    transition: transform ${themeTransitions.durationModerate}
-      ${easings.easeOut};
+    transition: transform ${transitions.durationModerate} ${easings.easeOut};
   }
 
   &:hover svg {
