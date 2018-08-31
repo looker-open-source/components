@@ -19,7 +19,7 @@ Figma is available as a web app but you can also download the [desktop app](http
 
 #### Learning Figma
 
-The best way to get started with how we use Figma is to reach out to someone on the design team for a walk through of the tool and how we use it. Feel free to ask for a tour in the  [#design slack channel](https://looker.slack.com/messages/C45GCJ410). Everyone on the team would be happy to guide you through our workflow and the ins-and-outs of the tool.
+The best way to get started with how we use Figma is to reach out to someone on the design team for a walk through of the tool and how we use it. Feel free to ask for a tour in the  [#design slack channel](https://looker.slack.com/messages/C45GCJ410). Anyone on the team would be happy to guide you through our workflow and the ins-and-outs of the tool.
 
 If you are more of a learn-by-doing type of person, Figma has a fantastic set of articles and videos with overviews of product features and how-to guides.
 
