@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { FormControl, FormControlDirections } from '../FormGroup/FormGroup'
-import { InputCheckbox } from '../Inputs/InputCheckbox'
+import { Checkbox } from '../Inputs/Checkbox'
 import { Label } from '../Label/Label'
 
 export interface FieldCheckboxProps {
@@ -18,7 +18,7 @@ export const FieldCheckbox: React.SFC<FieldCheckboxProps> = ({
   return (
     <FormControl alignLabel={FormControlDirections.Left} alignCenter>
       <Label htmlFor={id}>{label}</Label>
-      <InputCheckbox id={id} name={name} {...props} />
+      <Checkbox id={id} name={name} {...props} />
     </FormControl>
   )
 }
