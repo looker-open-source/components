@@ -31,7 +31,9 @@ If you are more of a learn-by-doing type of person, Figma has a fantastic set of
   - Great for quick tips and tricks and new features in the tool
 
 ### File Structure
-All of the Lens related Files are in the **Lens Project** which you can
+All of the Lens related Files are in the **Lens Project** which you can find in the list of projects. If you star the project it will be listed in your sidebar so you can access it quickly.
+
+
 
 
 ### Team Library
