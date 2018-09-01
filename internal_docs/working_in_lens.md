@@ -1,5 +1,11 @@
 # Working in Lens
 
+## Contents
+
+- [Code Style Philosophy](#code-style-philosophy)
+- [Automated Tooling](#automated-tooling)
+- [Editor Support & Configuration](#editor-support-&-configuration)
+
 ## Code Style Philosophy
 
 #### Automate code formatting and correctness whenever possible
