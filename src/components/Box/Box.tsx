@@ -27,9 +27,7 @@ export type SpacingSizes =
 
 export type ResponsiveSpacingSize = ResponsiveValue<SpacingSizes>
 
-export type ResponsiveSpaceProps<T> = { [P in keyof T]: ResponsiveSpacingSize }
-
-export type BoxProps = ResponsiveSpaceProps<SpaceProps>
+export type BoxProps = { [P in keyof SpaceProps]: ResponsiveSpacingSize }
 
 const InternalBox: React.SFC<BoxProps> = ({ ...props }) => {
   return <tag.div {...props}>{props.children}</tag.div>
