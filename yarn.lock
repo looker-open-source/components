@@ -696,8 +696,8 @@
     csstype "^2.2.0"
 
 "@types/styled-system@^3.0.2":
-  version "3.0.2"
-  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/@types/styled-system/-/styled-system-3.0.2.tgz#a153495c58c8679fb512084164dc3f441ae4d1a3"
+  version "3.0.3"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/@types/styled-system/-/styled-system-3.0.3.tgz#ce3c1c6975c9ec6fe2b518841d4258f0e8d46dfe"
 
 "@vxna/mini-html-webpack-template@^0.1.6":
   version "0.1.6"
@@ -8517,15 +8517,14 @@ style-search@^0.1.0:
   version "0.1.0"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/style-search/-/style-search-0.1.0.tgz#7958c793e47e32e07d2b5cafe5c0bf8e12e77902"
 
-styled-components@3.3.3:
-  version "3.3.3"
-  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/styled-components/-/styled-components-3.3.3.tgz#09e702055ab11f7a8eab8229b1c0d0b855095686"
+styled-components@3.4.5:
+  version "3.4.5"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/styled-components/-/styled-components-3.4.5.tgz#6cbfde7c9189c868b9fd01fee40f5330dbd0cc8d"
   dependencies:
     buffer "^5.0.3"
     css-to-react-native "^2.0.3"
     fbjs "^0.8.16"
     hoist-non-react-statics "^2.5.0"
-    is-plain-object "^2.0.1"
     prop-types "^15.5.4"
     react-is "^16.3.1"
     stylis "^3.5.0"
