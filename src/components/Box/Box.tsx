@@ -1,7 +1,7 @@
 import tag from 'clean-tag'
 import * as React from 'react'
-import styled from 'styled-components'
-import { space, SpaceProps } from 'styled-system'
+import { ResponsiveValue, space } from 'styled-system'
+import styled, { ThemedStyledProps } from '../../styled_components'
 import { ThemeInterface } from '../../themes'
 import {
   SizeLarge,
@@ -24,63 +24,65 @@ export type SpacingSizes =
   | SizeXXXLarge
   | SizeXXXXLarge
 
+export type ResponsiveSpacingSize = ResponsiveValue<SpacingSizes>
+
 export interface BoxProps {
   /**
    * Margin - all sides
    */
-  m?: SpaceProps
+  m?: ResponsiveSpacingSize
   /**
    * Margin Top
    */
-  mt?: SpaceProps
+  mt?: ResponsiveSpacingSize
   /**
    * Margin Right
    */
-  mr?: SpaceProps
+  mr?: ResponsiveSpacingSize
   /**
    * Margin Bottom
    */
-  mb?: SpaceProps
+  mb?: ResponsiveSpacingSize
   /**
    * Margin Left
    */
-  ml?: SpaceProps
+  ml?: ResponsiveSpacingSize
   /**
    * Margin Left & Right
    */
-  mx?: SpaceProps
+  mx?: ResponsiveSpacingSize
   /**
    * Margin Top & Bottom
    */
-  my?: SpaceProps
+  my?: ResponsiveSpacingSize
   /**
    * Padding - all sides
    */
-  p?: SpaceProps
+  p?: ResponsiveSpacingSize
   /**
    * Padding Top
    */
-  pt?: SpaceProps
+  pt?: ResponsiveSpacingSize
   /**
    * Padding Right
    */
-  pr?: SpaceProps
+  pr?: ResponsiveSpacingSize
   /**
    * Padding Bottom
    */
-  pb?: SpaceProps
+  pb?: ResponsiveSpacingSize
   /**
    * Padding Left
    */
-  pl?: SpaceProps
+  pl?: ResponsiveSpacingSize
   /**
    * Padding Left & Right
    */
-  px?: SpaceProps
+  px?: ResponsiveSpacingSize
   /**
    * Padding Top & Bottom
    */
-  py?: SpaceProps
+  py?: ResponsiveSpacingSize
 }
 
 const InternalBox: React.SFC<BoxProps> = ({ ...props }) => {
