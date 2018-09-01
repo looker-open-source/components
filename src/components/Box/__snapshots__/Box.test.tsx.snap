@@ -12,6 +12,20 @@ exports[`Box default 1`] = `
 </div>
 `;
 
+exports[`Box with SizeNone is valid 1`] = `
+.c0 {
+  margin-top: none;
+}
+
+<div>
+  <div
+    className="c0"
+  >
+    🥑
+  </div>
+</div>
+`;
+
 exports[`Box with null values are removed from styling 1`] = `
 .c0 {
   margin-top: 1.25rem;

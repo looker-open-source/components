@@ -37,3 +37,15 @@ test('Box with null values are removed from styling', () => {
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
 })
+
+test('Box with SizeNone is valid', () => {
+  const component = create(
+    <div>
+      <Box theme={theme} mt="none">
+        🥑
+      </Box>
+    </div>
+  )
+  const tree = component.toJSON()
+  expect(tree).toMatchSnapshot()
+})

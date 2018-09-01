@@ -1,3 +1,4 @@
+export type SizeNone = 'none'
 export type SizeXSmall = 'xsmall'
 export type SizeSmall = 'small'
 export type SizeMedium = 'medium'
