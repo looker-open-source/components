@@ -11,45 +11,42 @@ All spacing for components align to a 8px grid, this grid allows for flexibility
 ```js noeditor
   const specimen = "Open Sans is the typographic base for the tone and content of Lens’, Lookers design system"
   const spaces = [
-    { space: 'xs', px: '4' , rem: '0.25rem'},
-    { space: 's', px: '8' , rem: '0.5rem' },
-    { space: 'm', px: '16', rem: '1rem' },
-    { space: 'l', px: '20', rem:  '1.25rem'},
-    { space: 'xl', px: '24', rem:  '1.5rem' },
-    { space: '2xl', px: '30', rem: '1.875rem' },
-    { space: '3xl', px: '36', rem: '2.25rem' },
-    { space: '4xl', px: '46', rem: '2.875rem' }]
+    { space: 'xsmall', px: '4' , rem: '0.25rem'},
+    { space: 'small', px: '8' , rem: '0.5rem' },
+    { space: 'medium', px: '16', rem: '1rem' },
+    { space: 'large', px: '20', rem:  '1.25rem'},
+    { space: 'xlarge', px: '32', rem:  '2rem' },
+    { space: 'xxlarge', px: '40', rem: '2.5rem' },
+    { space: 'xxxlarge', px: '60', rem: '3.75rem' }]
 
+const tableRows = spaces.map((t) => {
 
-
-  const tableRows = spaces.map((t) => {
-
-    let divStyle = {
-      backgroundColor: '#FD5AC9',
-      width: `${t.px}px`,
-      height: `${t.px}px`,
-      opacity: 0.5,
-      textAlign: 'center',
-      color: '#fff'
-    }
-    return(
-      <tr>
-      <td><div style={divStyle}></div></td>
-      <td>{t.px}px</td>
-      <td>{t.rem}</td>
-      <td><Text element="code" >{t.space}</Text></td>
-    </tr>
-    )
-  });
+  let divStyle = {
+    backgroundColor: '#FD5AC9',
+    width: `${t.px}px`,
+    height: `${t.px}px`,
+    opacity: 0.5,
+    textAlign: 'center',
+    color: '#fff'
+  }
+  return(
+    <TableRow>
+      <TableDataCell><div style={divStyle}></div></TableDataCell>
+      <TableDataCell>{t.px}px</TableDataCell>
+      <TableDataCell>{t.rem}</TableDataCell>
+      <TableDataCell><Code>{t.space}</Code></TableDataCell>
+    </TableRow>
+  )
+});
 
   <Table>
     <TableHead>
-      <tr>
-        <th width="15%"><Text size="6" weight="semi-bold" element="span" mode="subdued">SIZE</Text></th>
-        <th><Text size="6" weight="semi-bold" element="span" mode="subdued">PX VALUE</Text></th>
-        <th> <Text size="6" weight="semi-bold" element="span" mode="subdued">REM VALUE</Text></th>
-        <th><Text size="6" weight="semi-bold" element="span" mode="subdued">LENS REFERENCE</Text></th>
-      </tr>
+      <TableRow>
+        <TableHeaderCell widTableHeaderCell="15%"><Span size="6" weight="semi-bold" mode="subdued">SIZE</Span></TableHeaderCell>
+        <TableHeaderCell><Span size="6" weight="semi-bold" mode="subdued">PX VALUE</Span></TableHeaderCell>
+        <TableHeaderCell> <Span size="6" weight="semi-bold" mode="subdued">REM VALUE</Span></TableHeaderCell>
+        <TableHeaderCell><Span size="6" weight="semi-bold" mode="subdued">LENS REFERENCE</Span></TableHeaderCell>
+      </TableRow>
     </TableHead>
     <TableBody>
       {tableRows}

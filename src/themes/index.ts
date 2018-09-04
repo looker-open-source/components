@@ -41,7 +41,7 @@ const theme = {
     small: rem(8),
     medium: rem(16),
     large: rem(20),
-    xlarge: rem(30),
+    xlarge: rem(32),
     xxlarge: rem(40),
     xxxlarge: rem(60),
   },
