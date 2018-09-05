@@ -10,7 +10,7 @@ const StatusAndResources = require('../../../../styleguide_components/StatusAndR
 
 ### Default Checkbox
 
-The `<Checkbox />` component should rarely be used directly. Rather, it is implemented in higher level components, such as `<FieldCheckbox />`.
+The `<Checkbox />` component renders a single checkbox element on the page, with no accompanying label. It is generally used to construct higher-order components like the `<FieldCheckbox />`. If you are building a form, you probably want to use `<FieldCheckbox />` instead as it provides label support.
 
 ### Name and ID
 
