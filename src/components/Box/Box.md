@@ -44,3 +44,10 @@ Below are a few more examples of building a spacing recipe to help clarify how t
   <Box my="xxxlarge" ml="xlarge">Margin Top & Bottom - XXXLarge, Margin left - XLarge</Box>
   <Box pb="xxlarge" ml="xxxlarge"> Padding Bottom - XXLarge, Margin left - XXXLarge</Box>
 ```
+
+
+#### Spacing Responsively
+Any one of the spacing properties can be passed an array of spacing sizes that will then apply at different breakpoints. Here is an example of what that looks like.
+```js
+  <Box pl={['xsmall', 'large', 'xxxlarge']}>My padding on the left changes with breakpoints</Box>
+```
