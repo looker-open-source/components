@@ -10,11 +10,7 @@ const StatusAndResources = require('../../../../styleguide_components/StatusAndR
 
 ### Default Checkbox
 
-By default, the `<Checkbox />` component renders an `<input type="checkbox" />` tag.
-
-```js
-  <Checkbox />
-```
+The `<Checkbox />` component should rarely be used directly. Rather, it is implemented in higher level components, such as `<FieldCheckbox />`.
 
 ### Name and ID
 
@@ -42,7 +38,3 @@ Use the disable property to gray out the checkbox, making it unclickable.
   <Checkbox disabled checked />
 
 ```
-
-### Alt Property
-
-Should the checkbox fail to render, `alt` text will be substituted in its place.

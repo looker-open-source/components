@@ -6,7 +6,13 @@ import { ThemedStyledProps } from 'styled-components'
 import { Theme } from './themes'
 export { StyledComponentClass, Styles } from 'styled-components'
 
-const { css, injectGlobal, keyframes, ThemeProvider } = styledComponents
+const {
+  css,
+  injectGlobal,
+  keyframes,
+  ThemeProvider,
+  withTheme,
+} = styledComponents
 
 // Typescript complains that the `as ThemedStyledComponentsModule` performs
 // unnecessary casting, which is not true. Without this line the Themes
@@ -17,5 +23,13 @@ const styled = (styledComponents as styledComponents.ThemedStyledComponentsModul
   Theme
 >).default
 
-export { css, injectGlobal, keyframes, React, ThemeProvider, ThemedStyledProps }
+export {
+  css,
+  injectGlobal,
+  keyframes,
+  React,
+  ThemeProvider,
+  ThemedStyledProps,
+  withTheme,
+}
 export default styled

@@ -1,3 +1,4 @@
+import { mount } from 'enzyme'
 import 'jest-styled-components'
 import * as React from 'react'
 import { create } from 'react-test-renderer'
@@ -34,8 +35,12 @@ test('Checkbox should accept disabled', () => {
   expect(tree).toMatchSnapshot()
 })
 
-test('Checkbox with alt', () => {
-  const component = create(<Checkbox theme={theme} alt="Alternate" />)
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
+test('Should trigger onChange handler', () => {
+  let counter = 0
+  const handleChange = () => counter++
+
+  const wrapper = mount(<Checkbox theme={theme} onChange={handleChange} />)
+
+  wrapper.find('input').simulate('change', { target: { value: '' } })
+  expect(counter).toEqual(1)
 })

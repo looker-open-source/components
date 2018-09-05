@@ -1,13 +1,14 @@
 import tag from 'clean-tag'
 import * as React from 'react'
 import styled from '../../../styled_components'
+import { reset } from '../../../styles/reset'
 
 export interface CheckboxProps {
   checked?: boolean
   name?: string
   disabled?: boolean
-  alt?: string
   id?: string
+  onChange?: React.ChangeEventHandler<HTMLInputElement>
 }
 
 const InternalCheckbox: React.SFC<CheckboxProps> = ({ ...props }) => {
@@ -15,5 +16,5 @@ const InternalCheckbox: React.SFC<CheckboxProps> = ({ ...props }) => {
 }
 
 export const Checkbox = styled<CheckboxProps>(InternalCheckbox)`
-  padding: 0 ${props => props.theme.spacing.s};
+  ${reset};
 `

@@ -17,7 +17,12 @@ exports[`A FieldCheckbox 1`] = `
 }
 
 .c2 {
-  padding: 0 0.5rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
 }
 
 .c1 {
