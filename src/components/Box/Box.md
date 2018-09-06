@@ -8,9 +8,7 @@ const StatusAndResources = require('../../../styleguide_components/StatusAndReso
 
 ### About Box
 
-`<Box />` is a low level component who's primary purpose is to provide a utility for easily controlling the spacing around elements in a consistent way using the [Lens spacing values](/#!/Spacing).
-
-It is recommended that you **avoid** using `<Box />` if possible and instead use a higher level component if it is available.
+`<Box />` is a low level component whose primary purpose is to provide a utility for easily controlling the spacing around elements in a consistent way using the [Lens spacing values](/#!/Spacing).
 
 ***
 

@@ -10,19 +10,8 @@ import {
   TextVariants,
   TextWeights,
 } from '../src/components/Text/Text'
-// import { ResponsiveValue, space, SpaceProps } from 'styled-system'
 import { RampSizes } from '../src/styles/ramp_sizes'
 
-import theme from '../src/themes/'
-
-// const spacingColumns = [
-//   {label: '1. Type',
-//    values: [
-//      {value: 'm', label: 'Margin'}
-//      {value: 'p' , label: 'padding'}
-//    ]
-//   }
-// ]
 const spacingTypes = [
   { value: 'm', label: 'Margin' },
   { value: 'p', label: 'Padding' },
@@ -37,10 +26,6 @@ const spacingSides = [
   { value: 'x', label: 'Left & Right' },
   { value: 'y', label: 'Top & Bottom' },
 ]
-
-// const spacingSizes = Object.keys(theme.space).map((space) => {
-//   return ({label: space, value: theme.space[space]})
-// })
 
 const spacingSizes = [
   { value: 'xsmall', label: '4px' },
