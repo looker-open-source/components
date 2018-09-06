@@ -52,6 +52,10 @@ module.exports = {
       name: 'Style',
       sections: [
         {
+          name: 'Breakpoints',
+          content: 'src/documentation/style/Breakpoints.md',
+        },
+        {
           name: 'Color',
           content: 'src/documentation/style/Color.md',
         },

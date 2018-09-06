@@ -12,6 +12,7 @@ import { themeSpacing, ThemeSpacing } from './theme_spacing'
 import { themeTransitions, ThemeTransitions } from './theme_transitions'
 
 export interface ThemeInterface {
+  breakpoints: string[]
   easings: ThemeEasings
   fontRamp: ThemeFontRamp
   fontSizes: string[]
@@ -26,6 +27,7 @@ export interface ThemeInterface {
 }
 
 const theme = {
+  breakpoints: ['30rem', '48rem', '64rem', '75rem', '90rem'],
   easings: themeEasings,
   fontRamp: themeFontRamp,
   fontSizes: [0, 12, 14, 16, 18, 22, 25, 36, 46, 58].map(p => rem(p)),
