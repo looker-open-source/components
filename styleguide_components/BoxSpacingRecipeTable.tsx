@@ -86,7 +86,7 @@ const ListRender = (
   )
 }
 
-export class SpacingTableRender extends React.Component<
+export class BoxSpacingRecipeTableRender extends React.Component<
   {},
   {
     types: ColumnExample[]

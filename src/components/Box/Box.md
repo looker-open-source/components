@@ -25,9 +25,9 @@ Using spacing on a `<Box />` is like following a recipe, you select:
 </List>
 ```
 ```js noeditor
-const SpacingTableRender = require('../../../styleguide_components/SpacingTable').SpacingTableRender;
+const BoxSpacingRecipeTableRender = require('../../../styleguide_components/BoxSpacingRecipeTable').BoxSpacingRecipeTableRender;
 <Box my="xxlarge">
-  <SpacingTableRender />
+  <BoxSpacingRecipeTableRender />
 </Box>
 ```
 To get the correct spacing you choose one value from each of the above columns. For example, to get 8px of margin on the right side you would do. `<Box mr="small">` or if you wanted 40px of padding on all sides you would do `<Box p="xxlarge">`.
@@ -37,12 +37,12 @@ You can combine different spacing recipes to apply spacing to multiple sides at 
 #### Spacing Examples
 Below are a few more examples of building a spacing recipe to help clarify how to use spacing with the `<Box>` component.
 ```js
+  <Box m="large">Margin All Sides - Large</Box>
   <Box pl="xsmall">Padding left - Extra Small</Box>
   <Box pl="medium">Padding left -  Medium</Box>
   <Box my="xxxlarge" ml="xlarge">Margin Top & Bottom - XXXLarge, Margin left - XLarge</Box>
   <Box pb="xxlarge" ml="xxxlarge"> Padding Bottom - XXLarge, Margin left - XXXLarge</Box>
 ```
-
 
 #### Spacing Responsively
 Any one of the spacing properties can be passed an array of spacing sizes that will then apply at different breakpoints. Here is an example of what that looks like.
