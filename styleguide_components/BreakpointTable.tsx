@@ -22,7 +22,12 @@ import {
 
 import { RampSizes } from '../src/styles/ramp_sizes'
 
-const breakpointLabels = ['Slot', 'Starts At', 'Definition', 'Description']
+const breakpointLabels = [
+  'Breakpoint',
+  'Starts At',
+  'Definition',
+  'Description',
+]
 
 const breakpointList = [
   {
@@ -63,7 +68,7 @@ export interface BreakpointExample {
 const TableLabel = (label: string, key: number) => {
   return (
     <TableHeaderCell key={key}>
-      <Text size={RampSizes.Five} textTransform={TextTransforms.Upper}>
+      <Text size={RampSizes.Five} weight={TextWeights.SemiBold}>
         {label}
       </Text>
     </TableHeaderCell>
@@ -79,12 +84,22 @@ const BreakpointRow = (
 ) => {
   return (
     <TableRow key={key} style={{ verticalAlign: 'middle' }}>
-      <TableDataCell>{slot}</TableDataCell>
-      <TableDataCell>{starts}</TableDataCell>
       <TableDataCell>
-        <Code className="prop-code">min-width: {rem}</Code>
+        <Text size={RampSizes.Five}>{slot}</Text>
       </TableDataCell>
-      <TableDataCell>{description}</TableDataCell>
+      <TableDataCell>
+        <Box mr="large">
+          <Text size={RampSizes.Five}>{starts}</Text>
+        </Box>
+      </TableDataCell>
+      <TableDataCell>
+        <Box px="small" is="span" className="prop-code">
+          <Code size={RampSizes.Six}>min-width: {rem}</Code>
+        </Box>
+      </TableDataCell>
+      <TableDataCell>
+        <Text size={RampSizes.Five}>{description}</Text>
+      </TableDataCell>
     </TableRow>
   )
 }

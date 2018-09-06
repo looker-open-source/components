@@ -1,7 +1,7 @@
 import * as React from 'react'
+import { Box } from '../src/components/Box/Box'
 import { Code } from '../src/components/Text/Code'
-import { Text, TextTransforms } from '../src/components/Text/Text'
-
+import { Text, TextWeights } from '../src/components/Text/Text'
 import { RampSizes } from '../src/styles/ramp_sizes'
 
 import {
@@ -34,7 +34,7 @@ export interface SpaceExample {
 const TableLabel = (label: string, key: number) => {
   return (
     <TableHeaderCell key={key}>
-      <Text size={RampSizes.Five} textTransform={TextTransforms.Upper}>
+      <Text size={RampSizes.Five} weight={TextWeights.SemiBold}>
         {label}
       </Text>
     </TableHeaderCell>
@@ -57,7 +57,9 @@ const SpacingRow = (px: string, rem: string, key: number, label: string) => {
       <TableDataCell>{px}px</TableDataCell>
       <TableDataCell>{rem}</TableDataCell>
       <TableDataCell>
-        <Code className="prop-code">{label}</Code>
+        <Box px="small" is="span" className="prop-code">
+          <Code size={RampSizes.Six}>{label}</Code>
+        </Box>
       </TableDataCell>
     </TableRow>
   )

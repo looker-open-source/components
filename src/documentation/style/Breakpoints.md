@@ -1,9 +1,11 @@
-<div class="component-desc"><p>Breakpoints give hooks for components to adapt and change in relation to the window size.</p></div>
+Breakpoints give hooks for components and layouts to adapt and change in relation to the window size of the users device.
 
-<div class="doc-section-divider"></div>
+Lens uses a mobile first approach to breakpoints, that means we use the `min-width` property for our media queries. This technique is used for applying basic layout styles first and then using breakpoints to adjust for wider screens.
 
+***
 
 ### Available Breakpoints
+
 
 ```js noeditor
 const BreakpointOptionsRender = require('../../../styleguide_components/BreakpointTable').BreakpointOptionsRender;

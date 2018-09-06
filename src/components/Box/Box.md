@@ -45,7 +45,14 @@ Below are a few more examples of building a spacing recipe to help clarify how t
 ```
 
 #### Spacing Responsively
-Any one of the spacing properties can be passed an array of spacing sizes that will then apply at different breakpoints. Here is an example of what that looks like.
+Any one of the spacing properties can be passed an array of spacing sizes that will then apply at different breakpoints. There are 5 [breakpoints](/#!/Breakpoints) slots that you can target. Here is an example of what that looks like.
 ```js
-  <Box pl={['xsmall', 'large', 'xxxlarge']}>My padding on the left changes with breakpoints</Box>
+  <Box pl={[
+          'xsmall',   // xsmall spacing up to the first breakpoint
+          'medium',   // medium spacing after first breakpoint
+          'xlarge',   // xlarge spacing after second breakpoint
+          'xxxlarge'  // xxxlarge spacing after third breakpoint
+         ]}>
+      My padding on the left changes with breakpoints
+  </Box>
 ```
