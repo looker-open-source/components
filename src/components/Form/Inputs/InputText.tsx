@@ -1,18 +1,26 @@
+import tag from 'clean-tag'
 import * as React from 'react'
-import { resetComponent as styled } from '../../../reset_component'
+import styled from '../../../styled_components'
+import { reset } from '../../../styles/reset'
 
-export enum InputTextTypes {
-  Email = 'email',
-  Number = 'number',
-  Password = 'password',
-  Text = 'text',
+export interface InputTextProps {
+  id?: string
+  name?: string
+  disabled?: boolean
+  placeholder?: string
+  // aria-placeholder?: string
+  readOnly?: boolean
+  type?: 'email' | 'number' | 'password' | 'text'
+  value?: string
+  onChange?: React.ChangeEventHandler<HTMLInputElement>
 }
 
-export interface InputTextProps extends React.HTMLProps<HTMLInputElement> {
-  type?: InputTextTypes
+const InternalInputText: React.SFC<InputTextProps> = ({ ...props }) => {
+  return <tag.input {...props} />
 }
 
-export const InputText = styled<InputTextProps, 'input'>('input')`
+export const InputText = styled<InputTextProps>(InternalInputText)`
+  ${reset}
   border: solid 1px ${props => props.theme.semanticColors.primary.borderColor};
   height: 28px;
   padding: 0 ${props => props.theme.spacing.s};
