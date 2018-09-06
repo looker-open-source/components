@@ -67,7 +67,30 @@ Our team library is where we share design assets like components and styles. The
 
 #### Adding items to the library
 
-We are still working on the work flow for proposing new components and styles to the team library. Please reach out to the [#lens](https://looker.slack.com/messages/C9NHFLY0G) team to learn more about this process.
+
+1. Project Kickoff: At the beginning of a project. Please reach out to the [#lens](https://looker.slack.com/messages/C9NHFLY0G) 
+
+- Go over the project brief for the upcoming cycle
+- Review existing components and assets that could be reused in your designs
+- Discuss semantic naming slots, UI patterns, and best practices
+
+2. Review: These can be scheduled weekly checkins or during open hours available on the google calendar
+
+- Walkthrough on specs or UI with the Lens team
+- Refine & Resolve any questions or concerns around explores & specs
+
+3. Add to the Lens Project
+
+- Search the Figma Lens project for existing components
+- Open or Create a new component file by duplicating the Lens "project template" file and rename the copy to your components title.
+- Copy and paste your design and specs into the exploration page.
+- Review and present new components during weekly design review
+
+4. Publish 
+
+- After the spec is approved it can be added to the team asset library 
+- File a Github issue and notify the [#lens](https://looker.slack.com/messages/C9NHFLY0G) that you that the component is ready for review
+- Any new components or updates to the Lens channel every Monday.
 
 ### Giving Feedback & Collaboration
 
