@@ -31,7 +31,7 @@ exports[`Box with null values are removed from styling 1`] = `
   margin-top: 1.25rem;
 }
 
-@media screen and (min-width:52em) {
+@media screen and (min-width:48rem) {
   .c0 {
     margin-top: 1rem;
   }
@@ -51,13 +51,13 @@ exports[`Responsive margin top Box 1`] = `
   margin-top: 1.25rem;
 }
 
-@media screen and (min-width:40em) {
+@media screen and (min-width:30rem) {
   .c0 {
     margin-top: 1rem;
   }
 }
 
-@media screen and (min-width:52em) {
+@media screen and (min-width:48rem) {
   .c0 {
     margin-top: 0.5rem;
   }
