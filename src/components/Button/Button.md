@@ -1,12 +1,13 @@
 ```js noeditor
-const StatusAndResources = require('../../../styleguide_components/StatusAndResources').StatusAndResources;
-
-<StatusAndResources
+const StatusAndResources = require('../../../styleguide_components/StatusAndResources')
+  .StatusAndResources
+;<StatusAndResources
   status="experimental"
-  figmaURL="https://www.figma.com/file/Dirjx0RKbOOrLacqHq61By/Button-%26-Links?node-id=914%3A981&viewport=1741%2C951%2C1" githubURL="https://github.com/looker/relens/tree/master/src/components/Button"
-  feedbackTitle="Button Component Feedback" />
+  figmaURL="https://www.figma.com/file/Dirjx0RKbOOrLacqHq61By/Button-%26-Links?node-id=914%3A981&viewport=1741%2C951%2C1"
+  githubURL="https://github.com/looker/relens/tree/master/src/components/Button"
+  feedbackTitle="Button Component Feedback"
+/>
 ```
-
 
 ### Variants
 
@@ -69,30 +70,30 @@ Use a transparent button as a tertiary action on a screen, they are often used a
 
 ---
 
-#### Destructive
+#### Danger
 
-Destructive Buttons are to be used in situations where you need to convey some very important, potentially irreversible consequence of pressing this button.
+Danger Buttons are to be used in situations where you need to convey some very important, potentially irreversible consequence of pressing this button.
 
 ```js
-<Button color="destructive">Destructive</Button>
+<Button color="danger">Danger</Button>
 ```
 
-##### Destructive states
+##### Danger states
 
 ```js noeditor
-<Button color="destructive">Destructive Idle</Button>
-<Button color="destructive" className="hover">Destructive Hover</Button>
-<Button color="destructive" className="active">Destructive Active</Button>
-<Button color="destructive" disabled>Destructive Disabled</Button>
+<Button color="danger">Danger Idle</Button>
+<Button color="danger" className="hover">Danger Hover</Button>
+<Button color="danger" className="active">Danger Active</Button>
+<Button color="danger" disabled>Danger Disabled</Button>
 ```
 
-#### Destructive Variants
+#### Danger Variants
 
-Destructive Buttons extend the default button, so they also have different variants
+Danger Buttons extend the default button, so they also have different variants
 
 ```js noeditor
-<Button color="destructive" variant="outline">Destructive Outline</Button>
-<Button color="destructive" variant="transparent">Destructive Transparent</Button>
+<Button color="danger" variant="outline">Danger Outline</Button>
+<Button color="danger" variant="transparent">Danger Transparent</Button>
 ```
 
 ### Size
@@ -178,7 +179,7 @@ const mildTheme = (theme) => {
     dark: '#198044',
     darker: '#12593c'
   })
-  const destructive = Object.assign({}, theme.semanticColors.destructive, {
+  const danger = Object.assign({}, theme.semanticColors.danger, {
     main: '#ffd200',
     dark: '#e5ae17',
     darker: '#a67e11',
@@ -189,7 +190,7 @@ const mildTheme = (theme) => {
   const newTheme = Object.assign({}, theme)
   newTheme.semanticColors = {}
   newTheme.semanticColors.primary = primary
-  newTheme.semanticColors.destructive = destructive
+  newTheme.semanticColors.danger = danger
   return newTheme
 }
 
@@ -197,7 +198,7 @@ const mildTheme = (theme) => {
   <ThemeProvider theme={mildTheme}>
     <div>
       <Button>Mild Button</Button>
-      <Button color="destructive" variant="outline">Mild Destructive Outline Button</Button>
+      <Button color="danger" variant="outline">Mild Danger Outline Button</Button>
     </div>
   </ThemeProvider>
 </React.Fragment>

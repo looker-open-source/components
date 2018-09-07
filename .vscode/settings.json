@@ -1,12 +1,7 @@
 {
+  "editor.tabSize": 2,
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
-  "spellright.language": "en",
-  "spellright.documentTypes": [
-    "markdown",
-    "latex",
-    "plaintext",
-    "scss"
-  ],
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.updateImportsOnFileMove.enabled": "always"
 }

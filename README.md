@@ -12,6 +12,8 @@ If you're looking for information about working with components you're probably 
 - [Publishing Lens Components](#publishing-lens-components)
 - [Building the Lens Style Guide](#building-the-lens-style-guide)
 - [Project Commands](#project-commands)
+- Further Reading
+  - [Working in Lens](internal_docs/working_in_lens.md)
 
 # Setting up the Lens Project
 

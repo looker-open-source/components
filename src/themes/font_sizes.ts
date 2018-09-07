@@ -1,7 +1,7 @@
 import { rem } from 'polished'
 import { RampSizes } from '../styles/ramp_sizes'
 
-export interface ThemeFontRamp {
+export interface FontRamp {
   [RampSizes.One]: string
   [RampSizes.Two]: string
   [RampSizes.Three]: string
@@ -14,7 +14,7 @@ export interface ThemeFontRamp {
 }
 
 // tslint:disable:object-literal-sort-keys
-export const themeFontRamp: ThemeFontRamp = {
+export const fontRamp: FontRamp = {
   [RampSizes.D1]: rem(58),
   [RampSizes.D2]: rem(46),
   [RampSizes.D3]: rem(36),
@@ -27,7 +27,7 @@ export const themeFontRamp: ThemeFontRamp = {
 }
 
 // tslint:disable:object-literal-sort-keys
-export const themeLineHeightRamp: ThemeFontRamp = {
+export const lineHeightRamp: FontRamp = {
   [RampSizes.D1]: rem(84),
   [RampSizes.D2]: rem(64),
   [RampSizes.D3]: rem(52),

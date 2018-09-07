@@ -2,7 +2,7 @@ import { rem } from 'polished'
 
 const spacingBase = 16
 
-export interface ThemeSpacing {
+export interface Spacing {
   l: string
   m: string
   s: string
@@ -13,7 +13,7 @@ export interface ThemeSpacing {
 }
 
 // tslint:disable:object-literal-sort-keys
-export const themeSpacing: ThemeSpacing = {
+export const spacing: Spacing = {
   xs: rem(spacingBase * 0.25),
   s: rem(spacingBase * 0.5),
   m: rem(spacingBase),

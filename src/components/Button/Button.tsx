@@ -4,11 +4,8 @@ import * as React from 'react'
 import { merge, mixed } from 'styled-system'
 import styled, { ThemedStyledProps } from '../../styled_components'
 import { brandFont } from '../../styles/typography'
-import { ThemeInterface } from '../../themes'
-import {
-  SemanticColor,
-  SemanticColors,
-} from '../../themes/theme_semantic_colors'
+import { Theme } from '../../themes'
+import { SemanticColor, SemanticColors } from '../../themes/semantic_colors'
 import { SizeLarge, SizeMedium, SizeSmall, SizeXSmall } from '../../types'
 
 export type ButtonSizes = SizeXSmall | SizeSmall | SizeMedium | SizeLarge
@@ -21,6 +18,7 @@ export interface ButtonProps {
   color?: keyof SemanticColors | SemanticColor
   /**
    * Determines if the button is disabled.
+   * @default false
    */
   disabled?: boolean
   /**
@@ -39,11 +37,12 @@ export interface ButtonProps {
   onClick?: React.MouseEventHandler<HTMLButtonElement>
   /**
    * The type of button to define
+   * @default "button"
    */
   type?: 'submit' | 'reset' | 'button' | 'menu'
 }
 
-type ThemedProps<P> = ThemedStyledProps<P, ThemeInterface>
+type ThemedProps<P> = ThemedStyledProps<P, Theme>
 
 const variantCommonProps = (color: SemanticColor) => {
   return {

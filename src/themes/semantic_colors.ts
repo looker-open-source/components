@@ -1,9 +1,6 @@
 import {
   blue500,
-  charcoal200,
   charcoal300,
-  charcoal400,
-  charcoal500,
   primary500,
   primary600,
   primary700,
@@ -57,12 +54,14 @@ export interface SemanticColor {
 export interface SemanticColors {
   /** Colors used for primary actions. */
   primary: SemanticColor
+  /** Colors used for secondary actions. */
+  secondary: SemanticColor
   /** Colors used for dangerous actions. */
-  destructive: SemanticColor
+  danger: SemanticColor
 }
 
 export const semanticColors: SemanticColors = {
-  destructive: {
+  danger: {
     borderColor: red500,
     dark: red600,
     darker: red700,
@@ -73,6 +72,16 @@ export const semanticColors: SemanticColors = {
     text: white,
   },
   primary: {
+    borderColor: charcoal300,
+    dark: primary600,
+    darker: primary700,
+    light: purple100,
+    lighter: purple000,
+    linkColor: blue500,
+    main: primary500,
+    text: white,
+  },
+  secondary: {
     borderColor: charcoal300,
     dark: primary600,
     darker: primary700,

@@ -1,45 +1,50 @@
 import { rem } from 'polished'
-import { ThemeEasings, themeEasings } from './theme_easings'
-import { themeShadows, ThemeShadows } from './theme_elevation'
-import {
-  themeFontRamp,
-  ThemeFontRamp,
-  themeLineHeightRamp,
-} from './theme_font_sizes'
-import { palette, Palette } from './theme_palette'
-import { SemanticColors, semanticColors } from './theme_semantic_colors'
-import { themeSpacing, ThemeSpacing } from './theme_spacing'
-import { themeTransitions, ThemeTransitions } from './theme_transitions'
+import { Easings, easings } from './easings'
+import { shadows, Shadows } from './elevation'
+import { fontRamp, FontRamp, lineHeightRamp } from './font_sizes'
+import { palette, Palette } from './palette'
+import { SemanticColors, semanticColors } from './semantic_colors'
+import { spacing, Spacing } from './spacing'
+import { transitions, Transitions } from './transitions'
 
-export interface ThemeInterface {
+export * from './easings'
+export * from './elevation'
+export * from './font_sizes'
+export * from './palette'
+export * from './semantic_colors'
+export * from './spacing'
+export * from './transitions'
+
+export interface Theme {
   breakpoints: string[]
-  easings: ThemeEasings
-  fontRamp: ThemeFontRamp
+  easings: Easings
+  fontRamp: FontRamp
   fontSizes: string[]
-  lineHeightRamp: ThemeFontRamp
+  lineHeightRamp: FontRamp
   lineHeights: string[]
   palette: Palette
   semanticColors: SemanticColors
-  shadows: ThemeShadows
-  space: object
-  spacing: ThemeSpacing
-  transitions: ThemeTransitions
+  shadows: Shadows
+  space: string[]
+  spacing: Spacing
+  transitions: Transitions
 }
 
-const theme = {
+export const theme: Theme = {
   breakpoints: ['30rem', '48rem', '64rem', '75rem', '90rem'],
-  easings: themeEasings,
-  fontRamp: themeFontRamp,
+  easings,
+  fontRamp,
   fontSizes: [0, 12, 14, 16, 18, 22, 25, 36, 46, 58].map(p => rem(p)),
-  lineHeightRamp: themeLineHeightRamp,
+  lineHeightRamp,
   lineHeights: [0, 16, 20, 24, 28, 32, 40, 52, 64, 84].map(p => rem(p)),
   palette,
   semanticColors,
-  shadows: themeShadows,
-  // tslint:disable:object-literal-sort-keys
+  shadows,
+
   space: {
     none: 0,
     xsmall: rem(4),
+    // tslint:disable-next-line:object-literal-sort-keys
     small: rem(8),
     medium: rem(16),
     large: rem(20),
@@ -47,8 +52,8 @@ const theme = {
     xxlarge: rem(40),
     xxxlarge: rem(60),
   },
-  spacing: themeSpacing,
-  transitions: themeTransitions,
+  spacing,
+  transitions,
 }
 
 export default theme

@@ -1,4 +1,4 @@
-export interface ThemeTransitions {
+export interface Transitions {
   durationComplex: string
   durationIntricate: string
   durationModerate: string
@@ -8,7 +8,7 @@ export interface ThemeTransitions {
 }
 
 // tslint:disable:object-literal-sort-keys
-export const themeTransitions = {
+export const transitions: Transitions = {
   durationRapid: '100ms',
   durationQuick: '150ms',
   durationSimple: '200ms',
