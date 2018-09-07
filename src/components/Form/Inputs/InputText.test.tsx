@@ -37,32 +37,22 @@ test('InputText should accept readOnly', () => {
   expect(tree).toMatchSnapshot()
 })
 
-test('InputText of type email', () => {
-  const component = create(<InputText theme={theme} type="email" />)
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
-})
-
-test('InputText of type number', () => {
-  const component = create(<InputText theme={theme} type="number" />)
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
-})
-
-test('InputText of type password', () => {
-  const component = create(<InputText theme={theme} type="password" />)
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
-})
-
-test('InputText of type text', () => {
-  const component = create(<InputText theme={theme} type="text" />)
+test('InputText should accept required', () => {
+  const component = create(<InputText theme={theme} required />)
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
 })
 
 test('InputText with a value', () => {
   const component = create(<InputText theme={theme} value="Some value" />)
+  const tree = component.toJSON()
+  expect(tree).toMatchSnapshot()
+})
+
+test('InputText with aria-describedby', () => {
+  const component = create(
+    <InputText theme={theme} aria-describedby="some-id" />
+  )
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
 })

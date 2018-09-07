@@ -2,21 +2,31 @@ import tag from 'clean-tag'
 import * as React from 'react'
 import styled from '../../../styled_components'
 import { reset } from '../../../styles/reset'
+import InputProps from './InputProps'
 
-export interface InputTextProps {
-  id?: string
-  name?: string
-  disabled?: boolean
-  placeholder?: string
-  // aria-placeholder?: string
-  readOnly?: boolean
-  type?: 'email' | 'number' | 'password' | 'text'
+export interface InputTextProps extends InputProps {
+  /**
+   * Specifies the initial value of the input field
+   */
   value?: string
-  onChange?: React.ChangeEventHandler<HTMLInputElement>
+  /**
+   * Displays an example value or short hint to the user. Should not replace a label.
+   */
+  placeholder?: string
+  /**
+   * Determines if the input is readonly.
+   * @default false
+   */
+  readOnly?: boolean
+  /**
+   * Determines if an input is required.
+   * @default false
+   */
+  required?: boolean
 }
 
 const InternalInputText: React.SFC<InputTextProps> = ({ ...props }) => {
-  return <tag.input {...props} />
+  return <tag.input type="text" {...props} />
 }
 
 export const InputText = styled<InputTextProps>(InternalInputText)`
