@@ -51,10 +51,25 @@ Inside each file is a series of pages that maps to our design roadmap workflow. 
 - Define (scoping of file and design work)
 - Explore (design explorations and iterations)
 - Refine (refinement of explorations )
-- Spec (finalized specs & best practices)
+- Proposal (finalized proposals & best practices)
 - Launch (Final page, contains finalized files and library assets)
 
 By nature of how the design process works, these pages are a bit fluid and you may encounter documents with more pages, but as a team we do our best to standardize on the format above.
+
+#### Contribution to Lens
+
+At the beginning of a project it is important to connect, review, or propose new components with dependent teams and start a dialog around how to integrate Lens into upcoming and current projects.
+
+<strong>Structure & Propose:</strong> Please start this process by reaching out to the [#lens](https://looker.slack.com/messages/C9NHFLY0G) team to set up some time to:
+
+- Go over the project brief for the upcoming cycle
+- Review existing components and assets that could be reused in your designs
+- Discuss semantic naming slots, UI patterns, and best practices
+
+<strong>Review & Revise:</strong> After the initial project kickoff we want to set up several times to review and continue the collaboration process. These reviews can be scheduled as weekly checkins or during open hours available on the design teams google calendar
+
+- Walkthrough designs, proposals, and UI components with the Lens team
+- Refine & Resolve any questions or concerns 
 
 ### Team Library
 
@@ -65,34 +80,20 @@ Our team library is where we share design assets like components and styles. The
 - Figma has a [great document on using the team library](https://help.figma.com/editor/team-library).
 - [Figma team library tutorial](https://www.youtube.com/watch?v=PgRUEyw9xpo) video on youtube.
 
-#### Adding items to the library
+#### Adding items to the team library
 
-
-1. <strong>Project Kickoff:</strong> At the beginning of a project. Please reach out to the [#lens](https://looker.slack.com/messages/C9NHFLY0G) team to set up a time to:
-
-- Go over the project brief for the upcoming cycle
-- Review existing components and assets that could be reused in your designs
-- Discuss semantic naming slots, UI patterns, and best practices
-
-2. <strong>Review:</strong> These can be scheduled as weekly checkins or during open hours available on the design teams google calendar
-
-- Walkthrough designs, specs, and UI components with the Lens team
-- Refine & Resolve any questions or concerns around explores & specs
-
-3. <strong>Add to the Lens Project</strong>
-
-- Search the Figma Lens project for existing components
-- Open or create a new component file by duplicating the Lens "project template" and rename the 'project template copy' to your components title.
-- Copy and paste your design and specs into the exploration page.
-- Review with the Lens team and the design team during the weekly design review
-
-4. <strong>Publish</strong>
-
-- After the spec is approved it can be added to the team asset library 
-- File a Github issue and notify the [#lens](https://looker.slack.com/messages/C9NHFLY0G) that you that the component is ready for review
-- Any new components or updates to the Lens channel every Monday.
+- Search the Figma Lens project for existing components.
+- Open or create a new component file by duplicating the Lens [project template](https://www.figma.com/file/aLKZ8fP9X3q0iLj8jknTy9iC/Project-Template) and rename the 'project template copy' to your components title.
+- Copy and paste your design and proposal into the exploration page.
+- Review the design team during the weekly design review
 
 ### Giving Feedback & Collaboration
+
+<strong>Approve & Publish:</strong> After the proposal is approved by the Lens team it can be added to the team asset library. 
+
+- File a  [Github issue](https://github.com/looker/relens/issues/new?title=Design+Feedback&labels=design,figma)and notify the [#lens](https://looker.slack.com/messages/C9NHFLY0G) that you that the component is ready for review
+
+<strong>Adding feedback in Figma</strong>
 
 Figma allows you to give feedback right in the file you are looking at. You can leave a comment on a screen to start a conversation about any feedback you may have.
 
@@ -101,3 +102,18 @@ Read about using [Figma's commenting system here](https://help.figma.com/editor/
 The Lens team also uses Github to track our issues and we welcome you to open an issue if you discover a bug or have feedback related to the design or functionality of a component or style in Figma.
 
 You can open an issue [quickly here with the correct labels](https://github.com/looker/relens/issues/new?title=Design+Feedback&labels=design,figma) to ensure the design team will see it
+
+### FAQ
+
+How do I know if my new component can be added to Lens?
+
+Identify the elements that are the smaller parts that make up the whole. Which of these elements already exist in Lens and which do not? You can search the existing components in Lens to make sure these components don't already have specifications outlined. Once you have identified these items, then create a proposal that illustrations the sizing, color, interaction behavior and the reusability of the UI component. Once you are ready to review please reach out to the Lens team to set up a demo and walkthrough of your proposed components.
+
+What if the styling of the new component looks different to the existing ones on Helltool?
+
+Each component will have a unique issue around styling coherence on the existing product. However, generally we want to assign Lens styling that will then gradually be adopted into the current product. There will be differences at first but eventually the current styling will deprecated and replaced. As long as the new styling doesn't break the UI, fail accessibility or muddys up the visual hierarchy you can assign the Lens styling. 
+
+What if I need something that doesn't exist in Lens yet? 
+
+Please feel free to file a [Github issue](https://github.com/looker/relens/issues/new?title=Design+Feedback&labels=design,figma)
+and let us know what you are missing. Then feel free to put together a proposal and add it to the issue as a reference or with examples. 
