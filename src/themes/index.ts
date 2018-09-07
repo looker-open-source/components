@@ -42,7 +42,7 @@ export const theme: Theme = {
   shadows,
   /* tslint:disable:object-literal-sort-keys */
   space: {
-    none: rem(0),
+    none: 0,
     xsmall: rem(4),
     small: rem(8),
     medium: rem(16),
