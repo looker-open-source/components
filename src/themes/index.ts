@@ -25,7 +25,7 @@ export interface Theme {
   palette: Palette
   semanticColors: SemanticColors
   shadows: Shadows
-  space: string[]
+  space: object
   spacing: Spacing
   transitions: Transitions
 }
@@ -40,11 +40,10 @@ export const theme: Theme = {
   palette,
   semanticColors,
   shadows,
-
+  /* tslint:disable:object-literal-sort-keys */
   space: {
-    none: 0,
+    none: rem(0),
     xsmall: rem(4),
-    // tslint:disable-next-line:object-literal-sort-keys
     small: rem(8),
     medium: rem(16),
     large: rem(20),
@@ -52,6 +51,7 @@ export const theme: Theme = {
     xxlarge: rem(40),
     xxxlarge: rem(60),
   },
+  /* tslint:enable:object-literal-sort-keys */
   spacing,
   transitions,
 }
