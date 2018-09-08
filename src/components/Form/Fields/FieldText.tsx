@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { withTheme } from '../../../styled_components'
 import { Theme } from '../../../themes'
+import { ValidationError } from '../Form'
 import { FormControl } from '../FormGroup/FormGroup'
 import { InputText } from '../Inputs/InputText'
 import { Label } from '../Label/Label'
@@ -12,6 +13,8 @@ export interface FieldTextProps {
   value?: string
   onChange?: React.ChangeEventHandler<HTMLInputElement>
   readOnly?: boolean
+
+  ValidationError?: ValidationError
 }
 
 export const FieldText: React.SFC<FieldTextProps> = ({
