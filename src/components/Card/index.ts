@@ -1,3 +1,3 @@
-export { Card } from './Card'
-export { CardContent } from './CardContent'
-export { CardMedia } from './CardMedia'
+export * from './Card'
+export * from './CardContent'
+export * from './CardMedia'
