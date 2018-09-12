@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Box default 1`] = `
+.c0 {
+  margin-top: 1.25rem;
+}
+
+<div
+  className="c0"
+>
+  🥑
+</div>
+`;
+
+exports[`Box with SizeNone is valid 1`] = `
+.c0 {
+  margin-top: none;
+}
+
+<div>
+  <div
+    className="c0"
+  >
+    🥑
+  </div>
+</div>
+`;
+
+exports[`Box with null values are removed from styling 1`] = `
+.c0 {
+  margin-top: 1.25rem;
+}
+
+@media screen and (min-width:48rem) {
+  .c0 {
+    margin-top: 1rem;
+  }
+}
+
+<div>
+  <div
+    className="c0"
+  >
+    🥑
+  </div>
+</div>
+`;
+
+exports[`Responsive margin top Box 1`] = `
+.c0 {
+  margin-top: 1.25rem;
+}
+
+@media screen and (min-width:30rem) {
+  .c0 {
+    margin-top: 1rem;
+  }
+}
+
+@media screen and (min-width:48rem) {
+  .c0 {
+    margin-top: 0.5rem;
+  }
+}
+
+<div>
+  <div
+    className="c0"
+  >
+    🥑
+  </div>
+</div>
+`;

@@ -16,6 +16,7 @@ export * from './spacing'
 export * from './transitions'
 
 export interface Theme {
+  breakpoints: string[]
   easings: Easings
   fontRamp: FontRamp
   fontSizes: string[]
@@ -24,12 +25,13 @@ export interface Theme {
   palette: Palette
   semanticColors: SemanticColors
   shadows: Shadows
-  space: string[]
+  space: object
   spacing: Spacing
   transitions: Transitions
 }
 
 export const theme: Theme = {
+  breakpoints: ['30rem', '48rem', '64rem', '75rem', '90rem'],
   easings,
   fontRamp,
   fontSizes: [0, 12, 14, 16, 18, 22, 25, 36, 46, 58].map(p => rem(p)),
@@ -38,7 +40,18 @@ export const theme: Theme = {
   palette,
   semanticColors,
   shadows,
-  space: [0, 4, 6, 8, 16, 20, 24, 30, 36, 46].map(p => rem(p)),
+  /* tslint:disable:object-literal-sort-keys */
+  space: {
+    none: 0,
+    xsmall: rem(4),
+    small: rem(8),
+    medium: rem(16),
+    large: rem(20),
+    xlarge: rem(32),
+    xxlarge: rem(40),
+    xxxlarge: rem(60),
+  },
+  /* tslint:enable:object-literal-sort-keys */
   spacing,
   transitions,
 }
