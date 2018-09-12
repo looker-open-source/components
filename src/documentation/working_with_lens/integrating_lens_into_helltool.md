@@ -21,11 +21,11 @@ const MyComponent = () => {
     <Button onClick={}>Click me</Button>
   </div>
 }
-``` 
+```
 
 ### .tsx Files and Component Syntax
 
-[React](https://reactjs.org/) is the underlying component framework which powers Lens. React components and are generally expressed via the [JSX](https://reactjs.org/docs/introducing-jsx.html) syntax. 
+[React](https://reactjs.org/) is the underlying component framework which powers Lens. React components and are generally expressed via the [JSX](https://reactjs.org/docs/introducing-jsx.html) syntax.
 
 In order to identify and precompile the JSX fragments, files containing Lens and supporting components must be named with a `.tsx` file extension.
 
@@ -38,11 +38,11 @@ Bridging the two is fairly straightforward. To ensure Lens components are availa
 
 > `Lens (React) <<|Lens Bridge|>> Helltool Angular`
 >
-> Conceptually, the Lens Bridge creates a connection between one Lens or React component and an Angular application. 
+> Conceptually, the Lens Bridge creates a connection between one Lens or React component and an Angular application.
 
 #### Registering a Lens Component with the Lens Bridge
 
-Image we want to replace a simple button in Angular with a Lens button. We can do that using the Lens Bridge. First we need to register the Lens Button component with the Bridge and give it a name: 
+Image we want to replace a simple button in Angular with a Lens button. We can do that using the Lens Bridge. First we need to register the Lens Button component with the Bridge and give it a name:
 
 ```typescript
 import { Button } from 'lens'
@@ -51,7 +51,7 @@ import { register } from '../lens_bridge'
 register('Button', Button, ['color', 'size', 'disabled', 'variant', 'onClick', 'type'])
 ```
 
-The `register` function takes a string name, the Lens or React component instance and a list of the Lens interface properties we want to expose to Angular. Each property is bound with a [one-way Angular data binding](https://docs.angularjs.org/api/ng/service/$compile#-scope-), mimicking React's behavior. 
+The `register` function takes a string name, the Lens or React component instance and a list of the Lens interface properties we want to expose to Angular. Each property is bound with a [one-way Angular data binding](https://docs.angularjs.org/api/ng/service/$compile#-scope-), mimicking React's behavior.
 
 `register` names the Angular component the value of the first argument, prefixed with `lens-`. This means that Button becomes `lens-button` in Angular templates.
 
@@ -59,14 +59,14 @@ One of Angular's greatest frustrations is its piling on of conventions, so why a
 
 #### Using the Wrapped Lens Component
 
-Now that the Button component has been registered with the Lens Bridge we can use it in Angular easily. 
+Now that the Button component has been registered with the Lens Bridge we can use it in Angular easily.
 
 First, we need to tell our Angular Module that it depends on the Lens Bridge Angular Module:
 
 ```typescript
 import { lensBridgeAngularModule } from '../lens_bridge'
 
-const m = angualar.module('looker.admin.themes', [
+const m = angular.module('looker.admin.themes', [
   lensBridgeAngularModule.name
 ])
 ```
@@ -93,9 +93,9 @@ Because of this, it's suggested that developers try to find small to medium size
 
 For example, write a whole form in Lens and put that behind the Bridge, instead of putting each buttons and inputs behind a Bridge. Let's look at a quick example of how we might apply this to the Admin Connection form.
 
-#### Example: Using Lens in the Admin Connection Form 
+#### Example: Using Lens in the Admin Connection Form
 
-> ⚠️ Heads up ⚠️ 
+> ⚠️ Heads up ⚠️
 >
 > This is a contrived example and does not reflect actual code in Helltool. The intent is to describe a reasonable workflow when integrating Lens into an existing Helltool UI.
 
@@ -105,11 +105,11 @@ The Admin Connection page displays a relatively simple form which allows admins 
 
 Using the Bridge, we can define the scope of work as the entire form, encode it as a new component composed of Lens components, and put it behind the Bridge:
 
-![img/admin_connection_form_highlighted](img/admin_connection_form_highlighted.jpg) 
+![img/admin_connection_form_highlighted](img/admin_connection_form_highlighted.jpg)
 
 ##### Deciding on an Interface
 
-Before starting on the Lens powered version of the Connection form, we should decide on the form component's interface. It likely receives an object that describes a current connection if the user is editing a connection, or null if the user is creating a new connection. Let's assume that it saving and testing the connection is a complex process already well defined in Helltool's Angular code. Instead of immediately porting that to a Lens / React environment we can reuse the logic by passing handlers across the Bridge and into our form component. 
+Before starting on the Lens powered version of the Connection form, we should decide on the form component's interface. It likely receives an object that describes a current connection if the user is editing a connection, or null if the user is creating a new connection. Let's assume that it saving and testing the connection is a complex process already well defined in Helltool's Angular code. Instead of immediately porting that to a Lens / React environment we can reuse the logic by passing handlers across the Bridge and into our form component.
 
 So we need:
 
@@ -159,7 +159,7 @@ Next we'll ensure we register the `AdminConnectionForm` component with the Lens 
 import { register } from '../lens_bridge'
 
 register('AdminConnectionForm', AdminConnectionForm, ['connection', 'onSave', 'onTest'])
-``` 
+```
 
 And register the lensBridgeAngularModule as a dependency of the Admin Connection Angular module:
 
@@ -180,7 +180,7 @@ Finally the new AdminConnectionForm component can be referenced in Angular like 
 
 // Note this is a convention, but is needed to ensure we include the admin_connection_form at least once,
 // so it is registered with the Lens Bridge. Doing the import here, where the underling AdminConnectionForm component
-// is used brings the dependency together a bit better.  
+// is used brings the dependency together a bit better.
 export { AdminConnectionForm } from './admin_connection_form.tsx'
 
 class AngularAdminConnectionForm extends angular.IController {
@@ -194,7 +194,7 @@ adminConnectionModule.component({
   template: `
     <lens-admin-connection-form connection='$ctrl.connection' on-save='$ctrl.saveHandler' on-test='$ctrl.testHandler'/>
   `
-})  
+})
 ```
 
 ### Lens Bridge Gotchas
@@ -204,9 +204,9 @@ adminConnectionModule.component({
   ```typescript
   <lens-button><lens-icon-file/></lens-button>
   ```
-   
+
   Instead, perform that composition in the Lens components on the React side of the bridge. Unfortunately, given Angular's string based templates, it's not possible to programattically enforce this with a typechecker (note this _is_ enforceable in React).
-  
+
 * Lens Bridge produces an Angular component using only one-way bindings.
 
 * After registering a component with Lens, you must include the lensBridgeAngularModule as a dependency to your Angular module, otherwise the newly registered Lens component will appear to not exist.
