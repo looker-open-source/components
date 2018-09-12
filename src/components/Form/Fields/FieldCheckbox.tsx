@@ -1,12 +1,10 @@
 import * as React from 'react'
 import { FormControl, FormControlDirections } from '../FormGroup/FormGroup'
-import { Checkbox } from '../Inputs/Checkbox'
+import { Checkbox, CheckboxProps } from '../Inputs/Checkbox'
 import { Label } from '../Label/Label'
 
-export interface FieldCheckboxProps {
-  id: string
+export interface FieldCheckboxProps extends CheckboxProps {
   label: string
-  name: string
 }
 
 export const FieldCheckbox: React.SFC<FieldCheckboxProps> = ({

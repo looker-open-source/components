@@ -67,6 +67,23 @@ exports[`Checkbox should accept disabled 1`] = `
 />
 `;
 
+exports[`Checkbox with aria-describedby 1`] = `
+.c0 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+<input
+  aria-describedby="some-id"
+  className="c0"
+  type="checkbox"
+/>
+`;
+
 exports[`Checkbox with name and id 1`] = `
 .c0 {
   margin: 0;

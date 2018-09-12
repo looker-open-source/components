@@ -35,6 +35,14 @@ test('Checkbox should accept disabled', () => {
   expect(tree).toMatchSnapshot()
 })
 
+test('Checkbox with aria-describedby', () => {
+  const component = create(
+    <Checkbox theme={theme} aria-describedby="some-id" />
+  )
+  const tree = component.toJSON()
+  expect(tree).toMatchSnapshot()
+})
+
 test('Should trigger onChange handler', () => {
   let counter = 0
   const handleChange = () => counter++

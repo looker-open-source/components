@@ -3,17 +3,11 @@ import { withTheme } from '../../../styled_components'
 import { Theme } from '../../../themes'
 import { ValidationError } from '../Form'
 import { FormControl } from '../FormGroup/FormGroup'
-import { InputText } from '../Inputs/InputText'
+import { InputText, InputTextProps } from '../Inputs/InputText'
 import { Label } from '../Label/Label'
 
-export interface FieldTextProps {
-  id: string
+export interface FieldTextProps extends InputTextProps {
   label: string
-  name: string
-  value?: string
-  onChange?: React.ChangeEventHandler<HTMLInputElement>
-  readOnly?: boolean
-
   ValidationError?: ValidationError
 }
 
