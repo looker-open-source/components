@@ -24,30 +24,29 @@ On the left we have the form as designed and on the right you see the spacing in
 
 ```js
 <form>
-
-<Heading weight="light">Style</Heading>
-<Box pt="medium" pb="large" style={{borderBottom: 'solid 1px #DEE1E5'}}>
-  <FieldText id="style-name" name="styleName" label="Name" />
-</Box>
-
-<Box py="large" style={{borderBottom: 'solid 1px #DEE1E5'}}>
-  <Heading weight="light">Dashboard Page</Heading>
-
-  <Box mt="medium" mb="small">
-    <FieldText id="font-family" name="fontFamily" label="Font Family" />
+  <Heading weight="light">Style</Heading>
+  <Box pt="medium" pb="large" style={{borderBottom: 'solid 1px #DEE1E5'}}>
+    <FieldText id="style-name" name="styleName" label="Name" />
   </Box>
 
-  <Box mb="small">
-    <FieldText id="text-color" name="textColor" label="Text Color" />
+  <Box py="large" style={{borderBottom: 'solid 1px #DEE1E5'}}>
+    <Heading weight="light">Dashboard Page</Heading>
+
+    <Box mt="medium" mb="small">
+      <FieldText id="font-family" name="fontFamily" label="Font Family" />
+    </Box>
+
+    <Box mb="small">
+      <FieldText id="text-color" name="textColor" label="Text Color" />
+    </Box>
+
+    <Box>
+      <FieldText id="background-color" name="bgColor" label="Background Color" />
+    </Box>
   </Box>
 
-  <Box>
-    <FieldText id="background-color" name="bgColor" label="Background Color" />
+  <Box pt="large">
+    <Button>Save</Button>
   </Box>
-</Box>
-
-<Box pt="large">
-  <Button>Save</Button>
-</Box>
 </form>
 ```
