@@ -121,6 +121,10 @@
   color: #0087E1 !important;
 }
 
+[class*='rsg--para-'] img {
+  width: 100%;
+}
+
 button[name="rsg-code-editor"][class*='rsg--isActive-'] {
   display: none !important;
   border-bottom-color: #4F2ABA !important;
