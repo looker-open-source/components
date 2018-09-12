@@ -22,7 +22,7 @@ On the left we have the form as designed and on the right you see the spacing in
 
 !['Spacing Example'](/img/spacing/spacing-form-example.png)
 
-Using Lens and the [Box Component](/#!/Box) we can quickly apply the correct spacing to this form.
+Using Lens and the [Box Component](/#!/Box) we can quickly apply the correct spacing (the parts in pink) to this form.
 
 ```js
 <form>

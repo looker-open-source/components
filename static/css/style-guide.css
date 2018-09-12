@@ -155,4 +155,5 @@ button[name="rsg-code-editor"][class*='rsg--isActive-'] {
 
 .prop-code code {
   color: #6C43E0 !important;
+  white-space: nowrap;
 }
