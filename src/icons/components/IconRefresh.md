@@ -1,0 +1,5 @@
+# IconRefresh
+
+```js
+<IconRefresh />
+```

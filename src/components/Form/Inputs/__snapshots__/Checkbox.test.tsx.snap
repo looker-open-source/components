@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkbox checked set to false 1`] = `
+.c0 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+<input
+  checked={false}
+  className="c0"
+  type="checkbox"
+/>
+`;
+
+exports[`Checkbox checked set to true 1`] = `
+.c0 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+<input
+  checked={true}
+  className="c0"
+  type="checkbox"
+/>
+`;
+
+exports[`Checkbox default 1`] = `
+.c0 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+<input
+  className="c0"
+  type="checkbox"
+/>
+`;
+
+exports[`Checkbox should accept disabled 1`] = `
+.c0 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+<input
+  className="c0"
+  disabled={true}
+  type="checkbox"
+/>
+`;
+
+exports[`Checkbox with aria-describedby 1`] = `
+.c0 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+<input
+  aria-describedby="some-id"
+  className="c0"
+  type="checkbox"
+/>
+`;
+
+exports[`Checkbox with name and id 1`] = `
+.c0 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+<input
+  className="c0"
+  id="Chucky"
+  name="Chuck"
+  type="checkbox"
+/>
+`;

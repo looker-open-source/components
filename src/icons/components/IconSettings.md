@@ -1,0 +1,5 @@
+# IconSettings
+
+```js
+<IconSettings />
+```

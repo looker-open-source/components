@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`A Link with an id 1`] = `
+.c0 {
+  color: #0087e1;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c0:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+}
+
+<a
+  className="c0"
+  href="https://looker.com"
+  id="link-id"
+>
+  🥑
+</a>
+`;
+
+exports[`A default Link 1`] = `
+.c0 {
+  color: #0087e1;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c0:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+}
+
+<a
+  className="c0"
+  href="https://looker.com"
+>
+  🥑
+</a>
+`;
+
+exports[`A external Link 1`] = `
+.c0 {
+  color: #0087e1;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c0:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+}
+
+<a
+  className="c0"
+  href="https://looker.com"
+>
+  🥑
+</a>
+`;

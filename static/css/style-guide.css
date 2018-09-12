@@ -1,0 +1,144 @@
+.swatches {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-gap: 1em;
+}
+
+.swatch-holder {
+  margin: 0 30px 30px 0;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.swatch-header {
+  padding: 1.5em 1em;
+}
+
+.swatch {
+  padding: 4px 12px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.swatch-label {
+  flex: 1;
+  font-size: 14px;
+}
+
+.swatch-hex {
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+.contrast-box {
+  font-size: 10px;
+  background: rgba(255, 255, 255, 0.45);
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+.border-examples {
+  margin-bottom: 1rem;
+}
+
+.border-example {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1rem;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.border-divider-example{
+  width: 70%;
+  height: 1px;
+}
+
+.border-example:not(:last-child) {
+  border-bottom: none;
+}
+
+.border-labels {
+  display: flex;
+  margin-bottom: 3rem;
+}
+
+.border-label-group {
+  width: 25%;
+}
+
+.border-on-dark-text {
+  color: #fff;
+}
+
+[class*='rsg--para-'] img {
+  width: 100%;
+}
+
+[class*='rsg--sidebar-']  [class*='rsg--heading-'] {
+  display: block !important;
+  //text-transform: uppercase !important;
+  color: #434E5B !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  margin-bottom: 8px !important;
+}
+
+[class*='rsg--sidebar-']  [class*='rsg--item-'] [class*='rsg--list-'] {
+  padding-left: 12px !important;
+  margin-bottom: 16px !important;
+}
+
+
+[class*='rsg--sidebar-']  [class*='rsg--item-'] [class*='rsg--isChild-'] a {
+  color: #434C4F !important;
+  font-size: 14px !important;
+}
+
+[class*='rsg--sidebar-']  [class*='rsg--item-'] [class*='rsg--isChild-'] a:hover {
+  color: #0087E1 !important;
+}
+
+[class*='rsg--para-'] img {
+  width: 100%;
+}
+
+button[name="rsg-code-editor"][class*='rsg--isActive-'] {
+  display: none !important;
+  border-bottom-color: #4F2ABA !important;
+}
+
+[class*='rsg--blockquote-'] {
+  border-left: 4px solid grey;
+  padding-left: 16px;
+}
+
+.support-link {
+  text-decoration: none;
+}
+
+.prop-code {
+  border-radius: 4px;
+  background: #F4F6F7;
+  height: 28px;
+  min-width: 28px;
+  text-align: center;
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+.spacing-table {
+  display: flex;
+}
+
+.spacing-table > div {
+  border-right: solid 1px #DEE1E5;
+}
+
+.prop-code code {
+  color: #6C43E0 !important;
+  white-space: nowrap;
+}

@@ -1,0 +1,129 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`A bulleted List 1`] = `
+.c0 {
+  margin: 0;
+  padding: 0 0 0 1rem;
+  list-style-type: disc;
+}
+
+.c1 {
+  margin-bottom: 0.25rem;
+}
+
+<ul
+  className="c0"
+>
+  <li
+    className="c1"
+  >
+    🥑
+  </li>
+  <li
+    className="c1"
+  >
+    🍕
+  </li>
+  <li
+    className="c1"
+  >
+    🥨
+  </li>
+</ul>
+`;
+
+exports[`A default List, should be a ul 1`] = `
+.c0 {
+  margin: 0;
+  padding: 0 0 0 0;
+  list-style-type: none;
+}
+
+.c1 {
+  margin-bottom: 0.25rem;
+}
+
+<ul
+  className="c0"
+>
+  <li
+    className="c1"
+  >
+    🥑
+  </li>
+  <li
+    className="c1"
+  >
+    🍕
+  </li>
+  <li
+    className="c1"
+  >
+    🥨
+  </li>
+</ul>
+`;
+
+exports[`A numerically ordered List 1`] = `
+.c0 {
+  margin: 0;
+  padding: 0 0 0 1rem;
+  list-style-type: decimal;
+}
+
+.c1 {
+  margin-bottom: 0.25rem;
+}
+
+<ol
+  className="c0"
+>
+  <li
+    className="c1"
+  >
+    🥑
+  </li>
+  <li
+    className="c1"
+  >
+    🍕
+  </li>
+  <li
+    className="c1"
+  >
+    🥨
+  </li>
+</ol>
+`;
+
+exports[`A numerically ordered List marked as nomarker 1`] = `
+.c0 {
+  margin: 0;
+  padding: 0 0 0 0;
+  list-style-type: none;
+}
+
+.c1 {
+  margin-bottom: 0.25rem;
+}
+
+<ol
+  className="c0"
+>
+  <li
+    className="c1"
+  >
+    🥑
+  </li>
+  <li
+    className="c1"
+  >
+    🍕
+  </li>
+  <li
+    className="c1"
+  >
+    🥨
+  </li>
+</ol>
+`;

@@ -1,0 +1,25 @@
+{
+  "ignore": [
+    "**/*.d.ts",
+    "**/*.test.js",
+    "**/*.test.jsx",
+    "**/*.test.ts",
+    "**/*.test.tsx"
+  ],
+  "env": {
+    "test": {
+      "presets": [["env"], "react"]
+    }
+  },
+  "presets": [
+    "@babel/env",
+    "@babel/react",
+    "@babel/typescript"
+  ],
+  "plugins": [
+    "@babel/proposal-class-properties",
+    "@babel/proposal-object-rest-spread",
+    "@babel/plugin-transform-runtime",
+    "babel-plugin-looker-inline-sass"
+  ]
+}

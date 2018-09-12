@@ -1,0 +1,141 @@
+{
+  "name": "relens",
+  "version": "0.0.1-alpha.11",
+  "main": "dist/index",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "7.0.0-beta.44",
+    "@babel/core": "7.0.0-beta.44",
+    "@babel/plugin-proposal-class-properties": "7.0.0-beta.44",
+    "@babel/plugin-proposal-object-rest-spread": "7.0.0-beta.44",
+    "@babel/plugin-transform-runtime": "7.0.0-beta.44",
+    "@babel/preset-env": "7.0.0-beta.44",
+    "@babel/preset-react": "7.0.0-beta.44",
+    "@babel/preset-typescript": "7.0.0-beta.44",
+    "@svgr/cli": "2.1.1",
+    "@types/classnames": "2.2.3",
+    "@types/enzyme": "^3.1.13",
+    "@types/jest": "22.2.2",
+    "@types/react": "16.4.8",
+    "@types/react-dom": "16.0.6",
+    "@types/react-intl": "2.3.5",
+    "@types/react-test-renderer": "16.0.1",
+    "@types/styled-system": "^3.0.2",
+    "babel-jest": "22.4.3",
+    "babel-loader": "8.0.0-beta.4",
+    "babel-plugin-looker-inline-sass": "1.0.4",
+    "babel-preset-env": "1.6.1",
+    "babel-preset-react": "6.24.1",
+    "css-loader": "0.28.11",
+    "enzyme": "^3.5.0",
+    "enzyme-adapter-react-16": "^1.3.1",
+    "glob": "7.1.2",
+    "identity-obj-proxy": "3.0.0",
+    "jest": "22.4.3",
+    "jest-styled-components": "5.0.1",
+    "lint-staged": "7.2.0",
+    "ora": "3.0.0",
+    "pre-commit": "1.2.2",
+    "prettier": "1.13.7",
+    "prop-types": "15.6.1",
+    "react-docgen-typescript": "1.7.0",
+    "react-styleguidist": "7.0.5",
+    "react-test-renderer": "16.3.1",
+    "regenerator-runtime": "0.11.1",
+    "request": "2.85.0",
+    "rimraf": "2.6.2",
+    "styled-components": "3.4.5",
+    "stylelint": "9.3.0",
+    "stylelint-config-recommended": "2.1.0",
+    "stylelint-config-styled-components": "0.1.1",
+    "stylelint-order": "0.8.1",
+    "stylelint-processor-styled-components": "1.3.1",
+    "ts-jest": "22.4.2",
+    "ts-loader": "3.5.0",
+    "tslint": "5.10.0",
+    "tslint-config-prettier": "1.13.0",
+    "tslint-config-standard": "7.1.0",
+    "tslint-react": "3.6.0",
+    "typescript": "3.0.1",
+    "typings-for-css-modules-loader": "1.7.0",
+    "webpack": "3.5.0"
+  },
+  "dependencies": {
+    "@babel/runtime": "7.0.0-beta.44",
+    "chroma-js": "^1.3.7",
+    "classnames": "2.2.5",
+    "clean-tag": "^2.0.0",
+    "insert-css": "2.0.0",
+    "polished": "2.0.3",
+    "react": "16.4.2",
+    "react-dom": "16.4.2",
+    "styled-system": "^3.0.2",
+    "svg-inline-loader": "^0.8.0"
+  },
+  "files": [
+    "dist"
+  ],
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "ts",
+      "tsx",
+      "json",
+      "node"
+    ],
+    "moduleNameMapper": {
+      "^.+\\.(css|scss)$": "identity-obj-proxy"
+    },
+    "setupTestFrameworkScriptFile": "./test/setupJest.js",
+    "transform": {
+      "^.+\\.(jsx)$": "babel-jest",
+      "^.+\\.(ts|tsx)$": "ts-jest"
+    },
+    "testMatch": [
+      "**/?(*.)(spec|test).(ts|js)?(x)"
+    ]
+  },
+  "lint-staged": {
+    "**/*.ts?(x)": [
+      "prettier --write",
+      "stylelint",
+      "tslint --fix",
+      "git add"
+    ],
+    "**/*.js?(x)": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "peerDependencies": {
+    "styled-components": "3.3.3"
+  },
+  "pre-commit": [
+    "lint-staged"
+  ],
+  "publishConfig": {
+    "registry": "https://nexusrepo.looker.com/repository/looker-npm-private/"
+  },
+  "resolutions": {
+    "**/@types/react": "16.4.8"
+  },
+  "scripts": {
+    "start": "styleguidist server",
+    "build": "yarn build-components && yarn build-styleguide",
+    "build-icons": "node bin/icons/build_icon_components.js",
+    "build-components": "tsc --emitDeclarationOnly && babel src --out-dir dist --extensions \".ts,.tsx,.js,.jsx\"",
+    "build-styleguide": "styleguidist build",
+    "clean": "rimraf dist && rimraf styleguide",
+    "lint": "yarn lint:ts && yarn lint:css",
+    "lint:css": "stylelint \"src/**/*.ts?(x)\"",
+    "lint:ts": "tslint -p tsconfig.linter.json --format stylish",
+    "lint-staged": "$(yarn bin)/lint-staged",
+    "npmrc": "bin/create_npmrc.sh",
+    "npmrc:clean": "rm .npmrc",
+    "prepublishOnly": "yarn clean && yarn build-components",
+    "prettify": "yarn prettier \"./**/*.ts?(x)\" \"./**/*.js?(x)\" '!./node_modules/**' '!./dist/**' --write",
+    "release": "npm publish",
+    "test": "tsc --noEmit -p tsconfig.compileAllFiles.json && yarn jest"
+  },
+  "types": "dist"
+}
