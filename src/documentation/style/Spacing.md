@@ -18,9 +18,11 @@ const SpacingOptionsRender = require('../../../styleguide_components/SpacingOpti
 
 The table above does a good job at enumerating the available spacing options, but a concrete example does a better job at illustrating how to use those spacing sizes to build a piece of ui. Below we have an image of a hypothetical form we need to build.
 
-On the left we have the form as designed and on the right you see the spacing in pink and line height of the text in blue. Using Lens and the [Box Component](/#!/Box) we can quickly build this form with the correct spacing
+On the left we have the form as designed and on the right you see the spacing in pink and line height of the text in blue.
 
 !['Spacing Example'](/img/spacing/spacing-form-example.png)
+
+Using Lens and the [Box Component](/#!/Box) we can quickly apply the correct spacing to this form.
 
 ```js
 <form>
