@@ -52,3 +52,12 @@ As the name suggests, `readOnly` makes the text uneditable.
 ### Required Property
 
 When set for `<InputText />` in the context of a form, the input field must be filled out before submitting the form.
+
+```js
+<form>
+  <InputText required />
+  <br />
+  <br />
+  <Button>Submit</Button>
+</form>
+```

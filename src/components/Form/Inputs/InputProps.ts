@@ -13,7 +13,7 @@ export interface InputProps {
    */
   disabled?: boolean
   /**
-   * Used to provide a detailed description of an input that contains errors
+   * Used to provide a detailed description of an input that contains errors.
    */
   'aria-describedby'?: string
   /**
@@ -21,5 +21,3 @@ export interface InputProps {
    */
   onChange?: React.ChangeEventHandler<HTMLInputElement>
 }
-
-export default InputProps
