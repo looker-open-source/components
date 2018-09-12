@@ -36,6 +36,16 @@ module.exports = {
       content: 'src/documentation/intro.md',
     },
     {
+      name: 'Working with Lens',
+      sections: [
+        {
+          name: 'Integrating Lens into Helltool',
+          content:
+            'src/documentation/working_with_lens/integrating_lens_into_helltool.md',
+        },
+      ],
+    },
+    {
       name: 'Principles',
       sections: [
         {
@@ -151,6 +161,12 @@ module.exports = {
     Para: {
       para: {
         maxWidth: '765px',
+      },
+    },
+    Blockquote: {
+      blockquote: {
+        borderLeft: '4px solid #F4F6F7',
+        paddingLeft: '16px',
       },
     },
     Code: {
