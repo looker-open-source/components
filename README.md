@@ -1,4 +1,4 @@
-# Lens [![Jenkins Status](https://jenkinsexternal.looker.com/buildStatus/icon?job=relens-master)](https://jenkins.looker.com/job/relens-master/)
+# Lens [![Jenkins Status](https://jenkinsexternal.looker.com/buildStatus/icon?job=lens-master)](https://jenkins.looker.com/job/lens-master/)
 
 Lens is Looker's living and function design guide.
 
