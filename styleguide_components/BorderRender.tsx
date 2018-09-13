@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Heading, HeadingWeights } from '../src/components/Heading/Heading'
+import { Heading } from '../src/components/Heading/Heading'
 import { Code } from '../src/components/Text/Code'
 import { Text } from '../src/components/Text/Text'
 import {
@@ -24,7 +24,7 @@ const renderBorder = (border: BorderType, index: number) => {
 
   return (
     <div key={index}>
-      <Heading size={RampSizes.Six} weight={HeadingWeights.Bold}>
+      <Heading size={RampSizes.Six} weight="bold">
         {border.label}
       </Heading>
       <div className="border-examples">
