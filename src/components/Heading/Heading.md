@@ -48,12 +48,12 @@ When creating accessible pages it is important that headings create a [logical d
   <Heading size="d1">h3 sized to d1</Heading>
   <Heading size="d2">h3 sized to d2</Heading>
   <Heading size="d3">h3 sized to d3</Heading>
-  <Heading level="4" size="one">h4 sized to 1 </Heading>
-  <Heading level="4" size="two">h4 sized to 2 </Heading>
-  <Heading level="4" size="three">h4 sized to 3 </Heading>
-  <Heading level="2" size="four">h2 sized to 4 </Heading>
-  <Heading level="2" size="five">h2 sized to 5 </Heading>
-  <Heading level="2" size="six">h2 sized to 6 </Heading>
+  <Heading level="4" size="1">h4 sized to 1 </Heading>
+  <Heading level="4" size="2">h4 sized to 2 </Heading>
+  <Heading level="4" size="3">h4 sized to 3 </Heading>
+  <Heading level="2" size="4">h2 sized to 4 </Heading>
+  <Heading level="2" size="5">h2 sized to 5 </Heading>
+  <Heading level="2" size="6">h2 sized to 6 </Heading>
 </div>
 ```
 

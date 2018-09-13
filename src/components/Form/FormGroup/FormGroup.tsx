@@ -1,12 +1,7 @@
 import styled, { css } from '../../../styled_components'
 import { spacing } from '../../../themes/spacing'
 
-export enum FormControlDirections {
-  Left = 'left',
-  Right = 'right',
-  Top = 'top',
-  Bottom = 'bottom',
-}
+export type FormControlDirections = 'left' | 'right' | 'top' | 'bottom'
 
 export interface FormControlProps {
   alignLabel?: FormControlDirections
@@ -15,21 +10,21 @@ export interface FormControlProps {
 
 const alignLabels = (direction: FormControlDirections | undefined) => {
   switch (direction) {
-    case FormControlDirections.Left:
+    case 'left':
       return css`
         flex-direction: row;
       `
-    case FormControlDirections.Right:
+    case 'right':
       return css`
         flex-direction: row-reverse;
         justify-content: flex-end;
       `
-    case FormControlDirections.Bottom:
+    case 'bottom':
       return css`
         flex-direction: column-reverse;
         justify-content: flex-end;
       `
-    case FormControlDirections.Top:
+    case 'top':
     default:
       return css`
         flex-direction: column;
