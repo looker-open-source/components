@@ -19,11 +19,7 @@ import {
   GithubSvg,
 } from '../styleguide_components/ResourceIcons'
 
-export enum StatusLabels {
-  Experimental = 'experimental',
-  Deprecated = 'deprecated',
-  Stable = 'stable',
-}
+export type StatusLabels = 'experimental' | 'deprecated' | 'stable'
 export interface StatusProps {
   status: StatusLabels
 }
@@ -40,7 +36,7 @@ const statusIndicator: React.SFC<StatusProps> = ({ status, ...args }) => {
 
 function getCorrectStatusColor(status: StatusLabels) {
   switch (status) {
-    case StatusLabels.Experimental:
+    case 'experimental':
       return css`
         background-color: ${yellow000};
         border-left: solid 4px ${yellow400};
@@ -52,7 +48,7 @@ function getCorrectStatusColor(status: StatusLabels) {
           /* stylelint-enable */
         }
       `
-    case StatusLabels.Deprecated:
+    case 'deprecated':
       return css`
         background-color: ${red100};
         border-left: solid 5px ${red500};
@@ -64,7 +60,7 @@ function getCorrectStatusColor(status: StatusLabels) {
           /* stylelint-enable */
         }
       `
-    case StatusLabels.Stable:
+    case 'stable':
       return css`
         &:hover {
           color: ${blue600};
