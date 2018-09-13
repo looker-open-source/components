@@ -1,5 +1,5 @@
 
-One of Lens' core tenants is that adoption determines its success. Helltool is Looker's biggest project, so to meet Lens' adoption goal it must provide methods to interface with and be consumed by Helltool's existing code base.
+One of Lens' core tenets is that adoption determines its success. Helltool is Looker's biggest project, so to meet Lens' adoption goal it must provide methods to interface with and be consumed by Helltool's existing code base.
 
 ## Contents
 
