@@ -169,7 +169,7 @@ const StatusAndResourcesRenderer: React.SFC<StatusAndResourcesProps> = ({
           <GithubSvg />
         </ResourceIcon>
         <ResourceIcon
-          url={`https://github.com/looker/relens/issues/new?title=${feedbackTitle}`}
+          url={`https://github.com/looker/lens/issues/new?title=${feedbackTitle}`}
         >
           <FeedbackSvg />
         </ResourceIcon>

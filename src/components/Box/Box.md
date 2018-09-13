@@ -2,7 +2,7 @@
 const StatusAndResources = require('../../../styleguide_components/StatusAndResources').StatusAndResources;
 <StatusAndResources
   status="experimental"
-  githubURL="https://github.com/looker/relens/blob/master/src/components/Box/Box.tsx"
+  githubURL="https://github.com/looker/lens/blob/master/src/components/Box/Box.tsx"
   feedbackTitle="Box Component Feedback" />
 ```
 

@@ -4,7 +4,7 @@ const StatusAndResources = require('../../../styleguide_components/StatusAndReso
 <StatusAndResources
   status="experimental"
   figmaURL="https://www.figma.com/file/PUkKDfseVgoPGNJng7TJ2TIJ/Card"
-  githubURL="https://github.com/looker/relens/blob/master/src/components/Card/CardMedia.tsx"
+  githubURL="https://github.com/looker/lens/blob/master/src/components/Card/CardMedia.tsx"
   feedbackTitle="Card Media Component Feedback" />
 ```
 
