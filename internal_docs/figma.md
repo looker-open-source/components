@@ -5,11 +5,12 @@ Lens provides a collection of UX guidelines, UI components and usable assets as 
 #### Contents
 - [How to Use Lens](#hot-to-use-lens)
 - [Contributing to Lens](#contributing-to-lens)
+- [Filing an Issue](#filing-a-github-issue)
 - [Getting Started With Figma](#getting-started)
 - [File Organization & Structure](#file-organization-and-structure)
 - [Team Asset Library](#team-asset-library)
 - [Giving Feedback & Collaboration](#giving-feedback)
-- [Filing an Issue](#filing-an-issue)
+
 
 
 ## How to Use Lens
@@ -41,6 +42,14 @@ At the beginning of a project it must go through the design process. All designe
 2. Review & Revise: Set up times to review and continue the collaboration process. These reviews can be scheduled as weekly check ins or during open hours available on the design google calendar
   a.Walkthrough designs, proposals, and UI components with the Lens team
   b.Refine & resolve any questions or concerns
+
+## Filing a Github Issue
+Create a Github issue in the Lens repository and include the following:
+
+1. A link to the figma file in question
+2. Provide a walkthrough, clickable prototype, or demo of the scenario
+3. Include a visual in the the github issue by dragging a screen grab into the message field. 
+
 
 
 ### When proposing a new component design include the following:
@@ -105,6 +114,15 @@ Inside each file is a series of pages that maps to our design roadmap workflow. 
 
 By nature of how the design process works, these pages are a bit fluid and you may encounter documents with more pages, but as a team we do our best to standardize on the format above.
 
+###Leaving Feedback in Figma
+Figma allows you to give feedback right in the file you are looking at. You can leave a comment on a screen to start a conversation about any feedback you may have.
+
+Read about using [Figma's commenting system here](https://help.figma.com/editor/1322329-toolbar/comments).
+
+The Lens team also uses Github to track our issues and we welcome you to open an issue if you discover a bug or have feedback related to the design or functionality of a component or style in Figma.
+
+You can open an issue [quickly here with the correct labels](https://github.com/looker/relens/issues/new?title=Design+Feedback&labels=design,figma) to ensure the design team will see it
+
 ### Team Library
 
 Our team library is where we share design assets like components and styles. These include things like color swatches, drop shadows, spacing, low level ui elements like buttons and input boxes, all the way to high level components like Cards and Modals.
@@ -120,20 +138,6 @@ Our team library is where we share design assets like components and styles. The
 - Open or create a new component file by duplicating the Lens [project template](https://www.figma.com/file/aLKZ8fP9X3q0iLj8jknTy9iC/Project-Template) and rename the 'project template copy' to your components title.
 - Copy and paste your design and proposal into the exploration page.
 - Review with the design team during the weekly design review
-
-## Giving Feedback & Collaboration
-
-<strong>Approve & Publish:</strong> After the proposal is approved by the Lens team it can be added to the team asset library. 
-
 - File a [Github issue](https://github.com/looker/relens/issues/new?title=Design+Feedback&labels=design,figma) and notify the [#lens](https://looker.slack.com/messages/C9NHFLY0G) that you that the component is ready for review
 
-<strong>Adding feedback in Figma</strong>
-
-Figma allows you to give feedback right in the file you are looking at. You can leave a comment on a screen to start a conversation about any feedback you may have.
-
-Read about using [Figma's commenting system here](https://help.figma.com/editor/1322329-toolbar/comments).
-
-The Lens team also uses Github to track our issues and we welcome you to open an issue if you discover a bug or have feedback related to the design or functionality of a component or style in Figma.
-
-You can open an issue [quickly here with the correct labels](https://github.com/looker/relens/issues/new?title=Design+Feedback&labels=design,figma) to ensure the design team will see it
 
