@@ -1,6 +1,6 @@
 # Getting Started With Lens
 
-Lens provides a collection of UX guidelines, UI components and usable assets as an internal central resource for both designers & developers at Looker. This guide will help provide a step by step process on how to work with Lens Assets. 
+Lens provides a collection of UX guidelines, UI components and usable assets as an internal central resource for both designers & developers at Looker. This guide will help provide a step by step process on how to work with Lens assets. 
 
 #### Contents
 - [How to Use Lens](#hot-to-use-lens)
