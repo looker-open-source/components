@@ -10,11 +10,11 @@ Lens provides a collection of UX guidelines, UI components and usable assets as 
 
 
 ## How to Use Lens
-The provided assets in Lens can be approached in two ways. In Figma or within the code via Lens.looker.com.
+The provided assets in Lens can be approached in two ways. 
 
 - In Figma you can find design assets, usage best practices & specifications.
 
-- On Lens.looker.com you can configure components directly in code.
+- On [Lens.looker.com](#) you can configure components directly in code.
 
 ## Contributing to Lens
 
@@ -23,7 +23,7 @@ Lens provides wide range of content, documentation and resources that make up a 
 
 - Design Submissions: A change to an existing design or a net new component, pattern or feature. Click here to see more on how to  [Contribute to the design guidelines](#)
 
-- Development Contribution: Bug fixes or implementation into the codebase. Learn more on how to [Contribute to development](#)
+- Development Contribution: fixes or implementation into the codebase. Learn more on how to [Contribute to development](https://github.com/looker/lens/blob/993853c7328f66274989cecac0f8cf357c0dee8e/internal_docs/working_in_lens.md)
 
 - Internal Documentation: References, Tutorials, & Resources [Contributing to Internal Documentation](#)
 
