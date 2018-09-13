@@ -32,25 +32,6 @@ export interface HeadingProps extends HeadingGeneratorProps {
   truncate?: boolean
 }
 
-const convertHeadingLevelToRampSize = (level: HeadingLevels | undefined) => {
-  switch (level) {
-    case '1':
-      return RampSizes.One
-    case '2':
-      return RampSizes.Two
-    case '3':
-      return RampSizes.Three
-    case '4':
-      return RampSizes.Four
-    case '5':
-      return RampSizes.Five
-    case '6':
-      return RampSizes.Six
-    default:
-      return RampSizes.Three
-  }
-}
-
 /**
  * Headings are used to help users understand  what a major section of an interface is about, for example the labeling
  * of a page or a title of a card component.
@@ -118,14 +99,9 @@ export const Heading = styled<HeadingProps>(HeadingGenerator)`
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin: 0;
-  font-size: ${props =>
-    props.theme.fontRamp[
-      props.size || convertHeadingLevelToRampSize(props.level)
-    ]};
+  font-size: ${props => props.theme.fontRamp[props.size || props.level || '3']};
   line-height: ${props =>
-    props.theme.lineHeightRamp[
-      props.size || convertHeadingLevelToRampSize(props.level)
-    ]};
+    props.theme.lineHeightRamp[props.size || props.level || '3']};
   font-weight: ${props => fontWeights[props.weight || 'normal']};
   ${props => textTransform(props.transform)}
   ${props => alignment(props.align)}

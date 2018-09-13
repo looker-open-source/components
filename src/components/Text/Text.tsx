@@ -80,9 +80,8 @@ export const Text = styled<TextProps, 'div'>('div')`
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: ${props => props.theme.fontRamp[props.size || RampSizes.Four]};
-  line-height: ${props =>
-    props.theme.lineHeightRamp[props.size || RampSizes.Four]};
+  font-size: ${props => props.theme.fontRamp[props.size || '4']};
+  line-height: ${props => props.theme.lineHeightRamp[props.size || '4']};
   font-weight: ${props => fontWeights[props.weight || 'normal']};
   ${props => textTransform(props.textTransform)};
   ${props => alignment(props.align)};

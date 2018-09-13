@@ -9,7 +9,6 @@ import {
   yellow000,
   yellow400,
 } from '../src/styles/colors'
-import { RampSizes } from '../src/styles/ramp_sizes'
 import { easings } from '../src/themes/easings'
 import { spacing } from '../src/themes/spacing'
 import { transitions } from '../src/themes/transitions'
@@ -27,7 +26,7 @@ export interface StatusProps {
 const statusIndicator: React.SFC<StatusProps> = ({ status, ...args }) => {
   return (
     <a className="support-link" href="/#!/Support%20Levels">
-      <Text size={RampSizes.Five} {...args}>
+      <Text size="5" {...args}>
         {status}
       </Text>
     </a>

@@ -13,7 +13,6 @@ import {
   charcoal700,
   charcoal800,
 } from '../src/styles/colors'
-import { RampSizes } from '../src/styles/ramp_sizes'
 
 const renderBorder = (border: BorderType, index: number) => {
   const labels = [
@@ -24,7 +23,7 @@ const renderBorder = (border: BorderType, index: number) => {
 
   return (
     <div key={index}>
-      <Heading size={RampSizes.Six} weight="bold">
+      <Heading size="6" weight="bold">
         {border.label}
       </Heading>
       <div className="border-examples">
@@ -35,7 +34,7 @@ const renderBorder = (border: BorderType, index: number) => {
             key={`border-${idx}`}
           >
             <div className={border.textClass}>
-              <Text size={RampSizes.Six} weight="semiBold">
+              <Text size="6" weight="semiBold">
                 On {example.name}
               </Text>
             </div>
@@ -51,10 +50,10 @@ const renderBorder = (border: BorderType, index: number) => {
       <div className="border-labels">
         {labels.map((label, idx) => (
           <div className="border-label-group" key={`label-${idx}`}>
-            <Text variant="subdued" size={RampSizes.Five} weight="semiBold">
+            <Text variant="subdued" size="5" weight="semiBold">
               {label[0]}
             </Text>
-            <Code size={RampSizes.Five}>{label[1]}</Code>
+            <Code size="5">{label[1]}</Code>
           </div>
         ))}
       </div>

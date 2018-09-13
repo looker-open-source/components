@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { TextProps } from '../src/components/Text/Text'
-import { RampSizes } from '../src/styles/ramp_sizes'
 import { createWithTheme } from './utils/create_with_theme'
 
 export const snapshotTestTextComponent = (
@@ -22,9 +21,7 @@ export const snapshotTestTextComponentAlign = (
 export const snapshotTestTextComponentFontRamp = (
   Component: React.SFC<TextProps> | React.ComponentClass
 ) => {
-  const component = createWithTheme(
-    <Component size={RampSizes.D2}>Hello</Component>
-  )
+  const component = createWithTheme(<Component size="d2">Hello</Component>)
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
 }

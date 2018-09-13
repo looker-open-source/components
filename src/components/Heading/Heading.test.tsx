@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { createWithTheme } from '../../../test/utils/create_with_theme'
-import { RampSizes } from '../../styles/ramp_sizes'
 import { Heading } from './Heading'
 
 test('A default Heading', () => {
@@ -17,7 +16,7 @@ test('A <h1> Heading', () => {
 
 test('A <h1> Heading sized to <h2>', () => {
   const component = createWithTheme(
-    <Heading level="1" size={RampSizes.Two}>
+    <Heading level="1" size="2">
       🥑
     </Heading>
   )
