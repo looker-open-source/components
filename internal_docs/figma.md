@@ -1,23 +1,58 @@
+# Getting Started With Lens
+
+Lens provides a collection of UX guidelines, UI components and usable assets as an internal central resource for both designers & developers at Looker. This guide will help provide a step by step process on how to work with Lens Assets. 
+
+#### Contents
+- [How to Use Lens](#hot-to-use-lens)
+- [Contributing to Lens](#contributing-to-lens)
+- [Getting Started With Figma](#getting-started)
+- [File Organization & Structure](#file-organization-and-structure)
+- [Team Asset Library](#team-asset-library)
+- [Giving Feedback & Collaboration](#giving-feedback)
+- [Filing an Issue](#filing-an-issue)
+
+
+## How to Use Lens
+The provided assets in Lens can be approached in two ways. In Figma or within the code via Lens.looker.com.
+
+- In Figma you can find design assets, usage best practices & specifications.
+
+- On Lens.looker.com you can configure components directly in code.
+
+## Contributing to Lens
+Lens provides wide range of content, documentation and resources that make up a design system from implementation in the codebase to design specification and usage best practices. Because of the many different types of assets, each deliverable has its own specifications to follow. Your contribution may apply to one or all of these categories but here are the steps of the different types of contributions in Lens: 
+
+- Design Submissions: A change to an existing design or a net new component, pattern or feature. Click here to see more on how to  [Contribute to the design guidelines](#)
+
+- Development Contribution: Bug fixes or implementation into the codebase. Learn more on how to [Contribute to development](#)
+
+- Internal Documentation: References, Tutorials, & Resources [Contributing to Internal Documentation](#)
+
+## Contributing to Design
+When proposing a new component design include the following:
+
+1.Duplicate the ‘Project Template” and rename it.
+2.Add component specifications to the explore page
+3.Explain the use cases and define the component elements
+4.Include examples of the existing design in the product (if it exists)
+5.Provide validation interaction and  error states
+6.What are the edge cases
+7.Include i18n/long text examples
+8.Example of breakpoint reflow behavior on smaller devices
+9.Accessibility recommendation (tooltips, keyboard navigation, ...)
+10.Any interactions and animated transitions ( gifs or clickable prototypes)
+
 ## Figma and Lens
 
 The product design team uses [Figma](https://www.figma.com/) for creating and managing our digital assets and prototypes. Figma is a design tool with first class collaboration and team library features that allows us to share and iterate on our Lens assets with the entire design team.
 
-
-### Contents
-- [Getting Started With Figma](#getting-started)
-- [File Organization & Structure](#file-organization-and-structure)
-- [Team Library](#team-library)
-- [Giving Feedback & Collaboration](#giving-feedback)
-
-### Getting Started
-
-#### Getting access to Figma
+### Getting access to Figma
 
 Reach out to someone on the [#design slack channel](https://looker.slack.com/messages/C45GCJ410) and we can get you an invite to Figma.
 
 Figma is available as a web app but you can also download the [desktop app](https://www.figma.com/downloads/), which performs a bit better for larger files.
 
-#### Learning Figma
+### Learning Figma
 
 The best way to get started with how we use Figma is to reach out to someone on the design team for a walk through of the tool and how we use it. Feel free to ask for a tour in the  [#design slack channel](https://looker.slack.com/messages/C45GCJ410). Anyone on the team would be happy to guide you through our workflow and the ins-and-outs of the tool.
 
@@ -30,21 +65,21 @@ If you are more of a learn-by-doing type of person, Figma has a fantastic set of
 - [Figma Blog](https://blog.figma.com/product/home)
   - Great for quick tips and tricks and new features in the tool
 
-### File Organization and Structure
+## File Organization and Structure
 All of the Lens related Files are in the **Lens Project** which you can find in the list of projects. If you star the project it will be listed in your sidebar so you can access it quickly.
 
-#### File Location
+### File Location
 
 ![Fimga Project List](/static/img/fimga_shots/figma-1.png)
 
-#### File Cover and Status
+### File Cover and Status
 
 Every Lens file has a cover page so that you can quickly scan what type of file it is (e.g.a component, a pattern, a style). The cover page also has a color background which denotes the current state of the file.
 
 ![Lens Color key](/static/img/fimga_shots/files.png)
 ![Lens Color key](/static/img/fimga_shots/color-key.png)
 
-#### File Organization
+### File Organization
 
 Inside each file is a series of pages that maps to our design roadmap workflow. The page list is:
 - Title (cover page)
@@ -69,7 +104,7 @@ At the beginning of a project it is important to connect, review, or propose new
 <strong>Review & Revise:</strong> After the initial project kickoff we want to set up several times to review and continue the collaboration process. These reviews can be scheduled as weekly checkins or during open hours available on the design teams google calendar
 
 - Walkthrough designs, proposals, and UI components with the Lens team
-- Refine & Resolve any questions or concerns 
+- Refine & resolve any questions or concerns 
 
 ### Team Library
 
@@ -85,13 +120,13 @@ Our team library is where we share design assets like components and styles. The
 - Search the Figma Lens project for existing components.
 - Open or create a new component file by duplicating the Lens [project template](https://www.figma.com/file/aLKZ8fP9X3q0iLj8jknTy9iC/Project-Template) and rename the 'project template copy' to your components title.
 - Copy and paste your design and proposal into the exploration page.
-- Review the design team during the weekly design review
+- Review with the design team during the weekly design review
 
 ### Giving Feedback & Collaboration
 
 <strong>Approve & Publish:</strong> After the proposal is approved by the Lens team it can be added to the team asset library. 
 
-- File a  [Github issue](https://github.com/looker/relens/issues/new?title=Design+Feedback&labels=design,figma)and notify the [#lens](https://looker.slack.com/messages/C9NHFLY0G) that you that the component is ready for review
+- File a [Github issue](https://github.com/looker/relens/issues/new?title=Design+Feedback&labels=design,figma) and notify the [#lens](https://looker.slack.com/messages/C9NHFLY0G) that you that the component is ready for review
 
 <strong>Adding feedback in Figma</strong>
 
@@ -105,15 +140,15 @@ You can open an issue [quickly here with the correct labels](https://github.com/
 
 ### FAQ
 
-How do I know if my new component can be added to Lens?
+<strong>How do I know if my new component can be added to Lens?</strong>
 
-Identify the elements that are the smaller parts that make up the whole. Which of these elements already exist in Lens and which do not? You can search the existing components in Lens to make sure these components don't already have specifications outlined. Once you have identified these items, then create a proposal that illustrations the sizing, color, interaction behavior and the reusability of the UI component. Once you are ready to review please reach out to the Lens team to set up a demo and walkthrough of your proposed components.
+Identify the elements that are the smaller parts that make up the whole. Which of these elements already exist in Lens and which do not? You can search the existing components in Lens to make sure these components don't already have specifications outlined. Once you have identified these items, create a proposal that illustrates the sizing, color, interaction behavior and the reusability of the UI component. Once you are ready to review please reach out to the Lens team to set up a demo and walkthrough of your proposed components.
 
-What if the styling of the new component looks different to the existing ones on Helltool?
+<strong>What if the styling of the new component looks different to the existing ones on Helltool?</strong>
 
-Each component will have a unique issue around styling coherence on the existing product. However, generally we want to assign Lens styling that will then gradually be adopted into the current product. There will be differences at first but eventually the current styling will deprecated and replaced. As long as the new styling doesn't break the UI, fail accessibility or muddys up the visual hierarchy you can assign the Lens styling. 
+Each component will have a unique issue around styling coherence on the existing product. However, generally we want to assign Lens styling that will then gradually be adopted into the current product. There will be differences at first but eventually the current styling will deprecated and replaced. As long as the new styling doesn't break the UI, fail accessibility or disrupts hierarchy you can assign the Lens styling. 
 
-What if I need something that doesn't exist in Lens yet? 
+<strong>What if I need something that doesn't exist in Lens yet?</strong>
 
 Please feel free to file a [Github issue](https://github.com/looker/relens/issues/new?title=Design+Feedback&labels=design,figma)
-and let us know what you are missing. Then feel free to put together a proposal and add it to the issue as a reference or with examples. 
+and let us know what you are missing. Then feel free to put together a proposal and add it to the issue as a reference. 
