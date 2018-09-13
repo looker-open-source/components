@@ -10,32 +10,10 @@ import { fontWeights } from '../../styles/font_weights'
 import { RampSizes } from '../../styles/ramp_sizes'
 import { truncate } from '../../styles/typography'
 
-export enum TextWeights {
-  Bold = 'bold',
-  Light = 'light',
-  Normal = 'normal',
-  SemiBold = 'semiBold',
-}
-export enum TextTransforms {
-  Caps = 'caps',
-  Lower = 'lower',
-  None = 'none',
-  Upper = 'upper',
-}
-
-export enum TextAlignments {
-  Left = 'left',
-  Center = 'center',
-  Right = 'right',
-}
-
-export enum TextVariants {
-  Critical = 'critical',
-  Positive = 'positive',
-  Secondary = 'secondary',
-  Subdued = 'subdued',
-}
-
+export type TextWeights = 'bold' | 'light' | 'normal' | 'semiBold'
+export type TextTransforms = 'caps' | 'lower' | 'none' | 'upper'
+export type TextAlignments = 'left' | 'center' | 'right'
+export type TextVariants = 'critical' | 'positive' | 'secondary' | 'subdued'
 export interface TextProps {
   align?: TextAlignments
   variant?: TextVariants
@@ -47,19 +25,19 @@ export interface TextProps {
 
 function textTransform(transform: TextTransforms | undefined) {
   switch (transform) {
-    case TextTransforms.Upper:
+    case 'upper':
       return css`
         text-transform: uppercase;
       `
-    case TextTransforms.Lower:
+    case 'lower':
       return css`
         text-transform: lowercase;
       `
-    case TextTransforms.Caps:
+    case 'caps':
       return css`
         text-transform: capitalize;
       `
-    case TextTransforms.None:
+    case 'none':
     default:
       return css`
         text-transform: none;
@@ -69,19 +47,19 @@ function textTransform(transform: TextTransforms | undefined) {
 
 function textVariant(variant: TextVariants | undefined) {
   switch (variant) {
-    case TextVariants.Critical:
+    case 'critical':
       return css`
         color: ${red500};
       `
-    case TextVariants.Positive:
+    case 'positive':
       return css`
         color: ${green500};
       `
-    case TextVariants.Secondary:
+    case 'secondary':
       return css`
         color: ${charcoal500};
       `
-    case TextVariants.Subdued:
+    case 'subdued':
       return css`
         color: ${charcoal400};
       `
@@ -94,7 +72,7 @@ function textVariant(variant: TextVariants | undefined) {
 
 function alignment(align: TextAlignments | undefined) {
   return css`
-    text-align: ${align || TextAlignments.Left};
+    text-align: ${align || 'left'};
   `
 }
 
@@ -105,7 +83,7 @@ export const Text = styled<TextProps, 'div'>('div')`
   font-size: ${props => props.theme.fontRamp[props.size || RampSizes.Four]};
   line-height: ${props =>
     props.theme.lineHeightRamp[props.size || RampSizes.Four]};
-  font-weight: ${props => fontWeights[props.weight || TextWeights.Normal]};
+  font-weight: ${props => fontWeights[props.weight || 'normal']};
   ${props => textTransform(props.textTransform)};
   ${props => alignment(props.align)};
   ${props => truncate(props.truncate || false)};

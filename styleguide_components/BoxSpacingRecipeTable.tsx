@@ -4,12 +4,7 @@ import { List } from '../src/components/List/List'
 import { ListItem } from '../src/components/List/ListItem'
 import { Code } from '../src/components/Text/Code'
 import { Span } from '../src/components/Text/Span'
-import {
-  Text,
-  TextTransforms,
-  TextVariants,
-  TextWeights,
-} from '../src/components/Text/Text'
+import { Text, TextTransforms, TextVariants } from '../src/components/Text/Text'
 import { RampSizes } from '../src/styles/ramp_sizes'
 
 const spacingTypes = [
@@ -48,14 +43,14 @@ const SpaceListHeader = (text: string, defaultLabel?: string) => {
     <Box mb="medium">
       <Span
         size={RampSizes.Five}
-        variant={TextVariants.Secondary}
-        textTransform={TextTransforms.Upper}
-        weight={TextWeights.SemiBold}
+        variant="secondary"
+        textTransform="upper"
+        weight="semiBold"
       >
         {text}
       </Span>
       <Box is="span" ml="xsmall">
-        <Span size={RampSizes.Six} variant={TextVariants.Subdued}>
+        <Span size={RampSizes.Six} variant="subdued">
           {defaultLabel}
         </Span>
       </Box>
@@ -77,7 +72,7 @@ const ListRender = (
       <Box ml="small" is="span">
         <Span size={RampSizes.Five}>{label}</Span>
         <Box is="span" ml="xsmall">
-          <Span size={RampSizes.Six} variant={TextVariants.Subdued}>
+          <Span size={RampSizes.Six} variant="subdued">
             {defaultLabel}
           </Span>
         </Box>

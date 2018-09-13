@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Box } from '../src/components/Box/Box'
 import { Code } from '../src/components/Text/Code'
-import { Text, TextWeights } from '../src/components/Text/Text'
+import { Text } from '../src/components/Text/Text'
 import { RampSizes } from '../src/styles/ramp_sizes'
 
 import {
@@ -34,7 +34,7 @@ export interface SpaceExample {
 const TableLabel = (label: string, key: number) => {
   return (
     <TableHeaderCell key={key}>
-      <Text size={RampSizes.Five} weight={TextWeights.SemiBold}>
+      <Text size={RampSizes.Five} weight="semiBold">
         {label}
       </Text>
     </TableHeaderCell>

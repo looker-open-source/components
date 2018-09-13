@@ -1,11 +1,5 @@
 import * as React from 'react'
-import {
-  TextAlignments,
-  TextProps,
-  TextTransforms,
-  TextVariants,
-  TextWeights,
-} from '../src/components/Text/Text'
+import { TextProps } from '../src/components/Text/Text'
 import { RampSizes } from '../src/styles/ramp_sizes'
 import { createWithTheme } from './utils/create_with_theme'
 
@@ -20,9 +14,7 @@ export const snapshotTestTextComponent = (
 export const snapshotTestTextComponentAlign = (
   Component: React.SFC<TextProps> | React.ComponentClass
 ) => {
-  const component = createWithTheme(
-    <Component align={TextAlignments.Right}>Hello</Component>
-  )
+  const component = createWithTheme(<Component align="right">Hello</Component>)
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
 }
@@ -40,9 +32,7 @@ export const snapshotTestTextComponentFontRamp = (
 export const snapshotTestTextComponentFontWeight = (
   Component: React.SFC<TextProps> | React.ComponentClass
 ) => {
-  const component = createWithTheme(
-    <Component weight={TextWeights.Bold}>Hello</Component>
-  )
+  const component = createWithTheme(<Component weight="bold">Hello</Component>)
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
 }
@@ -51,7 +41,7 @@ export const snapshotTestTextComponentTransform = (
   Component: React.SFC<TextProps> | React.ComponentClass
 ) => {
   const component = createWithTheme(
-    <Component textTransform={TextTransforms.Upper}>Hello</Component>
+    <Component textTransform="upper">Hello</Component>
   )
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
@@ -69,7 +59,7 @@ export const snapshotTestTextComponentVariant = (
   Component: React.SFC<TextProps> | React.ComponentClass
 ) => {
   const component = createWithTheme(
-    <Component variant={TextVariants.Critical}>Hello</Component>
+    <Component variant="critical">Hello</Component>
   )
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()

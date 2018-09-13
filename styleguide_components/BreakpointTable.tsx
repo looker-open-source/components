@@ -1,15 +1,7 @@
 import * as React from 'react'
 import { Box } from '../src/components/Box/Box'
-import { List } from '../src/components/List/List'
-import { ListItem } from '../src/components/List/ListItem'
 import { Code } from '../src/components/Text/Code'
-import { Span } from '../src/components/Text/Span'
-import {
-  Text,
-  TextTransforms,
-  TextVariants,
-  TextWeights,
-} from '../src/components/Text/Text'
+import { Text } from '../src/components/Text/Text'
 
 import {
   Table,
@@ -68,7 +60,7 @@ export interface BreakpointExample {
 const TableLabel = (label: string, key: number) => {
   return (
     <TableHeaderCell key={key}>
-      <Text size={RampSizes.Five} weight={TextWeights.SemiBold}>
+      <Text size={RampSizes.Five} weight="semiBold">
         {label}
       </Text>
     </TableHeaderCell>

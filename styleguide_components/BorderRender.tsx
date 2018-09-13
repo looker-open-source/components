@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Heading, HeadingWeights } from '../src/components/Heading/Heading'
 import { Code } from '../src/components/Text/Code'
-import { Text, TextVariants, TextWeights } from '../src/components/Text/Text'
+import { Text } from '../src/components/Text/Text'
 import {
   charcoal000,
   charcoal100,
@@ -35,7 +35,7 @@ const renderBorder = (border: BorderType, index: number) => {
             key={`border-${idx}`}
           >
             <div className={border.textClass}>
-              <Text size={RampSizes.Six} weight={TextWeights.SemiBold}>
+              <Text size={RampSizes.Six} weight="semiBold">
                 On {example.name}
               </Text>
             </div>
@@ -51,11 +51,7 @@ const renderBorder = (border: BorderType, index: number) => {
       <div className="border-labels">
         {labels.map((label, idx) => (
           <div className="border-label-group" key={`label-${idx}`}>
-            <Text
-              variant={TextVariants.Subdued}
-              size={RampSizes.Five}
-              weight={TextWeights.SemiBold}
-            >
+            <Text variant="subdued" size={RampSizes.Five} weight="semiBold">
               {label[0]}
             </Text>
             <Code size={RampSizes.Five}>{label[1]}</Code>
