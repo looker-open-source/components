@@ -35,16 +35,13 @@ Lens provides wide range of content, documentation and resources that make up a 
 At the beginning of a project it must go through the design process. All designer must connect with the Lens team to review or propose new components with dependent teams and start a dialog around how to integrate Lens into upcoming and current projects. Follow these steps:
 
 1. Structure & Propose: 
-  a. Go over the project brief for the upcoming cycle wit the [Lens](#) team
-  b.Review existing components and assets that could be reused in your designs
-  c.Discuss semantic naming slots, UI patterns, and best practices
+  - Go over the project brief for the upcoming cycle wit the [Lens](https://looker.slack.com/messages/C9NHFLY0G) team
+  - Review existing components and assets that could be reused in your designs
+  - Discuss semantic naming slots, UI patterns, and best practices
 
 2. Review & Revise: Set up times to review and continue the collaboration process. These reviews can be scheduled as weekly check ins or during open hours available on the design google calendar
-  a.Walkthrough designs, proposals, and UI components with the Lens team
-  b.Refine & resolve any questions or concerns
-
-
-
+  - Walkthrough designs, proposals, and UI components with the Lens team
+  - Refine & resolve any questions or concerns
 
 
 ## Proposing a new component 
@@ -118,7 +115,7 @@ Inside each file is a series of pages that maps to our design roadmap workflow. 
 
 By nature of how the design process works, these pages are a bit fluid and you may encounter documents with more pages, but as a team we do our best to standardize on the format above.
 
-###Leaving Feedback in Figma
+### Leaving Feedback in Figma
 Figma allows you to give feedback right in the file you are looking at. You can leave a comment on a screen to start a conversation about any feedback you may have.
 
 Read about using [Figma's commenting system here](https://help.figma.com/editor/1322329-toolbar/comments).
