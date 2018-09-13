@@ -7,25 +7,23 @@ Lens provides a collection of UX guidelines, UI components and usable assets as 
 - [Contributing to Lens](#contributing-to-lens)
 - [Filing an Issue](#filing-a-github-issue)
 
-
-
 ## How to Use Lens
 The provided assets in Lens can be approached in two ways. 
 
-- In Figma you can find design assets, usage best practices & specifications.
+- In [Figma](#figma.md) you can find design assets, usage, best practices & specifications.
 
 - On [Lens.looker.com](#) you can configure components directly in code.
 
 ## Contributing to Lens
 
 ### Types of Contribution
-Lens provides wide range of content, documentation and resources that make up a design system from implementation in the codebase to design specification and usage best practices. Because of the many different types of assets, each deliverable has its own specifications to follow. Your contribution may apply to one or all of these categories but here are the steps of the different types of contributions in Lens: 
+Lens provides a wide range of content, documentation and resources that make up a design system, from implementation in the codebase to design specification and usage best practices. Because of the many different types of assets, each deliverable has its own specifications to follow. Your contribution may apply to one or all of these categories but here are the steps of the different types of contributions in Lens: 
 
-- Design Submissions: A change to an existing design or a net new component, pattern or feature. Click here to see more on how to  [Contribute to the design guidelines](#)
+- Design Submissions: A change to an existing design or a net new component, pattern or feature. Click here to see more on how to [Contribute to the design guidelines](#contribute-to-design)
 
-- Development Contribution: fixes or implementation into the codebase. Learn more on how to [Contribute to development](https://github.com/looker/lens/blob/993853c7328f66274989cecac0f8cf357c0dee8e/internal_docs/working_in_lens.md)
+- Development Contribution: fixes or implementation into the codebase. 
 
-- Internal Documentation: References, Tutorials, & Resources [Contributing to Internal Documentation](#)
+- Internal Documentation: References, Tutorials, & Resources 
 
 ### Contributing to Design
 At the beginning of a project it must go through the design process. All designer must connect with the Lens team to review or propose new components with dependent teams and start a dialog around how to integrate Lens into upcoming and current projects. Follow these steps:
@@ -39,6 +37,12 @@ At the beginning of a project it must go through the design process. All designe
   - Walkthrough designs, proposals, and UI components with the Lens team
   - Refine & resolve any questions or concerns
 
+### Development Contribution
+You can create new component by composing them on the Lens.looker.com website. Compose the components you need or extend them to create new one. 
+Learn more on how to [Contribute to development](https://github.com/looker/lens/blob/993853c7328f66274989cecac0f8cf357c0dee8e/internal_docs/working_in_lens.md)
+
+### Internal Documentation Contribution 
+Learn more about [Contributing to Internal Documentation](#contributing-to-documentation)
 
 ## Proposing a new component 
 
@@ -61,4 +65,3 @@ Create a Github issue in the Lens repository and include the following:
 1. A link to the figma file in question
 2. Provide a walkthrough, clickable prototype, or demo of the scenario
 3. Include a visual in the the github issue by dragging a screen grab into the message field. 
-
