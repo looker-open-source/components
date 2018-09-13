@@ -29,7 +29,7 @@ If you have Helltool installed and running, you've likely already setup your gra
 
 ### 3. Clone this Repository & Setup
 
-1.  `git clone git@github.com:looker/relens.git`
+1.  `git clone git@github.com:looker/lens.git`
 1.  `yarn npmrc`
 1.  `yarn`
 1.  `yarn test`
