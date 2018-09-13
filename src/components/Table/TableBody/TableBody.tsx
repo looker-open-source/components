@@ -1,16 +1,7 @@
 import styled from '../../../styled_components'
 
-export enum TableBodyAlignment {
-  Bottom = 'botton',
-  Middle = 'middle',
-  Top = 'top',
-}
-
-export enum TableTextAlignment {
-  Center = 'center',
-  Left = 'left',
-  Right = 'right',
-}
+export type TableBodyAlignment = 'bottom' | 'middle' | 'top'
+export type TableTextAlignment = 'center' | 'left' | 'right'
 
 export interface TableBodyProps {
   align?: TableBodyAlignment
@@ -18,6 +9,6 @@ export interface TableBodyProps {
 }
 
 export const TableBody = styled<TableBodyProps, 'tbody'>('tbody')`
-  vertical-align: ${props => props.align || TableBodyAlignment.Top};
-  text-align: ${props => props.textAlign || TableTextAlignment.Left};
+  vertical-align: ${props => props.align || 'top'};
+  text-align: ${props => props.textAlign || 'left'};
 `
