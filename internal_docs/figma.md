@@ -31,7 +31,7 @@ Lens provides wide range of content, documentation and resources that make up a 
 
 - Internal Documentation: References, Tutorials, & Resources [Contributing to Internal Documentation](#)
 
-## Contributing to Design
+### Contributing to Design
 At the beginning of a project it must go through the design process. All designer must connect with the Lens team to review or propose new components with dependent teams and start a dialog around how to integrate Lens into upcoming and current projects. Follow these steps:
 
 1. Structure & Propose: 
@@ -43,16 +43,13 @@ At the beginning of a project it must go through the design process. All designe
   a.Walkthrough designs, proposals, and UI components with the Lens team
   b.Refine & resolve any questions or concerns
 
-## Filing a Github Issue
-Create a Github issue in the Lens repository and include the following:
-
-1. A link to the figma file in question
-2. Provide a walkthrough, clickable prototype, or demo of the scenario
-3. Include a visual in the the github issue by dragging a screen grab into the message field. 
 
 
 
-### When proposing a new component design include the following:
+
+## Proposing a new component 
+
+Include the following:
 
 1. Duplicate the ‘Project Template” and rename it.
 2. Add component specifications to the explore page
@@ -64,6 +61,13 @@ Create a Github issue in the Lens repository and include the following:
 8. Example of breakpoint reflow behavior on smaller devices
 9. Accessibility recommendation (tooltips, keyboard navigation, ...)
 10. Any interactions and animated transitions ( gifs or clickable prototypes)
+
+## Filing a Github Issue
+Create a Github issue in the Lens repository and include the following:
+
+1. A link to the figma file in question
+2. Provide a walkthrough, clickable prototype, or demo of the scenario
+3. Include a visual in the the github issue by dragging a screen grab into the message field. 
 
 ## Figma and Lens
 
