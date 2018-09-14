@@ -21,29 +21,6 @@ exports[`InputText default 1`] = `
 />
 `;
 
-exports[`InputText is invalid 1`] = `
-.c0 {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font: inherit;
-  font-size: 100%;
-  vertical-align: baseline;
-  border: solid 1px #ED3B53;
-  background-color: #FFF2F4;
-  height: 28px;
-  padding: 0 0.5rem;
-  border-radius: 4px;
-  font-size: 0.875rem;
-}
-
-<input
-  className="c0"
-  invalid={true}
-  type="text"
-/>
-`;
-
 exports[`InputText should accept disabled 1`] = `
 .c0 {
   margin: 0;

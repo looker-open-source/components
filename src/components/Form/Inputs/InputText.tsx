@@ -31,7 +31,10 @@ export interface InputTextProps extends InputProps {
   invalid?: boolean
 }
 
-const InternalInputText: React.SFC<InputTextProps> = ({ ...props }) => {
+const InternalInputText: React.SFC<InputTextProps> = ({
+  invalid,
+  ...props
+}) => {
   return <tag.input type="text" {...props} />
 }
 

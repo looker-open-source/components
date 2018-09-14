@@ -57,12 +57,6 @@ test('InputText with aria-describedby', () => {
   expect(tree).toMatchSnapshot()
 })
 
-test('InputText is invalid', () => {
-  const component = create(<InputText theme={theme} invalid={true} />)
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
-})
-
 test('Should trigger onChange handler', () => {
   let counter = 0
   const handleChange = () => counter++

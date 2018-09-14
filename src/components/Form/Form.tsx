@@ -31,13 +31,13 @@ const passValidationErrors = (
     Object.keys(validationErrors).length !== 0
   ) {
     return React.Children.map(children, child => {
-      if ((child as React.ReactElement<any>).type !== FieldText) {
+      child = child as React.ReactElement<any>
+      if (child.type !== FieldText) {
         // Extend to any Field* component...
         return child
       }
-      return React.cloneElement(child as React.ReactElement<any>, {
-        validationError:
-          validationErrors[(child as React.ReactElement<any>).props.name],
+      return React.cloneElement(child, {
+        validationError: validationErrors[child.props.name],
       })
     })
   } else {

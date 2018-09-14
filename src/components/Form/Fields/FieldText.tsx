@@ -18,7 +18,7 @@ const ErrorMessage = styled<{}, 'div'>('div')`
   color: ${red600};
   margin-right: ${props => props.theme.spacing.s};
   margin-top: ${props => props.theme.spacing.s};
-  font-size: ${props => props.theme.fontRamp.six};
+  font-size: ${props => props.theme.fontRamp[6]};
 `
 
 export const FieldText: React.SFC<FieldTextProps> = ({
