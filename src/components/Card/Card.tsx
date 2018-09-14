@@ -1,14 +1,11 @@
-import { color } from 'styled-system'
 import styled from '../../styled_components'
 import { charcoal300 } from '../../styles/colors'
 
 export interface CardProps {
-  bg: string
   raised?: boolean
 }
 
 export const Card = styled<CardProps, 'div'>('div')`
-  ${color};
   border-radius: 4px;
   box-shadow: ${props => (props.raised ? props.theme.shadows.one : 'none')};
   border: solid 1px ${props => props.theme.semanticColors.primary.borderColor};
