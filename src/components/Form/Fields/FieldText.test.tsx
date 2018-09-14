@@ -49,3 +49,16 @@ test('Should trigger onChange handler', () => {
   wrapper.find('input').simulate('change', { target: { value: '' } })
   expect(counter).toEqual(1)
 })
+
+test('A FieldText with a validation error', () => {
+  const component = createWithTheme(
+    <FieldText
+      label="👍"
+      name="thumbsUp"
+      id="thumbs-up"
+      validationError="Invalid input"
+    />
+  )
+  const tree = component.toJSON()
+  expect(tree).toMatchSnapshot()
+})

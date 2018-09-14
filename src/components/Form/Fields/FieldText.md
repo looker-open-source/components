@@ -21,3 +21,13 @@ const StatusAndResources = require('../../../../styleguide_components/StatusAndR
   <Button>Submit</Button>
 </form>
 ```
+
+### FieldText Validation
+
+The `<FieldText />` components accepts `validationError` as a property. This is a string that will show up in red below the input field when set. If set, it will also highlight the input field in red. If you have multiple fields in need of validation, it is recommended that you wrap them in a `<Form />` component and pass to it a dictionary with key as field name and value as corresponding validation error message.
+
+___Note: In the current implementation, any `validationError` set in a `<FieldText />` component will be overriden by `validationErrors` set in the parent `<Form />` component, even if the error is empty or null. Because of this, it is highly recommended that you only ever directly set `validationError` if a `<FieldText />` is outside a `<Form />`.___
+
+```js
+<FieldText name="someField" label="Some Field" validationError="This is invalid" />
+```

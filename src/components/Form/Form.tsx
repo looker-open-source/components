@@ -2,19 +2,19 @@ import tag from 'clean-tag'
 import * as React from 'react'
 import styled from '../../styled_components'
 import { reset } from '../../styles/reset'
+import { FieldText } from './Fields/FieldText'
 
-export interface ValidationError {
-  message: string
-  errors: string[]
-}
+// export interface ValidationError {
+//   message: string
+//   errors: string[]
+// }
 
 interface Dictionary<T> {
   [key: string]: T
 }
 
 export interface FormProps {
-  children?: React.ReactNode
-  validationErrors?: Dictionary<ValidationError>
+  validationErrors?: Dictionary<string>
   onChange?: React.FormEventHandler<HTMLFormElement>
   onInput?: React.FormEventHandler<HTMLFormElement>
   onReset?: React.FormEventHandler<HTMLFormElement>
@@ -24,22 +24,25 @@ export interface FormProps {
 
 const passValidationErrors = (
   children: React.ReactNode,
-  validationErrors: Dictionary<ValidationError> | undefined
+  validationErrors: Dictionary<string> | undefined
 ) => {
-  return React.Children.map(children, child => {
-    // if child is a field.
-    if (
-      validationErrors === undefined ||
-      Object.keys(validationErrors).length === 0
-    ) {
-      return child
-    } else {
+  if (
+    validationErrors !== undefined &&
+    Object.keys(validationErrors).length !== 0
+  ) {
+    return React.Children.map(children, child => {
+      if ((child as React.ReactElement<any>).type !== FieldText) {
+        // Extend to any Field* component...
+        return child
+      }
       return React.cloneElement(child as React.ReactElement<any>, {
-        ValidationError:
+        validationError:
           validationErrors[(child as React.ReactElement<any>).props.name],
       })
-    }
-  })
+    })
+  } else {
+    return children
+  }
 }
 
 const InternalForm: React.SFC<FormProps> = ({
