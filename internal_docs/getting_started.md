@@ -1,67 +1,26 @@
-# Getting Started With Lens
+# Design Contribution
 
-Lens provides a collection of UX guidelines, UI components and usable assets as an internal central resource for both designers & developers at Looker. This guide will help provide a step by step process on how to work with Lens assets. 
+### How to Start Contributing
 
-#### Contents
-- [How to Use Lens](#hot-to-use-lens)
-- [Contributing to Lens](#contributing-to-lens)
-- [Filing an Issue](#filing-a-github-issue)
+One of the core tenants of Lens is to encourage contribution. Designers should feel empowered to share and propose new components and styles they feel will benefit the team. Heres how to propose a new contribution
 
-## How to Use Lens
-The provided assets in Lens can be approached in two ways. 
+#### Step One: Propose
 
-- In [Figma](#figma.md) you can find design components, usage best practices guidelines, & building specifications.
+Lens team uses Github to track issues. To propose an update to the team library or a component, create a [github issue](https://github.com/looker/lens) in the Lens repository and include the following: 
 
-- On [Lens.looker.com](#) you can configure components directly in code.
+1. A link to the figma file with a component example
+2. Include a screenshot of the component in the the [github issue](#https://github.com/looker/lens)
+3. A brief description of the new component
 
-## Contributing to Lens
+#### Step Two: Review & Revise
+Filing an issue triggers a review process to make sure the proposal meets Lens standards including:
 
-### Contribution Model
-Lens provides a wide range of content, documentation and resources that make up a design system, from implementation in the codebase to design specification and usage best practices. Because of the many different types of assets, each deliverable has its own specifications to follow. Your contribution may apply to one or all of these categories but here are the steps of the different types of contributions in Lens: 
+1. A well defined spec (e.g. spacing, styling, state)
+2. Proper naming and architecture 
+3. Accessibility & localization considerations
 
-- Small: correcting existing UI or adjustments to style
-
-- Medium: fixes to guidelines, adding icons, internal references, Tutorials, & Resources 
-
-- Large: a whole new component
-
-### How to start contributing 
-At the beginning of a project it must go through the design process. All designer must connect with the Lens team to review or propose new components with dependent teams and start a dialog around how to integrate Lens into upcoming and current projects. Follow these steps:
-
-1. Structure & Propose: 
-  - Go over the project brief for the upcoming cycle wit the [Lens](https://looker.slack.com/messages/C9NHFLY0G) team
-  - Review existing components and assets that could be reused in your designs
-  - Discuss semantic naming slots, UI patterns, and best practices
-
-2. Review & Revise: Set up times to review and continue the collaboration process. These reviews can be scheduled as weekly check ins or during open hours available on the design google calendar
-  - Walkthrough designs, proposals, and UI components with the Lens team
-  - Refine & resolve any questions or concerns
-
-### Large Contribution
-You can create new component by composing them on the Lens.looker.com website. Compose the components you need or extend them to create new one. 
-Learn more on how to [Contribute to development](https://github.com/looker/lens/blob/993853c7328f66274989cecac0f8cf357c0dee8e/internal_docs/working_in_lens.md)
-
-### Internal Documentation Contribution 
-Learn more about [Contributing to Internal Documentation](#contributing-to-documentation)
-
-## Proposing a new component 
-
-Include the following:
-
-1. Duplicate the ‘Project Template” and rename it.
-2. Add component specifications to the explore page
-3. Explain the use cases and define the component elements
-4. Include examples of the existing design in the product (if it exists)
-5. Provide validation interaction and  error states
-6. What are the edge cases
-7. Include i18n/long text examples
-8. Example of breakpoint reflow behavior on smaller devices
-9. Accessibility recommendation (tooltips, keyboard navigation, ...)
-10. Any interactions and animated transitions ( gifs or clickable prototypes)
-
-## Filing a Github Issue
-Create a Github issue in the Lens repository and include the following:
-
-1. A link to the figma file in question
-2. Provide a walkthrough, clickable prototype, or demo of the scenario
-3. Include a visual in the the github issue by dragging a screen grab into the message field. 
+#### Step Three: Publish & Socialize
+ 
+1. Update github issue and apply engineering label tag to your issue
+2. Publish it to the team asset library in figma
+3. Post to the [#Design](#) & [#Lens](#) channel on slack 
