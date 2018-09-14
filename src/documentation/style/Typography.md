@@ -57,23 +57,23 @@ The Lens type scale is designed to provide consistent and harmonious typographic
 ```js noeditor
   const specimen = "Data analytics ❤️"
   const typeRamp = [
-    {level: 'd1', px: '62px', lh: '72px' },
-    {level: 'd2', px: '52px', lh: '60px' },
-    {level: 'd3', px: '38px', lh: '46px' },
-    {level: 'one', px: '28px', lh: '36px' },
-    {level: 'two', px: '22px', lh: '30px' },
-    {level: 'three', px: '19px', lh: '27px' },
-    {level: 'four', px: '16px', lh: '24px' },
-    {level: 'five', px: '14px', lh: '24px' },
-    {level: 'six', px: '12px', lh: '20px' },]
+    {size: 'd1', px: '62px', lh: '72px' },
+    {size: 'd2', px: '52px', lh: '60px' },
+    {size: 'd3', px: '38px', lh: '46px' },
+    {size: '1', px: '28px', lh: '36px' },
+    {size: '2', px: '22px', lh: '30px' },
+    {size: '3', px: '19px', lh: '27px' },
+    {size: '4', px: '16px', lh: '24px' },
+    {size: '5', px: '14px', lh: '24px' },
+    {size: '6', px: '12px', lh: '20px' },]
 
   const tableRows = typeRamp.map((t) => {
     return(
       <tr>
-      <td><Text size={t.level}>{specimen}</Text></td>
+      <td><Text size={t.size}>{specimen}</Text></td>
       <td>{t.px}</td>
       <td>{t.lh}</td>
-      <td><Text element="code">{t.level}</Text></td>
+      <td><Text element="code">{t.size}</Text></td>
     </tr>
     )
   });
@@ -81,10 +81,10 @@ The Lens type scale is designed to provide consistent and harmonious typographic
   <Table>
     <TableHead>
       <tr>
-        <th><Text size="six" weight="semi-bold" element="span" mode="subdued">SPECIMEN</Text></th>
-        <th><Text size="six" weight="semi-bold" element="span" mode="subdued">FONT-SIZE</Text></th>
-        <th><Text size="six" weight="semi-bold" element="span" mode="subdued">LINE-HEIGHT</Text></th>
-        <th><Text size="six" weight="semi-bold" element="span" mode="subdued">SIZE</Text></th>
+        <th><Text size="6" weight="semi-bold" element="span" mode="subdued">SPECIMEN</Text></th>
+        <th><Text size="6" weight="semi-bold" element="span" mode="subdued">FONT-SIZE</Text></th>
+        <th><Text size="6" weight="semi-bold" element="span" mode="subdued">LINE-HEIGHT</Text></th>
+        <th><Text size="6" weight="semi-bold" element="span" mode="subdued">SIZE</Text></th>
       </tr>
     </TableHead>
     <TableBody>

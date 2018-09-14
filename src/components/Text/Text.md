@@ -4,7 +4,7 @@ const StatusAndResources = require('../../../styleguide_components/StatusAndReso
 <StatusAndResources
   status="experimental"
   figmaURL="https://www.figma.com/file/SmIM3VUQUgo8xb4o7UUxflkT/Typography"
-  githubURL="https://github.com/looker/relens/blob/master/src/components/Text/Text.tsx"
+  githubURL="https://github.com/looker/lens/blob/master/src/components/Text/Text.tsx"
   feedbackTitle="Text Component Feedback" />
 ```
 
@@ -28,8 +28,8 @@ If you need to adjust the font-size of the rendered text, you can use the `size`
 
 ```js
  <Text size="d1">Sized to d1</Text>
- <Text size="one">Sized to 1</Text>
- <Text size="six">Sized to 6</Text>
+ <Text size="1">Sized to 1</Text>
+ <Text size="6">Sized to 6</Text>
 ```
 
 <div class="doc-section-divider"></div>
@@ -39,9 +39,9 @@ If you need to adjust the font-size of the rendered text, you can use the `size`
 Common patterns for text is to adjust the font weight and transform the text. Below is an example of using the `weight` and `textTransform` properties to modify the rendered text
 
 ```js
-  <Text size="six" textTransform="upper" weight="semiBold">A great story</Text>
+  <Text size="6" textTransform="upper" weight="semiBold">A great story</Text>
   <Text size="d3" weight="light">This is a great headline</Text>
-  <Text size="six" textTransform="caps">Some metadata about this story</Text>
+  <Text size="6" textTransform="caps">Some metadata about this story</Text>
 ```
 
 <div class="doc-section-divider"></div>

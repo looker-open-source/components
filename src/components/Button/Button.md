@@ -4,7 +4,7 @@ const StatusAndResources = require('../../../styleguide_components/StatusAndReso
 ;<StatusAndResources
   status="experimental"
   figmaURL="https://www.figma.com/file/Dirjx0RKbOOrLacqHq61By/Button-%26-Links?node-id=914%3A981&viewport=1741%2C951%2C1"
-  githubURL="https://github.com/looker/relens/tree/master/src/components/Button"
+  githubURL="https://github.com/looker/lens/tree/master/src/components/Button"
   feedbackTitle="Button Component Feedback"
 />
 ```

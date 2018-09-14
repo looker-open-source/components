@@ -36,11 +36,20 @@ module.exports = {
       content: 'src/documentation/intro.md',
     },
     {
-      name: 'Working with Lens',
+      name: 'Using Lens',
       sections: [
+        {
+          name: 'Getting Started',
+          content: 'src/documentation/working_with_lens/getting_started.md',
+        },
         {
           name: 'Code Quality and IDE Setup',
           content: 'src/documentation/working_with_lens/ide_setup.md',
+        },
+        {
+          name: 'Writing Lens Components',
+          content:
+            'src/documentation/working_with_lens/writing_lens_components.md',
         },
         {
           name: 'Integrating Lens into Helltool',

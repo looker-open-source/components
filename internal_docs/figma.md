@@ -77,4 +77,4 @@ Read about using [Figma's commenting system here](https://help.figma.com/editor/
 
 The Lens team also uses Github to track our issues and we welcome you to open an issue if you discover a bug or have feedback related to the design or functionality of a component or style in Figma.
 
-You can open an issue [quickly here with the correct labels](https://github.com/looker/relens/issues/new?title=Design+Feedback&labels=design,figma) to ensure the design team will see it
+You can open an issue [quickly here with the correct labels](https://github.com/looker/lens/issues/new?title=Design+Feedback&labels=design,figma) to ensure the design team will see it

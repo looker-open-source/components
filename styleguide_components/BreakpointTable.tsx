@@ -1,15 +1,7 @@
 import * as React from 'react'
 import { Box } from '../src/components/Box/Box'
-import { List } from '../src/components/List/List'
-import { ListItem } from '../src/components/List/ListItem'
 import { Code } from '../src/components/Text/Code'
-import { Span } from '../src/components/Text/Span'
-import {
-  Text,
-  TextTransforms,
-  TextVariants,
-  TextWeights,
-} from '../src/components/Text/Text'
+import { Text } from '../src/components/Text/Text'
 
 import {
   Table,
@@ -19,8 +11,6 @@ import {
   TableHeaderCell,
   TableRow,
 } from '../src/components/Table/'
-
-import { RampSizes } from '../src/styles/ramp_sizes'
 
 const breakpointLabels = [
   'Breakpoint',
@@ -68,7 +58,7 @@ export interface BreakpointExample {
 const TableLabel = (label: string, key: number) => {
   return (
     <TableHeaderCell key={key}>
-      <Text size={RampSizes.Five} weight={TextWeights.SemiBold}>
+      <Text size="5" weight="semiBold">
         {label}
       </Text>
     </TableHeaderCell>
@@ -85,20 +75,20 @@ const BreakpointRow = (
   return (
     <TableRow key={key} style={{ verticalAlign: 'middle' }}>
       <TableDataCell>
-        <Text size={RampSizes.Five}>{slot}</Text>
+        <Text size="5">{slot}</Text>
       </TableDataCell>
       <TableDataCell>
         <Box mr="large">
-          <Text size={RampSizes.Five}>{starts}</Text>
+          <Text size="5">{starts}</Text>
         </Box>
       </TableDataCell>
       <TableDataCell>
         <Box px="small" is="span" className="prop-code">
-          <Code size={RampSizes.Six}>min-width: {rem}</Code>
+          <Code size="6">min-width: {rem}</Code>
         </Box>
       </TableDataCell>
       <TableDataCell>
-        <Text size={RampSizes.Five}>{description}</Text>
+        <Text size="5">{description}</Text>
       </TableDataCell>
     </TableRow>
   )

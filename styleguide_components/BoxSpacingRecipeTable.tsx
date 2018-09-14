@@ -4,13 +4,6 @@ import { List } from '../src/components/List/List'
 import { ListItem } from '../src/components/List/ListItem'
 import { Code } from '../src/components/Text/Code'
 import { Span } from '../src/components/Text/Span'
-import {
-  Text,
-  TextTransforms,
-  TextVariants,
-  TextWeights,
-} from '../src/components/Text/Text'
-import { RampSizes } from '../src/styles/ramp_sizes'
 
 const spacingTypes = [
   { value: 'm', label: 'Margin' },
@@ -47,15 +40,15 @@ const SpaceListHeader = (text: string, defaultLabel?: string) => {
   return (
     <Box mb="medium">
       <Span
-        size={RampSizes.Five}
-        variant={TextVariants.Secondary}
-        textTransform={TextTransforms.Upper}
-        weight={TextWeights.SemiBold}
+        size="5"
+        variant="secondary"
+        textTransform="upper"
+        weight="semiBold"
       >
         {text}
       </Span>
       <Box is="span" ml="xsmall">
-        <Span size={RampSizes.Six} variant={TextVariants.Subdued}>
+        <Span size="6" variant="subdued">
           {defaultLabel}
         </Span>
       </Box>
@@ -72,12 +65,12 @@ const ListRender = (
   return (
     <ListItem key={key}>
       <Box px="small" is="span" className="prop-code">
-        <Code size={RampSizes.Six}>{value}</Code>
+        <Code size="6">{value}</Code>
       </Box>
       <Box ml="small" is="span">
-        <Span size={RampSizes.Five}>{label}</Span>
+        <Span size="5">{label}</Span>
         <Box is="span" ml="xsmall">
-          <Span size={RampSizes.Six} variant={TextVariants.Subdued}>
+          <Span size="6" variant="subdued">
             {defaultLabel}
           </Span>
         </Box>
