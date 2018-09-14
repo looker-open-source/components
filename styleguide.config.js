@@ -32,7 +32,7 @@ module.exports = {
   ],
   sections: [
     {
-      name: 'Lens',
+      name: '',
       content: 'src/documentation/intro.md',
     },
     {
