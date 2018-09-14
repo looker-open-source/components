@@ -9,7 +9,6 @@ import {
   yellow000,
   yellow400,
 } from '../src/styles/colors'
-import { RampSizes } from '../src/styles/ramp_sizes'
 import { easings } from '../src/themes/easings'
 import { spacing } from '../src/themes/spacing'
 import { transitions } from '../src/themes/transitions'
@@ -19,11 +18,7 @@ import {
   GithubSvg,
 } from '../styleguide_components/ResourceIcons'
 
-export enum StatusLabels {
-  Experimental = 'experimental',
-  Deprecated = 'deprecated',
-  Stable = 'stable',
-}
+export type StatusLabels = 'experimental' | 'deprecated' | 'stable'
 export interface StatusProps {
   status: StatusLabels
 }
@@ -31,7 +26,7 @@ export interface StatusProps {
 const statusIndicator: React.SFC<StatusProps> = ({ status, ...args }) => {
   return (
     <a className="support-link" href="/#!/Support%20Levels">
-      <Text size={RampSizes.Five} {...args}>
+      <Text size="5" {...args}>
         {status}
       </Text>
     </a>
@@ -40,7 +35,7 @@ const statusIndicator: React.SFC<StatusProps> = ({ status, ...args }) => {
 
 function getCorrectStatusColor(status: StatusLabels) {
   switch (status) {
-    case StatusLabels.Experimental:
+    case 'experimental':
       return css`
         background-color: ${yellow000};
         border-left: solid 4px ${yellow400};
@@ -52,7 +47,7 @@ function getCorrectStatusColor(status: StatusLabels) {
           /* stylelint-enable */
         }
       `
-    case StatusLabels.Deprecated:
+    case 'deprecated':
       return css`
         background-color: ${red100};
         border-left: solid 5px ${red500};
@@ -64,7 +59,7 @@ function getCorrectStatusColor(status: StatusLabels) {
           /* stylelint-enable */
         }
       `
-    case StatusLabels.Stable:
+    case 'stable':
       return css`
         &:hover {
           color: ${blue600};
@@ -169,7 +164,7 @@ const StatusAndResourcesRenderer: React.SFC<StatusAndResourcesProps> = ({
           <GithubSvg />
         </ResourceIcon>
         <ResourceIcon
-          url={`https://github.com/looker/relens/issues/new?title=${feedbackTitle}`}
+          url={`https://github.com/looker/lens/issues/new?title=${feedbackTitle}`}
         >
           <FeedbackSvg />
         </ResourceIcon>

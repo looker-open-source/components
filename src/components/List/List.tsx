@@ -8,11 +8,7 @@ export interface ListProps {
   nomarker?: boolean
 }
 
-export enum ListTypes {
-  Bullet = 'bullet',
-  Number = 'number',
-  Letter = 'letter',
-}
+export type ListTypes = 'bullet' | 'number' | 'letter'
 
 /**
  * List are stacked groups of related content that can be useful in many contexts.
@@ -22,26 +18,26 @@ const ListGenerator: React.SFC<ListProps> = ({ type, ...args }) => {
   delete props.nomarker
 
   switch (type) {
-    case ListTypes.Number:
-    case ListTypes.Letter:
+    case 'number':
+    case 'letter':
       return <ol {...props}>{props.children}</ol>
-    case ListTypes.Bullet:
+    case 'bullet':
     default:
       return <ul {...props}>{props.children}</ul>
   }
 }
 
-function listStyleType(type: string | undefined) {
+function listStyleType(type: ListTypes | undefined) {
   switch (type) {
-    case ListTypes.Bullet:
+    case 'bullet':
       return css`
         list-style-type: disc;
       `
-    case ListTypes.Number:
+    case 'number':
       return css`
         list-style-type: decimal;
       `
-    case ListTypes.Letter:
+    case 'letter':
       return css`
         list-style-type: upper-alpha;
       `

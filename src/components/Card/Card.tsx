@@ -8,7 +8,7 @@ export interface CardProps {
 export const Card = styled<CardProps, 'div'>('div')`
   background: #fff;
   border-radius: 4px;
-  box-shadow: ${props => (props.raised ? props.theme.shadows.one : 'none')};
+  box-shadow: ${props => (props.raised ? props.theme.shadows[1] : 'none')};
   border: solid 1px ${props => props.theme.semanticColors.primary.borderColor};
   display: flex;
   flex-direction: column;
@@ -23,6 +23,6 @@ export const Card = styled<CardProps, 'div'>('div')`
   /* stylelint-enable */
   &:hover {
     border-color: ${charcoal300};
-    box-shadow: ${props => (props.raised ? props.theme.shadows.two : 'none')};
+    box-shadow: ${props => (props.raised ? props.theme.shadows[2] : 'none')};
   }
 `

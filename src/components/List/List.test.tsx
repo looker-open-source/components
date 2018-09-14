@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { List, ListTypes } from './List'
+import { List } from './List'
 import { ListItem } from './ListItem'
 
 import 'jest-styled-components'
@@ -19,7 +19,7 @@ test('A default List, should be a ul', () => {
 
 test('A bulleted List', () => {
   const component = create(
-    <List type={ListTypes.Bullet}>
+    <List type="bullet">
       <ListItem>🥑</ListItem>
       <ListItem>🍕</ListItem>
       <ListItem>🥨</ListItem>
@@ -31,7 +31,7 @@ test('A bulleted List', () => {
 
 test('A numerically ordered List', () => {
   const component = create(
-    <List type={ListTypes.Number}>
+    <List type="number">
       <ListItem>🥑</ListItem>
       <ListItem>🍕</ListItem>
       <ListItem>🥨</ListItem>
@@ -43,7 +43,7 @@ test('A numerically ordered List', () => {
 
 test('A numerically ordered List marked as nomarker', () => {
   const component = create(
-    <List type={ListTypes.Number} nomarker={true}>
+    <List type="number" nomarker>
       <ListItem>🥑</ListItem>
       <ListItem>🍕</ListItem>
       <ListItem>🥨</ListItem>
