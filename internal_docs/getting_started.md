@@ -19,11 +19,11 @@ The provided assets in Lens can be approached in two ways.
 ### Contribution Model
 Lens provides a wide range of content, documentation and resources that make up a design system, from implementation in the codebase to design specification and usage best practices. Because of the many different types of assets, each deliverable has its own specifications to follow. Your contribution may apply to one or all of these categories but here are the steps of the different types of contributions in Lens: 
 
-- Small changes: correcting existing UI or adjustments to style
+- Small: correcting existing UI or adjustments to style
 
-- Medium: fixes to implementation of into the codebase. References, Tutorials, & Resources 
+- Medium: fixes to guidelines, adding icons, internal references, Tutorials, & Resources 
 
-- Large: a new component
+- Large: a whole new component
 
 ### Contributing to Design phases
 At the beginning of a project it must go through the design process. All designer must connect with the Lens team to review or propose new components with dependent teams and start a dialog around how to integrate Lens into upcoming and current projects. Follow these steps:
