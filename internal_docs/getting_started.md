@@ -25,7 +25,7 @@ Lens provides a wide range of content, documentation and resources that make up 
 
 - Large: a whole new component
 
-### Contributing to Design phases
+### How to start contributing 
 At the beginning of a project it must go through the design process. All designer must connect with the Lens team to review or propose new components with dependent teams and start a dialog around how to integrate Lens into upcoming and current projects. Follow these steps:
 
 1. Structure & Propose: 
