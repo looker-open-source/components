@@ -44,7 +44,6 @@
     "regenerator-runtime": "0.11.1",
     "request": "2.85.0",
     "rimraf": "2.6.2",
-    "styled-components": "3.4.5",
     "stylelint": "9.3.0",
     "stylelint-config-recommended": "2.1.0",
     "stylelint-config-styled-components": "0.1.1",
@@ -69,6 +68,7 @@
     "polished": "2.0.3",
     "react": "16.4.2",
     "react-dom": "16.4.2",
+    "styled-components": "^3.4.6",
     "styled-system": "^3.0.2",
     "svg-inline-loader": "^0.8.0"
   },
@@ -107,9 +107,7 @@
       "git add"
     ]
   },
-  "peerDependencies": {
-    "styled-components": "3.3.3"
-  },
+  "peerDependencies": {},
   "pre-commit": [
     "lint-staged"
   ],
