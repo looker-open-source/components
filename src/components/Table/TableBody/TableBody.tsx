@@ -8,7 +8,7 @@ export interface TableBodyProps {
   textAlign?: TableTextAlignment
 }
 
-export const TableBody = styled<TableBodyProps, 'tbody'>('tbody')`
+export const TableBody = styled.tbody<TableBodyProps>`
   vertical-align: ${props => props.align || 'top'};
   text-align: ${props => props.textAlign || 'left'};
 `

@@ -132,7 +132,7 @@ When a call to action requires additional steps, include an ellipsis at the end 
 ```js
 <List>
   <ListItem>
-    <Button mode="scary">Move to Trash...</Button>
+    <Button color="destructive">Move to Trash...</Button>
   </ListItem>
   <ListItem>
     <Button>Print...</Button>
@@ -142,10 +142,10 @@ When a call to action requires additional steps, include an ellipsis at the end 
 
 ### Extending Button
 
-Sometimes you may want to extend the Button defaults to create a specific styling effect. That should be straightforward using StyledComponent's `.extend` method like so:
+Sometimes you may want to extend the Button defaults to create a specific styling effect. That should be straightforward by wrapped a StyledComponent in another `styled` call to extend it like so:
 
 ```js
-const RoundButton = Button.extend`
+const RoundButton = styled(Button)`
   border-radius: 3rem;
 `
 ;<RoundButton>Hello RoundButton</RoundButton>

@@ -7,7 +7,7 @@ import styled from './styled_components'
 import { reset } from './styles/reset'
 import { Theme } from './themes'
 
-const Reset = styled<{}, 'div'>('div')`
+const Reset = styled.div`
   ${reset};
 `
 

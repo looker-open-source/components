@@ -1957,8 +1957,8 @@ buffer@^4.3.0:
     isarray "^1.0.0"
 
 buffer@^5.0.3:
-  version "5.2.0"
-  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/buffer/-/buffer-5.2.0.tgz#53cf98241100099e9eeae20ee6d51d21b16e541e"
+  version "5.2.1"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/buffer/-/buffer-5.2.1.tgz#dd57fa0f109ac59c602479044dca7b8b3d0b71d6"
   dependencies:
     base64-js "^1.0.2"
     ieee754 "^1.1.4"
@@ -8757,9 +8757,9 @@ style-search@^0.1.0:
   version "0.1.0"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/style-search/-/style-search-0.1.0.tgz#7958c793e47e32e07d2b5cafe5c0bf8e12e77902"
 
-styled-components@3.4.5:
-  version "3.4.5"
-  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/styled-components/-/styled-components-3.4.5.tgz#6cbfde7c9189c868b9fd01fee40f5330dbd0cc8d"
+styled-components@^3.4.6:
+  version "3.4.6"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/styled-components/-/styled-components-3.4.6.tgz#134f1ab89ed732686bf7de3ff8fca557283cbd60"
   dependencies:
     buffer "^5.0.3"
     css-to-react-native "^2.0.3"

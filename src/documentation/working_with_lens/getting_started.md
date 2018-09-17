@@ -108,7 +108,7 @@ Styling can also be extended, but care is needed to ensure you do not violate Lo
 ```jsx static
 import { Button } from 'looker-lens'
 
-const CircularButton = Button.extend`
+const CircularButton = styled(Button)`
   border-radius: 4rem;
 `
 
@@ -122,7 +122,7 @@ const CircularButton = Button.extend`
 To help stay withing Looker's design principles, [Lens publishes a Theme object](https://github.com/looker/lens/blob/master/src/themes/index.ts). When building components using Lens' styled function, this Theme object becomes part of a component's props. That means it's available when components are `extended` or when the `styled` function is used for new components:
 
 ```jsx static
-const DangerButton = Button.extend`
+const DangerButton = styled(Button)`
   background-color: ${(props) => props.theme.semanticColors.danger.main};
 `
 ```
