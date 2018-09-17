@@ -5,7 +5,7 @@ export interface CardProps {
   raised?: boolean
 }
 
-export const Card = styled<CardProps, 'div'>('div')`
+export const Card = styled.div<CardProps>`
   background: #fff;
   border-radius: 4px;
   box-shadow: ${props => (props.raised ? props.theme.shadows[1] : 'none')};

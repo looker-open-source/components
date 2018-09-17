@@ -4,7 +4,7 @@ export interface CardMediaProps {
   image: string
 }
 
-export const CardMedia = styled<CardMediaProps, 'div'>('div')`
+export const CardMedia = styled.div<CardMediaProps>`
   display: block;
   background-size: cover;
   background-repeat: no-repeat;
