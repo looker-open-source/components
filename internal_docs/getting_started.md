@@ -11,7 +11,7 @@ Lens team uses Github to track issues. To propose an update to the team library 
 3. A brief description of the new components behavior, states, and use case. 
 
 #### Step Two: Review & Revise
-Creating an issue informs the team that you are ready for the review process. We review your proposal based on the following criteria:
+Creating an issue informs the team that you are ready for the review process. The team will review your proposal based on the following criteria:
 
 1. A well defined spec (e.g. spacing, styling, state)
 2. Proper naming and architecture 
@@ -23,4 +23,4 @@ Please note: Issues will be responded to within 24 hours or the next business da
  
 1. If you already have a github issue, add additional notes, design updates, specifications and apply engineering label tag to your issue. 
 2. Publish your component to the team asset library in figma
-3. Share your new component and updated github issue on the [Lens](#) slack channel to let everyone know its ready to use. 
+3. Share your new component and updated github issue on the [#lens](https://looker.slack.com/messages/C9NHFLY0G) slack channel to let everyone know its ready to use. 
