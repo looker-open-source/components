@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`A default ListItem, should be an li 1`] = `
+.c1 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+.c0 {
+  margin-bottom: 0.25rem;
+}
+
+<li
+  className="c0 c1"
+>
+  🥑
+</li>
+`;
