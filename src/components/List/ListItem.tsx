@@ -1,6 +1,5 @@
 import styled from '../../styled_components'
-import { spacing } from '../../themes/spacing'
 
-export const ListItem = styled('li')`
-  margin-bottom: ${spacing.xs};
+export const ListItem = styled.li`
+  margin-bottom: ${p => p.theme.spacing.xs};
 `

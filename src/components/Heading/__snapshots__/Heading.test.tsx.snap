@@ -1,6 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`A <h1> Heading 1`] = `
+.c1 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
 .c0 {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -14,13 +23,22 @@ exports[`A <h1> Heading 1`] = `
 }
 
 <h1
-  className="c0"
+  className="c0 c1"
 >
   🥑
 </h1>
 `;
 
 exports[`A <h1> Heading sized to <h2> 1`] = `
+.c1 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
 .c0 {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -34,13 +52,22 @@ exports[`A <h1> Heading sized to <h2> 1`] = `
 }
 
 <h1
-  className="c0"
+  className="c0 c1"
 >
   🥑
 </h1>
 `;
 
 exports[`A Heading to semi-bold 1`] = `
+.c1 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
 .c0 {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -54,13 +81,22 @@ exports[`A Heading to semi-bold 1`] = `
 }
 
 <h3
-  className="c0"
+  className="c0 c1"
 >
   🥑
 </h3>
 `;
 
 exports[`A Heading transformed 1`] = `
+.c1 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
 .c0 {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -74,13 +110,22 @@ exports[`A Heading transformed 1`] = `
 }
 
 <h3
-  className="c0"
+  className="c0 c1"
 >
   🥑
 </h3>
 `;
 
 exports[`A default Heading 1`] = `
+.c1 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
 .c0 {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -94,7 +139,7 @@ exports[`A default Heading 1`] = `
 }
 
 <h3
-  className="c0"
+  className="c0 c1"
 >
   🥑
 </h3>

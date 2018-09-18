@@ -1,31 +1,49 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`A bulleted List 1`] = `
+.c3 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+.c1 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
 .c0 {
   margin: 0;
   padding: 0 0 0 1rem;
   list-style-type: disc;
 }
 
-.c1 {
+.c2 {
   margin-bottom: 0.25rem;
 }
 
 <ul
-  className="c0"
+  className="c0 c1"
 >
   <li
-    className="c1"
+    className="c2 c3"
   >
     🥑
   </li>
   <li
-    className="c1"
+    className="c2 c3"
   >
     🍕
   </li>
   <li
-    className="c1"
+    className="c2 c3"
   >
     🥨
   </li>
@@ -33,31 +51,49 @@ exports[`A bulleted List 1`] = `
 `;
 
 exports[`A default List, should be a ul 1`] = `
+.c3 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+.c1 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
 .c0 {
   margin: 0;
   padding: 0 0 0 0;
   list-style-type: none;
 }
 
-.c1 {
+.c2 {
   margin-bottom: 0.25rem;
 }
 
 <ul
-  className="c0"
+  className="c0 c1"
 >
   <li
-    className="c1"
+    className="c2 c3"
   >
     🥑
   </li>
   <li
-    className="c1"
+    className="c2 c3"
   >
     🍕
   </li>
   <li
-    className="c1"
+    className="c2 c3"
   >
     🥨
   </li>
@@ -65,31 +101,49 @@ exports[`A default List, should be a ul 1`] = `
 `;
 
 exports[`A numerically ordered List 1`] = `
+.c3 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+.c1 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
 .c0 {
   margin: 0;
   padding: 0 0 0 1rem;
   list-style-type: decimal;
 }
 
-.c1 {
+.c2 {
   margin-bottom: 0.25rem;
 }
 
 <ol
-  className="c0"
+  className="c0 c1"
 >
   <li
-    className="c1"
+    className="c2 c3"
   >
     🥑
   </li>
   <li
-    className="c1"
+    className="c2 c3"
   >
     🍕
   </li>
   <li
-    className="c1"
+    className="c2 c3"
   >
     🥨
   </li>
@@ -97,31 +151,49 @@ exports[`A numerically ordered List 1`] = `
 `;
 
 exports[`A numerically ordered List marked as nomarker 1`] = `
+.c3 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+.c1 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
 .c0 {
   margin: 0;
   padding: 0 0 0 0;
   list-style-type: none;
 }
 
-.c1 {
+.c2 {
   margin-bottom: 0.25rem;
 }
 
 <ol
-  className="c0"
+  className="c0 c1"
 >
   <li
-    className="c1"
+    className="c2 c3"
   >
     🥑
   </li>
   <li
-    className="c1"
+    className="c2 c3"
   >
     🍕
   </li>
   <li
-    className="c1"
+    className="c2 c3"
   >
     🥨
   </li>

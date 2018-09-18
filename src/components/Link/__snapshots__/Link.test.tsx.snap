@@ -1,6 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`A Link with an id 1`] = `
+.c1 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
 .c0 {
   color: #0087e1;
   -webkit-text-decoration: none;
@@ -13,7 +22,7 @@ exports[`A Link with an id 1`] = `
 }
 
 <a
-  className="c0"
+  className="c0 c1"
   href="https://looker.com"
   id="link-id"
 >
@@ -22,6 +31,15 @@ exports[`A Link with an id 1`] = `
 `;
 
 exports[`A default Link 1`] = `
+.c1 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
 .c0 {
   color: #0087e1;
   -webkit-text-decoration: none;
@@ -34,7 +52,7 @@ exports[`A default Link 1`] = `
 }
 
 <a
-  className="c0"
+  className="c0 c1"
   href="https://looker.com"
 >
   🥑
@@ -42,6 +60,15 @@ exports[`A default Link 1`] = `
 `;
 
 exports[`A external Link 1`] = `
+.c1 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
 .c0 {
   color: #0087e1;
   -webkit-text-decoration: none;
@@ -54,7 +81,7 @@ exports[`A external Link 1`] = `
 }
 
 <a
-  className="c0"
+  className="c0 c1"
   href="https://looker.com"
 >
   🥑

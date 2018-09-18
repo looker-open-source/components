@@ -1,25 +1,43 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Box default 1`] = `
+.c1 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
 .c0 {
   margin-top: 1.25rem;
 }
 
 <div
-  className="c0"
+  className="c0 c1"
 >
   🥑
 </div>
 `;
 
 exports[`Box with SizeNone is valid 1`] = `
+.c1 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
 .c0 {
   margin-top: none;
 }
 
 <div>
   <div
-    className="c0"
+    className="c0 c1"
   >
     🥑
   </div>
@@ -27,6 +45,15 @@ exports[`Box with SizeNone is valid 1`] = `
 `;
 
 exports[`Box with null values are removed from styling 1`] = `
+.c1 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
 .c0 {
   margin-top: 1.25rem;
 }
@@ -39,7 +66,7 @@ exports[`Box with null values are removed from styling 1`] = `
 
 <div>
   <div
-    className="c0"
+    className="c0 c1"
   >
     🥑
   </div>
@@ -47,6 +74,15 @@ exports[`Box with null values are removed from styling 1`] = `
 `;
 
 exports[`Responsive margin top Box 1`] = `
+.c1 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
 .c0 {
   margin-top: 1.25rem;
 }
@@ -65,7 +101,7 @@ exports[`Responsive margin top Box 1`] = `
 
 <div>
   <div
-    className="c0"
+    className="c0 c1"
   >
     🥑
   </div>

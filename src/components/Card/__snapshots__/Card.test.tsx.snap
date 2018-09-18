@@ -1,6 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`A Card 1`] = `
+.c1 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
 .c0 {
   background: #fff;
   border-radius: 4px;
@@ -26,13 +35,22 @@ exports[`A Card 1`] = `
 }
 
 <div
-  className="c0"
+  className="c0 c1"
 >
   🥑
 </div>
 `;
 
 exports[`A raised Card 1`] = `
+.c1 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
 .c0 {
   background: #fff;
   border-radius: 4px;
@@ -58,13 +76,22 @@ exports[`A raised Card 1`] = `
 }
 
 <div
-  className="c0"
+  className="c0 c1"
 >
   🥑
 </div>
 `;
 
 exports[`A raised Card with a CardMedia block 1`] = `
+.c1 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
 .c0 {
   background: #fff;
   border-radius: 4px;
@@ -89,7 +116,7 @@ exports[`A raised Card with a CardMedia block 1`] = `
   box-shadow: 0 3px 4px rgba(0,0,0,0.11),0 1px 2px rgba(0,0,0,0.04);
 }
 
-.c1 {
+.c2 {
   display: block;
   background-size: cover;
   background-repeat: no-repeat;
@@ -101,10 +128,10 @@ exports[`A raised Card with a CardMedia block 1`] = `
 }
 
 <div
-  className="c0"
+  className="c0 c1"
 >
   <div
-    className="c1"
+    className="c2 c1"
   />
 </div>
 `;

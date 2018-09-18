@@ -1,6 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`A FormControl 1`] = `
+.c1 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -17,6 +26,6 @@ exports[`A FormControl 1`] = `
 }
 
 <div
-  className="c0"
+  className="c0 c1"
 />
 `;

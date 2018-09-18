@@ -1,4 +1,4 @@
-import { css } from '../styled_components'
+import { css } from 'styled-components'
 
 export const reset = css`
   margin: 0;

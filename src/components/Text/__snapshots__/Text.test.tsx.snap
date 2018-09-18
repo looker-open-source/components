@@ -1,6 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`A Text component aligned 1`] = `
+.c1 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
 .c0 {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -14,13 +23,22 @@ exports[`A Text component aligned 1`] = `
 }
 
 <div
-  className="c0"
+  className="c0 c1"
 >
   Hello
 </div>
 `;
 
 exports[`A Text component resized 1`] = `
+.c1 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
 .c0 {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -34,7 +52,7 @@ exports[`A Text component resized 1`] = `
 }
 
 <div
-  className="c0"
+  className="c0 c1"
   size="d2"
 >
   Hello
@@ -42,6 +60,15 @@ exports[`A Text component resized 1`] = `
 `;
 
 exports[`A Text component transformed 1`] = `
+.c1 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
 .c0 {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -55,13 +82,22 @@ exports[`A Text component transformed 1`] = `
 }
 
 <div
-  className="c0"
+  className="c0 c1"
 >
   Hello
 </div>
 `;
 
 exports[`A Text component tuncated 1`] = `
+.c1 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
 .c0 {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -78,13 +114,22 @@ exports[`A Text component tuncated 1`] = `
 }
 
 <div
-  className="c0"
+  className="c0 c1"
 >
   Hello
 </div>
 `;
 
 exports[`A Text component weight 1`] = `
+.c1 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
 .c0 {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -98,13 +143,22 @@ exports[`A Text component weight 1`] = `
 }
 
 <div
-  className="c0"
+  className="c0 c1"
 >
   Hello
 </div>
 `;
 
 exports[`A Text component with variant 1`] = `
+.c1 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
 .c0 {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -118,13 +172,22 @@ exports[`A Text component with variant 1`] = `
 }
 
 <div
-  className="c0"
+  className="c0 c1"
 >
   Hello
 </div>
 `;
 
 exports[`A default Text component 1`] = `
+.c1 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
 .c0 {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -138,7 +201,7 @@ exports[`A default Text component 1`] = `
 }
 
 <div
-  className="c0"
+  className="c0 c1"
 >
   Hello
 </div>
