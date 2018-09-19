@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`A Label 1`] = `
+exports[`A default ListItem, should be an li 1`] = `
 .c0 {
   border: 0;
   font: inherit;
@@ -8,16 +8,12 @@ exports[`A Label 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  font-weight: 600;
-  color: #262D33;
-  margin-right: 0.5rem;
-  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
 }
 
-<label
+<li
   className="c0"
-  htmlFor="party"
 >
-  🎉
-</label>
+  🥑
+</li>
 `;

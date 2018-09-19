@@ -1,7 +1,7 @@
 import tag from 'clean-tag'
 import * as React from 'react'
 import styled from '../../../styled_components'
-import { reset } from '../../../styles/reset'
+import { reset } from '../../../styles/helpers'
 import { InputProps } from './InputProps'
 
 export interface InputTextProps extends InputProps {
@@ -30,7 +30,7 @@ const InternalInputText: React.SFC<InputTextProps> = ({ ...props }) => {
 }
 
 export const InputText = styled<InputTextProps>(InternalInputText)`
-  ${reset}
+  ${reset};
   border: solid 1px ${props => props.theme.semanticColors.primary.borderColor};
   height: 28px;
   padding: 0 ${props => props.theme.spacing.s};

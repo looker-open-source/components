@@ -132,7 +132,7 @@ When a call to action requires additional steps, include an ellipsis at the end 
 ```js
 <List>
   <ListItem>
-    <Button color="destructive">Move to Trash...</Button>
+    <Button color="danger">Move to Trash...</Button>
   </ListItem>
   <ListItem>
     <Button>Print...</Button>
@@ -145,10 +145,13 @@ When a call to action requires additional steps, include an ellipsis at the end 
 Sometimes you may want to extend the Button defaults to create a specific styling effect. That should be straightforward by wrapped a StyledComponent in another `styled` call to extend it like so:
 
 ```js
+const styled = require('../../styled_components').default;
+
 const RoundButton = styled(Button)`
-  border-radius: 3rem;
-`
-;<RoundButton>Hello RoundButton</RoundButton>
+  border-radius: 2rem;
+`;
+
+<RoundButton>Hello RoundButton</RoundButton>
 ```
 
 ### Overriding A Color

@@ -17,20 +17,20 @@ exports[`A FieldCheckbox 1`] = `
 }
 
 .c2 {
-  margin: 0;
-  padding: 0;
   border: 0;
   font: inherit;
   font-size: 100%;
+  margin: 0;
+  padding: 0;
   vertical-align: baseline;
 }
 
 .c1 {
-  margin: 0;
-  padding: 0;
   border: 0;
   font: inherit;
   font-size: 100%;
+  margin: 0;
+  padding: 0;
   vertical-align: baseline;
   font-weight: 600;
   color: #262D33;

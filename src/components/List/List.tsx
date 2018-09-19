@@ -1,8 +1,7 @@
-// Typescript component boilerplate for generating meaningful declaration files.
 import * as React from 'react'
-// End Typescript component boilerplate
 import styled, { css } from '../../styled_components'
-import { spacing } from '../../themes/spacing'
+import { reset } from '../../styles/helpers'
+
 export interface ListProps {
   type?: ListTypes
   nomarker?: boolean
@@ -49,8 +48,10 @@ function listStyleType(type: ListTypes | undefined) {
 }
 
 export const List = styled<ListProps>(ListGenerator)`
+  ${reset};
   margin: 0;
-  padding: 0 0 0 ${props => (props.nomarker || !props.type ? 0 : spacing.m)};
+  padding: 0 0 0
+    ${props => (props.nomarker || !props.type ? 0 : props.theme.spacing.m)};
   ${props =>
     props.nomarker ? listStyleType(undefined) : listStyleType(props.type)};
 `

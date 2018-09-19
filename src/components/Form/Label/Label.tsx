@@ -1,13 +1,9 @@
-import { resetComponent as styled } from '../../../reset_component'
+import styled from '../../../styled_components'
 import { charcoal800 } from '../../../styles/colors'
+import { reset } from '../../../styles/helpers'
 
-//
-// @TODO - JSX.IntrinsicElements is missing `label` which causes this to break if used with correct
-// 			 syntax: `styled.label`. With updated reset perhaps this workaround will no longer
-// 			be needed.
-//
-
-export const Label = styled('label')`
+export const Label = styled.label`
+  ${reset};
   font-weight: 600;
   color: ${charcoal800};
   margin-right: ${props => props.theme.spacing.s};

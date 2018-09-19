@@ -2,9 +2,8 @@
 import * as React from 'react'
 import * as styledComponents from 'styled-components'
 // tslint:disable-next-line:no-duplicate-imports
-import { ThemedStyledProps } from 'styled-components'
+import { InterpolationValue, ThemedStyledProps } from 'styled-components'
 import { Theme } from './themes'
-export { StyledComponentClass, Styles } from 'styled-components'
 
 const {
   css,
@@ -30,6 +29,7 @@ export {
   React,
   ThemeProvider,
   ThemedStyledProps,
+  InterpolationValue,
   withTheme,
 }
 export default styled
