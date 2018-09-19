@@ -2,19 +2,22 @@ import tag from 'clean-tag'
 import * as React from 'react'
 import styled from '../../styled_components'
 import { reset } from '../../styles/reset'
+import { FieldProps } from './Fields/Field'
 import { FieldText } from './Fields/FieldText'
 
-// export interface ValidationError {
-//   message: string
-//   errors: string[]
-// }
+export type ValidationType = 'error' | 'warning' | 'confirmation'
+
+export interface ValidationState {
+  type: ValidationType
+  message: string
+}
 
 interface Dictionary<T> {
   [key: string]: T
 }
 
 export interface FormProps {
-  validationErrors?: Dictionary<string>
+  validationStates?: Dictionary<ValidationState>
   onChange?: React.FormEventHandler<HTMLFormElement>
   onInput?: React.FormEventHandler<HTMLFormElement>
   onReset?: React.FormEventHandler<HTMLFormElement>
@@ -22,22 +25,25 @@ export interface FormProps {
   onInvalid?: React.FormEventHandler<HTMLFormElement>
 }
 
-const passValidationErrors = (
+function isField(item: any): item is FieldProps {
+  return (item as FieldProps).validationState !== undefined
+}
+
+const passValidationStates = (
   children: React.ReactNode,
-  validationErrors: Dictionary<string> | undefined
+  validationStates: Dictionary<ValidationState> | undefined
 ) => {
   if (
-    validationErrors !== undefined &&
-    Object.keys(validationErrors).length !== 0
+    validationStates !== undefined &&
+    Object.keys(validationStates).length !== 0
   ) {
     return React.Children.map(children, child => {
       child = child as React.ReactElement<any>
-      if (child.type !== FieldText) {
-        // Extend to any Field* component...
+      if (!isField(child.props) || child.props.name === undefined) {
         return child
       }
       return React.cloneElement(child, {
-        validationError: validationErrors[child.props.name],
+        validationState: validationStates[child.props.name],
       })
     })
   } else {
@@ -47,12 +53,12 @@ const passValidationErrors = (
 
 const InternalForm: React.SFC<FormProps> = ({
   children,
-  validationErrors,
+  validationStates,
   ...props
 }) => {
   return (
     <tag.form {...props}>
-      {passValidationErrors(children, validationErrors)}
+      {passValidationStates(children, validationStates)}
     </tag.form>
   )
 }

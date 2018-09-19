@@ -1,8 +1,8 @@
 import tag from 'clean-tag'
 import * as React from 'react'
-import styled from '../../../styled_components'
-import { red000, red400 } from '../../../styles/colors'
+import styled, { css, ThemedStyledProps } from '../../../styled_components'
 import { reset } from '../../../styles/reset'
+import { Theme } from '../../../themes'
 import { InputProps } from './InputProps'
 
 export interface InputTextProps extends InputProps {
@@ -14,25 +14,32 @@ export interface InputTextProps extends InputProps {
    * Displays an example value or short hint to the user. Should not replace a label.
    */
   placeholder?: string
-  /**
-   * Determines if the input is readonly.
-   * @default false
-   */
-  readOnly?: boolean
-  /**
-   * Determines if an input is required.
-   * @default false
-   */
-  required?: boolean
-  /**
-   * If true, input is invalid and will render with red decorations, if false, will render normally
-   * @default false
-   */
-  invalid?: boolean
+}
+
+type ThemedProps<P> = ThemedStyledProps<P, Theme>
+
+const handleValidationType = (props: ThemedProps<InputTextProps>) => {
+  switch (props.validationType) {
+    case 'error':
+      return css`
+        border-color: ${props.theme.semanticColors.danger.borderColor};
+        background-color: ${props.theme.semanticColors.danger.lighter};
+      `
+    case 'warning':
+      return css`
+        border-color: ${props.theme.semanticColors.secondary.light};
+      `
+    case 'confirmation':
+      return css`
+        border-color: ${props.theme.semanticColors.secondary.main};
+      `
+    default:
+      return
+  }
 }
 
 const InternalInputText: React.SFC<InputTextProps> = ({
-  invalid,
+  validationType,
   ...props
 }) => {
   return <tag.input type="text" {...props} />
@@ -40,11 +47,10 @@ const InternalInputText: React.SFC<InputTextProps> = ({
 
 export const InputText = styled<InputTextProps>(InternalInputText)`
   ${reset}
-  border: solid 1px ${props =>
-    props.invalid ? red400 : props.theme.semanticColors.primary.borderColor};
-  background-color: ${props => (props.invalid ? red000 : '')};
+  border: solid 1px ${props => props.theme.semanticColors.primary.borderColor};
   height: 28px;
   padding: 0 ${props => props.theme.spacing.s};
   border-radius: 4px;
   font-size: ${props => props.theme.fontRamp[5]};
+  ${handleValidationType}
 `

@@ -13,11 +13,13 @@ const alignLabels = (direction: FormControlDirections | undefined) => {
     case 'left':
       return css`
         flex-direction: row;
+        align-items: center;
       `
     case 'right':
       return css`
         flex-direction: row-reverse;
         justify-content: flex-end;
+        align-items: center;
       `
     case 'bottom':
       return css`
@@ -35,6 +37,6 @@ const alignLabels = (direction: FormControlDirections | undefined) => {
 export const FormControl = styled<FormControlProps, 'div'>('div')`
   display: flex;
   margin-bottom: ${spacing.s};
-  ${props => alignLabels(props.alignLabel)};
   align-items: ${props => (props.alignCenter ? 'center' : 'normal')};
+  ${props => alignLabels(props.alignLabel)};
 `

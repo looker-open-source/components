@@ -1,22 +1,23 @@
 import * as React from 'react'
-import { FormControl } from '../FormGroup/FormGroup'
-import { Checkbox, CheckboxProps } from '../Inputs/Checkbox'
-import { Label } from '../Label/Label'
+import { FieldJSX, FieldProps } from './Field'
 
-export interface FieldCheckboxProps extends CheckboxProps {
-  label: string
-}
-
-export const FieldCheckbox: React.SFC<FieldCheckboxProps> = ({
+export const FieldCheckbox: React.SFC<FieldProps> = ({
   id,
   label,
   name,
+  alignLabel,
+  validationState,
+  alignValidationMessage,
   ...props
 }) => {
-  return (
-    <FormControl alignLabel="left" alignCenter>
-      <Label htmlFor={id}>{label}</Label>
-      <Checkbox id={id} name={name} {...props} />
-    </FormControl>
+  return FieldJSX<typeof props>(
+    'FieldCheckbox',
+    id,
+    label,
+    name,
+    alignLabel,
+    validationState,
+    alignValidationMessage,
+    props
   )
 }

@@ -13,7 +13,7 @@ const StatusAndResources = require('../../../styleguide_components/StatusAndReso
 The `<Form />` component wraps a collection of field components and allows for multi-field validation message rendering by accepting a `validationErrors` property. The property takes a dictionary with key as field name and value as corresponding validation error message.
 
 ```js
-<Form validationErrors={{"alpha": "Invalid", "bravo":""}}>
+<Form validationStates={{"alpha": {type: "error", message: "what"}, "bravo":""}}>
   <FieldText name="alpha" />
   <FieldText name="bravo" />
   <FieldText name="charlie" />

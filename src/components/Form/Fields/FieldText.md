@@ -10,6 +10,7 @@ const StatusAndResources = require('../../../../styleguide_components/StatusAndR
 
 ```js
   <FieldText id="theme-name" name="themeName" label="Theme Name" />
+  <FieldText alignValidationMessage="bottom" validationState={{type: "error", message: "hey"}}id="theme-name" name="themeName" label="Theme Name" />
 ```
 
 ```js
