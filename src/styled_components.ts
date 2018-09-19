@@ -3,7 +3,7 @@ import * as React from 'react'
 import * as styledComponents from 'styled-components'
 // tslint:disable-next-line:no-duplicate-imports
 import { InterpolationValue, ThemedStyledProps } from 'styled-components'
-import { Theme } from './themes'
+import { Theme } from './theme'
 
 const {
   css,

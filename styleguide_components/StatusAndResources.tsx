@@ -9,9 +9,9 @@ import {
   yellow000,
   yellow400,
 } from '../src/styles/colors'
-import { easings } from '../src/themes/easings'
-import { spacing } from '../src/themes/spacing'
-import { transitions } from '../src/themes/transitions'
+import { easings } from '../src/theme/easings'
+import { spacing } from '../src/theme/spacing'
+import { transitions } from '../src/theme/transitions'
 import {
   FeedbackSvg,
   FigmaSvg,

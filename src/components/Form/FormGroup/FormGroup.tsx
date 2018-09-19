@@ -1,5 +1,5 @@
 import styled, { css } from '../../../styled_components'
-import { spacing } from '../../../themes/spacing'
+import { spacing } from '../../../theme/spacing'
 
 export type FormControlDirections = 'left' | 'right' | 'top' | 'bottom'
 
