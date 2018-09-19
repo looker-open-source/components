@@ -109,7 +109,7 @@ module.exports = {
   title: 'Lens',
   webpackConfig: {
     resolve: {
-      extensions: ['.ts', '.tsx', '.js', '.jsx', '.scss'],
+      extensions: ['.ts', '.tsx', '.js', '.jsx'],
     },
     module: {
       rules: [
@@ -122,23 +122,6 @@ module.exports = {
           test: /\.jsx?$/,
           exclude: /node_modules/,
           loader: 'babel-loader',
-        },
-        {
-          test: /.scss$/,
-          include: path.resolve(__dirname, '../'),
-          use: [
-            'style-loader',
-            {
-              loader: 'typings-for-css-modules-loader',
-              options: {
-                camelCase: true,
-                modules: true,
-                namedExport: true,
-                importLoaders: true,
-                localIdentName: '[name]__[local]___[hash:base64:5]',
-              },
-            },
-          ],
         },
         {
           test: /\.css$/,
