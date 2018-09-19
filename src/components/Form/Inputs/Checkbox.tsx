@@ -1,6 +1,7 @@
 import tag from 'clean-tag'
 import * as React from 'react'
 import styled from '../../../styled_components'
+import { reset } from '../../../styles/reset'
 import { InputProps } from './InputProps'
 
 export interface CheckboxProps extends InputProps {
@@ -11,6 +12,6 @@ const InternalCheckbox: React.SFC<CheckboxProps> = ({ ...props }) => {
   return <tag.input type="checkbox" {...props} />
 }
 
-/* stylelint-disable */
-export const Checkbox = styled<CheckboxProps>(InternalCheckbox)``
-/* stylelint-enable */
+export const Checkbox = styled<CheckboxProps>(InternalCheckbox)`
+  ${reset};
+`

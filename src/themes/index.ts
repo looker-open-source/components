@@ -1,4 +1,5 @@
 import { rem } from 'polished'
+import { InterpolationValue } from '../styled_components'
 import { Easings, easings } from './easings'
 import { shadows, Shadows } from './elevation'
 import { fontRamp, FontRamp, lineHeightRamp } from './font_sizes'
@@ -23,6 +24,7 @@ export interface Theme {
   lineHeightRamp: FontRamp
   lineHeights: string[]
   palette: Palette
+  reset: () => InterpolationValue
   semanticColors: SemanticColors
   shadows: Shadows
   space: object
@@ -38,6 +40,16 @@ export const theme: Theme = {
   lineHeightRamp,
   lineHeights: [0, 16, 20, 24, 28, 32, 40, 52, 64, 84].map(p => rem(p)),
   palette,
+  reset: () => {
+    return {
+      border: 0,
+      font: 'inherit',
+      fontSize: '100%',
+      margin: 0,
+      padding: 0,
+      verticalAlign: 'baseline',
+    }
+  },
   semanticColors,
   shadows,
   /* tslint:disable:object-literal-sort-keys */

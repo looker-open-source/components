@@ -1,16 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`InputText default 1`] = `
-.c1 {
-  margin: 0;
-  padding: 0;
+.c0 {
   border: 0;
   font: inherit;
   font-size: 100%;
+  margin: 0;
+  padding: 0;
   vertical-align: baseline;
-}
-
-.c0 {
   border: solid 1px #C1C6CC;
   height: 28px;
   padding: 0 0.5rem;
@@ -19,22 +16,19 @@ exports[`InputText default 1`] = `
 }
 
 <input
-  className="c0 c1"
+  className="c0"
   type="text"
 />
 `;
 
 exports[`InputText should accept disabled 1`] = `
-.c1 {
-  margin: 0;
-  padding: 0;
+.c0 {
   border: 0;
   font: inherit;
   font-size: 100%;
+  margin: 0;
+  padding: 0;
   vertical-align: baseline;
-}
-
-.c0 {
   border: solid 1px #C1C6CC;
   height: 28px;
   padding: 0 0.5rem;
@@ -43,23 +37,20 @@ exports[`InputText should accept disabled 1`] = `
 }
 
 <input
-  className="c0 c1"
+  className="c0"
   disabled={true}
   type="text"
 />
 `;
 
 exports[`InputText should accept readOnly 1`] = `
-.c1 {
-  margin: 0;
-  padding: 0;
+.c0 {
   border: 0;
   font: inherit;
   font-size: 100%;
+  margin: 0;
+  padding: 0;
   vertical-align: baseline;
-}
-
-.c0 {
   border: solid 1px #C1C6CC;
   height: 28px;
   padding: 0 0.5rem;
@@ -68,23 +59,20 @@ exports[`InputText should accept readOnly 1`] = `
 }
 
 <input
-  className="c0 c1"
+  className="c0"
   readOnly={true}
   type="text"
 />
 `;
 
 exports[`InputText should accept required 1`] = `
-.c1 {
-  margin: 0;
-  padding: 0;
+.c0 {
   border: 0;
   font: inherit;
   font-size: 100%;
+  margin: 0;
+  padding: 0;
   vertical-align: baseline;
-}
-
-.c0 {
   border: solid 1px #C1C6CC;
   height: 28px;
   padding: 0 0.5rem;
@@ -93,23 +81,20 @@ exports[`InputText should accept required 1`] = `
 }
 
 <input
-  className="c0 c1"
+  className="c0"
   required={true}
   type="text"
 />
 `;
 
 exports[`InputText with a placeholder 1`] = `
-.c1 {
-  margin: 0;
-  padding: 0;
+.c0 {
   border: 0;
   font: inherit;
   font-size: 100%;
+  margin: 0;
+  padding: 0;
   vertical-align: baseline;
-}
-
-.c0 {
   border: solid 1px #C1C6CC;
   height: 28px;
   padding: 0 0.5rem;
@@ -118,23 +103,20 @@ exports[`InputText with a placeholder 1`] = `
 }
 
 <input
-  className="c0 c1"
+  className="c0"
   placeholder="I am a placeholder"
   type="text"
 />
 `;
 
 exports[`InputText with a value 1`] = `
-.c1 {
-  margin: 0;
-  padding: 0;
+.c0 {
   border: 0;
   font: inherit;
   font-size: 100%;
+  margin: 0;
+  padding: 0;
   vertical-align: baseline;
-}
-
-.c0 {
   border: solid 1px #C1C6CC;
   height: 28px;
   padding: 0 0.5rem;
@@ -143,23 +125,20 @@ exports[`InputText with a value 1`] = `
 }
 
 <input
-  className="c0 c1"
+  className="c0"
   type="text"
   value="Some value"
 />
 `;
 
 exports[`InputText with aria-describedby 1`] = `
-.c1 {
-  margin: 0;
-  padding: 0;
+.c0 {
   border: 0;
   font: inherit;
   font-size: 100%;
+  margin: 0;
+  padding: 0;
   vertical-align: baseline;
-}
-
-.c0 {
   border: solid 1px #C1C6CC;
   height: 28px;
   padding: 0 0.5rem;
@@ -169,22 +148,19 @@ exports[`InputText with aria-describedby 1`] = `
 
 <input
   aria-describedby="some-id"
-  className="c0 c1"
+  className="c0"
   type="text"
 />
 `;
 
 exports[`InputText with name and id 1`] = `
-.c1 {
-  margin: 0;
-  padding: 0;
+.c0 {
   border: 0;
   font: inherit;
   font-size: 100%;
+  margin: 0;
+  padding: 0;
   vertical-align: baseline;
-}
-
-.c0 {
   border: solid 1px #C1C6CC;
   height: 28px;
   padding: 0 0.5rem;
@@ -193,7 +169,7 @@ exports[`InputText with name and id 1`] = `
 }
 
 <input
-  className="c0 c1"
+  className="c0"
   id="Bobby"
   name="Bob"
   type="text"

@@ -1,24 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`A FieldText 1`] = `
-.c1 {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font: inherit;
-  font-size: 100%;
-  vertical-align: baseline;
-}
-
-.c3 {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font: inherit;
-  font-size: 100%;
-  vertical-align: baseline;
-}
-
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -34,16 +16,13 @@ exports[`A FieldText 1`] = `
   align-items: normal;
 }
 
-.c5 {
-  margin: 0;
-  padding: 0;
+.c2 {
   border: 0;
   font: inherit;
   font-size: 100%;
+  margin: 0;
+  padding: 0;
   vertical-align: baseline;
-}
-
-.c4 {
   border: solid 1px #C1C6CC;
   height: 28px;
   padding: 0 0.5rem;
@@ -51,7 +30,13 @@ exports[`A FieldText 1`] = `
   font-size: 0.875rem;
 }
 
-.c2 {
+.c1 {
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   font-weight: 600;
   color: #262D33;
   margin-right: 0.5rem;
@@ -59,16 +44,16 @@ exports[`A FieldText 1`] = `
 }
 
 <div
-  className="c0 c1"
+  className="c0"
 >
   <label
-    className="c2 c3"
+    className="c1"
     htmlFor="thumbs-up"
   >
     👍
   </label>
   <input
-    className="c4 c5"
+    className="c2"
     id="thumbs-up"
     name="thumbsUp"
     type="text"

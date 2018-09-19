@@ -2,6 +2,7 @@ import * as React from 'react'
 import styled, { css } from '../../styled_components'
 import { fontWeights } from '../../styles/font_weights'
 import { RampSizes } from '../../styles/ramp_sizes'
+import { reset } from '../../styles/reset'
 import { truncate } from '../../styles/typography'
 
 export type HeadingAlignments = 'left' | 'center' | 'right'
@@ -95,6 +96,7 @@ function alignment(align: HeadingAlignments | undefined) {
 }
 
 export const Heading = styled<HeadingProps>(HeadingGenerator)`
+  ${reset};
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

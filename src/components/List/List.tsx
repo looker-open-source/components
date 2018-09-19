@@ -1,5 +1,6 @@
 import * as React from 'react'
 import styled, { css } from '../../styled_components'
+import { reset } from '../../styles/reset'
 
 export interface ListProps {
   type?: ListTypes
@@ -47,6 +48,7 @@ function listStyleType(type: ListTypes | undefined) {
 }
 
 export const List = styled<ListProps>(ListGenerator)`
+  ${reset};
   margin: 0;
   padding: 0 0 0
     ${props => (props.nomarker || !props.type ? 0 : props.theme.spacing.m)};

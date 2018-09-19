@@ -1,15 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`A <TableHeaderCell> should render 1`] = `
-.c1 {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font: inherit;
-  font-size: 100%;
-  vertical-align: baseline;
-}
-
 .c0 {
   padding: 0.5rem 0;
   font-size: font-size(6);
@@ -18,7 +9,7 @@ exports[`A <TableHeaderCell> should render 1`] = `
 }
 
 <th
-  className="c0 c1"
+  className="c0"
 >
   1
 </th>
