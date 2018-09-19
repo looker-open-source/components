@@ -1,8 +1,8 @@
 import * as React from 'react'
 import styled, { css } from '../../styled_components'
 import { fontWeights } from '../../styles/font_weights'
+import { reset } from '../../styles/helpers'
 import { RampSizes } from '../../styles/ramp_sizes'
-import { reset } from '../../styles/reset'
 import { truncate } from '../../styles/typography'
 
 export type HeadingAlignments = 'left' | 'center' | 'right'

@@ -24,6 +24,10 @@ export interface Theme {
   lineHeightRamp: FontRamp
   lineHeights: string[]
   palette: Palette
+  /**
+   * A function that can be overridden to return different reset css properties
+   * or null to remove all resets. Most base elements in Lens implement the reset.
+   */
   reset: () => InterpolationValue
   semanticColors: SemanticColors
   shadows: Shadows

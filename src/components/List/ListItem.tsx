@@ -1,5 +1,5 @@
 import styled from '../../styled_components'
-import { reset } from '../../styles/reset'
+import { reset } from '../../styles/helpers'
 
 export const ListItem = styled.li`
   ${reset};

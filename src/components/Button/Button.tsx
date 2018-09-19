@@ -3,7 +3,7 @@ import { rem, rgba } from 'polished'
 import * as React from 'react'
 import { merge, mixed } from 'styled-system'
 import styled from '../../styled_components'
-import { reset } from '../../styles/reset'
+import { reset } from '../../styles/helpers'
 import { brandFont } from '../../styles/typography'
 import { SemanticColor, SemanticColors } from '../../themes/semantic_colors'
 import {

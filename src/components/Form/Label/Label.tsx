@@ -1,6 +1,6 @@
 import styled from '../../../styled_components'
 import { charcoal800 } from '../../../styles/colors'
-import { reset } from '../../../styles/reset'
+import { reset } from '../../../styles/helpers'
 
 export const Label = styled.label`
   ${reset};
