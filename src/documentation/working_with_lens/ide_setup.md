@@ -53,9 +53,9 @@ As Lens is predominately written in Typescript, the two best supported IDEs for 
 
 #### VS Code
 
-A [settings.json](.vscode/settings.json) file is checked into the Lens repository, which contains some required settings for VS Code.
+A [settings.json](https://github.com/looker/lens/blob/master/.vscode/settings.json) file is checked into the Lens repository, which contains some required settings for VS Code.
 
-Additionally a simplistic [launch.json](.vscode/launch.json) file is also included which should allow developers to quickly run and debug tests locally, through the Jest test runner. [This file is based off of the recommendations here](https://github.com/Microsoft/vscode-recipes/tree/master/debugging-jest-tests).
+Additionally a simplistic [launch.json](https://github.com/looker/lens/blob/master/.vscode/launch.json) file is also included which should allow developers to quickly run and debug tests locally, through the Jest test runner. [This file is based off of the recommendations here](https://github.com/Microsoft/vscode-recipes/tree/master/debugging-jest-tests).
 
 ##### Running Tests
 
