@@ -108,6 +108,7 @@ module.exports = {
   ],
   title: 'Lens',
   webpackConfig: {
+    devtool: 'inline-source-map',
     resolve: {
       extensions: ['.ts', '.tsx', '.js', '.jsx'],
     },
