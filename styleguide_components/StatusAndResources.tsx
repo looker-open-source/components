@@ -1,15 +1,8 @@
 import * as React from 'react'
 import styled, { css } from 'styled-components'
 import { Text } from '../src/components/Text/Text'
-import {
-  blue600,
-  charcoal200,
-  red100,
-  red500,
-  yellow000,
-  yellow400,
-} from '../src/styles/colors'
 import { easings } from '../src/theme/easings'
+import { palette } from '../src/theme/palette'
 import { spacing } from '../src/theme/spacing'
 import { transitions } from '../src/theme/transitions'
 import {
@@ -17,6 +10,8 @@ import {
   FigmaSvg,
   GithubSvg,
 } from '../styleguide_components/ResourceIcons'
+
+const { blue600, charcoal200, red100, red500, yellow000, yellow400 } = palette
 
 export type StatusLabels = 'experimental' | 'deprecated' | 'stable'
 export interface StatusProps {

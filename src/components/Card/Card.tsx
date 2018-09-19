@@ -1,5 +1,4 @@
 import styled from '../../styled_components'
-import { charcoal300 } from '../../styles/colors'
 
 export interface CardProps {
   raised?: boolean
@@ -22,7 +21,7 @@ export const Card = styled.div<CardProps>`
       ${props => props.theme.easings.ease};
   /* stylelint-enable */
   &:hover {
-    border-color: ${charcoal300};
+    border-color: ${props => props.theme.palette.charcoal300};
     box-shadow: ${props => (props.raised ? props.theme.shadows[2] : 'none')};
   }
 `
