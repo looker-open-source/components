@@ -1,15 +1,12 @@
 import tag from 'clean-tag'
 import * as React from 'react'
-import styled, { css, ThemedStyledProps } from '../../../styled_components'
-import { reset } from '../../../styles/reset'
-import { Theme } from '../../../themes'
+import styled, { css } from '../../../styled_components'
+import { ThemedProps } from '../../../types'
 import { ValidationType } from '../Form'
 
 export interface ValidationMessageProps {
   type: ValidationType
 }
-
-type ThemedProps<P> = ThemedStyledProps<P, Theme>
 
 const handleValidationType = (props: ThemedProps<ValidationMessageProps>) => {
   switch (props.type) {
@@ -40,7 +37,6 @@ const InternalValidationMessage: React.SFC<ValidationMessageProps> = ({
 export const ValidationMessage = styled<ValidationMessageProps>(
   InternalValidationMessage
 )`
-  ${reset};
   color: ${props => props.theme.semanticColors.danger.dark};
   margin-right: ${props => props.theme.spacing.s};
   margin-top: ${props => props.theme.spacing.s};

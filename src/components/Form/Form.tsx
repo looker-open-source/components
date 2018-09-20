@@ -1,9 +1,6 @@
 import tag from 'clean-tag'
 import * as React from 'react'
-import styled from '../../styled_components'
-import { reset } from '../../styles/reset'
 import { Field } from './Fields/Field'
-import { FieldText } from './Fields/FieldText'
 
 export type ValidationType = 'error' | 'warning' | 'confirmation'
 
@@ -48,7 +45,7 @@ const passValidationStates = (
   }
 }
 
-const InternalForm: React.SFC<FormProps> = ({
+export const Form: React.SFC<FormProps> = ({
   children,
   validationStates,
   ...props
@@ -59,7 +56,3 @@ const InternalForm: React.SFC<FormProps> = ({
     </tag.form>
   )
 }
-
-export const Form = styled<FormProps>(InternalForm)`
-  ${reset};
-`

@@ -32,12 +32,25 @@ module.exports = {
   ],
   sections: [
     {
-      name: 'Lens',
+      name: '',
       content: 'src/documentation/intro.md',
     },
     {
-      name: 'Working with Lens',
+      name: 'Using Lens',
       sections: [
+        {
+          name: 'Getting Started',
+          content: 'src/documentation/working_with_lens/getting_started.md',
+        },
+        {
+          name: 'Code Quality and IDE Setup',
+          content: 'src/documentation/working_with_lens/ide_setup.md',
+        },
+        {
+          name: 'Writing Lens Components',
+          content:
+            'src/documentation/working_with_lens/writing_lens_components.md',
+        },
         {
           name: 'Integrating Lens into Helltool',
           content:
@@ -96,7 +109,7 @@ module.exports = {
   title: 'Lens',
   webpackConfig: {
     resolve: {
-      extensions: ['.ts', '.tsx', '.js', '.jsx', '.scss'],
+      extensions: ['.ts', '.tsx', '.js', '.jsx'],
     },
     module: {
       rules: [
@@ -109,23 +122,6 @@ module.exports = {
           test: /\.jsx?$/,
           exclude: /node_modules/,
           loader: 'babel-loader',
-        },
-        {
-          test: /.scss$/,
-          include: path.resolve(__dirname, '../'),
-          use: [
-            'style-loader',
-            {
-              loader: 'typings-for-css-modules-loader',
-              options: {
-                camelCase: true,
-                modules: true,
-                namedExport: true,
-                importLoaders: true,
-                localIdentName: '[name]__[local]___[hash:base64:5]',
-              },
-            },
-          ],
         },
         {
           test: /\.css$/,

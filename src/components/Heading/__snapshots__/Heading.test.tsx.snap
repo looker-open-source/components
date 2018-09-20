@@ -2,6 +2,12 @@
 
 exports[`A <h1> Heading 1`] = `
 .c0 {
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -22,6 +28,12 @@ exports[`A <h1> Heading 1`] = `
 
 exports[`A <h1> Heading sized to <h2> 1`] = `
 .c0 {
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -42,6 +54,12 @@ exports[`A <h1> Heading sized to <h2> 1`] = `
 
 exports[`A Heading to semi-bold 1`] = `
 .c0 {
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -62,6 +80,12 @@ exports[`A Heading to semi-bold 1`] = `
 
 exports[`A Heading transformed 1`] = `
 .c0 {
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -82,6 +106,12 @@ exports[`A Heading transformed 1`] = `
 
 exports[`A default Heading 1`] = `
 .c0 {
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

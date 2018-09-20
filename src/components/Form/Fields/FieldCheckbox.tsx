@@ -1,8 +1,7 @@
 import * as React from 'react'
-import { ValidationState } from '../Form'
 import { FormControlDirections } from '../FormGroup/FormGroup'
 import { Checkbox } from '../Inputs/Checkbox'
-import { Field, FieldProps } from './Field'
+import { Field } from './Field'
 
 export class FieldCheckbox extends Field {
   public render() {
@@ -39,52 +38,3 @@ export class FieldCheckbox extends Field {
     )
   }
 }
-
-// export const FieldText: React.SFC<FieldProps> = ({
-//   id,
-//   label,
-//   name,
-//   alignLabel,
-//   validationState,
-//   alignValidationMessage,
-//   ...props
-// }) => {
-//   return FieldJSX<typeof props>(
-//     'FieldText',
-//     id,
-//     label,
-//     name,
-//     alignLabel,
-//     validationState,
-//     alignValidationMessage,
-//     props
-//   )
-// }
-
-//       return (
-//         <FormControl alignLabel={alignLabel}>
-//           <Label htmlFor={id}>
-//             {label}
-//             {props.required ? <Span> *</Span> : undefined}
-//           </Label>
-//           {validationState ? (
-//             <FormControl
-//               alignLabel={
-//                 alignValidationMessage ? alignValidationMessage : 'bottom'
-//               }
-//             >
-//               <ValidationMessage type={validationState.type}>
-//                 {validationState.message}
-//               </ValidationMessage>
-//               <InputText
-//                 validationType={validationState.type}
-//                 id={id}
-//                 name={name}
-//                 {...props}
-//               />
-//             </FormControl>
-//           ) : (
-//             <InputText id={id} name={name} {...props} />
-//           )}
-//         </FormControl>
-//       )

@@ -1,17 +1,17 @@
 {
   "name": "looker-lens",
-  "version": "0.0.1-alpha.12",
+  "version": "0.0.1-alpha.13",
   "main": "dist/index",
   "license": "MIT",
   "devDependencies": {
-    "@babel/cli": "7.0.0-beta.44",
-    "@babel/core": "7.0.0-beta.44",
-    "@babel/plugin-proposal-class-properties": "7.0.0-beta.44",
-    "@babel/plugin-proposal-object-rest-spread": "7.0.0-beta.44",
-    "@babel/plugin-transform-runtime": "7.0.0-beta.44",
-    "@babel/preset-env": "7.0.0-beta.44",
-    "@babel/preset-react": "7.0.0-beta.44",
-    "@babel/preset-typescript": "7.0.0-beta.44",
+    "@babel/cli": "7.1.0",
+    "@babel/core": "7.1.0",
+    "@babel/plugin-proposal-class-properties": "7.1.0",
+    "@babel/plugin-proposal-object-rest-spread": "7.0.0",
+    "@babel/plugin-transform-runtime": "7.1.0",
+    "@babel/preset-env": "7.1.0",
+    "@babel/preset-react": "7.0.0",
+    "@babel/preset-typescript": "7.1.0",
     "@svgr/cli": "2.1.1",
     "@types/classnames": "2.2.3",
     "@types/enzyme": "^3.1.13",
@@ -22,10 +22,7 @@
     "@types/react-test-renderer": "16.0.1",
     "@types/styled-system": "^3.0.2",
     "babel-jest": "22.4.3",
-    "babel-loader": "8.0.0-beta.4",
-    "babel-plugin-looker-inline-sass": "1.0.4",
-    "babel-preset-env": "1.6.1",
-    "babel-preset-react": "6.24.1",
+    "babel-loader": "8.0.2",
     "css-loader": "0.28.11",
     "enzyme": "^3.5.0",
     "enzyme-adapter-react-16": "^1.3.1",
@@ -44,7 +41,6 @@
     "regenerator-runtime": "0.11.1",
     "request": "2.85.0",
     "rimraf": "2.6.2",
-    "styled-components": "3.4.5",
     "stylelint": "9.3.0",
     "stylelint-config-recommended": "2.1.0",
     "stylelint-config-styled-components": "0.1.1",
@@ -61,14 +57,14 @@
     "webpack": "3.5.0"
   },
   "dependencies": {
-    "@babel/runtime": "7.0.0-beta.44",
+    "@babel/runtime": "7.0.0",
     "chroma-js": "^1.3.7",
     "classnames": "2.2.5",
     "clean-tag": "^2.0.0",
-    "insert-css": "2.0.0",
     "polished": "2.0.3",
     "react": "16.4.2",
     "react-dom": "16.4.2",
+    "styled-components": "^3.4.6",
     "styled-system": "^3.0.2",
     "svg-inline-loader": "^0.8.0"
   },
@@ -83,9 +79,6 @@
       "json",
       "node"
     ],
-    "moduleNameMapper": {
-      "^.+\\.(css|scss)$": "identity-obj-proxy"
-    },
     "setupTestFrameworkScriptFile": "./test/setupJest.js",
     "transform": {
       "^.+\\.(jsx)$": "babel-jest",
@@ -107,9 +100,7 @@
       "git add"
     ]
   },
-  "peerDependencies": {
-    "styled-components": "3.3.3"
-  },
+  "peerDependencies": {},
   "pre-commit": [
     "lint-staged"
   ],

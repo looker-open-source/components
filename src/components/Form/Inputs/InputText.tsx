@@ -1,8 +1,7 @@
 import tag from 'clean-tag'
 import * as React from 'react'
-import styled, { css, ThemedStyledProps } from '../../../styled_components'
-import { reset } from '../../../styles/reset'
-import { Theme } from '../../../themes'
+import styled, { css } from '../../../styled_components'
+import { ThemedProps } from '../../../types'
 import { InputProps } from './InputProps'
 
 export interface InputTextProps extends InputProps {
@@ -15,8 +14,6 @@ export interface InputTextProps extends InputProps {
    */
   placeholder?: string
 }
-
-type ThemedProps<P> = ThemedStyledProps<P, Theme>
 
 const handleValidationType = (props: ThemedProps<InputTextProps>) => {
   switch (props.validationType) {
@@ -46,11 +43,10 @@ const InternalInputText: React.SFC<InputTextProps> = ({
 }
 
 export const InputText = styled<InputTextProps>(InternalInputText)`
-  ${reset}
   border: solid 1px ${props => props.theme.semanticColors.primary.borderColor};
   height: 28px;
   padding: 0 ${props => props.theme.spacing.s};
   border-radius: 4px;
   font-size: ${props => props.theme.fontRamp[5]};
-  ${handleValidationType}
+  ${handleValidationType};
 `

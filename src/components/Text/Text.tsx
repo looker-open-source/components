@@ -76,7 +76,7 @@ function alignment(align: TextAlignments | undefined) {
   `
 }
 
-export const Text = styled<TextProps, 'div'>('div')`
+export const Text = styled.div<TextProps>`
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
