@@ -43,7 +43,6 @@ exports[`A FieldCheckbox 1`] = `
     👍
   </label>
   <input
-    className=""
     id="thumbs-up"
     name="thumbsUp"
     type="checkbox"
@@ -133,7 +132,6 @@ exports[`A FieldCheckbox with a sucess validation aligned to the right 1`] = `
       This is a success
     </div>
     <input
-      className=""
       id="thumbs-up"
       name="thumbsUp"
       type="checkbox"
@@ -201,7 +199,6 @@ exports[`A FieldCheckbox with a warning validation aligned to the left 1`] = `
       This is a warning
     </div>
     <input
-      className=""
       id="thumbs-up"
       name="thumbsUp"
       type="checkbox"
@@ -288,7 +285,6 @@ exports[`A FieldCheckbox with an error validation aligned to the bottom 1`] = `
       This is an error
     </div>
     <input
-      className=""
       id="thumbs-up"
       name="thumbsUp"
       type="checkbox"
@@ -371,7 +367,6 @@ exports[`A FieldCheckbox with an info validation aligned to the top 1`] = `
       This is info
     </div>
     <input
-      className=""
       id="thumbs-up"
       name="thumbsUp"
       type="checkbox"

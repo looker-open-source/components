@@ -1,6 +1,6 @@
 {
   "name": "looker-lens",
-  "version": "0.0.1-alpha.13",
+  "version": "0.0.1-alpha.15",
   "main": "dist/index",
   "license": "MIT",
   "devDependencies": {
@@ -41,6 +41,7 @@
     "regenerator-runtime": "0.11.1",
     "request": "2.85.0",
     "rimraf": "2.6.2",
+    "styled-components": "^3.4.6",
     "stylelint": "9.3.0",
     "stylelint-config-recommended": "2.1.0",
     "stylelint-config-styled-components": "0.1.1",
@@ -67,6 +68,12 @@
     "styled-components": "^3.4.6",
     "styled-system": "^3.0.2",
     "svg-inline-loader": "^0.8.0"
+  },
+  "peerDependencies": {
+    "@types/react": "16.4.8",
+    "@types/react-dom": "16.0.6",
+    "@types/styled-system": "^3.0.2",
+    "styled-components": "^3.4.6"
   },
   "files": [
     "dist"
@@ -100,7 +107,6 @@
       "git add"
     ]
   },
-  "peerDependencies": {},
   "pre-commit": [
     "lint-staged"
   ],
@@ -114,7 +120,7 @@
     "start": "styleguidist server",
     "build": "yarn build-components && yarn build-styleguide",
     "build-icons": "node bin/icons/build_icon_components.js",
-    "build-components": "tsc --emitDeclarationOnly && babel src --out-dir dist --extensions \".ts,.tsx,.js,.jsx\"",
+    "build-components": "tsc --emitDeclarationOnly && babel src --out-dir dist --extensions \".ts,.tsx,.js,.jsx\" -s",
     "build-styleguide": "styleguidist build",
     "clean": "rimraf dist && rimraf styleguide",
     "lint": "yarn lint:ts && yarn lint:css",
