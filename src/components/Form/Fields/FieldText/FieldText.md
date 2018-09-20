@@ -44,5 +44,5 @@ ___Note: In the current implementation, any `validationState` set in a `<FieldTe
 
 ```js
 <FieldText name="someField" label="Some Field" validationState={{type: "error", message: "This is an error"}}/>
-<FieldText name="someField" label="Some Field" validationState={{type: "warning", message: "Here is a warning"}} alignValidationMessage="right" />
+<FieldText name="someField2" label="Some Field2" validationState={{type: "warning", message: "Here is a warning"}} alignValidationMessage="right" />
 ```
