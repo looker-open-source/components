@@ -68,6 +68,11 @@
     "styled-system": "^3.0.2",
     "svg-inline-loader": "^0.8.0"
   },
+  "peerDependencies": {
+    "@types/react": "16.4.8",
+    "@types/react-dom": "16.0.6",
+    "@types/styled-system": "^3.0.2"
+  },
   "files": [
     "dist"
   ],
@@ -100,7 +105,6 @@
       "git add"
     ]
   },
-  "peerDependencies": {},
   "pre-commit": [
     "lint-staged"
   ],
