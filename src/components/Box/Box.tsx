@@ -27,7 +27,7 @@ export type SpacingSizes =
 
 export type ResponsiveSpacingSize = ResponsiveValue<SpacingSizes>
 
-export type SpaceProps = { [P in keyof SpaceProps]: ResponsiveSpacingSize }
+export type SpaceProps = { [P in keyof SpaceProps]?: ResponsiveSpacingSize }
 
 export interface BoxProps extends SpaceProps {
   is?: string | React.ReactNode
