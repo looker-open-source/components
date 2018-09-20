@@ -807,8 +807,8 @@
     csstype "^2.2.0"
 
 "@types/styled-system@^3.0.2":
-  version "3.0.3"
-  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/@types/styled-system/-/styled-system-3.0.3.tgz#ce3c1c6975c9ec6fe2b518841d4258f0e8d46dfe"
+  version "3.0.4"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/@types/styled-system/-/styled-system-3.0.4.tgz#ffdadef7e1bf90c6366bc8ccecedfaa04b45ce8a"
 
 "@vxna/mini-html-webpack-template@^0.1.6":
   version "0.1.6"

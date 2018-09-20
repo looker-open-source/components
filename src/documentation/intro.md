@@ -9,7 +9,7 @@ const semanticColors = require('../themes/semantic_colors').semanticColors;
   <Box my="large">
     <svg width="49" height="49" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
     <ellipse cx="35.4822" cy="13.5172" rx="13.5178" ry="13.5172" fill="#4C33AA"/>
-    <ellipse cx="21.9662" cy="27.0345" rx="21.9664" ry="21.9654" fill="#7E64E0" fill-opacity="0.8"/>
+    <ellipse cx="21.9662" cy="27.0345" rx="21.9664" ry="21.9654" fill="#7E64E0" fillOpacity="0.8"/>
     </svg>
   </Box>
 
