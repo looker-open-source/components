@@ -2,7 +2,7 @@ import tag from 'clean-tag'
 import * as React from 'react'
 import styled from '../../styled_components'
 import { reset } from '../../styles/reset'
-import { FieldProps } from './Fields/Field'
+import { Field } from './Fields/Field'
 import { FieldText } from './Fields/FieldText'
 
 export type ValidationType = 'error' | 'warning' | 'confirmation'
@@ -25,10 +25,6 @@ export interface FormProps {
   onInvalid?: React.FormEventHandler<HTMLFormElement>
 }
 
-function isField(item: any): item is FieldProps {
-  return (item as FieldProps).validationState !== undefined
-}
-
 const passValidationStates = (
   children: React.ReactNode,
   validationStates: Dictionary<ValidationState> | undefined
@@ -39,7 +35,8 @@ const passValidationStates = (
   ) {
     return React.Children.map(children, child => {
       child = child as React.ReactElement<any>
-      if (!isField(child.props) || child.props.name === undefined) {
+
+      if (child.type instanceof Field || child.props.name === undefined) {
         return child
       }
       return React.cloneElement(child, {
