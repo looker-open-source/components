@@ -21,7 +21,7 @@ We will describe the contribution process in detail below, but here is a quick o
 The Lens team uses github to track all our work, so for new contributions we require to have an issue assigned to it.
 
 How do I open an issue:
-We have a handy template for you to use with all the required information. Just click [here](https://github.com/looker/lens) to open an issue.
+We have a handy template for you to use with all the required information. Just click [here](https://github.com/looker/lens/issues/new) to open an issue.
 
 The [template](https://github.com/looker/lens/blob/872b78b402e362b22ba5f696ef735479a849c9f6/.github/design_issue_template.md) has spots for a description, links to figma files, and any additional notes or briefs to provide extra context.
 
