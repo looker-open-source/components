@@ -20,9 +20,7 @@ export class FieldText extends Field<InputTextProps> {
 
   protected setInput() {
     const {
-      id,
       label,
-      name,
       alignLabel,
       validationState,
       alignValidationMessage,
@@ -32,7 +30,6 @@ export class FieldText extends Field<InputTextProps> {
     return (
       <InputText
         validationType={validationState ? validationState.type : undefined}
-        name={name}
         {...props}
       />
     )

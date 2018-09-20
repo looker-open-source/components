@@ -2,10 +2,11 @@ import * as React from 'react'
 import styled from '../../../styled_components'
 import { ValidationState } from '../Form'
 import { FormControl, FormControlDirections } from '../FormGroup/FormGroup'
+import { InputProps } from '../Inputs/InputProps'
 import { Label } from '../Label/Label'
 import { ValidationMessage } from '../ValidationMessage/ValidationMessage'
 
-export interface FieldProps {
+export interface FieldProps extends InputProps {
   /**
    * Defines the label for the field -- a required property for all fields.
    */
@@ -30,25 +31,16 @@ const Span = styled.span`
 
 export abstract class Field<T> extends React.Component<FieldProps & T> {
   public render() {
-    const {
-      id,
-      label,
-      name,
-      alignLabel,
-      validationState,
-      alignValidationMessage,
-      ...props
-    } = this.props as any
     return (
       <FormControl alignLabel={this.setLabelAlignment()}>
-        <Label htmlFor={id}>
-          {label}
-          {props.required ? <Span> *</Span> : undefined}
+        <Label htmlFor={this.props.id}>
+          {this.props.label}
+          {this.props.required ? <Span> *</Span> : undefined}
         </Label>
-        {validationState ? (
+        {this.props.validationState ? (
           <FormControl alignLabel={this.setValidationMethodAlignment()}>
-            <ValidationMessage type={validationState.type}>
-              {validationState.message}
+            <ValidationMessage type={this.props.validationState.type}>
+              {this.props.validationState.message}
             </ValidationMessage>
             {this.setInput()}
           </FormControl>

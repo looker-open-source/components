@@ -33,7 +33,7 @@ const passValidationStates = (
     return React.Children.map(children, child => {
       child = child as React.ReactElement<any>
 
-      if (child.type instanceof Field || child.props.name === undefined) {
+      if (!Field.isPrototypeOf(child.type) || child.props.name === undefined) {
         return child
       }
       return React.cloneElement(child, {

@@ -48,6 +48,7 @@ exports[`A FieldText 1`] = `
   </label>
   <input
     className="c2"
+    id="thumbs-up"
     name="thumbsUp"
     type="text"
   />
@@ -142,6 +143,7 @@ exports[`A FieldText with a sucess validation aligned to the right 1`] = `
     </div>
     <input
       className="c4"
+      id="thumbs-up"
       name="thumbsUp"
       type="text"
     />
@@ -233,6 +235,7 @@ exports[`A FieldText with a warning validation aligned to the left 1`] = `
     </div>
     <input
       className="c4"
+      id="thumbs-up"
       name="thumbsUp"
       type="text"
     />
@@ -325,6 +328,7 @@ exports[`A FieldText with an error validation aligned to the bottom 1`] = `
     </div>
     <input
       className="c4"
+      id="thumbs-up"
       name="thumbsUp"
       type="text"
     />
@@ -397,6 +401,7 @@ exports[`A FieldText with an info validation aligned to the top 1`] = `
     </div>
     <input
       className="c3"
+      id="thumbs-up"
       name="thumbsUp"
       type="text"
     />

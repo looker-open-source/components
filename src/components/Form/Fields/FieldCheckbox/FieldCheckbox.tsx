@@ -20,9 +20,7 @@ export class FieldCheckbox extends Field<CheckboxProps> {
 
   protected setInput() {
     const {
-      id,
       label,
-      name,
       alignLabel,
       validationState,
       alignValidationMessage,
@@ -31,8 +29,6 @@ export class FieldCheckbox extends Field<CheckboxProps> {
     return (
       <Checkbox
         validationType={validationState ? validationState.type : undefined}
-        id={id}
-        name={name}
         {...props}
       />
     )
