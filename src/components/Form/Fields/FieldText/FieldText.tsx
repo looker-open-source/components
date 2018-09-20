@@ -1,9 +1,9 @@
 import * as React from 'react'
-import { FormControlDirections } from '../FormGroup/FormGroup'
-import { InputText } from '../Inputs/InputText'
-import { Field } from './Field'
+import { FormControlDirections } from '../../FormGroup/FormGroup'
+import { InputText, InputTextProps } from '../../Inputs/InputText/InputText'
+import { Field } from '../Field'
 
-export class FieldText extends Field {
+export class FieldText extends Field<InputTextProps> {
   public render() {
     return super.render()
   }
@@ -28,10 +28,10 @@ export class FieldText extends Field {
       alignValidationMessage,
       ...props
     } = this.props
+
     return (
       <InputText
         validationType={validationState ? validationState.type : undefined}
-        id={id}
         name={name}
         {...props}
       />

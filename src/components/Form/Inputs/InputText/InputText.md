@@ -1,5 +1,5 @@
 ```js noeditor
-const StatusAndResources = require('../../../../styleguide_components/StatusAndResources').StatusAndResources;
+const StatusAndResources = require('../../../../../styleguide_components/StatusAndResources').StatusAndResources;
 
 <StatusAndResources
   status="experimental"
@@ -10,7 +10,7 @@ const StatusAndResources = require('../../../../styleguide_components/StatusAndR
 
 ### Default InputText
 
-The `<InputText />` component renders a single text input element on the page, with no accompanying label. It is generally used to construct higher-order components like the `<FieldText />`. If you are building a form, you probably want to use `<FieldText />` instead as it provides label support.
+The `<InputText />` component renders a single text input element on the page, with no accompanying label. It is generally used to construct higher-order components like the `<FieldText />`. If you are building a form, you probably want to use `<FieldText />` instead as it provides label and validation support.
 
 ```js
 <InputText />

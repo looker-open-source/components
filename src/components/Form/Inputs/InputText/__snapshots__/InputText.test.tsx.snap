@@ -2,12 +2,6 @@
 
 exports[`InputText default 1`] = `
 .c0 {
-  border: 0;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   border: solid 1px #C1C6CC;
   height: 28px;
   padding: 0 0.5rem;
@@ -23,12 +17,6 @@ exports[`InputText default 1`] = `
 
 exports[`InputText should accept disabled 1`] = `
 .c0 {
-  border: 0;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   border: solid 1px #C1C6CC;
   height: 28px;
   padding: 0 0.5rem;
@@ -45,12 +33,6 @@ exports[`InputText should accept disabled 1`] = `
 
 exports[`InputText should accept readOnly 1`] = `
 .c0 {
-  border: 0;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   border: solid 1px #C1C6CC;
   height: 28px;
   padding: 0 0.5rem;
@@ -67,12 +49,6 @@ exports[`InputText should accept readOnly 1`] = `
 
 exports[`InputText should accept required 1`] = `
 .c0 {
-  border: 0;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   border: solid 1px #C1C6CC;
   height: 28px;
   padding: 0 0.5rem;
@@ -89,12 +65,6 @@ exports[`InputText should accept required 1`] = `
 
 exports[`InputText with a placeholder 1`] = `
 .c0 {
-  border: 0;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   border: solid 1px #C1C6CC;
   height: 28px;
   padding: 0 0.5rem;
@@ -109,14 +79,24 @@ exports[`InputText with a placeholder 1`] = `
 />
 `;
 
+exports[`InputText with a success validation 1`] = `
+.c0 {
+  border: solid 1px #C1C6CC;
+  height: 28px;
+  padding: 0 0.5rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  border-color: #64518A;
+}
+
+<input
+  className="c0"
+  type="text"
+/>
+`;
+
 exports[`InputText with a value 1`] = `
 .c0 {
-  border: 0;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   border: solid 1px #C1C6CC;
   height: 28px;
   padding: 0 0.5rem;
@@ -131,14 +111,57 @@ exports[`InputText with a value 1`] = `
 />
 `;
 
+exports[`InputText with a warning validation 1`] = `
+.c0 {
+  border: solid 1px #C1C6CC;
+  height: 28px;
+  padding: 0 0.5rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  border-color: #E8E5FF;
+}
+
+<input
+  className="c0"
+  type="text"
+/>
+`;
+
+exports[`InputText with an error validation 1`] = `
+.c0 {
+  border: solid 1px #C1C6CC;
+  height: 28px;
+  padding: 0 0.5rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  border-color: #CC1F36;
+  background-color: #FFF2F4;
+}
+
+<input
+  className="c0"
+  type="text"
+/>
+`;
+
+exports[`InputText with an info validation 1`] = `
+.c0 {
+  border: solid 1px #C1C6CC;
+  height: 28px;
+  padding: 0 0.5rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  color: #E8E5FF;
+}
+
+<input
+  className="c0"
+  type="text"
+/>
+`;
+
 exports[`InputText with aria-describedby 1`] = `
 .c0 {
-  border: 0;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   border: solid 1px #C1C6CC;
   height: 28px;
   padding: 0 0.5rem;
@@ -155,12 +178,6 @@ exports[`InputText with aria-describedby 1`] = `
 
 exports[`InputText with name and id 1`] = `
 .c0 {
-  border: 0;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   border: solid 1px #C1C6CC;
   height: 28px;
   padding: 0 0.5rem;

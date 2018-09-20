@@ -1,12 +1,12 @@
 import tag from 'clean-tag'
 import * as React from 'react'
-import styled, { css } from '../../../styled_components'
-import { ThemedProps } from '../../../types'
-import { InputProps } from './InputProps'
+import styled, { css } from '../../../../styled_components'
+import { ThemedProps } from '../../../../types'
+import { InputProps } from '../InputProps'
 
 export interface InputTextProps extends InputProps {
   /**
-   * Specifies the initial value of the input field.
+   * Specifies value of the input field.
    */
   value?: string
   /**
@@ -22,13 +22,18 @@ const handleValidationType = (props: ThemedProps<InputTextProps>) => {
         border-color: ${props.theme.semanticColors.danger.borderColor};
         background-color: ${props.theme.semanticColors.danger.lighter};
       `
+    // "Dummy" colors will need to be replaced
     case 'warning':
       return css`
         border-color: ${props.theme.semanticColors.secondary.light};
       `
-    case 'confirmation':
+    case 'success':
       return css`
         border-color: ${props.theme.semanticColors.secondary.main};
+      `
+    case 'info':
+      return css`
+        color: ${props.theme.semanticColors.primary.light};
       `
     default:
       return

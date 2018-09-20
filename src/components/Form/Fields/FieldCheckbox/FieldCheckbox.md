@@ -1,6 +1,6 @@
 
 ```js noeditor
-const StatusAndResources = require('../../../../styleguide_components/StatusAndResources').StatusAndResources;
+const StatusAndResources = require('../../../../../styleguide_components/StatusAndResources').StatusAndResources;
 
 <StatusAndResources
   status="experimental"

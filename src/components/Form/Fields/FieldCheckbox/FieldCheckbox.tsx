@@ -1,9 +1,9 @@
 import * as React from 'react'
-import { FormControlDirections } from '../FormGroup/FormGroup'
-import { Checkbox } from '../Inputs/Checkbox'
-import { Field } from './Field'
+import { FormControlDirections } from '../../FormGroup/FormGroup'
+import { Checkbox, CheckboxProps } from '../../Inputs/Checkbox/Checkbox'
+import { Field } from '../Field'
 
-export class FieldCheckbox extends Field {
+export class FieldCheckbox extends Field<CheckboxProps> {
   public render() {
     return super.render()
   }

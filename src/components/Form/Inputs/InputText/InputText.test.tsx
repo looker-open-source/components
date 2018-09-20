@@ -2,7 +2,7 @@ import { mount } from 'enzyme'
 import 'jest-styled-components'
 import * as React from 'react'
 import { create } from 'react-test-renderer'
-import theme from '../../../themes'
+import theme from '../../../../themes'
 import { InputText } from './InputText'
 
 test('InputText default', () => {
@@ -53,6 +53,30 @@ test('InputText with aria-describedby', () => {
   const component = create(
     <InputText theme={theme} aria-describedby="some-id" />
   )
+  const tree = component.toJSON()
+  expect(tree).toMatchSnapshot()
+})
+
+test('InputText with an error validation', () => {
+  const component = create(<InputText theme={theme} validationType="error" />)
+  const tree = component.toJSON()
+  expect(tree).toMatchSnapshot()
+})
+
+test('InputText with a warning validation', () => {
+  const component = create(<InputText theme={theme} validationType="warning" />)
+  const tree = component.toJSON()
+  expect(tree).toMatchSnapshot()
+})
+
+test('InputText with an info validation', () => {
+  const component = create(<InputText theme={theme} validationType="info" />)
+  const tree = component.toJSON()
+  expect(tree).toMatchSnapshot()
+})
+
+test('InputText with a success validation', () => {
+  const component = create(<InputText theme={theme} validationType="success" />)
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
 })

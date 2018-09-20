@@ -14,13 +14,18 @@ const handleValidationType = (props: ThemedProps<ValidationMessageProps>) => {
       return css`
         color: ${props.theme.semanticColors.danger.dark};
       `
+    // "Dummy" colors will need to be changed
     case 'warning':
       return css`
         color: ${props.theme.semanticColors.secondary.dark};
       `
-    case 'confirmation':
+    case 'info':
       return css`
         color: ${props.theme.semanticColors.primary.light};
+      `
+    case 'success':
+      return css`
+        color: ${props.theme.semanticColors.primary.main};
       `
     default:
       return

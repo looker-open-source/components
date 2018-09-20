@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`A success message 1`] = `
+.c0 {
+  color: #B2121F;
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: #64518A;
+}
+
+<div
+  className="c0"
+>
+  Success!
+</div>
+`;
+
+exports[`A warning message 1`] = `
+.c0 {
+  color: #B2121F;
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: #473764;
+}
+
+<div
+  className="c0"
+>
+  Warning
+</div>
+`;
+
+exports[`An error message 1`] = `
+.c0 {
+  color: #B2121F;
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: #B2121F;
+}
+
+<div
+  className="c0"
+>
+  Error!
+</div>
+`;
+
+exports[`An info message 1`] = `
+.c0 {
+  color: #B2121F;
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: #E8E5FF;
+}
+
+<div
+  className="c0"
+>
+  Info
+</div>
+`;

@@ -7,13 +7,13 @@ exports[`A FormControl 1`] = `
   display: -ms-flexbox;
   display: flex;
   margin-bottom: 0.5rem;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
   -webkit-align-items: normal;
   -webkit-box-align: normal;
   -ms-flex-align: normal;
   align-items: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 <div

@@ -2,7 +2,7 @@ import tag from 'clean-tag'
 import * as React from 'react'
 import { Field } from './Fields/Field'
 
-export type ValidationType = 'error' | 'warning' | 'confirmation'
+export type ValidationType = 'error' | 'warning' | 'info' | 'success'
 
 export interface ValidationState {
   type: ValidationType
