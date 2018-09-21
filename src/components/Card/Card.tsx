@@ -1,14 +1,13 @@
 import styled from '../../styled_components'
-import { charcoal300 } from '../../styles/colors'
 
 export interface CardProps {
   raised?: boolean
 }
 
-export const Card = styled<CardProps, 'div'>('div')`
+export const Card = styled.div<CardProps>`
   background: #fff;
   border-radius: 4px;
-  box-shadow: ${props => (props.raised ? props.theme.shadows.one : 'none')};
+  box-shadow: ${props => (props.raised ? props.theme.shadows[1] : 'none')};
   border: solid 1px ${props => props.theme.semanticColors.primary.borderColor};
   display: flex;
   flex-direction: column;
@@ -22,7 +21,7 @@ export const Card = styled<CardProps, 'div'>('div')`
       ${props => props.theme.easings.ease};
   /* stylelint-enable */
   &:hover {
-    border-color: ${charcoal300};
-    box-shadow: ${props => (props.raised ? props.theme.shadows.two : 'none')};
+    border-color: ${props => props.theme.palette.charcoal300};
+    box-shadow: ${props => (props.raised ? props.theme.shadows[2] : 'none')};
   }
 `

@@ -2,15 +2,6 @@
 
 exports[`A Code component Aligned 1`] = `
 .c0 {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  font-weight: 400;
-  text-transform: none;
-  text-align: right;
-  color: #262D33;
   font-family: 'Monaco','Menlo','Ubuntu Mono','Consolas','source-code-pro',monospace;
 }
 
@@ -23,15 +14,6 @@ exports[`A Code component Aligned 1`] = `
 
 exports[`A Code component resized 1`] = `
 .c0 {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-size: 2.875rem;
-  line-height: 4rem;
-  font-weight: 400;
-  text-transform: none;
-  text-align: left;
-  color: #262D33;
   font-family: 'Monaco','Menlo','Ubuntu Mono','Consolas','source-code-pro',monospace;
 }
 
@@ -45,15 +27,6 @@ exports[`A Code component resized 1`] = `
 
 exports[`A Code component transformed 1`] = `
 .c0 {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  font-weight: 400;
-  text-transform: uppercase;
-  text-align: left;
-  color: #262D33;
   font-family: 'Monaco','Menlo','Ubuntu Mono','Consolas','source-code-pro',monospace;
 }
 
@@ -66,15 +39,6 @@ exports[`A Code component transformed 1`] = `
 
 exports[`A Code component with variant 1`] = `
 .c0 {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  font-weight: 400;
-  text-transform: none;
-  text-align: left;
-  color: #CC1F36;
   font-family: 'Monaco','Menlo','Ubuntu Mono','Consolas','source-code-pro',monospace;
 }
 
@@ -87,15 +51,6 @@ exports[`A Code component with variant 1`] = `
 
 exports[`A Codet component weight 1`] = `
 .c0 {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  font-weight: 700;
-  text-transform: none;
-  text-align: left;
-  color: #262D33;
   font-family: 'Monaco','Menlo','Ubuntu Mono','Consolas','source-code-pro',monospace;
 }
 
@@ -108,18 +63,6 @@ exports[`A Codet component weight 1`] = `
 
 exports[`A Text component tuncated 1`] = `
 .c0 {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  font-weight: 400;
-  text-transform: none;
-  text-align: left;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  color: #262D33;
   font-family: 'Monaco','Menlo','Ubuntu Mono','Consolas','source-code-pro',monospace;
 }
 
@@ -132,15 +75,6 @@ exports[`A Text component tuncated 1`] = `
 
 exports[`A default Code component 1`] = `
 .c0 {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  font-weight: 400;
-  text-transform: none;
-  text-align: left;
-  color: #262D33;
   font-family: 'Monaco','Menlo','Ubuntu Mono','Consolas','source-code-pro',monospace;
 }
 

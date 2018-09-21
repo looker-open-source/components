@@ -76,4 +76,3 @@ Our team library is where we share design assets like components and styles. The
 - Review with the design team during the weekly design review
 - File a [Github issue](https://github.com/looker/relens/issues/new?title=Design+Feedback&labels=design,figma) and notify the [#lens](https://looker.slack.com/messages/C9NHFLY0G) that you that the component is ready for review
 
-

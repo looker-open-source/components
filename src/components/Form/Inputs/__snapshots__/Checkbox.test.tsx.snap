@@ -2,11 +2,11 @@
 
 exports[`Checkbox checked set to false 1`] = `
 .c0 {
-  margin: 0;
-  padding: 0;
   border: 0;
   font: inherit;
   font-size: 100%;
+  margin: 0;
+  padding: 0;
   vertical-align: baseline;
 }
 
@@ -19,11 +19,11 @@ exports[`Checkbox checked set to false 1`] = `
 
 exports[`Checkbox checked set to true 1`] = `
 .c0 {
-  margin: 0;
-  padding: 0;
   border: 0;
   font: inherit;
   font-size: 100%;
+  margin: 0;
+  padding: 0;
   vertical-align: baseline;
 }
 
@@ -36,11 +36,11 @@ exports[`Checkbox checked set to true 1`] = `
 
 exports[`Checkbox default 1`] = `
 .c0 {
-  margin: 0;
-  padding: 0;
   border: 0;
   font: inherit;
   font-size: 100%;
+  margin: 0;
+  padding: 0;
   vertical-align: baseline;
 }
 
@@ -52,11 +52,11 @@ exports[`Checkbox default 1`] = `
 
 exports[`Checkbox should accept disabled 1`] = `
 .c0 {
-  margin: 0;
-  padding: 0;
   border: 0;
   font: inherit;
   font-size: 100%;
+  margin: 0;
+  padding: 0;
   vertical-align: baseline;
 }
 
@@ -67,13 +67,30 @@ exports[`Checkbox should accept disabled 1`] = `
 />
 `;
 
-exports[`Checkbox with name and id 1`] = `
+exports[`Checkbox with aria-describedby 1`] = `
 .c0 {
-  margin: 0;
-  padding: 0;
   border: 0;
   font: inherit;
   font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+<input
+  aria-describedby="some-id"
+  className="c0"
+  type="checkbox"
+/>
+`;
+
+exports[`Checkbox with name and id 1`] = `
+.c0 {
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
   vertical-align: baseline;
 }
 

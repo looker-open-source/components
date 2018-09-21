@@ -2,11 +2,17 @@ import tag from 'clean-tag'
 import { rem, rgba } from 'polished'
 import * as React from 'react'
 import { merge, mixed } from 'styled-system'
-import styled, { ThemedStyledProps } from '../../styled_components'
+import styled from '../../styled_components'
+import { reset } from '../../styles/helpers'
 import { brandFont } from '../../styles/typography'
-import { Theme } from '../../themes'
-import { SemanticColor, SemanticColors } from '../../themes/semantic_colors'
-import { SizeLarge, SizeMedium, SizeSmall, SizeXSmall } from '../../types'
+import { SemanticColor, SemanticColors } from '../../theme/semantic_colors'
+import {
+  SizeLarge,
+  SizeMedium,
+  SizeSmall,
+  SizeXSmall,
+  ThemedProps,
+} from '../../types'
 
 export type ButtonSizes = SizeXSmall | SizeSmall | SizeMedium | SizeLarge
 
@@ -41,8 +47,6 @@ export interface ButtonProps {
    */
   type?: 'submit' | 'reset' | 'button' | 'menu'
 }
-
-type ThemedProps<P> = ThemedStyledProps<P, Theme>
 
 const variantCommonProps = (color: SemanticColor) => {
   return {
@@ -160,13 +164,16 @@ const variantHelper = (props: ThemedProps<ButtonProps>) => {
 }
 
 function sizeHelper(props: ThemedProps<ButtonProps>) {
-  const sizes: Record<ButtonSizes, number[]> = {
-    large: [5, 5, 3, 6],
-    medium: [3, 3, 3, 4],
-    small: [2, 2, 1, 4],
-    xsmall: [1, 1, 1, 3],
+  const sizes: Record<
+    ButtonSizes,
+    [number, number, ButtonSizes, ButtonSizes]
+  > = {
+    large: [5, 5, 'large', 'small'],
+    medium: [3, 3, 'medium', 'small'],
+    small: [2, 2, 'medium', 'xsmall'],
+    xsmall: [1, 1, 'xsmall', 'xsmall'],
   }
-  const [fontSize, lineHeight, py, px] = sizes[props.size || 'medium']
+  const [fontSize, lineHeight, px, py] = sizes[props.size || 'medium']
   return mixed({
     fontSize,
     lineHeight,
@@ -181,6 +188,7 @@ const InternalButton: React.SFC<ButtonProps> = ({ ...props }) => {
 }
 
 export const Button = styled<ButtonProps>(InternalButton)`
+  ${reset}
   border-radius: ${rem(4)};
   cursor: pointer;
   display: inline-flex;

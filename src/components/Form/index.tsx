@@ -1,3 +1,3 @@
-export { Label } from './Label/Label'
-export { FieldCheckbox } from './Fields/FieldCheckbox'
-export { FieldText } from './Fields/FieldText'
+export * from './Fields'
+export * from './FormGroup'
+export * from './Label'

@@ -1,8 +1,10 @@
 import * as React from 'react'
-import { Heading, HeadingWeights } from '../src/components/Heading/Heading'
+import { Heading } from '../src/components/Heading/Heading'
 import { Code } from '../src/components/Text/Code'
-import { Text, TextVariants, TextWeights } from '../src/components/Text/Text'
-import {
+import { Text } from '../src/components/Text/Text'
+import { palette } from '../src/theme/palette'
+
+const {
   charcoal000,
   charcoal100,
   charcoal200,
@@ -12,8 +14,7 @@ import {
   charcoal600,
   charcoal700,
   charcoal800,
-} from '../src/styles/colors'
-import { RampSizes } from '../src/styles/ramp_sizes'
+} = palette
 
 const renderBorder = (border: BorderType, index: number) => {
   const labels = [
@@ -24,7 +25,7 @@ const renderBorder = (border: BorderType, index: number) => {
 
   return (
     <div key={index}>
-      <Heading size={RampSizes.Six} weight={HeadingWeights.Bold}>
+      <Heading size="6" weight="bold">
         {border.label}
       </Heading>
       <div className="border-examples">
@@ -35,7 +36,7 @@ const renderBorder = (border: BorderType, index: number) => {
             key={`border-${idx}`}
           >
             <div className={border.textClass}>
-              <Text size={RampSizes.Six} weight={TextWeights.SemiBold}>
+              <Text size="6" weight="semiBold">
                 On {example.name}
               </Text>
             </div>
@@ -51,14 +52,10 @@ const renderBorder = (border: BorderType, index: number) => {
       <div className="border-labels">
         {labels.map((label, idx) => (
           <div className="border-label-group" key={`label-${idx}`}>
-            <Text
-              variant={TextVariants.Subdued}
-              size={RampSizes.Five}
-              weight={TextWeights.SemiBold}
-            >
+            <Text variant="subdued" size="5" weight="semiBold">
               {label[0]}
             </Text>
-            <Code size={RampSizes.Five}>{label[1]}</Code>
+            <Code size="5">{label[1]}</Code>
           </div>
         ))}
       </div>

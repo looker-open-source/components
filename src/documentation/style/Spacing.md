@@ -5,57 +5,50 @@
 <section id="rules" class="doc-section">
 ### Spacing Values
 
-All spacing for components align to a 8px grid, this grid allows for flexibility and consistency when designing for various screen sizes and devices. Below is the available spacing sizes as well as a visual representation of that size.
+All spacing for components align to a 4pt grid. This grid allows for flexibility and consistency when designing for various screen sizes and devices.
 </section>
 
 ```js noeditor
-  const specimen = "Open Sans is the typographic base for the tone and content of Lens’, Lookers design system"
-  const spaces = [
-    { space: 'xs', px: '4' , rem: '0.25rem'},
-    { space: 's', px: '8' , rem: '0.5rem' },
-    { space: 'm', px: '16', rem: '1rem' },
-    { space: 'l', px: '20', rem:  '1.25rem'},
-    { space: 'xl', px: '24', rem:  '1.5rem' },
-    { space: '2xl', px: '30', rem: '1.875rem' },
-    { space: '3xl', px: '36', rem: '2.25rem' },
-    { space: '4xl', px: '46', rem: '2.875rem' }]
+const SpacingOptionsRender = require('../../../styleguide_components/SpacingOptionsTable').SpacingOptionsRender;
 
-
-
-  const tableRows = spaces.map((t) => {
-
-    let divStyle = {
-      backgroundColor: '#FD5AC9',
-      width: `${t.px}px`,
-      height: `${t.px}px`,
-      opacity: 0.5,
-      textAlign: 'center',
-      color: '#fff'
-    }
-    return(
-      <tr>
-      <td><div style={divStyle}></div></td>
-      <td>{t.px}px</td>
-      <td>{t.rem}</td>
-      <td><Text element="code" >{t.space}</Text></td>
-    </tr>
-    )
-  });
-
-  <Table>
-    <TableHead>
-      <tr>
-        <th width="15%"><Text size="6" weight="semi-bold" element="span" mode="subdued">SIZE</Text></th>
-        <th><Text size="6" weight="semi-bold" element="span" mode="subdued">PX VALUE</Text></th>
-        <th> <Text size="6" weight="semi-bold" element="span" mode="subdued">REM VALUE</Text></th>
-        <th><Text size="6" weight="semi-bold" element="span" mode="subdued">LENS REFERENCE</Text></th>
-      </tr>
-    </TableHead>
-    <TableBody>
-      {tableRows}
-    </TableBody>
-
-  </Table>
+<SpacingOptionsRender />
 ```
 
+### Practical Spacing Example
 
+The table above does a good job at enumerating the available spacing options, but a concrete example does a better job at illustrating how to use those spacing sizes to build a piece of ui. Below we have an image of a hypothetical form we need to build.
+
+On the left we have the form as designed and on the right you see the spacing in pink and line height of the text in blue.
+
+!['Spacing Example'](/img/spacing/spacing-form-example.png)
+
+Using Lens and the [Box Component](/#!/Box) we can quickly apply the correct spacing (the parts in pink) to this form.
+
+```js
+<form>
+  <Heading weight="light">Style</Heading>
+  <Box pt="medium" pb="large" style={{borderBottom: 'solid 1px #DEE1E5'}}>
+    <FieldText id="style-name" name="styleName" label="Name" />
+  </Box>
+
+  <Box py="large" style={{borderBottom: 'solid 1px #DEE1E5'}}>
+    <Heading weight="light">Dashboard Page</Heading>
+
+    <Box mt="medium" mb="small">
+      <FieldText id="font-family" name="fontFamily" label="Font Family" />
+    </Box>
+
+    <Box mb="small">
+      <FieldText id="text-color" name="textColor" label="Text Color" />
+    </Box>
+
+    <Box>
+      <FieldText id="background-color" name="bgColor" label="Background Color" />
+    </Box>
+  </Box>
+
+  <Box pt="large">
+    <Button>Save</Button>
+  </Box>
+</form>
+```

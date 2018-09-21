@@ -2,7 +2,7 @@ import { mount } from 'enzyme'
 import 'jest-styled-components'
 import * as React from 'react'
 import { create } from 'react-test-renderer'
-import theme from '../../../themes'
+import theme from '../../../theme'
 import { Checkbox } from './Checkbox'
 
 test('Checkbox default', () => {
@@ -31,6 +31,14 @@ test('Checkbox with name and id', () => {
 
 test('Checkbox should accept disabled', () => {
   const component = create(<Checkbox theme={theme} disabled />)
+  const tree = component.toJSON()
+  expect(tree).toMatchSnapshot()
+})
+
+test('Checkbox with aria-describedby', () => {
+  const component = create(
+    <Checkbox theme={theme} aria-describedby="some-id" />
+  )
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
 })

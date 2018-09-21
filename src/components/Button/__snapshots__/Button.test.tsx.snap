@@ -2,6 +2,12 @@
 
 exports[`Button accepts a SemanticColor object for the color property 1`] = `
 .c0 {
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   border-radius: 0.25rem;
   cursor: pointer;
   display: -webkit-inline-box;
@@ -67,6 +73,12 @@ exports[`Button accepts a SemanticColor object for the color property 1`] = `
 
 exports[`Button danger color 1`] = `
 .c0 {
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   border-radius: 0.25rem;
   cursor: pointer;
   display: -webkit-inline-box;
@@ -132,6 +144,12 @@ exports[`Button danger color 1`] = `
 
 exports[`Button default 1`] = `
 .c0 {
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   border-radius: 0.25rem;
   cursor: pointer;
   display: -webkit-inline-box;
@@ -197,6 +215,12 @@ exports[`Button default 1`] = `
 
 exports[`Button primary color 1`] = `
 .c0 {
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   border-radius: 0.25rem;
   cursor: pointer;
   display: -webkit-inline-box;
@@ -262,6 +286,12 @@ exports[`Button primary color 1`] = `
 
 exports[`Button should accept disabled 1`] = `
 .c0 {
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   border-radius: 0.25rem;
   cursor: pointer;
   display: -webkit-inline-box;
@@ -328,6 +358,12 @@ exports[`Button should accept disabled 1`] = `
 
 exports[`Button type button 1`] = `
 .c0 {
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   border-radius: 0.25rem;
   cursor: pointer;
   display: -webkit-inline-box;
@@ -394,6 +430,12 @@ exports[`Button type button 1`] = `
 
 exports[`Button type menu 1`] = `
 .c0 {
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   border-radius: 0.25rem;
   cursor: pointer;
   display: -webkit-inline-box;
@@ -460,6 +502,12 @@ exports[`Button type menu 1`] = `
 
 exports[`Button type reset 1`] = `
 .c0 {
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   border-radius: 0.25rem;
   cursor: pointer;
   display: -webkit-inline-box;
@@ -526,6 +574,12 @@ exports[`Button type reset 1`] = `
 
 exports[`Button type submit 1`] = `
 .c0 {
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   border-radius: 0.25rem;
   cursor: pointer;
   display: -webkit-inline-box;
@@ -592,6 +646,12 @@ exports[`Button type submit 1`] = `
 
 exports[`Button variant outline 1`] = `
 .c0 {
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   border-radius: 0.25rem;
   cursor: pointer;
   display: -webkit-inline-box;
@@ -660,6 +720,12 @@ exports[`Button variant outline 1`] = `
 
 exports[`Button variant transparent 1`] = `
 .c0 {
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   border-radius: 0.25rem;
   cursor: pointer;
   display: -webkit-inline-box;
