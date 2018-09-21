@@ -1,5 +1,5 @@
 import { ThemedStyledProps } from './styled_components'
-import { Theme } from './themes'
+import { Theme } from './theme'
 
 export type SizeNone = 'none'
 export type SizeXSmall = 'xsmall'

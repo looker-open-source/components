@@ -2,7 +2,9 @@ import * as React from 'react'
 import { Heading } from '../src/components/Heading/Heading'
 import { Code } from '../src/components/Text/Code'
 import { Text } from '../src/components/Text/Text'
-import {
+import { palette } from '../src/theme/palette'
+
+const {
   charcoal000,
   charcoal100,
   charcoal200,
@@ -12,7 +14,7 @@ import {
   charcoal600,
   charcoal700,
   charcoal800,
-} from '../src/styles/colors'
+} = palette
 
 const renderBorder = (border: BorderType, index: number) => {
   const labels = [

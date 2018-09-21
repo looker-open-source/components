@@ -5,7 +5,7 @@ import { merge, mixed } from 'styled-system'
 import styled from '../../styled_components'
 import { reset } from '../../styles/helpers'
 import { brandFont } from '../../styles/typography'
-import { SemanticColor, SemanticColors } from '../../themes/semantic_colors'
+import { SemanticColor, SemanticColors } from '../../theme/semantic_colors'
 import {
   SizeLarge,
   SizeMedium,

@@ -2,7 +2,7 @@ import { mount } from 'enzyme'
 import * as React from 'react'
 import { createWithTheme } from '../../../../../test/utils/create_with_theme'
 import { ThemeProvider } from '../../../../styled_components'
-import { theme } from '../../../../themes'
+import theme from '../../../../theme'
 import { FieldText } from './FieldText'
 
 test('A FieldText', () => {
