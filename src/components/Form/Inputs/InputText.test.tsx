@@ -2,7 +2,7 @@ import { mount } from 'enzyme'
 import 'jest-styled-components'
 import * as React from 'react'
 import { create } from 'react-test-renderer'
-import theme from '../../../themes'
+import theme from '../../../theme'
 import { InputText } from './InputText'
 
 test('InputText default', () => {

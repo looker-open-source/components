@@ -1,4 +1,6 @@
-import {
+import { palette } from './palette'
+
+const {
   blue500,
   charcoal300,
   primary500,
@@ -12,7 +14,7 @@ import {
   red600,
   red700,
   white,
-} from '../styles/colors'
+} = palette
 
 export interface SemanticColor {
   /** The base color for a named color set. */

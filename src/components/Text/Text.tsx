@@ -1,19 +1,14 @@
 import styled, { css } from '../../styled_components'
-import {
-  charcoal400,
-  charcoal500,
-  charcoal900,
-  green500,
-  red500,
-} from '../../styles/colors'
 import { fontWeights } from '../../styles/font_weights'
 import { RampSizes } from '../../styles/ramp_sizes'
 import { truncate } from '../../styles/typography'
+import { ThemedProps } from '../../types'
 
 export type TextWeights = 'bold' | 'light' | 'normal' | 'semiBold'
 export type TextTransforms = 'caps' | 'lower' | 'none' | 'upper'
 export type TextAlignments = 'left' | 'center' | 'right'
 export type TextVariants = 'critical' | 'positive' | 'secondary' | 'subdued'
+
 export interface TextProps {
   align?: TextAlignments
   variant?: TextVariants
@@ -45,27 +40,27 @@ function textTransform(transform: TextTransforms | undefined) {
   }
 }
 
-function textVariant(variant: TextVariants | undefined) {
-  switch (variant) {
+function textVariant(props: ThemedProps<TextProps>) {
+  switch (props.variant) {
     case 'critical':
       return css`
-        color: ${red500};
+        color: ${props.theme.palette.red500};
       `
     case 'positive':
       return css`
-        color: ${green500};
+        color: ${props.theme.palette.green500};
       `
     case 'secondary':
       return css`
-        color: ${charcoal500};
+        color: ${props.theme.palette.charcoal500};
       `
     case 'subdued':
       return css`
-        color: ${charcoal400};
+        color: ${props.theme.palette.charcoal400};
       `
     default:
       return css`
-        color: ${charcoal900};
+        color: ${props.theme.palette.charcoal900};
       `
   }
 }
@@ -86,5 +81,5 @@ export const Text = styled.div<TextProps>`
   ${props => textTransform(props.textTransform)};
   ${props => alignment(props.align)};
   ${props => truncate(props.truncate || false)};
-  ${props => textVariant(props.variant)};
+  ${textVariant};
 `
