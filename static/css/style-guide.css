@@ -116,6 +116,10 @@ button[name="rsg-code-editor"][class*='rsg--isActive-'] {
   padding-left: 16px;
 }
 
+footer[class*='rsg--footer'] {
+  display: none;
+}
+
 .support-link {
   text-decoration: none;
 }
