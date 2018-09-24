@@ -1,5 +1,5 @@
 import { rem } from 'polished'
-import { RampSizes } from '../styles/ramp_sizes'
+import { RampSizes } from '../style/ramp_sizes'
 
 export type FontRamp = { [K in RampSizes]: string }
 

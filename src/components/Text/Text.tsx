@@ -1,7 +1,7 @@
+import { fontWeights } from '../../style/font_weights'
+import { RampSizes } from '../../style/ramp_sizes'
+import { truncate } from '../../style/typography'
 import styled, { css } from '../../styled_components'
-import { fontWeights } from '../../styles/font_weights'
-import { RampSizes } from '../../styles/ramp_sizes'
-import { truncate } from '../../styles/typography'
 import { ThemedProps } from '../../types'
 
 export type TextWeights = 'bold' | 'light' | 'normal' | 'semiBold'

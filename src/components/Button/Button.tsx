@@ -2,9 +2,9 @@ import tag from 'clean-tag'
 import { rem, rgba } from 'polished'
 import * as React from 'react'
 import { merge, mixed } from 'styled-system'
+import { reset } from '../../style/helpers'
+import { brandFont } from '../../style/typography'
 import styled from '../../styled_components'
-import { reset } from '../../styles/helpers'
-import { brandFont } from '../../styles/typography'
 import { SemanticColor, SemanticColors } from '../../theme/semantic_colors'
 import {
   SizeLarge,
