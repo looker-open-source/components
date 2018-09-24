@@ -51,7 +51,7 @@ export const List = styled<ListProps>(ListGenerator)`
   ${reset};
   margin: 0;
   padding: 0 0 0
-    ${props => (props.nomarker || !props.type ? 0 : props.theme.spacing.m)};
+    ${props => (props.nomarker || !props.type ? 0 : props.theme.space.medium)};
   ${props =>
     props.nomarker ? listStyleType(undefined) : listStyleType(props.type)};
 `

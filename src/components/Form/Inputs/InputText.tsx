@@ -33,7 +33,7 @@ export const InputText = styled<InputTextProps>(InternalInputText)`
   ${reset};
   border: solid 1px ${props => props.theme.semanticColors.primary.borderColor};
   height: 28px;
-  padding: 0 ${props => props.theme.spacing.s};
+  padding: 0 ${props => props.theme.space.small};
   border-radius: 4px;
   font-size: ${props => props.theme.fontRamp[5]};
 `
