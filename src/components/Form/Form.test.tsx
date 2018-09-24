@@ -21,7 +21,7 @@ test('Form with one child', () => {
 test('Form with two invalid children', () => {
   const component = createWithTheme(
     <Form
-      validationStates={{
+      validationMessages={{
         name1: { type: 'error', message: 'e1' },
         name2: { type: 'warning', message: 'e1' },
       }}
@@ -36,7 +36,7 @@ test('Form with two invalid children', () => {
 
 test('Form with one invalid child and a submit button', () => {
   const component = createWithTheme(
-    <Form validationStates={{ name2: { type: 'error', message: 'e2' } }}>
+    <Form validationMessages={{ name2: { type: 'error', message: 'e2' } }}>
       <FieldText label="label1" name="name1" />
       <FieldText label="label2" name="name2" />
       <Button>Submit</Button>
@@ -58,7 +58,7 @@ test('Should trigger onInput handler', () => {
     </ThemeProvider>
   )
 
-  wrapper.find('input').simulate('change', { target: { value: '' } })
+  wrapper.find('input').simulate('input', { target: { value: '' } })
   expect(counter).toEqual(1)
 })
 

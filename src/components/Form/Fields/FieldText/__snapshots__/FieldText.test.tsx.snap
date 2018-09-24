@@ -55,7 +55,7 @@ exports[`A FieldText 1`] = `
 </div>
 `;
 
-exports[`A FieldText with a sucess validation aligned to the right 1`] = `
+exports[`A FieldText with a success validation aligned to the right 1`] = `
 .c4 {
   border: solid 1px #C1C6CC;
   height: 28px;

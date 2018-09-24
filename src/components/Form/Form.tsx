@@ -33,16 +33,18 @@ export const Form: React.SFC<FormProps> = ({ ...props }) => {
   )
 }
 
-export const withForm = (
-  Component: React.ComponentType<FieldProps & InputProps>
+export const withForm = <T extends {}>(
+  Component: React.ComponentType<FieldProps & InputProps & T>
 ) => {
   return (
-    props: FieldProps & InputProps & { children?: React.ReactChildren }
+    props: FieldProps & InputProps & T & { children?: React.ReactChildren }
   ) => {
     const contextHelper = (context: FormContextValue) => {
       let validationMessage
       if (context.validationMessages && props.name) {
         validationMessage = context.validationMessages[props.name]
+      } else if (props.validationMessage) {
+        validationMessage = props.validationMessage
       }
       return (
         <Component {...props} validationMessage={validationMessage}>

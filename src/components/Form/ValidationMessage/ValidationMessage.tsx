@@ -34,10 +34,12 @@ const handleValidationType = (props: ThemedProps<ValidationMessageProps>) => {
   }
 }
 
-const InternalValidationMessage: React.SFC<ValidationMessageProps> = ({
+const InternalValidationMessage = ({
+  type,
+  message,
   ...props
-}) => {
-  return <tag.div {...props}>{props.message}</tag.div>
+}: ValidationMessageProps) => {
+  return <tag.div {...props}>{message}</tag.div>
 }
 
 export const ValidationMessage = styled<ValidationMessageProps>(

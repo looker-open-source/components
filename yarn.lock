@@ -7202,6 +7202,10 @@ react-is@^16.3.1, react-is@^16.4.2:
   version "16.4.2"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/react-is/-/react-is-16.4.2.tgz#84891b56c2b6d9efdee577cc83501dfc5ecead88"
 
+react-is@^16.5.2:
+  version "16.5.2"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/react-is/-/react-is-16.5.2.tgz#e2a7b7c3f5d48062eb769fcb123505eb928722e3"
+
 react-styleguidist@7.0.5:
   version "7.0.5"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/react-styleguidist/-/react-styleguidist-7.0.5.tgz#b98b245e47a71101ac637e24a4123e0a341bd5a5"
@@ -7264,14 +7268,14 @@ react-styleguidist@7.0.5:
     webpack-dev-server "^2.11.2"
     webpack-merge "^4.1.2"
 
-react-test-renderer@16.3.1:
-  version "16.3.1"
-  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/react-test-renderer/-/react-test-renderer-16.3.1.tgz#d9257936d8535bd40f57f3d5a84e7b0452fb17f2"
+react-test-renderer@16.5.2:
+  version "16.5.2"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/react-test-renderer/-/react-test-renderer-16.5.2.tgz#92e9d2c6f763b9821b2e0b22f994ee675068b5ae"
   dependencies:
-    fbjs "^0.8.16"
     object-assign "^4.1.1"
-    prop-types "^15.6.0"
-    react-is "^16.3.1"
+    prop-types "^15.6.2"
+    react-is "^16.5.2"
+    schedule "^0.5.0"
 
 react-test-renderer@^16.0.0-0:
   version "16.4.2"
@@ -7852,6 +7856,12 @@ sane@^2.0.0:
 sax@^1.2.4, sax@~1.2.1, sax@~1.2.4:
   version "1.2.4"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/sax/-/sax-1.2.4.tgz#2816234e2378bddc4e5354fab5caa895df7100d9"
+
+schedule@^0.5.0:
+  version "0.5.0"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/schedule/-/schedule-0.5.0.tgz#c128fffa0b402488b08b55ae74bb9df55cc29cc8"
+  dependencies:
+    object-assign "^4.1.1"
 
 schema-utils@^0.4.5:
   version "0.4.5"
