@@ -1,4 +1,4 @@
-import { ValidationType } from '../Form'
+import { ValidationType } from '../ValidationMessage'
 
 export interface InputProps {
   /**

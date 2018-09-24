@@ -1,37 +1,35 @@
 import * as React from 'react'
-import { FormControlDirections } from '../../FormGroup/FormGroup'
+import { withForm } from '../../Form'
 import { InputText, InputTextProps } from '../../Inputs/InputText/InputText'
-import { Field } from '../Field'
+import { Field, FieldProps } from '../Field'
 
-export class FieldText extends Field<InputTextProps> {
-  public render() {
-    return super.render()
+const InnerFieldText = ({
+  alignLabel,
+  alignValidationMessage,
+  id,
+  label,
+  required,
+  validationMessage,
+  ...inputTextProps
+}: FieldProps & InputTextProps) => {
+  const fieldProps = {
+    alignLabel,
+    alignValidationMessage,
+    id,
+    label,
+    required,
+    validationMessage,
   }
-
-  protected setLabelAlignment(): FormControlDirections | undefined {
-    return this.props.alignLabel
-  }
-
-  protected setValidationMethodAlignment(): FormControlDirections | undefined {
-    return this.props.alignValidationMessage
-      ? this.props.alignValidationMessage
-      : 'bottom'
-  }
-
-  protected setInput() {
-    const {
-      label,
-      alignLabel,
-      validationState,
-      alignValidationMessage,
-      ...props
-    } = this.props
-
-    return (
+  return (
+    <Field {...fieldProps}>
       <InputText
-        validationType={validationState ? validationState.type : undefined}
-        {...props}
+        id={id}
+        required={required}
+        {...inputTextProps}
+        validationType={validationMessage && validationMessage.type}
       />
-    )
-  }
+    </Field>
+  )
 }
+
+export const FieldText = withForm(InnerFieldText)

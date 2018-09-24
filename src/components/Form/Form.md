@@ -27,10 +27,11 @@ interface ValidationState {
 
 
 ```js
-<Form validationStates={{"alpha": {type: "error", message: "This is an error"}, "bravo": {type: "warning", message: "This is warning"}}}>
+<Form validationMessages={{"alpha": {type: "error", message: "This is an error"}, "bravo": {type: "warning", message: "This is warning"}}}>
   <FieldText label="Alpha" name="alpha" />
   <FieldText label="Bravo" name="bravo" />
   <FieldText label="Charlie" name="charlie" />
+  <input type="text" name="foo"/>
   <Button>Submit</Button>
 </Form>
 ```

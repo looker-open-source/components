@@ -11,7 +11,7 @@
     "plugins": [
       {
         "name": "tslint-language-service",
-        "alwaysShowRuleFailuresAsWarnings": true
+        "alwaysShowRuleFailuresAsWarnings": false
       }
     ],
     "skipLibCheck": true,
