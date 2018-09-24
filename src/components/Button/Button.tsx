@@ -3,7 +3,6 @@ import { rem, rgba } from 'polished'
 import * as React from 'react'
 import { merge, mixed } from 'styled-system'
 import { reset } from '../../style/helpers'
-import { brandFont } from '../../style/typography'
 import styled from '../../styled_components'
 import { SemanticColor, SemanticColors } from '../../theme/semantic_colors'
 import {
@@ -192,7 +191,7 @@ export const Button = styled<ButtonProps>(InternalButton)`
   border-radius: ${rem(4)};
   cursor: pointer;
   display: inline-flex;
-  font-family: ${brandFont};
+  font-family: ${p => p.theme.fontFaces.brandFont};
   outline: none;
   transition: border 80ms;
   vertical-align: middle;

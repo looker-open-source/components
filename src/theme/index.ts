@@ -2,6 +2,7 @@ import { rem } from 'polished'
 import { InterpolationValue } from '../styled_components'
 import { Easings, easings } from './easings'
 import { shadows, Shadows } from './elevation'
+import * as fontFaces from './font_faces'
 import { fontRamp, FontRamp, lineHeightRamp } from './font_sizes'
 import { palette, Palette } from './palette'
 import { SemanticColors, semanticColors } from './semantic_colors'
@@ -19,6 +20,7 @@ export * from './transitions'
 export interface Theme {
   breakpoints: string[]
   easings: Easings
+  fontFaces: Record<string, string>
   fontRamp: FontRamp
   fontSizes: string[]
   lineHeightRamp: FontRamp
@@ -39,6 +41,7 @@ export interface Theme {
 export const theme: Theme = {
   breakpoints: ['30rem', '48rem', '64rem', '75rem', '90rem'],
   easings,
+  fontFaces,
   fontRamp,
   fontSizes: [0, 12, 14, 16, 18, 22, 25, 36, 46, 58].map(p => rem(p)),
   lineHeightRamp,

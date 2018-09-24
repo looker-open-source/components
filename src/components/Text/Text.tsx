@@ -1,6 +1,6 @@
+import { truncate } from '../../style'
 import { fontWeights } from '../../style/font_weights'
 import { RampSizes } from '../../style/ramp_sizes'
-import { truncate } from '../../style/typography'
 import styled, { css } from '../../styled_components'
 import { ThemedProps } from '../../types'
 
