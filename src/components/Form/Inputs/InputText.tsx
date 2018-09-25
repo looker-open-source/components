@@ -1,7 +1,6 @@
 import tag from 'clean-tag'
 import * as React from 'react'
-import { reset } from '../../../style/helpers'
-import styled from '../../../style/styled_components'
+import { reset, styled } from '../../../style'
 import { InputProps } from './InputProps'
 
 export interface InputTextProps extends InputProps {

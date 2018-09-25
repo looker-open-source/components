@@ -1,2 +1,3 @@
 export * from './helpers'
-export { styled } from './styled_components'
+export * from './theme'
+export * from './styled_components'

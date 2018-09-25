@@ -1,8 +1,7 @@
 import tag from 'clean-tag'
 import * as React from 'react'
 import { ResponsiveValue, space, SpaceProps } from 'styled-system'
-import styled from '../../style/styled_components'
-import { SpacingSizes } from '../../style/theme'
+import { SpacingSizes, styled } from '../../style'
 
 export type ResponsiveSpacingSize = ResponsiveValue<SpacingSizes>
 

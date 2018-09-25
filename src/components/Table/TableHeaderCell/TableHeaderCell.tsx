@@ -1,4 +1,4 @@
-import styled from '../../../style/styled_components'
+import { styled } from '../../../style'
 
 export const TableHeaderCell = styled.th`
   padding: ${props => props.theme.space.small} 0;

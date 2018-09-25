@@ -1,4 +1,4 @@
-import styled from '../../../style/styled_components'
+import { styled } from '../../../style'
 
 export type TableBodyAlignment = 'bottom' | 'middle' | 'top'
 export type TableTextAlignment = 'center' | 'left' | 'right'

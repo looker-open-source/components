@@ -1,4 +1,4 @@
-import styled, { css } from '../../../style/styled_components'
+import { css, styled } from '../../../style'
 
 export type FormControlDirections = 'left' | 'right' | 'top' | 'bottom'
 

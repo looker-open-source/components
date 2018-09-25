@@ -1,7 +1,7 @@
 import 'jest-styled-components'
 import * as React from 'react'
 import { create } from 'react-test-renderer'
-import { theme } from '../../style/theme'
+import { theme } from '../../style'
 import { Link } from './Link'
 
 test('A default Link', () => {

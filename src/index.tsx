@@ -1,2 +1,2 @@
 export * from './components'
-export * from './style/theme'
+export * from './style'

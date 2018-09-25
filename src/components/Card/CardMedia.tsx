@@ -1,4 +1,4 @@
-import styled from '../../style/styled_components'
+import { styled } from '../../style'
 
 export interface CardMediaProps {
   image: string

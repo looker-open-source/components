@@ -21,5 +21,3 @@ const styled = (styledComponents as styledComponents.ThemedStyledComponentsModul
 export { InterpolationValue, ThemedStyledProps } from 'styled-components'
 
 export { css, injectGlobal, keyframes, styled, ThemeProvider, withTheme }
-
-export default styled
