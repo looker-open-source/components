@@ -1,5 +1,5 @@
-import { css } from '../styled_components'
 import { ThemedProps } from '../types'
+import { css } from './styled_components'
 
 export const reset = <P>(props: ThemedProps<P>) => props.theme.reset()
 

@@ -1,7 +1,7 @@
 import 'jest-styled-components'
 import * as React from 'react'
 import { create } from 'react-test-renderer'
-import { ThemeProvider } from '../../styled_components'
+import { ThemeProvider } from '../../style/styled_components'
 import { theme } from '../../theme'
 import { SemanticColor } from '../../theme/semantic_colors'
 import { Button } from './Button'

@@ -1,5 +1,5 @@
 import { truncate } from '../../style'
-import styled, { css } from '../../styled_components'
+import styled, { css } from '../../style/styled_components'
 import { RampSizes } from '../../theme/font_sizes'
 import { ThemedProps } from '../../types'
 

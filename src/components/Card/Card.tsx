@@ -1,4 +1,4 @@
-import styled from '../../styled_components'
+import styled from '../../style/styled_components'
 
 export interface CardProps {
   raised?: boolean

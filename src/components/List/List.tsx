@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { reset } from '../../style/helpers'
-import styled, { css } from '../../styled_components'
+import styled, { css } from '../../style/styled_components'
 
 export interface ListProps {
   type?: ListTypes

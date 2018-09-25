@@ -1,5 +1,5 @@
 import { reset } from '../../../style/helpers'
-import styled from '../../../styled_components'
+import styled from '../../../style/styled_components'
 
 export const Label = styled.label`
   ${reset};

@@ -1,5 +1,5 @@
 import * as styledComponents from 'styled-components'
-import { Theme } from './theme'
+import { Theme } from '../theme/index'
 
 const {
   css,
@@ -20,6 +20,6 @@ const styled = (styledComponents as styledComponents.ThemedStyledComponentsModul
 
 export { InterpolationValue, ThemedStyledProps } from 'styled-components'
 
-export { css, injectGlobal, keyframes, ThemeProvider, withTheme }
+export { css, injectGlobal, keyframes, styled, ThemeProvider, withTheme }
 
 export default styled
