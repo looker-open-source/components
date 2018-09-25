@@ -4,7 +4,7 @@ import { ValidationMessage } from './ValidationMessage'
 
 test('An error message', () => {
   const component = createWithTheme(
-    <ValidationMessage type="error">Error!</ValidationMessage>
+    <ValidationMessage type="error" message="Error!" />
   )
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
@@ -12,7 +12,7 @@ test('An error message', () => {
 
 test('A warning message', () => {
   const component = createWithTheme(
-    <ValidationMessage type="warning">Warning</ValidationMessage>
+    <ValidationMessage type="warning" message="Warning" />
   )
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
@@ -20,7 +20,7 @@ test('A warning message', () => {
 
 test('An info message', () => {
   const component = createWithTheme(
-    <ValidationMessage type="info">Info</ValidationMessage>
+    <ValidationMessage type="info" message="Info" />
   )
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
@@ -28,7 +28,7 @@ test('An info message', () => {
 
 test('A success message', () => {
   const component = createWithTheme(
-    <ValidationMessage type="success">Success!</ValidationMessage>
+    <ValidationMessage type="success" message="Success!" />
   )
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()

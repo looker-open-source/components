@@ -56,7 +56,7 @@ test('A FieldText with an error validation aligned to the bottom', () => {
       label="👍"
       name="thumbsUp"
       id="thumbs-up"
-      validationState={{ type: 'error', message: 'This is an error' }}
+      validationMessage={{ type: 'error', message: 'This is an error' }}
       alignValidationMessage="bottom"
     />
   )
@@ -70,7 +70,7 @@ test('A FieldText with a warning validation aligned to the left', () => {
       label="👍"
       name="thumbsUp"
       id="thumbs-up"
-      validationState={{ type: 'warning', message: 'This is a warning' }}
+      validationMessage={{ type: 'warning', message: 'This is a warning' }}
       alignValidationMessage="left"
     />
   )
@@ -84,7 +84,7 @@ test('A FieldText with an info validation aligned to the top', () => {
       label="👍"
       name="thumbsUp"
       id="thumbs-up"
-      validationState={{ type: 'info', message: 'This is info' }}
+      validationMessage={{ type: 'info', message: 'This is info' }}
       alignValidationMessage="top"
     />
   )
@@ -92,13 +92,13 @@ test('A FieldText with an info validation aligned to the top', () => {
   expect(tree).toMatchSnapshot()
 })
 
-test('A FieldText with a sucess validation aligned to the right', () => {
+test('A FieldText with a success validation aligned to the right', () => {
   const component = createWithTheme(
     <FieldText
       label="👍"
       name="thumbsUp"
       id="thumbs-up"
-      validationState={{ type: 'success', message: 'This is a success' }}
+      validationMessage={{ type: 'success', message: 'This is a success' }}
       alignValidationMessage="right"
     />
   )

@@ -1,37 +1,26 @@
 import * as React from 'react'
-import { FormControlDirections } from '../../FormGroup/FormGroup'
+import { withForm } from '../../Form'
 import { InputText, InputTextProps } from '../../Inputs/InputText/InputText'
-import { Field } from '../Field'
+import { Field, FieldProps } from '../Field'
 
-export class FieldText extends Field<InputTextProps> {
-  public render() {
-    return super.render()
-  }
+interface Props extends FieldProps, InputTextProps {}
 
-  protected setLabelAlignment(): FormControlDirections | undefined {
-    return this.props.alignLabel
-  }
-
-  protected setValidationMethodAlignment(): FormControlDirections | undefined {
-    return this.props.alignValidationMessage
-      ? this.props.alignValidationMessage
-      : 'bottom'
-  }
-
-  protected setInput() {
-    const {
-      label,
-      alignLabel,
-      validationState,
-      alignValidationMessage,
-      ...props
-    } = this.props
-
-    return (
+const InnerFieldText = (props: Props) => {
+  const {
+    alignLabel,
+    alignValidationMessage,
+    label,
+    validationMessage,
+    ...inputTextProps
+  } = props
+  return (
+    <Field {...props}>
       <InputText
-        validationType={validationState ? validationState.type : undefined}
-        {...props}
+        {...inputTextProps}
+        validationType={validationMessage && validationMessage.type}
       />
-    )
-  }
+    </Field>
+  )
 }
+
+export const FieldText = withForm(InnerFieldText)

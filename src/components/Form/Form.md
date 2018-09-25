@@ -10,7 +10,7 @@ const StatusAndResources = require('../../../styleguide_components/StatusAndReso
 
 ### Form Validation
 
-The `<Form />` component wraps a collection of field components and allows for multi-field validation message rendering by accepting a `validationStates` property. The property takes a dictionary with key as field name and value as a `ValidationState` object which has a `type` and a `message`:
+The `<Form />` component wraps a collection of field components and allows for multi-field validation message rendering by accepting a `validationMessages` property. The property takes a dictionary with key as field name and value as a `ValidationState` object which has a `type` and a `message`:
 
 `
 interface ValidationState {
@@ -27,7 +27,7 @@ interface ValidationState {
 
 
 ```js
-<Form validationStates={{"alpha": {type: "error", message: "This is an error"}, "bravo": {type: "warning", message: "This is warning"}}}>
+<Form validationMessages={{"alpha": {type: "error", message: "This is an error"}, "bravo": {type: "warning", message: "This is warning"}}}>
   <FieldText label="Alpha" name="alpha" />
   <FieldText label="Bravo" name="bravo" />
   <FieldText label="Charlie" name="charlie" />

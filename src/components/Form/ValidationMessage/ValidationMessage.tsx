@@ -2,10 +2,12 @@ import tag from 'clean-tag'
 import * as React from 'react'
 import styled, { css } from '../../../styled_components'
 import { ThemedProps } from '../../../types'
-import { ValidationType } from '../Form'
+
+export type ValidationType = 'error' | 'warning' | 'info' | 'success'
 
 export interface ValidationMessageProps {
-  type: ValidationType
+  type?: ValidationType
+  message?: string
 }
 
 const handleValidationType = (props: ThemedProps<ValidationMessageProps>) => {
@@ -32,11 +34,12 @@ const handleValidationType = (props: ThemedProps<ValidationMessageProps>) => {
   }
 }
 
-const InternalValidationMessage: React.SFC<ValidationMessageProps> = ({
+const InternalValidationMessage = ({
   type,
+  message,
   ...props
-}) => {
-  return <tag.div {...props}>{props.children}</tag.div>
+}: ValidationMessageProps) => {
+  return <tag.div {...props}>{message}</tag.div>
 }
 
 export const ValidationMessage = styled<ValidationMessageProps>(
