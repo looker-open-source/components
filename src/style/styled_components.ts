@@ -1,5 +1,5 @@
 import * as styledComponents from 'styled-components'
-import { Theme } from '../theme/index'
+import { Theme } from './theme'
 
 const {
   css,

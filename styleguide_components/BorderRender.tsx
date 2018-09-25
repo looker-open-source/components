@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Heading } from '../src/components/Heading/Heading'
 import { Code } from '../src/components/Text/Code'
 import { Text } from '../src/components/Text/Text'
-import { palette } from '../src/theme/palette'
+import { palette } from '../src/style/palette'
 
 const {
   charcoal000,

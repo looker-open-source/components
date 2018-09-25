@@ -1,9 +1,9 @@
 import * as React from 'react'
 import { Text } from '../src/components/Text/Text'
+import { easings } from '../src/style/easings'
+import { palette } from '../src/style/palette'
 import styled, { css } from '../src/style/styled_components'
-import { easings } from '../src/theme/easings'
-import { palette } from '../src/theme/palette'
-import { transitions } from '../src/theme/transitions'
+import { transitions } from '../src/style/transitions'
 import {
   FeedbackSvg,
   FigmaSvg,

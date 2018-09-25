@@ -3,8 +3,8 @@ import { rem, rgba } from 'polished'
 import * as React from 'react'
 import { merge, mixed } from 'styled-system'
 import { reset } from '../../style/helpers'
+import { SemanticColor, SemanticColors } from '../../style/semantic_colors'
 import styled from '../../style/styled_components'
-import { SemanticColor, SemanticColors } from '../../theme/semantic_colors'
 import {
   SizeLarge,
   SizeMedium,

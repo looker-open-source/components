@@ -1,9 +1,9 @@
 import 'jest-styled-components'
 import * as React from 'react'
 import { create } from 'react-test-renderer'
+import { SemanticColor } from '../../style/semantic_colors'
 import { ThemeProvider } from '../../style/styled_components'
-import { theme } from '../../theme'
-import { SemanticColor } from '../../theme/semantic_colors'
+import { theme } from '../../style/theme'
 import { Button } from './Button'
 
 test('Button default', () => {
