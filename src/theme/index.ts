@@ -13,7 +13,7 @@ import {
 import { Easings, easings } from './easings'
 import { shadows, Shadows } from './elevation'
 import * as fontFaces from './font_faces'
-import { fontRamp, FontRamp, lineHeightRamp } from './font_sizes'
+import { FontRamp, fontSizes, lineHeights } from './font_sizes'
 import { fontWeights } from './font_weights'
 import { palette, Palette } from './palette'
 import { SemanticColors, semanticColors } from './semantic_colors'
@@ -40,11 +40,9 @@ export interface Theme {
   breakpoints: string[]
   easings: Easings
   fontFaces: Record<string, string>
-  fontRamp: FontRamp
-  fontSizes: string[]
+  fontSizes: FontRamp
   fontWeights: Record<string, number>
-  lineHeightRamp: FontRamp
-  lineHeights: string[]
+  lineHeights: FontRamp
   palette: Palette
   /**
    * A function that can be overridden to return different reset css properties
@@ -61,11 +59,9 @@ export const theme: Theme = {
   breakpoints: ['30rem', '48rem', '64rem', '75rem', '90rem'],
   easings,
   fontFaces,
-  fontRamp,
-  fontSizes: [0, 12, 14, 16, 18, 22, 25, 36, 46, 58].map(p => rem(p)),
+  fontSizes,
   fontWeights,
-  lineHeightRamp,
-  lineHeights: [0, 16, 20, 24, 28, 32, 40, 52, 64, 84].map(p => rem(p)),
+  lineHeights,
   palette,
   reset: () => {
     return {

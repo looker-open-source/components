@@ -168,7 +168,7 @@ function sizeHelper(props: ThemedProps<ButtonProps>) {
     [number, number, ButtonSizes, ButtonSizes]
   > = {
     large: [5, 5, 'large', 'small'],
-    medium: [3, 3, 'medium', 'small'],
+    medium: [4, 4, 'medium', 'small'],
     small: [2, 2, 'medium', 'xsmall'],
     xsmall: [1, 1, 'xsmall', 'xsmall'],
   }

@@ -74,8 +74,8 @@ export const Text = styled.div<TextProps>`
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: ${props => props.theme.fontRamp[props.size || '4']};
-  line-height: ${props => props.theme.lineHeightRamp[props.size || '4']};
+  font-size: ${props => props.theme.fontSizes[props.size || '4']};
+  line-height: ${props => props.theme.lineHeights[props.size || '4']};
   font-weight: ${props => props.theme.fontWeights[props.weight || 'normal']};
   ${props => textTransform(props.textTransform)};
   ${props => alignment(props.align)};

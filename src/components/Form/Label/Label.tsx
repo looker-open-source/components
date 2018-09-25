@@ -6,5 +6,5 @@ export const Label = styled.label`
   font-weight: 600;
   color: ${props => props.theme.palette.charcoal800};
   margin-right: ${props => props.theme.space.small};
-  font-size: ${props => props.theme.fontRamp[5]};
+  font-size: ${props => props.theme.fontSizes[5]};
 `

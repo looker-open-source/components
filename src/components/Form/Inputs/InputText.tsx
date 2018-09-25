@@ -35,5 +35,5 @@ export const InputText = styled<InputTextProps>(InternalInputText)`
   height: 28px;
   padding: 0 ${props => props.theme.space.small};
   border-radius: 4px;
-  font-size: ${props => props.theme.fontRamp[5]};
+  font-size: ${props => props.theme.fontSizes[5]};
 `
