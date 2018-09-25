@@ -1,7 +1,7 @@
 import { rem } from 'polished'
-import { RampSizes } from '../style/ramp_sizes'
 
-export type FontRamp = { [K in RampSizes]: string }
+export type RampSizes = '1' | '2' | '3' | '4' | '5' | '6' | 'd1' | 'd2' | 'd3'
+export type FontRamp = Record<RampSizes, string>
 
 // tslint:disable:object-literal-sort-keys
 export const fontRamp: FontRamp = {
@@ -16,7 +16,6 @@ export const fontRamp: FontRamp = {
   6: rem(12),
 }
 
-// tslint:disable:object-literal-sort-keys
 export const lineHeightRamp: FontRamp = {
   d1: rem(84),
   d2: rem(64),

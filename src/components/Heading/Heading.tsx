@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { truncate } from '../../style'
 import { reset } from '../../style/helpers'
-import { RampSizes } from '../../style/ramp_sizes'
 import styled, { css } from '../../styled_components'
+import { RampSizes } from '../../theme/font_sizes'
 
 export type HeadingAlignments = 'left' | 'center' | 'right'
 export type HeadingLevels = '1' | '2' | '3' | '4' | '5' | '6'
