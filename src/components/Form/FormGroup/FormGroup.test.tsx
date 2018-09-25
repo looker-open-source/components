@@ -1,7 +1,7 @@
 import 'jest-styled-components'
 import * as React from 'react'
 import { create } from 'react-test-renderer'
-import theme from '../../../theme'
+import { theme } from '../../../theme'
 import { FormControl } from './FormGroup'
 
 test('A FormControl', () => {

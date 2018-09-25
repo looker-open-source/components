@@ -90,5 +90,3 @@ export const theme: Theme = {
   },
   transitions,
 }
-
-export default theme

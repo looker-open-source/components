@@ -2,7 +2,7 @@ import 'jest-styled-components'
 import * as React from 'react'
 import { create } from 'react-test-renderer'
 
-import theme from '../../../theme'
+import { theme } from '../../../theme'
 import { TableBody } from './TableBody'
 
 test('A <TableBody> should render', () => {
