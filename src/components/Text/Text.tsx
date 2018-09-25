@@ -1,7 +1,6 @@
 import { truncate } from '../../style'
 import { RampSizes } from '../../style/ramp_sizes'
 import styled, { css } from '../../styled_components'
-import { fontWeights } from '../../theme/font_weights'
 import { ThemedProps } from '../../types'
 
 export type TextWeights = 'bold' | 'light' | 'normal' | 'semiBold'
@@ -77,7 +76,7 @@ export const Text = styled.div<TextProps>`
   -moz-osx-font-smoothing: grayscale;
   font-size: ${props => props.theme.fontRamp[props.size || '4']};
   line-height: ${props => props.theme.lineHeightRamp[props.size || '4']};
-  font-weight: ${props => fontWeights[props.weight || 'normal']};
+  font-weight: ${props => props.theme.fontWeights[props.weight || 'normal']};
   ${props => textTransform(props.textTransform)};
   ${props => alignment(props.align)};
   ${props => truncate(props.truncate || false)};

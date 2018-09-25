@@ -3,7 +3,6 @@ import { truncate } from '../../style'
 import { reset } from '../../style/helpers'
 import { RampSizes } from '../../style/ramp_sizes'
 import styled, { css } from '../../styled_components'
-import { fontWeights } from '../../theme/font_weights'
 
 export type HeadingAlignments = 'left' | 'center' | 'right'
 export type HeadingLevels = '1' | '2' | '3' | '4' | '5' | '6'
@@ -104,7 +103,7 @@ export const Heading = styled<HeadingProps>(HeadingGenerator)`
   font-size: ${props => props.theme.fontRamp[props.size || props.level || '3']};
   line-height: ${props =>
     props.theme.lineHeightRamp[props.size || props.level || '3']};
-  font-weight: ${props => fontWeights[props.weight || 'normal']};
+  font-weight: ${props => props.theme.fontWeights[props.weight || 'normal']};
   ${props => textTransform(props.transform)}
   ${props => alignment(props.align)}
   ${props => truncate(props.truncate || false)}

@@ -14,6 +14,7 @@ import { Easings, easings } from './easings'
 import { shadows, Shadows } from './elevation'
 import * as fontFaces from './font_faces'
 import { fontRamp, FontRamp, lineHeightRamp } from './font_sizes'
+import { fontWeights } from './font_weights'
 import { palette, Palette } from './palette'
 import { SemanticColors, semanticColors } from './semantic_colors'
 import { transitions, Transitions } from './transitions'
@@ -41,6 +42,7 @@ export interface Theme {
   fontFaces: Record<string, string>
   fontRamp: FontRamp
   fontSizes: string[]
+  fontWeights: Record<string, number>
   lineHeightRamp: FontRamp
   lineHeights: string[]
   palette: Palette
@@ -61,6 +63,7 @@ export const theme: Theme = {
   fontFaces,
   fontRamp,
   fontSizes: [0, 12, 14, 16, 18, 22, 25, 36, 46, 58].map(p => rem(p)),
+  fontWeights,
   lineHeightRamp,
   lineHeights: [0, 16, 20, 24, 28, 32, 40, 52, 64, 84].map(p => rem(p)),
   palette,
