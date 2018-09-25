@@ -1,9 +1,9 @@
 import * as React from 'react'
 import { truncate } from '../../style'
-import { fontWeights } from '../../style/font_weights'
 import { reset } from '../../style/helpers'
 import { RampSizes } from '../../style/ramp_sizes'
 import styled, { css } from '../../styled_components'
+import { fontWeights } from '../../theme/font_weights'
 
 export type HeadingAlignments = 'left' | 'center' | 'right'
 export type HeadingLevels = '1' | '2' | '3' | '4' | '5' | '6'
