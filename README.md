@@ -4,7 +4,7 @@ Lens is Looker's living and function design guide.
 
 This repository hosts both the functional components Lens publishes and the code needed to generate a style guide which lives online, as an interactive resource.
 
-If you're looking for information about working with components you're probably best served by visiting lens.looker.com (NOTE NOT YET PUBLISHED).
+If you're looking for information about working or writing components you're probably best served by visiting https://lens.looker.com.
 
 # Contents
 
