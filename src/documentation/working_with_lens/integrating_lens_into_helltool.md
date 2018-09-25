@@ -13,7 +13,7 @@ One of Lens' core tenets is that adoption determines its success. Helltool is Lo
 Lens components are written in Typescript and published as ES6-compatible modules. They can be required into other ES6 modules using the typical ES6 `import / export` syntax:
 
 ```typescript jsx
-import { Button } from 'lens'
+import { Button } from 'looker-lens'
 
 const MyComponent = () => {
   return <div>
@@ -45,7 +45,7 @@ Bridging the two is fairly straightforward. To ensure Lens components are availa
 Image we want to replace a simple button in Angular with a Lens button. We can do that using the Lens Bridge. First we need to register the Lens Button component with the Bridge and give it a name:
 
 ```typescript
-import { Button } from 'lens'
+import { Button } from 'looker-lens'
 import { register } from '../lens_bridge'
 
 register('Button', Button, ['color', 'size', 'disabled', 'variant', 'onClick', 'type'])
@@ -126,7 +126,7 @@ import * as React from 'react'
 import {
   Button,
   FieldText,
-} from 'lens'
+} from 'looker-lens'
 
 interface ResultMessage {
   error: boolean

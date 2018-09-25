@@ -124,17 +124,3 @@ const PersonDetail = styled<PersonProps>(BasePersonDetail)`
 // Example use of the resulting component:
 <PersonDetail mx={1} person={person} />
 ```
-
-```jsx noeditor
-<Heading level="3" size="1" transform="caps">Semantic Abstractions</Heading>
-```
-
-```jsx noeditor
-<Heading level="3" size="1" transform="caps">Accessibility</Heading>
-```
-
-```jsx noeditor
-<Heading level="3" size="1" transform="caps">Internationalization</Heading>
-```
-
-
