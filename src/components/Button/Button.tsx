@@ -189,7 +189,7 @@ export const Button = styled<ButtonProps>(InternalButton)`
   border-radius: ${rem(4)};
   cursor: pointer;
   display: inline-flex;
-  font-family: ${p => p.theme.fontFaces.brandFont};
+  font-family: ${props => props.theme.fontFaces.brandFont};
   outline: none;
   transition: border 80ms;
   vertical-align: middle;

@@ -33,7 +33,7 @@ const alignLabels = (direction: FormControlDirections | undefined) => {
 
 export const FormControl = styled.div<FormControlProps>`
   display: flex;
-  margin-bottom: ${p => p.theme.space.small};
+  margin-bottom: ${props => props.theme.space.small};
   ${props => alignLabels(props.alignLabel)};
   align-items: ${props => (props.alignCenter ? 'center' : 'normal')};
 `

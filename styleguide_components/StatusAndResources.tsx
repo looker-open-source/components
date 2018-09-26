@@ -79,16 +79,16 @@ function getCorrectStatusColor(status: StatusLabels) {
 export const StatusDiv = styled<StatusProps>(statusIndicator)`
   display: flex;
   text-transform: capitalize;
-  padding: ${p => p.theme.space.small};
+  padding: ${props => props.theme.space.small};
   border-radius: 2px;
-  margin-right: ${p => p.theme.space.medium};
+  margin-right: ${props => props.theme.space.medium};
 
   &:before {
     /* stylelint-disable */
     content: '';
     /* stylelint-enable */
     font-size: 16px;
-    margin-right: ${p => p.theme.space.xsmall};
+    margin-right: ${props => props.theme.space.xsmall};
     transition: transform ${transitions.durationSimple} ${easings.easeOut};
   }
 
@@ -120,7 +120,7 @@ const ResourceIconRender: React.SFC<ResourceProps> = ({ url, ...args }) => {
 }
 
 const ResourceIcon = styled<ResourceProps>(ResourceIconRender)`
-  margin-right: ${p => p.theme.space.medium};
+  margin-right: ${props => props.theme.space.medium};
   svg {
     transition: transform ${transitions.durationModerate} ${easings.easeOut};
   }
@@ -170,7 +170,8 @@ export const StatusAndResources = styled<StatusAndResourcesProps>(
   border-top: solid 1px ${charcoal200};
   border-bottom: solid 1px ${charcoal200};
   display: flex;
-  padding: ${p => p.theme.space.medium} ${p => p.theme.space.small};
+  padding: ${props => props.theme.space.medium}
+    ${props => props.theme.space.small};
   justify-content: space-between;
   align-items: center;
 
