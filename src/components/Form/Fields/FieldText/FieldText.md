@@ -14,9 +14,12 @@ The `<FieldText />` component has one required property: `label`. By default, th
 
 Additionally, it is highly recommended to include the `name` property, as this will be used by forms to capture the inputted data and for validation.
 
+The `required` property displays a red star by the label, indicating that the field must be filled out before submission.
+
 ```js
 <FieldText name="firstName" label="First Name" />
 <FieldText name="lastName" label=" Last Name" alignLabel="left" />
+<FieldText name="requiredField" label="A required field" required />
 ```
 
 ### FieldText Validation

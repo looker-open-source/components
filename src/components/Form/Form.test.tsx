@@ -77,3 +77,20 @@ test('Should trigger onChange handler', () => {
   wrapper.find('input').simulate('change', { target: { value: '' } })
   expect(counter).toEqual(1)
 })
+
+test('Should trigger onSubmit handler', () => {
+  let counter = 0
+  const handleChange = () => counter++
+
+  const wrapper = mount(
+    <ThemeProvider theme={theme}>
+      <Form onChange={handleChange}>
+        <FieldText label="label" name="name" />
+        <Button type="submit">Submit</Button>
+      </Form>
+    </ThemeProvider>
+  )
+
+  wrapper.find('button').simulate('change', { target: { value: '' } })
+  expect(counter).toEqual(1)
+})

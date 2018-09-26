@@ -10,9 +10,7 @@ export interface FormProps {
   validationMessages?: ValidationMessages
   onChange?: React.FormEventHandler<HTMLFormElement>
   onInput?: React.FormEventHandler<HTMLFormElement>
-  onReset?: React.FormEventHandler<HTMLFormElement>
   onSubmit?: React.FormEventHandler<HTMLFormElement>
-  onInvalid?: React.FormEventHandler<HTMLFormElement>
 }
 
 interface FormContextValue {

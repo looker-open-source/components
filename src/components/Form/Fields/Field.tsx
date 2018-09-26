@@ -35,12 +35,12 @@ export interface FieldProps {
   validationMessage?: ValidationMessageProps
 }
 
-const RequiredStar = styled(() => <span> *</span>)`
+const RequiredStar = styled(props => <span {...props}> *</span>)`
   color: ${props => props.theme.semanticColors.danger.darker};
 `
 
 /**
- * <Field /> allows the rendering of a label (optionally associated with a child input like <InputText/>),
+ * `<Field />` allows the rendering of a label (optionally associated with a child input like `<InputText />`),
  * and can render a validation message. Generally, this component is used with form inputs to give user
  * feedback about the status of the input values.
  */
