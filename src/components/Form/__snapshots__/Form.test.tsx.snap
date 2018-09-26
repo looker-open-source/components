@@ -57,7 +57,7 @@ exports[`Form with one child 1`] = `
 `;
 
 exports[`Form with one invalid child and a submit button 1`] = `
-.c5 {
+.c6 {
   border: 0;
   font: inherit;
   font-size: 100%;
@@ -89,33 +89,33 @@ exports[`Form with one invalid child and a submit button 1`] = `
   color: #FFFFFF;
 }
 
-.c5:focus {
+.c6:focus {
   box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
 }
 
-.c5[disabled] {
+.c6[disabled] {
   cursor: default;
   -webkit-filter: grayscale(0.3);
   filter: grayscale(0.3);
   opacity: 0.25;
 }
 
-.c5[disabled]:hover,
-.c5[disabled]:active,
-.c5[disabled]:focus {
+.c6[disabled]:hover,
+.c6[disabled]:active,
+.c6[disabled]:focus {
   background-color: #64518A;
   border-color: #C1C6CC;
 }
 
-.c5:hover,
-.c5:focus,
-.c5.hover {
+.c6:hover,
+.c6:focus,
+.c6.hover {
   background: #473764;
   border-color: #473764;
 }
 
-.c5:active,
-.c5.active {
+.c6:active,
+.c6.active {
   background: #2A1B60;
   border-color: #2A1B60;
 }
@@ -128,7 +128,7 @@ exports[`Form with one invalid child and a submit button 1`] = `
   font-size: 0.875rem;
 }
 
-.c4 {
+.c5 {
   border: solid 1px #C1C6CC;
   height: 28px;
   padding: 0 0.5rem;
@@ -153,6 +153,25 @@ exports[`Form with one invalid child and a submit button 1`] = `
   flex-direction: column;
 }
 
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 0.5rem;
+  -webkit-align-items: normal;
+  -webkit-box-align: normal;
+  -ms-flex-align: normal;
+  align-items: normal;
+  -webkit-flex-direction: column-reverse;
+  -ms-flex-direction: column-reverse;
+  flex-direction: column-reverse;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
 .c1 {
   border: 0;
   font: inherit;
@@ -166,7 +185,7 @@ exports[`Form with one invalid child and a submit button 1`] = `
   font-size: 0.875rem;
 }
 
-.c3 {
+.c4 {
   color: #B2121F;
   margin-right: 0.5rem;
   margin-top: 0.5rem;
@@ -174,16 +193,7 @@ exports[`Form with one invalid child and a submit button 1`] = `
   color: #B2121F;
 }
 
-<form
-  validationMessages={
-    Object {
-      "name2": Object {
-        "message": "e2",
-        "type": "error",
-      },
-    }
-  }
->
+<form>
   <div
     className="c0"
   >
@@ -209,22 +219,22 @@ exports[`Form with one invalid child and a submit button 1`] = `
       label2
     </label>
     <div
-      className="c0"
+      className="c3"
     >
       <div
-        className="c3"
+        className="c4"
       >
         e2
       </div>
       <input
-        className="c4"
+        className="c5"
         name="name2"
         type="text"
       />
     </div>
   </div>
   <button
-    className="c5"
+    className="c6"
   >
     Submit
   </button>
@@ -232,7 +242,7 @@ exports[`Form with one invalid child and a submit button 1`] = `
 `;
 
 exports[`Form with two invalid children 1`] = `
-.c3 {
+.c4 {
   border: solid 1px #C1C6CC;
   height: 28px;
   padding: 0 0.5rem;
@@ -242,7 +252,7 @@ exports[`Form with two invalid children 1`] = `
   background-color: #FFF2F4;
 }
 
-.c5 {
+.c6 {
   border: solid 1px #C1C6CC;
   height: 28px;
   padding: 0 0.5rem;
@@ -266,6 +276,25 @@ exports[`Form with two invalid children 1`] = `
   flex-direction: column;
 }
 
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 0.5rem;
+  -webkit-align-items: normal;
+  -webkit-box-align: normal;
+  -ms-flex-align: normal;
+  align-items: normal;
+  -webkit-flex-direction: column-reverse;
+  -ms-flex-direction: column-reverse;
+  flex-direction: column-reverse;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
 .c1 {
   border: 0;
   font: inherit;
@@ -279,7 +308,7 @@ exports[`Form with two invalid children 1`] = `
   font-size: 0.875rem;
 }
 
-.c2 {
+.c3 {
   color: #B2121F;
   margin-right: 0.5rem;
   margin-top: 0.5rem;
@@ -287,7 +316,7 @@ exports[`Form with two invalid children 1`] = `
   color: #B2121F;
 }
 
-.c4 {
+.c5 {
   color: #B2121F;
   margin-right: 0.5rem;
   margin-top: 0.5rem;
@@ -295,20 +324,7 @@ exports[`Form with two invalid children 1`] = `
   color: #473764;
 }
 
-<form
-  validationMessages={
-    Object {
-      "name1": Object {
-        "message": "e1",
-        "type": "error",
-      },
-      "name2": Object {
-        "message": "e1",
-        "type": "warning",
-      },
-    }
-  }
->
+<form>
   <div
     className="c0"
   >
@@ -319,15 +335,15 @@ exports[`Form with two invalid children 1`] = `
       label1
     </label>
     <div
-      className="c0"
+      className="c2"
     >
       <div
-        className="c2"
+        className="c3"
       >
         e1
       </div>
       <input
-        className="c3"
+        className="c4"
         name="name1"
         type="text"
       />
@@ -343,15 +359,15 @@ exports[`Form with two invalid children 1`] = `
       label2
     </label>
     <div
-      className="c0"
+      className="c2"
     >
       <div
-        className="c4"
+        className="c5"
       >
         e1
       </div>
       <input
-        className="c5"
+        className="c6"
         name="name2"
         type="text"
       />

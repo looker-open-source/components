@@ -1,36 +1,32 @@
-// import * as React from 'react'
-// import { FormControlDirections } from '../../FormGroup/FormGroup'
-// import { Checkbox, CheckboxProps } from '../../Inputs/Checkbox/Checkbox'
-// import { Field } from '../Field'
+import * as React from 'react'
+import { withForm } from '../../Form'
+import { Checkbox, CheckboxProps } from '../../Inputs/Checkbox/Checkbox'
+import { Field, FieldProps } from '../Field'
 
-// export class FieldCheckbox extends Field<CheckboxProps> {
-//   public render() {
-//     return super.render()
-//   }
+interface FieldCheckboxProps extends FieldProps, CheckboxProps {}
 
-//   protected setLabelAlignment(): FormControlDirections | undefined {
-//     return this.props.alignLabel ? this.props.alignLabel : 'left'
-//   }
+const InternalFieldCheckbox = (props: FieldCheckboxProps) => {
+  const {
+    alignLabel,
+    alignValidationMessage,
+    label,
+    validationMessage,
+    ...checkboxProps
+  } = props
+  return (
+    <Field
+      {...props}
+      alignLabel={alignLabel ? alignLabel : 'left'}
+      alignValidationMessage={
+        alignValidationMessage ? alignValidationMessage : 'right'
+      }
+    >
+      <Checkbox
+        {...checkboxProps}
+        validationType={validationMessage && validationMessage.type}
+      />
+    </Field>
+  )
+}
 
-//   protected setValidationMethodAlignment(): FormControlDirections | undefined {
-//     return this.props.alignValidationMessage
-//       ? this.props.alignValidationMessage
-//       : 'bottom'
-//   }
-
-//   protected setInput() {
-//     const {
-//       label,
-//       alignLabel,
-//       validationState,
-//       alignValidationMessage,
-//       ...props
-//     } = this.props
-//     return (
-//       <Checkbox
-//         validationType={validationState ? validationState.type : undefined}
-//         {...props}
-//       />
-//     )
-//   }
-// }
+export const FieldCheckbox = withForm(InternalFieldCheckbox)

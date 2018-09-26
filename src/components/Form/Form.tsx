@@ -25,10 +25,10 @@ export const Form: React.SFC<FormProps> = ({ ...props }) => {
   const context = {
     validationMessages: props.validationMessages,
   }
-
+  const { validationMessages, ...rest } = props
   return (
     <FormContext.Provider value={context}>
-      <tag.form {...props}>{props.children}</tag.form>
+      <tag.form {...rest}>{rest.children}</tag.form>
     </FormContext.Provider>
   )
 }

@@ -3,9 +3,9 @@ import { withForm } from '../../Form'
 import { InputText, InputTextProps } from '../../Inputs/InputText/InputText'
 import { Field, FieldProps } from '../Field'
 
-interface Props extends FieldProps, InputTextProps {}
+interface FieldTextProps extends FieldProps, InputTextProps {}
 
-const InnerFieldText = (props: Props) => {
+const InternalFieldText = (props: FieldTextProps) => {
   const {
     alignLabel,
     alignValidationMessage,
@@ -14,7 +14,12 @@ const InnerFieldText = (props: Props) => {
     ...inputTextProps
   } = props
   return (
-    <Field {...props}>
+    <Field
+      {...props}
+      alignValidationMessage={
+        alignValidationMessage ? alignValidationMessage : 'bottom'
+      }
+    >
       <InputText
         {...inputTextProps}
         validationType={validationMessage && validationMessage.type}
@@ -23,4 +28,4 @@ const InnerFieldText = (props: Props) => {
   )
 }
 
-export const FieldText = withForm(InnerFieldText)
+export const FieldText = withForm(InternalFieldText)

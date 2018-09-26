@@ -28,7 +28,7 @@ interface ValidationState {
 
 ```js
 <Form validationMessages={{"alpha": {type: "error", message: "This is an error"}, "bravo": {type: "warning", message: "This is warning"}}}>
-  <FieldText label="Alpha" name="alpha" />
+  <FieldCheckbox label="Alpha" name="alpha" />
   <FieldText label="Bravo" name="bravo" />
   <FieldText label="Charlie" name="charlie" />
   <Button>Submit</Button>
