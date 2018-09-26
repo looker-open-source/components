@@ -1,6 +1,6 @@
 
 ```jsx noeditor
-const semanticColors = require('../theme/semantic_colors').semanticColors;
+const semanticColors = require('../style').theme.semanticColors;
 
 <div>
 

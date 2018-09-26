@@ -145,7 +145,7 @@ When a call to action requires additional steps, include an ellipsis at the end 
 Sometimes you may want to extend the Button defaults to create a specific styling effect. That should be straightforward by wrapped a StyledComponent in another `styled` call to extend it like so:
 
 ```js
-const styled = require('../../styled_components').default;
+const styled = require('../../style').styled;
 
 const RoundButton = styled(Button)`
   border-radius: 2rem;
