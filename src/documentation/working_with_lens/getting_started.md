@@ -70,7 +70,7 @@ This defines a simple function which returns a set of composed Lens components, 
 <Heading level="3" size="1" transform="caps">Composition</Heading>
 ```
 
-Lens (and React) rely heavily on the concept of composition, where smaller components can be composed to create larger, higher-order behavior. In the `SpaceCard` example above the Lens `Card`, `CardContent` and `Heading` are composed to define a what it means to display a Space object in Card format.
+Lens (and React) rely heavily on the concept of composition, where smaller components can be composed to create higher-order behavior. In the `SpaceCard` example above the Lens `Card`, `CardContent` and `Heading` are composed to define a what it means to display a Space object in Card format.
 
 ```jsx noeditor
 <Heading level="3" size="1" transform="caps">Extending behavior</Heading>
@@ -106,7 +106,7 @@ export const LoggerButton: React.SFC<ButtonProps> = ({onClick, ...props}) => {
 Styling can also be extended, but care is needed to ensure you do not violate Looker's design principles:
 
 ```jsx static
-import { Button } from 'looker-lens'
+import { Button, styled } from 'looker-lens'
 
 const CircularButton = styled(Button)`
   border-radius: 4rem;
