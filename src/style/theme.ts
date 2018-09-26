@@ -12,7 +12,7 @@ import {
 } from '../types'
 import { Easings, easings } from './easings'
 import { shadows, Shadows } from './elevation'
-import * as fontFaces from './font_faces'
+import { fontFaces, FontFaces } from './font_faces'
 import { FontRamp, fontSizes, lineHeights } from './font_sizes'
 import { fontWeights } from './font_weights'
 import { palette, Palette } from './palette'
@@ -39,7 +39,7 @@ export type SpacingSizes =
 export interface Theme {
   breakpoints: string[]
   easings: Easings
-  fontFaces: Record<string, string>
+  fontFaces: FontFaces
   fontSizes: FontRamp
   fontWeights: Record<string, number>
   lineHeights: FontRamp
