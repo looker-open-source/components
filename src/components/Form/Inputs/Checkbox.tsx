@@ -1,7 +1,6 @@
 import tag from 'clean-tag'
 import * as React from 'react'
-import styled from '../../../styled_components'
-import { reset } from '../../../styles/helpers'
+import { reset, styled } from '../../../style'
 import { InputProps } from './InputProps'
 
 export interface CheckboxProps extends InputProps {

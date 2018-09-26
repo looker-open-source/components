@@ -1,5 +1,4 @@
-import styled from '../../styled_components'
-import { reset } from '../../styles/helpers'
+import { reset, styled } from '../../style'
 
 export const Table = styled.table`
   ${reset};

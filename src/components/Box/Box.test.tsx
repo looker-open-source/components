@@ -1,25 +1,18 @@
 import 'jest-styled-components'
 import * as React from 'react'
-import { create } from 'react-test-renderer'
-import theme from '../../theme'
+import { createWithTheme } from '../../../test/utils/create_with_theme'
 import { Box } from './Box'
 
 test('Box default', () => {
-  const component = create(
-    <Box theme={theme} mt="large">
-      🥑
-    </Box>
-  )
+  const component = createWithTheme(<Box mt="large">🥑</Box>)
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
 })
 
 test('Responsive margin top Box', () => {
-  const component = create(
+  const component = createWithTheme(
     <div>
-      <Box theme={theme} mt={['large', 'medium', 'small']}>
-        🥑
-      </Box>
+      <Box mt={['large', 'medium', 'small']}>🥑</Box>
     </div>
   )
   const tree = component.toJSON()
@@ -27,11 +20,9 @@ test('Responsive margin top Box', () => {
 })
 
 test('Box with null values are removed from styling', () => {
-  const component = create(
+  const component = createWithTheme(
     <div>
-      <Box theme={theme} mt={['large', null, 'medium']}>
-        🥑
-      </Box>
+      <Box mt={['large', null, 'medium']}>🥑</Box>
     </div>
   )
   const tree = component.toJSON()
@@ -39,11 +30,9 @@ test('Box with null values are removed from styling', () => {
 })
 
 test('Box with SizeNone is valid', () => {
-  const component = create(
+  const component = createWithTheme(
     <div>
-      <Box theme={theme} mt="none">
-        🥑
-      </Box>
+      <Box mt="none">🥑</Box>
     </div>
   )
   const tree = component.toJSON()

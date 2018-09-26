@@ -1,5 +1,4 @@
-import styled, { css } from '../../../styled_components'
-import { spacing } from '../../../theme/spacing'
+import { css, styled } from '../../../style'
 
 export type FormControlDirections = 'left' | 'right' | 'top' | 'bottom'
 
@@ -34,7 +33,7 @@ const alignLabels = (direction: FormControlDirections | undefined) => {
 
 export const FormControl = styled.div<FormControlProps>`
   display: flex;
-  margin-bottom: ${spacing.s};
+  margin-bottom: ${props => props.theme.space.small};
   ${props => alignLabels(props.alignLabel)};
   align-items: ${props => (props.alignCenter ? 'center' : 'normal')};
 `

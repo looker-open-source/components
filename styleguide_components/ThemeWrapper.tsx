@@ -1,11 +1,9 @@
 import * as React from 'react'
 import { ThemeProvider } from 'styled-components'
-import primaryTheme from '../src/theme'
+import { theme } from '../src/style'
 
 export default class ThemeWrapper extends React.Component {
   public render() {
-    return (
-      <ThemeProvider theme={primaryTheme}>{this.props.children}</ThemeProvider>
-    )
+    return <ThemeProvider theme={theme}>{this.props.children}</ThemeProvider>
   }
 }
