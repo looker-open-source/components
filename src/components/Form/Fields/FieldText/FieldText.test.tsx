@@ -1,8 +1,7 @@
 import { mount } from 'enzyme'
 import * as React from 'react'
 import { createWithTheme } from '../../../../../test/utils/create_with_theme'
-import { ThemeProvider } from '../../../../styled_components'
-import theme from '../../../../theme'
+import { theme, ThemeProvider } from '../../../../style'
 import { FieldText } from './FieldText'
 
 test('A FieldText', () => {

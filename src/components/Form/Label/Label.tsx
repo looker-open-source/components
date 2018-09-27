@@ -1,10 +1,9 @@
-import styled from '../../../styled_components'
-import { reset } from '../../../styles/helpers'
+import { reset, styled } from '../../../style'
 
 export const Label = styled.label`
   ${reset};
   font-weight: 600;
   color: ${props => props.theme.palette.charcoal800};
-  margin-right: ${props => props.theme.spacing.s};
-  font-size: ${props => props.theme.fontRamp[5]};
+  margin-right: ${props => props.theme.space.small};
+  font-size: ${props => props.theme.fontSizes[5]};
 `

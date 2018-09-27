@@ -1,7 +1,6 @@
-import styled from '../../styled_components'
-import { codeFont } from '../../styles/typography'
+import { styled } from '../../style'
 import { Text } from '../Text/Text'
 
 export const Code = styled(Text)`
-  font-family: ${codeFont};
+  font-family: ${props => props.theme.fontFaces.code};
 `.withComponent('code')

@@ -1,4 +1,4 @@
-import styled from '../../../styled_components'
+import { styled } from '../../../style'
 
 /* stylelint-disable */
 export const TableRow = styled.tr``

@@ -1,7 +1,6 @@
 import { mount } from 'enzyme'
 import 'jest-styled-components'
 import * as React from 'react'
-import { create } from 'react-test-renderer'
 import { createWithTheme } from '../../../../../test/utils/create_with_theme'
 import { Checkbox } from './Checkbox'
 
@@ -12,31 +11,31 @@ test('Checkbox default', () => {
 })
 
 test('Checkbox checked set to true', () => {
-  const component = create(<Checkbox checked={true} />)
+  const component = createWithTheme(<Checkbox checked={true} />)
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
 })
 
 test('Checkbox checked set to false', () => {
-  const component = create(<Checkbox checked={false} />)
+  const component = createWithTheme(<Checkbox checked={false} />)
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
 })
 
 test('Checkbox with name and id', () => {
-  const component = create(<Checkbox name="Chuck" id="Chucky" />)
+  const component = createWithTheme(<Checkbox name="Chuck" id="Chucky" />)
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
 })
 
 test('Checkbox should accept disabled', () => {
-  const component = create(<Checkbox disabled />)
+  const component = createWithTheme(<Checkbox disabled />)
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
 })
 
 test('Checkbox with aria-describedby', () => {
-  const component = create(<Checkbox aria-describedby="some-id" />)
+  const component = createWithTheme(<Checkbox aria-describedby="some-id" />)
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
 })

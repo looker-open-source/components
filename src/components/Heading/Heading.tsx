@@ -1,9 +1,5 @@
 import * as React from 'react'
-import styled, { css } from '../../styled_components'
-import { fontWeights } from '../../styles/font_weights'
-import { reset } from '../../styles/helpers'
-import { RampSizes } from '../../styles/ramp_sizes'
-import { truncate } from '../../styles/typography'
+import { css, RampSizes, reset, styled, truncate } from '../../style'
 
 export type HeadingAlignments = 'left' | 'center' | 'right'
 export type HeadingLevels = '1' | '2' | '3' | '4' | '5' | '6'
@@ -101,10 +97,11 @@ export const Heading = styled<HeadingProps>(HeadingGenerator)`
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin: 0;
-  font-size: ${props => props.theme.fontRamp[props.size || props.level || '3']};
+  font-size: ${props =>
+    props.theme.fontSizes[props.size || props.level || '3']};
   line-height: ${props =>
-    props.theme.lineHeightRamp[props.size || props.level || '3']};
-  font-weight: ${props => fontWeights[props.weight || 'normal']};
+    props.theme.lineHeights[props.size || props.level || '3']};
+  font-weight: ${props => props.theme.fontWeights[props.weight || 'normal']};
   ${props => textTransform(props.transform)}
   ${props => alignment(props.align)}
   ${props => truncate(props.truncate || false)}

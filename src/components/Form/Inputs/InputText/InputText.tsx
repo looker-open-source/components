@@ -1,6 +1,6 @@
 import tag from 'clean-tag'
 import * as React from 'react'
-import styled, { css } from '../../../../styled_components'
+import { css, styled } from '../../../../style'
 import { ThemedProps } from '../../../../types'
 import { InputProps } from '../InputProps'
 
@@ -50,8 +50,8 @@ const InternalInputText: React.SFC<InputTextProps> = ({
 export const InputText = styled<InputTextProps>(InternalInputText)`
   border: solid 1px ${props => props.theme.semanticColors.primary.borderColor};
   height: 28px;
-  padding: 0 ${props => props.theme.spacing.s};
+  padding: 0 ${props => props.theme.space.small};
   border-radius: 4px;
-  font-size: ${props => props.theme.fontRamp[5]};
+  font-size: ${props => props.theme.fontSizes[5]};
   ${handleValidationType};
 `

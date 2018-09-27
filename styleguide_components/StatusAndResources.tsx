@@ -1,10 +1,6 @@
 import * as React from 'react'
-import styled, { css } from 'styled-components'
 import { Text } from '../src/components/Text/Text'
-import { easings } from '../src/theme/easings'
-import { palette } from '../src/theme/palette'
-import { spacing } from '../src/theme/spacing'
-import { transitions } from '../src/theme/transitions'
+import { css, easings, palette, styled, transitions } from '../src/style'
 import {
   FeedbackSvg,
   FigmaSvg,
@@ -83,16 +79,16 @@ function getCorrectStatusColor(status: StatusLabels) {
 export const StatusDiv = styled<StatusProps>(statusIndicator)`
   display: flex;
   text-transform: capitalize;
-  padding: ${spacing.s};
+  padding: ${props => props.theme.space.small};
   border-radius: 2px;
-  margin-right: ${spacing.m};
+  margin-right: ${props => props.theme.space.medium};
 
   &:before {
     /* stylelint-disable */
     content: '';
     /* stylelint-enable */
     font-size: 16px;
-    margin-right: ${spacing.xs};
+    margin-right: ${props => props.theme.space.xsmall};
     transition: transform ${transitions.durationSimple} ${easings.easeOut};
   }
 
@@ -124,7 +120,7 @@ const ResourceIconRender: React.SFC<ResourceProps> = ({ url, ...args }) => {
 }
 
 const ResourceIcon = styled<ResourceProps>(ResourceIconRender)`
-  margin-right: ${spacing.m};
+  margin-right: ${props => props.theme.space.medium};
   svg {
     transition: transform ${transitions.durationModerate} ${easings.easeOut};
   }
@@ -174,7 +170,8 @@ export const StatusAndResources = styled<StatusAndResourcesProps>(
   border-top: solid 1px ${charcoal200};
   border-bottom: solid 1px ${charcoal200};
   display: flex;
-  padding: ${spacing.m} ${spacing.s};
+  padding: ${props => props.theme.space.medium}
+    ${props => props.theme.space.small};
   justify-content: space-between;
   align-items: center;
 

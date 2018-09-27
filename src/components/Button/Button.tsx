@@ -2,10 +2,7 @@ import tag from 'clean-tag'
 import { rem, rgba } from 'polished'
 import * as React from 'react'
 import { merge, mixed } from 'styled-system'
-import styled from '../../styled_components'
-import { reset } from '../../styles/helpers'
-import { brandFont } from '../../styles/typography'
-import { SemanticColor, SemanticColors } from '../../theme/semantic_colors'
+import { reset, SemanticColor, SemanticColors, styled } from '../../style'
 import {
   SizeLarge,
   SizeMedium,
@@ -169,7 +166,7 @@ function sizeHelper(props: ThemedProps<ButtonProps>) {
     [number, number, ButtonSizes, ButtonSizes]
   > = {
     large: [5, 5, 'large', 'small'],
-    medium: [3, 3, 'medium', 'small'],
+    medium: [4, 4, 'medium', 'small'],
     small: [2, 2, 'medium', 'xsmall'],
     xsmall: [1, 1, 'xsmall', 'xsmall'],
   }
@@ -192,7 +189,7 @@ export const Button = styled<ButtonProps>(InternalButton)`
   border-radius: ${rem(4)};
   cursor: pointer;
   display: inline-flex;
-  font-family: ${brandFont};
+  font-family: ${props => props.theme.fontFaces.brand};
   outline: none;
   transition: border 80ms;
   vertical-align: middle;

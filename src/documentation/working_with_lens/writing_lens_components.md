@@ -7,7 +7,7 @@ Lens is built using the following language and libraries:
 * [StyledComponents](https://www.styled-components.com/)
 * [styled-system](https://github.com/jxnblk/styled-system)
 
-You **don't** have to be an expert in all of those technologies to start using Lens today, but it's good to have an understanding about why they were chosen and how they are employed inside Lens when writing new core Lens components.
+You **don't** have to be an expert in all of those technologies to start using Lens today, but it's good to have an understanding about why they were chosen and how they are employed inside Lens when writing new Lens components.
 
 The following technologies roughly form a "stack", in that each layer is used by the next to solve a more specific problem:
 
@@ -124,17 +124,3 @@ const PersonDetail = styled<PersonProps>(BasePersonDetail)`
 // Example use of the resulting component:
 <PersonDetail mx={1} person={person} />
 ```
-
-```jsx noeditor
-<Heading level="3" size="1" transform="caps">Semantic Abstractions</Heading>
-```
-
-```jsx noeditor
-<Heading level="3" size="1" transform="caps">Accessibility</Heading>
-```
-
-```jsx noeditor
-<Heading level="3" size="1" transform="caps">Internationalization</Heading>
-```
-
-

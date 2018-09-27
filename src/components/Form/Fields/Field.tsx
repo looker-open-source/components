@@ -1,5 +1,5 @@
 import * as React from 'react'
-import styled from '../../../styled_components'
+import { styled } from '../../../style'
 import { FormControl, FormControlDirections } from '../FormGroup/FormGroup'
 import { Label } from '../Label/Label'
 import {
@@ -23,7 +23,7 @@ export interface FieldProps {
   /**
    * Defines the label for the field -- a required property for all fields.
    */
-  label?: string
+  label: string
   /**
    * Whether or not the field should display a `*` denoting it is required.
    */

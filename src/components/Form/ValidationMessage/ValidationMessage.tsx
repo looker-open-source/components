@@ -1,6 +1,6 @@
 import tag from 'clean-tag'
 import * as React from 'react'
-import styled, { css } from '../../../styled_components'
+import { css, styled } from '../../../style'
 import { ThemedProps } from '../../../types'
 
 export type ValidationType = 'error' | 'warning' | 'info' | 'success'
@@ -46,8 +46,8 @@ export const ValidationMessage = styled<ValidationMessageProps>(
   InternalValidationMessage
 )`
   color: ${props => props.theme.semanticColors.danger.dark};
-  margin-right: ${props => props.theme.spacing.s};
-  margin-top: ${props => props.theme.spacing.s};
-  font-size: ${props => props.theme.fontRamp[6]};
+  margin-right: ${props => props.theme.space.small};
+  margin-top: ${props => props.theme.space.small};
+  font-size: ${props => props.theme.fontSizes[6]};
   ${handleValidationType};
 `
