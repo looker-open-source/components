@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { styled } from '../../../style'
-import { FormControl, FormControlDirections } from '../FormGroup/FormGroup'
+import { FormControl, FormControlDirections } from '../FormControl/FormControl'
 import { Label } from '../Label/Label'
 import {
   ValidationMessage,
@@ -21,9 +21,9 @@ export interface FieldProps {
    */
   id?: string
   /**
-   * Defines the label for the field -- a required property for all fields.
+   * Defines the label for the field.
    */
-  label: string
+  label?: string
   /**
    * Whether or not the field should display a `*` denoting it is required.
    */

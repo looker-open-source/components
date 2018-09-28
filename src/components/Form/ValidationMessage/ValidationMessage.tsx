@@ -2,36 +2,19 @@ import tag from 'clean-tag'
 import * as React from 'react'
 import { css, styled } from '../../../style'
 import { ThemedProps } from '../../../types'
+// import { isInputTextProps } from '../Inputs/InputText';
 
-export type ValidationType = 'error' | 'warning' | 'info' | 'success'
+export type ValidationType = 'error'
 
 export interface ValidationMessageProps {
+  /**
+   * The type of validation, therefore changing the message's text color. Accepts: error.
+   */
   type?: ValidationType
+  /**
+   * The validation message to render.
+   */
   message?: string
-}
-
-const handleValidationType = (props: ThemedProps<ValidationMessageProps>) => {
-  switch (props.type) {
-    case 'error':
-      return css`
-        color: ${props.theme.semanticColors.danger.dark};
-      `
-    // "Dummy" colors will need to be changed
-    case 'warning':
-      return css`
-        color: ${props.theme.semanticColors.secondary.dark};
-      `
-    case 'info':
-      return css`
-        color: ${props.theme.semanticColors.primary.light};
-      `
-    case 'success':
-      return css`
-        color: ${props.theme.semanticColors.primary.main};
-      `
-    default:
-      return
-  }
 }
 
 const InternalValidationMessage = ({
@@ -42,10 +25,25 @@ const InternalValidationMessage = ({
   return <tag.div {...props}>{message}</tag.div>
 }
 
+// const isValidationMessageProps = (props: any): props is ValidationMessageProps => {
+//   return ((props as ValidationMessageProps).type !== undefined &&
+//      (props as ValidationMessageProps).message !== undefined)
+// }
+
+const handleValidationType = (props: ThemedProps<ValidationMessageProps>) => {
+  switch (props.type) {
+    case 'error':
+      return css`
+        color: ${props.theme.semanticColors.danger.dark};
+      `
+    default:
+      return
+  }
+}
+
 export const ValidationMessage = styled<ValidationMessageProps>(
   InternalValidationMessage
 )`
-  color: ${props => props.theme.semanticColors.danger.dark};
   margin-right: ${props => props.theme.space.small};
   margin-top: ${props => props.theme.space.small};
   font-size: ${props => props.theme.fontSizes[6]};

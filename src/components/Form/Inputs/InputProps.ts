@@ -6,7 +6,7 @@ export interface InputProps {
    */
   id?: string
   /**
-   * Specifies the name of an input, which is used in the context of a form in order to capture the value of the input.
+   * Specifies the name of an input, which is used in the context of a form in order to capture the value of the input. Also required for validation.
    */
   name?: string
   /**

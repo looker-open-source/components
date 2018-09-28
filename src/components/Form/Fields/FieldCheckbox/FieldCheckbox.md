@@ -11,11 +11,7 @@ const StatusAndResources = require('../../../../../styleguide_components/StatusA
 
 ### FieldCheckbox
 
-The `<FieldCheckbox />` component has one required property: `label`. By default, the label will render to the left of the checkbox, which is the recommended convention, however this is adjustable with the `alignLabel` property.
-
-Additionally, it is highly recommended to include the `name` property, as this will be used by forms to capture the inputted data and for validation.
-
-The `required` property displays a red star by the label, indicating that the field must be filled out before submission.
+The `<FieldCheckbox />` component is composed of an `<Checkbox />` component and a `<Label />` component. Using `<FieldCheckbox />` allows for rendering validation messages. By default, the label will render to the left of the checkbox, which is the recommended convention, however this is adjustable with the `alignLabel` property.
 
 ```js
 <FieldCheckbox name="box" label="Box" />
@@ -25,20 +21,9 @@ The `required` property displays a red star by the label, indicating that the fi
 
 ### FieldCheckbox Validation
 
-The `<FieldCheckbox />` components accepts `validationMessage` as a property. This is an object with properties `type` and `message`:
-`
-interface ValidationMessage {
-  type: ValidationType
-  message: string
-}
-`
+The `<FieldCheckbox />` components accepts `validationMessage` as a property. This is an object with properties `type` and `message`.
 
-`ValidationType` is a string literal, which accepts:
-* error
-* warning
-* info
-* success
-
+See `ValidationMessage` [here](/#!/ValidationMessage)
 
 If you have multiple fields in need of validation, it is recommended that you wrap them in a `<Form />` component and pass to it a dictionary with key as field name and value as a `ValidationMessage`.
 

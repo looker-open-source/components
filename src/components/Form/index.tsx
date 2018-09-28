@@ -1,5 +1,5 @@
 export * from './Fields'
-export * from './FormGroup'
+export * from './FormControl'
 export * from './Label'
 export * from './Form'
 export * from './ValidationMessage'

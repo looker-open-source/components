@@ -7,6 +7,11 @@ import { ValidationMessageProps } from './ValidationMessage'
 export type ValidationMessages = Record<string, ValidationMessageProps>
 
 export interface FormProps {
+  /**
+   * A record of all validation messages for the form, where the key is the name
+   *  of the validated field and the value holds the information for the corresponding
+   *  message and validation type.
+   */
   validationMessages?: ValidationMessages
   onChange?: React.FormEventHandler<HTMLFormElement>
   onInput?: React.FormEventHandler<HTMLFormElement>
