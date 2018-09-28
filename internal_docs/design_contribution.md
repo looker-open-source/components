@@ -3,7 +3,7 @@ We want to provide an easy way to contribute any reusable components or styles f
 
 ### The Contribution process
 
-There are a few steps and best practices to follow to ensure any new contributions will work within the current Lens ecosystem. Each step of the contribution process will be described in detail below, but here is a quick overview of the process:
+There are a few steps to follow to ensure any new contributions will work within the current Lens ecosystem. Each step of the contribution process will be described in detail below, but here is a quick overview of the process:
 
 1. Open new [github issue](https://github.com/looker/lens/issues/new?template=design-issue.md&labels=design,figma) with description of the contribution and a link to any related Figma files
 2. A small review process
@@ -18,10 +18,10 @@ There are a few steps and best practices to follow to ensure any new contributio
 ---
 
 ## Step 1:  Open an Issue
-The Lens team uses Github to track all our work, any new contribution we nees to have an issue assigned to it so we can track the work.
+The Lens team uses Github to track all our work, any new contribution needs to have an issue assigned to it so we can track the work.
 
 ### How do I open an issue?:
-We have a handy template for you to use with all the required information. Just [click here to open an issue](https://github.com/looker/lens/issues/new?template=design-issue.md&labels=design,figma).
+We have a handy template for you to use with all the required information. [Click here to open an issue](https://github.com/looker/lens/issues/new?template=design-issue.md&labels=design,figma).
 
 The template has spots for a description, links to Figma files, and any additional notes or briefs to provide extra context. The more details you provide all help the review step go faster.
 
