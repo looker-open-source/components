@@ -22,7 +22,7 @@ test('Form with two invalid children', () => {
     <Form
       validationMessages={{
         name1: { type: 'error', message: 'e1' },
-        name2: { type: 'warning', message: 'e1' },
+        name2: { type: 'error', message: 'e1' },
       }}
     >
       <FieldText label="label1" name="name1" />

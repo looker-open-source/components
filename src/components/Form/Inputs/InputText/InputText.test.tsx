@@ -63,24 +63,6 @@ test('InputText with an error validation', () => {
   expect(tree).toMatchSnapshot()
 })
 
-test('InputText with a warning validation', () => {
-  const component = create(<InputText theme={theme} validationType="warning" />)
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
-})
-
-test('InputText with an info validation', () => {
-  const component = create(<InputText theme={theme} validationType="info" />)
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
-})
-
-test('InputText with a success validation', () => {
-  const component = create(<InputText theme={theme} validationType="success" />)
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
-})
-
 test('Should trigger onChange handler', () => {
   let counter = 0
   const handleChange = () => counter++

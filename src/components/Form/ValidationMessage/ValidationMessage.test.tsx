@@ -9,27 +9,3 @@ test('An error message', () => {
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
 })
-
-test('A warning message', () => {
-  const component = createWithTheme(
-    <ValidationMessage type="warning" message="Warning" />
-  )
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
-})
-
-test('An info message', () => {
-  const component = createWithTheme(
-    <ValidationMessage type="info" message="Info" />
-  )
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
-})
-
-test('A success message', () => {
-  const component = createWithTheme(
-    <ValidationMessage type="success" message="Success!" />
-  )
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
-})

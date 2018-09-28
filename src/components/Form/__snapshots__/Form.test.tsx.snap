@@ -134,7 +134,6 @@ exports[`Form with one invalid child and a submit button 1`] = `
   padding: 0 0.5rem;
   border-radius: 4px;
   font-size: 0.875rem;
-  border-color: #CC1F36;
   background-color: #FFF2F4;
 }
 
@@ -186,7 +185,6 @@ exports[`Form with one invalid child and a submit button 1`] = `
 }
 
 .c4 {
-  color: #B2121F;
   margin-right: 0.5rem;
   margin-top: 0.5rem;
   font-size: 0.75rem;
@@ -248,17 +246,7 @@ exports[`Form with two invalid children 1`] = `
   padding: 0 0.5rem;
   border-radius: 4px;
   font-size: 0.875rem;
-  border-color: #CC1F36;
   background-color: #FFF2F4;
-}
-
-.c6 {
-  border: solid 1px #C1C6CC;
-  height: 28px;
-  padding: 0 0.5rem;
-  border-radius: 4px;
-  font-size: 0.875rem;
-  border-color: #E8E5FF;
 }
 
 .c0 {
@@ -309,19 +297,10 @@ exports[`Form with two invalid children 1`] = `
 }
 
 .c3 {
-  color: #B2121F;
   margin-right: 0.5rem;
   margin-top: 0.5rem;
   font-size: 0.75rem;
   color: #B2121F;
-}
-
-.c5 {
-  color: #B2121F;
-  margin-right: 0.5rem;
-  margin-top: 0.5rem;
-  font-size: 0.75rem;
-  color: #473764;
 }
 
 <form>
@@ -362,12 +341,12 @@ exports[`Form with two invalid children 1`] = `
       className="c2"
     >
       <div
-        className="c5"
+        className="c3"
       >
         e1
       </div>
       <input
-        className="c6"
+        className="c4"
         name="name2"
         type="text"
       />
