@@ -15,6 +15,10 @@ export type ButtonSizes = SizeXSmall | SizeSmall | SizeMedium | SizeLarge
 
 export interface ButtonProps {
   /**
+   * Allow className to be passed through to base component.
+   */
+  className?: string
+  /**
    * Defines the color of the button. Can be the string name of a color listed in the color theme, or a color object.
    * @default "primary"
    */
