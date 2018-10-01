@@ -343,7 +343,7 @@ exports[`Form with two invalid children 1`] = `
       <div
         className="c3"
       >
-        e1
+        e2
       </div>
       <input
         className="c4"

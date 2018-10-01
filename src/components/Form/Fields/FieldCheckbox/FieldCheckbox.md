@@ -33,5 +33,4 @@ ___Note: In the current implementation, any `ValidationMessage` set in a `<Field
 
 ```js
 <FieldCheckbox name="someBox" label="Some Box" validationMessage={{type: "error", message: "This is an error"}}/>
-<FieldCheckbox name="some-box-2" label="Some Box 2" validationMessage={{type: "warning", message: "Here is a warning"}} alignValidationMessage="bottom" />
 ```

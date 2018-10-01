@@ -29,6 +29,5 @@ If you have multiple fields in need of validation, it is recommended that you wr
 ___Note: In the current implementation, any `ValidationMessage` set in a `<FieldText />` component will be overridden by `ValidationMessages` set in the parent `<Form />` component. Because of this, it is highly recommended that you only ever directly set `ValidationMessage` if a `<FieldText />` is outside a `<Form />`.___
 
 ```js
-<FieldText name="someField" label="Some Field" validationMessage={{type: "error", message: "This is an error"}}/>
-<FieldText name="someField2" label="Some Field2" validationMessage={{type: "warning", message: "Here is a warning"}} alignValidationMessage="right" />
+<FieldText name="someField" label="Some Field" validationMessage={{type: "error", message: "This is an error"}} alignValidationMessage="right" />
 ```

@@ -49,6 +49,14 @@ test('Should trigger onChange handler', () => {
   expect(counter).toEqual(1)
 })
 
+test('A required FieldText', () => {
+  const component = createWithTheme(
+    <FieldText label="👍" name="thumbsUp" id="thumbs-up" required />
+  )
+  const tree = component.toJSON()
+  expect(tree).toMatchSnapshot()
+})
+
 test('A FieldText with an error validation aligned to the bottom', () => {
   const component = createWithTheme(
     <FieldText
@@ -61,4 +69,7 @@ test('A FieldText with an error validation aligned to the bottom', () => {
   )
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
+  expect(tree!.children![0].props.htmlFor).toEqual(
+    tree!.children![1].children![1].props.id
+  )
 })

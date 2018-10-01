@@ -11,6 +11,14 @@ test('A FieldCheckbox', () => {
   expect(tree).toMatchSnapshot()
 })
 
+test('A required FieldCheckbox', () => {
+  const component = createWithTheme(
+    <FieldCheckbox label="👍" name="thumbsUp" id="thumbs-up" required />
+  )
+  const tree = component.toJSON()
+  expect(tree).toMatchSnapshot()
+})
+
 test('A FieldCheckbox with an error validation aligned to the bottom', () => {
   const component = createWithTheme(
     <FieldCheckbox
@@ -23,4 +31,7 @@ test('A FieldCheckbox with an error validation aligned to the bottom', () => {
   )
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
+  expect(tree!.children![0].props.htmlFor).toEqual(
+    tree!.children![1].children![1].props.id
+  )
 })

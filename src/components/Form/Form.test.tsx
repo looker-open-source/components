@@ -22,7 +22,7 @@ test('Form with two invalid children', () => {
     <Form
       validationMessages={{
         name1: { type: 'error', message: 'e1' },
-        name2: { type: 'error', message: 'e1' },
+        name2: { type: 'error', message: 'e2' },
       }}
     >
       <FieldText label="label1" name="name1" />
@@ -31,6 +31,12 @@ test('Form with two invalid children', () => {
   )
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
+  expect(tree!.children![0].children![1].children![0].children![0]).toEqual(
+    'e1'
+  )
+  expect(tree!.children![1].children![1].children![0].children![0]).toEqual(
+    'e2'
+  )
 })
 
 test('Form with one invalid child and a submit button', () => {
@@ -43,6 +49,9 @@ test('Form with one invalid child and a submit button', () => {
   )
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
+  expect(tree!.children![1].children![1].children![0].children![0]).toEqual(
+    'e2'
+  )
 })
 
 test('Should trigger onInput handler', () => {

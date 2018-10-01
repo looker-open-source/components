@@ -15,7 +15,7 @@ The `<Form />` component wraps a collection of field components and allows for m
 See `ValidationMessage` [here](/#!/ValidationMessage)
 
 ```js
-<Form validationMessages={{"alpha": {type: "error", message: "This is an error"}, "bravo": {type: "warning", message: "This is warning"}}}>
+<Form validationMessages={{"alpha": {type: "error", message: "This is an error"}, "bravo": {type: "error", message: "This is another error"}}}>
   <FieldText label="Alpha" name="alpha" />
   <FieldText label="Bravo" name="bravo" />
   <FieldText label="Charlie" name="charlie" />
