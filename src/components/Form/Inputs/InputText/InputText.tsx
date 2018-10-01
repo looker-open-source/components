@@ -2,7 +2,6 @@ import tag from 'clean-tag'
 import * as React from 'react'
 import { css, styled } from '../../../../style'
 import { ThemedProps } from '../../../../types'
-// import { handleValidationType } from '../../ValidationMessage/ValidationMessage'
 import { InputProps } from '../InputProps'
 
 export interface InputTextProps extends InputProps {
@@ -15,11 +14,6 @@ export interface InputTextProps extends InputProps {
    */
   placeholder?: string
 }
-
-// export const isInputTextProps = (props: any): props is InputTextProps => {
-//   return ((props as InputTextProps).value !== undefined &&
-//     (props as InputTextProps).placeholder !== undefined)
-// }
 
 const handleValidationType = (props: ThemedProps<InputProps>) => {
   switch (props.validationType) {

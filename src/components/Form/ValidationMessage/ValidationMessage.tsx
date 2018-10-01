@@ -2,7 +2,6 @@ import tag from 'clean-tag'
 import * as React from 'react'
 import { css, styled } from '../../../style'
 import { ThemedProps } from '../../../types'
-// import { isInputTextProps } from '../Inputs/InputText';
 
 export type ValidationType = 'error'
 
@@ -24,11 +23,6 @@ const InternalValidationMessage = ({
 }: ValidationMessageProps) => {
   return <tag.div {...props}>{message}</tag.div>
 }
-
-// const isValidationMessageProps = (props: any): props is ValidationMessageProps => {
-//   return ((props as ValidationMessageProps).type !== undefined &&
-//      (props as ValidationMessageProps).message !== undefined)
-// }
 
 const handleValidationType = (props: ThemedProps<ValidationMessageProps>) => {
   switch (props.type) {
