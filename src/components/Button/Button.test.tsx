@@ -1,17 +1,17 @@
 import 'jest-styled-components'
 import * as React from 'react'
-import { create } from 'react-test-renderer'
-import { SemanticColor, theme, ThemeProvider } from '../../style'
+import { createWithTheme } from '../../../test/utils/create_with_theme'
+import { SemanticColor, theme } from '../../style'
 import { Button } from './Button'
 
 test('Button default', () => {
-  const component = create(<Button theme={theme}>🥑</Button>)
+  const component = createWithTheme(<Button theme={theme}>🥑</Button>)
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
 })
 
 test('Button variant outline', () => {
-  const component = create(
+  const component = createWithTheme(
     <Button theme={theme} variant="outline">
       🥑
     </Button>
@@ -21,7 +21,7 @@ test('Button variant outline', () => {
 })
 
 test('Button variant transparent', () => {
-  const component = create(
+  const component = createWithTheme(
     <Button theme={theme} variant="transparent">
       🥑
     </Button>
@@ -31,7 +31,7 @@ test('Button variant transparent', () => {
 })
 
 test('Button type submit', () => {
-  const component = create(
+  const component = createWithTheme(
     <Button theme={theme} type="submit">
       🥑
     </Button>
@@ -41,7 +41,7 @@ test('Button type submit', () => {
 })
 
 test('Button type reset', () => {
-  const component = create(
+  const component = createWithTheme(
     <Button theme={theme} type="reset">
       🥑
     </Button>
@@ -51,7 +51,7 @@ test('Button type reset', () => {
 })
 
 test('Button type button', () => {
-  const component = create(
+  const component = createWithTheme(
     <Button theme={theme} type="button">
       🥑
     </Button>
@@ -61,7 +61,7 @@ test('Button type button', () => {
 })
 
 test('Button type menu', () => {
-  const component = create(
+  const component = createWithTheme(
     <Button theme={theme} type="menu">
       🥑
     </Button>
@@ -71,7 +71,7 @@ test('Button type menu', () => {
 })
 
 test('Button primary color', () => {
-  const component = create(
+  const component = createWithTheme(
     <Button theme={theme} color="primary">
       🥑
     </Button>
@@ -81,7 +81,7 @@ test('Button primary color', () => {
 })
 
 test('Button danger color', () => {
-  const component = create(
+  const component = createWithTheme(
     <Button theme={theme} color="danger">
       🥑
     </Button>
@@ -91,7 +91,7 @@ test('Button danger color', () => {
 })
 
 test('Button should accept disabled', () => {
-  const component = create(
+  const component = createWithTheme(
     <Button theme={theme} disabled>
       🥑
     </Button>
@@ -112,7 +112,7 @@ test('Button accepts a SemanticColor object for the color property', () => {
     text: 'White',
   }
 
-  const component = create(
+  const component = createWithTheme(
     <Button theme={theme} color={punkRockColor}>
       🥑
     </Button>
@@ -121,10 +121,8 @@ test('Button accepts a SemanticColor object for the color property', () => {
   expect(tree).toMatchSnapshot()
 })
 
-test('Should not require a theme when in a ThemeProvider', () => {
-  create(
-    <ThemeProvider theme={theme}>
-      <Button>Mild Button</Button>
-    </ThemeProvider>
-  )
+test('Button accepts a className prop', () => {
+  const component = createWithTheme(<Button className="foobar">Hi</Button>)
+  const tree = component.toJSON()
+  expect(tree!.props.className).toContain('foobar')
 })
