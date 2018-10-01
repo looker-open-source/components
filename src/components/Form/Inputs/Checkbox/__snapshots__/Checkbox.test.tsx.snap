@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkbox checked set to false 1`] = `
+<input
+  checked={false}
+  type="checkbox"
+/>
+`;
+
+exports[`Checkbox checked set to true 1`] = `
+<input
+  checked={true}
+  type="checkbox"
+/>
+`;
+
+exports[`Checkbox default 1`] = `
+<input
+  type="checkbox"
+/>
+`;
+
+exports[`Checkbox should accept disabled 1`] = `
+<input
+  disabled={true}
+  type="checkbox"
+/>
+`;
+
+exports[`Checkbox with aria-describedby 1`] = `
+<input
+  aria-describedby="some-id"
+  type="checkbox"
+/>
+`;
+
+exports[`Checkbox with name and id 1`] = `
+<input
+  id="Chucky"
+  name="Chuck"
+  type="checkbox"
+/>
+`;

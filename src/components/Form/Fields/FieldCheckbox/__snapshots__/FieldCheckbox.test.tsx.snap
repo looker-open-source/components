@@ -1,0 +1,196 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`A FieldCheckbox 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 0.5rem;
+  -webkit-align-items: normal;
+  -webkit-box-align: normal;
+  -ms-flex-align: normal;
+  align-items: normal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c1 {
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-weight: 600;
+  color: #262D33;
+  margin-right: 0.5rem;
+  font-size: 0.875rem;
+}
+
+<div
+  className="c0"
+>
+  <label
+    className="c1"
+    htmlFor="thumbs-up"
+  >
+    👍
+  </label>
+  <input
+    id="thumbs-up"
+    name="thumbsUp"
+    type="checkbox"
+  />
+</div>
+`;
+
+exports[`A FieldCheckbox with an error validation aligned to the bottom 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 0.5rem;
+  -webkit-align-items: normal;
+  -webkit-box-align: normal;
+  -ms-flex-align: normal;
+  align-items: normal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 0.5rem;
+  -webkit-align-items: normal;
+  -webkit-box-align: normal;
+  -ms-flex-align: normal;
+  align-items: normal;
+  -webkit-flex-direction: column-reverse;
+  -ms-flex-direction: column-reverse;
+  flex-direction: column-reverse;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c1 {
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-weight: 600;
+  color: #262D33;
+  margin-right: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.c3 {
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: #B2121F;
+}
+
+<div
+  className="c0"
+>
+  <label
+    className="c1"
+    htmlFor="thumbs-up"
+  >
+    👍
+  </label>
+  <div
+    className="c2"
+  >
+    <div
+      className="c3"
+    >
+      This is an error
+    </div>
+    <input
+      id="thumbs-up"
+      name="thumbsUp"
+      type="checkbox"
+    />
+  </div>
+</div>
+`;
+
+exports[`A required FieldCheckbox 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 0.5rem;
+  -webkit-align-items: normal;
+  -webkit-box-align: normal;
+  -ms-flex-align: normal;
+  align-items: normal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c1 {
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-weight: 600;
+  color: #262D33;
+  margin-right: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.c2 {
+  color: #990F14;
+}
+
+<div
+  className="c0"
+>
+  <label
+    className="c1"
+    htmlFor="thumbs-up"
+  >
+    👍
+    <span
+      className="c2"
+    >
+       *
+    </span>
+  </label>
+  <input
+    id="thumbs-up"
+    name="thumbsUp"
+    required={true}
+    type="checkbox"
+  />
+</div>
+`;

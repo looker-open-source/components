@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`An error message 1`] = `
+.c0 {
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: #B2121F;
+}
+
+<div
+  className="c0"
+>
+  Error!
+</div>
+`;
