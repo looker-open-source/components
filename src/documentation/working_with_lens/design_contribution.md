@@ -25,7 +25,7 @@ We have a handy template for you to use with all the required information. [Clic
 The template has spots for a description, links to Figma files, and any additional notes or briefs to provide extra context. The more details you provide all help the review step go faster.
 
 ### What to expect from this step:
-The Lens team will respond as soon as possible during working hours to set up a review and answer any questions you have.
+The Lens team will respond as soon as possible or within 24-48 hours to set up a review and answer any questions you have.
 
 ---
 
