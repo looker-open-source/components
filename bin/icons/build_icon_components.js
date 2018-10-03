@@ -12,39 +12,55 @@ const prettierConfig = require('../../.prettierrc.json')
 // Paths to assets
 const iconFileHelpers = require('./icon_file_helpers')
 
-const TYPESCRIPT_COMPONENT_EXTENTION = 'tsx'
+const TYPESCRIPT_COMPONENT_EXTENSION = 'tsx'
 const TYPESCRIPT_DECLARATION_EXTENSION = 'd.ts'
 const typescriptDeclaration = `import * as React from 'react'
 const Icon: React.SFC<React.SVGAttributes<SVGElement>>
 export default Icon
 `
 
-function typescriptIconFileDefinition(ComponentName) {
+function typescriptIconFileDefinition(componentName) {
   return `import * as React from 'react'
-import ${ComponentName} from '../glyphs/${ComponentName}'
-export const Icon${ComponentName}: React.SFC<React.SVGAttributes<SVGElement>> = props => <${ComponentName} {...props}/>
+import ${componentName} from '../glyphs/${componentName}'
+export const Icon${componentName}: React.SFC<React.SVGAttributes<SVGElement>> = props => <${componentName} {...props}/>
 `
 }
 
-function styleguidistIconMarkdown(ComponentName) {
-  return `# Icon${ComponentName}
+function componentBaseNameToIconName(baseName) {
+  return `Icon${baseName}`
+}
+
+function styleguidistIconMarkdown(componentName) {
+  const iconName = componentBaseNameToIconName(componentName)
+  return `# ${iconName}
 
 \`\`\`js
-<Icon${ComponentName} />
+<${iconName} />
 \`\`\`
 `
 }
 
-function styleguidistAllIconsMarkdown(ComponentNames) {
-  const componentIconTags = ComponentNames.map(
-    name => `<Icon${name} width="40" height="40" />`
-  ).join('\n')
+function styleguidistAllIconsMarkdown(componentNames) {
+  const componentIconTags = componentNames
+    .map(
+      name => `<${componentBaseNameToIconName(name)} width="40" height="40" />`
+    )
+    .join('\n')
   return `# All Icons
 
 \`\`\`js
 ${componentIconTags}
 \`\`\`
 `
+}
+
+function exportIconFiles(componentNames) {
+  return componentNames
+    .map(name => {
+      const iconName = componentBaseNameToIconName(name)
+      return `export { ${iconName} } from './${iconName}'`
+    })
+    .join('\n')
 }
 
 async function getBasenames(globpath, ext) {
@@ -93,22 +109,28 @@ async function generateTypescriptInterfaces() {
   )
 }
 
-// Step 3: Generate Icon*.tsx component files from the icon component glyphs. These are the Typescript files Lens exports
-// and are compatible with our Styleguidist documentation.
+// Step 3: Generate Icon*.tsx component files from the icon component glyphs.
+// These are the Typescript files Lens exports and are compatible with our
+// Styleguidist documentation.
 async function generateLensTypescriptIconComponents() {
   const basenames = await getBasenames(
     iconFileHelpers.ICON_GLYPH_PATH,
     iconFileHelpers.ICON_GLYPH_EXTENSION
   )
+  console.log('basenames', basenames)
   await writeFile(
     path.join(iconFileHelpers.ICON_COMPONENTS_PATH, 'ALL_ICONS.md'),
     styleguidistAllIconsMarkdown(basenames)
+  )
+  await writeFile(
+    path.join(iconFileHelpers.ICON_COMPONENTS_PATH, 'index.tsx'),
+    exportIconFiles(basenames)
   )
   await Promise.all(
     basenames.map(async name => {
       const iconFilename = path.join(
         iconFileHelpers.ICON_COMPONENTS_PATH,
-        `Icon${name}.${TYPESCRIPT_COMPONENT_EXTENTION}`
+        `Icon${name}.${TYPESCRIPT_COMPONENT_EXTENSION}`
       )
       const iconMarkdownFile = path.join(
         iconFileHelpers.ICON_COMPONENTS_PATH,
