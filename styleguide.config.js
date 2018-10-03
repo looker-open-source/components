@@ -56,6 +56,10 @@ module.exports = {
           content:
             'src/documentation/working_with_lens/integrating_lens_into_helltool.md',
         },
+        {
+          name: 'Design Contribution',
+          content: 'src/documentation/working_with_lens/design_contribution.md',
+        },
       ],
     },
     {
