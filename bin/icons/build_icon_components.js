@@ -55,12 +55,14 @@ ${componentIconTags}
 }
 
 function exportIconFiles(componentNames) {
-  return componentNames
-    .map(name => {
-      const iconName = componentBaseNameToIconName(name)
-      return `export { ${iconName} } from './${iconName}'`
-    })
-    .join('\n')
+  return (
+    componentNames
+      .map(name => {
+        const iconName = componentBaseNameToIconName(name)
+        return `export { ${iconName} } from './${iconName}'`
+      })
+      .join('\n') + '\n'
+  )
 }
 
 async function getBasenames(globpath, ext) {
@@ -129,11 +131,11 @@ async function generateLensTypescriptIconComponents() {
     basenames.map(async name => {
       const iconFilename = path.join(
         iconFileHelpers.ICON_COMPONENTS_PATH,
-        `Icon${name}.${TYPESCRIPT_COMPONENT_EXTENSION}`
+        `${componentBaseNameToIconName(name)}.${TYPESCRIPT_COMPONENT_EXTENSION}`
       )
       const iconMarkdownFile = path.join(
         iconFileHelpers.ICON_COMPONENTS_PATH,
-        `Icon${name}.md`
+        `${componentBaseNameToIconName(name)}.md`
       )
       await writeFile(
         iconFilename,
