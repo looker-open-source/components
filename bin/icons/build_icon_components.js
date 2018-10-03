@@ -117,7 +117,6 @@ async function generateLensTypescriptIconComponents() {
     iconFileHelpers.ICON_GLYPH_PATH,
     iconFileHelpers.ICON_GLYPH_EXTENSION
   )
-  console.log('basenames', basenames)
   await writeFile(
     path.join(iconFileHelpers.ICON_COMPONENTS_PATH, 'ALL_ICONS.md'),
     styleguidistAllIconsMarkdown(basenames)
