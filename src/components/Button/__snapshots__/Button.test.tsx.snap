@@ -644,6 +644,290 @@ exports[`Button type submit 1`] = `
 </button>
 `;
 
+exports[`Button validates all sizes 1`] = `
+.c0 {
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  outline: none;
+  -webkit-transition: border 80ms;
+  transition: border 80ms;
+  vertical-align: middle;
+  white-space: nowrap;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  border-style: solid;
+  border-width: 0.0625rem;
+  background: #64518A;
+  border-color: #64518A;
+  color: #FFFFFF;
+}
+
+.c0:focus {
+  box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
+}
+
+.c0[disabled] {
+  cursor: default;
+  -webkit-filter: grayscale(0.3);
+  filter: grayscale(0.3);
+  opacity: 0.25;
+}
+
+.c0[disabled]:hover,
+.c0[disabled]:active,
+.c0[disabled]:focus {
+  background-color: #64518A;
+  border-color: #C1C6CC;
+}
+
+.c0:hover,
+.c0:focus,
+.c0.hover {
+  background: #473764;
+  border-color: #473764;
+}
+
+.c0:active,
+.c0.active {
+  background: #2A1B60;
+  border-color: #2A1B60;
+}
+
+<button
+  className="c0"
+>
+  Test
+</button>
+`;
+
+exports[`Button validates all sizes 2`] = `
+.c0 {
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  outline: none;
+  -webkit-transition: border 80ms;
+  transition: border 80ms;
+  vertical-align: middle;
+  white-space: nowrap;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  border-style: solid;
+  border-width: 0.0625rem;
+  background: #64518A;
+  border-color: #64518A;
+  color: #FFFFFF;
+}
+
+.c0:focus {
+  box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
+}
+
+.c0[disabled] {
+  cursor: default;
+  -webkit-filter: grayscale(0.3);
+  filter: grayscale(0.3);
+  opacity: 0.25;
+}
+
+.c0[disabled]:hover,
+.c0[disabled]:active,
+.c0[disabled]:focus {
+  background-color: #64518A;
+  border-color: #C1C6CC;
+}
+
+.c0:hover,
+.c0:focus,
+.c0.hover {
+  background: #473764;
+  border-color: #473764;
+}
+
+.c0:active,
+.c0.active {
+  background: #2A1B60;
+  border-color: #2A1B60;
+}
+
+<button
+  className="c0"
+>
+  Test
+</button>
+`;
+
+exports[`Button validates all sizes 3`] = `
+.c0 {
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  outline: none;
+  -webkit-transition: border 80ms;
+  transition: border 80ms;
+  vertical-align: middle;
+  white-space: nowrap;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  border-style: solid;
+  border-width: 0.0625rem;
+  background: #64518A;
+  border-color: #64518A;
+  color: #FFFFFF;
+}
+
+.c0:focus {
+  box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
+}
+
+.c0[disabled] {
+  cursor: default;
+  -webkit-filter: grayscale(0.3);
+  filter: grayscale(0.3);
+  opacity: 0.25;
+}
+
+.c0[disabled]:hover,
+.c0[disabled]:active,
+.c0[disabled]:focus {
+  background-color: #64518A;
+  border-color: #C1C6CC;
+}
+
+.c0:hover,
+.c0:focus,
+.c0.hover {
+  background: #473764;
+  border-color: #473764;
+}
+
+.c0:active,
+.c0.active {
+  background: #2A1B60;
+  border-color: #2A1B60;
+}
+
+<button
+  className="c0"
+>
+  Test
+</button>
+`;
+
+exports[`Button validates all sizes 4`] = `
+.c0 {
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  outline: none;
+  -webkit-transition: border 80ms;
+  transition: border 80ms;
+  vertical-align: middle;
+  white-space: nowrap;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-size: 1.375rem;
+  line-height: 2rem;
+  border-style: solid;
+  border-width: 0.0625rem;
+  background: #64518A;
+  border-color: #64518A;
+  color: #FFFFFF;
+}
+
+.c0:focus {
+  box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
+}
+
+.c0[disabled] {
+  cursor: default;
+  -webkit-filter: grayscale(0.3);
+  filter: grayscale(0.3);
+  opacity: 0.25;
+}
+
+.c0[disabled]:hover,
+.c0[disabled]:active,
+.c0[disabled]:focus {
+  background-color: #64518A;
+  border-color: #C1C6CC;
+}
+
+.c0:hover,
+.c0:focus,
+.c0.hover {
+  background: #473764;
+  border-color: #473764;
+}
+
+.c0:active,
+.c0.active {
+  background: #2A1B60;
+  border-color: #2A1B60;
+}
+
+<button
+  className="c0"
+>
+  Test
+</button>
+`;
+
 exports[`Button variant outline 1`] = `
 .c0 {
   border: 0;

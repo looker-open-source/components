@@ -2,7 +2,7 @@ import 'jest-styled-components'
 import * as React from 'react'
 import { createWithTheme } from '../../../test/utils/create_with_theme'
 import { SemanticColor, theme } from '../../style'
-import { Button } from './Button'
+import { Button, ButtonSizes } from './Button'
 
 test('Button default', () => {
   const component = createWithTheme(<Button theme={theme}>🥑</Button>)
@@ -125,4 +125,12 @@ test('Button accepts a className prop', () => {
   const component = createWithTheme(<Button className="foobar">Hi</Button>)
   const tree = component.toJSON()
   expect(tree!.props.className).toContain('foobar')
+})
+
+test('Button validates all sizes', () => {
+  const sizes: ButtonSizes[] = ['xsmall', 'small', 'medium', 'large']
+  sizes.forEach(size => {
+    const component = createWithTheme(<Button size={size}>Test</Button>)
+    expect(component.toJSON()).toMatchSnapshot()
+  })
 })
