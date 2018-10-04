@@ -1,0 +1,5 @@
+# IconFolder
+
+```js
+<IconFolder />
+```

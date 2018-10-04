@@ -1,0 +1,5 @@
+# IconDashboard
+
+```js
+<IconDashboard />
+```
