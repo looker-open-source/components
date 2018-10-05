@@ -29,13 +29,13 @@ You can change the layout direction and order of flex children by using the `fle
     <Box>3️⃣</Box>
   </Flex>
 
-  <Flex flexDirection="columnReverse" mr="large">
+  <Flex flexDirection="column-reverse" mr="large">
     <Box>1️⃣</Box>
     <Box>2️⃣</Box>
     <Box>3️⃣</Box>
   </Flex>
 
-  <Flex flexDirection="rowReverse" mr="large">
+  <Flex flexDirection="row-reverse" mr="large">
     <Box>1️⃣</Box>
     <Box>2️⃣</Box>
     <Box>3️⃣</Box>
@@ -68,15 +68,15 @@ The `<Flex>` component allows you to control how its children are distributed wi
       <TableDataCell><Text size="5">Pack items from the end</Text></TableDataCell>
     </TableRow>
     <TableRow>
-      <TableDataCell><span class="prop-code"><Code>spaceBetween</Code></span></TableDataCell>
+      <TableDataCell><span class="prop-code"><Code>space-between</Code></span></TableDataCell>
       <TableDataCell><Text size="5">Distribute items evenly. The first item is flush with the start, the last is flush with the end </Text></TableDataCell>
     </TableRow>
     <TableRow>
-      <TableDataCell><span class="prop-code"><Code>spaceAround</Code></span></TableDataCell>
+      <TableDataCell><span class="prop-code"><Code>space-around</Code></span></TableDataCell>
       <TableDataCell><Text size="5">Distribute items evenly. Items have a half-size space on either end</Text></TableDataCell>
     </TableRow>
     <TableRow>
-      <TableDataCell><span class="prop-code"><Code>spaceAround</Code></span></TableDataCell>
+      <TableDataCell><span class="prop-code"><Code>space-evenly</Code></span></TableDataCell>
       <TableDataCell><Text size="5">Distribute items evenly. Items have equal space around them</Text></TableDataCell>
     </TableRow>
     <TableRow>
@@ -98,19 +98,19 @@ Here is a more visual example of how using `justifyContent` affects the distribu
   <Box><Text size="d3">💃</Text></Box>
 </Flex>
 
-<Flex justifyContent="spaceBetween">
+<Flex justifyContent="space-between">
   <Box><Text size="d3">🕺</Text></Box>
   <Box><Text size="d3">🎶</Text></Box>
   <Box><Text size="d3">💃</Text></Box>
 </Flex>
 
-<Flex justifyContent="spaceAround">
+<Flex justifyContent="space-around">
   <Box><Text size="d3">🕺</Text></Box>
   <Box><Text size="d3">🎶</Text></Box>
   <Box><Text size="d3">💃</Text></Box>
 </Flex>
 
-<Flex justifyContent="spaceEvenly">
+<Flex justifyContent="space-evenly">
   <Box><Text size="d3">🕺</Text></Box>
   <Box><Text size="d3">🎶</Text></Box>
   <Box><Text size="d3">💃</Text></Box>
@@ -214,3 +214,8 @@ Here is an example of using `alignItems` to adjust how items are aligned within 
 </Flex>
 </div>
 ```
+
+
+### Item wrapping
+
+Wrapping specifies
