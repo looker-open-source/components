@@ -92,37 +92,37 @@ Here is a more visual example of how using `justifyContent` affects the distribu
 ```js
 <div>
 
-<Flex justifyContent="start">
+<Flex justifyContent="start" mb="medium" bg="palette.charcoal200">
   <Box><Text size="d3">🕺</Text></Box>
   <Box><Text size="d3">🎶</Text></Box>
   <Box><Text size="d3">💃</Text></Box>
 </Flex>
 
-<Flex justifyContent="space-between">
+<Flex justifyContent="space-between"  mb="medium" bg="palette.charcoal200">
   <Box><Text size="d3">🕺</Text></Box>
   <Box><Text size="d3">🎶</Text></Box>
   <Box><Text size="d3">💃</Text></Box>
 </Flex>
 
-<Flex justifyContent="space-around">
+<Flex justifyContent="space-around"  mb="medium" bg="palette.charcoal200">
   <Box><Text size="d3">🕺</Text></Box>
   <Box><Text size="d3">🎶</Text></Box>
   <Box><Text size="d3">💃</Text></Box>
 </Flex>
 
-<Flex justifyContent="space-evenly">
+<Flex justifyContent="space-evenly"  mb="medium" bg="palette.charcoal200">
   <Box><Text size="d3">🕺</Text></Box>
   <Box><Text size="d3">🎶</Text></Box>
   <Box><Text size="d3">💃</Text></Box>
 </Flex>
 
-<Flex justifyContent="center">
+<Flex justifyContent="center"  mb="medium" bg="palette.charcoal200">
   <Box><Text size="d3">🕺</Text></Box>
   <Box><Text size="d3">🎶</Text></Box>
   <Box><Text size="d3">💃</Text></Box>
 </Flex>
 
-<Flex justifyContent="end">
+<Flex justifyContent="end"  mb="medium" bg="palette.charcoal200">
   <Box><Text size="d3">🕺</Text></Box>
   <Box><Text size="d3">🎶</Text></Box>
   <Box><Text size="d3">💃</Text></Box>
@@ -172,45 +172,45 @@ Here is an example of using `alignItems` to adjust how items are aligned within 
 ```js
 <div>
 <Flex mb="xxlarge">
-  <Box p="xxlarge" style={{background: 'lightsalmon'}}>Default</Box>
-  <Box p="large" style={{background: 'papayawhip'}}>One</Box>
-  <Box p="medium" style={{background: 'paleturquoise'}}>Two</Box>
-  <Box p="small" style={{background: 'palevioletred'}}>Three</Box>
+  <Box p="xxlarge" bg="palette.purple200">Default</Box>
+  <Box p="large" bg="palette.blue200">One</Box>
+  <Box p="medium" bg="palette.green200">Two</Box>
+  <Box p="small" bg="palette.red200">Three</Box>
 </Flex>
 
 <Flex alignItems="center" mb="xxlarge">
-  <Box p="xxlarge" style={{background: 'lightsalmon'}}>Center</Box>
-  <Box p="large" style={{background: 'papayawhip'}}>One</Box>
-  <Box p="medium" style={{background: 'paleturquoise'}}>Two</Box>
-  <Box p="small" style={{background: 'palevioletred'}}>Three</Box>
+  <Box p="xxlarge" bg="palette.purple200">Center</Box>
+  <Box p="large" bg="palette.blue200">One</Box>
+  <Box p="medium" bg="palette.green200">Two</Box>
+  <Box p="small" bg="palette.red200">Three</Box>
 </Flex>
 
 <Flex alignItems="start" mb="xxlarge">
-  <Box p="xxlarge" style={{background: 'lightsalmon'}}>Start</Box>
-  <Box p="large" style={{background: 'papayawhip'}}>Two</Box>
-  <Box p="medium" style={{background: 'paleturquoise'}}>Three</Box>
-  <Box p="small" style={{background: 'palevioletred'}}>Four</Box>
+  <Box p="xxlarge" bg="palette.purple200">Start</Box>
+  <Box p="large" bg="palette.blue200">Two</Box>
+  <Box p="medium" bg="palette.green200">Three</Box>
+  <Box p="small" bg="palette.red200">Four</Box>
 </Flex>
 
 <Flex alignItems="end" mb="xxlarge">
-  <Box p="xxlarge" style={{background: 'lightsalmon'}}>End</Box>
-  <Box p="large" style={{background: 'papayawhip'}}>Two</Box>
-  <Box p="medium" style={{background: 'paleturquoise'}}>Three</Box>
-  <Box p="small" style={{background: 'palevioletred'}}>Four</Box>
+  <Box p="xxlarge" bg="palette.purple200">End</Box>
+  <Box p="large" bg="palette.blue200">Two</Box>
+  <Box p="medium" bg="palette.green200">Three</Box>
+  <Box p="small" bg="palette.red200">Four</Box>
 </Flex>
 
 <Flex alignItems="baseline" mb="xxlarge">
-  <Box p="xxlarge" style={{background: 'lightsalmon'}}>Baseline</Box>
-  <Box p="large" style={{background: 'papayawhip'}}>Two</Box>
-  <Box p="medium" style={{background: 'paleturquoise'}}>Three</Box>
-  <Box p="small" style={{background: 'palevioletred'}}>Four</Box>
+  <Box p="xxlarge" bg="palette.purple200">Baseline</Box>
+  <Box p="large" bg="palette.blue200">Two</Box>
+  <Box p="medium" bg="palette.green200">Three</Box>
+  <Box p="small" bg="palette.red200">Four</Box>
 </Flex>
 
 <Flex alignItems="stretch" mb="xxlarge">
-  <Box p="xxlarge" style={{background: 'lightsalmon'}}>Stretch</Box>
-  <Box p="large" style={{background: 'papayawhip'}}>Two</Box>
-  <Box p="medium" style={{background: 'paleturquoise'}}>Three</Box>
-  <Box p="small" style={{background: 'palevioletred'}}>Four</Box>
+  <Box p="xxlarge" bg="palette.purple200">Stretch</Box>
+  <Box p="large" bg="palette.blue200">Two</Box>
+  <Box p="medium" bg="palette.green200">Three</Box>
+  <Box p="small" bg="palette.red200">Four</Box>
 </Flex>
 </div>
 ```
