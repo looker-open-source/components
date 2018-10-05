@@ -1,14 +1,28 @@
 import tag from 'clean-tag'
 import * as React from 'react'
 import {
+  alignContent,
+  AlignContentProps,
+  alignItems,
+  AlignItemsProps,
+  alignSelf,
+  AlignSelfProps,
   bgColor,
   BgColorProps,
   bottom,
   BottomProps,
   display,
   DisplayProps,
+  flexBasis,
+  FlexBasisProps,
+  flexDirection,
+  FlexDirectionProps,
+  flexWrap,
+  FlexWrapProps,
   height,
   HeightProps,
+  justifyContent,
+  JustifyContentProps,
   left,
   LeftProps,
   maxHeight,
@@ -33,7 +47,7 @@ import {
 } from 'styled-system'
 import { SpacingSizes, styled } from '../../style'
 
-export type ResponsiveSpacingSize = ResponsiveValue<SpacingSizes>
+export type ResponsiveSpacingSize = ResponsiveValue<SpacingSizes> | 'auto'
 
 export type LensSpaceProps = { [P in keyof SpaceProps]: ResponsiveSpacingSize }
 
@@ -51,7 +65,15 @@ export interface BoxProps
     LeftProps,
     HeightProps,
     WidthProps,
-    PositionProps {
+    PositionProps,
+    AlignContentProps,
+    AlignItemsProps,
+    FlexBasisProps,
+    FlexDirectionProps,
+    FlexWrapProps,
+    JustifyContentProps,
+    AlignContentProps,
+    AlignSelfProps {
   is?: string | React.ReactNode
   className?: string
 }
@@ -75,4 +97,11 @@ export const Box = styled<BoxProps>(InternalBox)`
   ${left};
   ${right};
   ${bottom};
+  ${alignContent};
+  ${alignItems};
+  ${alignSelf};
+  ${flexBasis};
+  ${flexDirection};
+  ${flexWrap};
+  ${justifyContent};
 `
