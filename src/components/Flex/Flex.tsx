@@ -3,18 +3,22 @@ import {
   alignItems,
   flex,
   flexDirection,
-  FlexProps,
   flexWrap,
   justifyContent,
 } from 'styled-system'
 import { styled } from '../../style'
-import { Box } from '../Box'
+import { Box, BoxProps } from '../Box'
 
-export interface FlexBoxProps extends FlexProps {
+export type InheritedBoxProps = Pick<
+  BoxProps,
+  Exclude<keyof BoxProps, 'display'>
+>
+
+export interface FlexBoxProps extends InheritedBoxProps {
   className?: string
 }
 
-const InternalFlex: React.SFC<FlexProps> = ({ ...props }) => {
+const InternalFlex: React.SFC<FlexBoxProps> = ({ ...props }) => {
   return <Box {...props}>{props.children}</Box>
 }
 
