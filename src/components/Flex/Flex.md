@@ -60,11 +60,11 @@ The `<Flex>` component allows you to control how its children are distributed wi
       <TableDataCell><Text size="5">Pack items around the center</Text></TableDataCell>
     </TableRow>
     <TableRow>
-      <TableDataCell><span class="prop-code"><Code>start</Code></span></TableDataCell>
+      <TableDataCell><span class="prop-code"><Code>flex-start</Code></span></TableDataCell>
       <TableDataCell><Text size="5">Pack items from the start</Text></TableDataCell>
     </TableRow>
     <TableRow>
-      <TableDataCell><span class="prop-code"><Code>end</Code></span></TableDataCell>
+      <TableDataCell><span class="prop-code"><Code>flex-end</Code></span></TableDataCell>
       <TableDataCell><Text size="5">Pack items from the end</Text></TableDataCell>
     </TableRow>
     <TableRow>
@@ -92,37 +92,37 @@ Here is a more visual example of how using `justifyContent` affects the distribu
 ```js
 <div>
 
-<Flex justifyContent="start" mb="medium" bg="palette.charcoal200">
+<Flex justifyContent="flex-start" mb="medium" bg="palette.charcoal000">
   <Box><Text size="d3">🕺</Text></Box>
   <Box><Text size="d3">🎶</Text></Box>
   <Box><Text size="d3">💃</Text></Box>
 </Flex>
 
-<Flex justifyContent="space-between"  mb="medium" bg="palette.charcoal200">
+<Flex justifyContent="space-between"  mb="medium" bg="palette.charcoal000">
   <Box><Text size="d3">🕺</Text></Box>
   <Box><Text size="d3">🎶</Text></Box>
   <Box><Text size="d3">💃</Text></Box>
 </Flex>
 
-<Flex justifyContent="space-around"  mb="medium" bg="palette.charcoal200">
+<Flex justifyContent="space-around"  mb="medium" bg="palette.charcoal000">
   <Box><Text size="d3">🕺</Text></Box>
   <Box><Text size="d3">🎶</Text></Box>
   <Box><Text size="d3">💃</Text></Box>
 </Flex>
 
-<Flex justifyContent="space-evenly"  mb="medium" bg="palette.charcoal200">
+<Flex justifyContent="space-evenly"  mb="medium" bg="palette.charcoal000">
   <Box><Text size="d3">🕺</Text></Box>
   <Box><Text size="d3">🎶</Text></Box>
   <Box><Text size="d3">💃</Text></Box>
 </Flex>
 
-<Flex justifyContent="center"  mb="medium" bg="palette.charcoal200">
+<Flex justifyContent="center"  mb="medium" bg="palette.charcoal000">
   <Box><Text size="d3">🕺</Text></Box>
   <Box><Text size="d3">🎶</Text></Box>
   <Box><Text size="d3">💃</Text></Box>
 </Flex>
 
-<Flex justifyContent="end"  mb="medium" bg="palette.charcoal200">
+<Flex justifyContent="flex-end"  mb="medium" bg="palette.charcoal000">
   <Box><Text size="d3">🕺</Text></Box>
   <Box><Text size="d3">🎶</Text></Box>
   <Box><Text size="d3">💃</Text></Box>
@@ -148,11 +148,11 @@ Flex box allows for quickly adjusting the alignment items inside the flex contai
       <TableDataCell><Text size="5">Items are aligned center of container</Text></TableDataCell>
     </TableRow>
     <TableRow>
-      <TableDataCell><span class="prop-code"><Code>start</Code></span></TableDataCell>
+      <TableDataCell><span class="prop-code"><Code>flex-start</Code></span></TableDataCell>
       <TableDataCell><Text size="5">Items are aligned to the start of the container</Text></TableDataCell>
     </TableRow>
     <TableRow>
-      <TableDataCell><span class="prop-code"><Code>end</Code></span></TableDataCell>
+      <TableDataCell><span class="prop-code"><Code>flex-end</Code></span></TableDataCell>
       <TableDataCell><Text size="5">Items are aligned to the start of the container</Text></TableDataCell>
     </TableRow>
     <TableRow>
@@ -185,14 +185,14 @@ Here is an example of using `alignItems` to adjust how items are aligned within 
   <Box p="small" bg="palette.red200">Three</Box>
 </Flex>
 
-<Flex alignItems="start" mb="xxlarge">
+<Flex alignItems="flex-start" mb="xxlarge">
   <Box p="xxlarge" bg="palette.purple200">Start</Box>
   <Box p="large" bg="palette.blue200">Two</Box>
   <Box p="medium" bg="palette.green200">Three</Box>
   <Box p="small" bg="palette.red200">Four</Box>
 </Flex>
 
-<Flex alignItems="end" mb="xxlarge">
+<Flex alignItems="flex-end" mb="xxlarge">
   <Box p="xxlarge" bg="palette.purple200">End</Box>
   <Box p="large" bg="palette.blue200">Two</Box>
   <Box p="medium" bg="palette.green200">Three</Box>
