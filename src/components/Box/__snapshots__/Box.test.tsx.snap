@@ -12,6 +12,146 @@ exports[`Box default 1`] = `
 </div>
 `;
 
+exports[`Box supports background-color 1`] = `
+.c0 {
+  background-color: #64518A;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Box supports display 1`] = `
+.c0 {
+  display: inline-block;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Box supports height 1`] = `
+.c0 {
+  height: 1rem;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Box supports maxHeight 1`] = `
+.c0 {
+  max-height: 1rem;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Box supports maxWidth 1`] = `
+.c0 {
+  max-width: 1rem;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Box supports maxWidth 2`] = `
+.c0 {
+  min-width: 1rem;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Box supports minHeight 1`] = `
+.c0 {
+  min-height: 1rem;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Box supports position 1`] = `
+.c0 {
+  position: absolute;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Box supports position 2`] = `
+.c0 {
+  position: absolute;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Box supports top, left, bottom, right 1`] = `
+.c0 {
+  top: 1rem;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Box supports top, left, bottom, right 2`] = `
+.c0 {
+  left: 1rem;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Box supports top, left, bottom, right 3`] = `
+.c0 {
+  right: 1rem;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Box supports top, left, bottom, right 4`] = `
+.c0 {
+  bottom: 1rem;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Box supports width 1`] = `
+.c0 {
+  width: 1rem;
+}
+
+<div
+  className="c0"
+/>
+`;
+
 exports[`Box with SizeNone is valid 1`] = `
 .c0 {
   margin-top: none;

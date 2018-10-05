@@ -169,10 +169,10 @@ function sizeHelper(props: ThemedProps<ButtonProps>) {
     ButtonSizes,
     [number, number, ButtonSizes, ButtonSizes]
   > = {
-    large: [5, 5, 'large', 'small'],
+    large: [2, 2, 'large', 'small'],
     medium: [4, 4, 'medium', 'small'],
-    small: [2, 2, 'medium', 'xsmall'],
-    xsmall: [1, 1, 'xsmall', 'xsmall'],
+    small: [5, 5, 'medium', 'xsmall'],
+    xsmall: [6, 6, 'xsmall', 'xsmall'],
   }
   const [fontSize, lineHeight, px, py] = sizes[props.size || 'medium']
   return mixed({
