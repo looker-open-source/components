@@ -19,8 +19,6 @@ export interface FlexProps extends BoxProps {
     | 'center'
     | 'start'
     | 'end'
-    | 'flexStart'
-    | 'flexEnd'
     | 'spaceBetween'
     | 'spaceAround'
     | 'spaceEvenly'
@@ -125,17 +123,9 @@ function justifyContent(justify: FlexProps['justifyContent'] | undefined) {
       `
     case 'start':
       return css`
-        justify-content: start;
-      `
-    case 'end':
-      return css`
-        justify-content: end;
-      `
-    case 'flexStart':
-      return css`
         justify-content: flex-start;
       `
-    case 'flexEnd':
+    case 'end':
       return css`
         justify-content: flex-end;
       `
