@@ -3,16 +3,7 @@ import { css, styled } from '../../style'
 import { Box, BoxProps } from '../Box'
 
 export interface FlexProps extends BoxProps {
-  alignItems?:
-    | 'center'
-    | 'baseline'
-    | 'start'
-    | 'end'
-    | 'selfStart'
-    | 'selfEnd'
-    | 'flexStart'
-    | 'flexEnd'
-    | 'stretch'
+  alignItems?: 'center' | 'baseline' | 'start' | 'end' | 'stretch'
   flexWrap?: 'nowrap' | 'wrap' | 'wrapReverse'
   flexDirection?: 'row' | 'rowReverse' | 'column' | 'columnReverse'
   justifyContent?:
@@ -42,25 +33,9 @@ function alignItems(align: FlexProps['alignItems'] | undefined) {
       `
     case 'start':
       return css`
-        align-items: start;
-      `
-    case 'end':
-      return css`
-        align-items: end;
-      `
-    case 'selfStart':
-      return css`
-        align-items: self-start;
-      `
-    case 'selfEnd':
-      return css`
-        align-items: self-end;
-      `
-    case 'flexStart':
-      return css`
         align-items: flex-start;
       `
-    case 'flexEnd':
+    case 'end':
       return css`
         align-items: flex-end;
       `
