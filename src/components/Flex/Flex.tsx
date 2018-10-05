@@ -1,7 +1,6 @@
 import * as React from 'react'
 import {
   alignItems,
-  flex,
   flexDirection,
   flexWrap,
   justifyContent,
@@ -19,14 +18,16 @@ export interface FlexBoxProps extends InheritedBoxProps {
 }
 
 const InternalFlex: React.SFC<FlexBoxProps> = ({ ...props }) => {
-  return <Box {...props}>{props.children}</Box>
+  return (
+    <Box display="flex" {...props}>
+      {props.children}
+    </Box>
+  )
 }
 
 export const Flex = styled<FlexBoxProps>(InternalFlex)`
-  display: flex;
   ${alignItems};
   ${flexDirection};
   ${flexWrap};
   ${justifyContent};
-  ${flex};
 `
