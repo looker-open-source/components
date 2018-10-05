@@ -1,7 +1,7 @@
 The `<Flex />` component lets you utilize [flex box](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout) to create a wide variety of layouts, with powerful alignment, directional, and space distribution abilities.
 
 ### Basic Usage
-The `<Flex />` component has the ability to control the layout direction and order of its children. By default the children will layout in a row. For example if we wrap a series of `<Box />` components in `<Flex />` they will render next to each other..
+The `<Flex />` component has the ability to control the layout direction and order of its children. By default the children will layout in a line. For example if we wrap a series of `<Box />` components in `<Flex />` they will render next to each other.
 
 ```js
 <Flex>
@@ -214,8 +214,3 @@ Here is an example of using `alignItems` to adjust how items are aligned within 
 </Flex>
 </div>
 ```
-
-
-### Item wrapping
-
-Wrapping specifies
