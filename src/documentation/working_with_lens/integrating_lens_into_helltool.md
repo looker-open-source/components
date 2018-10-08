@@ -48,7 +48,7 @@ Bridging the two is fairly straightforward. To ensure Lens components are availa
 <Heading level="4" size="2">Registering a Lens Component with the Lens Bridge</Heading>
 ```
 
-Image we want to replace a simple button in Angular with a Lens button. We can do that using the Lens Bridge. First we need to register the Lens Button component with the Bridge and give it a name:
+Imagine we want to replace a simple button in Angular with a Lens button. We can do that using the Lens Bridge. First we need to register the Lens Button component with the Bridge and give it a name:
 
 ```typescript
 import { Button } from 'looker-lens'
