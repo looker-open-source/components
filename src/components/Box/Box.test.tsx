@@ -54,6 +54,11 @@ test('Box supports background-color', () => {
   assertSnapshot(<Box bg="semanticColors.primary.main" />)
 })
 
+test('Box supports borders', () => {
+  assertSnapshot(<Box border="1px solid black" />)
+  assertSnapshot(<Box borderRadius="4px" />)
+})
+
 test('Box supports display', () => {
   assertSnapshot(<Box display="inline-block" />)
 })
