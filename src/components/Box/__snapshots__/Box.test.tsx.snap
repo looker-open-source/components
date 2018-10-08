@@ -32,9 +32,125 @@ exports[`Box supports display 1`] = `
 />
 `;
 
+exports[`Box supports flex properties 1`] = `
+.c0 {
+  -webkit-align-content: baseline;
+  -ms-flex-line-pack: baseline;
+  align-content: baseline;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Box supports flex properties 2`] = `
+.c0 {
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Box supports flex properties 3`] = `
+.c0 {
+  -webkit-align-self: baseline;
+  -ms-flex-item-align: baseline;
+  align-self: baseline;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Box supports flex properties 4`] = `
+.c0 {
+  -webkit-flex-basis: 1;
+  -ms-flex-preferred-size: 1;
+  flex-basis: 1;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Box supports flex properties 5`] = `
+.c0 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Box supports flex properties 6`] = `
+.c0 {
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Box supports flex properties 7`] = `
+.c0 {
+  -webkit-box-pack: baseline;
+  -webkit-justify-content: baseline;
+  -ms-flex-pack: baseline;
+  justify-content: baseline;
+}
+
+<div
+  className="c0"
+/>
+`;
+
 exports[`Box supports height 1`] = `
 .c0 {
   height: 1rem;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Box supports height properties 1`] = `
+.c0 {
+  height: 1vh;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Box supports height properties 2`] = `
+.c0 {
+  max-height: 1vh;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Box supports height properties 3`] = `
+.c0 {
+  min-height: 1vh;
 }
 
 <div
@@ -102,6 +218,56 @@ exports[`Box supports position 2`] = `
 />
 `;
 
+exports[`Box supports position, top, left, bottom, right 1`] = `
+.c0 {
+  position: absolute;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Box supports position, top, left, bottom, right 2`] = `
+.c0 {
+  top: 1rem;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Box supports position, top, left, bottom, right 3`] = `
+.c0 {
+  left: 1rem;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Box supports position, top, left, bottom, right 4`] = `
+.c0 {
+  right: 1rem;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Box supports position, top, left, bottom, right 5`] = `
+.c0 {
+  bottom: 1rem;
+}
+
+<div
+  className="c0"
+/>
+`;
+
 exports[`Box supports top, left, bottom, right 1`] = `
 .c0 {
   top: 1rem;
@@ -145,6 +311,26 @@ exports[`Box supports top, left, bottom, right 4`] = `
 exports[`Box supports width 1`] = `
 .c0 {
   width: 1rem;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Box supports width 2`] = `
+.c0 {
+  max-width: 1vw;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Box supports width 3`] = `
+.c0 {
+  min-width: 1vw;
 }
 
 <div

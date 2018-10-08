@@ -53,27 +53,27 @@ export type LensSpaceProps = { [P in keyof SpaceProps]: ResponsiveSpacingSize }
 
 export interface BoxProps
   extends LensSpaceProps,
+    AlignContentProps,
+    AlignContentProps,
+    AlignItemsProps,
+    AlignSelfProps,
     BgColorProps,
+    BottomProps,
     DisplayProps,
+    FlexBasisProps,
+    FlexDirectionProps,
+    FlexWrapProps,
+    HeightProps,
+    JustifyContentProps,
+    LeftProps,
     MaxHeightProps,
     MaxWidthProps,
     MinHeightProps,
     MinWidthProps,
-    TopProps,
-    BottomProps,
-    RightProps,
-    LeftProps,
-    HeightProps,
-    WidthProps,
     PositionProps,
-    AlignContentProps,
-    AlignItemsProps,
-    FlexBasisProps,
-    FlexDirectionProps,
-    FlexWrapProps,
-    JustifyContentProps,
-    AlignContentProps,
-    AlignSelfProps {
+    RightProps,
+    TopProps,
+    WidthProps {
   is?: string | React.ReactNode
   className?: string
 }
@@ -83,25 +83,25 @@ const InternalBox: React.SFC<BoxProps> = ({ ...props }) => {
 }
 
 export const Box = styled<BoxProps>(InternalBox)`
-  ${space};
-  ${bgColor};
-  ${display};
-  ${height};
-  ${maxHeight};
-  ${minHeight};
-  ${width};
-  ${maxWidth};
-  ${minWidth};
-  ${position};
-  ${top};
-  ${left};
-  ${right};
-  ${bottom};
   ${alignContent};
   ${alignItems};
   ${alignSelf};
+  ${bgColor};
+  ${bottom};
+  ${display};
   ${flexBasis};
   ${flexDirection};
   ${flexWrap};
+  ${height};
   ${justifyContent};
+  ${left};
+  ${maxHeight};
+  ${maxWidth};
+  ${minHeight};
+  ${minWidth};
+  ${position};
+  ${right};
+  ${space};
+  ${top};
+  ${width};
 `

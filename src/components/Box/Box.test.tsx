@@ -40,6 +40,16 @@ test('Box with SizeNone is valid', () => {
   expect(tree).toMatchSnapshot()
 })
 
+test('Box supports flex properties', () => {
+  assertSnapshot(<Box alignContent="baseline" />)
+  assertSnapshot(<Box alignItems="baseline" />)
+  assertSnapshot(<Box alignSelf="baseline" />)
+  assertSnapshot(<Box flexBasis="1" />)
+  assertSnapshot(<Box flexDirection="column" />)
+  assertSnapshot(<Box flexWrap="wrap" />)
+  assertSnapshot(<Box justifyContent="baseline" />)
+})
+
 test('Box supports background-color', () => {
   assertSnapshot(<Box bg="semanticColors.primary.main" />)
 })
@@ -48,39 +58,20 @@ test('Box supports display', () => {
   assertSnapshot(<Box display="inline-block" />)
 })
 
-test('Box supports height', () => {
-  assertSnapshot(<Box height="1rem" />)
-})
-
-test('Box supports maxHeight', () => {
-  assertSnapshot(<Box maxHeight="1rem" />)
-})
-
-test('Box supports minHeight', () => {
-  assertSnapshot(<Box minHeight="1rem" />)
+test('Box supports height properties', () => {
+  assertSnapshot(<Box height="1vh" />)
+  assertSnapshot(<Box maxHeight="1vh" />)
+  assertSnapshot(<Box minHeight="1vh" />)
 })
 
 test('Box supports width', () => {
-  assertSnapshot(<Box width="1rem" />)
+  assertSnapshot(<Box width="1vw" />)
+  assertSnapshot(<Box maxWidth="1vw" />)
+  assertSnapshot(<Box minWidth="1vw" />)
 })
 
-test('Box supports maxWidth', () => {
-  assertSnapshot(<Box maxWidth="1rem" />)
-})
-
-test('Box supports maxWidth', () => {
-  assertSnapshot(<Box minWidth="1rem" />)
-})
-
-test('Box supports position', () => {
+test('Box supports position, top, left, bottom, right', () => {
   assertSnapshot(<Box position="absolute" />)
-})
-
-test('Box supports position', () => {
-  assertSnapshot(<Box position="absolute" />)
-})
-
-test('Box supports top, left, bottom, right', () => {
   assertSnapshot(<Box top="1rem" />)
   assertSnapshot(<Box left="1rem" />)
   assertSnapshot(<Box right="1rem" />)
