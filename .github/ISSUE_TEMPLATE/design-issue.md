@@ -1,6 +1,6 @@
 ---
 name: Design Issue
-about: File a design related issue or feature request
+about: Design related issues or feature requests
 
 ---
 
