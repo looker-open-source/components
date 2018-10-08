@@ -9,7 +9,7 @@ exports[`Flex default 1`] = `
 }
 
 <div
-  className="c0 "
+  className="c0"
 >
   <div>
     🥑
@@ -21,159 +21,139 @@ exports[`Flex default 1`] = `
 `;
 
 exports[`Flex supports alignContent  1`] = `
-.c1 {
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-align-content: center;
   -ms-flex-line-pack: center;
   align-content: center;
 }
 
+<div
+  className="c0"
+/>
+`;
+
+exports[`Flex supports alignContent  2`] = `
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-<div
-  className="c0 c1"
-/>
-`;
-
-exports[`Flex supports alignContent  2`] = `
-.c1 {
   -webkit-align-content: start;
   -ms-flex-line-pack: start;
   align-content: start;
 }
 
+<div
+  className="c0"
+/>
+`;
+
+exports[`Flex supports alignContent  3`] = `
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-<div
-  className="c0 c1"
-/>
-`;
-
-exports[`Flex supports alignContent  3`] = `
-.c1 {
   -webkit-align-content: end;
   -ms-flex-line-pack: end;
   align-content: end;
 }
 
+<div
+  className="c0"
+/>
+`;
+
+exports[`Flex supports alignContent  4`] = `
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-<div
-  className="c0 c1"
-/>
-`;
-
-exports[`Flex supports alignContent  4`] = `
-.c1 {
   -webkit-align-content: baseline;
   -ms-flex-line-pack: baseline;
   align-content: baseline;
 }
 
+<div
+  className="c0"
+/>
+`;
+
+exports[`Flex supports alignContent  5`] = `
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-<div
-  className="c0 c1"
-/>
-`;
-
-exports[`Flex supports alignContent  5`] = `
-.c1 {
   -webkit-align-content: space-between;
   -ms-flex-line-pack: space-between;
   align-content: space-between;
 }
 
+<div
+  className="c0"
+/>
+`;
+
+exports[`Flex supports alignContent  6`] = `
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-<div
-  className="c0 c1"
-/>
-`;
-
-exports[`Flex supports alignContent  6`] = `
-.c1 {
   -webkit-align-content: space-around;
   -ms-flex-line-pack: space-around;
   align-content: space-around;
 }
 
+<div
+  className="c0"
+/>
+`;
+
+exports[`Flex supports alignContent  7`] = `
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-<div
-  className="c0 c1"
-/>
-`;
-
-exports[`Flex supports alignContent  7`] = `
-.c1 {
   -webkit-align-content: space-evenly;
   -ms-flex-line-pack: space-evenly;
   align-content: space-evenly;
 }
 
+<div
+  className="c0"
+/>
+`;
+
+exports[`Flex supports alignContent  8`] = `
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-<div
-  className="c0 c1"
-/>
-`;
-
-exports[`Flex supports alignContent  8`] = `
-.c1 {
   -webkit-align-content: stretch;
   -ms-flex-line-pack: stretch;
   align-content: stretch;
 }
 
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
 <div
-  className="c0 c1"
+  className="c0"
 />
 `;
 
 exports[`Flex supports alignItems  1`] = `
 .c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -181,10 +161,6 @@ exports[`Flex supports alignItems  1`] = `
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -198,6 +174,10 @@ exports[`Flex supports alignItems  1`] = `
 
 exports[`Flex supports alignItems  2`] = `
 .c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-align-items: start;
   -webkit-box-align: start;
   -ms-flex-align: start;
@@ -205,10 +185,6 @@ exports[`Flex supports alignItems  2`] = `
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-align-items: start;
   -webkit-box-align: start;
   -ms-flex-align: start;
@@ -222,6 +198,10 @@ exports[`Flex supports alignItems  2`] = `
 
 exports[`Flex supports alignItems  3`] = `
 .c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-align-items: end;
   -webkit-box-align: end;
   -ms-flex-align: end;
@@ -229,10 +209,6 @@ exports[`Flex supports alignItems  3`] = `
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-align-items: end;
   -webkit-box-align: end;
   -ms-flex-align: end;
@@ -246,6 +222,10 @@ exports[`Flex supports alignItems  3`] = `
 
 exports[`Flex supports alignItems  4`] = `
 .c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-align-items: baseline;
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
@@ -253,10 +233,6 @@ exports[`Flex supports alignItems  4`] = `
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-align-items: baseline;
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
@@ -270,6 +246,10 @@ exports[`Flex supports alignItems  4`] = `
 
 exports[`Flex supports alignItems  5`] = `
 .c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-align-items: stretch;
   -webkit-box-align: stretch;
   -ms-flex-align: stretch;
@@ -277,10 +257,6 @@ exports[`Flex supports alignItems  5`] = `
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-align-items: stretch;
   -webkit-box-align: stretch;
   -ms-flex-align: stretch;
@@ -293,112 +269,97 @@ exports[`Flex supports alignItems  5`] = `
 `;
 
 exports[`Flex supports alignSelf  1`] = `
-.c1 {
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   align-self: center;
 }
 
+<div
+  className="c0"
+/>
+`;
+
+exports[`Flex supports alignSelf  2`] = `
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-<div
-  className="c0 c1"
-/>
-`;
-
-exports[`Flex supports alignSelf  2`] = `
-.c1 {
   -webkit-align-self: start;
   -ms-flex-item-align: start;
   align-self: start;
 }
 
+<div
+  className="c0"
+/>
+`;
+
+exports[`Flex supports alignSelf  3`] = `
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-<div
-  className="c0 c1"
-/>
-`;
-
-exports[`Flex supports alignSelf  3`] = `
-.c1 {
   -webkit-align-self: end;
   -ms-flex-item-align: end;
   align-self: end;
 }
 
+<div
+  className="c0"
+/>
+`;
+
+exports[`Flex supports alignSelf  4`] = `
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-<div
-  className="c0 c1"
-/>
-`;
-
-exports[`Flex supports alignSelf  4`] = `
-.c1 {
   -webkit-align-self: baseline;
   -ms-flex-item-align: baseline;
   align-self: baseline;
 }
 
+<div
+  className="c0"
+/>
+`;
+
+exports[`Flex supports alignSelf  5`] = `
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-<div
-  className="c0 c1"
-/>
-`;
-
-exports[`Flex supports alignSelf  5`] = `
-.c1 {
   -webkit-align-self: stretch;
   -ms-flex-item-align: stretch;
   align-self: stretch;
 }
 
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
 <div
-  className="c0 c1"
+  className="c0"
 />
 `;
 
 exports[`Flex supports flexDirection  1`] = `
 .c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -411,16 +372,16 @@ exports[`Flex supports flexDirection  1`] = `
 
 exports[`Flex supports flexDirection  2`] = `
 .c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-flex-direction: row-reverse;
   -ms-flex-direction: row-reverse;
   flex-direction: row-reverse;
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex-direction: row-reverse;
   -ms-flex-direction: row-reverse;
   flex-direction: row-reverse;
@@ -433,16 +394,16 @@ exports[`Flex supports flexDirection  2`] = `
 
 exports[`Flex supports flexDirection  3`] = `
 .c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -455,16 +416,16 @@ exports[`Flex supports flexDirection  3`] = `
 
 exports[`Flex supports flexDirection  4`] = `
 .c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-flex-direction: column-reverse;
   -ms-flex-direction: column-reverse;
   flex-direction: column-reverse;
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex-direction: column-reverse;
   -ms-flex-direction: column-reverse;
   flex-direction: column-reverse;
@@ -477,16 +438,16 @@ exports[`Flex supports flexDirection  4`] = `
 
 exports[`Flex supports flexWrap  1`] = `
 .c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
@@ -499,16 +460,16 @@ exports[`Flex supports flexWrap  1`] = `
 
 exports[`Flex supports flexWrap  2`] = `
 .c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex-wrap: nowrap;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
@@ -521,16 +482,16 @@ exports[`Flex supports flexWrap  2`] = `
 
 exports[`Flex supports flexWrap  3`] = `
 .c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-flex-wrap: wrap-reverse;
   -ms-flex-wrap: wrap-reverse;
   flex-wrap: wrap-reverse;
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex-wrap: wrap-reverse;
   -ms-flex-wrap: wrap-reverse;
   flex-wrap: wrap-reverse;
@@ -543,6 +504,10 @@ exports[`Flex supports flexWrap  3`] = `
 
 exports[`Flex supports justifyContent  1`] = `
 .c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -550,10 +515,6 @@ exports[`Flex supports justifyContent  1`] = `
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -567,6 +528,10 @@ exports[`Flex supports justifyContent  1`] = `
 
 exports[`Flex supports justifyContent  2`] = `
 .c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-pack: start;
   -webkit-justify-content: start;
   -ms-flex-pack: start;
@@ -574,10 +539,6 @@ exports[`Flex supports justifyContent  2`] = `
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-pack: start;
   -webkit-justify-content: start;
   -ms-flex-pack: start;
@@ -591,6 +552,10 @@ exports[`Flex supports justifyContent  2`] = `
 
 exports[`Flex supports justifyContent  3`] = `
 .c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-pack: end;
   -webkit-justify-content: end;
   -ms-flex-pack: end;
@@ -598,10 +563,6 @@ exports[`Flex supports justifyContent  3`] = `
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-pack: end;
   -webkit-justify-content: end;
   -ms-flex-pack: end;
@@ -615,6 +576,10 @@ exports[`Flex supports justifyContent  3`] = `
 
 exports[`Flex supports justifyContent  4`] = `
 .c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
@@ -622,10 +587,6 @@ exports[`Flex supports justifyContent  4`] = `
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
@@ -639,6 +600,10 @@ exports[`Flex supports justifyContent  4`] = `
 
 exports[`Flex supports justifyContent  5`] = `
 .c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-pack: space-around;
   -webkit-justify-content: space-around;
   -ms-flex-pack: space-around;
@@ -646,10 +611,6 @@ exports[`Flex supports justifyContent  5`] = `
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-pack: space-around;
   -webkit-justify-content: space-around;
   -ms-flex-pack: space-around;
@@ -663,6 +624,10 @@ exports[`Flex supports justifyContent  5`] = `
 
 exports[`Flex supports justifyContent  6`] = `
 .c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-pack: space-evenly;
   -webkit-justify-content: space-evenly;
   -ms-flex-pack: space-evenly;
@@ -670,10 +635,6 @@ exports[`Flex supports justifyContent  6`] = `
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-pack: space-evenly;
   -webkit-justify-content: space-evenly;
   -ms-flex-pack: space-evenly;
@@ -687,6 +648,10 @@ exports[`Flex supports justifyContent  6`] = `
 
 exports[`Flex supports justifyContent  7`] = `
 .c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-pack: stretch;
   -webkit-justify-content: stretch;
   -ms-flex-pack: stretch;
@@ -694,10 +659,6 @@ exports[`Flex supports justifyContent  7`] = `
 }
 
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-pack: stretch;
   -webkit-justify-content: stretch;
   -ms-flex-pack: stretch;
