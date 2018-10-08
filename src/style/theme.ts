@@ -44,13 +44,11 @@ export interface Theme {
   fontSizes: FontRamp
   fontWeights: Record<string, number>
   lineHeights: FontRamp
-  palette: Palette
   /**
    * A function that can be overridden to return different reset css properties
    * or null to remove all resets. Most base elements in Lens implement the reset.
    */
   reset: () => InterpolationValue
-  semanticColors: SemanticColors
   shadows: Shadows
   space: Record<SpacingSizes, string>
   transitions: Transitions
@@ -64,7 +62,6 @@ export const theme: Theme = {
   fontSizes,
   fontWeights,
   lineHeights,
-  palette,
   reset: () => {
     return {
       border: 0,
@@ -75,7 +72,6 @@ export const theme: Theme = {
       verticalAlign: 'baseline',
     }
   },
-  semanticColors,
   shadows,
   space: {
     // tslint:disable:object-literal-sort-keys

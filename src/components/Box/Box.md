@@ -93,3 +93,11 @@ Boxes can set positioning when needed.
     <Box position="absolute" top="0" right="0" bg="palette.red300">I'm absolutely positioned!</Box>
   </Box>
 ```
+
+##### Borders
+Boxes can have borders.
+```js
+  <Box width="50px" height="50px" bg="palette.purple200" border="1px solid black" borderRadius="4px">
+    I've got borders.
+  </Box>
+```

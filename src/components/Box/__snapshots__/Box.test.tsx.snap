@@ -118,16 +118,6 @@ exports[`Box supports flex properties 7`] = `
 />
 `;
 
-exports[`Box supports height 1`] = `
-.c0 {
-  height: 1rem;
-}
-
-<div
-  className="c0"
-/>
-`;
-
 exports[`Box supports height properties 1`] = `
 .c0 {
   height: 1vh;
@@ -151,66 +141,6 @@ exports[`Box supports height properties 2`] = `
 exports[`Box supports height properties 3`] = `
 .c0 {
   min-height: 1vh;
-}
-
-<div
-  className="c0"
-/>
-`;
-
-exports[`Box supports maxHeight 1`] = `
-.c0 {
-  max-height: 1rem;
-}
-
-<div
-  className="c0"
-/>
-`;
-
-exports[`Box supports maxWidth 1`] = `
-.c0 {
-  max-width: 1rem;
-}
-
-<div
-  className="c0"
-/>
-`;
-
-exports[`Box supports maxWidth 2`] = `
-.c0 {
-  min-width: 1rem;
-}
-
-<div
-  className="c0"
-/>
-`;
-
-exports[`Box supports minHeight 1`] = `
-.c0 {
-  min-height: 1rem;
-}
-
-<div
-  className="c0"
-/>
-`;
-
-exports[`Box supports position 1`] = `
-.c0 {
-  position: absolute;
-}
-
-<div
-  className="c0"
-/>
-`;
-
-exports[`Box supports position 2`] = `
-.c0 {
-  position: absolute;
 }
 
 <div
@@ -268,49 +198,9 @@ exports[`Box supports position, top, left, bottom, right 5`] = `
 />
 `;
 
-exports[`Box supports top, left, bottom, right 1`] = `
-.c0 {
-  top: 1rem;
-}
-
-<div
-  className="c0"
-/>
-`;
-
-exports[`Box supports top, left, bottom, right 2`] = `
-.c0 {
-  left: 1rem;
-}
-
-<div
-  className="c0"
-/>
-`;
-
-exports[`Box supports top, left, bottom, right 3`] = `
-.c0 {
-  right: 1rem;
-}
-
-<div
-  className="c0"
-/>
-`;
-
-exports[`Box supports top, left, bottom, right 4`] = `
-.c0 {
-  bottom: 1rem;
-}
-
-<div
-  className="c0"
-/>
-`;
-
 exports[`Box supports width 1`] = `
 .c0 {
-  width: 1rem;
+  width: 1vw;
 }
 
 <div

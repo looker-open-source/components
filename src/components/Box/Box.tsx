@@ -9,6 +9,10 @@ import {
   AlignSelfProps,
   bgColor,
   BgColorProps,
+  border,
+  BorderProps,
+  borderRadius,
+  BorderRadiusProps,
   bottom,
   BottomProps,
   display,
@@ -58,6 +62,8 @@ export interface BoxProps
     AlignItemsProps,
     AlignSelfProps,
     BgColorProps,
+    BorderProps,
+    BorderRadiusProps,
     BottomProps,
     DisplayProps,
     FlexBasisProps,
@@ -87,6 +93,8 @@ export const Box = styled<BoxProps>(InternalBox)`
   ${alignItems};
   ${alignSelf};
   ${bgColor};
+  ${border};
+  ${borderRadius};
   ${bottom};
   ${display};
   ${flexBasis};

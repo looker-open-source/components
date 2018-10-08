@@ -123,7 +123,7 @@ To help stay withing Looker's design principles, [Lens publishes a Theme object]
 
 ```jsx static
 const DangerButton = styled(Button)`
-  background-color: ${(props) => props.theme.semanticColors.danger.main};
+  background-color: ${(props) => props.theme.colors.semanticColors.danger.main};
 `
 ```
 
@@ -139,7 +139,7 @@ const BasePersonTitle = ({ props: PersonTitleProps }) => {
 }
 
 const PersonTitle = styled<PersonTitleProps>(BasePersonTitle)`
-  background-color: ${(props) => props.theme.semanticColors.primary.lighter};
+  background-color: ${(props) => props.theme.colors.semanticColors.primary.lighter};
   font-size: ${(props) => props.theme.fontSizes[5]};
   padding: ${(props) => props.spacing.large};
 `
