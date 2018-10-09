@@ -28,7 +28,7 @@ const handleValidationType = (props: ThemedProps<ValidationMessageProps>) => {
   switch (props.type) {
     case 'error':
       return css`
-        color: ${props.theme.semanticColors.danger.dark};
+        color: ${props.theme.colors.semanticColors.danger.dark};
       `
     default:
       return

@@ -38,18 +38,17 @@ export type SpacingSizes =
 
 export interface Theme {
   breakpoints: string[]
+  colors: { palette: Palette; semanticColors: SemanticColors }
   easings: Easings
   fontFaces: FontFaces
   fontSizes: FontRamp
   fontWeights: Record<string, number>
   lineHeights: FontRamp
-  palette: Palette
   /**
    * A function that can be overridden to return different reset css properties
    * or null to remove all resets. Most base elements in Lens implement the reset.
    */
   reset: () => InterpolationValue
-  semanticColors: SemanticColors
   shadows: Shadows
   space: Record<SpacingSizes, string>
   transitions: Transitions
@@ -57,12 +56,12 @@ export interface Theme {
 
 export const theme: Theme = {
   breakpoints: ['30rem', '48rem', '64rem', '75rem', '90rem'],
+  colors: { palette, semanticColors },
   easings,
   fontFaces,
   fontSizes,
   fontWeights,
   lineHeights,
-  palette,
   reset: () => {
     return {
       border: 0,
@@ -73,7 +72,6 @@ export const theme: Theme = {
       verticalAlign: 'baseline',
     }
   },
-  semanticColors,
   shadows,
   space: {
     // tslint:disable:object-literal-sort-keys
