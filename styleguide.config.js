@@ -36,7 +36,7 @@ module.exports = {
       content: 'src/documentation/intro.md',
     },
     {
-      name: 'Using Lens',
+      name: 'Working With Lens',
       sections: [
         {
           name: 'Getting Started',
@@ -97,6 +97,15 @@ module.exports = {
         {
           name: 'Borders & Dividers',
           content: 'src/documentation/style/Borders.md',
+        },
+      ],
+    },
+    {
+      name: 'API',
+      sections: [
+        {
+          name: 'Gotchas',
+          content: 'src/documentation/api/Gotchas.md',
         },
       ],
     },
