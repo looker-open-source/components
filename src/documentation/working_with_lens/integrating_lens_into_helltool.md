@@ -1,11 +1,7 @@
 
 One of Lens' core tenets is that adoption determines its success. Helltool is Looker's biggest project, so to meet Lens' adoption goal it must provide methods to interface with and be consumed by Helltool's existing code base.
 
-
-
-```jsx noeditor
-<Heading level="3" size="1" transform="caps">Requiring Components</Heading>
-```
+### Requiring Components
 
 Lens components are written in Typescript and published as ES6-compatible modules. They can be required into other ES6 modules using the typical ES6 `import / export` syntax:
 
@@ -20,19 +16,13 @@ const MyComponent = () => {
 }
 ```
 
-
-```jsx noeditor
-<Heading level="3" size="1">.tsx Files and Component Syntax</Heading>
-```
+### .tsx Files and Component Syntax
 
 [React](https://reactjs.org/) is the underlying component framework which powers Lens. React components and are generally expressed via the [JSX](https://reactjs.org/docs/introducing-jsx.html) syntax.
 
 In order to identify and precompile the JSX fragments, files containing Lens and supporting components must be named with a `.tsx` file extension.
 
-
-```jsx noeditor
-<Heading level="3" size="1">Using Lens Components in Helltool's Angular App</Heading>
-```
+### Using Lens Components in Helltool's Angular App
 
 Lens aims to make its components as portable as possible. That means Lens components should be able to be used anywhere and behave in an expected way. Unfortunately, Angular expresses its components as a string template, which is not compatible with React's function based approach.
 
@@ -43,10 +33,7 @@ Bridging the two is fairly straightforward. To ensure Lens components are availa
 >
 > Conceptually, the Lens Bridge creates a connection between one Lens or React component and an Angular application.
 
-
-```jsx noeditor
-<Heading level="4" size="2">Registering a Lens Component with the Lens Bridge</Heading>
-```
+#### Registering a Lens Component with the Lens Bridge
 
 Imagine we want to replace a simple button in Angular with a Lens button. We can do that using the Lens Bridge. First we need to register the Lens Button component with the Bridge and give it a name:
 
@@ -63,11 +50,7 @@ The `register` function takes a string name, the Lens or React component instanc
 
 One of Angular's greatest frustrations is its piling on of conventions, so why add yet another through the `lens-` prefix convention? The intent is to make it very clear where the breakpoints are between Lens code and Angular code throughout Helltool's code base.
 
-
-
-```jsx noeditor
-<Heading level="4" size="2">Using the Wrapped Lens Component</Heading>
-```
+#### Using the Wrapped Lens Component
 
 Now that the Button component has been registered with the Lens Bridge we can use it in Angular easily.
 
@@ -95,11 +78,7 @@ const componentTemplate = `
 >
 > In the example above note that `danger` appears to be quoted twice as in `color='"danger"'`. That's because Angular will parse and interpret the value of any attribute designated as a one-way data binding as Javascript. If `danger` was not quoted in double quotes, Angular would treat it as a variable named `danger`, not the string `danger`. Most of the time you won't be passing string values, you would pass references to a controller property, as you can see with the on-click handler.
 
-
-
-```jsx noeditor
-<Heading level="4" size="2">What Belongs on the Lens Side of the Bridge?</Heading>
-```
+#### What Belongs on the Lens Side of the Bridge?
 
 The example above describes registering a single Lens Button component with the Lens Bridge and using it in Angular. While this will work, decomposing every Angular component to its constituent Lens component is tedious and less expressive than using Lens components in a React context.
 
@@ -107,11 +86,7 @@ It's suggested that developers try to find small to medium sized chunks of UI to
 
 For example, write a whole form in Lens and put that behind the Bridge, instead of putting each button and input in a form behind the Bridge. Let's look at a quick example of how we might apply this to the Admin Connection form.
 
-
-
-```jsx noeditor
-<Heading level="4" size="2">Example: Using Lens in the Admin Connection Form</Heading>
-```
+#### Example: Using Lens in the Admin Connection Form
 
 > ⚠️ Heads up ⚠️
 >
@@ -125,11 +100,7 @@ Using the Bridge, we can define the scope of work as the entire form, encode it 
 
 ![img/admin_connection_form_highlighted](img/admin_connection_form_highlighted.jpg)
 
-
-
-```jsx noeditor
-<Heading level="5" size="3">Deciding on an Interface</Heading>
-```
+##### Deciding on an Interface
 
 Before starting on the Lens powered version of the Connection form, we should decide on the form component's interface. It likely receives an object that describes a current connection if the user is editing a connection, or null if the user is creating a new connection. Let's assume that it saving and testing the connection is a complex process already well defined in Helltool's Angular code. Instead of immediately porting that to a Lens / React environment we can reuse the logic by passing handlers across the Bridge and into our form component.
 
@@ -139,11 +110,7 @@ So we need:
 1. A save handler function
 1. A test connection handler function
 
-
-
-```jsx noeditor
-<Heading level="5" size="3">Building the Connection Form Component</Heading>
-```
+##### Building the Connection Form Component
 
 To build the Lens powered version of the form, we can start by defining a React component in Helltool. Let's call the file `admin_connection_form.tsx`. Its contents might look something like so (some parts of this example are abbreviated for the sake of instruction):
 
@@ -223,11 +190,7 @@ adminConnectionModule.component({
 })
 ```
 
-
-
-```jsx noeditor
-<Heading level="3" size="1">Lens Bridge Gotchas</Heading>
-```
+### Lens Bridge Gotchas
 
 * The Lens Bridge does not support composition through Angular's concept of transclusion. This means Angular template code like this is invalid:
 
