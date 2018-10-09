@@ -42,13 +42,18 @@ Every Lens file has a cover page so that you can quickly scan what type of file 
 
 Inside each file is a series of pages that maps to our design roadmap workflow. The page list is:
 - Title (cover page)
+- Components (any local components to the file)
 - Define (scoping of file and design work)
 - Explore (design explorations and iterations)
 - Refine (refinement of explorations )
-- Proposal (finalized proposals & best practices)
-- Launch (Final page, contains finalized files and library assets)
+- Spec (any specifications for work & best practices)
+- Launch (Final page, contains finalized work)
 
-By nature of how the design process works, these pages are a bit fluid and you may encounter documents with more pages, but as a team we do our best to standardize on the format above.
+#### Files with shared components
+
+One small variation from the file organization structure above is that any file that contains components that are published in the team library will not have a **"Launch"** page. For organizational purposes their "launch" page will match the name of the component or style.
+
+As an example the Icon component's "launch" page will be named **Icons** and that page will contain the published components.
 
 ### Leaving Feedback in Figma
 Figma allows you to give feedback right in the file you are looking at. You can leave a comment on a screen to start a conversation about any feedback you may have.
@@ -65,7 +70,7 @@ Our team library is where we share design assets like components and styles. The
 
 #### Using the team library
 
-- Figma has a [great document on using the team library](https://help.figma.com/editor/team-library).
+- Figma has some [great documentation on using the team library](https://help.figma.com/editor/team-library).
 - [Figma team library tutorial](https://www.youtube.com/watch?v=PgRUEyw9xpo) video on youtube.
 
 #### Adding items to the team library
