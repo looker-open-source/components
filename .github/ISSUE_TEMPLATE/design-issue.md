@@ -1,6 +1,6 @@
 ---
 name: Design Issue
-about: Design related issues or feature requests
+about: Open an issue for design related tasks or features.
 
 ---
 
@@ -26,10 +26,10 @@ Provide any additional notes or context here such as:
 
 # Definition of done:
 
-- [  ] Audit of usage
-- [  ] Component/Style spec created/updated
-- [  ] Design Review
-- [  ] Accessibility/Localization review
-- [  ] Component/Style updated or added in Team Library
-- [  ] Component/Style issue tagged for development
-- [  ] Component/Style documented
+- [ ] Audit of usage
+- [ ] Component/Style spec created/updated
+- [ ] Design Review
+- [ ] Accessibility/Localization review
+- [ ] Component/Style updated or added in Team Library
+- [ ] Component/Style issue tagged for development
+- [ ] Component/Style documented
