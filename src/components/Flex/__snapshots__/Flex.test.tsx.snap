@@ -61,6 +61,9 @@ exports[`Flex supports alignItems  1`] = `
 
 exports[`Flex supports alignSelf  1`] = `
 .c0 {
+  -webkit-align-self: end;
+  -ms-flex-item-align: end;
+  align-self: end;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
