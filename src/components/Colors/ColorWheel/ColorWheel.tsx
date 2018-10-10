@@ -3,99 +3,33 @@ import { hsv, HSVColor } from 'd3-hsv'
 import * as React from 'react'
 import { styled } from '../../../style'
 
+import { canvasRadius, eventCartesianPosition } from './canvas_utils'
+import { isValidColor } from './color_utils'
+import {
+  CartesianCoordinate,
+  deg2rad,
+  isInCircle,
+  polar2xy,
+  rad2deg,
+  xy2polar,
+} from './math_utils'
+
 interface ColorWheelProps {
   /**
    * Determines what the initial color to component should be.
    */
   color?: string
-
+  /**
+   * Size, in pixels, of the canvas. Will default to 100.
+   */
   size?: number
-
+  /**
+   * Callback for when a color has been changed in color wheel
+   */
   onColorChange?: (color: string) => void
 }
 
-interface ColorWheelState {
-  canvas: HTMLCanvasElement
-  ctx: CanvasRenderingContext2D
-}
-
-interface CartesianCoordinate {
-  x: number
-  y: number
-}
-
-interface PolarCoordinate {
-  radius: number
-  angle: number
-}
-
-/**
- * Converts cartesian (x,y) coordinates to polar (radius, angle) coordinates.
- */
-const xy2polar = (x: number, y: number): PolarCoordinate => {
-  return {
-    angle: Math.atan2(y, x),
-    radius: Math.sqrt(x * x + y * y),
-  }
-}
-
-/**
- * Converts polar coordinates (radius, angle) into cartesian coordinates (x,y).
- */
-const polar2xy = (radius: number, angle: number): CartesianCoordinate => {
-  return {
-    x: radius * Math.cos(angle),
-    y: radius * Math.sin(angle),
-  }
-}
-
-/**
- * Radians in [-n, n] range. Returns degrees in [0, 360] range.
- */
-const rad2deg = (rad: number): number => ((rad + Math.PI) / (2 * Math.PI)) * 360
-
-/**
- * Degrees in [0, 360].  Returns radians in [-n, n] range.
- */
-const deg2rad = (angle: number): number => angle * (Math.PI / 180) + Math.PI
-
-/**
- * Utility to determine if color is valid or not.
- */
-const isValidColor = (color?: string): boolean =>
-  color ? rgb(color).displayable() : false
-
-/**
- * Returns a radius for a given canvas element
- */
-const canvasRadius = (canvas: HTMLCanvasElement, margin: number): number =>
-  (canvas.width - 2 * margin) / 2
-
-/**
- * Utility that returns a boolean indicating if a given cartesian coordinate is within a circle of radius
- * r centered at (0,0).
- */
-const isInCircle = (position: CartesianCoordinate, radius: number): boolean =>
-  xy2polar(position.x - radius, position.y - radius).radius < radius
-
-/**
- * Utility that translates a mouse event inside a Canvas element into a cartesian coordinate
- */
-const getMousePosition = (
-  canvas: HTMLCanvasElement,
-  mouseEvent: any
-): CartesianCoordinate => {
-  const rect = canvas.getBoundingClientRect()
-  return {
-    x: mouseEvent.clientX - rect.left,
-    y: mouseEvent.clientY - rect.top,
-  }
-}
-
-class InternalColorWheel extends React.Component<
-  ColorWheelProps,
-  ColorWheelState
-> {
+class InternalColorWheel extends React.Component<ColorWheelProps> {
   private canvas!: HTMLCanvasElement
   private margin: number = 2
   private mouseMoving: boolean = false
@@ -111,6 +45,10 @@ class InternalColorWheel extends React.Component<
     this.updateCanvas()
   }
 
+  public setCanvasRef = (element: HTMLCanvasElement) => {
+    this.canvas = element
+  }
+
   public render() {
     return (
       <canvas
@@ -124,16 +62,12 @@ class InternalColorWheel extends React.Component<
     )
   }
 
-  public setCanvasRef = (element: HTMLCanvasElement) => {
-    this.canvas = element
-  }
-
   /**
    * Mousedown event for canvas to bind against. Starts a small state machine
    * so we can track mouse movement.
    */
   public mouseDown = (event: any) => {
-    const position = getMousePosition(this.canvas, event)
+    const position = eventCartesianPosition(this.canvas, event)
 
     if (isInCircle(position, canvasRadius(this.canvas, this.margin))) {
       this.mouseMoving = true
@@ -147,7 +81,7 @@ class InternalColorWheel extends React.Component<
    */
   public mouseMove = (event: any) => {
     if (this.mouseMoving) {
-      const position = getMousePosition(this.canvas, event)
+      const position = eventCartesianPosition(this.canvas, event)
       if (isInCircle(position, canvasRadius(this.canvas, this.margin))) {
         this.mousePosition = position
         this.renderWheel(this.canvas, position)
@@ -156,11 +90,36 @@ class InternalColorWheel extends React.Component<
   }
 
   /**
-   * mouseup event.  Stop tracking mouse.
+   * Stop tracking mouse.
    */
   public mouseUp = () => {
     this.mouseMoving = false
     this.updateColor()
+  }
+
+  private updateCanvas() {
+    this.invalidateImage()
+
+    const ctx = this.canvas.getContext('2d')
+
+    if (ctx) {
+      ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
+      this.drawWheel(this.canvas, ctx)
+
+      const mousePosition = this.colorToMousePositionAndBrightness(
+        this.canvas,
+        this.props.color
+      )
+      this.drawMouse(ctx, mousePosition)
+    }
+  }
+
+  /**
+   * Sometimes the image will need to be regenerated (e.g when brightness changes).
+   * Call this method to invalidate image to trigger a redraw.
+   */
+  private invalidateImage() {
+    this.image = undefined
   }
 
   /**
@@ -279,31 +238,6 @@ class InternalColorWheel extends React.Component<
       this.drawWheel(canvas, ctx)
       this.drawMouse(ctx, mousePosition)
     }
-  }
-
-  private updateCanvas() {
-    this.invalidateImage()
-
-    const ctx = this.canvas.getContext('2d')
-
-    if (ctx) {
-      ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
-      this.drawWheel(this.canvas, ctx)
-
-      const mousePosition = this.colorToMousePositionAndBrightness(
-        this.canvas,
-        this.props.color
-      )
-      this.drawMouse(ctx, mousePosition)
-    }
-  }
-
-  /**
-   * Sometimes the image will need to be regenerated (e.g when brightness changes).
-   * Call this method to invalidate image to trigger a redraw.
-   */
-  private invalidateImage() {
-    this.image = undefined
   }
 
   /**
