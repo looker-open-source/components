@@ -21,7 +21,7 @@ module.exports = {
   ignore: ['**/index.tsx', '**/*.test.tsx'],
   pagePerSection: true,
   propsParser: typescriptPropsParser,
-  showCode: true,
+  exampleMode: 'expand',
   styleguideComponents: {
     Wrapper: path.join(__dirname, 'styleguide_components/ThemeWrapper'),
   },
@@ -32,11 +32,14 @@ module.exports = {
   ],
   sections: [
     {
-      name: '',
+      name: ' ',
       content: 'src/documentation/intro.md',
+      sectionDepth: 1,
+      sections: [],
     },
     {
       name: 'Working With Lens',
+      sectionDepth: 1,
       sections: [
         {
           name: 'Getting Started',
@@ -64,6 +67,7 @@ module.exports = {
     },
     {
       name: 'Principles',
+      sectionDepth: 1,
       sections: [
         {
           name: 'Accessibility',
@@ -77,6 +81,7 @@ module.exports = {
     },
     {
       name: 'Style',
+      sectionDepth: 1,
       sections: [
         {
           name: 'Breakpoints',
@@ -102,6 +107,7 @@ module.exports = {
     },
     {
       name: 'API',
+      sectionDepth: 1,
       sections: [
         {
           name: 'Gotchas',
@@ -111,10 +117,12 @@ module.exports = {
     },
     {
       name: 'Components',
+      sectionDepth: 1,
       components: 'src/components/**/*.tsx',
     },
     {
       name: 'Icons',
+      sectionDepth: 1,
       components: 'src/icons/components/*.tsx',
       content: 'src/icons/components/ALL_ICONS.md',
     },
