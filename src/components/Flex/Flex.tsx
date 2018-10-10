@@ -1,5 +1,7 @@
 import * as React from 'react'
 import {
+  alignContent,
+  AlignContentProps,
   alignItems,
   AlignItemsProps,
   flexDirection,
@@ -19,6 +21,7 @@ export type InheritedBoxProps = Pick<
 
 export interface FlexBoxProps
   extends InheritedBoxProps,
+    AlignContentProps,
     AlignItemsProps,
     FlexDirectionProps,
     FlexWrapProps,
@@ -35,6 +38,7 @@ const InternalFlex: React.SFC<FlexBoxProps> = ({ ...props }) => {
 }
 
 export const Flex = styled<FlexBoxProps>(InternalFlex)`
+  ${alignContent};
   ${alignItems};
   ${flexDirection};
   ${flexWrap};
