@@ -41,23 +41,23 @@ function textVariant(props: ThemedProps<TextProps>) {
   switch (props.variant) {
     case 'critical':
       return css`
-        color: ${props.theme.palette.red500};
+        color: ${props.theme.colors.palette.red500};
       `
     case 'positive':
       return css`
-        color: ${props.theme.palette.green500};
+        color: ${props.theme.colors.palette.green500};
       `
     case 'secondary':
       return css`
-        color: ${props.theme.palette.charcoal500};
+        color: ${props.theme.colors.palette.charcoal500};
       `
     case 'subdued':
       return css`
-        color: ${props.theme.palette.charcoal400};
+        color: ${props.theme.colors.palette.charcoal400};
       `
     default:
       return css`
-        color: ${props.theme.palette.charcoal900};
+        color: ${props.theme.colors.palette.charcoal900};
       `
   }
 }

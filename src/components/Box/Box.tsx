@@ -5,6 +5,10 @@ import {
   AlignSelfProps,
   bgColor,
   BgColorProps,
+  border,
+  BorderProps,
+  borderRadius,
+  BorderRadiusProps,
   bottom,
   BottomProps,
   display,
@@ -43,21 +47,23 @@ export type LensSpaceProps = { [P in keyof SpaceProps]: ResponsiveSpacingSize }
 
 export interface BoxProps
   extends LensSpaceProps,
+    AlignSelfProps,
     BgColorProps,
+    BorderProps,
+    BorderRadiusProps,
+    BottomProps,
     DisplayProps,
+    FlexBasisProps,
+    HeightProps,
+    LeftProps,
     MaxHeightProps,
     MaxWidthProps,
     MinHeightProps,
     MinWidthProps,
-    TopProps,
-    BottomProps,
-    RightProps,
-    LeftProps,
-    HeightProps,
-    WidthProps,
     PositionProps,
-    FlexBasisProps,
-    AlignSelfProps {
+    RightProps,
+    TopProps,
+    WidthProps {
   is?: string | React.ReactNode
   className?: string
 }
@@ -67,20 +73,25 @@ const InternalBox: React.SFC<BoxProps> = ({ ...props }) => {
 }
 
 export const Box = styled<BoxProps>(InternalBox)`
-  ${space};
+  ${alignSelf};
   ${bgColor};
+  ${border};
+  ${borderRadius};
+  ${bottom};
   ${display};
+  ${flexBasis};
   ${height};
+  ${left};
   ${maxHeight};
-  ${minHeight};
-  ${width};
   ${maxWidth};
+  ${minHeight};
   ${minWidth};
   ${position};
-  ${top};
-  ${left};
   ${right};
   ${bottom};
   ${alignSelf};
   ${flexBasis};
+  ${space};
+  ${top};
+  ${width};
 `

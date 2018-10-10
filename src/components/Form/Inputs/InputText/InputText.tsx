@@ -19,7 +19,7 @@ const handleValidationType = (props: ThemedProps<InputProps>) => {
   switch (props.validationType) {
     case 'error':
       return css`
-        background-color: ${props.theme.semanticColors.danger.lighter};
+        background-color: ${props.theme.colors.semanticColors.danger.lighter};
       `
     default:
       return
@@ -34,7 +34,8 @@ const InternalInputText: React.SFC<InputTextProps> = ({
 }
 
 export const InputText = styled<InputTextProps>(InternalInputText)`
-  border: solid 1px ${props => props.theme.semanticColors.primary.borderColor};
+  border: solid 1px
+    ${props => props.theme.colors.semanticColors.primary.borderColor};
   height: 28px;
   padding: 0 ${props => props.theme.space.small};
   border-radius: 4px;

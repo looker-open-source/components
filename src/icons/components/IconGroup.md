@@ -1,0 +1,5 @@
+# IconGroup
+
+```js
+<IconGroup />
+```

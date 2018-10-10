@@ -1,9 +1,3 @@
-### Contents
-
-- [Code Style Philosophy](#code-style-philosophy)
-- [Automated Tooling](#automated-tooling)
-- [Editor Support & Configuration](#editor-support-&-configuration)
-
 ### Code Style Philosophy
 
 ##### Automate code formatting and correctness whenever possible
@@ -12,11 +6,11 @@ Lens takes the perspective that, as much as possible, code style (code formattin
 
 ##### Use lint rules to eliminate dangerous anti-patterns
 
-When automated tooling cannot reformat code without causing logical errors, Lens employs linter rules to ensure it produces consistent, correct code. An example of one of these rules is the TSLint `no-namespace` rule. Namespacing, while a valid feature in Typescript, is the byproduct of Typescript evolving during a time when ES6 style modules did not exist (nor did the tooling around them). [Typescript itself calls out the best approach to code organization moving forward](https://www.typescriptlang.org/docs/handbook/namespaces-and-modules.html#using-modules):
+When automated tooling cannot reformat code without causing logical errors, Lens employs linter rules to ensure it produces consistent, correct code. An example of one of these rules is the TSLint `no-namespace` rule. Namespacing, while a valid feature in Typescript, is the byproduct of Typescript evolving during a time when ES6 style modules did not exist (nor did the tooling around them). [Typescript itself calls out ES6 modules as the best approach to code organization moving forward](https://www.typescriptlang.org/docs/handbook/namespaces-and-modules.html#using-modules):
 
 > Starting with ECMAScript 2015, modules are native part of the language, and should be supported by all compliant engine implementations. Thus, for new projects modules would be the recommended code organization mechanism.
 
-To ensure Typescript namespaces are never introduced into Lens (because it uses ES6 modules), Lens defines the linter rule `no-namespace` to enforce code correctness.
+To ensure Typescript namespaces are never introduced into Lens (because Lens uses ES6 modules), Lens' linter disallows any use of them in code.
 
 ### Automated Tooling
 
@@ -49,7 +43,7 @@ You can also configure some editors to apply their formatting on save, this is d
 
 ### Editor Support & Configuration
 
-As Lens is predominately written in Typescript, the two best supported IDEs for working in Lens are VS Code and Intellij (or derivatives).
+As Lens is predominately written in Typescript, the two best supported IDEs known by the author for working in Lens are VS Code and Intellij (or derivatives). Please feel free to add your favorite editor's mechanism of support if you wish.
 
 #### VS Code
 
