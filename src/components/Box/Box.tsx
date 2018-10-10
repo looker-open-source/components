@@ -1,8 +1,6 @@
 import tag from 'clean-tag'
 import * as React from 'react'
 import {
-  alignSelf,
-  AlignSelfProps,
   bgColor,
   BgColorProps,
   border,
@@ -13,8 +11,6 @@ import {
   BottomProps,
   display,
   DisplayProps,
-  flexBasis,
-  FlexBasisProps,
   height,
   HeightProps,
   left,
@@ -47,13 +43,11 @@ export type LensSpaceProps = { [P in keyof SpaceProps]: ResponsiveSpacingSize }
 
 export interface BoxProps
   extends LensSpaceProps,
-    AlignSelfProps,
     BgColorProps,
     BorderProps,
     BorderRadiusProps,
     BottomProps,
     DisplayProps,
-    FlexBasisProps,
     HeightProps,
     LeftProps,
     MaxHeightProps,
@@ -73,13 +67,11 @@ const InternalBox: React.SFC<BoxProps> = ({ ...props }) => {
 }
 
 export const Box = styled<BoxProps>(InternalBox)`
-  ${alignSelf};
   ${bgColor};
   ${border};
   ${borderRadius};
   ${bottom};
   ${display};
-  ${flexBasis};
   ${height};
   ${left};
   ${maxHeight};
@@ -89,8 +81,6 @@ export const Box = styled<BoxProps>(InternalBox)`
   ${position};
   ${right};
   ${bottom};
-  ${alignSelf};
-  ${flexBasis};
   ${space};
   ${top};
   ${width};
