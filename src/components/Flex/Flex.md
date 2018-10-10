@@ -279,3 +279,27 @@ If you have multiple rows of flex items, the `alignContent` property determines 
 </Flex>
 ```
 
+
+### Wrapping Flex Items
+
+The  `flexWrap` property determines if flex items should be forced into a single line or if they can wrap onto multiple lines.
+
+```js
+<Flex width="80%" flexWrap="nowrap" mb="large">
+  <FlexItem width="40%" p="large" bg="palette.red200">These Lines</FlexItem>
+  <FlexItem width="40%" p="large" bg="palette.blue200">Will NOT</FlexItem>
+  <FlexItem width="40%" p="large" bg="palette.green200">Wrap</FlexItem>
+</Flex>
+
+<Flex width="50%" flexWrap="wrap" mb="large">
+  <FlexItem width="40%" p="large" bg="palette.red200">These Lines</FlexItem>
+  <FlexItem width="40%" p="large" bg="palette.blue200">Will</FlexItem>
+  <FlexItem width="40%" p="large" bg="palette.green200">Wrap</FlexItem>
+</Flex>
+
+<Flex width="50%" flexWrap="wrap-reverse" mb="large">
+  <FlexItem width="40%" p="large" bg="palette.red200">These Lines</FlexItem>
+  <FlexItem width="40%" p="large" bg="palette.blue200">Will</FlexItem>
+  <FlexItem width="40%" p="large" bg="palette.green200">Wrap Reverse</FlexItem>
+</Flex>
+```
