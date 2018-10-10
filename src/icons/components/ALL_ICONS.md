@@ -29,6 +29,7 @@
 <IconHamburger width="40" height="40" />
 <IconHome width="40" height="40" />
 <IconLiveHelp width="40" height="40" />
+<IconLookerLogo width="40" height="40" />
 <IconNote width="40" height="40" />
 <IconRedo width="40" height="40" />
 <IconRefresh width="40" height="40" />
