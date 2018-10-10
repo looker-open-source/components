@@ -41,13 +41,8 @@ test('Box with SizeNone is valid', () => {
 })
 
 test('Box supports flex properties', () => {
-  assertSnapshot(<Box alignContent="baseline" />)
-  assertSnapshot(<Box alignItems="baseline" />)
   assertSnapshot(<Box alignSelf="baseline" />)
   assertSnapshot(<Box flexBasis="1" />)
-  assertSnapshot(<Box flexDirection="column" />)
-  assertSnapshot(<Box flexWrap="wrap" />)
-  assertSnapshot(<Box justifyContent="baseline" />)
 })
 
 test('Box supports background-color', () => {
