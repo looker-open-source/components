@@ -21,6 +21,31 @@ The `<Flex />` component has the ability to control the layout direction and ord
 </Flex>
 ```
 
+### A real world example
+
+```js
+<Flex bg="palette.charcoal800" px="small" height="50px" alignItems="center" justifyContent="space-between">
+  <FlexItem mr="xsmall"><IconHamburger fill="white" width="24" height="24" /></FlexItem>
+  <FlexItem>Looker</FlexItem>
+  <FlexItem flex="1">
+    <Flex justifyContent="center">
+    <Box px="small"><Text size="5" style={{'color': '#fff'}}>Browse <IconExpandMore fill="white" /></Text></Box>
+    <Box px="small"><Text size="5" style={{'color': '#fff'}}>Explore <IconExpandMore fill="white" /></Text></Box>
+    <Box px="small"><Text size="5" style={{'color': '#fff'}}>Develop <IconExpandMore fill="white" /></Text></Box>
+    <Box px="small"><Text size="5" style={{'color': '#fff'}}>Admin <IconExpandMore fill="white" /></Text></Box>
+    </Flex>
+  </FlexItem>
+  <FlexItem>
+    <Flex>
+      <FlexItem mr="small"><IconSearch fill="white" width="24" height="24" /></FlexItem>
+      <FlexItem mr="small"><IconLiveHelp fill="white" width="24" height="24" /></FlexItem>
+      <FlexItem><IconGroup fill="white" width="24" height="24" /></FlexItem>
+    </Flex>
+  </FlexItem>
+</Flex>
+```
+
+
 ### Changing direction and order
 
 You can change the layout direction and order of flex children by using the `flexDirection` property. Below we use the same children in each example but can adjust the layout quickly using `flexDirection`.
