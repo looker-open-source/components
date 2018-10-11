@@ -40,11 +40,6 @@ test('Box with SizeNone is valid', () => {
   expect(tree).toMatchSnapshot()
 })
 
-test('Box supports flex properties', () => {
-  assertSnapshot(<Box alignSelf="baseline" />)
-  assertSnapshot(<Box flexBasis="1" />)
-})
-
 test('Box supports background-color', () => {
   assertSnapshot(<Box bg="semanticColors.primary.main" />)
 })

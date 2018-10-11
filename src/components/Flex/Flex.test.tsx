@@ -27,10 +27,6 @@ test('Flex supports alignContent ', () => {
   assertSnapshot(<Flex alignContent="start" />)
 })
 
-test('Flex supports alignSelf ', () => {
-  assertSnapshot(<Flex alignSelf="end" />)
-})
-
 test('Flex supports flexDirection ', () => {
   assertSnapshot(<Flex flexDirection="row-reverse" />)
 })

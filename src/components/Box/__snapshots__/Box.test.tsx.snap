@@ -52,36 +52,6 @@ exports[`Box supports display 1`] = `
 />
 `;
 
-exports[`Box supports flex properties 1`] = `
-.c0 {
-  -webkit-align-self: baseline;
-  -ms-flex-item-align: baseline;
-  align-self: baseline;
-  -webkit-align-self: baseline;
-  -ms-flex-item-align: baseline;
-  align-self: baseline;
-}
-
-<div
-  className="c0"
-/>
-`;
-
-exports[`Box supports flex properties 2`] = `
-.c0 {
-  -webkit-flex-basis: 1;
-  -ms-flex-preferred-size: 1;
-  flex-basis: 1;
-  -webkit-flex-basis: 1;
-  -ms-flex-preferred-size: 1;
-  flex-basis: 1;
-}
-
-<div
-  className="c0"
-/>
-`;
-
 exports[`Box supports height properties 1`] = `
 .c0 {
   height: 1vh;
