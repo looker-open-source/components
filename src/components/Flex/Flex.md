@@ -22,11 +22,11 @@ The `<Flex />` component has the ability to control the layout direction and ord
 ```
 
 ### A real world example
-
+Using our `<Flex>` and `<FlexItem>` components we can quickly scaffold out real world use cases like a navigation bar.
 ```js
 <Flex bg="palette.charcoal800" px="small" height="50px" alignItems="center" justifyContent="space-between">
-  <FlexItem mr="xsmall"><IconHamburger fill="white" width="24" height="24" /></FlexItem>
-  <FlexItem>Looker</FlexItem>
+  <FlexItem mr="small" pt="xsmall"><IconHamburger fill="white" width="24" height="24" /></FlexItem>
+  <FlexItem><IconLookerLogo fill="white" width="60px" height="auto"/></FlexItem>
   <FlexItem flex="1">
     <Flex justifyContent="center">
     <Box px="small"><Text size="5" style={{'color': '#fff'}}>Browse <IconExpandMore fill="white" /></Text></Box>
@@ -326,5 +326,23 @@ The  `flexWrap` property determines if flex items should be forced into a single
   <FlexItem width="40%" p="large" bg="palette.red200">These Lines</FlexItem>
   <FlexItem width="40%" p="large" bg="palette.blue200">Will</FlexItem>
   <FlexItem width="40%" p="large" bg="palette.green200">Wrap Reverse</FlexItem>
+</Flex>
+```
+
+### Responsive Behavior
+
+Many of the properties you can set on the `<Flex />` component will accept an array of values that will then be applied at different breakpoints. There are 5 [breakpoints](/#!/Breakpoints) slots that you can target. Here is an example of what that looks like.
+
+```js
+<Flex
+  flexDirection={[
+      "column", // column up to the first breakpoint
+      null,     // stay a column past first breakpoint
+      "row"     // switch to row layout after second breakpoint
+  ]}>
+
+  <FlexItem p="medium" bg="palette.yellow200">👋</FlexItem>
+  <FlexItem p="medium" bg="palette.green200">💪</FlexItem>
+  <FlexItem p="medium" bg="palette.purple200">📦</FlexItem>
 </Flex>
 ```
