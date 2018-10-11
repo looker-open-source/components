@@ -287,7 +287,7 @@ If you have multiple rows of flex items, the `alignContent` property determines 
   <Flex alignContent="space-around" width="30%" height="150px" flexWrap="wrap" bg="palette.purple400">
     <FlexItem width="70%" m="small" p="xsmall" bg="palette.purple200">Aligned w/</FlexItem>
     <FlexItem width="30%" m="small" p="xsmall" bg="palette.purple200">Space</FlexItem>
-    <FlexItem width="50%" m="small" p="xsmall" bg="palette.purple200">Around</FlexItem>
+    <FlexItem width="50%" m="small" p="xsmall" bg="palette.purple200">Betwen</FlexItem>
   </Flex>
 
   <Flex alignContent="flex-end" width="30%" height="150px" flexWrap="wrap" bg="palette.blue400">
