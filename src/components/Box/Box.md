@@ -65,14 +65,6 @@ Boxes provide a low-level customization interface which allows them to have diff
   <Box display="inline">I'm inline.</Box> <Box display="inline">I'm also inline.</Box>
 ```
 
-##### Flex
-Boxes supports flex properties.
-```js
-  <Box display="flex" alignItems="center" justifyContent="center" bg="palette.blue200" width="300px" height="300px">
-    <Box bg="palette.blue400" width="150px" height="150px">I'm vertically centered!</Box>
-  </Box>
-```
-
 ##### Heights and Widths
 ```js
   <Box display="inline-block" height="100px" bg="palette.green200" p="small" minWidth="200px">I'm 100px tall.</Box>

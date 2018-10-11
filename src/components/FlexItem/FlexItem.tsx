@@ -13,10 +13,7 @@ import {
 import { css, styled } from '../../style'
 import { Box, BoxProps } from '../Box'
 
-export type InheritedBoxProps = Pick<
-  BoxProps,
-  Exclude<keyof BoxProps, 'display'>
->
+type InheritedBoxProps = Pick<BoxProps, Exclude<keyof BoxProps, 'display'>>
 
 export interface FlexItemProps
   extends InheritedBoxProps,

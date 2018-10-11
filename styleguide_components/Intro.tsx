@@ -3,6 +3,7 @@ import {
   Box,
   Code,
   Flex,
+  FlexItem,
   Heading,
   IconExploreCircle,
   IconUndo,
@@ -13,7 +14,7 @@ export const Intro = () => {
   return (
     <Box>
       <Flex flexDirection="column" alignItems="center">
-        <Box my="large">
+        <FlexItem my="large">
           <svg
             width="49"
             height="49"
@@ -37,7 +38,7 @@ export const Intro = () => {
               fillOpacity="0.8"
             />
           </svg>
-        </Box>
+        </FlexItem>
         <Heading size="d1">LENS</Heading>
         <Box my="large" maxWidth="600px">
           <Text size="2">
