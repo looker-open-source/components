@@ -80,7 +80,6 @@ export const Box = styled<BoxProps>(InternalBox)`
   ${minWidth};
   ${position};
   ${right};
-  ${bottom};
   ${space};
   ${top};
   ${width};
