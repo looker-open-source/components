@@ -125,7 +125,6 @@ exports[`Box supports position, top, left, bottom, right 4`] = `
 exports[`Box supports position, top, left, bottom, right 5`] = `
 .c0 {
   bottom: 1rem;
-  bottom: 1rem;
 }
 
 <div
