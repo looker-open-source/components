@@ -43,7 +43,6 @@ exports[`Form with one child 1`] = `
   >
     <label
       className="c1"
-      htmlFor={undefined}
     >
       label
     </label>
@@ -197,7 +196,6 @@ exports[`Form with one invalid child and a submit button 1`] = `
   >
     <label
       className="c1"
-      htmlFor={undefined}
     >
       label1
     </label>
@@ -212,7 +210,6 @@ exports[`Form with one invalid child and a submit button 1`] = `
   >
     <label
       className="c1"
-      htmlFor={undefined}
     >
       label2
     </label>
@@ -309,7 +306,6 @@ exports[`Form with two invalid children 1`] = `
   >
     <label
       className="c1"
-      htmlFor={undefined}
     >
       label1
     </label>
@@ -333,7 +329,6 @@ exports[`Form with two invalid children 1`] = `
   >
     <label
       className="c1"
-      htmlFor={undefined}
     >
       label2
     </label>
