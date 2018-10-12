@@ -1,13 +1,10 @@
 import 'jest-styled-components'
 import * as React from 'react'
-import { createWithTheme } from '../../../test/utils/create_with_theme'
 import { assertSnapshot } from '../../../test/utils/snapshot'
 import { FlexItem } from './FlexItem'
 
-test('FlexItem default', () => {
-  const component = createWithTheme(<FlexItem>💪</FlexItem>)
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
+test('FlexItem default ', () => {
+  assertSnapshot(<FlexItem>💪</FlexItem>)
 })
 
 test('FlexItem supports alignSelf ', () => {
@@ -28,4 +25,8 @@ test('FlexItem supports flex ', () => {
 
 test('FlexItem supports basis ', () => {
   assertSnapshot(<FlexItem flexBasis="100px" />)
+})
+
+test('FlexItem can be hidden ', () => {
+  assertSnapshot(<FlexItem hidden />)
 })

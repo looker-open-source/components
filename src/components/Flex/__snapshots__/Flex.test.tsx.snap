@@ -1,6 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Flex default 1`] = `
+exports[`Flex can be hidden  1`] = `
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c0 {
+  display: none;
+}
+
+<div
+  className="c0 c1"
+  hidden={true}
+/>
+`;
+
+exports[`Flex default  1`] = `
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;

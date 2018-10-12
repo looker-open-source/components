@@ -1,18 +1,15 @@
 import 'jest-styled-components'
 import * as React from 'react'
-import { createWithTheme } from '../../../test/utils/create_with_theme'
 import { assertSnapshot } from '../../../test/utils/snapshot'
 import { Flex } from './Flex'
 
-test('Flex default', () => {
-  const component = createWithTheme(
+test('Flex default ', () => {
+  assertSnapshot(
     <Flex>
       <div>🥑</div>
       <div>🐛</div>
     </Flex>
   )
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
 })
 
 test('Flex supports justifyContent ', () => {
@@ -33,4 +30,8 @@ test('Flex supports flexDirection ', () => {
 
 test('Flex supports flexWrap ', () => {
   assertSnapshot(<Flex flexWrap="nowrap" />)
+})
+
+test('Flex can be hidden ', () => {
+  assertSnapshot(<Flex hidden />)
 })

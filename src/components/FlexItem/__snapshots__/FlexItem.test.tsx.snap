@@ -1,6 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FlexItem default 1`] = `
+exports[`FlexItem can be hidden  1`] = `
+.c0 {
+  display: none;
+}
+
+<div
+  className="c0 "
+  hidden={true}
+/>
+`;
+
+exports[`FlexItem default  1`] = `
 <div
   className=""
 >
