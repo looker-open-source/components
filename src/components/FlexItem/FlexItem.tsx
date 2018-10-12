@@ -25,7 +25,7 @@ export interface FlexItemProps
   hidden?: boolean
 }
 
-function hidden(hide: boolean | undefined) {
+function hidden(hide?: boolean) {
   if (hide) {
     return css`
       display: none;
@@ -44,5 +44,5 @@ export const FlexItem = styled<FlexItemProps>(InternalFlexItem)`
   ${order};
   ${flex};
   ${flexBasis};
-  ${props => hidden(props.hidden || false)};
+  ${props => hidden(props.hidden)};
 `

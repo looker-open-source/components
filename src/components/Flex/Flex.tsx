@@ -11,7 +11,7 @@ import {
   justifyContent,
   JustifyContentProps,
 } from 'styled-system'
-import { styled } from '../../style'
+import { css, styled } from '../../style'
 import { Box, BoxProps } from '../Box'
 
 export type InheritedBoxProps = Pick<
@@ -27,6 +27,7 @@ export interface FlexBoxProps
     FlexWrapProps,
     JustifyContentProps {
   className?: string
+  hidden?: boolean
 }
 
 const InternalFlex: React.SFC<FlexBoxProps> = ({ ...props }) => {
@@ -37,10 +38,21 @@ const InternalFlex: React.SFC<FlexBoxProps> = ({ ...props }) => {
   )
 }
 
+function hidden(hide: boolean | undefined) {
+  if (hide) {
+    return css`
+      display: none;
+    `
+  } else {
+    return false
+  }
+}
+
 export const Flex = styled<FlexBoxProps>(InternalFlex)`
   ${alignContent};
   ${alignItems};
   ${flexDirection};
   ${flexWrap};
   ${justifyContent};
+  ${props => hidden(props.hidden)};
 `
