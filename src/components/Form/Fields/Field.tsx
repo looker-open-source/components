@@ -36,7 +36,7 @@ export interface FieldProps {
 }
 
 const RequiredStar = styled(props => <span {...props}> *</span>)`
-  color: ${props => props.theme.semanticColors.danger.darker};
+  color: ${props => props.theme.colors.semanticColors.danger.darker};
 `
 
 /**

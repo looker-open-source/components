@@ -11,11 +11,9 @@ You **don't** have to be an expert in all of those technologies to start using L
 
 The following technologies roughly form a "stack", in that each layer is used by the next to solve a more specific problem:
 
-```jsx noeditor
-<Heading level="3" size="1" transform="caps">Typescript</Heading>
-```
+### Typescript
 
-Lens is written in Typescript, which provides the ability to define static types, and strictly define and enforce Lens component interfaces.
+Lens is written in Typescript, which provides a structural static type system, allowing Lens components to define strict, enforceable interfaces.
 
 ```jsx static
 interface PersonProps {
@@ -26,11 +24,9 @@ interface PersonProps {
 const PersonDetail = (props: PersonProps) => ...
 ```
 
-```jsx noeditor
-<Heading level="3" size="1" transform="caps">React</Heading>
-```
+### React
 
-React is a Javascript library that makes it easy to build UI components.
+React is a Javascript library that makes it easy to build UI components as simple functions and classes.
 
 ```jsx static
 interface PersonProps {
@@ -48,9 +44,7 @@ const PersonDetail = (props: PersonProps) => {
 }
 ```
 
-```jsx noeditor
-<Heading level="3" size="1" transform="caps">JSX</Heading>
-```
+### JSX
 
 JSX is an abstract syntax whose expressions look roughly like an XML tag language. In the context of React, JSX is used to define the use and composition of React components.
 
@@ -63,13 +57,11 @@ Because it is an abstraction, JSX can be compiled to many different targets, inc
 </Box>
 ```
 
-```jsx noeditor
-<Heading level="3" size="1" transform="caps">Styled Components</Heading>
-```
+### Styled Components
 
 Styled Components is a css-in-js library that allows developers to write styling in Typescript and couple it directly to a component. There are pros and cons to using CSS in this way. If you want to learn more about this approach [this talk is highly recommended](https://speakerdeck.com/vjeux/react-css-in-js).
 
-Styled Components also provides a Theme object which allows entire applications to adhere to a consistent style guide
+Styled Components also provides a Theme object which allows entire applications to adhere to a consistent style guide.
 
 ```jsx static
 interface PersonProps {
@@ -91,14 +83,12 @@ const PersonDetail = styled<PersonProps>(BasePersonDetail)`
 `
 ```
 
-```jsx noeditor
-<Heading level="3" size="1">styled-system</Heading>
-```
+### styled-system
 
-styled-system is a Styled Components helper library that provides some nice functions for tying parts of the theme object to properties on components.
+styled-system is a Styled Components helper library that provides some nice functions for tying parts of the theme object to properties on components. The entire library, and its types, are exported from Lens for use in Looker projects.
 
 ```jsx static
-import { space, SpaceProps } from 'styled-system'
+import { space, SpaceProps } from 'looker-lens'
 
 interface PersonProps extends SpaceProps {
   name: string
@@ -114,8 +104,8 @@ const BasePersonDetail = (props: PersonProps) => {
   )
 }
 
-// space adds some margin and padding properties to the underlying component
-// which are tied into the Theme object. See SpaceProps and Box.tsx for good examples.
+// `space` adds some margin and padding properties to the underlying component
+// which are tied into the theme object. See SpaceProps and Box.tsx for good examples.
 const PersonDetail = styled<PersonProps>(BasePersonDetail)`
   ${space}
   border: 2px solid black;

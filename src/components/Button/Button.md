@@ -177,12 +177,12 @@ Button uses the following theme classes...
 
 ```js
 const mildTheme = (theme) => {
-  const primary = Object.assign({}, theme.semanticColors.primary, {
+  const primary = Object.assign({}, theme.colors.semanticColors.primary, {
     main: '#2db264',
     dark: '#198044',
     darker: '#12593c'
   })
-  const danger = Object.assign({}, theme.semanticColors.danger, {
+  const danger = Object.assign({}, theme.colors.semanticColors.danger, {
     main: '#ffd200',
     dark: '#e5ae17',
     darker: '#a67e11',
@@ -191,18 +191,21 @@ const mildTheme = (theme) => {
   })
 
   const newTheme = Object.assign({}, theme)
-  newTheme.semanticColors = {}
-  newTheme.semanticColors.primary = primary
-  newTheme.semanticColors.danger = danger
+  newTheme.colors = Object.assign({}, newTheme.colors)
+  newTheme.colors.semanticColors = {}
+  newTheme.colors.semanticColors.primary = primary
+  newTheme.colors.semanticColors.danger = danger
   return newTheme
 }
 
 <React.Fragment>
   <ThemeProvider theme={mildTheme}>
-    <div>
+    <Box>
       <Button>Mild Button</Button>
-      <Button color="danger" variant="outline">Mild Danger Outline Button</Button>
-    </div>
+      <Box ml="small" display="inline-block">
+        <Button color="danger" variant="outline">Mild Danger Outline Button</Button>
+      </Box>
+    </Box>
   </ThemeProvider>
 </React.Fragment>
 ```

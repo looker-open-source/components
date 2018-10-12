@@ -93,12 +93,12 @@ const outlineVariant = (
   props: ThemedProps<ButtonProps>
 ) => {
   return merge(variantCommonProps(color), {
-    background: props.theme.palette.white,
+    background: props.theme.colors.palette.white,
     borderColor: color.borderColor,
     color: color.main,
     // tslint:disable-next-line:object-literal-sort-keys
     '&:hover, &:focus, &.hover': {
-      background: props.theme.palette.white,
+      background: props.theme.colors.palette.white,
       borderColor: color.main,
       color: color.darker,
     },
@@ -109,7 +109,7 @@ const outlineVariant = (
     },
     '&[disabled]': {
       '&:hover, &:active, &:focus': {
-        backgroundColor: props.theme.palette.white,
+        backgroundColor: props.theme.colors.palette.white,
         borderColor: color.borderColor,
         color: color.main,
       },
@@ -122,24 +122,24 @@ const transparentVariant = (
   props: ThemedProps<ButtonProps>
 ) => {
   return merge(variantCommonProps(color), {
-    background: props.theme.palette.transparent,
-    borderColor: props.theme.palette.transparent,
+    background: props.theme.colors.palette.transparent,
+    borderColor: props.theme.colors.palette.transparent,
     color: color.main,
     // tslint:disable-next-line:object-literal-sort-keys
     '&:hover, &:focus, &.hover': {
-      background: props.theme.palette.transparent,
-      borderColor: props.theme.palette.transparent,
+      background: props.theme.colors.palette.transparent,
+      borderColor: props.theme.colors.palette.transparent,
       color: color.darker,
     },
     '&:active, &.active': {
       background: color.lighter,
-      borderColor: props.theme.palette.transparent,
+      borderColor: props.theme.colors.palette.transparent,
       color: color.darker,
     },
     '&[disabled]': {
       '&:hover, &:active, &:focus': {
-        backgroundColor: props.theme.palette.transparent,
-        borderColor: props.theme.palette.transparent,
+        backgroundColor: props.theme.colors.palette.transparent,
+        borderColor: props.theme.colors.palette.transparent,
         color: color.main,
       },
     },
@@ -149,7 +149,7 @@ const transparentVariant = (
 const variantHelper = (props: ThemedProps<ButtonProps>) => {
   let color
   if (typeof props.color === 'string' || props.color === undefined) {
-    color = props.theme.semanticColors[props.color || 'primary']
+    color = props.theme.colors.semanticColors[props.color || 'primary']
   } else {
     color = props.color
   }

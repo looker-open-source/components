@@ -56,3 +56,48 @@ Any one of the spacing properties can be passed an array of spacing sizes that w
       My padding on the left changes with breakpoints
   </Box>
 ```
+
+#### Customizing a Box
+Boxes provide a low-level customization interface which allows them to have different display properties, heights, widths, background colors, positioning, etc. Here are some examples:
+
+##### Customized Display
+```js
+  <Box display="inline">I'm inline.</Box> <Box display="inline">I'm also inline.</Box>
+```
+
+##### Flex
+Boxes supports flex properties.
+```js
+  <Box display="flex" alignItems="center" justifyContent="center" bg="palette.blue200" width="300px" height="300px">
+    <Box bg="palette.blue400" width="150px" height="150px">I'm vertically centered!</Box>
+  </Box>
+```
+
+##### Heights and Widths
+```js
+  <Box display="inline-block" height="100px" bg="palette.green200" p="small" minWidth="200px">I'm 100px tall.</Box>
+  <Box display="inline-block" height="50px" bg="palette.blue200" ml="small" p="small" width="100px">I'm 50px tall.</Box>
+```
+
+##### Background Colors
+Boxes can reference colors from the theme object, pulling any color on the theme's `colors` property.
+```js
+  <Box bg="palette.purple200">My background is purple200.</Box>
+  <Box bg="semanticColors.primary.main">I'm the semantic color "primary.main".</Box>
+```
+
+##### Positioning
+Boxes can set positioning when needed.
+```js
+  <Box p="small" position="relative">
+    <Box position="absolute" top="0" right="0" bg="palette.red300">I'm absolutely positioned!</Box>
+  </Box>
+```
+
+##### Borders
+Boxes can have borders.
+```js
+  <Box width="50px" height="50px" bg="palette.purple200" border="1px solid black" borderRadius="4px">
+    I've got borders.
+  </Box>
+```
