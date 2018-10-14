@@ -11,9 +11,11 @@ export interface PolarCoordinate {
 /**
  * Converts cartesian (x,y) coordinates to polar (radius, angle) coordinates.
  */
-export const xy2polar = (x: number, y: number): PolarCoordinate => ({
-  angle: Math.atan2(y, x),
-  radius: Math.sqrt(x * x + y * y),
+export const cartesian2polar = (
+  coord: CartesianCoordinate
+): PolarCoordinate => ({
+  angle: Math.atan2(coord.y, coord.x),
+  radius: Math.sqrt(coord.x * coord.x + coord.y * coord.y),
 })
 
 /**
@@ -28,6 +30,27 @@ export const polar2xy = (
 })
 
 /**
+ * Returns the diameter given a radius
+ */
+export const diameter = (radius: number): number => 2 * radius
+
+/**
+ * Utility used to translate a a number by a value
+ */
+export const translate = (by: number, val: number): number => val + by
+
+/**
+ * Utility used to translate both the x and y of a coordinate by a value.
+ */
+export const translateCoordinate = (
+  by: number,
+  coordinate: CartesianCoordinate
+) => ({
+  x: translate(by, coordinate.x),
+  y: translate(by, coordinate.y),
+})
+
+/**
  * Radians in [-n, n] range. Returns degrees in [0, 360] range.
  */
 export const rad2deg = (rad: number): number => (rad / (2 * Math.PI)) * 360
@@ -38,15 +61,12 @@ export const rad2deg = (rad: number): number => (rad / (2 * Math.PI)) * 360
 export const deg2rad = (angle: number): number => angle * (Math.PI / 180)
 
 /**
- * Utility used to rotate radians by a full semicircle
- */
-export const rotateRad = (rad: number): number => rad + Math.PI
-
-/**
  * Utility that returns a boolean indicating if a given cartesian coordinate is within a circle of radius
  * r centered at (0,0).
  */
 export const isInCircle = (
   position: CartesianCoordinate,
   radius: number
-): boolean => xy2polar(position.x - radius, position.y - radius).radius < radius
+): boolean =>
+  cartesian2polar({ x: position.x - radius, y: position.y - radius }).radius <
+  radius

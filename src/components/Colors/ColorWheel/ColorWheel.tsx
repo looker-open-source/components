@@ -6,18 +6,31 @@ import { styled } from '../../../style'
 import { canvasRadius, eventCartesianPosition } from './canvas_utils'
 import { isValidColor } from './color_utils'
 import {
+  drawColorWheelIntoCanvasImage,
+  generateColorWheel,
+} from './color_wheel_utils'
+
+import {
   CartesianCoordinate,
   deg2rad,
   isInCircle,
   polar2xy,
-  rad2deg,
-  xy2polar,
 } from './math_utils'
 
 interface ColorWheelProps {
   /**
-   * Determines what the initial color to component should be.
+   * Selected hue
    */
+  //  hue: number,
+  /**
+   * Selected saturation
+   */
+  // saturation: number,
+  /**
+   * Selecteed value
+   */
+  // value: number,
+
   color?: string
   /**
    * Size, in pixels, of the canvas. Will default to 100.
@@ -34,7 +47,6 @@ class InternalColorWheel extends React.Component<ColorWheelProps> {
   private margin: number = 2
   private mouseMoving: boolean = false
   private mousePosition?: CartesianCoordinate
-  // private brightness: number = 100
   private image?: ImageData
 
   public componentDidMount() {
@@ -153,37 +165,10 @@ class InternalColorWheel extends React.Component<ColorWheelProps> {
     if (!this.image) {
       const radius = canvasRadius(canvas, this.margin)
       this.image = ctx.createImageData(2 * radius, 2 * radius)
-      const data = this.image.data
-
-      for (let x = -radius; x < radius; x++) {
-        for (let y = -radius; y < radius; y++) {
-          const polar = xy2polar(x, y)
-
-          // Figure out the starting index of this pixel in the image data array.
-          const rowLength = 2 * radius
-          const adjustedX = x + radius
-          const adjustedY = y + radius
-          const pixelWidth = 4
-          const index = (adjustedX + adjustedY * rowLength) * pixelWidth
-
-          const hue = rad2deg(polar.angle)
-          const saturation = polar.radius / radius
-          let rgbColor = rgb('transparent')
-
-          // This will draw the circle. Anything outside circle will be drawn white.
-          if (polar.radius < radius) {
-            rgbColor = hsv(hue, saturation, 100 / 100).rgb()
-          }
-
-          // Each pixel takes up 4 elements in 2D array (modeled as a 1D array), for r,g,b,a channels.
-          data[index] = rgbColor.r
-          data[index + 1] = rgbColor.g
-          data[index + 2] = rgbColor.b
-
-          // Currently hardcoding alpha channel to be completely opaque.
-          data[index + 3] = rgbColor.opacity * 255
-        }
-      }
+      drawColorWheelIntoCanvasImage(
+        this.image.data,
+        generateColorWheel(radius, 100)
+      )
     }
 
     return this.image
