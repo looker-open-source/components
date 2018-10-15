@@ -4,7 +4,7 @@ import {
   CartesianCoordinate,
   deg2rad,
   diameter,
-  polar2xy,
+  polar2cartesian,
   PolarCoordinate,
   rad2deg,
   translateCoordinate,
@@ -92,7 +92,7 @@ export const hsvToMousePosition = (
   margin: number,
   color: SimpleHSV
 ): CartesianCoordinate => {
-  const coord = polar2xy(color.s * radius, deg2rad(color.h))
+  const coord = polar2cartesian(color.s * radius, deg2rad(color.h))
 
   return {
     x: coord.x + radius + margin,

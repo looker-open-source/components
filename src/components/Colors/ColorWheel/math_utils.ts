@@ -21,7 +21,7 @@ export const cartesian2polar = (
 /**
  * Converts polar coordinates (radius, angle) into cartesian coordinates (x,y).
  */
-export const polar2xy = (
+export const polar2cartesian = (
   radius: number,
   angle: number
 ): CartesianCoordinate => ({
