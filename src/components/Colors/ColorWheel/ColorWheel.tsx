@@ -120,7 +120,7 @@ export class ColorWheel extends React.Component<ColorWheelProps> {
    */
   public mouseUp = () => {
     this.mouseMoving = false
-    this.updateColor()
+    this.updateColor(this.canvas, this.mousePosition)
   }
 
   private updateCanvas() {
@@ -241,15 +241,13 @@ export class ColorWheel extends React.Component<ColorWheelProps> {
   /**
    * action called when user clicks on a color.  Will let client know color has been updated.
    */
-  private updateColor() {
-    const ctx = this.canvas.getContext('2d')
-    if (this.props.onColorChange && ctx && this.mousePosition) {
-      const data = ctx.getImageData(
-        this.mousePosition.x,
-        this.mousePosition.y,
-        1,
-        1
-      ).data
+  private updateColor(
+    canvas: HTMLCanvasElement,
+    position?: CartesianCoordinate
+  ) {
+    const ctx = canvas.getContext('2d')
+    if (this.props.onColorChange && ctx && position) {
+      const data = ctx.getImageData(position.x, position.y, 1, 1).data
       const hex = rgb(data[0], data[1], data[2]).hex()
       const hs = (({ h, s }) => ({ h, s }))(hsv(hex))
       this.props.onColorChange(hs)
