@@ -1,50 +1,60 @@
-import { rgb } from 'd3-color'
-import { hsv, HSVColor } from 'd3-hsv'
+// import { styled } from '../../../style'
+import { hsv } from 'd3-hsv'
 import * as React from 'react'
-import { styled } from '../../../style'
 
-import { canvasRadius, eventCartesianPosition } from './canvas_utils'
-import { isValidColor } from './color_utils'
+import { rgb } from 'd3-color'
+
+import {
+  canvasRadius,
+  clearCanvas,
+  eventCartesianPosition,
+} from './canvas_utils'
 import {
   drawColorWheelIntoCanvasImage,
   generateColorWheel,
+  hsvToMousePosition,
+  HueSaturation,
 } from './color_wheel_utils'
 
-import {
-  CartesianCoordinate,
-  deg2rad,
-  isInCircle,
-  polar2xy,
-} from './math_utils'
+import { CartesianCoordinate, diameter, isInCircle } from './math_utils'
 
 interface ColorWheelProps {
   /**
    * Selected hue
    */
-  //  hue: number,
+  hue: number
   /**
    * Selected saturation
    */
-  // saturation: number,
+  saturation: number
   /**
    * Selecteed value
    */
-  // value: number,
-
-  color?: string
+  value: number
   /**
-   * Size, in pixels, of the canvas. Will default to 100.
+   * Internal margin in canvas
    */
-  size?: number
+  margin: number
+  /**
+   * Size, in pixels, of the canvas.
+   */
+  size: number
   /**
    * Callback for when a color has been changed in color wheel
    */
-  onColorChange?: (color: string) => void
+  onColorChange?: (color: HueSaturation) => void
 }
 
-class InternalColorWheel extends React.Component<ColorWheelProps> {
+export class ColorWheel extends React.Component<ColorWheelProps> {
+  public static defaultProps = {
+    hue: 0,
+    margin: 2,
+    saturation: 1,
+    size: 100,
+    value: 1,
+  }
+
   private canvas!: HTMLCanvasElement
-  private margin: number = 2
   private mouseMoving: boolean = false
   private mousePosition?: CartesianCoordinate
   private image?: ImageData
@@ -53,7 +63,11 @@ class InternalColorWheel extends React.Component<ColorWheelProps> {
     this.updateCanvas()
   }
 
-  public componentDidUpdate() {
+  public componentDidUpdate(previousProps: ColorWheelProps) {
+    if (previousProps.value !== this.props.value) {
+      this.invalidateImage()
+    }
+
     this.updateCanvas()
   }
 
@@ -81,7 +95,7 @@ class InternalColorWheel extends React.Component<ColorWheelProps> {
   public mouseDown = (event: any) => {
     const position = eventCartesianPosition(this.canvas, event)
 
-    if (isInCircle(position, canvasRadius(this.canvas, this.margin))) {
+    if (isInCircle(position, canvasRadius(this.canvas, this.props.margin))) {
       this.mouseMoving = true
       this.mousePosition = position
       this.renderWheel(this.canvas, position)
@@ -94,7 +108,7 @@ class InternalColorWheel extends React.Component<ColorWheelProps> {
   public mouseMove = (event: any) => {
     if (this.mouseMoving) {
       const position = eventCartesianPosition(this.canvas, event)
-      if (isInCircle(position, canvasRadius(this.canvas, this.margin))) {
+      if (isInCircle(position, canvasRadius(this.canvas, this.props.margin))) {
         this.mousePosition = position
         this.renderWheel(this.canvas, position)
       }
@@ -110,20 +124,17 @@ class InternalColorWheel extends React.Component<ColorWheelProps> {
   }
 
   private updateCanvas() {
-    this.invalidateImage()
+    this.mousePosition = hsvToMousePosition(
+      canvasRadius(this.canvas, this.props.margin),
+      this.props.margin,
+      {
+        h: this.props.hue,
+        s: this.props.saturation,
+        v: this.props.value,
+      }
+    )
 
-    const ctx = this.canvas.getContext('2d')
-
-    if (ctx) {
-      ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
-      this.drawWheel(this.canvas, ctx)
-
-      const mousePosition = this.colorToMousePositionAndBrightness(
-        this.canvas,
-        this.props.color
-      )
-      this.drawMouse(ctx, mousePosition)
-    }
+    this.renderWheel(this.canvas, this.mousePosition)
   }
 
   /**
@@ -137,12 +148,13 @@ class InternalColorWheel extends React.Component<ColorWheelProps> {
   /**
    * Utility method to draw actual color wheel.
    */
-  private drawWheel(canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D) {
-    const radius = canvasRadius(canvas, this.margin)
+  private drawWheel(canvas: HTMLCanvasElement) {
+    const radius = canvasRadius(canvas, this.props.margin)
+    const ctx = this.canvas.getContext('2d')!
     const image = this.getImage(canvas, ctx)
 
     if (image) {
-      ctx.putImageData(image, 2, 2)
+      ctx.putImageData(image, this.props.margin, this.props.margin)
     }
 
     // Draw a border around circle
@@ -163,11 +175,11 @@ class InternalColorWheel extends React.Component<ColorWheelProps> {
     ctx: CanvasRenderingContext2D
   ): ImageData | null {
     if (!this.image) {
-      const radius = canvasRadius(canvas, this.margin)
-      this.image = ctx.createImageData(2 * radius, 2 * radius)
+      const radius = canvasRadius(canvas, this.props.margin)
+      this.image = ctx.createImageData(diameter(radius), diameter(radius))
       drawColorWheelIntoCanvasImage(
         this.image.data,
-        generateColorWheel(radius, 100)
+        generateColorWheel(radius, this.props.value)
       )
     }
 
@@ -178,10 +190,11 @@ class InternalColorWheel extends React.Component<ColorWheelProps> {
    * Utility Method to draw mouse position onto the canvas.
    */
   private drawMouse(
-    ctx: CanvasRenderingContext2D,
+    canvas: HTMLCanvasElement,
     mousePosition?: CartesianCoordinate
   ) {
-    if (mousePosition) {
+    const ctx = canvas.getContext('2d')
+    if (ctx && mousePosition) {
       const mouseRadius = 4
 
       ctx.beginPath()
@@ -219,72 +232,27 @@ class InternalColorWheel extends React.Component<ColorWheelProps> {
     const ctx = canvas.getContext('2d')
 
     if (ctx) {
-      ctx.clearRect(0, 0, canvas.width, canvas.height)
-      this.drawWheel(canvas, ctx)
-      this.drawMouse(ctx, mousePosition)
+      clearCanvas(canvas)
+      this.drawWheel(canvas)
+      this.drawMouse(canvas, mousePosition)
     }
-  }
-
-  /**
-   * Utility to turn the mouse position into a valid hex code.
-   */
-  private getColorWheelColorHex(
-    canvas: HTMLCanvasElement,
-    mousePosition?: CartesianCoordinate
-  ): string {
-    const allowBrightnessChange = true
-    const ctx = canvas.getContext('2d')
-    let retVal = this.props.color || ''
-
-    if (ctx && mousePosition) {
-      const data = ctx.getImageData(mousePosition.x, mousePosition.y, 1, 1).data
-
-      if (allowBrightnessChange) {
-        retVal = rgb(data[0], data[1], data[2]).hex()
-      }
-    }
-
-    return retVal
   }
 
   /**
    * action called when user clicks on a color.  Will let client know color has been updated.
    */
   private updateColor() {
-    if (this.props.onColorChange) {
-      const color = this.getColorWheelColorHex(this.canvas, this.mousePosition)
-      this.props.onColorChange(color)
+    const ctx = this.canvas.getContext('2d')
+    if (this.props.onColorChange && ctx && this.mousePosition) {
+      const data = ctx.getImageData(
+        this.mousePosition.x,
+        this.mousePosition.y,
+        1,
+        1
+      ).data
+      const hex = rgb(data[0], data[1], data[2]).hex()
+      const hs = (({ h, s }) => ({ h, s }))(hsv(hex))
+      this.props.onColorChange(hs)
     }
-  }
-
-  private colorToMousePositionAndBrightness(
-    canvas: HTMLCanvasElement,
-    color?: string
-  ) {
-    if (color && isValidColor(color)) {
-      const radius = canvasRadius(canvas, this.margin)
-
-      const hsvColor: HSVColor = hsv(color)
-      const h = isNaN(hsvColor.h) ? 0 : hsvColor.h
-      const s = isNaN(hsvColor.s) ? 0 : hsvColor.s
-      const coord = polar2xy(s * radius, deg2rad(h))
-
-      return {
-        x: coord.x + radius + this.margin,
-        y: coord.y + radius + this.margin,
-      }
-
-      // this.brightness = hsvColor.v * 100
-    }
-    // else {
-
-    //   this.brightness = 100
-    //   this.mousePosition = null
-    // }
-    return undefined
   }
 }
-
-export const ColorWheel = styled<ColorWheelProps>(InternalColorWheel)`
-  background-color: ${props => props.color};
-`

@@ -2,15 +2,20 @@ import { hsv } from 'd3-hsv'
 import {
   cartesian2polar,
   CartesianCoordinate,
+  deg2rad,
   diameter,
+  polar2xy,
   PolarCoordinate,
   rad2deg,
   translateCoordinate,
 } from './math_utils'
 
-export interface SimpleHSV {
+export interface HueSaturation {
   h: number
   s: number
+}
+
+export interface SimpleHSV extends HueSaturation {
   v: number
 }
 
@@ -23,7 +28,7 @@ const hsvPolar = (
 ): SimpleHSV => ({
   h: rad2deg(c.angle),
   s: c.radius / radius,
-  v: brightness / 100,
+  v: brightness,
 })
 
 const whiteHSV = (radius: number) =>
@@ -80,4 +85,17 @@ export const drawColorWheelIntoCanvasImage = (
       image[index + 3] = rgbColor.opacity * 255
     })
   })
+}
+
+export const hsvToMousePosition = (
+  radius: number,
+  margin: number,
+  color: SimpleHSV
+): CartesianCoordinate => {
+  const coord = polar2xy(color.s * radius, deg2rad(color.h))
+
+  return {
+    x: coord.x + radius + margin,
+    y: coord.y + radius + margin,
+  }
 }
