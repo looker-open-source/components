@@ -88,10 +88,6 @@ export class ColorWheel extends React.Component<ColorWheelProps> {
     )
   }
 
-  /**
-   * Mousedown event for canvas to bind against. Starts a small state machine
-   * so we can track mouse movement.
-   */
   public mouseDown = (event: any) => {
     const position = eventCartesianPosition(this.canvas, event)
 
@@ -102,9 +98,6 @@ export class ColorWheel extends React.Component<ColorWheelProps> {
     }
   }
 
-  /**
-   * mousemove event for canvas to bind against. Continue tracking
-   */
   public mouseMove = (event: any) => {
     if (this.mouseMoving) {
       const position = eventCartesianPosition(this.canvas, event)
@@ -115,16 +108,13 @@ export class ColorWheel extends React.Component<ColorWheelProps> {
     }
   }
 
-  /**
-   * Stop tracking mouse.
-   */
   public mouseUp = () => {
     this.mouseMoving = false
     this.updateColor(this.canvas, this.mousePosition)
   }
 
   private updateCanvas() {
-    this.mousePosition = hsvToMousePosition(
+    const position = hsvToMousePosition(
       canvasRadius(this.canvas, this.props.margin),
       this.props.margin,
       {
@@ -134,7 +124,7 @@ export class ColorWheel extends React.Component<ColorWheelProps> {
       }
     )
 
-    this.renderWheel(this.canvas, this.mousePosition)
+    this.renderWheel(this.canvas, position)
   }
 
   /**
