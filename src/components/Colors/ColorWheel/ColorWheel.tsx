@@ -1,5 +1,3 @@
-import { rgb } from 'd3-color'
-import { hsv } from 'd3-hsv'
 import * as React from 'react'
 
 import {
@@ -9,9 +7,10 @@ import {
 } from './canvas_utils'
 
 import {
+  cartesian2hsv,
   drawColorWheelIntoCanvasImage,
   generateColorWheel,
-  hsvToMousePosition,
+  hsv2cartesian,
   HueSaturation,
 } from './color_wheel_utils'
 
@@ -49,7 +48,7 @@ interface ColorWheelProps {
 export class ColorWheel extends React.Component<ColorWheelProps> {
   public static defaultProps = {
     hue: 0,
-    margin: 2,
+    margin: 5,
     saturation: 1,
     size: 100,
     value: 1,
@@ -57,7 +56,6 @@ export class ColorWheel extends React.Component<ColorWheelProps> {
 
   private canvas!: HTMLCanvasElement
   private mouseMoving: boolean = false
-  private mousePosition?: CartesianCoordinate
   private image?: ImageData
 
   public componentDidMount() {
@@ -94,8 +92,7 @@ export class ColorWheel extends React.Component<ColorWheelProps> {
 
     if (isInCircle(position, canvasRadius(this.canvas, this.props.margin))) {
       this.mouseMoving = true
-      this.mousePosition = position
-      this.renderWheel(this.canvas, position)
+      this.updateColor(this.canvas, position, this.props.onColorChange)
     }
   }
 
@@ -103,21 +100,18 @@ export class ColorWheel extends React.Component<ColorWheelProps> {
     if (this.mouseMoving) {
       const position = eventCartesianPosition(this.canvas, event)
       if (isInCircle(position, canvasRadius(this.canvas, this.props.margin))) {
-        this.mousePosition = position
-        this.renderWheel(this.canvas, position)
+        this.updateColor(this.canvas, position, this.props.onColorChange)
       }
     }
   }
 
   public mouseUp = () => {
     this.mouseMoving = false
-    this.updateColor(this.canvas, this.mousePosition, this.props.onColorChange)
   }
 
   private updateCanvas() {
-    const position = hsvToMousePosition(
+    const position = hsv2cartesian(
       canvasRadius(this.canvas, this.props.margin),
-      this.props.margin,
       {
         h: this.props.hue,
         s: this.props.saturation,
@@ -239,9 +233,12 @@ export class ColorWheel extends React.Component<ColorWheelProps> {
   ) {
     const ctx = canvas.getContext('2d')
     if (callback && ctx && position) {
-      const data = ctx.getImageData(position.x, position.y, 1, 1).data
-      const hex = rgb(data[0], data[1], data[2]).hex()
-      const hs = (({ h, s }) => ({ h, s }))(hsv(hex))
+      const color = cartesian2hsv(
+        this.props.value,
+        canvasRadius(canvas, this.props.margin),
+        position
+      )
+      const hs = (({ h, s }) => ({ h, s }))(color)
       callback(hs)
     }
   }

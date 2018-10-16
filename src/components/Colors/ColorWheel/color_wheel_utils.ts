@@ -34,7 +34,7 @@ const hsvPolar = (
 const whiteHSV = (radius: number) =>
   hsvPolar(360, radius, { angle: 0, radius: 0 })
 
-const hsvCartesian = (
+export const cartesian2hsv = (
   brightness: number,
   radius: number,
   c: CartesianCoordinate
@@ -43,6 +43,14 @@ const hsvCartesian = (
   return polar.radius < radius
     ? hsvPolar(brightness, radius, polar)
     : whiteHSV(radius)
+}
+
+export const hsv2cartesian = (
+  radius: number,
+  color: SimpleHSV
+): CartesianCoordinate => {
+  const coord = polar2cartesian(color.s * radius, deg2rad(color.h))
+  return translateCoordinate(radius, coord)
 }
 
 /**
@@ -60,7 +68,7 @@ export const generateColorWheel = (
   return mappableArray(diameter(radius)).map((_, x) =>
     /* tslint:disable-next-line:no-shadowed-variable */
     mappableArray(diameter(radius)).map((_, y) =>
-      hsvCartesian(brightness, radius, { x, y })
+      cartesian2hsv(brightness, radius, { x, y })
     )
   )
 }
@@ -85,17 +93,4 @@ export const drawColorWheelIntoCanvasImage = (
       image[index + 3] = rgbColor.opacity * 255
     })
   })
-}
-
-export const hsvToMousePosition = (
-  radius: number,
-  margin: number,
-  color: SimpleHSV
-): CartesianCoordinate => {
-  const coord = polar2cartesian(color.s * radius, deg2rad(color.h))
-
-  return {
-    x: coord.x + radius + margin,
-    y: coord.y + radius + margin,
-  }
 }
