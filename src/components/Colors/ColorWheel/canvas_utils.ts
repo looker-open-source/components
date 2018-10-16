@@ -1,4 +1,4 @@
-import { CartesianCoordinate } from './math_utils'
+import { CartesianCoordinate, translate } from './math_utils'
 
 /**
  * Returns a radius for a given canvas element that has a given margin on all sides.
@@ -15,8 +15,8 @@ export const eventCartesianPosition = (
   canvas: HTMLCanvasElement,
   event: any
 ): CartesianCoordinate => ({
-  x: event.clientX - canvas.getBoundingClientRect().left,
-  y: event.clientY - canvas.getBoundingClientRect().top,
+  x: translate(-canvas.getBoundingClientRect().left, event.clientX),
+  y: translate(-canvas.getBoundingClientRect().top, event.clientY),
 })
 
 export const clearCanvas = (canvas: HTMLCanvasElement) => {
