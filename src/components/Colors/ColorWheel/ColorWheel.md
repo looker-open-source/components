@@ -58,8 +58,8 @@ class ColorState extends React.Component {
 
   render () {
 
-    const h = Number(this.state.color.h).toFixed(2)
-    const s = Number(this.state.color.s).toFixed(2)
+    const h = Number(this.state.color.h).toFixed(0)
+    const s = Number(this.state.color.s).toFixed(1)
     return (
         <div style={{display: 'flex'}}>
           <Card raised>
@@ -83,7 +83,7 @@ class ColorState extends React.Component {
             <CardContent>
               <Heading level="2">HSV values</Heading>
               <Text>Hue: {h}</Text>
-              <Text>Saturation: {s}</Text>
+                  <Text>Saturation: {s}</Text>
               <Text>Value: {this.state.color.v}</Text>
             </CardContent>
           </Card>
