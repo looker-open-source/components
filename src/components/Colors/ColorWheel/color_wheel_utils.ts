@@ -49,7 +49,10 @@ export const hsv2cartesian = (
   radius: number,
   color: SimpleHSV
 ): CartesianCoordinate => {
-  const coord = polar2cartesian(color.s * radius, deg2rad(color.h))
+  const coord = polar2cartesian({
+    angle: deg2rad(color.h),
+    radius: color.s * radius,
+  })
   return translateCoordinate(radius, coord)
 }
 
