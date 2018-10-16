@@ -50,21 +50,40 @@ class ColorState extends React.Component {
     this.setState({color})
   }
 
+  handleSliderChange(value) {
+    const {color} = this.state
+    color.v = value / 100
+    this.setState({color})
+  }
+
   render () {
 
+    const h = Number(this.state.color.h).toFixed(2)
+    const s = Number(this.state.color.s).toFixed(2)
     return (
         <div style={{display: 'flex'}}>
           <Card raised>
             <CardContent>
               <Heading level="2">Color wheel</Heading>
-              <ColorWheel size={this.state.size} hue={this.state.color.h} saturation={this.state.color.s} value={this.state.color.v} onColorChange={(color) => this.handleColorStateChange(color)}/>
+              <ColorWheel size={this.state.size}
+                          hue={this.state.color.h}
+                          saturation={this.state.color.s}
+                          value={this.state.color.v}
+                          onColorChange={(color) => this.handleColorStateChange(color)}/>
+
+              <input id="typeinp"
+                     type="range"
+                     min="0" max="100"
+                     value={this.state.color.v * 100}
+                     onChange={(event) => this.handleSliderChange(event.target.value)}
+                     step="1"/>
             </CardContent>
           </Card>
           <Card raised>
             <CardContent>
-              <Heading level="2">Use wheel to change color</Heading>
-              <Text>Hue: {this.state.color.h}</Text>
-              <Text>Saturation: {this.state.color.s}</Text>
+              <Heading level="2">HSV values</Heading>
+              <Text>Hue: {h}</Text>
+              <Text>Saturation: {s}</Text>
               <Text>Value: {this.state.color.v}</Text>
             </CardContent>
           </Card>
