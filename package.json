@@ -64,9 +64,10 @@
     "polished": "2.0.3",
     "react": "16.5.1",
     "react-dom": "16.4.2",
-    "react-overlays": "1.0.0-beta.15",
+    "react-overlays": "0.8.3",
     "styled-system": "^3.1.6",
-    "svg-inline-loader": "^0.8.0"
+    "svg-inline-loader": "^0.8.0",
+    "uncontrollable": "^6.0.0"
   },
   "peerDependencies": {
     "@types/react": "16.4.8",

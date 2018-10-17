@@ -44,6 +44,7 @@ export interface Theme {
   fontSizes: FontRamp
   fontWeights: Record<string, number>
   lineHeights: FontRamp
+  radius: string[]
   /**
    * A function that can be overridden to return different reset css properties
    * or null to remove all resets. Most base elements in Lens implement the reset.
@@ -62,6 +63,7 @@ export const theme: Theme = {
   fontSizes,
   fontWeights,
   lineHeights,
+  radius: ['0.1rem', '0.2rem', '0.3rem', '0.5rem', '0.8rem'],
   reset: () => {
     return {
       border: 0,
