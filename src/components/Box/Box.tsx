@@ -60,6 +60,7 @@ export interface BoxProps
     WidthProps {
   is?: string | React.ReactNode
   className?: string
+  overflow?: string
 }
 
 const InternalBox: React.SFC<BoxProps> = ({ ...props }) => {
@@ -83,4 +84,5 @@ export const Box = styled<BoxProps>(InternalBox)`
   ${space};
   ${top};
   ${width};
+  ${props => (props.overflow ? `overflow: ${props.overflow}` : ``)};
 `

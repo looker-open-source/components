@@ -1,8 +1,13 @@
 
 ```js
 const popoverTest = (
-  <Popover title="hello world">
-    What am I doing here?
+  <Popover>
+    <Box bg="palette.charcoal200" m="small" borderRadius="2" overflow="hidden">
+      <Box bg="palette.charcoal300" p="small">
+        <Heading size="2">Here's a title</Heading>
+      </Box>
+      <Box p="small">What am I doing here?</Box>
+    </Box>
   </Popover>
 );
 
