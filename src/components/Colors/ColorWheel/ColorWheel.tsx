@@ -88,7 +88,8 @@ export class ColorWheel extends React.Component<ColorWheelProps> {
   }
 
   public mouseDown = (event: any) => {
-    const position = eventCartesianPosition(this.canvas, event)
+    const canvasCartesian = eventCartesianPosition(this.canvas, event)
+    const position = translateCoordinate(-this.props.margin, canvasCartesian)
 
     if (isInCircle(position, canvasRadius(this.canvas, this.props.margin))) {
       this.mouseMoving = true
@@ -98,7 +99,8 @@ export class ColorWheel extends React.Component<ColorWheelProps> {
 
   public mouseMove = (event: any) => {
     if (this.mouseMoving) {
-      const position = eventCartesianPosition(this.canvas, event)
+      const canvasCartesian = eventCartesianPosition(this.canvas, event)
+      const position = translateCoordinate(-this.props.margin, canvasCartesian)
       if (isInCircle(position, canvasRadius(this.canvas, this.props.margin))) {
         this.updateColor(this.canvas, position, this.props.onColorChange)
       }
