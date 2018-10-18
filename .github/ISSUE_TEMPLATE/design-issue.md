@@ -29,6 +29,7 @@ Provide any additional notes or context here such as:
 - [ ] Audit of usage
 - [ ] Component/Style spec created/updated
 - [ ] Design Review
+- [ ] Component is theme-able
 - [ ] Accessibility/Localization review
 - [ ] Component/Style updated or added in Team Library
 - [ ] Component/Style issue tagged for development
