@@ -19,7 +19,7 @@ export interface SimpleHSV extends HueSaturation {
   v: number
 }
 
-interface PolarBrightness {
+export interface PolarBrightness {
   brightness: number
   coord: PolarCoordinate
 }
