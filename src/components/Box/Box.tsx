@@ -1,12 +1,6 @@
 import tag from 'clean-tag'
 import * as React from 'react'
 import {
-  alignContent,
-  AlignContentProps,
-  alignItems,
-  AlignItemsProps,
-  alignSelf,
-  AlignSelfProps,
   bgColor,
   BgColorProps,
   border,
@@ -17,16 +11,8 @@ import {
   BottomProps,
   display,
   DisplayProps,
-  flexBasis,
-  FlexBasisProps,
-  flexDirection,
-  FlexDirectionProps,
-  flexWrap,
-  FlexWrapProps,
   height,
   HeightProps,
-  justifyContent,
-  JustifyContentProps,
   left,
   LeftProps,
   maxHeight,
@@ -57,20 +43,12 @@ export type LensSpaceProps = { [P in keyof SpaceProps]: ResponsiveSpacingSize }
 
 export interface BoxProps
   extends LensSpaceProps,
-    AlignContentProps,
-    AlignContentProps,
-    AlignItemsProps,
-    AlignSelfProps,
     BgColorProps,
     BorderProps,
     BorderRadiusProps,
     BottomProps,
     DisplayProps,
-    FlexBasisProps,
-    FlexDirectionProps,
-    FlexWrapProps,
     HeightProps,
-    JustifyContentProps,
     LeftProps,
     MaxHeightProps,
     MaxWidthProps,
@@ -89,19 +67,12 @@ const InternalBox: React.SFC<BoxProps> = ({ ...props }) => {
 }
 
 export const Box = styled<BoxProps>(InternalBox)`
-  ${alignContent};
-  ${alignItems};
-  ${alignSelf};
   ${bgColor};
   ${border};
   ${borderRadius};
   ${bottom};
   ${display};
-  ${flexBasis};
-  ${flexDirection};
-  ${flexWrap};
   ${height};
-  ${justifyContent};
   ${left};
   ${maxHeight};
   ${maxWidth};

@@ -11,6 +11,45 @@ const typescriptPropsParser = require('react-docgen-typescript').withDefaultConf
   }
 ).parse
 
+const componentSections = [
+  {
+    name: 'Layout',
+    sectionDepth: 1,
+    components: [
+      'src/components/Box/**/*.tsx',
+      'src/components/Flex/**/*.tsx',
+      'src/components/FlexItem/**/*.tsx',
+    ],
+  },
+  {
+    name: 'Text',
+    sectionDepth: 1,
+    components: [
+      'src/components/Heading/**/*.tsx',
+      'src/components/Text/**/*.tsx',
+    ],
+  },
+  {
+    name: 'Form & Inputs',
+    sectionDepth: 1,
+    components: [
+      'src/components/Button/**/*.tsx',
+      'src/components/Form/**/*.tsx',
+    ],
+  },
+]
+
+const contentSection = {
+  name: 'Content',
+  sectionDepth: 1,
+  components: 'src/components/**/*.tsx',
+  ignore: componentSections
+    .map(section => section.components)
+    .reduce((prev, curr) => {
+      return prev.concat(curr)
+    }, []),
+}
+
 module.exports = {
   assetsDir: 'static',
   compilerConfig: {
@@ -118,7 +157,7 @@ module.exports = {
     {
       name: 'Components',
       sectionDepth: 1,
-      components: 'src/components/**/*.tsx',
+      sections: [...componentSections, contentSection],
     },
     {
       name: 'Icons',

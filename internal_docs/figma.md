@@ -29,7 +29,7 @@ All of the Lens related Files are in the **Lens Project** which you can find in 
 
 ### File Location
 
-![Fimga Project List](/static/img/fimga_shots/figma-1.png)
+![Figma Project List](/static/img/fimga_shots/figma-1.png)
 
 ### File Cover and Status
 

@@ -1,11 +1,20 @@
 import * as React from 'react'
-import { Box, Code, Heading, IconExploreCircle, IconUndo, Text } from '../src'
+import {
+  Box,
+  Code,
+  Flex,
+  FlexItem,
+  Heading,
+  IconExploreCircle,
+  IconUndo,
+  Text,
+} from '../src'
 
 export const Intro = () => {
   return (
     <Box>
-      <Box display="flex" flexDirection="column" alignItems="center">
-        <Box my="large">
+      <Flex flexDirection="column" alignItems="center">
+        <FlexItem my="large">
           <svg
             width="49"
             height="49"
@@ -29,7 +38,7 @@ export const Intro = () => {
               fillOpacity="0.8"
             />
           </svg>
-        </Box>
+        </FlexItem>
         <Heading size="d1">LENS</Heading>
         <Box my="large" maxWidth="600px">
           <Text size="2">
@@ -37,21 +46,15 @@ export const Intro = () => {
             Looker services, or telling Looker stories.
           </Text>
         </Box>
-      </Box>
+      </Flex>
       <Box my="xlarge">
         <Box height="8px" bg="#F4F6F7" />
       </Box>
       <Box>
-        <Box display="flex" justifyContent="space-between">
-          <Box
-            maxWidth="215px"
-            display="flex"
-            flexDirection="column"
-            alignItems="center"
-          >
+        <Flex justifyContent="space-between">
+          <Flex maxWidth="215px" flexDirection="column" alignItems="center">
             <Box mb="large">
-              <Box
-                display="flex"
+              <Flex
                 alignItems="center"
                 justifyContent="center"
                 width="44px"
@@ -71,7 +74,7 @@ export const Intro = () => {
                     fill="#6C43E0"
                   />
                 </svg>
-              </Box>
+              </Flex>
             </Box>
             <Heading level="4" size="3" weight="semiBold">
               Install
@@ -83,16 +86,10 @@ export const Intro = () => {
               </Text>
               <Code size="5">yarn add looker-lens</Code>
             </Box>
-          </Box>
-          <Box
-            maxWidth="215px"
-            display="flex"
-            flexDirection="column"
-            alignItems="center"
-          >
+          </Flex>
+          <Flex maxWidth="215px" flexDirection="column" alignItems="center">
             <Box mb="large">
-              <Box
-                display="flex"
+              <Flex
                 alignItems="center"
                 justifyContent="center"
                 width="44px"
@@ -101,7 +98,7 @@ export const Intro = () => {
                 borderRadius="50%"
               >
                 <IconExploreCircle width="24" height="24" fill="#0087E1" />
-              </Box>
+              </Flex>
             </Box>
             <Heading level="4" size="3" weight="semiBold">
               Explore
@@ -113,16 +110,10 @@ export const Intro = () => {
                 right in Lens.
               </Text>
             </Box>
-          </Box>
-          <Box
-            maxWidth="215px"
-            display="flex"
-            flexDirection="column"
-            alignItems="center"
-          >
+          </Flex>
+          <Flex maxWidth="215px" flexDirection="column" alignItems="center">
             <Box mb="large">
-              <Box
-                display="flex"
+              <Flex
                 alignItems="center"
                 justifyContent="center"
                 width="44px"
@@ -131,7 +122,7 @@ export const Intro = () => {
                 borderRadius="50%"
               >
                 <IconUndo width="24" height="24" fill="#FFA800" />
-              </Box>
+              </Flex>
             </Box>
             <Heading level="4" size="3" weight="semiBold">
               Contribute
@@ -143,8 +134,8 @@ export const Intro = () => {
                 Request on the Lens repository.
               </Text>
             </Box>
-          </Box>
-        </Box>
+          </Flex>
+        </Flex>
       </Box>
     </Box>
   )
