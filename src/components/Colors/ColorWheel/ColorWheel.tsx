@@ -126,7 +126,10 @@ export class ColorWheel extends React.Component<ColorWheelProps> {
       }
     )
 
-    this.renderWheel(this.canvas, position)
+    this.renderWheel(
+      this.canvas,
+      translateCoordinate(this.props.margin, position)
+    )
   }
 
   /**
