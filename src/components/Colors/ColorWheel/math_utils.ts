@@ -69,8 +69,8 @@ export const deg2rad = (angle: number): number => angle * (Math.PI / 180)
  * r centered at (0,0).
  */
 export const isInCircle = (
-  position: CartesianCoordinate,
+  coord: CartesianCoordinate,
   radius: number
 ): boolean =>
-  cartesian2polar({ x: position.x - radius, y: position.y - radius }).radius <
-  radius
+  [coord].map(c => translateCoordinate(-radius, c)).map(cartesian2polar)[0]
+    .radius < radius

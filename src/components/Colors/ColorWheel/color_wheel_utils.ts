@@ -20,7 +20,15 @@ export interface SimpleHSV extends HueSaturation {
   v: number
 }
 
-export const whiteHSV = () => polar2hsv(1, 0, { angle: 0, radius: 0 })
+interface PolarBrightness {
+  brightness: number
+  coord: PolarCoordinate
+}
+
+export const white = (): PolarBrightness => ({
+  brightness: 1,
+  coord: { angle: 0, radius: 0 },
+})
 
 export const mappableArray = (size: number) => Array(size).fill(0)
 
@@ -29,14 +37,16 @@ export const hsv2polar = (color: SimpleHSV): PolarCoordinate => ({
   radius: color.s,
 })
 
-export const polar2hsv = (
-  brightness: number,
-  radius: number,
-  coord: PolarCoordinate
-): SimpleHSV =>
-  [coord]
-    .map(c => scaleRadius(1 / radius, c))
-    .map(c => ({ h: rad2deg(c.angle), s: c.radius, v: brightness }))[0]
+export const polarbrightness2hsv = (pb: PolarBrightness): SimpleHSV => ({
+  h: rad2deg(pb.coord.angle),
+  s: pb.coord.radius,
+  v: pb.brightness,
+})
+
+export const scalePBRadius = (
+  by: number,
+  pb: PolarBrightness
+): PolarBrightness => ({ ...pb, coord: scaleRadius(by, pb.coord) })
 
 export const cartesian2hsv = (
   brightness: number,
@@ -46,9 +56,9 @@ export const cartesian2hsv = (
   [coord]
     .map(c => translateCoordinate(-radius, c))
     .map(cartesian2polar)
-    .map(
-      c => (c.radius < radius ? polar2hsv(brightness, radius, c) : whiteHSV())
-    )[0]
+    .map(c => (c.radius < radius ? { coord: c, brightness } : white()))
+    .map(pb => scalePBRadius(1 / radius, pb))
+    .map(polarbrightness2hsv)[0]
 
 export const hsv2cartesian = (
   radius: number,
