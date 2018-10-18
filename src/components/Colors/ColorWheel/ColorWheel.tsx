@@ -16,19 +16,19 @@ import {
 
 import { CartesianCoordinate, diameter, isInCircle } from './math_utils'
 
-type UpdateColorCallbackType = (color: HueSaturation) => void
+type UpdateHueSaturationCallbackType = (color: HueSaturation) => void
 
 interface ColorWheelProps {
   /**
-   * Selected hue
+   * Selected hue. Can take on values between 0 and 360
    */
   hue: number
   /**
-   * Selected saturation
+   * Selected saturation. Can take on values between 0 and 1
    */
   saturation: number
   /**
-   * Selecteed value
+   * Selecteed value. Can take on values between 0 and 1
    */
   value: number
   /**
@@ -42,7 +42,7 @@ interface ColorWheelProps {
   /**
    * Callback for when a color has been changed in color wheel
    */
-  onColorChange?: UpdateColorCallbackType
+  onColorChange?: UpdateHueSaturationCallbackType
 }
 
 export class ColorWheel extends React.Component<ColorWheelProps> {
@@ -229,7 +229,7 @@ export class ColorWheel extends React.Component<ColorWheelProps> {
   private updateColor(
     canvas: HTMLCanvasElement,
     position?: CartesianCoordinate,
-    callback?: UpdateColorCallbackType
+    callback?: UpdateHueSaturationCallbackType
   ) {
     const ctx = canvas.getContext('2d')
     if (callback && ctx && position) {
