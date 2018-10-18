@@ -7,6 +7,7 @@ import {
   polar2cartesian,
   PolarCoordinate,
   rad2deg,
+  scaleRadius,
   translateCoordinate,
 } from './math_utils'
 
@@ -19,42 +20,45 @@ export interface SimpleHSV extends HueSaturation {
   v: number
 }
 
-const mappableArray = (size: number) => Array(size).fill(0)
+export const whiteHSV = () => polar2hsv(1, 0, { angle: 0, radius: 0 })
 
-const hsvPolar = (
-  brightness: number,
-  radius: number,
-  c: PolarCoordinate
-): SimpleHSV => ({
-  h: rad2deg(c.angle),
-  s: c.radius / radius,
-  v: brightness,
+export const mappableArray = (size: number) => Array(size).fill(0)
+
+export const hsv2polar = (color: SimpleHSV): PolarCoordinate => ({
+  angle: deg2rad(color.h),
+  radius: color.s,
 })
 
-const whiteHSV = (radius: number) =>
-  hsvPolar(360, radius, { angle: 0, radius: 0 })
+export const polar2hsv = (
+  brightness: number,
+  radius: number,
+  coord: PolarCoordinate
+): SimpleHSV =>
+  [coord]
+    .map(c => scaleRadius(1 / radius, c))
+    .map(c => ({ h: rad2deg(c.angle), s: c.radius, v: brightness }))[0]
 
 export const cartesian2hsv = (
   brightness: number,
   radius: number,
-  c: CartesianCoordinate
-): SimpleHSV => {
-  const polar = cartesian2polar(translateCoordinate(-radius, c))
-  return polar.radius < radius
-    ? hsvPolar(brightness, radius, polar)
-    : whiteHSV(radius)
-}
+  coord: CartesianCoordinate
+): SimpleHSV =>
+  [coord]
+    .map(c => translateCoordinate(-radius, c))
+    .map(cartesian2polar)
+    .map(
+      c => (c.radius < radius ? polar2hsv(brightness, radius, c) : whiteHSV())
+    )[0]
 
 export const hsv2cartesian = (
   radius: number,
   color: SimpleHSV
-): CartesianCoordinate => {
-  const coord = polar2cartesian({
-    angle: deg2rad(color.h),
-    radius: color.s * radius,
-  })
-  return translateCoordinate(radius, coord)
-}
+): CartesianCoordinate =>
+  [color]
+    .map(hsv2polar)
+    .map(coord => scaleRadius(radius, coord))
+    .map(polar2cartesian)
+    .map(coord => translateCoordinate(radius, coord))[0]
 
 /**
  * Generate a 2d represenrtation of a color wheel.
@@ -62,20 +66,18 @@ export const hsv2cartesian = (
 export const generateColorWheel = (
   radius: number,
   brightness: number
-): SimpleHSV[][] => {
-  if (radius <= 0) {
-    return []
-  }
-
+): SimpleHSV[][] =>
   /* tslint:disable-next-line:no-shadowed-variable */
-  return mappableArray(diameter(radius)).map((_, x) =>
+  mappableArray(diameter(radius)).map((_, x) =>
     /* tslint:disable-next-line:no-shadowed-variable */
     mappableArray(diameter(radius)).map((_, y) =>
       cartesian2hsv(brightness, radius, { x, y })
     )
   )
-}
 
+/**
+ * Stateful function that draws color wheel pixels into provided array
+ */
 export const drawColorWheelIntoCanvasImage = (
   image: Uint8ClampedArray,
   data: SimpleHSV[][]

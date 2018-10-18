@@ -49,6 +49,11 @@ export const translateCoordinate = (
   y: translate(by, coordinate.y),
 })
 
+export const scaleRadius = (by: number, coord: PolarCoordinate) => ({
+  ...coord,
+  radius: coord.radius * by,
+})
+
 /**
  * Radians in [-n, n] range. Returns degrees in [0, 360] range.
  */
