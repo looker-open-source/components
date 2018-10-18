@@ -22,7 +22,7 @@ video between 0 and 1.  `Hue` can be thought of as the angle from the center of 
 <ColorWheel size={300}/>
 ```
 
-### Hue, saturation, and value properrites
+### Hue, saturation, and value properties
 
 The `<ColorWheel />` component accepts `hue`, `saturation`, and `value`. Setting the `value` will change the brightness of the
 of the color wheel itself, while changing the `hue` and `saturation` will indicate what color has been selected on the color wheel.
