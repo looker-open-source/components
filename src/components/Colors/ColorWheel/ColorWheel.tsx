@@ -14,7 +14,12 @@ import {
   HueSaturation,
 } from './color_wheel_utils'
 
-import { CartesianCoordinate, diameter, isInCircle } from './math_utils'
+import {
+  CartesianCoordinate,
+  diameter,
+  isInCircle,
+  translateCoordinate,
+} from './math_utils'
 
 type UpdateHueSaturationCallbackType = (color: HueSaturation) => void
 
