@@ -3,12 +3,12 @@ import * as React from 'react'
 import {
   canvasRadius,
   clearCanvas,
+  drawColorWheelIntoCanvasImage,
   eventCartesianPosition,
 } from './canvas_utils'
 
 import {
   cartesian2hsv,
-  drawColorWheelIntoCanvasImage,
   generateColorWheel,
   hsv2cartesian,
   HueSaturation,

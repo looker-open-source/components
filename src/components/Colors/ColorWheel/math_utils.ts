@@ -8,9 +8,6 @@ export interface PolarCoordinate {
   angle: number
 }
 
-/**
- * Converts cartesian (x,y) coordinates to polar (radius, angle) coordinates.
- */
 export const cartesian2polar = (
   coord: CartesianCoordinate
 ): PolarCoordinate => ({
@@ -18,9 +15,6 @@ export const cartesian2polar = (
   radius: Math.sqrt(coord.x * coord.x + coord.y * coord.y),
 })
 
-/**
- * Converts polar coordinates (radius, angle) into cartesian coordinates (x,y).
- */
 export const polar2cartesian = (
   coord: PolarCoordinate
 ): CartesianCoordinate => ({
@@ -28,14 +22,9 @@ export const polar2cartesian = (
   y: coord.radius * Math.sin(coord.angle),
 })
 
-/**
- * Returns the diameter given a radius
- */
+export const rad2deg = (rad: number): number => (rad / (2 * Math.PI)) * 360
+export const deg2rad = (angle: number): number => angle * (Math.PI / 180)
 export const diameter = (radius: number): number => 2 * radius
-
-/**
- * Utility used to translate a a number by a value
- */
 export const translate = (by: number, val: number): number => val + by
 
 /**
@@ -53,16 +42,6 @@ export const scaleRadius = (by: number, coord: PolarCoordinate) => ({
   ...coord,
   radius: coord.radius * by,
 })
-
-/**
- * Radians in [-n, n] range. Returns degrees in [0, 360] range.
- */
-export const rad2deg = (rad: number): number => (rad / (2 * Math.PI)) * 360
-
-/**
- * Degrees in [0, 360].  Returns radians in [-n, n] range.
- */
-export const deg2rad = (angle: number): number => angle * (Math.PI / 180)
 
 /**
  * Utility that returns a boolean indicating if a given cartesian coordinate is within a circle of radius
