@@ -67,7 +67,7 @@ class ColorState extends React.Component {
     const h = Number(this.state.color.h).toFixed(0)
     const s = Number(this.state.color.s).toFixed(1)
     return (
-        <div style={{display: 'flex'}}>
+        <Flex>
           <Card raised>
             <CardContent>
               <Heading level="2">Color wheel</Heading>
@@ -93,7 +93,7 @@ class ColorState extends React.Component {
               <Text>Value: {this.state.color.v}</Text>
             </CardContent>
           </Card>
-        </div>
+        </Flex>
     )
   }
 }
