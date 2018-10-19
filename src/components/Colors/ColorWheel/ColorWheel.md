@@ -93,7 +93,7 @@ class ColorState extends React.Component {
               <Text>Value: {this.state.color.v}</Text>
             </CardContent>
           </Card>
-        </div>
+        </Flex>
     )
   }
 }
