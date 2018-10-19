@@ -11,12 +11,12 @@ const StatusAndResources = require('../../../../styleguide_components/StatusAndR
 ### Default Colorwheel
 
 The `<ColorWheel/>` renders an HSV based color wheel.  The wheel can be rendered at any needed size by providing a `size` property.
-The color wheel defaults to selecting a highly saturated and bright red hue. 
+The color wheel defaults to selecting a highly saturated and bright red hue.
 
-[This website has a nice treatment on the HSV color space,](http://learn.leighcotnoir.com/artspeak/elements-color/hue-value-saturation/) 
+[This website has a nice treatment on the HSV color space,](http://learn.leighcotnoir.com/artspeak/elements-color/hue-value-saturation/)
 One takeaway is that HSV color space can be thought of as a cylinder,  where each slice of the cylinder is showing a circle at a particular
-video between 0 and 1.  `Hue` can be thought of as the angle from the center of the circle can take on values between 0 and 360. 
-`Saturation` is the distance from the center on a unit circle. 
+value between 0 and 1.  `Hue` can be thought of as the angle from the center of the circle can take on values between 0 and 360.
+`Saturation` is the distance from the center on a unit circle.
 
 ```js
 <ColorWheel size={300}/>
@@ -33,8 +33,8 @@ of the color wheel itself, while changing the `hue` and `saturation` will indica
 
 ### onColorChanged property
 
-Use this to provide a callback to to know when a new hue, saturation tuple has been changed.  Note that the brightness will never change for a given
-slice of a color wheel, and should be handled outside the color wheel component. 
+Use this to provide a callback to know when a new (hue, saturation) tuple has been clicked.  Note that the brightness will never change for a given
+slice of a color wheel, and should be handled outside the color wheel component.
 
 ```js
 
@@ -55,7 +55,7 @@ class ColorState extends React.Component {
     this.setState({color})
   }
 
-  // Using a slider to control the brightness of the 
+  // Using a slider to control the brightness of the color wheel
   handleSliderChange(value) {
     const {color} = this.state
     color.v = value / 100

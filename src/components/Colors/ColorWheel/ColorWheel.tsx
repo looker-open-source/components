@@ -248,8 +248,8 @@ export class ColorWheel extends React.Component<ColorWheelProps> {
         canvasRadius(canvas, this.props.margin),
         position
       )
-      const hs = (({ h, s }) => ({ h, s }))(color)
-      callback(hs)
+
+      callback({ h: color.h, s: color.s })
     }
   }
 }
