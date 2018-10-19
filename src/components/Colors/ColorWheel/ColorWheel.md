@@ -3,8 +3,8 @@ const StatusAndResources = require('../../../../styleguide_components/StatusAndR
 
 <StatusAndResources
   status="experimental"
-  figmaURL="https://www.figma.com/file/2MG6DoSjk4IaLnjjFCnKFf/Forms"
-  githubURL="https://github.com/looker/lens/blob/master/src/components/Form/Inputs/Checkbox.tsx"
+  figmaURL="https://www.figma.com/file/h7RYPRCSlz3k8fLzEMRSzy/Color-Wheel?node-id=83%3A3"
+  githubURL="https://github.com/looker/lens/blob/master/src/components/Colors/ColorWheel.tsx"
   feedbackTitle="Checkbox Component Feedback" />
 ```
 
@@ -37,66 +37,6 @@ Use this to provide a callback to know when a new (hue, saturation) tuple has be
 slice of a color wheel, and should be handled outside the color wheel component.
 
 ```js
-
-class ColorState extends React.Component {
-  constructor () {
-    this.state = {
-      color: {
-        h: 140,
-        s: 0.5,
-        v: 0.5
-      },
-      size: 300
-    }
-  }
-
-  handleColorStateChange(color) {
-    color.v = this.state.color.v
-    this.setState({color})
-  }
-
-  // Using a slider to control the brightness of the color wheel
-  handleSliderChange(value) {
-    const {color} = this.state
-    color.v = value / 100
-    this.setState({color})
-  }
-
-  render () {
-
-    const h = Number(this.state.color.h).toFixed(0)
-    const s = Number(this.state.color.s).toFixed(1)
-    return (
-        <Flex>
-          <Card raised>
-            <CardContent>
-              <Heading level="2">Color wheel</Heading>
-              <ColorWheel size={this.state.size}
-                          hue={this.state.color.h}
-                          saturation={this.state.color.s}
-                          value={this.state.color.v}
-                          onColorChange={(color) => this.handleColorStateChange(color)}/>
-
-              <input id="typeinp"
-                     type="range"
-                     min="0" max="100"
-                     value={this.state.color.v * 100}
-                     onChange={(event) => this.handleSliderChange(event.target.value)}
-                     step="1"/>
-            </CardContent>
-          </Card>
-          <Card raised>
-            <CardContent>
-              <Heading level="2">HSV values</Heading>
-              <Text>Hue: {h}</Text>
-                  <Text>Saturation: {s}</Text>
-              <Text>Value: {this.state.color.v}</Text>
-            </CardContent>
-          </Card>
-        </Flex>
-    )
-  }
-}
-
-<ColorState />
+const ColorWheelDemo = require('../../../../styleguide_components/ColorWheelDemo').ColorWheelDemo;
+<ColorWheelDemo />
 ```

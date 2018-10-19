@@ -1,6 +1,12 @@
 import { hsv } from 'd3-hsv'
+import * as React from 'react'
 import { SimpleHSV } from './color_wheel_utils'
 import { CartesianCoordinate, translate } from './math_utils'
+
+/**
+ * Default margin for cavnas margin so we can easily show mouse cursor as well.
+ */
+export const canvasMargin = 5
 
 /**
  * Returns a radius for a given canvas element that has a given margin on all sides.
@@ -15,7 +21,7 @@ export const canvasRadius = (
  */
 export const eventCartesianPosition = (
   canvas: HTMLCanvasElement,
-  event: any
+  event: React.MouseEvent<HTMLCanvasElement>
 ): CartesianCoordinate => ({
   x: translate(-canvas.getBoundingClientRect().left, event.clientX),
   y: translate(-canvas.getBoundingClientRect().top, event.clientY),

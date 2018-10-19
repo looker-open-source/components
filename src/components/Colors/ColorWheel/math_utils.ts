@@ -28,7 +28,7 @@ export const diameter = (radius: number): number => 2 * radius
 export const translate = (by: number, val: number): number => val + by
 
 /**
- * Utility used to translate both the x and y of a coordinate by a value.
+ * Utility used to translate a coordinate on the sloping down to the right diagonal.
  */
 export const translateCoordinate = (
   by: number,

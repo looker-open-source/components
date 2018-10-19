@@ -1,6 +1,7 @@
 import * as React from 'react'
 
 import {
+  canvasMargin,
   canvasRadius,
   clearCanvas,
   drawColorWheelIntoCanvasImage,
@@ -33,13 +34,9 @@ interface ColorWheelProps {
    */
   saturation: number
   /**
-   * Selecteed value. Can take on values between 0 and 1
+   * Selected value. Can take on values between 0 and 1, where 0 is black and 1 is maximum brightness.
    */
   value: number
-  /**
-   * Internal margin in canvas
-   */
-  margin: number
   /**
    * Size, in pixels, of the canvas.
    */
@@ -92,21 +89,21 @@ export class ColorWheel extends React.Component<ColorWheelProps> {
     )
   }
 
-  public mouseDown = (event: any) => {
+  public mouseDown = (event: React.MouseEvent<HTMLCanvasElement>) => {
     const canvasCartesian = eventCartesianPosition(this.canvas, event)
-    const position = translateCoordinate(-this.props.margin, canvasCartesian)
+    const position = translateCoordinate(-canvasMargin, canvasCartesian)
 
-    if (isInCircle(position, canvasRadius(this.canvas, this.props.margin))) {
+    if (isInCircle(position, canvasRadius(this.canvas, canvasMargin))) {
       this.mouseMoving = true
       this.updateColor(this.canvas, position, this.props.onColorChange)
     }
   }
 
-  public mouseMove = (event: any) => {
+  public mouseMove = (event: React.MouseEvent<HTMLCanvasElement>) => {
     if (this.mouseMoving) {
       const canvasCartesian = eventCartesianPosition(this.canvas, event)
-      const position = translateCoordinate(-this.props.margin, canvasCartesian)
-      if (isInCircle(position, canvasRadius(this.canvas, this.props.margin))) {
+      const position = translateCoordinate(-canvasMargin, canvasCartesian)
+      if (isInCircle(position, canvasRadius(this.canvas, canvasMargin))) {
         this.updateColor(this.canvas, position, this.props.onColorChange)
       }
     }
@@ -117,19 +114,13 @@ export class ColorWheel extends React.Component<ColorWheelProps> {
   }
 
   private updateCanvas() {
-    const position = hsv2cartesian(
-      canvasRadius(this.canvas, this.props.margin),
-      {
-        h: this.props.hue,
-        s: this.props.saturation,
-        v: this.props.value,
-      }
-    )
+    const position = hsv2cartesian(canvasRadius(this.canvas, canvasMargin), {
+      h: this.props.hue,
+      s: this.props.saturation,
+      v: this.props.value,
+    })
 
-    this.renderWheel(
-      this.canvas,
-      translateCoordinate(this.props.margin, position)
-    )
+    this.renderWheel(this.canvas, translateCoordinate(canvasMargin, position))
   }
 
   /**
@@ -144,12 +135,12 @@ export class ColorWheel extends React.Component<ColorWheelProps> {
    * Utility method to draw actual color wheel.
    */
   private drawWheel(canvas: HTMLCanvasElement) {
-    const radius = canvasRadius(canvas, this.props.margin)
+    const radius = canvasRadius(canvas, canvasMargin)
     const ctx = canvas.getContext('2d')!
     const image = this.getImage(canvas, ctx)
 
     if (image) {
-      ctx.putImageData(image, this.props.margin, this.props.margin)
+      ctx.putImageData(image, canvasMargin, canvasMargin)
     }
 
     // Draw a border around circle
@@ -170,7 +161,7 @@ export class ColorWheel extends React.Component<ColorWheelProps> {
     ctx: CanvasRenderingContext2D
   ): ImageData | null {
     if (!this.image) {
-      const radius = canvasRadius(canvas, this.props.margin)
+      const radius = canvasRadius(canvas, canvasMargin)
       this.image = ctx.createImageData(diameter(radius), diameter(radius))
       drawColorWheelIntoCanvasImage(
         this.image.data,
@@ -245,7 +236,7 @@ export class ColorWheel extends React.Component<ColorWheelProps> {
     if (callback && ctx && position) {
       const color = cartesian2hsv(
         this.props.value,
-        canvasRadius(canvas, this.props.margin),
+        canvasRadius(canvas, canvasMargin),
         position
       )
 
