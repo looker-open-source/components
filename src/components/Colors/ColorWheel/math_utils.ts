@@ -45,7 +45,7 @@ export const scaleRadius = (by: number, coord: PolarCoordinate) => ({
 
 /**
  * Utility that returns a boolean indicating if a given cartesian coordinate is within a circle of radius
- * r centered at (0,0).
+ * r centered at (r,r).
  */
 export const isInCircle = (
   coord: CartesianCoordinate,
