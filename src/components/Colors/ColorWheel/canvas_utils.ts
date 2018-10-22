@@ -4,7 +4,7 @@ import { SimpleHSV } from './color_wheel_utils'
 import { CartesianCoordinate, translate } from './math_utils'
 
 /**
- * Default margin for cavnas margin so we can easily show mouse cursor as well.
+ * Default margin for canvas margin so we can easily show mouse cursor as well.
  */
 export const canvasMargin = 5
 
