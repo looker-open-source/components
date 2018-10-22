@@ -76,7 +76,6 @@ export const generateColorWheel = (
   radius: number,
   brightness: number
 ): SimpleHSV[][] =>
-  /* tslint:disable-next-line:no-shadowed-variable */
   mappableArray(diameter(radius)).map((_, x) =>
     /* tslint:disable-next-line:no-shadowed-variable */
     mappableArray(diameter(radius)).map((_, y) =>
