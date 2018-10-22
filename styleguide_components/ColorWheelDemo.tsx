@@ -15,7 +15,7 @@ interface ColorWheelDemoState {
   size: number
 }
 
-export class ColorWheelDemo extends React.Component<any, ColorWheelDemoState> {
+export class ColorWheelDemo extends React.Component<{}, ColorWheelDemoState> {
   constructor(props: {}) {
     super(props)
 
