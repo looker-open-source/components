@@ -10,3 +10,7 @@ test('Color wheel default ', () => {
 test('Color wheel with h, s, v defined ', () => {
   assertSnapshot(<ColorWheel hue={260} saturation={0.5} value={1} />)
 })
+
+test('Color wheel with h, s, v, size defined ', () => {
+  assertSnapshot(<ColorWheel hue={260} saturation={0.5} value={1} size={400} />)
+})

@@ -19,3 +19,13 @@ exports[`Color wheel with h, s, v defined  1`] = `
   width={100}
 />
 `;
+
+exports[`Color wheel with h, s, v, size defined  1`] = `
+<canvas
+  height={400}
+  onMouseDown={[Function]}
+  onMouseMove={[Function]}
+  onMouseUp={[Function]}
+  width={400}
+/>
+`;
