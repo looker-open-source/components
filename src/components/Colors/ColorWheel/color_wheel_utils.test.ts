@@ -1,7 +1,12 @@
 import {
+  cartesian2hsv,
   generateColorWheel,
+  hsv2cartesian,
   hsv2polar,
   mappableArray,
+  PolarBrightness,
+  polarbrightness2hsv,
+  scalePBRadius,
   white,
 } from './color_wheel_utils'
 
@@ -46,6 +51,126 @@ describe('color_wheel_utils', () => {
       const coord = hsv2polar({ h: 180, s: 30, v: 0.4 })
       expect(coord.angle).toEqual(Math.PI)
       expect(coord.radius).toEqual(30)
+    })
+  })
+
+  describe('polarbrightness2hsv', () => {
+    test(`PB: 0, 0, 1`, () => {
+      const hsv = polarbrightness2hsv({
+        brightness: 1,
+        coord: { angle: 0, radius: 0 },
+      })
+      expect(hsv.h).toEqual(0)
+      expect(hsv.s).toEqual(0)
+      expect(hsv.v).toEqual(1)
+    })
+
+    test(`PB: 0, 1, 0.5`, () => {
+      const hsv = polarbrightness2hsv({
+        brightness: 0.5,
+        coord: { angle: 0, radius: 1 },
+      })
+      expect(hsv.h).toEqual(0)
+      expect(hsv.s).toEqual(1)
+      expect(hsv.v).toEqual(0.5)
+    })
+
+    test(`PB: Math.PI/2, 1, 0.5`, () => {
+      const hsv = polarbrightness2hsv({
+        brightness: 0.5,
+        coord: { angle: Math.PI / 2, radius: 1 },
+      })
+      expect(hsv.h).toEqual(90)
+      expect(hsv.s).toEqual(1)
+      expect(hsv.v).toEqual(0.5)
+    })
+
+    test(`PB: Math.PI, 0.3, 0.7`, () => {
+      const hsv = polarbrightness2hsv({
+        brightness: 0.7,
+        coord: { angle: Math.PI, radius: 0.3 },
+      })
+      expect(hsv.h).toEqual(180)
+      expect(hsv.s).toEqual(0.3)
+      expect(hsv.v).toEqual(0.7)
+    })
+  })
+
+  describe('scalePBRadius', () => {
+    const testScale = (scale: number, pb: PolarBrightness) => {
+      test(`Test polar-brightness scales by ${scale}`, () => {
+        const scaled = scalePBRadius(scale, pb)
+        expect(scaled.brightness).toEqual(pb.brightness)
+        expect(scaled.coord.angle).toEqual(pb.coord.angle)
+        expect(scaled.coord.radius).toEqual(pb.coord.radius * scale)
+      })
+    }
+
+    for (let i = 1; i <= 10; i++) {
+      testScale(i, { coord: { angle: Math.PI, radius: 3 }, brightness: 0.7 })
+    }
+  })
+
+  describe('cartesian2hsv', () => {
+    const testBrightnessPassesThrough = (brightness: number) => {
+      test(`Test brightness passes through: ${brightness}`, () => {
+        const hsv = cartesian2hsv(brightness, 1, { x: 1, y: 1 })
+        expect(hsv.v).toEqual(brightness)
+      })
+    }
+
+    for (let i = 0; i <= 1; i += 0.1) {
+      testBrightnessPassesThrough(i)
+    }
+
+    test('(1,1) with radius 1 and brightness of 1', () => {
+      const hsv = cartesian2hsv(1, 1, { x: 1, y: 1 })
+      expect(hsv.h).toEqual(0)
+      expect(hsv.s).toEqual(0)
+    })
+
+    test('(5,5) with radius 1 and brightness of 0.5 will return white ', () => {
+      const hsv = cartesian2hsv(1, 1, { x: 5, y: 5 })
+      expect(hsv.h).toEqual(0)
+      expect(hsv.s).toEqual(0)
+    })
+
+    test('(3,0) with radius 3 and brightness of 1', () => {
+      const hsv = cartesian2hsv(1, 3, { x: 3, y: 4 })
+      expect(hsv.h).toEqual(90)
+      expect(hsv.s).toEqual(1 / 3)
+    })
+  })
+
+  describe('hsv2cartesian', () => {
+    test('HSV = (0,0,0)', () => {
+      const coord = hsv2cartesian(5, { h: 0, s: 0, v: 0 })
+      expect(coord.x).toBeCloseTo(5)
+      expect(coord.y).toBeCloseTo(5)
+    })
+
+    test('HSV = (45,1,1)', () => {
+      const coord = hsv2cartesian(5, { h: 45, s: 1, v: 1 })
+      expect(coord.x).toBeCloseTo(8.53, 1)
+      expect(coord.y).toBeCloseTo(8.53, 1)
+    })
+
+    test('HSV = (1,0,1)', () => {
+      const coord = hsv2cartesian(5, { h: 90, s: 0, v: 1 })
+      expect(coord.x).toBeCloseTo(5)
+      expect(coord.y).toBeCloseTo(5)
+    })
+
+    test('HSV = (0,1,1)', () => {
+      const coord = hsv2cartesian(5, { h: 135, s: 1, v: 1 })
+      expect(coord.x).toBeCloseTo(1.46)
+      expect(coord.y).toBeCloseTo(8.53, 1)
+    })
+
+    test('HSV = (90,1,1)', () => {
+      const coord = hsv2cartesian(5, { h: 180, s: 0, v: 1 })
+      expect(coord.x).toBeCloseTo(5)
+      expect(coord.y).toBeCloseTo(5)
     })
   })
 
