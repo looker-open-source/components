@@ -7,7 +7,7 @@ import {
   PolarCoordinate,
   rad2deg,
   scaleRadius,
-  translateCoordinate,
+  translateDiagonal,
 } from './math_utils'
 
 export interface HueSaturation {
@@ -53,7 +53,7 @@ export const cartesian2hsv = (
   coord: CartesianCoordinate
 ): SimpleHSV =>
   [coord]
-    .map(c => translateCoordinate(-radius, c))
+    .map(c => translateDiagonal(-radius, c))
     .map(cartesian2polar)
     .map(c => (c.radius < radius ? { coord: c, brightness } : white()))
     .map(pb => scalePBRadius(1 / radius, pb))
@@ -67,7 +67,7 @@ export const hsv2cartesian = (
     .map(hsv2polar)
     .map(coord => scaleRadius(radius, coord))
     .map(polar2cartesian)
-    .map(coord => translateCoordinate(radius, coord))[0]
+    .map(coord => translateDiagonal(radius, coord))[0]
 
 /**
  * Generate a 2d represenrtation of a color wheel.

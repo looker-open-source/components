@@ -30,7 +30,7 @@ export const translate = (by: number, val: number): number => val + by
 /**
  * Utility used to translate a coordinate on the sloping down to the right diagonal.
  */
-export const translateCoordinate = (
+export const translateDiagonal = (
   by: number,
   coordinate: CartesianCoordinate
 ) => ({
@@ -51,5 +51,5 @@ export const isInCircle = (
   coord: CartesianCoordinate,
   radius: number
 ): boolean =>
-  [coord].map(c => translateCoordinate(-radius, c)).map(cartesian2polar)[0]
+  [coord].map(c => translateDiagonal(-radius, c)).map(cartesian2polar)[0]
     .radius < radius

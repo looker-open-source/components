@@ -7,7 +7,7 @@ import {
   rad2deg,
   scaleRadius,
   translate,
-  translateCoordinate,
+  translateDiagonal,
 } from './math_utils'
 
 // Some litmus test for rad2deg and deg2rad
@@ -157,27 +157,27 @@ describe('math_utils', () => {
     })
   })
 
-  describe('translateCoordinate', () => {
+  describe('translateDiagonal', () => {
     test(`translate (0, 0) by 2`, () => {
-      const coord = translateCoordinate(2, { x: 0, y: 0 })
+      const coord = translateDiagonal(2, { x: 0, y: 0 })
       expect(coord.x).toEqual(2)
       expect(coord.y).toEqual(2)
     })
 
     test(`translate (0, 0) by -2`, () => {
-      const coord = translateCoordinate(-2, { x: 0, y: 0 })
+      const coord = translateDiagonal(-2, { x: 0, y: 0 })
       expect(coord.x).toEqual(-2)
       expect(coord.y).toEqual(-2)
     })
 
     test(`translate (5, 3) by -2`, () => {
-      const coord = translateCoordinate(-2, { x: 5, y: 3 })
+      const coord = translateDiagonal(-2, { x: 5, y: 3 })
       expect(coord.x).toEqual(3)
       expect(coord.y).toEqual(1)
     })
 
     test(`translate (-6, 3) by 4`, () => {
-      const coord = translateCoordinate(4, { x: -6, y: 3 })
+      const coord = translateDiagonal(4, { x: -6, y: 3 })
       expect(coord.x).toEqual(-2)
       expect(coord.y).toEqual(7)
     })

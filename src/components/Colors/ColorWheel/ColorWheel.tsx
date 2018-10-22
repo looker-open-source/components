@@ -19,7 +19,7 @@ import {
   CartesianCoordinate,
   diameter,
   isInCircle,
-  translateCoordinate,
+  translateDiagonal,
 } from './math_utils'
 
 type UpdateHueSaturationCallbackType = (color: HueSaturation) => void
@@ -91,7 +91,7 @@ export class ColorWheel extends React.Component<ColorWheelProps> {
 
   public mouseDown = (event: React.MouseEvent<HTMLCanvasElement>) => {
     const canvasCartesian = eventCartesianPosition(this.canvas, event)
-    const position = translateCoordinate(-canvasMargin, canvasCartesian)
+    const position = translateDiagonal(-canvasMargin, canvasCartesian)
 
     if (isInCircle(position, canvasRadius(this.canvas, canvasMargin))) {
       this.mouseMoving = true
@@ -102,7 +102,7 @@ export class ColorWheel extends React.Component<ColorWheelProps> {
   public mouseMove = (event: React.MouseEvent<HTMLCanvasElement>) => {
     if (this.mouseMoving) {
       const canvasCartesian = eventCartesianPosition(this.canvas, event)
-      const position = translateCoordinate(-canvasMargin, canvasCartesian)
+      const position = translateDiagonal(-canvasMargin, canvasCartesian)
       if (isInCircle(position, canvasRadius(this.canvas, canvasMargin))) {
         this.updateColor(this.canvas, position, this.props.onColorChange)
       }
@@ -120,7 +120,7 @@ export class ColorWheel extends React.Component<ColorWheelProps> {
       v: this.props.value,
     })
 
-    this.renderWheel(this.canvas, translateCoordinate(canvasMargin, position))
+    this.renderWheel(this.canvas, translateDiagonal(canvasMargin, position))
   }
 
   /**
