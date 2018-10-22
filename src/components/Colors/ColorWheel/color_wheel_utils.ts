@@ -77,7 +77,6 @@ export const generateColorWheel = (
   brightness: number
 ): SimpleHSV[][] =>
   mappableArray(diameter(radius)).map((_, x) =>
-    /* tslint:disable-next-line:no-shadowed-variable */
     mappableArray(diameter(radius)).map((_, y) =>
       cartesian2hsv(brightness, radius, { x, y })
     )
