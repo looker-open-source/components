@@ -4,6 +4,8 @@ import {
   bgColor,
   BgColorProps,
   border,
+  borderColor,
+  BorderColorProps,
   BorderProps,
   borderRadius,
   BorderRadiusProps,
@@ -45,6 +47,7 @@ export interface BoxProps
   extends LensSpaceProps,
     BgColorProps,
     BorderProps,
+    BorderColorProps,
     BorderRadiusProps,
     BottomProps,
     DisplayProps,
@@ -70,6 +73,7 @@ const InternalBox: React.SFC<BoxProps> = ({ ...props }) => {
 export const Box = styled<BoxProps>(InternalBox)`
   ${bgColor};
   ${border};
+  ${borderColor};
   ${borderRadius};
   ${bottom};
   ${display};

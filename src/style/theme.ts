@@ -28,13 +28,20 @@ export * from './transitions'
 
 export type SpacingSizes =
   | SizeNone
-  | SizeLarge
-  | SizeMedium
-  | SizeSmall
-  | SizeXLarge
   | SizeXSmall
+  | SizeSmall
+  | SizeMedium
+  | SizeLarge
+  | SizeXLarge
   | SizeXXLarge
   | SizeXXXLarge
+
+export type RadiusSizes =
+  | SizeNone
+  | SizeXSmall
+  | SizeSmall
+  | SizeMedium
+  | SizeLarge
 
 export interface Theme {
   breakpoints: string[]
@@ -44,7 +51,7 @@ export interface Theme {
   fontSizes: FontRamp
   fontWeights: Record<string, number>
   lineHeights: FontRamp
-  radii: string[]
+  radii: Record<RadiusSizes, string>
   /**
    * A function that can be overridden to return different reset css properties
    * or null to remove all resets. Most base elements in Lens implement the reset.
@@ -63,7 +70,15 @@ export const theme: Theme = {
   fontSizes,
   fontWeights,
   lineHeights,
-  radii: ['0.1rem', '0.2rem', '0.3rem', '0.5rem', '0.8rem'],
+  radii: {
+    // tslint:disable:object-literal-sort-keys
+    none: '0rem',
+    xsmall: '0.0625rem',
+    small: '0.125rem',
+    medium: '0.25rem',
+    large: '0.5rem',
+    // tslint:enable:object-literal-sort-keys
+  },
   reset: () => {
     return {
       border: 0,
