@@ -65,6 +65,8 @@
     "react": "16.5.1",
     "react-dom": "16.4.2",
     "react-overlays": "0.8.3",
+    "react-popover": "^0.5.10",
+    "react-popper": "^1.0.2",
     "styled-system": "^3.1.6",
     "svg-inline-loader": "^0.8.0",
     "uncontrollable": "^6.0.0"

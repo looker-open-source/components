@@ -1,20 +1,17 @@
-
 ```js
 const popoverTest = (
-  <Popover>
-    <Box bg="palette.charcoal200" m="small" borderRadius="2" overflow="hidden">
+    <Box bg="palette.charcoal200" borderRadius="2" overflow="hidden">
       <Box bg="palette.charcoal300" p="small">
         <Heading size="2">Here's a title</Heading>
       </Box>
       <Box p="small">What am I doing here?</Box>
     </Box>
-  </Popover>
 );
 
 <div>
 <Box display="inline-block" mr="small">
-  <OverlayTrigger trigger="click" overlay={popoverTest}>
-    <Button variant="outline">Show overlay!</Button>
+  <OverlayTrigger trigger="click" placement="right" overlay={popoverTest}>
+    <Button variant="outline">Show overlay right!</Button>
   </OverlayTrigger>
 </Box>
 <Box display="inline-block" mr="small">
