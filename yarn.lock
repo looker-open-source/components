@@ -765,6 +765,16 @@
   version "0.22.9"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/@types/cheerio/-/cheerio-0.22.9.tgz#b5990152604c2ada749b7f88cab3476f21f39d7b"
 
+"@types/d3-color@*", "@types/d3-color@1.2.1":
+  version "1.2.1"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/@types/d3-color/-/d3-color-1.2.1.tgz#26141c3c554e320edd40726b793570a3ae57397e"
+
+"@types/d3-hsv@0.1.2":
+  version "0.1.2"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/@types/d3-hsv/-/d3-hsv-0.1.2.tgz#99c913b4a5c3886f968d739745ec2589633a8839"
+  dependencies:
+    "@types/d3-color" "*"
+
 "@types/enzyme@^3.1.13":
   version "3.1.13"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/@types/enzyme/-/enzyme-3.1.13.tgz#4bbc5c81fa40c9fc7efee25c4a23cb37119a33ea"
@@ -2678,6 +2688,16 @@ currently-unhandled@^0.4.1:
 cyclist@~0.2.2:
   version "0.2.2"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/cyclist/-/cyclist-0.2.2.tgz#1b33792e11e914a2fd6d6ed6447464444e5fa640"
+
+d3-color@1, d3-color@^1.2.3:
+  version "1.2.3"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/d3-color/-/d3-color-1.2.3.tgz#6c67bb2af6df3cc8d79efcc4d3a3e83e28c8048f"
+
+d3-hsv@^0.1.0:
+  version "0.1.0"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/d3-hsv/-/d3-hsv-0.1.0.tgz#c95be89b34177a29e70a0848db95d7f0261ea99b"
+  dependencies:
+    d3-color "1"
 
 dashdash@^1.12.0:
   version "1.14.1"

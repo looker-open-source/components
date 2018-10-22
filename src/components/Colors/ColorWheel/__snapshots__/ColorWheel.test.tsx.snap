@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Color wheel default  1`] = `
+<canvas
+  height={100}
+  onMouseDown={[Function]}
+  onMouseMove={[Function]}
+  onMouseUp={[Function]}
+  width={100}
+/>
+`;
+
+exports[`Color wheel with h, s, v defined  1`] = `
+<canvas
+  height={100}
+  onMouseDown={[Function]}
+  onMouseMove={[Function]}
+  onMouseUp={[Function]}
+  width={100}
+/>
+`;
