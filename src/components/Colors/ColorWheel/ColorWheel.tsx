@@ -50,7 +50,6 @@ interface ColorWheelProps {
 export class ColorWheel extends React.Component<ColorWheelProps> {
   public static defaultProps = {
     hue: 0,
-    margin: 5,
     saturation: 1,
     size: 100,
     value: 1,
