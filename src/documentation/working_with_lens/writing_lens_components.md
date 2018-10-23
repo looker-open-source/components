@@ -1,7 +1,7 @@
 
 Lens is built using the following language and libraries:
 
-* [Typescript](typescriptlang.org)
+* [Typescript](https://www.typescriptlang.org/)
 * [React](https://reactjs.org/)
 * [JSX](https://reactjs.org/docs/introducing-jsx.html)
 * [StyledComponents](https://www.styled-components.com/)
