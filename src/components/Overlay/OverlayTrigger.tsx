@@ -1,5 +1,11 @@
 import * as React from 'react'
-import { Manager, Popper, PopperProps, Reference } from 'react-popper'
+import {
+  Manager,
+  Popper,
+  PopperProps,
+  Reference,
+  RefHandler,
+} from 'react-popper'
 
 export interface DelayHolder {
   show?: number
@@ -9,7 +15,7 @@ export interface DelayHolder {
 export type OverlayTriggers = 'hover' | 'click' | 'focus'
 
 export interface OverlayTriggerProps {
-  defaultShow: boolean
+  defaultShow?: boolean
   placement?: 'top' | 'left' | 'right' | 'bottom'
   trigger?: OverlayTriggers | OverlayTriggers[]
   popper: PopperProps['children']
@@ -41,6 +47,8 @@ export class OverlayTrigger extends React.Component<
 
   private timeout?: number
   private hoverState?: string
+  private popperRef: any
+  private triggerRef: any
 
   constructor(props: OverlayTriggerProps) {
     super(props)
@@ -144,8 +152,8 @@ export class OverlayTrigger extends React.Component<
     // Possibly check if the hover is the Popover, and optionally don't close here,
     // allowing for hover triggered popovers that can contain interactive content.
     if (
-      (!related || related !== target) &&
-      !target.contains(related as Element)
+      ((!related || related !== target) && !this.popperRef) ||
+      !this.popperRef.contains(related)
     ) {
       handler(e)
     }
@@ -161,26 +169,28 @@ export class OverlayTrigger extends React.Component<
 
   public render() {
     const { trigger, children, ...props } = this.props
-
-    delete props.delay
-
     const child = React.Children.only(children)
-
     const triggerProps: any = {}
-
     let triggers: OverlayTriggers[] = []
     triggers = triggers.concat(trigger ? trigger : [])
+    const includes = (ary: any[], item: any) => ary.indexOf(item) >= 0
+    const triggerActions = {
+      click: includes(triggers, 'click'),
+      focus: includes(triggers, 'focus'),
+      hover: includes(triggers, 'hover'),
+    }
+    delete props.delay
 
-    if (triggers.indexOf('click') !== -1) {
+    if (triggerActions.click) {
       triggerProps.onClick = this.handleClick
     }
 
-    if (triggers.indexOf('focus') !== -1) {
+    if (triggerActions.focus) {
       triggerProps.onFocus = this.handleShow
       triggerProps.onBlur = this.handleHide
     }
 
-    if (triggers.indexOf('hover') !== -1) {
+    if (triggerActions.hover) {
       // warning(
       //   triggers.length >= 1,
       //   '[react-bootstrap] Specifying only the `"hover"` trigger limits the ' +
@@ -192,9 +202,50 @@ export class OverlayTrigger extends React.Component<
       triggerProps.onMouseOut = this.handleMouseOut
     }
 
+    const bodyClickListener = (event: Event) => {
+      const clickOutsidePopper =
+        this.popperRef && !this.popperRef.contains(event.target)
+      const clickOutsideTrigger =
+        this.triggerRef && !this.triggerRef.contains(event.target)
+      if (clickOutsidePopper) {
+        document.body.removeEventListener('click', bodyClickListener)
+        if (clickOutsideTrigger) {
+          this.handleHide()
+        }
+      }
+    }
+
+    const popperRefMouseLeaveListener = () => {
+      this.popperRef.removeEventListener(
+        'mouseleave',
+        popperRefMouseLeaveListener
+      )
+      this.handleHide()
+    }
+
+    const setTriggerRef: RefHandler = node => {
+      this.triggerRef = node
+    }
+
+    const setPopperInnerRef: RefHandler = node => {
+      this.popperRef = node
+      if (this.popperRef) {
+        if (triggerActions.hover) {
+          this.popperRef.addEventListener(
+            'mouseleave',
+            popperRefMouseLeaveListener
+          )
+        }
+
+        if (triggerActions.click) {
+          document.body.addEventListener('click', bodyClickListener)
+        }
+      }
+    }
+
     return (
       <Manager>
-        <Reference>
+        <Reference innerRef={setTriggerRef}>
           {({ ref }) => (
             <div ref={ref}>
               {React.cloneElement(child, { ...triggerProps })}
@@ -202,7 +253,9 @@ export class OverlayTrigger extends React.Component<
           )}
         </Reference>
         {this.state.show && (
-          <Popper placement={props.placement}>{props.popper}</Popper>
+          <Popper placement={props.placement} innerRef={setPopperInnerRef}>
+            {props.popper}
+          </Popper>
         )}
       </Manager>
     )

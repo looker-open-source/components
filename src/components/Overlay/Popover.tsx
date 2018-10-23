@@ -80,7 +80,12 @@ const PopoverContent = (
   }
 }
 
-export interface PopoverProps extends OverlayTriggerProps {
+type ConcreteOverlayTriggerProps = Pick<
+  OverlayTriggerProps,
+  Exclude<keyof OverlayTriggerProps, 'popper'>
+>
+
+export interface PopoverProps extends ConcreteOverlayTriggerProps {
   zIndex?: number
 }
 
