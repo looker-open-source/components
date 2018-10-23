@@ -71,7 +71,7 @@ This should build the Lens style guide and place the build artifacts in `./style
 
 # Project Commands
 
-Each of these scripts can be run with `yarn <command>`. They are defined in the package.json `scripts` stanza.
+Each of these scripts can be run with `yarn <command>`. They are defined in the package.json [`scripts` stanza](https://github.com/looker/lens/blob/master/package.json#L122).
 
 - **start** starts the Styleguidist server
 - **build** builds the components and the static Styleguidist pages
@@ -79,5 +79,4 @@ Each of these scripts can be run with `yarn <command>`. They are defined in the 
 - **build-styleguide** builds just the Styleguidist guide
 - **clean** removes the `dist` and `styleguide` directories if they exist
 - **release** runs the publishing process, distributing the package to Looker's private package repository
-- **setup** sets up the Lens environment and installs dependencies
 - **test** runs the tests
