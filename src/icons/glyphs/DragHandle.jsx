@@ -1,6 +1,6 @@
 import React from 'react'
 
-const DragHandle = props => (
+const SvgDragHandle = props => (
   <svg
     xmlnsXlink="http://www.w3.org/1999/xlink"
     viewBox="0 0 24 24"
@@ -18,4 +18,4 @@ const DragHandle = props => (
   </svg>
 )
 
-export default DragHandle
+export default SvgDragHandle
