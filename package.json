@@ -13,6 +13,8 @@
     "@babel/preset-react": "7.0.0",
     "@babel/preset-typescript": "7.1.0",
     "@svgr/cli": "3.1.0",
+    "@types/d3-color": "1.2.1",
+    "@types/d3-hsv": "0.1.2",
     "@types/enzyme": "^3.1.13",
     "@types/jest": "23.3.5",
     "@types/react": "16.4.8",
@@ -55,8 +57,6 @@
     "tslint-react": "3.6.0",
     "typescript": "3.1.2",
     "typings-for-css-modules-loader": "1.7.0",
-    "@types/d3-color": "1.2.1",
-    "@types/d3-hsv": "0.1.2",
     "webpack": "4.20.2"
   },
   "dependencies": {
@@ -68,12 +68,9 @@
     "polished": "2.0.3",
     "react": "16.5.1",
     "react-dom": "16.4.2",
-    "react-overlays": "0.8.3",
-    "react-popover": "^0.5.10",
     "react-popper": "^1.0.2",
     "styled-system": "^3.1.6",
-    "svg-inline-loader": "^0.8.0",
-    "uncontrollable": "^6.0.0"
+    "svg-inline-loader": "^0.8.0"
   },
   "peerDependencies": {
     "@types/react": "16.4.8",
