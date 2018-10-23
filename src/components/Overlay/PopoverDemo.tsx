@@ -20,7 +20,7 @@ export class PopoverDemo extends React.Component<{}, PopoverDemoState> {
     this.state = {
       color: {
         h: 140,
-        s: 0.5,
+        s: 1,
         v: 0.5,
       },
       size: 300,

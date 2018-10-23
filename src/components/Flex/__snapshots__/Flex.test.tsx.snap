@@ -2,6 +2,12 @@
 
 exports[`Flex can be hidden  1`] = `
 .c1 {
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -20,6 +26,12 @@ exports[`Flex can be hidden  1`] = `
 
 exports[`Flex default  1`] = `
 .c0 {
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -40,6 +52,12 @@ exports[`Flex default  1`] = `
 
 exports[`Flex supports alignContent  1`] = `
 .c1 {
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -59,6 +77,12 @@ exports[`Flex supports alignContent  1`] = `
 
 exports[`Flex supports alignItems  1`] = `
 .c1 {
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -79,6 +103,12 @@ exports[`Flex supports alignItems  1`] = `
 
 exports[`Flex supports flexDirection  1`] = `
 .c1 {
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -98,6 +128,12 @@ exports[`Flex supports flexDirection  1`] = `
 
 exports[`Flex supports flexWrap  1`] = `
 .c1 {
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -117,6 +153,12 @@ exports[`Flex supports flexWrap  1`] = `
 
 exports[`Flex supports justifyContent  1`] = `
 .c1 {
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
