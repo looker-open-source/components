@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Manager, Popper, Reference } from 'react-popper'
+import { Manager, Popper, PopperProps, Reference } from 'react-popper'
 
 export interface DelayHolder {
   show?: number
@@ -8,18 +8,13 @@ export interface DelayHolder {
 
 export type OverlayTriggers = 'hover' | 'click' | 'focus'
 
-export interface OverlayTriggerDefaultProps {
+export interface OverlayTriggerProps {
   defaultShow: boolean
   placement?: 'top' | 'left' | 'right' | 'bottom'
   trigger?: OverlayTriggers | OverlayTriggers[]
-  zIndex?: number
-}
-
-export interface OverlayTriggerProps extends OverlayTriggerDefaultProps {
-  children?: React.ReactChildren
+  popper: PopperProps['children']
   delay?: number | DelayHolder
-  // Todo: Make these a concrete types
-  overlay: any
+  content?: any
   target?: any
   onHide?: any
   show?: any
@@ -39,7 +34,11 @@ export class OverlayTrigger extends React.Component<
   OverlayTriggerProps,
   OverlayTriggerState
 > {
-  public static defaultProps: OverlayTriggerDefaultProps
+  public static defaultProps = {
+    defaultShow: false,
+    trigger: ['hover', 'focus'],
+  }
+
   private timeout?: number
   private hoverState?: string
 
@@ -141,6 +140,7 @@ export class OverlayTrigger extends React.Component<
   ) {
     const target = e.currentTarget
     const related = e.relatedTarget
+
     // Possibly check if the hover is the Popover, and optionally don't close here,
     // allowing for hover triggered popovers that can contain interactive content.
     if (
@@ -160,7 +160,7 @@ export class OverlayTrigger extends React.Component<
   }
 
   public render() {
-    const { trigger, overlay, children, ...props } = this.props
+    const { trigger, children, ...props } = this.props
 
     delete props.delay
 
@@ -202,27 +202,9 @@ export class OverlayTrigger extends React.Component<
           )}
         </Reference>
         {this.state.show && (
-          <Popper placement={props.placement}>
-            {({ ref, style, placement }) => {
-              return (
-                <div
-                  ref={ref}
-                  style={Object.assign({ zIndex: this.props.zIndex }, style)}
-                  data-placement={placement}
-                >
-                  {overlay}
-                </div>
-              )
-            }}
-          </Popper>
+          <Popper placement={props.placement}>{props.popper}</Popper>
         )}
       </Manager>
     )
   }
-}
-
-OverlayTrigger.defaultProps = {
-  defaultShow: false,
-  trigger: ['hover', 'focus'],
-  zIndex: 100,
 }

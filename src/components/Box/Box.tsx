@@ -11,6 +11,8 @@ import {
   BorderRadiusProps,
   bottom,
   BottomProps,
+  boxShadow,
+  BoxShadowProps,
   display,
   DisplayProps,
   height,
@@ -25,6 +27,8 @@ import {
   MinHeightProps,
   minWidth,
   MinWidthProps,
+  overflow,
+  OverflowProps,
   position,
   PositionProps,
   ResponsiveValue,
@@ -36,8 +40,10 @@ import {
   TopProps,
   width,
   WidthProps,
+  zIndex,
+  ZIndexProps,
 } from 'styled-system'
-import { SpacingSizes, styled } from '../../style'
+import { reset, SpacingSizes, styled } from '../../style'
 
 export type ResponsiveSpacingSize = ResponsiveValue<SpacingSizes> | 'auto'
 
@@ -46,10 +52,11 @@ export type LensSpaceProps = { [P in keyof SpaceProps]: ResponsiveSpacingSize }
 export interface BoxProps
   extends LensSpaceProps,
     BgColorProps,
-    BorderProps,
     BorderColorProps,
+    BorderProps,
     BorderRadiusProps,
     BottomProps,
+    BoxShadowProps,
     DisplayProps,
     HeightProps,
     LeftProps,
@@ -57,25 +64,26 @@ export interface BoxProps
     MaxWidthProps,
     MinHeightProps,
     MinWidthProps,
+    OverflowProps,
     PositionProps,
     RightProps,
     TopProps,
-    WidthProps {
+    WidthProps,
+    ZIndexProps {
   is?: string | React.ReactNode
   className?: string
   overflow?: string
+  style?: React.CSSProperties
 }
 
-const InternalBox: React.SFC<BoxProps> = ({ ...props }) => {
-  return <tag.div {...props}>{props.children}</tag.div>
-}
-
-export const Box = styled<BoxProps>(InternalBox)`
+export const Box = styled<BoxProps>(tag)`
+  ${reset};
   ${bgColor};
   ${border};
   ${borderColor};
   ${borderRadius};
   ${bottom};
+  ${boxShadow};
   ${display};
   ${height};
   ${left};
@@ -83,10 +91,11 @@ export const Box = styled<BoxProps>(InternalBox)`
   ${maxWidth};
   ${minHeight};
   ${minWidth};
+  ${overflow};
   ${position};
   ${right};
   ${space};
   ${top};
   ${width};
-  ${props => (props.overflow ? `overflow: ${props.overflow}` : ``)};
+  ${zIndex};
 `

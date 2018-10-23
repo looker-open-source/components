@@ -29,7 +29,7 @@
     "color-hex-case": "lower",
     "font-weight-notation": "named-where-possible",
     "number-no-trailing-zeros": true,
-    "string-quotes": "double",
+    "string-quotes": "single",
     "length-zero-no-unit": true,
     "unit-case": "lower",
 

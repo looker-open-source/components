@@ -103,8 +103,8 @@
   },
   "lint-staged": {
     "**/*.ts?(x)": [
-      "prettier --write",
       "stylelint",
+      "prettier --write",
       "tslint --fix",
       "git add"
     ],
