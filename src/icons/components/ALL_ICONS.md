@@ -41,4 +41,5 @@
 <IconTrashOutline width="40" height="40" />
 <IconUndo width="40" height="40" />
 <IconUnusedContent width="40" height="40" />
+<IconWarning width="40" height="40" />
 ```

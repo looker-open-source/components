@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ChartBubble = props => (
+const SvgChartBubble = props => (
   <svg viewBox="0 0 24 24" width="1em" height="1em" {...props}>
     <path fill="none" d="M0 0h24v24H0z" />
     <circle cx={7.2} cy={14.4} r={3.2} />
@@ -9,4 +9,4 @@ const ChartBubble = props => (
   </svg>
 )
 
-export default ChartBubble
+export default SvgChartBubble
