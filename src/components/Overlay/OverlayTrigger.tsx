@@ -4,6 +4,7 @@ import {
   Popper,
   PopperProps,
   Reference,
+  ReferenceProps,
   RefHandler,
 } from 'react-popper'
 
@@ -20,10 +21,6 @@ export interface OverlayTriggerProps {
   trigger?: OverlayTriggers | OverlayTriggers[]
   popper: PopperProps['children']
   delay?: number | DelayHolder
-  content?: any
-  target?: any
-  onHide?: any
-  show?: any
 }
 
 export interface OverlayTriggerState {
@@ -70,14 +67,11 @@ export class OverlayTrigger extends React.Component<
   public handleShow = () => {
     clearTimeout(this.timeout)
     this.hoverState = 'show'
-
     const delay = normalizeDelay(this.props.delay)
-
     if (!delay.show) {
       this.show()
       return
     }
-
     this.timeout = window.setTimeout(() => {
       if (this.hoverState === 'show') this.show()
     }, delay.show)
@@ -225,15 +219,21 @@ export class OverlayTrigger extends React.Component<
       }
     }
 
+    // This simply passes the ref through correctly if it's a v3 Styled Component
+    // or a regular React node (eg <div>)
+    const triggerCloneElement: ReferenceProps['children'] = ({ ref }) => {
+      const isStyledComponent =
+        typeof child.type === 'function' &&
+        child.type.name === 'StyledComponent'
+      const cloneProps = isStyledComponent
+        ? { innerRef: ref, ...triggerProps }
+        : { ref, ...triggerProps }
+      return React.cloneElement(child, cloneProps)
+    }
+
     return (
       <Manager>
-        <Reference innerRef={setTriggerRef}>
-          {({ ref }) => (
-            <div ref={ref}>
-              {React.cloneElement(child, { ...triggerProps })}
-            </div>
-          )}
-        </Reference>
+        <Reference innerRef={setTriggerRef}>{triggerCloneElement}</Reference>
         {this.state.show && (
           <Popper placement={props.placement} innerRef={setPopperInnerRef}>
             {props.popper}

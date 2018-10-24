@@ -15,8 +15,9 @@ const popoverTest = (
 );
 
 <Box display="inline-block" mr="small">
+  Here's an inline popover:
   <Popover trigger={['hover', 'focus']} placement="top" content={popoverTest} zIndex={3}>
-    <Link href="https://en.wikipedia.org/wiki/Wildebeest">A Wikipedia article about Wildebeests</Link>
+    <a href="https://en.wikipedia.org/wiki/Wildebeest">A Wikipedia article about Wildebeests</a>
   </Popover>
 </Box>
 ```

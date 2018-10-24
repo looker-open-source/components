@@ -70,7 +70,7 @@ const PopoverContainer = styled<PopoverContainerProps>(
 `
 
 const PopoverContent = (
-  content: any,
+  content: JSX.Element,
   zIndex?: number
 ): React.SFC<PopperChildrenProps> => {
   return ({ ...props }) => {
@@ -106,12 +106,11 @@ type ConcreteOverlayTriggerProps = Pick<
 
 export interface PopoverProps extends ConcreteOverlayTriggerProps {
   zIndex?: number
+  content: JSX.Element
 }
 
-export const Popover: React.SFC<PopoverProps> = ({ content, ...props }) => {
-  return (
-    <OverlayTrigger popper={PopoverContent(content, props.zIndex)} {...props}>
-      {props.children}
-    </OverlayTrigger>
-  )
-}
+export const Popover: React.SFC<PopoverProps> = ({ content, ...props }) => (
+  <OverlayTrigger popper={PopoverContent(content, props.zIndex)} {...props}>
+    {props.children}
+  </OverlayTrigger>
+)
