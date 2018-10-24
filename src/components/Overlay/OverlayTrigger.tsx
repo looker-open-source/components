@@ -47,34 +47,17 @@ export class OverlayTrigger extends React.Component<
 
   private timeout?: number
   private hoverState?: string
-  private popperRef: any
-  private triggerRef: any
+  private popperRef: HTMLElement | null
+  private triggerRef: HTMLElement | null
 
   constructor(props: OverlayTriggerProps) {
     super(props)
+    this.popperRef = null
+    this.triggerRef = null
     this.state = {
       show: !!props.defaultShow,
     }
   }
-
-  //   // We add aria-describedby in the case where the overlay is a role="tooltip"
-  //   // for other cases describedby isn't appropriate (e.g. a popover with inputs) so we don't add it.
-  //   this.ariaModifier = {
-  //     enabled: true,
-  //     order: 900,
-  //     fn: data => {
-  //       const { popper } = data.instance;
-  //       const target = this.getTarget();
-  //       if (!this.state.show || !target) return data;
-
-  //       const role = popper.getAttribute('role') || '';
-  //       if (popper.id && role.toLowerCase() === 'tooltip') {
-  //         target.setAttribute('aria-describedby', popper.id);
-  //       }
-  //       return data;
-  //     },
-  //   };
-  // }
 
   public componentWillUnmount() {
     clearTimeout(this.timeout)
@@ -153,7 +136,9 @@ export class OverlayTrigger extends React.Component<
     // allowing for hover triggered popovers that can contain interactive content.
     if (
       ((!related || related !== target) && !this.popperRef) ||
-      !this.popperRef.contains(related)
+      (this.popperRef &&
+        related instanceof Element &&
+        !this.popperRef.contains(related))
     ) {
       handler(e)
     }
@@ -191,35 +176,32 @@ export class OverlayTrigger extends React.Component<
     }
 
     if (triggerActions.hover) {
-      // warning(
-      //   triggers.length >= 1,
-      //   '[react-bootstrap] Specifying only the `"hover"` trigger limits the ' +
-      //     'visibility of the overlay to just mouse users. Consider also ' +
-      //     'including the `"focus"` trigger so that touch and keyboard only ' +
-      //     'users can see the overlay as well.'
-      // )
       triggerProps.onMouseOver = this.handleMouseOver
       triggerProps.onMouseOut = this.handleMouseOut
     }
 
-    const bodyClickListener = (event: Event) => {
-      const clickOutsidePopper =
-        this.popperRef && !this.popperRef.contains(event.target)
-      const clickOutsideTrigger =
-        this.triggerRef && !this.triggerRef.contains(event.target)
-      if (clickOutsidePopper) {
-        document.body.removeEventListener('click', bodyClickListener)
-        if (clickOutsideTrigger) {
-          this.handleHide()
+    const bodyClickListener = (event: MouseEvent) => {
+      if (event.target instanceof Element) {
+        const clickOutsidePopper =
+          this.popperRef && !this.popperRef.contains(event.target)
+        const clickOutsideTrigger =
+          this.triggerRef && !this.triggerRef.contains(event.target)
+        if (clickOutsidePopper) {
+          document.body.removeEventListener('click', bodyClickListener)
+          if (clickOutsideTrigger) {
+            this.handleHide()
+          }
         }
       }
     }
 
     const popperRefMouseLeaveListener = () => {
-      this.popperRef.removeEventListener(
-        'mouseleave',
-        popperRefMouseLeaveListener
-      )
+      if (this.popperRef) {
+        this.popperRef.removeEventListener(
+          'mouseleave',
+          popperRefMouseLeaveListener
+        )
+      }
       this.handleHide()
     }
 

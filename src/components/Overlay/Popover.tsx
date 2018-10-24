@@ -82,9 +82,10 @@ const PopoverContent = (
         p="small"
         m="small"
         bg="palette.white"
-        borderRadius={4}
+        borderRadius="4"
         border="1px solid"
         borderColor="palette.charcoal200"
+        boxShadow="3"
         zIndex={zIndex}
       >
         {content}
