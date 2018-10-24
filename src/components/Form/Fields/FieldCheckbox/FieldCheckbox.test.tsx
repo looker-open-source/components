@@ -32,6 +32,6 @@ test('A FieldCheckbox with an error validation aligned to the bottom', () => {
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
   expect(tree!.children![0].props.htmlFor).toEqual(
-    tree!.children![1].children![1].props.id
+    tree!.children![1].children![0].children![0].props.id
   )
 })

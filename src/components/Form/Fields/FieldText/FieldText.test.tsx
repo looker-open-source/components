@@ -70,6 +70,40 @@ test('A FieldText with an error validation aligned to the bottom', () => {
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
   expect(tree!.children![0].props.htmlFor).toEqual(
-    tree!.children![1].children![1].props.id
+    tree!.children![1].children![0].children![0].props.id
+  )
+})
+
+test('A FieldText with an error validation aligned to the left', () => {
+  const component = createWithTheme(
+    <FieldText
+      label="👍"
+      name="thumbsUp"
+      id="thumbs-up"
+      validationMessage={{ type: 'error', message: 'This is an error' }}
+      alignValidationMessage="left"
+    />
+  )
+  const tree = component.toJSON()
+  expect(tree).toMatchSnapshot()
+  expect(tree!.children![0].props.htmlFor).toEqual(
+    tree!.children![1].children![0].children![0].props.id
+  )
+})
+
+test('A FieldText with an error validation aligned to the right', () => {
+  const component = createWithTheme(
+    <FieldText
+      label="👍"
+      name="thumbsUp"
+      id="thumbs-up"
+      validationMessage={{ type: 'error', message: 'This is an error' }}
+      alignValidationMessage="right"
+    />
+  )
+  const tree = component.toJSON()
+  expect(tree).toMatchSnapshot()
+  expect(tree!.children![0].props.htmlFor).toEqual(
+    tree!.children![1].children![0].children![0].props.id
   )
 })
