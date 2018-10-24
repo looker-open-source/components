@@ -60,7 +60,7 @@ export class PopoverDemo extends React.Component<{}, PopoverDemoState> {
           zIndex={1000}
         >
           <Box bg={color} p="medium" borderRadius="4px">
-            Show overlay top!
+            Hover me and pick a new color.
           </Box>
         </Popover>
       </Box>

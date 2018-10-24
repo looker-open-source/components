@@ -1,7 +1,7 @@
 import * as React from 'react'
-import { PopperChildrenProps } from 'react-popper'
-import { styled } from '../../style'
-import { Box } from '../Box'
+import { PopperChildrenProps, RefHandler } from 'react-popper'
+import { fadeIn, styled } from '../../style'
+import { Box, BoxProps } from '../Box'
 import { OverlayTrigger, OverlayTriggerProps } from './OverlayTrigger'
 
 const PopoverArrow = styled.div`
@@ -51,13 +51,31 @@ const PopoverArrow = styled.div`
   }
 `
 
+interface PopoverContainerProps extends BoxProps {
+  out?: boolean
+}
+
+const InternalPopoverContainer = React.forwardRef<{}, PopoverContainerProps>(
+  (props, ref) => (
+    <Box innerRef={ref as RefHandler} {...props}>
+      {props.children}
+    </Box>
+  )
+)
+
+const PopoverContainer = styled<PopoverContainerProps>(
+  InternalPopoverContainer
+)`
+  animation: ${fadeIn} 0.2s linear;
+`
+
 const PopoverContent = (
   content: any,
   zIndex?: number
 ): React.SFC<PopperChildrenProps> => {
   return ({ ...props }) => {
     return (
-      <Box
+      <PopoverContainer
         position="relative"
         innerRef={props.ref}
         style={props.style}
@@ -75,7 +93,7 @@ const PopoverContent = (
           style={props.arrowProps.style}
           data-placement={props.placement}
         />
-      </Box>
+      </PopoverContainer>
     )
   }
 }
