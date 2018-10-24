@@ -1,5 +1,7 @@
 import * as React from 'react'
 import { styled } from '../../../style'
+import { Flex } from '../../Flex'
+import { FlexItem } from '../../FlexItem'
 import { FormControl, FormControlDirections } from '../FormControl/FormControl'
 import { Label } from '../Label/Label'
 import {
@@ -45,16 +47,18 @@ const RequiredStar = styled(props => <span {...props}> *</span>)`
  * feedback about the status of the input values.
  */
 export const Field = (props: FieldProps & { children?: React.ReactNode }) => {
-  const renderValidation = () => {
-    if (props.validationMessage) {
-      return (
-        <FormControl alignLabel={props.alignValidationMessage}>
-          <ValidationMessage {...props.validationMessage} />
-          {props.children}
-        </FormControl>
-      )
+  const getFlexDirection = () => {
+    switch (props.alignValidationMessage) {
+      case 'bottom':
+        return 'column'
+      case 'left':
+        return 'row-reverse'
+      case 'top':
+        return 'column-reverse'
+      case 'right':
+      default:
+        return undefined
     }
-    return props.children
   }
 
   return (
@@ -63,7 +67,21 @@ export const Field = (props: FieldProps & { children?: React.ReactNode }) => {
         {props.label}
         {props.required && <RequiredStar />}
       </Label>
-      {renderValidation()}
+      <Flex
+        flexDirection={getFlexDirection()}
+        justifyContent={
+          props.alignValidationMessage === 'left' ? 'flex-end' : undefined
+        }
+      >
+        <FlexItem>{props.children}</FlexItem>
+        {props.validationMessage ? (
+          <FlexItem
+            ml={props.alignValidationMessage === 'right' ? 'small' : undefined}
+          >
+            <ValidationMessage {...props.validationMessage} />
+          </FlexItem>
+        ) : null}
+      </Flex>
     </FormControl>
   )
 }
