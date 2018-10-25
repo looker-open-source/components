@@ -4,22 +4,40 @@ import {
   Popper,
   PopperProps,
   Reference,
-  ReferenceProps,
   RefHandler,
 } from 'react-popper'
+import { Box } from '../Box'
 
 export interface DelayHolder {
   show?: number
   hide?: number
 }
 
-export type OverlayTriggers = 'hover' | 'click' | 'focus'
+export type OverlayTriggerEvent = 'hover' | 'click' | 'focus'
 
 export interface OverlayTriggerProps {
-  defaultShow?: boolean
-  placement?: 'top' | 'left' | 'right' | 'bottom'
-  trigger?: OverlayTriggers | OverlayTriggers[]
   popper: PopperProps['children']
+  /**
+   * Can be one of: top, bottom, left, right, auto, with the modifiers: start,
+   * end. This value comes directly from popperjs. See
+   * https://popper.js.org/popper-documentation.html#Popper.placements for more
+   * info.
+   * @default bottom
+   */
+  placement?: PopperProps['placement']
+  /**
+   * When true, renders the popover as open immediately.
+   * @default false
+   */
+  showImmediately?: boolean
+  /**
+   * The kind of interaction that triggers the Overlay to render.
+   */
+  trigger?: OverlayTriggerEvent | OverlayTriggerEvent[]
+  zIndex?: number
+  backdropColor?: string
+  backdropOpacity?: number
+
   delay?: number | DelayHolder
 }
 
@@ -38,7 +56,9 @@ export class OverlayTrigger extends React.Component<
   OverlayTriggerState
 > {
   public static defaultProps = {
-    defaultShow: false,
+    backdropColor: 'palette.charcoal200',
+    backdropOpacity: 0.4,
+    showImmediately: false,
     trigger: ['hover', 'focus'],
   }
 
@@ -52,7 +72,7 @@ export class OverlayTrigger extends React.Component<
     this.popperRef = null
     this.triggerRef = null
     this.state = {
-      show: !!props.defaultShow,
+      show: !!props.showImmediately,
     }
   }
 
@@ -126,14 +146,16 @@ export class OverlayTrigger extends React.Component<
     const target = e.currentTarget
     const related = e.relatedTarget
 
-    // Possibly check if the hover is the Popover, and optionally don't close here,
-    // allowing for hover triggered popovers that can contain interactive content.
-    if (
+    const doAction =
       ((!related || related !== target) && !this.popperRef) ||
       (this.popperRef &&
         related instanceof Element &&
         !this.popperRef.contains(related))
-    ) {
+
+    // Possibly check if the hover is the Popover, and optionally don't close here,
+    // allowing for hover triggered popovers that can contain interactive content.
+
+    if (doAction) {
       handler(e)
     }
   }
@@ -150,7 +172,7 @@ export class OverlayTrigger extends React.Component<
     const { trigger, children, ...props } = this.props
     const child = React.Children.only(children)
     const triggerProps: any = {}
-    let triggers: OverlayTriggers[] = []
+    let triggers: OverlayTriggerEvent[] = []
     triggers = triggers.concat(trigger ? trigger : [])
     const includes = (ary: any[], item: any) => ary.indexOf(item) >= 0
     const triggerActions = {
@@ -203,7 +225,7 @@ export class OverlayTrigger extends React.Component<
       this.triggerRef = node
     }
 
-    const setPopperInnerRef: RefHandler = node => {
+    const setPopperRef: RefHandler = node => {
       this.popperRef = node
       if (this.popperRef) {
         if (triggerActions.hover) {
@@ -219,23 +241,36 @@ export class OverlayTrigger extends React.Component<
       }
     }
 
-    // This simply passes the ref through correctly if it's a v3 Styled Component
-    // or a regular React node (eg <div>)
-    const triggerCloneElement: ReferenceProps['children'] = ({ ref }) => {
-      const isStyledComponent =
-        typeof child.type === 'function' &&
-        child.type.name === 'StyledComponent'
-      const cloneProps = isStyledComponent
-        ? { innerRef: ref, ...triggerProps }
-        : { ref, ...triggerProps }
-      return React.cloneElement(child, cloneProps)
-    }
+    const Backdrop = (
+      <Box
+        position="fixed"
+        top="0"
+        bottom="0"
+        left="0"
+        right="0"
+        bg={this.props.backdropColor}
+        opacity={this.props.backdropOpacity}
+        zIndex={this.props.zIndex}
+      />
+    )
 
     return (
       <Manager>
-        <Reference innerRef={setTriggerRef}>{triggerCloneElement}</Reference>
+        {this.state.show && Backdrop}
+        <Reference innerRef={setTriggerRef}>
+          {({ ref }) => (
+            <Box
+              display="inline-block"
+              position="relative"
+              innerRef={ref}
+              zIndex={this.props.zIndex}
+            >
+              {React.cloneElement(child, { ...triggerProps })}
+            </Box>
+          )}
+        </Reference>
         {this.state.show && (
-          <Popper placement={props.placement} innerRef={setPopperInnerRef}>
+          <Popper placement={props.placement} innerRef={setPopperRef}>
             {props.popper}
           </Popper>
         )}

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { PopperChildrenProps, RefHandler } from 'react-popper'
+import { PopperChildrenProps } from 'react-popper'
 import { fadeIn, styled } from '../../style'
 import { Box, BoxProps } from '../Box'
 import { OverlayTrigger, OverlayTriggerProps } from './OverlayTrigger'
@@ -18,7 +18,7 @@ const PopoverArrow = styled.div`
     border-right: 1px solid ${p => p.theme.colors.palette.charcoal200};
   }
 
-  &[data-placement='top'] {
+  &[data-placement*='top'] {
     bottom: -0.3125rem;
     margin: 0 1rem;
     &:before {
@@ -26,7 +26,7 @@ const PopoverArrow = styled.div`
     }
   }
 
-  &[data-placement='right'] {
+  &[data-placement*='right'] {
     left: -0.3125rem;
     margin: 1rem 0;
     &:before {
@@ -34,7 +34,7 @@ const PopoverArrow = styled.div`
     }
   }
 
-  &[data-placement='bottom'] {
+  &[data-placement*='bottom'] {
     top: -0.3125rem;
     margin: 0 1rem;
     &:before {
@@ -42,7 +42,7 @@ const PopoverArrow = styled.div`
     }
   }
 
-  &[data-placement='left'] {
+  &[data-placement*='left'] {
     right: -0.3125rem;
     margin: 1rem 0;
     &:before {
@@ -51,26 +51,12 @@ const PopoverArrow = styled.div`
   }
 `
 
-interface PopoverContainerProps extends BoxProps {
-  out?: boolean
-}
-
-const InternalPopoverContainer = React.forwardRef<{}, PopoverContainerProps>(
-  (props, ref) => (
-    <Box innerRef={ref as RefHandler} {...props}>
-      {props.children}
-    </Box>
-  )
-)
-
-const PopoverContainer = styled<PopoverContainerProps>(
-  InternalPopoverContainer
-)`
+const PopoverContainer = styled<BoxProps>(Box)`
   animation: ${fadeIn} 0.2s linear;
 `
 
 const PopoverContent = (
-  content: JSX.Element,
+  content: JSX.Element | string,
   zIndex?: number
 ): React.SFC<PopperChildrenProps> => {
   return ({ ...props }) => {
@@ -106,7 +92,10 @@ type ConcreteOverlayTriggerProps = Pick<
 
 export interface PopoverProps extends ConcreteOverlayTriggerProps {
   zIndex?: number
-  content: JSX.Element
+  /**
+   * The content to display in a Popover.
+   */
+  content: JSX.Element | string
 }
 
 export const Popover: React.SFC<PopoverProps> = ({ content, ...props }) => (

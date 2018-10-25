@@ -11,6 +11,8 @@ import {
   ThemedProps,
 } from '../../types'
 
+const Tag = tag
+
 export type ButtonSizes = SizeXSmall | SizeSmall | SizeMedium | SizeLarge
 
 export interface ButtonProps {
@@ -184,9 +186,13 @@ function sizeHelper(props: ThemedProps<ButtonProps>) {
   })
 }
 
-const InternalButton: React.SFC<ButtonProps> = ({ ...props }) => {
-  return <tag.button {...props}>{props.children}</tag.button>
-}
+const InternalButton = React.forwardRef<{}, ButtonProps>((props, ref) => {
+  return (
+    <Tag is="button" ref={ref} {...props}>
+      {props.children}
+    </Tag>
+  )
+})
 
 export const Button = styled<ButtonProps>(InternalButton)`
   ${reset}

@@ -27,6 +27,8 @@ import {
   MinHeightProps,
   minWidth,
   MinWidthProps,
+  opacity,
+  OpacityProps,
   overflow,
   OverflowProps,
   position,
@@ -64,6 +66,7 @@ export interface BoxProps
     MaxWidthProps,
     MinHeightProps,
     MinWidthProps,
+    OpacityProps,
     OverflowProps,
     PositionProps,
     RightProps,
@@ -91,6 +94,7 @@ export const Box = styled<BoxProps>(tag)`
   ${maxWidth};
   ${minHeight};
   ${minWidth};
+  ${opacity};
   ${overflow};
   ${position};
   ${right};
