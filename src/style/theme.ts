@@ -10,6 +10,7 @@ import {
   SizeXXLarge,
   SizeXXXLarge,
 } from '../types'
+import { components, Components } from './components'
 import { Easings, easings } from './easings'
 import { shadows, Shadows } from './elevation'
 import { fontFaces, FontFaces } from './font_faces'
@@ -45,6 +46,7 @@ export type RadiusSizes =
 
 export interface Theme {
   breakpoints: string[]
+  components: Components
   colors: { palette: Palette; semanticColors: SemanticColors }
   easings: Easings
   fontFaces: FontFaces
@@ -65,6 +67,7 @@ export interface Theme {
 export const theme: Theme = {
   breakpoints: ['30rem', '48rem', '64rem', '75rem', '90rem'],
   colors: { palette, semanticColors },
+  components,
   easings,
   fontFaces,
   fontSizes,

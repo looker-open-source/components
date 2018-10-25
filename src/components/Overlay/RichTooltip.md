@@ -2,8 +2,8 @@
 const StatusAndResources = require('../../../styleguide_components/StatusAndResources').StatusAndResources;
 <StatusAndResources
   status="stable"
-  githubURL="https://github.com/looker/lens/blob/master/src/components/Overlays/Popover.tsx"
-  feedbackTitle="Popover Component Feedback" />
+  githubURL="https://github.com/looker/lens/blob/master/src/components/Overlays/RichTooltip.tsx"
+  feedbackTitle="RichTooltip Component Feedback" />
 ```
 
 ```js
@@ -16,10 +16,18 @@ const wikipediaWildebeest = (
   </Box>
 );
 
+<Box>
 <Box display="inline-block" mr="small">
-  Here's a Popover:
-  <Popover content={wikipediaWildebeest}>
-    <Button>A Wikipedia article about Wildebeests</Button>
-  </Popover>
+  Here's a RichTooltip:
+  <RichTooltip content={wikipediaWildebeest} placement="auto-end">
+    <Link>A Wikipedia article about Wildebeests</Link>
+  </RichTooltip>
+</Box>
+<Box display="inline-block" mr="small">
+  Here's a RichTooltip:
+  <RichTooltip content={wikipediaWildebeest} placement="auto-end">
+    <Link>A Wikipedia article about Wildebeests</Link>
+  </RichTooltip>
+</Box>
 </Box>
 ```

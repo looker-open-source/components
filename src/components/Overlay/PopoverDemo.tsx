@@ -57,7 +57,6 @@ export class PopoverDemo extends React.Component<{}, PopoverDemoState> {
           trigger={['hover', 'focus']}
           placement="top"
           content={popoverContent}
-          zIndex={4}
         >
           <Box bg={color} p="medium" borderRadius="4px">
             Hover me and pick a new color.

@@ -7,6 +7,7 @@ import {
   Reference,
   RefHandler,
 } from 'react-popper'
+import { Theme, withTheme } from '../../style'
 import { Box } from '../Box'
 
 export interface DelayHolder {
@@ -22,6 +23,9 @@ export interface OverlayContentProps {
 }
 
 export interface OverlayProps {
+  theme: Theme
+  backdrop?: boolean
+  backdropStyles?: React.CSSProperties
   /**
    * Can be one of: top, bottom, left, right, auto, with the modifiers: start,
    * end. This value comes directly from popperjs. See
@@ -41,9 +45,6 @@ export interface OverlayProps {
    * The kind of interaction that triggers the Overlay to render.
    */
   trigger?: OverlayEvent | OverlayEvent[]
-  zIndex?: number
-  backdropColor?: string
-  backdropOpacity?: number
 
   delay?: number | DelayHolder
 }
@@ -62,14 +63,14 @@ const normalizeDelay = (delay?: number | DelayHolder): DelayHolder => {
     : { show: delay, hide: delay }
 }
 
-export class Overlay extends React.Component<
+class InternalOverlay extends React.Component<
   OverlayPropsWithContent,
   OverlayState
 > {
-  public static defaultProps = {
-    backdropColor: 'palette.charcoal200',
-    backdropOpacity: 0.4,
+  public static defaultProps: OverlayProps = {
+    backdrop: false,
     showImmediately: false,
+    theme: {} as Theme,
     trigger: ['hover', 'focus'],
   }
 
@@ -259,22 +260,27 @@ export class Overlay extends React.Component<
         bottom="0"
         left="0"
         right="0"
-        bg={this.props.backdropColor}
-        opacity={this.props.backdropOpacity}
-        zIndex={this.props.zIndex}
+        bg="palette.charcoal200"
+        opacity="0.7"
+        zIndex={this.props.theme.components.Overlay.zIndex || 1}
+        style={this.props.backdropStyles}
       />
     )
 
     return (
       <Manager>
-        {this.state.show && Backdrop}
+        {this.state.show && this.props.backdrop && Backdrop}
         <Reference innerRef={setTriggerRef}>
           {({ ref }) => (
             <Box
               display="inline-block"
               position="relative"
               innerRef={ref}
-              zIndex={this.props.zIndex}
+              zIndex={
+                this.state.show
+                  ? this.props.theme.components.Overlay.zIndex || 1
+                  : undefined
+              }
             >
               {React.cloneElement(child, { ...triggerProps })}
             </Box>
@@ -283,7 +289,11 @@ export class Overlay extends React.Component<
         {this.state.show && (
           <Popper placement={props.placement} innerRef={setPopperRef}>
             {({ ref, style, arrowProps, placement }) => (
-              <Box style={style} innerRef={ref} zIndex={this.props.zIndex}>
+              <Box
+                style={style}
+                innerRef={ref}
+                zIndex={this.props.theme.components.Overlay.zIndex || 1}
+              >
                 {this.props.overlayContentFactory({ arrowProps, placement })}
               </Box>
             )}
@@ -293,3 +303,5 @@ export class Overlay extends React.Component<
     )
   }
 }
+
+export const Overlay = withTheme(InternalOverlay)
