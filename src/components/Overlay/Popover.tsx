@@ -1,8 +1,7 @@
 import * as React from 'react'
-import { PopperChildrenProps } from 'react-popper'
 import { fadeIn, styled } from '../../style'
 import { Box, BoxProps } from '../Box'
-import { OverlayTrigger, OverlayTriggerProps } from './OverlayTrigger'
+import { Overlay, OverlayContentProps, OverlayProps } from './Overlay'
 
 const PopoverArrow = styled.div`
   position: absolute;
@@ -19,7 +18,7 @@ const PopoverArrow = styled.div`
   }
 
   &[data-placement*='top'] {
-    bottom: -0.3125rem;
+    bottom: 0.25rem;
     margin: 0 1rem;
     &:before {
       transform: rotate(45deg);
@@ -27,7 +26,7 @@ const PopoverArrow = styled.div`
   }
 
   &[data-placement*='right'] {
-    left: -0.3125rem;
+    left: 0.25rem;
     margin: 1rem 0;
     &:before {
       transform: rotate(135deg);
@@ -35,7 +34,7 @@ const PopoverArrow = styled.div`
   }
 
   &[data-placement*='bottom'] {
-    top: -0.3125rem;
+    top: 0.25rem;
     margin: 0 1rem;
     &:before {
       transform: rotate(225deg);
@@ -43,7 +42,7 @@ const PopoverArrow = styled.div`
   }
 
   &[data-placement*='left'] {
-    right: -0.3125rem;
+    right: 0.25rem;
     margin: 1rem 0;
     &:before {
       transform: rotate(315deg);
@@ -55,51 +54,33 @@ const PopoverContainer = styled<BoxProps>(Box)`
   animation: ${fadeIn} 0.2s linear;
 `
 
-const PopoverContent = (
-  content: JSX.Element | string,
-  zIndex?: number
-): React.SFC<PopperChildrenProps> => {
-  return ({ ...props }) => {
-    return (
-      <PopoverContainer
-        position="relative"
-        innerRef={props.ref}
-        style={props.style}
-        p="small"
-        m="small"
-        bg="palette.white"
-        borderRadius="4"
-        border="1px solid"
-        borderColor="palette.charcoal200"
-        boxShadow="3"
-        zIndex={zIndex}
-      >
-        {content}
-        <PopoverArrow
-          innerRef={props.arrowProps.ref}
-          style={props.arrowProps.style}
-          data-placement={props.placement}
-        />
-      </PopoverContainer>
-    )
-  }
+const popoverContent = (content: React.ReactNode) => {
+  return ({ ...props }: OverlayContentProps) => (
+    <PopoverContainer
+      p="small"
+      m="small"
+      bg="palette.white"
+      borderRadius="4"
+      border="1px solid"
+      borderColor="palette.charcoal200"
+      boxShadow="3"
+    >
+      {content}
+      <PopoverArrow
+        innerRef={props.arrowProps.ref}
+        style={props.arrowProps.style}
+        data-placement={props.placement}
+      />
+    </PopoverContainer>
+  )
 }
 
-type ConcreteOverlayTriggerProps = Pick<
-  OverlayTriggerProps,
-  Exclude<keyof OverlayTriggerProps, 'popper'>
->
-
-export interface PopoverProps extends ConcreteOverlayTriggerProps {
-  zIndex?: number
-  /**
-   * The content to display in a Popover.
-   */
-  content: JSX.Element | string
+export interface PopoverProps extends OverlayProps {
+  content: React.ReactNode
 }
 
 export const Popover: React.SFC<PopoverProps> = ({ content, ...props }) => (
-  <OverlayTrigger popper={PopoverContent(content, props.zIndex)} {...props}>
+  <Overlay {...props} overlayContentFactory={popoverContent(content)}>
     {props.children}
-  </OverlayTrigger>
+  </Overlay>
 )

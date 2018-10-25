@@ -17,7 +17,7 @@ const wikipediaWildebeest = (
 <Box display="inline-block" mr="small">
   Here's an inline popover:
   <Popover trigger="hover" content={wikipediaWildebeest} placement="auto-end" zIndex={5}>
-    <Button>A Wikipedia article about Wildebeests</Button>
+    <Link>A Wikipedia article about Wildebeests</Link>
   </Popover>
 </Box>
 ```

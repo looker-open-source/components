@@ -66,6 +66,7 @@
     "d3-color": "^1.2.3",
     "d3-hsv": "^0.1.0",
     "polished": "2.0.3",
+    "popper.js": "^1.14.4",
     "react": "16.5.1",
     "react-dom": "16.4.2",
     "react-popper": "^1.0.2",

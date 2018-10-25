@@ -1,8 +1,9 @@
+import { Placement } from 'popper.js'
 import * as React from 'react'
 import {
   Manager,
   Popper,
-  PopperProps,
+  PopperArrowProps,
   Reference,
   RefHandler,
 } from 'react-popper'
@@ -13,10 +14,14 @@ export interface DelayHolder {
   hide?: number
 }
 
-export type OverlayTriggerEvent = 'hover' | 'click' | 'focus'
+export type OverlayEvent = 'hover' | 'click' | 'focus'
 
-export interface OverlayTriggerProps {
-  popper: PopperProps['children']
+export interface OverlayContentProps {
+  arrowProps: PopperArrowProps
+  placement: Placement
+}
+
+export interface OverlayProps {
   /**
    * Can be one of: top, bottom, left, right, auto, with the modifiers: start,
    * end. This value comes directly from popperjs. See
@@ -24,16 +29,18 @@ export interface OverlayTriggerProps {
    * info.
    * @default bottom
    */
-  placement?: PopperProps['placement']
+  placement?: Placement
+
   /**
    * When true, renders the popover as open immediately.
    * @default false
    */
   showImmediately?: boolean
+
   /**
    * The kind of interaction that triggers the Overlay to render.
    */
-  trigger?: OverlayTriggerEvent | OverlayTriggerEvent[]
+  trigger?: OverlayEvent | OverlayEvent[]
   zIndex?: number
   backdropColor?: string
   backdropOpacity?: number
@@ -41,7 +48,11 @@ export interface OverlayTriggerProps {
   delay?: number | DelayHolder
 }
 
-export interface OverlayTriggerState {
+interface OverlayPropsWithContent extends OverlayProps {
+  overlayContentFactory: (props: OverlayContentProps) => React.ReactNode
+}
+
+export interface OverlayState {
   show: boolean
 }
 
@@ -51,9 +62,9 @@ const normalizeDelay = (delay?: number | DelayHolder): DelayHolder => {
     : { show: delay, hide: delay }
 }
 
-export class OverlayTrigger extends React.Component<
-  OverlayTriggerProps,
-  OverlayTriggerState
+export class Overlay extends React.Component<
+  OverlayPropsWithContent,
+  OverlayState
 > {
   public static defaultProps = {
     backdropColor: 'palette.charcoal200',
@@ -67,7 +78,7 @@ export class OverlayTrigger extends React.Component<
   private popperRef: HTMLElement | null
   private triggerRef: HTMLElement | null
 
-  constructor(props: OverlayTriggerProps) {
+  constructor(props: OverlayPropsWithContent) {
     super(props)
     this.popperRef = null
     this.triggerRef = null
@@ -172,7 +183,7 @@ export class OverlayTrigger extends React.Component<
     const { trigger, children, ...props } = this.props
     const child = React.Children.only(children)
     const triggerProps: any = {}
-    let triggers: OverlayTriggerEvent[] = []
+    let triggers: OverlayEvent[] = []
     triggers = triggers.concat(trigger ? trigger : [])
     const includes = (ary: any[], item: any) => ary.indexOf(item) >= 0
     const triggerActions = {
@@ -271,7 +282,11 @@ export class OverlayTrigger extends React.Component<
         </Reference>
         {this.state.show && (
           <Popper placement={props.placement} innerRef={setPopperRef}>
-            {props.popper}
+            {({ ref, style, arrowProps, placement }) => (
+              <Box style={style} innerRef={ref} zIndex={this.props.zIndex}>
+                {this.props.overlayContentFactory({ arrowProps, placement })}
+              </Box>
+            )}
           </Popper>
         )}
       </Manager>
