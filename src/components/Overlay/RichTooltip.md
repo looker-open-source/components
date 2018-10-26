@@ -16,18 +16,10 @@ const wikipediaWildebeest = (
   </Box>
 );
 
-<Box>
 <Box display="inline-block" mr="small">
   Here's a RichTooltip:
   <RichTooltip content={wikipediaWildebeest} placement="auto-end">
-    <Link>A Wikipedia article about Wildebeests</Link>
+    <Link href="https://en.wikipedia.org/wiki/Wildebeest">A Wikipedia article about Wildebeests</Link>
   </RichTooltip>
-</Box>
-<Box display="inline-block" mr="small">
-  Here's a RichTooltip:
-  <RichTooltip content={wikipediaWildebeest} placement="auto-end">
-    <Link>A Wikipedia article about Wildebeests</Link>
-  </RichTooltip>
-</Box>
 </Box>
 ```

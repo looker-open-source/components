@@ -1,21 +1,23 @@
+import { Placement } from 'popper.js'
 import * as React from 'react'
-import { Overlay, OverlayProps } from './Overlay'
+import { Overlay } from './Overlay'
 import { popoverContent } from './popover_utils'
 
-export interface RichTooltipProps extends OverlayProps {
+export interface RichTooltipProps {
   content: React.ReactNode
+  placement?: Placement
 }
 
 export const RichTooltip: React.SFC<RichTooltipProps> = ({
   content,
-  trigger,
-  ...props
+  placement,
+  children,
 }) => (
   <Overlay
-    {...props}
+    placement={placement}
     trigger="hover"
     overlayContentFactory={popoverContent(content)}
   >
-    {props.children}
+    {children}
   </Overlay>
 )

@@ -1,25 +1,29 @@
+import { Placement } from 'popper.js'
 import * as React from 'react'
-import { withTheme } from '../../style'
-import { Overlay, OverlayProps } from './Overlay'
+import { Theme, withTheme } from '../../style'
+import { Overlay } from './Overlay'
 import { popoverContent } from './popover_utils'
 
-export interface PopoverProps extends OverlayProps {
+export interface PopoverProps {
   content: React.ReactNode
+  theme: Theme
+  placement?: Placement
 }
 
 const InternalPopover: React.SFC<PopoverProps> = ({
   content,
-  trigger,
-  ...props
+  theme,
+  placement,
+  children,
 }) => (
   <Overlay
-    {...props}
+    placement={placement}
     trigger="click"
     overlayContentFactory={popoverContent(content)}
     backdrop
-    backdropStyles={props.theme.components.Popover.backdrop}
+    backdropStyles={theme.components.Popover.backdrop}
   >
-    {props.children}
+    {children}
   </Overlay>
 )
 

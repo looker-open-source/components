@@ -15,7 +15,7 @@ export interface DelayHolder {
   hide?: number
 }
 
-export type OverlayEvent = 'hover' | 'click' | 'focus'
+export type OverlayEvent = 'hover' | 'click'
 
 export interface OverlayContentProps {
   arrowProps: PopperArrowProps
@@ -44,7 +44,7 @@ export interface OverlayProps {
   /**
    * The kind of interaction that triggers the Overlay to render.
    */
-  trigger?: OverlayEvent | OverlayEvent[]
+  trigger?: OverlayEvent
 
   delay?: number | DelayHolder
 }
@@ -71,7 +71,7 @@ class InternalOverlay extends React.Component<
     backdrop: false,
     showImmediately: false,
     theme: {} as Theme,
-    trigger: ['hover', 'focus'],
+    trigger: 'hover',
   }
 
   private timeout?: number
@@ -183,27 +183,17 @@ class InternalOverlay extends React.Component<
   public render() {
     const { trigger, children, ...props } = this.props
     const child = React.Children.only(children)
-    const triggerProps: any = {}
-    let triggers: OverlayEvent[] = []
-    triggers = triggers.concat(trigger ? trigger : [])
-    const includes = (ary: any[], item: any) => ary.indexOf(item) >= 0
-    const triggerActions = {
-      click: includes(triggers, 'click'),
-      focus: includes(triggers, 'focus'),
-      hover: includes(triggers, 'hover'),
-    }
+    const triggerProps: React.DOMAttributes<{}> = {}
+
     delete props.delay
 
-    if (triggerActions.click) {
+    if (trigger === 'click') {
       triggerProps.onClick = this.handleClick
     }
 
-    if (triggerActions.focus) {
+    if (trigger === 'hover') {
       triggerProps.onFocus = this.handleShow
       triggerProps.onBlur = this.handleHide
-    }
-
-    if (triggerActions.hover) {
       triggerProps.onMouseOver = this.handleMouseOver
       triggerProps.onMouseOut = this.handleMouseOut
     }
@@ -240,14 +230,14 @@ class InternalOverlay extends React.Component<
     const setPopperRef: RefHandler = node => {
       this.popperRef = node
       if (this.popperRef) {
-        if (triggerActions.hover) {
+        if (trigger === 'hover') {
           this.popperRef.addEventListener(
             'mouseleave',
             popperRefMouseLeaveListener
           )
         }
 
-        if (triggerActions.click) {
+        if (trigger === 'click') {
           document.body.addEventListener('click', bodyClickListener)
         }
       }
@@ -260,8 +250,8 @@ class InternalOverlay extends React.Component<
         bottom="0"
         left="0"
         right="0"
-        bg="palette.charcoal200"
-        opacity="0.7"
+        bg={this.props.theme.components.Overlay.backdrop.backgroundColor}
+        opacity={this.props.theme.components.Overlay.backdrop.opacity}
         zIndex={this.props.theme.components.Overlay.zIndex || 1}
         style={this.props.backdropStyles}
       />
