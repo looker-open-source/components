@@ -4,14 +4,26 @@ Lens is currently published to Nexus, Looker's private package server. [First, e
 Next, add Lens to your project.
 
 ```bash noeditor
-yarn add looker-lens
+yarn add looker-lens styled-components
+yarn add --dev @types/react @types/react-dom @types/styled-system
 ```
 
-Import some components from Lens.
+Import some components from Lens:
 
-```js static
-import { Card, CardContent, Heading, Text } from 'looker-lens'
+```jsx static
+import { Card, CardContent, Heading, Text, ThemeProvider, theme } from 'looker-lens'
+
+<ThemeProvider theme={theme}>
+  <Card raised>
+    <CardContent>
+      <Heading weight="semiBold" transform="caps">Welcome to Lens</Heading>
+      <Text>Looker's component library</Text>
+    </CardContent>
+  </Card>
+</ThemeProvider>
 ```
+
+Which renders the following:
 
 ```jsx
 <Card raised>
@@ -22,17 +34,19 @@ import { Card, CardContent, Heading, Text } from 'looker-lens'
 </Card>
 ```
 
-Try editing the code above, changes should appear live.
+Try editing the code above, you should see the changes appear live.
 
-### What are components?
+These live editing blocks are found throughout lens.looker.com, providing a space for rapid experimentation with components.
 
-Components are reusable building blocks of an application's user interface. Typically they wrap a logical part of a user interface, including its behavior (Javascript), styling (CSS) and markup (HTML). They also expose a programmatic interface allowing them to be configured and reused.
+## What are components?
 
-Because they operate behind an interface, they are a useful tool for building *semantic abstractions*. The `<Card/>` component above is a great example of this kind of semantic abstraction - the developer doesn't have to be concerned with the actual implementation of the `Card`, they can simply comply to its interface without need to know about its inner workings.
+Components are reusable building blocks that make up an application's user interface. Typically they wrap a logical part of an interface, including its behavior (Javascript), styling (CSS) and markup (HTML). They expose a programmatic interface allowing them to be configured and reused.
 
-### A practical example
+Because components operate behind an interface, they are a useful tool for building *semantic abstractions*. The `<Card/>` component above is a great example of this kind of semantic abstraction - the developer doesn't have to be concerned with the actual implementation of the `Card`, they can simply comply to its interface without need to know about its inner workings.
 
-The above example shows Lens components in isolation. In practice, Lens components will exist as part of a larger React app (Lens components are written using React). Here's a simple example of a React component composed of Lens components:
+## A practical example
+
+The above example shows Lens components in isolation. In practice, Lens components will exist as part of a larger React app (Lens components are written using React). Here's a simple example of a React component you might write to use in Helltool, composed of Lens components:
 
 ```jsx static
 import * as React from 'react'
