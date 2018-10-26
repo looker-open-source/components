@@ -1,19 +1,19 @@
-import { hsl } from 'polished'
+import { hsv } from 'd3-hsv'
 import * as React from 'react'
-import { Box } from '../Box'
+import { Box } from '../src/components/Box'
 import {
   HueSaturation,
   SimpleHSV,
-} from '../Colors/ColorWheel/color_wheel_utils'
-import { ColorWheel } from '../Colors/ColorWheel/ColorWheel'
-import { Popover } from './Popover'
+} from '../src/components/Colors/ColorWheel/color_wheel_utils'
+import { ColorWheel } from '../src/components/Colors/ColorWheel/ColorWheel'
+import { RichTooltip } from '../src/components/Overlay/RichTooltip'
 
-export interface PopoverDemoState {
+export interface RichTooltipDemoState {
   color: SimpleHSV
   size: number
 }
 
-export class PopoverDemo extends React.Component<{}, PopoverDemoState> {
+export class RichTooltipDemo extends React.Component<{}, RichTooltipDemoState> {
   constructor(props: {}) {
     super(props)
 
@@ -21,7 +21,7 @@ export class PopoverDemo extends React.Component<{}, PopoverDemoState> {
       color: {
         h: 140,
         s: 1,
-        v: 0.5,
+        v: 1,
       },
       size: 300,
     }
@@ -45,7 +45,7 @@ export class PopoverDemo extends React.Component<{}, PopoverDemoState> {
       />
     )
 
-    const color = hsl(
+    const color = hsv(
       this.state.color.h,
       this.state.color.s,
       this.state.color.v
@@ -53,11 +53,11 @@ export class PopoverDemo extends React.Component<{}, PopoverDemoState> {
 
     return (
       <Box display="inline-block" mr="small">
-        <Popover placement="top" content={popoverContent}>
-          <Box bg={color} p="medium" borderRadius="4px">
-            Click me and pick a new color.
+        <RichTooltip placement="top" content={popoverContent}>
+          <Box bg={color.toString()} p="medium" borderRadius="4px">
+            Pick a new color.
           </Box>
-        </Popover>
+        </RichTooltip>
       </Box>
     )
   }

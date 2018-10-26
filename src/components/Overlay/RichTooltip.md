@@ -7,6 +7,12 @@ const StatusAndResources = require('../../../styleguide_components/StatusAndReso
 ```
 
 ```js
+const RichTooltipDemo = require('../../../styleguide_components/RichTooltipDemo').RichTooltipDemo;
+
+<RichTooltipDemo/>
+```
+
+```js
 const wikipediaWildebeest = (
   <Box width="360px">
     <img
@@ -17,7 +23,7 @@ const wikipediaWildebeest = (
 );
 
 <Box display="inline-block" mr="small">
-  Here's a RichTooltip:
+  Here's a RichTooltip connected to a Link:
   <RichTooltip content={wikipediaWildebeest} placement="auto-end">
     <Link href="https://en.wikipedia.org/wiki/Wildebeest">A Wikipedia article about Wildebeests</Link>
   </RichTooltip>
