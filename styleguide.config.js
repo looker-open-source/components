@@ -286,9 +286,6 @@ module.exports = {
         fontWeight: 600,
       },
     },
-    Sections: {
-      width: '740px',
-    },
     StyleGuide: {
       '@global body': {
         fontFamily: '"Open Sans", sans-serif',
