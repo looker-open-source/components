@@ -1,6 +1,6 @@
-export type ElevationLayers = '1' | '2' | '3' | '4' | '5' | '6' | '7' | 'max'
+export type ElevationLayers = '1' | '2' | '3' | '4' | '5' | '6'
 
-export type Shadows = { [K in ElevationLayers]?: string }
+export type Shadows = { [K in ElevationLayers]: string }
 
 export const shadows: Shadows = {
   1: '0px 1px 8px rgba(0, 0, 0, 0.08), 0px 1px 1px rgba(0, 0, 0, 0.05)',

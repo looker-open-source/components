@@ -13,8 +13,11 @@ import {
   BottomProps,
   boxShadow,
   BoxShadowProps,
+  color,
   display,
   DisplayProps,
+  fontStyle,
+  FontStyleProps,
   height,
   HeightProps,
   left,
@@ -38,6 +41,7 @@ import {
   RightProps,
   space,
   SpaceProps,
+  TextColorProps,
   top,
   TopProps,
   width,
@@ -60,6 +64,7 @@ export interface BoxProps
     BottomProps,
     BoxShadowProps,
     DisplayProps,
+    FontStyleProps,
     HeightProps,
     LeftProps,
     MaxHeightProps,
@@ -70,6 +75,7 @@ export interface BoxProps
     OverflowProps,
     PositionProps,
     RightProps,
+    TextColorProps,
     TopProps,
     WidthProps,
     ZIndexProps {
@@ -87,8 +93,10 @@ export const Box = styled<BoxProps>(tag)`
   ${borderRadius};
   ${bottom};
   ${boxShadow};
+  ${color};
   ${display};
   ${height};
+  ${fontStyle};
   ${left};
   ${maxHeight};
   ${maxWidth};

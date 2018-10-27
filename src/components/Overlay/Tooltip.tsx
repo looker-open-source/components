@@ -1,33 +1,32 @@
 import { Placement } from 'popper.js'
 import * as React from 'react'
-import { Theme, withTheme } from '../../style'
+import { withTheme } from 'styled-components'
+import { Theme } from '../../style'
 import { Overlay } from './Overlay'
 import { overlayBubbleWithContent } from './popover_utils'
 
-export interface PopoverProps {
-  content: React.ReactNode
+export interface TooltipProps {
+  content: string
   theme: Theme
   placement?: Placement
 }
 
-const InternalPopover: React.SFC<PopoverProps> = ({
+const InternalTooltip: React.SFC<TooltipProps> = ({
   content,
-  theme,
   placement,
+  theme,
   children,
 }) => (
   <Overlay
     placement={placement}
-    trigger="click"
+    trigger="hover"
     overlayContentFactory={overlayBubbleWithContent(
       content,
-      theme.components.Popover.bubble
+      theme.components.Tooltip.bubble
     )}
-    backdrop
-    backdropStyles={theme.components.Popover.backdrop}
   >
     {children}
   </Overlay>
 )
 
-export const Popover = withTheme(InternalPopover)
+export const Tooltip = withTheme(InternalTooltip)

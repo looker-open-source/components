@@ -1,23 +1,32 @@
 import { Placement } from 'popper.js'
 import * as React from 'react'
+import { withTheme } from 'styled-components'
+import { Theme } from '../../style'
 import { Overlay } from './Overlay'
-import { popoverContent } from './popover_utils'
+import { overlayBubbleWithContent } from './popover_utils'
 
 export interface RichTooltipProps {
   content: React.ReactNode
+  theme: Theme
   placement?: Placement
 }
 
-export const RichTooltip: React.SFC<RichTooltipProps> = ({
+const InternalRichTooltip: React.SFC<RichTooltipProps> = ({
   content,
   placement,
+  theme,
   children,
 }) => (
   <Overlay
     placement={placement}
     trigger="hover"
-    overlayContentFactory={popoverContent(content)}
+    overlayContentFactory={overlayBubbleWithContent(
+      content,
+      theme.components.RichTooltip.bubble
+    )}
   >
     {children}
   </Overlay>
 )
+
+export const RichTooltip = withTheme(InternalRichTooltip)

@@ -1,8 +1,9 @@
 import * as React from 'react'
 import { ThemeProvider } from 'styled-components'
-import { theme } from '../src/style'
+import { palette, theme } from '../src/style'
 
 theme.components.Overlay.zIndex = 100
+theme.components.Tooltip.bubble.color = palette.red000
 
 export default class ThemeWrapper extends React.Component {
   public render() {

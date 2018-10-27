@@ -17,6 +17,7 @@ import { fontFaces, FontFaces } from './font_faces'
 import { FontRamp, fontSizes, lineHeights } from './font_sizes'
 import { fontWeights } from './font_weights'
 import { palette, Palette } from './palette'
+import { radii, Radii } from './radii'
 import { SemanticColors, semanticColors } from './semantic_colors'
 import { transitions, Transitions } from './transitions'
 
@@ -37,13 +38,6 @@ export type SpacingSizes =
   | SizeXXLarge
   | SizeXXXLarge
 
-export type RadiusSizes =
-  | SizeNone
-  | SizeXSmall
-  | SizeSmall
-  | SizeMedium
-  | SizeLarge
-
 export interface Theme {
   breakpoints: string[]
   components: Components
@@ -53,7 +47,7 @@ export interface Theme {
   fontSizes: FontRamp
   fontWeights: Record<string, number>
   lineHeights: FontRamp
-  radii: Record<RadiusSizes, string>
+  radii: Radii
   /**
    * A function that can be overridden to return different reset css properties
    * or null to remove all resets. Most base elements in Lens implement the reset.
@@ -73,15 +67,7 @@ export const theme: Theme = {
   fontSizes,
   fontWeights,
   lineHeights,
-  radii: {
-    // tslint:disable:object-literal-sort-keys
-    none: '0rem',
-    xsmall: '0.0625rem',
-    small: '0.125rem',
-    medium: '0.25rem',
-    large: '0.5rem',
-    // tslint:enable:object-literal-sort-keys
-  },
+  radii,
   reset: () => {
     return {
       border: 0,
