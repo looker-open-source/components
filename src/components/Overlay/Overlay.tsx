@@ -22,10 +22,7 @@ export interface OverlayContentProps {
   placement: Placement
 }
 
-export interface OverlayProps {
-  theme: Theme
-  backdrop?: boolean
-  backdropStyles?: React.CSSProperties
+export interface OverlayInteractiveProps {
   /**
    * Can be one of: top, bottom, left, right, auto, with the modifiers: start,
    * end. This value comes directly from popperjs. See
@@ -40,13 +37,17 @@ export interface OverlayProps {
    * @default false
    */
   showImmediately?: boolean
+}
 
+export interface OverlayProps extends OverlayInteractiveProps {
+  theme: Theme
+  backdrop?: boolean
+  backdropStyles?: React.CSSProperties
+  delay?: number | DelayHolder
   /**
    * The kind of interaction that triggers the Overlay to render.
    */
   trigger?: OverlayEvent
-
-  delay?: number | DelayHolder
 }
 
 interface OverlayPropsWithContent extends OverlayProps {

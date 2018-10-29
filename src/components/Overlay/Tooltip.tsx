@@ -1,29 +1,30 @@
-import { Placement } from 'popper.js'
 import * as React from 'react'
 import { withTheme } from 'styled-components'
 import { Theme } from '../../style'
-import { Overlay } from './Overlay'
+import { Span } from '../Text'
+import { Overlay, OverlayInteractiveProps } from './Overlay'
 import { overlayBubbleWithContent } from './popover_utils'
 
-export interface TooltipProps {
+export interface TooltipProps extends OverlayInteractiveProps {
   content: string
   theme: Theme
-  placement?: Placement
 }
 
 const InternalTooltip: React.SFC<TooltipProps> = ({
   content,
-  placement,
   theme,
   children,
+  ...overlayProps
 }) => (
   <Overlay
-    placement={placement}
     trigger="hover"
     overlayContentFactory={overlayBubbleWithContent(
-      content,
+      <Span size="6" variant="inverted">
+        {content}
+      </Span>,
       theme.components.Tooltip.bubble
     )}
+    {...overlayProps}
   >
     {children}
   </Overlay>

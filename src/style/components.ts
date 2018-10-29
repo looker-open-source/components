@@ -43,6 +43,7 @@ export const components: Components = {
       borderRadius: radii.medium,
       boxShadow: shadows[3],
       color: palette.charcoal900,
+      padding: 'small',
     },
   },
   RichTooltip: {
@@ -53,6 +54,7 @@ export const components: Components = {
       borderRadius: radii.medium,
       boxShadow: shadows[3],
       color: palette.charcoal900,
+      padding: 'small',
     },
   },
   Tooltip: {
@@ -63,6 +65,7 @@ export const components: Components = {
       borderRadius: radii.medium,
       boxShadow: shadows[3],
       color: palette.charcoal000,
+      padding: 'xsmall',
     },
   },
 }

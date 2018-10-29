@@ -1,23 +1,20 @@
-import { Placement } from 'popper.js'
 import * as React from 'react'
 import { Theme, withTheme } from '../../style'
-import { Overlay } from './Overlay'
+import { Overlay, OverlayInteractiveProps } from './Overlay'
 import { overlayBubbleWithContent } from './popover_utils'
 
-export interface PopoverProps {
+export interface PopoverProps extends OverlayInteractiveProps {
   content: React.ReactNode
   theme: Theme
-  placement?: Placement
 }
 
 const InternalPopover: React.SFC<PopoverProps> = ({
   content,
   theme,
-  placement,
   children,
+  ...overlayProps
 }) => (
   <Overlay
-    placement={placement}
     trigger="click"
     overlayContentFactory={overlayBubbleWithContent(
       content,
@@ -25,6 +22,7 @@ const InternalPopover: React.SFC<PopoverProps> = ({
     )}
     backdrop
     backdropStyles={theme.components.Popover.backdrop}
+    {...overlayProps}
   >
     {children}
   </Overlay>
