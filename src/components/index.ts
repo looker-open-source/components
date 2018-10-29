@@ -1,6 +1,7 @@
 export * from './Box'
 export * from './Button'
 export * from './Card'
+export * from './Colors'
 export * from './Form'
 export * from './Flex'
 export * from './FlexItem'
