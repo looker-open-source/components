@@ -1,0 +1,5 @@
+# IconInfo
+
+```js
+<IconInfo />
+```

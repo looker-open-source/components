@@ -202,6 +202,7 @@ module.exports = {
     fontFamily: {
       base: '"Open Sans", sans-serif',
     },
+    maxWidth: '784px',
   },
   styles: {
     Logo: {
@@ -221,7 +222,8 @@ module.exports = {
     },
     Para: {
       para: {
-        maxWidth: '765px',
+        maxWidth: '42rem',
+        lineHeight: '1.7',
       },
     },
     Blockquote: {
@@ -264,7 +266,7 @@ module.exports = {
         lineHeight: '64px',
       },
       heading2: {
-        fontSize: '46px',
+        fontSize: '32px',
         lineHeight: '64px',
       },
       heading3: {
