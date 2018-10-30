@@ -164,7 +164,7 @@ exports[`Box supports width 3`] = `
 
 exports[`Box with SizeNone is valid 1`] = `
 .c0 {
-  margin-top: none;
+  margin-top: 0rem;
 }
 
 <div>

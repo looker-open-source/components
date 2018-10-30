@@ -1,6 +1,10 @@
-import { reset, styled } from '../../style'
+import * as React from 'react'
+import { Box, BoxProps } from '../Box'
 
-export const ListItem = styled.li`
-  ${reset};
-  margin-bottom: ${props => props.theme.space.xsmall};
-`
+export const ListItem: React.SFC<BoxProps> = ({ ...props }) => {
+  return (
+    <Box is="li" mb="xsmall">
+      {props.children}
+    </Box>
+  )
+}
