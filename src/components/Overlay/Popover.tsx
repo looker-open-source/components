@@ -20,7 +20,6 @@ const InternalPopover: React.SFC<PopoverProps> = ({
       content,
       theme.components.Popover.bubble
     )}
-    backdrop
     backdropStyles={theme.components.Popover.backdrop}
     {...overlayProps}
   >

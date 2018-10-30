@@ -41,7 +41,6 @@ export interface OverlayInteractiveProps {
 
 export interface OverlayProps extends OverlayInteractiveProps {
   theme: Theme
-  backdrop?: boolean
   backdropStyles?: React.CSSProperties
   delay?: number | DelayHolder
   /**
@@ -69,7 +68,6 @@ class InternalOverlay extends React.Component<
   OverlayState
 > {
   public static defaultProps: OverlayProps = {
-    backdrop: false,
     showImmediately: false,
     theme: {} as Theme,
     trigger: 'hover',
@@ -89,12 +87,13 @@ class InternalOverlay extends React.Component<
     }
   }
 
-  public componentWillUnmount() {
-    clearTimeout(this.timeout)
+  public componentDidMount() {
+    document.addEventListener('keydown', this.handleEscapePress)
   }
 
-  public getChildProps() {
-    return React.Children.only(this.props.children).props
+  public componentWillUnmount() {
+    clearTimeout(this.timeout)
+    document.removeEventListener('keydown', this.handleEscapePress)
   }
 
   public handleShow = () => {
@@ -123,23 +122,9 @@ class InternalOverlay extends React.Component<
     }, delay.hide)
   }
 
-  public handleFocus = (e: React.MouseEvent) => {
-    const { onFocus } = this.getChildProps()
-    this.handleShow()
-    if (onFocus) onFocus(e)
-  }
-
-  public handleBlur = (e: React.MouseEvent) => {
-    const { onBlur } = this.getChildProps()
-    this.handleHide()
-    if (onBlur) onBlur(e)
-  }
-
-  public handleClick = (e: React.MouseEvent) => {
-    const { onClick } = this.getChildProps()
+  public handleClick = () => {
     if (this.state.show) this.hide()
     else this.show()
-    if (onClick) onClick(e)
   }
 
   public handleMouseOver = (e: React.MouseEvent) =>
@@ -148,10 +133,6 @@ class InternalOverlay extends React.Component<
   public handleMouseOut = (e: React.MouseEvent) =>
     this.handleMouseOverOut(this.handleHide, e)
 
-  // Simple implementation of mouseEnter and mouseLeave.
-  // React's built version is broken: https://github.com/facebook/react/issues/4251
-  // for cases when the trigger is disabled and mouseOut/Over can cause flicker
-  // moving from one child element to another.
   public handleMouseOverOut(
     handler: (e: React.MouseEvent) => void,
     e: React.MouseEvent
@@ -159,16 +140,25 @@ class InternalOverlay extends React.Component<
     const target = e.currentTarget
     const related = e.relatedTarget
 
-    const doAction =
-      ((!related || related !== target) && !this.popperRef) ||
-      (this.popperRef &&
-        related instanceof Element &&
-        !this.popperRef.contains(related))
+    const showPopper =
+      !this.state.show && this.triggerRef && this.triggerRef.contains(target)
 
-    // Possibly check if the hover is the Popover, and optionally don't close here,
-    // allowing for hover triggered popovers that can contain interactive content.
+    const mouseDidNotMoveFromTriggerToPopper =
+      this.popperRef &&
+      related instanceof Element &&
+      !this.popperRef.contains(related)
 
-    if (doAction) {
+    const mouseDidNotMoveFromPopperToTrigger =
+      this.triggerRef &&
+      related instanceof Element &&
+      !this.triggerRef.contains(related)
+
+    const hidePopper =
+      this.state.show &&
+      mouseDidNotMoveFromPopperToTrigger &&
+      mouseDidNotMoveFromTriggerToPopper
+
+    if (showPopper || hidePopper) {
       handler(e)
     }
   }
@@ -184,68 +174,26 @@ class InternalOverlay extends React.Component<
   public render() {
     const { trigger, children, ...props } = this.props
     const child = React.Children.only(children)
-    const triggerProps: React.DOMAttributes<{}> = {}
+    const triggerEventProps: React.DOMAttributes<{}> = {}
+    const popperEventProps: React.DOMAttributes<{}> = {}
 
     delete props.delay
 
     if (trigger === 'click') {
-      triggerProps.onClick = this.handleClick
+      triggerEventProps.onClick = this.handleClick
     }
 
     if (trigger === 'hover') {
-      triggerProps.onFocus = this.handleShow
-      triggerProps.onBlur = this.handleHide
-      triggerProps.onMouseOver = this.handleMouseOver
-      triggerProps.onMouseOut = this.handleMouseOut
-    }
-
-    const bodyClickListener = (event: MouseEvent) => {
-      if (event.target instanceof Element) {
-        const clickOutsidePopper =
-          this.popperRef && !this.popperRef.contains(event.target)
-        const clickOutsideTrigger =
-          this.triggerRef && !this.triggerRef.contains(event.target)
-        if (clickOutsidePopper) {
-          document.body.removeEventListener('click', bodyClickListener)
-          if (clickOutsideTrigger) {
-            this.handleHide()
-          }
-        }
-      }
-    }
-
-    const popperRefMouseLeaveListener = () => {
-      if (this.popperRef) {
-        this.popperRef.removeEventListener(
-          'mouseleave',
-          popperRefMouseLeaveListener
-        )
-      }
-      this.handleHide()
-    }
-
-    const setTriggerRef: RefHandler = node => {
-      this.triggerRef = node
-    }
-
-    const setPopperRef: RefHandler = node => {
-      this.popperRef = node
-      if (this.popperRef) {
-        if (trigger === 'hover') {
-          this.popperRef.addEventListener(
-            'mouseleave',
-            popperRefMouseLeaveListener
-          )
-        }
-
-        if (trigger === 'click') {
-          document.body.addEventListener('click', bodyClickListener)
-        }
-      }
+      triggerEventProps.onFocus = this.handleShow
+      triggerEventProps.onBlur = this.handleHide
+      triggerEventProps.onMouseOver = this.handleMouseOver
+      triggerEventProps.onMouseOut = this.handleMouseOut
+      popperEventProps.onMouseOut = this.handleMouseOut
     }
 
     const Backdrop = (
       <Box
+        onClick={this.handleClick}
         position="fixed"
         top="0"
         bottom="0"
@@ -260,8 +208,8 @@ class InternalOverlay extends React.Component<
 
     return (
       <Manager>
-        {this.state.show && this.props.backdrop && Backdrop}
-        <Reference innerRef={setTriggerRef}>
+        {this.state.show && trigger === 'click' && Backdrop}
+        <Reference innerRef={this.setTriggerRef}>
           {({ ref }) => (
             <Box
               display="inline-block"
@@ -273,17 +221,18 @@ class InternalOverlay extends React.Component<
                   : undefined
               }
             >
-              {React.cloneElement(child, { ...triggerProps })}
+              {React.cloneElement(child, { ...triggerEventProps })}
             </Box>
           )}
         </Reference>
         {this.state.show && (
-          <Popper placement={props.placement} innerRef={setPopperRef}>
+          <Popper placement={props.placement} innerRef={this.setPopperRef}>
             {({ ref, style, arrowProps, placement }) => (
               <Box
                 style={style}
                 innerRef={ref}
                 zIndex={this.props.theme.components.Overlay.zIndex || 1}
+                {...popperEventProps}
               >
                 {this.props.overlayContentFactory({ arrowProps, placement })}
               </Box>
@@ -292,6 +241,17 @@ class InternalOverlay extends React.Component<
         )}
       </Manager>
     )
+  }
+
+  private setPopperRef: RefHandler = node => (this.popperRef = node)
+
+  private setTriggerRef: RefHandler = node => (this.triggerRef = node)
+
+  private handleEscapePress = (event: KeyboardEvent) => {
+    this.props.trigger === 'click' &&
+      this.state.show &&
+      event.key === 'Escape' &&
+      this.handleHide()
   }
 }
 

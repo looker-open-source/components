@@ -55,9 +55,8 @@ export type ResponsiveSpacingSize = ResponsiveValue<SpacingSizes> | 'auto'
 
 export type LensSpaceProps = { [P in keyof SpaceProps]: ResponsiveSpacingSize }
 
-export interface BoxProps
-  extends LensSpaceProps,
-    BgColorProps,
+export interface BoxStyledSystemProps
+  extends BgColorProps,
     BorderColorProps,
     BorderProps,
     BorderRadiusProps,
@@ -78,7 +77,12 @@ export interface BoxProps
     TextColorProps,
     TopProps,
     WidthProps,
-    ZIndexProps {
+    ZIndexProps {}
+
+export interface BoxProps
+  extends React.DOMAttributes<Element>,
+    LensSpaceProps,
+    BoxStyledSystemProps {
   is?: string | React.ReactNode
   className?: string
   overflow?: string
