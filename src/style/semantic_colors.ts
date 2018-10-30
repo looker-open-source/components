@@ -11,6 +11,7 @@ const {
   purple400,
   red000,
   red100,
+  red400,
   red500,
   red600,
   red700,
@@ -67,7 +68,7 @@ export interface SemanticColors {
 
 export const semanticColors: SemanticColors = {
   danger: {
-    altText: purple400,
+    altText: red400,
     borderColor: red500,
     dark: red600,
     darker: red700,
