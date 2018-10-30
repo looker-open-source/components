@@ -10,11 +10,6 @@ import {
 import { Theme, withTheme } from '../../style'
 import { Box } from '../Box'
 
-export interface DelayHolder {
-  show?: number
-  hide?: number
-}
-
 export type OverlayEvent = 'hover' | 'click'
 
 export interface OverlayContentProps {
@@ -42,7 +37,6 @@ export interface OverlayInteractiveProps {
 export interface OverlayProps extends OverlayInteractiveProps {
   theme: Theme
   backdropStyles?: React.CSSProperties
-  delay?: number | DelayHolder
   /**
    * The kind of interaction that triggers the Overlay to render.
    */
@@ -57,12 +51,6 @@ export interface OverlayState {
   show: boolean
 }
 
-const normalizeDelay = (delay?: number | DelayHolder): DelayHolder => {
-  return delay && typeof delay === 'object'
-    ? delay
-    : { show: delay, hide: delay }
-}
-
 class InternalOverlay extends React.Component<
   OverlayPropsWithContent,
   OverlayState
@@ -73,8 +61,6 @@ class InternalOverlay extends React.Component<
     trigger: 'hover',
   }
 
-  private timeout?: number
-  private hoverState?: string
   private popperRef: HTMLElement | null
   private triggerRef: HTMLElement | null
 
@@ -92,34 +78,7 @@ class InternalOverlay extends React.Component<
   }
 
   public componentWillUnmount() {
-    clearTimeout(this.timeout)
     document.removeEventListener('keydown', this.handleEscapePress)
-  }
-
-  public handleShow = () => {
-    clearTimeout(this.timeout)
-    this.hoverState = 'show'
-    const delay = normalizeDelay(this.props.delay)
-    if (!delay.show) {
-      this.show()
-      return
-    }
-    this.timeout = window.setTimeout(() => {
-      if (this.hoverState === 'show') this.show()
-    }, delay.show)
-  }
-
-  public handleHide = () => {
-    clearTimeout(this.timeout)
-    this.hoverState = 'hide'
-    const delay = normalizeDelay(this.props.delay)
-    if (!delay.hide) {
-      this.hide()
-      return
-    }
-    this.timeout = window.setTimeout(() => {
-      if (this.hoverState === 'hide') this.hide()
-    }, delay.hide)
   }
 
   public handleClick = () => {
@@ -128,10 +87,10 @@ class InternalOverlay extends React.Component<
   }
 
   public handleMouseOver = (e: React.MouseEvent) =>
-    this.handleMouseOverOut(this.handleShow, e)
+    this.handleMouseOverOut(this.show, e)
 
   public handleMouseOut = (e: React.MouseEvent) =>
-    this.handleMouseOverOut(this.handleHide, e)
+    this.handleMouseOverOut(this.hide, e)
 
   public handleMouseOverOut(
     handler: (e: React.MouseEvent) => void,
@@ -163,11 +122,11 @@ class InternalOverlay extends React.Component<
     }
   }
 
-  public hide() {
+  public hide = () => {
     this.setState({ show: false })
   }
 
-  public show() {
+  public show = () => {
     this.setState({ show: true })
   }
 
@@ -177,15 +136,13 @@ class InternalOverlay extends React.Component<
     const triggerEventProps: React.DOMAttributes<{}> = {}
     const popperEventProps: React.DOMAttributes<{}> = {}
 
-    delete props.delay
-
     if (trigger === 'click') {
       triggerEventProps.onClick = this.handleClick
     }
 
     if (trigger === 'hover') {
-      triggerEventProps.onFocus = this.handleShow
-      triggerEventProps.onBlur = this.handleHide
+      triggerEventProps.onFocus = this.show
+      triggerEventProps.onBlur = this.hide
       triggerEventProps.onMouseOver = this.handleMouseOver
       triggerEventProps.onMouseOut = this.handleMouseOut
       popperEventProps.onMouseOut = this.handleMouseOut
@@ -251,7 +208,7 @@ class InternalOverlay extends React.Component<
     this.props.trigger === 'click' &&
       this.state.show &&
       event.key === 'Escape' &&
-      this.handleHide()
+      this.hide()
   }
 }
 
