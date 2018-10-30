@@ -102,6 +102,7 @@ test('Button should accept disabled', () => {
 
 test('Button accepts a SemanticColor object for the color property', () => {
   const punkRockColor: SemanticColor = {
+    altText: 'LightPink',
     borderColor: 'MediumVioletRed',
     dark: 'PaleVioletRed',
     darker: 'MediumVioletRed',
