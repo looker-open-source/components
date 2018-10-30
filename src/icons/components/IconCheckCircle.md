@@ -1,0 +1,5 @@
+# IconCheckCircle
+
+```js
+<IconCheckCircle />
+```

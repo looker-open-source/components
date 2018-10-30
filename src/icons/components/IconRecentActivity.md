@@ -1,0 +1,5 @@
+# IconRecentActivity
+
+```js
+<IconRecentActivity />
+```

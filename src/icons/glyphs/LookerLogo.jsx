@@ -1,8 +1,10 @@
 import React from 'react'
 
-const LookerLogo = props => (
+const SvgLookerLogo = props => (
   <svg viewBox="0 0 325.7 139.71" width="1em" height="1em" {...props}>
-    <defs />
+    <defs>
+      <style>{`.cls-1{fill:#282828}`}</style>
+    </defs>
     <g id="Layer_2" data-name="Layer 2">
       <g id="Layer_1-2" data-name="Layer 1">
         <path
@@ -30,4 +32,4 @@ const LookerLogo = props => (
   </svg>
 )
 
-export default LookerLogo
+export default SvgLookerLogo

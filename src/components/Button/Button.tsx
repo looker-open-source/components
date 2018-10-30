@@ -129,14 +129,14 @@ const transparentVariant = (
     color: color.main,
     // tslint:disable-next-line:object-literal-sort-keys
     '&:hover, &:focus, &.hover': {
-      background: props.theme.colors.palette.transparent,
-      borderColor: props.theme.colors.palette.transparent,
-      color: color.darker,
+      background: color.lighter,
+      borderColor: color.lighter,
+      color: color.altText,
     },
     '&:active, &.active': {
-      background: color.lighter,
-      borderColor: props.theme.colors.palette.transparent,
-      color: color.darker,
+      background: color.light,
+      borderColor: color.light,
+      color: color.altText,
     },
     '&[disabled]': {
       '&:hover, &:active, &:focus': {

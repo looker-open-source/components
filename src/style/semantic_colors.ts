@@ -8,8 +8,10 @@ const {
   primary700,
   purple000,
   purple100,
+  purple400,
   red000,
   red100,
+  red400,
   red500,
   red600,
   red700,
@@ -33,6 +35,8 @@ export interface SemanticColor {
   borderColor: string
   /** Base text color for a semantic color group. */
   text: string
+  /** Alternative text color */
+  altText: string
 }
 
 /**
@@ -64,6 +68,7 @@ export interface SemanticColors {
 
 export const semanticColors: SemanticColors = {
   danger: {
+    altText: red400,
     borderColor: red500,
     dark: red600,
     darker: red700,
@@ -74,6 +79,7 @@ export const semanticColors: SemanticColors = {
     text: white,
   },
   primary: {
+    altText: purple400,
     borderColor: charcoal300,
     dark: primary600,
     darker: primary700,
@@ -84,6 +90,7 @@ export const semanticColors: SemanticColors = {
     text: white,
   },
   secondary: {
+    altText: purple400,
     borderColor: charcoal300,
     dark: primary600,
     darker: primary700,
