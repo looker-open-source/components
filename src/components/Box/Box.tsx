@@ -1,8 +1,6 @@
 import tag from 'clean-tag'
 import * as React from 'react'
 import {
-  bgColor,
-  BgColorProps,
   border,
   borderColor,
   BorderColorProps,
@@ -14,6 +12,7 @@ import {
   boxShadow,
   BoxShadowProps,
   color,
+  ColorProps,
   display,
   DisplayProps,
   fontStyle,
@@ -41,7 +40,6 @@ import {
   RightProps,
   space,
   SpaceProps,
-  TextColorProps,
   top,
   TopProps,
   width,
@@ -56,12 +54,12 @@ export type ResponsiveSpacingSize = ResponsiveValue<SpacingSizes> | 'auto'
 export type LensSpaceProps = { [P in keyof SpaceProps]: ResponsiveSpacingSize }
 
 export interface BoxStyledSystemProps
-  extends BgColorProps,
-    BorderColorProps,
+  extends BorderColorProps,
     BorderProps,
     BorderRadiusProps,
     BottomProps,
     BoxShadowProps,
+    ColorProps,
     DisplayProps,
     FontStyleProps,
     HeightProps,
@@ -74,7 +72,6 @@ export interface BoxStyledSystemProps
     OverflowProps,
     PositionProps,
     RightProps,
-    TextColorProps,
     TopProps,
     WidthProps,
     ZIndexProps {}
@@ -91,7 +88,6 @@ export interface BoxProps
 
 export const Box = styled<BoxProps>(tag)`
   ${reset};
-  ${bgColor};
   ${border};
   ${borderColor};
   ${borderRadius};
