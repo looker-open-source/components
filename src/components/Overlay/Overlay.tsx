@@ -35,7 +35,24 @@ export interface OverlayInteractiveProps {
 }
 
 export interface OverlayProps extends OverlayInteractiveProps {
+  /**
+   * Expects a callback that returns the actual overlay content to render. The callback receives the following props:
+   *
+   * **arrowProps**: properties used to correctly position the arrow on a content bubble
+   * **placement**: the location of the arrow.
+   *
+   * See OverlayBubble.tsx for an example of how to use these properties.
+   */
+  overlayContentFactory: (props: OverlayContentProps) => React.ReactNode
+  /**
+   * A Lens compatible theme object. This is passed in automatically by the withTheme higher-order helper.
+   */
   theme: Theme
+  /**
+   * Optional backdrop styles to merge with the Backdrop implementation. These
+   * must be a CSSProperty compatible key / value paired object. For example
+   * {backgroundColor: 'pink'}.
+   */
   backdropStyles?: React.CSSProperties
   /**
    * The kind of interaction that triggers the Overlay to render.
@@ -43,28 +60,21 @@ export interface OverlayProps extends OverlayInteractiveProps {
   trigger?: OverlayEvent
 }
 
-interface OverlayPropsWithContent extends OverlayProps {
-  overlayContentFactory: (props: OverlayContentProps) => React.ReactNode
-}
-
 export interface OverlayState {
   show: boolean
 }
 
-class InternalOverlay extends React.Component<
-  OverlayPropsWithContent,
-  OverlayState
-> {
+class InternalOverlay extends React.Component<OverlayProps, OverlayState> {
   public static defaultProps: OverlayProps = {
+    overlayContentFactory: () => null,
     showImmediately: false,
     theme: {} as Theme,
     trigger: 'hover',
   }
-
   private popperRef: HTMLElement | null
   private triggerRef: HTMLElement | null
 
-  constructor(props: OverlayPropsWithContent) {
+  constructor(props: OverlayProps) {
     super(props)
     this.popperRef = null
     this.triggerRef = null
@@ -79,55 +89,6 @@ class InternalOverlay extends React.Component<
 
   public componentWillUnmount() {
     document.removeEventListener('keydown', this.handleEscapePress)
-  }
-
-  public handleClick = () => {
-    if (this.state.show) this.hide()
-    else this.show()
-  }
-
-  public handleMouseOver = (e: React.MouseEvent) =>
-    this.handleMouseOverOut(this.show, e)
-
-  public handleMouseOut = (e: React.MouseEvent) =>
-    this.handleMouseOverOut(this.hide, e)
-
-  public handleMouseOverOut(
-    handler: (e: React.MouseEvent) => void,
-    e: React.MouseEvent
-  ) {
-    const target = e.currentTarget
-    const related = e.relatedTarget
-
-    const showPopper =
-      !this.state.show && this.triggerRef && this.triggerRef.contains(target)
-
-    const mouseDidNotMoveFromTriggerToPopper =
-      this.popperRef &&
-      related instanceof Element &&
-      !this.popperRef.contains(related)
-
-    const mouseDidNotMoveFromPopperToTrigger =
-      this.triggerRef &&
-      related instanceof Element &&
-      !this.triggerRef.contains(related)
-
-    const hidePopper =
-      this.state.show &&
-      mouseDidNotMoveFromPopperToTrigger &&
-      mouseDidNotMoveFromTriggerToPopper
-
-    if (showPopper || hidePopper) {
-      handler(e)
-    }
-  }
-
-  public hide = () => {
-    this.setState({ show: false })
-  }
-
-  public show = () => {
-    this.setState({ show: true })
   }
 
   public render() {
@@ -200,6 +161,55 @@ class InternalOverlay extends React.Component<
     )
   }
 
+  private handleClick = () => {
+    if (this.state.show) this.hide()
+    else this.show()
+  }
+
+  private handleMouseOver = (e: React.MouseEvent) =>
+    this.handleMouseOverOut(this.show, e)
+
+  private handleMouseOut = (e: React.MouseEvent) =>
+    this.handleMouseOverOut(this.hide, e)
+
+  private handleMouseOverOut(
+    handler: (e: React.MouseEvent) => void,
+    e: React.MouseEvent
+  ) {
+    const target = e.currentTarget
+    const related = e.relatedTarget
+
+    const showPopper =
+      !this.state.show && this.triggerRef && this.triggerRef.contains(target)
+
+    const mouseDidNotMoveFromTriggerToPopper =
+      this.popperRef &&
+      related instanceof Element &&
+      !this.popperRef.contains(related)
+
+    const mouseDidNotMoveFromPopperToTrigger =
+      this.triggerRef &&
+      related instanceof Element &&
+      !this.triggerRef.contains(related)
+
+    const hidePopper =
+      this.state.show &&
+      mouseDidNotMoveFromPopperToTrigger &&
+      mouseDidNotMoveFromTriggerToPopper
+
+    if (showPopper || hidePopper) {
+      handler(e)
+    }
+  }
+
+  private hide = () => {
+    this.setState({ show: false })
+  }
+
+  private show = () => {
+    this.setState({ show: true })
+  }
+
   private setPopperRef: RefHandler = node => (this.popperRef = node)
 
   private setTriggerRef: RefHandler = node => (this.triggerRef = node)
@@ -212,4 +222,14 @@ class InternalOverlay extends React.Component<
   }
 }
 
+/**
+ * Overlay is a low-level component that can be used to build Popovers,
+ * Tooltips, Modals, etc. It handles coordinating a trigger component, like a
+ * Button or Link, with the rendering of an "overlay" or "content bubble" that
+ * appears above other content in the page.
+ *
+ * Under the hood, Overlay is powered by [Popper.js](https://popper.js.org/) and
+ * its corresponding [React library,
+ * react-popper](https://github.com/FezVrasta/react-popper).
+ */
 export const Overlay = withTheme(InternalOverlay)
