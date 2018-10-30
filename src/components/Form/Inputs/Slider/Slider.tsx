@@ -15,6 +15,10 @@ export interface SliderProps extends InputProps {
    * Granularity between values.
    */
   step?: number
+  /**
+   * Initial value.
+   */
+  value?: number
 }
 
 export const Slider: React.SFC<SliderProps> = ({

@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Slider default 1`] = `
+<input
+  type="range"
+/>
+`;
+
+exports[`Slider should accept disabled 1`] = `
+<input
+  disabled={true}
+  type="range"
+/>
+`;
+
+exports[`Slider with aria-describedby 1`] = `
+<input
+  aria-describedby="some-id"
+  type="range"
+/>
+`;
+
+exports[`Slider with min and max 1`] = `
+<input
+  max={11}
+  min={1}
+  step={0.01}
+  type="range"
+  value={11}
+/>
+`;
+
+exports[`Slider with name and id 1`] = `
+<input
+  id="Slide"
+  name="Slip"
+  type="range"
+/>
+`;
