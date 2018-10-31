@@ -7,8 +7,6 @@ import {
   AlignItemsProps,
   alignSelf,
   AlignSelfProps,
-  bgColor,
-  BgColorProps,
   border,
   borderColor,
   BorderColorProps,
@@ -17,6 +15,8 @@ import {
   BorderRadiusProps,
   bottom,
   BottomProps,
+  color,
+  ColorProps,
   display,
   DisplayProps,
   flex,
@@ -88,11 +88,11 @@ export interface BoxFlexItemProps
 
 export interface BoxBaseProps
   extends LensSpaceProps,
-    BgColorProps,
     BorderColorProps,
     BorderProps,
     BorderRadiusProps,
     BottomProps,
+    ColorProps,
     DisplayProps,
     FontFamilyProps,
     FontSizeProps,
@@ -125,11 +125,11 @@ export const Box = styled<BoxProps>(tag)`
   ${alignContent};
   ${alignItems};
   ${alignSelf};
-  ${bgColor};
   ${border};
   ${borderColor};
   ${borderRadius};
   ${bottom};
+  ${color};
   ${display};
   ${flex};
   ${flexBasis};

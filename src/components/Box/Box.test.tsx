@@ -72,6 +72,7 @@ describe('Box', () => {
       assertSnapshot(<Box letterSpacing="10" />)
       assertSnapshot(<Box lineHeight="1.5" />)
       assertSnapshot(<Box textAlign="right" />)
+      assertSnapshot(<Box color="palette.charcoal400" />)
     })
   })
 

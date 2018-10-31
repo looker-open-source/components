@@ -535,3 +535,20 @@ exports[`Box fonts font helpers 6`] = `
   className="c0"
 />
 `;
+
+exports[`Box fonts font helpers 7`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #939BA5;
+}
+
+<div
+  className="c0"
+/>
+`;
