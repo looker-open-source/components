@@ -56,7 +56,7 @@ describe('Box', () => {
     })
 
     test('supports borderRadius', () => {
-      assertSnapshot(<Box borderRadius="4px" />)
+      assertSnapshot(<Box borderRadius="medium" />)
     })
 
     test('supports borderColor', () => {
