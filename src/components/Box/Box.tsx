@@ -10,6 +10,8 @@ import {
   bgColor,
   BgColorProps,
   border,
+  borderColor,
+  BorderColorProps,
   BorderProps,
   borderRadius,
   BorderRadiusProps,
@@ -76,6 +78,7 @@ export interface BoxBaseProps
   extends LensSpaceProps,
     BgColorProps,
     BorderProps,
+    BorderColorProps,
     BorderRadiusProps,
     BottomProps,
     DisplayProps,
@@ -110,6 +113,7 @@ export const Box = styled<BoxProps>(InternalBox)`
   ${alignSelf};
   ${bgColor};
   ${border};
+  ${borderColor};
   ${borderRadius};
   ${bottom};
   ${display};

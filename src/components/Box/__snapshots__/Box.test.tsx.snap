@@ -36,40 +36,6 @@ exports[`Box Box supports background-color 1`] = `
 />
 `;
 
-exports[`Box Box supports borders 1`] = `
-.c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  border: 1px solid black;
-}
-
-<div
-  className="c0"
-/>
-`;
-
-exports[`Box Box supports borders 2`] = `
-.c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  border-radius: 4px;
-}
-
-<div
-  className="c0"
-/>
-`;
-
 exports[`Box Box supports display 1`] = `
 .c0 {
   border: 0;
@@ -347,6 +313,57 @@ exports[`Box Responsive margin top Box 1`] = `
 >
   🥑
 </div>
+`;
+
+exports[`Box borders Box supports borders 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border: 1px solid black;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Box borders supports borderColor 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border-color: #DEE1E5;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Box borders supports borderRadius 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border-radius: 4px;
+}
+
+<div
+  className="c0"
+/>
 `;
 
 exports[`Box flex supports flex item properties 1`] = `

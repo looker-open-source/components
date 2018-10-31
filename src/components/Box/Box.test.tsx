@@ -26,11 +26,6 @@ describe('Box', () => {
     assertSnapshot(<Box bg="semanticColors.primary.main" />)
   })
 
-  test('Box supports borders', () => {
-    assertSnapshot(<Box border="1px solid black" />)
-    assertSnapshot(<Box borderRadius="4px" />)
-  })
-
   test('Box supports display', () => {
     assertSnapshot(<Box display="inline-block" />)
   })
@@ -53,6 +48,20 @@ describe('Box', () => {
     assertSnapshot(<Box left="1rem" />)
     assertSnapshot(<Box right="1rem" />)
     assertSnapshot(<Box bottom="1rem" />)
+  })
+
+  describe('borders', () => {
+    test('Box supports borders', () => {
+      assertSnapshot(<Box border="1px solid black" />)
+    })
+
+    test('supports borderRadius', () => {
+      assertSnapshot(<Box borderRadius="4px" />)
+    })
+
+    test('supports borderColor', () => {
+      assertSnapshot(<Box borderColor="palette.charcoal200" />)
+    })
   })
 
   describe('flex', () => {
