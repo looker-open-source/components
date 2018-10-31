@@ -1,4 +1,3 @@
-import tag from 'clean-tag'
 import { rem, rgba } from 'polished'
 import * as React from 'react'
 import { merge, mixed } from 'styled-system'
@@ -10,10 +9,11 @@ import {
   SizeXSmall,
   ThemedProps,
 } from '../../types'
+import { Box, BoxProps } from '../Box'
 
 export type ButtonSizes = SizeXSmall | SizeSmall | SizeMedium | SizeLarge
 
-export interface ButtonProps {
+export interface ButtonProps extends BoxProps {
   /**
    * Allow className to be passed through to base component.
    */
@@ -185,12 +185,16 @@ function sizeHelper(props: ThemedProps<ButtonProps>) {
 }
 
 const InternalButton: React.SFC<ButtonProps> = ({ ...props }) => {
-  return <tag.button {...props}>{props.children}</tag.button>
+  return (
+    <Box is="button" {...props}>
+      {props.children}
+    </Box>
+  )
 }
 
 export const Button = styled<ButtonProps>(InternalButton)`
   ${reset}
-  border-radius: ${rem(4)};
+  border-radius: ${props => props.theme.borderRadius};
   cursor: pointer;
   display: inline-flex;
   font-family: ${props => props.theme.fontFaces.brand};
