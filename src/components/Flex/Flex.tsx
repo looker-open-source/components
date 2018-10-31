@@ -1,32 +1,16 @@
 import * as React from 'react'
-import {
-  alignContent,
-  AlignContentProps,
-  alignItems,
-  AlignItemsProps,
-  flexDirection,
-  FlexDirectionProps,
-  flexWrap,
-  FlexWrapProps,
-  justifyContent,
-  JustifyContentProps,
-} from 'styled-system'
 import { css, styled } from '../../style'
-import { Box, BoxProps } from '../Box'
+import { Box, BoxBaseProps, BoxFlexProps } from '../Box'
 
 export type InheritedBoxProps = Pick<
-  BoxProps,
-  Exclude<keyof BoxProps, 'display'>
+  BoxBaseProps,
+  Exclude<keyof BoxBaseProps, 'display'>
 >
 
-export interface FlexBoxProps
-  extends InheritedBoxProps,
-    AlignContentProps,
-    AlignItemsProps,
-    FlexDirectionProps,
-    FlexWrapProps,
-    JustifyContentProps {
-  className?: string
+/**
+ * styled-system has its own FlexProps, so we call this one FlexBoxProps to disambiguate.
+ */
+export interface FlexBoxProps extends InheritedBoxProps, BoxFlexProps {
   hidden?: boolean
 }
 
@@ -48,11 +32,6 @@ function hidden(hide: boolean | undefined) {
   }
 }
 
-export const Flex = styled<FlexBoxProps>(InternalFlex)`
-  ${alignContent};
-  ${alignItems};
-  ${flexDirection};
-  ${flexWrap};
-  ${justifyContent};
+export const Flex = styled(InternalFlex)`
   ${props => hidden(props.hidden)};
 `

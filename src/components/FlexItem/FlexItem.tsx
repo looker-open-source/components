@@ -1,27 +1,14 @@
 import * as React from 'react'
-import {
-  alignSelf,
-  AlignSelfProps,
-  flex,
-  flexBasis,
-  FlexBasisProps,
-  FlexProps,
-  order,
-  OrderProps,
-} from 'styled-system'
 
 import { css, styled } from '../../style'
-import { Box, BoxProps } from '../Box'
+import { Box, BoxBaseProps, BoxFlexItemProps } from '../Box'
 
-type InheritedBoxProps = Pick<BoxProps, Exclude<keyof BoxProps, 'display'>>
+type InheritedBoxProps = Pick<
+  BoxBaseProps,
+  Exclude<keyof BoxBaseProps, 'display'>
+>
 
-export interface FlexItemProps
-  extends InheritedBoxProps,
-    AlignSelfProps,
-    OrderProps,
-    FlexProps,
-    FlexBasisProps {
-  className?: string
+export interface FlexItemProps extends InheritedBoxProps, BoxFlexItemProps {
   hidden?: boolean
 }
 
@@ -40,9 +27,5 @@ const InternalFlexItem: React.SFC<FlexItemProps> = ({ ...props }) => {
 }
 
 export const FlexItem = styled<FlexItemProps>(InternalFlexItem)`
-  ${alignSelf};
-  ${order};
-  ${flex};
-  ${flexBasis};
   ${props => hidden(props.hidden)};
 `

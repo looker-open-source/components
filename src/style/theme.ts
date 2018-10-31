@@ -65,6 +65,7 @@ export const theme: Theme = {
   reset: () => {
     return {
       border: 0,
+      boxSizing: 'border-box',
       font: 'inherit',
       fontSize: '100%',
       margin: 0,
