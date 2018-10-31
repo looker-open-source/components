@@ -3,6 +3,7 @@
 exports[`Button accepts a SemanticColor object for the color property 1`] = `
 .c0 {
   border: 0;
+  box-sizing: border-box;
   font: inherit;
   font-size: 100%;
   margin: 0;
@@ -74,6 +75,7 @@ exports[`Button accepts a SemanticColor object for the color property 1`] = `
 exports[`Button danger color 1`] = `
 .c0 {
   border: 0;
+  box-sizing: border-box;
   font: inherit;
   font-size: 100%;
   margin: 0;
@@ -145,6 +147,7 @@ exports[`Button danger color 1`] = `
 exports[`Button default 1`] = `
 .c0 {
   border: 0;
+  box-sizing: border-box;
   font: inherit;
   font-size: 100%;
   margin: 0;
@@ -216,6 +219,7 @@ exports[`Button default 1`] = `
 exports[`Button primary color 1`] = `
 .c0 {
   border: 0;
+  box-sizing: border-box;
   font: inherit;
   font-size: 100%;
   margin: 0;
@@ -287,6 +291,7 @@ exports[`Button primary color 1`] = `
 exports[`Button should accept disabled 1`] = `
 .c0 {
   border: 0;
+  box-sizing: border-box;
   font: inherit;
   font-size: 100%;
   margin: 0;
@@ -359,6 +364,7 @@ exports[`Button should accept disabled 1`] = `
 exports[`Button type button 1`] = `
 .c0 {
   border: 0;
+  box-sizing: border-box;
   font: inherit;
   font-size: 100%;
   margin: 0;
@@ -431,6 +437,7 @@ exports[`Button type button 1`] = `
 exports[`Button type menu 1`] = `
 .c0 {
   border: 0;
+  box-sizing: border-box;
   font: inherit;
   font-size: 100%;
   margin: 0;
@@ -503,6 +510,7 @@ exports[`Button type menu 1`] = `
 exports[`Button type reset 1`] = `
 .c0 {
   border: 0;
+  box-sizing: border-box;
   font: inherit;
   font-size: 100%;
   margin: 0;
@@ -575,6 +583,7 @@ exports[`Button type reset 1`] = `
 exports[`Button type submit 1`] = `
 .c0 {
   border: 0;
+  box-sizing: border-box;
   font: inherit;
   font-size: 100%;
   margin: 0;
@@ -647,6 +656,7 @@ exports[`Button type submit 1`] = `
 exports[`Button validates all sizes 1`] = `
 .c0 {
   border: 0;
+  box-sizing: border-box;
   font: inherit;
   font-size: 100%;
   margin: 0;
@@ -718,6 +728,7 @@ exports[`Button validates all sizes 1`] = `
 exports[`Button validates all sizes 2`] = `
 .c0 {
   border: 0;
+  box-sizing: border-box;
   font: inherit;
   font-size: 100%;
   margin: 0;
@@ -789,6 +800,7 @@ exports[`Button validates all sizes 2`] = `
 exports[`Button validates all sizes 3`] = `
 .c0 {
   border: 0;
+  box-sizing: border-box;
   font: inherit;
   font-size: 100%;
   margin: 0;
@@ -860,6 +872,7 @@ exports[`Button validates all sizes 3`] = `
 exports[`Button validates all sizes 4`] = `
 .c0 {
   border: 0;
+  box-sizing: border-box;
   font: inherit;
   font-size: 100%;
   margin: 0;
@@ -931,6 +944,7 @@ exports[`Button validates all sizes 4`] = `
 exports[`Button variant outline 1`] = `
 .c0 {
   border: 0;
+  box-sizing: border-box;
   font: inherit;
   font-size: 100%;
   margin: 0;
@@ -1005,6 +1019,7 @@ exports[`Button variant outline 1`] = `
 exports[`Button variant transparent 1`] = `
 .c0 {
   border: 0;
+  box-sizing: border-box;
   font: inherit;
   font-size: 100%;
   margin: 0;

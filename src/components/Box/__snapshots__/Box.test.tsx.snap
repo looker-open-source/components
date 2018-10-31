@@ -2,6 +2,13 @@
 
 exports[`Box default 1`] = `
 .c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   margin-top: 1.25rem;
 }
 
@@ -14,6 +21,13 @@ exports[`Box default 1`] = `
 
 exports[`Box supports background-color 1`] = `
 .c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   background-color: #64518A;
 }
 
@@ -24,6 +38,13 @@ exports[`Box supports background-color 1`] = `
 
 exports[`Box supports borders 1`] = `
 .c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   border: 1px solid black;
 }
 
@@ -34,6 +55,13 @@ exports[`Box supports borders 1`] = `
 
 exports[`Box supports borders 2`] = `
 .c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   border-radius: 4px;
 }
 
@@ -44,6 +72,13 @@ exports[`Box supports borders 2`] = `
 
 exports[`Box supports display 1`] = `
 .c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   display: inline-block;
 }
 
@@ -54,6 +89,13 @@ exports[`Box supports display 1`] = `
 
 exports[`Box supports height properties 1`] = `
 .c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   height: 1vh;
 }
 
@@ -64,6 +106,13 @@ exports[`Box supports height properties 1`] = `
 
 exports[`Box supports height properties 2`] = `
 .c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   max-height: 1vh;
 }
 
@@ -74,6 +123,13 @@ exports[`Box supports height properties 2`] = `
 
 exports[`Box supports height properties 3`] = `
 .c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   min-height: 1vh;
 }
 
@@ -84,6 +140,13 @@ exports[`Box supports height properties 3`] = `
 
 exports[`Box supports position, top, left, bottom, right 1`] = `
 .c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   position: absolute;
 }
 
@@ -94,6 +157,13 @@ exports[`Box supports position, top, left, bottom, right 1`] = `
 
 exports[`Box supports position, top, left, bottom, right 2`] = `
 .c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   top: 1rem;
 }
 
@@ -104,6 +174,13 @@ exports[`Box supports position, top, left, bottom, right 2`] = `
 
 exports[`Box supports position, top, left, bottom, right 3`] = `
 .c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   left: 1rem;
 }
 
@@ -114,6 +191,13 @@ exports[`Box supports position, top, left, bottom, right 3`] = `
 
 exports[`Box supports position, top, left, bottom, right 4`] = `
 .c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   right: 1rem;
 }
 
@@ -124,6 +208,13 @@ exports[`Box supports position, top, left, bottom, right 4`] = `
 
 exports[`Box supports position, top, left, bottom, right 5`] = `
 .c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   bottom: 1rem;
 }
 
@@ -134,6 +225,13 @@ exports[`Box supports position, top, left, bottom, right 5`] = `
 
 exports[`Box supports width 1`] = `
 .c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   width: 1vw;
 }
 
@@ -144,6 +242,13 @@ exports[`Box supports width 1`] = `
 
 exports[`Box supports width 2`] = `
 .c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   max-width: 1vw;
 }
 
@@ -154,6 +259,13 @@ exports[`Box supports width 2`] = `
 
 exports[`Box supports width 3`] = `
 .c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   min-width: 1vw;
 }
 
@@ -164,6 +276,13 @@ exports[`Box supports width 3`] = `
 
 exports[`Box with SizeNone is valid 1`] = `
 .c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   margin-top: 0rem;
 }
 
@@ -178,6 +297,13 @@ exports[`Box with SizeNone is valid 1`] = `
 
 exports[`Box with null values are removed from styling 1`] = `
 .c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   margin-top: 1.25rem;
 }
 
@@ -198,6 +324,13 @@ exports[`Box with null values are removed from styling 1`] = `
 
 exports[`Responsive margin top Box 1`] = `
 .c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   margin-top: 1.25rem;
 }
 
