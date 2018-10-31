@@ -2,13 +2,8 @@
 
 exports[`Button accepts a SemanticColor object for the color property 1`] = `
 .c0 {
-  border: 0;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   border-radius: 0.25rem;
+  box-sizing: border-box;
   cursor: pointer;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -16,16 +11,19 @@ exports[`Button accepts a SemanticColor object for the color property 1`] = `
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   outline: none;
+  padding-top: 0;
+  padding-bottom: 0;
   -webkit-transition: border 80ms;
   transition: border 80ms;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
   font-size: 1rem;
-  line-height: 1.5rem;
+  line-height: 34px;
   border-style: solid;
   border-width: 0.0625rem;
   background: DeepPink;
@@ -65,7 +63,7 @@ exports[`Button accepts a SemanticColor object for the color property 1`] = `
 }
 
 <button
-  className="c0"
+  className="c0 "
 >
   🥑
 </button>
@@ -73,13 +71,8 @@ exports[`Button accepts a SemanticColor object for the color property 1`] = `
 
 exports[`Button danger color 1`] = `
 .c0 {
-  border: 0;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   border-radius: 0.25rem;
+  box-sizing: border-box;
   cursor: pointer;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -87,16 +80,19 @@ exports[`Button danger color 1`] = `
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   outline: none;
+  padding-top: 0;
+  padding-bottom: 0;
   -webkit-transition: border 80ms;
   transition: border 80ms;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
   font-size: 1rem;
-  line-height: 1.5rem;
+  line-height: 34px;
   border-style: solid;
   border-width: 0.0625rem;
   background: #CC1F36;
@@ -119,7 +115,7 @@ exports[`Button danger color 1`] = `
 .c0[disabled]:active,
 .c0[disabled]:focus {
   background-color: #CC1F36;
-  border-color: #CC1F36;
+  border-color: #C1C6CC;
 }
 
 .c0:hover,
@@ -136,7 +132,7 @@ exports[`Button danger color 1`] = `
 }
 
 <button
-  className="c0"
+  className="c0 "
 >
   🥑
 </button>
@@ -144,13 +140,8 @@ exports[`Button danger color 1`] = `
 
 exports[`Button default 1`] = `
 .c0 {
-  border: 0;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   border-radius: 0.25rem;
+  box-sizing: border-box;
   cursor: pointer;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -158,16 +149,19 @@ exports[`Button default 1`] = `
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   outline: none;
+  padding-top: 0;
+  padding-bottom: 0;
   -webkit-transition: border 80ms;
   transition: border 80ms;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
   font-size: 1rem;
-  line-height: 1.5rem;
+  line-height: 34px;
   border-style: solid;
   border-width: 0.0625rem;
   background: #64518A;
@@ -207,7 +201,7 @@ exports[`Button default 1`] = `
 }
 
 <button
-  className="c0"
+  className="c0 "
 >
   🥑
 </button>
@@ -215,13 +209,8 @@ exports[`Button default 1`] = `
 
 exports[`Button primary color 1`] = `
 .c0 {
-  border: 0;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   border-radius: 0.25rem;
+  box-sizing: border-box;
   cursor: pointer;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -229,16 +218,19 @@ exports[`Button primary color 1`] = `
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   outline: none;
+  padding-top: 0;
+  padding-bottom: 0;
   -webkit-transition: border 80ms;
   transition: border 80ms;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
   font-size: 1rem;
-  line-height: 1.5rem;
+  line-height: 34px;
   border-style: solid;
   border-width: 0.0625rem;
   background: #64518A;
@@ -278,7 +270,7 @@ exports[`Button primary color 1`] = `
 }
 
 <button
-  className="c0"
+  className="c0 "
 >
   🥑
 </button>
@@ -286,13 +278,8 @@ exports[`Button primary color 1`] = `
 
 exports[`Button should accept disabled 1`] = `
 .c0 {
-  border: 0;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   border-radius: 0.25rem;
+  box-sizing: border-box;
   cursor: pointer;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -300,16 +287,19 @@ exports[`Button should accept disabled 1`] = `
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   outline: none;
+  padding-top: 0;
+  padding-bottom: 0;
   -webkit-transition: border 80ms;
   transition: border 80ms;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
   font-size: 1rem;
-  line-height: 1.5rem;
+  line-height: 34px;
   border-style: solid;
   border-width: 0.0625rem;
   background: #64518A;
@@ -349,7 +339,7 @@ exports[`Button should accept disabled 1`] = `
 }
 
 <button
-  className="c0"
+  className="c0 "
   disabled={true}
 >
   🥑
@@ -358,13 +348,8 @@ exports[`Button should accept disabled 1`] = `
 
 exports[`Button type button 1`] = `
 .c0 {
-  border: 0;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   border-radius: 0.25rem;
+  box-sizing: border-box;
   cursor: pointer;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -372,16 +357,19 @@ exports[`Button type button 1`] = `
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   outline: none;
+  padding-top: 0;
+  padding-bottom: 0;
   -webkit-transition: border 80ms;
   transition: border 80ms;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
   font-size: 1rem;
-  line-height: 1.5rem;
+  line-height: 34px;
   border-style: solid;
   border-width: 0.0625rem;
   background: #64518A;
@@ -421,7 +409,7 @@ exports[`Button type button 1`] = `
 }
 
 <button
-  className="c0"
+  className="c0 "
   type="button"
 >
   🥑
@@ -430,13 +418,8 @@ exports[`Button type button 1`] = `
 
 exports[`Button type menu 1`] = `
 .c0 {
-  border: 0;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   border-radius: 0.25rem;
+  box-sizing: border-box;
   cursor: pointer;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -444,16 +427,19 @@ exports[`Button type menu 1`] = `
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   outline: none;
+  padding-top: 0;
+  padding-bottom: 0;
   -webkit-transition: border 80ms;
   transition: border 80ms;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
   font-size: 1rem;
-  line-height: 1.5rem;
+  line-height: 34px;
   border-style: solid;
   border-width: 0.0625rem;
   background: #64518A;
@@ -493,7 +479,7 @@ exports[`Button type menu 1`] = `
 }
 
 <button
-  className="c0"
+  className="c0 "
   type="menu"
 >
   🥑
@@ -502,13 +488,8 @@ exports[`Button type menu 1`] = `
 
 exports[`Button type reset 1`] = `
 .c0 {
-  border: 0;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   border-radius: 0.25rem;
+  box-sizing: border-box;
   cursor: pointer;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -516,16 +497,19 @@ exports[`Button type reset 1`] = `
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   outline: none;
+  padding-top: 0;
+  padding-bottom: 0;
   -webkit-transition: border 80ms;
   transition: border 80ms;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
   font-size: 1rem;
-  line-height: 1.5rem;
+  line-height: 34px;
   border-style: solid;
   border-width: 0.0625rem;
   background: #64518A;
@@ -565,7 +549,7 @@ exports[`Button type reset 1`] = `
 }
 
 <button
-  className="c0"
+  className="c0 "
   type="reset"
 >
   🥑
@@ -574,13 +558,8 @@ exports[`Button type reset 1`] = `
 
 exports[`Button type submit 1`] = `
 .c0 {
-  border: 0;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   border-radius: 0.25rem;
+  box-sizing: border-box;
   cursor: pointer;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -588,16 +567,19 @@ exports[`Button type submit 1`] = `
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   outline: none;
+  padding-top: 0;
+  padding-bottom: 0;
   -webkit-transition: border 80ms;
   transition: border 80ms;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
   font-size: 1rem;
-  line-height: 1.5rem;
+  line-height: 34px;
   border-style: solid;
   border-width: 0.0625rem;
   background: #64518A;
@@ -637,7 +619,7 @@ exports[`Button type submit 1`] = `
 }
 
 <button
-  className="c0"
+  className="c0 "
   type="submit"
 >
   🥑
@@ -646,13 +628,8 @@ exports[`Button type submit 1`] = `
 
 exports[`Button validates all sizes 1`] = `
 .c0 {
-  border: 0;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   border-radius: 0.25rem;
+  box-sizing: border-box;
   cursor: pointer;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -660,16 +637,19 @@ exports[`Button validates all sizes 1`] = `
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   outline: none;
+  padding-top: 0;
+  padding-bottom: 0;
   -webkit-transition: border 80ms;
   transition: border 80ms;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
-  padding-left: 0.25rem;
-  padding-right: 0.25rem;
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
   font-size: 0.75rem;
-  line-height: 1rem;
+  line-height: 22px;
   border-style: solid;
   border-width: 0.0625rem;
   background: #64518A;
@@ -709,7 +689,7 @@ exports[`Button validates all sizes 1`] = `
 }
 
 <button
-  className="c0"
+  className="c0 "
 >
   Test
 </button>
@@ -717,13 +697,8 @@ exports[`Button validates all sizes 1`] = `
 
 exports[`Button validates all sizes 2`] = `
 .c0 {
-  border: 0;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   border-radius: 0.25rem;
+  box-sizing: border-box;
   cursor: pointer;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -731,16 +706,19 @@ exports[`Button validates all sizes 2`] = `
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   outline: none;
+  padding-top: 0;
+  padding-bottom: 0;
   -webkit-transition: border 80ms;
   transition: border 80ms;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
   padding-left: 1rem;
   padding-right: 1rem;
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
   font-size: 0.875rem;
-  line-height: 1.25rem;
+  line-height: 26px;
   border-style: solid;
   border-width: 0.0625rem;
   background: #64518A;
@@ -780,7 +758,7 @@ exports[`Button validates all sizes 2`] = `
 }
 
 <button
-  className="c0"
+  className="c0 "
 >
   Test
 </button>
@@ -788,13 +766,8 @@ exports[`Button validates all sizes 2`] = `
 
 exports[`Button validates all sizes 3`] = `
 .c0 {
-  border: 0;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   border-radius: 0.25rem;
+  box-sizing: border-box;
   cursor: pointer;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -802,16 +775,19 @@ exports[`Button validates all sizes 3`] = `
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   outline: none;
+  padding-top: 0;
+  padding-bottom: 0;
   -webkit-transition: border 80ms;
   transition: border 80ms;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
   font-size: 1rem;
-  line-height: 1.5rem;
+  line-height: 34px;
   border-style: solid;
   border-width: 0.0625rem;
   background: #64518A;
@@ -851,7 +827,7 @@ exports[`Button validates all sizes 3`] = `
 }
 
 <button
-  className="c0"
+  className="c0 "
 >
   Test
 </button>
@@ -859,13 +835,8 @@ exports[`Button validates all sizes 3`] = `
 
 exports[`Button validates all sizes 4`] = `
 .c0 {
-  border: 0;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   border-radius: 0.25rem;
+  box-sizing: border-box;
   cursor: pointer;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -873,16 +844,19 @@ exports[`Button validates all sizes 4`] = `
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   outline: none;
+  padding-top: 0;
+  padding-bottom: 0;
   -webkit-transition: border 80ms;
   transition: border 80ms;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
   font-size: 1.375rem;
-  line-height: 2rem;
+  line-height: 42px;
   border-style: solid;
   border-width: 0.0625rem;
   background: #64518A;
@@ -922,7 +896,7 @@ exports[`Button validates all sizes 4`] = `
 }
 
 <button
-  className="c0"
+  className="c0 "
 >
   Test
 </button>
@@ -930,13 +904,8 @@ exports[`Button validates all sizes 4`] = `
 
 exports[`Button variant outline 1`] = `
 .c0 {
-  border: 0;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   border-radius: 0.25rem;
+  box-sizing: border-box;
   cursor: pointer;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -944,16 +913,19 @@ exports[`Button variant outline 1`] = `
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   outline: none;
+  padding-top: 0;
+  padding-bottom: 0;
   -webkit-transition: border 80ms;
   transition: border 80ms;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
   font-size: 1rem;
-  line-height: 1.5rem;
+  line-height: 34px;
   border-style: solid;
   border-width: 0.0625rem;
   background: #FFFFFF;
@@ -996,7 +968,7 @@ exports[`Button variant outline 1`] = `
 }
 
 <button
-  className="c0"
+  className="c0 "
 >
   🥑
 </button>
@@ -1004,13 +976,8 @@ exports[`Button variant outline 1`] = `
 
 exports[`Button variant transparent 1`] = `
 .c0 {
-  border: 0;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   border-radius: 0.25rem;
+  box-sizing: border-box;
   cursor: pointer;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -1018,16 +985,19 @@ exports[`Button variant transparent 1`] = `
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   outline: none;
+  padding-top: 0;
+  padding-bottom: 0;
   -webkit-transition: border 80ms;
   transition: border 80ms;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
   font-size: 1rem;
-  line-height: 1.5rem;
+  line-height: 34px;
   border-style: solid;
   border-width: 0.0625rem;
   background: transparent;
@@ -1070,7 +1040,7 @@ exports[`Button variant transparent 1`] = `
 }
 
 <button
-  className="c0"
+  className="c0 "
 >
   🥑
 </button>

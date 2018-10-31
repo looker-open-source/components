@@ -1,19 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Form with one child 1`] = `
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .c4 {
   border: solid 1px #C1C6CC;
   height: 28px;
   padding: 0 0.5rem;
   border-radius: 4px;
   font-size: 0.875rem;
-}
-
-.c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .c2 {
@@ -77,14 +77,16 @@ exports[`Form with one child 1`] = `
 `;
 
 exports[`Form with one invalid child and a submit button 1`] = `
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .c7 {
-  border: 0;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   border-radius: 0.25rem;
+  box-sizing: border-box;
   cursor: pointer;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -92,16 +94,19 @@ exports[`Form with one invalid child and a submit button 1`] = `
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   outline: none;
+  padding-top: 0;
+  padding-bottom: 0;
   -webkit-transition: border 80ms;
   transition: border 80ms;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
   font-size: 1rem;
-  line-height: 1.5rem;
+  line-height: 34px;
   border-style: solid;
   border-width: 0.0625rem;
   background: #64518A;
@@ -155,13 +160,6 @@ exports[`Form with one invalid child and a submit button 1`] = `
   border-radius: 4px;
   font-size: 0.875rem;
   background-color: #FFF2F4;
-}
-
-.c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .c2 {
@@ -260,7 +258,7 @@ exports[`Form with one invalid child and a submit button 1`] = `
     </div>
   </div>
   <button
-    className="c7"
+    className="c7 "
   >
     Submit
   </button>
@@ -268,6 +266,13 @@ exports[`Form with one invalid child and a submit button 1`] = `
 `;
 
 exports[`Form with two invalid children 1`] = `
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .c4 {
   border: solid 1px #C1C6CC;
   height: 28px;
@@ -275,13 +280,6 @@ exports[`Form with two invalid children 1`] = `
   border-radius: 4px;
   font-size: 0.875rem;
   background-color: #FFF2F4;
-}
-
-.c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .c2 {
