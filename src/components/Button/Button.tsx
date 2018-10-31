@@ -206,6 +206,7 @@ export const Button = styled<ButtonProps>(InternalButton)`
   cursor: pointer;
   display: inline-flex;
   font-family: ${props => props.theme.fontFaces.brand};
+  font-weight: 600;
   outline: none;
   padding-top: 0;
   padding-bottom: 0;
