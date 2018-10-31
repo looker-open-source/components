@@ -64,6 +64,17 @@ describe('Box', () => {
     })
   })
 
+  describe('fonts', () => {
+    test('font helpers', () => {
+      assertSnapshot(<Box fontFamily="system-ui" />)
+      assertSnapshot(<Box fontSize="5" />)
+      assertSnapshot(<Box fontWeight="bold" />)
+      assertSnapshot(<Box letterSpacing="10" />)
+      assertSnapshot(<Box lineHeight="1.5" />)
+      assertSnapshot(<Box textAlign="right" />)
+    })
+  })
+
   describe('flex', () => {
     test('supports flex properties', () => {
       assertSnapshot(

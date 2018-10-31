@@ -27,12 +27,22 @@ import {
   FlexProps,
   flexWrap,
   FlexWrapProps,
+  fontFamily,
+  FontFamilyProps,
+  fontSize,
+  FontSizeProps,
+  fontWeight,
+  FontWeightProps,
   height,
   HeightProps,
   justifyContent,
   JustifyContentProps,
   left,
   LeftProps,
+  letterSpacing,
+  LetterSpacingProps,
+  lineHeight,
+  LineHeightProps,
   maxHeight,
   MaxHeightProps,
   maxWidth,
@@ -50,6 +60,8 @@ import {
   RightProps,
   space,
   SpaceProps,
+  textAlign,
+  TextAlignProps,
   top,
   TopProps,
   width,
@@ -77,19 +89,25 @@ export interface BoxFlexItemProps
 export interface BoxBaseProps
   extends LensSpaceProps,
     BgColorProps,
-    BorderProps,
     BorderColorProps,
+    BorderProps,
     BorderRadiusProps,
     BottomProps,
     DisplayProps,
+    FontFamilyProps,
+    FontSizeProps,
+    FontWeightProps,
     HeightProps,
     LeftProps,
+    LetterSpacingProps,
+    LineHeightProps,
     MaxHeightProps,
     MaxWidthProps,
     MinHeightProps,
     MinWidthProps,
     PositionProps,
     RightProps,
+    TextAlignProps,
     TopProps,
     WidthProps {
   is?: string | React.ReactNode
@@ -101,11 +119,7 @@ export interface BoxProps
     BoxFlexProps,
     BoxFlexItemProps {}
 
-const InternalBox: React.SFC<BoxProps> = ({ ...props }) => {
-  return <tag.div {...props}>{props.children}</tag.div>
-}
-
-export const Box = styled<BoxProps>(InternalBox)`
+export const Box = styled<BoxProps>(tag)`
   ${reset};
 
   ${alignContent};
@@ -121,9 +135,14 @@ export const Box = styled<BoxProps>(InternalBox)`
   ${flexBasis};
   ${flexDirection};
   ${flexWrap};
+  ${fontFamily};
+  ${fontSize};
+  ${fontWeight};
   ${height};
   ${justifyContent};
   ${left};
+  ${letterSpacing};
+  ${lineHeight};
   ${maxHeight};
   ${maxWidth};
   ${minHeight};
@@ -132,6 +151,7 @@ export const Box = styled<BoxProps>(InternalBox)`
   ${position};
   ${right};
   ${space};
+  ${textAlign};
   ${top};
   ${width};
 `

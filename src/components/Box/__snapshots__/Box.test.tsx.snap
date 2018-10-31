@@ -430,3 +430,108 @@ exports[`Box flex supports flex properties 1`] = `
   className="c0"
 />
 `;
+
+exports[`Box fonts font helpers 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-family: system-ui;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Box fonts font helpers 2`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-size: 0.875rem;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Box fonts font helpers 3`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-weight: 700;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Box fonts font helpers 4`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-letter-spacing: 10;
+  -moz-letter-spacing: 10;
+  -ms-letter-spacing: 10;
+  letter-spacing: 10;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Box fonts font helpers 5`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  line-height: m;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Box fonts font helpers 6`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  text-align: right;
+}
+
+<div
+  className="c0"
+/>
+`;
