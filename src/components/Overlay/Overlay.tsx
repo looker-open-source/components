@@ -13,7 +13,16 @@ import { Box } from '../Box'
 export type OverlayEvent = 'hover' | 'click'
 
 export interface OverlayContentProps {
+  /**
+   * Properties to be applied to the arrow container. These originate from the
+   * underlying react-popper library and are used to position and style the
+   * arrow.
+   */
   arrowProps: PopperArrowProps
+  /**
+   * The placement (eg top, bottom, left-end, etc) of the arrow. Useful for
+   * applying conditional styles to the arrow container.
+   */
   placement: Placement
 }
 
@@ -36,16 +45,18 @@ export interface OverlayInteractiveProps {
 
 export interface OverlayProps extends OverlayInteractiveProps {
   /**
-   * Expects a callback that returns the actual overlay content to render. The callback receives the following props:
+   * Expects a callback that returns the actual overlay content to render. The
+   * callback receives the following props:
    *
-   * **arrowProps**: properties used to correctly position the arrow on a content bubble
-   * **placement**: the location of the arrow.
+   * **arrowProps**: properties used to correctly position the arrow on a
+   * content bubble **placement**: the location of the arrow.
    *
    * See OverlayBubble.tsx for an example of how to use these properties.
    */
   overlayContentFactory: (props: OverlayContentProps) => React.ReactNode
   /**
-   * A Lens compatible theme object. This is passed in automatically by the withTheme higher-order helper.
+   * A Lens compatible theme object. This is passed in automatically by the
+   * withTheme higher-order helper.
    */
   theme: Theme
   /**
