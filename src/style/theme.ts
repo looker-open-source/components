@@ -37,6 +37,7 @@ export type SpacingSizes =
   | SizeXXXLarge
 
 export interface Theme {
+  borderRadius: string
   breakpoints: string[]
   colors: { palette: Palette; semanticColors: SemanticColors }
   easings: Easings
@@ -55,6 +56,7 @@ export interface Theme {
 }
 
 export const theme: Theme = {
+  borderRadius: '4px',
   breakpoints: ['30rem', '48rem', '64rem', '75rem', '90rem'],
   colors: { palette, semanticColors },
   easings,
