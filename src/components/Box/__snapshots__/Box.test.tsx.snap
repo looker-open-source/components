@@ -266,7 +266,7 @@ exports[`Box with SizeNone is valid 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  margin-top: none;
+  margin-top: 0rem;
 }
 
 <div>
