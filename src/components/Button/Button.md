@@ -101,20 +101,10 @@ Danger Buttons extend the default button, so they also have different variants
 Use the size property on a `<Button />` to modify the size the button rendered. You can combine it with the `mode` property to get the correct style and size of button you need.
 
 ```js
-<List>
-  <ListItem>
-    <Button size="large">Large Button</Button>
-  </ListItem>
-  <ListItem>
-    <Button>Medium (default) Button</Button>
-  </ListItem>
-  <ListItem>
-    <Button size="small">Small Button</Button>
-  </ListItem>
-  <ListItem>
-    <Button size="xsmall">Extra-Small Button</Button>
-  </ListItem>
-</List>
+<Button size="xsmall" mr="xsmall">Xsmall Button</Button>
+<Button size="small" mr="xsmall">Small Button</Button>
+<Button mr="xsmall">Medium (default) Button</Button>
+<Button size="large">Large Button</Button>
 ```
 
 ### Disabled

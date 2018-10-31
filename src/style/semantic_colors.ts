@@ -69,7 +69,7 @@ export interface SemanticColors {
 export const semanticColors: SemanticColors = {
   danger: {
     altText: red400,
-    borderColor: red500,
+    borderColor: charcoal300,
     dark: red600,
     darker: red700,
     light: red100,
