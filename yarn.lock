@@ -796,22 +796,9 @@
   version "2.3.5"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/@types/react-intl/-/react-intl-2.3.5.tgz#eafa170d83c06302416075867a6fd219c1cf84d8"
 
-"@types/react-overlays@^0.8.5":
-  version "0.8.5"
-  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/@types/react-overlays/-/react-overlays-0.8.5.tgz#5e5a2c1b9c53ba998e340ffbde91381e04f41261"
-  dependencies:
-    "@types/react" "*"
-    "@types/react-transition-group" "*"
-
 "@types/react-test-renderer@16.0.1":
   version "16.0.1"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/@types/react-test-renderer/-/react-test-renderer-16.0.1.tgz#36ee8c4fe33c61d460ad0e7bc42a2d0ddcc775a1"
-  dependencies:
-    "@types/react" "*"
-
-"@types/react-transition-group@*":
-  version "2.0.14"
-  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/@types/react-transition-group/-/react-transition-group-2.0.14.tgz#afd0cd785a97f070b55765e9f9d76ff568269001"
   dependencies:
     "@types/react" "*"
 
