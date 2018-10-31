@@ -56,7 +56,7 @@ export interface Theme {
 }
 
 export const theme: Theme = {
-  borderRadius: '4px',
+  borderRadius: rem(4),
   breakpoints: ['30rem', '48rem', '64rem', '75rem', '90rem'],
   colors: { palette, semanticColors },
   easings,
