@@ -134,7 +134,7 @@
     "npmrc:clean": "rm .npmrc",
     "prepublishOnly": "yarn clean && yarn build-components",
     "prettify": "yarn prettier \"./**/*.ts?(x)\" \"./**/*.js?(x)\" '!./node_modules/**' '!./dist/**' --write",
-    "release": "npm publish",
+    "release": "yarn test && npm publish",
     "test": "tsc --noEmit -p tsconfig.compileAllFiles.json && yarn jest"
   },
   "types": "dist"
