@@ -1,7 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Box default 1`] = `
+exports[`Box Box default 1`] = `
 .c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   margin-top: 1.25rem;
 }
 
@@ -12,8 +19,15 @@ exports[`Box default 1`] = `
 </div>
 `;
 
-exports[`Box supports background-color 1`] = `
+exports[`Box Box supports background-color 1`] = `
 .c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   background-color: #64518A;
 }
 
@@ -22,28 +36,15 @@ exports[`Box supports background-color 1`] = `
 />
 `;
 
-exports[`Box supports borders 1`] = `
+exports[`Box Box supports display 1`] = `
 .c0 {
-  border: 1px solid black;
-}
-
-<div
-  className="c0"
-/>
-`;
-
-exports[`Box supports borders 2`] = `
-.c0 {
-  border-radius: 4px;
-}
-
-<div
-  className="c0"
-/>
-`;
-
-exports[`Box supports display 1`] = `
-.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   display: inline-block;
 }
 
@@ -52,8 +53,15 @@ exports[`Box supports display 1`] = `
 />
 `;
 
-exports[`Box supports height properties 1`] = `
+exports[`Box Box supports height properties 1`] = `
 .c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   height: 1vh;
 }
 
@@ -62,8 +70,15 @@ exports[`Box supports height properties 1`] = `
 />
 `;
 
-exports[`Box supports height properties 2`] = `
+exports[`Box Box supports height properties 2`] = `
 .c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   max-height: 1vh;
 }
 
@@ -72,8 +87,15 @@ exports[`Box supports height properties 2`] = `
 />
 `;
 
-exports[`Box supports height properties 3`] = `
+exports[`Box Box supports height properties 3`] = `
 .c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   min-height: 1vh;
 }
 
@@ -82,8 +104,15 @@ exports[`Box supports height properties 3`] = `
 />
 `;
 
-exports[`Box supports position, top, left, bottom, right 1`] = `
+exports[`Box Box supports position, top, left, bottom, right 1`] = `
 .c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   position: absolute;
 }
 
@@ -92,8 +121,15 @@ exports[`Box supports position, top, left, bottom, right 1`] = `
 />
 `;
 
-exports[`Box supports position, top, left, bottom, right 2`] = `
+exports[`Box Box supports position, top, left, bottom, right 2`] = `
 .c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   top: 1rem;
 }
 
@@ -102,8 +138,15 @@ exports[`Box supports position, top, left, bottom, right 2`] = `
 />
 `;
 
-exports[`Box supports position, top, left, bottom, right 3`] = `
+exports[`Box Box supports position, top, left, bottom, right 3`] = `
 .c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   left: 1rem;
 }
 
@@ -112,8 +155,15 @@ exports[`Box supports position, top, left, bottom, right 3`] = `
 />
 `;
 
-exports[`Box supports position, top, left, bottom, right 4`] = `
+exports[`Box Box supports position, top, left, bottom, right 4`] = `
 .c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   right: 1rem;
 }
 
@@ -122,8 +172,15 @@ exports[`Box supports position, top, left, bottom, right 4`] = `
 />
 `;
 
-exports[`Box supports position, top, left, bottom, right 5`] = `
+exports[`Box Box supports position, top, left, bottom, right 5`] = `
 .c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   bottom: 1rem;
 }
 
@@ -132,8 +189,15 @@ exports[`Box supports position, top, left, bottom, right 5`] = `
 />
 `;
 
-exports[`Box supports width 1`] = `
+exports[`Box Box supports width 1`] = `
 .c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   width: 1vw;
 }
 
@@ -142,8 +206,15 @@ exports[`Box supports width 1`] = `
 />
 `;
 
-exports[`Box supports width 2`] = `
+exports[`Box Box supports width 2`] = `
 .c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   max-width: 1vw;
 }
 
@@ -152,8 +223,15 @@ exports[`Box supports width 2`] = `
 />
 `;
 
-exports[`Box supports width 3`] = `
+exports[`Box Box supports width 3`] = `
 .c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   min-width: 1vw;
 }
 
@@ -162,22 +240,34 @@ exports[`Box supports width 3`] = `
 />
 `;
 
-exports[`Box with SizeNone is valid 1`] = `
+exports[`Box Box with SizeNone is valid 1`] = `
 .c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   margin-top: 0rem;
 }
 
-<div>
-  <div
-    className="c0"
-  >
-    🥑
-  </div>
+<div
+  className="c0"
+>
+  🥑
 </div>
 `;
 
-exports[`Box with null values are removed from styling 1`] = `
+exports[`Box Box with null values are removed from styling 1`] = `
 .c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   margin-top: 1.25rem;
 }
 
@@ -187,17 +277,22 @@ exports[`Box with null values are removed from styling 1`] = `
   }
 }
 
-<div>
-  <div
-    className="c0"
-  >
-    🥑
-  </div>
+<div
+  className="c0"
+>
+  🥑
 </div>
 `;
 
-exports[`Responsive margin top Box 1`] = `
+exports[`Box Responsive margin top Box 1`] = `
 .c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   margin-top: 1.25rem;
 }
 
@@ -213,11 +308,247 @@ exports[`Responsive margin top Box 1`] = `
   }
 }
 
-<div>
-  <div
-    className="c0"
-  >
-    🥑
-  </div>
+<div
+  className="c0"
+>
+  🥑
 </div>
+`;
+
+exports[`Box borders Box supports borders 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border: 1px solid black;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Box borders supports borderColor 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border-color: #DEE1E5;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Box borders supports borderRadius 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Box flex supports flex item properties 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  -webkit-flex: 1 1;
+  -ms-flex: 1 1;
+  flex: 1 1;
+  -webkit-flex-basis: 1;
+  -ms-flex-preferred-size: 1;
+  flex-basis: 1;
+  -webkit-order: unset;
+  -ms-flex-order: unset;
+  order: unset;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Box flex supports flex properties 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-align-content: flex-end;
+  -ms-flex-line-pack: end;
+  align-content: flex-end;
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Box fonts font helpers 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-family: system-ui;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Box fonts font helpers 2`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-size: 0.875rem;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Box fonts font helpers 3`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-weight: 700;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Box fonts font helpers 4`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-letter-spacing: 10;
+  -moz-letter-spacing: 10;
+  -ms-letter-spacing: 10;
+  letter-spacing: 10;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Box fonts font helpers 5`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  line-height: m;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Box fonts font helpers 6`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  text-align: right;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Box fonts font helpers 7`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #939BA5;
+}
+
+<div
+  className="c0"
+/>
 `;

@@ -16,6 +16,7 @@ import { fontFaces, FontFaces } from './font_faces'
 import { FontRamp, fontSizes, lineHeights } from './font_sizes'
 import { fontWeights } from './font_weights'
 import { palette, Palette } from './palette'
+import { radii, Radii } from './radii'
 import { SemanticColors, semanticColors } from './semantic_colors'
 import { transitions, Transitions } from './transitions'
 
@@ -45,6 +46,7 @@ export interface Theme {
   fontSizes: FontRamp
   fontWeights: Record<string, number>
   lineHeights: FontRamp
+  radii: Radii
   /**
    * A function that can be overridden to return different reset css properties
    * or null to remove all resets. Most base elements in Lens implement the reset.
@@ -64,9 +66,11 @@ export const theme: Theme = {
   fontSizes,
   fontWeights,
   lineHeights,
+  radii,
   reset: () => {
     return {
       border: 0,
+      boxSizing: 'border-box',
       font: 'inherit',
       fontSize: '100%',
       margin: 0,

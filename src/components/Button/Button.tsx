@@ -10,7 +10,7 @@ import {
   SizeXSmall,
   ThemedProps,
 } from '../../types'
-import { Box, BoxProps } from '../Box'
+import { Box, BoxPropsWithout } from '../Box'
 
 export type ButtonSizes = SizeXSmall | SizeSmall | SizeMedium | SizeLarge
 export type ButtonSpacingSizes =
@@ -20,7 +20,7 @@ export type ButtonSpacingSizes =
   | SizeLarge
   | SizeXLarge
 
-export interface ButtonProps extends BoxProps {
+export interface ButtonProps extends BoxPropsWithout<'color'> {
   /**
    * Allow className to be passed through to base component.
    */
@@ -192,13 +192,11 @@ function sizeHelper(props: ThemedProps<ButtonProps>) {
   })
 }
 
-const InternalButton: React.SFC<ButtonProps> = ({ ...props }) => {
-  return (
-    <Box is="button" {...props}>
-      {props.children}
-    </Box>
-  )
-}
+const InternalButton: React.SFC<ButtonProps> = ({ color, ...props }) => (
+  <Box is="button" {...props}>
+    {props.children}
+  </Box>
+)
 
 export const Button = styled<ButtonProps>(InternalButton)`
   border-radius: ${props => props.theme.borderRadius};

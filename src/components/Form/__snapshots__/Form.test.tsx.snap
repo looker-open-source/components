@@ -1,11 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Form with one child 1`] = `
-.c3 {
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
 }
 
 .c4 {
@@ -14,12 +34,6 @@ exports[`Form with one child 1`] = `
   padding: 0 0.5rem;
   border-radius: 4px;
   font-size: 0.875rem;
-}
-
-.c2 {
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
 }
 
 .c0 {
@@ -39,6 +53,7 @@ exports[`Form with one child 1`] = `
 
 .c1 {
   border: 0;
+  box-sizing: border-box;
   font: inherit;
   font-size: 100%;
   margin: 0;
@@ -60,10 +75,10 @@ exports[`Form with one child 1`] = `
       label
     </label>
     <div
-      className="c2 c3"
+      className="c2"
     >
       <div
-        className=""
+        className="c3"
       >
         <input
           className="c4"
@@ -77,11 +92,31 @@ exports[`Form with one child 1`] = `
 `;
 
 exports[`Form with one invalid child and a submit button 1`] = `
-.c3 {
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
 }
 
 .c7 {
@@ -163,12 +198,6 @@ exports[`Form with one invalid child and a submit button 1`] = `
   background-color: #FFF2F4;
 }
 
-.c2 {
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -186,6 +215,7 @@ exports[`Form with one invalid child and a submit button 1`] = `
 
 .c1 {
   border: 0;
+  box-sizing: border-box;
   font: inherit;
   font-size: 100%;
   margin: 0;
@@ -214,10 +244,10 @@ exports[`Form with one invalid child and a submit button 1`] = `
       label1
     </label>
     <div
-      className="c2 c3"
+      className="c2"
     >
       <div
-        className=""
+        className="c3"
       >
         <input
           className="c4"
@@ -236,10 +266,10 @@ exports[`Form with one invalid child and a submit button 1`] = `
       label2
     </label>
     <div
-      className="c2 c3"
+      className="c2"
     >
       <div
-        className=""
+        className="c3"
       >
         <input
           className="c5"
@@ -248,7 +278,7 @@ exports[`Form with one invalid child and a submit button 1`] = `
         />
       </div>
       <div
-        className=""
+        className="c3"
       >
         <div
           className="c6"
@@ -259,7 +289,7 @@ exports[`Form with one invalid child and a submit button 1`] = `
     </div>
   </div>
   <button
-    className="c7 "
+    className="c7 c3"
   >
     Submit
   </button>
@@ -267,11 +297,31 @@ exports[`Form with one invalid child and a submit button 1`] = `
 `;
 
 exports[`Form with two invalid children 1`] = `
-.c3 {
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
 }
 
 .c4 {
@@ -281,12 +331,6 @@ exports[`Form with two invalid children 1`] = `
   border-radius: 4px;
   font-size: 0.875rem;
   background-color: #FFF2F4;
-}
-
-.c2 {
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
 }
 
 .c0 {
@@ -306,6 +350,7 @@ exports[`Form with two invalid children 1`] = `
 
 .c1 {
   border: 0;
+  box-sizing: border-box;
   font: inherit;
   font-size: 100%;
   margin: 0;
@@ -334,10 +379,10 @@ exports[`Form with two invalid children 1`] = `
       label1
     </label>
     <div
-      className="c2 c3"
+      className="c2"
     >
       <div
-        className=""
+        className="c3"
       >
         <input
           className="c4"
@@ -346,7 +391,7 @@ exports[`Form with two invalid children 1`] = `
         />
       </div>
       <div
-        className=""
+        className="c3"
       >
         <div
           className="c5"
@@ -365,10 +410,10 @@ exports[`Form with two invalid children 1`] = `
       label2
     </label>
     <div
-      className="c2 c3"
+      className="c2"
     >
       <div
-        className=""
+        className="c3"
       >
         <input
           className="c4"
@@ -377,7 +422,7 @@ exports[`Form with two invalid children 1`] = `
         />
       </div>
       <div
-        className=""
+        className="c3"
       >
         <div
           className="c5"
