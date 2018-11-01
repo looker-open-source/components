@@ -1,14 +1,11 @@
 import * as React from 'react'
 
 import { css, styled } from '../../style'
-import { Box, BoxBaseProps, BoxFlexItemProps } from '../Box'
+import { Box, BoxBasePropsWithout, BoxFlexItemProps } from '../Box'
 
-type InheritedBoxProps = Pick<
-  BoxBaseProps,
-  Exclude<keyof BoxBaseProps, 'display'>
->
-
-export interface FlexItemProps extends InheritedBoxProps, BoxFlexItemProps {
+export interface FlexItemProps
+  extends BoxBasePropsWithout<'display'>,
+    BoxFlexItemProps {
   hidden?: boolean
 }
 

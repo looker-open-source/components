@@ -119,6 +119,16 @@ export interface BoxProps
     BoxFlexProps,
     BoxFlexItemProps {}
 
+export type BoxBasePropsWithout<Keys> = Pick<
+  BoxBaseProps,
+  Exclude<keyof BoxBaseProps, Keys>
+>
+
+export type BoxPropsWithout<Keys> = Pick<
+  BoxProps,
+  Exclude<keyof BoxProps, Keys>
+>
+
 export const Box = styled<BoxProps>(tag)`
   ${reset};
 

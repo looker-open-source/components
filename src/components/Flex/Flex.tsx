@@ -1,16 +1,13 @@
 import * as React from 'react'
 import { css, styled } from '../../style'
-import { Box, BoxBaseProps, BoxFlexProps } from '../Box'
-
-export type InheritedBoxProps = Pick<
-  BoxBaseProps,
-  Exclude<keyof BoxBaseProps, 'display'>
->
+import { Box, BoxBasePropsWithout, BoxFlexProps } from '../Box'
 
 /**
  * styled-system has its own FlexProps, so we call this one FlexBoxProps to disambiguate.
  */
-export interface FlexBoxProps extends InheritedBoxProps, BoxFlexProps {
+export interface FlexBoxProps
+  extends BoxBasePropsWithout<'display'>,
+    BoxFlexProps {
   hidden?: boolean
 }
 

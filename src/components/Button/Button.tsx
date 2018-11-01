@@ -1,19 +1,26 @@
-import tag from 'clean-tag'
 import { rem, rgba } from 'polished'
 import * as React from 'react'
 import { merge, mixed } from 'styled-system'
-import { reset, SemanticColor, SemanticColors, styled } from '../../style'
+import { SemanticColor, SemanticColors, styled } from '../../style'
 import {
   SizeLarge,
   SizeMedium,
   SizeSmall,
+  SizeXLarge,
   SizeXSmall,
   ThemedProps,
 } from '../../types'
+import { Box, BoxPropsWithout } from '../Box'
 
 export type ButtonSizes = SizeXSmall | SizeSmall | SizeMedium | SizeLarge
+export type ButtonSpacingSizes =
+  | SizeXSmall
+  | SizeSmall
+  | SizeMedium
+  | SizeLarge
+  | SizeXLarge
 
-export interface ButtonProps {
+export interface ButtonProps extends BoxPropsWithout<'color'> {
   /**
    * Allow className to be passed through to base component.
    */
@@ -164,38 +171,47 @@ const variantHelper = (props: ThemedProps<ButtonProps>) => {
   }
 }
 
+// Accepts a number and subtracts two from it to accout for border in button height
+function calcLineHeight(size: number) {
+  return `${size - 2}px`
+}
+
 function sizeHelper(props: ThemedProps<ButtonProps>) {
-  const sizes: Record<
-    ButtonSizes,
-    [number, number, ButtonSizes, ButtonSizes]
-  > = {
-    large: [2, 2, 'large', 'small'],
-    medium: [4, 4, 'medium', 'small'],
-    small: [5, 5, 'medium', 'xsmall'],
-    xsmall: [6, 6, 'xsmall', 'xsmall'],
+  const sizes: Record<ButtonSizes, [number, string, ButtonSpacingSizes]> = {
+    large: [2, calcLineHeight(44), 'xlarge'],
+    medium: [4, calcLineHeight(36), 'large'],
+    small: [5, calcLineHeight(28), 'medium'],
+    xsmall: [6, calcLineHeight(24), 'small'],
   }
-  const [fontSize, lineHeight, px, py] = sizes[props.size || 'medium']
+  const [fontSize, lineHeight, px] = sizes[props.size || 'medium']
   return mixed({
     fontSize,
     lineHeight,
     px,
-    py,
     theme: props.theme,
   })
 }
 
-const InternalButton: React.SFC<ButtonProps> = ({ ...props }) => {
-  return <tag.button {...props}>{props.children}</tag.button>
-}
+const InternalButton: React.SFC<ButtonProps> = ({ color, ...props }) => (
+  <Box
+    is="button"
+    borderRadius="medium"
+    fontFamily="brand"
+    py="none"
+    {...props}
+  >
+    {props.children}
+  </Box>
+)
 
 export const Button = styled<ButtonProps>(InternalButton)`
-  ${reset}
-  border-radius: ${rem(4)};
   cursor: pointer;
-  display: inline-flex;
-  font-family: ${props => props.theme.fontFaces.brand};
+  font-weight: 600;
   outline: none;
   transition: border 80ms;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
   ${sizeHelper};
