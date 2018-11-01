@@ -12,9 +12,9 @@ import {
 } from '../types'
 import { Easings, easings } from './easings'
 import { shadows, Shadows } from './elevation'
-import { fontFaces, FontFaces } from './font_faces'
 import { FontRamp, fontSizes, lineHeights } from './font_sizes'
 import { fontWeights } from './font_weights'
+import { fonts, Fonts } from './fonts'
 import { palette, Palette } from './palette'
 import { radii, Radii } from './radii'
 import { SemanticColors, semanticColors } from './semantic_colors'
@@ -38,13 +38,12 @@ export type SpacingSizes =
   | SizeXXXLarge
 
 export interface Theme {
-  borderRadius: string
   breakpoints: string[]
   colors: { palette: Palette; semanticColors: SemanticColors }
   easings: Easings
-  fontFaces: FontFaces
   fontSizes: FontRamp
   fontWeights: Record<string, number>
+  fonts: Fonts
   lineHeights: FontRamp
   radii: Radii
   /**
@@ -58,13 +57,12 @@ export interface Theme {
 }
 
 export const theme: Theme = {
-  borderRadius: rem(4),
   breakpoints: ['30rem', '48rem', '64rem', '75rem', '90rem'],
   colors: { palette, semanticColors },
   easings,
-  fontFaces,
   fontSizes,
   fontWeights,
+  fonts,
   lineHeights,
   radii,
   reset: () => {

@@ -9,21 +9,16 @@ exports[`Button accepts a SemanticColor object for the color property 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  border-radius: 0.25rem;
+  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
 }
 
 .c0 {
-  border-radius: 0.25rem;
-  box-sizing: border-box;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-weight: 600;
   outline: none;
-  padding-top: 0;
-  padding-bottom: 0;
   -webkit-transition: border 80ms;
   transition: border 80ms;
   text-rendering: optimizeLegibility;
@@ -89,21 +84,16 @@ exports[`Button danger color 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  border-radius: 0.25rem;
+  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
 }
 
 .c0 {
-  border-radius: 0.25rem;
-  box-sizing: border-box;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-weight: 600;
   outline: none;
-  padding-top: 0;
-  padding-bottom: 0;
   -webkit-transition: border 80ms;
   transition: border 80ms;
   text-rendering: optimizeLegibility;
@@ -169,21 +159,16 @@ exports[`Button default 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  border-radius: 0.25rem;
+  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
 }
 
 .c0 {
-  border-radius: 0.25rem;
-  box-sizing: border-box;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-weight: 600;
   outline: none;
-  padding-top: 0;
-  padding-bottom: 0;
   -webkit-transition: border 80ms;
   transition: border 80ms;
   text-rendering: optimizeLegibility;
@@ -249,21 +234,16 @@ exports[`Button primary color 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  border-radius: 0.25rem;
+  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
 }
 
 .c0 {
-  border-radius: 0.25rem;
-  box-sizing: border-box;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-weight: 600;
   outline: none;
-  padding-top: 0;
-  padding-bottom: 0;
   -webkit-transition: border 80ms;
   transition: border 80ms;
   text-rendering: optimizeLegibility;
@@ -329,21 +309,16 @@ exports[`Button should accept disabled 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  border-radius: 0.25rem;
+  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
 }
 
 .c0 {
-  border-radius: 0.25rem;
-  box-sizing: border-box;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-weight: 600;
   outline: none;
-  padding-top: 0;
-  padding-bottom: 0;
   -webkit-transition: border 80ms;
   transition: border 80ms;
   text-rendering: optimizeLegibility;
@@ -410,21 +385,16 @@ exports[`Button type button 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  border-radius: 0.25rem;
+  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
 }
 
 .c0 {
-  border-radius: 0.25rem;
-  box-sizing: border-box;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-weight: 600;
   outline: none;
-  padding-top: 0;
-  padding-bottom: 0;
   -webkit-transition: border 80ms;
   transition: border 80ms;
   text-rendering: optimizeLegibility;
@@ -491,21 +461,16 @@ exports[`Button type menu 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  border-radius: 0.25rem;
+  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
 }
 
 .c0 {
-  border-radius: 0.25rem;
-  box-sizing: border-box;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-weight: 600;
   outline: none;
-  padding-top: 0;
-  padding-bottom: 0;
   -webkit-transition: border 80ms;
   transition: border 80ms;
   text-rendering: optimizeLegibility;
@@ -572,21 +537,16 @@ exports[`Button type reset 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  border-radius: 0.25rem;
+  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
 }
 
 .c0 {
-  border-radius: 0.25rem;
-  box-sizing: border-box;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-weight: 600;
   outline: none;
-  padding-top: 0;
-  padding-bottom: 0;
   -webkit-transition: border 80ms;
   transition: border 80ms;
   text-rendering: optimizeLegibility;
@@ -653,21 +613,16 @@ exports[`Button type submit 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  border-radius: 0.25rem;
+  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
 }
 
 .c0 {
-  border-radius: 0.25rem;
-  box-sizing: border-box;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-weight: 600;
   outline: none;
-  padding-top: 0;
-  padding-bottom: 0;
   -webkit-transition: border 80ms;
   transition: border 80ms;
   text-rendering: optimizeLegibility;
@@ -734,21 +689,16 @@ exports[`Button validates all sizes 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  border-radius: 0.25rem;
+  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
 }
 
 .c0 {
-  border-radius: 0.25rem;
-  box-sizing: border-box;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-weight: 600;
   outline: none;
-  padding-top: 0;
-  padding-bottom: 0;
   -webkit-transition: border 80ms;
   transition: border 80ms;
   text-rendering: optimizeLegibility;
@@ -814,21 +764,16 @@ exports[`Button validates all sizes 2`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  border-radius: 0.25rem;
+  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
 }
 
 .c0 {
-  border-radius: 0.25rem;
-  box-sizing: border-box;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-weight: 600;
   outline: none;
-  padding-top: 0;
-  padding-bottom: 0;
   -webkit-transition: border 80ms;
   transition: border 80ms;
   text-rendering: optimizeLegibility;
@@ -894,21 +839,16 @@ exports[`Button validates all sizes 3`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  border-radius: 0.25rem;
+  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
 }
 
 .c0 {
-  border-radius: 0.25rem;
-  box-sizing: border-box;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-weight: 600;
   outline: none;
-  padding-top: 0;
-  padding-bottom: 0;
   -webkit-transition: border 80ms;
   transition: border 80ms;
   text-rendering: optimizeLegibility;
@@ -974,21 +914,16 @@ exports[`Button validates all sizes 4`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  border-radius: 0.25rem;
+  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
 }
 
 .c0 {
-  border-radius: 0.25rem;
-  box-sizing: border-box;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-weight: 600;
   outline: none;
-  padding-top: 0;
-  padding-bottom: 0;
   -webkit-transition: border 80ms;
   transition: border 80ms;
   text-rendering: optimizeLegibility;
@@ -1054,21 +989,16 @@ exports[`Button variant outline 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  border-radius: 0.25rem;
+  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
 }
 
 .c0 {
-  border-radius: 0.25rem;
-  box-sizing: border-box;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-weight: 600;
   outline: none;
-  padding-top: 0;
-  padding-bottom: 0;
   -webkit-transition: border 80ms;
   transition: border 80ms;
   text-rendering: optimizeLegibility;
@@ -1137,21 +1067,16 @@ exports[`Button variant transparent 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  border-radius: 0.25rem;
+  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
 }
 
 .c0 {
-  border-radius: 0.25rem;
-  box-sizing: border-box;
   cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-weight: 600;
   outline: none;
-  padding-top: 0;
-  padding-bottom: 0;
   -webkit-transition: border 80ms;
   transition: border 80ms;
   text-rendering: optimizeLegibility;

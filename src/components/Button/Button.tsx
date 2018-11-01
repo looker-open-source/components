@@ -193,21 +193,21 @@ function sizeHelper(props: ThemedProps<ButtonProps>) {
 }
 
 const InternalButton: React.SFC<ButtonProps> = ({ color, ...props }) => (
-  <Box is="button" {...props}>
+  <Box
+    is="button"
+    borderRadius="medium"
+    fontFamily="brand"
+    py="none"
+    {...props}
+  >
     {props.children}
   </Box>
 )
 
 export const Button = styled<ButtonProps>(InternalButton)`
-  border-radius: ${props => props.theme.borderRadius};
-  box-sizing: border-box;
   cursor: pointer;
-  display: inline-flex;
-  font-family: ${props => props.theme.fontFaces.brand};
   font-weight: 600;
   outline: none;
-  padding-top: 0;
-  padding-bottom: 0;
   transition: border 80ms;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
