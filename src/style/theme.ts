@@ -13,9 +13,9 @@ import {
 import { components, Components } from './components'
 import { Easings, easings } from './easings'
 import { shadows, Shadows } from './elevation'
-import { fontFaces, FontFaces } from './font_faces'
 import { FontRamp, fontSizes, lineHeights } from './font_sizes'
 import { fontWeights } from './font_weights'
+import { fonts, Fonts } from './fonts'
 import { palette, Palette } from './palette'
 import { radii, Radii } from './radii'
 import { SemanticColors, semanticColors } from './semantic_colors'
@@ -43,9 +43,9 @@ export interface Theme {
   components: Components
   colors: { palette: Palette; semanticColors: SemanticColors }
   easings: Easings
-  fontFaces: FontFaces
   fontSizes: FontRamp
   fontWeights: Record<string, number>
+  fonts: Fonts
   lineHeights: FontRamp
   radii: Radii
   /**
@@ -63,14 +63,15 @@ export const theme: Theme = {
   colors: { palette, semanticColors },
   components,
   easings,
-  fontFaces,
   fontSizes,
   fontWeights,
+  fonts,
   lineHeights,
   radii,
   reset: () => {
     return {
       border: 0,
+      boxSizing: 'border-box',
       font: 'inherit',
       fontSize: '100%',
       margin: 0,

@@ -3,6 +3,7 @@
 exports[`A FieldCheckbox 1`] = `
 .c2 {
   border: 0;
+  box-sizing: border-box;
   font: inherit;
   font-size: 100%;
   margin: 0;
@@ -16,6 +17,7 @@ exports[`A FieldCheckbox 1`] = `
 
 .c3 {
   border: 0;
+  box-sizing: border-box;
   font: inherit;
   font-size: 100%;
   margin: 0;
@@ -44,6 +46,7 @@ exports[`A FieldCheckbox 1`] = `
 
 .c1 {
   border: 0;
+  box-sizing: border-box;
   font: inherit;
   font-size: 100%;
   margin: 0;
@@ -83,6 +86,17 @@ exports[`A FieldCheckbox 1`] = `
 exports[`A FieldCheckbox with an error validation aligned to the bottom 1`] = `
 .c3 {
   border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+.c2 {
+  border: 0;
+  box-sizing: border-box;
   font: inherit;
   font-size: 100%;
   margin: 0;
@@ -92,18 +106,6 @@ exports[`A FieldCheckbox with an error validation aligned to the bottom 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-.c4 {
-  border: 0;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-}
-
-.c2 {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -130,6 +132,7 @@ exports[`A FieldCheckbox with an error validation aligned to the bottom 1`] = `
 
 .c1 {
   border: 0;
+  box-sizing: border-box;
   font: inherit;
   font-size: 100%;
   margin: 0;
@@ -141,7 +144,7 @@ exports[`A FieldCheckbox with an error validation aligned to the bottom 1`] = `
   font-size: 0.875rem;
 }
 
-.c5 {
+.c4 {
   margin-right: 0.5rem;
   margin-top: 0.5rem;
   font-size: 0.75rem;
@@ -158,10 +161,10 @@ exports[`A FieldCheckbox with an error validation aligned to the bottom 1`] = `
     👍
   </label>
   <div
-    className="c2 c3"
+    className="c2"
   >
     <div
-      className="c4"
+      className="c3"
     >
       <input
         id="thumbs-up"
@@ -170,10 +173,10 @@ exports[`A FieldCheckbox with an error validation aligned to the bottom 1`] = `
       />
     </div>
     <div
-      className="c4"
+      className="c3"
     >
       <div
-        className="c5"
+        className="c4"
       >
         This is an error
       </div>
@@ -185,6 +188,7 @@ exports[`A FieldCheckbox with an error validation aligned to the bottom 1`] = `
 exports[`A required FieldCheckbox 1`] = `
 .c3 {
   border: 0;
+  box-sizing: border-box;
   font: inherit;
   font-size: 100%;
   margin: 0;
@@ -198,6 +202,7 @@ exports[`A required FieldCheckbox 1`] = `
 
 .c4 {
   border: 0;
+  box-sizing: border-box;
   font: inherit;
   font-size: 100%;
   margin: 0;
@@ -226,6 +231,7 @@ exports[`A required FieldCheckbox 1`] = `
 
 .c1 {
   border: 0;
+  box-sizing: border-box;
   font: inherit;
   font-size: 100%;
   margin: 0;

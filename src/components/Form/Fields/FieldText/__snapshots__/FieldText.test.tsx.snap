@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`A FieldText 1`] = `
-.c5 {
+.c4 {
   border: solid 1px #C1C6CC;
   height: 28px;
   padding: 0 0.5rem;
@@ -9,8 +9,9 @@ exports[`A FieldText 1`] = `
   font-size: 0.875rem;
 }
 
-.c3 {
+.c2 {
   border: 0;
+  box-sizing: border-box;
   font: inherit;
   font-size: 100%;
   margin: 0;
@@ -20,21 +21,19 @@ exports[`A FieldText 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
-.c4 {
+.c3 {
   border: 0;
+  box-sizing: border-box;
   font: inherit;
   font-size: 100%;
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-}
-
-.c2 {
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
 }
 
 .c0 {
@@ -54,6 +53,7 @@ exports[`A FieldText 1`] = `
 
 .c1 {
   border: 0;
+  box-sizing: border-box;
   font: inherit;
   font-size: 100%;
   margin: 0;
@@ -75,13 +75,13 @@ exports[`A FieldText 1`] = `
     👍
   </label>
   <div
-    className="c2 c3"
+    className="c2"
   >
     <div
-      className="c4"
+      className="c3"
     >
       <input
-        className="c5"
+        className="c4"
         id="thumbs-up"
         name="thumbsUp"
         type="text"
@@ -92,7 +92,7 @@ exports[`A FieldText 1`] = `
 `;
 
 exports[`A FieldText with an error validation aligned to the bottom 1`] = `
-.c5 {
+.c4 {
   border: solid 1px #C1C6CC;
   height: 28px;
   padding: 0 0.5rem;
@@ -101,8 +101,9 @@ exports[`A FieldText with an error validation aligned to the bottom 1`] = `
   background-color: #FFF2F4;
 }
 
-.c3 {
+.c2 {
   border: 0;
+  box-sizing: border-box;
   font: inherit;
   font-size: 100%;
   margin: 0;
@@ -112,21 +113,19 @@ exports[`A FieldText with an error validation aligned to the bottom 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
-.c4 {
+.c3 {
   border: 0;
+  box-sizing: border-box;
   font: inherit;
   font-size: 100%;
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-}
-
-.c2 {
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
 }
 
 .c0 {
@@ -146,6 +145,7 @@ exports[`A FieldText with an error validation aligned to the bottom 1`] = `
 
 .c1 {
   border: 0;
+  box-sizing: border-box;
   font: inherit;
   font-size: 100%;
   margin: 0;
@@ -157,7 +157,7 @@ exports[`A FieldText with an error validation aligned to the bottom 1`] = `
   font-size: 0.875rem;
 }
 
-.c6 {
+.c5 {
   margin-right: 0.5rem;
   margin-top: 0.5rem;
   font-size: 0.75rem;
@@ -174,23 +174,23 @@ exports[`A FieldText with an error validation aligned to the bottom 1`] = `
     👍
   </label>
   <div
-    className="c2 c3"
+    className="c2"
   >
     <div
-      className="c4"
+      className="c3"
     >
       <input
-        className="c5"
+        className="c4"
         id="thumbs-up"
         name="thumbsUp"
         type="text"
       />
     </div>
     <div
-      className="c4"
+      className="c3"
     >
       <div
-        className="c6"
+        className="c5"
       >
         This is an error
       </div>
@@ -200,7 +200,7 @@ exports[`A FieldText with an error validation aligned to the bottom 1`] = `
 `;
 
 exports[`A FieldText with an error validation aligned to the left 1`] = `
-.c5 {
+.c4 {
   border: solid 1px #C1C6CC;
   height: 28px;
   padding: 0 0.5rem;
@@ -211,6 +211,17 @@ exports[`A FieldText with an error validation aligned to the left 1`] = `
 
 .c3 {
   border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+.c2 {
+  border: 0;
+  box-sizing: border-box;
   font: inherit;
   font-size: 100%;
   margin: 0;
@@ -220,18 +231,6 @@ exports[`A FieldText with an error validation aligned to the left 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-.c4 {
-  border: 0;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-}
-
-.c2 {
   -webkit-flex-direction: row-reverse;
   -ms-flex-direction: row-reverse;
   flex-direction: row-reverse;
@@ -258,6 +257,7 @@ exports[`A FieldText with an error validation aligned to the left 1`] = `
 
 .c1 {
   border: 0;
+  box-sizing: border-box;
   font: inherit;
   font-size: 100%;
   margin: 0;
@@ -269,7 +269,7 @@ exports[`A FieldText with an error validation aligned to the left 1`] = `
   font-size: 0.875rem;
 }
 
-.c6 {
+.c5 {
   margin-right: 0.5rem;
   margin-top: 0.5rem;
   font-size: 0.75rem;
@@ -286,23 +286,23 @@ exports[`A FieldText with an error validation aligned to the left 1`] = `
     👍
   </label>
   <div
-    className="c2 c3"
+    className="c2"
   >
     <div
-      className="c4"
+      className="c3"
     >
       <input
-        className="c5"
+        className="c4"
         id="thumbs-up"
         name="thumbsUp"
         type="text"
       />
     </div>
     <div
-      className="c4"
+      className="c3"
     >
       <div
-        className="c6"
+        className="c5"
       >
         This is an error
       </div>
@@ -321,8 +321,19 @@ exports[`A FieldText with an error validation aligned to the right 1`] = `
   background-color: #FFF2F4;
 }
 
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
 .c2 {
   border: 0;
+  box-sizing: border-box;
   font: inherit;
   font-size: 100%;
   margin: 0;
@@ -334,17 +345,9 @@ exports[`A FieldText with an error validation aligned to the right 1`] = `
   display: flex;
 }
 
-.c3 {
-  border: 0;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-}
-
 .c5 {
   border: 0;
+  box-sizing: border-box;
   font: inherit;
   font-size: 100%;
   margin: 0;
@@ -370,6 +373,7 @@ exports[`A FieldText with an error validation aligned to the right 1`] = `
 
 .c1 {
   border: 0;
+  box-sizing: border-box;
   font: inherit;
   font-size: 100%;
   margin: 0;
@@ -424,7 +428,7 @@ exports[`A FieldText with an error validation aligned to the right 1`] = `
 `;
 
 exports[`A required FieldText 1`] = `
-.c6 {
+.c5 {
   border: solid 1px #C1C6CC;
   height: 28px;
   padding: 0 0.5rem;
@@ -432,8 +436,9 @@ exports[`A required FieldText 1`] = `
   font-size: 0.875rem;
 }
 
-.c4 {
+.c3 {
   border: 0;
+  box-sizing: border-box;
   font: inherit;
   font-size: 100%;
   margin: 0;
@@ -443,21 +448,19 @@ exports[`A required FieldText 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
-.c5 {
+.c4 {
   border: 0;
+  box-sizing: border-box;
   font: inherit;
   font-size: 100%;
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-}
-
-.c3 {
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
 }
 
 .c0 {
@@ -477,6 +480,7 @@ exports[`A required FieldText 1`] = `
 
 .c1 {
   border: 0;
+  box-sizing: border-box;
   font: inherit;
   font-size: 100%;
   margin: 0;
@@ -507,13 +511,13 @@ exports[`A required FieldText 1`] = `
     </span>
   </label>
   <div
-    className="c3 c4"
+    className="c3"
   >
     <div
-      className="c5"
+      className="c4"
     >
       <input
-        className="c6"
+        className="c5"
         id="thumbs-up"
         name="thumbsUp"
         required={true}

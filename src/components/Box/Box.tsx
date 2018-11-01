@@ -1,6 +1,12 @@
 import tag from 'clean-tag'
 import * as React from 'react'
 import {
+  alignContent,
+  AlignContentProps,
+  alignItems,
+  AlignItemsProps,
+  alignSelf,
+  AlignSelfProps,
   border,
   borderColor,
   BorderColorProps,
@@ -15,12 +21,32 @@ import {
   ColorProps,
   display,
   DisplayProps,
+  flex,
+  flexBasis,
+  FlexBasisProps,
+  flexDirection,
+  FlexDirectionProps,
+  FlexProps,
+  flexWrap,
+  FlexWrapProps,
+  fontFamily,
+  FontFamilyProps,
+  fontSize,
+  FontSizeProps,
   fontStyle,
   FontStyleProps,
+  fontWeight,
+  FontWeightProps,
   height,
   HeightProps,
+  justifyContent,
+  JustifyContentProps,
   left,
   LeftProps,
+  letterSpacing,
+  LetterSpacingProps,
+  lineHeight,
+  LineHeightProps,
   maxHeight,
   MaxHeightProps,
   maxWidth,
@@ -31,6 +57,8 @@ import {
   MinWidthProps,
   opacity,
   OpacityProps,
+  order,
+  OrderProps,
   overflow,
   OverflowProps,
   position,
@@ -40,6 +68,8 @@ import {
   RightProps,
   space,
   SpaceProps,
+  textAlign,
+  TextAlignProps,
   top,
   TopProps,
   width,
@@ -53,17 +83,37 @@ export type ResponsiveSpacingSize = ResponsiveValue<SpacingSizes> | 'auto'
 
 export type LensSpaceProps = { [P in keyof SpaceProps]: ResponsiveSpacingSize }
 
-export interface BoxStyledSystemProps
-  extends BorderColorProps,
+export interface BoxFlexProps
+  extends AlignContentProps,
+    AlignItemsProps,
+    FlexDirectionProps,
+    FlexWrapProps,
+    JustifyContentProps {}
+
+export interface BoxFlexItemProps
+  extends AlignSelfProps,
+    FlexBasisProps,
+    FlexProps,
+    OrderProps {}
+
+export interface BoxBaseProps
+  extends React.DOMAttributes<Element>,
+    LensSpaceProps,
+    BorderColorProps,
     BorderProps,
     BorderRadiusProps,
     BottomProps,
     BoxShadowProps,
     ColorProps,
     DisplayProps,
+    FontFamilyProps,
+    FontSizeProps,
     FontStyleProps,
+    FontWeightProps,
     HeightProps,
     LeftProps,
+    LetterSpacingProps,
+    LineHeightProps,
     MaxHeightProps,
     MaxWidthProps,
     MinHeightProps,
@@ -72,22 +122,37 @@ export interface BoxStyledSystemProps
     OverflowProps,
     PositionProps,
     RightProps,
+    TextAlignProps,
     TopProps,
     WidthProps,
-    ZIndexProps {}
-
-export interface BoxProps
-  extends React.DOMAttributes<Element>,
-    LensSpaceProps,
-    BoxStyledSystemProps {
+    ZIndexProps {
   is?: string | React.ReactNode
   className?: string
-  overflow?: string
+  ref?: React.Ref<any>
   style?: React.CSSProperties
 }
 
+export interface BoxProps
+  extends BoxBaseProps,
+    BoxFlexProps,
+    BoxFlexItemProps {}
+
+export type BoxBasePropsWithout<Keys> = Pick<
+  BoxBaseProps,
+  Exclude<keyof BoxBaseProps, Keys>
+>
+
+export type BoxPropsWithout<Keys> = Pick<
+  BoxProps,
+  Exclude<keyof BoxProps, Keys>
+>
+
 export const Box = styled<BoxProps>(tag)`
   ${reset};
+
+  ${alignContent};
+  ${alignItems};
+  ${alignSelf};
   ${border};
   ${borderColor};
   ${borderRadius};
@@ -95,18 +160,30 @@ export const Box = styled<BoxProps>(tag)`
   ${boxShadow};
   ${color};
   ${display};
-  ${height};
+  ${flex};
+  ${flexBasis};
+  ${flexDirection};
+  ${flexWrap};
+  ${fontFamily};
+  ${fontSize};
   ${fontStyle};
+  ${fontWeight};
+  ${height};
+  ${justifyContent};
   ${left};
+  ${letterSpacing};
+  ${lineHeight};
   ${maxHeight};
   ${maxWidth};
   ${minHeight};
   ${minWidth};
   ${opacity};
+  ${order};
   ${overflow};
   ${position};
   ${right};
   ${space};
+  ${textAlign};
   ${top};
   ${width};
   ${zIndex};
