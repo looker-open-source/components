@@ -1,12 +1,17 @@
 import { ReactWrapper } from 'enzyme'
 import 'jest-styled-components'
 import * as React from 'react'
-import { mountWithTheme } from '../../../test/utils/create_with_theme'
 import { assertSnapshot } from '../../../test/utils/snapshot'
 import { Overlay, OverlayEvent } from './Overlay'
+import {
+  assertClosed,
+  assertOpen,
+  mouseEventSimulator,
+  returnTriggerAndOverlay,
+  SimpleContentSFC,
+} from './overlay_test_helpers'
 
-const SimpleContent = () => <div>Simple Overlay</div>
-const simpleContentFactory = () => <SimpleContent />
+const simpleContentFactory = () => <SimpleContentSFC />
 
 interface OverlayTestProps {
   backdropStyles?: React.CSSProperties
@@ -20,15 +25,6 @@ const SimpleOverlay: React.SFC<OverlayTestProps> = ({ ...props }) => (
   </Overlay>
 )
 
-const returnTriggerAndOverlay = ({ ...props }: OverlayTestProps) => {
-  const overlay = mountWithTheme(<SimpleOverlay {...props} />)
-  return [overlay, overlay.find('button')]
-}
-
-const assertOverlayOpen = (overlay: ReactWrapper, open: boolean) => {
-  expect(overlay.contains(<SimpleContent />)).toEqual(open)
-}
-
 describe('Overlay', () => {
   test('Generates a simple Overlay', () => {
     assertSnapshot(<SimpleOverlay />)
@@ -37,51 +33,45 @@ describe('Overlay', () => {
   describe('showImmediately', () => {
     let overlay: ReactWrapper
     beforeEach(() =>
-      ([overlay] = returnTriggerAndOverlay({
-        showImmediately: true,
-        trigger: 'click',
-      })))
+      ([overlay] = returnTriggerAndOverlay(
+        <SimpleOverlay showImmediately trigger="click" />
+      )))
     afterEach(() => overlay.unmount())
 
     test('shows the overlay immediately', () => {
-      assertOverlayOpen(overlay, true)
+      assertOpen(overlay)
     })
   })
 
   describe('trigger: hover', () => {
     let overlay: ReactWrapper
     let trigger: ReactWrapper
-    beforeEach(() => ([overlay, trigger] = returnTriggerAndOverlay({})))
+    beforeEach(() =>
+      ([overlay, trigger] = returnTriggerAndOverlay(<SimpleOverlay />)))
     afterEach(() => overlay.unmount())
 
     test('opens & closes the overlay on hover', () => {
-      assertOverlayOpen(overlay, false)
+      assertClosed(overlay)
       trigger.simulate('mouseover')
-      assertOverlayOpen(overlay, true)
-      trigger.simulate('mouseout', {
-        currentTarget: {},
-        relatedTarget: document.body,
-      })
-      assertOverlayOpen(overlay, false)
+      assertOpen(overlay)
+      trigger.simulate('mouseout', mouseEventSimulator)
+      assertClosed(overlay)
     })
 
-    test('mouseout the SimpleOverlayContent closes on hover', () => {
-      assertOverlayOpen(overlay, false)
+    test('mouseout the SimpleContent closes on hover', () => {
+      assertClosed(overlay)
       trigger.simulate('mouseover')
-      assertOverlayOpen(overlay, true)
-      overlay.find(SimpleContent).simulate('mouseout', {
-        currentTarget: {},
-        relatedTarget: document.body,
-      })
-      assertOverlayOpen(overlay, false)
+      assertOpen(overlay)
+      overlay.find(SimpleContentSFC).simulate('mouseout', mouseEventSimulator)
+      assertClosed(overlay)
     })
 
     test('overlay opens & closes on focus', () => {
-      assertOverlayOpen(overlay, false)
+      assertClosed(overlay)
       trigger.simulate('focus')
-      assertOverlayOpen(overlay, true)
+      assertOpen(overlay)
       trigger.simulate('blur')
-      assertOverlayOpen(overlay, false)
+      assertClosed(overlay)
     })
   })
 
@@ -89,36 +79,38 @@ describe('Overlay', () => {
     let overlay: ReactWrapper
     let trigger: ReactWrapper
     beforeEach(() =>
-      ([overlay, trigger] = returnTriggerAndOverlay({
-        backdropStyles: { backgroundColor: 'pink' },
-        trigger: 'click',
-      })))
+      ([overlay, trigger] = returnTriggerAndOverlay(
+        <SimpleOverlay
+          trigger="click"
+          backdropStyles={{ backgroundColor: 'pink' }}
+        />
+      )))
     afterEach(() => overlay.unmount())
 
     test('Trigger click opens and closes the overlay', () => {
-      assertOverlayOpen(overlay, false)
+      assertClosed(overlay)
       trigger.simulate('click')
-      assertOverlayOpen(overlay, true)
+      assertOpen(overlay)
       trigger.simulate('click')
-      assertOverlayOpen(overlay, false)
+      assertClosed(overlay)
     })
 
     test('Trigger click renders a backdrop, clicking backdrop closes it', () => {
-      assertOverlayOpen(overlay, false)
+      assertClosed(overlay)
       trigger.simulate('click')
       const backdrop = overlay.find({ position: 'fixed' }).find('div')
       expect(backdrop.exists()).toEqual(true)
       backdrop.simulate('click')
-      assertOverlayOpen(overlay, false)
+      assertClosed(overlay)
     })
 
     test('applies the backdrop styles', () => {
       trigger.simulate('click')
-      assertOverlayOpen(overlay, true)
+      assertOpen(overlay)
       const backdrop = overlay.find({ position: 'fixed' }).find('div')
       expect(backdrop.props().style).toEqual({ backgroundColor: 'pink' })
       trigger.simulate('click')
-      assertOverlayOpen(overlay, false)
+      assertClosed(overlay)
     })
   })
 })

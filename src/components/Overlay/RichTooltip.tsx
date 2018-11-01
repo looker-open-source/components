@@ -6,7 +6,7 @@ import { overlayBubbleWithContent } from './popover_utils'
 
 export interface RichTooltipProps extends OverlayInteractiveProps {
   content: React.ReactNode
-  theme: Theme
+  theme?: Theme
 }
 
 const InternalRichTooltip: React.SFC<RichTooltipProps> = ({
@@ -19,7 +19,7 @@ const InternalRichTooltip: React.SFC<RichTooltipProps> = ({
     trigger="hover"
     overlayContentFactory={overlayBubbleWithContent(
       content,
-      theme.components.RichTooltip.bubble
+      theme!.components.RichTooltip.bubble
     )}
     {...overlayProps}
   >
