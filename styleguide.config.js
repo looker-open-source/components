@@ -57,7 +57,7 @@ module.exports = {
       dangerousTaggedTemplateString: true,
     },
   },
-  ignore: ['**/index.tsx', '**/*.test.tsx'],
+  ignore: ['**/index.tsx', '**/*.test.tsx', '**/*.test.helpers.tsx'],
   pagePerSection: true,
   propsParser: typescriptPropsParser,
   exampleMode: 'expand',

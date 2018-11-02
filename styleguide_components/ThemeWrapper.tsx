@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { ThemeProvider } from 'styled-components'
-import { palette, theme } from '../src/style'
+import { theme } from '../src/style'
 
 theme.components.Overlay.zIndex = 100
 

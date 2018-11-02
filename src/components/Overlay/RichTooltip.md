@@ -14,7 +14,7 @@ const RichTooltipDemo = require('../../../styleguide_components/RichTooltipDemo'
 
 ```js
 const wikipediaWildebeest = (
-  <Box width="360px">
+  <Box width="360px" bg="blue">
     <img
       width="100%"
       src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Blue_Wildebeest%2C_Ngorongoro.jpg/440px-Blue_Wildebeest%2C_Ngorongoro.jpg"/>
@@ -27,16 +27,5 @@ const wikipediaWildebeest = (
   <RichTooltip content={wikipediaWildebeest} placement="auto-end">
     <Link href="https://en.wikipedia.org/wiki/Wildebeest">A Wikipedia article about Wildebeests</Link>
   </RichTooltip>
-</Box>
-```
-
-```js
-const basic = "Hello world!";
-
-<Box display="inline-block" mr="small">
-  Here's a RichTooltip connected to a Link:
-  <Tooltip content={basic} placement="auto-end">
-    <Link href="https://en.wikipedia.org/wiki/Wildebeest">A Wikipedia article about Wildebeests</Link>
-  </Tooltip>
 </Box>
 ```
