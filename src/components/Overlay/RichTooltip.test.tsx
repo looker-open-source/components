@@ -7,7 +7,7 @@ import {
   mouseEventSimulator,
   returnTriggerAndOverlay,
   SimpleContent,
-} from './overlay_test_helpers'
+} from './overlay.test.helpers'
 import { RichTooltip, RichTooltipProps } from './RichTooltip'
 
 const TestRichTooltip: React.SFC<RichTooltipProps> = ({ ...props }) => (

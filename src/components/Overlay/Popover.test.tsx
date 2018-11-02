@@ -6,7 +6,7 @@ import {
   assertOpen,
   returnTriggerAndOverlay,
   SimpleContent,
-} from './overlay_test_helpers'
+} from './overlay.test.helpers'
 import { Popover, PopoverProps } from './Popover'
 
 const TestPopover: React.SFC<PopoverProps> = ({ ...props }) => (

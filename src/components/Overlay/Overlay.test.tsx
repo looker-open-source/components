@@ -9,7 +9,7 @@ import {
   mouseEventSimulator,
   returnTriggerAndOverlay,
   SimpleContentSFC,
-} from './overlay_test_helpers'
+} from './overlay.test.helpers'
 
 const simpleContentFactory = () => <SimpleContentSFC />
 
