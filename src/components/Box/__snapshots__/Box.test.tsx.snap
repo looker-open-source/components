@@ -366,6 +366,63 @@ exports[`Box borders supports borderRadius 1`] = `
 />
 `;
 
+exports[`Box core HTML attributes Box allows autoFocus 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+<div
+  autoFocus={true}
+  className="c0"
+>
+  Autofocus?
+</div>
+`;
+
+exports[`Box core HTML attributes Box allows for ARIA attributes 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+<div
+  aria-disabled={true}
+  className="c0"
+>
+  Autofocus?
+</div>
+`;
+
+exports[`Box core HTML attributes Box allows for HTML events 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+<div
+  className="c0"
+  onMouseEnter={[Function]}
+>
+  Autofocus?
+</div>
+`;
+
 exports[`Box flex supports flex item properties 1`] = `
 .c0 {
   border: 0;

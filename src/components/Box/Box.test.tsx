@@ -3,7 +3,10 @@ import * as React from 'react'
 import { mountWithTheme } from '../../../test/utils/create_with_theme'
 import { assertSnapshot } from '../../../test/utils/snapshot'
 import { Box } from './Box'
-// import { mount } from 'enzyme';
+
+const noop = () => {
+  return
+}
 
 describe('Box', () => {
   test('Box default', () => {
@@ -111,6 +114,20 @@ describe('Box', () => {
       expect(boxAsCheckbox.find('input[type="checkbox"]').exists()).toEqual(
         true
       )
+    })
+  })
+
+  describe('core HTML attributes', () => {
+    test('Box allows autoFocus', () => {
+      assertSnapshot(<Box autoFocus>Autofocus?</Box>)
+    })
+
+    test('Box allows for HTML events', () => {
+      assertSnapshot(<Box onMouseEnter={noop}>Autofocus?</Box>)
+    })
+
+    test('Box allows for ARIA attributes', () => {
+      assertSnapshot(<Box aria-disabled>Autofocus?</Box>)
     })
   })
 })
