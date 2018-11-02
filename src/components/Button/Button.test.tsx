@@ -151,5 +151,5 @@ test('Button allows for HTML events', () => {
 })
 
 test('Button allows for ARIA attributes', () => {
-  assertSnapshot(<Button aria-disabled>Autofocus?</Button>)
+  assertSnapshot(<Button aria-disabled>aria-disabled</Button>)
 })

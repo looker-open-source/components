@@ -223,7 +223,7 @@ exports[`Button allows for ARIA attributes 1`] = `
   aria-disabled={true}
   className="c0 c1"
 >
-  Autofocus?
+  aria-disabled
 </button>
 `;
 

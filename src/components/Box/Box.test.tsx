@@ -127,7 +127,7 @@ describe('Box', () => {
     })
 
     test('Box allows for ARIA attributes', () => {
-      assertSnapshot(<Box aria-disabled>Autofocus?</Box>)
+      assertSnapshot(<Box aria-disabled>aria-disabled</Box>)
     })
   })
 })

@@ -400,7 +400,7 @@ exports[`Box core HTML attributes Box allows for ARIA attributes 1`] = `
   aria-disabled={true}
   className="c0"
 >
-  Autofocus?
+  aria-disabled
 </div>
 `;
 
