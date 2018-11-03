@@ -26,7 +26,6 @@
     "./config/typescript/**/*"
   ],
   "exclude": [
-    "./src/**/*.test.ts",
-    "./src/**/*.test.tsx",
+    "./src/**/*.test.*",
   ]
 }
