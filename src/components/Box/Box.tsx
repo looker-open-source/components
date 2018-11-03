@@ -15,6 +15,8 @@ import {
   BorderRadiusProps,
   bottom,
   BottomProps,
+  boxShadow,
+  BoxShadowProps,
   color,
   ColorProps,
   display,
@@ -31,6 +33,8 @@ import {
   FontFamilyProps,
   fontSize,
   FontSizeProps,
+  fontStyle,
+  FontStyleProps,
   fontWeight,
   FontWeightProps,
   height,
@@ -51,8 +55,12 @@ import {
   MinHeightProps,
   minWidth,
   MinWidthProps,
+  opacity,
+  OpacityProps,
   order,
   OrderProps,
+  overflow,
+  OverflowProps,
   position,
   PositionProps,
   ResponsiveValue,
@@ -66,6 +74,8 @@ import {
   TopProps,
   width,
   WidthProps,
+  zIndex,
+  ZIndexProps,
 } from 'styled-system'
 import { reset, SpacingSizes, styled } from '../../style'
 
@@ -87,15 +97,18 @@ export interface BoxFlexItemProps
     OrderProps {}
 
 export interface BoxBaseProps
-  extends LensSpaceProps,
+  extends React.DOMAttributes<Element>,
+    LensSpaceProps,
     BorderColorProps,
     BorderProps,
     BorderRadiusProps,
     BottomProps,
+    BoxShadowProps,
     ColorProps,
     DisplayProps,
     FontFamilyProps,
     FontSizeProps,
+    FontStyleProps,
     FontWeightProps,
     HeightProps,
     LeftProps,
@@ -105,13 +118,18 @@ export interface BoxBaseProps
     MaxWidthProps,
     MinHeightProps,
     MinWidthProps,
+    OpacityProps,
+    OverflowProps,
     PositionProps,
     RightProps,
     TextAlignProps,
     TopProps,
-    WidthProps {
+    WidthProps,
+    ZIndexProps {
   is?: string | React.ReactNode
   className?: string
+  ref?: React.Ref<any>
+  style?: React.CSSProperties
 }
 
 export interface BoxProps
@@ -139,6 +157,7 @@ export const Box = styled<BoxProps>(tag)`
   ${borderColor};
   ${borderRadius};
   ${bottom};
+  ${boxShadow};
   ${color};
   ${display};
   ${flex};
@@ -147,6 +166,7 @@ export const Box = styled<BoxProps>(tag)`
   ${flexWrap};
   ${fontFamily};
   ${fontSize};
+  ${fontStyle};
   ${fontWeight};
   ${height};
   ${justifyContent};
@@ -157,11 +177,14 @@ export const Box = styled<BoxProps>(tag)`
   ${maxWidth};
   ${minHeight};
   ${minWidth};
+  ${opacity};
   ${order};
+  ${overflow};
   ${position};
   ${right};
   ${space};
   ${textAlign};
   ${top};
   ${width};
+  ${zIndex};
 `

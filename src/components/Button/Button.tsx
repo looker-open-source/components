@@ -192,6 +192,8 @@ function sizeHelper(props: ThemedProps<ButtonProps>) {
   })
 }
 
+// color is extracted here to ensure it is not passed to Box, creating a type
+// error with the DOM's own color attribute.
 const InternalButton: React.SFC<ButtonProps> = ({ color, ...props }) => (
   <Box
     is="button"

@@ -4,7 +4,12 @@ import { ThemedProps } from '../../types'
 export type TextWeights = 'bold' | 'light' | 'normal' | 'semiBold'
 export type TextTransforms = 'caps' | 'lower' | 'none' | 'upper'
 export type TextAlignments = 'left' | 'center' | 'right'
-export type TextVariants = 'critical' | 'positive' | 'secondary' | 'subdued'
+export type TextVariants =
+  | 'critical'
+  | 'positive'
+  | 'secondary'
+  | 'subdued'
+  | 'inverted'
 
 export interface TextProps {
   align?: TextAlignments
@@ -54,6 +59,10 @@ function textVariant(props: ThemedProps<TextProps>) {
     case 'subdued':
       return css`
         color: ${props.theme.colors.palette.charcoal400};
+      `
+    case 'inverted':
+      return css`
+        color: ${props.theme.colors.palette.textInverted};
       `
     default:
       return css`

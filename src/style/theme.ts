@@ -10,6 +10,7 @@ import {
   SizeXXLarge,
   SizeXXXLarge,
 } from '../types'
+import { components, Components } from './components'
 import { Easings, easings } from './easings'
 import { shadows, Shadows } from './elevation'
 import { FontRamp, fontSizes, lineHeights } from './font_sizes'
@@ -29,16 +30,17 @@ export * from './transitions'
 
 export type SpacingSizes =
   | SizeNone
-  | SizeLarge
-  | SizeMedium
-  | SizeSmall
-  | SizeXLarge
   | SizeXSmall
+  | SizeSmall
+  | SizeMedium
+  | SizeLarge
+  | SizeXLarge
   | SizeXXLarge
   | SizeXXXLarge
 
 export interface Theme {
   breakpoints: string[]
+  components: Components
   colors: { palette: Palette; semanticColors: SemanticColors }
   easings: Easings
   fontSizes: FontRamp
@@ -59,6 +61,7 @@ export interface Theme {
 export const theme: Theme = {
   breakpoints: ['30rem', '48rem', '64rem', '75rem', '90rem'],
   colors: { palette, semanticColors },
+  components,
   easings,
   fontSizes,
   fontWeights,
