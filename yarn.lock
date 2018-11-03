@@ -719,17 +719,6 @@
   version "1.1.0"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/@nodelib/fs.stat/-/fs.stat-1.1.0.tgz#50c1e2260ac0ed9439a181de3725a0168d59c48a"
 
-"@react-bootstrap/react-popper@^1.1.0":
-  version "1.2.1"
-  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/@react-bootstrap/react-popper/-/react-popper-1.2.1.tgz#4edf4851d5b4dcf2eb6b264ebbed1a7b7654177b"
-  dependencies:
-    babel-runtime "6.x.x"
-    create-react-context "^0.2.1"
-    popper.js "^1.14.4"
-    prop-types "^15.6.1"
-    typed-styles "^0.0.5"
-    warning "^3.0.0"
-
 "@samverschueren/stream-to-observable@^0.3.0":
   version "0.3.0"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/@samverschueren/stream-to-observable/-/stream-to-observable-0.3.0.tgz#ecdf48d532c58ea477acfcab80348424f8d0662f"
@@ -807,22 +796,9 @@
   version "2.3.5"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/@types/react-intl/-/react-intl-2.3.5.tgz#eafa170d83c06302416075867a6fd219c1cf84d8"
 
-"@types/react-overlays@^0.8.5":
-  version "0.8.5"
-  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/@types/react-overlays/-/react-overlays-0.8.5.tgz#5e5a2c1b9c53ba998e340ffbde91381e04f41261"
-  dependencies:
-    "@types/react" "*"
-    "@types/react-transition-group" "*"
-
 "@types/react-test-renderer@16.0.1":
   version "16.0.1"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/@types/react-test-renderer/-/react-test-renderer-16.0.1.tgz#36ee8c4fe33c61d460ad0e7bc42a2d0ddcc775a1"
-  dependencies:
-    "@types/react" "*"
-
-"@types/react-transition-group@*":
-  version "2.0.14"
-  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/@types/react-transition-group/-/react-transition-group-2.0.14.tgz#afd0cd785a97f070b55765e9f9d76ff568269001"
   dependencies:
     "@types/react" "*"
 
@@ -2955,10 +2931,6 @@ doctrine@^2.0.0, doctrine@^2.1.0:
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/doctrine/-/doctrine-2.1.0.tgz#5cd01fc101621b42c4cd7f5d1a66243716d3f39d"
   dependencies:
     esutils "^2.0.2"
-
-dom-helpers@^3.3.1:
-  version "3.3.1"
-  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/dom-helpers/-/dom-helpers-3.3.1.tgz#fc1a4e15ffdf60ddde03a480a9c0fece821dd4a6"
 
 dom-serializer@0, dom-serializer@~0.1.0:
   version "0.1.0"
@@ -6762,7 +6734,7 @@ polished@2.0.3:
   version "2.0.3"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/polished/-/polished-2.0.3.tgz#54bb5f474bebe149e760d4015ed04207817fd38e"
 
-popper.js@^1.14.4:
+popper.js@^1.14.1, popper.js@^1.14.4:
   version "1.14.4"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/popper.js/-/popper.js-1.14.4.tgz#8eec1d8ff02a5a3a152dd43414a15c7b79fd69b6"
 
@@ -7205,13 +7177,6 @@ prompts@^0.1.9:
     kleur "^2.0.1"
     sisteransi "^0.1.1"
 
-prop-types-extra@^1.1.0:
-  version "1.1.0"
-  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/prop-types-extra/-/prop-types-extra-1.1.0.tgz#32609910ea2dcf190366bacd3490d5a6412a605f"
-  dependencies:
-    react-is "^16.3.2"
-    warning "^3.0.0"
-
 prop-types@15.6.2, prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.6.1, prop-types@^15.6.2:
   version "15.6.2"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/prop-types/-/prop-types-15.6.2.tgz#05d5ca77b4453e985d60fc7ff8c859094a497102"
@@ -7406,10 +7371,6 @@ react-codemirror2@^5.1.0:
   version "5.1.0"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/react-codemirror2/-/react-codemirror2-5.1.0.tgz#62de4460178adea40eb52eabf7491669bf3794b8"
 
-react-context-toolbox@^1.1.0:
-  version "1.2.2"
-  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/react-context-toolbox/-/react-context-toolbox-1.2.2.tgz#3fd9a07b0618ae398d232098a04c2b9f0abdbb86"
-
 react-dev-utils@^5.0.1:
   version "5.0.2"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/react-dev-utils/-/react-dev-utils-5.0.2.tgz#7bb68d2c4f6ffe7ed1184c5b0124fcad692774d2"
@@ -7492,7 +7453,7 @@ react-is@^16.3.1, react-is@^16.4.2:
   version "16.4.2"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/react-is/-/react-is-16.4.2.tgz#84891b56c2b6d9efdee577cc83501dfc5ecead88"
 
-react-is@^16.3.2, react-is@^16.5.2:
+react-is@^16.5.2:
   version "16.5.2"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/react-is/-/react-is-16.5.2.tgz#e2a7b7c3f5d48062eb769fcb123505eb928722e3"
 
@@ -7500,17 +7461,16 @@ react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
 
-react-overlays@1.0.0-beta.15:
-  version "1.0.0-beta.15"
-  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/react-overlays/-/react-overlays-1.0.0-beta.15.tgz#68f827096533a38fd7422638d5c0f7742e275c44"
+react-popper@^1.0.2:
+  version "1.0.2"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/react-popper/-/react-popper-1.0.2.tgz#0e72f338b7f15ab9f9ec884e36ae0dad78a3e301"
   dependencies:
-    "@react-bootstrap/react-popper" "^1.1.0"
-    classnames "^2.2.6"
-    dom-helpers "^3.3.1"
-    prop-types "^15.6.2"
-    prop-types-extra "^1.1.0"
-    react-context-toolbox "^1.1.0"
-    warning "^4.0.1"
+    babel-runtime "6.x.x"
+    create-react-context "^0.2.1"
+    popper.js "^1.14.1"
+    prop-types "^15.6.1"
+    typed-styles "^0.0.5"
+    warning "^3.0.0"
 
 react-styleguidist@7.3.10:
   version "7.3.10"
@@ -9608,12 +9568,6 @@ walker@~1.0.5:
 warning@^3.0.0:
   version "3.0.0"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/warning/-/warning-3.0.0.tgz#32e5377cb572de4ab04753bdf8821c01ed605b7c"
-  dependencies:
-    loose-envify "^1.0.0"
-
-warning@^4.0.1:
-  version "4.0.2"
-  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/warning/-/warning-4.0.2.tgz#aa6876480872116fa3e11d434b0d0d8d91e44607"
   dependencies:
     loose-envify "^1.0.0"
 

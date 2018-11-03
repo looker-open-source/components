@@ -20,7 +20,6 @@
     "@types/react": "16.4.8",
     "@types/react-dom": "16.0.6",
     "@types/react-intl": "2.3.5",
-    "@types/react-overlays": "^0.8.5",
     "@types/react-test-renderer": "16.0.1",
     "@types/styled-system": "^3.0.2",
     "babel-jest": "23.6.0",
@@ -66,9 +65,10 @@
     "d3-color": "^1.2.3",
     "d3-hsv": "^0.1.0",
     "polished": "2.0.3",
+    "popper.js": "^1.14.4",
     "react": "16.5.1",
     "react-dom": "16.4.2",
-    "react-overlays": "1.0.0-beta.15",
+    "react-popper": "^1.0.2",
     "styled-system": "^3.1.6",
     "svg-inline-loader": "^0.8.0"
   },
@@ -100,8 +100,8 @@
   },
   "lint-staged": {
     "**/*.ts?(x)": [
-      "prettier --write",
       "stylelint",
+      "prettier --write",
       "tslint --fix",
       "git add"
     ],
