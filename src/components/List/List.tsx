@@ -2,7 +2,8 @@ import * as React from 'react'
 import { css, styled } from '../../style'
 import { Box, BoxProps } from '../Box'
 
-export interface ListProps extends BoxProps {
+export interface ListProps
+  extends BoxProps<HTMLOListElement | HTMLUListElement> {
   type?: ListTypes
   nomarker?: boolean
 }

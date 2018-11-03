@@ -4,7 +4,7 @@ import { css, styled } from '../../style'
 import { Box, BoxBasePropsWithout, BoxFlexItemProps } from '../Box'
 
 export interface FlexItemProps
-  extends BoxBasePropsWithout<'display'>,
+  extends BoxBasePropsWithout<HTMLDivElement, 'display'>,
     BoxFlexItemProps {
   hidden?: boolean
 }

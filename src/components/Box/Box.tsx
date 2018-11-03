@@ -78,6 +78,9 @@ import {
   ZIndexProps,
 } from 'styled-system'
 import { reset, SpacingSizes, styled } from '../../style'
+import { Omit } from '../../types'
+
+const Tag = tag
 
 export type ResponsiveSpacingSize = ResponsiveValue<SpacingSizes> | 'auto'
 
@@ -96,8 +99,13 @@ export interface BoxFlexItemProps
     FlexProps,
     OrderProps {}
 
-export interface BoxBaseProps
-  extends React.DOMAttributes<Element>,
+export type StyledSystemCompatibleHTMLProps<T> = Omit<
+  React.HTMLProps<T>,
+  'width' | 'color' | 'height' | 'is' | 'size'
+>
+
+export interface BoxBaseProps<T>
+  extends StyledSystemCompatibleHTMLProps<T>,
     LensSpaceProps,
     BorderColorProps,
     BorderProps,
@@ -126,28 +134,21 @@ export interface BoxBaseProps
     TopProps,
     WidthProps,
     ZIndexProps {
-  is?: string | React.ReactNode
   className?: string
+  is?: string | React.ReactNode
   ref?: React.Ref<any>
   style?: React.CSSProperties
 }
 
-export interface BoxProps
-  extends BoxBaseProps,
+export interface BoxProps<T>
+  extends BoxBaseProps<T>,
     BoxFlexProps,
     BoxFlexItemProps {}
 
-export type BoxBasePropsWithout<Keys> = Pick<
-  BoxBaseProps,
-  Exclude<keyof BoxBaseProps, Keys>
->
+export type BoxBasePropsWithout<T, Keys> = Omit<BoxBaseProps<T>, Keys>
+export type BoxPropsWithout<T, Keys> = Omit<BoxProps<T>, Keys>
 
-export type BoxPropsWithout<Keys> = Pick<
-  BoxProps,
-  Exclude<keyof BoxProps, Keys>
->
-
-export const Box = styled<BoxProps>(tag)`
+export const Box = styled<BoxProps<HTMLElement>>(Tag)`
   ${reset};
 
   ${alignContent};

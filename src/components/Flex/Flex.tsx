@@ -6,7 +6,7 @@ import { Box, BoxBasePropsWithout, BoxFlexProps } from '../Box'
  * styled-system has its own FlexProps, so we call this one FlexBoxProps to disambiguate.
  */
 export interface FlexBoxProps
-  extends BoxBasePropsWithout<'display'>,
+  extends BoxBasePropsWithout<HTMLDivElement, 'display'>,
     BoxFlexProps {
   hidden?: boolean
 }

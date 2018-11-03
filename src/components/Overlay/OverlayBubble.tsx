@@ -57,7 +57,7 @@ const OverlayBubbleArrow = styled.div<OverlayBubbleArrowProps>`
   }
 `
 
-const OverlayBubbleContainer = styled<BoxProps>(Box)`
+const OverlayBubbleContainer = styled<BoxProps<HTMLDivElement>>(Box)`
   animation: ${fadeIn} 0.2s linear;
 `
 

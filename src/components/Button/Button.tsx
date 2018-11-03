@@ -20,11 +20,8 @@ export type ButtonSpacingSizes =
   | SizeLarge
   | SizeXLarge
 
-export interface ButtonProps extends BoxPropsWithout<'color'> {
-  /**
-   * Allow className to be passed through to base component.
-   */
-  className?: string
+export interface ButtonProps
+  extends BoxPropsWithout<HTMLButtonElement, 'color' | 'size'> {
   /**
    * Defines the color of the button. Can be the string name of a color listed in the color theme, or a color object.
    * @default "primary"
@@ -45,10 +42,6 @@ export interface ButtonProps extends BoxPropsWithout<'color'> {
    * @default "default"
    */
   variant?: 'default' | 'outline' | 'transparent'
-  /**
-   * Optional function to be triggered when a user clicks a button.
-   */
-  onClick?: React.MouseEventHandler<HTMLButtonElement>
   /**
    * The type of button to define
    * @default "button"
