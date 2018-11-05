@@ -2,10 +2,17 @@
 
 exports[`An error message 1`] = `
 .c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #990F14;
+  font-size: 0.75rem;
   margin-right: 0.5rem;
   margin-top: 0.5rem;
-  font-size: 0.75rem;
-  color: #B2121F;
 }
 
 <div

@@ -1,9 +1,21 @@
-import { reset, styled } from '../../../style'
+import * as React from 'react'
+import { Box, BoxProps } from '../../Box'
 
-export const Label = styled.label`
-  ${reset};
-  font-weight: 600;
-  color: ${props => props.theme.colors.palette.charcoal800};
-  margin-right: ${props => props.theme.space.small};
-  font-size: ${props => props.theme.fontSizes[5]};
-`
+export interface LabelProps extends BoxProps {
+  htmlFor?: string
+}
+
+export const Label: React.SFC<LabelProps> = ({ ...props }) => {
+  return (
+    <Box
+      is="label"
+      {...props}
+      mr="small"
+      fontWeight="bold"
+      color="palette.charcoal800"
+      fontSize="5"
+    >
+      {props.children}
+    </Box>
+  )
+}

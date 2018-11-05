@@ -1,73 +1,50 @@
-import { mount } from 'enzyme'
 import 'jest-styled-components'
 import * as React from 'react'
-import { create } from 'react-test-renderer'
-import { theme } from '../../../../style'
+import { mountWithTheme } from '../../../../../test/utils/create_with_theme'
+import { assertSnapshot } from '../../../../../test/utils/snapshot'
 import { InputText } from './InputText'
 
 test('InputText default', () => {
-  const component = create(<InputText theme={theme} />)
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
+  assertSnapshot(<InputText />)
 })
 
 test('InputText with name and id', () => {
-  const component = create(<InputText theme={theme} name="Bob" id="Bobby" />)
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
+  assertSnapshot(<InputText name="Bob" id="Bobby" />)
 })
 
 test('InputText should accept disabled', () => {
-  const component = create(<InputText theme={theme} disabled />)
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
+  assertSnapshot(<InputText disabled />)
 })
 
 test('InputText with a placeholder', () => {
-  const component = create(
-    <InputText theme={theme} placeholder="I am a placeholder" />
-  )
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
+  assertSnapshot(<InputText placeholder="I am a placeholder" />)
 })
 
 test('InputText should accept readOnly', () => {
-  const component = create(<InputText theme={theme} readOnly />)
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
+  assertSnapshot(<InputText readOnly />)
 })
 
 test('InputText should accept required', () => {
-  const component = create(<InputText theme={theme} required />)
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
+  assertSnapshot(<InputText required />)
 })
 
 test('InputText with a value', () => {
-  const component = create(<InputText theme={theme} value="Some value" />)
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
+  assertSnapshot(<InputText value="Some value" />)
 })
 
 test('InputText with aria-describedby', () => {
-  const component = create(
-    <InputText theme={theme} aria-describedby="some-id" />
-  )
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
+  assertSnapshot(<InputText aria-describedby="some-id" />)
 })
 
 test('InputText with an error validation', () => {
-  const component = create(<InputText theme={theme} validationType="error" />)
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
+  assertSnapshot(<InputText validationType="error" />)
 })
 
 test('Should trigger onChange handler', () => {
   let counter = 0
   const handleChange = () => counter++
 
-  const wrapper = mount(<InputText theme={theme} onChange={handleChange} />)
+  const wrapper = mountWithTheme(<InputText onChange={handleChange} />)
 
   wrapper.find('input').simulate('change', { target: { value: '' } })
   expect(counter).toEqual(1)

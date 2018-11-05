@@ -1,12 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`A FieldText 1`] = `
-.c4 {
-  border: solid 1px #C1C6CC;
-  height: 28px;
-  padding: 0 0.5rem;
-  border-radius: 4px;
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #262D33;
   font-size: 0.875rem;
+  font-weight: 700;
+  margin-right: 0.5rem;
 }
 
 .c2 {
@@ -36,6 +42,25 @@ exports[`A FieldText 1`] = `
   vertical-align: baseline;
 }
 
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border: solid 1px;
+  border-color: #C1C6CC;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  height: 28px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+}
+
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -49,20 +74,6 @@ exports[`A FieldText 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-}
-
-.c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  font-weight: 600;
-  color: #262D33;
-  margin-right: 0.5rem;
-  font-size: 0.875rem;
 }
 
 <div
@@ -92,13 +103,18 @@ exports[`A FieldText 1`] = `
 `;
 
 exports[`A FieldText with an error validation aligned to the bottom 1`] = `
-.c4 {
-  border: solid 1px #C1C6CC;
-  height: 28px;
-  padding: 0 0.5rem;
-  border-radius: 4px;
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #262D33;
   font-size: 0.875rem;
-  background-color: #FFF2F4;
+  font-weight: 700;
+  margin-right: 0.5rem;
 }
 
 .c2 {
@@ -128,6 +144,40 @@ exports[`A FieldText with an error validation aligned to the bottom 1`] = `
   vertical-align: baseline;
 }
 
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border: solid 1px;
+  border-color: #C1C6CC;
+  border-radius: 4px;
+  background-color: #FFF2F4;
+  font-size: 0.875rem;
+  height: 28px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+}
+
+.c5 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #990F14;
+  font-size: 0.75rem;
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
+}
+
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -141,27 +191,6 @@ exports[`A FieldText with an error validation aligned to the bottom 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-}
-
-.c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  font-weight: 600;
-  color: #262D33;
-  margin-right: 0.5rem;
-  font-size: 0.875rem;
-}
-
-.c5 {
-  margin-right: 0.5rem;
-  margin-top: 0.5rem;
-  font-size: 0.75rem;
-  color: #B2121F;
 }
 
 <div
@@ -200,13 +229,18 @@ exports[`A FieldText with an error validation aligned to the bottom 1`] = `
 `;
 
 exports[`A FieldText with an error validation aligned to the left 1`] = `
-.c4 {
-  border: solid 1px #C1C6CC;
-  height: 28px;
-  padding: 0 0.5rem;
-  border-radius: 4px;
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #262D33;
   font-size: 0.875rem;
-  background-color: #FFF2F4;
+  font-weight: 700;
+  margin-right: 0.5rem;
 }
 
 .c3 {
@@ -217,6 +251,40 @@ exports[`A FieldText with an error validation aligned to the left 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+}
+
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border: solid 1px;
+  border-color: #C1C6CC;
+  border-radius: 4px;
+  background-color: #FFF2F4;
+  font-size: 0.875rem;
+  height: 28px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+}
+
+.c5 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #990F14;
+  font-size: 0.75rem;
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 .c2 {
@@ -255,27 +323,6 @@ exports[`A FieldText with an error validation aligned to the left 1`] = `
   flex-direction: column;
 }
 
-.c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  font-weight: 600;
-  color: #262D33;
-  margin-right: 0.5rem;
-  font-size: 0.875rem;
-}
-
-.c5 {
-  margin-right: 0.5rem;
-  margin-top: 0.5rem;
-  font-size: 0.75rem;
-  color: #B2121F;
-}
-
 <div
   className="c0"
 >
@@ -312,13 +359,18 @@ exports[`A FieldText with an error validation aligned to the left 1`] = `
 `;
 
 exports[`A FieldText with an error validation aligned to the right 1`] = `
-.c4 {
-  border: solid 1px #C1C6CC;
-  height: 28px;
-  padding: 0 0.5rem;
-  border-radius: 4px;
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #262D33;
   font-size: 0.875rem;
-  background-color: #FFF2F4;
+  font-weight: 700;
+  margin-right: 0.5rem;
 }
 
 .c3 {
@@ -329,6 +381,40 @@ exports[`A FieldText with an error validation aligned to the right 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+}
+
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border: solid 1px;
+  border-color: #C1C6CC;
+  border-radius: 4px;
+  background-color: #FFF2F4;
+  font-size: 0.875rem;
+  height: 28px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+}
+
+.c6 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #990F14;
+  font-size: 0.75rem;
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 .c2 {
@@ -371,27 +457,6 @@ exports[`A FieldText with an error validation aligned to the right 1`] = `
   flex-direction: column;
 }
 
-.c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  font-weight: 600;
-  color: #262D33;
-  margin-right: 0.5rem;
-  font-size: 0.875rem;
-}
-
-.c6 {
-  margin-right: 0.5rem;
-  margin-top: 0.5rem;
-  font-size: 0.75rem;
-  color: #B2121F;
-}
-
 <div
   className="c0"
 >
@@ -428,12 +493,18 @@ exports[`A FieldText with an error validation aligned to the right 1`] = `
 `;
 
 exports[`A required FieldText 1`] = `
-.c5 {
-  border: solid 1px #C1C6CC;
-  height: 28px;
-  padding: 0 0.5rem;
-  border-radius: 4px;
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #262D33;
   font-size: 0.875rem;
+  font-weight: 700;
+  margin-right: 0.5rem;
 }
 
 .c3 {
@@ -463,6 +534,25 @@ exports[`A required FieldText 1`] = `
   vertical-align: baseline;
 }
 
+.c5 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border: solid 1px;
+  border-color: #C1C6CC;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  height: 28px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+}
+
 .c0 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -476,20 +566,6 @@ exports[`A required FieldText 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-}
-
-.c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  font-weight: 600;
-  color: #262D33;
-  margin-right: 0.5rem;
-  font-size: 0.875rem;
 }
 
 .c2 {
