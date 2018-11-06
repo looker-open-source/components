@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { Theme, withTheme } from '../../../../style'
 import { Box, BoxProps } from '../../../Box'
 import { InputProps } from '../InputProps'
 
@@ -11,9 +12,10 @@ export interface InputTextProps extends BoxProps<HTMLInputElement>, InputProps {
    * Displays an example value or short hint to the user. Should not replace a label.
    */
   placeholder?: string
+  theme?: Theme
 }
 
-export const InputText: React.SFC<InputTextProps> = ({
+const InternalInputText: React.SFC<InputTextProps> = ({
   validationType,
   ...props
 }) => {
@@ -31,7 +33,7 @@ export const InputText: React.SFC<InputTextProps> = ({
       is="input"
       {...props}
       {...type}
-      borderRadius="4px"
+      borderRadius={props.theme!.components.InputText.borderRadius}
       height="28px"
       py="none"
       px="small"
@@ -42,3 +44,5 @@ export const InputText: React.SFC<InputTextProps> = ({
     />
   )
 }
+
+export const InputText = withTheme(InternalInputText)

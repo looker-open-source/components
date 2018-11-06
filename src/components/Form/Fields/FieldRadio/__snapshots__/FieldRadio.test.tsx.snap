@@ -1,6 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`A FieldRadio 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row-reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  margin-bottom: 0.5rem;
+}
+
 .c1 {
   border: 0;
   box-sizing: border-box;
@@ -11,8 +37,11 @@ exports[`A FieldRadio 1`] = `
   vertical-align: baseline;
   color: #262D33;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
+  margin-left: 0.5rem;
   margin-right: 0.5rem;
+  text-align: left;
+  width: 20%;
 }
 
 .c2 {
@@ -23,10 +52,18 @@ exports[`A FieldRadio 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  margin-bottom: 0.5rem;
 }
 
 .c3 {
@@ -37,29 +74,6 @@ exports[`A FieldRadio 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-}
-
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin-bottom: 0.5rem;
-  -webkit-align-items: normal;
-  -webkit-box-align: normal;
-  -ms-flex-align: normal;
-  align-items: normal;
-  -webkit-flex-direction: row-reverse;
-  -ms-flex-direction: row-reverse;
-  flex-direction: row-reverse;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 <div
@@ -89,7 +103,7 @@ exports[`A FieldRadio 1`] = `
 `;
 
 exports[`A FieldRadio with label aligned left 1`] = `
-.c1 {
+.c0 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -97,10 +111,18 @@ exports[`A FieldRadio with label aligned left 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  color: #262D33;
-  font-size: 0.875rem;
-  font-weight: 700;
-  margin-right: 0.5rem;
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  margin-bottom: 0.5rem;
 }
 
 .c2 {
@@ -111,13 +133,9 @@ exports[`A FieldRadio with label aligned left 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
-.c3 {
+.c1 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -125,25 +143,12 @@ exports[`A FieldRadio with label aligned left 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-}
-
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin-bottom: 0.5rem;
-  -webkit-align-items: normal;
-  -webkit-box-align: normal;
-  -ms-flex-align: normal;
-  align-items: normal;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+  color: #262D33;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-right: 0.5rem;
+  text-align: right;
+  width: 20%;
 }
 
 <div
@@ -156,13 +161,13 @@ exports[`A FieldRadio with label aligned left 1`] = `
     👍
   </label>
   <div
-    className="c2"
+    className="c0"
   >
     <div
-      className="c3"
+      className="c2"
     >
       <input
-        className="c3"
+        className="c2"
         id="thumbs-up"
         name="thumbsUp"
         type="radio"

@@ -10,6 +10,7 @@ const InternalFieldCheckbox = (props: FieldCheckboxProps) => {
     alignLabel,
     alignValidationMessage,
     label,
+    labelWidth,
     validationMessage,
     ...checkboxProps
   } = props

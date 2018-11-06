@@ -40,8 +40,8 @@ export type SpacingSizes =
 
 export interface Theme {
   breakpoints: string[]
-  components: Components
   colors: { palette: Palette; semanticColors: SemanticColors }
+  components: Components
   easings: Easings
   fontSizes: FontRamp
   fontWeights: Record<string, number>

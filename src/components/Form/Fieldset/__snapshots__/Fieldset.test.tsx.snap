@@ -1,0 +1,364 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Fieldset with left aligned labels and custom label width 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  margin-bottom: 0.5rem;
+}
+
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-bottom: 0.5rem;
+}
+
+.c5 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border: solid 1px;
+  border-color: #C1C6CC;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  height: 28px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+}
+
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #262D33;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-right: 0.5rem;
+  text-align: right;
+  width: 30%;
+}
+
+.c2 {
+  color: #262D33;
+  font-size: 2.25rem;
+  font-weight: 300;
+  padding-bottom: 10px;
+}
+
+<fieldset
+  className="c0"
+>
+  <div
+    className="c1"
+  >
+    <div
+      className="c0"
+    >
+      <legend
+        className="c2 c0"
+      >
+        Legend
+      </legend>
+    </div>
+    <div
+      className="c0"
+    >
+      <div
+        className="c3"
+      >
+        <label
+          className="c4"
+        >
+          One
+        </label>
+        <div
+          className="c1"
+        >
+          <div
+            className="c0"
+          >
+            <input
+              className="c5"
+              name="name1"
+              type="text"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="c3"
+      >
+        <label
+          className="c4"
+        >
+          two
+        </label>
+        <div
+          className="c1"
+        >
+          <div
+            className="c0"
+          >
+            <input
+              className="c5"
+              name="name2"
+              type="text"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="c3"
+      >
+        <label
+          className="c4"
+        >
+          three
+        </label>
+        <div
+          className="c1"
+        >
+          <div
+            className="c0"
+          >
+            <input
+              className="c5"
+              name="nam3"
+              type="text"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</fieldset>
+`;
+
+exports[`Fieldset with left aligned legend 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  margin-bottom: 0.5rem;
+}
+
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-bottom: 0.5rem;
+}
+
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #262D33;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+
+.c5 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border: solid 1px;
+  border-color: #C1C6CC;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  height: 28px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+}
+
+.c2 {
+  color: #262D33;
+  font-size: 2.25rem;
+  font-weight: 300;
+  padding-bottom: 10px;
+}
+
+<fieldset
+  alignLegend="left"
+  className="c0"
+>
+  <div
+    className="c1"
+  >
+    <div
+      className="c0"
+    >
+      <legend
+        className="c2 c0"
+      >
+        Legend
+      </legend>
+    </div>
+    <div
+      className="c0"
+    >
+      <div
+        className="c3"
+      >
+        <label
+          className="c4"
+        >
+          One
+        </label>
+        <div
+          className="c3"
+        >
+          <div
+            className="c0"
+          >
+            <input
+              className="c5"
+              name="name1"
+              type="text"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="c3"
+      >
+        <label
+          className="c4"
+        >
+          two
+        </label>
+        <div
+          className="c3"
+        >
+          <div
+            className="c0"
+          >
+            <input
+              className="c5"
+              name="name2"
+              type="text"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="c3"
+      >
+        <label
+          className="c4"
+        >
+          three
+        </label>
+        <div
+          className="c3"
+        >
+          <div
+            className="c0"
+          >
+            <input
+              className="c5"
+              name="nam3"
+              type="text"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</fieldset>
+`;

@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { Theme, withTheme } from '../../../style'
 import { Box, BoxProps } from '../../Box'
 
 export type ValidationType = 'error'
@@ -12,9 +13,10 @@ export interface ValidationMessageProps extends BoxProps<HTMLDivElement> {
    * The validation message to render.
    */
   message?: string
+  theme?: Theme
 }
 
-export const ValidationMessage: React.SFC<ValidationMessageProps> = ({
+const InternalValidationMessage: React.SFC<ValidationMessageProps> = ({
   type,
   message,
   ...props
@@ -32,10 +34,12 @@ export const ValidationMessage: React.SFC<ValidationMessageProps> = ({
       {...props}
       mr="small"
       mt="small"
-      fontSize="6"
+      fontSize={props.theme!.components.ValidationMessage.fontSize}
       color={handleValidationType()}
     >
       {message}
     </Box>
   )
 }
+
+export const ValidationMessage = withTheme(InternalValidationMessage)

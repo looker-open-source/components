@@ -11,7 +11,7 @@ exports[`A Label 1`] = `
   vertical-align: baseline;
   color: #262D33;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   margin-right: 0.5rem;
 }
 

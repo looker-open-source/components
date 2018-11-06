@@ -1,9 +1,39 @@
+import {
+  ResponsiveBorderRadiusValue,
+  ResponsiveFontSizeValue,
+  ResponsiveFontWeightValue,
+  ResponsiveSpaceValue,
+} from 'styled-system'
 import { OverlayBubbleStyleProps } from '../components/Overlay/OverlayBubble'
 import { shadows } from './elevation'
+import { fontSizes } from './font_sizes'
+import { fontWeights } from './font_weights'
 import { palette } from './palette'
 import { radii } from './radii'
+import { SpacingSizes } from './theme'
 
 export interface Components {
+  Field: {
+    labelMargin: SpacingSizes
+    labelWidth: ResponsiveSpaceValue
+  }
+  InputText: {
+    borderRadius: ResponsiveBorderRadiusValue
+  }
+  Label: {
+    color: string
+    fontSize: ResponsiveFontSizeValue
+    fontWeight: ResponsiveFontWeightValue
+  }
+  Legend: {
+    bottomPadding: ResponsiveSpaceValue
+    color: string
+    fontSize: ResponsiveFontSizeValue
+    fontWeight: ResponsiveFontWeightValue
+  }
+  ValidationMessage: {
+    fontSize: ResponsiveFontSizeValue
+  }
   Overlay: {
     zIndex: number
     backdrop: {
@@ -27,6 +57,24 @@ export interface Components {
 }
 
 export const components: Components = {
+  Field: {
+    labelMargin: 'small',
+    labelWidth: '20%',
+  },
+  InputText: {
+    borderRadius: '4px',
+  },
+  Label: {
+    color: palette.charcoal800,
+    fontSize: fontSizes[5],
+    fontWeight: fontWeights.semiBold,
+  },
+  Legend: {
+    bottomPadding: '10px',
+    color: palette.charcoal800,
+    fontSize: fontSizes.d3,
+    fontWeight: fontWeights.light,
+  },
   Overlay: {
     backdrop: {
       backgroundColor: palette.charcoal200,
@@ -67,5 +115,8 @@ export const components: Components = {
       color: palette.charcoal000,
       padding: 'xsmall',
     },
+  },
+  ValidationMessage: {
+    fontSize: fontSizes[6],
   },
 }

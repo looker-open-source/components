@@ -1,41 +1,53 @@
-import { css, styled } from '../../../style'
+import * as React from 'react'
+import {
+  ResponsiveAlignItemsValue,
+  ResponsiveFlexDirectionValue,
+  ResponsiveJustifyContentValue,
+} from 'styled-system'
+import { BoxProps } from '../../Box'
+import { Flex } from '../../Flex'
 
 export type FormControlDirections = 'left' | 'right' | 'top' | 'bottom'
 
-export interface FormControlProps {
+export interface FormControlProps extends BoxProps<HTMLDivElement> {
   alignLabel?: FormControlDirections
-  alignCenter?: boolean
 }
 
-const alignLabels = (direction: FormControlDirections | undefined) => {
-  switch (direction) {
-    case 'left':
-      return css`
-        flex-direction: row;
-        align-items: center;
-      `
-    case 'right':
-      return css`
-        flex-direction: row-reverse;
-        justify-content: flex-end;
-        align-items: center;
-      `
-    case 'bottom':
-      return css`
-        flex-direction: column-reverse;
-        justify-content: flex-end;
-      `
-    case 'top':
-    default:
-      return css`
-        flex-direction: column;
-      `
+export const FormControl: React.SFC<FormControlProps> = ({
+  alignLabel,
+  ...props
+}) => {
+  interface FlexAlignment {
+    alignItems?: ResponsiveAlignItemsValue
+    flexDirection?: ResponsiveFlexDirectionValue
+    justifyContent?: ResponsiveJustifyContentValue
   }
+  const flexAlignment: FlexAlignment = {}
+  const setFlexAlignment = () => {
+    switch (alignLabel) {
+      case 'left':
+        flexAlignment.flexDirection = 'row'
+        flexAlignment.alignItems = 'baseline'
+        break
+      case 'right':
+        flexAlignment.flexDirection = 'row-reverse'
+        flexAlignment.justifyContent = 'flex-end'
+        flexAlignment.alignItems = 'baseline'
+        break
+      case 'bottom':
+        flexAlignment.flexDirection = 'column-reverse'
+        flexAlignment.justifyContent = 'flex-end'
+        break
+      case 'top':
+      default:
+        flexAlignment.flexDirection = 'column'
+        break
+    }
+    return flexAlignment
+  }
+  return (
+    <Flex {...props} {...setFlexAlignment()} mb="small">
+      {props.children}
+    </Flex>
+  )
 }
-
-export const FormControl = styled.div<FormControlProps>`
-  display: flex;
-  margin-bottom: ${props => props.theme.space.small};
-  align-items: ${props => (props.alignCenter ? 'center' : 'normal')};
-  ${props => alignLabels(props.alignLabel)};
-`
