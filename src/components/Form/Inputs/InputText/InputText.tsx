@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Box, BoxProps } from '../../../Box'
 import { InputProps } from '../InputProps'
 
-export interface InputTextProps extends BoxProps, InputProps {
+export interface InputTextProps extends BoxProps<HTMLInputElement>, InputProps {
   /**
    * Specifies value of the input field.
    */

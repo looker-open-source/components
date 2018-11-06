@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Box, BoxProps } from '../../../Box'
 import { InputProps } from '../InputProps'
 
-export interface CheckboxProps extends BoxProps, InputProps {
+export interface CheckboxProps extends BoxProps<HTMLInputElement>, InputProps {
   /**
    * Determines if the checkbox is checked or not.
    */

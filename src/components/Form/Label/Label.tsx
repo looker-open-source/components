@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Box, BoxProps } from '../../Box'
 
-export interface LabelProps extends BoxProps {
+export interface LabelProps extends BoxProps<HTMLLabelElement> {
   htmlFor?: string
 }
 

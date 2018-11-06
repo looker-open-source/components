@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Box, BoxProps } from '../../../Box'
 import { InputProps } from '../InputProps'
 
-export interface RadioProps extends BoxProps, InputProps {
+export interface RadioProps extends BoxProps<HTMLInputElement>, InputProps {
   /**
    * Determines if the radio button is selected or not.
    */
