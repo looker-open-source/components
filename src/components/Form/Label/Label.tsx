@@ -7,19 +7,17 @@ export interface LabelProps extends BoxProps<HTMLLabelElement> {
   theme?: Theme
 }
 
-const InternalLabel: React.SFC<LabelProps> = ({ ...props }) => {
-  return (
-    <Box
-      is="label"
-      {...props}
-      mr="small"
-      fontWeight={props.theme!.components.Label.fontWeight}
-      color={props.theme!.components.Label.color}
-      fontSize={props.theme!.components.Label.fontSize}
-    >
-      {props.children}
-    </Box>
-  )
-}
+const InternalLabel: React.SFC<LabelProps> = ({ ...props }) => (
+  <Box
+    is="label"
+    color={props.theme!.components.Label.color}
+    fontSize={props.theme!.components.Label.fontSize}
+    fontWeight={props.theme!.components.Label.fontWeight}
+    mr="small"
+    {...props}
+  >
+    {props.children}
+  </Box>
+)
 
 export const Label = withTheme(InternalLabel)

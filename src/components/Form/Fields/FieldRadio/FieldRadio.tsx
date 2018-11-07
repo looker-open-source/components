@@ -10,6 +10,7 @@ const InternalFieldRadio = (props: FieldRadioProps) => {
     alignLabel,
     alignValidationMessage,
     label,
+    labelFontWeight,
     validationMessage,
     ...radioProps
   } = props

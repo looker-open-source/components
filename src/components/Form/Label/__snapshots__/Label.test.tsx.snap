@@ -22,3 +22,26 @@ exports[`A Label 1`] = `
   🎉
 </label>
 `;
+
+exports[`Label supports fontWeight 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #262D33;
+  font-size: 0.875rem;
+  font-weight: 400;
+  margin-right: 0.5rem;
+}
+
+<label
+  className="c0"
+  htmlFor="party"
+>
+  test
+</label>
+`;
