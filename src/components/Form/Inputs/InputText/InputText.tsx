@@ -27,20 +27,19 @@ const InternalInputText: React.SFC<InputTextProps> = ({
         return undefined
     }
   }
-  const type = { type: 'text' }
   return (
     <Box
       is="input"
-      {...props}
-      {...type}
-      borderRadius={props.theme!.components.InputText.borderRadius}
-      height="28px"
-      py="none"
-      px="small"
-      fontSize="5"
       bg={handleValidationType()}
       border="solid 1px"
       borderColor="palette.charcoal300"
+      borderRadius={props.theme!.components.InputText.borderRadius}
+      fontSize={props.theme!.components.InputText.fontSize}
+      height={props.theme!.components.InputText.height}
+      px={props.theme!.components.InputText.px}
+      py={props.theme!.components.InputText.py}
+      type="text"
+      {...props}
     />
   )
 }
