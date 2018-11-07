@@ -11,7 +11,12 @@ test('A FieldText', () => {
 
 test('FieldText supports labelWeight', () => {
   assertSnapshot(
-    <FieldText label="👍" name="thumbsUp" id="thumbs-up" labelWeight="normal" />
+    <FieldText
+      label="👍"
+      name="thumbsUp"
+      id="thumbs-up"
+      labelFontWeight="normal"
+    />
   )
 })
 

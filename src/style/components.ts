@@ -23,8 +23,7 @@ export interface Components {
   Label: {
     color: string
     fontSize: ResponsiveFontSizeValue
-    fontWeightBold: ResponsiveFontWeightValue
-    fontWeightNormal: ResponsiveFontWeightValue
+    fontWeight: ResponsiveFontWeightValue
   }
   Legend: {
     bottomPadding: ResponsiveSpaceValue
@@ -68,8 +67,7 @@ export const components: Components = {
   Label: {
     color: palette.charcoal800,
     fontSize: fontSizes[5],
-    fontWeightBold: fontWeights.semiBold,
-    fontWeightNormal: fontWeights.normal,
+    fontWeight: fontWeights.semiBold,
   },
   Legend: {
     bottomPadding: '10px',

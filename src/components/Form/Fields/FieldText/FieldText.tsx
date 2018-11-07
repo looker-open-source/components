@@ -11,6 +11,7 @@ const InternalFieldText = (props: FieldTextProps) => {
     alignValidationMessage,
     label,
     labelWidth,
+    labelFontWeight,
     validationMessage,
     ...inputTextProps
   } = props

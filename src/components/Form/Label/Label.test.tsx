@@ -6,9 +6,9 @@ test('A Label', () => {
   assertSnapshot(<Label htmlFor="party">🎉</Label>)
 })
 
-test('Label supports weight', () => {
+test('Label supports fontWeight', () => {
   assertSnapshot(
-    <Label htmlFor="party" weight="normal">
+    <Label htmlFor="party" fontWeight="normal">
       test
     </Label>
   )

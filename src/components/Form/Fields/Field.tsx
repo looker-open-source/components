@@ -1,5 +1,9 @@
 import * as React from 'react'
-import { ResponsiveSpaceValue, TextAlignValue } from 'styled-system'
+import {
+  ResponsiveFontWeightValue,
+  ResponsiveSpaceValue,
+  TextAlignValue,
+} from 'styled-system'
 import { SpacingSizes, styled, theme } from '../../../style'
 import { FlexItem } from '../../FlexItem'
 import { FormControl, FormControlDirections } from '../FormControl/FormControl'
@@ -31,9 +35,9 @@ export interface FieldProps {
    */
   labelWidth?: ResponsiveSpaceValue
   /**
-   * Whether the label should be rendered as "normal" text or bold.
+   * Specifies the fontWeight of the internal Label.
    */
-  labelWeight?: 'normal' | 'bold'
+  labelFontWeight?: ResponsiveFontWeightValue
   /**
    * Whether or not the field should display a `*` denoting it is required.
    */
@@ -106,13 +110,16 @@ const getValidationMessageAlignment = (
  * feedback about the status of the input values.
  */
 export const Field = (props: FieldProps & { children?: React.ReactNode }) => {
+  const labelFontWeight = props.labelFontWeight
+    ? { fontWeight: props.labelFontWeight }
+    : {}
   return (
     <FormControl alignLabel={props.alignLabel}>
       <Label
         htmlFor={props.id}
         {...handleHorizontalAlignment(props.alignLabel, props.labelWidth)}
         ml={props.alignLabel === 'right' ? 'small' : undefined}
-        weight={props.labelWeight}
+        {...labelFontWeight}
       >
         {props.label}
         {props.required && <RequiredStar />}

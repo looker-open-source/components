@@ -23,7 +23,7 @@ exports[`A Label 1`] = `
 </label>
 `;
 
-exports[`Label supports weight 1`] = `
+exports[`Label supports fontWeight 1`] = `
 .c0 {
   border: 0;
   box-sizing: border-box;
@@ -41,7 +41,6 @@ exports[`Label supports weight 1`] = `
 <label
   className="c0"
   htmlFor="party"
-  weight="normal"
 >
   test
 </label>
