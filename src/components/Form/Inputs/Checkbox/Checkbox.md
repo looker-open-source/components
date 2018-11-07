@@ -26,7 +26,7 @@ A name and ID can be specified in the `<Checkbox />` component. Names are import
 
 ### Checked Property
 
-The `<Checkbox />` component accepts the `checked` property, allowing the user to force the checkbox as always checked or never checked.
+The `<Checkbox />` component accepts the `checked` property, which sets the checkbox as either selected or not.
 
 ```js
 <Checkbox checked={true} />

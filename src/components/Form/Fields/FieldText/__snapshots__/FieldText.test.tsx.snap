@@ -1,53 +1,65 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`A FieldText 1`] = `
-.c4 {
-  border: solid 1px #C1C6CC;
-  height: 28px;
-  padding: 0 0.5rem;
-  border-radius: 4px;
-  font-size: 0.875rem;
-}
-
-.c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c2 {
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin-bottom: 0.5rem;
-  -webkit-align-items: normal;
-  -webkit-box-align: normal;
-  -ms-flex-align: normal;
-  align-items: normal;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-.c1 {
   border: 0;
+  box-sizing: border-box;
   font: inherit;
   font-size: 100%;
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  font-weight: 600;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-bottom: 0.5rem;
+}
+
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   color: #262D33;
-  margin-right: 0.5rem;
   font-size: 0.875rem;
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border: solid 1px;
+  border-color: #C1C6CC;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  height: 28px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
 }
 
 <div
@@ -60,13 +72,13 @@ exports[`A FieldText 1`] = `
     👍
   </label>
   <div
-    className="c2 c3"
+    className="c0"
   >
     <div
-      className=""
+      className="c2"
     >
       <input
-        className="c4"
+        className="c3"
         id="thumbs-up"
         name="thumbsUp"
         type="text"
@@ -77,61 +89,80 @@ exports[`A FieldText 1`] = `
 `;
 
 exports[`A FieldText with an error validation aligned to the bottom 1`] = `
-.c4 {
-  border: solid 1px #C1C6CC;
-  height: 28px;
-  padding: 0 0.5rem;
-  border-radius: 4px;
-  font-size: 0.875rem;
-  background-color: #FFF2F4;
-}
-
-.c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c2 {
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin-bottom: 0.5rem;
-  -webkit-align-items: normal;
-  -webkit-box-align: normal;
-  -ms-flex-align: normal;
-  align-items: normal;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-.c1 {
   border: 0;
+  box-sizing: border-box;
   font: inherit;
   font-size: 100%;
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  font-weight: 600;
-  color: #262D33;
-  margin-right: 0.5rem;
-  font-size: 0.875rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-bottom: 0.5rem;
 }
 
-.c5 {
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #262D33;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border: solid 1px;
+  border-color: #C1C6CC;
+  border-radius: 4px;
+  background-color: #FFF2F4;
+  font-size: 0.875rem;
+  height: 28px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+}
+
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #990F14;
+  font-size: 0.75rem;
   margin-right: 0.5rem;
   margin-top: 0.5rem;
-  font-size: 0.75rem;
-  color: #B2121F;
 }
 
 <div
@@ -144,49 +175,120 @@ exports[`A FieldText with an error validation aligned to the bottom 1`] = `
     👍
   </label>
   <div
-    className="c2 c3"
+    className="c0"
   >
     <div
-      className=""
+      className="c2"
     >
       <input
-        className="c4"
+        className="c3"
         id="thumbs-up"
         name="thumbsUp"
         type="text"
       />
     </div>
     <div
-      className=""
+      className="c4"
     >
-      <div
-        className="c5"
-      >
-        This is an error
-      </div>
+      This is an error
     </div>
   </div>
 </div>
 `;
 
 exports[`A FieldText with an error validation aligned to the left 1`] = `
-.c4 {
-  border: solid 1px #C1C6CC;
-  height: 28px;
-  padding: 0 0.5rem;
-  border-radius: 4px;
-  font-size: 0.875rem;
-  background-color: #FFF2F4;
-}
-
-.c3 {
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-bottom: 0.5rem;
+}
+
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #262D33;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border: solid 1px;
+  border-color: #C1C6CC;
+  border-radius: 4px;
+  background-color: #FFF2F4;
+  font-size: 0.875rem;
+  height: 28px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+}
+
+.c5 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #990F14;
+  font-size: 0.75rem;
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 .c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-flex-direction: row-reverse;
   -ms-flex-direction: row-reverse;
   flex-direction: row-reverse;
@@ -194,132 +296,7 @@ exports[`A FieldText with an error validation aligned to the left 1`] = `
   -webkit-justify-content: flex-end;
   -ms-flex-pack: end;
   justify-content: flex-end;
-}
-
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   margin-bottom: 0.5rem;
-  -webkit-align-items: normal;
-  -webkit-box-align: normal;
-  -ms-flex-align: normal;
-  align-items: normal;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-.c1 {
-  border: 0;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  font-weight: 600;
-  color: #262D33;
-  margin-right: 0.5rem;
-  font-size: 0.875rem;
-}
-
-.c5 {
-  margin-right: 0.5rem;
-  margin-top: 0.5rem;
-  font-size: 0.75rem;
-  color: #B2121F;
-}
-
-<div
-  className="c0"
->
-  <label
-    className="c1"
-    htmlFor="thumbs-up"
-  >
-    👍
-  </label>
-  <div
-    className="c2 c3"
-  >
-    <div
-      className=""
-    >
-      <input
-        className="c4"
-        id="thumbs-up"
-        name="thumbsUp"
-        type="text"
-      />
-    </div>
-    <div
-      className=""
-    >
-      <div
-        className="c5"
-      >
-        This is an error
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`A FieldText with an error validation aligned to the right 1`] = `
-.c3 {
-  border: solid 1px #C1C6CC;
-  height: 28px;
-  padding: 0 0.5rem;
-  border-radius: 4px;
-  font-size: 0.875rem;
-  background-color: #FFF2F4;
-}
-
-.c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c4 {
-  margin-left: 0.5rem;
-}
-
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin-bottom: 0.5rem;
-  -webkit-align-items: normal;
-  -webkit-box-align: normal;
-  -ms-flex-align: normal;
-  align-items: normal;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-.c1 {
-  border: 0;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  font-weight: 600;
-  color: #262D33;
-  margin-right: 0.5rem;
-  font-size: 0.875rem;
-}
-
-.c5 {
-  margin-right: 0.5rem;
-  margin-top: 0.5rem;
-  font-size: 0.75rem;
-  color: #B2121F;
 }
 
 <div
@@ -335,76 +312,215 @@ exports[`A FieldText with an error validation aligned to the right 1`] = `
     className="c2"
   >
     <div
-      className=""
+      className="c3"
     >
       <input
-        className="c3"
+        className="c4"
         id="thumbs-up"
         name="thumbsUp"
         type="text"
       />
     </div>
     <div
-      className="c4"
+      className="c5"
     >
-      <div
-        className="c5"
-      >
-        This is an error
-      </div>
+      This is an error
+    </div>
+  </div>
+</div>
+`;
+
+exports[`A FieldText with an error validation aligned to the right 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-bottom: 0.5rem;
+}
+
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #262D33;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border: solid 1px;
+  border-color: #C1C6CC;
+  border-radius: 4px;
+  background-color: #FFF2F4;
+  font-size: 0.875rem;
+  height: 28px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+}
+
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  margin-bottom: 0.5rem;
+}
+
+.c5 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #990F14;
+  font-size: 0.75rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+<div
+  className="c0"
+>
+  <label
+    className="c1"
+    htmlFor="thumbs-up"
+  >
+    👍
+  </label>
+  <div
+    className="c2"
+  >
+    <div
+      className="c3"
+    >
+      <input
+        className="c4"
+        id="thumbs-up"
+        name="thumbsUp"
+        type="text"
+      />
+    </div>
+    <div
+      className="c5"
+    >
+      This is an error
     </div>
   </div>
 </div>
 `;
 
 exports[`A required FieldText 1`] = `
-.c5 {
-  border: solid 1px #C1C6CC;
-  height: 28px;
-  padding: 0 0.5rem;
-  border-radius: 4px;
-  font-size: 0.875rem;
-}
-
-.c4 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c3 {
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin-bottom: 0.5rem;
-  -webkit-align-items: normal;
-  -webkit-box-align: normal;
-  -ms-flex-align: normal;
-  align-items: normal;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-.c1 {
   border: 0;
+  box-sizing: border-box;
   font: inherit;
   font-size: 100%;
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  font-weight: 600;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-bottom: 0.5rem;
+}
+
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   color: #262D33;
-  margin-right: 0.5rem;
   font-size: 0.875rem;
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border: solid 1px;
+  border-color: #C1C6CC;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  height: 28px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
 }
 
 .c2 {
@@ -426,13 +542,13 @@ exports[`A required FieldText 1`] = `
     </span>
   </label>
   <div
-    className="c3 c4"
+    className="c0"
   >
     <div
-      className=""
+      className="c3"
     >
       <input
-        className="c5"
+        className="c4"
         id="thumbs-up"
         name="thumbsUp"
         required={true}

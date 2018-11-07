@@ -1,20 +1,52 @@
 import tag from 'clean-tag'
 import * as React from 'react'
 import {
-  bgColor,
-  BgColorProps,
+  alignContent,
+  AlignContentProps,
+  alignItems,
+  AlignItemsProps,
+  alignSelf,
+  AlignSelfProps,
   border,
+  borderColor,
+  BorderColorProps,
   BorderProps,
   borderRadius,
   BorderRadiusProps,
   bottom,
   BottomProps,
+  boxShadow,
+  BoxShadowProps,
+  color,
+  ColorProps,
   display,
   DisplayProps,
+  flex,
+  flexBasis,
+  FlexBasisProps,
+  flexDirection,
+  FlexDirectionProps,
+  FlexProps,
+  flexWrap,
+  FlexWrapProps,
+  fontFamily,
+  FontFamilyProps,
+  fontSize,
+  FontSizeProps,
+  fontStyle,
+  FontStyleProps,
+  fontWeight,
+  FontWeightProps,
   height,
   HeightProps,
+  justifyContent,
+  JustifyContentProps,
   left,
   LeftProps,
+  letterSpacing,
+  LetterSpacingProps,
+  lineHeight,
+  LineHeightProps,
   maxHeight,
   MaxHeightProps,
   maxWidth,
@@ -23,6 +55,12 @@ import {
   MinHeightProps,
   minWidth,
   MinWidthProps,
+  opacity,
+  OpacityProps,
+  order,
+  OrderProps,
+  overflow,
+  OverflowProps,
   position,
   PositionProps,
   ResponsiveValue,
@@ -30,57 +68,124 @@ import {
   RightProps,
   space,
   SpaceProps,
+  textAlign,
+  TextAlignProps,
   top,
   TopProps,
   width,
   WidthProps,
+  zIndex,
+  ZIndexProps,
 } from 'styled-system'
-import { SpacingSizes, styled } from '../../style'
+import { reset, SpacingSizes, styled } from '../../style'
+import { Omit } from '../../types'
+
+const Tag = tag
 
 export type ResponsiveSpacingSize = ResponsiveValue<SpacingSizes> | 'auto'
 
 export type LensSpaceProps = { [P in keyof SpaceProps]: ResponsiveSpacingSize }
 
-export interface BoxProps
-  extends LensSpaceProps,
-    BgColorProps,
+export interface BoxFlexProps
+  extends AlignContentProps,
+    AlignItemsProps,
+    FlexDirectionProps,
+    FlexWrapProps,
+    JustifyContentProps {}
+
+export interface BoxFlexItemProps
+  extends AlignSelfProps,
+    FlexBasisProps,
+    FlexProps,
+    OrderProps {}
+
+export type StyledSystemCompatibleHTMLProps<T> = Omit<
+  React.HTMLProps<T>,
+  'width' | 'color' | 'height' | 'is' | 'size'
+>
+
+export interface BoxBaseProps<T>
+  extends StyledSystemCompatibleHTMLProps<T>,
+    LensSpaceProps,
+    BorderColorProps,
     BorderProps,
     BorderRadiusProps,
     BottomProps,
+    BoxShadowProps,
+    ColorProps,
     DisplayProps,
+    FontFamilyProps,
+    FontSizeProps,
+    FontStyleProps,
+    FontWeightProps,
     HeightProps,
     LeftProps,
+    LetterSpacingProps,
+    LineHeightProps,
     MaxHeightProps,
     MaxWidthProps,
     MinHeightProps,
     MinWidthProps,
+    OpacityProps,
+    OverflowProps,
     PositionProps,
     RightProps,
+    TextAlignProps,
     TopProps,
-    WidthProps {
-  is?: string | React.ReactNode
+    WidthProps,
+    ZIndexProps {
   className?: string
+  is?: string | React.ReactNode
+  ref?: React.Ref<any>
+  style?: React.CSSProperties
 }
 
-const InternalBox: React.SFC<BoxProps> = ({ ...props }) => {
-  return <tag.div {...props}>{props.children}</tag.div>
-}
+export interface BoxProps<T>
+  extends BoxBaseProps<T>,
+    BoxFlexProps,
+    BoxFlexItemProps {}
 
-export const Box = styled<BoxProps>(InternalBox)`
-  ${bgColor};
+export type BoxBasePropsWithout<T, Keys> = Omit<BoxBaseProps<T>, Keys>
+export type BoxPropsWithout<T, Keys> = Omit<BoxProps<T>, Keys>
+
+export const Box = styled<BoxProps<HTMLElement>>(Tag)`
+  ${reset};
+
+  ${alignContent};
+  ${alignItems};
+  ${alignSelf};
   ${border};
+  ${borderColor};
   ${borderRadius};
   ${bottom};
+  ${boxShadow};
+  ${color};
   ${display};
+  ${flex};
+  ${flexBasis};
+  ${flexDirection};
+  ${flexWrap};
+  ${fontFamily};
+  ${fontSize};
+  ${fontStyle};
+  ${fontWeight};
   ${height};
+  ${justifyContent};
   ${left};
+  ${letterSpacing};
+  ${lineHeight};
   ${maxHeight};
   ${maxWidth};
   ${minHeight};
   ${minWidth};
+  ${opacity};
+  ${order};
+  ${overflow};
   ${position};
   ${right};
   ${space};
+  ${textAlign};
   ${top};
   ${width};
+  ${zIndex};
 `

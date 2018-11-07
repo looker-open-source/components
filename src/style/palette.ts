@@ -13,6 +13,13 @@
  * https://github.com/officedev/office-ui-fabric-react/wiki/Theming#what-are-theme-slots
  */
 export interface Palette {
+  /** Inverted text color. */
+  textInverted: string
+  /** Transparent color for theme. */
+  transparent: string
+  /** White color for theme. */
+  white: string
+
   primary500: string
   primary600: string
   primary700: string
@@ -82,14 +89,13 @@ export interface Palette {
   red700: string
   red800: string
   red900: string
-
-  /** White color for theme. */
-  white: string
-  /** Transparent color for theme. */
-  transparent: string
 }
 
 export const palette: Palette = {
+  textInverted: '#FFFFFF',
+  transparent: 'transparent',
+  white: '#FFFFFF',
+
   primary500: '#64518A',
   primary600: '#473764',
   primary700: '#2A1B60',
@@ -159,7 +165,4 @@ export const palette: Palette = {
   red700: '#990F14',
   red800: '#730B0F',
   red900: '#52080B',
-
-  transparent: 'transparent',
-  white: '#FFFFFF',
 }

@@ -10,12 +10,14 @@ import {
   SizeXXLarge,
   SizeXXXLarge,
 } from '../types'
+import { components, Components } from './components'
 import { Easings, easings } from './easings'
 import { shadows, Shadows } from './elevation'
-import { fontFaces, FontFaces } from './font_faces'
 import { FontRamp, fontSizes, lineHeights } from './font_sizes'
 import { fontWeights } from './font_weights'
+import { fonts, Fonts } from './fonts'
 import { palette, Palette } from './palette'
+import { radii, Radii } from './radii'
 import { SemanticColors, semanticColors } from './semantic_colors'
 import { transitions, Transitions } from './transitions'
 
@@ -28,22 +30,24 @@ export * from './transitions'
 
 export type SpacingSizes =
   | SizeNone
-  | SizeLarge
-  | SizeMedium
-  | SizeSmall
-  | SizeXLarge
   | SizeXSmall
+  | SizeSmall
+  | SizeMedium
+  | SizeLarge
+  | SizeXLarge
   | SizeXXLarge
   | SizeXXXLarge
 
 export interface Theme {
   breakpoints: string[]
   colors: { palette: Palette; semanticColors: SemanticColors }
+  components: Components
   easings: Easings
-  fontFaces: FontFaces
   fontSizes: FontRamp
   fontWeights: Record<string, number>
+  fonts: Fonts
   lineHeights: FontRamp
+  radii: Radii
   /**
    * A function that can be overridden to return different reset css properties
    * or null to remove all resets. Most base elements in Lens implement the reset.
@@ -57,14 +61,17 @@ export interface Theme {
 export const theme: Theme = {
   breakpoints: ['30rem', '48rem', '64rem', '75rem', '90rem'],
   colors: { palette, semanticColors },
+  components,
   easings,
-  fontFaces,
   fontSizes,
   fontWeights,
+  fonts,
   lineHeights,
+  radii,
   reset: () => {
     return {
       border: 0,
+      boxSizing: 'border-box',
       font: 'inherit',
       fontSize: '100%',
       margin: 0,
@@ -75,7 +82,7 @@ export const theme: Theme = {
   shadows,
   space: {
     // tslint:disable:object-literal-sort-keys
-    none: 'none',
+    none: rem(0),
     xsmall: rem(4),
     small: rem(8),
     medium: rem(16),

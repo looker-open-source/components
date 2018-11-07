@@ -1,11 +1,10 @@
-import tag from 'clean-tag'
 import * as React from 'react'
-import { css, styled } from '../../../style'
-import { ThemedProps } from '../../../types'
+import { Theme, withTheme } from '../../../style'
+import { Box, BoxProps } from '../../Box'
 
 export type ValidationType = 'error'
 
-export interface ValidationMessageProps {
+export interface ValidationMessageProps extends BoxProps<HTMLDivElement> {
   /**
    * The type of validation, therefore changing the message's text color. Accepts: error.
    */
@@ -14,32 +13,33 @@ export interface ValidationMessageProps {
    * The validation message to render.
    */
   message?: string
+  theme?: Theme
 }
 
-const InternalValidationMessage = ({
+const InternalValidationMessage: React.SFC<ValidationMessageProps> = ({
   type,
   message,
   ...props
-}: ValidationMessageProps) => {
-  return <tag.div {...props}>{message}</tag.div>
-}
-
-const handleValidationType = (props: ThemedProps<ValidationMessageProps>) => {
-  switch (props.type) {
-    case 'error':
-      return css`
-        color: ${props.theme.colors.semanticColors.danger.dark};
-      `
-    default:
-      return
+}) => {
+  const handleValidationType = () => {
+    switch (type) {
+      case 'error':
+        return 'palette.red700'
+      default:
+        return undefined
+    }
   }
+  return (
+    <Box
+      {...props}
+      mr="small"
+      mt="small"
+      fontSize={props.theme!.components.ValidationMessage.fontSize}
+      color={handleValidationType()}
+    >
+      {message}
+    </Box>
+  )
 }
 
-export const ValidationMessage = styled<ValidationMessageProps>(
-  InternalValidationMessage
-)`
-  margin-right: ${props => props.theme.space.small};
-  margin-top: ${props => props.theme.space.small};
-  font-size: ${props => props.theme.fontSizes[6]};
-  ${handleValidationType};
-`
+export const ValidationMessage = withTheme(InternalValidationMessage)

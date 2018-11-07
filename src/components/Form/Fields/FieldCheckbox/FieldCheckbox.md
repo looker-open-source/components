@@ -11,7 +11,7 @@ const StatusAndResources = require('../../../../../styleguide_components/StatusA
 
 ### FieldCheckbox
 
-The `<FieldCheckbox />` component is composed of an `<Checkbox />` component and a `<Label />` component. Using `<FieldCheckbox />` allows for rendering validation messages. By default, the label will render to the left of the checkbox, which is the recommended convention, however this is adjustable with the `alignLabel` property.
+The `<FieldCheckbox />` component is composed of a `<Checkbox />` component and a `<Label />` component. Using `<FieldCheckbox />` allows for rendering validation messages. By default, the label will render to the left of the checkbox, which is the recommended convention, however this is adjustable with the `alignLabel` property.
 
 ```js
 <FieldCheckbox name="box" label="Box" />

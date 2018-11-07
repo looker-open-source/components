@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { styled } from '../../../style'
-import { Flex } from '../../Flex'
+import { ResponsiveSpaceValue, TextAlignValue } from 'styled-system'
+import { SpacingSizes, styled, theme } from '../../../style'
 import { FlexItem } from '../../FlexItem'
 import { FormControl, FormControlDirections } from '../FormControl/FormControl'
 import { Label } from '../Label/Label'
@@ -27,6 +27,10 @@ export interface FieldProps {
    */
   label?: string
   /**
+   * Specifies for horizontally aligned labels how much space to take up.
+   */
+  labelWidth?: ResponsiveSpaceValue
+  /**
    * Whether or not the field should display a `*` denoting it is required.
    */
   required?: boolean
@@ -37,9 +41,60 @@ export interface FieldProps {
   validationMessage?: ValidationMessageProps
 }
 
+interface LabelContainerAlignment {
+  textAlign?: TextAlignValue
+  width?: ResponsiveSpaceValue
+  ml?: SpacingSizes
+  mr?: SpacingSizes
+}
+
 const RequiredStar = styled(props => <span {...props}> *</span>)`
   color: ${props => props.theme.colors.semanticColors.danger.darker};
 `
+const handleHorizontalAlignment = (
+  alignLabel?: FormControlDirections,
+  labelWidth?: ResponsiveSpaceValue
+): LabelContainerAlignment => {
+  const labelContainerAlignment: LabelContainerAlignment = {}
+  switch (alignLabel) {
+    case 'left':
+      labelContainerAlignment.textAlign = 'right'
+      labelWidth
+        ? (labelContainerAlignment.width = labelWidth)
+        : (labelContainerAlignment.width = theme.components.Field.labelWidth)
+      labelContainerAlignment.mr = theme.components.Field.labelMargin
+      break
+    case 'right':
+      labelContainerAlignment.textAlign = 'left'
+      labelWidth
+        ? (labelContainerAlignment.width = labelWidth)
+        : (labelContainerAlignment.width = theme.components.Field.labelWidth)
+      labelContainerAlignment.mr = theme.components.Field.labelMargin
+      break
+    case 'bottom':
+    case 'top':
+    default:
+      break
+  }
+  return labelContainerAlignment
+}
+
+const getValidationMessageAlignment = (
+  alignValidationMessage?: FormControlDirections
+): FormControlDirections | undefined => {
+  switch (alignValidationMessage) {
+    case 'left':
+      return 'right'
+    case 'right':
+      return 'left'
+    case 'bottom':
+      return 'top'
+    case 'top':
+      return 'bottom'
+    default:
+      return undefined
+  }
+}
 
 /**
  * `<Field />` allows the rendering of a label (optionally associated with a child input like `<InputText />`),
@@ -47,41 +102,27 @@ const RequiredStar = styled(props => <span {...props}> *</span>)`
  * feedback about the status of the input values.
  */
 export const Field = (props: FieldProps & { children?: React.ReactNode }) => {
-  const getFlexDirection = () => {
-    switch (props.alignValidationMessage) {
-      case 'bottom':
-        return 'column'
-      case 'left':
-        return 'row-reverse'
-      case 'top':
-        return 'column-reverse'
-      case 'right':
-      default:
-        return undefined
-    }
-  }
-
   return (
     <FormControl alignLabel={props.alignLabel}>
-      <Label htmlFor={props.id}>
+      <Label
+        htmlFor={props.id}
+        {...handleHorizontalAlignment(props.alignLabel, props.labelWidth)}
+        ml={props.alignLabel === 'right' ? 'small' : undefined}
+      >
         {props.label}
         {props.required && <RequiredStar />}
       </Label>
-      <Flex
-        flexDirection={getFlexDirection()}
-        justifyContent={
-          props.alignValidationMessage === 'left' ? 'flex-end' : undefined
-        }
+      <FormControl
+        alignLabel={getValidationMessageAlignment(props.alignValidationMessage)}
       >
         <FlexItem>{props.children}</FlexItem>
         {props.validationMessage ? (
-          <FlexItem
+          <ValidationMessage
             ml={props.alignValidationMessage === 'right' ? 'small' : undefined}
-          >
-            <ValidationMessage {...props.validationMessage} />
-          </FlexItem>
+            {...props.validationMessage}
+          />
         ) : null}
-      </Flex>
+      </FormControl>
     </FormControl>
   )
 }

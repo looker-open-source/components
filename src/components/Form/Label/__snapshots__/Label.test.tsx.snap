@@ -3,15 +3,16 @@
 exports[`A Label 1`] = `
 .c0 {
   border: 0;
+  box-sizing: border-box;
   font: inherit;
   font-size: 100%;
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  font-weight: 600;
   color: #262D33;
-  margin-right: 0.5rem;
   font-size: 0.875rem;
+  font-weight: 600;
+  margin-right: 0.5rem;
 }
 
 <label

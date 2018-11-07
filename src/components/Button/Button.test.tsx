@@ -1,8 +1,13 @@
 import 'jest-styled-components'
 import * as React from 'react'
 import { createWithTheme } from '../../../test/utils/create_with_theme'
+import { assertSnapshot } from '../../../test/utils/snapshot'
 import { SemanticColor, theme } from '../../style'
 import { Button, ButtonSizes } from './Button'
+
+const noop = () => {
+  return
+}
 
 test('Button default', () => {
   const component = createWithTheme(<Button theme={theme}>🥑</Button>)
@@ -102,6 +107,7 @@ test('Button should accept disabled', () => {
 
 test('Button accepts a SemanticColor object for the color property', () => {
   const punkRockColor: SemanticColor = {
+    altText: 'LightPink',
     borderColor: 'MediumVioletRed',
     dark: 'PaleVioletRed',
     darker: 'MediumVioletRed',
@@ -133,4 +139,17 @@ test('Button validates all sizes', () => {
     const component = createWithTheme(<Button size={size}>Test</Button>)
     expect(component.toJSON()).toMatchSnapshot()
   })
+})
+
+test('Button allows autoFocus', () => {
+  assertSnapshot(<Button autoFocus>Autofocus?</Button>)
+})
+
+test('Button allows for HTML events', () => {
+  assertSnapshot(<Button onMouseEnter={noop}>Mouseenter?</Button>)
+  assertSnapshot(<Button onClick={noop}>Click?</Button>)
+})
+
+test('Button allows for ARIA attributes', () => {
+  assertSnapshot(<Button aria-disabled>aria-disabled</Button>)
 })

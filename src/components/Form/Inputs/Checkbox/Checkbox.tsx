@@ -1,8 +1,8 @@
-import tag from 'clean-tag'
 import * as React from 'react'
+import { Box, BoxProps } from '../../../Box'
 import { InputProps } from '../InputProps'
 
-export interface CheckboxProps extends InputProps {
+export interface CheckboxProps extends BoxProps<HTMLInputElement>, InputProps {
   /**
    * Determines if the checkbox is checked or not.
    */
@@ -13,5 +13,6 @@ export const Checkbox: React.SFC<CheckboxProps> = ({
   validationType,
   ...props
 }) => {
-  return <tag.input type="checkbox" {...props} />
+  const type = { type: 'checkbox' }
+  return <Box is="input" {...props} {...type} />
 }

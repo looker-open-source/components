@@ -24,9 +24,9 @@ Use a primary button for the most frequently used action or most important actio
 ##### Primary states
 
 ```js noeditor
-<Button>Primary Idle</Button>
-<Button className="hover">Primary Hover</Button>
-<Button className="active">Primary Active</Button>
+<Button mr="xsmall">Primary Idle</Button>
+<Button mr="xsmall" className="hover">Primary Hover</Button>
+<Button mr="xsmall" className="active">Primary Active</Button>
 <Button disabled>Disabled</Button>
 ```
 
@@ -43,9 +43,9 @@ Use an outline button alongside a primary button to provide alternative actions 
 ##### Outline states
 
 ```js noeditor
-<Button variant="outline">Outline Idle</Button>
-<Button variant="outline" className="hover">Outline Hover</Button>
-<Button variant="outline" className="active">Outline Active</Button>
+<Button mr="xsmall" variant="outline">Outline Idle</Button>
+<Button mr="xsmall" variant="outline" className="hover">Outline Hover</Button>
+<Button mr="xsmall" variant="outline" className="active">Outline Active</Button>
 <Button variant="outline" disabled>Outline Disabled</Button>
 ```
 
@@ -62,9 +62,9 @@ Use a transparent button as a tertiary action on a screen, they are often used a
 ##### Transparent states
 
 ```js noeditor
-<Button variant="transparent">Transparent Idle</Button>
-<Button variant="transparent" className="hover">Transparent Hover</Button>
-<Button variant="transparent" className="active">Transparent Active</Button>
+<Button mr="xsmall" variant="transparent">Transparent Idle</Button>
+<Button mr="xsmall" variant="transparent" className="hover">Transparent Hover</Button>
+<Button mr="xsmall" variant="transparent" className="active">Transparent Active</Button>
 <Button variant="transparent" disabled>Transparent Disabled</Button>
 ```
 
@@ -81,9 +81,9 @@ Danger Buttons are to be used in situations where you need to convey some very i
 ##### Danger states
 
 ```js noeditor
-<Button color="danger">Danger Idle</Button>
-<Button color="danger" className="hover">Danger Hover</Button>
-<Button color="danger" className="active">Danger Active</Button>
+<Button mr="xsmall" color="danger">Danger Idle</Button>
+<Button mr="xsmall" color="danger" className="hover">Danger Hover</Button>
+<Button mr="xsmall" color="danger" className="active">Danger Active</Button>
 <Button color="danger" disabled>Danger Disabled</Button>
 ```
 
@@ -92,7 +92,7 @@ Danger Buttons are to be used in situations where you need to convey some very i
 Danger Buttons extend the default button, so they also have different variants
 
 ```js noeditor
-<Button color="danger" variant="outline">Danger Outline</Button>
+<Button mr="xsmall" color="danger" variant="outline">Danger Outline</Button>
 <Button color="danger" variant="transparent">Danger Transparent</Button>
 ```
 
@@ -101,20 +101,10 @@ Danger Buttons extend the default button, so they also have different variants
 Use the size property on a `<Button />` to modify the size the button rendered. You can combine it with the `mode` property to get the correct style and size of button you need.
 
 ```js
-<List>
-  <ListItem>
-    <Button size="large">Large Button</Button>
-  </ListItem>
-  <ListItem>
-    <Button>Medium (default) Button</Button>
-  </ListItem>
-  <ListItem>
-    <Button size="small">Small Button</Button>
-  </ListItem>
-  <ListItem>
-    <Button size="xsmall">Extra-Small Button</Button>
-  </ListItem>
-</List>
+<Button size="xsmall" mr="xsmall">Xsmall Button</Button>
+<Button size="small" mr="xsmall">Small Button</Button>
+<Button mr="xsmall">Medium (default) Button</Button>
+<Button size="large">Large Button</Button>
 ```
 
 ### Disabled

@@ -1,53 +1,65 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Form with one child 1`] = `
-.c4 {
-  border: solid 1px #C1C6CC;
-  height: 28px;
-  padding: 0 0.5rem;
-  border-radius: 4px;
-  font-size: 0.875rem;
-}
-
-.c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c2 {
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin-bottom: 0.5rem;
-  -webkit-align-items: normal;
-  -webkit-box-align: normal;
-  -ms-flex-align: normal;
-  align-items: normal;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-.c1 {
   border: 0;
+  box-sizing: border-box;
   font: inherit;
   font-size: 100%;
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  font-weight: 600;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-bottom: 0.5rem;
+}
+
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   color: #262D33;
-  margin-right: 0.5rem;
   font-size: 0.875rem;
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border: solid 1px;
+  border-color: #C1C6CC;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  height: 28px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
 }
 
 <form>
@@ -60,13 +72,13 @@ exports[`Form with one child 1`] = `
       label
     </label>
     <div
-      className="c2 c3"
+      className="c0"
     >
       <div
-        className=""
+        className="c2"
       >
         <input
-          className="c4"
+          className="c3"
           name="name"
           type="text"
         />
@@ -77,31 +89,130 @@ exports[`Form with one child 1`] = `
 `;
 
 exports[`Form with one invalid child and a submit button 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-bottom: 0.5rem;
+}
+
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #262D33;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border: solid 1px;
+  border-color: #C1C6CC;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  height: 28px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+}
+
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border: solid 1px;
+  border-color: #C1C6CC;
+  border-radius: 4px;
+  background-color: #FFF2F4;
+  font-size: 0.875rem;
+  height: 28px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+}
+
+.c5 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #990F14;
+  font-size: 0.75rem;
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
+}
+
 .c7 {
   border: 0;
+  box-sizing: border-box;
   font: inherit;
   font-size: 100%;
   margin: 0;
   padding: 0;
   vertical-align: baseline;
   border-radius: 0.25rem;
-  cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+}
+
+.c6 {
+  cursor: pointer;
+  font-weight: 600;
   outline: none;
   -webkit-transition: border 80ms;
   transition: border 80ms;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
   font-size: 1rem;
-  line-height: 1.5rem;
+  line-height: 34px;
   border-style: solid;
   border-width: 0.0625rem;
   background: #64518A;
@@ -109,100 +220,35 @@ exports[`Form with one invalid child and a submit button 1`] = `
   color: #FFFFFF;
 }
 
-.c7:focus {
+.c6:focus {
   box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
 }
 
-.c7[disabled] {
+.c6[disabled] {
   cursor: default;
   -webkit-filter: grayscale(0.3);
   filter: grayscale(0.3);
   opacity: 0.25;
 }
 
-.c7[disabled]:hover,
-.c7[disabled]:active,
-.c7[disabled]:focus {
+.c6[disabled]:hover,
+.c6[disabled]:active,
+.c6[disabled]:focus {
   background-color: #64518A;
   border-color: #C1C6CC;
 }
 
-.c7:hover,
-.c7:focus,
-.c7.hover {
+.c6:hover,
+.c6:focus,
+.c6.hover {
   background: #473764;
   border-color: #473764;
 }
 
-.c7:active,
-.c7.active {
+.c6:active,
+.c6.active {
   background: #2A1B60;
   border-color: #2A1B60;
-}
-
-.c4 {
-  border: solid 1px #C1C6CC;
-  height: 28px;
-  padding: 0 0.5rem;
-  border-radius: 4px;
-  font-size: 0.875rem;
-}
-
-.c5 {
-  border: solid 1px #C1C6CC;
-  height: 28px;
-  padding: 0 0.5rem;
-  border-radius: 4px;
-  font-size: 0.875rem;
-  background-color: #FFF2F4;
-}
-
-.c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c2 {
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin-bottom: 0.5rem;
-  -webkit-align-items: normal;
-  -webkit-box-align: normal;
-  -ms-flex-align: normal;
-  align-items: normal;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-.c1 {
-  border: 0;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  font-weight: 600;
-  color: #262D33;
-  margin-right: 0.5rem;
-  font-size: 0.875rem;
-}
-
-.c6 {
-  margin-right: 0.5rem;
-  margin-top: 0.5rem;
-  font-size: 0.75rem;
-  color: #B2121F;
 }
 
 <form>
@@ -215,13 +261,13 @@ exports[`Form with one invalid child and a submit button 1`] = `
       label1
     </label>
     <div
-      className="c2 c3"
+      className="c0"
     >
       <div
-        className=""
+        className="c2"
       >
         <input
-          className="c4"
+          className="c3"
           name="name1"
           type="text"
         />
@@ -237,30 +283,26 @@ exports[`Form with one invalid child and a submit button 1`] = `
       label2
     </label>
     <div
-      className="c2 c3"
+      className="c0"
     >
       <div
-        className=""
+        className="c2"
       >
         <input
-          className="c5"
+          className="c4"
           name="name2"
           type="text"
         />
       </div>
       <div
-        className=""
+        className="c5"
       >
-        <div
-          className="c6"
-        >
-          e2
-        </div>
+        e2
       </div>
     </div>
   </div>
   <button
-    className="c7"
+    className="c6 c7"
   >
     Submit
   </button>
@@ -268,61 +310,80 @@ exports[`Form with one invalid child and a submit button 1`] = `
 `;
 
 exports[`Form with two invalid children 1`] = `
-.c4 {
-  border: solid 1px #C1C6CC;
-  height: 28px;
-  padding: 0 0.5rem;
-  border-radius: 4px;
-  font-size: 0.875rem;
-  background-color: #FFF2F4;
-}
-
-.c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c2 {
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
 .c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin-bottom: 0.5rem;
-  -webkit-align-items: normal;
-  -webkit-box-align: normal;
-  -ms-flex-align: normal;
-  align-items: normal;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-.c1 {
   border: 0;
+  box-sizing: border-box;
   font: inherit;
   font-size: 100%;
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  font-weight: 600;
-  color: #262D33;
-  margin-right: 0.5rem;
-  font-size: 0.875rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-bottom: 0.5rem;
 }
 
-.c5 {
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #262D33;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border: solid 1px;
+  border-color: #C1C6CC;
+  border-radius: 4px;
+  background-color: #FFF2F4;
+  font-size: 0.875rem;
+  height: 28px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+}
+
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #990F14;
+  font-size: 0.75rem;
   margin-right: 0.5rem;
   margin-top: 0.5rem;
-  font-size: 0.75rem;
-  color: #B2121F;
 }
 
 <form>
@@ -335,25 +396,21 @@ exports[`Form with two invalid children 1`] = `
       label1
     </label>
     <div
-      className="c2 c3"
+      className="c0"
     >
       <div
-        className=""
+        className="c2"
       >
         <input
-          className="c4"
+          className="c3"
           name="name1"
           type="text"
         />
       </div>
       <div
-        className=""
+        className="c4"
       >
-        <div
-          className="c5"
-        >
-          e1
-        </div>
+        e1
       </div>
     </div>
   </div>
@@ -366,25 +423,21 @@ exports[`Form with two invalid children 1`] = `
       label2
     </label>
     <div
-      className="c2 c3"
+      className="c0"
     >
       <div
-        className=""
+        className="c2"
       >
         <input
-          className="c4"
+          className="c3"
           name="name2"
           type="text"
         />
       </div>
       <div
-        className=""
+        className="c4"
       >
-        <div
-          className="c5"
-        >
-          e2
-        </div>
+        e2
       </div>
     </div>
   </div>

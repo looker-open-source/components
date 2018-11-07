@@ -32,8 +32,4 @@ export interface InputProps {
    * Specifies the type of validation -- error, warning, etc.
    */
   validationType?: ValidationType
-  /**
-   * Optional function to be triggered when a user makes a change in the input.
-   */
-  onChange?: React.ChangeEventHandler<HTMLInputElement>
 }
