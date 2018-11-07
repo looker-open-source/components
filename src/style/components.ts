@@ -19,6 +19,10 @@ export interface Components {
   }
   InputText: {
     borderRadius: ResponsiveBorderRadiusValue
+    fontSize: ResponsiveFontSizeValue
+    height: string
+    py: SpacingSizes
+    px: SpacingSizes
   }
   Label: {
     color: string
@@ -63,6 +67,10 @@ export const components: Components = {
   },
   InputText: {
     borderRadius: '4px',
+    fontSize: '5',
+    height: '28px',
+    px: 'small',
+    py: 'none',
   },
   Label: {
     color: palette.charcoal800,

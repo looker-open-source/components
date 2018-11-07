@@ -1,5 +1,6 @@
 import { rem } from 'polished'
 import { InterpolationValue } from 'styled-components'
+import { ResponsiveValue, SpaceProps } from 'styled-system'
 import {
   SizeLarge,
   SizeMedium,
@@ -37,6 +38,10 @@ export type SpacingSizes =
   | SizeXLarge
   | SizeXXLarge
   | SizeXXXLarge
+
+export type ResponsiveSpacingSize = ResponsiveValue<SpacingSizes> | 'auto'
+
+export type LensSpaceProps = { [P in keyof SpaceProps]: ResponsiveSpacingSize }
 
 export interface Theme {
   breakpoints: string[]

@@ -63,11 +63,9 @@ import {
   OverflowProps,
   position,
   PositionProps,
-  ResponsiveValue,
   right,
   RightProps,
   space,
-  SpaceProps,
   textAlign,
   TextAlignProps,
   top,
@@ -77,14 +75,10 @@ import {
   zIndex,
   ZIndexProps,
 } from 'styled-system'
-import { reset, SpacingSizes, styled } from '../../style'
+import { LensSpaceProps, reset, styled } from '../../style'
 import { Omit } from '../../types'
 
 const Tag = tag
-
-export type ResponsiveSpacingSize = ResponsiveValue<SpacingSizes> | 'auto'
-
-export type LensSpaceProps = { [P in keyof SpaceProps]: ResponsiveSpacingSize }
 
 export interface BoxFlexProps
   extends AlignContentProps,
