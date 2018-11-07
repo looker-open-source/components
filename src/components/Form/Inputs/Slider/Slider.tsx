@@ -1,8 +1,8 @@
-import tag from 'clean-tag'
 import * as React from 'react'
+import { Box, BoxProps } from '../../../Box'
 import { InputProps } from '../InputProps'
 
-export interface SliderProps extends InputProps {
+export interface SliderProps extends InputProps, BoxProps<HTMLInputElement> {
   /**
    * Minimum value for Slider.
    */
@@ -25,5 +25,5 @@ export const Slider: React.SFC<SliderProps> = ({
   validationType,
   ...props
 }) => {
-  return <tag.input type="range" {...props} />
+  return <Box is="input" type="range" {...props} />
 }
