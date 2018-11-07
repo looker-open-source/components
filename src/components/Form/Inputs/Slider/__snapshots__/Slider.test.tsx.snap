@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Slider default 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+<input
+  className="c0"
+  type="range"
+/>
+`;
+
+exports[`Slider should accept disabled 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+<input
+  className="c0"
+  disabled={true}
+  type="range"
+/>
+`;
+
+exports[`Slider with aria-describedby 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+<input
+  aria-describedby="some-id"
+  className="c0"
+  type="range"
+/>
+`;
+
+exports[`Slider with min and max 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+<input
+  className="c0"
+  max={11}
+  min={1}
+  step={0.01}
+  type="range"
+  value={11}
+/>
+`;
+
+exports[`Slider with name and id 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+<input
+  className="c0"
+  id="Slide"
+  name="Slip"
+  type="range"
+/>
+`;
