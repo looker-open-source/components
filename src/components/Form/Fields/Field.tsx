@@ -31,6 +31,10 @@ export interface FieldProps {
    */
   labelWidth?: ResponsiveSpaceValue
   /**
+   * Whether the label should be rendered as "normal" text or bold.
+   */
+  labelWeight?: 'normal' | 'bold'
+  /**
    * Whether or not the field should display a `*` denoting it is required.
    */
   required?: boolean
@@ -108,6 +112,7 @@ export const Field = (props: FieldProps & { children?: React.ReactNode }) => {
         htmlFor={props.id}
         {...handleHorizontalAlignment(props.alignLabel, props.labelWidth)}
         ml={props.alignLabel === 'right' ? 'small' : undefined}
+        weight={props.labelWeight}
       >
         {props.label}
         {props.required && <RequiredStar />}

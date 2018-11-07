@@ -1,15 +1,18 @@
 import { mount } from 'enzyme'
 import * as React from 'react'
 import { createWithTheme } from '../../../../../test/utils/create_with_theme'
+import { assertSnapshot } from '../../../../../test/utils/snapshot'
 import { theme, ThemeProvider } from '../../../../style'
 import { FieldText } from './FieldText'
 
 test('A FieldText', () => {
-  const component = createWithTheme(
-    <FieldText label="👍" name="thumbsUp" id="thumbs-up" />
+  assertSnapshot(<FieldText label="👍" name="thumbsUp" id="thumbs-up" />)
+})
+
+test('FieldText supports labelWeight', () => {
+  assertSnapshot(
+    <FieldText label="👍" name="thumbsUp" id="thumbs-up" labelWeight="normal" />
   )
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
 })
 
 test('Should accept a value', () => {

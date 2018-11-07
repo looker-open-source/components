@@ -1,9 +1,15 @@
 import * as React from 'react'
-import { createWithTheme } from '../../../../test/utils/create_with_theme'
+import { assertSnapshot } from '../../../../test/utils/snapshot'
 import { Label } from './Label'
 
 test('A Label', () => {
-  const component = createWithTheme(<Label htmlFor="party">🎉</Label>)
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
+  assertSnapshot(<Label htmlFor="party">🎉</Label>)
+})
+
+test('Label supports weight', () => {
+  assertSnapshot(
+    <Label htmlFor="party" weight="normal">
+      test
+    </Label>
+  )
 })
