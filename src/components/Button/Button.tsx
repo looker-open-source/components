@@ -1,7 +1,7 @@
 import { rem, rgba } from 'polished'
 import * as React from 'react'
 import { merge, mixed } from 'styled-system'
-import { SemanticColor, SemanticColors, styled } from '../../style'
+import { SemanticColor, SemanticColors, styled, Theme } from '../../style'
 import {
   SizeLarge,
   SizeMedium,
@@ -37,16 +37,17 @@ export interface ButtonProps
    * @default "medium"
    */
   size?: ButtonSizes
-  /**
-   * Defines the variant or mapping of colors to style properties, like border of the button.
-   * @default "default"
-   */
-  variant?: 'default' | 'outline' | 'transparent'
+  theme?: Theme
   /**
    * The type of button to define
    * @default "button"
    */
   type?: 'submit' | 'reset' | 'button' | 'menu'
+  /**
+   * Defines the variant or mapping of colors to style properties, like border of the button.
+   * @default "default"
+   */
+  variant?: 'default' | 'outline' | 'transparent'
 }
 
 const variantCommonProps = (color: SemanticColor) => {
@@ -190,7 +191,9 @@ function sizeHelper(props: ThemedProps<ButtonProps>) {
 const InternalButton: React.SFC<ButtonProps> = ({ color, ...props }) => (
   <Box
     is="button"
-    borderRadius="medium"
+    borderRadius={
+      (props.theme && props.theme.components.Button.borderRadius) || 'medium'
+    }
     fontFamily="brand"
     py="none"
     {...props}

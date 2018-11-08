@@ -10,99 +10,79 @@ const noop = () => {
 }
 
 test('Button default', () => {
-  const component = createWithTheme(<Button theme={theme}>🥑</Button>)
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
+  assertSnapshot(<Button theme={theme}>🥑</Button>)
 })
 
 test('Button variant outline', () => {
-  const component = createWithTheme(
+  assertSnapshot(
     <Button theme={theme} variant="outline">
       🥑
     </Button>
   )
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
 })
 
 test('Button variant transparent', () => {
-  const component = createWithTheme(
+  assertSnapshot(
     <Button theme={theme} variant="transparent">
       🥑
     </Button>
   )
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
 })
 
 test('Button type submit', () => {
-  const component = createWithTheme(
+  assertSnapshot(
     <Button theme={theme} type="submit">
       🥑
     </Button>
   )
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
 })
 
 test('Button type reset', () => {
-  const component = createWithTheme(
+  assertSnapshot(
     <Button theme={theme} type="reset">
       🥑
     </Button>
   )
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
 })
 
 test('Button type button', () => {
-  const component = createWithTheme(
+  assertSnapshot(
     <Button theme={theme} type="button">
       🥑
     </Button>
   )
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
 })
 
 test('Button type menu', () => {
-  const component = createWithTheme(
+  assertSnapshot(
     <Button theme={theme} type="menu">
       🥑
     </Button>
   )
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
 })
 
 test('Button primary color', () => {
-  const component = createWithTheme(
+  assertSnapshot(
     <Button theme={theme} color="primary">
       🥑
     </Button>
   )
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
 })
 
 test('Button danger color', () => {
-  const component = createWithTheme(
+  assertSnapshot(
     <Button theme={theme} color="danger">
       🥑
     </Button>
   )
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
 })
 
 test('Button should accept disabled', () => {
-  const component = createWithTheme(
+  assertSnapshot(
     <Button theme={theme} disabled>
       🥑
     </Button>
   )
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
 })
 
 test('Button accepts a SemanticColor object for the color property', () => {
@@ -118,13 +98,11 @@ test('Button accepts a SemanticColor object for the color property', () => {
     text: 'White',
   }
 
-  const component = createWithTheme(
+  assertSnapshot(
     <Button theme={theme} color={punkRockColor}>
       🥑
     </Button>
   )
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
 })
 
 test('Button accepts a className prop', () => {
@@ -136,8 +114,7 @@ test('Button accepts a className prop', () => {
 test('Button validates all sizes', () => {
   const sizes: ButtonSizes[] = ['xsmall', 'small', 'medium', 'large']
   sizes.forEach(size => {
-    const component = createWithTheme(<Button size={size}>Test</Button>)
-    expect(component.toJSON()).toMatchSnapshot()
+    assertSnapshot(<Button size={size}>Test</Button>)
   })
 })
 
