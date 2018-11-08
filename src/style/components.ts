@@ -13,6 +13,9 @@ import { radii } from './radii'
 import { SpacingSizes } from './theme'
 
 export interface Components {
+  Button: {
+    borderRadius: ResponsiveBorderRadiusValue
+  }
   Field: {
     labelMargin: SpacingSizes
     labelWidth: ResponsiveSpaceValue
@@ -61,6 +64,9 @@ export interface Components {
 }
 
 export const components: Components = {
+  Button: {
+    borderRadius: 'medium',
+  },
   Field: {
     labelMargin: 'small',
     labelWidth: '20%',
