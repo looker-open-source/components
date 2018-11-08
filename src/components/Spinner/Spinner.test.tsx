@@ -3,10 +3,6 @@ import * as React from 'react'
 import { assertSnapshot } from '../../../test/utils/snapshot'
 import { Spinner } from './Spinner'
 
-const noop = () => {
-  return
-}
-
 describe('Spinner', () => {
   test('A default spinner', () => {
     assertSnapshot(<Spinner />)
