@@ -1,5 +1,5 @@
+import { mappableArray } from '../../../javascript/utilities'
 import { isValidColor } from './color_utils'
-import { mappableArray } from './color_wheel_utils'
 
 describe('color_utils', () => {
   const testColor = (pred: boolean) => (color: string) => {

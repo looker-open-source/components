@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { mappableArray } from '../../javascript/utilities'
 import { keyframes, styled } from '../../style'
 import { Box, BoxPropsWithout } from '../Box'
 import { SpinnerMarker } from './SpinnerMarker'
@@ -6,60 +7,43 @@ import { SpinnerMarker } from './SpinnerMarker'
 export interface SpinnerProps
   extends BoxPropsWithout<HTMLDivElement, 'color' | 'size'> {
   markers?: number
+  markerRadius?: number
   speed?: number
   size?: number
   color?: string
 }
 
-class InternalSpinner extends React.Component<SpinnerProps> {
-  public static defaultProps: SpinnerProps = {
-    color: '#000',
-    markers: 13,
-    size: 40,
-    speed: 1000,
-  }
+const InternalSpinner: React.SFC<SpinnerProps> = ({
+  color = '#000',
+  markers = 13,
+  markerRadius = 10,
+  size = 40,
+  speed = 1000,
+  ...props
+}) => (
+  <Box width={size} height={size} position="relative" {...props}>
+    {generateMarkers(color, markers, markerRadius, size, speed)}
+  </Box>
+)
 
-  constructor(props: SpinnerProps) {
-    super(props)
-  }
-
-  public render() {
-    return (
-      <Box
-        width={this.props.size}
-        height={this.props.size}
-        position="relative"
-        {...this.props}
-      >
-        {this.generateMArkers()}
-      </Box>
-    )
-  }
-
-  private generateMArkers = () => {
-    const markers = []
-    const angle = 360 / this.props.markers!
-    let rotate = 0
-    const delayInterval = this.props.speed! / 1000 / this.props.markers!
-
-    for (let i = 0; i < this.props.markers!; i++) {
-      markers.push(
-        <SpinnerMarker
-          color={this.props.color}
-          radius={3}
-          key={i}
-          rotateAngle={rotate}
-          circleSize={this.props.size!}
-          speed={this.props.speed!}
-          delay={delayInterval * i}
-        />
-      )
-
-      rotate = rotate + angle
-    }
-
-    return markers
-  }
+function generateMarkers(
+  color: string,
+  markers: number,
+  markerRadius: number,
+  size: number,
+  speed: number
+) {
+  return mappableArray(markers).map((_, i) => (
+    <SpinnerMarker
+      circleSize={size}
+      color={color}
+      delay={(i * speed) / markers}
+      key={i}
+      radius={markerRadius}
+      rotateAngle={(360 / markers) * i}
+      speed={speed!}
+    />
+  ))
 }
 
 const fade = keyframes`

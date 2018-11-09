@@ -3,12 +3,13 @@ import {
   generateColorWheel,
   hsv2cartesian,
   hsv2polar,
-  mappableArray,
   PolarBrightness,
   polarbrightness2hsv,
   scalePBRadius,
   white,
 } from './color_wheel_utils'
+
+import { mappableArray } from '../../../javascript/utilities'
 
 describe('color_wheel_utils', () => {
   describe('white', () => {

@@ -12,6 +12,10 @@ describe('Spinner', () => {
     assertSnapshot(<Spinner markers={20} />)
   })
 
+  test('Spinner makers radius can be adjusted', () => {
+    assertSnapshot(<Spinner markerRadius={30} />)
+  })
+
   test('Spinner speed can be set', () => {
     assertSnapshot(<Spinner speed={2000} />)
   })

@@ -20,14 +20,12 @@ const InternalMarker: React.SFC<SpinnerMarkerProps> = ({
   delay,
   speed,
   ...props
-}) => {
-  return <Box bg={color} borderRadius={radius} {...props} />
-}
+}) => <Box bg={color} borderRadius={radius} {...props} />
 
 function markerTransform(props: SpinnerMarkerProps) {
   return css`
     transform: rotate(${props.rotateAngle}deg) translate(0, -160%);
-    animation-delay: ${props.delay}s;
+    animation-delay: ${props.delay}ms;
   `
 }
 

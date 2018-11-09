@@ -10,6 +10,8 @@ import {
   translateDiagonal,
 } from './math_utils'
 
+import { mappableArray } from '../../../javascript/utilities'
+
 export interface HueSaturation {
   h: number
   s: number
@@ -28,8 +30,6 @@ export const white = (): PolarBrightness => ({
   brightness: 1,
   coord: { angle: 0, radius: 0 },
 })
-
-export const mappableArray = (size: number) => Array(size).fill(0)
 
 export const hsv2polar = (color: SimpleHSV): PolarCoordinate => ({
   angle: deg2rad(color.h),
