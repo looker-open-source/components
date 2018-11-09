@@ -1,3 +1,4 @@
 ```js
-  <Spinner size={40} />
+  <Spinner/>
+  <Spinner size={80}  markers={20} color="green" speed={2000} />
 ```

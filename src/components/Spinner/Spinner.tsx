@@ -15,7 +15,7 @@ class InternalSpinner extends React.Component<SpinnerProps> {
   public static defaultProps: SpinnerProps = {
     color: '#000',
     markers: 13,
-    size: 20,
+    size: 40,
     speed: 1000,
   }
 
