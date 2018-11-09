@@ -1,7 +1,7 @@
 import { rem, rgba } from 'polished'
 import * as React from 'react'
 import { merge, mixed } from 'styled-system'
-import { SemanticColor, SemanticColors, styled, Theme } from '../../style'
+import { SemanticColor, SemanticColors, styled, withTheme } from '../../style'
 import {
   SizeLarge,
   SizeMedium,
@@ -37,7 +37,6 @@ export interface ButtonProps
    * @default "medium"
    */
   size?: ButtonSizes
-  theme?: Theme
   /**
    * The type of button to define
    * @default "button"
@@ -188,21 +187,24 @@ function sizeHelper(props: ThemedProps<ButtonProps>) {
 
 // color is extracted here to ensure it is not passed to Box, creating a type
 // error with the DOM's own color attribute.
-const InternalButton: React.SFC<ButtonProps> = ({ color, ...props }) => (
-  <Box
-    is="button"
-    borderRadius={
-      (props.theme && props.theme.components.Button.borderRadius) || 'medium'
-    }
-    fontFamily="brand"
-    py="none"
-    {...props}
-  >
-    {props.children}
-  </Box>
-)
+const InternalButton: React.SFC<ThemedProps<ButtonProps>> = ({
+  color,
+  ...props
+}) => {
+  return (
+    <Box
+      is="button"
+      borderRadius={props.theme.components.Button.borderRadius}
+      fontFamily="brand"
+      py="none"
+      {...props}
+    >
+      {props.children}
+    </Box>
+  )
+}
 
-export const Button = styled<ButtonProps>(InternalButton)`
+export const Button = styled<ButtonProps>(withTheme(InternalButton))`
   cursor: pointer;
   font-weight: 600;
   outline: none;
