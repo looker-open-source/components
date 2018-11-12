@@ -1,6 +1,8 @@
 import { rem, rgba } from 'polished'
 import * as React from 'react'
 import { merge, mixed } from 'styled-system'
+import { Icon } from '../../icons/components/Icon'
+import { ICON_NAMES } from '../../icons/components/ICON_NAMES'
 import { SemanticColor, SemanticColors, styled, withTheme } from '../../style'
 import {
   SizeLarge,
@@ -47,6 +49,8 @@ export interface ButtonProps
    * @default "default"
    */
   variant?: 'default' | 'outline' | 'transparent'
+  iconBefore?: ICON_NAMES | undefined
+  iconAfter?: ICON_NAMES | undefined
 }
 
 const variantCommonProps = (color: SemanticColor) => {
@@ -185,10 +189,16 @@ function sizeHelper(props: ThemedProps<ButtonProps>) {
   })
 }
 
+function getIcon(iconName: ICON_NAMES | undefined) {
+  return iconName ? <Icon name={iconName} /> : null
+}
+
 // color is extracted here to ensure it is not passed to Box, creating a type
 // error with the DOM's own color attribute.
 const InternalButton: React.SFC<ThemedProps<ButtonProps>> = ({
   color,
+  iconBefore,
+  iconAfter,
   ...props
 }) => {
   return (
@@ -199,7 +209,9 @@ const InternalButton: React.SFC<ThemedProps<ButtonProps>> = ({
       py="none"
       {...props}
     >
+      {getIcon(iconBefore)}
       {props.children}
+      {getIcon(iconAfter)}
     </Box>
   )
 }

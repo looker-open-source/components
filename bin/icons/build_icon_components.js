@@ -42,9 +42,7 @@ function styleguidistIconMarkdown(componentName) {
 
 function styleguidistAllIconsMarkdown(componentNames) {
   const componentIconTags = componentNames
-    .map(
-      name => `<${componentBaseNameToIconName(name)} width="40" height="40" />`
-    )
+    .map(name => `<Icon name="${name}" size={32} />`)
     .join('\n')
   return `# All Icons
 
@@ -52,6 +50,58 @@ function styleguidistAllIconsMarkdown(componentNames) {
 ${componentIconTags}
 \`\`\`
 `
+}
+
+function allIconFile(componentNames) {
+  return `import * as React from 'react'
+  import * as AllIcons from '.'
+  import { Box} from '../../components/Box'
+  import { styled } from '../../style'
+  import { ICON_NAMES } from './ICON_NAMES'
+
+
+
+  export interface IconProps  {
+    name: ICON_NAMES
+    size?: number | string,
+    color?: string
+  }
+
+  const getIcon = (iconName:string) => {
+
+    switch(iconName) {
+      ${componentNames
+        .map(name => {
+          return `case '${name}': {
+          return <AllIcons.Icon${name} width="auto" height="auto" />
+        }`
+        })
+        .join('\n')}
+
+      default: {
+        return 'no icon with that name'
+      }
+    }
+  }
+
+  const InternalIcon: React.SFC<IconProps> = ({ name, color, size = "1em", ...props }) => (
+    <Box
+      color={color}
+      width={size}
+      height={size}
+      alignItems="center"
+      {...props}
+    >
+      {getIcon(name)}
+    </Box>
+  )
+
+  export const Icon = styled<IconProps>(InternalIcon)\`
+    display: inline-flex;
+    svg {
+      fill: currentColor;
+    }
+  \``
 }
 
 function exportIconFiles(componentNames) {
@@ -108,6 +158,39 @@ async function generateTypescriptInterfaces() {
       )
       return await writeFile(declarationFilename, typescriptDeclaration)
     })
+  )
+}
+
+function iconNameFile(icons) {
+  const iconNames = icons
+    .map(i => {
+      return `'${i}'`
+    })
+    .join('|')
+
+  return `export type ICON_NAMES = ${iconNames}`
+}
+
+async function generateIconNameFile() {
+  const basenames = await getBasenames(
+    iconFileHelpers.ICON_GLYPH_PATH,
+    iconFileHelpers.ICON_GLYPH_EXTENSION
+  )
+  await writeFile(
+    path.join(iconFileHelpers.ICON_COMPONENTS_PATH, 'ICON_NAMES.ts'),
+    iconNameFile(basenames)
+  )
+  return basenames
+}
+
+async function generateAllIconFile() {
+  const basenames = await getBasenames(
+    iconFileHelpers.ICON_GLYPH_PATH,
+    iconFileHelpers.ICON_GLYPH_EXTENSION
+  )
+  return await writeFile(
+    path.join(iconFileHelpers.ICON_COMPONENTS_PATH, 'Icon.tsx'),
+    allIconFile(basenames)
   )
 }
 
@@ -176,6 +259,8 @@ async function run() {
   await generateTypescriptInterfaces()
   spinner.color = 'blue'
   spinner.text = 'Generating Typescript Components...'
+  await generateIconNameFile()
+  await generateAllIconFile()
   await generateLensTypescriptIconComponents()
   spinner.color = 'white'
   spinner.text = 'Updating checksum...'
