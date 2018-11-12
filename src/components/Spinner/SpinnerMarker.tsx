@@ -22,7 +22,7 @@ const InternalMarker: React.SFC<SpinnerMarkerProps> = ({
   ...props
 }) => <Box bg={color} borderRadius={radius} {...props} />
 
-function markerTransform(props: SpinnerMarkerProps) {
+const markerTransform = (props: SpinnerMarkerProps) => {
   return css`
     transform: rotate(${props.rotateAngle}deg) translate(0, -160%);
     animation-delay: ${props.delay}ms;

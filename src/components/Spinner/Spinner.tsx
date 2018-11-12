@@ -26,13 +26,13 @@ const InternalSpinner: React.SFC<SpinnerProps> = ({
   </Box>
 )
 
-function generateMarkers(
+const generateMarkers = (
   color: string,
   markers: number,
   markerRadius: number,
   size: number,
   speed: number
-) {
+) => {
   return mappableArray(markers).map((_, i) => (
     <SpinnerMarker
       circleSize={size}
