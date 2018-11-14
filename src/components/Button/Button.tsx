@@ -3,7 +3,13 @@ import * as React from 'react'
 import { merge, mixed } from 'styled-system'
 import { Icon } from '../../icons/components/Icon'
 import { ICON_NAMES } from '../../icons/components/ICON_NAMES'
-import { SemanticColor, SemanticColors, styled, withTheme } from '../../style'
+import {
+  css,
+  SemanticColor,
+  SemanticColors,
+  styled,
+  withTheme,
+} from '../../style'
 import {
   SizeLarge,
   SizeMedium,
@@ -189,6 +195,35 @@ function sizeHelper(props: ThemedProps<ButtonProps>) {
   })
 }
 
+function iconMargins(props: ThemedProps<ButtonProps>) {
+  const spacing = { large: 0, small: 0 }
+  switch (props.size) {
+    case 'xsmall':
+      spacing.small = 2
+      spacing.large = 4
+      break
+    case 'small':
+    case 'large':
+    default:
+      spacing.small = 4
+      spacing.large = 8
+  }
+
+  if (props.iconBefore) {
+    return css`
+      margin-left: -${spacing.small}px;
+      margin-right: ${spacing.large}px;
+    `
+  } else if (props.iconAfter) {
+    return css`
+      margin-left: ${spacing.large}px;
+      margin-right: -${spacing.small}px;
+    `
+  } else {
+    return false
+  }
+}
+
 function getIcon(iconName: ICON_NAMES | undefined) {
   return iconName ? <Icon name={iconName} /> : null
 }
@@ -217,6 +252,8 @@ const InternalButton: React.SFC<ThemedProps<ButtonProps>> = ({
 }
 
 export const Button = styled<ButtonProps>(withTheme(InternalButton))`
+  display: inline-flex;
+  align-items: center;
   cursor: pointer;
   font-weight: 600;
   outline: none;
@@ -228,4 +265,8 @@ export const Button = styled<ButtonProps>(withTheme(InternalButton))`
   white-space: nowrap;
   ${sizeHelper};
   ${variantHelper};
+
+  ${Icon} {
+    ${iconMargins};
+  }
 `
