@@ -10,7 +10,7 @@ import {
   translateDiagonal,
 } from './math_utils'
 
-import { mappableArray } from '../../../javascript/utilities'
+import { sizedArray } from '../../../utils/array'
 
 export interface HueSaturation {
   h: number
@@ -76,8 +76,8 @@ export const generateColorWheel = (
   radius: number,
   brightness: number
 ): SimpleHSV[][] =>
-  mappableArray(diameter(radius)).map((_, x) =>
-    mappableArray(diameter(radius)).map((_$, y) =>
+  sizedArray(diameter(radius)).map((_, x) =>
+    sizedArray(diameter(radius)).map((_$, y) =>
       cartesian2hsv(brightness, radius, { x, y })
     )
   )

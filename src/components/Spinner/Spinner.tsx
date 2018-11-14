@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { mappableArray } from '../../javascript/utilities'
 import { keyframes, styled } from '../../style'
+import { sizedArray } from '../../utils/array'
 import { Box, BoxPropsWithout } from '../Box'
 import { SpinnerMarker } from './SpinnerMarker'
 
@@ -33,7 +33,7 @@ const generateMarkers = (
   size: number,
   speed: number
 ) => {
-  return mappableArray(markers).map((_, i) => (
+  return sizedArray(markers).map((_, i) => (
     <SpinnerMarker
       circleSize={size}
       color={color}
