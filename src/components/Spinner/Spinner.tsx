@@ -1,5 +1,6 @@
 import * as React from 'react'
-import { keyframes, styled } from '../../style'
+import { styled } from '../../style'
+import { quarterFade } from '../../style/animations'
 import { sizedArray } from '../../utils/array'
 import { Box, BoxPropsWithout } from '../Box'
 import { SpinnerMarker } from './SpinnerMarker'
@@ -46,14 +47,9 @@ const generateMarkers = (
   ))
 }
 
-const fade = keyframes`
-  from {opacity: 1;}
-  to {opacity: 0.25;}
-`
-
 export const Spinner = styled<SpinnerProps>(InternalSpinner)`
   ${SpinnerMarker} {
-    animation-name: ${fade};
+    animation-name: ${quarterFade};
     animation-iteration-count: infinite;
     animation-timing-function: linear;
   }
