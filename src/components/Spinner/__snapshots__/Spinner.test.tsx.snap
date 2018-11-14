@@ -9,9 +9,9 @@ exports[`Spinner A default spinner 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  height: 40px;
+  height: 30px;
   position: relative;
-  width: 40px;
+  width: 30px;
 }
 
 .c4 {
@@ -585,9 +585,9 @@ exports[`Spinner Spinner can change markger color 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  height: 40px;
+  height: 30px;
   position: relative;
-  width: 40px;
+  width: 30px;
 }
 
 .c4 {
@@ -873,9 +873,9 @@ exports[`Spinner Spinner can have n number of markers 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  height: 40px;
+  height: 30px;
   position: relative;
-  width: 40px;
+  width: 30px;
 }
 
 .c4 {
@@ -1294,9 +1294,9 @@ exports[`Spinner Spinner makers radius can be adjusted 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  height: 40px;
+  height: 30px;
   position: relative;
-  width: 40px;
+  width: 30px;
 }
 
 .c4 {
@@ -1582,9 +1582,9 @@ exports[`Spinner Spinner speed can be set 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  height: 40px;
+  height: 30px;
   position: relative;
-  width: 40px;
+  width: 30px;
 }
 
 .c4 {
