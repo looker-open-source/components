@@ -18,7 +18,7 @@ const InternalSpinner: React.SFC<SpinnerProps> = ({
   color = '#000',
   markers = 13,
   markerRadius = 10,
-  size = 40,
+  size = 30,
   speed = 1000,
   ...props
 }) => (
