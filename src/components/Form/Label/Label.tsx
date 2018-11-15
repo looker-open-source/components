@@ -19,5 +19,4 @@ const InternalLabel: React.SFC<LabelProps> = ({ ...props }) => (
     {props.children}
   </Box>
 )
-
 export const Label = withTheme(InternalLabel)

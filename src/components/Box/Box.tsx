@@ -8,11 +8,19 @@ import {
   alignSelf,
   AlignSelfProps,
   border,
+  borderBottom,
+  BorderBottomProps,
   borderColor,
   BorderColorProps,
+  borderLeft,
+  BorderLeftProps,
   BorderProps,
   borderRadius,
   BorderRadiusProps,
+  borderRight,
+  BorderRightProps,
+  borderTop,
+  BorderTopProps,
   bottom,
   BottomProps,
   boxShadow,
@@ -104,6 +112,10 @@ export interface BoxBaseProps<T>
     BorderColorProps,
     BorderProps,
     BorderRadiusProps,
+    BorderRightProps,
+    BorderLeftProps,
+    BorderBottomProps,
+    BorderTopProps,
     BottomProps,
     BoxShadowProps,
     ColorProps,
@@ -151,6 +163,10 @@ export const Box = styled<BoxProps<HTMLElement>>(Tag)`
   ${border};
   ${borderColor};
   ${borderRadius};
+  ${borderRight};
+  ${borderLeft};
+  ${borderBottom};
+  ${borderTop};
   ${bottom};
   ${boxShadow};
   ${color};

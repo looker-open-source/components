@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Default Swatch 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border: 1px solid;
+  border-color: #C1C6CC;
+  border-radius: 4px;
+  background-color: white;
+  height: 28px;
+  width: 28px;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Swatch with hex value passed 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border: 1px solid;
+  border-color: #C1C6CC;
+  border-radius: 4px;
+  background-color: #4c6670;
+  height: 28px;
+  width: 28px;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Swatch with width and height set 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border: 1px solid;
+  border-color: #C1C6CC;
+  border-radius: 4px;
+  background-color: blue;
+  height: 25px;
+  width: 50px;
+}
+
+<div
+  className="c0"
+/>
+`;
