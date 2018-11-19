@@ -115,6 +115,14 @@ Use a disabled button to indicate to the user what action will be possible on a 
 <Button disabled>I am disabled</Button>
 ```
 
+### Buttons with an Icon
+
+Buttons can have an icon before or after their content, using the `iconBefore` and `iconAfter` property. Each property accepts the [name of an icon](/#!/Icons)
+```js
+<Button iconBefore="AddCircle" mr="large">Add To Cart</Button>
+<Button iconAfter="Trash" color="danger">Delete</Button>
+```
+
 ### Additional Action Considerations
 
 When a call to action requires additional steps, include an ellipsis at the end of the button text as a visual clue. This helps reinforce that there are additional steps that can take place before the action takes effect.

@@ -1,11 +1,10 @@
 import * as React from 'react'
 import * as AllIcons from '.'
-import { Box, BoxPropsWithout } from '../../components/Box'
+import { Box } from '../../components/Box'
 import { styled } from '../../style'
 import { ICON_NAMES } from './ICON_NAMES'
 
-export interface IconProps
-  extends BoxPropsWithout<HTMLDivElement, 'size' | 'color'> {
+export interface IconProps {
   name: ICON_NAMES
   size?: number | string
   color?: string
