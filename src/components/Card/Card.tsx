@@ -1,26 +1,39 @@
-import { styled } from '../../style'
+import * as React from 'react'
+import { styled, withTheme } from '../../style'
+import { ThemedProps } from '../../types'
+import { Box, BoxProps } from '../Box'
 
-export interface CardProps {
+export interface CardProps extends BoxProps<HTMLDivElement> {
   raised?: boolean
 }
 
-export const Card = styled.div<CardProps>`
-  background: #fff;
-  border-radius: 4px;
+const InternalCard: React.SFC<ThemedProps<CardProps>> = ({
+  raised,
+  ...props
+}) => (
+  <Box
+    bg="palette.white"
+    borderRadius={props.theme.radii.medium}
+    border={`solid 1px ${
+      props.theme.colors.semanticColors.primary.borderColor
+    }`}
+    display="flex"
+    flexDirection="column"
+    height="100%"
+    min-width="200px"
+    overflow="hidden"
+    {...props}
+  >
+    {props.children}
+  </Box>
+)
+
+export const Card = styled<CardProps>(withTheme(InternalCard))`
   box-shadow: ${props => (props.raised ? props.theme.shadows[1] : 'none')};
-  border: solid 1px
-    ${props => props.theme.colors.semanticColors.primary.borderColor};
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  min-width: 200px;
-  overflow: hidden;
-  /* stylelint-disable */
   transition: border ${props => props.theme.transitions.durationQuick}
       ${props => props.theme.easings.ease},
     box-shadow ${props => props.theme.transitions.durationQuick}
       ${props => props.theme.easings.ease};
-  /* stylelint-enable */
   &:hover {
     border-color: ${props => props.theme.colors.palette.charcoal300};
     box-shadow: ${props => (props.raised ? props.theme.shadows[2] : 'none')};
