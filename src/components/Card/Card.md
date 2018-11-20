@@ -49,8 +49,8 @@ Using the [`CardContent`](/#!/CardContent) component quickly gives your content 
 A few common patterns for `Cards` are displaying them in groups and using images to reinforce the content of the card.
 
 ```js
-<div style={{display: 'flex'}}>
-  <div style={{flex: 1, margin: '10px'}}>
+<Flex>
+  <FlexItem width="33%" mr="small">
     <Card raised>
       <CardMedia image="https://placeimg.com/640/480/nature" title="Summer Nature"></CardMedia>
       <CardContent>
@@ -61,8 +61,8 @@ A few common patterns for `Cards` are displaying them in groups and using images
         </div>
       </CardContent>
     </Card>
-  </div>
-  <div style={{flex: 1, margin: '10px'}}>
+  </FlexItem>
+  <FlexItem width="33%" mr="small">
     <Card raised>
       <CardMedia image="https://placeimg.com/630/480/nature" title="A Scenic Valley"></CardMedia>
       <CardContent>
@@ -73,8 +73,8 @@ A few common patterns for `Cards` are displaying them in groups and using images
         </div>
       </CardContent>
     </Card>
-  </div>
-  <div style={{flex: 1, margin: '10px'}}>
+  </FlexItem>
+  <FlexItem width="33%">
     <Card raised>
       <CardMedia image="https://placeimg.com/620/480/nature" title="Relaxing Views"></CardMedia>
       <CardContent>
@@ -85,7 +85,7 @@ A few common patterns for `Cards` are displaying them in groups and using images
         </div>
       </CardContent>
     </Card>
-  </div>
-</div>
+  </FlexItem>
+</Flex>
 ```
 

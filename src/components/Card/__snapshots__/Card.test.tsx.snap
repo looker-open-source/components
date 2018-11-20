@@ -1,11 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`A Card 1`] = `
-.c0 {
-  background: #fff;
-  border-radius: 4px;
-  box-shadow: none;
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   border: solid 1px #C1C6CC;
+  border-radius: 0.25rem;
+  background-color: #FFFFFF;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -14,8 +20,11 @@ exports[`A Card 1`] = `
   -ms-flex-direction: column;
   flex-direction: column;
   height: 100%;
-  min-width: 200px;
   overflow: hidden;
+}
+
+.c0 {
+  box-shadow: none;
   -webkit-transition: border 150ms cubic-bezier(0.86,0,0.07,1), box-shadow 150ms cubic-bezier(0.86,0,0.07,1);
   transition: border 150ms cubic-bezier(0.86,0,0.07,1), box-shadow 150ms cubic-bezier(0.86,0,0.07,1);
 }
@@ -26,18 +35,26 @@ exports[`A Card 1`] = `
 }
 
 <div
-  className="c0"
+  className="c0 c1"
+  min-width="200px"
+  overflow="hidden"
 >
   🥑
 </div>
 `;
 
 exports[`A raised Card 1`] = `
-.c0 {
-  background: #fff;
-  border-radius: 4px;
-  box-shadow: 0px 1px 8px rgba(0,0,0,0.08),0px 1px 1px rgba(0,0,0,0.05);
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   border: solid 1px #C1C6CC;
+  border-radius: 0.25rem;
+  background-color: #FFFFFF;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -46,8 +63,11 @@ exports[`A raised Card 1`] = `
   -ms-flex-direction: column;
   flex-direction: column;
   height: 100%;
-  min-width: 200px;
   overflow: hidden;
+}
+
+.c0 {
+  box-shadow: 0px 1px 8px rgba(0,0,0,0.08),0px 1px 1px rgba(0,0,0,0.05);
   -webkit-transition: border 150ms cubic-bezier(0.86,0,0.07,1), box-shadow 150ms cubic-bezier(0.86,0,0.07,1);
   transition: border 150ms cubic-bezier(0.86,0,0.07,1), box-shadow 150ms cubic-bezier(0.86,0,0.07,1);
 }
@@ -58,18 +78,26 @@ exports[`A raised Card 1`] = `
 }
 
 <div
-  className="c0"
+  className="c0 c1"
+  min-width="200px"
+  overflow="hidden"
 >
   🥑
 </div>
 `;
 
 exports[`A raised Card with a CardMedia block 1`] = `
-.c0 {
-  background: #fff;
-  border-radius: 4px;
-  box-shadow: 0px 1px 8px rgba(0,0,0,0.08),0px 1px 1px rgba(0,0,0,0.05);
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   border: solid 1px #C1C6CC;
+  border-radius: 0.25rem;
+  background-color: #FFFFFF;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -78,8 +106,21 @@ exports[`A raised Card with a CardMedia block 1`] = `
   -ms-flex-direction: column;
   flex-direction: column;
   height: 100%;
-  min-width: 200px;
   overflow: hidden;
+}
+
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+.c0 {
+  box-shadow: 0px 1px 8px rgba(0,0,0,0.08),0px 1px 1px rgba(0,0,0,0.05);
   -webkit-transition: border 150ms cubic-bezier(0.86,0,0.07,1), box-shadow 150ms cubic-bezier(0.86,0,0.07,1);
   transition: border 150ms cubic-bezier(0.86,0,0.07,1), box-shadow 150ms cubic-bezier(0.86,0,0.07,1);
 }
@@ -89,8 +130,7 @@ exports[`A raised Card with a CardMedia block 1`] = `
   box-shadow: 0 2px 12px rgba(0,0,0,0.11),0 1px 4px rgba(0,0,0,0.04);
 }
 
-.c1 {
-  display: block;
+.c2 {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -101,10 +141,12 @@ exports[`A raised Card with a CardMedia block 1`] = `
 }
 
 <div
-  className="c0"
+  className="c0 c1"
+  min-width="200px"
+  overflow="hidden"
 >
   <div
-    className="c1"
+    className="c2 c3"
   />
 </div>
 `;
