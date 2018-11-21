@@ -1,6 +1,9 @@
 import 'jest-styled-components'
 import * as React from 'react'
-import { mountWithTheme } from '../../../test/utils/create_with_theme'
+import {
+  createWithTheme,
+  mountWithTheme,
+} from '../../../test/utils/create_with_theme'
 import { assertSnapshot } from '../../../test/utils/snapshot'
 import { Box } from './Box'
 
@@ -128,6 +131,25 @@ describe('Box', () => {
 
     test('Box allows for ARIA attributes', () => {
       assertSnapshot(<Box aria-disabled>aria-disabled</Box>)
+    })
+  })
+
+  describe('cursor', () => {
+    test('Box assigns cursor: pointer when onClick is defined', () => {
+      const tree = createWithTheme(<Box onClick={noop} />).toJSON()
+      expect(tree).toHaveStyleRule('cursor', 'pointer')
+    })
+
+    test('Box accepts a cursor property', () => {
+      const tree = createWithTheme(<Box cursor="copy" />).toJSON()
+      expect(tree).toHaveStyleRule('cursor', 'copy')
+    })
+
+    test("Box's cursor property overrides the pointer setting from onClick", () => {
+      const tree = createWithTheme(
+        <Box onClick={noop} cursor="copy" />
+      ).toJSON()
+      expect(tree).toHaveStyleRule('cursor', 'copy')
     })
   })
 })

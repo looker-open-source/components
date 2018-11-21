@@ -205,7 +205,6 @@ const InternalButton: React.SFC<ThemedProps<ButtonProps>> = ({
 }
 
 export const Button = styled<ButtonProps>(withTheme(InternalButton))`
-  cursor: pointer;
   font-weight: 600;
   outline: none;
   transition: border 80ms;
