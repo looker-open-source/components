@@ -83,7 +83,7 @@ import {
   zIndex,
   ZIndexProps,
 } from 'styled-system'
-import { LensSpaceProps, reset, styled } from '../../style'
+import { css, LensSpaceProps, reset, styled } from '../../style'
 import { Omit } from '../../types'
 
 const Tag = tag
@@ -154,9 +154,21 @@ export interface BoxProps<T>
 export type BoxBasePropsWithout<T, Keys> = Omit<BoxBaseProps<T>, Keys>
 export type BoxPropsWithout<T, Keys> = Omit<BoxProps<T>, Keys>
 
+const cursorPointerOnClick = (props: BoxProps<HTMLElement>) =>
+  props.onClick &&
+  !props.disabled &&
+  css`
+    cursor: pointer;
+  `
+
 export const Box = styled<BoxProps<HTMLElement>>(Tag)`
+  /* Global reset applied to prevent styling on top level tags from interfering
+  with Lens styles */
   ${reset};
 
+  ${cursorPointerOnClick};
+
+  /* styled system functions */
   ${alignContent};
   ${alignItems};
   ${alignSelf};
