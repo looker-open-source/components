@@ -73,20 +73,20 @@ export const components: Components = {
   },
   InputText: {
     borderRadius: '4px',
-    fontSize: '5',
+    fontSize: 'small',
     height: '28px',
     px: 'small',
     py: 'none',
   },
   Label: {
     color: palette.charcoal800,
-    fontSize: fontSizes.xsmall,
+    fontSize: fontSizes.small,
     fontWeight: fontWeights.semiBold,
   },
   Legend: {
     bottomPadding: '10px',
     color: palette.charcoal800,
-    fontSize: fontSizes.xxlarge,
+    fontSize: fontSizes.xxxlarge,
     fontWeight: fontWeights.light,
   },
   Overlay: {

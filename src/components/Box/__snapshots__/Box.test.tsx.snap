@@ -568,7 +568,7 @@ exports[`Box fonts font helpers 5`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  line-height: m;
+  line-height: 1.5;
 }
 
 <div
