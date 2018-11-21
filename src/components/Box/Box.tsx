@@ -85,6 +85,7 @@ import {
 } from 'styled-system'
 import { css, LensSpaceProps, reset, styled } from '../../style'
 import { Omit } from '../../types'
+import { cursor, CursorProps } from './style_utilities'
 
 const Tag = tag
 
@@ -119,6 +120,7 @@ export interface BoxBaseProps<T>
     BottomProps,
     BoxShadowProps,
     ColorProps,
+    CursorProps,
     DisplayProps,
     FontFamilyProps,
     FontSizeProps,
@@ -182,6 +184,7 @@ export const Box = styled<BoxProps<HTMLElement>>(Tag)`
   ${bottom};
   ${boxShadow};
   ${color};
+  ${cursor};
   ${display};
   ${flex};
   ${flexBasis};

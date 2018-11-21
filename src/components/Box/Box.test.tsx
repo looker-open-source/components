@@ -134,10 +134,22 @@ describe('Box', () => {
     })
   })
 
-  describe('cursor: pointer on click', () => {
+  describe('cursor', () => {
     test('Box assigns cursor: pointer when onClick is defined', () => {
       const tree = createWithTheme(<Box onClick={noop} />).toJSON()
       expect(tree).toHaveStyleRule('cursor', 'pointer')
+    })
+
+    test('Box accepts a cursor property', () => {
+      const tree = createWithTheme(<Box cursor="copy" />).toJSON()
+      expect(tree).toHaveStyleRule('cursor', 'copy')
+    })
+
+    test("Box's cursor property overrides the pointer setting from onClick", () => {
+      const tree = createWithTheme(
+        <Box onClick={noop} cursor="copy" />
+      ).toJSON()
+      expect(tree).toHaveStyleRule('cursor', 'copy')
     })
   })
 })

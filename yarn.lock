@@ -2655,6 +2655,11 @@ csstype@^2.2.0:
   version "2.5.5"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/csstype/-/csstype-2.5.5.tgz#4125484a3d42189a863943f23b9e4b80fedfa106"
 
+csstype@^2.5.7:
+  version "2.5.7"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/csstype/-/csstype-2.5.7.tgz#bf9235d5872141eccfb2d16d82993c6b149179ff"
+  integrity sha512-Nt5VDyOTIIV4/nRFswoCKps1R5CD1hkiyjBE9/thNaNZILLEviVw9yWQw15+O+CpNjQKB/uvdcxFFOrSflY3Yw==
+
 currently-unhandled@^0.4.1:
   version "0.4.1"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/currently-unhandled/-/currently-unhandled-0.4.1.tgz#988df33feab191ef799a61369dd76c17adf957ea"
