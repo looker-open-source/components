@@ -164,13 +164,28 @@ const cursorPointerOnClick = (props: BoxProps<HTMLElement>) =>
   `
 
 export const Box = styled<BoxProps<HTMLElement>>(Tag)`
-  /* Global reset applied to prevent styling on top level tags from interfering
-  with Lens styles */
+  /**
+   * Global reset applied to prevent styling on top level tags outside of Lens
+   * from interfering with Lens styles.
+   *
+   * This **must** be first.
+   */
   ${reset};
 
+  /**
+   * Rules here should provide convenience styling for Box derived components.
+   * Generally anything here could be overwritten by explicit values set via
+   * Box's prop values. For example a function here that sets 'cursor: pointer'
+   * would be overwritten by an explicit <Box cursor='copy'/>.
+   */
   ${cursorPointerOnClick};
 
-  /* styled system functions */
+  /**
+   * Style Utilities that extend Box's props. Most of these come from
+   * styled-system but some are Lens specific.
+   *
+   * These should be last to override rules with lower priority.
+   */
   ${alignContent};
   ${alignItems};
   ${alignSelf};
