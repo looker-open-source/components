@@ -17,7 +17,7 @@ export interface StatusProps {
 const statusIndicator: React.SFC<StatusProps> = ({ status, ...args }) => {
   return (
     <a className="support-link" href="/#!/Support%20Levels">
-      <Text size="5" {...args}>
+      <Text size="small" {...args}>
         {status}
       </Text>
     </a>

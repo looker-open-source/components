@@ -65,8 +65,8 @@ renderSwatch = (swatchList, key) => {
   return(
     <div className="swatch-holder" key={key}>
       <div className="swatch-header" style={{background: fillColor}}>
-        <Text size="2" weight="semi-bold" style={{color:'#fff'}} >{color}</Text>
-        <Text size="4" weight="semi-bold" style={{color:'#fff'}}>500</Text>
+        <Text size="large" weight="semi-bold" style={{color:'#fff'}} >{color}</Text>
+        <Text size="medium" weight="semi-bold" style={{color:'#fff'}}>500</Text>
       </div>
       {swatchList.map((swatch, index) => (
         <Swatch key={index} contrastLevel={swatch.contrastLevel} labelColor={swatch.labelColor} hexValue={swatch.hexValue} group={swatch.group}>{swatch.label}</Swatch>

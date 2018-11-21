@@ -80,13 +80,13 @@ export const components: Components = {
   },
   Label: {
     color: palette.charcoal800,
-    fontSize: fontSizes[5],
+    fontSize: fontSizes.xsmall,
     fontWeight: fontWeights.semiBold,
   },
   Legend: {
     bottomPadding: '10px',
     color: palette.charcoal800,
-    fontSize: fontSizes.d3,
+    fontSize: fontSizes.xxlarge,
     fontWeight: fontWeights.light,
   },
   Overlay: {
@@ -131,6 +131,6 @@ export const components: Components = {
     },
   },
   ValidationMessage: {
-    fontSize: fontSizes[6],
+    fontSize: fontSizes.xsmall,
   },
 }

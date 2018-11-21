@@ -128,39 +128,39 @@ Here is a visual example of how using `justifyContent` affects the distribution 
 <div>
 
 <Flex justifyContent="flex-start" mb="medium" bg="palette.charcoal000">
-  <Box><Text size="d3">🕺</Text></Box>
-  <Box><Text size="d3">🎶</Text></Box>
-  <Box><Text size="d3">💃</Text></Box>
+  <Box><Text size="xxxxlarge">🕺</Text></Box>
+  <Box><Text size="xxxxlarge">🎶</Text></Box>
+  <Box><Text size="xxxxlarge">💃</Text></Box>
 </Flex>
 
 <Flex justifyContent="space-between"  mb="medium" bg="palette.charcoal000">
-  <Box><Text size="d3">🕺</Text></Box>
-  <Box><Text size="d3">🎶</Text></Box>
-  <Box><Text size="d3">💃</Text></Box>
+  <Box><Text size="xxxxlarge">🕺</Text></Box>
+  <Box><Text size="xxxxlarge">🎶</Text></Box>
+  <Box><Text size="xxxxlarge">💃</Text></Box>
 </Flex>
 
 <Flex justifyContent="space-around"  mb="medium" bg="palette.charcoal000">
-  <Box><Text size="d3">🕺</Text></Box>
-  <Box><Text size="d3">🎶</Text></Box>
-  <Box><Text size="d3">💃</Text></Box>
+  <Box><Text size="xxxxlarge">🕺</Text></Box>
+  <Box><Text size="xxxxlarge">🎶</Text></Box>
+  <Box><Text size="xxxxlarge">💃</Text></Box>
 </Flex>
 
 <Flex justifyContent="space-evenly"  mb="medium" bg="palette.charcoal000">
-  <Box><Text size="d3">🕺</Text></Box>
-  <Box><Text size="d3">🎶</Text></Box>
-  <Box><Text size="d3">💃</Text></Box>
+  <Box><Text size="xxxxlarge">🕺</Text></Box>
+  <Box><Text size="xxxxlarge">🎶</Text></Box>
+  <Box><Text size="xxxxlarge">💃</Text></Box>
 </Flex>
 
 <Flex justifyContent="center"  mb="medium" bg="palette.charcoal000">
-  <Box><Text size="d3">🕺</Text></Box>
-  <Box><Text size="d3">🎶</Text></Box>
-  <Box><Text size="d3">💃</Text></Box>
+  <Box><Text size="xxxxlarge">🕺</Text></Box>
+  <Box><Text size="xxxxlarge">🎶</Text></Box>
+  <Box><Text size="xxxxlarge">💃</Text></Box>
 </Flex>
 
 <Flex justifyContent="flex-end"  mb="medium" bg="palette.charcoal000">
-  <Box><Text size="d3">🕺</Text></Box>
-  <Box><Text size="d3">🎶</Text></Box>
-  <Box><Text size="d3">💃</Text></Box>
+  <Box><Text size="xxxxlarge">🕺</Text></Box>
+  <Box><Text size="xxxxlarge">🎶</Text></Box>
+  <Box><Text size="xxxxlarge">💃</Text></Box>
 </Flex>
 </div>
 ```
@@ -195,7 +195,7 @@ Flex box allows for quickly adjusting the alignment of items inside the flex con
       <TableDataCell><Text size="5">All items are aligned so their baselines align</Text></TableDataCell>
     </TableRow>
     <TableRow>
-      <TableDataCell><span class="prop-code"><Code>stretch</Code></span> <Span size="6">(default)</Span></TableDataCell>
+      <TableDataCell><span class="prop-code"><Code>stretch</Code></span> <Span size="xsmall">(default)</Span></TableDataCell>
       <TableDataCell><Text size="5">Items strechted to fit the container</Text></TableDataCell>
     </TableRow>
   </TableBody>
@@ -275,7 +275,7 @@ If you have multiple rows of flex items, the `alignContent` property determines 
       <TableDataCell><Text size="5">Lines evenly distributed. Even space around each line</Text></TableDataCell>
     </TableRow>
     <TableRow>
-      <TableDataCell><span class="prop-code"><Code>stretch</Code></span> <Span size="6">(default)</Span></TableDataCell>
+      <TableDataCell><span class="prop-code"><Code>stretch</Code></span> <Span size="xsmall">(default)</Span></TableDataCell>
       <TableDataCell><Text size="5">Items strechted to fit the container</Text></TableDataCell>
     </TableRow>
   </TableBody>

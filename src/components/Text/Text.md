@@ -27,9 +27,9 @@ By default the `<Text />` component will render text wrapped in a `<div>`,  if y
 If you need to adjust the font-size of the rendered text, you can use the `size` property and a value from the [type scale](/#!/Typography)
 
 ```js
- <Text size="d1">Sized to d1</Text>
- <Text size="1">Sized to 1</Text>
- <Text size="6">Sized to 6</Text>
+ <Text size="xxxxlarge">Sized to xxxxlarge</Text>
+ <Text size="xxlarge">Sized to xxlarge</Text>
+ <Text size="small">Sized to small</Text>
 ```
 
 <div class="doc-section-divider"></div>
@@ -39,9 +39,9 @@ If you need to adjust the font-size of the rendered text, you can use the `size`
 Common patterns for text is to adjust the font weight and transform the text. Below is an example of using the `weight` and `textTransform` properties to modify the rendered text
 
 ```js
-  <Text size="6" textTransform="upper" weight="semiBold">A great story</Text>
-  <Text size="d3" weight="light">This is a great headline</Text>
-  <Text size="6" textTransform="caps">Some metadata about this story</Text>
+  <Text size="small" textTransform="upper" weight="semiBold">A great story</Text>
+  <Text size="xxxxlarge" weight="light">This is a great headline</Text>
+  <Text size="small" textTransform="caps">Some metadata about this story</Text>
 ```
 
 <div class="doc-section-divider"></div>

@@ -1,8 +1,9 @@
 import * as React from 'react'
-import { css, RampSizes, reset, styled, truncate } from '../../style'
+import { css, RampSizes, styled, Theme, withTheme } from '../../style'
+import { ThemedProps } from '../../types'
+import { Box, BoxPropsWithout } from '../Box'
 
-export type HeadingAlignments = 'left' | 'center' | 'right'
-export type HeadingLevels = '1' | '2' | '3' | '4' | '5' | '6'
+export type HeadingLevels = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
 export type HeadingTextTransforms = 'caps' | 'lower' | 'none' | 'upper'
 export type HeadingWeights =
   | 'bold'
@@ -10,57 +11,108 @@ export type HeadingWeights =
   | 'light'
   | 'normal'
   | 'semiBold'
-export interface HeadingGeneratorProps {
-  /** Headling tag level mapping for h1-h6 */
-  level?: HeadingLevels
-}
 
-export interface HeadingProps extends HeadingGeneratorProps {
+export interface HeadingProps
+  extends BoxPropsWithout<HTMLHeadingElement, 'color' | 'size'> {
   /** Size mapping from type ramp */
   size?: RampSizes
   /** Font weight */
   weight?: HeadingWeights
   /** Text tranform  */
   transform?: HeadingTextTransforms
-  /** Text align */
-  align?: HeadingAlignments
   className?: string
-  /** Truncate text on overflow */
-  truncate?: boolean
+  level?: HeadingLevels
 }
 
-/**
- * Headings are used to help users understand  what a major section of an interface is about, for example the labeling
- * of a page or a title of a card component.
- */
-const HeadingGenerator: React.SFC<HeadingProps> = ({ level, ...args }) => {
-  // This prevents our props from being passed directly to the underlying h* tags, which ultimately
-  // would cause some warnings. Ideally we would define the return type for this function, and
-  // Typescript would warn us when passing props that are invalid.
-  //
-  // See https://reactjs.org/warnings/unknown-prop.html
-  const props = Object.assign({}, args)
-  delete props.align
-  delete props.size
-  delete props.transform
-  delete props.truncate
-  delete props.weight
+const InternalHeading: React.SFC<ThemedProps<HeadingProps>> = ({
+  size,
+  weight,
+  transform,
+  level,
+  theme,
+  ...props
+}) => {
+  return (
+    <Box
+      is={level || 'h2'}
+      fontSize={getFontSize(theme, level, size)}
+      lineHeight={getLineHeight(theme, level, size)}
+      fontWeight={getFontWeight(theme, weight)}
+      {...props}
+    >
+      {props.children}
+    </Box>
+  )
+}
 
-  switch (level) {
-    case '1':
-      return <h1 {...props}>{props.children}</h1>
-    case '2':
-      return <h2 {...props}>{props.children}</h2>
-    case '4':
-      return <h4 {...props}>{props.children}</h4>
-    case '5':
-      return <h5 {...props}>{props.children}</h5>
-    case '6':
-      return <h6 {...props}>{props.children}</h6>
-    case '3':
-    default:
-      return <h3 {...props}>{props.children}</h3>
+function getFontSize(
+  theme: Theme,
+  level: HeadingLevels | undefined,
+  size: RampSizes | undefined
+) {
+  if (size) {
+    return theme.fontSizes[size]
+  } else {
+    switch (level) {
+      case 'h1':
+        return theme.fontSizes.xxlarge
+        break
+      case 'h2':
+        return theme.fontSizes.xlarge
+        break
+      case 'h3':
+        return theme.fontSizes.large
+        break
+      case 'h4':
+        return theme.fontSizes.medium
+        break
+      case 'h5':
+        return theme.fontSizes.small
+        break
+      case 'h6':
+        return theme.fontSizes.xsmall
+        break
+      default:
+        return theme.fontSizes.large
+    }
   }
+}
+
+function getLineHeight(
+  theme: Theme,
+  level: HeadingLevels | undefined,
+  size: RampSizes | undefined
+) {
+  if (size) {
+    return theme.lineHeights[size]
+  } else {
+    switch (level) {
+      case 'h1':
+        return theme.lineHeights.xxlarge
+        break
+      case 'h2':
+        return theme.lineHeights.xlarge
+        break
+      case 'h3':
+        return theme.lineHeights.large
+        break
+      case 'h4':
+        return theme.lineHeights.medium
+        break
+      case 'h5':
+        return theme.lineHeights.small
+        break
+      case 'h6':
+        return theme.lineHeights.xsmall
+        break
+      default:
+        return theme.lineHeights.large
+    }
+  }
+}
+
+function getFontWeight(theme: Theme, weight: HeadingWeights | undefined) {
+  return weight ? theme.fontWeights[weight] : theme.fontWeights.normal
 }
 
 function textTransform(transform: HeadingTextTransforms | undefined) {
@@ -85,24 +137,9 @@ function textTransform(transform: HeadingTextTransforms | undefined) {
   }
 }
 
-function alignment(align: HeadingAlignments | undefined) {
-  return css`
-    text-align: ${align || 'left'};
-  `
-}
-
-export const Heading = styled<HeadingProps>(HeadingGenerator)`
-  ${reset};
+export const Heading = styled<HeadingProps>(withTheme(InternalHeading))`
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  margin: 0;
-  font-size: ${props =>
-    props.theme.fontSizes[props.size || props.level || '3']};
-  line-height: ${props =>
-    props.theme.lineHeights[props.size || props.level || '3']};
-  font-weight: ${props => props.theme.fontWeights[props.weight || 'normal']};
-  ${props => textTransform(props.transform)}
-  ${props => alignment(props.align)}
-  ${props => truncate(props.truncate || false)}
+  ${props => textTransform(props.transform)};
 `

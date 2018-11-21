@@ -40,7 +40,7 @@ const SpaceListHeader = (text: string, defaultLabel?: string) => {
   return (
     <Box mb="medium">
       <Span
-        size="5"
+        size="medium"
         variant="secondary"
         textTransform="upper"
         weight="semiBold"
@@ -48,7 +48,7 @@ const SpaceListHeader = (text: string, defaultLabel?: string) => {
         {text}
       </Span>
       <Box is="span" ml="xsmall">
-        <Span size="6" variant="subdued">
+        <Span size="xsmall" variant="subdued">
           {defaultLabel}
         </Span>
       </Box>
@@ -65,12 +65,12 @@ const ListRender = (
   return (
     <ListItem key={key}>
       <Box px="small" is="span" className="prop-code">
-        <Code size="6">{value}</Code>
+        <Code size="xsmall">{value}</Code>
       </Box>
       <Box ml="small" is="span">
-        <Span size="5">{label}</Span>
+        <Span size="small">{label}</Span>
         <Box is="span" ml="xsmall">
-          <Span size="6" variant="subdued">
+          <Span size="xsmall" variant="subdued">
             {defaultLabel}
           </Span>
         </Box>

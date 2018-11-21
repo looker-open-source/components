@@ -16,7 +16,7 @@ test('A <h1> Heading', () => {
 
 test('A <h1> Heading sized to <h2>', () => {
   const component = createWithTheme(
-    <Heading level="1" size="2">
+    <Heading level="h1" size="xlarge">
       🥑
     </Heading>
   )
