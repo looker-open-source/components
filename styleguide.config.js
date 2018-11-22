@@ -105,6 +105,16 @@ module.exports = {
       ],
     },
     {
+      name: 'Advanced',
+      sectionDepth: 1,
+      sections: [
+        {
+          name: 'Styled Components',
+          content: 'src/documentation/advanced/styled_components.md',
+        },
+      ],
+    },
+    {
       name: 'Principles',
       sectionDepth: 1,
       sections: [
