@@ -18,7 +18,7 @@ Let's pretend we want to build a new kind of `<Link>` that renders visited links
 a bit differently. Our designer has laid out the following specs:
 
   1. Visited links should render red.
-2. The component should accept a prop called `visited` that renders the text as
+  2. The component should accept a prop called `visited` that renders the text as
    strike-through on hover.
 
 To handle this, we'll use Styled Components' `styled` function, which Lens
