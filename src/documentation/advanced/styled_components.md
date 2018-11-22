@@ -3,7 +3,7 @@ library used by Lens to style components.
 
 > 👋 Heads up! 👋
 >
-> **You should rarely need to use Styled Components.** Instead use the [<Box/>](/#/Components/Layout?id=box)
+> **You should rarely need to use Styled Components.** Instead use the [`<Box/>`](/#/Components/Layout?id=box)
 > component and its props which ensures you use Lens' theme values and
 > stay within the Lens style guidelines. Styled Components should only be
 > used for configuring pseudo classes, pseudo elements, animations, or rarely
