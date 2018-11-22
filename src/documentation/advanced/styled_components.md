@@ -88,8 +88,8 @@ const VisitedLink = styled(VisitedLinkFactory)`
 <VisitedLink visited href="https://www.google.com">Hello</VisitedLink>
 ```
 
-Voilà, easy enough. Note we created the internal `VisitedLinkFactory` function
-which strips out the visited prop before it ever reachs the composed `Link`
+Et voilà. Note we created the internal `VisitedLinkFactory` function
+which strips out the `visited` prop before it ever reaches the composed `Link`
 component.
 
 ### Takeaways
