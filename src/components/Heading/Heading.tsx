@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { css, RampSizes, styled, Theme, withTheme } from '../../style'
+import { css, RampSizes, styled, Theme, truncate, withTheme } from '../../style'
 import { ThemedProps } from '../../types'
 import { Box, BoxPropsWithout } from '../Box'
 
@@ -13,15 +13,19 @@ export type HeadingWeights =
   | 'semiBold'
 
 export interface HeadingProps
-  extends BoxPropsWithout<HTMLHeadingElement, 'color' | 'size'> {
+  extends BoxPropsWithout<HTMLHeadingElement, 'color' | 'size' | 'truncate'> {
+  /** Heading level from h1-h6 */
+  level?: HeadingLevels
   /** Size mapping from type ramp */
   size?: RampSizes
   /** Font weight */
   weight?: HeadingWeights
   /** Text tranform  */
   transform?: HeadingTextTransforms
+  /** Truncate heading text */
+  truncate?: boolean
+  /** Custom css class */
   className?: string
-  level?: HeadingLevels
 }
 
 const InternalHeading: React.SFC<ThemedProps<HeadingProps>> = ({
@@ -89,22 +93,16 @@ function getLineHeight(
     switch (level) {
       case 'h1':
         return theme.lineHeights['2xlarge']
-        break
       case 'h2':
         return theme.lineHeights.xlarge
-        break
       case 'h3':
         return theme.lineHeights.large
-        break
       case 'h4':
         return theme.lineHeights.medium
-        break
       case 'h5':
         return theme.lineHeights.small
-        break
       case 'h6':
         return theme.lineHeights.xsmall
-        break
       default:
         return theme.lineHeights.large
     }
@@ -142,4 +140,5 @@ export const Heading = styled<HeadingProps>(withTheme(InternalHeading))`
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   ${props => textTransform(props.transform)};
+  ${props => truncate(props.truncate || false)};
 `
