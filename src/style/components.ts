@@ -86,7 +86,7 @@ export const components: Components = {
   Legend: {
     bottomPadding: '10px',
     color: palette.charcoal800,
-    fontSize: fontSizes.xxxlarge,
+    fontSize: fontSizes['3xlarge'],
     fontWeight: fontWeights.light,
   },
   Overlay: {

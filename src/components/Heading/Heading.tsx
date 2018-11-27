@@ -55,7 +55,7 @@ function getFontSize(
   } else {
     switch (level) {
       case 'h1':
-        return theme.fontSizes.xxlarge
+        return theme.fontSizes['2xlarge']
         break
       case 'h2':
         return theme.fontSizes.xlarge
@@ -88,7 +88,7 @@ function getLineHeight(
   } else {
     switch (level) {
       case 'h1':
-        return theme.lineHeights.xxlarge
+        return theme.lineHeights['2xlarge']
         break
       case 'h2':
         return theme.lineHeights.xlarge
