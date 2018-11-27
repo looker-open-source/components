@@ -87,14 +87,14 @@ In rare cases Lens may not support the exact presentation or behavior necessary.
 import * as React from 'react'
 import { Button as BaseButton, ButtonProps as BaseButtonProps} from './looker-lens'
 
-const logHandler = (event: any) => {
+const logHandler = (event: React.MouseEvent<HTMLElement>) => {
   logger(event.target.value);
 };
 
 export const LoggerButton: React.SFC<ButtonProps> = ({onClick, ...props}) => {
   let clickHandler = logHandler;
   if (onClick !== undefined) {
-    clickHandler = (event: any) => {
+    clickHandler = (event: React.MouseEvent<HTMLElement>) => {
       logHandler(event);
       if (onClick) onClick(event);
     }
