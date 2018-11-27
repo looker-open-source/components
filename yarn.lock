@@ -809,7 +809,7 @@
     "@types/prop-types" "*"
     csstype "^2.2.0"
 
-"@types/styled-system@^3.0.2":
+"@types/styled-system@^3.0.9":
   version "3.0.9"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/@types/styled-system/-/styled-system-3.0.9.tgz#a17d78b3500ed5c76570fd4f692546616eed015c"
   dependencies:
