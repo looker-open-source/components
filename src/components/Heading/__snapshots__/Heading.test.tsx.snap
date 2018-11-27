@@ -112,6 +112,38 @@ exports[`A Heading transformed 1`] = `
 </h2>
 `;
 
+exports[`A Heading truncated 1`] = `
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.75rem;
+}
+
+.c0 {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-transform: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+<h2
+  className="c0 c1"
+  truncate={true}
+>
+  🥑
+</h2>
+`;
+
 exports[`A default Heading 1`] = `
 .c1 {
   border: 0;

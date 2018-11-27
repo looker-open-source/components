@@ -35,3 +35,9 @@ test('A Heading transformed', () => {
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
 })
+
+test('A Heading truncated', () => {
+  const component = createWithTheme(<Heading truncate>🥑</Heading>)
+  const tree = component.toJSON()
+  expect(tree).toMatchSnapshot()
+})

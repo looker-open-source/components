@@ -19,7 +19,7 @@ exports[`A Code component resized 1`] = `
 
 <code
   className="c0"
-  size="xxxxlarge"
+  size="4xlarge"
 >
   Hello
 </code>

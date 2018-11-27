@@ -35,7 +35,7 @@ exports[`A Paragraph component resized 1`] = `
 
 <p
   className="c0"
-  size="xxxxlarge"
+  size="4xlarge"
 >
   Hello
 </p>
