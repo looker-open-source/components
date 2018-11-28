@@ -87,14 +87,14 @@ In rare cases Lens may not support the exact presentation or behavior necessary.
 import * as React from 'react'
 import { Button as BaseButton, ButtonProps as BaseButtonProps} from './looker-lens'
 
-const logHandler = (event: any) => {
+const logHandler = (event: React.MouseEvent<HTMLElement>) => {
   logger(event.target.value);
 };
 
 export const LoggerButton: React.SFC<ButtonProps> = ({onClick, ...props}) => {
   let clickHandler = logHandler;
   if (onClick !== undefined) {
-    clickHandler = (event: any) => {
+    clickHandler = (event: React.MouseEvent<HTMLElement>) => {
       logHandler(event);
       if (onClick) onClick(event);
     }
@@ -120,7 +120,7 @@ const CircularButton = styled(Button)`
 
 #### Theme
 
-To help stay withing Looker's design principles, [Lens publishes a theme object](https://github.com/looker/lens/blob/master/src/theme/theme.ts), along with libraries, like Styled Components and styled-system, to easily access the theme object within components. For example, when styling components using Lens' `styled` function, the theme object becomes part of a component's props:
+To help stay withing Looker's design principles, [Lens publishes a theme object](https://github.com/looker/lens/blob/master/src/style/theme.ts), along with libraries, like Styled Components and styled-system, to easily access the theme object within components. For example, when styling components using Lens' `styled` function, the theme object becomes part of a component's props:
 
 ```jsx static
 import { Button, styled } from 'looker-lens'
