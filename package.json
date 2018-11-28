@@ -21,7 +21,7 @@
     "@types/react-dom": "16.0.6",
     "@types/react-intl": "2.3.5",
     "@types/react-test-renderer": "16.0.1",
-    "@types/styled-system": "^3.0.2",
+    "@types/styled-system": "^3.0.9",
     "babel-jest": "23.6.0",
     "babel-loader": "8.0.2",
     "css-loader": "1.0.0",
