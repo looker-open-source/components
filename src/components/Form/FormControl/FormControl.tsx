@@ -3,7 +3,7 @@ import {
   ResponsiveAlignItemsValue,
   ResponsiveFlexDirectionValue,
   ResponsiveJustifyContentValue,
-} from 'styled-system'
+} from '../../../style/responsive'
 import { BoxProps } from '../../Box'
 import { Flex } from '../../Flex'
 

@@ -1,8 +1,14 @@
-import { reset, styled } from '../../style'
+import * as React from 'react'
+import { styled } from '../../style'
+import { Box, BoxProps } from '../Box'
 
-export const Link = styled.a`
-  ${reset};
-  color: ${props => props.theme.colors.semanticColors.primary.linkColor};
+interface LinkProps extends BoxProps<HTMLAnchorElement> {}
+
+const LinkFactory: React.SFC<LinkProps> = props => (
+  <Box is="a" color="semanticColors.primary.linkColor" {...props} />
+)
+
+export const Link = styled(LinkFactory)`
   text-decoration: none;
 
   &:hover {

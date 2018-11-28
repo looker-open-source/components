@@ -199,7 +199,6 @@ exports[`Form with one invalid child and a submit button 1`] = `
 }
 
 .c6 {
-  cursor: pointer;
   font-weight: 600;
   outline: none;
   -webkit-transition: border 80ms;

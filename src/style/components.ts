@@ -1,10 +1,10 @@
+import { OverlayBubbleStyleProps } from '../components/Overlay/OverlayBubble'
 import {
   ResponsiveBorderRadiusValue,
   ResponsiveFontSizeValue,
   ResponsiveFontWeightValue,
   ResponsiveSpaceValue,
-} from 'styled-system'
-import { OverlayBubbleStyleProps } from '../components/Overlay/OverlayBubble'
+} from '../style/responsive'
 import { shadows } from './elevation'
 import { fontSizes } from './font_sizes'
 import { fontWeights } from './font_weights'
