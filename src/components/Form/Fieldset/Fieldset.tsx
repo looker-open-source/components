@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { ResponsiveSpaceValue } from 'styled-system'
 import { styled } from '../../../style'
+import { ResponsiveSpaceValue } from '../../../style/responsive'
 import { Box, BoxProps } from '../../Box'
 import { FlexItem } from '../../FlexItem'
 import { FormControl, FormControlDirections } from '../FormControl'
