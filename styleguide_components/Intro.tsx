@@ -39,7 +39,7 @@ export const Intro = () => {
             />
           </svg>
         </FlexItem>
-        <Heading size="4xlarge">LENS</Heading>
+        <Heading size="xxxxlarge">LENS</Heading>
         <Box my="large" maxWidth="600px">
           <Text size="xlarge">
             A collections of assets for anyone making Looker software, providing

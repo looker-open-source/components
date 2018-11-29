@@ -21,7 +21,9 @@ export const snapshotTestTextComponentAlign = (
 export const snapshotTestTextComponentFontRamp = (
   Component: React.SFC<TextProps> | React.ComponentClass
 ) => {
-  const component = createWithTheme(<Component size="4xlarge">Hello</Component>)
+  const component = createWithTheme(
+    <Component size="xxxxlarge">Hello</Component>
+  )
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
 }

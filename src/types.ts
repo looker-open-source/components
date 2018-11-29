@@ -2,6 +2,7 @@ import { ThemedStyledProps } from './style/styled_components'
 import { Theme } from './style/theme'
 
 export type SizeNone = 'none'
+export type SizeXXSmall = 'xxsmall'
 export type SizeXSmall = 'xsmall'
 export type SizeSmall = 'small'
 export type SizeMedium = 'medium'
