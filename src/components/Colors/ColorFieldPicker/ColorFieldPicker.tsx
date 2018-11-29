@@ -8,7 +8,6 @@ import {
   FormControl,
   InputText,
   InputTextProps,
-  Slider,
   withForm,
 } from '../../Form'
 import { RichTooltip } from '../../Overlay'
@@ -19,6 +18,7 @@ import {
   white,
 } from '../ColorWheel/color_wheel_utils'
 import { ColorWheel } from '../ColorWheel/ColorWheel'
+import { LuminositySlider } from '../LuminositySlider/LuminositySlider'
 import { Swatch } from '../Swatch/Swatch'
 import * as ColorFormatUtils from '../utils/color_format_utils'
 import { isValidColor } from '../utils/color_utils'
@@ -98,7 +98,7 @@ class InternalColorFieldPicker extends React.Component<
           value={hsvColor.v}
           onColorChange={this.proxyHandleColorStateChange.bind(this, hsvColor)}
         />
-        <Slider
+        <LuminositySlider
           min={0}
           max={100}
           step={1}

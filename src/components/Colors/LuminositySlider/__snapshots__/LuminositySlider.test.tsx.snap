@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LuminositySlider default styling 1`] = `
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+.c0 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: transparent;
+  width: 100%;
+}
+
+.c0:focus {
+  outline: none;
+}
+
+.c0::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: #fff;
+  border: 1px solid #C1C6CC;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 14px;
+  margin-top: -4px;
+  width: 14px;
+}
+
+.c0::-webkit-slider-runnable-track {
+  background-image: linear-gradient(to right,#000,#fff);
+  border: 1px solid #DEE1E5;
+  cursor: pointer;
+  height: 8px;
+  width: 100%;
+}
+
+.c0::-moz-range-thumb {
+  background: #fff;
+  border: 1px solid #C1C6CC;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 12px;
+  width: 12px;
+}
+
+.c0::-moz-range-track {
+  background-image: linear-gradient(to right,#000,#fff);
+  border: 1px solid #DEE1E5;
+  cursor: pointer;
+  height: 6px;
+  width: 100%;
+}
+
+.c0::-ms-thumb {
+  background: #fff;
+  border: 1px solid #C1C6CC;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 12px;
+  width: 12px;
+}
+
+.c0::-ms-track {
+  background: transparent;
+  border-color: transparent;
+  border-width: 16px 0;
+  color: transparent;
+  cursor: pointer;
+  height: 6px;
+  width: 100%;
+}
+
+.c0::-ms-fill-lower {
+  background-image: linear-gradient(to right,#000,#fff);
+  border: 1px solid #DEE1E5;
+}
+
+.c0::-ms-fill-upper {
+  background-image: linear-gradient(to right,#000,#fff);
+  border: 1px solid #DEE1E5;
+}
+
+.c0:focus::-webkit-slider-runnable-track {
+  background-image: linear-gradient(to right,#000,#fff);
+}
+
+.c0:focus::-ms-fill-lower {
+  background-image: linear-gradient(to right,#000,#fff);
+}
+
+.c0:focus::-ms-fill-upper {
+  background-image: linear-gradient(to right,#000,#fff);
+}
+
+<input
+  className="c0 c1"
+  type="range"
+/>
+`;

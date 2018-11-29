@@ -6,6 +6,7 @@ import {
   SimpleHSV,
 } from '../src/components/Colors/ColorWheel/color_wheel_utils'
 import { ColorWheel } from '../src/components/Colors/ColorWheel/ColorWheel'
+import { LuminositySlider } from '../src/components/Colors/LuminositySlider/LuminositySlider'
 import { Flex } from '../src/components/Flex/Flex'
 import { Heading } from '../src/components/Heading/Heading'
 import { Text } from '../src/components/Text/Text'
@@ -61,14 +62,13 @@ export class ColorWheelDemo extends React.Component<{}, ColorWheelDemoState> {
               onColorChange={this.handleColorStateChange}
             />
 
-            <input
+            <LuminositySlider
               id="typeinp"
-              type="range"
-              min="0"
-              max="100"
+              min={0}
+              max={100}
               value={this.state.color.v * 100}
               onChange={this.handleSliderChange}
-              step="1"
+              step={1}
             />
           </CardContent>
         </Card>
