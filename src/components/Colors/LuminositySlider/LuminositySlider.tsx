@@ -14,26 +14,26 @@ export const LuminositySlider = styled(Slider)`
   &::-webkit-slider-thumb {
     appearance: none;
     background: #fff;
-    border: 1px solid ${props => props.theme.colors.palette.charcoal200};
+    border: 1px solid ${props => props.theme.colors.palette.charcoal300};
     border-radius: 50%;
     cursor: pointer;
-    height: 12px;
-    margin-top: -5px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
-    width: 12px;
+    height: 14px;
+    margin-top: -4px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+    width: 14px;
   }
 
   &::-webkit-slider-runnable-track {
     background-image: linear-gradient(to right, #000, #fff);
     border: 1px solid ${props => props.theme.colors.palette.charcoal200};
     cursor: pointer;
-    height: 6px;
+    height: 8px;
     width: 100%;
   }
 
   /* Mozilla Styling */
   &::-moz-range-thumb {
     background: #fff;
-    border: 1px solid ${props => props.theme.colors.palette.charcoal200};
+    border: 1px solid ${props => props.theme.colors.palette.charcoal300};
     border-radius: 50%;
     cursor: pointer;
     height: 12px;
@@ -51,7 +51,7 @@ export const LuminositySlider = styled(Slider)`
   /* IE / Edge Styling */
   &::-ms-thumb {
     background: #fff;
-    border: 1px solid ${props => props.theme.colors.palette.charcoal200};
+    border: 1px solid ${props => props.theme.colors.palette.charcoal300};
     border-radius: 50%;
     cursor: pointer;
     height: 12px;
