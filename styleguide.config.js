@@ -155,16 +155,6 @@ module.exports = {
       ],
     },
     {
-      name: 'API',
-      sectionDepth: 1,
-      sections: [
-        {
-          name: 'Gotchas',
-          content: 'src/documentation/api/Gotchas.md',
-        },
-      ],
-    },
-    {
       name: 'Components',
       sectionDepth: 1,
       sections: [...componentSections, contentSection],
