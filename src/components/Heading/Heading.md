@@ -10,7 +10,7 @@ const StatusAndResources = require('../../../styleguide_components/StatusAndReso
 
 
 ### Heading Default
-The `<Heading />` component is used to render a HTML `<h1>` - `<h6>` element, by default it will render a `<h3>` element
+The `<Heading />` component is used to render a HTML `<h1>` - `<h6>` element, by default it will render a `<h2>` element
 ```js
 // A heading component that defaults to a h3
 
@@ -27,12 +27,12 @@ To use a different HTML heading element,  the `<Heading />` component accepts a 
 // Heading components using the level attribute (font-size / line-height)
 
 <div>
-  <Heading level="1">I’m a h1 element (25px/40px)</Heading>
-  <Heading level="2">I’m a h2 element (22px/32px)</Heading>
-  <Heading level="3">I’m a h3 element (18px/28px)</Heading>
-  <Heading level="4">I’m a h4 element (16/24px)</Heading>
-  <Heading level="5">I’m a h5 element (14px/20px)</Heading>
-  <Heading level="6">I’m a h6 element (12px/16px)</Heading>
+  <Heading level="h1">I’m a h1 element (25px/40px)</Heading>
+  <Heading level="h2">I’m a h2 element (22px/32px)</Heading>
+  <Heading level="h3">I’m a h3 element (18px/28px)</Heading>
+  <Heading level="h4">I’m a h4 element (16/24px)</Heading>
+  <Heading level="h5">I’m a h5 element (14px/20px)</Heading>
+  <Heading level="h6">I’m a h6 element (12px/16px)</Heading>
 </div>
 ```
 <div class="doc-section-divider"></div>
@@ -45,15 +45,15 @@ When creating accessible pages it is important that headings create a [logical d
 // Heading components using the level and size attribute (font-size / line-height)
 
 <div>
-  <Heading size="d1">h3 sized to d1</Heading>
-  <Heading size="d2">h3 sized to d2</Heading>
-  <Heading size="d3">h3 sized to d3</Heading>
-  <Heading level="4" size="1">h4 sized to 1 </Heading>
-  <Heading level="4" size="2">h4 sized to 2 </Heading>
-  <Heading level="4" size="3">h4 sized to 3 </Heading>
-  <Heading level="2" size="4">h2 sized to 4 </Heading>
-  <Heading level="2" size="5">h2 sized to 5 </Heading>
-  <Heading level="2" size="6">h2 sized to 6 </Heading>
+  <Heading size="xxxxlarge">Viral meditation live-edge</Heading>
+  <Heading size="xxxlarge">Pork belly beard mustache </Heading>
+  <Heading size="xxlarge">Iceland trust fund hell of plaid</Heading>
+  <Heading size="xlarge">Tofu heirloom hammock fam tweet</Heading>
+  <Heading size="large">Helvetica hashtag cronut unicorn</Heading>
+  <Heading size="medium">Franzen semiotics sustainable, gluten-free</Heading>
+  <Heading size="small">8-bit coloring book authentic squid pok pok</Heading>
+  <Heading size="xsmall">Beard truffaut fashion axe, butcher raclette </Heading>
+  <Heading size="xxsmall">Man bun cardigan succulents vice</Heading>
 </div>
 ```
 
@@ -87,10 +87,3 @@ The `align` property allows you to adjust the `text-align` property of your `<He
 
 <div class="doc-section-divider"></div>
 
-### Truncation
-
-At times you may want your `<Heading />` to truncate instead of the text wrapping, the `truncate` property will do that for you.
-
-```js
-<Heading size="d3" truncate>I am some long text that will truncate instead of wrapping</Heading>
-```

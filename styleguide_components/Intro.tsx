@@ -39,9 +39,9 @@ export const Intro = () => {
             />
           </svg>
         </FlexItem>
-        <Heading size="d1">LENS</Heading>
+        <Heading size="xxxxlarge">LENS</Heading>
         <Box my="large" maxWidth="600px">
-          <Text size="2">
+          <Text size="xlarge">
             A collections of assets for anyone making Looker software, providing
             Looker services, or telling Looker stories.
           </Text>
@@ -76,15 +76,15 @@ export const Intro = () => {
                 </svg>
               </Flex>
             </Box>
-            <Heading level="4" size="3" weight="semiBold">
+            <Heading level="h4" size="large" weight="semiBold">
               Install
             </Heading>
             <Box mt="small">
-              <Text size="5">
+              <Text size="medium">
                 Lens packages are served by Looker's private package server,
                 Nexus, and can be installed through npm or yarn.
               </Text>
-              <Code size="5">yarn add looker-lens</Code>
+              <Code size="medium">yarn add looker-lens</Code>
             </Box>
           </Flex>
           <Flex maxWidth="215px" flexDirection="column" alignItems="center">
@@ -100,11 +100,11 @@ export const Intro = () => {
                 <IconExploreCircle width="24" height="24" fill="#0087E1" />
               </Flex>
             </Box>
-            <Heading level="4" size="3" weight="semiBold">
+            <Heading level="h4" size="large" weight="semiBold">
               Explore
             </Heading>
             <Box mt="small">
-              <Text size="5">
+              <Text size="small">
                 Search or browse through the component listing on this site. You
                 can use the interactive prompts to compose whole components
                 right in Lens.
@@ -124,11 +124,11 @@ export const Intro = () => {
                 <IconUndo width="24" height="24" fill="#FFA800" />
               </Flex>
             </Box>
-            <Heading level="4" size="3" weight="semiBold">
+            <Heading level="h4" size="large" weight="semiBold">
               Contribute
             </Heading>
             <Box mt="small">
-              <Text size="5">
+              <Text size="medium">
                 Want something in Lens you don't see here? Follow the
                 contribution guidelines and best practices, then open a Pull
                 Request on the Lens repository.
