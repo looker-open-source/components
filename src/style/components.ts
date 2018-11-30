@@ -41,6 +41,10 @@ export interface Components {
   ValidationMessage: {
     fontSize: ResponsiveFontSizeValue
   }
+  Modal: {
+    zIndex: number
+    surface: OverlayBubbleStyleProps
+  }
   Overlay: {
     zIndex: number
     backdrop: {
@@ -64,13 +68,8 @@ export interface Components {
 }
 
 export const components: Components = {
-  Button: {
-    borderRadius: 'medium',
-  },
-  Field: {
-    labelMargin: 'xsmall',
-    labelWidth: '20%',
-  },
+  Button: { borderRadius: 'medium' },
+  Field: { labelMargin: 'xsmall', labelWidth: '20%' },
   InputText: {
     borderRadius: '4px',
     fontSize: 'small',
@@ -89,11 +88,19 @@ export const components: Components = {
     fontSize: fontSizes.xxxlarge,
     fontWeight: fontWeights.light,
   },
-  Overlay: {
-    backdrop: {
-      backgroundColor: palette.charcoal200,
-      opacity: 0.6,
+  Modal: {
+    surface: {
+      backgroundColor: palette.white,
+      border: 'none',
+      borderColor: 'none',
+      borderRadius: radii.medium,
+      boxShadow: shadows[3],
+      color: palette.charcoal000,
     },
+    zIndex: 0,
+  },
+  Overlay: {
+    backdrop: { backgroundColor: palette.charcoal200, opacity: 0.6 },
     zIndex: 0,
   },
   Popover: {
@@ -127,7 +134,5 @@ export const components: Components = {
       color: palette.charcoal000,
     },
   },
-  ValidationMessage: {
-    fontSize: fontSizes.xsmall,
-  },
+  ValidationMessage: { fontSize: fontSizes.xsmall },
 }

@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModalContent - no overflow 1`] = `
+Array [
+  <div
+    style={
+      Object {
+        "display": "none",
+        "height": 0,
+        "position": "absolute",
+        "visibility": "hidden",
+        "width": 0,
+      }
+    }
+  />,
+  .c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-flex: 8;
+  -ms-flex: 8;
+  flex: 8;
+  overflow: scroll;
+  padding: 1.25rem;
+}
+
+.c0 {
+  border-top: 1px solid transparent;
+}
+
+.c0.overflow {
+  border-top-color: #DEE1E5;
+  box-shadow: inset 0 -16px 16px -16px #DEE1E5;
+}
+
+<div
+    className="undefined false c0 c1"
+    overflow="scroll"
+  >
+    Stuff
+  </div>,
+]
+`;
+
+exports[`ModalContent - no overflow 2`] = `
+Array [
+  <div
+    style={
+      Object {
+        "display": "none",
+        "height": 0,
+        "position": "absolute",
+        "visibility": "hidden",
+        "width": 0,
+      }
+    }
+  />,
+  .c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-flex: 8;
+  -ms-flex: 8;
+  flex: 8;
+  height: 3rem;
+  overflow: scroll;
+  padding: 1.25rem;
+}
+
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  height: 4rem;
+}
+
+.c0 {
+  border-top: 1px solid transparent;
+}
+
+.c0.overflow {
+  border-top-color: #DEE1E5;
+  box-shadow: inset 0 -16px 16px -16px #DEE1E5;
+}
+
+<div
+    className="undefined false c0 c1"
+    overflow="scroll"
+  >
+    <div
+      className="c2"
+    >
+      Stuff
+    </div>
+  </div>,
+]
+`;

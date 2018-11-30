@@ -1,0 +1,164 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modal Active 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  bottom: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1;
+}
+
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  cursor: pointer;
+  background-color: #DEE1E5;
+  height: 100%;
+  opacity: 0.6;
+  position: fixed;
+  width: 100%;
+}
+
+.c1 {
+  -webkit-transition: opacity 200ms;
+  transition: opacity 200ms;
+  cursor: pointer;
+}
+
+.c1.entering,
+.c1.exiting {
+  opacity: 0.01;
+}
+
+.c1.exited {
+  opacity: 0.6;
+}
+
+<div
+  className="c0"
+>
+  <div
+    className="faux c1 c2"
+    onClick={[Function]}
+  />
+  <div>
+    simple content
+  </div>
+</div>
+`;
+
+exports[`Modal Active w/ wrapped element 1`] = `
+Array [
+  <button
+    onClick={[Function]}
+  >
+    Click Here
+  </button>,
+  .c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  bottom: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1;
+}
+
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  cursor: pointer;
+  background-color: #DEE1E5;
+  height: 100%;
+  opacity: 0.6;
+  position: fixed;
+  width: 100%;
+}
+
+.c1 {
+  -webkit-transition: opacity 200ms;
+  transition: opacity 200ms;
+  cursor: pointer;
+}
+
+.c1.entering,
+.c1.exiting {
+  opacity: 0.01;
+}
+
+.c1.exited {
+  opacity: 0.6;
+}
+
+<div
+    className="c0"
+  >
+    <div
+      className="faux c1 c2"
+      onClick={[Function]}
+    />
+    <div>
+      simple content
+    </div>
+  </div>,
+]
+`;
+
+exports[`Modal Inactive 1`] = `null`;
+
+exports[`Modal Inactive w/ wrapped element 1`] = `
+<button
+  onClick={[Function]}
+>
+  Click Here
+</button>
+`;
