@@ -1,6 +1,15 @@
-import { styled } from '../../../style'
+import * as React from 'react'
+import { Box, BoxProps } from '../../Box'
 
-export const TableDataCell = styled.td`
-  padding: ${props => props.theme.space.small} 0;
-  border-top: solid 1px ${props => props.theme.colors.palette.charcoal200};
-`
+export const TableDataCell: React.SFC<BoxProps<HTMLTableDataCellElement>> = ({
+  ...props
+}) => (
+  <Box
+    is="td"
+    px="none"
+    py="small"
+    borderTop="solid 1px"
+    borderColor="palette.charcoal200"
+    {...props}
+  />
+)

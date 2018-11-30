@@ -78,6 +78,8 @@ import {
   TextAlignProps,
   top,
   TopProps,
+  verticalAlign,
+  VerticalAlignProps,
   width,
   WidthProps,
   zIndex,
@@ -140,6 +142,7 @@ export interface BoxBaseProps<T>
     RightProps,
     TextAlignProps,
     TopProps,
+    VerticalAlignProps,
     WidthProps,
     ZIndexProps {
   className?: string
@@ -190,12 +193,12 @@ export const Box = styled<BoxProps<HTMLElement>>(Tag)`
   ${alignItems};
   ${alignSelf};
   ${border};
-  ${borderColor};
   ${borderRadius};
   ${borderRight};
   ${borderLeft};
   ${borderBottom};
   ${borderTop};
+  ${borderColor};
   ${bottom};
   ${boxShadow};
   ${color};
@@ -226,6 +229,7 @@ export const Box = styled<BoxProps<HTMLElement>>(Tag)`
   ${space};
   ${textAlign};
   ${top};
+  ${verticalAlign};
   ${width};
   ${zIndex};
 `
