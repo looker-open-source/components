@@ -33,7 +33,7 @@ export interface Components {
     fontWeight: ResponsiveFontWeightValue
   }
   Legend: {
-    bottomPadding: ResponsiveSpaceValue
+    bottomPadding: SpacingSizes
     color: string
     fontSize: ResponsiveFontSizeValue
     fontWeight: ResponsiveFontWeightValue
@@ -84,7 +84,7 @@ export const components: Components = {
     fontWeight: fontWeights.semiBold,
   },
   Legend: {
-    bottomPadding: '10px',
+    bottomPadding: 'small',
     color: palette.charcoal800,
     fontSize: fontSizes.d3,
     fontWeight: fontWeights.light,
