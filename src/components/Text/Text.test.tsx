@@ -8,6 +8,7 @@ import {
   snapshotTestTextComponentTransform,
   snapshotTestTextComponentTruncate,
   snapshotTestTextComponentVariant,
+  snapshotTestTextComponentWrap,
 } from '../../../test/text'
 
 test('A default Text component', () => {
@@ -36,4 +37,8 @@ test('A Text component transformed', () => {
 
 test('A Text component aligned', () => {
   snapshotTestTextComponentAlign(Text)
+})
+
+test('A Text component wrapped', () => {
+  snapshotTestTextComponentWrap(Text)
 })

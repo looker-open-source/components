@@ -18,6 +18,7 @@ export interface TextProps {
   textTransform?: TextTransforms
   truncate?: boolean
   weight?: TextWeights
+  wrap?: boolean
 }
 
 function textTransform(transform: TextTransforms | undefined) {
@@ -77,6 +78,16 @@ function alignment(align: TextAlignments | undefined) {
   `
 }
 
+function wrap(doWrap: boolean) {
+  if (doWrap) {
+    return css`
+      overflow-wrap: break-word;
+    `
+  }
+
+  return ``
+}
+
 export const Text = styled.div<TextProps>`
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -87,5 +98,6 @@ export const Text = styled.div<TextProps>`
   ${props => textTransform(props.textTransform)};
   ${props => alignment(props.align)};
   ${props => truncate(props.truncate || false)};
+  ${props => wrap(props.wrap || false)};
   ${textVariant};
 `
