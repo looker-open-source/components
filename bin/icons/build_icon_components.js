@@ -90,6 +90,7 @@ function allIconFile(componentNames) {
       width={size}
       height={size}
       alignItems="center"
+      display="inline-flex"
       {...props}
     >
       {getIcon(name)}
@@ -97,7 +98,6 @@ function allIconFile(componentNames) {
   )
 
   export const Icon = styled<IconProps>(InternalIcon)\`
-    display: inline-flex;
     svg {
       fill: currentColor;
     }

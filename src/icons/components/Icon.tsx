@@ -163,13 +163,19 @@ const InternalIcon: React.SFC<IconProps> = ({
   size = '1em',
   ...props
 }) => (
-  <Box color={color} width={size} height={size} alignItems="center" {...props}>
+  <Box
+    color={color}
+    width={size}
+    height={size}
+    alignItems="center"
+    display="inline-flex"
+    {...props}
+  >
     {getIcon(name)}
   </Box>
 )
 
 export const Icon = styled<IconProps>(InternalIcon)`
-  display: inline-flex;
   svg {
     fill: currentColor;
   }
