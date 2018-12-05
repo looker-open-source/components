@@ -27,7 +27,7 @@
   "dependencies": {
     "bourbon": "5.1.0"
   },
-  "devDependecies": {
+  "devDependencies": {
     "angular": "1.5.8",
     "angular-ui-router": "^0.4.2",
     "babel-core": "^6.3.26",
