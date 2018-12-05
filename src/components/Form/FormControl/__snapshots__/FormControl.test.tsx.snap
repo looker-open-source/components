@@ -16,7 +16,6 @@ exports[`A FormControl 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  margin-bottom: 0.5rem;
 }
 
 <div

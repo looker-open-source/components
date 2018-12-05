@@ -25,7 +25,7 @@ const renderBorder = (border: BorderType, index: number) => {
 
   return (
     <div key={index}>
-      <Heading size="6" weight="bold">
+      <Heading size="small" weight="bold">
         {border.label}
       </Heading>
       <div className="border-examples">
@@ -36,7 +36,7 @@ const renderBorder = (border: BorderType, index: number) => {
             key={`border-${idx}`}
           >
             <div className={border.textClass}>
-              <Text size="6" weight="semiBold">
+              <Text size="xsmall" weight="semiBold">
                 On {example.name}
               </Text>
             </div>
@@ -52,10 +52,10 @@ const renderBorder = (border: BorderType, index: number) => {
       <div className="border-labels">
         {labels.map((label, idx) => (
           <div className="border-label-group" key={`label-${idx}`}>
-            <Text variant="subdued" size="5" weight="semiBold">
+            <Text variant="subdued" size="small" weight="semiBold">
               {label[0]}
             </Text>
-            <Code size="5">{label[1]}</Code>
+            <Code size="medium">{label[1]}</Code>
           </div>
         ))}
       </div>

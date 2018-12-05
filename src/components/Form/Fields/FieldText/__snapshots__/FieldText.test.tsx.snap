@@ -52,8 +52,8 @@ exports[`A FieldText 1`] = `
   padding: 0;
   vertical-align: baseline;
   border: solid 1px;
-  border-color: #C1C6CC;
   border-radius: 4px;
+  border-color: #C1C6CC;
   font-size: 0.875rem;
   height: 28px;
   padding-left: 0.5rem;
@@ -140,8 +140,8 @@ exports[`A FieldText with an error validation aligned to the bottom 1`] = `
   padding: 0;
   vertical-align: baseline;
   border: solid 1px;
-  border-color: #C1C6CC;
   border-radius: 4px;
+  border-color: #C1C6CC;
   background-color: #FFF2F4;
   font-size: 0.875rem;
   height: 28px;
@@ -248,8 +248,8 @@ exports[`A FieldText with an error validation aligned to the left 1`] = `
   padding: 0;
   vertical-align: baseline;
   border: solid 1px;
-  border-color: #C1C6CC;
   border-radius: 4px;
+  border-color: #C1C6CC;
   background-color: #FFF2F4;
   font-size: 0.875rem;
   height: 28px;
@@ -382,8 +382,8 @@ exports[`A FieldText with an error validation aligned to the right 1`] = `
   padding: 0;
   vertical-align: baseline;
   border: solid 1px;
-  border-color: #C1C6CC;
   border-radius: 4px;
+  border-color: #C1C6CC;
   background-color: #FFF2F4;
   font-size: 0.875rem;
   height: 28px;
@@ -513,8 +513,8 @@ exports[`A required FieldText 1`] = `
   padding: 0;
   vertical-align: baseline;
   border: solid 1px;
-  border-color: #C1C6CC;
   border-radius: 4px;
+  border-color: #C1C6CC;
   font-size: 0.875rem;
   height: 28px;
   padding-left: 0.5rem;
@@ -597,8 +597,8 @@ exports[`FieldText supports labelWeight 1`] = `
   padding: 0;
   vertical-align: baseline;
   border: solid 1px;
-  border-color: #C1C6CC;
   border-radius: 4px;
+  border-color: #C1C6CC;
   font-size: 0.875rem;
   height: 28px;
   padding-left: 0.5rem;

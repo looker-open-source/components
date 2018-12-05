@@ -1,6 +1,6 @@
 {
   "name": "looker-lens",
-  "version": "0.0.1-alpha.27",
+  "version": "0.0.1-alpha.30",
   "main": "dist/index",
   "license": "MIT",
   "devDependencies": {
@@ -21,10 +21,11 @@
     "@types/react-dom": "16.0.6",
     "@types/react-intl": "2.3.5",
     "@types/react-test-renderer": "16.0.1",
-    "@types/styled-system": "^3.0.2",
+    "@types/styled-system": "^3.0.9",
     "babel-jest": "23.6.0",
     "babel-loader": "8.0.2",
     "css-loader": "1.0.0",
+    "csstype": "^2.5.7",
     "enzyme": "^3.5.0",
     "enzyme-adapter-react-16": "^1.6.0",
     "glob": "7.1.2",
@@ -75,7 +76,7 @@
   "peerDependencies": {
     "@types/react": "16.4.8",
     "@types/react-dom": "16.0.6",
-    "@types/styled-system": "^3.0.2",
+    "@types/styled-system": "^3.0.9",
     "styled-components": "^3.4.9"
   },
   "files": [

@@ -1,8 +1,15 @@
-import { styled } from '../../../style'
+import * as React from 'react'
+import { Box, BoxProps } from '../../Box'
 
-export const TableHeaderCell = styled.th`
-  padding: ${props => props.theme.space.small} 0;
-  font-size: font-size(6);
-  color: ${props => props.theme.colors.palette.charcoal400};
-  font-weight: 600;
-`
+export const TableHeaderCell: React.SFC<
+  BoxProps<HTMLTableHeaderCellElement>
+> = ({ ...props }) => (
+  <Box
+    is="th"
+    py="small"
+    fontSize="xsmall"
+    color="palette.charcoal400"
+    fontWeight={600}
+    {...props}
+  />
+)

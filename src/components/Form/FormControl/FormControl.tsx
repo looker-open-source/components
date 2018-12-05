@@ -3,7 +3,7 @@ import {
   ResponsiveAlignItemsValue,
   ResponsiveFlexDirectionValue,
   ResponsiveJustifyContentValue,
-} from 'styled-system'
+} from '../../../style/responsive'
 import { BoxProps } from '../../Box'
 import { Flex } from '../../Flex'
 
@@ -46,7 +46,7 @@ export const FormControl: React.SFC<FormControlProps> = ({
     return flexAlignment
   }
   return (
-    <Flex {...props} {...setFlexAlignment()} mb="small">
+    <Flex {...setFlexAlignment()} {...props}>
       {props.children}
     </Flex>
   )

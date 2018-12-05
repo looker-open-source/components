@@ -35,7 +35,7 @@ exports[`A Text component resized 1`] = `
 
 <div
   className="c0"
-  size="d2"
+  size="xxxxlarge"
 >
   Hello
 </div>

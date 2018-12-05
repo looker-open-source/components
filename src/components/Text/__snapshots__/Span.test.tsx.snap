@@ -35,7 +35,7 @@ exports[`A Span component resized 1`] = `
 
 <span
   className="c0"
-  size="d2"
+  size="xxxxlarge"
 >
   Hello
 </span>

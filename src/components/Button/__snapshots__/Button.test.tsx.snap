@@ -16,7 +16,6 @@ exports[`Button accepts a SemanticColor object for the color property 1`] = `
 }
 
 .c0 {
-  cursor: pointer;
   font-weight: 600;
   outline: none;
   -webkit-transition: border 80ms;
@@ -91,7 +90,6 @@ exports[`Button allows autoFocus 1`] = `
 }
 
 .c0 {
-  cursor: pointer;
   font-weight: 600;
   outline: none;
   -webkit-transition: border 80ms;
@@ -167,7 +165,6 @@ exports[`Button allows for ARIA attributes 1`] = `
 }
 
 .c0 {
-  cursor: pointer;
   font-weight: 600;
   outline: none;
   -webkit-transition: border 80ms;
@@ -243,7 +240,6 @@ exports[`Button allows for HTML events 1`] = `
 }
 
 .c0 {
-  cursor: pointer;
   font-weight: 600;
   outline: none;
   -webkit-transition: border 80ms;
@@ -312,6 +308,7 @@ exports[`Button allows for HTML events 2`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  cursor: pointer;
   border-radius: 0.25rem;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   padding-top: 0rem;
@@ -319,7 +316,6 @@ exports[`Button allows for HTML events 2`] = `
 }
 
 .c0 {
-  cursor: pointer;
   font-weight: 600;
   outline: none;
   -webkit-transition: border 80ms;
@@ -395,7 +391,6 @@ exports[`Button danger color 1`] = `
 }
 
 .c0 {
-  cursor: pointer;
   font-weight: 600;
   outline: none;
   -webkit-transition: border 80ms;
@@ -470,7 +465,6 @@ exports[`Button default 1`] = `
 }
 
 .c0 {
-  cursor: pointer;
   font-weight: 600;
   outline: none;
   -webkit-transition: border 80ms;
@@ -545,7 +539,6 @@ exports[`Button primary color 1`] = `
 }
 
 .c0 {
-  cursor: pointer;
   font-weight: 600;
   outline: none;
   -webkit-transition: border 80ms;
@@ -620,7 +613,6 @@ exports[`Button should accept disabled 1`] = `
 }
 
 .c0 {
-  cursor: pointer;
   font-weight: 600;
   outline: none;
   -webkit-transition: border 80ms;
@@ -696,7 +688,6 @@ exports[`Button type button 1`] = `
 }
 
 .c0 {
-  cursor: pointer;
   font-weight: 600;
   outline: none;
   -webkit-transition: border 80ms;
@@ -772,7 +763,6 @@ exports[`Button type menu 1`] = `
 }
 
 .c0 {
-  cursor: pointer;
   font-weight: 600;
   outline: none;
   -webkit-transition: border 80ms;
@@ -848,7 +838,6 @@ exports[`Button type reset 1`] = `
 }
 
 .c0 {
-  cursor: pointer;
   font-weight: 600;
   outline: none;
   -webkit-transition: border 80ms;
@@ -924,7 +913,6 @@ exports[`Button type submit 1`] = `
 }
 
 .c0 {
-  cursor: pointer;
   font-weight: 600;
   outline: none;
   -webkit-transition: border 80ms;
@@ -1000,7 +988,6 @@ exports[`Button validates all sizes 1`] = `
 }
 
 .c0 {
-  cursor: pointer;
   font-weight: 600;
   outline: none;
   -webkit-transition: border 80ms;
@@ -1075,7 +1062,6 @@ exports[`Button validates all sizes 2`] = `
 }
 
 .c0 {
-  cursor: pointer;
   font-weight: 600;
   outline: none;
   -webkit-transition: border 80ms;
@@ -1150,7 +1136,6 @@ exports[`Button validates all sizes 3`] = `
 }
 
 .c0 {
-  cursor: pointer;
   font-weight: 600;
   outline: none;
   -webkit-transition: border 80ms;
@@ -1225,7 +1210,6 @@ exports[`Button validates all sizes 4`] = `
 }
 
 .c0 {
-  cursor: pointer;
   font-weight: 600;
   outline: none;
   -webkit-transition: border 80ms;
@@ -1300,7 +1284,6 @@ exports[`Button variant outline 1`] = `
 }
 
 .c0 {
-  cursor: pointer;
   font-weight: 600;
   outline: none;
   -webkit-transition: border 80ms;
@@ -1378,7 +1361,6 @@ exports[`Button variant transparent 1`] = `
 }
 
 .c0 {
-  cursor: pointer;
   font-weight: 600;
   outline: none;
   -webkit-transition: border 80ms;

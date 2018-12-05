@@ -1,10 +1,10 @@
+import { OverlayBubbleStyleProps } from '../components/Overlay/OverlayBubble'
 import {
   ResponsiveBorderRadiusValue,
   ResponsiveFontSizeValue,
   ResponsiveFontWeightValue,
   ResponsiveSpaceValue,
-} from 'styled-system'
-import { OverlayBubbleStyleProps } from '../components/Overlay/OverlayBubble'
+} from '../style/responsive'
 import { shadows } from './elevation'
 import { fontSizes } from './font_sizes'
 import { fontWeights } from './font_weights'
@@ -33,7 +33,7 @@ export interface Components {
     fontWeight: ResponsiveFontWeightValue
   }
   Legend: {
-    bottomPadding: ResponsiveSpaceValue
+    bottomPadding: SpacingSizes
     color: string
     fontSize: ResponsiveFontSizeValue
     fontWeight: ResponsiveFontWeightValue
@@ -73,20 +73,20 @@ export const components: Components = {
   },
   InputText: {
     borderRadius: '4px',
-    fontSize: '5',
+    fontSize: 'small',
     height: '28px',
     px: 'small',
     py: 'none',
   },
   Label: {
     color: palette.charcoal800,
-    fontSize: fontSizes[5],
+    fontSize: fontSizes.small,
     fontWeight: fontWeights.semiBold,
   },
   Legend: {
-    bottomPadding: '10px',
+    bottomPadding: 'small',
     color: palette.charcoal800,
-    fontSize: fontSizes.d3,
+    fontSize: fontSizes.xxxlarge,
     fontWeight: fontWeights.light,
   },
   Overlay: {
@@ -131,6 +131,6 @@ export const components: Components = {
     },
   },
   ValidationMessage: {
-    fontSize: fontSizes[6],
+    fontSize: fontSizes.xsmall,
   },
 }

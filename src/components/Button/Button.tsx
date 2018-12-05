@@ -180,11 +180,11 @@ function calcLineHeight(size: number) {
 }
 
 function sizeHelper(props: ThemedProps<ButtonProps>) {
-  const sizes: Record<ButtonSizes, [number, string, ButtonSpacingSizes]> = {
-    large: [2, calcLineHeight(44), 'xlarge'],
-    medium: [4, calcLineHeight(36), 'large'],
-    small: [5, calcLineHeight(28), 'medium'],
-    xsmall: [6, calcLineHeight(24), 'small'],
+  const sizes: Record<ButtonSizes, [string, string, ButtonSpacingSizes]> = {
+    large: ['xlarge', calcLineHeight(44), 'xlarge'],
+    medium: ['medium', calcLineHeight(36), 'large'],
+    small: ['small', calcLineHeight(28), 'medium'],
+    xsmall: ['xsmall', calcLineHeight(24), 'small'],
   }
   const [fontSize, lineHeight, px] = sizes[props.size || 'medium']
   return mixed({
@@ -252,9 +252,6 @@ const InternalButton: React.SFC<ThemedProps<ButtonProps>> = ({
 }
 
 export const Button = styled<ButtonProps>(withTheme(InternalButton))`
-  display: inline-flex;
-  align-items: center;
-  cursor: pointer;
   font-weight: 600;
   outline: none;
   transition: border 80ms;

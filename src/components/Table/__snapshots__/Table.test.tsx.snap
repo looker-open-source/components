@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`A Table should render 1`] = `
-.c0 {
+.c1 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -10,10 +10,13 @@ exports[`A Table should render 1`] = `
   padding: 0;
   vertical-align: baseline;
   width: 100%;
+}
+
+.c0 {
   border-collapse: collapse;
 }
 
 <table
-  className="c0"
+  className="c0 c1"
 />
 `;

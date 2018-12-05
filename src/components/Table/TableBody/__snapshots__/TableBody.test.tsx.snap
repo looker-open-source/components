@@ -2,8 +2,15 @@
 
 exports[`A <TableBody> should render 1`] = `
 .c0 {
-  vertical-align: top;
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   text-align: left;
+  vertical-align: top;
 }
 
 <tbody

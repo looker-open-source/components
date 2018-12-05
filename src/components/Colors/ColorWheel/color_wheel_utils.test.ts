@@ -3,12 +3,13 @@ import {
   generateColorWheel,
   hsv2cartesian,
   hsv2polar,
-  mappableArray,
   PolarBrightness,
   polarbrightness2hsv,
   scalePBRadius,
   white,
 } from './color_wheel_utils'
+
+import { sizedArray } from '../../../utils/array'
 
 describe('color_wheel_utils', () => {
   describe('white', () => {
@@ -21,10 +22,10 @@ describe('color_wheel_utils', () => {
     })
   })
 
-  describe('mappableArray', () => {
+  describe('sizedArray', () => {
     const worksForSize = (n: number) => {
       test(`Size ${n}`, () => {
-        const arr = mappableArray(n)
+        const arr = sizedArray(n)
         expect(arr.length).toEqual(n)
       })
     }

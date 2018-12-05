@@ -1,5 +1,5 @@
-import tag from 'clean-tag'
 import * as React from 'react'
+import { Box } from '../Box'
 import { FieldProps } from './Fields'
 import { InputProps } from './Inputs/InputProps'
 import { ValidationMessageProps } from './ValidationMessage'
@@ -31,7 +31,9 @@ export const Form: React.SFC<FormProps> = ({ ...props }) => {
   const { validationMessages, ...rest } = props
   return (
     <FormContext.Provider value={context}>
-      <tag.form {...rest}>{rest.children}</tag.form>
+      <Box is="form" {...rest}>
+        {rest.children}
+      </Box>
     </FormContext.Provider>
   )
 }

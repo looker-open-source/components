@@ -1,29 +1,50 @@
 import { rem } from 'polished'
+import {
+  SizeLarge,
+  SizeMedium,
+  SizeSmall,
+  SizeXLarge,
+  SizeXSmall,
+  SizeXXLarge,
+  SizeXXSmall,
+  SizeXXXLarge,
+  SizeXXXXLarge,
+} from '../types'
 
-export type RampSizes = '1' | '2' | '3' | '4' | '5' | '6' | 'd1' | 'd2' | 'd3'
+export type RampSizes =
+  | SizeXXSmall
+  | SizeXSmall
+  | SizeSmall
+  | SizeMedium
+  | SizeLarge
+  | SizeXLarge
+  | SizeXXLarge
+  | SizeXXXLarge
+  | SizeXXXXLarge
+
 export type FontRamp = Record<RampSizes, string>
 
 // tslint:disable:object-literal-sort-keys
 export const fontSizes: FontRamp = {
-  d1: rem(58),
-  d2: rem(46),
-  d3: rem(36),
-  1: rem(25),
-  2: rem(22),
-  3: rem(18),
-  4: rem(16),
-  5: rem(14),
-  6: rem(12),
+  xxxxlarge: rem(46),
+  xxxlarge: rem(36),
+  xxlarge: rem(25),
+  xlarge: rem(22),
+  large: rem(18),
+  medium: rem(16),
+  small: rem(14),
+  xsmall: rem(12),
+  xxsmall: rem(11),
 }
 
 export const lineHeights: FontRamp = {
-  d1: rem(84),
-  d2: rem(64),
-  d3: rem(52),
-  1: rem(40),
-  2: rem(32),
-  3: rem(28),
-  4: rem(24),
-  5: rem(20),
-  6: rem(16),
+  xxxxlarge: rem(64),
+  xxxlarge: rem(52),
+  xxlarge: rem(40),
+  xlarge: rem(32),
+  large: rem(28),
+  medium: rem(24),
+  small: rem(20),
+  xsmall: rem(16),
+  xxsmall: rem(16),
 }

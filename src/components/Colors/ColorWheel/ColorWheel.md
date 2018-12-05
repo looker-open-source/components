@@ -5,7 +5,7 @@ const StatusAndResources = require('../../../../styleguide_components/StatusAndR
   status="experimental"
   figmaURL="https://www.figma.com/file/h7RYPRCSlz3k8fLzEMRSzy/Color-Wheel?node-id=83%3A3"
   githubURL="https://github.com/looker/lens/blob/master/src/components/Colors/ColorWheel.tsx"
-  feedbackTitle="Checkbox Component Feedback" />
+  feedbackTitle="ColorWheel Component Feedback" />
 ```
 
 ### Default Colorwheel

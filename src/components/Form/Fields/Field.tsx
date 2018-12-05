@@ -1,10 +1,10 @@
+import { TextAlignProperty } from 'csstype'
 import * as React from 'react'
+import { SpacingSizes, styled, theme } from '../../../style'
 import {
   ResponsiveFontWeightValue,
   ResponsiveSpaceValue,
-  TextAlignValue,
-} from 'styled-system'
-import { SpacingSizes, styled, theme } from '../../../style'
+} from '../../../style/responsive'
 import { FlexItem } from '../../FlexItem'
 import { FormControl, FormControlDirections } from '../FormControl/FormControl'
 import { Label } from '../Label/Label'
@@ -50,7 +50,7 @@ export interface FieldProps {
 }
 
 interface LabelContainerAlignment {
-  textAlign?: TextAlignValue
+  textAlign?: TextAlignProperty
   width?: ResponsiveSpaceValue
   ml?: SpacingSizes
   mr?: SpacingSizes
@@ -114,7 +114,7 @@ export const Field = (props: FieldProps & { children?: React.ReactNode }) => {
     ? { fontWeight: props.labelFontWeight }
     : {}
   return (
-    <FormControl alignLabel={props.alignLabel}>
+    <FormControl alignLabel={props.alignLabel} mb="small">
       <Label
         htmlFor={props.id}
         {...handleHorizontalAlignment(props.alignLabel, props.labelWidth)}
@@ -126,6 +126,7 @@ export const Field = (props: FieldProps & { children?: React.ReactNode }) => {
       </Label>
       <FormControl
         alignLabel={getValidationMessageAlignment(props.alignValidationMessage)}
+        mb="small"
       >
         <FlexItem>{props.children}</FlexItem>
         {props.validationMessage ? (

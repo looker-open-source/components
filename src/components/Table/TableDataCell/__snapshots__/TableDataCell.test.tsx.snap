@@ -2,8 +2,19 @@
 
 exports[`A <TableDataCell> should render 1`] = `
 .c0 {
-  padding: 0.5rem 0;
-  border-top: solid 1px #DEE1E5;
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border-top: solid 1px;
+  border-color: #DEE1E5;
+  padding-left: 0rem;
+  padding-right: 0rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 <td

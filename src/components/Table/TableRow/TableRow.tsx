@@ -1,5 +1,6 @@
-import { styled } from '../../../style'
+import * as React from 'react'
+import { Box, BoxProps } from '../../Box'
 
-/* stylelint-disable */
-export const TableRow = styled.tr``
-/* stylelint-enable */
+export const TableRow: React.SFC<BoxProps<HTMLTableRowElement>> = ({
+  ...props
+}) => <Box is="tr" {...props} />

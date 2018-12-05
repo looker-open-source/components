@@ -809,9 +809,11 @@
     "@types/prop-types" "*"
     csstype "^2.2.0"
 
-"@types/styled-system@^3.0.2":
-  version "3.0.4"
-  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/@types/styled-system/-/styled-system-3.0.4.tgz#ffdadef7e1bf90c6366bc8ccecedfaa04b45ce8a"
+"@types/styled-system@^3.0.9":
+  version "3.0.9"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/@types/styled-system/-/styled-system-3.0.9.tgz#a17d78b3500ed5c76570fd4f692546616eed015c"
+  dependencies:
+    csstype "^2.2.0"
 
 "@vxna/mini-html-webpack-template@^0.1.7":
   version "0.1.7"
@@ -2654,6 +2656,10 @@ cssstyle@^1.1.1:
 csstype@^2.2.0:
   version "2.5.5"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/csstype/-/csstype-2.5.5.tgz#4125484a3d42189a863943f23b9e4b80fedfa106"
+
+csstype@^2.5.7:
+  version "2.5.7"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/csstype/-/csstype-2.5.7.tgz#bf9235d5872141eccfb2d16d82993c6b149179ff"
 
 currently-unhandled@^0.4.1:
   version "0.4.1"

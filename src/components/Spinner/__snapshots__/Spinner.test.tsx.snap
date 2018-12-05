@@ -1,0 +1,1862 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Spinner A default spinner 1`] = `
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  height: 30px;
+  position: relative;
+  width: 30px;
+}
+
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border-radius: 10px;
+  background-color: #000;
+}
+
+.c3 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(0deg) translate(0,-160%);
+  -ms-transform: rotate(0deg) translate(0,-160%);
+  transform: rotate(0deg) translate(0,-160%);
+  -webkit-animation-delay: 0ms;
+  animation-delay: 0ms;
+}
+
+.c5 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(27.692307692307693deg) translate(0,-160%);
+  -ms-transform: rotate(27.692307692307693deg) translate(0,-160%);
+  transform: rotate(27.692307692307693deg) translate(0,-160%);
+  -webkit-animation-delay: 76.92307692307692ms;
+  animation-delay: 76.92307692307692ms;
+}
+
+.c6 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(55.38461538461539deg) translate(0,-160%);
+  -ms-transform: rotate(55.38461538461539deg) translate(0,-160%);
+  transform: rotate(55.38461538461539deg) translate(0,-160%);
+  -webkit-animation-delay: 153.84615384615384ms;
+  animation-delay: 153.84615384615384ms;
+}
+
+.c7 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(83.07692307692308deg) translate(0,-160%);
+  -ms-transform: rotate(83.07692307692308deg) translate(0,-160%);
+  transform: rotate(83.07692307692308deg) translate(0,-160%);
+  -webkit-animation-delay: 230.76923076923077ms;
+  animation-delay: 230.76923076923077ms;
+}
+
+.c8 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(110.76923076923077deg) translate(0,-160%);
+  -ms-transform: rotate(110.76923076923077deg) translate(0,-160%);
+  transform: rotate(110.76923076923077deg) translate(0,-160%);
+  -webkit-animation-delay: 307.6923076923077ms;
+  animation-delay: 307.6923076923077ms;
+}
+
+.c9 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(138.46153846153845deg) translate(0,-160%);
+  -ms-transform: rotate(138.46153846153845deg) translate(0,-160%);
+  transform: rotate(138.46153846153845deg) translate(0,-160%);
+  -webkit-animation-delay: 384.61538461538464ms;
+  animation-delay: 384.61538461538464ms;
+}
+
+.c10 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(166.15384615384616deg) translate(0,-160%);
+  -ms-transform: rotate(166.15384615384616deg) translate(0,-160%);
+  transform: rotate(166.15384615384616deg) translate(0,-160%);
+  -webkit-animation-delay: 461.53846153846155ms;
+  animation-delay: 461.53846153846155ms;
+}
+
+.c11 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(193.84615384615387deg) translate(0,-160%);
+  -ms-transform: rotate(193.84615384615387deg) translate(0,-160%);
+  transform: rotate(193.84615384615387deg) translate(0,-160%);
+  -webkit-animation-delay: 538.4615384615385ms;
+  animation-delay: 538.4615384615385ms;
+}
+
+.c12 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(221.53846153846155deg) translate(0,-160%);
+  -ms-transform: rotate(221.53846153846155deg) translate(0,-160%);
+  transform: rotate(221.53846153846155deg) translate(0,-160%);
+  -webkit-animation-delay: 615.3846153846154ms;
+  animation-delay: 615.3846153846154ms;
+}
+
+.c13 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(249.23076923076923deg) translate(0,-160%);
+  -ms-transform: rotate(249.23076923076923deg) translate(0,-160%);
+  transform: rotate(249.23076923076923deg) translate(0,-160%);
+  -webkit-animation-delay: 692.3076923076923ms;
+  animation-delay: 692.3076923076923ms;
+}
+
+.c14 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(276.9230769230769deg) translate(0,-160%);
+  -ms-transform: rotate(276.9230769230769deg) translate(0,-160%);
+  transform: rotate(276.9230769230769deg) translate(0,-160%);
+  -webkit-animation-delay: 769.2307692307693ms;
+  animation-delay: 769.2307692307693ms;
+}
+
+.c15 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(304.61538461538464deg) translate(0,-160%);
+  -ms-transform: rotate(304.61538461538464deg) translate(0,-160%);
+  transform: rotate(304.61538461538464deg) translate(0,-160%);
+  -webkit-animation-delay: 846.1538461538462ms;
+  animation-delay: 846.1538461538462ms;
+}
+
+.c16 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(332.3076923076923deg) translate(0,-160%);
+  -ms-transform: rotate(332.3076923076923deg) translate(0,-160%);
+  transform: rotate(332.3076923076923deg) translate(0,-160%);
+  -webkit-animation-delay: 923.0769230769231ms;
+  animation-delay: 923.0769230769231ms;
+}
+
+.c0 .c2 {
+  -webkit-animation-name: xCJsz;
+  animation-name: xCJsz;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+}
+
+<div
+  className="c0 c1"
+>
+  <div
+    className="c2 c3 c4"
+  />
+  <div
+    className="c2 c5 c4"
+  />
+  <div
+    className="c2 c6 c4"
+  />
+  <div
+    className="c2 c7 c4"
+  />
+  <div
+    className="c2 c8 c4"
+  />
+  <div
+    className="c2 c9 c4"
+  />
+  <div
+    className="c2 c10 c4"
+  />
+  <div
+    className="c2 c11 c4"
+  />
+  <div
+    className="c2 c12 c4"
+  />
+  <div
+    className="c2 c13 c4"
+  />
+  <div
+    className="c2 c14 c4"
+  />
+  <div
+    className="c2 c15 c4"
+  />
+  <div
+    className="c2 c16 c4"
+  />
+</div>
+`;
+
+exports[`Spinner Spinner can be resized 1`] = `
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border-radius: 10px;
+  background-color: #000;
+}
+
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  height: 200px;
+  position: relative;
+  width: 200px;
+}
+
+.c3 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(0deg) translate(0,-160%);
+  -ms-transform: rotate(0deg) translate(0,-160%);
+  transform: rotate(0deg) translate(0,-160%);
+  -webkit-animation-delay: 0ms;
+  animation-delay: 0ms;
+}
+
+.c5 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(27.692307692307693deg) translate(0,-160%);
+  -ms-transform: rotate(27.692307692307693deg) translate(0,-160%);
+  transform: rotate(27.692307692307693deg) translate(0,-160%);
+  -webkit-animation-delay: 76.92307692307692ms;
+  animation-delay: 76.92307692307692ms;
+}
+
+.c6 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(55.38461538461539deg) translate(0,-160%);
+  -ms-transform: rotate(55.38461538461539deg) translate(0,-160%);
+  transform: rotate(55.38461538461539deg) translate(0,-160%);
+  -webkit-animation-delay: 153.84615384615384ms;
+  animation-delay: 153.84615384615384ms;
+}
+
+.c7 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(83.07692307692308deg) translate(0,-160%);
+  -ms-transform: rotate(83.07692307692308deg) translate(0,-160%);
+  transform: rotate(83.07692307692308deg) translate(0,-160%);
+  -webkit-animation-delay: 230.76923076923077ms;
+  animation-delay: 230.76923076923077ms;
+}
+
+.c8 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(110.76923076923077deg) translate(0,-160%);
+  -ms-transform: rotate(110.76923076923077deg) translate(0,-160%);
+  transform: rotate(110.76923076923077deg) translate(0,-160%);
+  -webkit-animation-delay: 307.6923076923077ms;
+  animation-delay: 307.6923076923077ms;
+}
+
+.c9 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(138.46153846153845deg) translate(0,-160%);
+  -ms-transform: rotate(138.46153846153845deg) translate(0,-160%);
+  transform: rotate(138.46153846153845deg) translate(0,-160%);
+  -webkit-animation-delay: 384.61538461538464ms;
+  animation-delay: 384.61538461538464ms;
+}
+
+.c10 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(166.15384615384616deg) translate(0,-160%);
+  -ms-transform: rotate(166.15384615384616deg) translate(0,-160%);
+  transform: rotate(166.15384615384616deg) translate(0,-160%);
+  -webkit-animation-delay: 461.53846153846155ms;
+  animation-delay: 461.53846153846155ms;
+}
+
+.c11 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(193.84615384615387deg) translate(0,-160%);
+  -ms-transform: rotate(193.84615384615387deg) translate(0,-160%);
+  transform: rotate(193.84615384615387deg) translate(0,-160%);
+  -webkit-animation-delay: 538.4615384615385ms;
+  animation-delay: 538.4615384615385ms;
+}
+
+.c12 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(221.53846153846155deg) translate(0,-160%);
+  -ms-transform: rotate(221.53846153846155deg) translate(0,-160%);
+  transform: rotate(221.53846153846155deg) translate(0,-160%);
+  -webkit-animation-delay: 615.3846153846154ms;
+  animation-delay: 615.3846153846154ms;
+}
+
+.c13 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(249.23076923076923deg) translate(0,-160%);
+  -ms-transform: rotate(249.23076923076923deg) translate(0,-160%);
+  transform: rotate(249.23076923076923deg) translate(0,-160%);
+  -webkit-animation-delay: 692.3076923076923ms;
+  animation-delay: 692.3076923076923ms;
+}
+
+.c14 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(276.9230769230769deg) translate(0,-160%);
+  -ms-transform: rotate(276.9230769230769deg) translate(0,-160%);
+  transform: rotate(276.9230769230769deg) translate(0,-160%);
+  -webkit-animation-delay: 769.2307692307693ms;
+  animation-delay: 769.2307692307693ms;
+}
+
+.c15 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(304.61538461538464deg) translate(0,-160%);
+  -ms-transform: rotate(304.61538461538464deg) translate(0,-160%);
+  transform: rotate(304.61538461538464deg) translate(0,-160%);
+  -webkit-animation-delay: 846.1538461538462ms;
+  animation-delay: 846.1538461538462ms;
+}
+
+.c16 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(332.3076923076923deg) translate(0,-160%);
+  -ms-transform: rotate(332.3076923076923deg) translate(0,-160%);
+  transform: rotate(332.3076923076923deg) translate(0,-160%);
+  -webkit-animation-delay: 923.0769230769231ms;
+  animation-delay: 923.0769230769231ms;
+}
+
+.c0 .c2 {
+  -webkit-animation-name: xCJsz;
+  animation-name: xCJsz;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+}
+
+<div
+  className="c0 c1"
+>
+  <div
+    className="c2 c3 c4"
+  />
+  <div
+    className="c2 c5 c4"
+  />
+  <div
+    className="c2 c6 c4"
+  />
+  <div
+    className="c2 c7 c4"
+  />
+  <div
+    className="c2 c8 c4"
+  />
+  <div
+    className="c2 c9 c4"
+  />
+  <div
+    className="c2 c10 c4"
+  />
+  <div
+    className="c2 c11 c4"
+  />
+  <div
+    className="c2 c12 c4"
+  />
+  <div
+    className="c2 c13 c4"
+  />
+  <div
+    className="c2 c14 c4"
+  />
+  <div
+    className="c2 c15 c4"
+  />
+  <div
+    className="c2 c16 c4"
+  />
+</div>
+`;
+
+exports[`Spinner Spinner can change markger color 1`] = `
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  height: 30px;
+  position: relative;
+  width: 30px;
+}
+
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border-radius: 10px;
+  background-color: red;
+}
+
+.c3 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(0deg) translate(0,-160%);
+  -ms-transform: rotate(0deg) translate(0,-160%);
+  transform: rotate(0deg) translate(0,-160%);
+  -webkit-animation-delay: 0ms;
+  animation-delay: 0ms;
+}
+
+.c5 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(27.692307692307693deg) translate(0,-160%);
+  -ms-transform: rotate(27.692307692307693deg) translate(0,-160%);
+  transform: rotate(27.692307692307693deg) translate(0,-160%);
+  -webkit-animation-delay: 76.92307692307692ms;
+  animation-delay: 76.92307692307692ms;
+}
+
+.c6 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(55.38461538461539deg) translate(0,-160%);
+  -ms-transform: rotate(55.38461538461539deg) translate(0,-160%);
+  transform: rotate(55.38461538461539deg) translate(0,-160%);
+  -webkit-animation-delay: 153.84615384615384ms;
+  animation-delay: 153.84615384615384ms;
+}
+
+.c7 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(83.07692307692308deg) translate(0,-160%);
+  -ms-transform: rotate(83.07692307692308deg) translate(0,-160%);
+  transform: rotate(83.07692307692308deg) translate(0,-160%);
+  -webkit-animation-delay: 230.76923076923077ms;
+  animation-delay: 230.76923076923077ms;
+}
+
+.c8 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(110.76923076923077deg) translate(0,-160%);
+  -ms-transform: rotate(110.76923076923077deg) translate(0,-160%);
+  transform: rotate(110.76923076923077deg) translate(0,-160%);
+  -webkit-animation-delay: 307.6923076923077ms;
+  animation-delay: 307.6923076923077ms;
+}
+
+.c9 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(138.46153846153845deg) translate(0,-160%);
+  -ms-transform: rotate(138.46153846153845deg) translate(0,-160%);
+  transform: rotate(138.46153846153845deg) translate(0,-160%);
+  -webkit-animation-delay: 384.61538461538464ms;
+  animation-delay: 384.61538461538464ms;
+}
+
+.c10 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(166.15384615384616deg) translate(0,-160%);
+  -ms-transform: rotate(166.15384615384616deg) translate(0,-160%);
+  transform: rotate(166.15384615384616deg) translate(0,-160%);
+  -webkit-animation-delay: 461.53846153846155ms;
+  animation-delay: 461.53846153846155ms;
+}
+
+.c11 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(193.84615384615387deg) translate(0,-160%);
+  -ms-transform: rotate(193.84615384615387deg) translate(0,-160%);
+  transform: rotate(193.84615384615387deg) translate(0,-160%);
+  -webkit-animation-delay: 538.4615384615385ms;
+  animation-delay: 538.4615384615385ms;
+}
+
+.c12 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(221.53846153846155deg) translate(0,-160%);
+  -ms-transform: rotate(221.53846153846155deg) translate(0,-160%);
+  transform: rotate(221.53846153846155deg) translate(0,-160%);
+  -webkit-animation-delay: 615.3846153846154ms;
+  animation-delay: 615.3846153846154ms;
+}
+
+.c13 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(249.23076923076923deg) translate(0,-160%);
+  -ms-transform: rotate(249.23076923076923deg) translate(0,-160%);
+  transform: rotate(249.23076923076923deg) translate(0,-160%);
+  -webkit-animation-delay: 692.3076923076923ms;
+  animation-delay: 692.3076923076923ms;
+}
+
+.c14 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(276.9230769230769deg) translate(0,-160%);
+  -ms-transform: rotate(276.9230769230769deg) translate(0,-160%);
+  transform: rotate(276.9230769230769deg) translate(0,-160%);
+  -webkit-animation-delay: 769.2307692307693ms;
+  animation-delay: 769.2307692307693ms;
+}
+
+.c15 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(304.61538461538464deg) translate(0,-160%);
+  -ms-transform: rotate(304.61538461538464deg) translate(0,-160%);
+  transform: rotate(304.61538461538464deg) translate(0,-160%);
+  -webkit-animation-delay: 846.1538461538462ms;
+  animation-delay: 846.1538461538462ms;
+}
+
+.c16 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(332.3076923076923deg) translate(0,-160%);
+  -ms-transform: rotate(332.3076923076923deg) translate(0,-160%);
+  transform: rotate(332.3076923076923deg) translate(0,-160%);
+  -webkit-animation-delay: 923.0769230769231ms;
+  animation-delay: 923.0769230769231ms;
+}
+
+.c0 .c2 {
+  -webkit-animation-name: xCJsz;
+  animation-name: xCJsz;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+}
+
+<div
+  className="c0 c1"
+>
+  <div
+    className="c2 c3 c4"
+  />
+  <div
+    className="c2 c5 c4"
+  />
+  <div
+    className="c2 c6 c4"
+  />
+  <div
+    className="c2 c7 c4"
+  />
+  <div
+    className="c2 c8 c4"
+  />
+  <div
+    className="c2 c9 c4"
+  />
+  <div
+    className="c2 c10 c4"
+  />
+  <div
+    className="c2 c11 c4"
+  />
+  <div
+    className="c2 c12 c4"
+  />
+  <div
+    className="c2 c13 c4"
+  />
+  <div
+    className="c2 c14 c4"
+  />
+  <div
+    className="c2 c15 c4"
+  />
+  <div
+    className="c2 c16 c4"
+  />
+</div>
+`;
+
+exports[`Spinner Spinner can have n number of markers 1`] = `
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  height: 30px;
+  position: relative;
+  width: 30px;
+}
+
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border-radius: 10px;
+  background-color: #000;
+}
+
+.c3 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(0deg) translate(0,-160%);
+  -ms-transform: rotate(0deg) translate(0,-160%);
+  transform: rotate(0deg) translate(0,-160%);
+  -webkit-animation-delay: 0ms;
+  animation-delay: 0ms;
+}
+
+.c5 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(18deg) translate(0,-160%);
+  -ms-transform: rotate(18deg) translate(0,-160%);
+  transform: rotate(18deg) translate(0,-160%);
+  -webkit-animation-delay: 50ms;
+  animation-delay: 50ms;
+}
+
+.c6 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(36deg) translate(0,-160%);
+  -ms-transform: rotate(36deg) translate(0,-160%);
+  transform: rotate(36deg) translate(0,-160%);
+  -webkit-animation-delay: 100ms;
+  animation-delay: 100ms;
+}
+
+.c7 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(54deg) translate(0,-160%);
+  -ms-transform: rotate(54deg) translate(0,-160%);
+  transform: rotate(54deg) translate(0,-160%);
+  -webkit-animation-delay: 150ms;
+  animation-delay: 150ms;
+}
+
+.c8 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(72deg) translate(0,-160%);
+  -ms-transform: rotate(72deg) translate(0,-160%);
+  transform: rotate(72deg) translate(0,-160%);
+  -webkit-animation-delay: 200ms;
+  animation-delay: 200ms;
+}
+
+.c9 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(90deg) translate(0,-160%);
+  -ms-transform: rotate(90deg) translate(0,-160%);
+  transform: rotate(90deg) translate(0,-160%);
+  -webkit-animation-delay: 250ms;
+  animation-delay: 250ms;
+}
+
+.c10 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(108deg) translate(0,-160%);
+  -ms-transform: rotate(108deg) translate(0,-160%);
+  transform: rotate(108deg) translate(0,-160%);
+  -webkit-animation-delay: 300ms;
+  animation-delay: 300ms;
+}
+
+.c11 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(126deg) translate(0,-160%);
+  -ms-transform: rotate(126deg) translate(0,-160%);
+  transform: rotate(126deg) translate(0,-160%);
+  -webkit-animation-delay: 350ms;
+  animation-delay: 350ms;
+}
+
+.c12 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(144deg) translate(0,-160%);
+  -ms-transform: rotate(144deg) translate(0,-160%);
+  transform: rotate(144deg) translate(0,-160%);
+  -webkit-animation-delay: 400ms;
+  animation-delay: 400ms;
+}
+
+.c13 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(162deg) translate(0,-160%);
+  -ms-transform: rotate(162deg) translate(0,-160%);
+  transform: rotate(162deg) translate(0,-160%);
+  -webkit-animation-delay: 450ms;
+  animation-delay: 450ms;
+}
+
+.c14 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(180deg) translate(0,-160%);
+  -ms-transform: rotate(180deg) translate(0,-160%);
+  transform: rotate(180deg) translate(0,-160%);
+  -webkit-animation-delay: 500ms;
+  animation-delay: 500ms;
+}
+
+.c15 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(198deg) translate(0,-160%);
+  -ms-transform: rotate(198deg) translate(0,-160%);
+  transform: rotate(198deg) translate(0,-160%);
+  -webkit-animation-delay: 550ms;
+  animation-delay: 550ms;
+}
+
+.c16 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(216deg) translate(0,-160%);
+  -ms-transform: rotate(216deg) translate(0,-160%);
+  transform: rotate(216deg) translate(0,-160%);
+  -webkit-animation-delay: 600ms;
+  animation-delay: 600ms;
+}
+
+.c17 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(234deg) translate(0,-160%);
+  -ms-transform: rotate(234deg) translate(0,-160%);
+  transform: rotate(234deg) translate(0,-160%);
+  -webkit-animation-delay: 650ms;
+  animation-delay: 650ms;
+}
+
+.c18 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(252deg) translate(0,-160%);
+  -ms-transform: rotate(252deg) translate(0,-160%);
+  transform: rotate(252deg) translate(0,-160%);
+  -webkit-animation-delay: 700ms;
+  animation-delay: 700ms;
+}
+
+.c19 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(270deg) translate(0,-160%);
+  -ms-transform: rotate(270deg) translate(0,-160%);
+  transform: rotate(270deg) translate(0,-160%);
+  -webkit-animation-delay: 750ms;
+  animation-delay: 750ms;
+}
+
+.c20 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(288deg) translate(0,-160%);
+  -ms-transform: rotate(288deg) translate(0,-160%);
+  transform: rotate(288deg) translate(0,-160%);
+  -webkit-animation-delay: 800ms;
+  animation-delay: 800ms;
+}
+
+.c21 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(306deg) translate(0,-160%);
+  -ms-transform: rotate(306deg) translate(0,-160%);
+  transform: rotate(306deg) translate(0,-160%);
+  -webkit-animation-delay: 850ms;
+  animation-delay: 850ms;
+}
+
+.c22 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(324deg) translate(0,-160%);
+  -ms-transform: rotate(324deg) translate(0,-160%);
+  transform: rotate(324deg) translate(0,-160%);
+  -webkit-animation-delay: 900ms;
+  animation-delay: 900ms;
+}
+
+.c23 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(342deg) translate(0,-160%);
+  -ms-transform: rotate(342deg) translate(0,-160%);
+  transform: rotate(342deg) translate(0,-160%);
+  -webkit-animation-delay: 950ms;
+  animation-delay: 950ms;
+}
+
+.c0 .c2 {
+  -webkit-animation-name: xCJsz;
+  animation-name: xCJsz;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+}
+
+<div
+  className="c0 c1"
+>
+  <div
+    className="c2 c3 c4"
+  />
+  <div
+    className="c2 c5 c4"
+  />
+  <div
+    className="c2 c6 c4"
+  />
+  <div
+    className="c2 c7 c4"
+  />
+  <div
+    className="c2 c8 c4"
+  />
+  <div
+    className="c2 c9 c4"
+  />
+  <div
+    className="c2 c10 c4"
+  />
+  <div
+    className="c2 c11 c4"
+  />
+  <div
+    className="c2 c12 c4"
+  />
+  <div
+    className="c2 c13 c4"
+  />
+  <div
+    className="c2 c14 c4"
+  />
+  <div
+    className="c2 c15 c4"
+  />
+  <div
+    className="c2 c16 c4"
+  />
+  <div
+    className="c2 c17 c4"
+  />
+  <div
+    className="c2 c18 c4"
+  />
+  <div
+    className="c2 c19 c4"
+  />
+  <div
+    className="c2 c20 c4"
+  />
+  <div
+    className="c2 c21 c4"
+  />
+  <div
+    className="c2 c22 c4"
+  />
+  <div
+    className="c2 c23 c4"
+  />
+</div>
+`;
+
+exports[`Spinner Spinner makers radius can be adjusted 1`] = `
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  height: 30px;
+  position: relative;
+  width: 30px;
+}
+
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border-radius: 30px;
+  background-color: #000;
+}
+
+.c3 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(0deg) translate(0,-160%);
+  -ms-transform: rotate(0deg) translate(0,-160%);
+  transform: rotate(0deg) translate(0,-160%);
+  -webkit-animation-delay: 0ms;
+  animation-delay: 0ms;
+}
+
+.c5 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(27.692307692307693deg) translate(0,-160%);
+  -ms-transform: rotate(27.692307692307693deg) translate(0,-160%);
+  transform: rotate(27.692307692307693deg) translate(0,-160%);
+  -webkit-animation-delay: 76.92307692307692ms;
+  animation-delay: 76.92307692307692ms;
+}
+
+.c6 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(55.38461538461539deg) translate(0,-160%);
+  -ms-transform: rotate(55.38461538461539deg) translate(0,-160%);
+  transform: rotate(55.38461538461539deg) translate(0,-160%);
+  -webkit-animation-delay: 153.84615384615384ms;
+  animation-delay: 153.84615384615384ms;
+}
+
+.c7 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(83.07692307692308deg) translate(0,-160%);
+  -ms-transform: rotate(83.07692307692308deg) translate(0,-160%);
+  transform: rotate(83.07692307692308deg) translate(0,-160%);
+  -webkit-animation-delay: 230.76923076923077ms;
+  animation-delay: 230.76923076923077ms;
+}
+
+.c8 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(110.76923076923077deg) translate(0,-160%);
+  -ms-transform: rotate(110.76923076923077deg) translate(0,-160%);
+  transform: rotate(110.76923076923077deg) translate(0,-160%);
+  -webkit-animation-delay: 307.6923076923077ms;
+  animation-delay: 307.6923076923077ms;
+}
+
+.c9 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(138.46153846153845deg) translate(0,-160%);
+  -ms-transform: rotate(138.46153846153845deg) translate(0,-160%);
+  transform: rotate(138.46153846153845deg) translate(0,-160%);
+  -webkit-animation-delay: 384.61538461538464ms;
+  animation-delay: 384.61538461538464ms;
+}
+
+.c10 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(166.15384615384616deg) translate(0,-160%);
+  -ms-transform: rotate(166.15384615384616deg) translate(0,-160%);
+  transform: rotate(166.15384615384616deg) translate(0,-160%);
+  -webkit-animation-delay: 461.53846153846155ms;
+  animation-delay: 461.53846153846155ms;
+}
+
+.c11 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(193.84615384615387deg) translate(0,-160%);
+  -ms-transform: rotate(193.84615384615387deg) translate(0,-160%);
+  transform: rotate(193.84615384615387deg) translate(0,-160%);
+  -webkit-animation-delay: 538.4615384615385ms;
+  animation-delay: 538.4615384615385ms;
+}
+
+.c12 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(221.53846153846155deg) translate(0,-160%);
+  -ms-transform: rotate(221.53846153846155deg) translate(0,-160%);
+  transform: rotate(221.53846153846155deg) translate(0,-160%);
+  -webkit-animation-delay: 615.3846153846154ms;
+  animation-delay: 615.3846153846154ms;
+}
+
+.c13 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(249.23076923076923deg) translate(0,-160%);
+  -ms-transform: rotate(249.23076923076923deg) translate(0,-160%);
+  transform: rotate(249.23076923076923deg) translate(0,-160%);
+  -webkit-animation-delay: 692.3076923076923ms;
+  animation-delay: 692.3076923076923ms;
+}
+
+.c14 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(276.9230769230769deg) translate(0,-160%);
+  -ms-transform: rotate(276.9230769230769deg) translate(0,-160%);
+  transform: rotate(276.9230769230769deg) translate(0,-160%);
+  -webkit-animation-delay: 769.2307692307693ms;
+  animation-delay: 769.2307692307693ms;
+}
+
+.c15 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(304.61538461538464deg) translate(0,-160%);
+  -ms-transform: rotate(304.61538461538464deg) translate(0,-160%);
+  transform: rotate(304.61538461538464deg) translate(0,-160%);
+  -webkit-animation-delay: 846.1538461538462ms;
+  animation-delay: 846.1538461538462ms;
+}
+
+.c16 {
+  -webkit-animation-duration: 1000ms;
+  animation-duration: 1000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(332.3076923076923deg) translate(0,-160%);
+  -ms-transform: rotate(332.3076923076923deg) translate(0,-160%);
+  transform: rotate(332.3076923076923deg) translate(0,-160%);
+  -webkit-animation-delay: 923.0769230769231ms;
+  animation-delay: 923.0769230769231ms;
+}
+
+.c0 .c2 {
+  -webkit-animation-name: xCJsz;
+  animation-name: xCJsz;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+}
+
+<div
+  className="c0 c1"
+>
+  <div
+    className="c2 c3 c4"
+  />
+  <div
+    className="c2 c5 c4"
+  />
+  <div
+    className="c2 c6 c4"
+  />
+  <div
+    className="c2 c7 c4"
+  />
+  <div
+    className="c2 c8 c4"
+  />
+  <div
+    className="c2 c9 c4"
+  />
+  <div
+    className="c2 c10 c4"
+  />
+  <div
+    className="c2 c11 c4"
+  />
+  <div
+    className="c2 c12 c4"
+  />
+  <div
+    className="c2 c13 c4"
+  />
+  <div
+    className="c2 c14 c4"
+  />
+  <div
+    className="c2 c15 c4"
+  />
+  <div
+    className="c2 c16 c4"
+  />
+</div>
+`;
+
+exports[`Spinner Spinner speed can be set 1`] = `
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  height: 30px;
+  position: relative;
+  width: 30px;
+}
+
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border-radius: 10px;
+  background-color: #000;
+}
+
+.c3 {
+  -webkit-animation-duration: 2000ms;
+  animation-duration: 2000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(0deg) translate(0,-160%);
+  -ms-transform: rotate(0deg) translate(0,-160%);
+  transform: rotate(0deg) translate(0,-160%);
+  -webkit-animation-delay: 0ms;
+  animation-delay: 0ms;
+}
+
+.c5 {
+  -webkit-animation-duration: 2000ms;
+  animation-duration: 2000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(27.692307692307693deg) translate(0,-160%);
+  -ms-transform: rotate(27.692307692307693deg) translate(0,-160%);
+  transform: rotate(27.692307692307693deg) translate(0,-160%);
+  -webkit-animation-delay: 153.84615384615384ms;
+  animation-delay: 153.84615384615384ms;
+}
+
+.c6 {
+  -webkit-animation-duration: 2000ms;
+  animation-duration: 2000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(55.38461538461539deg) translate(0,-160%);
+  -ms-transform: rotate(55.38461538461539deg) translate(0,-160%);
+  transform: rotate(55.38461538461539deg) translate(0,-160%);
+  -webkit-animation-delay: 307.6923076923077ms;
+  animation-delay: 307.6923076923077ms;
+}
+
+.c7 {
+  -webkit-animation-duration: 2000ms;
+  animation-duration: 2000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(83.07692307692308deg) translate(0,-160%);
+  -ms-transform: rotate(83.07692307692308deg) translate(0,-160%);
+  transform: rotate(83.07692307692308deg) translate(0,-160%);
+  -webkit-animation-delay: 461.53846153846155ms;
+  animation-delay: 461.53846153846155ms;
+}
+
+.c8 {
+  -webkit-animation-duration: 2000ms;
+  animation-duration: 2000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(110.76923076923077deg) translate(0,-160%);
+  -ms-transform: rotate(110.76923076923077deg) translate(0,-160%);
+  transform: rotate(110.76923076923077deg) translate(0,-160%);
+  -webkit-animation-delay: 615.3846153846154ms;
+  animation-delay: 615.3846153846154ms;
+}
+
+.c9 {
+  -webkit-animation-duration: 2000ms;
+  animation-duration: 2000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(138.46153846153845deg) translate(0,-160%);
+  -ms-transform: rotate(138.46153846153845deg) translate(0,-160%);
+  transform: rotate(138.46153846153845deg) translate(0,-160%);
+  -webkit-animation-delay: 769.2307692307693ms;
+  animation-delay: 769.2307692307693ms;
+}
+
+.c10 {
+  -webkit-animation-duration: 2000ms;
+  animation-duration: 2000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(166.15384615384616deg) translate(0,-160%);
+  -ms-transform: rotate(166.15384615384616deg) translate(0,-160%);
+  transform: rotate(166.15384615384616deg) translate(0,-160%);
+  -webkit-animation-delay: 923.0769230769231ms;
+  animation-delay: 923.0769230769231ms;
+}
+
+.c11 {
+  -webkit-animation-duration: 2000ms;
+  animation-duration: 2000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(193.84615384615387deg) translate(0,-160%);
+  -ms-transform: rotate(193.84615384615387deg) translate(0,-160%);
+  transform: rotate(193.84615384615387deg) translate(0,-160%);
+  -webkit-animation-delay: 1076.923076923077ms;
+  animation-delay: 1076.923076923077ms;
+}
+
+.c12 {
+  -webkit-animation-duration: 2000ms;
+  animation-duration: 2000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(221.53846153846155deg) translate(0,-160%);
+  -ms-transform: rotate(221.53846153846155deg) translate(0,-160%);
+  transform: rotate(221.53846153846155deg) translate(0,-160%);
+  -webkit-animation-delay: 1230.7692307692307ms;
+  animation-delay: 1230.7692307692307ms;
+}
+
+.c13 {
+  -webkit-animation-duration: 2000ms;
+  animation-duration: 2000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(249.23076923076923deg) translate(0,-160%);
+  -ms-transform: rotate(249.23076923076923deg) translate(0,-160%);
+  transform: rotate(249.23076923076923deg) translate(0,-160%);
+  -webkit-animation-delay: 1384.6153846153845ms;
+  animation-delay: 1384.6153846153845ms;
+}
+
+.c14 {
+  -webkit-animation-duration: 2000ms;
+  animation-duration: 2000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(276.9230769230769deg) translate(0,-160%);
+  -ms-transform: rotate(276.9230769230769deg) translate(0,-160%);
+  transform: rotate(276.9230769230769deg) translate(0,-160%);
+  -webkit-animation-delay: 1538.4615384615386ms;
+  animation-delay: 1538.4615384615386ms;
+}
+
+.c15 {
+  -webkit-animation-duration: 2000ms;
+  animation-duration: 2000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(304.61538461538464deg) translate(0,-160%);
+  -ms-transform: rotate(304.61538461538464deg) translate(0,-160%);
+  transform: rotate(304.61538461538464deg) translate(0,-160%);
+  -webkit-animation-delay: 1692.3076923076924ms;
+  animation-delay: 1692.3076923076924ms;
+}
+
+.c16 {
+  -webkit-animation-duration: 2000ms;
+  animation-duration: 2000ms;
+  width: 6%;
+  height: 20%;
+  position: absolute;
+  left: 48%;
+  top: 40%;
+  opacity: 0.25;
+  -webkit-transform: rotate(332.3076923076923deg) translate(0,-160%);
+  -ms-transform: rotate(332.3076923076923deg) translate(0,-160%);
+  transform: rotate(332.3076923076923deg) translate(0,-160%);
+  -webkit-animation-delay: 1846.1538461538462ms;
+  animation-delay: 1846.1538461538462ms;
+}
+
+.c0 .c2 {
+  -webkit-animation-name: xCJsz;
+  animation-name: xCJsz;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+}
+
+<div
+  className="c0 c1"
+>
+  <div
+    className="c2 c3 c4"
+  />
+  <div
+    className="c2 c5 c4"
+  />
+  <div
+    className="c2 c6 c4"
+  />
+  <div
+    className="c2 c7 c4"
+  />
+  <div
+    className="c2 c8 c4"
+  />
+  <div
+    className="c2 c9 c4"
+  />
+  <div
+    className="c2 c10 c4"
+  />
+  <div
+    className="c2 c11 c4"
+  />
+  <div
+    className="c2 c12 c4"
+  />
+  <div
+    className="c2 c13 c4"
+  />
+  <div
+    className="c2 c14 c4"
+  />
+  <div
+    className="c2 c15 c4"
+  />
+  <div
+    className="c2 c16 c4"
+  />
+</div>
+`;

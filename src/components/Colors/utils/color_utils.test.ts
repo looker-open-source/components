@@ -1,5 +1,5 @@
+import { sizedArray } from '../../../utils/array'
 import { isValidColor } from './color_utils'
-import { mappableArray } from './color_wheel_utils'
 
 describe('color_utils', () => {
   const testColor = (pred: boolean) => (color: string) => {
@@ -12,7 +12,7 @@ describe('color_utils', () => {
   const randChar = (str: string) => str[rand(str.length)]
   const randString = (chars: string, size: number) =>
     '#'.concat(
-      mappableArray(size)
+      sizedArray(size)
         .map(() => randChar(chars))
         .join('')
     )
@@ -50,25 +50,25 @@ describe('color_utils', () => {
   })
 
   describe('Valid 3 string RGB colors', () => {
-    mappableArray(20)
+    sizedArray(20)
       .map(() => randString('0123456789ABCDEF', 3))
       .map(testColor(true))
   })
 
   describe('Inalid 3 string RGB colors', () => {
-    mappableArray(20)
+    sizedArray(20)
       .map(() => randString('GHIJKLMNOPpo_+!&^%$', 3))
       .map(testColor(false))
   })
 
   describe('Valid 6 string RGB colors', () => {
-    mappableArray(20)
+    sizedArray(20)
       .map(() => randString('0123456789ABCDEF', 6))
       .map(testColor(true))
   })
 
   describe('Invalid 6 string RGB colors', () => {
-    mappableArray(20)
+    sizedArray(20)
       .map(() => randString('GHIJKLMNOPpo_+!&^%$', 6))
       .map(testColor(false))
   })
