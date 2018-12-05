@@ -1,5 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`A Text component decorated 1`] = `
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+}
+
+.c0 {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-decoration: line-through;
+  text-decoration: line-through;
+  text-transform: none;
+  text-align: left;
+  color: #262D33;
+}
+
+<span
+  className="c0 c1"
+>
+  Hello
+</span>
+`;
+
 exports[`A Text component resized 1`] = `
 .c1 {
   border: 0;

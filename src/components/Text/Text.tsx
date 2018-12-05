@@ -1,3 +1,4 @@
+import { TextDecorationProperty } from 'csstype'
 import * as React from 'react'
 import { css, RampSizes, styled, Theme, withTheme } from '../../style'
 import { ThemedProps } from '../../types'
@@ -22,6 +23,8 @@ export interface TextProps
   element?: TextElements
   /** Align text */
   align?: TextAlignments
+  /** Set text decoration property */
+  decoration?: TextDecorationProperty
   /** Size mapping from type ramp */
   size?: RampSizes
   /** Font weight */
@@ -109,6 +112,7 @@ function getFontWeight(theme: Theme, weight: TextWeights | undefined) {
 const InternalText: React.SFC<ThemedProps<TextProps>> = ({
   element,
   align,
+  decoration,
   size,
   weight,
   textTransform,
@@ -134,6 +138,7 @@ export const Text = styled<TextProps>(withTheme(InternalText))`
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-decoration: ${props => props.decoration};
   ${props => getTextTransform(props.textTransform)};
   ${props => alignment(props.align)};
   ${props => getWrap(props.wrap || false)};

@@ -2,6 +2,7 @@ import { Text } from './Text'
 
 import {
   snapshotTestTextComponent,
+  snapshotTestTextComponentDecoration,
   snapshotTestTextComponentFontRamp,
   snapshotTestTextComponentFontWeight,
   snapshotTestTextComponentTransform,
@@ -31,4 +32,8 @@ test('A Text component text transformed', () => {
 
 test('A Text component wrapped', () => {
   snapshotTestTextComponentWrap(Text)
+})
+
+test('A Text component decorated', () => {
+  snapshotTestTextComponentDecoration(Text)
 })

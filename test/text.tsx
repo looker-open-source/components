@@ -63,3 +63,13 @@ export const snapshotTestTextComponentVariant = (
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
 }
+
+export const snapshotTestTextComponentDecoration = (
+  Component: React.SFC<TextProps> | React.ComponentClass
+) => {
+  const component = createWithTheme(
+    <Component decoration="line-through">Hello</Component>
+  )
+  const tree = component.toJSON()
+  expect(tree).toMatchSnapshot()
+}

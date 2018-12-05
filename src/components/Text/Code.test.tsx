@@ -1,5 +1,6 @@
 import {
   snapshotTestTextComponent,
+  snapshotTestTextComponentDecoration,
   snapshotTestTextComponentFontRamp,
   snapshotTestTextComponentFontWeight,
   snapshotTestTextComponentTransform,
@@ -30,4 +31,8 @@ test('A Code component text transformed', () => {
 
 test('A Code component wrapped', () => {
   snapshotTestTextComponentWrap(Code)
+})
+
+test('A Text component decorated', () => {
+  snapshotTestTextComponentDecoration(Code)
 })

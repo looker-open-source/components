@@ -2,6 +2,7 @@ import * as React from 'react'
 import {
   snapshotTestTextComponent,
   snapshotTestTextComponentAlign,
+  snapshotTestTextComponentDecoration,
   snapshotTestTextComponentFontRamp,
   snapshotTestTextComponentFontWeight,
   snapshotTestTextComponentTransform,
@@ -41,4 +42,8 @@ test('A Paragraph component Aligned', () => {
 
 test('A Text component wrapped', () => {
   snapshotTestTextComponentWrap(Paragraph)
+})
+
+test('A Text component decorated', () => {
+  snapshotTestTextComponentDecoration(Paragraph)
 })
