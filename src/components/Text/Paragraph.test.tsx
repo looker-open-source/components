@@ -1,12 +1,14 @@
+import * as React from 'react'
 import {
   snapshotTestTextComponent,
   snapshotTestTextComponentAlign,
   snapshotTestTextComponentFontRamp,
   snapshotTestTextComponentFontWeight,
   snapshotTestTextComponentTransform,
-  snapshotTestTextComponentTruncate,
   snapshotTestTextComponentVariant,
+  snapshotTestTextComponentWrap,
 } from '../../../test/text'
+import { assertSnapshot } from '../../../test/utils/snapshot'
 import { Paragraph } from './Paragraph'
 
 test('A default Paragraph component', () => {
@@ -21,18 +23,22 @@ test('A Paragrapht component weight', () => {
   snapshotTestTextComponentFontWeight(Paragraph)
 })
 
-test('A Text component tuncated', () => {
-  snapshotTestTextComponentTruncate(Paragraph)
+test('A Paragraph component tuncated', () => {
+  assertSnapshot(<Paragraph truncate>Hello</Paragraph>)
 })
 
 test('A Paragraph component with variant', () => {
   snapshotTestTextComponentVariant(Paragraph)
 })
 
-test('A Paragraph component transformed', () => {
+test('A Paragraph component text transformed', () => {
   snapshotTestTextComponentTransform(Paragraph)
 })
 
 test('A Paragraph component Aligned', () => {
   snapshotTestTextComponentAlign(Paragraph)
+})
+
+test('A Text component wrapped', () => {
+  snapshotTestTextComponentWrap(Paragraph)
 })

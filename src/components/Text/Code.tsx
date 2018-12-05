@@ -1,6 +1,12 @@
-import { styled } from '../../style'
-import { Text } from '../Text/Text'
+import * as React from 'react'
+import { theme } from '../../style'
+import { Text, TextProps } from '../Text/Text'
 
-export const Code = styled(Text)`
-  font-family: ${props => props.theme.fonts.code};
-`.withComponent('code')
+const InternalCode: React.SFC<TextProps> = ({ ...props }) => {
+  return (
+    <Text element="code" fontFamily={theme.fonts.code} {...props}>
+      {props.children}
+    </Text>
+  )
+}
+export const Code = InternalCode

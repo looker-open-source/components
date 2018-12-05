@@ -11,11 +11,10 @@ const StatusAndResources = require('../../../styleguide_components/StatusAndReso
 
 ### Text Element
 
-By default the `<Text />` component will render text wrapped in a `<div>`,  if you need another html element for semantic purposes you can use the `element` property
+By default the `<Text />` component will render text wrapped in a `<span>`,  if you need another html element for semantic purposes you can use the `element` property
 
 ```js
-<Text>I get wrapped in a div</Text>
-<Span>Wrapped in a span</Span>
+<Text>By default I am a span</Text>
 <Paragraph>Wrapped in a paragraph tag</Paragraph>
 <Code>Wrapped in a code tag</Code>
 ```
@@ -44,31 +43,7 @@ Common patterns for text is to adjust the font weight and transform the text. Be
   <Text size="small" textTransform="caps">Some metadata about this story</Text>
 ```
 
-<div class="doc-section-divider"></div>
 
-### Text Alignment
-
-You can use the `align` property to change the alignment of the rendered text, below is an example with aligned text put into `<Card />`s.
-
-```js
-<div>
-  <Card>
-    <CardContent>
-      <Text> I am aligned left by default</Text>
-    </CardContent>
-  </Card>
-  <Card>
-    <CardContent>
-      <Text align="center">This is how you can center align text</Text>
-    </CardContent>
-  </Card>
-  <Card>
-    <CardContent>
-      <Text align="right">This is how you can right align text</Text>
-    </CardContent>
-  </Card>
-</div>
-```
 
 <div class="doc-section-divider"></div>
 
@@ -87,12 +62,35 @@ Lens provides a few modes for the `<Text />` component based on common patterns 
 
 <div class="doc-section-divider"></div>
 
+### Text Alignment
+
+You can use the `align` property to change the alignment of the rendered text, below is an example with aligned text put into `<Card />`s.
+
+```js
+<div>
+  <Card>
+    <CardContent>
+      <Paragraph> I am aligned left by default</Paragraph>
+    </CardContent>
+  </Card>
+  <Card>
+    <CardContent>
+      <Paragraph align="center">This is how you can center align Paragraph text</Paragraph>
+    </CardContent>
+  </Card>
+  <Card>
+    <CardContent>
+      <Paragraph align="right">This is how you can right align Paragraph text</Paragraph>
+    </CardContent>
+  </Card>
+</div>
+```
 ### Truncate
 
-At times you may want your `<Text />` to truncate instead of the text wrapping, the `truncate` property will do that for you.
+At times you may want your `<Paragraph />` to truncate instead of the text wrapping, the `truncate` property will do that for you.
 
 ```js
 <div style={{width: "40%"}}>
-<Text truncate>Hello there I am some text that will truncate 🍕🥑🍪🥓</Text>
+<Paragraph truncate>Hello there I am some text that will truncate 🍕🥑🍪🥓</Paragraph>
 </div>
 ```

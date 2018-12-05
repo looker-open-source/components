@@ -1,5 +1,12 @@
 import * as React from 'react'
-import { css, RampSizes, styled, Theme, truncate, withTheme } from '../../style'
+import {
+  css,
+  RampSizes,
+  shouldTruncate,
+  styled,
+  Theme,
+  withTheme,
+} from '../../style'
 import { ThemedProps } from '../../types'
 import { Box, BoxPropsWithout } from '../Box'
 
@@ -140,5 +147,5 @@ export const Heading = styled<HeadingProps>(withTheme(InternalHeading))`
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   ${props => textTransform(props.transform)};
-  ${props => truncate(props.truncate || false)};
+  ${props => shouldTruncate(props.truncate || false)};
 `

@@ -2,8 +2,7 @@ import * as React from 'react'
 import { Box } from '../src/components/Box/Box'
 import { List } from '../src/components/List/List'
 import { ListItem } from '../src/components/List/ListItem'
-import { Code } from '../src/components/Text/Code'
-import { Span } from '../src/components/Text/Span'
+import { Code, Text } from '../src/components/Text'
 
 const spacingTypes = [
   { value: 'm', label: 'Margin' },
@@ -39,18 +38,18 @@ export interface ColumnExample {
 const SpaceListHeader = (text: string, defaultLabel?: string) => {
   return (
     <Box mb="medium">
-      <Span
+      <Text
         size="medium"
         variant="secondary"
         textTransform="upper"
         weight="semiBold"
       >
         {text}
-      </Span>
+      </Text>
       <Box is="span" ml="xsmall">
-        <Span size="xsmall" variant="subdued">
+        <Text size="xsmall" variant="subdued">
           {defaultLabel}
-        </Span>
+        </Text>
       </Box>
     </Box>
   )
@@ -68,11 +67,11 @@ const ListRender = (
         <Code size="xsmall">{value}</Code>
       </Box>
       <Box ml="small" is="span">
-        <Span size="small">{label}</Span>
+        <Text size="small">{label}</Text>
         <Box is="span" ml="xsmall">
-          <Span size="xsmall" variant="subdued">
+          <Text size="xsmall" variant="subdued">
             {defaultLabel}
-          </Span>
+          </Text>
         </Box>
       </Box>
     </ListItem>
