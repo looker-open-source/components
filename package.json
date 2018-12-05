@@ -19,12 +19,15 @@
     "url": "git+https://github.com/looker/lens.git"
   },
   "author": "",
-  "license": "ISC",
+  "license": "UNLICENSED",
   "bugs": {
     "url": "https://github.com/looker/lens/issues"
   },
   "homepage": "https://github.com/looker/lens#readme",
   "dependencies": {
+    "bourbon": "5.1.0"
+  },
+  "devDependecies": {
     "angular": "1.5.8",
     "angular-ui-router": "^0.4.2",
     "babel-core": "^6.3.26",

@@ -1,13 +1,6696 @@
-!function(t){function e(o){if(n[o])return n[o].exports;var i=n[o]={exports:{},id:o,loaded:!1};return t[o].call(i.exports,i,i.exports,e),i.loaded=!0,i.exports}var n={};return e.m=t,e.c=n,e.p="",e(0)}([function(t,e,n){t.exports=n(5)},function(t,e){/**
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId])
+/******/ 			return installedModules[moduleId].exports;
+
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			exports: {},
+/******/ 			id: moduleId,
+/******/ 			loaded: false
+/******/ 		};
+
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+
+/******/ 		// Flag the module as loaded
+/******/ 		module.loaded = true;
+
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+
+
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__(1);
+
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	__webpack_require__(2);
+	__webpack_require__(41);
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	var m;
+
+	__webpack_require__(3);
+
+	__webpack_require__(4);
+
+	__webpack_require__(5);
+
+	__webpack_require__(6);
+
+	__webpack_require__(7);
+
+	__webpack_require__(8);
+
+	__webpack_require__(9);
+
+	__webpack_require__(10);
+
+	__webpack_require__(11);
+
+	__webpack_require__(12);
+
+	__webpack_require__(13);
+
+	__webpack_require__(14);
+
+	__webpack_require__(15);
+
+	__webpack_require__(16);
+
+	__webpack_require__(30);
+
+	__webpack_require__(37);
+
+	module.exports = m = angular.module("Lens", ["ui.router", "lens.lens_main", "lens.main_nav", "lens.page_header", "lens.page_footer", "lens.subnav", "lens.app_config", "lens.current_user", "lens.index", "lens.login", "lens.getting_started", "lens.installation", "lens.release_notes", "lens.atoms", "lens.components", "lens.guidelines"]);
+
+	m.config([
+	  '$stateProvider', '$locationProvider', '$urlRouterProvider', function($stateProvider, $locationProvider, $urlRouterProvider) {
+	    var authenticate, blockGridState, bodyCopyState, bordersState, boxPropertiesState, buttonsState, colorsState, effectsState, environmentPropertiesState, flexboxState, formsState, gettingStartedState, gridState, headingsState, iconsState, indexState, installationState, layoutState, loginState, markupState, modalsState, releaseNotesState, responsiveState, tablesState, typographyState;
+	    $locationProvider.html5Mode(true);
+	    $urlRouterProvider.otherwise('/');
+	    authenticate = [
+	      '$q', 'AppConfig', 'CurrentUser', '$state', function($q, AppConfig, CurrentUser, $state) {
+	        return AppConfig.get().then(function(config) {
+	          if (config.isLocalDevelopmentEnvironment) {
+	            return $q.when();
+	          } else {
+	            return CurrentUser.get().then(function(user) {
+	              if (user) {
+	                return $q.when();
+	              } else {
+	                $state.go('login');
+	                return $q.reject();
+	              }
+	            })["catch"](function(error) {
+	              console.error(error);
+	              $state.go('login');
+	              return $q.reject();
+	            });
+	          }
+	        });
+	      }
+	    ];
+	    loginState = {
+	      name: 'login',
+	      url: '/login',
+	      template: '<login></login>',
+	      title: 'Login to view Lens',
+	      isLogin: true
+	    };
+	    indexState = {
+	      name: 'index',
+	      url: '/',
+	      template: '<index></index>',
+	      title: 'Welcome to Lens',
+	      resolve: {
+	        authenticate: authenticate
+	      }
+	    };
+	    gettingStartedState = {
+	      name: 'getting-started',
+	      url: '/getting-started',
+	      template: '<getting-started></getting-started>',
+	      title: 'Getting Started',
+	      resolve: {
+	        authenticate: authenticate
+	      }
+	    };
+	    markupState = {
+	      name: 'markup',
+	      url: '/guidelines/markup',
+	      template: '<markup></markup>',
+	      title: 'Markup',
+	      resolve: {
+	        authenticate: authenticate
+	      }
+	    };
+	    responsiveState = {
+	      name: 'responsive',
+	      url: '/guidelines/responsive',
+	      template: '<responsive></responsive>',
+	      title: 'Responsive',
+	      resolve: {
+	        authenticate: authenticate
+	      }
+	    };
+	    environmentPropertiesState = {
+	      name: 'environment-properties',
+	      url: '/guidelines/environment-properties',
+	      template: '<environment-properties></environment-properties>',
+	      title: 'Environment Properties',
+	      resolve: {
+	        authenticate: authenticate
+	      }
+	    };
+	    buttonsState = {
+	      name: 'buttons',
+	      url: '/components/buttons',
+	      template: '<buttons></buttons>',
+	      title: 'Buttons',
+	      resolve: {
+	        authenticate: authenticate
+	      }
+	    };
+	    formsState = {
+	      name: 'forms',
+	      url: '/components/forms',
+	      template: '<forms></forms>',
+	      title: 'Forms',
+	      resolve: {
+	        authenticate: authenticate
+	      }
+	    };
+	    tablesState = {
+	      name: 'tables',
+	      url: '/components/tables',
+	      template: '<tables></tables>',
+	      title: 'Tables',
+	      resolve: {
+	        authenticate: authenticate
+	      }
+	    };
+	    modalsState = {
+	      name: 'modals',
+	      url: '/components/modals',
+	      template: '<modals></modals>',
+	      title: 'Modals',
+	      resolve: {
+	        authenticate: authenticate
+	      }
+	    };
+	    bodyCopyState = {
+	      name: 'body-copy',
+	      url: '/components/body-copy',
+	      template: '<body-copy></body-copy>',
+	      title: 'Body Copy',
+	      resolve: {
+	        authenticate: authenticate
+	      }
+	    };
+	    headingsState = {
+	      name: 'headings',
+	      url: '/components/headings',
+	      template: '<headings></headings>',
+	      title: 'Headings',
+	      resolve: {
+	        authenticate: authenticate
+	      }
+	    };
+	    blockGridState = {
+	      name: 'block-grid',
+	      url: '/atoms/block-grid',
+	      template: '<block-grid></block-grid>',
+	      title: 'Block Grid',
+	      resolve: {
+	        authenticate: authenticate
+	      }
+	    };
+	    bordersState = {
+	      name: 'borders',
+	      url: '/atoms/borders',
+	      template: '<borders></borders>',
+	      title: 'Borders',
+	      resolve: {
+	        authenticate: authenticate
+	      }
+	    };
+	    boxPropertiesState = {
+	      name: 'spacing-sizing',
+	      url: '/atoms/spacing-sizing',
+	      template: '<spacing-sizing></spacing-sizing>',
+	      title: 'Spacing and Sizing',
+	      resolve: {
+	        authenticate: authenticate
+	      }
+	    };
+	    colorsState = {
+	      name: 'colors',
+	      url: '/atoms/colors',
+	      template: '<colors></colors>',
+	      title: 'Colors',
+	      resolve: {
+	        authenticate: authenticate
+	      }
+	    };
+	    effectsState = {
+	      name: 'effects',
+	      url: '/atoms/effects',
+	      template: '<effects></effects>',
+	      title: 'Effects',
+	      resolve: {
+	        authenticate: authenticate
+	      }
+	    };
+	    flexboxState = {
+	      name: 'flexbox',
+	      url: '/atoms/flexbox',
+	      template: '<flexbox></flexbox>',
+	      title: 'Flexbox',
+	      resolve: {
+	        authenticate: authenticate
+	      }
+	    };
+	    gridState = {
+	      name: 'grid',
+	      url: '/atoms/grid',
+	      template: '<grid></grid>',
+	      title: 'Grid',
+	      resolve: {
+	        authenticate: authenticate
+	      }
+	    };
+	    iconsState = {
+	      name: 'icons',
+	      url: '/atoms/icons',
+	      template: '<icons></icons>',
+	      title: 'Icons',
+	      resolve: {
+	        authenticate: authenticate
+	      }
+	    };
+	    layoutState = {
+	      name: 'layout',
+	      url: '/atoms/layout',
+	      template: '<layout></layout>',
+	      title: 'Layout',
+	      resolve: {
+	        authenticate: authenticate
+	      }
+	    };
+	    typographyState = {
+	      name: 'typography',
+	      url: '/atoms/typography',
+	      template: '<typography></typography>',
+	      title: 'Typography',
+	      resolve: {
+	        authenticate: authenticate
+	      }
+	    };
+	    installationState = {
+	      name: 'installation',
+	      url: '/installation',
+	      template: '<installation></installation>',
+	      title: 'Installation',
+	      resolve: {
+	        authenticate: authenticate
+	      }
+	    };
+	    releaseNotesState = {
+	      name: 'release-notes',
+	      url: '/release-notes',
+	      template: '<release-notes></release-notes>',
+	      title: 'Release Notes',
+	      resolve: {
+	        authenticate: authenticate
+	      }
+	    };
+	    $stateProvider.state(loginState);
+	    $stateProvider.state(indexState);
+	    $stateProvider.state(gettingStartedState);
+	    $stateProvider.state(markupState);
+	    $stateProvider.state(responsiveState);
+	    $stateProvider.state(environmentPropertiesState);
+	    $stateProvider.state(buttonsState);
+	    $stateProvider.state(formsState);
+	    $stateProvider.state(tablesState);
+	    $stateProvider.state(modalsState);
+	    $stateProvider.state(bodyCopyState);
+	    $stateProvider.state(headingsState);
+	    $stateProvider.state(blockGridState);
+	    $stateProvider.state(bordersState);
+	    $stateProvider.state(boxPropertiesState);
+	    $stateProvider.state(colorsState);
+	    $stateProvider.state(effectsState);
+	    $stateProvider.state(flexboxState);
+	    $stateProvider.state(gridState);
+	    $stateProvider.state(iconsState);
+	    $stateProvider.state(layoutState);
+	    $stateProvider.state(typographyState);
+	    $stateProvider.state(installationState);
+	    $stateProvider.state(releaseNotesState);
+	    return this;
+	  }
+	]);
+
+	m.run(function() {});
+
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+	/**
 	 * State-based routing for AngularJS
 	 * @version v0.4.2
 	 * @link http://angular-ui.github.com/
 	 * @license MIT License, http://www.opensource.org/licenses/MIT
 	 */
-"undefined"!=typeof t&&"undefined"!=typeof e&&t.exports===e&&(t.exports="ui.router"),function(t,e,n){"use strict";function o(t,e){return V(new(V(function(){},{prototype:t})),e)}function i(t){return H(arguments,function(e){e!==t&&H(e,function(e,n){t.hasOwnProperty(n)||(t[n]=e)})}),t}function l(t,e){var n=[];for(var o in t.path){if(t.path[o]!==e.path[o])break;n.push(t.path[o])}return n}function a(t){if(Object.keys)return Object.keys(t);var e=[];return H(t,function(t,n){e.push(n)}),e}function r(t,e){if(Array.prototype.indexOf)return t.indexOf(e,Number(arguments[2])||0);var n=t.length>>>0,o=Number(arguments[2])||0;for(o=o<0?Math.ceil(o):Math.floor(o),o<0&&(o+=n);o<n;o++)if(o in t&&t[o]===e)return o;return-1}function s(t,e,n,o){var i,s=l(n,o),d={},c=[];for(var u in s)if(s[u]&&s[u].params&&(i=a(s[u].params),i.length))for(var g in i)r(c,i[g])>=0||(c.push(i[g]),d[i[g]]=t[i[g]]);return V({},d,e)}function d(t,e,n){if(!n){n=[];for(var o in t)n.push(o)}for(var i=0;i<n.length;i++){var l=n[i];if(t[l]!=e[l])return!1}return!0}function c(t,e){var n={};return H(t,function(t){n[t]=e[t]}),n}function u(t){var e={},n=Array.prototype.concat.apply(Array.prototype,Array.prototype.slice.call(arguments,1));return H(n,function(n){n in t&&(e[n]=t[n])}),e}function g(t){var e={},n=Array.prototype.concat.apply(Array.prototype,Array.prototype.slice.call(arguments,1));for(var o in t)r(n,o)==-1&&(e[o]=t[o]);return e}function p(t,e){var n=U(t),o=n?[]:{};return H(t,function(t,i){e(t,i)&&(o[n?o.length:i]=t)}),o}function h(t,e){var n=U(t)?[]:{};return H(t,function(t,o){n[o]=e(t,o)}),n}function m(t){return t.then(n,function(){})&&t}function f(t,e){var o=1,l=2,s={},d=[],c=s,u=V(t.when(s),{$$promises:s,$$values:s});this.study=function(s){function p(t,n){if(x[n]!==l){if(v.push(n),x[n]===o)throw v.splice(0,r(v,n)),new Error("Cyclic dependency: "+v.join(" -> "));if(x[n]=o,O(t))b.push(n,[function(){return e.get(t)}],d);else{var i=e.annotate(t);H(i,function(t){t!==n&&s.hasOwnProperty(t)&&p(s[t],t)}),b.push(n,t,i)}v.pop(),x[n]=l}}function h(t){return F(t)&&t.then&&t.$$promises}if(!F(s))throw new Error("'invocables' must be an object");var f=a(s||{}),b=[],v=[],x={};return H(s,p),s=v=x=null,function(o,l,a){function r(){--w||(k||i(y,l.$$values),v.$$values=y,v.$$promises=v.$$promises||!0,delete v.$$inheritedValues,p.resolve(y))}function s(t){v.$$failure=t,p.reject(t)}function d(n,i,l){function d(t){u.reject(t),s(t)}function c(){if(!j(v.$$failure))try{u.resolve(e.invoke(i,a,y)),u.promise.then(function(t){y[n]=t,r()},d)}catch(t){d(t)}}var u=t.defer(),g=0;H(l,function(t){x.hasOwnProperty(t)&&!o.hasOwnProperty(t)&&(g++,x[t].then(function(e){y[t]=e,--g||c()},d))}),g||c(),x[n]=m(u.promise)}if(h(o)&&a===n&&(a=l,l=o,o=null),o){if(!F(o))throw new Error("'locals' must be an object")}else o=c;if(l){if(!h(l))throw new Error("'parent' must be a promise returned by $resolve.resolve()")}else l=u;var p=t.defer(),v=m(p.promise),x=v.$$promises={},y=V({},o),w=1+b.length/3,k=!1;if(m(v),j(l.$$failure))return s(l.$$failure),v;l.$$inheritedValues&&i(y,g(l.$$inheritedValues,f)),V(x,l.$$promises),l.$$values?(k=i(y,g(l.$$values,f)),v.$$inheritedValues=g(l.$$values,f),r()):(l.$$inheritedValues&&(v.$$inheritedValues=g(l.$$inheritedValues,f)),l.then(r,s));for(var $=0,_=b.length;$<_;$+=3)o.hasOwnProperty(b[$])?r():d(b[$],b[$+1],b[$+2]);return v}},this.resolve=function(t,e,n,o){return this.study(t)(e,n,o)}}function b(){var t=e.version.minor<3;this.shouldUnsafelyUseHttp=function(e){t=!!e},this.$get=["$http","$templateCache","$injector",function(e,n,o){return new v(e,n,o,t)}]}function v(t,e,n,o){this.fromConfig=function(t,e,n){return j(t.template)?this.fromString(t.template,e):j(t.templateUrl)?this.fromUrl(t.templateUrl,e):j(t.templateProvider)?this.fromProvider(t.templateProvider,e,n):null},this.fromString=function(t,e){return q(t)?t(e):t},this.fromUrl=function(i,l){return q(i)&&(i=i(l)),null==i?null:o?t.get(i,{cache:e,headers:{Accept:"text/html"}}).then(function(t){return t.data}):n.get("$templateRequest")(i)},this.fromProvider=function(t,e,o){return n.invoke(t,null,o||{params:e})}}function x(t,e,i){function l(e,n,o,i){if(f.push(e),h[e])return h[e];if(!/^\w+([-.]+\w+)*(?:\[\])?$/.test(e))throw new Error("Invalid parameter name '"+e+"' in pattern '"+t+"'");if(m[e])throw new Error("Duplicate parameter name '"+e+"' in pattern '"+t+"'");return m[e]=new J.Param(e,n,o,i),m[e]}function a(t,e,n,o){var i=["",""],l=t.replace(/[\\\[\]\^$*+?.()|{}]/g,"\\$&");if(!e)return l;switch(n){case!1:i=["(",")"+(o?"?":"")];break;case!0:l=l.replace(/\/$/,""),i=["(?:/(",")|/)?"];break;default:i=["("+n+"|",")?"]}return l+i[0]+e+i[1]}function r(i,l){var a,r,s,d,c;return a=i[2]||i[3],c=e.params[a],s=t.substring(g,i.index),r=l?i[4]:i[4]||("*"==i[1]?".*":null),r&&(d=J.type(r)||o(J.type("string"),{pattern:new RegExp(r,e.caseInsensitive?"i":n)})),{id:a,regexp:r,segment:s,type:d,cfg:c}}e=V({params:{}},F(e)?e:{});var s,d=/([:*])([\w\[\]]+)|\{([\w\[\]]+)(?:\:\s*((?:[^{}\\]+|\\.|\{(?:[^{}\\]+|\\.)*\})+))?\}/g,c=/([:]?)([\w\[\].-]+)|\{([\w\[\].-]+)(?:\:\s*((?:[^{}\\]+|\\.|\{(?:[^{}\\]+|\\.)*\})+))?\}/g,u="^",g=0,p=this.segments=[],h=i?i.params:{},m=this.params=i?i.params.$$new():new J.ParamSet,f=[];this.source=t;for(var b,v,x;(s=d.exec(t))&&(b=r(s,!1),!(b.segment.indexOf("?")>=0));)v=l(b.id,b.type,b.cfg,"path"),u+=a(b.segment,v.type.pattern.source,v.squash,v.isOptional),p.push(b.segment),g=d.lastIndex;x=t.substring(g);var y=x.indexOf("?");if(y>=0){var w=this.sourceSearch=x.substring(y);if(x=x.substring(0,y),this.sourcePath=t.substring(0,g+y),w.length>0)for(g=0;s=c.exec(w);)b=r(s,!0),v=l(b.id,b.type,b.cfg,"search"),g=d.lastIndex}else this.sourcePath=t,this.sourceSearch="";u+=a(x)+(e.strict===!1?"/?":"")+"$",p.push(x),this.regexp=new RegExp(u,e.caseInsensitive?"i":n),this.prefix=p[0],this.$$paramNames=f}function y(t){V(this,t)}function w(){function t(t){return null!=t?t.toString().replace(/(~|\/)/g,function(t){return{"~":"~~","/":"~2F"}[t]}):t}function i(t){return null!=t?t.toString().replace(/(~~|~2F)/g,function(t){return{"~~":"~","~2F":"/"}[t]}):t}function l(){return{strict:m,caseInsensitive:g}}function s(t){return q(t)||U(t)&&q(t[t.length-1])}function d(){for(;k.length;){var t=k.shift();if(t.pattern)throw new Error("You cannot override a type's .pattern at runtime.");e.extend(b[t.name],u.invoke(t.def))}}function c(t){V(this,t||{})}J=this;var u,g=!1,m=!0,f=!1,b={},v=!0,k=[],$={string:{encode:t,decode:i,is:function(t){return null==t||!j(t)||"string"==typeof t},pattern:/[^\/]*/},int:{encode:t,decode:function(t){return parseInt(t,10)},is:function(t){return t!==n&&null!==t&&this.decode(t.toString())===t},pattern:/\d+/},bool:{encode:function(t){return t?1:0},decode:function(t){return 0!==parseInt(t,10)},is:function(t){return t===!0||t===!1},pattern:/0|1/},date:{encode:function(t){return this.is(t)?[t.getFullYear(),("0"+(t.getMonth()+1)).slice(-2),("0"+t.getDate()).slice(-2)].join("-"):n},decode:function(t){if(this.is(t))return t;var e=this.capture.exec(t);return e?new Date(e[1],e[2]-1,e[3]):n},is:function(t){return t instanceof Date&&!isNaN(t.valueOf())},equals:function(t,e){return this.is(t)&&this.is(e)&&t.toISOString()===e.toISOString()},pattern:/[0-9]{4}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[1-2][0-9]|3[0-1])/,capture:/([0-9]{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])/},json:{encode:e.toJson,decode:e.fromJson,is:e.isObject,equals:e.equals,pattern:/[^\/]*/},any:{encode:e.identity,decode:e.identity,equals:e.equals,pattern:/.*/}};w.$$getDefaultValue=function(t){if(!s(t.value))return t.value;if(!u)throw new Error("Injectable functions cannot be called at configuration time");return u.invoke(t.value)},this.caseInsensitive=function(t){return j(t)&&(g=t),g},this.strictMode=function(t){return j(t)&&(m=t),m},this.defaultSquashPolicy=function(t){if(!j(t))return f;if(t!==!0&&t!==!1&&!O(t))throw new Error("Invalid squash policy: "+t+". Valid policies: false, true, arbitrary-string");return f=t,t},this.compile=function(t,e){return new x(t,V(l(),e))},this.isMatcher=function(t){if(!F(t))return!1;var e=!0;return H(x.prototype,function(n,o){q(n)&&(e=e&&j(t[o])&&q(t[o]))}),e},this.type=function(t,e,n){if(!j(e))return b[t];if(b.hasOwnProperty(t))throw new Error("A type named '"+t+"' has already been defined.");return b[t]=new y(V({name:t},e)),n&&(k.push({name:t,def:n}),v||d()),this},H($,function(t,e){b[e]=new y(V({name:e},t))}),b=o(b,{}),this.$get=["$injector",function(t){return u=t,v=!1,d(),H($,function(t,e){b[e]||(b[e]=new y(t))}),this}],this.Param=function(t,o,i,l){function d(t){var e=F(t)?a(t):[],n=r(e,"value")===-1&&r(e,"type")===-1&&r(e,"squash")===-1&&r(e,"array")===-1;return n&&(t={value:t}),t.$$fn=s(t.value)?t.value:function(){return t.value},t}function c(n,o,i){if(n.type&&o)throw new Error("Param '"+t+"' has two type configurations.");return o?o:n.type?e.isString(n.type)?b[n.type]:n.type instanceof y?n.type:new y(n.type):"config"===i?b.any:b.string}function g(){var e={array:"search"===l&&"auto"},n=t.match(/\[\]$/)?{array:!0}:{};return V(e,n,i).array}function m(t,e){var n=t.squash;if(!e||n===!1)return!1;if(!j(n)||null==n)return f;if(n===!0||O(n))return n;throw new Error("Invalid squash policy: '"+n+"'. Valid policies: false, true, or arbitrary string")}function v(t,e,o,i){var l,a,s=[{from:"",to:o||e?n:""},{from:null,to:o||e?n:""}];return l=U(t.replace)?t.replace:[],O(i)&&l.push({from:i,to:n}),a=h(l,function(t){return t.from}),p(s,function(t){return r(a,t.from)===-1}).concat(l)}function x(){if(!u)throw new Error("Injectable functions cannot be called at configuration time");var t=u.invoke(i.$$fn);if(null!==t&&t!==n&&!$.type.is(t))throw new Error("Default value ("+t+") for parameter '"+$.id+"' is not an instance of Type ("+$.type.name+")");return t}function w(t){function e(t){return function(e){return e.from===t}}function n(t){var n=h(p($.replace,e(t)),function(t){return t.to});return n.length?n[0]:t}return t=n(t),j(t)?$.type.$normalize(t):x()}function k(){return"{Param:"+t+" "+o+" squash: '"+S+"' optional: "+C+"}"}var $=this;i=d(i),o=c(i,o,l);var _=g();o=_?o.$asArray(_,"search"===l):o,"string"!==o.name||_||"path"!==l||i.value!==n||(i.value="");var C=i.value!==n,S=m(i,C),z=v(i,_,C,S);V(this,{id:t,type:o,location:l,array:_,squash:S,replace:z,isOptional:C,value:w,dynamic:n,config:i,toString:k})},c.prototype={$$new:function(){return o(this,V(new c,{$$parent:this}))},$$keys:function(){for(var t=[],e=[],n=this,o=a(c.prototype);n;)e.push(n),n=n.$$parent;return e.reverse(),H(e,function(e){H(a(e),function(e){r(t,e)===-1&&r(o,e)===-1&&t.push(e)})}),t},$$values:function(t){var e={},n=this;return H(n.$$keys(),function(o){e[o]=n[o].value(t&&t[o])}),e},$$equals:function(t,e){var n=!0,o=this;return H(o.$$keys(),function(i){var l=t&&t[i],a=e&&e[i];o[i].type.equals(l,a)||(n=!1)}),n},$$validates:function(t){var o,i,l,a,r,s=this.$$keys();for(o=0;o<s.length&&(i=this[s[o]],l=t[s[o]],l!==n&&null!==l||!i.isOptional);o++){if(a=i.type.$normalize(l),!i.type.is(a))return!1;if(r=i.type.encode(a),e.isString(r)&&!i.type.pattern.exec(r))return!1}return!0},$$parent:n},this.ParamSet=c}function k(t,o){function i(t){var e=/^\^((?:\\[^a-zA-Z0-9]|[^\\\[\]\^$*+?.()|{}]+)*)/.exec(t.source);return null!=e?e[1].replace(/\\(.)/g,"$1"):""}function l(t,e){return t.replace(/\$(\$|\d{1,2})/,function(t,n){return e["$"===n?0:Number(n)]})}function a(t,e,n){if(!n)return!1;var o=t.invoke(e,e,{$match:n});return!j(o)||o}function r(o,i,l,a,r){function g(t,e,n){return"/"===f?t:e?f.slice(0,-1)+t:n?f.slice(1)+t:t}function p(t){function e(t){var e=t(l,o);return!!e&&(O(e)&&o.replace().url(e),!0)}if(!t||!t.defaultPrevented){m&&o.url()===m;m=n;var i,a=d.length;for(i=0;i<a;i++)if(e(d[i]))return;c&&e(c)}}function h(){return s=s||i.$on("$locationChangeSuccess",p)}var m,f=a.baseHref(),b=o.url();return u||h(),{sync:function(){p()},listen:function(){return h()},update:function(t){return t?void(b=o.url()):void(o.url()!==b&&(o.url(b),o.replace()))},push:function(t,e,i){var l=t.format(e||{});null!==l&&e&&e["#"]&&(l+="#"+e["#"]),o.url(l),m=i&&i.$$avoidResync?o.url():n,i&&i.replace&&o.replace()},href:function(n,i,l){if(!n.validates(i))return null;var a=t.html5Mode();e.isObject(a)&&(a=a.enabled),a=a&&r.history;var s=n.format(i);if(l=l||{},a||null===s||(s="#"+t.hashPrefix()+s),null!==s&&i&&i["#"]&&(s+="#"+i["#"]),s=g(s,a,l.absolute),!l.absolute||!s)return s;var d=!a&&s?"/":"",c=o.port();return c=80===c||443===c?"":":"+c,[o.protocol(),"://",o.host(),c,d,s].join("")}}}var s,d=[],c=null,u=!1;this.rule=function(t){if(!q(t))throw new Error("'rule' must be a function");return d.push(t),this},this.otherwise=function(t){if(O(t)){var e=t;t=function(){return e}}else if(!q(t))throw new Error("'rule' must be a function");return c=t,this},this.when=function(t,e){var n,r=O(e);if(O(t)&&(t=o.compile(t)),!r&&!q(e)&&!U(e))throw new Error("invalid 'handler' in when()");var s={matcher:function(t,e){return r&&(n=o.compile(e),e=["$match",function(t){return n.format(t)}]),V(function(n,o){return a(n,e,t.exec(o.path(),o.search()))},{prefix:O(t.prefix)?t.prefix:""})},regex:function(t,e){if(t.global||t.sticky)throw new Error("when() RegExp must not be global or sticky");return r&&(n=e,e=["$match",function(t){return l(n,t)}]),V(function(n,o){return a(n,e,t.exec(o.path()))},{prefix:i(t)})}},d={matcher:o.isMatcher(t),regex:t instanceof RegExp};for(var c in d)if(d[c])return this.rule(s[c](t,e));throw new Error("invalid 'what' in when()")},this.deferIntercept=function(t){t===n&&(t=!0),u=t},this.$get=r,r.$inject=["$location","$rootScope","$injector","$browser","$sniffer"]}function $(t,i){function l(t){return 0===t.indexOf(".")||0===t.indexOf("^")}function g(t,e){if(!t)return n;var o=O(t),i=o?t:t.name,a=l(i);if(a){if(!e)throw new Error("No reference point given for path '"+i+"'");e=g(e);for(var r=i.split("."),s=0,d=r.length,c=e;s<d;s++)if(""!==r[s]||0!==s){if("^"!==r[s])break;if(!c.parent)throw new Error("Path '"+i+"' not valid for state '"+e.name+"'");c=c.parent}else c=e;r=r.slice(s).join("."),i=c.name+(c.name&&r?".":"")+r}var u=S[i];return!u||!o&&(o||u!==t&&u.self!==t)?n:u}function p(t,e){z[t]||(z[t]=[]),z[t].push(e)}function f(t){for(var e=z[t]||[];e.length;)b(e.shift())}function b(e){e=o(e,{self:e,resolve:e.resolve||{},toString:function(){return this.name}});var n=e.name;if(!O(n)||n.indexOf("@")>=0)throw new Error("State must have a valid name");if(S.hasOwnProperty(n))throw new Error("State '"+n+"' is already defined");var i=n.indexOf(".")!==-1?n.substring(0,n.lastIndexOf(".")):O(e.parent)?e.parent:F(e.parent)&&O(e.parent.name)?e.parent.name:"";if(i&&!S[i])return p(i,e.self);for(var l in I)q(I[l])&&(e[l]=I[l](e,I.$delegates[l]));return S[n]=e,!e[E]&&e.url&&t.when(e.url,["$match","$stateParams",function(t,n){C.$current.navigable==e&&d(t,n)||C.transitionTo(e,t,{inherit:!0,location:!1})}]),f(n),e}function v(t){return t.indexOf("*")>-1}function x(t){for(var e=t.split("."),n=C.$current.name.split("."),o=0,i=e.length;o<i;o++)"*"===e[o]&&(n[o]="*");return"**"===e[0]&&(n=n.slice(r(n,e[1])),n.unshift("**")),"**"===e[e.length-1]&&(n.splice(r(n,e[e.length-2])+1,Number.MAX_VALUE),n.push("**")),e.length==n.length&&n.join("")===e.join("")}function y(t,e){return O(t)&&!j(e)?I[t]:q(e)&&O(t)?(I[t]&&!I.$delegates[t]&&(I.$delegates[t]=I[t]),I[t]=e,this):this}function w(t,e){return F(t)?e=t:e.name=t,b(e),this}function k(t,i,l,r,d,u,p,f,b){function y(e,n,o,l){var a=t.$broadcast("$stateNotFound",e,n,o);if(a.defaultPrevented)return p.update(),T;if(!a.retry)return null;if(l.$retry)return p.update(),A;var r=C.transition=i.when(a.retry);return r.then(function(){return r!==C.transition?(t.$broadcast("$stateChangeCancel",e.to,e.toParams,n,o),z):(e.options.$retry=!0,C.transitionTo(e.to,e.toParams,e.options))},function(){return T}),p.update(),r}function w(t,n,o,a,s,u){function g(){var n=[];return H(t.views,function(o,i){var a=o.resolve&&o.resolve!==t.resolve?o.resolve:{};a.$template=[function(){return l.load(i,{view:o,locals:s.globals,params:p,notify:u.notify})||""}],n.push(d.resolve(a,s.globals,s.resolve,t).then(function(n){if(q(o.controllerProvider)||U(o.controllerProvider)){var l=e.extend({},a,s.globals);n.$$controller=r.invoke(o.controllerProvider,null,l)}else n.$$controller=o.controller;n.$$state=t,n.$$controllerAs=o.controllerAs,n.$$resolveAs=o.resolveAs,s[i]=n}))}),i.all(n).then(function(){return s.globals})}var p=o?n:c(t.params.$$keys(),n),h={$stateParams:p};s.resolve=d.resolve(t.resolve,h,s.resolve,t);var m=[s.resolve.then(function(t){s.globals=t})];return a&&m.push(a),i.all(m).then(g).then(function(t){return s})}var k=new Error("transition superseded"),z=m(i.reject(k)),I=m(i.reject(new Error("transition prevented"))),T=m(i.reject(new Error("transition aborted"))),A=m(i.reject(new Error("transition failed")));return _.locals={resolve:null,globals:{$stateParams:{}}},C={params:{},current:_.self,$current:_,transition:null},C.reload=function(t){return C.transitionTo(C.current,u,{reload:t||!0,inherit:!1,notify:!0})},C.go=function(t,e,n){return C.transitionTo(t,e,V({inherit:!0,relative:C.$current},n))},C.transitionTo=function(e,n,l){n=n||{},l=V({location:!0,inherit:!1,relative:null,notify:!0,reload:!1,$retry:!1},l||{});var a,d=C.$current,h=C.params,f=d.path,b=g(e,l.relative),v=n["#"];if(!j(b)){var x={to:e,toParams:n,options:l},S=y(x,d.self,h,l);if(S)return S;if(e=x.to,n=x.toParams,l=x.options,b=g(e,l.relative),!j(b)){if(!l.relative)throw new Error("No such state '"+e+"'");throw new Error("Could not resolve '"+e+"' from state '"+l.relative+"'")}}if(b[E])throw new Error("Cannot transition to abstract state '"+e+"'");if(l.inherit&&(n=s(u,n||{},C.$current,b)),!b.params.$$validates(n))return A;n=b.params.$$values(n),e=b;var T=e.path,L=0,N=T[L],P=_.locals,R=[];if(l.reload){if(O(l.reload)||F(l.reload)){if(F(l.reload)&&!l.reload.name)throw new Error("Invalid reload state object");var M=l.reload===!0?f[0]:g(l.reload);if(l.reload&&!M)throw new Error("No such reload state '"+(O(l.reload)?l.reload:l.reload.name)+"'");for(;N&&N===f[L]&&N!==M;)P=R[L]=N.locals,L++,N=T[L]}}else for(;N&&N===f[L]&&N.ownParams.$$equals(n,h);)P=R[L]=N.locals,L++,N=T[L];if($(e,n,d,h,P,l))return v&&(n["#"]=v),C.params=n,G(C.params,u),G(c(e.params.$$keys(),u),e.locals.globals.$stateParams),l.location&&e.navigable&&e.navigable.url&&(p.push(e.navigable.url,n,{$$avoidResync:!0,replace:"replace"===l.location}),p.update(!0)),C.transition=null,i.when(C.current);if(n=c(e.params.$$keys(),n||{}),v&&(n["#"]=v),l.notify&&t.$broadcast("$stateChangeStart",e.self,n,d.self,h,l).defaultPrevented)return t.$broadcast("$stateChangeCancel",e.self,n,d.self,h),null==C.transition&&p.update(),I;for(var B=i.when(P),D=L;D<T.length;D++,N=T[D])P=R[D]=o(P),B=w(N,n,N===e,B,P,l);var q=C.transition=B.then(function(){var o,i,a;if(C.transition!==q)return t.$broadcast("$stateChangeCancel",e.self,n,d.self,h),z;for(o=f.length-1;o>=L;o--)a=f[o],a.self.onExit&&r.invoke(a.self.onExit,a.self,a.locals.globals),a.locals=null;for(o=L;o<T.length;o++)i=T[o],i.locals=R[o],i.self.onEnter&&r.invoke(i.self.onEnter,i.self,i.locals.globals);return C.transition!==q?(t.$broadcast("$stateChangeCancel",e.self,n,d.self,h),z):(C.$current=e,C.current=e.self,C.params=n,G(C.params,u),C.transition=null,l.location&&e.navigable&&p.push(e.navigable.url,e.navigable.locals.globals.$stateParams,{$$avoidResync:!0,replace:"replace"===l.location}),l.notify&&t.$broadcast("$stateChangeSuccess",e.self,n,d.self,h),p.update(!0),C.current)}).then(null,function(o){return o===k?z:C.transition!==q?(t.$broadcast("$stateChangeCancel",e.self,n,d.self,h),z):(C.transition=null,a=t.$broadcast("$stateChangeError",e.self,n,d.self,h,o),a.defaultPrevented||p.update(),i.reject(o))});return m(q),q},C.is=function(t,e,o){o=V({relative:C.$current},o||{});var i=g(t,o.relative);return j(i)?C.$current===i&&(!e||a(e).reduce(function(t,n){var o=i.params[n];return t&&!o||o.type.equals(u[n],e[n])},!0)):n},C.includes=function(t,e,o){if(o=V({relative:C.$current},o||{}),O(t)&&v(t)){if(!x(t))return!1;t=C.$current.name}var i=g(t,o.relative);if(!j(i))return n;if(!j(C.$current.includes[i.name]))return!1;if(!e)return!0;for(var l=a(e),r=0;r<l.length;r++){var s=l[r],d=i.params[s];if(d&&!d.type.equals(u[s],e[s]))return!1}return a(e).reduce(function(t,n){var o=i.params[n];return t&&!o||o.type.equals(u[n],e[n])},!0)},C.href=function(t,e,o){o=V({lossy:!0,inherit:!0,absolute:!1,relative:C.$current},o||{});var i=g(t,o.relative);if(!j(i))return null;o.inherit&&(e=s(u,e||{},C.$current,i));var l=i&&o.lossy?i.navigable:i;return l&&l.url!==n&&null!==l.url?p.href(l.url,c(i.params.$$keys().concat("#"),e||{}),{absolute:o.absolute}):null},C.get=function(t,e){if(0===arguments.length)return h(a(S),function(t){return S[t].self});var n=g(t,e||C.$current);return n&&n.self?n.self:null},C}function $(t,e,n,o,i,l){function a(t,e,n){function o(e){return"search"!=t.params[e].location}var i=t.params.$$keys().filter(o),l=u.apply({},[t.params].concat(i)),a=new J.ParamSet(l);return a.$$equals(e,n)}if(!l.reload&&t===n&&(i===n.locals||t.self.reloadOnSearch===!1&&a(n,o,e)))return!0}var _,C,S={},z={},E="abstract",I={parent:function(t){if(j(t.parent)&&t.parent)return g(t.parent);var e=/^(.+)\.[^.]+$/.exec(t.name);return e?g(e[1]):_},data:function(t){return t.parent&&t.parent.data&&(t.data=t.self.data=o(t.parent.data,t.data)),t.data},url:function(t){var e=t.url,n={params:t.params||{}};if(O(e))return"^"==e.charAt(0)?i.compile(e.substring(1),n):(t.parent.navigable||_).url.concat(e,n);if(!e||i.isMatcher(e))return e;throw new Error("Invalid url '"+e+"' in state '"+t+"'")},navigable:function(t){return t.url?t:t.parent?t.parent.navigable:null},ownParams:function(t){var e=t.url&&t.url.params||new J.ParamSet;return H(t.params||{},function(t,n){e[n]||(e[n]=new J.Param(n,null,t,"config"))}),e},params:function(t){var e=u(t.ownParams,t.ownParams.$$keys());return t.parent&&t.parent.params?V(t.parent.params.$$new(),e):new J.ParamSet},views:function(t){var e={};return H(j(t.views)?t.views:{"":t},function(n,o){o.indexOf("@")<0&&(o+="@"+t.parent.name),n.resolveAs=n.resolveAs||t.resolveAs||"$resolve",e[o]=n}),e},path:function(t){return t.parent?t.parent.path.concat(t):[]},includes:function(t){var e=t.parent?V({},t.parent.includes):{};return e[t.name]=!0,e},$delegates:{}};_=b({name:"",url:"^",views:null,abstract:!0}),_.navigable=null,this.decorator=y,this.state=w,this.$get=k,k.$inject=["$rootScope","$q","$view","$injector","$resolve","$stateParams","$urlRouter","$location","$urlMatcherFactory"]}function _(){function t(t,e){return{load:function(t,n){var o,i={template:null,controller:null,view:null,locals:null,notify:!0,async:!0,params:{}};return n=V(i,n),n.view&&(o=e.fromConfig(n.view,n.params,n.locals)),o}}}this.$get=t,t.$inject=["$rootScope","$templateFactory"]}function C(){var t=!1;this.useAnchorScroll=function(){t=!0},this.$get=["$anchorScroll","$timeout",function(e,n){return t?e:function(t){return n(function(){t[0].scrollIntoView()},0,!1)}}]}function S(t,n,o,i,l){function a(){return n.has?function(t){return n.has(t)?n.get(t):null}:function(t){try{return n.get(t)}catch(t){return null}}}function r(t,n){var o=function(){return{enter:function(t,e,n){e.after(t),n()},leave:function(t,e){t.remove(),e()}}};if(c)return{enter:function(t,n,o){e.version.minor>2?c.enter(t,null,n).then(o):c.enter(t,null,n,o)},leave:function(t,n){e.version.minor>2?c.leave(t).then(n):c.leave(t,n)}};if(d){var i=d&&d(n,t);return{enter:function(t,e,n){i.enter(t,null,e),n()},leave:function(t,e){i.leave(t),e()}}}return o()}var s=a(),d=s("$animator"),c=s("$animate"),u={restrict:"ECA",terminal:!0,priority:400,transclude:"element",compile:function(n,a,s){return function(n,a,d){function c(){if(g&&(g.remove(),g=null),h&&(h.$destroy(),h=null),p){var t=p.data("$uiViewAnim");v.leave(p,function(){t.$$animLeave.resolve(),g=null}),g=p,p=null}}function u(r){var u,g=E(n,d,a,i),x=g&&t.$current&&t.$current.locals[g];if(r||x!==m){u=n.$new(),m=t.$current.locals[g],u.$emit("$viewContentLoading",g);var y=s(u,function(t){var i=l.defer(),r=l.defer(),s={$animEnter:i.promise,$animLeave:r.promise,$$animLeave:r};t.data("$uiViewAnim",s),v.enter(t,a,function(){i.resolve(),h&&h.$emit("$viewContentAnimationEnded"),(e.isDefined(b)&&!b||n.$eval(b))&&o(t)}),c()});p=y,h=u,h.$emit("$viewContentLoaded",g),h.$eval(f)}}var g,p,h,m,f=d.onload||"",b=d.autoscroll,v=r(d,n);a.inheritedData("$uiView");n.$on("$stateChangeSuccess",function(){u(!1)}),u(!0)}}};return u}function z(t,n,o,i){return{restrict:"ECA",priority:-400,compile:function(l){var a=l.html();return l.empty?l.empty():l[0].innerHTML=null,function(l,r,s){var d=o.$current,c=E(l,s,r,i),u=d&&d.locals[c];if(!u)return r.html(a),void t(r.contents())(l);r.data("$uiView",{name:c,state:u.$$state}),r.html(u.$template?u.$template:a);var g=e.extend({},u);l[u.$$resolveAs]=g;var p=t(r.contents());if(u.$$controller){u.$scope=l,u.$element=r;var h=n(u.$$controller,u);u.$$controllerAs&&(l[u.$$controllerAs]=h,l[u.$$controllerAs][u.$$resolveAs]=g),q(h.$onInit)&&h.$onInit(),r.data("$ngControllerController",h),r.children().data("$ngControllerController",h)}p(l)}}}}function E(t,e,n,o){var i=o(e.uiView||e.name||"")(t),l=n.inheritedData("$uiView");return i.indexOf("@")>=0?i:i+"@"+(l?l.state.name:"")}function I(t,e){var n,o=t.match(/^\s*({[^}]*})\s*$/);if(o&&(t=e+"("+o[1]+")"),n=t.replace(/\n/g," ").match(/^([^(]+?)\s*(\((.*)\))?$/),!n||4!==n.length)throw new Error("Invalid state ref '"+t+"'");return{state:n[1],paramExpr:n[3]||null}}function T(t){var e=t.parent().inheritedData("$uiView");if(e&&e.state&&e.state.name)return e.state}function A(t){var e="[object SVGAnimatedString]"===Object.prototype.toString.call(t.prop("href")),n="FORM"===t[0].nodeName;return{attr:n?"action":e?"xlink:href":"href",isAnchor:"A"===t.prop("tagName").toUpperCase(),clickable:!n}}function L(t,e,n,o,i){return function(l){var a=l.which||l.button,r=i();if(!(a>1||l.ctrlKey||l.metaKey||l.shiftKey||t.attr("target"))){var s=n(function(){e.go(r.state,r.params,r.options)});l.preventDefault();var d=o.isAnchor&&!r.href?1:0;l.preventDefault=function(){d--<=0&&n.cancel(s)}}}}function N(t,e){return{relative:T(t)||e.$current,inherit:!0}}function P(t,n){return{restrict:"A",require:["?^uiSrefActive","?^uiSrefActiveEq"],link:function(o,i,l,a){var r,s=I(l.uiSref,t.current.name),d={state:s.state,href:null,params:null},c=A(i),u=a[1]||a[0],g=null;d.options=V(N(i,t),l.uiSrefOpts?o.$eval(l.uiSrefOpts):{});var p=function(n){n&&(d.params=e.copy(n)),d.href=t.href(s.state,d.params,d.options),g&&g(),u&&(g=u.$$addStateInfo(s.state,d.params)),null!==d.href&&l.$set(c.attr,d.href)};s.paramExpr&&(o.$watch(s.paramExpr,function(t){t!==d.params&&p(t)},!0),d.params=e.copy(o.$eval(s.paramExpr))),p(),c.clickable&&(r=L(i,t,n,c,function(){return d}),i[i.on?"on":"bind"]("click",r),o.$on("$destroy",function(){i[i.off?"off":"unbind"]("click",r)}))}}}function R(t,e){return{restrict:"A",require:["?^uiSrefActive","?^uiSrefActiveEq"],link:function(n,o,i,l){function a(e){g.state=e[0],g.params=e[1],g.options=e[2],g.href=t.href(g.state,g.params,g.options),p&&p(),d&&(p=d.$$addStateInfo(g.state,g.params)),g.href&&i.$set(s.attr,g.href)}var r,s=A(o),d=l[1]||l[0],c=[i.uiState,i.uiStateParams||null,i.uiStateOpts||null],u="["+c.map(function(t){return t||"null"}).join(", ")+"]",g={state:null,params:null,options:null,href:null},p=null;n.$watch(u,a,!0),a(n.$eval(u)),s.clickable&&(r=L(o,t,e,s,function(){return g}),o[o.on?"on":"bind"]("click",r),n.$on("$destroy",function(){o[o.off?"off":"unbind"]("click",r)}))}}}function M(t,e,n){return{restrict:"A",controller:["$scope","$element","$attrs","$timeout",function(e,o,i,l){function a(e,n,i){var l=t.get(e,T(o)),a=r(e,n),s={state:l||{name:e},params:n,hash:a};return m.push(s),f[a]=i,function(){var t=m.indexOf(s);t!==-1&&m.splice(t,1)}}function r(t,n){if(!O(t))throw new Error("state should be a string");return F(n)?t+W(n):(n=e.$eval(n),F(n)?t+W(n):t)}function s(){for(var t=0;t<m.length;t++)u(m[t].state,m[t].params)?d(o,f[m[t].hash]):c(o,f[m[t].hash]),g(m[t].state,m[t].params)?d(o,p):c(o,p)}function d(t,e){l(function(){t.addClass(e)})}function c(t,e){t.removeClass(e)}function u(e,n){return t.includes(e.name,n)}function g(e,n){return t.is(e.name,n)}var p,h,m=[],f={};p=n(i.uiSrefActiveEq||"",!1)(e);try{h=e.$eval(i.uiSrefActive)}catch(t){}h=h||n(i.uiSrefActive||"",!1)(e),F(h)&&H(h,function(n,o){if(O(n)){var i=I(n,t.current.name);a(i.state,e.$eval(i.paramExpr),o)}}),this.$$addStateInfo=function(t,e){if(!(F(h)&&m.length>0)){var n=a(t,e,h);return s(),n}},e.$on("$stateChangeSuccess",s),s()}]}}function B(t){var e=function(e,n){return t.is(e,n)};return e.$stateful=!0,e}function D(t){var e=function(e,n,o){return t.includes(e,n,o)};return e.$stateful=!0,e}var j=e.isDefined,q=e.isFunction,O=e.isString,F=e.isObject,U=e.isArray,H=e.forEach,V=e.extend,G=e.copy,W=e.toJson;e.module("ui.router.util",["ng"]),e.module("ui.router.router",["ui.router.util"]),e.module("ui.router.state",["ui.router.router","ui.router.util"]),e.module("ui.router",["ui.router.state"]),e.module("ui.router.compat",["ui.router"]),f.$inject=["$q","$injector"],e.module("ui.router.util").service("$resolve",f),e.module("ui.router.util").provider("$templateFactory",b);var J;x.prototype.concat=function(t,e){var n={caseInsensitive:J.caseInsensitive(),strict:J.strictMode(),squash:J.defaultSquashPolicy()};return new x(this.sourcePath+t+this.sourceSearch,V(n,e),this)},x.prototype.toString=function(){return this.source},x.prototype.exec=function(t,e){function n(t){function e(t){return t.split("").reverse().join("")}function n(t){return t.replace(/\\-/g,"-")}var o=e(t).split(/-(?!\\)/),i=h(o,e);return h(i,n).reverse()}var o=this.regexp.exec(t);if(!o)return null;e=e||{};var i,l,a,r=this.parameters(),s=r.length,d=this.segments.length-1,c={};if(d!==o.length-1)throw new Error("Unbalanced capture group in route '"+this.source+"'");var u,g;for(i=0;i<d;i++){for(a=r[i],u=this.params[a],g=o[i+1],l=0;l<u.replace.length;l++)u.replace[l].from===g&&(g=u.replace[l].to);g&&u.array===!0&&(g=n(g)),j(g)&&(g=u.type.decode(g)),c[a]=u.value(g)}for(;i<s;i++){for(a=r[i],c[a]=this.params[a].value(e[a]),u=this.params[a],g=e[a],l=0;l<u.replace.length;l++)u.replace[l].from===g&&(g=u.replace[l].to);j(g)&&(g=u.type.decode(g)),c[a]=u.value(g)}return c},x.prototype.parameters=function(t){return j(t)?this.params[t]||null:this.$$paramNames},x.prototype.validates=function(t){return this.params.$$validates(t)},x.prototype.format=function(t){function e(t){return encodeURIComponent(t).replace(/-/g,function(t){return"%5C%"+t.charCodeAt(0).toString(16).toUpperCase()})}t=t||{};var n=this.segments,o=this.parameters(),i=this.params;if(!this.validates(t))return null;var l,a=!1,r=n.length-1,s=o.length,d=n[0];for(l=0;l<s;l++){var c=l<r,u=o[l],g=i[u],p=g.value(t[u]),m=g.isOptional&&g.type.equals(g.value(),p),f=!!m&&g.squash,b=g.type.encode(p);if(c){var v=n[l+1],x=l+1===r;if(f===!1)null!=b&&(d+=U(b)?h(b,e).join("-"):encodeURIComponent(b)),d+=v;else if(f===!0){var y=d.match(/\/$/)?/\/?(.*)/:/(.*)/;d+=v.match(y)[1]}else O(f)&&(d+=f+v);x&&g.squash===!0&&"/"===d.slice(-1)&&(d=d.slice(0,-1))}else{if(null==b||m&&f!==!1)continue;if(U(b)||(b=[b]),0===b.length)continue;b=h(b,encodeURIComponent).join("&"+u+"="),d+=(a?"&":"?")+(u+"="+b),a=!0}}return d},y.prototype.is=function(t,e){return!0},y.prototype.encode=function(t,e){return t},y.prototype.decode=function(t,e){return t},y.prototype.equals=function(t,e){return t==e},y.prototype.$subPattern=function(){var t=this.pattern.toString();return t.substr(1,t.length-2)},y.prototype.pattern=/.*/,y.prototype.toString=function(){return"{Type:"+this.name+"}"},y.prototype.$normalize=function(t){return this.is(t)?t:this.decode(t)},y.prototype.$asArray=function(t,e){function o(t,e){function o(t,e){return function(){return t[e].apply(t,arguments)}}function i(t){return U(t)?t:j(t)?[t]:[]}function l(t){switch(t.length){case 0:return n;case 1:return"auto"===e?t[0]:t;default:return t}}function a(t){return!t}function r(t,e){return function(n){if(U(n)&&0===n.length)return n;n=i(n);var o=h(n,t);return e===!0?0===p(o,a).length:l(o)}}function s(t){return function(e,n){var o=i(e),l=i(n);if(o.length!==l.length)return!1;for(var a=0;a<o.length;a++)if(!t(o[a],l[a]))return!1;
-return!0}}this.encode=r(o(t,"encode")),this.decode=r(o(t,"decode")),this.is=r(o(t,"is"),!0),this.equals=s(o(t,"equals")),this.pattern=t.pattern,this.$normalize=r(o(t,"$normalize")),this.name=t.name,this.$arrayMode=e}if(!t)return this;if("auto"===t&&!e)throw new Error("'auto' array mode is for query parameters only");return new o(this,t)},e.module("ui.router.util").provider("$urlMatcherFactory",w),e.module("ui.router.util").run(["$urlMatcherFactory",function(t){}]),k.$inject=["$locationProvider","$urlMatcherFactoryProvider"],e.module("ui.router.router").provider("$urlRouter",k),$.$inject=["$urlRouterProvider","$urlMatcherFactoryProvider"],e.module("ui.router.state").factory("$stateParams",function(){return{}}).constant("$state.runtime",{autoinject:!0}).provider("$state",$).run(["$injector",function(t){t.get("$state.runtime").autoinject&&t.get("$state")}]),_.$inject=[],e.module("ui.router.state").provider("$view",_),e.module("ui.router.state").provider("$uiViewScroll",C),S.$inject=["$state","$injector","$uiViewScroll","$interpolate","$q"],z.$inject=["$compile","$controller","$state","$interpolate"],e.module("ui.router.state").directive("uiView",S),e.module("ui.router.state").directive("uiView",z),P.$inject=["$state","$timeout"],R.$inject=["$state","$timeout"],M.$inject=["$state","$stateParams","$interpolate"],e.module("ui.router.state").directive("uiSref",P).directive("uiSrefActive",M).directive("uiSrefActiveEq",M).directive("uiState",R),B.$inject=["$state"],D.$inject=["$state"],e.module("ui.router.state").filter("isState",B).filter("includedByState",D)}(window,window.angular)},,,function(t,e){"use strict";var n=angular.module("lens.app_config",[]);n.service("AppConfig",function(){var t=null,e=function(e){$.ajax({url:"api/config/",method:"GET"}).done(function(n){t=n,e(t)}).fail(function(n){t=null,e(null,{error:n.status+" Error: "+n.responseText})})};this.get=function(){return new Promise(function(n,o){t?n(t):e(function(t,e){t?n(t):o(e)})})}}),t.exports=n},function(t,e,n){"use strict";n(36),n(49)},function(t,e){"use strict";var n=angular.module("lens.current_user",[]);n.service("CurrentUser",function(){var t=null,e=function(e){$.ajax({url:"api/auth/",method:"GET"}).done(function(n){t=n.user,e(t)}).fail(function(n){t=null,e(null,{error:n.status+" Error: "+n.responseText})})};this.get=function(){return new Promise(function(n,o){t?n(t):e(function(t,e){t?n(t):o(e)})})}}),t.exports=n},function(t,e){"use strict";var n=function(t,e,n){var o=document.getElementById(t),i=(sassToJs(o),JSON.parse(window.getComputedStyle(document.querySelector(e),":before").getPropertyValue("content"))),l=JSON.parse(i);for(var a in l){var r=l[a],s=document.createElement("li");s.className="guide-color-item col-100-sm col-50-lg col-33-xl";var d=document.createElement("span");d.className="brand-bg-"+a;var c=document.createElement("span"),u=document.createElement("em"),g=document.createTextNode(a),p=document.createTextNode(r);c.appendChild(g),u.appendChild(p),d.appendChild(c),d.appendChild(u),s.appendChild(d),document.querySelector(n).appendChild(s)}};t.exports=n},function(t,e){"use strict";var n=function(t,e,n){var o=document.getElementById(t),i=(sassToJs(o),JSON.parse(window.getComputedStyle(document.querySelector(e),":before").getPropertyValue("content"))),l=JSON.parse(i),a=document.createElement("li");a.className="guide-color-item col-100-sm col-50-lg col-33-xl";for(var r in l){var s=l[r],d=document.createElement("span");d.className="bg-"+r;var c=document.createElement("span"),u=document.createElement("em"),g=document.createTextNode(r),p=document.createTextNode(s);c.appendChild(g),u.appendChild(p),d.appendChild(c),d.appendChild(u),a.appendChild(d),document.querySelector(n).appendChild(a)}};t.exports=n},function(t,e){"use strict";var n=function(t,e,n){var o=document.getElementById(t),i=(sassToJs(o),JSON.parse(window.getComputedStyle(document.querySelector(e),":before").getPropertyValue("content"))),l=JSON.parse(i);for(var a in l){var r=l[a],s=document.createElement("li");s.className="guide-color-item col-100-sm col-33-lg col-20-xl";var d=document.createElement("span");d.className="bg-"+a;var c=document.createElement("span"),u=document.createElement("em"),g=document.createTextNode(a),p=document.createTextNode(r);c.appendChild(g),u.appendChild(p),d.appendChild(c),d.appendChild(u),s.appendChild(d),document.querySelector(n).appendChild(s)}};t.exports=n},function(t,e,n){var o;o=angular.module("lens.atoms",["lens.atoms.block_grid","lens.atoms.borders","lens.atoms.colors","lens.atoms.effects","lens.atoms.flexbox","lens.atoms.grid","lens.atoms.icons","lens.atoms.layout","lens.atoms.spacing_sizing","lens.atoms.typography"]),n(11),n(12),n(13),n(14),n(15),n(16),n(17),n(18),n(19),n(20)},function(t,e){var n,o;n=angular.module("lens.atoms.block_grid",[]),n.controller("BlockGridController",["$scope",function(t){return this}]),n.directive("blockGrid",function(){return{controller:"BlockGridController",restrict:"E",scope:{},template:o}}),o='<lens-main>\n\n  <p>The block grid is used when you need a grid of an unknown number of items.\n    The recommended way to build block grids is with <code>ul</code> elements,\n    but the classes work just fine on any element, like a <code>div</code>.\n     Use your best judgement to keep the markup as semantic as possible.</p>\n  <p>To build a block grid, start with a <code>&lt;ul class="block-grid block-$n-xs"&gt;</code>,\n    where <code>$n</code> is a number from 1-6. These divisions can be\n    changed across breakpoints by applying one or more of our\n    <a ui-sref="responsive">grid suffix classes</a>. If you want the same grid division\n    across all breakpoints, use <code>.block-$n-xs</code> class. </p>\n  <p>Inside that list,\n    create your items with <code>&lt;li class="block-grid__item"&gt;</code>.</p>\n  <p><strong>Important:</strong> Do not put any style utility classes on the block\n    grid containers, nest them inside the list items instead.</p>\n\n  <section id="no-gutters-section">\n    <div id="no-gutters" title="No Gutters" class="inpage-anchor"></div>\n    <h2>No Gutters</h2>\n    <p>By default, the block grid comes with no gutters. Resize your browser to see the breakpoint changes.</p>\n    <div class="guide-example">\n      <div class="guide-example-demo">\n        <ul class="block-grid block-4-xs block-5-md block-6-xl">\n          <li class="block-grid__item">\n            <div class="guide-demo-box">1</div>\n          </li>\n          <li class="block-grid__item">\n            <div class="guide-demo-box">2</div>\n          </li>\n          <li class="block-grid__item">\n            <div class="guide-demo-box">3</div>\n          </li>\n          <li class="block-grid__item">\n            <div class="guide-demo-box">4</div>\n          </li>\n          <li class="block-grid__item">\n            <div class="guide-demo-box">5</div>\n          </li>\n          <li class="block-grid__item">\n            <div class="guide-demo-box">6</div>\n          </li>\n        </ul>\n      </div>\n      <div class="guide-example-code">\n  <pre><code class="language-html">&lt;ul class="block-grid block-4-xs block-5-md block-6-xl"&gt;\n  &lt;li class="block-grid__item"&gt;\n    &lt;div class="guide-demo-box"&gt;1&lt;/div&gt;\n  &lt;/li&gt;\n  &lt;li class="block-grid__item"&gt;\n    &lt;div class="guide-demo-box"&gt;2&lt;/div&gt;\n  &lt;/li&gt;\n  &lt;li class="block-grid__item"&gt;\n    &lt;div class="guide-demo-box"&gt;3&lt;/div&gt;\n  &lt;/li&gt;\n  &lt;li class="block-grid__item"&gt;\n    &lt;div class="guide-demo-box"&gt;4&lt;/div&gt;\n  &lt;/li&gt;\n  &lt;li class="block-grid__item"&gt;\n    &lt;div class="guide-demo-box"&gt;5&lt;/div&gt;\n  &lt;/li&gt;\n  &lt;li class="block-grid__item"&gt;\n    &lt;div class="guide-demo-box"&gt;6&lt;/div&gt;\n  &lt;/li&gt;\n&lt;/ul&gt;</code></pre>\n      </div>\n    </div>\n  </section>\n\n  <section id="gutters-section">\n    <div id="gutters" title="Gutters" class="inpage-anchor"></div>\n    <h2>Gutters</h2>\n    <p>To add automatic 1rem spaced gutters between items in the block grid, apply the class\n       <code>.block-grid-gutters</code> alongside your <code>.block-grid</code> class. Note that\n       this will add horizontal <em>as well as</em> vertical spacing if the items stack.</p>\n     Again, Rrsize your browser to see the breakpoint changes in the demo below.</p>\n    <p class="todo">Probably should revisit that 1rem value...?</p>\n    <div class="guide-example">\n      <div class="guide-example-demo">\n        <ul class="block-grid block-2-xs block-3-lg block-6-xl block-grid-gutters">\n          <li class="block-grid__item">\n            <div class="guide-demo-box">1</div>\n          </li>\n          <li class="block-grid__item">\n            <div class="guide-demo-box">2</div>\n          </li>\n          <li class="block-grid__item">\n            <div class="guide-demo-box">3</div>\n          </li>\n          <li class="block-grid__item">\n            <div class="guide-demo-box">4</div>\n          </li>\n          <li class="block-grid__item">\n            <div class="guide-demo-box">5</div>\n          </li>\n          <li class="block-grid__item">\n            <div class="guide-demo-box">6</div>\n          </li>\n        </ul>\n      </div>\n      <div class="guide-example-code">\n  <pre><code class="language-html">&lt;ul class="block-grid block-2-xs block-3-lg block-6-xl block-grid-gutters"&gt;\n  &lt;li class="block-grid__item"&gt;\n    &lt;div class="guide-demo-box"&gt;1&lt;/div&gt;\n  &lt;/li&gt;\n  &lt;li class="block-grid__item"&gt;\n    &lt;div class="guide-demo-box"&gt;2&lt;/div&gt;\n  &lt;/li&gt;\n  &lt;li class="block-grid__item"&gt;\n    &lt;div class="guide-demo-box"&gt;3&lt;/div&gt;\n  &lt;/li&gt;\n  &lt;li class="block-grid__item"&gt;\n    &lt;div class="guide-demo-box"&gt;4&lt;/div&gt;\n  &lt;/li&gt;\n  &lt;li class="block-grid__item"&gt;\n    &lt;div class="guide-demo-box"&gt;5&lt;/div&gt;\n  &lt;/li&gt;\n  &lt;li class="block-grid__item"&gt;\n    &lt;div class="guide-demo-box"&gt;6&lt;/div&gt;\n  &lt;/li&gt;\n&lt;/ul&gt;</code></pre>\n      </div>\n    </div>\n  </section>\n\n</lens-main>'},function(t,e){var n,o;n=angular.module("lens.atoms.borders",[]),n.controller("BordersController",["$scope",function(t){return this}]),n.directive("borders",function(){return{controller:"BordersController",restrict:"E",scope:{},template:o}}),o='<lens-main>\n\n  <section id="borders-section">\n    <div id="borders" title="Adding Borders" class="inpage-anchor"></div>\n    <h2>Adding Borders</h2>\n    <h3>Default Border</h3>\n    <table class="table-content">\n      <thead>\n        <tr>\n          <th><code>@extend</code></th>\n          <th>Resolves to...</th>\n          <th>Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%border-xs</code></td>\n          <td>border: 1px solid $border-color-normal</td>\n          <td>All sides of the element</td>\n        </tr>\n        <tr>\n          <td><code>%border-t-xs</code></td>\n          <td>border-top: 1px solid $border-color-normal</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%border-b-xs</code></td>\n          <td>border-bottom: 1px solid $border-color-normal</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%border-r-xs</code></td>\n          <td>border-right: 1px solid $border-color-normal</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%border-l-xs</code></td>\n          <td>border-left: 1px solid $border-color-normal</td>\n          <td></td>\n        </tr>\n      </tbody>\n    </table>\n\n    <h3>Different Colors</h3>\n    <p>Lens provides an easy way to add lighter or darker gray borders. Simply\n      insert <code>light</code> or <code>dark</code> into the class name.</p>\n    <p>To use any other Lens color as a border for your custom element,\n      extend the <code>%border-color-[color]</code> classes as outlined in the\n      <a ui-sref="colors">colors</a> section.\n    <table class="table-content">\n      <thead>\n        <tr>\n          <th class="col-30-xs"><code>@extend</code></th>\n          <th>Resolves to...</th>\n          <th>Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%border-light-xs</code></td>\n          <td>border: 1px solid $border-color-light</td>\n          <td>All sides of the element</td>\n        </tr>\n        <tr>\n          <td><code>%border-dark-xs</code></td>\n          <td>border: 1px solid $border-color-dark</td>\n          <td>All sides of the element</td>\n        </tr>\n        <tr>\n          <td><code>%border-[side]-light-xs</code></td>\n          <td>border-[side]: 1px solid $border-color-normal</td>\n          <td><code>[side]</code> is t, b, r, l for top, bottom, right or left.</td>\n        </tr>\n        <tr>\n          <td><code>%border-[side]-dark-xs</code></td>\n          <td>border-[side]: 1px solid $border-color-dark</td>\n          <td><code>[side]</code> is t, b, r, l for top, bottom, right or left.</td>\n        </tr>\n      </tbody>\n    </table>\n\n  </section>\n\n  <section id="removing-borders-section">\n    <div id="removing-borders" title="Removing Borders" class="inpage-anchor"></div>\n    <h2>Removing Borders</h2>\n    <p>To get a little more control over borders at different breakpoints\n       <code>.border-none-xs</code> can be applied to remove all borders or borders on specific sides.</p>\n    <table class="table-content">\n      <thead>\n        <tr>\n          <th><code>@extend</code> Class</th>\n          <th>Resolves to...</th>\n          <th>Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%border-none-xs</code></td>\n          <td>border: none</td>\n          <td>removes all borders on the element</td>\n        </tr>\n        <tr>\n          <td><code>%border-none-t-xs</code></td>\n          <td>border-top: none</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%border-none-b-xs</code></td>\n          <td>border-bottom: none</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%border-none-r-xs</code></td>\n          <td>border-right: none</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%border-none-l-xs</code></td>\n          <td>border-left: none</td>\n          <td></td>\n        </tr>\n      </tbody>\n    </table>\n  </section>\n\n  <section id="rounded-corners-section">\n    <div id="rounded-corners" title="Rounded Corners" class="inpage-anchor"></div>\n    <h2>Rounded Corners</h2>\n    <p>Use the following to apply the default border-radius to any element.</p>\n    <table class="table-content">\n      <thead>\n        <tr>\n          <th><code>@extend</code></th>\n          <th>Resolves to...</th>\n          <th>Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%round</code></td>\n          <td>border-radius: $border-radius</td>\n          <td>All corners of the element</td>\n        </tr>\n        <tr>\n          <td><code>%round-t</code></td>\n          <td>border-radius: $border-radius, $border-radius, 0, 0 </td>\n          <td>Top two corners</td>\n        </tr>\n        <tr>\n          <td><code>%round-b</code></td>\n          <td>border-radius: 0, 0, $border-radius, $border-radius</td>\n          <td>Bottom two corners</td>\n        </tr>\n        <tr>\n          <td><code>%round-r</code></td>\n          <td>border-radius: 0, $border-radius, $border-radius, 0</td>\n          <td>Right two corners</td>\n        </tr>\n        <tr>\n          <td><code>%round-l</code></td>\n          <td>border-radius: $border-radius, 0, 0, $border-radius</td>\n          <td>Left two corners</td>\n        </tr>\n      </tbody>\n    </table>\n  </section>\n\n  <section id="circles-section">\n    <div id="circles" title="Circles" class="inpage-anchor"></div>\n    <h2>Circle</h2>\n    <p>To turn an element into a circle, use the <code>.circle</code> class.</p>\n    <table class="table-content">\n      <thead>\n        <tr>\n          <th><code>@extend</code></th>\n          <th>Resolves to...</th>\n          <th>Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%circle</code></td>\n          <td>border-radius: 9999px</td>\n          <td>Works unless you\'re making something wider or taller than 9999 px</td>\n        </tr>\n      </tbody>\n    </table>\n  </section>\n\n  <section id="variables-section">\n    <div id="variables" title="Variables" class="inpage-anchor"></div>\n    <h2 >Variables</h2>\n    <table class="table-content">\n      <thead>\n        <tr>\n          <th>Variable</th>\n          <th>Value</th>\n          <th>Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>$border-color-normal</code></td>\n          <td>gray-color(gray-2)</td>\n          <td>the default border color #e4e5e6</td>\n        </tr>\n        <tr>\n          <td><code>$border-color-light</code></td>\n          <td>gray-color(gray-1)</td>\n          <td>#f6f6f7</td>\n        </tr>\n        <tr>\n          <td><code>$border-color-dark</code></td>\n          <td>gray-color(gray-2)</td>\n          <td>#d2d3d4</td>\n        </tr>\n        <tr>\n          <td><code>$border-radius</code></td>\n          <td>5px</td>\n          <td>Used in buttons, modal corners, etc.</td>\n        </tr>\n      </tbody>\n    </table>\n  </section>\n\n</lens-main>'},function(t,e,n){var o,i,l,a,r;o=n(7),r=n(9),i=n(8),l=angular.module("lens.atoms.colors",[]),l.controller("ColorsController",["$scope",function(t){return this}]),l.directive("colors",function(){return{controller:"ColorsController",restrict:"E",scope:{},template:a,link:function(){return o("brandColorData","#brandColorData",".guide-colors-brand"),r("uiColorData","#uiColorData",".guide-colors-ui"),i("grayColorData","#grayColorData",".guide-colors-gray")}}}),a='<lens-main>\n  <section id="brand-colors-section">\n    <div id="brand-colors" title="Brand Colors" class="inpage-anchor"></div>\n    <h2>Brand Colors</h2>\n    <p>There are 3 main brand colors for Looker. Replace <code>[color]</code> with\n      the name of the brand color you want.</p>\n      <p class="todo">Why use the "brand" color variables vs the colors below? Are there three?</p>\n    <table class="table-content">\n      <thead>\n        <th><code>@extend</code></th>\n        <th>Resolves to...</th>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%brand-bg-[color]</code></td>\n          <td>background-color: [color]</td>\n        </tr>\n        <tr>\n          <td><code>%brand-color-[color]</code></td>\n          <td>color: [color]</td>\n        </tr>\n        <tr>\n          <td><code>%brand-border-[color]</code></td>\n          <td>border-color: [color]</td>\n        </tr>\n      </tbody>\n    </table>\n\n    <ul class="guide-color guide-colors-brand"></ul><!-- List items built by JS -->\n  </section>\n\n\n  <section id="ui-colors-section">\n    <div id="ui-colors" title="UI Colors" class="inpage-anchor"></div>\n    <h2>UI Colors</h2>\n    <p>Replace <code>[color]</code> with the name of the color you want in the classes below.</p>\n    <p class="todo">Some rules about how we use color? or does that go in the guide? When to use which purple? etc.</p>\n    <table class="table-content">\n      <thead>\n        <th><code>@extend</code></th>\n        <th>Resolves to...</th>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%bg-[color]</code></td>\n          <td>background-color: [color]</td>\n        </tr>\n        <tr>\n          <td><code>%color-[color]</code></td>\n          <td>color: [color]</td>\n        </tr>\n        <tr>\n          <td><code>%border-[color]</code></td>\n          <td>border-color: [color]</td>\n        </tr>\n      </tbody>\n    </table>\n\n    <ul class="guide-color guide-colors-ui"></ul><!-- List items built by JS -->\n  </section>\n\n\n\n  <section id="gray-colors-section">\n    <div id="gray-colors" title="Gray Colors" class="inpage-anchor"></div>\n    <h2>Gray Colors</h2>\n    <p>Replace <code>[color]</code> with the name of the shade of gray you want.</p>\n    <p class="todo">again, add some rules here..?</p>\n    <table class="table-content">\n      <thead>\n        <th><code>@extend</code></th>\n        <th>Resolves to...</th>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%bg-[color]</code></td>\n          <td>background-color: [color]</td>\n        </tr>\n        <tr>\n          <td><code>%color-[color]</code></td>\n          <td>color: [color]</td>\n        </tr>\n        <tr>\n          <td><code>%border-[color]</code></td>\n          <td>border-color: [color]</td>\n        </tr>\n      </tbody>\n    </table>\n\n    <ul class="guide-color guide-colors-gray"></ul><!-- List items built by JS -->\n  </section>\n\n  <section id="functions-section">\n    <div id="functions" title="Functions" class="inpage-anchor"></div>\n    <h2>Functions</h2>\n    <p>Use the following functions to generate any of the above colors in your custom element\n       that aren\'t <code>color</code, <code>background-color</code> or <code>border-color</code>.</p>\n    <table class="table-content">\n      <thead>\n        <tr>\n          <th>Function</th>\n          <th>Parameters</th>\n          <th>Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>brand-color($color)</code></td>\n          <td>One of the brand colors above</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>ui-color($color)</code></td>\n          <td>One of the ui colors above</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>gray-color($color)</code></td>\n          <td>One of the gray colors above</td>\n          <td></td>\n        </tr>\n      </tbody>\n    </table>\n</lens-main>\n\n<!-- Sass to JS goodness -->\n<div id="brandColorData"></div>\n<div id="uiColorData"></div>\n<div id="grayColorData"></div>\n\n<script src="vendor/js/prism.js"></script>\n<script src="vendor/js/sass-to-js.js"></script>'},function(t,e){var n,o;n=angular.module("lens.atoms.effects",[]),n.controller("EffectsController",["$scope",function(t){return this}]),n.directive("effects",function(){return{controller:"EffectsController",restrict:"E",scope:{},template:o}}),o='<lens-main>\n  <section id="hover-section">\n    <div id="hover" title="Hover, Focus &amp; Active" class="inpage-anchor"></div>\n    <h2>Hover, Active &amp; Focus</h2>\n    <p class="todo">Write a bit about hover, active and focus states and our philosophy (hover == active == focus)?</p>\n    <table class="table-content">\n      <thead>\n        <tr>\n          <th>Mixin</th>\n          <th>Parameters</th>\n          <th>Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>+selected</code></td>\n          <td>none</td>\n          <td>styles the <code>:hover</code>, <code>:active</code> and <code>:focus</code> states of an element</td>\n        </tr>\n        <tr>\n          <td><code>+selected(false)</code></td>\n          <td>boolean</td>\n          <td>if false, the <code>:focus</code> states is not included</td>\n        </tr>\n      </tbody>\n    </table>\n    <div class="guide-example">\n      <div class="guide-example-code">\n<pre><code class="language-css">.my-element-with-hover-active-and-focus-the-same\n  background-color: white\n  +selected\n    background-color: pink\n.my-class-with-hover-and-active-sans-focus\n  background-color: white\n  +selected(false)\n    background-color: purple</code></pre>\n      </div>\n    </div>\n  </section>\n\n  <section id="transitions-section">\n    <div id="transitions" title="Transitions" class="inpage-anchor"></div>\n    <h2>Transitions</h2>\n    <p>CSS transitions? default times/speeds? etc.</p>\n    <p class="todo"></p>\n\n  </section>\n\n\n</lens-main>'},function(t,e){var n,o;n=angular.module("lens.atoms.flexbox",[]),n.controller("FlexboxController",["$scope",function(t){return this}]),n.directive("flexbox",function(){return{controller:"FlexboxController",restrict:"E",scope:{},template:o}}),o='<lens-main>\n\n  <p>Flexbox is perfect for aligning items inside components. It typically\n    isn\'t used for large scale layouts but for smaller parts of a page or\n    component. All of the flex box utility classes can be used with our\n    breakpoint suffixes.</p>\n  <section id="flex-container-section">\n    <div id="flex-container" title="Flex Container" class="inpage-anchor"></div>\n    <h2>Flex Container</h2>\n    <p>The flex container is the parent of the items that will be laid out using flex box.\n    The properties in this section are all applied on this container.</p>\n\n    <h3>Display Properties</h3>\n    <p>The display property defines the flex container and enables a flex context for all of its\n      direct children.</p>\n    <table class="table-content">\n      <thead>\n        <tr>\n          <th><code>@extend</code></th>\n          <th>Resolves to...</th>\n          <th>Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%flex-block-xs</code></td>\n          <td>display: flex</td>\n          <td>Used on block elements</td>\n        </tr>\n        <tr>\n          <td><code>%flex-inline-xs</code></td>\n          <td>display: flex-inline</td>\n          <td>Used on inline elements</td>\n        </tr>\n      </tbody>\n    </table>\n\n    <h3>Flex Direction</h3>\n    <p>This establishes the main-axis, defining the direction items are palced\n      in the container. Flex lays out in a single direction, either horizontal or vertical.</p>\n    <table class="table-content">\n      <thead>\n        <tr>\n          <th><code>@extend</code></th>\n          <th>Resolves to...</th>\n          <th>Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%flex-row-xs</code></td>\n          <td>flex-direction: row</td>\n          <td>(Default) Left to right.</td>\n        </tr>\n        <tr>\n          <td><code>%flex-row-reverse-xs</code></td>\n          <td>flex-direction: row-reverse</td>\n          <td>Right to left</td>\n        </tr>\n        <tr>\n          <td><code>%flex-column-xs</code></td>\n          <td>flex-direction: column</td>\n          <td>Top to bottom</td>\n        </tr>\n        <tr>\n          <td><code>%flex-column-reverse-xs</code></td>\n          <td>flex-direction: column-reverse</td>\n          <td>Bottom to top</td>\n        </tr>\n      </tbody>\n    </table>\n\n    <h3>Flex Wrap</h3>\n    <p>Flex items will all fit into one line by default. To change that behavior\n       and allow them to wrap, you\'ll need to add some properties. Flex direction\n       plays a role here by defining the direction new line are stacked.</p>\n    <table class="table-content">\n      <thead>\n        <tr>\n          <th><code>@extend</code></th>\n          <th>Resolves to...</th>\n          <th>Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%flex-nowrap-xs</code></td>\n          <td>flex-wrap: nowrap</td>\n          <td>(Default) Single-line with no wrapping</td>\n        </tr>\n        <tr>\n          <td><code>%flex-wrap-xs</code></td>\n          <td>flex-wrap: wrap</td>\n          <td>Multi-line from left to right</td>\n        </tr>\n        <tr>\n          <td><code>%flex-wrap-reverse-xs</code></td>\n          <td>flex-wrap: wrap-reverse</td>\n          <td>Multi-line from right to left</td>\n        </tr>\n      </tbody>\n    </table>\n\n    <h3>Justify Content</h3>\n    <p>This defines the alignment along the main axis and helps distribute space\n      around the flex items.</p>\n    <table class="table-content">\n      <thead>\n        <tr>\n          <th class="col-30-xs"><code>@extend</code></th>\n          <th class="col-30-xs">Resolves to...</th>\n          <th>Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%flex-justify-start-xs</code></td>\n          <td>justify-content: flex-start</td>\n          <td>(Default) Items are packed toward the start line</td>\n        </tr>\n        <tr>\n          <td><code>%flex-justify-end-xs</code></td>\n          <td>justify-content: flex-end</td>\n          <td>Items are packed toward the end line</td>\n        </tr>\n        <tr>\n          <td><code>%flex-justify-center-xs</code></td>\n          <td>justify-content: center</td>\n          <td>Items are centered along the line</td>\n        </tr>\n        <tr>\n          <td><code>%flex-justify-between-xs</code></td>\n          <td>justify-content: space-between</td>\n          <td>Items are evenly distributed in the line. First item on the start line, last item on the end line.</td>\n        </tr>\n        <tr>\n          <td><code>%flex-justify-around-xs</code></td>\n          <td>justify-content: space-around</td>\n          <td>Items are evently distributed in the line with equal space around them. Note that visually the spaces aren\'t equal because each item has equal space on both sides.</td>\n        </tr>\n      </tbody>\n    </table>\n\n    <h3>Align Items</h3>\n    <p>This defines how flex items are laid out along the cross axis on the current line.</p>\n    <table class="table-content">\n      <thead>\n        <tr>\n          <th class="col-30-xs"><code>@extend</code></th>\n          <th class="col-30-xs">Resolves to...</th>\n          <th>Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%flex-item-stretch-xs</code></td>\n          <td>align-items: stretch</td>\n          <td>(Default) Stretch to fill the container but still respects min/max-width</td>\n        </tr>\n        <tr>\n          <td><code>%flex-item-start-xs</code></td>\n          <td>align-items: flex-start</td>\n          <td>Cross-start margin edge of the items is placed on the cross-start line</td>\n        </tr>\n        <tr>\n          <td><code>%flex-item-end-xs</code></td>\n          <td>align-items: flex-end</td>\n          <td>Cross-end margin edge of the items is placed on the cross-end line</td>\n        </tr>\n        <tr>\n          <td><code>%flex-item-center-xs</code></td>\n          <td>align-items: center</td>\n          <td>Items are centered in the cross-axis</td>\n        </tr>\n        <tr>\n          <td><code>%flex-item-baseline-xs</code></td>\n          <td>align-items: baseline</td>\n          <td>Items are aligned along their baselines</td>\n        </tr>\n      </tbody>\n    </table>\n\n\n    <h3>Align Content</h3>\n    <p>This aligns a flex container\'s lines within when there is extra space in the cross-axis,\n      similar to how justify-content aligns items within the main axis. Note: this property\n      has no effect when there is only one line of flex items.</p>\n    <table class="table-content">\n      <thead>\n        <tr>\n          <th class="col-30-xs"><code>@extend</code></th>\n          <th class="col-30-xs">Resolves to...</th>\n          <th>Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%flex-content-stretch-xs</code></td>\n          <td>align-content: stretch</td>\n          <td>(Default) Lines stretch to take up the remaining space</td>\n        </tr>\n        <tr>\n          <td><code>%flex-content-start-xs</code></td>\n          <td>align-content: flex-start</td>\n          <td>Lines packed to the start of the container</td>\n        </tr>\n        <tr>\n          <td><code>%flex-content-end-xs</code></td>\n          <td>align-content: flex-end</td>\n          <td>Lines packed to the end of the container</td>\n        </tr>\n        <tr>\n          <td><code>%flex-content-center-xs</code></td>\n          <td>align-content: center</td>\n          <td>Lines packed to the center of the container</td>\n        </tr>\n        <tr>\n          <td><code>%flex-content-around-xs</code></td>\n          <td>align-content: space-around</td>\n          <td>Lines evenly distributed with the first line at the start and the last at the end of the container.</td>\n        </tr>\n        <tr>\n          <td><code>%flex-content-between-xs</code></td>\n          <td>align-content: space-between</td>\n          <td>Lines evenly distributed with equal space around each line.</td>\n        </tr>\n      </tbody>\n    </table>\n  </section>\n\n  <section id="flex-items-section">\n    <div id="flex-items" title="Flex Items" class="inpage-anchor"></div>\n    <h2>Flex Items</h2>\n    <p>These are the direct children of the parent container. Flex items are laid\n      out according to the properties applied to the flex container. The following\n      properties are applied on the individual flex items.</p>\n\n    <h3>Order</h3>\n    <p>By default, items are laid out in source order. Use the <code>order</code>\n      property to control the order inside the flex container.\n    </p>\n    <p>Lens contains built in ordering classes of <code>.flex-order-$n-xs</code>,\n       where <code>$n</code> is an integer\n      from 1 to 6. Any item without an order will default to 1 and matching orders\n      will be grouped together in the appropriate order. You can rearrange the\n      order across breakpoints using the breakpoint suffixes.</p>\n    <table class="table-content">\n      <thead>\n        <tr>\n          <th><code>@extend</code></th>\n          <th>Resolves to...</th>\n          <th>Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%flex-order-$n-xs</code></td>\n          <td>order: $n</td>\n          <td><code>$n</code> is a an integer from 1 to 6</td>\n        </tr>\n      </tbody>\n    </table>\n\n    <h3>Flex Grow</h3>\n    <p>This property lets an item grow if necessary. It accepts a unitless value\n      that serves as a proportion. The default is <code>0</code>.</p>\n    <table class="table-content">\n      <thead>\n        <tr>\n          <th><code>@extend</code></th>\n          <th>Resolves to...</th>\n          <th>Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%flex-grow-$n-xs</code></td>\n          <td>flex-grow: $n</td>\n          <td><code>$n</code> is a an integer from 0 to 6</td>\n        </tr>\n      </tbody>\n    </table>\n\n    <h3>Flex Shrink</h3>\n    <p>This property lets an item shrink if necessary. It also accepts a unitless\n      value that serves as a proportion. The default is <code>1</code>.</p>\n    <table class="table-content">\n      <thead>\n        <tr>\n          <th><code>@extend</code></th>\n          <th>Resolves to...</th>\n          <th>Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%flex-shrink-$n-xs</code></td>\n          <td>flex-shrink: $n</td>\n          <td><code>$n</code> is a an integer from 1 to 6</td>\n        </tr>\n      </tbody>\n    </table>\n\n    <h3>Flex Basis</h3>\n    <p>This property defines the default size of an element before the remaining\n       space is distributed. It can be a length or keyword, like "auto". The\n       default is <code>auto</code>.</p>\n    <p>To use percentages, use the same percentage values\n       used to layout <a ui-sref="grid">grids</a> (5-100 in increments of 5, plus 33 and 66).\n       To use a <a ui-sref="spaces-sizing">sizing unit</a> preface the unit with an <code>s</code>.</p>\n    <table class="table-content">\n      <thead>\n        <tr>\n          <th class="col-30-xs"><code>@extend</code></th>\n          <th>Resolves to...</th>\n          <th>Notes</th>\n          <th>Example</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%flex-basis-auto-xs</code></td>\n          <td>flex-basis: auto</td>\n          <td>Default</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%flex-basis-$n-xs</code></td>\n          <td>flex-basis: percentage($n/100)</td>\n          <td><code>$n</code> is a an integer from 5-100 in increments of 5, plus 33 and 66</td>\n          <td><code>%flex-basis-33-xs</code> resolves to flex-basis: 0.33</td>\n        </tr>\n        <tr>\n          <td><code>%flex-basis-s$size-xs</code></td>\n          <td>flex-basis: s$size</td>\n          <td><code>$size</code> is a <a ui-sref="spaces-sizing">sizing unit</a></td>\n          <td><code>%flex-basis-s4-xs</code> resolves to flex-basis: 4px</td>\n        </tr>\n      </tbody>\n    </table>\n\n\n    <h3>Align Self</h3>\n    <p>This allows individual flex items to have their own unique alignment within the container\n      overriding the container align-items property.</p>\n    <table class="table-content">\n      <thead>\n        <tr>\n          <th><code>@extend</code></th>\n          <th>Resolves to...</th>\n          <th>Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%flex-self-auto-xs</code></td>\n          <td>align-self: auto</td>\n          <td>(Default) Auto align, which inherits the align-items property</td>\n        </tr>\n        <tr>\n          <td><code>%flex-self-start-xs</code></td>\n          <td>align-self: flex-start</td>\n          <td>Cross-start margin edge of the items is placed on the cross-start line</td>\n        </tr>\n        <tr>\n          <td><code>%flex-self-end-xs</code></td>\n          <td>align-self: flex-end</td>\n          <td>Cross-end margin edge of the items is placed on the cross-end line</td>\n        </tr>\n        <tr>\n          <td><code>%flex-self-center-xs</code></td>\n          <td>align-self: center</td>\n          <td>Items are centered in the cross-axis</td>\n        </tr>\n        <tr>\n          <td><code>%flex-self-stretch-xs</code></td>\n          <td>align-self: stretch</td>\n          <td>Stretch to fill the container but still respects min/max-width</td>\n        </tr>\n        <tr>\n          <td><code>%flex-self-baseline-xs</code></td>\n          <td>align-self: baseline</td>\n          <td>Items are aligned such as their baselines align</td>\n        </tr>\n      </tbody>\n    </table>\n  </section>\n\n</lens-main>';
-},function(t,e){var n,o;n=angular.module("lens.atoms.grid",[]),n.controller("GridController",["$scope",function(t){return this}]),n.directive("grid",function(){return{controller:"GridController",restrict:"E",scope:{},template:o}}),o='<lens-main>\n\n  <section id="grid-section">\n    <div id="grid" title="The Grid" class="inpage-anchor"></div>\n    <h2>The Grid</h2>\n    <p>Lens provides mobile-first, fluid grid to layout pages with ease. To\n       start a new grid, create a div with the class of <code>.col-container</code>.\n       Then add columns inside it using <code>.col .col-$n-xs</code>, where\n       <code>$n</code> = a % value between 5-100 in increments of 5, with the addition of 33 and 66\n       to let us do columns in thirds.</p>\n    <p><strong>Tips for building a happy grid:</strong>\n      <ul>\n        <li>Column classes should be used on container elements and <strong><em>not</em></strong>\n           directly to elements such as form fields, headers or images.</li>\n        <li>Avoid applying styles directly to a column element. Instead, nest\n          your content within the column and apply styling there.</li>\n      </ul>\n    </p>\n    <div class="guide-example">\n      <div class="guide-example-demo">\n        <div class="col-container">\n          <div class="col col-30-xs"><div class="guide-demo-box">.col .col-30-xs</div></div>\n          <div class="col col-20-xs"><div class="guide-demo-box">.col .col-20-xs</div></div>\n          <div class="col col-50-xs"><div class="guide-demo-box">.col .col-50-xs</div></div>\n        </div>\n      </div>\n      <div class="guide-example-code">\n<pre><code class="language-html">&lt;div class="col-container"&gt;\n  &lt;div class="col col-30-xs"&gt;&lt;div class="guide-demo-box"&gt;.col .col-30-xs&lt;/div&gt;&lt;/div&gt;\n  &lt;div class="col col-20-xs"&gt;&lt;div class="guide-demo-box"&gt;.col .col-20-xs&lt;/div&gt;&lt;/div&gt\n  &lt;div class="col col-50-xs"&gt;&lt;div class="guide-demo-box"&gt;.col .col-50-xs&lt;/div&gt;&lt;/div&gt\n&lt;/div&gt;</code></pre>\n      </div>\n    </div>\n  </section>\n\n  <section id="nesting-section">\n    <div id="nesting" title="Nesting Columns" class="inpage-anchor"></div>\n    <h2>Nesting Columns</h2>\n    <p>Each column in our grid can hold another set of columns inside of it. To\n      make things work properly nest another <code>.col-container</code> inside\n      the <code>.col</code>.</p>\n    <div class="guide-example">\n      <div class="guide-example-demo">\n        <div class="col-container">\n          <div class="col col-50-xs">\n            <div class="guide-demo-box">\n              <div>.col .col-50-xs</div>\n              <div class="col-container">\n                <div class="col col-30-xs"><div class="guide-demo-box">.col .col-30-xs</div></div>\n                <div class="col col-30-xs"><div class="guide-demo-box">.col .col-30-xs</div></div>\n                <div class="col col-40-xs"><div class="guide-demo-box">.col .col-40-xs</div></div>\n              </div>\n            </div>\n          </div>\n          <div class="col col-50-xs">\n            <div class="guide-demo-box">\n              <div>.col .col-50-xs</div>\n              <div class="col-container">\n                <div class="col col-40-xs"><div class="guide-demo-box">.col .col-40-xs</div></div>\n                <div class="col col-60-xs"><div class="guide-demo-box">.col .col-60-xs</div></div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n      <div class="guide-example-code">\n<pre><code class="language-html">&lt;div class="col-container"&gt;\n  &lt;div class="col col-50-xs"&gt;\n    &lt;div class="guide-demo-box"&gt;\n      &lt;div&gt;.col .col-50-xs&lt;/div&gt;\n      &lt;div class="col-container"&gt;\n        &lt;div class="col col-30-xs"&gt;&lt;div class="guide-demo-box"&gt;.col .col-30-xs&lt;/div&gt;&lt;/div&gt;\n        &lt;div class="col col-30-xs"&gt;&lt;div class="guide-demo-box"&gt;.col .col-30-xs&lt;/div&gt;&lt;/div&gt\n        &lt;div class="col col-40-xs"&gt;&lt;div class="guide-demo-box"&gt;.col .col-40-xs&lt;/div&gt;&lt;/div&gt\n      &lt;/div&gt;\n    &lt;/div&gt;\n  &lt;/div&gt;\n  &lt;div class="col col-50-xs"&gt;\n    &lt;div class="guide-demo-box"&gt;\n      &lt;div&gt;.col .col-50-xs&lt;/div&gt;\n      &lt;div class="col-container"&gt;\n        &lt;div class="col col-40-xs"&gt;&lt;div class="guide-demo-box"&gt;.col .col-40-xs&lt;/div&gt;&lt;/div&gt;\n        &lt;div class="col col-60-xs"&gt;&lt;div class="guide-demo-box"&gt;.col .col-60-xs&lt;/div&gt;&lt;/div&gt\n      &lt;/div&gt;\n    &lt;/div&gt;\n  &lt;/div&gt;\n&lt;/div&gt;</code></pre>\n      </div>\n    </div>\n  </section>\n\n  <section id="max-width-section">\n    <div id="max-width" title="Max-Width" class="inpage-anchor"></div>\n    <h2>Max-Width</h2>\n    <p class="todo">Probably should revisit this - 15px padding on either side? Centered?\n      maybe the name too? just thinking out loud....</p>\n    <p>By default, the grid will span 100% of the browser viewport. If you want\n      to control that, add <code>.col-max</code> next to your <code>.col-container</code>\n      class. This will:\n      <ul>\n        <li>limit the width of the grid to a maximum of <code>1260px</code></li>\n        <li>add 15px padding to the right and left of the column</li>\n        <li>set the left and right margin to auto, centering the column in the container</li>\n      </ul>\n      </p>\n    <div class="guide-example">\n      <div class="guide-example-demo">\n        <div class="col-container col-max">\n          <div class="guide-demo-box">1260px max-width.... stretch yer window to see!</div>\n        </div>\n      </div>\n      <div class="guide-example-code">\n<pre><code class="language-html">&lt;div class="col-container col-max"&gt;\n  &lt;div class="guide-demo-box"&gt;1260px max-width&lt;/div&gt;\n&lt;/div&gt;</code></pre>\n      </div>\n    </div>\n  </section>\n\n  <section id="gutters-section">\n    <div id="gutters" title="Gutters" class="inpage-anchor"></div>\n    <h2>Gutters</h2>\n    <p class="todo">Probably should revisit the default gutter size too. currently 15px\n      on the left and right, resulting in 30px between two columns.</p>\n    <p>The Lens grid doesn\'t include gutters by default. If a gutter is needed,\n       <code>.col-gutters</code> can be added next to <code>.col-container</code>\n       to automatically assign <code>30px</code> gutters between columns.</p>\n\n    <p>Gutters will not be applied to nested columns unless applied to its parent container.</p>\n    <div class="guide-example">\n      <div class="guide-example-demo guide-demo-box">\n        <div class="col-container col-gutters">\n          <div class="col col-40-xs">\n            <div class="guide-demo-box">.col .col-40-xs</div>\n          </div>\n          <div class="col col-60-xs">\n            <div class="guide-demo-box">.col .col-60-xs\n              <div class="col-container">\n                <div class="col col-33-xs"><div class="guide-demo-box">.col .col-33</div></div>\n                <div class="col col-33-xs"><div class="guide-demo-box">.col .col-33</div></div>\n                <div class="col col-33-xs"><div class="guide-demo-box">.col .col-33</div></div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n      <div class="guide-example-code">\n  <pre><code class="language-html">&lt;div class="col-container col-gutters"&gt;\n  &lt;div class="col col-40-xs"&gt;\n    &lt;div class="guide-demo-box"&gt;.col .col-40-xs&lt;/div&gt;\n  &lt;/div&gt;\n  &lt;div class="col col-60-xs"&gt;\n    &lt;div class="guide-demo-box"&gt;.col .col-60-xs\n      &lt;div class="col-container"&gt;\n        &lt;div class="col col-33-xs"&gt;&lt;div class="guide-demo-box"&gt;.col .col-33&lt;/div&gt;&lt;/div&gt;\n        &lt;div class="col col-33-xs"&gt;&lt;div class="guide-demo-box"&gt;.col .col-33&lt;/div&gt;&lt;/div&gt;\n        &lt;div class="col col-33-xs"&gt;&lt;div class="guide-demo-box"&gt;.col .col-33&lt;/div&gt;&lt;/div&gt;\n      &lt;/div&gt;\n    &lt;/div&gt;\n  &lt;/div&gt;\n&lt;/div&gt;</code></pre>\n      </div>\n    </div>\n  </section>\n\n  <section id="centering-section">\n    <div id="centering" title="Centering Columns" class="inpage-anchor"></div>\n    <h2>Centering Columns</h2>\n    <p>Sometimes you want to center a single column within its container. This is\n      possible by adding <code>.col-center</code> next to your <code>.col col-$n-xs</code> class. </p>\n    <div class="col-container">\n      <div class="col col-50-xs col-center"><div class="guide-demo-box">.col .col-50-xs .col-center</div></div>\n    </div>\n    <div class="col-container">\n      <div class="col col-30-xs col-center"><div class="guide-demo-box">.col .col-30-xs .col-center</div></div>\n    </div>\n    <div class="guide-code">\n  <pre><code class="language-html">&lt;div class="col-container"&gt;\n  &lt;div class="col col-50-xs col-center"&gt;&lt;div class="guide-demo-box"&gt;.col .col-50-xs .col-center&lt;/div&gt;&lt;/div&gt;\n&lt;/div&gt;\n&lt;div class="col-container"&gt;\n  &lt;div class="col col-30-xs col-center"&gt;&lt;div class="guide-demo-box"&gt;.col .col-30-xs .col-center&lt;/div&gt;&lt;/div&gt;\n&lt;/div&gt;</code></pre>\n    </div>\n  </section>\n\n  <section id="offsets-section">\n    <div id="offsets" title="Offsets" class="inpage-anchor"></div>\n    <h2>Column Offsets</h2>\n    <p>Move columns over by different grid widths by using <code>.col-offset-$n-xs</code> where\n      <code>$n</code> has the same values as the column percentage widths. Keep in\n      mind that the columns and offsets used within a <code>.col-container</code> shouldn\'t add\n      up to more than 100.</p>\n    <div class="guide-example">\n      <div class="guide-example-demo">\n        <div class="col-container">\n          <div class="col col-40-xs"><div class="guide-demo-box">.col-40-xs</div></div>\n          <div class="col col-40-xs col-offset-20-xs"><div class="guide-demo-box">.col-40-xs .col-offset-30-xs</div>\n        </div>\n      </div>\n      <div class="guide-example-code">\n<pre><code class="language-html">&lt;div class="col-container"&gt;\n  &lt;div class="col col-40-xs"&gt;&lt;div class="guide-demo-box"&gt;.col-40-xs&lt;/div&gt;&lt;/div&gt;\n  &lt;div class="col col-40-xs col-offset-20-xs"&gt;&lt;div class="guide-demo-box"&gt;.col-40-xs .col-offset-30-xs&lt;/div&gt;&lt;/div&gt;\n&lt;/div&gt;</code></pre>\n      </div>\n    </div>\n  </section>\n\n  <section id="responsive-section">\n    <div id="responsive" title="Responsive Breakpoints" class="inpage-anchor"></div>\n    <h2>Responsive Breakpoint</h2>\n    <p>Our mobile first grid comes with a set of breakpoint class suffixes that can be used to\n      override columns across breakpoints. For example, if a <code>&lt;div&gt;</code>\n       needs to take up the full width of\n      the page across all display sizes, use <code>.col-100-xs</code>. If that\n      div needs to be half width at the medium breakpoint and a quarter at our\n      large breakpoints, add <code>.col-50-md</code> and <code>.col-33-lg</code>.\n      Resize the browser to see the effect in action. You can learn more about the breakpoints\n      in our <a ui-sref="responsive">responsive documentation</a>.</p>\n    <div class="guide-example">\n      <div class="guide-example-demo">\n        <div class="col-container">\n          <div class="col col-100-xs col-50-md col-25-lg">\n            <div class="guide-demo-box">\n              .col-100-xs .col-50-md .col-25-lg\n            </div>\n          </div>\n          <div class="col col-100-xs col-50-md col-25-lg">\n            <div class="guide-demo-box">\n              .col-100-xs .col-50-md .col-25-lg\n            </div>\n          </div>\n          <div class="col col-100-xs col-50-md col-25-lg">\n            <div class="guide-demo-box">\n              .col-100-xs .col-50-md .col-25-lg\n            </div>\n          </div>\n          <div class="col col-100-xs col-50-md col-25-lg">\n            <div class="guide-demo-box">\n              .col-100-xs .col-50-md .col-25-lg\n            </div>\n          </div>\n        </div>\n      </div>\n      <div class="guide-example-code">\n<pre><code class="language-html">&lt;div class="col-container"&gt;\n  &lt;div class="col col-100-xs col-50-md col-25-lg"&gt;\n    &lt;div class="guide-demo-box"&gt;.col-100-xs .col-50-md .col-25-lg&lt;/div&gt;\n  &lt;/div&gt;\n  &lt;div class="col col-100-xs col-50-md col-25-lg guide-demo-box"&gt;\n    &lt;div class="guide-demo-box"&gt;.col-100-xs .col-50-md .col-25-lg&lt;/div&gt;\n  &lt;/div&gt;\n  &lt;div class="col col-100-xs col-50-md col-25-lg guide-demo-box"&gt;\n    &lt;div class="guide-demo-box"&gt;.col-100-xs .col-50-md .col-25-lg&lt;/div&gt;\n  &lt;/div&gt;\n  &lt;div class="col col-100-xs col-50-md col-25-lg guide-demo-box"&gt;\n    &lt;div class="guide-demo-box"&gt;.col-100-xs .col-50-md .col-25-lg&lt;/div&gt;\n  &lt;/div&gt;\n&lt;/div&gt;</code></pre>\n      </div>\n    </div>\n  </section>\n\n  <section id="variables-section">\n    <div id="variables" title="Variables" class="inpage-anchor"></div>\n    <h2 >Variables</h2>\n    <table class="table-content">\n      <thead>\n        <tr>\n          <th>Variable</th>\n          <th>Value</th>\n          <th>Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>$grid-max-width</code></td>\n          <td>1260px</td>\n          <td>This is a suggested maximum width for a layout.</td>\n        </tr>\n      </tbody>\n    </table>\n  </section>\n</lens-main>'},function(t,e){var n,o;n=angular.module("lens.atoms.icons",[]),n.controller("IconsController",["$scope",function(t){return this}]),n.directive("icons",function(){return{controller:"IconsController",restrict:"E",scope:{},template:o}}),o='<lens-main>\n  <section id="icons">Coming Soon...</section>\n</lens-main>'},function(t,e){var n,o;n=angular.module("lens.atoms.layout",[]),n.controller("LayoutController",["$scope",function(t){return this}]),n.directive("layout",function(){return{controller:"LayoutController",restrict:"E",scope:{},template:o}}),o='<lens-main>\n  <section id="display-section">\n    <div id="display" title="Display" class="inpage-anchor"></div>\n    <h2>Display</h2>\n    <table class="table-content">\n      <thead>\n        <tr>\n          <th><code>@extend</code></th>\n          <th>Resolves to...</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%block-xs</code></td>\n          <td>dislay: block</td>\n        </tr>\n        <tr>\n          <td><code>%inline-xs</code></td>\n          <td>dislay: inline</td>\n        </tr>\n        <tr>\n          <td><code>%inline-block-xs</code></td>\n          <td>dislay: inline-block</td>\n        </tr>\n        <tr>\n          <td><code>%hide-xs</code></td>\n          <td>dislay: none</td>\n        </tr>\n      </tbody>\n    </table>\n\n    <p>See the <a ui-sref="grid">grid</a>, <a ui-sref="block-grid">block grid</a> and\n       <a ui-sref="flexbox">flexbox</a> sections for more advanced disaply options and layouts.\n    </p>\n  </section>\n\n  <section id="position-section">\n    <div id="position" title="Position" class="inpage-anchor"></div>\n    <h2>Position</h2>\n    <table class="table-content">\n      <thead>\n        <tr>\n          <th><code>@extend</code></th>\n          <th>Resolves to...</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%relative-xs</code></td>\n          <td>position: relative</td>\n        </tr>\n        <tr>\n          <td><code>%absolute-xs</code></td>\n          <td>position: absolute</td>\n        </tr>\n        <tr>\n          <td><code>%fixed-xs</code></td>\n          <td>position: fixed</td>\n        </tr>\n        <tr>\n          <td><code>%static-xs</code></td>\n          <td>position: static</td>\n        </tr>\n      </tbody>\n    </table>\n\n    <p>Set the position with <code>.pos-$s-$n-xs</code>, where <code>$s</code> is the side\n       and <code>$n</code> is one of our spacing units.\n    </p>\n    <table class="table-content">\n      <thead>\n        <tr>\n          <th><code>@extend</code></th>\n          <th>Resolves to...</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%pos-t-$n-xs</code></td>\n          <td>top: $n</td>\n        </tr>\n        <tr>\n          <td><code>%pos-b-$n-xs</code></td>\n          <td>bottom: $n</td>\n        </tr>\n        <tr>\n          <td><code>%pos-l-$n-xs</code></td>\n          <td>left: $n</td>\n        </tr>\n        <tr>\n          <td><code>%pos-r-$n-xs</code></td>\n          <td>right: $n</td>\n        </tr>\n      </tbody>\n    </table>\n\n    <h3>Mixins</h3>\n    <p>Set custom positioning with the following mixins:</p>\n    <pre><code>+absolute($direction $amount)\n+relative($direction $amount)\n+fixed($direction $amount)</code></pre>\n    <div class="guide-example">\n      <div class="guide-example-code"><pre><code class="language-css">.custom-selector\n  +absoute(top, 200px)</code></pre>\n      </div>\n    </div>\n\n  </section>\n\n\n  <section id="floats-section">\n    <div id="floats" title="Floats" class="inpage-anchor"></div>\n    <h2>Floats</h2>\n    <table class="table-content">\n      <thead>\n        <tr>\n          <th><code>@extend</code></th>\n          <th>Resolves to...</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%float-l-xs</code></td>\n          <td>float: left</td>\n        </tr>\n        <tr>\n          <td><code>%float-r-xs</code></td>\n          <td>float: right</td>\n        </tr>\n        <tr>\n          <td><code>%float-none-xs</code></td>\n          <td>float: none</td>\n        </tr>\n      </tbody>\n    </table>\n    <h3>Mixins</h3>\n    <p><code>+clearfix</code> will allow your element to clear its child elements.</p>\n    <div class="guide-example">\n      <div class="guide-example-code"><pre><code class="language-css">.custom-selector\n  +clearfix</code></pre>\n      </div>\n    </div>\n  </section>\n\n  <section id="z-index-section">\n    <div id="z-index" title="Z-Index" class="inpage-anchor"></div>\n    <h2>Z-Index</h2>\n    <p>Use a z-index class to assign the stack order of elements.\n      Lens has classes for values 1-4, which end up as 100-400 in the property value.</p>\n    <table class="table-content">\n      <thead>\n        <tr>\n          <th><code>@extend</code></th>\n          <th>Resolves to...</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%z-1-xs</code></td>\n          <td>z-index: 100</td>\n        </tr>\n        <tr>\n          <td><code>%z-2-xs</code></td>\n          <td>z-index: 200</td>\n        </tr>\n        <tr>\n          <td><code>%z-3-xs</code></td>\n          <td>z-index: 300</td>\n        </tr>\n        <tr>\n          <td><code>%z-4-xs</code></td>\n          <td>z-index: 400</td>\n        </tr>\n      </tbody>\n    </table>\n  </section>\n\n  <section id="vertical-alignment-section">\n    <div id="vertical-alignment" title="Vertical Alignment" class="inpage-anchor"></div>\n    <h2>Vertical Alignment</h2>\n    <p>A sub-set of the vertical alignment options for inline or table-cell elements.</p>\n    <table class="table-content">\n      <thead>\n        <tr>\n          <th><code>@extend</code></th>\n          <th>Resolves to...</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%align-top-xs</code></td>\n          <td>vertical-align: top</td>\n        </tr>\n        <tr>\n          <td><code>%align-middle-xs</code></td>\n          <td>vertical-align: middle</td>\n        </tr>\n        <tr>\n          <td><code>%align-bottom-xs</code></td>\n          <td>vertical-align: bottom</td>\n        </tr>\n      </tbody>\n    </table>\n  </section>\n\n\n\n  <section id="rotation-section">\n    <div id="rotation" title="Rotation" class="inpage-anchor"></div>\n    <h2>Rotation</h2>\n    <table class="table-content">\n      <thead>\n        <tr>\n          <th><code>@extend</code></th>\n          <th>Resolves to...</th>\n          <th>Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%rotate-$n-xs</code></td>\n          <td>transform: rotate(<code>$n</code>deg)</td>\n          <td><code>$n</code> is one of 0, 45, 90, 135, 180, 225, 270, or 315</td>\n        </tr>\n      </tbody>\n    </table>\n  </section>\n\n</lens-main>'},function(t,e){var n,o;n=angular.module("lens.atoms.spacing_sizing",[]),n.controller("SpacingSizingController",["$scope",function(t){return this}]),n.directive("spacingSizing",function(){return{controller:"SpacingSizingController",restrict:"E",scope:{},template:o}}),o='<lens-main>\n  <section id="spacing-units-section">\n    <div id="spacing-units" title="Spacing Units" class="inpage-anchor"></div>\n    <h2>Spacing Units</h2>\n    <p>Spacing units are used for margin, padding, and <a ui-sref="layout">positioning</a>.\n       These comes in values from 0-27. </p>\n     <p class="todo"> Add theory from Jeremy here on the scale ramp.</p>\n    <div class="col-container">\n      <div class="col col-30-lg">\n        <ul class="list-unstyled">\n          <li><code>0</code> = 0px</li>\n          <li><code>1</code> = 1px</li>\n          <li><code>2</code> = 2px</li>\n          <li><code>3</code> = 3px</li>\n          <li><code>4</code> = 4px</li>\n          <li><code>5</code> = 5px</li>\n          <li><code>6</code> = 6px</li>\n          <li><code>7</code> = 7px</li>\n          <li><code>8</code> = 12px</li>\n          <li><code>9</code> = 14px</li>\n        </ul>\n      </div>\n      <div class="col col-30-lg">\n        <ul>\n          <li><code>10</code> = 16px</li>\n          <li><code>11</code> = 20px</li>\n          <li><code>12</code> = 24px</li>\n          <li><code>13</code> = 27px</li>\n          <li><code>14</code> = 30px</li>\n          <li><code>15</code> = 36px</li>\n          <li><code>16</code> = 46px</li>\n          <li><code>17</code> = 60px</li>\n          <li><code>18</code> = 72px</li>\n          <li><code>19</code> = 81px</li>\n        </ul>\n      </div>\n      <div class="col col-30-lg">\n        <ul>\n          <li><code>20</code> = 96px</li>\n          <li><code>21</code> = 121px</li>\n          <li><code>22</code> = 144px</li>\n          <li><code>23</code> = 182px</li>\n          <li><code>24</code> = 216px</li>\n          <li><code>25</code> = 273px</li>\n          <li><code>26</code> = 324px</li>\n          <li><code>27</code> = 410px</li>\n        </ul>\n      </div>\n    </div>\n  </section>\n\n\n\n  <section id="margin-padding-section">\n    <div id="margin-padding" title="Margin &amp; Padding" class="inpage-anchor"></div>\n    <h2>Margin &amp; Padding</h2>\n    <p>To specify margin and padding, Lens uses a shorthand of the Resolves to... name,\n       side, spacing unit value and <a ui-sref="responsive">breakpoint</a> in the following format:\n       <code>%Resolves to...-side-unit-breakpoint</code>.</p>\n    <div class="col-container">\n      <div class="col col-30-lg">\n        <h4>Properties</h4>\n        <ul class="list-unstyled">\n          <li><code>m</code> = margin</li>\n          <li><code>p</code> = padding</li>\n        </ul>\n      </div>\n      <div class="col col-30-lg">\n        <h4>Sides</h4>\n        <ul class="list-unstyled">\n          <li><code>t</code> = top</li>\n          <li><code>b</code> = bottom</li>\n          <li><code>l</code> = left</li>\n          <li><code>r</code> = right</li>\n          <li><code>lr</code> = left + right</li>\n          <li><code>tb</code> = top + bottom</li>\n        </ul>\n      </div>\n    </div>\n\n    <h3>Margin</h3>\n    <table class="table-content">\n      <thead>\n        <tr>\n          <th><code>@extend</code></th>\n          <th>Resolves to...</th>\n          <th>Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%m-$n-xs</code></td>\n          <td>margin: $n</td>\n          <td>Equal margin on all sides of the element.</td>\n        </tr>\n        <tr>\n          <td><code>%m-t-$n-xs</code></td>\n          <td>margin-top: $n</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%m-b-$n-xs</code></td>\n          <td>margin-bottom: $n</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%m-l-$n-xs</code></td>\n          <td>margin-left: $n</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%m-r-$n-xs</code></td>\n          <td>margin-right: $n</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%m-tb-$n-xs</code></td>\n          <td>margin-top: $n<br/>margin-bottom: $n</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%m-lr-$n-xs</code></td>\n          <td>margin-left: $n<br/>margin-right: $n</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%m-auto-xs</code></td>\n          <td>margin-left: auto<br/>margin-right: auto</td>\n          <td>horizontal center</td>\n        </tr>\n      </tbody>\n    </table>\n\n    <h3>Padding</h3>\n    <table class="table-content">\n      <thead>\n        <tr>\n          <th><code>@extend</code></th>\n          <th>Resolves to...</th>\n          <th>Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%p-$n-xs</code></td>\n          <td>padding: $n</td>\n          <td>Equal padding on all sides of the element.</td>\n        </tr>\n        <tr>\n          <td><code>%p-t-$n-xs</code></td>\n          <td>padding-top: $n</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%p-b-$n-xs</code></td>\n          <td>padding-bottom: $n</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%p-l-$n-xs</code></td>\n          <td>padding-left: $n</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%p-r-$n-xs</code></td>\n          <td>padding-right: $n</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%p-tb-$n-xs</code></td>\n          <td>padding-top: $n<br/>padding-bottom: $n</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%p-lr-$n-xs</code></td>\n          <td>padding-left: $n<br/>padding-right: $n</td>\n          <td></td>\n        </tr>\n      </tbody>\n    </table>\n\n    <h3>Functions</h3>\n    <p>The <code>spacing($n)</code> function can also be used to\n      apply spacing units to your class definitions.</p>\n    <div class="guide-example">\n      <div class="guide-example-code">\n        <pre><code class="language-css">.custom-element\n  margin: spacing(1)\n  padding: spacing(2)</code></pre>\n      </div>\n    </div>\n\n  </section>\n\n\n  <section id="widht-height-section">\n    <div id="width-height" title="Width &amp; Height" class="inpage-anchor"></div>\n    <h2>Width &amp; Height</h2>\n    <p>Most widths will be set using a <a ui-sref="grid">grid layout</a> the following\n    styles are also provided.</p>\n    <table class="table-content">\n      <thead>\n        <tr>\n          <th><code>@extend</code></th>\n          <th>Resolves to...</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%w-fit-xs</code> </td>\n          <td>max-width: 100%</td>\n        </tr>\n        <tr>\n          <td><code>%w-full-xs</code> </td>\n          <td>width: 100%</td>\n        </tr>\n        <tr>\n          <td><code>%h-full-xs</code> </td>\n          <td>height: 100%</td>\n        </tr>\n        <tr>\n          <td><code>%w-auto-xs</code> </td>\n          <td>width: auto</td>\n        </tr>\n      </tbody>\n    </table>\n\n    <h3>Mixins</h3>\n    <p>When defining your custom elements, you can also use the <code>width-height($n, $n)</code> mixin\n    where <code>$n</code> is either a Lens spacing unit or a custom width/height value.\n    <span class="todo">is that true that $n can be a spacing unit....?</span></p>\n    <div class="guide-example">\n      <div class="guide-example-code"><pre><code class="language-css">.custom-selector\n  +width-height(100px, 200px)</code></pre>\n      </div>\n    </div>\n\n  </section>\n\n\n  <section id="overflow-section">\n    <div id="overflow" title="Overflow" class="inpage-anchor"></div>\n    <h2>Overflow</h2>\n    <p>Overflow controls what happens to content when it is bigger than its container.</p>\n    <table class="table-content">\n      <thead>\n        <tr>\n          <th><code>@extend</code></th>\n          <th>Resolves to...</th>\n          <th>Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%overflow-hidden-xs</code> </td>\n          <td>overflow: hidden</td>\n          <td>clip content</td>\n        </tr>\n        <tr>\n          <td><code>%overflow-auto-xs</code> </td>\n          <td>overflow: auto</td>\n          <td>only add scrollbars if content is too big</td>\n        </tr>\n        <tr>\n          <td><code>%overflow-scroll-xs</code> </td>\n          <td>overflow: scroll</td>\n          <td>always have scrollbars</td>\n        </tr>\n        <tr>\n          <td><code>%overflow-visible-xs</code> </td>\n          <td>overflow: visible</td>\n          <td>allow content to extend outside of container</td>\n        </tr>\n      </tbody>\n    </table>\n  </section>\n\n\n\n</lens-main>'},function(t,e){var n,o;n=angular.module("lens.atoms.typography",[]),n.controller("TypographyController",["$scope",function(t){return this}]),n.directive("typography",function(){return{controller:"TypographyController",restrict:"E",scope:{},template:o}}),o='<lens-main>\n\n  <section id="typefaces-section">\n    <div id="typefaces" title="Typefaces" class="inpage-anchor"></div>\n    <h2>Typefaces</h2>\n    <table class="table-content">\n      <thead>\n        <tr>\n          <th><code>@extend</code></th>\n          <th>Resolves to...</th>\n          <th>Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%brand-font</code></td>\n          <td>font-family: \'Open Sans\', Helvetica, Arial, sans-serif</td>\n          <td>This is the Lens default</td>\n        </tr>\n        <tr>\n          <td><code>%code-font</code></td>\n          <td>font-family: \'Monaco\', \'Menlo\', \'Ubuntu Mono\', \'Consolas\', \'source-code-pro\', monospace</td>\n          <td>Used in the ACE editor. Use when displaying LookML, SQL, etc.</td>\n        </tr>\n      </tbody>\n    </table>\n  </section>\n\n  <section id="sizes-section">\n    <div id="sizes" title="Size" class="inpage-anchor"></div>\n    <h2>Type Size</h2>\n    <p>Type size is specified as both the text size and the line height.</p>\n    <table class="table-content">\n      <thead>\n        <tr>\n          <th><code>@extend</code></th>\n          <th>Resolves to...</th>\n          <th>Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%text-n2-xs</code></td>\n          <td>font-size: 12px<br />line-height: 20px</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%text-n1-xs</code></td>\n          <td>font-size: 14px<br />line-height: 24px</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%text-1-xs</code></td>\n          <td>font-size: 16px<br />line-height: 24px</td>\n          <td>This is the base font size and line-height</td>\n        </tr>\n        <tr>\n          <td><code>%text-2-xs</code></td>\n          <td>font-size: 19px<br />line-height: 27px</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%text-3-xs</code></td>\n          <td>font-size: 22px<br />line-height: 30px</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%text-4-xs</code></td>\n          <td>font-size: 28px<br />line-height: 36px</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%text-5-xs</code></td>\n          <td>font-size: 38px<br />line-height: 46px</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%text-6-xs</code></td>\n          <td>font-size: 52px<br />line-height: 60px</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%text-7-xs</code></td>\n          <td>font-size: 62px<br />line-height: 72px</td>\n          <td></td>\n        </tr>\n      </tbody>\n    </table>\n  </section>\n\n\n  <section id="weights-section">\n    <div id="weights" title="Weights" class="inpage-anchor"></div>\n    <h2>Weights</h2>\n    <table class="table-content">\n      <thead>\n        <tr>\n          <th><code>@extend</code></th>\n          <th>Resolves to...</th>\n          <th>Variable Value</th>\n          <th>Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%light</code></td>\n          <td>font-weight: <code>$light</code></td>\n          <td>300</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%regular</code></td>\n          <td>font-weight: <code>$regular</code></td>\n          <td>400</code></td>\n          <td>Default font-weight</td>\n        </tr>\n        <tr>\n          <td><code>%semi-bold</code></td>\n          <td>font-weight: <code>$semi-bold</code></td>\n          <td>600</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%bold</code></td>\n          <td>font-weight: <code>$bold</code></td>\n          <td>700</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%extra-bold</code></td>\n          <td>font-weight: <code>$extra-bold</code></td>\n          <td>900</td>\n          <td></td>\n        </tr>\n      </tbody>\n    </table>\n  </section>\n\n  <section id="emphasis-section">\n    <div id="emphasis" title="Emphasis" class="inpage-anchor"></div>\n    <h2>Emphasis</h2>\n    <table class="table-content">\n      <thead>\n        <tr>\n          <th><code>@extend</code></th>\n          <th>Resolves to...</th>\n          <th>Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%italic</code></td>\n          <td>font-style: italic</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%caps</code></td>\n          <td>text-transform: uppercase</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%lowercase</code></td>\n          <td>text-transform: lowercase</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%capitalize</code></td>\n          <td>text-transform: capitalize</td>\n          <td></td>\n        </tr>\n      </tbody>\n    </table>\n  </section>\n\n  <section id="alignment-section">\n    <div id="alignment" title="Alignment" class="inpage-anchor"></div>\n    <h2>Alignment</h2>\n    <table class="table-content">\n      <thead>\n        <tr>\n          <th><code>@extend</code></th>\n          <th>Resolves to...</th>\n          <th>Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%text-left-xs</code></td>\n          <td>text-align: left</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%text-right-xs</code></td>\n          <td>text-align: right</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%text-center-xs</code></td>\n          <td>text-align: center</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%text-justify-xs</code></td>\n          <td>text-align: justify</td>\n          <td></td>\n        </tr>\n      </tbody>\n    </table>\n  </section>\n\n\n</lens-main>';
-},function(t,e){var n,o;n=angular.module("lens.components.body_copy",[]),n.controller("BodyCopyController",["$scope",function(t){return this}]),n.directive("bodyCopy",function(){return{controller:"BodyCopyController",restrict:"E",scope:{},template:o}}),o='<lens-main>\n\n  <section id="style-emphasis-section">\n    <div id="style-emphasis" title="Style &amp; Emphasis" class="inpage-anchor"></div>\n    <h2>Style &amp; Emphasis</h2>\n    <table class="table-content">\n      <thead>\n        <tr>\n          <th>Class</th>\n          <th>Tag</th>\n          <th>Example</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td class="top"><p><code>.body</code></p></td>\n          <td class="top"><p><code>&lt;p&gt;</code></p></td>\n          <td><p>Data analytics everyone loves.</p>\n              <pre><code class="language-html">&lt;p&gt;Data analytics everyone loves.&lt;/p&gt;</code></pre></td>\n        </tr>\n        <tr>\n          <td class="top"><p><code>.caption</code></p></td>\n          <td class="top"></td>\n          <td><p class="caption">Data analytics everyone loves.\n              <pre><code class="language-html">&lt;p class="caption"&gt;Data analytics everyone loves.&lt;/p&gt;</code></pre></td>\n        </tr>\n        <tr>\n          <td class="top"><p><code>.bold</code></p></td>\n          <td class="top"><p><code>&lt;strong&gt;</code></p></td>\n          <td><p>Data <strong>analytics</strong> everyone loves.</p>\n              <pre><code class="language-html">&lt;p&gt;Data &lt;strong&gt;analytics&lt;/strong&gt; everyone loves.&lt;/p&gt;</code></pre></td>\n        </tr>\n        <tr>\n          <td class="top"><p><code>.regular</code></p></td>\n          <td class="top"></td>\n          <td><p class="bold">Data <span class="regular">analytics</span> everyone loves.</p>\n              <pre><code class="language-html">&lt;p class="bold"&gt;Data &lt;span class="regular"&gt;analytics&lt;/span&gt; everyone loves.&lt;/p&gt;</code></pre></td>\n        </tr>\n        <tr>\n          <td class="top"><p><code>.light</code></p></td>\n          <td class="top"></td>\n          <td><p class="light"><span class="sample-text"></span>\n              <pre><code class="language-html">&lt;p class="light"&gt;Data analytics everyone loves.&lt;/p&gt;</code></pre></td>\n        </tr>\n        <tr>\n          <td class="top"><p><code>.italic</code></p></td>\n          <td class="top"><p><code>&lt;em&gt;</code></p></td>\n          <td><p>Data <em>analytics</em> everyone loves.</p>\n              <pre><code class="language-html">&lt;p&gt;Data &lt;em&gt;analytics&lt;/em&gt; everyone loves.&lt;/p&gt;</code></pre></td>\n        </tr>\n        <tr>\n          <td class="top"><p><code>.caps</code></p></td>\n          <td class="top"></td>\n          <td><p class="caps"><span class="sample-text"></span>\n              <pre><code class="language-html">&lt;p class="caps"&gt;Data analytics everyone loves.&lt;/p&gt;</code></pre></td>\n        </tr>\n        <tr>\n          <td class="top"><p><code>.lowercase</code></p></td>\n          <td class="top"></td>\n          <td><p class="lowercase"><span class="sample-text"></span>\n              <pre><code class="language-html">&lt;p class="lowercase"&gt;Data analytics everyone loves.&lt;/p&gt;</code></pre></td>\n        </tr>\n        <tr>\n          <td class="top"><p><code>.titlecase</code></p></td>\n          <td class="top"></td>\n          <td><p class="titlecase"><span class="sample-text"></span>\n              <pre><code class="language-html">&lt;p class="titlecase"&gt;Data analytics everyone loves.&lt;/p&gt;</code></pre></td>\n        </tr>\n        <tr>\n          <td class="top"><p><code>.code</code></p></td>\n          <td class="top"></td>\n          <td><p class="code"><span class="sample-text"></span>\n              <pre><code class="language-html">&lt;p class="code"&gt;Data analytics everyone loves.&lt;/p&gt;</code></pre></td>\n        </tr>\n      </tbody>\n    </table>\n  </section>\n\n  <section id="links-section">\n    <div id="links" title="Links" class="inpage-anchor"></div>\n    <h2>Links</h2>\n    <table>\n      <thead>\n        <tr>\n          <th>State</th>\n          <th>Example</th>\n          <th>Style Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td>Normal</td>\n          <td><a href="https://www.looker.com">Looker</a></td>\n          <td>Brand border-values</td>\n        </tr>\n        <tr>\n          <td>Visited</td>\n          <td><a href="https://www.looker.com">Looker</a></td>\n          <td>Same as normal?</td>\n        </tr>\n        <tr>\n          <td>Hover, Active</td>\n          <td><a href="https://www.looker.com">Looker</a></td>\n          <td>Brand blue darkened 10% ?! always show pointer! no underline.</td>\n        </tr>\n        <tr>\n          <td>Disabled</td>\n          <td><a href="https://www.looker.com">Looker</a></td>\n          <td>Same as :hover</td>\n        </tr>\n      </tbody>\n    </table>\n\n  </section>\n\n  <section id="lists-section">\n    <div id="lists" title="Lists" class="inpage-anchor"></div>\n    <h2>Lists</h2>\n    <p>Lens comes with basic styles for unordered and ordered\n      lists. You can remove the styling on either of them by using the\n      class <code>.list-unstyled</code>.</p>\n\n    <div>\n      <div><code>&lt;ul&gt;</code></div>\n      <ul>\n        <li>List item 1</li>\n        <li>List item 2 </li>\n        <li>List item 3</li>\n        <li>List item 4</li>\n      </ul>\n    </div>\n\n    <div>\n      <div><code>&lt;ol&gt;</code></div>\n      <ol>\n        <li>List item 1</li>\n        <li>List item 2 </li>\n        <li>List item 3</li>\n        <li>List item 4</li>\n      </ol>\n    </div>\n\n    <div>\n      <div><code>&lt;ul class=".list-unstyled"&gt;</code></div>\n      <ul class="list-unstyled">\n        <li>List item 1</li>\n        <li>List item 2 </li>\n        <li>List item 3</li>\n        <li>List item 4</li>\n      </ul>\n    </div>\n\n    <div>\n      <div><code>&lt;dl&gt;</code></div>\n      <dl>\n        <dt>Looker</dt>\n        <dd>Data analytics everybody loves.</dd>\n      </dl>\n    </div>\n\n  </section>\n\n\n\n\n</lens-main>'},function(t,e){var n,o;n=angular.module("lens.components.buttons",[]),n.controller("ButtonsController",["$scope",function(t){return this}]),n.directive("buttons",function(){return{controller:"ButtonsController",restrict:"E",scope:{},template:o}}),o='<lens-main>\n\n  <p>Buttons should be used for in-page or contextual\n  actions. For navigation actions, use a link instead of a button.</p>\n\n  <section id="code-section">\n    <div id="code" title="Code" class="inpage-anchor"></div>\n    <h2>Code</h2>\n    <p>Buttons can be built using either the <code>&lt;a&gt;</code> or\n      <code>&lt;button&gt;</code> element. If you are using the <code>&lt;button&gt;</code> element,\n      always specify a <code>type</code> (button, sumbit, reset). When using the\n      <code>&lt;a&gt;</code>, include <code>role="button"</code> for accessibility.</p>\n    <p>To change the button type, size or state, add modifiers to the class.</p>\n    <div class="guide-example">\n      <div class="guide-example-demo">\n        <a class="button" role="button" href>A Normal Button</a>\n        <button type="button" class="button button--primary">Primary Button</button>\n      </div>\n      <div class="guide-example-code">\n<pre><code class="language-html">&lt;a role="button" class="button" href&gt;A Normal Button&lt;/button&gt;\n&lt;button type="button" class="button button--primary" href&gt;Primary Button&lt;/button&gt;\n</code></pre>\n      </div>\n    </div>\n  </section>\n\n  <section id="types-section">\n    <div id="types" title="Types" class="inpage-anchor"></div>\n    <h2>Types</h2>\n    <p>Button types signal to the user key properties of the action\n      they are about to take.</p>\n    <table class="table-content">\n      <thead>\n        <tr>\n          <th>Button Type</th>\n          <th class="col-20-xs">Modifier</th>\n          <th>Example</th>\n          <th>Use</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td>Normal</td>\n          <td>Not needed</td>\n          <td><a class="button" role="button" href>Normal</a></td>\n          <td>Use when there are additional actions or no primary action for the user.</td>\n        </tr>\n        <tr>\n          <td>Primary</td>\n          <td><code>.button--primary</code></td>\n          <td><a class="button button--primary" role="button" href>Primary</a></td>\n          <td>A primary button indicates the key action the user should take. There should only be one primary action in any situation.</td>\n        </tr>\n        <tr>\n          <td>Alert</td>\n          <td><code>.button--alert</code></td>\n          <td><a class="button button--alert" role="button" href>Alert</a></td>\n          <td>Alert buttons are used to indicate a urgent or negative action on the page.</td>\n        </tr>\n      </tbody>\n    </table>\n  </section>\n\n  <section id="sizes-section">\n    <div id="sizes" title="Sizes" class="inpage-anchor"></div>\n    <h2>Sizes</h2>\n    <p>Lens has 4 button sizes that can be controlled using the <a ui-sref="responsive">responsive suffixes</a>.\n    <table class="table-content">\n      <thead>\n        <tr>\n          <th>Size</th>\n          <th>Modifier</th>\n          <th>Example</th>\n          <th>Use</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td>Extra Small</td>\n          <td><code>.button--xsmall-xs</td>\n          <td><a class="button button--xsmall-xs" role="button" href>Extra Small</a></td>\n          <td>for super tiny things.</td>\n        </tr>\n        <tr>\n          <td>Small</td>\n          <td><code>.button--small-xs</td>\n          <td><a class="button button--small-xs" role="button" href>Small</a></td>\n          <td>for kinda tiny things.</td>\n        </tr>\n        <tr>\n          <td>Normal</td>\n          <td><code>.button--xsmall-xs</td>\n          <td><a class="button button--normal-xs" role="button" href>Normal</a></td>\n          <td>Typically what you\'ll use...</td>\n        </tr>\n        <tr>\n          <td>Large</td>\n          <td><code>.button--large-xs</td>\n          <td><a class="button button--large-xs" role="button" href>Large</a></td>\n          <td>for attention!</td>\n        </tr>\n      </tbody>\n    </table>\n\n  </section>\n\n  <section id="disabled-section">\n    <div id="disabled" title="Disabling" class="inpage-anchor"></div>\n    <h2>Disabling</h2>\n    <p>Disable a button when the action on the page is blocked to the user.\n      Appply the modifier <code>.button--disabled</code> to any size or type\n      of button to disable it.</p>\n    <div class="guide-example">\n      <div class="guide-example-demo">\n        <a role="button" class="button button--disabled" href>Normal</a>\n        <a role="button" class="button button--primary button--disabled" role="button" href>Primary</a>\n        <a role="button" class="button button--alert button--disabled" role="button" href>Primary</a>\n      </div>\n      <div class="guide-example-code">\n<pre><code class="language-html">&lt;a role="button" class="button button--disabled" href&gt;Normal&lt;/button&gt;\n&lt;a role="button" class="button button--primary button--disabled" href&gt;Normal&lt;/button&gt;\n&lt;a role="button" class="button button--alert button--disabled" href&gt;Normal&lt;/button&gt;\n</code></pre>\n      </div>\n    </div>\n  </section>\n\n<!--\n  <section id="inverse-section">\n    <div id="inverse" title="Inverse" class="inpage-anchor"></div>\n    <h2>Inverse</h2>\n    <p class="todo">Kinda wondering if we really need this...? would be nice to design stuffs not to need this whole other button type.</p>\n    <p>Inverse buttons are used when the background color a container is too dark for normal buttons to have enough contrast. Invert the style with the classes, <code>.button--inverse</code>. <code>.button--inverse-primary</code>. <code>.button--inverse-disabled</code>. <code>.button--inverse-primary-disabled</code>.</p>\n    <div class="bg-gray-7">\n    <a class="button button--inverse" href>Inverse</a>\n    <a class="button button--inverse-primary" href>Inverse Primary</a>\n    <a class="button button--inverse-disabled" href>Inverse Disabled</a>\n    <a class="button button--inverse-primary-disabled" href>Inverse Primary Disabled</a>\n    </div>\n    <div class="guide-code">\n      <pre><code class="language-html">&lt;a class="button button--inverse" href&gt;Inverse&lt;/a&gt;\n&lt;a class="button button--inverse-primary" href&gt;Inverse Primary&lt;/a&gt;\n&lt;a class="button button--inverse-disabled" href&gt;Inverse Disabled&lt;/a&gt;\n&lt;a class="button button--inverse-primary-disabled" href&gt;Inverse Primary Disabled&lt;/a&gt;</code></pre>\n    </div>\n  </div>\n  </section>\n-->\n\n  <section id="split-button-section">\n    <div id="split-button" title="Split Button" class="inpage-anchor"></div>\n    <h2>Split buttons</h2>\n    <p class="todo">This is maybe it\'s own separate component...? when do we use this?\n    right now it\'s for filtering states on Explore page... one should always be selected, eh?\n    might also need to tweak - thar be some funkiness with active/hover here.</p>\n    <p>Split buttons are used when you need a button that contains two or more actions.\n       To accomplish this, wrap your buttons in <code>&lt;div class="split-button"&gt;</code>.\n    </p>\n    <div class="guide-example">\n      <div class="guide-example-demo">\n        <div class="split-button">\n          <a class="button" href ng-class="{active: active == \'left\'}" ng-click="active = \'left\'">Left</a>\n          <a class="button" href ng-class="{active: active == \'middle\'}" ng-click="active = \'middle\'">Middle</a>\n          <a class="button" href ng-class="{active: active == \'right\'}" ng-click="active = \'right\'">Right</a>\n        </div>\n      </div>\n      <div class="guide-example-code">\n        <pre><code class="language-html">&lt;div class="split-button"&gt;\n  &lt;a class="button" href&gt;Left&lt;/a&gt;\n  &lt;a class="button" href&gt;Middle&lt;/a&gt;\n  &lt;a class="button" href&gt;Right&lt;/a&gt;\n&lt;/div&gt;</code></pre>\n      </div>\n    </div>\n\n\n    <p>Use <code>&lt;div class="split-button w-full"&gt;</code> for your buttons to take up the full width of the container.</p>\n    <div class="split-button w-full">\n      <a class="button" href ng-class="{active: active == \'left\'}" ng-click="active = \'left\'">Left</a>\n      <a class="button" href ng-class="{active: active == \'middle\'}" ng-click="active = \'middle\'">Middle</a>\n      <a class="button" href ng-class="{active: active == \'right\'}" ng-click="active = \'right\'">Right</a>\n    </div>\n      <div class="guide-code">\n        <pre><code class="language-html">&lt;div class="split-button w-full"&gt;\n  &lt;a class="button" href&gt;Left&lt;/a&gt;\n  &lt;a class="button" href&gt;Middle&lt;/a&gt;\n  &lt;a class="button" href&gt;Right&lt;/a&gt;\n&lt;/div&gt;</code></pre>\n      </div>\n    </div>\n\n  </section>\n\n\n</lens-main>'},function(t,e,n){var o;o=angular.module("lens.components",["lens.components.buttons","lens.components.forms","lens.components.tables","lens.components.modals","lens.components.body_copy","lens.components.headings"]),n(22),n(24),n(27),n(26),n(21),n(25)},function(t,e){var n,o;n=angular.module("lens.components.forms",[]),n.controller("FormsController",["$scope",function(t){return this}]),n.directive("forms",function(){return{controller:"FormsController",restrict:"E",scope:{},template:o}}),o='<lens-main>\n\n  <section id="label-section">\n    <div id="label" title="Label" class="inpage-anchor"></div>\n    <h2>Labels</h2>\n    <p>Use the <code>.form-label</code> class to set the default styles on a label.\n      You can also change the text alignment with <code>.text-right-xs</code>.</p>\n    <div class="col-container col-max col-gutters">\n      <div class="col col-30-lg">\n        <form>\n          <label class="form-label">Form Label</label>\n          <label class="form-label text-right-lg">Form Label</label>\n        </form>\n      </div>\n    </div>\n    <div class="guide-code">\n    <pre><code class="language-html">&lt;form&gt;\n  &lt;label class="form-label"&gt;Form Label&lt;/label&gt;\n  &lt;label class="form-label text-right-xs"&gt;Form Label&lt;/label&gt;\n&lt;/form&gt;</code></pre></div>\n  </section>\n\n  <section id="text-input-section">\n    <div id="text-input" title="Text Input" class="inpage-anchor"></div>\n    <h2>Text Input</h2>\n    <p>Use the <code>.form-text-input</code> class to apply the default styling\n      for text inputs. Inputs should always be paired with a label to make them\n      accessible. You can use placeholder text for additional context when necessary.\n      <strong>Never</strong> use placeholder text in place of a label.</p>\n\n    <form>\n      <div class="col-container col-max col-gutters">\n        <div class="col col-15-lg">\n          <label for="form-text-input-1" class="form-label text-right-lg m-b-05-xs m-b-0-lg">Label</label>\n        </div>\n        <div class="col col-50-lg">\n            <input type="text" class="form-text-input" id="form-text-input-1" placeholder="this is placeholder text">\n        </div>\n      </div>\n    </form>\n    <div class="guide-code">\n    <pre><code class="language-html">&lt;form&gt;\n  &lt;div class="col-container col-max col-gutters"&gt;\n    &lt;div class="col col-15-lg"&gt;\n      &lt;label for="form-text-input-1" class="form-label text-right-lg m-b-05-xs m-b-0-lg"&gt;Label&lt;/label&gt;\n    &lt;/div&gt;\n    &lt;div class="col col-50-lg"&gt;\n        &lt;input type="text" class="form-text-input" id="form-text-input-1" placeholder="this is placeholder text"&gt;\n    &lt;/div&gt;\n  &lt;/div&gt;\n&lt;/form&gt;</code></pre>\n    </div>\n\n    <h3>Disabled</h3>\n    <p>You may have an text input that needs to be disabled. To do that, use the\n      class <code>.form-text-input-disabled</code> in addition to the default class.</p>\n\n    <form>\n      <div class="col-container col-max col-gutters">\n        <div class="col col-15-lg">\n          <label for="form-text-input-1" class="form-label text-right-lg m-b-05-xs m-b-0-lg">Disabled</label>\n        </div>\n        <div class="col col-50-lg">\n            <input type="text" readonly="true" class="form-text-input form-text-input-disabled" id="form-text-input-1">\n        </div>\n      </div>\n    </form>\n    <div class="guide-code">\n    <pre><code class="language-html">&lt;form&gt;\n  &lt;div class="col-container col-max col-gutters"&gt;\n    &lt;div class="col col-15-lg"&gt;\n      &lt;label for="form-text-input-1" class="form-label text-right-lg m-b-05-xs m-b-0-lg"&gt;Disabled&lt;/label&gt;\n    &lt;/div&gt;\n    &lt;div class="col col-50-lg"&gt;\n        &lt;input type="text" readonly="true" class="form-text-input form-text-input-disabled" id="form-text-input-1"&gt;\n    &lt;/div&gt;\n  &lt;/div&gt;\n&lt;/form&gt;</code></pre>\n    </div>\n  </section>\n\n\n  <section id="textarea-section">\n    <div id="textarea" title="Textarea" class="inpage-anchor"></div>\n    <h2>Textarea</h2>\n    <p>Use the <code>.form-textarea</code> class to get the default styling. When setting a typesize and width, we recommend aiming for a measure of 52-78 characters.</p>\n\n    <form>\n      <div class="col-container col-max col-gutters">\n        <div class="col col-15-lg">\n          <label for="form-text-input-1" class="form-label text-right-lg m-b-05-xs m-b-0-lg">Label</label>\n        </div>\n        <div class="col col-50-lg">\n          <textarea name="form-textarea-1" id="form-textarea-1" class="form-textarea"></textarea>\n        </div>\n      </div>\n    </form>\n    <div class="guide-code">\n    <pre><code class="language-html">&lt;form&gt;\n  &lt;div class="col-container col-max col-gutters"&gt;\n    &lt;div class="col col-15-lg"&gt;\n      &lt;label for="form-text-input-1" class="form-label text-right-lg m-b-05-xs m-b-0-lg"&gt;Label&lt;/label&gt;\n    &lt;/div&gt;\n    &lt;div class="col col-50-lg"&gt;\n      &lt;textarea name="form-textarea-1" id="form-textarea-1" class="form-textarea"&gt;&lt;/textarea&gt;\n    &lt;/div&gt;\n  &lt;/div&gt;\n&lt;/form&gt;</code></pre>\n    </div>\n  </section>\n\n\n  <section id="selects-section">\n    <div id="select" title="Select" class="inpage-anchor"></div>\n    <h2>Select</h2>\n    <p>Use the <code>.form-select</code> class to get the default styling.</p>\n\n    <form>\n      <div class="col-container col-max col-gutters">\n        <div class="col col-15-lg">\n          <label for="form-select-1" class="form-label text-right-lg">Label</label>\n        </div>\n        <div class="col col-50-lg">\n          <select id="form-select-1" class="form-select">\n            <option value="">Item 1</option>\n            <option value="">Item 2</option>\n            <option value="">Item 3</option>\n            <option value="">Item 4</option>\n          </select>\n        </div>\n      </div>\n    </form>\n    <div class="guide-code">\n    <pre><code class="language-html">&lt;form&gt;\n  &lt;div class="col-container col-max col-gutters"&gt;\n    &lt;div class="col col-15-lg"&gt;\n      &lt;label for="form-select-1" class="form-label text-right-lg"&gt;Label&lt;/label&gt;\n    &lt;/div&gt;\n    &lt;div class="col col-50-lg"&gt;\n      &lt;select id="form-select-1" class="form-select"&gt;\n        &lt;option value=""&gt;Item 1&lt;/option&gt;\n        &lt;option value=""&gt;Item 2&lt;/option&gt;\n        &lt;option value=""&gt;Item 3&lt;/option&gt;\n        &lt;option value=""&gt;Item 4&lt;/option&gt;\n      &lt;/select&gt;\n    &lt;/div&gt;\n  &lt;/div&gt;\n&lt;/form&gt;</code></pre>\n    </div>\n  </section>\n\n  <section id="select-multiple-section">\n    <div id="select-multiple" title="Select Multiple" class="inpage-anchor"></div>\n    <h2>Select Multiple</h2>\n    <p>Use the <code>.form-select-multiple</code> class and add the attribute,\n      <code>multiple</code> to get the default styling. If you\'d only like a user\n       to be able to select one option, just remove the <code>multiple</code> attribute\n        and add a <code>size</code> attribute that takes a value of how ever many\n        options you want shown.</p>\n\n    <form>\n      <div class="col-container col-max col-gutters">\n        <div class="col col-15-lg">\n          <label for="form-select-1" class="form-label text-right-lg m-b-05-xs m-b-0-lg">Multiple</label>\n        </div>\n        <div class="col col-50-lg">\n          <select id="form-select-1" class="form-select-multiple" multiple>\n            <option value="">Item 1</option>\n            <option value="">Item 2</option>\n            <option value="">Item 3</option>\n            <option value="">Item 4</option>\n          </select>\n        </div>\n      </div>\n      <div class="col-container col-max col-gutters">\n        <div class="col col-15-lg">\n          <label for="form-select-1" class="form-label text-right-lg">Single</label>\n        </div>\n        <div class="col col-50-lg">\n          <select id="form-select-1" class="form-select-multiple" size="3">\n            <option value="">Item 1</option>\n            <option value="">Item 2</option>\n            <option value="">Item 3</option>\n          </select>\n        </div>\n      </div>\n    </form>\n    <div class="guide-code">\n    <pre><code class="language-html">&lt;form&gt;\n  &lt;div class="col-container col-max col-gutters"&gt;\n    &lt;div class="col col-15-lg"&gt;\n      &lt;label for="form-select-1" class="form-label text-right-lg"&gt;Multiple&lt;/label&gt;\n    &lt;/div&gt;\n    &lt;div class="col col-50-lg"&gt;\n      &lt;select id="form-select-1" class="form-select-multiple" multiple&gt;\n        &lt;option value=""&gt;Item 1&lt;/option&gt;\n        &lt;option value=""&gt;Item 2&lt;/option&gt;\n        &lt;option value=""&gt;Item 3&lt;/option&gt;\n        &lt;option value=""&gt;Item 4&lt;/option&gt;\n      &lt;/select&gt;\n    &lt;/div&gt;\n  &lt;/div&gt;\n  &lt;div class="col-container col-max col-gutters"&gt;\n    &lt;div class="col col-15-lg"&gt;\n      &lt;label for="form-select-1" class="form-label text-right-lg m-b-05-xs m-b-0-lg"&gt;Single&lt;/label&gt;\n    &lt;/div&gt;\n    &lt;div class="col col-50-lg"&gt;\n      &lt;select id="form-select-1" class="form-select-multiple" size="3"&gt;\n        &lt;option value=""&gt;Item 1&lt;/option&gt;\n        &lt;option value=""&gt;Item 2&lt;/option&gt;\n        &lt;option value=""&gt;Item 3&lt;/option&gt;\n      &lt;/select&gt;\n    &lt;/div&gt;\n  &lt;/div&gt;\n&lt;/form&gt;</code></pre>\n    </div>\n  </section>\n\n\n  <section id="radio-button-section">\n    <div id="radio-button" title="Radio Button" class="inpage-anchor"></div>\n    <h2>Radio Button</h2>\n    <p>Use <code>div.form-radio</code> to wrap an <code>label.form-radio-label</code>\n      inside. Within that label you\'ll nest <code>input.form-radio-input</code>\n      to get a radio input with the correct styles.</p>\n\n    <form>\n      <div class="col-container col-gutters">\n        <div class="col col-15-lg">\n          <label class="form-label text-right-lg">Radios</label>\n        </div>\n        <div class="col col-50-lg">\n          <div class="form-radio">\n            <label class="form-radio-label">\n              <input type="radio" name="radio-1" class="form-radio-input">\n              Radio selection 1\n            </label>\n          </div>\n          <div class="form-radio">\n            <label class="form-radio-label">\n              <input type="radio" name="radio-1" class="form-radio-input">\n              Radio selection 2\n            </label>\n          </div>\n        </div>\n      </div>\n    </form>\n    <div class="guide-code">\n    <pre><code class="language-html">&lt;form&gt;\n  &lt;div class="col-container col-gutters"&gt;\n    &lt;div class="col col-15-lg"&gt;\n      &lt;label class="form-label text-right-lg"&gt;Radios&lt;/label&gt;\n    &lt;/div&gt;\n    &lt;div class="col col-50-lg"&gt;\n      &lt;div class="form-radio"&gt;\n        &lt;label class="form-radio-label"&gt;\n          &lt;input type="radio" name="radio-1" class="form-radio-input"&gt;\n          Radio selection 1\n        &lt;/label&gt;\n      &lt;/div&gt;\n      &lt;div class="form-radio"&gt;\n        &lt;label class="form-radio-label"&gt;\n          &lt;input type="radio" name="radio-1" class="form-radio-input"&gt;\n          Radio selection 2\n        &lt;/label&gt;\n      &lt;/div&gt;\n    &lt;/div&gt;\n  &lt;/div&gt;\n&lt;/form&gt;</code></pre>\n    </div>\n  </section>\n\n  <section id="checkbox-section">\n    <div id="checkbox" title="Checkbox" class="inpage-anchor"></div>\n    <h2>Checkbox</h2>\n    <p>Use <code>div.form-checkbox</code> to wrap an <code>label.form-checkbox-label</code> inside. Within that label you\'ll nest <code>input.form-checkbox-input</code> to get a radio input with the correct styles.</p>\n\n    <form>\n      <div class="col-container col-gutters">\n        <div class="col col-15-lg">\n          <label class="form-label text-right-lg">Checkboxes</label>\n        </div>\n        <div class="col col-50-lg">\n          <div class="form-checkbox">\n            <label class="form-checkbox-label">\n              <input type="checkbox" name="checkbox-1" class="form-checkbox-input">\n              Checkbox 1\n            </label>\n          </div>\n          <div class="form-checkbox">\n            <label class="form-checkbox-label">\n              <input type="checkbox" name="checkbox-1" class="form-checkbox-input">\n              Checkbox 2\n            </label>\n          </div>\n        </div>\n      </div>\n    </form>\n    <div class="guide-code">\n    <pre><code class="language-html">&lt;form&gt;\n  &lt;div class="col-container col-gutters"&gt;\n    &lt;div class="col col-15-lg"&gt;\n      &lt;label class="form-label text-right-lg"&gt;Checkboxes&lt;/label&gt;\n    &lt;/div&gt;\n    &lt;div class="col col-50-lg"&gt;\n      &lt;div class="form-checkbox"&gt;\n        &lt;label class="form-checkbox-label"&gt;\n          &lt;input type="checkbox" name="checkbox-1" class="form-checkbox-input"&gt;\n          Checkbox 1\n        &lt;/label&gt;\n      &lt;/div&gt;\n      &lt;div class="form-checkbox"&gt;\n        &lt;label class="form-checkbox-label"&gt;\n          &lt;input type="checkbox" name="checkbox-1" class="form-checkbox-input"&gt;\n          Checkbox 2\n        &lt;/label&gt;\n      &lt;/div&gt;\n    &lt;/div&gt;\n  &lt;/div&gt;\n&lt;/form&gt;</code></pre>\n    </div>\n  </section>\n\n  <section id="switch-section">\n    <div id="switch" title="Switch" class="inpage-anchor"></div>\n    <h2>Switch</h2>\n    <p>A switch is a stylized checkbox that lets a user toggle on/off some sort\n      of option. To build one, wrap a div with the class of <code>.lk-switch-outer</code>\n      around an input and a label. The input has the class <code>.lk-switch</code>\n      and the label has the class <code>.lk-switch-label</code>. That label then\n      has two spans inside it. These are <code>.lk-switch-on</code> and <code>.lk-switch-off</code>.</p>\n\n    <div class="col-container col-max col-gutters">\n      <div class="col col-50-lg">\n        <form>\n          <div class="lk-switch-outer">\n            <input type="checkbox" id="switch-1" class="lk-switch">\n            <label class="lk-switch-label" for="switch-1">\n              <span class="lk-switch-on">On</span>\n              <span class="lk-switch-off">Off</span>\n            </label>\n          </div>\n        </form>\n      </div>\n    </div>\n    <div class="guide-code">\n    <pre><code class="language-html">&lt;form&gt;\n  &lt;div class="lk-switch-outer"&gt;\n    &lt;input type="checkbox" id="switch-1" class="lk-switch"&gt;\n    &lt;label class="lk-switch-label" for="switch-1"&gt;\n      &lt;span class="lk-switch-on"&gt;On&lt;/span&gt;\n      &lt;span class="lk-switch-off"&gt;Off&lt;/span&gt;\n    &lt;/label&gt;\n  &lt;/div&gt;\n&lt;/form&gt;</code></pre>\n    </div>\n  </section>\n\n\n\n  <section id="tokens-section">\n    <div id="tokens" title="Tokens" class="inpage-anchor"></div>\n    <h2>Tokens</h2>\n    <p>Tokens are great for using autocomplete inside an input or for anytime you\n      need a token that can be closed. To use them, you\'ll need to copy the look of a\n      text input for a div by including <code>.tokenfield.form-text-input</code> on it.\n      Then inside, you\'ll have tokens, which are made up of divs with the <code>.tokenfield-token</code>\n      class on them. Finally, you\'ll have a span with a class of <code>.tokenfield-token-label</code>\n      and a close anchor.</p>\n\n    <div class="col-container col-max col-gutters">\n      <div class="col col-50-lg">\n        <form>\n          <div class="tokenfield form-text-input">\n            <input type="text" tabindex="-1" style="position: absolute; left: -10000px;">\n            <div class="tokenfield-token">\n              <span class="tokenfield-token-label">Token A</span>\n              <a href="#" class="tokenfield-token-close" tabindex="-1">&times;</a>\n            </div>\n            <div class="tokenfield-token">\n              <span class="tokenfield-token-label">Token B</span>\n              <a href="#" class="tokenfield-token-close" tabindex="-1">&times;</a>\n            </div>\n          </div>\n        </form>\n      </div>\n    </div>\n    <div class="guide-code">\n    <pre><code class="language-html">&lt;form&gt;\n  &lt;div class="tokenfield form-text-input"&gt;\n    &lt;input type="text" tabindex="-1" style="position: absolute; left: -10000px;"&gt;\n    &lt;div class="tokenfield-token"&gt;\n      &lt;span class="tokenfield-token-label"&gt;Token A&lt;/span&gt;\n      &lt;a href="#" class="tokenfield-token-close" tabindex="-1"&gt;&times;&lt;/a&gt;\n    &lt;/div&gt;\n    &lt;div class="tokenfield-token"&gt;\n      &lt;span class="tokenfield-token-label"&gt;Token B&lt;/span&gt;\n      &lt;a href="#" class="tokenfield-token-close" tabindex="-1"&gt;&times;&lt;/a&gt;\n    &lt;/div&gt;\n  &lt;/div&gt;\n&lt;/form&gt;</code></pre>\n    </div>\n  </section>\n\n\n  <section id="input-groups-section">\n    <div id="input-groups" title="Input Groups" class="inpage-anchor"></div>\n    <!-- Inputs Groups-->\n    <h2>Inputs Groups</h2>\n    <p>For a number that contains dashes, use our <code>.form-input-group</code>\n       class on a <code>div</code> with <code>input.form-text-input</code> inside.\n       Between each input, use <code>.form-input-group-addon</code> with a\n       dash inside it.</p>\n\n    <div class="col-container">\n      <div class="col-50-md">\n        <form>\n          <div class="form-input-group">\n            <input type="text" class="form-text-input">\n            <div class="form-input-group-addon">-</div>\n            <input type="text" class="form-text-input">\n            <div class="form-input-group-addon">-</div>\n            <input type="text" class="form-text-input">\n            <div class="form-input-group-addon">-</div>\n            <input type="text" class="form-text-input">\n            <div class="form-input-group-addon">-</div>\n            <input type="text" class="form-text-input">\n          </div>\n        </form>\n      </div>\n    </div>\n    <div class="guide-code">\n    <pre><code class="language-html">&lt;form&gt;\n  &lt;div class="form-input-group"&gt;\n    &lt;input type="text" class="form-text-input"&gt;\n    &lt;div class="form-input-group-addon"&gt;-&lt;/div&gt;\n    &lt;input type="text" class="form-text-input"&gt;\n    &lt;div class="form-input-group-addon"&gt;-&lt;/div&gt;\n    &lt;input type="text" class="form-text-input"&gt;\n    &lt;div class="form-input-group-addon"&gt;-&lt;/div&gt;\n    &lt;input type="text" class="form-text-input"&gt;\n    &lt;div class="form-input-group-addon"&gt;-&lt;/div&gt;\n    &lt;input type="text" class="form-text-input"&gt;\n  &lt;/div&gt;\n&lt;/form&gt;</code></pre>\n    </div>\n  </section>\n\n\n  <section id="help-text-section">\n    <div id="help-text-" title="Help Text" class="inpage-anchor"></div>\n    <h2>Help Text</h2>\n    <p>When necessary, you can place additional text below the input in a <code>div</code> with a <code>.form-helper</code> class to add helper text.</p>\n\n    <form>\n      <div class="col-container col-max col-gutters">\n        <div class="col col-15-lg">\n          <label for="form-text-input-1" class="form-label text-right-lg m-b-05-xs m-b-0-lg">Label</label>\n        </div>\n        <div class="col col-50-lg">\n            <input type="text" class="form-text-input" id="form-text-input-1" placeholder="this is placeholder text">\n            <div class="form-helper">You don\'t need to include http://</div>\n        </div>\n      </div>\n    </form>\n    <div class="guide-code">\n    <pre><code class="language-html">&lt;form&gt;\n  &lt;div class="col-container col-max col-gutters"&gt;\n    &lt;div class="col col-15-lg"&gt;\n      &lt;label for="form-text-input-1" class="form-label text-right-lg m-b-05-xs m-b-0-lg"&gt;Label&lt;/label&gt;\n    &lt;/div&gt;\n    &lt;div class="col col-50-lg"&gt;\n        &lt;input type="text" class="form-text-input" id="form-text-input-1" placeholder="this is placeholder text"&gt;\n        &lt;div class="form-helper"&gt;You don\'t need to include http://&lt;/div&gt;\n    &lt;/div&gt;\n  &lt;/div&gt;\n&lt;/form&gt;</code></pre>\n    </div>\n  </section>\n\n  <section id="placeholder-text-section">\n    <div id="placeholder-text" title="Placeholder Text" class="inpage-anchor"></div>\n    <h2>Placeholder Text Mixin</h2>\n\n    <p>Good for textareas, text inputs, selects and multiple selects.</p>\n    <div class="guide-code">\n<pre><code class="language-css">.custom-selector\n    +placeholder-style\n      property: value\n  </code></pre>\n    <p><code>\n      +placeholder-style\n    </code></p>\n  </section>\n\n\n  <section id="errors-section">\n    <div id="errors" title="Errors" class="inpage-anchor"></div>\n    <h2>Errors</h2>\n    <p>Add the <code>.form-error</code> class to the form element to apply Lens\'s\n       default for feedback styling. Additionally, add a <code>div</code> with\n       the class of <code>.form-helper.form-helper-error</code> to inform the user\n       what the feedback is.</p>\n\n    <div class="col-container col-max col-gutters">\n      <div class="col col-50-lg">\n        <form>\n          <select id="form-select-1" class="form-select form-error">\n            <option value="">Item 1</option>\n            <option value="">Item 2</option>\n            <option value="">Item 3</option>\n            <option value="">Item 4</option>\n          </select>\n          <div class="form-helper form-helper-error m-b-2-xs">Get to the chopper!</div>\n          <input type="text" class="form-text-input form-error" id="form-text-input-1">\n          <div class="form-helper form-helper-error">Don\'t forget to this!</div>\n        </form>\n      </div>\n    </div>\n    <div class="guide-code">\n    <pre><code class="language-html">&lt;form&gt;\n  &lt;select id="form-select-1" class="form-select form-error"&gt;\n    &lt;option value=""&gt;Item 1&lt;/option&gt;\n    &lt;option value=""&gt;Item 2&lt;/option&gt;\n    &lt;option value=""&gt;Item 3&lt;/option&gt;\n    &lt;option value=""&gt;Item 4&lt;/option&gt;\n  &lt;/select&gt;\n  &lt;div class="form-helper form-helper-error m-b-2-xs"&gt;Get to the chopper!&lt;/div&gt;\n  &lt;input type="text" class="form-text-input form-error" id="form-text-input-1"&gt;\n  &lt;div class="form-helper form-helper-error"&gt;Don\'t forget to this!&lt;/div&gt;\n&lt;/form&gt;</code></pre>\n    </div>\n  </section>\n\n</lens-main>';
-},function(t,e){var n,o;n=angular.module("lens.components.headings",[]),n.controller("HeadingsController",["$scope",function(t){return this}]),n.directive("headings",function(){return{controller:"HeadingsController",restrict:"E",scope:{},template:o}}),o='<lens-main>\n  <section id="headings-section">\n    <p class="todo">Add some rules about how to use...</p>\n    <table class="table-content">\n      <thead>\n        <tr>\n          <th>Class</th>\n          <th>Tag</th>\n          <th>Example</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>.display-3</code></td>\n          <td></td>\n          <td><h1 class="display-3"><span class="sample-text"></span></h1></td>\n        </tr>\n        <tr>\n          <td><code>.display-2</code></td>\n          <td></td>\n          <td><h1 class="display-2"><span class="sample-text"></span></h1></td>\n        </tr>\n        <tr>\n          <td><code>.display-1</code></td>\n          <td></td>\n          <td><h1 class="display-1"><span class="sample-text"></span></h1></td>\n        </tr>\n        <tr>\n          <td><code>.headline</code></td>\n          <td><code>&lt;h1&gt;</code></td>\n          <td><h1><span class="sample-text"></span></h1></td>\n        </tr>\n        <tr>\n          <td><code>.title-2</code></td>\n          <td><code>&lt;h2&gt;</code></td>\n          <td><h2><span class="sample-text"></span></h2></td>\n        </tr>\n        <tr>\n          <td><code>.title-1</code></td>\n          <td><code>&lt;h3&gt;</code></td>\n          <td><h3><span class="sample-text"></span></h3></td>\n        </tr>\n        <tr>\n          <td><code>.subheading</code></td>\n          <td><code>&lt;h4&gt;</code></td>\n          <td><h4><span class="sample-text"></span></h4></td>\n        </tr>\n        <tr>\n          <td><code></code></td>\n          <td><code>&lt;h5&gt;</code></td>\n          <td><h5><span class="sample-text"></span></h5></td>\n        </tr>\n        <tr>\n          <td><code></code></td>\n          <td><code>&lt;h6&gt;</code></td>\n          <td><h6><span class="sample-text"></span></h6></td>\n        </tr>\n      </tbody>\n    </table>\n  </section>\n\n</lens-main>'},function(t,e){var n,o;n=angular.module("lens.components.modals",[]),n.controller("ModalsController",["$scope",function(t){return this}]),n.directive("modals",function(){return{controller:"ModalsController",restrict:"E",scope:{},template:o}}),o='<lens-main>\n\n  <section id="Modals">\n\n    <p class="m-b-4-xs">To build a modal, create a <code>&lt;div&gt;</code> with a class of <code>.modal</code> and place it on the page. For the sake of documentation, these modals are not in an overlay. Typically, you\'d see a semi-transparent black overlay that covers the entire screen with a modal inside it.</p>\n\n    <div class="modal-tarp__styleguide">\n      <div class="modal col-65-xs">\n        <div class="modal--header">\n          <a href="#" class="modal--close">\n            <img class="modal--close-icon" src="src/images/icons/close.svg" />\n          </a>\n          <h2 class="modal--header-title regular">Create Dashboard</h2>\n        </div>\n        <div class="modal--body">\n          <p>Paragraph text...</p>\n        </div>\n        <div class="modal--footer">\n          <div class="modal--footer-actions">\n            <a class="button" href="#">Cancel</a>\n            <a class="button button--primary" href="#">Create Dashboard</a>\n          </div>\n        </div>\n      </div>\n    </div>\n\n  </section>\n\n</lens-main>'},function(t,e){var n,o;n=angular.module("lens.components.tables",[]),n.controller("TablesController",["$scope",function(t){return this}]),n.directive("tables",function(){return{controller:"TablesController",restrict:"E",scope:{},template:o}}),o='<lens-main>\n\n  <section id="basic-table-section">\n    <div id="basic-table" title="Basic Table" class="inpage-anchor"></div>\n    <h2>Basic Table</h2>\n    <p>Use a regular table by using a <code>&lt;table&gt;&lt;/table&gt;</code>\n       element and not adding any extra table classes. By default, the table\n         will be set to the width of the content, with a max-width of 100%.\n       Text is aligned left horizontally and in the middle of the cell\n     vertically</p>\n    <div class="guide-example">\n      <div class="guide-example-demo">\n        <table>\n          <tbody>\n            <tr>\n              <th>Heading 1</th>\n              <th>Heading 2</th>\n              <th>Heading 3</th>\n            </tr>\n            <tr>\n              <td>hello</td>\n              <td>it\'s</td>\n              <td>me</td>\n            </tr>\n            <tr>\n              <td>I</td>\n              <td>was</td>\n              <td>wondering</td>\n            </tr>\n            <tr>\n              <td>if</td>\n              <td>after</td>\n              <td>all</td>\n            </tr>\n          </tbody>\n        </table>\n      </div>\n      <div class="guide-example-code">\n<pre><code class="language-html">&lt;table&gt;\n  &lt;tbody&gt;\n    &lt;tr&gt;\n      &lt;th"&gt;Heading 1&lt;/th&gt;\n      &lt;th&gt;Heading 2&lt;/th&gt;\n      &lt;th&gt;Heading 3&lt;/th&gt;\n    &lt;/tr&gt;\n    &lt;tr&gt;\n      &lt;td&gt;hello&lt;/td&gt;\n      &lt;td&gt;it\'s&lt;/td&gt;\n      &lt;td&gt;me&lt;/td&gt;\n    &lt;/tr&gt;\n    &lt;tr&gt;\n      &lt;td&gt;I&lt;/td&gt;\n      &lt;td&gt;was&lt;/td&gt;\n      &lt;td&gt;wondering&lt;/td&gt;\n    &lt;/tr&gt;\n    &lt;tr&gt;\n      &lt;td class="right top"&gt;if&lt;/td&gt;\n      &lt;td class="bottom"&gt;after&lt;/td&gt;\n      &lt;td&gt;all this time you\'d like to have a little chat or something.&lt;/td&gt;\n    &lt;/tr&gt;\n  &lt;/tbody&gt;\n&lt;/table&gt;</code></pre>\n      </div>\n    </div>\n  </section>\n\n  <section id="alignment-widths-section">\n    <div id="alignment-widths" title="Column Width &amp; Cell Alignment" class="inpage-anchor"></div>\n    <h2>Column Width &amp; Cell Alignment</h2>\n    <p>The width of columns in tables can be set by using Lens\'s\n      <a ui-sref="grid">grid classes</a>. Use the following classes\n    to align content within a cell:</p>\n    <ul>\n      <li><code>.right</code> align right</li>\n      <li><code>.top</code> align to top of cell</li>\n      <li><code>.bottom</code> align to bottom of cell</li>\n    </ul>\n\n    <div class="guide-example">\n      <div class="guide-example-demo">\n        <table class="col-100-xs">\n          <tbody>\n            <tr>\n              <th class="col-80-xs">Heading 1</th>\n              <th>Heading 2</th>\n              <th>Heading 3</th>\n            </tr>\n            <tr>\n              <td>hello</td>\n              <td>it\'s</td>\n              <td>me</td>\n            </tr>\n            <tr>\n              <td>I</td>\n              <td>was</td>\n              <td>wondering</td>\n            </tr>\n            <tr>\n              <td class="right top">if</td>\n              <td class="bottom">after</td>\n              <td>all this time you\'d like to have a little chat or something.</td>\n            </tr>\n          </tbody>\n        </table>\n      </div>\n      <div class="guide-example-code">\n<pre><code class="language-html">&lt;table class="col-100-xs"&gt;\n  &lt;tbody&gt;\n    &lt;tr&gt;\n      &lt;th class="col-80-xs"&gt;Heading 1&lt;/th&gt;\n      &lt;th&gt;Heading 2&lt;/th&gt;\n      &lt;th&gt;Heading 3&lt;/th&gt;\n    &lt;/tr&gt;\n    &lt;tr&gt;\n      &lt;td&gt;hello&lt;/td&gt;\n      &lt;td&gt;it\'s&lt;/td&gt;\n      &lt;td&gt;me&lt;/td&gt;\n    &lt;/tr&gt;\n    &lt;tr&gt;\n      &lt;td&gt;I&lt;/td&gt;\n      &lt;td&gt;was&lt;/td&gt;\n      &lt;td&gt;wondering&lt;/td&gt;\n    &lt;/tr&gt;\n    &lt;tr&gt;\n      &lt;td class="right top"&gt;if&lt;/td&gt;\n      &lt;td class="bottom"&gt;after&lt;/td&gt;\n      &lt;td&gt;all this time you\'d like to have a little chat or something.&lt;/td&gt;\n    &lt;/tr&gt;\n  &lt;/tbody&gt;\n&lt;/table&gt;</code></pre>\n      </div>\n    </div>\n  </section>\n\n  <section id="zebra-stripes-section">\n    <div id="zebra-stripes" title="Zebra Stripes" class="inpage-anchor"></div>\n    <h2>Zebra Stripes</h2>\n    <p>Add the class <code>.table-striped</code> to include zebra striping of\n    alternate rows.</p>\n\n    <div class="guide-example">\n      <div class="guide-example-demo">\n        <table class="table-striped">\n          <tbody>\n            <tr>\n              <th>Heading 1</th>\n              <th>Heading 2</th>\n              <th>Heading 3</th>\n            </tr>\n            <tr>\n              <td>hello</td>\n              <td>it\'s</td>\n              <td>me</td>\n            </tr>\n            <tr>\n              <td>I</td>\n              <td>was</td>\n              <td>wondering</td>\n            </tr>\n            <tr>\n              <td>if</td>\n              <td>after</td>\n              <td>all</td>\n            </tr>\n          </tbody>\n        </table>\n      </div>\n      <div class="guide-example-code">\n<pre><code class="language-html">&lt;table class="table-striped"&gt;\n  &lt;tbody&gt;\n    &lt;tr&gt;\n      &lt;th&gt;Heading 1&lt;/th&gt;\n      &lt;th&gt;Heading 2&lt;/th&gt;\n      &lt;th&gt;Heading 3&lt;/th&gt;\n    &lt;/tr&gt;\n    &lt;tr&gt;\n      &lt;td&gt;hello&lt;/td&gt;\n      &lt;td&gt;it\'s&lt;/td&gt;\n      &lt;td&gt;me&lt;/td&gt;\n    &lt;/tr&gt;\n    &lt;tr&gt;\n      &lt;td&gt;I&lt;/td&gt;\n      &lt;td&gt;was&lt;/td&gt;\n      &lt;td&gt;wondering&lt;/td&gt;\n    &lt;/tr&gt;\n    &lt;tr&gt;\n      &lt;td&gt;if&lt;/td&gt;\n      &lt;td&gt;after&lt;/td&gt;\n      &lt;td&gt;all&lt;/td&gt;\n    &lt;/tr&gt;\n  &lt;/tbody&gt;\n&lt;/table&gt;</code></pre>\n      </div>\n    </div>\n  </section>\n\n  <section id="content-table-section">\n    <div id="content-table" title="Content Table" class="inpage-anchor"></div>\n    <h2>Content Table</h2>\n    <p>Use our content table style with the class <code>.table-content</code>.\n      Use <code>.sub-text</code> for any sub text (like a description).</p>\n\n    <div class="guide-example">\n      <div class="guide-example-demo">\n        <table class="table-content col-100-lg">\n          <tbody>\n            <tr>\n              <th class="col-80-xs">Heading 1</th>\n              <th>Heading 2</th>\n              <th>Heading 3</th>\n            </tr>\n            <tr>\n              <td>hello</td>\n              <td>it\'s</td>\n              <td>me</td>\n            </tr>\n            <tr>\n              <td>\n                <div>here</div>\n                <div class="sub-text">A description or something.</div>\n              </td>\n              <td>I</td>\n              <td>am</td>\n            </tr>\n          </tbody>\n        </table>\n      </div>\n      <div class="guide-example-code">\n<pre><code class="language-html">&lt;table class="table-content"&gt;\n  &lt;tbody&gt;\n    &lt;tr&gt;\n      &lt;th class="col-80-xs"&gt;Heading 1&lt;/th&gt;\n      &lt;th&gt;Heading 2&lt;/th&gt;\n      &lt;th&gt;Heading 3&lt;/th&gt;\n    &lt;/tr&gt;\n    &lt;tr&gt;\n      &lt;td&gt;hello&lt;/td&gt;\n      &lt;td&gt;it\'s&lt;/td&gt;\n      &lt;td&gt;me&lt;/td&gt;\n    &lt;/tr&gt;\n    &lt;tr&gt;\n      &lt;td&gt;\n        &lt;div&gt;here&lt;/div&gt;\n        &lt;div class="sub-text"&gt;A description or something.&lt;/div&gt;\n      &lt;/td&gt;\n      &lt;td&gt;I&lt;/td&gt;\n      &lt;td&gt;am&lt;/td&gt;\n    &lt;/tr&gt;\n  &lt;/tbody&gt;\n&lt;/table&gt;</code></pre>\n      </div>\n    </div>\n  </section>\n\n</lens-main>'},function(t,e){var n,o;n=angular.module("lens.getting_started",[]),n.controller("GettingStartedController",["$scope",function(t){return this}]),n.directive("gettingStarted",function(){return{controller:"GettingStartedController",restrict:"E",scope:{},template:o}}),o='<lens-main>\n  <section id="developers">\n    <h2>Developers</h2>\n    <code>Coming Soon!</code>\n    <ul>\n      <li>How we use this in helltool</li>\n      <li>Extending and using Lens elsewhere (see <a ui-sref="installation">Installation</a> section)\n      <li><a ui-sref="markup">markup considerations</a></li>\n      <li>...</li>\n    </ul>\n  </section>\n\n  <section id="designers">\n    <h2>Designers</h2>\n    <code>Coming Soon!</code>\n    <ul>\n      <li>design principles, etc.</li>\n      <li>link to downloadable design resources.</li>\n      <li>...</li>\n    </ul>\n  </section>\n</lens-main>'},function(t,e){var n,o;n=angular.module("lens.guidelines.environment_properties",[]),n.controller("EnvironmentPropertiesController",["$scope",function(t){return this}]),n.directive("environmentProperties",function(){return{controller:"EnvironmentPropertiesController",restrict:"E",scope:{},template:o}}),o='<lens-main>\n\n  <section id="environment-properties">\n    <p>Environment properties provide rules for how Lens elements look, interact\n       and behave. The following themes are used to communicate the product\n       principles and guide the design.</p>\n\n    <p><strong>Visibility</strong> allows you to see the information\n      you care about and have a clear path to understanding and insights.\n      Presenting relevant content helps <em>eliminate ambiguity</em>.\n    </p>\n\n    <p><strong>Transparency</strong> means it is clear where you are and\n      what action you can take on your data. To provide this clairty the design\n      must <em>strive for simplicity</em>.\n    </p>\n    <p>Example design choices that reflect visibility and transparency:</p>\n    <ul>\n      <li>Clear button styles for primary, secondary and inactive states</li>\n      <li>Brighter color palette that compliments Looker\'s brand to provide\n      areas and levels of focus</li>\n      <li>Establish a harmonious type ramp with a larger base font</li>\n      <li>Padding, margins and radii are presented in ratios that synchronize\n      with the type ramp, buttons, modals, form elements and notifications</li>\n      <li>Leverage Material Design icons for a single icon language that scales\n      consistently in weight, size and color</li>\n    </ul>\n\n    <p><strong>Discovery</strong> means using clear signs and feedback to help\n      you know where you and navigate your way. Providing orientation\n      <em>encourages confidence</em> when using Looker. Some examples:</p>\n    <ul>\n      <li>Consistent use of interactive elements, such as tabs, toggles and switches</li>\n      <li>Consistent placement of interactive elements across pages</li>\n      <li>Predictable browser history navigation</li>\n    </ul>\n\n    <p><strong>Fluidity</strong> for Looker is providing a versatile platform\n       where you can easily move between tasks. By adapting to and anticipating\n       different user needs, the design can <em>champion efficiency</em>. Some\n       examples:</p>\n    <ul>\n      <li>The elements you interact with are immedately responsive and provide\n        feedback, including animations for loading</li>\n      <li>Relevant next steps and actions are provided in context</li>\n    </ul>\n\n  </section>\n\n</lens-main>'},function(t,e,n){var o;o=angular.module("lens.guidelines",["lens.guidelines.environment_properties","lens.guidelines.markup","lens.guidelines.responsive"]),n(29),n(31),n(32)},function(t,e){var n,o;n=angular.module("lens.guidelines.markup",[]),n.controller("MarkupController",["$scope",function(t){return this}]),n.directive("markup",function(){return{controller:"MarkupController",restrict:"E",scope:{},template:o}}),o='<lens-main>\n\n  <section id="markup">\n    <p>Lens includes resources to\n      create user interfaces consistent with the Looker brand and best\n      practices. Here are few things to consider before you start using Lens on\n       your next project.</p>\n    <h1><code>This page needs to be reorganized and slimmed</code></h1>\n\n    <h2 id="Markup">Markup Considerations</h2>\n    <p>Lens contains a lot of utility classes that can be\n      stacked up to quickly create layouts and components. While it may look a l\n      ittle messier than you are used to on the markup side of things, this\n      saves us a ton of extra CSS. These classes also make it much more clear\n      what styles are applied to an element to anyone looking at the markup.\n    </p>\n    <h3 id="Layout">A note on layouts</h2>\n    <p>\n       When building layouts with Lens, make sure you don\'t apply extra styles\n       on containers and grid columns. Anything needing styles outside of\n       utility classes should typically be nested inside those types of\n       containers.</p>\n\n    <h2 id="BEM">BEM Class Naming</h2>\n    <p>BEM is a well-known method of naming components — block,\n       element, modifier. For those unfamiliar or who need a quick refresh,\n       let’s briefly look at how BEM works. As an example, we’ll build a\n       sandwich component.</p>\n    <h3>Block</h3>\n    <p>A block represents the main component. If you were\n      building a tasty sandwich, the class name would be <code>.sandwich</code>.\n       All the properties that would be shared by all different sandwiches would\n        be included within <code>.sandwich</code>.</p>\n    <h3>Element</h3>\n    <p>An element is part of the main component and its class\n      name is separated by two underscores. The bread of the sandwich would be\n      reprented by the class <code>.sandwich__bread</code>. The cheese would be\n      <code>.sandwich__cheese</code>. Be on the look out for smaller component\n      possibilities within a larger component. If we were to take a look at\n      sandwich condiments, which can be used on other things outside of\n      sandwiches. We\'d want to avoid a class name such as\n      <code>.sandwich__condiment__mayo</code>. We could use something like\n      <code>.sandwich__condiment--mayo</code> because a single dash doesn\'t\n      represent anything in BEM. But, since condiments can be used on things\n      other than sandwiches, we could make this a component in an of itself.\n      In that case, we could name it <code>.condiment__mayo</code> and use\n      that inside the sandwich element.</p>\n    <h3>Modifier</h3>\n    <p>A modifier is a component or element variation that\n      only slightly differes from the main element. The variation can be applied\n       to the entire element or just a part of it. Since the properties that\n       should apply to every sandwich are placed on the main\n       <code>.sandwich</code> class, all sandwiches receive the\n       <code>.sandwich</code> class as the base. If there is a variation of a\n       sandwich &mdash; maybe it has wheat bread &mdash; the\n       <code>.sandwich--wheat</code> class would be added the component in\n       addition to the <code>.sandwich</code> class.</p>\n    <p>If the sandwich has swiss cheese, a variation can be\n      placed on the cheese element itself, like\n      <code>.sandwich__cheese--swiss</code>.</p>\n\n    <h2 id="Utilities">Utility Classes</h2>\n    <p>The one place we diverge from BEM is within our utility\n      classes. These are immutable classes that use <code>!important</code> to\n      ensure they never break. And for the most part are classes that only apply\n       a single property, which is why we felt okay using the important\n       declaration on them. Lens\'s utility classes should be used whenever\n       possible to create the layout and style of a page or element. Each\n       utility class end with a breakpoint suffix. Since Lens is built\n       mobile-first, you\'d apply the <code>-xs</code> suffix to make those s\n       tyles work across all breakpoints. To modify those styles at a larger\n       breakpoint, you\'d apply an additional utility class that employs one of\n       the other suffixes, such as <code>-sm</code>, <code>-md</code>,\n       <code>-lg</code>, <code>-xl</code>. Whichever the highest suffix is,\n       those styles will apply all the way up through any screen size. To learn\n       more about these suffixes, take a gander at the\n       <a href="/responsive">Responsive</a> page.</p>\n\n    <h2 id="Sass">Sass: Variables, Functions, and Mixins</h2>\n    <p>Lens uses Sass to compile its CSS. This allows us to\n    take advantage of variables, functions and mixins when writing our CSS.</p>\n\n    <h3>Variables</h3>\n    <p>Most of our variables are built using Sass maps, which\n      means they aren\'t easily accessible with a simple variable name. We\'ve\n      made functions to make access to those variables easier. All Sass\n      variables use the typical <code>$</code> naming scheme.\n\n    <h3>Functions</h3>\n    <p>As mentioned above, many variables are accessible via\n      Sass function calls, for example <a href="/atoms/typography">font sizes</a>,\n      <a href="atoms/layout">spacing units</a>, and <a href="/atoms/colors">colors</a>.\n      <strong>Note:</strong> Functions don\'t use the typical <code>$</code>\n      variable naming scheme, just the function name.</p>\n\n    <h3>Mixins</h3>\n    <p>Lens has a\n      <a href="http://bourbon.io/">Bourbon</a> dependency to give us access to\n      many handy mixins. On top of that, we include many variables, mixins and\n      functions that are specific to our needs at Looker.</p>\n\n\n\n  </section>\n\n</lens-main>'},function(t,e){var n,o;n=angular.module("lens.guidelines.responsive",[]),n.controller("ResponsiveController",["$scope",function(t){return this}]),n.directive("responsive",function(){return{controller:"ResponsiveController",restrict:"E",scope:{},template:o}}),o='<lens-main>\n\n  <section id="responsive-suffixes-section">\n    <div id="responsive-suffixes" title="Responsive Suffixes" class="inpage-anchor"></div>\n    <h2>Responsive Suffixes</h2>\n    <p>Our grid classes, utility classes and typography are built in a way that\n      give flexibility across breakpoints. To change things at different breakpoints,\n       we have 6 suffixes to add to your classes: <code>-xs</code>, <code>-sm</code>,\n       <code>-md</code>, <code>-lg</code>, <code>-xl</code>, and <code>-xxl</code>.</p>\n    <p>To see this in action, resize your browser and pay attention to how this grid layout changes.</p>\n    <div class="guide-example">\n      <div class="guide-example-demo">\n        <div class="col-container">\n          <div class="col col-100-xs col-50-md col-25-lg">\n            <div class="guide-demo-box">\n              .col-100-xs .col-50-md .col-25-lg\n            </div>\n          </div>\n          <div class="col col-100-xs col-50-md col-25-lg">\n            <div class="guide-demo-box">\n              .col-100-xs .col-50-md .col-25-lg\n            </div>\n          </div>\n          <div class="col col-100-xs col-50-md col-25-lg">\n            <div class="guide-demo-box">\n              .col-100-xs .col-50-md .col-25-lg\n            </div>\n          </div>\n          <div class="col col-100-xs col-50-md col-25-lg">\n            <div class="guide-demo-box">\n              .col-100-xs .col-50-md .col-25-lg\n            </div>\n          </div>\n        </div>\n      </div>\n      <div class="guide-example-code">\n<pre><code class="language-html">&lt;div class="col-container"&gt;\n  &lt;div class="col col-100-xs col-50-md col-25-lg"&gt;\n    &lt;div class="guide-demo-box"&gt;.col-100-xs .col-50-md .col-25-lg&lt;/div&gt;\n  &lt;/div&gt;\n  &lt;div class="col col-100-xs col-50-md col-25-lg guide-demo-box"&gt;\n    &lt;div class="guide-demo-box"&gt;.col-100-xs .col-50-md .col-25-lg&lt;/div&gt;\n  &lt;/div&gt;\n  &lt;div class="col col-100-xs col-50-md col-25-lg guide-demo-box"&gt;\n    &lt;div class="guide-demo-box"&gt;.col-100-xs .col-50-md .col-25-lg&lt;/div&gt;\n  &lt;/div&gt;\n  &lt;div class="col col-100-xs col-50-md col-25-lg guide-demo-box"&gt;\n    &lt;div class="guide-demo-box"&gt;.col-100-xs .col-50-md .col-25-lg&lt;/div&gt;\n  &lt;/div&gt;\n&lt;/div&gt;</code></pre>\n      </div>\n    </div>\n  </section>\n\n  <section id="breakpoints-section">\n    <div id="breakpoints" title="Breakpoints" class="inpage-anchor"></div>\n    <h2>Breakpoints</h2>\n    <p>Everything in Lens is built with a mobile first approach. This means that\n      if you want the same style across all breakpoints you\'d use the <code>-xs</code>\n      suffix.</p>\n    <table class="table-content">\n      <thead>\n        <th>Suffixes</th>\n        <th>Breakpoint</th>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>-xs</code></td>\n          <td><code>@media screen</code></td>\n        </tr>\n        <tr>\n          <td><code>-sm</code></td>\n          <td><code>@media (min-width: 480px)</code></td>\n        </tr>\n        <tr>\n          <td><code>-md</code></td>\n          <td><code>@media (min-width: 680px)</code></td>\n        </tr>\n        <tr>\n          <td><code>-lg</code></td>\n          <td><code>@media (min-width: 960px)</code></td>\n        </tr>\n        <tr>\n          <td><code>-xl</code></td>\n          <td><code>@media (min-width: 1140px)</code></td>\n        </tr>\n        <tr>\n          <td><code>-xxl</code></td>\n          <td><code>@media (min-width: 1440px)</code></td>\n        </tr>\n      </tbody>\n    </table>\n  </section>\n\n  <section id="what-section">\n    <div id="waht" title="What Gets a Suffix?" class="inpage-anchor"></div>\n    <h2>What Gets a Suffix?</h2>\n    <p>Suffixes are applied to many Lens classes to allow flexibility in creating\n      responsive experiences. </p>\n    <p>The following classes can be extended within the style declarations of\n      your component or custom element.</p>\n    <table class="table-content">\n      <thead>\n        <th>Element</th>\n        <th>Classes to <code>@extend</code></th>\n      </thead>\n      <tbody>\n        <tr>\n          <td><a ui-sref="typography">Text Sizing</a></td>\n          <td><code>%text-$n-xs</code></td>\n        </tr>\n        <tr>\n          <td><a ui-sref="typography">Text Alignment</a></td>\n          <td><code>%text-left-xs</code><br /><code>%text-right-xs</code><br /><code>%text-center-xs</code><br /><code>%text-justify-xs</code></td>\n        </tr>\n        <tr>\n          <td><a ui-sref="layout">Display</a></td>\n          <td><code>%hide-xs</code><br /><code>%block-xs</code><br /><code>%inline-xs</code><br /><code>%inline-block-xs</code></td>\n        </tr>\n        <tr>\n          <td><a ui-sref="layout">Floats</a></td>\n          <td><code>%float-l-xs</code><br /><code>%float-r-xs</code><br /><code>%float-none-xs</code></td>\n        </tr>\n        <tr>\n          <td><a ui-sref="spacing-sizing">Overflow</a></td>\n          <td><code>%overflow-hidden-xs</code><br /><code>%overflow-scroll-xs</code><br /><code>%overflow-auto-xs</code><br /><code>%overflow-visible-xs</code></td>\n        </tr>\n        <tr>\n          <td><a ui-sref="spacing-sizing">Margin</a></td>\n          <td><code>%m-$n-xs</code><br /><code>%m-[side]-$n-xs</code><br /><code>%m-auto-xs</code></td>\n        </tr>\n        <tr>\n          <td><a ui-sref="spacing-sizing">Padding</a></td>\n          <td><code>%p-$n-xs</code><br /><code>%p-[side]-$n-xs</code></td>\n        </tr>\n        <tr>\n          <td><a ui-sref="layout">Position</a></td>\n          <td><code>%relative-xs</code><br /><code>%absolute-xs</code><br /><code>%fixed-xs</code><br /><code>%static-xs</code></td>\n        </tr>\n        <tr>\n          <td><a ui-sref="layout">Position Spacing</a></td>\n          <td><code>%pos-$n-xs</code><br /><code>%pos-[side]-$n-xs</code></td>\n        </tr>\n        <tr>\n          <td><a ui-sref="layout">Z-Index</a></td>\n          <td><code>%z-$n-xs</code></td>\n        </tr>\n        <tr>\n          <td><a ui-sref="borders">Borders</a></td>\n          <td><code>%border-xs</code><br /><code>%border-[shade]-xs</code><br /><code>%border-[side]-xs</code><br /><code>%border-[side]-[shade]-xs</code></td>\n        </tr>\n        <tr>\n          <td><a ui-sref="flexbox">Flex Box</a></td>\n          <td><code>%flex-xs</code></td>\n        </tr>\n        <tr>\n          <td><a ui-sref="spacing-sizing">Width and Height</td>\n          <td><code>%w-full-xs</code><br /><code>%w-fit-xs</code><br /><code>%w-auto-xs</code><br /><code>%h-full-xs</code></td>\n        </tr>\n        <tr>\n          <td><a ui-sref="layout">Veritcal Alignment</td>\n          <td><code>%align-top-xs</code><br /><code>%align-middle-xs</code><br /><code>%align-bottom-xs</code></td>\n        </tr>\n        <tr>\n          <td><a ui-sref="layout">Rotation</a></td>\n          <td><code>%rotate-$n-xs</code></td>\n        </tr>\n      </tbody>\n    </table>\n    <p>The following classes can be added directly to the markup of your component or custom element.</p>\n    <table class="table-content">\n      <thead>\n        <th>Element</th>\n        <th>Class</th>\n      </thead>\n      <tbody>\n        <tr>\n          <td><a ui-sref="buttons">Buttons</a></td>\n          <td><code>.button--[size]-xs</code></td>\n        </tr>\n        <tr>\n          <td><a ui-sref="grid">Grid</td>\n          <td><code>.col-$n-xs</code></td>\n        </tr>\n        <tr>\n          <td><a ui-sref="grid">Grid Offsets</a></td>\n          <td><code>.col-offset-$n-xs</code></td>\n        </tr>\n        <tr>\n          <td><a ui-sref="block-grid">Block Grid</a></td>\n          <td><code>.block-$n-xs</code></td>\n        </tr>\n      </tbody>\n    </table>\n  </section>\n\n  <section id="scss-section">\n    <div id="scss" title="Additional SCSS" class="inpage-anchor"></div>\n    <h2>Additional SCSS</h2>\n    <h3>Variables</h3>\n    <p>Lens has a variable for each responsive breakpoint. Remember the <code>-xs</code>\n       suffix is for <code>@screen</code> and is the default suffix for applying to all\n       sizes.</p>\n    <table class="table-content">\n      <thead>\n        <th>Variable</th>\n        <th>Breakpoint Value</th>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>$sm</code></td>\n          <td><code>480px</code></td>\n        </tr>\n        <tr>\n          <td><code>$md</code></td>\n          <td><code>680px</code></td>\n        </tr>\n        <tr>\n          <td><code>$lg</code></td>\n          <td><code>960px</code></td>\n        </tr>\n        <tr>\n          <td><code>$xl</code></td>\n          <td><code>1140px</code></td>\n        </tr>\n        <tr>\n          <td><code>$xxl</code></td>\n          <td><code>1440px</code></td>\n        </tr>\n      </tbody>\n    </table>\n\n    <h3>Mixins</h3>\n    <table class="table-content">\n      <thead>\n        <th>Mixin</th>\n        <th>Parameters</th>\n      </thead>\n      <tbody>\n        <tr>\n          <td><pre><code class="language-css">+media($rule $breakpoint)</pre></td>\n          <td><code>$rule</code> is a CSS rule<br />\n              <code>$breakpoint</code> is one of the breakpoint variables above.\n          </td>\n        </tr>\n      </tbody>\n    </table>\n  </section>\n\n</lens-main>'},function(t,e){var n,o;n=angular.module("lens.index",[]),n.controller("IndexController",["$scope",function(t){return this}]),n.directive("index",function(){return{controller:"IndexController",restrict:"E",scope:{},template:o}}),o='<lens-main>\n\n  <section id="index">\n    <h4 class="subheading">\n      Lens is a design system enabling developers and designers to build\n       beautiful, usable, consistent, and scalable Looker experiences.</h4>\n\n    <h2 class="headline">Design Principles</h2>\n    <p>What are design principles and how should you use them? Design Principles...</p>\n    <ul>\n      <li>are simple</li>\n      <li>help us make decisions</li>\n      <li>reflect your brand</li>\n      <li>have real world examples</li>\n    </ul>\n\n    <p><strong>Eliminate Ambiguity</strong>: Be clear. Enable people to see, understand, and feel secure so they\n      can act with confidence.</p>\n\n    <p><strong>Champion Efficiency</strong>: Be respectful of people’s time, streamline processes and be fast and\n      performant.</p>\n\n    <p><strong>Encourage Confidence</strong>: The design experience should feel safe to work with and provide\n       orientation and security to gain the user’s trust.</p>\n\n    <p><strong>Strive for Simplicity</strong>: Make it inviting and simple so it’s easy, orderly, and agile. Provide\n       opportunities and affordances for growth.</p>\n\n    <h2 class="headline">Environment Properties</h2>\n    <p><a ui-sref="environment-properties">Environment properties</a> provide rules for how Lens elements look, interact\n       and behave. The following themes are used to communicate the product\n       principles and guide the design.</p>\n    <p><strong>Visibility</strong> allows you to see the information\n      you care about and have a clear path to understanding and insights.\n      Presenting relevant content helps <em>eliminate ambiguity</em>.\n    </p>\n\n    <p><strong>Transparency</strong> means it is clear where you are and\n      what action you can take on your data. To provide this clairty the design\n      must <em>strive for simplicity</em>.\n    </p>\n\n    <p><strong>Fluidity</strong> for Looker is providing a versatile platform\n       where you can easily move between tasks. By adapting to and anticipating\n       different user needs, the design can <em>champion efficiency</em>.\n    </p>\n\n    <p><strong>Discovery</strong> means using clear signs and feedback to help\n      you know where you and navigate your way. Providing orientation\n      <em>encourages confidence</em> when using Looker.\n    </p>\n\n    <h2 class="headline">Core Objects</h2>\n    <p>The words that define Looker\'s core objects, actions, and the relationships\n       between them.</p>\n\n    <p><strong>Model</strong>: A model defines the structure of your data for\n       exploring.</p>\n\n    <p><strong>Explore</strong>: An explore contains all the fields that allow\n      you to construct a query.</p>\n\n    <p><strong>Query</strong>: A query is a question made up of fields from an\n       explore that asks your database for a result.</p>\n\n    <p><strong>Result</strong>: A result is an answer that comes back from your\n       database once you send it a query.</p>\n\n    <p><strong>Report</strong>: A report is a saved result that can be copied,\n       shared, and can serve as a starting point for further exploration.</p>\n\n    <h2 class="headline">Platform Adaptation <code>Coming Soon!</code></h2>\n    <p>How does Lens adapt in different situations? The goal is\n       to have Looker products look and behave similarly across platforms for all of our users.</p>\n\n    <p>What do we mean by Looker <em>products</em>?</p>\n    <ul>\n      <li>Looker core product offerings (Internal Instances, Customer Hosted, Customer On-Prem, Powered-by, Whitelabel, Embeded)</li>\n      <li>Complimentary systems (Docs, Discource, Training Instances, Blocks, Bots)</li>\n    </ul>\n\n    <p>What do we mean by <em>platforms</em>?</p>\n    <ul>\n      <li>Display &amp; input (laptop, desktop/large screen, mobile, touchscreen, large-screen displays)</li>\n      <li>Browser (Chrome, WebKit, IE, Firefox)</li>\n    </ul>\n\n    <p>What do we mean by <em>all of our users</em>?</p>\n    <ul>\n      <li>Internationailzation</li>\n      <li>Accessibility</li>\n    </ul>\n\n  </section>\n\n</lens-main>';
-},function(t,e){var n,o;n=angular.module("lens.installation",[]),n.controller("InstallationController",["$scope",function(t){return this}]),n.directive("installation",function(){return{controller:"InstallationController",restrict:"E",scope:{},template:o}}),o='<lens-main>\n\n  <section>\n    <h2>Lens and Helltool</h2>\n    <p class="todo"></p>\n    <h2>Using Lens in your own project</h2>\n    <ul>\n      <li>As is...</li>\n      <li>Forking/branching</li>\n    </ul>\n\n    <p class="todo"></p>\n\n    <h2>Download</h2>\n    <a href="https://github.com/looker/lens/archive/v0.8.0.zip" class="button button--large-xs w-full-xs w-auto-lg">Source Files</a>\n    <a href="http://looker.github.io/lens/css/Lens.css" class="button button--large-xs w-full-xs w-auto-lg">Compiled CSS</a>\n    <a href="http://looker.github.io/lens/css/Lens.min.css" class="button button--large-xs w-full-xs w-auto-lg">Compiled CSS (minified)</a>\n  </section>\n\n</lens-main>'},function(t,e){var n,o;n=angular.module("lens.lens_main",[]),n.controller("LensMainController",["$scope","$state",function(t,e){return t.$watch(function(){return e.current.title},function(){return t.title=e.current.title,Prism.highlightAll()}),this}]),n.directive("lensMain",function(){return{controller:"LensMainController",restrict:"E",scope:{},template:o,transclude:!0}}),o='<main class="guide-main" role="main" id="guideMain">\n  <div class="guide-content">\n    <div class="col-container">\n      <div class="col col-80-lg">\n        <div class="guide-header">\n          <h1 class="display-2">{{ title }}</h1>\n        </div>\n        <ng-transclude></ng-transclude>\n      </div>\n      <div class="col col-20-lg">\n        <subnav></subnav>\n      </div>\n    </div>\n  </div>\n\n</main>'},function(t,e,n){var o;n(1),n(4),n(6),n(35),n(38),n(40),n(39),n(42),n(33),n(37),n(28),n(41),n(34),n(10),n(23),n(30),t.exports=o=angular.module("Lens",["ui.router","lens.lens_main","lens.main_nav","lens.page_header","lens.page_footer","lens.subnav","lens.app_config","lens.current_user","lens.index","lens.login","lens.getting_started","lens.installation","lens.release_notes","lens.atoms","lens.components","lens.guidelines"]),o.config(["$stateProvider","$locationProvider","$urlRouterProvider",function(t,e,n){var o,i,l,a,r,s,d,c,u,g,p,h,m,f,b,v,x,y,w,k,$,_,C,S,z;return e.html5Mode(!0),n.otherwise("/"),o=["$q","AppConfig","CurrentUser","$state",function(t,e,n,o){return e.get().then(function(e){return e.isLocalDevelopmentEnvironment?t.when():n.get().then(function(e){return e?t.when():(o.go("login"),t.reject())}).catch(function(e){return console.error(e),o.go("login"),t.reject()})})}],w={name:"login",url:"/login",template:"<login></login>",title:"Login to view Lens",isLogin:!0},v={name:"index",url:"/",template:"<index></index>",title:"Welcome to Lens",resolve:{authenticate:o}},h={name:"getting-started",url:"/getting-started",template:"<getting-started></getting-started>",title:"Getting Started",resolve:{authenticate:o}},k={name:"markup",url:"/guidelines/markup",template:"<markup></markup>",title:"Markup",resolve:{authenticate:o}},C={name:"responsive",url:"/guidelines/responsive",template:"<responsive></responsive>",title:"Responsive",resolve:{authenticate:o}},u={name:"environment-properties",url:"/guidelines/environment-properties",template:"<environment-properties></environment-properties>",title:"Environment Properties",resolve:{authenticate:o}},s={name:"buttons",url:"/components/buttons",template:"<buttons></buttons>",title:"Buttons",resolve:{authenticate:o}},p={name:"forms",url:"/components/forms",template:"<forms></forms>",title:"Forms",resolve:{authenticate:o}},S={name:"tables",url:"/components/tables",template:"<tables></tables>",title:"Tables",resolve:{authenticate:o}},$={name:"modals",url:"/components/modals",template:"<modals></modals>",title:"Modals",resolve:{authenticate:o}},l={name:"body-copy",url:"/components/body-copy",template:"<body-copy></body-copy>",title:"Body Copy",resolve:{authenticate:o}},f={name:"headings",url:"/components/headings",template:"<headings></headings>",title:"Headings",resolve:{authenticate:o}},i={name:"block-grid",url:"/atoms/block-grid",template:"<block-grid></block-grid>",title:"Block Grid",resolve:{authenticate:o}},a={name:"borders",url:"/atoms/borders",template:"<borders></borders>",title:"Borders",resolve:{authenticate:o}},r={name:"spacing-sizing",url:"/atoms/spacing-sizing",template:"<spacing-sizing></spacing-sizing>",title:"Spacing and Sizing",resolve:{authenticate:o}},d={name:"colors",url:"/atoms/colors",template:"<colors></colors>",title:"Colors",resolve:{authenticate:o}},c={name:"effects",url:"/atoms/effects",template:"<effects></effects>",title:"Effects",resolve:{authenticate:o}},g={name:"flexbox",url:"/atoms/flexbox",template:"<flexbox></flexbox>",title:"Flexbox",resolve:{authenticate:o}},m={name:"grid",url:"/atoms/grid",template:"<grid></grid>",title:"Grid",resolve:{authenticate:o}},b={name:"icons",url:"/atoms/icons",template:"<icons></icons>",title:"Icons",resolve:{authenticate:o}},y={name:"layout",url:"/atoms/layout",template:"<layout></layout>",title:"Layout",resolve:{authenticate:o}},z={name:"typography",url:"/atoms/typography",template:"<typography></typography>",title:"Typography",resolve:{authenticate:o}},x={name:"installation",url:"/installation",template:"<installation></installation>",title:"Installation",resolve:{authenticate:o}},_={name:"release-notes",url:"/release-notes",template:"<release-notes></release-notes>",title:"Release Notes",resolve:{authenticate:o}},t.state(w),t.state(v),t.state(h),t.state(k),t.state(C),t.state(u),t.state(s),t.state(p),t.state(S),t.state($),t.state(l),t.state(f),t.state(i),t.state(a),t.state(r),t.state(d),t.state(c),t.state(g),t.state(m),t.state(b),t.state(y),t.state(z),t.state(x),t.state(_),this}]),o.run(function(){})},function(t,e){var n,o;n=angular.module("lens.login",[]),n.controller("LoginController",["$scope","$window","AppConfig",function(t,e,n){var o;return o=!1,n.get().then(function(t){return o=t.isLocalDevelopmentEnvironment}),t.onSignIn=function(t){var n,i;return o?e.location.href="/":(i=t.getBasicProfile(),n=t.getAuthResponse().id_token,$.ajax({url:"api/google/auth",method:"POST",dataType:"JSON",data:{idtoken:n}}).done(function(t){return e.location.href="/"}).fail(function(t){return console.error(t.status+" Error:",t)}))},t.onError=function(t){return console.error(t)},this}]),n.directive("login",["$window",function(t){return{controller:"LoginController",restrict:"E",scope:{},template:o,link:function(e,n,o,i){return t.renderButton=function(n){return function(){var n,o;return o=document.getElementById("custom-google-btn"),n=t.gapi.auth2.getAuthInstance(),n.attachClickHandler(o,{},e.onSignIn,e.onError)}}(this),$("main-nav").remove(),$("page-footer").remove(),$("page-header").remove()}}}]),o='<header class="login-header brand-bg-gray">\n  <div class="login-header-wrap">\n    <h1 class="login-name color-white">Lens</h1>\n    <p class="login-copy color-white">The Looker Design System</p>\n  </div>\n</header>\n\n<section class="login-auth">\n  <div class="login-auth-wrap">\n    <h1 class="m-b-2-xs">Login to Lens</h1>\n    <div id="custom-google-btn" class="button button--primary">Authenticate with Google</div>\n    <div class="g-signin2" style="display:none;"></div>\n  </div>\n</section>\n\n<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>'},function(t,e){var n,o;n=angular.module("lens.main_nav",[]),n.controller("MainNavController",["$scope","$location",function(t,e){return t.menuItems=[{title:"Lens Design",uiSref:"index"},{title:"Getting Started",uiSref:"getting-started"},{title:"Guidelines",id:"guidelines",subNav:[{title:"Markup",uiSref:"markup"},{title:"Responsive",uiSref:"responsive"},{title:"Environment Properties",uiSref:"environment-properties"}]},{title:"Components",id:"components",subNav:[{title:"Buttons",uiSref:"buttons"},{title:"Forms",uiSref:"forms"},{title:"Tables",uiSref:"tables"},{title:"Modals",uiSref:"modals"},{title:"Body Copy",uiSref:"body-copy"},{title:"Headings",uiSref:"headings"}]},{title:"Atoms",id:"atoms",subNav:[{title:"Block Grid",uiSref:"block-grid"},{title:"Borders",uiSref:"borders"},{title:"Colors",uiSref:"colors"},{title:"Effects",uiSref:"effects"},{title:"Flexbox",uiSref:"flexbox"},{title:"Grid",uiSref:"grid"},{title:"Icons",uiSref:"icons"},{title:"Layout",uiSref:"layout"},{title:"Spacing and Sizing",uiSref:"spacing-sizing"},{title:"Typography",uiSref:"typography"}]},{title:"Installation",uiSref:"installation"},{title:"Release Notes",uiSref:"release-notes"}],t.toggleSubNav=function(t){return function(e){return t.toggleSubNav(e),!0}}(this),t.showNavOnMobile=function(t){return function(){return t.showNavOnMobile(),!0}}(this),t.$on("toggleMobileNav",function(e){return function(e){return t.toggleMobileNav=!t.toggleMobileNav}}(this)),t.currentSection=e.path().split("/")[1],this}]),n.directive("mainNav",function(){return{controller:"MainNavController",restrict:"E",scope:{},template:o,link:function(t,e,n,o){return o.toggleSubNav=function(t){if(t)return e.find("#"+t).toggleClass("active"),e.find("#"+t+"-sub-nav").toggle()},o.showNavOnMobile=function(){if(t.toggleMobileNav)return t.$parent.$broadcast("toggleMobileNav")},$(document).ready(function(){return o.toggleSubNav(t.currentSection)})}}}),o='<div id="guide_navigation" class="guide-navigation" ng-class="{\'guide-navigation-mobile-show\' : toggleMobileNav}">\n  <nav id="navigation" role="navigation" tabindex="-1">\n    <ul class="guide-navigation-list">\n      <li ng-repeat="item in menuItems" class="guide-navaigation-item">\n        <!-- sub menu -->\n        <a ng-if="item.subNav" id="{{ item.id }}" class="guide-navigation-link guide-navigation-link-parent"  ng-click="toggleSubNav(item.id)">\n          {{ item.title }}\n          <span class="guide-navigation-icon"></span>\n        </a>\n        <ul ng-if="item.subNav" id="{{ item.id }}-sub-nav" class="guide-navigation-list-child">\n          <li ng-repeat="child in item.subNav" class="guide-navigation-item-child">\n            <a ui-sref="{{ child.uiSref }}" ui-sref-active="active" class="guide-navigation-link guide-navigation-link-child" ng-click="showNavOnMobile()"~>{{ child.title }}</a>\n          </li>\n        </ul>\n\n        <!-- single item -->\n        <a ng-if="item.uiSref" ui-sref="{{ item.uiSref }}" ui-sref-active="active" class="guide-navigation-link guide-navigation-link-single" ng-click="showNavOnMobile()">{{ item.title }}</a>\n      </li>\n    </ul>\n  </nav>\n</div>'},function(t,e){var n,o;n=angular.module("lens.page_footer",[]),n.controller("PageFooterController",["$scope",function(t){return t.currentYear=(new Date).getFullYear(),this}]),n.directive("pageFooter",function(){return{controller:"PageFooterController",restrict:"E",scope:{},template:o}}),o='<footer class="guide-contentinfo" role="contentinfo">\n  Copyright &copy; {{ currentYear }} Looker. All rights reserved.\n</footer>'},function(t,e){var n,o;n=angular.module("lens.page_header",[]),n.controller("PageHeaderController",["$scope",function(t){return t.hamburgerClick=function(t){return function(){return t.hamburgerClick(),!0}}(this),t.$on("toggleMobileNav",function(e){return function(e){return t.clicked=!t.clicked}}(this)),this}]),n.directive("pageHeader",function(){return{controller:"PageHeaderController",restrict:"E",scope:{},template:o,link:function(t,e,n,o){return o.hamburgerClick=function(){return t.$parent.$broadcast("toggleMobileNav")}}}}),o='<header class="guide-banner" role="banner">\n  <a ui-sref="index" ui-sref-active="active" class="guide-name">Lens</a>\n  <a ui-sref="release-notes" ui-sref-active="active" class="guide-version">version </a>\n  <div class="guide-skip-content">\n    <a href="#navigation">Skip to Navigation</a>\n  </div>\n  <a href="#" id="hamburger" class="hamburger-button" ng-class="{\'hamburger-button-clicked\': clicked}" ng-click="hamburgerClick()">\n    <span class="hamburger"></span>\n  </a>\n</header>'},function(t,e){var n,o;n=angular.module("lens.release_notes",[]),n.controller("ReleaseNotesController",["$scope",function(t){return this}]),n.directive("releaseNotes",function(){return{controller:"ReleaseNotesController",restrict:"E",scope:{},template:o}}),o='<lens-main>\n\n  <section id="release-notes">\n    <div class="col-container" border-b-xs p-b-2-xs"">\n      <div class="col col-10-md">\n        <p class="text-color-light">0.1.0</p>\n      </div>\n      <div class="col col-90-md">\n        <p class="bold">The Initial Vector</p>\n        <p class="text-6-xs text-color-light">[Infection Date]</p>\n        <ul class="m-t-1-xs text-6-xs">\n          <li>You won\'t feel a thing... right?</li>\n        </ul>\n      </div>\n    </div>\n  </section>\n\n</lens-main>'},function(t,e){var n,o;n=angular.module("lens.subnav",[]),n.controller("SubnavController",["$scope",function(t){return this}]),n.directive("subnav",function(){return{controller:"SubnavController",restrict:"E",scope:{},template:o,link:function(t,e,n,o){return $(document).ready(function(){var t,e,n,o,i,l;if(i=$(".guide-content section").children("div.inpage-anchor"),i.length>0){for(l=$("#subnav"),t=0;t<i.length;)n=i[t].id,o=i[t].title,e="",window.location.hash.substring(1)===n&&(e=" active"),l.append('<li class="guide-subnav-item"><a class="guide-subnav-anchor'+e+'" href="#'+n+'">'+o+"</a></li>"),t++;$(l).on("click",".guide-subnav-anchor",function(){return $(this).closest("#subnav").find(".guide-subnav-anchor").removeClass("active"),$(this).addClass("active")})}else $(".guide-subnav").hide();if(window.location.hash)return $("html, body").animate({scrollTop:$(window.location.hash).offset().top},50)})}}}),o='<ul id="subnav" class="guide-subnav"></ul>'},function(t,e,n){e=t.exports=n(44)(),e.push([t.id,'/*! Lens Version 0.1.0 */*,:after,:before{box-sizing:border-box}html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background-color:transparent}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:700}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}h1,h2,h3,h4,h5,h6{margin:0}mark{background:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}pre{overflow:auto}code,kbd,pre,samp{font-family:Monaco,monospace}button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}button{overflow:visible}button,select{text-transform:none}button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner{border:0;padding:0}input{line-height:normal}input::-moz-focus-inner{border:0;padding:0}input[type=checkbox],input[type=radio]{box-sizing:border-box;padding:0}input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{height:auto}input[type=search]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{border:0;padding:0}textarea{overflow:auto}optgroup{font-weight:700}table{border-spacing:0}td,th{padding:0}html{font-size:100%;line-height:1.5;-webkit-tap-highlight-color:transparent}body{font-size:16px;font-family:Open Sans,Helvetica,Arial,sans-serif;font-style:normal;font-weight:400}@media screen{.guide-contentinfo,.guide-example:before,.guide-subnav-item,.guide-version,table.table-content td .sub-text,table.table-content th{font-size:12px;line-height:20px}.caption,.guide-color-item>span>span,.guide-color-item>span em,.guide-navigation-link{font-size:14px;line-height:24px}.body{font-size:16px;line-height:24px}.modal--header-title,.subheading,.title-1,h3,h4{font-size:19px;line-height:27px}.title-2,h2{font-size:22px;line-height:30px}.guide-name,.headline,h1{font-size:28px;line-height:36px}.display-1{font-size:38px;line-height:46px}.display-2{font-size:52px;line-height:60px}.display-3{font-size:62px;line-height:72px}}.display-1,.headline,.regular,.subheading,h1,h4,table.table-content th{font-weight:400}.bold,.guide-navigation-link-child.active,.guide-navigation-link-single.active,.guide-subnav-anchor.active,.title-1,.title-2,h2,h3,strong,table th{font-weight:700}.display-2,.display-3,.light{font-weight:300}.italic,em{font-style:italic}.caps,.guide-example:before{text-transform:uppercase}.lowercase{text-transform:lowercase}.guide-subnav-anchor,.titlecase{text-transform:capitalize}.code{font-family:Monaco,Menlo,Ubuntu Mono,Consolas,source-code-pro,monospace}@media screen{table td,table th{text-align:left}.modal--footer-actions,table td.right,table th.right{text-align:right}}@media screen{.guide-demo-box{border:1px solid #e4e5e6}table.table-content td{border-bottom:1px solid #e4e5e6}.guide-navigation,.guide-navigation-link{border-right:1px solid #e4e5e6}table th{border-bottom:1px solid #d2d3d4}table td{border:none}.guide-color-item>span{border-radius:5px}}@media screen and (min-width:480px){.guide-color-item>span{border-radius:5px}}@media screen and (min-width:680px){.guide-color-item>span{border-radius:5px}}@media screen and (min-width:960px){.guide-color-item>span{border-radius:5px}}@media screen and (min-width:1140px){.guide-color-item>span{border-radius:5px}}@media screen and (min-width:1440px){.guide-color-item>span{border-radius:5px}}.guide-color-item .brand-bg-purple{background-color:#7e64e0}.guide-banner,.guide-color-item .brand-bg-gray,.modal--tarp,.modal-tarp__styleguide{background-color:#1c2027}.guide-color-item .brand-bg-blue{background-color:#0e88f1}.guide-color-item .bg-purple-dark{background-color:#2a1b60}.guide-color-item .bg-purple{background-color:#4c33aa}.guide-color-item .bg-purple-light{background-color:#7e64e0}.guide-color-item .bg-red-dark{background-color:#92100e}.guide-color-item .bg-red{background-color:#b00505}.guide-color-item .bg-red-light{background-color:#e1332c}.guide-color-item .bg-green{background-color:#4bb86a}.guide-color-item .bg-teal-dark{background-color:#39b2b2}.guide-color-item .bg-teal{background-color:#5dcccc}.guide-color-item .bg-yellow{background-color:#ffd822}.guide-color-item .bg-orange-dark{background-color:#e57200}.guide-color-item .bg-orange{background-color:#fb9331}.guide-name,.guide-name:active,.guide-name:focus,.guide-name:hover{color:#fff}.guide-color-item .bg-white,.guide-navigation,.modal,body{background-color:#fff}.guide-color-item .bg-gray-1,.guide-navigation-link:active,.guide-navigation-link:focus,.guide-navigation-link:hover,.guide-subnav-anchor:active,.guide-subnav-anchor:focus,.guide-subnav-anchor:hover,table.table-striped tr:nth-child(odd)>td{background-color:#f6f6f7}.guide-color-item .bg-gray-2{background-color:#e4e5e6}.guide-color-item .bg-gray-3{background-color:#d2d3d4}.guide-example:before,.guide-subnav-anchor,.guide-version{color:#a4a6a9}.guide-color-item .bg-gray-4{background-color:#a4a6a9}table.table-content td .sub-text{color:#77797e}.guide-color-item .bg-gray-5{background-color:#77797e}.guide-color-item>span.bg-gray,.guide-color-item>span.bg-gray-1,.guide-color-item>span.bg-gray-2,.guide-color-item>span.bg-gray-3,.guide-color-item>span.bg-white{color:#3c4345}.guide-color-item .bg-gray-6{background-color:#3c4345}.guide-navigation-link,.guide-navigation-link.active,.guide-navigation-link:active,.guide-navigation-link:focus,.guide-navigation-link:hover,.guide-subnav-anchor.active,h1,h2,h3,h4,h5,h6{color:#1c2027}.guide-color-item .bg-gray-7,.guide-navigation-link-child.active:after,.guide-navigation-link-single.active:after{background-color:#1c2027}.col{float:left;width:100%}.col-gutters{margin:0 -15px}.col-gutters>.col{padding:0 15px}.col-container:after,.col-container:before{content:" ";display:table}.col-container:after{clear:both}.col-max{max-width:1260px;margin:0 auto;padding:0 15px}.col-center{float:none;margin:0 auto}.col-form{margin:0 -6px}.col-form>.col{padding:0 6px}@media screen{.col-5-xs{width:5%}.col-offset-5-xs{margin-left:5%}.col-10-xs{width:10%}.col-offset-10-xs{margin-left:10%}.col-15-xs{width:15%}.col-offset-15-xs{margin-left:15%}.col-20-xs{width:20%}.col-offset-20-xs{margin-left:20%}.col-25-xs{width:25%}.col-offset-25-xs{margin-left:25%}.col-30-xs{width:30%}.col-offset-30-xs{margin-left:30%}.col-33-xs{width:33.3%}.col-offset-33-xs{margin-left:33.3%}.col-35-xs{width:35%}.col-offset-35-xs{margin-left:35%}.col-40-xs{width:40%}.col-offset-40-xs{margin-left:40%}.col-45-xs{width:45%}.col-offset-45-xs{margin-left:45%}.col-50-xs{width:50%}.col-offset-50-xs{margin-left:50%}.col-55-xs{width:55%}.col-offset-55-xs{margin-left:55%}.col-60-xs{width:60%}.col-offset-60-xs{margin-left:60%}.col-65-xs{width:65%}.col-offset-65-xs{margin-left:65%}.col-66-xs{width:66.6%}.col-offset-66-xs{margin-left:66.6%}.col-70-xs{width:70%}.col-offset-70-xs{margin-left:70%}.col-75-xs{width:75%}.col-offset-75-xs{margin-left:75%}.col-80-xs{width:80%}.col-offset-80-xs{margin-left:80%}.col-85-xs{width:85%}.col-offset-85-xs{margin-left:85%}.col-90-xs{width:90%}.col-offset-90-xs{margin-left:90%}.col-95-xs{width:95%}.col-offset-95-xs{margin-left:95%}.col-100-xs{width:100%}.col-offset-100-xs{margin-left:100%}}@media screen and (min-width:480px){.col-5-sm{width:5%}.col-offset-5-sm{margin-left:5%}.col-10-sm{width:10%}.col-offset-10-sm{margin-left:10%}.col-15-sm{width:15%}.col-offset-15-sm{margin-left:15%}.col-20-sm{width:20%}.col-offset-20-sm{margin-left:20%}.col-25-sm{width:25%}.col-offset-25-sm{margin-left:25%}.col-30-sm{width:30%}.col-offset-30-sm{margin-left:30%}.col-33-sm{width:33.3%}.col-offset-33-sm{margin-left:33.3%}.col-35-sm{width:35%}.col-offset-35-sm{margin-left:35%}.col-40-sm{width:40%}.col-offset-40-sm{margin-left:40%}.col-45-sm{width:45%}.col-offset-45-sm{margin-left:45%}.col-50-sm{width:50%}.col-offset-50-sm{margin-left:50%}.col-55-sm{width:55%}.col-offset-55-sm{margin-left:55%}.col-60-sm{width:60%}.col-offset-60-sm{margin-left:60%}.col-65-sm{width:65%}.col-offset-65-sm{margin-left:65%}.col-66-sm{width:66.6%}.col-offset-66-sm{margin-left:66.6%}.col-70-sm{width:70%}.col-offset-70-sm{margin-left:70%}.col-75-sm{width:75%}.col-offset-75-sm{margin-left:75%}.col-80-sm{width:80%}.col-offset-80-sm{margin-left:80%}.col-85-sm{width:85%}.col-offset-85-sm{margin-left:85%}.col-90-sm{width:90%}.col-offset-90-sm{margin-left:90%}.col-95-sm{width:95%}.col-offset-95-sm{margin-left:95%}.col-100-sm{width:100%}.col-offset-100-sm{margin-left:100%}}@media screen and (min-width:680px){.col-5-md{width:5%}.col-offset-5-md{margin-left:5%}.col-10-md{width:10%}.col-offset-10-md{margin-left:10%}.col-15-md{width:15%}.col-offset-15-md{margin-left:15%}.col-20-md{width:20%}.col-offset-20-md{margin-left:20%}.col-25-md{width:25%}.col-offset-25-md{margin-left:25%}.col-30-md{width:30%}.col-offset-30-md{margin-left:30%}.col-33-md{width:33.3%}.col-offset-33-md{margin-left:33.3%}.col-35-md{width:35%}.col-offset-35-md{margin-left:35%}.col-40-md{width:40%}.col-offset-40-md{margin-left:40%}.col-45-md{width:45%}.col-offset-45-md{margin-left:45%}.col-50-md{width:50%}.col-offset-50-md{margin-left:50%}.col-55-md{width:55%}.col-offset-55-md{margin-left:55%}.col-60-md{width:60%}.col-offset-60-md{margin-left:60%}.col-65-md{width:65%}.col-offset-65-md{margin-left:65%}.col-66-md{width:66.6%}.col-offset-66-md{margin-left:66.6%}.col-70-md{width:70%}.col-offset-70-md{margin-left:70%}.col-75-md{width:75%}.col-offset-75-md{margin-left:75%}.col-80-md{width:80%}.col-offset-80-md{margin-left:80%}.col-85-md{width:85%}.col-offset-85-md{margin-left:85%}.col-90-md{width:90%}.col-offset-90-md{margin-left:90%}.col-95-md{width:95%}.col-offset-95-md{margin-left:95%}.col-100-md{width:100%}.col-offset-100-md{margin-left:100%}}@media screen and (min-width:960px){.col-5-lg{width:5%}.col-offset-5-lg{margin-left:5%}.col-10-lg{width:10%}.col-offset-10-lg{margin-left:10%}.col-15-lg{width:15%}.col-offset-15-lg{margin-left:15%}.col-20-lg{width:20%}.col-offset-20-lg{margin-left:20%}.col-25-lg{width:25%}.col-offset-25-lg{margin-left:25%}.col-30-lg{width:30%}.col-offset-30-lg{margin-left:30%}.col-33-lg{width:33.3%}.col-offset-33-lg{margin-left:33.3%}.col-35-lg{width:35%}.col-offset-35-lg{margin-left:35%}.col-40-lg{width:40%}.col-offset-40-lg{margin-left:40%}.col-45-lg{width:45%}.col-offset-45-lg{margin-left:45%}.col-50-lg{width:50%}.col-offset-50-lg{margin-left:50%}.col-55-lg{width:55%}.col-offset-55-lg{margin-left:55%}.col-60-lg{width:60%}.col-offset-60-lg{margin-left:60%}.col-65-lg{width:65%}.col-offset-65-lg{margin-left:65%}.col-66-lg{width:66.6%}.col-offset-66-lg{margin-left:66.6%}.col-70-lg{width:70%}.col-offset-70-lg{margin-left:70%}.col-75-lg{width:75%}.col-offset-75-lg{margin-left:75%}.col-80-lg{width:80%}.col-offset-80-lg{margin-left:80%}.col-85-lg{width:85%}.col-offset-85-lg{margin-left:85%}.col-90-lg{width:90%}.col-offset-90-lg{margin-left:90%}.col-95-lg{width:95%}.col-offset-95-lg{margin-left:95%}.col-100-lg{width:100%}.col-offset-100-lg{margin-left:100%}}@media screen and (min-width:1140px){.col-5-xl{width:5%}.col-offset-5-xl{margin-left:5%}.col-10-xl{width:10%}.col-offset-10-xl{margin-left:10%}.col-15-xl{width:15%}.col-offset-15-xl{margin-left:15%}.col-20-xl{width:20%}.col-offset-20-xl{margin-left:20%}.col-25-xl{width:25%}.col-offset-25-xl{margin-left:25%}.col-30-xl{width:30%}.col-offset-30-xl{margin-left:30%}.col-33-xl{width:33.3%}.col-offset-33-xl{margin-left:33.3%}.col-35-xl{width:35%}.col-offset-35-xl{margin-left:35%}.col-40-xl{width:40%}.col-offset-40-xl{margin-left:40%}.col-45-xl{width:45%}.col-offset-45-xl{margin-left:45%}.col-50-xl{width:50%}.col-offset-50-xl{margin-left:50%}.col-55-xl{width:55%}.col-offset-55-xl{margin-left:55%}.col-60-xl{width:60%}.col-offset-60-xl{margin-left:60%}.col-65-xl{width:65%}.col-offset-65-xl{margin-left:65%}.col-66-xl{width:66.6%}.col-offset-66-xl{margin-left:66.6%}.col-70-xl{width:70%}.col-offset-70-xl{margin-left:70%}.col-75-xl{width:75%}.col-offset-75-xl{margin-left:75%}.col-80-xl{width:80%}.col-offset-80-xl{margin-left:80%}.col-85-xl{width:85%}.col-offset-85-xl{margin-left:85%}.col-90-xl{width:90%}.col-offset-90-xl{margin-left:90%}.col-95-xl{width:95%}.col-offset-95-xl{margin-left:95%}.col-100-xl{width:100%}.col-offset-100-xl{margin-left:100%}}@media screen and (min-width:1440px){.col-5-xxl{width:5%}.col-offset-5-xxl{margin-left:5%}.col-10-xxl{width:10%}.col-offset-10-xxl{margin-left:10%}.col-15-xxl{width:15%}.col-offset-15-xxl{margin-left:15%}.col-20-xxl{width:20%}.col-offset-20-xxl{margin-left:20%}.col-25-xxl{width:25%}.col-offset-25-xxl{margin-left:25%}.col-30-xxl{width:30%}.col-offset-30-xxl{margin-left:30%}.col-33-xxl{width:33.3%}.col-offset-33-xxl{margin-left:33.3%}.col-35-xxl{width:35%}.col-offset-35-xxl{margin-left:35%}.col-40-xxl{width:40%}.col-offset-40-xxl{margin-left:40%}.col-45-xxl{width:45%}.col-offset-45-xxl{margin-left:45%}.col-50-xxl{width:50%}.col-offset-50-xxl{margin-left:50%}.col-55-xxl{width:55%}.col-offset-55-xxl{margin-left:55%}.col-60-xxl{width:60%}.col-offset-60-xxl{margin-left:60%}.col-65-xxl{width:65%}.col-offset-65-xxl{margin-left:65%}.col-66-xxl{width:66.6%}.col-offset-66-xxl{margin-left:66.6%}.col-70-xxl{width:70%}.col-offset-70-xxl{margin-left:70%}.col-75-xxl{width:75%}.col-offset-75-xxl{margin-left:75%}.col-80-xxl{width:80%}.col-offset-80-xxl{margin-left:80%}.col-85-xxl{width:85%}.col-offset-85-xxl{margin-left:85%}.col-90-xxl{width:90%}.col-offset-90-xxl{margin-left:90%}.col-95-xxl{width:95%}.col-offset-95-xxl{margin-left:95%}.col-100-xxl{width:100%}.col-offset-100-xxl{margin-left:100%}}.block-grid{padding:0;list-style:none;font-size:0;display:block;overflow:hidden;margin-bottom:2rem}.block-grid-gutters{margin:-1rem -1rem 1rem}.block-grid-gutters .block-grid__item{padding:1rem}.block-grid__item{display:block;float:left;font-size:16px}@media screen{.block-1-xs .block-grid__item{width:100%}.block-1-xs .block-grid__item:nth-of-type(1n){clear:none}.block-1-xs .block-grid__item:nth-of-type(1n+1){clear:both}.block-2-xs .block-grid__item{width:50%}.block-2-xs .block-grid__item:nth-of-type(1n){clear:none}.block-2-xs .block-grid__item:nth-of-type(odd){clear:both}.block-3-xs .block-grid__item{width:33.33333%}.block-3-xs .block-grid__item:nth-of-type(1n){clear:none}.block-3-xs .block-grid__item:nth-of-type(3n+1){clear:both}.block-4-xs .block-grid__item{width:25%}.block-4-xs .block-grid__item:nth-of-type(1n){clear:none}.block-4-xs .block-grid__item:nth-of-type(4n+1){clear:both}.block-5-xs .block-grid__item{width:20%}.block-5-xs .block-grid__item:nth-of-type(1n){clear:none}.block-5-xs .block-grid__item:nth-of-type(5n+1){clear:both}.block-6-xs .block-grid__item{width:16.66667%}.block-6-xs .block-grid__item:nth-of-type(1n){clear:none}.block-6-xs .block-grid__item:nth-of-type(6n+1){clear:both}}@media screen and (min-width:480px){.block-1-sm .block-grid__item{width:100%}.block-1-sm .block-grid__item:nth-of-type(1n){clear:none}.block-1-sm .block-grid__item:nth-of-type(1n+1){clear:both}.block-2-sm .block-grid__item{width:50%}.block-2-sm .block-grid__item:nth-of-type(1n){clear:none}.block-2-sm .block-grid__item:nth-of-type(odd){clear:both}.block-3-sm .block-grid__item{width:33.33333%}.block-3-sm .block-grid__item:nth-of-type(1n){clear:none}.block-3-sm .block-grid__item:nth-of-type(3n+1){clear:both}.block-4-sm .block-grid__item{width:25%}.block-4-sm .block-grid__item:nth-of-type(1n){clear:none}.block-4-sm .block-grid__item:nth-of-type(4n+1){clear:both}.block-5-sm .block-grid__item{width:20%}.block-5-sm .block-grid__item:nth-of-type(1n){clear:none}.block-5-sm .block-grid__item:nth-of-type(5n+1){clear:both}.block-6-sm .block-grid__item{width:16.66667%}.block-6-sm .block-grid__item:nth-of-type(1n){clear:none}.block-6-sm .block-grid__item:nth-of-type(6n+1){clear:both}}@media screen and (min-width:680px){.block-1-md .block-grid__item{width:100%}.block-1-md .block-grid__item:nth-of-type(1n){clear:none}.block-1-md .block-grid__item:nth-of-type(1n+1){clear:both}.block-2-md .block-grid__item{width:50%}.block-2-md .block-grid__item:nth-of-type(1n){clear:none}.block-2-md .block-grid__item:nth-of-type(odd){clear:both}.block-3-md .block-grid__item{width:33.33333%}.block-3-md .block-grid__item:nth-of-type(1n){clear:none}.block-3-md .block-grid__item:nth-of-type(3n+1){clear:both}.block-4-md .block-grid__item{width:25%}.block-4-md .block-grid__item:nth-of-type(1n){clear:none}.block-4-md .block-grid__item:nth-of-type(4n+1){clear:both}.block-5-md .block-grid__item{width:20%}.block-5-md .block-grid__item:nth-of-type(1n){clear:none}.block-5-md .block-grid__item:nth-of-type(5n+1){clear:both}.block-6-md .block-grid__item{width:16.66667%}.block-6-md .block-grid__item:nth-of-type(1n){clear:none}.block-6-md .block-grid__item:nth-of-type(6n+1){clear:both}}@media screen and (min-width:960px){.block-1-lg .block-grid__item{width:100%}.block-1-lg .block-grid__item:nth-of-type(1n){clear:none}.block-1-lg .block-grid__item:nth-of-type(1n+1){clear:both}.block-2-lg .block-grid__item{width:50%}.block-2-lg .block-grid__item:nth-of-type(1n){clear:none}.block-2-lg .block-grid__item:nth-of-type(odd){clear:both}.block-3-lg .block-grid__item{width:33.33333%}.block-3-lg .block-grid__item:nth-of-type(1n){clear:none}.block-3-lg .block-grid__item:nth-of-type(3n+1){clear:both}.block-4-lg .block-grid__item{width:25%}.block-4-lg .block-grid__item:nth-of-type(1n){clear:none}.block-4-lg .block-grid__item:nth-of-type(4n+1){clear:both}.block-5-lg .block-grid__item{width:20%}.block-5-lg .block-grid__item:nth-of-type(1n){clear:none}.block-5-lg .block-grid__item:nth-of-type(5n+1){clear:both}.block-6-lg .block-grid__item{width:16.66667%}.block-6-lg .block-grid__item:nth-of-type(1n){clear:none}.block-6-lg .block-grid__item:nth-of-type(6n+1){clear:both}}@media screen and (min-width:1140px){.block-1-xl .block-grid__item{width:100%}.block-1-xl .block-grid__item:nth-of-type(1n){clear:none}.block-1-xl .block-grid__item:nth-of-type(1n+1){clear:both}.block-2-xl .block-grid__item{width:50%}.block-2-xl .block-grid__item:nth-of-type(1n){clear:none}.block-2-xl .block-grid__item:nth-of-type(odd){clear:both}.block-3-xl .block-grid__item{width:33.33333%}.block-3-xl .block-grid__item:nth-of-type(1n){clear:none}.block-3-xl .block-grid__item:nth-of-type(3n+1){clear:both}.block-4-xl .block-grid__item{width:25%}.block-4-xl .block-grid__item:nth-of-type(1n){clear:none}.block-4-xl .block-grid__item:nth-of-type(4n+1){clear:both}.block-5-xl .block-grid__item{width:20%}.block-5-xl .block-grid__item:nth-of-type(1n){clear:none}.block-5-xl .block-grid__item:nth-of-type(5n+1){clear:both}.block-6-xl .block-grid__item{width:16.66667%}.block-6-xl .block-grid__item:nth-of-type(1n){clear:none}.block-6-xl .block-grid__item:nth-of-type(6n+1){clear:both}}@media screen and (min-width:1440px){.block-1-xxl .block-grid__item{width:100%}.block-1-xxl .block-grid__item:nth-of-type(1n){clear:none}.block-1-xxl .block-grid__item:nth-of-type(1n+1){clear:both}.block-2-xxl .block-grid__item{width:50%}.block-2-xxl .block-grid__item:nth-of-type(1n){clear:none}.block-2-xxl .block-grid__item:nth-of-type(odd){clear:both}.block-3-xxl .block-grid__item{width:33.33333%}.block-3-xxl .block-grid__item:nth-of-type(1n){clear:none}.block-3-xxl .block-grid__item:nth-of-type(3n+1){clear:both}.block-4-xxl .block-grid__item{width:25%}.block-4-xxl .block-grid__item:nth-of-type(1n){clear:none}.block-4-xxl .block-grid__item:nth-of-type(4n+1){clear:both}.block-5-xxl .block-grid__item{width:20%}.block-5-xxl .block-grid__item:nth-of-type(1n){clear:none}.block-5-xxl .block-grid__item:nth-of-type(5n+1){clear:both}.block-6-xxl .block-grid__item{width:16.66667%}.block-6-xxl .block-grid__item:nth-of-type(1n){clear:none}.block-6-xxl .block-grid__item:nth-of-type(6n+1){clear:both}}@media screen{.guide-color-item>span,.guide-color-item>span>span,.guide-color-item>span em,.guide-content section .inpage-anchor,.guide-example:before,.guide-navigation-icon:after,.guide-navigation-link,.guide-navigation-link-parent.active .guide-navigation-list-child,.guide-subnav-anchor,h1,h2,h3,h4,h5,h6{display:block}.guide-navigation-list-child{display:none}}@media screen{.guide-example-code pre,.guide-navigation-list,.guide-navigation-list-child{margin:0}.guide-subnav{margin-top:36px}.guide-example:before,.guide-navigation-list-child,h1,h2,h3,h4,h5,h6{margin-bottom:16px}.display-1{margin-bottom:20px}.display-2,.guide-color-item,.subheading,h4{margin-bottom:24px}.display-3,.guide-example{margin-bottom:30px}.guide-content section{margin-bottom:36px}.guide-main{margin-bottom:46px}.guide-subnav{margin-left:46px;margin-right:0}.guide-color-item>span{margin-left:16px;margin-right:16px}}@media screen{.guide-navigation-list,.guide-navigation-list-child{padding:0}.guide-navigation{padding-top:0}.guide-subnav{padding-top:16px}.guide-header,.guide-navigation nav{padding-top:24px}.modal--body,.modal--footer{padding-top:30px}.guide-main{padding-top:46px}.guide-example-demo{padding-bottom:0}.guide-navigation nav{padding-bottom:36px}.guide-subnav-anchor{padding-left:8px}table.table-content td:first-child,table.table-content th:first-child{padding-left:0}.guide-version{padding-left:16px}.guide-navigation-link-child{padding-left:46px}table.table-content td:last-child,table.table-content th:last-child{padding-right:0}.guide-navigation-link-child{padding-right:36px}.guide-color,.guide-subnav{padding-left:0;padding-right:0}.guide-color-item>span{padding-left:24px;padding-right:24px}.modal{padding-left:30px;padding-right:30px}.guide-banner,.guide-contentinfo,.guide-main,.guide-navigation-link-parent,.guide-navigation-link-single{padding-left:36px;padding-right:36px}.guide-navigation-link-child,.guide-navigation-link-parent,.guide-navigation-link-single{padding-top:4px;padding-bottom:4px}.guide-banner{padding-top:8px;padding-bottom:8px}.guide-color-item>span{padding-top:20px;padding-bottom:20px}.modal{padding-top:24px;padding-bottom:24px}}@media screen{.guide-color-item{float:left}}@media screen{.guide-navigation nav{overflow:hidden}}@media screen{.guide-banner,.guide-subnav-anchor{width:100%}.guide-navigation,.guide-navigation-link-child.active:after,.guide-navigation-link-single.active:after,.guide-navigation nav{height:100%}table{max-width:100%}}@media screen{.guide-content section .inpage-anchor,.guide-navigation-link,.modal{position:relative}.guide-navigation-icon,.guide-navigation-link-child.active:after,.guide-navigation-link-single.active:after,.guide-navigation nav,.modal--close,.modal--tarp{position:absolute}.guide-banner,.guide-navigation,.guide-subnav{position:fixed}.guide-banner,.guide-navigation-icon,.guide-navigation-link-child.active:after,.guide-navigation-link-single.active:after,.modal--tarp{top:0}.guide-navigation{top:46px}.guide-navigation,.modal--tarp{bottom:0}.guide-banner,.guide-navigation-link-child.active:after,.guide-navigation-link-single.active:after,.modal--tarp{left:0}.modal--tarp{right:0}.guide-navigation-icon{right:16px}.modal--close{right:30px}.guide-navigation{z-index:100}.modal--tarp{z-index:400}}@media screen{table td.top,table th.top{vertical-align:top}table td,table th{vertical-align:middle}table td.bottom,table th.bottom{vertical-align:bottom}}@media screen{.guide-navigation-link-parent.active .guide-navigation-icon{-webkit-transform:rotate(0deg);transform:rotate(0deg)}.guide-navigation-icon{-webkit-transform:rotate(45deg);transform:rotate(45deg)}}@media screen{.modal--tarp,.modal-tarp__styleguide{display:flex}.modal{justify-content:center;align-items:center}}.button{-webkit-appearance:none;-moz-appearance:none;-ms-appearance:none;-o-appearance:none;appearance:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;border-radius:5px;cursor:pointer;text-align:center;display:inline-block;vertical-align:middle;font-family:Open Sans,Helvetica,Arial,sans-serif;font-size:16px;text-transform:none;font-weight:600;letter-spacing:normal;padding:5px 23px;line-height:24px;transition:none;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;background-color:#fff;border:1px solid #7e64e0;color:#7e64e0}.button:active,.button:focus,.button:hover{background-color:#fff;color:#4c33aa;border:1px solid #4c33aa}.button:last-child{margin-right:0}.button+.button{margin:0 0 0 12px}.button--primary{background-color:#7e64e0!important;border-color:#7e64e0!important;color:#fff!important}.button--primary:active,.button--primary:focus,.button--primary:hover{background-color:#4c33aa!important;border-color:#4c33aa!important;color:#fff!important}.button--alert{background-color:#92100e!important;border-color:#92100e!important;color:#fff!important}.button--alert:active,.button--alert:focus,.button--alert:hover{background-color:#b00505!important;border-color:#b00505!important;color:#fff!important}.button--disabled{cursor:not-allowed!important;pointer-events:none!important;opacity:.65!important}.button--disabled-dark,.button--disabled-dark:active,.button--disabled-dark:focus,.button--disabled-dark:hover,.button--disabled-light,.button--disabled-light:active,.button--disabled-light:focus,.button--disabled-light:hover{background-color:!important;border-color:!important;color:!important}.button--inline{margin-top:24px!important;padding:0 26px!important;height:47px!important;line-height:43px!important}@media screen{.button--xsmall-xs{font-size:12px!important;line-height:20px!important;padding:1px 7px!important}.button--xsmall-xs.square{width:!important}.button--small-xs{font-size:14px!important;line-height:24px!important;padding:2px 15px!important}.button--small-xs.square{width:!important}.button--normal-xs{font-size:16px!important;line-height:24px!important;padding:button-default-padding-y 23px!important}.button--normal-xs.square{width:!important}.button--large-xs{font-size:22px!important;line-height:30px!important;padding:7px 23px!important}.button--large-xs.square{width:!important}}@media screen and (min-width:480px){.button--xsmall-sm{font-size:12px!important;line-height:20px!important;padding:1px 7px!important}.button--xsmall-sm.square{width:!important}.button--small-sm{font-size:14px!important;line-height:24px!important;padding:2px 15px!important}.button--small-sm.square{width:!important}.button--normal-sm{font-size:16px!important;line-height:24px!important;padding:button-default-padding-y 23px!important}.button--normal-sm.square{width:!important}.button--large-sm{font-size:22px!important;line-height:30px!important;padding:7px 23px!important}.button--large-sm.square{width:!important}}@media screen and (min-width:680px){.button--xsmall-md{font-size:12px!important;line-height:20px!important;padding:1px 7px!important}.button--xsmall-md.square{width:!important}.button--small-md{font-size:14px!important;line-height:24px!important;padding:2px 15px!important}.button--small-md.square{width:!important}.button--normal-md{font-size:16px!important;line-height:24px!important;padding:button-default-padding-y 23px!important}.button--normal-md.square{width:!important}.button--large-md{font-size:22px!important;line-height:30px!important;padding:7px 23px!important}.button--large-md.square{width:!important}}@media screen and (min-width:960px){.button--xsmall-lg{font-size:12px!important;line-height:20px!important;padding:1px 7px!important}.button--xsmall-lg.square{width:!important}.button--small-lg{font-size:14px!important;line-height:24px!important;padding:2px 15px!important}.button--small-lg.square{width:!important}.button--normal-lg{font-size:16px!important;line-height:24px!important;padding:button-default-padding-y 23px!important}.button--normal-lg.square{width:!important}.button--large-lg{font-size:22px!important;line-height:30px!important;padding:7px 23px!important}.button--large-lg.square{width:!important}}@media screen and (min-width:1140px){.button--xsmall-xl{font-size:12px!important;line-height:20px!important;padding:1px 7px!important}.button--xsmall-xl.square{width:!important}.button--small-xl{font-size:14px!important;line-height:24px!important;padding:2px 15px!important}.button--small-xl.square{width:!important}.button--normal-xl{font-size:16px!important;line-height:24px!important;padding:button-default-padding-y 23px!important}.button--normal-xl.square{width:!important}.button--large-xl{font-size:22px!important;line-height:30px!important;padding:7px 23px!important}.button--large-xl.square{width:!important}}@media screen and (min-width:1440px){.button--xsmall-xxl{font-size:12px!important;line-height:20px!important;padding:1px 7px!important}.button--xsmall-xxl.square{width:!important}.button--small-xxl{font-size:14px!important;line-height:24px!important;padding:2px 15px!important}.button--small-xxl.square{width:!important}.button--normal-xxl{font-size:16px!important;line-height:24px!important;padding:button-default-padding-y 23px!important}.button--normal-xxl.square{width:!important}.button--large-xxl{font-size:22px!important;line-height:30px!important;padding:7px 23px!important}.button--large-xxl.square{width:!important}}.split-button .button{float:left;z-index:1;margin:0!important;border-radius:0;position:relative}.split-button .button+.button{margin-left:-2px!important}.split-button .button:first-child{border-radius:5px 0 0 5px}.split-button .button:last-child{border-radius:0 5px 5px 0}.split-button .button:active,.split-button .button:focus,.split-button .button:hover{z-index:2}.split-button .button:active.active,.split-button .button:active:active,.split-button .button:focus.active,.split-button .button:focus:active,.split-button .button:hover.active,.split-button .button:hover:active{background:#4c33aa;border-color:#4c33aa;color:#fff}.split-button .button:active:after,.split-button .button:focus:after,.split-button .button:hover:after{content:"";width:1px;height:calc(100% + 2px);background-color:#fff;position:absolute;left:-1px;top:-1px}.split-button{display:inline-block;margin:0 15px 0 0}.split-button:after,.split-button:before{content:" ";display:table}.split-button:after{clear:both}.split-button.w-full{display:flex}.split-button.w-full .button{display:flex;flex-grow:1;flex-direction:column}.form-fieldset{padding:0;border:0;margin:0}.form-error{background-color:#fedada!important;border-color:#fedada!important;margin-top:.5rem;font-size:12px}.form-error,.form-helper,.form-label{display:block}.form-label{color:#3c4345;font-size:12px;font-weight:900;line-height:1.3}.form-label-required{color:#b00505;font-weight:700}.form-helper{color:#77797e;font-weight:400;font-size:12px;margin-top:5px}.form-helper-error{color:#b00505}.form-select,.form-text-input{height:28px;line-height:28px}.form-select,.form-select-multiple,.form-text-input,.form-textarea{background-color:#fff;transition:.2s;margin:0;font-size:12px;padding:4px 8px;outline:none;border:1px solid #ddd;border-radius:5px;box-shadow:0;box-sizing:border-box;color:#77797e;width:100%}.form-select-multiple::-webkit-input-placeholder,.form-select::-webkit-input-placeholder,.form-text-input::-webkit-input-placeholder,.form-textarea::-webkit-input-placeholder{color:#a4a6a9}.form-select-multiple:-moz-placeholder,.form-select-multiple::-moz-placeholder,.form-select:-moz-placeholder,.form-select::-moz-placeholder,.form-text-input:-moz-placeholder,.form-text-input::-moz-placeholder,.form-textarea:-moz-placeholder,.form-textarea::-moz-placeholder{color:#a4a6a9}.form-select-multiple:-ms-input-placeholder,.form-select:-ms-input-placeholder,.form-text-input:-ms-input-placeholder,.form-textarea:-ms-input-placeholder{color:#a4a6a9}.form-select-multiple .placeholder,.form-select .placeholder,.form-text-input .placeholder,.form-textarea .placeholder{color:#a4a6a9}.form-select-multiple:focus,.form-select:focus,.form-text-input:focus,.form-textarea:focus{background-color:#fff;border-color:#a3d4da;box-shadow:0 0 4px 0 rgba(163,212,218,.7)}.form-text-input-disabled{background-color:#e8e8e8;cursor:not-allowed}.form-select{-webkit-appearance:none!important;-moz-appearance:none!important;background-image:url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxOC4xLjEsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9Ii00NSA0NyAxNiA4IiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IC00NSA0NyAxNiA4IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwYXRoIGQ9Ik0tNDEuNSw0N2wtMi41LDNoMnYyaC0ybDIuNSwzbDIuNS0zaC0ydi0yaDJMLTQxLjUsNDd6Ii8+DQo8L3N2Zz4NCg==");background-size:16px;background-repeat:no-repeat;background-position:100%;background-color:#fff;outline:none;line-height:1}.form-select-multiple{overflow:auto;padding:0;height:auto}.form-select-multiple option{padding:2px 0 3px 16px}.form-input-group{position:relative;display:table;border-collapse:separate}.form-input-group .form-text-input{border-radius:0}.form-input-group .form-text-input:first-child{border-bottom-left-radius:5px;border-top-left-radius:5px}.form-input-group .form-text-input:last-child{border-bottom-right-radius:5px;border-top-right-radius:5px}.form-input-group-addon,.form-input-group-button,.form-input-group .form-text-input{display:table-cell}.form-input-group-addon{padding:4px 8px;font-size:12px;font-weight:400;line-height:1;color:#77797e;text-align:center;background-color:#e8e8e8;border:1px solid #ddd;border-left:0;border-right:0}.tokenfield{vertical-align:top;padding:3px}.tokenfield-token{background-color:#e4e5e6;white-space:nowrap;cursor:default;margin:1px;height:18px;border-radius:5px;display:inline-block;vertical-align:top}.tokenfield-token:active,.tokenfield-token:focus,.tokenfield-token:hover{background-color:#d2d3d4}.tokenfield-token-label{overflow:hidden;text-overflow:ellipsis;padding-left:4px}.tokenfield-token-close,.tokenfield-token-label{display:inline-block;line-height:18px;vertical-align:top}.tokenfield-token-close{color:#000;opacity:.2;font-family:Arial;margin-left:5px;padding-right:4px;font-weight:400}.tokenfield-token-close:active,.tokenfield-token-close:focus,.tokenfield-token-close:hover{color:#000;opacity:.5;cursor:pointer}.form-checkbox,.form-radio{padding-top:5px;display:block;font-size:12px;min-height:18px;padding-left:20px;vertical-align:middle}.form-checkbox-input,.form-radio-input{position:relative;bottom:1px;color:#a4a6a9;display:inline;margin-right:6px;margin-left:-20px}.form-checkbox-label,.form-radio-label{display:inline;margin-bottom:0;cursor:pointer}.lk-switch{cursor:pointer;margin:4px 0 0;position:absolute;visibility:hidden}.lk-switch-label,.lk-switch-outer{position:relative}.lk-switch-label{display:block;cursor:pointer;outline:none;margin:0;user-select:none;width:42px;height:20px;background-color:#7f889b;border-radius:8px;overflow:hidden}.lk-switch-label:after{content:"";background-color:#fff;border-radius:16px;width:8px;height:8px;top:6px;left:6px}.lk-switch-label:after,.lk-switch-off,.lk-switch-on{position:absolute;-webkit-transition:left .3s ease-in-out;-moz-transition:left .3s ease-in-out;transition:left .3s ease-in-out}.lk-switch-off,.lk-switch-on{top:2px;color:#fff;font-size:11px;font-weight:300;text-transform:uppercase}.lk-switch-on{left:-16px}.lk-switch-off{left:16px}.lk-switch:checked+.lk-switch-label{background-color:#a07bc7}.lk-switch:checked+.lk-switch-label:after{left:28px}.lk-switch:checked+.lk-switch-label .lk-switch-on{left:6px}.lk-switch:checked+.lk-switch-label .lk-switch-off{left:42px}table{border-collapse:collapse}table td,table th{padding:6px 12px}table th{background:transparent;color:#77797e}table td{color:#1c2027}table.table-striped tr:nth-child(2n)>td{background-color:transparent}table.table-content th{white-space:nowrap}.modal{border-radius:5px}.modal--close{margin-top:5px;opacity:.65}.modal--close:active,.modal--close:focus,.modal--close:hover{opacity:1}.modal--tarp{opacity:.65}h1,h2,h3,h4,h5,h6{text-rendering:optimizeLegibility}#brandColorData:before{content:\'{"purple":"#7E64E0","gray":"#1C2027","blue":"#0E88F1"}\';height:0;opacity:0;font-size:0}#uiColorData:before{content:\'{"purple-dark":"#2A1B60","purple":"#4C33AA","purple-light":"#7E64E0","red-dark":"#92100E","red":"#B00505","red-light":"#E1332C","green":"#4BB86A","teal-dark":"#39B2B2","teal":"#5DCCCC","yellow":"#FFD822","orange-dark":"#E57200","orange":"#FB9331"}\';height:0;opacity:0;font-size:0}#grayColorData:before{content:\'{"white":"#fff","gray-1":"#F6F6F7","gray-2":"#E4E5E6","gray-3":"#D2D3D4","gray-4":"#A4A6A9","gray-5":"#77797E","gray-6":"#3C4345","gray-7":"#1C2027"}\';height:0;opacity:0;font-size:0}.hamburger,.hamburger:after,.hamburger:before{left:0;border-radius:4px;background-color:#a4a6a9;width:100%;height:2px;position:absolute;margin-top:-1px;transition:background .3s ease 0s,transform .3s ease 0s,top .3s ease .2s,bottom .3s ease .2s}.hamburger:after,.hamburger:before{content:" "}.hamburger:before{top:-8px}.hamburger:after{bottom:-9px}.hamburger-button{border:0;background:none;cursor:pointer;position:absolute;right:1rem;top:0;padding:26px 0;height:30px;width:30px;z-index:1;transition:opacity .2s ease 0s,top .2s ease 0s}@media screen and (min-width:960px){.hamburger-button{display:none}}.hamburger-button:hover .hamburger,.hamburger-button:hover .hamburger:after,.hamburger-button:hover .hamburger:before{background-color:#f6f6f7}.hamburger-button-clicked .hamburger,.hamburger-button-clicked .hamburger-button:hover .hamburger{background-color:transparent!important}.hamburger-button-clicked .hamburger-button:hover .hamburger:before,.hamburger-button-clicked .hamburger:before{top:0;-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-ms-transform:rotate(45deg);-o-transform:rotate(45deg);transform:rotate(45deg)}.hamburger-button-clicked .hamburger-button:hover .hamburger:after,.hamburger-button-clicked .hamburger:after{bottom:1px;-webkit-transform:rotate(-45deg);-moz-transform:rotate(-45deg);-ms-transform:rotate(-45deg);-o-transform:rotate(-45deg);transform:rotate(-45deg)}.hamburger-button-clicked .hamburger,.hamburger-button-clicked .hamburger:after,.hamburger-button-clicked .hamburger:before{transition:background .2s ease 0s,transform .2s ease .2s,top .2s ease 0s,bottom .2s ease 0s}.guide-skip-content a{font-size:.75rem;text-decoration:none}@media screen{.guide-skip-content a{display:none}}@media screen and (min-width:960px){.guide-skip-content a{position:absolute;left:-9999em;display:block;margin-top:0}.guide-skip-content a:focus{left:80px;top:24px}}.guide-banner{height:46px;z-index:50}.guide-name,.guide-version{text-decoration:none}.guide-version:after{content:"0.1.0"}.guide-version:hover{color:#fff}.guide-navigation{width:216px;transform:translateX(-100%);transition:height .3s ease,padding .3s ease,transform .2s ease}@media screen and (min-width:960px){.guide-navigation{transform:translateX(0)}}.guide-navigation-mobile-show{transform:translateX(0)}.guide-navigation nav{width:216px;overflow-y:auto;outline:0}.guide-navigation-list,.guide-navigation-list-child{list-style:none}.guide-navigation-link{cursor:pointer;text-decoration:none}.guide-navigation-icon{height:30px;line-height:30px;transition:transform 50ms ease-in-out}.guide-navigation-icon:after{content:"\\D7"}.guide-navigation-link-parent.active .guide-navigation-icon{transform:rotate(0deg)}.guide-navigation-link-child.active:after,.guide-navigation-link-single.active:after{content:"";width:7px}.guide-subnav{border-top:3px solid #e4e5e6;list-style:none}.guide-subnav-item{line-height:2.2}.guide-subnav-anchor{text-decoration:none}.guide-contentinfo,.guide-main{margin-left:216px}.guide-main{min-height:calc(100vh - 66px)}.guide-content section .inpage-anchor{top:-70px;visibility:hidden}.guide-contentinfo{height:20px}.guide-example:before{content:"Example"}.guide-color{margin:20px -12px 0;list-style:none;overflow:hidden}.guide-color-item>span{color:hsla(0,0%,100%,.9);font-family:Monaco,monospace}.guide-color-item>span>span{line-height:1}.guide-color-item>span em{color:hsla(0,0%,100%,.5);font-family:Helvetica,Arial,sans-serif}.guide-color-item>span.bg-gray-1 em,.guide-color-item>span.bg-gray-2 em,.guide-color-item>span.bg-gray-3 em,.guide-color-item>span.bg-gray em,.guide-color-item>span.bg-white em{color:#778589}.guide-color-item>span.bg-white{border:1px solid #f6f6f7;border-bottom:0}.guide-color-item .bg-yellow{color:#664900}.guide-color-item .bg-yellow em{color:#e6a500}.guide-color-item .text-bg-white{border:1px solid #d2d3d4}.guide-color-item .text-bg-white span{color:text-color(dark)}.guide-color-item .text-bg-white em{color:text-color(light)}.guide-colors-gray .guide-color-item span{border-radius:0}.guide-colors-gray .guide-color-item span:first-child{border-radius:5px 5px 0 0}.guide-colors-gray .guide-color-item span:last-child{border-radius:0 0 5px 5px}.todo{background-color:rgba(253,90,201,.2);color:#fd5ac9;font-weight:700;text-transform:uppercase;font-size:15px;font-family:monospace}.todo:before{content:"To Do!!";display:inline-block;padding:4px 8px;border-radius:2px}.sample-text:before{content:"Data analytics everybody loves."}.modal-tarp__styleguide{padding:40px;opacity:.65}@media screen and (min-width:0) and (max-width:959px){.login-header{padding:30px}}@media screen and (min-width:960px){.login-header{width:65%;height:100vh;float:left}}@media screen and (min-width:960px){.login-header-wrap{position:relative;top:35%;left:20%}}.login-copy{font-size:15px}@media screen and (min-width:960px){.login-copy{font-size:18px}}@media screen and (min-width:0) and (max-width:959px){.login-name{font-size:42px;margin-left:-3px}}@media screen and (min-width:960px){.login-name{font-size:100px;margin-left:-8px}}@media screen and (min-width:0) and (max-width:959px){.login-auth{padding:30px}}@media screen and (min-width:960px){.login-auth{float:left;height:100vh;width:35%;padding-left:60px;padding-right:60px}}@media screen and (min-width:1140px){.login-auth{padding-left:100px;padding-right:100px}}@media screen and (min-width:960px){.login-auth-wrap{position:relative;top:35%}}.button--inverse-primary-disabled,.guide-inverse-conditional,.guide-neutral-conditional,[class*=button--xlarge]{display:none}code{color:#e3116c}code[class*=language-],pre[class*=language-]{color:#393a34;font-family:Monaco,monospace;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;font-size:13px;line-height:1.7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}code[class*=language-]::-moz-selection,code[class*=language-] ::-moz-selection,pre[class*=language-]::-moz-selection,pre[class*=language-] ::-moz-selection{background:#b3d4fc}code[class*=language-]::selection,code[class*=language-] ::selection,pre[class*=language-]::selection,pre[class*=language-] ::selection{background:#b3d4fc}pre[class*=language-]{padding:1rem;margin:1.5rem 0;overflow:auto;background-color:#f5f6f7;border-radius:5px}:not(pre)>code[class*=language-]{padding:.2em;padding-top:1px;padding-bottom:1px;background:#f8f8f8;border:1px solid #ddd}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#998;font-style:italic}.token.namespace{opacity:.7}.token.attr-value,.token.string{color:#e3116c}.token.operator,.token.punctuation{color:#393a34}.token.boolean,.token.constant,.token.entity,.token.inserted,.token.number,.token.property,.token.regex,.token.symbol,.token.url,.token.variable{color:#36acaa}.language-autohotkey .token.selector,.token.atrule,.token.attr-name,.token.keyword{color:#00a4db}.language-autohotkey .token.tag,.token.deleted,.token.function{color:#9a050f}.language-autohotkey .token.keyword,.token.selector,.token.tag{color:#00009f}.token.bold,.token.function,.token.important{font-weight:700}.token.italic{font-style:italic}',""]);
-},function(t,e){t.exports=function(){var t=[];return t.toString=function(){for(var t=[],e=0;e<this.length;e++){var n=this[e];n[2]?t.push("@media "+n[2]+"{"+n[1]+"}"):t.push(n[1])}return t.join("")},t.i=function(e,n){"string"==typeof e&&(e=[[null,e,""]]);for(var o={},i=0;i<this.length;i++){var l=this[i][0];"number"==typeof l&&(o[l]=!0)}for(i=0;i<e.length;i++){var a=e[i];"number"==typeof a[0]&&o[a[0]]||(n&&!a[2]?a[2]=n:n&&(a[2]="("+a[2]+") and ("+n+")"),t.push(a))}},t}},,,,function(t,e,n){function o(t,e){for(var n=0;n<t.length;n++){var o=t[n],i=p[o.id];if(i){i.refs++;for(var l=0;l<i.parts.length;l++)i.parts[l](o.parts[l]);for(;l<o.parts.length;l++)i.parts.push(d(o.parts[l],e))}else{for(var a=[],l=0;l<o.parts.length;l++)a.push(d(o.parts[l],e));p[o.id]={id:o.id,refs:1,parts:a}}}}function i(t){for(var e=[],n={},o=0;o<t.length;o++){var i=t[o],l=i[0],a=i[1],r=i[2],s=i[3],d={css:a,media:r,sourceMap:s};n[l]?n[l].parts.push(d):e.push(n[l]={id:l,parts:[d]})}return e}function l(t,e){var n=f(),o=x[x.length-1];if("top"===t.insertAt)o?o.nextSibling?n.insertBefore(e,o.nextSibling):n.appendChild(e):n.insertBefore(e,n.firstChild),x.push(e);else{if("bottom"!==t.insertAt)throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");n.appendChild(e)}}function a(t){t.parentNode.removeChild(t);var e=x.indexOf(t);e>=0&&x.splice(e,1)}function r(t){var e=document.createElement("style");return e.type="text/css",l(t,e),e}function s(t){var e=document.createElement("link");return e.rel="stylesheet",l(t,e),e}function d(t,e){var n,o,i;if(e.singleton){var l=v++;n=b||(b=r(e)),o=c.bind(null,n,l,!1),i=c.bind(null,n,l,!0)}else t.sourceMap&&"function"==typeof URL&&"function"==typeof URL.createObjectURL&&"function"==typeof URL.revokeObjectURL&&"function"==typeof Blob&&"function"==typeof btoa?(n=s(e),o=g.bind(null,n),i=function(){a(n),n.href&&URL.revokeObjectURL(n.href)}):(n=r(e),o=u.bind(null,n),i=function(){a(n)});return o(t),function(e){if(e){if(e.css===t.css&&e.media===t.media&&e.sourceMap===t.sourceMap)return;o(t=e)}else i()}}function c(t,e,n,o){var i=n?"":o.css;if(t.styleSheet)t.styleSheet.cssText=y(e,i);else{var l=document.createTextNode(i),a=t.childNodes;a[e]&&t.removeChild(a[e]),a.length?t.insertBefore(l,a[e]):t.appendChild(l)}}function u(t,e){var n=e.css,o=e.media;if(o&&t.setAttribute("media",o),t.styleSheet)t.styleSheet.cssText=n;else{for(;t.firstChild;)t.removeChild(t.firstChild);t.appendChild(document.createTextNode(n))}}function g(t,e){var n=e.css,o=e.sourceMap;o&&(n+="\n/*# sourceMappingURL=data:application/json;base64,"+btoa(unescape(encodeURIComponent(JSON.stringify(o))))+" */");var i=new Blob([n],{type:"text/css"}),l=t.href;t.href=URL.createObjectURL(i),l&&URL.revokeObjectURL(l)}var p={},h=function(t){var e;return function(){return"undefined"==typeof e&&(e=t.apply(this,arguments)),e}},m=h(function(){return/msie [6-9]\b/.test(self.navigator.userAgent.toLowerCase())}),f=h(function(){return document.head||document.getElementsByTagName("head")[0]}),b=null,v=0,x=[];t.exports=function(t,e){e=e||{},"undefined"==typeof e.singleton&&(e.singleton=m()),"undefined"==typeof e.insertAt&&(e.insertAt="bottom");var n=i(t);return o(n,e),function(t){for(var l=[],a=0;a<n.length;a++){var r=n[a],s=p[r.id];s.refs--,l.push(s)}if(t){var d=i(t);o(d,e)}for(var a=0;a<l.length;a++){var s=l[a];if(0===s.refs){for(var c=0;c<s.parts.length;c++)s.parts[c]();delete p[s.id]}}}};var y=function(){var t=[];return function(e,n){return t[e]=n,t.filter(Boolean).join("\n")}}()},function(t,e,n){var o=n(43);"string"==typeof o&&(o=[[t.id,o,""]]);n(48)(o,{});o.locals&&(t.exports=o.locals)}]);
+
+	/* commonjs package manager support (eg componentjs) */
+	if (typeof module !== "undefined" && typeof exports !== "undefined" && module.exports === exports){
+	  module.exports = 'ui.router';
+	}
+
+	(function (window, angular, undefined) {
+	/*jshint globalstrict:true*/
+	/*global angular:false*/
+	'use strict';
+
+	var isDefined = angular.isDefined,
+	    isFunction = angular.isFunction,
+	    isString = angular.isString,
+	    isObject = angular.isObject,
+	    isArray = angular.isArray,
+	    forEach = angular.forEach,
+	    extend = angular.extend,
+	    copy = angular.copy,
+	    toJson = angular.toJson;
+
+	function inherit(parent, extra) {
+	  return extend(new (extend(function() {}, { prototype: parent }))(), extra);
+	}
+
+	function merge(dst) {
+	  forEach(arguments, function(obj) {
+	    if (obj !== dst) {
+	      forEach(obj, function(value, key) {
+	        if (!dst.hasOwnProperty(key)) dst[key] = value;
+	      });
+	    }
+	  });
+	  return dst;
+	}
+
+	/**
+	 * Finds the common ancestor path between two states.
+	 *
+	 * @param {Object} first The first state.
+	 * @param {Object} second The second state.
+	 * @return {Array} Returns an array of state names in descending order, not including the root.
+	 */
+	function ancestors(first, second) {
+	  var path = [];
+
+	  for (var n in first.path) {
+	    if (first.path[n] !== second.path[n]) break;
+	    path.push(first.path[n]);
+	  }
+	  return path;
+	}
+
+	/**
+	 * IE8-safe wrapper for `Object.keys()`.
+	 *
+	 * @param {Object} object A JavaScript object.
+	 * @return {Array} Returns the keys of the object as an array.
+	 */
+	function objectKeys(object) {
+	  if (Object.keys) {
+	    return Object.keys(object);
+	  }
+	  var result = [];
+
+	  forEach(object, function(val, key) {
+	    result.push(key);
+	  });
+	  return result;
+	}
+
+	/**
+	 * IE8-safe wrapper for `Array.prototype.indexOf()`.
+	 *
+	 * @param {Array} array A JavaScript array.
+	 * @param {*} value A value to search the array for.
+	 * @return {Number} Returns the array index value of `value`, or `-1` if not present.
+	 */
+	function indexOf(array, value) {
+	  if (Array.prototype.indexOf) {
+	    return array.indexOf(value, Number(arguments[2]) || 0);
+	  }
+	  var len = array.length >>> 0, from = Number(arguments[2]) || 0;
+	  from = (from < 0) ? Math.ceil(from) : Math.floor(from);
+
+	  if (from < 0) from += len;
+
+	  for (; from < len; from++) {
+	    if (from in array && array[from] === value) return from;
+	  }
+	  return -1;
+	}
+
+	/**
+	 * Merges a set of parameters with all parameters inherited between the common parents of the
+	 * current state and a given destination state.
+	 *
+	 * @param {Object} currentParams The value of the current state parameters ($stateParams).
+	 * @param {Object} newParams The set of parameters which will be composited with inherited params.
+	 * @param {Object} $current Internal definition of object representing the current state.
+	 * @param {Object} $to Internal definition of object representing state to transition to.
+	 */
+	function inheritParams(currentParams, newParams, $current, $to) {
+	  var parents = ancestors($current, $to), parentParams, inherited = {}, inheritList = [];
+
+	  for (var i in parents) {
+	    if (!parents[i] || !parents[i].params) continue;
+	    parentParams = objectKeys(parents[i].params);
+	    if (!parentParams.length) continue;
+
+	    for (var j in parentParams) {
+	      if (indexOf(inheritList, parentParams[j]) >= 0) continue;
+	      inheritList.push(parentParams[j]);
+	      inherited[parentParams[j]] = currentParams[parentParams[j]];
+	    }
+	  }
+	  return extend({}, inherited, newParams);
+	}
+
+	/**
+	 * Performs a non-strict comparison of the subset of two objects, defined by a list of keys.
+	 *
+	 * @param {Object} a The first object.
+	 * @param {Object} b The second object.
+	 * @param {Array} keys The list of keys within each object to compare. If the list is empty or not specified,
+	 *                     it defaults to the list of keys in `a`.
+	 * @return {Boolean} Returns `true` if the keys match, otherwise `false`.
+	 */
+	function equalForKeys(a, b, keys) {
+	  if (!keys) {
+	    keys = [];
+	    for (var n in a) keys.push(n); // Used instead of Object.keys() for IE8 compatibility
+	  }
+
+	  for (var i=0; i<keys.length; i++) {
+	    var k = keys[i];
+	    if (a[k] != b[k]) return false; // Not '===', values aren't necessarily normalized
+	  }
+	  return true;
+	}
+
+	/**
+	 * Returns the subset of an object, based on a list of keys.
+	 *
+	 * @param {Array} keys
+	 * @param {Object} values
+	 * @return {Boolean} Returns a subset of `values`.
+	 */
+	function filterByKeys(keys, values) {
+	  var filtered = {};
+
+	  forEach(keys, function (name) {
+	    filtered[name] = values[name];
+	  });
+	  return filtered;
+	}
+
+	// like _.indexBy
+	// when you know that your index values will be unique, or you want last-one-in to win
+	function indexBy(array, propName) {
+	  var result = {};
+	  forEach(array, function(item) {
+	    result[item[propName]] = item;
+	  });
+	  return result;
+	}
+
+	// extracted from underscore.js
+	// Return a copy of the object only containing the whitelisted properties.
+	function pick(obj) {
+	  var copy = {};
+	  var keys = Array.prototype.concat.apply(Array.prototype, Array.prototype.slice.call(arguments, 1));
+	  forEach(keys, function(key) {
+	    if (key in obj) copy[key] = obj[key];
+	  });
+	  return copy;
+	}
+
+	// extracted from underscore.js
+	// Return a copy of the object omitting the blacklisted properties.
+	function omit(obj) {
+	  var copy = {};
+	  var keys = Array.prototype.concat.apply(Array.prototype, Array.prototype.slice.call(arguments, 1));
+	  for (var key in obj) {
+	    if (indexOf(keys, key) == -1) copy[key] = obj[key];
+	  }
+	  return copy;
+	}
+
+	function pluck(collection, key) {
+	  var result = isArray(collection) ? [] : {};
+
+	  forEach(collection, function(val, i) {
+	    result[i] = isFunction(key) ? key(val) : val[key];
+	  });
+	  return result;
+	}
+
+	function filter(collection, callback) {
+	  var array = isArray(collection);
+	  var result = array ? [] : {};
+	  forEach(collection, function(val, i) {
+	    if (callback(val, i)) {
+	      result[array ? result.length : i] = val;
+	    }
+	  });
+	  return result;
+	}
+
+	function map(collection, callback) {
+	  var result = isArray(collection) ? [] : {};
+
+	  forEach(collection, function(val, i) {
+	    result[i] = callback(val, i);
+	  });
+	  return result;
+	}
+
+	// issue #2676 #2889
+	function silenceUncaughtInPromise (promise) {
+	  return promise.then(undefined, function() {}) && promise;
+	}
+
+	/**
+	 * @ngdoc overview
+	 * @name ui.router.util
+	 *
+	 * @description
+	 * # ui.router.util sub-module
+	 *
+	 * This module is a dependency of other sub-modules. Do not include this module as a dependency
+	 * in your angular app (use {@link ui.router} module instead).
+	 *
+	 */
+	angular.module('ui.router.util', ['ng']);
+
+	/**
+	 * @ngdoc overview
+	 * @name ui.router.router
+	 * 
+	 * @requires ui.router.util
+	 *
+	 * @description
+	 * # ui.router.router sub-module
+	 *
+	 * This module is a dependency of other sub-modules. Do not include this module as a dependency
+	 * in your angular app (use {@link ui.router} module instead).
+	 */
+	angular.module('ui.router.router', ['ui.router.util']);
+
+	/**
+	 * @ngdoc overview
+	 * @name ui.router.state
+	 * 
+	 * @requires ui.router.router
+	 * @requires ui.router.util
+	 *
+	 * @description
+	 * # ui.router.state sub-module
+	 *
+	 * This module is a dependency of the main ui.router module. Do not include this module as a dependency
+	 * in your angular app (use {@link ui.router} module instead).
+	 * 
+	 */
+	angular.module('ui.router.state', ['ui.router.router', 'ui.router.util']);
+
+	/**
+	 * @ngdoc overview
+	 * @name ui.router
+	 *
+	 * @requires ui.router.state
+	 *
+	 * @description
+	 * # ui.router
+	 * 
+	 * ## The main module for ui.router 
+	 * There are several sub-modules included with the ui.router module, however only this module is needed
+	 * as a dependency within your angular app. The other modules are for organization purposes. 
+	 *
+	 * The modules are:
+	 * * ui.router - the main "umbrella" module
+	 * * ui.router.router - 
+	 * 
+	 * *You'll need to include **only** this module as the dependency within your angular app.*
+	 * 
+	 * <pre>
+	 * <!doctype html>
+	 * <html ng-app="myApp">
+	 * <head>
+	 *   <script src="js/angular.js"></script>
+	 *   <!-- Include the ui-router script -->
+	 *   <script src="js/angular-ui-router.min.js"></script>
+	 *   <script>
+	 *     // ...and add 'ui.router' as a dependency
+	 *     var myApp = angular.module('myApp', ['ui.router']);
+	 *   </script>
+	 * </head>
+	 * <body>
+	 * </body>
+	 * </html>
+	 * </pre>
+	 */
+	angular.module('ui.router', ['ui.router.state']);
+
+	angular.module('ui.router.compat', ['ui.router']);
+
+	/**
+	 * @ngdoc object
+	 * @name ui.router.util.$resolve
+	 *
+	 * @requires $q
+	 * @requires $injector
+	 *
+	 * @description
+	 * Manages resolution of (acyclic) graphs of promises.
+	 */
+	$Resolve.$inject = ['$q', '$injector'];
+	function $Resolve(  $q,    $injector) {
+	  
+	  var VISIT_IN_PROGRESS = 1,
+	      VISIT_DONE = 2,
+	      NOTHING = {},
+	      NO_DEPENDENCIES = [],
+	      NO_LOCALS = NOTHING,
+	      NO_PARENT = extend($q.when(NOTHING), { $$promises: NOTHING, $$values: NOTHING });
+	  
+
+	  /**
+	   * @ngdoc function
+	   * @name ui.router.util.$resolve#study
+	   * @methodOf ui.router.util.$resolve
+	   *
+	   * @description
+	   * Studies a set of invocables that are likely to be used multiple times.
+	   * <pre>
+	   * $resolve.study(invocables)(locals, parent, self)
+	   * </pre>
+	   * is equivalent to
+	   * <pre>
+	   * $resolve.resolve(invocables, locals, parent, self)
+	   * </pre>
+	   * but the former is more efficient (in fact `resolve` just calls `study` 
+	   * internally).
+	   *
+	   * @param {object} invocables Invocable objects
+	   * @return {function} a function to pass in locals, parent and self
+	   */
+	  this.study = function (invocables) {
+	    if (!isObject(invocables)) throw new Error("'invocables' must be an object");
+	    var invocableKeys = objectKeys(invocables || {});
+	    
+	    // Perform a topological sort of invocables to build an ordered plan
+	    var plan = [], cycle = [], visited = {};
+	    function visit(value, key) {
+	      if (visited[key] === VISIT_DONE) return;
+	      
+	      cycle.push(key);
+	      if (visited[key] === VISIT_IN_PROGRESS) {
+	        cycle.splice(0, indexOf(cycle, key));
+	        throw new Error("Cyclic dependency: " + cycle.join(" -> "));
+	      }
+	      visited[key] = VISIT_IN_PROGRESS;
+	      
+	      if (isString(value)) {
+	        plan.push(key, [ function() { return $injector.get(value); }], NO_DEPENDENCIES);
+	      } else {
+	        var params = $injector.annotate(value);
+	        forEach(params, function (param) {
+	          if (param !== key && invocables.hasOwnProperty(param)) visit(invocables[param], param);
+	        });
+	        plan.push(key, value, params);
+	      }
+	      
+	      cycle.pop();
+	      visited[key] = VISIT_DONE;
+	    }
+	    forEach(invocables, visit);
+	    invocables = cycle = visited = null; // plan is all that's required
+	    
+	    function isResolve(value) {
+	      return isObject(value) && value.then && value.$$promises;
+	    }
+	    
+	    return function (locals, parent, self) {
+	      if (isResolve(locals) && self === undefined) {
+	        self = parent; parent = locals; locals = null;
+	      }
+	      if (!locals) locals = NO_LOCALS;
+	      else if (!isObject(locals)) {
+	        throw new Error("'locals' must be an object");
+	      }       
+	      if (!parent) parent = NO_PARENT;
+	      else if (!isResolve(parent)) {
+	        throw new Error("'parent' must be a promise returned by $resolve.resolve()");
+	      }
+	      
+	      // To complete the overall resolution, we have to wait for the parent
+	      // promise and for the promise for each invokable in our plan.
+	      var resolution = $q.defer(),
+	          result = silenceUncaughtInPromise(resolution.promise),
+	          promises = result.$$promises = {},
+	          values = extend({}, locals),
+	          wait = 1 + plan.length/3,
+	          merged = false;
+
+	      silenceUncaughtInPromise(result);
+	          
+	      function done() {
+	        // Merge parent values we haven't got yet and publish our own $$values
+	        if (!--wait) {
+	          if (!merged) merge(values, parent.$$values); 
+	          result.$$values = values;
+	          result.$$promises = result.$$promises || true; // keep for isResolve()
+	          delete result.$$inheritedValues;
+	          resolution.resolve(values);
+	        }
+	      }
+	      
+	      function fail(reason) {
+	        result.$$failure = reason;
+	        resolution.reject(reason);
+	      }
+
+	      // Short-circuit if parent has already failed
+	      if (isDefined(parent.$$failure)) {
+	        fail(parent.$$failure);
+	        return result;
+	      }
+	      
+	      if (parent.$$inheritedValues) {
+	        merge(values, omit(parent.$$inheritedValues, invocableKeys));
+	      }
+
+	      // Merge parent values if the parent has already resolved, or merge
+	      // parent promises and wait if the parent resolve is still in progress.
+	      extend(promises, parent.$$promises);
+	      if (parent.$$values) {
+	        merged = merge(values, omit(parent.$$values, invocableKeys));
+	        result.$$inheritedValues = omit(parent.$$values, invocableKeys);
+	        done();
+	      } else {
+	        if (parent.$$inheritedValues) {
+	          result.$$inheritedValues = omit(parent.$$inheritedValues, invocableKeys);
+	        }        
+	        parent.then(done, fail);
+	      }
+	      
+	      // Process each invocable in the plan, but ignore any where a local of the same name exists.
+	      for (var i=0, ii=plan.length; i<ii; i+=3) {
+	        if (locals.hasOwnProperty(plan[i])) done();
+	        else invoke(plan[i], plan[i+1], plan[i+2]);
+	      }
+	      
+	      function invoke(key, invocable, params) {
+	        // Create a deferred for this invocation. Failures will propagate to the resolution as well.
+	        var invocation = $q.defer(), waitParams = 0;
+	        function onfailure(reason) {
+	          invocation.reject(reason);
+	          fail(reason);
+	        }
+	        // Wait for any parameter that we have a promise for (either from parent or from this
+	        // resolve; in that case study() will have made sure it's ordered before us in the plan).
+	        forEach(params, function (dep) {
+	          if (promises.hasOwnProperty(dep) && !locals.hasOwnProperty(dep)) {
+	            waitParams++;
+	            promises[dep].then(function (result) {
+	              values[dep] = result;
+	              if (!(--waitParams)) proceed();
+	            }, onfailure);
+	          }
+	        });
+	        if (!waitParams) proceed();
+	        function proceed() {
+	          if (isDefined(result.$$failure)) return;
+	          try {
+	            invocation.resolve($injector.invoke(invocable, self, values));
+	            invocation.promise.then(function (result) {
+	              values[key] = result;
+	              done();
+	            }, onfailure);
+	          } catch (e) {
+	            onfailure(e);
+	          }
+	        }
+	        // Publish promise synchronously; invocations further down in the plan may depend on it.
+	        promises[key] = silenceUncaughtInPromise(invocation.promise);
+	      }
+	      
+	      return result;
+	    };
+	  };
+	  
+	  /**
+	   * @ngdoc function
+	   * @name ui.router.util.$resolve#resolve
+	   * @methodOf ui.router.util.$resolve
+	   *
+	   * @description
+	   * Resolves a set of invocables. An invocable is a function to be invoked via 
+	   * `$injector.invoke()`, and can have an arbitrary number of dependencies. 
+	   * An invocable can either return a value directly,
+	   * or a `$q` promise. If a promise is returned it will be resolved and the 
+	   * resulting value will be used instead. Dependencies of invocables are resolved 
+	   * (in this order of precedence)
+	   *
+	   * - from the specified `locals`
+	   * - from another invocable that is part of this `$resolve` call
+	   * - from an invocable that is inherited from a `parent` call to `$resolve` 
+	   *   (or recursively
+	   * - from any ancestor `$resolve` of that parent).
+	   *
+	   * The return value of `$resolve` is a promise for an object that contains 
+	   * (in this order of precedence)
+	   *
+	   * - any `locals` (if specified)
+	   * - the resolved return values of all injectables
+	   * - any values inherited from a `parent` call to `$resolve` (if specified)
+	   *
+	   * The promise will resolve after the `parent` promise (if any) and all promises 
+	   * returned by injectables have been resolved. If any invocable 
+	   * (or `$injector.invoke`) throws an exception, or if a promise returned by an 
+	   * invocable is rejected, the `$resolve` promise is immediately rejected with the 
+	   * same error. A rejection of a `parent` promise (if specified) will likewise be 
+	   * propagated immediately. Once the `$resolve` promise has been rejected, no 
+	   * further invocables will be called.
+	   * 
+	   * Cyclic dependencies between invocables are not permitted and will cause `$resolve`
+	   * to throw an error. As a special case, an injectable can depend on a parameter 
+	   * with the same name as the injectable, which will be fulfilled from the `parent` 
+	   * injectable of the same name. This allows inherited values to be decorated. 
+	   * Note that in this case any other injectable in the same `$resolve` with the same
+	   * dependency would see the decorated value, not the inherited value.
+	   *
+	   * Note that missing dependencies -- unlike cyclic dependencies -- will cause an 
+	   * (asynchronous) rejection of the `$resolve` promise rather than a (synchronous) 
+	   * exception.
+	   *
+	   * Invocables are invoked eagerly as soon as all dependencies are available. 
+	   * This is true even for dependencies inherited from a `parent` call to `$resolve`.
+	   *
+	   * As a special case, an invocable can be a string, in which case it is taken to 
+	   * be a service name to be passed to `$injector.get()`. This is supported primarily 
+	   * for backwards-compatibility with the `resolve` property of `$routeProvider` 
+	   * routes.
+	   *
+	   * @param {object} invocables functions to invoke or 
+	   * `$injector` services to fetch.
+	   * @param {object} locals  values to make available to the injectables
+	   * @param {object} parent  a promise returned by another call to `$resolve`.
+	   * @param {object} self  the `this` for the invoked methods
+	   * @return {object} Promise for an object that contains the resolved return value
+	   * of all invocables, as well as any inherited and local values.
+	   */
+	  this.resolve = function (invocables, locals, parent, self) {
+	    return this.study(invocables)(locals, parent, self);
+	  };
+	}
+
+	angular.module('ui.router.util').service('$resolve', $Resolve);
+
+
+
+	/**
+	 * @ngdoc object
+	 * @name ui.router.util.$templateFactoryProvider
+	 *
+	 * @description
+	 * Provider for $templateFactory. Manages which template-loading mechanism to
+	 * use, and will default to the most recent one ($templateRequest on Angular
+	 * versions starting from 1.3, $http otherwise).
+	 */
+	function TemplateFactoryProvider() {
+	  var shouldUnsafelyUseHttp = angular.version.minor < 3;
+
+	  /**
+	   * @ngdoc function
+	   * @name ui.router.util.$templateFactoryProvider#shouldUnsafelyUseHttp
+	   * @methodOf ui.router.util.$templateFactoryProvider
+	   *
+	   * @description
+	   * Forces $templateFactory to use $http instead of $templateRequest. This
+	   * might cause XSS, as $http doesn't enforce the regular security checks for
+	   * templates that have been introduced in Angular 1.3. Note that setting this
+	   * to false on Angular older than 1.3.x will crash, as the $templateRequest
+	   * service (and the security checks) are not implemented on these versions.
+	   *
+	   * See the $sce documentation, section
+	   * <a href="https://docs.angularjs.org/api/ng/service/$sce#impact-on-loading-templates">
+	   * Impact on loading templates</a> for more details about this mechanism.
+	   *
+	   * @param {boolean} value
+	   */
+	  this.shouldUnsafelyUseHttp = function(value) {
+	    shouldUnsafelyUseHttp = !!value;
+	  };
+
+	  /**
+	   * @ngdoc object
+	   * @name ui.router.util.$templateFactory
+	   *
+	   * @requires $http
+	   * @requires $templateCache
+	   * @requires $injector
+	   *
+	   * @description
+	   * Service. Manages loading of templates.
+	   */
+	  this.$get = ['$http', '$templateCache', '$injector', function($http, $templateCache, $injector){
+	    return new TemplateFactory($http, $templateCache, $injector, shouldUnsafelyUseHttp);}];
+	}
+
+
+	/**
+	 * @ngdoc object
+	 * @name ui.router.util.$templateFactory
+	 *
+	 * @requires $http
+	 * @requires $templateCache
+	 * @requires $injector
+	 *
+	 * @description
+	 * Service. Manages loading of templates.
+	 */
+	function TemplateFactory($http, $templateCache, $injector, shouldUnsafelyUseHttp) {
+
+	  /**
+	   * @ngdoc function
+	   * @name ui.router.util.$templateFactory#fromConfig
+	   * @methodOf ui.router.util.$templateFactory
+	   *
+	   * @description
+	   * Creates a template from a configuration object. 
+	   *
+	   * @param {object} config Configuration object for which to load a template. 
+	   * The following properties are search in the specified order, and the first one 
+	   * that is defined is used to create the template:
+	   *
+	   * @param {string|object} config.template html string template or function to 
+	   * load via {@link ui.router.util.$templateFactory#fromString fromString}.
+	   * @param {string|object} config.templateUrl url to load or a function returning 
+	   * the url to load via {@link ui.router.util.$templateFactory#fromUrl fromUrl}.
+	   * @param {Function} config.templateProvider function to invoke via 
+	   * {@link ui.router.util.$templateFactory#fromProvider fromProvider}.
+	   * @param {object} params  Parameters to pass to the template function.
+	   * @param {object} locals Locals to pass to `invoke` if the template is loaded 
+	   * via a `templateProvider`. Defaults to `{ params: params }`.
+	   *
+	   * @return {string|object}  The template html as a string, or a promise for 
+	   * that string,or `null` if no template is configured.
+	   */
+	  this.fromConfig = function (config, params, locals) {
+	    return (
+	      isDefined(config.template) ? this.fromString(config.template, params) :
+	      isDefined(config.templateUrl) ? this.fromUrl(config.templateUrl, params) :
+	      isDefined(config.templateProvider) ? this.fromProvider(config.templateProvider, params, locals) :
+	      null
+	    );
+	  };
+
+	  /**
+	   * @ngdoc function
+	   * @name ui.router.util.$templateFactory#fromString
+	   * @methodOf ui.router.util.$templateFactory
+	   *
+	   * @description
+	   * Creates a template from a string or a function returning a string.
+	   *
+	   * @param {string|object} template html template as a string or function that 
+	   * returns an html template as a string.
+	   * @param {object} params Parameters to pass to the template function.
+	   *
+	   * @return {string|object} The template html as a string, or a promise for that 
+	   * string.
+	   */
+	  this.fromString = function (template, params) {
+	    return isFunction(template) ? template(params) : template;
+	  };
+
+	  /**
+	   * @ngdoc function
+	   * @name ui.router.util.$templateFactory#fromUrl
+	   * @methodOf ui.router.util.$templateFactory
+	   * 
+	   * @description
+	   * Loads a template from the a URL via `$http` and `$templateCache`.
+	   *
+	   * @param {string|Function} url url of the template to load, or a function 
+	   * that returns a url.
+	   * @param {Object} params Parameters to pass to the url function.
+	   * @return {string|Promise.<string>} The template html as a string, or a promise 
+	   * for that string.
+	   */
+	  this.fromUrl = function (url, params) {
+	    if (isFunction(url)) url = url(params);
+	    if (url == null) return null;
+	    else {
+	      if(!shouldUnsafelyUseHttp) {
+	        return $injector.get('$templateRequest')(url);
+	      } else {
+	        return $http
+	          .get(url, { cache: $templateCache, headers: { Accept: 'text/html' }})
+	          .then(function(response) { return response.data; });
+	      }
+	    }
+	  };
+
+	  /**
+	   * @ngdoc function
+	   * @name ui.router.util.$templateFactory#fromProvider
+	   * @methodOf ui.router.util.$templateFactory
+	   *
+	   * @description
+	   * Creates a template by invoking an injectable provider function.
+	   *
+	   * @param {Function} provider Function to invoke via `$injector.invoke`
+	   * @param {Object} params Parameters for the template.
+	   * @param {Object} locals Locals to pass to `invoke`. Defaults to 
+	   * `{ params: params }`.
+	   * @return {string|Promise.<string>} The template html as a string, or a promise 
+	   * for that string.
+	   */
+	  this.fromProvider = function (provider, params, locals) {
+	    return $injector.invoke(provider, null, locals || { params: params });
+	  };
+	}
+
+	angular.module('ui.router.util').provider('$templateFactory', TemplateFactoryProvider);
+
+	var $$UMFP; // reference to $UrlMatcherFactoryProvider
+
+	/**
+	 * @ngdoc object
+	 * @name ui.router.util.type:UrlMatcher
+	 *
+	 * @description
+	 * Matches URLs against patterns and extracts named parameters from the path or the search
+	 * part of the URL. A URL pattern consists of a path pattern, optionally followed by '?' and a list
+	 * of search parameters. Multiple search parameter names are separated by '&'. Search parameters
+	 * do not influence whether or not a URL is matched, but their values are passed through into
+	 * the matched parameters returned by {@link ui.router.util.type:UrlMatcher#methods_exec exec}.
+	 *
+	 * Path parameter placeholders can be specified using simple colon/catch-all syntax or curly brace
+	 * syntax, which optionally allows a regular expression for the parameter to be specified:
+	 *
+	 * * `':'` name - colon placeholder
+	 * * `'*'` name - catch-all placeholder
+	 * * `'{' name '}'` - curly placeholder
+	 * * `'{' name ':' regexp|type '}'` - curly placeholder with regexp or type name. Should the
+	 *   regexp itself contain curly braces, they must be in matched pairs or escaped with a backslash.
+	 *
+	 * Parameter names may contain only word characters (latin letters, digits, and underscore) and
+	 * must be unique within the pattern (across both path and search parameters). For colon
+	 * placeholders or curly placeholders without an explicit regexp, a path parameter matches any
+	 * number of characters other than '/'. For catch-all placeholders the path parameter matches
+	 * any number of characters.
+	 *
+	 * Examples:
+	 *
+	 * * `'/hello/'` - Matches only if the path is exactly '/hello/'. There is no special treatment for
+	 *   trailing slashes, and patterns have to match the entire path, not just a prefix.
+	 * * `'/user/:id'` - Matches '/user/bob' or '/user/1234!!!' or even '/user/' but not '/user' or
+	 *   '/user/bob/details'. The second path segment will be captured as the parameter 'id'.
+	 * * `'/user/{id}'` - Same as the previous example, but using curly brace syntax.
+	 * * `'/user/{id:[^/]*}'` - Same as the previous example.
+	 * * `'/user/{id:[0-9a-fA-F]{1,8}}'` - Similar to the previous example, but only matches if the id
+	 *   parameter consists of 1 to 8 hex digits.
+	 * * `'/files/{path:.*}'` - Matches any URL starting with '/files/' and captures the rest of the
+	 *   path into the parameter 'path'.
+	 * * `'/files/*path'` - ditto.
+	 * * `'/calendar/{start:date}'` - Matches "/calendar/2014-11-12" (because the pattern defined
+	 *   in the built-in  `date` Type matches `2014-11-12`) and provides a Date object in $stateParams.start
+	 *
+	 * @param {string} pattern  The pattern to compile into a matcher.
+	 * @param {Object} config  A configuration object hash:
+	 * @param {Object=} parentMatcher Used to concatenate the pattern/config onto
+	 *   an existing UrlMatcher
+	 *
+	 * * `caseInsensitive` - `true` if URL matching should be case insensitive, otherwise `false`, the default value (for backward compatibility) is `false`.
+	 * * `strict` - `false` if matching against a URL with a trailing slash should be treated as equivalent to a URL without a trailing slash, the default value is `true`.
+	 *
+	 * @property {string} prefix  A static prefix of this pattern. The matcher guarantees that any
+	 *   URL matching this matcher (i.e. any string for which {@link ui.router.util.type:UrlMatcher#methods_exec exec()} returns
+	 *   non-null) will start with this prefix.
+	 *
+	 * @property {string} source  The pattern that was passed into the constructor
+	 *
+	 * @property {string} sourcePath  The path portion of the source property
+	 *
+	 * @property {string} sourceSearch  The search portion of the source property
+	 *
+	 * @property {string} regex  The constructed regex that will be used to match against the url when
+	 *   it is time to determine which url will match.
+	 *
+	 * @returns {Object}  New `UrlMatcher` object
+	 */
+	function UrlMatcher(pattern, config, parentMatcher) {
+	  config = extend({ params: {} }, isObject(config) ? config : {});
+
+	  // Find all placeholders and create a compiled pattern, using either classic or curly syntax:
+	  //   '*' name
+	  //   ':' name
+	  //   '{' name '}'
+	  //   '{' name ':' regexp '}'
+	  // The regular expression is somewhat complicated due to the need to allow curly braces
+	  // inside the regular expression. The placeholder regexp breaks down as follows:
+	  //    ([:*])([\w\[\]]+)              - classic placeholder ($1 / $2) (search version has - for snake-case)
+	  //    \{([\w\[\]]+)(?:\:\s*( ... ))?\}  - curly brace placeholder ($3) with optional regexp/type ... ($4) (search version has - for snake-case
+	  //    (?: ... | ... | ... )+         - the regexp consists of any number of atoms, an atom being either
+	  //    [^{}\\]+                       - anything other than curly braces or backslash
+	  //    \\.                            - a backslash escape
+	  //    \{(?:[^{}\\]+|\\.)*\}          - a matched set of curly braces containing other atoms
+	  var placeholder       = /([:*])([\w\[\]]+)|\{([\w\[\]]+)(?:\:\s*((?:[^{}\\]+|\\.|\{(?:[^{}\\]+|\\.)*\})+))?\}/g,
+	      searchPlaceholder = /([:]?)([\w\[\].-]+)|\{([\w\[\].-]+)(?:\:\s*((?:[^{}\\]+|\\.|\{(?:[^{}\\]+|\\.)*\})+))?\}/g,
+	      compiled = '^', last = 0, m,
+	      segments = this.segments = [],
+	      parentParams = parentMatcher ? parentMatcher.params : {},
+	      params = this.params = parentMatcher ? parentMatcher.params.$$new() : new $$UMFP.ParamSet(),
+	      paramNames = [];
+
+	  function addParameter(id, type, config, location) {
+	    paramNames.push(id);
+	    if (parentParams[id]) return parentParams[id];
+	    if (!/^\w+([-.]+\w+)*(?:\[\])?$/.test(id)) throw new Error("Invalid parameter name '" + id + "' in pattern '" + pattern + "'");
+	    if (params[id]) throw new Error("Duplicate parameter name '" + id + "' in pattern '" + pattern + "'");
+	    params[id] = new $$UMFP.Param(id, type, config, location);
+	    return params[id];
+	  }
+
+	  function quoteRegExp(string, pattern, squash, optional) {
+	    var surroundPattern = ['',''], result = string.replace(/[\\\[\]\^$*+?.()|{}]/g, "\\$&");
+	    if (!pattern) return result;
+	    switch(squash) {
+	      case false: surroundPattern = ['(', ')' + (optional ? "?" : "")]; break;
+	      case true:
+	        result = result.replace(/\/$/, '');
+	        surroundPattern = ['(?:\/(', ')|\/)?'];
+	      break;
+	      default:    surroundPattern = ['(' + squash + "|", ')?']; break;
+	    }
+	    return result + surroundPattern[0] + pattern + surroundPattern[1];
+	  }
+
+	  this.source = pattern;
+
+	  // Split into static segments separated by path parameter placeholders.
+	  // The number of segments is always 1 more than the number of parameters.
+	  function matchDetails(m, isSearch) {
+	    var id, regexp, segment, type, cfg, arrayMode;
+	    id          = m[2] || m[3]; // IE[78] returns '' for unmatched groups instead of null
+	    cfg         = config.params[id];
+	    segment     = pattern.substring(last, m.index);
+	    regexp      = isSearch ? m[4] : m[4] || (m[1] == '*' ? '.*' : null);
+
+	    if (regexp) {
+	      type      = $$UMFP.type(regexp) || inherit($$UMFP.type("string"), { pattern: new RegExp(regexp, config.caseInsensitive ? 'i' : undefined) });
+	    }
+
+	    return {
+	      id: id, regexp: regexp, segment: segment, type: type, cfg: cfg
+	    };
+	  }
+
+	  var p, param, segment;
+	  while ((m = placeholder.exec(pattern))) {
+	    p = matchDetails(m, false);
+	    if (p.segment.indexOf('?') >= 0) break; // we're into the search part
+
+	    param = addParameter(p.id, p.type, p.cfg, "path");
+	    compiled += quoteRegExp(p.segment, param.type.pattern.source, param.squash, param.isOptional);
+	    segments.push(p.segment);
+	    last = placeholder.lastIndex;
+	  }
+	  segment = pattern.substring(last);
+
+	  // Find any search parameter names and remove them from the last segment
+	  var i = segment.indexOf('?');
+
+	  if (i >= 0) {
+	    var search = this.sourceSearch = segment.substring(i);
+	    segment = segment.substring(0, i);
+	    this.sourcePath = pattern.substring(0, last + i);
+
+	    if (search.length > 0) {
+	      last = 0;
+	      while ((m = searchPlaceholder.exec(search))) {
+	        p = matchDetails(m, true);
+	        param = addParameter(p.id, p.type, p.cfg, "search");
+	        last = placeholder.lastIndex;
+	        // check if ?&
+	      }
+	    }
+	  } else {
+	    this.sourcePath = pattern;
+	    this.sourceSearch = '';
+	  }
+
+	  compiled += quoteRegExp(segment) + (config.strict === false ? '\/?' : '') + '$';
+	  segments.push(segment);
+
+	  this.regexp = new RegExp(compiled, config.caseInsensitive ? 'i' : undefined);
+	  this.prefix = segments[0];
+	  this.$$paramNames = paramNames;
+	}
+
+	/**
+	 * @ngdoc function
+	 * @name ui.router.util.type:UrlMatcher#concat
+	 * @methodOf ui.router.util.type:UrlMatcher
+	 *
+	 * @description
+	 * Returns a new matcher for a pattern constructed by appending the path part and adding the
+	 * search parameters of the specified pattern to this pattern. The current pattern is not
+	 * modified. This can be understood as creating a pattern for URLs that are relative to (or
+	 * suffixes of) the current pattern.
+	 *
+	 * @example
+	 * The following two matchers are equivalent:
+	 * <pre>
+	 * new UrlMatcher('/user/{id}?q').concat('/details?date');
+	 * new UrlMatcher('/user/{id}/details?q&date');
+	 * </pre>
+	 *
+	 * @param {string} pattern  The pattern to append.
+	 * @param {Object} config  An object hash of the configuration for the matcher.
+	 * @returns {UrlMatcher}  A matcher for the concatenated pattern.
+	 */
+	UrlMatcher.prototype.concat = function (pattern, config) {
+	  // Because order of search parameters is irrelevant, we can add our own search
+	  // parameters to the end of the new pattern. Parse the new pattern by itself
+	  // and then join the bits together, but it's much easier to do this on a string level.
+	  var defaultConfig = {
+	    caseInsensitive: $$UMFP.caseInsensitive(),
+	    strict: $$UMFP.strictMode(),
+	    squash: $$UMFP.defaultSquashPolicy()
+	  };
+	  return new UrlMatcher(this.sourcePath + pattern + this.sourceSearch, extend(defaultConfig, config), this);
+	};
+
+	UrlMatcher.prototype.toString = function () {
+	  return this.source;
+	};
+
+	/**
+	 * @ngdoc function
+	 * @name ui.router.util.type:UrlMatcher#exec
+	 * @methodOf ui.router.util.type:UrlMatcher
+	 *
+	 * @description
+	 * Tests the specified path against this matcher, and returns an object containing the captured
+	 * parameter values, or null if the path does not match. The returned object contains the values
+	 * of any search parameters that are mentioned in the pattern, but their value may be null if
+	 * they are not present in `searchParams`. This means that search parameters are always treated
+	 * as optional.
+	 *
+	 * @example
+	 * <pre>
+	 * new UrlMatcher('/user/{id}?q&r').exec('/user/bob', {
+	 *   x: '1', q: 'hello'
+	 * });
+	 * // returns { id: 'bob', q: 'hello', r: null }
+	 * </pre>
+	 *
+	 * @param {string} path  The URL path to match, e.g. `$location.path()`.
+	 * @param {Object} searchParams  URL search parameters, e.g. `$location.search()`.
+	 * @returns {Object}  The captured parameter values.
+	 */
+	UrlMatcher.prototype.exec = function (path, searchParams) {
+	  var m = this.regexp.exec(path);
+	  if (!m) return null;
+	  searchParams = searchParams || {};
+
+	  var paramNames = this.parameters(), nTotal = paramNames.length,
+	    nPath = this.segments.length - 1,
+	    values = {}, i, j, cfg, paramName;
+
+	  if (nPath !== m.length - 1) throw new Error("Unbalanced capture group in route '" + this.source + "'");
+
+	  function decodePathArray(string) {
+	    function reverseString(str) { return str.split("").reverse().join(""); }
+	    function unquoteDashes(str) { return str.replace(/\\-/g, "-"); }
+
+	    var split = reverseString(string).split(/-(?!\\)/);
+	    var allReversed = map(split, reverseString);
+	    return map(allReversed, unquoteDashes).reverse();
+	  }
+
+	  var param, paramVal;
+	  for (i = 0; i < nPath; i++) {
+	    paramName = paramNames[i];
+	    param = this.params[paramName];
+	    paramVal = m[i+1];
+	    // if the param value matches a pre-replace pair, replace the value before decoding.
+	    for (j = 0; j < param.replace.length; j++) {
+	      if (param.replace[j].from === paramVal) paramVal = param.replace[j].to;
+	    }
+	    if (paramVal && param.array === true) paramVal = decodePathArray(paramVal);
+	    if (isDefined(paramVal)) paramVal = param.type.decode(paramVal);
+	    values[paramName] = param.value(paramVal);
+	  }
+	  for (/**/; i < nTotal; i++) {
+	    paramName = paramNames[i];
+	    values[paramName] = this.params[paramName].value(searchParams[paramName]);
+	    param = this.params[paramName];
+	    paramVal = searchParams[paramName];
+	    for (j = 0; j < param.replace.length; j++) {
+	      if (param.replace[j].from === paramVal) paramVal = param.replace[j].to;
+	    }
+	    if (isDefined(paramVal)) paramVal = param.type.decode(paramVal);
+	    values[paramName] = param.value(paramVal);
+	  }
+
+	  return values;
+	};
+
+	/**
+	 * @ngdoc function
+	 * @name ui.router.util.type:UrlMatcher#parameters
+	 * @methodOf ui.router.util.type:UrlMatcher
+	 *
+	 * @description
+	 * Returns the names of all path and search parameters of this pattern in an unspecified order.
+	 *
+	 * @returns {Array.<string>}  An array of parameter names. Must be treated as read-only. If the
+	 *    pattern has no parameters, an empty array is returned.
+	 */
+	UrlMatcher.prototype.parameters = function (param) {
+	  if (!isDefined(param)) return this.$$paramNames;
+	  return this.params[param] || null;
+	};
+
+	/**
+	 * @ngdoc function
+	 * @name ui.router.util.type:UrlMatcher#validates
+	 * @methodOf ui.router.util.type:UrlMatcher
+	 *
+	 * @description
+	 * Checks an object hash of parameters to validate their correctness according to the parameter
+	 * types of this `UrlMatcher`.
+	 *
+	 * @param {Object} params The object hash of parameters to validate.
+	 * @returns {boolean} Returns `true` if `params` validates, otherwise `false`.
+	 */
+	UrlMatcher.prototype.validates = function (params) {
+	  return this.params.$$validates(params);
+	};
+
+	/**
+	 * @ngdoc function
+	 * @name ui.router.util.type:UrlMatcher#format
+	 * @methodOf ui.router.util.type:UrlMatcher
+	 *
+	 * @description
+	 * Creates a URL that matches this pattern by substituting the specified values
+	 * for the path and search parameters. Null values for path parameters are
+	 * treated as empty strings.
+	 *
+	 * @example
+	 * <pre>
+	 * new UrlMatcher('/user/{id}?q').format({ id:'bob', q:'yes' });
+	 * // returns '/user/bob?q=yes'
+	 * </pre>
+	 *
+	 * @param {Object} values  the values to substitute for the parameters in this pattern.
+	 * @returns {string}  the formatted URL (path and optionally search part).
+	 */
+	UrlMatcher.prototype.format = function (values) {
+	  values = values || {};
+	  var segments = this.segments, params = this.parameters(), paramset = this.params;
+	  if (!this.validates(values)) return null;
+
+	  var i, search = false, nPath = segments.length - 1, nTotal = params.length, result = segments[0];
+
+	  function encodeDashes(str) { // Replace dashes with encoded "\-"
+	    return encodeURIComponent(str).replace(/-/g, function(c) { return '%5C%' + c.charCodeAt(0).toString(16).toUpperCase(); });
+	  }
+
+	  for (i = 0; i < nTotal; i++) {
+	    var isPathParam = i < nPath;
+	    var name = params[i], param = paramset[name], value = param.value(values[name]);
+	    var isDefaultValue = param.isOptional && param.type.equals(param.value(), value);
+	    var squash = isDefaultValue ? param.squash : false;
+	    var encoded = param.type.encode(value);
+
+	    if (isPathParam) {
+	      var nextSegment = segments[i + 1];
+	      var isFinalPathParam = i + 1 === nPath;
+
+	      if (squash === false) {
+	        if (encoded != null) {
+	          if (isArray(encoded)) {
+	            result += map(encoded, encodeDashes).join("-");
+	          } else {
+	            result += encodeURIComponent(encoded);
+	          }
+	        }
+	        result += nextSegment;
+	      } else if (squash === true) {
+	        var capture = result.match(/\/$/) ? /\/?(.*)/ : /(.*)/;
+	        result += nextSegment.match(capture)[1];
+	      } else if (isString(squash)) {
+	        result += squash + nextSegment;
+	      }
+
+	      if (isFinalPathParam && param.squash === true && result.slice(-1) === '/') result = result.slice(0, -1);
+	    } else {
+	      if (encoded == null || (isDefaultValue && squash !== false)) continue;
+	      if (!isArray(encoded)) encoded = [ encoded ];
+	      if (encoded.length === 0) continue;
+	      encoded = map(encoded, encodeURIComponent).join('&' + name + '=');
+	      result += (search ? '&' : '?') + (name + '=' + encoded);
+	      search = true;
+	    }
+	  }
+
+	  return result;
+	};
+
+	/**
+	 * @ngdoc object
+	 * @name ui.router.util.type:Type
+	 *
+	 * @description
+	 * Implements an interface to define custom parameter types that can be decoded from and encoded to
+	 * string parameters matched in a URL. Used by {@link ui.router.util.type:UrlMatcher `UrlMatcher`}
+	 * objects when matching or formatting URLs, or comparing or validating parameter values.
+	 *
+	 * See {@link ui.router.util.$urlMatcherFactory#methods_type `$urlMatcherFactory#type()`} for more
+	 * information on registering custom types.
+	 *
+	 * @param {Object} config  A configuration object which contains the custom type definition.  The object's
+	 *        properties will override the default methods and/or pattern in `Type`'s public interface.
+	 * @example
+	 * <pre>
+	 * {
+	 *   decode: function(val) { return parseInt(val, 10); },
+	 *   encode: function(val) { return val && val.toString(); },
+	 *   equals: function(a, b) { return this.is(a) && a === b; },
+	 *   is: function(val) { return angular.isNumber(val) isFinite(val) && val % 1 === 0; },
+	 *   pattern: /\d+/
+	 * }
+	 * </pre>
+	 *
+	 * @property {RegExp} pattern The regular expression pattern used to match values of this type when
+	 *           coming from a substring of a URL.
+	 *
+	 * @returns {Object}  Returns a new `Type` object.
+	 */
+	function Type(config) {
+	  extend(this, config);
+	}
+
+	/**
+	 * @ngdoc function
+	 * @name ui.router.util.type:Type#is
+	 * @methodOf ui.router.util.type:Type
+	 *
+	 * @description
+	 * Detects whether a value is of a particular type. Accepts a native (decoded) value
+	 * and determines whether it matches the current `Type` object.
+	 *
+	 * @param {*} val  The value to check.
+	 * @param {string} key  Optional. If the type check is happening in the context of a specific
+	 *        {@link ui.router.util.type:UrlMatcher `UrlMatcher`} object, this is the name of the
+	 *        parameter in which `val` is stored. Can be used for meta-programming of `Type` objects.
+	 * @returns {Boolean}  Returns `true` if the value matches the type, otherwise `false`.
+	 */
+	Type.prototype.is = function(val, key) {
+	  return true;
+	};
+
+	/**
+	 * @ngdoc function
+	 * @name ui.router.util.type:Type#encode
+	 * @methodOf ui.router.util.type:Type
+	 *
+	 * @description
+	 * Encodes a custom/native type value to a string that can be embedded in a URL. Note that the
+	 * return value does *not* need to be URL-safe (i.e. passed through `encodeURIComponent()`), it
+	 * only needs to be a representation of `val` that has been coerced to a string.
+	 *
+	 * @param {*} val  The value to encode.
+	 * @param {string} key  The name of the parameter in which `val` is stored. Can be used for
+	 *        meta-programming of `Type` objects.
+	 * @returns {string}  Returns a string representation of `val` that can be encoded in a URL.
+	 */
+	Type.prototype.encode = function(val, key) {
+	  return val;
+	};
+
+	/**
+	 * @ngdoc function
+	 * @name ui.router.util.type:Type#decode
+	 * @methodOf ui.router.util.type:Type
+	 *
+	 * @description
+	 * Converts a parameter value (from URL string or transition param) to a custom/native value.
+	 *
+	 * @param {string} val  The URL parameter value to decode.
+	 * @param {string} key  The name of the parameter in which `val` is stored. Can be used for
+	 *        meta-programming of `Type` objects.
+	 * @returns {*}  Returns a custom representation of the URL parameter value.
+	 */
+	Type.prototype.decode = function(val, key) {
+	  return val;
+	};
+
+	/**
+	 * @ngdoc function
+	 * @name ui.router.util.type:Type#equals
+	 * @methodOf ui.router.util.type:Type
+	 *
+	 * @description
+	 * Determines whether two decoded values are equivalent.
+	 *
+	 * @param {*} a  A value to compare against.
+	 * @param {*} b  A value to compare against.
+	 * @returns {Boolean}  Returns `true` if the values are equivalent/equal, otherwise `false`.
+	 */
+	Type.prototype.equals = function(a, b) {
+	  return a == b;
+	};
+
+	Type.prototype.$subPattern = function() {
+	  var sub = this.pattern.toString();
+	  return sub.substr(1, sub.length - 2);
+	};
+
+	Type.prototype.pattern = /.*/;
+
+	Type.prototype.toString = function() { return "{Type:" + this.name + "}"; };
+
+	/** Given an encoded string, or a decoded object, returns a decoded object */
+	Type.prototype.$normalize = function(val) {
+	  return this.is(val) ? val : this.decode(val);
+	};
+
+	/*
+	 * Wraps an existing custom Type as an array of Type, depending on 'mode'.
+	 * e.g.:
+	 * - urlmatcher pattern "/path?{queryParam[]:int}"
+	 * - url: "/path?queryParam=1&queryParam=2
+	 * - $stateParams.queryParam will be [1, 2]
+	 * if `mode` is "auto", then
+	 * - url: "/path?queryParam=1 will create $stateParams.queryParam: 1
+	 * - url: "/path?queryParam=1&queryParam=2 will create $stateParams.queryParam: [1, 2]
+	 */
+	Type.prototype.$asArray = function(mode, isSearch) {
+	  if (!mode) return this;
+	  if (mode === "auto" && !isSearch) throw new Error("'auto' array mode is for query parameters only");
+
+	  function ArrayType(type, mode) {
+	    function bindTo(type, callbackName) {
+	      return function() {
+	        return type[callbackName].apply(type, arguments);
+	      };
+	    }
+
+	    // Wrap non-array value as array
+	    function arrayWrap(val) { return isArray(val) ? val : (isDefined(val) ? [ val ] : []); }
+	    // Unwrap array value for "auto" mode. Return undefined for empty array.
+	    function arrayUnwrap(val) {
+	      switch(val.length) {
+	        case 0: return undefined;
+	        case 1: return mode === "auto" ? val[0] : val;
+	        default: return val;
+	      }
+	    }
+	    function falsey(val) { return !val; }
+
+	    // Wraps type (.is/.encode/.decode) functions to operate on each value of an array
+	    function arrayHandler(callback, allTruthyMode) {
+	      return function handleArray(val) {
+	        if (isArray(val) && val.length === 0) return val;
+	        val = arrayWrap(val);
+	        var result = map(val, callback);
+	        if (allTruthyMode === true)
+	          return filter(result, falsey).length === 0;
+	        return arrayUnwrap(result);
+	      };
+	    }
+
+	    // Wraps type (.equals) functions to operate on each value of an array
+	    function arrayEqualsHandler(callback) {
+	      return function handleArray(val1, val2) {
+	        var left = arrayWrap(val1), right = arrayWrap(val2);
+	        if (left.length !== right.length) return false;
+	        for (var i = 0; i < left.length; i++) {
+	          if (!callback(left[i], right[i])) return false;
+	        }
+	        return true;
+	      };
+	    }
+
+	    this.encode = arrayHandler(bindTo(type, 'encode'));
+	    this.decode = arrayHandler(bindTo(type, 'decode'));
+	    this.is     = arrayHandler(bindTo(type, 'is'), true);
+	    this.equals = arrayEqualsHandler(bindTo(type, 'equals'));
+	    this.pattern = type.pattern;
+	    this.$normalize = arrayHandler(bindTo(type, '$normalize'));
+	    this.name = type.name;
+	    this.$arrayMode = mode;
+	  }
+
+	  return new ArrayType(this, mode);
+	};
+
+
+
+	/**
+	 * @ngdoc object
+	 * @name ui.router.util.$urlMatcherFactory
+	 *
+	 * @description
+	 * Factory for {@link ui.router.util.type:UrlMatcher `UrlMatcher`} instances. The factory
+	 * is also available to providers under the name `$urlMatcherFactoryProvider`.
+	 */
+	function $UrlMatcherFactory() {
+	  $$UMFP = this;
+
+	  var isCaseInsensitive = false, isStrictMode = true, defaultSquashPolicy = false;
+
+	  // Use tildes to pre-encode slashes.
+	  // If the slashes are simply URLEncoded, the browser can choose to pre-decode them,
+	  // and bidirectional encoding/decoding fails.
+	  // Tilde was chosen because it's not a RFC 3986 section 2.2 Reserved Character
+	  function valToString(val) { return val != null ? val.toString().replace(/(~|\/)/g, function (m) { return {'~':'~~', '/':'~2F'}[m]; }) : val; }
+	  function valFromString(val) { return val != null ? val.toString().replace(/(~~|~2F)/g, function (m) { return {'~~':'~', '~2F':'/'}[m]; }) : val; }
+
+	  var $types = {}, enqueue = true, typeQueue = [], injector, defaultTypes = {
+	    "string": {
+	      encode: valToString,
+	      decode: valFromString,
+	      // TODO: in 1.0, make string .is() return false if value is undefined/null by default.
+	      // In 0.2.x, string params are optional by default for backwards compat
+	      is: function(val) { return val == null || !isDefined(val) || typeof val === "string"; },
+	      pattern: /[^/]*/
+	    },
+	    "int": {
+	      encode: valToString,
+	      decode: function(val) { return parseInt(val, 10); },
+	      is: function(val) { return val !== undefined && val !== null && this.decode(val.toString()) === val; },
+	      pattern: /\d+/
+	    },
+	    "bool": {
+	      encode: function(val) { return val ? 1 : 0; },
+	      decode: function(val) { return parseInt(val, 10) !== 0; },
+	      is: function(val) { return val === true || val === false; },
+	      pattern: /0|1/
+	    },
+	    "date": {
+	      encode: function (val) {
+	        if (!this.is(val))
+	          return undefined;
+	        return [ val.getFullYear(),
+	          ('0' + (val.getMonth() + 1)).slice(-2),
+	          ('0' + val.getDate()).slice(-2)
+	        ].join("-");
+	      },
+	      decode: function (val) {
+	        if (this.is(val)) return val;
+	        var match = this.capture.exec(val);
+	        return match ? new Date(match[1], match[2] - 1, match[3]) : undefined;
+	      },
+	      is: function(val) { return val instanceof Date && !isNaN(val.valueOf()); },
+	      equals: function (a, b) { return this.is(a) && this.is(b) && a.toISOString() === b.toISOString(); },
+	      pattern: /[0-9]{4}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[1-2][0-9]|3[0-1])/,
+	      capture: /([0-9]{4})-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])/
+	    },
+	    "json": {
+	      encode: angular.toJson,
+	      decode: angular.fromJson,
+	      is: angular.isObject,
+	      equals: angular.equals,
+	      pattern: /[^/]*/
+	    },
+	    "any": { // does not encode/decode
+	      encode: angular.identity,
+	      decode: angular.identity,
+	      equals: angular.equals,
+	      pattern: /.*/
+	    }
+	  };
+
+	  function getDefaultConfig() {
+	    return {
+	      strict: isStrictMode,
+	      caseInsensitive: isCaseInsensitive
+	    };
+	  }
+
+	  function isInjectable(value) {
+	    return (isFunction(value) || (isArray(value) && isFunction(value[value.length - 1])));
+	  }
+
+	  /**
+	   * [Internal] Get the default value of a parameter, which may be an injectable function.
+	   */
+	  $UrlMatcherFactory.$$getDefaultValue = function(config) {
+	    if (!isInjectable(config.value)) return config.value;
+	    if (!injector) throw new Error("Injectable functions cannot be called at configuration time");
+	    return injector.invoke(config.value);
+	  };
+
+	  /**
+	   * @ngdoc function
+	   * @name ui.router.util.$urlMatcherFactory#caseInsensitive
+	   * @methodOf ui.router.util.$urlMatcherFactory
+	   *
+	   * @description
+	   * Defines whether URL matching should be case sensitive (the default behavior), or not.
+	   *
+	   * @param {boolean} value `false` to match URL in a case sensitive manner; otherwise `true`;
+	   * @returns {boolean} the current value of caseInsensitive
+	   */
+	  this.caseInsensitive = function(value) {
+	    if (isDefined(value))
+	      isCaseInsensitive = value;
+	    return isCaseInsensitive;
+	  };
+
+	  /**
+	   * @ngdoc function
+	   * @name ui.router.util.$urlMatcherFactory#strictMode
+	   * @methodOf ui.router.util.$urlMatcherFactory
+	   *
+	   * @description
+	   * Defines whether URLs should match trailing slashes, or not (the default behavior).
+	   *
+	   * @param {boolean=} value `false` to match trailing slashes in URLs, otherwise `true`.
+	   * @returns {boolean} the current value of strictMode
+	   */
+	  this.strictMode = function(value) {
+	    if (isDefined(value))
+	      isStrictMode = value;
+	    return isStrictMode;
+	  };
+
+	  /**
+	   * @ngdoc function
+	   * @name ui.router.util.$urlMatcherFactory#defaultSquashPolicy
+	   * @methodOf ui.router.util.$urlMatcherFactory
+	   *
+	   * @description
+	   * Sets the default behavior when generating or matching URLs with default parameter values.
+	   *
+	   * @param {string} value A string that defines the default parameter URL squashing behavior.
+	   *    `nosquash`: When generating an href with a default parameter value, do not squash the parameter value from the URL
+	   *    `slash`: When generating an href with a default parameter value, squash (remove) the parameter value, and, if the
+	   *             parameter is surrounded by slashes, squash (remove) one slash from the URL
+	   *    any other string, e.g. "~": When generating an href with a default parameter value, squash (remove)
+	   *             the parameter value from the URL and replace it with this string.
+	   */
+	  this.defaultSquashPolicy = function(value) {
+	    if (!isDefined(value)) return defaultSquashPolicy;
+	    if (value !== true && value !== false && !isString(value))
+	      throw new Error("Invalid squash policy: " + value + ". Valid policies: false, true, arbitrary-string");
+	    defaultSquashPolicy = value;
+	    return value;
+	  };
+
+	  /**
+	   * @ngdoc function
+	   * @name ui.router.util.$urlMatcherFactory#compile
+	   * @methodOf ui.router.util.$urlMatcherFactory
+	   *
+	   * @description
+	   * Creates a {@link ui.router.util.type:UrlMatcher `UrlMatcher`} for the specified pattern.
+	   *
+	   * @param {string} pattern  The URL pattern.
+	   * @param {Object} config  The config object hash.
+	   * @returns {UrlMatcher}  The UrlMatcher.
+	   */
+	  this.compile = function (pattern, config) {
+	    return new UrlMatcher(pattern, extend(getDefaultConfig(), config));
+	  };
+
+	  /**
+	   * @ngdoc function
+	   * @name ui.router.util.$urlMatcherFactory#isMatcher
+	   * @methodOf ui.router.util.$urlMatcherFactory
+	   *
+	   * @description
+	   * Returns true if the specified object is a `UrlMatcher`, or false otherwise.
+	   *
+	   * @param {Object} object  The object to perform the type check against.
+	   * @returns {Boolean}  Returns `true` if the object matches the `UrlMatcher` interface, by
+	   *          implementing all the same methods.
+	   */
+	  this.isMatcher = function (o) {
+	    if (!isObject(o)) return false;
+	    var result = true;
+
+	    forEach(UrlMatcher.prototype, function(val, name) {
+	      if (isFunction(val)) {
+	        result = result && (isDefined(o[name]) && isFunction(o[name]));
+	      }
+	    });
+	    return result;
+	  };
+
+	  /**
+	   * @ngdoc function
+	   * @name ui.router.util.$urlMatcherFactory#type
+	   * @methodOf ui.router.util.$urlMatcherFactory
+	   *
+	   * @description
+	   * Registers a custom {@link ui.router.util.type:Type `Type`} object that can be used to
+	   * generate URLs with typed parameters.
+	   *
+	   * @param {string} name  The type name.
+	   * @param {Object|Function} definition   The type definition. See
+	   *        {@link ui.router.util.type:Type `Type`} for information on the values accepted.
+	   * @param {Object|Function} definitionFn (optional) A function that is injected before the app
+	   *        runtime starts.  The result of this function is merged into the existing `definition`.
+	   *        See {@link ui.router.util.type:Type `Type`} for information on the values accepted.
+	   *
+	   * @returns {Object}  Returns `$urlMatcherFactoryProvider`.
+	   *
+	   * @example
+	   * This is a simple example of a custom type that encodes and decodes items from an
+	   * array, using the array index as the URL-encoded value:
+	   *
+	   * <pre>
+	   * var list = ['John', 'Paul', 'George', 'Ringo'];
+	   *
+	   * $urlMatcherFactoryProvider.type('listItem', {
+	   *   encode: function(item) {
+	   *     // Represent the list item in the URL using its corresponding index
+	   *     return list.indexOf(item);
+	   *   },
+	   *   decode: function(item) {
+	   *     // Look up the list item by index
+	   *     return list[parseInt(item, 10)];
+	   *   },
+	   *   is: function(item) {
+	   *     // Ensure the item is valid by checking to see that it appears
+	   *     // in the list
+	   *     return list.indexOf(item) > -1;
+	   *   }
+	   * });
+	   *
+	   * $stateProvider.state('list', {
+	   *   url: "/list/{item:listItem}",
+	   *   controller: function($scope, $stateParams) {
+	   *     console.log($stateParams.item);
+	   *   }
+	   * });
+	   *
+	   * // ...
+	   *
+	   * // Changes URL to '/list/3', logs "Ringo" to the console
+	   * $state.go('list', { item: "Ringo" });
+	   * </pre>
+	   *
+	   * This is a more complex example of a type that relies on dependency injection to
+	   * interact with services, and uses the parameter name from the URL to infer how to
+	   * handle encoding and decoding parameter values:
+	   *
+	   * <pre>
+	   * // Defines a custom type that gets a value from a service,
+	   * // where each service gets different types of values from
+	   * // a backend API:
+	   * $urlMatcherFactoryProvider.type('dbObject', {}, function(Users, Posts) {
+	   *
+	   *   // Matches up services to URL parameter names
+	   *   var services = {
+	   *     user: Users,
+	   *     post: Posts
+	   *   };
+	   *
+	   *   return {
+	   *     encode: function(object) {
+	   *       // Represent the object in the URL using its unique ID
+	   *       return object.id;
+	   *     },
+	   *     decode: function(value, key) {
+	   *       // Look up the object by ID, using the parameter
+	   *       // name (key) to call the correct service
+	   *       return services[key].findById(value);
+	   *     },
+	   *     is: function(object, key) {
+	   *       // Check that object is a valid dbObject
+	   *       return angular.isObject(object) && object.id && services[key];
+	   *     }
+	   *     equals: function(a, b) {
+	   *       // Check the equality of decoded objects by comparing
+	   *       // their unique IDs
+	   *       return a.id === b.id;
+	   *     }
+	   *   };
+	   * });
+	   *
+	   * // In a config() block, you can then attach URLs with
+	   * // type-annotated parameters:
+	   * $stateProvider.state('users', {
+	   *   url: "/users",
+	   *   // ...
+	   * }).state('users.item', {
+	   *   url: "/{user:dbObject}",
+	   *   controller: function($scope, $stateParams) {
+	   *     // $stateParams.user will now be an object returned from
+	   *     // the Users service
+	   *   },
+	   *   // ...
+	   * });
+	   * </pre>
+	   */
+	  this.type = function (name, definition, definitionFn) {
+	    if (!isDefined(definition)) return $types[name];
+	    if ($types.hasOwnProperty(name)) throw new Error("A type named '" + name + "' has already been defined.");
+
+	    $types[name] = new Type(extend({ name: name }, definition));
+	    if (definitionFn) {
+	      typeQueue.push({ name: name, def: definitionFn });
+	      if (!enqueue) flushTypeQueue();
+	    }
+	    return this;
+	  };
+
+	  // `flushTypeQueue()` waits until `$urlMatcherFactory` is injected before invoking the queued `definitionFn`s
+	  function flushTypeQueue() {
+	    while(typeQueue.length) {
+	      var type = typeQueue.shift();
+	      if (type.pattern) throw new Error("You cannot override a type's .pattern at runtime.");
+	      angular.extend($types[type.name], injector.invoke(type.def));
+	    }
+	  }
+
+	  // Register default types. Store them in the prototype of $types.
+	  forEach(defaultTypes, function(type, name) { $types[name] = new Type(extend({name: name}, type)); });
+	  $types = inherit($types, {});
+
+	  /* No need to document $get, since it returns this */
+	  this.$get = ['$injector', function ($injector) {
+	    injector = $injector;
+	    enqueue = false;
+	    flushTypeQueue();
+
+	    forEach(defaultTypes, function(type, name) {
+	      if (!$types[name]) $types[name] = new Type(type);
+	    });
+	    return this;
+	  }];
+
+	  this.Param = function Param(id, type, config, location) {
+	    var self = this;
+	    config = unwrapShorthand(config);
+	    type = getType(config, type, location);
+	    var arrayMode = getArrayMode();
+	    type = arrayMode ? type.$asArray(arrayMode, location === "search") : type;
+	    if (type.name === "string" && !arrayMode && location === "path" && config.value === undefined)
+	      config.value = ""; // for 0.2.x; in 0.3.0+ do not automatically default to ""
+	    var isOptional = config.value !== undefined;
+	    var squash = getSquashPolicy(config, isOptional);
+	    var replace = getReplace(config, arrayMode, isOptional, squash);
+
+	    function unwrapShorthand(config) {
+	      var keys = isObject(config) ? objectKeys(config) : [];
+	      var isShorthand = indexOf(keys, "value") === -1 && indexOf(keys, "type") === -1 &&
+	                        indexOf(keys, "squash") === -1 && indexOf(keys, "array") === -1;
+	      if (isShorthand) config = { value: config };
+	      config.$$fn = isInjectable(config.value) ? config.value : function () { return config.value; };
+	      return config;
+	    }
+
+	    function getType(config, urlType, location) {
+	      if (config.type && urlType) throw new Error("Param '"+id+"' has two type configurations.");
+	      if (urlType) return urlType;
+	      if (!config.type) return (location === "config" ? $types.any : $types.string);
+
+	      if (angular.isString(config.type))
+	        return $types[config.type];
+	      if (config.type instanceof Type)
+	        return config.type;
+	      return new Type(config.type);
+	    }
+
+	    // array config: param name (param[]) overrides default settings.  explicit config overrides param name.
+	    function getArrayMode() {
+	      var arrayDefaults = { array: (location === "search" ? "auto" : false) };
+	      var arrayParamNomenclature = id.match(/\[\]$/) ? { array: true } : {};
+	      return extend(arrayDefaults, arrayParamNomenclature, config).array;
+	    }
+
+	    /**
+	     * returns false, true, or the squash value to indicate the "default parameter url squash policy".
+	     */
+	    function getSquashPolicy(config, isOptional) {
+	      var squash = config.squash;
+	      if (!isOptional || squash === false) return false;
+	      if (!isDefined(squash) || squash == null) return defaultSquashPolicy;
+	      if (squash === true || isString(squash)) return squash;
+	      throw new Error("Invalid squash policy: '" + squash + "'. Valid policies: false, true, or arbitrary string");
+	    }
+
+	    function getReplace(config, arrayMode, isOptional, squash) {
+	      var replace, configuredKeys, defaultPolicy = [
+	        { from: "",   to: (isOptional || arrayMode ? undefined : "") },
+	        { from: null, to: (isOptional || arrayMode ? undefined : "") }
+	      ];
+	      replace = isArray(config.replace) ? config.replace : [];
+	      if (isString(squash))
+	        replace.push({ from: squash, to: undefined });
+	      configuredKeys = map(replace, function(item) { return item.from; } );
+	      return filter(defaultPolicy, function(item) { return indexOf(configuredKeys, item.from) === -1; }).concat(replace);
+	    }
+
+	    /**
+	     * [Internal] Get the default value of a parameter, which may be an injectable function.
+	     */
+	    function $$getDefaultValue() {
+	      if (!injector) throw new Error("Injectable functions cannot be called at configuration time");
+	      var defaultValue = injector.invoke(config.$$fn);
+	      if (defaultValue !== null && defaultValue !== undefined && !self.type.is(defaultValue))
+	        throw new Error("Default value (" + defaultValue + ") for parameter '" + self.id + "' is not an instance of Type (" + self.type.name + ")");
+	      return defaultValue;
+	    }
+
+	    /**
+	     * [Internal] Gets the decoded representation of a value if the value is defined, otherwise, returns the
+	     * default value, which may be the result of an injectable function.
+	     */
+	    function $value(value) {
+	      function hasReplaceVal(val) { return function(obj) { return obj.from === val; }; }
+	      function $replace(value) {
+	        var replacement = map(filter(self.replace, hasReplaceVal(value)), function(obj) { return obj.to; });
+	        return replacement.length ? replacement[0] : value;
+	      }
+	      value = $replace(value);
+	      return !isDefined(value) ? $$getDefaultValue() : self.type.$normalize(value);
+	    }
+
+	    function toString() { return "{Param:" + id + " " + type + " squash: '" + squash + "' optional: " + isOptional + "}"; }
+
+	    extend(this, {
+	      id: id,
+	      type: type,
+	      location: location,
+	      array: arrayMode,
+	      squash: squash,
+	      replace: replace,
+	      isOptional: isOptional,
+	      value: $value,
+	      dynamic: undefined,
+	      config: config,
+	      toString: toString
+	    });
+	  };
+
+	  function ParamSet(params) {
+	    extend(this, params || {});
+	  }
+
+	  ParamSet.prototype = {
+	    $$new: function() {
+	      return inherit(this, extend(new ParamSet(), { $$parent: this}));
+	    },
+	    $$keys: function () {
+	      var keys = [], chain = [], parent = this,
+	        ignore = objectKeys(ParamSet.prototype);
+	      while (parent) { chain.push(parent); parent = parent.$$parent; }
+	      chain.reverse();
+	      forEach(chain, function(paramset) {
+	        forEach(objectKeys(paramset), function(key) {
+	            if (indexOf(keys, key) === -1 && indexOf(ignore, key) === -1) keys.push(key);
+	        });
+	      });
+	      return keys;
+	    },
+	    $$values: function(paramValues) {
+	      var values = {}, self = this;
+	      forEach(self.$$keys(), function(key) {
+	        values[key] = self[key].value(paramValues && paramValues[key]);
+	      });
+	      return values;
+	    },
+	    $$equals: function(paramValues1, paramValues2) {
+	      var equal = true, self = this;
+	      forEach(self.$$keys(), function(key) {
+	        var left = paramValues1 && paramValues1[key], right = paramValues2 && paramValues2[key];
+	        if (!self[key].type.equals(left, right)) equal = false;
+	      });
+	      return equal;
+	    },
+	    $$validates: function $$validate(paramValues) {
+	      var keys = this.$$keys(), i, param, rawVal, normalized, encoded;
+	      for (i = 0; i < keys.length; i++) {
+	        param = this[keys[i]];
+	        rawVal = paramValues[keys[i]];
+	        if ((rawVal === undefined || rawVal === null) && param.isOptional)
+	          break; // There was no parameter value, but the param is optional
+	        normalized = param.type.$normalize(rawVal);
+	        if (!param.type.is(normalized))
+	          return false; // The value was not of the correct Type, and could not be decoded to the correct Type
+	        encoded = param.type.encode(normalized);
+	        if (angular.isString(encoded) && !param.type.pattern.exec(encoded))
+	          return false; // The value was of the correct type, but when encoded, did not match the Type's regexp
+	      }
+	      return true;
+	    },
+	    $$parent: undefined
+	  };
+
+	  this.ParamSet = ParamSet;
+	}
+
+	// Register as a provider so it's available to other providers
+	angular.module('ui.router.util').provider('$urlMatcherFactory', $UrlMatcherFactory);
+	angular.module('ui.router.util').run(['$urlMatcherFactory', function($urlMatcherFactory) { }]);
+
+	/**
+	 * @ngdoc object
+	 * @name ui.router.router.$urlRouterProvider
+	 *
+	 * @requires ui.router.util.$urlMatcherFactoryProvider
+	 * @requires $locationProvider
+	 *
+	 * @description
+	 * `$urlRouterProvider` has the responsibility of watching `$location`. 
+	 * When `$location` changes it runs through a list of rules one by one until a 
+	 * match is found. `$urlRouterProvider` is used behind the scenes anytime you specify 
+	 * a url in a state configuration. All urls are compiled into a UrlMatcher object.
+	 *
+	 * There are several methods on `$urlRouterProvider` that make it useful to use directly
+	 * in your module config.
+	 */
+	$UrlRouterProvider.$inject = ['$locationProvider', '$urlMatcherFactoryProvider'];
+	function $UrlRouterProvider(   $locationProvider,   $urlMatcherFactory) {
+	  var rules = [], otherwise = null, interceptDeferred = false, listener;
+
+	  // Returns a string that is a prefix of all strings matching the RegExp
+	  function regExpPrefix(re) {
+	    var prefix = /^\^((?:\\[^a-zA-Z0-9]|[^\\\[\]\^$*+?.()|{}]+)*)/.exec(re.source);
+	    return (prefix != null) ? prefix[1].replace(/\\(.)/g, "$1") : '';
+	  }
+
+	  // Interpolates matched values into a String.replace()-style pattern
+	  function interpolate(pattern, match) {
+	    return pattern.replace(/\$(\$|\d{1,2})/, function (m, what) {
+	      return match[what === '$' ? 0 : Number(what)];
+	    });
+	  }
+
+	  /**
+	   * @ngdoc function
+	   * @name ui.router.router.$urlRouterProvider#rule
+	   * @methodOf ui.router.router.$urlRouterProvider
+	   *
+	   * @description
+	   * Defines rules that are used by `$urlRouterProvider` to find matches for
+	   * specific URLs.
+	   *
+	   * @example
+	   * <pre>
+	   * var app = angular.module('app', ['ui.router.router']);
+	   *
+	   * app.config(function ($urlRouterProvider) {
+	   *   // Here's an example of how you might allow case insensitive urls
+	   *   $urlRouterProvider.rule(function ($injector, $location) {
+	   *     var path = $location.path(),
+	   *         normalized = path.toLowerCase();
+	   *
+	   *     if (path !== normalized) {
+	   *       return normalized;
+	   *     }
+	   *   });
+	   * });
+	   * </pre>
+	   *
+	   * @param {function} rule Handler function that takes `$injector` and `$location`
+	   * services as arguments. You can use them to return a valid path as a string.
+	   *
+	   * @return {object} `$urlRouterProvider` - `$urlRouterProvider` instance
+	   */
+	  this.rule = function (rule) {
+	    if (!isFunction(rule)) throw new Error("'rule' must be a function");
+	    rules.push(rule);
+	    return this;
+	  };
+
+	  /**
+	   * @ngdoc object
+	   * @name ui.router.router.$urlRouterProvider#otherwise
+	   * @methodOf ui.router.router.$urlRouterProvider
+	   *
+	   * @description
+	   * Defines a path that is used when an invalid route is requested.
+	   *
+	   * @example
+	   * <pre>
+	   * var app = angular.module('app', ['ui.router.router']);
+	   *
+	   * app.config(function ($urlRouterProvider) {
+	   *   // if the path doesn't match any of the urls you configured
+	   *   // otherwise will take care of routing the user to the
+	   *   // specified url
+	   *   $urlRouterProvider.otherwise('/index');
+	   *
+	   *   // Example of using function rule as param
+	   *   $urlRouterProvider.otherwise(function ($injector, $location) {
+	   *     return '/a/valid/url';
+	   *   });
+	   * });
+	   * </pre>
+	   *
+	   * @param {string|function} rule The url path you want to redirect to or a function 
+	   * rule that returns the url path. The function version is passed two params: 
+	   * `$injector` and `$location` services, and must return a url string.
+	   *
+	   * @return {object} `$urlRouterProvider` - `$urlRouterProvider` instance
+	   */
+	  this.otherwise = function (rule) {
+	    if (isString(rule)) {
+	      var redirect = rule;
+	      rule = function () { return redirect; };
+	    }
+	    else if (!isFunction(rule)) throw new Error("'rule' must be a function");
+	    otherwise = rule;
+	    return this;
+	  };
+
+
+	  function handleIfMatch($injector, handler, match) {
+	    if (!match) return false;
+	    var result = $injector.invoke(handler, handler, { $match: match });
+	    return isDefined(result) ? result : true;
+	  }
+
+	  /**
+	   * @ngdoc function
+	   * @name ui.router.router.$urlRouterProvider#when
+	   * @methodOf ui.router.router.$urlRouterProvider
+	   *
+	   * @description
+	   * Registers a handler for a given url matching. 
+	   * 
+	   * If the handler is a string, it is
+	   * treated as a redirect, and is interpolated according to the syntax of match
+	   * (i.e. like `String.replace()` for `RegExp`, or like a `UrlMatcher` pattern otherwise).
+	   *
+	   * If the handler is a function, it is injectable. It gets invoked if `$location`
+	   * matches. You have the option of inject the match object as `$match`.
+	   *
+	   * The handler can return
+	   *
+	   * - **falsy** to indicate that the rule didn't match after all, then `$urlRouter`
+	   *   will continue trying to find another one that matches.
+	   * - **string** which is treated as a redirect and passed to `$location.url()`
+	   * - **void** or any **truthy** value tells `$urlRouter` that the url was handled.
+	   *
+	   * @example
+	   * <pre>
+	   * var app = angular.module('app', ['ui.router.router']);
+	   *
+	   * app.config(function ($urlRouterProvider) {
+	   *   $urlRouterProvider.when($state.url, function ($match, $stateParams) {
+	   *     if ($state.$current.navigable !== state ||
+	   *         !equalForKeys($match, $stateParams) {
+	   *      $state.transitionTo(state, $match, false);
+	   *     }
+	   *   });
+	   * });
+	   * </pre>
+	   *
+	   * @param {string|object} what The incoming path that you want to redirect.
+	   * @param {string|function} handler The path you want to redirect your user to.
+	   */
+	  this.when = function (what, handler) {
+	    var redirect, handlerIsString = isString(handler);
+	    if (isString(what)) what = $urlMatcherFactory.compile(what);
+
+	    if (!handlerIsString && !isFunction(handler) && !isArray(handler))
+	      throw new Error("invalid 'handler' in when()");
+
+	    var strategies = {
+	      matcher: function (what, handler) {
+	        if (handlerIsString) {
+	          redirect = $urlMatcherFactory.compile(handler);
+	          handler = ['$match', function ($match) { return redirect.format($match); }];
+	        }
+	        return extend(function ($injector, $location) {
+	          return handleIfMatch($injector, handler, what.exec($location.path(), $location.search()));
+	        }, {
+	          prefix: isString(what.prefix) ? what.prefix : ''
+	        });
+	      },
+	      regex: function (what, handler) {
+	        if (what.global || what.sticky) throw new Error("when() RegExp must not be global or sticky");
+
+	        if (handlerIsString) {
+	          redirect = handler;
+	          handler = ['$match', function ($match) { return interpolate(redirect, $match); }];
+	        }
+	        return extend(function ($injector, $location) {
+	          return handleIfMatch($injector, handler, what.exec($location.path()));
+	        }, {
+	          prefix: regExpPrefix(what)
+	        });
+	      }
+	    };
+
+	    var check = { matcher: $urlMatcherFactory.isMatcher(what), regex: what instanceof RegExp };
+
+	    for (var n in check) {
+	      if (check[n]) return this.rule(strategies[n](what, handler));
+	    }
+
+	    throw new Error("invalid 'what' in when()");
+	  };
+
+	  /**
+	   * @ngdoc function
+	   * @name ui.router.router.$urlRouterProvider#deferIntercept
+	   * @methodOf ui.router.router.$urlRouterProvider
+	   *
+	   * @description
+	   * Disables (or enables) deferring location change interception.
+	   *
+	   * If you wish to customize the behavior of syncing the URL (for example, if you wish to
+	   * defer a transition but maintain the current URL), call this method at configuration time.
+	   * Then, at run time, call `$urlRouter.listen()` after you have configured your own
+	   * `$locationChangeSuccess` event handler.
+	   *
+	   * @example
+	   * <pre>
+	   * var app = angular.module('app', ['ui.router.router']);
+	   *
+	   * app.config(function ($urlRouterProvider) {
+	   *
+	   *   // Prevent $urlRouter from automatically intercepting URL changes;
+	   *   // this allows you to configure custom behavior in between
+	   *   // location changes and route synchronization:
+	   *   $urlRouterProvider.deferIntercept();
+	   *
+	   * }).run(function ($rootScope, $urlRouter, UserService) {
+	   *
+	   *   $rootScope.$on('$locationChangeSuccess', function(e) {
+	   *     // UserService is an example service for managing user state
+	   *     if (UserService.isLoggedIn()) return;
+	   *
+	   *     // Prevent $urlRouter's default handler from firing
+	   *     e.preventDefault();
+	   *
+	   *     UserService.handleLogin().then(function() {
+	   *       // Once the user has logged in, sync the current URL
+	   *       // to the router:
+	   *       $urlRouter.sync();
+	   *     });
+	   *   });
+	   *
+	   *   // Configures $urlRouter's listener *after* your custom listener
+	   *   $urlRouter.listen();
+	   * });
+	   * </pre>
+	   *
+	   * @param {boolean} defer Indicates whether to defer location change interception. Passing
+	            no parameter is equivalent to `true`.
+	   */
+	  this.deferIntercept = function (defer) {
+	    if (defer === undefined) defer = true;
+	    interceptDeferred = defer;
+	  };
+
+	  /**
+	   * @ngdoc object
+	   * @name ui.router.router.$urlRouter
+	   *
+	   * @requires $location
+	   * @requires $rootScope
+	   * @requires $injector
+	   * @requires $browser
+	   *
+	   * @description
+	   *
+	   */
+	  this.$get = $get;
+	  $get.$inject = ['$location', '$rootScope', '$injector', '$browser', '$sniffer'];
+	  function $get(   $location,   $rootScope,   $injector,   $browser,   $sniffer) {
+
+	    var baseHref = $browser.baseHref(), location = $location.url(), lastPushedUrl;
+
+	    function appendBasePath(url, isHtml5, absolute) {
+	      if (baseHref === '/') return url;
+	      if (isHtml5) return baseHref.slice(0, -1) + url;
+	      if (absolute) return baseHref.slice(1) + url;
+	      return url;
+	    }
+
+	    // TODO: Optimize groups of rules with non-empty prefix into some sort of decision tree
+	    function update(evt) {
+	      if (evt && evt.defaultPrevented) return;
+	      var ignoreUpdate = lastPushedUrl && $location.url() === lastPushedUrl;
+	      lastPushedUrl = undefined;
+	      // TODO: Re-implement this in 1.0 for https://github.com/angular-ui/ui-router/issues/1573
+	      //if (ignoreUpdate) return true;
+
+	      function check(rule) {
+	        var handled = rule($injector, $location);
+
+	        if (!handled) return false;
+	        if (isString(handled)) $location.replace().url(handled);
+	        return true;
+	      }
+	      var n = rules.length, i;
+
+	      for (i = 0; i < n; i++) {
+	        if (check(rules[i])) return;
+	      }
+	      // always check otherwise last to allow dynamic updates to the set of rules
+	      if (otherwise) check(otherwise);
+	    }
+
+	    function listen() {
+	      listener = listener || $rootScope.$on('$locationChangeSuccess', update);
+	      return listener;
+	    }
+
+	    if (!interceptDeferred) listen();
+
+	    return {
+	      /**
+	       * @ngdoc function
+	       * @name ui.router.router.$urlRouter#sync
+	       * @methodOf ui.router.router.$urlRouter
+	       *
+	       * @description
+	       * Triggers an update; the same update that happens when the address bar url changes, aka `$locationChangeSuccess`.
+	       * This method is useful when you need to use `preventDefault()` on the `$locationChangeSuccess` event,
+	       * perform some custom logic (route protection, auth, config, redirection, etc) and then finally proceed
+	       * with the transition by calling `$urlRouter.sync()`.
+	       *
+	       * @example
+	       * <pre>
+	       * angular.module('app', ['ui.router'])
+	       *   .run(function($rootScope, $urlRouter) {
+	       *     $rootScope.$on('$locationChangeSuccess', function(evt) {
+	       *       // Halt state change from even starting
+	       *       evt.preventDefault();
+	       *       // Perform custom logic
+	       *       var meetsRequirement = ...
+	       *       // Continue with the update and state transition if logic allows
+	       *       if (meetsRequirement) $urlRouter.sync();
+	       *     });
+	       * });
+	       * </pre>
+	       */
+	      sync: function() {
+	        update();
+	      },
+
+	      listen: function() {
+	        return listen();
+	      },
+
+	      update: function(read) {
+	        if (read) {
+	          location = $location.url();
+	          return;
+	        }
+	        if ($location.url() === location) return;
+
+	        $location.url(location);
+	        $location.replace();
+	      },
+
+	      push: function(urlMatcher, params, options) {
+	         var url = urlMatcher.format(params || {});
+
+	        // Handle the special hash param, if needed
+	        if (url !== null && params && params['#']) {
+	            url += '#' + params['#'];
+	        }
+
+	        $location.url(url);
+	        lastPushedUrl = options && options.$$avoidResync ? $location.url() : undefined;
+	        if (options && options.replace) $location.replace();
+	      },
+
+	      /**
+	       * @ngdoc function
+	       * @name ui.router.router.$urlRouter#href
+	       * @methodOf ui.router.router.$urlRouter
+	       *
+	       * @description
+	       * A URL generation method that returns the compiled URL for a given
+	       * {@link ui.router.util.type:UrlMatcher `UrlMatcher`}, populated with the provided parameters.
+	       *
+	       * @example
+	       * <pre>
+	       * $bob = $urlRouter.href(new UrlMatcher("/about/:person"), {
+	       *   person: "bob"
+	       * });
+	       * // $bob == "/about/bob";
+	       * </pre>
+	       *
+	       * @param {UrlMatcher} urlMatcher The `UrlMatcher` object which is used as the template of the URL to generate.
+	       * @param {object=} params An object of parameter values to fill the matcher's required parameters.
+	       * @param {object=} options Options object. The options are:
+	       *
+	       * - **`absolute`** - {boolean=false},  If true will generate an absolute url, e.g. "http://www.example.com/fullurl".
+	       *
+	       * @returns {string} Returns the fully compiled URL, or `null` if `params` fail validation against `urlMatcher`
+	       */
+	      href: function(urlMatcher, params, options) {
+	        if (!urlMatcher.validates(params)) return null;
+
+	        var isHtml5 = $locationProvider.html5Mode();
+	        if (angular.isObject(isHtml5)) {
+	          isHtml5 = isHtml5.enabled;
+	        }
+
+	        isHtml5 = isHtml5 && $sniffer.history;
+	        
+	        var url = urlMatcher.format(params);
+	        options = options || {};
+
+	        if (!isHtml5 && url !== null) {
+	          url = "#" + $locationProvider.hashPrefix() + url;
+	        }
+
+	        // Handle special hash param, if needed
+	        if (url !== null && params && params['#']) {
+	          url += '#' + params['#'];
+	        }
+
+	        url = appendBasePath(url, isHtml5, options.absolute);
+
+	        if (!options.absolute || !url) {
+	          return url;
+	        }
+
+	        var slash = (!isHtml5 && url ? '/' : ''), port = $location.port();
+	        port = (port === 80 || port === 443 ? '' : ':' + port);
+
+	        return [$location.protocol(), '://', $location.host(), port, slash, url].join('');
+	      }
+	    };
+	  }
+	}
+
+	angular.module('ui.router.router').provider('$urlRouter', $UrlRouterProvider);
+
+	/**
+	 * @ngdoc object
+	 * @name ui.router.state.$stateProvider
+	 *
+	 * @requires ui.router.router.$urlRouterProvider
+	 * @requires ui.router.util.$urlMatcherFactoryProvider
+	 *
+	 * @description
+	 * The new `$stateProvider` works similar to Angular's v1 router, but it focuses purely
+	 * on state.
+	 *
+	 * A state corresponds to a "place" in the application in terms of the overall UI and
+	 * navigation. A state describes (via the controller / template / view properties) what
+	 * the UI looks like and does at that place.
+	 *
+	 * States often have things in common, and the primary way of factoring out these
+	 * commonalities in this model is via the state hierarchy, i.e. parent/child states aka
+	 * nested states.
+	 *
+	 * The `$stateProvider` provides interfaces to declare these states for your app.
+	 */
+	$StateProvider.$inject = ['$urlRouterProvider', '$urlMatcherFactoryProvider'];
+	function $StateProvider(   $urlRouterProvider,   $urlMatcherFactory) {
+
+	  var root, states = {}, $state, queue = {}, abstractKey = 'abstract';
+
+	  // Builds state properties from definition passed to registerState()
+	  var stateBuilder = {
+
+	    // Derive parent state from a hierarchical name only if 'parent' is not explicitly defined.
+	    // state.children = [];
+	    // if (parent) parent.children.push(state);
+	    parent: function(state) {
+	      if (isDefined(state.parent) && state.parent) return findState(state.parent);
+	      // regex matches any valid composite state name
+	      // would match "contact.list" but not "contacts"
+	      var compositeName = /^(.+)\.[^.]+$/.exec(state.name);
+	      return compositeName ? findState(compositeName[1]) : root;
+	    },
+
+	    // inherit 'data' from parent and override by own values (if any)
+	    data: function(state) {
+	      if (state.parent && state.parent.data) {
+	        state.data = state.self.data = inherit(state.parent.data, state.data);
+	      }
+	      return state.data;
+	    },
+
+	    // Build a URLMatcher if necessary, either via a relative or absolute URL
+	    url: function(state) {
+	      var url = state.url, config = { params: state.params || {} };
+
+	      if (isString(url)) {
+	        if (url.charAt(0) == '^') return $urlMatcherFactory.compile(url.substring(1), config);
+	        return (state.parent.navigable || root).url.concat(url, config);
+	      }
+
+	      if (!url || $urlMatcherFactory.isMatcher(url)) return url;
+	      throw new Error("Invalid url '" + url + "' in state '" + state + "'");
+	    },
+
+	    // Keep track of the closest ancestor state that has a URL (i.e. is navigable)
+	    navigable: function(state) {
+	      return state.url ? state : (state.parent ? state.parent.navigable : null);
+	    },
+
+	    // Own parameters for this state. state.url.params is already built at this point. Create and add non-url params
+	    ownParams: function(state) {
+	      var params = state.url && state.url.params || new $$UMFP.ParamSet();
+	      forEach(state.params || {}, function(config, id) {
+	        if (!params[id]) params[id] = new $$UMFP.Param(id, null, config, "config");
+	      });
+	      return params;
+	    },
+
+	    // Derive parameters for this state and ensure they're a super-set of parent's parameters
+	    params: function(state) {
+	      var ownParams = pick(state.ownParams, state.ownParams.$$keys());
+	      return state.parent && state.parent.params ? extend(state.parent.params.$$new(), ownParams) : new $$UMFP.ParamSet();
+	    },
+
+	    // If there is no explicit multi-view configuration, make one up so we don't have
+	    // to handle both cases in the view directive later. Note that having an explicit
+	    // 'views' property will mean the default unnamed view properties are ignored. This
+	    // is also a good time to resolve view names to absolute names, so everything is a
+	    // straight lookup at link time.
+	    views: function(state) {
+	      var views = {};
+
+	      forEach(isDefined(state.views) ? state.views : { '': state }, function (view, name) {
+	        if (name.indexOf('@') < 0) name += '@' + state.parent.name;
+	        view.resolveAs = view.resolveAs || state.resolveAs || '$resolve';
+	        views[name] = view;
+	      });
+	      return views;
+	    },
+
+	    // Keep a full path from the root down to this state as this is needed for state activation.
+	    path: function(state) {
+	      return state.parent ? state.parent.path.concat(state) : []; // exclude root from path
+	    },
+
+	    // Speed up $state.contains() as it's used a lot
+	    includes: function(state) {
+	      var includes = state.parent ? extend({}, state.parent.includes) : {};
+	      includes[state.name] = true;
+	      return includes;
+	    },
+
+	    $delegates: {}
+	  };
+
+	  function isRelative(stateName) {
+	    return stateName.indexOf(".") === 0 || stateName.indexOf("^") === 0;
+	  }
+
+	  function findState(stateOrName, base) {
+	    if (!stateOrName) return undefined;
+
+	    var isStr = isString(stateOrName),
+	        name  = isStr ? stateOrName : stateOrName.name,
+	        path  = isRelative(name);
+
+	    if (path) {
+	      if (!base) throw new Error("No reference point given for path '"  + name + "'");
+	      base = findState(base);
+	      
+	      var rel = name.split("."), i = 0, pathLength = rel.length, current = base;
+
+	      for (; i < pathLength; i++) {
+	        if (rel[i] === "" && i === 0) {
+	          current = base;
+	          continue;
+	        }
+	        if (rel[i] === "^") {
+	          if (!current.parent) throw new Error("Path '" + name + "' not valid for state '" + base.name + "'");
+	          current = current.parent;
+	          continue;
+	        }
+	        break;
+	      }
+	      rel = rel.slice(i).join(".");
+	      name = current.name + (current.name && rel ? "." : "") + rel;
+	    }
+	    var state = states[name];
+
+	    if (state && (isStr || (!isStr && (state === stateOrName || state.self === stateOrName)))) {
+	      return state;
+	    }
+	    return undefined;
+	  }
+
+	  function queueState(parentName, state) {
+	    if (!queue[parentName]) {
+	      queue[parentName] = [];
+	    }
+	    queue[parentName].push(state);
+	  }
+
+	  function flushQueuedChildren(parentName) {
+	    var queued = queue[parentName] || [];
+	    while(queued.length) {
+	      registerState(queued.shift());
+	    }
+	  }
+
+	  function registerState(state) {
+	    // Wrap a new object around the state so we can store our private details easily.
+	    state = inherit(state, {
+	      self: state,
+	      resolve: state.resolve || {},
+	      toString: function() { return this.name; }
+	    });
+
+	    var name = state.name;
+	    if (!isString(name) || name.indexOf('@') >= 0) throw new Error("State must have a valid name");
+	    if (states.hasOwnProperty(name)) throw new Error("State '" + name + "' is already defined");
+
+	    // Get parent name
+	    var parentName = (name.indexOf('.') !== -1) ? name.substring(0, name.lastIndexOf('.'))
+	        : (isString(state.parent)) ? state.parent
+	        : (isObject(state.parent) && isString(state.parent.name)) ? state.parent.name
+	        : '';
+
+	    // If parent is not registered yet, add state to queue and register later
+	    if (parentName && !states[parentName]) {
+	      return queueState(parentName, state.self);
+	    }
+
+	    for (var key in stateBuilder) {
+	      if (isFunction(stateBuilder[key])) state[key] = stateBuilder[key](state, stateBuilder.$delegates[key]);
+	    }
+	    states[name] = state;
+
+	    // Register the state in the global state list and with $urlRouter if necessary.
+	    if (!state[abstractKey] && state.url) {
+	      $urlRouterProvider.when(state.url, ['$match', '$stateParams', function ($match, $stateParams) {
+	        if ($state.$current.navigable != state || !equalForKeys($match, $stateParams)) {
+	          $state.transitionTo(state, $match, { inherit: true, location: false });
+	        }
+	      }]);
+	    }
+
+	    // Register any queued children
+	    flushQueuedChildren(name);
+
+	    return state;
+	  }
+
+	  // Checks text to see if it looks like a glob.
+	  function isGlob (text) {
+	    return text.indexOf('*') > -1;
+	  }
+
+	  // Returns true if glob matches current $state name.
+	  function doesStateMatchGlob (glob) {
+	    var globSegments = glob.split('.'),
+	        segments = $state.$current.name.split('.');
+
+	    //match single stars
+	    for (var i = 0, l = globSegments.length; i < l; i++) {
+	      if (globSegments[i] === '*') {
+	        segments[i] = '*';
+	      }
+	    }
+
+	    //match greedy starts
+	    if (globSegments[0] === '**') {
+	       segments = segments.slice(indexOf(segments, globSegments[1]));
+	       segments.unshift('**');
+	    }
+	    //match greedy ends
+	    if (globSegments[globSegments.length - 1] === '**') {
+	       segments.splice(indexOf(segments, globSegments[globSegments.length - 2]) + 1, Number.MAX_VALUE);
+	       segments.push('**');
+	    }
+
+	    if (globSegments.length != segments.length) {
+	      return false;
+	    }
+
+	    return segments.join('') === globSegments.join('');
+	  }
+
+
+	  // Implicit root state that is always active
+	  root = registerState({
+	    name: '',
+	    url: '^',
+	    views: null,
+	    'abstract': true
+	  });
+	  root.navigable = null;
+
+
+	  /**
+	   * @ngdoc function
+	   * @name ui.router.state.$stateProvider#decorator
+	   * @methodOf ui.router.state.$stateProvider
+	   *
+	   * @description
+	   * Allows you to extend (carefully) or override (at your own peril) the 
+	   * `stateBuilder` object used internally by `$stateProvider`. This can be used 
+	   * to add custom functionality to ui-router, for example inferring templateUrl 
+	   * based on the state name.
+	   *
+	   * When passing only a name, it returns the current (original or decorated) builder
+	   * function that matches `name`.
+	   *
+	   * The builder functions that can be decorated are listed below. Though not all
+	   * necessarily have a good use case for decoration, that is up to you to decide.
+	   *
+	   * In addition, users can attach custom decorators, which will generate new 
+	   * properties within the state's internal definition. There is currently no clear 
+	   * use-case for this beyond accessing internal states (i.e. $state.$current), 
+	   * however, expect this to become increasingly relevant as we introduce additional 
+	   * meta-programming features.
+	   *
+	   * **Warning**: Decorators should not be interdependent because the order of 
+	   * execution of the builder functions in non-deterministic. Builder functions 
+	   * should only be dependent on the state definition object and super function.
+	   *
+	   *
+	   * Existing builder functions and current return values:
+	   *
+	   * - **parent** `{object}` - returns the parent state object.
+	   * - **data** `{object}` - returns state data, including any inherited data that is not
+	   *   overridden by own values (if any).
+	   * - **url** `{object}` - returns a {@link ui.router.util.type:UrlMatcher UrlMatcher}
+	   *   or `null`.
+	   * - **navigable** `{object}` - returns closest ancestor state that has a URL (aka is 
+	   *   navigable).
+	   * - **params** `{object}` - returns an array of state params that are ensured to 
+	   *   be a super-set of parent's params.
+	   * - **views** `{object}` - returns a views object where each key is an absolute view 
+	   *   name (i.e. "viewName@stateName") and each value is the config object 
+	   *   (template, controller) for the view. Even when you don't use the views object 
+	   *   explicitly on a state config, one is still created for you internally.
+	   *   So by decorating this builder function you have access to decorating template 
+	   *   and controller properties.
+	   * - **ownParams** `{object}` - returns an array of params that belong to the state, 
+	   *   not including any params defined by ancestor states.
+	   * - **path** `{string}` - returns the full path from the root down to this state. 
+	   *   Needed for state activation.
+	   * - **includes** `{object}` - returns an object that includes every state that 
+	   *   would pass a `$state.includes()` test.
+	   *
+	   * @example
+	   * <pre>
+	   * // Override the internal 'views' builder with a function that takes the state
+	   * // definition, and a reference to the internal function being overridden:
+	   * $stateProvider.decorator('views', function (state, parent) {
+	   *   var result = {},
+	   *       views = parent(state);
+	   *
+	   *   angular.forEach(views, function (config, name) {
+	   *     var autoName = (state.name + '.' + name).replace('.', '/');
+	   *     config.templateUrl = config.templateUrl || '/partials/' + autoName + '.html';
+	   *     result[name] = config;
+	   *   });
+	   *   return result;
+	   * });
+	   *
+	   * $stateProvider.state('home', {
+	   *   views: {
+	   *     'contact.list': { controller: 'ListController' },
+	   *     'contact.item': { controller: 'ItemController' }
+	   *   }
+	   * });
+	   *
+	   * // ...
+	   *
+	   * $state.go('home');
+	   * // Auto-populates list and item views with /partials/home/contact/list.html,
+	   * // and /partials/home/contact/item.html, respectively.
+	   * </pre>
+	   *
+	   * @param {string} name The name of the builder function to decorate. 
+	   * @param {object} func A function that is responsible for decorating the original 
+	   * builder function. The function receives two parameters:
+	   *
+	   *   - `{object}` - state - The state config object.
+	   *   - `{object}` - super - The original builder function.
+	   *
+	   * @return {object} $stateProvider - $stateProvider instance
+	   */
+	  this.decorator = decorator;
+	  function decorator(name, func) {
+	    /*jshint validthis: true */
+	    if (isString(name) && !isDefined(func)) {
+	      return stateBuilder[name];
+	    }
+	    if (!isFunction(func) || !isString(name)) {
+	      return this;
+	    }
+	    if (stateBuilder[name] && !stateBuilder.$delegates[name]) {
+	      stateBuilder.$delegates[name] = stateBuilder[name];
+	    }
+	    stateBuilder[name] = func;
+	    return this;
+	  }
+
+	  /**
+	   * @ngdoc function
+	   * @name ui.router.state.$stateProvider#state
+	   * @methodOf ui.router.state.$stateProvider
+	   *
+	   * @description
+	   * Registers a state configuration under a given state name. The stateConfig object
+	   * has the following acceptable properties.
+	   *
+	   * @param {string} name A unique state name, e.g. "home", "about", "contacts".
+	   * To create a parent/child state use a dot, e.g. "about.sales", "home.newest".
+	   * @param {object} stateConfig State configuration object.
+	   * @param {string|function=} stateConfig.template
+	   * <a id='template'></a>
+	   *   html template as a string or a function that returns
+	   *   an html template as a string which should be used by the uiView directives. This property 
+	   *   takes precedence over templateUrl.
+	   *   
+	   *   If `template` is a function, it will be called with the following parameters:
+	   *
+	   *   - {array.&lt;object&gt;} - state parameters extracted from the current $location.path() by
+	   *     applying the current state
+	   *
+	   * <pre>template:
+	   *   "<h1>inline template definition</h1>" +
+	   *   "<div ui-view></div>"</pre>
+	   * <pre>template: function(params) {
+	   *       return "<h1>generated template</h1>"; }</pre>
+	   * </div>
+	   *
+	   * @param {string|function=} stateConfig.templateUrl
+	   * <a id='templateUrl'></a>
+	   *
+	   *   path or function that returns a path to an html
+	   *   template that should be used by uiView.
+	   *   
+	   *   If `templateUrl` is a function, it will be called with the following parameters:
+	   *
+	   *   - {array.&lt;object&gt;} - state parameters extracted from the current $location.path() by 
+	   *     applying the current state
+	   *
+	   * <pre>templateUrl: "home.html"</pre>
+	   * <pre>templateUrl: function(params) {
+	   *     return myTemplates[params.pageId]; }</pre>
+	   *
+	   * @param {function=} stateConfig.templateProvider
+	   * <a id='templateProvider'></a>
+	   *    Provider function that returns HTML content string.
+	   * <pre> templateProvider:
+	   *       function(MyTemplateService, params) {
+	   *         return MyTemplateService.getTemplate(params.pageId);
+	   *       }</pre>
+	   *
+	   * @param {string|function=} stateConfig.controller
+	   * <a id='controller'></a>
+	   *
+	   *  Controller fn that should be associated with newly
+	   *   related scope or the name of a registered controller if passed as a string.
+	   *   Optionally, the ControllerAs may be declared here.
+	   * <pre>controller: "MyRegisteredController"</pre>
+	   * <pre>controller:
+	   *     "MyRegisteredController as fooCtrl"}</pre>
+	   * <pre>controller: function($scope, MyService) {
+	   *     $scope.data = MyService.getData(); }</pre>
+	   *
+	   * @param {function=} stateConfig.controllerProvider
+	   * <a id='controllerProvider'></a>
+	   *
+	   * Injectable provider function that returns the actual controller or string.
+	   * <pre>controllerProvider:
+	   *   function(MyResolveData) {
+	   *     if (MyResolveData.foo)
+	   *       return "FooCtrl"
+	   *     else if (MyResolveData.bar)
+	   *       return "BarCtrl";
+	   *     else return function($scope) {
+	   *       $scope.baz = "Qux";
+	   *     }
+	   *   }</pre>
+	   *
+	   * @param {string=} stateConfig.controllerAs
+	   * <a id='controllerAs'></a>
+	   * 
+	   * A controller alias name. If present the controller will be
+	   *   published to scope under the controllerAs name.
+	   * <pre>controllerAs: "myCtrl"</pre>
+	   *
+	   * @param {string|object=} stateConfig.parent
+	   * <a id='parent'></a>
+	   * Optionally specifies the parent state of this state.
+	   *
+	   * <pre>parent: 'parentState'</pre>
+	   * <pre>parent: parentState // JS variable</pre>
+	   *
+	   * @param {object=} stateConfig.resolve
+	   * <a id='resolve'></a>
+	   *
+	   * An optional map&lt;string, function&gt; of dependencies which
+	   *   should be injected into the controller. If any of these dependencies are promises, 
+	   *   the router will wait for them all to be resolved before the controller is instantiated.
+	   *   If all the promises are resolved successfully, the $stateChangeSuccess event is fired
+	   *   and the values of the resolved promises are injected into any controllers that reference them.
+	   *   If any  of the promises are rejected the $stateChangeError event is fired.
+	   *
+	   *   The map object is:
+	   *   
+	   *   - key - {string}: name of dependency to be injected into controller
+	   *   - factory - {string|function}: If string then it is alias for service. Otherwise if function, 
+	   *     it is injected and return value it treated as dependency. If result is a promise, it is 
+	   *     resolved before its value is injected into controller.
+	   *
+	   * <pre>resolve: {
+	   *     myResolve1:
+	   *       function($http, $stateParams) {
+	   *         return $http.get("/api/foos/"+stateParams.fooID);
+	   *       }
+	   *     }</pre>
+	   *
+	   * @param {string=} stateConfig.url
+	   * <a id='url'></a>
+	   *
+	   *   A url fragment with optional parameters. When a state is navigated or
+	   *   transitioned to, the `$stateParams` service will be populated with any 
+	   *   parameters that were passed.
+	   *
+	   *   (See {@link ui.router.util.type:UrlMatcher UrlMatcher} `UrlMatcher`} for
+	   *   more details on acceptable patterns )
+	   *
+	   * examples:
+	   * <pre>url: "/home"
+	   * url: "/users/:userid"
+	   * url: "/books/{bookid:[a-zA-Z_-]}"
+	   * url: "/books/{categoryid:int}"
+	   * url: "/books/{publishername:string}/{categoryid:int}"
+	   * url: "/messages?before&after"
+	   * url: "/messages?{before:date}&{after:date}"
+	   * url: "/messages/:mailboxid?{before:date}&{after:date}"
+	   * </pre>
+	   *
+	   * @param {object=} stateConfig.views
+	   * <a id='views'></a>
+	   * an optional map&lt;string, object&gt; which defined multiple views, or targets views
+	   * manually/explicitly.
+	   *
+	   * Examples:
+	   *
+	   * Targets three named `ui-view`s in the parent state's template
+	   * <pre>views: {
+	   *     header: {
+	   *       controller: "headerCtrl",
+	   *       templateUrl: "header.html"
+	   *     }, body: {
+	   *       controller: "bodyCtrl",
+	   *       templateUrl: "body.html"
+	   *     }, footer: {
+	   *       controller: "footCtrl",
+	   *       templateUrl: "footer.html"
+	   *     }
+	   *   }</pre>
+	   *
+	   * Targets named `ui-view="header"` from grandparent state 'top''s template, and named `ui-view="body" from parent state's template.
+	   * <pre>views: {
+	   *     'header@top': {
+	   *       controller: "msgHeaderCtrl",
+	   *       templateUrl: "msgHeader.html"
+	   *     }, 'body': {
+	   *       controller: "messagesCtrl",
+	   *       templateUrl: "messages.html"
+	   *     }
+	   *   }</pre>
+	   *
+	   * @param {boolean=} [stateConfig.abstract=false]
+	   * <a id='abstract'></a>
+	   * An abstract state will never be directly activated,
+	   *   but can provide inherited properties to its common children states.
+	   * <pre>abstract: true</pre>
+	   *
+	   * @param {function=} stateConfig.onEnter
+	   * <a id='onEnter'></a>
+	   *
+	   * Callback function for when a state is entered. Good way
+	   *   to trigger an action or dispatch an event, such as opening a dialog.
+	   * If minifying your scripts, make sure to explicitly annotate this function,
+	   * because it won't be automatically annotated by your build tools.
+	   *
+	   * <pre>onEnter: function(MyService, $stateParams) {
+	   *     MyService.foo($stateParams.myParam);
+	   * }</pre>
+	   *
+	   * @param {function=} stateConfig.onExit
+	   * <a id='onExit'></a>
+	   *
+	   * Callback function for when a state is exited. Good way to
+	   *   trigger an action or dispatch an event, such as opening a dialog.
+	   * If minifying your scripts, make sure to explicitly annotate this function,
+	   * because it won't be automatically annotated by your build tools.
+	   *
+	   * <pre>onExit: function(MyService, $stateParams) {
+	   *     MyService.cleanup($stateParams.myParam);
+	   * }</pre>
+	   *
+	   * @param {boolean=} [stateConfig.reloadOnSearch=true]
+	   * <a id='reloadOnSearch'></a>
+	   *
+	   * If `false`, will not retrigger the same state
+	   *   just because a search/query parameter has changed (via $location.search() or $location.hash()). 
+	   *   Useful for when you'd like to modify $location.search() without triggering a reload.
+	   * <pre>reloadOnSearch: false</pre>
+	   *
+	   * @param {object=} stateConfig.data
+	   * <a id='data'></a>
+	   *
+	   * Arbitrary data object, useful for custom configuration.  The parent state's `data` is
+	   *   prototypally inherited.  In other words, adding a data property to a state adds it to
+	   *   the entire subtree via prototypal inheritance.
+	   *
+	   * <pre>data: {
+	   *     requiredRole: 'foo'
+	   * } </pre>
+	   *
+	   * @param {object=} stateConfig.params
+	   * <a id='params'></a>
+	   *
+	   * A map which optionally configures parameters declared in the `url`, or
+	   *   defines additional non-url parameters.  For each parameter being
+	   *   configured, add a configuration object keyed to the name of the parameter.
+	   *
+	   *   Each parameter configuration object may contain the following properties:
+	   *
+	   *   - ** value ** - {object|function=}: specifies the default value for this
+	   *     parameter.  This implicitly sets this parameter as optional.
+	   *
+	   *     When UI-Router routes to a state and no value is
+	   *     specified for this parameter in the URL or transition, the
+	   *     default value will be used instead.  If `value` is a function,
+	   *     it will be injected and invoked, and the return value used.
+	   *
+	   *     *Note*: `undefined` is treated as "no default value" while `null`
+	   *     is treated as "the default value is `null`".
+	   *
+	   *     *Shorthand*: If you only need to configure the default value of the
+	   *     parameter, you may use a shorthand syntax.   In the **`params`**
+	   *     map, instead mapping the param name to a full parameter configuration
+	   *     object, simply set map it to the default parameter value, e.g.:
+	   *
+	   * <pre>// define a parameter's default value
+	   * params: {
+	   *     param1: { value: "defaultValue" }
+	   * }
+	   * // shorthand default values
+	   * params: {
+	   *     param1: "defaultValue",
+	   *     param2: "param2Default"
+	   * }</pre>
+	   *
+	   *   - ** array ** - {boolean=}: *(default: false)* If true, the param value will be
+	   *     treated as an array of values.  If you specified a Type, the value will be
+	   *     treated as an array of the specified Type.  Note: query parameter values
+	   *     default to a special `"auto"` mode.
+	   *
+	   *     For query parameters in `"auto"` mode, if multiple  values for a single parameter
+	   *     are present in the URL (e.g.: `/foo?bar=1&bar=2&bar=3`) then the values
+	   *     are mapped to an array (e.g.: `{ foo: [ '1', '2', '3' ] }`).  However, if
+	   *     only one value is present (e.g.: `/foo?bar=1`) then the value is treated as single
+	   *     value (e.g.: `{ foo: '1' }`).
+	   *
+	   * <pre>params: {
+	   *     param1: { array: true }
+	   * }</pre>
+	   *
+	   *   - ** squash ** - {bool|string=}: `squash` configures how a default parameter value is represented in the URL when
+	   *     the current parameter value is the same as the default value. If `squash` is not set, it uses the
+	   *     configured default squash policy.
+	   *     (See {@link ui.router.util.$urlMatcherFactory#methods_defaultSquashPolicy `defaultSquashPolicy()`})
+	   *
+	   *   There are three squash settings:
+	   *
+	   *     - false: The parameter's default value is not squashed.  It is encoded and included in the URL
+	   *     - true: The parameter's default value is omitted from the URL.  If the parameter is preceeded and followed
+	   *       by slashes in the state's `url` declaration, then one of those slashes are omitted.
+	   *       This can allow for cleaner looking URLs.
+	   *     - `"<arbitrary string>"`: The parameter's default value is replaced with an arbitrary placeholder of  your choice.
+	   *
+	   * <pre>params: {
+	   *     param1: {
+	   *       value: "defaultId",
+	   *       squash: true
+	   * } }
+	   * // squash "defaultValue" to "~"
+	   * params: {
+	   *     param1: {
+	   *       value: "defaultValue",
+	   *       squash: "~"
+	   * } }
+	   * </pre>
+	   *
+	   *
+	   * @example
+	   * <pre>
+	   * // Some state name examples
+	   *
+	   * // stateName can be a single top-level name (must be unique).
+	   * $stateProvider.state("home", {});
+	   *
+	   * // Or it can be a nested state name. This state is a child of the
+	   * // above "home" state.
+	   * $stateProvider.state("home.newest", {});
+	   *
+	   * // Nest states as deeply as needed.
+	   * $stateProvider.state("home.newest.abc.xyz.inception", {});
+	   *
+	   * // state() returns $stateProvider, so you can chain state declarations.
+	   * $stateProvider
+	   *   .state("home", {})
+	   *   .state("about", {})
+	   *   .state("contacts", {});
+	   * </pre>
+	   *
+	   */
+	  this.state = state;
+	  function state(name, definition) {
+	    /*jshint validthis: true */
+	    if (isObject(name)) definition = name;
+	    else definition.name = name;
+	    registerState(definition);
+	    return this;
+	  }
+
+	  /**
+	   * @ngdoc object
+	   * @name ui.router.state.$state
+	   *
+	   * @requires $rootScope
+	   * @requires $q
+	   * @requires ui.router.state.$view
+	   * @requires $injector
+	   * @requires ui.router.util.$resolve
+	   * @requires ui.router.state.$stateParams
+	   * @requires ui.router.router.$urlRouter
+	   *
+	   * @property {object} params A param object, e.g. {sectionId: section.id)}, that 
+	   * you'd like to test against the current active state.
+	   * @property {object} current A reference to the state's config object. However 
+	   * you passed it in. Useful for accessing custom data.
+	   * @property {object} transition Currently pending transition. A promise that'll 
+	   * resolve or reject.
+	   *
+	   * @description
+	   * `$state` service is responsible for representing states as well as transitioning
+	   * between them. It also provides interfaces to ask for current state or even states
+	   * you're coming from.
+	   */
+	  this.$get = $get;
+	  $get.$inject = ['$rootScope', '$q', '$view', '$injector', '$resolve', '$stateParams', '$urlRouter', '$location', '$urlMatcherFactory'];
+	  function $get(   $rootScope,   $q,   $view,   $injector,   $resolve,   $stateParams,   $urlRouter,   $location,   $urlMatcherFactory) {
+
+	    var TransitionSupersededError = new Error('transition superseded');
+
+	    var TransitionSuperseded = silenceUncaughtInPromise($q.reject(TransitionSupersededError));
+	    var TransitionPrevented = silenceUncaughtInPromise($q.reject(new Error('transition prevented')));
+	    var TransitionAborted = silenceUncaughtInPromise($q.reject(new Error('transition aborted')));
+	    var TransitionFailed = silenceUncaughtInPromise($q.reject(new Error('transition failed')));
+
+	    // Handles the case where a state which is the target of a transition is not found, and the user
+	    // can optionally retry or defer the transition
+	    function handleRedirect(redirect, state, params, options) {
+	      /**
+	       * @ngdoc event
+	       * @name ui.router.state.$state#$stateNotFound
+	       * @eventOf ui.router.state.$state
+	       * @eventType broadcast on root scope
+	       * @description
+	       * Fired when a requested state **cannot be found** using the provided state name during transition.
+	       * The event is broadcast allowing any handlers a single chance to deal with the error (usually by
+	       * lazy-loading the unfound state). A special `unfoundState` object is passed to the listener handler,
+	       * you can see its three properties in the example. You can use `event.preventDefault()` to abort the
+	       * transition and the promise returned from `go` will be rejected with a `'transition aborted'` value.
+	       *
+	       * @param {Object} event Event object.
+	       * @param {Object} unfoundState Unfound State information. Contains: `to, toParams, options` properties.
+	       * @param {State} fromState Current state object.
+	       * @param {Object} fromParams Current state params.
+	       *
+	       * @example
+	       *
+	       * <pre>
+	       * // somewhere, assume lazy.state has not been defined
+	       * $state.go("lazy.state", {a:1, b:2}, {inherit:false});
+	       *
+	       * // somewhere else
+	       * $scope.$on('$stateNotFound',
+	       * function(event, unfoundState, fromState, fromParams){
+	       *     console.log(unfoundState.to); // "lazy.state"
+	       *     console.log(unfoundState.toParams); // {a:1, b:2}
+	       *     console.log(unfoundState.options); // {inherit:false} + default options
+	       * })
+	       * </pre>
+	       */
+	      var evt = $rootScope.$broadcast('$stateNotFound', redirect, state, params);
+
+	      if (evt.defaultPrevented) {
+	        $urlRouter.update();
+	        return TransitionAborted;
+	      }
+
+	      if (!evt.retry) {
+	        return null;
+	      }
+
+	      // Allow the handler to return a promise to defer state lookup retry
+	      if (options.$retry) {
+	        $urlRouter.update();
+	        return TransitionFailed;
+	      }
+	      var retryTransition = $state.transition = $q.when(evt.retry);
+
+	      retryTransition.then(function() {
+	        if (retryTransition !== $state.transition) {
+	          $rootScope.$broadcast('$stateChangeCancel', redirect.to, redirect.toParams, state, params);
+	          return TransitionSuperseded;
+	        }
+	        redirect.options.$retry = true;
+	        return $state.transitionTo(redirect.to, redirect.toParams, redirect.options);
+	      }, function() {
+	        return TransitionAborted;
+	      });
+	      $urlRouter.update();
+
+	      return retryTransition;
+	    }
+
+	    root.locals = { resolve: null, globals: { $stateParams: {} } };
+
+	    $state = {
+	      params: {},
+	      current: root.self,
+	      $current: root,
+	      transition: null
+	    };
+
+	    /**
+	     * @ngdoc function
+	     * @name ui.router.state.$state#reload
+	     * @methodOf ui.router.state.$state
+	     *
+	     * @description
+	     * A method that force reloads the current state. All resolves are re-resolved,
+	     * controllers reinstantiated, and events re-fired.
+	     *
+	     * @example
+	     * <pre>
+	     * var app angular.module('app', ['ui.router']);
+	     *
+	     * app.controller('ctrl', function ($scope, $state) {
+	     *   $scope.reload = function(){
+	     *     $state.reload();
+	     *   }
+	     * });
+	     * </pre>
+	     *
+	     * `reload()` is just an alias for:
+	     * <pre>
+	     * $state.transitionTo($state.current, $stateParams, { 
+	     *   reload: true, inherit: false, notify: true
+	     * });
+	     * </pre>
+	     *
+	     * @param {string=|object=} state - A state name or a state object, which is the root of the resolves to be re-resolved.
+	     * @example
+	     * <pre>
+	     * //assuming app application consists of 3 states: 'contacts', 'contacts.detail', 'contacts.detail.item' 
+	     * //and current state is 'contacts.detail.item'
+	     * var app angular.module('app', ['ui.router']);
+	     *
+	     * app.controller('ctrl', function ($scope, $state) {
+	     *   $scope.reload = function(){
+	     *     //will reload 'contact.detail' and 'contact.detail.item' states
+	     *     $state.reload('contact.detail');
+	     *   }
+	     * });
+	     * </pre>
+	     *
+	     * `reload()` is just an alias for:
+	     * <pre>
+	     * $state.transitionTo($state.current, $stateParams, { 
+	     *   reload: true, inherit: false, notify: true
+	     * });
+	     * </pre>
+
+	     * @returns {promise} A promise representing the state of the new transition. See
+	     * {@link ui.router.state.$state#methods_go $state.go}.
+	     */
+	    $state.reload = function reload(state) {
+	      return $state.transitionTo($state.current, $stateParams, { reload: state || true, inherit: false, notify: true});
+	    };
+
+	    /**
+	     * @ngdoc function
+	     * @name ui.router.state.$state#go
+	     * @methodOf ui.router.state.$state
+	     *
+	     * @description
+	     * Convenience method for transitioning to a new state. `$state.go` calls 
+	     * `$state.transitionTo` internally but automatically sets options to 
+	     * `{ location: true, inherit: true, relative: $state.$current, notify: true }`. 
+	     * This allows you to easily use an absolute or relative to path and specify 
+	     * only the parameters you'd like to update (while letting unspecified parameters 
+	     * inherit from the currently active ancestor states).
+	     *
+	     * @example
+	     * <pre>
+	     * var app = angular.module('app', ['ui.router']);
+	     *
+	     * app.controller('ctrl', function ($scope, $state) {
+	     *   $scope.changeState = function () {
+	     *     $state.go('contact.detail');
+	     *   };
+	     * });
+	     * </pre>
+	     * <img src='../ngdoc_assets/StateGoExamples.png'/>
+	     *
+	     * @param {string} to Absolute state name or relative state path. Some examples:
+	     *
+	     * - `$state.go('contact.detail')` - will go to the `contact.detail` state
+	     * - `$state.go('^')` - will go to a parent state
+	     * - `$state.go('^.sibling')` - will go to a sibling state
+	     * - `$state.go('.child.grandchild')` - will go to grandchild state
+	     *
+	     * @param {object=} params A map of the parameters that will be sent to the state, 
+	     * will populate $stateParams. Any parameters that are not specified will be inherited from currently 
+	     * defined parameters. Only parameters specified in the state definition can be overridden, new 
+	     * parameters will be ignored. This allows, for example, going to a sibling state that shares parameters
+	     * specified in a parent state. Parameter inheritance only works between common ancestor states, I.e.
+	     * transitioning to a sibling will get you the parameters for all parents, transitioning to a child
+	     * will get you all current parameters, etc.
+	     * @param {object=} options Options object. The options are:
+	     *
+	     * - **`location`** - {boolean=true|string=} - If `true` will update the url in the location bar, if `false`
+	     *    will not. If string, must be `"replace"`, which will update url and also replace last history record.
+	     * - **`inherit`** - {boolean=true}, If `true` will inherit url parameters from current url.
+	     * - **`relative`** - {object=$state.$current}, When transitioning with relative path (e.g '^'), 
+	     *    defines which state to be relative from.
+	     * - **`notify`** - {boolean=true}, If `true` will broadcast $stateChangeStart and $stateChangeSuccess events.
+	     * - **`reload`** (v0.2.5) - {boolean=false|string|object}, If `true` will force transition even if no state or params
+	     *    have changed.  It will reload the resolves and views of the current state and parent states.
+	     *    If `reload` is a string (or state object), the state object is fetched (by name, or object reference); and \
+	     *    the transition reloads the resolves and views for that matched state, and all its children states.
+	     *
+	     * @returns {promise} A promise representing the state of the new transition.
+	     *
+	     * Possible success values:
+	     *
+	     * - $state.current
+	     *
+	     * <br/>Possible rejection values:
+	     *
+	     * - 'transition superseded' - when a newer transition has been started after this one
+	     * - 'transition prevented' - when `event.preventDefault()` has been called in a `$stateChangeStart` listener
+	     * - 'transition aborted' - when `event.preventDefault()` has been called in a `$stateNotFound` listener or
+	     *   when a `$stateNotFound` `event.retry` promise errors.
+	     * - 'transition failed' - when a state has been unsuccessfully found after 2 tries.
+	     * - *resolve error* - when an error has occurred with a `resolve`
+	     *
+	     */
+	    $state.go = function go(to, params, options) {
+	      return $state.transitionTo(to, params, extend({ inherit: true, relative: $state.$current }, options));
+	    };
+
+	    /**
+	     * @ngdoc function
+	     * @name ui.router.state.$state#transitionTo
+	     * @methodOf ui.router.state.$state
+	     *
+	     * @description
+	     * Low-level method for transitioning to a new state. {@link ui.router.state.$state#methods_go $state.go}
+	     * uses `transitionTo` internally. `$state.go` is recommended in most situations.
+	     *
+	     * @example
+	     * <pre>
+	     * var app = angular.module('app', ['ui.router']);
+	     *
+	     * app.controller('ctrl', function ($scope, $state) {
+	     *   $scope.changeState = function () {
+	     *     $state.transitionTo('contact.detail');
+	     *   };
+	     * });
+	     * </pre>
+	     *
+	     * @param {string} to State name.
+	     * @param {object=} toParams A map of the parameters that will be sent to the state,
+	     * will populate $stateParams.
+	     * @param {object=} options Options object. The options are:
+	     *
+	     * - **`location`** - {boolean=true|string=} - If `true` will update the url in the location bar, if `false`
+	     *    will not. If string, must be `"replace"`, which will update url and also replace last history record.
+	     * - **`inherit`** - {boolean=false}, If `true` will inherit url parameters from current url.
+	     * - **`relative`** - {object=}, When transitioning with relative path (e.g '^'), 
+	     *    defines which state to be relative from.
+	     * - **`notify`** - {boolean=true}, If `true` will broadcast $stateChangeStart and $stateChangeSuccess events.
+	     * - **`reload`** (v0.2.5) - {boolean=false|string=|object=}, If `true` will force transition even if the state or params 
+	     *    have not changed, aka a reload of the same state. It differs from reloadOnSearch because you'd
+	     *    use this when you want to force a reload when *everything* is the same, including search params.
+	     *    if String, then will reload the state with the name given in reload, and any children.
+	     *    if Object, then a stateObj is expected, will reload the state found in stateObj, and any children.
+	     *
+	     * @returns {promise} A promise representing the state of the new transition. See
+	     * {@link ui.router.state.$state#methods_go $state.go}.
+	     */
+	    $state.transitionTo = function transitionTo(to, toParams, options) {
+	      toParams = toParams || {};
+	      options = extend({
+	        location: true, inherit: false, relative: null, notify: true, reload: false, $retry: false
+	      }, options || {});
+
+	      var from = $state.$current, fromParams = $state.params, fromPath = from.path;
+	      var evt, toState = findState(to, options.relative);
+
+	      // Store the hash param for later (since it will be stripped out by various methods)
+	      var hash = toParams['#'];
+
+	      if (!isDefined(toState)) {
+	        var redirect = { to: to, toParams: toParams, options: options };
+	        var redirectResult = handleRedirect(redirect, from.self, fromParams, options);
+
+	        if (redirectResult) {
+	          return redirectResult;
+	        }
+
+	        // Always retry once if the $stateNotFound was not prevented
+	        // (handles either redirect changed or state lazy-definition)
+	        to = redirect.to;
+	        toParams = redirect.toParams;
+	        options = redirect.options;
+	        toState = findState(to, options.relative);
+
+	        if (!isDefined(toState)) {
+	          if (!options.relative) throw new Error("No such state '" + to + "'");
+	          throw new Error("Could not resolve '" + to + "' from state '" + options.relative + "'");
+	        }
+	      }
+	      if (toState[abstractKey]) throw new Error("Cannot transition to abstract state '" + to + "'");
+	      if (options.inherit) toParams = inheritParams($stateParams, toParams || {}, $state.$current, toState);
+	      if (!toState.params.$$validates(toParams)) return TransitionFailed;
+
+	      toParams = toState.params.$$values(toParams);
+	      to = toState;
+
+	      var toPath = to.path;
+
+	      // Starting from the root of the path, keep all levels that haven't changed
+	      var keep = 0, state = toPath[keep], locals = root.locals, toLocals = [];
+
+	      if (!options.reload) {
+	        while (state && state === fromPath[keep] && state.ownParams.$$equals(toParams, fromParams)) {
+	          locals = toLocals[keep] = state.locals;
+	          keep++;
+	          state = toPath[keep];
+	        }
+	      } else if (isString(options.reload) || isObject(options.reload)) {
+	        if (isObject(options.reload) && !options.reload.name) {
+	          throw new Error('Invalid reload state object');
+	        }
+	        
+	        var reloadState = options.reload === true ? fromPath[0] : findState(options.reload);
+	        if (options.reload && !reloadState) {
+	          throw new Error("No such reload state '" + (isString(options.reload) ? options.reload : options.reload.name) + "'");
+	        }
+
+	        while (state && state === fromPath[keep] && state !== reloadState) {
+	          locals = toLocals[keep] = state.locals;
+	          keep++;
+	          state = toPath[keep];
+	        }
+	      }
+
+	      // If we're going to the same state and all locals are kept, we've got nothing to do.
+	      // But clear 'transition', as we still want to cancel any other pending transitions.
+	      // TODO: We may not want to bump 'transition' if we're called from a location change
+	      // that we've initiated ourselves, because we might accidentally abort a legitimate
+	      // transition initiated from code?
+	      if (shouldSkipReload(to, toParams, from, fromParams, locals, options)) {
+	        if (hash) toParams['#'] = hash;
+	        $state.params = toParams;
+	        copy($state.params, $stateParams);
+	        copy(filterByKeys(to.params.$$keys(), $stateParams), to.locals.globals.$stateParams);
+	        if (options.location && to.navigable && to.navigable.url) {
+	          $urlRouter.push(to.navigable.url, toParams, {
+	            $$avoidResync: true, replace: options.location === 'replace'
+	          });
+	          $urlRouter.update(true);
+	        }
+	        $state.transition = null;
+	        return $q.when($state.current);
+	      }
+
+	      // Filter parameters before we pass them to event handlers etc.
+	      toParams = filterByKeys(to.params.$$keys(), toParams || {});
+	      
+	      // Re-add the saved hash before we start returning things or broadcasting $stateChangeStart
+	      if (hash) toParams['#'] = hash;
+	      
+	      // Broadcast start event and cancel the transition if requested
+	      if (options.notify) {
+	        /**
+	         * @ngdoc event
+	         * @name ui.router.state.$state#$stateChangeStart
+	         * @eventOf ui.router.state.$state
+	         * @eventType broadcast on root scope
+	         * @description
+	         * Fired when the state transition **begins**. You can use `event.preventDefault()`
+	         * to prevent the transition from happening and then the transition promise will be
+	         * rejected with a `'transition prevented'` value.
+	         *
+	         * @param {Object} event Event object.
+	         * @param {State} toState The state being transitioned to.
+	         * @param {Object} toParams The params supplied to the `toState`.
+	         * @param {State} fromState The current state, pre-transition.
+	         * @param {Object} fromParams The params supplied to the `fromState`.
+	         *
+	         * @example
+	         *
+	         * <pre>
+	         * $rootScope.$on('$stateChangeStart',
+	         * function(event, toState, toParams, fromState, fromParams){
+	         *     event.preventDefault();
+	         *     // transitionTo() promise will be rejected with
+	         *     // a 'transition prevented' error
+	         * })
+	         * </pre>
+	         */
+	        if ($rootScope.$broadcast('$stateChangeStart', to.self, toParams, from.self, fromParams, options).defaultPrevented) {
+	          $rootScope.$broadcast('$stateChangeCancel', to.self, toParams, from.self, fromParams);
+	          //Don't update and resync url if there's been a new transition started. see issue #2238, #600
+	          if ($state.transition == null) $urlRouter.update();
+	          return TransitionPrevented;
+	        }
+	      }
+
+	      // Resolve locals for the remaining states, but don't update any global state just
+	      // yet -- if anything fails to resolve the current state needs to remain untouched.
+	      // We also set up an inheritance chain for the locals here. This allows the view directive
+	      // to quickly look up the correct definition for each view in the current state. Even
+	      // though we create the locals object itself outside resolveState(), it is initially
+	      // empty and gets filled asynchronously. We need to keep track of the promise for the
+	      // (fully resolved) current locals, and pass this down the chain.
+	      var resolved = $q.when(locals);
+
+	      for (var l = keep; l < toPath.length; l++, state = toPath[l]) {
+	        locals = toLocals[l] = inherit(locals);
+	        resolved = resolveState(state, toParams, state === to, resolved, locals, options);
+	      }
+
+	      // Once everything is resolved, we are ready to perform the actual transition
+	      // and return a promise for the new state. We also keep track of what the
+	      // current promise is, so that we can detect overlapping transitions and
+	      // keep only the outcome of the last transition.
+	      var transition = $state.transition = resolved.then(function () {
+	        var l, entering, exiting;
+
+	        if ($state.transition !== transition) {
+	          $rootScope.$broadcast('$stateChangeCancel', to.self, toParams, from.self, fromParams);
+	          return TransitionSuperseded;
+	        }
+
+	        // Exit 'from' states not kept
+	        for (l = fromPath.length - 1; l >= keep; l--) {
+	          exiting = fromPath[l];
+	          if (exiting.self.onExit) {
+	            $injector.invoke(exiting.self.onExit, exiting.self, exiting.locals.globals);
+	          }
+	          exiting.locals = null;
+	        }
+
+	        // Enter 'to' states not kept
+	        for (l = keep; l < toPath.length; l++) {
+	          entering = toPath[l];
+	          entering.locals = toLocals[l];
+	          if (entering.self.onEnter) {
+	            $injector.invoke(entering.self.onEnter, entering.self, entering.locals.globals);
+	          }
+	        }
+
+	        // Run it again, to catch any transitions in callbacks
+	        if ($state.transition !== transition) {
+	          $rootScope.$broadcast('$stateChangeCancel', to.self, toParams, from.self, fromParams);
+	          return TransitionSuperseded;
+	        }
+
+	        // Update globals in $state
+	        $state.$current = to;
+	        $state.current = to.self;
+	        $state.params = toParams;
+	        copy($state.params, $stateParams);
+	        $state.transition = null;
+
+	        if (options.location && to.navigable) {
+	          $urlRouter.push(to.navigable.url, to.navigable.locals.globals.$stateParams, {
+	            $$avoidResync: true, replace: options.location === 'replace'
+	          });
+	        }
+
+	        if (options.notify) {
+	        /**
+	         * @ngdoc event
+	         * @name ui.router.state.$state#$stateChangeSuccess
+	         * @eventOf ui.router.state.$state
+	         * @eventType broadcast on root scope
+	         * @description
+	         * Fired once the state transition is **complete**.
+	         *
+	         * @param {Object} event Event object.
+	         * @param {State} toState The state being transitioned to.
+	         * @param {Object} toParams The params supplied to the `toState`.
+	         * @param {State} fromState The current state, pre-transition.
+	         * @param {Object} fromParams The params supplied to the `fromState`.
+	         */
+	          $rootScope.$broadcast('$stateChangeSuccess', to.self, toParams, from.self, fromParams);
+	        }
+	        $urlRouter.update(true);
+
+	        return $state.current;
+	      }).then(null, function (error) {
+	        // propagate TransitionSuperseded error without emitting $stateChangeCancel
+	        // as it was already emitted in the success handler above
+	        if (error === TransitionSupersededError) return TransitionSuperseded;
+
+	        if ($state.transition !== transition) {
+	          $rootScope.$broadcast('$stateChangeCancel', to.self, toParams, from.self, fromParams);
+	          return TransitionSuperseded;
+	        }
+
+	        $state.transition = null;
+	        /**
+	         * @ngdoc event
+	         * @name ui.router.state.$state#$stateChangeError
+	         * @eventOf ui.router.state.$state
+	         * @eventType broadcast on root scope
+	         * @description
+	         * Fired when an **error occurs** during transition. It's important to note that if you
+	         * have any errors in your resolve functions (javascript errors, non-existent services, etc)
+	         * they will not throw traditionally. You must listen for this $stateChangeError event to
+	         * catch **ALL** errors.
+	         *
+	         * @param {Object} event Event object.
+	         * @param {State} toState The state being transitioned to.
+	         * @param {Object} toParams The params supplied to the `toState`.
+	         * @param {State} fromState The current state, pre-transition.
+	         * @param {Object} fromParams The params supplied to the `fromState`.
+	         * @param {Error} error The resolve error object.
+	         */
+	        evt = $rootScope.$broadcast('$stateChangeError', to.self, toParams, from.self, fromParams, error);
+
+	        if (!evt.defaultPrevented) {
+	          $urlRouter.update();
+	        }
+
+	        return $q.reject(error);
+	      });
+
+	      silenceUncaughtInPromise(transition);
+	      return transition;
+	    };
+
+	    /**
+	     * @ngdoc function
+	     * @name ui.router.state.$state#is
+	     * @methodOf ui.router.state.$state
+	     *
+	     * @description
+	     * Similar to {@link ui.router.state.$state#methods_includes $state.includes},
+	     * but only checks for the full state name. If params is supplied then it will be
+	     * tested for strict equality against the current active params object, so all params
+	     * must match with none missing and no extras.
+	     *
+	     * @example
+	     * <pre>
+	     * $state.$current.name = 'contacts.details.item';
+	     *
+	     * // absolute name
+	     * $state.is('contact.details.item'); // returns true
+	     * $state.is(contactDetailItemStateObject); // returns true
+	     *
+	     * // relative name (. and ^), typically from a template
+	     * // E.g. from the 'contacts.details' template
+	     * <div ng-class="{highlighted: $state.is('.item')}">Item</div>
+	     * </pre>
+	     *
+	     * @param {string|object} stateOrName The state name (absolute or relative) or state object you'd like to check.
+	     * @param {object=} params A param object, e.g. `{sectionId: section.id}`, that you'd like
+	     * to test against the current active state.
+	     * @param {object=} options An options object.  The options are:
+	     *
+	     * - **`relative`** - {string|object} -  If `stateOrName` is a relative state name and `options.relative` is set, .is will
+	     * test relative to `options.relative` state (or name).
+	     *
+	     * @returns {boolean} Returns true if it is the state.
+	     */
+	    $state.is = function is(stateOrName, params, options) {
+	      options = extend({ relative: $state.$current }, options || {});
+	      var state = findState(stateOrName, options.relative);
+
+	      if (!isDefined(state)) { return undefined; }
+	      if ($state.$current !== state) { return false; }
+
+	      return !params || objectKeys(params).reduce(function(acc, key) {
+	        var paramDef = state.params[key];
+	        return acc && !paramDef || paramDef.type.equals($stateParams[key], params[key]);
+	      }, true);
+	    };
+
+	    /**
+	     * @ngdoc function
+	     * @name ui.router.state.$state#includes
+	     * @methodOf ui.router.state.$state
+	     *
+	     * @description
+	     * A method to determine if the current active state is equal to or is the child of the
+	     * state stateName. If any params are passed then they will be tested for a match as well.
+	     * Not all the parameters need to be passed, just the ones you'd like to test for equality.
+	     *
+	     * @example
+	     * Partial and relative names
+	     * <pre>
+	     * $state.$current.name = 'contacts.details.item';
+	     *
+	     * // Using partial names
+	     * $state.includes("contacts"); // returns true
+	     * $state.includes("contacts.details"); // returns true
+	     * $state.includes("contacts.details.item"); // returns true
+	     * $state.includes("contacts.list"); // returns false
+	     * $state.includes("about"); // returns false
+	     *
+	     * // Using relative names (. and ^), typically from a template
+	     * // E.g. from the 'contacts.details' template
+	     * <div ng-class="{highlighted: $state.includes('.item')}">Item</div>
+	     * </pre>
+	     *
+	     * Basic globbing patterns
+	     * <pre>
+	     * $state.$current.name = 'contacts.details.item.url';
+	     *
+	     * $state.includes("*.details.*.*"); // returns true
+	     * $state.includes("*.details.**"); // returns true
+	     * $state.includes("**.item.**"); // returns true
+	     * $state.includes("*.details.item.url"); // returns true
+	     * $state.includes("*.details.*.url"); // returns true
+	     * $state.includes("*.details.*"); // returns false
+	     * $state.includes("item.**"); // returns false
+	     * </pre>
+	     *
+	     * @param {string} stateOrName A partial name, relative name, or glob pattern
+	     * to be searched for within the current state name.
+	     * @param {object=} params A param object, e.g. `{sectionId: section.id}`,
+	     * that you'd like to test against the current active state.
+	     * @param {object=} options An options object.  The options are:
+	     *
+	     * - **`relative`** - {string|object=} -  If `stateOrName` is a relative state reference and `options.relative` is set,
+	     * .includes will test relative to `options.relative` state (or name).
+	     *
+	     * @returns {boolean} Returns true if it does include the state
+	     */
+	    $state.includes = function includes(stateOrName, params, options) {
+	      options = extend({ relative: $state.$current }, options || {});
+	      if (isString(stateOrName) && isGlob(stateOrName)) {
+	        if (!doesStateMatchGlob(stateOrName)) {
+	          return false;
+	        }
+	        stateOrName = $state.$current.name;
+	      }
+
+	      var state = findState(stateOrName, options.relative);
+	      if (!isDefined(state)) { return undefined; }
+	      if (!isDefined($state.$current.includes[state.name])) { return false; }
+	      if (!params) { return true; }
+
+	      var keys = objectKeys(params);
+	      for (var i = 0; i < keys.length; i++) {
+	        var key = keys[i], paramDef = state.params[key];
+	        if (paramDef && !paramDef.type.equals($stateParams[key], params[key])) {
+	          return false;
+	        }
+	      }
+
+	      return objectKeys(params).reduce(function(acc, key) {
+	        var paramDef = state.params[key];
+	        return acc && !paramDef || paramDef.type.equals($stateParams[key], params[key]);
+	      }, true);
+	    };
+
+
+	    /**
+	     * @ngdoc function
+	     * @name ui.router.state.$state#href
+	     * @methodOf ui.router.state.$state
+	     *
+	     * @description
+	     * A url generation method that returns the compiled url for the given state populated with the given params.
+	     *
+	     * @example
+	     * <pre>
+	     * expect($state.href("about.person", { person: "bob" })).toEqual("/about/bob");
+	     * </pre>
+	     *
+	     * @param {string|object} stateOrName The state name or state object you'd like to generate a url from.
+	     * @param {object=} params An object of parameter values to fill the state's required parameters.
+	     * @param {object=} options Options object. The options are:
+	     *
+	     * - **`lossy`** - {boolean=true} -  If true, and if there is no url associated with the state provided in the
+	     *    first parameter, then the constructed href url will be built from the first navigable ancestor (aka
+	     *    ancestor with a valid url).
+	     * - **`inherit`** - {boolean=true}, If `true` will inherit url parameters from current url.
+	     * - **`relative`** - {object=$state.$current}, When transitioning with relative path (e.g '^'), 
+	     *    defines which state to be relative from.
+	     * - **`absolute`** - {boolean=false},  If true will generate an absolute url, e.g. "http://www.example.com/fullurl".
+	     * 
+	     * @returns {string} compiled state url
+	     */
+	    $state.href = function href(stateOrName, params, options) {
+	      options = extend({
+	        lossy:    true,
+	        inherit:  true,
+	        absolute: false,
+	        relative: $state.$current
+	      }, options || {});
+
+	      var state = findState(stateOrName, options.relative);
+
+	      if (!isDefined(state)) return null;
+	      if (options.inherit) params = inheritParams($stateParams, params || {}, $state.$current, state);
+	      
+	      var nav = (state && options.lossy) ? state.navigable : state;
+
+	      if (!nav || nav.url === undefined || nav.url === null) {
+	        return null;
+	      }
+	      return $urlRouter.href(nav.url, filterByKeys(state.params.$$keys().concat('#'), params || {}), {
+	        absolute: options.absolute
+	      });
+	    };
+
+	    /**
+	     * @ngdoc function
+	     * @name ui.router.state.$state#get
+	     * @methodOf ui.router.state.$state
+	     *
+	     * @description
+	     * Returns the state configuration object for any specific state or all states.
+	     *
+	     * @param {string|object=} stateOrName (absolute or relative) If provided, will only get the config for
+	     * the requested state. If not provided, returns an array of ALL state configs.
+	     * @param {string|object=} context When stateOrName is a relative state reference, the state will be retrieved relative to context.
+	     * @returns {Object|Array} State configuration object or array of all objects.
+	     */
+	    $state.get = function (stateOrName, context) {
+	      if (arguments.length === 0) return map(objectKeys(states), function(name) { return states[name].self; });
+	      var state = findState(stateOrName, context || $state.$current);
+	      return (state && state.self) ? state.self : null;
+	    };
+
+	    function resolveState(state, params, paramsAreFiltered, inherited, dst, options) {
+	      // Make a restricted $stateParams with only the parameters that apply to this state if
+	      // necessary. In addition to being available to the controller and onEnter/onExit callbacks,
+	      // we also need $stateParams to be available for any $injector calls we make during the
+	      // dependency resolution process.
+	      var $stateParams = (paramsAreFiltered) ? params : filterByKeys(state.params.$$keys(), params);
+	      var locals = { $stateParams: $stateParams };
+
+	      // Resolve 'global' dependencies for the state, i.e. those not specific to a view.
+	      // We're also including $stateParams in this; that way the parameters are restricted
+	      // to the set that should be visible to the state, and are independent of when we update
+	      // the global $state and $stateParams values.
+	      dst.resolve = $resolve.resolve(state.resolve, locals, dst.resolve, state);
+	      var promises = [dst.resolve.then(function (globals) {
+	        dst.globals = globals;
+	      })];
+	      if (inherited) promises.push(inherited);
+
+	      function resolveViews() {
+	        var viewsPromises = [];
+
+	        // Resolve template and dependencies for all views.
+	        forEach(state.views, function (view, name) {
+	          var injectables = (view.resolve && view.resolve !== state.resolve ? view.resolve : {});
+	          injectables.$template = [ function () {
+	            return $view.load(name, { view: view, locals: dst.globals, params: $stateParams, notify: options.notify }) || '';
+	          }];
+
+	          viewsPromises.push($resolve.resolve(injectables, dst.globals, dst.resolve, state).then(function (result) {
+	            // References to the controller (only instantiated at link time)
+	            if (isFunction(view.controllerProvider) || isArray(view.controllerProvider)) {
+	              var injectLocals = angular.extend({}, injectables, dst.globals);
+	              result.$$controller = $injector.invoke(view.controllerProvider, null, injectLocals);
+	            } else {
+	              result.$$controller = view.controller;
+	            }
+	            // Provide access to the state itself for internal use
+	            result.$$state = state;
+	            result.$$controllerAs = view.controllerAs;
+	            result.$$resolveAs = view.resolveAs;
+	            dst[name] = result;
+	          }));
+	        });
+
+	        return $q.all(viewsPromises).then(function(){
+	          return dst.globals;
+	        });
+	      }
+
+	      // Wait for all the promises and then return the activation object
+	      return $q.all(promises).then(resolveViews).then(function (values) {
+	        return dst;
+	      });
+	    }
+
+	    return $state;
+	  }
+
+	  function shouldSkipReload(to, toParams, from, fromParams, locals, options) {
+	    // Return true if there are no differences in non-search (path/object) params, false if there are differences
+	    function nonSearchParamsEqual(fromAndToState, fromParams, toParams) {
+	      // Identify whether all the parameters that differ between `fromParams` and `toParams` were search params.
+	      function notSearchParam(key) {
+	        return fromAndToState.params[key].location != "search";
+	      }
+	      var nonQueryParamKeys = fromAndToState.params.$$keys().filter(notSearchParam);
+	      var nonQueryParams = pick.apply({}, [fromAndToState.params].concat(nonQueryParamKeys));
+	      var nonQueryParamSet = new $$UMFP.ParamSet(nonQueryParams);
+	      return nonQueryParamSet.$$equals(fromParams, toParams);
+	    }
+
+	    // If reload was not explicitly requested
+	    // and we're transitioning to the same state we're already in
+	    // and    the locals didn't change
+	    //     or they changed in a way that doesn't merit reloading
+	    //        (reloadOnParams:false, or reloadOnSearch.false and only search params changed)
+	    // Then return true.
+	    if (!options.reload && to === from &&
+	      (locals === from.locals || (to.self.reloadOnSearch === false && nonSearchParamsEqual(from, fromParams, toParams)))) {
+	      return true;
+	    }
+	  }
+	}
+
+	angular.module('ui.router.state')
+	  .factory('$stateParams', function () { return {}; })
+	  .constant("$state.runtime", { autoinject: true })
+	  .provider('$state', $StateProvider)
+	  // Inject $state to initialize when entering runtime. #2574
+	  .run(['$injector', function ($injector) {
+	    // Allow tests (stateSpec.js) to turn this off by defining this constant
+	    if ($injector.get("$state.runtime").autoinject) {
+	      $injector.get('$state');
+	    }
+	  }]);
+
+
+	$ViewProvider.$inject = [];
+	function $ViewProvider() {
+
+	  this.$get = $get;
+	  /**
+	   * @ngdoc object
+	   * @name ui.router.state.$view
+	   *
+	   * @requires ui.router.util.$templateFactory
+	   * @requires $rootScope
+	   *
+	   * @description
+	   *
+	   */
+	  $get.$inject = ['$rootScope', '$templateFactory'];
+	  function $get(   $rootScope,   $templateFactory) {
+	    return {
+	      // $view.load('full.viewName', { template: ..., controller: ..., resolve: ..., async: false, params: ... })
+	      /**
+	       * @ngdoc function
+	       * @name ui.router.state.$view#load
+	       * @methodOf ui.router.state.$view
+	       *
+	       * @description
+	       *
+	       * @param {string} name name
+	       * @param {object} options option object.
+	       */
+	      load: function load(name, options) {
+	        var result, defaults = {
+	          template: null, controller: null, view: null, locals: null, notify: true, async: true, params: {}
+	        };
+	        options = extend(defaults, options);
+
+	        if (options.view) {
+	          result = $templateFactory.fromConfig(options.view, options.params, options.locals);
+	        }
+	        return result;
+	      }
+	    };
+	  }
+	}
+
+	angular.module('ui.router.state').provider('$view', $ViewProvider);
+
+	/**
+	 * @ngdoc object
+	 * @name ui.router.state.$uiViewScrollProvider
+	 *
+	 * @description
+	 * Provider that returns the {@link ui.router.state.$uiViewScroll} service function.
+	 */
+	function $ViewScrollProvider() {
+
+	  var useAnchorScroll = false;
+
+	  /**
+	   * @ngdoc function
+	   * @name ui.router.state.$uiViewScrollProvider#useAnchorScroll
+	   * @methodOf ui.router.state.$uiViewScrollProvider
+	   *
+	   * @description
+	   * Reverts back to using the core [`$anchorScroll`](http://docs.angularjs.org/api/ng.$anchorScroll) service for
+	   * scrolling based on the url anchor.
+	   */
+	  this.useAnchorScroll = function () {
+	    useAnchorScroll = true;
+	  };
+
+	  /**
+	   * @ngdoc object
+	   * @name ui.router.state.$uiViewScroll
+	   *
+	   * @requires $anchorScroll
+	   * @requires $timeout
+	   *
+	   * @description
+	   * When called with a jqLite element, it scrolls the element into view (after a
+	   * `$timeout` so the DOM has time to refresh).
+	   *
+	   * If you prefer to rely on `$anchorScroll` to scroll the view to the anchor,
+	   * this can be enabled by calling {@link ui.router.state.$uiViewScrollProvider#methods_useAnchorScroll `$uiViewScrollProvider.useAnchorScroll()`}.
+	   */
+	  this.$get = ['$anchorScroll', '$timeout', function ($anchorScroll, $timeout) {
+	    if (useAnchorScroll) {
+	      return $anchorScroll;
+	    }
+
+	    return function ($element) {
+	      return $timeout(function () {
+	        $element[0].scrollIntoView();
+	      }, 0, false);
+	    };
+	  }];
+	}
+
+	angular.module('ui.router.state').provider('$uiViewScroll', $ViewScrollProvider);
+
+	/**
+	 * @ngdoc directive
+	 * @name ui.router.state.directive:ui-view
+	 *
+	 * @requires ui.router.state.$state
+	 * @requires $compile
+	 * @requires $controller
+	 * @requires $injector
+	 * @requires ui.router.state.$uiViewScroll
+	 * @requires $document
+	 *
+	 * @restrict ECA
+	 *
+	 * @description
+	 * The ui-view directive tells $state where to place your templates.
+	 *
+	 * @param {string=} name A view name. The name should be unique amongst the other views in the
+	 * same state. You can have views of the same name that live in different states.
+	 *
+	 * @param {string=} autoscroll It allows you to set the scroll behavior of the browser window
+	 * when a view is populated. By default, $anchorScroll is overridden by ui-router's custom scroll
+	 * service, {@link ui.router.state.$uiViewScroll}. This custom service let's you
+	 * scroll ui-view elements into view when they are populated during a state activation.
+	 *
+	 * *Note: To revert back to old [`$anchorScroll`](http://docs.angularjs.org/api/ng.$anchorScroll)
+	 * functionality, call `$uiViewScrollProvider.useAnchorScroll()`.*
+	 *
+	 * @param {string=} onload Expression to evaluate whenever the view updates.
+	 *
+	 * @example
+	 * A view can be unnamed or named.
+	 * <pre>
+	 * <!-- Unnamed -->
+	 * <div ui-view></div>
+	 *
+	 * <!-- Named -->
+	 * <div ui-view="viewName"></div>
+	 * </pre>
+	 *
+	 * You can only have one unnamed view within any template (or root html). If you are only using a
+	 * single view and it is unnamed then you can populate it like so:
+	 * <pre>
+	 * <div ui-view></div>
+	 * $stateProvider.state("home", {
+	 *   template: "<h1>HELLO!</h1>"
+	 * })
+	 * </pre>
+	 *
+	 * The above is a convenient shortcut equivalent to specifying your view explicitly with the {@link ui.router.state.$stateProvider#methods_state `views`}
+	 * config property, by name, in this case an empty name:
+	 * <pre>
+	 * $stateProvider.state("home", {
+	 *   views: {
+	 *     "": {
+	 *       template: "<h1>HELLO!</h1>"
+	 *     }
+	 *   }    
+	 * })
+	 * </pre>
+	 *
+	 * But typically you'll only use the views property if you name your view or have more than one view
+	 * in the same template. There's not really a compelling reason to name a view if its the only one,
+	 * but you could if you wanted, like so:
+	 * <pre>
+	 * <div ui-view="main"></div>
+	 * </pre>
+	 * <pre>
+	 * $stateProvider.state("home", {
+	 *   views: {
+	 *     "main": {
+	 *       template: "<h1>HELLO!</h1>"
+	 *     }
+	 *   }    
+	 * })
+	 * </pre>
+	 *
+	 * Really though, you'll use views to set up multiple views:
+	 * <pre>
+	 * <div ui-view></div>
+	 * <div ui-view="chart"></div>
+	 * <div ui-view="data"></div>
+	 * </pre>
+	 *
+	 * <pre>
+	 * $stateProvider.state("home", {
+	 *   views: {
+	 *     "": {
+	 *       template: "<h1>HELLO!</h1>"
+	 *     },
+	 *     "chart": {
+	 *       template: "<chart_thing/>"
+	 *     },
+	 *     "data": {
+	 *       template: "<data_thing/>"
+	 *     }
+	 *   }    
+	 * })
+	 * </pre>
+	 *
+	 * Examples for `autoscroll`:
+	 *
+	 * <pre>
+	 * <!-- If autoscroll present with no expression,
+	 *      then scroll ui-view into view -->
+	 * <ui-view autoscroll/>
+	 *
+	 * <!-- If autoscroll present with valid expression,
+	 *      then scroll ui-view into view if expression evaluates to true -->
+	 * <ui-view autoscroll='true'/>
+	 * <ui-view autoscroll='false'/>
+	 * <ui-view autoscroll='scopeVariable'/>
+	 * </pre>
+	 *
+	 * Resolve data:
+	 *
+	 * The resolved data from the state's `resolve` block is placed on the scope as `$resolve` (this
+	 * can be customized using [[ViewDeclaration.resolveAs]]).  This can be then accessed from the template.
+	 *
+	 * Note that when `controllerAs` is being used, `$resolve` is set on the controller instance *after* the
+	 * controller is instantiated.  The `$onInit()` hook can be used to perform initialization code which
+	 * depends on `$resolve` data.
+	 *
+	 * Example usage of $resolve in a view template
+	 * <pre>
+	 * $stateProvider.state('home', {
+	 *   template: '<my-component user="$resolve.user"></my-component>',
+	 *   resolve: {
+	 *     user: function(UserService) { return UserService.fetchUser(); }
+	 *   }
+	 * });
+	 * </pre>
+	 */
+	$ViewDirective.$inject = ['$state', '$injector', '$uiViewScroll', '$interpolate', '$q'];
+	function $ViewDirective(   $state,   $injector,   $uiViewScroll,   $interpolate,   $q) {
+
+	  function getService() {
+	    return ($injector.has) ? function(service) {
+	      return $injector.has(service) ? $injector.get(service) : null;
+	    } : function(service) {
+	      try {
+	        return $injector.get(service);
+	      } catch (e) {
+	        return null;
+	      }
+	    };
+	  }
+
+	  var service = getService(),
+	      $animator = service('$animator'),
+	      $animate = service('$animate');
+
+	  // Returns a set of DOM manipulation functions based on which Angular version
+	  // it should use
+	  function getRenderer(attrs, scope) {
+	    var statics = function() {
+	      return {
+	        enter: function (element, target, cb) { target.after(element); cb(); },
+	        leave: function (element, cb) { element.remove(); cb(); }
+	      };
+	    };
+
+	    if ($animate) {
+	      return {
+	        enter: function(element, target, cb) {
+	          if (angular.version.minor > 2) {
+	            $animate.enter(element, null, target).then(cb);
+	          } else {
+	            $animate.enter(element, null, target, cb);
+	          }
+	        },
+	        leave: function(element, cb) {
+	          if (angular.version.minor > 2) {
+	            $animate.leave(element).then(cb);
+	          } else {
+	            $animate.leave(element, cb);
+	          }
+	        }
+	      };
+	    }
+
+	    if ($animator) {
+	      var animate = $animator && $animator(scope, attrs);
+
+	      return {
+	        enter: function(element, target, cb) {animate.enter(element, null, target); cb(); },
+	        leave: function(element, cb) { animate.leave(element); cb(); }
+	      };
+	    }
+
+	    return statics();
+	  }
+
+	  var directive = {
+	    restrict: 'ECA',
+	    terminal: true,
+	    priority: 400,
+	    transclude: 'element',
+	    compile: function (tElement, tAttrs, $transclude) {
+	      return function (scope, $element, attrs) {
+	        var previousEl, currentEl, currentScope, latestLocals,
+	            onloadExp     = attrs.onload || '',
+	            autoScrollExp = attrs.autoscroll,
+	            renderer      = getRenderer(attrs, scope),
+	            inherited     = $element.inheritedData('$uiView');
+
+	        scope.$on('$stateChangeSuccess', function() {
+	          updateView(false);
+	        });
+
+	        updateView(true);
+
+	        function cleanupLastView() {
+	          if (previousEl) {
+	            previousEl.remove();
+	            previousEl = null;
+	          }
+
+	          if (currentScope) {
+	            currentScope.$destroy();
+	            currentScope = null;
+	          }
+
+	          if (currentEl) {
+	            var $uiViewData = currentEl.data('$uiViewAnim');
+	            renderer.leave(currentEl, function() {
+	              $uiViewData.$$animLeave.resolve();
+	              previousEl = null;
+	            });
+
+	            previousEl = currentEl;
+	            currentEl = null;
+	          }
+	        }
+
+	        function updateView(firstTime) {
+	          var newScope,
+	              name            = getUiViewName(scope, attrs, $element, $interpolate),
+	              previousLocals  = name && $state.$current && $state.$current.locals[name];
+
+	          if (!firstTime && previousLocals === latestLocals) return; // nothing to do
+	          newScope = scope.$new();
+	          latestLocals = $state.$current.locals[name];
+
+	          /**
+	           * @ngdoc event
+	           * @name ui.router.state.directive:ui-view#$viewContentLoading
+	           * @eventOf ui.router.state.directive:ui-view
+	           * @eventType emits on ui-view directive scope
+	           * @description
+	           *
+	           * Fired once the view **begins loading**, *before* the DOM is rendered.
+	           *
+	           * @param {Object} event Event object.
+	           * @param {string} viewName Name of the view.
+	           */
+	          newScope.$emit('$viewContentLoading', name);
+
+	          var clone = $transclude(newScope, function(clone) {
+	            var animEnter = $q.defer(), animLeave = $q.defer();
+	            var viewAnimData = {
+	              $animEnter: animEnter.promise,
+	              $animLeave: animLeave.promise,
+	              $$animLeave: animLeave
+	            };
+
+	            clone.data('$uiViewAnim', viewAnimData);
+	            renderer.enter(clone, $element, function onUiViewEnter() {
+	              animEnter.resolve();
+	              if(currentScope) {
+	                currentScope.$emit('$viewContentAnimationEnded');
+	              }
+
+	              if (angular.isDefined(autoScrollExp) && !autoScrollExp || scope.$eval(autoScrollExp)) {
+	                $uiViewScroll(clone);
+	              }
+	            });
+	            cleanupLastView();
+	          });
+
+	          currentEl = clone;
+	          currentScope = newScope;
+	          /**
+	           * @ngdoc event
+	           * @name ui.router.state.directive:ui-view#$viewContentLoaded
+	           * @eventOf ui.router.state.directive:ui-view
+	           * @eventType emits on ui-view directive scope
+	           * @description
+	           * Fired once the view is **loaded**, *after* the DOM is rendered.
+	           *
+	           * @param {Object} event Event object.
+	           * @param {string} viewName Name of the view.
+	           */
+	          currentScope.$emit('$viewContentLoaded', name);
+	          currentScope.$eval(onloadExp);
+	        }
+	      };
+	    }
+	  };
+
+	  return directive;
+	}
+
+	$ViewDirectiveFill.$inject = ['$compile', '$controller', '$state', '$interpolate'];
+	function $ViewDirectiveFill (  $compile,   $controller,   $state,   $interpolate) {
+	  return {
+	    restrict: 'ECA',
+	    priority: -400,
+	    compile: function (tElement) {
+	      var initial = tElement.html();
+	      if (tElement.empty) {
+	        tElement.empty();
+	      } else {
+	        // ng 1.0.0 doesn't have empty(), which cleans up data and handlers
+	        tElement[0].innerHTML = null;
+	      }
+
+	      return function (scope, $element, attrs) {
+	        var current = $state.$current,
+	            name = getUiViewName(scope, attrs, $element, $interpolate),
+	            locals  = current && current.locals[name];
+
+	        if (! locals) {
+	          $element.html(initial);
+	          $compile($element.contents())(scope);
+	          return;
+	        }
+
+	        $element.data('$uiView', { name: name, state: locals.$$state });
+	        $element.html(locals.$template ? locals.$template : initial);
+
+	        var resolveData = angular.extend({}, locals);
+	        scope[locals.$$resolveAs] = resolveData;
+
+	        var link = $compile($element.contents());
+
+	        if (locals.$$controller) {
+	          locals.$scope = scope;
+	          locals.$element = $element;
+	          var controller = $controller(locals.$$controller, locals);
+	          if (locals.$$controllerAs) {
+	            scope[locals.$$controllerAs] = controller;
+	            scope[locals.$$controllerAs][locals.$$resolveAs] = resolveData;
+	          }
+	          if (isFunction(controller.$onInit)) controller.$onInit();
+	          $element.data('$ngControllerController', controller);
+	          $element.children().data('$ngControllerController', controller);
+	        }
+
+	        link(scope);
+	      };
+	    }
+	  };
+	}
+
+	/**
+	 * Shared ui-view code for both directives:
+	 * Given scope, element, and its attributes, return the view's name
+	 */
+	function getUiViewName(scope, attrs, element, $interpolate) {
+	  var name = $interpolate(attrs.uiView || attrs.name || '')(scope);
+	  var uiViewCreatedBy = element.inheritedData('$uiView');
+	  return name.indexOf('@') >= 0 ?  name :  (name + '@' + (uiViewCreatedBy ? uiViewCreatedBy.state.name : ''));
+	}
+
+	angular.module('ui.router.state').directive('uiView', $ViewDirective);
+	angular.module('ui.router.state').directive('uiView', $ViewDirectiveFill);
+
+	function parseStateRef(ref, current) {
+	  var preparsed = ref.match(/^\s*({[^}]*})\s*$/), parsed;
+	  if (preparsed) ref = current + '(' + preparsed[1] + ')';
+	  parsed = ref.replace(/\n/g, " ").match(/^([^(]+?)\s*(\((.*)\))?$/);
+	  if (!parsed || parsed.length !== 4) throw new Error("Invalid state ref '" + ref + "'");
+	  return { state: parsed[1], paramExpr: parsed[3] || null };
+	}
+
+	function stateContext(el) {
+	  var stateData = el.parent().inheritedData('$uiView');
+
+	  if (stateData && stateData.state && stateData.state.name) {
+	    return stateData.state;
+	  }
+	}
+
+	function getTypeInfo(el) {
+	  // SVGAElement does not use the href attribute, but rather the 'xlinkHref' attribute.
+	  var isSvg = Object.prototype.toString.call(el.prop('href')) === '[object SVGAnimatedString]';
+	  var isForm = el[0].nodeName === "FORM";
+
+	  return {
+	    attr: isForm ? "action" : (isSvg ? 'xlink:href' : 'href'),
+	    isAnchor: el.prop("tagName").toUpperCase() === "A",
+	    clickable: !isForm
+	  };
+	}
+
+	function clickHook(el, $state, $timeout, type, current) {
+	  return function(e) {
+	    var button = e.which || e.button, target = current();
+
+	    if (!(button > 1 || e.ctrlKey || e.metaKey || e.shiftKey || el.attr('target'))) {
+	      // HACK: This is to allow ng-clicks to be processed before the transition is initiated:
+	      var transition = $timeout(function() {
+	        $state.go(target.state, target.params, target.options);
+	      });
+	      e.preventDefault();
+
+	      // if the state has no URL, ignore one preventDefault from the <a> directive.
+	      var ignorePreventDefaultCount = type.isAnchor && !target.href ? 1: 0;
+
+	      e.preventDefault = function() {
+	        if (ignorePreventDefaultCount-- <= 0) $timeout.cancel(transition);
+	      };
+	    }
+	  };
+	}
+
+	function defaultOpts(el, $state) {
+	  return { relative: stateContext(el) || $state.$current, inherit: true };
+	}
+
+	/**
+	 * @ngdoc directive
+	 * @name ui.router.state.directive:ui-sref
+	 *
+	 * @requires ui.router.state.$state
+	 * @requires $timeout
+	 *
+	 * @restrict A
+	 *
+	 * @description
+	 * A directive that binds a link (`<a>` tag) to a state. If the state has an associated
+	 * URL, the directive will automatically generate & update the `href` attribute via
+	 * the {@link ui.router.state.$state#methods_href $state.href()} method. Clicking
+	 * the link will trigger a state transition with optional parameters.
+	 *
+	 * Also middle-clicking, right-clicking, and ctrl-clicking on the link will be
+	 * handled natively by the browser.
+	 *
+	 * You can also use relative state paths within ui-sref, just like the relative
+	 * paths passed to `$state.go()`. You just need to be aware that the path is relative
+	 * to the state that the link lives in, in other words the state that loaded the
+	 * template containing the link.
+	 *
+	 * You can specify options to pass to {@link ui.router.state.$state#methods_go $state.go()}
+	 * using the `ui-sref-opts` attribute. Options are restricted to `location`, `inherit`,
+	 * and `reload`.
+	 *
+	 * @example
+	 * Here's an example of how you'd use ui-sref and how it would compile. If you have the
+	 * following template:
+	 * <pre>
+	 * <a ui-sref="home">Home</a> | <a ui-sref="about">About</a> | <a ui-sref="{page: 2}">Next page</a>
+	 *
+	 * <ul>
+	 *     <li ng-repeat="contact in contacts">
+	 *         <a ui-sref="contacts.detail({ id: contact.id })">{{ contact.name }}</a>
+	 *     </li>
+	 * </ul>
+	 * </pre>
+	 *
+	 * Then the compiled html would be (assuming Html5Mode is off and current state is contacts):
+	 * <pre>
+	 * <a href="#/home" ui-sref="home">Home</a> | <a href="#/about" ui-sref="about">About</a> | <a href="#/contacts?page=2" ui-sref="{page: 2}">Next page</a>
+	 *
+	 * <ul>
+	 *     <li ng-repeat="contact in contacts">
+	 *         <a href="#/contacts/1" ui-sref="contacts.detail({ id: contact.id })">Joe</a>
+	 *     </li>
+	 *     <li ng-repeat="contact in contacts">
+	 *         <a href="#/contacts/2" ui-sref="contacts.detail({ id: contact.id })">Alice</a>
+	 *     </li>
+	 *     <li ng-repeat="contact in contacts">
+	 *         <a href="#/contacts/3" ui-sref="contacts.detail({ id: contact.id })">Bob</a>
+	 *     </li>
+	 * </ul>
+	 *
+	 * <a ui-sref="home" ui-sref-opts="{reload: true}">Home</a>
+	 * </pre>
+	 *
+	 * @param {string} ui-sref 'stateName' can be any valid absolute or relative state
+	 * @param {Object} ui-sref-opts options to pass to {@link ui.router.state.$state#methods_go $state.go()}
+	 */
+	$StateRefDirective.$inject = ['$state', '$timeout'];
+	function $StateRefDirective($state, $timeout) {
+	  return {
+	    restrict: 'A',
+	    require: ['?^uiSrefActive', '?^uiSrefActiveEq'],
+	    link: function(scope, element, attrs, uiSrefActive) {
+	      var ref    = parseStateRef(attrs.uiSref, $state.current.name);
+	      var def    = { state: ref.state, href: null, params: null };
+	      var type   = getTypeInfo(element);
+	      var active = uiSrefActive[1] || uiSrefActive[0];
+	      var unlinkInfoFn = null;
+	      var hookFn;
+
+	      def.options = extend(defaultOpts(element, $state), attrs.uiSrefOpts ? scope.$eval(attrs.uiSrefOpts) : {});
+
+	      var update = function(val) {
+	        if (val) def.params = angular.copy(val);
+	        def.href = $state.href(ref.state, def.params, def.options);
+
+	        if (unlinkInfoFn) unlinkInfoFn();
+	        if (active) unlinkInfoFn = active.$$addStateInfo(ref.state, def.params);
+	        if (def.href !== null) attrs.$set(type.attr, def.href);
+	      };
+
+	      if (ref.paramExpr) {
+	        scope.$watch(ref.paramExpr, function(val) { if (val !== def.params) update(val); }, true);
+	        def.params = angular.copy(scope.$eval(ref.paramExpr));
+	      }
+	      update();
+
+	      if (!type.clickable) return;
+	      hookFn = clickHook(element, $state, $timeout, type, function() { return def; });
+	      element[element.on ? 'on' : 'bind']("click", hookFn);
+	      scope.$on('$destroy', function() {
+	        element[element.off ? 'off' : 'unbind']("click", hookFn);
+	      });
+	    }
+	  };
+	}
+
+	/**
+	 * @ngdoc directive
+	 * @name ui.router.state.directive:ui-state
+	 *
+	 * @requires ui.router.state.uiSref
+	 *
+	 * @restrict A
+	 *
+	 * @description
+	 * Much like ui-sref, but will accept named $scope properties to evaluate for a state definition,
+	 * params and override options.
+	 *
+	 * @param {string} ui-state 'stateName' can be any valid absolute or relative state
+	 * @param {Object} ui-state-params params to pass to {@link ui.router.state.$state#methods_href $state.href()}
+	 * @param {Object} ui-state-opts options to pass to {@link ui.router.state.$state#methods_go $state.go()}
+	 */
+	$StateRefDynamicDirective.$inject = ['$state', '$timeout'];
+	function $StateRefDynamicDirective($state, $timeout) {
+	  return {
+	    restrict: 'A',
+	    require: ['?^uiSrefActive', '?^uiSrefActiveEq'],
+	    link: function(scope, element, attrs, uiSrefActive) {
+	      var type   = getTypeInfo(element);
+	      var active = uiSrefActive[1] || uiSrefActive[0];
+	      var group  = [attrs.uiState, attrs.uiStateParams || null, attrs.uiStateOpts || null];
+	      var watch  = '[' + group.map(function(val) { return val || 'null'; }).join(', ') + ']';
+	      var def    = { state: null, params: null, options: null, href: null };
+	      var unlinkInfoFn = null;
+	      var hookFn;
+
+	      function runStateRefLink (group) {
+	        def.state = group[0]; def.params = group[1]; def.options = group[2];
+	        def.href = $state.href(def.state, def.params, def.options);
+
+	        if (unlinkInfoFn) unlinkInfoFn();
+	        if (active) unlinkInfoFn = active.$$addStateInfo(def.state, def.params);
+	        if (def.href) attrs.$set(type.attr, def.href);
+	      }
+
+	      scope.$watch(watch, runStateRefLink, true);
+	      runStateRefLink(scope.$eval(watch));
+
+	      if (!type.clickable) return;
+	      hookFn = clickHook(element, $state, $timeout, type, function() { return def; });
+	      element[element.on ? 'on' : 'bind']("click", hookFn);
+	      scope.$on('$destroy', function() {
+	        element[element.off ? 'off' : 'unbind']("click", hookFn);
+	      });
+	    }
+	  };
+	}
+
+
+	/**
+	 * @ngdoc directive
+	 * @name ui.router.state.directive:ui-sref-active
+	 *
+	 * @requires ui.router.state.$state
+	 * @requires ui.router.state.$stateParams
+	 * @requires $interpolate
+	 *
+	 * @restrict A
+	 *
+	 * @description
+	 * A directive working alongside ui-sref to add classes to an element when the
+	 * related ui-sref directive's state is active, and removing them when it is inactive.
+	 * The primary use-case is to simplify the special appearance of navigation menus
+	 * relying on `ui-sref`, by having the "active" state's menu button appear different,
+	 * distinguishing it from the inactive menu items.
+	 *
+	 * ui-sref-active can live on the same element as ui-sref or on a parent element. The first
+	 * ui-sref-active found at the same level or above the ui-sref will be used.
+	 *
+	 * Will activate when the ui-sref's target state or any child state is active. If you
+	 * need to activate only when the ui-sref target state is active and *not* any of
+	 * it's children, then you will use
+	 * {@link ui.router.state.directive:ui-sref-active-eq ui-sref-active-eq}
+	 *
+	 * @example
+	 * Given the following template:
+	 * <pre>
+	 * <ul>
+	 *   <li ui-sref-active="active" class="item">
+	 *     <a href ui-sref="app.user({user: 'bilbobaggins'})">@bilbobaggins</a>
+	 *   </li>
+	 * </ul>
+	 * </pre>
+	 *
+	 *
+	 * When the app state is "app.user" (or any children states), and contains the state parameter "user" with value "bilbobaggins",
+	 * the resulting HTML will appear as (note the 'active' class):
+	 * <pre>
+	 * <ul>
+	 *   <li ui-sref-active="active" class="item active">
+	 *     <a ui-sref="app.user({user: 'bilbobaggins'})" href="/users/bilbobaggins">@bilbobaggins</a>
+	 *   </li>
+	 * </ul>
+	 * </pre>
+	 *
+	 * The class name is interpolated **once** during the directives link time (any further changes to the
+	 * interpolated value are ignored).
+	 *
+	 * Multiple classes may be specified in a space-separated format:
+	 * <pre>
+	 * <ul>
+	 *   <li ui-sref-active='class1 class2 class3'>
+	 *     <a ui-sref="app.user">link</a>
+	 *   </li>
+	 * </ul>
+	 * </pre>
+	 *
+	 * It is also possible to pass ui-sref-active an expression that evaluates
+	 * to an object hash, whose keys represent active class names and whose
+	 * values represent the respective state names/globs.
+	 * ui-sref-active will match if the current active state **includes** any of
+	 * the specified state names/globs, even the abstract ones.
+	 *
+	 * @Example
+	 * Given the following template, with "admin" being an abstract state:
+	 * <pre>
+	 * <div ui-sref-active="{'active': 'admin.*'}">
+	 *   <a ui-sref-active="active" ui-sref="admin.roles">Roles</a>
+	 * </div>
+	 * </pre>
+	 *
+	 * When the current state is "admin.roles" the "active" class will be applied
+	 * to both the <div> and <a> elements. It is important to note that the state
+	 * names/globs passed to ui-sref-active shadow the state provided by ui-sref.
+	 */
+
+	/**
+	 * @ngdoc directive
+	 * @name ui.router.state.directive:ui-sref-active-eq
+	 *
+	 * @requires ui.router.state.$state
+	 * @requires ui.router.state.$stateParams
+	 * @requires $interpolate
+	 *
+	 * @restrict A
+	 *
+	 * @description
+	 * The same as {@link ui.router.state.directive:ui-sref-active ui-sref-active} but will only activate
+	 * when the exact target state used in the `ui-sref` is active; no child states.
+	 *
+	 */
+	$StateRefActiveDirective.$inject = ['$state', '$stateParams', '$interpolate'];
+	function $StateRefActiveDirective($state, $stateParams, $interpolate) {
+	  return  {
+	    restrict: "A",
+	    controller: ['$scope', '$element', '$attrs', '$timeout', function ($scope, $element, $attrs, $timeout) {
+	      var states = [], activeClasses = {}, activeEqClass, uiSrefActive;
+
+	      // There probably isn't much point in $observing this
+	      // uiSrefActive and uiSrefActiveEq share the same directive object with some
+	      // slight difference in logic routing
+	      activeEqClass = $interpolate($attrs.uiSrefActiveEq || '', false)($scope);
+
+	      try {
+	        uiSrefActive = $scope.$eval($attrs.uiSrefActive);
+	      } catch (e) {
+	        // Do nothing. uiSrefActive is not a valid expression.
+	        // Fall back to using $interpolate below
+	      }
+	      uiSrefActive = uiSrefActive || $interpolate($attrs.uiSrefActive || '', false)($scope);
+	      if (isObject(uiSrefActive)) {
+	        forEach(uiSrefActive, function(stateOrName, activeClass) {
+	          if (isString(stateOrName)) {
+	            var ref = parseStateRef(stateOrName, $state.current.name);
+	            addState(ref.state, $scope.$eval(ref.paramExpr), activeClass);
+	          }
+	        });
+	      }
+
+	      // Allow uiSref to communicate with uiSrefActive[Equals]
+	      this.$$addStateInfo = function (newState, newParams) {
+	        // we already got an explicit state provided by ui-sref-active, so we
+	        // shadow the one that comes from ui-sref
+	        if (isObject(uiSrefActive) && states.length > 0) {
+	          return;
+	        }
+	        var deregister = addState(newState, newParams, uiSrefActive);
+	        update();
+	        return deregister;
+	      };
+
+	      $scope.$on('$stateChangeSuccess', update);
+
+	      function addState(stateName, stateParams, activeClass) {
+	        var state = $state.get(stateName, stateContext($element));
+	        var stateHash = createStateHash(stateName, stateParams);
+
+	        var stateInfo = {
+	          state: state || { name: stateName },
+	          params: stateParams,
+	          hash: stateHash
+	        };
+
+	        states.push(stateInfo);
+	        activeClasses[stateHash] = activeClass;
+
+	        return function removeState() {
+	          var idx = states.indexOf(stateInfo);
+	          if (idx !== -1) states.splice(idx, 1);
+	        };
+	      }
+
+	      /**
+	       * @param {string} state
+	       * @param {Object|string} [params]
+	       * @return {string}
+	       */
+	      function createStateHash(state, params) {
+	        if (!isString(state)) {
+	          throw new Error('state should be a string');
+	        }
+	        if (isObject(params)) {
+	          return state + toJson(params);
+	        }
+	        params = $scope.$eval(params);
+	        if (isObject(params)) {
+	          return state + toJson(params);
+	        }
+	        return state;
+	      }
+
+	      // Update route state
+	      function update() {
+	        for (var i = 0; i < states.length; i++) {
+	          if (anyMatch(states[i].state, states[i].params)) {
+	            addClass($element, activeClasses[states[i].hash]);
+	          } else {
+	            removeClass($element, activeClasses[states[i].hash]);
+	          }
+
+	          if (exactMatch(states[i].state, states[i].params)) {
+	            addClass($element, activeEqClass);
+	          } else {
+	            removeClass($element, activeEqClass);
+	          }
+	        }
+	      }
+
+	      function addClass(el, className) { $timeout(function () { el.addClass(className); }); }
+	      function removeClass(el, className) { el.removeClass(className); }
+	      function anyMatch(state, params) { return $state.includes(state.name, params); }
+	      function exactMatch(state, params) { return $state.is(state.name, params); }
+
+	      update();
+	    }]
+	  };
+	}
+
+	angular.module('ui.router.state')
+	  .directive('uiSref', $StateRefDirective)
+	  .directive('uiSrefActive', $StateRefActiveDirective)
+	  .directive('uiSrefActiveEq', $StateRefActiveDirective)
+	  .directive('uiState', $StateRefDynamicDirective);
+
+	/**
+	 * @ngdoc filter
+	 * @name ui.router.state.filter:isState
+	 *
+	 * @requires ui.router.state.$state
+	 *
+	 * @description
+	 * Translates to {@link ui.router.state.$state#methods_is $state.is("stateName")}.
+	 */
+	$IsStateFilter.$inject = ['$state'];
+	function $IsStateFilter($state) {
+	  var isFilter = function (state, params) {
+	    return $state.is(state, params);
+	  };
+	  isFilter.$stateful = true;
+	  return isFilter;
+	}
+
+	/**
+	 * @ngdoc filter
+	 * @name ui.router.state.filter:includedByState
+	 *
+	 * @requires ui.router.state.$state
+	 *
+	 * @description
+	 * Translates to {@link ui.router.state.$state#methods_includes $state.includes('fullOrPartialStateName')}.
+	 */
+	$IncludedByStateFilter.$inject = ['$state'];
+	function $IncludedByStateFilter($state) {
+	  var includesFilter = function (state, params, options) {
+	    return $state.includes(state, params, options);
+	  };
+	  includesFilter.$stateful = true;
+	  return  includesFilter;
+	}
+
+	angular.module('ui.router.state')
+	  .filter('isState', $IsStateFilter)
+	  .filter('includedByState', $IncludedByStateFilter);
+	})(window, window.angular);
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports) {
+
+	"use strict";
+
+	var m = angular.module("lens.app_config", []);
+
+	m.service("AppConfig", function () {
+	  var _config = null;
+
+	  var getConfig = function getConfig(callback) {
+	    $.ajax({
+	      url: 'api/config/',
+	      method: 'GET'
+	    }).done(function (data) {
+	      _config = data;
+	      callback(_config);
+	    }).fail(function (data) {
+	      _config = null;
+	      callback(null, { error: data.status + " Error: " + data.responseText });
+	    });
+	  };
+
+	  this.get = function () {
+	    return new Promise(function (resolve, reject) {
+	      if (_config) {
+	        resolve(_config);
+	      } else {
+	        getConfig(function (config, error) {
+	          if (config) {
+	            resolve(config);
+	          } else {
+	            reject(error);
+	          }
+	        });
+	      }
+	    });
+	  };
+	});
+
+	module.exports = m;
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports) {
+
+	"use strict";
+
+	var m = angular.module("lens.current_user", []);
+
+	m.service("CurrentUser", function () {
+	  var _user = null;
+
+	  var authenticate = function authenticate(callback) {
+	    $.ajax({
+	      url: 'api/auth/',
+	      method: 'GET'
+	    }).done(function (data) {
+	      _user = data.user;
+	      callback(_user);
+	    }).fail(function (data) {
+	      _user = null;
+	      callback(null, { error: data.status + " Error: " + data.responseText });
+	    });
+	  };
+
+	  this.get = function () {
+	    return new Promise(function (resolve, reject) {
+	      if (_user) {
+	        resolve(_user);
+	      } else {
+	        authenticate(function (user, error) {
+	          if (user) {
+	            resolve(user);
+	          } else {
+	            reject(error);
+	          }
+	        });
+	      }
+	    });
+	  };
+	});
+
+	module.exports = m;
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports) {
+
+	var m, template;
+
+	m = angular.module("lens.lens_main", []);
+
+	m.controller("LensMainController", [
+	  '$scope', '$state', function($scope, $state) {
+	    $scope.$watch(function() {
+	      return $state.current.title;
+	    }, function() {
+	      $scope.title = $state.current.title;
+	      return Prism.highlightAll();
+	    });
+	    return this;
+	  }
+	]);
+
+	m.directive("lensMain", function() {
+	  return {
+	    controller: "LensMainController",
+	    restrict: "E",
+	    scope: {},
+	    template: template,
+	    transclude: true
+	  };
+	});
+
+	template = "<main class=\"guide-main\" role=\"main\" id=\"guideMain\">\n  <div class=\"guide-content\">\n    <div class=\"col-container\">\n      <div class=\"col col-80-lg\">\n        <div class=\"guide-header\">\n          <h1 class=\"display-2\">{{ title }}</h1>\n        </div>\n        <ng-transclude></ng-transclude>\n      </div>\n      <div class=\"col col-20-lg\">\n        <subnav></subnav>\n      </div>\n    </div>\n  </div>\n\n</main>";
+
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports) {
+
+	var m, template;
+
+	m = angular.module("lens.main_nav", []);
+
+	m.controller("MainNavController", [
+	  '$scope', '$location', function($scope, $location) {
+	    $scope.menuItems = [
+	      {
+	        title: "Lens Design",
+	        uiSref: "index"
+	      }, {
+	        title: "Getting Started",
+	        uiSref: "getting-started"
+	      }, {
+	        title: "Guidelines",
+	        id: "guidelines",
+	        subNav: [
+	          {
+	            title: "Markup",
+	            uiSref: "markup"
+	          }, {
+	            title: "Responsive",
+	            uiSref: "responsive"
+	          }, {
+	            title: "Environment Properties",
+	            uiSref: "environment-properties"
+	          }
+	        ]
+	      }, {
+	        title: "Components",
+	        id: "components",
+	        subNav: [
+	          {
+	            title: "Buttons",
+	            uiSref: "buttons"
+	          }, {
+	            title: "Forms",
+	            uiSref: "forms"
+	          }, {
+	            title: "Tables",
+	            uiSref: "tables"
+	          }, {
+	            title: "Modals",
+	            uiSref: "modals"
+	          }, {
+	            title: "Body Copy",
+	            uiSref: "body-copy"
+	          }, {
+	            title: "Headings",
+	            uiSref: "headings"
+	          }
+	        ]
+	      }, {
+	        title: "Atoms",
+	        id: "atoms",
+	        subNav: [
+	          {
+	            title: "Block Grid",
+	            uiSref: "block-grid"
+	          }, {
+	            title: "Borders",
+	            uiSref: "borders"
+	          }, {
+	            title: "Colors",
+	            uiSref: "colors"
+	          }, {
+	            title: "Effects",
+	            uiSref: "effects"
+	          }, {
+	            title: "Flexbox",
+	            uiSref: "flexbox"
+	          }, {
+	            title: "Grid",
+	            uiSref: "grid"
+	          }, {
+	            title: "Icons",
+	            uiSref: "icons"
+	          }, {
+	            title: "Layout",
+	            uiSref: "layout"
+	          }, {
+	            title: "Spacing and Sizing",
+	            uiSref: "spacing-sizing"
+	          }, {
+	            title: "Typography",
+	            uiSref: "typography"
+	          }
+	        ]
+	      }, {
+	        title: "Installation",
+	        uiSref: "installation"
+	      }, {
+	        title: "Release Notes",
+	        uiSref: "release-notes"
+	      }
+	    ];
+	    $scope.toggleSubNav = (function(_this) {
+	      return function(id) {
+	        _this.toggleSubNav(id);
+	        return true;
+	      };
+	    })(this);
+	    $scope.showNavOnMobile = (function(_this) {
+	      return function() {
+	        _this.showNavOnMobile();
+	        return true;
+	      };
+	    })(this);
+	    $scope.$on('toggleMobileNav', (function(_this) {
+	      return function(event) {
+	        return $scope.toggleMobileNav = !$scope.toggleMobileNav;
+	      };
+	    })(this));
+	    $scope.currentSection = $location.path().split("/")[1];
+	    return this;
+	  }
+	]);
+
+	m.directive("mainNav", function() {
+	  return {
+	    controller: "MainNavController",
+	    restrict: "E",
+	    scope: {},
+	    template: template,
+	    link: function(scope, $el, attrs, ctrl) {
+	      ctrl.toggleSubNav = function(id) {
+	        if (!id) {
+	          return;
+	        }
+	        $el.find("#" + id).toggleClass("active");
+	        return $el.find("#" + id + "-sub-nav").toggle();
+	      };
+	      ctrl.showNavOnMobile = function() {
+	        if (!scope.toggleMobileNav) {
+	          return;
+	        }
+	        return scope.$parent.$broadcast('toggleMobileNav');
+	      };
+	      return $(document).ready(function() {
+	        return ctrl.toggleSubNav(scope.currentSection);
+	      });
+	    }
+	  };
+	});
+
+	template = "<div id=\"guide_navigation\" class=\"guide-navigation\" ng-class=\"{'guide-navigation-mobile-show' : toggleMobileNav}\">\n  <nav id=\"navigation\" role=\"navigation\" tabindex=\"-1\">\n    <ul class=\"guide-navigation-list\">\n      <li ng-repeat=\"item in menuItems\" class=\"guide-navaigation-item\">\n        <!-- sub menu -->\n        <a ng-if=\"item.subNav\" id=\"{{ item.id }}\" class=\"guide-navigation-link guide-navigation-link-parent\"  ng-click=\"toggleSubNav(item.id)\">\n          {{ item.title }}\n          <span class=\"guide-navigation-icon\"></span>\n        </a>\n        <ul ng-if=\"item.subNav\" id=\"{{ item.id }}-sub-nav\" class=\"guide-navigation-list-child\">\n          <li ng-repeat=\"child in item.subNav\" class=\"guide-navigation-item-child\">\n            <a ui-sref=\"{{ child.uiSref }}\" ui-sref-active=\"active\" class=\"guide-navigation-link guide-navigation-link-child\" ng-click=\"showNavOnMobile()\"~>{{ child.title }}</a>\n          </li>\n        </ul>\n\n        <!-- single item -->\n        <a ng-if=\"item.uiSref\" ui-sref=\"{{ item.uiSref }}\" ui-sref-active=\"active\" class=\"guide-navigation-link guide-navigation-link-single\" ng-click=\"showNavOnMobile()\">{{ item.title }}</a>\n      </li>\n    </ul>\n  </nav>\n</div>";
+
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports) {
+
+	var m, template;
+
+	m = angular.module("lens.page_header", []);
+
+	m.controller("PageHeaderController", [
+	  '$scope', function($scope) {
+	    $scope.hamburgerClick = (function(_this) {
+	      return function() {
+	        _this.hamburgerClick();
+	        return true;
+	      };
+	    })(this);
+	    $scope.$on('toggleMobileNav', (function(_this) {
+	      return function(event) {
+	        return $scope.clicked = !$scope.clicked;
+	      };
+	    })(this));
+	    return this;
+	  }
+	]);
+
+	m.directive("pageHeader", function() {
+	  return {
+	    controller: "PageHeaderController",
+	    restrict: "E",
+	    scope: {},
+	    template: template,
+	    link: function(scope, $el, attrs, ctrl) {
+	      return ctrl.hamburgerClick = function() {
+	        return scope.$parent.$broadcast('toggleMobileNav');
+	      };
+	    }
+	  };
+	});
+
+	template = "<header class=\"guide-banner\" role=\"banner\">\n  <a ui-sref=\"index\" ui-sref-active=\"active\" class=\"guide-name\">Lens</a>\n  <a ui-sref=\"release-notes\" ui-sref-active=\"active\" class=\"guide-version\">version </a>\n  <div class=\"guide-skip-content\">\n    <a href=\"#navigation\">Skip to Navigation</a>\n  </div>\n  <a href=\"#\" id=\"hamburger\" class=\"hamburger-button\" ng-class=\"{'hamburger-button-clicked': clicked}\" ng-click=\"hamburgerClick()\">\n    <span class=\"hamburger\"></span>\n  </a>\n</header>";
+
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports) {
+
+	var m, template;
+
+	m = angular.module("lens.page_footer", []);
+
+	m.controller("PageFooterController", [
+	  '$scope', function($scope) {
+	    $scope.currentYear = new Date().getFullYear();
+	    return this;
+	  }
+	]);
+
+	m.directive("pageFooter", function() {
+	  return {
+	    controller: "PageFooterController",
+	    restrict: "E",
+	    scope: {},
+	    template: template
+	  };
+	});
+
+	template = "<footer class=\"guide-contentinfo\" role=\"contentinfo\">\n  Copyright &copy; {{ currentYear }} Looker. All rights reserved.\n</footer>";
+
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports) {
+
+	var m, template;
+
+	m = angular.module("lens.subnav", []);
+
+	m.controller("SubnavController", [
+	  '$scope', function($scope) {
+	    return this;
+	  }
+	]);
+
+	m.directive("subnav", function() {
+	  return {
+	    controller: "SubnavController",
+	    restrict: "E",
+	    scope: {},
+	    template: template,
+	    link: function(scope, $el, attrs, ctrl) {
+	      return $(document).ready(function() {
+	        var i, section_active, section_id, section_title, sections, subnav;
+	        sections = $('.guide-content section').children('div.inpage-anchor');
+	        if (sections.length > 0) {
+	          subnav = $('#subnav');
+	          i = 0;
+	          while (i < sections.length) {
+	            section_id = sections[i].id;
+	            section_title = sections[i].title;
+	            section_active = '';
+	            if (window.location.hash.substring(1) === section_id) {
+	              section_active = ' active';
+	            }
+	            subnav.append('<li class="guide-subnav-item"><a class="guide-subnav-anchor' + section_active + '" href="#' + section_id + '">' + section_title + '</a></li>');
+	            i++;
+	          }
+	          $(subnav).on('click', '.guide-subnav-anchor', function() {
+	            $(this).closest('#subnav').find('.guide-subnav-anchor').removeClass('active');
+	            return $(this).addClass('active');
+	          });
+	        } else {
+	          $('.guide-subnav').hide();
+	        }
+	        if (window.location.hash) {
+	          return $('html, body').animate({
+	            scrollTop: $(window.location.hash).offset().top
+	          }, 50);
+	        }
+	      });
+	    }
+	  };
+	});
+
+	template = "<ul id=\"subnav\" class=\"guide-subnav\"></ul>";
+
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports) {
+
+	var m, template;
+
+	m = angular.module("lens.index", []);
+
+	m.controller("IndexController", [
+	  "$scope", function($scope) {
+	    return this;
+	  }
+	]);
+
+	m.directive("index", function() {
+	  return {
+	    controller: "IndexController",
+	    restrict: "E",
+	    scope: {},
+	    template: template
+	  };
+	});
+
+	template = "<lens-main>\n\n  <section id=\"index\">\n    <h4 class=\"subheading\">\n      Lens is a design system enabling developers and designers to build\n       beautiful, usable, consistent, and scalable Looker experiences.</h4>\n\n    <h2 class=\"headline\">Design Principles</h2>\n    <p>What are design principles and how should you use them? Design Principles...</p>\n    <ul>\n      <li>are simple</li>\n      <li>help us make decisions</li>\n      <li>reflect your brand</li>\n      <li>have real world examples</li>\n    </ul>\n\n    <p><strong>Eliminate Ambiguity</strong>: Be clear. Enable people to see, understand, and feel secure so they\n      can act with confidence.</p>\n\n    <p><strong>Champion Efficiency</strong>: Be respectful of people’s time, streamline processes and be fast and\n      performant.</p>\n\n    <p><strong>Encourage Confidence</strong>: The design experience should feel safe to work with and provide\n       orientation and security to gain the user’s trust.</p>\n\n    <p><strong>Strive for Simplicity</strong>: Make it inviting and simple so it’s easy, orderly, and agile. Provide\n       opportunities and affordances for growth.</p>\n\n    <h2 class=\"headline\">Environment Properties</h2>\n    <p><a ui-sref=\"environment-properties\">Environment properties</a> provide rules for how Lens elements look, interact\n       and behave. The following themes are used to communicate the product\n       principles and guide the design.</p>\n    <p><strong>Visibility</strong> allows you to see the information\n      you care about and have a clear path to understanding and insights.\n      Presenting relevant content helps <em>eliminate ambiguity</em>.\n    </p>\n\n    <p><strong>Transparency</strong> means it is clear where you are and\n      what action you can take on your data. To provide this clairty the design\n      must <em>strive for simplicity</em>.\n    </p>\n\n    <p><strong>Fluidity</strong> for Looker is providing a versatile platform\n       where you can easily move between tasks. By adapting to and anticipating\n       different user needs, the design can <em>champion efficiency</em>.\n    </p>\n\n    <p><strong>Discovery</strong> means using clear signs and feedback to help\n      you know where you and navigate your way. Providing orientation\n      <em>encourages confidence</em> when using Looker.\n    </p>\n\n    <h2 class=\"headline\">Core Objects</h2>\n    <p>The words that define Looker's core objects, actions, and the relationships\n       between them.</p>\n\n    <p><strong>Model</strong>: A model defines the structure of your data for\n       exploring.</p>\n\n    <p><strong>Explore</strong>: An explore contains all the fields that allow\n      you to construct a query.</p>\n\n    <p><strong>Query</strong>: A query is a question made up of fields from an\n       explore that asks your database for a result.</p>\n\n    <p><strong>Result</strong>: A result is an answer that comes back from your\n       database once you send it a query.</p>\n\n    <p><strong>Report</strong>: A report is a saved result that can be copied,\n       shared, and can serve as a starting point for further exploration.</p>\n\n    <h2 class=\"headline\">Platform Adaptation <code>Coming Soon!</code></h2>\n    <p>How does Lens adapt in different situations? The goal is\n       to have Looker products look and behave similarly across platforms for all of our users.</p>\n\n    <p>What do we mean by Looker <em>products</em>?</p>\n    <ul>\n      <li>Looker core product offerings (Internal Instances, Customer Hosted, Customer On-Prem, Powered-by, Whitelabel, Embeded)</li>\n      <li>Complimentary systems (Docs, Discource, Training Instances, Blocks, Bots)</li>\n    </ul>\n\n    <p>What do we mean by <em>platforms</em>?</p>\n    <ul>\n      <li>Display &amp; input (laptop, desktop/large screen, mobile, touchscreen, large-screen displays)</li>\n      <li>Browser (Chrome, WebKit, IE, Firefox)</li>\n    </ul>\n\n    <p>What do we mean by <em>all of our users</em>?</p>\n    <ul>\n      <li>Internationailzation</li>\n      <li>Accessibility</li>\n    </ul>\n\n  </section>\n\n</lens-main>";
+
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports) {
+
+	var m, template;
+
+	m = angular.module("lens.login", []);
+
+	m.controller("LoginController", [
+	  '$scope', '$window', 'AppConfig', function($scope, $window, AppConfig) {
+	    var isLocalDevelopmentEnvironment;
+	    isLocalDevelopmentEnvironment = false;
+	    AppConfig.get().then(function(config) {
+	      return isLocalDevelopmentEnvironment = config.isLocalDevelopmentEnvironment;
+	    });
+	    $scope.onSignIn = function(googleUser) {
+	      var id_token, profile;
+	      if (isLocalDevelopmentEnvironment) {
+	        return $window.location.href = '/';
+	      } else {
+	        profile = googleUser.getBasicProfile();
+	        id_token = googleUser.getAuthResponse().id_token;
+	        return $.ajax({
+	          url: 'api/google/auth',
+	          method: 'POST',
+	          dataType: 'JSON',
+	          data: {
+	            idtoken: id_token
+	          }
+	        }).done(function(data) {
+	          return $window.location.href = '/';
+	        }).fail(function(data) {
+	          return console.error(data.status + ' Error:', data);
+	        });
+	      }
+	    };
+	    $scope.onError = function(error) {
+	      return console.error(error);
+	    };
+	    return this;
+	  }
+	]);
+
+	m.directive("login", [
+	  '$window', function($window) {
+	    return {
+	      controller: "LoginController",
+	      restrict: "E",
+	      scope: {},
+	      template: template,
+	      link: function(scope, $el, attr, ctrl) {
+	        $window.renderButton = (function(_this) {
+	          return function() {
+	            var auth2, button;
+	            button = document.getElementById('custom-google-btn');
+	            auth2 = $window.gapi.auth2.getAuthInstance();
+	            return auth2.attachClickHandler(button, {}, scope.onSignIn, scope.onError);
+	          };
+	        })(this);
+	        $("main-nav").remove();
+	        $("page-footer").remove();
+	        return $("page-header").remove();
+	      }
+	    };
+	  }
+	]);
+
+	template = "<header class=\"login-header brand-bg-gray\">\n  <div class=\"login-header-wrap\">\n    <h1 class=\"login-name color-white\">Lens</h1>\n    <p class=\"login-copy color-white\">The Looker Design System</p>\n  </div>\n</header>\n\n<section class=\"login-auth\">\n  <div class=\"login-auth-wrap\">\n    <h1 class=\"m-b-2-xs\">Login to Lens</h1>\n    <div id=\"custom-google-btn\" class=\"button button--primary\">Authenticate with Google</div>\n    <div class=\"g-signin2\" style=\"display:none;\"></div>\n  </div>\n</section>\n\n<script src=\"https://apis.google.com/js/platform.js?onload=renderButton\" async defer></script>";
+
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports) {
+
+	var m, template;
+
+	m = angular.module("lens.getting_started", []);
+
+	m.controller("GettingStartedController", [
+	  '$scope', function($scope) {
+	    return this;
+	  }
+	]);
+
+	m.directive("gettingStarted", function() {
+	  return {
+	    controller: "GettingStartedController",
+	    restrict: "E",
+	    scope: {},
+	    template: template
+	  };
+	});
+
+	template = "<lens-main>\n  <section id=\"developers\">\n    <h2>Developers</h2>\n    <code>Coming Soon!</code>\n    <ul>\n      <li>How we use this in helltool</li>\n      <li>Extending and using Lens elsewhere (see <a ui-sref=\"installation\">Installation</a> section)\n      <li><a ui-sref=\"markup\">markup considerations</a></li>\n      <li>...</li>\n    </ul>\n  </section>\n\n  <section id=\"designers\">\n    <h2>Designers</h2>\n    <code>Coming Soon!</code>\n    <ul>\n      <li>design principles, etc.</li>\n      <li>link to downloadable design resources.</li>\n      <li>...</li>\n    </ul>\n  </section>\n</lens-main>";
+
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports) {
+
+	var m, template;
+
+	m = angular.module("lens.release_notes", []);
+
+	m.controller("ReleaseNotesController", [
+	  '$scope', function($scope) {
+	    return this;
+	  }
+	]);
+
+	m.directive("releaseNotes", function() {
+	  return {
+	    controller: "ReleaseNotesController",
+	    restrict: "E",
+	    scope: {},
+	    template: template
+	  };
+	});
+
+	template = "<lens-main>\n\n  <section id=\"release-notes\">\n    <div class=\"col-container\" border-b-xs p-b-2-xs\"\">\n      <div class=\"col col-10-md\">\n        <p class=\"text-color-light\">0.1.0</p>\n      </div>\n      <div class=\"col col-90-md\">\n        <p class=\"bold\">The Initial Vector</p>\n        <p class=\"text-6-xs text-color-light\">[Infection Date]</p>\n        <ul class=\"m-t-1-xs text-6-xs\">\n          <li>You won't feel a thing... right?</li>\n        </ul>\n      </div>\n    </div>\n  </section>\n\n</lens-main>";
+
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports) {
+
+	var m, template;
+
+	m = angular.module("lens.installation", []);
+
+	m.controller("InstallationController", [
+	  "$scope", function($scope) {
+	    return this;
+	  }
+	]);
+
+	m.directive("installation", function() {
+	  return {
+	    controller: "InstallationController",
+	    restrict: "E",
+	    scope: {},
+	    template: template
+	  };
+	});
+
+	template = "<lens-main>\n\n  <section>\n    <h2>Lens and Helltool</h2>\n    <p class=\"todo\"></p>\n    <h2>Using Lens in your own project</h2>\n    <ul>\n      <li>As is...</li>\n      <li>Forking/branching</li>\n    </ul>\n\n    <p class=\"todo\"></p>\n\n    <h2>Download</h2>\n    <a href=\"https://github.com/looker/lens/archive/v0.8.0.zip\" class=\"button button--large-xs w-full-xs w-auto-lg\">Source Files</a>\n    <a href=\"http://looker.github.io/lens/css/Lens.css\" class=\"button button--large-xs w-full-xs w-auto-lg\">Compiled CSS</a>\n    <a href=\"http://looker.github.io/lens/css/Lens.min.css\" class=\"button button--large-xs w-full-xs w-auto-lg\">Compiled CSS (minified)</a>\n  </section>\n\n</lens-main>";
+
+
+/***/ }),
+/* 16 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	var m;
+
+	m = angular.module("lens.atoms", ["lens.atoms.block_grid", "lens.atoms.borders", "lens.atoms.colors", "lens.atoms.effects", "lens.atoms.flexbox", "lens.atoms.grid", "lens.atoms.icons", "lens.atoms.layout", "lens.atoms.spacing_sizing", "lens.atoms.typography"]);
+
+	__webpack_require__(17);
+
+	__webpack_require__(18);
+
+	__webpack_require__(19);
+
+	__webpack_require__(23);
+
+	__webpack_require__(24);
+
+	__webpack_require__(25);
+
+	__webpack_require__(26);
+
+	__webpack_require__(27);
+
+	__webpack_require__(28);
+
+	__webpack_require__(29);
+
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports) {
+
+	var m, template;
+
+	m = angular.module("lens.atoms.block_grid", []);
+
+	m.controller("BlockGridController", [
+	  '$scope', function($scope) {
+	    return this;
+	  }
+	]);
+
+	m.directive("blockGrid", function() {
+	  return {
+	    controller: "BlockGridController",
+	    restrict: "E",
+	    scope: {},
+	    template: template
+	  };
+	});
+
+	template = "<lens-main>\n\n  <p>The block grid is used when you need a grid of an unknown number of items.\n    The recommended way to build block grids is with <code>ul</code> elements,\n    but the classes work just fine on any element, like a <code>div</code>.\n     Use your best judgement to keep the markup as semantic as possible.</p>\n  <p>To build a block grid, start with a <code>&lt;ul class=\"block-grid block-$n-xs\"&gt;</code>,\n    where <code>$n</code> is a number from 1-6. These divisions can be\n    changed across breakpoints by applying one or more of our\n    <a ui-sref=\"responsive\">grid suffix classes</a>. If you want the same grid division\n    across all breakpoints, use <code>.block-$n-xs</code> class. </p>\n  <p>Inside that list,\n    create your items with <code>&lt;li class=\"block-grid__item\"&gt;</code>.</p>\n  <p><strong>Important:</strong> Do not put any style utility classes on the block\n    grid containers, nest them inside the list items instead.</p>\n\n  <section id=\"no-gutters-section\">\n    <div id=\"no-gutters\" title=\"No Gutters\" class=\"inpage-anchor\"></div>\n    <h2>No Gutters</h2>\n    <p>By default, the block grid comes with no gutters. Resize your browser to see the breakpoint changes.</p>\n    <div class=\"guide-example\">\n      <div class=\"guide-example-demo\">\n        <ul class=\"block-grid block-4-xs block-5-md block-6-xl\">\n          <li class=\"block-grid__item\">\n            <div class=\"guide-demo-box\">1</div>\n          </li>\n          <li class=\"block-grid__item\">\n            <div class=\"guide-demo-box\">2</div>\n          </li>\n          <li class=\"block-grid__item\">\n            <div class=\"guide-demo-box\">3</div>\n          </li>\n          <li class=\"block-grid__item\">\n            <div class=\"guide-demo-box\">4</div>\n          </li>\n          <li class=\"block-grid__item\">\n            <div class=\"guide-demo-box\">5</div>\n          </li>\n          <li class=\"block-grid__item\">\n            <div class=\"guide-demo-box\">6</div>\n          </li>\n        </ul>\n      </div>\n      <div class=\"guide-example-code\">\n  <pre><code class=\"language-html\">&lt;ul class=\"block-grid block-4-xs block-5-md block-6-xl\"&gt;\n  &lt;li class=\"block-grid__item\"&gt;\n    &lt;div class=\"guide-demo-box\"&gt;1&lt;/div&gt;\n  &lt;/li&gt;\n  &lt;li class=\"block-grid__item\"&gt;\n    &lt;div class=\"guide-demo-box\"&gt;2&lt;/div&gt;\n  &lt;/li&gt;\n  &lt;li class=\"block-grid__item\"&gt;\n    &lt;div class=\"guide-demo-box\"&gt;3&lt;/div&gt;\n  &lt;/li&gt;\n  &lt;li class=\"block-grid__item\"&gt;\n    &lt;div class=\"guide-demo-box\"&gt;4&lt;/div&gt;\n  &lt;/li&gt;\n  &lt;li class=\"block-grid__item\"&gt;\n    &lt;div class=\"guide-demo-box\"&gt;5&lt;/div&gt;\n  &lt;/li&gt;\n  &lt;li class=\"block-grid__item\"&gt;\n    &lt;div class=\"guide-demo-box\"&gt;6&lt;/div&gt;\n  &lt;/li&gt;\n&lt;/ul&gt;</code></pre>\n      </div>\n    </div>\n  </section>\n\n  <section id=\"gutters-section\">\n    <div id=\"gutters\" title=\"Gutters\" class=\"inpage-anchor\"></div>\n    <h2>Gutters</h2>\n    <p>To add automatic 1rem spaced gutters between items in the block grid, apply the class\n       <code>.block-grid-gutters</code> alongside your <code>.block-grid</code> class. Note that\n       this will add horizontal <em>as well as</em> vertical spacing if the items stack.</p>\n     Again, Rrsize your browser to see the breakpoint changes in the demo below.</p>\n    <p class=\"todo\">Probably should revisit that 1rem value...?</p>\n    <div class=\"guide-example\">\n      <div class=\"guide-example-demo\">\n        <ul class=\"block-grid block-2-xs block-3-lg block-6-xl block-grid-gutters\">\n          <li class=\"block-grid__item\">\n            <div class=\"guide-demo-box\">1</div>\n          </li>\n          <li class=\"block-grid__item\">\n            <div class=\"guide-demo-box\">2</div>\n          </li>\n          <li class=\"block-grid__item\">\n            <div class=\"guide-demo-box\">3</div>\n          </li>\n          <li class=\"block-grid__item\">\n            <div class=\"guide-demo-box\">4</div>\n          </li>\n          <li class=\"block-grid__item\">\n            <div class=\"guide-demo-box\">5</div>\n          </li>\n          <li class=\"block-grid__item\">\n            <div class=\"guide-demo-box\">6</div>\n          </li>\n        </ul>\n      </div>\n      <div class=\"guide-example-code\">\n  <pre><code class=\"language-html\">&lt;ul class=\"block-grid block-2-xs block-3-lg block-6-xl block-grid-gutters\"&gt;\n  &lt;li class=\"block-grid__item\"&gt;\n    &lt;div class=\"guide-demo-box\"&gt;1&lt;/div&gt;\n  &lt;/li&gt;\n  &lt;li class=\"block-grid__item\"&gt;\n    &lt;div class=\"guide-demo-box\"&gt;2&lt;/div&gt;\n  &lt;/li&gt;\n  &lt;li class=\"block-grid__item\"&gt;\n    &lt;div class=\"guide-demo-box\"&gt;3&lt;/div&gt;\n  &lt;/li&gt;\n  &lt;li class=\"block-grid__item\"&gt;\n    &lt;div class=\"guide-demo-box\"&gt;4&lt;/div&gt;\n  &lt;/li&gt;\n  &lt;li class=\"block-grid__item\"&gt;\n    &lt;div class=\"guide-demo-box\"&gt;5&lt;/div&gt;\n  &lt;/li&gt;\n  &lt;li class=\"block-grid__item\"&gt;\n    &lt;div class=\"guide-demo-box\"&gt;6&lt;/div&gt;\n  &lt;/li&gt;\n&lt;/ul&gt;</code></pre>\n      </div>\n    </div>\n  </section>\n\n</lens-main>";
+
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports) {
+
+	var m, template;
+
+	m = angular.module("lens.atoms.borders", []);
+
+	m.controller("BordersController", [
+	  '$scope', function($scope) {
+	    return this;
+	  }
+	]);
+
+	m.directive("borders", function() {
+	  return {
+	    controller: "BordersController",
+	    restrict: "E",
+	    scope: {},
+	    template: template
+	  };
+	});
+
+	template = "<lens-main>\n\n  <section id=\"borders-section\">\n    <div id=\"borders\" title=\"Adding Borders\" class=\"inpage-anchor\"></div>\n    <h2>Adding Borders</h2>\n    <h3>Default Border</h3>\n    <table class=\"table-content\">\n      <thead>\n        <tr>\n          <th><code>@extend</code></th>\n          <th>Resolves to...</th>\n          <th>Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%border-xs</code></td>\n          <td>border: 1px solid $border-color-normal</td>\n          <td>All sides of the element</td>\n        </tr>\n        <tr>\n          <td><code>%border-t-xs</code></td>\n          <td>border-top: 1px solid $border-color-normal</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%border-b-xs</code></td>\n          <td>border-bottom: 1px solid $border-color-normal</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%border-r-xs</code></td>\n          <td>border-right: 1px solid $border-color-normal</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%border-l-xs</code></td>\n          <td>border-left: 1px solid $border-color-normal</td>\n          <td></td>\n        </tr>\n      </tbody>\n    </table>\n\n    <h3>Different Colors</h3>\n    <p>Lens provides an easy way to add lighter or darker gray borders. Simply\n      insert <code>light</code> or <code>dark</code> into the class name.</p>\n    <p>To use any other Lens color as a border for your custom element,\n      extend the <code>%border-color-[color]</code> classes as outlined in the\n      <a ui-sref=\"colors\">colors</a> section.\n    <table class=\"table-content\">\n      <thead>\n        <tr>\n          <th class=\"col-30-xs\"><code>@extend</code></th>\n          <th>Resolves to...</th>\n          <th>Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%border-light-xs</code></td>\n          <td>border: 1px solid $border-color-light</td>\n          <td>All sides of the element</td>\n        </tr>\n        <tr>\n          <td><code>%border-dark-xs</code></td>\n          <td>border: 1px solid $border-color-dark</td>\n          <td>All sides of the element</td>\n        </tr>\n        <tr>\n          <td><code>%border-[side]-light-xs</code></td>\n          <td>border-[side]: 1px solid $border-color-normal</td>\n          <td><code>[side]</code> is t, b, r, l for top, bottom, right or left.</td>\n        </tr>\n        <tr>\n          <td><code>%border-[side]-dark-xs</code></td>\n          <td>border-[side]: 1px solid $border-color-dark</td>\n          <td><code>[side]</code> is t, b, r, l for top, bottom, right or left.</td>\n        </tr>\n      </tbody>\n    </table>\n\n  </section>\n\n  <section id=\"removing-borders-section\">\n    <div id=\"removing-borders\" title=\"Removing Borders\" class=\"inpage-anchor\"></div>\n    <h2>Removing Borders</h2>\n    <p>To get a little more control over borders at different breakpoints\n       <code>.border-none-xs</code> can be applied to remove all borders or borders on specific sides.</p>\n    <table class=\"table-content\">\n      <thead>\n        <tr>\n          <th><code>@extend</code> Class</th>\n          <th>Resolves to...</th>\n          <th>Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%border-none-xs</code></td>\n          <td>border: none</td>\n          <td>removes all borders on the element</td>\n        </tr>\n        <tr>\n          <td><code>%border-none-t-xs</code></td>\n          <td>border-top: none</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%border-none-b-xs</code></td>\n          <td>border-bottom: none</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%border-none-r-xs</code></td>\n          <td>border-right: none</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%border-none-l-xs</code></td>\n          <td>border-left: none</td>\n          <td></td>\n        </tr>\n      </tbody>\n    </table>\n  </section>\n\n  <section id=\"rounded-corners-section\">\n    <div id=\"rounded-corners\" title=\"Rounded Corners\" class=\"inpage-anchor\"></div>\n    <h2>Rounded Corners</h2>\n    <p>Use the following to apply the default border-radius to any element.</p>\n    <table class=\"table-content\">\n      <thead>\n        <tr>\n          <th><code>@extend</code></th>\n          <th>Resolves to...</th>\n          <th>Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%round</code></td>\n          <td>border-radius: $border-radius</td>\n          <td>All corners of the element</td>\n        </tr>\n        <tr>\n          <td><code>%round-t</code></td>\n          <td>border-radius: $border-radius, $border-radius, 0, 0 </td>\n          <td>Top two corners</td>\n        </tr>\n        <tr>\n          <td><code>%round-b</code></td>\n          <td>border-radius: 0, 0, $border-radius, $border-radius</td>\n          <td>Bottom two corners</td>\n        </tr>\n        <tr>\n          <td><code>%round-r</code></td>\n          <td>border-radius: 0, $border-radius, $border-radius, 0</td>\n          <td>Right two corners</td>\n        </tr>\n        <tr>\n          <td><code>%round-l</code></td>\n          <td>border-radius: $border-radius, 0, 0, $border-radius</td>\n          <td>Left two corners</td>\n        </tr>\n      </tbody>\n    </table>\n  </section>\n\n  <section id=\"circles-section\">\n    <div id=\"circles\" title=\"Circles\" class=\"inpage-anchor\"></div>\n    <h2>Circle</h2>\n    <p>To turn an element into a circle, use the <code>.circle</code> class.</p>\n    <table class=\"table-content\">\n      <thead>\n        <tr>\n          <th><code>@extend</code></th>\n          <th>Resolves to...</th>\n          <th>Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%circle</code></td>\n          <td>border-radius: 9999px</td>\n          <td>Works unless you're making something wider or taller than 9999 px</td>\n        </tr>\n      </tbody>\n    </table>\n  </section>\n\n  <section id=\"variables-section\">\n    <div id=\"variables\" title=\"Variables\" class=\"inpage-anchor\"></div>\n    <h2 >Variables</h2>\n    <table class=\"table-content\">\n      <thead>\n        <tr>\n          <th>Variable</th>\n          <th>Value</th>\n          <th>Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>$border-color-normal</code></td>\n          <td>gray-color(gray-2)</td>\n          <td>the default border color #e4e5e6</td>\n        </tr>\n        <tr>\n          <td><code>$border-color-light</code></td>\n          <td>gray-color(gray-1)</td>\n          <td>#f6f6f7</td>\n        </tr>\n        <tr>\n          <td><code>$border-color-dark</code></td>\n          <td>gray-color(gray-2)</td>\n          <td>#d2d3d4</td>\n        </tr>\n        <tr>\n          <td><code>$border-radius</code></td>\n          <td>5px</td>\n          <td>Used in buttons, modal corners, etc.</td>\n        </tr>\n      </tbody>\n    </table>\n  </section>\n\n</lens-main>";
+
+
+/***/ }),
+/* 19 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	var brandColors, grayColors, m, template, uiColors;
+
+	brandColors = __webpack_require__(20);
+
+	uiColors = __webpack_require__(21);
+
+	grayColors = __webpack_require__(22);
+
+	m = angular.module("lens.atoms.colors", []);
+
+	m.controller("ColorsController", [
+	  '$scope', function($scope) {
+	    return this;
+	  }
+	]);
+
+	m.directive("colors", function() {
+	  return {
+	    controller: "ColorsController",
+	    restrict: "E",
+	    scope: {},
+	    template: template,
+	    link: function() {
+	      brandColors('brandColorData', '#brandColorData', '.guide-colors-brand');
+	      uiColors('uiColorData', '#uiColorData', '.guide-colors-ui');
+	      return grayColors('grayColorData', '#grayColorData', '.guide-colors-gray');
+	    }
+	  };
+	});
+
+	template = "<lens-main>\n  <section id=\"brand-colors-section\">\n    <div id=\"brand-colors\" title=\"Brand Colors\" class=\"inpage-anchor\"></div>\n    <h2>Brand Colors</h2>\n    <p>There are 3 main brand colors for Looker. Replace <code>[color]</code> with\n      the name of the brand color you want.</p>\n      <p class=\"todo\">Why use the \"brand\" color variables vs the colors below? Are there three?</p>\n    <table class=\"table-content\">\n      <thead>\n        <th><code>@extend</code></th>\n        <th>Resolves to...</th>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%brand-bg-[color]</code></td>\n          <td>background-color: [color]</td>\n        </tr>\n        <tr>\n          <td><code>%brand-color-[color]</code></td>\n          <td>color: [color]</td>\n        </tr>\n        <tr>\n          <td><code>%brand-border-[color]</code></td>\n          <td>border-color: [color]</td>\n        </tr>\n      </tbody>\n    </table>\n\n    <ul class=\"guide-color guide-colors-brand\"></ul><!-- List items built by JS -->\n  </section>\n\n\n  <section id=\"ui-colors-section\">\n    <div id=\"ui-colors\" title=\"UI Colors\" class=\"inpage-anchor\"></div>\n    <h2>UI Colors</h2>\n    <p>Replace <code>[color]</code> with the name of the color you want in the classes below.</p>\n    <p class=\"todo\">Some rules about how we use color? or does that go in the guide? When to use which purple? etc.</p>\n    <table class=\"table-content\">\n      <thead>\n        <th><code>@extend</code></th>\n        <th>Resolves to...</th>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%bg-[color]</code></td>\n          <td>background-color: [color]</td>\n        </tr>\n        <tr>\n          <td><code>%color-[color]</code></td>\n          <td>color: [color]</td>\n        </tr>\n        <tr>\n          <td><code>%border-[color]</code></td>\n          <td>border-color: [color]</td>\n        </tr>\n      </tbody>\n    </table>\n\n    <ul class=\"guide-color guide-colors-ui\"></ul><!-- List items built by JS -->\n  </section>\n\n\n\n  <section id=\"gray-colors-section\">\n    <div id=\"gray-colors\" title=\"Gray Colors\" class=\"inpage-anchor\"></div>\n    <h2>Gray Colors</h2>\n    <p>Replace <code>[color]</code> with the name of the shade of gray you want.</p>\n    <p class=\"todo\">again, add some rules here..?</p>\n    <table class=\"table-content\">\n      <thead>\n        <th><code>@extend</code></th>\n        <th>Resolves to...</th>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%bg-[color]</code></td>\n          <td>background-color: [color]</td>\n        </tr>\n        <tr>\n          <td><code>%color-[color]</code></td>\n          <td>color: [color]</td>\n        </tr>\n        <tr>\n          <td><code>%border-[color]</code></td>\n          <td>border-color: [color]</td>\n        </tr>\n      </tbody>\n    </table>\n\n    <ul class=\"guide-color guide-colors-gray\"></ul><!-- List items built by JS -->\n  </section>\n\n  <section id=\"functions-section\">\n    <div id=\"functions\" title=\"Functions\" class=\"inpage-anchor\"></div>\n    <h2>Functions</h2>\n    <p>Use the following functions to generate any of the above colors in your custom element\n       that aren't <code>color</code, <code>background-color</code> or <code>border-color</code>.</p>\n    <table class=\"table-content\">\n      <thead>\n        <tr>\n          <th>Function</th>\n          <th>Parameters</th>\n          <th>Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>brand-color($color)</code></td>\n          <td>One of the brand colors above</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>ui-color($color)</code></td>\n          <td>One of the ui colors above</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>gray-color($color)</code></td>\n          <td>One of the gray colors above</td>\n          <td></td>\n        </tr>\n      </tbody>\n    </table>\n</lens-main>\n\n<!-- Sass to JS goodness -->\n<div id=\"brandColorData\"></div>\n<div id=\"uiColorData\"></div>\n<div id=\"grayColorData\"></div>\n\n<script src=\"vendor/js/prism.js\"></script>\n<script src=\"vendor/js/sass-to-js.js\"></script>";
+
+
+/***/ }),
+/* 20 */
+/***/ (function(module, exports) {
+
+	'use strict';
+
+	var brandColors = function brandColors(elementId, $elementId, guideClass) {
+	  var colorDataEl = document.getElementById(elementId);
+	  var colorData = sassToJs(colorDataEl);
+	  var colorString = JSON.parse(window.getComputedStyle(document.querySelector($elementId), ':before').getPropertyValue('content'));
+	  var colorJSON = JSON.parse(colorString);
+
+	  for (var colorClass in colorJSON) {
+	    var colorObj = colorJSON[colorClass];
+	    var colorHexValue = colorObj;
+
+	    // Create LI and add class name to it
+	    var li = document.createElement("li");
+	    li.className = 'guide-color-item col-100-sm col-50-lg col-33-xl';
+
+	    // Create span to hold color
+	    var colorSpan = document.createElement('span');
+	    colorSpan.className = 'brand-bg-' + colorClass;
+
+	    // Create code element to hold var function and hex
+	    var nameSpan = document.createElement('span');
+
+	    // Create em to hold hex value
+	    var hexSpan = document.createElement('em');
+
+	    // Create var function for nameSpan
+	    var colorName = document.createTextNode(colorClass);
+	    var hexValue = document.createTextNode(colorObj);
+	    nameSpan.appendChild(colorName);
+	    hexSpan.appendChild(hexValue);
+
+	    // Append everything into the LI
+	    colorSpan.appendChild(nameSpan);
+	    colorSpan.appendChild(hexSpan);
+	    li.appendChild(colorSpan);
+
+	    // Append LI's into the color UL
+	    document.querySelector(guideClass).appendChild(li);
+	  }
+	};
+
+	module.exports = brandColors;
+
+/***/ }),
+/* 21 */
+/***/ (function(module, exports) {
+
+	'use strict';
+
+	var uiColors = function uiColors(elementId, $elementId, guideClass) {
+
+	  var colorDataEl = document.getElementById(elementId);
+	  var colorData = sassToJs(colorDataEl);
+	  var colorString = JSON.parse(window.getComputedStyle(document.querySelector($elementId), ':before').getPropertyValue('content'));
+	  var colorJSON = JSON.parse(colorString);
+
+	  for (var colorClass in colorJSON) {
+	    var colorObj = colorJSON[colorClass];
+	    var colorHexValue = colorObj;
+
+	    // Create LI and add class name to it
+	    var li = document.createElement("li");
+	    li.className = 'guide-color-item col-100-sm col-33-lg col-20-xl';
+
+	    // Create span to hold color
+	    var colorSpan = document.createElement('span');
+	    colorSpan.className = 'bg-' + colorClass;
+
+	    // Create code element to hold var function and hex
+	    var nameSpan = document.createElement('span');
+
+	    // Create em to hold hex value
+	    var hexSpan = document.createElement('em');
+
+	    // Create var function for nameSpan
+	    var colorName = document.createTextNode(colorClass);
+	    var hexValue = document.createTextNode(colorObj);
+	    nameSpan.appendChild(colorName);
+	    hexSpan.appendChild(hexValue);
+
+	    // Append everything into the LI
+	    colorSpan.appendChild(nameSpan);
+	    colorSpan.appendChild(hexSpan);
+	    li.appendChild(colorSpan);
+
+	    // Append LI's into the color UL
+	    document.querySelector(guideClass).appendChild(li);
+	  }
+	};
+
+	module.exports = uiColors;
+
+/***/ }),
+/* 22 */
+/***/ (function(module, exports) {
+
+	'use strict';
+
+	var grayColors = function grayColors(elementId, $elementId, guideClass) {
+
+	  var colorDataEl = document.getElementById(elementId);
+	  var colorData = sassToJs(colorDataEl);
+	  var colorString = JSON.parse(window.getComputedStyle(document.querySelector($elementId), ':before').getPropertyValue('content'));
+	  var colorJSON = JSON.parse(colorString);
+
+	  // Create LI and add class name to it
+	  var li = document.createElement("li");
+	  li.className = 'guide-color-item col-100-sm col-50-lg col-33-xl';
+
+	  for (var colorClass in colorJSON) {
+	    var colorObj = colorJSON[colorClass];
+	    var colorHexValue = colorObj;
+
+	    // Create span to hold color
+	    var colorSpan = document.createElement('span');
+	    colorSpan.className = 'bg-' + colorClass;
+
+	    // Create code element to hold var function and hex
+	    var nameSpan = document.createElement('span');
+
+	    // Create em to hold hex value
+	    var hexSpan = document.createElement('em');
+
+	    // Create var function for nameSpan
+	    var colorName = document.createTextNode(colorClass);
+	    var hexValue = document.createTextNode(colorObj);
+	    nameSpan.appendChild(colorName);
+	    hexSpan.appendChild(hexValue);
+
+	    // Append everything into the LI
+	    colorSpan.appendChild(nameSpan);
+	    colorSpan.appendChild(hexSpan);
+	    li.appendChild(colorSpan);
+
+	    // Append LI's into the color UL
+	    document.querySelector(guideClass).appendChild(li);
+	  }
+	};
+
+	module.exports = grayColors;
+
+/***/ }),
+/* 23 */
+/***/ (function(module, exports) {
+
+	var m, template;
+
+	m = angular.module("lens.atoms.effects", []);
+
+	m.controller("EffectsController", [
+	  '$scope', function($scope) {
+	    return this;
+	  }
+	]);
+
+	m.directive("effects", function() {
+	  return {
+	    controller: "EffectsController",
+	    restrict: "E",
+	    scope: {},
+	    template: template
+	  };
+	});
+
+	template = "<lens-main>\n  <section id=\"hover-section\">\n    <div id=\"hover\" title=\"Hover, Focus &amp; Active\" class=\"inpage-anchor\"></div>\n    <h2>Hover, Active &amp; Focus</h2>\n    <p class=\"todo\">Write a bit about hover, active and focus states and our philosophy (hover == active == focus)?</p>\n    <table class=\"table-content\">\n      <thead>\n        <tr>\n          <th>Mixin</th>\n          <th>Parameters</th>\n          <th>Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>+selected</code></td>\n          <td>none</td>\n          <td>styles the <code>:hover</code>, <code>:active</code> and <code>:focus</code> states of an element</td>\n        </tr>\n        <tr>\n          <td><code>+selected(false)</code></td>\n          <td>boolean</td>\n          <td>if false, the <code>:focus</code> states is not included</td>\n        </tr>\n      </tbody>\n    </table>\n    <div class=\"guide-example\">\n      <div class=\"guide-example-code\">\n<pre><code class=\"language-css\">.my-element-with-hover-active-and-focus-the-same\n  background-color: white\n  +selected\n    background-color: pink\n.my-class-with-hover-and-active-sans-focus\n  background-color: white\n  +selected(false)\n    background-color: purple</code></pre>\n      </div>\n    </div>\n  </section>\n\n  <section id=\"transitions-section\">\n    <div id=\"transitions\" title=\"Transitions\" class=\"inpage-anchor\"></div>\n    <h2>Transitions</h2>\n    <p>CSS transitions? default times/speeds? etc.</p>\n    <p class=\"todo\"></p>\n\n  </section>\n\n\n</lens-main>";
+
+
+/***/ }),
+/* 24 */
+/***/ (function(module, exports) {
+
+	var m, template;
+
+	m = angular.module("lens.atoms.flexbox", []);
+
+	m.controller("FlexboxController", [
+	  '$scope', function($scope) {
+	    return this;
+	  }
+	]);
+
+	m.directive("flexbox", function() {
+	  return {
+	    controller: "FlexboxController",
+	    restrict: "E",
+	    scope: {},
+	    template: template
+	  };
+	});
+
+	template = "<lens-main>\n\n  <p>Flexbox is perfect for aligning items inside components. It typically\n    isn't used for large scale layouts but for smaller parts of a page or\n    component. All of the flex box utility classes can be used with our\n    breakpoint suffixes.</p>\n  <section id=\"flex-container-section\">\n    <div id=\"flex-container\" title=\"Flex Container\" class=\"inpage-anchor\"></div>\n    <h2>Flex Container</h2>\n    <p>The flex container is the parent of the items that will be laid out using flex box.\n    The properties in this section are all applied on this container.</p>\n\n    <h3>Display Properties</h3>\n    <p>The display property defines the flex container and enables a flex context for all of its\n      direct children.</p>\n    <table class=\"table-content\">\n      <thead>\n        <tr>\n          <th><code>@extend</code></th>\n          <th>Resolves to...</th>\n          <th>Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%flex-block-xs</code></td>\n          <td>display: flex</td>\n          <td>Used on block elements</td>\n        </tr>\n        <tr>\n          <td><code>%flex-inline-xs</code></td>\n          <td>display: flex-inline</td>\n          <td>Used on inline elements</td>\n        </tr>\n      </tbody>\n    </table>\n\n    <h3>Flex Direction</h3>\n    <p>This establishes the main-axis, defining the direction items are palced\n      in the container. Flex lays out in a single direction, either horizontal or vertical.</p>\n    <table class=\"table-content\">\n      <thead>\n        <tr>\n          <th><code>@extend</code></th>\n          <th>Resolves to...</th>\n          <th>Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%flex-row-xs</code></td>\n          <td>flex-direction: row</td>\n          <td>(Default) Left to right.</td>\n        </tr>\n        <tr>\n          <td><code>%flex-row-reverse-xs</code></td>\n          <td>flex-direction: row-reverse</td>\n          <td>Right to left</td>\n        </tr>\n        <tr>\n          <td><code>%flex-column-xs</code></td>\n          <td>flex-direction: column</td>\n          <td>Top to bottom</td>\n        </tr>\n        <tr>\n          <td><code>%flex-column-reverse-xs</code></td>\n          <td>flex-direction: column-reverse</td>\n          <td>Bottom to top</td>\n        </tr>\n      </tbody>\n    </table>\n\n    <h3>Flex Wrap</h3>\n    <p>Flex items will all fit into one line by default. To change that behavior\n       and allow them to wrap, you'll need to add some properties. Flex direction\n       plays a role here by defining the direction new line are stacked.</p>\n    <table class=\"table-content\">\n      <thead>\n        <tr>\n          <th><code>@extend</code></th>\n          <th>Resolves to...</th>\n          <th>Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%flex-nowrap-xs</code></td>\n          <td>flex-wrap: nowrap</td>\n          <td>(Default) Single-line with no wrapping</td>\n        </tr>\n        <tr>\n          <td><code>%flex-wrap-xs</code></td>\n          <td>flex-wrap: wrap</td>\n          <td>Multi-line from left to right</td>\n        </tr>\n        <tr>\n          <td><code>%flex-wrap-reverse-xs</code></td>\n          <td>flex-wrap: wrap-reverse</td>\n          <td>Multi-line from right to left</td>\n        </tr>\n      </tbody>\n    </table>\n\n    <h3>Justify Content</h3>\n    <p>This defines the alignment along the main axis and helps distribute space\n      around the flex items.</p>\n    <table class=\"table-content\">\n      <thead>\n        <tr>\n          <th class=\"col-30-xs\"><code>@extend</code></th>\n          <th class=\"col-30-xs\">Resolves to...</th>\n          <th>Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%flex-justify-start-xs</code></td>\n          <td>justify-content: flex-start</td>\n          <td>(Default) Items are packed toward the start line</td>\n        </tr>\n        <tr>\n          <td><code>%flex-justify-end-xs</code></td>\n          <td>justify-content: flex-end</td>\n          <td>Items are packed toward the end line</td>\n        </tr>\n        <tr>\n          <td><code>%flex-justify-center-xs</code></td>\n          <td>justify-content: center</td>\n          <td>Items are centered along the line</td>\n        </tr>\n        <tr>\n          <td><code>%flex-justify-between-xs</code></td>\n          <td>justify-content: space-between</td>\n          <td>Items are evenly distributed in the line. First item on the start line, last item on the end line.</td>\n        </tr>\n        <tr>\n          <td><code>%flex-justify-around-xs</code></td>\n          <td>justify-content: space-around</td>\n          <td>Items are evently distributed in the line with equal space around them. Note that visually the spaces aren't equal because each item has equal space on both sides.</td>\n        </tr>\n      </tbody>\n    </table>\n\n    <h3>Align Items</h3>\n    <p>This defines how flex items are laid out along the cross axis on the current line.</p>\n    <table class=\"table-content\">\n      <thead>\n        <tr>\n          <th class=\"col-30-xs\"><code>@extend</code></th>\n          <th class=\"col-30-xs\">Resolves to...</th>\n          <th>Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%flex-item-stretch-xs</code></td>\n          <td>align-items: stretch</td>\n          <td>(Default) Stretch to fill the container but still respects min/max-width</td>\n        </tr>\n        <tr>\n          <td><code>%flex-item-start-xs</code></td>\n          <td>align-items: flex-start</td>\n          <td>Cross-start margin edge of the items is placed on the cross-start line</td>\n        </tr>\n        <tr>\n          <td><code>%flex-item-end-xs</code></td>\n          <td>align-items: flex-end</td>\n          <td>Cross-end margin edge of the items is placed on the cross-end line</td>\n        </tr>\n        <tr>\n          <td><code>%flex-item-center-xs</code></td>\n          <td>align-items: center</td>\n          <td>Items are centered in the cross-axis</td>\n        </tr>\n        <tr>\n          <td><code>%flex-item-baseline-xs</code></td>\n          <td>align-items: baseline</td>\n          <td>Items are aligned along their baselines</td>\n        </tr>\n      </tbody>\n    </table>\n\n\n    <h3>Align Content</h3>\n    <p>This aligns a flex container's lines within when there is extra space in the cross-axis,\n      similar to how justify-content aligns items within the main axis. Note: this property\n      has no effect when there is only one line of flex items.</p>\n    <table class=\"table-content\">\n      <thead>\n        <tr>\n          <th class=\"col-30-xs\"><code>@extend</code></th>\n          <th class=\"col-30-xs\">Resolves to...</th>\n          <th>Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%flex-content-stretch-xs</code></td>\n          <td>align-content: stretch</td>\n          <td>(Default) Lines stretch to take up the remaining space</td>\n        </tr>\n        <tr>\n          <td><code>%flex-content-start-xs</code></td>\n          <td>align-content: flex-start</td>\n          <td>Lines packed to the start of the container</td>\n        </tr>\n        <tr>\n          <td><code>%flex-content-end-xs</code></td>\n          <td>align-content: flex-end</td>\n          <td>Lines packed to the end of the container</td>\n        </tr>\n        <tr>\n          <td><code>%flex-content-center-xs</code></td>\n          <td>align-content: center</td>\n          <td>Lines packed to the center of the container</td>\n        </tr>\n        <tr>\n          <td><code>%flex-content-around-xs</code></td>\n          <td>align-content: space-around</td>\n          <td>Lines evenly distributed with the first line at the start and the last at the end of the container.</td>\n        </tr>\n        <tr>\n          <td><code>%flex-content-between-xs</code></td>\n          <td>align-content: space-between</td>\n          <td>Lines evenly distributed with equal space around each line.</td>\n        </tr>\n      </tbody>\n    </table>\n  </section>\n\n  <section id=\"flex-items-section\">\n    <div id=\"flex-items\" title=\"Flex Items\" class=\"inpage-anchor\"></div>\n    <h2>Flex Items</h2>\n    <p>These are the direct children of the parent container. Flex items are laid\n      out according to the properties applied to the flex container. The following\n      properties are applied on the individual flex items.</p>\n\n    <h3>Order</h3>\n    <p>By default, items are laid out in source order. Use the <code>order</code>\n      property to control the order inside the flex container.\n    </p>\n    <p>Lens contains built in ordering classes of <code>.flex-order-$n-xs</code>,\n       where <code>$n</code> is an integer\n      from 1 to 6. Any item without an order will default to 1 and matching orders\n      will be grouped together in the appropriate order. You can rearrange the\n      order across breakpoints using the breakpoint suffixes.</p>\n    <table class=\"table-content\">\n      <thead>\n        <tr>\n          <th><code>@extend</code></th>\n          <th>Resolves to...</th>\n          <th>Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%flex-order-$n-xs</code></td>\n          <td>order: $n</td>\n          <td><code>$n</code> is a an integer from 1 to 6</td>\n        </tr>\n      </tbody>\n    </table>\n\n    <h3>Flex Grow</h3>\n    <p>This property lets an item grow if necessary. It accepts a unitless value\n      that serves as a proportion. The default is <code>0</code>.</p>\n    <table class=\"table-content\">\n      <thead>\n        <tr>\n          <th><code>@extend</code></th>\n          <th>Resolves to...</th>\n          <th>Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%flex-grow-$n-xs</code></td>\n          <td>flex-grow: $n</td>\n          <td><code>$n</code> is a an integer from 0 to 6</td>\n        </tr>\n      </tbody>\n    </table>\n\n    <h3>Flex Shrink</h3>\n    <p>This property lets an item shrink if necessary. It also accepts a unitless\n      value that serves as a proportion. The default is <code>1</code>.</p>\n    <table class=\"table-content\">\n      <thead>\n        <tr>\n          <th><code>@extend</code></th>\n          <th>Resolves to...</th>\n          <th>Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%flex-shrink-$n-xs</code></td>\n          <td>flex-shrink: $n</td>\n          <td><code>$n</code> is a an integer from 1 to 6</td>\n        </tr>\n      </tbody>\n    </table>\n\n    <h3>Flex Basis</h3>\n    <p>This property defines the default size of an element before the remaining\n       space is distributed. It can be a length or keyword, like \"auto\". The\n       default is <code>auto</code>.</p>\n    <p>To use percentages, use the same percentage values\n       used to layout <a ui-sref=\"grid\">grids</a> (5-100 in increments of 5, plus 33 and 66).\n       To use a <a ui-sref=\"spaces-sizing\">sizing unit</a> preface the unit with an <code>s</code>.</p>\n    <table class=\"table-content\">\n      <thead>\n        <tr>\n          <th class=\"col-30-xs\"><code>@extend</code></th>\n          <th>Resolves to...</th>\n          <th>Notes</th>\n          <th>Example</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%flex-basis-auto-xs</code></td>\n          <td>flex-basis: auto</td>\n          <td>Default</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%flex-basis-$n-xs</code></td>\n          <td>flex-basis: percentage($n/100)</td>\n          <td><code>$n</code> is a an integer from 5-100 in increments of 5, plus 33 and 66</td>\n          <td><code>%flex-basis-33-xs</code> resolves to flex-basis: 0.33</td>\n        </tr>\n        <tr>\n          <td><code>%flex-basis-s$size-xs</code></td>\n          <td>flex-basis: s$size</td>\n          <td><code>$size</code> is a <a ui-sref=\"spaces-sizing\">sizing unit</a></td>\n          <td><code>%flex-basis-s4-xs</code> resolves to flex-basis: 4px</td>\n        </tr>\n      </tbody>\n    </table>\n\n\n    <h3>Align Self</h3>\n    <p>This allows individual flex items to have their own unique alignment within the container\n      overriding the container align-items property.</p>\n    <table class=\"table-content\">\n      <thead>\n        <tr>\n          <th><code>@extend</code></th>\n          <th>Resolves to...</th>\n          <th>Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%flex-self-auto-xs</code></td>\n          <td>align-self: auto</td>\n          <td>(Default) Auto align, which inherits the align-items property</td>\n        </tr>\n        <tr>\n          <td><code>%flex-self-start-xs</code></td>\n          <td>align-self: flex-start</td>\n          <td>Cross-start margin edge of the items is placed on the cross-start line</td>\n        </tr>\n        <tr>\n          <td><code>%flex-self-end-xs</code></td>\n          <td>align-self: flex-end</td>\n          <td>Cross-end margin edge of the items is placed on the cross-end line</td>\n        </tr>\n        <tr>\n          <td><code>%flex-self-center-xs</code></td>\n          <td>align-self: center</td>\n          <td>Items are centered in the cross-axis</td>\n        </tr>\n        <tr>\n          <td><code>%flex-self-stretch-xs</code></td>\n          <td>align-self: stretch</td>\n          <td>Stretch to fill the container but still respects min/max-width</td>\n        </tr>\n        <tr>\n          <td><code>%flex-self-baseline-xs</code></td>\n          <td>align-self: baseline</td>\n          <td>Items are aligned such as their baselines align</td>\n        </tr>\n      </tbody>\n    </table>\n  </section>\n\n</lens-main>";
+
+
+/***/ }),
+/* 25 */
+/***/ (function(module, exports) {
+
+	var m, template;
+
+	m = angular.module("lens.atoms.grid", []);
+
+	m.controller("GridController", [
+	  '$scope', function($scope) {
+	    return this;
+	  }
+	]);
+
+	m.directive("grid", function() {
+	  return {
+	    controller: "GridController",
+	    restrict: "E",
+	    scope: {},
+	    template: template
+	  };
+	});
+
+	template = "<lens-main>\n\n  <section id=\"grid-section\">\n    <div id=\"grid\" title=\"The Grid\" class=\"inpage-anchor\"></div>\n    <h2>The Grid</h2>\n    <p>Lens provides mobile-first, fluid grid to layout pages with ease. To\n       start a new grid, create a div with the class of <code>.col-container</code>.\n       Then add columns inside it using <code>.col .col-$n-xs</code>, where\n       <code>$n</code> = a % value between 5-100 in increments of 5, with the addition of 33 and 66\n       to let us do columns in thirds.</p>\n    <p><strong>Tips for building a happy grid:</strong>\n      <ul>\n        <li>Column classes should be used on container elements and <strong><em>not</em></strong>\n           directly to elements such as form fields, headers or images.</li>\n        <li>Avoid applying styles directly to a column element. Instead, nest\n          your content within the column and apply styling there.</li>\n      </ul>\n    </p>\n    <div class=\"guide-example\">\n      <div class=\"guide-example-demo\">\n        <div class=\"col-container\">\n          <div class=\"col col-30-xs\"><div class=\"guide-demo-box\">.col .col-30-xs</div></div>\n          <div class=\"col col-20-xs\"><div class=\"guide-demo-box\">.col .col-20-xs</div></div>\n          <div class=\"col col-50-xs\"><div class=\"guide-demo-box\">.col .col-50-xs</div></div>\n        </div>\n      </div>\n      <div class=\"guide-example-code\">\n<pre><code class=\"language-html\">&lt;div class=\"col-container\"&gt;\n  &lt;div class=\"col col-30-xs\"&gt;&lt;div class=\"guide-demo-box\"&gt;.col .col-30-xs&lt;/div&gt;&lt;/div&gt;\n  &lt;div class=\"col col-20-xs\"&gt;&lt;div class=\"guide-demo-box\"&gt;.col .col-20-xs&lt;/div&gt;&lt;/div&gt\n  &lt;div class=\"col col-50-xs\"&gt;&lt;div class=\"guide-demo-box\"&gt;.col .col-50-xs&lt;/div&gt;&lt;/div&gt\n&lt;/div&gt;</code></pre>\n      </div>\n    </div>\n  </section>\n\n  <section id=\"nesting-section\">\n    <div id=\"nesting\" title=\"Nesting Columns\" class=\"inpage-anchor\"></div>\n    <h2>Nesting Columns</h2>\n    <p>Each column in our grid can hold another set of columns inside of it. To\n      make things work properly nest another <code>.col-container</code> inside\n      the <code>.col</code>.</p>\n    <div class=\"guide-example\">\n      <div class=\"guide-example-demo\">\n        <div class=\"col-container\">\n          <div class=\"col col-50-xs\">\n            <div class=\"guide-demo-box\">\n              <div>.col .col-50-xs</div>\n              <div class=\"col-container\">\n                <div class=\"col col-30-xs\"><div class=\"guide-demo-box\">.col .col-30-xs</div></div>\n                <div class=\"col col-30-xs\"><div class=\"guide-demo-box\">.col .col-30-xs</div></div>\n                <div class=\"col col-40-xs\"><div class=\"guide-demo-box\">.col .col-40-xs</div></div>\n              </div>\n            </div>\n          </div>\n          <div class=\"col col-50-xs\">\n            <div class=\"guide-demo-box\">\n              <div>.col .col-50-xs</div>\n              <div class=\"col-container\">\n                <div class=\"col col-40-xs\"><div class=\"guide-demo-box\">.col .col-40-xs</div></div>\n                <div class=\"col col-60-xs\"><div class=\"guide-demo-box\">.col .col-60-xs</div></div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n      <div class=\"guide-example-code\">\n<pre><code class=\"language-html\">&lt;div class=\"col-container\"&gt;\n  &lt;div class=\"col col-50-xs\"&gt;\n    &lt;div class=\"guide-demo-box\"&gt;\n      &lt;div&gt;.col .col-50-xs&lt;/div&gt;\n      &lt;div class=\"col-container\"&gt;\n        &lt;div class=\"col col-30-xs\"&gt;&lt;div class=\"guide-demo-box\"&gt;.col .col-30-xs&lt;/div&gt;&lt;/div&gt;\n        &lt;div class=\"col col-30-xs\"&gt;&lt;div class=\"guide-demo-box\"&gt;.col .col-30-xs&lt;/div&gt;&lt;/div&gt\n        &lt;div class=\"col col-40-xs\"&gt;&lt;div class=\"guide-demo-box\"&gt;.col .col-40-xs&lt;/div&gt;&lt;/div&gt\n      &lt;/div&gt;\n    &lt;/div&gt;\n  &lt;/div&gt;\n  &lt;div class=\"col col-50-xs\"&gt;\n    &lt;div class=\"guide-demo-box\"&gt;\n      &lt;div&gt;.col .col-50-xs&lt;/div&gt;\n      &lt;div class=\"col-container\"&gt;\n        &lt;div class=\"col col-40-xs\"&gt;&lt;div class=\"guide-demo-box\"&gt;.col .col-40-xs&lt;/div&gt;&lt;/div&gt;\n        &lt;div class=\"col col-60-xs\"&gt;&lt;div class=\"guide-demo-box\"&gt;.col .col-60-xs&lt;/div&gt;&lt;/div&gt\n      &lt;/div&gt;\n    &lt;/div&gt;\n  &lt;/div&gt;\n&lt;/div&gt;</code></pre>\n      </div>\n    </div>\n  </section>\n\n  <section id=\"max-width-section\">\n    <div id=\"max-width\" title=\"Max-Width\" class=\"inpage-anchor\"></div>\n    <h2>Max-Width</h2>\n    <p class=\"todo\">Probably should revisit this - 15px padding on either side? Centered?\n      maybe the name too? just thinking out loud....</p>\n    <p>By default, the grid will span 100% of the browser viewport. If you want\n      to control that, add <code>.col-max</code> next to your <code>.col-container</code>\n      class. This will:\n      <ul>\n        <li>limit the width of the grid to a maximum of <code>1260px</code></li>\n        <li>add 15px padding to the right and left of the column</li>\n        <li>set the left and right margin to auto, centering the column in the container</li>\n      </ul>\n      </p>\n    <div class=\"guide-example\">\n      <div class=\"guide-example-demo\">\n        <div class=\"col-container col-max\">\n          <div class=\"guide-demo-box\">1260px max-width.... stretch yer window to see!</div>\n        </div>\n      </div>\n      <div class=\"guide-example-code\">\n<pre><code class=\"language-html\">&lt;div class=\"col-container col-max\"&gt;\n  &lt;div class=\"guide-demo-box\"&gt;1260px max-width&lt;/div&gt;\n&lt;/div&gt;</code></pre>\n      </div>\n    </div>\n  </section>\n\n  <section id=\"gutters-section\">\n    <div id=\"gutters\" title=\"Gutters\" class=\"inpage-anchor\"></div>\n    <h2>Gutters</h2>\n    <p class=\"todo\">Probably should revisit the default gutter size too. currently 15px\n      on the left and right, resulting in 30px between two columns.</p>\n    <p>The Lens grid doesn't include gutters by default. If a gutter is needed,\n       <code>.col-gutters</code> can be added next to <code>.col-container</code>\n       to automatically assign <code>30px</code> gutters between columns.</p>\n\n    <p>Gutters will not be applied to nested columns unless applied to its parent container.</p>\n    <div class=\"guide-example\">\n      <div class=\"guide-example-demo guide-demo-box\">\n        <div class=\"col-container col-gutters\">\n          <div class=\"col col-40-xs\">\n            <div class=\"guide-demo-box\">.col .col-40-xs</div>\n          </div>\n          <div class=\"col col-60-xs\">\n            <div class=\"guide-demo-box\">.col .col-60-xs\n              <div class=\"col-container\">\n                <div class=\"col col-33-xs\"><div class=\"guide-demo-box\">.col .col-33</div></div>\n                <div class=\"col col-33-xs\"><div class=\"guide-demo-box\">.col .col-33</div></div>\n                <div class=\"col col-33-xs\"><div class=\"guide-demo-box\">.col .col-33</div></div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n      <div class=\"guide-example-code\">\n  <pre><code class=\"language-html\">&lt;div class=\"col-container col-gutters\"&gt;\n  &lt;div class=\"col col-40-xs\"&gt;\n    &lt;div class=\"guide-demo-box\"&gt;.col .col-40-xs&lt;/div&gt;\n  &lt;/div&gt;\n  &lt;div class=\"col col-60-xs\"&gt;\n    &lt;div class=\"guide-demo-box\"&gt;.col .col-60-xs\n      &lt;div class=\"col-container\"&gt;\n        &lt;div class=\"col col-33-xs\"&gt;&lt;div class=\"guide-demo-box\"&gt;.col .col-33&lt;/div&gt;&lt;/div&gt;\n        &lt;div class=\"col col-33-xs\"&gt;&lt;div class=\"guide-demo-box\"&gt;.col .col-33&lt;/div&gt;&lt;/div&gt;\n        &lt;div class=\"col col-33-xs\"&gt;&lt;div class=\"guide-demo-box\"&gt;.col .col-33&lt;/div&gt;&lt;/div&gt;\n      &lt;/div&gt;\n    &lt;/div&gt;\n  &lt;/div&gt;\n&lt;/div&gt;</code></pre>\n      </div>\n    </div>\n  </section>\n\n  <section id=\"centering-section\">\n    <div id=\"centering\" title=\"Centering Columns\" class=\"inpage-anchor\"></div>\n    <h2>Centering Columns</h2>\n    <p>Sometimes you want to center a single column within its container. This is\n      possible by adding <code>.col-center</code> next to your <code>.col col-$n-xs</code> class. </p>\n    <div class=\"col-container\">\n      <div class=\"col col-50-xs col-center\"><div class=\"guide-demo-box\">.col .col-50-xs .col-center</div></div>\n    </div>\n    <div class=\"col-container\">\n      <div class=\"col col-30-xs col-center\"><div class=\"guide-demo-box\">.col .col-30-xs .col-center</div></div>\n    </div>\n    <div class=\"guide-code\">\n  <pre><code class=\"language-html\">&lt;div class=\"col-container\"&gt;\n  &lt;div class=\"col col-50-xs col-center\"&gt;&lt;div class=\"guide-demo-box\"&gt;.col .col-50-xs .col-center&lt;/div&gt;&lt;/div&gt;\n&lt;/div&gt;\n&lt;div class=\"col-container\"&gt;\n  &lt;div class=\"col col-30-xs col-center\"&gt;&lt;div class=\"guide-demo-box\"&gt;.col .col-30-xs .col-center&lt;/div&gt;&lt;/div&gt;\n&lt;/div&gt;</code></pre>\n    </div>\n  </section>\n\n  <section id=\"offsets-section\">\n    <div id=\"offsets\" title=\"Offsets\" class=\"inpage-anchor\"></div>\n    <h2>Column Offsets</h2>\n    <p>Move columns over by different grid widths by using <code>.col-offset-$n-xs</code> where\n      <code>$n</code> has the same values as the column percentage widths. Keep in\n      mind that the columns and offsets used within a <code>.col-container</code> shouldn't add\n      up to more than 100.</p>\n    <div class=\"guide-example\">\n      <div class=\"guide-example-demo\">\n        <div class=\"col-container\">\n          <div class=\"col col-40-xs\"><div class=\"guide-demo-box\">.col-40-xs</div></div>\n          <div class=\"col col-40-xs col-offset-20-xs\"><div class=\"guide-demo-box\">.col-40-xs .col-offset-30-xs</div>\n        </div>\n      </div>\n      <div class=\"guide-example-code\">\n<pre><code class=\"language-html\">&lt;div class=\"col-container\"&gt;\n  &lt;div class=\"col col-40-xs\"&gt;&lt;div class=\"guide-demo-box\"&gt;.col-40-xs&lt;/div&gt;&lt;/div&gt;\n  &lt;div class=\"col col-40-xs col-offset-20-xs\"&gt;&lt;div class=\"guide-demo-box\"&gt;.col-40-xs .col-offset-30-xs&lt;/div&gt;&lt;/div&gt;\n&lt;/div&gt;</code></pre>\n      </div>\n    </div>\n  </section>\n\n  <section id=\"responsive-section\">\n    <div id=\"responsive\" title=\"Responsive Breakpoints\" class=\"inpage-anchor\"></div>\n    <h2>Responsive Breakpoint</h2>\n    <p>Our mobile first grid comes with a set of breakpoint class suffixes that can be used to\n      override columns across breakpoints. For example, if a <code>&lt;div&gt;</code>\n       needs to take up the full width of\n      the page across all display sizes, use <code>.col-100-xs</code>. If that\n      div needs to be half width at the medium breakpoint and a quarter at our\n      large breakpoints, add <code>.col-50-md</code> and <code>.col-33-lg</code>.\n      Resize the browser to see the effect in action. You can learn more about the breakpoints\n      in our <a ui-sref=\"responsive\">responsive documentation</a>.</p>\n    <div class=\"guide-example\">\n      <div class=\"guide-example-demo\">\n        <div class=\"col-container\">\n          <div class=\"col col-100-xs col-50-md col-25-lg\">\n            <div class=\"guide-demo-box\">\n              .col-100-xs .col-50-md .col-25-lg\n            </div>\n          </div>\n          <div class=\"col col-100-xs col-50-md col-25-lg\">\n            <div class=\"guide-demo-box\">\n              .col-100-xs .col-50-md .col-25-lg\n            </div>\n          </div>\n          <div class=\"col col-100-xs col-50-md col-25-lg\">\n            <div class=\"guide-demo-box\">\n              .col-100-xs .col-50-md .col-25-lg\n            </div>\n          </div>\n          <div class=\"col col-100-xs col-50-md col-25-lg\">\n            <div class=\"guide-demo-box\">\n              .col-100-xs .col-50-md .col-25-lg\n            </div>\n          </div>\n        </div>\n      </div>\n      <div class=\"guide-example-code\">\n<pre><code class=\"language-html\">&lt;div class=\"col-container\"&gt;\n  &lt;div class=\"col col-100-xs col-50-md col-25-lg\"&gt;\n    &lt;div class=\"guide-demo-box\"&gt;.col-100-xs .col-50-md .col-25-lg&lt;/div&gt;\n  &lt;/div&gt;\n  &lt;div class=\"col col-100-xs col-50-md col-25-lg guide-demo-box\"&gt;\n    &lt;div class=\"guide-demo-box\"&gt;.col-100-xs .col-50-md .col-25-lg&lt;/div&gt;\n  &lt;/div&gt;\n  &lt;div class=\"col col-100-xs col-50-md col-25-lg guide-demo-box\"&gt;\n    &lt;div class=\"guide-demo-box\"&gt;.col-100-xs .col-50-md .col-25-lg&lt;/div&gt;\n  &lt;/div&gt;\n  &lt;div class=\"col col-100-xs col-50-md col-25-lg guide-demo-box\"&gt;\n    &lt;div class=\"guide-demo-box\"&gt;.col-100-xs .col-50-md .col-25-lg&lt;/div&gt;\n  &lt;/div&gt;\n&lt;/div&gt;</code></pre>\n      </div>\n    </div>\n  </section>\n\n  <section id=\"variables-section\">\n    <div id=\"variables\" title=\"Variables\" class=\"inpage-anchor\"></div>\n    <h2 >Variables</h2>\n    <table class=\"table-content\">\n      <thead>\n        <tr>\n          <th>Variable</th>\n          <th>Value</th>\n          <th>Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>$grid-max-width</code></td>\n          <td>1260px</td>\n          <td>This is a suggested maximum width for a layout.</td>\n        </tr>\n      </tbody>\n    </table>\n  </section>\n</lens-main>";
+
+
+/***/ }),
+/* 26 */
+/***/ (function(module, exports) {
+
+	var m, template;
+
+	m = angular.module("lens.atoms.icons", []);
+
+	m.controller("IconsController", [
+	  '$scope', function($scope) {
+	    return this;
+	  }
+	]);
+
+	m.directive("icons", function() {
+	  return {
+	    controller: "IconsController",
+	    restrict: "E",
+	    scope: {},
+	    template: template
+	  };
+	});
+
+	template = "<lens-main>\n  <section id=\"icons\">Coming Soon...</section>\n</lens-main>";
+
+
+/***/ }),
+/* 27 */
+/***/ (function(module, exports) {
+
+	var m, template;
+
+	m = angular.module("lens.atoms.layout", []);
+
+	m.controller("LayoutController", [
+	  '$scope', function($scope) {
+	    return this;
+	  }
+	]);
+
+	m.directive("layout", function() {
+	  return {
+	    controller: "LayoutController",
+	    restrict: "E",
+	    scope: {},
+	    template: template
+	  };
+	});
+
+	template = "<lens-main>\n  <section id=\"display-section\">\n    <div id=\"display\" title=\"Display\" class=\"inpage-anchor\"></div>\n    <h2>Display</h2>\n    <table class=\"table-content\">\n      <thead>\n        <tr>\n          <th><code>@extend</code></th>\n          <th>Resolves to...</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%block-xs</code></td>\n          <td>dislay: block</td>\n        </tr>\n        <tr>\n          <td><code>%inline-xs</code></td>\n          <td>dislay: inline</td>\n        </tr>\n        <tr>\n          <td><code>%inline-block-xs</code></td>\n          <td>dislay: inline-block</td>\n        </tr>\n        <tr>\n          <td><code>%hide-xs</code></td>\n          <td>dislay: none</td>\n        </tr>\n      </tbody>\n    </table>\n\n    <p>See the <a ui-sref=\"grid\">grid</a>, <a ui-sref=\"block-grid\">block grid</a> and\n       <a ui-sref=\"flexbox\">flexbox</a> sections for more advanced disaply options and layouts.\n    </p>\n  </section>\n\n  <section id=\"position-section\">\n    <div id=\"position\" title=\"Position\" class=\"inpage-anchor\"></div>\n    <h2>Position</h2>\n    <table class=\"table-content\">\n      <thead>\n        <tr>\n          <th><code>@extend</code></th>\n          <th>Resolves to...</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%relative-xs</code></td>\n          <td>position: relative</td>\n        </tr>\n        <tr>\n          <td><code>%absolute-xs</code></td>\n          <td>position: absolute</td>\n        </tr>\n        <tr>\n          <td><code>%fixed-xs</code></td>\n          <td>position: fixed</td>\n        </tr>\n        <tr>\n          <td><code>%static-xs</code></td>\n          <td>position: static</td>\n        </tr>\n      </tbody>\n    </table>\n\n    <p>Set the position with <code>.pos-$s-$n-xs</code>, where <code>$s</code> is the side\n       and <code>$n</code> is one of our spacing units.\n    </p>\n    <table class=\"table-content\">\n      <thead>\n        <tr>\n          <th><code>@extend</code></th>\n          <th>Resolves to...</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%pos-t-$n-xs</code></td>\n          <td>top: $n</td>\n        </tr>\n        <tr>\n          <td><code>%pos-b-$n-xs</code></td>\n          <td>bottom: $n</td>\n        </tr>\n        <tr>\n          <td><code>%pos-l-$n-xs</code></td>\n          <td>left: $n</td>\n        </tr>\n        <tr>\n          <td><code>%pos-r-$n-xs</code></td>\n          <td>right: $n</td>\n        </tr>\n      </tbody>\n    </table>\n\n    <h3>Mixins</h3>\n    <p>Set custom positioning with the following mixins:</p>\n    <pre><code>+absolute($direction $amount)\n+relative($direction $amount)\n+fixed($direction $amount)</code></pre>\n    <div class=\"guide-example\">\n      <div class=\"guide-example-code\"><pre><code class=\"language-css\">.custom-selector\n  +absoute(top, 200px)</code></pre>\n      </div>\n    </div>\n\n  </section>\n\n\n  <section id=\"floats-section\">\n    <div id=\"floats\" title=\"Floats\" class=\"inpage-anchor\"></div>\n    <h2>Floats</h2>\n    <table class=\"table-content\">\n      <thead>\n        <tr>\n          <th><code>@extend</code></th>\n          <th>Resolves to...</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%float-l-xs</code></td>\n          <td>float: left</td>\n        </tr>\n        <tr>\n          <td><code>%float-r-xs</code></td>\n          <td>float: right</td>\n        </tr>\n        <tr>\n          <td><code>%float-none-xs</code></td>\n          <td>float: none</td>\n        </tr>\n      </tbody>\n    </table>\n    <h3>Mixins</h3>\n    <p><code>+clearfix</code> will allow your element to clear its child elements.</p>\n    <div class=\"guide-example\">\n      <div class=\"guide-example-code\"><pre><code class=\"language-css\">.custom-selector\n  +clearfix</code></pre>\n      </div>\n    </div>\n  </section>\n\n  <section id=\"z-index-section\">\n    <div id=\"z-index\" title=\"Z-Index\" class=\"inpage-anchor\"></div>\n    <h2>Z-Index</h2>\n    <p>Use a z-index class to assign the stack order of elements.\n      Lens has classes for values 1-4, which end up as 100-400 in the property value.</p>\n    <table class=\"table-content\">\n      <thead>\n        <tr>\n          <th><code>@extend</code></th>\n          <th>Resolves to...</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%z-1-xs</code></td>\n          <td>z-index: 100</td>\n        </tr>\n        <tr>\n          <td><code>%z-2-xs</code></td>\n          <td>z-index: 200</td>\n        </tr>\n        <tr>\n          <td><code>%z-3-xs</code></td>\n          <td>z-index: 300</td>\n        </tr>\n        <tr>\n          <td><code>%z-4-xs</code></td>\n          <td>z-index: 400</td>\n        </tr>\n      </tbody>\n    </table>\n  </section>\n\n  <section id=\"vertical-alignment-section\">\n    <div id=\"vertical-alignment\" title=\"Vertical Alignment\" class=\"inpage-anchor\"></div>\n    <h2>Vertical Alignment</h2>\n    <p>A sub-set of the vertical alignment options for inline or table-cell elements.</p>\n    <table class=\"table-content\">\n      <thead>\n        <tr>\n          <th><code>@extend</code></th>\n          <th>Resolves to...</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%align-top-xs</code></td>\n          <td>vertical-align: top</td>\n        </tr>\n        <tr>\n          <td><code>%align-middle-xs</code></td>\n          <td>vertical-align: middle</td>\n        </tr>\n        <tr>\n          <td><code>%align-bottom-xs</code></td>\n          <td>vertical-align: bottom</td>\n        </tr>\n      </tbody>\n    </table>\n  </section>\n\n\n\n  <section id=\"rotation-section\">\n    <div id=\"rotation\" title=\"Rotation\" class=\"inpage-anchor\"></div>\n    <h2>Rotation</h2>\n    <table class=\"table-content\">\n      <thead>\n        <tr>\n          <th><code>@extend</code></th>\n          <th>Resolves to...</th>\n          <th>Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%rotate-$n-xs</code></td>\n          <td>transform: rotate(<code>$n</code>deg)</td>\n          <td><code>$n</code> is one of 0, 45, 90, 135, 180, 225, 270, or 315</td>\n        </tr>\n      </tbody>\n    </table>\n  </section>\n\n</lens-main>";
+
+
+/***/ }),
+/* 28 */
+/***/ (function(module, exports) {
+
+	var m, template;
+
+	m = angular.module("lens.atoms.spacing_sizing", []);
+
+	m.controller("SpacingSizingController", [
+	  '$scope', function($scope) {
+	    return this;
+	  }
+	]);
+
+	m.directive("spacingSizing", function() {
+	  return {
+	    controller: "SpacingSizingController",
+	    restrict: "E",
+	    scope: {},
+	    template: template
+	  };
+	});
+
+	template = "<lens-main>\n  <section id=\"spacing-units-section\">\n    <div id=\"spacing-units\" title=\"Spacing Units\" class=\"inpage-anchor\"></div>\n    <h2>Spacing Units</h2>\n    <p>Spacing units are used for margin, padding, and <a ui-sref=\"layout\">positioning</a>.\n       These comes in values from 0-27. </p>\n     <p class=\"todo\"> Add theory from Jeremy here on the scale ramp.</p>\n    <div class=\"col-container\">\n      <div class=\"col col-30-lg\">\n        <ul class=\"list-unstyled\">\n          <li><code>0</code> = 0px</li>\n          <li><code>1</code> = 1px</li>\n          <li><code>2</code> = 2px</li>\n          <li><code>3</code> = 3px</li>\n          <li><code>4</code> = 4px</li>\n          <li><code>5</code> = 5px</li>\n          <li><code>6</code> = 6px</li>\n          <li><code>7</code> = 7px</li>\n          <li><code>8</code> = 12px</li>\n          <li><code>9</code> = 14px</li>\n        </ul>\n      </div>\n      <div class=\"col col-30-lg\">\n        <ul>\n          <li><code>10</code> = 16px</li>\n          <li><code>11</code> = 20px</li>\n          <li><code>12</code> = 24px</li>\n          <li><code>13</code> = 27px</li>\n          <li><code>14</code> = 30px</li>\n          <li><code>15</code> = 36px</li>\n          <li><code>16</code> = 46px</li>\n          <li><code>17</code> = 60px</li>\n          <li><code>18</code> = 72px</li>\n          <li><code>19</code> = 81px</li>\n        </ul>\n      </div>\n      <div class=\"col col-30-lg\">\n        <ul>\n          <li><code>20</code> = 96px</li>\n          <li><code>21</code> = 121px</li>\n          <li><code>22</code> = 144px</li>\n          <li><code>23</code> = 182px</li>\n          <li><code>24</code> = 216px</li>\n          <li><code>25</code> = 273px</li>\n          <li><code>26</code> = 324px</li>\n          <li><code>27</code> = 410px</li>\n        </ul>\n      </div>\n    </div>\n  </section>\n\n\n\n  <section id=\"margin-padding-section\">\n    <div id=\"margin-padding\" title=\"Margin &amp; Padding\" class=\"inpage-anchor\"></div>\n    <h2>Margin &amp; Padding</h2>\n    <p>To specify margin and padding, Lens uses a shorthand of the Resolves to... name,\n       side, spacing unit value and <a ui-sref=\"responsive\">breakpoint</a> in the following format:\n       <code>%Resolves to...-side-unit-breakpoint</code>.</p>\n    <div class=\"col-container\">\n      <div class=\"col col-30-lg\">\n        <h4>Properties</h4>\n        <ul class=\"list-unstyled\">\n          <li><code>m</code> = margin</li>\n          <li><code>p</code> = padding</li>\n        </ul>\n      </div>\n      <div class=\"col col-30-lg\">\n        <h4>Sides</h4>\n        <ul class=\"list-unstyled\">\n          <li><code>t</code> = top</li>\n          <li><code>b</code> = bottom</li>\n          <li><code>l</code> = left</li>\n          <li><code>r</code> = right</li>\n          <li><code>lr</code> = left + right</li>\n          <li><code>tb</code> = top + bottom</li>\n        </ul>\n      </div>\n    </div>\n\n    <h3>Margin</h3>\n    <table class=\"table-content\">\n      <thead>\n        <tr>\n          <th><code>@extend</code></th>\n          <th>Resolves to...</th>\n          <th>Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%m-$n-xs</code></td>\n          <td>margin: $n</td>\n          <td>Equal margin on all sides of the element.</td>\n        </tr>\n        <tr>\n          <td><code>%m-t-$n-xs</code></td>\n          <td>margin-top: $n</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%m-b-$n-xs</code></td>\n          <td>margin-bottom: $n</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%m-l-$n-xs</code></td>\n          <td>margin-left: $n</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%m-r-$n-xs</code></td>\n          <td>margin-right: $n</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%m-tb-$n-xs</code></td>\n          <td>margin-top: $n<br/>margin-bottom: $n</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%m-lr-$n-xs</code></td>\n          <td>margin-left: $n<br/>margin-right: $n</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%m-auto-xs</code></td>\n          <td>margin-left: auto<br/>margin-right: auto</td>\n          <td>horizontal center</td>\n        </tr>\n      </tbody>\n    </table>\n\n    <h3>Padding</h3>\n    <table class=\"table-content\">\n      <thead>\n        <tr>\n          <th><code>@extend</code></th>\n          <th>Resolves to...</th>\n          <th>Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%p-$n-xs</code></td>\n          <td>padding: $n</td>\n          <td>Equal padding on all sides of the element.</td>\n        </tr>\n        <tr>\n          <td><code>%p-t-$n-xs</code></td>\n          <td>padding-top: $n</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%p-b-$n-xs</code></td>\n          <td>padding-bottom: $n</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%p-l-$n-xs</code></td>\n          <td>padding-left: $n</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%p-r-$n-xs</code></td>\n          <td>padding-right: $n</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%p-tb-$n-xs</code></td>\n          <td>padding-top: $n<br/>padding-bottom: $n</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%p-lr-$n-xs</code></td>\n          <td>padding-left: $n<br/>padding-right: $n</td>\n          <td></td>\n        </tr>\n      </tbody>\n    </table>\n\n    <h3>Functions</h3>\n    <p>The <code>spacing($n)</code> function can also be used to\n      apply spacing units to your class definitions.</p>\n    <div class=\"guide-example\">\n      <div class=\"guide-example-code\">\n        <pre><code class=\"language-css\">.custom-element\n  margin: spacing(1)\n  padding: spacing(2)</code></pre>\n      </div>\n    </div>\n\n  </section>\n\n\n  <section id=\"widht-height-section\">\n    <div id=\"width-height\" title=\"Width &amp; Height\" class=\"inpage-anchor\"></div>\n    <h2>Width &amp; Height</h2>\n    <p>Most widths will be set using a <a ui-sref=\"grid\">grid layout</a> the following\n    styles are also provided.</p>\n    <table class=\"table-content\">\n      <thead>\n        <tr>\n          <th><code>@extend</code></th>\n          <th>Resolves to...</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%w-fit-xs</code> </td>\n          <td>max-width: 100%</td>\n        </tr>\n        <tr>\n          <td><code>%w-full-xs</code> </td>\n          <td>width: 100%</td>\n        </tr>\n        <tr>\n          <td><code>%h-full-xs</code> </td>\n          <td>height: 100%</td>\n        </tr>\n        <tr>\n          <td><code>%w-auto-xs</code> </td>\n          <td>width: auto</td>\n        </tr>\n      </tbody>\n    </table>\n\n    <h3>Mixins</h3>\n    <p>When defining your custom elements, you can also use the <code>width-height($n, $n)</code> mixin\n    where <code>$n</code> is either a Lens spacing unit or a custom width/height value.\n    <span class=\"todo\">is that true that $n can be a spacing unit....?</span></p>\n    <div class=\"guide-example\">\n      <div class=\"guide-example-code\"><pre><code class=\"language-css\">.custom-selector\n  +width-height(100px, 200px)</code></pre>\n      </div>\n    </div>\n\n  </section>\n\n\n  <section id=\"overflow-section\">\n    <div id=\"overflow\" title=\"Overflow\" class=\"inpage-anchor\"></div>\n    <h2>Overflow</h2>\n    <p>Overflow controls what happens to content when it is bigger than its container.</p>\n    <table class=\"table-content\">\n      <thead>\n        <tr>\n          <th><code>@extend</code></th>\n          <th>Resolves to...</th>\n          <th>Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%overflow-hidden-xs</code> </td>\n          <td>overflow: hidden</td>\n          <td>clip content</td>\n        </tr>\n        <tr>\n          <td><code>%overflow-auto-xs</code> </td>\n          <td>overflow: auto</td>\n          <td>only add scrollbars if content is too big</td>\n        </tr>\n        <tr>\n          <td><code>%overflow-scroll-xs</code> </td>\n          <td>overflow: scroll</td>\n          <td>always have scrollbars</td>\n        </tr>\n        <tr>\n          <td><code>%overflow-visible-xs</code> </td>\n          <td>overflow: visible</td>\n          <td>allow content to extend outside of container</td>\n        </tr>\n      </tbody>\n    </table>\n  </section>\n\n\n\n</lens-main>";
+
+
+/***/ }),
+/* 29 */
+/***/ (function(module, exports) {
+
+	var m, template;
+
+	m = angular.module("lens.atoms.typography", []);
+
+	m.controller("TypographyController", [
+	  '$scope', function($scope) {
+	    return this;
+	  }
+	]);
+
+	m.directive("typography", function() {
+	  return {
+	    controller: "TypographyController",
+	    restrict: "E",
+	    scope: {},
+	    template: template
+	  };
+	});
+
+	template = "<lens-main>\n\n  <section id=\"typefaces-section\">\n    <div id=\"typefaces\" title=\"Typefaces\" class=\"inpage-anchor\"></div>\n    <h2>Typefaces</h2>\n    <table class=\"table-content\">\n      <thead>\n        <tr>\n          <th><code>@extend</code></th>\n          <th>Resolves to...</th>\n          <th>Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%brand-font</code></td>\n          <td>font-family: 'Open Sans', Helvetica, Arial, sans-serif</td>\n          <td>This is the Lens default</td>\n        </tr>\n        <tr>\n          <td><code>%code-font</code></td>\n          <td>font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace</td>\n          <td>Used in the ACE editor. Use when displaying LookML, SQL, etc.</td>\n        </tr>\n      </tbody>\n    </table>\n  </section>\n\n  <section id=\"sizes-section\">\n    <div id=\"sizes\" title=\"Size\" class=\"inpage-anchor\"></div>\n    <h2>Type Size</h2>\n    <p>Type size is specified as both the text size and the line height.</p>\n    <table class=\"table-content\">\n      <thead>\n        <tr>\n          <th><code>@extend</code></th>\n          <th>Resolves to...</th>\n          <th>Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%text-n2-xs</code></td>\n          <td>font-size: 12px<br />line-height: 20px</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%text-n1-xs</code></td>\n          <td>font-size: 14px<br />line-height: 24px</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%text-1-xs</code></td>\n          <td>font-size: 16px<br />line-height: 24px</td>\n          <td>This is the base font size and line-height</td>\n        </tr>\n        <tr>\n          <td><code>%text-2-xs</code></td>\n          <td>font-size: 19px<br />line-height: 27px</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%text-3-xs</code></td>\n          <td>font-size: 22px<br />line-height: 30px</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%text-4-xs</code></td>\n          <td>font-size: 28px<br />line-height: 36px</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%text-5-xs</code></td>\n          <td>font-size: 38px<br />line-height: 46px</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%text-6-xs</code></td>\n          <td>font-size: 52px<br />line-height: 60px</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%text-7-xs</code></td>\n          <td>font-size: 62px<br />line-height: 72px</td>\n          <td></td>\n        </tr>\n      </tbody>\n    </table>\n  </section>\n\n\n  <section id=\"weights-section\">\n    <div id=\"weights\" title=\"Weights\" class=\"inpage-anchor\"></div>\n    <h2>Weights</h2>\n    <table class=\"table-content\">\n      <thead>\n        <tr>\n          <th><code>@extend</code></th>\n          <th>Resolves to...</th>\n          <th>Variable Value</th>\n          <th>Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%light</code></td>\n          <td>font-weight: <code>$light</code></td>\n          <td>300</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%regular</code></td>\n          <td>font-weight: <code>$regular</code></td>\n          <td>400</code></td>\n          <td>Default font-weight</td>\n        </tr>\n        <tr>\n          <td><code>%semi-bold</code></td>\n          <td>font-weight: <code>$semi-bold</code></td>\n          <td>600</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%bold</code></td>\n          <td>font-weight: <code>$bold</code></td>\n          <td>700</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%extra-bold</code></td>\n          <td>font-weight: <code>$extra-bold</code></td>\n          <td>900</td>\n          <td></td>\n        </tr>\n      </tbody>\n    </table>\n  </section>\n\n  <section id=\"emphasis-section\">\n    <div id=\"emphasis\" title=\"Emphasis\" class=\"inpage-anchor\"></div>\n    <h2>Emphasis</h2>\n    <table class=\"table-content\">\n      <thead>\n        <tr>\n          <th><code>@extend</code></th>\n          <th>Resolves to...</th>\n          <th>Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%italic</code></td>\n          <td>font-style: italic</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%caps</code></td>\n          <td>text-transform: uppercase</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%lowercase</code></td>\n          <td>text-transform: lowercase</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%capitalize</code></td>\n          <td>text-transform: capitalize</td>\n          <td></td>\n        </tr>\n      </tbody>\n    </table>\n  </section>\n\n  <section id=\"alignment-section\">\n    <div id=\"alignment\" title=\"Alignment\" class=\"inpage-anchor\"></div>\n    <h2>Alignment</h2>\n    <table class=\"table-content\">\n      <thead>\n        <tr>\n          <th><code>@extend</code></th>\n          <th>Resolves to...</th>\n          <th>Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>%text-left-xs</code></td>\n          <td>text-align: left</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%text-right-xs</code></td>\n          <td>text-align: right</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%text-center-xs</code></td>\n          <td>text-align: center</td>\n          <td></td>\n        </tr>\n        <tr>\n          <td><code>%text-justify-xs</code></td>\n          <td>text-align: justify</td>\n          <td></td>\n        </tr>\n      </tbody>\n    </table>\n  </section>\n\n\n</lens-main>";
+
+
+/***/ }),
+/* 30 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	var m;
+
+	m = angular.module("lens.components", ["lens.components.buttons", "lens.components.forms", "lens.components.tables", "lens.components.modals", "lens.components.body_copy", "lens.components.headings"]);
+
+	__webpack_require__(31);
+
+	__webpack_require__(32);
+
+	__webpack_require__(33);
+
+	__webpack_require__(34);
+
+	__webpack_require__(35);
+
+	__webpack_require__(36);
+
+
+/***/ }),
+/* 31 */
+/***/ (function(module, exports) {
+
+	var m, template;
+
+	m = angular.module("lens.components.buttons", []);
+
+	m.controller("ButtonsController", [
+	  '$scope', function($scope) {
+	    return this;
+	  }
+	]);
+
+	m.directive("buttons", function() {
+	  return {
+	    controller: "ButtonsController",
+	    restrict: "E",
+	    scope: {},
+	    template: template
+	  };
+	});
+
+	template = "<lens-main>\n\n  <p>Buttons should be used for in-page or contextual\n  actions. For navigation actions, use a link instead of a button.</p>\n\n  <section id=\"code-section\">\n    <div id=\"code\" title=\"Code\" class=\"inpage-anchor\"></div>\n    <h2>Code</h2>\n    <p>Buttons can be built using either the <code>&lt;a&gt;</code> or\n      <code>&lt;button&gt;</code> element. If you are using the <code>&lt;button&gt;</code> element,\n      always specify a <code>type</code> (button, sumbit, reset). When using the\n      <code>&lt;a&gt;</code>, include <code>role=\"button\"</code> for accessibility.</p>\n    <p>To change the button type, size or state, add modifiers to the class.</p>\n    <div class=\"guide-example\">\n      <div class=\"guide-example-demo\">\n        <a class=\"button\" role=\"button\" href>A Normal Button</a>\n        <button type=\"button\" class=\"button button--primary\">Primary Button</button>\n      </div>\n      <div class=\"guide-example-code\">\n<pre><code class=\"language-html\">&lt;a role=\"button\" class=\"button\" href&gt;A Normal Button&lt;/button&gt;\n&lt;button type=\"button\" class=\"button button--primary\" href&gt;Primary Button&lt;/button&gt;\n</code></pre>\n      </div>\n    </div>\n  </section>\n\n  <section id=\"types-section\">\n    <div id=\"types\" title=\"Types\" class=\"inpage-anchor\"></div>\n    <h2>Types</h2>\n    <p>Button types signal to the user key properties of the action\n      they are about to take.</p>\n    <table class=\"table-content\">\n      <thead>\n        <tr>\n          <th>Button Type</th>\n          <th class=\"col-20-xs\">Modifier</th>\n          <th>Example</th>\n          <th>Use</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td>Normal</td>\n          <td>Not needed</td>\n          <td><a class=\"button\" role=\"button\" href>Normal</a></td>\n          <td>Use when there are additional actions or no primary action for the user.</td>\n        </tr>\n        <tr>\n          <td>Primary</td>\n          <td><code>.button--primary</code></td>\n          <td><a class=\"button button--primary\" role=\"button\" href>Primary</a></td>\n          <td>A primary button indicates the key action the user should take. There should only be one primary action in any situation.</td>\n        </tr>\n        <tr>\n          <td>Alert</td>\n          <td><code>.button--alert</code></td>\n          <td><a class=\"button button--alert\" role=\"button\" href>Alert</a></td>\n          <td>Alert buttons are used to indicate a urgent or negative action on the page.</td>\n        </tr>\n      </tbody>\n    </table>\n  </section>\n\n  <section id=\"sizes-section\">\n    <div id=\"sizes\" title=\"Sizes\" class=\"inpage-anchor\"></div>\n    <h2>Sizes</h2>\n    <p>Lens has 4 button sizes that can be controlled using the <a ui-sref=\"responsive\">responsive suffixes</a>.\n    <table class=\"table-content\">\n      <thead>\n        <tr>\n          <th>Size</th>\n          <th>Modifier</th>\n          <th>Example</th>\n          <th>Use</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td>Extra Small</td>\n          <td><code>.button--xsmall-xs</td>\n          <td><a class=\"button button--xsmall-xs\" role=\"button\" href>Extra Small</a></td>\n          <td>for super tiny things.</td>\n        </tr>\n        <tr>\n          <td>Small</td>\n          <td><code>.button--small-xs</td>\n          <td><a class=\"button button--small-xs\" role=\"button\" href>Small</a></td>\n          <td>for kinda tiny things.</td>\n        </tr>\n        <tr>\n          <td>Normal</td>\n          <td><code>.button--xsmall-xs</td>\n          <td><a class=\"button button--normal-xs\" role=\"button\" href>Normal</a></td>\n          <td>Typically what you'll use...</td>\n        </tr>\n        <tr>\n          <td>Large</td>\n          <td><code>.button--large-xs</td>\n          <td><a class=\"button button--large-xs\" role=\"button\" href>Large</a></td>\n          <td>for attention!</td>\n        </tr>\n      </tbody>\n    </table>\n\n  </section>\n\n  <section id=\"disabled-section\">\n    <div id=\"disabled\" title=\"Disabling\" class=\"inpage-anchor\"></div>\n    <h2>Disabling</h2>\n    <p>Disable a button when the action on the page is blocked to the user.\n      Appply the modifier <code>.button--disabled</code> to any size or type\n      of button to disable it.</p>\n    <div class=\"guide-example\">\n      <div class=\"guide-example-demo\">\n        <a role=\"button\" class=\"button button--disabled\" href>Normal</a>\n        <a role=\"button\" class=\"button button--primary button--disabled\" role=\"button\" href>Primary</a>\n        <a role=\"button\" class=\"button button--alert button--disabled\" role=\"button\" href>Primary</a>\n      </div>\n      <div class=\"guide-example-code\">\n<pre><code class=\"language-html\">&lt;a role=\"button\" class=\"button button--disabled\" href&gt;Normal&lt;/button&gt;\n&lt;a role=\"button\" class=\"button button--primary button--disabled\" href&gt;Normal&lt;/button&gt;\n&lt;a role=\"button\" class=\"button button--alert button--disabled\" href&gt;Normal&lt;/button&gt;\n</code></pre>\n      </div>\n    </div>\n  </section>\n\n<!--\n  <section id=\"inverse-section\">\n    <div id=\"inverse\" title=\"Inverse\" class=\"inpage-anchor\"></div>\n    <h2>Inverse</h2>\n    <p class=\"todo\">Kinda wondering if we really need this...? would be nice to design stuffs not to need this whole other button type.</p>\n    <p>Inverse buttons are used when the background color a container is too dark for normal buttons to have enough contrast. Invert the style with the classes, <code>.button--inverse</code>. <code>.button--inverse-primary</code>. <code>.button--inverse-disabled</code>. <code>.button--inverse-primary-disabled</code>.</p>\n    <div class=\"bg-gray-7\">\n    <a class=\"button button--inverse\" href>Inverse</a>\n    <a class=\"button button--inverse-primary\" href>Inverse Primary</a>\n    <a class=\"button button--inverse-disabled\" href>Inverse Disabled</a>\n    <a class=\"button button--inverse-primary-disabled\" href>Inverse Primary Disabled</a>\n    </div>\n    <div class=\"guide-code\">\n      <pre><code class=\"language-html\">&lt;a class=\"button button--inverse\" href&gt;Inverse&lt;/a&gt;\n&lt;a class=\"button button--inverse-primary\" href&gt;Inverse Primary&lt;/a&gt;\n&lt;a class=\"button button--inverse-disabled\" href&gt;Inverse Disabled&lt;/a&gt;\n&lt;a class=\"button button--inverse-primary-disabled\" href&gt;Inverse Primary Disabled&lt;/a&gt;</code></pre>\n    </div>\n  </div>\n  </section>\n-->\n\n  <section id=\"split-button-section\">\n    <div id=\"split-button\" title=\"Split Button\" class=\"inpage-anchor\"></div>\n    <h2>Split buttons</h2>\n    <p class=\"todo\">This is maybe it's own separate component...? when do we use this?\n    right now it's for filtering states on Explore page... one should always be selected, eh?\n    might also need to tweak - thar be some funkiness with active/hover here.</p>\n    <p>Split buttons are used when you need a button that contains two or more actions.\n       To accomplish this, wrap your buttons in <code>&lt;div class=\"split-button\"&gt;</code>.\n    </p>\n    <div class=\"guide-example\">\n      <div class=\"guide-example-demo\">\n        <div class=\"split-button\">\n          <a class=\"button\" href ng-class=\"{active: active == 'left'}\" ng-click=\"active = 'left'\">Left</a>\n          <a class=\"button\" href ng-class=\"{active: active == 'middle'}\" ng-click=\"active = 'middle'\">Middle</a>\n          <a class=\"button\" href ng-class=\"{active: active == 'right'}\" ng-click=\"active = 'right'\">Right</a>\n        </div>\n      </div>\n      <div class=\"guide-example-code\">\n        <pre><code class=\"language-html\">&lt;div class=\"split-button\"&gt;\n  &lt;a class=\"button\" href&gt;Left&lt;/a&gt;\n  &lt;a class=\"button\" href&gt;Middle&lt;/a&gt;\n  &lt;a class=\"button\" href&gt;Right&lt;/a&gt;\n&lt;/div&gt;</code></pre>\n      </div>\n    </div>\n\n\n    <p>Use <code>&lt;div class=\"split-button w-full\"&gt;</code> for your buttons to take up the full width of the container.</p>\n    <div class=\"split-button w-full\">\n      <a class=\"button\" href ng-class=\"{active: active == 'left'}\" ng-click=\"active = 'left'\">Left</a>\n      <a class=\"button\" href ng-class=\"{active: active == 'middle'}\" ng-click=\"active = 'middle'\">Middle</a>\n      <a class=\"button\" href ng-class=\"{active: active == 'right'}\" ng-click=\"active = 'right'\">Right</a>\n    </div>\n      <div class=\"guide-code\">\n        <pre><code class=\"language-html\">&lt;div class=\"split-button w-full\"&gt;\n  &lt;a class=\"button\" href&gt;Left&lt;/a&gt;\n  &lt;a class=\"button\" href&gt;Middle&lt;/a&gt;\n  &lt;a class=\"button\" href&gt;Right&lt;/a&gt;\n&lt;/div&gt;</code></pre>\n      </div>\n    </div>\n\n  </section>\n\n\n</lens-main>";
+
+
+/***/ }),
+/* 32 */
+/***/ (function(module, exports) {
+
+	var m, template;
+
+	m = angular.module("lens.components.forms", []);
+
+	m.controller("FormsController", [
+	  '$scope', function($scope) {
+	    return this;
+	  }
+	]);
+
+	m.directive("forms", function() {
+	  return {
+	    controller: "FormsController",
+	    restrict: "E",
+	    scope: {},
+	    template: template
+	  };
+	});
+
+	template = "<lens-main>\n\n  <section id=\"label-section\">\n    <div id=\"label\" title=\"Label\" class=\"inpage-anchor\"></div>\n    <h2>Labels</h2>\n    <p>Use the <code>.form-label</code> class to set the default styles on a label.\n      You can also change the text alignment with <code>.text-right-xs</code>.</p>\n    <div class=\"col-container col-max col-gutters\">\n      <div class=\"col col-30-lg\">\n        <form>\n          <label class=\"form-label\">Form Label</label>\n          <label class=\"form-label text-right-lg\">Form Label</label>\n        </form>\n      </div>\n    </div>\n    <div class=\"guide-code\">\n    <pre><code class=\"language-html\">&lt;form&gt;\n  &lt;label class=\"form-label\"&gt;Form Label&lt;/label&gt;\n  &lt;label class=\"form-label text-right-xs\"&gt;Form Label&lt;/label&gt;\n&lt;/form&gt;</code></pre></div>\n  </section>\n\n  <section id=\"text-input-section\">\n    <div id=\"text-input\" title=\"Text Input\" class=\"inpage-anchor\"></div>\n    <h2>Text Input</h2>\n    <p>Use the <code>.form-text-input</code> class to apply the default styling\n      for text inputs. Inputs should always be paired with a label to make them\n      accessible. You can use placeholder text for additional context when necessary.\n      <strong>Never</strong> use placeholder text in place of a label.</p>\n\n    <form>\n      <div class=\"col-container col-max col-gutters\">\n        <div class=\"col col-15-lg\">\n          <label for=\"form-text-input-1\" class=\"form-label text-right-lg m-b-05-xs m-b-0-lg\">Label</label>\n        </div>\n        <div class=\"col col-50-lg\">\n            <input type=\"text\" class=\"form-text-input\" id=\"form-text-input-1\" placeholder=\"this is placeholder text\">\n        </div>\n      </div>\n    </form>\n    <div class=\"guide-code\">\n    <pre><code class=\"language-html\">&lt;form&gt;\n  &lt;div class=\"col-container col-max col-gutters\"&gt;\n    &lt;div class=\"col col-15-lg\"&gt;\n      &lt;label for=\"form-text-input-1\" class=\"form-label text-right-lg m-b-05-xs m-b-0-lg\"&gt;Label&lt;/label&gt;\n    &lt;/div&gt;\n    &lt;div class=\"col col-50-lg\"&gt;\n        &lt;input type=\"text\" class=\"form-text-input\" id=\"form-text-input-1\" placeholder=\"this is placeholder text\"&gt;\n    &lt;/div&gt;\n  &lt;/div&gt;\n&lt;/form&gt;</code></pre>\n    </div>\n\n    <h3>Disabled</h3>\n    <p>You may have an text input that needs to be disabled. To do that, use the\n      class <code>.form-text-input-disabled</code> in addition to the default class.</p>\n\n    <form>\n      <div class=\"col-container col-max col-gutters\">\n        <div class=\"col col-15-lg\">\n          <label for=\"form-text-input-1\" class=\"form-label text-right-lg m-b-05-xs m-b-0-lg\">Disabled</label>\n        </div>\n        <div class=\"col col-50-lg\">\n            <input type=\"text\" readonly=\"true\" class=\"form-text-input form-text-input-disabled\" id=\"form-text-input-1\">\n        </div>\n      </div>\n    </form>\n    <div class=\"guide-code\">\n    <pre><code class=\"language-html\">&lt;form&gt;\n  &lt;div class=\"col-container col-max col-gutters\"&gt;\n    &lt;div class=\"col col-15-lg\"&gt;\n      &lt;label for=\"form-text-input-1\" class=\"form-label text-right-lg m-b-05-xs m-b-0-lg\"&gt;Disabled&lt;/label&gt;\n    &lt;/div&gt;\n    &lt;div class=\"col col-50-lg\"&gt;\n        &lt;input type=\"text\" readonly=\"true\" class=\"form-text-input form-text-input-disabled\" id=\"form-text-input-1\"&gt;\n    &lt;/div&gt;\n  &lt;/div&gt;\n&lt;/form&gt;</code></pre>\n    </div>\n  </section>\n\n\n  <section id=\"textarea-section\">\n    <div id=\"textarea\" title=\"Textarea\" class=\"inpage-anchor\"></div>\n    <h2>Textarea</h2>\n    <p>Use the <code>.form-textarea</code> class to get the default styling. When setting a typesize and width, we recommend aiming for a measure of 52-78 characters.</p>\n\n    <form>\n      <div class=\"col-container col-max col-gutters\">\n        <div class=\"col col-15-lg\">\n          <label for=\"form-text-input-1\" class=\"form-label text-right-lg m-b-05-xs m-b-0-lg\">Label</label>\n        </div>\n        <div class=\"col col-50-lg\">\n          <textarea name=\"form-textarea-1\" id=\"form-textarea-1\" class=\"form-textarea\"></textarea>\n        </div>\n      </div>\n    </form>\n    <div class=\"guide-code\">\n    <pre><code class=\"language-html\">&lt;form&gt;\n  &lt;div class=\"col-container col-max col-gutters\"&gt;\n    &lt;div class=\"col col-15-lg\"&gt;\n      &lt;label for=\"form-text-input-1\" class=\"form-label text-right-lg m-b-05-xs m-b-0-lg\"&gt;Label&lt;/label&gt;\n    &lt;/div&gt;\n    &lt;div class=\"col col-50-lg\"&gt;\n      &lt;textarea name=\"form-textarea-1\" id=\"form-textarea-1\" class=\"form-textarea\"&gt;&lt;/textarea&gt;\n    &lt;/div&gt;\n  &lt;/div&gt;\n&lt;/form&gt;</code></pre>\n    </div>\n  </section>\n\n\n  <section id=\"selects-section\">\n    <div id=\"select\" title=\"Select\" class=\"inpage-anchor\"></div>\n    <h2>Select</h2>\n    <p>Use the <code>.form-select</code> class to get the default styling.</p>\n\n    <form>\n      <div class=\"col-container col-max col-gutters\">\n        <div class=\"col col-15-lg\">\n          <label for=\"form-select-1\" class=\"form-label text-right-lg\">Label</label>\n        </div>\n        <div class=\"col col-50-lg\">\n          <select id=\"form-select-1\" class=\"form-select\">\n            <option value=\"\">Item 1</option>\n            <option value=\"\">Item 2</option>\n            <option value=\"\">Item 3</option>\n            <option value=\"\">Item 4</option>\n          </select>\n        </div>\n      </div>\n    </form>\n    <div class=\"guide-code\">\n    <pre><code class=\"language-html\">&lt;form&gt;\n  &lt;div class=\"col-container col-max col-gutters\"&gt;\n    &lt;div class=\"col col-15-lg\"&gt;\n      &lt;label for=\"form-select-1\" class=\"form-label text-right-lg\"&gt;Label&lt;/label&gt;\n    &lt;/div&gt;\n    &lt;div class=\"col col-50-lg\"&gt;\n      &lt;select id=\"form-select-1\" class=\"form-select\"&gt;\n        &lt;option value=\"\"&gt;Item 1&lt;/option&gt;\n        &lt;option value=\"\"&gt;Item 2&lt;/option&gt;\n        &lt;option value=\"\"&gt;Item 3&lt;/option&gt;\n        &lt;option value=\"\"&gt;Item 4&lt;/option&gt;\n      &lt;/select&gt;\n    &lt;/div&gt;\n  &lt;/div&gt;\n&lt;/form&gt;</code></pre>\n    </div>\n  </section>\n\n  <section id=\"select-multiple-section\">\n    <div id=\"select-multiple\" title=\"Select Multiple\" class=\"inpage-anchor\"></div>\n    <h2>Select Multiple</h2>\n    <p>Use the <code>.form-select-multiple</code> class and add the attribute,\n      <code>multiple</code> to get the default styling. If you'd only like a user\n       to be able to select one option, just remove the <code>multiple</code> attribute\n        and add a <code>size</code> attribute that takes a value of how ever many\n        options you want shown.</p>\n\n    <form>\n      <div class=\"col-container col-max col-gutters\">\n        <div class=\"col col-15-lg\">\n          <label for=\"form-select-1\" class=\"form-label text-right-lg m-b-05-xs m-b-0-lg\">Multiple</label>\n        </div>\n        <div class=\"col col-50-lg\">\n          <select id=\"form-select-1\" class=\"form-select-multiple\" multiple>\n            <option value=\"\">Item 1</option>\n            <option value=\"\">Item 2</option>\n            <option value=\"\">Item 3</option>\n            <option value=\"\">Item 4</option>\n          </select>\n        </div>\n      </div>\n      <div class=\"col-container col-max col-gutters\">\n        <div class=\"col col-15-lg\">\n          <label for=\"form-select-1\" class=\"form-label text-right-lg\">Single</label>\n        </div>\n        <div class=\"col col-50-lg\">\n          <select id=\"form-select-1\" class=\"form-select-multiple\" size=\"3\">\n            <option value=\"\">Item 1</option>\n            <option value=\"\">Item 2</option>\n            <option value=\"\">Item 3</option>\n          </select>\n        </div>\n      </div>\n    </form>\n    <div class=\"guide-code\">\n    <pre><code class=\"language-html\">&lt;form&gt;\n  &lt;div class=\"col-container col-max col-gutters\"&gt;\n    &lt;div class=\"col col-15-lg\"&gt;\n      &lt;label for=\"form-select-1\" class=\"form-label text-right-lg\"&gt;Multiple&lt;/label&gt;\n    &lt;/div&gt;\n    &lt;div class=\"col col-50-lg\"&gt;\n      &lt;select id=\"form-select-1\" class=\"form-select-multiple\" multiple&gt;\n        &lt;option value=\"\"&gt;Item 1&lt;/option&gt;\n        &lt;option value=\"\"&gt;Item 2&lt;/option&gt;\n        &lt;option value=\"\"&gt;Item 3&lt;/option&gt;\n        &lt;option value=\"\"&gt;Item 4&lt;/option&gt;\n      &lt;/select&gt;\n    &lt;/div&gt;\n  &lt;/div&gt;\n  &lt;div class=\"col-container col-max col-gutters\"&gt;\n    &lt;div class=\"col col-15-lg\"&gt;\n      &lt;label for=\"form-select-1\" class=\"form-label text-right-lg m-b-05-xs m-b-0-lg\"&gt;Single&lt;/label&gt;\n    &lt;/div&gt;\n    &lt;div class=\"col col-50-lg\"&gt;\n      &lt;select id=\"form-select-1\" class=\"form-select-multiple\" size=\"3\"&gt;\n        &lt;option value=\"\"&gt;Item 1&lt;/option&gt;\n        &lt;option value=\"\"&gt;Item 2&lt;/option&gt;\n        &lt;option value=\"\"&gt;Item 3&lt;/option&gt;\n      &lt;/select&gt;\n    &lt;/div&gt;\n  &lt;/div&gt;\n&lt;/form&gt;</code></pre>\n    </div>\n  </section>\n\n\n  <section id=\"radio-button-section\">\n    <div id=\"radio-button\" title=\"Radio Button\" class=\"inpage-anchor\"></div>\n    <h2>Radio Button</h2>\n    <p>Use <code>div.form-radio</code> to wrap an <code>label.form-radio-label</code>\n      inside. Within that label you'll nest <code>input.form-radio-input</code>\n      to get a radio input with the correct styles.</p>\n\n    <form>\n      <div class=\"col-container col-gutters\">\n        <div class=\"col col-15-lg\">\n          <label class=\"form-label text-right-lg\">Radios</label>\n        </div>\n        <div class=\"col col-50-lg\">\n          <div class=\"form-radio\">\n            <label class=\"form-radio-label\">\n              <input type=\"radio\" name=\"radio-1\" class=\"form-radio-input\">\n              Radio selection 1\n            </label>\n          </div>\n          <div class=\"form-radio\">\n            <label class=\"form-radio-label\">\n              <input type=\"radio\" name=\"radio-1\" class=\"form-radio-input\">\n              Radio selection 2\n            </label>\n          </div>\n        </div>\n      </div>\n    </form>\n    <div class=\"guide-code\">\n    <pre><code class=\"language-html\">&lt;form&gt;\n  &lt;div class=\"col-container col-gutters\"&gt;\n    &lt;div class=\"col col-15-lg\"&gt;\n      &lt;label class=\"form-label text-right-lg\"&gt;Radios&lt;/label&gt;\n    &lt;/div&gt;\n    &lt;div class=\"col col-50-lg\"&gt;\n      &lt;div class=\"form-radio\"&gt;\n        &lt;label class=\"form-radio-label\"&gt;\n          &lt;input type=\"radio\" name=\"radio-1\" class=\"form-radio-input\"&gt;\n          Radio selection 1\n        &lt;/label&gt;\n      &lt;/div&gt;\n      &lt;div class=\"form-radio\"&gt;\n        &lt;label class=\"form-radio-label\"&gt;\n          &lt;input type=\"radio\" name=\"radio-1\" class=\"form-radio-input\"&gt;\n          Radio selection 2\n        &lt;/label&gt;\n      &lt;/div&gt;\n    &lt;/div&gt;\n  &lt;/div&gt;\n&lt;/form&gt;</code></pre>\n    </div>\n  </section>\n\n  <section id=\"checkbox-section\">\n    <div id=\"checkbox\" title=\"Checkbox\" class=\"inpage-anchor\"></div>\n    <h2>Checkbox</h2>\n    <p>Use <code>div.form-checkbox</code> to wrap an <code>label.form-checkbox-label</code> inside. Within that label you'll nest <code>input.form-checkbox-input</code> to get a radio input with the correct styles.</p>\n\n    <form>\n      <div class=\"col-container col-gutters\">\n        <div class=\"col col-15-lg\">\n          <label class=\"form-label text-right-lg\">Checkboxes</label>\n        </div>\n        <div class=\"col col-50-lg\">\n          <div class=\"form-checkbox\">\n            <label class=\"form-checkbox-label\">\n              <input type=\"checkbox\" name=\"checkbox-1\" class=\"form-checkbox-input\">\n              Checkbox 1\n            </label>\n          </div>\n          <div class=\"form-checkbox\">\n            <label class=\"form-checkbox-label\">\n              <input type=\"checkbox\" name=\"checkbox-1\" class=\"form-checkbox-input\">\n              Checkbox 2\n            </label>\n          </div>\n        </div>\n      </div>\n    </form>\n    <div class=\"guide-code\">\n    <pre><code class=\"language-html\">&lt;form&gt;\n  &lt;div class=\"col-container col-gutters\"&gt;\n    &lt;div class=\"col col-15-lg\"&gt;\n      &lt;label class=\"form-label text-right-lg\"&gt;Checkboxes&lt;/label&gt;\n    &lt;/div&gt;\n    &lt;div class=\"col col-50-lg\"&gt;\n      &lt;div class=\"form-checkbox\"&gt;\n        &lt;label class=\"form-checkbox-label\"&gt;\n          &lt;input type=\"checkbox\" name=\"checkbox-1\" class=\"form-checkbox-input\"&gt;\n          Checkbox 1\n        &lt;/label&gt;\n      &lt;/div&gt;\n      &lt;div class=\"form-checkbox\"&gt;\n        &lt;label class=\"form-checkbox-label\"&gt;\n          &lt;input type=\"checkbox\" name=\"checkbox-1\" class=\"form-checkbox-input\"&gt;\n          Checkbox 2\n        &lt;/label&gt;\n      &lt;/div&gt;\n    &lt;/div&gt;\n  &lt;/div&gt;\n&lt;/form&gt;</code></pre>\n    </div>\n  </section>\n\n  <section id=\"switch-section\">\n    <div id=\"switch\" title=\"Switch\" class=\"inpage-anchor\"></div>\n    <h2>Switch</h2>\n    <p>A switch is a stylized checkbox that lets a user toggle on/off some sort\n      of option. To build one, wrap a div with the class of <code>.lk-switch-outer</code>\n      around an input and a label. The input has the class <code>.lk-switch</code>\n      and the label has the class <code>.lk-switch-label</code>. That label then\n      has two spans inside it. These are <code>.lk-switch-on</code> and <code>.lk-switch-off</code>.</p>\n\n    <div class=\"col-container col-max col-gutters\">\n      <div class=\"col col-50-lg\">\n        <form>\n          <div class=\"lk-switch-outer\">\n            <input type=\"checkbox\" id=\"switch-1\" class=\"lk-switch\">\n            <label class=\"lk-switch-label\" for=\"switch-1\">\n              <span class=\"lk-switch-on\">On</span>\n              <span class=\"lk-switch-off\">Off</span>\n            </label>\n          </div>\n        </form>\n      </div>\n    </div>\n    <div class=\"guide-code\">\n    <pre><code class=\"language-html\">&lt;form&gt;\n  &lt;div class=\"lk-switch-outer\"&gt;\n    &lt;input type=\"checkbox\" id=\"switch-1\" class=\"lk-switch\"&gt;\n    &lt;label class=\"lk-switch-label\" for=\"switch-1\"&gt;\n      &lt;span class=\"lk-switch-on\"&gt;On&lt;/span&gt;\n      &lt;span class=\"lk-switch-off\"&gt;Off&lt;/span&gt;\n    &lt;/label&gt;\n  &lt;/div&gt;\n&lt;/form&gt;</code></pre>\n    </div>\n  </section>\n\n\n\n  <section id=\"tokens-section\">\n    <div id=\"tokens\" title=\"Tokens\" class=\"inpage-anchor\"></div>\n    <h2>Tokens</h2>\n    <p>Tokens are great for using autocomplete inside an input or for anytime you\n      need a token that can be closed. To use them, you'll need to copy the look of a\n      text input for a div by including <code>.tokenfield.form-text-input</code> on it.\n      Then inside, you'll have tokens, which are made up of divs with the <code>.tokenfield-token</code>\n      class on them. Finally, you'll have a span with a class of <code>.tokenfield-token-label</code>\n      and a close anchor.</p>\n\n    <div class=\"col-container col-max col-gutters\">\n      <div class=\"col col-50-lg\">\n        <form>\n          <div class=\"tokenfield form-text-input\">\n            <input type=\"text\" tabindex=\"-1\" style=\"position: absolute; left: -10000px;\">\n            <div class=\"tokenfield-token\">\n              <span class=\"tokenfield-token-label\">Token A</span>\n              <a href=\"#\" class=\"tokenfield-token-close\" tabindex=\"-1\">&times;</a>\n            </div>\n            <div class=\"tokenfield-token\">\n              <span class=\"tokenfield-token-label\">Token B</span>\n              <a href=\"#\" class=\"tokenfield-token-close\" tabindex=\"-1\">&times;</a>\n            </div>\n          </div>\n        </form>\n      </div>\n    </div>\n    <div class=\"guide-code\">\n    <pre><code class=\"language-html\">&lt;form&gt;\n  &lt;div class=\"tokenfield form-text-input\"&gt;\n    &lt;input type=\"text\" tabindex=\"-1\" style=\"position: absolute; left: -10000px;\"&gt;\n    &lt;div class=\"tokenfield-token\"&gt;\n      &lt;span class=\"tokenfield-token-label\"&gt;Token A&lt;/span&gt;\n      &lt;a href=\"#\" class=\"tokenfield-token-close\" tabindex=\"-1\"&gt;&times;&lt;/a&gt;\n    &lt;/div&gt;\n    &lt;div class=\"tokenfield-token\"&gt;\n      &lt;span class=\"tokenfield-token-label\"&gt;Token B&lt;/span&gt;\n      &lt;a href=\"#\" class=\"tokenfield-token-close\" tabindex=\"-1\"&gt;&times;&lt;/a&gt;\n    &lt;/div&gt;\n  &lt;/div&gt;\n&lt;/form&gt;</code></pre>\n    </div>\n  </section>\n\n\n  <section id=\"input-groups-section\">\n    <div id=\"input-groups\" title=\"Input Groups\" class=\"inpage-anchor\"></div>\n    <!-- Inputs Groups-->\n    <h2>Inputs Groups</h2>\n    <p>For a number that contains dashes, use our <code>.form-input-group</code>\n       class on a <code>div</code> with <code>input.form-text-input</code> inside.\n       Between each input, use <code>.form-input-group-addon</code> with a\n       dash inside it.</p>\n\n    <div class=\"col-container\">\n      <div class=\"col-50-md\">\n        <form>\n          <div class=\"form-input-group\">\n            <input type=\"text\" class=\"form-text-input\">\n            <div class=\"form-input-group-addon\">-</div>\n            <input type=\"text\" class=\"form-text-input\">\n            <div class=\"form-input-group-addon\">-</div>\n            <input type=\"text\" class=\"form-text-input\">\n            <div class=\"form-input-group-addon\">-</div>\n            <input type=\"text\" class=\"form-text-input\">\n            <div class=\"form-input-group-addon\">-</div>\n            <input type=\"text\" class=\"form-text-input\">\n          </div>\n        </form>\n      </div>\n    </div>\n    <div class=\"guide-code\">\n    <pre><code class=\"language-html\">&lt;form&gt;\n  &lt;div class=\"form-input-group\"&gt;\n    &lt;input type=\"text\" class=\"form-text-input\"&gt;\n    &lt;div class=\"form-input-group-addon\"&gt;-&lt;/div&gt;\n    &lt;input type=\"text\" class=\"form-text-input\"&gt;\n    &lt;div class=\"form-input-group-addon\"&gt;-&lt;/div&gt;\n    &lt;input type=\"text\" class=\"form-text-input\"&gt;\n    &lt;div class=\"form-input-group-addon\"&gt;-&lt;/div&gt;\n    &lt;input type=\"text\" class=\"form-text-input\"&gt;\n    &lt;div class=\"form-input-group-addon\"&gt;-&lt;/div&gt;\n    &lt;input type=\"text\" class=\"form-text-input\"&gt;\n  &lt;/div&gt;\n&lt;/form&gt;</code></pre>\n    </div>\n  </section>\n\n\n  <section id=\"help-text-section\">\n    <div id=\"help-text-\" title=\"Help Text\" class=\"inpage-anchor\"></div>\n    <h2>Help Text</h2>\n    <p>When necessary, you can place additional text below the input in a <code>div</code> with a <code>.form-helper</code> class to add helper text.</p>\n\n    <form>\n      <div class=\"col-container col-max col-gutters\">\n        <div class=\"col col-15-lg\">\n          <label for=\"form-text-input-1\" class=\"form-label text-right-lg m-b-05-xs m-b-0-lg\">Label</label>\n        </div>\n        <div class=\"col col-50-lg\">\n            <input type=\"text\" class=\"form-text-input\" id=\"form-text-input-1\" placeholder=\"this is placeholder text\">\n            <div class=\"form-helper\">You don't need to include http://</div>\n        </div>\n      </div>\n    </form>\n    <div class=\"guide-code\">\n    <pre><code class=\"language-html\">&lt;form&gt;\n  &lt;div class=\"col-container col-max col-gutters\"&gt;\n    &lt;div class=\"col col-15-lg\"&gt;\n      &lt;label for=\"form-text-input-1\" class=\"form-label text-right-lg m-b-05-xs m-b-0-lg\"&gt;Label&lt;/label&gt;\n    &lt;/div&gt;\n    &lt;div class=\"col col-50-lg\"&gt;\n        &lt;input type=\"text\" class=\"form-text-input\" id=\"form-text-input-1\" placeholder=\"this is placeholder text\"&gt;\n        &lt;div class=\"form-helper\"&gt;You don't need to include http://&lt;/div&gt;\n    &lt;/div&gt;\n  &lt;/div&gt;\n&lt;/form&gt;</code></pre>\n    </div>\n  </section>\n\n  <section id=\"placeholder-text-section\">\n    <div id=\"placeholder-text\" title=\"Placeholder Text\" class=\"inpage-anchor\"></div>\n    <h2>Placeholder Text Mixin</h2>\n\n    <p>Good for textareas, text inputs, selects and multiple selects.</p>\n    <div class=\"guide-code\">\n<pre><code class=\"language-css\">.custom-selector\n    +placeholder-style\n      property: value\n  </code></pre>\n    <p><code>\n      +placeholder-style\n    </code></p>\n  </section>\n\n\n  <section id=\"errors-section\">\n    <div id=\"errors\" title=\"Errors\" class=\"inpage-anchor\"></div>\n    <h2>Errors</h2>\n    <p>Add the <code>.form-error</code> class to the form element to apply Lens's\n       default for feedback styling. Additionally, add a <code>div</code> with\n       the class of <code>.form-helper.form-helper-error</code> to inform the user\n       what the feedback is.</p>\n\n    <div class=\"col-container col-max col-gutters\">\n      <div class=\"col col-50-lg\">\n        <form>\n          <select id=\"form-select-1\" class=\"form-select form-error\">\n            <option value=\"\">Item 1</option>\n            <option value=\"\">Item 2</option>\n            <option value=\"\">Item 3</option>\n            <option value=\"\">Item 4</option>\n          </select>\n          <div class=\"form-helper form-helper-error m-b-2-xs\">Get to the chopper!</div>\n          <input type=\"text\" class=\"form-text-input form-error\" id=\"form-text-input-1\">\n          <div class=\"form-helper form-helper-error\">Don't forget to this!</div>\n        </form>\n      </div>\n    </div>\n    <div class=\"guide-code\">\n    <pre><code class=\"language-html\">&lt;form&gt;\n  &lt;select id=\"form-select-1\" class=\"form-select form-error\"&gt;\n    &lt;option value=\"\"&gt;Item 1&lt;/option&gt;\n    &lt;option value=\"\"&gt;Item 2&lt;/option&gt;\n    &lt;option value=\"\"&gt;Item 3&lt;/option&gt;\n    &lt;option value=\"\"&gt;Item 4&lt;/option&gt;\n  &lt;/select&gt;\n  &lt;div class=\"form-helper form-helper-error m-b-2-xs\"&gt;Get to the chopper!&lt;/div&gt;\n  &lt;input type=\"text\" class=\"form-text-input form-error\" id=\"form-text-input-1\"&gt;\n  &lt;div class=\"form-helper form-helper-error\"&gt;Don't forget to this!&lt;/div&gt;\n&lt;/form&gt;</code></pre>\n    </div>\n  </section>\n\n</lens-main>";
+
+
+/***/ }),
+/* 33 */
+/***/ (function(module, exports) {
+
+	var m, template;
+
+	m = angular.module("lens.components.tables", []);
+
+	m.controller("TablesController", [
+	  '$scope', function($scope) {
+	    return this;
+	  }
+	]);
+
+	m.directive("tables", function() {
+	  return {
+	    controller: "TablesController",
+	    restrict: "E",
+	    scope: {},
+	    template: template
+	  };
+	});
+
+	template = "<lens-main>\n\n  <section id=\"basic-table-section\">\n    <div id=\"basic-table\" title=\"Basic Table\" class=\"inpage-anchor\"></div>\n    <h2>Basic Table</h2>\n    <p>Use a regular table by using a <code>&lt;table&gt;&lt;/table&gt;</code>\n       element and not adding any extra table classes. By default, the table\n         will be set to the width of the content, with a max-width of 100%.\n       Text is aligned left horizontally and in the middle of the cell\n     vertically</p>\n    <div class=\"guide-example\">\n      <div class=\"guide-example-demo\">\n        <table>\n          <tbody>\n            <tr>\n              <th>Heading 1</th>\n              <th>Heading 2</th>\n              <th>Heading 3</th>\n            </tr>\n            <tr>\n              <td>hello</td>\n              <td>it's</td>\n              <td>me</td>\n            </tr>\n            <tr>\n              <td>I</td>\n              <td>was</td>\n              <td>wondering</td>\n            </tr>\n            <tr>\n              <td>if</td>\n              <td>after</td>\n              <td>all</td>\n            </tr>\n          </tbody>\n        </table>\n      </div>\n      <div class=\"guide-example-code\">\n<pre><code class=\"language-html\">&lt;table&gt;\n  &lt;tbody&gt;\n    &lt;tr&gt;\n      &lt;th\"&gt;Heading 1&lt;/th&gt;\n      &lt;th&gt;Heading 2&lt;/th&gt;\n      &lt;th&gt;Heading 3&lt;/th&gt;\n    &lt;/tr&gt;\n    &lt;tr&gt;\n      &lt;td&gt;hello&lt;/td&gt;\n      &lt;td&gt;it's&lt;/td&gt;\n      &lt;td&gt;me&lt;/td&gt;\n    &lt;/tr&gt;\n    &lt;tr&gt;\n      &lt;td&gt;I&lt;/td&gt;\n      &lt;td&gt;was&lt;/td&gt;\n      &lt;td&gt;wondering&lt;/td&gt;\n    &lt;/tr&gt;\n    &lt;tr&gt;\n      &lt;td class=\"right top\"&gt;if&lt;/td&gt;\n      &lt;td class=\"bottom\"&gt;after&lt;/td&gt;\n      &lt;td&gt;all this time you'd like to have a little chat or something.&lt;/td&gt;\n    &lt;/tr&gt;\n  &lt;/tbody&gt;\n&lt;/table&gt;</code></pre>\n      </div>\n    </div>\n  </section>\n\n  <section id=\"alignment-widths-section\">\n    <div id=\"alignment-widths\" title=\"Column Width &amp; Cell Alignment\" class=\"inpage-anchor\"></div>\n    <h2>Column Width &amp; Cell Alignment</h2>\n    <p>The width of columns in tables can be set by using Lens's\n      <a ui-sref=\"grid\">grid classes</a>. Use the following classes\n    to align content within a cell:</p>\n    <ul>\n      <li><code>.right</code> align right</li>\n      <li><code>.top</code> align to top of cell</li>\n      <li><code>.bottom</code> align to bottom of cell</li>\n    </ul>\n\n    <div class=\"guide-example\">\n      <div class=\"guide-example-demo\">\n        <table class=\"col-100-xs\">\n          <tbody>\n            <tr>\n              <th class=\"col-80-xs\">Heading 1</th>\n              <th>Heading 2</th>\n              <th>Heading 3</th>\n            </tr>\n            <tr>\n              <td>hello</td>\n              <td>it's</td>\n              <td>me</td>\n            </tr>\n            <tr>\n              <td>I</td>\n              <td>was</td>\n              <td>wondering</td>\n            </tr>\n            <tr>\n              <td class=\"right top\">if</td>\n              <td class=\"bottom\">after</td>\n              <td>all this time you'd like to have a little chat or something.</td>\n            </tr>\n          </tbody>\n        </table>\n      </div>\n      <div class=\"guide-example-code\">\n<pre><code class=\"language-html\">&lt;table class=\"col-100-xs\"&gt;\n  &lt;tbody&gt;\n    &lt;tr&gt;\n      &lt;th class=\"col-80-xs\"&gt;Heading 1&lt;/th&gt;\n      &lt;th&gt;Heading 2&lt;/th&gt;\n      &lt;th&gt;Heading 3&lt;/th&gt;\n    &lt;/tr&gt;\n    &lt;tr&gt;\n      &lt;td&gt;hello&lt;/td&gt;\n      &lt;td&gt;it's&lt;/td&gt;\n      &lt;td&gt;me&lt;/td&gt;\n    &lt;/tr&gt;\n    &lt;tr&gt;\n      &lt;td&gt;I&lt;/td&gt;\n      &lt;td&gt;was&lt;/td&gt;\n      &lt;td&gt;wondering&lt;/td&gt;\n    &lt;/tr&gt;\n    &lt;tr&gt;\n      &lt;td class=\"right top\"&gt;if&lt;/td&gt;\n      &lt;td class=\"bottom\"&gt;after&lt;/td&gt;\n      &lt;td&gt;all this time you'd like to have a little chat or something.&lt;/td&gt;\n    &lt;/tr&gt;\n  &lt;/tbody&gt;\n&lt;/table&gt;</code></pre>\n      </div>\n    </div>\n  </section>\n\n  <section id=\"zebra-stripes-section\">\n    <div id=\"zebra-stripes\" title=\"Zebra Stripes\" class=\"inpage-anchor\"></div>\n    <h2>Zebra Stripes</h2>\n    <p>Add the class <code>.table-striped</code> to include zebra striping of\n    alternate rows.</p>\n\n    <div class=\"guide-example\">\n      <div class=\"guide-example-demo\">\n        <table class=\"table-striped\">\n          <tbody>\n            <tr>\n              <th>Heading 1</th>\n              <th>Heading 2</th>\n              <th>Heading 3</th>\n            </tr>\n            <tr>\n              <td>hello</td>\n              <td>it's</td>\n              <td>me</td>\n            </tr>\n            <tr>\n              <td>I</td>\n              <td>was</td>\n              <td>wondering</td>\n            </tr>\n            <tr>\n              <td>if</td>\n              <td>after</td>\n              <td>all</td>\n            </tr>\n          </tbody>\n        </table>\n      </div>\n      <div class=\"guide-example-code\">\n<pre><code class=\"language-html\">&lt;table class=\"table-striped\"&gt;\n  &lt;tbody&gt;\n    &lt;tr&gt;\n      &lt;th&gt;Heading 1&lt;/th&gt;\n      &lt;th&gt;Heading 2&lt;/th&gt;\n      &lt;th&gt;Heading 3&lt;/th&gt;\n    &lt;/tr&gt;\n    &lt;tr&gt;\n      &lt;td&gt;hello&lt;/td&gt;\n      &lt;td&gt;it's&lt;/td&gt;\n      &lt;td&gt;me&lt;/td&gt;\n    &lt;/tr&gt;\n    &lt;tr&gt;\n      &lt;td&gt;I&lt;/td&gt;\n      &lt;td&gt;was&lt;/td&gt;\n      &lt;td&gt;wondering&lt;/td&gt;\n    &lt;/tr&gt;\n    &lt;tr&gt;\n      &lt;td&gt;if&lt;/td&gt;\n      &lt;td&gt;after&lt;/td&gt;\n      &lt;td&gt;all&lt;/td&gt;\n    &lt;/tr&gt;\n  &lt;/tbody&gt;\n&lt;/table&gt;</code></pre>\n      </div>\n    </div>\n  </section>\n\n  <section id=\"content-table-section\">\n    <div id=\"content-table\" title=\"Content Table\" class=\"inpage-anchor\"></div>\n    <h2>Content Table</h2>\n    <p>Use our content table style with the class <code>.table-content</code>.\n      Use <code>.sub-text</code> for any sub text (like a description).</p>\n\n    <div class=\"guide-example\">\n      <div class=\"guide-example-demo\">\n        <table class=\"table-content col-100-lg\">\n          <tbody>\n            <tr>\n              <th class=\"col-80-xs\">Heading 1</th>\n              <th>Heading 2</th>\n              <th>Heading 3</th>\n            </tr>\n            <tr>\n              <td>hello</td>\n              <td>it's</td>\n              <td>me</td>\n            </tr>\n            <tr>\n              <td>\n                <div>here</div>\n                <div class=\"sub-text\">A description or something.</div>\n              </td>\n              <td>I</td>\n              <td>am</td>\n            </tr>\n          </tbody>\n        </table>\n      </div>\n      <div class=\"guide-example-code\">\n<pre><code class=\"language-html\">&lt;table class=\"table-content\"&gt;\n  &lt;tbody&gt;\n    &lt;tr&gt;\n      &lt;th class=\"col-80-xs\"&gt;Heading 1&lt;/th&gt;\n      &lt;th&gt;Heading 2&lt;/th&gt;\n      &lt;th&gt;Heading 3&lt;/th&gt;\n    &lt;/tr&gt;\n    &lt;tr&gt;\n      &lt;td&gt;hello&lt;/td&gt;\n      &lt;td&gt;it's&lt;/td&gt;\n      &lt;td&gt;me&lt;/td&gt;\n    &lt;/tr&gt;\n    &lt;tr&gt;\n      &lt;td&gt;\n        &lt;div&gt;here&lt;/div&gt;\n        &lt;div class=\"sub-text\"&gt;A description or something.&lt;/div&gt;\n      &lt;/td&gt;\n      &lt;td&gt;I&lt;/td&gt;\n      &lt;td&gt;am&lt;/td&gt;\n    &lt;/tr&gt;\n  &lt;/tbody&gt;\n&lt;/table&gt;</code></pre>\n      </div>\n    </div>\n  </section>\n\n</lens-main>";
+
+
+/***/ }),
+/* 34 */
+/***/ (function(module, exports) {
+
+	var m, template;
+
+	m = angular.module("lens.components.modals", []);
+
+	m.controller("ModalsController", [
+	  '$scope', function($scope) {
+	    return this;
+	  }
+	]);
+
+	m.directive("modals", function() {
+	  return {
+	    controller: "ModalsController",
+	    restrict: "E",
+	    scope: {},
+	    template: template
+	  };
+	});
+
+	template = "<lens-main>\n\n  <section id=\"Modals\">\n\n    <p class=\"m-b-4-xs\">To build a modal, create a <code>&lt;div&gt;</code> with a class of <code>.modal</code> and place it on the page. For the sake of documentation, these modals are not in an overlay. Typically, you'd see a semi-transparent black overlay that covers the entire screen with a modal inside it.</p>\n\n    <div class=\"modal-tarp__styleguide\">\n      <div class=\"modal col-65-xs\">\n        <div class=\"modal--header\">\n          <a href=\"#\" class=\"modal--close\">\n            <img class=\"modal--close-icon\" src=\"src/images/icons/close.svg\" />\n          </a>\n          <h2 class=\"modal--header-title regular\">Create Dashboard</h2>\n        </div>\n        <div class=\"modal--body\">\n          <p>Paragraph text...</p>\n        </div>\n        <div class=\"modal--footer\">\n          <div class=\"modal--footer-actions\">\n            <a class=\"button\" href=\"#\">Cancel</a>\n            <a class=\"button button--primary\" href=\"#\">Create Dashboard</a>\n          </div>\n        </div>\n      </div>\n    </div>\n\n  </section>\n\n</lens-main>";
+
+
+/***/ }),
+/* 35 */
+/***/ (function(module, exports) {
+
+	var m, template;
+
+	m = angular.module("lens.components.body_copy", []);
+
+	m.controller("BodyCopyController", [
+	  '$scope', function($scope) {
+	    return this;
+	  }
+	]);
+
+	m.directive("bodyCopy", function() {
+	  return {
+	    controller: "BodyCopyController",
+	    restrict: "E",
+	    scope: {},
+	    template: template
+	  };
+	});
+
+	template = "<lens-main>\n\n  <section id=\"style-emphasis-section\">\n    <div id=\"style-emphasis\" title=\"Style &amp; Emphasis\" class=\"inpage-anchor\"></div>\n    <h2>Style &amp; Emphasis</h2>\n    <table class=\"table-content\">\n      <thead>\n        <tr>\n          <th>Class</th>\n          <th>Tag</th>\n          <th>Example</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td class=\"top\"><p><code>.body</code></p></td>\n          <td class=\"top\"><p><code>&lt;p&gt;</code></p></td>\n          <td><p>Data analytics everyone loves.</p>\n              <pre><code class=\"language-html\">&lt;p&gt;Data analytics everyone loves.&lt;/p&gt;</code></pre></td>\n        </tr>\n        <tr>\n          <td class=\"top\"><p><code>.caption</code></p></td>\n          <td class=\"top\"></td>\n          <td><p class=\"caption\">Data analytics everyone loves.\n              <pre><code class=\"language-html\">&lt;p class=\"caption\"&gt;Data analytics everyone loves.&lt;/p&gt;</code></pre></td>\n        </tr>\n        <tr>\n          <td class=\"top\"><p><code>.bold</code></p></td>\n          <td class=\"top\"><p><code>&lt;strong&gt;</code></p></td>\n          <td><p>Data <strong>analytics</strong> everyone loves.</p>\n              <pre><code class=\"language-html\">&lt;p&gt;Data &lt;strong&gt;analytics&lt;/strong&gt; everyone loves.&lt;/p&gt;</code></pre></td>\n        </tr>\n        <tr>\n          <td class=\"top\"><p><code>.regular</code></p></td>\n          <td class=\"top\"></td>\n          <td><p class=\"bold\">Data <span class=\"regular\">analytics</span> everyone loves.</p>\n              <pre><code class=\"language-html\">&lt;p class=\"bold\"&gt;Data &lt;span class=\"regular\"&gt;analytics&lt;/span&gt; everyone loves.&lt;/p&gt;</code></pre></td>\n        </tr>\n        <tr>\n          <td class=\"top\"><p><code>.light</code></p></td>\n          <td class=\"top\"></td>\n          <td><p class=\"light\"><span class=\"sample-text\"></span>\n              <pre><code class=\"language-html\">&lt;p class=\"light\"&gt;Data analytics everyone loves.&lt;/p&gt;</code></pre></td>\n        </tr>\n        <tr>\n          <td class=\"top\"><p><code>.italic</code></p></td>\n          <td class=\"top\"><p><code>&lt;em&gt;</code></p></td>\n          <td><p>Data <em>analytics</em> everyone loves.</p>\n              <pre><code class=\"language-html\">&lt;p&gt;Data &lt;em&gt;analytics&lt;/em&gt; everyone loves.&lt;/p&gt;</code></pre></td>\n        </tr>\n        <tr>\n          <td class=\"top\"><p><code>.caps</code></p></td>\n          <td class=\"top\"></td>\n          <td><p class=\"caps\"><span class=\"sample-text\"></span>\n              <pre><code class=\"language-html\">&lt;p class=\"caps\"&gt;Data analytics everyone loves.&lt;/p&gt;</code></pre></td>\n        </tr>\n        <tr>\n          <td class=\"top\"><p><code>.lowercase</code></p></td>\n          <td class=\"top\"></td>\n          <td><p class=\"lowercase\"><span class=\"sample-text\"></span>\n              <pre><code class=\"language-html\">&lt;p class=\"lowercase\"&gt;Data analytics everyone loves.&lt;/p&gt;</code></pre></td>\n        </tr>\n        <tr>\n          <td class=\"top\"><p><code>.titlecase</code></p></td>\n          <td class=\"top\"></td>\n          <td><p class=\"titlecase\"><span class=\"sample-text\"></span>\n              <pre><code class=\"language-html\">&lt;p class=\"titlecase\"&gt;Data analytics everyone loves.&lt;/p&gt;</code></pre></td>\n        </tr>\n        <tr>\n          <td class=\"top\"><p><code>.code</code></p></td>\n          <td class=\"top\"></td>\n          <td><p class=\"code\"><span class=\"sample-text\"></span>\n              <pre><code class=\"language-html\">&lt;p class=\"code\"&gt;Data analytics everyone loves.&lt;/p&gt;</code></pre></td>\n        </tr>\n      </tbody>\n    </table>\n  </section>\n\n  <section id=\"links-section\">\n    <div id=\"links\" title=\"Links\" class=\"inpage-anchor\"></div>\n    <h2>Links</h2>\n    <table>\n      <thead>\n        <tr>\n          <th>State</th>\n          <th>Example</th>\n          <th>Style Notes</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td>Normal</td>\n          <td><a href=\"https://www.looker.com\">Looker</a></td>\n          <td>Brand border-values</td>\n        </tr>\n        <tr>\n          <td>Visited</td>\n          <td><a href=\"https://www.looker.com\">Looker</a></td>\n          <td>Same as normal?</td>\n        </tr>\n        <tr>\n          <td>Hover, Active</td>\n          <td><a href=\"https://www.looker.com\">Looker</a></td>\n          <td>Brand blue darkened 10% ?! always show pointer! no underline.</td>\n        </tr>\n        <tr>\n          <td>Disabled</td>\n          <td><a href=\"https://www.looker.com\">Looker</a></td>\n          <td>Same as :hover</td>\n        </tr>\n      </tbody>\n    </table>\n\n  </section>\n\n  <section id=\"lists-section\">\n    <div id=\"lists\" title=\"Lists\" class=\"inpage-anchor\"></div>\n    <h2>Lists</h2>\n    <p>Lens comes with basic styles for unordered and ordered\n      lists. You can remove the styling on either of them by using the\n      class <code>.list-unstyled</code>.</p>\n\n    <div>\n      <div><code>&lt;ul&gt;</code></div>\n      <ul>\n        <li>List item 1</li>\n        <li>List item 2 </li>\n        <li>List item 3</li>\n        <li>List item 4</li>\n      </ul>\n    </div>\n\n    <div>\n      <div><code>&lt;ol&gt;</code></div>\n      <ol>\n        <li>List item 1</li>\n        <li>List item 2 </li>\n        <li>List item 3</li>\n        <li>List item 4</li>\n      </ol>\n    </div>\n\n    <div>\n      <div><code>&lt;ul class=\".list-unstyled\"&gt;</code></div>\n      <ul class=\"list-unstyled\">\n        <li>List item 1</li>\n        <li>List item 2 </li>\n        <li>List item 3</li>\n        <li>List item 4</li>\n      </ul>\n    </div>\n\n    <div>\n      <div><code>&lt;dl&gt;</code></div>\n      <dl>\n        <dt>Looker</dt>\n        <dd>Data analytics everybody loves.</dd>\n      </dl>\n    </div>\n\n  </section>\n\n\n\n\n</lens-main>";
+
+
+/***/ }),
+/* 36 */
+/***/ (function(module, exports) {
+
+	var m, template;
+
+	m = angular.module("lens.components.headings", []);
+
+	m.controller("HeadingsController", [
+	  '$scope', function($scope) {
+	    return this;
+	  }
+	]);
+
+	m.directive("headings", function() {
+	  return {
+	    controller: "HeadingsController",
+	    restrict: "E",
+	    scope: {},
+	    template: template
+	  };
+	});
+
+	template = "<lens-main>\n  <section id=\"headings-section\">\n    <p class=\"todo\">Add some rules about how to use...</p>\n    <table class=\"table-content\">\n      <thead>\n        <tr>\n          <th>Class</th>\n          <th>Tag</th>\n          <th>Example</th>\n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>.display-3</code></td>\n          <td></td>\n          <td><h1 class=\"display-3\"><span class=\"sample-text\"></span></h1></td>\n        </tr>\n        <tr>\n          <td><code>.display-2</code></td>\n          <td></td>\n          <td><h1 class=\"display-2\"><span class=\"sample-text\"></span></h1></td>\n        </tr>\n        <tr>\n          <td><code>.display-1</code></td>\n          <td></td>\n          <td><h1 class=\"display-1\"><span class=\"sample-text\"></span></h1></td>\n        </tr>\n        <tr>\n          <td><code>.headline</code></td>\n          <td><code>&lt;h1&gt;</code></td>\n          <td><h1><span class=\"sample-text\"></span></h1></td>\n        </tr>\n        <tr>\n          <td><code>.title-2</code></td>\n          <td><code>&lt;h2&gt;</code></td>\n          <td><h2><span class=\"sample-text\"></span></h2></td>\n        </tr>\n        <tr>\n          <td><code>.title-1</code></td>\n          <td><code>&lt;h3&gt;</code></td>\n          <td><h3><span class=\"sample-text\"></span></h3></td>\n        </tr>\n        <tr>\n          <td><code>.subheading</code></td>\n          <td><code>&lt;h4&gt;</code></td>\n          <td><h4><span class=\"sample-text\"></span></h4></td>\n        </tr>\n        <tr>\n          <td><code></code></td>\n          <td><code>&lt;h5&gt;</code></td>\n          <td><h5><span class=\"sample-text\"></span></h5></td>\n        </tr>\n        <tr>\n          <td><code></code></td>\n          <td><code>&lt;h6&gt;</code></td>\n          <td><h6><span class=\"sample-text\"></span></h6></td>\n        </tr>\n      </tbody>\n    </table>\n  </section>\n\n</lens-main>";
+
+
+/***/ }),
+/* 37 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	var m;
+
+	m = angular.module("lens.guidelines", ["lens.guidelines.environment_properties", "lens.guidelines.markup", "lens.guidelines.responsive"]);
+
+	__webpack_require__(38);
+
+	__webpack_require__(39);
+
+	__webpack_require__(40);
+
+
+/***/ }),
+/* 38 */
+/***/ (function(module, exports) {
+
+	var m, template;
+
+	m = angular.module("lens.guidelines.environment_properties", []);
+
+	m.controller("EnvironmentPropertiesController", [
+	  '$scope', function($scope) {
+	    return this;
+	  }
+	]);
+
+	m.directive("environmentProperties", function() {
+	  return {
+	    controller: "EnvironmentPropertiesController",
+	    restrict: "E",
+	    scope: {},
+	    template: template
+	  };
+	});
+
+	template = "<lens-main>\n\n  <section id=\"environment-properties\">\n    <p>Environment properties provide rules for how Lens elements look, interact\n       and behave. The following themes are used to communicate the product\n       principles and guide the design.</p>\n\n    <p><strong>Visibility</strong> allows you to see the information\n      you care about and have a clear path to understanding and insights.\n      Presenting relevant content helps <em>eliminate ambiguity</em>.\n    </p>\n\n    <p><strong>Transparency</strong> means it is clear where you are and\n      what action you can take on your data. To provide this clairty the design\n      must <em>strive for simplicity</em>.\n    </p>\n    <p>Example design choices that reflect visibility and transparency:</p>\n    <ul>\n      <li>Clear button styles for primary, secondary and inactive states</li>\n      <li>Brighter color palette that compliments Looker's brand to provide\n      areas and levels of focus</li>\n      <li>Establish a harmonious type ramp with a larger base font</li>\n      <li>Padding, margins and radii are presented in ratios that synchronize\n      with the type ramp, buttons, modals, form elements and notifications</li>\n      <li>Leverage Material Design icons for a single icon language that scales\n      consistently in weight, size and color</li>\n    </ul>\n\n    <p><strong>Discovery</strong> means using clear signs and feedback to help\n      you know where you and navigate your way. Providing orientation\n      <em>encourages confidence</em> when using Looker. Some examples:</p>\n    <ul>\n      <li>Consistent use of interactive elements, such as tabs, toggles and switches</li>\n      <li>Consistent placement of interactive elements across pages</li>\n      <li>Predictable browser history navigation</li>\n    </ul>\n\n    <p><strong>Fluidity</strong> for Looker is providing a versatile platform\n       where you can easily move between tasks. By adapting to and anticipating\n       different user needs, the design can <em>champion efficiency</em>. Some\n       examples:</p>\n    <ul>\n      <li>The elements you interact with are immedately responsive and provide\n        feedback, including animations for loading</li>\n      <li>Relevant next steps and actions are provided in context</li>\n    </ul>\n\n  </section>\n\n</lens-main>";
+
+
+/***/ }),
+/* 39 */
+/***/ (function(module, exports) {
+
+	var m, template;
+
+	m = angular.module("lens.guidelines.markup", []);
+
+	m.controller("MarkupController", [
+	  '$scope', function($scope) {
+	    return this;
+	  }
+	]);
+
+	m.directive("markup", function() {
+	  return {
+	    controller: "MarkupController",
+	    restrict: "E",
+	    scope: {},
+	    template: template
+	  };
+	});
+
+	template = "<lens-main>\n\n  <section id=\"markup\">\n    <p>Lens includes resources to\n      create user interfaces consistent with the Looker brand and best\n      practices. Here are few things to consider before you start using Lens on\n       your next project.</p>\n    <h1><code>This page needs to be reorganized and slimmed</code></h1>\n\n    <h2 id=\"Markup\">Markup Considerations</h2>\n    <p>Lens contains a lot of utility classes that can be\n      stacked up to quickly create layouts and components. While it may look a l\n      ittle messier than you are used to on the markup side of things, this\n      saves us a ton of extra CSS. These classes also make it much more clear\n      what styles are applied to an element to anyone looking at the markup.\n    </p>\n    <h3 id=\"Layout\">A note on layouts</h2>\n    <p>\n       When building layouts with Lens, make sure you don't apply extra styles\n       on containers and grid columns. Anything needing styles outside of\n       utility classes should typically be nested inside those types of\n       containers.</p>\n\n    <h2 id=\"BEM\">BEM Class Naming</h2>\n    <p>BEM is a well-known method of naming components — block,\n       element, modifier. For those unfamiliar or who need a quick refresh,\n       let’s briefly look at how BEM works. As an example, we’ll build a\n       sandwich component.</p>\n    <h3>Block</h3>\n    <p>A block represents the main component. If you were\n      building a tasty sandwich, the class name would be <code>.sandwich</code>.\n       All the properties that would be shared by all different sandwiches would\n        be included within <code>.sandwich</code>.</p>\n    <h3>Element</h3>\n    <p>An element is part of the main component and its class\n      name is separated by two underscores. The bread of the sandwich would be\n      reprented by the class <code>.sandwich__bread</code>. The cheese would be\n      <code>.sandwich__cheese</code>. Be on the look out for smaller component\n      possibilities within a larger component. If we were to take a look at\n      sandwich condiments, which can be used on other things outside of\n      sandwiches. We'd want to avoid a class name such as\n      <code>.sandwich__condiment__mayo</code>. We could use something like\n      <code>.sandwich__condiment--mayo</code> because a single dash doesn't\n      represent anything in BEM. But, since condiments can be used on things\n      other than sandwiches, we could make this a component in an of itself.\n      In that case, we could name it <code>.condiment__mayo</code> and use\n      that inside the sandwich element.</p>\n    <h3>Modifier</h3>\n    <p>A modifier is a component or element variation that\n      only slightly differes from the main element. The variation can be applied\n       to the entire element or just a part of it. Since the properties that\n       should apply to every sandwich are placed on the main\n       <code>.sandwich</code> class, all sandwiches receive the\n       <code>.sandwich</code> class as the base. If there is a variation of a\n       sandwich &mdash; maybe it has wheat bread &mdash; the\n       <code>.sandwich--wheat</code> class would be added the component in\n       addition to the <code>.sandwich</code> class.</p>\n    <p>If the sandwich has swiss cheese, a variation can be\n      placed on the cheese element itself, like\n      <code>.sandwich__cheese--swiss</code>.</p>\n\n    <h2 id=\"Utilities\">Utility Classes</h2>\n    <p>The one place we diverge from BEM is within our utility\n      classes. These are immutable classes that use <code>!important</code> to\n      ensure they never break. And for the most part are classes that only apply\n       a single property, which is why we felt okay using the important\n       declaration on them. Lens's utility classes should be used whenever\n       possible to create the layout and style of a page or element. Each\n       utility class end with a breakpoint suffix. Since Lens is built\n       mobile-first, you'd apply the <code>-xs</code> suffix to make those s\n       tyles work across all breakpoints. To modify those styles at a larger\n       breakpoint, you'd apply an additional utility class that employs one of\n       the other suffixes, such as <code>-sm</code>, <code>-md</code>,\n       <code>-lg</code>, <code>-xl</code>. Whichever the highest suffix is,\n       those styles will apply all the way up through any screen size. To learn\n       more about these suffixes, take a gander at the\n       <a href=\"/responsive\">Responsive</a> page.</p>\n\n    <h2 id=\"Sass\">Sass: Variables, Functions, and Mixins</h2>\n    <p>Lens uses Sass to compile its CSS. This allows us to\n    take advantage of variables, functions and mixins when writing our CSS.</p>\n\n    <h3>Variables</h3>\n    <p>Most of our variables are built using Sass maps, which\n      means they aren't easily accessible with a simple variable name. We've\n      made functions to make access to those variables easier. All Sass\n      variables use the typical <code>$</code> naming scheme.\n\n    <h3>Functions</h3>\n    <p>As mentioned above, many variables are accessible via\n      Sass function calls, for example <a href=\"/atoms/typography\">font sizes</a>,\n      <a href=\"atoms/layout\">spacing units</a>, and <a href=\"/atoms/colors\">colors</a>.\n      <strong>Note:</strong> Functions don't use the typical <code>$</code>\n      variable naming scheme, just the function name.</p>\n\n    <h3>Mixins</h3>\n    <p>Lens has a\n      <a href=\"http://bourbon.io/\">Bourbon</a> dependency to give us access to\n      many handy mixins. On top of that, we include many variables, mixins and\n      functions that are specific to our needs at Looker.</p>\n\n\n\n  </section>\n\n</lens-main>";
+
+
+/***/ }),
+/* 40 */
+/***/ (function(module, exports) {
+
+	var m, template;
+
+	m = angular.module("lens.guidelines.responsive", []);
+
+	m.controller("ResponsiveController", [
+	  '$scope', function($scope) {
+	    return this;
+	  }
+	]);
+
+	m.directive("responsive", function() {
+	  return {
+	    controller: "ResponsiveController",
+	    restrict: "E",
+	    scope: {},
+	    template: template
+	  };
+	});
+
+	template = "<lens-main>\n\n  <section id=\"responsive-suffixes-section\">\n    <div id=\"responsive-suffixes\" title=\"Responsive Suffixes\" class=\"inpage-anchor\"></div>\n    <h2>Responsive Suffixes</h2>\n    <p>Our grid classes, utility classes and typography are built in a way that\n      give flexibility across breakpoints. To change things at different breakpoints,\n       we have 6 suffixes to add to your classes: <code>-xs</code>, <code>-sm</code>,\n       <code>-md</code>, <code>-lg</code>, <code>-xl</code>, and <code>-xxl</code>.</p>\n    <p>To see this in action, resize your browser and pay attention to how this grid layout changes.</p>\n    <div class=\"guide-example\">\n      <div class=\"guide-example-demo\">\n        <div class=\"col-container\">\n          <div class=\"col col-100-xs col-50-md col-25-lg\">\n            <div class=\"guide-demo-box\">\n              .col-100-xs .col-50-md .col-25-lg\n            </div>\n          </div>\n          <div class=\"col col-100-xs col-50-md col-25-lg\">\n            <div class=\"guide-demo-box\">\n              .col-100-xs .col-50-md .col-25-lg\n            </div>\n          </div>\n          <div class=\"col col-100-xs col-50-md col-25-lg\">\n            <div class=\"guide-demo-box\">\n              .col-100-xs .col-50-md .col-25-lg\n            </div>\n          </div>\n          <div class=\"col col-100-xs col-50-md col-25-lg\">\n            <div class=\"guide-demo-box\">\n              .col-100-xs .col-50-md .col-25-lg\n            </div>\n          </div>\n        </div>\n      </div>\n      <div class=\"guide-example-code\">\n<pre><code class=\"language-html\">&lt;div class=\"col-container\"&gt;\n  &lt;div class=\"col col-100-xs col-50-md col-25-lg\"&gt;\n    &lt;div class=\"guide-demo-box\"&gt;.col-100-xs .col-50-md .col-25-lg&lt;/div&gt;\n  &lt;/div&gt;\n  &lt;div class=\"col col-100-xs col-50-md col-25-lg guide-demo-box\"&gt;\n    &lt;div class=\"guide-demo-box\"&gt;.col-100-xs .col-50-md .col-25-lg&lt;/div&gt;\n  &lt;/div&gt;\n  &lt;div class=\"col col-100-xs col-50-md col-25-lg guide-demo-box\"&gt;\n    &lt;div class=\"guide-demo-box\"&gt;.col-100-xs .col-50-md .col-25-lg&lt;/div&gt;\n  &lt;/div&gt;\n  &lt;div class=\"col col-100-xs col-50-md col-25-lg guide-demo-box\"&gt;\n    &lt;div class=\"guide-demo-box\"&gt;.col-100-xs .col-50-md .col-25-lg&lt;/div&gt;\n  &lt;/div&gt;\n&lt;/div&gt;</code></pre>\n      </div>\n    </div>\n  </section>\n\n  <section id=\"breakpoints-section\">\n    <div id=\"breakpoints\" title=\"Breakpoints\" class=\"inpage-anchor\"></div>\n    <h2>Breakpoints</h2>\n    <p>Everything in Lens is built with a mobile first approach. This means that\n      if you want the same style across all breakpoints you'd use the <code>-xs</code>\n      suffix.</p>\n    <table class=\"table-content\">\n      <thead>\n        <th>Suffixes</th>\n        <th>Breakpoint</th>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>-xs</code></td>\n          <td><code>@media screen</code></td>\n        </tr>\n        <tr>\n          <td><code>-sm</code></td>\n          <td><code>@media (min-width: 480px)</code></td>\n        </tr>\n        <tr>\n          <td><code>-md</code></td>\n          <td><code>@media (min-width: 680px)</code></td>\n        </tr>\n        <tr>\n          <td><code>-lg</code></td>\n          <td><code>@media (min-width: 960px)</code></td>\n        </tr>\n        <tr>\n          <td><code>-xl</code></td>\n          <td><code>@media (min-width: 1140px)</code></td>\n        </tr>\n        <tr>\n          <td><code>-xxl</code></td>\n          <td><code>@media (min-width: 1440px)</code></td>\n        </tr>\n      </tbody>\n    </table>\n  </section>\n\n  <section id=\"what-section\">\n    <div id=\"waht\" title=\"What Gets a Suffix?\" class=\"inpage-anchor\"></div>\n    <h2>What Gets a Suffix?</h2>\n    <p>Suffixes are applied to many Lens classes to allow flexibility in creating\n      responsive experiences. </p>\n    <p>The following classes can be extended within the style declarations of\n      your component or custom element.</p>\n    <table class=\"table-content\">\n      <thead>\n        <th>Element</th>\n        <th>Classes to <code>@extend</code></th>\n      </thead>\n      <tbody>\n        <tr>\n          <td><a ui-sref=\"typography\">Text Sizing</a></td>\n          <td><code>%text-$n-xs</code></td>\n        </tr>\n        <tr>\n          <td><a ui-sref=\"typography\">Text Alignment</a></td>\n          <td><code>%text-left-xs</code><br /><code>%text-right-xs</code><br /><code>%text-center-xs</code><br /><code>%text-justify-xs</code></td>\n        </tr>\n        <tr>\n          <td><a ui-sref=\"layout\">Display</a></td>\n          <td><code>%hide-xs</code><br /><code>%block-xs</code><br /><code>%inline-xs</code><br /><code>%inline-block-xs</code></td>\n        </tr>\n        <tr>\n          <td><a ui-sref=\"layout\">Floats</a></td>\n          <td><code>%float-l-xs</code><br /><code>%float-r-xs</code><br /><code>%float-none-xs</code></td>\n        </tr>\n        <tr>\n          <td><a ui-sref=\"spacing-sizing\">Overflow</a></td>\n          <td><code>%overflow-hidden-xs</code><br /><code>%overflow-scroll-xs</code><br /><code>%overflow-auto-xs</code><br /><code>%overflow-visible-xs</code></td>\n        </tr>\n        <tr>\n          <td><a ui-sref=\"spacing-sizing\">Margin</a></td>\n          <td><code>%m-$n-xs</code><br /><code>%m-[side]-$n-xs</code><br /><code>%m-auto-xs</code></td>\n        </tr>\n        <tr>\n          <td><a ui-sref=\"spacing-sizing\">Padding</a></td>\n          <td><code>%p-$n-xs</code><br /><code>%p-[side]-$n-xs</code></td>\n        </tr>\n        <tr>\n          <td><a ui-sref=\"layout\">Position</a></td>\n          <td><code>%relative-xs</code><br /><code>%absolute-xs</code><br /><code>%fixed-xs</code><br /><code>%static-xs</code></td>\n        </tr>\n        <tr>\n          <td><a ui-sref=\"layout\">Position Spacing</a></td>\n          <td><code>%pos-$n-xs</code><br /><code>%pos-[side]-$n-xs</code></td>\n        </tr>\n        <tr>\n          <td><a ui-sref=\"layout\">Z-Index</a></td>\n          <td><code>%z-$n-xs</code></td>\n        </tr>\n        <tr>\n          <td><a ui-sref=\"borders\">Borders</a></td>\n          <td><code>%border-xs</code><br /><code>%border-[shade]-xs</code><br /><code>%border-[side]-xs</code><br /><code>%border-[side]-[shade]-xs</code></td>\n        </tr>\n        <tr>\n          <td><a ui-sref=\"flexbox\">Flex Box</a></td>\n          <td><code>%flex-xs</code></td>\n        </tr>\n        <tr>\n          <td><a ui-sref=\"spacing-sizing\">Width and Height</td>\n          <td><code>%w-full-xs</code><br /><code>%w-fit-xs</code><br /><code>%w-auto-xs</code><br /><code>%h-full-xs</code></td>\n        </tr>\n        <tr>\n          <td><a ui-sref=\"layout\">Veritcal Alignment</td>\n          <td><code>%align-top-xs</code><br /><code>%align-middle-xs</code><br /><code>%align-bottom-xs</code></td>\n        </tr>\n        <tr>\n          <td><a ui-sref=\"layout\">Rotation</a></td>\n          <td><code>%rotate-$n-xs</code></td>\n        </tr>\n      </tbody>\n    </table>\n    <p>The following classes can be added directly to the markup of your component or custom element.</p>\n    <table class=\"table-content\">\n      <thead>\n        <th>Element</th>\n        <th>Class</th>\n      </thead>\n      <tbody>\n        <tr>\n          <td><a ui-sref=\"buttons\">Buttons</a></td>\n          <td><code>.button--[size]-xs</code></td>\n        </tr>\n        <tr>\n          <td><a ui-sref=\"grid\">Grid</td>\n          <td><code>.col-$n-xs</code></td>\n        </tr>\n        <tr>\n          <td><a ui-sref=\"grid\">Grid Offsets</a></td>\n          <td><code>.col-offset-$n-xs</code></td>\n        </tr>\n        <tr>\n          <td><a ui-sref=\"block-grid\">Block Grid</a></td>\n          <td><code>.block-$n-xs</code></td>\n        </tr>\n      </tbody>\n    </table>\n  </section>\n\n  <section id=\"scss-section\">\n    <div id=\"scss\" title=\"Additional SCSS\" class=\"inpage-anchor\"></div>\n    <h2>Additional SCSS</h2>\n    <h3>Variables</h3>\n    <p>Lens has a variable for each responsive breakpoint. Remember the <code>-xs</code>\n       suffix is for <code>@screen</code> and is the default suffix for applying to all\n       sizes.</p>\n    <table class=\"table-content\">\n      <thead>\n        <th>Variable</th>\n        <th>Breakpoint Value</th>\n      </thead>\n      <tbody>\n        <tr>\n          <td><code>$sm</code></td>\n          <td><code>480px</code></td>\n        </tr>\n        <tr>\n          <td><code>$md</code></td>\n          <td><code>680px</code></td>\n        </tr>\n        <tr>\n          <td><code>$lg</code></td>\n          <td><code>960px</code></td>\n        </tr>\n        <tr>\n          <td><code>$xl</code></td>\n          <td><code>1140px</code></td>\n        </tr>\n        <tr>\n          <td><code>$xxl</code></td>\n          <td><code>1440px</code></td>\n        </tr>\n      </tbody>\n    </table>\n\n    <h3>Mixins</h3>\n    <table class=\"table-content\">\n      <thead>\n        <th>Mixin</th>\n        <th>Parameters</th>\n      </thead>\n      <tbody>\n        <tr>\n          <td><pre><code class=\"language-css\">+media($rule $breakpoint)</pre></td>\n          <td><code>$rule</code> is a CSS rule<br />\n              <code>$breakpoint</code> is one of the breakpoint variables above.\n          </td>\n        </tr>\n      </tbody>\n    </table>\n  </section>\n\n</lens-main>";
+
+
+/***/ }),
+/* 41 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(42);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(44)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/sass-loader/index.js!./_styleguide.sass", function() {
+				var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/sass-loader/index.js!./_styleguide.sass");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ }),
+/* 42 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(43)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "/*! Lens Version 0.1.0 */\n*, :after, :before {\n  box-sizing: border-box; }\n\nhtml {\n  font-family: sans-serif;\n  -ms-text-size-adjust: 100%;\n  -webkit-text-size-adjust: 100%; }\n\nbody {\n  margin: 0; }\n\narticle, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {\n  display: block; }\n\naudio, canvas, progress, video {\n  display: inline-block;\n  vertical-align: baseline; }\n\naudio:not([controls]) {\n  display: none;\n  height: 0; }\n\n[hidden], template {\n  display: none; }\n\na {\n  background-color: transparent; }\n  a:active, a:hover {\n    outline: 0; }\n\nabbr[title] {\n  border-bottom: 1px dotted; }\n\nb, strong {\n  font-weight: bold; }\n\ndfn {\n  font-style: italic; }\n\nh1 {\n  font-size: 2em;\n  margin: 0.67em 0; }\n\nh1, h2, h3, h4, h5, h6 {\n  margin: 0; }\n\nmark {\n  background: #ff0;\n  color: #000; }\n\nsmall {\n  font-size: 80%; }\n\nsub {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline; }\n\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline;\n  top: -0.5em; }\n\nsub {\n  bottom: -0.25em; }\n\nimg {\n  border: 0; }\n\nsvg:not(:root) {\n  overflow: hidden; }\n\nfigure {\n  margin: 1em 40px; }\n\nhr {\n  -moz-box-sizing: content-box;\n  box-sizing: content-box;\n  height: 0; }\n\npre {\n  overflow: auto; }\n\ncode, kbd, pre, samp {\n  font-family: Monaco, monospace; }\n\nbutton, input, optgroup, select, textarea {\n  color: inherit;\n  font: inherit;\n  margin: 0; }\n\nbutton {\n  overflow: visible;\n  text-transform: none; }\n\nselect {\n  text-transform: none; }\n\nbutton, html input[type=\"button\"] {\n  -webkit-appearance: button;\n  cursor: pointer; }\n\ninput[type=\"reset\"], input[type=\"submit\"] {\n  -webkit-appearance: button;\n  cursor: pointer; }\n\nbutton[disabled], html input[disabled] {\n  cursor: default; }\n\nbutton::-moz-focus-inner {\n  border: 0;\n  padding: 0; }\n\ninput {\n  line-height: normal; }\n  input::-moz-focus-inner {\n    border: 0;\n    padding: 0; }\n  input[type=\"checkbox\"], input[type=\"radio\"] {\n    box-sizing: border-box;\n    padding: 0; }\n  input[type=\"number\"]::-webkit-inner-spin-button, input[type=\"number\"]::-webkit-outer-spin-button {\n    height: auto; }\n  input[type=\"search\"] {\n    -webkit-appearance: textfield;\n    -moz-box-sizing: content-box;\n    -webkit-box-sizing: content-box;\n    box-sizing: content-box; }\n    input[type=\"search\"]::-webkit-search-cancel-button, input[type=\"search\"]::-webkit-search-decoration {\n      -webkit-appearance: none; }\n\nfieldset {\n  border: 1px solid #c0c0c0;\n  margin: 0 2px;\n  padding: 0.35em 0.625em 0.75em; }\n\nlegend {\n  border: 0;\n  padding: 0; }\n\ntextarea {\n  overflow: auto; }\n\noptgroup {\n  font-weight: bold; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\ntd, th {\n  padding: 0; }\n\nhtml {\n  font-size: 100%;\n  line-height: 1.5;\n  -webkit-tap-highlight-color: transparent; }\n\nbody {\n  font-size: 16px;\n  font-family: \"Open Sans\", Helvetica, Arial, sans-serif;\n  font-style: normal;\n  font-weight: 400; }\n\n@media screen {\n  table.table-content th, table.table-content td .sub-text, .guide-version, .guide-subnav-item, .guide-contentinfo, .guide-example::before {\n    font-size: 12px;\n    line-height: 20px; }\n  .caption, .guide-navigation-link, .guide-color-item > span > span, .guide-color-item > span em {\n    font-size: 14px;\n    line-height: 24px; }\n  .body {\n    font-size: 16px;\n    line-height: 24px; }\n  .modal--header-title, h4, .subheading, h3, .title-1 {\n    font-size: 19px;\n    line-height: 27px; }\n  h2, .title-2 {\n    font-size: 22px;\n    line-height: 30px; }\n  h1, .headline, .guide-name {\n    font-size: 28px;\n    line-height: 36px; }\n  .display-1 {\n    font-size: 38px;\n    line-height: 46px; }\n  .display-2 {\n    font-size: 52px;\n    line-height: 60px; }\n  .display-3 {\n    font-size: 62px;\n    line-height: 72px; } }\n\ntable.table-content th, .regular, h4, .subheading, h1, .headline, .display-1 {\n  font-weight: 400; }\n\ntable th, .bold,\nstrong, h3, .title-1, h2, .title-2, .guide-navigation-link-single.active, .guide-navigation-link-child.active, .guide-subnav-anchor.active {\n  font-weight: 700; }\n\n.light, .display-2, .display-3 {\n  font-weight: 300; }\n\n.italic,\nem {\n  font-style: italic; }\n\n.caps, .guide-example::before {\n  text-transform: uppercase; }\n\n.lowercase {\n  text-transform: lowercase; }\n\n.titlecase, .guide-subnav-anchor {\n  text-transform: capitalize; }\n\n.code {\n  font-family: \"Monaco\", \"Menlo\", \"Ubuntu Mono\", \"Consolas\", \"source-code-pro\", monospace; }\n\n@media screen {\n  table th,\n  table td {\n    text-align: left; }\n  table th.right,\n  table td.right, .modal--footer-actions {\n    text-align: right; } }\n\n@media screen {\n  .guide-demo-box {\n    border: solid 1px #E4E5E6; }\n  table.table-content td {\n    border-bottom: solid 1px #E4E5E6; }\n  .guide-navigation, .guide-navigation-link {\n    border-right: solid 1px #E4E5E6; }\n  table th {\n    border-bottom: solid 1px #D2D3D4; }\n  table td {\n    border: none; }\n  .guide-color-item > span {\n    border-radius: 5px; } }\n\n@media screen and (min-width: 480px) {\n  .guide-color-item > span {\n    border-radius: 5px; } }\n\n@media screen and (min-width: 680px) {\n  .guide-color-item > span {\n    border-radius: 5px; } }\n\n@media screen and (min-width: 960px) {\n  .guide-color-item > span {\n    border-radius: 5px; } }\n\n@media screen and (min-width: 1140px) {\n  .guide-color-item > span {\n    border-radius: 5px; } }\n\n@media screen and (min-width: 1440px) {\n  .guide-color-item > span {\n    border-radius: 5px; } }\n\n.guide-color-item .brand-bg-purple {\n  background-color: #7E64E0; }\n\n.modal--tarp, .guide-banner, .guide-color-item .brand-bg-gray, .modal-tarp__styleguide {\n  background-color: #1C2027; }\n\n.guide-color-item .brand-bg-blue {\n  background-color: #0E88F1; }\n\n.guide-color-item .bg-purple-dark {\n  background-color: #2A1B60; }\n\n.guide-color-item .bg-purple {\n  background-color: #4C33AA; }\n\n.guide-color-item .bg-purple-light {\n  background-color: #7E64E0; }\n\n.guide-color-item .bg-red-dark {\n  background-color: #92100E; }\n\n.guide-color-item .bg-red {\n  background-color: #B00505; }\n\n.guide-color-item .bg-red-light {\n  background-color: #E1332C; }\n\n.guide-color-item .bg-green {\n  background-color: #4BB86A; }\n\n.guide-color-item .bg-teal-dark {\n  background-color: #39B2B2; }\n\n.guide-color-item .bg-teal {\n  background-color: #5DCCCC; }\n\n.guide-color-item .bg-yellow {\n  background-color: #FFD822; }\n\n.guide-color-item .bg-orange-dark {\n  background-color: #E57200; }\n\n.guide-color-item .bg-orange {\n  background-color: #FB9331; }\n\n.guide-name, .guide-name:hover, .guide-name:active, .guide-name:focus {\n  color: #fff; }\n\n.modal, body, .guide-navigation, .guide-color-item .bg-white {\n  background-color: #fff; }\n\ntable.table-striped tr:nth-child(odd) > td, .guide-navigation-link:focus, .guide-navigation-link:hover, .guide-navigation-link:active, .guide-subnav-anchor:hover, .guide-subnav-anchor:active, .guide-subnav-anchor:focus, .guide-color-item .bg-gray-1 {\n  background-color: #F6F6F7; }\n\n.guide-color-item .bg-gray-2 {\n  background-color: #E4E5E6; }\n\n.guide-color-item .bg-gray-3 {\n  background-color: #D2D3D4; }\n\n.guide-version, .guide-subnav-anchor, .guide-example::before {\n  color: #A4A6A9; }\n\n.guide-color-item .bg-gray-4 {\n  background-color: #A4A6A9; }\n\ntable.table-content td .sub-text {\n  color: #77797E; }\n\n.guide-color-item .bg-gray-5 {\n  background-color: #77797E; }\n\n.guide-color-item > span.bg-gray, .guide-color-item > span.bg-gray-2, .guide-color-item > span.bg-gray-3, .guide-color-item > span.bg-gray-1, .guide-color-item > span.bg-white {\n  color: #3C4345; }\n\n.guide-color-item .bg-gray-6 {\n  background-color: #3C4345; }\n\nh1, h2, h3, h4, h5, h6, .guide-navigation-link, .guide-navigation-link:focus, .guide-navigation-link:hover, .guide-navigation-link:active, .guide-navigation-link.active, .guide-subnav-anchor.active {\n  color: #1C2027; }\n\n.guide-navigation-link-single.active::after, .guide-navigation-link-child.active::after, .guide-color-item .bg-gray-7 {\n  background-color: #1C2027; }\n\n.col {\n  float: left;\n  width: 100%; }\n  .col-gutters {\n    margin: 0 -15px; }\n    .col-gutters > .col {\n      padding: 0 15px; }\n  .col-container:before, .col-container:after {\n    content: \" \";\n    display: table; }\n  .col-container:after {\n    clear: both; }\n  .col-max {\n    max-width: 1260px;\n    margin: 0 auto;\n    padding: 0 15px; }\n  .col-center {\n    float: none;\n    margin: 0 auto; }\n  .col-form {\n    margin: 0 -6px; }\n    .col-form > .col {\n      padding: 0 6px; }\n  @media screen {\n    .col-5-xs {\n      width: 5%; }\n    .col-offset-5-xs {\n      margin-left: 5%; }\n    .col-10-xs {\n      width: 10%; }\n    .col-offset-10-xs {\n      margin-left: 10%; }\n    .col-15-xs {\n      width: 15%; }\n    .col-offset-15-xs {\n      margin-left: 15%; }\n    .col-20-xs {\n      width: 20%; }\n    .col-offset-20-xs {\n      margin-left: 20%; }\n    .col-25-xs {\n      width: 25%; }\n    .col-offset-25-xs {\n      margin-left: 25%; }\n    .col-30-xs {\n      width: 30%; }\n    .col-offset-30-xs {\n      margin-left: 30%; }\n    .col-33-xs {\n      width: 33.3%; }\n    .col-offset-33-xs {\n      margin-left: 33.3%; }\n    .col-35-xs {\n      width: 35%; }\n    .col-offset-35-xs {\n      margin-left: 35%; }\n    .col-40-xs {\n      width: 40%; }\n    .col-offset-40-xs {\n      margin-left: 40%; }\n    .col-45-xs {\n      width: 45%; }\n    .col-offset-45-xs {\n      margin-left: 45%; }\n    .col-50-xs {\n      width: 50%; }\n    .col-offset-50-xs {\n      margin-left: 50%; }\n    .col-55-xs {\n      width: 55%; }\n    .col-offset-55-xs {\n      margin-left: 55%; }\n    .col-60-xs {\n      width: 60%; }\n    .col-offset-60-xs {\n      margin-left: 60%; }\n    .col-65-xs {\n      width: 65%; }\n    .col-offset-65-xs {\n      margin-left: 65%; }\n    .col-66-xs {\n      width: 66.6%; }\n    .col-offset-66-xs {\n      margin-left: 66.6%; }\n    .col-70-xs {\n      width: 70%; }\n    .col-offset-70-xs {\n      margin-left: 70%; }\n    .col-75-xs {\n      width: 75%; }\n    .col-offset-75-xs {\n      margin-left: 75%; }\n    .col-80-xs {\n      width: 80%; }\n    .col-offset-80-xs {\n      margin-left: 80%; }\n    .col-85-xs {\n      width: 85%; }\n    .col-offset-85-xs {\n      margin-left: 85%; }\n    .col-90-xs {\n      width: 90%; }\n    .col-offset-90-xs {\n      margin-left: 90%; }\n    .col-95-xs {\n      width: 95%; }\n    .col-offset-95-xs {\n      margin-left: 95%; }\n    .col-100-xs {\n      width: 100%; }\n    .col-offset-100-xs {\n      margin-left: 100%; } }\n  @media screen and (min-width: 480px) {\n    .col-5-sm {\n      width: 5%; }\n    .col-offset-5-sm {\n      margin-left: 5%; }\n    .col-10-sm {\n      width: 10%; }\n    .col-offset-10-sm {\n      margin-left: 10%; }\n    .col-15-sm {\n      width: 15%; }\n    .col-offset-15-sm {\n      margin-left: 15%; }\n    .col-20-sm {\n      width: 20%; }\n    .col-offset-20-sm {\n      margin-left: 20%; }\n    .col-25-sm {\n      width: 25%; }\n    .col-offset-25-sm {\n      margin-left: 25%; }\n    .col-30-sm {\n      width: 30%; }\n    .col-offset-30-sm {\n      margin-left: 30%; }\n    .col-33-sm {\n      width: 33.3%; }\n    .col-offset-33-sm {\n      margin-left: 33.3%; }\n    .col-35-sm {\n      width: 35%; }\n    .col-offset-35-sm {\n      margin-left: 35%; }\n    .col-40-sm {\n      width: 40%; }\n    .col-offset-40-sm {\n      margin-left: 40%; }\n    .col-45-sm {\n      width: 45%; }\n    .col-offset-45-sm {\n      margin-left: 45%; }\n    .col-50-sm {\n      width: 50%; }\n    .col-offset-50-sm {\n      margin-left: 50%; }\n    .col-55-sm {\n      width: 55%; }\n    .col-offset-55-sm {\n      margin-left: 55%; }\n    .col-60-sm {\n      width: 60%; }\n    .col-offset-60-sm {\n      margin-left: 60%; }\n    .col-65-sm {\n      width: 65%; }\n    .col-offset-65-sm {\n      margin-left: 65%; }\n    .col-66-sm {\n      width: 66.6%; }\n    .col-offset-66-sm {\n      margin-left: 66.6%; }\n    .col-70-sm {\n      width: 70%; }\n    .col-offset-70-sm {\n      margin-left: 70%; }\n    .col-75-sm {\n      width: 75%; }\n    .col-offset-75-sm {\n      margin-left: 75%; }\n    .col-80-sm {\n      width: 80%; }\n    .col-offset-80-sm {\n      margin-left: 80%; }\n    .col-85-sm {\n      width: 85%; }\n    .col-offset-85-sm {\n      margin-left: 85%; }\n    .col-90-sm {\n      width: 90%; }\n    .col-offset-90-sm {\n      margin-left: 90%; }\n    .col-95-sm {\n      width: 95%; }\n    .col-offset-95-sm {\n      margin-left: 95%; }\n    .col-100-sm {\n      width: 100%; }\n    .col-offset-100-sm {\n      margin-left: 100%; } }\n  @media screen and (min-width: 680px) {\n    .col-5-md {\n      width: 5%; }\n    .col-offset-5-md {\n      margin-left: 5%; }\n    .col-10-md {\n      width: 10%; }\n    .col-offset-10-md {\n      margin-left: 10%; }\n    .col-15-md {\n      width: 15%; }\n    .col-offset-15-md {\n      margin-left: 15%; }\n    .col-20-md {\n      width: 20%; }\n    .col-offset-20-md {\n      margin-left: 20%; }\n    .col-25-md {\n      width: 25%; }\n    .col-offset-25-md {\n      margin-left: 25%; }\n    .col-30-md {\n      width: 30%; }\n    .col-offset-30-md {\n      margin-left: 30%; }\n    .col-33-md {\n      width: 33.3%; }\n    .col-offset-33-md {\n      margin-left: 33.3%; }\n    .col-35-md {\n      width: 35%; }\n    .col-offset-35-md {\n      margin-left: 35%; }\n    .col-40-md {\n      width: 40%; }\n    .col-offset-40-md {\n      margin-left: 40%; }\n    .col-45-md {\n      width: 45%; }\n    .col-offset-45-md {\n      margin-left: 45%; }\n    .col-50-md {\n      width: 50%; }\n    .col-offset-50-md {\n      margin-left: 50%; }\n    .col-55-md {\n      width: 55%; }\n    .col-offset-55-md {\n      margin-left: 55%; }\n    .col-60-md {\n      width: 60%; }\n    .col-offset-60-md {\n      margin-left: 60%; }\n    .col-65-md {\n      width: 65%; }\n    .col-offset-65-md {\n      margin-left: 65%; }\n    .col-66-md {\n      width: 66.6%; }\n    .col-offset-66-md {\n      margin-left: 66.6%; }\n    .col-70-md {\n      width: 70%; }\n    .col-offset-70-md {\n      margin-left: 70%; }\n    .col-75-md {\n      width: 75%; }\n    .col-offset-75-md {\n      margin-left: 75%; }\n    .col-80-md {\n      width: 80%; }\n    .col-offset-80-md {\n      margin-left: 80%; }\n    .col-85-md {\n      width: 85%; }\n    .col-offset-85-md {\n      margin-left: 85%; }\n    .col-90-md {\n      width: 90%; }\n    .col-offset-90-md {\n      margin-left: 90%; }\n    .col-95-md {\n      width: 95%; }\n    .col-offset-95-md {\n      margin-left: 95%; }\n    .col-100-md {\n      width: 100%; }\n    .col-offset-100-md {\n      margin-left: 100%; } }\n  @media screen and (min-width: 960px) {\n    .col-5-lg {\n      width: 5%; }\n    .col-offset-5-lg {\n      margin-left: 5%; }\n    .col-10-lg {\n      width: 10%; }\n    .col-offset-10-lg {\n      margin-left: 10%; }\n    .col-15-lg {\n      width: 15%; }\n    .col-offset-15-lg {\n      margin-left: 15%; }\n    .col-20-lg {\n      width: 20%; }\n    .col-offset-20-lg {\n      margin-left: 20%; }\n    .col-25-lg {\n      width: 25%; }\n    .col-offset-25-lg {\n      margin-left: 25%; }\n    .col-30-lg {\n      width: 30%; }\n    .col-offset-30-lg {\n      margin-left: 30%; }\n    .col-33-lg {\n      width: 33.3%; }\n    .col-offset-33-lg {\n      margin-left: 33.3%; }\n    .col-35-lg {\n      width: 35%; }\n    .col-offset-35-lg {\n      margin-left: 35%; }\n    .col-40-lg {\n      width: 40%; }\n    .col-offset-40-lg {\n      margin-left: 40%; }\n    .col-45-lg {\n      width: 45%; }\n    .col-offset-45-lg {\n      margin-left: 45%; }\n    .col-50-lg {\n      width: 50%; }\n    .col-offset-50-lg {\n      margin-left: 50%; }\n    .col-55-lg {\n      width: 55%; }\n    .col-offset-55-lg {\n      margin-left: 55%; }\n    .col-60-lg {\n      width: 60%; }\n    .col-offset-60-lg {\n      margin-left: 60%; }\n    .col-65-lg {\n      width: 65%; }\n    .col-offset-65-lg {\n      margin-left: 65%; }\n    .col-66-lg {\n      width: 66.6%; }\n    .col-offset-66-lg {\n      margin-left: 66.6%; }\n    .col-70-lg {\n      width: 70%; }\n    .col-offset-70-lg {\n      margin-left: 70%; }\n    .col-75-lg {\n      width: 75%; }\n    .col-offset-75-lg {\n      margin-left: 75%; }\n    .col-80-lg {\n      width: 80%; }\n    .col-offset-80-lg {\n      margin-left: 80%; }\n    .col-85-lg {\n      width: 85%; }\n    .col-offset-85-lg {\n      margin-left: 85%; }\n    .col-90-lg {\n      width: 90%; }\n    .col-offset-90-lg {\n      margin-left: 90%; }\n    .col-95-lg {\n      width: 95%; }\n    .col-offset-95-lg {\n      margin-left: 95%; }\n    .col-100-lg {\n      width: 100%; }\n    .col-offset-100-lg {\n      margin-left: 100%; } }\n  @media screen and (min-width: 1140px) {\n    .col-5-xl {\n      width: 5%; }\n    .col-offset-5-xl {\n      margin-left: 5%; }\n    .col-10-xl {\n      width: 10%; }\n    .col-offset-10-xl {\n      margin-left: 10%; }\n    .col-15-xl {\n      width: 15%; }\n    .col-offset-15-xl {\n      margin-left: 15%; }\n    .col-20-xl {\n      width: 20%; }\n    .col-offset-20-xl {\n      margin-left: 20%; }\n    .col-25-xl {\n      width: 25%; }\n    .col-offset-25-xl {\n      margin-left: 25%; }\n    .col-30-xl {\n      width: 30%; }\n    .col-offset-30-xl {\n      margin-left: 30%; }\n    .col-33-xl {\n      width: 33.3%; }\n    .col-offset-33-xl {\n      margin-left: 33.3%; }\n    .col-35-xl {\n      width: 35%; }\n    .col-offset-35-xl {\n      margin-left: 35%; }\n    .col-40-xl {\n      width: 40%; }\n    .col-offset-40-xl {\n      margin-left: 40%; }\n    .col-45-xl {\n      width: 45%; }\n    .col-offset-45-xl {\n      margin-left: 45%; }\n    .col-50-xl {\n      width: 50%; }\n    .col-offset-50-xl {\n      margin-left: 50%; }\n    .col-55-xl {\n      width: 55%; }\n    .col-offset-55-xl {\n      margin-left: 55%; }\n    .col-60-xl {\n      width: 60%; }\n    .col-offset-60-xl {\n      margin-left: 60%; }\n    .col-65-xl {\n      width: 65%; }\n    .col-offset-65-xl {\n      margin-left: 65%; }\n    .col-66-xl {\n      width: 66.6%; }\n    .col-offset-66-xl {\n      margin-left: 66.6%; }\n    .col-70-xl {\n      width: 70%; }\n    .col-offset-70-xl {\n      margin-left: 70%; }\n    .col-75-xl {\n      width: 75%; }\n    .col-offset-75-xl {\n      margin-left: 75%; }\n    .col-80-xl {\n      width: 80%; }\n    .col-offset-80-xl {\n      margin-left: 80%; }\n    .col-85-xl {\n      width: 85%; }\n    .col-offset-85-xl {\n      margin-left: 85%; }\n    .col-90-xl {\n      width: 90%; }\n    .col-offset-90-xl {\n      margin-left: 90%; }\n    .col-95-xl {\n      width: 95%; }\n    .col-offset-95-xl {\n      margin-left: 95%; }\n    .col-100-xl {\n      width: 100%; }\n    .col-offset-100-xl {\n      margin-left: 100%; } }\n  @media screen and (min-width: 1440px) {\n    .col-5-xxl {\n      width: 5%; }\n    .col-offset-5-xxl {\n      margin-left: 5%; }\n    .col-10-xxl {\n      width: 10%; }\n    .col-offset-10-xxl {\n      margin-left: 10%; }\n    .col-15-xxl {\n      width: 15%; }\n    .col-offset-15-xxl {\n      margin-left: 15%; }\n    .col-20-xxl {\n      width: 20%; }\n    .col-offset-20-xxl {\n      margin-left: 20%; }\n    .col-25-xxl {\n      width: 25%; }\n    .col-offset-25-xxl {\n      margin-left: 25%; }\n    .col-30-xxl {\n      width: 30%; }\n    .col-offset-30-xxl {\n      margin-left: 30%; }\n    .col-33-xxl {\n      width: 33.3%; }\n    .col-offset-33-xxl {\n      margin-left: 33.3%; }\n    .col-35-xxl {\n      width: 35%; }\n    .col-offset-35-xxl {\n      margin-left: 35%; }\n    .col-40-xxl {\n      width: 40%; }\n    .col-offset-40-xxl {\n      margin-left: 40%; }\n    .col-45-xxl {\n      width: 45%; }\n    .col-offset-45-xxl {\n      margin-left: 45%; }\n    .col-50-xxl {\n      width: 50%; }\n    .col-offset-50-xxl {\n      margin-left: 50%; }\n    .col-55-xxl {\n      width: 55%; }\n    .col-offset-55-xxl {\n      margin-left: 55%; }\n    .col-60-xxl {\n      width: 60%; }\n    .col-offset-60-xxl {\n      margin-left: 60%; }\n    .col-65-xxl {\n      width: 65%; }\n    .col-offset-65-xxl {\n      margin-left: 65%; }\n    .col-66-xxl {\n      width: 66.6%; }\n    .col-offset-66-xxl {\n      margin-left: 66.6%; }\n    .col-70-xxl {\n      width: 70%; }\n    .col-offset-70-xxl {\n      margin-left: 70%; }\n    .col-75-xxl {\n      width: 75%; }\n    .col-offset-75-xxl {\n      margin-left: 75%; }\n    .col-80-xxl {\n      width: 80%; }\n    .col-offset-80-xxl {\n      margin-left: 80%; }\n    .col-85-xxl {\n      width: 85%; }\n    .col-offset-85-xxl {\n      margin-left: 85%; }\n    .col-90-xxl {\n      width: 90%; }\n    .col-offset-90-xxl {\n      margin-left: 90%; }\n    .col-95-xxl {\n      width: 95%; }\n    .col-offset-95-xxl {\n      margin-left: 95%; }\n    .col-100-xxl {\n      width: 100%; }\n    .col-offset-100-xxl {\n      margin-left: 100%; } }\n\n.block-grid {\n  padding: 0;\n  list-style: none;\n  font-size: 0;\n  display: block;\n  overflow: hidden;\n  margin-bottom: 2rem; }\n  .block-grid-gutters {\n    margin: -1rem -1rem 1rem -1rem; }\n    .block-grid-gutters .block-grid__item {\n      padding: 1rem; }\n  .block-grid__item {\n    display: block;\n    float: left;\n    font-size: 16px; }\n\n@media screen {\n  .block-1-xs .block-grid__item {\n    width: 100%; }\n    .block-1-xs .block-grid__item:nth-of-type(1n) {\n      clear: none; }\n    .block-1-xs .block-grid__item:nth-of-type(1n + 1) {\n      clear: both; }\n  .block-2-xs .block-grid__item {\n    width: 50%; }\n    .block-2-xs .block-grid__item:nth-of-type(1n) {\n      clear: none; }\n    .block-2-xs .block-grid__item:nth-of-type(2n + 1) {\n      clear: both; }\n  .block-3-xs .block-grid__item {\n    width: 33.33333%; }\n    .block-3-xs .block-grid__item:nth-of-type(1n) {\n      clear: none; }\n    .block-3-xs .block-grid__item:nth-of-type(3n + 1) {\n      clear: both; }\n  .block-4-xs .block-grid__item {\n    width: 25%; }\n    .block-4-xs .block-grid__item:nth-of-type(1n) {\n      clear: none; }\n    .block-4-xs .block-grid__item:nth-of-type(4n + 1) {\n      clear: both; }\n  .block-5-xs .block-grid__item {\n    width: 20%; }\n    .block-5-xs .block-grid__item:nth-of-type(1n) {\n      clear: none; }\n    .block-5-xs .block-grid__item:nth-of-type(5n + 1) {\n      clear: both; }\n  .block-6-xs .block-grid__item {\n    width: 16.66667%; }\n    .block-6-xs .block-grid__item:nth-of-type(1n) {\n      clear: none; }\n    .block-6-xs .block-grid__item:nth-of-type(6n + 1) {\n      clear: both; } }\n\n@media screen and (min-width: 480px) {\n  .block-1-sm .block-grid__item {\n    width: 100%; }\n    .block-1-sm .block-grid__item:nth-of-type(1n) {\n      clear: none; }\n    .block-1-sm .block-grid__item:nth-of-type(1n + 1) {\n      clear: both; }\n  .block-2-sm .block-grid__item {\n    width: 50%; }\n    .block-2-sm .block-grid__item:nth-of-type(1n) {\n      clear: none; }\n    .block-2-sm .block-grid__item:nth-of-type(2n + 1) {\n      clear: both; }\n  .block-3-sm .block-grid__item {\n    width: 33.33333%; }\n    .block-3-sm .block-grid__item:nth-of-type(1n) {\n      clear: none; }\n    .block-3-sm .block-grid__item:nth-of-type(3n + 1) {\n      clear: both; }\n  .block-4-sm .block-grid__item {\n    width: 25%; }\n    .block-4-sm .block-grid__item:nth-of-type(1n) {\n      clear: none; }\n    .block-4-sm .block-grid__item:nth-of-type(4n + 1) {\n      clear: both; }\n  .block-5-sm .block-grid__item {\n    width: 20%; }\n    .block-5-sm .block-grid__item:nth-of-type(1n) {\n      clear: none; }\n    .block-5-sm .block-grid__item:nth-of-type(5n + 1) {\n      clear: both; }\n  .block-6-sm .block-grid__item {\n    width: 16.66667%; }\n    .block-6-sm .block-grid__item:nth-of-type(1n) {\n      clear: none; }\n    .block-6-sm .block-grid__item:nth-of-type(6n + 1) {\n      clear: both; } }\n\n@media screen and (min-width: 680px) {\n  .block-1-md .block-grid__item {\n    width: 100%; }\n    .block-1-md .block-grid__item:nth-of-type(1n) {\n      clear: none; }\n    .block-1-md .block-grid__item:nth-of-type(1n + 1) {\n      clear: both; }\n  .block-2-md .block-grid__item {\n    width: 50%; }\n    .block-2-md .block-grid__item:nth-of-type(1n) {\n      clear: none; }\n    .block-2-md .block-grid__item:nth-of-type(2n + 1) {\n      clear: both; }\n  .block-3-md .block-grid__item {\n    width: 33.33333%; }\n    .block-3-md .block-grid__item:nth-of-type(1n) {\n      clear: none; }\n    .block-3-md .block-grid__item:nth-of-type(3n + 1) {\n      clear: both; }\n  .block-4-md .block-grid__item {\n    width: 25%; }\n    .block-4-md .block-grid__item:nth-of-type(1n) {\n      clear: none; }\n    .block-4-md .block-grid__item:nth-of-type(4n + 1) {\n      clear: both; }\n  .block-5-md .block-grid__item {\n    width: 20%; }\n    .block-5-md .block-grid__item:nth-of-type(1n) {\n      clear: none; }\n    .block-5-md .block-grid__item:nth-of-type(5n + 1) {\n      clear: both; }\n  .block-6-md .block-grid__item {\n    width: 16.66667%; }\n    .block-6-md .block-grid__item:nth-of-type(1n) {\n      clear: none; }\n    .block-6-md .block-grid__item:nth-of-type(6n + 1) {\n      clear: both; } }\n\n@media screen and (min-width: 960px) {\n  .block-1-lg .block-grid__item {\n    width: 100%; }\n    .block-1-lg .block-grid__item:nth-of-type(1n) {\n      clear: none; }\n    .block-1-lg .block-grid__item:nth-of-type(1n + 1) {\n      clear: both; }\n  .block-2-lg .block-grid__item {\n    width: 50%; }\n    .block-2-lg .block-grid__item:nth-of-type(1n) {\n      clear: none; }\n    .block-2-lg .block-grid__item:nth-of-type(2n + 1) {\n      clear: both; }\n  .block-3-lg .block-grid__item {\n    width: 33.33333%; }\n    .block-3-lg .block-grid__item:nth-of-type(1n) {\n      clear: none; }\n    .block-3-lg .block-grid__item:nth-of-type(3n + 1) {\n      clear: both; }\n  .block-4-lg .block-grid__item {\n    width: 25%; }\n    .block-4-lg .block-grid__item:nth-of-type(1n) {\n      clear: none; }\n    .block-4-lg .block-grid__item:nth-of-type(4n + 1) {\n      clear: both; }\n  .block-5-lg .block-grid__item {\n    width: 20%; }\n    .block-5-lg .block-grid__item:nth-of-type(1n) {\n      clear: none; }\n    .block-5-lg .block-grid__item:nth-of-type(5n + 1) {\n      clear: both; }\n  .block-6-lg .block-grid__item {\n    width: 16.66667%; }\n    .block-6-lg .block-grid__item:nth-of-type(1n) {\n      clear: none; }\n    .block-6-lg .block-grid__item:nth-of-type(6n + 1) {\n      clear: both; } }\n\n@media screen and (min-width: 1140px) {\n  .block-1-xl .block-grid__item {\n    width: 100%; }\n    .block-1-xl .block-grid__item:nth-of-type(1n) {\n      clear: none; }\n    .block-1-xl .block-grid__item:nth-of-type(1n + 1) {\n      clear: both; }\n  .block-2-xl .block-grid__item {\n    width: 50%; }\n    .block-2-xl .block-grid__item:nth-of-type(1n) {\n      clear: none; }\n    .block-2-xl .block-grid__item:nth-of-type(2n + 1) {\n      clear: both; }\n  .block-3-xl .block-grid__item {\n    width: 33.33333%; }\n    .block-3-xl .block-grid__item:nth-of-type(1n) {\n      clear: none; }\n    .block-3-xl .block-grid__item:nth-of-type(3n + 1) {\n      clear: both; }\n  .block-4-xl .block-grid__item {\n    width: 25%; }\n    .block-4-xl .block-grid__item:nth-of-type(1n) {\n      clear: none; }\n    .block-4-xl .block-grid__item:nth-of-type(4n + 1) {\n      clear: both; }\n  .block-5-xl .block-grid__item {\n    width: 20%; }\n    .block-5-xl .block-grid__item:nth-of-type(1n) {\n      clear: none; }\n    .block-5-xl .block-grid__item:nth-of-type(5n + 1) {\n      clear: both; }\n  .block-6-xl .block-grid__item {\n    width: 16.66667%; }\n    .block-6-xl .block-grid__item:nth-of-type(1n) {\n      clear: none; }\n    .block-6-xl .block-grid__item:nth-of-type(6n + 1) {\n      clear: both; } }\n\n@media screen and (min-width: 1440px) {\n  .block-1-xxl .block-grid__item {\n    width: 100%; }\n    .block-1-xxl .block-grid__item:nth-of-type(1n) {\n      clear: none; }\n    .block-1-xxl .block-grid__item:nth-of-type(1n + 1) {\n      clear: both; }\n  .block-2-xxl .block-grid__item {\n    width: 50%; }\n    .block-2-xxl .block-grid__item:nth-of-type(1n) {\n      clear: none; }\n    .block-2-xxl .block-grid__item:nth-of-type(2n + 1) {\n      clear: both; }\n  .block-3-xxl .block-grid__item {\n    width: 33.33333%; }\n    .block-3-xxl .block-grid__item:nth-of-type(1n) {\n      clear: none; }\n    .block-3-xxl .block-grid__item:nth-of-type(3n + 1) {\n      clear: both; }\n  .block-4-xxl .block-grid__item {\n    width: 25%; }\n    .block-4-xxl .block-grid__item:nth-of-type(1n) {\n      clear: none; }\n    .block-4-xxl .block-grid__item:nth-of-type(4n + 1) {\n      clear: both; }\n  .block-5-xxl .block-grid__item {\n    width: 20%; }\n    .block-5-xxl .block-grid__item:nth-of-type(1n) {\n      clear: none; }\n    .block-5-xxl .block-grid__item:nth-of-type(5n + 1) {\n      clear: both; }\n  .block-6-xxl .block-grid__item {\n    width: 16.66667%; }\n    .block-6-xxl .block-grid__item:nth-of-type(1n) {\n      clear: none; }\n    .block-6-xxl .block-grid__item:nth-of-type(6n + 1) {\n      clear: both; } }\n\n@media screen {\n  h1, h2, h3, h4, h5, h6, .guide-navigation-link, .guide-navigation-icon::after, .guide-navigation-link-parent.active .guide-navigation-list-child, .guide-subnav-anchor, .guide-content section .inpage-anchor, .guide-example::before, .guide-color-item > span, .guide-color-item > span > span, .guide-color-item > span em {\n    display: block; }\n  .guide-navigation-list-child {\n    display: none; } }\n\n@media screen {\n  .guide-navigation-list, .guide-navigation-list-child, .guide-example-code pre {\n    margin: 0; }\n  .guide-subnav {\n    margin-top: 36px; }\n  h1, h2, h3, h4, h5, h6, .guide-navigation-list-child, .guide-example::before {\n    margin-bottom: 16px; }\n  .display-1 {\n    margin-bottom: 20px; }\n  h4, .subheading, .display-2, .guide-color-item {\n    margin-bottom: 24px; }\n  .display-3, .guide-example {\n    margin-bottom: 30px; }\n  .guide-content section {\n    margin-bottom: 36px; }\n  .guide-main {\n    margin-bottom: 46px; }\n  .guide-subnav {\n    margin-left: 46px; }\n  .guide-subnav {\n    margin-right: 0; }\n  .guide-color-item > span {\n    margin-left: 16px;\n    margin-right: 16px; } }\n\n@media screen {\n  .guide-navigation-list, .guide-navigation-list-child {\n    padding: 0; }\n  .guide-navigation {\n    padding-top: 0; }\n  .guide-subnav {\n    padding-top: 16px; }\n  .guide-navigation nav, .guide-header {\n    padding-top: 24px; }\n  .modal--body, .modal--footer {\n    padding-top: 30px; }\n  .guide-main {\n    padding-top: 46px; }\n  .guide-example-demo {\n    padding-bottom: 0; }\n  .guide-navigation nav {\n    padding-bottom: 36px; }\n  .guide-subnav-anchor {\n    padding-left: 8px; }\n  table.table-content th:first-child, table.table-content td:first-child {\n    padding-left: 0; }\n  .guide-version {\n    padding-left: 16px; }\n  .guide-navigation-link-child {\n    padding-left: 46px; }\n  table.table-content th:last-child, table.table-content td:last-child {\n    padding-right: 0; }\n  .guide-navigation-link-child {\n    padding-right: 36px; }\n  .guide-subnav, .guide-color {\n    padding-left: 0;\n    padding-right: 0; }\n  .guide-color-item > span {\n    padding-left: 24px;\n    padding-right: 24px; }\n  .modal {\n    padding-left: 30px;\n    padding-right: 30px; }\n  .guide-banner, .guide-navigation-link-parent, .guide-navigation-link-single, .guide-main, .guide-contentinfo {\n    padding-left: 36px;\n    padding-right: 36px; }\n  .guide-navigation-link-parent, .guide-navigation-link-single, .guide-navigation-link-child {\n    padding-top: 4px;\n    padding-bottom: 4px; }\n  .guide-banner {\n    padding-top: 8px;\n    padding-bottom: 8px; }\n  .guide-color-item > span {\n    padding-top: 20px;\n    padding-bottom: 20px; }\n  .modal {\n    padding-top: 24px;\n    padding-bottom: 24px; } }\n\n@media screen {\n  .guide-color-item {\n    float: left; } }\n\n@media screen {\n  .guide-navigation nav {\n    overflow: hidden; } }\n\n@media screen {\n  .guide-banner, .guide-subnav-anchor {\n    width: 100%; }\n  .guide-navigation, .guide-navigation nav, .guide-navigation-link-single.active::after, .guide-navigation-link-child.active::after {\n    height: 100%; }\n  table {\n    max-width: 100%; } }\n\n@media screen {\n  .modal, .guide-navigation-link, .guide-content section .inpage-anchor {\n    position: relative; }\n  .modal--close, .modal--tarp, .guide-navigation nav, .guide-navigation-icon, .guide-navigation-link-single.active::after, .guide-navigation-link-child.active::after {\n    position: absolute; }\n  .guide-banner, .guide-navigation, .guide-subnav {\n    position: fixed; }\n  .modal--tarp, .guide-banner, .guide-navigation-icon, .guide-navigation-link-single.active::after, .guide-navigation-link-child.active::after {\n    top: 0; }\n  .guide-navigation {\n    top: 46px; }\n  .modal--tarp, .guide-navigation {\n    bottom: 0; }\n  .modal--tarp, .guide-banner, .guide-navigation-link-single.active::after, .guide-navigation-link-child.active::after {\n    left: 0; }\n  .modal--tarp {\n    right: 0; }\n  .guide-navigation-icon {\n    right: 16px; }\n  .modal--close {\n    right: 30px; }\n  .guide-navigation {\n    z-index: 100; }\n  .modal--tarp {\n    z-index: 400; } }\n\n@media screen {\n  table th.top,\n  table td.top {\n    vertical-align: top; }\n  table th,\n  table td {\n    vertical-align: middle; }\n  table th.bottom,\n  table td.bottom {\n    vertical-align: bottom; } }\n\n@media screen {\n  .guide-navigation-link-parent.active .guide-navigation-icon {\n    -webkit-transform: rotate(0deg);\n    transform: rotate(0deg); }\n  .guide-navigation-icon {\n    -webkit-transform: rotate(45deg);\n    transform: rotate(45deg); } }\n\n@media screen {\n  .modal--tarp, .modal-tarp__styleguide {\n    display: flex; }\n  .modal {\n    justify-content: center; }\n  .modal {\n    align-items: center; } }\n\n.button {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  -ms-appearance: none;\n  -o-appearance: none;\n  appearance: none;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  border-radius: 5px;\n  cursor: pointer;\n  text-align: center;\n  display: inline-block;\n  vertical-align: middle;\n  font-family: \"Open Sans\", Helvetica, Arial, sans-serif;\n  font-size: 16px;\n  text-transform: none;\n  font-weight: 600;\n  letter-spacing: normal;\n  padding: 5px 23px;\n  line-height: 24px;\n  transition: none;\n  text-decoration: none;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  background-color: #fff;\n  border: 1px solid #7E64E0;\n  color: #7E64E0; }\n  .button:hover, .button:active, .button:focus {\n    background-color: white;\n    color: #4C33AA;\n    border: 1px solid #4C33AA; }\n  .button:last-child {\n    margin-right: 0; }\n  .button + .button {\n    margin: 0 0 0 12px; }\n  .button--primary {\n    background-color: #7E64E0 !important;\n    border-color: #7E64E0 !important;\n    color: #fff !important; }\n    .button--primary:hover, .button--primary:active, .button--primary:focus {\n      background-color: #4C33AA !important;\n      border-color: #4C33AA !important;\n      color: #fff !important; }\n  .button--alert {\n    background-color: #92100E !important;\n    border-color: #92100E !important;\n    color: #fff !important; }\n    .button--alert:hover, .button--alert:active, .button--alert:focus {\n      background-color: #B00505 !important;\n      border-color: #B00505 !important;\n      color: #fff !important; }\n  .button--disabled {\n    cursor: not-allowed !important;\n    pointer-events: none !important;\n    opacity: 0.65 !important; }\n    .button--disabled-light {\n      background-color: !important;\n      border-color: !important;\n      color: !important; }\n      .button--disabled-light:hover, .button--disabled-light:active, .button--disabled-light:focus {\n        background-color: !important;\n        border-color: !important;\n        color: !important; }\n    .button--disabled-dark {\n      background-color: !important;\n      border-color: !important;\n      color: !important; }\n      .button--disabled-dark:hover, .button--disabled-dark:active, .button--disabled-dark:focus {\n        background-color: !important;\n        border-color: !important;\n        color: !important; }\n  .button--inline {\n    margin-top: 24px !important;\n    padding: 0 26px !important;\n    height: 47px !important;\n    line-height: 43px !important; }\n  @media screen {\n    .button--xsmall-xs {\n      font-size: 12px !important;\n      line-height: 20px !important;\n      padding: 1px 7px !important; }\n      .button--xsmall-xs.square {\n        width: !important; }\n    .button--small-xs {\n      font-size: 14px !important;\n      line-height: 24px !important;\n      padding: 2px 15px !important; }\n      .button--small-xs.square {\n        width: !important; }\n    .button--normal-xs {\n      font-size: 16px !important;\n      line-height: 24px !important;\n      padding: button-default-padding-y 23px !important; }\n      .button--normal-xs.square {\n        width: !important; }\n    .button--large-xs {\n      font-size: 22px !important;\n      line-height: 30px !important;\n      padding: 7px 23px !important; }\n      .button--large-xs.square {\n        width: !important; } }\n  @media screen and (min-width: 480px) {\n    .button--xsmall-sm {\n      font-size: 12px !important;\n      line-height: 20px !important;\n      padding: 1px 7px !important; }\n      .button--xsmall-sm.square {\n        width: !important; }\n    .button--small-sm {\n      font-size: 14px !important;\n      line-height: 24px !important;\n      padding: 2px 15px !important; }\n      .button--small-sm.square {\n        width: !important; }\n    .button--normal-sm {\n      font-size: 16px !important;\n      line-height: 24px !important;\n      padding: button-default-padding-y 23px !important; }\n      .button--normal-sm.square {\n        width: !important; }\n    .button--large-sm {\n      font-size: 22px !important;\n      line-height: 30px !important;\n      padding: 7px 23px !important; }\n      .button--large-sm.square {\n        width: !important; } }\n  @media screen and (min-width: 680px) {\n    .button--xsmall-md {\n      font-size: 12px !important;\n      line-height: 20px !important;\n      padding: 1px 7px !important; }\n      .button--xsmall-md.square {\n        width: !important; }\n    .button--small-md {\n      font-size: 14px !important;\n      line-height: 24px !important;\n      padding: 2px 15px !important; }\n      .button--small-md.square {\n        width: !important; }\n    .button--normal-md {\n      font-size: 16px !important;\n      line-height: 24px !important;\n      padding: button-default-padding-y 23px !important; }\n      .button--normal-md.square {\n        width: !important; }\n    .button--large-md {\n      font-size: 22px !important;\n      line-height: 30px !important;\n      padding: 7px 23px !important; }\n      .button--large-md.square {\n        width: !important; } }\n  @media screen and (min-width: 960px) {\n    .button--xsmall-lg {\n      font-size: 12px !important;\n      line-height: 20px !important;\n      padding: 1px 7px !important; }\n      .button--xsmall-lg.square {\n        width: !important; }\n    .button--small-lg {\n      font-size: 14px !important;\n      line-height: 24px !important;\n      padding: 2px 15px !important; }\n      .button--small-lg.square {\n        width: !important; }\n    .button--normal-lg {\n      font-size: 16px !important;\n      line-height: 24px !important;\n      padding: button-default-padding-y 23px !important; }\n      .button--normal-lg.square {\n        width: !important; }\n    .button--large-lg {\n      font-size: 22px !important;\n      line-height: 30px !important;\n      padding: 7px 23px !important; }\n      .button--large-lg.square {\n        width: !important; } }\n  @media screen and (min-width: 1140px) {\n    .button--xsmall-xl {\n      font-size: 12px !important;\n      line-height: 20px !important;\n      padding: 1px 7px !important; }\n      .button--xsmall-xl.square {\n        width: !important; }\n    .button--small-xl {\n      font-size: 14px !important;\n      line-height: 24px !important;\n      padding: 2px 15px !important; }\n      .button--small-xl.square {\n        width: !important; }\n    .button--normal-xl {\n      font-size: 16px !important;\n      line-height: 24px !important;\n      padding: button-default-padding-y 23px !important; }\n      .button--normal-xl.square {\n        width: !important; }\n    .button--large-xl {\n      font-size: 22px !important;\n      line-height: 30px !important;\n      padding: 7px 23px !important; }\n      .button--large-xl.square {\n        width: !important; } }\n  @media screen and (min-width: 1440px) {\n    .button--xsmall-xxl {\n      font-size: 12px !important;\n      line-height: 20px !important;\n      padding: 1px 7px !important; }\n      .button--xsmall-xxl.square {\n        width: !important; }\n    .button--small-xxl {\n      font-size: 14px !important;\n      line-height: 24px !important;\n      padding: 2px 15px !important; }\n      .button--small-xxl.square {\n        width: !important; }\n    .button--normal-xxl {\n      font-size: 16px !important;\n      line-height: 24px !important;\n      padding: button-default-padding-y 23px !important; }\n      .button--normal-xxl.square {\n        width: !important; }\n    .button--large-xxl {\n      font-size: 22px !important;\n      line-height: 30px !important;\n      padding: 7px 23px !important; }\n      .button--large-xxl.square {\n        width: !important; } }\n  .split-button .button {\n    float: left;\n    z-index: 1;\n    margin: 0 !important;\n    border-radius: 0;\n    position: relative; }\n    .split-button .button + .button {\n      margin-left: -2px !important; }\n    .split-button .button:first-child {\n      border-radius: 5px 0 0 5px; }\n    .split-button .button:last-child {\n      border-radius: 0 5px 5px 0; }\n    .split-button .button:hover, .split-button .button:active, .split-button .button:focus {\n      z-index: 2; }\n      .split-button .button:hover:active, .split-button .button:hover.active, .split-button .button:active:active, .split-button .button:active.active, .split-button .button:focus:active, .split-button .button:focus.active {\n        background: #4C33AA;\n        border-color: #4C33AA;\n        color: white; }\n      .split-button .button:hover:after, .split-button .button:active:after, .split-button .button:focus:after {\n        content: \"\";\n        width: 1px;\n        height: calc(100% + 2px);\n        background-color: white;\n        position: absolute;\n        left: -1px;\n        top: -1px; }\n\n.split-button {\n  display: inline-block;\n  margin: 0 15px 0 0; }\n  .split-button:before, .split-button:after {\n    content: \" \";\n    display: table; }\n  .split-button:after {\n    clear: both; }\n  .split-button.w-full {\n    display: flex; }\n    .split-button.w-full .button {\n      display: flex;\n      flex-grow: 1;\n      flex-direction: column; }\n\n.form-fieldset {\n  padding: 0;\n  border: 0;\n  margin: 0; }\n\n.form-error {\n  background-color: #fedada !important;\n  border-color: #fedada !important;\n  display: block;\n  margin-top: .5rem;\n  font-size: 12px; }\n\n.form-label, .form-helper {\n  display: block; }\n\n.form-label {\n  color: #3C4345;\n  font-size: 12px;\n  font-weight: 900;\n  line-height: 1.3; }\n  .form-label-required {\n    color: #B00505;\n    font-weight: 700; }\n\n.form-helper {\n  color: #77797E;\n  font-weight: normal;\n  font-size: 12px;\n  margin-top: 5px; }\n  .form-helper-error {\n    color: #B00505; }\n\n.form-text-input, .form-select {\n  height: 28px;\n  line-height: 28px; }\n\n.form-text-input, .form-textarea, .form-select, .form-select-multiple {\n  background-color: #fff;\n  transition: .2s;\n  margin: 0;\n  font-size: 12px;\n  padding: 4px 8px;\n  outline: none;\n  border: 1px solid #DDDDDD;\n  border-radius: 5px;\n  box-shadow: 0;\n  box-sizing: border-box;\n  color: #77797E;\n  width: 100%; }\n  .form-text-input::-webkit-input-placeholder, .form-textarea::-webkit-input-placeholder, .form-select::-webkit-input-placeholder, .form-select-multiple::-webkit-input-placeholder {\n    color: #A4A6A9; }\n  .form-text-input:-moz-placeholder, .form-textarea:-moz-placeholder, .form-select:-moz-placeholder, .form-select-multiple:-moz-placeholder {\n    color: #A4A6A9; }\n  .form-text-input::-moz-placeholder, .form-textarea::-moz-placeholder, .form-select::-moz-placeholder, .form-select-multiple::-moz-placeholder {\n    color: #A4A6A9; }\n  .form-text-input:-ms-input-placeholder, .form-textarea:-ms-input-placeholder, .form-select:-ms-input-placeholder, .form-select-multiple:-ms-input-placeholder {\n    color: #A4A6A9; }\n  .form-text-input .placeholder, .form-textarea .placeholder, .form-select .placeholder, .form-select-multiple .placeholder {\n    color: #A4A6A9; }\n  .form-text-input:focus, .form-textarea:focus, .form-select:focus, .form-select-multiple:focus {\n    background-color: #fff;\n    border-color: #A3D4DA;\n    box-shadow: 0px 0px 4px 0px rgba(163, 212, 218, 0.7); }\n\n.form-text-input-disabled {\n  background-color: #e8e8e8;\n  cursor: not-allowed; }\n\n.form-select {\n  -webkit-appearance: none !important;\n  -moz-appearance: none !important;\n  background-image: url(\"data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxOC4xLjEsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9Ii00NSA0NyAxNiA4IiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IC00NSA0NyAxNiA4IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwYXRoIGQ9Ik0tNDEuNSw0N2wtMi41LDNoMnYyaC0ybDIuNSwzbDIuNS0zaC0ydi0yaDJMLTQxLjUsNDd6Ii8+DQo8L3N2Zz4NCg==\");\n  background-size: 16px;\n  background-repeat: no-repeat;\n  background-position: right;\n  background-color: #fff;\n  outline: none;\n  line-height: 1; }\n  .form-select-multiple {\n    overflow: auto;\n    padding: 0;\n    height: auto; }\n    .form-select-multiple option {\n      padding: 2px 0 3px 16px; }\n\n.form-input-group {\n  position: relative;\n  display: table;\n  border-collapse: separate; }\n  .form-input-group .form-text-input {\n    border-radius: 0; }\n    .form-input-group .form-text-input:first-child {\n      border-bottom-left-radius: 5px;\n      border-top-left-radius: 5px; }\n    .form-input-group .form-text-input:last-child {\n      border-bottom-right-radius: 5px;\n      border-top-right-radius: 5px; }\n\n.form-input-group-addon,\n.form-input-group-button,\n.form-input-group .form-text-input {\n  display: table-cell; }\n\n.form-input-group-addon {\n  padding: 4px 8px;\n  font-size: 12px;\n  font-weight: normal;\n  line-height: 1;\n  color: #77797E;\n  text-align: center;\n  background-color: #e8e8e8;\n  border: solid 1px #DDDDDD;\n  border-left: 0;\n  border-right: 0; }\n\n.tokenfield {\n  vertical-align: top;\n  padding: 3px; }\n  .tokenfield-token {\n    background-color: #E4E5E6;\n    display: inline-block;\n    white-space: nowrap;\n    cursor: default;\n    margin: 1px;\n    height: 18px;\n    border-radius: 5px;\n    display: inline-block;\n    vertical-align: top; }\n    .tokenfield-token:hover, .tokenfield-token:active, .tokenfield-token:focus {\n      background-color: #D2D3D4; }\n    .tokenfield-token-label {\n      display: inline-block;\n      line-height: 18px;\n      overflow: hidden;\n      text-overflow: ellipsis;\n      padding-left: 4px;\n      vertical-align: top; }\n    .tokenfield-token-close {\n      color: #000;\n      opacity: 0.2;\n      font-family: Arial;\n      display: inline-block;\n      line-height: 18px;\n      margin-left: 5px;\n      vertical-align: top;\n      padding-right: 4px;\n      font-weight: normal; }\n      .tokenfield-token-close:hover, .tokenfield-token-close:active, .tokenfield-token-close:focus {\n        color: #000;\n        opacity: 0.5;\n        cursor: pointer; }\n\n.form-radio,\n.form-checkbox {\n  padding-top: 5px;\n  display: block;\n  font-size: 12px;\n  min-height: 18px;\n  padding-left: 20px;\n  vertical-align: middle; }\n  .form-radio-input,\n  .form-checkbox-input {\n    position: relative;\n    bottom: 1px;\n    color: #A4A6A9;\n    display: inline;\n    margin-right: 6px;\n    margin-left: -20px; }\n  .form-radio-label,\n  .form-checkbox-label {\n    display: inline;\n    margin-bottom: 0;\n    cursor: pointer; }\n\n.lk-switch {\n  cursor: pointer;\n  margin: 4px 0 0;\n  position: absolute;\n  visibility: hidden; }\n  .lk-switch-outer {\n    position: relative; }\n  .lk-switch-label {\n    display: block;\n    position: relative;\n    cursor: pointer;\n    outline: none;\n    margin: 0;\n    user-select: none;\n    width: 42px;\n    height: 20px;\n    background-color: #7f889b;\n    border-radius: 8px;\n    overflow: hidden; }\n    .lk-switch-label:after {\n      content: \"\";\n      background-color: #fff;\n      border-radius: 16px;\n      width: 8px;\n      height: 8px;\n      position: absolute;\n      top: 6px;\n      left: 6px;\n      -webkit-transition: left 0.3s ease-in-out;\n      -moz-transition: left 0.3s ease-in-out;\n      transition: left 0.3s ease-in-out; }\n  .lk-switch-on, .lk-switch-off {\n    position: absolute;\n    top: 2px;\n    color: #fff;\n    font-size: 11px;\n    font-weight: 300;\n    text-transform: uppercase;\n    -webkit-transition: left 0.3s ease-in-out;\n    -moz-transition: left 0.3s ease-in-out;\n    transition: left 0.3s ease-in-out; }\n  .lk-switch-on {\n    left: -16px; }\n  .lk-switch-off {\n    left: 16px; }\n  .lk-switch:checked + .lk-switch-label {\n    background-color: #a07bc7; }\n    .lk-switch:checked + .lk-switch-label:after {\n      left: 28px; }\n    .lk-switch:checked + .lk-switch-label .lk-switch-on {\n      left: 6px; }\n    .lk-switch:checked + .lk-switch-label .lk-switch-off {\n      left: 42px; }\n\ntable {\n  border-collapse: collapse; }\n  table th,\n  table td {\n    padding: 6px 12px; }\n  table th {\n    background: transparent;\n    color: #77797E; }\n  table td {\n    color: #1C2027; }\n  table.table-striped tr:nth-child(even) > td {\n    background-color: transparent; }\n  table.table-content th {\n    white-space: nowrap; }\n\n.modal {\n  border-radius: 5px; }\n  .modal--close {\n    margin-top: 5px;\n    opacity: 0.65; }\n    .modal--close:hover, .modal--close:active, .modal--close:focus {\n      opacity: 1; }\n  .modal--tarp {\n    opacity: 0.65; }\n\nh1, h2, h3, h4, h5, h6 {\n  text-rendering: optimizeLegibility; }\n\n#brandColorData:before {\n  content: '{\"purple\":\"#7E64E0\",\"gray\":\"#1C2027\",\"blue\":\"#0E88F1\"}';\n  height: 0;\n  opacity: 0;\n  font-size: 0; }\n\n#uiColorData:before {\n  content: '{\"purple-dark\":\"#2A1B60\",\"purple\":\"#4C33AA\",\"purple-light\":\"#7E64E0\",\"red-dark\":\"#92100E\",\"red\":\"#B00505\",\"red-light\":\"#E1332C\",\"green\":\"#4BB86A\",\"teal-dark\":\"#39B2B2\",\"teal\":\"#5DCCCC\",\"yellow\":\"#FFD822\",\"orange-dark\":\"#E57200\",\"orange\":\"#FB9331\"}';\n  height: 0;\n  opacity: 0;\n  font-size: 0; }\n\n#grayColorData:before {\n  content: '{\"white\":\"#fff\",\"gray-1\":\"#F6F6F7\",\"gray-2\":\"#E4E5E6\",\"gray-3\":\"#D2D3D4\",\"gray-4\":\"#A4A6A9\",\"gray-5\":\"#77797E\",\"gray-6\":\"#3C4345\",\"gray-7\":\"#1C2027\"}';\n  height: 0;\n  opacity: 0;\n  font-size: 0; }\n\n.hamburger, .hamburger::before, .hamburger::after {\n  left: 0;\n  border-radius: 4px;\n  background-color: #A4A6A9;\n  width: 100%;\n  height: 2px;\n  position: absolute;\n  margin-top: -1px;\n  transition: background 300ms 0s ease, transform 300ms 0s ease, top 300ms 0.2s ease, bottom 300ms 0.2s ease; }\n\n.hamburger::before, .hamburger::after {\n  content: \" \"; }\n\n.hamburger::before {\n  top: -8px; }\n\n.hamburger::after {\n  bottom: -9px; }\n\n.hamburger-button {\n  border: 0;\n  background: none;\n  cursor: pointer;\n  position: absolute;\n  right: 1rem;\n  top: 0;\n  padding: 26px 0;\n  height: 30px;\n  width: 30px;\n  z-index: 1;\n  transition: opacity 200ms 0s ease, top 200ms 0s ease; }\n  @media screen and (min-width: 960px) {\n    .hamburger-button {\n      display: none; } }\n  .hamburger-button:hover .hamburger,\n  .hamburger-button:hover .hamburger::before,\n  .hamburger-button:hover .hamburger::after {\n    background-color: #F6F6F7; }\n  .hamburger-button-clicked .hamburger, .hamburger-button-clicked .hamburger-button:hover .hamburger {\n    background-color: transparent !important; }\n    .hamburger-button-clicked .hamburger::before, .hamburger-button-clicked .hamburger-button:hover .hamburger::before {\n      top: 0;\n      -webkit-transform: rotate(45deg);\n      -moz-transform: rotate(45deg);\n      -ms-transform: rotate(45deg);\n      -o-transform: rotate(45deg);\n      transform: rotate(45deg); }\n    .hamburger-button-clicked .hamburger::after, .hamburger-button-clicked .hamburger-button:hover .hamburger::after {\n      bottom: 1px;\n      -webkit-transform: rotate(-45deg);\n      -moz-transform: rotate(-45deg);\n      -ms-transform: rotate(-45deg);\n      -o-transform: rotate(-45deg);\n      transform: rotate(-45deg); }\n  .hamburger-button-clicked .hamburger,\n  .hamburger-button-clicked .hamburger::before,\n  .hamburger-button-clicked .hamburger::after {\n    transition: background 200ms 0s ease, transform 200ms 0.2s ease, top 200ms 0s ease, bottom 200ms 0s ease; }\n\n.guide-skip-content a {\n  font-size: 0.75rem;\n  text-decoration: none; }\n  @media screen {\n    .guide-skip-content a {\n      display: none; } }\n  @media screen and (min-width: 960px) {\n    .guide-skip-content a {\n      position: absolute;\n      left: -9999em;\n      display: block;\n      margin-top: 0; }\n      .guide-skip-content a:focus {\n        left: 80px;\n        top: 24px; } }\n\n.guide-banner {\n  height: 46px;\n  z-index: 50; }\n\n.guide-name {\n  text-decoration: none; }\n\n.guide-version {\n  text-decoration: none; }\n  .guide-version::after {\n    content: \"0.1.0\"; }\n  .guide-version:hover {\n    color: #fff; }\n\n.guide-navigation {\n  width: 216px;\n  transform: translateX(-100%);\n  transition: height 300ms ease, padding 300ms ease, transform 200ms ease; }\n  @media screen and (min-width: 960px) {\n    .guide-navigation {\n      transform: translateX(0); } }\n  .guide-navigation-mobile-show {\n    transform: translateX(0); }\n  .guide-navigation nav {\n    width: 216px;\n    overflow-y: auto;\n    outline: 0; }\n  .guide-navigation-list, .guide-navigation-list-child {\n    list-style: none; }\n  .guide-navigation-link {\n    cursor: pointer;\n    text-decoration: none; }\n  .guide-navigation-icon {\n    height: 30px;\n    line-height: 30px;\n    transition: transform 50ms ease-in-out; }\n    .guide-navigation-icon::after {\n      content: '\\D7'; }\n  .guide-navigation-link-parent.active .guide-navigation-icon {\n    transform: rotate(0deg); }\n  .guide-navigation-link-single.active::after, .guide-navigation-link-child.active::after {\n    content: \"\";\n    width: 7px; }\n\n.guide-subnav {\n  border-top: solid 3px #E4E5E6;\n  list-style: none; }\n  .guide-subnav-item {\n    line-height: 2.2; }\n  .guide-subnav-anchor {\n    text-decoration: none; }\n\n.guide-main, .guide-contentinfo {\n  margin-left: 216px; }\n\n.guide-main {\n  min-height: calc(100vh - 66px); }\n\n.guide-content section .inpage-anchor {\n  top: -70px;\n  visibility: hidden; }\n\n.guide-contentinfo {\n  height: 20px; }\n\n.guide-example::before {\n  content: \"Example\"; }\n\n.guide-color {\n  margin: 20px -12px 0 -12px;\n  list-style: none;\n  overflow: hidden; }\n  .guide-color-item > span {\n    color: rgba(255, 255, 255, 0.9);\n    font-family: Monaco, monospace; }\n    .guide-color-item > span > span {\n      line-height: 1; }\n    .guide-color-item > span em {\n      color: rgba(255, 255, 255, 0.5);\n      font-family: Helvetica, Arial, sans-serif; }\n    .guide-color-item > span.bg-gray em, .guide-color-item > span.bg-gray-2 em, .guide-color-item > span.bg-gray-3 em, .guide-color-item > span.bg-gray-1 em, .guide-color-item > span.bg-white em {\n      color: #778589; }\n    .guide-color-item > span.bg-white {\n      border: solid 1px #F6F6F7;\n      border-bottom: 0; }\n  .guide-color-item .bg-yellow {\n    color: #664900; }\n    .guide-color-item .bg-yellow em {\n      color: #e6a500; }\n  .guide-color-item .text-bg-white {\n    border: solid 1px #D2D3D4; }\n    .guide-color-item .text-bg-white span {\n      color: text-color(dark); }\n    .guide-color-item .text-bg-white em {\n      color: text-color(light); }\n\n.guide-colors-gray .guide-color-item span {\n  border-radius: 0; }\n\n.guide-colors-gray .guide-color-item span:first-child {\n  border-radius: 5px 5px 0 0; }\n\n.guide-colors-gray .guide-color-item span:last-child {\n  border-radius: 0 0 5px 5px; }\n\n.todo {\n  background-color: rgba(253, 90, 201, 0.2);\n  color: #FD5AC9;\n  font-weight: 700;\n  text-transform: uppercase;\n  font-size: 15px;\n  font-family: monospace; }\n  .todo::before {\n    content: \"To Do!!\";\n    display: inline-block;\n    padding: 4px 8px;\n    border-radius: 2px; }\n\n.sample-text::before {\n  content: \"Data analytics everybody loves.\"; }\n\n.modal-tarp__styleguide {\n  padding: 40px;\n  opacity: 0.65; }\n\n@media screen and (min-width: 0) and (max-width: 959px) {\n  .login-header {\n    padding: 30px; } }\n\n@media screen and (min-width: 960px) {\n  .login-header {\n    width: 65%;\n    height: 100vh;\n    float: left; } }\n\n@media screen and (min-width: 960px) {\n  .login-header-wrap {\n    position: relative;\n    top: 35%;\n    left: 20%; } }\n\n.login-copy {\n  font-size: 15px; }\n  @media screen and (min-width: 960px) {\n    .login-copy {\n      font-size: 18px; } }\n\n@media screen and (min-width: 0) and (max-width: 959px) {\n  .login-name {\n    font-size: 42px;\n    margin-left: -3px; } }\n\n@media screen and (min-width: 960px) {\n  .login-name {\n    font-size: 100px;\n    margin-left: -8px; } }\n\n@media screen and (min-width: 0) and (max-width: 959px) {\n  .login-auth {\n    padding: 30px; } }\n\n@media screen and (min-width: 960px) {\n  .login-auth {\n    float: left;\n    height: 100vh;\n    width: 35%;\n    padding-left: 60px;\n    padding-right: 60px; } }\n\n@media screen and (min-width: 1140px) {\n  .login-auth {\n    padding-left: 100px;\n    padding-right: 100px; } }\n\n@media screen and (min-width: 960px) {\n  .login-auth-wrap {\n    position: relative;\n    top: 35%; } }\n\n.guide-neutral-conditional {\n  display: none; }\n\n.guide-inverse-conditional,\n.button--inverse-primary-disabled {\n  display: none; }\n\n[class*=\"button--xlarge\"] {\n  display: none; }\n\n/**\n * GHColors theme by Avi Aryan (http://aviaryan.in)\n * Inspired by Github syntax coloring\n */\ncode {\n  color: #e3116c; }\n\ncode[class*=\"language-\"],\npre[class*=\"language-\"] {\n  color: #393A34;\n  font-family: Monaco, monospace;\n  direction: ltr;\n  text-align: left;\n  white-space: pre;\n  word-spacing: normal;\n  word-break: normal;\n  font-size: 13px;\n  line-height: 1.7;\n  -moz-tab-size: 4;\n  -o-tab-size: 4;\n  tab-size: 4;\n  -webkit-hyphens: none;\n  -moz-hyphens: none;\n  -ms-hyphens: none;\n  hyphens: none; }\n\npre[class*=\"language-\"]::-moz-selection, pre[class*=\"language-\"] ::-moz-selection,\ncode[class*=\"language-\"]::-moz-selection, code[class*=\"language-\"] ::-moz-selection {\n  background: #b3d4fc; }\n\npre[class*=\"language-\"]::selection, pre[class*=\"language-\"] ::selection,\ncode[class*=\"language-\"]::selection, code[class*=\"language-\"] ::selection {\n  background: #b3d4fc; }\n\n/* Code blocks */\npre[class*=\"language-\"] {\n  padding: 1rem;\n  margin: 1.5rem 0;\n  overflow: auto;\n  background-color: #f5f6f7;\n  border-radius: 5px; }\n\n/* Inline code */\n:not(pre) > code[class*=\"language-\"] {\n  padding: .2em;\n  padding-top: 1px;\n  padding-bottom: 1px;\n  background: #f8f8f8;\n  border: 1px solid #dddddd; }\n\n.token.comment,\n.token.prolog,\n.token.doctype,\n.token.cdata {\n  color: #999988;\n  font-style: italic; }\n\n.token.namespace {\n  opacity: .7; }\n\n.token.string,\n.token.attr-value {\n  color: #e3116c; }\n\n.token.punctuation,\n.token.operator {\n  color: #393A34;\n  /* no highlight */ }\n\n.token.entity,\n.token.url,\n.token.symbol,\n.token.number,\n.token.boolean,\n.token.variable,\n.token.constant,\n.token.property,\n.token.regex,\n.token.inserted {\n  color: #36acaa; }\n\n.token.atrule,\n.token.keyword,\n.token.attr-name,\n.language-autohotkey .token.selector {\n  color: #00a4db; }\n\n.token.function,\n.token.deleted,\n.language-autohotkey .token.tag {\n  color: #9a050f; }\n\n.token.tag,\n.token.selector,\n.language-autohotkey .token.keyword {\n  color: #00009f; }\n\n.token.important,\n.token.function,\n.token.bold {\n  font-weight: bold; }\n\n.token.italic {\n  font-style: italic; }\n", ""]);
+
+	// exports
+
+
+/***/ }),
+/* 43 */
+/***/ (function(module, exports) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	// css base code, injected by the css-loader
+	module.exports = function() {
+		var list = [];
+
+		// return the list of modules as css string
+		list.toString = function toString() {
+			var result = [];
+			for(var i = 0; i < this.length; i++) {
+				var item = this[i];
+				if(item[2]) {
+					result.push("@media " + item[2] + "{" + item[1] + "}");
+				} else {
+					result.push(item[1]);
+				}
+			}
+			return result.join("");
+		};
+
+		// import a list of modules into the list
+		list.i = function(modules, mediaQuery) {
+			if(typeof modules === "string")
+				modules = [[null, modules, ""]];
+			var alreadyImportedModules = {};
+			for(var i = 0; i < this.length; i++) {
+				var id = this[i][0];
+				if(typeof id === "number")
+					alreadyImportedModules[id] = true;
+			}
+			for(i = 0; i < modules.length; i++) {
+				var item = modules[i];
+				// skip already imported module
+				// this implementation is not 100% perfect for weird media query combinations
+				//  when a module is imported multiple times with different media queries.
+				//  I hope this will never occur (Hey this way we have smaller bundles)
+				if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+					if(mediaQuery && !item[2]) {
+						item[2] = mediaQuery;
+					} else if(mediaQuery) {
+						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+					}
+					list.push(item);
+				}
+			}
+		};
+		return list;
+	};
+
+
+/***/ }),
+/* 44 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	var stylesInDom = {},
+		memoize = function(fn) {
+			var memo;
+			return function () {
+				if (typeof memo === "undefined") memo = fn.apply(this, arguments);
+				return memo;
+			};
+		},
+		isOldIE = memoize(function() {
+			return /msie [6-9]\b/.test(self.navigator.userAgent.toLowerCase());
+		}),
+		getHeadElement = memoize(function () {
+			return document.head || document.getElementsByTagName("head")[0];
+		}),
+		singletonElement = null,
+		singletonCounter = 0,
+		styleElementsInsertedAtTop = [];
+
+	module.exports = function(list, options) {
+		if(false) {
+			if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+		}
+
+		options = options || {};
+		// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+		// tags it will allow on a page
+		if (typeof options.singleton === "undefined") options.singleton = isOldIE();
+
+		// By default, add <style> tags to the bottom of <head>.
+		if (typeof options.insertAt === "undefined") options.insertAt = "bottom";
+
+		var styles = listToStyles(list);
+		addStylesToDom(styles, options);
+
+		return function update(newList) {
+			var mayRemove = [];
+			for(var i = 0; i < styles.length; i++) {
+				var item = styles[i];
+				var domStyle = stylesInDom[item.id];
+				domStyle.refs--;
+				mayRemove.push(domStyle);
+			}
+			if(newList) {
+				var newStyles = listToStyles(newList);
+				addStylesToDom(newStyles, options);
+			}
+			for(var i = 0; i < mayRemove.length; i++) {
+				var domStyle = mayRemove[i];
+				if(domStyle.refs === 0) {
+					for(var j = 0; j < domStyle.parts.length; j++)
+						domStyle.parts[j]();
+					delete stylesInDom[domStyle.id];
+				}
+			}
+		};
+	}
+
+	function addStylesToDom(styles, options) {
+		for(var i = 0; i < styles.length; i++) {
+			var item = styles[i];
+			var domStyle = stylesInDom[item.id];
+			if(domStyle) {
+				domStyle.refs++;
+				for(var j = 0; j < domStyle.parts.length; j++) {
+					domStyle.parts[j](item.parts[j]);
+				}
+				for(; j < item.parts.length; j++) {
+					domStyle.parts.push(addStyle(item.parts[j], options));
+				}
+			} else {
+				var parts = [];
+				for(var j = 0; j < item.parts.length; j++) {
+					parts.push(addStyle(item.parts[j], options));
+				}
+				stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
+			}
+		}
+	}
+
+	function listToStyles(list) {
+		var styles = [];
+		var newStyles = {};
+		for(var i = 0; i < list.length; i++) {
+			var item = list[i];
+			var id = item[0];
+			var css = item[1];
+			var media = item[2];
+			var sourceMap = item[3];
+			var part = {css: css, media: media, sourceMap: sourceMap};
+			if(!newStyles[id])
+				styles.push(newStyles[id] = {id: id, parts: [part]});
+			else
+				newStyles[id].parts.push(part);
+		}
+		return styles;
+	}
+
+	function insertStyleElement(options, styleElement) {
+		var head = getHeadElement();
+		var lastStyleElementInsertedAtTop = styleElementsInsertedAtTop[styleElementsInsertedAtTop.length - 1];
+		if (options.insertAt === "top") {
+			if(!lastStyleElementInsertedAtTop) {
+				head.insertBefore(styleElement, head.firstChild);
+			} else if(lastStyleElementInsertedAtTop.nextSibling) {
+				head.insertBefore(styleElement, lastStyleElementInsertedAtTop.nextSibling);
+			} else {
+				head.appendChild(styleElement);
+			}
+			styleElementsInsertedAtTop.push(styleElement);
+		} else if (options.insertAt === "bottom") {
+			head.appendChild(styleElement);
+		} else {
+			throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
+		}
+	}
+
+	function removeStyleElement(styleElement) {
+		styleElement.parentNode.removeChild(styleElement);
+		var idx = styleElementsInsertedAtTop.indexOf(styleElement);
+		if(idx >= 0) {
+			styleElementsInsertedAtTop.splice(idx, 1);
+		}
+	}
+
+	function createStyleElement(options) {
+		var styleElement = document.createElement("style");
+		styleElement.type = "text/css";
+		insertStyleElement(options, styleElement);
+		return styleElement;
+	}
+
+	function createLinkElement(options) {
+		var linkElement = document.createElement("link");
+		linkElement.rel = "stylesheet";
+		insertStyleElement(options, linkElement);
+		return linkElement;
+	}
+
+	function addStyle(obj, options) {
+		var styleElement, update, remove;
+
+		if (options.singleton) {
+			var styleIndex = singletonCounter++;
+			styleElement = singletonElement || (singletonElement = createStyleElement(options));
+			update = applyToSingletonTag.bind(null, styleElement, styleIndex, false);
+			remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true);
+		} else if(obj.sourceMap &&
+			typeof URL === "function" &&
+			typeof URL.createObjectURL === "function" &&
+			typeof URL.revokeObjectURL === "function" &&
+			typeof Blob === "function" &&
+			typeof btoa === "function") {
+			styleElement = createLinkElement(options);
+			update = updateLink.bind(null, styleElement);
+			remove = function() {
+				removeStyleElement(styleElement);
+				if(styleElement.href)
+					URL.revokeObjectURL(styleElement.href);
+			};
+		} else {
+			styleElement = createStyleElement(options);
+			update = applyToTag.bind(null, styleElement);
+			remove = function() {
+				removeStyleElement(styleElement);
+			};
+		}
+
+		update(obj);
+
+		return function updateStyle(newObj) {
+			if(newObj) {
+				if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
+					return;
+				update(obj = newObj);
+			} else {
+				remove();
+			}
+		};
+	}
+
+	var replaceText = (function () {
+		var textStore = [];
+
+		return function (index, replacement) {
+			textStore[index] = replacement;
+			return textStore.filter(Boolean).join('\n');
+		};
+	})();
+
+	function applyToSingletonTag(styleElement, index, remove, obj) {
+		var css = remove ? "" : obj.css;
+
+		if (styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = replaceText(index, css);
+		} else {
+			var cssNode = document.createTextNode(css);
+			var childNodes = styleElement.childNodes;
+			if (childNodes[index]) styleElement.removeChild(childNodes[index]);
+			if (childNodes.length) {
+				styleElement.insertBefore(cssNode, childNodes[index]);
+			} else {
+				styleElement.appendChild(cssNode);
+			}
+		}
+	}
+
+	function applyToTag(styleElement, obj) {
+		var css = obj.css;
+		var media = obj.media;
+
+		if(media) {
+			styleElement.setAttribute("media", media)
+		}
+
+		if(styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = css;
+		} else {
+			while(styleElement.firstChild) {
+				styleElement.removeChild(styleElement.firstChild);
+			}
+			styleElement.appendChild(document.createTextNode(css));
+		}
+	}
+
+	function updateLink(linkElement, obj) {
+		var css = obj.css;
+		var sourceMap = obj.sourceMap;
+
+		if(sourceMap) {
+			// http://stackoverflow.com/a/26603875
+			css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
+		}
+
+		var blob = new Blob([css], { type: "text/css" });
+
+		var oldSrc = linkElement.href;
+
+		linkElement.href = URL.createObjectURL(blob);
+
+		if(oldSrc)
+			URL.revokeObjectURL(oldSrc);
+	}
+
+
+/***/ })
+/******/ ]);
