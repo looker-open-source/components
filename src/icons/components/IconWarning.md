@@ -1,5 +1,0 @@
-# IconWarning
-
-```js
-<IconWarning />
-```

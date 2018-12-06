@@ -1,5 +1,0 @@
-# IconClose
-
-```js
-<IconClose />
-```

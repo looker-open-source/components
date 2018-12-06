@@ -1,5 +1,0 @@
-# IconChartLine
-
-```js
-<IconChartLine />
-```

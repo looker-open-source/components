@@ -1,5 +1,0 @@
-# IconRedo
-
-```js
-<IconRedo />
-```

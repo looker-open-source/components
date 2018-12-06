@@ -1,5 +1,0 @@
-# IconNote
-
-```js
-<IconNote />
-```

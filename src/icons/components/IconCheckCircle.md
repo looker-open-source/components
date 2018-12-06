@@ -1,5 +1,0 @@
-# IconCheckCircle
-
-```js
-<IconCheckCircle />
-```

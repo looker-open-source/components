@@ -1,5 +1,0 @@
-# IconRecentActivity
-
-```js
-<IconRecentActivity />
-```

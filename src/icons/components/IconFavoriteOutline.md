@@ -1,5 +1,0 @@
-# IconFavoriteOutline
-
-```js
-<IconFavoriteOutline />
-```

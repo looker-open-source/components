@@ -1,4 +1,4 @@
-export type ICON_NAMES =
+export type IconNames =
   | 'AddCircle'
   | 'ArrowDropDown'
   | 'ArrowDropUp'

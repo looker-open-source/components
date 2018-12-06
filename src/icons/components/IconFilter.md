@@ -1,5 +1,0 @@
-# IconFilter
-
-```js
-<IconFilter />
-```

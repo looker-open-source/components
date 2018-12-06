@@ -1,5 +1,0 @@
-# IconFavorite
-
-```js
-<IconFavorite />
-```

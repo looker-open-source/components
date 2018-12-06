@@ -1,5 +1,0 @@
-# IconExpandMore
-
-```js
-<IconExpandMore />
-```
