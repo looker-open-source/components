@@ -1,8 +1,7 @@
 import { rem, rgba } from 'polished'
 import * as React from 'react'
 import { merge, mixed } from 'styled-system'
-import { Icon } from '../../icons/components/Icon'
-import { ICON_NAMES } from '../../icons/components/ICON_NAMES'
+import { IconNames } from '../../icons/build/IconNames'
 import {
   css,
   SemanticColor,
@@ -19,6 +18,7 @@ import {
   ThemedProps,
 } from '../../types'
 import { Box, BoxPropsWithout } from '../Box'
+import { Icon } from '../Icon/Icon'
 
 export type ButtonSizes = SizeXSmall | SizeSmall | SizeMedium | SizeLarge
 export type ButtonSpacingSizes =
@@ -55,8 +55,8 @@ export interface ButtonProps
    * @default "default"
    */
   variant?: 'default' | 'outline' | 'transparent'
-  iconBefore?: ICON_NAMES | undefined
-  iconAfter?: ICON_NAMES | undefined
+  iconBefore?: IconNames | undefined
+  iconAfter?: IconNames | undefined
 }
 
 const variantCommonProps = (color: SemanticColor) => {
@@ -224,7 +224,7 @@ function iconMargins(props: ThemedProps<ButtonProps>) {
   }
 }
 
-function getIcon(iconName: ICON_NAMES | undefined) {
+function getIcon(iconName: IconNames | undefined) {
   return iconName ? <Icon name={iconName} /> : null
 }
 

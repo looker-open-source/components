@@ -12,6 +12,7 @@
 /dist
 /lib
 /styleguide
+/src/icons/build
 
 # misc
 .DS_Store

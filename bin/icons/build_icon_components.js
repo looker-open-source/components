@@ -6,8 +6,16 @@ const rimraf = util.promisify(require('rimraf'))
 const writeFile = util.promisify(require('fs').writeFile)
 const path = require('path')
 const ora = require('ora')
-const iconFileHelpers = require('./icon_file_helpers')
+
+/**
+ * Constants for directory names, file extensions, etc
+ */
 const typescriptDeclarationExtension = 'd.ts'
+const iconGlyphFileExtension = 'jsx'
+const iconSrcPath = path.join(__dirname, '..', '..', 'src', 'icons')
+const iconBuildDirPath = path.join(iconSrcPath, 'build')
+const iconSVGPath = path.join(iconSrcPath, 'svg')
+const iconGlyphPath = path.join(iconSrcPath, 'build', 'glyphs')
 
 async function getBasenames(globpath, ext) {
   const filenames = await glob(path.join(globpath, `*.${ext}`))
@@ -17,13 +25,11 @@ async function getBasenames(globpath, ext) {
 }
 
 /**
- * Step 0: clean up
+ * Step 0: Clean up prior build.
  */
 async function cleanGlyphsAndComponents() {
-  await rimraf(iconFileHelpers.ICON_GLYPH_PATH)
-  await rimraf(iconFileHelpers.ICON_COMPONENTS_PATH)
-  await mkdir(iconFileHelpers.ICON_GLYPH_PATH)
-  await mkdir(iconFileHelpers.ICON_COMPONENTS_PATH)
+  await rimraf(iconBuildDirPath)
+  await mkdir(iconBuildDirPath)
 }
 
 /**
@@ -32,9 +38,7 @@ async function cleanGlyphsAndComponents() {
  */
 async function convertSVGToComponent() {
   const result = await exec(
-    `yarn svgr --icon --ext ${iconFileHelpers.ICON_GLYPH_EXTENSION} --out-dir ${
-      iconFileHelpers.ICON_GLYPH_PATH
-    } ${iconFileHelpers.ICON_SVG_PATH}`
+    `yarn svgr --icon --ext ${iconGlyphFileExtension} --out-dir ${iconGlyphPath} ${iconSVGPath}`
   )
   if (result.stderr) {
     console.log(result.stderr)
@@ -51,14 +55,11 @@ const Icon: React.SFC<React.SVGAttributes<SVGElement>>
 export default Icon
 `
 
-  const basenames = await getBasenames(
-    iconFileHelpers.ICON_GLYPH_PATH,
-    iconFileHelpers.ICON_GLYPH_EXTENSION
-  )
+  const basenames = await getBasenames(iconGlyphPath, iconGlyphFileExtension)
   await Promise.all(
     basenames.map(async name => {
       const declarationFilename = path.join(
-        iconFileHelpers.ICON_GLYPH_PATH,
+        iconGlyphPath,
         `${name}.${typescriptDeclarationExtension}`
       )
       return await writeFile(declarationFilename, typescriptDeclaration)
@@ -76,12 +77,9 @@ async function generateGlyphIndexFile() {
         .join('\n') + '\n'
     )
   }
-  const basenames = await getBasenames(
-    iconFileHelpers.ICON_GLYPH_PATH,
-    iconFileHelpers.ICON_GLYPH_EXTENSION
-  )
+  const basenames = await getBasenames(iconGlyphPath, iconGlyphFileExtension)
   await writeFile(
-    path.join(iconFileHelpers.ICON_GLYPH_PATH, 'index.ts'),
+    path.join(iconGlyphPath, 'index.ts'),
     generateGlyphFileIndexModule(basenames)
   )
 }
@@ -97,12 +95,9 @@ async function generateIconNameFile() {
     return `export type IconNames = ${iconNames}`
   }
 
-  const basenames = await getBasenames(
-    iconFileHelpers.ICON_GLYPH_PATH,
-    iconFileHelpers.ICON_GLYPH_EXTENSION
-  )
+  const basenames = await getBasenames(iconGlyphPath, iconGlyphFileExtension)
   await writeFile(
-    path.join(iconFileHelpers.ICON_SRC_PATH, 'IconNames.ts'),
+    path.join(iconSrcPath, 'build', 'IconNames.ts'),
     iconNameFile(basenames)
   )
   return basenames
@@ -125,12 +120,9 @@ ${componentIconTags}
 \`\`\`
   `
   }
-  const basenames = await getBasenames(
-    iconFileHelpers.ICON_GLYPH_PATH,
-    iconFileHelpers.ICON_GLYPH_EXTENSION
-  )
+  const basenames = await getBasenames(iconGlyphPath, iconGlyphFileExtension)
   await writeFile(
-    path.join(iconFileHelpers.ICON_SRC_PATH, 'AllIcons.md'),
+    path.join(iconSrcPath, 'build', 'AllIcons.md'),
     styleguidistAllIconsMarkdown(basenames)
   )
 }

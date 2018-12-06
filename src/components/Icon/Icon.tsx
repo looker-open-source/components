@@ -1,6 +1,6 @@
 import * as React from 'react'
-import * as Glyphs from '../../icons/glyphs'
-import { IconNames } from '../../icons/IconNames'
+import * as Glyphs from '../../icons/build/glyphs'
+import { IconNames } from '../../icons/build/IconNames'
 import { styled } from '../../style'
 import { Box } from '../Box'
 
