@@ -13,7 +13,7 @@ export interface OverlayBubbleArrowProps {
 const OverlayBubbleArrow = styled.div<OverlayBubbleArrowProps>`
   position: absolute;
 
-  &:before {
+  &::before {
     content: '';
     margin: auto;
     display: block;
@@ -27,7 +27,7 @@ const OverlayBubbleArrow = styled.div<OverlayBubbleArrowProps>`
   &[data-placement*='top'] {
     bottom: 0.25rem;
     margin: 0 1rem;
-    &:before {
+    &::before {
       transform: rotate(45deg);
     }
   }
@@ -35,7 +35,7 @@ const OverlayBubbleArrow = styled.div<OverlayBubbleArrowProps>`
   &[data-placement*='right'] {
     left: 0.25rem;
     margin: 1rem 0;
-    &:before {
+    &::before {
       transform: rotate(135deg);
     }
   }
@@ -43,7 +43,7 @@ const OverlayBubbleArrow = styled.div<OverlayBubbleArrowProps>`
   &[data-placement*='bottom'] {
     top: 0.25rem;
     margin: 0 1rem;
-    &:before {
+    &::before {
       transform: rotate(225deg);
     }
   }
@@ -51,7 +51,7 @@ const OverlayBubbleArrow = styled.div<OverlayBubbleArrowProps>`
   &[data-placement*='left'] {
     right: 0.25rem;
     margin: 1rem 0;
-    &:before {
+    &::before {
       transform: rotate(315deg);
     }
   }
