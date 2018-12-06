@@ -32,7 +32,7 @@ function getCorrectStatusColor(status: StatusLabels) {
         border-left: solid 4px ${yellow400};
         flex-grow: 1;
 
-        &:before {
+        &::before {
           /* stylelint-disable */
           content: '⚠️';
           /* stylelint-enable */
@@ -44,7 +44,7 @@ function getCorrectStatusColor(status: StatusLabels) {
         border-left: solid 5px ${red500};
         flex-grow: 1;
 
-        &:before {
+        &::before {
           /* stylelint-disable */
           content: '🚫';
           /* stylelint-enable */
@@ -55,7 +55,7 @@ function getCorrectStatusColor(status: StatusLabels) {
         &:hover {
           color: ${blue600};
         }
-        &:before {
+        &::before {
           /* stylelint-disable */
           content: '✅';
           /* stylelint-enable */
@@ -67,7 +67,7 @@ function getCorrectStatusColor(status: StatusLabels) {
         border-left: solid 4px ${yellow400};
         flex-grow: 1;
 
-        &:before {
+        &::before {
           /* stylelint-disable */
           content: '⚠️';
           /* stylelint-enable */
@@ -83,7 +83,7 @@ export const StatusDiv = styled<StatusProps>(statusIndicator)`
   border-radius: 2px;
   margin-right: ${props => props.theme.space.medium};
 
-  &:before {
+  &::before {
     /* stylelint-disable */
     content: '';
     /* stylelint-enable */
@@ -95,7 +95,7 @@ export const StatusDiv = styled<StatusProps>(statusIndicator)`
   &:hover {
     color: ${blue600};
 
-    &:before {
+    &::before {
       transform: scale(1.12);
     }
   }
