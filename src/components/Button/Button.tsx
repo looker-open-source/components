@@ -211,13 +211,13 @@ function iconMargins(props: ThemedProps<ButtonProps>) {
 
   if (props.iconBefore) {
     return css`
-      margin-left: -${spacing.small}px;
-      margin-right: ${spacing.large}px;
+      margin-left: -${rem(spacing.small)};
+      margin-right: ${rem(spacing.large)};
     `
   } else if (props.iconAfter) {
     return css`
-      margin-left: ${spacing.large}px;
-      margin-right: -${spacing.small}px;
+      margin-left: ${rem(spacing.large)};
+      margin-right: -${rem(spacing.small)};
     `
   } else {
     return false
