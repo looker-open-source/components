@@ -1,5 +1,0 @@
-# IconLookerLogo
-
-```js
-<IconLookerLogo />
-```

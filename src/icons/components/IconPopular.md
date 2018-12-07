@@ -1,5 +1,0 @@
-# IconPopular
-
-```js
-<IconPopular />
-```

@@ -1,5 +1,0 @@
-# IconEdit
-
-```js
-<IconEdit />
-```

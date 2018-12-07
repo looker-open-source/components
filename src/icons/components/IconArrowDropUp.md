@@ -1,5 +1,0 @@
-# IconArrowDropUp
-
-```js
-<IconArrowDropUp />
-```

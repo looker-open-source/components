@@ -1,5 +1,0 @@
-# IconGroup
-
-```js
-<IconGroup />
-```

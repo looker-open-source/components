@@ -1,5 +1,0 @@
-# IconRefresh
-
-```js
-<IconRefresh />
-```

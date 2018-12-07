@@ -1,7 +1,14 @@
 import { rem, rgba } from 'polished'
 import * as React from 'react'
 import { merge, mixed } from 'styled-system'
-import { SemanticColor, SemanticColors, styled, withTheme } from '../../style'
+import { IconNames } from '../../icons/build/IconNames'
+import {
+  css,
+  SemanticColor,
+  SemanticColors,
+  styled,
+  withTheme,
+} from '../../style'
 import {
   SizeLarge,
   SizeMedium,
@@ -11,6 +18,7 @@ import {
   ThemedProps,
 } from '../../types'
 import { Box, BoxPropsWithout } from '../Box'
+import { Icon } from '../Icon/Icon'
 
 export type ButtonSizes = SizeXSmall | SizeSmall | SizeMedium | SizeLarge
 export type ButtonSpacingSizes =
@@ -47,6 +55,8 @@ export interface ButtonProps
    * @default "default"
    */
   variant?: 'default' | 'outline' | 'transparent'
+  iconBefore?: IconNames | undefined
+  iconAfter?: IconNames | undefined
 }
 
 const variantCommonProps = (color: SemanticColor) => {
@@ -185,10 +195,45 @@ function sizeHelper(props: ThemedProps<ButtonProps>) {
   })
 }
 
+function iconMargins(props: ThemedProps<ButtonProps>) {
+  const spacing = { large: 0, small: 0 }
+  switch (props.size) {
+    case 'xsmall':
+      spacing.small = 2
+      spacing.large = 4
+      break
+    case 'small':
+    case 'large':
+    default:
+      spacing.small = 4
+      spacing.large = 8
+  }
+
+  if (props.iconBefore) {
+    return css`
+      margin-left: -${rem(spacing.small)};
+      margin-right: ${rem(spacing.large)};
+    `
+  } else if (props.iconAfter) {
+    return css`
+      margin-left: ${rem(spacing.large)};
+      margin-right: -${rem(spacing.small)};
+    `
+  } else {
+    return false
+  }
+}
+
+function getIcon(iconName: IconNames | undefined) {
+  return iconName ? <Icon name={iconName} /> : null
+}
+
 // color is extracted here to ensure it is not passed to Box, creating a type
 // error with the DOM's own color attribute.
 const InternalButton: React.SFC<ThemedProps<ButtonProps>> = ({
   color,
+  iconBefore,
+  iconAfter,
   ...props
 }) => {
   return (
@@ -197,9 +242,13 @@ const InternalButton: React.SFC<ThemedProps<ButtonProps>> = ({
       borderRadius={props.theme.components.Button.borderRadius}
       fontFamily="brand"
       py="none"
+      display="inline-flex"
+      alignItems="center"
       {...props}
     >
+      {getIcon(iconBefore)}
       {props.children}
+      {getIcon(iconAfter)}
     </Box>
   )
 }
@@ -215,4 +264,8 @@ export const Button = styled<ButtonProps>(withTheme(InternalButton))`
   white-space: nowrap;
   ${sizeHelper};
   ${variantHelper};
+
+  ${Icon} {
+    ${iconMargins};
+  }
 `

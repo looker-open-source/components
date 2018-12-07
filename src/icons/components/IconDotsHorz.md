@@ -1,5 +1,0 @@
-# IconDotsHorz
-
-```js
-<IconDotsHorz />
-```

@@ -1,5 +1,0 @@
-# IconChartMulti
-
-```js
-<IconChartMulti />
-```

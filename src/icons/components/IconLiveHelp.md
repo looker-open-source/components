@@ -1,5 +1,0 @@
-# IconLiveHelp
-
-```js
-<IconLiveHelp />
-```

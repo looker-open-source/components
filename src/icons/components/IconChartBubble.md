@@ -1,5 +1,0 @@
-# IconChartBubble
-
-```js
-<IconChartBubble />
-```
