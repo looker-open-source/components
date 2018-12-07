@@ -242,6 +242,8 @@ const InternalButton: React.SFC<ThemedProps<ButtonProps>> = ({
       borderRadius={props.theme.components.Button.borderRadius}
       fontFamily="brand"
       py="none"
+      display="inline-flex"
+      alignItems="center"
       {...props}
     >
       {getIcon(iconBefore)}
