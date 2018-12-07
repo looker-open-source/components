@@ -1,5 +1,0 @@
-# IconChartPie
-
-```js
-<IconChartPie />
-```

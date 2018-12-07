@@ -1,5 +1,0 @@
-# IconRemoveCircle
-
-```js
-<IconRemoveCircle />
-```

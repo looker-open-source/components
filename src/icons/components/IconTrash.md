@@ -1,5 +1,0 @@
-# IconTrash
-
-```js
-<IconTrash />
-```

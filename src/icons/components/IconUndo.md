@@ -1,5 +1,0 @@
-# IconUndo
-
-```js
-<IconUndo />
-```

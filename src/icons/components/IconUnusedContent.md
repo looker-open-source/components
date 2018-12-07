@@ -1,5 +1,0 @@
-# IconUnusedContent
-
-```js
-<IconUnusedContent />
-```

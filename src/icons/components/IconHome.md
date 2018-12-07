@@ -1,5 +1,0 @@
-# IconHome
-
-```js
-<IconHome />
-```

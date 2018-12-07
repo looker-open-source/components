@@ -1,5 +1,0 @@
-# IconCheckProgress
-
-```js
-<IconCheckProgress />
-```

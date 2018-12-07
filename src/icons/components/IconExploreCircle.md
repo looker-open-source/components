@@ -1,5 +1,0 @@
-# IconExploreCircle
-
-```js
-<IconExploreCircle />
-```

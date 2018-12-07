@@ -1,5 +1,0 @@
-# IconFolderShared
-
-```js
-<IconFolderShared />
-```

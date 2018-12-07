@@ -1,5 +1,0 @@
-# IconSearch
-
-```js
-<IconSearch />
-```

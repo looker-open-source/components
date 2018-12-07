@@ -1,5 +1,0 @@
-# IconArrowDropDown
-
-```js
-<IconArrowDropDown />
-```

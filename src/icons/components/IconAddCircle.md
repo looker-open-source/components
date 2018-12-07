@@ -1,5 +1,0 @@
-# IconAddCircle
-
-```js
-<IconAddCircle />
-```
