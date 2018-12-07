@@ -47,9 +47,9 @@ Common patterns for text is to adjust the font weight and transform the text. Be
 
 <div class="doc-section-divider"></div>
 
-### Text Mode
+### Text Variants
 
-Lens provides a few modes for the `<Text />` component based on common patterns we use in our applications, the `mode` property will change that will change the color the rendered text.
+Lens provides a few variants for the `<Text />` component based on common patterns we use in our applications, the `variant` property will change that will change the color the rendered text.
 
 ```js
 <Text>Regular Text</Text>
