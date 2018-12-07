@@ -1,85 +1,220 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`A Code component Aligned 1`] = `
-.c0 {
-  font-family: 'Monaco','Menlo','Ubuntu Mono','Consolas','source-code-pro',monospace;
-}
-
-<code
-  className="c0"
->
-  Hello
-</code>
-`;
-
 exports[`A Code component resized 1`] = `
-.c0 {
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   font-family: 'Monaco','Menlo','Ubuntu Mono','Consolas','source-code-pro',monospace;
+  font-size: 2.875rem;
+  font-weight: 400;
+  line-height: 4rem;
+}
+
+.c0 {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-transform: none;
+  text-align: left;
+  color: #262D33;
 }
 
 <code
-  className="c0"
-  size="xxxxlarge"
+  className="c0 c1"
 >
   Hello
 </code>
 `;
 
-exports[`A Code component transformed 1`] = `
-.c0 {
+exports[`A Code component text transformed 1`] = `
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   font-family: 'Monaco','Menlo','Ubuntu Mono','Consolas','source-code-pro',monospace;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+}
+
+.c0 {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-transform: uppercase;
+  text-align: left;
+  color: #262D33;
 }
 
 <code
-  className="c0"
+  className="c0 c1"
 >
   Hello
 </code>
 `;
 
 exports[`A Code component with variant 1`] = `
-.c0 {
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   font-family: 'Monaco','Menlo','Ubuntu Mono','Consolas','source-code-pro',monospace;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+}
+
+.c0 {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-transform: none;
+  text-align: left;
+  color: #CC1F36;
 }
 
 <code
-  className="c0"
+  className="c0 c1"
+>
+  Hello
+</code>
+`;
+
+exports[`A Code component wrapped 1`] = `
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-family: 'Monaco','Menlo','Ubuntu Mono','Consolas','source-code-pro',monospace;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+}
+
+.c0 {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-transform: none;
+  text-align: left;
+  overflow-wrap: break-word;
+  color: #262D33;
+}
+
+<code
+  className="c0 c1"
 >
   Hello
 </code>
 `;
 
 exports[`A Codet component weight 1`] = `
-.c0 {
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   font-family: 'Monaco','Menlo','Ubuntu Mono','Consolas','source-code-pro',monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.5rem;
+}
+
+.c0 {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-transform: none;
+  text-align: left;
+  color: #262D33;
 }
 
 <code
-  className="c0"
+  className="c0 c1"
 >
   Hello
 </code>
 `;
 
-exports[`A Text component tuncated 1`] = `
-.c0 {
+exports[`A Text component decorated 1`] = `
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   font-family: 'Monaco','Menlo','Ubuntu Mono','Consolas','source-code-pro',monospace;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+}
+
+.c0 {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-decoration: line-through;
+  text-decoration: line-through;
+  text-transform: none;
+  text-align: left;
+  color: #262D33;
 }
 
 <code
-  className="c0"
+  className="c0 c1"
 >
   Hello
 </code>
 `;
 
 exports[`A default Code component 1`] = `
-.c0 {
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   font-family: 'Monaco','Menlo','Ubuntu Mono','Consolas','source-code-pro',monospace;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+}
+
+.c0 {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-transform: none;
+  text-align: left;
+  color: #262D33;
 }
 
 <code
-  className="c0"
+  className="c0 c1"
 >
   Hello
 </code>

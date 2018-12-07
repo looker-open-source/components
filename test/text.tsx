@@ -46,10 +46,10 @@ export const snapshotTestTextComponentTransform = (
   expect(tree).toMatchSnapshot()
 }
 
-export const snapshotTestTextComponentTruncate = (
+export const snapshotTestTextComponentWrap = (
   Component: React.SFC<TextProps> | React.ComponentClass
 ) => {
-  const component = createWithTheme(<Component truncate>Hello</Component>)
+  const component = createWithTheme(<Component wrap>Hello</Component>)
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
 }
@@ -59,6 +59,16 @@ export const snapshotTestTextComponentVariant = (
 ) => {
   const component = createWithTheme(
     <Component variant="critical">Hello</Component>
+  )
+  const tree = component.toJSON()
+  expect(tree).toMatchSnapshot()
+}
+
+export const snapshotTestTextComponentDecoration = (
+  Component: React.SFC<TextProps> | React.ComponentClass
+) => {
+  const component = createWithTheme(
+    <Component decoration="line-through">Hello</Component>
   )
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()

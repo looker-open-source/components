@@ -1,9 +1,13 @@
-import { css, RampSizes, styled, truncate } from '../../style'
+import { TextDecorationProperty } from 'csstype'
+import * as React from 'react'
+import { css, RampSizes, styled, Theme, withTheme } from '../../style'
 import { ThemedProps } from '../../types'
+import { Box, BoxPropsWithout } from '../Box'
 
 export type TextWeights = 'bold' | 'light' | 'normal' | 'semiBold'
 export type TextTransforms = 'caps' | 'lower' | 'none' | 'upper'
 export type TextAlignments = 'left' | 'center' | 'right'
+export type TextElements = 'span' | 'p' | 'code'
 export type TextVariants =
   | 'critical'
   | 'positive'
@@ -11,16 +15,31 @@ export type TextVariants =
   | 'subdued'
   | 'inverted'
 
-export interface TextProps {
+export interface TextProps
+  extends BoxPropsWithout<HTMLSpanElement, 'color' | 'size' | 'wrap' | 'is'> {
+  /** Base html text element
+   *  @default "span"
+   */
+  is?: TextElements
+  /** Align text */
   align?: TextAlignments
-  variant?: TextVariants
+  /** Set text decoration property */
+  decoration?: TextDecorationProperty
+  /** Size mapping from type ramp */
   size?: RampSizes
-  textTransform?: TextTransforms
-  truncate?: boolean
+  /** Font weight */
   weight?: TextWeights
+  /** Text tranform  */
+  textTransform?: TextTransforms
+  /** Adjust style of text with more meaning by using an intent */
+  variant?: TextVariants
+  /** Should browser insert line breaks within words to prevent text from overflowing its content box  */
+  wrap?: boolean
+  /** Custom css class */
+  className?: string
 }
 
-function textTransform(transform: TextTransforms | undefined) {
+function getTextTransform(transform: TextTransforms | undefined) {
   switch (transform) {
     case 'upper':
       return css`
@@ -77,15 +96,51 @@ function alignment(align: TextAlignments | undefined) {
   `
 }
 
-export const Text = styled.div<TextProps>`
+function getWrap(doWrap: boolean) {
+  if (doWrap) {
+    return css`
+      overflow-wrap: break-word;
+    `
+  }
+  return ``
+}
+
+function getFontWeight(theme: Theme, weight: TextWeights | undefined) {
+  return weight ? theme.fontWeights[weight] : theme.fontWeights.normal
+}
+
+const InternalText: React.SFC<ThemedProps<TextProps>> = ({
+  is,
+  align,
+  decoration,
+  size,
+  weight,
+  textTransform,
+  variant,
+  wrap,
+  theme,
+  ...props
+}) => {
+  return (
+    <Box
+      is={is || 'span'}
+      fontSize={theme.fontSizes[size || 'medium']}
+      lineHeight={theme.lineHeights[size || 'medium']}
+      fontWeight={getFontWeight(theme, weight)}
+      {...props}
+    >
+      {props.children}
+    </Box>
+  )
+}
+
+export const Text = styled<TextProps>(withTheme(InternalText))`
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: ${props => props.theme.fontSizes[props.size || 'medium']};
-  line-height: ${props => props.theme.lineHeights[props.size || 'medium']};
-  font-weight: ${props => props.theme.fontWeights[props.weight || 'normal']};
-  ${props => textTransform(props.textTransform)};
+  text-decoration: ${props => props.decoration};
+  ${props => getTextTransform(props.textTransform)};
   ${props => alignment(props.align)};
-  ${props => truncate(props.truncate || false)};
+  ${props => getWrap(props.wrap || false)};
   ${textVariant};
 `

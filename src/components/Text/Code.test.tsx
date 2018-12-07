@@ -1,11 +1,11 @@
 import {
   snapshotTestTextComponent,
-  snapshotTestTextComponentAlign,
+  snapshotTestTextComponentDecoration,
   snapshotTestTextComponentFontRamp,
   snapshotTestTextComponentFontWeight,
   snapshotTestTextComponentTransform,
-  snapshotTestTextComponentTruncate,
   snapshotTestTextComponentVariant,
+  snapshotTestTextComponentWrap,
 } from '../../../test/text'
 import { Code } from './Code'
 
@@ -21,18 +21,18 @@ test('A Codet component weight', () => {
   snapshotTestTextComponentFontWeight(Code)
 })
 
-test('A Text component tuncated', () => {
-  snapshotTestTextComponentTruncate(Code)
-})
-
 test('A Code component with variant', () => {
   snapshotTestTextComponentVariant(Code)
 })
 
-test('A Code component transformed', () => {
+test('A Code component text transformed', () => {
   snapshotTestTextComponentTransform(Code)
 })
 
-test('A Code component Aligned', () => {
-  snapshotTestTextComponentAlign(Code)
+test('A Code component wrapped', () => {
+  snapshotTestTextComponentWrap(Code)
+})
+
+test('A Text component decorated', () => {
+  snapshotTestTextComponentDecoration(Code)
 })
