@@ -7,6 +7,7 @@ import {
 } from '../src/components/Colors/ColorWheel/color_wheel_utils'
 import { ColorWheel } from '../src/components/Colors/ColorWheel/ColorWheel'
 import { RichTooltip } from '../src/components/Overlay/RichTooltip'
+import { RichTooltipContent } from '../src/components/Overlay/RichTooltipContent'
 
 export interface RichTooltipDemoState {
   color: SimpleHSV
@@ -37,12 +38,14 @@ export class RichTooltipDemo extends React.Component<{}, RichTooltipDemoState> {
 
   public render() {
     const popoverContent = (
-      <ColorWheel
-        hue={this.state.color.h}
-        saturation={this.state.color.s}
-        value={this.state.color.v}
-        onColorChange={this.handleColorStateChange}
-      />
+      <RichTooltipContent>
+        <ColorWheel
+          hue={this.state.color.h}
+          saturation={this.state.color.s}
+          value={this.state.color.v}
+          onColorChange={this.handleColorStateChange}
+        />
+      </RichTooltipContent>
     )
 
     const color = hsv(
