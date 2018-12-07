@@ -12,7 +12,7 @@ const InternalParagraph: React.SFC<ParagraphProps> = ({
   ...props
 }) => {
   return (
-    <Text element="p" {...props}>
+    <Text is="p" {...props}>
       {props.children}
     </Text>
   )

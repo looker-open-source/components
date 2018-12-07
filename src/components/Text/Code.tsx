@@ -4,7 +4,7 @@ import { Text, TextProps } from '../Text/Text'
 
 const InternalCode: React.SFC<TextProps> = ({ ...props }) => {
   return (
-    <Text element="code" fontFamily={theme.fonts.code} {...props}>
+    <Text is="code" fontFamily={theme.fonts.code} {...props}>
       {props.children}
     </Text>
   )

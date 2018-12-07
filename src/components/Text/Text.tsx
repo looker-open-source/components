@@ -16,11 +16,11 @@ export type TextVariants =
   | 'inverted'
 
 export interface TextProps
-  extends BoxPropsWithout<HTMLSpanElement, 'color' | 'size' | 'wrap'> {
+  extends BoxPropsWithout<HTMLSpanElement, 'color' | 'size' | 'wrap' | 'is'> {
   /** Base html text element
    *  @default "span"
    */
-  element?: TextElements
+  is?: TextElements
   /** Align text */
   align?: TextAlignments
   /** Set text decoration property */
@@ -110,7 +110,7 @@ function getFontWeight(theme: Theme, weight: TextWeights | undefined) {
 }
 
 const InternalText: React.SFC<ThemedProps<TextProps>> = ({
-  element,
+  is,
   align,
   decoration,
   size,
@@ -123,7 +123,7 @@ const InternalText: React.SFC<ThemedProps<TextProps>> = ({
 }) => {
   return (
     <Box
-      is={element || 'span'}
+      is={is || 'span'}
       fontSize={theme.fontSizes[size || 'medium']}
       lineHeight={theme.lineHeights[size || 'medium']}
       fontWeight={getFontWeight(theme, weight)}
