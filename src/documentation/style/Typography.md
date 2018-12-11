@@ -69,7 +69,7 @@ The Lens type scale is designed to provide consistent and harmonious typographic
     {size: 'medium', px: '16px', lh: '24px' },
     {size: 'small', px: '14px', lh: '20px' },
     {size: 'xsmall', px: '12px', lh: '16px' },
-    {size: '2xsmall', px: '11px', lh: '16px' },]
+    {size: 'xxsmall', px: '11px', lh: '16px' },]
 
   const tableRows = typeRamp.map((t) => {
     return(

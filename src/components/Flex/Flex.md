@@ -25,21 +25,21 @@ The `<Flex />` component has the ability to control the layout direction and ord
 Using our `<Flex>` and `<FlexItem>` components we can quickly scaffold out real world use cases like a navigation bar.
 ```js
 <Flex bg="palette.charcoal800" px="small" height="50px" alignItems="center" justifyContent="space-between">
-  <FlexItem mr="small" pt="xsmall"><IconHamburger fill="white" width="24" height="24" /></FlexItem>
-  <FlexItem><IconLookerLogo fill="white" width="60px" height="auto"/></FlexItem>
+  <FlexItem mr="medium" pt="xsmall"><Icon name="Hamburger" color="palette.white" size={24} /></FlexItem>
+  <FlexItem><Icon name="LookerLogo" color="palette.white" size={60} /></FlexItem>
   <FlexItem flex="1">
     <Flex justifyContent="center">
-    <Box px="small"><Text size="5" style={{'color': '#fff'}}>Browse <IconExpandMore fill="white" /></Text></Box>
-    <Box px="small"><Text size="5" style={{'color': '#fff'}}>Explore <IconExpandMore fill="white" /></Text></Box>
-    <Box px="small"><Text size="5" style={{'color': '#fff'}}>Develop <IconExpandMore fill="white" /></Text></Box>
-    <Box px="small"><Text size="5" style={{'color': '#fff'}}>Admin <IconExpandMore fill="white" /></Text></Box>
+    <Box px="small"><Text size="5" variant="inverted">Browse <Icon name="ExpandMore"  /></Text></Box>
+    <Box px="small"><Text size="5" variant="inverted">Explore <Icon name="ExpandMore"  /></Text></Box>
+    <Box px="small"><Text size="5" variant="inverted">Develop <Icon name="ExpandMore"  /></Text></Box>
+    <Box px="small"><Text size="5" variant="inverted">Admin <Icon name="ExpandMore"  /></Text></Box>
     </Flex>
   </FlexItem>
   <FlexItem>
     <Flex>
-      <FlexItem mr="small"><IconSearch fill="white" width="24" height="24" /></FlexItem>
-      <FlexItem mr="small"><IconLiveHelp fill="white" width="24" height="24" /></FlexItem>
-      <FlexItem><IconGroup fill="white" width="24" height="24" /></FlexItem>
+      <FlexItem mr="small"><Icon name="Search" color="palette.white" size={24} /></FlexItem>
+      <FlexItem mr="small"><Icon name="LiveHelp" color="palette.white" size={24} /></FlexItem>
+      <FlexItem><Icon name="Group" color="palette.white" size={24} /></FlexItem>
     </Flex>
   </FlexItem>
 </Flex>
@@ -91,31 +91,31 @@ The `<Flex>` component allows you to control how its children are distributed wi
   </TableHead>
   <TableBody>
     <TableRow>
-      <TableDataCell><span class="prop-code"><Code>center</Code></span></TableDataCell>
+      <TableDataCell><span className="prop-code"><Code>center</Code></span></TableDataCell>
       <TableDataCell><Text size="5">Pack items around the center</Text></TableDataCell>
     </TableRow>
     <TableRow>
-      <TableDataCell><span class="prop-code"><Code>flex-start</Code></span></TableDataCell>
+      <TableDataCell><span className="prop-code"><Code>flex-start</Code></span></TableDataCell>
       <TableDataCell><Text size="5">Pack items from the start</Text></TableDataCell>
     </TableRow>
     <TableRow>
-      <TableDataCell><span class="prop-code"><Code>flex-end</Code></span></TableDataCell>
+      <TableDataCell><span className="prop-code"><Code>flex-end</Code></span></TableDataCell>
       <TableDataCell><Text size="5">Pack items from the end</Text></TableDataCell>
     </TableRow>
     <TableRow>
-      <TableDataCell><span class="prop-code"><Code>space-between</Code></span></TableDataCell>
+      <TableDataCell><span className="prop-code"><Code>space-between</Code></span></TableDataCell>
       <TableDataCell><Text size="5">Distribute items evenly. The first item is flush with the start, the last is flush with the end </Text></TableDataCell>
     </TableRow>
     <TableRow>
-      <TableDataCell><span class="prop-code"><Code>space-around</Code></span></TableDataCell>
+      <TableDataCell><span className="prop-code"><Code>space-around</Code></span></TableDataCell>
       <TableDataCell><Text size="5">Distribute items evenly. Items have a half-size space on either end</Text></TableDataCell>
     </TableRow>
     <TableRow>
-      <TableDataCell><span class="prop-code"><Code>space-evenly</Code></span></TableDataCell>
+      <TableDataCell><span className="prop-code"><Code>space-evenly</Code></span></TableDataCell>
       <TableDataCell><Text size="5">Distribute items evenly. Items have equal space around them</Text></TableDataCell>
     </TableRow>
     <TableRow>
-      <TableDataCell><span class="prop-code"><Code>stretch</Code></span></TableDataCell>
+      <TableDataCell><span className="prop-code"><Code>stretch</Code></span></TableDataCell>
       <TableDataCell><Text size="5">Distribute items evenly. Items strechted to fit the container</Text></TableDataCell>
     </TableRow>
   </TableBody>
@@ -179,23 +179,23 @@ Flex box allows for quickly adjusting the alignment of items inside the flex con
   </TableHead>
   <TableBody>
     <TableRow>
-      <TableDataCell><span class="prop-code"><Code>center</Code></span></TableDataCell>
+      <TableDataCell><span className="prop-code"><Code>center</Code></span></TableDataCell>
       <TableDataCell><Text size="5">Items are aligned center of container</Text></TableDataCell>
     </TableRow>
     <TableRow>
-      <TableDataCell><span class="prop-code"><Code>flex-start</Code></span></TableDataCell>
+      <TableDataCell><span className="prop-code"><Code>flex-start</Code></span></TableDataCell>
       <TableDataCell><Text size="5">Items are aligned to the start of the container</Text></TableDataCell>
     </TableRow>
     <TableRow>
-      <TableDataCell><span class="prop-code"><Code>flex-end</Code></span></TableDataCell>
+      <TableDataCell><span className="prop-code"><Code>flex-end</Code></span></TableDataCell>
       <TableDataCell><Text size="5">Items are aligned to the start of the container</Text></TableDataCell>
     </TableRow>
     <TableRow>
-      <TableDataCell><span class="prop-code"><Code>baseline</Code></span></TableDataCell>
+      <TableDataCell><span className="prop-code"><Code>baseline</Code></span></TableDataCell>
       <TableDataCell><Text size="5">All items are aligned so their baselines align</Text></TableDataCell>
     </TableRow>
     <TableRow>
-      <TableDataCell><span class="prop-code"><Code>stretch</Code></span> <Span size="xsmall">(default)</Span></TableDataCell>
+      <TableDataCell><span className="prop-code"><Code>stretch</Code></span> <Text size="xsmall">(default)</Text></TableDataCell>
       <TableDataCell><Text size="5">Items strechted to fit the container</Text></TableDataCell>
     </TableRow>
   </TableBody>
@@ -255,27 +255,27 @@ If you have multiple rows of flex items, the `alignContent` property determines 
   </TableHead>
   <TableBody>
     <TableRow>
-      <TableDataCell><span class="prop-code"><Code>center</Code></span></TableDataCell>
+      <TableDataCell><span className="prop-code"><Code>center</Code></span></TableDataCell>
       <TableDataCell><Text size="5">Lines are packed to the center of container</Text></TableDataCell>
     </TableRow>
     <TableRow>
-      <TableDataCell><span class="prop-code"><Code>flex-start</Code></span></TableDataCell>
+      <TableDataCell><span className="prop-code"><Code>flex-start</Code></span></TableDataCell>
       <TableDataCell><Text size="5">Lines are packed to the start of the container</Text></TableDataCell>
     </TableRow>
     <TableRow>
-      <TableDataCell><span class="prop-code"><Code>flex-end</Code></span></TableDataCell>
+      <TableDataCell><span className="prop-code"><Code>flex-end</Code></span></TableDataCell>
       <TableDataCell><Text size="5">Lines are packed to the start of the container</Text></TableDataCell>
     </TableRow>
     <TableRow>
-      <TableDataCell><span class="prop-code"><Code>space-between</Code></span></TableDataCell>
+      <TableDataCell><span className="prop-code"><Code>space-between</Code></span></TableDataCell>
       <TableDataCell><Text size="5">Lines evenly distributed. First line at start of container, last line at end of container</Text></TableDataCell>
     </TableRow>
         <TableRow>
-      <TableDataCell><span class="prop-code"><Code>space-around</Code></span></TableDataCell>
+      <TableDataCell><span className="prop-code"><Code>space-around</Code></span></TableDataCell>
       <TableDataCell><Text size="5">Lines evenly distributed. Even space around each line</Text></TableDataCell>
     </TableRow>
     <TableRow>
-      <TableDataCell><span class="prop-code"><Code>stretch</Code></span> <Span size="xsmall">(default)</Span></TableDataCell>
+      <TableDataCell><span className="prop-code"><Code>stretch</Code></span> <Text size="xsmall">(default)</Text></TableDataCell>
       <TableDataCell><Text size="5">Items strechted to fit the container</Text></TableDataCell>
     </TableRow>
   </TableBody>
