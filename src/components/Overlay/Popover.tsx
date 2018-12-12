@@ -1,14 +1,14 @@
 import * as React from 'react'
-import { Theme, withTheme } from '../../style'
+import { withTheme } from '../../style'
+import { ThemedProps } from '../../types'
 import { Overlay, OverlayInteractiveProps } from './Overlay'
 import { overlayBubbleWithContent } from './popover_utils'
 
 export interface PopoverProps extends OverlayInteractiveProps {
   content: React.ReactNode
-  theme?: Theme
 }
 
-const InternalPopover: React.SFC<PopoverProps> = ({
+const InternalPopover: React.SFC<ThemedProps<PopoverProps>> = ({
   content,
   theme,
   children,
@@ -18,9 +18,9 @@ const InternalPopover: React.SFC<PopoverProps> = ({
     trigger="click"
     overlayContentFactory={overlayBubbleWithContent(
       content,
-      theme!.components.Popover.bubble
+      theme.components.Popover.bubble
     )}
-    backdropStyles={theme!.components.Popover.backdrop}
+    backdropStyles={theme.components.Popover.backdrop}
     {...overlayProps}
   >
     {children}
