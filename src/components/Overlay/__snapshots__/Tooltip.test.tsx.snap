@@ -1,0 +1,239 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tooltip Generates a simple Tooltip 1`] = `
+Array [
+  .c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 0.25rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+}
+
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+}
+
+.c1 {
+  font-weight: 600;
+  outline: none;
+  -webkit-transition: border 80ms;
+  transition: border 80ms;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: middle;
+  white-space: nowrap;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  font-size: 1rem;
+  line-height: 34px;
+  border-style: solid;
+  border-width: 0.0625rem;
+  background: #64518A;
+  border-color: #64518A;
+  color: #FFFFFF;
+}
+
+.c1:focus {
+  box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
+}
+
+.c1[disabled] {
+  cursor: default;
+  -webkit-filter: grayscale(0.3);
+  filter: grayscale(0.3);
+  opacity: 0.25;
+}
+
+.c1[disabled]:hover,
+.c1[disabled]:active,
+.c1[disabled]:focus {
+  background-color: #64518A;
+  border-color: #C1C6CC;
+}
+
+.c1:hover,
+.c1:focus,
+.c1.hover {
+  background: #473764;
+  border-color: #473764;
+}
+
+.c1:active,
+.c1.active {
+  background: #2A1B60;
+  border-color: #2A1B60;
+}
+
+<div
+    className="c0"
+  >
+    <button
+      className="c1 c2"
+      onBlur={[Function]}
+      onFocus={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+    >
+      Example
+    </button>
+  </div>,
+  .c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  z-index: 1;
+}
+
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border: none;
+  border-radius: 0.25rem;
+  border-color: none;
+  box-shadow: 0 3px 18px rgba(0,0,0,0.12),0 1px 4px rgba(0,0,0,0.04);
+  color: #FBFBFC;
+  background-color: #4C535B;
+  margin: 0.5rem;
+}
+
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-size: 0.75rem;
+  max-width: 16rem;
+  padding: 0.25rem;
+  text-align: center;
+}
+
+.c4 {
+  position: absolute;
+}
+
+.c4::before {
+  content: '';
+  margin: auto;
+  display: block;
+  width: 0.5rem;
+  height: 0.5rem;
+  background: #4C535B;
+  border-bottom: none none;
+  border-right: none none;
+}
+
+.c4[data-placement*='top'] {
+  bottom: 0.25rem;
+  margin: 0 1rem;
+}
+
+.c4[data-placement*='top']::before {
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.c4[data-placement*='right'] {
+  left: 0.25rem;
+  margin: 1rem 0;
+}
+
+.c4[data-placement*='right']::before {
+  -webkit-transform: rotate(135deg);
+  -ms-transform: rotate(135deg);
+  transform: rotate(135deg);
+}
+
+.c4[data-placement*='bottom'] {
+  top: 0.25rem;
+  margin: 0 1rem;
+}
+
+.c4[data-placement*='bottom']::before {
+  -webkit-transform: rotate(225deg);
+  -ms-transform: rotate(225deg);
+  transform: rotate(225deg);
+}
+
+.c4[data-placement*='left'] {
+  right: 0.25rem;
+  margin: 1rem 0;
+}
+
+.c4[data-placement*='left']::before {
+  -webkit-transform: rotate(315deg);
+  -ms-transform: rotate(315deg);
+  transform: rotate(315deg);
+}
+
+.c1 {
+  -webkit-animation: bcCCNc 0.2s linear;
+  animation: bcCCNc 0.2s linear;
+}
+
+<div
+    className="c0"
+    onMouseOut={[Function]}
+    style={
+      Object {
+        "left": 0,
+        "opacity": 0,
+        "pointerEvents": "none",
+        "position": "absolute",
+        "top": 0,
+      }
+    }
+  >
+    <div
+      className="c1 c2"
+    >
+      <p
+        className="c3"
+      >
+        Hello world
+      </p>
+      <div
+        className="c4"
+        style={Object {}}
+      />
+    </div>
+  </div>,
+]
+`;

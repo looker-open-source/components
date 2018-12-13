@@ -119,7 +119,7 @@ export const components: Components = {
   },
   Tooltip: {
     bubble: {
-      backgroundColor: palette.charcoal900,
+      backgroundColor: palette.charcoal600,
       border: 'none',
       borderColor: 'none',
       borderRadius: radii.medium,
