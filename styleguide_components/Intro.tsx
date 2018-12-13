@@ -88,7 +88,7 @@ export const Intro = () => {
                 bg="rgba(0, 135, 225, 0.1)"
                 borderRadius="50%"
               >
-                <Icon name="ExploreCircle" size="24" color="#0087E1" />
+                <Icon name="CircleExplore" size="24" color="#0087E1" />
               </Flex>
             </Box>
             <Heading level="h4" size="large" weight="semiBold">
