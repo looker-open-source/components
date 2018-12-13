@@ -112,7 +112,7 @@ export const Intro = () => {
                 bg="rgba(255, 202, 98, 0.2)"
                 borderRadius="50%"
               >
-                <Icon name="Undo" size="24" color="#FFA800" />
+                <Icon name="Undo" size={24} color="#FFA800" />
               </Flex>
             </Box>
             <Heading level="h4" size="large" weight="semiBold">

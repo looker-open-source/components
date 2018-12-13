@@ -38,7 +38,7 @@ Using the `alignSelf` property on a `<FlexItem />` allows you to override the th
       <TableDataCell><Text size="5">Item aligned to its baseline</Text></TableDataCell>
     </TableRow>
     <TableRow>
-      <TableDataCell><span class="prop-code"><Code>stretch</Code></span> <Span size="xsmall">(default)</Span></TableDataCell>
+      <TableDataCell><span class="prop-code"><Code>stretch</Code></span> <Text size="xsmall">(default)</Text></TableDataCell>
       <TableDataCell><Text size="5">stretch to the container</Text></TableDataCell>
     </TableRow>
   </TableBody>

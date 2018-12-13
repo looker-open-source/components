@@ -9,7 +9,7 @@ We want to create a product that is accessible and considers the usability for e
   <CardContent>
     <Heading size="large"> WCAG Web Accessibility Quick Guide</Heading>
     <Heading level="h4" size="medium">We follow these guidelines and build them into every Lens component.</Heading>
-    <Link href="https://www.w3.org/WAI/WCAG21/quickref/" external>Visit WCAG Quick Guide <IconExternal /></Link>
+    <Link href="https://www.w3.org/WAI/WCAG21/quickref/" external>Visit WCAG Quick Guide <Icon name="External" /></Link>
   </CardContent>
 </Card>
 ```
