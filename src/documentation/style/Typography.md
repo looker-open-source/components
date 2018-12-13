@@ -66,7 +66,6 @@ const tableRows = typeFamily.map(t => {
 
 The Lens type scale is designed to provide consistent and harmonious typographic styles.
 
-```js noeditor
 const specimen = 'Data analytics ❤️'
 const typeRamp = [
   { size: 'xxxxlarge', px: '46px', lh: '64px' },
