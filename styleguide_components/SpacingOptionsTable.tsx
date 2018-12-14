@@ -13,13 +13,15 @@ import {
 } from '../src/components/Table/'
 
 const spacingExamples = [
-  { label: 'xsmall', px: '4', rem: '0.25rem' },
-  { label: 'small', px: '8', rem: '0.5rem' },
+  { label: 'xxsmall', px: '4', rem: '0.25rem' },
+  { label: 'xsmall', px: '8', rem: '0.5rem' },
+  { label: 'small', px: '12', rem: '0.75rem' },
   { label: 'medium', px: '16', rem: '1rem' },
   { label: 'large', px: '20', rem: '1.25rem' },
   { label: 'xlarge', px: '32', rem: '2rem' },
   { label: 'xxlarge', px: '40', rem: '2.5rem' },
   { label: 'xxxlarge', px: '60', rem: '3.75rem' },
+  { label: 'xxxxlarge', px: '80', rem: '5rem' },
 ]
 
 const spacingLabels = ['Size', 'PX Value', 'Rem Value', 'Lens Reference']

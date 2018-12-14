@@ -9,7 +9,9 @@ import {
   SizeXLarge,
   SizeXSmall,
   SizeXXLarge,
+  SizeXXSmall,
   SizeXXXLarge,
+  SizeXXXXLarge,
 } from '../types'
 import { components, Components } from './components'
 import { Easings, easings } from './easings'
@@ -31,6 +33,7 @@ export * from './transitions'
 
 export type SpacingSizes =
   | SizeNone
+  | SizeXXSmall
   | SizeXSmall
   | SizeSmall
   | SizeMedium
@@ -38,6 +41,7 @@ export type SpacingSizes =
   | SizeXLarge
   | SizeXXLarge
   | SizeXXXLarge
+  | SizeXXXXLarge
 
 export type ResponsiveSpacingSize = ResponsiveValue<SpacingSizes> | 'auto'
 
@@ -88,13 +92,15 @@ export const theme: Theme = {
   space: {
     // tslint:disable:object-literal-sort-keys
     none: rem(0),
-    xsmall: rem(4),
-    small: rem(8),
+    xxsmall: rem(4),
+    xsmall: rem(8),
+    small: rem(12),
     medium: rem(16),
     large: rem(20),
     xlarge: rem(32),
     xxlarge: rem(40),
     xxxlarge: rem(60),
+    xxxxlarge: rem(80),
     // tslint:enable:object-literal-sort-keys
   },
   transitions,
