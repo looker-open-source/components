@@ -3,7 +3,7 @@ import { Box, BoxProps } from '../Box'
 
 export const ListItem: React.SFC<BoxProps<HTMLLIElement>> = ({ ...props }) => {
   return (
-    <Box is="li" mb="xsmall" {...props}>
+    <Box is="li" mb="xxsmall" {...props}>
       {props.children}
     </Box>
   )

@@ -13,7 +13,7 @@ const InternalLabel: React.SFC<LabelProps> = ({ ...props }) => (
     color={props.theme!.components.Label.color}
     fontSize={props.theme!.components.Label.fontSize}
     fontWeight={props.theme!.components.Label.fontWeight}
-    mr="small"
+    mr="xsmall"
     {...props}
   >
     {props.children}

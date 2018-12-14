@@ -6,7 +6,7 @@ export const TableHeaderCell: React.SFC<
 > = ({ ...props }) => (
   <Box
     is="th"
-    py="small"
+    py="xsmall"
     fontSize="xsmall"
     color="palette.charcoal400"
     fontWeight={600}

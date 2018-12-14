@@ -68,14 +68,14 @@ export const components: Components = {
     borderRadius: 'medium',
   },
   Field: {
-    labelMargin: 'small',
+    labelMargin: 'xsmall',
     labelWidth: '20%',
   },
   InputText: {
     borderRadius: '4px',
     fontSize: 'small',
     height: '28px',
-    px: 'small',
+    px: 'xsmall',
     py: 'none',
   },
   Label: {
@@ -84,7 +84,7 @@ export const components: Components = {
     fontWeight: fontWeights.semiBold,
   },
   Legend: {
-    bottomPadding: 'small',
+    bottomPadding: 'xsmall',
     color: palette.charcoal800,
     fontSize: fontSizes.xxxlarge,
     fontWeight: fontWeights.light,
