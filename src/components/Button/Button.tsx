@@ -17,6 +17,7 @@ import {
   SizeXSmall,
   ThemedProps,
 } from '../../types'
+import { CustomizableAttributes } from '../../types/attributes'
 import { Box, BoxPropsWithout } from '../Box'
 import { Icon } from '../Icon/Icon'
 
@@ -239,7 +240,7 @@ const InternalButton: React.SFC<ThemedProps<ButtonProps>> = ({
   return (
     <Box
       is="button"
-      borderRadius={props.theme.components.Button.borderRadius}
+      borderRadius={ButtonAttributes.borderRadius}
       fontFamily="brand"
       py="none"
       display="inline-flex"
@@ -251,6 +252,10 @@ const InternalButton: React.SFC<ThemedProps<ButtonProps>> = ({
       {getIcon(iconAfter)}
     </Box>
   )
+}
+
+export const ButtonAttributes: CustomizableAttributes = {
+  borderRadius: 'medium',
 }
 
 export const Button = styled<ButtonProps>(withTheme(InternalButton))`
