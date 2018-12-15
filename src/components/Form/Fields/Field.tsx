@@ -1,10 +1,11 @@
 import { TextAlignProperty } from 'csstype'
 import * as React from 'react'
-import { SpacingSizes, styled, theme } from '../../../style'
+import { SpacingSizes, styled } from '../../../style'
 import {
   ResponsiveFontWeightValue,
   ResponsiveSpaceValue,
 } from '../../../style/responsive'
+import { CustomizableAttributes } from '../../../types/attributes'
 import { FlexItem } from '../../FlexItem'
 import { FormControl, FormControlDirections } from '../FormControl/FormControl'
 import { Label } from '../Label/Label'
@@ -69,15 +70,15 @@ const handleHorizontalAlignment = (
       labelContainerAlignment.textAlign = 'right'
       labelWidth
         ? (labelContainerAlignment.width = labelWidth)
-        : (labelContainerAlignment.width = theme.components.Field.labelWidth)
-      labelContainerAlignment.mr = theme.components.Field.labelMargin
+        : (labelContainerAlignment.width = FieldAttributes.labelWidth)
+      labelContainerAlignment.mr = FieldAttributes.labelMargin
       break
     case 'right':
       labelContainerAlignment.textAlign = 'left'
       labelWidth
         ? (labelContainerAlignment.width = labelWidth)
-        : (labelContainerAlignment.width = theme.components.Field.labelWidth)
-      labelContainerAlignment.mr = theme.components.Field.labelMargin
+        : (labelContainerAlignment.width = FieldAttributes.labelWidth)
+      labelContainerAlignment.mr = FieldAttributes.labelMargin
       break
     case 'bottom':
     case 'top':
@@ -138,4 +139,14 @@ export const Field = (props: FieldProps & { children?: React.ReactNode }) => {
       </FormControl>
     </FormControl>
   )
+}
+
+export interface FieldAttributesInterface extends CustomizableAttributes {
+  labelMargin: SpacingSizes
+  labelWidth: ResponsiveSpaceValue
+}
+
+export const FieldAttributes: FieldAttributesInterface = {
+  labelMargin: 'small',
+  labelWidth: '20%',
 }
