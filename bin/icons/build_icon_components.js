@@ -134,7 +134,7 @@ To use an Icon you pass the name of the icon to the \`name\` property on the \`<
 
 # All Icons
 
-*Tip: * you can click an icon below to copy it to your clipboard.
+**Tip: ** you can click an icon below to copy it to your clipboard.
 
 \`\`\`js noeditor
 const CopyToClipboard = require('react-copy-to-clipboard');
