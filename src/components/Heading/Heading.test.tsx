@@ -24,7 +24,7 @@ test('A <h1> Heading sized to <h2>', () => {
   expect(tree).toMatchSnapshot()
 })
 
-test('A Heading to semi-bold', () => {
+test('A Heading to bold', () => {
   const component = createWithTheme(<Heading weight="bold">🥑</Heading>)
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()

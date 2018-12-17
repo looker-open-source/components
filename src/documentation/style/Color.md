@@ -65,8 +65,8 @@ renderSwatch = (swatchList, key) => {
   return(
     <div className="swatch-holder" key={key}>
       <div className="swatch-header" style={{background: fillColor}}>
-        <Text size="large" weight="semi-bold" style={{color:'#fff'}} >{color}</Text>
-        <Text size="medium" weight="semi-bold" style={{color:'#fff'}}>500</Text>
+        <Text size="large" weight="semiBold" style={{color:'#fff'}} >{color}</Text>
+        <Text size="medium" weight="semiBold" style={{color:'#fff'}}>500</Text>
       </div>
       {swatchList.map((swatch, index) => (
         <Swatch key={index} contrastLevel={swatch.contrastLevel} labelColor={swatch.labelColor} hexValue={swatch.hexValue} group={swatch.group}>{swatch.label}</Swatch>
@@ -80,8 +80,8 @@ class Swatch extends React.Component {
   render(props) {
     return(
       <div className="swatch" style={{background: this.props.hexValue}}>
-        <Text className="swatch-label" weight="semi-bold" style={{color: this.props.labelColor}}>{this.props.children}</Text>
-        <Text className="swatch-hex" weight="semi-bold" style={{color: this.props.labelColor}}>{this.props.hexValue}</Text>
+        <Text className="swatch-label" weight="semiBold" style={{color: this.props.labelColor}}>{this.props.children}</Text>
+        <Text className="swatch-hex" weight="semiBold" style={{color: this.props.labelColor}}>{this.props.hexValue}</Text>
         <div className="contrast-box">{this.props.contrastLevel}</div>
       </div>
     )
