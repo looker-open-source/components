@@ -1,7 +1,7 @@
 import { Placement } from 'popper.js'
 import * as React from 'react'
 import { PopperArrowProps } from 'react-popper'
-import { fadeIn, styled, Theme } from '../../style'
+import { fadeIn, styled } from '../../style'
 import { Box, BoxProps } from '../Box'
 
 export interface OverlayBubbleArrowProps {
@@ -66,7 +66,6 @@ export interface OverlayBubbleStyleProps extends OverlayBubbleArrowProps {
   borderRadius: string
   boxShadow: string
   color: string
-  padding: keyof Theme['space']
 }
 
 export interface OverlayBubbleProps extends OverlayBubbleStyleProps {
@@ -76,7 +75,6 @@ export interface OverlayBubbleProps extends OverlayBubbleStyleProps {
 
 export const OverlayBubble: React.SFC<OverlayBubbleProps> = ({ ...props }) => (
   <OverlayBubbleContainer
-    p={props.padding}
     m="small"
     bg={props.backgroundColor}
     borderRadius={props.borderRadius}

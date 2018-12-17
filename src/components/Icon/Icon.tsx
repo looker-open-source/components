@@ -32,6 +32,7 @@ const InternalIcon: React.SFC<IconProps> = ({
 }
 
 export const Icon = styled<IconProps>(InternalIcon)`
+  vertical-align: middle;
   svg {
     fill: currentColor;
   }

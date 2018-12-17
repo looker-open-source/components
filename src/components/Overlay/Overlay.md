@@ -1,2 +1,2 @@
 
-Overlay is the abstract building block of Popover.
+Overlay is the abstract building block of Popover and RichTooltip.
