@@ -21,7 +21,6 @@ exports[`A Text component decorated 1`] = `
   -webkit-text-decoration: line-through;
   text-decoration: line-through;
   text-transform: none;
-  text-align: left;
   color: #262D33;
 }
 
@@ -51,7 +50,6 @@ exports[`A Text component resized 1`] = `
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-transform: none;
-  text-align: left;
   color: #262D33;
 }
 
@@ -81,7 +79,6 @@ exports[`A Text component text transformed 1`] = `
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-transform: uppercase;
-  text-align: left;
   color: #262D33;
 }
 
@@ -111,7 +108,6 @@ exports[`A Text component weight 1`] = `
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-transform: none;
-  text-align: left;
   color: #262D33;
 }
 
@@ -141,7 +137,6 @@ exports[`A Text component with variant 1`] = `
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-transform: none;
-  text-align: left;
   color: #CC1F36;
 }
 
@@ -171,7 +166,6 @@ exports[`A Text component wrapped 1`] = `
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-transform: none;
-  text-align: left;
   overflow-wrap: break-word;
   color: #262D33;
 }
@@ -202,7 +196,6 @@ exports[`A default Text component 1`] = `
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-transform: none;
-  text-align: left;
   color: #262D33;
 }
 
