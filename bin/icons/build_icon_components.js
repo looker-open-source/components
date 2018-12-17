@@ -111,12 +111,37 @@ async function generateIconNameFile() {
 async function generateMarkdownFileForAllIcons() {
   function styleguidistAllIconsMarkdown(componentNames) {
     const componentIconTags = componentNames
-      .map(name => `<Icon name="${name}" size={32} />`)
+      .map(
+        name => `
+        <CopyToClipboard
+          text={'<Icon name="${name}" />'}
+          onCopy={() => alert('copied ${name} to clipboard')}
+        >
+          <Box display="inline-block" px="xsmall" py="medium" width="16.66667%" textAlign="center">
+            <Icon name="${name}" size={32} />
+            <Paragraph size="xsmall" variant="secondary">${name}</Paragraph>
+          </Box>
+        </CopyToClipboard>`
+      )
       .join('\n')
-    return `# All Icons
-
+    return `
+To use an Icon you pass the name of the icon to the \`name\` property on the \`<Icon />\` compnent
 \`\`\`js
+ <Icon name="Check" size={24} />
+ <Icon name="Favorite" size={24} />
+ <Icon name="GearOutline" size={24} />
+\`\`\`
+
+# All Icons
+
+*Tip: * you can click an icon below to copy it to your clipboard.
+
+\`\`\`js noeditor
+const CopyToClipboard = require('react-copy-to-clipboard');
+
+<div>
 ${componentIconTags}
+</div>
 \`\`\`
   `
   }

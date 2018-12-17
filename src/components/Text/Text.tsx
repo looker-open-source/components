@@ -92,7 +92,7 @@ function textVariant(props: ThemedProps<TextProps>) {
 
 function alignment(align: TextAlignments | undefined) {
   return css`
-    text-align: ${align || 'left'};
+    text-align: ${align || false};
   `
 }
 
