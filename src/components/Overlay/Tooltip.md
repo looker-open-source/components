@@ -11,7 +11,7 @@ const StatusAndResources = require('../../../styleguide_components/StatusAndReso
 ```
 
 ```js
-<Tooltip content="More things you should know...">
+<Tooltip content="More things you should know..." open>
   <Button>Hover for Tooltip</Button>
 </Tooltip>
 ```

@@ -15,7 +15,7 @@ const simpleContentFactory = () => <SimpleContentSFC />
 
 interface OverlayTestProps {
   backdropStyles?: React.CSSProperties
-  showImmediately?: boolean
+  open?: boolean
   trigger?: OverlayEvent
 }
 
@@ -30,11 +30,11 @@ describe('Overlay', () => {
     assertSnapshot(<SimpleOverlay />)
   })
 
-  describe('showImmediately', () => {
+  describe('open', () => {
     let overlay: ReactWrapper
     beforeEach(() =>
       ([overlay] = returnTriggerAndOverlay(
-        <SimpleOverlay showImmediately trigger="click" />
+        <SimpleOverlay open trigger="click" />
       )))
     afterEach(() => overlay.unmount())
 

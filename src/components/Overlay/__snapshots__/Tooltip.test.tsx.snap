@@ -47,8 +47,8 @@ Array [
   -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   font-size: 1rem;
   line-height: 34px;
   border-style: solid;
@@ -140,7 +140,7 @@ Array [
   vertical-align: baseline;
   font-size: 0.75rem;
   max-width: 16rem;
-  padding: 0.25rem;
+  padding: 0.5rem;
   text-align: center;
 }
 

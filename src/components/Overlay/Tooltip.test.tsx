@@ -45,7 +45,7 @@ describe('Tooltip', () => {
 
   test('Generates a simple Tooltip', () => {
     assertSnapshot(
-      <Tooltip content="Hello world" showImmediately>
+      <Tooltip content="Hello world" open>
         <Button>Example</Button>
       </Tooltip>
     )

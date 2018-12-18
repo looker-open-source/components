@@ -75,7 +75,7 @@ export interface OverlayBubbleProps extends OverlayBubbleStyleProps {
 
 export const OverlayBubble: React.SFC<OverlayBubbleProps> = ({ ...props }) => (
   <OverlayBubbleContainer
-    m="small"
+    m="xsmall"
     bg={props.backgroundColor}
     borderRadius={props.borderRadius}
     border={props.border}

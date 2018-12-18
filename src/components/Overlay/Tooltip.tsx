@@ -1,3 +1,4 @@
+import { TextAlignProperty } from 'csstype'
 import * as React from 'react'
 import { Theme, withTheme } from '../../style'
 
@@ -16,12 +17,18 @@ export interface TooltipProps extends OverlayInteractiveProps {
    * @default 16rem
    */
   maxWidth?: string
+  /**
+   * Specify the text aligment within tooltips.
+   * @default center
+   */
+  textAlign?: TextAlignProperty
 }
 
 const InternalTooltip: React.SFC<TooltipProps> = ({
   content,
   theme,
   children,
+  textAlign = 'center' as TextAlignProperty,
   maxWidth = '16rem',
   ...overlayProps
 }) => {
@@ -31,7 +38,7 @@ const InternalTooltip: React.SFC<TooltipProps> = ({
       is="p"
       maxWidth={maxWidth}
       p="xsmall"
-      textAlign="center"
+      textAlign={textAlign}
     >
       {content}
     </Box>
