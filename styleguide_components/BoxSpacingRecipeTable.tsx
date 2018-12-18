@@ -22,7 +22,7 @@ const spacingSides = [
 const spacingSizes = [
   { value: 'xxsmall', label: '4px' },
   { value: 'xsmall', label: '8px' },
-  { value: 'xsmall', label: '12px' },
+  { value: 'small', label: '12px' },
   { value: 'medium', label: '16px' },
   { value: 'large', label: '20px' },
   { value: 'xlarge', label: '32px' },
