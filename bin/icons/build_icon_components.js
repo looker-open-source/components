@@ -125,7 +125,7 @@ async function generateMarkdownFileForAllIcons() {
       )
       .join('\n')
     return `
-To use an Icon you pass the name of the icon to the \`name\` property on the \`<Icon />\` compnent
+To use an Icon you pass the name of the icon to the \`name\` property on the \`<Icon />\` component
 \`\`\`js
  <Icon name="Check" size={24} />
  <Icon name="Favorite" size={24} />
