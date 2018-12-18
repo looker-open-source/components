@@ -38,7 +38,7 @@ async function cleanGlyphsAndComponents() {
  */
 async function convertSVGToComponent() {
   const result = await exec(
-    `yarn svgr --icon --ext ${iconGlyphFileExtension} --out-dir ${iconGlyphPath} ${iconSVGPath}`
+    `yarn svgr --icon --ext ${iconGlyphFileExtension} --replace-attr-values "#1C2125=currentColor" --out-dir ${iconGlyphPath} ${iconSVGPath}`
   )
   if (result.stderr) {
     console.log(result.stderr)
@@ -115,11 +115,11 @@ async function generateMarkdownFileForAllIcons() {
         name => `
         <CopyToClipboard
           text={'<Icon name="${name}" />'}
-          onCopy={() => alert('copied ${name} to clipboard')}
+          onCopy={() => alert('Copied icon "${name}" to clipboard.')}
         >
           <Box display="inline-block" px="xsmall" py="medium" width="16.66667%" textAlign="center">
             <Icon name="${name}" size={32} />
-            <Paragraph size="xsmall" variant="secondary">${name}</Paragraph>
+            <Paragraph mt="small" size="xsmall" variant="secondary">${name}</Paragraph>
           </Box>
         </CopyToClipboard>`
       )
@@ -127,9 +127,9 @@ async function generateMarkdownFileForAllIcons() {
     return `
 To use an Icon you pass the name of the icon to the \`name\` property on the \`<Icon />\` component
 \`\`\`js
- <Icon name="Check" size={24} />
- <Icon name="Favorite" size={24} />
- <Icon name="GearOutline" size={24} />
+<Icon name="Check" size={24} />
+<Icon name="Favorite" size={24} color="palette.red400" />
+<Icon name="GearOutline" size={32} color="palette.charcoal500"/>
 \`\`\`
 
 # All Icons
