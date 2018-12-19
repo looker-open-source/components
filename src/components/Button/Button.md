@@ -119,7 +119,7 @@ Use a disabled button to indicate to the user what action will be possible on a 
 
 Buttons can have an icon before or after their content, using the `iconBefore` and `iconAfter` property. Each property accepts the [name of an icon](/#!/Icons)
 ```js
-<Button iconBefore="AddCircle" mr="large">Add To Cart</Button>
+<Button iconBefore="CircleAdd" mr="large">Add To Cart</Button>
 <Button iconAfter="Trash" color="danger">Delete</Button>
 ```
 
