@@ -35,7 +35,7 @@ async function cleanGlyphsAndComponents() {
 /**
  * Step 1: convert the SVG to React components using CLI `svgr` command.
  * This by default converts all components to PascalCased filenames.
- * The --repleace-attr-values flag is used to replace fills on exported svg files from Figma so Icon color can be changed
+ * The --replace-attr-values flag is used to replace fills on exported svg files from Figma so Icon color can be changed
  */
 async function convertSVGToComponent() {
   const result = await exec(
