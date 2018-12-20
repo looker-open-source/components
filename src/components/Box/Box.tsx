@@ -1,5 +1,7 @@
 import tag from 'clean-tag'
+import { UserSelectProperty } from 'csstype'
 import * as React from 'react'
+import { Styles } from 'styled-components'
 import {
   alignContent,
   AlignContentProps,
@@ -149,6 +151,34 @@ export interface BoxBaseProps<T>
   is?: string | React.ReactNode
   ref?: React.Ref<any>
   style?: React.CSSProperties
+  /**
+   * Styling for :hover pseudo class.
+   *
+   * [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Properties_Reference)
+   * @example <Box hoverStyle={{border: '1px solid black'}}/>
+   */
+  hoverStyle?: React.CSSProperties
+  /**
+   * Styling for :focus pseudo class.
+   *
+   * [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Properties_Reference)
+   * @example <Box focusStyle={{border: '1px solid black'}}/>
+   */
+  focusStyle?: React.CSSProperties
+  /**
+   * Styling for :active pseudo class.
+   *
+   * [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Properties_Reference)
+   * @example <Box activeStyle={{border: '1px solid black'}}/>
+   */
+  activeStyle?: React.CSSProperties
+  /**
+   * Property to set user-select CSS property
+   *
+   * [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/user-select)
+   * @example <Box userSelect="none"/>
+   */
+  userSelect?: UserSelectProperty
 }
 
 export interface BoxProps<T>
@@ -159,6 +189,48 @@ export interface BoxProps<T>
 export type BoxBasePropsWithout<T, Keys> = Omit<BoxBaseProps<T>, Keys>
 export type BoxPropsWithout<T, Keys> = Omit<BoxProps<T>, Keys>
 
+const pseudoClassHover = (props: BoxProps<HTMLElement>) => {
+  return (
+    props.hoverStyle &&
+    css`
+      :hover {
+        ${props.hoverStyle as Styles};
+      }
+    `
+  )
+}
+
+const pseudoClassFocus = (props: BoxProps<HTMLElement>) => {
+  return (
+    props.focusStyle &&
+    css`
+      :focus {
+        ${props.focusStyle as Styles};
+      }
+    `
+  )
+}
+
+const pseudoClassActive = (props: BoxProps<HTMLElement>) => {
+  return (
+    props.activeStyle &&
+    css`
+      :active {
+        ${props.activeStyle as Styles};
+      }
+    `
+  )
+}
+
+const userSelect = (props: BoxProps<HTMLElement>) => {
+  return (
+    props.userSelect &&
+    css`
+      user-select: ${props.userSelect};
+    `
+  )
+}
+
 const cursorPointerOnClick = (props: BoxProps<HTMLElement>) =>
   props.onClick &&
   !props.disabled &&
@@ -166,7 +238,12 @@ const cursorPointerOnClick = (props: BoxProps<HTMLElement>) =>
     cursor: pointer;
   `
 
-export const Box = styled<BoxProps<HTMLElement>>(Tag)`
+const BoxFactory = React.forwardRef((props: BoxProps<HTMLElement>, ref) => {
+  const { activeStyle, focusStyle, hoverStyle, ...otherProps } = props
+  return <Tag {...otherProps} ref={ref} />
+})
+
+export const Box = styled<BoxProps<HTMLElement>>(BoxFactory)`
   /**
    * Global reset applied to prevent styling on top level tags outside of Lens
    * from interfering with Lens styles.
@@ -182,6 +259,15 @@ export const Box = styled<BoxProps<HTMLElement>>(Tag)`
    * would be overwritten by an explicit <Box cursor='copy'/>.
    */
   ${cursorPointerOnClick};
+
+  /**
+   * Pseudo classes can be styled by passing a CSS.Properties type to the
+   * corresponding pseudo class helper prop. For example: <Box
+   * hoverStyle={{border: '1px solid black'}}/>
+   */
+  ${pseudoClassHover}
+  ${pseudoClassFocus}
+  ${pseudoClassActive}
 
   /**
    * Style Utilities that extend Box's props. Most of these come from
@@ -229,6 +315,7 @@ export const Box = styled<BoxProps<HTMLElement>>(Tag)`
   ${space};
   ${textAlign};
   ${top};
+  ${userSelect}
   ${verticalAlign};
   ${width};
   ${zIndex};
