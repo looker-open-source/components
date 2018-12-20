@@ -28,7 +28,7 @@ describe('Modal', () => {
   test('Inactive w/ wrapped element', () => {
     assertSnapshot(
       <Modal render={simpleContentFactory}>
-        <button>Click Here</button>
+        <Button>Click Here</Button>
       </Modal>
     )
   })
@@ -36,7 +36,7 @@ describe('Modal', () => {
   test('Active w/ wrapped element', () => {
     assertSnapshot(
       <Modal open render={simpleContentFactory}>
-        <button>Click Here</button>
+        <Button>Click Here</Button>
       </Modal>
     )
   })

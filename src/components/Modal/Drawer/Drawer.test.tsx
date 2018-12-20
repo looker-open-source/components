@@ -11,7 +11,7 @@ import { ModalContent, ModalFooter, ModalHeader } from '../Layout'
 test('Drawer Hidden', () => {
   assertSnapshot(
     <Drawer content="words and stuff">
-      <a>🥑</a>
+      <Button>🥑</Button>
     </Drawer>
   )
 })
@@ -27,7 +27,7 @@ test('Drawer, backdrop customized', () => {
       content="words and stuff"
       backdropStyles={{ background: 'purple', opacity: 1 }}
     >
-      <a>🥑</a>
+      <Button>🥑</Button>
     </Drawer>
   )
 })

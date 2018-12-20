@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { CSSTransition } from 'react-transition-group'
-import { Theme, withTheme } from '../../style'
+import { withTheme } from '../../style'
+import { ThemedProps } from '../../types'
 
 import { ModalBackdrop } from './ModalBackdrop'
 import { ModalContainer } from './ModalContainer'
@@ -21,13 +22,19 @@ export interface ModalProps {
   surfaceStyles?: React.CSSProperties
 
   /**
-   * Optionally, specify a callback to be called each time this Dialog is closed
+   * Specify a callback to be called each time this Modal is closed
    */
   onClose?: () => void
   /*
-   * Optionally, specify a callback to be called each time this Dialog is opened
+   * Specify a callback to be called each time this Modal is opened
    */
   onOpen?: () => void
+
+  /**
+   * Specify a callback to be called before trying to close the Modal. This allows for
+   * use-cases where the user might lose work (think common "Save before closing warning" type flow)
+   */
+  canClose?: () => boolean
 
   /**
    * When true, renders the Backdrop, Surface and it's contained content immediately.
@@ -43,22 +50,17 @@ export interface ModalProps {
   width?: string
 }
 
-export interface ModalInternalProps extends ModalProps {
+export interface ModalInternalProps extends ThemedProps<ModalProps> {
   /**
    * To implement Modal the Surface is supplied as a function so it can consume the animationState of the Modal.
    * animationState will be null, 'exited', 'entering' or 'exiting' and can be used to set CSS class on Surface
    * element to provide CSS transitions. (See DialogSurface & DrawerSurface for implementation examples)
    */
   render: (animationState: string) => React.ReactNode
-
-  /**
-   * A Lens compatible theme object. This is passed in automatically by the
-   * withTheme higher-order helper.
-   */
-  theme: Theme
 }
 
 export interface ModalState {
+  bodyStyleOverflow?: string | null
   isOpen: boolean
 }
 
@@ -118,15 +120,21 @@ class Internal extends React.Component<ModalInternalProps, ModalState> {
   }
 
   private open = () => {
-    document.body.style.overflow = 'hidden'
     this.props.onOpen && this.props.onOpen()
-    this.setState({ isOpen: true })
+    this.setState({
+      bodyStyleOverflow: document.body.style.overflow,
+      isOpen: true,
+    })
+    document.body.style.overflow = 'hidden'
   }
 
   private close = () => {
-    document.body.style.overflow = null
+    if (this.props.canClose && !this.props.canClose()) return
+
     this.props.onClose && this.props.onClose()
-    this.setState({ isOpen: false })
+    this.state.bodyStyleOverflow &&
+      (document.body.style.overflow = this.state.bodyStyleOverflow)
+    this.setState({ isOpen: false, bodyStyleOverflow: undefined })
   }
 
   private handleEscapePress = (event: KeyboardEvent) => {
