@@ -132,7 +132,7 @@ class Internal extends React.Component<ModalInternalProps, ModalState> {
     if (this.props.canClose && !this.props.canClose()) return
 
     this.props.onClose && this.props.onClose()
-    this.state.bodyStyleOverflow &&
+    this.state.bodyStyleOverflow !== undefined &&
       (document.body.style.overflow = this.state.bodyStyleOverflow)
     this.setState({ isOpen: false, bodyStyleOverflow: undefined })
   }
