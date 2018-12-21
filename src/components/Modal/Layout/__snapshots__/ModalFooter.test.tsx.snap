@@ -1,0 +1,300 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModalFooter with Button 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  padding: 1.25rem;
+}
+
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 0.25rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  margin-right: 0.5rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+}
+
+.c1 {
+  font-weight: 600;
+  outline: none;
+  -webkit-transition: border 80ms;
+  transition: border 80ms;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: middle;
+  white-space: nowrap;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 1rem;
+  line-height: 34px;
+  border-style: solid;
+  border-width: 0.0625rem;
+  background: transparent;
+  border-color: transparent;
+  color: #64518A;
+}
+
+.c1:focus {
+  box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
+}
+
+.c1[disabled] {
+  cursor: default;
+  -webkit-filter: grayscale(0.3);
+  filter: grayscale(0.3);
+  opacity: 0.25;
+}
+
+.c1[disabled]:hover,
+.c1[disabled]:active,
+.c1[disabled]:focus {
+  background-color: transparent;
+  border-color: transparent;
+  color: #64518A;
+}
+
+.c1:hover,
+.c1:focus,
+.c1.hover {
+  background: #F3F2FF;
+  border-color: #F3F2FF;
+  color: #6C43E0;
+}
+
+.c1:active,
+.c1.active {
+  background: #E8E5FF;
+  border-color: #E8E5FF;
+  color: #6C43E0;
+}
+
+<footer
+  className="c0"
+>
+  <button
+    className="c1 c2"
+  >
+    Cancel
+  </button>
+</footer>
+`;
+
+exports[`ModalFooter with ModalContext 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  padding: 1.25rem;
+}
+
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 0.25rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  margin-right: 0.75rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+}
+
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  cursor: pointer;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 0.25rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+}
+
+.c1 {
+  font-weight: 600;
+  outline: none;
+  -webkit-transition: border 80ms;
+  transition: border 80ms;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: middle;
+  white-space: nowrap;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 1rem;
+  line-height: 34px;
+  border-style: solid;
+  border-width: 0.0625rem;
+  background: transparent;
+  border-color: transparent;
+  color: #64518A;
+}
+
+.c1:focus {
+  box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
+}
+
+.c1[disabled] {
+  cursor: default;
+  -webkit-filter: grayscale(0.3);
+  filter: grayscale(0.3);
+  opacity: 0.25;
+}
+
+.c1[disabled]:hover,
+.c1[disabled]:active,
+.c1[disabled]:focus {
+  background-color: transparent;
+  border-color: transparent;
+  color: #64518A;
+}
+
+.c1:hover,
+.c1:focus,
+.c1.hover {
+  background: #F3F2FF;
+  border-color: #F3F2FF;
+  color: #6C43E0;
+}
+
+.c1:active,
+.c1.active {
+  background: #E8E5FF;
+  border-color: #E8E5FF;
+  color: #6C43E0;
+}
+
+.c3 {
+  font-weight: 600;
+  outline: none;
+  -webkit-transition: border 80ms;
+  transition: border 80ms;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: middle;
+  white-space: nowrap;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 1rem;
+  line-height: 34px;
+  border-style: solid;
+  border-width: 0.0625rem;
+  background: #CC1F36;
+  border-color: #CC1F36;
+  color: #FFFFFF;
+}
+
+.c3:focus {
+  box-shadow: 0 0 0 0.15rem rgba(204,31,54,0.25);
+}
+
+.c3[disabled] {
+  cursor: default;
+  -webkit-filter: grayscale(0.3);
+  filter: grayscale(0.3);
+  opacity: 0.25;
+}
+
+.c3[disabled]:hover,
+.c3[disabled]:active,
+.c3[disabled]:focus {
+  background-color: #CC1F36;
+  border-color: #C1C6CC;
+}
+
+.c3:hover,
+.c3:focus,
+.c3.hover {
+  background: #B2121F;
+  border-color: #B2121F;
+}
+
+.c3:active,
+.c3.active {
+  background: #990F14;
+  border-color: #990F14;
+}
+
+<footer
+  className="c0"
+>
+  <button
+    className="c1 c2"
+  >
+    Cancel
+  </button>
+  <button
+    className="c3 c4"
+    onClick={[Function]}
+  >
+    Yes, Delete "Stuff"
+  </button>
+</footer>
+`;

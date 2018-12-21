@@ -37,6 +37,23 @@ const componentSections = [
       'src/components/Form/**/*.tsx',
     ],
   },
+  {
+    name: 'Modals: Dialog & Drawer',
+    sectionDepth: 1,
+    content: 'src/components/Modal/Modal.md',
+    components: ['src/components/Modal/**/*.tsx'],
+    ignore: [
+      'src/components/Modal/ModalBackdrop.tsx',
+      'src/components/Modal/ModalContainer.tsx',
+      'src/components/Modal/ModalContext.tsx',
+      'src/components/Modal/Modal.tsx',
+      'src/components/Modal/SurfaceBase.tsx',
+      'src/components/Modal/withModal.tsx',
+
+      'src/components/Modal/Dialog/DialogSurface.tsx',
+      'src/components/Modal/Drawer/DrawerSurface.tsx',
+    ],
+  },
 ]
 
 const contentSection = {
