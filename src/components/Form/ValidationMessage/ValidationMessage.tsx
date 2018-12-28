@@ -32,8 +32,8 @@ const InternalValidationMessage: React.SFC<ValidationMessageProps> = ({
   return (
     <Box
       {...props}
-      mr="small"
-      mt="small"
+      mr="xsmall"
+      mt="xsmall"
       fontSize={props.theme!.components.ValidationMessage.fontSize}
       color={handleValidationType()}
     >

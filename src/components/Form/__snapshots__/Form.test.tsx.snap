@@ -218,8 +218,8 @@ exports[`Form with one invalid child and a submit button 1`] = `
   -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   font-size: 1rem;
   line-height: 34px;
   border-style: solid;
