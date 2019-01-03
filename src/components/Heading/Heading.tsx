@@ -39,6 +39,7 @@ const InternalHeading: React.SFC<ThemedProps<HeadingProps>> = ({
   size,
   weight,
   transform,
+  truncate,
   level,
   theme,
   ...props
@@ -67,22 +68,16 @@ function getFontSize(
     switch (level) {
       case 'h1':
         return theme.fontSizes.xxlarge
-        break
       case 'h2':
         return theme.fontSizes.xlarge
-        break
       case 'h3':
         return theme.fontSizes.large
-        break
       case 'h4':
         return theme.fontSizes.medium
-        break
       case 'h5':
         return theme.fontSizes.small
-        break
       case 'h6':
         return theme.fontSizes.xsmall
-        break
       default:
         return theme.fontSizes.large
     }

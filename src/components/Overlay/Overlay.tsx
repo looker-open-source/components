@@ -40,7 +40,7 @@ export interface OverlayInteractiveProps {
    * When true, renders the popover as open immediately.
    * @default false
    */
-  showImmediately?: boolean
+  open?: boolean
 }
 
 export interface OverlayProps extends OverlayInteractiveProps {
@@ -77,8 +77,8 @@ export interface OverlayState {
 
 class InternalOverlay extends React.Component<OverlayProps, OverlayState> {
   public static defaultProps: OverlayProps = {
+    open: false,
     overlayContentFactory: () => null,
-    showImmediately: false,
     theme: {} as Theme,
     trigger: 'hover',
   }
@@ -90,7 +90,7 @@ class InternalOverlay extends React.Component<OverlayProps, OverlayState> {
     this.popperRef = null
     this.triggerRef = null
     this.state = {
-      show: !!props.showImmediately,
+      show: !!props.open,
     }
   }
 

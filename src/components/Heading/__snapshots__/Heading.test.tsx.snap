@@ -56,7 +56,7 @@ exports[`A <h1> Heading sized to <h2> 1`] = `
 </h1>
 `;
 
-exports[`A Heading to semi-bold 1`] = `
+exports[`A Heading to bold 1`] = `
 .c1 {
   border: 0;
   box-sizing: border-box;
@@ -138,7 +138,6 @@ exports[`A Heading truncated 1`] = `
 
 <h2
   className="c0 c1"
-  truncate={true}
 >
   🥑
 </h2>

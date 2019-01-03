@@ -115,11 +115,11 @@ export const Field = (props: FieldProps & { children?: React.ReactNode }) => {
     ? { fontWeight: props.labelFontWeight }
     : {}
   return (
-    <FormControl alignLabel={props.alignLabel} mb="small">
+    <FormControl alignLabel={props.alignLabel} mb="xsmall">
       <Label
         htmlFor={props.id}
         {...handleHorizontalAlignment(props.alignLabel, props.labelWidth)}
-        ml={props.alignLabel === 'right' ? 'small' : undefined}
+        ml={props.alignLabel === 'right' ? 'xsmall' : undefined}
         {...labelFontWeight}
       >
         {props.label}
@@ -127,12 +127,12 @@ export const Field = (props: FieldProps & { children?: React.ReactNode }) => {
       </Label>
       <FormControl
         alignLabel={getValidationMessageAlignment(props.alignValidationMessage)}
-        mb="small"
+        mb="xsmall"
       >
         <FlexItem>{props.children}</FlexItem>
         {props.validationMessage ? (
           <ValidationMessage
-            ml={props.alignValidationMessage === 'right' ? 'small' : undefined}
+            ml={props.alignValidationMessage === 'right' ? 'xsmall' : undefined}
             {...props.validationMessage}
           />
         ) : null}

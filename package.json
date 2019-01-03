@@ -1,6 +1,6 @@
 {
   "name": "looker-lens",
-  "version": "0.0.1-alpha.32",
+  "version": "0.0.1-beta.1",
   "main": "dist/index",
   "license": "MIT",
   "devDependencies": {
@@ -20,7 +20,9 @@
     "@types/react": "16.4.8",
     "@types/react-dom": "16.0.6",
     "@types/react-intl": "2.3.5",
+    "@types/react-resize-detector": "^3.1.0",
     "@types/react-test-renderer": "16.0.1",
+    "@types/react-transition-group": "^2.0.14",
     "@types/styled-system": "^3.0.9",
     "babel-core": "^7.0.0-bridge",
     "babel-jest": "23.6.0",
@@ -71,6 +73,8 @@
     "react": "16.5.1",
     "react-dom": "16.4.2",
     "react-popper": "^1.0.2",
+    "react-resize-detector": "^3.2.1",
+    "react-transition-group": "^2.5.1",
     "styled-system": "^3.1.6",
     "svg-inline-loader": "^0.8.0"
   },
@@ -135,7 +139,7 @@
     "lint-staged": "$(yarn bin)/lint-staged",
     "npmrc": "bin/create_npmrc.sh",
     "npmrc:clean": "rm .npmrc",
-    "prepublishOnly": "yarn clean && yarn test && yarn build-components",
+    "prepublishOnly": "yarn clean && yarn && yarn test && yarn build-components",
     "prettify": "yarn prettier \"./**/*.ts?(x)\" \"./**/*.js?(x)\" '!./node_modules/**' '!./dist/**' --write",
     "release": "npm publish",
     "test": "yarn build-icons && tsc --noEmit -p tsconfig.compileAllFiles.json && yarn jest"

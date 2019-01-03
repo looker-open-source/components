@@ -304,7 +304,7 @@ exports[`Box Responsive margin top Box 1`] = `
 
 @media screen and (min-width:48rem) {
   .c0 {
-    margin-top: 0.5rem;
+    margin-top: 0.75rem;
   }
 }
 

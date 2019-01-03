@@ -182,10 +182,10 @@ function calcLineHeight(size: number) {
 
 function sizeHelper(props: ThemedProps<ButtonProps>) {
   const sizes: Record<ButtonSizes, [string, string, ButtonSpacingSizes]> = {
-    large: ['xlarge', calcLineHeight(44), 'xlarge'],
-    medium: ['medium', calcLineHeight(36), 'large'],
-    small: ['small', calcLineHeight(28), 'medium'],
-    xsmall: ['xsmall', calcLineHeight(24), 'small'],
+    large: ['xlarge', calcLineHeight(44), 'large'],
+    medium: ['medium', calcLineHeight(36), 'medium'],
+    small: ['small', calcLineHeight(28), 'small'],
+    xsmall: ['xsmall', calcLineHeight(24), 'xsmall'],
   }
   const [fontSize, lineHeight, px] = sizes[props.size || 'medium']
   return mixed({

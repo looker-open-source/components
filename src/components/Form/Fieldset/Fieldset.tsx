@@ -65,7 +65,7 @@ export const Fieldset: React.SFC<FieldsetProps> = ({
 
   return (
     <Box is="fieldset" {...props}>
-      <FormControl mb="small" alignLabel={props.alignLegend}>
+      <FormControl mb="xsmall" alignLabel={props.alignLegend}>
         {legend ? (
           <FlexItem>
             <Legend>{legend}</Legend>

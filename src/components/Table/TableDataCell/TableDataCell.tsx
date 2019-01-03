@@ -7,7 +7,7 @@ export const TableDataCell: React.SFC<BoxProps<HTMLTableDataCellElement>> = ({
   <Box
     is="td"
     px="none"
-    py="small"
+    py="xsmall"
     borderTop="solid 1px"
     borderColor="palette.charcoal200"
     {...props}
