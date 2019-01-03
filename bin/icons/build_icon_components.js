@@ -35,10 +35,11 @@ async function cleanGlyphsAndComponents() {
 /**
  * Step 1: convert the SVG to React components using CLI `svgr` command.
  * This by default converts all components to PascalCased filenames.
+ * The --replace-attr-values flag is used to replace fills on exported svg files from Figma so Icon color can be changed
  */
 async function convertSVGToComponent() {
   const result = await exec(
-    `yarn svgr --icon --ext ${iconGlyphFileExtension} --out-dir ${iconGlyphPath} ${iconSVGPath}`
+    `yarn svgr --icon --ext ${iconGlyphFileExtension} --replace-attr-values "#1C2125=currentColor" --out-dir ${iconGlyphPath} ${iconSVGPath}`
   )
   if (result.stderr) {
     console.log(result.stderr)
@@ -111,12 +112,37 @@ async function generateIconNameFile() {
 async function generateMarkdownFileForAllIcons() {
   function styleguidistAllIconsMarkdown(componentNames) {
     const componentIconTags = componentNames
-      .map(name => `<Icon name="${name}" size={32} />`)
+      .map(
+        name => `
+        <CopyToClipboard
+          text={'<Icon name="${name}" />'}
+          onCopy={() => alert('Copied icon "${name}" to clipboard.')}
+        >
+          <Box display="inline-block" px="xsmall" py="medium" width="16.66667%" textAlign="center">
+            <Icon name="${name}" size={32} />
+            <Paragraph mt="small" size="xsmall" variant="secondary">${name}</Paragraph>
+          </Box>
+        </CopyToClipboard>`
+      )
       .join('\n')
-    return `# All Icons
-
+    return `
+To use an Icon you pass the name of the icon to the \`name\` property on the \`<Icon />\` component
 \`\`\`js
+<Icon name="Check" size={24} />
+<Icon name="Favorite" size={24} color="palette.red400" />
+<Icon name="GearOutline" size={32} color="palette.charcoal500"/>
+\`\`\`
+
+# All Icons
+
+**Tip: ** you can click an icon below to copy it to your clipboard.
+
+\`\`\`js noeditor
+const CopyToClipboard = require('react-copy-to-clipboard');
+
+<div>
 ${componentIconTags}
+</div>
 \`\`\`
   `
   }

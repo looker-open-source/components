@@ -83,6 +83,7 @@ module.exports = {
   },
   require: [
     'chroma-js',
+    'react-copy-to-clipboard',
     path.join(__dirname, 'styleguide_components/ThemeProvider'),
     path.join(__dirname, '/static/css/style-guide.css'),
   ],

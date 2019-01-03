@@ -90,12 +90,6 @@ function textVariant(props: ThemedProps<TextProps>) {
   }
 }
 
-function alignment(align: TextAlignments | undefined) {
-  return css`
-    text-align: ${align || 'left'};
-  `
-}
-
 function getWrap(doWrap: boolean) {
   if (doWrap) {
     return css`
@@ -127,6 +121,7 @@ const InternalText: React.SFC<ThemedProps<TextProps>> = ({
       fontSize={theme.fontSizes[size || 'medium']}
       lineHeight={theme.lineHeights[size || 'medium']}
       fontWeight={getFontWeight(theme, weight)}
+      textAlign={align}
       {...props}
     >
       {props.children}
@@ -140,7 +135,6 @@ export const Text = styled<TextProps>(withTheme(InternalText))`
   -moz-osx-font-smoothing: grayscale;
   text-decoration: ${props => props.decoration};
   ${props => getTextTransform(props.textTransform)};
-  ${props => alignment(props.align)};
   ${props => getWrap(props.wrap || false)};
   ${textVariant};
 `
