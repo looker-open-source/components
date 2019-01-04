@@ -147,6 +147,6 @@ export interface FieldAttributesInterface extends CustomizableAttributes {
 }
 
 export const FieldAttributes: FieldAttributesInterface = {
-  labelMargin: 'small',
+  labelMargin: 'xsmall',
   labelWidth: '20%',
 }

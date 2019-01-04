@@ -3,7 +3,6 @@ import {
   ResponsiveBorderRadiusValue,
   ResponsiveFontSizeValue,
   ResponsiveFontWeightValue,
-  ResponsiveSpaceValue,
 } from '../style/responsive'
 import { shadows } from './elevation'
 import { fontSizes } from './font_sizes'
@@ -13,10 +12,6 @@ import { radii } from './radii'
 import { SpacingSizes } from './theme'
 
 export interface Components {
-  Field: {
-    labelMargin: SpacingSizes
-    labelWidth: ResponsiveSpaceValue
-  }
   InputText: {
     borderRadius: ResponsiveBorderRadiusValue
     fontSize: ResponsiveFontSizeValue
@@ -65,10 +60,6 @@ export interface Components {
 }
 
 export const components: Components = {
-  Field: {
-    labelMargin: 'xsmall',
-    labelWidth: '20%',
-  },
   InputText: {
     borderRadius: '4px',
     fontSize: 'small',
