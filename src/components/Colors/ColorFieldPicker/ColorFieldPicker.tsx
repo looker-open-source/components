@@ -4,11 +4,11 @@ import { radii } from '../../../style/radii'
 import { Flex } from '../../Flex'
 import { FlexItem } from '../../FlexItem'
 import {
+  CustomizableInputTextAttributes,
   Field,
   FieldProps,
   FormControl,
   InputText,
-  InputTextAttributes,
   InputTextProps,
   withForm,
 } from '../../Form'
@@ -89,12 +89,12 @@ class InternalColorFieldPicker extends React.Component<
     const hsvColor = this.getHSVColor()
     let borderRadius
     if (
-      typeof InputTextAttributes.borderRadius === 'string' &&
-      radii[InputTextAttributes.borderRadius] !== undefined
+      typeof CustomizableInputTextAttributes.borderRadius === 'string' &&
+      radii[CustomizableInputTextAttributes.borderRadius] !== undefined
     ) {
-      borderRadius = radii[InputTextAttributes.borderRadius]
+      borderRadius = radii[CustomizableInputTextAttributes.borderRadius]
     } else {
-      borderRadius = InputTextAttributes.borderRadius
+      borderRadius = CustomizableInputTextAttributes.borderRadius
     }
     const swatchBorderRadius = `${borderRadius} 0 0 ${borderRadius}`
     const inputTextBorderRadius = `0 ${borderRadius} ${borderRadius} 0`

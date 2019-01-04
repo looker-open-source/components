@@ -34,11 +34,11 @@ const InternalInputText: React.SFC<InputTextProps> = ({
       bg={handleValidationType()}
       border="solid 1px"
       borderColor="palette.charcoal300"
-      borderRadius={InputTextAttributes.borderRadius}
-      fontSize={InputTextAttributes.fontSize}
-      height={InputTextAttributes.height}
-      px={InputTextAttributes.px}
-      py={InputTextAttributes.py}
+      borderRadius={CustomizableInputTextAttributes.borderRadius}
+      fontSize={CustomizableInputTextAttributes.fontSize}
+      height={CustomizableInputTextAttributes.height}
+      px={CustomizableInputTextAttributes.px}
+      py={CustomizableInputTextAttributes.py}
       type="text"
       {...props}
     />
@@ -47,7 +47,7 @@ const InternalInputText: React.SFC<InputTextProps> = ({
 
 export const InputText = withTheme(InternalInputText)
 
-export const InputTextAttributes: CustomizableAttributes = {
+export const CustomizableInputTextAttributes: CustomizableAttributes = {
   borderRadius: 'medium',
   fontSize: 'small',
   height: '28px',
