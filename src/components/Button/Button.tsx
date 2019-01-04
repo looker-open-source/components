@@ -240,7 +240,7 @@ const InternalButton: React.SFC<ThemedProps<ButtonProps>> = ({
   return (
     <Box
       is="button"
-      borderRadius={ButtonAttributes.borderRadius}
+      borderRadius={CustomizableButtonAttributes.borderRadius}
       fontFamily="brand"
       py="none"
       display="inline-flex"
@@ -254,7 +254,7 @@ const InternalButton: React.SFC<ThemedProps<ButtonProps>> = ({
   )
 }
 
-export const ButtonAttributes: CustomizableAttributes = {
+export const CustomizableButtonAttributes: CustomizableAttributes = {
   borderRadius: 'medium',
 }
 

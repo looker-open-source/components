@@ -70,15 +70,17 @@ const handleHorizontalAlignment = (
       labelContainerAlignment.textAlign = 'right'
       labelWidth
         ? (labelContainerAlignment.width = labelWidth)
-        : (labelContainerAlignment.width = FieldAttributes.labelWidth)
-      labelContainerAlignment.mr = FieldAttributes.labelMargin
+        : (labelContainerAlignment.width =
+            CustomizableFieldAttributes.labelWidth)
+      labelContainerAlignment.mr = CustomizableFieldAttributes.labelMargin
       break
     case 'right':
       labelContainerAlignment.textAlign = 'left'
       labelWidth
         ? (labelContainerAlignment.width = labelWidth)
-        : (labelContainerAlignment.width = FieldAttributes.labelWidth)
-      labelContainerAlignment.mr = FieldAttributes.labelMargin
+        : (labelContainerAlignment.width =
+            CustomizableFieldAttributes.labelWidth)
+      labelContainerAlignment.mr = CustomizableFieldAttributes.labelMargin
       break
     case 'bottom':
     case 'top':
@@ -141,12 +143,13 @@ export const Field = (props: FieldProps & { children?: React.ReactNode }) => {
   )
 }
 
-export interface FieldAttributesInterface extends CustomizableAttributes {
+export interface CustomizableFieldAttributesInterface
+  extends CustomizableAttributes {
   labelMargin: SpacingSizes
   labelWidth: ResponsiveSpaceValue
 }
 
-export const FieldAttributes: FieldAttributesInterface = {
+export const CustomizableFieldAttributes: CustomizableFieldAttributesInterface = {
   labelMargin: 'xsmall',
   labelWidth: '20%',
 }
