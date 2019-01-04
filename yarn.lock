@@ -1602,6 +1602,7 @@ babel-core@^6.0.0, babel-core@^6.26.0:
 babel-core@^7.0.0-bridge:
   version "7.0.0-bridge.0"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/babel-core/-/babel-core-7.0.0-bridge.0.tgz#95a492ddd90f9b4e9a4a1da14eb335b87b634ece"
+  integrity sha512-poPX9mZH/5CSanm50Q+1toVci6pv5KSRv/5TWCwtzQS5XEwn40BcCrgIeMFWP9CKKIniKXNxoIOnOq4VVlGXhg==
 
 babel-generator@^6.18.0, babel-generator@^6.26.0:
   version "6.26.1"
@@ -2738,6 +2739,7 @@ copy-descriptor@^0.1.0:
 copy-to-clipboard@^3:
   version "3.0.8"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/copy-to-clipboard/-/copy-to-clipboard-3.0.8.tgz#f4e82f4a8830dce4666b7eb8ded0c9bcc313aba9"
+  integrity sha512-c3GdeY8qxCHGezVb1EFQfHYK/8NZRemgcTIzPq7PuxjHAf/raKibn2QdhHPb/y6q74PMgH6yizaDZlRmw6QyKw==
   dependencies:
     toggle-selection "^1.0.3"
 
@@ -8582,6 +8584,7 @@ react-codemirror2@^5.1.0:
 react-copy-to-clipboard@^5.0.1:
   version "5.0.1"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/react-copy-to-clipboard/-/react-copy-to-clipboard-5.0.1.tgz#8eae107bb400be73132ed3b6a7b4fb156090208e"
+  integrity sha512-ELKq31/E3zjFs5rDWNCfFL4NvNFQvGRoJdAKReD/rUPA+xxiLPQmZBZBvy2vgH7V0GE9isIQpT9WXbwIVErYdA==
   dependencies:
     copy-to-clipboard "^3"
     prop-types "^15.5.8"
@@ -10494,6 +10497,7 @@ to-regex@^3.0.1, to-regex@^3.0.2:
 toggle-selection@^1.0.3:
   version "1.0.6"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/toggle-selection/-/toggle-selection-1.0.6.tgz#6e45b1263f2017fa0acc7d89d78b15b8bf77da32"
+  integrity sha1-bkWxJj8gF/oKzH2J14sVuL932jI=
 
 tough-cookie@>=2.3.3, tough-cookie@^2.3.3, tough-cookie@~2.3.0, tough-cookie@~2.3.3:
   version "2.3.4"
