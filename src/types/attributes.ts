@@ -1,7 +1,9 @@
+import { SpacingSizes } from '../style'
 import {
   ResponsiveBorderRadiusValue,
   ResponsiveFontSizeValue,
   ResponsiveFontWeightValue,
+  ResponsiveHeightValue,
 } from '../style/responsive'
 
 export interface CustomizableAttributes {
@@ -9,4 +11,7 @@ export interface CustomizableAttributes {
   borderRadius?: ResponsiveBorderRadiusValue
   fontSize?: ResponsiveFontSizeValue
   fontWeight?: ResponsiveFontWeightValue
+  height?: ResponsiveHeightValue
+  px?: SpacingSizes
+  py?: SpacingSizes
 }

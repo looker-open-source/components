@@ -1,6 +1,5 @@
 import { OverlayBubbleStyleProps } from '../components/Overlay/OverlayBubble'
 import {
-  ResponsiveBorderRadiusValue,
   ResponsiveFontSizeValue,
   ResponsiveFontWeightValue,
 } from '../style/responsive'
@@ -12,13 +11,6 @@ import { radii } from './radii'
 import { SpacingSizes } from './theme'
 
 export interface Components {
-  InputText: {
-    borderRadius: ResponsiveBorderRadiusValue
-    fontSize: ResponsiveFontSizeValue
-    height: string
-    py: SpacingSizes
-    px: SpacingSizes
-  }
   Label: {
     color: string
     fontSize: ResponsiveFontSizeValue
@@ -60,13 +52,6 @@ export interface Components {
 }
 
 export const components: Components = {
-  InputText: {
-    borderRadius: '4px',
-    fontSize: 'small',
-    height: '28px',
-    px: 'xsmall',
-    py: 'none',
-  },
   Label: {
     color: palette.charcoal800,
     fontSize: fontSizes.small,

@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { Theme, withTheme } from '../../../style'
+import { radii } from '../../../style/radii'
 import { Flex } from '../../Flex'
 import { FlexItem } from '../../FlexItem'
 import {
@@ -7,6 +8,7 @@ import {
   FieldProps,
   FormControl,
   InputText,
+  InputTextAttributes,
   InputTextProps,
   withForm,
 } from '../../Form'
@@ -85,9 +87,17 @@ class InternalColorFieldPicker extends React.Component<
       ...inputTextProps
     } = this.props
     const hsvColor = this.getHSVColor()
-    const br = this.props.theme!.components.InputText.borderRadius
-    const swatchBorderRadius = `${br} 0 0 ${br}`
-    const inputTextBorderRadius = `0 ${br} ${br} 0`
+    let borderRadius
+    if (
+      typeof InputTextAttributes.borderRadius === 'string' &&
+      radii[InputTextAttributes.borderRadius] !== undefined
+    ) {
+      borderRadius = radii[InputTextAttributes.borderRadius]
+    } else {
+      borderRadius = InputTextAttributes.borderRadius
+    }
+    const swatchBorderRadius = `${borderRadius} 0 0 ${borderRadius}`
+    const inputTextBorderRadius = `0 ${borderRadius} ${borderRadius} 0`
 
     const content = (
       <Flex flexDirection="column">

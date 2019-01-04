@@ -10,7 +10,7 @@ exports[`InputText default 1`] = `
   padding: 0;
   vertical-align: baseline;
   border: solid 1px;
-  border-radius: 4px;
+  border-radius: 0.25rem;
   border-color: #C1C6CC;
   font-size: 0.875rem;
   height: 28px;
@@ -36,7 +36,7 @@ exports[`InputText should accept disabled 1`] = `
   padding: 0;
   vertical-align: baseline;
   border: solid 1px;
-  border-radius: 4px;
+  border-radius: 0.25rem;
   border-color: #C1C6CC;
   font-size: 0.875rem;
   height: 28px;
@@ -63,7 +63,7 @@ exports[`InputText should accept readOnly 1`] = `
   padding: 0;
   vertical-align: baseline;
   border: solid 1px;
-  border-radius: 4px;
+  border-radius: 0.25rem;
   border-color: #C1C6CC;
   font-size: 0.875rem;
   height: 28px;
@@ -90,7 +90,7 @@ exports[`InputText should accept required 1`] = `
   padding: 0;
   vertical-align: baseline;
   border: solid 1px;
-  border-radius: 4px;
+  border-radius: 0.25rem;
   border-color: #C1C6CC;
   font-size: 0.875rem;
   height: 28px;
@@ -117,7 +117,7 @@ exports[`InputText with a placeholder 1`] = `
   padding: 0;
   vertical-align: baseline;
   border: solid 1px;
-  border-radius: 4px;
+  border-radius: 0.25rem;
   border-color: #C1C6CC;
   font-size: 0.875rem;
   height: 28px;
@@ -144,7 +144,7 @@ exports[`InputText with a value 1`] = `
   padding: 0;
   vertical-align: baseline;
   border: solid 1px;
-  border-radius: 4px;
+  border-radius: 0.25rem;
   border-color: #C1C6CC;
   font-size: 0.875rem;
   height: 28px;
@@ -171,7 +171,7 @@ exports[`InputText with an error validation 1`] = `
   padding: 0;
   vertical-align: baseline;
   border: solid 1px;
-  border-radius: 4px;
+  border-radius: 0.25rem;
   border-color: #C1C6CC;
   background-color: #FFF2F4;
   font-size: 0.875rem;
@@ -198,7 +198,7 @@ exports[`InputText with aria-describedby 1`] = `
   padding: 0;
   vertical-align: baseline;
   border: solid 1px;
-  border-radius: 4px;
+  border-radius: 0.25rem;
   border-color: #C1C6CC;
   font-size: 0.875rem;
   height: 28px;
@@ -225,7 +225,7 @@ exports[`InputText with name and id 1`] = `
   padding: 0;
   vertical-align: baseline;
   border: solid 1px;
-  border-radius: 4px;
+  border-radius: 0.25rem;
   border-color: #C1C6CC;
   font-size: 0.875rem;
   height: 28px;

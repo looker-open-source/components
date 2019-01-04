@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { Theme, withTheme } from '../../../../style'
+import { CustomizableAttributes } from '../../../../types/attributes'
 import { Box, BoxProps } from '../../../Box'
 import { InputProps } from '../InputProps'
 
@@ -33,11 +34,11 @@ const InternalInputText: React.SFC<InputTextProps> = ({
       bg={handleValidationType()}
       border="solid 1px"
       borderColor="palette.charcoal300"
-      borderRadius={props.theme!.components.InputText.borderRadius}
-      fontSize={props.theme!.components.InputText.fontSize}
-      height={props.theme!.components.InputText.height}
-      px={props.theme!.components.InputText.px}
-      py={props.theme!.components.InputText.py}
+      borderRadius={InputTextAttributes.borderRadius}
+      fontSize={InputTextAttributes.fontSize}
+      height={InputTextAttributes.height}
+      px={InputTextAttributes.px}
+      py={InputTextAttributes.py}
       type="text"
       {...props}
     />
@@ -45,3 +46,11 @@ const InternalInputText: React.SFC<InputTextProps> = ({
 }
 
 export const InputText = withTheme(InternalInputText)
+
+export const InputTextAttributes: CustomizableAttributes = {
+  borderRadius: 'medium',
+  fontSize: 'small',
+  height: '28px',
+  px: 'xsmall',
+  py: 'none',
+}
