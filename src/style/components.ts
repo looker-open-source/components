@@ -1,30 +1,9 @@
 import { OverlayBubbleStyleProps } from '../components/Overlay/OverlayBubble'
-import {
-  ResponsiveFontSizeValue,
-  ResponsiveFontWeightValue,
-} from '../style/responsive'
 import { shadows } from './elevation'
-import { fontSizes } from './font_sizes'
-import { fontWeights } from './font_weights'
 import { palette } from './palette'
 import { radii } from './radii'
-import { SpacingSizes } from './theme'
 
 export interface Components {
-  Label: {
-    color: string
-    fontSize: ResponsiveFontSizeValue
-    fontWeight: ResponsiveFontWeightValue
-  }
-  Legend: {
-    bottomPadding: SpacingSizes
-    color: string
-    fontSize: ResponsiveFontSizeValue
-    fontWeight: ResponsiveFontWeightValue
-  }
-  ValidationMessage: {
-    fontSize: ResponsiveFontSizeValue
-  }
   Modal: {
     zIndex: number
     surface: OverlayBubbleStyleProps
@@ -52,17 +31,6 @@ export interface Components {
 }
 
 export const components: Components = {
-  Label: {
-    color: palette.charcoal800,
-    fontSize: fontSizes.small,
-    fontWeight: fontWeights.semiBold,
-  },
-  Legend: {
-    bottomPadding: 'xsmall',
-    color: palette.charcoal800,
-    fontSize: fontSizes.xxxlarge,
-    fontWeight: fontWeights.light,
-  },
   Modal: {
     surface: {
       backgroundColor: palette.white,
@@ -109,5 +77,4 @@ export const components: Components = {
       color: palette.charcoal000,
     },
   },
-  ValidationMessage: { fontSize: fontSizes.xsmall },
 }
