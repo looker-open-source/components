@@ -42,7 +42,7 @@ const generateMarkers = (
       key={i}
       radius={markerRadius}
       rotateAngle={(360 / markers) * i}
-      speed={speed!}
+      speed={speed}
     />
   ))
 }
