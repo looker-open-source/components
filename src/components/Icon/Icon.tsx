@@ -2,9 +2,10 @@ import * as React from 'react'
 import * as Glyphs from '../../icons/build/glyphs'
 import { IconNames } from '../../icons/build/IconNames'
 import { styled } from '../../style'
-import { Box } from '../Box'
+import { Box, BoxPropsWithout } from '../Box'
 
-export interface IconProps {
+export interface IconProps
+  extends BoxPropsWithout<HTMLDivElement, 'color' | 'size'> {
   name: IconNames
   size?: number | string
   color?: string
