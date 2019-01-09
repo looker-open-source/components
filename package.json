@@ -131,7 +131,7 @@
     "start": "yarn build-icons && styleguidist server",
     "build": "yarn build-components && yarn build-styleguide",
     "build-icons": "node bin/icons/build_icon_components.js",
-    "build-components": "yarn build-icons && tsc && babel src --out-dir dist --extensions \".ts,.tsx,.js,.jsx\" -s",
+    "build-components": "yarn build-icons && tsc -p tsconfig.build.json && babel src --out-dir dist --extensions \".ts,.tsx,.js,.jsx\" -s",
     "build-styleguide": "yarn build-icons && styleguidist build",
     "clean": "rimraf dist && rimraf styleguide && rimraf src/icons/build",
     "lint": "yarn lint:ts && yarn lint:css",
