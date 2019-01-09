@@ -1,12 +1,10 @@
 import * as React from 'react'
-import { Theme } from '../../../style'
 import { fontWeights } from '../../../style/font_weights'
 import { CustomizableAttributes } from '../../../types/attributes'
 import { Box, BoxProps } from '../../Box'
 
 export interface LabelProps extends BoxProps<HTMLLabelElement> {
   htmlFor?: string
-  theme?: Theme
 }
 
 export const Label: React.SFC<LabelProps> = ({ ...props }) => (

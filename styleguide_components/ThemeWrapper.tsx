@@ -1,8 +1,9 @@
 import * as React from 'react'
 import { ThemeProvider } from 'styled-components'
+import { CustomizableOverlayAttributes } from '../src/components/Overlay/Overlay'
 import { theme } from '../src/style'
 
-theme.components.Overlay.zIndex = 100
+CustomizableOverlayAttributes.zIndex = 100
 theme.components.Modal.zIndex = 100
 
 export default class ThemeWrapper extends React.Component {

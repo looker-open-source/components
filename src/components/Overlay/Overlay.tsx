@@ -7,7 +7,6 @@ import {
   Reference,
   RefHandler,
 } from 'react-popper'
-import { Theme } from '../../style'
 import { CustomizableAttributes } from '../../types/attributes'
 import { Box } from '../Box'
 
@@ -56,11 +55,6 @@ export interface OverlayProps extends OverlayInteractiveProps {
    */
   overlayContentFactory: (props: OverlayContentProps) => React.ReactNode
   /**
-   * A Lens compatible theme object. This is passed in automatically by the
-   * withTheme higher-order helper.
-   */
-  theme: Theme
-  /**
    * Optional backdrop styles to merge with the Backdrop implementation. These
    * must be a CSSProperty compatible key / value paired object. For example
    * {backgroundColor: 'pink'}.
@@ -90,7 +84,6 @@ export class Overlay extends React.Component<OverlayProps, OverlayState> {
   public static defaultProps: OverlayProps = {
     open: false,
     overlayContentFactory: () => null,
-    theme: {} as Theme,
     trigger: 'hover',
   }
   private popperRef: HTMLElement | null
@@ -244,12 +237,14 @@ export class Overlay extends React.Component<OverlayProps, OverlayState> {
   }
 }
 
+export interface BackdropStyle {
+  backgroundColor?: string
+  opacity?: number
+}
+
 export interface CustomizableOverlayAttributes extends CustomizableAttributes {
   zIndex: number
-  backdrop: {
-    backgroundColor: string
-    opacity: number
-  }
+  backdrop: BackdropStyle
 }
 
 export const CustomizableOverlayAttributes: CustomizableOverlayAttributes = {

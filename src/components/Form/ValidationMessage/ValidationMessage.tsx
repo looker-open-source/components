@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { Theme } from '../../../style'
 import { CustomizableAttributes } from '../../../types/attributes'
 import { Box, BoxProps } from '../../Box'
 
@@ -14,7 +13,6 @@ export interface ValidationMessageProps extends BoxProps<HTMLDivElement> {
    * The validation message to render.
    */
   message?: string
-  theme?: Theme
 }
 
 export const ValidationMessage: React.SFC<ValidationMessageProps> = ({
