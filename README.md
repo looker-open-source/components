@@ -6,6 +6,10 @@ This repository hosts both the functional components Lens publishes and the code
 
 If you're looking for information about working or writing components you're probably best served by visiting https://lens.looker.com.
 
+# Issues & JIRA
+
+Please file issues on [Lens' JIRA board](https://looker.atlassian.net/secure/RapidBoard.jspa?rapidView=148&projectKey=LENS&view=planning.nodetail)
+
 # Contents
 
 - [Setting up the Lens Project](#setting-up-the-lens-project)
