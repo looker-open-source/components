@@ -17,7 +17,7 @@ export const Legend: React.SFC<BoxProps<HTMLLegendElement>> = ({
   />
 )
 
-interface CustomizableLegendAttributes extends CustomizableAttributes {
+export interface CustomizableLegendAttributes extends CustomizableAttributes {
   bottomPadding: SpacingSizes
 }
 
