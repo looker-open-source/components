@@ -16,7 +16,7 @@ export type TextVariants =
   | 'inverted'
 
 export interface TextProps
-  extends BoxPropsWithout<HTMLSpanElement, 'color' | 'size' | 'wrap' | 'is'> {
+  extends BoxPropsWithout<HTMLSpanElement, 'size' | 'wrap' | 'is'> {
   /** Base html text element
    *  @default "span"
    */
@@ -84,9 +84,7 @@ function textVariant(props: ThemedProps<TextProps>) {
         color: ${props.theme.colors.palette.textInverted};
       `
     default:
-      return css`
-        color: ${props.theme.colors.palette.charcoal900};
-      `
+      return false
   }
 }
 

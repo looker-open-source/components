@@ -20,7 +20,6 @@ exports[`A Paragraph component Aligned 1`] = `
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-transform: none;
-  color: #262D33;
 }
 
 <p
@@ -49,7 +48,6 @@ exports[`A Paragraph component resized 1`] = `
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-transform: none;
-  color: #262D33;
 }
 
 <p
@@ -78,7 +76,6 @@ exports[`A Paragraph component text transformed 1`] = `
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-transform: uppercase;
-  color: #262D33;
 }
 
 <p
@@ -107,7 +104,6 @@ exports[`A Paragraph component tuncated 1`] = `
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-transform: none;
-  color: #262D33;
 }
 
 .c0 {
@@ -171,7 +167,6 @@ exports[`A Paragrapht component weight 1`] = `
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-transform: none;
-  color: #262D33;
 }
 
 <p
@@ -202,7 +197,6 @@ exports[`A Text component decorated 1`] = `
   -webkit-text-decoration: line-through;
   text-decoration: line-through;
   text-transform: none;
-  color: #262D33;
 }
 
 <p
@@ -232,7 +226,6 @@ exports[`A Text component wrapped 1`] = `
   -moz-osx-font-smoothing: grayscale;
   text-transform: none;
   overflow-wrap: break-word;
-  color: #262D33;
 }
 
 <p
@@ -261,7 +254,6 @@ exports[`A default Paragraph component 1`] = `
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-transform: none;
-  color: #262D33;
 }
 
 <p

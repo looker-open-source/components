@@ -2,6 +2,7 @@ import { Text } from './Text'
 
 import {
   snapshotTestTextComponent,
+  snapshotTestTextComponentColor,
   snapshotTestTextComponentDecoration,
   snapshotTestTextComponentFontRamp,
   snapshotTestTextComponentFontWeight,
@@ -24,6 +25,10 @@ test('A Text component weight', () => {
 
 test('A Text component with variant', () => {
   snapshotTestTextComponentVariant(Text)
+})
+
+test('A Text component with color', () => {
+  snapshotTestTextComponentColor(Text)
 })
 
 test('A Text component text transformed', () => {
