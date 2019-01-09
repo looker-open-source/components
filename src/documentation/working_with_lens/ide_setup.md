@@ -60,7 +60,7 @@ Additionally a simplistic [launch.json](https://github.com/looker/lens/blob/mast
 ##### Strongly Recommended Plugins
 
 - [Styled Components](https://github.com/styled-components/vscode-styled-components) enables sytax highlighting and intellisense for inline CSS.
-- [TSLint](https://github.com/Microsoft/vscode-tslint) enables inline linting and fixing of code on save
+- [TSLint](https://github.com/Microsoft/vscode-typescript-tslint-plugin) enables inline linting and fixing of code on save. If you have the older vscode-tslint plugin installed, uninstall it first.
 
 ##### Very Helpful Plugins
 

@@ -1,8 +1,11 @@
 {
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
     "declaration": true,
+    "esModuleInterop": true,
+    "emitDeclarationOnly": true,
     "jsx": "react",
+    "lib": ["es6", "es2017.object", "dom"],
+    "moduleResolution": "node",
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,
     "noUnusedLocals": true,
@@ -10,16 +13,18 @@
     "outDir": "dist",
     "plugins": [
       {
-        "name": "tslint-language-service",
-        "alwaysShowRuleFailuresAsWarnings": true
+        "name": "typescript-tslint-plugin",
+        "alwaysShowRuleFailuresAsWarnings": true,
+        "ignoreDefinitionFiles": true,
+        "configFile": "../tslint.json",
+        "suppressWhileTypeErrorsPresent": false,
+        "mockTypeScriptVersion": false
       }
     ],
     "skipLibCheck": true,
     "sourceMap": true,
     "strict": true,
-    "module": "commonjs",
-    "target": "es6",
-    "lib": ["es6", "es2017.object", "dom"]
+    "target": "esnext",
   },
   "include": ["./src/**/*.ts", "./src/**/*.tsx", "./config/typescript/**/*"],
   "exclude": ["./src/**/*.test.*"]

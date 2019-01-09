@@ -53,12 +53,12 @@
     "stylelint-processor-styled-components": "1.5.0",
     "ts-jest": "23.10.4",
     "ts-loader": "5.2.1",
-    "tslint": "5.11.0",
-    "tslint-config-prettier": "1.15.0",
+    "tslint": "5.12.0",
+    "tslint-config-prettier": "1.17.0",
     "tslint-config-standard": "8.0.1",
-    "tslint-language-service": "^0.9.9",
     "tslint-react": "3.6.0",
-    "typescript": "3.1.2",
+    "typescript": "3.2.2",
+    "typescript-tslint-plugin": "^0.2.1",
     "typings-for-css-modules-loader": "1.7.0",
     "webpack": "4.20.2"
   },
@@ -110,7 +110,7 @@
     "**/*.ts?(x)": [
       "stylelint",
       "prettier --write",
-      "tslint --fix",
+      "tslint -p tsconfig.test.json --fix",
       "git add"
     ],
     "**/*.js?(x)": [
@@ -131,19 +131,19 @@
     "start": "yarn build-icons && styleguidist server",
     "build": "yarn build-components && yarn build-styleguide",
     "build-icons": "node bin/icons/build_icon_components.js",
-    "build-components": "yarn build-icons && tsc --emitDeclarationOnly && babel src --out-dir dist --extensions \".ts,.tsx,.js,.jsx\" -s",
+    "build-components": "yarn build-icons && tsc && babel src --out-dir dist --extensions \".ts,.tsx,.js,.jsx\" -s",
     "build-styleguide": "yarn build-icons && styleguidist build",
     "clean": "rimraf dist && rimraf styleguide && rimraf src/icons/build",
     "lint": "yarn lint:ts && yarn lint:css",
     "lint:css": "stylelint \"src/**/*.ts?(x)\"",
-    "lint:ts": "tslint -p tsconfig.linter.json --format stylish",
+    "lint:ts": "tslint -p tsconfig.test.json --format stylish",
     "lint-staged": "$(yarn bin)/lint-staged",
     "npmrc": "bin/create_npmrc.sh",
     "npmrc:clean": "rm .npmrc",
     "prepublishOnly": "yarn clean && yarn && yarn test && yarn build-components",
     "prettify": "yarn prettier \"./**/*.ts?(x)\" \"./**/*.js?(x)\" '!./node_modules/**' '!./dist/**' --write",
     "release": "npm publish",
-    "test": "yarn build-icons && tsc --noEmit -p tsconfig.compileAllFiles.json && yarn jest"
+    "test": "yarn build-icons && tsc -p tsconfig.test.json && yarn jest"
   },
   "types": "dist"
 }
