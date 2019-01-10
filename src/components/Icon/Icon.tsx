@@ -7,7 +7,6 @@ import { Box, BoxPropsWithout } from '../Box'
 export interface IconProps extends BoxPropsWithout<HTMLDivElement, 'size'> {
   name: IconNames
   size?: number | string
-  color?: string
 }
 
 const InternalIcon: React.SFC<IconProps> = ({
