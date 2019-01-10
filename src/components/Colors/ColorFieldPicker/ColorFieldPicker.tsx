@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { Theme, withTheme } from '../../../style'
 import { radii } from '../../../style/radii'
 import { Flex } from '../../Flex'
 import { FlexItem } from '../../FlexItem'
@@ -34,7 +33,6 @@ interface ColorFieldPickerProps extends FieldProps, InputTextProps {
    * If true, hides input and only show color swatch.
    */
   hideInput?: boolean
-  theme?: Theme
 }
 
 interface ColorFieldPickerState {
@@ -83,7 +81,6 @@ class InternalColorFieldPicker extends React.Component<
       label,
       validationMessage,
       cwSize = 164,
-      theme,
       ...inputTextProps
     } = this.props
     const hsvColor = this.getHSVColor()
@@ -236,4 +233,4 @@ class InternalColorFieldPicker extends React.Component<
   }
 }
 
-export const ColorFieldPicker = withTheme(withForm(InternalColorFieldPicker))
+export const ColorFieldPicker = withForm(InternalColorFieldPicker)

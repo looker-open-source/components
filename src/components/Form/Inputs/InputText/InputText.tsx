@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Theme, withTheme } from '../../../../style'
+import { Theme } from '../../../../style'
 import { CustomizableAttributes } from '../../../../types/attributes'
 import { Box, BoxProps } from '../../../Box'
 import { InputProps } from '../InputProps'
@@ -16,7 +16,7 @@ export interface InputTextProps extends BoxProps<HTMLInputElement>, InputProps {
   theme?: Theme
 }
 
-const InternalInputText: React.SFC<InputTextProps> = ({
+export const InputText: React.SFC<InputTextProps> = ({
   validationType,
   ...props
 }) => {
@@ -44,8 +44,6 @@ const InternalInputText: React.SFC<InputTextProps> = ({
     />
   )
 }
-
-export const InputText = withTheme(InternalInputText)
 
 export const CustomizableInputTextAttributes: CustomizableAttributes = {
   borderRadius: 'medium',
