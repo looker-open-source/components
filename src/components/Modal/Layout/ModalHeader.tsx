@@ -23,18 +23,18 @@ const Internal: React.SFC<ModalHeaderProps> = ({
   ...props
 }) => {
   return (
-    <Box is="header" display="flex" flexDirection="row" {...props}>
-      <Box p="large">{children}</Box>
-      <Box p="large" ml="auto">
-        <Button
-          onClick={close}
-          size="large"
-          style={{ padding: 0, lineHeight: 1 }}
-          variant="transparent"
-        >
-          <Icon name="Close" />
-        </Button>
-      </Box>
+    <Box is="header" p="large" display="flex" flexDirection="row" {...props}>
+      <Box mr="xlarge">{children}</Box>
+      <Button
+        ml="auto"
+        alignSelf="end"
+        onClick={close}
+        size="large"
+        style={{ padding: 0, lineHeight: 1 }}
+        variant="transparent"
+      >
+        <Icon name="Close" />
+      </Button>
     </Box>
   )
 }
