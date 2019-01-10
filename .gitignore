@@ -13,6 +13,7 @@
 /lib
 /styleguide
 /src/icons/build
+lens-styleguide.tar.gz
 
 # misc
 .DS_Store
