@@ -20,7 +20,6 @@ exports[`A Code component resized 1`] = `
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-transform: none;
-  color: #262D33;
 }
 
 <code
@@ -50,7 +49,6 @@ exports[`A Code component text transformed 1`] = `
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-transform: uppercase;
-  color: #262D33;
 }
 
 <code
@@ -111,7 +109,6 @@ exports[`A Code component wrapped 1`] = `
   -moz-osx-font-smoothing: grayscale;
   text-transform: none;
   overflow-wrap: break-word;
-  color: #262D33;
 }
 
 <code
@@ -141,7 +138,6 @@ exports[`A Codet component weight 1`] = `
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-transform: none;
-  color: #262D33;
 }
 
 <code
@@ -173,7 +169,6 @@ exports[`A Text component decorated 1`] = `
   -webkit-text-decoration: line-through;
   text-decoration: line-through;
   text-transform: none;
-  color: #262D33;
 }
 
 <code
@@ -203,7 +198,6 @@ exports[`A default Code component 1`] = `
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-transform: none;
-  color: #262D33;
 }
 
 <code
