@@ -69,7 +69,7 @@ exports[`ModalHeader 1`] = `
   padding-bottom: 0rem;
 }
 
-.c7 {
+.c6 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -94,14 +94,6 @@ exports[`ModalHeader 1`] = `
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-transform: none;
-}
-
-.c6 {
-  vertical-align: middle;
-}
-
-.c6 svg {
-  fill: currentColor;
 }
 
 .c4 {
@@ -181,10 +173,10 @@ exports[`ModalHeader 1`] = `
     }
   >
     <div
-      className="c6 c7"
+      className="c6"
     >
       <svg
-        fill="none"
+        fill="currentColor"
         height="100%"
         viewBox="0 0 24 24"
         width="100%"

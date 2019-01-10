@@ -635,7 +635,7 @@ Array [
   padding-bottom: 0rem;
 }
 
-.c13 {
+.c12 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -655,7 +655,7 @@ Array [
   width: 1em;
 }
 
-.c15 {
+.c14 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -670,7 +670,7 @@ Array [
   padding: 1.25rem;
 }
 
-.c16 {
+.c15 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -689,7 +689,7 @@ Array [
   padding: 1.25rem;
 }
 
-.c18 {
+.c17 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -712,7 +712,7 @@ Array [
   padding-bottom: 0rem;
 }
 
-.c20 {
+.c19 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -770,15 +770,7 @@ Array [
   transform: translateX(0%);
 }
 
-.c12 {
-  vertical-align: middle;
-}
-
-.c12 svg {
-  fill: currentColor;
-}
-
-.c19 {
+.c18 {
   font-weight: 600;
   outline: none;
   -webkit-transition: border 80ms;
@@ -799,33 +791,33 @@ Array [
   color: #FFFFFF;
 }
 
-.c19:focus {
+.c18:focus {
   box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
 }
 
-.c19[disabled] {
+.c18[disabled] {
   cursor: default;
   -webkit-filter: grayscale(0.3);
   filter: grayscale(0.3);
   opacity: 0.25;
 }
 
-.c19[disabled]:hover,
-.c19[disabled]:active,
-.c19[disabled]:focus {
+.c18[disabled]:hover,
+.c18[disabled]:active,
+.c18[disabled]:focus {
   background-color: #64518A;
   border-color: #C1C6CC;
 }
 
-.c19:hover,
-.c19:focus,
-.c19.hover {
+.c18:hover,
+.c18:focus,
+.c18.hover {
   background: #473764;
   border-color: #473764;
 }
 
-.c19:active,
-.c19.active {
+.c18:active,
+.c18.active {
   background: #2A1B60;
   border-color: #2A1B60;
 }
@@ -885,7 +877,7 @@ Array [
   color: #6C43E0;
 }
 
-.c17 {
+.c16 {
   font-weight: 600;
   outline: none;
   -webkit-transition: border 80ms;
@@ -906,35 +898,35 @@ Array [
   color: #64518A;
 }
 
-.c17:focus {
+.c16:focus {
   box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
 }
 
-.c17[disabled] {
+.c16[disabled] {
   cursor: default;
   -webkit-filter: grayscale(0.3);
   filter: grayscale(0.3);
   opacity: 0.25;
 }
 
-.c17[disabled]:hover,
-.c17[disabled]:active,
-.c17[disabled]:focus {
+.c16[disabled]:hover,
+.c16[disabled]:active,
+.c16[disabled]:focus {
   background-color: transparent;
   border-color: transparent;
   color: #64518A;
 }
 
-.c17:hover,
-.c17:focus,
-.c17.hover {
+.c16:hover,
+.c16:focus,
+.c16.hover {
   background: #F3F2FF;
   border-color: #F3F2FF;
   color: #6C43E0;
 }
 
-.c17:active,
-.c17.active {
+.c16:active,
+.c16.active {
   background: #E8E5FF;
   border-color: #E8E5FF;
   color: #6C43E0;
@@ -947,11 +939,11 @@ Array [
   text-transform: none;
 }
 
-.c14 {
+.c13 {
   border-top: 1px solid transparent;
 }
 
-.c14.overflow {
+.c13.overflow {
   border-top-color: #DEE1E5;
   box-shadow: inset 0 -16px 16px -16px #DEE1E5;
 }
@@ -989,10 +981,10 @@ Array [
           }
         >
           <div
-            className="c12 c13"
+            className="c12"
           >
             <svg
-              fill="none"
+              fill="currentColor"
               height="100%"
               viewBox="0 0 24 24"
               width="100%"
@@ -1017,21 +1009,21 @@ Array [
         }
       />
       <div
-        className="undefined false c14 c15"
+        className="undefined false c13 c14"
         overflow="scroll"
       >
         Stuff and things...
       </div>
       <footer
-        className="c16"
+        className="c15"
       >
         <button
-          className="c17 c18"
+          className="c16 c17"
         >
           Cancel
         </button>
         <button
-          className="c19 c20"
+          className="c18 c19"
         >
           Pick some stuff
         </button>

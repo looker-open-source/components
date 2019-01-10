@@ -39,6 +39,8 @@
     "block-closing-brace-empty-line-before": "never",
     "block-closing-brace-newline-after": "always",
     "block-opening-brace-newline-after": "always-multi-line",
+    "block-no-empty": null,
+
     "selector-attribute-quotes": "always",
 
     "selector-combinator-space-after": "always",
