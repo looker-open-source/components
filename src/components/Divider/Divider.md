@@ -30,24 +30,24 @@ Dividers accept all the spacing props from `<Box />`, which gives you the abilit
 </Flex>
 ```
 
-## Divider Variants
+## Divider Appearance
 
-There are three divider variants `light`, `dark` and `onDark`.
+There are three divider appearances `light`, `dark` and `onDark`.
 
 ```js
 <Flex justifyContent="space-around" >
   <Box bg="white " p="xlarge" mr="large">
-    light variant
-    <Divider mt="medium" variant="light" />
+    light appearance
+    <Divider mt="medium" appearance="light" />
   </Box>
   <Box bg="palette.charcoal000" p="xlarge" mr="large">
-    dark variant
-    <Divider mt="medium" variant="dark" />
+    dark appearance
+    <Divider mt="medium" appearance="dark" />
   </Box>
 
   <Box bg="palette.charcoal600" p="xlarge">
-    onDark variant
-    <Divider mt="medium" variant="onDark" />
+    onDark appearance
+    <Divider mt="medium" appearance="onDark" />
   </Box>
 </Flex>
 ```

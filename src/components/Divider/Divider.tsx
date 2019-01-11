@@ -6,11 +6,11 @@ import { Box, BoxPropsWithout } from '../Box'
 interface DividerProps extends BoxPropsWithout<HTMLDivElement, 'color'> {
   size?: string | number
   customColor?: string
-  variant?: 'light' | 'dark' | 'onDark'
+  appearance?: 'light' | 'dark' | 'onDark'
 }
 
-function dividerVariant(props: ThemedProps<DividerProps>) {
-  switch (props.variant) {
+function dividerAppearance(props: ThemedProps<DividerProps>) {
+  switch (props.appearance) {
     case 'light':
       return css`
         background: ${props.theme.colors.palette.charcoal200};
@@ -31,7 +31,7 @@ function dividerVariant(props: ThemedProps<DividerProps>) {
 const InternalDivider: React.SFC<DividerProps> = ({
   size,
   customColor,
-  variant,
+  appearance,
   ...props
 }) => {
   return (
@@ -44,5 +44,5 @@ const InternalDivider: React.SFC<DividerProps> = ({
 }
 
 export const Divider = styled<DividerProps>(InternalDivider)`
-  ${dividerVariant};
+  ${dividerAppearance};
 `

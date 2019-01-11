@@ -8,7 +8,7 @@ test('Default Divider', () => {
 })
 
 test('Divider with a variant', () => {
-  assertSnapshot(<Divider variant="onDark" />)
+  assertSnapshot(<Divider appearance="onDark" />)
 })
 
 test('A custom Divider', () => {
