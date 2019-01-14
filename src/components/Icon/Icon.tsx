@@ -9,7 +9,7 @@ export interface IconProps extends BoxPropsWithout<HTMLDivElement, 'size'> {
   size?: number | string
 }
 
-export type IconNames = IconNames
+export { IconNames }
 
 const InternalIcon: React.SFC<IconProps> = ({
   name,
