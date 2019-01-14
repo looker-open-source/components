@@ -1,16 +1,16 @@
 import * as React from 'react'
-import { withTheme } from '../../style'
-import { ThemedProps } from '../../types'
-import { Overlay, OverlayInteractiveProps } from './Overlay'
+import { shadows } from '../../style'
+import { CustomizableAttributes } from '../../types/attributes'
+import { BackdropStyle, Overlay, OverlayInteractiveProps } from './Overlay'
+import { OverlayBubbleStyleProps } from './OverlayBubble'
 import { overlayBubbleWithContent } from './popover_utils'
 
 export interface PopoverProps extends OverlayInteractiveProps {
   content: React.ReactNode
 }
 
-const InternalPopover: React.SFC<ThemedProps<PopoverProps>> = ({
+export const Popover: React.SFC<PopoverProps> = ({
   content,
-  theme,
   children,
   ...overlayProps
 }) => (
@@ -18,13 +18,28 @@ const InternalPopover: React.SFC<ThemedProps<PopoverProps>> = ({
     trigger="click"
     overlayContentFactory={overlayBubbleWithContent(
       content,
-      theme.components.Popover.bubble
+      CustomizablePopoverAttributes.bubble
     )}
-    backdropStyles={theme.components.Popover.backdrop}
+    backdropStyles={CustomizablePopoverAttributes.backdrop}
     {...overlayProps}
   >
     {children}
   </Overlay>
 )
 
-export const Popover = withTheme(InternalPopover)
+export interface CustomizablePopoverAttributes extends CustomizableAttributes {
+  backdrop: BackdropStyle
+  bubble: OverlayBubbleStyleProps
+}
+
+export const CustomizablePopoverAttributes: CustomizablePopoverAttributes = {
+  backdrop: {},
+  bubble: {
+    backgroundColor: 'palette.white',
+    border: '1px solid',
+    borderColor: 'palette.charcoal200',
+    borderRadius: 'medium',
+    boxShadow: shadows[3],
+    color: 'palette.charcoal900',
+  },
+}

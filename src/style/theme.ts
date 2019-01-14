@@ -13,7 +13,6 @@ import {
   SizeXXXLarge,
   SizeXXXXLarge,
 } from '../types'
-import { components, Components } from './components'
 import { Easings, easings } from './easings'
 import { shadows, Shadows } from './elevation'
 import { FontRamp, fontSizes, lineHeights } from './font_sizes'
@@ -50,7 +49,6 @@ export type LensSpaceProps = { [P in keyof SpaceProps]: ResponsiveSpacingSize }
 export interface Theme {
   breakpoints: string[]
   colors: { palette: Palette; semanticColors: SemanticColors }
-  components: Components
   easings: Easings
   fontSizes: FontRamp
   fontWeights: Record<string, number>
@@ -70,7 +68,6 @@ export interface Theme {
 export const theme: Theme = {
   breakpoints: ['30rem', '48rem', '64rem', '75rem', '90rem'],
   colors: { palette, semanticColors },
-  components,
   easings,
   fontSizes,
   fontWeights,

@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { CSSTransition } from 'react-transition-group'
-import { withTheme } from '../../style'
-import { ThemedProps } from '../../types'
-
+import { palette, shadows } from '../../style'
+import { CustomizableAttributes } from '../../types/attributes'
+import { OverlayBubbleStyleProps } from '../Overlay'
 import { ModalBackdrop } from './ModalBackdrop'
 import { ModalContainer } from './ModalContainer'
 import { ModalContext, ModalContextProps } from './ModalContext'
@@ -50,7 +50,7 @@ export interface ModalProps {
   width?: string
 }
 
-export interface ModalInternalProps extends ThemedProps<ModalProps> {
+export interface ModalInternalProps extends ModalProps {
   /**
    * To implement Modal the Surface is supplied as a function so it can consume the animationState of the Modal.
    * animationState will be null, 'exited', 'entering' or 'exiting' and can be used to set CSS class on Surface
@@ -64,7 +64,7 @@ export interface ModalState {
   isOpen: boolean
 }
 
-class Internal extends React.Component<ModalInternalProps, ModalState> {
+export class Modal extends React.Component<ModalInternalProps, ModalState> {
   constructor(props: ModalInternalProps) {
     super(props)
 
@@ -142,4 +142,19 @@ class Internal extends React.Component<ModalInternalProps, ModalState> {
   }
 }
 
-export const Modal = withTheme(Internal)
+export interface CustomizableModalAttributes extends CustomizableAttributes {
+  zIndex: number
+  surface: OverlayBubbleStyleProps
+}
+
+export const CustomizableModalAttributes: CustomizableModalAttributes = {
+  surface: {
+    backgroundColor: palette.white,
+    border: 'none',
+    borderColor: 'none',
+    borderRadius: 'medium',
+    boxShadow: shadows[3],
+    color: palette.charcoal000,
+  },
+  zIndex: 0,
+}

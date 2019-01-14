@@ -1,8 +1,9 @@
 import * as React from 'react'
-import { Theme, withTheme } from '../../../style'
+import { radii } from '../../../style/radii'
 import { Flex } from '../../Flex'
 import { FlexItem } from '../../FlexItem'
 import {
+  CustomizableInputTextAttributes,
   Field,
   FieldProps,
   FormControl,
@@ -32,7 +33,6 @@ interface ColorFieldPickerProps extends FieldProps, InputTextProps {
    * If true, hides input and only show color swatch.
    */
   hideInput?: boolean
-  theme?: Theme
 }
 
 interface ColorFieldPickerState {
@@ -81,13 +81,20 @@ class InternalColorFieldPicker extends React.Component<
       label,
       validationMessage,
       cwSize = 164,
-      theme,
       ...inputTextProps
     } = this.props
     const hsvColor = this.getHSVColor()
-    const br = this.props.theme!.components.InputText.borderRadius
-    const swatchBorderRadius = `${br} 0 0 ${br}`
-    const inputTextBorderRadius = `0 ${br} ${br} 0`
+    let borderRadius
+    if (
+      typeof CustomizableInputTextAttributes.borderRadius === 'string' &&
+      radii[CustomizableInputTextAttributes.borderRadius] !== undefined
+    ) {
+      borderRadius = radii[CustomizableInputTextAttributes.borderRadius]
+    } else {
+      borderRadius = CustomizableInputTextAttributes.borderRadius
+    }
+    const swatchBorderRadius = `${borderRadius} 0 0 ${borderRadius}`
+    const inputTextBorderRadius = `0 ${borderRadius} ${borderRadius} 0`
 
     const content = (
       <Flex flexDirection="column">
@@ -226,4 +233,4 @@ class InternalColorFieldPicker extends React.Component<
   }
 }
 
-export const ColorFieldPicker = withTheme(withForm(InternalColorFieldPicker))
+export const ColorFieldPicker = withForm(InternalColorFieldPicker)

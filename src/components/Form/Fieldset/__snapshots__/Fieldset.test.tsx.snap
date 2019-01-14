@@ -74,7 +74,7 @@ exports[`Fieldset with left aligned labels and custom label width 1`] = `
   padding: 0;
   vertical-align: baseline;
   border: solid 1px;
-  border-radius: 4px;
+  border-radius: 0.25rem;
   border-color: #C1C6CC;
   font-size: 0.875rem;
   height: 28px;
@@ -277,7 +277,7 @@ exports[`Fieldset with left aligned legend 1`] = `
   padding: 0;
   vertical-align: baseline;
   border: solid 1px;
-  border-radius: 4px;
+  border-radius: 0.25rem;
   border-color: #C1C6CC;
   font-size: 0.875rem;
   height: 28px;

@@ -1,13 +1,13 @@
 import * as React from 'react'
-import { Theme, withTheme } from '../../style'
 import { Box } from '../Box'
+import { CustomizableModalAttributes } from './Modal'
 
-export const Internal: React.SFC<{ theme: Theme }> = ({ theme, children }) => (
+export const ModalContainer: React.SFC = ({ children }) => (
   <Box
     display="flex"
     justifyContent="center"
     alignItems="center"
-    zIndex={theme.components.Modal.zIndex || 1}
+    zIndex={CustomizableModalAttributes.zIndex || 1}
     position="fixed"
     bottom="0"
     top="0"
@@ -17,5 +17,3 @@ export const Internal: React.SFC<{ theme: Theme }> = ({ theme, children }) => (
     {children}
   </Box>
 )
-
-export const ModalContainer = withTheme(Internal)

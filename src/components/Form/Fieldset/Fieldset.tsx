@@ -1,10 +1,9 @@
 import * as React from 'react'
-import { withTheme } from 'styled-components'
 import { ResponsiveSpaceValue } from '../../../style/responsive'
-import { ThemedProps } from '../../../types'
 import { Box, BoxProps } from '../../Box'
 import { FlexItem } from '../../FlexItem'
 import { FormControl, FormControlDirections } from '../FormControl'
+import { Legend } from './Legend'
 
 export interface FieldsetProps extends BoxProps<HTMLFieldSetElement> {
   /**
@@ -24,21 +23,6 @@ export interface FieldsetProps extends BoxProps<HTMLFieldSetElement> {
    */
   alignLabels?: FormControlDirections
 }
-
-const InternalLegend: React.SFC<ThemedProps<BoxProps<HTMLLegendElement>>> = ({
-  ...props
-}) => (
-  <Box
-    is="legend"
-    color={props.theme.components.Legend.color}
-    fontSize={props.theme.components.Legend.fontSize}
-    fontWeight={props.theme.components.Legend.fontWeight}
-    pb={props.theme.components.Legend.bottomPadding}
-    {...props}
-  />
-)
-
-const Legend = withTheme(InternalLegend)
 
 export const Fieldset: React.SFC<FieldsetProps> = ({
   legend,

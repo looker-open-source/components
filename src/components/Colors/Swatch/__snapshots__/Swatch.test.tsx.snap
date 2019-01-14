@@ -10,7 +10,7 @@ exports[`Default Swatch 1`] = `
   padding: 0;
   vertical-align: baseline;
   border: 1px solid;
-  border-radius: 4px;
+  border-radius: 0.25rem;
   border-color: #C1C6CC;
   background-color: white;
   height: 28px;
@@ -32,7 +32,7 @@ exports[`Swatch with hex value passed 1`] = `
   padding: 0;
   vertical-align: baseline;
   border: 1px solid;
-  border-radius: 4px;
+  border-radius: 0.25rem;
   border-color: #C1C6CC;
   background-color: #4c6670;
   height: 28px;
@@ -54,7 +54,7 @@ exports[`Swatch with width and height set 1`] = `
   padding: 0;
   vertical-align: baseline;
   border: 1px solid;
-  border-radius: 4px;
+  border-radius: 0.25rem;
   border-color: #C1C6CC;
   background-color: blue;
   height: 25px;
