@@ -1,17 +1,15 @@
 import * as React from 'react'
-import { withTheme } from 'styled-components'
-import { Theme } from '../../style'
+import { palette, shadows } from '../../style'
 import { Overlay, OverlayInteractiveProps } from './Overlay'
 import { overlayBubbleWithContent } from './popover_utils'
+import { CustomizableTooltipAttributes } from './Tooltip'
 
 export interface RichTooltipProps extends OverlayInteractiveProps {
   content: React.ReactNode
-  theme?: Theme
 }
 
-const InternalRichTooltip: React.SFC<RichTooltipProps> = ({
+export const RichTooltip: React.SFC<RichTooltipProps> = ({
   content,
-  theme,
   children,
   ...overlayProps
 }) => (
@@ -19,7 +17,7 @@ const InternalRichTooltip: React.SFC<RichTooltipProps> = ({
     trigger="hover"
     overlayContentFactory={overlayBubbleWithContent(
       content,
-      theme!.components.RichTooltip.bubble
+      CustomizableRichTooltipAttributes.bubble
     )}
     {...overlayProps}
   >
@@ -27,4 +25,13 @@ const InternalRichTooltip: React.SFC<RichTooltipProps> = ({
   </Overlay>
 )
 
-export const RichTooltip = withTheme(InternalRichTooltip)
+export const CustomizableRichTooltipAttributes: CustomizableTooltipAttributes = {
+  bubble: {
+    backgroundColor: palette.white,
+    border: '1px solid',
+    borderColor: palette.charcoal200,
+    borderRadius: 'medium',
+    boxShadow: shadows[3],
+    color: palette.charcoal900,
+  },
+}

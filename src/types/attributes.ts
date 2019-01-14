@@ -9,6 +9,7 @@ import {
 export interface CustomizableAttributes {
   [key: string]: any
   borderRadius?: ResponsiveBorderRadiusValue
+  color?: string
   fontSize?: ResponsiveFontSizeValue
   fontWeight?: ResponsiveFontWeightValue
   height?: ResponsiveHeightValue
