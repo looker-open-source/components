@@ -2,6 +2,7 @@ import * as React from 'react'
 import { Styles } from 'styled-components'
 import { styled, Theme } from '../../style'
 import { Box, BoxProps } from '../Box'
+import { CustomizableModalAttributes } from './Modal'
 
 export interface ModalSurfaceProps extends BoxProps<HTMLDivElement> {
   theme: Theme
@@ -16,7 +17,7 @@ export const ModalSurface: React.SFC<ModalSurfaceProps> = ({
   ...props
 }) => (
   <TransitionTimers
-    bg={theme.components.Modal.surface.backgroundColor}
+    bg={CustomizableModalAttributes.surface.backgroundColor}
     boxShadow={theme.shadows[3]}
     className={className}
     display="flex"

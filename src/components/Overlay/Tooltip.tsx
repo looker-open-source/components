@@ -1,9 +1,11 @@
 import { TextAlignProperty } from 'csstype'
 import * as React from 'react'
-import { Theme, withTheme } from '../../style'
+import { palette, shadows } from '../../style'
 
+import { CustomizableAttributes } from '../../types/attributes'
 import { Box } from '../Box'
 import { Overlay, overlayBubbleWithContent, OverlayInteractiveProps } from './'
+import { OverlayBubbleStyleProps } from './OverlayBubble'
 
 export interface TooltipProps extends OverlayInteractiveProps {
   /**
@@ -11,7 +13,6 @@ export interface TooltipProps extends OverlayInteractiveProps {
    * @required
    */
   content: string
-  theme?: Theme
   /**
    * Specify the maximum width before wrapping text.
    * @default 16rem
@@ -24,9 +25,8 @@ export interface TooltipProps extends OverlayInteractiveProps {
   textAlign?: TextAlignProperty
 }
 
-const InternalTooltip: React.SFC<TooltipProps> = ({
+export const Tooltip: React.SFC<TooltipProps> = ({
   content,
-  theme,
   children,
   textAlign = 'center' as TextAlignProperty,
   maxWidth = '16rem',
@@ -49,7 +49,7 @@ const InternalTooltip: React.SFC<TooltipProps> = ({
       trigger="hover"
       overlayContentFactory={overlayBubbleWithContent(
         contentFormatted,
-        theme!.components.Tooltip.bubble
+        CustomizableTooltipAttributes.bubble
       )}
       {...overlayProps}
     >
@@ -58,4 +58,17 @@ const InternalTooltip: React.SFC<TooltipProps> = ({
   )
 }
 
-export const Tooltip = withTheme(InternalTooltip)
+export interface CustomizableTooltipAttributes extends CustomizableAttributes {
+  bubble: OverlayBubbleStyleProps
+}
+
+export const CustomizableTooltipAttributes: CustomizableTooltipAttributes = {
+  bubble: {
+    backgroundColor: palette.charcoal600,
+    border: 'none',
+    borderColor: 'none',
+    borderRadius: 'medium',
+    boxShadow: shadows[3],
+    color: palette.charcoal000,
+  },
+}

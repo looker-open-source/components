@@ -52,7 +52,7 @@ exports[`Form with one child 1`] = `
   padding: 0;
   vertical-align: baseline;
   border: solid 1px;
-  border-radius: 4px;
+  border-radius: 0.25rem;
   border-color: #C1C6CC;
   font-size: 0.875rem;
   height: 28px;
@@ -142,7 +142,7 @@ exports[`Form with one invalid child and a submit button 1`] = `
   padding: 0;
   vertical-align: baseline;
   border: solid 1px;
-  border-radius: 4px;
+  border-radius: 0.25rem;
   border-color: #C1C6CC;
   font-size: 0.875rem;
   height: 28px;
@@ -161,7 +161,7 @@ exports[`Form with one invalid child and a submit button 1`] = `
   padding: 0;
   vertical-align: baseline;
   border: solid 1px;
-  border-radius: 4px;
+  border-radius: 0.25rem;
   border-color: #C1C6CC;
   background-color: #FFF2F4;
   font-size: 0.875rem;
@@ -372,7 +372,7 @@ exports[`Form with two invalid children 1`] = `
   padding: 0;
   vertical-align: baseline;
   border: solid 1px;
-  border-radius: 4px;
+  border-radius: 0.25rem;
   border-color: #C1C6CC;
   background-color: #FFF2F4;
   font-size: 0.875rem;

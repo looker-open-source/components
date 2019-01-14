@@ -1,11 +1,15 @@
 import * as React from 'react'
 import { styled, withTheme } from '../../../style'
+import { CustomizableModalAttributes } from '../Modal'
 import { ModalSurface, ModalSurfaceProps } from '../ModalSurface'
 
-const Internal: React.SFC<ModalSurfaceProps> = ({ children, ...props }) => {
+export const Internal: React.SFC<ModalSurfaceProps> = ({
+  children,
+  ...props
+}) => {
   return (
     <Surface
-      borderRadius={props.theme.components.Modal.surface.borderRadius}
+      borderRadius={CustomizableModalAttributes.surface.borderRadius}
       maxHeight="90vh"
       maxWidth="100%"
       {...props}

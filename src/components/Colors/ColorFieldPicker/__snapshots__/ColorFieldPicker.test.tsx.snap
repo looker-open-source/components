@@ -82,7 +82,7 @@ exports[`ColorFieldPicker with a label 1`] = `
   padding: 0;
   vertical-align: baseline;
   border: solid 1px;
-  border-radius: 0 4px 4px 0;
+  border-radius: 0 0.25rem 0.25rem 0;
   border-color: #C1C6CC;
   font-size: 0.875rem;
   height: 28px;
@@ -139,7 +139,7 @@ exports[`ColorFieldPicker with a label 1`] = `
   padding: 0;
   vertical-align: baseline;
   border: 1px solid;
-  border-radius: 4px 0 0 4px;
+  border-radius: 0.25rem 0 0 0.25rem;
   border-right: 0;
   border-color: #C1C6CC;
   background-color: #e1ff83;
@@ -291,7 +291,7 @@ exports[`ColorFieldPicker with a named color and size values 1`] = `
   padding: 0;
   vertical-align: baseline;
   border: solid 1px;
-  border-radius: 0 4px 4px 0;
+  border-radius: 0 0.25rem 0.25rem 0;
   border-color: #C1C6CC;
   font-size: 0.875rem;
   height: 28px;
@@ -310,7 +310,7 @@ exports[`ColorFieldPicker with a named color and size values 1`] = `
   padding: 0;
   vertical-align: baseline;
   border: 1px solid;
-  border-radius: 4px 0 0 4px;
+  border-radius: 0.25rem 0 0 0.25rem;
   border-right: 0;
   border-color: #C1C6CC;
   background-color: #0000ff;
@@ -484,7 +484,7 @@ exports[`ColorFieldPicker with a validation message 1`] = `
   padding: 0;
   vertical-align: baseline;
   border: 1px solid;
-  border-radius: 4px 0 0 4px;
+  border-radius: 0.25rem 0 0 0.25rem;
   border-right: 0;
   border-color: #C1C6CC;
   background-color: #4c6670;
@@ -501,7 +501,7 @@ exports[`ColorFieldPicker with a validation message 1`] = `
   padding: 0;
   vertical-align: baseline;
   border: solid 1px;
-  border-radius: 0 4px 4px 0;
+  border-radius: 0 0.25rem 0.25rem 0;
   border-color: #C1C6CC;
   background-color: #FFF2F4;
   font-size: 0.875rem;
@@ -675,7 +675,7 @@ exports[`ColorFieldPicker with hidden input 1`] = `
   padding: 0;
   vertical-align: baseline;
   border: 1px solid;
-  border-radius: 4px 0 0 4px;
+  border-radius: 0.25rem 0 0 0.25rem;
   border-right: 0;
   border-color: #C1C6CC;
   background-color: #ffffff;
@@ -692,7 +692,7 @@ exports[`ColorFieldPicker with hidden input 1`] = `
   padding: 0;
   vertical-align: baseline;
   border: solid 1px;
-  border-radius: 0 4px 4px 0;
+  border-radius: 0 0.25rem 0.25rem 0;
   border-color: #C1C6CC;
   font-size: 0.875rem;
   height: 28px;
@@ -843,7 +843,7 @@ exports[`Default ColorFieldPicker 1`] = `
   padding: 0;
   vertical-align: baseline;
   border: 1px solid;
-  border-radius: 4px 0 0 4px;
+  border-radius: 0.25rem 0 0 0.25rem;
   border-right: 0;
   border-color: #C1C6CC;
   background-color: #ffffff;
@@ -860,7 +860,7 @@ exports[`Default ColorFieldPicker 1`] = `
   padding: 0;
   vertical-align: baseline;
   border: solid 1px;
-  border-radius: 0 4px 4px 0;
+  border-radius: 0 0.25rem 0.25rem 0;
   border-color: #C1C6CC;
   font-size: 0.875rem;
   height: 28px;

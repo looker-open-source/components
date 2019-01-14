@@ -2,6 +2,7 @@ import * as React from 'react'
 import { Styles } from 'styled-components'
 import { styled, Theme, withTheme } from '../../style'
 import { Box, BoxProps } from '../Box'
+import { CustomizableOverlayAttributes } from '../Overlay'
 
 export interface BackdropProps {
   close: () => void
@@ -10,18 +11,13 @@ export interface BackdropProps {
   className?: string
 }
 
-const Internal: React.SFC<BackdropProps> = ({
-  close,
-  style,
-  theme,
-  className,
-}) => (
+const Internal: React.SFC<BackdropProps> = ({ close, style, className }) => (
   <Backdrop
     className={className}
-    bg={theme.components.Overlay.backdrop.backgroundColor}
+    bg={CustomizableOverlayAttributes.backdrop.backgroundColor}
     height="100%"
     onClick={close}
-    opacity={theme.components.Overlay.backdrop.opacity}
+    opacity={CustomizableOverlayAttributes.backdrop.opacity}
     position="fixed"
     // style={{ cursor: 'pointer', ...style }}
     backdropStyle={style}
@@ -52,6 +48,6 @@ const Backdrop = styled(BackdropFactory)<BackdropInternalProps>`
   }
 
   &.exited {
-    opacity: ${props => props.theme.components.Overlay.backdrop.opacity};
+    opacity: ${CustomizableOverlayAttributes.backdrop.opacity};
   }
 `

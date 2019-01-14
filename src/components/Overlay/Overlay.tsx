@@ -7,7 +7,7 @@ import {
   Reference,
   RefHandler,
 } from 'react-popper'
-import { Theme, withTheme } from '../../style'
+import { CustomizableAttributes } from '../../types/attributes'
 import { Box } from '../Box'
 
 export type OverlayEvent = 'hover' | 'click'
@@ -55,11 +55,6 @@ export interface OverlayProps extends OverlayInteractiveProps {
    */
   overlayContentFactory: (props: OverlayContentProps) => React.ReactNode
   /**
-   * A Lens compatible theme object. This is passed in automatically by the
-   * withTheme higher-order helper.
-   */
-  theme: Theme
-  /**
    * Optional backdrop styles to merge with the Backdrop implementation. These
    * must be a CSSProperty compatible key / value paired object. For example
    * {backgroundColor: 'pink'}.
@@ -75,11 +70,20 @@ export interface OverlayState {
   show: boolean
 }
 
-class InternalOverlay extends React.Component<OverlayProps, OverlayState> {
+/**
+ * Overlay is a low-level component that can be used to build Popovers,
+ * Tooltips, Modals, etc. It handles coordinating a trigger component, like a
+ * Button or Link, with the rendering of an "overlay" or "content bubble" that
+ * appears above other content in the page.
+ *
+ * Under the hood, Overlay is powered by [Popper.js](https://popper.js.org/) and
+ * its corresponding [React library,
+ * react-popper](https://github.com/FezVrasta/react-popper).
+ */
+export class Overlay extends React.Component<OverlayProps, OverlayState> {
   public static defaultProps: OverlayProps = {
     open: false,
     overlayContentFactory: () => null,
-    theme: {} as Theme,
     trigger: 'hover',
   }
   private popperRef: HTMLElement | null
@@ -128,9 +132,9 @@ class InternalOverlay extends React.Component<OverlayProps, OverlayState> {
         bottom="0"
         left="0"
         right="0"
-        bg={this.props.theme.components.Overlay.backdrop.backgroundColor}
-        opacity={this.props.theme.components.Overlay.backdrop.opacity}
-        zIndex={this.props.theme.components.Overlay.zIndex || 1}
+        bg={CustomizableOverlayAttributes.backdrop.backgroundColor}
+        opacity={CustomizableOverlayAttributes.backdrop.opacity}
+        zIndex={CustomizableOverlayAttributes.zIndex || 1}
         style={this.props.backdropStyles}
       />
     )
@@ -146,7 +150,7 @@ class InternalOverlay extends React.Component<OverlayProps, OverlayState> {
               innerRef={ref}
               zIndex={
                 this.state.show
-                  ? this.props.theme.components.Overlay.zIndex || 1
+                  ? CustomizableOverlayAttributes.zIndex || 1
                   : undefined
               }
             >
@@ -160,7 +164,7 @@ class InternalOverlay extends React.Component<OverlayProps, OverlayState> {
               <Box
                 style={style}
                 innerRef={ref}
-                zIndex={this.props.theme.components.Overlay.zIndex || 1}
+                zIndex={CustomizableOverlayAttributes.zIndex || 1}
                 {...popperEventProps}
               >
                 {this.props.overlayContentFactory({ arrowProps, placement })}
@@ -233,14 +237,20 @@ class InternalOverlay extends React.Component<OverlayProps, OverlayState> {
   }
 }
 
-/**
- * Overlay is a low-level component that can be used to build Popovers,
- * Tooltips, Modals, etc. It handles coordinating a trigger component, like a
- * Button or Link, with the rendering of an "overlay" or "content bubble" that
- * appears above other content in the page.
- *
- * Under the hood, Overlay is powered by [Popper.js](https://popper.js.org/) and
- * its corresponding [React library,
- * react-popper](https://github.com/FezVrasta/react-popper).
- */
-export const Overlay = withTheme(InternalOverlay)
+export interface BackdropStyle {
+  backgroundColor?: string
+  opacity?: number
+}
+
+export interface CustomizableOverlayAttributes extends CustomizableAttributes {
+  zIndex: number
+  backdrop: BackdropStyle
+}
+
+export const CustomizableOverlayAttributes: CustomizableOverlayAttributes = {
+  backdrop: {
+    backgroundColor: 'palette.charcoal200',
+    opacity: 0.6,
+  },
+  zIndex: 0,
+}

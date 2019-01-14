@@ -15,7 +15,11 @@ export type RadiusSizes =
 
 export type Radii = Record<RadiusSizes, string>
 
-export const radii: Radii = {
+interface Radiii extends Radii {
+  [key: string]: string
+}
+
+export const radii: Radiii = {
   // tslint:disable:object-literal-sort-keys
   none: '0rem',
   xsmall: '0.0625rem',

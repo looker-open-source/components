@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`A Legend 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #262D33;
+  font-size: 2.25rem;
+  font-weight: 300;
+  padding-bottom: 0.5rem;
+}
+
+<legend
+  className="c0"
+>
+  This is a legend
+</legend>
+`;

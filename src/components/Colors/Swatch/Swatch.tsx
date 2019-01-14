@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { Theme, withTheme } from '../../../style'
 import { Box, BoxProps } from '../../Box'
+import { CustomizableInputTextAttributes } from '../../Form'
 
 export interface SwatchProps extends BoxProps<HTMLDivElement> {
   /**
@@ -15,10 +15,9 @@ export interface SwatchProps extends BoxProps<HTMLDivElement> {
    * Swatch width.
    */
   width?: string
-  theme?: Theme
 }
 
-const InternalSwatch: React.SFC<SwatchProps> = ({
+export const Swatch: React.SFC<SwatchProps> = ({
   color,
   width,
   height,
@@ -28,7 +27,7 @@ const InternalSwatch: React.SFC<SwatchProps> = ({
     <Box
       border="1px solid"
       borderColor="palette.charcoal300"
-      borderRadius={props.theme!.components.InputText.borderRadius}
+      borderRadius={CustomizableInputTextAttributes.borderRadius}
       bg={color || 'white'}
       width={width || '28px'}
       height={height || '28px'}
@@ -36,5 +35,3 @@ const InternalSwatch: React.SFC<SwatchProps> = ({
     />
   )
 }
-
-export const Swatch = withTheme(InternalSwatch)
