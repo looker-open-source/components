@@ -86,30 +86,7 @@ Array [
   >
     Delete Stuff
   </button>,
-  .c12 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  cursor: pointer;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  border-radius: 0.25rem;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
-  padding-top: 0rem;
-  padding-bottom: 0rem;
-}
-
-.c0 {
+  .c0 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -191,6 +168,7 @@ Array [
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  padding: 1.25rem;
 }
 
 .c7 {
@@ -201,7 +179,7 @@ Array [
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  padding: 1.25rem;
+  margin-right: 2rem;
 }
 
 .c9 {
@@ -217,7 +195,7 @@ Array [
   line-height: 1.75rem;
 }
 
-.c10 {
+.c11 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -225,11 +203,26 @@ Array [
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  cursor: pointer;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-align-self: end;
+  -ms-flex-item-align: end;
+  align-self: end;
+  border-radius: 0.25rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   margin-left: auto;
-  padding: 1.25rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
 }
 
-.c14 {
+.c13 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -249,7 +242,7 @@ Array [
   width: 1em;
 }
 
-.c15 {
+.c14 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -268,7 +261,7 @@ Array [
   padding: 1.25rem;
 }
 
-.c17 {
+.c16 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -291,7 +284,7 @@ Array [
   padding-bottom: 0rem;
 }
 
-.c19 {
+.c18 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -313,15 +306,15 @@ Array [
   padding-bottom: 0rem;
 }
 
-.c13 {
+.c12 {
   vertical-align: middle;
 }
 
-.c13 svg {
+.c12 svg {
   fill: currentColor;
 }
 
-.c11 {
+.c10 {
   font-weight: 600;
   outline: none;
   -webkit-transition: border 80ms;
@@ -342,41 +335,41 @@ Array [
   color: #64518A;
 }
 
-.c11:focus {
+.c10:focus {
   box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
 }
 
-.c11[disabled] {
+.c10[disabled] {
   cursor: default;
   -webkit-filter: grayscale(0.3);
   filter: grayscale(0.3);
   opacity: 0.25;
 }
 
-.c11[disabled]:hover,
-.c11[disabled]:active,
-.c11[disabled]:focus {
+.c10[disabled]:hover,
+.c10[disabled]:active,
+.c10[disabled]:focus {
   background-color: transparent;
   border-color: transparent;
   color: #64518A;
 }
 
-.c11:hover,
-.c11:focus,
-.c11.hover {
+.c10:hover,
+.c10:focus,
+.c10.hover {
   background: #F3F2FF;
   border-color: #F3F2FF;
   color: #6C43E0;
 }
 
-.c11:active,
-.c11.active {
+.c10:active,
+.c10.active {
   background: #E8E5FF;
   border-color: #E8E5FF;
   color: #6C43E0;
 }
 
-.c16 {
+.c15 {
   font-weight: 600;
   outline: none;
   -webkit-transition: border 80ms;
@@ -397,41 +390,41 @@ Array [
   color: #64518A;
 }
 
-.c16:focus {
+.c15:focus {
   box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
 }
 
-.c16[disabled] {
+.c15[disabled] {
   cursor: default;
   -webkit-filter: grayscale(0.3);
   filter: grayscale(0.3);
   opacity: 0.25;
 }
 
-.c16[disabled]:hover,
-.c16[disabled]:active,
-.c16[disabled]:focus {
+.c15[disabled]:hover,
+.c15[disabled]:active,
+.c15[disabled]:focus {
   background-color: transparent;
   border-color: transparent;
   color: #64518A;
 }
 
-.c16:hover,
-.c16:focus,
-.c16.hover {
+.c15:hover,
+.c15:focus,
+.c15.hover {
   background: #F3F2FF;
   border-color: #F3F2FF;
   color: #6C43E0;
 }
 
-.c16:active,
-.c16.active {
+.c15:active,
+.c15.active {
   background: #E8E5FF;
   border-color: #E8E5FF;
   color: #6C43E0;
 }
 
-.c18 {
+.c17 {
   font-weight: 600;
   outline: none;
   -webkit-transition: border 80ms;
@@ -452,33 +445,33 @@ Array [
   color: #FFFFFF;
 }
 
-.c18:focus {
+.c17:focus {
   box-shadow: 0 0 0 0.15rem rgba(204,31,54,0.25);
 }
 
-.c18[disabled] {
+.c17[disabled] {
   cursor: default;
   -webkit-filter: grayscale(0.3);
   filter: grayscale(0.3);
   opacity: 0.25;
 }
 
-.c18[disabled]:hover,
-.c18[disabled]:active,
-.c18[disabled]:focus {
+.c17[disabled]:hover,
+.c17[disabled]:active,
+.c17[disabled]:focus {
   background-color: #CC1F36;
   border-color: #C1C6CC;
 }
 
-.c18:hover,
-.c18:focus,
-.c18.hover {
+.c17:hover,
+.c17:focus,
+.c17.hover {
   background: #B2121F;
   border-color: #B2121F;
 }
 
-.c18:active,
-.c18.active {
+.c17:active,
+.c17.active {
   background: #990F14;
   border-color: #990F14;
 }
@@ -548,47 +541,43 @@ Array [
             Are you sure you want to delete "Stuff"?
           </h2>
         </div>
-        <div
-          className="c10"
-        >
-          <button
-            className="c11 c12"
-            onClick={[Function]}
-            style={
-              Object {
-                "lineHeight": 1,
-                "padding": 0,
-              }
+        <button
+          className="c10 c11"
+          onClick={[Function]}
+          style={
+            Object {
+              "lineHeight": 1,
+              "padding": 0,
             }
+          }
+        >
+          <div
+            className="c12 c13"
           >
-            <div
-              className="c13 c14"
+            <svg
+              fill="none"
+              height="100%"
+              viewBox="0 0 24 24"
+              width="100%"
             >
-              <svg
-                fill="none"
-                height="100%"
-                viewBox="0 0 24 24"
-                width="100%"
-              >
-                <path
-                  d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"
-                  fill="currentColor"
-                />
-              </svg>
-            </div>
-          </button>
-        </div>
+              <path
+                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"
+                fill="currentColor"
+              />
+            </svg>
+          </div>
+        </button>
       </header>
       <footer
-        className="c15"
+        className="c14"
       >
         <button
-          className="c16 c17"
+          className="c15 c16"
         >
           Cancel
         </button>
         <button
-          className="c18 c19"
+          className="c17 c18"
         >
           Yes, Delete "Stuff"
         </button>

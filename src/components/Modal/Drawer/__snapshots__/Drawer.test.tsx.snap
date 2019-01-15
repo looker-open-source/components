@@ -497,30 +497,7 @@ Array [
   >
     Pick Stuff
   </button>,
-  .c12 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  cursor: pointer;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  border-radius: 0.25rem;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
-  padding-top: 0rem;
-  padding-bottom: 0rem;
-}
-
-.c0 {
+  .c0 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -604,6 +581,7 @@ Array [
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  padding: 1.25rem;
 }
 
 .c7 {
@@ -614,7 +592,7 @@ Array [
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  padding: 1.25rem;
+  margin-right: 2rem;
 }
 
 .c9 {
@@ -630,7 +608,7 @@ Array [
   line-height: 1.75rem;
 }
 
-.c10 {
+.c11 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -638,11 +616,26 @@ Array [
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  cursor: pointer;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-align-self: end;
+  -ms-flex-item-align: end;
+  align-self: end;
+  border-radius: 0.25rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   margin-left: auto;
-  padding: 1.25rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
 }
 
-.c14 {
+.c13 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -662,7 +655,7 @@ Array [
   width: 1em;
 }
 
-.c16 {
+.c15 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -677,7 +670,7 @@ Array [
   padding: 1.25rem;
 }
 
-.c17 {
+.c16 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -696,7 +689,7 @@ Array [
   padding: 1.25rem;
 }
 
-.c19 {
+.c18 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -719,7 +712,7 @@ Array [
   padding-bottom: 0rem;
 }
 
-.c21 {
+.c20 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -777,15 +770,15 @@ Array [
   transform: translateX(0%);
 }
 
-.c13 {
+.c12 {
   vertical-align: middle;
 }
 
-.c13 svg {
+.c12 svg {
   fill: currentColor;
 }
 
-.c20 {
+.c19 {
   font-weight: 600;
   outline: none;
   -webkit-transition: border 80ms;
@@ -806,38 +799,38 @@ Array [
   color: #FFFFFF;
 }
 
-.c20:focus {
+.c19:focus {
   box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
 }
 
-.c20[disabled] {
+.c19[disabled] {
   cursor: default;
   -webkit-filter: grayscale(0.3);
   filter: grayscale(0.3);
   opacity: 0.25;
 }
 
-.c20[disabled]:hover,
-.c20[disabled]:active,
-.c20[disabled]:focus {
+.c19[disabled]:hover,
+.c19[disabled]:active,
+.c19[disabled]:focus {
   background-color: #64518A;
   border-color: #C1C6CC;
 }
 
-.c20:hover,
-.c20:focus,
-.c20.hover {
+.c19:hover,
+.c19:focus,
+.c19.hover {
   background: #473764;
   border-color: #473764;
 }
 
-.c20:active,
-.c20.active {
+.c19:active,
+.c19.active {
   background: #2A1B60;
   border-color: #2A1B60;
 }
 
-.c11 {
+.c10 {
   font-weight: 600;
   outline: none;
   -webkit-transition: border 80ms;
@@ -858,41 +851,41 @@ Array [
   color: #64518A;
 }
 
-.c11:focus {
+.c10:focus {
   box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
 }
 
-.c11[disabled] {
+.c10[disabled] {
   cursor: default;
   -webkit-filter: grayscale(0.3);
   filter: grayscale(0.3);
   opacity: 0.25;
 }
 
-.c11[disabled]:hover,
-.c11[disabled]:active,
-.c11[disabled]:focus {
+.c10[disabled]:hover,
+.c10[disabled]:active,
+.c10[disabled]:focus {
   background-color: transparent;
   border-color: transparent;
   color: #64518A;
 }
 
-.c11:hover,
-.c11:focus,
-.c11.hover {
+.c10:hover,
+.c10:focus,
+.c10.hover {
   background: #F3F2FF;
   border-color: #F3F2FF;
   color: #6C43E0;
 }
 
-.c11:active,
-.c11.active {
+.c10:active,
+.c10.active {
   background: #E8E5FF;
   border-color: #E8E5FF;
   color: #6C43E0;
 }
 
-.c18 {
+.c17 {
   font-weight: 600;
   outline: none;
   -webkit-transition: border 80ms;
@@ -913,35 +906,35 @@ Array [
   color: #64518A;
 }
 
-.c18:focus {
+.c17:focus {
   box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
 }
 
-.c18[disabled] {
+.c17[disabled] {
   cursor: default;
   -webkit-filter: grayscale(0.3);
   filter: grayscale(0.3);
   opacity: 0.25;
 }
 
-.c18[disabled]:hover,
-.c18[disabled]:active,
-.c18[disabled]:focus {
+.c17[disabled]:hover,
+.c17[disabled]:active,
+.c17[disabled]:focus {
   background-color: transparent;
   border-color: transparent;
   color: #64518A;
 }
 
-.c18:hover,
-.c18:focus,
-.c18.hover {
+.c17:hover,
+.c17:focus,
+.c17.hover {
   background: #F3F2FF;
   border-color: #F3F2FF;
   color: #6C43E0;
 }
 
-.c18:active,
-.c18.active {
+.c17:active,
+.c17.active {
   background: #E8E5FF;
   border-color: #E8E5FF;
   color: #6C43E0;
@@ -954,11 +947,11 @@ Array [
   text-transform: none;
 }
 
-.c15 {
+.c14 {
   border-top: 1px solid transparent;
 }
 
-.c15.overflow {
+.c14.overflow {
   border-top-color: #DEE1E5;
   box-shadow: inset 0 -16px 16px -16px #DEE1E5;
 }
@@ -985,36 +978,32 @@ Array [
             Pick stuff
           </h2>
         </div>
-        <div
-          className="c10"
-        >
-          <button
-            className="c11 c12"
-            onClick={[Function]}
-            style={
-              Object {
-                "lineHeight": 1,
-                "padding": 0,
-              }
+        <button
+          className="c10 c11"
+          onClick={[Function]}
+          style={
+            Object {
+              "lineHeight": 1,
+              "padding": 0,
             }
+          }
+        >
+          <div
+            className="c12 c13"
           >
-            <div
-              className="c13 c14"
+            <svg
+              fill="none"
+              height="100%"
+              viewBox="0 0 24 24"
+              width="100%"
             >
-              <svg
-                fill="none"
-                height="100%"
-                viewBox="0 0 24 24"
-                width="100%"
-              >
-                <path
-                  d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"
-                  fill="currentColor"
-                />
-              </svg>
-            </div>
-          </button>
-        </div>
+              <path
+                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"
+                fill="currentColor"
+              />
+            </svg>
+          </div>
+        </button>
       </header>
       <div
         style={
@@ -1028,21 +1017,21 @@ Array [
         }
       />
       <div
-        className="undefined false c15 c16"
+        className="undefined false c14 c15"
         overflow="scroll"
       >
         Stuff and things...
       </div>
       <footer
-        className="c17"
+        className="c16"
       >
         <button
-          className="c18 c19"
+          className="c17 c18"
         >
           Cancel
         </button>
         <button
-          className="c20 c21"
+          className="c19 c20"
         >
           Pick some stuff
         </button>

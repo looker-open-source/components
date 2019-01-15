@@ -16,6 +16,7 @@ exports[`ModalHeader 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  padding: 1.25rem;
 }
 
 .c1 {
@@ -26,7 +27,7 @@ exports[`ModalHeader 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  padding: 1.25rem;
+  margin-right: 2rem;
 }
 
 .c3 {
@@ -42,19 +43,7 @@ exports[`ModalHeader 1`] = `
   line-height: 1.75rem;
 }
 
-.c4 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  margin-left: auto;
-  padding: 1.25rem;
-}
-
-.c6 {
+.c5 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -66,17 +55,21 @@ exports[`ModalHeader 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-align-self: end;
+  -ms-flex-item-align: end;
+  align-self: end;
   border-radius: 0.25rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  margin-left: auto;
   padding-top: 0rem;
   padding-bottom: 0rem;
 }
 
-.c8 {
+.c7 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -103,15 +96,15 @@ exports[`ModalHeader 1`] = `
   text-transform: none;
 }
 
-.c7 {
+.c6 {
   vertical-align: middle;
 }
 
-.c7 svg {
+.c6 svg {
   fill: currentColor;
 }
 
-.c5 {
+.c4 {
   font-weight: 600;
   outline: none;
   -webkit-transition: border 80ms;
@@ -132,35 +125,35 @@ exports[`ModalHeader 1`] = `
   color: #64518A;
 }
 
-.c5:focus {
+.c4:focus {
   box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
 }
 
-.c5[disabled] {
+.c4[disabled] {
   cursor: default;
   -webkit-filter: grayscale(0.3);
   filter: grayscale(0.3);
   opacity: 0.25;
 }
 
-.c5[disabled]:hover,
-.c5[disabled]:active,
-.c5[disabled]:focus {
+.c4[disabled]:hover,
+.c4[disabled]:active,
+.c4[disabled]:focus {
   background-color: transparent;
   border-color: transparent;
   color: #64518A;
 }
 
-.c5:hover,
-.c5:focus,
-.c5.hover {
+.c4:hover,
+.c4:focus,
+.c4.hover {
   background: #F3F2FF;
   border-color: #F3F2FF;
   color: #6C43E0;
 }
 
-.c5:active,
-.c5.active {
+.c4:active,
+.c4.active {
   background: #E8E5FF;
   border-color: #E8E5FF;
   color: #6C43E0;
@@ -178,34 +171,30 @@ exports[`ModalHeader 1`] = `
       The Heading for a Dialog
     </h2>
   </div>
-  <div
-    className="c4"
-  >
-    <button
-      className="c5 c6"
-      style={
-        Object {
-          "lineHeight": 1,
-          "padding": 0,
-        }
+  <button
+    className="c4 c5"
+    style={
+      Object {
+        "lineHeight": 1,
+        "padding": 0,
       }
+    }
+  >
+    <div
+      className="c6 c7"
     >
-      <div
-        className="c7 c8"
+      <svg
+        fill="none"
+        height="100%"
+        viewBox="0 0 24 24"
+        width="100%"
       >
-        <svg
-          fill="none"
-          height="100%"
-          viewBox="0 0 24 24"
-          width="100%"
-        >
-          <path
-            d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"
-            fill="currentColor"
-          />
-        </svg>
-      </div>
-    </button>
-  </div>
+        <path
+          d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"
+          fill="currentColor"
+        />
+      </svg>
+    </div>
+  </button>
 </header>
 `;
