@@ -84,3 +84,25 @@ Each of these scripts can be run with `yarn <command>`. They are defined in the 
 - **clean** removes the `dist` and `styleguide` directories if they exist
 - **release** runs the publishing process, distributing the package to Looker's private package repository
 - **test** runs the tests
+
+# Yarn Link
+
+Since Lens is often developed in tandem with another repo it can be useful to use Yarn's `link` fuctionality to develop new Lens components and test the built output without having to commit and publish the changes.
+
+See Yarn's Link documentation (https://yarnpkg.com/lang/en/docs/cli/link/) for setting up the link between the `looker-lens` package and your project.
+
+To work properly you'll need to make this addition to your `webpack.config.js` file:
+
+```
+  resolve: {
+    alias: {
+      'styled-components': path.resolve(
+        __dirname,
+        'node_modules',
+        'styled-components',
+      ),
+    }
+  }
+```
+
+Finally, only changes that have been built will be reflected in the linked package so run `yarn build` when you want to refresh the locally-built version Lens.
