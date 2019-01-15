@@ -25,14 +25,9 @@ const InternalIcon: React.SFC<IconProps> = ({
       display="inline-flex"
       {...props}
     >
-      <Glyph width="100%" height="100%" />
+      <Glyph width="100%" height="100%" fill="currentColor" />
     </Box>
   )
 }
 
-export const Icon = styled<IconProps>(InternalIcon)`
-  vertical-align: middle;
-  svg {
-    fill: currentColor;
-  }
-`
+export const Icon = styled<IconProps>(InternalIcon)``
