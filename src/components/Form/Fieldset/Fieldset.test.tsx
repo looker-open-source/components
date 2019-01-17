@@ -15,15 +15,3 @@ test('Fieldset with left aligned legend', () => {
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
 })
-
-test('Fieldset with left aligned labels and custom label width', () => {
-  const component = createWithTheme(
-    <Fieldset legend="Legend" alignLabels="left" labelWidth="30%">
-      <FieldText label="One" name="name1" />
-      <FieldText label="two" name="name2" />
-      <FieldText label="three" name="nam3" />
-    </Fieldset>
-  )
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
-})

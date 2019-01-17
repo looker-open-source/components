@@ -18,10 +18,5 @@ The `<Fieldset />` component is used to wrap Field components into meaningful gr
   <FieldText label="Second" />
   <FieldText label="Third" />
 </Fieldset>
-<Fieldset legend="Legend2" alignLabels='left' labelWidth='40%'>
-  <FieldText label="First" />
-  <FieldText label="Second" />
-  <FieldText label="Third" />
-</Fieldset>
 <Button>Submit</Button>
 ```
