@@ -31,3 +31,7 @@ test('ColorFieldPicker with a validation message', () => {
     />
   )
 })
+
+test('ColorFieldPicker renders a color picker in a RichTooltip', () => {
+  assertSnapshot(<ColorFieldPicker open />)
+})
