@@ -1,5 +1,442 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`ColorFieldPicker renders a color picker in a RichTooltip 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-bottom: 0.5rem;
+}
+
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #262D33;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  margin-top: auto;
+}
+
+.c6 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border: 1px solid;
+  border-radius: 0.25rem 0 0 0.25rem;
+  border-right: 0;
+  border-color: #C1C6CC;
+  background-color: #ffffff;
+  height: 28px;
+  width: 33px;
+}
+
+.c15 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border: solid 1px;
+  border-radius: 0 0.25rem 0.25rem 0;
+  border-color: #C1C6CC;
+  font-size: 0.875rem;
+  height: 28px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+}
+
+.c5 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+}
+
+.c7 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  z-index: 1;
+}
+
+.c9 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border: 1px solid;
+  border-radius: 0.25rem;
+  border-color: #DEE1E5;
+  box-shadow: 0 3px 18px rgba(0,0,0,0.12),0 1px 4px rgba(0,0,0,0.04);
+  color: #262D33;
+  background-color: #FFFFFF;
+  margin: 0.5rem;
+}
+
+.c10 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  padding: 0.75rem;
+}
+
+.c11 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c13 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  width: 164px;
+}
+
+.c14 {
+  position: absolute;
+}
+
+.c14::before {
+  content: '';
+  margin: auto;
+  display: block;
+  width: 0.5rem;
+  height: 0.5rem;
+  background: #FFFFFF;
+  border-bottom: 1px solid #DEE1E5;
+  border-right: 1px solid #DEE1E5;
+}
+
+.c14[data-placement*='top'] {
+  bottom: 0.25rem;
+  margin: 0 1rem;
+}
+
+.c14[data-placement*='top']::before {
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.c14[data-placement*='right'] {
+  left: 0.25rem;
+  margin: 1rem 0;
+}
+
+.c14[data-placement*='right']::before {
+  -webkit-transform: rotate(135deg);
+  -ms-transform: rotate(135deg);
+  transform: rotate(135deg);
+}
+
+.c14[data-placement*='bottom'] {
+  top: 0.25rem;
+  margin: 0 1rem;
+}
+
+.c14[data-placement*='bottom']::before {
+  -webkit-transform: rotate(225deg);
+  -ms-transform: rotate(225deg);
+  transform: rotate(225deg);
+}
+
+.c14[data-placement*='left'] {
+  right: 0.25rem;
+  margin: 1rem 0;
+}
+
+.c14[data-placement*='left']::before {
+  -webkit-transform: rotate(315deg);
+  -ms-transform: rotate(315deg);
+  transform: rotate(315deg);
+}
+
+.c8 {
+  -webkit-animation: bcCCNc 0.2s linear;
+  animation: bcCCNc 0.2s linear;
+}
+
+.c12 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: transparent;
+  width: 100%;
+}
+
+.c12:focus {
+  outline: none;
+}
+
+.c12::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: #fff;
+  border: 1px solid #C1C6CC;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 14px;
+  margin-top: -4px;
+  width: 14px;
+}
+
+.c12::-webkit-slider-runnable-track {
+  background-image: linear-gradient(to right,#000,#fff);
+  border: 1px solid #DEE1E5;
+  cursor: pointer;
+  height: 8px;
+  width: 100%;
+}
+
+.c12::-moz-range-thumb {
+  background: #fff;
+  border: 1px solid #C1C6CC;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 12px;
+  width: 12px;
+}
+
+.c12::-moz-range-track {
+  background-image: linear-gradient(to right,#000,#fff);
+  border: 1px solid #DEE1E5;
+  cursor: pointer;
+  height: 6px;
+  width: 100%;
+}
+
+.c12::-ms-thumb {
+  background: #fff;
+  border: 1px solid #C1C6CC;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 12px;
+  width: 12px;
+}
+
+.c12::-ms-track {
+  background: transparent;
+  border-color: transparent;
+  border-width: 16px 0;
+  color: transparent;
+  cursor: pointer;
+  height: 6px;
+  width: 100%;
+}
+
+.c12::-ms-fill-lower {
+  background-image: linear-gradient(to right,#000,#fff);
+  border: 1px solid #DEE1E5;
+}
+
+.c12::-ms-fill-upper {
+  background-image: linear-gradient(to right,#000,#fff);
+  border: 1px solid #DEE1E5;
+}
+
+.c12:focus::-webkit-slider-runnable-track {
+  background-image: linear-gradient(to right,#000,#fff);
+}
+
+.c12:focus::-ms-fill-lower {
+  background-image: linear-gradient(to right,#000,#fff);
+}
+
+.c12:focus::-ms-fill-upper {
+  background-image: linear-gradient(to right,#000,#fff);
+}
+
+<div
+  className="c0"
+>
+  <label
+    className="c1"
+  />
+  <div
+    className="c0"
+  >
+    <div
+      className="c2"
+    >
+      <div
+        className="c3"
+      >
+        <div
+          className="c4"
+        >
+          <div
+            className="c5"
+          >
+            <div
+              className="c6"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseOut={[Function]}
+              onMouseOver={[Function]}
+            />
+          </div>
+          <div
+            className="c7"
+            onMouseOut={[Function]}
+            style={
+              Object {
+                "left": 0,
+                "opacity": 0,
+                "pointerEvents": "none",
+                "position": "absolute",
+                "top": 0,
+              }
+            }
+          >
+            <div
+              className="c8 c9"
+            >
+              <div
+                className="c10"
+              >
+                <div
+                  className="c11"
+                >
+                  <canvas
+                    height={164}
+                    onMouseDown={[Function]}
+                    onMouseMove={[Function]}
+                    onMouseUp={[Function]}
+                    width={164}
+                  />
+                  <input
+                    className="c12 c13"
+                    max={100}
+                    min={0}
+                    onChange={[Function]}
+                    step={1}
+                    type="range"
+                    value={100}
+                  />
+                </div>
+              </div>
+              <div
+                className="c14"
+                style={Object {}}
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          className="c2"
+        >
+          <input
+            className="c15"
+            onChange={[Function]}
+            type="text"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`ColorFieldPicker with a label 1`] = `
 .c2 {
   border: 0;

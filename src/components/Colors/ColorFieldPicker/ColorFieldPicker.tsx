@@ -12,6 +12,7 @@ import {
   withForm,
 } from '../../Form'
 import { RichTooltip } from '../../Overlay'
+import { RichTooltipContent } from '../../Overlay/RichTooltipContent'
 import {
   HueSaturation,
   polarbrightness2hsv,
@@ -33,6 +34,10 @@ interface ColorFieldPickerProps extends FieldProps, InputTextProps {
    * If true, hides input and only show color swatch.
    */
   hideInput?: boolean
+  /**
+   * Displays the color picker as visible on first render
+   */
+  open?: boolean
 }
 
 interface ColorFieldPickerState {
@@ -81,13 +86,14 @@ class InternalColorFieldPicker extends React.Component<
       label,
       validationMessage,
       cwSize = 164,
+      open,
       ...inputTextProps
     } = this.props
     const hsvColor = this.getHSVColor()
     let borderRadius
     if (
       typeof CustomizableInputTextAttributes.borderRadius === 'string' &&
-      radii[CustomizableInputTextAttributes.borderRadius] !== undefined
+      radii[CustomizableInputTextAttributes.borderRadius]
     ) {
       borderRadius = radii[CustomizableInputTextAttributes.borderRadius]
     } else {
@@ -97,23 +103,28 @@ class InternalColorFieldPicker extends React.Component<
     const inputTextBorderRadius = `0 ${borderRadius} ${borderRadius} 0`
 
     const content = (
-      <Flex flexDirection="column">
-        <ColorWheel
-          size={cwSize}
-          hue={hsvColor.h}
-          saturation={hsvColor.s}
-          value={hsvColor.v}
-          onColorChange={this.proxyHandleColorStateChange.bind(this, hsvColor)}
-        />
-        <LuminositySlider
-          min={0}
-          max={100}
-          step={1}
-          value={hsvColor.v * 100}
-          width={cwSize}
-          onChange={this.proxyHandleSliderChange.bind(this, hsvColor)}
-        />
-      </Flex>
+      <RichTooltipContent>
+        <Flex flexDirection="column">
+          <ColorWheel
+            size={cwSize}
+            hue={hsvColor.h}
+            saturation={hsvColor.s}
+            value={hsvColor.v}
+            onColorChange={this.proxyHandleColorStateChange.bind(
+              this,
+              hsvColor
+            )}
+          />
+          <LuminositySlider
+            min={0}
+            max={100}
+            step={1}
+            value={hsvColor.v * 100}
+            width={cwSize}
+            onChange={this.proxyHandleSliderChange.bind(this, hsvColor)}
+          />
+        </Flex>
+      </RichTooltipContent>
     )
 
     return (
@@ -125,7 +136,7 @@ class InternalColorFieldPicker extends React.Component<
       >
         <FormControl alignLabel="left">
           <FlexItem mt="auto">
-            <RichTooltip content={content}>
+            <RichTooltip content={content} open={open}>
               <Swatch
                 color={ColorFormatUtils.hsv2hex(hsvColor)}
                 borderRadius={swatchBorderRadius}
