@@ -1,0 +1,583 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MenuItem - active + icon 1`] = `
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  height: 1rem;
+  margin-right: 0.5rem;
+  width: 1rem;
+}
+
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  cursor: pointer;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #0087e1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.c0:hover {
+  background: #FBFBFC;
+  color: #262D33;
+}
+
+.c0:focus {
+  box-shadow: 0 0 .25rem 0.125rem #49a9f2;
+  outline: none;
+}
+
+.c0:active {
+  color: #0087e1;
+}
+
+<div
+  className="c0"
+  onClick={[Function]}
+  style={
+    Object {
+      "userSelect": "none",
+    }
+  }
+  tabIndex={0}
+>
+  <div
+    className="c1"
+  >
+    <svg
+      fill="currentColor"
+      height="100%"
+      viewBox="0 0 24 24"
+      width="100%"
+    >
+      <g
+        clipPath="url(#clip0)"
+      >
+        <path
+          d="M16.5 3.002A1.5 1.5 0 1 0 16.5.001a1.5 1.5 0 0 0-.001 3zM12 4.503a1.501 1.501 0 1 0-.002-3.002A1.501 1.501 0 0 0 12 4.503zm8.665 18.012c-1.506-2.898-4.165-9.014-4.165-9.014v-6h.75a.75.75 0 0 0 0-1.5h-9a.75.75 0 0 0 0 1.5H9v6s-2.601 6.331-4.072 9.16c-.696 1.341-.696 1.341.964 1.341h14.097c.67 0 1.45 0 .677-1.488l-.001.001zM10.5 13.502v-6H15v6l.642 1.5H9.89c.36-.879.609-1.5.609-1.5zm7.407 9H7.91c-1.383 0-1.383 0-.803-1.148.615-1.218 1.467-3.189 2.163-4.852h7.026c.707 1.606 1.559 3.501 2.177 4.723.643 1.276-.006 1.276-.566 1.276v.001z"
+          fill="currentColor"
+        />
+      </g>
+      <defs>
+        <clipPath
+          id="clip0"
+        >
+          <path
+            d="M0 0h24v24H0z"
+            fill="#fff"
+          />
+        </clipPath>
+      </defs>
+    </svg>
+  </div>
+  who!
+</div>
+`;
+
+exports[`MenuItem - active 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  cursor: pointer;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #0087e1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.c0:hover {
+  background: #FBFBFC;
+  color: #262D33;
+}
+
+.c0:focus {
+  box-shadow: 0 0 .25rem 0.125rem #49a9f2;
+  outline: none;
+}
+
+.c0:active {
+  color: #0087e1;
+}
+
+<div
+  className="c0"
+  onClick={[Function]}
+  style={
+    Object {
+      "userSelect": "none",
+    }
+  }
+  tabIndex={0}
+>
+  who!
+</div>
+`;
+
+exports[`MenuItem - canActivate + active 1`] = `
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  height: 1rem;
+  margin-right: 0.5rem;
+  width: 1rem;
+}
+
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  cursor: pointer;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #0087e1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.c0:hover {
+  background: #FBFBFC;
+  color: #262D33;
+}
+
+.c0:focus {
+  box-shadow: 0 0 .25rem 0.125rem #49a9f2;
+  outline: none;
+}
+
+.c0:active {
+  color: #0087e1;
+}
+
+<div
+  className="c0"
+  onClick={[Function]}
+  style={
+    Object {
+      "userSelect": "none",
+    }
+  }
+  tabIndex={0}
+>
+  <div
+    className="c1"
+  >
+    <svg
+      fill="currentColor"
+      height="100%"
+      viewBox="0 0 24 24"
+      width="100%"
+    >
+      <path
+        d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"
+        fill="currentColor"
+      />
+    </svg>
+  </div>
+  who!
+</div>
+`;
+
+exports[`MenuItem - canActivate 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  cursor: pointer;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #4C535B;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.c0:hover {
+  background: #FBFBFC;
+  color: #262D33;
+}
+
+.c0:focus {
+  box-shadow: 0 0 .25rem 0.125rem #49a9f2;
+  outline: none;
+}
+
+.c0:active {
+  color: #0087e1;
+}
+
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  width: 1.5rem;
+}
+
+<div
+  className="c0"
+  onClick={[Function]}
+  style={
+    Object {
+      "userSelect": "none",
+    }
+  }
+  tabIndex={0}
+>
+  <div
+    className="c1"
+  />
+  who!
+</div>
+`;
+
+exports[`MenuItem - detail 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  cursor: pointer;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #4C535B;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.c0:hover {
+  background: #FBFBFC;
+  color: #262D33;
+}
+
+.c0:focus {
+  box-shadow: 0 0 .25rem 0.125rem #49a9f2;
+  outline: none;
+}
+
+.c0:active {
+  color: #0087e1;
+}
+
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #C1C6CC;
+  font-size: 0.75rem;
+  margin-left: auto;
+  padding-left: 1.25rem;
+}
+
+<div
+  className="c0"
+  onClick={[Function]}
+  style={
+    Object {
+      "userSelect": "none",
+    }
+  }
+  tabIndex={0}
+>
+  who!
+  <div
+    className="c1"
+  >
+    Is an excellent question
+  </div>
+</div>
+`;
+
+exports[`MenuItem - icon 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  cursor: pointer;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #4C535B;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.c0:hover {
+  background: #FBFBFC;
+  color: #262D33;
+}
+
+.c0:focus {
+  box-shadow: 0 0 .25rem 0.125rem #49a9f2;
+  outline: none;
+}
+
+.c0:active {
+  color: #0087e1;
+}
+
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  height: 1rem;
+  margin-right: 0.5rem;
+  width: 1rem;
+}
+
+<div
+  className="c0"
+  onClick={[Function]}
+  style={
+    Object {
+      "userSelect": "none",
+    }
+  }
+  tabIndex={0}
+>
+  <div
+    className="c1"
+  >
+    <svg
+      fill="currentColor"
+      height="100%"
+      viewBox="0 0 24 24"
+      width="100%"
+    >
+      <g
+        clipPath="url(#clip0)"
+      >
+        <path
+          d="M16.5 3.002A1.5 1.5 0 1 0 16.5.001a1.5 1.5 0 0 0-.001 3zM12 4.503a1.501 1.501 0 1 0-.002-3.002A1.501 1.501 0 0 0 12 4.503zm8.665 18.012c-1.506-2.898-4.165-9.014-4.165-9.014v-6h.75a.75.75 0 0 0 0-1.5h-9a.75.75 0 0 0 0 1.5H9v6s-2.601 6.331-4.072 9.16c-.696 1.341-.696 1.341.964 1.341h14.097c.67 0 1.45 0 .677-1.488l-.001.001zM10.5 13.502v-6H15v6l.642 1.5H9.89c.36-.879.609-1.5.609-1.5zm7.407 9H7.91c-1.383 0-1.383 0-.803-1.148.615-1.218 1.467-3.189 2.163-4.852h7.026c.707 1.606 1.559 3.501 2.177 4.723.643 1.276-.006 1.276-.566 1.276v.001z"
+          fill="currentColor"
+        />
+      </g>
+      <defs>
+        <clipPath
+          id="clip0"
+        >
+          <path
+            d="M0 0h24v24H0z"
+            fill="#fff"
+          />
+        </clipPath>
+      </defs>
+    </svg>
+  </div>
+  who!
+</div>
+`;
+
+exports[`MenuItem 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  cursor: pointer;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #4C535B;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.c0:hover {
+  background: #FBFBFC;
+  color: #262D33;
+}
+
+.c0:focus {
+  box-shadow: 0 0 .25rem 0.125rem #49a9f2;
+  outline: none;
+}
+
+.c0:active {
+  color: #0087e1;
+}
+
+<div
+  className="c0"
+  onClick={[Function]}
+  style={
+    Object {
+      "userSelect": "none",
+    }
+  }
+  tabIndex={0}
+>
+  who!
+</div>
+`;
