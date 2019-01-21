@@ -376,49 +376,64 @@ exports[`ColorFieldPicker renders a color picker in a RichTooltip 1`] = `
             />
           </div>
           <div
-            className="c7"
-            onMouseOut={[Function]}
-            style={
-              Object {
-                "left": 0,
-                "opacity": 0,
-                "pointerEvents": "none",
-                "position": "absolute",
-                "top": 0,
-              }
-            }
+            className="focus-trap-wrapper"
+            onKeyUp={[Function]}
           >
             <div
-              className="c8 c9"
+              aria-hidden="true"
+              className="focus-trap-backdrop"
+              onClick={[Function]}
+            />
+            <div
+              className="focus-trap"
+              tabIndex={0}
             >
               <div
-                className="c10"
+                className="c7"
+                onMouseOut={[Function]}
+                style={
+                  Object {
+                    "left": 0,
+                    "opacity": 0,
+                    "pointerEvents": "none",
+                    "position": "absolute",
+                    "top": 0,
+                  }
+                }
               >
                 <div
-                  className="c11"
+                  className="c8 c9"
                 >
-                  <canvas
-                    height={164}
-                    onMouseDown={[Function]}
-                    onMouseMove={[Function]}
-                    onMouseUp={[Function]}
-                    width={164}
-                  />
-                  <input
-                    className="c12 c13"
-                    max={100}
-                    min={0}
-                    onChange={[Function]}
-                    step={1}
-                    type="range"
-                    value={100}
+                  <div
+                    className="c10"
+                  >
+                    <div
+                      className="c11"
+                    >
+                      <canvas
+                        height={164}
+                        onMouseDown={[Function]}
+                        onMouseMove={[Function]}
+                        onMouseUp={[Function]}
+                        width={164}
+                      />
+                      <input
+                        className="c12 c13"
+                        max={100}
+                        min={0}
+                        onChange={[Function]}
+                        step={1}
+                        type="range"
+                        value={100}
+                      />
+                    </div>
+                  </div>
+                  <div
+                    className="c14"
+                    style={Object {}}
                   />
                 </div>
               </div>
-              <div
-                className="c14"
-                style={Object {}}
-              />
             </div>
           </div>
         </div>

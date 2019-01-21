@@ -21,15 +21,15 @@ const content = (
       <Heading>Are you sure you want to delete "Stuff"?</Heading>
     </ModalHeader>
     <ModalContext.Consumer>
-      {({ close }) => (
+      {({ closeModal }) => (
         <ModalFooter>
-          <Button onClick={close} variant="transparent" mr="small">
+          <Button onClick={closeModal} variant="transparent" mr="small">
             Cancel
           </Button>
           <Button
             onClick={() => {
               alert("doin' things...")
-              close && close()
+              closeModal && closeModal()
             }}
             color="danger"
           >

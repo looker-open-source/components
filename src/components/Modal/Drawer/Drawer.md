@@ -36,15 +36,15 @@ const content = (
       <Box {...boxProps}>Thing Three</Box>
     </ModalContent>
     <ModalContext.Consumer>
-      {({ close }) => (
+      {({ closeModal }) => (
         <ModalFooter>
-          <Button onClick={close} variant="transparent" mr="small">
+          <Button onClick={closeModal} variant="transparent" mr="small">
             Cancel
           </Button>
           <Button
             onClick={() => {
               alert("Oh yeah! You're done")
-              close && close()
+              closeModal && closeModal()
             }}
           >
             All Done

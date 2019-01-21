@@ -213,30 +213,45 @@ Array [
 }
 
 <div
-    className="c0"
-    onMouseOut={[Function]}
-    style={
-      Object {
-        "left": 0,
-        "opacity": 0,
-        "pointerEvents": "none",
-        "position": "absolute",
-        "top": 0,
-      }
-    }
+    className="focus-trap-wrapper"
+    onKeyUp={[Function]}
   >
     <div
-      className="c1 c2"
+      aria-hidden="true"
+      className="focus-trap-backdrop"
+      onClick={[Function]}
+    />
+    <div
+      className="focus-trap"
+      tabIndex={0}
     >
-      <p
-        className="c3"
-      >
-        Hello world
-      </p>
       <div
-        className="c4"
-        style={Object {}}
-      />
+        className="c0"
+        onMouseOut={[Function]}
+        style={
+          Object {
+            "left": 0,
+            "opacity": 0,
+            "pointerEvents": "none",
+            "position": "absolute",
+            "top": 0,
+          }
+        }
+      >
+        <div
+          className="c1 c2"
+        >
+          <p
+            className="c3"
+          >
+            Hello world
+          </p>
+          <div
+            className="c4"
+            style={Object {}}
+          />
+        </div>
+      </div>
     </div>
   </div>,
 ]

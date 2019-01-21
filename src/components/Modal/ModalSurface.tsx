@@ -1,4 +1,5 @@
 import * as React from 'react'
+import FocusTrap from 'react-focus-trap'
 import { Styles } from 'styled-components'
 import { styled, Theme } from '../../style'
 import { Box, BoxProps } from '../Box'
@@ -15,22 +16,26 @@ export const ModalSurface: React.SFC<ModalSurfaceProps> = ({
   width,
   theme,
   ...props
-}) => (
-  <TransitionTimers
-    bg={CustomizableModalAttributes.surface.backgroundColor}
-    boxShadow={theme.shadows[3]}
-    className={className}
-    display="flex"
-    flexDirection="column"
-    maxWidth="100%"
-    position="absolute"
-    width={width}
-    surfaceStyle={style}
-    {...props}
-  >
-    {children}
-  </TransitionTimers>
-)
+}) => {
+  return (
+    <FocusTrap active>
+      <TransitionTimers
+        bg={CustomizableModalAttributes.surface.backgroundColor}
+        boxShadow={theme.shadows[3]}
+        className={className}
+        display="flex"
+        flexDirection="column"
+        maxWidth="100%"
+        position="absolute"
+        width={width}
+        surfaceStyle={style}
+        {...props}
+      >
+        {children}
+      </TransitionTimers>
+    </FocusTrap>
+  )
+}
 
 interface SurfaceInternalProps extends BoxProps<HTMLElement> {
   surfaceStyle?: React.CSSProperties

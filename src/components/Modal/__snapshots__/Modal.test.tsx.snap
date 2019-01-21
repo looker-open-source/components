@@ -56,16 +56,17 @@ exports[`Modal Active 1`] = `
   opacity: 0.01;
 }
 
-.c1.exited {
-  opacity: 0.6;
-}
-
 <div
   className="c0"
 >
   <div
     className="faux c1 c2"
     onClick={[Function]}
+    style={
+      Object {
+        "cursor": "pointer",
+      }
+    }
   />
   <div>
     simple content
@@ -215,16 +216,17 @@ Array [
   opacity: 0.01;
 }
 
-.c1.exited {
-  opacity: 0.6;
-}
-
 <div
     className="c0"
   >
     <div
       className="faux c1 c2"
       onClick={[Function]}
+      style={
+        Object {
+          "cursor": "pointer",
+        }
+      }
     />
     <div>
       simple content

@@ -1,11 +1,8 @@
 import * as React from 'react'
-
 import { Box, BoxProps } from '../../Box'
 import { Button } from '../../Button'
 import { Icon } from '../../Icon'
-
-import { ModalContextProps } from '../ModalContext'
-import { withModal } from '../withModal'
+import { ModalContextProps, withModal } from '../ModalContext'
 
 export interface ModalHeaderProps
   extends ModalContextProps,
@@ -19,7 +16,7 @@ export interface ModalHeaderProps
 
 const Internal: React.SFC<ModalHeaderProps> = ({
   children,
-  close,
+  closeModal,
   ...props
 }) => {
   return (
@@ -28,7 +25,7 @@ const Internal: React.SFC<ModalHeaderProps> = ({
       <Button
         ml="auto"
         alignSelf="end"
-        onClick={close}
+        onClick={closeModal}
         size="large"
         p="none"
         style={{ lineHeight: 1 }}

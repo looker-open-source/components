@@ -1,5 +1,6 @@
 import { Placement } from 'popper.js'
 import * as React from 'react'
+import FocusTrap from 'react-focus-trap'
 import {
   Manager,
   Popper,
@@ -7,8 +8,10 @@ import {
   Reference,
   RefHandler,
 } from 'react-popper'
+import { palette } from '../../style'
 import { CustomizableAttributes } from '../../types/attributes'
 import { Box } from '../Box'
+import { ModalContext } from '../Modal'
 
 export type OverlayEvent = 'hover' | 'click' | 'clickTriggerOnly'
 
@@ -64,10 +67,12 @@ export interface OverlayProps extends OverlayInteractiveProps {
    * The kind of interaction that triggers the Overlay to render.
    */
   trigger?: OverlayEvent
+
+  className?: string
 }
 
 export interface OverlayState {
-  show: boolean
+  isOpen: boolean
 }
 
 /**
@@ -94,9 +99,7 @@ export class Overlay extends React.Component<OverlayProps, OverlayState> {
     super(props)
     this.popperRef = null
     this.triggerRef = null
-    this.state = {
-      show: !!props.open,
-    }
+    this.state = { isOpen: !!props.open }
   }
 
   public componentDidMount() {
@@ -110,7 +113,7 @@ export class Overlay extends React.Component<OverlayProps, OverlayState> {
   }
 
   public render() {
-    const { trigger, children, ...props } = this.props
+    const { className, trigger, children, ...props } = this.props
     const child = React.Children.only(children)
     const triggerEventProps: React.DOMAttributes<{}> = {}
     const popperEventProps: React.DOMAttributes<{}> = {}
@@ -120,8 +123,8 @@ export class Overlay extends React.Component<OverlayProps, OverlayState> {
     }
 
     if (trigger === 'hover') {
-      triggerEventProps.onFocus = this.show
-      triggerEventProps.onBlur = this.hide
+      triggerEventProps.onFocus = this.open
+      triggerEventProps.onBlur = this.close
       triggerEventProps.onMouseOver = this.handleMouseOver
       triggerEventProps.onMouseOut = this.handleMouseOut
       popperEventProps.onMouseOut = this.handleMouseOut
@@ -144,15 +147,16 @@ export class Overlay extends React.Component<OverlayProps, OverlayState> {
 
     return (
       <Manager>
-        {this.state.show && trigger === 'click' && Backdrop}
+        {this.state.isOpen && trigger === 'click' && Backdrop}
         <Reference innerRef={this.setTriggerRef}>
           {({ ref }) => (
             <Box
+              className={className}
               display="inline-block"
               position="relative"
               innerRef={ref}
               zIndex={
-                this.state.show
+                this.state.isOpen
                   ? CustomizableOverlayAttributes.zIndex || 1
                   : undefined
               }
@@ -161,17 +165,24 @@ export class Overlay extends React.Component<OverlayProps, OverlayState> {
             </Box>
           )}
         </Reference>
-        {this.state.show && (
+        {this.state.isOpen && (
           <Popper placement={props.placement} innerRef={this.setPopperRef}>
             {({ ref, style, arrowProps, placement }) => (
-              <Box
-                style={style}
-                innerRef={ref}
-                zIndex={CustomizableOverlayAttributes.zIndex || 1}
-                {...popperEventProps}
-              >
-                {this.props.overlayContentFactory({ arrowProps, placement })}
-              </Box>
+              <FocusTrap active>
+                <ModalContext.Provider value={{ closeModal: this.close }}>
+                  <Box
+                    style={style}
+                    innerRef={ref}
+                    zIndex={CustomizableOverlayAttributes.zIndex || 1}
+                    {...popperEventProps}
+                  >
+                    {this.props.overlayContentFactory({
+                      arrowProps,
+                      placement,
+                    })}
+                  </Box>
+                </ModalContext.Provider>
+              </FocusTrap>
             )}
           </Popper>
         )}
@@ -179,9 +190,13 @@ export class Overlay extends React.Component<OverlayProps, OverlayState> {
     )
   }
 
+  public close = () => {
+    this.setState({ isOpen: false })
+  }
+
   private handleClick = () => {
-    if (this.state.show) this.hide()
-    else this.show()
+    if (this.state.isOpen) this.close()
+    else this.open()
   }
 
   private handleOutsideClick = (e: MouseEvent) => {
@@ -202,10 +217,10 @@ export class Overlay extends React.Component<OverlayProps, OverlayState> {
   }
 
   private handleMouseOver = (e: React.MouseEvent) =>
-    this.handleMouseOverOut(this.show, e)
+    this.handleMouseOverOut(this.open, e)
 
   private handleMouseOut = (e: React.MouseEvent) =>
-    this.handleMouseOverOut(this.hide, e)
+    this.handleMouseOverOut(this.close, e)
 
   private handleMouseOverOut(
     handler: (e: React.MouseEvent) => void,
@@ -214,8 +229,8 @@ export class Overlay extends React.Component<OverlayProps, OverlayState> {
     const target = e.currentTarget
     const related = e.relatedTarget
 
-    const showPopper =
-      !this.state.show && this.triggerRef && this.triggerRef.contains(target)
+    const openPopper =
+      !this.state.isOpen && this.triggerRef && this.triggerRef.contains(target)
 
     const mouseDidNotMoveFromTriggerToPopper =
       this.popperRef &&
@@ -227,22 +242,18 @@ export class Overlay extends React.Component<OverlayProps, OverlayState> {
       related instanceof Element &&
       !this.triggerRef.contains(related)
 
-    const hidePopper =
-      this.state.show &&
+    const closePopper =
+      this.state.isOpen &&
       mouseDidNotMoveFromPopperToTrigger &&
       mouseDidNotMoveFromTriggerToPopper
 
-    if (showPopper || hidePopper) {
+    if (openPopper || closePopper) {
       handler(e)
     }
   }
 
-  private hide = () => {
-    this.setState({ show: false })
-  }
-
-  private show = () => {
-    this.setState({ show: true })
+  private open = () => {
+    this.setState({ isOpen: true })
   }
 
   private setPopperRef: RefHandler = node => (this.popperRef = node)
@@ -251,9 +262,9 @@ export class Overlay extends React.Component<OverlayProps, OverlayState> {
 
   private handleEscapePress = (event: KeyboardEvent) => {
     this.props.trigger === 'click' &&
-      this.state.show &&
+      this.state.isOpen &&
       event.key === 'Escape' &&
-      this.hide()
+      this.close()
   }
 }
 
@@ -262,15 +273,13 @@ export interface BackdropStyle {
   opacity?: number
 }
 
-export interface CustomizableOverlayAttributes extends CustomizableAttributes {
+export interface CustomizableOverlayAttributesProps
+  extends CustomizableAttributes {
   zIndex: number
   backdrop: BackdropStyle
 }
 
-export const CustomizableOverlayAttributes: CustomizableOverlayAttributes = {
-  backdrop: {
-    backgroundColor: 'palette.charcoal200',
-    opacity: 0.6,
-  },
+export const CustomizableOverlayAttributes: CustomizableOverlayAttributesProps = {
+  backdrop: { backgroundColor: palette.charcoal200, opacity: 0.6 },
   zIndex: 0,
 }

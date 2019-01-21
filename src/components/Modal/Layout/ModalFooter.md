@@ -4,7 +4,9 @@ ModalFooter supports all [`Box`](/#!/Box) properties.
 
 ```js
 <ModalFooter>
-  <Button mx="medium" variant="transparent">Cancel</Button>
+  <Button mx="medium" variant="transparent">
+    Cancel
+  </Button>
   <Button>Do stuff...</Button>
 </ModalFooter>
 ```

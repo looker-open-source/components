@@ -73,6 +73,7 @@
     "react": "16.5.1",
     "react-copy-to-clipboard": "^5.0.1",
     "react-dom": "16.4.2",
+    "react-focus-trap": "^2.7.1",
     "react-popper": "^1.0.2",
     "react-resize-detector": "^3.2.1",
     "react-transition-group": "^2.5.1",

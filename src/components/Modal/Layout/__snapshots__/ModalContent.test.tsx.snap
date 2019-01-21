@@ -25,7 +25,17 @@ Array [
   -ms-flex: 8;
   flex: 8;
   overflow: scroll;
-  padding: 1.25rem;
+}
+
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  margin: 1.25rem;
 }
 
 .c0 {
@@ -41,7 +51,11 @@ Array [
     className="undefined false c0 c1"
     overflow="scroll"
   >
-    Stuff
+    <div
+      className="c2"
+    >
+      Stuff
+    </div>
   </div>,
 ]
 `;
@@ -59,7 +73,18 @@ Array [
       }
     }
   />,
-  .c1 {
+  .c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  margin: 1.25rem;
+}
+
+.c1 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -72,10 +97,9 @@ Array [
   flex: 8;
   height: 3rem;
   overflow: scroll;
-  padding: 1.25rem;
 }
 
-.c2 {
+.c3 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -102,7 +126,11 @@ Array [
     <div
       className="c2"
     >
-      Stuff
+      <div
+        className="c3"
+      >
+        Stuff
+      </div>
     </div>
   </div>,
 ]

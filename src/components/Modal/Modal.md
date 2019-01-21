@@ -38,13 +38,13 @@ This provides the backdrop behind Modal containers. It can be customized via the
 
 ### ModalContext
 
-`ModalContext` is a [React Context](https://reactjs.org/docs/context.html) that provides access to Modal functionality without requiring the developer to explicitly manage the Modal's state. Currently the context simply provides access to the `close()` method of the Modal.
+`ModalContext` is a [React Context](https://reactjs.org/docs/context.html) that provides access to Overlay functionality without requiring the developer to explicitly manage the Overlay's state. Currently the context simply provides access to the `closeModal()` method of the Modal.
 
 ```
 const ModalContext = require('./ModalContext').ModalContext;
 
 <ModalContext.Consumer>
-  {({ close }) => <Button onClick={close}>Close!</Button>}
+  {({ closeModal }) => <Button onClick={closeModal}>Close!</Button>}
 </ModalContext.Consumer>
 ```
 
