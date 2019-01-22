@@ -10,7 +10,7 @@ import {
 import { CustomizableAttributes } from '../../types/attributes'
 import { Box } from '../Box'
 
-export type OverlayEvent = 'hover' | 'click'
+export type OverlayEvent = 'hover' | 'click' | 'clickTriggerOnly'
 
 export interface OverlayContentProps {
   /**
@@ -86,6 +86,7 @@ export class Overlay extends React.Component<OverlayProps, OverlayState> {
     overlayContentFactory: () => null,
     trigger: 'hover',
   }
+
   private popperRef: HTMLElement | null
   private triggerRef: HTMLElement | null
 
@@ -100,10 +101,12 @@ export class Overlay extends React.Component<OverlayProps, OverlayState> {
 
   public componentDidMount() {
     document.addEventListener('keydown', this.handleEscapePress)
+    document.addEventListener('click', this.handleOutsideClick)
   }
 
   public componentWillUnmount() {
     document.removeEventListener('keydown', this.handleEscapePress)
+    document.removeEventListener('click', this.handleOutsideClick)
   }
 
   public render() {
@@ -112,7 +115,7 @@ export class Overlay extends React.Component<OverlayProps, OverlayState> {
     const triggerEventProps: React.DOMAttributes<{}> = {}
     const popperEventProps: React.DOMAttributes<{}> = {}
 
-    if (trigger === 'click') {
+    if (trigger === 'click' || trigger === 'clickTriggerOnly') {
       triggerEventProps.onClick = this.handleClick
     }
 
@@ -179,6 +182,23 @@ export class Overlay extends React.Component<OverlayProps, OverlayState> {
   private handleClick = () => {
     if (this.state.show) this.hide()
     else this.show()
+  }
+
+  private handleOutsideClick = (e: MouseEvent) => {
+    if (
+      !this.triggerRef ||
+      !this.popperRef ||
+      !(e.target instanceof Element) ||
+      this.props.trigger === 'clickTriggerOnly'
+    ) {
+      return
+    }
+    if (
+      !this.triggerRef.contains(e.target) &&
+      !this.popperRef.contains(e.target)
+    ) {
+      this.hide()
+    }
   }
 
   private handleMouseOver = (e: React.MouseEvent) =>

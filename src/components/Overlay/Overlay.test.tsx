@@ -113,4 +113,22 @@ describe('Overlay', () => {
       assertClosed(overlay)
     })
   })
+
+  describe('trigger: clickTriggerOnly', () => {
+    let overlay: ReactWrapper
+    let trigger: ReactWrapper
+    beforeEach(() =>
+      ([overlay, trigger] = returnTriggerAndOverlay(
+        <SimpleOverlay trigger="clickTriggerOnly" />
+      )))
+    afterEach(() => overlay.unmount())
+
+    test('Trigger click opens and closes the overlay', () => {
+      assertClosed(overlay)
+      trigger.simulate('click')
+      assertOpen(overlay)
+      trigger.simulate('click')
+      assertClosed(overlay)
+    })
+  })
 })

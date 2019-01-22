@@ -1,0 +1,1141 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MenuOverlay Normal menu overlay 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  display: inline-block;
+  position: relative;
+}
+
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  cursor: pointer;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 0.25rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+}
+
+.c1 {
+  font-weight: 600;
+  outline: none;
+  -webkit-transition: border 80ms;
+  transition: border 80ms;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: middle;
+  white-space: nowrap;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 1rem;
+  line-height: 34px;
+  border-style: solid;
+  border-width: 0.0625rem;
+  background: #64518A;
+  border-color: #64518A;
+  color: #FFFFFF;
+}
+
+.c1:focus {
+  box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
+}
+
+.c1[disabled] {
+  cursor: default;
+  -webkit-filter: grayscale(0.3);
+  filter: grayscale(0.3);
+  opacity: 0.25;
+}
+
+.c1[disabled]:hover,
+.c1[disabled]:active,
+.c1[disabled]:focus {
+  background-color: #64518A;
+  border-color: #C1C6CC;
+}
+
+.c1:hover,
+.c1:focus,
+.c1.hover {
+  background: #473764;
+  border-color: #473764;
+}
+
+.c1:active,
+.c1.active {
+  background: #2A1B60;
+  border-color: #2A1B60;
+}
+
+<div
+  className="c0"
+>
+  <button
+    className="c1 c2"
+    onClick={[Function]}
+  >
+    Trigger
+  </button>
+</div>
+`;
+
+exports[`MenuOverlay Open menu overlay with backdrop bottom=50px 1`] = `
+Array [
+  .c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  cursor: pointer;
+  bottom: 0;
+  background-color: #DEE1E5;
+  left: 0;
+  opacity: 0.6;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1;
+}
+
+<div
+    className="c0"
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "transparent",
+        "bottom": "50px",
+        "cursor": "default",
+        "left": undefined,
+        "opacity": 0,
+        "right": undefined,
+        "top": undefined,
+      }
+    }
+  />,
+  .c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  cursor: pointer;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 0.25rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+}
+
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+}
+
+.c1 {
+  font-weight: 600;
+  outline: none;
+  -webkit-transition: border 80ms;
+  transition: border 80ms;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: middle;
+  white-space: nowrap;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 1rem;
+  line-height: 34px;
+  border-style: solid;
+  border-width: 0.0625rem;
+  background: #64518A;
+  border-color: #64518A;
+  color: #FFFFFF;
+}
+
+.c1:focus {
+  box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
+}
+
+.c1[disabled] {
+  cursor: default;
+  -webkit-filter: grayscale(0.3);
+  filter: grayscale(0.3);
+  opacity: 0.25;
+}
+
+.c1[disabled]:hover,
+.c1[disabled]:active,
+.c1[disabled]:focus {
+  background-color: #64518A;
+  border-color: #C1C6CC;
+}
+
+.c1:hover,
+.c1:focus,
+.c1.hover {
+  background: #473764;
+  border-color: #473764;
+}
+
+.c1:active,
+.c1.active {
+  background: #2A1B60;
+  border-color: #2A1B60;
+}
+
+<div
+    className="c0"
+  >
+    <button
+      className="c1 c2"
+      onClick={[Function]}
+    >
+      Trigger
+    </button>
+  </div>,
+  .c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  z-index: 1;
+}
+
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border: 1px solid;
+  border-radius: 0.25rem;
+  border-color: #DEE1E5;
+  box-shadow: 0 3px 18px rgba(0,0,0,0.12),0 1px 4px rgba(0,0,0,0.04);
+  color: #262D33;
+  background-color: #FFFFFF;
+  margin: 0.5rem;
+}
+
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+.c3 {
+  position: absolute;
+}
+
+.c3::before {
+  content: '';
+  margin: auto;
+  display: block;
+  width: 0.5rem;
+  height: 0.5rem;
+  background: #FFFFFF;
+  border-bottom: 1px solid #DEE1E5;
+  border-right: 1px solid #DEE1E5;
+}
+
+.c3[data-placement*='top'] {
+  bottom: 0.25rem;
+  margin: 0 1rem;
+}
+
+.c3[data-placement*='top']::before {
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.c3[data-placement*='right'] {
+  left: 0.25rem;
+  margin: 1rem 0;
+}
+
+.c3[data-placement*='right']::before {
+  -webkit-transform: rotate(135deg);
+  -ms-transform: rotate(135deg);
+  transform: rotate(135deg);
+}
+
+.c3[data-placement*='bottom'] {
+  top: 0.25rem;
+  margin: 0 1rem;
+}
+
+.c3[data-placement*='bottom']::before {
+  -webkit-transform: rotate(225deg);
+  -ms-transform: rotate(225deg);
+  transform: rotate(225deg);
+}
+
+.c3[data-placement*='left'] {
+  right: 0.25rem;
+  margin: 1rem 0;
+}
+
+.c3[data-placement*='left']::before {
+  -webkit-transform: rotate(315deg);
+  -ms-transform: rotate(315deg);
+  transform: rotate(315deg);
+}
+
+<div
+    className="c0"
+    style={
+      Object {
+        "left": 0,
+        "opacity": 0,
+        "pointerEvents": "none",
+        "position": "absolute",
+        "top": 0,
+      }
+    }
+  >
+    <div
+      className="c1"
+    >
+      <div
+        className="c2"
+      >
+        Hello World
+      </div>
+      <div
+        className="c3"
+        style={Object {}}
+      />
+    </div>
+  </div>,
+]
+`;
+
+exports[`MenuOverlay Open menu overlay with backdrop left=50px 1`] = `
+Array [
+  .c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  cursor: pointer;
+  bottom: 0;
+  background-color: #DEE1E5;
+  left: 0;
+  opacity: 0.6;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1;
+}
+
+<div
+    className="c0"
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "transparent",
+        "bottom": undefined,
+        "cursor": "default",
+        "left": "50px",
+        "opacity": 0,
+        "right": undefined,
+        "top": undefined,
+      }
+    }
+  />,
+  .c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  cursor: pointer;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 0.25rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+}
+
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+}
+
+.c1 {
+  font-weight: 600;
+  outline: none;
+  -webkit-transition: border 80ms;
+  transition: border 80ms;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: middle;
+  white-space: nowrap;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 1rem;
+  line-height: 34px;
+  border-style: solid;
+  border-width: 0.0625rem;
+  background: #64518A;
+  border-color: #64518A;
+  color: #FFFFFF;
+}
+
+.c1:focus {
+  box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
+}
+
+.c1[disabled] {
+  cursor: default;
+  -webkit-filter: grayscale(0.3);
+  filter: grayscale(0.3);
+  opacity: 0.25;
+}
+
+.c1[disabled]:hover,
+.c1[disabled]:active,
+.c1[disabled]:focus {
+  background-color: #64518A;
+  border-color: #C1C6CC;
+}
+
+.c1:hover,
+.c1:focus,
+.c1.hover {
+  background: #473764;
+  border-color: #473764;
+}
+
+.c1:active,
+.c1.active {
+  background: #2A1B60;
+  border-color: #2A1B60;
+}
+
+<div
+    className="c0"
+  >
+    <button
+      className="c1 c2"
+      onClick={[Function]}
+    >
+      Trigger
+    </button>
+  </div>,
+  .c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  z-index: 1;
+}
+
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border: 1px solid;
+  border-radius: 0.25rem;
+  border-color: #DEE1E5;
+  box-shadow: 0 3px 18px rgba(0,0,0,0.12),0 1px 4px rgba(0,0,0,0.04);
+  color: #262D33;
+  background-color: #FFFFFF;
+  margin: 0.5rem;
+}
+
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+.c3 {
+  position: absolute;
+}
+
+.c3::before {
+  content: '';
+  margin: auto;
+  display: block;
+  width: 0.5rem;
+  height: 0.5rem;
+  background: #FFFFFF;
+  border-bottom: 1px solid #DEE1E5;
+  border-right: 1px solid #DEE1E5;
+}
+
+.c3[data-placement*='top'] {
+  bottom: 0.25rem;
+  margin: 0 1rem;
+}
+
+.c3[data-placement*='top']::before {
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.c3[data-placement*='right'] {
+  left: 0.25rem;
+  margin: 1rem 0;
+}
+
+.c3[data-placement*='right']::before {
+  -webkit-transform: rotate(135deg);
+  -ms-transform: rotate(135deg);
+  transform: rotate(135deg);
+}
+
+.c3[data-placement*='bottom'] {
+  top: 0.25rem;
+  margin: 0 1rem;
+}
+
+.c3[data-placement*='bottom']::before {
+  -webkit-transform: rotate(225deg);
+  -ms-transform: rotate(225deg);
+  transform: rotate(225deg);
+}
+
+.c3[data-placement*='left'] {
+  right: 0.25rem;
+  margin: 1rem 0;
+}
+
+.c3[data-placement*='left']::before {
+  -webkit-transform: rotate(315deg);
+  -ms-transform: rotate(315deg);
+  transform: rotate(315deg);
+}
+
+<div
+    className="c0"
+    style={
+      Object {
+        "left": 0,
+        "opacity": 0,
+        "pointerEvents": "none",
+        "position": "absolute",
+        "top": 0,
+      }
+    }
+  >
+    <div
+      className="c1"
+    >
+      <div
+        className="c2"
+      >
+        Hello World
+      </div>
+      <div
+        className="c3"
+        style={Object {}}
+      />
+    </div>
+  </div>,
+]
+`;
+
+exports[`MenuOverlay Open menu overlay with backdrop right=50px 1`] = `
+Array [
+  .c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  cursor: pointer;
+  bottom: 0;
+  background-color: #DEE1E5;
+  left: 0;
+  opacity: 0.6;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1;
+}
+
+<div
+    className="c0"
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "transparent",
+        "bottom": undefined,
+        "cursor": "default",
+        "left": undefined,
+        "opacity": 0,
+        "right": "50px",
+        "top": undefined,
+      }
+    }
+  />,
+  .c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  cursor: pointer;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 0.25rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+}
+
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+}
+
+.c1 {
+  font-weight: 600;
+  outline: none;
+  -webkit-transition: border 80ms;
+  transition: border 80ms;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: middle;
+  white-space: nowrap;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 1rem;
+  line-height: 34px;
+  border-style: solid;
+  border-width: 0.0625rem;
+  background: #64518A;
+  border-color: #64518A;
+  color: #FFFFFF;
+}
+
+.c1:focus {
+  box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
+}
+
+.c1[disabled] {
+  cursor: default;
+  -webkit-filter: grayscale(0.3);
+  filter: grayscale(0.3);
+  opacity: 0.25;
+}
+
+.c1[disabled]:hover,
+.c1[disabled]:active,
+.c1[disabled]:focus {
+  background-color: #64518A;
+  border-color: #C1C6CC;
+}
+
+.c1:hover,
+.c1:focus,
+.c1.hover {
+  background: #473764;
+  border-color: #473764;
+}
+
+.c1:active,
+.c1.active {
+  background: #2A1B60;
+  border-color: #2A1B60;
+}
+
+<div
+    className="c0"
+  >
+    <button
+      className="c1 c2"
+      onClick={[Function]}
+    >
+      Trigger
+    </button>
+  </div>,
+  .c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  z-index: 1;
+}
+
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border: 1px solid;
+  border-radius: 0.25rem;
+  border-color: #DEE1E5;
+  box-shadow: 0 3px 18px rgba(0,0,0,0.12),0 1px 4px rgba(0,0,0,0.04);
+  color: #262D33;
+  background-color: #FFFFFF;
+  margin: 0.5rem;
+}
+
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+.c3 {
+  position: absolute;
+}
+
+.c3::before {
+  content: '';
+  margin: auto;
+  display: block;
+  width: 0.5rem;
+  height: 0.5rem;
+  background: #FFFFFF;
+  border-bottom: 1px solid #DEE1E5;
+  border-right: 1px solid #DEE1E5;
+}
+
+.c3[data-placement*='top'] {
+  bottom: 0.25rem;
+  margin: 0 1rem;
+}
+
+.c3[data-placement*='top']::before {
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.c3[data-placement*='right'] {
+  left: 0.25rem;
+  margin: 1rem 0;
+}
+
+.c3[data-placement*='right']::before {
+  -webkit-transform: rotate(135deg);
+  -ms-transform: rotate(135deg);
+  transform: rotate(135deg);
+}
+
+.c3[data-placement*='bottom'] {
+  top: 0.25rem;
+  margin: 0 1rem;
+}
+
+.c3[data-placement*='bottom']::before {
+  -webkit-transform: rotate(225deg);
+  -ms-transform: rotate(225deg);
+  transform: rotate(225deg);
+}
+
+.c3[data-placement*='left'] {
+  right: 0.25rem;
+  margin: 1rem 0;
+}
+
+.c3[data-placement*='left']::before {
+  -webkit-transform: rotate(315deg);
+  -ms-transform: rotate(315deg);
+  transform: rotate(315deg);
+}
+
+<div
+    className="c0"
+    style={
+      Object {
+        "left": 0,
+        "opacity": 0,
+        "pointerEvents": "none",
+        "position": "absolute",
+        "top": 0,
+      }
+    }
+  >
+    <div
+      className="c1"
+    >
+      <div
+        className="c2"
+      >
+        Hello World
+      </div>
+      <div
+        className="c3"
+        style={Object {}}
+      />
+    </div>
+  </div>,
+]
+`;
+
+exports[`MenuOverlay Open menu overlay with backdrop top=50px 1`] = `
+Array [
+  .c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  cursor: pointer;
+  bottom: 0;
+  background-color: #DEE1E5;
+  left: 0;
+  opacity: 0.6;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1;
+}
+
+<div
+    className="c0"
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "transparent",
+        "bottom": undefined,
+        "cursor": "default",
+        "left": undefined,
+        "opacity": 0,
+        "right": undefined,
+        "top": "50px",
+      }
+    }
+  />,
+  .c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  cursor: pointer;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 0.25rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+}
+
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+}
+
+.c1 {
+  font-weight: 600;
+  outline: none;
+  -webkit-transition: border 80ms;
+  transition: border 80ms;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: middle;
+  white-space: nowrap;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 1rem;
+  line-height: 34px;
+  border-style: solid;
+  border-width: 0.0625rem;
+  background: #64518A;
+  border-color: #64518A;
+  color: #FFFFFF;
+}
+
+.c1:focus {
+  box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
+}
+
+.c1[disabled] {
+  cursor: default;
+  -webkit-filter: grayscale(0.3);
+  filter: grayscale(0.3);
+  opacity: 0.25;
+}
+
+.c1[disabled]:hover,
+.c1[disabled]:active,
+.c1[disabled]:focus {
+  background-color: #64518A;
+  border-color: #C1C6CC;
+}
+
+.c1:hover,
+.c1:focus,
+.c1.hover {
+  background: #473764;
+  border-color: #473764;
+}
+
+.c1:active,
+.c1.active {
+  background: #2A1B60;
+  border-color: #2A1B60;
+}
+
+<div
+    className="c0"
+  >
+    <button
+      className="c1 c2"
+      onClick={[Function]}
+    >
+      Trigger
+    </button>
+  </div>,
+  .c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  z-index: 1;
+}
+
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border: 1px solid;
+  border-radius: 0.25rem;
+  border-color: #DEE1E5;
+  box-shadow: 0 3px 18px rgba(0,0,0,0.12),0 1px 4px rgba(0,0,0,0.04);
+  color: #262D33;
+  background-color: #FFFFFF;
+  margin: 0.5rem;
+}
+
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+.c3 {
+  position: absolute;
+}
+
+.c3::before {
+  content: '';
+  margin: auto;
+  display: block;
+  width: 0.5rem;
+  height: 0.5rem;
+  background: #FFFFFF;
+  border-bottom: 1px solid #DEE1E5;
+  border-right: 1px solid #DEE1E5;
+}
+
+.c3[data-placement*='top'] {
+  bottom: 0.25rem;
+  margin: 0 1rem;
+}
+
+.c3[data-placement*='top']::before {
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.c3[data-placement*='right'] {
+  left: 0.25rem;
+  margin: 1rem 0;
+}
+
+.c3[data-placement*='right']::before {
+  -webkit-transform: rotate(135deg);
+  -ms-transform: rotate(135deg);
+  transform: rotate(135deg);
+}
+
+.c3[data-placement*='bottom'] {
+  top: 0.25rem;
+  margin: 0 1rem;
+}
+
+.c3[data-placement*='bottom']::before {
+  -webkit-transform: rotate(225deg);
+  -ms-transform: rotate(225deg);
+  transform: rotate(225deg);
+}
+
+.c3[data-placement*='left'] {
+  right: 0.25rem;
+  margin: 1rem 0;
+}
+
+.c3[data-placement*='left']::before {
+  -webkit-transform: rotate(315deg);
+  -ms-transform: rotate(315deg);
+  transform: rotate(315deg);
+}
+
+<div
+    className="c0"
+    style={
+      Object {
+        "left": 0,
+        "opacity": 0,
+        "pointerEvents": "none",
+        "position": "absolute",
+        "top": 0,
+      }
+    }
+  >
+    <div
+      className="c1"
+    >
+      <div
+        className="c2"
+      >
+        Hello World
+      </div>
+      <div
+        className="c3"
+        style={Object {}}
+      />
+    </div>
+  </div>,
+]
+`;

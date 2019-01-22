@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { shadows } from '../../style'
+import { fadeIn, shadows } from '../../style'
 import { CustomizableAttributes } from '../../types/attributes'
 import { BackdropStyle, Overlay, OverlayInteractiveProps } from './Overlay'
 import { OverlayBubbleStyleProps } from './OverlayBubble'
@@ -35,6 +35,7 @@ export interface CustomizablePopoverAttributes extends CustomizableAttributes {
 export const CustomizablePopoverAttributes: CustomizablePopoverAttributes = {
   backdrop: {},
   bubble: {
+    animation: `${fadeIn} 0.2s linear`,
     backgroundColor: 'palette.white',
     border: '1px solid',
     borderColor: 'palette.charcoal200',

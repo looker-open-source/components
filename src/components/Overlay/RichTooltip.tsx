@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { palette, shadows } from '../../style'
+import { fadeIn, palette, shadows } from '../../style'
 import { Overlay, OverlayInteractiveProps } from './Overlay'
 import { overlayBubbleWithContent } from './popover_utils'
 import { CustomizableTooltipAttributes } from './Tooltip'
@@ -27,6 +27,7 @@ export const RichTooltip: React.SFC<RichTooltipProps> = ({
 
 export const CustomizableRichTooltipAttributes: CustomizableTooltipAttributes = {
   bubble: {
+    animation: `${fadeIn} 0.2s linear`,
     backgroundColor: palette.white,
     border: '1px solid',
     borderColor: palette.charcoal200,

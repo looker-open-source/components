@@ -1,6 +1,6 @@
 import { TextAlignProperty } from 'csstype'
 import * as React from 'react'
-import { palette, shadows } from '../../style'
+import { fadeIn, palette, shadows } from '../../style'
 
 import { CustomizableAttributes } from '../../types/attributes'
 import { Box } from '../Box'
@@ -64,6 +64,7 @@ export interface CustomizableTooltipAttributes extends CustomizableAttributes {
 
 export const CustomizableTooltipAttributes: CustomizableTooltipAttributes = {
   bubble: {
+    animation: `${fadeIn} 0.2s linear`,
     backgroundColor: palette.charcoal600,
     border: 'none',
     borderColor: 'none',

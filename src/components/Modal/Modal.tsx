@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { CSSTransition } from 'react-transition-group'
-import { palette, shadows } from '../../style'
+import { fadeIn, palette, shadows } from '../../style'
 import { CustomizableAttributes } from '../../types/attributes'
 import { OverlayBubbleStyleProps } from '../Overlay'
 import { ModalBackdrop } from './ModalBackdrop'
@@ -149,6 +149,7 @@ export interface CustomizableModalAttributes extends CustomizableAttributes {
 
 export const CustomizableModalAttributes: CustomizableModalAttributes = {
   surface: {
+    animation: `${fadeIn} 0.2s linear`,
     backgroundColor: palette.white,
     border: 'none',
     borderColor: 'none',

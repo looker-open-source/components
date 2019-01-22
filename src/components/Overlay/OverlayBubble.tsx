@@ -1,7 +1,7 @@
 import { Placement } from 'popper.js'
 import * as React from 'react'
 import { PopperArrowProps } from 'react-popper'
-import { fadeIn, styled } from '../../style'
+import { styled } from '../../style'
 import { Box, BoxProps } from '../Box'
 
 export interface OverlayBubbleArrowProps {
@@ -57,11 +57,18 @@ const OverlayBubbleArrow = styled.div<OverlayBubbleArrowProps>`
   }
 `
 
-const OverlayBubbleContainer = styled<BoxProps<HTMLDivElement>>(Box)`
-  animation: ${fadeIn} 0.2s linear;
+interface OverlayBubbleContainerProps extends BoxProps<HTMLDivElement> {
+  animation?: string
+}
+
+const OverlayBubbleContainer = styled<OverlayBubbleContainerProps>(
+  ({ animation, ...props }) => <Box {...props} />
+)`
+  animation: ${props => props.animation};
 `
 
 export interface OverlayBubbleStyleProps extends OverlayBubbleArrowProps {
+  animation?: string
   borderColor: string
   borderRadius: string
   boxShadow: string
@@ -82,6 +89,7 @@ export const OverlayBubble: React.SFC<OverlayBubbleProps> = ({ ...props }) => (
     borderColor={props.borderColor}
     boxShadow={props.boxShadow}
     color={props.color}
+    animation={props.animation}
   >
     {props.children}
     <OverlayBubbleArrow
