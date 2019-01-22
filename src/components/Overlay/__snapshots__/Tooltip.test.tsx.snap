@@ -131,7 +131,7 @@ Array [
   box-shadow: 0 3px 18px rgba(0,0,0,0.12),0 1px 4px rgba(0,0,0,0.04);
   color: #FBFBFC;
   background-color: #4C535B;
-  overflow: auto;
+  overflow: visible;
   margin: 0.5rem;
 }
 
@@ -241,7 +241,7 @@ Array [
       >
         <div
           className="c1 c2"
-          overflow="auto"
+          overflow="visible"
         >
           <p
             className="c3"

@@ -90,7 +90,7 @@ export const OverlayBubble: React.SFC<OverlayBubbleProps> = ({ ...props }) => (
     boxShadow={props.boxShadow}
     color={props.color}
     animation={props.animation}
-    overflow="auto"
+    overflow="visible"
   >
     {props.children}
     <OverlayBubbleArrow

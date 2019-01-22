@@ -9,6 +9,8 @@ exports[`MenuGroup - canActivate 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
 }
 
 .c1 {
@@ -126,6 +128,8 @@ exports[`MenuGroup - label 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
 }
 
 .c3 {
@@ -258,6 +262,8 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
 }
 
 .c3 {
@@ -395,6 +401,8 @@ exports[`MenuGroup 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
 }
 
 .c1 {

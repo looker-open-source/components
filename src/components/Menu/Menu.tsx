@@ -2,13 +2,9 @@ import * as React from 'react'
 import { HotKeys } from 'react-hotkeys'
 import { styled } from '../../style'
 import { Box, BoxProps } from '../Box'
-import { MenuGroup, MenuGroupProps } from './MenuGroup'
-import { MenuItemProps } from './MenuItem'
-
-export type MenuChild = React.ReactElement<MenuItemProps | MenuGroupProps>
+import { MenuGroup } from './MenuGroup'
 
 export interface MenuProps extends BoxProps<HTMLDivElement> {
-  children: MenuChild[] | MenuChild
   focusOnMount?: boolean
 }
 
@@ -77,8 +73,6 @@ export class Menu extends React.PureComponent<MenuProps> {
 
 const MenuStyle = styled(Box)`
   ${MenuGroup} ~ ${MenuGroup} { /* stylelint-disable-line */
-    margin-top: .5rem;
-    padding-top: .25rem;
     border-top: 1px solid ${p => p.theme.colors.palette.charcoal200};
   }
 

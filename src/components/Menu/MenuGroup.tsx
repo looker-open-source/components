@@ -4,13 +4,8 @@ import { styled } from '../../style'
 
 import { Box, BoxProps } from '../Box'
 import { Heading, HeadingProps } from '../Heading'
-import { MenuItemProps } from './MenuItem'
-
-export type MenuGroupChild = React.ReactElement<MenuItemProps>
 
 export interface MenuGroupProps extends BoxProps<HTMLDivElement> {
-  children: MenuGroupChild | MenuGroupChild[]
-
   label?: string
   labelProps?: HeadingProps
   labelStyles?: React.CSSProperties
@@ -28,7 +23,7 @@ const Internal: React.SFC<MenuGroupProps> = ({
 }) => {
   const overlay = canActivate ? { canActivate } : {}
   const childrenWithProps = React.Children.toArray(children).map(child =>
-    React.cloneElement(child as MenuGroupChild, overlay)
+    React.cloneElement(child as JSX.Element, overlay)
   )
 
   const labelComponent = label && (
@@ -53,7 +48,7 @@ const Internal: React.SFC<MenuGroupProps> = ({
   )
 
   return (
-    <Box {...props}>
+    <Box py="xxsmall" {...props}>
       {labelComponent}
       {childrenWithProps}
     </Box>
