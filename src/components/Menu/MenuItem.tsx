@@ -6,7 +6,7 @@ import { Icon } from '../Icon'
 import { ModalContextProps, withModal } from '../Modal'
 
 export interface MenuItemProps
-  extends BoxProps<HTMLElement>,
+  extends BoxProps<HTMLAnchorElement>,
     ModalContextProps {
   detail?: React.ReactNode
   icon?: IconNames
@@ -59,6 +59,7 @@ const MenuItemInternal: React.SFC<MenuItemProps> = ({
       display="flex"
       flexWrap="wrap"
       fontSize="small"
+      is="a"
       py="xsmall"
       px="medium"
       my="xxsmall"
@@ -73,7 +74,7 @@ const MenuItemInternal: React.SFC<MenuItemProps> = ({
         background: palette.charcoal000,
         color: palette.charcoal900,
       }}
-      style={{ userSelect: 'none' }}
+      style={{ textDecoration: 'none' }}
       {...props}
     >
       {itemIcon()}

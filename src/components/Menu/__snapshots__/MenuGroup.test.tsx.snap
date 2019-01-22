@@ -69,12 +69,12 @@ exports[`MenuGroup - canActivate 1`] = `
 <div
   className="c0"
 >
-  <div
+  <a
     className="c1"
     onClick={[Function]}
     style={
       Object {
-        "userSelect": "none",
+        "textDecoration": "none",
       }
     }
     tabIndex={0}
@@ -83,13 +83,13 @@ exports[`MenuGroup - canActivate 1`] = `
       className="c2"
     />
     what?
-  </div>
-  <div
+  </a>
+  <a
     className="c1"
     onClick={[Function]}
     style={
       Object {
-        "userSelect": "none",
+        "textDecoration": "none",
       }
     }
     tabIndex={0}
@@ -98,13 +98,13 @@ exports[`MenuGroup - canActivate 1`] = `
       className="c2"
     />
     who?
-  </div>
-  <div
+  </a>
+  <a
     className="c1"
     onClick={[Function]}
     style={
       Object {
-        "userSelect": "none",
+        "textDecoration": "none",
       }
     }
     tabIndex={0}
@@ -113,7 +113,7 @@ exports[`MenuGroup - canActivate 1`] = `
       className="c2"
     />
     where?
-  </div>
+  </a>
 </div>
 `;
 
@@ -210,42 +210,42 @@ exports[`MenuGroup - label 1`] = `
   >
     Questions
   </h2>
-  <div
+  <a
     className="c3"
     onClick={[Function]}
     style={
       Object {
-        "userSelect": "none",
+        "textDecoration": "none",
       }
     }
     tabIndex={0}
   >
     what?
-  </div>
-  <div
+  </a>
+  <a
     className="c3"
     onClick={[Function]}
     style={
       Object {
-        "userSelect": "none",
+        "textDecoration": "none",
       }
     }
     tabIndex={0}
   >
     who?
-  </div>
-  <div
+  </a>
+  <a
     className="c3"
     onClick={[Function]}
     style={
       Object {
-        "userSelect": "none",
+        "textDecoration": "none",
       }
     }
     tabIndex={0}
   >
     where?
-  </div>
+  </a>
 </div>
 `;
 
@@ -347,42 +347,42 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
   >
     Questions
   </h2>
-  <div
+  <a
     className="c3"
     onClick={[Function]}
     style={
       Object {
-        "userSelect": "none",
+        "textDecoration": "none",
       }
     }
     tabIndex={0}
   >
     what?
-  </div>
-  <div
+  </a>
+  <a
     className="c3"
     onClick={[Function]}
     style={
       Object {
-        "userSelect": "none",
+        "textDecoration": "none",
       }
     }
     tabIndex={0}
   >
     who?
-  </div>
-  <div
+  </a>
+  <a
     className="c3"
     onClick={[Function]}
     style={
       Object {
-        "userSelect": "none",
+        "textDecoration": "none",
       }
     }
     tabIndex={0}
   >
     where?
-  </div>
+  </a>
 </div>
 `;
 
@@ -444,17 +444,17 @@ exports[`MenuGroup 1`] = `
 <div
   className="c0"
 >
-  <div
+  <a
     className="c1"
     onClick={[Function]}
     style={
       Object {
-        "userSelect": "none",
+        "textDecoration": "none",
       }
     }
     tabIndex={0}
   >
     who!
-  </div>
+  </a>
 </div>
 `;

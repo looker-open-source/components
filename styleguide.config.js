@@ -40,7 +40,7 @@ const componentSections = [
   {
     name: 'Overlays: Popovers & Tooltips',
     sectionDepth: 1,
-    content: 'src/components/Overlay/Overlay.md',
+    // content: 'src/components/Overlay/Overlay.md',
     components: ['src/components/Overlay/**/*.tsx'],
   },
   {
@@ -62,7 +62,6 @@ const componentSections = [
   {
     name: 'Menu',
     sectionDepth: 1,
-    content: 'src/components/Menu/Menu.md',
     components: ['src/components/Menu/**/*.tsx'],
   },
 ]

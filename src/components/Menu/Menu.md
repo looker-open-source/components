@@ -9,15 +9,13 @@ const StatusAndResources = require('../../../styleguide_components/StatusAndReso
 />
 ```
 
-Use `Menu` to let people navigate and get around to things...
+`Menu` displays a list of choices.
 
-```js
-const MenuGroupDemo = require('../../../styleguide_components/MenuDemo')
-  .MenuGroupDemo
-;<Popover content={<MenuGroupDemo />}>
-  <Button variant="outline">Menu Example</Button>
-</Popover>
-```
+#### Focus & Keyboard Controls
+
+When a menu is focused the `up` and `down` arrow keys will move focus through the menu items within the menu.
+
+Set the `focusOnMount` prop to get the `Menu` to automatically have focus applied on compoment mount. Generally when loading with a ModalContext this prop should be set.
 
 ```js
 <Menu>
@@ -37,9 +35,9 @@ const MenuGroupDemo = require('../../../styleguide_components/MenuDemo')
 </Menu>
 ```
 
-### Compose with Delight
+### Compose Menus
 
-Popover, Drawer and Dialog
+Menu can be easily composed with `Popover`, `Drawer` and `Dialog`
 
 ```js
 <Popover
@@ -62,12 +60,44 @@ Popover, Drawer and Dialog
 ```js
 const MenuGroupDemo = require('../../../styleguide_components/MenuDemo')
   .MenuGroupDemo
+;<Popover content={<MenuGroupDemo />}>
+  <Button variant="outline" iconAfter="ArrowDropDown">
+    Menu Example...
+  </Button>
+</Popover>
+```
+
+```js
+const menuGroup = (
+  <MenuGroup label="Spacing">
+    <MenuItem>Scroll Filler A</MenuItem>
+    <MenuItem>Scroll Filler B</MenuItem>
+    <MenuItem>Scroll Filler C</MenuItem>
+    <MenuItem>Scroll Filler D</MenuItem>
+    <MenuItem>Scroll Filler E</MenuItem>
+    <MenuItem>Scroll Filler F</MenuItem>
+  </MenuGroup>
+)
 ;<Drawer
   content={
     <>
       <ModalHeader>Menu Demo</ModalHeader>
       <ModalContent>
-        <MenuGroupDemo />
+        <Menu focusOnMount>
+          <MenuGroup>
+            <MenuItem icon="LogoRings">Looker</MenuItem>
+            <MenuItem icon="Validate">Validate</MenuItem>
+            <MenuItem icon="ChartPie">Pizza!</MenuItem>
+          </MenuGroup>
+          {menuGroup}
+          {menuGroup}
+          {menuGroup}
+          {menuGroup}
+          {menuGroup}
+          <MenuGroup>
+            <MenuItem icon="Beaker">Scary Stuff</MenuItem>
+          </MenuGroup>
+        </Menu>
       </ModalContent>
     </>
   }

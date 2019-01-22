@@ -66,12 +66,12 @@ exports[`MenuItem - active + icon 1`] = `
   color: #0087e1;
 }
 
-<div
+<a
   className="c0"
   onClick={[Function]}
   style={
     Object {
-      "userSelect": "none",
+      "textDecoration": "none",
     }
   }
   tabIndex={0}
@@ -106,7 +106,7 @@ exports[`MenuItem - active + icon 1`] = `
     </svg>
   </div>
   who!
-</div>
+</a>
 `;
 
 exports[`MenuItem - active 1`] = `
@@ -154,18 +154,18 @@ exports[`MenuItem - active 1`] = `
   color: #0087e1;
 }
 
-<div
+<a
   className="c0"
   onClick={[Function]}
   style={
     Object {
-      "userSelect": "none",
+      "textDecoration": "none",
     }
   }
   tabIndex={0}
 >
   who!
-</div>
+</a>
 `;
 
 exports[`MenuItem - canActivate + active 1`] = `
@@ -234,12 +234,12 @@ exports[`MenuItem - canActivate + active 1`] = `
   color: #0087e1;
 }
 
-<div
+<a
   className="c0"
   onClick={[Function]}
   style={
     Object {
-      "userSelect": "none",
+      "textDecoration": "none",
     }
   }
   tabIndex={0}
@@ -260,7 +260,7 @@ exports[`MenuItem - canActivate + active 1`] = `
     </svg>
   </div>
   who!
-</div>
+</a>
 `;
 
 exports[`MenuItem - canActivate 1`] = `
@@ -319,12 +319,12 @@ exports[`MenuItem - canActivate 1`] = `
   width: 1.5rem;
 }
 
-<div
+<a
   className="c0"
   onClick={[Function]}
   style={
     Object {
-      "userSelect": "none",
+      "textDecoration": "none",
     }
   }
   tabIndex={0}
@@ -333,7 +333,7 @@ exports[`MenuItem - canActivate 1`] = `
     className="c1"
   />
   who!
-</div>
+</a>
 `;
 
 exports[`MenuItem - detail 1`] = `
@@ -395,12 +395,12 @@ exports[`MenuItem - detail 1`] = `
   padding-left: 1.25rem;
 }
 
-<div
+<a
   className="c0"
   onClick={[Function]}
   style={
     Object {
-      "userSelect": "none",
+      "textDecoration": "none",
     }
   }
   tabIndex={0}
@@ -411,7 +411,7 @@ exports[`MenuItem - detail 1`] = `
   >
     Is an excellent question
   </div>
-</div>
+</a>
 `;
 
 exports[`MenuItem - icon 1`] = `
@@ -480,12 +480,12 @@ exports[`MenuItem - icon 1`] = `
   width: 1rem;
 }
 
-<div
+<a
   className="c0"
   onClick={[Function]}
   style={
     Object {
-      "userSelect": "none",
+      "textDecoration": "none",
     }
   }
   tabIndex={0}
@@ -520,7 +520,7 @@ exports[`MenuItem - icon 1`] = `
     </svg>
   </div>
   who!
-</div>
+</a>
 `;
 
 exports[`MenuItem 1`] = `
@@ -568,16 +568,16 @@ exports[`MenuItem 1`] = `
   color: #0087e1;
 }
 
-<div
+<a
   className="c0"
   onClick={[Function]}
   style={
     Object {
-      "userSelect": "none",
+      "textDecoration": "none",
     }
   }
   tabIndex={0}
 >
   who!
-</div>
+</a>
 `;

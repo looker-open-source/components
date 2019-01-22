@@ -149,6 +149,7 @@ exports[`ColorFieldPicker renders a color picker in a RichTooltip 1`] = `
   box-shadow: 0 3px 18px rgba(0,0,0,0.12),0 1px 4px rgba(0,0,0,0.04);
   color: #262D33;
   background-color: #FFFFFF;
+  overflow: auto;
   margin: 0.5rem;
 }
 
@@ -403,6 +404,7 @@ exports[`ColorFieldPicker renders a color picker in a RichTooltip 1`] = `
               >
                 <div
                   className="c8 c9"
+                  overflow="auto"
                 >
                   <div
                     className="c10"

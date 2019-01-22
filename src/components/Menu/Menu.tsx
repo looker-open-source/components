@@ -30,7 +30,12 @@ export class Menu extends React.PureComponent<MenuProps> {
     const { children, focusOnMount, ...props } = this.props
     return (
       <HotKeys keyMap={this.keyMap()} handlers={this.keyHandlers()}>
-        <MenuStyle tabIndex={-1} innerRef={this.ref} {...props}>
+        <MenuStyle
+          innerRef={this.ref}
+          tabIndex={-1}
+          userSelect="none"
+          {...props}
+        >
           {children}
         </MenuStyle>
       </HotKeys>
