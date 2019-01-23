@@ -1,0 +1,546 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Big ToggleSwitch 1`] = `
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  height: 0px;
+  opacity: 0;
+  width: 0px;
+}
+
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #262D33;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  height: 3.75rem;
+  position: relative;
+  margin-right: 0.5rem;
+  width: 6.5625rem;
+}
+
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border-radius: 3.75rem;
+  bottom: 0;
+  background-color: #C1C6CC;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.c4:hover {
+  box-shadow: 0 0 .01rem 0.01rem rgba(100,81,138,0.5);
+}
+
+.c6 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border-radius: 50%;
+  bottom: 0.375rem;
+  background-color: #FFFFFF;
+  height: 3rem;
+  left: 0.375rem;
+  position: absolute;
+  width: 3rem;
+}
+
+.c5 {
+  -webkit-transition: 300ms;
+  transition: 300ms;
+}
+
+.c3 {
+  -webkit-transition: 300ms;
+  transition: 300ms;
+}
+
+.c0:focus-within {
+  border-radius: 3.75rem;
+  box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
+}
+
+<label
+  className="c0 c1"
+  cursor="pointer"
+>
+  <input
+    className="c2"
+    type="checkbox"
+  />
+  <div
+    className="c3 c4"
+  >
+    <div
+      className="c5 c6"
+    />
+  </div>
+</label>
+`;
+
+exports[`ToggleSwitch default 1`] = `
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #262D33;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  height: 1.25rem;
+  position: relative;
+  margin-right: 0.5rem;
+  width: 2.1875rem;
+}
+
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  height: 0px;
+  opacity: 0;
+  width: 0px;
+}
+
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border-radius: 1.25rem;
+  bottom: 0;
+  background-color: #C1C6CC;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.c4:hover {
+  box-shadow: 0 0 .01rem 0.01rem rgba(100,81,138,0.5);
+}
+
+.c6 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border-radius: 50%;
+  bottom: 0.125rem;
+  background-color: #FFFFFF;
+  height: 1rem;
+  left: 0.125rem;
+  position: absolute;
+  width: 1rem;
+}
+
+.c5 {
+  -webkit-transition: 300ms;
+  transition: 300ms;
+}
+
+.c3 {
+  -webkit-transition: 300ms;
+  transition: 300ms;
+}
+
+.c0:focus-within {
+  border-radius: 1.25rem;
+  box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
+}
+
+<label
+  className="c0 c1"
+  cursor="pointer"
+>
+  <input
+    className="c2"
+    type="checkbox"
+  />
+  <div
+    className="c3 c4"
+  >
+    <div
+      className="c5 c6"
+    />
+  </div>
+</label>
+`;
+
+exports[`ToggleSwitch on set to false 1`] = `
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #262D33;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  height: 1.25rem;
+  position: relative;
+  margin-right: 0.5rem;
+  width: 2.1875rem;
+}
+
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  height: 0px;
+  opacity: 0;
+  width: 0px;
+}
+
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border-radius: 1.25rem;
+  bottom: 0;
+  background-color: #C1C6CC;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.c4:hover {
+  box-shadow: 0 0 .01rem 0.01rem rgba(100,81,138,0.5);
+}
+
+.c6 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border-radius: 50%;
+  bottom: 0.125rem;
+  background-color: #FFFFFF;
+  height: 1rem;
+  left: 0.125rem;
+  position: absolute;
+  width: 1rem;
+}
+
+.c5 {
+  -webkit-transition: 300ms;
+  transition: 300ms;
+}
+
+.c3 {
+  -webkit-transition: 300ms;
+  transition: 300ms;
+}
+
+.c0:focus-within {
+  border-radius: 1.25rem;
+  box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
+}
+
+<label
+  className="c0 c1"
+  cursor="pointer"
+>
+  <input
+    checked={false}
+    className="c2"
+    type="checkbox"
+  />
+  <div
+    className="c3 c4"
+  >
+    <div
+      className="c5 c6"
+    />
+  </div>
+</label>
+`;
+
+exports[`ToggleSwitch on set to true 1`] = `
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #262D33;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  height: 1.25rem;
+  position: relative;
+  margin-right: 0.5rem;
+  width: 2.1875rem;
+}
+
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  height: 0px;
+  opacity: 0;
+  width: 0px;
+}
+
+.c6 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border-radius: 50%;
+  bottom: 0.125rem;
+  background-color: #FFFFFF;
+  height: 1rem;
+  left: 0.125rem;
+  position: absolute;
+  width: 1rem;
+}
+
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border-radius: 1.25rem;
+  bottom: 0;
+  background-color: #9785F2;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.c4:hover {
+  box-shadow: 0 0 .01rem 0.01rem rgba(100,81,138,0.5);
+}
+
+.c5 {
+  -webkit-transform: translateX(0.9375rem);
+  -ms-transform: translateX(0.9375rem);
+  transform: translateX(0.9375rem);
+  -webkit-transition: 300ms;
+  transition: 300ms;
+}
+
+.c3 {
+  -webkit-transition: 300ms;
+  transition: 300ms;
+}
+
+.c0:focus-within {
+  border-radius: 1.25rem;
+  box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
+}
+
+<label
+  className="c0 c1"
+  cursor="pointer"
+>
+  <input
+    checked={true}
+    className="c2"
+    type="checkbox"
+  />
+  <div
+    className="c3 c4"
+  >
+    <div
+      className="c5 c6"
+    />
+  </div>
+</label>
+`;
+
+exports[`ToggleSwitch that is disabled 1`] = `
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  height: 0px;
+  opacity: 0;
+  width: 0px;
+}
+
+.c6 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border-radius: 50%;
+  bottom: 0.125rem;
+  background-color: #FFFFFF;
+  height: 1rem;
+  left: 0.125rem;
+  position: absolute;
+  width: 1rem;
+}
+
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #262D33;
+  display: inline-block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  height: 1.25rem;
+  position: relative;
+  margin-right: 0.5rem;
+  width: 2.1875rem;
+}
+
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border-radius: 1.25rem;
+  bottom: 0;
+  background-color: #9785F2;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.c7 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border-radius: 1.25rem;
+  bottom: 0;
+  background-color: #C1C6CC;
+  left: 0;
+  opacity: 0.4;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.c5 {
+  -webkit-transform: translateX(0.9375rem);
+  -ms-transform: translateX(0.9375rem);
+  transform: translateX(0.9375rem);
+  -webkit-transition: 300ms;
+  transition: 300ms;
+}
+
+.c3 {
+  -webkit-transition: 300ms;
+  transition: 300ms;
+}
+
+.c0:focus-within {
+  border-radius: 1.25rem;
+  box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
+}
+
+<label
+  className="c0 c1"
+>
+  <input
+    checked={true}
+    className="c2"
+    disabled={true}
+    type="checkbox"
+  />
+  <div
+    className="c3 c4"
+  >
+    <div
+      className="c5 c6"
+    />
+  </div>
+  <div
+    className="c7"
+  />
+</label>
+`;
