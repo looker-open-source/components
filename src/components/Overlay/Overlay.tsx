@@ -1,6 +1,5 @@
 import { Placement } from 'popper.js'
 import * as React from 'react'
-import FocusTrap from 'react-focus-trap'
 import {
   Manager,
   Popper,
@@ -166,23 +165,25 @@ export class Overlay extends React.Component<OverlayProps, OverlayState> {
           )}
         </Reference>
         {this.state.isOpen && (
-          <Popper placement={props.placement} innerRef={this.setPopperRef}>
+          <Popper
+            positionFixed
+            placement={props.placement}
+            innerRef={this.setPopperRef}
+          >
             {({ ref, style, arrowProps, placement }) => (
-              <FocusTrap active>
-                <ModalContext.Provider value={{ closeModal: this.close }}>
-                  <Box
-                    style={style}
-                    innerRef={ref}
-                    zIndex={CustomizableOverlayAttributes.zIndex || 1}
-                    {...popperEventProps}
-                  >
-                    {this.props.overlayContentFactory({
-                      arrowProps,
-                      placement,
-                    })}
-                  </Box>
-                </ModalContext.Provider>
-              </FocusTrap>
+              <ModalContext.Provider value={{ closeModal: this.close }}>
+                <Box
+                  style={style}
+                  innerRef={ref}
+                  zIndex={CustomizableOverlayAttributes.zIndex || 1}
+                  {...popperEventProps}
+                >
+                  {this.props.overlayContentFactory({
+                    arrowProps,
+                    placement,
+                  })}
+                </Box>
+              </ModalContext.Provider>
             )}
           </Popper>
         )}

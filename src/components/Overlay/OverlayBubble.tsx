@@ -1,5 +1,6 @@
 import { Placement } from 'popper.js'
 import * as React from 'react'
+import FocusTrap from 'react-focus-trap'
 import { PopperArrowProps } from 'react-popper'
 import { styled } from '../../style'
 import { Box, BoxProps } from '../Box'
@@ -92,7 +93,7 @@ export const OverlayBubble: React.SFC<OverlayBubbleProps> = ({ ...props }) => (
     animation={props.animation}
     overflow="visible"
   >
-    {props.children}
+    <FocusTrapStyled active>{props.children}</FocusTrapStyled>
     <OverlayBubbleArrow
       backgroundColor={props.backgroundColor}
       border={props.border}
@@ -103,3 +104,9 @@ export const OverlayBubble: React.SFC<OverlayBubbleProps> = ({ ...props }) => (
     />
   </OverlayBubbleContainer>
 )
+
+const FocusTrapStyled = styled(FocusTrap)`
+  &:focus {
+    outline: none;
+  }
+`

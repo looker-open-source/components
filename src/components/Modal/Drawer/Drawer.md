@@ -20,7 +20,7 @@ const boxProps = {
   p: 'xxlarge',
   mb: 'xlarge',
   display: 'flex',
-  height: '40%',
+  height: '40vh',
   justifyContent: 'center',
   bg: 'lavender',
 }

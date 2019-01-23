@@ -271,7 +271,7 @@ Array [
   margin: 0.5rem;
 }
 
-.c2 {
+.c3 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -281,11 +281,11 @@ Array [
   vertical-align: baseline;
 }
 
-.c3 {
+.c4 {
   position: absolute;
 }
 
-.c3::before {
+.c4::before {
   content: '';
   margin: auto;
   display: block;
@@ -296,90 +296,94 @@ Array [
   border-right: 1px solid #DEE1E5;
 }
 
-.c3[data-placement*='top'] {
+.c4[data-placement*='top'] {
   bottom: 0.25rem;
   margin: 0 1rem;
 }
 
-.c3[data-placement*='top']::before {
+.c4[data-placement*='top']::before {
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
 
-.c3[data-placement*='right'] {
+.c4[data-placement*='right'] {
   left: 0.25rem;
   margin: 1rem 0;
 }
 
-.c3[data-placement*='right']::before {
+.c4[data-placement*='right']::before {
   -webkit-transform: rotate(135deg);
   -ms-transform: rotate(135deg);
   transform: rotate(135deg);
 }
 
-.c3[data-placement*='bottom'] {
+.c4[data-placement*='bottom'] {
   top: 0.25rem;
   margin: 0 1rem;
 }
 
-.c3[data-placement*='bottom']::before {
+.c4[data-placement*='bottom']::before {
   -webkit-transform: rotate(225deg);
   -ms-transform: rotate(225deg);
   transform: rotate(225deg);
 }
 
-.c3[data-placement*='left'] {
+.c4[data-placement*='left'] {
   right: 0.25rem;
   margin: 1rem 0;
 }
 
-.c3[data-placement*='left']::before {
+.c4[data-placement*='left']::before {
   -webkit-transform: rotate(315deg);
   -ms-transform: rotate(315deg);
   transform: rotate(315deg);
 }
 
+.c2:focus {
+  outline: none;
+}
+
 <div
-    className="focus-trap-wrapper"
-    onKeyUp={[Function]}
+    className="c0"
+    style={
+      Object {
+        "left": 0,
+        "opacity": 0,
+        "pointerEvents": "none",
+        "position": "absolute",
+        "top": 0,
+      }
+    }
   >
     <div
-      aria-hidden="true"
-      className="focus-trap-backdrop"
-      onClick={[Function]}
-    />
-    <div
-      className="focus-trap"
-      tabIndex={0}
+      className="c1"
+      overflow="visible"
     >
       <div
-        className="c0"
-        style={
-          Object {
-            "left": 0,
-            "opacity": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-            "top": 0,
-          }
-        }
+        className="c2-wrapper"
+        onKeyUp={[Function]}
       >
         <div
-          className="c1"
-          overflow="visible"
+          aria-hidden="true"
+          className="c2-backdrop"
+          onClick={[Function]}
+        />
+        <div
+          className="c2"
+          tabIndex={0}
         >
           <div
-            className="c2"
+            className="c3"
           >
             Hello World
           </div>
-          <div
-            className="c3"
-            style={Object {}}
-          />
         </div>
       </div>
+      <div
+        className="c4"
+        style={Object {}}
+      />
     </div>
   </div>,
 ]
@@ -552,7 +556,7 @@ Array [
   margin: 0.5rem;
 }
 
-.c2 {
+.c3 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -562,11 +566,11 @@ Array [
   vertical-align: baseline;
 }
 
-.c3 {
+.c4 {
   position: absolute;
 }
 
-.c3::before {
+.c4::before {
   content: '';
   margin: auto;
   display: block;
@@ -577,90 +581,94 @@ Array [
   border-right: 1px solid #DEE1E5;
 }
 
-.c3[data-placement*='top'] {
+.c4[data-placement*='top'] {
   bottom: 0.25rem;
   margin: 0 1rem;
 }
 
-.c3[data-placement*='top']::before {
+.c4[data-placement*='top']::before {
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
 
-.c3[data-placement*='right'] {
+.c4[data-placement*='right'] {
   left: 0.25rem;
   margin: 1rem 0;
 }
 
-.c3[data-placement*='right']::before {
+.c4[data-placement*='right']::before {
   -webkit-transform: rotate(135deg);
   -ms-transform: rotate(135deg);
   transform: rotate(135deg);
 }
 
-.c3[data-placement*='bottom'] {
+.c4[data-placement*='bottom'] {
   top: 0.25rem;
   margin: 0 1rem;
 }
 
-.c3[data-placement*='bottom']::before {
+.c4[data-placement*='bottom']::before {
   -webkit-transform: rotate(225deg);
   -ms-transform: rotate(225deg);
   transform: rotate(225deg);
 }
 
-.c3[data-placement*='left'] {
+.c4[data-placement*='left'] {
   right: 0.25rem;
   margin: 1rem 0;
 }
 
-.c3[data-placement*='left']::before {
+.c4[data-placement*='left']::before {
   -webkit-transform: rotate(315deg);
   -ms-transform: rotate(315deg);
   transform: rotate(315deg);
 }
 
+.c2:focus {
+  outline: none;
+}
+
 <div
-    className="focus-trap-wrapper"
-    onKeyUp={[Function]}
+    className="c0"
+    style={
+      Object {
+        "left": 0,
+        "opacity": 0,
+        "pointerEvents": "none",
+        "position": "absolute",
+        "top": 0,
+      }
+    }
   >
     <div
-      aria-hidden="true"
-      className="focus-trap-backdrop"
-      onClick={[Function]}
-    />
-    <div
-      className="focus-trap"
-      tabIndex={0}
+      className="c1"
+      overflow="visible"
     >
       <div
-        className="c0"
-        style={
-          Object {
-            "left": 0,
-            "opacity": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-            "top": 0,
-          }
-        }
+        className="c2-wrapper"
+        onKeyUp={[Function]}
       >
         <div
-          className="c1"
-          overflow="visible"
+          aria-hidden="true"
+          className="c2-backdrop"
+          onClick={[Function]}
+        />
+        <div
+          className="c2"
+          tabIndex={0}
         >
           <div
-            className="c2"
+            className="c3"
           >
             Hello World
           </div>
-          <div
-            className="c3"
-            style={Object {}}
-          />
         </div>
       </div>
+      <div
+        className="c4"
+        style={Object {}}
+      />
     </div>
   </div>,
 ]
@@ -833,7 +841,7 @@ Array [
   margin: 0.5rem;
 }
 
-.c2 {
+.c3 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -843,11 +851,11 @@ Array [
   vertical-align: baseline;
 }
 
-.c3 {
+.c4 {
   position: absolute;
 }
 
-.c3::before {
+.c4::before {
   content: '';
   margin: auto;
   display: block;
@@ -858,90 +866,94 @@ Array [
   border-right: 1px solid #DEE1E5;
 }
 
-.c3[data-placement*='top'] {
+.c4[data-placement*='top'] {
   bottom: 0.25rem;
   margin: 0 1rem;
 }
 
-.c3[data-placement*='top']::before {
+.c4[data-placement*='top']::before {
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
 
-.c3[data-placement*='right'] {
+.c4[data-placement*='right'] {
   left: 0.25rem;
   margin: 1rem 0;
 }
 
-.c3[data-placement*='right']::before {
+.c4[data-placement*='right']::before {
   -webkit-transform: rotate(135deg);
   -ms-transform: rotate(135deg);
   transform: rotate(135deg);
 }
 
-.c3[data-placement*='bottom'] {
+.c4[data-placement*='bottom'] {
   top: 0.25rem;
   margin: 0 1rem;
 }
 
-.c3[data-placement*='bottom']::before {
+.c4[data-placement*='bottom']::before {
   -webkit-transform: rotate(225deg);
   -ms-transform: rotate(225deg);
   transform: rotate(225deg);
 }
 
-.c3[data-placement*='left'] {
+.c4[data-placement*='left'] {
   right: 0.25rem;
   margin: 1rem 0;
 }
 
-.c3[data-placement*='left']::before {
+.c4[data-placement*='left']::before {
   -webkit-transform: rotate(315deg);
   -ms-transform: rotate(315deg);
   transform: rotate(315deg);
 }
 
+.c2:focus {
+  outline: none;
+}
+
 <div
-    className="focus-trap-wrapper"
-    onKeyUp={[Function]}
+    className="c0"
+    style={
+      Object {
+        "left": 0,
+        "opacity": 0,
+        "pointerEvents": "none",
+        "position": "absolute",
+        "top": 0,
+      }
+    }
   >
     <div
-      aria-hidden="true"
-      className="focus-trap-backdrop"
-      onClick={[Function]}
-    />
-    <div
-      className="focus-trap"
-      tabIndex={0}
+      className="c1"
+      overflow="visible"
     >
       <div
-        className="c0"
-        style={
-          Object {
-            "left": 0,
-            "opacity": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-            "top": 0,
-          }
-        }
+        className="c2-wrapper"
+        onKeyUp={[Function]}
       >
         <div
-          className="c1"
-          overflow="visible"
+          aria-hidden="true"
+          className="c2-backdrop"
+          onClick={[Function]}
+        />
+        <div
+          className="c2"
+          tabIndex={0}
         >
           <div
-            className="c2"
+            className="c3"
           >
             Hello World
           </div>
-          <div
-            className="c3"
-            style={Object {}}
-          />
         </div>
       </div>
+      <div
+        className="c4"
+        style={Object {}}
+      />
     </div>
   </div>,
 ]
@@ -1114,7 +1126,7 @@ Array [
   margin: 0.5rem;
 }
 
-.c2 {
+.c3 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -1124,11 +1136,11 @@ Array [
   vertical-align: baseline;
 }
 
-.c3 {
+.c4 {
   position: absolute;
 }
 
-.c3::before {
+.c4::before {
   content: '';
   margin: auto;
   display: block;
@@ -1139,90 +1151,94 @@ Array [
   border-right: 1px solid #DEE1E5;
 }
 
-.c3[data-placement*='top'] {
+.c4[data-placement*='top'] {
   bottom: 0.25rem;
   margin: 0 1rem;
 }
 
-.c3[data-placement*='top']::before {
+.c4[data-placement*='top']::before {
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
 
-.c3[data-placement*='right'] {
+.c4[data-placement*='right'] {
   left: 0.25rem;
   margin: 1rem 0;
 }
 
-.c3[data-placement*='right']::before {
+.c4[data-placement*='right']::before {
   -webkit-transform: rotate(135deg);
   -ms-transform: rotate(135deg);
   transform: rotate(135deg);
 }
 
-.c3[data-placement*='bottom'] {
+.c4[data-placement*='bottom'] {
   top: 0.25rem;
   margin: 0 1rem;
 }
 
-.c3[data-placement*='bottom']::before {
+.c4[data-placement*='bottom']::before {
   -webkit-transform: rotate(225deg);
   -ms-transform: rotate(225deg);
   transform: rotate(225deg);
 }
 
-.c3[data-placement*='left'] {
+.c4[data-placement*='left'] {
   right: 0.25rem;
   margin: 1rem 0;
 }
 
-.c3[data-placement*='left']::before {
+.c4[data-placement*='left']::before {
   -webkit-transform: rotate(315deg);
   -ms-transform: rotate(315deg);
   transform: rotate(315deg);
 }
 
+.c2:focus {
+  outline: none;
+}
+
 <div
-    className="focus-trap-wrapper"
-    onKeyUp={[Function]}
+    className="c0"
+    style={
+      Object {
+        "left": 0,
+        "opacity": 0,
+        "pointerEvents": "none",
+        "position": "absolute",
+        "top": 0,
+      }
+    }
   >
     <div
-      aria-hidden="true"
-      className="focus-trap-backdrop"
-      onClick={[Function]}
-    />
-    <div
-      className="focus-trap"
-      tabIndex={0}
+      className="c1"
+      overflow="visible"
     >
       <div
-        className="c0"
-        style={
-          Object {
-            "left": 0,
-            "opacity": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-            "top": 0,
-          }
-        }
+        className="c2-wrapper"
+        onKeyUp={[Function]}
       >
         <div
-          className="c1"
-          overflow="visible"
+          aria-hidden="true"
+          className="c2-backdrop"
+          onClick={[Function]}
+        />
+        <div
+          className="c2"
+          tabIndex={0}
         >
           <div
-            className="c2"
+            className="c3"
           >
             Hello World
           </div>
-          <div
-            className="c3"
-            style={Object {}}
-          />
         </div>
       </div>
+      <div
+        className="c4"
+        style={Object {}}
+      />
     </div>
   </div>,
 ]

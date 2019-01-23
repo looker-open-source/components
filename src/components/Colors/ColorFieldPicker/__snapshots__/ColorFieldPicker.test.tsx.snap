@@ -92,7 +92,7 @@ exports[`ColorFieldPicker renders a color picker in a RichTooltip 1`] = `
   width: 33px;
 }
 
-.c15 {
+.c16 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -153,7 +153,7 @@ exports[`ColorFieldPicker renders a color picker in a RichTooltip 1`] = `
   margin: 0.5rem;
 }
 
-.c10 {
+.c11 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -164,7 +164,7 @@ exports[`ColorFieldPicker renders a color picker in a RichTooltip 1`] = `
   padding: 0.75rem;
 }
 
-.c11 {
+.c12 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -181,7 +181,7 @@ exports[`ColorFieldPicker renders a color picker in a RichTooltip 1`] = `
   flex-direction: column;
 }
 
-.c13 {
+.c14 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -192,11 +192,11 @@ exports[`ColorFieldPicker renders a color picker in a RichTooltip 1`] = `
   width: 164px;
 }
 
-.c14 {
+.c15 {
   position: absolute;
 }
 
-.c14::before {
+.c15::before {
   content: '';
   margin: auto;
   display: block;
@@ -207,45 +207,45 @@ exports[`ColorFieldPicker renders a color picker in a RichTooltip 1`] = `
   border-right: 1px solid #DEE1E5;
 }
 
-.c14[data-placement*='top'] {
+.c15[data-placement*='top'] {
   bottom: 0.25rem;
   margin: 0 1rem;
 }
 
-.c14[data-placement*='top']::before {
+.c15[data-placement*='top']::before {
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
 
-.c14[data-placement*='right'] {
+.c15[data-placement*='right'] {
   left: 0.25rem;
   margin: 1rem 0;
 }
 
-.c14[data-placement*='right']::before {
+.c15[data-placement*='right']::before {
   -webkit-transform: rotate(135deg);
   -ms-transform: rotate(135deg);
   transform: rotate(135deg);
 }
 
-.c14[data-placement*='bottom'] {
+.c15[data-placement*='bottom'] {
   top: 0.25rem;
   margin: 0 1rem;
 }
 
-.c14[data-placement*='bottom']::before {
+.c15[data-placement*='bottom']::before {
   -webkit-transform: rotate(225deg);
   -ms-transform: rotate(225deg);
   transform: rotate(225deg);
 }
 
-.c14[data-placement*='left'] {
+.c15[data-placement*='left'] {
   right: 0.25rem;
   margin: 1rem 0;
 }
 
-.c14[data-placement*='left']::before {
+.c15[data-placement*='left']::before {
   -webkit-transform: rotate(315deg);
   -ms-transform: rotate(315deg);
   transform: rotate(315deg);
@@ -256,7 +256,11 @@ exports[`ColorFieldPicker renders a color picker in a RichTooltip 1`] = `
   animation: bcCCNc 0.2s linear;
 }
 
-.c12 {
+.c10:focus {
+  outline: none;
+}
+
+.c13 {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -264,11 +268,11 @@ exports[`ColorFieldPicker renders a color picker in a RichTooltip 1`] = `
   width: 100%;
 }
 
-.c12:focus {
+.c13:focus {
   outline: none;
 }
 
-.c12::-webkit-slider-thumb {
+.c13::-webkit-slider-thumb {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -281,7 +285,7 @@ exports[`ColorFieldPicker renders a color picker in a RichTooltip 1`] = `
   width: 14px;
 }
 
-.c12::-webkit-slider-runnable-track {
+.c13::-webkit-slider-runnable-track {
   background-image: linear-gradient(to right,#000,#fff);
   border: 1px solid #DEE1E5;
   cursor: pointer;
@@ -289,7 +293,7 @@ exports[`ColorFieldPicker renders a color picker in a RichTooltip 1`] = `
   width: 100%;
 }
 
-.c12::-moz-range-thumb {
+.c13::-moz-range-thumb {
   background: #fff;
   border: 1px solid #C1C6CC;
   border-radius: 50%;
@@ -298,7 +302,7 @@ exports[`ColorFieldPicker renders a color picker in a RichTooltip 1`] = `
   width: 12px;
 }
 
-.c12::-moz-range-track {
+.c13::-moz-range-track {
   background-image: linear-gradient(to right,#000,#fff);
   border: 1px solid #DEE1E5;
   cursor: pointer;
@@ -306,7 +310,7 @@ exports[`ColorFieldPicker renders a color picker in a RichTooltip 1`] = `
   width: 100%;
 }
 
-.c12::-ms-thumb {
+.c13::-ms-thumb {
   background: #fff;
   border: 1px solid #C1C6CC;
   border-radius: 50%;
@@ -315,7 +319,7 @@ exports[`ColorFieldPicker renders a color picker in a RichTooltip 1`] = `
   width: 12px;
 }
 
-.c12::-ms-track {
+.c13::-ms-track {
   background: transparent;
   border-color: transparent;
   border-width: 16px 0;
@@ -325,25 +329,25 @@ exports[`ColorFieldPicker renders a color picker in a RichTooltip 1`] = `
   width: 100%;
 }
 
-.c12::-ms-fill-lower {
+.c13::-ms-fill-lower {
   background-image: linear-gradient(to right,#000,#fff);
   border: 1px solid #DEE1E5;
 }
 
-.c12::-ms-fill-upper {
+.c13::-ms-fill-upper {
   background-image: linear-gradient(to right,#000,#fff);
   border: 1px solid #DEE1E5;
 }
 
-.c12:focus::-webkit-slider-runnable-track {
+.c13:focus::-webkit-slider-runnable-track {
   background-image: linear-gradient(to right,#000,#fff);
 }
 
-.c12:focus::-ms-fill-lower {
+.c13:focus::-ms-fill-lower {
   background-image: linear-gradient(to right,#000,#fff);
 }
 
-.c12:focus::-ms-fill-upper {
+.c13:focus::-ms-fill-upper {
   background-image: linear-gradient(to right,#000,#fff);
 }
 
@@ -377,40 +381,40 @@ exports[`ColorFieldPicker renders a color picker in a RichTooltip 1`] = `
             />
           </div>
           <div
-            className="focus-trap-wrapper"
-            onKeyUp={[Function]}
+            className="c7"
+            onMouseOut={[Function]}
+            style={
+              Object {
+                "left": 0,
+                "opacity": 0,
+                "pointerEvents": "none",
+                "position": "absolute",
+                "top": 0,
+              }
+            }
           >
             <div
-              aria-hidden="true"
-              className="focus-trap-backdrop"
-              onClick={[Function]}
-            />
-            <div
-              className="focus-trap"
-              tabIndex={0}
+              className="c8 c9"
+              overflow="visible"
             >
               <div
-                className="c7"
-                onMouseOut={[Function]}
-                style={
-                  Object {
-                    "left": 0,
-                    "opacity": 0,
-                    "pointerEvents": "none",
-                    "position": "absolute",
-                    "top": 0,
-                  }
-                }
+                className="c10-wrapper"
+                onKeyUp={[Function]}
               >
                 <div
-                  className="c8 c9"
-                  overflow="visible"
+                  aria-hidden="true"
+                  className="c10-backdrop"
+                  onClick={[Function]}
+                />
+                <div
+                  className="c10"
+                  tabIndex={0}
                 >
                   <div
-                    className="c10"
+                    className="c11"
                   >
                     <div
-                      className="c11"
+                      className="c12"
                     >
                       <canvas
                         height={164}
@@ -420,7 +424,7 @@ exports[`ColorFieldPicker renders a color picker in a RichTooltip 1`] = `
                         width={164}
                       />
                       <input
-                        className="c12 c13"
+                        className="c13 c14"
                         max={100}
                         min={0}
                         onChange={[Function]}
@@ -430,12 +434,12 @@ exports[`ColorFieldPicker renders a color picker in a RichTooltip 1`] = `
                       />
                     </div>
                   </div>
-                  <div
-                    className="c14"
-                    style={Object {}}
-                  />
                 </div>
               </div>
+              <div
+                className="c15"
+                style={Object {}}
+              />
             </div>
           </div>
         </div>
@@ -443,7 +447,7 @@ exports[`ColorFieldPicker renders a color picker in a RichTooltip 1`] = `
           className="c2"
         >
           <input
-            className="c15"
+            className="c16"
             onChange={[Function]}
             type="text"
           />

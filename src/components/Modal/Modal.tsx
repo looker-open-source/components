@@ -70,10 +70,6 @@ export class Modal extends React.Component<ModalInternalProps, ModalState> {
     this.state = { isOpen: !!props.open }
   }
 
-  public componentDidMount() {
-    document.addEventListener('keydown', this.handleEscapePress)
-  }
-
   public componentWillUnmount() {
     document.removeEventListener('keydown', this.handleEscapePress)
   }
@@ -120,11 +116,13 @@ export class Modal extends React.Component<ModalInternalProps, ModalState> {
   }
 
   private open = () => {
+    document.addEventListener('keydown', this.handleEscapePress)
     this.props.onOpen && this.props.onOpen()
     this.setState({ isOpen: true })
   }
 
   private close = () => {
+    document.removeEventListener('keydown', this.handleEscapePress)
     if (this.props.canClose && !this.props.canClose()) return
 
     this.props.onClose && this.props.onClose()
