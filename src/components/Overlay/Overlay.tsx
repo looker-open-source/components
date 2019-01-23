@@ -212,7 +212,7 @@ export class Overlay extends React.Component<OverlayProps, OverlayState> {
       !this.triggerRef.contains(e.target) &&
       !this.popperRef.contains(e.target)
     ) {
-      this.hide()
+      this.close()
     }
   }
 

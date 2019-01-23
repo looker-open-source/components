@@ -267,6 +267,7 @@ Array [
   box-shadow: 0 3px 18px rgba(0,0,0,0.12),0 1px 4px rgba(0,0,0,0.04);
   color: #262D33;
   background-color: #FFFFFF;
+  overflow: visible;
   margin: 0.5rem;
 }
 
@@ -340,29 +341,45 @@ Array [
 }
 
 <div
-    className="c0"
-    style={
-      Object {
-        "left": 0,
-        "opacity": 0,
-        "pointerEvents": "none",
-        "position": "absolute",
-        "top": 0,
-      }
-    }
+    className="focus-trap-wrapper"
+    onKeyUp={[Function]}
   >
     <div
-      className="c1"
+      aria-hidden="true"
+      className="focus-trap-backdrop"
+      onClick={[Function]}
+    />
+    <div
+      className="focus-trap"
+      tabIndex={0}
     >
       <div
-        className="c2"
+        className="c0"
+        style={
+          Object {
+            "left": 0,
+            "opacity": 0,
+            "pointerEvents": "none",
+            "position": "absolute",
+            "top": 0,
+          }
+        }
       >
-        Hello World
+        <div
+          className="c1"
+          overflow="visible"
+        >
+          <div
+            className="c2"
+          >
+            Hello World
+          </div>
+          <div
+            className="c3"
+            style={Object {}}
+          />
+        </div>
       </div>
-      <div
-        className="c3"
-        style={Object {}}
-      />
     </div>
   </div>,
 ]
@@ -531,6 +548,7 @@ Array [
   box-shadow: 0 3px 18px rgba(0,0,0,0.12),0 1px 4px rgba(0,0,0,0.04);
   color: #262D33;
   background-color: #FFFFFF;
+  overflow: visible;
   margin: 0.5rem;
 }
 
@@ -604,29 +622,45 @@ Array [
 }
 
 <div
-    className="c0"
-    style={
-      Object {
-        "left": 0,
-        "opacity": 0,
-        "pointerEvents": "none",
-        "position": "absolute",
-        "top": 0,
-      }
-    }
+    className="focus-trap-wrapper"
+    onKeyUp={[Function]}
   >
     <div
-      className="c1"
+      aria-hidden="true"
+      className="focus-trap-backdrop"
+      onClick={[Function]}
+    />
+    <div
+      className="focus-trap"
+      tabIndex={0}
     >
       <div
-        className="c2"
+        className="c0"
+        style={
+          Object {
+            "left": 0,
+            "opacity": 0,
+            "pointerEvents": "none",
+            "position": "absolute",
+            "top": 0,
+          }
+        }
       >
-        Hello World
+        <div
+          className="c1"
+          overflow="visible"
+        >
+          <div
+            className="c2"
+          >
+            Hello World
+          </div>
+          <div
+            className="c3"
+            style={Object {}}
+          />
+        </div>
       </div>
-      <div
-        className="c3"
-        style={Object {}}
-      />
     </div>
   </div>,
 ]
@@ -795,6 +829,7 @@ Array [
   box-shadow: 0 3px 18px rgba(0,0,0,0.12),0 1px 4px rgba(0,0,0,0.04);
   color: #262D33;
   background-color: #FFFFFF;
+  overflow: visible;
   margin: 0.5rem;
 }
 
@@ -868,29 +903,45 @@ Array [
 }
 
 <div
-    className="c0"
-    style={
-      Object {
-        "left": 0,
-        "opacity": 0,
-        "pointerEvents": "none",
-        "position": "absolute",
-        "top": 0,
-      }
-    }
+    className="focus-trap-wrapper"
+    onKeyUp={[Function]}
   >
     <div
-      className="c1"
+      aria-hidden="true"
+      className="focus-trap-backdrop"
+      onClick={[Function]}
+    />
+    <div
+      className="focus-trap"
+      tabIndex={0}
     >
       <div
-        className="c2"
+        className="c0"
+        style={
+          Object {
+            "left": 0,
+            "opacity": 0,
+            "pointerEvents": "none",
+            "position": "absolute",
+            "top": 0,
+          }
+        }
       >
-        Hello World
+        <div
+          className="c1"
+          overflow="visible"
+        >
+          <div
+            className="c2"
+          >
+            Hello World
+          </div>
+          <div
+            className="c3"
+            style={Object {}}
+          />
+        </div>
       </div>
-      <div
-        className="c3"
-        style={Object {}}
-      />
     </div>
   </div>,
 ]
@@ -1059,6 +1110,7 @@ Array [
   box-shadow: 0 3px 18px rgba(0,0,0,0.12),0 1px 4px rgba(0,0,0,0.04);
   color: #262D33;
   background-color: #FFFFFF;
+  overflow: visible;
   margin: 0.5rem;
 }
 
@@ -1132,29 +1184,45 @@ Array [
 }
 
 <div
-    className="c0"
-    style={
-      Object {
-        "left": 0,
-        "opacity": 0,
-        "pointerEvents": "none",
-        "position": "absolute",
-        "top": 0,
-      }
-    }
+    className="focus-trap-wrapper"
+    onKeyUp={[Function]}
   >
     <div
-      className="c1"
+      aria-hidden="true"
+      className="focus-trap-backdrop"
+      onClick={[Function]}
+    />
+    <div
+      className="focus-trap"
+      tabIndex={0}
     >
       <div
-        className="c2"
+        className="c0"
+        style={
+          Object {
+            "left": 0,
+            "opacity": 0,
+            "pointerEvents": "none",
+            "position": "absolute",
+            "top": 0,
+          }
+        }
       >
-        Hello World
+        <div
+          className="c1"
+          overflow="visible"
+        >
+          <div
+            className="c2"
+          >
+            Hello World
+          </div>
+          <div
+            className="c3"
+            style={Object {}}
+          />
+        </div>
       </div>
-      <div
-        className="c3"
-        style={Object {}}
-      />
     </div>
   </div>,
 ]
