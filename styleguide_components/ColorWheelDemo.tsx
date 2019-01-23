@@ -53,7 +53,7 @@ export class ColorWheelDemo extends React.Component<{}, ColorWheelDemoState> {
       <Flex>
         <Card raised>
           <CardContent>
-            <Heading level="h2">Color wheel</Heading>
+            <Heading is="h2">Color wheel</Heading>
             <ColorWheel
               size={this.state.size}
               hue={this.state.color.h}
@@ -74,7 +74,7 @@ export class ColorWheelDemo extends React.Component<{}, ColorWheelDemoState> {
         </Card>
         <Card raised>
           <CardContent>
-            <Heading level="h2">HSV values</Heading>
+            <Heading is="h2">HSV values</Heading>
             <Text>Hue: {h}</Text>
             <Text>Saturation: {s}</Text>
             <Text>Value: {this.state.color.v}</Text>
