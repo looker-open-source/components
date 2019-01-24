@@ -20,7 +20,7 @@ export interface ToggleSwitchProps
     Omit<KnobProps, 'size'> {
   size?: number
   label: string
-  id: string
+  id?: string
 }
 
 const knobTransform = (props: ThemedProps<KnobProps>) => {
