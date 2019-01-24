@@ -1,5 +1,6 @@
 import { rem, rgba } from 'polished'
 import * as React from 'react'
+import uuid from 'uuid/v4'
 import { css, palette, styled } from '../../../../style'
 import { Omit, ThemedProps } from '../../../../types'
 import { CustomizableAttributes } from '../../../../types/attributes'
@@ -18,6 +19,8 @@ export interface ToggleSwitchProps
   extends BoxProps<HTMLLabelElement>,
     Omit<KnobProps, 'size'> {
   size?: number
+  label: string
+  id: string
 }
 
 const knobTransform = (props: ThemedProps<KnobProps>) => {
@@ -82,7 +85,9 @@ const KnobContainer = styled(KnobContainerFactory)`
 `
 
 const InternalToggleSwitch: React.SFC<ToggleSwitchProps> = ({
+  id = uuid(),
   size = 20,
+  label,
   disabled,
   on,
   ...props
@@ -96,6 +101,9 @@ const InternalToggleSwitch: React.SFC<ToggleSwitchProps> = ({
       cursor={!disabled ? 'pointer' : undefined}
       {...props}
     >
+      <Box display="none" id={id}>
+        {label}
+      </Box>
       <Checkbox
         id={props.name}
         name={props.name}
@@ -105,6 +113,8 @@ const InternalToggleSwitch: React.SFC<ToggleSwitchProps> = ({
         opacity={0}
         width="0px"
         height="0px"
+        role="switch"
+        aria-labelledby={id}
       />
       <KnobContainer size={size} on={on} disabled={disabled} />
       {disabled && (
@@ -126,7 +136,7 @@ const InternalToggleSwitch: React.SFC<ToggleSwitchProps> = ({
 export const ToggleSwitch = styled(InternalToggleSwitch)`
   :focus-within {
     border-radius: ${props => rem(props.size ? props.size : 20)};
-    box-shadow: 0 0 0 0.15rem ${rgba(palette.primary500, 0.25)};
+    box-shadow: 0 0 0 0.2rem ${rgba(palette.primary500, 0.4)};
   }
 `
 

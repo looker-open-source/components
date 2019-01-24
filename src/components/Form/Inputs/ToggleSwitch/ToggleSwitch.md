@@ -28,6 +28,7 @@ class ToggleSwitchParent extends React.Component {
       <ToggleSwitch
         onChange={this.handleChange.bind(this)}
         on={this.state.on}
+        label="Switch Label"
       />
     )
   }
