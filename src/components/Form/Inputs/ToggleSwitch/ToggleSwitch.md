@@ -10,7 +10,7 @@ const StatusAndResources = require('../../../../../styleguide_components/StatusA
 
 ### Toggle Switch
 
-The `ToggleSwitch` component is essentially a decorated checkbox that is either toggled on or off. Its size can be changed using the `size` prop, which accepts px value as a number. Its default size is 20px.
+The `ToggleSwitch` component is essentially a decorated checkbox that is either toggled on or off. Its size can be changed using the `size` prop, which accepts px value as a number. Its default size is 20px. The `ToggleSwitch` requires a `label` for accessibility purpose and should be a succinct description of the switch's purpose (e.g. Development Mode or Hide Legend).
 
 ```js
 class ToggleSwitchParent extends React.Component {
