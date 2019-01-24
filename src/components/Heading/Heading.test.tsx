@@ -16,7 +16,7 @@ test('A <h1> Heading', () => {
 
 test('A <h1> Heading sized to <h2>', () => {
   const component = createWithTheme(
-    <Heading level="h1" size="xlarge">
+    <Heading level="h1" fontSize="xlarge">
       🥑
     </Heading>
   )
@@ -25,7 +25,7 @@ test('A <h1> Heading sized to <h2>', () => {
 })
 
 test('A Heading to bold', () => {
-  const component = createWithTheme(<Heading weight="bold">🥑</Heading>)
+  const component = createWithTheme(<Heading fontWeight="bold">🥑</Heading>)
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
 })

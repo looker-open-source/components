@@ -255,8 +255,8 @@ const BoxFactory = React.forwardRef((props: BoxProps<HTMLElement>, ref) => {
     hoverStyle,
     userSelect,
     lineHeight,
-    fontWeight = 'normal',
-    fontSize = 'medium',
+    fontWeight,
+    fontSize,
     ...otherProps
   } = props
   return (

@@ -9,7 +9,7 @@ export const TableHeaderCell: React.SFC<
     py="xsmall"
     fontSize="xsmall"
     color="palette.charcoal400"
-    fontWeight={600}
+    fontWeight="semiBold"
     {...props}
   />
 )

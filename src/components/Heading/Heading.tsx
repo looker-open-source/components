@@ -1,32 +1,17 @@
 import * as React from 'react'
-import {
-  css,
-  RampSizes,
-  shouldTruncate,
-  styled,
-  Theme,
-  withTheme,
-} from '../../style'
+import { css, RampSizes, shouldTruncate, styled } from '../../style'
 import { ThemedProps } from '../../types'
 import { Box, BoxPropsWithout } from '../Box'
 
 export type HeadingLevels = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
 export type HeadingTextTransforms = 'caps' | 'lower' | 'none' | 'upper'
-export type HeadingWeights =
-  | 'bold'
-  | 'extraBold'
-  | 'light'
-  | 'normal'
-  | 'semiBold'
 
 export interface HeadingProps
-  extends BoxPropsWithout<HTMLHeadingElement, 'color' | 'size' | 'truncate'> {
-  /** Heading level from h1-h6 */
+  extends BoxPropsWithout<HTMLHeadingElement, 'color' | 'truncate'> {
+  /** Heading level from h1-h6
+   *
+   */
   level?: HeadingLevels
-  /** Size mapping from type ramp */
-  size?: RampSizes
-  /** Font weight */
-  weight?: HeadingWeights
   /** Text tranform  */
   transform?: HeadingTextTransforms
   /** Truncate heading text */
@@ -36,83 +21,25 @@ export interface HeadingProps
 }
 
 const InternalHeading: React.SFC<ThemedProps<HeadingProps>> = ({
-  size,
-  weight,
+  fontSize,
+  fontWeight,
+  level,
+  lineHeight,
   transform,
   truncate,
-  level,
-  theme,
   ...props
 }) => {
   return (
     <Box
       is={level || 'h2'}
-      fontSize={getFontSize(theme, level, size)}
-      lineHeight={getLineHeight(theme, level, size)}
-      fontWeight={getFontWeight(theme, weight)}
+      fontSize={fontSize || headingLevelSize(level)}
+      lineHeight={lineHeight || headingLineHeight(level, fontSize)}
+      fontWeight={fontWeight || 'normal'}
       {...props}
     >
       {props.children}
     </Box>
   )
-}
-
-function getFontSize(
-  theme: Theme,
-  level: HeadingLevels | undefined,
-  size: RampSizes | undefined
-) {
-  if (size) {
-    return theme.fontSizes[size]
-  } else {
-    switch (level) {
-      case 'h1':
-        return theme.fontSizes.xxlarge
-      case 'h2':
-        return theme.fontSizes.xlarge
-      case 'h3':
-        return theme.fontSizes.large
-      case 'h4':
-        return theme.fontSizes.medium
-      case 'h5':
-        return theme.fontSizes.small
-      case 'h6':
-        return theme.fontSizes.xsmall
-      default:
-        return theme.fontSizes.large
-    }
-  }
-}
-
-function getLineHeight(
-  theme: Theme,
-  level: HeadingLevels | undefined,
-  size: RampSizes | undefined
-) {
-  if (size) {
-    return theme.lineHeights[size]
-  } else {
-    switch (level) {
-      case 'h1':
-        return theme.lineHeights.xxlarge
-      case 'h2':
-        return theme.lineHeights.xlarge
-      case 'h3':
-        return theme.lineHeights.large
-      case 'h4':
-        return theme.lineHeights.medium
-      case 'h5':
-        return theme.lineHeights.small
-      case 'h6':
-        return theme.lineHeights.xsmall
-      default:
-        return theme.lineHeights.large
-    }
-  }
-}
-
-function getFontWeight(theme: Theme, weight: HeadingWeights | undefined) {
-  return weight ? theme.fontWeights[weight] : theme.fontWeights.normal
 }
 
 function textTransform(transform: HeadingTextTransforms | undefined) {
@@ -137,10 +64,50 @@ function textTransform(transform: HeadingTextTransforms | undefined) {
   }
 }
 
-export const Heading = styled<HeadingProps>(withTheme(InternalHeading))`
+export const Heading = styled(InternalHeading)`
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   ${props => textTransform(props.transform)};
   ${props => shouldTruncate(props.truncate || false)};
 `
+
+function headingLevelSize(level?: HeadingLevels) {
+  switch (level) {
+    case 'h1':
+      return 'xxlarge'
+    case 'h2':
+      return 'xlarge'
+    case 'h3':
+      return 'large'
+    case 'h4':
+      return 'medium'
+    case 'h5':
+      return 'small'
+    case 'h6':
+      return 'xsmall'
+    default:
+      return 'large'
+  }
+}
+
+function headingLineHeight(level?: HeadingLevels, size?: RampSizes) {
+  if (size) return size
+
+  switch (level) {
+    case 'h1':
+      return 'xxlarge'
+    case 'h2':
+      return 'xlarge'
+    case 'h3':
+      return 'large'
+    case 'h4':
+      return 'medium'
+    case 'h5':
+      return 'small'
+    case 'h6':
+      return 'xsmall'
+    default:
+      return 'large'
+  }
+}

@@ -4,6 +4,6 @@ ModalHeader supports all [`Box`](/#!/Box) properties.
 
 ```js
 <ModalHeader>
-  <Heading weight="semiBold">This is a ModalHeader</Heading>
+  <Heading fontWeight="semiBold">This is a ModalHeader</Heading>
 </ModalHeader>
 ```

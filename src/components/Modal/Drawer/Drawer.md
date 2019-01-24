@@ -28,7 +28,7 @@ const boxProps = {
 const content = (
   <>
     <ModalHeader>
-      <Heading weight="semiBold">Some Things to Look at</Heading>
+      <Heading fontWeight="semiBold">Some Things to Look at</Heading>
     </ModalHeader>
     <ModalContent>
       <Box {...boxProps}>Thing One</Box>

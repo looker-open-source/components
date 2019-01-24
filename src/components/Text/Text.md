@@ -1,17 +1,17 @@
 ```js noeditor
-const StatusAndResources = require('../../../styleguide_components/StatusAndResources').StatusAndResources;
-
-<StatusAndResources
+const StatusAndResources = require('../../../styleguide_components/StatusAndResources')
+  .StatusAndResources
+;<StatusAndResources
   status="experimental"
   figmaURL="https://www.figma.com/file/SmIM3VUQUgo8xb4o7UUxflkT/Typography"
   githubURL="https://github.com/looker/lens/blob/master/src/components/Text/Text.tsx"
-  feedbackTitle="Text Component Feedback" />
+  feedbackTitle="Text Component Feedback"
+/>
 ```
-
 
 ### Text Element
 
-By default the `<Text />` component will render text wrapped in a `<span>`,  if you need another html element for semantic purposes you can use the `element` property
+By default the `<Text />` component will render text wrapped in a `<span>`, if you need another html element for semantic purposes you can use the `element` property
 
 ```js
 <Text>By default I am a span</Text>
@@ -26,9 +26,9 @@ By default the `<Text />` component will render text wrapped in a `<span>`,  if 
 If you need to adjust the font-size of the rendered text, you can use the `size` property and a value from the [type scale](/#!/Typography)
 
 ```js
- <Text size="xxxxlarge">Sized to xxxxlarge</Text>
- <Text size="xxlarge">Sized to xxlarge</Text>
- <Text size="small">Sized to small</Text>
+ <Text fontSize="xxxxlarge">Sized to xxxxlarge</Text>
+ <Text fontSize="xxlarge">Sized to xxlarge</Text>
+ <Text fontSize="small">Sized to small</Text>
 ```
 
 <div class="doc-section-divider"></div>
@@ -38,12 +38,10 @@ If you need to adjust the font-size of the rendered text, you can use the `size`
 Common patterns for text is to adjust the font weight and transform the text. Below is an example of using the `weight` and `textTransform` properties to modify the rendered text
 
 ```js
-  <Text size="small" textTransform="upper" weight="semiBold">A great story</Text>
-  <Text size="xxxxlarge" weight="light">This is a great headline</Text>
-  <Text size="small" textTransform="caps">Some metadata about this story</Text>
+  <Text fontSize="small" textTransform="upper" fontWeight="semiBold">A great story</Text>
+  <Text fontSize="xxxxlarge" fontWeight="light">This is a great headline</Text>
+  <Text fontSize="small" textTransform="caps">Some metadata about this story</Text>
 ```
-
-
 
 <div class="doc-section-divider"></div>
 
@@ -58,7 +56,6 @@ Lens provides a few variants for the `<Text />` component based on common patter
 <Text variant="critical">Critical Text</Text>
 <Text variant="positive">Positive Text</Text>
 ```
-
 
 <div class="doc-section-divider"></div>
 
@@ -75,22 +72,29 @@ You can use the `align` property to change the alignment of the rendered text, b
   </Card>
   <Card>
     <CardContent>
-      <Paragraph align="center">This is how you can center align Paragraph text</Paragraph>
+      <Paragraph align="center">
+        This is how you can center align Paragraph text
+      </Paragraph>
     </CardContent>
   </Card>
   <Card>
     <CardContent>
-      <Paragraph align="right">This is how you can right align Paragraph text</Paragraph>
+      <Paragraph align="right">
+        This is how you can right align Paragraph text
+      </Paragraph>
     </CardContent>
   </Card>
 </div>
 ```
+
 ### Truncate
 
 At times you may want your `<Paragraph />` to truncate instead of the text wrapping, the `truncate` property will do that for you.
 
 ```js
-<div style={{width: "40%"}}>
-<Paragraph truncate>Hello there I am some text that will truncate 🍕🥑🍪🥓</Paragraph>
+<div style={{ width: '40%' }}>
+  <Paragraph truncate>
+    Hello there I am some text that will truncate 🍕🥑🍪🥓
+  </Paragraph>
 </div>
 ```

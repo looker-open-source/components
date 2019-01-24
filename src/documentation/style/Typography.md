@@ -23,34 +23,33 @@ const tableRows = typeFamily.map(t => {
     <TableRow>
       <TableDataCell>
         <Box px="small" is="span" className="prop-code">
-          <Code size="xsmall">{t.weight}</Code>
+          <Code fontSize="xsmall">{t.weight}</Code>
         </Box>
       </TableDataCell>
       <TableDataCell>{t.value}</TableDataCell>
       <TableDataCell>
-        <Text size="xlarge" weight={t.weight}>
+        <Text fontSize="xlarge" weight={t.weight}>
           {specimen}
         </Text>
       </TableDataCell>
     </TableRow>
   )
 })
-
 ;<Table>
   <TableHead>
     <TableRow>
       <TableHeaderCell>
-        <Text size="small" weight="semiBold" mode="subdued">
+        <Text fontSize="small" fontWeight="semiBold" mode="subdued">
           LENS REFERENCE
         </Text>
       </TableHeaderCell>
       <TableHeaderCell>
-        <Text size="small" weight="semiBold" mode="subdued">
+        <Text fontSize="small" fontWeight="semiBold" mode="subdued">
           WEIGHT
         </Text>
       </TableHeaderCell>
       <TableHeaderCell width="60%">
-        <Text size="small" weight="semiBold" mode="subdued">
+        <Text fontSize="small" fontWeight="semiBold" mode="subdued">
           SPECIMEN
         </Text>
       </TableHeaderCell>
@@ -84,39 +83,58 @@ const tableRows = typeRamp.map(t => {
   return (
     <TableRow>
       <TableDataCell>
-        <Text size={t.size}>{specimen}</Text>
+        <Text fontSize={t.size}>{specimen}</Text>
       </TableDataCell>
       <TableDataCell>{t.px}</TableDataCell>
       <TableDataCell>{t.lh}</TableDataCell>
       <TableDataCell>
         <Box px="small" is="span" className="prop-code">
-          <Code size="xsmall">{t.size}</Code>
+          <Code fontSize="xsmall">{t.size}</Code>
         </Box>
       </TableDataCell>
     </TableRow>
   )
 })
-
 ;<Table>
   <TableHead>
     <TableRow>
       <TableHeaderCell>
-        <Text size="xsmall" weight="semiBold" element="span" mode="subdued">
+        <Text
+          fontSize="xsmall"
+          fontWeight="semiBold"
+          element="span"
+          mode="subdued"
+        >
           SPECIMEN
         </Text>
       </TableHeaderCell>
       <TableHeaderCell>
-        <Text size="xsmall" weight="semiBold" element="span" mode="subdued">
+        <Text
+          fontSize="xsmall"
+          fontWeight="semiBold"
+          element="span"
+          mode="subdued"
+        >
           FONT-SIZE
         </Text>
       </TableHeaderCell>
       <TableHeaderCell>
-        <Text size="xsmall" weight="semiBold" element="span" mode="subdued">
+        <Text
+          fontSize="xsmall"
+          fontWeight="semiBold"
+          element="span"
+          mode="subdued"
+        >
           LINE-HEIGHT
         </Text>
       </TableHeaderCell>
       <TableHeaderCell>
-        <Text size="xsmall" weight="semiBold" element="span" mode="subdued">
+        <Text
+          fontSize="xsmall"
+          fontWeight="semiBold"
+          element="span"
+          mode="subdued"
+        >
           LENS REFERENCE
         </Text>
       </TableHeaderCell>

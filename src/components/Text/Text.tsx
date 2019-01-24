@@ -1,10 +1,9 @@
 import { TextDecorationProperty } from 'csstype'
 import * as React from 'react'
-import { css, RampSizes, styled, Theme, withTheme } from '../../style'
+import { css, styled, withTheme } from '../../style'
 import { ThemedProps } from '../../types'
 import { Box, BoxPropsWithout } from '../Box'
 
-export type TextWeights = 'bold' | 'light' | 'normal' | 'semiBold'
 export type TextTransforms = 'caps' | 'lower' | 'none' | 'upper'
 export type TextAlignments = 'left' | 'center' | 'right'
 export type TextElements = 'span' | 'p' | 'code'
@@ -16,7 +15,7 @@ export type TextVariants =
   | 'inverted'
 
 export interface TextProps
-  extends BoxPropsWithout<HTMLSpanElement, 'size' | 'wrap' | 'is'> {
+  extends BoxPropsWithout<HTMLSpanElement, 'wrap' | 'is'> {
   /** Base html text element
    *  @default "span"
    */
@@ -26,10 +25,6 @@ export interface TextProps
   /** Set text decoration property */
   decoration?: TextDecorationProperty
   /** Size mapping from type ramp */
-  size?: RampSizes
-  /** Font weight */
-  weight?: TextWeights
-  /** Text tranform  */
   textTransform?: TextTransforms
   /** Adjust style of text with more meaning by using an intent */
   variant?: TextVariants
@@ -97,28 +92,25 @@ function getWrap(doWrap: boolean) {
   return ``
 }
 
-function getFontWeight(theme: Theme, weight: TextWeights | undefined) {
-  return weight ? theme.fontWeights[weight] : theme.fontWeights.normal
-}
-
 const InternalText: React.SFC<ThemedProps<TextProps>> = ({
-  is,
+  is = 'span',
   align,
   decoration,
-  size,
-  weight,
   textTransform,
   variant,
   wrap,
   theme,
+  lineHeight,
+  fontSize,
+  fontWeight,
   ...props
 }) => {
   return (
     <Box
-      is={is || 'span'}
-      fontSize={theme.fontSizes[size || 'medium']}
-      lineHeight={theme.lineHeights[size || 'medium']}
-      fontWeight={getFontWeight(theme, weight)}
+      is={is}
+      fontSize={fontSize || 'medium'}
+      fontWeight={fontWeight || 'normal'}
+      lineHeight={lineHeight || fontSize || 'medium'}
       textAlign={align}
       {...props}
     >

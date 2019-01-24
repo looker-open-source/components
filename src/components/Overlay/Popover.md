@@ -15,7 +15,7 @@ const wikipediaWildebeest = (
       width="100%"
       src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Blue_Wildebeest%2C_Ngorongoro.jpg/440px-Blue_Wildebeest%2C_Ngorongoro.jpg"
     />
-    <Text size="small">
+    <Text fontSize="small">
       The blue wildebeest, also called the common wildebeest, white-bearded
       wildebeest or brindled gnu, is a large antelope and one of the two species
       of wildebeest. It is placed in the genus Connochaetes and family Bovidae
@@ -29,7 +29,6 @@ const wikipediaWildebeest = (
     </Text>
   </PopoverContent>
 )
-
 ;<Box display="inline-block" mr="small">
   Here's a Popover:
   <Popover content={wikipediaWildebeest}>

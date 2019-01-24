@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { fontWeights } from '../../../style/font_weights'
 import { CustomizableAttributes } from '../../../types/attributes'
 import { Box, BoxProps } from '../../Box'
 
@@ -23,5 +22,5 @@ export const Label: React.SFC<LabelProps> = ({ ...props }) => (
 export const CustomizableLabelAttributes: CustomizableAttributes = {
   color: 'palette.charcoal800',
   fontSize: 'small',
-  fontWeight: fontWeights.semiBold,
+  fontWeight: 'semiBold',
 }

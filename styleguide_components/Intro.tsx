@@ -3,7 +3,7 @@ import { Box, Code, Flex, FlexItem, Heading, Icon, Text } from '../src'
 
 export const Intro = () => {
   return (
-    <Box>
+    <Box fontWeight="semiBold" fontSize="large">
       <Flex flexDirection="column" alignItems="center">
         <FlexItem my="large">
           <svg
@@ -30,9 +30,11 @@ export const Intro = () => {
             />
           </svg>
         </FlexItem>
-        <Heading size="xxxxlarge">LENS</Heading>
+        <Heading fontWeight="semiBold" fontSize="xxxxlarge">
+          LENS
+        </Heading>
         <Box my="large" maxWidth="600px">
-          <Text size="xlarge">
+          <Text fontSize="xlarge">
             A collections of assets for anyone making Looker software, providing
             Looker services, or telling Looker stories.
           </Text>
@@ -67,15 +69,15 @@ export const Intro = () => {
                 </svg>
               </Flex>
             </Box>
-            <Heading level="h4" size="large" weight="semiBold">
+            <Heading level="h4" fontSize="large" fontWeight="semiBold">
               Install
             </Heading>
             <Box mt="small">
-              <Text size="medium">
+              <Text fontSize="medium">
                 Lens packages are served by Looker's private package server,
                 Nexus, and can be installed through npm or yarn.
               </Text>
-              <Code size="medium">yarn add looker-lens</Code>
+              <Code fontSize="medium">yarn add looker-lens</Code>
             </Box>
           </Flex>
           <Flex maxWidth="215px" flexDirection="column" alignItems="center">
@@ -91,11 +93,11 @@ export const Intro = () => {
                 <Icon name="CircleExplore" size="24" color="#0087E1" />
               </Flex>
             </Box>
-            <Heading level="h4" size="large" weight="semiBold">
+            <Heading level="h4" fontSize="large" fontWeight="semiBold">
               Explore
             </Heading>
             <Box mt="small">
-              <Text size="small">
+              <Text fontSize="small">
                 Search or browse through the component listing on this site. You
                 can use the interactive prompts to compose whole components
                 right in Lens.
@@ -115,11 +117,11 @@ export const Intro = () => {
                 <Icon name="Undo" size={24} color="#FFA800" />
               </Flex>
             </Box>
-            <Heading level="h4" size="large" weight="semiBold">
+            <Heading level="h4" fontSize="large" fontWeight="semiBold">
               Contribute
             </Heading>
             <Box mt="small">
-              <Text size="medium">
+              <Text fontSize="medium">
                 Want something in Lens you don't see here? Follow the
                 contribution guidelines and best practices, then open a Pull
                 Request on the Lens repository.

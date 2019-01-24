@@ -120,7 +120,7 @@ async function generateMarkdownFileForAllIcons() {
         >
           <Box display="inline-block" px="xsmall" py="medium" width="16.66667%" textAlign="center">
             <Icon name="${name}" size={32} />
-            <Paragraph mt="small" size="xsmall" variant="secondary">${name}</Paragraph>
+            <Paragraph mt="small" fontSize="xsmall" variant="secondary">${name}</Paragraph>
           </Box>
         </CopyToClipboard>`
       )

@@ -1,4 +1,3 @@
-
 Lens is currently published to Nexus, Looker's private package server. [First, ensure your project is setup to pull NPM packages from Nexus.](https://github.com/looker/helltool/blob/master/docs/dev/npm_nexus_packages.md#configuring-nexus-for-npm-package-consumption)
 
 Next, add Lens to your project.
@@ -16,7 +15,7 @@ import { Card, CardContent, Heading, Text, ThemeProvider, theme } from 'looker-l
 <ThemeProvider theme={theme}>
   <Card raised>
     <CardContent>
-      <Heading weight="semiBold" transform="caps">Welcome to Lens</Heading>
+      <Heading fontWeight="semiBold" transform="caps">Welcome to Lens</Heading>
       <Text>Looker's component library</Text>
     </CardContent>
   </Card>
@@ -28,7 +27,9 @@ Which renders the following:
 ```jsx
 <Card raised>
   <CardContent>
-    <Heading weight="semiBold" transform="caps">Welcome to Lens</Heading>
+    <Heading fontWeight="semiBold" transform="caps">
+      Welcome to Lens
+    </Heading>
     <Text>Looker's component library</Text>
   </CardContent>
 </Card>
@@ -42,7 +43,7 @@ These live editing blocks are found throughout lens.looker.com, providing a spac
 
 Components are reusable building blocks that make up an application's user interface. Typically they wrap a logical part of an interface, including its behavior (Javascript), styling (CSS) and markup (HTML). They expose a programmatic interface allowing them to be configured and reused.
 
-Because components operate behind an interface, they are a useful tool for building *semantic abstractions*. The `<Card/>` component above is a great example of this kind of semantic abstraction - the developer doesn't have to be concerned with the actual implementation of the `Card`, they can simply comply to its interface without need to know about its inner workings.
+Because components operate behind an interface, they are a useful tool for building _semantic abstractions_. The `<Card/>` component above is a great example of this kind of semantic abstraction - the developer doesn't have to be concerned with the actual implementation of the `Card`, they can simply comply to its interface without need to know about its inner workings.
 
 ## A practical example
 
@@ -53,7 +54,7 @@ import * as React from 'react'
 import { Space } from 'looker-core'
 
 interface SpaceCardProps {
-  space: SpaceBase
+  space: SpaceBase;
 }
 
 export const SpaceCard = (props: SpaceCardProps) => {
@@ -85,22 +86,29 @@ In rare cases Lens may not support the exact presentation or behavior necessary.
 
 ```jsx static
 import * as React from 'react'
-import { Button as BaseButton, ButtonProps as BaseButtonProps} from './looker-lens'
+import {
+  Button as BaseButton,
+  ButtonProps as BaseButtonProps,
+} from './looker-lens'
 
 const logHandler = (event: React.MouseEvent<HTMLElement>) => {
-  logger(event.target.value);
-};
+  logger(event.target.value)
+}
 
-export const LoggerButton: React.SFC<ButtonProps> = ({onClick, ...props}) => {
-  let clickHandler = logHandler;
+export const LoggerButton: React.SFC<ButtonProps> = ({ onClick, ...props }) => {
+  let clickHandler = logHandler
   if (onClick !== undefined) {
     clickHandler = (event: React.MouseEvent<HTMLElement>) => {
-      logHandler(event);
-      if (onClick) onClick(event);
+      logHandler(event)
+      if (onClick) onClick(event)
     }
   }
 
-  return <Button onClick={clickHandler} {...props}>{props.children}</Button>
+  return (
+    <Button onClick={clickHandler} {...props}>
+      {props.children}
+    </Button>
+  )
 }
 ```
 
@@ -126,25 +134,31 @@ To help stay withing Looker's design principles, [Lens publishes a theme object]
 import { Button, styled } from 'looker-lens'
 
 const DangerButton = styled(Button)`
-  background-color: ${(props) => props.theme.colors.semanticColors.danger.main};
+  background-color: ${props => props.theme.colors.semanticColors.danger.main};
 `
 ```
 
 ```jsx static
 interface PersonTitleProps {
-  person: Person
+  person: Person;
 }
 
 const BasePersonTitle = ({ props: PersonTitleProps }) => {
   return (
-    <tag.h2>{props.person.name} - {props.person.title}</tag.h2>
+    <tag.h2>
+      {props.person.name} - {props.person.title}
+    </tag.h2>
   )
 }
 
-const PersonTitle = styled<PersonTitleProps>(BasePersonTitle)`
-  background-color: ${(props) => props.theme.colors.semanticColors.primary.lighter};
-  font-size: ${(props) => props.theme.fontSizes[5]};
-  padding: ${(props) => props.spacing.large};
+const PersonTitle =
+  styled <
+  PersonTitleProps >
+  BasePersonTitle`
+  background-color: ${props =>
+    props.theme.colors.semanticColors.primary.lighter};
+  font-size: ${props => props.theme.fontSizes[5]};
+  padding: ${props => props.spacing.large};
 `
 ```
 
