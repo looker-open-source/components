@@ -70,10 +70,6 @@ export class Modal extends React.Component<ModalInternalProps, ModalState> {
     this.state = { isOpen: !!props.open }
   }
 
-  public componentWillUnmount() {
-    document.removeEventListener('keydown', this.handleEscapePress)
-  }
-
   public render() {
     const { children } = this.props
     const triggerEventProps: React.DOMAttributes<{}> = { onClick: this.open }
@@ -103,7 +99,6 @@ export class Modal extends React.Component<ModalInternalProps, ModalState> {
                 <ScrollLock />
                 <ModalBackdrop
                   className={state}
-                  close={this.close}
                   style={this.props.backdropStyles}
                 />
                 {this.props.render(state)}
@@ -116,21 +111,14 @@ export class Modal extends React.Component<ModalInternalProps, ModalState> {
   }
 
   private open = () => {
-    document.addEventListener('keydown', this.handleEscapePress)
     this.props.onOpen && this.props.onOpen()
     this.setState({ isOpen: true })
   }
 
   private close = () => {
-    document.removeEventListener('keydown', this.handleEscapePress)
     if (this.props.canClose && !this.props.canClose()) return
-
     this.props.onClose && this.props.onClose()
     this.setState({ isOpen: false })
-  }
-
-  private handleEscapePress = (event: KeyboardEvent) => {
-    if (this.state.isOpen && event.key === 'Escape') this.close()
   }
 }
 

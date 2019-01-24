@@ -5,7 +5,6 @@ import { Box, BoxProps } from '../Box'
 import { CustomizableOverlayAttributes } from '../Overlay'
 
 export interface BackdropProps {
-  close: () => void
   style?: React.CSSProperties
   theme: Theme
   className?: string
@@ -15,12 +14,11 @@ interface BackdropInternalProps extends BoxProps<HTMLElement> {
   backdropStyle?: React.CSSProperties
 }
 
-const Internal: React.SFC<BackdropProps> = ({ close, style, className }) => (
+const Internal: React.SFC<BackdropProps> = ({ style, className }) => (
   <Backdrop
     className={className}
     bg={CustomizableOverlayAttributes.backdrop.backgroundColor}
     height="100%"
-    onClick={close}
     opacity={CustomizableOverlayAttributes.backdrop.opacity}
     position="fixed"
     style={{ cursor: 'pointer', ...style }}

@@ -12,18 +12,21 @@ export const RichTooltip: React.SFC<RichTooltipProps> = ({
   content,
   children,
   ...overlayProps
-}) => (
-  <Overlay
-    trigger="hover"
-    overlayContentFactory={overlayBubbleWithContent(
-      content,
-      CustomizableRichTooltipAttributes.bubble
-    )}
-    {...overlayProps}
-  >
-    {children}
-  </Overlay>
-)
+}) => {
+  return (
+    <Overlay
+      trigger="hover"
+      overlayContentFactory={overlayBubbleWithContent(
+        content,
+        CustomizableRichTooltipAttributes.bubble,
+        true
+      )}
+      {...overlayProps}
+    >
+      {children}
+    </Overlay>
+  )
+}
 
 export const CustomizableRichTooltipAttributes: CustomizableTooltipAttributes = {
   bubble: {

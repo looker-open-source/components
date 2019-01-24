@@ -1666,6 +1666,21 @@ babel-plugin-jest-hoist@^23.2.0:
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/babel-plugin-jest-hoist/-/babel-plugin-jest-hoist-23.2.0.tgz#e61fae05a1ca8801aadee57a6d66b8cefaf44167"
   integrity sha1-5h+uBaHKiAGq3uV6bWa4zvr0QWc=
 
+babel-plugin-styled-components@^1.10.0:
+  version "1.10.0"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/babel-plugin-styled-components/-/babel-plugin-styled-components-1.10.0.tgz#ff1f42ad2cc78c21f26b62266b8f564dbc862939"
+  integrity sha512-sQVKG8irFXx14ZfaK1bBePirfkacl3j8nZwSZK+ZjsbnadRHKQTbhXbe/RB1vT6Vgkz45E+V95LBq4KqdhZUNw==
+  dependencies:
+    "@babel/helper-annotate-as-pure" "^7.0.0"
+    "@babel/helper-module-imports" "^7.0.0"
+    babel-plugin-syntax-jsx "^6.18.0"
+    lodash "^4.17.10"
+
+babel-plugin-syntax-jsx@^6.18.0:
+  version "6.18.0"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/babel-plugin-syntax-jsx/-/babel-plugin-syntax-jsx-6.18.0.tgz#0af32a9a6e13ca7a3fd5069e62d7b0f58d0d8946"
+  integrity sha1-CvMqmm4Tyno/1QaeYtew9Y0NiUY=
+
 babel-plugin-syntax-object-rest-spread@^6.13.0:
   version "6.13.0"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/babel-plugin-syntax-object-rest-spread/-/babel-plugin-syntax-object-rest-spread-6.13.0.tgz#fd6536f2bce13836ffa3a5458c4903a597bb3bf5"
@@ -4185,6 +4200,21 @@ flush-write-stream@^1.0.0:
   dependencies:
     inherits "^2.0.1"
     readable-stream "^2.0.4"
+
+focus-trap-react@^5.0.1:
+  version "5.0.1"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/focus-trap-react/-/focus-trap-react-5.0.1.tgz#2459c632225ec7ff45a9a6abea320c38467d75e1"
+  integrity sha512-gDvYHKzUphCafOplHp3OQIz44WBge24yXculCkERLQplG53GyVOXvehYDW3rM4VAPGillsLUN8BlsKoRJAcoMA==
+  dependencies:
+    focus-trap "^3.0.0"
+
+focus-trap@^3.0.0:
+  version "3.0.0"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/focus-trap/-/focus-trap-3.0.0.tgz#4d2ee044ae66bf7eb6ebc6c93bd7a1039481d7dc"
+  integrity sha512-jTFblf0tLWbleGjj2JZsAKbgtZTdL1uC48L8FcmSDl4c2vDoU4NycN1kgV5vJhuq1mxNFkw7uWZ1JAGlINWvyw==
+  dependencies:
+    tabbable "^3.1.0"
+    xtend "^4.0.1"
 
 for-in@^0.1.3:
   version "0.1.8"
@@ -8672,11 +8702,6 @@ react-error-overlay@^4.0.1:
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/react-error-overlay/-/react-error-overlay-4.0.1.tgz#417addb0814a90f3a7082eacba7cee588d00da89"
   integrity sha512-xXUbDAZkU08aAkjtUvldqbvI04ogv+a1XdHxvYuHPYKIVk/42BIOD0zSKTHAWV4+gDy3yGm283z2072rA2gdtw==
 
-react-focus-trap@^2.7.1:
-  version "2.7.1"
-  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/react-focus-trap/-/react-focus-trap-2.7.1.tgz#681b8fd72908df420befe9512a2fbbfe712b87ce"
-  integrity sha512-23LD3kjQiL27L5pSZBFSnR0pmI0kg9PlPdfpNdMg5gTXF7YyxZhYwKX6D5zIFif3cI2z7i9f5ToPruUiTWvNFQ==
-
 react-group@^1.0.6:
   version "1.0.6"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/react-group/-/react-group-1.0.6.tgz#8dd7c00c3b35d05ce164021458bb07d580e3001a"
@@ -10356,6 +10381,11 @@ symbol-tree@^3.2.2:
   version "3.2.2"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/symbol-tree/-/symbol-tree-3.2.2.tgz#ae27db38f660a7ae2e1c3b7d1bc290819b8519e6"
   integrity sha1-rifbOPZgp64uHDt9G8KQgZuFGeY=
+
+tabbable@^3.1.0:
+  version "3.1.2"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/tabbable/-/tabbable-3.1.2.tgz#f2d16cccd01f400e38635c7181adfe0ad965a4a2"
+  integrity sha512-wjB6puVXTYO0BSFtCmWQubA/KIn7Xvajw0x0l6eJUudMG/EAiJvIUnyNX6xO4NpGrJ16lbD0eUseB9WxW0vlpQ==
 
 table@^5.0.0:
   version "5.1.0"

@@ -18,7 +18,8 @@ export const Popover: React.SFC<PopoverProps> = ({
     trigger="click"
     overlayContentFactory={overlayBubbleWithContent(
       content,
-      CustomizablePopoverAttributes.bubble
+      CustomizablePopoverAttributes.bubble,
+      true
     )}
     backdropStyles={CustomizablePopoverAttributes.backdrop}
     {...overlayProps}

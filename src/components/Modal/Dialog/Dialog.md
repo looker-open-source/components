@@ -1,7 +1,13 @@
 Dialogs inform users about a task and can contain critical information, require decisions, or involve multiple tasks.
 
 ```js
-<Dialog content="This is some content in the Dialog">
+<Dialog
+  content={
+    <>
+      This is some content in the Dialog <a href="#">Focus here...</a>
+    </>
+  }
+>
   <Button>Open Dialog</Button>
 </Dialog>
 ```
@@ -41,7 +47,7 @@ const content = (
   </>
 )
 ;<Dialog content={content}>
-  <Button variant="outline" color="danger">
+  <Button variant="outline" color="danger" autoFocus>
     Delete Stuff
   </Button>
 </Dialog>

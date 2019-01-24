@@ -1,7 +1,13 @@
 Drawers are modal overlays that provide contextual information. They are frequantly used for creation or management action by the user. The Drawer blocks interactions with the other content until dismissed either through clicking or tapping on the Backdrop or by selecting a close or completion action within the Drawer.
 
 ```js
-<Drawer content="This is some content in the Drawer">
+<Drawer
+  content={
+    <>
+      This is some content in the Drawer <a href="#">Focus point</a>
+    </>
+  }
+>
   <Button>Open Drawer</Button>
 </Drawer>
 ```

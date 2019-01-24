@@ -1,8 +1,13 @@
 import { ReactWrapper } from 'enzyme'
 import * as React from 'react'
-import { mountWithTheme } from '../../../test/utils/create_with_theme'
+import { shallowWithTheme } from '../../../test/utils/create_with_theme'
 
-export const SimpleContent = <div>simple content</div>
+export const SimpleContent = (
+  <div>
+    simple content
+    <button>Done</button>
+  </div>
+)
 export const SimpleContentSFC = () => SimpleContent
 
 export const assertModalState = (
@@ -23,6 +28,6 @@ export const returnTriggerAndModal = (
   Inst: React.ReactElement<any>,
   trigger = 'button'
 ) => {
-  const modal = mountWithTheme(Inst)
+  const modal = shallowWithTheme(Inst)
   return [modal, modal.find(trigger)]
 }

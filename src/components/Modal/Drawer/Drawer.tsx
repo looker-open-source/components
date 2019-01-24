@@ -13,7 +13,7 @@ export interface DrawerProps extends ModalProps {
    * Content that will be placed inside the Dialog
    * @required
    */
-  content: React.ReactNode
+  content: JSX.Element | JSX.Element[]
 }
 
 export const Drawer: React.SFC<DrawerProps> = ({

@@ -37,7 +37,6 @@ exports[`Modal Active 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  cursor: pointer;
   background-color: #DEE1E5;
   height: 100%;
   opacity: 0.6;
@@ -61,7 +60,6 @@ exports[`Modal Active 1`] = `
 >
   <div
     className="faux c1 c2"
-    onClick={[Function]}
     style={
       Object {
         "cursor": "pointer",
@@ -70,6 +68,9 @@ exports[`Modal Active 1`] = `
   />
   <div>
     simple content
+    <button>
+      Done
+    </button>
   </div>
 </div>
 `;
@@ -197,7 +198,6 @@ Array [
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  cursor: pointer;
   background-color: #DEE1E5;
   height: 100%;
   opacity: 0.6;
@@ -221,7 +221,6 @@ Array [
   >
     <div
       className="faux c1 c2"
-      onClick={[Function]}
       style={
         Object {
           "cursor": "pointer",
@@ -230,6 +229,9 @@ Array [
     />
     <div>
       simple content
+      <button>
+        Done
+      </button>
     </div>
   </div>,
 ]

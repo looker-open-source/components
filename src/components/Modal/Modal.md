@@ -17,7 +17,7 @@ This provides the backdrop behind Modal containers. It can be customized via the
 ```
 <Dialog
   backdropStyles={{ background: 'purple', opacity: 1 }}
-  content="Stuff and text"
+  content={<>Stuff and text <a href='#'>Focus attention here...</a></>}
 >
   <Button>Purple Backdrop</Button>
 </Dialog>
@@ -30,7 +30,7 @@ This provides the backdrop behind Modal containers. It can be customized via the
 ```
 <Dialog
   surfaceStyles={{ background: 'pink', borderRadius: 0, padding: '3rem' }}
-  content="Stuff and text"
+  content={<>Stuff and text <a href="#">Focus attention here...</a></>}
 >
   <Button>Pink Surface, No Radiae</Button>
 </Dialog>

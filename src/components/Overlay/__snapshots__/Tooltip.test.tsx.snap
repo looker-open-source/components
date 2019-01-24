@@ -135,7 +135,7 @@ Array [
   margin: 0.5rem;
 }
 
-.c4 {
+.c3 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -149,11 +149,11 @@ Array [
   text-align: center;
 }
 
-.c5 {
+.c4 {
   position: absolute;
 }
 
-.c5::before {
+.c4::before {
   content: '';
   margin: auto;
   display: block;
@@ -164,45 +164,45 @@ Array [
   border-right: none none;
 }
 
-.c5[data-placement*='top'] {
+.c4[data-placement*='top'] {
   bottom: 0.25rem;
   margin: 0 1rem;
 }
 
-.c5[data-placement*='top']::before {
+.c4[data-placement*='top']::before {
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
 
-.c5[data-placement*='right'] {
+.c4[data-placement*='right'] {
   left: 0.25rem;
   margin: 1rem 0;
 }
 
-.c5[data-placement*='right']::before {
+.c4[data-placement*='right']::before {
   -webkit-transform: rotate(135deg);
   -ms-transform: rotate(135deg);
   transform: rotate(135deg);
 }
 
-.c5[data-placement*='bottom'] {
+.c4[data-placement*='bottom'] {
   top: 0.25rem;
   margin: 0 1rem;
 }
 
-.c5[data-placement*='bottom']::before {
+.c4[data-placement*='bottom']::before {
   -webkit-transform: rotate(225deg);
   -ms-transform: rotate(225deg);
   transform: rotate(225deg);
 }
 
-.c5[data-placement*='left'] {
+.c4[data-placement*='left'] {
   right: 0.25rem;
   margin: 1rem 0;
 }
 
-.c5[data-placement*='left']::before {
+.c4[data-placement*='left']::before {
   -webkit-transform: rotate(315deg);
   -ms-transform: rotate(315deg);
   transform: rotate(315deg);
@@ -211,10 +211,6 @@ Array [
 .c1 {
   -webkit-animation: bcCCNc 0.2s linear;
   animation: bcCCNc 0.2s linear;
-}
-
-.c3:focus {
-  outline: none;
 }
 
 <div
@@ -234,28 +230,13 @@ Array [
       className="c1 c2"
       overflow="visible"
     >
-      <div
-        className="c3-wrapper"
-        onKeyUp={[Function]}
+      <p
+        className="c3"
       >
-        <div
-          aria-hidden="true"
-          className="c3-backdrop"
-          onClick={[Function]}
-        />
-        <div
-          className="c3"
-          tabIndex={0}
-        >
-          <p
-            className="c4"
-          >
-            Hello world
-          </p>
-        </div>
-      </div>
+        Hello world
+      </p>
       <div
-        className="c5"
+        className="c4"
         style={Object {}}
       />
     </div>
