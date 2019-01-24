@@ -1,4 +1,5 @@
 import { rem } from 'polished'
+import { FontSizeProps } from 'styled-system'
 import {
   SizeLarge,
   SizeMedium,
@@ -36,15 +37,6 @@ export const fontSizes: FontRamp = {
   xsmall: rem(12),
   xxsmall: rem(11),
 }
+// tslint:enable:object-literal-sort-keys
 
-export const lineHeights: FontRamp = {
-  xxxxlarge: rem(64),
-  xxxlarge: rem(52),
-  xxlarge: rem(40),
-  xlarge: rem(32),
-  large: rem(28),
-  medium: rem(24),
-  small: rem(20),
-  xsmall: rem(16),
-  xxsmall: rem(16),
-}
+export type LensFontSizeProps = { [P in keyof FontSizeProps]: RampSizes }

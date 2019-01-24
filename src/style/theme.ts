@@ -15,9 +15,10 @@ import {
 } from '../types'
 import { Easings, easings } from './easings'
 import { shadows, Shadows } from './elevation'
-import { FontRamp, fontSizes, lineHeights } from './font_sizes'
-import { fontWeights } from './font_weights'
+import { FontRamp, fontSizes } from './font_sizes'
+import { FontWeightRamp, fontWeights } from './font_weights'
 import { fonts, Fonts } from './fonts'
+import { lineHeights } from './line_heights'
 import { palette, Palette } from './palette'
 import { radii, Radii } from './radii'
 import { SemanticColors, semanticColors } from './semantic_colors'
@@ -26,6 +27,8 @@ import { transitions, Transitions } from './transitions'
 export * from './easings'
 export * from './elevation'
 export * from './font_sizes'
+export * from './font_weights'
+export * from './line_heights'
 export * from './palette'
 export * from './semantic_colors'
 export * from './transitions'
@@ -51,7 +54,7 @@ export interface Theme {
   colors: { palette: Palette; semanticColors: SemanticColors }
   easings: Easings
   fontSizes: FontRamp
-  fontWeights: Record<string, number>
+  fontWeights: FontWeightRamp
   fonts: Fonts
   lineHeights: FontRamp
   radii: Radii

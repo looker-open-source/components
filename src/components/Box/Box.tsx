@@ -41,12 +41,10 @@ import {
   FlexWrapProps,
   fontFamily,
   FontFamilyProps,
-  fontSize,
-  FontSizeProps,
+  fontSize as fontSizeStyledSystem,
   fontStyle,
   FontStyleProps,
-  fontWeight,
-  FontWeightProps,
+  fontWeight as fontWeightStyledSystem,
   height,
   HeightProps,
   justifyContent,
@@ -55,8 +53,7 @@ import {
   LeftProps,
   letterSpacing,
   LetterSpacingProps,
-  lineHeight,
-  LineHeightProps,
+  lineHeight as lineHeightStyledSystem,
   maxHeight,
   MaxHeightProps,
   maxWidth,
@@ -87,7 +84,15 @@ import {
   zIndex,
   ZIndexProps,
 } from 'styled-system'
-import { css, LensSpaceProps, reset, styled } from '../../style'
+import {
+  css,
+  LensFontSizeProps,
+  LensFontWeightProps,
+  LensLineHeightProps,
+  LensSpaceProps,
+  reset,
+  styled,
+} from '../../style'
 import { Omit } from '../../types'
 import { cursor, CursorProps } from './style_utilities'
 
@@ -108,12 +113,15 @@ export interface BoxFlexItemProps
 
 export type StyledSystemCompatibleHTMLProps<T> = Omit<
   React.HTMLProps<T>,
-  'width' | 'color' | 'height' | 'is' | 'size'
+  'width' | 'color' | 'height' | 'is' | 'fontSize' | 'fontWeight'
 >
 
 export interface BoxBaseProps<T>
   extends StyledSystemCompatibleHTMLProps<T>,
     LensSpaceProps,
+    LensFontSizeProps,
+    LensFontWeightProps,
+    LensLineHeightProps,
     BorderColorProps,
     BorderProps,
     BorderRadiusProps,
@@ -127,13 +135,10 @@ export interface BoxBaseProps<T>
     CursorProps,
     DisplayProps,
     FontFamilyProps,
-    FontSizeProps,
     FontStyleProps,
-    FontWeightProps,
     HeightProps,
     LeftProps,
     LetterSpacingProps,
-    LineHeightProps,
     MaxHeightProps,
     MaxWidthProps,
     MinHeightProps,
@@ -151,6 +156,7 @@ export interface BoxBaseProps<T>
   is?: string | React.ReactNode
   ref?: React.Ref<any>
   style?: React.CSSProperties
+
   /**
    * Styling for :hover pseudo class.
    *
@@ -238,15 +244,30 @@ const cursorPointerOnClick = (props: BoxProps<HTMLElement>) =>
     cursor: pointer;
   `
 
+//
+// Get theme from ThemeProvider
+//
+
 const BoxFactory = React.forwardRef((props: BoxProps<HTMLElement>, ref) => {
   const {
     activeStyle,
     focusStyle,
     hoverStyle,
     userSelect,
+    lineHeight,
+    fontWeight = 'normal',
+    fontSize = 'medium',
     ...otherProps
   } = props
-  return <Tag {...otherProps} ref={ref} />
+  return (
+    <Tag
+      lineHeight={lineHeight}
+      fontSize={fontSize}
+      fontWeight={fontWeight}
+      {...otherProps}
+      ref={ref}
+    />
+  )
 })
 
 export const Box = styled<BoxProps<HTMLElement>>(BoxFactory)`
@@ -301,14 +322,14 @@ export const Box = styled<BoxProps<HTMLElement>>(BoxFactory)`
   ${flexDirection};
   ${flexWrap};
   ${fontFamily};
-  ${fontSize};
+  ${fontSizeStyledSystem};
   ${fontStyle};
-  ${fontWeight};
+  ${fontWeightStyledSystem};
   ${height};
   ${justifyContent};
   ${left};
   ${letterSpacing};
-  ${lineHeight};
+  ${lineHeightStyledSystem};
   ${maxHeight};
   ${maxWidth};
   ${minHeight};
