@@ -222,7 +222,7 @@ const pseudoClassActive = (props: BoxProps<HTMLElement>) => {
   )
 }
 
-const userSelect = (props: BoxProps<HTMLElement>) => {
+const userSelectCSS = (props: BoxProps<HTMLElement>) => {
   return (
     props.userSelect &&
     css`
@@ -239,7 +239,13 @@ const cursorPointerOnClick = (props: BoxProps<HTMLElement>) =>
   `
 
 const BoxFactory = React.forwardRef((props: BoxProps<HTMLElement>, ref) => {
-  const { activeStyle, focusStyle, hoverStyle, ...otherProps } = props
+  const {
+    activeStyle,
+    focusStyle,
+    hoverStyle,
+    userSelect,
+    ...otherProps
+  } = props
   return <Tag {...otherProps} ref={ref} />
 })
 
@@ -315,7 +321,7 @@ export const Box = styled<BoxProps<HTMLElement>>(BoxFactory)`
   ${space};
   ${textAlign};
   ${top};
-  ${userSelect}
+  ${userSelectCSS};
   ${verticalAlign};
   ${width};
   ${zIndex};
