@@ -33,7 +33,6 @@ exports[`MenuOverlay Normal menu overlay 1`] = `
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-size: 1rem;
-  line-height: 34px;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0rem;
@@ -94,6 +93,11 @@ exports[`MenuOverlay Normal menu overlay 1`] = `
   <button
     className="c1 c2"
     onClick={[Function]}
+    style={
+      Object {
+        "lineHeight": "34px",
+      }
+    }
   >
     Trigger
   </button>
@@ -156,7 +160,6 @@ Array [
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-size: 1rem;
-  line-height: 34px;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0rem;
@@ -230,6 +233,11 @@ Array [
     <button
       className="c1 c2"
       onClick={[Function]}
+      style={
+        Object {
+          "lineHeight": "34px",
+        }
+      }
     >
       Trigger
     </button>
@@ -416,7 +424,6 @@ Array [
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-size: 1rem;
-  line-height: 34px;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0rem;
@@ -490,6 +497,11 @@ Array [
     <button
       className="c1 c2"
       onClick={[Function]}
+      style={
+        Object {
+          "lineHeight": "34px",
+        }
+      }
     >
       Trigger
     </button>
@@ -676,7 +688,6 @@ Array [
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-size: 1rem;
-  line-height: 34px;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0rem;
@@ -750,6 +761,11 @@ Array [
     <button
       className="c1 c2"
       onClick={[Function]}
+      style={
+        Object {
+          "lineHeight": "34px",
+        }
+      }
     >
       Trigger
     </button>
@@ -936,7 +952,6 @@ Array [
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-size: 1rem;
-  line-height: 34px;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0rem;
@@ -1010,6 +1025,11 @@ Array [
     <button
       className="c1 c2"
       onClick={[Function]}
+      style={
+        Object {
+          "lineHeight": "34px",
+        }
+      }
     >
       Trigger
     </button>

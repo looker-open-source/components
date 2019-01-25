@@ -76,7 +76,7 @@ describe('Box', () => {
       assertSnapshot(<Box fontSize="small" />)
       assertSnapshot(<Box fontWeight="bold" />)
       assertSnapshot(<Box letterSpacing="10" />)
-      assertSnapshot(<Box lineHeight="1.5" />)
+      assertSnapshot(<Box lineHeight="medium" />)
       assertSnapshot(<Box textAlign="right" />)
       assertSnapshot(<Box color="palette.charcoal400" />)
     })

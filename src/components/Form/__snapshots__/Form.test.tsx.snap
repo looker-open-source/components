@@ -205,7 +205,6 @@ exports[`Form with one invalid child and a submit button 1`] = `
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-size: 1rem;
-  line-height: 34px;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0rem;
@@ -314,6 +313,11 @@ exports[`Form with one invalid child and a submit button 1`] = `
   </div>
   <button
     className="c6 c7"
+    style={
+      Object {
+        "lineHeight": "34px",
+      }
+    }
   >
     Submit
   </button>

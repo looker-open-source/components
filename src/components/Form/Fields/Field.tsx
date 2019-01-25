@@ -1,10 +1,7 @@
 import { TextAlignProperty } from 'csstype'
 import * as React from 'react'
-import { SpacingSizes, styled } from '../../../style'
-import {
-  ResponsiveFontWeightValue,
-  ResponsiveSpaceValue,
-} from '../../../style/responsive'
+import { FontWeights, SpacingSizes, styled } from '../../../style'
+import { ResponsiveSpaceValue } from '../../../style/responsive'
 import { CustomizableAttributes } from '../../../types/attributes'
 import { FlexItem } from '../../FlexItem'
 import { FormControl, FormControlDirections } from '../FormControl/FormControl'
@@ -38,7 +35,7 @@ export interface FieldProps {
   /**
    * Specifies the fontWeight of the internal Label.
    */
-  labelFontWeight?: ResponsiveFontWeightValue
+  labelFontWeight?: FontWeights
   /**
    * Whether or not the field should display a `*` denoting it is required.
    */

@@ -3,7 +3,8 @@ import { css, styled } from '../../style'
 import { ThemedProps } from '../../types'
 import { Box, BoxPropsWithout } from '../Box'
 
-interface DividerProps extends BoxPropsWithout<HTMLDivElement, 'color'> {
+interface DividerProps
+  extends BoxPropsWithout<HTMLDivElement, 'color' | 'size'> {
   size?: string | number
   customColor?: string
   appearance?: 'light' | 'dark' | 'onDark'

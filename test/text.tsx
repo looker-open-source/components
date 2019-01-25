@@ -22,7 +22,7 @@ export const snapshotTestTextComponentFontRamp = (
   Component: React.SFC<TextProps> | React.ComponentClass
 ) => {
   const component = createWithTheme(
-    <Component size="xxxxlarge">Hello</Component>
+    <Component fontSize="xxxxlarge">Hello</Component>
   )
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
@@ -31,7 +31,9 @@ export const snapshotTestTextComponentFontRamp = (
 export const snapshotTestTextComponentFontWeight = (
   Component: React.SFC<TextProps> | React.ComponentClass
 ) => {
-  const component = createWithTheme(<Component weight="bold">Hello</Component>)
+  const component = createWithTheme(
+    <Component fontWeight="bold">Hello</Component>
+  )
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
 }

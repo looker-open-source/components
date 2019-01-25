@@ -21,7 +21,6 @@ Array [
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-size: 1rem;
-  line-height: 34px;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0rem;
@@ -98,6 +97,11 @@ Array [
       onFocus={[Function]}
       onMouseOut={[Function]}
       onMouseOver={[Function]}
+      style={
+        Object {
+          "lineHeight": "34px",
+        }
+      }
     >
       Example
     </button>

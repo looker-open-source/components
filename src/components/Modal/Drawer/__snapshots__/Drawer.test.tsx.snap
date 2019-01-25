@@ -21,7 +21,6 @@ exports[`Drawer Hidden 1`] = `
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-size: 1rem;
-  line-height: 34px;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0rem;
@@ -79,6 +78,11 @@ exports[`Drawer Hidden 1`] = `
 <button
   className="c0 c1"
   onClick={[Function]}
+  style={
+    Object {
+      "lineHeight": "34px",
+    }
+  }
 >
   🥑
 </button>
@@ -227,7 +231,6 @@ Array [
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-size: 1rem;
-  line-height: 34px;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0rem;
@@ -285,6 +288,11 @@ Array [
 <button
     className="c0 c1"
     onClick={[Function]}
+    style={
+      Object {
+        "lineHeight": "34px",
+      }
+    }
   >
     🥑
   </button>,
@@ -433,7 +441,6 @@ Array [
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-size: 1rem;
-  line-height: 34px;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0rem;
@@ -494,6 +501,11 @@ Array [
 <button
     className="c0 c1"
     onClick={[Function]}
+    style={
+      Object {
+        "lineHeight": "34px",
+      }
+    }
   >
     Pick Stuff
   </button>,
@@ -631,12 +643,8 @@ Array [
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-size: 1.375rem;
-  line-height: 42px;
   margin-left: auto;
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
-  padding-top: 0rem;
-  padding-bottom: 0rem;
+  padding: 0rem;
 }
 
 .c12 {
@@ -712,7 +720,6 @@ Array [
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-size: 1rem;
-  line-height: 34px;
   margin-right: 0.75rem;
   padding-left: 1rem;
   padding-right: 1rem;
@@ -739,7 +746,6 @@ Array [
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-size: 1rem;
-  line-height: 34px;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0rem;
@@ -925,7 +931,6 @@ Array [
           style={
             Object {
               "lineHeight": 1,
-              "padding": 0,
             }
           }
         >
@@ -968,11 +973,21 @@ Array [
       >
         <button
           className="c10 c16"
+          style={
+            Object {
+              "lineHeight": "34px",
+            }
+          }
         >
           Cancel
         </button>
         <button
           className="c17 c18"
+          style={
+            Object {
+              "lineHeight": "34px",
+            }
+          }
         >
           Pick some stuff
         </button>

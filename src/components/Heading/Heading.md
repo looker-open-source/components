@@ -1,7 +1,6 @@
 ```js noeditor
 const StatusAndResources = require('../../../styleguide_components/StatusAndResources')
   .StatusAndResources
-
 ;<StatusAndResources
   status="experimental"
   figmaURL="https://www.figma.com/file/SmIM3VUQUgo8xb4o7UUxflkT/Typography"
@@ -24,7 +23,7 @@ The `<Heading />` component is used to render a HTML `<h1>` - `<h6>` element, by
 
 ### Heading Levels
 
-To use a different HTML heading element, the `<Heading />` component accepts a `level` attribute that corresponds to the `<h1>` - `<h6>` elements. The font-size of each heading element maps to the Lens [type ramp](/#!/Typography)
+To use a different HTML heading element, the `<Heading />` component accepts a `is` attribute that corresponds to the `<h1>` - `<h6>` elements. The font-size of each heading element maps to the Lens [type ramp](/#!/Typography)
 
 ```js
 // Heading components using the level attribute (font-size / line-height)
@@ -43,21 +42,27 @@ To use a different HTML heading element, the `<Heading />` component accepts a `
 
 ### Heading Sizes
 
-When creating accessible pages it is important that headings create a [logical document outline](https://bitsofco.de/using-heading-elements-to-create-a-document-outline/), but sometimes the font-size of the heading element doesn't match to the needs of the design or layout. Composing the `level` and the `size` attributes lets you choose the semantically correct level heading and the desired size. The available size values come from the [type ramp](/#!/Typography).
+When creating accessible pages it is important that headings create a [logical document outline](https://bitsofco.de/using-heading-elements-to-create-a-document-outline/), but sometimes the font-size of the heading element doesn't match to the needs of the design or layout. Composing the `is` and the `fontSize` attributes lets you choose the semantically correct level heading and the desired size. The available size values come from the [type ramp](/#!/Typography).
 
 ```js
-// Heading components using the level and size attribute (font-size / line-height)
+// Heading components using the is and fontSize attribute (font-size / line-height)
 
 <div>
-  <Heading size="xxxxlarge">Viral meditation live-edge</Heading>
-  <Heading size="xxxlarge">Pork belly beard mustache </Heading>
-  <Heading size="xxlarge">Iceland trust fund hell of plaid</Heading>
-  <Heading size="xlarge">Tofu heirloom hammock fam tweet</Heading>
-  <Heading size="large">Helvetica hashtag cronut unicorn</Heading>
-  <Heading size="medium">Franzen semiotics sustainable, gluten-free</Heading>
-  <Heading size="small">8-bit coloring book authentic squid pok pok</Heading>
-  <Heading size="xsmall">Beard truffaut fashion axe, butcher raclette </Heading>
-  <Heading size="xxsmall">Man bun cardigan succulents vice</Heading>
+  <Heading fontSize="xxxxlarge">Viral meditation live-edge</Heading>
+  <Heading fontSize="xxxlarge">Pork belly beard mustache </Heading>
+  <Heading fontSize="xxlarge">Iceland trust fund hell of plaid</Heading>
+  <Heading fontSize="xlarge">Tofu heirloom hammock fam tweet</Heading>
+  <Heading fontSize="large">Helvetica hashtag cronut unicorn</Heading>
+  <Heading fontSize="medium">
+    Franzen semiotics sustainable, gluten-free
+  </Heading>
+  <Heading fontSize="small">
+    8-bit coloring book authentic squid pok pok
+  </Heading>
+  <Heading fontSize="xsmall">
+    Beard truffaut fashion axe, butcher raclette
+  </Heading>
+  <Heading fontSize="xxsmall">Man bun cardigan succulents vice</Heading>
 </div>
 ```
 
@@ -70,16 +75,16 @@ Another common pattern for headings is to control the font-weight and the text-t
 ```js
 // Heading components using the weight and transform attributes
 <div>
-  <Heading weight="light" transform="lower">
+  <Heading fontWeight="light" transform="lower">
     Light and lower
   </Heading>
-  <Heading weight="normal" transform="none">
+  <Heading fontWeight="normal" transform="none">
     Normal and none (default)
   </Heading>
-  <Heading weight="semiBold" transform="upper">
+  <Heading fontWeight="semiBold" transform="upper">
     Semi-bold and upper
   </Heading>
-  <Heading weight="bold" transform="caps">
+  <Heading fontWeight="bold" transform="caps">
     Bold and caps
   </Heading>
 </div>

@@ -35,7 +35,7 @@ export interface SpaceExample {
 const TableLabel = (label: string, key: number) => {
   return (
     <TableHeaderCell key={key}>
-      <Text size="medium" weight="semiBold">
+      <Text fontSize="medium" fontWeight="semiBold">
         {label}
       </Text>
     </TableHeaderCell>
@@ -59,7 +59,7 @@ const SpacingRow = (px: string, rem: string, key: number, label: string) => {
       <TableDataCell>{rem}</TableDataCell>
       <TableDataCell>
         <Box px="small" is="span" className="prop-code">
-          <Code size="xsmall">{label}</Code>
+          <Code fontSize="xsmall">{label}</Code>
         </Box>
       </TableDataCell>
     </TableRow>

@@ -58,7 +58,7 @@ export interface BreakpointExample {
 const TableLabel = (label: string, key: number) => {
   return (
     <TableHeaderCell key={key}>
-      <Text size="small" weight="semiBold">
+      <Text fontSize="small" fontWeight="semiBold">
         {label}
       </Text>
     </TableHeaderCell>
@@ -75,20 +75,20 @@ const BreakpointRow = (
   return (
     <TableRow key={key} style={{ verticalAlign: 'middle' }}>
       <TableDataCell>
-        <Text size="small">{slot}</Text>
+        <Text fontSize="small">{slot}</Text>
       </TableDataCell>
       <TableDataCell>
         <Box mr="large">
-          <Text size="small">{starts}</Text>
+          <Text fontSize="small">{starts}</Text>
         </Box>
       </TableDataCell>
       <TableDataCell>
         <Box px="small" is="span" className="prop-code">
-          <Code size="xsmall">min-width: {rem}</Code>
+          <Code fontSize="xsmall">min-width: {rem}</Code>
         </Box>
       </TableDataCell>
       <TableDataCell>
-        <Text size="small">{description}</Text>
+        <Text fontSize="small">{description}</Text>
       </TableDataCell>
     </TableRow>
   )

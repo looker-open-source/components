@@ -4,6 +4,7 @@ import { merge } from 'styled-system'
 import { IconNames } from '../../icons/build/IconNames'
 import {
   css,
+  RampSizes,
   SemanticColor,
   SemanticColors,
   styled,
@@ -181,7 +182,7 @@ function calcLineHeight(size: number) {
 }
 
 function sizeHelper(props: ThemedProps<ButtonProps>) {
-  const sizes: Record<ButtonSizes, [string, string, ButtonSpacingSizes]> = {
+  const sizes: Record<ButtonSizes, [RampSizes, string, ButtonSpacingSizes]> = {
     large: ['xlarge', calcLineHeight(44), 'large'],
     medium: ['medium', calcLineHeight(36), 'medium'],
     small: ['small', calcLineHeight(28), 'small'],
@@ -234,8 +235,15 @@ const InternalButton: React.SFC<ThemedProps<ButtonProps>> = ({
   color,
   iconBefore,
   iconAfter,
+  size,
+  style,
   ...props
 }) => {
+  const { lineHeight, ...sizeHelperProps } = sizeHelper({
+    size,
+    ...props,
+  })
+
   return (
     <Box
       is="button"
@@ -244,8 +252,9 @@ const InternalButton: React.SFC<ThemedProps<ButtonProps>> = ({
       py={props.p ? undefined : 'none'}
       display="inline-flex"
       alignItems="center"
-      {...sizeHelper(props)}
+      {...sizeHelperProps}
       {...props}
+      style={{ lineHeight, ...style }}
     >
       {getIcon(iconBefore)}
       {props.children}

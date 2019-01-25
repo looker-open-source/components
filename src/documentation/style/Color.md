@@ -79,10 +79,10 @@ renderSwatch = (swatchList, key) => {
   return (
     <div className="swatch-holder" key={key}>
       <div className="swatch-header" style={{ background: fillColor }}>
-        <Text size="large" weight="semiBold" style={{ color: '#fff' }}>
+        <Text fontSize="large" fontWeight="semiBold" style={{ color: '#fff' }}>
           {color}
         </Text>
-        <Text size="medium" weight="semiBold" style={{ color: '#fff' }}>
+        <Text fontSize="medium" fontWeight="semiBold" style={{ color: '#fff' }}>
           500
         </Text>
       </div>
@@ -107,14 +107,14 @@ class Swatch extends React.Component {
       <div className="swatch" style={{ background: this.props.hexValue }}>
         <Text
           className="swatch-label"
-          weight="semiBold"
+          fontWeight="semiBold"
           style={{ color: this.props.labelColor }}
         >
           {this.props.children}
         </Text>
         <Text
           className="swatch-hex"
-          weight="semiBold"
+          fontWeight="semiBold"
           style={{ color: this.props.labelColor }}
         >
           {this.props.hexValue}

@@ -7,7 +7,7 @@ We want to create a product that is accessible and considers the usability for e
 ```js noeditor
 <Card raised url="https://www.w3.org/WAI/WCAG21/quickref/">
   <CardContent>
-    <Heading size="large"> WCAG Web Accessibility Quick Guide</Heading>
+    <Heading fontSize="large"> WCAG Web Accessibility Quick Guide</Heading>
     <Heading is="h4" size="medium">
       We follow these guidelines and build them into every Lens component.
     </Heading>

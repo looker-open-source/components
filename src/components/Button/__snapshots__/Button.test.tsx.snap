@@ -20,7 +20,6 @@ exports[`Button accepts a SemanticColor object for the color property 1`] = `
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-size: 1rem;
-  line-height: 34px;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0rem;
@@ -77,6 +76,11 @@ exports[`Button accepts a SemanticColor object for the color property 1`] = `
 
 <button
   className="c0 c1"
+  style={
+    Object {
+      "lineHeight": "34px",
+    }
+  }
 >
   🥑
 </button>
@@ -102,7 +106,6 @@ exports[`Button allows autoFocus 1`] = `
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-size: 1rem;
-  line-height: 34px;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0rem;
@@ -160,6 +163,11 @@ exports[`Button allows autoFocus 1`] = `
 <button
   autoFocus={true}
   className="c0 c1"
+  style={
+    Object {
+      "lineHeight": "34px",
+    }
+  }
 >
   Autofocus?
 </button>
@@ -185,7 +193,6 @@ exports[`Button allows for ARIA attributes 1`] = `
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-size: 1rem;
-  line-height: 34px;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0rem;
@@ -243,6 +250,11 @@ exports[`Button allows for ARIA attributes 1`] = `
 <button
   aria-disabled={true}
   className="c0 c1"
+  style={
+    Object {
+      "lineHeight": "34px",
+    }
+  }
 >
   aria-disabled
 </button>
@@ -268,7 +280,6 @@ exports[`Button allows for HTML events 1`] = `
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-size: 1rem;
-  line-height: 34px;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0rem;
@@ -326,6 +337,11 @@ exports[`Button allows for HTML events 1`] = `
 <button
   className="c0 c1"
   onMouseEnter={[Function]}
+  style={
+    Object {
+      "lineHeight": "34px",
+    }
+  }
 >
   Mouseenter?
 </button>
@@ -352,7 +368,6 @@ exports[`Button allows for HTML events 2`] = `
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-size: 1rem;
-  line-height: 34px;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0rem;
@@ -410,6 +425,11 @@ exports[`Button allows for HTML events 2`] = `
 <button
   className="c0 c1"
   onClick={[Function]}
+  style={
+    Object {
+      "lineHeight": "34px",
+    }
+  }
 >
   Click?
 </button>
@@ -435,7 +455,6 @@ exports[`Button danger color 1`] = `
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-size: 1rem;
-  line-height: 34px;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0rem;
@@ -492,6 +511,11 @@ exports[`Button danger color 1`] = `
 
 <button
   className="c0 c1"
+  style={
+    Object {
+      "lineHeight": "34px",
+    }
+  }
 >
   🥑
 </button>
@@ -517,7 +541,6 @@ exports[`Button default 1`] = `
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-size: 1rem;
-  line-height: 34px;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0rem;
@@ -574,6 +597,11 @@ exports[`Button default 1`] = `
 
 <button
   className="c0 c1"
+  style={
+    Object {
+      "lineHeight": "34px",
+    }
+  }
 >
   🥑
 </button>
@@ -599,7 +627,6 @@ exports[`Button padding 1`] = `
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-size: 1rem;
-  line-height: 34px;
   padding: 0rem;
 }
 
@@ -653,6 +680,11 @@ exports[`Button padding 1`] = `
 
 <button
   className="c0 c1"
+  style={
+    Object {
+      "lineHeight": "34px",
+    }
+  }
 >
   🥑
 </button>
@@ -678,7 +710,6 @@ exports[`Button padding 2`] = `
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-size: 1rem;
-  line-height: 34px;
   padding-left: 0.25rem;
   padding-right: 0.25rem;
   padding-top: 3.75rem;
@@ -735,6 +766,11 @@ exports[`Button padding 2`] = `
 
 <button
   className="c0 c1"
+  style={
+    Object {
+      "lineHeight": "34px",
+    }
+  }
 >
   🥑
 </button>
@@ -760,7 +796,6 @@ exports[`Button primary color 1`] = `
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-size: 1rem;
-  line-height: 34px;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0rem;
@@ -817,6 +852,11 @@ exports[`Button primary color 1`] = `
 
 <button
   className="c0 c1"
+  style={
+    Object {
+      "lineHeight": "34px",
+    }
+  }
 >
   🥑
 </button>
@@ -842,7 +882,6 @@ exports[`Button should accept disabled 1`] = `
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-size: 1rem;
-  line-height: 34px;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0rem;
@@ -900,6 +939,11 @@ exports[`Button should accept disabled 1`] = `
 <button
   className="c0 c1"
   disabled={true}
+  style={
+    Object {
+      "lineHeight": "34px",
+    }
+  }
 >
   🥑
 </button>
@@ -925,7 +969,6 @@ exports[`Button type button 1`] = `
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-size: 1rem;
-  line-height: 34px;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0rem;
@@ -982,6 +1025,11 @@ exports[`Button type button 1`] = `
 
 <button
   className="c0 c1"
+  style={
+    Object {
+      "lineHeight": "34px",
+    }
+  }
   type="button"
 >
   🥑
@@ -1008,7 +1056,6 @@ exports[`Button type menu 1`] = `
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-size: 1rem;
-  line-height: 34px;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0rem;
@@ -1065,6 +1112,11 @@ exports[`Button type menu 1`] = `
 
 <button
   className="c0 c1"
+  style={
+    Object {
+      "lineHeight": "34px",
+    }
+  }
   type="menu"
 >
   🥑
@@ -1091,7 +1143,6 @@ exports[`Button type reset 1`] = `
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-size: 1rem;
-  line-height: 34px;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0rem;
@@ -1148,6 +1199,11 @@ exports[`Button type reset 1`] = `
 
 <button
   className="c0 c1"
+  style={
+    Object {
+      "lineHeight": "34px",
+    }
+  }
   type="reset"
 >
   🥑
@@ -1174,7 +1230,6 @@ exports[`Button type submit 1`] = `
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-size: 1rem;
-  line-height: 34px;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0rem;
@@ -1231,6 +1286,11 @@ exports[`Button type submit 1`] = `
 
 <button
   className="c0 c1"
+  style={
+    Object {
+      "lineHeight": "34px",
+    }
+  }
   type="submit"
 >
   🥑
@@ -1257,7 +1317,6 @@ exports[`Button validates all sizes 1`] = `
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-size: 0.75rem;
-  line-height: 22px;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   padding-top: 0rem;
@@ -1314,6 +1373,11 @@ exports[`Button validates all sizes 1`] = `
 
 <button
   className="c0 c1"
+  style={
+    Object {
+      "lineHeight": "22px",
+    }
+  }
 >
   Test
 </button>
@@ -1339,7 +1403,6 @@ exports[`Button validates all sizes 2`] = `
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-size: 0.875rem;
-  line-height: 26px;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
   padding-top: 0rem;
@@ -1396,6 +1459,11 @@ exports[`Button validates all sizes 2`] = `
 
 <button
   className="c0 c1"
+  style={
+    Object {
+      "lineHeight": "26px",
+    }
+  }
 >
   Test
 </button>
@@ -1421,7 +1489,6 @@ exports[`Button validates all sizes 3`] = `
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-size: 1rem;
-  line-height: 34px;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0rem;
@@ -1478,6 +1545,11 @@ exports[`Button validates all sizes 3`] = `
 
 <button
   className="c0 c1"
+  style={
+    Object {
+      "lineHeight": "34px",
+    }
+  }
 >
   Test
 </button>
@@ -1503,7 +1575,6 @@ exports[`Button validates all sizes 4`] = `
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-size: 1.375rem;
-  line-height: 42px;
   padding-left: 1.25rem;
   padding-right: 1.25rem;
   padding-top: 0rem;
@@ -1560,6 +1631,11 @@ exports[`Button validates all sizes 4`] = `
 
 <button
   className="c0 c1"
+  style={
+    Object {
+      "lineHeight": "42px",
+    }
+  }
 >
   Test
 </button>
@@ -1585,7 +1661,6 @@ exports[`Button variant outline 1`] = `
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-size: 1rem;
-  line-height: 34px;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0rem;
@@ -1645,6 +1720,11 @@ exports[`Button variant outline 1`] = `
 
 <button
   className="c0 c1"
+  style={
+    Object {
+      "lineHeight": "34px",
+    }
+  }
 >
   🥑
 </button>
@@ -1670,7 +1750,6 @@ exports[`Button variant transparent 1`] = `
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-size: 1rem;
-  line-height: 34px;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0rem;
@@ -1730,6 +1809,11 @@ exports[`Button variant transparent 1`] = `
 
 <button
   className="c0 c1"
+  style={
+    Object {
+      "lineHeight": "34px",
+    }
+  }
 >
   🥑
 </button>

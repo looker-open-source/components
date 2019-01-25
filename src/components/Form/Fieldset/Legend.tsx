@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { SpacingSizes } from '../../../style'
-import { fontWeights } from '../../../style/font_weights'
 import { CustomizableAttributes } from '../../../types/attributes'
 import { Box, BoxProps } from '../../Box'
 
@@ -25,5 +24,5 @@ export const CustomizableLegendAttributes: CustomizableLegendAttributes = {
   bottomPadding: 'xsmall',
   color: 'palette.charcoal800',
   fontSize: 'xxxlarge',
-  fontWeight: fontWeights.light,
+  fontWeight: 'light',
 }

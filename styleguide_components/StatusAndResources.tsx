@@ -17,7 +17,7 @@ export interface StatusProps {
 const statusIndicator: React.SFC<StatusProps> = ({ status, ...args }) => {
   return (
     <a className="support-link" href="/#!/Support%20Levels">
-      <Text size="small" {...args}>
+      <Text fontSize="small" {...args}>
         {status}
       </Text>
     </a>
@@ -170,8 +170,8 @@ export const StatusAndResources = styled<StatusAndResourcesProps>(
   border-top: solid 1px ${charcoal200};
   border-bottom: solid 1px ${charcoal200};
   display: flex;
-  padding: ${props => props.theme.space.medium}
-    ${props => props.theme.space.small};
+  padding: ${props => props.theme.space.medium};
+  ${props => props.theme.space.small};
   justify-content: space-between;
   align-items: center;
 

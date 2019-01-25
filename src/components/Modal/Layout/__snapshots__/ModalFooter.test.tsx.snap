@@ -39,7 +39,6 @@ exports[`ModalFooter with Button 1`] = `
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-size: 1rem;
-  line-height: 34px;
   margin-right: 0.5rem;
   padding-left: 1rem;
   padding-right: 1rem;
@@ -103,6 +102,11 @@ exports[`ModalFooter with Button 1`] = `
 >
   <button
     className="c1 c2"
+    style={
+      Object {
+        "lineHeight": "34px",
+      }
+    }
   >
     Cancel
   </button>
@@ -148,7 +152,6 @@ exports[`ModalFooter with ModalContext 1`] = `
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-size: 1rem;
-  line-height: 34px;
   margin-right: 0.75rem;
   padding-left: 1rem;
   padding-right: 1rem;
@@ -176,7 +179,6 @@ exports[`ModalFooter with ModalContext 1`] = `
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-size: 1rem;
-  line-height: 34px;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0rem;
@@ -287,12 +289,22 @@ exports[`ModalFooter with ModalContext 1`] = `
 >
   <button
     className="c1 c2"
+    style={
+      Object {
+        "lineHeight": "34px",
+      }
+    }
   >
     Cancel
   </button>
   <button
     className="c3 c4"
     onClick={[Function]}
+    style={
+      Object {
+        "lineHeight": "34px",
+      }
+    }
   >
     Yes, Delete "Stuff"
   </button>

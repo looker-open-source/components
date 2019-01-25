@@ -1,7 +1,6 @@
 ```js noeditor
 const StatusAndResources = require('../../../styleguide_components/StatusAndResources')
   .StatusAndResources
-
 ;<StatusAndResources
   status="experimental"
   figmaURL="https://www.figma.com/file/PUkKDfseVgoPGNJng7TJ2TIJ/Card"
@@ -21,7 +20,7 @@ At its most basic, a `Card` is a slightly styled container that organizes groups
 // Try typing some content into the Card to see how it handles content by default
 
 <Card raised>
-  <Text mode="subdued" size="xlarge">
+  <Text mode="subdued" fontSize="xlarge">
     Hello World!
   </Text>
 </Card>
@@ -36,11 +35,11 @@ Using the [`CardContent`](/#!/CardContent) component quickly gives your content 
 ```js
 <Card raised>
   <CardContent>
-    <Heading size="xxxlarge">🎉 Looker Release Notes 🎉</Heading>
-    <Heading is="h4" size="small">
+    <Heading fontSize="xxxlarge">🎉 Looker Release Notes 🎉</Heading>
+    <Heading is="h4" fontSize="small">
       Read all about our latest features
     </Heading>
-    <Text size="xsmall" mode="subdued">
+    <Text fontSize="xsmall" mode="subdued">
       Last updated 3 days ago
     </Text>
   </CardContent>
@@ -62,14 +61,19 @@ A few common patterns for `Cards` are displaying them in groups and using images
         title="Summer Nature"
       />
       <CardContent>
-        <Text size="xsmall" transform="upper" weight="semiBold" mode="subdued">
+        <Text
+          fontSize="xsmall"
+          transform="upper"
+          fontWeight="semiBold"
+          mode="subdued"
+        >
           Summer
         </Text>
-        <Heading is="h4" size="medium" weight="semiBold" truncate>
+        <Heading is="h4" fontSize="medium" fontWeight="semiBold" truncate>
           Life in The Great Outdoors
         </Heading>
         <div>
-          <Text size="small">
+          <Text fontSize="small">
             10 reasons to get off the couch and head outside this summer.
           </Text>
         </div>
@@ -83,14 +87,19 @@ A few common patterns for `Cards` are displaying them in groups and using images
         title="A Scenic Valley"
       />
       <CardContent>
-        <Text size="xsmall" transform="upper" weight="semiBold" mode="subdued">
+        <Text
+          fontSize="xsmall"
+          transform="upper"
+          fontWeight="semiBold"
+          mode="subdued"
+        >
           Explore
         </Text>
-        <Heading is="h4" size="medium" weight="semiBold" truncate>
+        <Heading is="h4" fontSize="medium" fontWeight="semiBold" truncate>
           Best Scenic Hikes
         </Heading>
         <div mt="xs">
-          <Text size="small">
+          <Text fontSize="small">
             Looking for a new place to trailblaze? Make sure it has a great
             view!
           </Text>
@@ -105,14 +114,19 @@ A few common patterns for `Cards` are displaying them in groups and using images
         title="Relaxing Views"
       />
       <CardContent>
-        <Text size="xsmall" transform="upper" weight="semiBold" mode="subdued">
+        <Text
+          fontSize="xsmall"
+          transform="upper"
+          fontWeight="semiBold"
+          mode="subdued"
+        >
           Relax
         </Text>
-        <Heading is="h4" size="large" weight="semiBold" truncate>
+        <Heading is="h4" fontSize="large" fontWeight="semiBold" truncate>
           Mindfull Wilderness
         </Heading>
         <div mt="xs">
-          <Text size="small">Find a place to find your self.</Text>
+          <Text fontSize="small">Find a place to find your self.</Text>
         </div>
       </CardContent>
     </Card>

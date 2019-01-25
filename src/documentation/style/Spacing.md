@@ -6,12 +6,14 @@
 ### Spacing Values
 
 All spacing for components align to a 4pt grid. This grid allows for flexibility and consistency when designing for various screen sizes and devices.
+
 </section>
 
 ```js noeditor
-const SpacingOptionsRender = require('../../../styleguide_components/SpacingOptionsTable').SpacingOptionsRender;
+const SpacingOptionsRender = require('../../../styleguide_components/SpacingOptionsTable')
+  .SpacingOptionsRender
 
-<SpacingOptionsRender />
+;<SpacingOptionsRender />
 ```
 
 ### Practical Spacing Example
@@ -26,13 +28,13 @@ Using Lens and the [Box Component](/#!/Box) we can quickly apply the correct spa
 
 ```js
 <form>
-  <Heading weight="light">Style</Heading>
-  <Box pt="medium" pb="large" style={{borderBottom: 'solid 1px #DEE1E5'}}>
+  <Heading fontWeight="light">Style</Heading>
+  <Box pt="medium" pb="large" style={{ borderBottom: 'solid 1px #DEE1E5' }}>
     <FieldText id="style-name" name="styleName" label="Name" />
   </Box>
 
-  <Box py="large" style={{borderBottom: 'solid 1px #DEE1E5'}}>
-    <Heading weight="light">Dashboard Page</Heading>
+  <Box py="large" style={{ borderBottom: 'solid 1px #DEE1E5' }}>
+    <Heading fontWeight="light">Dashboard Page</Heading>
 
     <Box mt="medium" mb="small">
       <FieldText id="font-family" name="fontFamily" label="Font Family" />
@@ -43,7 +45,11 @@ Using Lens and the [Box Component](/#!/Box) we can quickly apply the correct spa
     </Box>
 
     <Box>
-      <FieldText id="background-color" name="bgColor" label="Background Color" />
+      <FieldText
+        id="background-color"
+        name="bgColor"
+        label="Background Color"
+      />
     </Box>
   </Box>
 
