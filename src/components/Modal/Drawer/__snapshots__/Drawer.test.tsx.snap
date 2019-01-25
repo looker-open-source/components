@@ -20,6 +20,9 @@ exports[`Drawer Hidden 1`] = `
   display: -ms-inline-flexbox;
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  font-size: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
 }
@@ -34,10 +37,6 @@ exports[`Drawer Hidden 1`] = `
   -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  font-size: 1rem;
-  line-height: 34px;
   border-style: solid;
   border-width: 0.0625rem;
   background: #64518A;
@@ -79,6 +78,11 @@ exports[`Drawer Hidden 1`] = `
 <button
   className="c0 c1"
   onClick={[Function]}
+  style={
+    Object {
+      "lineHeight": "34px",
+    }
+  }
 >
   🥑
 </button>
@@ -226,6 +230,9 @@ Array [
   display: -ms-inline-flexbox;
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  font-size: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
 }
@@ -240,10 +247,6 @@ Array [
   -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  font-size: 1rem;
-  line-height: 34px;
   border-style: solid;
   border-width: 0.0625rem;
   background: #64518A;
@@ -285,6 +288,11 @@ Array [
 <button
     className="c0 c1"
     onClick={[Function]}
+    style={
+      Object {
+        "lineHeight": "34px",
+      }
+    }
   >
     🥑
   </button>,
@@ -432,6 +440,9 @@ Array [
   display: -ms-inline-flexbox;
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  font-size: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
 }
@@ -446,10 +457,6 @@ Array [
   -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  font-size: 1rem;
-  line-height: 34px;
   border-style: solid;
   border-width: 0.0625rem;
   background: #FFFFFF;
@@ -494,6 +501,11 @@ Array [
 <button
     className="c0 c1"
     onClick={[Function]}
+    style={
+      Object {
+        "lineHeight": "34px",
+      }
+    }
   >
     Pick Stuff
   </button>,
@@ -630,9 +642,9 @@ Array [
   display: -ms-inline-flexbox;
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  font-size: 1.375rem;
   margin-left: auto;
-  padding-top: 0rem;
-  padding-bottom: 0rem;
+  padding: 0rem;
 }
 
 .c12 {
@@ -689,7 +701,7 @@ Array [
   padding: 1.25rem;
 }
 
-.c17 {
+.c16 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -707,12 +719,15 @@ Array [
   display: -ms-inline-flexbox;
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  font-size: 1rem;
   margin-right: 0.75rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
 }
 
-.c19 {
+.c18 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -730,6 +745,9 @@ Array [
   display: -ms-inline-flexbox;
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  font-size: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
 }
@@ -770,7 +788,7 @@ Array [
   transform: translateX(0%);
 }
 
-.c18 {
+.c17 {
   font-weight: 600;
   outline: none;
   -webkit-transition: border 80ms;
@@ -780,10 +798,6 @@ Array [
   -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  font-size: 1rem;
-  line-height: 34px;
   border-style: solid;
   border-width: 0.0625rem;
   background: #64518A;
@@ -791,33 +805,33 @@ Array [
   color: #FFFFFF;
 }
 
-.c18:focus {
+.c17:focus {
   box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
 }
 
-.c18[disabled] {
+.c17[disabled] {
   cursor: default;
   -webkit-filter: grayscale(0.3);
   filter: grayscale(0.3);
   opacity: 0.25;
 }
 
-.c18[disabled]:hover,
-.c18[disabled]:active,
-.c18[disabled]:focus {
+.c17[disabled]:hover,
+.c17[disabled]:active,
+.c17[disabled]:focus {
   background-color: #64518A;
   border-color: #C1C6CC;
 }
 
-.c18:hover,
-.c18:focus,
-.c18.hover {
+.c17:hover,
+.c17:focus,
+.c17.hover {
   background: #473764;
   border-color: #473764;
 }
 
-.c18:active,
-.c18.active {
+.c17:active,
+.c17.active {
   background: #2A1B60;
   border-color: #2A1B60;
 }
@@ -832,10 +846,6 @@ Array [
   -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
-  font-size: 1.375rem;
-  line-height: 42px;
   border-style: solid;
   border-width: 0.0625rem;
   background: transparent;
@@ -872,61 +882,6 @@ Array [
 
 .c10:active,
 .c10.active {
-  background: #E8E5FF;
-  border-color: #E8E5FF;
-  color: #6C43E0;
-}
-
-.c16 {
-  font-weight: 600;
-  outline: none;
-  -webkit-transition: border 80ms;
-  transition: border 80ms;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  vertical-align: middle;
-  white-space: nowrap;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  font-size: 1rem;
-  line-height: 34px;
-  border-style: solid;
-  border-width: 0.0625rem;
-  background: transparent;
-  border-color: transparent;
-  color: #64518A;
-}
-
-.c16:focus {
-  box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
-}
-
-.c16[disabled] {
-  cursor: default;
-  -webkit-filter: grayscale(0.3);
-  filter: grayscale(0.3);
-  opacity: 0.25;
-}
-
-.c16[disabled]:hover,
-.c16[disabled]:active,
-.c16[disabled]:focus {
-  background-color: transparent;
-  border-color: transparent;
-  color: #64518A;
-}
-
-.c16:hover,
-.c16:focus,
-.c16.hover {
-  background: #F3F2FF;
-  border-color: #F3F2FF;
-  color: #6C43E0;
-}
-
-.c16:active,
-.c16.active {
   background: #E8E5FF;
   border-color: #E8E5FF;
   color: #6C43E0;
@@ -976,7 +931,6 @@ Array [
           style={
             Object {
               "lineHeight": 1,
-              "padding": 0,
             }
           }
         >
@@ -1018,12 +972,22 @@ Array [
         className="c15"
       >
         <button
-          className="c16 c17"
+          className="c10 c16"
+          style={
+            Object {
+              "lineHeight": "34px",
+            }
+          }
         >
           Cancel
         </button>
         <button
-          className="c18 c19"
+          className="c17 c18"
+          style={
+            Object {
+              "lineHeight": "34px",
+            }
+          }
         >
           Pick some stuff
         </button>

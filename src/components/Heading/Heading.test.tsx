@@ -9,14 +9,14 @@ test('A default Heading', () => {
 })
 
 test('A <h1> Heading', () => {
-  const component = createWithTheme(<Heading level="h1">🥑</Heading>)
+  const component = createWithTheme(<Heading is="h1">🥑</Heading>)
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
 })
 
 test('A <h1> Heading sized to <h2>', () => {
   const component = createWithTheme(
-    <Heading level="h1" fontSize="xlarge">
+    <Heading is="h1" fontSize="xlarge">
       🥑
     </Heading>
   )

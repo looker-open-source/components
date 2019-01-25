@@ -30,7 +30,8 @@ const Internal: React.SFC<ModalHeaderProps> = ({
         alignSelf="end"
         onClick={close}
         size="large"
-        style={{ padding: 0, lineHeight: 1 }}
+        p="none"
+        style={{ lineHeight: 1 }}
         variant="transparent"
       >
         <Icon name="Close" />

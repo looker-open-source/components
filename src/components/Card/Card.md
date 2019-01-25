@@ -1,7 +1,6 @@
 ```js noeditor
 const StatusAndResources = require('../../../styleguide_components/StatusAndResources')
   .StatusAndResources
-
 ;<StatusAndResources
   status="experimental"
   figmaURL="https://www.figma.com/file/PUkKDfseVgoPGNJng7TJ2TIJ/Card"
@@ -37,7 +36,7 @@ Using the [`CardContent`](/#!/CardContent) component quickly gives your content 
 <Card raised>
   <CardContent>
     <Heading fontSize="xxxlarge">🎉 Looker Release Notes 🎉</Heading>
-    <Heading level="h4" fontSize="small">
+    <Heading is="h4" fontSize="small">
       Read all about our latest features
     </Heading>
     <Text fontSize="xsmall" mode="subdued">
@@ -70,7 +69,7 @@ A few common patterns for `Cards` are displaying them in groups and using images
         >
           Summer
         </Text>
-        <Heading level="h4" fontSize="medium" fontWeight="semiBold" truncate>
+        <Heading is="h4" fontSize="medium" fontWeight="semiBold" truncate>
           Life in The Great Outdoors
         </Heading>
         <div>
@@ -96,7 +95,7 @@ A few common patterns for `Cards` are displaying them in groups and using images
         >
           Explore
         </Text>
-        <Heading level="h4" fontSize="medium" fontWeight="semiBold" truncate>
+        <Heading is="h4" fontSize="medium" fontWeight="semiBold" truncate>
           Best Scenic Hikes
         </Heading>
         <div mt="xs">
@@ -123,7 +122,7 @@ A few common patterns for `Cards` are displaying them in groups and using images
         >
           Relax
         </Text>
-        <Heading level="h4" fontSize="large" fontWeight="semiBold" truncate>
+        <Heading is="h4" fontSize="large" fontWeight="semiBold" truncate>
           Mindfull Wilderness
         </Heading>
         <div mt="xs">

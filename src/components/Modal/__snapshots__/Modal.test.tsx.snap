@@ -94,6 +94,9 @@ Array [
   display: -ms-inline-flexbox;
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  font-size: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
 }
@@ -108,10 +111,6 @@ Array [
   -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  font-size: 1rem;
-  line-height: 34px;
   border-style: solid;
   border-width: 0.0625rem;
   background: #64518A;
@@ -153,6 +152,11 @@ Array [
 <button
     className="c0 c1"
     onClick={[Function]}
+    style={
+      Object {
+        "lineHeight": "34px",
+      }
+    }
   >
     Click Here
   </button>,
@@ -251,6 +255,9 @@ exports[`Modal Inactive w/ wrapped element 1`] = `
   display: -ms-inline-flexbox;
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  font-size: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
 }
@@ -265,10 +272,6 @@ exports[`Modal Inactive w/ wrapped element 1`] = `
   -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  font-size: 1rem;
-  line-height: 34px;
   border-style: solid;
   border-width: 0.0625rem;
   background: #64518A;
@@ -310,6 +313,11 @@ exports[`Modal Inactive w/ wrapped element 1`] = `
 <button
   className="c0 c1"
   onClick={[Function]}
+  style={
+    Object {
+      "lineHeight": "34px",
+    }
+  }
 >
   Click Here
 </button>

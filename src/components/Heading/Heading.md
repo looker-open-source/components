@@ -23,18 +23,18 @@ The `<Heading />` component is used to render a HTML `<h1>` - `<h6>` element, by
 
 ### Heading Levels
 
-To use a different HTML heading element, the `<Heading />` component accepts a `level` attribute that corresponds to the `<h1>` - `<h6>` elements. The font-size of each heading element maps to the Lens [type ramp](/#!/Typography)
+To use a different HTML heading element, the `<Heading />` component accepts a `is` attribute that corresponds to the `<h1>` - `<h6>` elements. The font-size of each heading element maps to the Lens [type ramp](/#!/Typography)
 
 ```js
 // Heading components using the level attribute (font-size / line-height)
 
 <div>
-  <Heading level="h1">I’m a h1 element (25px/40px)</Heading>
-  <Heading level="h2">I’m a h2 element (22px/32px)</Heading>
-  <Heading level="h3">I’m a h3 element (18px/28px)</Heading>
-  <Heading level="h4">I’m a h4 element (16/24px)</Heading>
-  <Heading level="h5">I’m a h5 element (14px/20px)</Heading>
-  <Heading level="h6">I’m a h6 element (12px/16px)</Heading>
+  <Heading is="h1">I’m a h1 element (25px/40px)</Heading>
+  <Heading is="h2">I’m a h2 element (22px/32px)</Heading>
+  <Heading is="h3">I’m a h3 element (18px/28px)</Heading>
+  <Heading is="h4">I’m a h4 element (16/24px)</Heading>
+  <Heading is="h5">I’m a h5 element (14px/20px)</Heading>
+  <Heading is="h6">I’m a h6 element (12px/16px)</Heading>
 </div>
 ```
 
@@ -42,10 +42,10 @@ To use a different HTML heading element, the `<Heading />` component accepts a `
 
 ### Heading Sizes
 
-When creating accessible pages it is important that headings create a [logical document outline](https://bitsofco.de/using-heading-elements-to-create-a-document-outline/), but sometimes the font-size of the heading element doesn't match to the needs of the design or layout. Composing the `level` and the `size` attributes lets you choose the semantically correct level heading and the desired size. The available size values come from the [type ramp](/#!/Typography).
+When creating accessible pages it is important that headings create a [logical document outline](https://bitsofco.de/using-heading-elements-to-create-a-document-outline/), but sometimes the font-size of the heading element doesn't match to the needs of the design or layout. Composing the `is` and the `fontSize` attributes lets you choose the semantically correct level heading and the desired size. The available size values come from the [type ramp](/#!/Typography).
 
 ```js
-// Heading components using the level and size attribute (font-size / line-height)
+// Heading components using the is and fontSize attribute (font-size / line-height)
 
 <div>
   <Heading fontSize="xxxxlarge">Viral meditation live-edge</Heading>

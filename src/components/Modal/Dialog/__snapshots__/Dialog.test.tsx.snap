@@ -21,6 +21,9 @@ Array [
   display: -ms-inline-flexbox;
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  font-size: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
 }
@@ -35,10 +38,6 @@ Array [
   -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  font-size: 1rem;
-  line-height: 34px;
   border-style: solid;
   border-width: 0.0625rem;
   background: #FFFFFF;
@@ -83,6 +82,11 @@ Array [
 <button
     className="c0 c1"
     onClick={[Function]}
+    style={
+      Object {
+        "lineHeight": "34px",
+      }
+    }
   >
     Delete Stuff
   </button>,
@@ -217,9 +221,9 @@ Array [
   display: -ms-inline-flexbox;
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  font-size: 1.375rem;
   margin-left: auto;
-  padding-top: 0rem;
-  padding-bottom: 0rem;
+  padding: 0rem;
 }
 
 .c12 {
@@ -261,7 +265,7 @@ Array [
   padding: 1.25rem;
 }
 
-.c15 {
+.c14 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -279,12 +283,15 @@ Array [
   display: -ms-inline-flexbox;
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  font-size: 1rem;
   margin-right: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
 }
 
-.c17 {
+.c16 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -302,6 +309,9 @@ Array [
   display: -ms-inline-flexbox;
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  font-size: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
 }
@@ -316,10 +326,6 @@ Array [
   -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
-  font-size: 1.375rem;
-  line-height: 42px;
   border-style: solid;
   border-width: 0.0625rem;
   background: transparent;
@@ -361,7 +367,7 @@ Array [
   color: #6C43E0;
 }
 
-.c14 {
+.c15 {
   font-weight: 600;
   outline: none;
   -webkit-transition: border 80ms;
@@ -371,65 +377,6 @@ Array [
   -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  font-size: 1rem;
-  line-height: 34px;
-  border-style: solid;
-  border-width: 0.0625rem;
-  background: transparent;
-  border-color: transparent;
-  color: #64518A;
-}
-
-.c14:focus {
-  box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
-}
-
-.c14[disabled] {
-  cursor: default;
-  -webkit-filter: grayscale(0.3);
-  filter: grayscale(0.3);
-  opacity: 0.25;
-}
-
-.c14[disabled]:hover,
-.c14[disabled]:active,
-.c14[disabled]:focus {
-  background-color: transparent;
-  border-color: transparent;
-  color: #64518A;
-}
-
-.c14:hover,
-.c14:focus,
-.c14.hover {
-  background: #F3F2FF;
-  border-color: #F3F2FF;
-  color: #6C43E0;
-}
-
-.c14:active,
-.c14.active {
-  background: #E8E5FF;
-  border-color: #E8E5FF;
-  color: #6C43E0;
-}
-
-.c16 {
-  font-weight: 600;
-  outline: none;
-  -webkit-transition: border 80ms;
-  transition: border 80ms;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  vertical-align: middle;
-  white-space: nowrap;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  font-size: 1rem;
-  line-height: 34px;
   border-style: solid;
   border-width: 0.0625rem;
   background: #CC1F36;
@@ -437,33 +384,33 @@ Array [
   color: #FFFFFF;
 }
 
-.c16:focus {
+.c15:focus {
   box-shadow: 0 0 0 0.15rem rgba(204,31,54,0.25);
 }
 
-.c16[disabled] {
+.c15[disabled] {
   cursor: default;
   -webkit-filter: grayscale(0.3);
   filter: grayscale(0.3);
   opacity: 0.25;
 }
 
-.c16[disabled]:hover,
-.c16[disabled]:active,
-.c16[disabled]:focus {
+.c15[disabled]:hover,
+.c15[disabled]:active,
+.c15[disabled]:focus {
   background-color: #CC1F36;
   border-color: #C1C6CC;
 }
 
-.c16:hover,
-.c16:focus,
-.c16.hover {
+.c15:hover,
+.c15:focus,
+.c15.hover {
   background: #B2121F;
   border-color: #B2121F;
 }
 
-.c16:active,
-.c16.active {
+.c15:active,
+.c15.active {
   background: #990F14;
   border-color: #990F14;
 }
@@ -539,7 +486,6 @@ Array [
           style={
             Object {
               "lineHeight": 1,
-              "padding": 0,
             }
           }
         >
@@ -564,12 +510,22 @@ Array [
         className="c13"
       >
         <button
-          className="c14 c15"
+          className="c10 c14"
+          style={
+            Object {
+              "lineHeight": "34px",
+            }
+          }
         >
           Cancel
         </button>
         <button
-          className="c16 c17"
+          className="c15 c16"
+          style={
+            Object {
+              "lineHeight": "34px",
+            }
+          }
         >
           Yes, Delete "Stuff"
         </button>
@@ -599,6 +555,9 @@ exports[`Dialog Hidden 1`] = `
   display: -ms-inline-flexbox;
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  font-size: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
 }
@@ -613,10 +572,6 @@ exports[`Dialog Hidden 1`] = `
   -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  font-size: 1rem;
-  line-height: 34px;
   border-style: solid;
   border-width: 0.0625rem;
   background: #64518A;
@@ -658,6 +613,11 @@ exports[`Dialog Hidden 1`] = `
 <button
   className="c0 c1"
   onClick={[Function]}
+  style={
+    Object {
+      "lineHeight": "34px",
+    }
+  }
 >
   🥑
 </button>
@@ -805,6 +765,9 @@ Array [
   display: -ms-inline-flexbox;
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  font-size: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
 }
@@ -819,10 +782,6 @@ Array [
   -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  font-size: 1rem;
-  line-height: 34px;
   border-style: solid;
   border-width: 0.0625rem;
   background: #64518A;
@@ -864,6 +823,11 @@ Array [
 <button
     className="c0 c1"
     onClick={[Function]}
+    style={
+      Object {
+        "lineHeight": "34px",
+      }
+    }
   >
     🥑
   </button>,

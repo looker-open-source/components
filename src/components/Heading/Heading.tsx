@@ -8,10 +8,8 @@ export type HeadingTextTransforms = 'caps' | 'lower' | 'none' | 'upper'
 
 export interface HeadingProps
   extends BoxPropsWithout<HTMLHeadingElement, 'color' | 'truncate'> {
-  /** Heading level from h1-h6
-   *
-   */
-  level?: HeadingLevels
+  /** Heading level from h1-h6 */
+  is?: HeadingLevels
   /** Text tranform  */
   transform?: HeadingTextTransforms
   /** Truncate heading text */
@@ -23,17 +21,18 @@ export interface HeadingProps
 const InternalHeading: React.SFC<ThemedProps<HeadingProps>> = ({
   fontSize,
   fontWeight,
-  level,
   lineHeight,
   transform,
   truncate,
+  is,
+  theme,
   ...props
 }) => {
   return (
     <Box
-      is={level || 'h2'}
-      fontSize={fontSize || headingLevelSize(level)}
-      lineHeight={lineHeight || headingLineHeight(level, fontSize)}
+      is={is || 'h2'}
+      fontSize={fontSize || headingLevelSize(is)}
+      lineHeight={lineHeight || headingLineHeight(is, fontSize)}
       fontWeight={fontWeight || 'normal'}
       {...props}
     >
@@ -72,8 +71,8 @@ export const Heading = styled(InternalHeading)`
   ${props => shouldTruncate(props.truncate || false)};
 `
 
-function headingLevelSize(level?: HeadingLevels) {
-  switch (level) {
+function headingLevelSize(is?: HeadingLevels) {
+  switch (is) {
     case 'h1':
       return 'xxlarge'
     case 'h2':
@@ -91,10 +90,10 @@ function headingLevelSize(level?: HeadingLevels) {
   }
 }
 
-function headingLineHeight(level?: HeadingLevels, size?: RampSizes) {
+function headingLineHeight(is?: HeadingLevels, size?: RampSizes) {
   if (size) return size
 
-  switch (level) {
+  switch (is) {
     case 'h1':
       return 'xxlarge'
     case 'h2':

@@ -8,7 +8,7 @@ We want to create a product that is accessible and considers the usability for e
 <Card raised url="https://www.w3.org/WAI/WCAG21/quickref/">
   <CardContent>
     <Heading fontSize="large"> WCAG Web Accessibility Quick Guide</Heading>
-    <Heading level="h4" fontSize="medium">
+    <Heading is="h4" size="medium">
       We follow these guidelines and build them into every Lens component.
     </Heading>
     <Link href="https://www.w3.org/WAI/WCAG21/quickref/" external>

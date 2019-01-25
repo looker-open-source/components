@@ -38,7 +38,10 @@ exports[`ModalFooter with Button 1`] = `
   display: -ms-inline-flexbox;
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  font-size: 1rem;
   margin-right: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
 }
@@ -53,10 +56,6 @@ exports[`ModalFooter with Button 1`] = `
   -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  font-size: 1rem;
-  line-height: 34px;
   border-style: solid;
   border-width: 0.0625rem;
   background: transparent;
@@ -103,6 +102,11 @@ exports[`ModalFooter with Button 1`] = `
 >
   <button
     className="c1 c2"
+    style={
+      Object {
+        "lineHeight": "34px",
+      }
+    }
   >
     Cancel
   </button>
@@ -147,7 +151,10 @@ exports[`ModalFooter with ModalContext 1`] = `
   display: -ms-inline-flexbox;
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  font-size: 1rem;
   margin-right: 0.75rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
 }
@@ -171,6 +178,9 @@ exports[`ModalFooter with ModalContext 1`] = `
   display: -ms-inline-flexbox;
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  font-size: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
 }
@@ -185,10 +195,6 @@ exports[`ModalFooter with ModalContext 1`] = `
   -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  font-size: 1rem;
-  line-height: 34px;
   border-style: solid;
   border-width: 0.0625rem;
   background: transparent;
@@ -240,10 +246,6 @@ exports[`ModalFooter with ModalContext 1`] = `
   -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  font-size: 1rem;
-  line-height: 34px;
   border-style: solid;
   border-width: 0.0625rem;
   background: #CC1F36;
@@ -287,12 +289,22 @@ exports[`ModalFooter with ModalContext 1`] = `
 >
   <button
     className="c1 c2"
+    style={
+      Object {
+        "lineHeight": "34px",
+      }
+    }
   >
     Cancel
   </button>
   <button
     className="c3 c4"
     onClick={[Function]}
+    style={
+      Object {
+        "lineHeight": "34px",
+      }
+    }
   >
     Yes, Delete "Stuff"
   </button>
