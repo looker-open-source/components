@@ -1,0 +1,601 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`A FieldToggleSwitch 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row-reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  margin-bottom: 0.5rem;
+}
+
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #262D33;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  text-align: left;
+  width: 20%;
+}
+
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-bottom: 0.5rem;
+}
+
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+.c5 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #262D33;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  height: 1.25rem;
+  position: relative;
+  margin-right: 0.5rem;
+  width: 2.1875rem;
+}
+
+.c6 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  height: 0px;
+  opacity: 0;
+  width: 0px;
+}
+
+.c8 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border-radius: 1.25rem;
+  bottom: 0;
+  background-color: #C1C6CC;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.c8:hover {
+  box-shadow: 0 0 .01rem 0.01rem rgba(100,81,138,0.5);
+}
+
+.c10 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border-radius: 50%;
+  bottom: 0.125rem;
+  background-color: #FFFFFF;
+  height: 1rem;
+  left: 0.125rem;
+  position: absolute;
+  width: 1rem;
+}
+
+.c9 {
+  -webkit-transition: 300ms;
+  transition: 300ms;
+}
+
+.c7 {
+  -webkit-transition: 300ms;
+  transition: 300ms;
+}
+
+.c4:focus-within {
+  border-radius: 1.25rem;
+  box-shadow: 0 0 0 0.2rem rgba(100,81,138,0.4);
+}
+
+<div
+  className="c0"
+>
+  <label
+    className="c1"
+    htmlFor="thumbs-up"
+    id="b7ecd36f-eb6a-47b8-bfec-82c0c2c3e50a"
+  >
+    👍
+  </label>
+  <div
+    className="c2"
+  >
+    <div
+      className="c3"
+    >
+      <label
+        className="c4 c5"
+        cursor="pointer"
+        id="thumbs-up"
+        name="thumbsUp"
+      >
+        <input
+          aria-labelledby="b7ecd36f-eb6a-47b8-bfec-82c0c2c3e50a"
+          className="c6"
+          id="thumbsUp"
+          name="thumbsUp"
+          role="switch"
+          type="checkbox"
+        />
+        <div
+          className="c7 c8"
+        >
+          <div
+            className="c9 c10"
+          />
+        </div>
+      </label>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`A FieldToggleSwitch turned on 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row-reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  margin-bottom: 0.5rem;
+}
+
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #262D33;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  text-align: left;
+  width: 20%;
+}
+
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-bottom: 0.5rem;
+}
+
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+.c5 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #262D33;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  height: 1.25rem;
+  position: relative;
+  margin-right: 0.5rem;
+  width: 2.1875rem;
+}
+
+.c6 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  height: 0px;
+  opacity: 0;
+  width: 0px;
+}
+
+.c10 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border-radius: 50%;
+  bottom: 0.125rem;
+  background-color: #FFFFFF;
+  height: 1rem;
+  left: 0.125rem;
+  position: absolute;
+  width: 1rem;
+}
+
+.c8 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border-radius: 1.25rem;
+  bottom: 0;
+  background-color: #9785F2;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.c8:hover {
+  box-shadow: 0 0 .01rem 0.01rem rgba(100,81,138,0.5);
+}
+
+.c9 {
+  -webkit-transform: translateX(0.9375rem);
+  -ms-transform: translateX(0.9375rem);
+  transform: translateX(0.9375rem);
+  -webkit-transition: 300ms;
+  transition: 300ms;
+}
+
+.c7 {
+  -webkit-transition: 300ms;
+  transition: 300ms;
+}
+
+.c4:focus-within {
+  border-radius: 1.25rem;
+  box-shadow: 0 0 0 0.2rem rgba(100,81,138,0.4);
+}
+
+<div
+  className="c0"
+>
+  <label
+    className="c1"
+    htmlFor="thumbs-up"
+    id="538327c6-3fff-43eb-85ea-9dfd8d5587ec"
+  >
+    👍
+  </label>
+  <div
+    className="c2"
+  >
+    <div
+      className="c3"
+    >
+      <label
+        className="c4 c5"
+        cursor="pointer"
+        id="thumbs-up"
+        name="thumbsUp"
+      >
+        <input
+          aria-checked={true}
+          aria-labelledby="538327c6-3fff-43eb-85ea-9dfd8d5587ec"
+          checked={true}
+          className="c6"
+          id="thumbsUp"
+          name="thumbsUp"
+          role="switch"
+          type="checkbox"
+        />
+        <div
+          className="c7 c8"
+        >
+          <div
+            className="c9 c10"
+          />
+        </div>
+      </label>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`A FieldToggleSwitch with label aligned left 1`] = `
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-bottom: 0.5rem;
+}
+
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+.c5 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #262D33;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  height: 1.25rem;
+  position: relative;
+  margin-right: 0.5rem;
+  width: 2.1875rem;
+}
+
+.c6 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  height: 0px;
+  opacity: 0;
+  width: 0px;
+}
+
+.c8 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border-radius: 1.25rem;
+  bottom: 0;
+  background-color: #C1C6CC;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.c8:hover {
+  box-shadow: 0 0 .01rem 0.01rem rgba(100,81,138,0.5);
+}
+
+.c10 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border-radius: 50%;
+  bottom: 0.125rem;
+  background-color: #FFFFFF;
+  height: 1rem;
+  left: 0.125rem;
+  position: absolute;
+  width: 1rem;
+}
+
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  margin-bottom: 0.5rem;
+}
+
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #262D33;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-right: 0.5rem;
+  text-align: right;
+  width: 20%;
+}
+
+.c9 {
+  -webkit-transition: 300ms;
+  transition: 300ms;
+}
+
+.c7 {
+  -webkit-transition: 300ms;
+  transition: 300ms;
+}
+
+.c4:focus-within {
+  border-radius: 1.25rem;
+  box-shadow: 0 0 0 0.2rem rgba(100,81,138,0.4);
+}
+
+<div
+  className="c0"
+>
+  <label
+    className="c1"
+    htmlFor="thumbs-up"
+    id="3c31c3cf-6247-4fdf-b96b-8064dd528967"
+  >
+    👍
+  </label>
+  <div
+    className="c2"
+  >
+    <div
+      className="c3"
+    >
+      <label
+        className="c4 c5"
+        cursor="pointer"
+        id="thumbs-up"
+        name="thumbsUp"
+      >
+        <input
+          aria-labelledby="3c31c3cf-6247-4fdf-b96b-8064dd528967"
+          className="c6"
+          id="thumbsUp"
+          name="thumbsUp"
+          role="switch"
+          type="checkbox"
+        />
+        <div
+          className="c7 c8"
+        >
+          <div
+            className="c9 c10"
+          />
+        </div>
+      </label>
+    </div>
+  </div>
+</div>
+`;

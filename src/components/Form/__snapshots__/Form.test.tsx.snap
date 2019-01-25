@@ -70,6 +70,7 @@ exports[`Form with one child 1`] = `
   >
     <label
       className="c2"
+      htmlFor="14f51bb1-63df-45e2-a53e-d3850a0ddb00"
     >
       label
     </label>
@@ -81,6 +82,7 @@ exports[`Form with one child 1`] = `
       >
         <input
           className="c3"
+          id="14f51bb1-63df-45e2-a53e-d3850a0ddb00"
           name="name"
           type="text"
         />
@@ -268,6 +270,7 @@ exports[`Form with one invalid child and a submit button 1`] = `
   >
     <label
       className="c2"
+      htmlFor="a5e93729-d12f-4d9c-94ba-c25a1638d9f4"
     >
       label1
     </label>
@@ -279,6 +282,7 @@ exports[`Form with one invalid child and a submit button 1`] = `
       >
         <input
           className="c3"
+          id="a5e93729-d12f-4d9c-94ba-c25a1638d9f4"
           name="name1"
           type="text"
         />
@@ -290,6 +294,7 @@ exports[`Form with one invalid child and a submit button 1`] = `
   >
     <label
       className="c2"
+      htmlFor="0a8a18e2-c3fe-475c-8598-de3e1b291a46"
     >
       label2
     </label>
@@ -301,6 +306,7 @@ exports[`Form with one invalid child and a submit button 1`] = `
       >
         <input
           className="c4"
+          id="0a8a18e2-c3fe-475c-8598-de3e1b291a46"
           name="name2"
           type="text"
         />
@@ -405,6 +411,7 @@ exports[`Form with two invalid children 1`] = `
   >
     <label
       className="c2"
+      htmlFor="2b9235a1-c0fc-4af9-9f23-be65af03472e"
     >
       label1
     </label>
@@ -416,6 +423,7 @@ exports[`Form with two invalid children 1`] = `
       >
         <input
           className="c3"
+          id="2b9235a1-c0fc-4af9-9f23-be65af03472e"
           name="name1"
           type="text"
         />
@@ -432,6 +440,7 @@ exports[`Form with two invalid children 1`] = `
   >
     <label
       className="c2"
+      htmlFor="a0b1536f-986d-43aa-9931-3f5f13515ca9"
     >
       label2
     </label>
@@ -443,6 +452,7 @@ exports[`Form with two invalid children 1`] = `
       >
         <input
           className="c3"
+          id="a0b1536f-986d-43aa-9931-3f5f13515ca9"
           name="name2"
           type="text"
         />
