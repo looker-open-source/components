@@ -99,7 +99,6 @@ const InternalToggleSwitch: React.SFC<ToggleSwitchProps> = ({
       {...props}
     >
       <Checkbox
-        id={props.name}
         name={props.name}
         value={props.value}
         checked={on}
