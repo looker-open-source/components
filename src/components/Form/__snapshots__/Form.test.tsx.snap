@@ -204,6 +204,10 @@ exports[`Form with one invalid child and a submit button 1`] = `
   display: -ms-inline-flexbox;
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  font-size: 1rem;
+  line-height: 34px;
+  padding-left: 1rem;
+  padding-right: 1rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
 }
@@ -218,10 +222,6 @@ exports[`Form with one invalid child and a submit button 1`] = `
   -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  font-size: 1rem;
-  line-height: 34px;
   border-style: solid;
   border-width: 0.0625rem;
   background: #64518A;

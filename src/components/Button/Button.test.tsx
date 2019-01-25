@@ -61,6 +61,22 @@ test('Button type menu', () => {
   )
 })
 
+test('Button padding', () => {
+  assertSnapshot(
+    <Button theme={theme} p="none">
+      🥑
+    </Button>
+  )
+})
+
+test('Button padding', () => {
+  assertSnapshot(
+    <Button theme={theme} px="xxsmall" py="xxxlarge">
+      🥑
+    </Button>
+  )
+})
+
 test('Button primary color', () => {
   assertSnapshot(
     <Button theme={theme} color="primary">
