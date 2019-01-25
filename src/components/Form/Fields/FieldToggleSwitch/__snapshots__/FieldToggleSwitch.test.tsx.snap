@@ -182,7 +182,6 @@ exports[`A FieldToggleSwitch 1`] = `
         <input
           aria-labelledby="thumb-toggle"
           className="c6"
-          id="thumbsUp"
           name="thumbsUp"
           role="switch"
           type="checkbox"
@@ -387,7 +386,6 @@ exports[`A FieldToggleSwitch turned on 1`] = `
           aria-labelledby="thumb-toggle"
           checked={true}
           className="c6"
-          id="thumbsUp"
           name="thumbsUp"
           role="switch"
           type="checkbox"
@@ -582,7 +580,6 @@ exports[`A FieldToggleSwitch with label aligned left 1`] = `
         <input
           aria-labelledby="thumb-toggle"
           className="c6"
-          id="thumbsUp"
           name="thumbsUp"
           role="switch"
           type="checkbox"
