@@ -24,6 +24,10 @@ export interface FieldProps {
    */
   alignValidationMessage?: FormControlDirections
   /**
+   * Id for label to match aria-labelledby to
+   */
+  ariaId?: string
+  /**
    * Id of the input element to match a label to.
    */
   id?: string
@@ -120,6 +124,7 @@ export const Field = (props: FieldProps & { children?: React.ReactNode }) => {
     <FormControl alignLabel={props.alignLabel} mb="xsmall">
       <Label
         htmlFor={props.id}
+        id={props.ariaId}
         {...handleHorizontalAlignment(props.alignLabel, props.labelWidth)}
         ml={props.alignLabel === 'right' ? 'xsmall' : undefined}
         {...labelFontWeight}

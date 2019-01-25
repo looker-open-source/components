@@ -15,17 +15,24 @@ const InternalFieldToggleSwitch = (props: FieldToggleSwitchProps) => {
     labelFontWeight,
     validationMessage,
     id = uuid(),
+    ariaId = uuid(),
     ...inputToggleSwitchProps
   } = props
   return (
     <Field
+      ariaId={ariaId}
       id={id}
+      alignLabel={alignLabel ? alignLabel : 'right'}
       {...props}
       alignValidationMessage={
         alignValidationMessage ? alignValidationMessage : 'bottom'
       }
     >
-      <ToggleSwitch id={id} {...inputToggleSwitchProps} />
+      <ToggleSwitch
+        ariaLabelledBy={ariaId}
+        id={id}
+        {...inputToggleSwitchProps}
+      />
     </Field>
   )
 }

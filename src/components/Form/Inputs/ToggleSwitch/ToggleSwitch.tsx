@@ -110,6 +110,7 @@ const InternalToggleSwitch: React.SFC<ToggleSwitchProps> = ({
         height="0px"
         role="switch"
         aria-labelledby={ariaLabelledBy}
+        aria-checked={on}
       />
       <KnobContainer size={size} on={on} disabled={disabled} />
       {disabled && (
