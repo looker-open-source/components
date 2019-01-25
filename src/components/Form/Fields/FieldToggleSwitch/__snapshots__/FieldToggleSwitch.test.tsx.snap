@@ -163,7 +163,7 @@ exports[`A FieldToggleSwitch 1`] = `
   <label
     className="c1"
     htmlFor="thumbs-up"
-    id="b7ecd36f-eb6a-47b8-bfec-82c0c2c3e50a"
+    id="thumb-toggle"
   >
     👍
   </label>
@@ -180,7 +180,7 @@ exports[`A FieldToggleSwitch 1`] = `
         name="thumbsUp"
       >
         <input
-          aria-labelledby="b7ecd36f-eb6a-47b8-bfec-82c0c2c3e50a"
+          aria-labelledby="thumb-toggle"
           className="c6"
           id="thumbsUp"
           name="thumbsUp"
@@ -366,7 +366,7 @@ exports[`A FieldToggleSwitch turned on 1`] = `
   <label
     className="c1"
     htmlFor="thumbs-up"
-    id="538327c6-3fff-43eb-85ea-9dfd8d5587ec"
+    id="thumb-toggle"
   >
     👍
   </label>
@@ -384,7 +384,7 @@ exports[`A FieldToggleSwitch turned on 1`] = `
       >
         <input
           aria-checked={true}
-          aria-labelledby="538327c6-3fff-43eb-85ea-9dfd8d5587ec"
+          aria-labelledby="thumb-toggle"
           checked={true}
           className="c6"
           id="thumbsUp"
@@ -563,7 +563,7 @@ exports[`A FieldToggleSwitch with label aligned left 1`] = `
   <label
     className="c1"
     htmlFor="thumbs-up"
-    id="3c31c3cf-6247-4fdf-b96b-8064dd528967"
+    id="thumb-toggle"
   >
     👍
   </label>
@@ -580,7 +580,7 @@ exports[`A FieldToggleSwitch with label aligned left 1`] = `
         name="thumbsUp"
       >
         <input
-          aria-labelledby="3c31c3cf-6247-4fdf-b96b-8064dd528967"
+          aria-labelledby="thumb-toggle"
           className="c6"
           id="thumbsUp"
           name="thumbsUp"
