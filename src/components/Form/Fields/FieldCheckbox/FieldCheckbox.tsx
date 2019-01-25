@@ -1,4 +1,5 @@
 import * as React from 'react'
+import uuid from 'uuid/v4'
 import { withForm } from '../../Form'
 import { Checkbox, CheckboxProps } from '../../Inputs/Checkbox/Checkbox'
 import { Field, FieldProps } from '../Field'
@@ -13,17 +14,20 @@ const InternalFieldCheckbox = (props: FieldCheckboxProps) => {
     labelWidth,
     labelFontWeight,
     validationMessage,
+    id = uuid(),
     ...checkboxProps
   } = props
   return (
     <Field
       {...props}
+      id={id}
       alignLabel={alignLabel ? alignLabel : 'left'}
       alignValidationMessage={
         alignValidationMessage ? alignValidationMessage : 'right'
       }
     >
       <Checkbox
+        id={id}
         {...checkboxProps}
         validationType={validationMessage && validationMessage.type}
       />

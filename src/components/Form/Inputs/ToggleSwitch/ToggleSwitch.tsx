@@ -1,6 +1,6 @@
 import { rem, rgba } from 'polished'
 import * as React from 'react'
-import uuid from 'uuid/v4'
+// import uuid from 'uuid/v4'
 import { css, palette, styled } from '../../../../style'
 import { Omit, ThemedProps } from '../../../../types'
 import { CustomizableAttributes } from '../../../../types/attributes'
@@ -19,8 +19,7 @@ export interface ToggleSwitchProps
   extends BoxProps<HTMLLabelElement>,
     Omit<KnobProps, 'size'> {
   size?: number
-  label: string
-  id?: string
+  ariaLabelledBy?: string
 }
 
 const knobTransform = (props: ThemedProps<KnobProps>) => {
@@ -85,9 +84,8 @@ const KnobContainer = styled(KnobContainerFactory)`
 `
 
 const InternalToggleSwitch: React.SFC<ToggleSwitchProps> = ({
-  id = uuid(),
+  ariaLabelledBy,
   size = 20,
-  label,
   disabled,
   on,
   ...props
@@ -101,9 +99,6 @@ const InternalToggleSwitch: React.SFC<ToggleSwitchProps> = ({
       cursor={!disabled ? 'pointer' : undefined}
       {...props}
     >
-      <Box display="none" id={id}>
-        {label}
-      </Box>
       <Checkbox
         id={props.name}
         name={props.name}
@@ -114,7 +109,7 @@ const InternalToggleSwitch: React.SFC<ToggleSwitchProps> = ({
         width="0px"
         height="0px"
         role="switch"
-        aria-labelledby={id}
+        aria-labelledby={ariaLabelledBy}
       />
       <KnobContainer size={size} on={on} disabled={disabled} />
       {disabled && (

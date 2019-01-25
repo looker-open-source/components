@@ -1,4 +1,5 @@
 import * as React from 'react'
+import uuid from 'uuid/v4'
 import { withForm } from '../../Form'
 import { Radio, RadioProps } from '../../Inputs'
 import { Field, FieldProps } from '../Field'
@@ -12,10 +13,12 @@ const InternalFieldRadio = (props: FieldRadioProps) => {
     label,
     labelFontWeight,
     validationMessage,
+    id = uuid(),
     ...radioProps
   } = props
   return (
     <Field
+      id={id}
       {...props}
       alignLabel={alignLabel ? alignLabel : 'right'}
       alignValidationMessage={
@@ -23,6 +26,7 @@ const InternalFieldRadio = (props: FieldRadioProps) => {
       }
     >
       <Radio
+        id={id}
         {...radioProps}
         validationType={validationMessage && validationMessage.type}
       />
