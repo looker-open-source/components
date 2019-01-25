@@ -10,7 +10,7 @@ import { Form } from './Form'
 test('Form with one child', () => {
   const component = createWithTheme(
     <Form>
-      <FieldText label="label" name="name" />
+      <FieldText label="label" id="text-field" name="name" />
     </Form>
   )
   const tree = component.toJSON()
@@ -25,8 +25,8 @@ test('Form with two invalid children', () => {
         name2: { type: 'error', message: 'e2' },
       }}
     >
-      <FieldText label="label1" name="name1" />
-      <FieldText label="label2" name="name2" />
+      <FieldText label="label1" id="text-field" name="name1" />
+      <FieldText label="label2" id="text-field" name="name2" />
     </Form>
   )
   const tree = component.toJSON()
@@ -42,8 +42,8 @@ test('Form with two invalid children', () => {
 test('Form with one invalid child and a submit button', () => {
   const component = createWithTheme(
     <Form validationMessages={{ name2: { type: 'error', message: 'e2' } }}>
-      <FieldText label="label1" name="name1" />
-      <FieldText label="label2" name="name2" />
+      <FieldText label="label1" id="text-field" name="name1" />
+      <FieldText label="label2" id="text-field" name="name2" />
       <Button>Submit</Button>
     </Form>
   )
@@ -61,7 +61,7 @@ test('Should trigger onInput handler', () => {
   const wrapper = mount(
     <ThemeProvider theme={theme}>
       <Form onInput={handleChange}>
-        <FieldText label="label" name="name" />
+        <FieldText label="label" id="text-field" name="name" />
       </Form>
     </ThemeProvider>
   )
@@ -77,7 +77,7 @@ test('Should trigger onChange handler', () => {
   const wrapper = mount(
     <ThemeProvider theme={theme}>
       <Form onChange={handleChange}>
-        <FieldText label="label" name="name" />
+        <FieldText label="label" id="text-field" name="name" />
       </Form>
     </ThemeProvider>
   )
@@ -93,7 +93,7 @@ test('Should trigger onSubmit handler', () => {
   const wrapper = mount(
     <ThemeProvider theme={theme}>
       <Form onChange={handleChange}>
-        <FieldText label="label" name="name" />
+        <FieldText label="label" id="text-field" name="name" />
         <Button type="submit">Submit</Button>
       </Form>
     </ThemeProvider>

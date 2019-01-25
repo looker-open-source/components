@@ -122,7 +122,7 @@ exports[`Fieldset with left aligned legend 1`] = `
       >
         <label
           className="c4"
-          htmlFor="1e0d0a79-2277-441f-9890-e9ef6c3533ca"
+          htmlFor="text-1"
         >
           One
         </label>
@@ -134,7 +134,7 @@ exports[`Fieldset with left aligned legend 1`] = `
           >
             <input
               className="c5"
-              id="1e0d0a79-2277-441f-9890-e9ef6c3533ca"
+              id="text-1"
               name="name1"
               type="text"
             />
@@ -146,7 +146,7 @@ exports[`Fieldset with left aligned legend 1`] = `
       >
         <label
           className="c4"
-          htmlFor="1b60f54e-8f4a-4379-ba52-754cd5875df1"
+          htmlFor="text-2"
         >
           two
         </label>
@@ -158,7 +158,7 @@ exports[`Fieldset with left aligned legend 1`] = `
           >
             <input
               className="c5"
-              id="1b60f54e-8f4a-4379-ba52-754cd5875df1"
+              id="text-2"
               name="name2"
               type="text"
             />
@@ -170,7 +170,7 @@ exports[`Fieldset with left aligned legend 1`] = `
       >
         <label
           className="c4"
-          htmlFor="9ecae30f-98a1-4825-ad79-93fa010db8cc"
+          htmlFor="text-3"
         >
           three
         </label>
@@ -182,7 +182,7 @@ exports[`Fieldset with left aligned legend 1`] = `
           >
             <input
               className="c5"
-              id="9ecae30f-98a1-4825-ad79-93fa010db8cc"
+              id="text-3"
               name="nam3"
               type="text"
             />
