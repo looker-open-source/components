@@ -2,10 +2,10 @@ import FocusTrap from 'focus-trap-react'
 import { Placement } from 'popper.js'
 import * as React from 'react'
 import { PopperArrowProps } from 'react-popper'
+import ScrollLock from 'react-scrolllock'
 import { styled } from '../../style'
 import { Box, BoxProps } from '../Box'
 import { ModalContext } from '../Modal'
-import { ScrollLock } from '../ScrollLock'
 
 export interface OverlayBubbleArrowProps {
   backgroundColor: string
@@ -102,12 +102,11 @@ export const OverlayBubble: React.SFC<OverlayBubbleProps> = ({
       overflow="visible"
     >
       {focus ? (
-        <>
+        <ScrollLock>
           <Box tabIndex={0} focusStyle={{ outline: 'none' }}>
             {children}
           </Box>
-          <ScrollLock />
-        </>
+        </ScrollLock>
       ) : (
         children
       )}

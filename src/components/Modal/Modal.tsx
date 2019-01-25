@@ -3,7 +3,6 @@ import { CSSTransition } from 'react-transition-group'
 import { fadeIn, palette, shadows } from '../../style'
 import { CustomizableAttributes } from '../../types/attributes'
 import { OverlayBubbleStyleProps } from '../Overlay'
-import { ScrollLock } from '../ScrollLock'
 import { ModalBackdrop } from './ModalBackdrop'
 import { ModalContainer } from './ModalContainer'
 import { ModalContext, ModalContextProps } from './ModalContext'
@@ -96,7 +95,6 @@ export class Modal extends React.Component<ModalInternalProps, ModalState> {
           >
             {(state: string) => (
               <ModalContainer>
-                <ScrollLock />
                 <ModalBackdrop
                   className={state}
                   style={this.props.backdropStyles}
