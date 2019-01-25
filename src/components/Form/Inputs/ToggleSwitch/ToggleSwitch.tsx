@@ -1,6 +1,5 @@
 import { rem, rgba } from 'polished'
 import * as React from 'react'
-// import uuid from 'uuid/v4'
 import { css, palette, styled } from '../../../../style'
 import { Omit, ThemedProps } from '../../../../types'
 import { CustomizableAttributes } from '../../../../types/attributes'
