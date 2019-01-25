@@ -22,7 +22,7 @@ export type HeadingWeights =
 export interface HeadingProps
   extends BoxPropsWithout<HTMLHeadingElement, 'color' | 'size' | 'truncate'> {
   /** Heading level from h1-h6 */
-  level?: HeadingLevels
+  is?: HeadingLevels
   /** Size mapping from type ramp */
   size?: RampSizes
   /** Font weight */
@@ -40,15 +40,15 @@ const InternalHeading: React.SFC<ThemedProps<HeadingProps>> = ({
   weight,
   transform,
   truncate,
-  level,
+  is,
   theme,
   ...props
 }) => {
   return (
     <Box
-      is={level || 'h2'}
-      fontSize={getFontSize(theme, level, size)}
-      lineHeight={getLineHeight(theme, level, size)}
+      is={is || 'h2'}
+      fontSize={getFontSize(theme, is, size)}
+      lineHeight={getLineHeight(theme, is, size)}
       fontWeight={getFontWeight(theme, weight)}
       {...props}
     >
@@ -59,13 +59,13 @@ const InternalHeading: React.SFC<ThemedProps<HeadingProps>> = ({
 
 function getFontSize(
   theme: Theme,
-  level: HeadingLevels | undefined,
+  is: HeadingLevels | undefined,
   size: RampSizes | undefined
 ) {
   if (size) {
     return theme.fontSizes[size]
   } else {
-    switch (level) {
+    switch (is) {
       case 'h1':
         return theme.fontSizes.xxlarge
       case 'h2':
@@ -86,13 +86,13 @@ function getFontSize(
 
 function getLineHeight(
   theme: Theme,
-  level: HeadingLevels | undefined,
+  is: HeadingLevels | undefined,
   size: RampSizes | undefined
 ) {
   if (size) {
     return theme.lineHeights[size]
   } else {
-    switch (level) {
+    switch (is) {
       case 'h1':
         return theme.lineHeights.xxlarge
       case 'h2':

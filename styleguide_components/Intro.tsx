@@ -67,7 +67,7 @@ export const Intro = () => {
                 </svg>
               </Flex>
             </Box>
-            <Heading level="h4" size="large" weight="semiBold">
+            <Heading is="h4" size="large" weight="semiBold">
               Install
             </Heading>
             <Box mt="small">
@@ -91,7 +91,7 @@ export const Intro = () => {
                 <Icon name="CircleExplore" size="24" color="#0087E1" />
               </Flex>
             </Box>
-            <Heading level="h4" size="large" weight="semiBold">
+            <Heading is="h4" size="large" weight="semiBold">
               Explore
             </Heading>
             <Box mt="small">
@@ -115,7 +115,7 @@ export const Intro = () => {
                 <Icon name="Undo" size={24} color="#FFA800" />
               </Flex>
             </Box>
-            <Heading level="h4" size="large" weight="semiBold">
+            <Heading is="h4" size="large" weight="semiBold">
               Contribute
             </Heading>
             <Box mt="small">
