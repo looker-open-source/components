@@ -45,7 +45,8 @@ export const MenuOverlay: React.SFC<MenuOverlayProps> = ({
       trigger="click"
       overlayContentFactory={overlayBubbleWithContent(
         content,
-        menuOverlayStyle
+        menuOverlayStyle,
+        true
       )}
       backdropStyles={backdropStyle}
       {...overlayProps}

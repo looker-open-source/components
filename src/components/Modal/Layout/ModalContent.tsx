@@ -1,7 +1,7 @@
 import * as React from 'react'
-import { styled } from '../../../style'
-
 import ReactResizeDetector from 'react-resize-detector'
+
+import { styled } from '../../../style'
 import { Box, BoxProps } from '../../Box'
 
 export interface ModalContentProps extends BoxProps<HTMLDivElement> {
@@ -45,7 +45,6 @@ class Internal extends React.Component<InternalContentProps, ContentState> {
 
     return (
       <ContentContainer
-        p="large"
         overflow="scroll"
         className={`${props.className && props.className} ${this.state
           .overflow && 'overflow'}`}
@@ -53,7 +52,7 @@ class Internal extends React.Component<InternalContentProps, ContentState> {
         flex="8"
         {...props}
       >
-        {children}
+        <Box m="large">{children}</Box>
       </ContentContainer>
     )
   }

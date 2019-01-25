@@ -1,7 +1,13 @@
 Drawers are modal overlays that provide contextual information. They are frequantly used for creation or management action by the user. The Drawer blocks interactions with the other content until dismissed either through clicking or tapping on the Backdrop or by selecting a close or completion action within the Drawer.
 
 ```js
-<Drawer content="This is some content in the Drawer">
+<Drawer
+  content={
+    <>
+      This is some content in the Drawer <a href="#">Focus point</a>
+    </>
+  }
+>
   <Button>Open Drawer</Button>
 </Drawer>
 ```
@@ -20,7 +26,7 @@ const boxProps = {
   p: 'xxlarge',
   mb: 'xlarge',
   display: 'flex',
-  height: '40%',
+  height: '40vh',
   justifyContent: 'center',
   bg: 'lavender',
 }
@@ -36,15 +42,15 @@ const content = (
       <Box {...boxProps}>Thing Three</Box>
     </ModalContent>
     <ModalContext.Consumer>
-      {({ close }) => (
+      {({ closeModal }) => (
         <ModalFooter>
-          <Button onClick={close} variant="transparent" mr="small">
+          <Button onClick={closeModal} variant="transparent" mr="small">
             Cancel
           </Button>
           <Button
             onClick={() => {
               alert("Oh yeah! You're done")
-              close && close()
+              closeModal && closeModal()
             }}
           >
             All Done

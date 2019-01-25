@@ -1,6 +1,9 @@
 import 'jest-styled-components'
 import * as React from 'react'
-import { assertSnapshot } from '../../../../test/utils/snapshot'
+import {
+  assertSnapshot,
+  assertSnapshotShallow,
+} from '../../../../test/utils/snapshot'
 import { ColorFieldPicker } from './ColorFieldPicker'
 
 test('Default ColorFieldPicker', () => {
@@ -33,5 +36,5 @@ test('ColorFieldPicker with a validation message', () => {
 })
 
 test('ColorFieldPicker renders a color picker in a RichTooltip', () => {
-  assertSnapshot(<ColorFieldPicker open />)
+  assertSnapshotShallow(<ColorFieldPicker open />)
 })

@@ -38,6 +38,12 @@ const componentSections = [
     ],
   },
   {
+    name: 'Overlays: Popovers & Tooltips',
+    sectionDepth: 1,
+    // content: 'src/components/Overlay/Overlay.md',
+    components: ['src/components/Overlay/**/*.tsx'],
+  },
+  {
     name: 'Modals: Dialog & Drawer',
     sectionDepth: 1,
     content: 'src/components/Modal/Modal.md',
@@ -48,11 +54,15 @@ const componentSections = [
       'src/components/Modal/ModalContext.tsx',
       'src/components/Modal/Modal.tsx',
       'src/components/Modal/SurfaceBase.tsx',
-      'src/components/Modal/withModal.tsx',
 
       'src/components/Modal/Dialog/DialogSurface.tsx',
       'src/components/Modal/Drawer/DrawerSurface.tsx',
     ],
+  },
+  {
+    name: 'Menu',
+    sectionDepth: 1,
+    components: ['src/components/Menu/**/*.tsx'],
   },
 ]
 

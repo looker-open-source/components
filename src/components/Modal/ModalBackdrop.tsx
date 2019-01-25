@@ -5,38 +5,37 @@ import { Box, BoxProps } from '../Box'
 import { CustomizableOverlayAttributes } from '../Overlay'
 
 export interface BackdropProps {
-  close: () => void
   style?: React.CSSProperties
   theme: Theme
   className?: string
 }
 
-const Internal: React.SFC<BackdropProps> = ({ close, style, className }) => (
+interface BackdropInternalProps extends BoxProps<HTMLElement> {
+  backdropStyle?: React.CSSProperties
+}
+
+const Internal: React.SFC<BackdropProps> = ({ style, className }) => (
   <Backdrop
     className={className}
     bg={CustomizableOverlayAttributes.backdrop.backgroundColor}
     height="100%"
-    onClick={close}
     opacity={CustomizableOverlayAttributes.backdrop.opacity}
     position="fixed"
-    // style={{ cursor: 'pointer', ...style }}
+    style={{ cursor: 'pointer', ...style }}
     backdropStyle={style}
+    // opacity={CustomizableOverlayAttributes.backdrop.opacity}
     width="100%"
   />
 )
 
 export const ModalBackdrop = withTheme(Internal)
 
-interface BackdropInternalProps extends BoxProps<HTMLElement> {
-  backdropStyle?: React.CSSProperties
-}
-
 const BackdropFactory = (props: BackdropInternalProps) => {
   const { backdropStyle, ref, ...boxProps } = props
   return <Box {...boxProps} ref={ref} />
 }
 
-const Backdrop = styled(BackdropFactory)<BackdropInternalProps>`
+const Backdrop = styled(BackdropFactory)`
   transition: opacity ${props => props.theme.transitions.durationSimple};
   cursor: pointer;
 
@@ -45,9 +44,5 @@ const Backdrop = styled(BackdropFactory)<BackdropInternalProps>`
   &.entering,
   &.exiting {
     opacity: 0.01;
-  }
-
-  &.exited {
-    opacity: ${CustomizableOverlayAttributes.backdrop.opacity};
   }
 `

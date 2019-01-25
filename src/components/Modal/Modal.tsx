@@ -60,23 +60,13 @@ export interface ModalInternalProps extends ModalProps {
 }
 
 export interface ModalState {
-  bodyStyleOverflow?: string | null
   isOpen: boolean
 }
 
 export class Modal extends React.Component<ModalInternalProps, ModalState> {
   constructor(props: ModalInternalProps) {
     super(props)
-
     this.state = { isOpen: !!props.open }
-  }
-
-  public componentDidMount() {
-    document.addEventListener('keydown', this.handleEscapePress)
-  }
-
-  public componentWillUnmount() {
-    document.removeEventListener('keydown', this.handleEscapePress)
   }
 
   public render() {
@@ -90,7 +80,7 @@ export class Modal extends React.Component<ModalInternalProps, ModalState> {
         ...triggerEventProps,
       })
 
-    const context: ModalContextProps = { close: this.close }
+    const context: ModalContextProps = { closeModal: this.close }
 
     return (
       <ModalContext.Provider value={context}>
@@ -107,7 +97,6 @@ export class Modal extends React.Component<ModalInternalProps, ModalState> {
               <ModalContainer>
                 <ModalBackdrop
                   className={state}
-                  close={this.close}
                   style={this.props.backdropStyles}
                 />
                 {this.props.render(state)}
@@ -121,24 +110,13 @@ export class Modal extends React.Component<ModalInternalProps, ModalState> {
 
   private open = () => {
     this.props.onOpen && this.props.onOpen()
-    this.setState({
-      bodyStyleOverflow: document.body.style.overflow,
-      isOpen: true,
-    })
-    document.body.style.overflow = 'hidden'
+    this.setState({ isOpen: true })
   }
 
   private close = () => {
     if (this.props.canClose && !this.props.canClose()) return
-
     this.props.onClose && this.props.onClose()
-    this.state.bodyStyleOverflow !== undefined &&
-      (document.body.style.overflow = this.state.bodyStyleOverflow)
-    this.setState({ isOpen: false, bodyStyleOverflow: undefined })
-  }
-
-  private handleEscapePress = (event: KeyboardEvent) => {
-    if (this.state.isOpen && event.key === 'Escape') this.close()
+    this.setState({ isOpen: false })
   }
 }
 

@@ -64,7 +64,7 @@ exports[`ModalHeader 1`] = `
   display: -ms-inline-flexbox;
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
-  font-size: 1.375rem;
+  font-size: 1.125rem;
   margin-left: auto;
   padding: 0rem;
 }

@@ -13,7 +13,7 @@ export interface DialogProps extends ModalProps {
    * Content that will be placed inside the Dialog
    * @required
    */
-  content: React.ReactNode
+  content: JSX.Element | JSX.Element[]
 }
 
 export const Dialog: React.SFC<DialogProps> = ({

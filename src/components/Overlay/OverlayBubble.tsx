@@ -1,6 +1,8 @@
+import FocusTrap from 'focus-trap-react'
 import { Placement } from 'popper.js'
 import * as React from 'react'
 import { PopperArrowProps } from 'react-popper'
+import ScrollLock from 'react-scrolllock'
 import { styled } from '../../style'
 import { Box, BoxProps } from '../Box'
 
@@ -78,27 +80,58 @@ export interface OverlayBubbleStyleProps extends OverlayBubbleArrowProps {
 export interface OverlayBubbleProps extends OverlayBubbleStyleProps {
   arrowProps: PopperArrowProps
   placement: Placement
+  focus?: boolean
 }
 
-export const OverlayBubble: React.SFC<OverlayBubbleProps> = ({ ...props }) => (
-  <OverlayBubbleContainer
-    m="xsmall"
-    bg={props.backgroundColor}
-    borderRadius={props.borderRadius}
-    border={props.border}
-    borderColor={props.borderColor}
-    boxShadow={props.boxShadow}
-    color={props.color}
-    animation={props.animation}
-  >
-    {props.children}
-    <OverlayBubbleArrow
-      backgroundColor={props.backgroundColor}
+export const OverlayBubble: React.SFC<OverlayBubbleProps> = ({
+  focus,
+  children,
+  ...props
+}) => {
+  const content = (
+    <OverlayBubbleContainer
+      m="xsmall"
+      bg={props.backgroundColor}
+      borderRadius={props.borderRadius}
       border={props.border}
       borderColor={props.borderColor}
-      innerRef={props.arrowProps.ref}
-      style={props.arrowProps.style}
-      data-placement={props.placement}
-    />
-  </OverlayBubbleContainer>
-)
+      boxShadow={props.boxShadow}
+      color={props.color}
+      animation={props.animation}
+      overflow="visible"
+    >
+      {focus ? (
+        <ScrollLock>
+          <Box tabIndex={0} focusStyle={{ outline: 'none' }}>
+            {children}
+          </Box>
+        </ScrollLock>
+      ) : (
+        children
+      )}
+      <OverlayBubbleArrow
+        backgroundColor={props.backgroundColor}
+        border={props.border}
+        borderColor={props.borderColor}
+        innerRef={props.arrowProps.ref}
+        style={props.arrowProps.style}
+        data-placement={props.placement}
+      />
+    </OverlayBubbleContainer>
+  )
+
+  if (focus) {
+    return (
+      <FocusTrap
+        focusTrapOptions={{
+          clickOutsideDeactivates: true,
+          escapeDeactivates: true,
+        }}
+      >
+        {content}
+      </FocusTrap>
+    )
+  } else {
+    return content
+  }
+}

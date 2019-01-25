@@ -1,6 +1,9 @@
 import 'jest-styled-components'
 import * as React from 'react'
-import { assertSnapshot } from '../../../../test/utils/snapshot'
+import {
+  assertSnapshot,
+  assertSnapshotShallow,
+} from '../../../../test/utils/snapshot'
 
 import { Drawer } from './Drawer'
 
@@ -8,23 +11,29 @@ import { Button } from '../../Button'
 import { Heading } from '../../Heading'
 import { ModalContent, ModalFooter, ModalHeader } from '../Layout'
 
+const content = (
+  <>
+    words and stuff <button>boo!</button>
+  </>
+)
+
 test('Drawer Hidden', () => {
   assertSnapshot(
-    <Drawer content="words and stuff">
+    <Drawer content={content}>
       <Button>🥑</Button>
     </Drawer>
   )
 })
 
 test('Drawer Shown', () => {
-  assertSnapshot(<Drawer content="words and stuff" open />)
+  assertSnapshotShallow(<Drawer content={content} open />)
 })
 
 test('Drawer, backdrop customized', () => {
-  assertSnapshot(
+  assertSnapshotShallow(
     <Drawer
       open
-      content="words and stuff"
+      content={content}
       backdropStyles={{ background: 'purple', opacity: 1 }}
     >
       <Button>🥑</Button>
@@ -33,7 +42,7 @@ test('Drawer, backdrop customized', () => {
 })
 
 test('Selection Drawer, Shown', () => {
-  assertSnapshot(
+  assertSnapshotShallow(
     <Drawer
       open
       content={

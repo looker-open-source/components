@@ -4,10 +4,11 @@ import { OverlayBubble, OverlayBubbleStyleProps } from './OverlayBubble'
 
 export const overlayBubbleWithContent = (
   content: React.ReactNode,
-  overlayBubbleStyleProps: OverlayBubbleStyleProps
+  overlayBubbleStyleProps: OverlayBubbleStyleProps,
+  focus?: boolean
 ) => {
   return ({ ...props }: OverlayContentProps) => (
-    <OverlayBubble {...{ ...overlayBubbleStyleProps, ...props }}>
+    <OverlayBubble focus={focus} {...{ ...overlayBubbleStyleProps, ...props }}>
       {content}
     </OverlayBubble>
   )

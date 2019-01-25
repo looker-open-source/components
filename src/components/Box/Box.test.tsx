@@ -114,9 +114,7 @@ describe('Box', () => {
         <Box is="input" {...props} />
       )
       const boxAsCheckbox = mountWithTheme(<BoxAsInput type="checkbox" />)
-      expect(boxAsCheckbox.find('input[type="checkbox"]').exists()).toEqual(
-        true
-      )
+      expect(boxAsCheckbox.find('input[type="checkbox"]').exists()).toBeTruthy()
     })
   })
 
