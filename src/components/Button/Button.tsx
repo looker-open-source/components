@@ -1,6 +1,6 @@
 import { rem, rgba } from 'polished'
 import * as React from 'react'
-import { merge, mixed } from 'styled-system'
+import { merge } from 'styled-system'
 import { IconNames } from '../../icons/build/IconNames'
 import {
   css,
@@ -188,12 +188,11 @@ function sizeHelper(props: ThemedProps<ButtonProps>) {
     xsmall: ['xsmall', calcLineHeight(24), 'xsmall'],
   }
   const [fontSize, lineHeight, px] = sizes[props.size || 'medium']
-  return mixed({
+  return {
     fontSize,
     lineHeight,
-    px,
-    theme: props.theme,
-  })
+    px: !props.p ? px : undefined,
+  }
 }
 
 function iconMargins(props: ThemedProps<ButtonProps>) {
@@ -242,9 +241,10 @@ const InternalButton: React.SFC<ThemedProps<ButtonProps>> = ({
       is="button"
       borderRadius={CustomizableButtonAttributes.borderRadius}
       fontFamily="brand"
-      py="none"
+      py={props.p ? undefined : 'none'}
       display="inline-flex"
       alignItems="center"
+      {...sizeHelper(props)}
       {...props}
     >
       {getIcon(iconBefore)}
@@ -267,7 +267,6 @@ export const Button = styled<ButtonProps>(withTheme(InternalButton))`
   -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
-  ${sizeHelper};
   ${variantHelper};
 
   ${Icon} {
