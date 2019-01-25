@@ -5,7 +5,6 @@ import { PopperArrowProps } from 'react-popper'
 import ScrollLock from 'react-scrolllock'
 import { styled } from '../../style'
 import { Box, BoxProps } from '../Box'
-import { ModalContext } from '../Modal'
 
 export interface OverlayBubbleArrowProps {
   backgroundColor: string
@@ -123,19 +122,14 @@ export const OverlayBubble: React.SFC<OverlayBubbleProps> = ({
 
   if (focus) {
     return (
-      <ModalContext.Consumer>
-        {({ closeModal }) => (
-          <FocusTrap
-            focusTrapOptions={{
-              clickOutsideDeactivates: true,
-              escapeDeactivates: true,
-              onDeactivate: closeModal,
-            }}
-          >
-            {content}
-          </FocusTrap>
-        )}
-      </ModalContext.Consumer>
+      <FocusTrap
+        focusTrapOptions={{
+          clickOutsideDeactivates: true,
+          escapeDeactivates: true,
+        }}
+      >
+        {content}
+      </FocusTrap>
     )
   } else {
     return content
