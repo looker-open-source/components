@@ -1,9 +1,11 @@
 ```js noeditor
-const StatusAndResources = require('../../../styleguide_components/StatusAndResources').StatusAndResources;
-<StatusAndResources
+const StatusAndResources = require('../../../styleguide_components/StatusAndResources')
+  .StatusAndResources
+;<StatusAndResources
   status="experimental"
   githubURL="https://github.com/looker/lens/blob/master/src/components/FlexItem/FlexItem.tsx"
-  feedbackTitle="FlexItem Component Feedback" />
+  feedbackTitle="FlexItem Component Feedback"
+/>
 ```
 
 The `<FlexItem />` component lets you have more control of the properties that apply to just children inside a `<Flex />` container. These properties affect how a flex item aligns its self, it's order, and how it resizes to fill the available space in the flex container.
@@ -22,46 +24,84 @@ Using the `alignSelf` property on a `<FlexItem />` allows you to override the th
   </TableHead>
   <TableBody>
     <TableRow>
-      <TableDataCell><span class="prop-code"><Code>center</Code></span></TableDataCell>
-      <TableDataCell><Text size="5">Pack items around the center</Text></TableDataCell>
+      <TableDataCell>
+        <span class="prop-code">
+          <Code>center</Code>
+        </span>
+      </TableDataCell>
+      <TableDataCell>
+        <Text fontSize="xsmall">Pack items around the center</Text>
+      </TableDataCell>
     </TableRow>
     <TableRow>
-      <TableDataCell><span class="prop-code"><Code>flex-start</Code></span></TableDataCell>
-      <TableDataCell><Text size="5">Pack items from the start</Text></TableDataCell>
+      <TableDataCell>
+        <span class="prop-code">
+          <Code>flex-start</Code>
+        </span>
+      </TableDataCell>
+      <TableDataCell>
+        <Text fontSize="xsmall">Pack items from the start</Text>
+      </TableDataCell>
     </TableRow>
     <TableRow>
-      <TableDataCell><span class="prop-code"><Code>flex-end</Code></span></TableDataCell>
-      <TableDataCell><Text size="5">Pack items from the end</Text></TableDataCell>
+      <TableDataCell>
+        <span class="prop-code">
+          <Code>flex-end</Code>
+        </span>
+      </TableDataCell>
+      <TableDataCell>
+        <Text fontSize="xsmall">Pack items from the end</Text>
+      </TableDataCell>
     </TableRow>
     <TableRow>
-      <TableDataCell><span class="prop-code"><Code>baseline</Code></span></TableDataCell>
-      <TableDataCell><Text size="5">Item aligned to its baseline</Text></TableDataCell>
+      <TableDataCell>
+        <span class="prop-code">
+          <Code>baseline</Code>
+        </span>
+      </TableDataCell>
+      <TableDataCell>
+        <Text fontSize="xsmall">Item aligned to its baseline</Text>
+      </TableDataCell>
     </TableRow>
     <TableRow>
-      <TableDataCell><span class="prop-code"><Code>stretch</Code></span> <Text size="xsmall">(default)</Text></TableDataCell>
-      <TableDataCell><Text size="5">stretch to the container</Text></TableDataCell>
+      <TableDataCell>
+        <span class="prop-code">
+          <Code>stretch</Code>
+        </span>{' '}
+        <Text fontSize="xsmall">(default)</Text>
+      </TableDataCell>
+      <TableDataCell>
+        <Text fontSize="xsmall">stretch to the container</Text>
+      </TableDataCell>
     </TableRow>
   </TableBody>
 </Table>
 ```
 
 ```js
-  <Flex height="200px" bg="palette.purple400">
-    <FlexItem alignSelf="flex-start">
-      <Box m="small" p="large" bg="palette.purple200">Flex Start</Box>
-    </FlexItem>
-    <FlexItem alignSelf="flex-end">
-       <Box m="small" p="large" bg="palette.purple200">Flex End</Box>
-    </FlexItem>
-    <FlexItem alignSelf="center">
-       <Box m="small" p="large" bg="palette.purple200">Center</Box>
-    </FlexItem>
-    <FlexItem alignSelf="baseline">
-       <Box m="small" p="large" bg="palette.purple200">Baseline</Box>
-    </FlexItem>
-  </Flex>
+<Flex height="200px" bg="palette.purple400">
+  <FlexItem alignSelf="flex-start">
+    <Box m="small" p="large" bg="palette.purple200">
+      Flex Start
+    </Box>
+  </FlexItem>
+  <FlexItem alignSelf="flex-end">
+    <Box m="small" p="large" bg="palette.purple200">
+      Flex End
+    </Box>
+  </FlexItem>
+  <FlexItem alignSelf="center">
+    <Box m="small" p="large" bg="palette.purple200">
+      Center
+    </Box>
+  </FlexItem>
+  <FlexItem alignSelf="baseline">
+    <Box m="small" p="large" bg="palette.purple200">
+      Baseline
+    </Box>
+  </FlexItem>
+</Flex>
 ```
-
 
 ### Item Order
 
@@ -109,16 +149,24 @@ The `flexBasis` property defines the flex-items' default size before the remaini
 ```js
 <Flex>
   <FlexItem flexBasis="20%">
-    <Box p="small" m="small" bg="palette.red200">I am 20% of container</Box>
+    <Box p="small" m="small" bg="palette.red200">
+      I am 20% of container
+    </Box>
   </FlexItem>
   <FlexItem flexBasis="5.5rem">
-     <Box p="small" m="small" bg="palette.green200">I am 5.5rem of container</Box>
+    <Box p="small" m="small" bg="palette.green200">
+      I am 5.5rem of container
+    </Box>
   </FlexItem>
   <FlexItem flexBasis="150px">
-     <Box p="small" m="small" bg="palette.blue200">I am 150px of container</Box>
+    <Box p="small" m="small" bg="palette.blue200">
+      I am 150px of container
+    </Box>
   </FlexItem>
   <FlexItem>
-     <Box p="small" m="small" bg="palette.purple200">I am sized to my content</Box>
+    <Box p="small" m="small" bg="palette.purple200">
+      I am sized to my content
+    </Box>
   </FlexItem>
 </Flex>
 ```
@@ -140,50 +188,94 @@ The `flex` property is a shorthand for `flex-grow`, `flex-shrink`, and `flex-bas
   </TableHead>
   <TableBody>
     <TableRow>
-      <TableDataCell><span class="prop-code"><Code>flex-grow</Code></span></TableDataCell>
-      <TableDataCell><Text size="5">Specifies the grow factor of a flex item</Text></TableDataCell>
-      <TableDataCell><Text size="5">A positive unitless number</Text></TableDataCell>
+      <TableDataCell>
+        <span class="prop-code">
+          <Code>flex-grow</Code>
+        </span>
+      </TableDataCell>
+      <TableDataCell>
+        <Text fontSize="xsmall">Specifies the grow factor of a flex item</Text>
+      </TableDataCell>
+      <TableDataCell>
+        <Text fontSize="xsmall">A positive unitless number</Text>
+      </TableDataCell>
     </TableRow>
     <TableRow>
-      <TableDataCell><span class="prop-code"><Code>flex-shrink</Code></span></TableDataCell>
-      <TableDataCell><Text size="5">Specifies the shrink factor of a flex item</Text></TableDataCell>
-      <TableDataCell><Text size="5">A positive unitless number</Text></TableDataCell>
+      <TableDataCell>
+        <span class="prop-code">
+          <Code>flex-shrink</Code>
+        </span>
+      </TableDataCell>
+      <TableDataCell>
+        <Text fontSize="xsmall">
+          Specifies the shrink factor of a flex item
+        </Text>
+      </TableDataCell>
+      <TableDataCell>
+        <Text fontSize="xsmall">A positive unitless number</Text>
+      </TableDataCell>
     </TableRow>
     <TableRow>
-      <TableDataCell><span class="prop-code"><Code>flex-basis</Code></span></TableDataCell>
-      <TableDataCell><Text size="5">Specifies the flex items size</Text></TableDataCell>
-      <TableDataCell><Text size="5">A valid width unit</Text></TableDataCell>
+      <TableDataCell>
+        <span class="prop-code">
+          <Code>flex-basis</Code>
+        </span>
+      </TableDataCell>
+      <TableDataCell>
+        <Text fontSize="xsmall">Specifies the flex items size</Text>
+      </TableDataCell>
+      <TableDataCell>
+        <Text fontSize="xsmall">A valid width unit</Text>
+      </TableDataCell>
     </TableRow>
   </TableBody>
 </Table>
 ```
+
 ##### Flex Grow Example
+
 Below we set the flex grow value of the first flex item to `2` so it will take up a factor of two in the flex container
+
 ```js
-  <Flex>
-    <FlexItem flex="2">
-      <Box p="small" bg="palette.red200">Flex: 2</Box>
-    </FlexItem>
-    <FlexItem flex="1">
-      <Box p="small" bg="palette.green200">Flex: 1</Box>
-    </FlexItem>
-    <FlexItem flex="1">
-       <Box p="small" bg="palette.blue200">Flex: 1</Box>
-    </FlexItem>
-  </Flex>
+<Flex>
+  <FlexItem flex="2">
+    <Box p="small" bg="palette.red200">
+      Flex: 2
+    </Box>
+  </FlexItem>
+  <FlexItem flex="1">
+    <Box p="small" bg="palette.green200">
+      Flex: 1
+    </Box>
+  </FlexItem>
+  <FlexItem flex="1">
+    <Box p="small" bg="palette.blue200">
+      Flex: 1
+    </Box>
+  </FlexItem>
+</Flex>
 ```
+
 ##### Flex Shrink
+
 Below we have a flex container with a set width of 500px and each child's `flex-basis` is set to 200px. The flex shrink value on the last two flex items is set to `1` and they will now shrink so that all the flex items fit within the flex container.
+
 ```js
-  <Flex width="500px">
-    <FlexItem flex="1 0 200px">
-      <Box p="small" bg="palette.red200">No Shrink</Box>
-    </FlexItem>
-    <FlexItem flex="1 1 200px">
-      <Box p="small" bg="palette.green200">I'll shrink</Box>
-    </FlexItem>
-    <FlexItem flex="1 1 200px">
-       <Box p="small" bg="palette.blue200">I'll shrink</Box>
-    </FlexItem>
-  </Flex>
+<Flex width="500px">
+  <FlexItem flex="1 0 200px">
+    <Box p="small" bg="palette.red200">
+      No Shrink
+    </Box>
+  </FlexItem>
+  <FlexItem flex="1 1 200px">
+    <Box p="small" bg="palette.green200">
+      I'll shrink
+    </Box>
+  </FlexItem>
+  <FlexItem flex="1 1 200px">
+    <Box p="small" bg="palette.blue200">
+      I'll shrink
+    </Box>
+  </FlexItem>
+</Flex>
 ```

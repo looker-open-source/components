@@ -39,7 +39,7 @@ const Internal: React.SFC<MenuGroupProps> = ({
       transform="upper"
       position="sticky"
       top="0"
-      weight="semiBold"
+      fontWeight="semiBold"
       {...labelProps}
       style={labelStyles}
     >
