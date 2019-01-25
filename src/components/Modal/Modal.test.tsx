@@ -1,9 +1,9 @@
 import { mount } from 'enzyme'
 import 'jest-styled-components'
 import * as React from 'react'
-import { assertSnapshot } from '../../../test/utils/snapshot'
 
 import { mountWithTheme } from '../../../test/utils/create_with_theme'
+import { assertSnapshotShallow } from '../../../test/utils/snapshot'
 
 import { theme, ThemeProvider } from '../../style'
 
@@ -18,15 +18,15 @@ const simpleContentFactory = () => <SimpleContentSFC />
 
 describe('Modal', () => {
   test('Inactive', () => {
-    assertSnapshot(<Modal render={simpleContentFactory} />)
+    assertSnapshotShallow(<Modal render={simpleContentFactory} />)
   })
 
   test('Active', () => {
-    assertSnapshot(<Modal open render={simpleContentFactory} />)
+    assertSnapshotShallow(<Modal open render={simpleContentFactory} />)
   })
 
   test('Inactive w/ wrapped element', () => {
-    assertSnapshot(
+    assertSnapshotShallow(
       <Modal render={simpleContentFactory}>
         <Button>Click Here</Button>
       </Modal>
@@ -34,7 +34,7 @@ describe('Modal', () => {
   })
 
   test('Active w/ wrapped element', () => {
-    assertSnapshot(
+    assertSnapshotShallow(
       <Modal open render={simpleContentFactory}>
         <Button>Click Here</Button>
       </Modal>
