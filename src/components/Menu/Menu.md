@@ -82,7 +82,7 @@ const menuGroup = (
   content={
     <>
       <ModalHeader>Menu Demo</ModalHeader>
-      <ModalContent>
+      <ModalContent innerProps={{ p: 'none' }}>
         <Menu focusOnMount>
           <MenuGroup>
             <MenuItem icon="LogoRings">Looker</MenuItem>

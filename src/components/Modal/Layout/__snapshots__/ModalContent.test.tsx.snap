@@ -24,7 +24,7 @@ Array [
   -webkit-flex: 8;
   -ms-flex: 8;
   flex: 8;
-  overflow: scroll;
+  overflow: auto;
 }
 
 .c2 {
@@ -35,7 +35,7 @@ Array [
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  margin: 1.25rem;
+  padding: 1.25rem;
 }
 
 .c0 {
@@ -49,7 +49,7 @@ Array [
 
 <div
     className="undefined false c0 c1"
-    overflow="scroll"
+    overflow="auto"
   >
     <div
       className="c2"
@@ -81,7 +81,7 @@ Array [
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  margin: 1.25rem;
+  padding: 1.25rem;
 }
 
 .c1 {
@@ -96,7 +96,7 @@ Array [
   -ms-flex: 8;
   flex: 8;
   height: 3rem;
-  overflow: scroll;
+  overflow: auto;
 }
 
 .c3 {
@@ -121,7 +121,7 @@ Array [
 
 <div
     className="undefined false c0 c1"
-    overflow="scroll"
+    overflow="auto"
   >
     <div
       className="c2"
