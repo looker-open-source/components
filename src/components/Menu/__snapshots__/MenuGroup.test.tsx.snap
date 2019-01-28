@@ -9,8 +9,6 @@ exports[`MenuGroup - canActivate 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
 }
 
 .c1 {
@@ -35,12 +33,10 @@ exports[`MenuGroup - canActivate 1`] = `
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 0.875rem;
-  margin-top: 0.25rem;
-  margin-bottom: 0.25rem;
   padding-left: 1rem;
   padding-right: 1rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
 .c1:hover {
@@ -71,7 +67,7 @@ exports[`MenuGroup - canActivate 1`] = `
 <div
   className="c0"
 >
-  <a
+  <div
     className="c1"
     onClick={[Function]}
     style={
@@ -85,8 +81,8 @@ exports[`MenuGroup - canActivate 1`] = `
       className="c2"
     />
     what?
-  </a>
-  <a
+  </div>
+  <div
     className="c1"
     onClick={[Function]}
     style={
@@ -100,8 +96,8 @@ exports[`MenuGroup - canActivate 1`] = `
       className="c2"
     />
     who?
-  </a>
-  <a
+  </div>
+  <div
     className="c1"
     onClick={[Function]}
     style={
@@ -115,7 +111,7 @@ exports[`MenuGroup - canActivate 1`] = `
       className="c2"
     />
     where?
-  </a>
+  </div>
 </div>
 `;
 
@@ -128,8 +124,6 @@ exports[`MenuGroup - label 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
 }
 
 .c3 {
@@ -154,12 +148,10 @@ exports[`MenuGroup - label 1`] = `
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 0.875rem;
-  margin-top: 0.25rem;
-  margin-bottom: 0.25rem;
   padding-left: 1rem;
   padding-right: 1rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
 .c3:hover {
@@ -184,18 +176,17 @@ exports[`MenuGroup - label 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  box-shadow: 0 4px 8px -2px #DEE1E5;
   background-color: white;
   font-size: 0.75rem;
   font-weight: 600;
   line-height: 1rem;
   position: -webkit-sticky;
   position: sticky;
-  margin: 0rem;
-  margin-bottom: 0.25rem;
-  padding-bottom: 0rem;
-  padding-top: 0.5rem;
   padding-left: 1rem;
   padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
   top: 0;
 }
 
@@ -214,7 +205,7 @@ exports[`MenuGroup - label 1`] = `
   >
     Questions
   </h2>
-  <a
+  <div
     className="c3"
     onClick={[Function]}
     style={
@@ -225,8 +216,8 @@ exports[`MenuGroup - label 1`] = `
     tabIndex={0}
   >
     what?
-  </a>
-  <a
+  </div>
+  <div
     className="c3"
     onClick={[Function]}
     style={
@@ -237,8 +228,8 @@ exports[`MenuGroup - label 1`] = `
     tabIndex={0}
   >
     who?
-  </a>
-  <a
+  </div>
+  <div
     className="c3"
     onClick={[Function]}
     style={
@@ -249,7 +240,7 @@ exports[`MenuGroup - label 1`] = `
     tabIndex={0}
   >
     where?
-  </a>
+  </div>
 </div>
 `;
 
@@ -262,8 +253,6 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
 }
 
 .c3 {
@@ -288,12 +277,10 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 0.875rem;
-  margin-top: 0.25rem;
-  margin-bottom: 0.25rem;
   padding-left: 1rem;
   padding-right: 1rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
 .c3:hover {
@@ -318,18 +305,17 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  box-shadow: 0 4px 8px -2px #DEE1E5;
   background-color: white;
   font-size: 1.5625rem;
   font-weight: 600;
   line-height: 2.5rem;
   position: -webkit-sticky;
   position: sticky;
-  margin: 0rem;
-  margin-bottom: 0.25rem;
-  padding-bottom: 0rem;
-  padding-top: 0.5rem;
   padding-left: 1rem;
   padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
   top: 0;
 }
 
@@ -353,7 +339,7 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
   >
     Questions
   </h2>
-  <a
+  <div
     className="c3"
     onClick={[Function]}
     style={
@@ -364,8 +350,8 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
     tabIndex={0}
   >
     what?
-  </a>
-  <a
+  </div>
+  <div
     className="c3"
     onClick={[Function]}
     style={
@@ -376,8 +362,8 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
     tabIndex={0}
   >
     who?
-  </a>
-  <a
+  </div>
+  <div
     className="c3"
     onClick={[Function]}
     style={
@@ -388,7 +374,7 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
     tabIndex={0}
   >
     where?
-  </a>
+  </div>
 </div>
 `;
 
@@ -401,8 +387,6 @@ exports[`MenuGroup 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
 }
 
 .c1 {
@@ -427,12 +411,10 @@ exports[`MenuGroup 1`] = `
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 0.875rem;
-  margin-top: 0.25rem;
-  margin-bottom: 0.25rem;
   padding-left: 1rem;
   padding-right: 1rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
 .c1:hover {
@@ -452,7 +434,7 @@ exports[`MenuGroup 1`] = `
 <div
   className="c0"
 >
-  <a
+  <div
     className="c1"
     onClick={[Function]}
     style={
@@ -463,6 +445,6 @@ exports[`MenuGroup 1`] = `
     tabIndex={0}
   >
     who!
-  </a>
+  </div>
 </div>
 `;

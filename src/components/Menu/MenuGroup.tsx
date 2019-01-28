@@ -1,7 +1,5 @@
 import * as React from 'react'
-
-import { styled } from '../../style'
-
+import { palette, styled } from '../../style'
 import { Box, BoxProps } from '../Box'
 import { Heading, HeadingProps } from '../Heading'
 
@@ -28,18 +26,16 @@ const Internal: React.SFC<MenuGroupProps> = ({
 
   const labelComponent = label && (
     <Heading
-      bg="white" // Needed for sticky position effect
+      bg="white"
       fontSize="xsmall"
       is="h2"
-      pb="none"
-      pt="xsmall"
       px="medium"
-      m="none"
-      mb="xxsmall"
+      py="small"
       transform="upper"
       position="sticky"
       top="0"
       fontWeight="semiBold"
+      boxShadow={`0 4px 8px -2px ${palette.charcoal200}`}
       {...labelProps}
       style={labelStyles}
     >
@@ -48,7 +44,7 @@ const Internal: React.SFC<MenuGroupProps> = ({
   )
 
   return (
-    <Box py="xxsmall" {...props}>
+    <Box {...props}>
       {labelComponent}
       {childrenWithProps}
     </Box>
