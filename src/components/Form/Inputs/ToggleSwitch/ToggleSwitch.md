@@ -25,10 +25,14 @@ class ToggleSwitchParent extends React.Component {
 
   render() {
     return (
+      <Label htmlFor="switch">
+      Toggle Switch
       <ToggleSwitch
         onChange={this.handleChange.bind(this)}
         on={this.state.on}
+        id="switch"
       />
+      </Label>
     )
   }
 }

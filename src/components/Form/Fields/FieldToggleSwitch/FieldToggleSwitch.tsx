@@ -2,6 +2,7 @@ import * as React from 'react'
 import uuid from 'uuid/v4'
 import { withForm } from '../../Form'
 import { ToggleSwitch, ToggleSwitchProps } from '../../Inputs/ToggleSwitch'
+import { Label } from '../../Label'
 import { Field, FieldProps } from '../Field'
 
 interface FieldToggleSwitchProps extends FieldProps, ToggleSwitchProps {}
@@ -15,12 +16,10 @@ const InternalFieldToggleSwitch = (props: FieldToggleSwitchProps) => {
     labelFontWeight,
     validationMessage,
     id = uuid(),
-    ariaId = uuid(),
     ...inputToggleSwitchProps
   } = props
   return (
     <Field
-      ariaId={ariaId}
       id={id}
       alignLabel={alignLabel ? alignLabel : 'right'}
       {...props}
@@ -28,11 +27,9 @@ const InternalFieldToggleSwitch = (props: FieldToggleSwitchProps) => {
         alignValidationMessage ? alignValidationMessage : 'bottom'
       }
     >
-      <ToggleSwitch
-        ariaLabelledBy={ariaId}
-        id={id}
-        {...inputToggleSwitchProps}
-      />
+      <Label>
+        <ToggleSwitch id={id} {...inputToggleSwitchProps} />
+      </Label>
     </Field>
   )
 }

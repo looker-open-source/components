@@ -4,7 +4,6 @@ import { css, palette, styled } from '../../../../style'
 import { Omit, ThemedProps } from '../../../../types'
 import { CustomizableAttributes } from '../../../../types/attributes'
 import { Box, BoxProps } from '../../../Box'
-import { Label } from '../../Label'
 import { Checkbox } from '../Checkbox'
 
 interface KnobProps {
@@ -15,10 +14,9 @@ interface KnobProps {
 }
 
 export interface ToggleSwitchProps
-  extends BoxProps<HTMLLabelElement>,
+  extends BoxProps<HTMLDivElement>,
     Omit<KnobProps, 'size'> {
   size?: number
-  ariaLabelledBy?: string
 }
 
 const knobTransform = (props: ThemedProps<KnobProps>) => {
@@ -83,32 +81,28 @@ const KnobContainer = styled(KnobContainerFactory)`
 `
 
 const InternalToggleSwitch: React.SFC<ToggleSwitchProps> = ({
-  ariaLabelledBy,
   size = 20,
   disabled,
   on,
   ...props
 }) => {
   return (
-    <Label
+    <Box
       width={rem(size * 1.75)}
       height={rem(size)}
       display="inline-block"
       position="relative"
       cursor={!disabled ? 'pointer' : undefined}
-      {...props}
     >
       <Checkbox
-        name={props.name}
-        value={props.value}
         checked={on}
         disabled={disabled}
         opacity={0}
-        width="0px"
-        height="0px"
+        width="0"
+        height="0"
         role="switch"
-        aria-labelledby={ariaLabelledBy}
         aria-checked={on}
+        {...props}
       />
       <KnobContainer size={size} on={on} disabled={disabled} />
       {disabled && (
@@ -123,7 +117,7 @@ const InternalToggleSwitch: React.SFC<ToggleSwitchProps> = ({
           borderRadius={rem(size)}
         />
       )}
-    </Label>
+    </Box>
   )
 }
 
