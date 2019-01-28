@@ -92,16 +92,21 @@ const InternalToggleSwitch: React.SFC<ToggleSwitchProps> = ({
       height={rem(size)}
       display="inline-block"
       position="relative"
+      verticalAlign="middle"
       cursor={!disabled ? 'pointer' : undefined}
     >
       <Checkbox
         checked={on}
         disabled={disabled}
         opacity={0}
-        width="0px"
-        height="0px"
+        width="100%"
+        height="100%"
         role="switch"
         aria-checked={on}
+        position="absolute"
+        top="0"
+        left="0"
+        zIndex={1}
         {...props}
       />
       <KnobContainer size={size} on={on} disabled={disabled} />
