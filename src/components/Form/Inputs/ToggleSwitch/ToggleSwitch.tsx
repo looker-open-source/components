@@ -122,8 +122,7 @@ const InternalToggleSwitch: React.SFC<ToggleSwitchProps> = ({
 }
 
 export const ToggleSwitch = styled(InternalToggleSwitch)`
-  :focus-within {
-    border-radius: ${props => rem(props.size ? props.size : 20)};
+  :focus + ${Box} {
     box-shadow: 0 0 0 0.2rem ${rgba(palette.primary500, 0.4)};
   }
 `
