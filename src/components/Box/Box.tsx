@@ -113,7 +113,7 @@ export interface BoxFlexItemProps
 
 export type StyledSystemCompatibleHTMLProps<T> = Omit<
   React.HTMLProps<T>,
-  'width' | 'color' | 'height' | 'is' | 'fontSize' | 'fontWeight'
+  'width' | 'color' | 'height' | 'is' | 'fontSize' | 'fontWeight' | 'size'
 >
 
 export interface BoxBaseProps<T>
