@@ -5,32 +5,30 @@ import { assertSnapshot } from '../../../../../test/utils/snapshot'
 import { ToggleSwitch } from './ToggleSwitch'
 
 test('ToggleSwitch default', () => {
-  assertSnapshot(<ToggleSwitch label="Default toggle" />)
+  assertSnapshot(<ToggleSwitch />)
 })
 
 test('ToggleSwitch on set to true', () => {
-  assertSnapshot(<ToggleSwitch label="On toggle" on={true} />)
+  assertSnapshot(<ToggleSwitch on={true} />)
 })
 
 test('ToggleSwitch on set to false', () => {
-  assertSnapshot(<ToggleSwitch label="Off toggle" on={false} />)
+  assertSnapshot(<ToggleSwitch on={false} />)
 })
 
 test('ToggleSwitch that is disabled', () => {
-  assertSnapshot(<ToggleSwitch label="Disabled" on={true} disabled />)
+  assertSnapshot(<ToggleSwitch on={true} disabled />)
 })
 
 test('Big ToggleSwitch', () => {
-  assertSnapshot(<ToggleSwitch label="Large toggle" size={60} />)
+  assertSnapshot(<ToggleSwitch size={60} />)
 })
 
 test('Should trigger onChange handler', () => {
   let counter = 0
   const handleChange = () => counter++
 
-  const wrapper = mountWithTheme(
-    <ToggleSwitch label="On change" onChange={handleChange} />
-  )
+  const wrapper = mountWithTheme(<ToggleSwitch onChange={handleChange} />)
 
   wrapper.find('input').simulate('change', { target: { value: '' } })
   expect(counter).toEqual(1)

@@ -14,7 +14,7 @@ exports[`Big ToggleSwitch 1`] = `
   width: 0px;
 }
 
-.c1 {
+.c0 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -22,14 +22,10 @@ exports[`Big ToggleSwitch 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  color: #262D33;
   cursor: pointer;
   display: inline-block;
-  font-size: 0.875rem;
-  font-weight: 600;
   height: 3.75rem;
   position: relative;
-  margin-right: 0.5rem;
   width: 6.5625rem;
 }
 
@@ -81,18 +77,17 @@ exports[`Big ToggleSwitch 1`] = `
   transition: 300ms;
 }
 
-.c0:focus-within {
+.c1:focus-within {
   border-radius: 3.75rem;
   box-shadow: 0 0 0 0.2rem rgba(100,81,138,0.4);
 }
 
-<label
-  className="c0 c1"
+<div
+  className="c0"
   cursor="pointer"
-  label="Large toggle"
 >
   <input
-    className="c2"
+    className="c1 c2"
     role="switch"
     type="checkbox"
   />
@@ -103,11 +98,11 @@ exports[`Big ToggleSwitch 1`] = `
       className="c5 c6"
     />
   </div>
-</label>
+</div>
 `;
 
 exports[`ToggleSwitch default 1`] = `
-.c1 {
+.c0 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -115,14 +110,10 @@ exports[`ToggleSwitch default 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  color: #262D33;
   cursor: pointer;
   display: inline-block;
-  font-size: 0.875rem;
-  font-weight: 600;
   height: 1.25rem;
   position: relative;
-  margin-right: 0.5rem;
   width: 2.1875rem;
 }
 
@@ -187,18 +178,17 @@ exports[`ToggleSwitch default 1`] = `
   transition: 300ms;
 }
 
-.c0:focus-within {
+.c1:focus-within {
   border-radius: 1.25rem;
   box-shadow: 0 0 0 0.2rem rgba(100,81,138,0.4);
 }
 
-<label
-  className="c0 c1"
+<div
+  className="c0"
   cursor="pointer"
-  label="Default toggle"
 >
   <input
-    className="c2"
+    className="c1 c2"
     role="switch"
     type="checkbox"
   />
@@ -209,11 +199,11 @@ exports[`ToggleSwitch default 1`] = `
       className="c5 c6"
     />
   </div>
-</label>
+</div>
 `;
 
 exports[`ToggleSwitch on set to false 1`] = `
-.c1 {
+.c0 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -221,14 +211,10 @@ exports[`ToggleSwitch on set to false 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  color: #262D33;
   cursor: pointer;
   display: inline-block;
-  font-size: 0.875rem;
-  font-weight: 600;
   height: 1.25rem;
   position: relative;
-  margin-right: 0.5rem;
   width: 2.1875rem;
 }
 
@@ -293,20 +279,19 @@ exports[`ToggleSwitch on set to false 1`] = `
   transition: 300ms;
 }
 
-.c0:focus-within {
+.c1:focus-within {
   border-radius: 1.25rem;
   box-shadow: 0 0 0 0.2rem rgba(100,81,138,0.4);
 }
 
-<label
-  className="c0 c1"
+<div
+  className="c0"
   cursor="pointer"
-  label="Off toggle"
 >
   <input
     aria-checked={false}
     checked={false}
-    className="c2"
+    className="c1 c2"
     role="switch"
     type="checkbox"
   />
@@ -317,11 +302,11 @@ exports[`ToggleSwitch on set to false 1`] = `
       className="c5 c6"
     />
   </div>
-</label>
+</div>
 `;
 
 exports[`ToggleSwitch on set to true 1`] = `
-.c1 {
+.c0 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -329,14 +314,10 @@ exports[`ToggleSwitch on set to true 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  color: #262D33;
   cursor: pointer;
   display: inline-block;
-  font-size: 0.875rem;
-  font-weight: 600;
   height: 1.25rem;
   position: relative;
-  margin-right: 0.5rem;
   width: 2.1875rem;
 }
 
@@ -404,20 +385,19 @@ exports[`ToggleSwitch on set to true 1`] = `
   transition: 300ms;
 }
 
-.c0:focus-within {
+.c1:focus-within {
   border-radius: 1.25rem;
   box-shadow: 0 0 0 0.2rem rgba(100,81,138,0.4);
 }
 
-<label
-  className="c0 c1"
+<div
+  className="c0"
   cursor="pointer"
-  label="On toggle"
 >
   <input
     aria-checked={true}
     checked={true}
-    className="c2"
+    className="c1 c2"
     role="switch"
     type="checkbox"
   />
@@ -428,7 +408,7 @@ exports[`ToggleSwitch on set to true 1`] = `
       className="c5 c6"
     />
   </div>
-</label>
+</div>
 `;
 
 exports[`ToggleSwitch that is disabled 1`] = `
@@ -462,7 +442,7 @@ exports[`ToggleSwitch that is disabled 1`] = `
   width: 1rem;
 }
 
-.c1 {
+.c0 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -470,13 +450,9 @@ exports[`ToggleSwitch that is disabled 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  color: #262D33;
   display: inline-block;
-  font-size: 0.875rem;
-  font-weight: 600;
   height: 1.25rem;
   position: relative;
-  margin-right: 0.5rem;
   width: 2.1875rem;
 }
 
@@ -528,19 +504,18 @@ exports[`ToggleSwitch that is disabled 1`] = `
   transition: 300ms;
 }
 
-.c0:focus-within {
+.c1:focus-within {
   border-radius: 1.25rem;
   box-shadow: 0 0 0 0.2rem rgba(100,81,138,0.4);
 }
 
-<label
-  className="c0 c1"
-  label="Disabled"
+<div
+  className="c0"
 >
   <input
     aria-checked={true}
     checked={true}
-    className="c2"
+    className="c1 c2"
     disabled={true}
     role="switch"
     type="checkbox"
@@ -555,5 +530,5 @@ exports[`ToggleSwitch that is disabled 1`] = `
   <div
     className="c7"
   />
-</label>
+</div>
 `;

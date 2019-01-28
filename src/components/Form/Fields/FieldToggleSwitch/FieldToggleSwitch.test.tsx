@@ -5,12 +5,7 @@ import { FieldToggleSwitch } from './FieldToggleSwitch'
 
 test('A FieldToggleSwitch', () => {
   assertSnapshot(
-    <FieldToggleSwitch
-      label="👍"
-      name="thumbsUp"
-      id="thumbs-up"
-      ariaId="thumb-toggle"
-    />
+    <FieldToggleSwitch label="👍" name="thumbsUp" id="thumbs-up" />
   )
 })
 
@@ -20,7 +15,6 @@ test('A FieldToggleSwitch with label aligned left', () => {
       label="👍"
       name="thumbsUp"
       id="thumbs-up"
-      ariaId="thumb-toggle"
       alignLabel="left"
     />
   )
@@ -28,12 +22,6 @@ test('A FieldToggleSwitch with label aligned left', () => {
 
 test('A FieldToggleSwitch turned on', () => {
   assertSnapshot(
-    <FieldToggleSwitch
-      label="👍"
-      name="thumbsUp"
-      id="thumbs-up"
-      on={true}
-      ariaId="thumb-toggle"
-    />
+    <FieldToggleSwitch label="👍" name="thumbsUp" id="thumbs-up" on={true} />
   )
 })

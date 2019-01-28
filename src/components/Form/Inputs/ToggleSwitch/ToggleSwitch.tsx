@@ -98,8 +98,8 @@ const InternalToggleSwitch: React.SFC<ToggleSwitchProps> = ({
         checked={on}
         disabled={disabled}
         opacity={0}
-        width="0"
-        height="0"
+        width="0px"
+        height="0px"
         role="switch"
         aria-checked={on}
         {...props}

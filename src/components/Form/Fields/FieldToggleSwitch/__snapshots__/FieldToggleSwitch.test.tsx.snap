@@ -72,7 +72,7 @@ exports[`A FieldToggleSwitch 1`] = `
   vertical-align: baseline;
 }
 
-.c5 {
+.c4 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -81,17 +81,27 @@ exports[`A FieldToggleSwitch 1`] = `
   padding: 0;
   vertical-align: baseline;
   color: #262D33;
-  cursor: pointer;
-  display: inline-block;
   font-size: 0.875rem;
   font-weight: 600;
+  margin-right: 0.5rem;
+}
+
+.c5 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  cursor: pointer;
+  display: inline-block;
   height: 1.25rem;
   position: relative;
-  margin-right: 0.5rem;
   width: 2.1875rem;
 }
 
-.c6 {
+.c7 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -104,7 +114,7 @@ exports[`A FieldToggleSwitch 1`] = `
   width: 0px;
 }
 
-.c8 {
+.c9 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -121,11 +131,11 @@ exports[`A FieldToggleSwitch 1`] = `
   top: 0;
 }
 
-.c8:hover {
+.c9:hover {
   box-shadow: 0 0 .01rem 0.01rem rgba(100,81,138,0.5);
 }
 
-.c10 {
+.c11 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -142,17 +152,17 @@ exports[`A FieldToggleSwitch 1`] = `
   width: 1rem;
 }
 
-.c9 {
+.c10 {
   -webkit-transition: 300ms;
   transition: 300ms;
 }
 
-.c7 {
+.c8 {
   -webkit-transition: 300ms;
   transition: 300ms;
 }
 
-.c4:focus-within {
+.c6:focus-within {
   border-radius: 1.25rem;
   box-shadow: 0 0 0 0.2rem rgba(100,81,138,0.4);
 }
@@ -163,7 +173,6 @@ exports[`A FieldToggleSwitch 1`] = `
   <label
     className="c1"
     htmlFor="thumbs-up"
-    id="thumb-toggle"
   >
     👍
   </label>
@@ -174,24 +183,26 @@ exports[`A FieldToggleSwitch 1`] = `
       className="c3"
     >
       <label
-        className="c4 c5"
-        cursor="pointer"
-        id="thumbs-up"
-        name="thumbsUp"
+        className="c4"
       >
-        <input
-          aria-labelledby="thumb-toggle"
-          className="c6"
-          name="thumbsUp"
-          role="switch"
-          type="checkbox"
-        />
         <div
-          className="c7 c8"
+          className="c5"
+          cursor="pointer"
         >
-          <div
-            className="c9 c10"
+          <input
+            className="c6 c7"
+            id="thumbs-up"
+            name="thumbsUp"
+            role="switch"
+            type="checkbox"
           />
+          <div
+            className="c8 c9"
+          >
+            <div
+              className="c10 c11"
+            />
+          </div>
         </div>
       </label>
     </div>
@@ -271,7 +282,7 @@ exports[`A FieldToggleSwitch turned on 1`] = `
   vertical-align: baseline;
 }
 
-.c5 {
+.c4 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -280,17 +291,27 @@ exports[`A FieldToggleSwitch turned on 1`] = `
   padding: 0;
   vertical-align: baseline;
   color: #262D33;
-  cursor: pointer;
-  display: inline-block;
   font-size: 0.875rem;
   font-weight: 600;
+  margin-right: 0.5rem;
+}
+
+.c5 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  cursor: pointer;
+  display: inline-block;
   height: 1.25rem;
   position: relative;
-  margin-right: 0.5rem;
   width: 2.1875rem;
 }
 
-.c6 {
+.c7 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -303,7 +324,7 @@ exports[`A FieldToggleSwitch turned on 1`] = `
   width: 0px;
 }
 
-.c10 {
+.c11 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -320,7 +341,7 @@ exports[`A FieldToggleSwitch turned on 1`] = `
   width: 1rem;
 }
 
-.c8 {
+.c9 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -337,11 +358,11 @@ exports[`A FieldToggleSwitch turned on 1`] = `
   top: 0;
 }
 
-.c8:hover {
+.c9:hover {
   box-shadow: 0 0 .01rem 0.01rem rgba(100,81,138,0.5);
 }
 
-.c9 {
+.c10 {
   -webkit-transform: translateX(0.9375rem);
   -ms-transform: translateX(0.9375rem);
   transform: translateX(0.9375rem);
@@ -349,12 +370,12 @@ exports[`A FieldToggleSwitch turned on 1`] = `
   transition: 300ms;
 }
 
-.c7 {
+.c8 {
   -webkit-transition: 300ms;
   transition: 300ms;
 }
 
-.c4:focus-within {
+.c6:focus-within {
   border-radius: 1.25rem;
   box-shadow: 0 0 0 0.2rem rgba(100,81,138,0.4);
 }
@@ -365,7 +386,6 @@ exports[`A FieldToggleSwitch turned on 1`] = `
   <label
     className="c1"
     htmlFor="thumbs-up"
-    id="thumb-toggle"
   >
     👍
   </label>
@@ -376,26 +396,28 @@ exports[`A FieldToggleSwitch turned on 1`] = `
       className="c3"
     >
       <label
-        className="c4 c5"
-        cursor="pointer"
-        id="thumbs-up"
-        name="thumbsUp"
+        className="c4"
       >
-        <input
-          aria-checked={true}
-          aria-labelledby="thumb-toggle"
-          checked={true}
-          className="c6"
-          name="thumbsUp"
-          role="switch"
-          type="checkbox"
-        />
         <div
-          className="c7 c8"
+          className="c5"
+          cursor="pointer"
         >
-          <div
-            className="c9 c10"
+          <input
+            aria-checked={true}
+            checked={true}
+            className="c6 c7"
+            id="thumbs-up"
+            name="thumbsUp"
+            role="switch"
+            type="checkbox"
           />
+          <div
+            className="c8 c9"
+          >
+            <div
+              className="c10 c11"
+            />
+          </div>
         </div>
       </label>
     </div>
@@ -432,7 +454,7 @@ exports[`A FieldToggleSwitch with label aligned left 1`] = `
   vertical-align: baseline;
 }
 
-.c5 {
+.c4 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -441,17 +463,27 @@ exports[`A FieldToggleSwitch with label aligned left 1`] = `
   padding: 0;
   vertical-align: baseline;
   color: #262D33;
-  cursor: pointer;
-  display: inline-block;
   font-size: 0.875rem;
   font-weight: 600;
+  margin-right: 0.5rem;
+}
+
+.c5 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  cursor: pointer;
+  display: inline-block;
   height: 1.25rem;
   position: relative;
-  margin-right: 0.5rem;
   width: 2.1875rem;
 }
 
-.c6 {
+.c7 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -464,7 +496,7 @@ exports[`A FieldToggleSwitch with label aligned left 1`] = `
   width: 0px;
 }
 
-.c8 {
+.c9 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -481,11 +513,11 @@ exports[`A FieldToggleSwitch with label aligned left 1`] = `
   top: 0;
 }
 
-.c8:hover {
+.c9:hover {
   box-shadow: 0 0 .01rem 0.01rem rgba(100,81,138,0.5);
 }
 
-.c10 {
+.c11 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -540,17 +572,17 @@ exports[`A FieldToggleSwitch with label aligned left 1`] = `
   width: 20%;
 }
 
-.c9 {
+.c10 {
   -webkit-transition: 300ms;
   transition: 300ms;
 }
 
-.c7 {
+.c8 {
   -webkit-transition: 300ms;
   transition: 300ms;
 }
 
-.c4:focus-within {
+.c6:focus-within {
   border-radius: 1.25rem;
   box-shadow: 0 0 0 0.2rem rgba(100,81,138,0.4);
 }
@@ -561,7 +593,6 @@ exports[`A FieldToggleSwitch with label aligned left 1`] = `
   <label
     className="c1"
     htmlFor="thumbs-up"
-    id="thumb-toggle"
   >
     👍
   </label>
@@ -572,24 +603,26 @@ exports[`A FieldToggleSwitch with label aligned left 1`] = `
       className="c3"
     >
       <label
-        className="c4 c5"
-        cursor="pointer"
-        id="thumbs-up"
-        name="thumbsUp"
+        className="c4"
       >
-        <input
-          aria-labelledby="thumb-toggle"
-          className="c6"
-          name="thumbsUp"
-          role="switch"
-          type="checkbox"
-        />
         <div
-          className="c7 c8"
+          className="c5"
+          cursor="pointer"
         >
-          <div
-            className="c9 c10"
+          <input
+            className="c6 c7"
+            id="thumbs-up"
+            name="thumbsUp"
+            role="switch"
+            type="checkbox"
           />
+          <div
+            className="c8 c9"
+          >
+            <div
+              className="c10 c11"
+            />
+          </div>
         </div>
       </label>
     </div>
