@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Big ToggleSwitch 1`] = `
-.c2 {
+.c3 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -14,7 +14,7 @@ exports[`Big ToggleSwitch 1`] = `
   width: 0px;
 }
 
-.c0 {
+.c1 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -29,7 +29,7 @@ exports[`Big ToggleSwitch 1`] = `
   width: 6.5625rem;
 }
 
-.c4 {
+.c5 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -46,11 +46,11 @@ exports[`Big ToggleSwitch 1`] = `
   top: 0;
 }
 
-.c4:hover {
+.c5:hover {
   box-shadow: 0 0 .01rem 0.01rem rgba(100,81,138,0.5);
 }
 
-.c6 {
+.c7 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -67,42 +67,41 @@ exports[`Big ToggleSwitch 1`] = `
   width: 3rem;
 }
 
-.c5 {
+.c6 {
   -webkit-transition: 300ms;
   transition: 300ms;
 }
 
-.c3 {
+.c4 {
   -webkit-transition: 300ms;
   transition: 300ms;
 }
 
-.c1:focus-within {
-  border-radius: 3.75rem;
+.c2:focus + .c0 {
   box-shadow: 0 0 0 0.2rem rgba(100,81,138,0.4);
 }
 
 <div
-  className="c0"
+  className="c0 c1"
   cursor="pointer"
 >
   <input
-    className="c1 c2"
+    className="c2 c0 c3"
     role="switch"
     type="checkbox"
   />
   <div
-    className="c3 c4"
+    className="c4 c0 c5"
   >
     <div
-      className="c5 c6"
+      className="c6 c0 c7"
     />
   </div>
 </div>
 `;
 
 exports[`ToggleSwitch default 1`] = `
-.c0 {
+.c1 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -117,7 +116,7 @@ exports[`ToggleSwitch default 1`] = `
   width: 2.1875rem;
 }
 
-.c2 {
+.c3 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -130,7 +129,7 @@ exports[`ToggleSwitch default 1`] = `
   width: 0px;
 }
 
-.c4 {
+.c5 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -147,11 +146,11 @@ exports[`ToggleSwitch default 1`] = `
   top: 0;
 }
 
-.c4:hover {
+.c5:hover {
   box-shadow: 0 0 .01rem 0.01rem rgba(100,81,138,0.5);
 }
 
-.c6 {
+.c7 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -168,42 +167,41 @@ exports[`ToggleSwitch default 1`] = `
   width: 1rem;
 }
 
-.c5 {
+.c6 {
   -webkit-transition: 300ms;
   transition: 300ms;
 }
 
-.c3 {
+.c4 {
   -webkit-transition: 300ms;
   transition: 300ms;
 }
 
-.c1:focus-within {
-  border-radius: 1.25rem;
+.c2:focus + .c0 {
   box-shadow: 0 0 0 0.2rem rgba(100,81,138,0.4);
 }
 
 <div
-  className="c0"
+  className="c0 c1"
   cursor="pointer"
 >
   <input
-    className="c1 c2"
+    className="c2 c0 c3"
     role="switch"
     type="checkbox"
   />
   <div
-    className="c3 c4"
+    className="c4 c0 c5"
   >
     <div
-      className="c5 c6"
+      className="c6 c0 c7"
     />
   </div>
 </div>
 `;
 
 exports[`ToggleSwitch on set to false 1`] = `
-.c0 {
+.c1 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -218,7 +216,7 @@ exports[`ToggleSwitch on set to false 1`] = `
   width: 2.1875rem;
 }
 
-.c2 {
+.c3 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -231,7 +229,7 @@ exports[`ToggleSwitch on set to false 1`] = `
   width: 0px;
 }
 
-.c4 {
+.c5 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -248,11 +246,92 @@ exports[`ToggleSwitch on set to false 1`] = `
   top: 0;
 }
 
-.c4:hover {
+.c5:hover {
   box-shadow: 0 0 .01rem 0.01rem rgba(100,81,138,0.5);
 }
 
+.c7 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border-radius: 50%;
+  bottom: 0.125rem;
+  background-color: #FFFFFF;
+  height: 1rem;
+  left: 0.125rem;
+  position: absolute;
+  width: 1rem;
+}
+
 .c6 {
+  -webkit-transition: 300ms;
+  transition: 300ms;
+}
+
+.c4 {
+  -webkit-transition: 300ms;
+  transition: 300ms;
+}
+
+.c2:focus + .c0 {
+  box-shadow: 0 0 0 0.2rem rgba(100,81,138,0.4);
+}
+
+<div
+  className="c0 c1"
+  cursor="pointer"
+>
+  <input
+    aria-checked={false}
+    checked={false}
+    className="c2 c0 c3"
+    role="switch"
+    type="checkbox"
+  />
+  <div
+    className="c4 c0 c5"
+  >
+    <div
+      className="c6 c0 c7"
+    />
+  </div>
+</div>
+`;
+
+exports[`ToggleSwitch on set to true 1`] = `
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  cursor: pointer;
+  display: inline-block;
+  height: 1.25rem;
+  position: relative;
+  width: 2.1875rem;
+}
+
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  height: 0px;
+  opacity: 0;
+  width: 0px;
+}
+
+.c7 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -270,88 +349,6 @@ exports[`ToggleSwitch on set to false 1`] = `
 }
 
 .c5 {
-  -webkit-transition: 300ms;
-  transition: 300ms;
-}
-
-.c3 {
-  -webkit-transition: 300ms;
-  transition: 300ms;
-}
-
-.c1:focus-within {
-  border-radius: 1.25rem;
-  box-shadow: 0 0 0 0.2rem rgba(100,81,138,0.4);
-}
-
-<div
-  className="c0"
-  cursor="pointer"
->
-  <input
-    aria-checked={false}
-    checked={false}
-    className="c1 c2"
-    role="switch"
-    type="checkbox"
-  />
-  <div
-    className="c3 c4"
-  >
-    <div
-      className="c5 c6"
-    />
-  </div>
-</div>
-`;
-
-exports[`ToggleSwitch on set to true 1`] = `
-.c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  cursor: pointer;
-  display: inline-block;
-  height: 1.25rem;
-  position: relative;
-  width: 2.1875rem;
-}
-
-.c2 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  height: 0px;
-  opacity: 0;
-  width: 0px;
-}
-
-.c6 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  border-radius: 50%;
-  bottom: 0.125rem;
-  background-color: #FFFFFF;
-  height: 1rem;
-  left: 0.125rem;
-  position: absolute;
-  width: 1rem;
-}
-
-.c4 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -368,11 +365,11 @@ exports[`ToggleSwitch on set to true 1`] = `
   top: 0;
 }
 
-.c4:hover {
+.c5:hover {
   box-shadow: 0 0 .01rem 0.01rem rgba(100,81,138,0.5);
 }
 
-.c5 {
+.c6 {
   -webkit-transform: translateX(0.9375rem);
   -ms-transform: translateX(0.9375rem);
   transform: translateX(0.9375rem);
@@ -380,39 +377,38 @@ exports[`ToggleSwitch on set to true 1`] = `
   transition: 300ms;
 }
 
-.c3 {
+.c4 {
   -webkit-transition: 300ms;
   transition: 300ms;
 }
 
-.c1:focus-within {
-  border-radius: 1.25rem;
+.c2:focus + .c0 {
   box-shadow: 0 0 0 0.2rem rgba(100,81,138,0.4);
 }
 
 <div
-  className="c0"
+  className="c0 c1"
   cursor="pointer"
 >
   <input
     aria-checked={true}
     checked={true}
-    className="c1 c2"
+    className="c2 c0 c3"
     role="switch"
     type="checkbox"
   />
   <div
-    className="c3 c4"
+    className="c4 c0 c5"
   >
     <div
-      className="c5 c6"
+      className="c6 c0 c7"
     />
   </div>
 </div>
 `;
 
 exports[`ToggleSwitch that is disabled 1`] = `
-.c2 {
+.c3 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -425,7 +421,7 @@ exports[`ToggleSwitch that is disabled 1`] = `
   width: 0px;
 }
 
-.c6 {
+.c7 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -442,7 +438,7 @@ exports[`ToggleSwitch that is disabled 1`] = `
   width: 1rem;
 }
 
-.c0 {
+.c1 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -456,7 +452,7 @@ exports[`ToggleSwitch that is disabled 1`] = `
   width: 2.1875rem;
 }
 
-.c4 {
+.c5 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -473,7 +469,7 @@ exports[`ToggleSwitch that is disabled 1`] = `
   top: 0;
 }
 
-.c7 {
+.c8 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -491,7 +487,7 @@ exports[`ToggleSwitch that is disabled 1`] = `
   top: 0;
 }
 
-.c5 {
+.c6 {
   -webkit-transform: translateX(0.9375rem);
   -ms-transform: translateX(0.9375rem);
   transform: translateX(0.9375rem);
@@ -499,36 +495,35 @@ exports[`ToggleSwitch that is disabled 1`] = `
   transition: 300ms;
 }
 
-.c3 {
+.c4 {
   -webkit-transition: 300ms;
   transition: 300ms;
 }
 
-.c1:focus-within {
-  border-radius: 1.25rem;
+.c2:focus + .c0 {
   box-shadow: 0 0 0 0.2rem rgba(100,81,138,0.4);
 }
 
 <div
-  className="c0"
+  className="c0 c1"
 >
   <input
     aria-checked={true}
     checked={true}
-    className="c1 c2"
+    className="c2 c0 c3"
     disabled={true}
     role="switch"
     type="checkbox"
   />
   <div
-    className="c3 c4"
+    className="c4 c0 c5"
   >
     <div
-      className="c5 c6"
+      className="c6 c0 c7"
     />
   </div>
   <div
-    className="c7"
+    className="c0 c8"
   />
 </div>
 `;
