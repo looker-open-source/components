@@ -44,12 +44,10 @@ exports[`MenuItem - active + icon 1`] = `
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 0.875rem;
-  margin-top: 0.25rem;
-  margin-bottom: 0.25rem;
   padding-left: 1rem;
   padding-right: 1rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
 .c0:hover {
@@ -66,7 +64,7 @@ exports[`MenuItem - active + icon 1`] = `
   color: #0087e1;
 }
 
-<a
+<div
   className="c0"
   onClick={[Function]}
   style={
@@ -106,7 +104,7 @@ exports[`MenuItem - active + icon 1`] = `
     </svg>
   </div>
   who!
-</a>
+</div>
 `;
 
 exports[`MenuItem - active 1`] = `
@@ -132,12 +130,10 @@ exports[`MenuItem - active 1`] = `
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 0.875rem;
-  margin-top: 0.25rem;
-  margin-bottom: 0.25rem;
   padding-left: 1rem;
   padding-right: 1rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
 .c0:hover {
@@ -154,7 +150,7 @@ exports[`MenuItem - active 1`] = `
   color: #0087e1;
 }
 
-<a
+<div
   className="c0"
   onClick={[Function]}
   style={
@@ -165,7 +161,7 @@ exports[`MenuItem - active 1`] = `
   tabIndex={0}
 >
   who!
-</a>
+</div>
 `;
 
 exports[`MenuItem - canActivate + active 1`] = `
@@ -212,12 +208,10 @@ exports[`MenuItem - canActivate + active 1`] = `
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 0.875rem;
-  margin-top: 0.25rem;
-  margin-bottom: 0.25rem;
   padding-left: 1rem;
   padding-right: 1rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
 .c0:hover {
@@ -234,7 +228,7 @@ exports[`MenuItem - canActivate + active 1`] = `
   color: #0087e1;
 }
 
-<a
+<div
   className="c0"
   onClick={[Function]}
   style={
@@ -260,7 +254,7 @@ exports[`MenuItem - canActivate + active 1`] = `
     </svg>
   </div>
   who!
-</a>
+</div>
 `;
 
 exports[`MenuItem - canActivate 1`] = `
@@ -286,12 +280,10 @@ exports[`MenuItem - canActivate 1`] = `
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 0.875rem;
-  margin-top: 0.25rem;
-  margin-bottom: 0.25rem;
   padding-left: 1rem;
   padding-right: 1rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
 .c0:hover {
@@ -319,7 +311,7 @@ exports[`MenuItem - canActivate 1`] = `
   width: 1.5rem;
 }
 
-<a
+<div
   className="c0"
   onClick={[Function]}
   style={
@@ -333,7 +325,7 @@ exports[`MenuItem - canActivate 1`] = `
     className="c1"
   />
   who!
-</a>
+</div>
 `;
 
 exports[`MenuItem - detail 1`] = `
@@ -359,12 +351,10 @@ exports[`MenuItem - detail 1`] = `
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 0.875rem;
-  margin-top: 0.25rem;
-  margin-bottom: 0.25rem;
   padding-left: 1rem;
   padding-right: 1rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
 .c0:hover {
@@ -395,7 +385,7 @@ exports[`MenuItem - detail 1`] = `
   padding-left: 1.25rem;
 }
 
-<a
+<div
   className="c0"
   onClick={[Function]}
   style={
@@ -411,7 +401,7 @@ exports[`MenuItem - detail 1`] = `
   >
     Is an excellent question
   </div>
-</a>
+</div>
 `;
 
 exports[`MenuItem - icon 1`] = `
@@ -437,12 +427,10 @@ exports[`MenuItem - icon 1`] = `
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 0.875rem;
-  margin-top: 0.25rem;
-  margin-bottom: 0.25rem;
   padding-left: 1rem;
   padding-right: 1rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
 .c0:hover {
@@ -480,7 +468,7 @@ exports[`MenuItem - icon 1`] = `
   width: 1rem;
 }
 
-<a
+<div
   className="c0"
   onClick={[Function]}
   style={
@@ -520,7 +508,7 @@ exports[`MenuItem - icon 1`] = `
     </svg>
   </div>
   who!
-</a>
+</div>
 `;
 
 exports[`MenuItem 1`] = `
@@ -546,12 +534,10 @@ exports[`MenuItem 1`] = `
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   font-size: 0.875rem;
-  margin-top: 0.25rem;
-  margin-bottom: 0.25rem;
   padding-left: 1rem;
   padding-right: 1rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
 .c0:hover {
@@ -568,7 +554,7 @@ exports[`MenuItem 1`] = `
   color: #0087e1;
 }
 
-<a
+<div
   className="c0"
   onClick={[Function]}
   style={
@@ -579,5 +565,5 @@ exports[`MenuItem 1`] = `
   tabIndex={0}
 >
   who!
-</a>
+</div>
 `;
