@@ -4,7 +4,6 @@ import { css, palette, styled } from '../../../../style'
 import { Omit, ThemedProps } from '../../../../types'
 import { CustomizableAttributes } from '../../../../types/attributes'
 import { Box, BoxProps } from '../../../Box'
-import { Label } from '../../Label'
 import { Checkbox } from '../Checkbox'
 
 interface KnobProps {
@@ -15,7 +14,7 @@ interface KnobProps {
 }
 
 export interface ToggleSwitchProps
-  extends BoxProps<HTMLLabelElement>,
+  extends BoxProps<HTMLDivElement>,
     Omit<KnobProps, 'size'> {
   size?: number
 }
@@ -88,23 +87,27 @@ const InternalToggleSwitch: React.SFC<ToggleSwitchProps> = ({
   ...props
 }) => {
   return (
-    <Label
+    <Box
       width={rem(size * 1.75)}
       height={rem(size)}
       display="inline-block"
       position="relative"
+      verticalAlign="middle"
       cursor={!disabled ? 'pointer' : undefined}
-      {...props}
     >
       <Checkbox
-        id={props.name}
-        name={props.name}
-        value={props.value}
         checked={on}
         disabled={disabled}
         opacity={0}
-        width="0px"
-        height="0px"
+        width="100%"
+        height="100%"
+        role="switch"
+        aria-checked={on}
+        position="absolute"
+        top="0"
+        left="0"
+        zIndex={1}
+        {...props}
       />
       <KnobContainer size={size} on={on} disabled={disabled} />
       {disabled && (
@@ -119,14 +122,13 @@ const InternalToggleSwitch: React.SFC<ToggleSwitchProps> = ({
           borderRadius={rem(size)}
         />
       )}
-    </Label>
+    </Box>
   )
 }
 
 export const ToggleSwitch = styled(InternalToggleSwitch)`
-  :focus-within {
-    border-radius: ${props => rem(props.size ? props.size : 20)};
-    box-shadow: 0 0 0 0.15rem ${rgba(palette.primary500, 0.25)};
+  :focus + ${Box} {
+    box-shadow: 0 0 0 0.2rem ${rgba(palette.primary500, 0.4)};
   }
 `
 

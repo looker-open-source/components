@@ -10,7 +10,7 @@ const StatusAndResources = require('../../../../../styleguide_components/StatusA
 
 ### Toggle Switch
 
-The `ToggleSwitch` component is essentially a decorated checkbox that is either toggled on or off. Its size can be changed using the `size` prop, which accepts px value as a number. Its default size is 20px.
+The `ToggleSwitch` component is essentially a decorated checkbox that is either toggled on or off. For accessibility reasons you should always provide a label with your toggle switch, you can use the `<FieldToggleSwitch>` component to quickly generate an accessible toggle switch with proper labeling. Its size can be changed using the `size` prop, which accepts px value as a number. Its default size is 20px.
 
 ```js
 class ToggleSwitchParent extends React.Component {
@@ -25,10 +25,14 @@ class ToggleSwitchParent extends React.Component {
 
   render() {
     return (
+      <Label htmlFor="switch">
+      Toggle Switch
       <ToggleSwitch
         onChange={this.handleChange.bind(this)}
         on={this.state.on}
+        id="switch"
       />
+      </Label>
     )
   }
 }

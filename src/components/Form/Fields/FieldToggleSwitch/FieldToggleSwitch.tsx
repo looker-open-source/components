@@ -1,12 +1,12 @@
 import * as React from 'react'
 import uuid from 'uuid/v4'
 import { withForm } from '../../Form'
-import { InputText, InputTextProps } from '../../Inputs/InputText/InputText'
+import { ToggleSwitch, ToggleSwitchProps } from '../../Inputs/ToggleSwitch'
 import { Field, FieldProps } from '../Field'
 
-interface FieldTextProps extends FieldProps, InputTextProps {}
+interface FieldToggleSwitchProps extends FieldProps, ToggleSwitchProps {}
 
-const InternalFieldText = (props: FieldTextProps) => {
+const InternalFieldToggleSwitch = (props: FieldToggleSwitchProps) => {
   const {
     alignLabel,
     alignValidationMessage,
@@ -15,23 +15,20 @@ const InternalFieldText = (props: FieldTextProps) => {
     labelFontWeight,
     validationMessage,
     id = uuid(),
-    ...inputTextProps
+    ...inputToggleSwitchProps
   } = props
   return (
     <Field
       id={id}
+      alignLabel={alignLabel ? alignLabel : 'right'}
       {...props}
       alignValidationMessage={
         alignValidationMessage ? alignValidationMessage : 'bottom'
       }
     >
-      <InputText
-        id={id}
-        {...inputTextProps}
-        validationType={validationMessage && validationMessage.type}
-      />
+      <ToggleSwitch id={id} {...inputToggleSwitchProps} />
     </Field>
   )
 }
 
-export const FieldText = withForm(InternalFieldText)
+export const FieldToggleSwitch = withForm(InternalFieldToggleSwitch)

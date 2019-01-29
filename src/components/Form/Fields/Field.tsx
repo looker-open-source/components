@@ -54,7 +54,12 @@ interface LabelContainerAlignment {
   mr?: SpacingSizes
 }
 
-const RequiredStar = styled(props => <span {...props}> *</span>)`
+const RequiredStar = styled(props => (
+  <span {...props} aria-hidden="true">
+    {' '}
+    *
+  </span>
+))`
   color: ${props => props.theme.colors.semanticColors.danger.darker};
 `
 const handleHorizontalAlignment = (

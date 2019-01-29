@@ -536,9 +536,11 @@ exports[`A required FieldText 1`] = `
   >
     👍
     <span
+      aria-hidden="true"
       className="c2"
     >
-       *
+       
+      *
     </span>
   </label>
   <div
