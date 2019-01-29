@@ -249,9 +249,11 @@ exports[`A required FieldCheckbox 1`] = `
   >
     👍
     <span
+      aria-hidden="true"
       className="c2"
     >
-       *
+       
+      *
     </span>
   </label>
   <div
