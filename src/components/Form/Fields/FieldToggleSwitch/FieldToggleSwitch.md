@@ -1,4 +1,4 @@
-The `<FieldCheckbox />` component is composed of a <ToggleSwitch /> component and a <Label /> component. By default, the label will render to the right of the toggle switch, which is the recommended convention, however this is adjustable with the alignLabel property.
+The `<FieldToggleSwitch />` component is composed of a `<ToggleSwitch />`   component and a `<Label />` component. By default, the label will render to the right of the toggle switch, however this is adjustable with the alignLabel property.
 
 
 ```js
