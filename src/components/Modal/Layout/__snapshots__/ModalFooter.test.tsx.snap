@@ -13,10 +13,14 @@ exports[`ModalFooter with Button 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-basis: fit-content;
+  -ms-flex-preferred-size: fit-content;
+  flex-basis: fit-content;
   -webkit-box-pack: end;
   -webkit-justify-content: flex-end;
   -ms-flex-pack: end;
   justify-content: flex-end;
+  min-height: 4.75rem;
   padding: 1.25rem;
 }
 
@@ -100,6 +104,7 @@ exports[`ModalFooter with Button 1`] = `
 <footer
   className="c0"
 >
+   
   <button
     className="c1 c2"
     style={
@@ -126,10 +131,14 @@ exports[`ModalFooter with ModalContext 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-basis: fit-content;
+  -ms-flex-preferred-size: fit-content;
+  flex-basis: fit-content;
   -webkit-box-pack: end;
   -webkit-justify-content: flex-end;
   -ms-flex-pack: end;
   justify-content: flex-end;
+  min-height: 4.75rem;
   padding: 1.25rem;
 }
 
@@ -287,6 +296,7 @@ exports[`ModalFooter with ModalContext 1`] = `
 <footer
   className="c0"
 >
+   
   <button
     className="c1 c2"
     style={

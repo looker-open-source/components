@@ -13,14 +13,20 @@ export const ModalFooter: React.SFC<ModalFooterProps> = ({
   children,
   ...props
 }) => {
+  /*
+   * @TODO / Note: When chrome supports `flex-basis: fit-content` minHeight can be removed
+   */
   return (
     <Box
-      is="footer"
-      p="large"
       display="flex"
+      flexBasis="fit-content"
+      is="footer"
       justifyContent="flex-end"
+      minHeight="4.75rem"
+      p="large"
       {...props}
     >
+      {' '}
       {children}
     </Box>
   )

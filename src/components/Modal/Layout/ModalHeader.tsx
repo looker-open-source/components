@@ -19,19 +19,24 @@ const Internal: React.SFC<ModalHeaderProps> = ({
   closeModal,
   ...props
 }) => {
+  /*
+   * @TODO / Note: When chrome supports `flex-basis: fit-content` minHeight can be removed
+   */
+
   return (
-    <Box is="header" p="large" display="flex" flexDirection="row" {...props}>
+    <Box
+      alignItems="center"
+      display="flex"
+      flexBasis="fit-content"
+      flexDirection="row"
+      is="header"
+      minHeight="4.75rem"
+      p="large"
+      {...props}
+    >
       <Box mr="xlarge">{children}</Box>
-      <Button
-        ml="auto"
-        alignSelf="end"
-        onClick={closeModal}
-        fontSize="large"
-        p="none"
-        style={{ lineHeight: 1 }}
-        variant="transparent"
-      >
-        <Icon name="Close" />
+      <Button ml="auto" p="none" variant="transparent" onClick={closeModal}>
+        <Icon name="Close" size="1.25rem" />
       </Button>
     </Box>
   )

@@ -10,6 +10,12 @@ export interface ModalContentProps extends BoxProps<HTMLDivElement> {
    * @required
    */
   children: React.ReactNode
+  /**
+   * Style the scrollable space within the ModalContent.
+   * Often p="none" is applied if componennts within the the ModalContent need to the
+   * touch the container edges.
+   */
+  innerProps?: BoxProps<HTMLDivElement>
 }
 
 interface ContentState {
@@ -41,18 +47,20 @@ class Internal extends React.Component<InternalContentProps, ContentState> {
   }
 
   public render() {
-    const { children, renderedHeight, ...props } = this.props
+    const { children, renderedHeight, innerProps, ...props } = this.props
 
     return (
       <ContentContainer
-        overflow="scroll"
+        overflow="auto"
         className={`${props.className && props.className} ${this.state
           .overflow && 'overflow'}`}
         innerRef={this.ref}
         flex="8"
         {...props}
       >
-        <Box m="large">{children}</Box>
+        <Box p="large" {...innerProps}>
+          {children}
+        </Box>
       </ContentContainer>
     )
   }
