@@ -1,17 +1,26 @@
 import * as React from 'react'
 import { IconNames } from '../../icons/build/IconNames'
-import { palette } from '../../style'
-import { Box, BoxProps } from '../Box'
+import { palette, styled } from '../../style'
+import { Box, BoxProps, BoxPropsWithout } from '../Box'
 import { Icon } from '../Icon'
 import { ModalContextProps, withModal } from '../Modal'
+
+export interface MenuIconProps
+  extends BoxPropsWithout<HTMLDivElement, 'name' | 'color' | 'size'> {
+  color: string
+  size: number
+  hoverColor: string
+}
 
 export interface MenuItemProps
   extends BoxProps<HTMLAnchorElement>,
     ModalContextProps {
   detail?: React.ReactNode
   icon?: IconNames
+
   active?: boolean
   canActivate?: boolean
+  iconProps?: MenuIconProps
 
   onClick?: () => void
 }
@@ -22,6 +31,7 @@ const MenuItemInternal: React.SFC<MenuItemProps> = ({
   closeModal,
   children,
   detail,
+  iconProps = { color: 'red', size: 20, hoverColor: 'green' },
   icon,
   ...props
 }) => {
@@ -40,7 +50,12 @@ const MenuItemInternal: React.SFC<MenuItemProps> = ({
   const itemIcon = () => {
     const placeholder = <Box width="1.5rem" />
     const iconComponent = (name: IconNames) => (
-      <Icon name={name} width="1rem" height="1rem" mr="xsmall" />
+      <Icon
+        name={name}
+        mr="xsmall"
+        {...iconProps}
+        hoverStyle={{ color: iconProps.hoverColor }}
+      />
     )
 
     if (canActivate) {
@@ -82,4 +97,4 @@ const MenuItemInternal: React.SFC<MenuItemProps> = ({
   )
 }
 
-export const MenuItem = withModal(MenuItemInternal)
+export const MenuItem = styled<MenuItemProps>(withModal(MenuItemInternal))``

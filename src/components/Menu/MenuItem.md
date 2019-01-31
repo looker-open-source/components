@@ -60,3 +60,16 @@ Note: This property behaves slightly diffently depending on the context of the `
   </MenuGroup>
 </Menu>
 ```
+
+
+```js
+  <MenuGroup>
+    <MenuItem icon="Favorite" iconProps={{color: 'green'}}>
+        Gouda
+      </MenuItem>
+      <MenuItem icon="Favorite" detail="Is often orange">
+        Cheddar
+      </MenuItem>
+    <MenuItem icon="Favorite">Swiss</MenuItem>
+  </MenuGroup>
+```
