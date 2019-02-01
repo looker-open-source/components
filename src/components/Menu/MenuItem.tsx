@@ -31,7 +31,7 @@ const MenuItemInternal: React.SFC<MenuItemProps> = ({
   closeModal,
   children,
   detail,
-  iconProps = { color: 'red', size: 20, hoverColor: 'green' },
+  iconProps,
   icon,
   ...props
 }) => {
