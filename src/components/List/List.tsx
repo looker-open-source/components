@@ -6,7 +6,6 @@ export interface ListProps
   extends BoxProps<HTMLOListElement | HTMLUListElement> {
   type?: ListTypes
   nomarker?: boolean
-  className?: string
 }
 
 export type ListTypes = 'bullet' | 'number' | 'letter'
