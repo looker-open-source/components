@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { IconNames } from '../../icons/build/IconNames'
-import { palette, styled } from '../../style'
+import { css, palette, styled } from '../../style'
 import { Box, BoxProps, BoxPropsWithout } from '../Box'
 import { Icon } from '../Icon'
 import { ModalContextProps, withModal } from '../Modal'
@@ -50,12 +50,7 @@ const MenuItemInternal: React.SFC<MenuItemProps> = ({
   const itemIcon = () => {
     const placeholder = <Box width="1.5rem" />
     const iconComponent = (name: IconNames) => (
-      <Icon
-        name={name}
-        mr="xsmall"
-        {...iconProps}
-        hoverStyle={{ color: iconProps.hoverColor }}
-      />
+      <Icon name={name} mr="xsmall" {...iconProps} />
     )
 
     if (canActivate) {
@@ -97,7 +92,20 @@ const MenuItemInternal: React.SFC<MenuItemProps> = ({
   )
 }
 
+const getIconHover = (props: MenuItemProps) => {
+  if (props.iconProps && props.iconProps.hoverColor) {
+    return css`
+      color: ${props.iconProps.hoverColor};
+    `
+  }
+
+  return false
+}
+
 export const MenuItem = styled<MenuItemProps>(withModal(MenuItemInternal))`
   :hover {
+    ${Icon} {
+      ${getIconHover};
+    }
   }
 `
