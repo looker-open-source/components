@@ -97,4 +97,7 @@ const MenuItemInternal: React.SFC<MenuItemProps> = ({
   )
 }
 
-export const MenuItem = styled<MenuItemProps>(withModal(MenuItemInternal))``
+export const MenuItem = styled<MenuItemProps>(withModal(MenuItemInternal))`
+  :hover {
+  }
+`
