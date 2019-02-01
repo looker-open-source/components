@@ -4,7 +4,7 @@ import { Box, BoxProps } from '../Box'
 
 export interface ListProps
   extends BoxProps<HTMLOListElement | HTMLUListElement> {
-  listType?: ListTypes
+  type?: ListTypes
   nomarker?: boolean
   className?: string
 }
@@ -14,10 +14,10 @@ export type ListTypes = 'bullet' | 'number' | 'letter'
 /**
  * List are stacked groups of related content that can be useful in many contexts.
  */
-const ListGenerator: React.SFC<ListProps> = ({ listType, ...props }) => {
+const ListGenerator: React.SFC<ListProps> = ({ type, ...props }) => {
   const pl = props.nomarker ? 'none' : 'medium'
   delete props.nomarker
-  switch (listType) {
+  switch (type) {
     case 'number':
     case 'letter':
       return (
@@ -41,7 +41,7 @@ const ListGenerator: React.SFC<ListProps> = ({ listType, ...props }) => {
 }
 
 function listStyleType(props: ListProps) {
-  switch (props.nomarker ? undefined : props.listType) {
+  switch (props.nomarker ? undefined : props.type) {
     case 'bullet':
       return css`
         list-style-type: disc;
