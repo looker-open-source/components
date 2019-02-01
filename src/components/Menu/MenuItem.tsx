@@ -10,6 +10,8 @@ export interface MenuIconProps
   color: string
   size: number
   hoverColor: string
+  currentColor: string
+  activeColor: string
 }
 
 export interface MenuItemProps
@@ -17,9 +19,10 @@ export interface MenuItemProps
     ModalContextProps {
   detail?: React.ReactNode
   icon?: IconNames
-
   active?: boolean
   canActivate?: boolean
+  current?: boolean
+  currentMarker?: boolean
   iconProps?: MenuIconProps
 
   onClick?: () => void
@@ -27,6 +30,8 @@ export interface MenuItemProps
 
 const MenuItemInternal: React.SFC<MenuItemProps> = ({
   active,
+  current,
+  currentMarker,
   canActivate,
   closeModal,
   children,
@@ -92,10 +97,34 @@ const MenuItemInternal: React.SFC<MenuItemProps> = ({
   )
 }
 
-const getIconHover = (props: MenuItemProps) => {
-  if (props.iconProps && props.iconProps.hoverColor) {
+function currentStyles(props: MenuItemProps) {
+  if (props.current) {
     return css`
-      color: ${props.iconProps.hoverColor};
+      background: ${palette.charcoal100};
+
+      ${Icon} {
+        color: ${props.iconProps && props.iconProps.currentColor
+          ? props.iconProps.currentColor
+          : palette.charcoal800};
+      }
+    `
+  }
+  return false
+}
+
+function currentBorder(props: MenuItemProps) {
+  if (props.current && props.currentMarker) {
+    return css`
+      ::before {
+        content: '';
+        display: block;
+        width: 4px;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: ${palette.charcoal800};
+      }
     `
   }
 
@@ -103,9 +132,16 @@ const getIconHover = (props: MenuItemProps) => {
 }
 
 export const MenuItem = styled<MenuItemProps>(withModal(MenuItemInternal))`
+  position: relative;
+  ${currentStyles};
+  ${currentBorder};
+
   :hover {
     ${Icon} {
-      ${getIconHover};
+      color: ${props =>
+        props.iconProps && props.iconProps.hoverColor
+          ? props.iconProps.hoverColor
+          : false};
     }
   }
 `

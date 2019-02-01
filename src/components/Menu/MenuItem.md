@@ -64,12 +64,12 @@ Note: This property behaves slightly diffently depending on the context of the `
 
 ```js
   <MenuGroup>
-    <MenuItem icon="Favorite" iconProps={{color: 'green'}}>
+    <MenuItem icon="Favorite" iconProps={{size: 30, color: 'red', hoverColor: 'purple'}}>
         Gouda
       </MenuItem>
-      <MenuItem icon="Favorite" detail="Is often orange">
+      <MenuItem icon="Favorite" current  currentMarker iconProps={{size: 30, color: 'red', hoverColor: 'purple'}} detail="Is often orange">
         Cheddar
       </MenuItem>
-    <MenuItem icon="Favorite">Swiss</MenuItem>
+    <MenuItem icon="Favorite" iconProps={{size: 30, color: 'red', hoverColor: 'purple'}}>Swiss</MenuItem>
   </MenuGroup>
 ```
