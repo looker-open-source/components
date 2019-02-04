@@ -1,5 +1,138 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`MenuGroup - JSX label 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  cursor: pointer;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #4C535B;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  font-size: 0.875rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.c3:hover {
+  background: #FBFBFC;
+  color: #262D33;
+}
+
+.c3:focus {
+  box-shadow: 0 0 .25rem 0.125rem #49a9f2;
+  outline: none;
+}
+
+.c3:active {
+  color: #0087e1;
+}
+
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  box-shadow: 0 4px 8px -2px #DEE1E5;
+  background-color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1rem;
+  position: -webkit-sticky;
+  position: sticky;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  top: 0;
+}
+
+.c1 {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-transform: uppercase;
+}
+
+<div
+  className="c0"
+>
+  <h2
+    className="c1 c2"
+  >
+    <div
+      className="c0"
+    >
+      Questions
+    </div>
+  </h2>
+  <div
+    className="c3"
+    onClick={[Function]}
+    style={
+      Object {
+        "textDecoration": "none",
+      }
+    }
+    tabIndex={0}
+  >
+    what?
+  </div>
+  <div
+    className="c3"
+    onClick={[Function]}
+    style={
+      Object {
+        "textDecoration": "none",
+      }
+    }
+    tabIndex={0}
+  >
+    who?
+  </div>
+  <div
+    className="c3"
+    onClick={[Function]}
+    style={
+      Object {
+        "textDecoration": "none",
+      }
+    }
+    tabIndex={0}
+  >
+    where?
+  </div>
+</div>
+`;
+
 exports[`MenuGroup - canActivate 1`] = `
 .c0 {
   border: 0;
