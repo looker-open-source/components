@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 export interface ModalContextProps {
-  closeModal?: () => void
+  closeModal?: (event?: React.SyntheticEvent, doCallbacks?: boolean) => void
 }
 
 const context: ModalContextProps = {}

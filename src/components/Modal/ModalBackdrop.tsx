@@ -1,45 +1,65 @@
+import { rgba } from 'polished'
 import * as React from 'react'
 import { Styles } from 'styled-components'
-import { styled, Theme, withTheme } from '../../style'
+import { styled } from '../../style'
 import { Box, BoxProps } from '../Box'
 import { CustomizableOverlayAttributes } from '../Overlay'
 
-export interface BackdropProps {
+export interface ModalBackdropProps extends BoxProps<HTMLElement> {
   style?: React.CSSProperties
-  theme: Theme
   className?: string
 }
 
-interface BackdropInternalProps extends BoxProps<HTMLElement> {
-  backdropStyle?: React.CSSProperties
+export const ModalBackdrop: React.SFC<ModalBackdropProps> = ({
+  style,
+  className,
+  onClick,
+}) => {
+  const bg =
+    CustomizableOverlayAttributes &&
+    rgba(
+      CustomizableOverlayAttributes.backdrop.backgroundColor,
+      CustomizableOverlayAttributes.backdrop.opacity
+    )
+
+  const zIndex = CustomizableOverlayAttributes
+    ? CustomizableOverlayAttributes.zIndex
+    : 1
+
+  return (
+    <Backdrop
+      onClick={onClick}
+      className={className}
+      bg={bg}
+      position="fixed"
+      top="0"
+      left="0"
+      bottom="0"
+      right="0"
+      zIndex={zIndex}
+      backdropStyles={style}
+    />
+  )
 }
 
-const Internal: React.SFC<BackdropProps> = ({ style, className }) => (
-  <Backdrop
-    className={className}
-    bg={CustomizableOverlayAttributes.backdrop.backgroundColor}
-    height="100%"
-    opacity={CustomizableOverlayAttributes.backdrop.opacity}
-    position="fixed"
-    style={{ cursor: 'pointer', ...style }}
-    backdropStyle={style}
-    // opacity={CustomizableOverlayAttributes.backdrop.opacity}
-    width="100%"
-  />
-)
+interface BackdropStylesProps extends ModalBackdropProps {
+  backdropStyles?: React.CSSProperties
+}
 
-export const ModalBackdrop = withTheme(Internal)
-
-const BackdropFactory = (props: BackdropInternalProps) => {
-  const { backdropStyle, ref, ...boxProps } = props
+//
+// All of this  drame is to not auto-spread `backdropStyles` onto Box and cause React run-time warnings
+//
+const BackdropFactory = (props: BackdropStylesProps) => {
+  const { backdropStyles, ref, ...boxProps } = props
   return <Box {...boxProps} ref={ref} />
 }
 
+// Backdrop styles are applied here (rather than using the inline `style={...}` prop) to ensure that
+// transitions will still apply to backdrop
 const Backdrop = styled(BackdropFactory)`
   transition: opacity ${props => props.theme.transitions.durationSimple};
   cursor: pointer;
-
-  ${props => props.backdropStyle as Styles};
+  ${props => props.backdropStyles as Styles};
 
   &.entering,
   &.exiting {

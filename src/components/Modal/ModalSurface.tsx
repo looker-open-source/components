@@ -4,49 +4,49 @@ import ScrollLock from 'react-scrolllock'
 import { Styles } from 'styled-components'
 import { styled, Theme } from '../../style'
 import { Box, BoxProps } from '../Box'
+import { CustomizableOverlayAttributes } from '../Overlay'
 import { CustomizableModalAttributes } from './Modal'
-import { ModalContext } from './ModalContext'
 
 export interface ModalSurfaceProps extends BoxProps<HTMLDivElement> {
   theme: Theme
+  animationState?: string
 }
 
 export const ModalSurface: React.SFC<ModalSurfaceProps> = ({
   children,
   className,
   style,
+
   width,
   theme,
   ...props
 }) => {
   return (
     <ScrollLock>
-      <ModalContext.Consumer>
-        {({ closeModal }) => (
-          <FocusTrap
-            focusTrapOptions={{
-              clickOutsideDeactivates: true,
-              escapeDeactivates: true,
-              onDeactivate: closeModal,
-            }}
-          >
-            <TransitionTimers
-              bg={CustomizableModalAttributes.surface.backgroundColor}
-              boxShadow={theme.shadows[3]}
-              className={className}
-              display="flex"
-              flexDirection="column"
-              maxWidth="100%"
-              position="absolute"
-              width={width}
-              surfaceStyle={style}
-              {...props}
-            >
-              {children}
-            </TransitionTimers>
-          </FocusTrap>
-        )}
-      </ModalContext.Consumer>
+      <FocusTrap
+        focusTrapOptions={{
+          clickOutsideDeactivates: true,
+          escapeDeactivates: true,
+        }}
+      >
+        <TransitionTimers
+          bg={CustomizableModalAttributes.surface.backgroundColor}
+          boxShadow={theme.shadows[3]}
+          className={className}
+          display="flex"
+          flexDirection="column"
+          maxWidth="100%"
+          position="absolute"
+          width={width}
+          tabIndex={0}
+          surfaceStyle={style}
+          focusStyle={{ outline: 'none' }}
+          zIndex={CustomizableOverlayAttributes.zIndex + 1 || 1}
+          {...props}
+        >
+          {children}
+        </TransitionTimers>
+      </FocusTrap>
     </ScrollLock>
   )
 }

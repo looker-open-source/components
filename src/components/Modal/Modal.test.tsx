@@ -12,7 +12,7 @@ import { Modal } from './Modal'
 import { SimpleContent, SimpleContentSFC } from './modal.test.helpers'
 
 import { ModalBackdrop } from './ModalBackdrop'
-import { ModalContainer } from './ModalContainer'
+import { ModalPortal } from './ModalPortal'
 
 const simpleContentFactory = () => <SimpleContentSFC />
 
@@ -48,7 +48,7 @@ describe('Modal', () => {
       </ThemeProvider>
     )
 
-    expect(modal.find(ModalContainer).exists()).toEqual(false)
+    expect(modal.find(ModalPortal).exists()).toEqual(false)
     expect(modal.contains(SimpleContent)).toBeFalsy()
   })
 
@@ -59,7 +59,7 @@ describe('Modal', () => {
       </ThemeProvider>
     )
 
-    expect(modal.find(ModalContainer).exists()).toEqual(true)
+    expect(modal.find(ModalPortal).exists()).toEqual(true)
     expect(modal.contains(SimpleContent)).toBeTruthy()
   })
 
@@ -72,14 +72,14 @@ describe('Modal', () => {
       )
 
       // Drawer closed
-      expect(modal.find(ModalContainer).exists()).toBeFalsy()
+      expect(modal.find(ModalPortal).exists()).toBeFalsy()
 
       const button = modal.find(Button)
       expect(button.exists()).toBeTruthy()
       button.simulate('click') // Click to open
 
       // Drawer open
-      expect(modal.find(ModalContainer).exists()).toBeTruthy()
+      expect(modal.find(ModalPortal).exists()).toBeTruthy()
 
       const backdrop = modal.find(ModalBackdrop)
       expect(backdrop.exists()).toBeTruthy()

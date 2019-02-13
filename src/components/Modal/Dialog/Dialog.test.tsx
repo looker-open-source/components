@@ -10,7 +10,7 @@ import { ModalFooter, ModalHeader } from '../Layout'
 import { SimpleContent } from '../modal.test.helpers'
 
 import { ModalBackdrop } from '../ModalBackdrop'
-import { ModalContainer } from '../ModalContainer'
+import { ModalPortal } from '../ModalPortal'
 import { ModalSurface } from '../ModalSurface'
 import { Dialog } from './Dialog'
 
@@ -51,13 +51,13 @@ test('Dialog opens on click', () => {
     </Dialog>
   )
 
-  expect(dialog.find(ModalContainer).exists()).toBeFalsy()
+  expect(dialog.find(ModalPortal).exists()).toBeFalsy()
 
   const button = dialog.find(Button)
   expect(button.exists()).toBeTruthy()
   button.simulate('click')
 
-  expect(dialog.find(ModalContainer).exists()).toBeTruthy()
+  expect(dialog.find(ModalPortal).exists()).toBeTruthy()
 
   const backdrop = dialog.find(ModalBackdrop)
   expect(backdrop.exists()).toEqual(true)

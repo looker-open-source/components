@@ -1,11 +1,15 @@
 import { TextAlignProperty } from 'csstype'
 import * as React from 'react'
 import { fadeIn, palette, shadows } from '../../style'
-
 import { CustomizableAttributes } from '../../types/attributes'
-import { Box } from '../Box'
-import { Overlay, overlayBubbleWithContent, OverlayInteractiveProps } from './'
-import { OverlayBubbleStyleProps } from './OverlayBubble'
+import { Paragraph } from '../Text'
+import {
+  OverlayBubble,
+  OverlayBubbleStyleProps,
+  OverlayContentProps,
+  OverlayHover,
+  OverlayInteractiveProps,
+} from './'
 
 export interface TooltipProps extends OverlayInteractiveProps {
   /**
@@ -32,29 +36,26 @@ export const Tooltip: React.SFC<TooltipProps> = ({
   maxWidth = '16rem',
   ...overlayProps
 }) => {
-  const contentFormatted = (
-    <Box
-      fontSize="xsmall"
-      is="p"
-      maxWidth={maxWidth}
-      p="xsmall"
-      textAlign={textAlign}
-    >
-      {content}
-    </Box>
-  )
+  const surface = (props: OverlayContentProps) => {
+    return (
+      <OverlayBubble {...props} {...CustomizableTooltipAttributes.bubble}>
+        <Paragraph
+          fontSize="xsmall"
+          maxWidth={maxWidth}
+          p="xsmall"
+          m="none"
+          textAlign={textAlign}
+        >
+          {content}
+        </Paragraph>
+      </OverlayBubble>
+    )
+  }
 
   return (
-    <Overlay
-      trigger="hover"
-      overlayContentFactory={overlayBubbleWithContent(
-        contentFormatted,
-        CustomizableTooltipAttributes.bubble
-      )}
-      {...overlayProps}
-    >
+    <OverlayHover render={surface} {...overlayProps}>
       {children}
-    </Overlay>
+    </OverlayHover>
   )
 }
 

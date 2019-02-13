@@ -1,9 +1,13 @@
 import * as React from 'react'
 import { fadeIn, palette, shadows } from '../../style'
 import { CustomizableAttributes } from '../../types/attributes'
-import { BackdropStyle, Overlay, OverlayInteractiveProps } from './Overlay'
-import { OverlayBubbleStyleProps } from './OverlayBubble'
-import { overlayBubbleWithContent } from './popover_utils'
+import {
+  Overlay,
+  OverlayBubble,
+  OverlayBubbleStyleProps,
+  OverlayContentProps,
+  OverlayInteractiveProps,
+} from './'
 
 export interface PopoverProps extends OverlayInteractiveProps {
   content: React.ReactNode
@@ -13,28 +17,37 @@ export const Popover: React.SFC<PopoverProps> = ({
   content,
   children,
   ...overlayProps
-}) => (
-  <Overlay
-    trigger="click"
-    overlayContentFactory={overlayBubbleWithContent(
-      content,
-      CustomizablePopoverAttributes.bubble,
-      true
-    )}
-    backdropStyles={CustomizablePopoverAttributes.backdrop}
-    {...overlayProps}
-  >
-    {children}
-  </Overlay>
-)
+}) => {
+  const surface = (props: OverlayContentProps) => {
+    return (
+      <OverlayBubble
+        lockWindow={true}
+        {...props}
+        {...CustomizablePopoverAttributes.bubble}
+      >
+        {content}
+      </OverlayBubble>
+    )
+  }
+
+  return (
+    <Overlay
+      render={surface}
+      backdropStyles={CustomizablePopoverAttributes.backdrop}
+      {...overlayProps}
+    >
+      {children}
+    </Overlay>
+  )
+}
 
 export interface CustomizablePopoverAttributes extends CustomizableAttributes {
-  backdrop: BackdropStyle
+  // backdrop?: BackdropStyles
   bubble: OverlayBubbleStyleProps
 }
 
 export const CustomizablePopoverAttributes: CustomizablePopoverAttributes = {
-  backdrop: {},
+  // backdrop: {},
   bubble: {
     animation: `${fadeIn} 0.2s linear`,
     backgroundColor: palette.white,

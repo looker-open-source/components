@@ -1,9 +1,13 @@
 import * as React from 'react'
 import { palette, shadows } from '../../style'
 import { radii } from '../../style/radii'
-import { Overlay, OverlayInteractiveProps } from './Overlay'
-import { OverlayBubbleStyleProps } from './OverlayBubble'
-import { overlayBubbleWithContent } from './popover_utils'
+import {
+  Overlay,
+  OverlayBubble,
+  OverlayBubbleStyleProps,
+  OverlayContentProps,
+  OverlayInteractiveProps,
+} from './'
 
 export interface MenuOverlayProps extends OverlayInteractiveProps {
   content: React.ReactNode
@@ -31,26 +35,25 @@ export const MenuOverlay: React.SFC<MenuOverlayProps> = ({
   backdropTop,
   ...overlayProps
 }) => {
-  const backdropStyle = {
+  const backdropStyles = {
     backgroundColor: 'transparent',
     bottom: backdropBottom,
     cursor: 'default',
     left: backdropLeft,
-    opacity: 0,
     right: backdropRight,
     top: backdropTop,
   }
+
+  const surface = (props: OverlayContentProps) => {
+    return (
+      <OverlayBubble lockWindow={true} {...props} {...menuOverlayStyle}>
+        {content}
+      </OverlayBubble>
+    )
+  }
+
   return (
-    <Overlay
-      trigger="click"
-      overlayContentFactory={overlayBubbleWithContent(
-        content,
-        menuOverlayStyle,
-        true
-      )}
-      backdropStyles={backdropStyle}
-      {...overlayProps}
-    >
+    <Overlay render={surface} backdropStyles={backdropStyles} {...overlayProps}>
       {children}
     </Overlay>
   )

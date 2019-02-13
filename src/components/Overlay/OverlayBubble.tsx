@@ -4,13 +4,100 @@ import * as React from 'react'
 import { PopperArrowProps } from 'react-popper'
 import ScrollLock from 'react-scrolllock'
 import { styled } from '../../style'
-import { Box, BoxProps } from '../Box'
+import { Box } from '../Box'
+import { CustomizableOverlayAttributes } from '../Overlay'
 
 export interface OverlayBubbleArrowProps {
   backgroundColor: string
   border: React.ReactText
   borderColor: React.ReactText
 }
+
+export interface OverlayBubbleStyleProps extends OverlayBubbleArrowProps {
+  animation?: string
+  borderColor: string
+  borderRadius: string
+  boxShadow: string
+  color: string
+}
+
+export interface OverlayBubbleProps extends OverlayBubbleStyleProps {
+  arrowProps: PopperArrowProps
+  placement: Placement
+  lockWindow?: boolean
+
+  innerRef?: React.RefObject<HTMLElement>
+  eventHandlers?: React.DOMAttributes<{}>
+
+  style?: React.CSSProperties
+}
+
+class OverlayBubbleInternal extends React.Component<OverlayBubbleProps> {
+  public render() {
+    const {
+      animation,
+      children,
+      lockWindow,
+      innerRef,
+      style,
+      ...props
+    } = this.props
+
+    const content = (
+      <Box
+        p="xsmall"
+        overflow="visible"
+        innerRef={innerRef}
+        zIndex={CustomizableOverlayAttributes.zIndex + 1}
+        style={{ ...style, animation }}
+        {...this.props.eventHandlers}
+      >
+        <Box
+          bg={props.backgroundColor}
+          borderRadius={props.borderRadius}
+          border={props.border}
+          borderColor={props.borderColor}
+          boxShadow={props.boxShadow}
+          color={props.color}
+        >
+          <Box tabIndex={0} focusStyle={{ outline: 'none' }}>
+            {lockWindow ? <ScrollLock>{children}</ScrollLock> : children}
+          </Box>
+          <OverlayBubbleArrow
+            backgroundColor={props.backgroundColor}
+            border={props.border}
+            borderColor={props.borderColor}
+            data-placement={props.placement}
+            innerRef={props.arrowProps.ref}
+            style={props.arrowProps.style}
+          />
+        </Box>
+      </Box>
+    )
+
+    return lockWindow ? (
+      <FocusTrap
+        focusTrapOptions={{
+          clickOutsideDeactivates: true,
+          escapeDeactivates: true,
+        }}
+      >
+        {content}
+      </FocusTrap>
+    ) : (
+      content
+    )
+  }
+}
+
+export const OverlayBubble = React.forwardRef(
+  (props: OverlayBubbleProps, ref) => (
+    <OverlayBubbleInternal
+      innerRef={ref as React.RefObject<HTMLElement>}
+      {...props}
+    />
+  )
+)
 
 const OverlayBubbleArrow = styled.div<OverlayBubbleArrowProps>`
   position: absolute;
@@ -58,80 +145,3 @@ const OverlayBubbleArrow = styled.div<OverlayBubbleArrowProps>`
     }
   }
 `
-
-interface OverlayBubbleContainerProps extends BoxProps<HTMLDivElement> {
-  animation?: string
-}
-
-const OverlayBubbleContainer = styled<OverlayBubbleContainerProps>(
-  ({ animation, ...props }) => <Box {...props} />
-)`
-  animation: ${props => props.animation};
-`
-
-export interface OverlayBubbleStyleProps extends OverlayBubbleArrowProps {
-  animation?: string
-  borderColor: string
-  borderRadius: string
-  boxShadow: string
-  color: string
-}
-
-export interface OverlayBubbleProps extends OverlayBubbleStyleProps {
-  arrowProps: PopperArrowProps
-  placement: Placement
-  focus?: boolean
-}
-
-export const OverlayBubble: React.SFC<OverlayBubbleProps> = ({
-  focus,
-  children,
-  ...props
-}) => {
-  const content = (
-    <OverlayBubbleContainer
-      m="xsmall"
-      bg={props.backgroundColor}
-      borderRadius={props.borderRadius}
-      border={props.border}
-      borderColor={props.borderColor}
-      boxShadow={props.boxShadow}
-      color={props.color}
-      animation={props.animation}
-      overflow="visible"
-    >
-      {focus ? (
-        <ScrollLock>
-          <Box tabIndex={0} focusStyle={{ outline: 'none' }}>
-            {children}
-          </Box>
-        </ScrollLock>
-      ) : (
-        children
-      )}
-      <OverlayBubbleArrow
-        backgroundColor={props.backgroundColor}
-        border={props.border}
-        borderColor={props.borderColor}
-        innerRef={props.arrowProps.ref}
-        style={props.arrowProps.style}
-        data-placement={props.placement}
-      />
-    </OverlayBubbleContainer>
-  )
-
-  if (focus) {
-    return (
-      <FocusTrap
-        focusTrapOptions={{
-          clickOutsideDeactivates: true,
-          escapeDeactivates: true,
-        }}
-      >
-        {content}
-      </FocusTrap>
-    )
-  } else {
-    return content
-  }
-}

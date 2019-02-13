@@ -9,14 +9,16 @@ exports[`Overlay Generates a simple Overlay 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  cursor: pointer;
   display: inline-block;
   position: relative;
 }
 
 <div
   className="c0"
-  onClick={[Function]}
+  onBlur={[Function]}
+  onFocus={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
 >
   <button>
     Trigger
