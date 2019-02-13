@@ -66,25 +66,25 @@ Note: This property behaves slightly diffently depending on the context of the `
 const menuCustomizations =
   {
     backgroundColor: 'palette.purple500',
-    backgroundColorHover: 'palette.green500',
-    backgroundColorCurrent: 'palette.purple100',
-    textColor: 'white',
-    textColorHover: 'green',
-    textColorCurrent: 'teal',
-    iconColor: 'red',
-    iconColorHover: 'blue',
-    iconColorCurrent: 'yellow',
+    backgroundColorHover: 'palette.purple700',
+    backgroundColorCurrent: 'palette.purple200',
+    textColor: 'palette.purple200',
+    textColorHover: 'white',
+    textColorCurrent: 'palette.purple900',
+    iconColor: 'palette.purple300',
+    iconColorHover: 'palette.purple100',
+    iconColorCurrent: 'palette.purple500',
     iconSize: 20,
-    currentMakerColor: 'green' };
+    currentMarkerColor: 'palette.purple500' };
 
   <MenuGroup>
-    <MenuItem icon="Favorite"  customizableProps={menuCustomizations}>
+    <MenuItem icon="Home"  customizableProps={menuCustomizations}>
         Gouda
       </MenuItem>
-      <MenuItem icon="Favorite" current  currentMarker  detail="Is often orange">
+      <MenuItem icon="Favorite" current  currentMarker  detail="Is often orange" customizableProps={menuCustomizations}>
         Cheddar
       </MenuItem>
-    <MenuItem icon="Favorite" >Swiss</MenuItem>
+    <MenuItem icon="Dashboard" customizableProps={menuCustomizations}>Swiss</MenuItem>
   </MenuGroup>
 
 ```
