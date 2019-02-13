@@ -63,19 +63,21 @@ Note: This property behaves slightly diffently depending on the context of the `
 
 
 ```js
+const palette = require('../../style').palette
+
 const menuCustomizations =
   {
-    backgroundColor: 'palette.purple500',
-    backgroundColorHover: 'palette.purple700',
-    backgroundColorCurrent: 'palette.purple200',
-    textColor: 'palette.purple200',
+    backgroundColor: palette.purple500,
+    backgroundColorHover: palette.purple700,
+    backgroundColorCurrent: palette.purple200,
+    textColor: palette.purple200,
     textColorHover: 'white',
-    textColorCurrent: 'palette.purple900',
-    iconColor: 'palette.purple300',
-    iconColorHover: 'palette.purple100',
-    iconColorCurrent: 'palette.purple500',
+    textColorCurrent: palette.purple900,
+    iconColor: palette.purple300,
+    iconColorHover: palette.purple100,
+    iconColorCurrent: palette.purple500,
     iconSize: 20,
-    currentMarkerColor: 'palette.purple500' };
+    currentMarkerColor: palette.purple300 };
 
   <MenuGroup>
     <MenuItem icon="Home"  customizableProps={menuCustomizations}>
