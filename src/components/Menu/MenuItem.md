@@ -63,13 +63,28 @@ Note: This property behaves slightly diffently depending on the context of the `
 
 
 ```js
+const menuCustomizations =
+  {
+    backgroundColor: 'palette.purple500',
+    backgroundColorHover: 'palette.green500',
+    backgroundColorCurrent: 'palette.purple100',
+    textColor: 'white',
+    textColorHover: 'green',
+    textColorCurrent: 'teal',
+    iconColor: 'red',
+    iconColorHover: 'blue',
+    iconColorCurrent: 'yellow',
+    iconSize: 20,
+    currentMakerColor: 'green' };
+
   <MenuGroup>
-    <MenuItem icon="Favorite" iconProps={{size: 30, color: 'red', hoverColor: 'purple'}}>
+    <MenuItem icon="Favorite"  customizableProps={menuCustomizations}>
         Gouda
       </MenuItem>
-      <MenuItem icon="Favorite" current  currentMarker iconProps={{size: 30, color: 'red', hoverColor: 'purple'}} detail="Is often orange">
+      <MenuItem icon="Favorite" current  currentMarker  detail="Is often orange">
         Cheddar
       </MenuItem>
-    <MenuItem icon="Favorite" iconProps={{size: 30, color: 'red', hoverColor: 'purple'}}>Swiss</MenuItem>
+    <MenuItem icon="Favorite" >Swiss</MenuItem>
   </MenuGroup>
+
 ```
