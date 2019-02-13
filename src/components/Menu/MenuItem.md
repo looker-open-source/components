@@ -62,6 +62,39 @@ Note: This property behaves slightly diffently depending on the context of the `
 ```
 
 
+### Digital Marketing Menu
+```js
+const palette = require('../../style').palette
+
+const menuCustomizations =
+  {
+    backgroundColor: palette.charcoal100,
+    backgroundColorHover: palette.charcoal100,
+    backgroundColorCurrent: palette.charcoal200,
+    textColor: palette.charcoal800,
+    textColor: palette.charcoal800,
+    textColorCurrent: palette.charcoal900,
+    iconColor: palette.charcoal800,
+    iconColorHover: palette.purple500,
+    iconColorCurrent: palette.purple500,
+    iconSize: 20,
+    currentMarkerColor: palette.purple300 }
+  ;
+
+  <MenuGroup label="GOOGLE ADS">
+    <MenuItem icon="Home"  customizableProps={menuCustomizations}>
+        Gouda
+      </MenuItem>
+      <MenuItem icon="Favorite" current detail="Is often orange" customizableProps={menuCustomizations}>
+        Cheddar
+      </MenuItem>
+    <MenuItem icon="Dashboard" customizableProps={menuCustomizations}>Swiss</MenuItem>
+  </MenuGroup>
+
+```
+
+### Customized menu
+
 ```js
 const palette = require('../../style').palette
 
@@ -77,7 +110,8 @@ const menuCustomizations =
     iconColorHover: palette.purple100,
     iconColorCurrent: palette.purple500,
     iconSize: 20,
-    currentMarkerColor: palette.purple300 };
+    currentMarkerColor: palette.purple300 }
+  ;
 
   <MenuGroup>
     <MenuItem icon="Home"  customizableProps={menuCustomizations}>

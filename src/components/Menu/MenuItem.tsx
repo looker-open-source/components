@@ -144,11 +144,7 @@ function currentStyles(props: MenuItemProps) {
           : palette.charcoal100
       };
 
-      color: ${
-        props.customizableProps && props.customizableProps.textColorCurrent
-          ? props.customizableProps.textColorCurrent
-          : palette.charcoal900
-      };
+
 
       ${Icon} {
         color: ${
@@ -157,6 +153,12 @@ function currentStyles(props: MenuItemProps) {
             : palette.charcoal900
         };
       }
+
+      color: ${
+        props.customizableProps && props.customizableProps.textColorCurrent
+          ? props.customizableProps.textColorCurrent
+          : palette.charcoal900
+      };
     `
   }
   return false
