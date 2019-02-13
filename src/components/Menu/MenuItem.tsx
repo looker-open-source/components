@@ -87,16 +87,7 @@ const MenuItemInternal: React.SFC<MenuItemProps> = ({
   const itemIcon = () => {
     const placeholder = <Box width="1.5rem" />
     const iconComponent = (name: IconNames) => (
-      <Icon
-        name={name}
-        mr="xsmall"
-        size={customizableProps.iconSize}
-        color={
-          active
-            ? customizableProps.iconColorActivated
-            : customizableProps.iconColor
-        }
-      />
+      <Icon name={name} mr="xsmall" size={customizableProps.iconSize} />
     )
 
     if (canActivate) {
@@ -151,13 +142,19 @@ function currentStyles(props: MenuItemProps) {
         props.customizableProps.backgroundColorCurrent
           ? props.customizableProps.backgroundColorCurrent
           : palette.charcoal100
-      } ;
+      };
+
+      color: ${
+        props.customizableProps && props.customizableProps.textColorCurrent
+          ? props.customizableProps.textColorCurrent
+          : palette.charcoal900
+      };
 
       ${Icon} {
         color: ${
           props.customizableProps && props.customizableProps.iconColorCurrent
             ? props.customizableProps.iconColorCurrent
-            : palette.charcoal800
+            : palette.charcoal900
         };
       }
     `
@@ -187,10 +184,40 @@ function currentBorder(props: MenuItemProps) {
   return false
 }
 
+function iconColor(props: MenuItemProps) {
+  if (props.active) {
+    return css`
+      ${Icon} {
+        color: ${props.customizableProps &&
+        props.customizableProps.iconColorActivated
+          ? props.customizableProps.iconColorActivated
+          : palette.blue500};
+      }
+    `
+  } else if (props.current) {
+    return css`
+      ${Icon} {
+        color: ${props.customizableProps &&
+        props.customizableProps.iconColorCurrent
+          ? props.customizableProps.iconColorCurrent
+          : palette.charcoal900};
+      }
+    `
+  } else {
+    return css`
+      ${Icon} {
+        color: ${props.customizableProps && props.customizableProps.iconColor
+          ? props.customizableProps.iconColor
+          : palette.charcoal300};
+      }
+    `
+  }
+}
+
 export const MenuItem = styled<MenuItemProps>(withModal(MenuItemInternal))`
   position: relative;
-  ${currentStyles};
-  ${currentBorder};
+
+  ${iconColor};
 
   :hover {
     ${Icon} {
@@ -200,4 +227,7 @@ export const MenuItem = styled<MenuItemProps>(withModal(MenuItemInternal))`
           : palette.charcoal900};
     }
   }
+
+  ${currentStyles};
+  ${currentBorder};
 `
