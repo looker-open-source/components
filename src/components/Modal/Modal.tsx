@@ -151,9 +151,10 @@ export class Modal extends React.Component<ModalInternalProps, ModalState> {
     this.setState({ isOpen: true })
   }
 
-  private close = (_event?: React.SyntheticEvent, doCallbacks?: boolean) => {
-    doCallbacks = doCallbacks === undefined ? true : doCallbacks
-
+  private close = (
+    _event?: React.SyntheticEvent,
+    doCallbacks: boolean = true
+  ) => {
     if (this.props.canClose && !this.props.canClose()) return
     window.removeEventListener('keydown', this.handleEscapePress)
 
