@@ -20,25 +20,41 @@ describe('MenuOverlay', () => {
 
   test('Open menu overlay with backdrop top=50px', () => {
     assertSnapshotShallow(
-      <TestMenuOverlay content={content} backdrop={{ top: '50px' }} open />
+      <TestMenuOverlay
+        content={content}
+        backdropOffset={{ top: '50px' }}
+        open
+      />
     )
   })
 
   test('Open menu overlay with backdrop bottom=50px', () => {
     assertSnapshotShallow(
-      <TestMenuOverlay content={content} backdrop={{ bottom: '50px' }} open />
+      <TestMenuOverlay
+        content={content}
+        backdropOffset={{ bottom: '50px' }}
+        open
+      />
     )
   })
 
   test('Open menu overlay with backdrop left=50px', () => {
     assertSnapshotShallow(
-      <TestMenuOverlay content={content} backdrop={{ left: '50px' }} open />
+      <TestMenuOverlay
+        content={content}
+        backdropOffset={{ left: '50px' }}
+        open
+      />
     )
   })
 
   test('Open menu overlay with backdrop right=50px', () => {
     assertSnapshotShallow(
-      <TestMenuOverlay content={content} backdrop={{ right: '50px' }} open />
+      <TestMenuOverlay
+        content={content}
+        backdropOffset={{ right: '50px' }}
+        open
+      />
     )
   })
 })

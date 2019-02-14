@@ -12,7 +12,7 @@ import {
 
 export interface MenuOverlayProps extends OverlayInteractiveProps {
   content: React.ReactNode
-  backdrop?: {
+  backdropOffset?: {
     top?: string
     left?: string
     bottom?: string
@@ -23,13 +23,13 @@ export interface MenuOverlayProps extends OverlayInteractiveProps {
 export const MenuOverlay: React.SFC<MenuOverlayProps> = ({
   content,
   children,
-  backdrop,
+  backdropOffset,
   ...overlayProps
 }) => {
   const backdropStyles = {
     backgroundColor: 'transparent',
     cursor: 'default',
-    ...backdrop,
+    ...backdropOffset,
   }
 
   const surface = (props: OverlayContentProps) => {

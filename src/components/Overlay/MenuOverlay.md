@@ -26,10 +26,10 @@ const Menus = () => {
   )
   return (
   <Flex justifyContent="space-evenly">
-    <MenuOverlay placement="bottom" backdrop={{ top: '50px' }} content={content}>
+    <MenuOverlay placement="bottom" backdropOffset={{ top: '50px' }} content={content}>
       <Button>Menu One</Button>
     </MenuOverlay>
-    <MenuOverlay placement="bottom" backdrop={{ top: '50px' }} content={content}>
+    <MenuOverlay placement="bottom" backdropOffset={{ top: '50px' }} content={content}>
       <Button>Menu Two</Button>
     </MenuOverlay>
   </Flex>
