@@ -4,7 +4,6 @@ import ScrollLock from 'react-scrolllock'
 import { Styles } from 'styled-components'
 import { styled, Theme } from '../../style'
 import { Box, BoxProps } from '../Box'
-import { CustomizableOverlayAttributes } from '../Overlay'
 import { CustomizableModalAttributes } from './Modal'
 
 export interface ModalSurfaceProps extends BoxProps<HTMLDivElement> {
@@ -41,7 +40,7 @@ export const ModalSurface: React.SFC<ModalSurfaceProps> = ({
           tabIndex={0}
           surfaceStyle={style}
           focusStyle={{ outline: 'none' }}
-          zIndex={CustomizableOverlayAttributes.zIndex + 1 || 1}
+          zIndex={CustomizableModalAttributes.zIndex + 1}
           {...props}
         >
           {children}

@@ -5,23 +5,15 @@ import { PopperArrowProps } from 'react-popper'
 import ScrollLock from 'react-scrolllock'
 import { styled } from '../../style'
 import { Box } from '../Box'
-import { CustomizableOverlayAttributes } from '../Overlay'
+import { CustomizableModalAttributes, ModalSurfaceStyleProps } from '../Modal'
 
-export interface OverlayBubbleArrowProps {
+export interface OverlaySurfaceArrowProps {
   backgroundColor: string
   border: React.ReactText
   borderColor: React.ReactText
 }
 
-export interface OverlayBubbleStyleProps extends OverlayBubbleArrowProps {
-  animation?: string
-  borderColor: string
-  borderRadius: string
-  boxShadow: string
-  color: string
-}
-
-export interface OverlayBubbleProps extends OverlayBubbleStyleProps {
+export interface OverlaySurfaceProps extends ModalSurfaceStyleProps {
   arrowProps: PopperArrowProps
   placement: Placement
   lockWindow?: boolean
@@ -32,7 +24,7 @@ export interface OverlayBubbleProps extends OverlayBubbleStyleProps {
   style?: React.CSSProperties
 }
 
-class OverlayBubbleInternal extends React.Component<OverlayBubbleProps> {
+class OverlaySurfaceInternal extends React.Component<OverlaySurfaceProps> {
   public render() {
     const {
       animation,
@@ -48,7 +40,7 @@ class OverlayBubbleInternal extends React.Component<OverlayBubbleProps> {
         p="xsmall"
         overflow="visible"
         innerRef={innerRef}
-        zIndex={CustomizableOverlayAttributes.zIndex + 1}
+        zIndex={CustomizableModalAttributes.zIndex + 1}
         style={{ ...style, animation }}
         {...this.props.eventHandlers}
       >
@@ -63,7 +55,7 @@ class OverlayBubbleInternal extends React.Component<OverlayBubbleProps> {
           <Box tabIndex={0} focusStyle={{ outline: 'none' }}>
             {lockWindow ? <ScrollLock>{children}</ScrollLock> : children}
           </Box>
-          <OverlayBubbleArrow
+          <OverlaySurfaceArrow
             backgroundColor={props.backgroundColor}
             border={props.border}
             borderColor={props.borderColor}
@@ -90,16 +82,16 @@ class OverlayBubbleInternal extends React.Component<OverlayBubbleProps> {
   }
 }
 
-export const OverlayBubble = React.forwardRef(
-  (props: OverlayBubbleProps, ref) => (
-    <OverlayBubbleInternal
+export const OverlaySurface = React.forwardRef(
+  (props: OverlaySurfaceProps, ref) => (
+    <OverlaySurfaceInternal
       innerRef={ref as React.RefObject<HTMLElement>}
       {...props}
     />
   )
 )
 
-const OverlayBubbleArrow = styled.div<OverlayBubbleArrowProps>`
+const OverlaySurfaceArrow = styled.div<OverlaySurfaceArrowProps>`
   position: absolute;
 
   &::before {

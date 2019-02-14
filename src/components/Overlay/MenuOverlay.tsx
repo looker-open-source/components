@@ -1,54 +1,46 @@
 import * as React from 'react'
 import { palette, shadows } from '../../style'
 import { radii } from '../../style/radii'
+import { CustomizableAttributes } from '../../types/attributes'
+import { ModalSurfaceStyleProps } from '../Modal'
 import {
   Overlay,
-  OverlayBubble,
-  OverlayBubbleStyleProps,
   OverlayContentProps,
   OverlayInteractiveProps,
+  OverlaySurface,
 } from './'
 
 export interface MenuOverlayProps extends OverlayInteractiveProps {
   content: React.ReactNode
-  backdropTop?: string
-  backdropLeft?: string
-  backdropBottom?: string
-  backdropRight?: string
-}
-
-const menuOverlayStyle: OverlayBubbleStyleProps = {
-  backgroundColor: palette.white,
-  border: '1px solid',
-  borderColor: palette.charcoal200,
-  borderRadius: radii.medium,
-  boxShadow: shadows[3],
-  color: palette.charcoal900,
+  backdrop?: {
+    top?: string
+    left?: string
+    bottom?: string
+    right?: string
+  }
 }
 
 export const MenuOverlay: React.SFC<MenuOverlayProps> = ({
   content,
   children,
-  backdropBottom,
-  backdropLeft,
-  backdropRight,
-  backdropTop,
+  backdrop,
   ...overlayProps
 }) => {
   const backdropStyles = {
     backgroundColor: 'transparent',
-    bottom: backdropBottom,
     cursor: 'default',
-    left: backdropLeft,
-    right: backdropRight,
-    top: backdropTop,
+    ...backdrop,
   }
 
   const surface = (props: OverlayContentProps) => {
     return (
-      <OverlayBubble lockWindow={true} {...props} {...menuOverlayStyle}>
+      <OverlaySurface
+        lockWindow={true}
+        {...props}
+        {...CustomizableMenuOverlayAttributes.surface}
+      >
         {content}
-      </OverlayBubble>
+      </OverlaySurface>
     )
   }
 
@@ -57,4 +49,20 @@ export const MenuOverlay: React.SFC<MenuOverlayProps> = ({
       {children}
     </Overlay>
   )
+}
+
+export interface CustomizableMenuOverlayAttributes
+  extends CustomizableAttributes {
+  surface: ModalSurfaceStyleProps
+}
+
+export const CustomizableMenuOverlayAttributes: CustomizableMenuOverlayAttributes = {
+  surface: {
+    backgroundColor: palette.white,
+    border: '1px solid',
+    borderColor: palette.charcoal200,
+    borderRadius: radii.medium,
+    boxShadow: shadows[3],
+    color: palette.charcoal900,
+  },
 }

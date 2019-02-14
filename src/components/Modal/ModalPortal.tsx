@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { createPortal } from 'react-dom'
 import { Box } from '../Box'
-import { getModalRoot } from '../Modal'
-import { CustomizableOverlayAttributes } from '../Overlay'
+import { CustomizableModalAttributes } from './Modal'
+import { getModalRoot } from './modalRoot'
 
 export interface ModalPortalProps {
   innerRef?: React.RefObject<HTMLElement>
@@ -40,7 +40,7 @@ class ModalPortalInternal extends React.Component<ModalPortalProps> {
         display="flex"
         justifyContent="center"
         alignItems="center"
-        zIndex={CustomizableOverlayAttributes.zIndex || 1}
+        zIndex={CustomizableModalAttributes.zIndex}
       >
         {this.props.children}
       </Box>

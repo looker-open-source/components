@@ -461,7 +461,11 @@ ShallowWrapper {
     }
   >
     <TestMenuOverlay
-      backdropBottom="50px"
+      backdrop={
+        Object {
+          "bottom": "50px",
+        }
+      }
       content={
         <Styled(Component)>
           Hello World
@@ -483,7 +487,9 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "function",
     "props": Object {
-      "backdropBottom": "50px",
+      "backdrop": Object {
+        "bottom": "50px",
+      },
       "content": <Styled(Component)>
         Hello World
       </Styled(Component)>,
@@ -499,7 +505,9 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "function",
       "props": Object {
-        "backdropBottom": "50px",
+        "backdrop": Object {
+          "bottom": "50px",
+        },
         "content": <Styled(Component)>
           Hello World
         </Styled(Component)>,
@@ -730,7 +738,11 @@ ShallowWrapper {
     }
   >
     <TestMenuOverlay
-      backdropLeft="50px"
+      backdrop={
+        Object {
+          "left": "50px",
+        }
+      }
       content={
         <Styled(Component)>
           Hello World
@@ -752,7 +764,9 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "function",
     "props": Object {
-      "backdropLeft": "50px",
+      "backdrop": Object {
+        "left": "50px",
+      },
       "content": <Styled(Component)>
         Hello World
       </Styled(Component)>,
@@ -768,7 +782,9 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "function",
       "props": Object {
-        "backdropLeft": "50px",
+        "backdrop": Object {
+          "left": "50px",
+        },
         "content": <Styled(Component)>
           Hello World
         </Styled(Component)>,
@@ -999,7 +1015,11 @@ ShallowWrapper {
     }
   >
     <TestMenuOverlay
-      backdropRight="50px"
+      backdrop={
+        Object {
+          "right": "50px",
+        }
+      }
       content={
         <Styled(Component)>
           Hello World
@@ -1021,7 +1041,9 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "function",
     "props": Object {
-      "backdropRight": "50px",
+      "backdrop": Object {
+        "right": "50px",
+      },
       "content": <Styled(Component)>
         Hello World
       </Styled(Component)>,
@@ -1037,7 +1059,9 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "function",
       "props": Object {
-        "backdropRight": "50px",
+        "backdrop": Object {
+          "right": "50px",
+        },
         "content": <Styled(Component)>
           Hello World
         </Styled(Component)>,
@@ -1268,7 +1292,11 @@ ShallowWrapper {
     }
   >
     <TestMenuOverlay
-      backdropTop="50px"
+      backdrop={
+        Object {
+          "top": "50px",
+        }
+      }
       content={
         <Styled(Component)>
           Hello World
@@ -1290,7 +1318,9 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "function",
     "props": Object {
-      "backdropTop": "50px",
+      "backdrop": Object {
+        "top": "50px",
+      },
       "content": <Styled(Component)>
         Hello World
       </Styled(Component)>,
@@ -1306,7 +1336,9 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "function",
       "props": Object {
-        "backdropTop": "50px",
+        "backdrop": Object {
+          "top": "50px",
+        },
         "content": <Styled(Component)>
           Hello World
         </Styled(Component)>,

@@ -1,12 +1,12 @@
 import * as React from 'react'
 import { fadeIn, palette, shadows } from '../../style'
 import { CustomizableAttributes } from '../../types/attributes'
+import { ModalSurfaceStyleProps } from '../Modal'
 import {
-  OverlayBubble,
-  OverlayBubbleStyleProps,
   OverlayContentProps,
   OverlayHover,
   OverlayInteractiveProps,
+  OverlaySurface,
 } from './'
 
 export interface RichTooltipProps extends OverlayInteractiveProps {
@@ -20,9 +20,9 @@ export const RichTooltip: React.SFC<RichTooltipProps> = ({
 }) => {
   const surface = (props: OverlayContentProps) => {
     return (
-      <OverlayBubble {...props} {...CustomizableRichTooltipAttributes.bubble}>
+      <OverlaySurface {...props} {...CustomizableRichTooltipAttributes.surface}>
         {content}
-      </OverlayBubble>
+      </OverlaySurface>
     )
   }
 
@@ -35,11 +35,11 @@ export const RichTooltip: React.SFC<RichTooltipProps> = ({
 
 export interface CustomizableRichTooltipAttributes
   extends CustomizableAttributes {
-  bubble: OverlayBubbleStyleProps
+  surface: ModalSurfaceStyleProps
 }
 
 export const CustomizableRichTooltipAttributes: CustomizableRichTooltipAttributes = {
-  bubble: {
+  surface: {
     animation: `${fadeIn} 0.2s linear`,
     backgroundColor: palette.white,
     border: '1px solid',

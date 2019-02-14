@@ -3,7 +3,7 @@ import * as React from 'react'
 import { Styles } from 'styled-components'
 import { styled } from '../../style'
 import { Box, BoxProps } from '../Box'
-import { CustomizableOverlayAttributes } from '../Overlay'
+import { CustomizableModalAttributes } from './Modal'
 
 export interface ModalBackdropProps extends BoxProps<HTMLElement> {
   style?: React.CSSProperties
@@ -15,28 +15,20 @@ export const ModalBackdrop: React.SFC<ModalBackdropProps> = ({
   className,
   onClick,
 }) => {
-  const bg =
-    CustomizableOverlayAttributes &&
-    rgba(
-      CustomizableOverlayAttributes.backdrop.backgroundColor,
-      CustomizableOverlayAttributes.backdrop.opacity
-    )
-
-  const zIndex = CustomizableOverlayAttributes
-    ? CustomizableOverlayAttributes.zIndex
-    : 1
-
   return (
     <Backdrop
       onClick={onClick}
       className={className}
-      bg={bg}
+      bg={rgba(
+        CustomizableModalAttributes.backdrop.backgroundColor,
+        CustomizableModalAttributes.backdrop.opacity
+      )}
       position="fixed"
       top="0"
       left="0"
       bottom="0"
       right="0"
-      zIndex={zIndex}
+      zIndex={CustomizableModalAttributes.zIndex}
       backdropStyles={style}
     />
   )
@@ -66,3 +58,8 @@ const Backdrop = styled(BackdropFactory)`
     opacity: 0.01;
   }
 `
+
+export interface BackdropStyles {
+  backgroundColor: string
+  opacity?: number
+}

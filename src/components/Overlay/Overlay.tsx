@@ -1,10 +1,8 @@
 import { Placement } from 'popper.js'
 import * as React from 'react'
 import { Popper, PopperArrowProps } from 'react-popper'
-import { palette } from '../../style'
-import { CustomizableAttributes } from '../../types/attributes'
-import { Box } from '../Box'
 import { ModalBackdrop, ModalContext } from '../Modal'
+import { OverlayTrigger } from './OverlayTrigger'
 
 export interface OverlayContentProps {
   ref: React.Ref<HTMLElement>
@@ -47,9 +45,9 @@ export interface OverlayProps extends OverlayInteractiveProps {
    * callback receives the following props:
    *
    * **arrowProps**: properties used to correctly position the arrow on a
-   * content bubble **placement**: the location of the arrow.
+   * content surface **placement**: the location of the arrow.
    *
-   * See OverlayBubble.tsx for an example of how to use these properties.
+   * See OverlaySurface.tsx for an example of how to use these properties.
    */
   render: (props: OverlayContentProps) => React.ReactNode
   /**
@@ -67,7 +65,7 @@ export interface OverlayState {
 /**
  * Overlay is a low-level component that can be used to build Popovers,
  * Tooltips, Modals, etc. It handles coordinating a trigger component, like a
- * Button or Link, with the rendering of an "overlay" or "content bubble" that
+ * Button or Link, with the rendering of an "overlay" or "content surface" that
  * appears above other content in the page.
  *
  * Under the hood, Overlay is powered by [Popper.js](https://popper.js.org/) and
@@ -122,12 +120,13 @@ export class Overlay extends React.Component<OverlayProps, OverlayState> {
 
     return (
       <ModalContext.Provider value={{ closeModal: this.close }}>
-        {overlayTrigger(
-          this.state.isOpen,
-          this.props.children,
-          this.triggerRef,
-          triggerEventHandlers
-        )}
+        <OverlayTrigger
+          isOpen={this.state.isOpen}
+          ref={this.triggerRef}
+          eventHandlers={triggerEventHandlers}
+        >
+          {this.props.children}
+        </OverlayTrigger>
         {surface}
       </ModalContext.Provider>
     )
@@ -177,45 +176,4 @@ export class Overlay extends React.Component<OverlayProps, OverlayState> {
 
     this.close()
   }
-}
-
-export interface BackdropStyles {
-  backgroundColor: string
-  opacity?: number
-}
-
-export interface CustomizableOverlayAttributesProps
-  extends CustomizableAttributes {
-  zIndex: number
-  backdrop: BackdropStyles
-}
-
-export const CustomizableOverlayAttributes: CustomizableOverlayAttributesProps = {
-  backdrop: { backgroundColor: palette.charcoal200, opacity: 0.6 },
-  zIndex: 0,
-}
-
-export const overlayTrigger = (
-  isOpen: boolean,
-  children?: React.ReactNode,
-  ref?: any,
-  eventHandlers?: React.DOMAttributes<{}>
-) => {
-  if (!children) return
-
-  const zIndex = isOpen
-    ? CustomizableOverlayAttributes.zIndex + 1 || 1
-    : undefined
-
-  return (
-    <Box
-      display="inline-block"
-      position="relative"
-      innerRef={ref}
-      zIndex={zIndex}
-      {...eventHandlers}
-    >
-      {children}
-    </Box>
-  )
 }

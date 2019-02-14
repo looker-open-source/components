@@ -2,13 +2,13 @@ import { TextAlignProperty } from 'csstype'
 import * as React from 'react'
 import { fadeIn, palette, shadows } from '../../style'
 import { CustomizableAttributes } from '../../types/attributes'
+import { ModalSurfaceStyleProps } from '../Modal'
 import { Paragraph } from '../Text'
 import {
-  OverlayBubble,
-  OverlayBubbleStyleProps,
   OverlayContentProps,
   OverlayHover,
   OverlayInteractiveProps,
+  OverlaySurface,
 } from './'
 
 export interface TooltipProps extends OverlayInteractiveProps {
@@ -38,7 +38,7 @@ export const Tooltip: React.SFC<TooltipProps> = ({
 }) => {
   const surface = (props: OverlayContentProps) => {
     return (
-      <OverlayBubble {...props} {...CustomizableTooltipAttributes.bubble}>
+      <OverlaySurface {...props} {...CustomizableTooltipAttributes.surface}>
         <Paragraph
           fontSize="xsmall"
           maxWidth={maxWidth}
@@ -48,7 +48,7 @@ export const Tooltip: React.SFC<TooltipProps> = ({
         >
           {content}
         </Paragraph>
-      </OverlayBubble>
+      </OverlaySurface>
     )
   }
 
@@ -60,11 +60,11 @@ export const Tooltip: React.SFC<TooltipProps> = ({
 }
 
 export interface CustomizableTooltipAttributes extends CustomizableAttributes {
-  bubble: OverlayBubbleStyleProps
+  surface: ModalSurfaceStyleProps
 }
 
 export const CustomizableTooltipAttributes: CustomizableTooltipAttributes = {
-  bubble: {
+  surface: {
     animation: `${fadeIn} 0.2s linear`,
     backgroundColor: palette.charcoal600,
     border: 'none',

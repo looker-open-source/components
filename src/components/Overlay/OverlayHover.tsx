@@ -1,7 +1,8 @@
 import * as React from 'react'
 import { Popper } from 'react-popper'
 import { ModalContext } from '../Modal'
-import { OverlayProps, OverlayState, overlayTrigger } from './Overlay'
+import { OverlayProps, OverlayState } from './Overlay'
+import { OverlayTrigger } from './OverlayTrigger'
 
 export class OverlayHover extends React.Component<OverlayProps, OverlayState> {
   public static defaultProps: OverlayProps = { open: false, render: () => null }
@@ -51,12 +52,13 @@ export class OverlayHover extends React.Component<OverlayProps, OverlayState> {
 
     return (
       <ModalContext.Provider value={{ closeModal: this.close }}>
-        {overlayTrigger(
-          this.state.isOpen,
-          this.props.children,
-          this.triggerRef,
-          triggerEventHandlers
-        )}
+        <OverlayTrigger
+          isOpen={this.state.isOpen}
+          ref={this.triggerRef}
+          eventHandlers={triggerEventHandlers}
+        >
+          {this.props.children}
+        </OverlayTrigger>
         {surface}
       </ModalContext.Provider>
     )

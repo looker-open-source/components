@@ -1,12 +1,12 @@
 import * as React from 'react'
 import { fadeIn, palette, shadows } from '../../style'
 import { CustomizableAttributes } from '../../types/attributes'
+import { ModalSurfaceStyleProps } from '../Modal'
 import {
   Overlay,
-  OverlayBubble,
-  OverlayBubbleStyleProps,
   OverlayContentProps,
   OverlayInteractiveProps,
+  OverlaySurface,
 } from './'
 
 export interface PopoverProps extends OverlayInteractiveProps {
@@ -20,35 +20,29 @@ export const Popover: React.SFC<PopoverProps> = ({
 }) => {
   const surface = (props: OverlayContentProps) => {
     return (
-      <OverlayBubble
+      <OverlaySurface
         lockWindow={true}
         {...props}
-        {...CustomizablePopoverAttributes.bubble}
+        {...CustomizablePopoverAttributes.surface}
       >
         {content}
-      </OverlayBubble>
+      </OverlaySurface>
     )
   }
 
   return (
-    <Overlay
-      render={surface}
-      backdropStyles={CustomizablePopoverAttributes.backdrop}
-      {...overlayProps}
-    >
+    <Overlay render={surface} {...overlayProps}>
       {children}
     </Overlay>
   )
 }
 
 export interface CustomizablePopoverAttributes extends CustomizableAttributes {
-  // backdrop?: BackdropStyles
-  bubble: OverlayBubbleStyleProps
+  surface: ModalSurfaceStyleProps
 }
 
 export const CustomizablePopoverAttributes: CustomizablePopoverAttributes = {
-  // backdrop: {},
-  bubble: {
+  surface: {
     animation: `${fadeIn} 0.2s linear`,
     backgroundColor: palette.white,
     border: '1px solid',

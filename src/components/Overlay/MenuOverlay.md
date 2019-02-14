@@ -14,7 +14,6 @@ The `MenuOverlay` component is composed of an `Overlay` with a transparent backd
 
 Try scrolling down so the two menu buttons are at the top of the screen. The backdrop is adjusted 50px from the top, so clicking the other menu button while the current menu overlay is still open will close the current menu and open the new menu overlay.
 
-
 ```js
 const Menus = () => {
   const content = (<Box width="260px" maxHeight="90vh" my="none" style={{ overflowY: 'auto' }}>
@@ -27,10 +26,10 @@ const Menus = () => {
   )
   return (
   <Flex justifyContent="space-evenly">
-    <MenuOverlay placement="bottom" backdropTop="50px" content={content}>
+    <MenuOverlay placement="bottom" backdrop={{ top: '50px' }} content={content}>
       <Button>Menu One</Button>
     </MenuOverlay>
-    <MenuOverlay placement="bottom" backdropTop="50px" content={content}>
+    <MenuOverlay placement="bottom" backdrop={{ top: '50px' }} content={content}>
       <Button>Menu Two</Button>
     </MenuOverlay>
   </Flex>

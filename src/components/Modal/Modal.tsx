@@ -2,10 +2,39 @@ import * as React from 'react'
 import { CSSTransition } from 'react-transition-group'
 import { fadeIn, palette, shadows } from '../../style'
 import { CustomizableAttributes } from '../../types/attributes'
-import { OverlayBubbleStyleProps } from '../Overlay'
-import { ModalBackdrop } from './ModalBackdrop'
+import { BackdropStyles, ModalBackdrop } from './ModalBackdrop'
 import { ModalContext } from './ModalContext'
 import { ModalPortal } from './ModalPortal'
+
+export interface ModalSurfaceStyleProps {
+  animation?: string
+  backgroundColor: string
+  border: string
+  borderColor: string
+  borderRadius: string
+  boxShadow: string
+  color: string
+}
+
+export interface CustomizableModalAttributes extends CustomizableAttributes {
+  backdrop: BackdropStyles
+  surface: ModalSurfaceStyleProps
+  zIndex: number
+}
+
+export const CustomizableModalAttributes: CustomizableModalAttributes = {
+  backdrop: { backgroundColor: palette.charcoal200, opacity: 0.6 },
+  surface: {
+    animation: `${fadeIn} 0.2s linear`,
+    backgroundColor: palette.white,
+    border: 'none',
+    borderColor: 'none',
+    borderRadius: 'medium',
+    boxShadow: shadows[3],
+    color: palette.charcoal000,
+  },
+  zIndex: 0,
+}
 
 export interface ModalProps {
   /**
@@ -146,20 +175,4 @@ export class Modal extends React.Component<ModalInternalProps, ModalState> {
 
     this.close()
   }
-}
-
-export interface CustomizableModalAttributes extends CustomizableAttributes {
-  surface: OverlayBubbleStyleProps
-}
-
-export const CustomizableModalAttributes: CustomizableModalAttributes = {
-  surface: {
-    animation: `${fadeIn} 0.2s linear`,
-    backgroundColor: palette.white,
-    border: 'none',
-    borderColor: 'none',
-    borderRadius: 'medium',
-    boxShadow: shadows[3],
-    color: palette.charcoal000,
-  },
 }
