@@ -85,7 +85,7 @@ const menuCustomizations =
     <MenuItem icon="Home"  customizableProps={menuCustomizations}>
         Gouda
       </MenuItem>
-      <MenuItem icon="Favorite" current detail="Is often orange" customizableProps={menuCustomizations}>
+      <MenuItem icon="FavoriteOutline" current detail="Is often orange" customizableProps={menuCustomizations}>
         Cheddar
       </MenuItem>
     <MenuItem icon="Dashboard" customizableProps={menuCustomizations}>Swiss</MenuItem>
@@ -117,7 +117,7 @@ const menuCustomizations =
     <MenuItem icon="Home"  customizableProps={menuCustomizations}>
         Gouda
       </MenuItem>
-      <MenuItem icon="Favorite" current  currentMarker  detail="Is often orange" customizableProps={menuCustomizations}>
+      <MenuItem icon="FavoriteOutline" current  currentMarker  detail="Is often orange" customizableProps={menuCustomizations}>
         Cheddar
       </MenuItem>
     <MenuItem icon="Dashboard" customizableProps={menuCustomizations}>Swiss</MenuItem>

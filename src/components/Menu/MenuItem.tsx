@@ -120,10 +120,6 @@ const MenuItemInternal: React.SFC<MenuItemProps> = ({
         boxShadow: `0 0 .25rem 0.125rem ${palette.blue400}`,
         outline: 'none',
       }}
-      hoverStyle={{
-        backgroundColor: customizableProps.backgroundColorHover,
-        color: customizableProps.textColorHover,
-      }}
       style={{ textDecoration: 'none' }}
       {...props}
     >
@@ -206,21 +202,40 @@ function iconColor(props: MenuItemProps) {
   }
 }
 
+function hoverStyles(props: MenuItemProps) {
+  if (props.current) {
+    return false
+  } else {
+    return css`
+      :hover {
+        background: ${props.customizableProps &&
+        props.customizableProps.backgroundColorHover
+          ? props.customizableProps.backgroundColorHover
+          : palette.charcoal100};
+        color: ${props.customizableProps &&
+        props.customizableProps.textColorHover
+          ? props.customizableProps.textColorHover
+          : palette.charcoal900};
+
+        ${Icon} {
+          color: ${props.customizableProps &&
+          props.customizableProps.iconColorHover &&
+          !props.current
+            ? props.customizableProps.iconColorHover
+            : palette.charcoal900};
+        }
+      }
+    `
+  }
+}
+
 export const MenuItem = styled<MenuItemProps>(withModal(MenuItemInternal))`
   position: relative;
-  :hover {
-    ${Icon} {
-      color: ${props =>
-        props.customizableProps && props.customizableProps.iconColorHover
-          ? props.customizableProps.iconColorHover
-          : palette.charcoal900};
-    }
+  transition: background ${transitions.durationQuick} ${easings.ease},
+    color ${transitions.durationQuick} ${easings.ease};
+  ${hoverStyles} ${Icon} {
+    transition: color ${transitions.durationQuick} ${easings.ease};
   }
-
-  ${Icon} {
-    transition: color ${transitions.durationSimple} ${easings.easeIn};
-  }
-
   ${iconColor};
   ${currentStyles};
   ${currentBorder};
