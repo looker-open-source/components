@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { IconNames } from '../../icons/build/IconNames'
-import { css, palette, styled } from '../../style'
+import { css, easings, palette, styled, transitions } from '../../style'
 import { Box, BoxProps, BoxPropsWithout } from '../Box'
 import { Icon } from '../Icon'
 import { ModalContextProps, withModal } from '../Modal'
@@ -144,16 +144,6 @@ function currentStyles(props: MenuItemProps) {
           : palette.charcoal100
       };
 
-
-
-      ${Icon} {
-        color: ${
-          props.customizableProps && props.customizableProps.iconColorCurrent
-            ? props.customizableProps.iconColorCurrent
-            : palette.charcoal900
-        };
-      }
-
       color: ${
         props.customizableProps && props.customizableProps.textColorCurrent
           ? props.customizableProps.textColorCurrent
@@ -218,9 +208,6 @@ function iconColor(props: MenuItemProps) {
 
 export const MenuItem = styled<MenuItemProps>(withModal(MenuItemInternal))`
   position: relative;
-
-  ${iconColor};
-
   :hover {
     ${Icon} {
       color: ${props =>
@@ -230,6 +217,11 @@ export const MenuItem = styled<MenuItemProps>(withModal(MenuItemInternal))`
     }
   }
 
+  ${Icon} {
+    transition: color ${transitions.durationSimple} ${easings.easeIn};
+  }
+
+  ${iconColor};
   ${currentStyles};
   ${currentBorder};
 `
