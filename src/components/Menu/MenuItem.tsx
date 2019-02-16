@@ -5,6 +5,18 @@ import { Box, BoxProps, BoxPropsWithout } from '../Box'
 import { Icon } from '../Icon'
 import { ModalContextProps, withModal } from '../Modal'
 
+export interface MenuIconCustomizations {
+  color: string
+  size: number
+}
+
+export interface MenuInteractiveCustomizations {
+  bg: string
+  color: string
+  text: string
+  icon: MenuIconCustomizations
+}
+
 export interface CustomizableProps extends BoxProps<HTMLDivElement> {
   backgroundColor: string
   backgroundColorHover: string
@@ -19,6 +31,12 @@ export interface CustomizableProps extends BoxProps<HTMLDivElement> {
   textColorCurrent: string
   textColorActivated: string
   currentMarkerColor: string
+  bg: string
+  color: string
+  icon: MenuIconCustomizations
+  hover: MenuInteractiveCustomizations
+  current: MenuInteractiveCustomizations
+  activated: MenuInteractiveCustomizations
 }
 
 export interface MenuIconProps
@@ -55,21 +73,36 @@ const MenuItemInternal: React.SFC<MenuItemProps> = ({
   icon,
   customizableProps = {
     // tslint:disable:object-literal-sort-keys
-    backgroundColor: palette.white,
-    backgroundColorHover: palette.charcoal100,
-    backgroundColorCurrent: palette.charcoal100,
-    iconSize: 20,
-    iconColor: palette.charcoal300,
-    iconColorHover: palette.charcoal900,
-    iconColorCurrent: palette.charcoal900,
-    iconColorActivated: palette.blue500,
-    textColor: palette.charcoal600,
-    textColorHover: palette.charcoal900,
-    textColorCurrent: palette.charcoal900,
-    textColorActivated: palette.blue500,
     currentMarkerColor: palette.charcoal900,
-    // tslint:enable:object-literal-sort-keys
+
+    bg: palette.white,
+    color: palette.charcoal600,
+    icon: {
+      color: palette.charcoal300,
+      size: 20,
+    },
+    hover: {
+      bg: palette.charcoal100,
+      color: palette.charcoal900,
+      icon: {
+        color: palette.charcoal900,
+      },
+    },
+    current: {
+      bg: palette.charcoal100,
+      color: palette.charcoal900,
+      icon: {
+        color: palette.charcoal900,
+      },
+    },
+    activated: {
+      color: palette.blue500,
+      icon: {
+        color: palette.blue500,
+      },
+    },
   },
+  // tslint:enable:object-literal-sort-keys
   ...props
 }) => {
   const formatDetail = (content?: React.ReactNode) =>
@@ -87,7 +120,7 @@ const MenuItemInternal: React.SFC<MenuItemProps> = ({
   const itemIcon = () => {
     const placeholder = <Box width="1.5rem" />
     const iconComponent = (name: IconNames) => (
-      <Icon name={name} mr="xsmall" size={customizableProps.iconSize} />
+      <Icon name={name} mr="xsmall" size={customizableProps.icon.size} />
     )
 
     if (canActivate) {
@@ -103,9 +136,7 @@ const MenuItemInternal: React.SFC<MenuItemProps> = ({
     <Box
       alignItems="center"
       color={
-        active
-          ? customizableProps.textColorActivated
-          : customizableProps.textColor
+        active ? customizableProps.activated.color : customizableProps.color
       }
       display="flex"
       flexWrap="wrap"
@@ -114,8 +145,8 @@ const MenuItemInternal: React.SFC<MenuItemProps> = ({
       px="medium"
       onClick={click}
       tabIndex={0}
-      bg={customizableProps.backgroundColor}
-      activeStyle={{ color: customizableProps.textColorActivated }}
+      bg={customizableProps.bg}
+      activeStyle={{ color: customizableProps.activated.color }}
       focusStyle={{
         boxShadow: `0 0 .25rem 0.125rem ${palette.blue400}`,
         outline: 'none',
@@ -134,15 +165,14 @@ function currentStyles(props: MenuItemProps) {
   if (props.current) {
     return `
       background: ${
-        props.customizableProps &&
-        props.customizableProps.backgroundColorCurrent
-          ? props.customizableProps.backgroundColorCurrent
+        props.customizableProps && props.customizableProps.current.bg
+          ? props.customizableProps.current.bg
           : palette.charcoal100
       };
 
       color: ${
-        props.customizableProps && props.customizableProps.textColorCurrent
-          ? props.customizableProps.textColorCurrent
+        props.customizableProps && props.customizableProps.current.color
+          ? props.customizableProps.current.color
           : palette.charcoal900
       };
     `
@@ -177,8 +207,8 @@ function iconColor(props: MenuItemProps) {
     return css`
       ${Icon} {
         color: ${props.customizableProps &&
-        props.customizableProps.iconColorActivated
-          ? props.customizableProps.iconColorActivated
+        props.customizableProps.activated.color
+          ? props.customizableProps.activated.color
           : palette.blue500};
       }
     `
@@ -186,16 +216,16 @@ function iconColor(props: MenuItemProps) {
     return css`
       ${Icon} {
         color: ${props.customizableProps &&
-        props.customizableProps.iconColorCurrent
-          ? props.customizableProps.iconColorCurrent
+        props.customizableProps.current.icon.color
+          ? props.customizableProps.current.icon.color
           : palette.charcoal900};
       }
     `
   } else {
     return css`
       ${Icon} {
-        color: ${props.customizableProps && props.customizableProps.iconColor
-          ? props.customizableProps.iconColor
+        color: ${props.customizableProps && props.customizableProps.icon.color
+          ? props.customizableProps.icon.color
           : palette.charcoal300};
       }
     `
@@ -209,19 +239,18 @@ function hoverStyles(props: MenuItemProps) {
     return css`
       :hover {
         background: ${props.customizableProps &&
-        props.customizableProps.backgroundColorHover
-          ? props.customizableProps.backgroundColorHover
+        props.customizableProps.hover.bg
+          ? props.customizableProps.hover.bg
           : palette.charcoal100};
-        color: ${props.customizableProps &&
-        props.customizableProps.textColorHover
-          ? props.customizableProps.textColorHover
+        color: ${props.customizableProps && props.customizableProps.hover.color
+          ? props.customizableProps.hover.color
           : palette.charcoal900};
 
         ${Icon} {
           color: ${props.customizableProps &&
-          props.customizableProps.iconColorHover &&
+          props.customizableProps.hover.icon.color &&
           !props.current
-            ? props.customizableProps.iconColorHover
+            ? props.customizableProps.hover.icon.color
             : palette.charcoal900};
         }
       }
@@ -233,7 +262,8 @@ export const MenuItem = styled<MenuItemProps>(withModal(MenuItemInternal))`
   position: relative;
   transition: background ${transitions.durationQuick} ${easings.ease},
     color ${transitions.durationQuick} ${easings.ease};
-  ${hoverStyles} ${Icon} {
+  ${hoverStyles};
+  ${Icon} {
     transition: color ${transitions.durationQuick} ${easings.ease};
   }
   ${iconColor};

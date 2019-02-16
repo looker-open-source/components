@@ -67,19 +67,32 @@ Note: This property behaves slightly diffently depending on the context of the `
 const palette = require('../../style').palette
 
 const menuCustomizations =
-  {
-    backgroundColor: palette.charcoal100,
-    backgroundColorHover: palette.charcoal100,
-    backgroundColorCurrent: palette.charcoal200,
-    textColor: palette.charcoal800,
-    textColor: palette.charcoal800,
-    textColorCurrent: palette.charcoal900,
-    iconColor: palette.charcoal800,
-    iconColorHover: palette.purple500,
-    iconColorCurrent: palette.purple500,
-    iconSize: 20,
-    currentMarkerColor: palette.purple300 }
-  ;
+    {
+    bg: palette.charcoal100,
+    color: palette.charcoal800,
+    icon: {
+      color: palette.charcoal800,
+      size: 20
+    },
+    hover: {
+      bg: palette.charcoal100,
+      color: palette.charcoal900,
+      icon: {
+        color: palette.purple500,
+      }
+    },
+    current: {
+      bg: palette.charcoal200,
+      color: palette.charcoal900,
+      icon: {
+        color: palette.purple500,
+      }
+    },
+    activated: {
+      color: palette.blue500
+    },
+    currentMarkerColor: palette.purple300
+  };
 
   <MenuGroup label="GOOGLE ADS">
     <MenuItem icon="Home"  customizableProps={menuCustomizations}>
@@ -100,18 +113,31 @@ const palette = require('../../style').palette
 
 const menuCustomizations =
   {
-    backgroundColor: palette.purple500,
-    backgroundColorHover: palette.purple700,
-    backgroundColorCurrent: palette.purple200,
-    textColor: palette.purple200,
-    textColorHover: 'white',
-    textColorCurrent: palette.purple900,
-    iconColor: palette.purple300,
-    iconColorHover: palette.purple100,
-    iconColorCurrent: palette.purple500,
-    iconSize: 20,
-    currentMarkerColor: palette.purple300 }
-  ;
+    bg: palette.purple500,
+    color: palette.purple200,
+    icon: {
+      color: palette.purple300,
+      size: 20
+    },
+    hover: {
+      bg: palette.purple700,
+      color: palette.white,
+      icon: {
+        color: palette.purple100,
+      }
+    },
+    current: {
+      bg: palette.purple200,
+      color: palette.purple900,
+      icon: {
+        color: palette.purple500,
+      }
+    },
+    activated: {
+      color: palette.blue500
+    },
+    currentMarkerColor: palette.purple300
+  };
 
   <MenuGroup>
     <MenuItem icon="Home"  customizableProps={menuCustomizations}>
