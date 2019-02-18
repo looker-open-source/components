@@ -1,10 +1,11 @@
 import * as React from 'react'
 import { palette, styled } from '../../style'
-import { Box, BoxProps } from '../Box'
+import { Box, BoxPropsWithout } from '../Box'
 import { Heading, HeadingProps } from '../Heading'
 
-export interface MenuGroupProps extends BoxProps<HTMLDivElement> {
-  label?: string
+export interface MenuGroupProps
+  extends BoxPropsWithout<HTMLDivElement, 'label'> {
+  label?: React.ReactNode
   labelProps?: HeadingProps
   labelStyles?: React.CSSProperties
   canActivate?: boolean
