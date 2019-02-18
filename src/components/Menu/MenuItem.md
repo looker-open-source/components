@@ -61,51 +61,6 @@ Note: This property behaves slightly differently depending on the context of the
 </Menu>
 ```
 
-
-### Digital Marketing Menu
-```js
-const palette = require('../../style').palette
-
-const menuCustomizations =
-    {
-    bg: palette.charcoal100,
-    color: palette.charcoal800,
-    icon: {
-      color: palette.charcoal800,
-      size: 20
-    },
-    hover: {
-      bg: palette.charcoal100,
-      color: palette.charcoal900,
-      icon: {
-        color: palette.purple500,
-      }
-    },
-    current: {
-      bg: palette.charcoal200,
-      color: palette.charcoal900,
-      icon: {
-        color: palette.purple500,
-      }
-    },
-    activated: {
-      color: palette.blue500
-    },
-    currentMarkerColor: palette.purple300
-  };
-
-  <MenuGroup label="GOOGLE ADS">
-    <MenuItem icon="Home"  customizableProps={menuCustomizations}>
-        Gouda
-      </MenuItem>
-      <MenuItem icon="FavoriteOutline" current detail="Is often orange" customizableProps={menuCustomizations}>
-        Cheddar
-      </MenuItem>
-    <MenuItem icon="Dashboard" customizableProps={menuCustomizations}>Swiss</MenuItem>
-  </MenuGroup>
-
-```
-
 ### Customized menu
 
 ```js
@@ -148,6 +103,50 @@ const menuCustomizations =
         Gouda
       </MenuItem>
       <MenuItem icon="FavoriteOutline" current  currentMarker  detail="Is often orange" customizableProps={menuCustomizations}>
+        Cheddar
+      </MenuItem>
+    <MenuItem icon="Dashboard" customizableProps={menuCustomizations}>Swiss</MenuItem>
+  </MenuGroup>
+
+```
+
+### Digital Marketing Menu
+```js
+const palette = require('../../style').palette
+
+const menuCustomizations =
+    {
+    bg: palette.charcoal100,
+    color: palette.charcoal800,
+    icon: {
+      color: palette.charcoal800,
+      size: 20
+    },
+    hover: {
+      bg: palette.charcoal100,
+      color: palette.charcoal900,
+      icon: {
+        color: palette.purple500,
+      }
+    },
+    current: {
+      bg: palette.charcoal200,
+      color: palette.charcoal900,
+      icon: {
+        color: palette.purple500,
+      }
+    },
+    activated: {
+      color: palette.blue500
+    },
+    currentMarkerColor: palette.purple300
+  };
+
+  <MenuGroup label="GOOGLE ADS">
+    <MenuItem icon="Home"  customizableProps={menuCustomizations}>
+        Gouda
+      </MenuItem>
+      <MenuItem icon="FavoriteOutline" current detail="Is often orange" customizableProps={menuCustomizations}>
         Cheddar
       </MenuItem>
     <MenuItem icon="Dashboard" customizableProps={menuCustomizations}>Swiss</MenuItem>
