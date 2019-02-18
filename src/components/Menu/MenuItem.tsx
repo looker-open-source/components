@@ -5,6 +5,11 @@ import { Box, BoxProps, BoxPropsWithout } from '../Box'
 import { Icon } from '../Icon'
 import { ModalContextProps, withModal } from '../Modal'
 
+export interface MenuMarkerCustomizations {
+  color: string
+  size: number
+}
+
 export interface MenuIconCustomizations {
   color: string
   size: number
@@ -17,7 +22,7 @@ export interface MenuInteractiveCustomizations {
   icon: MenuIconCustomizations
 }
 
-export interface CustomizableProps extends BoxProps<HTMLDivElement> {
+export interface MenuItemCustomizableProps extends BoxProps<HTMLDivElement> {
   backgroundColor: string
   backgroundColorHover: string
   backgroundColorCurrent: string
@@ -33,6 +38,7 @@ export interface CustomizableProps extends BoxProps<HTMLDivElement> {
   currentMarkerColor: string
   bg: string
   color: string
+  marker: MenuMarkerCustomizations
   icon: MenuIconCustomizations
   hover: MenuInteractiveCustomizations
   current: MenuInteractiveCustomizations
@@ -57,7 +63,7 @@ export interface MenuItemProps
   canActivate?: boolean
   current?: boolean
   currentMarker?: boolean
-  customizableProps?: CustomizableProps
+  customizableProps?: MenuItemCustomizableProps
 
   onClick?: () => void
 }
@@ -73,13 +79,15 @@ const MenuItemInternal: React.SFC<MenuItemProps> = ({
   icon,
   customizableProps = {
     // tslint:disable:object-literal-sort-keys
-    currentMarkerColor: palette.charcoal900,
-
     bg: palette.white,
     color: palette.charcoal600,
     icon: {
       color: palette.charcoal300,
       size: 20,
+    },
+    marker: {
+      size: 4,
+      color: palette.charcoal900,
     },
     hover: {
       bg: palette.charcoal100,
@@ -186,15 +194,17 @@ function currentBorder(props: MenuItemProps) {
       ::before {
         content: '';
         display: block;
-        width: 4px;
         height: 100%;
         position: absolute;
         left: 0;
         top: 0;
         background: ${props.customizableProps &&
-        props.customizableProps.currentMarkerColor
-          ? props.customizableProps.currentMarkerColor
+        props.customizableProps.marker.color
+          ? props.customizableProps.marker.color
           : palette.charcoal900};
+        width: ${props.customizableProps && props.customizableProps.marker.size
+          ? `${props.customizableProps.marker.size}px`
+          : '4px'};
       }
     `
   }

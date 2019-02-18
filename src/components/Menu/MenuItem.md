@@ -119,6 +119,10 @@ const menuCustomizations =
       color: palette.purple300,
       size: 20
     },
+    marker: {
+      color: palette.purple900,
+      size: 10
+    },
     hover: {
       bg: palette.purple700,
       color: palette.white,

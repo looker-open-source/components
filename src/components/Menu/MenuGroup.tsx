@@ -7,7 +7,6 @@ export interface MenuGroupProps extends BoxProps<HTMLDivElement> {
   label?: string
   labelProps?: HeadingProps
   labelStyles?: React.CSSProperties
-
   canActivate?: boolean
 }
 
