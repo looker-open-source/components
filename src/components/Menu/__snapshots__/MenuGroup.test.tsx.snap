@@ -11,7 +11,7 @@ exports[`MenuGroup - canActivate 1`] = `
   vertical-align: baseline;
 }
 
-.c1 {
+.c2 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -25,6 +25,7 @@ exports[`MenuGroup - canActivate 1`] = `
   -ms-flex-align: center;
   align-items: center;
   color: #4C535B;
+  background-color: #FFFFFF;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -39,21 +40,16 @@ exports[`MenuGroup - canActivate 1`] = `
   padding-bottom: 0.75rem;
 }
 
-.c1:hover {
-  background: #FBFBFC;
-  color: #262D33;
-}
-
-.c1:focus {
+.c2:focus {
   box-shadow: 0 0 .25rem 0.125rem #49a9f2;
   outline: none;
 }
 
-.c1:active {
+.c2:active {
   color: #0087e1;
 }
 
-.c2 {
+.c3 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -64,11 +60,35 @@ exports[`MenuGroup - canActivate 1`] = `
   width: 1.5rem;
 }
 
+.c1 {
+  position: relative;
+  -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c1:hover {
+  background: #F5F6F7;
+  color: #262D33;
+}
+
+.c1:hover .c4 {
+  color: #262D33;
+}
+
+.c1 .c4 {
+  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c1 .c4 {
+  color: #C1C6CC;
+}
+
 <div
   className="c0"
 >
   <div
-    className="c1"
+    className="c1 c2"
     onClick={[Function]}
     style={
       Object {
@@ -78,12 +98,12 @@ exports[`MenuGroup - canActivate 1`] = `
     tabIndex={0}
   >
     <div
-      className="c2"
+      className="c3"
     />
     what?
   </div>
   <div
-    className="c1"
+    className="c1 c2"
     onClick={[Function]}
     style={
       Object {
@@ -93,12 +113,12 @@ exports[`MenuGroup - canActivate 1`] = `
     tabIndex={0}
   >
     <div
-      className="c2"
+      className="c3"
     />
     who?
   </div>
   <div
-    className="c1"
+    className="c1 c2"
     onClick={[Function]}
     style={
       Object {
@@ -108,7 +128,7 @@ exports[`MenuGroup - canActivate 1`] = `
     tabIndex={0}
   >
     <div
-      className="c2"
+      className="c3"
     />
     where?
   </div>
@@ -126,7 +146,7 @@ exports[`MenuGroup - label 1`] = `
   vertical-align: baseline;
 }
 
-.c3 {
+.c4 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -140,6 +160,7 @@ exports[`MenuGroup - label 1`] = `
   -ms-flex-align: center;
   align-items: center;
   color: #4C535B;
+  background-color: #FFFFFF;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -154,17 +175,12 @@ exports[`MenuGroup - label 1`] = `
   padding-bottom: 0.75rem;
 }
 
-.c3:hover {
-  background: #FBFBFC;
-  color: #262D33;
-}
-
-.c3:focus {
+.c4:focus {
   box-shadow: 0 0 .25rem 0.125rem #49a9f2;
   outline: none;
 }
 
-.c3:active {
+.c4:active {
   color: #0087e1;
 }
 
@@ -197,6 +213,30 @@ exports[`MenuGroup - label 1`] = `
   text-transform: uppercase;
 }
 
+.c3 {
+  position: relative;
+  -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c3:hover {
+  background: #F5F6F7;
+  color: #262D33;
+}
+
+.c3:hover .c5 {
+  color: #262D33;
+}
+
+.c3 .c5 {
+  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c3 .c5 {
+  color: #C1C6CC;
+}
+
 <div
   className="c0"
 >
@@ -206,7 +246,7 @@ exports[`MenuGroup - label 1`] = `
     Questions
   </h2>
   <div
-    className="c3"
+    className="c3 c4"
     onClick={[Function]}
     style={
       Object {
@@ -218,7 +258,7 @@ exports[`MenuGroup - label 1`] = `
     what?
   </div>
   <div
-    className="c3"
+    className="c3 c4"
     onClick={[Function]}
     style={
       Object {
@@ -230,7 +270,7 @@ exports[`MenuGroup - label 1`] = `
     who?
   </div>
   <div
-    className="c3"
+    className="c3 c4"
     onClick={[Function]}
     style={
       Object {
@@ -255,7 +295,7 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
   vertical-align: baseline;
 }
 
-.c3 {
+.c4 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -269,6 +309,7 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
   -ms-flex-align: center;
   align-items: center;
   color: #4C535B;
+  background-color: #FFFFFF;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -283,17 +324,12 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
   padding-bottom: 0.75rem;
 }
 
-.c3:hover {
-  background: #FBFBFC;
-  color: #262D33;
-}
-
-.c3:focus {
+.c4:focus {
   box-shadow: 0 0 .25rem 0.125rem #49a9f2;
   outline: none;
 }
 
-.c3:active {
+.c4:active {
   color: #0087e1;
 }
 
@@ -326,6 +362,30 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
   text-transform: uppercase;
 }
 
+.c3 {
+  position: relative;
+  -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c3:hover {
+  background: #F5F6F7;
+  color: #262D33;
+}
+
+.c3:hover .c5 {
+  color: #262D33;
+}
+
+.c3 .c5 {
+  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c3 .c5 {
+  color: #C1C6CC;
+}
+
 <div
   className="c0"
 >
@@ -340,7 +400,7 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
     Questions
   </h2>
   <div
-    className="c3"
+    className="c3 c4"
     onClick={[Function]}
     style={
       Object {
@@ -352,7 +412,7 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
     what?
   </div>
   <div
-    className="c3"
+    className="c3 c4"
     onClick={[Function]}
     style={
       Object {
@@ -364,7 +424,7 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
     who?
   </div>
   <div
-    className="c3"
+    className="c3 c4"
     onClick={[Function]}
     style={
       Object {
@@ -389,7 +449,7 @@ exports[`MenuGroup 1`] = `
   vertical-align: baseline;
 }
 
-.c1 {
+.c2 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -403,6 +463,7 @@ exports[`MenuGroup 1`] = `
   -ms-flex-align: center;
   align-items: center;
   color: #4C535B;
+  background-color: #FFFFFF;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -417,25 +478,44 @@ exports[`MenuGroup 1`] = `
   padding-bottom: 0.75rem;
 }
 
-.c1:hover {
-  background: #FBFBFC;
-  color: #262D33;
-}
-
-.c1:focus {
+.c2:focus {
   box-shadow: 0 0 .25rem 0.125rem #49a9f2;
   outline: none;
 }
 
-.c1:active {
+.c2:active {
   color: #0087e1;
+}
+
+.c1 {
+  position: relative;
+  -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c1:hover {
+  background: #F5F6F7;
+  color: #262D33;
+}
+
+.c1:hover .c3 {
+  color: #262D33;
+}
+
+.c1 .c3 {
+  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c1 .c3 {
+  color: #C1C6CC;
 }
 
 <div
   className="c0"
 >
   <div
-    className="c1"
+    className="c1 c2"
     onClick={[Function]}
     style={
       Object {

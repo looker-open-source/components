@@ -140,7 +140,7 @@ const menuCustomizations =
     activated: {
       color: palette.blue500
     },
-    currentMarkerColor: palette.purple300
+
   };
 
   <MenuGroup>

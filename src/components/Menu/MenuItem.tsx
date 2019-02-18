@@ -6,30 +6,30 @@ import { Icon } from '../Icon'
 import { ModalContextProps, withModal } from '../Modal'
 
 export interface MenuMarkerCustomizations {
-  color: string
-  size: number
+  color?: string
+  size?: number
 }
 
 export interface MenuIconCustomizations {
-  color: string
-  size: number
+  color?: string
+  size?: number
 }
 
 export interface MenuInteractiveCustomizations {
-  bg: string
-  color: string
-  text: string
-  icon: MenuIconCustomizations
+  bg?: string
+  color?: string
+  text?: string
+  icon?: MenuIconCustomizations
 }
 
 export interface MenuItemCustomizableProps extends BoxProps<HTMLDivElement> {
-  bg: string
-  color: string
-  marker: MenuMarkerCustomizations
-  icon: MenuIconCustomizations
-  hover: MenuInteractiveCustomizations
-  current: MenuInteractiveCustomizations
-  activated: MenuInteractiveCustomizations
+  bg?: string
+  color?: string
+  marker?: MenuMarkerCustomizations
+  icon?: MenuIconCustomizations
+  hover?: MenuInteractiveCustomizations
+  current?: MenuInteractiveCustomizations
+  activated?: MenuInteractiveCustomizations
 }
 
 export interface MenuIconProps
@@ -115,7 +115,7 @@ const MenuItemInternal: React.SFC<MenuItemProps> = ({
   const itemIcon = () => {
     const placeholder = <Box width="1.5rem" />
     const iconComponent = (name: IconNames) => (
-      <Icon name={name} mr="xsmall" size={customizableProps.icon.size} />
+      <Icon name={name} mr="xsmall" size={customizableProps.icon!.size} />
     )
 
     if (canActivate) {
@@ -131,7 +131,7 @@ const MenuItemInternal: React.SFC<MenuItemProps> = ({
     <Box
       alignItems="center"
       color={
-        active ? customizableProps.activated.color : customizableProps.color
+        active ? customizableProps.activated!.color : customizableProps.color
       }
       display="flex"
       flexWrap="wrap"
@@ -141,7 +141,7 @@ const MenuItemInternal: React.SFC<MenuItemProps> = ({
       onClick={click}
       tabIndex={0}
       bg={customizableProps.bg}
-      activeStyle={{ color: customizableProps.activated.color }}
+      activeStyle={{ color: customizableProps.activated!.color }}
       focusStyle={{
         boxShadow: `0 0 .25rem 0.125rem ${palette.blue400}`,
         outline: 'none',
@@ -159,17 +159,8 @@ const MenuItemInternal: React.SFC<MenuItemProps> = ({
 function currentStyles(props: MenuItemProps) {
   if (props.current) {
     return `
-      background: ${
-        props.customizableProps && props.customizableProps.current.bg
-          ? props.customizableProps.current.bg
-          : palette.charcoal100
-      };
-
-      color: ${
-        props.customizableProps && props.customizableProps.current.color
-          ? props.customizableProps.current.color
-          : palette.charcoal900
-      };
+      background: ${props.customizableProps!.current!.bg};
+      color: ${props.customizableProps!.current!.color};
     `
   }
   return false
@@ -185,13 +176,8 @@ function currentBorder(props: MenuItemProps) {
         position: absolute;
         left: 0;
         top: 0;
-        background: ${props.customizableProps &&
-        props.customizableProps.marker.color
-          ? props.customizableProps.marker.color
-          : palette.charcoal900};
-        width: ${props.customizableProps && props.customizableProps.marker.size
-          ? `${props.customizableProps.marker.size}px`
-          : '4px'};
+        background: ${props.customizableProps!.marker!.color};
+        width: ${`${props.customizableProps!.marker!.size}px`};
       }
     `
   }
@@ -204,8 +190,8 @@ function iconColor(props: MenuItemProps) {
     return css`
       ${Icon} {
         color: ${props.customizableProps &&
-        props.customizableProps.activated.color
-          ? props.customizableProps.activated.color
+        props.customizableProps.activated!.color
+          ? props.customizableProps.activated!.color
           : palette.blue500};
       }
     `
@@ -213,16 +199,16 @@ function iconColor(props: MenuItemProps) {
     return css`
       ${Icon} {
         color: ${props.customizableProps &&
-        props.customizableProps.current.icon.color
-          ? props.customizableProps.current.icon.color
+        props.customizableProps.current!.icon!.color
+          ? props.customizableProps.current!.icon!.color
           : palette.charcoal900};
       }
     `
   } else {
     return css`
       ${Icon} {
-        color: ${props.customizableProps && props.customizableProps.icon.color
-          ? props.customizableProps.icon.color
+        color: ${props.customizableProps && props.customizableProps.icon!.color
+          ? props.customizableProps.icon!.color
           : palette.charcoal300};
       }
     `
@@ -236,18 +222,18 @@ function hoverStyles(props: MenuItemProps) {
     return css`
       :hover {
         background: ${props.customizableProps &&
-        props.customizableProps.hover.bg
-          ? props.customizableProps.hover.bg
+        props.customizableProps.hover!.bg
+          ? props.customizableProps.hover!.bg
           : palette.charcoal100};
-        color: ${props.customizableProps && props.customizableProps.hover.color
-          ? props.customizableProps.hover.color
+        color: ${props.customizableProps && props.customizableProps.hover!.color
+          ? props.customizableProps.hover!.color
           : palette.charcoal900};
 
         ${Icon} {
           color: ${props.customizableProps &&
-          props.customizableProps.hover.icon.color &&
+          props.customizableProps.hover!.icon!.color &&
           !props.current
-            ? props.customizableProps.hover.icon.color
+            ? props.customizableProps.hover!.icon!.color
             : palette.charcoal900};
         }
       }
