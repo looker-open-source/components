@@ -39,6 +39,22 @@ test('MenuItem - canActivate + active', () => {
   )
 })
 
+test('MenuItem - current', () => {
+  assertSnapshot(
+    <MenuItem current icon="Home">
+      who!
+    </MenuItem>
+  )
+})
+
+test('MenuItem - current + marker', () => {
+  assertSnapshot(
+    <MenuItem current currentMarker icon="Home">
+      who!
+    </MenuItem>
+  )
+})
+
 test('MenuItem - with customizations', () => {
   const menuCustomizations =
     // tslint:disable:object-literal-sort-keys

@@ -159,8 +159,16 @@ const MenuItemInternal: React.SFC<MenuItemProps> = ({
 function currentStyles(props: MenuItemProps) {
   if (props.current) {
     return `
-      background: ${props.customizableProps!.current!.bg};
-      color: ${props.customizableProps!.current!.color};
+      background: ${
+        props.customizableProps && props.customizableProps.current
+          ? props.customizableProps.current.bg
+          : palette.charcoal100
+      };
+      color: ${
+        props.customizableProps && props.customizableProps.current
+          ? props.customizableProps.current.color
+          : palette.charcoal900
+      };
     `
   }
   return false
@@ -176,8 +184,12 @@ function currentBorder(props: MenuItemProps) {
         position: absolute;
         left: 0;
         top: 0;
-        background: ${props.customizableProps!.marker!.color};
-        width: ${`${props.customizableProps!.marker!.size}px`};
+        background: ${props.customizableProps && props.customizableProps.marker
+          ? props.customizableProps.marker.color
+          : palette.charcoal900};
+        width: ${props.customizableProps && props.customizableProps.marker
+          ? `${props.customizableProps.marker.size}px`
+          : '4px'};
       }
     `
   }

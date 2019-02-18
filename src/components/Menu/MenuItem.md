@@ -61,7 +61,36 @@ Note: This property behaves slightly differently depending on the context of the
 </Menu>
 ```
 
+### Current Item
+
+Use the `current` prop to indicate the current menu item, optionally use the `currentMarker` prop to add an additional border marker to the current item.
+
+
+```js
+<Menu>
+  <MenuGroup>
+    <MenuItem>Home</MenuItem>
+    <MenuItem current>Browse (current)</MenuItem>
+    <MenuItem>Favorites</MenuItem>
+  </MenuGroup>
+  <MenuGroup>
+    <MenuItem current currentMarker icon="Favorite">
+      Spaces (current with marker)
+    </MenuItem>
+    <MenuItem icon="Favorite" detail="Is often orange">
+      Dashboards
+    </MenuItem>
+    <MenuItem icon="Favorite">Popular</MenuItem>
+  </MenuGroup>
+</Menu>
+```
+
+
+
+
 ### Customized menu
+
+`MenuItem` accepts a `customizableProp` prop which allows for flexibly styling of the item. Below is an example of customizing the menu's display.
 
 ```js
 const palette = require('../../style').palette
@@ -75,7 +104,7 @@ const menuCustomizations =
       size: 20
     },
     marker: {
-      color: palette.purple900,
+      color: palette.purple300,
       size: 10
     },
     hover: {
@@ -139,7 +168,6 @@ const menuCustomizations =
     activated: {
       color: palette.blue500
     },
-    currentMarkerColor: palette.purple300
   };
 
   <MenuGroup label="GOOGLE ADS">
