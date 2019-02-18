@@ -23,7 +23,7 @@ Use the `detail` prop to provide explanatory detail to a given item.
 
 Use the `active` prop to indicate the selected item(s).
 
-Note: This property behaves slightly diffently depending on the context of the `MenuGroup` it is contained within. If the `MenuGroup` has the `canActivate` prop it will reserve space for the checkmark next to `active` items and any `icon` assignments on the items will be ignored.
+Note: This property behaves slightly differently depending on the context of the `MenuGroup` it is contained within. If the `MenuGroup` has the `canActivate` prop it will reserve space for the checkmark next to `active` items and any `icon` assignments on the items will be ignored.
 
 ```js
 <Menu>
