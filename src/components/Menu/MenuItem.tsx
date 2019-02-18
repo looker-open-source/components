@@ -23,19 +23,6 @@ export interface MenuInteractiveCustomizations {
 }
 
 export interface MenuItemCustomizableProps extends BoxProps<HTMLDivElement> {
-  backgroundColor: string
-  backgroundColorHover: string
-  backgroundColorCurrent: string
-  iconSize: number
-  iconColor: string
-  iconColorHover: string
-  iconColorCurrent: string
-  iconColorActivated: string
-  textColor: string
-  textColorHover: string
-  textColorCurrent: string
-  textColorActivated: string
-  currentMarkerColor: string
   bg: string
   color: string
   marker: MenuMarkerCustomizations
