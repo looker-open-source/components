@@ -17,17 +17,23 @@ const {
 } = palette
 
 const renderBorder = (border: BorderType, index: number) => {
-  const labels = [
-    ['Theme Name', border.themeName],
-    ['Lens Color', border.name],
-    ['Hex Value', border.hex],
-  ]
+  const labels = [['Lens Color: ', border.name]]
 
   return (
     <div key={index}>
       <Heading fontSize="small" fontWeight="bold">
         {border.label}
       </Heading>
+      <div className="border-labels">
+        {labels.map((label, idx) => (
+          <div className="border-label-group" key={`label-${idx}`}>
+            <Text variant="subdued" fontSize="small" fontWeight="semiBold">
+              {label[0]}
+            </Text>
+            <Code fontSize="medium">{label[1]}</Code>
+          </div>
+        ))}
+      </div>
       <div className="border-examples">
         {border.examples.map((example, idx) => (
           <div
@@ -49,16 +55,6 @@ const renderBorder = (border: BorderType, index: number) => {
           </div>
         ))}
       </div>
-      <div className="border-labels">
-        {labels.map((label, idx) => (
-          <div className="border-label-group" key={`label-${idx}`}>
-            <Text variant="subdued" fontSize="small" fontWeight="semiBold">
-              {label[0]}
-            </Text>
-            <Code fontSize="medium">{label[1]}</Code>
-          </div>
-        ))}
-      </div>
     </div>
   )
 }
@@ -72,7 +68,6 @@ export interface BorderType {
   hex: string
   label: string
   name: string
-  themeName: string
   textClass?: string
   examples: BorderExample[]
 }
@@ -94,7 +89,6 @@ export class BorderRender extends React.Component<
           hex: charcoal300,
           label: 'Default Border',
           name: 'charcoal300',
-          themeName: 'borderColor',
         },
         {
           examples: [
@@ -106,7 +100,6 @@ export class BorderRender extends React.Component<
           hex: charcoal400,
           label: 'Dark Border',
           name: 'charcoal400',
-          themeName: 'borderColorDark',
         },
         {
           examples: [
@@ -117,7 +110,6 @@ export class BorderRender extends React.Component<
           hex: charcoal200,
           label: 'Light Border',
           name: 'charcoal200',
-          themeName: 'borderColorLight',
         },
         {
           examples: [
@@ -129,7 +121,6 @@ export class BorderRender extends React.Component<
           label: 'Border on Dark',
           name: 'charcoal500',
           textClass: 'border-on-dark-text',
-          themeName: 'borderColorOnDark',
         },
       ],
     }

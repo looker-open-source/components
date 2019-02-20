@@ -40,7 +40,7 @@
 }
 
 .border-examples {
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 .border-example {
@@ -63,12 +63,9 @@
 
 .border-labels {
   display: flex;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
 }
 
-.border-label-group {
-  width: 25%;
-}
 
 .border-on-dark-text {
   color: #fff;
