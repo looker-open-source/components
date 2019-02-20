@@ -7,3 +7,9 @@ const BorderRender = require('../../../styleguide_components/BorderRender').Bord
 
 <BorderRender />
 ```
+### Using Border Colors
+```js
+<Box borderColor="palette.charcoal300" border="solid 1px" p="large" mb="small">I have the default border</Box>
+
+<Box borderColor="palette.charcoal400" border="solid 1px" p="large">I have the dark border</Box>
+```
