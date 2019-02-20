@@ -2,26 +2,17 @@ import * as React from 'react'
 import { createPortal } from 'react-dom'
 import { Box } from '../Box'
 import { CustomizableModalAttributes } from './Modal'
+import { getModalRoot } from './modalRoot'
 
-const getModalRoot = () => {
-  const existing = document.getElementById('modal-root')
-
-  if (existing) {
-    return existing
-  } else {
-    const newElement = document.createElement('div')
-    newElement.id = 'modal-root'
-    document.body.appendChild(newElement)
-
-    return newElement
-  }
+export interface ModalPortalProps {
+  innerRef?: React.RefObject<HTMLElement>
 }
 
-export class ModalContainer extends React.Component {
+class ModalPortalInternal extends React.Component<ModalPortalProps> {
   private el: HTMLElement
   private modalRoot?: HTMLElement
 
-  constructor(props: {}) {
+  constructor(props: ModalPortalProps) {
     super(props)
     this.el = document.createElement('div')
   }
@@ -40,15 +31,16 @@ export class ModalContainer extends React.Component {
   public render() {
     const content = (
       <Box
+        position="fixed"
+        top="0"
+        bottom="0"
+        left="0"
+        right="0"
+        innerRef={this.props.innerRef}
         display="flex"
         justifyContent="center"
         alignItems="center"
-        zIndex={CustomizableModalAttributes.zIndex || 1}
-        position="fixed"
-        bottom="0"
-        top="0"
-        left="0"
-        right="0"
+        zIndex={CustomizableModalAttributes.zIndex}
       >
         {this.props.children}
       </Box>
@@ -57,3 +49,10 @@ export class ModalContainer extends React.Component {
     return createPortal(content, this.el)
   }
 }
+
+export const ModalPortal = React.forwardRef((props: ModalPortalProps, ref) => (
+  <ModalPortalInternal
+    innerRef={ref as React.RefObject<HTMLElement>}
+    {...props}
+  />
+))

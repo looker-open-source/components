@@ -9,6 +9,10 @@ exports[`ModalFooter with Button 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -21,7 +25,8 @@ exports[`ModalFooter with Button 1`] = `
   -ms-flex-pack: end;
   justify-content: flex-end;
   min-height: 4.75rem;
-  padding: 1.25rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
 }
 
 .c2 {
@@ -127,6 +132,10 @@ exports[`ModalFooter with ModalContext 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -139,7 +148,8 @@ exports[`ModalFooter with ModalContext 1`] = `
   -ms-flex-pack: end;
   justify-content: flex-end;
   min-height: 4.75rem;
-  padding: 1.25rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
 }
 
 .c2 {

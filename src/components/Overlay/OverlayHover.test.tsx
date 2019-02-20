@@ -2,11 +2,12 @@ import { ReactWrapper } from 'enzyme'
 import 'jest-styled-components'
 import * as React from 'react'
 import { assertSnapshot } from '../../../test/utils/snapshot'
-import { ModalBackdrop } from '../Modal'
-import { Overlay } from './Overlay'
+import { OverlayHover } from './OverlayHover'
+
 import {
   assertClosed,
   assertOpen,
+  mouseEventSimulator,
   returnTriggerAndOverlay,
   SimpleContentSFC,
 } from './overlay.test.helpers'
@@ -19,9 +20,9 @@ interface OverlayTestProps {
 }
 
 const SimpleOverlay: React.SFC<OverlayTestProps> = ({ ...props }) => (
-  <Overlay render={simpleContentFactory} {...props}>
+  <OverlayHover render={simpleContentFactory} {...props}>
     <button>Trigger</button>
-  </Overlay>
+  </OverlayHover>
 )
 
 describe('Overlay', () => {
@@ -40,38 +41,26 @@ describe('Overlay', () => {
     })
   })
 
-  describe('trigger: click', () => {
+  describe('trigger: hover', () => {
     let overlay: ReactWrapper
     let trigger: ReactWrapper
     beforeEach(() =>
-      ([overlay, trigger] = returnTriggerAndOverlay(
-        <SimpleOverlay backdropStyles={{ backgroundColor: 'pink' }} />
-      )))
+      ([overlay, trigger] = returnTriggerAndOverlay(<SimpleOverlay />)))
     afterEach(() => overlay.unmount())
 
-    test('Trigger click opens and closes the overlay', () => {
+    test('opens & closes the overlay on hover', () => {
       assertClosed(overlay)
-      trigger.simulate('click')
+      trigger.simulate('mouseover')
       assertOpen(overlay)
-      trigger.simulate('click')
+      trigger.simulate('mouseout', mouseEventSimulator)
       assertClosed(overlay)
     })
 
-    test('Trigger click renders a backdrop, clicking backdrop closes it', () => {
+    test('overlay opens & closes on focus', () => {
       assertClosed(overlay)
-      trigger.simulate('click')
-      const backdrop = overlay.find(ModalBackdrop)
-      expect(backdrop.exists()).toEqual(true)
-      backdrop.simulate('click')
-      assertClosed(overlay)
-    })
-
-    test('applies the backdrop styles', () => {
-      trigger.simulate('click')
+      trigger.simulate('focus')
       assertOpen(overlay)
-      const backdrop = overlay.find(ModalBackdrop)
-      expect(backdrop.props().style).toEqual({ backgroundColor: 'pink' })
-      trigger.simulate('click')
+      trigger.simulate('blur')
       assertClosed(overlay)
     })
   })

@@ -23,6 +23,7 @@ const MenuItemInternal: React.SFC<MenuItemProps> = ({
   children,
   detail,
   icon,
+  onClick,
   ...props
 }) => {
   const formatDetail = (content?: React.ReactNode) =>
@@ -33,7 +34,7 @@ const MenuItemInternal: React.SFC<MenuItemProps> = ({
     ) : null
 
   const click = () => {
-    props.onClick && props.onClick()
+    onClick && onClick()
     closeModal && closeModal()
   }
 
