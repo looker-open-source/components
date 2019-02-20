@@ -23,7 +23,11 @@ const Internal: React.SFC<ModalSurfaceProps> = ({
 
 export const DrawerSurface = withTheme(Internal)
 
+// Shadow here is designed to match theme.shadows[3] but with a single left-side shadow
+
 const Surface = styled(ModalSurface)`
+  box-shadow: -18px 0 18px -18px rgba(0, 0, 0, 0.12);
+
   &.entering,
   &.exiting {
     opacity: 0.01;
