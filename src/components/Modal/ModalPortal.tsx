@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { createPortal } from 'react-dom'
+import { styled } from '../../style'
 import { Box } from '../Box'
 import { CustomizableModalAttributes } from './Modal'
 import { getModalRoot } from './modalRoot'
@@ -30,7 +31,7 @@ class ModalPortalInternal extends React.Component<ModalPortalProps> {
 
   public render() {
     const content = (
-      <Box
+      <InvisiBox
         position="fixed"
         top="0"
         bottom="0"
@@ -40,10 +41,11 @@ class ModalPortalInternal extends React.Component<ModalPortalProps> {
         display="flex"
         justifyContent="center"
         alignItems="center"
+        style={{ pointerEvents: 'none' }}
         zIndex={CustomizableModalAttributes.zIndex}
       >
         {this.props.children}
-      </Box>
+      </InvisiBox>
     )
 
     return createPortal(content, this.el)
@@ -56,3 +58,9 @@ export const ModalPortal = React.forwardRef((props: ModalPortalProps, ref) => (
     {...props}
   />
 ))
+
+const InvisiBox = styled(Box)`
+  * {
+    pointer-events: initial;
+  }
+`

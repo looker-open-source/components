@@ -2,7 +2,13 @@ import { palette } from './palette'
 
 const {
   blue500,
+  charcoal000,
+  charcoal100,
   charcoal300,
+  charcoal400,
+  charcoal500,
+  charcoal600,
+  charcoal700,
   primary500,
   primary600,
   primary700,
@@ -64,6 +70,8 @@ export interface SemanticColors {
   secondary: SemanticColor
   /** Colors used for dangerous actions. */
   danger: SemanticColor
+  /** Colors used for neutral actions. */
+  neutral: SemanticColor
 }
 
 export const semanticColors: SemanticColors = {
@@ -76,6 +84,17 @@ export const semanticColors: SemanticColors = {
     lighter: red000,
     linkColor: blue500,
     main: red500,
+    text: white,
+  },
+  neutral: {
+    altText: charcoal400,
+    borderColor: charcoal300,
+    dark: charcoal600,
+    darker: charcoal700,
+    light: charcoal100,
+    lighter: charcoal000,
+    linkColor: blue500,
+    main: charcoal500,
     text: white,
   },
   primary: {
