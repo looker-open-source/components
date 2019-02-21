@@ -97,7 +97,6 @@ const MenuItemInternal: React.SFC<MenuItemProps> = ({
       },
     },
   },
-  // tslint:enable:object-literal-sort-keys
   ...props
 }) => {
   const formatDetail = (content?: React.ReactNode) =>
@@ -115,7 +114,11 @@ const MenuItemInternal: React.SFC<MenuItemProps> = ({
   const itemIcon = () => {
     const placeholder = <Box width="1.5rem" />
     const iconComponent = (name: IconNames) => (
-      <Icon name={name} mr="xsmall" size={customizableProps.icon!.size} />
+      <Icon
+        name={name}
+        mr="xsmall"
+        size={customizableProps.icon!.size || 20}
+      />
     )
 
     if (canActivate) {
@@ -140,7 +143,7 @@ const MenuItemInternal: React.SFC<MenuItemProps> = ({
       px="medium"
       onClick={click}
       tabIndex={0}
-      bg={customizableProps.bg}
+      bg={customizableProps.bg || 'white'}
       activeStyle={{ color: customizableProps.activated!.color }}
       focusStyle={{
         boxShadow: `0 0 .25rem 0.125rem ${palette.blue400}`,
@@ -233,9 +236,8 @@ function hoverStyles(props: MenuItemProps) {
   } else {
     return css`
       :hover {
-        background: ${props.customizableProps &&
-        props.customizableProps.hover!.bg
-          ? props.customizableProps.hover!.bg
+        background: ${props.customizableProps && props.customizableProps.hover
+          ? props.customizableProps.hover.bg
           : palette.charcoal100};
         color: ${props.customizableProps && props.customizableProps.hover!.color
           ? props.customizableProps.hover!.color
