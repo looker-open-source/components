@@ -127,14 +127,14 @@ const menuCustomizations =
 
   };
 
-  <MenuGroup>
-    <MenuItem icon="Home"  customizableProps={menuCustomizations}>
+  <MenuGroup customizableProps={menuCustomizations}>
+    <MenuItem icon="Home">
         Gouda
       </MenuItem>
-      <MenuItem icon="FavoriteOutline" current  currentMarker  detail="Is often orange" customizableProps={menuCustomizations}>
+      <MenuItem icon="FavoriteOutline" current  currentMarker  detail="Is often orange" >
         Cheddar
       </MenuItem>
-    <MenuItem icon="Dashboard" customizableProps={menuCustomizations}>Swiss</MenuItem>
+    <MenuItem icon="Dashboard">Swiss</MenuItem>
   </MenuGroup>
 
 ```
@@ -170,14 +170,14 @@ const menuCustomizations =
     },
   };
 
-  <MenuGroup label="GOOGLE ADS">
-    <MenuItem icon="Home"  customizableProps={menuCustomizations}>
+  <MenuGroup label="GOOGLE ADS" customizableProps={menuCustomizations}>
+    <MenuItem icon="Home"  >
         Gouda
       </MenuItem>
-      <MenuItem icon="FavoriteOutline" current detail="Is often orange" customizableProps={menuCustomizations}>
+      <MenuItem icon="FavoriteOutline" current detail="Is often orange" >
         Cheddar
       </MenuItem>
-    <MenuItem icon="Dashboard" customizableProps={menuCustomizations}>Swiss</MenuItem>
+    <MenuItem icon="Dashboard" >Swiss</MenuItem>
   </MenuGroup>
 
 ```
