@@ -70,6 +70,7 @@
     "clean-tag": "^2.0.0",
     "d3-color": "^1.2.3",
     "d3-hsv": "^0.1.0",
+    "deepmerge": "^3.2.0",
     "focus-trap-react": "^5.0.1",
     "polished": "2.0.3",
     "popper.js": "^1.14.4",

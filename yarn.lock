@@ -1459,7 +1459,6 @@ babel-plugin-jest-hoist@^23.2.0:
 babel-plugin-styled-components@^1.10.0:
   version "1.10.0"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/babel-plugin-styled-components/-/babel-plugin-styled-components-1.10.0.tgz#ff1f42ad2cc78c21f26b62266b8f564dbc862939"
-  integrity sha512-sQVKG8irFXx14ZfaK1bBePirfkacl3j8nZwSZK+ZjsbnadRHKQTbhXbe/RB1vT6Vgkz45E+V95LBq4KqdhZUNw==
   dependencies:
     "@babel/helper-annotate-as-pure" "^7.0.0"
     "@babel/helper-module-imports" "^7.0.0"
@@ -1469,7 +1468,6 @@ babel-plugin-styled-components@^1.10.0:
 babel-plugin-syntax-jsx@^6.18.0:
   version "6.18.0"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/babel-plugin-syntax-jsx/-/babel-plugin-syntax-jsx-6.18.0.tgz#0af32a9a6e13ca7a3fd5069e62d7b0f58d0d8946"
-  integrity sha1-CvMqmm4Tyno/1QaeYtew9Y0NiUY=
 
 babel-plugin-syntax-object-rest-spread@^6.13.0:
   version "6.13.0"
@@ -2811,6 +2809,10 @@ deep-is@~0.1.3:
   version "0.1.3"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/deep-is/-/deep-is-0.1.3.tgz#b369d6fb5dbc13eecf524f91b070feedc357cf34"
 
+deepmerge@^3.2.0:
+  version "3.2.0"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/deepmerge/-/deepmerge-3.2.0.tgz#58ef463a57c08d376547f8869fdc5bcee957f44e"
+
 default-require-extensions@^1.0.0:
   version "1.0.0"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/default-require-extensions/-/default-require-extensions-1.0.0.tgz#f37ea15d3e13ffd9b437d33e1a75b5fb97874cb8"
@@ -3343,7 +3345,6 @@ execall@^1.0.0:
 exenv@^1.2.2:
   version "1.2.2"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/exenv/-/exenv-1.2.2.tgz#2ae78e85d9894158670b03d47bec1f03bd91bb9d"
-  integrity sha1-KueOhdmJQVhnCwPUe+wfA72Ru50=
 
 exit-hook@^1.0.0:
   version "1.1.1"
@@ -3663,14 +3664,12 @@ flush-write-stream@^1.0.0:
 focus-trap-react@^5.0.1:
   version "5.0.1"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/focus-trap-react/-/focus-trap-react-5.0.1.tgz#2459c632225ec7ff45a9a6abea320c38467d75e1"
-  integrity sha512-gDvYHKzUphCafOplHp3OQIz44WBge24yXculCkERLQplG53GyVOXvehYDW3rM4VAPGillsLUN8BlsKoRJAcoMA==
   dependencies:
     focus-trap "^3.0.0"
 
 focus-trap@^3.0.0:
   version "3.0.0"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/focus-trap/-/focus-trap-3.0.0.tgz#4d2ee044ae66bf7eb6ebc6c93bd7a1039481d7dc"
-  integrity sha512-jTFblf0tLWbleGjj2JZsAKbgtZTdL1uC48L8FcmSDl4c2vDoU4NycN1kgV5vJhuq1mxNFkw7uWZ1JAGlINWvyw==
   dependencies:
     tabbable "^3.1.0"
     xtend "^4.0.1"
@@ -5672,7 +5671,6 @@ lodash.flattendeep@^4.4.0:
 lodash.isboolean@^3.0.3:
   version "3.0.3"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/lodash.isboolean/-/lodash.isboolean-3.0.3.tgz#6c2e171db2a257cd96802fd43b01b20d5f5870f6"
-  integrity sha1-bC4XHbKiV82WgC/UOwGyDV9YcPY=
 
 lodash.isequal@^4.5.0:
   version "4.5.0"
@@ -5681,7 +5679,6 @@ lodash.isequal@^4.5.0:
 lodash.isobject@^3.0.2:
   version "3.0.2"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/lodash.isobject/-/lodash.isobject-3.0.2.tgz#3c8fb8d5b5bf4bf90ae06e14f2a530a4ed935e1d"
-  integrity sha1-PI+41bW/S/kK4G4U8qUwpO2TXh0=
 
 lodash.memoize@^4.1.2:
   version "4.1.2"
@@ -6107,7 +6104,6 @@ moo@^0.4.3:
 mousetrap@^1.5.2:
   version "1.6.2"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/mousetrap/-/mousetrap-1.6.2.tgz#caadd9cf886db0986fb2fee59a82f6bd37527587"
-  integrity sha512-jDjhi7wlHwdO6q6DS7YRmSHcuI+RVxadBkLt3KHrhd3C2b+w5pKefg3oj5beTcHZyVFA9Aksf+yEE1y5jxUjVA==
 
 move-concurrently@^1.0.1:
   version "1.0.1"
@@ -7558,7 +7554,6 @@ react-group@^1.0.6:
 react-hotkeys@^1.1.4:
   version "1.1.4"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/react-hotkeys/-/react-hotkeys-1.1.4.tgz#a0712aa2e0c03a759fd7885808598497a4dace72"
-  integrity sha1-oHEqouDAOnWf14hYCFmEl6TaznI=
   dependencies:
     lodash.isboolean "^3.0.3"
     lodash.isequal "^4.5.0"
@@ -7591,7 +7586,6 @@ react-lifecycles-compat@^3.0.4:
 react-node-resolver@^2.0.1:
   version "2.0.1"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/react-node-resolver/-/react-node-resolver-2.0.1.tgz#1f0cc83938bf590a1cf42006b23f6b8f68e7b886"
-  integrity sha512-+PPy/FtAAo5wsLQYMlHkxJ3AMUGL33gpEIx/HBzS8OrcIfacRhGaNVWUJ8bhEbc64en+/bbCNTVZR+pkhqXEbA==
 
 react-popper@^1.0.2:
   version "1.0.2"
@@ -7616,7 +7610,6 @@ react-resize-detector@^3.2.1:
 react-scrolllock@^4.0.1:
   version "4.0.1"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/react-scrolllock/-/react-scrolllock-4.0.1.tgz#05bb1e1575c97cbd869f2b60623a0e8227695b60"
-  integrity sha512-XWtRucd411402AfwnUyR0cZqN/beJy0NAygX92APzgeAhkHzpfWrsiakqKVIVqMNkgM8s2lIku/hzaFoTgw7Gw==
   dependencies:
     exenv "^1.2.2"
     react-node-resolver "^2.0.1"
@@ -9041,7 +9034,6 @@ symbol-tree@^3.2.2:
 tabbable@^3.1.0:
   version "3.1.2"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/tabbable/-/tabbable-3.1.2.tgz#f2d16cccd01f400e38635c7181adfe0ad965a4a2"
-  integrity sha512-wjB6puVXTYO0BSFtCmWQubA/KIn7Xvajw0x0l6eJUudMG/EAiJvIUnyNX6xO4NpGrJ16lbD0eUseB9WxW0vlpQ==
 
 table@^5.0.0:
   version "5.1.0"

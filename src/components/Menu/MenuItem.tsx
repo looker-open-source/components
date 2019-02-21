@@ -1,3 +1,4 @@
+import deepmerge from 'deepmerge'
 import * as React from 'react'
 import { IconNames } from '../../icons/build/IconNames'
 import { css, easings, palette, styled, transitions } from '../../style'
@@ -32,6 +33,17 @@ export interface MenuItemCustomizableProps extends BoxProps<HTMLDivElement> {
   activated?: MenuInteractiveCustomizations
 }
 
+export interface MenuItemCustomizableInternalProps
+  extends BoxProps<HTMLDivElement> {
+  bg: string
+  color: string
+  marker: MenuMarkerCustomizations
+  icon: MenuIconCustomizations
+  hover: MenuInteractiveCustomizations
+  current: MenuInteractiveCustomizations
+  activated: MenuInteractiveCustomizations
+}
+
 export interface MenuIconProps
   extends BoxPropsWithout<HTMLDivElement, 'name' | 'color' | 'size'> {
   color: string
@@ -64,8 +76,11 @@ const MenuItemInternal: React.SFC<MenuItemProps> = ({
   children,
   detail,
   icon,
-  customizableProps = {
-    // tslint:disable:object-literal-sort-keys
+  customizableProps,
+  ...props
+}) => {
+  // tslint:disable:object-literal-sort-keys
+  const defaultCustomizableProps: MenuItemCustomizableInternalProps = {
     bg: palette.white,
     color: palette.charcoal600,
     icon: {
@@ -96,10 +111,13 @@ const MenuItemInternal: React.SFC<MenuItemProps> = ({
         color: palette.blue500,
       },
     },
-  },
+  }
   // tslint:enable:object-literal-sort-keys
-  ...props
-}) => {
+
+  const customProps: MenuItemCustomizableInternalProps = customizableProps
+    ? deepmerge(defaultCustomizableProps, customizableProps)
+    : defaultCustomizableProps
+
   const formatDetail = (content?: React.ReactNode) =>
     content ? (
       <Box pl="large" ml="auto" fontSize="xsmall" color={palette.charcoal300}>
@@ -115,7 +133,7 @@ const MenuItemInternal: React.SFC<MenuItemProps> = ({
   const itemIcon = () => {
     const placeholder = <Box width="1.5rem" />
     const iconComponent = (name: IconNames) => (
-      <Icon name={name} mr="xsmall" size={customizableProps.icon!.size} />
+      <Icon name={name} mr="xsmall" size={customProps.icon.size} />
     )
 
     if (canActivate) {
