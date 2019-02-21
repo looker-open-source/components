@@ -770,6 +770,12 @@
   dependencies:
     "@types/d3-color" "*"
 
+"@types/deepmerge@^2.2.0":
+  version "2.2.0"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/@types/deepmerge/-/deepmerge-2.2.0.tgz#6f63896c217f3164782f52d858d9f3a927139f64"
+  dependencies:
+    deepmerge "*"
+
 "@types/enzyme@^3.1.13":
   version "3.1.13"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/@types/enzyme/-/enzyme-3.1.13.tgz#4bbc5c81fa40c9fc7efee25c4a23cb37119a33ea"
@@ -2809,7 +2815,7 @@ deep-is@~0.1.3:
   version "0.1.3"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/deep-is/-/deep-is-0.1.3.tgz#b369d6fb5dbc13eecf524f91b070feedc357cf34"
 
-deepmerge@^3.2.0:
+deepmerge@*, deepmerge@^3.2.0:
   version "3.2.0"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/deepmerge/-/deepmerge-3.2.0.tgz#58ef463a57c08d376547f8869fdc5bcee957f44e"
 
