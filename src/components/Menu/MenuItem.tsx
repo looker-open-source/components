@@ -1,3 +1,4 @@
+import deepmerge from 'deepmerge'
 import * as React from 'react'
 import { IconNames } from '../../icons/build/IconNames'
 import { css, easings, palette, styled, transitions } from '../../style'
@@ -32,6 +33,17 @@ export interface MenuItemCustomizableProps extends BoxProps<HTMLDivElement> {
   activated?: MenuInteractiveCustomizations
 }
 
+export interface MenuItemCustomizableInternalProps
+  extends BoxProps<HTMLDivElement> {
+  bg: string
+  color: string
+  marker: MenuMarkerCustomizations
+  icon: MenuIconCustomizations
+  hover: MenuInteractiveCustomizations
+  current: MenuInteractiveCustomizations
+  activated: MenuInteractiveCustomizations
+}
+
 export interface MenuIconProps
   extends BoxPropsWithout<HTMLDivElement, 'name' | 'color' | 'size'> {
   color: string
@@ -64,8 +76,11 @@ const MenuItemInternal: React.SFC<MenuItemProps> = ({
   children,
   detail,
   icon,
-  customizableProps = {
-    // tslint:disable:object-literal-sort-keys
+  customizableProps,
+  ...props
+}) => {
+  // tslint:disable:object-literal-sort-keys
+  const defaultCustomizableProps: MenuItemCustomizableInternalProps = {
     bg: palette.white,
     color: palette.charcoal600,
     icon: {
@@ -96,9 +111,13 @@ const MenuItemInternal: React.SFC<MenuItemProps> = ({
         color: palette.blue500,
       },
     },
-  },
-  ...props
-}) => {
+  }
+  // tslint:enable:object-literal-sort-keys
+
+  const customProps: MenuItemCustomizableInternalProps = customizableProps
+    ? deepmerge(defaultCustomizableProps, customizableProps)
+    : defaultCustomizableProps
+
   const formatDetail = (content?: React.ReactNode) =>
     content ? (
       <Box pl="large" ml="auto" fontSize="xsmall" color={palette.charcoal300}>
@@ -114,11 +133,7 @@ const MenuItemInternal: React.SFC<MenuItemProps> = ({
   const itemIcon = () => {
     const placeholder = <Box width="1.5rem" />
     const iconComponent = (name: IconNames) => (
-      <Icon
-        name={name}
-        mr="xsmall"
-        size={customizableProps.icon!.size || 20}
-      />
+      <Icon name={name} mr="xsmall" size={customProps.icon.size} />
     )
 
     if (canActivate) {
@@ -143,7 +158,7 @@ const MenuItemInternal: React.SFC<MenuItemProps> = ({
       px="medium"
       onClick={click}
       tabIndex={0}
-      bg={customizableProps.bg || 'white'}
+      bg={customizableProps.bg}
       activeStyle={{ color: customizableProps.activated!.color }}
       focusStyle={{
         boxShadow: `0 0 .25rem 0.125rem ${palette.blue400}`,
@@ -236,8 +251,9 @@ function hoverStyles(props: MenuItemProps) {
   } else {
     return css`
       :hover {
-        background: ${props.customizableProps && props.customizableProps.hover
-          ? props.customizableProps.hover.bg
+        background: ${props.customizableProps &&
+        props.customizableProps.hover!.bg
+          ? props.customizableProps.hover!.bg
           : palette.charcoal100};
         color: ${props.customizableProps && props.customizableProps.hover!.color
           ? props.customizableProps.hover!.color
