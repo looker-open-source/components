@@ -146,11 +146,9 @@ const MenuItemInternal: React.SFC<MenuItemProps> = ({
   }
 
   return (
-    <Box
+    <MenuItemStyle
       alignItems="center"
-      color={
-        active ? customizableProps.activated!.color : customizableProps.color
-      }
+      color={active ? customProps.activated.color : customProps.color}
       display="flex"
       flexWrap="wrap"
       fontSize="small"
@@ -158,41 +156,34 @@ const MenuItemInternal: React.SFC<MenuItemProps> = ({
       px="medium"
       onClick={click}
       tabIndex={0}
-      bg={customizableProps.bg}
-      activeStyle={{ color: customizableProps.activated!.color }}
+      bg={customProps.bg}
+      activeStyle={{ color: customProps.activated.color }}
       focusStyle={{
         boxShadow: `0 0 .25rem 0.125rem ${palette.blue400}`,
         outline: 'none',
       }}
       style={{ textDecoration: 'none' }}
+      customizationProps={customProps}
       {...props}
     >
       {itemIcon()}
       {children}
       {formatDetail(detail)}
-    </Box>
+    </MenuItemStyle>
   )
 }
 
-function currentStyles(props: MenuItemProps) {
+function currentStyles(props: StyleProps) {
   if (props.current) {
     return `
-      background: ${
-        props.customizableProps && props.customizableProps.current
-          ? props.customizableProps.current.bg
-          : palette.charcoal100
-      };
-      color: ${
-        props.customizableProps && props.customizableProps.current
-          ? props.customizableProps.current.color
-          : palette.charcoal900
-      };
+      background: ${props.customizationProps.current.bg};
+      color: ${props.customizationProps.current.color};
     `
   }
   return false
 }
 
-function currentBorder(props: MenuItemProps) {
+function currentBorder(props: StyleProps) {
   if (props.current && props.currentMarker) {
     return css`
       ::before {
@@ -202,12 +193,8 @@ function currentBorder(props: MenuItemProps) {
         position: absolute;
         left: 0;
         top: 0;
-        background: ${props.customizableProps && props.customizableProps.marker
-          ? props.customizableProps.marker.color
-          : palette.charcoal900};
-        width: ${props.customizableProps && props.customizableProps.marker
-          ? `${props.customizableProps.marker.size}px`
-          : '4px'};
+        background: ${props.customizationProps.marker.color};
+        width: ${props.customizationProps.marker.size}px;
       }
     `
   }
@@ -215,63 +202,51 @@ function currentBorder(props: MenuItemProps) {
   return false
 }
 
-function iconColor(props: MenuItemProps) {
+function iconColor(props: StyleProps) {
   if (props.active) {
     return css`
       ${Icon} {
-        color: ${props.customizableProps &&
-        props.customizableProps.activated!.color
-          ? props.customizableProps.activated!.color
-          : palette.blue500};
+        color: ${props.customizationProps.activated.color};
       }
     `
   } else if (props.current) {
     return css`
       ${Icon} {
-        color: ${props.customizableProps &&
-        props.customizableProps.current!.icon!.color
-          ? props.customizableProps.current!.icon!.color
-          : palette.charcoal900};
+        color: ${props.customizationProps.icon.color};
       }
     `
   } else {
     return css`
       ${Icon} {
-        color: ${props.customizableProps && props.customizableProps.icon!.color
-          ? props.customizableProps.icon!.color
-          : palette.charcoal300};
+        color: ${props.customizationProps.icon.color};
       }
     `
   }
 }
 
-function hoverStyles(props: MenuItemProps) {
+function hoverStyles(props: StyleProps) {
   if (props.current) {
     return false
   } else {
     return css`
       :hover {
-        background: ${props.customizableProps &&
-        props.customizableProps.hover!.bg
-          ? props.customizableProps.hover!.bg
-          : palette.charcoal100};
-        color: ${props.customizableProps && props.customizableProps.hover!.color
-          ? props.customizableProps.hover!.color
-          : palette.charcoal900};
+        background: ${props.customizationProps.hover.bg};
+        color: ${props.customizationProps.hover.color};
 
         ${Icon} {
-          color: ${props.customizableProps &&
-          props.customizableProps.hover!.icon!.color &&
-          !props.current
-            ? props.customizableProps.hover!.icon!.color
-            : palette.charcoal900};
+          color: ${props.customizationProps.hover.icon &&
+            props.customizationProps.hover.icon.color};
         }
       }
     `
   }
 }
 
-export const MenuItem = styled<MenuItemProps>(withModal(MenuItemInternal))`
+interface StyleProps extends MenuItemProps {
+  customizationProps: MenuItemCustomizableInternalProps
+}
+
+const MenuItemStyle = styled(Box)`
   position: relative;
   transition: background ${transitions.durationQuick} ${easings.ease},
     color ${transitions.durationQuick} ${easings.ease};
@@ -283,3 +258,5 @@ export const MenuItem = styled<MenuItemProps>(withModal(MenuItemInternal))`
   ${currentStyles};
   ${currentBorder};
 `
+
+export const MenuItem = withModal(MenuItemInternal)
