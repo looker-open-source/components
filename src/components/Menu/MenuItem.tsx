@@ -68,9 +68,9 @@ export interface MenuItemProps
 }
 
 const MenuItemInternal: React.SFC<MenuItemProps> = ({
-  active,
-  current,
-  currentMarker,
+  active = false,
+  current = false,
+  currentMarker = false,
   canActivate,
   closeModal,
   children,
@@ -157,7 +157,10 @@ const MenuItemInternal: React.SFC<MenuItemProps> = ({
       onClick={click}
       tabIndex={0}
       bg={customProps.bg}
+      active={active}
       activeStyle={{ color: customProps.activated.color }}
+      current={current}
+      currentMarker={currentMarker}
       focusStyle={{
         boxShadow: `0 0 .25rem 0.125rem ${palette.blue400}`,
         outline: 'none',
@@ -206,13 +209,13 @@ function iconColor(props: StyleProps) {
   if (props.active) {
     return css`
       ${Icon} {
-        color: ${props.customizationProps.activated.color};
+        color: ${props.customizationProps.activated.icon!.color};
       }
     `
   } else if (props.current) {
     return css`
       ${Icon} {
-        color: ${props.customizationProps.icon.color};
+        color: ${props.customizationProps.current.icon!.color};
       }
     `
   } else {
