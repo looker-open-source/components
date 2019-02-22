@@ -2,14 +2,14 @@ import * as React from 'react'
 import { palette, styled } from '../../style'
 import { Box, BoxPropsWithout } from '../Box'
 import { Heading, HeadingProps } from '../Heading'
+import { MenuContext, MenuContextProps } from './MenuContext'
 
 export interface MenuGroupProps
-  extends BoxPropsWithout<HTMLDivElement, 'label'> {
+  extends BoxPropsWithout<HTMLDivElement, 'label'>,
+    MenuContextProps {
   label?: React.ReactNode
   labelProps?: HeadingProps
   labelStyles?: React.CSSProperties
-
-  canActivate?: boolean
 }
 
 const Internal: React.SFC<MenuGroupProps> = ({
@@ -17,13 +17,10 @@ const Internal: React.SFC<MenuGroupProps> = ({
   label,
   labelProps,
   labelStyles,
-  canActivate,
   ...props
 }) => {
-  const overlay = canActivate ? { canActivate } : {}
-  const childrenWithProps = React.Children.toArray(children).map(child =>
-    React.cloneElement(child as JSX.Element, overlay)
-  )
+  const groupCanActivate = props.canActivate
+  delete props.canActivate // Prevent canActivate from being applied to Heading component
 
   const labelComponent = label && (
     <Heading
@@ -45,10 +42,21 @@ const Internal: React.SFC<MenuGroupProps> = ({
   )
 
   return (
-    <Box {...props}>
-      {labelComponent}
-      {childrenWithProps}
-    </Box>
+    <MenuContext.Consumer>
+      {({ canActivate }) => (
+        <MenuContext.Provider
+          value={{
+            canActivate:
+              groupCanActivate !== undefined ? groupCanActivate : canActivate,
+          }}
+        >
+          <Box {...props}>
+            {labelComponent}
+            {children}
+          </Box>
+        </MenuContext.Provider>
+      )}
+    </MenuContext.Consumer>
   )
 }
 
