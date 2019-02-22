@@ -18,7 +18,12 @@ export class Menu extends React.PureComponent<MenuProps> {
 
   public componentDidMount() {
     if (this.props.focusOnMount && this.ref.current) {
+      const x = window.scrollX
+      const y = window.scrollY
+      // preventScroll option is supported by Chrome but not Firefox or Safari
+      //    When preventScroll sees broad-adoption the x / y setting can be deprecated
       this.ref.current.focus({ preventScroll: true })
+      window.scrollTo(x, y)
     }
   }
 
