@@ -2,9 +2,10 @@ import * as React from 'react'
 import { HotKeys } from 'react-hotkeys'
 import { styled } from '../../style'
 import { Box, BoxProps } from '../Box'
+import { MenuContext, MenuContextProps } from './MenuContext'
 import { MenuGroup } from './MenuGroup'
 
-export interface MenuProps extends BoxProps<HTMLDivElement> {
+export interface MenuProps extends BoxProps<HTMLDivElement>, MenuContextProps {
   focusOnMount?: boolean
 }
 
@@ -23,18 +24,20 @@ export class Menu extends React.PureComponent<MenuProps> {
   }
 
   public render() {
-    const { children, focusOnMount, ...props } = this.props
+    const { canActivate, children, focusOnMount, ...props } = this.props
     return (
-      <HotKeys keyMap={this.keyMap()} handlers={this.keyHandlers()}>
-        <MenuStyle
-          innerRef={this.ref}
-          tabIndex={-1}
-          userSelect="none"
-          {...props}
-        >
-          {children}
-        </MenuStyle>
-      </HotKeys>
+      <MenuContext.Provider value={{ canActivate }}>
+        <HotKeys keyMap={this.keyMap()} handlers={this.keyHandlers()}>
+          <MenuStyle
+            innerRef={this.ref}
+            tabIndex={-1}
+            userSelect="none"
+            {...props}
+          >
+            {children}
+          </MenuStyle>
+        </HotKeys>
+      </MenuContext.Provider>
     )
   }
 

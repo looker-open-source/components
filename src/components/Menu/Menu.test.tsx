@@ -51,3 +51,25 @@ test('Menu - composed', () => {
 
   expect(menu).toMatchSnapshot()
 })
+
+test('Menu - canActivate composition', () => {
+  const menu = shallow(
+    <Menu canActivate>
+      <MenuGroup>
+        <MenuItem icon="LogoRings">Looker</MenuItem>
+        <MenuItem icon="Validate">Validate</MenuItem>
+        <MenuItem icon="ChartPie">Pizza!</MenuItem>
+      </MenuGroup>
+      <MenuGroup canActivate label="Cheeses">
+        <MenuItem>Gouda</MenuItem>
+        <MenuItem>Cheddar</MenuItem>
+        <MenuItem>Swiss</MenuItem>
+      </MenuGroup>
+      <MenuGroup canActivate={false}>
+        <MenuItem icon="Beaker">Scary Stuff</MenuItem>
+      </MenuGroup>
+    </Menu>
+  )
+
+  expect(menu).toMatchSnapshot()
+})
