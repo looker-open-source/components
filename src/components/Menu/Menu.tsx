@@ -2,10 +2,11 @@ import * as React from 'react'
 import { HotKeys } from 'react-hotkeys'
 import { styled } from '../../style'
 import { Box, BoxProps } from '../Box'
+import { MenuContext, MenuContextProps } from './MenuContext'
 import { MenuGroup } from './MenuGroup'
 import { MenuItemCustomizationProps } from './MenuItem'
 
-export interface MenuProps extends BoxProps<HTMLDivElement> {
+export interface MenuProps extends BoxProps<HTMLDivElement>, MenuContextProps {
   focusOnMount?: boolean
   customizationProps?: MenuItemCustomizationProps
 }
@@ -20,29 +21,30 @@ export class Menu extends React.PureComponent<MenuProps> {
 
   public componentDidMount() {
     if (this.props.focusOnMount && this.ref.current) {
+      const x = window.scrollX
+      const y = window.scrollY
+      // preventScroll option is supported by Chrome but not Firefox or Safari
+      //    When preventScroll sees broad-adoption the x / y setting can be deprecated
       this.ref.current.focus({ preventScroll: true })
+      window.scrollTo(x, y)
     }
   }
 
   public render() {
-    const { children, focusOnMount, ...props } = this.props
-    const customizations = props.customizationProps
-      ? { customizationProps: props.customizationProps }
-      : {}
-    const childrenWithProps = React.Children.toArray(children).map(child =>
-      React.cloneElement(child as JSX.Element, customizations)
-    )
+    const { canActivate, children, focusOnMount, ...props } = this.props
     return (
-      <HotKeys keyMap={this.keyMap()} handlers={this.keyHandlers()}>
-        <MenuStyle
-          innerRef={this.ref}
-          tabIndex={-1}
-          userSelect="none"
-          {...props}
-        >
-          {childrenWithProps}
-        </MenuStyle>
-      </HotKeys>
+      <MenuContext.Provider value={{ canActivate }}>
+        <HotKeys keyMap={this.keyMap()} handlers={this.keyHandlers()}>
+          <MenuStyle
+            innerRef={this.ref}
+            tabIndex={-1}
+            userSelect="none"
+            {...props}
+          >
+            {children}
+          </MenuStyle>
+        </HotKeys>
+      </MenuContext.Provider>
     )
   }
 

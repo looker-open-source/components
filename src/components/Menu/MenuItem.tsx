@@ -5,6 +5,7 @@ import { css, easings, palette, styled, transitions } from '../../style'
 import { Box, BoxProps, BoxPropsWithout } from '../Box'
 import { Icon } from '../Icon'
 import { ModalContextProps, withModal } from '../Modal'
+import { MenuContextProps, withMenu } from './MenuContext'
 
 export interface MenuMarkerCustomizations {
   color?: string
@@ -44,7 +45,8 @@ export interface MenuIconProps
 
 export interface MenuItemProps
   extends BoxProps<HTMLAnchorElement>,
-    ModalContextProps {
+    ModalContextProps,
+    MenuContextProps {
   detail?: React.ReactNode
   icon?: IconNames
   active?: boolean
@@ -252,4 +254,4 @@ const MenuItemStyle = styled(Box)`
   ${currentBorder};
 `
 
-export const MenuItem = withModal(MenuItemInternal)
+export const MenuItem = withModal(withMenu(MenuItemInternal))

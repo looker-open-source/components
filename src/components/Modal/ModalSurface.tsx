@@ -1,6 +1,5 @@
 import FocusTrap from 'focus-trap-react'
 import * as React from 'react'
-import ScrollLock from 'react-scrolllock'
 import { Styles } from 'styled-components'
 import { styled, Theme } from '../../style'
 import { Box, BoxProps } from '../Box'
@@ -21,32 +20,30 @@ export const ModalSurface: React.SFC<ModalSurfaceProps> = ({
   ...props
 }) => {
   return (
-    <ScrollLock>
-      <FocusTrap
-        focusTrapOptions={{
-          clickOutsideDeactivates: true,
-          escapeDeactivates: true,
-        }}
+    <FocusTrap
+      focusTrapOptions={{
+        clickOutsideDeactivates: true,
+        escapeDeactivates: true,
+      }}
+    >
+      <TransitionTimers
+        bg={CustomizableModalAttributes.surface.backgroundColor}
+        boxShadow={theme.shadows[3]}
+        className={className}
+        display="flex"
+        flexDirection="column"
+        maxWidth="100%"
+        position="absolute"
+        width={width}
+        tabIndex={0}
+        surfaceStyle={style}
+        focusStyle={{ outline: 'none' }}
+        zIndex={CustomizableModalAttributes.zIndex + 1}
+        {...props}
       >
-        <TransitionTimers
-          bg={CustomizableModalAttributes.surface.backgroundColor}
-          boxShadow={theme.shadows[3]}
-          className={className}
-          display="flex"
-          flexDirection="column"
-          maxWidth="100%"
-          position="absolute"
-          width={width}
-          tabIndex={0}
-          surfaceStyle={style}
-          focusStyle={{ outline: 'none' }}
-          zIndex={CustomizableModalAttributes.zIndex + 1}
-          {...props}
-        >
-          {children}
-        </TransitionTimers>
-      </FocusTrap>
-    </ScrollLock>
+        {children}
+      </TransitionTimers>
+    </FocusTrap>
   )
 }
 

@@ -10,28 +10,38 @@ export interface ModalBackdropProps extends BoxProps<HTMLElement> {
   className?: string
 }
 
-export const ModalBackdrop: React.SFC<ModalBackdropProps> = ({
-  style,
-  className,
-  onClick,
-}) => {
-  return (
-    <Backdrop
-      onClick={onClick}
-      className={className}
-      bg={rgba(
-        CustomizableModalAttributes.backdrop.backgroundColor,
-        CustomizableModalAttributes.backdrop.opacity
-      )}
-      position="fixed"
-      top="0"
-      left="0"
-      bottom="0"
-      right="0"
-      zIndex={CustomizableModalAttributes.zIndex}
-      backdropStyles={style}
-    />
-  )
+export class ModalBackdrop extends React.Component<ModalBackdropProps> {
+  private scrollLock = document.createElement('style')
+
+  public componentDidMount() {
+    this.scrollLock.innerHTML = `body { overflow: hidden !important; }`
+    document.head.appendChild(this.scrollLock)
+  }
+
+  public componentWillUnmount() {
+    document.head.removeChild(this.scrollLock)
+  }
+
+  public render() {
+    const { style, className, onClick } = this.props
+    return (
+      <Backdrop
+        onClick={onClick}
+        className={className}
+        bg={rgba(
+          CustomizableModalAttributes.backdrop.backgroundColor,
+          CustomizableModalAttributes.backdrop.opacity
+        )}
+        position="fixed"
+        top="0"
+        left="0"
+        bottom="0"
+        right="0"
+        zIndex={CustomizableModalAttributes.zIndex}
+        backdropStyles={style}
+      />
+    )
+  }
 }
 
 interface BackdropStylesProps extends ModalBackdropProps {

@@ -2,7 +2,6 @@ import FocusTrap from 'focus-trap-react'
 import { Placement } from 'popper.js'
 import * as React from 'react'
 import { PopperArrowProps } from 'react-popper'
-import ScrollLock from 'react-scrolllock'
 import { styled } from '../../style'
 import { Box } from '../Box'
 import { CustomizableModalAttributes, ModalSurfaceStyleProps } from '../Modal'
@@ -53,7 +52,7 @@ class OverlaySurfaceInternal extends React.Component<OverlaySurfaceProps> {
           color={props.color}
         >
           <Box tabIndex={0} focusStyle={{ outline: 'none' }}>
-            {lockWindow ? <ScrollLock>{children}</ScrollLock> : children}
+            {children}
           </Box>
           <OverlaySurfaceArrow
             backgroundColor={props.backgroundColor}
