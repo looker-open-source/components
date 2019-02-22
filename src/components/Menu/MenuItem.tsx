@@ -51,7 +51,7 @@ export interface MenuItemProps
   canActivate?: boolean
   current?: boolean
   currentMarker?: boolean
-  customizableProps?: MenuItemCustomizationProps
+  customizationProps?: MenuItemCustomizationProps
 
   onClick?: () => void
 }
@@ -65,11 +65,11 @@ const MenuItemInternal: React.SFC<MenuItemProps> = ({
   children,
   detail,
   icon,
-  customizableProps,
+  customizationProps,
   ...props
 }) => {
   // tslint:disable:object-literal-sort-keys
-  const defaultCustomizableProps: MenuItemCustomizationProps = {
+  const defaultcustomizationProps: MenuItemCustomizationProps = {
     bg: palette.white,
     color: palette.charcoal600,
     icon: {
@@ -103,9 +103,9 @@ const MenuItemInternal: React.SFC<MenuItemProps> = ({
   }
   // tslint:enable:object-literal-sort-keys
 
-  const customProps: MenuItemCustomizationProps = customizableProps
-    ? deepmerge(defaultCustomizableProps, customizableProps)
-    : defaultCustomizableProps
+  const customProps: MenuItemCustomizationProps = customizationProps
+    ? deepmerge(defaultcustomizationProps, customizationProps)
+    : defaultcustomizationProps
 
   const formatDetail = (content?: React.ReactNode) =>
     content ? (

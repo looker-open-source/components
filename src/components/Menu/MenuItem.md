@@ -88,9 +88,9 @@ Use the `current` prop to indicate the current menu item, optionally use the `cu
 
 
 
-### Customized menu
+### Customizing a menu
 
-`MenuItem` accepts a `customizableProp` prop which allows for flexibly styling of the item. Below is an example of customizing the menu's display.
+`Menu` accepts a `customizationProps` prop which allows for flexibly styling of the item. Below is an example of customizing the menu's display. Below is an example of all the options you can customize.
 
 ```js
 const palette = require('../../style').palette
@@ -101,7 +101,7 @@ const menuCustomizations =
     color: palette.purple200,
     icon: {
       color: palette.purple300,
-      size: 20
+      size: 40
     },
     marker: {
       color: palette.purple300,
@@ -126,8 +126,8 @@ const menuCustomizations =
     },
 
   };
-
-  <MenuGroup customizableProps={menuCustomizations}>
+  <Menu customizationProps={menuCustomizations}>
+  <MenuGroup >
     <MenuItem icon="Home">
         Gouda
       </MenuItem>
@@ -136,42 +136,37 @@ const menuCustomizations =
       </MenuItem>
     <MenuItem icon="Dashboard">Swiss</MenuItem>
   </MenuGroup>
+  </Menu>
 
 ```
 
-### Digital Marketing Menu
+### Digital Marketing Style Menu
+It's possible to selectively customize only select pieces of the menu as well as in this example below.
 ```js
 const palette = require('../../style').palette
 
 const menuCustomizations =
     {
     bg: palette.charcoal100,
-    color: palette.charcoal800,
     icon: {
       color: palette.charcoal800,
-      size: 20
     },
     hover: {
-      bg: palette.charcoal100,
-      color: palette.charcoal900,
       icon: {
         color: palette.purple500,
       }
     },
     current: {
       bg: palette.charcoal200,
-      color: palette.charcoal900,
       icon: {
         color: palette.purple500,
       }
-    },
-    activated: {
-      color: palette.blue500
-    },
+    }
   };
 
-  <MenuGroup label="GOOGLE ADS" customizableProps={menuCustomizations}>
-    <MenuItem icon="Home"  >
+  <Menu customizationProps={menuCustomizations}>
+  <MenuGroup label="GOOGLE ADS">
+    <MenuItem icon="Home" >
         Gouda
       </MenuItem>
       <MenuItem icon="FavoriteOutline" current detail="Is often orange" >
@@ -179,5 +174,7 @@ const menuCustomizations =
       </MenuItem>
     <MenuItem icon="Dashboard" >Swiss</MenuItem>
   </MenuGroup>
+  </Menu>
+
 
 ```

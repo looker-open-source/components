@@ -10,7 +10,7 @@ export interface MenuGroupProps
   labelProps?: HeadingProps
   labelStyles?: React.CSSProperties
   canActivate?: boolean
-  customizableProps?: MenuItemCustomizationProps
+  customizationProps?: MenuItemCustomizationProps
 }
 
 const Internal: React.SFC<MenuGroupProps> = ({
@@ -19,12 +19,12 @@ const Internal: React.SFC<MenuGroupProps> = ({
   labelProps,
   labelStyles,
   canActivate,
-  customizableProps,
+  customizationProps,
   ...props
 }) => {
   const overlay = canActivate
-    ? { canActivate, customizableProps }
-    : { customizableProps }
+    ? { canActivate, customizationProps }
+    : { customizationProps }
   const childrenWithProps = React.Children.toArray(children).map(child =>
     React.cloneElement(child as JSX.Element, overlay)
   )
@@ -32,8 +32,8 @@ const Internal: React.SFC<MenuGroupProps> = ({
   const labelComponent = label && (
     <Heading
       bg={
-        customizableProps && customizableProps.bg
-          ? customizableProps.bg
+        customizationProps && customizationProps.bg
+          ? customizationProps.bg
           : 'white'
       }
       fontSize="xsmall"

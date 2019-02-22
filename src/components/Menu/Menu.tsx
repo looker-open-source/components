@@ -3,9 +3,11 @@ import { HotKeys } from 'react-hotkeys'
 import { styled } from '../../style'
 import { Box, BoxProps } from '../Box'
 import { MenuGroup } from './MenuGroup'
+import { MenuItemCustomizationProps } from './MenuItem'
 
 export interface MenuProps extends BoxProps<HTMLDivElement> {
   focusOnMount?: boolean
+  customizationProps?: MenuItemCustomizationProps
 }
 
 export class Menu extends React.PureComponent<MenuProps> {
@@ -24,6 +26,12 @@ export class Menu extends React.PureComponent<MenuProps> {
 
   public render() {
     const { children, focusOnMount, ...props } = this.props
+    const customizations = props.customizationProps
+      ? { customizationProps: props.customizationProps }
+      : {}
+    const childrenWithProps = React.Children.toArray(children).map(child =>
+      React.cloneElement(child as JSX.Element, customizations)
+    )
     return (
       <HotKeys keyMap={this.keyMap()} handlers={this.keyHandlers()}>
         <MenuStyle
@@ -32,7 +40,7 @@ export class Menu extends React.PureComponent<MenuProps> {
           userSelect="none"
           {...props}
         >
-          {children}
+          {childrenWithProps}
         </MenuStyle>
       </HotKeys>
     )

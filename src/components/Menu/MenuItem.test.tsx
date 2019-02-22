@@ -90,7 +90,7 @@ test('MenuItem - with customizations', () => {
     }
 
   assertSnapshot(
-    <MenuItem current currentMarker customizableProps={menuCustomizations}>
+    <MenuItem current currentMarker customizationProps={menuCustomizations}>
       who!
     </MenuItem>
   )
