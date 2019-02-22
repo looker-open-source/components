@@ -29,11 +29,7 @@ const Internal: React.SFC<MenuGroupProps> = ({
 
   const labelComponent = label && (
     <Heading
-      // bg={
-      //   customizationProps && customizationProps.bg
-      //     ? customizationProps.bg
-      //     : 'white'
-      // }
+      bg={palette.white}
       fontSize="xsmall"
       is="h2"
       px="medium"
