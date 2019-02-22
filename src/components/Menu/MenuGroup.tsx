@@ -2,7 +2,7 @@ import * as React from 'react'
 import { palette, styled } from '../../style'
 import { Box, BoxPropsWithout } from '../Box'
 import { Heading, HeadingProps } from '../Heading'
-import { MenuItemCustomizableProps } from './MenuItem'
+import { MenuItemCustomizationProps } from './MenuItem'
 
 export interface MenuGroupProps
   extends BoxPropsWithout<HTMLDivElement, 'label'> {
@@ -10,7 +10,7 @@ export interface MenuGroupProps
   labelProps?: HeadingProps
   labelStyles?: React.CSSProperties
   canActivate?: boolean
-  customizableProps?: MenuItemCustomizableProps
+  customizableProps?: MenuItemCustomizationProps
 }
 
 const Internal: React.SFC<MenuGroupProps> = ({

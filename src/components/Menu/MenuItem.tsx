@@ -23,7 +23,7 @@ export interface MenuInteractiveCustomizations {
   icon?: MenuIconCustomizations
 }
 
-export interface MenuItemCustomizableProps extends BoxProps<HTMLDivElement> {
+export interface MenuItemCustomizationProps extends BoxProps<HTMLDivElement> {
   bg: string
   color: string
   marker: MenuMarkerCustomizations
@@ -51,7 +51,7 @@ export interface MenuItemProps
   canActivate?: boolean
   current?: boolean
   currentMarker?: boolean
-  customizableProps?: MenuItemCustomizableProps
+  customizableProps?: MenuItemCustomizationProps
 
   onClick?: () => void
 }
@@ -69,7 +69,7 @@ const MenuItemInternal: React.SFC<MenuItemProps> = ({
   ...props
 }) => {
   // tslint:disable:object-literal-sort-keys
-  const defaultCustomizableProps: MenuItemCustomizableProps = {
+  const defaultCustomizableProps: MenuItemCustomizationProps = {
     bg: palette.white,
     color: palette.charcoal600,
     icon: {
@@ -103,7 +103,7 @@ const MenuItemInternal: React.SFC<MenuItemProps> = ({
   }
   // tslint:enable:object-literal-sort-keys
 
-  const customProps: MenuItemCustomizableProps = customizableProps
+  const customProps: MenuItemCustomizationProps = customizableProps
     ? deepmerge(defaultCustomizableProps, customizableProps)
     : defaultCustomizableProps
 
@@ -235,7 +235,7 @@ function hoverStyles(props: StyleProps) {
 }
 
 interface StyleProps extends MenuItemProps {
-  customizationProps: MenuItemCustomizableProps
+  customizationProps: MenuItemCustomizationProps
 }
 
 const MenuItemStyle = styled(Box)`
