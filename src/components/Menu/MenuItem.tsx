@@ -149,16 +149,16 @@ const MenuItemInternal: React.SFC<MenuItemProps> = ({
       onClick={click}
       tabIndex={0}
       bg={customProps.bg}
-      active={active}
-      activeStyle={{ color: customProps.activated.color }}
-      current={current}
-      currentMarker={currentMarker}
-      customizationProps={customProps}
       focusStyle={{
         boxShadow: `0 0 .25rem 0.125rem ${palette.blue400}`,
         outline: 'none',
       }}
       style={{ textDecoration: 'none' }}
+      active={active}
+      activeStyle={{ color: customProps.activated.color }}
+      current={current}
+      currentMarker={currentMarker}
+      customizationProps={customProps}
       {...props}
     >
       {itemIcon()}
@@ -241,7 +241,21 @@ interface StyleProps extends MenuItemProps {
   customizationProps: MenuItemCustomizationProps
 }
 
-const MenuItemStyle = styled(Box)`
+//
+// All of this  drama is to not auto-spread bad props onto Box and cause React run-time warnings
+//
+const MenuItemStyleFactory = (props: StyleProps) => {
+  const {
+    active,
+    current,
+    currentMarker,
+    customizationProps,
+    ...boxProps
+  } = props
+  return <Box {...boxProps} />
+}
+
+const MenuItemStyle = styled(MenuItemStyleFactory)`
   position: relative;
   transition: background ${transitions.durationQuick} ${easings.ease},
     color ${transitions.durationQuick} ${easings.ease};
