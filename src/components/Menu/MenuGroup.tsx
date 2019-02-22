@@ -23,7 +23,9 @@ const Internal: React.SFC<MenuGroupProps> = ({
   ...props
 }) => {
   const groupCanActivate = props.canActivate
+  const suppliedCustomizations = props.customizationProps
   delete props.canActivate // Prevent canActivate from being applied to Heading component
+  delete props.customizationProps // Prevent customizationProps from being applied to Heading component
 
   const labelComponent = label && (
     <Heading
@@ -56,6 +58,7 @@ const Internal: React.SFC<MenuGroupProps> = ({
           value={{
             canActivate:
               groupCanActivate !== undefined ? groupCanActivate : canActivate,
+            customizationProps: suppliedCustomizations,
           }}
         >
           <Box {...props}>

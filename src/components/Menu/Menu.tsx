@@ -4,11 +4,9 @@ import { styled } from '../../style'
 import { Box, BoxProps } from '../Box'
 import { MenuContext, MenuContextProps } from './MenuContext'
 import { MenuGroup } from './MenuGroup'
-import { MenuItemCustomizationProps } from './MenuItem'
 
 export interface MenuProps extends BoxProps<HTMLDivElement>, MenuContextProps {
   focusOnMount?: boolean
-  customizationProps?: MenuItemCustomizationProps
 }
 
 export class Menu extends React.PureComponent<MenuProps> {
@@ -31,9 +29,15 @@ export class Menu extends React.PureComponent<MenuProps> {
   }
 
   public render() {
-    const { canActivate, children, focusOnMount, ...props } = this.props
+    const {
+      canActivate,
+      customizationProps,
+      children,
+      focusOnMount,
+      ...props
+    } = this.props
     return (
-      <MenuContext.Provider value={{ canActivate }}>
+      <MenuContext.Provider value={{ canActivate, customizationProps }}>
         <HotKeys keyMap={this.keyMap()} handlers={this.keyHandlers()}>
           <MenuStyle
             innerRef={this.ref}
