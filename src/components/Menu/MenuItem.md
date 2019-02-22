@@ -165,8 +165,8 @@ const menuCustomizations =
   };
 
   <Menu customizationProps={menuCustomizations}>
-  <MenuGroup label="GOOGLE ADS">
-    <MenuItem icon="Home" >
+  <MenuGroup label="GOOGLE ADS" labelProps={{bg: palette.charcoal100}}>
+    <MenuItem icon="Home">
         Gouda
       </MenuItem>
       <MenuItem icon="FavoriteOutline" current detail="Is often orange" >
