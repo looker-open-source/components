@@ -94,6 +94,17 @@ ShallowWrapper {
               "main": "#CC1F36",
               "text": "#FFFFFF",
             },
+            "neutral": Object {
+              "altText": "#939BA5",
+              "borderColor": "#C1C6CC",
+              "dark": "#4C535B",
+              "darker": "#343C42",
+              "light": "#F5F6F7",
+              "lighter": "#FBFBFC",
+              "linkColor": "#0087e1",
+              "main": "#707781",
+              "text": "#FFFFFF",
+            },
             "primary": Object {
               "altText": "#6C43E0",
               "borderColor": "#C1C6CC",
@@ -424,13 +435,13 @@ exports[`ColorFieldPicker with a label 1`] = `
         >
           <div
             className="c6"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
           >
             <div
               className="c7"
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseOut={[Function]}
-              onMouseOver={[Function]}
             />
           </div>
         </div>
@@ -593,13 +604,13 @@ exports[`ColorFieldPicker with a named color and size values 1`] = `
         >
           <div
             className="c5"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
           >
             <div
               className="c6"
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseOut={[Function]}
-              onMouseOver={[Function]}
             />
           </div>
         </div>
@@ -803,13 +814,13 @@ exports[`ColorFieldPicker with a validation message 1`] = `
         >
           <div
             className="c6"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
           >
             <div
               className="c7"
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseOut={[Function]}
-              onMouseOver={[Function]}
             />
           </div>
         </div>
@@ -977,13 +988,13 @@ exports[`ColorFieldPicker with hidden input 1`] = `
         >
           <div
             className="c5"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
           >
             <div
               className="c6"
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseOut={[Function]}
-              onMouseOver={[Function]}
             />
           </div>
         </div>
@@ -1145,13 +1156,13 @@ exports[`Default ColorFieldPicker 1`] = `
         >
           <div
             className="c5"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
           >
             <div
               className="c6"
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseOut={[Function]}
-              onMouseOver={[Function]}
             />
           </div>
         </div>

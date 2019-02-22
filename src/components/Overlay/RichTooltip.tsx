@@ -1,8 +1,13 @@
 import * as React from 'react'
 import { fadeIn, palette, shadows } from '../../style'
-import { Overlay, OverlayInteractiveProps } from './Overlay'
-import { overlayBubbleWithContent } from './popover_utils'
-import { CustomizableTooltipAttributes } from './Tooltip'
+import { CustomizableAttributes } from '../../types/attributes'
+import { ModalSurfaceStyleProps } from '../Modal'
+import {
+  OverlayContentProps,
+  OverlayHover,
+  OverlayInteractiveProps,
+  OverlaySurface,
+} from './'
 
 export interface RichTooltipProps extends OverlayInteractiveProps {
   content: React.ReactNode
@@ -13,23 +18,28 @@ export const RichTooltip: React.SFC<RichTooltipProps> = ({
   children,
   ...overlayProps
 }) => {
+  const surface = (props: OverlayContentProps) => {
+    return (
+      <OverlaySurface {...props} {...CustomizableRichTooltipAttributes.surface}>
+        {content}
+      </OverlaySurface>
+    )
+  }
+
   return (
-    <Overlay
-      trigger="hover"
-      overlayContentFactory={overlayBubbleWithContent(
-        content,
-        CustomizableRichTooltipAttributes.bubble,
-        true
-      )}
-      {...overlayProps}
-    >
+    <OverlayHover render={surface} {...overlayProps}>
       {children}
-    </Overlay>
+    </OverlayHover>
   )
 }
 
-export const CustomizableRichTooltipAttributes: CustomizableTooltipAttributes = {
-  bubble: {
+export interface CustomizableRichTooltipAttributes
+  extends CustomizableAttributes {
+  surface: ModalSurfaceStyleProps
+}
+
+export const CustomizableRichTooltipAttributes: CustomizableRichTooltipAttributes = {
+  surface: {
     animation: `${fadeIn} 0.2s linear`,
     backgroundColor: palette.white,
     border: '1px solid',

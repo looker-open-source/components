@@ -94,6 +94,17 @@ ShallowWrapper {
               "main": "#CC1F36",
               "text": "#FFFFFF",
             },
+            "neutral": Object {
+              "altText": "#939BA5",
+              "borderColor": "#C1C6CC",
+              "dark": "#4C535B",
+              "darker": "#343C42",
+              "light": "#F5F6F7",
+              "lighter": "#FBFBFC",
+              "linkColor": "#0087e1",
+              "main": "#707781",
+              "text": "#FFFFFF",
+            },
             "primary": Object {
               "altText": "#6C43E0",
               "borderColor": "#C1C6CC",
@@ -350,6 +361,17 @@ ShallowWrapper {
               "lighter": "#FFF2F4",
               "linkColor": "#0087e1",
               "main": "#CC1F36",
+              "text": "#FFFFFF",
+            },
+            "neutral": Object {
+              "altText": "#939BA5",
+              "borderColor": "#C1C6CC",
+              "dark": "#4C535B",
+              "darker": "#343C42",
+              "light": "#F5F6F7",
+              "lighter": "#FBFBFC",
+              "linkColor": "#0087e1",
+              "main": "#707781",
               "text": "#FFFFFF",
             },
             "primary": Object {
@@ -640,6 +662,17 @@ ShallowWrapper {
               "main": "#CC1F36",
               "text": "#FFFFFF",
             },
+            "neutral": Object {
+              "altText": "#939BA5",
+              "borderColor": "#C1C6CC",
+              "dark": "#4C535B",
+              "darker": "#343C42",
+              "light": "#F5F6F7",
+              "lighter": "#FBFBFC",
+              "linkColor": "#0087e1",
+              "main": "#707781",
+              "text": "#FFFFFF",
+            },
             "primary": Object {
               "altText": "#6C43E0",
               "borderColor": "#C1C6CC",
@@ -744,6 +777,7 @@ ShallowWrapper {
     }
   >
     <Modal
+      open={false}
       render={[Function]}
     />
   </ThemeProvider>,
@@ -760,6 +794,7 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
+      "open": false,
       "render": [Function],
     },
     "ref": null,
@@ -772,6 +807,7 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
+        "open": false,
         "render": [Function],
       },
       "ref": null,
@@ -895,6 +931,17 @@ ShallowWrapper {
               "main": "#CC1F36",
               "text": "#FFFFFF",
             },
+            "neutral": Object {
+              "altText": "#939BA5",
+              "borderColor": "#C1C6CC",
+              "dark": "#4C535B",
+              "darker": "#343C42",
+              "light": "#F5F6F7",
+              "lighter": "#FBFBFC",
+              "linkColor": "#0087e1",
+              "main": "#707781",
+              "text": "#FFFFFF",
+            },
             "primary": Object {
               "altText": "#6C43E0",
               "borderColor": "#C1C6CC",
@@ -999,6 +1046,7 @@ ShallowWrapper {
     }
   >
     <Modal
+      open={false}
       render={[Function]}
     >
       <Styled(WithTheme(InternalButton))>
@@ -1022,6 +1070,7 @@ ShallowWrapper {
       "children": <Styled(WithTheme(InternalButton))>
         Click Here
       </Styled(WithTheme(InternalButton))>,
+      "open": false,
       "render": [Function],
     },
     "ref": null,
@@ -1047,6 +1096,7 @@ ShallowWrapper {
         "children": <Styled(WithTheme(InternalButton))>
           Click Here
         </Styled(WithTheme(InternalButton))>,
+        "open": false,
         "render": [Function],
       },
       "ref": null,

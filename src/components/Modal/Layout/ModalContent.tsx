@@ -1,7 +1,6 @@
 import * as React from 'react'
 import ReactResizeDetector from 'react-resize-detector'
-
-import { styled } from '../../../style'
+import { palette, styled } from '../../../style'
 import { Box, BoxProps } from '../../Box'
 
 export interface ModalContentProps extends BoxProps<HTMLDivElement> {
@@ -75,11 +74,8 @@ export const ModalContent: React.SFC<ModalContentProps> = props => {
 }
 
 const ContentContainer = styled(Box)`
-  border-top: 1px solid transparent;
-
   &.overflow {
-    border-top-color: ${props => props.theme.colors.palette.charcoal200};
-    box-shadow: inset 0 -16px 16px -16px
-      ${props => props.theme.colors.palette.charcoal200};
+    box-shadow: inset 0 -16px 16px -16px ${palette.charcoal200},
+      inset 0 16px 16px -16px ${palette.charcoal200};
   }
 `

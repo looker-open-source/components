@@ -2,10 +2,39 @@ import * as React from 'react'
 import { CSSTransition } from 'react-transition-group'
 import { fadeIn, palette, shadows } from '../../style'
 import { CustomizableAttributes } from '../../types/attributes'
-import { OverlayBubbleStyleProps } from '../Overlay'
-import { ModalBackdrop } from './ModalBackdrop'
-import { ModalContainer } from './ModalContainer'
-import { ModalContext, ModalContextProps } from './ModalContext'
+import { BackdropStyles, ModalBackdrop } from './ModalBackdrop'
+import { ModalContext } from './ModalContext'
+import { ModalPortal } from './ModalPortal'
+
+export interface ModalSurfaceStyleProps {
+  animation?: string
+  backgroundColor: string
+  border: string
+  borderColor: string
+  borderRadius: string
+  boxShadow: string
+  color: string
+}
+
+export interface CustomizableModalAttributes extends CustomizableAttributes {
+  backdrop: BackdropStyles
+  surface: ModalSurfaceStyleProps
+  zIndex: number
+}
+
+export const CustomizableModalAttributes: CustomizableModalAttributes = {
+  backdrop: { backgroundColor: palette.charcoal200, opacity: 0.6 },
+  surface: {
+    animation: `${fadeIn} 0.2s linear`,
+    backgroundColor: palette.white,
+    border: 'none',
+    borderColor: 'none',
+    borderRadius: 'medium',
+    boxShadow: shadows[3],
+    color: palette.charcoal000,
+  },
+  zIndex: 0,
+}
 
 export interface ModalProps {
   /**
@@ -64,28 +93,28 @@ export interface ModalState {
 }
 
 export class Modal extends React.Component<ModalInternalProps, ModalState> {
+  public static defaultProps: ModalInternalProps = {
+    open: false,
+    render: () => null,
+  }
+
+  private portalRef: React.RefObject<HTMLElement>
+
   constructor(props: ModalInternalProps) {
     super(props)
     this.state = { isOpen: !!props.open }
+    this.portalRef = React.createRef()
+  }
+
+  public componentWillUnmount() {
+    window.removeEventListener('keydown', this.handleEscapePress)
   }
 
   public render() {
-    const { children } = this.props
-    const triggerEventProps: React.DOMAttributes<{}> = { onClick: this.open }
-
-    const child = children && React.Children.only(children)
-    const newChildren =
-      child &&
-      React.cloneElement(child, {
-        ...triggerEventProps,
-      })
-
-    const context: ModalContextProps = { closeModal: this.close }
-
     return (
-      <ModalContext.Provider value={context}>
+      <ModalContext.Provider value={{ closeModal: this.close }}>
         <>
-          {newChildren}
+          {this.generateTrigger(this.props.children)}
           <CSSTransition
             classNames="modal"
             mountOnEnter
@@ -94,13 +123,14 @@ export class Modal extends React.Component<ModalInternalProps, ModalState> {
             timeout={{ enter: 0, exit: 250 }}
           >
             {(state: string) => (
-              <ModalContainer>
+              <ModalPortal ref={this.portalRef}>
                 <ModalBackdrop
                   className={state}
                   style={this.props.backdropStyles}
+                  onClick={this.close}
                 />
                 {this.props.render(state)}
-              </ModalContainer>
+              </ModalPortal>
             )}
           </CSSTransition>
         </>
@@ -108,32 +138,42 @@ export class Modal extends React.Component<ModalInternalProps, ModalState> {
     )
   }
 
+  private generateTrigger(children?: React.ReactNode) {
+    if (!children) return
+
+    const child = React.Children.only(children)
+    return React.cloneElement(child, { onClick: this.open })
+  }
+
   private open = () => {
+    window.addEventListener('keydown', this.handleEscapePress)
     this.props.onOpen && this.props.onOpen()
     this.setState({ isOpen: true })
   }
 
-  private close = () => {
+  private close = (
+    _event?: React.SyntheticEvent,
+    doCallbacks: boolean = true
+  ) => {
     if (this.props.canClose && !this.props.canClose()) return
-    this.props.onClose && this.props.onClose()
+    window.removeEventListener('keydown', this.handleEscapePress)
+
+    if (doCallbacks && this.props.onClose) {
+      this.props.onClose()
+    }
     this.setState({ isOpen: false })
   }
-}
 
-export interface CustomizableModalAttributes extends CustomizableAttributes {
-  zIndex: number
-  surface: OverlayBubbleStyleProps
-}
+  private handleEscapePress = (event: KeyboardEvent) => {
+    if (event.key !== 'Escape') return
+    if (!event.target) return
+    if (
+      !this.portalRef.current ||
+      !this.portalRef.current.contains(event.target as Node)
+    ) {
+      return
+    }
 
-export const CustomizableModalAttributes: CustomizableModalAttributes = {
-  surface: {
-    animation: `${fadeIn} 0.2s linear`,
-    backgroundColor: palette.white,
-    border: 'none',
-    borderColor: 'none',
-    borderRadius: 'medium',
-    boxShadow: shadows[3],
-    color: palette.charcoal000,
-  },
-  zIndex: 0,
+    this.close()
+  }
 }

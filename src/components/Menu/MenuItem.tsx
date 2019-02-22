@@ -66,6 +66,7 @@ const MenuItemInternal: React.SFC<MenuItemProps> = ({
   detail,
   icon,
   customizationProps,
+  onClick,
   ...props
 }) => {
   // tslint:disable:object-literal-sort-keys
@@ -115,7 +116,7 @@ const MenuItemInternal: React.SFC<MenuItemProps> = ({
     ) : null
 
   const click = () => {
-    props.onClick && props.onClick()
+    onClick && onClick()
     closeModal && closeModal()
   }
 
