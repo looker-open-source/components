@@ -69,6 +69,7 @@ exports[`MenuGroup - JSX label 1`] = `
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
   top: 0;
+  z-index: 1;
 }
 
 .c1 {
@@ -115,7 +116,44 @@ exports[`MenuGroup - JSX label 1`] = `
     </div>
   </h2>
   <div
+    active={false}
     className="c3 c4"
+    current={false}
+    currentMarker={false}
+    customizationProps={
+      Object {
+        "activated": Object {
+          "color": "#0087e1",
+          "icon": Object {
+            "color": "#0087e1",
+          },
+        },
+        "bg": "#FFFFFF",
+        "color": "#4C535B",
+        "current": Object {
+          "bg": "#F5F6F7",
+          "color": "#262D33",
+          "icon": Object {
+            "color": "#262D33",
+          },
+        },
+        "hover": Object {
+          "bg": "#F5F6F7",
+          "color": "#262D33",
+          "icon": Object {
+            "color": "#262D33",
+          },
+        },
+        "icon": Object {
+          "color": "#C1C6CC",
+          "size": 20,
+        },
+        "marker": Object {
+          "color": "#262D33",
+          "size": 4,
+        },
+      }
+    }
     onClick={[Function]}
     style={
       Object {
@@ -127,7 +165,44 @@ exports[`MenuGroup - JSX label 1`] = `
     what?
   </div>
   <div
+    active={false}
     className="c3 c4"
+    current={false}
+    currentMarker={false}
+    customizationProps={
+      Object {
+        "activated": Object {
+          "color": "#0087e1",
+          "icon": Object {
+            "color": "#0087e1",
+          },
+        },
+        "bg": "#FFFFFF",
+        "color": "#4C535B",
+        "current": Object {
+          "bg": "#F5F6F7",
+          "color": "#262D33",
+          "icon": Object {
+            "color": "#262D33",
+          },
+        },
+        "hover": Object {
+          "bg": "#F5F6F7",
+          "color": "#262D33",
+          "icon": Object {
+            "color": "#262D33",
+          },
+        },
+        "icon": Object {
+          "color": "#C1C6CC",
+          "size": 20,
+        },
+        "marker": Object {
+          "color": "#262D33",
+          "size": 4,
+        },
+      }
+    }
     onClick={[Function]}
     style={
       Object {
@@ -139,7 +214,44 @@ exports[`MenuGroup - JSX label 1`] = `
     who?
   </div>
   <div
+    active={false}
     className="c3 c4"
+    current={false}
+    currentMarker={false}
+    customizationProps={
+      Object {
+        "activated": Object {
+          "color": "#0087e1",
+          "icon": Object {
+            "color": "#0087e1",
+          },
+        },
+        "bg": "#FFFFFF",
+        "color": "#4C535B",
+        "current": Object {
+          "bg": "#F5F6F7",
+          "color": "#262D33",
+          "icon": Object {
+            "color": "#262D33",
+          },
+        },
+        "hover": Object {
+          "bg": "#F5F6F7",
+          "color": "#262D33",
+          "icon": Object {
+            "color": "#262D33",
+          },
+        },
+        "icon": Object {
+          "color": "#C1C6CC",
+          "size": 20,
+        },
+        "marker": Object {
+          "color": "#262D33",
+          "size": 4,
+        },
+      }
+    }
     onClick={[Function]}
     style={
       Object {
@@ -241,7 +353,44 @@ exports[`MenuGroup - canActivate 1`] = `
   className="c0"
 >
   <div
+    active={false}
     className="c1 c2"
+    current={false}
+    currentMarker={false}
+    customizationProps={
+      Object {
+        "activated": Object {
+          "color": "#0087e1",
+          "icon": Object {
+            "color": "#0087e1",
+          },
+        },
+        "bg": "#FFFFFF",
+        "color": "#4C535B",
+        "current": Object {
+          "bg": "#F5F6F7",
+          "color": "#262D33",
+          "icon": Object {
+            "color": "#262D33",
+          },
+        },
+        "hover": Object {
+          "bg": "#F5F6F7",
+          "color": "#262D33",
+          "icon": Object {
+            "color": "#262D33",
+          },
+        },
+        "icon": Object {
+          "color": "#C1C6CC",
+          "size": 20,
+        },
+        "marker": Object {
+          "color": "#262D33",
+          "size": 4,
+        },
+      }
+    }
     onClick={[Function]}
     style={
       Object {
@@ -256,7 +405,44 @@ exports[`MenuGroup - canActivate 1`] = `
     what?
   </div>
   <div
+    active={false}
     className="c1 c2"
+    current={false}
+    currentMarker={false}
+    customizationProps={
+      Object {
+        "activated": Object {
+          "color": "#0087e1",
+          "icon": Object {
+            "color": "#0087e1",
+          },
+        },
+        "bg": "#FFFFFF",
+        "color": "#4C535B",
+        "current": Object {
+          "bg": "#F5F6F7",
+          "color": "#262D33",
+          "icon": Object {
+            "color": "#262D33",
+          },
+        },
+        "hover": Object {
+          "bg": "#F5F6F7",
+          "color": "#262D33",
+          "icon": Object {
+            "color": "#262D33",
+          },
+        },
+        "icon": Object {
+          "color": "#C1C6CC",
+          "size": 20,
+        },
+        "marker": Object {
+          "color": "#262D33",
+          "size": 4,
+        },
+      }
+    }
     onClick={[Function]}
     style={
       Object {
@@ -271,7 +457,44 @@ exports[`MenuGroup - canActivate 1`] = `
     who?
   </div>
   <div
+    active={false}
     className="c1 c2"
+    current={false}
+    currentMarker={false}
+    customizationProps={
+      Object {
+        "activated": Object {
+          "color": "#0087e1",
+          "icon": Object {
+            "color": "#0087e1",
+          },
+        },
+        "bg": "#FFFFFF",
+        "color": "#4C535B",
+        "current": Object {
+          "bg": "#F5F6F7",
+          "color": "#262D33",
+          "icon": Object {
+            "color": "#262D33",
+          },
+        },
+        "hover": Object {
+          "bg": "#F5F6F7",
+          "color": "#262D33",
+          "icon": Object {
+            "color": "#262D33",
+          },
+        },
+        "icon": Object {
+          "color": "#C1C6CC",
+          "size": 20,
+        },
+        "marker": Object {
+          "color": "#262D33",
+          "size": 4,
+        },
+      }
+    }
     onClick={[Function]}
     style={
       Object {
@@ -357,6 +580,7 @@ exports[`MenuGroup - label 1`] = `
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
   top: 0;
+  z-index: 1;
 }
 
 .c1 {
@@ -399,7 +623,44 @@ exports[`MenuGroup - label 1`] = `
     Questions
   </h2>
   <div
+    active={false}
     className="c3 c4"
+    current={false}
+    currentMarker={false}
+    customizationProps={
+      Object {
+        "activated": Object {
+          "color": "#0087e1",
+          "icon": Object {
+            "color": "#0087e1",
+          },
+        },
+        "bg": "#FFFFFF",
+        "color": "#4C535B",
+        "current": Object {
+          "bg": "#F5F6F7",
+          "color": "#262D33",
+          "icon": Object {
+            "color": "#262D33",
+          },
+        },
+        "hover": Object {
+          "bg": "#F5F6F7",
+          "color": "#262D33",
+          "icon": Object {
+            "color": "#262D33",
+          },
+        },
+        "icon": Object {
+          "color": "#C1C6CC",
+          "size": 20,
+        },
+        "marker": Object {
+          "color": "#262D33",
+          "size": 4,
+        },
+      }
+    }
     onClick={[Function]}
     style={
       Object {
@@ -411,7 +672,44 @@ exports[`MenuGroup - label 1`] = `
     what?
   </div>
   <div
+    active={false}
     className="c3 c4"
+    current={false}
+    currentMarker={false}
+    customizationProps={
+      Object {
+        "activated": Object {
+          "color": "#0087e1",
+          "icon": Object {
+            "color": "#0087e1",
+          },
+        },
+        "bg": "#FFFFFF",
+        "color": "#4C535B",
+        "current": Object {
+          "bg": "#F5F6F7",
+          "color": "#262D33",
+          "icon": Object {
+            "color": "#262D33",
+          },
+        },
+        "hover": Object {
+          "bg": "#F5F6F7",
+          "color": "#262D33",
+          "icon": Object {
+            "color": "#262D33",
+          },
+        },
+        "icon": Object {
+          "color": "#C1C6CC",
+          "size": 20,
+        },
+        "marker": Object {
+          "color": "#262D33",
+          "size": 4,
+        },
+      }
+    }
     onClick={[Function]}
     style={
       Object {
@@ -423,7 +721,44 @@ exports[`MenuGroup - label 1`] = `
     who?
   </div>
   <div
+    active={false}
     className="c3 c4"
+    current={false}
+    currentMarker={false}
+    customizationProps={
+      Object {
+        "activated": Object {
+          "color": "#0087e1",
+          "icon": Object {
+            "color": "#0087e1",
+          },
+        },
+        "bg": "#FFFFFF",
+        "color": "#4C535B",
+        "current": Object {
+          "bg": "#F5F6F7",
+          "color": "#262D33",
+          "icon": Object {
+            "color": "#262D33",
+          },
+        },
+        "hover": Object {
+          "bg": "#F5F6F7",
+          "color": "#262D33",
+          "icon": Object {
+            "color": "#262D33",
+          },
+        },
+        "icon": Object {
+          "color": "#C1C6CC",
+          "size": 20,
+        },
+        "marker": Object {
+          "color": "#262D33",
+          "size": 4,
+        },
+      }
+    }
     onClick={[Function]}
     style={
       Object {
@@ -506,6 +841,7 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
   top: 0;
+  z-index: 1;
 }
 
 .c1 {
@@ -553,7 +889,44 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
     Questions
   </h2>
   <div
+    active={false}
     className="c3 c4"
+    current={false}
+    currentMarker={false}
+    customizationProps={
+      Object {
+        "activated": Object {
+          "color": "#0087e1",
+          "icon": Object {
+            "color": "#0087e1",
+          },
+        },
+        "bg": "#FFFFFF",
+        "color": "#4C535B",
+        "current": Object {
+          "bg": "#F5F6F7",
+          "color": "#262D33",
+          "icon": Object {
+            "color": "#262D33",
+          },
+        },
+        "hover": Object {
+          "bg": "#F5F6F7",
+          "color": "#262D33",
+          "icon": Object {
+            "color": "#262D33",
+          },
+        },
+        "icon": Object {
+          "color": "#C1C6CC",
+          "size": 20,
+        },
+        "marker": Object {
+          "color": "#262D33",
+          "size": 4,
+        },
+      }
+    }
     onClick={[Function]}
     style={
       Object {
@@ -565,7 +938,44 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
     what?
   </div>
   <div
+    active={false}
     className="c3 c4"
+    current={false}
+    currentMarker={false}
+    customizationProps={
+      Object {
+        "activated": Object {
+          "color": "#0087e1",
+          "icon": Object {
+            "color": "#0087e1",
+          },
+        },
+        "bg": "#FFFFFF",
+        "color": "#4C535B",
+        "current": Object {
+          "bg": "#F5F6F7",
+          "color": "#262D33",
+          "icon": Object {
+            "color": "#262D33",
+          },
+        },
+        "hover": Object {
+          "bg": "#F5F6F7",
+          "color": "#262D33",
+          "icon": Object {
+            "color": "#262D33",
+          },
+        },
+        "icon": Object {
+          "color": "#C1C6CC",
+          "size": 20,
+        },
+        "marker": Object {
+          "color": "#262D33",
+          "size": 4,
+        },
+      }
+    }
     onClick={[Function]}
     style={
       Object {
@@ -577,7 +987,44 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
     who?
   </div>
   <div
+    active={false}
     className="c3 c4"
+    current={false}
+    currentMarker={false}
+    customizationProps={
+      Object {
+        "activated": Object {
+          "color": "#0087e1",
+          "icon": Object {
+            "color": "#0087e1",
+          },
+        },
+        "bg": "#FFFFFF",
+        "color": "#4C535B",
+        "current": Object {
+          "bg": "#F5F6F7",
+          "color": "#262D33",
+          "icon": Object {
+            "color": "#262D33",
+          },
+        },
+        "hover": Object {
+          "bg": "#F5F6F7",
+          "color": "#262D33",
+          "icon": Object {
+            "color": "#262D33",
+          },
+        },
+        "icon": Object {
+          "color": "#C1C6CC",
+          "size": 20,
+        },
+        "marker": Object {
+          "color": "#262D33",
+          "size": 4,
+        },
+      }
+    }
     onClick={[Function]}
     style={
       Object {
@@ -668,7 +1115,44 @@ exports[`MenuGroup 1`] = `
   className="c0"
 >
   <div
+    active={false}
     className="c1 c2"
+    current={false}
+    currentMarker={false}
+    customizationProps={
+      Object {
+        "activated": Object {
+          "color": "#0087e1",
+          "icon": Object {
+            "color": "#0087e1",
+          },
+        },
+        "bg": "#FFFFFF",
+        "color": "#4C535B",
+        "current": Object {
+          "bg": "#F5F6F7",
+          "color": "#262D33",
+          "icon": Object {
+            "color": "#262D33",
+          },
+        },
+        "hover": Object {
+          "bg": "#F5F6F7",
+          "color": "#262D33",
+          "icon": Object {
+            "color": "#262D33",
+          },
+        },
+        "icon": Object {
+          "color": "#C1C6CC",
+          "size": 20,
+        },
+        "marker": Object {
+          "color": "#262D33",
+          "size": 4,
+        },
+      }
+    }
     onClick={[Function]}
     style={
       Object {
