@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { IconNames } from '../../../icons/build/IconNames'
 import { Box, BoxProps } from '../../Box'
 import { Button } from '../../Button'
 import { Icon } from '../../Icon'
@@ -12,11 +13,17 @@ export interface ModalHeaderProps
    * @required
    */
   children: React.ReactNode
+
+  /**
+   * Specify an icon to be used for close. Defaults to `Close`
+   */
+  closeIcon?: IconNames
 }
 
 const Internal: React.SFC<ModalHeaderProps> = ({
   children,
   closeModal,
+  closeIcon = 'Close' as IconNames,
   ...props
 }) => {
   /*
@@ -35,8 +42,14 @@ const Internal: React.SFC<ModalHeaderProps> = ({
       {...props}
     >
       <Box mr="xlarge">{children}</Box>
-      <Button ml="auto" p="none" variant="transparent" onClick={closeModal}>
-        <Icon name="Close" size="1.25rem" />
+      <Button
+        ml="auto"
+        p="none"
+        variant="transparent"
+        color="neutral"
+        onClick={closeModal}
+      >
+        <Icon name={closeIcon} size="1.25rem" />
       </Button>
     </Box>
   )

@@ -18,12 +18,13 @@ export const ModalFooter: React.SFC<ModalFooterProps> = ({
    */
   return (
     <Box
+      alignItems="center"
       display="flex"
       flexBasis="fit-content"
       is="footer"
       justifyContent="flex-end"
       minHeight="4.75rem"
-      p="large"
+      px="large"
       {...props}
     >
       {' '}
