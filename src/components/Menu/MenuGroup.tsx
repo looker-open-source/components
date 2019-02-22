@@ -53,12 +53,15 @@ const Internal: React.SFC<MenuGroupProps> = ({
 
   return (
     <MenuContext.Consumer>
-      {({ canActivate }) => (
+      {({ canActivate, customizationProps }) => (
         <MenuContext.Provider
           value={{
             canActivate:
               groupCanActivate !== undefined ? groupCanActivate : canActivate,
-            customizationProps: suppliedCustomizations,
+            customizationProps:
+              suppliedCustomizations !== undefined
+                ? suppliedCustomizations
+                : customizationProps,
           }}
         >
           <Box {...props}>
