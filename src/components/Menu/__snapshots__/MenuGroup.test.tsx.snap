@@ -285,7 +285,7 @@ exports[`MenuGroup - JSX label 1`] = `
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
   top: 0;
-  z-index: 1;
+  z-index: 2;
 }
 
 .c1 {
@@ -574,7 +574,7 @@ exports[`MenuGroup - label 1`] = `
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
   top: 0;
-  z-index: 1;
+  z-index: 2;
 }
 
 .c1 {
@@ -724,7 +724,7 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
   top: 0;
-  z-index: 1;
+  z-index: 2;
 }
 
 .c1 {

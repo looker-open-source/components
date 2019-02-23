@@ -112,7 +112,13 @@ const MenuItemInternal: React.SFC<MenuItemProps> = ({
 
   const formatDetail = (content?: React.ReactNode) =>
     content ? (
-      <Box pl="large" ml="auto" fontSize="xsmall" color={palette.charcoal300}>
+      <Box
+        pl="large"
+        ml="auto"
+        fontSize="xsmall"
+        color={palette.charcoal300}
+        zIndex={1}
+      >
         {content}
       </Box>
     ) : null

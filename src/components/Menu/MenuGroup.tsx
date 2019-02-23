@@ -41,7 +41,7 @@ const Internal: React.SFC<MenuGroupProps> = ({
       boxShadow={`0 4px 8px -2px ${palette.charcoal200}`}
       {...labelProps}
       style={labelStyles}
-      zIndex={1}
+      zIndex={2}
     >
       {label}
     </Heading>

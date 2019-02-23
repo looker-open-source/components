@@ -769,6 +769,7 @@ exports[`MenuItem - detail 1`] = `
   font-size: 0.75rem;
   margin-left: auto;
   padding-left: 1.25rem;
+  z-index: 1;
 }
 
 .c0 {
