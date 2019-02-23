@@ -1,10 +1,47 @@
+import deepmerge from 'deepmerge'
 import * as React from 'react'
 import { IconNames } from '../../icons/build/IconNames'
-import { palette } from '../../style'
-import { Box, BoxProps } from '../Box'
+import { css, easings, palette, styled, transitions } from '../../style'
+import { Box, BoxProps, BoxPropsWithout } from '../Box'
 import { Icon } from '../Icon'
 import { ModalContextProps, withModal } from '../Modal'
 import { MenuContextProps, withMenu } from './MenuContext'
+
+export interface MenuMarkerCustomizations {
+  color?: string
+  size?: number
+}
+
+export interface MenuIconCustomizations {
+  color?: string
+  size?: number
+}
+
+export interface MenuInteractiveCustomizations {
+  bg?: string
+  color?: string
+  text?: string
+  icon?: MenuIconCustomizations
+}
+
+export interface MenuItemCustomizationProps extends BoxProps<HTMLDivElement> {
+  bg: string
+  color: string
+  marker: MenuMarkerCustomizations
+  icon: MenuIconCustomizations
+  hover: MenuInteractiveCustomizations
+  current: MenuInteractiveCustomizations
+  activated: MenuInteractiveCustomizations
+}
+
+export interface MenuIconProps
+  extends BoxPropsWithout<HTMLDivElement, 'name' | 'color' | 'size'> {
+  color: string
+  size: number
+  hoverColor: string
+  currentColor: string
+  activeColor: string
+}
 
 export interface MenuItemProps
   extends BoxProps<HTMLAnchorElement>,
@@ -13,20 +50,66 @@ export interface MenuItemProps
   detail?: React.ReactNode
   icon?: IconNames
   active?: boolean
+  canActivate?: boolean
+  current?: boolean
+  currentMarker?: boolean
+  customizationProps?: MenuItemCustomizationProps
 
   onClick?: () => void
 }
 
 const MenuItemInternal: React.SFC<MenuItemProps> = ({
   active,
+  current,
+  currentMarker,
   canActivate,
   closeModal,
   children,
   detail,
   icon,
+  customizationProps,
   onClick,
   ...props
 }) => {
+  // tslint:disable:object-literal-sort-keys
+  const defaultcustomizationProps: MenuItemCustomizationProps = {
+    bg: palette.white,
+    color: palette.charcoal600,
+    icon: {
+      color: palette.charcoal300,
+      size: 20,
+    },
+    marker: {
+      size: 4,
+      color: palette.charcoal900,
+    },
+    hover: {
+      bg: palette.charcoal100,
+      color: palette.charcoal900,
+      icon: {
+        color: palette.charcoal900,
+      },
+    },
+    current: {
+      bg: palette.charcoal100,
+      color: palette.charcoal900,
+      icon: {
+        color: palette.charcoal900,
+      },
+    },
+    activated: {
+      color: palette.blue500,
+      icon: {
+        color: palette.blue500,
+      },
+    },
+  }
+  // tslint:enable:object-literal-sort-keys
+
+  const customProps: MenuItemCustomizationProps = customizationProps
+    ? deepmerge(defaultcustomizationProps, customizationProps)
+    : defaultcustomizationProps
+
   const formatDetail = (content?: React.ReactNode) =>
     content ? (
       <Box pl="large" ml="auto" fontSize="xsmall" color={palette.charcoal300}>
@@ -42,7 +125,7 @@ const MenuItemInternal: React.SFC<MenuItemProps> = ({
   const itemIcon = () => {
     const placeholder = <Box width="1.5rem" />
     const iconComponent = (name: IconNames) => (
-      <Icon name={name} width="1rem" height="1rem" mr="xsmall" />
+      <Icon name={name} mr="xsmall" size={customProps.icon.size} />
     )
 
     if (canActivate) {
@@ -55,9 +138,9 @@ const MenuItemInternal: React.SFC<MenuItemProps> = ({
   }
 
   return (
-    <Box
+    <MenuItemStyle
       alignItems="center"
-      color={active ? palette.blue500 : palette.charcoal600}
+      color={active ? customProps.activated.color : customProps.color}
       display="flex"
       flexWrap="wrap"
       fontSize="small"
@@ -65,23 +148,124 @@ const MenuItemInternal: React.SFC<MenuItemProps> = ({
       px="medium"
       onClick={click}
       tabIndex={0}
-      activeStyle={{ color: palette.blue500 }}
+      bg={customProps.bg}
       focusStyle={{
         boxShadow: `0 0 .25rem 0.125rem ${palette.blue400}`,
         outline: 'none',
       }}
-      hoverStyle={{
-        background: palette.charcoal000,
-        color: palette.charcoal900,
-      }}
       style={{ textDecoration: 'none' }}
+      active={active}
+      activeStyle={{ color: customProps.activated.color }}
+      current={current}
+      currentMarker={currentMarker}
+      customizationProps={customProps}
       {...props}
     >
       {itemIcon()}
       {children}
       {formatDetail(detail)}
-    </Box>
+    </MenuItemStyle>
   )
 }
+
+function currentStyles(props: StyleProps) {
+  if (props.current) {
+    return `
+      background: ${props.customizationProps.current.bg};
+      color: ${props.customizationProps.current.color};
+    `
+  }
+  return false
+}
+
+function currentBorder(props: StyleProps) {
+  if (props.current && props.currentMarker) {
+    return css`
+      ::before {
+        content: '';
+        display: block;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: ${props.customizationProps.marker.color};
+        width: ${props.customizationProps.marker.size}px;
+      }
+    `
+  }
+
+  return false
+}
+
+function iconColor(props: StyleProps) {
+  if (props.active) {
+    return css`
+      ${Icon} {
+        color: ${props.customizationProps.activated.icon!.color};
+      }
+    `
+  } else if (props.current) {
+    return css`
+      ${Icon} {
+        color: ${props.customizationProps.current.icon!.color};
+      }
+    `
+  } else {
+    return css`
+      ${Icon} {
+        color: ${props.customizationProps.icon.color};
+      }
+    `
+  }
+}
+
+function hoverStyles(props: StyleProps) {
+  if (props.current) {
+    return false
+  } else {
+    return css`
+      :hover {
+        background: ${props.customizationProps.hover.bg};
+        color: ${props.customizationProps.hover.color};
+
+        ${Icon} {
+          color: ${props.customizationProps.hover.icon &&
+            props.customizationProps.hover.icon.color};
+        }
+      }
+    `
+  }
+}
+
+interface StyleProps extends MenuItemProps {
+  customizationProps: MenuItemCustomizationProps
+}
+
+//
+// All of this  drama is to not auto-spread bad props onto Box and cause React run-time warnings
+//
+const MenuItemStyleFactory = (props: StyleProps) => {
+  const {
+    active,
+    current,
+    currentMarker,
+    customizationProps,
+    ...boxProps
+  } = props
+  return <Box {...boxProps} />
+}
+
+const MenuItemStyle = styled(MenuItemStyleFactory)`
+  position: relative;
+  transition: background ${transitions.durationQuick} ${easings.ease},
+    color ${transitions.durationQuick} ${easings.ease};
+  ${hoverStyles};
+  ${Icon} {
+    transition: color ${transitions.durationQuick} ${easings.ease};
+  }
+  ${iconColor};
+  ${currentStyles};
+  ${currentBorder};
+`
 
 export const MenuItem = withModal(withMenu(MenuItemInternal))

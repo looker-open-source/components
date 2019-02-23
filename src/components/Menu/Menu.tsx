@@ -29,9 +29,15 @@ export class Menu extends React.PureComponent<MenuProps> {
   }
 
   public render() {
-    const { canActivate, children, focusOnMount, ...props } = this.props
+    const {
+      canActivate,
+      customizationProps,
+      children,
+      focusOnMount,
+      ...props
+    } = this.props
     return (
-      <MenuContext.Provider value={{ canActivate }}>
+      <MenuContext.Provider value={{ canActivate, customizationProps }}>
         <HotKeys keyMap={this.keyMap()} handlers={this.keyHandlers()}>
           <MenuStyle
             innerRef={this.ref}

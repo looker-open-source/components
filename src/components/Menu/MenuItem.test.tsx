@@ -1,6 +1,7 @@
 import 'jest-styled-components'
 import * as React from 'react'
 import { assertSnapshot } from '../../../test/utils/snapshot'
+import { palette } from '../../style'
 
 import { MenuItem } from './MenuItem'
 
@@ -33,6 +34,63 @@ test('MenuItem - canActivate', () => {
 test('MenuItem - canActivate + active', () => {
   assertSnapshot(
     <MenuItem canActivate active>
+      who!
+    </MenuItem>
+  )
+})
+
+test('MenuItem - current', () => {
+  assertSnapshot(
+    <MenuItem current icon="Home">
+      who!
+    </MenuItem>
+  )
+})
+
+test('MenuItem - current + marker', () => {
+  assertSnapshot(
+    <MenuItem current currentMarker icon="Home">
+      who!
+    </MenuItem>
+  )
+})
+
+test('MenuItem - with customizations', () => {
+  const menuCustomizations =
+    // tslint:disable:object-literal-sort-keys
+    {
+      bg: palette.purple500,
+      color: palette.purple200,
+      icon: {
+        color: palette.purple300,
+        size: 20,
+      },
+      marker: {
+        color: palette.purple900,
+        size: 10,
+      },
+      hover: {
+        bg: palette.purple700,
+        color: palette.white,
+        icon: {
+          color: palette.purple100,
+        },
+      },
+      current: {
+        bg: palette.purple200,
+        color: palette.purple900,
+        icon: {
+          color: palette.purple500,
+        },
+      },
+      activated: {
+        color: palette.blue500,
+      },
+      // tslint:disable:enable-literal-sort-keys
+    }
+
+  assertSnapshot(
+    <MenuItem current currentMarker customizationProps={menuCustomizations}>
       who!
     </MenuItem>
   )

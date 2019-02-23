@@ -3,6 +3,7 @@ import { palette, styled } from '../../style'
 import { Box, BoxPropsWithout } from '../Box'
 import { Heading, HeadingProps } from '../Heading'
 import { MenuContext, MenuContextProps } from './MenuContext'
+import { MenuItemCustomizationProps } from './MenuItem'
 
 export interface MenuGroupProps
   extends BoxPropsWithout<HTMLDivElement, 'label'>,
@@ -10,6 +11,8 @@ export interface MenuGroupProps
   label?: React.ReactNode
   labelProps?: HeadingProps
   labelStyles?: React.CSSProperties
+  canActivate?: boolean
+  customizationProps?: MenuItemCustomizationProps
 }
 
 const Internal: React.SFC<MenuGroupProps> = ({
@@ -20,11 +23,13 @@ const Internal: React.SFC<MenuGroupProps> = ({
   ...props
 }) => {
   const groupCanActivate = props.canActivate
+  const suppliedCustomizations = props.customizationProps
   delete props.canActivate // Prevent canActivate from being applied to Heading component
+  delete props.customizationProps // Prevent customizationProps from being applied to Heading component
 
   const labelComponent = label && (
     <Heading
-      bg="white"
+      bg={palette.white}
       fontSize="xsmall"
       is="h2"
       px="medium"
@@ -36,6 +41,7 @@ const Internal: React.SFC<MenuGroupProps> = ({
       boxShadow={`0 4px 8px -2px ${palette.charcoal200}`}
       {...labelProps}
       style={labelStyles}
+      zIndex={1}
     >
       {label}
     </Heading>
@@ -43,11 +49,15 @@ const Internal: React.SFC<MenuGroupProps> = ({
 
   return (
     <MenuContext.Consumer>
-      {({ canActivate }) => (
+      {({ canActivate, customizationProps }) => (
         <MenuContext.Provider
           value={{
             canActivate:
               groupCanActivate !== undefined ? groupCanActivate : canActivate,
+            customizationProps:
+              suppliedCustomizations !== undefined
+                ? suppliedCustomizations
+                : customizationProps,
           }}
         >
           <Box {...props}>

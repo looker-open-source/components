@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MenuItem - active + icon 1`] = `
-.c1 {
+.c3 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -17,12 +17,12 @@ exports[`MenuItem - active + icon 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  height: 1rem;
+  height: 20px;
   margin-right: 0.5rem;
-  width: 1rem;
+  width: 20px;
 }
 
-.c0 {
+.c1 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -36,6 +36,7 @@ exports[`MenuItem - active + icon 1`] = `
   -ms-flex-align: center;
   align-items: center;
   color: #0087e1;
+  background-color: #FFFFFF;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -50,22 +51,54 @@ exports[`MenuItem - active + icon 1`] = `
   padding-bottom: 0.75rem;
 }
 
-.c0:hover {
-  background: #FBFBFC;
-  color: #262D33;
-}
-
-.c0:focus {
+.c1:focus {
   box-shadow: 0 0 .25rem 0.125rem #49a9f2;
   outline: none;
 }
 
-.c0:active {
+.c1:active {
+  color: #0087e1;
+}
+
+.c4:hover .c2 {
+  color: #262D33;
+}
+
+.c4 .c2 {
+  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c4 .c2 {
+  color: #C1C6CC;
+}
+
+.c0 {
+  position: relative;
+  -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c0:hover {
+  background: #F5F6F7;
+  color: #262D33;
+}
+
+.c0:hover .c2 {
+  color: #262D33;
+}
+
+.c0 .c2 {
+  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c0 .c2 {
   color: #0087e1;
 }
 
 <div
-  className="c0"
+  className="c0 c1"
   onClick={[Function]}
   style={
     Object {
@@ -75,7 +108,7 @@ exports[`MenuItem - active + icon 1`] = `
   tabIndex={0}
 >
   <div
-    className="c1"
+    className="c2 c3"
   >
     <svg
       fill="currentColor"
@@ -108,7 +141,7 @@ exports[`MenuItem - active + icon 1`] = `
 `;
 
 exports[`MenuItem - active 1`] = `
-.c0 {
+.c1 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -122,6 +155,7 @@ exports[`MenuItem - active 1`] = `
   -ms-flex-align: center;
   align-items: center;
   color: #0087e1;
+  background-color: #FFFFFF;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -136,22 +170,41 @@ exports[`MenuItem - active 1`] = `
   padding-bottom: 0.75rem;
 }
 
-.c0:hover {
-  background: #FBFBFC;
-  color: #262D33;
-}
-
-.c0:focus {
+.c1:focus {
   box-shadow: 0 0 .25rem 0.125rem #49a9f2;
   outline: none;
 }
 
-.c0:active {
+.c1:active {
+  color: #0087e1;
+}
+
+.c0 {
+  position: relative;
+  -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c0:hover {
+  background: #F5F6F7;
+  color: #262D33;
+}
+
+.c0:hover .c2 {
+  color: #262D33;
+}
+
+.c0 .c2 {
+  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c0 .c2 {
   color: #0087e1;
 }
 
 <div
-  className="c0"
+  className="c0 c1"
   onClick={[Function]}
   style={
     Object {
@@ -165,7 +218,7 @@ exports[`MenuItem - active 1`] = `
 `;
 
 exports[`MenuItem - canActivate + active 1`] = `
-.c1 {
+.c3 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -181,12 +234,12 @@ exports[`MenuItem - canActivate + active 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  height: 1rem;
+  height: 20px;
   margin-right: 0.5rem;
-  width: 1rem;
+  width: 20px;
 }
 
-.c0 {
+.c1 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -200,6 +253,7 @@ exports[`MenuItem - canActivate + active 1`] = `
   -ms-flex-align: center;
   align-items: center;
   color: #0087e1;
+  background-color: #FFFFFF;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -214,22 +268,54 @@ exports[`MenuItem - canActivate + active 1`] = `
   padding-bottom: 0.75rem;
 }
 
-.c0:hover {
-  background: #FBFBFC;
-  color: #262D33;
-}
-
-.c0:focus {
+.c1:focus {
   box-shadow: 0 0 .25rem 0.125rem #49a9f2;
   outline: none;
 }
 
-.c0:active {
+.c1:active {
+  color: #0087e1;
+}
+
+.c4:hover .c2 {
+  color: #262D33;
+}
+
+.c4 .c2 {
+  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c4 .c2 {
+  color: #C1C6CC;
+}
+
+.c0 {
+  position: relative;
+  -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c0:hover {
+  background: #F5F6F7;
+  color: #262D33;
+}
+
+.c0:hover .c2 {
+  color: #262D33;
+}
+
+.c0 .c2 {
+  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c0 .c2 {
   color: #0087e1;
 }
 
 <div
-  className="c0"
+  className="c0 c1"
   onClick={[Function]}
   style={
     Object {
@@ -239,7 +325,7 @@ exports[`MenuItem - canActivate + active 1`] = `
   tabIndex={0}
 >
   <div
-    className="c1"
+    className="c2 c3"
   >
     <svg
       fill="currentColor"
@@ -258,7 +344,7 @@ exports[`MenuItem - canActivate + active 1`] = `
 `;
 
 exports[`MenuItem - canActivate 1`] = `
-.c0 {
+.c1 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -272,6 +358,7 @@ exports[`MenuItem - canActivate 1`] = `
   -ms-flex-align: center;
   align-items: center;
   color: #4C535B;
+  background-color: #FFFFFF;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -286,21 +373,16 @@ exports[`MenuItem - canActivate 1`] = `
   padding-bottom: 0.75rem;
 }
 
-.c0:hover {
-  background: #FBFBFC;
-  color: #262D33;
-}
-
-.c0:focus {
+.c1:focus {
   box-shadow: 0 0 .25rem 0.125rem #49a9f2;
   outline: none;
 }
 
-.c0:active {
+.c1:active {
   color: #0087e1;
 }
 
-.c1 {
+.c2 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -311,8 +393,32 @@ exports[`MenuItem - canActivate 1`] = `
   width: 1.5rem;
 }
 
+.c0 {
+  position: relative;
+  -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c0:hover {
+  background: #F5F6F7;
+  color: #262D33;
+}
+
+.c0:hover .c3 {
+  color: #262D33;
+}
+
+.c0 .c3 {
+  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c0 .c3 {
+  color: #C1C6CC;
+}
+
 <div
-  className="c0"
+  className="c0 c1"
   onClick={[Function]}
   style={
     Object {
@@ -322,14 +428,14 @@ exports[`MenuItem - canActivate 1`] = `
   tabIndex={0}
 >
   <div
-    className="c1"
+    className="c2"
   />
   who!
 </div>
 `;
 
-exports[`MenuItem - detail 1`] = `
-.c0 {
+exports[`MenuItem - current + marker 1`] = `
+.c1 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -343,6 +449,7 @@ exports[`MenuItem - detail 1`] = `
   -ms-flex-align: center;
   align-items: center;
   color: #4C535B;
+  background-color: #FFFFFF;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -357,97 +464,16 @@ exports[`MenuItem - detail 1`] = `
   padding-bottom: 0.75rem;
 }
 
-.c0:hover {
-  background: #FBFBFC;
-  color: #262D33;
-}
-
-.c0:focus {
+.c1:focus {
   box-shadow: 0 0 .25rem 0.125rem #49a9f2;
   outline: none;
 }
 
-.c0:active {
+.c1:active {
   color: #0087e1;
 }
 
-.c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  color: #C1C6CC;
-  font-size: 0.75rem;
-  margin-left: auto;
-  padding-left: 1.25rem;
-}
-
-<div
-  className="c0"
-  onClick={[Function]}
-  style={
-    Object {
-      "textDecoration": "none",
-    }
-  }
-  tabIndex={0}
->
-  who!
-  <div
-    className="c1"
-  >
-    Is an excellent question
-  </div>
-</div>
-`;
-
-exports[`MenuItem - icon 1`] = `
-.c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  cursor: pointer;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  color: #4C535B;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  font-size: 0.875rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-}
-
-.c0:hover {
-  background: #FBFBFC;
-  color: #262D33;
-}
-
-.c0:focus {
-  box-shadow: 0 0 .25rem 0.125rem #49a9f2;
-  outline: none;
-}
-
-.c0:active {
-  color: #0087e1;
-}
-
-.c1 {
+.c3 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -463,13 +489,76 @@ exports[`MenuItem - icon 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  height: 1rem;
+  height: 20px;
   margin-right: 0.5rem;
-  width: 1rem;
+  width: 20px;
+}
+
+.c4:hover .c2 {
+  color: #262D33;
+}
+
+.c4 .c2 {
+  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c4 .c2 {
+  color: #C1C6CC;
+}
+
+.c5:hover .c2 {
+  color: #262D33;
+}
+
+.c5 .c2 {
+  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c5 .c2 {
+  color: #0087e1;
+}
+
+.c6 .c2 {
+  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c6 .c2 {
+  color: #262D33;
+}
+
+.c0 {
+  position: relative;
+  -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+  background: #F5F6F7;
+  color: #262D33;
+}
+
+.c0 .c2 {
+  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c0 .c2 {
+  color: #262D33;
+}
+
+.c0::before {
+  content: '';
+  display: block;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: #262D33;
+  width: 4px;
 }
 
 <div
-  className="c0"
+  className="c0 c1"
   onClick={[Function]}
   style={
     Object {
@@ -479,7 +568,348 @@ exports[`MenuItem - icon 1`] = `
   tabIndex={0}
 >
   <div
-    className="c1"
+    className="c2 c3"
+  >
+    <svg
+      fill="currentColor"
+      height="100%"
+      viewBox="0 0 24 24"
+      width="100%"
+    >
+      <path
+        d="M12 5.69l5 4.5V18h-2v-6H9v6H7V10.19l5-4.5zM12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"
+        fill="currentColor"
+      />
+    </svg>
+  </div>
+  who!
+</div>
+`;
+
+exports[`MenuItem - current 1`] = `
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  cursor: pointer;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #4C535B;
+  background-color: #FFFFFF;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  font-size: 0.875rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.c1:focus {
+  box-shadow: 0 0 .25rem 0.125rem #49a9f2;
+  outline: none;
+}
+
+.c1:active {
+  color: #0087e1;
+}
+
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  height: 20px;
+  margin-right: 0.5rem;
+  width: 20px;
+}
+
+.c4:hover .c2 {
+  color: #262D33;
+}
+
+.c4 .c2 {
+  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c4 .c2 {
+  color: #C1C6CC;
+}
+
+.c5:hover .c2 {
+  color: #262D33;
+}
+
+.c5 .c2 {
+  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c5 .c2 {
+  color: #0087e1;
+}
+
+.c0 {
+  position: relative;
+  -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+  background: #F5F6F7;
+  color: #262D33;
+}
+
+.c0 .c2 {
+  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c0 .c2 {
+  color: #262D33;
+}
+
+<div
+  className="c0 c1"
+  onClick={[Function]}
+  style={
+    Object {
+      "textDecoration": "none",
+    }
+  }
+  tabIndex={0}
+>
+  <div
+    className="c2 c3"
+  >
+    <svg
+      fill="currentColor"
+      height="100%"
+      viewBox="0 0 24 24"
+      width="100%"
+    >
+      <path
+        d="M12 5.69l5 4.5V18h-2v-6H9v6H7V10.19l5-4.5zM12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"
+        fill="currentColor"
+      />
+    </svg>
+  </div>
+  who!
+</div>
+`;
+
+exports[`MenuItem - detail 1`] = `
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  cursor: pointer;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #4C535B;
+  background-color: #FFFFFF;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  font-size: 0.875rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.c1:focus {
+  box-shadow: 0 0 .25rem 0.125rem #49a9f2;
+  outline: none;
+}
+
+.c1:active {
+  color: #0087e1;
+}
+
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #C1C6CC;
+  font-size: 0.75rem;
+  margin-left: auto;
+  padding-left: 1.25rem;
+}
+
+.c0 {
+  position: relative;
+  -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c0:hover {
+  background: #F5F6F7;
+  color: #262D33;
+}
+
+.c0:hover .c3 {
+  color: #262D33;
+}
+
+.c0 .c3 {
+  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c0 .c3 {
+  color: #C1C6CC;
+}
+
+<div
+  className="c0 c1"
+  onClick={[Function]}
+  style={
+    Object {
+      "textDecoration": "none",
+    }
+  }
+  tabIndex={0}
+>
+  who!
+  <div
+    className="c2"
+  >
+    Is an excellent question
+  </div>
+</div>
+`;
+
+exports[`MenuItem - icon 1`] = `
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  cursor: pointer;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #4C535B;
+  background-color: #FFFFFF;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  font-size: 0.875rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.c1:focus {
+  box-shadow: 0 0 .25rem 0.125rem #49a9f2;
+  outline: none;
+}
+
+.c1:active {
+  color: #0087e1;
+}
+
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  height: 20px;
+  margin-right: 0.5rem;
+  width: 20px;
+}
+
+.c0 {
+  position: relative;
+  -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c0:hover {
+  background: #F5F6F7;
+  color: #262D33;
+}
+
+.c0:hover .c2 {
+  color: #262D33;
+}
+
+.c0 .c2 {
+  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c0 .c2 {
+  color: #C1C6CC;
+}
+
+<div
+  className="c0 c1"
+  onClick={[Function]}
+  style={
+    Object {
+      "textDecoration": "none",
+    }
+  }
+  tabIndex={0}
+>
+  <div
+    className="c2 c3"
   >
     <svg
       fill="currentColor"
@@ -511,8 +941,8 @@ exports[`MenuItem - icon 1`] = `
 </div>
 `;
 
-exports[`MenuItem 1`] = `
-.c0 {
+exports[`MenuItem - with customizations 1`] = `
+.c1 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -525,7 +955,8 @@ exports[`MenuItem 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  color: #4C535B;
+  color: #BFB2FF;
+  background-color: #4F2ABA;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -540,22 +971,122 @@ exports[`MenuItem 1`] = `
   padding-bottom: 0.75rem;
 }
 
-.c0:hover {
-  background: #FBFBFC;
-  color: #262D33;
-}
-
-.c0:focus {
+.c1:focus {
   box-shadow: 0 0 .25rem 0.125rem #49a9f2;
   outline: none;
 }
 
-.c0:active {
+.c1:active {
   color: #0087e1;
 }
 
+.c0 {
+  position: relative;
+  -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+  background: #BFB2FF;
+  color: #1E1047;
+}
+
+.c0 .c2 {
+  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c0 .c2 {
+  color: #4F2ABA;
+}
+
+.c0::before {
+  content: '';
+  display: block;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: #1E1047;
+  width: 10px;
+}
+
 <div
-  className="c0"
+  className="c0 c1"
+  onClick={[Function]}
+  style={
+    Object {
+      "textDecoration": "none",
+    }
+  }
+  tabIndex={0}
+>
+  who!
+</div>
+`;
+
+exports[`MenuItem 1`] = `
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  cursor: pointer;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #4C535B;
+  background-color: #FFFFFF;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  font-size: 0.875rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.c1:focus {
+  box-shadow: 0 0 .25rem 0.125rem #49a9f2;
+  outline: none;
+}
+
+.c1:active {
+  color: #0087e1;
+}
+
+.c0 {
+  position: relative;
+  -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c0:hover {
+  background: #F5F6F7;
+  color: #262D33;
+}
+
+.c0:hover .c2 {
+  color: #262D33;
+}
+
+.c0 .c2 {
+  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c0 .c2 {
+  color: #C1C6CC;
+}
+
+<div
+  className="c0 c1"
   onClick={[Function]}
   style={
     Object {

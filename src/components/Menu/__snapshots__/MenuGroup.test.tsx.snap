@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MenuGroup - JSX label 1`] = `
+exports[`MenuGrouo - menu customization 1`] = `
 .c0 {
   border: 0;
   box-sizing: border-box;
@@ -11,7 +11,7 @@ exports[`MenuGroup - JSX label 1`] = `
   vertical-align: baseline;
 }
 
-.c3 {
+.c2 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -24,7 +24,8 @@ exports[`MenuGroup - JSX label 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  color: #4C535B;
+  color: #BFB2FF;
+  background-color: #4F2ABA;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -39,17 +40,228 @@ exports[`MenuGroup - JSX label 1`] = `
   padding-bottom: 0.75rem;
 }
 
-.c3:hover {
-  background: #FBFBFC;
-  color: #262D33;
-}
-
-.c3:focus {
+.c2:focus {
   box-shadow: 0 0 .25rem 0.125rem #49a9f2;
   outline: none;
 }
 
-.c3:active {
+.c2:active {
+  color: #0087e1;
+}
+
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  height: 20px;
+  margin-right: 0.5rem;
+  width: 20px;
+}
+
+.c5:hover .c3 {
+  color: #262D33;
+}
+
+.c5 .c3 {
+  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c5 .c3 {
+  color: #C1C6CC;
+}
+
+.c1 {
+  position: relative;
+  -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c1:hover {
+  background: #341C7A;
+  color: #FFFFFF;
+}
+
+.c1:hover .c3 {
+  color: #E8E5FF;
+}
+
+.c1 .c3 {
+  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c1 .c3 {
+  color: #9785F2;
+}
+
+<div
+  className="c0"
+>
+  <div
+    className="c1 c2"
+    onClick={[Function]}
+    style={
+      Object {
+        "textDecoration": "none",
+      }
+    }
+    tabIndex={0}
+  >
+    <div
+      className="c3 c4"
+    >
+      <svg
+        fill="currentColor"
+        height="100%"
+        viewBox="0 0 24 24"
+        width="100%"
+      >
+        <g
+          clipPath="url(#clip0)"
+          fill="currentColor"
+        >
+          <path
+            d="M13.913 11.36a6.339 6.339 0 0 0-3.199.864l.914 1.207a4.841 4.841 0 0 1 2.286-.572 4.88 4.88 0 0 1 4.875 4.875 4.88 4.88 0 0 1-4.875 4.875 4.88 4.88 0 0 1-4.875-4.875c0-1.323.531-2.523 1.39-3.402l-.913-1.206a6.354 6.354 0 0 0-1.977 4.608 6.382 6.382 0 0 0 6.375 6.375 6.382 6.382 0 0 0 6.375-6.375 6.382 6.382 0 0 0-6.375-6.375v.001zM9.785 8.735c0 .59-.198 1.132-.527 1.57l.927 1.224a4.1 4.1 0 0 0 .319-5.201l-1.1 1.052c.24.396.38.858.38 1.354v.001zM7.16 11.361a2.629 2.629 0 0 1-2.625-2.625A2.628 2.628 0 0 1 7.16 6.111c.405 0 .79.095 1.132.26l1.13-1.08a4.1 4.1 0 0 0-2.262-.68 4.13 4.13 0 0 0-4.125 4.125 4.13 4.13 0 0 0 4.125 4.125c.655 0 1.273-.158 1.824-.43l-.93-1.23c-.28.102-.58.16-.894.16zM11.285 3.111c0-.827.673-1.5 1.5-1.5s1.5.673 1.5 1.5a1.502 1.502 0 0 1-1.92 1.44l-1.158 1.107c.46.285 1 .453 1.578.453 1.654 0 3-1.346 3-3s-1.346-3-3-3-3 1.346-3 3c0 .532.141 1.031.384 1.464l1.16-1.11a1.481 1.481 0 0 1-.044-.355v.001z"
+          />
+          <path
+            d="M10.184 11.53a4.143 4.143 0 0 1-1.2.9l.528.696a6.457 6.457 0 0 1 1.2-.902l-.527-.695v.001zM10.504 6.33l.703-.673a3.018 3.018 0 0 1-1.038-1.083l-.747.715c.422.278.788.631 1.083 1.041h-.001z"
+          />
+          <path
+            d="M11.625 13.434l-.914-1.207a6.37 6.37 0 0 0-1.2.902l.914 1.206a4.93 4.93 0 0 1 1.199-.901zM9.407 7.381l1.099-1.052a4.153 4.153 0 0 0-1.083-1.04L8.293 6.37a2.64 2.64 0 0 1 1.113 1.011h.001zM10.186 11.53l-.927-1.223a2.63 2.63 0 0 1-1.204.894l.93 1.229c.454-.225.86-.531 1.2-.9zM11.21 5.659l1.158-1.108a1.502 1.502 0 0 1-1.036-1.084l-1.16 1.11c.249.443.608.815 1.038 1.083v-.001z"
+          />
+        </g>
+        <defs>
+          <clipPath
+            id="clip0"
+          >
+            <path
+              d="M0 0h24v24H0z"
+              fill="#fff"
+            />
+          </clipPath>
+        </defs>
+      </svg>
+    </div>
+    Looker
+  </div>
+  <div
+    className="c1 c2"
+    onClick={[Function]}
+    style={
+      Object {
+        "textDecoration": "none",
+      }
+    }
+    tabIndex={0}
+  >
+    <div
+      className="c3 c4"
+    >
+      <svg
+        fill="currentColor"
+        height="100%"
+        viewBox="0 0 24 24"
+        width="100%"
+      >
+        <path
+          d="M11.749.09L2 4.423v6.499c0 6.01 4.16 11.633 9.749 12.998 5.589-1.365 9.749-6.986 9.749-12.998v-6.5L11.749.09zM9.582 17.42l-4.333-4.333 1.527-1.527 2.805 2.794 7.138-7.138 1.527 1.538-8.666 8.665h.002z"
+          fill="currentColor"
+        />
+      </svg>
+    </div>
+    Validate
+  </div>
+  <div
+    className="c1 c2"
+    onClick={[Function]}
+    style={
+      Object {
+        "textDecoration": "none",
+      }
+    }
+    tabIndex={0}
+  >
+    <div
+      className="c3 c4"
+    >
+      <svg
+        fill="currentColor"
+        height="100%"
+        viewBox="0 0 24 24"
+        width="100%"
+      >
+        <path
+          d="M11 2v20c-5.07-.5-9-4.79-9-10s3.93-9.5 9-10zm2.03 0v8.99H22c-.47-4.74-4.24-8.52-8.97-8.99zm0 11.01V22c4.74-.47 8.5-4.25 8.97-8.99h-8.97z"
+          fill="currentColor"
+        />
+      </svg>
+    </div>
+    Pizza!
+  </div>
+</div>
+`;
+
+exports[`MenuGrouo - menu customization 2`] = `undefined`;
+
+exports[`MenuGroup - JSX label 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  cursor: pointer;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #4C535B;
+  background-color: #FFFFFF;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  font-size: 0.875rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.c4:focus {
+  box-shadow: 0 0 .25rem 0.125rem #49a9f2;
+  outline: none;
+}
+
+.c4:active {
   color: #0087e1;
 }
 
@@ -62,7 +274,7 @@ exports[`MenuGroup - JSX label 1`] = `
   padding: 0;
   vertical-align: baseline;
   box-shadow: 0 4px 8px -2px #DEE1E5;
-  background-color: white;
+  background-color: #FFFFFF;
   font-size: 0.75rem;
   font-weight: 600;
   line-height: 1rem;
@@ -73,6 +285,7 @@ exports[`MenuGroup - JSX label 1`] = `
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
   top: 0;
+  z-index: 1;
 }
 
 .c1 {
@@ -80,6 +293,30 @@ exports[`MenuGroup - JSX label 1`] = `
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-transform: uppercase;
+}
+
+.c3 {
+  position: relative;
+  -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c3:hover {
+  background: #F5F6F7;
+  color: #262D33;
+}
+
+.c3:hover .c5 {
+  color: #262D33;
+}
+
+.c3 .c5 {
+  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c3 .c5 {
+  color: #C1C6CC;
 }
 
 <div
@@ -95,7 +332,7 @@ exports[`MenuGroup - JSX label 1`] = `
     </div>
   </h2>
   <div
-    className="c3"
+    className="c3 c4"
     onClick={[Function]}
     style={
       Object {
@@ -107,7 +344,7 @@ exports[`MenuGroup - JSX label 1`] = `
     what?
   </div>
   <div
-    className="c3"
+    className="c3 c4"
     onClick={[Function]}
     style={
       Object {
@@ -119,7 +356,7 @@ exports[`MenuGroup - JSX label 1`] = `
     who?
   </div>
   <div
-    className="c3"
+    className="c3 c4"
     onClick={[Function]}
     style={
       Object {
@@ -144,7 +381,7 @@ exports[`MenuGroup - canActivate 1`] = `
   vertical-align: baseline;
 }
 
-.c1 {
+.c2 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -158,6 +395,7 @@ exports[`MenuGroup - canActivate 1`] = `
   -ms-flex-align: center;
   align-items: center;
   color: #4C535B;
+  background-color: #FFFFFF;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -172,21 +410,16 @@ exports[`MenuGroup - canActivate 1`] = `
   padding-bottom: 0.75rem;
 }
 
-.c1:hover {
-  background: #FBFBFC;
-  color: #262D33;
-}
-
-.c1:focus {
+.c2:focus {
   box-shadow: 0 0 .25rem 0.125rem #49a9f2;
   outline: none;
 }
 
-.c1:active {
+.c2:active {
   color: #0087e1;
 }
 
-.c2 {
+.c3 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -197,11 +430,35 @@ exports[`MenuGroup - canActivate 1`] = `
   width: 1.5rem;
 }
 
+.c1 {
+  position: relative;
+  -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c1:hover {
+  background: #F5F6F7;
+  color: #262D33;
+}
+
+.c1:hover .c4 {
+  color: #262D33;
+}
+
+.c1 .c4 {
+  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c1 .c4 {
+  color: #C1C6CC;
+}
+
 <div
   className="c0"
 >
   <div
-    className="c1"
+    className="c1 c2"
     onClick={[Function]}
     style={
       Object {
@@ -211,12 +468,12 @@ exports[`MenuGroup - canActivate 1`] = `
     tabIndex={0}
   >
     <div
-      className="c2"
+      className="c3"
     />
     what?
   </div>
   <div
-    className="c1"
+    className="c1 c2"
     onClick={[Function]}
     style={
       Object {
@@ -226,12 +483,12 @@ exports[`MenuGroup - canActivate 1`] = `
     tabIndex={0}
   >
     <div
-      className="c2"
+      className="c3"
     />
     who?
   </div>
   <div
-    className="c1"
+    className="c1 c2"
     onClick={[Function]}
     style={
       Object {
@@ -241,7 +498,7 @@ exports[`MenuGroup - canActivate 1`] = `
     tabIndex={0}
   >
     <div
-      className="c2"
+      className="c3"
     />
     where?
   </div>
@@ -259,7 +516,7 @@ exports[`MenuGroup - label 1`] = `
   vertical-align: baseline;
 }
 
-.c3 {
+.c4 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -273,6 +530,7 @@ exports[`MenuGroup - label 1`] = `
   -ms-flex-align: center;
   align-items: center;
   color: #4C535B;
+  background-color: #FFFFFF;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -287,17 +545,12 @@ exports[`MenuGroup - label 1`] = `
   padding-bottom: 0.75rem;
 }
 
-.c3:hover {
-  background: #FBFBFC;
-  color: #262D33;
-}
-
-.c3:focus {
+.c4:focus {
   box-shadow: 0 0 .25rem 0.125rem #49a9f2;
   outline: none;
 }
 
-.c3:active {
+.c4:active {
   color: #0087e1;
 }
 
@@ -310,7 +563,7 @@ exports[`MenuGroup - label 1`] = `
   padding: 0;
   vertical-align: baseline;
   box-shadow: 0 4px 8px -2px #DEE1E5;
-  background-color: white;
+  background-color: #FFFFFF;
   font-size: 0.75rem;
   font-weight: 600;
   line-height: 1rem;
@@ -321,6 +574,7 @@ exports[`MenuGroup - label 1`] = `
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
   top: 0;
+  z-index: 1;
 }
 
 .c1 {
@@ -328,6 +582,30 @@ exports[`MenuGroup - label 1`] = `
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-transform: uppercase;
+}
+
+.c3 {
+  position: relative;
+  -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c3:hover {
+  background: #F5F6F7;
+  color: #262D33;
+}
+
+.c3:hover .c5 {
+  color: #262D33;
+}
+
+.c3 .c5 {
+  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c3 .c5 {
+  color: #C1C6CC;
 }
 
 <div
@@ -339,7 +617,7 @@ exports[`MenuGroup - label 1`] = `
     Questions
   </h2>
   <div
-    className="c3"
+    className="c3 c4"
     onClick={[Function]}
     style={
       Object {
@@ -351,7 +629,7 @@ exports[`MenuGroup - label 1`] = `
     what?
   </div>
   <div
-    className="c3"
+    className="c3 c4"
     onClick={[Function]}
     style={
       Object {
@@ -363,7 +641,7 @@ exports[`MenuGroup - label 1`] = `
     who?
   </div>
   <div
-    className="c3"
+    className="c3 c4"
     onClick={[Function]}
     style={
       Object {
@@ -388,7 +666,7 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
   vertical-align: baseline;
 }
 
-.c3 {
+.c4 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -402,6 +680,7 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
   -ms-flex-align: center;
   align-items: center;
   color: #4C535B;
+  background-color: #FFFFFF;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -416,17 +695,12 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
   padding-bottom: 0.75rem;
 }
 
-.c3:hover {
-  background: #FBFBFC;
-  color: #262D33;
-}
-
-.c3:focus {
+.c4:focus {
   box-shadow: 0 0 .25rem 0.125rem #49a9f2;
   outline: none;
 }
 
-.c3:active {
+.c4:active {
   color: #0087e1;
 }
 
@@ -439,7 +713,7 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
   padding: 0;
   vertical-align: baseline;
   box-shadow: 0 4px 8px -2px #DEE1E5;
-  background-color: white;
+  background-color: #FFFFFF;
   font-size: 1.5625rem;
   font-weight: 600;
   line-height: 2.5rem;
@@ -450,6 +724,7 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
   top: 0;
+  z-index: 1;
 }
 
 .c1 {
@@ -457,6 +732,30 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-transform: uppercase;
+}
+
+.c3 {
+  position: relative;
+  -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c3:hover {
+  background: #F5F6F7;
+  color: #262D33;
+}
+
+.c3:hover .c5 {
+  color: #262D33;
+}
+
+.c3 .c5 {
+  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c3 .c5 {
+  color: #C1C6CC;
 }
 
 <div
@@ -473,7 +772,7 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
     Questions
   </h2>
   <div
-    className="c3"
+    className="c3 c4"
     onClick={[Function]}
     style={
       Object {
@@ -485,7 +784,7 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
     what?
   </div>
   <div
-    className="c3"
+    className="c3 c4"
     onClick={[Function]}
     style={
       Object {
@@ -497,7 +796,7 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
     who?
   </div>
   <div
-    className="c3"
+    className="c3 c4"
     onClick={[Function]}
     style={
       Object {
@@ -522,7 +821,7 @@ exports[`MenuGroup 1`] = `
   vertical-align: baseline;
 }
 
-.c1 {
+.c2 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -536,6 +835,7 @@ exports[`MenuGroup 1`] = `
   -ms-flex-align: center;
   align-items: center;
   color: #4C535B;
+  background-color: #FFFFFF;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -550,25 +850,44 @@ exports[`MenuGroup 1`] = `
   padding-bottom: 0.75rem;
 }
 
-.c1:hover {
-  background: #FBFBFC;
-  color: #262D33;
-}
-
-.c1:focus {
+.c2:focus {
   box-shadow: 0 0 .25rem 0.125rem #49a9f2;
   outline: none;
 }
 
-.c1:active {
+.c2:active {
   color: #0087e1;
+}
+
+.c1 {
+  position: relative;
+  -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c1:hover {
+  background: #F5F6F7;
+  color: #262D33;
+}
+
+.c1:hover .c3 {
+  color: #262D33;
+}
+
+.c1 .c3 {
+  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c1 .c3 {
+  color: #C1C6CC;
 }
 
 <div
   className="c0"
 >
   <div
-    className="c1"
+    className="c1 c2"
     onClick={[Function]}
     style={
       Object {
