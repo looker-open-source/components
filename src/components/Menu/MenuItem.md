@@ -29,10 +29,12 @@ Note: This property behaves slightly differently depending on the context of the
 <Menu>
   <MenuGroup
     label="canActivate=false, no icons"
-    labelProps={{ transform: 'none', bg: 'transparent' }}
+    labelProps={{ transform: 'none'}}
   >
     <MenuItem active>Gouda</MenuItem>
-    <MenuItem detail="Is often orange">Cheddar</MenuItem>
+    <MenuItem detail={<Tooltip content="More things you should know..." open>
+  <Icon name="CircleInfo" />
+</Tooltip>}>Cheddar</MenuItem>
     <MenuItem>Swiss</MenuItem>
   </MenuGroup>
   <MenuGroup
