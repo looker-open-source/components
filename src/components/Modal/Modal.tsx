@@ -93,11 +93,6 @@ export interface ModalState {
 }
 
 export class Modal extends React.Component<ModalInternalProps, ModalState> {
-  public static defaultProps: ModalInternalProps = {
-    open: false,
-    render: () => null,
-  }
-
   private portalRef: React.RefObject<HTMLElement>
 
   constructor(props: ModalInternalProps) {

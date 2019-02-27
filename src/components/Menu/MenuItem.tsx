@@ -4,7 +4,6 @@ import { IconNames } from '../../icons/build/IconNames'
 import { css, easings, palette, styled, transitions } from '../../style'
 import { Box, BoxProps, BoxPropsWithout } from '../Box'
 import { Icon } from '../Icon'
-import { ModalContextProps, withModal } from '../Modal'
 import { MenuContextProps, withMenu } from './MenuContext'
 
 export interface MenuMarkerCustomizations {
@@ -45,7 +44,6 @@ export interface MenuIconProps
 
 export interface MenuItemProps
   extends BoxProps<HTMLAnchorElement>,
-    ModalContextProps,
     MenuContextProps {
   detail?: React.ReactNode
   icon?: IconNames
@@ -54,7 +52,6 @@ export interface MenuItemProps
   current?: boolean
   currentMarker?: boolean
   customizationProps?: MenuItemCustomizationProps
-
   onClick?: () => void
 }
 
@@ -63,7 +60,6 @@ const MenuItemInternal: React.SFC<MenuItemProps> = ({
   current,
   currentMarker,
   canActivate,
-  closeModal,
   children,
   detail,
   icon,
@@ -123,11 +119,6 @@ const MenuItemInternal: React.SFC<MenuItemProps> = ({
       </Box>
     ) : null
 
-  const click = () => {
-    onClick && onClick()
-    closeModal && closeModal()
-  }
-
   const itemIcon = () => {
     const placeholder = <Box width="1.5rem" />
     const iconComponent = (name: IconNames) => (
@@ -152,12 +143,13 @@ const MenuItemInternal: React.SFC<MenuItemProps> = ({
       fontSize="small"
       py="small"
       px="medium"
-      onClick={click}
+      onClick={onClick}
       tabIndex={0}
       bg={customProps.bg}
       focusStyle={{
         boxShadow: `0 0 .25rem 0.125rem ${palette.blue400}`,
         outline: 'none',
+        zIndex: 1,
       }}
       style={{ textDecoration: 'none' }}
       active={active}
@@ -274,4 +266,4 @@ const MenuItemStyle = styled(MenuItemStyleFactory)`
   ${currentBorder};
 `
 
-export const MenuItem = withModal(withMenu(MenuItemInternal))
+export const MenuItem = withMenu(MenuItemInternal)

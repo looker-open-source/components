@@ -29,12 +29,20 @@ Note: This property behaves slightly differently depending on the context of the
 <Menu>
   <MenuGroup
     label="canActivate=false, no icons"
-    labelProps={{ transform: 'none'}}
+    labelProps={{ transform: 'none' }}
   >
     <MenuItem active>Gouda</MenuItem>
-    <MenuItem detail={<Tooltip content="More things you should know..." open>
-  <Icon name="CircleInfo" />
-</Tooltip>}>Cheddar</MenuItem>
+    <MenuItem
+      detail={
+        <Tooltip content="More things you should know..." open>
+          <Box>
+            <Icon name="CircleInfo" />
+          </Box>
+        </Tooltip>
+      }
+    >
+      Cheddar
+    </MenuItem>
     <MenuItem>Swiss</MenuItem>
   </MenuGroup>
   <MenuGroup
@@ -67,7 +75,6 @@ Note: This property behaves slightly differently depending on the context of the
 
 Use the `current` prop to indicate the current menu item, optionally use the `currentMarker` prop to add an additional border marker to the current item.
 
-
 ```js
 <Menu>
   <MenuGroup>
@@ -87,9 +94,6 @@ Use the `current` prop to indicate the current menu item, optionally use the `cu
 </Menu>
 ```
 
-
-
-
 ### Customizing a menu
 
 `Menu` accepts a `customizationProps` prop which allows for flexibly styling of the item. Below is an example of customizing the menu's display. Below is an example of all the options you can customize.
@@ -97,86 +101,83 @@ Use the `current` prop to indicate the current menu item, optionally use the `cu
 ```js
 const palette = require('../../style').palette
 
-const menuCustomizations =
-  {
-    bg: palette.purple500,
-    color: palette.purple200,
+const menuCustomizations = {
+  bg: palette.purple500,
+  color: palette.purple200,
+  icon: {
+    color: palette.purple300,
+    size: 40,
+  },
+  marker: {
+    color: palette.purple300,
+    size: 10,
+  },
+  hover: {
+    bg: palette.purple700,
+    color: palette.white,
     icon: {
-      color: palette.purple300,
-      size: 40
+      color: palette.purple100,
     },
-    marker: {
-      color: palette.purple300,
-      size: 10
+  },
+  current: {
+    bg: palette.purple200,
+    color: palette.purple900,
+    icon: {
+      color: palette.purple500,
     },
-    hover: {
-      bg: palette.purple700,
-      color: palette.white,
-      icon: {
-        color: palette.purple100,
-      }
-    },
-    current: {
-      bg: palette.purple200,
-      color: palette.purple900,
-      icon: {
-        color: palette.purple500,
-      }
-    },
-    activated: {
-      color: palette.blue500
-    },
-
-  };
-  <Menu customizationProps={menuCustomizations}>
-  <MenuGroup >
-    <MenuItem icon="Home">
-        Gouda
-      </MenuItem>
-      <MenuItem icon="FavoriteOutline" current  currentMarker  detail="Is often orange" >
-        Cheddar
-      </MenuItem>
+  },
+  activated: {
+    color: palette.blue500,
+  },
+}
+;<Menu customizationProps={menuCustomizations}>
+  <MenuGroup>
+    <MenuItem icon="Home">Gouda</MenuItem>
+    <MenuItem
+      icon="FavoriteOutline"
+      current
+      currentMarker
+      detail="Is often orange"
+    >
+      Cheddar
+    </MenuItem>
     <MenuItem icon="Dashboard">Swiss</MenuItem>
   </MenuGroup>
-  </Menu>
-
+</Menu>
 ```
 
 ### Digital Marketing Style Menu
+
 It's possible to selectively customize only select pieces of the menu as well as in this example below.
+
 ```js
 const palette = require('../../style').palette
 
-const menuCustomizations =
-    {
-    bg: palette.charcoal100,
+const menuCustomizations = {
+  bg: palette.charcoal100,
+  icon: {
+    color: palette.charcoal800,
+  },
+  hover: {
     icon: {
-      color: palette.charcoal800,
+      color: palette.purple500,
     },
-    hover: {
-      icon: {
-        color: palette.purple500,
-      }
+  },
+  current: {
+    bg: palette.charcoal200,
+    icon: {
+      color: palette.purple500,
     },
-    current: {
-      bg: palette.charcoal200,
-      icon: {
-        color: palette.purple500,
-      }
-    }
-  };
+  },
+}
 
-  <Menu customizationProps={menuCustomizations}>
-  <MenuGroup label="GOOGLE ADS" labelProps={{bg: palette.charcoal100}}>
-    <MenuItem icon="Home">
-        Gouda
-      </MenuItem>
-      <MenuItem icon="FavoriteOutline" current detail="Is often orange" >
-        Cheddar
-      </MenuItem>
-    <MenuItem icon="Dashboard" >Swiss</MenuItem>
+;<Menu customizationProps={menuCustomizations}>
+  <MenuGroup label="GOOGLE ADS" labelProps={{ bg: palette.charcoal100 }}>
+    <MenuItem icon="Home">Gouda</MenuItem>
+    <MenuItem icon="FavoriteOutline" current detail="Is often orange">
+      Cheddar
+    </MenuItem>
+    <MenuItem icon="Dashboard">Swiss</MenuItem>
   </MenuGroup>
-  </Menu>
-
-
+</Menu>
 ```
