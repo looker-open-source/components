@@ -19,26 +19,30 @@ export const ModalSurface: React.SFC<ModalSurfaceProps> = ({
   theme,
   ...props
 }) => {
+  const surfaceClass = Math.random()
+    .toString(36)
+    .substr(2, 5)
+
   return (
     <FocusTrap
       focusTrapOptions={{
         clickOutsideDeactivates: true,
         escapeDeactivates: true,
+        fallbackFocus: `.${surfaceClass}`,
       }}
     >
       <TransitionTimers
         bg={CustomizableModalAttributes.surface.backgroundColor}
         boxShadow={theme.shadows[3]}
-        className={className}
+        className={`${className} ${surfaceClass}`}
         display="flex"
         flexDirection="column"
         maxWidth="100%"
         position="absolute"
         width={width}
-        tabIndex={0}
+        tabIndex={-1}
         surfaceStyle={style}
         focusStyle={{ outline: 'none' }}
-        zIndex={CustomizableModalAttributes.zIndex + 1}
         {...props}
       >
         {children}

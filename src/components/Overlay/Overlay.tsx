@@ -2,7 +2,7 @@ import { Placement } from 'popper.js'
 import * as React from 'react'
 import { Popper, PopperArrowProps } from 'react-popper'
 import { ModalBackdrop, ModalContext } from '../Modal'
-import { OverlayTrigger } from './OverlayTrigger'
+import { ModalPortal } from '../Modal/ModalPortal'
 
 export interface OverlayContentProps {
   ref: React.Ref<HTMLElement>
@@ -42,6 +42,8 @@ export interface OverlayInteractiveProps {
    * @default false
    */
   open?: boolean
+
+  children: JSX.Element
 }
 
 export interface OverlayProps extends OverlayInteractiveProps {
@@ -79,15 +81,13 @@ export interface OverlayState {
  */
 
 export class Overlay extends React.Component<OverlayProps, OverlayState> {
-  public static defaultProps: OverlayProps = { open: false, render: () => null }
-
-  private surfaceRef: HTMLElement | null
+  private portalRef: React.RefObject<HTMLElement>
   private triggerRef: React.RefObject<HTMLElement>
 
   constructor(props: OverlayProps) {
     super(props)
     this.state = { isOpen: !!props.open }
-    this.surfaceRef = null
+    this.portalRef = React.createRef()
     this.triggerRef = React.createRef()
   }
 
@@ -101,11 +101,10 @@ export class Overlay extends React.Component<OverlayProps, OverlayState> {
     }
 
     const surface = this.state.isOpen && (
-      <>
+      <ModalPortal ref={this.portalRef}>
         <ModalBackdrop onClick={this.close} style={this.props.backdropStyles} />
         <Popper
           positionFixed
-          innerRef={this.setSurfaceRef}
           placement={this.props.placement}
           modifiers={{ flip: { enabled: this.props.pin ? false : true } }}
           referenceElement={
@@ -121,28 +120,28 @@ export class Overlay extends React.Component<OverlayProps, OverlayState> {
             })
           }
         </Popper>
-      </>
+      </ModalPortal>
     )
 
     return (
       <ModalContext.Provider value={{ closeModal: this.close }}>
-        <OverlayTrigger
-          isOpen={this.state.isOpen}
-          ref={this.triggerRef}
-          eventHandlers={triggerEventHandlers}
-        >
-          {this.props.children}
-        </OverlayTrigger>
+        {this.generateTrigger(triggerEventHandlers)}
         {surface}
       </ModalContext.Provider>
     )
   }
 
-  private setSurfaceRef = (ref: null | HTMLElement) => (this.surfaceRef = ref)
+  private generateTrigger(eventHandlers?: React.DOMAttributes<{}>) {
+    return React.cloneElement(this.props.children, {
+      innerRef: this.triggerRef, // SC4-Upgrade this will change to `ref: ...`
+      ...eventHandlers,
+    })
+  }
 
   private close = () => {
     document.removeEventListener('keydown', this.handleEscapePress)
     document.removeEventListener('click', this.handleOutsideClick)
+
     this.setState({ isOpen: false })
   }
 
@@ -161,7 +160,10 @@ export class Overlay extends React.Component<OverlayProps, OverlayState> {
       return
     }
 
-    if (this.surfaceRef && this.surfaceRef.contains(e.target as Node)) {
+    if (
+      this.portalRef.current &&
+      this.portalRef.current.contains(e.target as Node)
+    ) {
       return
     }
 
@@ -176,7 +178,10 @@ export class Overlay extends React.Component<OverlayProps, OverlayState> {
   private handleEscapePress = (event: KeyboardEvent) => {
     if (event.key !== 'Escape') return
     if (!event.target) return
-    if (!this.surfaceRef || !this.surfaceRef.contains(event.target as Node)) {
+    if (
+      !this.portalRef.current ||
+      !this.portalRef.current.contains(event.target as Node)
+    ) {
       return
     }
 

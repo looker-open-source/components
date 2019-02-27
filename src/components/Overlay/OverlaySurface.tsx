@@ -4,7 +4,7 @@ import * as React from 'react'
 import { PopperArrowProps } from 'react-popper'
 import { styled } from '../../style'
 import { Box } from '../Box'
-import { CustomizableModalAttributes, ModalSurfaceStyleProps } from '../Modal'
+import { ModalSurfaceStyleProps } from '../Modal'
 
 export interface OverlaySurfaceArrowProps {
   backgroundColor: string
@@ -39,7 +39,6 @@ class OverlaySurfaceInternal extends React.Component<OverlaySurfaceProps> {
         p="xsmall"
         overflow="visible"
         innerRef={innerRef}
-        zIndex={CustomizableModalAttributes.zIndex + 1}
         style={{ ...style, animation }}
         {...this.props.eventHandlers}
       >
