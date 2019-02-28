@@ -28,7 +28,7 @@ const tableRows = typeFamily.map(t => {
       </TableDataCell>
       <TableDataCell>{t.value}</TableDataCell>
       <TableDataCell>
-        <Text fontSize="xlarge" weight={t.weight}>
+        <Text fontSize="xlarge" fontWeight={t.weight}>
           {specimen}
         </Text>
       </TableDataCell>
