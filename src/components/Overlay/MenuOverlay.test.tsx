@@ -28,6 +28,10 @@ describe('MenuOverlay', () => {
     )
   })
 
+  test('Open menu overlay with pinned content', () => {
+    assertSnapshotShallow(<TestMenuOverlay content={content} pin open />)
+  })
+
   test('Open menu overlay with backdrop bottom=50px', () => {
     assertSnapshotShallow(
       <TestMenuOverlay
