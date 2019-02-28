@@ -24,6 +24,11 @@ export interface OverlayContentProps {
 
 export interface OverlayInteractiveProps {
   /**
+   * Pins popper placement and prevents popper from moving on window resize.
+   * @default false
+   */
+  pin?: boolean
+  /**
    * Can be one of: top, bottom, left, right, auto, with the modifiers: start,
    * end. This value comes directly from popperjs. See
    * https://popper.js.org/popper-documentation.html#Popper.placements for more
@@ -102,6 +107,7 @@ export class Overlay extends React.Component<OverlayProps, OverlayState> {
           positionFixed
           innerRef={this.setSurfaceRef}
           placement={this.props.placement}
+          modifiers={{ flip: { enabled: this.props.pin ? false : true } }}
           referenceElement={
             this.triggerRef.current ? this.triggerRef.current : undefined
           }
