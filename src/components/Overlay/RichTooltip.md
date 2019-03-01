@@ -3,7 +3,7 @@ const StatusAndResources = require('../../../styleguide_components/StatusAndReso
   .StatusAndResources
 ;<StatusAndResources
   status="stable"
-  githubURL="https://github.com/looker/lens/blob/master/src/components/Overlays/RichTooltip.tsx"
+  githubURL="https://github.com/looker/lens/blob/master/src/components/Overlay/RichTooltip.tsx"
   feedbackTitle="RichTooltip Component Feedback"
 />
 ```

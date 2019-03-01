@@ -5,7 +5,7 @@ const StatusAndResources = require('../../../styleguide_components/StatusAndReso
   .StatusAndResources
 ;<StatusAndResources
   status="experimental"
-  githubURL="https://github.com/looker/lens/blob/master/src/components/Overlays/Tooltip.tsx"
+  githubURL="https://github.com/looker/lens/blob/master/src/components/Overlay/Tooltip.tsx"
   feedbackTitle="Tooltip Component Feedback"
 />
 ```
