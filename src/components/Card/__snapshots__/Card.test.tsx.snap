@@ -133,7 +133,6 @@ exports[`A raised Card with a CardMedia block 1`] = `
 .c2 {
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
   background-image: url(http://placekitten.com/200/300);
   overflow: hidden;
   height: 0;

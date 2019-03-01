@@ -3,7 +3,7 @@ const StatusAndResources = require('../../../styleguide_components/StatusAndReso
   .StatusAndResources
 ;<StatusAndResources
   status="stable"
-  githubURL="https://github.com/looker/lens/blob/master/src/components/Overlays/Popover.tsx"
+  githubURL="https://github.com/looker/lens/blob/master/src/components/Overlay/Popover.tsx"
   feedbackTitle="Popover Component Feedback"
 />
 ```
