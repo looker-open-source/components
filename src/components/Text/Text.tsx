@@ -108,9 +108,9 @@ const InternalText: React.SFC<ThemedProps<TextProps>> = ({
   return (
     <Box
       is={is}
-      fontSize={fontSize || 'medium'}
-      fontWeight={fontWeight || 'normal'}
-      lineHeight={lineHeight || fontSize || 'medium'}
+      fontSize={fontSize}
+      fontWeight={fontWeight}
+      lineHeight={lineHeight || fontSize}
       textAlign={align}
       {...props}
     >
