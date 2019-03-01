@@ -11,7 +11,6 @@ exports[`A Code component resized 1`] = `
   vertical-align: baseline;
   font-family: 'Monaco','Menlo','Ubuntu Mono','Consolas','source-code-pro',monospace;
   font-size: 2.875rem;
-  font-weight: 400;
   line-height: 4rem;
 }
 
@@ -39,9 +38,6 @@ exports[`A Code component text transformed 1`] = `
   padding: 0;
   vertical-align: baseline;
   font-family: 'Monaco','Menlo','Ubuntu Mono','Consolas','source-code-pro',monospace;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5rem;
 }
 
 .c0 {
@@ -68,9 +64,6 @@ exports[`A Code component with variant 1`] = `
   padding: 0;
   vertical-align: baseline;
   font-family: 'Monaco','Menlo','Ubuntu Mono','Consolas','source-code-pro',monospace;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5rem;
 }
 
 .c0 {
@@ -98,9 +91,6 @@ exports[`A Code component wrapped 1`] = `
   padding: 0;
   vertical-align: baseline;
   font-family: 'Monaco','Menlo','Ubuntu Mono','Consolas','source-code-pro',monospace;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5rem;
 }
 
 .c0 {
@@ -128,9 +118,7 @@ exports[`A Codet component weight 1`] = `
   padding: 0;
   vertical-align: baseline;
   font-family: 'Monaco','Menlo','Ubuntu Mono','Consolas','source-code-pro',monospace;
-  font-size: 1rem;
   font-weight: 700;
-  line-height: 1.5rem;
 }
 
 .c0 {
@@ -157,9 +145,6 @@ exports[`A Text component decorated 1`] = `
   padding: 0;
   vertical-align: baseline;
   font-family: 'Monaco','Menlo','Ubuntu Mono','Consolas','source-code-pro',monospace;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5rem;
 }
 
 .c0 {
@@ -188,9 +173,6 @@ exports[`A default Code component 1`] = `
   padding: 0;
   vertical-align: baseline;
   font-family: 'Monaco','Menlo','Ubuntu Mono','Consolas','source-code-pro',monospace;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5rem;
 }
 
 .c0 {
