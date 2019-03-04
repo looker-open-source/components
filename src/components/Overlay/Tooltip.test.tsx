@@ -26,7 +26,9 @@ export const assertOverlayState = (
 describe('Tooltip', () => {
   test('opens on mouseover', () => {
     const [popover, trigger] = returnTriggerAndOverlay(
-      <TestTooltip content="Hello world" />
+      <TestTooltip content="Hello world">
+        <Button>Test</Button>
+      </TestTooltip>
     )
     trigger.simulate('mouseover', mouseEventSimulator)
     assertOverlayState(popover, 'Hello world')
@@ -36,7 +38,9 @@ describe('Tooltip', () => {
 
   test('contains the content passed to it', () => {
     const [popover, trigger] = returnTriggerAndOverlay(
-      <TestTooltip content="Hello world" />
+      <TestTooltip content="Hello world">
+        <Button>Test</Button>
+      </TestTooltip>
     )
     trigger.simulate('mouseover', mouseEventSimulator)
     assertOverlayState(popover, 'Hello world')

@@ -19,7 +19,6 @@ exports[`MenuGrouo - menu customization 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  cursor: pointer;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -43,6 +42,7 @@ exports[`MenuGrouo - menu customization 1`] = `
 .c2:focus {
   box-shadow: 0 0 .25rem 0.125rem #49a9f2;
   outline: none;
+  z-index: 1;
 }
 
 .c2:active {
@@ -112,7 +112,6 @@ exports[`MenuGrouo - menu customization 1`] = `
 >
   <div
     className="c1 c2"
-    onClick={[Function]}
     style={
       Object {
         "textDecoration": "none",
@@ -159,7 +158,6 @@ exports[`MenuGrouo - menu customization 1`] = `
   </div>
   <div
     className="c1 c2"
-    onClick={[Function]}
     style={
       Object {
         "textDecoration": "none",
@@ -186,7 +184,6 @@ exports[`MenuGrouo - menu customization 1`] = `
   </div>
   <div
     className="c1 c2"
-    onClick={[Function]}
     style={
       Object {
         "textDecoration": "none",
@@ -235,7 +232,6 @@ exports[`MenuGroup - JSX label 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  cursor: pointer;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -259,6 +255,7 @@ exports[`MenuGroup - JSX label 1`] = `
 .c4:focus {
   box-shadow: 0 0 .25rem 0.125rem #49a9f2;
   outline: none;
+  z-index: 1;
 }
 
 .c4:active {
@@ -333,7 +330,6 @@ exports[`MenuGroup - JSX label 1`] = `
   </h2>
   <div
     className="c3 c4"
-    onClick={[Function]}
     style={
       Object {
         "textDecoration": "none",
@@ -345,7 +341,6 @@ exports[`MenuGroup - JSX label 1`] = `
   </div>
   <div
     className="c3 c4"
-    onClick={[Function]}
     style={
       Object {
         "textDecoration": "none",
@@ -357,7 +352,6 @@ exports[`MenuGroup - JSX label 1`] = `
   </div>
   <div
     className="c3 c4"
-    onClick={[Function]}
     style={
       Object {
         "textDecoration": "none",
@@ -389,7 +383,6 @@ exports[`MenuGroup - canActivate 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  cursor: pointer;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -413,6 +406,7 @@ exports[`MenuGroup - canActivate 1`] = `
 .c2:focus {
   box-shadow: 0 0 .25rem 0.125rem #49a9f2;
   outline: none;
+  z-index: 1;
 }
 
 .c2:active {
@@ -459,7 +453,6 @@ exports[`MenuGroup - canActivate 1`] = `
 >
   <div
     className="c1 c2"
-    onClick={[Function]}
     style={
       Object {
         "textDecoration": "none",
@@ -474,7 +467,6 @@ exports[`MenuGroup - canActivate 1`] = `
   </div>
   <div
     className="c1 c2"
-    onClick={[Function]}
     style={
       Object {
         "textDecoration": "none",
@@ -489,7 +481,6 @@ exports[`MenuGroup - canActivate 1`] = `
   </div>
   <div
     className="c1 c2"
-    onClick={[Function]}
     style={
       Object {
         "textDecoration": "none",
@@ -524,7 +515,6 @@ exports[`MenuGroup - label 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  cursor: pointer;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -548,6 +538,7 @@ exports[`MenuGroup - label 1`] = `
 .c4:focus {
   box-shadow: 0 0 .25rem 0.125rem #49a9f2;
   outline: none;
+  z-index: 1;
 }
 
 .c4:active {
@@ -618,7 +609,6 @@ exports[`MenuGroup - label 1`] = `
   </h2>
   <div
     className="c3 c4"
-    onClick={[Function]}
     style={
       Object {
         "textDecoration": "none",
@@ -630,7 +620,6 @@ exports[`MenuGroup - label 1`] = `
   </div>
   <div
     className="c3 c4"
-    onClick={[Function]}
     style={
       Object {
         "textDecoration": "none",
@@ -642,7 +631,6 @@ exports[`MenuGroup - label 1`] = `
   </div>
   <div
     className="c3 c4"
-    onClick={[Function]}
     style={
       Object {
         "textDecoration": "none",
@@ -674,7 +662,6 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  cursor: pointer;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -698,6 +685,7 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
 .c4:focus {
   box-shadow: 0 0 .25rem 0.125rem #49a9f2;
   outline: none;
+  z-index: 1;
 }
 
 .c4:active {
@@ -773,7 +761,6 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
   </h2>
   <div
     className="c3 c4"
-    onClick={[Function]}
     style={
       Object {
         "textDecoration": "none",
@@ -785,7 +772,6 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
   </div>
   <div
     className="c3 c4"
-    onClick={[Function]}
     style={
       Object {
         "textDecoration": "none",
@@ -797,7 +783,6 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
   </div>
   <div
     className="c3 c4"
-    onClick={[Function]}
     style={
       Object {
         "textDecoration": "none",
@@ -829,7 +814,6 @@ exports[`MenuGroup 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  cursor: pointer;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -853,6 +837,7 @@ exports[`MenuGroup 1`] = `
 .c2:focus {
   box-shadow: 0 0 .25rem 0.125rem #49a9f2;
   outline: none;
+  z-index: 1;
 }
 
 .c2:active {
@@ -888,7 +873,6 @@ exports[`MenuGroup 1`] = `
 >
   <div
     className="c1 c2"
-    onClick={[Function]}
     style={
       Object {
         "textDecoration": "none",
