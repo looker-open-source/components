@@ -14,13 +14,11 @@ export { IconNames }
 const InternalIcon: React.SFC<IconProps> = ({
   name,
   size = '1em',
-  ref,
   ...props
 }) => {
   const Glyph = Glyphs[name]
   return (
     <Box
-      ref={ref}
       width={size}
       height={size}
       alignItems="center"
