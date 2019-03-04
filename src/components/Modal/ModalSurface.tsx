@@ -11,11 +11,7 @@ export interface ModalSurfaceProps extends BoxProps<HTMLDivElement> {
 }
 
 export const ModalSurface: React.SFC<ModalSurfaceProps> = ({
-  children,
-  className,
   style,
-
-  width,
   theme,
   ...props
 }) => {
@@ -29,20 +25,15 @@ export const ModalSurface: React.SFC<ModalSurfaceProps> = ({
       <TransitionTimers
         bg={CustomizableModalAttributes.surface.backgroundColor}
         boxShadow={theme.shadows[3]}
-        className={className}
         display="flex"
         flexDirection="column"
         maxWidth="100%"
         position="absolute"
-        width={width}
-        tabIndex={0}
+        tabIndex={-1}
         surfaceStyle={style}
         focusStyle={{ outline: 'none' }}
-        zIndex={CustomizableModalAttributes.zIndex + 1}
         {...props}
-      >
-        {children}
-      </TransitionTimers>
+      />
     </FocusTrap>
   )
 }

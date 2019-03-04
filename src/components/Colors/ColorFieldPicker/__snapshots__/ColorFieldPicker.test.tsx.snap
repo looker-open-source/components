@@ -327,19 +327,7 @@ exports[`ColorFieldPicker with a label 1`] = `
   margin-top: auto;
 }
 
-.c6 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  display: inline-block;
-  position: relative;
-}
-
-.c8 {
+.c7 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -396,7 +384,7 @@ exports[`ColorFieldPicker with a label 1`] = `
   width: 20%;
 }
 
-.c7 {
+.c6 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -439,17 +427,13 @@ exports[`ColorFieldPicker with a label 1`] = `
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-          >
-            <div
-              className="c7"
-            />
-          </div>
+          />
         </div>
         <div
           className="c3"
         >
           <input
-            className="c8"
+            className="c7"
             onChange={[Function]}
             type="text"
             value="#e1ff83"
@@ -536,19 +520,7 @@ exports[`ColorFieldPicker with a named color and size values 1`] = `
   margin-top: auto;
 }
 
-.c5 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  display: inline-block;
-  position: relative;
-}
-
-.c7 {
+.c6 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -567,7 +539,7 @@ exports[`ColorFieldPicker with a named color and size values 1`] = `
   padding-bottom: 0rem;
 }
 
-.c6 {
+.c5 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -608,17 +580,13 @@ exports[`ColorFieldPicker with a named color and size values 1`] = `
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-          >
-            <div
-              className="c6"
-            />
-          </div>
+          />
         </div>
         <div
           className="c2"
         >
           <input
-            className="c7"
+            className="c6"
             onChange={[Function]}
             type="text"
             value="blue"
@@ -691,18 +659,6 @@ exports[`ColorFieldPicker with a validation message 1`] = `
   margin-top: auto;
 }
 
-.c6 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  display: inline-block;
-  position: relative;
-}
-
 .c0 {
   border: 0;
   box-sizing: border-box;
@@ -741,7 +697,7 @@ exports[`ColorFieldPicker with a validation message 1`] = `
   width: 20%;
 }
 
-.c7 {
+.c6 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -758,7 +714,7 @@ exports[`ColorFieldPicker with a validation message 1`] = `
   width: 33px;
 }
 
-.c8 {
+.c7 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -778,7 +734,7 @@ exports[`ColorFieldPicker with a validation message 1`] = `
   padding-bottom: 0rem;
 }
 
-.c9 {
+.c8 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -818,17 +774,13 @@ exports[`ColorFieldPicker with a validation message 1`] = `
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-          >
-            <div
-              className="c7"
-            />
-          </div>
+          />
         </div>
         <div
           className="c3"
         >
           <input
-            className="c8"
+            className="c7"
             onChange={[Function]}
             type="text"
             value="#4c6670"
@@ -837,7 +789,7 @@ exports[`ColorFieldPicker with a validation message 1`] = `
       </div>
     </div>
     <div
-      className="c9"
+      className="c8"
     >
       Error!
     </div>
@@ -928,18 +880,6 @@ exports[`ColorFieldPicker with hidden input 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  display: inline-block;
-  position: relative;
-}
-
-.c6 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   border: 1px solid;
   border-radius: 0.25rem 0 0 0.25rem;
   border-right: 0;
@@ -949,7 +889,7 @@ exports[`ColorFieldPicker with hidden input 1`] = `
   width: 33px;
 }
 
-.c7 {
+.c6 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -992,17 +932,13 @@ exports[`ColorFieldPicker with hidden input 1`] = `
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-          >
-            <div
-              className="c6"
-            />
-          </div>
+          />
         </div>
         <div
           className="c2"
         >
           <input
-            className="c7"
+            className="c6"
             onChange={[Function]}
             type="hidden"
           />
@@ -1096,18 +1032,6 @@ exports[`Default ColorFieldPicker 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  display: inline-block;
-  position: relative;
-}
-
-.c6 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   border: 1px solid;
   border-radius: 0.25rem 0 0 0.25rem;
   border-right: 0;
@@ -1117,7 +1041,7 @@ exports[`Default ColorFieldPicker 1`] = `
   width: 33px;
 }
 
-.c7 {
+.c6 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -1160,17 +1084,13 @@ exports[`Default ColorFieldPicker 1`] = `
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-          >
-            <div
-              className="c6"
-            />
-          </div>
+          />
         </div>
         <div
           className="c2"
         >
           <input
-            className="c7"
+            className="c6"
             onChange={[Function]}
             type="text"
           />

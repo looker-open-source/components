@@ -15,21 +15,27 @@ const TestMenuOverlay: React.SFC<MenuOverlayProps> = ({ ...props }) => (
 
 describe('MenuOverlay', () => {
   test('Normal menu overlay', () => {
-    assertSnapshotShallow(<TestMenuOverlay content={content} />)
+    assertSnapshotShallow(
+      <TestMenuOverlay content={content}>
+        <Button>Menu</Button>
+      </TestMenuOverlay>
+    )
   })
 
   test('Open menu overlay with backdrop top=50px', () => {
     assertSnapshotShallow(
-      <TestMenuOverlay
-        content={content}
-        backdropOffset={{ top: '50px' }}
-        open
-      />
+      <TestMenuOverlay content={content} backdropOffset={{ top: '50px' }} open>
+        <Button>Menu</Button>
+      </TestMenuOverlay>
     )
   })
 
   test('Open menu overlay with pinned content', () => {
-    assertSnapshotShallow(<TestMenuOverlay content={content} pin open />)
+    assertSnapshotShallow(
+      <TestMenuOverlay content={content} pin open>
+        <Button>Menu</Button>
+      </TestMenuOverlay>
+    )
   })
 
   test('Open menu overlay with backdrop bottom=50px', () => {
@@ -38,17 +44,17 @@ describe('MenuOverlay', () => {
         content={content}
         backdropOffset={{ bottom: '50px' }}
         open
-      />
+      >
+        <Button>Menu</Button>
+      </TestMenuOverlay>
     )
   })
 
   test('Open menu overlay with backdrop left=50px', () => {
     assertSnapshotShallow(
-      <TestMenuOverlay
-        content={content}
-        backdropOffset={{ left: '50px' }}
-        open
-      />
+      <TestMenuOverlay content={content} backdropOffset={{ left: '50px' }} open>
+        <Button>Menu</Button>
+      </TestMenuOverlay>
     )
   })
 
@@ -58,7 +64,9 @@ describe('MenuOverlay', () => {
         content={content}
         backdropOffset={{ right: '50px' }}
         open
-      />
+      >
+        <Button>Menu</Button>
+      </TestMenuOverlay>
     )
   })
 })

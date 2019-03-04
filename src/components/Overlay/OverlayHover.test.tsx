@@ -2,8 +2,7 @@ import { ReactWrapper } from 'enzyme'
 import 'jest-styled-components'
 import * as React from 'react'
 import { assertSnapshot } from '../../../test/utils/snapshot'
-import { OverlayHover } from './OverlayHover'
-
+import { Button } from '../Button'
 import {
   assertClosed,
   assertOpen,
@@ -11,6 +10,7 @@ import {
   returnTriggerAndOverlay,
   SimpleContentSFC,
 } from './overlay.test.helpers'
+import { OverlayHover } from './OverlayHover'
 
 const simpleContentFactory = () => <SimpleContentSFC />
 
@@ -21,7 +21,7 @@ interface OverlayTestProps {
 
 const SimpleOverlay: React.SFC<OverlayTestProps> = ({ ...props }) => (
   <OverlayHover render={simpleContentFactory} {...props}>
-    <button>Trigger</button>
+    <Button>Trigger</Button>
   </OverlayHover>
 )
 

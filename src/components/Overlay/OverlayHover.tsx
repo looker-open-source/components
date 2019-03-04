@@ -1,16 +1,20 @@
 import * as React from 'react'
 import { Popper } from 'react-popper'
-import { ModalContext } from '../Modal'
+import { CustomizableModalAttributes } from '../Modal'
 import { OverlayProps, OverlayState } from './Overlay'
-import { OverlayTrigger } from './OverlayTrigger'
 
-export class OverlayHover extends React.Component<OverlayProps, OverlayState> {
-  public static defaultProps: OverlayProps = { open: false, render: () => null }
+export interface OverlayHoverProps extends OverlayProps {
+  onClick?: () => void
+}
 
+export class OverlayHover extends React.Component<
+  OverlayHoverProps,
+  OverlayState
+> {
   private surfaceRef: HTMLElement | null
-  private triggerRef: React.RefObject<HTMLDivElement>
+  private triggerRef: React.RefObject<HTMLElement>
 
-  constructor(props: OverlayProps) {
+  constructor(props: OverlayHoverProps) {
     super(props)
     this.state = { isOpen: !!props.open }
     this.surfaceRef = null
@@ -26,6 +30,7 @@ export class OverlayHover extends React.Component<OverlayProps, OverlayState> {
     const triggerEventHandlers: React.DOMAttributes<{}> = {
       ...surfaceEventHandlers,
       onBlur: this.close,
+      onClick: this.props.onClick,
       onFocus: this.open,
     }
 
@@ -44,24 +49,28 @@ export class OverlayHover extends React.Component<OverlayProps, OverlayState> {
             eventHandlers: surfaceEventHandlers,
             placement,
             ref,
-            style,
+            style: {
+              ...style,
+              zIndex: CustomizableModalAttributes.zIndex,
+            },
           })
         }
       </Popper>
     )
 
     return (
-      <ModalContext.Provider value={{ closeModal: this.close }}>
-        <OverlayTrigger
-          isOpen={this.state.isOpen}
-          ref={this.triggerRef}
-          eventHandlers={triggerEventHandlers}
-        >
-          {this.props.children}
-        </OverlayTrigger>
+      <>
+        {this.generateTrigger(triggerEventHandlers)}
         {surface}
-      </ModalContext.Provider>
+      </>
     )
+  }
+
+  private generateTrigger(eventHandlers?: React.DOMAttributes<{}>) {
+    return React.cloneElement(this.props.children, {
+      innerRef: this.triggerRef, // SC4-Upgrade this will change to `ref: ...`
+      ...eventHandlers,
+    })
   }
 
   private setSurfaceRef = (ref: null | HTMLElement) => (this.surfaceRef = ref)

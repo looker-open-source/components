@@ -19,7 +19,9 @@ const TestRichTooltip: React.SFC<RichTooltipProps> = ({ ...props }) => (
 describe('RichTooltip', () => {
   test('opens on mouseover', () => {
     const [popover, trigger] = returnTriggerAndOverlay(
-      <TestRichTooltip content={SimpleContent} />
+      <TestRichTooltip content={SimpleContent}>
+        <Button>Test</Button>
+      </TestRichTooltip>
     )
     trigger.simulate('mouseover', mouseEventSimulator)
     assertOpen(popover)
@@ -29,7 +31,9 @@ describe('RichTooltip', () => {
 
   test('contains the content passed to it', () => {
     const [popover, trigger] = returnTriggerAndOverlay(
-      <TestRichTooltip content={SimpleContent} />
+      <TestRichTooltip content={SimpleContent}>
+        <Button>Test</Button>
+      </TestRichTooltip>
     )
     trigger.simulate('mouseover', mouseEventSimulator)
     assertOpen(popover)
