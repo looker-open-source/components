@@ -2,6 +2,7 @@ import { ReactWrapper } from 'enzyme'
 import 'jest-styled-components'
 import * as React from 'react'
 import { assertSnapshot } from '../../../test/utils/snapshot'
+import { Button } from '../Button'
 import { ModalBackdrop } from '../Modal'
 import { Overlay } from './Overlay'
 import {
@@ -20,7 +21,7 @@ interface OverlayTestProps {
 
 const SimpleOverlay: React.SFC<OverlayTestProps> = ({ ...props }) => (
   <Overlay render={simpleContentFactory} {...props}>
-    <button>Trigger</button>
+    <Button>Trigger</Button>
   </Overlay>
 )
 

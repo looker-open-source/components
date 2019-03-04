@@ -2,7 +2,7 @@
 
 exports[`Tooltip Generates a simple Tooltip 1`] = `
 Array [
-  .c2 {
+  .c1 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -28,19 +28,6 @@ Array [
 }
 
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  display: inline-block;
-  position: relative;
-  z-index: 1;
-}
-
-.c1 {
   font-weight: 600;
   outline: none;
   -webkit-transition: border 80ms;
@@ -57,55 +44,51 @@ Array [
   color: #FFFFFF;
 }
 
-.c1:focus {
+.c0:focus {
   box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
 }
 
-.c1[disabled] {
+.c0[disabled] {
   cursor: default;
   -webkit-filter: grayscale(0.3);
   filter: grayscale(0.3);
   opacity: 0.25;
 }
 
-.c1[disabled]:hover,
-.c1[disabled]:active,
-.c1[disabled]:focus {
+.c0[disabled]:hover,
+.c0[disabled]:active,
+.c0[disabled]:focus {
   background-color: #64518A;
   border-color: #C1C6CC;
 }
 
-.c1:hover,
-.c1:focus,
-.c1.hover {
+.c0:hover,
+.c0:focus,
+.c0.hover {
   background: #473764;
   border-color: #473764;
 }
 
-.c1:active,
-.c1.active {
+.c0:active,
+.c0.active {
   background: #2A1B60;
   border-color: #2A1B60;
 }
 
-<div
-    className="c0"
+<button
+    className="c0 c1"
     onBlur={[Function]}
     onFocus={[Function]}
     onMouseOut={[Function]}
     onMouseOver={[Function]}
-  >
-    <button
-      className="c1 c2"
-      style={
-        Object {
-          "lineHeight": "34px",
-        }
+    style={
+      Object {
+        "lineHeight": "34px",
       }
-    >
-      Example
-    </button>
-  </div>,
+    }
+  >
+    Example
+  </button>,
   .c0 {
   border: 0;
   box-sizing: border-box;
@@ -116,7 +99,6 @@ Array [
   vertical-align: baseline;
   overflow: visible;
   padding: 0.5rem;
-  z-index: 1;
 }
 
 .c1 {
@@ -244,6 +226,7 @@ Array [
         "pointerEvents": "none",
         "position": "absolute",
         "top": 0,
+        "zIndex": 0,
       }
     }
   >

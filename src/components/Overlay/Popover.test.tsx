@@ -18,7 +18,9 @@ const TestPopover: React.SFC<PopoverProps> = ({ ...props }) => (
 describe('Popover', () => {
   test('opens on click', () => {
     const [popover, trigger] = returnTriggerAndOverlay(
-      <TestPopover content={SimpleContent} />
+      <TestPopover content={SimpleContent}>
+        <Button>Test</Button>
+      </TestPopover>
     )
     trigger.simulate('click')
     assertOpen(popover)
@@ -28,7 +30,9 @@ describe('Popover', () => {
 
   test('contains the content passed to it', () => {
     const [popover, trigger] = returnTriggerAndOverlay(
-      <TestPopover content={SimpleContent} />
+      <TestPopover content={SimpleContent}>
+        <Button>Test</Button>
+      </TestPopover>
     )
     trigger.simulate('click')
     assertOpen(popover)
