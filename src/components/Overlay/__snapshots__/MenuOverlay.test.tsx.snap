@@ -1792,7 +1792,11 @@ ShallowWrapper {
       }
       open={true}
       pin={true}
-    />
+    >
+      <Styled(WithTheme(InternalButton))>
+        Menu
+      </Styled(WithTheme(InternalButton))>
+    </TestMenuOverlay>
   </ThemeProvider>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -1807,6 +1811,9 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "function",
     "props": Object {
+      "children": <Styled(WithTheme(InternalButton))>
+        Menu
+      </Styled(WithTheme(InternalButton))>,
       "content": <Styled(Component)>
         Hello World
       </Styled(Component)>,
@@ -1814,7 +1821,17 @@ ShallowWrapper {
       "pin": true,
     },
     "ref": null,
-    "rendered": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": "Menu",
+      },
+      "ref": null,
+      "rendered": "Menu",
+      "type": [Function],
+    },
     "type": [Function],
   },
   Symbol(enzyme.__nodes__): Array [
@@ -1823,6 +1840,9 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "function",
       "props": Object {
+        "children": <Styled(WithTheme(InternalButton))>
+          Menu
+        </Styled(WithTheme(InternalButton))>,
         "content": <Styled(Component)>
           Hello World
         </Styled(Component)>,
@@ -1830,7 +1850,17 @@ ShallowWrapper {
         "pin": true,
       },
       "ref": null,
-      "rendered": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": "Menu",
+        },
+        "ref": null,
+        "rendered": "Menu",
+        "type": [Function],
+      },
       "type": [Function],
     },
   ],
