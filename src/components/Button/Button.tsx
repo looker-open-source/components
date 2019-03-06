@@ -226,7 +226,7 @@ function iconMargins(props: ThemedProps<ButtonProps>) {
 }
 
 function getIcon(iconName: IconNames | undefined) {
-  return iconName ? <Icon name={iconName} /> : null
+  return iconName ? <ButtonIcon name={iconName} /> : null
 }
 
 // color is extracted here to ensure it is not passed to Box, creating a type
@@ -267,6 +267,8 @@ export const CustomizableButtonAttributes: CustomizableAttributes = {
   borderRadius: 'medium',
 }
 
+const ButtonIcon = styled(Icon)``
+
 export const Button = styled<ButtonProps>(withTheme(InternalButton))`
   font-weight: 600;
   outline: none;
@@ -278,7 +280,7 @@ export const Button = styled<ButtonProps>(withTheme(InternalButton))`
   white-space: nowrap;
   ${variantHelper};
 
-  ${Icon} {
+  ${ButtonIcon} {
     ${iconMargins};
   }
 `

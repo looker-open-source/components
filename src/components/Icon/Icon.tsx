@@ -1,7 +1,6 @@
 import * as React from 'react'
 import * as Glyphs from '../../icons/build/glyphs'
 import { IconNames } from '../../icons/build/IconNames'
-import { styled } from '../../style'
 import { Box, BoxPropsWithout } from '../Box'
 
 export interface IconProps extends BoxPropsWithout<HTMLDivElement, 'size'> {
@@ -11,7 +10,7 @@ export interface IconProps extends BoxPropsWithout<HTMLDivElement, 'size'> {
 
 export { IconNames }
 
-const InternalIcon: React.SFC<IconProps> = ({
+export const Icon: React.SFC<IconProps> = ({
   name,
   size = '1em',
   ...props
@@ -29,5 +28,3 @@ const InternalIcon: React.SFC<IconProps> = ({
     </Box>
   )
 }
-
-export const Icon = styled<IconProps>(InternalIcon)``
