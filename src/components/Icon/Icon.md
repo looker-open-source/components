@@ -44,6 +44,7 @@ define the name property, which can be one of:
 * Info
 * LiveHelp
 * LookerLogo
+* Mail
 * Note
 * Popular
 * RecentActivity
