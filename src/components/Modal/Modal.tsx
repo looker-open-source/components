@@ -94,11 +94,16 @@ export interface ModalState {
 
 export class Modal extends React.Component<ModalInternalProps, ModalState> {
   private portalRef: React.RefObject<HTMLElement>
+  private mounted: boolean = false
 
   constructor(props: ModalInternalProps) {
     super(props)
     this.state = { isOpen: !!props.open }
     this.portalRef = React.createRef()
+  }
+
+  public componentDidMount() {
+    this.mounted = true
   }
 
   public componentWillUnmount() {
@@ -143,7 +148,7 @@ export class Modal extends React.Component<ModalInternalProps, ModalState> {
   private open = () => {
     window.addEventListener('keydown', this.handleEscapePress)
     this.props.onOpen && this.props.onOpen()
-    this.setState({ isOpen: true })
+    this.mounted && this.setState({ isOpen: true })
   }
 
   private close = (
@@ -156,7 +161,7 @@ export class Modal extends React.Component<ModalInternalProps, ModalState> {
     if (doCallbacks && this.props.onClose) {
       this.props.onClose()
     }
-    this.setState({ isOpen: false })
+    this.mounted && this.setState({ isOpen: false })
   }
 
   private handleEscapePress = (event: KeyboardEvent) => {
