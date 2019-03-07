@@ -122,7 +122,7 @@ const MenuItemInternal: React.SFC<MenuItemProps> = ({
   const itemIcon = () => {
     const placeholder = <Box width="1.5rem" />
     const iconComponent = (name: IconNames) => (
-      <Icon name={name} mr="xsmall" size={customProps.icon.size} />
+      <MenuIcon name={name} mr="xsmall" size={customProps.icon.size} />
     )
 
     if (canActivate) {
@@ -198,19 +198,19 @@ function currentBorder(props: StyleProps) {
 function iconColor(props: StyleProps) {
   if (props.active) {
     return css`
-      ${Icon} {
+      ${MenuIcon} {
         color: ${props.customizationProps.activated.icon!.color};
       }
     `
   } else if (props.current) {
     return css`
-      ${Icon} {
+      ${MenuIcon} {
         color: ${props.customizationProps.current.icon!.color};
       }
     `
   } else {
     return css`
-      ${Icon} {
+      ${MenuIcon} {
         color: ${props.customizationProps.icon.color};
       }
     `
@@ -226,7 +226,7 @@ function hoverStyles(props: StyleProps) {
         background: ${props.customizationProps.hover.bg};
         color: ${props.customizationProps.hover.color};
 
-        ${Icon} {
+        ${MenuIcon} {
           color: ${props.customizationProps.hover.icon &&
             props.customizationProps.hover.icon.color};
         }
@@ -253,12 +253,14 @@ const MenuItemStyleFactory = (props: StyleProps) => {
   return <Box {...boxProps} />
 }
 
+const MenuIcon = styled(Icon)``
+
 const MenuItemStyle = styled(MenuItemStyleFactory)`
   position: relative;
   transition: background ${transitions.durationQuick} ${easings.ease},
     color ${transitions.durationQuick} ${easings.ease};
   ${hoverStyles};
-  ${Icon} {
+  ${MenuIcon} {
     transition: color ${transitions.durationQuick} ${easings.ease};
   }
   ${iconColor};
