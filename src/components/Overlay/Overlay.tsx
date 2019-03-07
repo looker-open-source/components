@@ -83,6 +83,7 @@ export interface OverlayState {
 export class Overlay extends React.Component<OverlayProps, OverlayState> {
   private portalRef: React.RefObject<HTMLElement>
   private triggerRef: React.RefObject<HTMLElement>
+  private mounted: boolean = false
 
   constructor(props: OverlayProps) {
     super(props)
@@ -91,8 +92,15 @@ export class Overlay extends React.Component<OverlayProps, OverlayState> {
     this.triggerRef = React.createRef()
   }
 
+  public componentDidMount() {
+    this.mounted = true
+  }
+
   public componentWillUnmount() {
+    this.mounted = false
+
     window.removeEventListener('keydown', this.handleEscapePress)
+    document.removeEventListener('click', this.handleOutsideClick)
   }
 
   public render() {
@@ -141,15 +149,13 @@ export class Overlay extends React.Component<OverlayProps, OverlayState> {
   private close = () => {
     document.removeEventListener('keydown', this.handleEscapePress)
     document.removeEventListener('click', this.handleOutsideClick)
-
-    this.setState({ isOpen: false })
+    this.mounted && this.setState({ isOpen: false })
   }
 
   private open = () => {
     document.addEventListener('keydown', this.handleEscapePress)
     document.addEventListener('click', this.handleOutsideClick)
-
-    this.setState({ isOpen: true })
+    this.mounted && this.setState({ isOpen: true })
   }
 
   private handleOutsideClick = (e: MouseEvent) => {
