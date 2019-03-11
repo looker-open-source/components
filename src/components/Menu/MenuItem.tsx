@@ -8,7 +8,7 @@ const MenuItemInternal: React.SFC<MenuElementProps> = ({
   ...props
 }) => {
   return (
-    <MenuElement {...props}>
+    <MenuElement {...props} role="menuitem">
       <Box flex="1" is="button" role="menuitem">
         {children}
       </Box>

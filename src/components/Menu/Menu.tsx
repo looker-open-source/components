@@ -44,6 +44,7 @@ export class Menu extends React.PureComponent<MenuProps> {
             innerRef={this.ref}
             tabIndex={-1}
             userSelect="none"
+            role="menu"
             {...props}
           >
             {children}
