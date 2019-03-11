@@ -40,6 +40,7 @@ export class Menu extends React.PureComponent<MenuProps> {
       <MenuContext.Provider value={{ canActivate, customizationProps }}>
         <HotKeys keyMap={this.keyMap()} handlers={this.keyHandlers()}>
           <MenuStyle
+            is="ul"
             innerRef={this.ref}
             tabIndex={-1}
             userSelect="none"
@@ -86,6 +87,8 @@ export class Menu extends React.PureComponent<MenuProps> {
 }
 
 const MenuStyle = styled(Box)`
+  list-style: none;
+
   ${MenuGroup} ~ ${MenuGroup} { /* stylelint-disable-line */
     border-top: 1px solid ${p => p.theme.colors.palette.charcoal200};
   }

@@ -1,9 +1,9 @@
 import * as React from 'react'
-import { MenuItemCustomizationProps } from './MenuItem'
+import { MenuElementCustomizationProps } from './MenuElement'
 
 export interface MenuContextProps {
   canActivate?: boolean
-  customizationProps?: MenuItemCustomizationProps
+  customizationProps?: MenuElementCustomizationProps
 }
 
 const context: MenuContextProps = {}

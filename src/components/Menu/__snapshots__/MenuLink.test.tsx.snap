@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MenuItem - active + icon 1`] = `
-.c6 {
+exports[`MenuLink - active + icon 1`] = `
+.c4 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -9,12 +9,18 @@ exports[`MenuItem - active + icon 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  color: inherit;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
 }
 
-.c5 {
+.c4:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+}
+
+.c3 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -35,7 +41,7 @@ exports[`MenuItem - active + icon 1`] = `
   width: 20px;
 }
 
-.c3 {
+.c1 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -63,69 +69,58 @@ exports[`MenuItem - active + icon 1`] = `
   padding-bottom: 0.75rem;
 }
 
-.c3:active {
+.c1:active {
   color: #0087e1;
 }
 
-.c7:hover .c4 {
+.c5:hover .c2 {
   color: #262D33;
 }
 
-.c7 .c4 {
+.c5 .c2 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c7 .c4 {
+.c5 .c2 {
   color: #C1C6CC;
 }
 
-.c1 {
+.c0 {
   position: relative;
   -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c1:hover {
+.c0:hover {
   background: #F5F6F7;
   color: #262D33;
 }
 
-.c1:hover .c4 {
+.c0:hover .c2 {
   color: #262D33;
 }
 
-.c1 .c4 {
+.c0 .c2 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c1 .c4 {
+.c0 .c2 {
   color: #0087e1;
 }
 
-.c1:focus-within {
+.c0:focus-within {
   box-shadow: 0 0 .25rem 0.125rem #49a9f2;
   outline: 'none';
   z-index: 1;
 }
 
-.c0 .c2 {
-  text-align: left;
-  outline: none;
-  background: transparent;
-  color: inherit;
-}
-
-.c0 .c2:hover {
-  background: inherit;
-}
-
 <li
-  className="c0 c1 c2 c3"
+  className="c0 c1"
 >
   <div
-    className="c4 c2 c5"
+    className="c2 c3"
   >
     <svg
       fill="currentColor"
@@ -153,17 +148,22 @@ exports[`MenuItem - active + icon 1`] = `
       </defs>
     </svg>
   </div>
-  <button
-    className="c2 c6"
-    role="menuitem"
+  <a
+    className="c4"
+    href="test"
+    style={
+      Object {
+        "textDecoration": "none",
+      }
+    }
   >
     who!
-  </button>
+  </a>
 </li>
 `;
 
-exports[`MenuItem - active 1`] = `
-.c4 {
+exports[`MenuLink - active 1`] = `
+.c2 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -171,12 +171,18 @@ exports[`MenuItem - active 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  color: inherit;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
 }
 
-.c3 {
+.c2:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+}
+
+.c1 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -204,65 +210,59 @@ exports[`MenuItem - active 1`] = `
   padding-bottom: 0.75rem;
 }
 
-.c3:active {
+.c1:active {
   color: #0087e1;
 }
 
-.c1 {
+.c0 {
   position: relative;
   -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c1:hover {
+.c0:hover {
   background: #F5F6F7;
   color: #262D33;
 }
 
-.c1:hover .c5 {
+.c0:hover .c3 {
   color: #262D33;
 }
 
-.c1 .c5 {
+.c0 .c3 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c1 .c5 {
+.c0 .c3 {
   color: #0087e1;
 }
 
-.c1:focus-within {
+.c0:focus-within {
   box-shadow: 0 0 .25rem 0.125rem #49a9f2;
   outline: 'none';
   z-index: 1;
 }
 
-.c0 .c2 {
-  text-align: left;
-  outline: none;
-  background: transparent;
-  color: inherit;
-}
-
-.c0 .c2:hover {
-  background: inherit;
-}
-
 <li
-  className="c0 c1 c2 c3"
+  className="c0 c1"
 >
-  <button
-    className="c2 c4"
-    role="menuitem"
+  <a
+    className="c2"
+    href="test"
+    style={
+      Object {
+        "textDecoration": "none",
+      }
+    }
   >
     who!
-  </button>
+  </a>
 </li>
 `;
 
-exports[`MenuItem - canActivate + active 1`] = `
-.c6 {
+exports[`MenuLink - canActivate + active 1`] = `
+.c4 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -270,12 +270,18 @@ exports[`MenuItem - canActivate + active 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  color: inherit;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
 }
 
-.c5 {
+.c4:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+}
+
+.c3 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -296,7 +302,7 @@ exports[`MenuItem - canActivate + active 1`] = `
   width: 20px;
 }
 
-.c3 {
+.c1 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -324,69 +330,58 @@ exports[`MenuItem - canActivate + active 1`] = `
   padding-bottom: 0.75rem;
 }
 
-.c3:active {
+.c1:active {
   color: #0087e1;
 }
 
-.c7:hover .c4 {
+.c5:hover .c2 {
   color: #262D33;
 }
 
-.c7 .c4 {
+.c5 .c2 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c7 .c4 {
+.c5 .c2 {
   color: #C1C6CC;
 }
 
-.c1 {
+.c0 {
   position: relative;
   -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c1:hover {
+.c0:hover {
   background: #F5F6F7;
   color: #262D33;
 }
 
-.c1:hover .c4 {
+.c0:hover .c2 {
   color: #262D33;
 }
 
-.c1 .c4 {
+.c0 .c2 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c1 .c4 {
+.c0 .c2 {
   color: #0087e1;
 }
 
-.c1:focus-within {
+.c0:focus-within {
   box-shadow: 0 0 .25rem 0.125rem #49a9f2;
   outline: 'none';
   z-index: 1;
 }
 
-.c0 .c2 {
-  text-align: left;
-  outline: none;
-  background: transparent;
-  color: inherit;
-}
-
-.c0 .c2:hover {
-  background: inherit;
-}
-
 <li
-  className="c0 c1 c2 c3"
+  className="c0 c1"
 >
   <div
-    className="c4 c2 c5"
+    className="c2 c3"
   >
     <svg
       fill="currentColor"
@@ -400,17 +395,22 @@ exports[`MenuItem - canActivate + active 1`] = `
       />
     </svg>
   </div>
-  <button
-    className="c2 c6"
-    role="menuitem"
+  <a
+    className="c4"
+    href="test"
+    style={
+      Object {
+        "textDecoration": "none",
+      }
+    }
   >
     who!
-  </button>
+  </a>
 </li>
 `;
 
-exports[`MenuItem - canActivate 1`] = `
-.c3 {
+exports[`MenuLink - canActivate 1`] = `
+.c1 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -438,11 +438,11 @@ exports[`MenuItem - canActivate 1`] = `
   padding-bottom: 0.75rem;
 }
 
-.c3:active {
+.c1:active {
   color: #0087e1;
 }
 
-.c5 {
+.c3 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -450,12 +450,18 @@ exports[`MenuItem - canActivate 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  color: inherit;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
 }
 
-.c4 {
+.c3:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+}
+
+.c2 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -466,238 +472,58 @@ exports[`MenuItem - canActivate 1`] = `
   width: 1.5rem;
 }
 
-.c1 {
+.c0 {
   position: relative;
   -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c1:hover {
+.c0:hover {
   background: #F5F6F7;
   color: #262D33;
 }
 
-.c1:hover .c6 {
+.c0:hover .c4 {
   color: #262D33;
 }
 
-.c1 .c6 {
+.c0 .c4 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c1 .c6 {
+.c0 .c4 {
   color: #C1C6CC;
 }
 
-.c1:focus-within {
+.c0:focus-within {
   box-shadow: 0 0 .25rem 0.125rem #49a9f2;
   outline: 'none';
   z-index: 1;
 }
 
-.c0 .c2 {
-  text-align: left;
-  outline: none;
-  background: transparent;
-  color: inherit;
-}
-
-.c0 .c2:hover {
-  background: inherit;
-}
-
 <li
-  className="c0 c1 c2 c3"
+  className="c0 c1"
 >
   <div
-    className="c2 c4"
+    className="c2"
   />
-  <button
-    className="c2 c5"
-    role="menuitem"
+  <a
+    className="c3"
+    href="test"
+    style={
+      Object {
+        "textDecoration": "none",
+      }
+    }
   >
     who!
-  </button>
+  </a>
 </li>
 `;
 
-exports[`MenuItem - current + marker 1`] = `
-.c3 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  color: #4C535B;
-  background-color: #FFFFFF;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  font-size: 0.875rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-}
-
-.c3:active {
-  color: #0087e1;
-}
-
-.c6 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-}
-
-.c5 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  height: 20px;
-  margin-right: 0.5rem;
-  width: 20px;
-}
-
-.c7:hover .c4 {
-  color: #262D33;
-}
-
-.c7 .c4 {
-  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
-  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
-}
-
-.c7 .c4 {
-  color: #C1C6CC;
-}
-
-.c8:hover .c4 {
-  color: #262D33;
-}
-
-.c8 .c4 {
-  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
-  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
-}
-
-.c8 .c4 {
-  color: #0087e1;
-}
-
-.c9 .c4 {
-  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
-  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
-}
-
-.c9 .c4 {
-  color: #262D33;
-}
-
+exports[`MenuLink - current + marker 1`] = `
 .c1 {
-  position: relative;
-  -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
-  transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
-  background: #F5F6F7;
-  color: #262D33;
-}
-
-.c1 .c4 {
-  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
-  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
-}
-
-.c1 .c4 {
-  color: #262D33;
-}
-
-.c1::before {
-  content: '';
-  display: block;
-  height: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-  background: #262D33;
-  width: 4px;
-}
-
-.c1:focus-within {
-  box-shadow: 0 0 .25rem 0.125rem #49a9f2;
-  outline: 'none';
-  z-index: 1;
-}
-
-.c0 .c2 {
-  text-align: left;
-  outline: none;
-  background: transparent;
-  color: inherit;
-}
-
-.c0 .c2:hover {
-  background: inherit;
-}
-
-<li
-  className="c0 c1 c2 c3"
->
-  <div
-    className="c4 c2 c5"
-  >
-    <svg
-      fill="currentColor"
-      height="100%"
-      viewBox="0 0 24 24"
-      width="100%"
-    >
-      <path
-        d="M12 5.69l5 4.5V18h-2v-6H9v6H7V10.19l5-4.5zM12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"
-        fill="currentColor"
-      />
-    </svg>
-  </div>
-  <button
-    className="c2 c6"
-    role="menuitem"
-  >
-    who!
-  </button>
-</li>
-`;
-
-exports[`MenuItem - current 1`] = `
-.c3 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -725,161 +551,7 @@ exports[`MenuItem - current 1`] = `
   padding-bottom: 0.75rem;
 }
 
-.c3:active {
-  color: #0087e1;
-}
-
-.c6 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-}
-
-.c5 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  height: 20px;
-  margin-right: 0.5rem;
-  width: 20px;
-}
-
-.c7:hover .c4 {
-  color: #262D33;
-}
-
-.c7 .c4 {
-  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
-  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
-}
-
-.c7 .c4 {
-  color: #C1C6CC;
-}
-
-.c8:hover .c4 {
-  color: #262D33;
-}
-
-.c8 .c4 {
-  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
-  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
-}
-
-.c8 .c4 {
-  color: #0087e1;
-}
-
-.c1 {
-  position: relative;
-  -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
-  transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
-  background: #F5F6F7;
-  color: #262D33;
-}
-
-.c1 .c4 {
-  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
-  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
-}
-
-.c1 .c4 {
-  color: #262D33;
-}
-
-.c1:focus-within {
-  box-shadow: 0 0 .25rem 0.125rem #49a9f2;
-  outline: 'none';
-  z-index: 1;
-}
-
-.c0 .c2 {
-  text-align: left;
-  outline: none;
-  background: transparent;
-  color: inherit;
-}
-
-.c0 .c2:hover {
-  background: inherit;
-}
-
-<li
-  className="c0 c1 c2 c3"
->
-  <div
-    className="c4 c2 c5"
-  >
-    <svg
-      fill="currentColor"
-      height="100%"
-      viewBox="0 0 24 24"
-      width="100%"
-    >
-      <path
-        d="M12 5.69l5 4.5V18h-2v-6H9v6H7V10.19l5-4.5zM12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"
-        fill="currentColor"
-      />
-    </svg>
-  </div>
-  <button
-    className="c2 c6"
-    role="menuitem"
-  >
-    who!
-  </button>
-</li>
-`;
-
-exports[`MenuItem - detail 1`] = `
-.c3 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  color: #4C535B;
-  background-color: #FFFFFF;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  font-size: 0.875rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-}
-
-.c3:active {
+.c1:active {
   color: #0087e1;
 }
 
@@ -891,12 +563,346 @@ exports[`MenuItem - detail 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  color: inherit;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
 }
 
-.c5 {
+.c4:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+}
+
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  height: 20px;
+  margin-right: 0.5rem;
+  width: 20px;
+}
+
+.c5:hover .c2 {
+  color: #262D33;
+}
+
+.c5 .c2 {
+  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c5 .c2 {
+  color: #C1C6CC;
+}
+
+.c6:hover .c2 {
+  color: #262D33;
+}
+
+.c6 .c2 {
+  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c6 .c2 {
+  color: #0087e1;
+}
+
+.c7 .c2 {
+  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c7 .c2 {
+  color: #262D33;
+}
+
+.c0 {
+  position: relative;
+  -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+  background: #F5F6F7;
+  color: #262D33;
+}
+
+.c0 .c2 {
+  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c0 .c2 {
+  color: #262D33;
+}
+
+.c0::before {
+  content: '';
+  display: block;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: #262D33;
+  width: 4px;
+}
+
+.c0:focus-within {
+  box-shadow: 0 0 .25rem 0.125rem #49a9f2;
+  outline: 'none';
+  z-index: 1;
+}
+
+<li
+  className="c0 c1"
+>
+  <div
+    className="c2 c3"
+  >
+    <svg
+      fill="currentColor"
+      height="100%"
+      viewBox="0 0 24 24"
+      width="100%"
+    >
+      <path
+        d="M12 5.69l5 4.5V18h-2v-6H9v6H7V10.19l5-4.5zM12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"
+        fill="currentColor"
+      />
+    </svg>
+  </div>
+  <a
+    className="c4"
+    href="test"
+    style={
+      Object {
+        "textDecoration": "none",
+      }
+    }
+  >
+    who!
+  </a>
+</li>
+`;
+
+exports[`MenuLink - current 1`] = `
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #4C535B;
+  background-color: #FFFFFF;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  font-size: 0.875rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.c1:active {
+  color: #0087e1;
+}
+
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: inherit;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c4:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+}
+
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  height: 20px;
+  margin-right: 0.5rem;
+  width: 20px;
+}
+
+.c5:hover .c2 {
+  color: #262D33;
+}
+
+.c5 .c2 {
+  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c5 .c2 {
+  color: #C1C6CC;
+}
+
+.c6:hover .c2 {
+  color: #262D33;
+}
+
+.c6 .c2 {
+  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c6 .c2 {
+  color: #0087e1;
+}
+
+.c0 {
+  position: relative;
+  -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+  background: #F5F6F7;
+  color: #262D33;
+}
+
+.c0 .c2 {
+  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c0 .c2 {
+  color: #262D33;
+}
+
+.c0:focus-within {
+  box-shadow: 0 0 .25rem 0.125rem #49a9f2;
+  outline: 'none';
+  z-index: 1;
+}
+
+<li
+  className="c0 c1"
+>
+  <div
+    className="c2 c3"
+  >
+    <svg
+      fill="currentColor"
+      height="100%"
+      viewBox="0 0 24 24"
+      width="100%"
+    >
+      <path
+        d="M12 5.69l5 4.5V18h-2v-6H9v6H7V10.19l5-4.5zM12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"
+        fill="currentColor"
+      />
+    </svg>
+  </div>
+  <a
+    className="c4"
+    href="test"
+    style={
+      Object {
+        "textDecoration": "none",
+      }
+    }
+  >
+    who!
+  </a>
+</li>
+`;
+
+exports[`MenuLink - detail 1`] = `
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #4C535B;
+  background-color: #FFFFFF;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  font-size: 0.875rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.c1:active {
+  color: #0087e1;
+}
+
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: inherit;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c2:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+}
+
+.c3 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -911,66 +917,60 @@ exports[`MenuItem - detail 1`] = `
   z-index: 1;
 }
 
-.c1 {
+.c0 {
   position: relative;
   -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c1:hover {
+.c0:hover {
   background: #F5F6F7;
   color: #262D33;
 }
 
-.c1:hover .c6 {
+.c0:hover .c4 {
   color: #262D33;
 }
 
-.c1 .c6 {
+.c0 .c4 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c1 .c6 {
+.c0 .c4 {
   color: #C1C6CC;
 }
 
-.c1:focus-within {
+.c0:focus-within {
   box-shadow: 0 0 .25rem 0.125rem #49a9f2;
   outline: 'none';
   z-index: 1;
 }
 
-.c0 .c2 {
-  text-align: left;
-  outline: none;
-  background: transparent;
-  color: inherit;
-}
-
-.c0 .c2:hover {
-  background: inherit;
-}
-
 <li
-  className="c0 c1 c2 c3"
+  className="c0 c1"
 >
-  <button
-    className="c2 c4"
-    role="menuitem"
+  <a
+    className="c2"
+    href="test"
+    style={
+      Object {
+        "textDecoration": "none",
+      }
+    }
   >
     who!
-  </button>
+  </a>
   <div
-    className="c2 c5"
+    className="c3"
   >
     Is an excellent question
   </div>
 </li>
 `;
 
-exports[`MenuItem - icon 1`] = `
-.c3 {
+exports[`MenuLink - icon 1`] = `
+.c1 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -998,11 +998,11 @@ exports[`MenuItem - icon 1`] = `
   padding-bottom: 0.75rem;
 }
 
-.c3:active {
+.c1:active {
   color: #0087e1;
 }
 
-.c6 {
+.c4 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -1010,12 +1010,18 @@ exports[`MenuItem - icon 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  color: inherit;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
 }
 
-.c5 {
+.c4:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+}
+
+.c3 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -1036,52 +1042,41 @@ exports[`MenuItem - icon 1`] = `
   width: 20px;
 }
 
-.c1 {
+.c0 {
   position: relative;
   -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c1:hover {
+.c0:hover {
   background: #F5F6F7;
   color: #262D33;
 }
 
-.c1:hover .c4 {
+.c0:hover .c2 {
   color: #262D33;
 }
 
-.c1 .c4 {
+.c0 .c2 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c1 .c4 {
+.c0 .c2 {
   color: #C1C6CC;
 }
 
-.c1:focus-within {
+.c0:focus-within {
   box-shadow: 0 0 .25rem 0.125rem #49a9f2;
   outline: 'none';
   z-index: 1;
 }
 
-.c0 .c2 {
-  text-align: left;
-  outline: none;
-  background: transparent;
-  color: inherit;
-}
-
-.c0 .c2:hover {
-  background: inherit;
-}
-
 <li
-  className="c0 c1 c2 c3"
+  className="c0 c1"
 >
   <div
-    className="c4 c2 c5"
+    className="c2 c3"
   >
     <svg
       fill="currentColor"
@@ -1109,17 +1104,22 @@ exports[`MenuItem - icon 1`] = `
       </defs>
     </svg>
   </div>
-  <button
-    className="c2 c6"
-    role="menuitem"
+  <a
+    className="c4"
+    href="test"
+    style={
+      Object {
+        "textDecoration": "none",
+      }
+    }
   >
     who!
-  </button>
+  </a>
 </li>
 `;
 
-exports[`MenuItem - with customizations 1`] = `
-.c4 {
+exports[`MenuLink - with customizations 1`] = `
+.c2 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -1127,12 +1127,18 @@ exports[`MenuItem - with customizations 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  color: inherit;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
 }
 
-.c3 {
+.c2:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+}
+
+.c1 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -1160,11 +1166,11 @@ exports[`MenuItem - with customizations 1`] = `
   padding-bottom: 0.75rem;
 }
 
-.c3:active {
+.c1:active {
   color: #0087e1;
 }
 
-.c1 {
+.c0 {
   position: relative;
   -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
@@ -1172,16 +1178,16 @@ exports[`MenuItem - with customizations 1`] = `
   color: #1E1047;
 }
 
-.c1 .c5 {
+.c0 .c3 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c1 .c5 {
+.c0 .c3 {
   color: #4F2ABA;
 }
 
-.c1::before {
+.c0::before {
   content: '';
   display: block;
   height: 100%;
@@ -1192,37 +1198,31 @@ exports[`MenuItem - with customizations 1`] = `
   width: 10px;
 }
 
-.c1:focus-within {
+.c0:focus-within {
   box-shadow: 0 0 .25rem 0.125rem #49a9f2;
   outline: 'none';
   z-index: 1;
 }
 
-.c0 .c2 {
-  text-align: left;
-  outline: none;
-  background: transparent;
-  color: inherit;
-}
-
-.c0 .c2:hover {
-  background: inherit;
-}
-
 <li
-  className="c0 c1 c2 c3"
+  className="c0 c1"
 >
-  <button
-    className="c2 c4"
-    role="menuitem"
+  <a
+    className="c2"
+    href="test"
+    style={
+      Object {
+        "textDecoration": "none",
+      }
+    }
   >
     who!
-  </button>
+  </a>
 </li>
 `;
 
-exports[`MenuItem 1`] = `
-.c3 {
+exports[`MenuLink 1`] = `
+.c1 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -1250,11 +1250,11 @@ exports[`MenuItem 1`] = `
   padding-bottom: 0.75rem;
 }
 
-.c3:active {
+.c1:active {
   color: #0087e1;
 }
 
-.c4 {
+.c2 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -1262,60 +1262,60 @@ exports[`MenuItem 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  color: inherit;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
 }
 
-.c1 {
+.c2:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+}
+
+.c0 {
   position: relative;
   -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c1:hover {
+.c0:hover {
   background: #F5F6F7;
   color: #262D33;
 }
 
-.c1:hover .c5 {
+.c0:hover .c3 {
   color: #262D33;
 }
 
-.c1 .c5 {
+.c0 .c3 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c1 .c5 {
+.c0 .c3 {
   color: #C1C6CC;
 }
 
-.c1:focus-within {
+.c0:focus-within {
   box-shadow: 0 0 .25rem 0.125rem #49a9f2;
   outline: 'none';
   z-index: 1;
 }
 
-.c0 .c2 {
-  text-align: left;
-  outline: none;
-  background: transparent;
-  color: inherit;
-}
-
-.c0 .c2:hover {
-  background: inherit;
-}
-
 <li
-  className="c0 c1 c2 c3"
+  className="c0 c1"
 >
-  <button
-    className="c2 c4"
-    role="menuitem"
+  <a
+    className="c2"
+    href="test"
+    style={
+      Object {
+        "textDecoration": "none",
+      }
+    }
   >
     who!
-  </button>
+  </a>
 </li>
 `;

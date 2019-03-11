@@ -7,44 +7,44 @@ ShallowWrapper {
     canActivate={true}
   >
     <Styled(Internal)>
-      <wrapContext
+      <Styled(MenuItemInternal)
         icon="LogoRings"
       >
         Looker
-      </wrapContext>
-      <wrapContext
+      </Styled(MenuItemInternal)>
+      <Styled(MenuItemInternal)
         icon="Validate"
       >
         Validate
-      </wrapContext>
-      <wrapContext
+      </Styled(MenuItemInternal)>
+      <Styled(MenuItemInternal)
         icon="ChartPie"
       >
         Pizza!
-      </wrapContext>
+      </Styled(MenuItemInternal)>
     </Styled(Internal)>
     <Styled(Internal)
       canActivate={true}
       label="Cheeses"
     >
-      <wrapContext>
+      <Styled(MenuItemInternal)>
         Gouda
-      </wrapContext>
-      <wrapContext>
+      </Styled(MenuItemInternal)>
+      <Styled(MenuItemInternal)>
         Cheddar
-      </wrapContext>
-      <wrapContext>
+      </Styled(MenuItemInternal)>
+      <Styled(MenuItemInternal)>
         Swiss
-      </wrapContext>
+      </Styled(MenuItemInternal)>
     </Styled(Internal)>
     <Styled(Internal)
       canActivate={false}
     >
-      <wrapContext
+      <Styled(MenuItemInternal)
         icon="Beaker"
       >
         Scary Stuff
-      </wrapContext>
+      </Styled(MenuItemInternal)>
     </Styled(Internal)>
   </Menu>,
   Symbol(enzyme.__renderer__): Object {
@@ -80,48 +80,49 @@ ShallowWrapper {
               "current": null,
             }
           }
+          is="ul"
           tabIndex={-1}
           userSelect="none"
         >
           <Styled(Internal)>
-            <wrapContext
+            <Styled(MenuItemInternal)
               icon="LogoRings"
             >
               Looker
-            </wrapContext>
-            <wrapContext
+            </Styled(MenuItemInternal)>
+            <Styled(MenuItemInternal)
               icon="Validate"
             >
               Validate
-            </wrapContext>
-            <wrapContext
+            </Styled(MenuItemInternal)>
+            <Styled(MenuItemInternal)
               icon="ChartPie"
             >
               Pizza!
-            </wrapContext>
+            </Styled(MenuItemInternal)>
           </Styled(Internal)>
           <Styled(Internal)
             canActivate={true}
             label="Cheeses"
           >
-            <wrapContext>
+            <Styled(MenuItemInternal)>
               Gouda
-            </wrapContext>
-            <wrapContext>
+            </Styled(MenuItemInternal)>
+            <Styled(MenuItemInternal)>
               Cheddar
-            </wrapContext>
-            <wrapContext>
+            </Styled(MenuItemInternal)>
+            <Styled(MenuItemInternal)>
               Swiss
-            </wrapContext>
+            </Styled(MenuItemInternal)>
           </Styled(Internal)>
           <Styled(Internal)
             canActivate={false}
           >
-            <wrapContext
+            <Styled(MenuItemInternal)
               icon="Beaker"
             >
               Scary Stuff
-            </wrapContext>
+            </Styled(MenuItemInternal)>
           </Styled(Internal)>
         </Styled(Styled(Component))>
       </HotKeys>,
@@ -142,48 +143,49 @@ ShallowWrapper {
               "current": null,
             }
           }
+          is="ul"
           tabIndex={-1}
           userSelect="none"
         >
           <Styled(Internal)>
-            <wrapContext
+            <Styled(MenuItemInternal)
               icon="LogoRings"
             >
               Looker
-            </wrapContext>
-            <wrapContext
+            </Styled(MenuItemInternal)>
+            <Styled(MenuItemInternal)
               icon="Validate"
             >
               Validate
-            </wrapContext>
-            <wrapContext
+            </Styled(MenuItemInternal)>
+            <Styled(MenuItemInternal)
               icon="ChartPie"
             >
               Pizza!
-            </wrapContext>
+            </Styled(MenuItemInternal)>
           </Styled(Internal)>
           <Styled(Internal)
             canActivate={true}
             label="Cheeses"
           >
-            <wrapContext>
+            <Styled(MenuItemInternal)>
               Gouda
-            </wrapContext>
-            <wrapContext>
+            </Styled(MenuItemInternal)>
+            <Styled(MenuItemInternal)>
               Cheddar
-            </wrapContext>
-            <wrapContext>
+            </Styled(MenuItemInternal)>
+            <Styled(MenuItemInternal)>
               Swiss
-            </wrapContext>
+            </Styled(MenuItemInternal)>
           </Styled(Internal)>
           <Styled(Internal)
             canActivate={false}
           >
-            <wrapContext
+            <Styled(MenuItemInternal)
               icon="Beaker"
             >
               Scary Stuff
-            </wrapContext>
+            </Styled(MenuItemInternal)>
           </Styled(Internal)>
         </Styled(Styled(Component))>,
         "handlers": Object {
@@ -203,49 +205,50 @@ ShallowWrapper {
         "props": Object {
           "children": Array [
             <Styled(Internal)>
-              <wrapContext
+              <Styled(MenuItemInternal)
                 icon="LogoRings"
               >
                 Looker
-              </wrapContext>
-              <wrapContext
+              </Styled(MenuItemInternal)>
+              <Styled(MenuItemInternal)
                 icon="Validate"
               >
                 Validate
-              </wrapContext>
-              <wrapContext
+              </Styled(MenuItemInternal)>
+              <Styled(MenuItemInternal)
                 icon="ChartPie"
               >
                 Pizza!
-              </wrapContext>
+              </Styled(MenuItemInternal)>
             </Styled(Internal)>,
             <Styled(Internal)
               canActivate={true}
               label="Cheeses"
             >
-              <wrapContext>
+              <Styled(MenuItemInternal)>
                 Gouda
-              </wrapContext>
-              <wrapContext>
+              </Styled(MenuItemInternal)>
+              <Styled(MenuItemInternal)>
                 Cheddar
-              </wrapContext>
-              <wrapContext>
+              </Styled(MenuItemInternal)>
+              <Styled(MenuItemInternal)>
                 Swiss
-              </wrapContext>
+              </Styled(MenuItemInternal)>
             </Styled(Internal)>,
             <Styled(Internal)
               canActivate={false}
             >
-              <wrapContext
+              <Styled(MenuItemInternal)
                 icon="Beaker"
               >
                 Scary Stuff
-              </wrapContext>
+              </Styled(MenuItemInternal)>
             </Styled(Internal)>,
           ],
           "innerRef": Object {
             "current": null,
           },
+          "is": "ul",
           "tabIndex": -1,
           "userSelect": "none",
         },
@@ -257,21 +260,21 @@ ShallowWrapper {
             "nodeType": "class",
             "props": Object {
               "children": Array [
-                <wrapContext
+                <Styled(MenuItemInternal)
                   icon="LogoRings"
                 >
                   Looker
-                </wrapContext>,
-                <wrapContext
+                </Styled(MenuItemInternal)>,
+                <Styled(MenuItemInternal)
                   icon="Validate"
                 >
                   Validate
-                </wrapContext>,
-                <wrapContext
+                </Styled(MenuItemInternal)>,
+                <Styled(MenuItemInternal)
                   icon="ChartPie"
                 >
                   Pizza!
-                </wrapContext>,
+                </Styled(MenuItemInternal)>,
               ],
             },
             "ref": null,
@@ -279,7 +282,7 @@ ShallowWrapper {
               Object {
                 "instance": null,
                 "key": undefined,
-                "nodeType": "function",
+                "nodeType": "class",
                 "props": Object {
                   "children": "Looker",
                   "icon": "LogoRings",
@@ -291,7 +294,7 @@ ShallowWrapper {
               Object {
                 "instance": null,
                 "key": undefined,
-                "nodeType": "function",
+                "nodeType": "class",
                 "props": Object {
                   "children": "Validate",
                   "icon": "Validate",
@@ -303,7 +306,7 @@ ShallowWrapper {
               Object {
                 "instance": null,
                 "key": undefined,
-                "nodeType": "function",
+                "nodeType": "class",
                 "props": Object {
                   "children": "Pizza!",
                   "icon": "ChartPie",
@@ -322,15 +325,15 @@ ShallowWrapper {
             "props": Object {
               "canActivate": true,
               "children": Array [
-                <wrapContext>
+                <Styled(MenuItemInternal)>
                   Gouda
-                </wrapContext>,
-                <wrapContext>
+                </Styled(MenuItemInternal)>,
+                <Styled(MenuItemInternal)>
                   Cheddar
-                </wrapContext>,
-                <wrapContext>
+                </Styled(MenuItemInternal)>,
+                <Styled(MenuItemInternal)>
                   Swiss
-                </wrapContext>,
+                </Styled(MenuItemInternal)>,
               ],
               "label": "Cheeses",
             },
@@ -339,7 +342,7 @@ ShallowWrapper {
               Object {
                 "instance": null,
                 "key": undefined,
-                "nodeType": "function",
+                "nodeType": "class",
                 "props": Object {
                   "children": "Gouda",
                 },
@@ -350,7 +353,7 @@ ShallowWrapper {
               Object {
                 "instance": null,
                 "key": undefined,
-                "nodeType": "function",
+                "nodeType": "class",
                 "props": Object {
                   "children": "Cheddar",
                 },
@@ -361,7 +364,7 @@ ShallowWrapper {
               Object {
                 "instance": null,
                 "key": undefined,
-                "nodeType": "function",
+                "nodeType": "class",
                 "props": Object {
                   "children": "Swiss",
                 },
@@ -378,17 +381,17 @@ ShallowWrapper {
             "nodeType": "class",
             "props": Object {
               "canActivate": false,
-              "children": <wrapContext
+              "children": <Styled(MenuItemInternal)
                 icon="Beaker"
               >
                 Scary Stuff
-              </wrapContext>,
+              </Styled(MenuItemInternal)>,
             },
             "ref": null,
             "rendered": Object {
               "instance": null,
               "key": undefined,
-              "nodeType": "function",
+              "nodeType": "class",
               "props": Object {
                 "children": "Scary Stuff",
                 "icon": "Beaker",
@@ -445,48 +448,49 @@ ShallowWrapper {
                 "current": null,
               }
             }
+            is="ul"
             tabIndex={-1}
             userSelect="none"
           >
             <Styled(Internal)>
-              <wrapContext
+              <Styled(MenuItemInternal)
                 icon="LogoRings"
               >
                 Looker
-              </wrapContext>
-              <wrapContext
+              </Styled(MenuItemInternal)>
+              <Styled(MenuItemInternal)
                 icon="Validate"
               >
                 Validate
-              </wrapContext>
-              <wrapContext
+              </Styled(MenuItemInternal)>
+              <Styled(MenuItemInternal)
                 icon="ChartPie"
               >
                 Pizza!
-              </wrapContext>
+              </Styled(MenuItemInternal)>
             </Styled(Internal)>
             <Styled(Internal)
               canActivate={true}
               label="Cheeses"
             >
-              <wrapContext>
+              <Styled(MenuItemInternal)>
                 Gouda
-              </wrapContext>
-              <wrapContext>
+              </Styled(MenuItemInternal)>
+              <Styled(MenuItemInternal)>
                 Cheddar
-              </wrapContext>
-              <wrapContext>
+              </Styled(MenuItemInternal)>
+              <Styled(MenuItemInternal)>
                 Swiss
-              </wrapContext>
+              </Styled(MenuItemInternal)>
             </Styled(Internal)>
             <Styled(Internal)
               canActivate={false}
             >
-              <wrapContext
+              <Styled(MenuItemInternal)
                 icon="Beaker"
               >
                 Scary Stuff
-              </wrapContext>
+              </Styled(MenuItemInternal)>
             </Styled(Internal)>
           </Styled(Styled(Component))>
         </HotKeys>,
@@ -507,48 +511,49 @@ ShallowWrapper {
                 "current": null,
               }
             }
+            is="ul"
             tabIndex={-1}
             userSelect="none"
           >
             <Styled(Internal)>
-              <wrapContext
+              <Styled(MenuItemInternal)
                 icon="LogoRings"
               >
                 Looker
-              </wrapContext>
-              <wrapContext
+              </Styled(MenuItemInternal)>
+              <Styled(MenuItemInternal)
                 icon="Validate"
               >
                 Validate
-              </wrapContext>
-              <wrapContext
+              </Styled(MenuItemInternal)>
+              <Styled(MenuItemInternal)
                 icon="ChartPie"
               >
                 Pizza!
-              </wrapContext>
+              </Styled(MenuItemInternal)>
             </Styled(Internal)>
             <Styled(Internal)
               canActivate={true}
               label="Cheeses"
             >
-              <wrapContext>
+              <Styled(MenuItemInternal)>
                 Gouda
-              </wrapContext>
-              <wrapContext>
+              </Styled(MenuItemInternal)>
+              <Styled(MenuItemInternal)>
                 Cheddar
-              </wrapContext>
-              <wrapContext>
+              </Styled(MenuItemInternal)>
+              <Styled(MenuItemInternal)>
                 Swiss
-              </wrapContext>
+              </Styled(MenuItemInternal)>
             </Styled(Internal)>
             <Styled(Internal)
               canActivate={false}
             >
-              <wrapContext
+              <Styled(MenuItemInternal)
                 icon="Beaker"
               >
                 Scary Stuff
-              </wrapContext>
+              </Styled(MenuItemInternal)>
             </Styled(Internal)>
           </Styled(Styled(Component))>,
           "handlers": Object {
@@ -568,49 +573,50 @@ ShallowWrapper {
           "props": Object {
             "children": Array [
               <Styled(Internal)>
-                <wrapContext
+                <Styled(MenuItemInternal)
                   icon="LogoRings"
                 >
                   Looker
-                </wrapContext>
-                <wrapContext
+                </Styled(MenuItemInternal)>
+                <Styled(MenuItemInternal)
                   icon="Validate"
                 >
                   Validate
-                </wrapContext>
-                <wrapContext
+                </Styled(MenuItemInternal)>
+                <Styled(MenuItemInternal)
                   icon="ChartPie"
                 >
                   Pizza!
-                </wrapContext>
+                </Styled(MenuItemInternal)>
               </Styled(Internal)>,
               <Styled(Internal)
                 canActivate={true}
                 label="Cheeses"
               >
-                <wrapContext>
+                <Styled(MenuItemInternal)>
                   Gouda
-                </wrapContext>
-                <wrapContext>
+                </Styled(MenuItemInternal)>
+                <Styled(MenuItemInternal)>
                   Cheddar
-                </wrapContext>
-                <wrapContext>
+                </Styled(MenuItemInternal)>
+                <Styled(MenuItemInternal)>
                   Swiss
-                </wrapContext>
+                </Styled(MenuItemInternal)>
               </Styled(Internal)>,
               <Styled(Internal)
                 canActivate={false}
               >
-                <wrapContext
+                <Styled(MenuItemInternal)
                   icon="Beaker"
                 >
                   Scary Stuff
-                </wrapContext>
+                </Styled(MenuItemInternal)>
               </Styled(Internal)>,
             ],
             "innerRef": Object {
               "current": null,
             },
+            "is": "ul",
             "tabIndex": -1,
             "userSelect": "none",
           },
@@ -622,21 +628,21 @@ ShallowWrapper {
               "nodeType": "class",
               "props": Object {
                 "children": Array [
-                  <wrapContext
+                  <Styled(MenuItemInternal)
                     icon="LogoRings"
                   >
                     Looker
-                  </wrapContext>,
-                  <wrapContext
+                  </Styled(MenuItemInternal)>,
+                  <Styled(MenuItemInternal)
                     icon="Validate"
                   >
                     Validate
-                  </wrapContext>,
-                  <wrapContext
+                  </Styled(MenuItemInternal)>,
+                  <Styled(MenuItemInternal)
                     icon="ChartPie"
                   >
                     Pizza!
-                  </wrapContext>,
+                  </Styled(MenuItemInternal)>,
                 ],
               },
               "ref": null,
@@ -644,7 +650,7 @@ ShallowWrapper {
                 Object {
                   "instance": null,
                   "key": undefined,
-                  "nodeType": "function",
+                  "nodeType": "class",
                   "props": Object {
                     "children": "Looker",
                     "icon": "LogoRings",
@@ -656,7 +662,7 @@ ShallowWrapper {
                 Object {
                   "instance": null,
                   "key": undefined,
-                  "nodeType": "function",
+                  "nodeType": "class",
                   "props": Object {
                     "children": "Validate",
                     "icon": "Validate",
@@ -668,7 +674,7 @@ ShallowWrapper {
                 Object {
                   "instance": null,
                   "key": undefined,
-                  "nodeType": "function",
+                  "nodeType": "class",
                   "props": Object {
                     "children": "Pizza!",
                     "icon": "ChartPie",
@@ -687,15 +693,15 @@ ShallowWrapper {
               "props": Object {
                 "canActivate": true,
                 "children": Array [
-                  <wrapContext>
+                  <Styled(MenuItemInternal)>
                     Gouda
-                  </wrapContext>,
-                  <wrapContext>
+                  </Styled(MenuItemInternal)>,
+                  <Styled(MenuItemInternal)>
                     Cheddar
-                  </wrapContext>,
-                  <wrapContext>
+                  </Styled(MenuItemInternal)>,
+                  <Styled(MenuItemInternal)>
                     Swiss
-                  </wrapContext>,
+                  </Styled(MenuItemInternal)>,
                 ],
                 "label": "Cheeses",
               },
@@ -704,7 +710,7 @@ ShallowWrapper {
                 Object {
                   "instance": null,
                   "key": undefined,
-                  "nodeType": "function",
+                  "nodeType": "class",
                   "props": Object {
                     "children": "Gouda",
                   },
@@ -715,7 +721,7 @@ ShallowWrapper {
                 Object {
                   "instance": null,
                   "key": undefined,
-                  "nodeType": "function",
+                  "nodeType": "class",
                   "props": Object {
                     "children": "Cheddar",
                   },
@@ -726,7 +732,7 @@ ShallowWrapper {
                 Object {
                   "instance": null,
                   "key": undefined,
-                  "nodeType": "function",
+                  "nodeType": "class",
                   "props": Object {
                     "children": "Swiss",
                   },
@@ -743,17 +749,17 @@ ShallowWrapper {
               "nodeType": "class",
               "props": Object {
                 "canActivate": false,
-                "children": <wrapContext
+                "children": <Styled(MenuItemInternal)
                   icon="Beaker"
                 >
                   Scary Stuff
-                </wrapContext>,
+                </Styled(MenuItemInternal)>,
               },
               "ref": null,
               "rendered": Object {
                 "instance": null,
                 "key": undefined,
-                "nodeType": "function",
+                "nodeType": "class",
                 "props": Object {
                   "children": "Scary Stuff",
                   "icon": "Beaker",
@@ -812,42 +818,42 @@ ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Menu>
     <Styled(Internal)>
-      <wrapContext
+      <Styled(MenuItemInternal)
         icon="LogoRings"
       >
         Looker
-      </wrapContext>
-      <wrapContext
+      </Styled(MenuItemInternal)>
+      <Styled(MenuItemInternal)
         icon="Validate"
       >
         Validate
-      </wrapContext>
-      <wrapContext
+      </Styled(MenuItemInternal)>
+      <Styled(MenuItemInternal)
         icon="ChartPie"
       >
         Pizza!
-      </wrapContext>
+      </Styled(MenuItemInternal)>
     </Styled(Internal)>
     <Styled(Internal)
       canActivate={true}
       label="Cheeses"
     >
-      <wrapContext>
+      <Styled(MenuItemInternal)>
         Gouda
-      </wrapContext>
-      <wrapContext>
+      </Styled(MenuItemInternal)>
+      <Styled(MenuItemInternal)>
         Cheddar
-      </wrapContext>
-      <wrapContext>
+      </Styled(MenuItemInternal)>
+      <Styled(MenuItemInternal)>
         Swiss
-      </wrapContext>
+      </Styled(MenuItemInternal)>
     </Styled(Internal)>
     <Styled(Internal)>
-      <wrapContext
+      <Styled(MenuItemInternal)
         icon="Beaker"
       >
         Scary Stuff
-      </wrapContext>
+      </Styled(MenuItemInternal)>
     </Styled(Internal)>
   </Menu>,
   Symbol(enzyme.__renderer__): Object {
@@ -883,46 +889,47 @@ ShallowWrapper {
               "current": null,
             }
           }
+          is="ul"
           tabIndex={-1}
           userSelect="none"
         >
           <Styled(Internal)>
-            <wrapContext
+            <Styled(MenuItemInternal)
               icon="LogoRings"
             >
               Looker
-            </wrapContext>
-            <wrapContext
+            </Styled(MenuItemInternal)>
+            <Styled(MenuItemInternal)
               icon="Validate"
             >
               Validate
-            </wrapContext>
-            <wrapContext
+            </Styled(MenuItemInternal)>
+            <Styled(MenuItemInternal)
               icon="ChartPie"
             >
               Pizza!
-            </wrapContext>
+            </Styled(MenuItemInternal)>
           </Styled(Internal)>
           <Styled(Internal)
             canActivate={true}
             label="Cheeses"
           >
-            <wrapContext>
+            <Styled(MenuItemInternal)>
               Gouda
-            </wrapContext>
-            <wrapContext>
+            </Styled(MenuItemInternal)>
+            <Styled(MenuItemInternal)>
               Cheddar
-            </wrapContext>
-            <wrapContext>
+            </Styled(MenuItemInternal)>
+            <Styled(MenuItemInternal)>
               Swiss
-            </wrapContext>
+            </Styled(MenuItemInternal)>
           </Styled(Internal)>
           <Styled(Internal)>
-            <wrapContext
+            <Styled(MenuItemInternal)
               icon="Beaker"
             >
               Scary Stuff
-            </wrapContext>
+            </Styled(MenuItemInternal)>
           </Styled(Internal)>
         </Styled(Styled(Component))>
       </HotKeys>,
@@ -943,46 +950,47 @@ ShallowWrapper {
               "current": null,
             }
           }
+          is="ul"
           tabIndex={-1}
           userSelect="none"
         >
           <Styled(Internal)>
-            <wrapContext
+            <Styled(MenuItemInternal)
               icon="LogoRings"
             >
               Looker
-            </wrapContext>
-            <wrapContext
+            </Styled(MenuItemInternal)>
+            <Styled(MenuItemInternal)
               icon="Validate"
             >
               Validate
-            </wrapContext>
-            <wrapContext
+            </Styled(MenuItemInternal)>
+            <Styled(MenuItemInternal)
               icon="ChartPie"
             >
               Pizza!
-            </wrapContext>
+            </Styled(MenuItemInternal)>
           </Styled(Internal)>
           <Styled(Internal)
             canActivate={true}
             label="Cheeses"
           >
-            <wrapContext>
+            <Styled(MenuItemInternal)>
               Gouda
-            </wrapContext>
-            <wrapContext>
+            </Styled(MenuItemInternal)>
+            <Styled(MenuItemInternal)>
               Cheddar
-            </wrapContext>
-            <wrapContext>
+            </Styled(MenuItemInternal)>
+            <Styled(MenuItemInternal)>
               Swiss
-            </wrapContext>
+            </Styled(MenuItemInternal)>
           </Styled(Internal)>
           <Styled(Internal)>
-            <wrapContext
+            <Styled(MenuItemInternal)
               icon="Beaker"
             >
               Scary Stuff
-            </wrapContext>
+            </Styled(MenuItemInternal)>
           </Styled(Internal)>
         </Styled(Styled(Component))>,
         "handlers": Object {
@@ -1002,47 +1010,48 @@ ShallowWrapper {
         "props": Object {
           "children": Array [
             <Styled(Internal)>
-              <wrapContext
+              <Styled(MenuItemInternal)
                 icon="LogoRings"
               >
                 Looker
-              </wrapContext>
-              <wrapContext
+              </Styled(MenuItemInternal)>
+              <Styled(MenuItemInternal)
                 icon="Validate"
               >
                 Validate
-              </wrapContext>
-              <wrapContext
+              </Styled(MenuItemInternal)>
+              <Styled(MenuItemInternal)
                 icon="ChartPie"
               >
                 Pizza!
-              </wrapContext>
+              </Styled(MenuItemInternal)>
             </Styled(Internal)>,
             <Styled(Internal)
               canActivate={true}
               label="Cheeses"
             >
-              <wrapContext>
+              <Styled(MenuItemInternal)>
                 Gouda
-              </wrapContext>
-              <wrapContext>
+              </Styled(MenuItemInternal)>
+              <Styled(MenuItemInternal)>
                 Cheddar
-              </wrapContext>
-              <wrapContext>
+              </Styled(MenuItemInternal)>
+              <Styled(MenuItemInternal)>
                 Swiss
-              </wrapContext>
+              </Styled(MenuItemInternal)>
             </Styled(Internal)>,
             <Styled(Internal)>
-              <wrapContext
+              <Styled(MenuItemInternal)
                 icon="Beaker"
               >
                 Scary Stuff
-              </wrapContext>
+              </Styled(MenuItemInternal)>
             </Styled(Internal)>,
           ],
           "innerRef": Object {
             "current": null,
           },
+          "is": "ul",
           "tabIndex": -1,
           "userSelect": "none",
         },
@@ -1054,21 +1063,21 @@ ShallowWrapper {
             "nodeType": "class",
             "props": Object {
               "children": Array [
-                <wrapContext
+                <Styled(MenuItemInternal)
                   icon="LogoRings"
                 >
                   Looker
-                </wrapContext>,
-                <wrapContext
+                </Styled(MenuItemInternal)>,
+                <Styled(MenuItemInternal)
                   icon="Validate"
                 >
                   Validate
-                </wrapContext>,
-                <wrapContext
+                </Styled(MenuItemInternal)>,
+                <Styled(MenuItemInternal)
                   icon="ChartPie"
                 >
                   Pizza!
-                </wrapContext>,
+                </Styled(MenuItemInternal)>,
               ],
             },
             "ref": null,
@@ -1076,7 +1085,7 @@ ShallowWrapper {
               Object {
                 "instance": null,
                 "key": undefined,
-                "nodeType": "function",
+                "nodeType": "class",
                 "props": Object {
                   "children": "Looker",
                   "icon": "LogoRings",
@@ -1088,7 +1097,7 @@ ShallowWrapper {
               Object {
                 "instance": null,
                 "key": undefined,
-                "nodeType": "function",
+                "nodeType": "class",
                 "props": Object {
                   "children": "Validate",
                   "icon": "Validate",
@@ -1100,7 +1109,7 @@ ShallowWrapper {
               Object {
                 "instance": null,
                 "key": undefined,
-                "nodeType": "function",
+                "nodeType": "class",
                 "props": Object {
                   "children": "Pizza!",
                   "icon": "ChartPie",
@@ -1119,15 +1128,15 @@ ShallowWrapper {
             "props": Object {
               "canActivate": true,
               "children": Array [
-                <wrapContext>
+                <Styled(MenuItemInternal)>
                   Gouda
-                </wrapContext>,
-                <wrapContext>
+                </Styled(MenuItemInternal)>,
+                <Styled(MenuItemInternal)>
                   Cheddar
-                </wrapContext>,
-                <wrapContext>
+                </Styled(MenuItemInternal)>,
+                <Styled(MenuItemInternal)>
                   Swiss
-                </wrapContext>,
+                </Styled(MenuItemInternal)>,
               ],
               "label": "Cheeses",
             },
@@ -1136,7 +1145,7 @@ ShallowWrapper {
               Object {
                 "instance": null,
                 "key": undefined,
-                "nodeType": "function",
+                "nodeType": "class",
                 "props": Object {
                   "children": "Gouda",
                 },
@@ -1147,7 +1156,7 @@ ShallowWrapper {
               Object {
                 "instance": null,
                 "key": undefined,
-                "nodeType": "function",
+                "nodeType": "class",
                 "props": Object {
                   "children": "Cheddar",
                 },
@@ -1158,7 +1167,7 @@ ShallowWrapper {
               Object {
                 "instance": null,
                 "key": undefined,
-                "nodeType": "function",
+                "nodeType": "class",
                 "props": Object {
                   "children": "Swiss",
                 },
@@ -1174,17 +1183,17 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "class",
             "props": Object {
-              "children": <wrapContext
+              "children": <Styled(MenuItemInternal)
                 icon="Beaker"
               >
                 Scary Stuff
-              </wrapContext>,
+              </Styled(MenuItemInternal)>,
             },
             "ref": null,
             "rendered": Object {
               "instance": null,
               "key": undefined,
-              "nodeType": "function",
+              "nodeType": "class",
               "props": Object {
                 "children": "Scary Stuff",
                 "icon": "Beaker",
@@ -1241,46 +1250,47 @@ ShallowWrapper {
                 "current": null,
               }
             }
+            is="ul"
             tabIndex={-1}
             userSelect="none"
           >
             <Styled(Internal)>
-              <wrapContext
+              <Styled(MenuItemInternal)
                 icon="LogoRings"
               >
                 Looker
-              </wrapContext>
-              <wrapContext
+              </Styled(MenuItemInternal)>
+              <Styled(MenuItemInternal)
                 icon="Validate"
               >
                 Validate
-              </wrapContext>
-              <wrapContext
+              </Styled(MenuItemInternal)>
+              <Styled(MenuItemInternal)
                 icon="ChartPie"
               >
                 Pizza!
-              </wrapContext>
+              </Styled(MenuItemInternal)>
             </Styled(Internal)>
             <Styled(Internal)
               canActivate={true}
               label="Cheeses"
             >
-              <wrapContext>
+              <Styled(MenuItemInternal)>
                 Gouda
-              </wrapContext>
-              <wrapContext>
+              </Styled(MenuItemInternal)>
+              <Styled(MenuItemInternal)>
                 Cheddar
-              </wrapContext>
-              <wrapContext>
+              </Styled(MenuItemInternal)>
+              <Styled(MenuItemInternal)>
                 Swiss
-              </wrapContext>
+              </Styled(MenuItemInternal)>
             </Styled(Internal)>
             <Styled(Internal)>
-              <wrapContext
+              <Styled(MenuItemInternal)
                 icon="Beaker"
               >
                 Scary Stuff
-              </wrapContext>
+              </Styled(MenuItemInternal)>
             </Styled(Internal)>
           </Styled(Styled(Component))>
         </HotKeys>,
@@ -1301,46 +1311,47 @@ ShallowWrapper {
                 "current": null,
               }
             }
+            is="ul"
             tabIndex={-1}
             userSelect="none"
           >
             <Styled(Internal)>
-              <wrapContext
+              <Styled(MenuItemInternal)
                 icon="LogoRings"
               >
                 Looker
-              </wrapContext>
-              <wrapContext
+              </Styled(MenuItemInternal)>
+              <Styled(MenuItemInternal)
                 icon="Validate"
               >
                 Validate
-              </wrapContext>
-              <wrapContext
+              </Styled(MenuItemInternal)>
+              <Styled(MenuItemInternal)
                 icon="ChartPie"
               >
                 Pizza!
-              </wrapContext>
+              </Styled(MenuItemInternal)>
             </Styled(Internal)>
             <Styled(Internal)
               canActivate={true}
               label="Cheeses"
             >
-              <wrapContext>
+              <Styled(MenuItemInternal)>
                 Gouda
-              </wrapContext>
-              <wrapContext>
+              </Styled(MenuItemInternal)>
+              <Styled(MenuItemInternal)>
                 Cheddar
-              </wrapContext>
-              <wrapContext>
+              </Styled(MenuItemInternal)>
+              <Styled(MenuItemInternal)>
                 Swiss
-              </wrapContext>
+              </Styled(MenuItemInternal)>
             </Styled(Internal)>
             <Styled(Internal)>
-              <wrapContext
+              <Styled(MenuItemInternal)
                 icon="Beaker"
               >
                 Scary Stuff
-              </wrapContext>
+              </Styled(MenuItemInternal)>
             </Styled(Internal)>
           </Styled(Styled(Component))>,
           "handlers": Object {
@@ -1360,47 +1371,48 @@ ShallowWrapper {
           "props": Object {
             "children": Array [
               <Styled(Internal)>
-                <wrapContext
+                <Styled(MenuItemInternal)
                   icon="LogoRings"
                 >
                   Looker
-                </wrapContext>
-                <wrapContext
+                </Styled(MenuItemInternal)>
+                <Styled(MenuItemInternal)
                   icon="Validate"
                 >
                   Validate
-                </wrapContext>
-                <wrapContext
+                </Styled(MenuItemInternal)>
+                <Styled(MenuItemInternal)
                   icon="ChartPie"
                 >
                   Pizza!
-                </wrapContext>
+                </Styled(MenuItemInternal)>
               </Styled(Internal)>,
               <Styled(Internal)
                 canActivate={true}
                 label="Cheeses"
               >
-                <wrapContext>
+                <Styled(MenuItemInternal)>
                   Gouda
-                </wrapContext>
-                <wrapContext>
+                </Styled(MenuItemInternal)>
+                <Styled(MenuItemInternal)>
                   Cheddar
-                </wrapContext>
-                <wrapContext>
+                </Styled(MenuItemInternal)>
+                <Styled(MenuItemInternal)>
                   Swiss
-                </wrapContext>
+                </Styled(MenuItemInternal)>
               </Styled(Internal)>,
               <Styled(Internal)>
-                <wrapContext
+                <Styled(MenuItemInternal)
                   icon="Beaker"
                 >
                   Scary Stuff
-                </wrapContext>
+                </Styled(MenuItemInternal)>
               </Styled(Internal)>,
             ],
             "innerRef": Object {
               "current": null,
             },
+            "is": "ul",
             "tabIndex": -1,
             "userSelect": "none",
           },
@@ -1412,21 +1424,21 @@ ShallowWrapper {
               "nodeType": "class",
               "props": Object {
                 "children": Array [
-                  <wrapContext
+                  <Styled(MenuItemInternal)
                     icon="LogoRings"
                   >
                     Looker
-                  </wrapContext>,
-                  <wrapContext
+                  </Styled(MenuItemInternal)>,
+                  <Styled(MenuItemInternal)
                     icon="Validate"
                   >
                     Validate
-                  </wrapContext>,
-                  <wrapContext
+                  </Styled(MenuItemInternal)>,
+                  <Styled(MenuItemInternal)
                     icon="ChartPie"
                   >
                     Pizza!
-                  </wrapContext>,
+                  </Styled(MenuItemInternal)>,
                 ],
               },
               "ref": null,
@@ -1434,7 +1446,7 @@ ShallowWrapper {
                 Object {
                   "instance": null,
                   "key": undefined,
-                  "nodeType": "function",
+                  "nodeType": "class",
                   "props": Object {
                     "children": "Looker",
                     "icon": "LogoRings",
@@ -1446,7 +1458,7 @@ ShallowWrapper {
                 Object {
                   "instance": null,
                   "key": undefined,
-                  "nodeType": "function",
+                  "nodeType": "class",
                   "props": Object {
                     "children": "Validate",
                     "icon": "Validate",
@@ -1458,7 +1470,7 @@ ShallowWrapper {
                 Object {
                   "instance": null,
                   "key": undefined,
-                  "nodeType": "function",
+                  "nodeType": "class",
                   "props": Object {
                     "children": "Pizza!",
                     "icon": "ChartPie",
@@ -1477,15 +1489,15 @@ ShallowWrapper {
               "props": Object {
                 "canActivate": true,
                 "children": Array [
-                  <wrapContext>
+                  <Styled(MenuItemInternal)>
                     Gouda
-                  </wrapContext>,
-                  <wrapContext>
+                  </Styled(MenuItemInternal)>,
+                  <Styled(MenuItemInternal)>
                     Cheddar
-                  </wrapContext>,
-                  <wrapContext>
+                  </Styled(MenuItemInternal)>,
+                  <Styled(MenuItemInternal)>
                     Swiss
-                  </wrapContext>,
+                  </Styled(MenuItemInternal)>,
                 ],
                 "label": "Cheeses",
               },
@@ -1494,7 +1506,7 @@ ShallowWrapper {
                 Object {
                   "instance": null,
                   "key": undefined,
-                  "nodeType": "function",
+                  "nodeType": "class",
                   "props": Object {
                     "children": "Gouda",
                   },
@@ -1505,7 +1517,7 @@ ShallowWrapper {
                 Object {
                   "instance": null,
                   "key": undefined,
-                  "nodeType": "function",
+                  "nodeType": "class",
                   "props": Object {
                     "children": "Cheddar",
                   },
@@ -1516,7 +1528,7 @@ ShallowWrapper {
                 Object {
                   "instance": null,
                   "key": undefined,
-                  "nodeType": "function",
+                  "nodeType": "class",
                   "props": Object {
                     "children": "Swiss",
                   },
@@ -1532,17 +1544,17 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "class",
               "props": Object {
-                "children": <wrapContext
+                "children": <Styled(MenuItemInternal)
                   icon="Beaker"
                 >
                   Scary Stuff
-                </wrapContext>,
+                </Styled(MenuItemInternal)>,
               },
               "ref": null,
               "rendered": Object {
                 "instance": null,
                 "key": undefined,
-                "nodeType": "function",
+                "nodeType": "class",
                 "props": Object {
                   "children": "Scary Stuff",
                   "icon": "Beaker",
@@ -1602,9 +1614,9 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <Menu
     focusOnMount={true}
   >
-    <wrapContext>
+    <Styled(MenuItemInternal)>
       boo!
-    </wrapContext>
+    </Styled(MenuItemInternal)>
   </Menu>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -1639,12 +1651,13 @@ ShallowWrapper {
               "current": null,
             }
           }
+          is="ul"
           tabIndex={-1}
           userSelect="none"
         >
-          <wrapContext>
+          <Styled(MenuItemInternal)>
             boo!
-          </wrapContext>
+          </Styled(MenuItemInternal)>
         </Styled(Styled(Component))>
       </HotKeys>,
       "value": Object {
@@ -1664,12 +1677,13 @@ ShallowWrapper {
               "current": null,
             }
           }
+          is="ul"
           tabIndex={-1}
           userSelect="none"
         >
-          <wrapContext>
+          <Styled(MenuItemInternal)>
             boo!
-          </wrapContext>
+          </Styled(MenuItemInternal)>
         </Styled(Styled(Component))>,
         "handlers": Object {
           "moveDown": [Function],
@@ -1686,12 +1700,13 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "children": <wrapContext>
+          "children": <Styled(MenuItemInternal)>
             boo!
-          </wrapContext>,
+          </Styled(MenuItemInternal)>,
           "innerRef": Object {
             "current": null,
           },
+          "is": "ul",
           "tabIndex": -1,
           "userSelect": "none",
         },
@@ -1699,7 +1714,7 @@ ShallowWrapper {
         "rendered": Object {
           "instance": null,
           "key": undefined,
-          "nodeType": "function",
+          "nodeType": "class",
           "props": Object {
             "children": "boo!",
           },
@@ -1752,12 +1767,13 @@ ShallowWrapper {
                 "current": null,
               }
             }
+            is="ul"
             tabIndex={-1}
             userSelect="none"
           >
-            <wrapContext>
+            <Styled(MenuItemInternal)>
               boo!
-            </wrapContext>
+            </Styled(MenuItemInternal)>
           </Styled(Styled(Component))>
         </HotKeys>,
         "value": Object {
@@ -1777,12 +1793,13 @@ ShallowWrapper {
                 "current": null,
               }
             }
+            is="ul"
             tabIndex={-1}
             userSelect="none"
           >
-            <wrapContext>
+            <Styled(MenuItemInternal)>
               boo!
-            </wrapContext>
+            </Styled(MenuItemInternal)>
           </Styled(Styled(Component))>,
           "handlers": Object {
             "moveDown": [Function],
@@ -1799,12 +1816,13 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "children": <wrapContext>
+            "children": <Styled(MenuItemInternal)>
               boo!
-            </wrapContext>,
+            </Styled(MenuItemInternal)>,
             "innerRef": Object {
               "current": null,
             },
+            "is": "ul",
             "tabIndex": -1,
             "userSelect": "none",
           },
@@ -1812,7 +1830,7 @@ ShallowWrapper {
           "rendered": Object {
             "instance": null,
             "key": undefined,
-            "nodeType": "function",
+            "nodeType": "class",
             "props": Object {
               "children": "boo!",
             },
@@ -1899,41 +1917,41 @@ ShallowWrapper {
     }
   >
     <Styled(Internal)>
-      <wrapContext
+      <Styled(MenuItemInternal)
         icon="LogoRings"
       >
         Looker
-      </wrapContext>
-      <wrapContext
+      </Styled(MenuItemInternal)>
+      <Styled(MenuItemInternal)
         icon="Validate"
       >
         Validate
-      </wrapContext>
-      <wrapContext
+      </Styled(MenuItemInternal)>
+      <Styled(MenuItemInternal)
         icon="ChartPie"
       >
         Pizza!
-      </wrapContext>
+      </Styled(MenuItemInternal)>
     </Styled(Internal)>
     <Styled(Internal)
       label="Cheeses"
     >
-      <wrapContext>
+      <Styled(MenuItemInternal)>
         Gouda
-      </wrapContext>
-      <wrapContext>
+      </Styled(MenuItemInternal)>
+      <Styled(MenuItemInternal)>
         Cheddar
-      </wrapContext>
-      <wrapContext>
+      </Styled(MenuItemInternal)>
+      <Styled(MenuItemInternal)>
         Swiss
-      </wrapContext>
+      </Styled(MenuItemInternal)>
     </Styled(Internal)>
     <Styled(Internal)>
-      <wrapContext
+      <Styled(MenuItemInternal)
         icon="Beaker"
       >
         Scary Stuff
-      </wrapContext>
+      </Styled(MenuItemInternal)>
     </Styled(Internal)>
   </Menu>,
   Symbol(enzyme.__renderer__): Object {
@@ -1969,45 +1987,46 @@ ShallowWrapper {
               "current": null,
             }
           }
+          is="ul"
           tabIndex={-1}
           userSelect="none"
         >
           <Styled(Internal)>
-            <wrapContext
+            <Styled(MenuItemInternal)
               icon="LogoRings"
             >
               Looker
-            </wrapContext>
-            <wrapContext
+            </Styled(MenuItemInternal)>
+            <Styled(MenuItemInternal)
               icon="Validate"
             >
               Validate
-            </wrapContext>
-            <wrapContext
+            </Styled(MenuItemInternal)>
+            <Styled(MenuItemInternal)
               icon="ChartPie"
             >
               Pizza!
-            </wrapContext>
+            </Styled(MenuItemInternal)>
           </Styled(Internal)>
           <Styled(Internal)
             label="Cheeses"
           >
-            <wrapContext>
+            <Styled(MenuItemInternal)>
               Gouda
-            </wrapContext>
-            <wrapContext>
+            </Styled(MenuItemInternal)>
+            <Styled(MenuItemInternal)>
               Cheddar
-            </wrapContext>
-            <wrapContext>
+            </Styled(MenuItemInternal)>
+            <Styled(MenuItemInternal)>
               Swiss
-            </wrapContext>
+            </Styled(MenuItemInternal)>
           </Styled(Internal)>
           <Styled(Internal)>
-            <wrapContext
+            <Styled(MenuItemInternal)
               icon="Beaker"
             >
               Scary Stuff
-            </wrapContext>
+            </Styled(MenuItemInternal)>
           </Styled(Internal)>
         </Styled(Styled(Component))>
       </HotKeys>,
@@ -2056,45 +2075,46 @@ ShallowWrapper {
               "current": null,
             }
           }
+          is="ul"
           tabIndex={-1}
           userSelect="none"
         >
           <Styled(Internal)>
-            <wrapContext
+            <Styled(MenuItemInternal)
               icon="LogoRings"
             >
               Looker
-            </wrapContext>
-            <wrapContext
+            </Styled(MenuItemInternal)>
+            <Styled(MenuItemInternal)
               icon="Validate"
             >
               Validate
-            </wrapContext>
-            <wrapContext
+            </Styled(MenuItemInternal)>
+            <Styled(MenuItemInternal)
               icon="ChartPie"
             >
               Pizza!
-            </wrapContext>
+            </Styled(MenuItemInternal)>
           </Styled(Internal)>
           <Styled(Internal)
             label="Cheeses"
           >
-            <wrapContext>
+            <Styled(MenuItemInternal)>
               Gouda
-            </wrapContext>
-            <wrapContext>
+            </Styled(MenuItemInternal)>
+            <Styled(MenuItemInternal)>
               Cheddar
-            </wrapContext>
-            <wrapContext>
+            </Styled(MenuItemInternal)>
+            <Styled(MenuItemInternal)>
               Swiss
-            </wrapContext>
+            </Styled(MenuItemInternal)>
           </Styled(Internal)>
           <Styled(Internal)>
-            <wrapContext
+            <Styled(MenuItemInternal)
               icon="Beaker"
             >
               Scary Stuff
-            </wrapContext>
+            </Styled(MenuItemInternal)>
           </Styled(Internal)>
         </Styled(Styled(Component))>,
         "handlers": Object {
@@ -2114,46 +2134,47 @@ ShallowWrapper {
         "props": Object {
           "children": Array [
             <Styled(Internal)>
-              <wrapContext
+              <Styled(MenuItemInternal)
                 icon="LogoRings"
               >
                 Looker
-              </wrapContext>
-              <wrapContext
+              </Styled(MenuItemInternal)>
+              <Styled(MenuItemInternal)
                 icon="Validate"
               >
                 Validate
-              </wrapContext>
-              <wrapContext
+              </Styled(MenuItemInternal)>
+              <Styled(MenuItemInternal)
                 icon="ChartPie"
               >
                 Pizza!
-              </wrapContext>
+              </Styled(MenuItemInternal)>
             </Styled(Internal)>,
             <Styled(Internal)
               label="Cheeses"
             >
-              <wrapContext>
+              <Styled(MenuItemInternal)>
                 Gouda
-              </wrapContext>
-              <wrapContext>
+              </Styled(MenuItemInternal)>
+              <Styled(MenuItemInternal)>
                 Cheddar
-              </wrapContext>
-              <wrapContext>
+              </Styled(MenuItemInternal)>
+              <Styled(MenuItemInternal)>
                 Swiss
-              </wrapContext>
+              </Styled(MenuItemInternal)>
             </Styled(Internal)>,
             <Styled(Internal)>
-              <wrapContext
+              <Styled(MenuItemInternal)
                 icon="Beaker"
               >
                 Scary Stuff
-              </wrapContext>
+              </Styled(MenuItemInternal)>
             </Styled(Internal)>,
           ],
           "innerRef": Object {
             "current": null,
           },
+          "is": "ul",
           "tabIndex": -1,
           "userSelect": "none",
         },
@@ -2165,21 +2186,21 @@ ShallowWrapper {
             "nodeType": "class",
             "props": Object {
               "children": Array [
-                <wrapContext
+                <Styled(MenuItemInternal)
                   icon="LogoRings"
                 >
                   Looker
-                </wrapContext>,
-                <wrapContext
+                </Styled(MenuItemInternal)>,
+                <Styled(MenuItemInternal)
                   icon="Validate"
                 >
                   Validate
-                </wrapContext>,
-                <wrapContext
+                </Styled(MenuItemInternal)>,
+                <Styled(MenuItemInternal)
                   icon="ChartPie"
                 >
                   Pizza!
-                </wrapContext>,
+                </Styled(MenuItemInternal)>,
               ],
             },
             "ref": null,
@@ -2187,7 +2208,7 @@ ShallowWrapper {
               Object {
                 "instance": null,
                 "key": undefined,
-                "nodeType": "function",
+                "nodeType": "class",
                 "props": Object {
                   "children": "Looker",
                   "icon": "LogoRings",
@@ -2199,7 +2220,7 @@ ShallowWrapper {
               Object {
                 "instance": null,
                 "key": undefined,
-                "nodeType": "function",
+                "nodeType": "class",
                 "props": Object {
                   "children": "Validate",
                   "icon": "Validate",
@@ -2211,7 +2232,7 @@ ShallowWrapper {
               Object {
                 "instance": null,
                 "key": undefined,
-                "nodeType": "function",
+                "nodeType": "class",
                 "props": Object {
                   "children": "Pizza!",
                   "icon": "ChartPie",
@@ -2229,15 +2250,15 @@ ShallowWrapper {
             "nodeType": "class",
             "props": Object {
               "children": Array [
-                <wrapContext>
+                <Styled(MenuItemInternal)>
                   Gouda
-                </wrapContext>,
-                <wrapContext>
+                </Styled(MenuItemInternal)>,
+                <Styled(MenuItemInternal)>
                   Cheddar
-                </wrapContext>,
-                <wrapContext>
+                </Styled(MenuItemInternal)>,
+                <Styled(MenuItemInternal)>
                   Swiss
-                </wrapContext>,
+                </Styled(MenuItemInternal)>,
               ],
               "label": "Cheeses",
             },
@@ -2246,7 +2267,7 @@ ShallowWrapper {
               Object {
                 "instance": null,
                 "key": undefined,
-                "nodeType": "function",
+                "nodeType": "class",
                 "props": Object {
                   "children": "Gouda",
                 },
@@ -2257,7 +2278,7 @@ ShallowWrapper {
               Object {
                 "instance": null,
                 "key": undefined,
-                "nodeType": "function",
+                "nodeType": "class",
                 "props": Object {
                   "children": "Cheddar",
                 },
@@ -2268,7 +2289,7 @@ ShallowWrapper {
               Object {
                 "instance": null,
                 "key": undefined,
-                "nodeType": "function",
+                "nodeType": "class",
                 "props": Object {
                   "children": "Swiss",
                 },
@@ -2284,17 +2305,17 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "class",
             "props": Object {
-              "children": <wrapContext
+              "children": <Styled(MenuItemInternal)
                 icon="Beaker"
               >
                 Scary Stuff
-              </wrapContext>,
+              </Styled(MenuItemInternal)>,
             },
             "ref": null,
             "rendered": Object {
               "instance": null,
               "key": undefined,
-              "nodeType": "function",
+              "nodeType": "class",
               "props": Object {
                 "children": "Scary Stuff",
                 "icon": "Beaker",
@@ -2351,45 +2372,46 @@ ShallowWrapper {
                 "current": null,
               }
             }
+            is="ul"
             tabIndex={-1}
             userSelect="none"
           >
             <Styled(Internal)>
-              <wrapContext
+              <Styled(MenuItemInternal)
                 icon="LogoRings"
               >
                 Looker
-              </wrapContext>
-              <wrapContext
+              </Styled(MenuItemInternal)>
+              <Styled(MenuItemInternal)
                 icon="Validate"
               >
                 Validate
-              </wrapContext>
-              <wrapContext
+              </Styled(MenuItemInternal)>
+              <Styled(MenuItemInternal)
                 icon="ChartPie"
               >
                 Pizza!
-              </wrapContext>
+              </Styled(MenuItemInternal)>
             </Styled(Internal)>
             <Styled(Internal)
               label="Cheeses"
             >
-              <wrapContext>
+              <Styled(MenuItemInternal)>
                 Gouda
-              </wrapContext>
-              <wrapContext>
+              </Styled(MenuItemInternal)>
+              <Styled(MenuItemInternal)>
                 Cheddar
-              </wrapContext>
-              <wrapContext>
+              </Styled(MenuItemInternal)>
+              <Styled(MenuItemInternal)>
                 Swiss
-              </wrapContext>
+              </Styled(MenuItemInternal)>
             </Styled(Internal)>
             <Styled(Internal)>
-              <wrapContext
+              <Styled(MenuItemInternal)
                 icon="Beaker"
               >
                 Scary Stuff
-              </wrapContext>
+              </Styled(MenuItemInternal)>
             </Styled(Internal)>
           </Styled(Styled(Component))>
         </HotKeys>,
@@ -2438,45 +2460,46 @@ ShallowWrapper {
                 "current": null,
               }
             }
+            is="ul"
             tabIndex={-1}
             userSelect="none"
           >
             <Styled(Internal)>
-              <wrapContext
+              <Styled(MenuItemInternal)
                 icon="LogoRings"
               >
                 Looker
-              </wrapContext>
-              <wrapContext
+              </Styled(MenuItemInternal)>
+              <Styled(MenuItemInternal)
                 icon="Validate"
               >
                 Validate
-              </wrapContext>
-              <wrapContext
+              </Styled(MenuItemInternal)>
+              <Styled(MenuItemInternal)
                 icon="ChartPie"
               >
                 Pizza!
-              </wrapContext>
+              </Styled(MenuItemInternal)>
             </Styled(Internal)>
             <Styled(Internal)
               label="Cheeses"
             >
-              <wrapContext>
+              <Styled(MenuItemInternal)>
                 Gouda
-              </wrapContext>
-              <wrapContext>
+              </Styled(MenuItemInternal)>
+              <Styled(MenuItemInternal)>
                 Cheddar
-              </wrapContext>
-              <wrapContext>
+              </Styled(MenuItemInternal)>
+              <Styled(MenuItemInternal)>
                 Swiss
-              </wrapContext>
+              </Styled(MenuItemInternal)>
             </Styled(Internal)>
             <Styled(Internal)>
-              <wrapContext
+              <Styled(MenuItemInternal)
                 icon="Beaker"
               >
                 Scary Stuff
-              </wrapContext>
+              </Styled(MenuItemInternal)>
             </Styled(Internal)>
           </Styled(Styled(Component))>,
           "handlers": Object {
@@ -2496,46 +2519,47 @@ ShallowWrapper {
           "props": Object {
             "children": Array [
               <Styled(Internal)>
-                <wrapContext
+                <Styled(MenuItemInternal)
                   icon="LogoRings"
                 >
                   Looker
-                </wrapContext>
-                <wrapContext
+                </Styled(MenuItemInternal)>
+                <Styled(MenuItemInternal)
                   icon="Validate"
                 >
                   Validate
-                </wrapContext>
-                <wrapContext
+                </Styled(MenuItemInternal)>
+                <Styled(MenuItemInternal)
                   icon="ChartPie"
                 >
                   Pizza!
-                </wrapContext>
+                </Styled(MenuItemInternal)>
               </Styled(Internal)>,
               <Styled(Internal)
                 label="Cheeses"
               >
-                <wrapContext>
+                <Styled(MenuItemInternal)>
                   Gouda
-                </wrapContext>
-                <wrapContext>
+                </Styled(MenuItemInternal)>
+                <Styled(MenuItemInternal)>
                   Cheddar
-                </wrapContext>
-                <wrapContext>
+                </Styled(MenuItemInternal)>
+                <Styled(MenuItemInternal)>
                   Swiss
-                </wrapContext>
+                </Styled(MenuItemInternal)>
               </Styled(Internal)>,
               <Styled(Internal)>
-                <wrapContext
+                <Styled(MenuItemInternal)
                   icon="Beaker"
                 >
                   Scary Stuff
-                </wrapContext>
+                </Styled(MenuItemInternal)>
               </Styled(Internal)>,
             ],
             "innerRef": Object {
               "current": null,
             },
+            "is": "ul",
             "tabIndex": -1,
             "userSelect": "none",
           },
@@ -2547,21 +2571,21 @@ ShallowWrapper {
               "nodeType": "class",
               "props": Object {
                 "children": Array [
-                  <wrapContext
+                  <Styled(MenuItemInternal)
                     icon="LogoRings"
                   >
                     Looker
-                  </wrapContext>,
-                  <wrapContext
+                  </Styled(MenuItemInternal)>,
+                  <Styled(MenuItemInternal)
                     icon="Validate"
                   >
                     Validate
-                  </wrapContext>,
-                  <wrapContext
+                  </Styled(MenuItemInternal)>,
+                  <Styled(MenuItemInternal)
                     icon="ChartPie"
                   >
                     Pizza!
-                  </wrapContext>,
+                  </Styled(MenuItemInternal)>,
                 ],
               },
               "ref": null,
@@ -2569,7 +2593,7 @@ ShallowWrapper {
                 Object {
                   "instance": null,
                   "key": undefined,
-                  "nodeType": "function",
+                  "nodeType": "class",
                   "props": Object {
                     "children": "Looker",
                     "icon": "LogoRings",
@@ -2581,7 +2605,7 @@ ShallowWrapper {
                 Object {
                   "instance": null,
                   "key": undefined,
-                  "nodeType": "function",
+                  "nodeType": "class",
                   "props": Object {
                     "children": "Validate",
                     "icon": "Validate",
@@ -2593,7 +2617,7 @@ ShallowWrapper {
                 Object {
                   "instance": null,
                   "key": undefined,
-                  "nodeType": "function",
+                  "nodeType": "class",
                   "props": Object {
                     "children": "Pizza!",
                     "icon": "ChartPie",
@@ -2611,15 +2635,15 @@ ShallowWrapper {
               "nodeType": "class",
               "props": Object {
                 "children": Array [
-                  <wrapContext>
+                  <Styled(MenuItemInternal)>
                     Gouda
-                  </wrapContext>,
-                  <wrapContext>
+                  </Styled(MenuItemInternal)>,
+                  <Styled(MenuItemInternal)>
                     Cheddar
-                  </wrapContext>,
-                  <wrapContext>
+                  </Styled(MenuItemInternal)>,
+                  <Styled(MenuItemInternal)>
                     Swiss
-                  </wrapContext>,
+                  </Styled(MenuItemInternal)>,
                 ],
                 "label": "Cheeses",
               },
@@ -2628,7 +2652,7 @@ ShallowWrapper {
                 Object {
                   "instance": null,
                   "key": undefined,
-                  "nodeType": "function",
+                  "nodeType": "class",
                   "props": Object {
                     "children": "Gouda",
                   },
@@ -2639,7 +2663,7 @@ ShallowWrapper {
                 Object {
                   "instance": null,
                   "key": undefined,
-                  "nodeType": "function",
+                  "nodeType": "class",
                   "props": Object {
                     "children": "Cheddar",
                   },
@@ -2650,7 +2674,7 @@ ShallowWrapper {
                 Object {
                   "instance": null,
                   "key": undefined,
-                  "nodeType": "function",
+                  "nodeType": "class",
                   "props": Object {
                     "children": "Swiss",
                   },
@@ -2666,17 +2690,17 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "class",
               "props": Object {
-                "children": <wrapContext
+                "children": <Styled(MenuItemInternal)
                   icon="Beaker"
                 >
                   Scary Stuff
-                </wrapContext>,
+                </Styled(MenuItemInternal)>,
               },
               "ref": null,
               "rendered": Object {
                 "instance": null,
                 "key": undefined,
-                "nodeType": "function",
+                "nodeType": "class",
                 "props": Object {
                   "children": "Scary Stuff",
                   "icon": "Beaker",
@@ -2734,9 +2758,14 @@ exports[`Menu 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Menu>
-    <wrapContext>
+    <Styled(MenuItemInternal)>
       boo!
-    </wrapContext>
+    </Styled(MenuItemInternal)>
+    <Styled(MenuLinkInternal)
+      href="test"
+    >
+      boo!
+    </Styled(MenuLinkInternal)>
   </Menu>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -2771,12 +2800,18 @@ ShallowWrapper {
               "current": null,
             }
           }
+          is="ul"
           tabIndex={-1}
           userSelect="none"
         >
-          <wrapContext>
+          <Styled(MenuItemInternal)>
             boo!
-          </wrapContext>
+          </Styled(MenuItemInternal)>
+          <Styled(MenuLinkInternal)
+            href="test"
+          >
+            boo!
+          </Styled(MenuLinkInternal)>
         </Styled(Styled(Component))>
       </HotKeys>,
       "value": Object {
@@ -2796,12 +2831,18 @@ ShallowWrapper {
               "current": null,
             }
           }
+          is="ul"
           tabIndex={-1}
           userSelect="none"
         >
-          <wrapContext>
+          <Styled(MenuItemInternal)>
             boo!
-          </wrapContext>
+          </Styled(MenuItemInternal)>
+          <Styled(MenuLinkInternal)
+            href="test"
+          >
+            boo!
+          </Styled(MenuLinkInternal)>
         </Styled(Styled(Component))>,
         "handlers": Object {
           "moveDown": [Function],
@@ -2818,27 +2859,49 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
-          "children": <wrapContext>
-            boo!
-          </wrapContext>,
+          "children": Array [
+            <Styled(MenuItemInternal)>
+              boo!
+            </Styled(MenuItemInternal)>,
+            <Styled(MenuLinkInternal)
+              href="test"
+            >
+              boo!
+            </Styled(MenuLinkInternal)>,
+          ],
           "innerRef": Object {
             "current": null,
           },
+          "is": "ul",
           "tabIndex": -1,
           "userSelect": "none",
         },
         "ref": null,
-        "rendered": Object {
-          "instance": null,
-          "key": undefined,
-          "nodeType": "function",
-          "props": Object {
-            "children": "boo!",
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": "boo!",
+            },
+            "ref": null,
+            "rendered": "boo!",
+            "type": [Function],
           },
-          "ref": null,
-          "rendered": "boo!",
-          "type": [Function],
-        },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": "boo!",
+              "href": "test",
+            },
+            "ref": null,
+            "rendered": "boo!",
+            "type": [Function],
+          },
+        ],
         "type": [Function],
       },
       "type": [Function],
@@ -2884,12 +2947,18 @@ ShallowWrapper {
                 "current": null,
               }
             }
+            is="ul"
             tabIndex={-1}
             userSelect="none"
           >
-            <wrapContext>
+            <Styled(MenuItemInternal)>
               boo!
-            </wrapContext>
+            </Styled(MenuItemInternal)>
+            <Styled(MenuLinkInternal)
+              href="test"
+            >
+              boo!
+            </Styled(MenuLinkInternal)>
           </Styled(Styled(Component))>
         </HotKeys>,
         "value": Object {
@@ -2909,12 +2978,18 @@ ShallowWrapper {
                 "current": null,
               }
             }
+            is="ul"
             tabIndex={-1}
             userSelect="none"
           >
-            <wrapContext>
+            <Styled(MenuItemInternal)>
               boo!
-            </wrapContext>
+            </Styled(MenuItemInternal)>
+            <Styled(MenuLinkInternal)
+              href="test"
+            >
+              boo!
+            </Styled(MenuLinkInternal)>
           </Styled(Styled(Component))>,
           "handlers": Object {
             "moveDown": [Function],
@@ -2931,27 +3006,49 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "children": <wrapContext>
-              boo!
-            </wrapContext>,
+            "children": Array [
+              <Styled(MenuItemInternal)>
+                boo!
+              </Styled(MenuItemInternal)>,
+              <Styled(MenuLinkInternal)
+                href="test"
+              >
+                boo!
+              </Styled(MenuLinkInternal)>,
+            ],
             "innerRef": Object {
               "current": null,
             },
+            "is": "ul",
             "tabIndex": -1,
             "userSelect": "none",
           },
           "ref": null,
-          "rendered": Object {
-            "instance": null,
-            "key": undefined,
-            "nodeType": "function",
-            "props": Object {
-              "children": "boo!",
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "boo!",
+              },
+              "ref": null,
+              "rendered": "boo!",
+              "type": [Function],
             },
-            "ref": null,
-            "rendered": "boo!",
-            "type": [Function],
-          },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "boo!",
+                "href": "test",
+              },
+              "ref": null,
+              "rendered": "boo!",
+              "type": [Function],
+            },
+          ],
           "type": [Function],
         },
         "type": [Function],

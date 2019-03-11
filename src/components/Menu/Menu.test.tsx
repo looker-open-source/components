@@ -6,11 +6,13 @@ import { palette } from '../../style'
 import { Menu } from './Menu'
 import { MenuGroup } from './MenuGroup'
 import { MenuItem } from './MenuItem'
+import { MenuLink } from './MenuLink'
 
 test('Menu', () => {
   const menu = shallow(
     <Menu>
       <MenuItem>boo!</MenuItem>
+      <MenuLink href="test">boo!</MenuLink>
     </Menu>
   )
 

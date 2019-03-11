@@ -1,4 +1,4 @@
-`MenuItem` is an `HTMLAnchorElement` that supports all of the `BoxProps` properties.
+`MenuItem` is an `HTMLButtonElement` that supports all of the `BoxProps` properties. Use this for triggering actions from with in a `Menu` or `Drawer`, for example opening a modal. Use the `MenuLink` component is you want to route the user to a new page.
 
 An icon can be optionally be assigned to each item via the `icon` property.
 
@@ -71,28 +71,6 @@ Note: This property behaves slightly differently depending on the context of the
 </Menu>
 ```
 
-### Current Item
-
-Use the `current` prop to indicate the current menu item, optionally use the `currentMarker` prop to add an additional border marker to the current item.
-
-```js
-<Menu>
-  <MenuGroup>
-    <MenuItem>Home</MenuItem>
-    <MenuItem current>Browse (current)</MenuItem>
-    <MenuItem>Favorites</MenuItem>
-  </MenuGroup>
-  <MenuGroup>
-    <MenuItem current currentMarker icon="Favorite">
-      Spaces (current with marker)
-    </MenuItem>
-    <MenuItem icon="Favorite" detail="Is often orange">
-      Dashboards
-    </MenuItem>
-    <MenuItem icon="Favorite">Popular</MenuItem>
-  </MenuGroup>
-</Menu>
-```
 
 ### Customizing a menu
 
@@ -132,16 +110,16 @@ const menuCustomizations = {
 }
 ;<Menu customizationProps={menuCustomizations}>
   <MenuGroup>
-    <MenuItem icon="Home">Gouda</MenuItem>
-    <MenuItem
+    <MenuLink icon="Home">Gouda</MenuLink>
+    <MenuLink
       icon="FavoriteOutline"
       current
       currentMarker
       detail="Is often orange"
     >
       Cheddar
-    </MenuItem>
-    <MenuItem icon="Dashboard">Swiss</MenuItem>
+    </MenuLink>
+    <MenuLink icon="Dashboard">Swiss</MenuLink>
   </MenuGroup>
 </Menu>
 ```
