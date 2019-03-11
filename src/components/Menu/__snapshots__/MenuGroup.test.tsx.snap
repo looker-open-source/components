@@ -131,7 +131,7 @@ exports[`MenuGrouo - menu customization 1`] = `
 }
 
 .c5:focus-within {
-  box-shadow: 0 0 .25rem 0.125rem #49a9f2;
+  box-shadow: 0 0 0.25rem 0.125rem #49a9f2;
   outline: 'none';
   z-index: 1;
 }
@@ -345,15 +345,15 @@ exports[`MenuGroup - JSX label 1`] = `
   z-index: 2;
 }
 
-.c4 {
-  list-style-type: none;
-}
-
 .c2 {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-transform: uppercase;
+}
+
+.c4 {
+  list-style-type: none;
 }
 
 .c7 {
@@ -381,7 +381,7 @@ exports[`MenuGroup - JSX label 1`] = `
 }
 
 .c7:focus-within {
-  box-shadow: 0 0 .25rem 0.125rem #49a9f2;
+  box-shadow: 0 0 0.25rem 0.125rem #49a9f2;
   outline: 'none';
   z-index: 1;
 }
@@ -554,7 +554,7 @@ exports[`MenuGroup - canActivate 1`] = `
 }
 
 .c5:focus-within {
-  box-shadow: 0 0 .25rem 0.125rem #49a9f2;
+  box-shadow: 0 0 0.25rem 0.125rem #49a9f2;
   outline: 'none';
   z-index: 1;
 }
@@ -710,15 +710,15 @@ exports[`MenuGroup - label 1`] = `
   z-index: 2;
 }
 
-.c4 {
-  list-style-type: none;
-}
-
 .c2 {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-transform: uppercase;
+}
+
+.c4 {
+  list-style-type: none;
 }
 
 .c7 {
@@ -746,7 +746,7 @@ exports[`MenuGroup - label 1`] = `
 }
 
 .c7:focus-within {
-  box-shadow: 0 0 .25rem 0.125rem #49a9f2;
+  box-shadow: 0 0 0.25rem 0.125rem #49a9f2;
   outline: 'none';
   z-index: 1;
 }
@@ -898,15 +898,15 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
   z-index: 2;
 }
 
-.c4 {
-  list-style-type: none;
-}
-
 .c2 {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-transform: uppercase;
+}
+
+.c4 {
+  list-style-type: none;
 }
 
 .c7 {
@@ -934,7 +934,7 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
 }
 
 .c7:focus-within {
-  box-shadow: 0 0 .25rem 0.125rem #49a9f2;
+  box-shadow: 0 0 0.25rem 0.125rem #49a9f2;
   outline: 'none';
   z-index: 1;
 }
@@ -1097,7 +1097,7 @@ exports[`MenuGroup 1`] = `
 }
 
 .c5:focus-within {
-  box-shadow: 0 0 .25rem 0.125rem #49a9f2;
+  box-shadow: 0 0 0.25rem 0.125rem #49a9f2;
   outline: 'none';
   z-index: 1;
 }

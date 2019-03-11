@@ -111,7 +111,7 @@ exports[`MenuLink - active + icon 1`] = `
 }
 
 .c0:focus-within {
-  box-shadow: 0 0 .25rem 0.125rem #49a9f2;
+  box-shadow: 0 0 0.25rem 0.125rem #49a9f2;
   outline: 'none';
   z-index: 1;
 }
@@ -239,7 +239,7 @@ exports[`MenuLink - active 1`] = `
 }
 
 .c0:focus-within {
-  box-shadow: 0 0 .25rem 0.125rem #49a9f2;
+  box-shadow: 0 0 0.25rem 0.125rem #49a9f2;
   outline: 'none';
   z-index: 1;
 }
@@ -372,7 +372,7 @@ exports[`MenuLink - canActivate + active 1`] = `
 }
 
 .c0:focus-within {
-  box-shadow: 0 0 .25rem 0.125rem #49a9f2;
+  box-shadow: 0 0 0.25rem 0.125rem #49a9f2;
   outline: 'none';
   z-index: 1;
 }
@@ -497,7 +497,7 @@ exports[`MenuLink - canActivate 1`] = `
 }
 
 .c0:focus-within {
-  box-shadow: 0 0 .25rem 0.125rem #49a9f2;
+  box-shadow: 0 0 0.25rem 0.125rem #49a9f2;
   outline: 'none';
   z-index: 1;
 }
@@ -659,7 +659,7 @@ exports[`MenuLink - current + marker 1`] = `
 }
 
 .c0:focus-within {
-  box-shadow: 0 0 .25rem 0.125rem #49a9f2;
+  box-shadow: 0 0 0.25rem 0.125rem #49a9f2;
   outline: 'none';
   z-index: 1;
 }
@@ -813,7 +813,7 @@ exports[`MenuLink - current 1`] = `
 }
 
 .c0:focus-within {
-  box-shadow: 0 0 .25rem 0.125rem #49a9f2;
+  box-shadow: 0 0 0.25rem 0.125rem #49a9f2;
   outline: 'none';
   z-index: 1;
 }
@@ -942,7 +942,7 @@ exports[`MenuLink - detail 1`] = `
 }
 
 .c0:focus-within {
-  box-shadow: 0 0 .25rem 0.125rem #49a9f2;
+  box-shadow: 0 0 0.25rem 0.125rem #49a9f2;
   outline: 'none';
   z-index: 1;
 }
@@ -1067,7 +1067,7 @@ exports[`MenuLink - icon 1`] = `
 }
 
 .c0:focus-within {
-  box-shadow: 0 0 .25rem 0.125rem #49a9f2;
+  box-shadow: 0 0 0.25rem 0.125rem #49a9f2;
   outline: 'none';
   z-index: 1;
 }
@@ -1199,7 +1199,7 @@ exports[`MenuLink - with customizations 1`] = `
 }
 
 .c0:focus-within {
-  box-shadow: 0 0 .25rem 0.125rem #49a9f2;
+  box-shadow: 0 0 0.25rem 0.125rem #49a9f2;
   outline: 'none';
   z-index: 1;
 }
@@ -1298,7 +1298,7 @@ exports[`MenuLink 1`] = `
 }
 
 .c0:focus-within {
-  box-shadow: 0 0 .25rem 0.125rem #49a9f2;
+  box-shadow: 0 0 0.25rem 0.125rem #49a9f2;
   outline: 'none';
   z-index: 1;
 }
