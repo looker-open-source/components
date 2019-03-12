@@ -10,55 +10,7 @@ const StatusAndResources = require('../../../styleguide_components/StatusAndReso
 ```
 
 Icon is the base component used to render an icon. To render an icon, you must
-define the name property, which can be one of:
-
-* AddCircle
-* ArrowDropDown
-* ArrowDropUp
-* CancelCircle
-* ChartBar
-* ChartBubble
-* ChartLine
-* ChartMulti
-* ChartPie
-* CheckCircle
-* CheckProgress
-* Close
-* Dashboard
-* DotsHorz
-* DotsVert
-* DragHandle
-* Edit
-* ExpandMore
-* ExploreCircle
-* External
-* Favorite
-* FavoriteOutline
-* File
-* Filter
-* Folder
-* FolderShared
-* Group
-* Hamburger
-* Home
-* Info
-* LiveHelp
-* LookerLogo
-* Mail
-* Note
-* Popular
-* RecentActivity
-* Redo
-* Refresh
-* RemoveCircle
-* Search
-* Settings
-* TextFormat
-* Trash
-* TrashOutline
-* Undo
-* UnusedContent
-* Warning
+define the name property, which can be one of any listed here: [Lens Icons](https://lens.looker.com/#/Icons)
 
 ```js
 <Icon name="Trash" />
