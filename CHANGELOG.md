@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.0.1-beta.11] - 2019-03-14
+## [0.0.1-beta.12] - 2019-03-14
 ### Added
 - This changelog.
 - Four new calendar icons, and one "Circle-Plus" icon
@@ -15,6 +15,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - The icon documentation page no longer has a partial list of icons, but rather a link to a page with all the icons
-- MenuItem now takes a new prop called `itemRole` which is either `link` or `button`
+- `MenuItem` now takes a new prop called `itemRole` which is either `link` or `button`
 
 ### Removed
