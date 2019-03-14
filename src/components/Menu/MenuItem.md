@@ -1,11 +1,15 @@
-`MenuItem` is an `HTMLButtonElement` that supports all of the `BoxProps` properties. Use this for triggering actions from with in a `Menu` or `Drawer`, for example opening a modal. Use the `MenuLink` component is you want to route the user to a new page.
+`MenuItem` is an `HTMLButtonElement` that supports all of the `BoxProps` properties. Use this for triggering actions from with in a `Menu` or `Drawer`, for example opening a modal.
+
+For accessibility reasons, if you want your `MenuItem` to link somewhere then you can use the `itemRole` prop to identify it as a link.
 
 An icon can be optionally be assigned to each item via the `icon` property.
 
 ```js
 <MenuItem>Home</MenuItem>
 <MenuItem icon="Home">Home</MenuItem>
-<MenuItem href="https://google.com" target="_blank" icon="Public">Away</MenuItem>
+<Link href="https://google.com">
+  <MenuItem  itemRole="link" target="_blank" icon="Public">Away</MenuItem>
+</Link>
 ```
 
 ### Detail Text
