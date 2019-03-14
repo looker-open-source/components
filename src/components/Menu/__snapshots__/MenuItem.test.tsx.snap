@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MenuItem - active + icon 1`] = `
-.c6 {
+.c5 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -9,12 +9,9 @@ exports[`MenuItem - active + icon 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
 }
 
-.c5 {
+.c3 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -35,7 +32,7 @@ exports[`MenuItem - active + icon 1`] = `
   width: 20px;
 }
 
-.c3 {
+.c1 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -63,69 +60,69 @@ exports[`MenuItem - active + icon 1`] = `
   padding-bottom: 0.75rem;
 }
 
-.c3:active {
+.c1:active {
   color: #0087e1;
 }
 
-.c7:hover .c4 {
+.c6:hover .c2 {
   color: #262D33;
 }
 
-.c7 .c4 {
+.c6 .c2 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c7 .c4 {
+.c6 .c2 {
   color: #C1C6CC;
 }
 
-.c1 {
+.c0 {
   position: relative;
   -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c1:hover {
+.c0:hover {
   background: #F5F6F7;
   color: #262D33;
 }
 
-.c1:hover .c4 {
+.c0:hover .c2 {
   color: #262D33;
 }
 
-.c1 .c4 {
+.c0 .c2 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c1 .c4 {
+.c0 .c2 {
   color: #0087e1;
 }
 
-.c1:focus-within {
+.c0:focus-within {
   box-shadow: 0 0 0.25rem 0.125rem #49a9f2;
   outline: 'none';
   z-index: 1;
 }
 
-.c0 .c2 {
-  text-align: left;
+.c4 {
   outline: none;
   background: transparent;
   color: inherit;
-}
-
-.c0 .c2:hover {
-  background: inherit;
+  text-align: left;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  cursor: pointer;
 }
 
 <li
-  className="c0 c1 c2 c3"
+  className="c0 c1"
 >
   <div
-    className="c4 c2 c5"
+    className="c2 c3"
   >
     <svg
       fill="currentColor"
@@ -154,7 +151,8 @@ exports[`MenuItem - active + icon 1`] = `
     </svg>
   </div>
   <button
-    className="c2 c6"
+    aria-checked={true}
+    className="c4 c5"
     role="menuitem"
   >
     who!
@@ -163,7 +161,7 @@ exports[`MenuItem - active + icon 1`] = `
 `;
 
 exports[`MenuItem - active 1`] = `
-.c4 {
+.c3 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -171,12 +169,9 @@ exports[`MenuItem - active 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
 }
 
-.c3 {
+.c1 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -204,56 +199,57 @@ exports[`MenuItem - active 1`] = `
   padding-bottom: 0.75rem;
 }
 
-.c3:active {
+.c1:active {
   color: #0087e1;
 }
 
-.c1 {
+.c0 {
   position: relative;
   -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c1:hover {
+.c0:hover {
   background: #F5F6F7;
   color: #262D33;
 }
 
-.c1:hover .c5 {
+.c0:hover .c4 {
   color: #262D33;
 }
 
-.c1 .c5 {
+.c0 .c4 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c1 .c5 {
+.c0 .c4 {
   color: #0087e1;
 }
 
-.c1:focus-within {
+.c0:focus-within {
   box-shadow: 0 0 0.25rem 0.125rem #49a9f2;
   outline: 'none';
   z-index: 1;
 }
 
-.c0 .c2 {
-  text-align: left;
+.c2 {
   outline: none;
   background: transparent;
   color: inherit;
-}
-
-.c0 .c2:hover {
-  background: inherit;
+  text-align: left;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  cursor: pointer;
 }
 
 <li
-  className="c0 c1 c2 c3"
+  className="c0 c1"
 >
   <button
-    className="c2 c4"
+    aria-checked={true}
+    className="c2 c3"
     role="menuitem"
   >
     who!
@@ -262,7 +258,7 @@ exports[`MenuItem - active 1`] = `
 `;
 
 exports[`MenuItem - canActivate + active 1`] = `
-.c6 {
+.c5 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -270,12 +266,9 @@ exports[`MenuItem - canActivate + active 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
 }
 
-.c5 {
+.c3 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -296,7 +289,7 @@ exports[`MenuItem - canActivate + active 1`] = `
   width: 20px;
 }
 
-.c3 {
+.c1 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -324,69 +317,69 @@ exports[`MenuItem - canActivate + active 1`] = `
   padding-bottom: 0.75rem;
 }
 
-.c3:active {
+.c1:active {
   color: #0087e1;
 }
 
-.c7:hover .c4 {
+.c6:hover .c2 {
   color: #262D33;
 }
 
-.c7 .c4 {
+.c6 .c2 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c7 .c4 {
+.c6 .c2 {
   color: #C1C6CC;
 }
 
-.c1 {
+.c0 {
   position: relative;
   -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c1:hover {
+.c0:hover {
   background: #F5F6F7;
   color: #262D33;
 }
 
-.c1:hover .c4 {
+.c0:hover .c2 {
   color: #262D33;
 }
 
-.c1 .c4 {
+.c0 .c2 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c1 .c4 {
+.c0 .c2 {
   color: #0087e1;
 }
 
-.c1:focus-within {
+.c0:focus-within {
   box-shadow: 0 0 0.25rem 0.125rem #49a9f2;
   outline: 'none';
   z-index: 1;
 }
 
-.c0 .c2 {
-  text-align: left;
+.c4 {
   outline: none;
   background: transparent;
   color: inherit;
-}
-
-.c0 .c2:hover {
-  background: inherit;
+  text-align: left;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  cursor: pointer;
 }
 
 <li
-  className="c0 c1 c2 c3"
+  className="c0 c1"
 >
   <div
-    className="c4 c2 c5"
+    className="c2 c3"
   >
     <svg
       fill="currentColor"
@@ -401,8 +394,9 @@ exports[`MenuItem - canActivate + active 1`] = `
     </svg>
   </div>
   <button
-    className="c2 c6"
-    role="menuitem"
+    aria-checked={true}
+    className="c4 c5"
+    role="menuitemradio"
   >
     who!
   </button>
@@ -410,7 +404,7 @@ exports[`MenuItem - canActivate + active 1`] = `
 `;
 
 exports[`MenuItem - canActivate 1`] = `
-.c3 {
+.c1 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -438,11 +432,11 @@ exports[`MenuItem - canActivate 1`] = `
   padding-bottom: 0.75rem;
 }
 
-.c3:active {
+.c1:active {
   color: #0087e1;
 }
 
-.c5 {
+.c4 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -450,12 +444,9 @@ exports[`MenuItem - canActivate 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
 }
 
-.c4 {
+.c2 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -466,56 +457,56 @@ exports[`MenuItem - canActivate 1`] = `
   width: 1.5rem;
 }
 
-.c1 {
+.c0 {
   position: relative;
   -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c1:hover {
+.c0:hover {
   background: #F5F6F7;
   color: #262D33;
 }
 
-.c1:hover .c6 {
+.c0:hover .c5 {
   color: #262D33;
 }
 
-.c1 .c6 {
+.c0 .c5 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c1 .c6 {
+.c0 .c5 {
   color: #C1C6CC;
 }
 
-.c1:focus-within {
+.c0:focus-within {
   box-shadow: 0 0 0.25rem 0.125rem #49a9f2;
   outline: 'none';
   z-index: 1;
 }
 
-.c0 .c2 {
-  text-align: left;
+.c3 {
   outline: none;
   background: transparent;
   color: inherit;
-}
-
-.c0 .c2:hover {
-  background: inherit;
+  text-align: left;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  cursor: pointer;
 }
 
 <li
-  className="c0 c1 c2 c3"
+  className="c0 c1"
 >
   <div
-    className="c2 c4"
+    className="c2"
   />
   <button
-    className="c2 c5"
-    role="menuitem"
+    className="c3 c4"
+    role="menuitemradio"
   >
     who!
   </button>
@@ -523,7 +514,7 @@ exports[`MenuItem - canActivate 1`] = `
 `;
 
 exports[`MenuItem - current + marker 1`] = `
-.c3 {
+.c1 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -551,11 +542,11 @@ exports[`MenuItem - current + marker 1`] = `
   padding-bottom: 0.75rem;
 }
 
-.c3:active {
+.c1:active {
   color: #0087e1;
 }
 
-.c6 {
+.c5 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -563,12 +554,9 @@ exports[`MenuItem - current + marker 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
 }
 
-.c5 {
+.c3 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -589,42 +577,42 @@ exports[`MenuItem - current + marker 1`] = `
   width: 20px;
 }
 
-.c7:hover .c4 {
+.c6:hover .c2 {
   color: #262D33;
 }
 
-.c7 .c4 {
+.c6 .c2 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c7 .c4 {
+.c6 .c2 {
   color: #C1C6CC;
 }
 
-.c8:hover .c4 {
+.c7:hover .c2 {
   color: #262D33;
 }
 
-.c8 .c4 {
+.c7 .c2 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c8 .c4 {
+.c7 .c2 {
   color: #0087e1;
 }
 
-.c9 .c4 {
+.c8 .c2 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c9 .c4 {
+.c8 .c2 {
   color: #262D33;
 }
 
-.c1 {
+.c0 {
   position: relative;
   -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
@@ -632,16 +620,16 @@ exports[`MenuItem - current + marker 1`] = `
   color: #262D33;
 }
 
-.c1 .c4 {
+.c0 .c2 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c1 .c4 {
+.c0 .c2 {
   color: #262D33;
 }
 
-.c1::before {
+.c0::before {
   content: '';
   display: block;
   height: 100%;
@@ -652,28 +640,28 @@ exports[`MenuItem - current + marker 1`] = `
   width: 4px;
 }
 
-.c1:focus-within {
+.c0:focus-within {
   box-shadow: 0 0 0.25rem 0.125rem #49a9f2;
   outline: 'none';
   z-index: 1;
 }
 
-.c0 .c2 {
-  text-align: left;
+.c4 {
   outline: none;
   background: transparent;
   color: inherit;
-}
-
-.c0 .c2:hover {
-  background: inherit;
+  text-align: left;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  cursor: pointer;
 }
 
 <li
-  className="c0 c1 c2 c3"
+  className="c0 c1"
 >
   <div
-    className="c4 c2 c5"
+    className="c2 c3"
   >
     <svg
       fill="currentColor"
@@ -688,7 +676,7 @@ exports[`MenuItem - current + marker 1`] = `
     </svg>
   </div>
   <button
-    className="c2 c6"
+    className="c4 c5"
     role="menuitem"
   >
     who!
@@ -697,7 +685,7 @@ exports[`MenuItem - current + marker 1`] = `
 `;
 
 exports[`MenuItem - current 1`] = `
-.c3 {
+.c1 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -725,11 +713,11 @@ exports[`MenuItem - current 1`] = `
   padding-bottom: 0.75rem;
 }
 
-.c3:active {
+.c1:active {
   color: #0087e1;
 }
 
-.c6 {
+.c5 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -737,12 +725,9 @@ exports[`MenuItem - current 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
 }
 
-.c5 {
+.c3 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -763,33 +748,33 @@ exports[`MenuItem - current 1`] = `
   width: 20px;
 }
 
-.c7:hover .c4 {
+.c6:hover .c2 {
   color: #262D33;
 }
 
-.c7 .c4 {
+.c6 .c2 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c7 .c4 {
+.c6 .c2 {
   color: #C1C6CC;
 }
 
-.c8:hover .c4 {
+.c7:hover .c2 {
   color: #262D33;
 }
 
-.c8 .c4 {
+.c7 .c2 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c8 .c4 {
+.c7 .c2 {
   color: #0087e1;
 }
 
-.c1 {
+.c0 {
   position: relative;
   -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
@@ -797,37 +782,37 @@ exports[`MenuItem - current 1`] = `
   color: #262D33;
 }
 
-.c1 .c4 {
+.c0 .c2 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c1 .c4 {
+.c0 .c2 {
   color: #262D33;
 }
 
-.c1:focus-within {
+.c0:focus-within {
   box-shadow: 0 0 0.25rem 0.125rem #49a9f2;
   outline: 'none';
   z-index: 1;
 }
 
-.c0 .c2 {
-  text-align: left;
+.c4 {
   outline: none;
   background: transparent;
   color: inherit;
-}
-
-.c0 .c2:hover {
-  background: inherit;
+  text-align: left;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  cursor: pointer;
 }
 
 <li
-  className="c0 c1 c2 c3"
+  className="c0 c1"
 >
   <div
-    className="c4 c2 c5"
+    className="c2 c3"
   >
     <svg
       fill="currentColor"
@@ -842,7 +827,7 @@ exports[`MenuItem - current 1`] = `
     </svg>
   </div>
   <button
-    className="c2 c6"
+    className="c4 c5"
     role="menuitem"
   >
     who!
@@ -851,7 +836,7 @@ exports[`MenuItem - current 1`] = `
 `;
 
 exports[`MenuItem - detail 1`] = `
-.c3 {
+.c1 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -879,11 +864,11 @@ exports[`MenuItem - detail 1`] = `
   padding-bottom: 0.75rem;
 }
 
-.c3:active {
+.c1:active {
   color: #0087e1;
 }
 
-.c4 {
+.c3 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -891,12 +876,9 @@ exports[`MenuItem - detail 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
 }
 
-.c5 {
+.c4 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -911,58 +893,58 @@ exports[`MenuItem - detail 1`] = `
   z-index: 1;
 }
 
-.c1 {
+.c0 {
   position: relative;
   -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c1:hover {
+.c0:hover {
   background: #F5F6F7;
   color: #262D33;
 }
 
-.c1:hover .c6 {
+.c0:hover .c5 {
   color: #262D33;
 }
 
-.c1 .c6 {
+.c0 .c5 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c1 .c6 {
+.c0 .c5 {
   color: #C1C6CC;
 }
 
-.c1:focus-within {
+.c0:focus-within {
   box-shadow: 0 0 0.25rem 0.125rem #49a9f2;
   outline: 'none';
   z-index: 1;
 }
 
-.c0 .c2 {
-  text-align: left;
+.c2 {
   outline: none;
   background: transparent;
   color: inherit;
-}
-
-.c0 .c2:hover {
-  background: inherit;
+  text-align: left;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  cursor: pointer;
 }
 
 <li
-  className="c0 c1 c2 c3"
+  className="c0 c1"
 >
   <button
-    className="c2 c4"
+    className="c2 c3"
     role="menuitem"
   >
     who!
   </button>
   <div
-    className="c2 c5"
+    className="c4"
   >
     Is an excellent question
   </div>
@@ -970,7 +952,7 @@ exports[`MenuItem - detail 1`] = `
 `;
 
 exports[`MenuItem - icon 1`] = `
-.c3 {
+.c1 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -998,11 +980,11 @@ exports[`MenuItem - icon 1`] = `
   padding-bottom: 0.75rem;
 }
 
-.c3:active {
+.c1:active {
   color: #0087e1;
 }
 
-.c6 {
+.c5 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -1010,12 +992,9 @@ exports[`MenuItem - icon 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
 }
 
-.c5 {
+.c3 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -1036,52 +1015,52 @@ exports[`MenuItem - icon 1`] = `
   width: 20px;
 }
 
-.c1 {
+.c0 {
   position: relative;
   -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c1:hover {
+.c0:hover {
   background: #F5F6F7;
   color: #262D33;
 }
 
-.c1:hover .c4 {
+.c0:hover .c2 {
   color: #262D33;
 }
 
-.c1 .c4 {
+.c0 .c2 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c1 .c4 {
+.c0 .c2 {
   color: #C1C6CC;
 }
 
-.c1:focus-within {
+.c0:focus-within {
   box-shadow: 0 0 0.25rem 0.125rem #49a9f2;
   outline: 'none';
   z-index: 1;
 }
 
-.c0 .c2 {
-  text-align: left;
+.c4 {
   outline: none;
   background: transparent;
   color: inherit;
-}
-
-.c0 .c2:hover {
-  background: inherit;
+  text-align: left;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  cursor: pointer;
 }
 
 <li
-  className="c0 c1 c2 c3"
+  className="c0 c1"
 >
   <div
-    className="c4 c2 c5"
+    className="c2 c3"
   >
     <svg
       fill="currentColor"
@@ -1110,7 +1089,7 @@ exports[`MenuItem - icon 1`] = `
     </svg>
   </div>
   <button
-    className="c2 c6"
+    className="c4 c5"
     role="menuitem"
   >
     who!
@@ -1119,7 +1098,7 @@ exports[`MenuItem - icon 1`] = `
 `;
 
 exports[`MenuItem - with customizations 1`] = `
-.c4 {
+.c3 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -1127,12 +1106,9 @@ exports[`MenuItem - with customizations 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
 }
 
-.c3 {
+.c1 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -1160,11 +1136,11 @@ exports[`MenuItem - with customizations 1`] = `
   padding-bottom: 0.75rem;
 }
 
-.c3:active {
+.c1:active {
   color: #0087e1;
 }
 
-.c1 {
+.c0 {
   position: relative;
   -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
@@ -1172,16 +1148,16 @@ exports[`MenuItem - with customizations 1`] = `
   color: #1E1047;
 }
 
-.c1 .c5 {
+.c0 .c4 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c1 .c5 {
+.c0 .c4 {
   color: #4F2ABA;
 }
 
-.c1::before {
+.c0::before {
   content: '';
   display: block;
   height: 100%;
@@ -1192,28 +1168,28 @@ exports[`MenuItem - with customizations 1`] = `
   width: 10px;
 }
 
-.c1:focus-within {
+.c0:focus-within {
   box-shadow: 0 0 0.25rem 0.125rem #49a9f2;
   outline: 'none';
   z-index: 1;
 }
 
-.c0 .c2 {
-  text-align: left;
+.c2 {
   outline: none;
   background: transparent;
   color: inherit;
-}
-
-.c0 .c2:hover {
-  background: inherit;
+  text-align: left;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  cursor: pointer;
 }
 
 <li
-  className="c0 c1 c2 c3"
+  className="c0 c1"
 >
   <button
-    className="c2 c4"
+    className="c2 c3"
     role="menuitem"
   >
     who!
@@ -1222,7 +1198,7 @@ exports[`MenuItem - with customizations 1`] = `
 `;
 
 exports[`MenuItem 1`] = `
-.c3 {
+.c1 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -1250,11 +1226,11 @@ exports[`MenuItem 1`] = `
   padding-bottom: 0.75rem;
 }
 
-.c3:active {
+.c1:active {
   color: #0087e1;
 }
 
-.c4 {
+.c3 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -1262,57 +1238,54 @@ exports[`MenuItem 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
 }
 
-.c1 {
+.c0 {
   position: relative;
   -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c1:hover {
+.c0:hover {
   background: #F5F6F7;
   color: #262D33;
 }
 
-.c1:hover .c5 {
+.c0:hover .c4 {
   color: #262D33;
 }
 
-.c1 .c5 {
+.c0 .c4 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c1 .c5 {
+.c0 .c4 {
   color: #C1C6CC;
 }
 
-.c1:focus-within {
+.c0:focus-within {
   box-shadow: 0 0 0.25rem 0.125rem #49a9f2;
   outline: 'none';
   z-index: 1;
 }
 
-.c0 .c2 {
-  text-align: left;
+.c2 {
   outline: none;
   background: transparent;
   color: inherit;
-}
-
-.c0 .c2:hover {
-  background: inherit;
+  text-align: left;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  cursor: pointer;
 }
 
 <li
-  className="c0 c1 c2 c3"
+  className="c0 c1"
 >
   <button
-    className="c2 c4"
+    className="c2 c3"
     role="menuitem"
   >
     who!

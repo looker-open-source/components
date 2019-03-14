@@ -110,16 +110,20 @@ const menuCustomizations = {
 }
 ;<Menu customizationProps={menuCustomizations}>
   <MenuGroup>
-    <MenuLink icon="Home">Gouda</MenuLink>
-    <MenuLink
+    <Link href="https://en.wikipedia.org/wiki/Gouda_cheese"><MenuItem itemRole="link" icon="Home">Gouda</MenuItem></Link>
+    <Link href="https://en.wikipedia.org/wiki/Cheddar_cheese"><MenuItem
+      itemRole="link"
       icon="FavoriteOutline"
       current
       currentMarker
       detail="Is often orange"
     >
       Cheddar
-    </MenuLink>
-    <MenuLink icon="Dashboard">Swiss</MenuLink>
+    </MenuItem>
+    </Link>
+    <Link href="https://en.wikipedia.org/wiki/Swiss_cheese`">
+    <MenuItem itemRole="link" icon="Dashboard">Swiss</MenuItem>
+    </Link>
   </MenuGroup>
 </Menu>
 ```

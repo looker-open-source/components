@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MenuGrouo - menu customization 1`] = `
-.c1 {
+.c0 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -11,7 +11,7 @@ exports[`MenuGrouo - menu customization 1`] = `
   vertical-align: baseline;
 }
 
-.c3 {
+.c2 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -23,20 +23,7 @@ exports[`MenuGrouo - menu customization 1`] = `
   padding: 0rem;
 }
 
-.c9 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-}
-
-.c6 {
+.c4 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -64,11 +51,11 @@ exports[`MenuGrouo - menu customization 1`] = `
   padding-bottom: 0.75rem;
 }
 
-.c6:active {
+.c4:active {
   color: #0087e1;
 }
 
-.c8 {
+.c6 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -89,75 +76,75 @@ exports[`MenuGrouo - menu customization 1`] = `
   width: 20px;
 }
 
-.c2 {
+.c1 {
   list-style-type: none;
 }
 
-.c10:hover .c7 {
+.c8:hover .c5 {
   color: #262D33;
 }
 
-.c10 .c7 {
+.c8 .c5 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c10 .c7 {
+.c8 .c5 {
   color: #C1C6CC;
 }
 
-.c5 {
+.c3 {
   position: relative;
   -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c5:hover {
+.c3:hover {
   background: #341C7A;
   color: #FFFFFF;
 }
 
-.c5:hover .c7 {
+.c3:hover .c5 {
   color: #E8E5FF;
 }
 
-.c5 .c7 {
+.c3 .c5 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c5 .c7 {
+.c3 .c5 {
   color: #9785F2;
 }
 
-.c5:focus-within {
+.c3:focus-within {
   box-shadow: 0 0 0.25rem 0.125rem #49a9f2;
   outline: 'none';
   z-index: 1;
 }
 
-.c4 .c0 {
-  text-align: left;
+.c7 {
   outline: none;
   background: transparent;
   color: inherit;
-}
-
-.c4 .c0:hover {
-  background: inherit;
+  text-align: left;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  cursor: pointer;
 }
 
 <li
-  className="c0 c1"
+  className="c0"
 >
   <ul
-    className="c2 c0 c3"
+    className="c1 c2"
   >
     <li
-      className="c4 c5 c0 c6"
+      className="c3 c4"
     >
       <div
-        className="c7 c0 c8"
+        className="c5 c6"
       >
         <svg
           fill="currentColor"
@@ -192,17 +179,17 @@ exports[`MenuGrouo - menu customization 1`] = `
         </svg>
       </div>
       <button
-        className="c0 c9"
+        className="c7 c0"
         role="menuitem"
       >
         Looker
       </button>
     </li>
     <li
-      className="c4 c5 c0 c6"
+      className="c3 c4"
     >
       <div
-        className="c7 c0 c8"
+        className="c5 c6"
       >
         <svg
           fill="currentColor"
@@ -217,17 +204,17 @@ exports[`MenuGrouo - menu customization 1`] = `
         </svg>
       </div>
       <button
-        className="c0 c9"
+        className="c7 c0"
         role="menuitem"
       >
         Validate
       </button>
     </li>
     <li
-      className="c4 c5 c0 c6"
+      className="c3 c4"
     >
       <div
-        className="c7 c0 c8"
+        className="c5 c6"
       >
         <svg
           fill="currentColor"
@@ -242,7 +229,7 @@ exports[`MenuGrouo - menu customization 1`] = `
         </svg>
       </div>
       <button
-        className="c0 c9"
+        className="c7 c0"
         role="menuitem"
       >
         Pizza!
@@ -255,7 +242,7 @@ exports[`MenuGrouo - menu customization 1`] = `
 exports[`MenuGrouo - menu customization 2`] = `undefined`;
 
 exports[`MenuGroup - JSX label 1`] = `
-.c1 {
+.c0 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -263,201 +250,9 @@ exports[`MenuGroup - JSX label 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-}
-
-.c5 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  margin: 0rem;
-  padding: 0rem;
-}
-
-.c8 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  color: #4C535B;
-  background-color: #FFFFFF;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  font-size: 0.875rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-}
-
-.c8:active {
-  color: #0087e1;
-}
-
-.c9 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-}
-
-.c3 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  box-shadow: 0 4px 8px -2px #DEE1E5;
-  background-color: #FFFFFF;
-  font-size: 0.75rem;
-  font-weight: 600;
-  line-height: 1rem;
-  position: -webkit-sticky;
-  position: sticky;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  top: 0;
-  z-index: 2;
-}
-
-.c2 {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-transform: uppercase;
 }
 
 .c4 {
-  list-style-type: none;
-}
-
-.c7 {
-  position: relative;
-  -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
-  transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
-}
-
-.c7:hover {
-  background: #F5F6F7;
-  color: #262D33;
-}
-
-.c7:hover .c10 {
-  color: #262D33;
-}
-
-.c7 .c10 {
-  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
-  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
-}
-
-.c7 .c10 {
-  color: #C1C6CC;
-}
-
-.c7:focus-within {
-  box-shadow: 0 0 0.25rem 0.125rem #49a9f2;
-  outline: 'none';
-  z-index: 1;
-}
-
-.c6 .c0 {
-  text-align: left;
-  outline: none;
-  background: transparent;
-  color: inherit;
-}
-
-.c6 .c0:hover {
-  background: inherit;
-}
-
-<li
-  className="c0 c1"
->
-  <h2
-    className="c2 c0 c3"
-  >
-    <div
-      className="c0 c1"
-    >
-      Questions
-    </div>
-  </h2>
-  <ul
-    className="c4 c0 c5"
-  >
-    <li
-      className="c6 c7 c0 c8"
-    >
-      <button
-        className="c0 c9"
-        role="menuitem"
-      >
-        what?
-      </button>
-    </li>
-    <li
-      className="c6 c7 c0 c8"
-    >
-      <button
-        className="c0 c9"
-        role="menuitem"
-      >
-        who?
-      </button>
-    </li>
-    <li
-      className="c6 c7 c0 c8"
-    >
-      <button
-        className="c0 c9"
-        role="menuitem"
-      >
-        where?
-      </button>
-    </li>
-  </ul>
-</li>
-`;
-
-exports[`MenuGroup - canActivate 1`] = `
-.c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-}
-
-.c3 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -501,193 +296,7 @@ exports[`MenuGroup - canActivate 1`] = `
   color: #0087e1;
 }
 
-.c8 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-}
-
-.c7 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  width: 1.5rem;
-}
-
 .c2 {
-  list-style-type: none;
-}
-
-.c5 {
-  position: relative;
-  -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
-  transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
-}
-
-.c5:hover {
-  background: #F5F6F7;
-  color: #262D33;
-}
-
-.c5:hover .c9 {
-  color: #262D33;
-}
-
-.c5 .c9 {
-  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
-  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
-}
-
-.c5 .c9 {
-  color: #C1C6CC;
-}
-
-.c5:focus-within {
-  box-shadow: 0 0 0.25rem 0.125rem #49a9f2;
-  outline: 'none';
-  z-index: 1;
-}
-
-.c4 .c0 {
-  text-align: left;
-  outline: none;
-  background: transparent;
-  color: inherit;
-}
-
-.c4 .c0:hover {
-  background: inherit;
-}
-
-<li
-  className="c0 c1"
->
-  <ul
-    className="c2 c0 c3"
-  >
-    <li
-      className="c4 c5 c0 c6"
-    >
-      <div
-        className="c0 c7"
-      />
-      <button
-        className="c0 c8"
-        role="menuitem"
-      >
-        what?
-      </button>
-    </li>
-    <li
-      className="c4 c5 c0 c6"
-    >
-      <div
-        className="c0 c7"
-      />
-      <button
-        className="c0 c8"
-        role="menuitem"
-      >
-        who?
-      </button>
-    </li>
-    <li
-      className="c4 c5 c0 c6"
-    >
-      <div
-        className="c0 c7"
-      />
-      <button
-        className="c0 c8"
-        role="menuitem"
-      >
-        where?
-      </button>
-    </li>
-  </ul>
-</li>
-`;
-
-exports[`MenuGroup - label 1`] = `
-.c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-}
-
-.c5 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  margin: 0rem;
-  padding: 0rem;
-}
-
-.c8 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  color: #4C535B;
-  background-color: #FFFFFF;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  font-size: 0.875rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-}
-
-.c8:active {
-  color: #0087e1;
-}
-
-.c9 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-}
-
-.c3 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -710,365 +319,14 @@ exports[`MenuGroup - label 1`] = `
   z-index: 2;
 }
 
-.c2 {
+.c1 {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-transform: uppercase;
 }
 
-.c4 {
-  list-style-type: none;
-}
-
-.c7 {
-  position: relative;
-  -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
-  transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
-}
-
-.c7:hover {
-  background: #F5F6F7;
-  color: #262D33;
-}
-
-.c7:hover .c10 {
-  color: #262D33;
-}
-
-.c7 .c10 {
-  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
-  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
-}
-
-.c7 .c10 {
-  color: #C1C6CC;
-}
-
-.c7:focus-within {
-  box-shadow: 0 0 0.25rem 0.125rem #49a9f2;
-  outline: 'none';
-  z-index: 1;
-}
-
-.c6 .c0 {
-  text-align: left;
-  outline: none;
-  background: transparent;
-  color: inherit;
-}
-
-.c6 .c0:hover {
-  background: inherit;
-}
-
-<li
-  className="c0 c1"
->
-  <h2
-    className="c2 c0 c3"
-  >
-    Questions
-  </h2>
-  <ul
-    className="c4 c0 c5"
-  >
-    <li
-      className="c6 c7 c0 c8"
-    >
-      <button
-        className="c0 c9"
-        role="menuitem"
-      >
-        what?
-      </button>
-    </li>
-    <li
-      className="c6 c7 c0 c8"
-    >
-      <button
-        className="c0 c9"
-        role="menuitem"
-      >
-        who?
-      </button>
-    </li>
-    <li
-      className="c6 c7 c0 c8"
-    >
-      <button
-        className="c0 c9"
-        role="menuitem"
-      >
-        where?
-      </button>
-    </li>
-  </ul>
-</li>
-`;
-
-exports[`MenuGroup - labelProps & labelStyles 1`] = `
-.c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-}
-
-.c5 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  margin: 0rem;
-  padding: 0rem;
-}
-
-.c8 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  color: #4C535B;
-  background-color: #FFFFFF;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  font-size: 0.875rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-}
-
-.c8:active {
-  color: #0087e1;
-}
-
-.c9 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-}
-
 .c3 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  box-shadow: 0 4px 8px -2px #DEE1E5;
-  background-color: #FFFFFF;
-  font-size: 1.5625rem;
-  font-weight: 600;
-  line-height: 2.5rem;
-  position: -webkit-sticky;
-  position: sticky;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  top: 0;
-  z-index: 2;
-}
-
-.c2 {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-transform: uppercase;
-}
-
-.c4 {
-  list-style-type: none;
-}
-
-.c7 {
-  position: relative;
-  -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
-  transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
-}
-
-.c7:hover {
-  background: #F5F6F7;
-  color: #262D33;
-}
-
-.c7:hover .c10 {
-  color: #262D33;
-}
-
-.c7 .c10 {
-  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
-  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
-}
-
-.c7 .c10 {
-  color: #C1C6CC;
-}
-
-.c7:focus-within {
-  box-shadow: 0 0 0.25rem 0.125rem #49a9f2;
-  outline: 'none';
-  z-index: 1;
-}
-
-.c6 .c0 {
-  text-align: left;
-  outline: none;
-  background: transparent;
-  color: inherit;
-}
-
-.c6 .c0:hover {
-  background: inherit;
-}
-
-<li
-  className="c0 c1"
->
-  <h2
-    className="c2 c0 c3"
-    style={
-      Object {
-        "color": "rebeccapurple",
-      }
-    }
-  >
-    Questions
-  </h2>
-  <ul
-    className="c4 c0 c5"
-  >
-    <li
-      className="c6 c7 c0 c8"
-    >
-      <button
-        className="c0 c9"
-        role="menuitem"
-      >
-        what?
-      </button>
-    </li>
-    <li
-      className="c6 c7 c0 c8"
-    >
-      <button
-        className="c0 c9"
-        role="menuitem"
-      >
-        who?
-      </button>
-    </li>
-    <li
-      className="c6 c7 c0 c8"
-    >
-      <button
-        className="c0 c9"
-        role="menuitem"
-      >
-        where?
-      </button>
-    </li>
-  </ul>
-</li>
-`;
-
-exports[`MenuGroup 1`] = `
-.c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-}
-
-.c3 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  margin: 0rem;
-  padding: 0rem;
-}
-
-.c6 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  color: #4C535B;
-  background-color: #FFFFFF;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  font-size: 0.875rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-}
-
-.c6:active {
-  color: #0087e1;
-}
-
-.c7 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-}
-
-.c2 {
   list-style-type: none;
 }
 
@@ -1102,28 +360,692 @@ exports[`MenuGroup 1`] = `
   z-index: 1;
 }
 
-.c4 .c0 {
-  text-align: left;
+.c7 {
   outline: none;
   background: transparent;
   color: inherit;
-}
-
-.c4 .c0:hover {
-  background: inherit;
+  text-align: left;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  cursor: pointer;
 }
 
 <li
-  className="c0 c1"
+  className="c0"
 >
+  <h2
+    className="c1 c2"
+  >
+    <div
+      className="c0"
+    >
+      Questions
+    </div>
+  </h2>
   <ul
-    className="c2 c0 c3"
+    className="c3 c4"
   >
     <li
-      className="c4 c5 c0 c6"
+      className="c5 c6"
     >
       <button
-        className="c0 c7"
+        className="c7 c0"
+        role="menuitem"
+      >
+        what?
+      </button>
+    </li>
+    <li
+      className="c5 c6"
+    >
+      <button
+        className="c7 c0"
+        role="menuitem"
+      >
+        who?
+      </button>
+    </li>
+    <li
+      className="c5 c6"
+    >
+      <button
+        className="c7 c0"
+        role="menuitem"
+      >
+        where?
+      </button>
+    </li>
+  </ul>
+</li>
+`;
+
+exports[`MenuGroup - canActivate 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  margin: 0rem;
+  padding: 0rem;
+}
+
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #4C535B;
+  background-color: #FFFFFF;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  font-size: 0.875rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.c4:active {
+  color: #0087e1;
+}
+
+.c5 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  width: 1.5rem;
+}
+
+.c1 {
+  list-style-type: none;
+}
+
+.c3 {
+  position: relative;
+  -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c3:hover {
+  background: #F5F6F7;
+  color: #262D33;
+}
+
+.c3:hover .c7 {
+  color: #262D33;
+}
+
+.c3 .c7 {
+  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c3 .c7 {
+  color: #C1C6CC;
+}
+
+.c3:focus-within {
+  box-shadow: 0 0 0.25rem 0.125rem #49a9f2;
+  outline: 'none';
+  z-index: 1;
+}
+
+.c6 {
+  outline: none;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  cursor: pointer;
+}
+
+<li
+  className="c0"
+>
+  <ul
+    className="c1 c2"
+  >
+    <li
+      className="c3 c4"
+    >
+      <div
+        className="c5"
+      />
+      <button
+        className="c6 c0"
+        role="menuitemradio"
+      >
+        what?
+      </button>
+    </li>
+    <li
+      className="c3 c4"
+    >
+      <div
+        className="c5"
+      />
+      <button
+        className="c6 c0"
+        role="menuitemradio"
+      >
+        who?
+      </button>
+    </li>
+    <li
+      className="c3 c4"
+    >
+      <div
+        className="c5"
+      />
+      <button
+        className="c6 c0"
+        role="menuitemradio"
+      >
+        where?
+      </button>
+    </li>
+  </ul>
+</li>
+`;
+
+exports[`MenuGroup - label 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  margin: 0rem;
+  padding: 0rem;
+}
+
+.c6 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #4C535B;
+  background-color: #FFFFFF;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  font-size: 0.875rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.c6:active {
+  color: #0087e1;
+}
+
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  box-shadow: 0 4px 8px -2px #DEE1E5;
+  background-color: #FFFFFF;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1rem;
+  position: -webkit-sticky;
+  position: sticky;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  top: 0;
+  z-index: 2;
+}
+
+.c1 {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-transform: uppercase;
+}
+
+.c3 {
+  list-style-type: none;
+}
+
+.c5 {
+  position: relative;
+  -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c5:hover {
+  background: #F5F6F7;
+  color: #262D33;
+}
+
+.c5:hover .c8 {
+  color: #262D33;
+}
+
+.c5 .c8 {
+  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c5 .c8 {
+  color: #C1C6CC;
+}
+
+.c5:focus-within {
+  box-shadow: 0 0 0.25rem 0.125rem #49a9f2;
+  outline: 'none';
+  z-index: 1;
+}
+
+.c7 {
+  outline: none;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  cursor: pointer;
+}
+
+<li
+  className="c0"
+>
+  <h2
+    className="c1 c2"
+  >
+    Questions
+  </h2>
+  <ul
+    className="c3 c4"
+  >
+    <li
+      className="c5 c6"
+    >
+      <button
+        className="c7 c0"
+        role="menuitem"
+      >
+        what?
+      </button>
+    </li>
+    <li
+      className="c5 c6"
+    >
+      <button
+        className="c7 c0"
+        role="menuitem"
+      >
+        who?
+      </button>
+    </li>
+    <li
+      className="c5 c6"
+    >
+      <button
+        className="c7 c0"
+        role="menuitem"
+      >
+        where?
+      </button>
+    </li>
+  </ul>
+</li>
+`;
+
+exports[`MenuGroup - labelProps & labelStyles 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  margin: 0rem;
+  padding: 0rem;
+}
+
+.c6 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #4C535B;
+  background-color: #FFFFFF;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  font-size: 0.875rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.c6:active {
+  color: #0087e1;
+}
+
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  box-shadow: 0 4px 8px -2px #DEE1E5;
+  background-color: #FFFFFF;
+  font-size: 1.5625rem;
+  font-weight: 600;
+  line-height: 2.5rem;
+  position: -webkit-sticky;
+  position: sticky;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  top: 0;
+  z-index: 2;
+}
+
+.c1 {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-transform: uppercase;
+}
+
+.c3 {
+  list-style-type: none;
+}
+
+.c5 {
+  position: relative;
+  -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c5:hover {
+  background: #F5F6F7;
+  color: #262D33;
+}
+
+.c5:hover .c8 {
+  color: #262D33;
+}
+
+.c5 .c8 {
+  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c5 .c8 {
+  color: #C1C6CC;
+}
+
+.c5:focus-within {
+  box-shadow: 0 0 0.25rem 0.125rem #49a9f2;
+  outline: 'none';
+  z-index: 1;
+}
+
+.c7 {
+  outline: none;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  cursor: pointer;
+}
+
+<li
+  className="c0"
+>
+  <h2
+    className="c1 c2"
+    style={
+      Object {
+        "color": "rebeccapurple",
+      }
+    }
+  >
+    Questions
+  </h2>
+  <ul
+    className="c3 c4"
+  >
+    <li
+      className="c5 c6"
+    >
+      <button
+        className="c7 c0"
+        role="menuitem"
+      >
+        what?
+      </button>
+    </li>
+    <li
+      className="c5 c6"
+    >
+      <button
+        className="c7 c0"
+        role="menuitem"
+      >
+        who?
+      </button>
+    </li>
+    <li
+      className="c5 c6"
+    >
+      <button
+        className="c7 c0"
+        role="menuitem"
+      >
+        where?
+      </button>
+    </li>
+  </ul>
+</li>
+`;
+
+exports[`MenuGroup 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  margin: 0rem;
+  padding: 0rem;
+}
+
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #4C535B;
+  background-color: #FFFFFF;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  font-size: 0.875rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.c4:active {
+  color: #0087e1;
+}
+
+.c1 {
+  list-style-type: none;
+}
+
+.c3 {
+  position: relative;
+  -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c3:hover {
+  background: #F5F6F7;
+  color: #262D33;
+}
+
+.c3:hover .c6 {
+  color: #262D33;
+}
+
+.c3 .c6 {
+  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c3 .c6 {
+  color: #C1C6CC;
+}
+
+.c3:focus-within {
+  box-shadow: 0 0 0.25rem 0.125rem #49a9f2;
+  outline: 'none';
+  z-index: 1;
+}
+
+.c5 {
+  outline: none;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  cursor: pointer;
+}
+
+<li
+  className="c0"
+>
+  <ul
+    className="c1 c2"
+  >
+    <li
+      className="c3 c4"
+    >
+      <button
+        className="c5 c0"
         role="menuitem"
       >
         who!
