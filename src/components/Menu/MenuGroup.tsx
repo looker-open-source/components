@@ -2,6 +2,7 @@ import * as React from 'react'
 import { palette, styled } from '../../style'
 import { Box, BoxPropsWithout } from '../Box'
 import { Heading, HeadingProps } from '../Heading'
+import { List } from '../List'
 import { MenuContext, MenuContextProps } from './MenuContext'
 import { MenuItemCustomizationProps } from './MenuItem'
 
@@ -60,9 +61,9 @@ const Internal: React.SFC<MenuGroupProps> = ({
                 : customizationProps,
           }}
         >
-          <Box {...props}>
+          <Box is="li" {...props}>
             {labelComponent}
-            {children}
+            <List nomarker>{children}</List>
           </Box>
         </MenuContext.Provider>
       )}

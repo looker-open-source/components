@@ -1,11 +1,15 @@
-`MenuItem` is an `HTMLAnchorElement` that supports all of the `BoxProps` properties.
+`MenuItem` is an `HTMLButtonElement` that supports all of the `BoxProps` properties. Use this for triggering actions from with in a `Menu` or `Drawer`, for example opening a modal.
+
+For accessibility reasons, if you want your `MenuItem` to link somewhere then you can use the `itemRole` prop to identify it as a link.
 
 An icon can be optionally be assigned to each item via the `icon` property.
 
 ```js
 <MenuItem>Home</MenuItem>
 <MenuItem icon="Home">Home</MenuItem>
-<MenuItem href="https://google.com" target="_blank" icon="Public">Away</MenuItem>
+<Link href="https://google.com">
+  <MenuItem  itemRole="link" target="_blank" icon="Public">Away</MenuItem>
+</Link>
 ```
 
 ### Detail Text
@@ -71,28 +75,6 @@ Note: This property behaves slightly differently depending on the context of the
 </Menu>
 ```
 
-### Current Item
-
-Use the `current` prop to indicate the current menu item, optionally use the `currentMarker` prop to add an additional border marker to the current item.
-
-```js
-<Menu>
-  <MenuGroup>
-    <MenuItem>Home</MenuItem>
-    <MenuItem current>Browse (current)</MenuItem>
-    <MenuItem>Favorites</MenuItem>
-  </MenuGroup>
-  <MenuGroup>
-    <MenuItem current currentMarker icon="Favorite">
-      Spaces (current with marker)
-    </MenuItem>
-    <MenuItem icon="Favorite" detail="Is often orange">
-      Dashboards
-    </MenuItem>
-    <MenuItem icon="Favorite">Popular</MenuItem>
-  </MenuGroup>
-</Menu>
-```
 
 ### Customizing a menu
 
@@ -132,8 +114,9 @@ const menuCustomizations = {
 }
 ;<Menu customizationProps={menuCustomizations}>
   <MenuGroup>
-    <MenuItem icon="Home">Gouda</MenuItem>
-    <MenuItem
+    <Link href="https://en.wikipedia.org/wiki/Gouda_cheese"><MenuItem itemRole="link" icon="Home">Gouda</MenuItem></Link>
+    <Link href="https://en.wikipedia.org/wiki/Cheddar_cheese"><MenuItem
+      itemRole="link"
       icon="FavoriteOutline"
       current
       currentMarker
@@ -141,7 +124,10 @@ const menuCustomizations = {
     >
       Cheddar
     </MenuItem>
-    <MenuItem icon="Dashboard">Swiss</MenuItem>
+    </Link>
+    <Link href="https://en.wikipedia.org/wiki/Swiss_cheese`">
+    <MenuItem itemRole="link" icon="Dashboard">Swiss</MenuItem>
+    </Link>
   </MenuGroup>
 </Menu>
 ```

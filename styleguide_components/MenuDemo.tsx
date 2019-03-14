@@ -14,21 +14,35 @@ const spacingSizes = [
 
 export const MenuGroupDemo: React.SFC = () => {
   const items = spacingSizes.map(({ value, label, active }) => (
-    <MenuItem active={active} key={value} detail={label} children={value} />
+    <MenuItem
+      itemRole="button"
+      active={active}
+      key={value}
+      detail={label}
+      children={value}
+    />
   ))
 
   return (
     <Menu focusOnMount>
       <MenuGroup>
-        <MenuItem icon="LogoRings">Looker</MenuItem>
-        <MenuItem icon="Validate">Validate</MenuItem>
-        <MenuItem icon="ChartPie">Pizza!</MenuItem>
+        <MenuItem itemRole="button" icon="LogoRings">
+          Looker
+        </MenuItem>
+        <MenuItem itemRole="button" icon="Validate">
+          Validate
+        </MenuItem>
+        <MenuItem itemRole="button" icon="ChartPie">
+          Pizza!
+        </MenuItem>
       </MenuGroup>
       <MenuGroup canActivate label="Spacing">
         {items}
       </MenuGroup>
       <MenuGroup>
-        <MenuItem icon="Beaker">Scary Stuff</MenuItem>
+        <MenuItem itemRole="button" icon="Beaker">
+          Scary Stuff
+        </MenuItem>
       </MenuGroup>
     </Menu>
   )
