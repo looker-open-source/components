@@ -11,6 +11,9 @@ test('Menu', () => {
   const menu = shallow(
     <Menu>
       <MenuItem>boo!</MenuItem>
+      <MenuItem itemRole="link" href="test">
+        boo!
+      </MenuItem>
     </Menu>
   )
 

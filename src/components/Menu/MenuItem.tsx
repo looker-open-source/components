@@ -47,15 +47,40 @@ export interface MenuItemProps
     MenuContextProps {
   detail?: React.ReactNode
   icon?: IconNames
+  /**
+   * Indicates the MenuItem is checked
+   */
   active?: boolean
+  /**
+   * Display the MenuItem with a checklist style
+   * - Use with `itemRole='button'`
+   */
   canActivate?: boolean
+  /**
+   * Indicates the MenuItem represents the currently displayed page
+   * - Use with `itemRole='link'`
+   */
   current?: boolean
+  /**
+   * Display a marker next to the MenuItem if it is current
+   */
   currentMarker?: boolean
+  /**
+   * Custiomize the appearance of the MenuItem
+   */
   customizationProps?: MenuItemCustomizationProps
+  /**
+   * Sets the correct accessible role for the MenuItem:
+   * - Use **'link'** for items that navigation to another page
+   * - Use **'button'** for items that trigger in page interactions, like displaying a modal
+   * @default 'button'
+   *
+   */
+  itemRole?: 'link' | 'button'
   onClick?: () => void
 }
 
-const MenuItemInternal: React.SFC<MenuItemProps> = ({
+const MenuItemInteral: React.SFC<MenuItemProps> = ({
   active,
   current,
   currentMarker,
@@ -65,6 +90,7 @@ const MenuItemInternal: React.SFC<MenuItemProps> = ({
   icon,
   customizationProps,
   onClick,
+  itemRole,
   ...props
 }) => {
   // tslint:disable:object-literal-sort-keys
@@ -133,9 +159,22 @@ const MenuItemInternal: React.SFC<MenuItemProps> = ({
       return
     }
   }
+  const childrenWrapper = () => {
+    return (
+      <MenuItemChildStyle
+        is="button"
+        role={canActivate ? 'menuitemradio' : 'menuitem'}
+        tabIndex={itemRole === 'link' ? -1 : undefined}
+        aria-checked={active}
+      >
+        {children}
+      </MenuItemChildStyle>
+    )
+  }
 
   return (
     <MenuItemStyle
+      is="li"
       alignItems="center"
       color={active ? customProps.activated.color : customProps.color}
       display="flex"
@@ -144,14 +183,7 @@ const MenuItemInternal: React.SFC<MenuItemProps> = ({
       py="small"
       px="medium"
       onClick={onClick}
-      tabIndex={0}
       bg={customProps.bg}
-      focusStyle={{
-        boxShadow: `0 0 .25rem 0.125rem ${palette.blue400}`,
-        outline: 'none',
-        zIndex: 1,
-      }}
-      style={{ textDecoration: 'none' }}
       active={active}
       activeStyle={{ color: customProps.activated.color }}
       current={current}
@@ -160,7 +192,7 @@ const MenuItemInternal: React.SFC<MenuItemProps> = ({
       {...props}
     >
       {itemIcon()}
-      {children}
+      {childrenWrapper()}
       {formatDetail(detail)}
     </MenuItemStyle>
   )
@@ -266,6 +298,25 @@ const MenuItemStyle = styled(MenuItemStyleFactory)`
   ${iconColor};
   ${currentStyles};
   ${currentBorder};
+
+  :focus-within {
+    box-shadow: 0 0 0.25rem 0.125rem ${palette.blue400};
+    outline: 'none';
+    z-index: 1;
+  }
 `
 
-export const MenuItem = withMenu(MenuItemInternal)
+const MenuItemChildStyleFactory = (props: MenuItemProps) => {
+  return <Box {...props} />
+}
+
+const MenuItemChildStyle = styled(MenuItemChildStyleFactory)`
+  outline: none;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  flex: 1;
+  cursor: pointer;
+`
+
+export const MenuItem = withMenu(MenuItemInteral)

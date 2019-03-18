@@ -1,6 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MenuItem - active + icon 1`] = `
+.c5 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
 .c3 {
   border: 0;
   box-sizing: border-box;
@@ -50,26 +60,20 @@ exports[`MenuItem - active + icon 1`] = `
   padding-bottom: 0.75rem;
 }
 
-.c1:focus {
-  box-shadow: 0 0 .25rem 0.125rem #49a9f2;
-  outline: none;
-  z-index: 1;
-}
-
 .c1:active {
   color: #0087e1;
 }
 
-.c4:hover .c2 {
+.c6:hover .c2 {
   color: #262D33;
 }
 
-.c4 .c2 {
+.c6 .c2 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c4 .c2 {
+.c6 .c2 {
   color: #C1C6CC;
 }
 
@@ -97,14 +101,25 @@ exports[`MenuItem - active + icon 1`] = `
   color: #0087e1;
 }
 
-<div
+.c0:focus-within {
+  box-shadow: 0 0 0.25rem 0.125rem #49a9f2;
+  outline: 'none';
+  z-index: 1;
+}
+
+.c4 {
+  outline: none;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  cursor: pointer;
+}
+
+<li
   className="c0 c1"
-  style={
-    Object {
-      "textDecoration": "none",
-    }
-  }
-  tabIndex={0}
 >
   <div
     className="c2 c3"
@@ -135,11 +150,27 @@ exports[`MenuItem - active + icon 1`] = `
       </defs>
     </svg>
   </div>
-  who!
-</div>
+  <button
+    aria-checked={true}
+    className="c4 c5"
+    role="menuitem"
+  >
+    who!
+  </button>
+</li>
 `;
 
 exports[`MenuItem - active 1`] = `
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
 .c1 {
   border: 0;
   box-sizing: border-box;
@@ -168,12 +199,6 @@ exports[`MenuItem - active 1`] = `
   padding-bottom: 0.75rem;
 }
 
-.c1:focus {
-  box-shadow: 0 0 .25rem 0.125rem #49a9f2;
-  outline: none;
-  z-index: 1;
-}
-
 .c1:active {
   color: #0087e1;
 }
@@ -189,33 +214,60 @@ exports[`MenuItem - active 1`] = `
   color: #262D33;
 }
 
-.c0:hover .c2 {
+.c0:hover .c4 {
   color: #262D33;
 }
 
-.c0 .c2 {
+.c0 .c4 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c0 .c2 {
+.c0 .c4 {
   color: #0087e1;
 }
 
-<div
+.c0:focus-within {
+  box-shadow: 0 0 0.25rem 0.125rem #49a9f2;
+  outline: 'none';
+  z-index: 1;
+}
+
+.c2 {
+  outline: none;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  cursor: pointer;
+}
+
+<li
   className="c0 c1"
-  style={
-    Object {
-      "textDecoration": "none",
-    }
-  }
-  tabIndex={0}
 >
-  who!
-</div>
+  <button
+    aria-checked={true}
+    className="c2 c3"
+    role="menuitem"
+  >
+    who!
+  </button>
+</li>
 `;
 
 exports[`MenuItem - canActivate + active 1`] = `
+.c5 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
 .c3 {
   border: 0;
   box-sizing: border-box;
@@ -265,26 +317,20 @@ exports[`MenuItem - canActivate + active 1`] = `
   padding-bottom: 0.75rem;
 }
 
-.c1:focus {
-  box-shadow: 0 0 .25rem 0.125rem #49a9f2;
-  outline: none;
-  z-index: 1;
-}
-
 .c1:active {
   color: #0087e1;
 }
 
-.c4:hover .c2 {
+.c6:hover .c2 {
   color: #262D33;
 }
 
-.c4 .c2 {
+.c6 .c2 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c4 .c2 {
+.c6 .c2 {
   color: #C1C6CC;
 }
 
@@ -312,14 +358,25 @@ exports[`MenuItem - canActivate + active 1`] = `
   color: #0087e1;
 }
 
-<div
+.c0:focus-within {
+  box-shadow: 0 0 0.25rem 0.125rem #49a9f2;
+  outline: 'none';
+  z-index: 1;
+}
+
+.c4 {
+  outline: none;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  cursor: pointer;
+}
+
+<li
   className="c0 c1"
-  style={
-    Object {
-      "textDecoration": "none",
-    }
-  }
-  tabIndex={0}
 >
   <div
     className="c2 c3"
@@ -336,8 +393,14 @@ exports[`MenuItem - canActivate + active 1`] = `
       />
     </svg>
   </div>
-  who!
-</div>
+  <button
+    aria-checked={true}
+    className="c4 c5"
+    role="menuitemradio"
+  >
+    who!
+  </button>
+</li>
 `;
 
 exports[`MenuItem - canActivate 1`] = `
@@ -369,14 +432,18 @@ exports[`MenuItem - canActivate 1`] = `
   padding-bottom: 0.75rem;
 }
 
-.c1:focus {
-  box-shadow: 0 0 .25rem 0.125rem #49a9f2;
-  outline: none;
-  z-index: 1;
-}
-
 .c1:active {
   color: #0087e1;
+}
+
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
 }
 
 .c2 {
@@ -401,33 +468,49 @@ exports[`MenuItem - canActivate 1`] = `
   color: #262D33;
 }
 
-.c0:hover .c3 {
+.c0:hover .c5 {
   color: #262D33;
 }
 
-.c0 .c3 {
+.c0 .c5 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c0 .c3 {
+.c0 .c5 {
   color: #C1C6CC;
 }
 
-<div
+.c0:focus-within {
+  box-shadow: 0 0 0.25rem 0.125rem #49a9f2;
+  outline: 'none';
+  z-index: 1;
+}
+
+.c3 {
+  outline: none;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  cursor: pointer;
+}
+
+<li
   className="c0 c1"
-  style={
-    Object {
-      "textDecoration": "none",
-    }
-  }
-  tabIndex={0}
 >
   <div
     className="c2"
   />
-  who!
-</div>
+  <button
+    className="c3 c4"
+    role="menuitemradio"
+  >
+    who!
+  </button>
+</li>
 `;
 
 exports[`MenuItem - current + marker 1`] = `
@@ -459,14 +542,18 @@ exports[`MenuItem - current + marker 1`] = `
   padding-bottom: 0.75rem;
 }
 
-.c1:focus {
-  box-shadow: 0 0 .25rem 0.125rem #49a9f2;
-  outline: none;
-  z-index: 1;
-}
-
 .c1:active {
   color: #0087e1;
+}
+
+.c5 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
 }
 
 .c3 {
@@ -490,38 +577,38 @@ exports[`MenuItem - current + marker 1`] = `
   width: 20px;
 }
 
-.c4:hover .c2 {
+.c6:hover .c2 {
   color: #262D33;
 }
 
-.c4 .c2 {
+.c6 .c2 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c4 .c2 {
+.c6 .c2 {
   color: #C1C6CC;
 }
 
-.c5:hover .c2 {
+.c7:hover .c2 {
   color: #262D33;
 }
 
-.c5 .c2 {
+.c7 .c2 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c5 .c2 {
+.c7 .c2 {
   color: #0087e1;
 }
 
-.c6 .c2 {
+.c8 .c2 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c6 .c2 {
+.c8 .c2 {
   color: #262D33;
 }
 
@@ -553,14 +640,25 @@ exports[`MenuItem - current + marker 1`] = `
   width: 4px;
 }
 
-<div
+.c0:focus-within {
+  box-shadow: 0 0 0.25rem 0.125rem #49a9f2;
+  outline: 'none';
+  z-index: 1;
+}
+
+.c4 {
+  outline: none;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  cursor: pointer;
+}
+
+<li
   className="c0 c1"
-  style={
-    Object {
-      "textDecoration": "none",
-    }
-  }
-  tabIndex={0}
 >
   <div
     className="c2 c3"
@@ -577,8 +675,13 @@ exports[`MenuItem - current + marker 1`] = `
       />
     </svg>
   </div>
-  who!
-</div>
+  <button
+    className="c4 c5"
+    role="menuitem"
+  >
+    who!
+  </button>
+</li>
 `;
 
 exports[`MenuItem - current 1`] = `
@@ -610,14 +713,18 @@ exports[`MenuItem - current 1`] = `
   padding-bottom: 0.75rem;
 }
 
-.c1:focus {
-  box-shadow: 0 0 .25rem 0.125rem #49a9f2;
-  outline: none;
-  z-index: 1;
-}
-
 .c1:active {
   color: #0087e1;
+}
+
+.c5 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
 }
 
 .c3 {
@@ -641,29 +748,29 @@ exports[`MenuItem - current 1`] = `
   width: 20px;
 }
 
-.c4:hover .c2 {
+.c6:hover .c2 {
   color: #262D33;
 }
 
-.c4 .c2 {
+.c6 .c2 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c4 .c2 {
+.c6 .c2 {
   color: #C1C6CC;
 }
 
-.c5:hover .c2 {
+.c7:hover .c2 {
   color: #262D33;
 }
 
-.c5 .c2 {
+.c7 .c2 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c5 .c2 {
+.c7 .c2 {
   color: #0087e1;
 }
 
@@ -684,14 +791,25 @@ exports[`MenuItem - current 1`] = `
   color: #262D33;
 }
 
-<div
+.c0:focus-within {
+  box-shadow: 0 0 0.25rem 0.125rem #49a9f2;
+  outline: 'none';
+  z-index: 1;
+}
+
+.c4 {
+  outline: none;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  cursor: pointer;
+}
+
+<li
   className="c0 c1"
-  style={
-    Object {
-      "textDecoration": "none",
-    }
-  }
-  tabIndex={0}
 >
   <div
     className="c2 c3"
@@ -708,8 +826,13 @@ exports[`MenuItem - current 1`] = `
       />
     </svg>
   </div>
-  who!
-</div>
+  <button
+    className="c4 c5"
+    role="menuitem"
+  >
+    who!
+  </button>
+</li>
 `;
 
 exports[`MenuItem - detail 1`] = `
@@ -741,17 +864,21 @@ exports[`MenuItem - detail 1`] = `
   padding-bottom: 0.75rem;
 }
 
-.c1:focus {
-  box-shadow: 0 0 .25rem 0.125rem #49a9f2;
-  outline: none;
-  z-index: 1;
-}
-
 .c1:active {
   color: #0087e1;
 }
 
-.c2 {
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+.c4 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -777,35 +904,51 @@ exports[`MenuItem - detail 1`] = `
   color: #262D33;
 }
 
-.c0:hover .c3 {
+.c0:hover .c5 {
   color: #262D33;
 }
 
-.c0 .c3 {
+.c0 .c5 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c0 .c3 {
+.c0 .c5 {
   color: #C1C6CC;
 }
 
-<div
+.c0:focus-within {
+  box-shadow: 0 0 0.25rem 0.125rem #49a9f2;
+  outline: 'none';
+  z-index: 1;
+}
+
+.c2 {
+  outline: none;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  cursor: pointer;
+}
+
+<li
   className="c0 c1"
-  style={
-    Object {
-      "textDecoration": "none",
-    }
-  }
-  tabIndex={0}
 >
-  who!
+  <button
+    className="c2 c3"
+    role="menuitem"
+  >
+    who!
+  </button>
   <div
-    className="c2"
+    className="c4"
   >
     Is an excellent question
   </div>
-</div>
+</li>
 `;
 
 exports[`MenuItem - icon 1`] = `
@@ -837,14 +980,18 @@ exports[`MenuItem - icon 1`] = `
   padding-bottom: 0.75rem;
 }
 
-.c1:focus {
-  box-shadow: 0 0 .25rem 0.125rem #49a9f2;
-  outline: none;
-  z-index: 1;
-}
-
 .c1:active {
   color: #0087e1;
+}
+
+.c5 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
 }
 
 .c3 {
@@ -892,14 +1039,25 @@ exports[`MenuItem - icon 1`] = `
   color: #C1C6CC;
 }
 
-<div
+.c0:focus-within {
+  box-shadow: 0 0 0.25rem 0.125rem #49a9f2;
+  outline: 'none';
+  z-index: 1;
+}
+
+.c4 {
+  outline: none;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  cursor: pointer;
+}
+
+<li
   className="c0 c1"
-  style={
-    Object {
-      "textDecoration": "none",
-    }
-  }
-  tabIndex={0}
 >
   <div
     className="c2 c3"
@@ -930,11 +1088,26 @@ exports[`MenuItem - icon 1`] = `
       </defs>
     </svg>
   </div>
-  who!
-</div>
+  <button
+    className="c4 c5"
+    role="menuitem"
+  >
+    who!
+  </button>
+</li>
 `;
 
 exports[`MenuItem - with customizations 1`] = `
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
 .c1 {
   border: 0;
   box-sizing: border-box;
@@ -963,12 +1136,6 @@ exports[`MenuItem - with customizations 1`] = `
   padding-bottom: 0.75rem;
 }
 
-.c1:focus {
-  box-shadow: 0 0 .25rem 0.125rem #49a9f2;
-  outline: none;
-  z-index: 1;
-}
-
 .c1:active {
   color: #0087e1;
 }
@@ -981,12 +1148,12 @@ exports[`MenuItem - with customizations 1`] = `
   color: #1E1047;
 }
 
-.c0 .c2 {
+.c0 .c4 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c0 .c2 {
+.c0 .c4 {
   color: #4F2ABA;
 }
 
@@ -1001,17 +1168,33 @@ exports[`MenuItem - with customizations 1`] = `
   width: 10px;
 }
 
-<div
+.c0:focus-within {
+  box-shadow: 0 0 0.25rem 0.125rem #49a9f2;
+  outline: 'none';
+  z-index: 1;
+}
+
+.c2 {
+  outline: none;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  cursor: pointer;
+}
+
+<li
   className="c0 c1"
-  style={
-    Object {
-      "textDecoration": "none",
-    }
-  }
-  tabIndex={0}
 >
-  who!
-</div>
+  <button
+    className="c2 c3"
+    role="menuitem"
+  >
+    who!
+  </button>
+</li>
 `;
 
 exports[`MenuItem 1`] = `
@@ -1043,14 +1226,18 @@ exports[`MenuItem 1`] = `
   padding-bottom: 0.75rem;
 }
 
-.c1:focus {
-  box-shadow: 0 0 .25rem 0.125rem #49a9f2;
-  outline: none;
-  z-index: 1;
-}
-
 .c1:active {
   color: #0087e1;
+}
+
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
 }
 
 .c0 {
@@ -1064,28 +1251,44 @@ exports[`MenuItem 1`] = `
   color: #262D33;
 }
 
-.c0:hover .c2 {
+.c0:hover .c4 {
   color: #262D33;
 }
 
-.c0 .c2 {
+.c0 .c4 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c0 .c2 {
+.c0 .c4 {
   color: #C1C6CC;
 }
 
-<div
+.c0:focus-within {
+  box-shadow: 0 0 0.25rem 0.125rem #49a9f2;
+  outline: 'none';
+  z-index: 1;
+}
+
+.c2 {
+  outline: none;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  cursor: pointer;
+}
+
+<li
   className="c0 c1"
-  style={
-    Object {
-      "textDecoration": "none",
-    }
-  }
-  tabIndex={0}
 >
-  who!
-</div>
+  <button
+    className="c2 c3"
+    role="menuitem"
+  >
+    who!
+  </button>
+</li>
 `;
