@@ -209,7 +209,7 @@ ShallowWrapper {
     }
   >
     <Modal
-      open={true}
+      isOpen={true}
       render={[Function]}
     />
   </ThemeProvider>,
@@ -226,7 +226,7 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
-      "open": true,
+      "isOpen": true,
       "render": [Function],
     },
     "ref": null,
@@ -239,7 +239,7 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "open": true,
+        "isOpen": true,
         "render": [Function],
       },
       "ref": null,
@@ -478,7 +478,7 @@ ShallowWrapper {
     }
   >
     <Modal
-      open={true}
+      isOpen={true}
       render={[Function]}
     >
       <Styled(WithTheme(InternalButton))>
@@ -502,7 +502,7 @@ ShallowWrapper {
       "children": <Styled(WithTheme(InternalButton))>
         Click Here
       </Styled(WithTheme(InternalButton))>,
-      "open": true,
+      "isOpen": true,
       "render": [Function],
     },
     "ref": null,
@@ -528,7 +528,7 @@ ShallowWrapper {
         "children": <Styled(WithTheme(InternalButton))>
           Click Here
         </Styled(WithTheme(InternalButton))>,
-        "open": true,
+        "isOpen": true,
         "render": [Function],
       },
       "ref": null,

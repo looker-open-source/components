@@ -297,16 +297,15 @@ ShallowWrapper {
     }
   >
     <Unknown
-      content={
-        <React.Fragment>
-          words and stuff 
-          <button>
-            boo!
-          </button>
-        </React.Fragment>
-      }
-      open={true}
-    />
+      isOpen={true}
+    >
+      <React.Fragment>
+        words and stuff 
+        <button>
+          boo!
+        </button>
+      </React.Fragment>
+    </Unknown>
   </ThemeProvider>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -321,16 +320,44 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "function",
     "props": Object {
-      "content": <React.Fragment>
+      "children": <React.Fragment>
         words and stuff 
         <button>
           boo!
         </button>
       </React.Fragment>,
-      "open": true,
+      "isOpen": true,
     },
     "ref": null,
-    "rendered": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "children": Array [
+          "words and stuff ",
+          <button>
+            boo!
+          </button>,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        "words and stuff ",
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "boo!",
+          },
+          "ref": null,
+          "rendered": "boo!",
+          "type": "button",
+        },
+      ],
+      "type": Symbol(react.fragment),
+    },
     "type": [Function],
   },
   Symbol(enzyme.__nodes__): Array [
@@ -339,16 +366,44 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "function",
       "props": Object {
-        "content": <React.Fragment>
+        "children": <React.Fragment>
           words and stuff 
           <button>
             boo!
           </button>
         </React.Fragment>,
-        "open": true,
+        "isOpen": true,
       },
       "ref": null,
-      "rendered": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "children": Array [
+            "words and stuff ",
+            <button>
+              boo!
+            </button>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          "words and stuff ",
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "boo!",
+            },
+            "ref": null,
+            "rendered": "boo!",
+            "type": "button",
+          },
+        ],
+        "type": Symbol(react.fragment),
+      },
       "type": [Function],
     },
   ],
@@ -589,19 +644,13 @@ ShallowWrapper {
           "opacity": 1,
         }
       }
-      content={
-        <React.Fragment>
-          words and stuff 
-          <button>
-            boo!
-          </button>
-        </React.Fragment>
-      }
-      open={true}
     >
-      <Styled(WithTheme(InternalButton))>
-        🥑
-      </Styled(WithTheme(InternalButton))>
+      <React.Fragment>
+        words and stuff 
+        <button>
+          boo!
+        </button>
+      </React.Fragment>
     </Unknown>
   </ThemeProvider>,
   Symbol(enzyme.__renderer__): Object {
@@ -621,28 +670,42 @@ ShallowWrapper {
         "background": "purple",
         "opacity": 1,
       },
-      "children": <Styled(WithTheme(InternalButton))>
-        🥑
-      </Styled(WithTheme(InternalButton))>,
-      "content": <React.Fragment>
+      "children": <React.Fragment>
         words and stuff 
         <button>
           boo!
         </button>
       </React.Fragment>,
-      "open": true,
     },
     "ref": null,
     "rendered": Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "class",
+      "nodeType": "function",
       "props": Object {
-        "children": "🥑",
+        "children": Array [
+          "words and stuff ",
+          <button>
+            boo!
+          </button>,
+        ],
       },
       "ref": null,
-      "rendered": "🥑",
-      "type": [Function],
+      "rendered": Array [
+        "words and stuff ",
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "boo!",
+          },
+          "ref": null,
+          "rendered": "boo!",
+          "type": "button",
+        },
+      ],
+      "type": Symbol(react.fragment),
     },
     "type": [Function],
   },
@@ -656,28 +719,42 @@ ShallowWrapper {
           "background": "purple",
           "opacity": 1,
         },
-        "children": <Styled(WithTheme(InternalButton))>
-          🥑
-        </Styled(WithTheme(InternalButton))>,
-        "content": <React.Fragment>
+        "children": <React.Fragment>
           words and stuff 
           <button>
             boo!
           </button>
         </React.Fragment>,
-        "open": true,
       },
       "ref": null,
       "rendered": Object {
         "instance": null,
         "key": undefined,
-        "nodeType": "class",
+        "nodeType": "function",
         "props": Object {
-          "children": "🥑",
+          "children": Array [
+            "words and stuff ",
+            <button>
+              boo!
+            </button>,
+          ],
         },
         "ref": null,
-        "rendered": "🥑",
-        "type": [Function],
+        "rendered": Array [
+          "words and stuff ",
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "boo!",
+            },
+            "ref": null,
+            "rendered": "boo!",
+            "type": "button",
+          },
+        ],
+        "type": Symbol(react.fragment),
       },
       "type": [Function],
     },
@@ -912,37 +989,26 @@ ShallowWrapper {
       }
     }
   >
-    <Unknown
-      content={
-        <React.Fragment>
-          <wrapContext>
-            <Styled(InternalHeading)>
-              Pick stuff
-            </Styled(InternalHeading)>
-          </wrapContext>
-          <Unknown>
-            Stuff and things...
-          </Unknown>
-          <Unknown>
-            <Styled(WithTheme(InternalButton))
-              mr="small"
-              variant="transparent"
-            >
-              Cancel
-            </Styled(WithTheme(InternalButton))>
-            <Styled(WithTheme(InternalButton))>
-              Pick some stuff
-            </Styled(WithTheme(InternalButton))>
-          </Unknown>
-        </React.Fragment>
-      }
-      open={true}
-    >
-      <Styled(WithTheme(InternalButton))
-        variant="outline"
-      >
-        Pick Stuff
-      </Styled(WithTheme(InternalButton))>
+    <Unknown>
+      <wrapContext>
+        <Styled(InternalHeading)>
+          Pick stuff
+        </Styled(InternalHeading)>
+      </wrapContext>
+      <Unknown>
+        Stuff and things...
+      </Unknown>
+      <Unknown>
+        <Styled(WithTheme(InternalButton))
+          mr="small"
+          variant="transparent"
+        >
+          Cancel
+        </Styled(WithTheme(InternalButton))>
+        <Styled(WithTheme(InternalButton))>
+          Pick some stuff
+        </Styled(WithTheme(InternalButton))>
+      </Unknown>
     </Unknown>
   </ThemeProvider>,
   Symbol(enzyme.__renderer__): Object {
@@ -958,20 +1024,15 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "function",
     "props": Object {
-      "children": <Styled(WithTheme(InternalButton))
-        variant="outline"
-      >
-        Pick Stuff
-      </Styled(WithTheme(InternalButton))>,
-      "content": <React.Fragment>
+      "children": Array [
         <wrapContext>
           <Styled(InternalHeading)>
             Pick stuff
           </Styled(InternalHeading)>
-        </wrapContext>
+        </wrapContext>,
         <Unknown>
           Stuff and things...
-        </Unknown>
+        </Unknown>,
         <Unknown>
           <Styled(WithTheme(InternalButton))
             mr="small"
@@ -982,23 +1043,92 @@ ShallowWrapper {
           <Styled(WithTheme(InternalButton))>
             Pick some stuff
           </Styled(WithTheme(InternalButton))>
-        </Unknown>
-      </React.Fragment>,
-      "open": true,
+        </Unknown>,
+      ],
     },
     "ref": null,
-    "rendered": Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "class",
-      "props": Object {
-        "children": "Pick Stuff",
-        "variant": "outline",
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "children": <Styled(InternalHeading)>
+            Pick stuff
+          </Styled(InternalHeading)>,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": "Pick stuff",
+          },
+          "ref": null,
+          "rendered": "Pick stuff",
+          "type": [Function],
+        },
+        "type": [Function],
       },
-      "ref": null,
-      "rendered": "Pick Stuff",
-      "type": [Function],
-    },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "children": "Stuff and things...",
+        },
+        "ref": null,
+        "rendered": "Stuff and things...",
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "children": Array [
+            <Styled(WithTheme(InternalButton))
+              mr="small"
+              variant="transparent"
+            >
+              Cancel
+            </Styled(WithTheme(InternalButton))>,
+            <Styled(WithTheme(InternalButton))>
+              Pick some stuff
+            </Styled(WithTheme(InternalButton))>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": "Cancel",
+              "mr": "small",
+              "variant": "transparent",
+            },
+            "ref": null,
+            "rendered": "Cancel",
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": "Pick some stuff",
+            },
+            "ref": null,
+            "rendered": "Pick some stuff",
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
+    ],
     "type": [Function],
   },
   Symbol(enzyme.__nodes__): Array [
@@ -1007,20 +1137,15 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "function",
       "props": Object {
-        "children": <Styled(WithTheme(InternalButton))
-          variant="outline"
-        >
-          Pick Stuff
-        </Styled(WithTheme(InternalButton))>,
-        "content": <React.Fragment>
+        "children": Array [
           <wrapContext>
             <Styled(InternalHeading)>
               Pick stuff
             </Styled(InternalHeading)>
-          </wrapContext>
+          </wrapContext>,
           <Unknown>
             Stuff and things...
-          </Unknown>
+          </Unknown>,
           <Unknown>
             <Styled(WithTheme(InternalButton))
               mr="small"
@@ -1031,23 +1156,92 @@ ShallowWrapper {
             <Styled(WithTheme(InternalButton))>
               Pick some stuff
             </Styled(WithTheme(InternalButton))>
-          </Unknown>
-        </React.Fragment>,
-        "open": true,
+          </Unknown>,
+        ],
       },
       "ref": null,
-      "rendered": Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {
-          "children": "Pick Stuff",
-          "variant": "outline",
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "children": <Styled(InternalHeading)>
+              Pick stuff
+            </Styled(InternalHeading)>,
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": "Pick stuff",
+            },
+            "ref": null,
+            "rendered": "Pick stuff",
+            "type": [Function],
+          },
+          "type": [Function],
         },
-        "ref": null,
-        "rendered": "Pick Stuff",
-        "type": [Function],
-      },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "children": "Stuff and things...",
+          },
+          "ref": null,
+          "rendered": "Stuff and things...",
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "children": Array [
+              <Styled(WithTheme(InternalButton))
+                mr="small"
+                variant="transparent"
+              >
+                Cancel
+              </Styled(WithTheme(InternalButton))>,
+              <Styled(WithTheme(InternalButton))>
+                Pick some stuff
+              </Styled(WithTheme(InternalButton))>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "Cancel",
+                "mr": "small",
+                "variant": "transparent",
+              },
+              "ref": null,
+              "rendered": "Cancel",
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "Pick some stuff",
+              },
+              "ref": null,
+              "rendered": "Pick some stuff",
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+      ],
       "type": [Function],
     },
   ],

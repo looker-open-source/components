@@ -1,15 +1,33 @@
 Dialogs inform users about a task and can contain critical information, require decisions, or involve multiple tasks.
 
 ```js
-<Dialog
-  content={
-    <>
-      This is some content in the Dialog <a href="#">Focus here...</a>
-    </>
+class Component extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = { isOpen: false }
+    this.open = this.open.bind(this)
+    this.close = this.close.bind(this)
   }
->
-  <Button>Open Dialog</Button>
-</Dialog>
+
+  open() {
+    this.setState({ isOpen: true })
+  }
+  close() {
+    this.setState({ isOpen: false })
+  }
+
+  render() {
+    return (
+      <>
+        <Dialog isOpen={this.state.isOpen} onClose={this.close}>
+          This is some content in the Dialog <a href="#">Focus here...</a>
+        </Dialog>
+        <Button onClick={this.open}>Open Dialog</Button>
+      </>
+    )
+  }
+}
+;<Component />
 ```
 
 ---
@@ -46,9 +64,11 @@ const content = (
     </ModalContext.Consumer>
   </>
 )
-;<Dialog content={content}>
-  <Button variant="outline" color="danger" autoFocus>
-    Delete Stuff
-  </Button>
-</Dialog>
+;<DialogManager content={content}>
+  {onClick => (
+    <Button variant="outline" color="danger" autoFocus onClick={onClick}>
+      Delete Stuff
+    </Button>
+  )}
+</DialogManager>
 ```

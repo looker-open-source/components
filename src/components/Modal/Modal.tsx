@@ -36,7 +36,7 @@ export const CustomizableModalAttributes: CustomizableModalAttributes = {
   zIndex: 0,
 }
 
-export interface ModalProps {
+export interface ManagedModalProps {
   /**
    * Optional backdrop styles to merge with the Backdrop implementation. These
    * must be a CSSProperty compatible key / value paired object. For example
@@ -51,32 +51,24 @@ export interface ModalProps {
   surfaceStyles?: React.CSSProperties
 
   /**
+   * Explicitly specifying a width will set the Surface to be the lesser of the specified width or the viewport width.
+   * You can also specify `auto` if you want the Surface to auto-size to its content.
+   * @default auto
+   */
+  width?: string
+}
+
+export interface ModalProps extends ManagedModalProps {
+  /**
    * Specify a callback to be called each time this Modal is closed
    */
   onClose?: () => void
-  /*
-   * Specify a callback to be called each time this Modal is opened
-   */
-  onOpen?: () => void
-
-  /**
-   * Specify a callback to be called before trying to close the Modal. This allows for
-   * use-cases where the user might lose work (think common "Save before closing warning" type flow)
-   */
-  canClose?: () => boolean
 
   /**
    * When true, renders the Backdrop, Surface and it's contained content immediately.
    * @default false
    */
-  open?: boolean
-
-  /**
-   * Explicitly specify width. Component surface width.
-   * Specifying a width will force the surface to be the specified width or 100% of viewport width
-   * whichever is less.
-   */
-  width?: string
+  isOpen?: boolean
 }
 
 export interface ModalInternalProps extends ModalProps {
@@ -88,22 +80,12 @@ export interface ModalInternalProps extends ModalProps {
   render: (animationState: string) => React.ReactNode
 }
 
-export interface ModalState {
-  isOpen: boolean
-}
-
-export class Modal extends React.Component<ModalInternalProps, ModalState> {
+export class Modal extends React.Component<ModalInternalProps> {
   private portalRef: React.RefObject<HTMLElement>
-  private mounted: boolean = false
 
   constructor(props: ModalInternalProps) {
     super(props)
-    this.state = { isOpen: !!props.open }
     this.portalRef = React.createRef()
-  }
-
-  public componentDidMount() {
-    this.mounted = true
   }
 
   public componentWillUnmount() {
@@ -112,56 +94,27 @@ export class Modal extends React.Component<ModalInternalProps, ModalState> {
 
   public render() {
     return (
-      <ModalContext.Provider value={{ closeModal: this.close }}>
-        <>
-          {this.generateTrigger(this.props.children)}
-          <CSSTransition
-            classNames="modal"
-            mountOnEnter
-            unmountOnExit
-            in={this.state.isOpen}
-            timeout={{ enter: 0, exit: 250 }}
-          >
-            {(state: string) => (
-              <ModalPortal ref={this.portalRef}>
-                <ModalBackdrop
-                  className={state}
-                  style={this.props.backdropStyles}
-                  onClick={this.close}
-                />
-                {this.props.render(state)}
-              </ModalPortal>
-            )}
-          </CSSTransition>
-        </>
+      <ModalContext.Provider value={{ closeModal: this.props.onClose }}>
+        <CSSTransition
+          classNames="modal"
+          mountOnEnter
+          unmountOnExit
+          in={this.props.isOpen}
+          timeout={{ enter: 0, exit: 250 }}
+        >
+          {(state: string) => (
+            <ModalPortal ref={this.portalRef}>
+              <ModalBackdrop
+                className={state}
+                style={this.props.backdropStyles}
+                onClick={this.props.onClose}
+              />
+              {this.props.render(state)}
+            </ModalPortal>
+          )}
+        </CSSTransition>
       </ModalContext.Provider>
     )
-  }
-
-  private generateTrigger(children?: React.ReactNode) {
-    if (!children) return
-
-    const child = React.Children.only(children)
-    return React.cloneElement(child, { onClick: this.open })
-  }
-
-  private open = () => {
-    window.addEventListener('keydown', this.handleEscapePress)
-    this.props.onOpen && this.props.onOpen()
-    this.mounted && this.setState({ isOpen: true })
-  }
-
-  private close = (
-    _event?: React.SyntheticEvent,
-    doCallbacks: boolean = true
-  ) => {
-    if (this.props.canClose && !this.props.canClose()) return
-    window.removeEventListener('keydown', this.handleEscapePress)
-
-    if (doCallbacks && this.props.onClose) {
-      this.props.onClose()
-    }
-    this.mounted && this.setState({ isOpen: false })
   }
 
   private handleEscapePress = (event: KeyboardEvent) => {
@@ -174,6 +127,6 @@ export class Modal extends React.Component<ModalInternalProps, ModalState> {
       return
     }
 
-    this.close()
+    this.props.onClose && this.props.onClose()
   }
 }
