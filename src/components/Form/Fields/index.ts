@@ -1,4 +1,5 @@
 export * from './FieldCheckbox'
+export * from './FieldSelect'
 export * from './FieldText'
 export * from './FieldRadio'
 export * from './FieldToggleSwitch'
