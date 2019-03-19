@@ -2,93 +2,6 @@
 
 exports[`Tooltip Generates a simple Tooltip 1`] = `
 Array [
-  .c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  border-radius: 0.25rem;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
-  font-size: 1rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0rem;
-  padding-bottom: 0rem;
-}
-
-.c0 {
-  font-weight: 600;
-  outline: none;
-  -webkit-transition: border 80ms;
-  transition: border 80ms;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  vertical-align: middle;
-  white-space: nowrap;
-  border-style: solid;
-  border-width: 0.0625rem;
-  background: #64518A;
-  border-color: #64518A;
-  color: #FFFFFF;
-}
-
-.c0:focus {
-  box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
-}
-
-.c0[disabled] {
-  cursor: default;
-  -webkit-filter: grayscale(0.3);
-  filter: grayscale(0.3);
-  opacity: 0.25;
-}
-
-.c0[disabled]:hover,
-.c0[disabled]:active,
-.c0[disabled]:focus {
-  background-color: #64518A;
-  border-color: #C1C6CC;
-}
-
-.c0:hover,
-.c0:focus,
-.c0.hover {
-  background: #473764;
-  border-color: #473764;
-}
-
-.c0:active,
-.c0.active {
-  background: #2A1B60;
-  border-color: #2A1B60;
-}
-
-<button
-    className="c0 c1"
-    onBlur={[Function]}
-    onFocus={[Function]}
-    onMouseOut={[Function]}
-    onMouseOver={[Function]}
-    style={
-      Object {
-        "lineHeight": "34px",
-      }
-    }
-  >
-    Example
-  </button>,
   .c0 {
   border: 0;
   box-sizing: border-box;
@@ -213,7 +126,6 @@ Array [
 <div
     className="c0"
     onMouseOut={[Function]}
-    onMouseOver={[Function]}
     overflow="visible"
     style={
       Object {
@@ -246,5 +158,92 @@ Array [
       />
     </div>
   </div>,
+  .c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 0.25rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  font-size: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+}
+
+.c0 {
+  font-weight: 600;
+  outline: none;
+  -webkit-transition: border 80ms;
+  transition: border 80ms;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: middle;
+  white-space: nowrap;
+  border-style: solid;
+  border-width: 0.0625rem;
+  background: #64518A;
+  border-color: #64518A;
+  color: #FFFFFF;
+}
+
+.c0:focus {
+  box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
+}
+
+.c0[disabled] {
+  cursor: default;
+  -webkit-filter: grayscale(0.3);
+  filter: grayscale(0.3);
+  opacity: 0.25;
+}
+
+.c0[disabled]:hover,
+.c0[disabled]:active,
+.c0[disabled]:focus {
+  background-color: #64518A;
+  border-color: #C1C6CC;
+}
+
+.c0:hover,
+.c0:focus,
+.c0.hover {
+  background: #473764;
+  border-color: #473764;
+}
+
+.c0:active,
+.c0.active {
+  background: #2A1B60;
+  border-color: #2A1B60;
+}
+
+<button
+    className="c0 c1"
+    onBlur={[Function]}
+    onFocus={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    style={
+      Object {
+        "lineHeight": "34px",
+      }
+    }
+  >
+    Example
+  </button>,
 ]
 `;

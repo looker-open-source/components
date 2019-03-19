@@ -7,13 +7,7 @@ import {
   mouseEventSimulator,
   returnTriggerAndOverlay,
 } from './overlay.test.helpers'
-import { Tooltip, TooltipProps } from './Tooltip'
-
-const TestTooltip: React.SFC<TooltipProps> = ({ ...props }) => (
-  <Tooltip {...props}>
-    <Button>Trigger</Button>
-  </Tooltip>
-)
+import { Tooltip } from './Tooltip'
 
 export const assertOverlayState = (
   overlay: ReactWrapper,
@@ -26,9 +20,13 @@ export const assertOverlayState = (
 describe('Tooltip', () => {
   test('opens on mouseover', () => {
     const [popover, trigger] = returnTriggerAndOverlay(
-      <TestTooltip content="Hello world">
-        <Button>Test</Button>
-      </TestTooltip>
+      <Tooltip content="Hello world">
+        {(eventHandlers, ref) => (
+          <Button innerRef={ref} {...eventHandlers}>
+            Test
+          </Button>
+        )}
+      </Tooltip>
     )
     trigger.simulate('mouseover', mouseEventSimulator)
     assertOverlayState(popover, 'Hello world')
@@ -38,9 +36,13 @@ describe('Tooltip', () => {
 
   test('contains the content passed to it', () => {
     const [popover, trigger] = returnTriggerAndOverlay(
-      <TestTooltip content="Hello world">
-        <Button>Test</Button>
-      </TestTooltip>
+      <Tooltip content="Hello world" isOpen>
+        {(eventHandlers, ref) => (
+          <Button innerRef={ref} {...eventHandlers}>
+            Test
+          </Button>
+        )}
+      </Tooltip>
     )
     trigger.simulate('mouseover', mouseEventSimulator)
     assertOverlayState(popover, 'Hello world')
@@ -49,9 +51,28 @@ describe('Tooltip', () => {
 
   test('Generates a simple Tooltip', () => {
     assertSnapshot(
-      <Tooltip content="Hello world" open>
-        <Button>Example</Button>
+      <Tooltip content="Hello world" isOpen>
+        {(eventHandlers, ref) => (
+          <Button innerRef={ref} {...eventHandlers}>
+            Example
+          </Button>
+        )}
       </Tooltip>
     )
+  })
+
+  test('supports styling props', () => {
+    const [popover, trigger] = returnTriggerAndOverlay(
+      <Tooltip content="Hello world" maxWidth="20rem" textAlign="right">
+        {(eventHandlers, ref) => (
+          <Button innerRef={ref} {...eventHandlers}>
+            Test
+          </Button>
+        )}
+      </Tooltip>
+    )
+    trigger.simulate('mouseover', mouseEventSimulator)
+    assertOverlayState(popover, 'Hello world')
+    expect(popover.contains('Hello world')).toBeTruthy()
   })
 })

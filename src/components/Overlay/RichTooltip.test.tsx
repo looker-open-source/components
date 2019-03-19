@@ -8,20 +8,18 @@ import {
   returnTriggerAndOverlay,
   SimpleContent,
 } from './overlay.test.helpers'
-import { RichTooltip, RichTooltipProps } from './RichTooltip'
-
-const TestRichTooltip: React.SFC<RichTooltipProps> = ({ ...props }) => (
-  <RichTooltip {...props}>
-    <Button>Trigger</Button>
-  </RichTooltip>
-)
+import { RichTooltip } from './RichTooltip'
 
 describe('RichTooltip', () => {
   test('opens on mouseover', () => {
     const [popover, trigger] = returnTriggerAndOverlay(
-      <TestRichTooltip content={SimpleContent}>
-        <Button>Test</Button>
-      </TestRichTooltip>
+      <RichTooltip content={SimpleContent}>
+        {(eventHandlers, ref) => (
+          <Button innerRef={ref} {...eventHandlers}>
+            Test
+          </Button>
+        )}
+      </RichTooltip>
     )
     trigger.simulate('mouseover', mouseEventSimulator)
     assertOpen(popover)
@@ -31,9 +29,13 @@ describe('RichTooltip', () => {
 
   test('contains the content passed to it', () => {
     const [popover, trigger] = returnTriggerAndOverlay(
-      <TestRichTooltip content={SimpleContent}>
-        <Button>Test</Button>
-      </TestRichTooltip>
+      <RichTooltip content={SimpleContent}>
+        {(eventHandlers, ref) => (
+          <Button innerRef={ref} {...eventHandlers}>
+            Test
+          </Button>
+        )}
+      </RichTooltip>
     )
     trigger.simulate('mouseover', mouseEventSimulator)
     assertOpen(popover)

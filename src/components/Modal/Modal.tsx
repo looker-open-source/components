@@ -60,15 +60,14 @@ export interface ManagedModalProps {
 
 export interface ModalProps extends ManagedModalProps {
   /**
-   * Specify a callback to be called each time this Modal is closed
-   */
-  onClose?: () => void
-
-  /**
    * When true, renders the Backdrop, Surface and it's contained content immediately.
    * @default false
    */
-  isOpen?: boolean
+  isOpen: boolean
+  /**
+   * Specify a callback to be called each time this Modal is closed
+   */
+  onClose: () => void
 }
 
 export interface ModalInternalProps extends ModalProps {
@@ -86,6 +85,10 @@ export class Modal extends React.Component<ModalInternalProps> {
   constructor(props: ModalInternalProps) {
     super(props)
     this.portalRef = React.createRef()
+  }
+
+  public componentDidMount() {
+    window.addEventListener('keydown', this.handleEscapePress)
   }
 
   public componentWillUnmount() {

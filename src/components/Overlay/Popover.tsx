@@ -2,39 +2,40 @@ import * as React from 'react'
 import { fadeIn, palette, shadows } from '../../style'
 import { CustomizableAttributes } from '../../types/attributes'
 import { ModalSurfaceStyleProps } from '../Modal'
-import {
-  Overlay,
-  OverlayContentProps,
-  OverlayInteractiveProps,
-  OverlaySurface,
-} from './'
+import { ModalManager, ModalManagerProps } from '../Modal/ModalManager'
+import { Overlay, OverlayInteractiveProps, OverlaySurface } from './'
+import { OverlayContentProps } from './Overlay'
 
-export interface PopoverProps extends OverlayInteractiveProps {
-  content: React.ReactNode
-}
-
-export const Popover: React.SFC<PopoverProps> = ({
-  content,
+const PopoverInternal: React.SFC<OverlayInteractiveProps> = ({
   children,
   ...overlayProps
-}) => {
-  const surface = (props: OverlayContentProps) => {
-    return (
+}) => (
+  <Overlay {...overlayProps}>
+    {(props: OverlayContentProps) => (
       <OverlaySurface
-        lockWindow={true}
+        lockWindow
         {...props}
         {...CustomizablePopoverAttributes.surface}
       >
-        {content}
+        {children}
       </OverlaySurface>
+    )}
+  </Overlay>
+)
+
+export class Popover extends ModalManager<ModalManagerProps> {
+  protected renderModal(content: React.ReactNode, props: ModalManagerProps) {
+    return (
+      <PopoverInternal
+        isOpen={this.state.isOpen}
+        triggerRef={this.triggerRef}
+        onClose={this.close}
+        {...props}
+      >
+        {content}
+      </PopoverInternal>
     )
   }
-
-  return (
-    <Overlay render={surface} {...overlayProps}>
-      {children}
-    </Overlay>
-  )
 }
 
 export interface CustomizablePopoverAttributes extends CustomizableAttributes {

@@ -2,7 +2,8 @@ import * as React from 'react'
 import { palette, shadows } from '../../style'
 import { radii } from '../../style/radii'
 import { CustomizableAttributes } from '../../types/attributes'
-import { ModalSurfaceStyleProps } from '../Modal'
+import { ManagedModalProps, ModalSurfaceStyleProps } from '../Modal'
+import { ModalManager, ModalManagerProps } from '../Modal/ModalManager'
 import {
   Overlay,
   OverlayContentProps,
@@ -11,7 +12,6 @@ import {
 } from './'
 
 export interface MenuOverlayProps extends OverlayInteractiveProps {
-  content: React.ReactNode
   backdropOffset?: {
     top?: string
     left?: string
@@ -20,8 +20,7 @@ export interface MenuOverlayProps extends OverlayInteractiveProps {
   }
 }
 
-export const MenuOverlay: React.SFC<MenuOverlayProps> = ({
-  content,
+const MenuOverlay: React.SFC<MenuOverlayProps> = ({
   children,
   backdropOffset,
   ...overlayProps
@@ -32,23 +31,34 @@ export const MenuOverlay: React.SFC<MenuOverlayProps> = ({
     ...backdropOffset,
   }
 
-  const surface = (props: OverlayContentProps) => {
-    return (
-      <OverlaySurface
-        lockWindow={true}
-        {...props}
-        {...CustomizableMenuOverlayAttributes.surface}
-      >
-        {content}
-      </OverlaySurface>
-    )
-  }
-
   return (
-    <Overlay render={surface} backdropStyles={backdropStyles} {...overlayProps}>
-      {children}
+    <Overlay backdropStyles={backdropStyles} {...overlayProps}>
+      {(props: OverlayContentProps) => (
+        <OverlaySurface
+          lockWindow={true}
+          {...props}
+          {...CustomizableMenuOverlayAttributes.surface}
+        >
+          {children}
+        </OverlaySurface>
+      )}
     </Overlay>
   )
+}
+
+export class MenuOverlayManager extends ModalManager<ModalManagerProps> {
+  protected renderModal(content: string, props: ManagedModalProps) {
+    return (
+      <MenuOverlay
+        isOpen={this.state.isOpen}
+        triggerRef={this.triggerRef}
+        onClose={this.close}
+        {...props}
+      >
+        {content}
+      </MenuOverlay>
+    )
+  }
 }
 
 export interface CustomizableMenuOverlayAttributes
