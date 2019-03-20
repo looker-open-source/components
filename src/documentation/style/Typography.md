@@ -13,7 +13,7 @@ const specimen =
   'Open Sans is the typographic base for the tone and content of Lens’, Lookers design system'
 const typeFamily = [
   { weight: 'light', value: '300' },
-  { weight: 'normal', value: '300' },
+  { weight: 'normal', value: '400' },
   { weight: 'semiBold', value: '600' },
   { weight: 'bold', value: '700' },
 ]
