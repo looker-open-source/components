@@ -70,7 +70,7 @@ const specimen = 'Lens is great'
 const typeRamp = [
   { size: 'xxxxlarge', px: '46px', lh: '64px' },
   { size: 'xxxlarge', px: '36px', lh: '52px' },
-  { size: 'xxxlarge', px: '25px', lh: '40px' },
+  { size: 'xxlarge', px: '25px', lh: '40px' },
   { size: 'xlarge', px: '22px', lh: '32px' },
   { size: 'large', px: '18px', lh: '28px' },
   { size: 'medium', px: '16px', lh: '24px' },
