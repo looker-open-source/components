@@ -16,10 +16,8 @@ export interface OverlaySurfaceProps extends ModalSurfaceStyleProps {
   arrowProps: PopperArrowProps
   placement: Placement
   lockWindow?: boolean
-
-  innerRef?: React.RefObject<HTMLElement>
+  surfaceRef?: React.RefObject<HTMLElement>
   eventHandlers?: React.DOMAttributes<{}>
-
   style?: React.CSSProperties
 }
 
@@ -29,7 +27,7 @@ class OverlaySurfaceInternal extends React.Component<OverlaySurfaceProps> {
       animation,
       children,
       lockWindow,
-      innerRef,
+      surfaceRef,
       style,
       ...props
     } = this.props
@@ -38,7 +36,7 @@ class OverlaySurfaceInternal extends React.Component<OverlaySurfaceProps> {
       <Box
         p="xsmall"
         overflow="visible"
-        innerRef={innerRef}
+        innerRef={surfaceRef}
         style={{ ...style, animation }}
         {...this.props.eventHandlers}
       >
@@ -83,7 +81,7 @@ class OverlaySurfaceInternal extends React.Component<OverlaySurfaceProps> {
 export const OverlaySurface = React.forwardRef(
   (props: OverlaySurfaceProps, ref) => (
     <OverlaySurfaceInternal
-      innerRef={ref as React.RefObject<HTMLElement>}
+      surfaceRef={ref as React.RefObject<HTMLElement>}
       {...props}
     />
   )

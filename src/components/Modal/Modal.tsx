@@ -56,18 +56,20 @@ export interface ManagedModalProps {
    * @default auto
    */
   width?: string
+
+  portalRef?: React.RefObject<HTMLElement>
 }
 
 export interface ModalProps extends ManagedModalProps {
   /**
-   * When true, renders the Backdrop, Surface and it's contained content immediately.
+   * When true, renders the Backdrop, Surface and it's contained content.
    * @default false
    */
-  isOpen: boolean
+  isOpen?: boolean
   /**
    * Specify a callback to be called each time this Modal is closed
    */
-  onClose: () => void
+  onClose?: () => void
 }
 
 export interface ModalInternalProps extends ModalProps {
@@ -77,59 +79,33 @@ export interface ModalInternalProps extends ModalProps {
    * element to provide CSS transitions. (See DialogSurface & DrawerSurface for implementation examples)
    */
   render: (animationState: string) => React.ReactNode
+
+  portalRef?: React.RefObject<HTMLElement>
 }
 
-export class Modal extends React.Component<ModalInternalProps> {
-  private portalRef: React.RefObject<HTMLElement>
-
-  constructor(props: ModalInternalProps) {
-    super(props)
-    this.portalRef = React.createRef()
-  }
-
-  public componentDidMount() {
-    window.addEventListener('keydown', this.handleEscapePress)
-  }
-
-  public componentWillUnmount() {
-    window.removeEventListener('keydown', this.handleEscapePress)
-  }
-
-  public render() {
-    return (
-      <ModalContext.Provider value={{ closeModal: this.props.onClose }}>
-        <CSSTransition
-          classNames="modal"
-          mountOnEnter
-          unmountOnExit
-          in={this.props.isOpen}
-          timeout={{ enter: 0, exit: 250 }}
-        >
-          {(state: string) => (
-            <ModalPortal ref={this.portalRef}>
+export const Modal: React.SFC<ModalInternalProps> = props => {
+  return (
+    <ModalContext.Provider value={{ closeModal: props.onClose }}>
+      <CSSTransition
+        classNames="modal"
+        mountOnEnter
+        unmountOnExit
+        in={props.isOpen}
+        timeout={{ enter: 0, exit: 250 }}
+      >
+        {(state: string) => (
+          <ModalPortal ref={props.portalRef}>
+            <>
               <ModalBackdrop
                 className={state}
-                style={this.props.backdropStyles}
-                onClick={this.props.onClose}
+                style={props.backdropStyles}
+                onClick={props.onClose}
               />
-              {this.props.render(state)}
-            </ModalPortal>
-          )}
-        </CSSTransition>
-      </ModalContext.Provider>
-    )
-  }
-
-  private handleEscapePress = (event: KeyboardEvent) => {
-    if (event.key !== 'Escape') return
-    if (!event.target) return
-    if (
-      !this.portalRef.current ||
-      !this.portalRef.current.contains(event.target as Node)
-    ) {
-      return
-    }
-
-    this.props.onClose && this.props.onClose()
-  }
+              {props.render(state)}
+            </>
+          </ModalPortal>
+        )}
+      </CSSTransition>
+    </ModalContext.Provider>
+  )
 }

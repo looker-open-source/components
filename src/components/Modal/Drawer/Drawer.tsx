@@ -27,5 +27,5 @@ export const Drawer: React.SFC<DrawerProps> = ({
       </DrawerSurface>
     )
   }
-  return <Modal render={surface} {...props} />
+  return <Modal {...props} render={surface} />
 }

@@ -10,7 +10,7 @@ export interface ModalHoverManagerProps extends ManagedModalProps {
       onMouseOut: (event: React.MouseEvent) => void
       onMouseOver: () => void
     },
-    ref: (element: HTMLElement) => void
+    ref: React.RefObject<HTMLElement>
   ) => React.ReactNode
   /**
    * Content that will be placed inside the Modal
@@ -36,7 +36,7 @@ export interface ModalHoverManagerProps extends ManagedModalProps {
 }
 
 export interface ManagedHoverModalProps extends ManagedModalProps {
-  setSurfaceRef: (ref: null | HTMLElement) => void
+  setSurfaceRef: (ref: HTMLElement | null) => void
   onMouseOut: (event: React.MouseEvent) => void
 }
 
@@ -47,34 +47,26 @@ export interface ModalManagerState {
 export abstract class ModalHoverManager<
   T extends ModalHoverManagerProps
 > extends React.Component<T, ModalManagerState> {
-  // protected triggerRef: React.RefObject<HTMLElement>
-  protected surfaceRef: null | HTMLElement
-  protected triggerRef: null | HTMLElement
+  /*
+   * Popper.js doesn't support React.RefObject so instead the reference to
+   * the Surface (powered by Popper) needs to be retrieved via callback
+   */
+  protected surfaceRef: HTMLElement | null
+  protected triggerRef: React.RefObject<HTMLElement>
 
   constructor(props: T) {
     super(props)
     this.state = { isOpen: false }
     this.surfaceRef = null
-    this.triggerRef = null
+    this.triggerRef = React.createRef()
 
     this.open = this.open.bind(this)
     this.close = this.close.bind(this)
-    this.setTriggerRef = this.setTriggerRef.bind(this)
     this.setSurfaceRef = this.setSurfaceRef.bind(this)
   }
 
-  public setTriggerRef = (ref: HTMLElement) => {
-    this.triggerRef = ref
-  }
-
-  public setSurfaceRef = (ref: null | HTMLElement) => {
-    this.surfaceRef = ref
-  }
-
   public componentDidMount() {
-    if (this.props.isOpen) {
-      this.setState({ isOpen: true })
-    }
+    if (this.props.isOpen) this.open()
   }
 
   public render() {
@@ -96,7 +88,7 @@ export abstract class ModalHoverManager<
     return (
       <>
         {this.renderModal(content, modalProps)}
-        {this.props.children(eventHandlers, this.setTriggerRef)}
+        {this.props.children(eventHandlers, this.triggerRef)}
       </>
     )
   }
@@ -110,6 +102,10 @@ export abstract class ModalHoverManager<
     this.setState({ isOpen: false })
   }
 
+  protected setSurfaceRef(ref: HTMLElement | null) {
+    this.surfaceRef = ref
+  }
+
   protected abstract renderModal(
     content: React.ReactNode,
     props: ManagedHoverModalProps
@@ -121,8 +117,9 @@ export abstract class ModalHoverManager<
     const related = event.relatedTarget
 
     if (
-      this.triggerRef &&
-      (this.triggerRef === related || this.triggerRef.contains(related as Node))
+      this.triggerRef.current &&
+      (this.triggerRef.current === related ||
+        this.triggerRef.current.contains(related as Node))
     ) {
       return
     }

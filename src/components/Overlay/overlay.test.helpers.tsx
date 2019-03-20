@@ -1,6 +1,8 @@
 import { ReactWrapper } from 'enzyme'
 import * as React from 'react'
 import { mountWithTheme } from '../../../test/utils/create_with_theme'
+import { Button } from '../Button'
+import { Overlay } from './Overlay'
 
 export const SimpleContent = <div>simple content</div>
 export const SimpleContentSFC = () => SimpleContent
@@ -26,8 +28,8 @@ export const assertClosed = (overlay: ReactWrapper) =>
 
 export const returnTriggerAndOverlay = (
   Inst: React.ReactElement<any>,
-  trigger = 'button'
+  trigger = Button
 ) => {
-  const overlay = mountWithTheme(Inst)
-  return [overlay, overlay.find(trigger)]
+  const manager = mountWithTheme(Inst)
+  return [manager, manager.find(Overlay), manager.find(trigger)]
 }

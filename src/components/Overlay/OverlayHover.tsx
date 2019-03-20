@@ -4,21 +4,27 @@ import { CustomizableModalAttributes } from '../Modal'
 import { OverlayProps } from './Overlay'
 
 export interface OverlayHoverProps extends OverlayProps {
-  setSurfaceRef?: (ref: null | HTMLElement) => void
+  setSurfaceRef?: (ref: HTMLElement | null) => void
   onMouseOut?: (event: React.MouseEvent) => void
 }
 
 export const OverlayHover: React.SFC<OverlayHoverProps> = ({
   children,
   isOpen,
+  setSurfaceRef,
   ...props
-}) =>
-  isOpen ? (
+}) => {
+  const triggerRef =
+    props.triggerRef && props.triggerRef.current
+      ? props.triggerRef.current
+      : undefined
+
+  return isOpen ? (
     <Popper
       positionFixed
-      innerRef={props.setSurfaceRef}
+      innerRef={setSurfaceRef}
       placement={props.placement}
-      referenceElement={props.triggerRef ? props.triggerRef : undefined}
+      referenceElement={triggerRef}
     >
       {({ ref, style, arrowProps, placement }) =>
         children({
@@ -34,3 +40,4 @@ export const OverlayHover: React.SFC<OverlayHoverProps> = ({
       }
     </Popper>
   ) : null
+}

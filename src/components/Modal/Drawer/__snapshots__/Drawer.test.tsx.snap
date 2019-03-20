@@ -644,6 +644,7 @@ ShallowWrapper {
           "opacity": 1,
         }
       }
+      isOpen={true}
     >
       <React.Fragment>
         words and stuff 
@@ -676,6 +677,7 @@ ShallowWrapper {
           boo!
         </button>
       </React.Fragment>,
+      "isOpen": true,
     },
     "ref": null,
     "rendered": Object {
@@ -725,6 +727,7 @@ ShallowWrapper {
             boo!
           </button>
         </React.Fragment>,
+        "isOpen": true,
       },
       "ref": null,
       "rendered": Object {
@@ -989,7 +992,9 @@ ShallowWrapper {
       }
     }
   >
-    <Unknown>
+    <Unknown
+      isOpen={true}
+    >
       <wrapContext>
         <Styled(InternalHeading)>
           Pick stuff
@@ -1045,6 +1050,7 @@ ShallowWrapper {
           </Styled(WithTheme(InternalButton))>
         </Unknown>,
       ],
+      "isOpen": true,
     },
     "ref": null,
     "rendered": Array [
@@ -1158,6 +1164,7 @@ ShallowWrapper {
             </Styled(WithTheme(InternalButton))>
           </Unknown>,
         ],
+        "isOpen": true,
       },
       "ref": null,
       "rendered": Array [

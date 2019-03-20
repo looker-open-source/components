@@ -4,7 +4,7 @@ import { Popper, PopperArrowProps } from 'react-popper'
 import { ModalBackdrop, ModalContext } from '../Modal'
 import { ModalPortal } from '../Modal/ModalPortal'
 
-export interface OverlayContentProps {
+export interface OverlayChildrenProps {
   ref: React.Ref<HTMLElement>
   style: React.CSSProperties
   /**
@@ -26,17 +26,18 @@ export interface OverlayInteractiveProps {
   children: React.ReactNode
 
   /**
-   * When true, renders the Backdrop, Surface and it's contained content immediately.
+   * When true, renders the Backdrop, Surface and it's contained content
    * @default false
    */
-  isOpen: boolean
+  isOpen?: boolean
   /**
    * Specify a callback to be called each time this Modal is closed
    */
-  onClose: () => void
-
-  triggerRef: HTMLElement | null
-
+  onClose?: () => void
+  /**
+   * Used by popper.js to position the OverlaySurface relative to the trigger
+   */
+  triggerRef?: React.RefObject<HTMLElement>
   /**
    * Pins popper placement and prevents popper from moving on window resize.
    * @default false
@@ -62,13 +63,15 @@ export interface OverlayProps extends OverlayInteractiveProps {
    *
    * See OverlaySurface.tsx for an example of how to use these properties.
    */
-  children: (props: OverlayContentProps) => React.ReactNode
+  children: (props: OverlayChildrenProps) => React.ReactNode
   /**
    * Optional backdrop styles to merge with the Backdrop implementation. These
    * must be a CSSProperty compatible key / value paired object. For example
    * {backgroundColor: 'pink'}.
    */
   backdropStyles?: React.CSSProperties
+
+  portalRef?: React.RefObject<HTMLElement>
 }
 
 /**
@@ -82,66 +85,36 @@ export interface OverlayProps extends OverlayInteractiveProps {
  * react-popper](https://github.com/FezVrasta/react-popper).
  */
 
-export class Overlay extends React.Component<OverlayProps> {
-  private portalRef: React.RefObject<HTMLElement>
+export const Overlay: React.SFC<OverlayProps> = ({ ...props }) => {
+  const triggerRef =
+    props.triggerRef && props.triggerRef.current
+      ? props.triggerRef.current
+      : undefined
 
-  constructor(props: OverlayProps) {
-    super(props)
-    this.portalRef = React.createRef()
-  }
+  const surface = (
+    <ModalPortal ref={props.portalRef}>
+      <ModalBackdrop onClick={props.onClose} style={props.backdropStyles} />
+      <Popper
+        positionFixed
+        placement={props.placement}
+        modifiers={{ flip: { enabled: props.pin ? false : true } }}
+        referenceElement={triggerRef}
+      >
+        {({ ref, style, arrowProps, placement }) =>
+          props.children({
+            arrowProps,
+            placement,
+            ref,
+            style,
+          })
+        }
+      </Popper>
+    </ModalPortal>
+  )
 
-  public componentDidMount() {
-    window.addEventListener('keydown', this.handleEscapePress)
-  }
-
-  public componentWillUnmount() {
-    window.removeEventListener('keydown', this.handleEscapePress)
-  }
-
-  public render() {
-    const surface = (
-      <ModalPortal ref={this.portalRef}>
-        <ModalBackdrop
-          onClick={this.props.onClose}
-          style={this.props.backdropStyles}
-        />
-        <Popper
-          positionFixed
-          placement={this.props.placement}
-          modifiers={{ flip: { enabled: this.props.pin ? false : true } }}
-          referenceElement={
-            this.props.triggerRef ? this.props.triggerRef : undefined
-          }
-        >
-          {({ ref, style, arrowProps, placement }) =>
-            this.props.children({
-              arrowProps,
-              placement,
-              ref,
-              style,
-            })
-          }
-        </Popper>
-      </ModalPortal>
-    )
-
-    return (
-      <ModalContext.Provider value={{ closeModal: this.props.onClose }}>
-        {this.props.isOpen && surface}
-      </ModalContext.Provider>
-    )
-  }
-
-  private handleEscapePress = (event: KeyboardEvent) => {
-    if (event.key !== 'Escape') return
-    if (!event.target) return
-    if (
-      !this.portalRef.current ||
-      !this.portalRef.current.contains(event.target as Node)
-    ) {
-      return
-    }
-
-    this.props.onClose()
-  }
+  return (
+    <ModalContext.Provider value={{ closeModal: props.onClose }}>
+      {props.isOpen && surface}
+    </ModalContext.Provider>
+  )
 }

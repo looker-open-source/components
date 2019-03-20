@@ -3,14 +3,15 @@ import { Placement } from 'popper.js'
 import * as React from 'react'
 import { fadeIn, palette, shadows } from '../../style'
 import { CustomizableAttributes } from '../../types/attributes'
-import { ManagedModalProps, ModalSurfaceStyleProps } from '../Modal'
+import { ModalSurfaceStyleProps } from '../Modal'
 import {
+  ManagedHoverModalProps,
   ModalHoverManager,
   ModalHoverManagerProps,
 } from '../Modal/ModalHoverManager'
 import { Paragraph } from '../Text'
 import {
-  OverlayContentProps,
+  OverlayChildrenProps,
   OverlayHover,
   OverlayInteractiveProps,
   OverlaySurface,
@@ -46,7 +47,7 @@ const TooltipInternal: React.SFC<TooltipInternalProps> = ({
   ...overlayProps
 }) => (
   <OverlayHover {...overlayProps}>
-    {(props: OverlayContentProps) => (
+    {(props: OverlayChildrenProps) => (
       <OverlaySurface {...props} {...CustomizableTooltipAttributes.surface}>
         <Paragraph
           fontSize="xsmall"
@@ -85,12 +86,13 @@ export interface TooltipProps extends TooltipBaseProps, ModalHoverManagerProps {
 }
 
 export class Tooltip extends ModalHoverManager<TooltipProps> {
-  protected renderModal(content: string, props: ManagedModalProps) {
+  protected renderModal(content: string, props: ManagedHoverModalProps) {
     return (
       <TooltipInternal
         isOpen={this.state.isOpen}
         triggerRef={this.triggerRef}
         onClose={this.close}
+        // surfaceRef={this.props}
         {...props}
       >
         {content}

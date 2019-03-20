@@ -5,7 +5,7 @@ import { ManagedModalProps } from '../Modal'
 export interface ModalManagerProps extends ManagedModalProps {
   children: (
     onClick: () => void,
-    ref: (element: HTMLElement) => void
+    ref: React.RefObject<HTMLElement>
   ) => React.ReactNode
   /**
    * Content that will be placed inside the Modal
@@ -37,51 +37,63 @@ export interface ModalManagerState {
 export abstract class ModalManager<
   T extends ModalManagerProps
 > extends React.Component<T, ModalManagerState> {
-  // protected triggerRef: React.RefObject<HTMLElement>
-  protected triggerRef: null | HTMLElement
+  protected triggerRef: React.RefObject<HTMLElement>
+  protected portalRef: React.RefObject<HTMLElement>
 
   constructor(props: T) {
     super(props)
     this.state = { isOpen: false }
-    this.triggerRef = null
+    this.triggerRef = React.createRef()
+    this.portalRef = React.createRef()
 
     this.close = this.close.bind(this)
-    this.onClick = this.onClick.bind(this)
-    this.setTriggerRef = this.setTriggerRef.bind(this)
-  }
-
-  public setTriggerRef = (element: HTMLElement) => {
-    this.triggerRef = element
+    this.open = this.open.bind(this)
   }
 
   public componentDidMount() {
-    if (this.props.isOpen) {
-      this.setState({ isOpen: true })
-    }
+    if (this.props.isOpen) this.open()
   }
 
   public render() {
-    const { content, children, ...modalProps } = this.props
+    const { content, children, ...otherProps } = this.props
+
+    const modalProps = { ...otherProps, portalRef: this.portalRef }
 
     return (
       <>
         {this.renderModal(content, modalProps)}
-        {this.props.children(this.onClick, this.setTriggerRef)}
+        {this.props.children(this.open, this.triggerRef)}
       </>
     )
   }
 
-  public close() {
-    if (this.props.canClose && !this.props.canClose()) return
-    this.setState({ isOpen: false })
+  public open() {
+    window.addEventListener('keydown', this.handleEscapePress)
+    this.setState({ isOpen: true })
   }
 
-  public onClick() {
-    this.setState({ isOpen: true })
+  public close() {
+    if (this.props.canClose && !this.props.canClose()) return
+    window.removeEventListener('keydown', this.handleEscapePress)
+    this.setState({ isOpen: false })
   }
 
   protected abstract renderModal(
     content: React.ReactNode,
     props: ManagedModalProps
   ): React.ReactNode
+
+  private handleEscapePress = (event: KeyboardEvent) => {
+    if (event.key !== 'Escape') return
+
+    if (!event.target) return
+    if (
+      !this.portalRef.current ||
+      !this.portalRef.current.contains(event.target as Node)
+    ) {
+      return
+    }
+
+    this.close()
+  }
 }

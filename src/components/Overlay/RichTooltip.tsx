@@ -7,7 +7,7 @@ import {
   ModalHoverManagerProps,
 } from '../Modal/ModalHoverManager'
 import {
-  OverlayContentProps,
+  OverlayChildrenProps,
   OverlayHover,
   OverlayInteractiveProps,
   OverlaySurface,
@@ -18,7 +18,7 @@ const RichTooltipInternal: React.SFC<OverlayInteractiveProps> = ({
   ...overlayProps
 }) => (
   <OverlayHover {...overlayProps}>
-    {(props: OverlayContentProps) => (
+    {(props: OverlayChildrenProps) => (
       <OverlaySurface {...props} {...CustomizableRichTooltipAttributes.surface}>
         {children}
       </OverlaySurface>

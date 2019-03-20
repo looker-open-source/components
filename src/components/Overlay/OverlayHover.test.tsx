@@ -1,67 +1,34 @@
-import { ReactWrapper } from 'enzyme'
 import 'jest-styled-components'
 import * as React from 'react'
+import { mountWithTheme } from '../../../test/utils/create_with_theme'
 import { assertSnapshot } from '../../../test/utils/snapshot'
-import { Button } from '../Button'
-import {
-  assertClosed,
-  assertOpen,
-  mouseEventSimulator,
-  returnTriggerAndOverlay,
-  SimpleContentSFC,
-} from './overlay.test.helpers'
+import { SimpleContentSFC } from './overlay.test.helpers'
 import { OverlayHover } from './OverlayHover'
 
-const simpleContentFactory = () => <SimpleContentSFC />
-
 interface OverlayTestProps {
-  backdropStyles?: React.CSSProperties
-  open?: boolean
+  isOpen?: boolean
 }
 
-const SimpleOverlay: React.SFC<OverlayTestProps> = ({ ...props }) => (
-  <OverlayHover render={simpleContentFactory} {...props}>
-    <Button>Trigger</Button>
-  </OverlayHover>
+const SimpleOverlayHover: React.SFC<OverlayTestProps> = ({ ...props }) => (
+  <OverlayHover {...props}>{SimpleContentSFC}</OverlayHover>
 )
 
 describe('Overlay', () => {
-  test('Generates a simple Overlay', () => {
-    assertSnapshot(<SimpleOverlay />)
+  test('Generates a simple instance', () => {
+    assertSnapshot(<SimpleOverlayHover isOpen />)
   })
 
-  describe('open', () => {
-    let overlay: ReactWrapper
-    beforeEach(() =>
-      ([overlay] = returnTriggerAndOverlay(<SimpleOverlay open />)))
-    afterEach(() => overlay.unmount())
-
-    test('shows the overlay immediately', () => {
-      assertOpen(overlay)
-    })
+  test('Generates a simple instanced, closed', () => {
+    assertSnapshot(<SimpleOverlayHover />)
   })
 
-  describe('trigger: hover', () => {
-    let overlay: ReactWrapper
-    let trigger: ReactWrapper
-    beforeEach(() =>
-      ([overlay, trigger] = returnTriggerAndOverlay(<SimpleOverlay />)))
-    afterEach(() => overlay.unmount())
+  test('Contains content', () => {
+    const content = <div>simple content</div>
+    const contentFC = () => content
+    const overlay = mountWithTheme(
+      <OverlayHover isOpen>{contentFC}</OverlayHover>
+    )
 
-    test('opens & closes the overlay on hover', () => {
-      assertClosed(overlay)
-      trigger.simulate('mouseover')
-      assertOpen(overlay)
-      trigger.simulate('mouseout', mouseEventSimulator)
-      assertClosed(overlay)
-    })
-
-    test('overlay opens & closes on focus', () => {
-      assertClosed(overlay)
-      trigger.simulate('focus')
-      assertOpen(overlay)
-      trigger.simulate('blur')
-      assertClosed(overlay)
-    })
+    expect(overlay.contains(content)).toBeTruthy()
   })
 })

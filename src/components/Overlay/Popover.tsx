@@ -4,14 +4,14 @@ import { CustomizableAttributes } from '../../types/attributes'
 import { ModalSurfaceStyleProps } from '../Modal'
 import { ModalManager, ModalManagerProps } from '../Modal/ModalManager'
 import { Overlay, OverlayInteractiveProps, OverlaySurface } from './'
-import { OverlayContentProps } from './Overlay'
+import { OverlayChildrenProps } from './Overlay'
 
 const PopoverInternal: React.SFC<OverlayInteractiveProps> = ({
   children,
   ...overlayProps
 }) => (
   <Overlay {...overlayProps}>
-    {(props: OverlayContentProps) => (
+    {(props: OverlayChildrenProps) => (
       <OverlaySurface
         lockWindow
         {...props}

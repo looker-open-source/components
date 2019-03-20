@@ -6,7 +6,7 @@ import { ManagedModalProps, ModalSurfaceStyleProps } from '../Modal'
 import { ModalManager, ModalManagerProps } from '../Modal/ModalManager'
 import {
   Overlay,
-  OverlayContentProps,
+  OverlayChildrenProps,
   OverlayInteractiveProps,
   OverlaySurface,
 } from './'
@@ -33,7 +33,7 @@ const MenuOverlay: React.SFC<MenuOverlayProps> = ({
 
   return (
     <Overlay backdropStyles={backdropStyles} {...overlayProps}>
-      {(props: OverlayContentProps) => (
+      {(props: OverlayChildrenProps) => (
         <OverlaySurface
           lockWindow={true}
           {...props}
