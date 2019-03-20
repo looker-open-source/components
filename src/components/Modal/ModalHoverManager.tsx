@@ -70,7 +70,7 @@ export abstract class ModalHoverManager<
   }
 
   public render() {
-    const { content, children, ...otherProps } = this.props
+    const { content, children, isOpen, ...otherProps } = this.props
 
     const eventHandlers = {
       onBlur: this.close,

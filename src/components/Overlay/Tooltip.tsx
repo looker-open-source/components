@@ -42,26 +42,28 @@ export interface TooltipInternalProps
 
 const TooltipInternal: React.SFC<TooltipInternalProps> = ({
   children,
-  textAlign = 'center' as TextAlignProperty,
-  maxWidth = '16rem',
+  textAlign,
+  maxWidth,
   ...overlayProps
-}) => (
-  <OverlayHover {...overlayProps}>
-    {(props: OverlayChildrenProps) => (
-      <OverlaySurface {...props} {...CustomizableTooltipAttributes.surface}>
-        <Paragraph
-          fontSize="xsmall"
-          maxWidth={maxWidth}
-          p="xsmall"
-          m="none"
-          textAlign={textAlign}
-        >
-          {children}
-        </Paragraph>
-      </OverlaySurface>
-    )}
-  </OverlayHover>
-)
+}) => {
+  return (
+    <OverlayHover {...overlayProps}>
+      {(props: OverlayChildrenProps) => (
+        <OverlaySurface {...props} {...CustomizableTooltipAttributes.surface}>
+          <Paragraph
+            fontSize="xsmall"
+            maxWidth={maxWidth || '16rem'}
+            p="xsmall"
+            m="none"
+            textAlign={textAlign || 'center'}
+          >
+            {children}
+          </Paragraph>
+        </OverlaySurface>
+      )}
+    </OverlayHover>
+  )
+}
 
 export interface TooltipProps extends TooltipBaseProps, ModalHoverManagerProps {
   content: string
@@ -92,7 +94,6 @@ export class Tooltip extends ModalHoverManager<TooltipProps> {
         isOpen={this.state.isOpen}
         triggerRef={this.triggerRef}
         onClose={this.close}
-        // surfaceRef={this.props}
         {...props}
       >
         {content}

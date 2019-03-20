@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Tooltip Generates a simple Tooltip 1`] = `
+exports[`Tooltip snapshot 1`] = `
 Array [
   .c0 {
   border: 0;
