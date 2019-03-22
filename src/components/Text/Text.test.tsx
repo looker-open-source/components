@@ -8,6 +8,7 @@ import {
   snapshotTestTextComponentFontWeight,
   snapshotTestTextComponentTransform,
   snapshotTestTextComponentVariant,
+  snapshotTestTextComponentVisuallyHidden,
   snapshotTestTextComponentWrap,
 } from '../../../test/text'
 
@@ -41,4 +42,8 @@ test('A Text component wrapped', () => {
 
 test('A Text component decorated', () => {
   snapshotTestTextComponentDecoration(Text)
+})
+
+test('A Text component visally hidden', () => {
+  snapshotTestTextComponentVisuallyHidden(Text)
 })
