@@ -3,7 +3,8 @@ import * as Glyphs from '../../icons/build/glyphs'
 import { IconNames } from '../../icons/build/IconNames'
 import { Box, BoxPropsWithout } from '../Box'
 
-export interface IconProps extends BoxPropsWithout<HTMLDivElement, 'size'> {
+export interface IconProps
+  extends BoxPropsWithout<HTMLDivElement, ['size', 'onClick']> {
   name: IconNames
   size?: number | string
 }
