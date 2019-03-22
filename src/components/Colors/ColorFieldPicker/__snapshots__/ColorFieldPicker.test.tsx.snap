@@ -95,14 +95,14 @@ ShallowWrapper {
               "text": "#FFFFFF",
             },
             "neutral": Object {
-              "altText": "#939BA5",
+              "altText": "#4C535B",
               "borderColor": "#C1C6CC",
-              "dark": "#4C535B",
-              "darker": "#343C42",
+              "dark": "#707781",
+              "darker": "#4C535B",
               "light": "#F5F6F7",
               "lighter": "#FBFBFC",
               "linkColor": "#0087e1",
-              "main": "#707781",
+              "main": "#939BA5",
               "text": "#FFFFFF",
             },
             "primary": Object {
