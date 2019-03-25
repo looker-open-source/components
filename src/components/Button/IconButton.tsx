@@ -9,7 +9,7 @@ import {
 import { BoxPropsWithout } from '../Box'
 import { Button } from '../Button'
 import { Icon, IconNames } from '../Icon'
-import { Text } from '../Text'
+import { VisuallyHidden } from '../VisuallyHidden'
 
 import * as React from 'react'
 
@@ -76,7 +76,7 @@ export const IconButton: React.SFC<IconButtonProps> = ({
     p="xxsmall"
     {...props}
   >
-    <Text visuallyHidden>{label} </Text>
+    <VisuallyHidden is="span">{label}</VisuallyHidden>
     <Icon name={icon} size={iconSizeHelper(size || 'xsmall')} />
   </Button>
 )

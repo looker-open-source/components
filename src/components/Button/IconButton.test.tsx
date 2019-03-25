@@ -27,7 +27,7 @@ test('IconButton allows for ARIA attributes', () => {
   assertSnapshot(<IconButton label="Test" icon="Favorite" aria-haspopup />)
 })
 
-test('IconButton allows for ARIA attributes', () => {
+test('IconButton accepts events', () => {
   assertSnapshot(
     <IconButton label="Test" icon="Favorite" onMouseEnter={noop} />
   )

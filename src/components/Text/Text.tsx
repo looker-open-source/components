@@ -32,8 +32,6 @@ export interface TextProps
   wrap?: boolean
   /** Custom css class */
   className?: string
-  /** Visually hide text from screen, but keep available for screen readers and assistive technology */
-  visuallyHidden?: boolean
 }
 
 function getTextTransform(transform: TextTransforms | undefined) {
@@ -94,20 +92,6 @@ function getWrap(doWrap: boolean) {
   return ``
 }
 
-function visuallyHide(hide: boolean) {
-  if (hide) {
-    return css`
-      position: absolute;
-      height: 1px;
-      width: 1px;
-      overflow: hidden;
-      clip: rect(1px, 1px, 1px, 1px);
-    `
-  } else {
-    return false
-  }
-}
-
 const InternalText: React.SFC<ThemedProps<TextProps>> = ({
   is = 'span',
   align,
@@ -119,7 +103,6 @@ const InternalText: React.SFC<ThemedProps<TextProps>> = ({
   lineHeight,
   fontSize,
   fontWeight,
-  visuallyHidden,
   ...props
 }) => {
   return (
@@ -144,5 +127,4 @@ export const Text = styled<TextProps>(withTheme(InternalText))`
   ${props => getTextTransform(props.textTransform)};
   ${props => getWrap(props.wrap || false)};
   ${textVariant};
-  ${props => visuallyHide(props.visuallyHidden || false)};
 `

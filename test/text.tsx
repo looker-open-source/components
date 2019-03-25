@@ -85,11 +85,3 @@ export const snapshotTestTextComponentDecoration = (
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
 }
-
-export const snapshotTestTextComponentVisuallyHidden = (
-  Component: React.SFC<TextProps> | React.ComponentClass
-) => {
-  const component = createWithTheme(<Component visuallyHidden>Hello</Component>)
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
-}

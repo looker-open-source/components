@@ -105,10 +105,6 @@ exports[`IconButton accepts color 1`] = `
 }
 
 .c2 {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-transform: none;
   position: absolute;
   height: 1px;
   width: 1px;
@@ -130,7 +126,299 @@ exports[`IconButton accepts color 1`] = `
     className="c2 c3"
   >
     Test
-     
+  </span>
+  <div
+    className="c4"
+  >
+    <svg
+      fill="currentColor"
+      height="100%"
+      viewBox="0 0 24 24"
+      width="100%"
+    >
+      <path
+        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+        fill="currentColor"
+      />
+    </svg>
+  </div>
+</button>
+`;
+
+exports[`IconButton accepts events 1`] = `
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 0.25rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  font-size: 1rem;
+  padding: 0.25rem;
+}
+
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  height: 16px;
+  width: 16px;
+}
+
+.c0 {
+  font-weight: 600;
+  outline: none;
+  -webkit-transition: border 80ms;
+  transition: border 80ms;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: middle;
+  white-space: nowrap;
+  border-style: solid;
+  border-width: 0.0625rem;
+  background: transparent;
+  border-color: transparent;
+  color: #939BA5;
+}
+
+.c0:focus {
+  box-shadow: 0 0 0 0.15rem rgba(147,155,165,0.25);
+}
+
+.c0[disabled] {
+  cursor: default;
+  -webkit-filter: grayscale(0.3);
+  filter: grayscale(0.3);
+  opacity: 0.25;
+}
+
+.c0[disabled]:hover,
+.c0[disabled]:active,
+.c0[disabled]:focus {
+  background-color: transparent;
+  border-color: transparent;
+  color: #939BA5;
+}
+
+.c0:hover,
+.c0:focus,
+.c0.hover {
+  background: #FBFBFC;
+  border-color: #FBFBFC;
+  color: #4C535B;
+}
+
+.c0:active,
+.c0.active {
+  background: #F5F6F7;
+  border-color: #F5F6F7;
+  color: #4C535B;
+}
+
+.c2 {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  -webkit-clip: rect(1px,1px,1px,1px);
+  clip: rect(1px,1px,1px,1px);
+}
+
+<button
+  className="c0 c1"
+  onMouseEnter={[Function]}
+  style={
+    Object {
+      "lineHeight": "34px",
+    }
+  }
+  type="button"
+>
+  <span
+    className="c2 c3"
+  >
+    Test
+  </span>
+  <div
+    className="c4"
+  >
+    <svg
+      fill="currentColor"
+      height="100%"
+      viewBox="0 0 24 24"
+      width="100%"
+    >
+      <path
+        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+        fill="currentColor"
+      />
+    </svg>
+  </div>
+</button>
+`;
+
+exports[`IconButton accepts events 2`] = `
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  height: 16px;
+  width: 16px;
+}
+
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  cursor: pointer;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 0.25rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
+  font-size: 1rem;
+  padding: 0.25rem;
+}
+
+.c0 {
+  font-weight: 600;
+  outline: none;
+  -webkit-transition: border 80ms;
+  transition: border 80ms;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: middle;
+  white-space: nowrap;
+  border-style: solid;
+  border-width: 0.0625rem;
+  background: transparent;
+  border-color: transparent;
+  color: #939BA5;
+}
+
+.c0:focus {
+  box-shadow: 0 0 0 0.15rem rgba(147,155,165,0.25);
+}
+
+.c0[disabled] {
+  cursor: default;
+  -webkit-filter: grayscale(0.3);
+  filter: grayscale(0.3);
+  opacity: 0.25;
+}
+
+.c0[disabled]:hover,
+.c0[disabled]:active,
+.c0[disabled]:focus {
+  background-color: transparent;
+  border-color: transparent;
+  color: #939BA5;
+}
+
+.c0:hover,
+.c0:focus,
+.c0.hover {
+  background: #FBFBFC;
+  border-color: #FBFBFC;
+  color: #4C535B;
+}
+
+.c0:active,
+.c0.active {
+  background: #F5F6F7;
+  border-color: #F5F6F7;
+  color: #4C535B;
+}
+
+.c2 {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  -webkit-clip: rect(1px,1px,1px,1px);
+  clip: rect(1px,1px,1px,1px);
+}
+
+<button
+  className="c0 c1"
+  onClick={[Function]}
+  style={
+    Object {
+      "lineHeight": "34px",
+    }
+  }
+  type="button"
+>
+  <span
+    className="c2 c3"
+  >
+    Test
   </span>
   <div
     className="c4"
@@ -255,10 +543,6 @@ exports[`IconButton allows for ARIA attributes 1`] = `
 }
 
 .c2 {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-transform: none;
   position: absolute;
   height: 1px;
   width: 1px;
@@ -281,310 +565,6 @@ exports[`IconButton allows for ARIA attributes 1`] = `
     className="c2 c3"
   >
     Test
-     
-  </span>
-  <div
-    className="c4"
-  >
-    <svg
-      fill="currentColor"
-      height="100%"
-      viewBox="0 0 24 24"
-      width="100%"
-    >
-      <path
-        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
-        fill="currentColor"
-      />
-    </svg>
-  </div>
-</button>
-`;
-
-exports[`IconButton allows for ARIA attributes 2`] = `
-.c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  border-radius: 0.25rem;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
-  font-size: 1rem;
-  padding: 0.25rem;
-}
-
-.c3 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-}
-
-.c4 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  height: 16px;
-  width: 16px;
-}
-
-.c0 {
-  font-weight: 600;
-  outline: none;
-  -webkit-transition: border 80ms;
-  transition: border 80ms;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  vertical-align: middle;
-  white-space: nowrap;
-  border-style: solid;
-  border-width: 0.0625rem;
-  background: transparent;
-  border-color: transparent;
-  color: #939BA5;
-}
-
-.c0:focus {
-  box-shadow: 0 0 0 0.15rem rgba(147,155,165,0.25);
-}
-
-.c0[disabled] {
-  cursor: default;
-  -webkit-filter: grayscale(0.3);
-  filter: grayscale(0.3);
-  opacity: 0.25;
-}
-
-.c0[disabled]:hover,
-.c0[disabled]:active,
-.c0[disabled]:focus {
-  background-color: transparent;
-  border-color: transparent;
-  color: #939BA5;
-}
-
-.c0:hover,
-.c0:focus,
-.c0.hover {
-  background: #FBFBFC;
-  border-color: #FBFBFC;
-  color: #4C535B;
-}
-
-.c0:active,
-.c0.active {
-  background: #F5F6F7;
-  border-color: #F5F6F7;
-  color: #4C535B;
-}
-
-.c2 {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-transform: none;
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-  -webkit-clip: rect(1px,1px,1px,1px);
-  clip: rect(1px,1px,1px,1px);
-}
-
-<button
-  className="c0 c1"
-  onMouseEnter={[Function]}
-  style={
-    Object {
-      "lineHeight": "34px",
-    }
-  }
-  type="button"
->
-  <span
-    className="c2 c3"
-  >
-    Test
-     
-  </span>
-  <div
-    className="c4"
-  >
-    <svg
-      fill="currentColor"
-      height="100%"
-      viewBox="0 0 24 24"
-      width="100%"
-    >
-      <path
-        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
-        fill="currentColor"
-      />
-    </svg>
-  </div>
-</button>
-`;
-
-exports[`IconButton allows for ARIA attributes 3`] = `
-.c3 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-}
-
-.c4 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  height: 16px;
-  width: 16px;
-}
-
-.c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  cursor: pointer;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  border-radius: 0.25rem;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
-  font-size: 1rem;
-  padding: 0.25rem;
-}
-
-.c0 {
-  font-weight: 600;
-  outline: none;
-  -webkit-transition: border 80ms;
-  transition: border 80ms;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  vertical-align: middle;
-  white-space: nowrap;
-  border-style: solid;
-  border-width: 0.0625rem;
-  background: transparent;
-  border-color: transparent;
-  color: #939BA5;
-}
-
-.c0:focus {
-  box-shadow: 0 0 0 0.15rem rgba(147,155,165,0.25);
-}
-
-.c0[disabled] {
-  cursor: default;
-  -webkit-filter: grayscale(0.3);
-  filter: grayscale(0.3);
-  opacity: 0.25;
-}
-
-.c0[disabled]:hover,
-.c0[disabled]:active,
-.c0[disabled]:focus {
-  background-color: transparent;
-  border-color: transparent;
-  color: #939BA5;
-}
-
-.c0:hover,
-.c0:focus,
-.c0.hover {
-  background: #FBFBFC;
-  border-color: #FBFBFC;
-  color: #4C535B;
-}
-
-.c0:active,
-.c0.active {
-  background: #F5F6F7;
-  border-color: #F5F6F7;
-  color: #4C535B;
-}
-
-.c2 {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-transform: none;
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-  -webkit-clip: rect(1px,1px,1px,1px);
-  clip: rect(1px,1px,1px,1px);
-}
-
-<button
-  className="c0 c1"
-  onClick={[Function]}
-  style={
-    Object {
-      "lineHeight": "34px",
-    }
-  }
-  type="button"
->
-  <span
-    className="c2 c3"
-  >
-    Test
-     
   </span>
   <div
     className="c4"
@@ -709,10 +689,6 @@ exports[`IconButton default 1`] = `
 }
 
 .c2 {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-transform: none;
   position: absolute;
   height: 1px;
   width: 1px;
@@ -734,7 +710,6 @@ exports[`IconButton default 1`] = `
     className="c2 c3"
   >
     Test
-     
   </span>
   <div
     className="c4"
@@ -859,10 +834,6 @@ exports[`IconButton outline 1`] = `
 }
 
 .c2 {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-transform: none;
   position: absolute;
   height: 1px;
   width: 1px;
@@ -884,7 +855,6 @@ exports[`IconButton outline 1`] = `
     className="c2 c3"
   >
     Test
-     
   </span>
   <div
     className="c4"
@@ -1009,10 +979,6 @@ exports[`IconButton resized 1`] = `
 }
 
 .c2 {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-transform: none;
   position: absolute;
   height: 1px;
   width: 1px;
@@ -1034,7 +1000,6 @@ exports[`IconButton resized 1`] = `
     className="c2 c3"
   >
     Test
-     
   </span>
   <div
     className="c4"
