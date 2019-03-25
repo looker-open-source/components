@@ -115,11 +115,11 @@ exports[`ModalHeader 1`] = `
   border-width: 0.0625rem;
   background: transparent;
   border-color: transparent;
-  color: #707781;
+  color: #939BA5;
 }
 
 .c4:focus {
-  box-shadow: 0 0 0 0.15rem rgba(112,119,129,0.25);
+  box-shadow: 0 0 0 0.15rem rgba(147,155,165,0.25);
 }
 
 .c4[disabled] {
@@ -134,7 +134,7 @@ exports[`ModalHeader 1`] = `
 .c4[disabled]:focus {
   background-color: transparent;
   border-color: transparent;
-  color: #707781;
+  color: #939BA5;
 }
 
 .c4:hover,
@@ -142,14 +142,14 @@ exports[`ModalHeader 1`] = `
 .c4.hover {
   background: #FBFBFC;
   border-color: #FBFBFC;
-  color: #939BA5;
+  color: #4C535B;
 }
 
 .c4:active,
 .c4.active {
   background: #F5F6F7;
   border-color: #F5F6F7;
-  color: #939BA5;
+  color: #4C535B;
 }
 
 <header
