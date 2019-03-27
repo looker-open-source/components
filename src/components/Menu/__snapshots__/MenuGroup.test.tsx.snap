@@ -23,6 +23,17 @@ exports[`MenuGrouo - menu customization 1`] = `
   padding: 0rem;
 }
 
+.c6 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border: none;
+}
+
 .c4 {
   border: 0;
   box-sizing: border-box;
@@ -55,7 +66,7 @@ exports[`MenuGrouo - menu customization 1`] = `
   color: #0087e1;
 }
 
-.c6 {
+.c8 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -80,16 +91,16 @@ exports[`MenuGrouo - menu customization 1`] = `
   list-style-type: none;
 }
 
-.c8:hover .c5 {
+.c9:hover .c7 {
   color: #262D33;
 }
 
-.c8 .c5 {
+.c9 .c7 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c8 .c5 {
+.c9 .c7 {
   color: #C1C6CC;
 }
 
@@ -104,16 +115,16 @@ exports[`MenuGrouo - menu customization 1`] = `
   color: #FFFFFF;
 }
 
-.c3:hover .c5 {
+.c3:hover .c7 {
   color: #E8E5FF;
 }
 
-.c3 .c5 {
+.c3 .c7 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c3 .c5 {
+.c3 .c7 {
   color: #9785F2;
 }
 
@@ -123,7 +134,7 @@ exports[`MenuGrouo - menu customization 1`] = `
   z-index: 1;
 }
 
-.c7 {
+.c5 {
   outline: none;
   background: transparent;
   color: inherit;
@@ -131,6 +142,15 @@ exports[`MenuGrouo - menu customization 1`] = `
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
+  font-size: inherit;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   cursor: pointer;
 }
 
@@ -143,95 +163,95 @@ exports[`MenuGrouo - menu customization 1`] = `
     <li
       className="c3 c4"
     >
-      <div
-        className="c5 c6"
-      >
-        <svg
-          fill="currentColor"
-          height="100%"
-          viewBox="0 0 24 24"
-          width="100%"
-        >
-          <g
-            clipPath="url(#clip0)"
-            fill="currentColor"
-          >
-            <path
-              d="M13.913 11.36a6.339 6.339 0 0 0-3.199.864l.914 1.207a4.841 4.841 0 0 1 2.286-.572 4.88 4.88 0 0 1 4.875 4.875 4.88 4.88 0 0 1-4.875 4.875 4.88 4.88 0 0 1-4.875-4.875c0-1.323.531-2.523 1.39-3.402l-.913-1.206a6.354 6.354 0 0 0-1.977 4.608 6.382 6.382 0 0 0 6.375 6.375 6.382 6.382 0 0 0 6.375-6.375 6.382 6.382 0 0 0-6.375-6.375v.001zM9.785 8.735c0 .59-.198 1.132-.527 1.57l.927 1.224a4.1 4.1 0 0 0 .319-5.201l-1.1 1.052c.24.396.38.858.38 1.354v.001zM7.16 11.361a2.629 2.629 0 0 1-2.625-2.625A2.628 2.628 0 0 1 7.16 6.111c.405 0 .79.095 1.132.26l1.13-1.08a4.1 4.1 0 0 0-2.262-.68 4.13 4.13 0 0 0-4.125 4.125 4.13 4.13 0 0 0 4.125 4.125c.655 0 1.273-.158 1.824-.43l-.93-1.23c-.28.102-.58.16-.894.16zM11.285 3.111c0-.827.673-1.5 1.5-1.5s1.5.673 1.5 1.5a1.502 1.502 0 0 1-1.92 1.44l-1.158 1.107c.46.285 1 .453 1.578.453 1.654 0 3-1.346 3-3s-1.346-3-3-3-3 1.346-3 3c0 .532.141 1.031.384 1.464l1.16-1.11a1.481 1.481 0 0 1-.044-.355v.001z"
-            />
-            <path
-              d="M10.184 11.53a4.143 4.143 0 0 1-1.2.9l.528.696a6.457 6.457 0 0 1 1.2-.902l-.527-.695v.001zM10.504 6.33l.703-.673a3.018 3.018 0 0 1-1.038-1.083l-.747.715c.422.278.788.631 1.083 1.041h-.001z"
-            />
-            <path
-              d="M11.625 13.434l-.914-1.207a6.37 6.37 0 0 0-1.2.902l.914 1.206a4.93 4.93 0 0 1 1.199-.901zM9.407 7.381l1.099-1.052a4.153 4.153 0 0 0-1.083-1.04L8.293 6.37a2.64 2.64 0 0 1 1.113 1.011h.001zM10.186 11.53l-.927-1.223a2.63 2.63 0 0 1-1.204.894l.93 1.229c.454-.225.86-.531 1.2-.9zM11.21 5.659l1.158-1.108a1.502 1.502 0 0 1-1.036-1.084l-1.16 1.11c.249.443.608.815 1.038 1.083v-.001z"
-            />
-          </g>
-          <defs>
-            <clipPath
-              id="clip0"
-            >
-              <path
-                d="M0 0h24v24H0z"
-                fill="#fff"
-              />
-            </clipPath>
-          </defs>
-        </svg>
-      </div>
       <button
-        className="c7 c0"
+        className="c5 c6"
         role="menuitem"
       >
+        <div
+          className="c7 c8"
+        >
+          <svg
+            fill="currentColor"
+            height="100%"
+            viewBox="0 0 24 24"
+            width="100%"
+          >
+            <g
+              clipPath="url(#clip0)"
+              fill="currentColor"
+            >
+              <path
+                d="M13.913 11.36a6.339 6.339 0 0 0-3.199.864l.914 1.207a4.841 4.841 0 0 1 2.286-.572 4.88 4.88 0 0 1 4.875 4.875 4.88 4.88 0 0 1-4.875 4.875 4.88 4.88 0 0 1-4.875-4.875c0-1.323.531-2.523 1.39-3.402l-.913-1.206a6.354 6.354 0 0 0-1.977 4.608 6.382 6.382 0 0 0 6.375 6.375 6.382 6.382 0 0 0 6.375-6.375 6.382 6.382 0 0 0-6.375-6.375v.001zM9.785 8.735c0 .59-.198 1.132-.527 1.57l.927 1.224a4.1 4.1 0 0 0 .319-5.201l-1.1 1.052c.24.396.38.858.38 1.354v.001zM7.16 11.361a2.629 2.629 0 0 1-2.625-2.625A2.628 2.628 0 0 1 7.16 6.111c.405 0 .79.095 1.132.26l1.13-1.08a4.1 4.1 0 0 0-2.262-.68 4.13 4.13 0 0 0-4.125 4.125 4.13 4.13 0 0 0 4.125 4.125c.655 0 1.273-.158 1.824-.43l-.93-1.23c-.28.102-.58.16-.894.16zM11.285 3.111c0-.827.673-1.5 1.5-1.5s1.5.673 1.5 1.5a1.502 1.502 0 0 1-1.92 1.44l-1.158 1.107c.46.285 1 .453 1.578.453 1.654 0 3-1.346 3-3s-1.346-3-3-3-3 1.346-3 3c0 .532.141 1.031.384 1.464l1.16-1.11a1.481 1.481 0 0 1-.044-.355v.001z"
+              />
+              <path
+                d="M10.184 11.53a4.143 4.143 0 0 1-1.2.9l.528.696a6.457 6.457 0 0 1 1.2-.902l-.527-.695v.001zM10.504 6.33l.703-.673a3.018 3.018 0 0 1-1.038-1.083l-.747.715c.422.278.788.631 1.083 1.041h-.001z"
+              />
+              <path
+                d="M11.625 13.434l-.914-1.207a6.37 6.37 0 0 0-1.2.902l.914 1.206a4.93 4.93 0 0 1 1.199-.901zM9.407 7.381l1.099-1.052a4.153 4.153 0 0 0-1.083-1.04L8.293 6.37a2.64 2.64 0 0 1 1.113 1.011h.001zM10.186 11.53l-.927-1.223a2.63 2.63 0 0 1-1.204.894l.93 1.229c.454-.225.86-.531 1.2-.9zM11.21 5.659l1.158-1.108a1.502 1.502 0 0 1-1.036-1.084l-1.16 1.11c.249.443.608.815 1.038 1.083v-.001z"
+              />
+            </g>
+            <defs>
+              <clipPath
+                id="clip0"
+              >
+                <path
+                  d="M0 0h24v24H0z"
+                  fill="#fff"
+                />
+              </clipPath>
+            </defs>
+          </svg>
+        </div>
         Looker
       </button>
     </li>
     <li
       className="c3 c4"
     >
-      <div
-        className="c5 c6"
-      >
-        <svg
-          fill="currentColor"
-          height="100%"
-          viewBox="0 0 24 24"
-          width="100%"
-        >
-          <path
-            d="M11.749.09L2 4.423v6.499c0 6.01 4.16 11.633 9.749 12.998 5.589-1.365 9.749-6.986 9.749-12.998v-6.5L11.749.09zM9.582 17.42l-4.333-4.333 1.527-1.527 2.805 2.794 7.138-7.138 1.527 1.538-8.666 8.665h.002z"
-            fill="currentColor"
-          />
-        </svg>
-      </div>
       <button
-        className="c7 c0"
+        className="c5 c6"
         role="menuitem"
       >
+        <div
+          className="c7 c8"
+        >
+          <svg
+            fill="currentColor"
+            height="100%"
+            viewBox="0 0 24 24"
+            width="100%"
+          >
+            <path
+              d="M11.749.09L2 4.423v6.499c0 6.01 4.16 11.633 9.749 12.998 5.589-1.365 9.749-6.986 9.749-12.998v-6.5L11.749.09zM9.582 17.42l-4.333-4.333 1.527-1.527 2.805 2.794 7.138-7.138 1.527 1.538-8.666 8.665h.002z"
+              fill="currentColor"
+            />
+          </svg>
+        </div>
         Validate
       </button>
     </li>
     <li
       className="c3 c4"
     >
-      <div
-        className="c5 c6"
-      >
-        <svg
-          fill="currentColor"
-          height="100%"
-          viewBox="0 0 24 24"
-          width="100%"
-        >
-          <path
-            d="M11 2v20c-5.07-.5-9-4.79-9-10s3.93-9.5 9-10zm2.03 0v8.99H22c-.47-4.74-4.24-8.52-8.97-8.99zm0 11.01V22c4.74-.47 8.5-4.25 8.97-8.99h-8.97z"
-            fill="currentColor"
-          />
-        </svg>
-      </div>
       <button
-        className="c7 c0"
+        className="c5 c6"
         role="menuitem"
       >
+        <div
+          className="c7 c8"
+        >
+          <svg
+            fill="currentColor"
+            height="100%"
+            viewBox="0 0 24 24"
+            width="100%"
+          >
+            <path
+              d="M11 2v20c-5.07-.5-9-4.79-9-10s3.93-9.5 9-10zm2.03 0v8.99H22c-.47-4.74-4.24-8.52-8.97-8.99zm0 11.01V22c4.74-.47 8.5-4.25 8.97-8.99h-8.97z"
+              fill="currentColor"
+            />
+          </svg>
+        </div>
         Pizza!
       </button>
     </li>
@@ -296,6 +316,17 @@ exports[`MenuGroup - JSX label 1`] = `
   color: #0087e1;
 }
 
+.c8 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border: none;
+}
+
 .c2 {
   border: 0;
   box-sizing: border-box;
@@ -341,16 +372,16 @@ exports[`MenuGroup - JSX label 1`] = `
   color: #262D33;
 }
 
-.c5:hover .c8 {
+.c5:hover .c9 {
   color: #262D33;
 }
 
-.c5 .c8 {
+.c5 .c9 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c5 .c8 {
+.c5 .c9 {
   color: #C1C6CC;
 }
 
@@ -368,6 +399,15 @@ exports[`MenuGroup - JSX label 1`] = `
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
+  font-size: inherit;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   cursor: pointer;
 }
 
@@ -390,7 +430,7 @@ exports[`MenuGroup - JSX label 1`] = `
       className="c5 c6"
     >
       <button
-        className="c7 c0"
+        className="c7 c8"
         role="menuitem"
       >
         what?
@@ -400,7 +440,7 @@ exports[`MenuGroup - JSX label 1`] = `
       className="c5 c6"
     >
       <button
-        className="c7 c0"
+        className="c7 c8"
         role="menuitem"
       >
         who?
@@ -410,7 +450,7 @@ exports[`MenuGroup - JSX label 1`] = `
       className="c5 c6"
     >
       <button
-        className="c7 c0"
+        className="c7 c8"
         role="menuitem"
       >
         where?
@@ -475,7 +515,18 @@ exports[`MenuGroup - canActivate 1`] = `
   color: #0087e1;
 }
 
-.c5 {
+.c6 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border: none;
+}
+
+.c7 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -501,16 +552,16 @@ exports[`MenuGroup - canActivate 1`] = `
   color: #262D33;
 }
 
-.c3:hover .c7 {
+.c3:hover .c8 {
   color: #262D33;
 }
 
-.c3 .c7 {
+.c3 .c8 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c3 .c7 {
+.c3 .c8 {
   color: #C1C6CC;
 }
 
@@ -520,7 +571,7 @@ exports[`MenuGroup - canActivate 1`] = `
   z-index: 1;
 }
 
-.c6 {
+.c5 {
   outline: none;
   background: transparent;
   color: inherit;
@@ -528,6 +579,15 @@ exports[`MenuGroup - canActivate 1`] = `
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
+  font-size: inherit;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   cursor: pointer;
 }
 
@@ -540,39 +600,39 @@ exports[`MenuGroup - canActivate 1`] = `
     <li
       className="c3 c4"
     >
-      <div
-        className="c5"
-      />
       <button
-        className="c6 c0"
+        className="c5 c6"
         role="menuitemradio"
       >
+        <div
+          className="c7"
+        />
         what?
       </button>
     </li>
     <li
       className="c3 c4"
     >
-      <div
-        className="c5"
-      />
       <button
-        className="c6 c0"
+        className="c5 c6"
         role="menuitemradio"
       >
+        <div
+          className="c7"
+        />
         who?
       </button>
     </li>
     <li
       className="c3 c4"
     >
-      <div
-        className="c5"
-      />
       <button
-        className="c6 c0"
+        className="c5 c6"
         role="menuitemradio"
       >
+        <div
+          className="c7"
+        />
         where?
       </button>
     </li>
@@ -635,6 +695,17 @@ exports[`MenuGroup - label 1`] = `
   color: #0087e1;
 }
 
+.c8 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border: none;
+}
+
 .c2 {
   border: 0;
   box-sizing: border-box;
@@ -680,16 +751,16 @@ exports[`MenuGroup - label 1`] = `
   color: #262D33;
 }
 
-.c5:hover .c8 {
+.c5:hover .c9 {
   color: #262D33;
 }
 
-.c5 .c8 {
+.c5 .c9 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c5 .c8 {
+.c5 .c9 {
   color: #C1C6CC;
 }
 
@@ -707,6 +778,15 @@ exports[`MenuGroup - label 1`] = `
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
+  font-size: inherit;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   cursor: pointer;
 }
 
@@ -725,7 +805,7 @@ exports[`MenuGroup - label 1`] = `
       className="c5 c6"
     >
       <button
-        className="c7 c0"
+        className="c7 c8"
         role="menuitem"
       >
         what?
@@ -735,7 +815,7 @@ exports[`MenuGroup - label 1`] = `
       className="c5 c6"
     >
       <button
-        className="c7 c0"
+        className="c7 c8"
         role="menuitem"
       >
         who?
@@ -745,7 +825,7 @@ exports[`MenuGroup - label 1`] = `
       className="c5 c6"
     >
       <button
-        className="c7 c0"
+        className="c7 c8"
         role="menuitem"
       >
         where?
@@ -810,6 +890,17 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
   color: #0087e1;
 }
 
+.c8 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border: none;
+}
+
 .c2 {
   border: 0;
   box-sizing: border-box;
@@ -855,16 +946,16 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
   color: #262D33;
 }
 
-.c5:hover .c8 {
+.c5:hover .c9 {
   color: #262D33;
 }
 
-.c5 .c8 {
+.c5 .c9 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c5 .c8 {
+.c5 .c9 {
   color: #C1C6CC;
 }
 
@@ -882,6 +973,15 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
+  font-size: inherit;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   cursor: pointer;
 }
 
@@ -905,7 +1005,7 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
       className="c5 c6"
     >
       <button
-        className="c7 c0"
+        className="c7 c8"
         role="menuitem"
       >
         what?
@@ -915,7 +1015,7 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
       className="c5 c6"
     >
       <button
-        className="c7 c0"
+        className="c7 c8"
         role="menuitem"
       >
         who?
@@ -925,7 +1025,7 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
       className="c5 c6"
     >
       <button
-        className="c7 c0"
+        className="c7 c8"
         role="menuitem"
       >
         where?
@@ -990,6 +1090,17 @@ exports[`MenuGroup 1`] = `
   color: #0087e1;
 }
 
+.c6 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border: none;
+}
+
 .c1 {
   list-style-type: none;
 }
@@ -1005,16 +1116,16 @@ exports[`MenuGroup 1`] = `
   color: #262D33;
 }
 
-.c3:hover .c6 {
+.c3:hover .c7 {
   color: #262D33;
 }
 
-.c3 .c6 {
+.c3 .c7 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c3 .c6 {
+.c3 .c7 {
   color: #C1C6CC;
 }
 
@@ -1032,6 +1143,15 @@ exports[`MenuGroup 1`] = `
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
+  font-size: inherit;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   cursor: pointer;
 }
 
@@ -1045,7 +1165,7 @@ exports[`MenuGroup 1`] = `
       className="c3 c4"
     >
       <button
-        className="c5 c0"
+        className="c5 c6"
         role="menuitem"
       >
         who!
