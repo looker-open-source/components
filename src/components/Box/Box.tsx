@@ -101,6 +101,7 @@ const Tag = tag
 export interface BoxFlexProps
   extends AlignContentProps,
     AlignItemsProps,
+    FlexProps,
     FlexDirectionProps,
     FlexWrapProps,
     JustifyContentProps {}

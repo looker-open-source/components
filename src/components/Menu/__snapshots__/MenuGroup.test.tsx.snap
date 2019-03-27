@@ -95,6 +95,8 @@ exports[`MenuGrouo - menu customization 1`] = `
 
 .c3 {
   position: relative;
+  -webkit-text-decoration: none;
+  text-decoration: none;
   -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
 }
@@ -332,6 +334,8 @@ exports[`MenuGroup - JSX label 1`] = `
 
 .c5 {
   position: relative;
+  -webkit-text-decoration: none;
+  text-decoration: none;
   -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
 }
@@ -492,6 +496,8 @@ exports[`MenuGroup - canActivate 1`] = `
 
 .c3 {
   position: relative;
+  -webkit-text-decoration: none;
+  text-decoration: none;
   -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
 }
@@ -671,6 +677,8 @@ exports[`MenuGroup - label 1`] = `
 
 .c5 {
   position: relative;
+  -webkit-text-decoration: none;
+  text-decoration: none;
   -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
 }
@@ -846,6 +854,8 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
 
 .c5 {
   position: relative;
+  -webkit-text-decoration: none;
+  text-decoration: none;
   -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
 }
@@ -996,6 +1006,8 @@ exports[`MenuGroup 1`] = `
 
 .c3 {
   position: relative;
+  -webkit-text-decoration: none;
+  text-decoration: none;
   -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
 }

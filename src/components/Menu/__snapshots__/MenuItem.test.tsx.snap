@@ -79,6 +79,8 @@ exports[`MenuItem - active + icon 1`] = `
 
 .c0 {
   position: relative;
+  -webkit-text-decoration: none;
+  text-decoration: none;
   -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
 }
@@ -205,6 +207,8 @@ exports[`MenuItem - active 1`] = `
 
 .c0 {
   position: relative;
+  -webkit-text-decoration: none;
+  text-decoration: none;
   -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
 }
@@ -336,6 +340,8 @@ exports[`MenuItem - canActivate + active 1`] = `
 
 .c0 {
   position: relative;
+  -webkit-text-decoration: none;
+  text-decoration: none;
   -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
 }
@@ -459,6 +465,8 @@ exports[`MenuItem - canActivate 1`] = `
 
 .c0 {
   position: relative;
+  -webkit-text-decoration: none;
+  text-decoration: none;
   -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
 }
@@ -614,10 +622,13 @@ exports[`MenuItem - current + marker 1`] = `
 
 .c0 {
   position: relative;
+  -webkit-text-decoration: none;
+  text-decoration: none;
   -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
   background: #F5F6F7;
   color: #262D33;
+  font-weight: bold;
 }
 
 .c0 .c2 {
@@ -776,10 +787,13 @@ exports[`MenuItem - current 1`] = `
 
 .c0 {
   position: relative;
+  -webkit-text-decoration: none;
+  text-decoration: none;
   -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
   background: #F5F6F7;
   color: #262D33;
+  font-weight: bold;
 }
 
 .c0 .c2 {
@@ -895,6 +909,8 @@ exports[`MenuItem - detail 1`] = `
 
 .c0 {
   position: relative;
+  -webkit-text-decoration: none;
+  text-decoration: none;
   -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
 }
@@ -1017,6 +1033,8 @@ exports[`MenuItem - icon 1`] = `
 
 .c0 {
   position: relative;
+  -webkit-text-decoration: none;
+  text-decoration: none;
   -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
 }
@@ -1142,10 +1160,13 @@ exports[`MenuItem - with customizations 1`] = `
 
 .c0 {
   position: relative;
+  -webkit-text-decoration: none;
+  text-decoration: none;
   -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
   background: #BFB2FF;
   color: #1E1047;
+  font-weight: bold;
 }
 
 .c0 .c4 {
@@ -1242,6 +1263,8 @@ exports[`MenuItem 1`] = `
 
 .c0 {
   position: relative;
+  -webkit-text-decoration: none;
+  text-decoration: none;
   -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
 }

@@ -1,7 +1,14 @@
 import deepmerge from 'deepmerge'
 import * as React from 'react'
 import { IconNames } from '../../icons/build/IconNames'
-import { css, easings, palette, styled, transitions } from '../../style'
+import {
+  css,
+  easings,
+  FontWeights,
+  palette,
+  styled,
+  transitions,
+} from '../../style'
 import { Box, BoxProps, BoxPropsWithout } from '../Box'
 import { Icon } from '../Icon'
 import { MenuContextProps, withMenu } from './MenuContext'
@@ -21,6 +28,7 @@ export interface MenuInteractiveCustomizations {
   color?: string
   text?: string
   icon?: MenuIconCustomizations
+  fontWeight?: FontWeights
 }
 
 export interface MenuItemCustomizationProps extends BoxProps<HTMLDivElement> {
@@ -115,6 +123,7 @@ const MenuItemInteral: React.SFC<MenuItemProps> = ({
     current: {
       bg: palette.charcoal100,
       color: palette.charcoal900,
+      fontWeight: 'bold',
       icon: {
         color: palette.charcoal900,
       },
@@ -203,6 +212,7 @@ function currentStyles(props: StyleProps) {
     return `
       background: ${props.customizationProps.current.bg};
       color: ${props.customizationProps.current.color};
+      font-weight: ${props.customizationProps.current.fontWeight}
     `
   }
   return false
@@ -289,6 +299,7 @@ const MenuIcon = styled(Icon)``
 
 const MenuItemStyle = styled(MenuItemStyleFactory)`
   position: relative;
+  text-decoration: none;
   transition: background ${transitions.durationQuick} ${easings.ease},
     color ${transitions.durationQuick} ${easings.ease};
   ${hoverStyles};
