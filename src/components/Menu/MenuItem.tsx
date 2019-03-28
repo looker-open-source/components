@@ -176,6 +176,7 @@ const MenuItemInteral: React.SFC<MenuItemProps> = ({
         tabIndex={itemRole === 'link' ? -1 : undefined}
         aria-checked={active}
       >
+        {itemIcon()}
         {children}
       </MenuItemChildStyle>
     )
@@ -200,7 +201,6 @@ const MenuItemInteral: React.SFC<MenuItemProps> = ({
       customizationProps={customProps}
       {...props}
     >
-      {itemIcon()}
       {childrenWrapper()}
       {formatDetail(detail)}
     </MenuItemStyle>
@@ -318,7 +318,7 @@ const MenuItemStyle = styled(MenuItemStyleFactory)`
 `
 
 const MenuItemChildStyleFactory = (props: MenuItemProps) => {
-  return <Box {...props} />
+  return <Box border="none" {...props} />
 }
 
 const MenuItemChildStyle = styled(MenuItemChildStyleFactory)`
@@ -327,6 +327,9 @@ const MenuItemChildStyle = styled(MenuItemChildStyleFactory)`
   color: inherit;
   text-align: left;
   flex: 1;
+  font-size: inherit;
+  display: flex;
+  align-items: center;
   cursor: pointer;
 `
 

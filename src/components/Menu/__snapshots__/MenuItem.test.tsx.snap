@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MenuItem - active + icon 1`] = `
-.c5 {
+.c3 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -9,9 +9,10 @@ exports[`MenuItem - active + icon 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  border: none;
 }
 
-.c3 {
+.c5 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -64,16 +65,16 @@ exports[`MenuItem - active + icon 1`] = `
   color: #0087e1;
 }
 
-.c6:hover .c2 {
+.c6:hover .c4 {
   color: #262D33;
 }
 
-.c6 .c2 {
+.c6 .c4 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c6 .c2 {
+.c6 .c4 {
   color: #C1C6CC;
 }
 
@@ -90,16 +91,16 @@ exports[`MenuItem - active + icon 1`] = `
   color: #262D33;
 }
 
-.c0:hover .c2 {
+.c0:hover .c4 {
   color: #262D33;
 }
 
-.c0 .c2 {
+.c0 .c4 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c0 .c2 {
+.c0 .c4 {
   color: #0087e1;
 }
 
@@ -109,7 +110,7 @@ exports[`MenuItem - active + icon 1`] = `
   z-index: 1;
 }
 
-.c4 {
+.c2 {
   outline: none;
   background: transparent;
   color: inherit;
@@ -117,46 +118,55 @@ exports[`MenuItem - active + icon 1`] = `
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
+  font-size: inherit;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   cursor: pointer;
 }
 
 <li
   className="c0 c1"
 >
-  <div
-    className="c2 c3"
-  >
-    <svg
-      fill="currentColor"
-      height="100%"
-      viewBox="0 0 24 24"
-      width="100%"
-    >
-      <g
-        clipPath="url(#clip0)"
-      >
-        <path
-          d="M16.5 3.002A1.5 1.5 0 1 0 16.5.001a1.5 1.5 0 0 0-.001 3zM12 4.503a1.501 1.501 0 1 0-.002-3.002A1.501 1.501 0 0 0 12 4.503zm8.665 18.012c-1.506-2.898-4.165-9.014-4.165-9.014v-6h.75a.75.75 0 0 0 0-1.5h-9a.75.75 0 0 0 0 1.5H9v6s-2.601 6.331-4.072 9.16c-.696 1.341-.696 1.341.964 1.341h14.097c.67 0 1.45 0 .677-1.488l-.001.001zM10.5 13.502v-6H15v6l.642 1.5H9.89c.36-.879.609-1.5.609-1.5zm7.407 9H7.91c-1.383 0-1.383 0-.803-1.148.615-1.218 1.467-3.189 2.163-4.852h7.026c.707 1.606 1.559 3.501 2.177 4.723.643 1.276-.006 1.276-.566 1.276v.001z"
-          fill="currentColor"
-        />
-      </g>
-      <defs>
-        <clipPath
-          id="clip0"
-        >
-          <path
-            d="M0 0h24v24H0z"
-            fill="#fff"
-          />
-        </clipPath>
-      </defs>
-    </svg>
-  </div>
   <button
     aria-checked={true}
-    className="c4 c5"
+    className="c2 c3"
     role="menuitem"
   >
+    <div
+      className="c4 c5"
+    >
+      <svg
+        fill="currentColor"
+        height="100%"
+        viewBox="0 0 24 24"
+        width="100%"
+      >
+        <g
+          clipPath="url(#clip0)"
+        >
+          <path
+            d="M16.5 3.002A1.5 1.5 0 1 0 16.5.001a1.5 1.5 0 0 0-.001 3zM12 4.503a1.501 1.501 0 1 0-.002-3.002A1.501 1.501 0 0 0 12 4.503zm8.665 18.012c-1.506-2.898-4.165-9.014-4.165-9.014v-6h.75a.75.75 0 0 0 0-1.5h-9a.75.75 0 0 0 0 1.5H9v6s-2.601 6.331-4.072 9.16c-.696 1.341-.696 1.341.964 1.341h14.097c.67 0 1.45 0 .677-1.488l-.001.001zM10.5 13.502v-6H15v6l.642 1.5H9.89c.36-.879.609-1.5.609-1.5zm7.407 9H7.91c-1.383 0-1.383 0-.803-1.148.615-1.218 1.467-3.189 2.163-4.852h7.026c.707 1.606 1.559 3.501 2.177 4.723.643 1.276-.006 1.276-.566 1.276v.001z"
+            fill="currentColor"
+          />
+        </g>
+        <defs>
+          <clipPath
+            id="clip0"
+          >
+            <path
+              d="M0 0h24v24H0z"
+              fill="#fff"
+            />
+          </clipPath>
+        </defs>
+      </svg>
+    </div>
     who!
   </button>
 </li>
@@ -171,6 +181,7 @@ exports[`MenuItem - active 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  border: none;
 }
 
 .c1 {
@@ -245,6 +256,15 @@ exports[`MenuItem - active 1`] = `
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
+  font-size: inherit;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   cursor: pointer;
 }
 
@@ -262,7 +282,7 @@ exports[`MenuItem - active 1`] = `
 `;
 
 exports[`MenuItem - canActivate + active 1`] = `
-.c5 {
+.c3 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -270,9 +290,10 @@ exports[`MenuItem - canActivate + active 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  border: none;
 }
 
-.c3 {
+.c5 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -325,16 +346,16 @@ exports[`MenuItem - canActivate + active 1`] = `
   color: #0087e1;
 }
 
-.c6:hover .c2 {
+.c6:hover .c4 {
   color: #262D33;
 }
 
-.c6 .c2 {
+.c6 .c4 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c6 .c2 {
+.c6 .c4 {
   color: #C1C6CC;
 }
 
@@ -351,16 +372,16 @@ exports[`MenuItem - canActivate + active 1`] = `
   color: #262D33;
 }
 
-.c0:hover .c2 {
+.c0:hover .c4 {
   color: #262D33;
 }
 
-.c0 .c2 {
+.c0 .c4 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c0 .c2 {
+.c0 .c4 {
   color: #0087e1;
 }
 
@@ -370,7 +391,7 @@ exports[`MenuItem - canActivate + active 1`] = `
   z-index: 1;
 }
 
-.c4 {
+.c2 {
   outline: none;
   background: transparent;
   color: inherit;
@@ -378,32 +399,41 @@ exports[`MenuItem - canActivate + active 1`] = `
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
+  font-size: inherit;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   cursor: pointer;
 }
 
 <li
   className="c0 c1"
 >
-  <div
-    className="c2 c3"
-  >
-    <svg
-      fill="currentColor"
-      height="100%"
-      viewBox="0 0 24 24"
-      width="100%"
-    >
-      <path
-        d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"
-        fill="currentColor"
-      />
-    </svg>
-  </div>
   <button
     aria-checked={true}
-    className="c4 c5"
+    className="c2 c3"
     role="menuitemradio"
   >
+    <div
+      className="c4 c5"
+    >
+      <svg
+        fill="currentColor"
+        height="100%"
+        viewBox="0 0 24 24"
+        width="100%"
+      >
+        <path
+          d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"
+          fill="currentColor"
+        />
+      </svg>
+    </div>
     who!
   </button>
 </li>
@@ -442,7 +472,7 @@ exports[`MenuItem - canActivate 1`] = `
   color: #0087e1;
 }
 
-.c4 {
+.c3 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -450,9 +480,10 @@ exports[`MenuItem - canActivate 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  border: none;
 }
 
-.c2 {
+.c4 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -495,7 +526,7 @@ exports[`MenuItem - canActivate 1`] = `
   z-index: 1;
 }
 
-.c3 {
+.c2 {
   outline: none;
   background: transparent;
   color: inherit;
@@ -503,19 +534,28 @@ exports[`MenuItem - canActivate 1`] = `
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
+  font-size: inherit;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   cursor: pointer;
 }
 
 <li
   className="c0 c1"
 >
-  <div
-    className="c2"
-  />
   <button
-    className="c3 c4"
+    className="c2 c3"
     role="menuitemradio"
   >
+    <div
+      className="c4"
+    />
     who!
   </button>
 </li>
@@ -554,7 +594,7 @@ exports[`MenuItem - current + marker 1`] = `
   color: #0087e1;
 }
 
-.c5 {
+.c3 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -562,9 +602,10 @@ exports[`MenuItem - current + marker 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  border: none;
 }
 
-.c3 {
+.c5 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -585,38 +626,38 @@ exports[`MenuItem - current + marker 1`] = `
   width: 20px;
 }
 
-.c6:hover .c2 {
+.c6:hover .c4 {
   color: #262D33;
 }
 
-.c6 .c2 {
+.c6 .c4 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c6 .c2 {
+.c6 .c4 {
   color: #C1C6CC;
 }
 
-.c7:hover .c2 {
+.c7:hover .c4 {
   color: #262D33;
 }
 
-.c7 .c2 {
+.c7 .c4 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c7 .c2 {
+.c7 .c4 {
   color: #0087e1;
 }
 
-.c8 .c2 {
+.c8 .c4 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c8 .c2 {
+.c8 .c4 {
   color: #262D33;
 }
 
@@ -631,12 +672,12 @@ exports[`MenuItem - current + marker 1`] = `
   font-weight: bold;
 }
 
-.c0 .c2 {
+.c0 .c4 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c0 .c2 {
+.c0 .c4 {
   color: #262D33;
 }
 
@@ -657,7 +698,7 @@ exports[`MenuItem - current + marker 1`] = `
   z-index: 1;
 }
 
-.c4 {
+.c2 {
   outline: none;
   background: transparent;
   color: inherit;
@@ -665,31 +706,40 @@ exports[`MenuItem - current + marker 1`] = `
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
+  font-size: inherit;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   cursor: pointer;
 }
 
 <li
   className="c0 c1"
 >
-  <div
-    className="c2 c3"
-  >
-    <svg
-      fill="currentColor"
-      height="100%"
-      viewBox="0 0 24 24"
-      width="100%"
-    >
-      <path
-        d="M12 5.69l5 4.5V18h-2v-6H9v6H7V10.19l5-4.5zM12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"
-        fill="currentColor"
-      />
-    </svg>
-  </div>
   <button
-    className="c4 c5"
+    className="c2 c3"
     role="menuitem"
   >
+    <div
+      className="c4 c5"
+    >
+      <svg
+        fill="currentColor"
+        height="100%"
+        viewBox="0 0 24 24"
+        width="100%"
+      >
+        <path
+          d="M12 5.69l5 4.5V18h-2v-6H9v6H7V10.19l5-4.5zM12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"
+          fill="currentColor"
+        />
+      </svg>
+    </div>
     who!
   </button>
 </li>
@@ -728,7 +778,7 @@ exports[`MenuItem - current 1`] = `
   color: #0087e1;
 }
 
-.c5 {
+.c3 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -736,9 +786,10 @@ exports[`MenuItem - current 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  border: none;
 }
 
-.c3 {
+.c5 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -759,29 +810,29 @@ exports[`MenuItem - current 1`] = `
   width: 20px;
 }
 
-.c6:hover .c2 {
+.c6:hover .c4 {
   color: #262D33;
 }
 
-.c6 .c2 {
+.c6 .c4 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c6 .c2 {
+.c6 .c4 {
   color: #C1C6CC;
 }
 
-.c7:hover .c2 {
+.c7:hover .c4 {
   color: #262D33;
 }
 
-.c7 .c2 {
+.c7 .c4 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c7 .c2 {
+.c7 .c4 {
   color: #0087e1;
 }
 
@@ -796,12 +847,12 @@ exports[`MenuItem - current 1`] = `
   font-weight: bold;
 }
 
-.c0 .c2 {
+.c0 .c4 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c0 .c2 {
+.c0 .c4 {
   color: #262D33;
 }
 
@@ -811,7 +862,7 @@ exports[`MenuItem - current 1`] = `
   z-index: 1;
 }
 
-.c4 {
+.c2 {
   outline: none;
   background: transparent;
   color: inherit;
@@ -819,31 +870,40 @@ exports[`MenuItem - current 1`] = `
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
+  font-size: inherit;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   cursor: pointer;
 }
 
 <li
   className="c0 c1"
 >
-  <div
-    className="c2 c3"
-  >
-    <svg
-      fill="currentColor"
-      height="100%"
-      viewBox="0 0 24 24"
-      width="100%"
-    >
-      <path
-        d="M12 5.69l5 4.5V18h-2v-6H9v6H7V10.19l5-4.5zM12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"
-        fill="currentColor"
-      />
-    </svg>
-  </div>
   <button
-    className="c4 c5"
+    className="c2 c3"
     role="menuitem"
   >
+    <div
+      className="c4 c5"
+    >
+      <svg
+        fill="currentColor"
+        height="100%"
+        viewBox="0 0 24 24"
+        width="100%"
+      >
+        <path
+          d="M12 5.69l5 4.5V18h-2v-6H9v6H7V10.19l5-4.5zM12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"
+          fill="currentColor"
+        />
+      </svg>
+    </div>
     who!
   </button>
 </li>
@@ -890,6 +950,7 @@ exports[`MenuItem - detail 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  border: none;
 }
 
 .c4 {
@@ -947,6 +1008,15 @@ exports[`MenuItem - detail 1`] = `
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
+  font-size: inherit;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   cursor: pointer;
 }
 
@@ -1000,7 +1070,7 @@ exports[`MenuItem - icon 1`] = `
   color: #0087e1;
 }
 
-.c5 {
+.c3 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -1008,9 +1078,10 @@ exports[`MenuItem - icon 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  border: none;
 }
 
-.c3 {
+.c5 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -1044,16 +1115,16 @@ exports[`MenuItem - icon 1`] = `
   color: #262D33;
 }
 
-.c0:hover .c2 {
+.c0:hover .c4 {
   color: #262D33;
 }
 
-.c0 .c2 {
+.c0 .c4 {
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c0 .c2 {
+.c0 .c4 {
   color: #C1C6CC;
 }
 
@@ -1063,7 +1134,7 @@ exports[`MenuItem - icon 1`] = `
   z-index: 1;
 }
 
-.c4 {
+.c2 {
   outline: none;
   background: transparent;
   color: inherit;
@@ -1071,45 +1142,54 @@ exports[`MenuItem - icon 1`] = `
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
+  font-size: inherit;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   cursor: pointer;
 }
 
 <li
   className="c0 c1"
 >
-  <div
-    className="c2 c3"
-  >
-    <svg
-      fill="currentColor"
-      height="100%"
-      viewBox="0 0 24 24"
-      width="100%"
-    >
-      <g
-        clipPath="url(#clip0)"
-      >
-        <path
-          d="M16.5 3.002A1.5 1.5 0 1 0 16.5.001a1.5 1.5 0 0 0-.001 3zM12 4.503a1.501 1.501 0 1 0-.002-3.002A1.501 1.501 0 0 0 12 4.503zm8.665 18.012c-1.506-2.898-4.165-9.014-4.165-9.014v-6h.75a.75.75 0 0 0 0-1.5h-9a.75.75 0 0 0 0 1.5H9v6s-2.601 6.331-4.072 9.16c-.696 1.341-.696 1.341.964 1.341h14.097c.67 0 1.45 0 .677-1.488l-.001.001zM10.5 13.502v-6H15v6l.642 1.5H9.89c.36-.879.609-1.5.609-1.5zm7.407 9H7.91c-1.383 0-1.383 0-.803-1.148.615-1.218 1.467-3.189 2.163-4.852h7.026c.707 1.606 1.559 3.501 2.177 4.723.643 1.276-.006 1.276-.566 1.276v.001z"
-          fill="currentColor"
-        />
-      </g>
-      <defs>
-        <clipPath
-          id="clip0"
-        >
-          <path
-            d="M0 0h24v24H0z"
-            fill="#fff"
-          />
-        </clipPath>
-      </defs>
-    </svg>
-  </div>
   <button
-    className="c4 c5"
+    className="c2 c3"
     role="menuitem"
   >
+    <div
+      className="c4 c5"
+    >
+      <svg
+        fill="currentColor"
+        height="100%"
+        viewBox="0 0 24 24"
+        width="100%"
+      >
+        <g
+          clipPath="url(#clip0)"
+        >
+          <path
+            d="M16.5 3.002A1.5 1.5 0 1 0 16.5.001a1.5 1.5 0 0 0-.001 3zM12 4.503a1.501 1.501 0 1 0-.002-3.002A1.501 1.501 0 0 0 12 4.503zm8.665 18.012c-1.506-2.898-4.165-9.014-4.165-9.014v-6h.75a.75.75 0 0 0 0-1.5h-9a.75.75 0 0 0 0 1.5H9v6s-2.601 6.331-4.072 9.16c-.696 1.341-.696 1.341.964 1.341h14.097c.67 0 1.45 0 .677-1.488l-.001.001zM10.5 13.502v-6H15v6l.642 1.5H9.89c.36-.879.609-1.5.609-1.5zm7.407 9H7.91c-1.383 0-1.383 0-.803-1.148.615-1.218 1.467-3.189 2.163-4.852h7.026c.707 1.606 1.559 3.501 2.177 4.723.643 1.276-.006 1.276-.566 1.276v.001z"
+            fill="currentColor"
+          />
+        </g>
+        <defs>
+          <clipPath
+            id="clip0"
+          >
+            <path
+              d="M0 0h24v24H0z"
+              fill="#fff"
+            />
+          </clipPath>
+        </defs>
+      </svg>
+    </div>
     who!
   </button>
 </li>
@@ -1124,6 +1204,7 @@ exports[`MenuItem - with customizations 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  border: none;
 }
 
 .c1 {
@@ -1203,6 +1284,15 @@ exports[`MenuItem - with customizations 1`] = `
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
+  font-size: inherit;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   cursor: pointer;
 }
 
@@ -1259,6 +1349,7 @@ exports[`MenuItem 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  border: none;
 }
 
 .c0 {
@@ -1301,6 +1392,15 @@ exports[`MenuItem 1`] = `
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
+  font-size: inherit;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   cursor: pointer;
 }
 
