@@ -11,7 +11,7 @@ import {
   OverlaySurface,
 } from './'
 
-export interface MenuOverlayProps extends OverlayInteractiveProps {
+export interface MenuOverlayInternalProps extends OverlayInteractiveProps {
   backdropOffset?: {
     top?: string
     left?: string
@@ -20,7 +20,7 @@ export interface MenuOverlayProps extends OverlayInteractiveProps {
   }
 }
 
-const MenuOverlay: React.SFC<MenuOverlayProps> = ({
+const MenuOverlayInternal: React.SFC<MenuOverlayInternalProps> = ({
   children,
   backdropOffset,
   ...overlayProps
@@ -46,17 +46,53 @@ const MenuOverlay: React.SFC<MenuOverlayProps> = ({
   )
 }
 
-export class MenuOverlayManager extends ModalManager<ModalManagerProps> {
+export interface MenuOverlayProps extends ModalManagerProps {
+  backdropOffset?: {
+    top?: string
+    left?: string
+    bottom?: string
+    right?: string
+  }
+}
+
+export class MenuOverlay extends ModalManager<MenuOverlayProps> {
+  constructor(props: MenuOverlayProps) {
+    super(props)
+
+    this.checkClickOrigin = this.checkClickOrigin.bind(this)
+  }
+
+  public open() {
+    this.setState(prevState => ({ isOpen: !prevState.isOpen }))
+    window.addEventListener('keydown', this.handleEscapePress)
+    document.addEventListener('mousedown', this.checkClickOrigin)
+  }
+
+  public checkClickOrigin(event: MouseEvent) {
+    if (
+      this.portalRef.current &&
+      this.portalRef.current.contains(event.target as Node)
+    ) {
+      return
+    }
+
+    if (this.triggerRef.current) {
+      if (!this.triggerRef.current.contains(event.target as Node)) {
+        this.close()
+      }
+    }
+  }
+
   protected renderModal(content: string, props: ManagedModalProps) {
     return (
-      <MenuOverlay
+      <MenuOverlayInternal
         isOpen={this.state.isOpen}
         triggerRef={this.triggerRef}
         onClose={this.close}
         {...props}
       >
         {content}
-      </MenuOverlay>
+      </MenuOverlayInternal>
     )
   }
 }

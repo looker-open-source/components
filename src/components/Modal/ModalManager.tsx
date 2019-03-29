@@ -28,6 +28,7 @@ export interface ModalManagerProps extends ManagedModalProps {
   placement?: Placement
 
   isOpen?: boolean
+  pin?: boolean
 }
 
 export interface ModalManagerState {
@@ -83,7 +84,7 @@ export abstract class ModalManager<
     props: ManagedModalProps
   ): React.ReactNode
 
-  private handleEscapePress = (event: KeyboardEvent) => {
+  protected handleEscapePress = (event: KeyboardEvent) => {
     if (event.key !== 'Escape') return
 
     if (!event.target) return

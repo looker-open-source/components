@@ -208,17 +208,15 @@ ShallowWrapper {
       }
     }
   >
-    <TestMenuOverlay
+    <MenuOverlay
       content={
         <Styled(Component)>
           Hello World
         </Styled(Component)>
       }
     >
-      <Styled(WithTheme(InternalButton))>
-        Menu
-      </Styled(WithTheme(InternalButton))>
-    </TestMenuOverlay>
+      [Function]
+    </MenuOverlay>
   </ThemeProvider>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -231,54 +229,30 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "function",
+    "nodeType": "class",
     "props": Object {
-      "children": <Styled(WithTheme(InternalButton))>
-        Menu
-      </Styled(WithTheme(InternalButton))>,
+      "children": [Function],
       "content": <Styled(Component)>
         Hello World
       </Styled(Component)>,
     },
     "ref": null,
-    "rendered": Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "class",
-      "props": Object {
-        "children": "Menu",
-      },
-      "ref": null,
-      "rendered": "Menu",
-      "type": [Function],
-    },
+    "rendered": [Function],
     "type": [Function],
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "function",
+      "nodeType": "class",
       "props": Object {
-        "children": <Styled(WithTheme(InternalButton))>
-          Menu
-        </Styled(WithTheme(InternalButton))>,
+        "children": [Function],
         "content": <Styled(Component)>
           Hello World
         </Styled(Component)>,
       },
       "ref": null,
-      "rendered": Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {
-          "children": "Menu",
-        },
-        "ref": null,
-        "rendered": "Menu",
-        "type": [Function],
-      },
+      "rendered": [Function],
       "type": [Function],
     },
   ],
@@ -512,7 +486,7 @@ ShallowWrapper {
       }
     }
   >
-    <TestMenuOverlay
+    <MenuOverlay
       backdropOffset={
         Object {
           "bottom": "50px",
@@ -523,12 +497,10 @@ ShallowWrapper {
           Hello World
         </Styled(Component)>
       }
-      open={true}
+      isOpen={true}
     >
-      <Styled(WithTheme(InternalButton))>
-        Menu
-      </Styled(WithTheme(InternalButton))>
-    </TestMenuOverlay>
+      [Function]
+    </MenuOverlay>
   </ThemeProvider>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -541,62 +513,38 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "function",
+    "nodeType": "class",
     "props": Object {
       "backdropOffset": Object {
         "bottom": "50px",
       },
-      "children": <Styled(WithTheme(InternalButton))>
-        Menu
-      </Styled(WithTheme(InternalButton))>,
+      "children": [Function],
       "content": <Styled(Component)>
         Hello World
       </Styled(Component)>,
-      "open": true,
+      "isOpen": true,
     },
     "ref": null,
-    "rendered": Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "class",
-      "props": Object {
-        "children": "Menu",
-      },
-      "ref": null,
-      "rendered": "Menu",
-      "type": [Function],
-    },
+    "rendered": [Function],
     "type": [Function],
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "function",
+      "nodeType": "class",
       "props": Object {
         "backdropOffset": Object {
           "bottom": "50px",
         },
-        "children": <Styled(WithTheme(InternalButton))>
-          Menu
-        </Styled(WithTheme(InternalButton))>,
+        "children": [Function],
         "content": <Styled(Component)>
           Hello World
         </Styled(Component)>,
-        "open": true,
+        "isOpen": true,
       },
       "ref": null,
-      "rendered": Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {
-          "children": "Menu",
-        },
-        "ref": null,
-        "rendered": "Menu",
-        "type": [Function],
-      },
+      "rendered": [Function],
       "type": [Function],
     },
   ],
@@ -830,7 +778,7 @@ ShallowWrapper {
       }
     }
   >
-    <TestMenuOverlay
+    <MenuOverlay
       backdropOffset={
         Object {
           "left": "50px",
@@ -841,12 +789,10 @@ ShallowWrapper {
           Hello World
         </Styled(Component)>
       }
-      open={true}
+      isOpen={true}
     >
-      <Styled(WithTheme(InternalButton))>
-        Menu
-      </Styled(WithTheme(InternalButton))>
-    </TestMenuOverlay>
+      [Function]
+    </MenuOverlay>
   </ThemeProvider>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -859,62 +805,38 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "function",
+    "nodeType": "class",
     "props": Object {
       "backdropOffset": Object {
         "left": "50px",
       },
-      "children": <Styled(WithTheme(InternalButton))>
-        Menu
-      </Styled(WithTheme(InternalButton))>,
+      "children": [Function],
       "content": <Styled(Component)>
         Hello World
       </Styled(Component)>,
-      "open": true,
+      "isOpen": true,
     },
     "ref": null,
-    "rendered": Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "class",
-      "props": Object {
-        "children": "Menu",
-      },
-      "ref": null,
-      "rendered": "Menu",
-      "type": [Function],
-    },
+    "rendered": [Function],
     "type": [Function],
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "function",
+      "nodeType": "class",
       "props": Object {
         "backdropOffset": Object {
           "left": "50px",
         },
-        "children": <Styled(WithTheme(InternalButton))>
-          Menu
-        </Styled(WithTheme(InternalButton))>,
+        "children": [Function],
         "content": <Styled(Component)>
           Hello World
         </Styled(Component)>,
-        "open": true,
+        "isOpen": true,
       },
       "ref": null,
-      "rendered": Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {
-          "children": "Menu",
-        },
-        "ref": null,
-        "rendered": "Menu",
-        "type": [Function],
-      },
+      "rendered": [Function],
       "type": [Function],
     },
   ],
@@ -1148,7 +1070,7 @@ ShallowWrapper {
       }
     }
   >
-    <TestMenuOverlay
+    <MenuOverlay
       backdropOffset={
         Object {
           "right": "50px",
@@ -1159,12 +1081,10 @@ ShallowWrapper {
           Hello World
         </Styled(Component)>
       }
-      open={true}
+      isOpen={true}
     >
-      <Styled(WithTheme(InternalButton))>
-        Menu
-      </Styled(WithTheme(InternalButton))>
-    </TestMenuOverlay>
+      [Function]
+    </MenuOverlay>
   </ThemeProvider>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -1177,62 +1097,38 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "function",
+    "nodeType": "class",
     "props": Object {
       "backdropOffset": Object {
         "right": "50px",
       },
-      "children": <Styled(WithTheme(InternalButton))>
-        Menu
-      </Styled(WithTheme(InternalButton))>,
+      "children": [Function],
       "content": <Styled(Component)>
         Hello World
       </Styled(Component)>,
-      "open": true,
+      "isOpen": true,
     },
     "ref": null,
-    "rendered": Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "class",
-      "props": Object {
-        "children": "Menu",
-      },
-      "ref": null,
-      "rendered": "Menu",
-      "type": [Function],
-    },
+    "rendered": [Function],
     "type": [Function],
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "function",
+      "nodeType": "class",
       "props": Object {
         "backdropOffset": Object {
           "right": "50px",
         },
-        "children": <Styled(WithTheme(InternalButton))>
-          Menu
-        </Styled(WithTheme(InternalButton))>,
+        "children": [Function],
         "content": <Styled(Component)>
           Hello World
         </Styled(Component)>,
-        "open": true,
+        "isOpen": true,
       },
       "ref": null,
-      "rendered": Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {
-          "children": "Menu",
-        },
-        "ref": null,
-        "rendered": "Menu",
-        "type": [Function],
-      },
+      "rendered": [Function],
       "type": [Function],
     },
   ],
@@ -1466,7 +1362,7 @@ ShallowWrapper {
       }
     }
   >
-    <TestMenuOverlay
+    <MenuOverlay
       backdropOffset={
         Object {
           "top": "50px",
@@ -1477,12 +1373,10 @@ ShallowWrapper {
           Hello World
         </Styled(Component)>
       }
-      open={true}
+      isOpen={true}
     >
-      <Styled(WithTheme(InternalButton))>
-        Menu
-      </Styled(WithTheme(InternalButton))>
-    </TestMenuOverlay>
+      [Function]
+    </MenuOverlay>
   </ThemeProvider>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -1495,62 +1389,38 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "function",
+    "nodeType": "class",
     "props": Object {
       "backdropOffset": Object {
         "top": "50px",
       },
-      "children": <Styled(WithTheme(InternalButton))>
-        Menu
-      </Styled(WithTheme(InternalButton))>,
+      "children": [Function],
       "content": <Styled(Component)>
         Hello World
       </Styled(Component)>,
-      "open": true,
+      "isOpen": true,
     },
     "ref": null,
-    "rendered": Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "class",
-      "props": Object {
-        "children": "Menu",
-      },
-      "ref": null,
-      "rendered": "Menu",
-      "type": [Function],
-    },
+    "rendered": [Function],
     "type": [Function],
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "function",
+      "nodeType": "class",
       "props": Object {
         "backdropOffset": Object {
           "top": "50px",
         },
-        "children": <Styled(WithTheme(InternalButton))>
-          Menu
-        </Styled(WithTheme(InternalButton))>,
+        "children": [Function],
         "content": <Styled(Component)>
           Hello World
         </Styled(Component)>,
-        "open": true,
+        "isOpen": true,
       },
       "ref": null,
-      "rendered": Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {
-          "children": "Menu",
-        },
-        "ref": null,
-        "rendered": "Menu",
-        "type": [Function],
-      },
+      "rendered": [Function],
       "type": [Function],
     },
   ],
@@ -1784,19 +1654,17 @@ ShallowWrapper {
       }
     }
   >
-    <TestMenuOverlay
+    <MenuOverlay
       content={
         <Styled(Component)>
           Hello World
         </Styled(Component)>
       }
-      open={true}
+      isOpen={true}
       pin={true}
     >
-      <Styled(WithTheme(InternalButton))>
-        Menu
-      </Styled(WithTheme(InternalButton))>
-    </TestMenuOverlay>
+      [Function]
+    </MenuOverlay>
   </ThemeProvider>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -1809,58 +1677,34 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "function",
+    "nodeType": "class",
     "props": Object {
-      "children": <Styled(WithTheme(InternalButton))>
-        Menu
-      </Styled(WithTheme(InternalButton))>,
+      "children": [Function],
       "content": <Styled(Component)>
         Hello World
       </Styled(Component)>,
-      "open": true,
+      "isOpen": true,
       "pin": true,
     },
     "ref": null,
-    "rendered": Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "class",
-      "props": Object {
-        "children": "Menu",
-      },
-      "ref": null,
-      "rendered": "Menu",
-      "type": [Function],
-    },
+    "rendered": [Function],
     "type": [Function],
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "function",
+      "nodeType": "class",
       "props": Object {
-        "children": <Styled(WithTheme(InternalButton))>
-          Menu
-        </Styled(WithTheme(InternalButton))>,
+        "children": [Function],
         "content": <Styled(Component)>
           Hello World
         </Styled(Component)>,
-        "open": true,
+        "isOpen": true,
         "pin": true,
       },
       "ref": null,
-      "rendered": Object {
-        "instance": null,
-        "key": undefined,
-        "nodeType": "class",
-        "props": Object {
-          "children": "Menu",
-        },
-        "ref": null,
-        "rendered": "Menu",
-        "type": [Function],
-      },
+      "rendered": [Function],
       "type": [Function],
     },
   ],
