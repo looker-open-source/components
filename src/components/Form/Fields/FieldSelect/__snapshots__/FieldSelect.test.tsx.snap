@@ -81,9 +81,10 @@ exports[`A FieldSelect 1`] = `
         className="c3"
         id="thumbs-up"
         name="thumbsUp"
-        type="text"
       >
-        <option />
+        <option
+          value=""
+        />
       </select>
     </div>
   </div>
@@ -186,9 +187,10 @@ exports[`A FieldSelect with an error validation aligned to the bottom 1`] = `
         className="c3"
         id="thumbs-up"
         name="thumbsUp"
-        type="text"
       >
-        <option />
+        <option
+          value=""
+        />
       </select>
     </div>
     <div
@@ -322,9 +324,10 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
         className="c4"
         id="thumbs-up"
         name="thumbsUp"
-        type="text"
       >
-        <option />
+        <option
+          value=""
+        />
       </select>
     </div>
     <div
@@ -455,9 +458,10 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
         className="c4"
         id="thumbs-up"
         name="thumbsUp"
-        type="text"
       >
-        <option />
+        <option
+          value=""
+        />
       </select>
     </div>
     <div
@@ -562,9 +566,10 @@ exports[`A required FieldSelect 1`] = `
         id="thumbs-up"
         name="thumbsUp"
         required={true}
-        type="text"
       >
-        <option />
+        <option
+          value=""
+        />
       </select>
     </div>
   </div>
@@ -652,9 +657,10 @@ exports[`FieldSelect supports labelWeight 1`] = `
         className="c3"
         id="thumbs-up"
         name="thumbsUp"
-        type="text"
       >
-        <option />
+        <option
+          value=""
+        />
       </select>
     </div>
   </div>
