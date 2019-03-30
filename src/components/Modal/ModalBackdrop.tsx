@@ -10,16 +10,37 @@ export interface ModalBackdropProps extends BoxProps<HTMLElement> {
   className?: string
 }
 
-export class ModalBackdrop extends React.Component<ModalBackdropProps> {
+export interface ModalBackdropState {
+  position: number
+  scrollbarWidth: number
+}
+
+export class ModalBackdrop extends React.Component<
+  ModalBackdropProps,
+  ModalBackdropState
+> {
+  public state = { position: 0, scrollbarWidth: 0 }
   private scrollLock = document.createElement('style')
 
   public componentDidMount() {
-    this.scrollLock.innerHTML = `body { overflow: hidden !important; }`
+    const position = window.pageYOffset
+    const scrollbarWidth =
+      window.innerWidth - document.documentElement.clientWidth
+
+    this.scrollLock.innerHTML = `
+    body {
+      overflow: hidden !important;
+      margin-right: ${scrollbarWidth}px !important;
+    }
+    `
     document.head.appendChild(this.scrollLock)
+
+    this.setState({ position, scrollbarWidth })
   }
 
   public componentWillUnmount() {
     document.head.removeChild(this.scrollLock)
+    window.scroll(0, this.state.position)
   }
 
   public render() {
