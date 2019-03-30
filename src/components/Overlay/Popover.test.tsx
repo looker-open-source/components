@@ -1,17 +1,14 @@
 import 'jest-styled-components'
 import * as React from 'react'
+import { mountWithTheme } from '../../../test/utils/create_with_theme'
 import { Button } from '../Button'
-import {
-  assertClosed,
-  assertOpen,
-  returnTriggerAndOverlay,
-  SimpleContent,
-} from './overlay.test.helpers'
+import { ModalBackdrop } from '../Modal/ModalBackdrop'
+import { SimpleContent } from './overlay.test.helpers'
 import { Popover } from './Popover'
 
 describe('Popover', () => {
   test('opens on click', () => {
-    const [popover, trigger] = returnTriggerAndOverlay(
+    const popover = mountWithTheme(
       <Popover content={SimpleContent}>
         {(onClick, ref) => (
           <Button innerRef={ref} onClick={onClick}>
@@ -20,14 +17,24 @@ describe('Popover', () => {
         )}
       </Popover>
     )
+
+    // Verify hidden
+    expect(popover.contains(SimpleContent)).toBeFalsy()
+
+    const trigger = popover.find(Button)
     trigger.simulate('click')
-    assertOpen(popover)
-    trigger.simulate('click')
-    assertClosed(popover)
+
+    // Find content
+    expect(popover.contains(SimpleContent)).toBeTruthy()
+
+    const backdrop = popover.find(ModalBackdrop)
+    backdrop.simulate('click')
+
+    expect(popover.find(SimpleContent).exists()).toBeFalsy()
   })
 
   test('contains the content passed to it', () => {
-    const [popover, trigger] = returnTriggerAndOverlay(
+    const popover = mountWithTheme(
       <Popover content={SimpleContent}>
         {(onClick, ref) => (
           <Button innerRef={ref} onClick={onClick}>
@@ -36,8 +43,8 @@ describe('Popover', () => {
         )}
       </Popover>
     )
+    const trigger = popover.find(Button)
     trigger.simulate('click')
-    assertOpen(popover)
     expect(popover.contains(SimpleContent)).toBeTruthy()
   })
 })
