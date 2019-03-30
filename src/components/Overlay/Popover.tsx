@@ -10,7 +10,7 @@ const PopoverInternal: React.SFC<OverlayInteractiveProps> = ({
   children,
   ...overlayProps
 }) => (
-  <Overlay {...overlayProps}>
+  <Overlay pin={true} {...overlayProps}>
     {(props: OverlayChildrenProps) => (
       <OverlaySurface
         lockWindow
