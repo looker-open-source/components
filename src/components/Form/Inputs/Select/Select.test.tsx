@@ -16,8 +16,17 @@ test('Select should accept disabled', () => {
   assertSnapshot(<Select disabled />)
 })
 
+test('Select should accept empty options array', () => {
+  assertSnapshot(<Select options={[]} />)
+})
+
 test('Select with a placeholder', () => {
   assertSnapshot(<Select placeholder="I am a placeholder" />)
+})
+
+test('Select placeholder option does not have a value', () => {
+  const select = mountWithTheme(<Select placeholder="Boo!" />)
+  expect(select.find('option').prop('value')).toEqual('')
 })
 
 test('Select should accept readOnly', () => {
@@ -29,8 +38,12 @@ test('Select should accept required', () => {
 })
 
 test('Select with a value', () => {
-  const options = [{ value: 'Some Value', label: "Some Value's Label" }]
-  assertSnapshot(<Select value="Some value" options={options} />)
+  const options = [
+    { value: '1', label: 'thing' },
+    { value: 'Some Value', label: "Some Value's Label" },
+    { value: '2', label: 'other' },
+  ]
+  assertSnapshot(<Select value="Some Value" options={options} />)
 })
 
 test('Select with aria-describedby', () => {

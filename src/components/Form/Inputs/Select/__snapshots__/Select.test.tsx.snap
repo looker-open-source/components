@@ -22,9 +22,10 @@ exports[`Select default 1`] = `
 
 <select
   className="c0"
-  type="text"
 >
-  <option />
+  <option
+    value=""
+  />
 </select>
 `;
 
@@ -51,9 +52,39 @@ exports[`Select should accept disabled 1`] = `
 <select
   className="c0"
   disabled={true}
-  type="text"
 >
-  <option />
+  <option
+    value=""
+  />
+</select>
+`;
+
+exports[`Select should accept empty options array 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border: solid 1px;
+  border-radius: 0.25rem;
+  border-color: #C1C6CC;
+  font-size: 0.875rem;
+  height: 28px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+}
+
+<select
+  className="c0"
+>
+  <option
+    value=""
+  />
 </select>
 `;
 
@@ -80,9 +111,10 @@ exports[`Select should accept readOnly 1`] = `
 <select
   className="c0"
   readOnly={true}
-  type="text"
 >
-  <option />
+  <option
+    value=""
+  />
 </select>
 `;
 
@@ -109,9 +141,10 @@ exports[`Select should accept required 1`] = `
 <select
   className="c0"
   required={true}
-  type="text"
 >
-  <option />
+  <option
+    value=""
+  />
 </select>
 `;
 
@@ -137,9 +170,10 @@ exports[`Select with a placeholder 1`] = `
 
 <select
   className="c0"
-  type="text"
 >
-  <option>
+  <option
+    value=""
+  >
     I am a placeholder
   </option>
 </select>
@@ -167,14 +201,25 @@ exports[`Select with a value 1`] = `
 
 <select
   className="c0"
-  defaultValue="Some value"
-  type="text"
+  defaultValue="Some Value"
 >
-  <option />
+  <option
+    value=""
+  />
+  <option
+    value="1"
+  >
+    thing
+  </option>
   <option
     value="Some Value"
   >
     Some Value's Label
+  </option>
+  <option
+    value="2"
+  >
+    other
   </option>
 </select>
 `;
@@ -202,9 +247,10 @@ exports[`Select with an error validation 1`] = `
 
 <select
   className="c0"
-  type="text"
 >
-  <option />
+  <option
+    value=""
+  />
 </select>
 `;
 
@@ -231,9 +277,10 @@ exports[`Select with aria-describedby 1`] = `
 <select
   aria-describedby="some-id"
   className="c0"
-  type="text"
 >
-  <option />
+  <option
+    value=""
+  />
 </select>
 `;
 
@@ -261,8 +308,9 @@ exports[`Select with name and id 1`] = `
   className="c0"
   id="Bobby"
   name="Bob"
-  type="text"
 >
-  <option />
+  <option
+    value=""
+  />
 </select>
 `;

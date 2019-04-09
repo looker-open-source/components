@@ -65,11 +65,12 @@ export const Select: React.SFC<SelectProps> = ({
       ? props.value
       : undefined
 
-  const optionElements = !options
-    ? null
-    : options[0].hasOwnProperty('key')
-      ? renderOptGroups(options as GroupedOptionsType<SelectOptionProps>)
-      : renderOptions(options as OptionsType<SelectOptionProps>)
+  const optionElements =
+    !options || options.length === 0
+      ? null
+      : options[0].hasOwnProperty('key')
+        ? renderOptGroups(options as GroupedOptionsType<SelectOptionProps>)
+        : renderOptions(options as OptionsType<SelectOptionProps>)
 
   return (
     <Box
@@ -82,12 +83,11 @@ export const Select: React.SFC<SelectProps> = ({
       height={CustomizableSelectAttributes.height}
       px={CustomizableSelectAttributes.px}
       py={CustomizableSelectAttributes.py}
-      type="text"
       {...props}
       defaultValue={defaultValue}
       value={defaultValue ? undefined : props.value}
     >
-      {includeBlank && <option>{placeholder}</option>}
+      {includeBlank && <option value="">{placeholder}</option>}
       {optionElements}
     </Box>
   )

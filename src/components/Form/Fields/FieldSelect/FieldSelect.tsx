@@ -4,9 +4,9 @@ import { withForm } from '../../Form'
 import { Select, SelectProps } from '../../Inputs/Select/Select'
 import { Field, FieldProps } from '../Field'
 
-interface FieldTextProps extends FieldProps, SelectProps {}
+interface FieldSelectProps extends FieldProps, SelectProps {}
 
-const InternalFieldSelect = (props: FieldTextProps) => {
+const InternalFieldSelect = (props: FieldSelectProps) => {
   const {
     alignLabel,
     alignValidationMessage,
@@ -15,7 +15,7 @@ const InternalFieldSelect = (props: FieldTextProps) => {
     labelFontWeight,
     validationMessage,
     id = uuid(),
-    ...inputTextProps
+    ...inputSelectProps
   } = props
   return (
     <Field
@@ -27,7 +27,7 @@ const InternalFieldSelect = (props: FieldTextProps) => {
     >
       <Select
         id={id}
-        {...inputTextProps}
+        {...inputSelectProps}
         validationType={validationMessage && validationMessage.type}
       />
     </Field>

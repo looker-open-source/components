@@ -22,6 +22,15 @@ const options = [
 ;<>
   <Select options={options} />
   <Select options={options} value="gouda" ml="large" />
+  <Select placeholder="awesome!" />
+  <Select
+    value="Some Value"
+    options={[
+      { value: '1', label: 'thing' },
+      { value: 'Some Value', label: "Some Value's Label" },
+      { value: '2', label: 'other' },
+    ]}
+  />
 </>
 ```
 
