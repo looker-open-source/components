@@ -23,29 +23,29 @@ const breakpointList = [
   {
     description: 'Smaller screens like phones',
     rem: '30rem',
-    slot: 1,
+    slot: 0,
     starts: '480px',
   },
   {
     description: 'Medium sized screens like tablets',
     rem: '48rem',
-    slot: 2,
+    slot: 1,
     starts: '768px',
   },
   {
     description: 'Large screens like laptops',
     rem: '64rem',
 
-    slot: 3,
+    slot: 2,
     starts: '1024px',
   },
   {
     description: 'Larger screens like a desktop monitor',
     rem: '75rem',
-    slot: 4,
+    slot: 3,
     starts: '1200px',
   },
-  { description: 'Wider screens', rem: '90rem', slot: 5, starts: '1440px' },
+  { description: 'Wider screens', rem: '90rem', slot: 4, starts: '1440px' },
 ]
 
 export interface BreakpointExample {
