@@ -120,9 +120,6 @@ const InternalText: React.SFC<ThemedProps<TextProps>> = ({
 }
 
 export const Text = styled<TextProps>(withTheme(InternalText))`
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-decoration: ${props => props.decoration};
   ${props => getTextTransform(props.textTransform)};
   ${props => getWrap(props.wrap || false)};

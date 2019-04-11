@@ -148,9 +148,6 @@ Array [
 }
 
 .c3 {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-transform: none;
 }
 
