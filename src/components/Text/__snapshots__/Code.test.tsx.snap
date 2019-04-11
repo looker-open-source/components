@@ -15,9 +15,6 @@ exports[`A Code component resized 1`] = `
 }
 
 .c0 {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-transform: none;
 }
 
@@ -41,9 +38,6 @@ exports[`A Code component text transformed 1`] = `
 }
 
 .c0 {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-transform: uppercase;
 }
 
@@ -67,9 +61,6 @@ exports[`A Code component with variant 1`] = `
 }
 
 .c0 {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-transform: none;
   color: #CC1F36;
 }
@@ -94,9 +85,6 @@ exports[`A Code component wrapped 1`] = `
 }
 
 .c0 {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-transform: none;
   overflow-wrap: break-word;
 }
@@ -122,9 +110,6 @@ exports[`A Codet component weight 1`] = `
 }
 
 .c0 {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-transform: none;
 }
 
@@ -148,9 +133,6 @@ exports[`A Text component decorated 1`] = `
 }
 
 .c0 {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   -webkit-text-decoration: line-through;
   text-decoration: line-through;
   text-transform: none;
@@ -176,9 +158,6 @@ exports[`A default Code component 1`] = `
 }
 
 .c0 {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-transform: none;
 }
 

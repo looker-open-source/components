@@ -37,9 +37,6 @@ exports[`Confirmation banner 1`] = `
 }
 
 .c2 {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-transform: none;
 }
 
@@ -166,9 +163,6 @@ exports[`Dismissable banner 1`] = `
 }
 
 .c3 {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-transform: none;
 }
 
@@ -309,9 +303,6 @@ exports[`Error banner 1`] = `
 }
 
 .c3 {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-transform: none;
 }
 
@@ -420,9 +411,6 @@ exports[`Info banner 1`] = `
 }
 
 .c3 {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-transform: none;
 }
 
@@ -531,9 +519,6 @@ exports[`Warning banner 1`] = `
 }
 
 .c3 {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-transform: none;
 }
 

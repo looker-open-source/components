@@ -13,9 +13,6 @@ exports[`A Paragraph component Aligned 1`] = `
 }
 
 .c0 {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-transform: none;
 }
 
@@ -40,9 +37,6 @@ exports[`A Paragraph component resized 1`] = `
 }
 
 .c0 {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-transform: none;
 }
 
@@ -65,9 +59,6 @@ exports[`A Paragraph component text transformed 1`] = `
 }
 
 .c0 {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-transform: uppercase;
 }
 
@@ -90,9 +81,6 @@ exports[`A Paragraph component tuncated 1`] = `
 }
 
 .c1 {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-transform: none;
 }
 
@@ -121,9 +109,6 @@ exports[`A Paragraph component with variant 1`] = `
 }
 
 .c0 {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-transform: none;
   color: #CC1F36;
 }
@@ -148,9 +133,6 @@ exports[`A Paragrapht component weight 1`] = `
 }
 
 .c0 {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-transform: none;
 }
 
@@ -173,9 +155,6 @@ exports[`A Text component decorated 1`] = `
 }
 
 .c0 {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   -webkit-text-decoration: line-through;
   text-decoration: line-through;
   text-transform: none;
@@ -200,9 +179,6 @@ exports[`A Text component wrapped 1`] = `
 }
 
 .c0 {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-transform: none;
   overflow-wrap: break-word;
 }
@@ -226,9 +202,6 @@ exports[`A default Paragraph component 1`] = `
 }
 
 .c0 {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-transform: none;
 }
 
