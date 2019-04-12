@@ -15,12 +15,12 @@ Modals are assembled of two primary pieces a Backdrop (`ModalBackdrop`) and a Su
 This provides the backdrop behind Modal containers. It can be customized via the `backdropStyles` property. These must be a CSSProperty compatible key / value paired object.
 
 ```
-<Dialog
+<DialogManager
   backdropStyles={{ background: 'purple', opacity: 1 }}
   content={<>Stuff and text <a href='#'>Focus attention here...</a></>}
 >
-  <Button>Purple Backdrop</Button>
-</Dialog>
+  {(onClick) => <Button onClick={onClick}>Purple Backdrop</Button>}
+</DialogManager>
 ```
 
 ##### `ModalSurface`
@@ -28,12 +28,12 @@ This provides the backdrop behind Modal containers. It can be customized via the
 `ModalSurface` provides the container that contains the content. It can be customized via the `surfaceStyles` property. These must be a CSSProperty compatible key / value paired object.
 
 ```
-<Dialog
+<DialogManager
   surfaceStyles={{ background: 'pink', borderRadius: 0, padding: '3rem' }}
   content={<>Stuff and text <a href="#">Focus attention here...</a></>}
 >
-  <Button>Pink Surface, No Radiae</Button>
-</Dialog>
+  {(onClick) => <Button onClick={onClick}>Pink Surface, No Radiae</Button>}
+</DialogManager>
 ```
 
 ### ModalContext

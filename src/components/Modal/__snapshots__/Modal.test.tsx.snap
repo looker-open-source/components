@@ -208,8 +208,8 @@ ShallowWrapper {
       }
     }
   >
-    <Modal
-      open={true}
+    <Unknown
+      isOpen={true}
       render={[Function]}
     />
   </ThemeProvider>,
@@ -224,9 +224,9 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "class",
+    "nodeType": "function",
     "props": Object {
-      "open": true,
+      "isOpen": true,
       "render": [Function],
     },
     "ref": null,
@@ -237,9 +237,9 @@ ShallowWrapper {
     Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "class",
+      "nodeType": "function",
       "props": Object {
-        "open": true,
+        "isOpen": true,
         "render": [Function],
       },
       "ref": null,
@@ -477,14 +477,14 @@ ShallowWrapper {
       }
     }
   >
-    <Modal
-      open={true}
+    <Unknown
+      isOpen={true}
       render={[Function]}
     >
       <Styled(WithTheme(InternalButton))>
         Click Here
       </Styled(WithTheme(InternalButton))>
-    </Modal>
+    </Unknown>
   </ThemeProvider>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -497,12 +497,12 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "class",
+    "nodeType": "function",
     "props": Object {
       "children": <Styled(WithTheme(InternalButton))>
         Click Here
       </Styled(WithTheme(InternalButton))>,
-      "open": true,
+      "isOpen": true,
       "render": [Function],
     },
     "ref": null,
@@ -523,12 +523,12 @@ ShallowWrapper {
     Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "class",
+      "nodeType": "function",
       "props": Object {
         "children": <Styled(WithTheme(InternalButton))>
           Click Here
         </Styled(WithTheme(InternalButton))>,
-        "open": true,
+        "isOpen": true,
         "render": [Function],
       },
       "ref": null,
@@ -776,7 +776,7 @@ ShallowWrapper {
       }
     }
   >
-    <Modal
+    <Unknown
       render={[Function]}
     />
   </ThemeProvider>,
@@ -791,7 +791,7 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "class",
+    "nodeType": "function",
     "props": Object {
       "render": [Function],
     },
@@ -803,7 +803,7 @@ ShallowWrapper {
     Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "class",
+      "nodeType": "function",
       "props": Object {
         "render": [Function],
       },
@@ -1042,13 +1042,13 @@ ShallowWrapper {
       }
     }
   >
-    <Modal
+    <Unknown
       render={[Function]}
     >
       <Styled(WithTheme(InternalButton))>
         Click Here
       </Styled(WithTheme(InternalButton))>
-    </Modal>
+    </Unknown>
   </ThemeProvider>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -1061,7 +1061,7 @@ ShallowWrapper {
   Symbol(enzyme.__node__): Object {
     "instance": null,
     "key": undefined,
-    "nodeType": "class",
+    "nodeType": "function",
     "props": Object {
       "children": <Styled(WithTheme(InternalButton))>
         Click Here
@@ -1086,7 +1086,7 @@ ShallowWrapper {
     Object {
       "instance": null,
       "key": undefined,
-      "nodeType": "class",
+      "nodeType": "function",
       "props": Object {
         "children": <Styled(WithTheme(InternalButton))>
           Click Here

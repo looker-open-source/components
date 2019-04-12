@@ -1,10 +1,11 @@
+import FocusTrap from 'focus-trap-react'
 import { Placement } from 'popper.js'
 import * as React from 'react'
 import { Popper, PopperArrowProps } from 'react-popper'
 import { ModalBackdrop, ModalContext } from '../Modal'
 import { ModalPortal } from '../Modal/ModalPortal'
 
-export interface OverlayContentProps {
+export interface OverlayChildrenProps {
   ref: React.Ref<HTMLElement>
   style: React.CSSProperties
   /**
@@ -23,6 +24,21 @@ export interface OverlayContentProps {
 }
 
 export interface OverlayInteractiveProps {
+  children: React.ReactNode
+
+  /**
+   * When true, renders the Backdrop, Surface and it's contained content
+   * @default false
+   */
+  isOpen?: boolean
+  /**
+   * Specify a callback to be called each time this Modal is closed
+   */
+  onClose?: () => void
+  /**
+   * Used by popper.js to position the OverlaySurface relative to the trigger
+   */
+  triggerRef?: React.RefObject<HTMLElement>
   /**
    * Pins popper placement and prevents popper from moving on window resize.
    * @default false
@@ -36,14 +52,6 @@ export interface OverlayInteractiveProps {
    * @default bottom
    */
   placement?: Placement
-
-  /**
-   * When true, renders the popover as open immediately.
-   * @default false
-   */
-  open?: boolean
-
-  children: JSX.Element
 }
 
 export interface OverlayProps extends OverlayInteractiveProps {
@@ -56,17 +64,15 @@ export interface OverlayProps extends OverlayInteractiveProps {
    *
    * See OverlaySurface.tsx for an example of how to use these properties.
    */
-  render: (props: OverlayContentProps) => React.ReactNode
+  children: (props: OverlayChildrenProps) => React.ReactNode
   /**
    * Optional backdrop styles to merge with the Backdrop implementation. These
    * must be a CSSProperty compatible key / value paired object. For example
    * {backgroundColor: 'pink'}.
    */
   backdropStyles?: React.CSSProperties
-}
 
-export interface OverlayState {
-  isOpen: boolean
+  portalRef?: React.RefObject<HTMLElement>
 }
 
 /**
@@ -80,47 +86,24 @@ export interface OverlayState {
  * react-popper](https://github.com/FezVrasta/react-popper).
  */
 
-export class Overlay extends React.Component<OverlayProps, OverlayState> {
-  private portalRef: React.RefObject<HTMLElement>
-  private triggerRef: React.RefObject<HTMLElement>
-  private mounted: boolean = false
+export const Overlay: React.SFC<OverlayProps> = ({ ...props }) => {
+  const triggerRef =
+    props.triggerRef && props.triggerRef.current
+      ? props.triggerRef.current
+      : undefined
 
-  constructor(props: OverlayProps) {
-    super(props)
-    this.state = { isOpen: !!props.open }
-    this.portalRef = React.createRef()
-    this.triggerRef = React.createRef()
-  }
-
-  public componentDidMount() {
-    this.mounted = true
-  }
-
-  public componentWillUnmount() {
-    this.mounted = false
-
-    window.removeEventListener('keydown', this.handleEscapePress)
-    document.removeEventListener('click', this.handleOutsideClick)
-  }
-
-  public render() {
-    const triggerEventHandlers: React.DOMAttributes<{}> = {
-      onClick: this.toggle,
-    }
-
-    const surface = this.state.isOpen && (
-      <ModalPortal ref={this.portalRef}>
-        <ModalBackdrop onClick={this.close} style={this.props.backdropStyles} />
+  const surface = (
+    <FocusTrap focusTrapOptions={{ clickOutsideDeactivates: true }}>
+      <ModalPortal portalRef={props.portalRef}>
+        <ModalBackdrop onClick={props.onClose} style={props.backdropStyles} />
         <Popper
           positionFixed
-          placement={this.props.placement}
-          modifiers={{ flip: { enabled: this.props.pin ? false : true } }}
-          referenceElement={
-            this.triggerRef.current ? this.triggerRef.current : undefined
-          }
+          placement={props.placement}
+          modifiers={{ flip: { enabled: props.pin ? false : true } }}
+          referenceElement={triggerRef}
         >
           {({ ref, style, arrowProps, placement }) =>
-            this.props.render({
+            props.children({
               arrowProps,
               placement,
               ref,
@@ -129,68 +112,12 @@ export class Overlay extends React.Component<OverlayProps, OverlayState> {
           }
         </Popper>
       </ModalPortal>
-    )
+    </FocusTrap>
+  )
 
-    return (
-      <ModalContext.Provider value={{ closeModal: this.close }}>
-        {this.generateTrigger(triggerEventHandlers)}
-        {surface}
-      </ModalContext.Provider>
-    )
-  }
-
-  private generateTrigger(eventHandlers?: React.DOMAttributes<{}>) {
-    return React.cloneElement(this.props.children, {
-      innerRef: this.triggerRef, // SC4-Upgrade this will change to `ref: ...`
-      ...eventHandlers,
-    })
-  }
-
-  private close = () => {
-    document.removeEventListener('keydown', this.handleEscapePress)
-    document.removeEventListener('click', this.handleOutsideClick)
-    this.mounted && this.setState({ isOpen: false })
-  }
-
-  private open = () => {
-    document.addEventListener('keydown', this.handleEscapePress)
-    document.addEventListener('click', this.handleOutsideClick)
-    this.mounted && this.setState({ isOpen: true })
-  }
-
-  private handleOutsideClick = (e: MouseEvent) => {
-    if (
-      this.triggerRef.current &&
-      this.triggerRef.current.contains(e.target as Node)
-    ) {
-      return
-    }
-
-    if (
-      this.portalRef.current &&
-      this.portalRef.current.contains(e.target as Node)
-    ) {
-      return
-    }
-
-    this.close()
-  }
-
-  private toggle = () => {
-    if (this.state.isOpen) this.close()
-    else this.open()
-  }
-
-  private handleEscapePress = (event: KeyboardEvent) => {
-    if (event.key !== 'Escape') return
-    if (!event.target) return
-    if (
-      !this.portalRef.current ||
-      !this.portalRef.current.contains(event.target as Node)
-    ) {
-      return
-    }
-
-    this.close()
-  }
+  return (
+    <ModalContext.Provider value={{ closeModal: props.onClose }}>
+      {props.isOpen && surface}
+    </ModalContext.Provider>
+  )
 }

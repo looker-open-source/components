@@ -8,47 +8,67 @@ import { Button } from '../../Button'
 import { Heading } from '../../Heading'
 import { ModalFooter, ModalHeader } from '../Layout'
 import { SimpleContent } from '../modal.test.helpers'
-
 import { ModalBackdrop } from '../ModalBackdrop'
 import { ModalPortal } from '../ModalPortal'
 import { ModalSurface } from '../ModalSurface'
 import { Dialog } from './Dialog'
+import { DialogManager } from './DialogManager'
+
+const content = (
+  <>
+    words and stuff <button>Hello</button>
+  </>
+)
 
 test('Dialog Hidden', () => {
   assertSnapshotShallow(
-    <Dialog
-      content={
-        <>
-          words and stuff <button>Hello</button>
-        </>
-      }
-    >
-      <Button>🥑</Button>
-    </Dialog>
+    <DialogManager content={content}>
+      {onClick => <Button onClick={onClick}>🥑</Button>}
+    </DialogManager>
   )
 })
 
 test('Dialog Shown', () => {
-  assertSnapshotShallow(<Dialog content={SimpleContent} open />)
+  assertSnapshotShallow(<Dialog isOpen>{SimpleContent}</Dialog>)
 })
 
 test('Dialog, backdrop customized', () => {
   assertSnapshotShallow(
-    <Dialog
-      open
-      content={SimpleContent}
-      backdropStyles={{ background: 'purple', opacity: 1 }}
-    >
-      <Button>🥑</Button>
+    <Dialog isOpen backdropStyles={{ background: 'purple', opacity: 1 }}>
+      {SimpleContent}
     </Dialog>
   )
 })
 
+describe('Click events', () => {
+  test('Trigger.click renders a backdrop, clicking backdrop closes it', () => {
+    const dialog = mountWithTheme(
+      <DialogManager content={SimpleContent}>
+        {onClick => <Button onClick={onClick}>Open Modal</Button>}
+      </DialogManager>
+    )
+
+    // Drawer closed
+    expect(dialog.find(ModalPortal).exists()).toBeFalsy()
+
+    const button = dialog.find(Button)
+    expect(button.exists()).toBeTruthy()
+    button.simulate('click') // Click to open
+
+    // Drawer open
+    expect(dialog.find(ModalPortal).exists()).toBeTruthy()
+
+    const backdrop = dialog.find(ModalBackdrop)
+    expect(backdrop.exists()).toBeTruthy()
+    backdrop.simulate('click')
+  })
+})
+
 test('Dialog opens on click', () => {
   const dialog = mountWithTheme(
-    <Dialog content={SimpleContent}>
-      <Button>Open Modal</Button>
-    </Dialog>
+    <DialogManager content={SimpleContent}>
+      {onClick => <Button onClick={onClick}>Open Dialog</Button>}
+    </DialogManager>
   )
 
   expect(dialog.find(ModalPortal).exists()).toBeFalsy()
@@ -71,9 +91,9 @@ test('Dialog opens on click', () => {
 
 test('contains the content passed to it', () => {
   const dialog = mountWithTheme(
-    <Dialog content={SimpleContent}>
-      <Button>Open Modal</Button>
-    </Dialog>
+    <DialogManager content={SimpleContent}>
+      {onClick => <Button onClick={onClick}>Open Dialog</Button>}
+    </DialogManager>
   )
 
   const button = dialog.find(Button)
@@ -85,12 +105,11 @@ test('contains the content passed to it', () => {
 describe('Dialog Styling', () => {
   const dialog = mountWithTheme(
     <Dialog
-      open
-      content={SimpleContent}
+      isOpen
       backdropStyles={{ backgroundColor: 'pink' }}
       surfaceStyles={{ backgroundColor: 'purple' }}
     >
-      <Button>Open Modal</Button>
+      {SimpleContent}
     </Dialog>
   )
 
@@ -107,25 +126,16 @@ describe('Dialog Styling', () => {
 
 test('Confirmation Dialog, Shown', () => {
   assertSnapshotShallow(
-    <Dialog
-      open
-      content={
-        <>
-          <ModalHeader>
-            <Heading>Are you sure you want to delete "Stuff"?</Heading>
-          </ModalHeader>
-          <ModalFooter>
-            <Button variant="transparent" mr="medium">
-              Cancel
-            </Button>
-            <Button color="danger">Yes, Delete "Stuff"</Button>
-          </ModalFooter>
-        </>
-      }
-    >
-      <Button variant="outline" color="danger" autoFocus>
-        Delete Stuff
-      </Button>
+    <Dialog isOpen>
+      <ModalHeader>
+        <Heading>Are you sure you want to delete "Stuff"?</Heading>
+      </ModalHeader>
+      <ModalFooter>
+        <Button variant="transparent" mr="medium">
+          Cancel
+        </Button>
+        <Button color="danger">Yes, Delete "Stuff"</Button>
+      </ModalFooter>
     </Dialog>
   )
 })

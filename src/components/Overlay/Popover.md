@@ -1,11 +1,11 @@
 ```js noeditor
-const StatusAndResources = require('../../../styleguide_components/StatusAndResources')
-  .StatusAndResources
-;<StatusAndResources
+const StatusAndResources = require("../../../styleguide_components/StatusAndResources")
+  .StatusAndResources;
+<StatusAndResources
   status="stable"
   githubURL="https://github.com/looker/lens/blob/master/src/components/Overlay/Popover.tsx"
   feedbackTitle="Popover Component Feedback"
-/>
+/>;
 ```
 
 ```js
@@ -28,11 +28,15 @@ const wikipediaWildebeest = (
       sexes possess a pair of large curved horns.
     </Text>
   </PopoverContent>
-)
-;<Box display="inline-block" mr="small">
-  Here's a Popover:
+);
+<>
+  <Text>Here's a Popover:</Text>
   <Popover content={wikipediaWildebeest}>
-    <Button>A Wikipedia article about Wildebeests</Button>
+    {(onClick, ref) => (
+      <Button onClick={onClick} innerRef={ref}>
+        A Wikipedia article about Wildebeests
+      </Button>
+    )}
   </Popover>
-</Box>
+</>;
 ```

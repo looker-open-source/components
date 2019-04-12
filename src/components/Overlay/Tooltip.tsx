@@ -1,22 +1,23 @@
 import { TextAlignProperty } from 'csstype'
+import { Placement } from 'popper.js'
 import * as React from 'react'
 import { fadeIn, palette, shadows } from '../../style'
 import { CustomizableAttributes } from '../../types/attributes'
 import { ModalSurfaceStyleProps } from '../Modal'
+import {
+  ManagedHoverModalProps,
+  ModalHoverManager,
+  ModalHoverManagerProps,
+} from '../Modal/ModalHoverManager'
 import { Paragraph } from '../Text'
 import {
-  OverlayContentProps,
+  OverlayChildrenProps,
   OverlayHover,
   OverlayInteractiveProps,
   OverlaySurface,
 } from './'
 
-export interface TooltipProps extends OverlayInteractiveProps {
-  /**
-   * Text to display in the tooltip
-   * @required
-   */
-  content: string
+export interface TooltipBaseProps {
   /**
    * Specify the maximum width before wrapping text.
    * @default 16rem
@@ -29,34 +30,76 @@ export interface TooltipProps extends OverlayInteractiveProps {
   textAlign?: TextAlignProperty
 }
 
-export const Tooltip: React.SFC<TooltipProps> = ({
-  content,
+export interface TooltipInternalProps
+  extends TooltipBaseProps,
+    OverlayInteractiveProps {
+  /**
+   * Text to display in the tooltip
+   * @required
+   */
+  children: string
+}
+
+const TooltipInternal: React.SFC<TooltipInternalProps> = ({
   children,
-  textAlign = 'center' as TextAlignProperty,
-  maxWidth = '16rem',
+  textAlign,
+  maxWidth,
   ...overlayProps
 }) => {
-  const surface = (props: OverlayContentProps) => {
-    return (
-      <OverlaySurface {...props} {...CustomizableTooltipAttributes.surface}>
-        <Paragraph
-          fontSize="xsmall"
-          maxWidth={maxWidth}
-          p="xsmall"
-          m="none"
-          textAlign={textAlign}
-        >
-          {content}
-        </Paragraph>
-      </OverlaySurface>
-    )
-  }
-
   return (
-    <OverlayHover render={surface} {...overlayProps}>
-      {children}
+    <OverlayHover {...overlayProps}>
+      {(props: OverlayChildrenProps) => (
+        <OverlaySurface {...props} {...CustomizableTooltipAttributes.surface}>
+          <Paragraph
+            fontSize="xsmall"
+            maxWidth={maxWidth || '16rem'}
+            p="xsmall"
+            m="none"
+            textAlign={textAlign || 'center'}
+          >
+            {children}
+          </Paragraph>
+        </OverlaySurface>
+      )}
     </OverlayHover>
   )
+}
+
+export interface TooltipProps extends TooltipBaseProps, ModalHoverManagerProps {
+  content: string
+  /**
+   * Specify the maximum width before wrapping text.
+   * @default 16rem
+   */
+  maxWidth?: string
+  /**
+   * Specify the text aligment within tooltips.
+   * @default center
+   */
+  textAlign?: TextAlignProperty
+  /**
+   * Can be one of: top, bottom, left, right, auto, with the modifiers: start,
+   * end. This value comes directly from popperjs. See
+   * https://popper.js.org/popper-documentation.html#Popper.placements for more
+   * info.
+   * @default bottom
+   */
+  placement?: Placement
+}
+
+export class Tooltip extends ModalHoverManager<TooltipProps> {
+  protected renderModal(content: string, props: ManagedHoverModalProps) {
+    return (
+      <TooltipInternal
+        isOpen={this.state.isOpen}
+        triggerRef={this.triggerRef}
+        onClose={this.close}
+        {...props}
+      >
+        {content}
+      </TooltipInternal>
+    )
+  }
 }
 
 export interface CustomizableTooltipAttributes extends CustomizableAttributes {

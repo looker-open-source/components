@@ -1,12 +1,12 @@
 ```js noeditor
-const StatusAndResources = require('../../../styleguide_components/StatusAndResources')
-  .StatusAndResources
-;<StatusAndResources
+const StatusAndResources = require("../../../styleguide_components/StatusAndResources")
+  .StatusAndResources;
+<StatusAndResources
   status="experimental"
   figmaURL="https://www.figma.com/file/VyHO1Hv1XaW1v3lE9I4PVT/Menu"
   githubURL="https://github.com/looker/lens/blob/master/src/components/Menu/Menu.tsx"
   feedbackTitle="Menu Component Feedback"
-/>
+/>;
 ```
 
 `Menu` displays a list of choices.
@@ -19,7 +19,7 @@ Set the `focusOnMount` prop to get the `Menu` to automatically have focus applie
 
 ```js
 <Menu>
-  <MenuItem onClick={() => alert('Hello world!')}>Gouda</MenuItem>
+  <MenuItem onClick={() => alert("Hello world!")}>Gouda</MenuItem>
   <MenuItem>Cheedar</MenuItem>
   <MenuItem>Swiss</MenuItem>
 </Menu>
@@ -51,20 +51,34 @@ Menu can be easily composed with `Popover`, `Drawer` and `Dialog`
     </Menu>
   }
 >
-  <Button variant="outline" iconAfter="ArrowDropDown">
-    Popover + Menu: Cheese Selector
-  </Button>
+  {(onClick, ref) => (
+    <Button
+      variant="outline"
+      iconAfter="ArrowDropDown"
+      onClick={onClick}
+      innerRef={ref}
+    >
+      Popover + Menu: Cheese Selector
+    </Button>
+  )}
 </Popover>
 ```
 
 ```js
-const MenuGroupDemo = require('../../../styleguide_components/MenuDemo')
-  .MenuGroupDemo
-;<Popover content={<MenuGroupDemo />}>
-  <Button variant="outline" iconAfter="ArrowDropDown">
-    Menu Example...
-  </Button>
-</Popover>
+const MenuGroupDemo = require("../../../styleguide_components/MenuDemo")
+  .MenuGroupDemo;
+<Popover content={<MenuGroupDemo />}>
+  {(onClick, ref) => (
+    <Button
+      variant="outline"
+      iconAfter="ArrowDropDown"
+      onClick={onClick}
+      innerRef={ref}
+    >
+      Menu Example...
+    </Button>
+  )}
+</Popover>;
 ```
 
 ```js
@@ -77,12 +91,12 @@ const menuGroup = (
     <MenuItem>Scroll Filler E</MenuItem>
     <MenuItem>Scroll Filler F</MenuItem>
   </MenuGroup>
-)
-;<Drawer
+);
+<DrawerManager
   content={
     <>
       <ModalHeader>Menu Demo</ModalHeader>
-      <ModalContent innerProps={{ p: 'none' }}>
+      <ModalContent innerProps={{ p: "none" }}>
         <Menu focusOnMount>
           <MenuGroup>
             <MenuItem icon="LogoRings">Looker</MenuItem>
@@ -102,8 +116,15 @@ const menuGroup = (
     </>
   }
 >
-  <Button variant="outline" iconAfter="ArrowDropDown">
-    Drawer + Menu...
-  </Button>
-</Drawer>
+  {(onClick, ref) => (
+    <Button
+      variant="outline"
+      onClick={onClick}
+      innerRef={ref}
+      iconAfter="ArrowDropDown"
+    >
+      Drawer + Menu...
+    </Button>
+  )}
+</DrawerManager>;
 ```

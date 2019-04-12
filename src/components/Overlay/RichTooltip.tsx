@@ -1,36 +1,44 @@
 import * as React from 'react'
 import { fadeIn, palette, shadows } from '../../style'
 import { CustomizableAttributes } from '../../types/attributes'
-import { ModalSurfaceStyleProps } from '../Modal'
+import { ManagedModalProps, ModalSurfaceStyleProps } from '../Modal'
 import {
-  OverlayContentProps,
+  ModalHoverManager,
+  ModalHoverManagerProps,
+} from '../Modal/ModalHoverManager'
+import {
+  OverlayChildrenProps,
   OverlayHover,
   OverlayInteractiveProps,
   OverlaySurface,
 } from './'
 
-export interface RichTooltipProps extends OverlayInteractiveProps {
-  content: React.ReactNode
-}
-
-export const RichTooltip: React.SFC<RichTooltipProps> = ({
-  content,
+const RichTooltipInternal: React.SFC<OverlayInteractiveProps> = ({
   children,
   ...overlayProps
-}) => {
-  const surface = (props: OverlayContentProps) => {
-    return (
+}) => (
+  <OverlayHover {...overlayProps}>
+    {(props: OverlayChildrenProps) => (
       <OverlaySurface {...props} {...CustomizableRichTooltipAttributes.surface}>
-        {content}
+        {children}
       </OverlaySurface>
-    )
-  }
+    )}
+  </OverlayHover>
+)
 
-  return (
-    <OverlayHover render={surface} {...overlayProps}>
-      {children}
-    </OverlayHover>
-  )
+export class RichTooltip extends ModalHoverManager<ModalHoverManagerProps> {
+  protected renderModal(content: React.ReactNode, props: ManagedModalProps) {
+    return this.triggerRef ? (
+      <RichTooltipInternal
+        isOpen={this.state.isOpen}
+        triggerRef={this.triggerRef}
+        onClose={this.close}
+        {...props}
+      >
+        {content}
+      </RichTooltipInternal>
+    ) : null
+  }
 }
 
 export interface CustomizableRichTooltipAttributes

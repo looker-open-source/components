@@ -136,14 +136,18 @@ class InternalColorFieldPicker extends React.Component<
       >
         <FormControl alignLabel="left">
           <FlexItem mt="auto">
-            <RichTooltip content={content} open={open}>
-              <Swatch
-                color={ColorFormatUtils.hsv2hex(hsvColor)}
-                borderRadius={swatchBorderRadius}
-                borderRight={0}
-                width="33px"
-                height="28px"
-              />
+            <RichTooltip content={content}>
+              {(eventHandlers, ref) => (
+                <Swatch
+                  ref={ref}
+                  color={ColorFormatUtils.hsv2hex(hsvColor)}
+                  borderRadius={swatchBorderRadius}
+                  borderRight={0}
+                  width="33px"
+                  height="28px"
+                  {...eventHandlers}
+                />
+              )}
             </RichTooltip>
           </FlexItem>
           <FlexItem>

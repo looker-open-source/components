@@ -1,15 +1,15 @@
 Drawers are modal overlays that provide contextual information. They are frequantly used for creation or management action by the user. The Drawer blocks interactions with the other content until dismissed either through clicking or tapping on the Backdrop or by selecting a close or completion action within the Drawer.
 
 ```js
-<Drawer
+<DrawerManager
   content={
     <>
       This is some content in the Drawer <a href="#">Focus point</a>
     </>
   }
 >
-  <Button>Open Drawer</Button>
-</Drawer>
+  {onClick => <Button onClick={onClick}>Open Drawer</Button>}
+</DrawerManager>
 ```
 
 ---
@@ -60,7 +60,11 @@ const content = (
     </ModalContext.Consumer>
   </>
 )
-;<Drawer content={content}>
-  <Button variant="outline">See some things, in a Drawer!</Button>
-</Drawer>
+;<DrawerManager content={content}>
+  {onClick => (
+    <Button onClick={onClick} variant="outline">
+      See some things, in a Drawer!
+    </Button>
+  )}
+</DrawerManager>
 ```

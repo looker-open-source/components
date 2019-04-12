@@ -2,16 +2,16 @@ import * as React from 'react'
 import { palette, shadows } from '../../style'
 import { radii } from '../../style/radii'
 import { CustomizableAttributes } from '../../types/attributes'
-import { ModalSurfaceStyleProps } from '../Modal'
+import { ManagedModalProps, ModalSurfaceStyleProps } from '../Modal'
+import { ModalManager, ModalManagerProps } from '../Modal/ModalManager'
 import {
   Overlay,
-  OverlayContentProps,
+  OverlayChildrenProps,
   OverlayInteractiveProps,
   OverlaySurface,
 } from './'
 
-export interface MenuOverlayProps extends OverlayInteractiveProps {
-  content: React.ReactNode
+export interface MenuOverlayInternalProps extends OverlayInteractiveProps {
   backdropOffset?: {
     top?: string
     left?: string
@@ -20,8 +20,7 @@ export interface MenuOverlayProps extends OverlayInteractiveProps {
   }
 }
 
-export const MenuOverlay: React.SFC<MenuOverlayProps> = ({
-  content,
+const MenuOverlayInternal: React.SFC<MenuOverlayInternalProps> = ({
   children,
   backdropOffset,
   ...overlayProps
@@ -32,23 +31,69 @@ export const MenuOverlay: React.SFC<MenuOverlayProps> = ({
     ...backdropOffset,
   }
 
-  const surface = (props: OverlayContentProps) => {
-    return (
-      <OverlaySurface
-        lockWindow={true}
-        {...props}
-        {...CustomizableMenuOverlayAttributes.surface}
-      >
-        {content}
-      </OverlaySurface>
-    )
-  }
-
   return (
-    <Overlay render={surface} backdropStyles={backdropStyles} {...overlayProps}>
-      {children}
+    <Overlay backdropStyles={backdropStyles} {...overlayProps}>
+      {(props: OverlayChildrenProps) => (
+        <OverlaySurface
+          {...props}
+          {...CustomizableMenuOverlayAttributes.surface}
+        >
+          {children}
+        </OverlaySurface>
+      )}
     </Overlay>
   )
+}
+
+export interface MenuOverlayProps extends ModalManagerProps {
+  backdropOffset?: {
+    top?: string
+    left?: string
+    bottom?: string
+    right?: string
+  }
+}
+
+export class MenuOverlay extends ModalManager<MenuOverlayProps> {
+  constructor(props: MenuOverlayProps) {
+    super(props)
+
+    this.checkClickOrigin = this.checkClickOrigin.bind(this)
+  }
+
+  public open() {
+    this.setState(prevState => ({ isOpen: !prevState.isOpen }))
+    window.addEventListener('keydown', this.handleEscapePress)
+    document.addEventListener('mousedown', this.checkClickOrigin)
+  }
+
+  public checkClickOrigin(event: MouseEvent) {
+    if (
+      this.portalRef.current &&
+      this.portalRef.current.contains(event.target as Node)
+    ) {
+      return
+    }
+
+    if (this.triggerRef.current) {
+      if (!this.triggerRef.current.contains(event.target as Node)) {
+        this.close()
+      }
+    }
+  }
+
+  protected renderModal(content: string, props: ManagedModalProps) {
+    return (
+      <MenuOverlayInternal
+        isOpen={this.state.isOpen}
+        triggerRef={this.triggerRef}
+        onClose={this.close}
+        {...props}
+      >
+        {content}
+      </MenuOverlayInternal>
+    )
+  }
 }
 
 export interface CustomizableMenuOverlayAttributes

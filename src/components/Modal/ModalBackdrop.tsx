@@ -10,37 +10,27 @@ export interface ModalBackdropProps extends BoxProps<HTMLElement> {
   className?: string
 }
 
-export class ModalBackdrop extends React.Component<ModalBackdropProps> {
-  private scrollLock = document.createElement('style')
-
-  public componentDidMount() {
-    this.scrollLock.innerHTML = `body { overflow: hidden !important; }`
-    document.head.appendChild(this.scrollLock)
-  }
-
-  public componentWillUnmount() {
-    document.head.removeChild(this.scrollLock)
-  }
-
-  public render() {
-    const { style, className, onClick } = this.props
-    return (
-      <Backdrop
-        onClick={onClick}
-        className={className}
-        bg={rgba(
-          CustomizableModalAttributes.backdrop.backgroundColor,
-          CustomizableModalAttributes.backdrop.opacity
-        )}
-        position="fixed"
-        top="0"
-        left="0"
-        bottom="0"
-        right="0"
-        backdropStyles={style}
-      />
-    )
-  }
+export const ModalBackdrop: React.SFC<ModalBackdropProps> = ({
+  className,
+  onClick,
+  style,
+}) => {
+  return (
+    <Backdrop
+      onClick={onClick}
+      className={className}
+      bg={rgba(
+        CustomizableModalAttributes.backdrop.backgroundColor,
+        CustomizableModalAttributes.backdrop.opacity
+      )}
+      position="fixed"
+      top="0"
+      left="0"
+      bottom="0"
+      right="0"
+      backdropStyles={style}
+    />
+  )
 }
 
 interface BackdropStylesProps extends ModalBackdropProps {
@@ -48,7 +38,7 @@ interface BackdropStylesProps extends ModalBackdropProps {
 }
 
 //
-// All of this  drame is to not auto-spread `backdropStyles` onto Box and cause React run-time warnings
+// All of this  drama is to not auto-spread `backdropStyles` onto Box and cause React run-time warnings
 //
 const BackdropFactory = (props: BackdropStylesProps) => {
   const { backdropStyles, ref, ...boxProps } = props

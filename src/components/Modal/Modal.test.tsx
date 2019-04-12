@@ -22,7 +22,7 @@ describe('Modal', () => {
   })
 
   test('Active', () => {
-    assertSnapshotShallow(<Modal open render={simpleContentFactory} />)
+    assertSnapshotShallow(<Modal isOpen render={simpleContentFactory} />)
   })
 
   test('Inactive w/ wrapped element', () => {
@@ -35,7 +35,7 @@ describe('Modal', () => {
 
   test('Active w/ wrapped element', () => {
     assertSnapshotShallow(
-      <Modal open render={simpleContentFactory}>
+      <Modal isOpen render={simpleContentFactory}>
         <Button>Click Here</Button>
       </Modal>
     )
@@ -55,7 +55,7 @@ describe('Modal', () => {
   test('Verify "open" prop', () => {
     const modal = mount(
       <ThemeProvider theme={theme}>
-        <Modal open render={simpleContentFactory} />
+        <Modal isOpen render={simpleContentFactory} />
       </ThemeProvider>
     )
 
@@ -63,39 +63,10 @@ describe('Modal', () => {
     expect(modal.contains(SimpleContent)).toBeTruthy()
   })
 
-  describe('Click events', () => {
-    test('Trigger.click renders a backdrop, clicking backdrop closes it', () => {
-      const modal = mountWithTheme(
-        <Modal render={simpleContentFactory}>
-          <Button>Open Modal</Button>
-        </Modal>
-      )
-
-      // Drawer closed
-      expect(modal.find(ModalPortal).exists()).toBeFalsy()
-
-      const button = modal.find(Button)
-      expect(button.exists()).toBeTruthy()
-      button.simulate('click') // Click to open
-
-      // Drawer open
-      expect(modal.find(ModalPortal).exists()).toBeTruthy()
-
-      const backdrop = modal.find(ModalBackdrop)
-      expect(backdrop.exists()).toBeTruthy()
-      backdrop.simulate('click')
-
-      //
-      // @TODO - Deal with animation timing
-      //
-      // expect(modal.find(ModalContainer).exists()).toBeFalsy()
-    })
-  })
-
   describe('Modal styled', () => {
     const modal = mountWithTheme(
       <Modal
-        open
+        isOpen
         render={simpleContentFactory}
         backdropStyles={{ backgroundColor: 'pink' }}
         surfaceStyles={{ backgroundColor: 'purple' }}
