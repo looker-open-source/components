@@ -1,16 +1,17 @@
-Overlay is the abstract building block for building more specific implementations from. MenuOverlay, Popover and RichTooltip it under the hood.
+import * as React from 'react'
+import { Box } from '../src/components/Box'
+import { Button } from '../src/components/Button'
+import { Overlay } from '../src/components/Overlay/Overlay'
+import { OverlaySurface } from '../src/components/Overlay/OverlaySurface'
 
-NOTE: Code examples below don't work well within StyleGuidist so actual code is contained within `styleguide_components/OverlayDemo.tsx` but same code is embedded below to show how `Overlay` can be composed to create more complex components.
+export interface OverlayDemoState {
+  isOpen: boolean
+}
 
-```js noeditor
-const OverlayDemo = require('../../../styleguide_components/OverlayDemo')
-  .OverlayDemo
-;<OverlayDemo />
-```
+export class OverlayDemo extends React.Component<{}, OverlayDemoState> {
+  public triggerRef: React.RefObject<HTMLElement>
 
-```js static
-class OverlayDemo extends React.Component {
-  constructor(props) {
+  constructor(props: {}) {
     super(props)
     this.state = { isOpen: false }
     this.triggerRef = React.createRef()
@@ -18,7 +19,7 @@ class OverlayDemo extends React.Component {
     this.close = this.close.bind(this)
   }
 
-  render() {
+  public render() {
     return (
       <>
         <Overlay
@@ -46,20 +47,16 @@ class OverlayDemo extends React.Component {
             )
           }}
         </Overlay>
-
         <Button onClick={this.open} innerRef={this.triggerRef}>
           Open Overlay
         </Button>
       </>
     )
   }
-
-  open() {
+  protected open() {
     this.setState({ isOpen: true })
   }
-
-  close() {
+  protected close() {
     this.setState({ isOpen: false })
   }
 }
-```
