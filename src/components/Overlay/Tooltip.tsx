@@ -41,6 +41,7 @@ export interface TooltipInternalProps
 }
 
 const TooltipInternal: React.SFC<TooltipInternalProps> = ({
+  arrow,
   children,
   textAlign,
   maxWidth,
@@ -49,7 +50,11 @@ const TooltipInternal: React.SFC<TooltipInternalProps> = ({
   return (
     <OverlayHover {...overlayProps}>
       {(props: OverlayChildrenProps) => (
-        <OverlaySurface {...props} {...CustomizableTooltipAttributes.surface}>
+        <OverlaySurface
+          arrow={arrow}
+          {...props}
+          {...CustomizableTooltipAttributes.surface}
+        >
           <Paragraph
             fontSize="xsmall"
             maxWidth={maxWidth || '16rem'}
