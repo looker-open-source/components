@@ -45,7 +45,7 @@ export interface TooltipInternalProps
   children: string
 }
 
-const TooltipInternal: React.SFC<TooltipInternalProps> = ({
+const TooltipInternal: React.FC<TooltipInternalProps> = ({
   arrow = true,
   children,
   textAlign,

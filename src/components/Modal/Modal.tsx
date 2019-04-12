@@ -83,7 +83,7 @@ export interface ModalInternalProps extends ModalProps {
   portalRef?: React.RefObject<HTMLElement>
 }
 
-export const Modal: React.SFC<ModalInternalProps> = props => {
+export const Modal: React.FC<ModalInternalProps> = props => {
   return (
     <ModalContext.Provider value={{ closeModal: props.onClose }}>
       <CSSTransition

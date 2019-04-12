@@ -16,7 +16,7 @@ export interface InputTextProps extends BoxProps<HTMLInputElement>, InputProps {
   theme?: Theme
 }
 
-export const InputText: React.SFC<InputTextProps> = ({
+export const InputText: React.FC<InputTextProps> = ({
   validationType,
   ...props
 }) => {

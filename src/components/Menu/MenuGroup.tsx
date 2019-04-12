@@ -16,7 +16,7 @@ export interface MenuGroupProps
   customizationProps?: MenuItemCustomizationProps
 }
 
-const Internal: React.SFC<MenuGroupProps> = ({
+const Internal: React.FC<MenuGroupProps> = ({
   children,
   label,
   labelProps,

@@ -1,19 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ModalContent - no overflow 1`] = `
-Array [
-  <div
-    style={
-      Object {
-        "display": "none",
-        "height": 0,
-        "position": "absolute",
-        "visibility": "hidden",
-        "width": 0,
-      }
-    }
-  />,
-  .c1 {
+.c1 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -43,32 +31,18 @@ Array [
 }
 
 <div
-    className="undefined false c0 c1"
-    overflow="auto"
+  className="undefined false c0 c1"
+>
+  <div
+    className="c2"
   >
-    <div
-      className="c2"
-    >
-      Stuff
-    </div>
-  </div>,
-]
+    Stuff
+  </div>
+</div>
 `;
 
 exports[`ModalContent - no overflow 2`] = `
-Array [
-  <div
-    style={
-      Object {
-        "display": "none",
-        "height": 0,
-        "position": "absolute",
-        "visibility": "hidden",
-        "width": 0,
-      }
-    }
-  />,
-  .c2 {
+.c2 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -110,18 +84,16 @@ Array [
 }
 
 <div
-    className="undefined false c0 c1"
-    overflow="auto"
+  className="undefined false c0 c1"
+>
+  <div
+    className="c2"
   >
     <div
-      className="c2"
+      className="c3"
     >
-      <div
-        className="c3"
-      >
-        Stuff
-      </div>
+      Stuff
     </div>
-  </div>,
-]
+  </div>
+</div>
 `;

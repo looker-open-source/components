@@ -17,7 +17,7 @@ export interface SwatchProps extends BoxProps<HTMLDivElement> {
   width?: string
 }
 
-export const Swatch: React.SFC<SwatchProps> = ({
+export const Swatch: React.FC<SwatchProps> = ({
   color,
   width,
   height,

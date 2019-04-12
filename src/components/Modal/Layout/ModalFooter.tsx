@@ -9,7 +9,7 @@ export interface ModalFooterProps extends BoxProps<HTMLDivElement> {
   children: React.ReactNode
 }
 
-export const ModalFooter: React.SFC<ModalFooterProps> = ({
+export const ModalFooter: React.FC<ModalFooterProps> = ({
   children,
   ...props
 }) => {

@@ -10,7 +10,7 @@ export interface DialogProps extends ModalProps {
   children: React.ReactNode
 }
 
-export const Dialog: React.SFC<DialogProps> = ({
+export const Dialog: React.FC<DialogProps> = ({
   width,
   children,
   surfaceStyles,

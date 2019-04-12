@@ -14,7 +14,7 @@ export interface StatusProps {
   status: StatusLabels
 }
 
-const statusIndicator: React.SFC<StatusProps> = ({ status, ...args }) => {
+const statusIndicator: React.FC<StatusProps> = ({ status, ...args }) => {
   return (
     <a className="support-link" href="/#!/Support%20Levels">
       <Text fontSize="small" {...args}>
@@ -107,7 +107,7 @@ export interface ResourceProps {
   url: string
 }
 
-const ResourceIconRender: React.SFC<ResourceProps> = ({ url, ...args }) => {
+const ResourceIconRender: React.FC<ResourceProps> = ({ url, ...args }) => {
   if (!url) {
     return null
   } else {
@@ -137,7 +137,7 @@ export interface StatusAndResourcesProps {
   feedbackTitle: string
 }
 
-const StatusAndResourcesRenderer: React.SFC<StatusAndResourcesProps> = ({
+const StatusAndResourcesRenderer: React.FC<StatusAndResourcesProps> = ({
   status,
   figmaURL,
   githubURL,

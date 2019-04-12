@@ -95,7 +95,7 @@ const logHandler = (event: React.MouseEvent<HTMLElement>) => {
   logger(event.target.value)
 }
 
-export const LoggerButton: React.SFC<ButtonProps> = ({ onClick, ...props }) => {
+export const LoggerButton: React.FC<ButtonProps> = ({ onClick, ...props }) => {
   let clickHandler = logHandler
   if (onClick !== undefined) {
     clickHandler = (event: React.MouseEvent<HTMLElement>) => {

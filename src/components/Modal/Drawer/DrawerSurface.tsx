@@ -2,7 +2,7 @@ import * as React from 'react'
 import { styled, withTheme } from '../../../style'
 import { ModalSurface, ModalSurfaceProps } from '../ModalSurface'
 
-const Internal: React.SFC<ModalSurfaceProps> = ({
+const Internal: React.FC<ModalSurfaceProps> = ({
   children,
   width = '30rem',
   ...props

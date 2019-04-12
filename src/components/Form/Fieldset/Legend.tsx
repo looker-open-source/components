@@ -3,9 +3,7 @@ import { SpacingSizes } from '../../../style'
 import { CustomizableAttributes } from '../../../types/attributes'
 import { Box, BoxProps } from '../../Box'
 
-export const Legend: React.SFC<BoxProps<HTMLLegendElement>> = ({
-  ...props
-}) => (
+export const Legend: React.FC<BoxProps<HTMLLegendElement>> = ({ ...props }) => (
   <Box
     is="legend"
     color={CustomizableLegendAttributes.color}

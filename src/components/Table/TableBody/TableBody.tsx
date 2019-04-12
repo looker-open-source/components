@@ -9,7 +9,7 @@ export interface TableBodyProps extends BoxProps<HTMLTableSectionElement> {
   textAlign?: TableTextAlignment
 }
 
-export const TableBody: React.SFC<TableBodyProps> = ({ ...props }) => (
+export const TableBody: React.FC<TableBodyProps> = ({ ...props }) => (
   <Box
     verticalAlign={props.align || 'top'}
     textAlign={props.textAlign || 'left'}

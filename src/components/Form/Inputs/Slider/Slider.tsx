@@ -21,9 +21,6 @@ export interface SliderProps extends InputProps, BoxProps<HTMLInputElement> {
   value?: number
 }
 
-export const Slider: React.SFC<SliderProps> = ({
-  validationType,
-  ...props
-}) => {
+export const Slider: React.FC<SliderProps> = ({ validationType, ...props }) => {
   return <Box is="input" type="range" {...props} />
 }

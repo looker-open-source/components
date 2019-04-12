@@ -18,7 +18,7 @@ export interface HeadingProps
   className?: string
 }
 
-const InternalHeading: React.SFC<ThemedProps<HeadingProps>> = ({
+const InternalHeading: React.FC<ThemedProps<HeadingProps>> = ({
   fontSize,
   fontWeight,
   lineHeight,

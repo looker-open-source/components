@@ -19,7 +19,7 @@ function hidden(hide?: boolean) {
   }
 }
 
-const InternalFlexItem: React.SFC<FlexItemProps> = ({ ...props }) => {
+const InternalFlexItem: React.FC<FlexItemProps> = ({ ...props }) => {
   return <Box {...props}>{props.children}</Box>
 }
 

@@ -12,7 +12,7 @@ export interface SpinnerMarkerProps
   speed: number
 }
 
-const InternalMarker: React.SFC<SpinnerMarkerProps> = ({
+const InternalMarker: React.FC<SpinnerMarkerProps> = ({
   color,
   radius,
   rotateAngle,

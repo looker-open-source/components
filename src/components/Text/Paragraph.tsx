@@ -7,7 +7,7 @@ export interface ParagraphProps extends TextProps {
   truncate?: boolean
 }
 
-const InternalParagraph: React.SFC<ParagraphProps> = ({
+const InternalParagraph: React.FC<ParagraphProps> = ({
   truncate,
   ...props
 }) => {

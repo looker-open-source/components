@@ -92,7 +92,7 @@ function getWrap(doWrap: boolean) {
   return ``
 }
 
-const InternalText: React.SFC<ThemedProps<TextProps>> = ({
+const InternalText: React.FC<ThemedProps<TextProps>> = ({
   is = 'span',
   align,
   decoration,

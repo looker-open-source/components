@@ -12,15 +12,18 @@ export interface OverlaySurfaceArrowProps {
 }
 
 export interface OverlaySurfaceProps extends ModalSurfaceStyleProps {
-  arrowProps: PopperArrowProps
-  placement: Placement
-  surfaceRef?: React.RefObject<HTMLElement>
-  eventHandlers?: React.DOMAttributes<{}>
-  style?: React.CSSProperties
   arrow?: boolean
+  arrowProps: PopperArrowProps
+
+  children: React.ReactNode
+
+  eventHandlers?: React.DOMAttributes<{}>
+  placement: Placement
+  style?: React.CSSProperties
+  surfaceRef?: React.RefObject<HTMLElement>
 }
 
-const OverlaySurfaceInternal: React.SFC<OverlaySurfaceProps> = ({
+const OverlaySurfaceInternal: React.FC<OverlaySurfaceProps> = ({
   animation,
   children,
   surfaceRef,

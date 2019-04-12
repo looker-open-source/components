@@ -9,7 +9,7 @@ interface OverlayTestProps {
   isOpen?: boolean
 }
 
-const SimpleOverlayHover: React.SFC<OverlayTestProps> = ({ ...props }) => (
+const SimpleOverlayHover: React.FC<OverlayTestProps> = ({ ...props }) => (
   <OverlayHover {...props}>{SimpleContentSFC}</OverlayHover>
 )
 

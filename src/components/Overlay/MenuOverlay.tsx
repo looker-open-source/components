@@ -21,7 +21,7 @@ export interface MenuOverlayInternalProps extends OverlayInteractiveProps {
   }
 }
 
-const MenuOverlayInternal: React.SFC<MenuOverlayInternalProps> = ({
+const MenuOverlayInternal: React.FC<MenuOverlayInternalProps> = ({
   arrow = true,
   children,
   backdropOffset,

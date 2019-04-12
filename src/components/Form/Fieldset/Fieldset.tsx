@@ -15,7 +15,7 @@ export interface FieldsetProps extends BoxProps<HTMLFieldSetElement> {
   legend?: string
 }
 
-export const Fieldset: React.SFC<FieldsetProps> = ({ legend, ...props }) => {
+export const Fieldset: React.FC<FieldsetProps> = ({ legend, ...props }) => {
   return (
     <Box is="fieldset" {...props}>
       <FormControl mb="xsmall" alignLabel={props.alignLegend}>

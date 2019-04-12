@@ -24,7 +24,7 @@ interface FormContextValue {
 
 export const FormContext = React.createContext<FormContextValue>({})
 
-export const Form: React.SFC<FormProps> = ({ ...props }) => {
+export const Form: React.FC<FormProps> = ({ ...props }) => {
   const context = {
     validationMessages: props.validationMessages,
   }

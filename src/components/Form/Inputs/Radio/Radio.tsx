@@ -9,7 +9,7 @@ export interface RadioProps extends BoxProps<HTMLInputElement>, InputProps {
   checked?: boolean
 }
 
-export const Radio: React.SFC<RadioProps> = ({ validationType, ...props }) => {
+export const Radio: React.FC<RadioProps> = ({ validationType, ...props }) => {
   const type = { type: 'radio' }
   return <Box is="input" {...props} {...type} />
 }

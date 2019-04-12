@@ -11,11 +11,7 @@ export interface IconProps
 
 export { IconNames }
 
-export const Icon: React.SFC<IconProps> = ({
-  name,
-  size = '1em',
-  ...props
-}) => {
+export const Icon: React.FC<IconProps> = ({ name, size = '1em', ...props }) => {
   const Glyph = Glyphs[name]
   return (
     <Box

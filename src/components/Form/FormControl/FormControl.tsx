@@ -13,7 +13,7 @@ export interface FormControlProps extends BoxProps<HTMLDivElement> {
   alignLabel?: FormControlDirections
 }
 
-export const FormControl: React.SFC<FormControlProps> = ({
+export const FormControl: React.FC<FormControlProps> = ({
   alignLabel,
   ...props
 }) => {

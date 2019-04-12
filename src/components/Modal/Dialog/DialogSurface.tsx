@@ -3,7 +3,7 @@ import { styled, withTheme } from '../../../style'
 import { CustomizableModalAttributes } from '../Modal'
 import { ModalSurface, ModalSurfaceProps } from '../ModalSurface'
 
-export const Internal: React.SFC<ModalSurfaceProps> = ({
+export const Internal: React.FC<ModalSurfaceProps> = ({
   children,
   ...props
 }) => {

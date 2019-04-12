@@ -8,7 +8,7 @@ export interface OverlayHoverProps extends OverlayProps {
   onMouseOut?: (event: React.MouseEvent) => void
 }
 
-export const OverlayHover: React.SFC<OverlayHoverProps> = ({
+export const OverlayHover: React.FC<OverlayHoverProps> = ({
   children,
   isOpen,
   setSurfaceRef,

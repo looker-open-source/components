@@ -179,7 +179,7 @@ exports[`MenuGrouo - menu customization 1`] = `
             width="100%"
           >
             <g
-              clipPath="url(#clip0)"
+              clipPath="url(#Logo_Rings_svg__clip0)"
               fill="currentColor"
             >
               <path
@@ -194,7 +194,7 @@ exports[`MenuGrouo - menu customization 1`] = `
             </g>
             <defs>
               <clipPath
-                id="clip0"
+                id="Logo_Rings_svg__clip0"
               >
                 <path
                   d="M0 0h24v24H0z"

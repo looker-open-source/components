@@ -73,7 +73,7 @@ const VisuallyHiddenText = styled(Text)`
   width: 1px;
 `
 
-export const Banner: React.SFC<BannerProps> = ({ ...props }) => {
+export const Banner: React.FC<BannerProps> = ({ ...props }) => {
   const {
     icon,
     accessibilityLabel,
