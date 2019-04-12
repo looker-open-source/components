@@ -1,3 +1,4 @@
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
 import * as React from 'react'
 import { createPortal } from 'react-dom'
 import { styled } from '../../style'
@@ -6,10 +7,10 @@ import { CustomizableModalAttributes } from './Modal'
 import { getModalRoot } from './modalRoot'
 
 export interface ModalPortalProps {
-  innerRef?: React.RefObject<HTMLElement>
+  portalRef?: React.RefObject<HTMLElement>
 }
 
-class ModalPortalInternal extends React.Component<ModalPortalProps> {
+export class ModalPortal extends React.Component<ModalPortalProps> {
   private el: HTMLElement
   private modalRoot?: HTMLElement
 
@@ -22,9 +23,15 @@ class ModalPortalInternal extends React.Component<ModalPortalProps> {
     this.modalRoot = getModalRoot()
     if (!this.modalRoot) return
     this.modalRoot.appendChild(this.el)
+    disableBodyScroll(this.el, {
+      allowTouchMove: (el: HTMLElement) =>
+        hasParentMatchingSelector(el, '.surface-overflow'),
+      reserveScrollBarGap: true,
+    })
   }
 
   public componentWillUnmount() {
+    enableBodyScroll(this.el)
     if (!this.modalRoot) return
     this.modalRoot.removeChild(this.el)
   }
@@ -37,7 +44,7 @@ class ModalPortalInternal extends React.Component<ModalPortalProps> {
         bottom="0"
         left="0"
         right="0"
-        innerRef={this.props.innerRef}
+        innerRef={this.props.portalRef}
         display="flex"
         justifyContent="center"
         alignItems="center"
@@ -52,12 +59,11 @@ class ModalPortalInternal extends React.Component<ModalPortalProps> {
   }
 }
 
-export const ModalPortal = React.forwardRef((props: ModalPortalProps, ref) => (
-  <ModalPortalInternal
-    innerRef={ref as React.RefObject<HTMLElement>}
-    {...props}
-  />
-))
+const hasParentMatchingSelector = (target: HTMLElement, selector: string) => {
+  return [...Array.from(document.querySelectorAll(selector))].some(
+    el => el !== target && el.contains(target)
+  )
+}
 
 const InvisiBox = styled(Box)`
   * {

@@ -12,11 +12,7 @@ const PopoverInternal: React.SFC<OverlayInteractiveProps> = ({
 }) => (
   <Overlay pin={true} {...overlayProps}>
     {(props: OverlayChildrenProps) => (
-      <OverlaySurface
-        lockWindow
-        {...props}
-        {...CustomizablePopoverAttributes.surface}
-      >
+      <OverlaySurface {...props} {...CustomizablePopoverAttributes.surface}>
         {children}
       </OverlaySurface>
     )}

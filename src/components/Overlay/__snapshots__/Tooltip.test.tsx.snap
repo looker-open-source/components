@@ -124,7 +124,7 @@ Array [
 }
 
 <div
-    className="c0"
+    className="surface-overflow c0"
     onMouseOut={[Function]}
     overflow="visible"
     style={

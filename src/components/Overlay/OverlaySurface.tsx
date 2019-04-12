@@ -1,4 +1,3 @@
-import FocusTrap from 'focus-trap-react'
 import { Placement } from 'popper.js'
 import * as React from 'react'
 import { PopperArrowProps } from 'react-popper'
@@ -15,68 +14,48 @@ export interface OverlaySurfaceArrowProps {
 export interface OverlaySurfaceProps extends ModalSurfaceStyleProps {
   arrowProps: PopperArrowProps
   placement: Placement
-  lockWindow?: boolean
   surfaceRef?: React.RefObject<HTMLElement>
   eventHandlers?: React.DOMAttributes<{}>
   style?: React.CSSProperties
 }
 
-class OverlaySurfaceInternal extends React.Component<OverlaySurfaceProps> {
-  public render() {
-    const {
-      animation,
-      children,
-      lockWindow,
-      surfaceRef,
-      style,
-      ...props
-    } = this.props
-
-    const content = (
-      <Box
-        p="xsmall"
-        overflow="visible"
-        innerRef={surfaceRef}
-        style={{ ...style, animation }}
-        {...this.props.eventHandlers}
-      >
-        <Box
-          bg={props.backgroundColor}
-          borderRadius={props.borderRadius}
-          border={props.border}
-          borderColor={props.borderColor}
-          boxShadow={props.boxShadow}
-          color={props.color}
-        >
-          <Box tabIndex={0} focusStyle={{ outline: 'none' }}>
-            {children}
-          </Box>
-          <OverlaySurfaceArrow
-            backgroundColor={props.backgroundColor}
-            border={props.border}
-            borderColor={props.borderColor}
-            data-placement={props.placement}
-            innerRef={props.arrowProps.ref}
-            style={props.arrowProps.style}
-          />
-        </Box>
+const OverlaySurfaceInternal: React.SFC<OverlaySurfaceProps> = ({
+  animation,
+  children,
+  surfaceRef,
+  style,
+  ...props
+}) => (
+  <Box
+    p="xsmall"
+    overflow="visible"
+    className="surface-overflow"
+    innerRef={surfaceRef}
+    style={{ ...style, animation }}
+    {...props.eventHandlers}
+  >
+    <Box
+      bg={props.backgroundColor}
+      borderRadius={props.borderRadius}
+      border={props.border}
+      borderColor={props.borderColor}
+      boxShadow={props.boxShadow}
+      color={props.color}
+    >
+      <Box tabIndex={0} focusStyle={{ outline: 'none' }}>
+        {children}
       </Box>
-    )
-
-    return lockWindow ? (
-      <FocusTrap
-        focusTrapOptions={{
-          clickOutsideDeactivates: true,
-          escapeDeactivates: true,
-        }}
-      >
-        {content}
-      </FocusTrap>
-    ) : (
-      content
-    )
-  }
-}
+      <OverlaySurfaceArrow
+        backgroundColor={props.backgroundColor}
+        border={props.border}
+        borderColor={props.borderColor}
+        data-placement={props.placement}
+        innerRef={props.arrowProps.ref}
+        style={props.arrowProps.style}
+      />
+    </Box>
+  </Box>
+)
 
 export const OverlaySurface = React.forwardRef(
   (props: OverlaySurfaceProps, ref) => (

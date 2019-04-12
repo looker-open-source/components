@@ -94,15 +94,13 @@ export const Modal: React.SFC<ModalInternalProps> = props => {
         timeout={{ enter: 0, exit: 250 }}
       >
         {(state: string) => (
-          <ModalPortal ref={props.portalRef}>
-            <>
-              <ModalBackdrop
-                className={state}
-                style={props.backdropStyles}
-                onClick={props.onClose}
-              />
-              {props.render(state)}
-            </>
+          <ModalPortal portalRef={props.portalRef}>
+            <ModalBackdrop
+              className={state}
+              style={props.backdropStyles}
+              onClick={props.onClose}
+            />
+            {props.render(state)}
           </ModalPortal>
         )}
       </CSSTransition>

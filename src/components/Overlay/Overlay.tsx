@@ -1,3 +1,4 @@
+import FocusTrap from 'focus-trap-react'
 import { Placement } from 'popper.js'
 import * as React from 'react'
 import { Popper, PopperArrowProps } from 'react-popper'
@@ -92,24 +93,26 @@ export const Overlay: React.SFC<OverlayProps> = ({ ...props }) => {
       : undefined
 
   const surface = (
-    <ModalPortal ref={props.portalRef}>
-      <ModalBackdrop onClick={props.onClose} style={props.backdropStyles} />
-      <Popper
-        positionFixed
-        placement={props.placement}
-        modifiers={{ flip: { enabled: props.pin ? false : true } }}
-        referenceElement={triggerRef}
-      >
-        {({ ref, style, arrowProps, placement }) =>
-          props.children({
-            arrowProps,
-            placement,
-            ref,
-            style,
-          })
-        }
-      </Popper>
-    </ModalPortal>
+    <FocusTrap focusTrapOptions={{ clickOutsideDeactivates: true }}>
+      <ModalPortal portalRef={props.portalRef}>
+        <ModalBackdrop onClick={props.onClose} style={props.backdropStyles} />
+        <Popper
+          positionFixed
+          placement={props.placement}
+          modifiers={{ flip: { enabled: props.pin ? false : true } }}
+          referenceElement={triggerRef}
+        >
+          {({ ref, style, arrowProps, placement }) =>
+            props.children({
+              arrowProps,
+              placement,
+              ref,
+              style,
+            })
+          }
+        </Popper>
+      </ModalPortal>
+    </FocusTrap>
   )
 
   return (

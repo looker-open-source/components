@@ -10,58 +10,27 @@ export interface ModalBackdropProps extends BoxProps<HTMLElement> {
   className?: string
 }
 
-export interface ModalBackdropState {
-  position: number
-  scrollbarWidth: number
-}
-
-export class ModalBackdrop extends React.Component<
-  ModalBackdropProps,
-  ModalBackdropState
-> {
-  public state = { position: 0, scrollbarWidth: 0 }
-  private scrollLock = document.createElement('style')
-
-  public componentDidMount() {
-    const position = window.pageYOffset
-    const scrollbarWidth =
-      window.innerWidth - document.documentElement.clientWidth
-
-    this.scrollLock.innerHTML = `
-    body {
-      overflow: hidden !important;
-      margin-right: ${scrollbarWidth}px !important;
-    }
-    `
-    document.head.appendChild(this.scrollLock)
-
-    this.setState({ position, scrollbarWidth })
-  }
-
-  public componentWillUnmount() {
-    document.head.removeChild(this.scrollLock)
-    window.scroll(0, this.state.position)
-  }
-
-  public render() {
-    const { style, className, onClick } = this.props
-    return (
-      <Backdrop
-        onClick={onClick}
-        className={className}
-        bg={rgba(
-          CustomizableModalAttributes.backdrop.backgroundColor,
-          CustomizableModalAttributes.backdrop.opacity
-        )}
-        position="fixed"
-        top="0"
-        left="0"
-        bottom="0"
-        right="0"
-        backdropStyles={style}
-      />
-    )
-  }
+export const ModalBackdrop: React.SFC<ModalBackdropProps> = ({
+  className,
+  onClick,
+  style,
+}) => {
+  return (
+    <Backdrop
+      onClick={onClick}
+      className={className}
+      bg={rgba(
+        CustomizableModalAttributes.backdrop.backgroundColor,
+        CustomizableModalAttributes.backdrop.opacity
+      )}
+      position="fixed"
+      top="0"
+      left="0"
+      bottom="0"
+      right="0"
+      backdropStyles={style}
+    />
+  )
 }
 
 interface BackdropStylesProps extends ModalBackdropProps {
@@ -69,7 +38,7 @@ interface BackdropStylesProps extends ModalBackdropProps {
 }
 
 //
-// All of this  drame is to not auto-spread `backdropStyles` onto Box and cause React run-time warnings
+// All of this  drama is to not auto-spread `backdropStyles` onto Box and cause React run-time warnings
 //
 const BackdropFactory = (props: BackdropStylesProps) => {
   const { backdropStyles, ref, ...boxProps } = props

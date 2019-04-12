@@ -13,6 +13,7 @@ export interface ModalSurfaceProps extends BoxProps<HTMLDivElement> {
 export const ModalSurface: React.SFC<ModalSurfaceProps> = ({
   style,
   theme,
+  className,
   ...props
 }) => {
   return (
@@ -26,6 +27,7 @@ export const ModalSurface: React.SFC<ModalSurfaceProps> = ({
         bg={CustomizableModalAttributes.surface.backgroundColor}
         boxShadow={theme.shadows[3]}
         display="flex"
+        className={`surface-overflow ${className}`}
         flexDirection="column"
         maxWidth="100%"
         position="absolute"

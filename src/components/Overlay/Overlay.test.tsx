@@ -9,6 +9,13 @@ import { ModalBackdrop } from '../Modal'
 import { Overlay } from './Overlay'
 import { SimpleContentSFC } from './overlay.test.helpers'
 
+const content = (
+  <div>
+    simple content <a href="#">Focus here...</a>
+  </div>
+)
+const contentFC = () => content
+
 describe('Overlay', () => {
   test('Generates a simple Overlay', () => {
     assertSnapshotShallow(
@@ -23,16 +30,12 @@ describe('Overlay', () => {
   })
 
   test('Overlay contains content', () => {
-    const content = <div>simple content</div>
-    const contentFC = () => content
     const overlay = mountWithTheme(<Overlay isOpen>{contentFC}</Overlay>)
 
     expect(overlay.contains(content)).toBeTruthy()
   })
 
   test('Overlay backdrop styles applied', () => {
-    const content = <div>simple content</div>
-    const contentFC = () => content
     const overlay = mountWithTheme(
       <Overlay isOpen backdropStyles={{ backgroundColor: 'pink' }}>
         {contentFC}

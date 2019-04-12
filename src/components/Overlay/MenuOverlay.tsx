@@ -35,7 +35,6 @@ const MenuOverlayInternal: React.SFC<MenuOverlayInternalProps> = ({
     <Overlay backdropStyles={backdropStyles} {...overlayProps}>
       {(props: OverlayChildrenProps) => (
         <OverlaySurface
-          lockWindow={true}
           {...props}
           {...CustomizableMenuOverlayAttributes.surface}
         >
