@@ -29,6 +29,7 @@ export interface ModalManagerProps extends ManagedModalProps {
 
   isOpen?: boolean
   pin?: boolean
+  arrow?: boolean
 }
 
 export interface ModalManagerState {

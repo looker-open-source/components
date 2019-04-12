@@ -28,6 +28,7 @@ export interface TooltipBaseProps {
    * @default center
    */
   textAlign?: TextAlignProperty
+  arrow?: boolean
 }
 
 export interface TooltipInternalProps

@@ -28,6 +28,18 @@ describe('Tooltip', () => {
     )
   })
 
+  test('Tooltip can hide its arrow', () => {
+    assertSnapshot(
+      <Tooltip content="Hello world" arrow={false} isOpen>
+        {(eventHandlers, ref) => (
+          <Button innerRef={ref} {...eventHandlers}>
+            Example
+          </Button>
+        )}
+      </Tooltip>
+    )
+  })
+
   test('trigger: open on mouseover, close on mouseout', () => {
     const tooltip = mountWithTheme(
       <Tooltip content="Hello world">
