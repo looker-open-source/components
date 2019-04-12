@@ -9,6 +9,11 @@ export interface OverlayChildrenProps {
   ref: React.Ref<HTMLElement>
   style: React.CSSProperties
   /**
+   * Display and arrow that points to the trigger element on popovers
+   * @default true
+   */
+  arrow?: boolean
+  /**
    * Properties to be applied to the arrow container. These originate from the
    * underlying react-popper library and are used to position and style the
    * arrow.
@@ -25,7 +30,6 @@ export interface OverlayChildrenProps {
 
 export interface OverlayInteractiveProps {
   children: React.ReactNode
-
   /**
    * When true, renders the Backdrop, Surface and it's contained content
    * @default false
@@ -52,6 +56,15 @@ export interface OverlayInteractiveProps {
    * @default bottom
    */
   placement?: Placement
+  /**
+   * Display and arrow that points to the trigger element
+   * @default true
+   */
+  /**
+   * Display and arrow that points to the trigger element on popovers
+   * @default true
+   */
+  arrow?: boolean
 }
 
 export interface OverlayProps extends OverlayInteractiveProps {
@@ -99,7 +112,10 @@ export const Overlay: React.SFC<OverlayProps> = ({ ...props }) => {
         <Popper
           positionFixed
           placement={props.placement}
-          modifiers={{ flip: { enabled: props.pin ? false : true } }}
+          modifiers={{
+            flip: { enabled: props.pin ? false : true },
+            preventOverflow: { padding: 0 },
+          }}
           referenceElement={triggerRef}
         >
           {({ ref, style, arrowProps, placement }) =>

@@ -6,6 +6,7 @@ import { Box } from '../Box'
 import { ModalSurfaceStyleProps } from '../Modal'
 
 export interface OverlaySurfaceArrowProps {
+  arrow?: boolean
   backgroundColor: string
   border: React.ReactText
   borderColor: React.ReactText
@@ -27,7 +28,7 @@ const OverlaySurfaceInternal: React.SFC<OverlaySurfaceProps> = ({
   ...props
 }) => (
   <Box
-    p="xsmall"
+    py="xsmall"
     overflow="visible"
     className="surface-overflow"
     innerRef={surfaceRef}
@@ -46,6 +47,7 @@ const OverlaySurfaceInternal: React.SFC<OverlaySurfaceProps> = ({
         {children}
       </Box>
       <OverlaySurfaceArrow
+        arrow={props.arrow}
         backgroundColor={props.backgroundColor}
         border={props.border}
         borderColor={props.borderColor}
@@ -72,7 +74,7 @@ const OverlaySurfaceArrow = styled.div<OverlaySurfaceArrowProps>`
   &::before {
     content: '';
     margin: auto;
-    display: block;
+    display: ${props => (props.arrow === false ? 'none' : 'block')};
     width: 0.5rem;
     height: 0.5rem;
     background: ${props => props.backgroundColor};

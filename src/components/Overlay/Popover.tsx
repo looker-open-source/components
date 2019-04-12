@@ -7,12 +7,17 @@ import { Overlay, OverlayInteractiveProps, OverlaySurface } from './'
 import { OverlayChildrenProps } from './Overlay'
 
 const PopoverInternal: React.SFC<OverlayInteractiveProps> = ({
+  arrow,
   children,
   ...overlayProps
 }) => (
   <Overlay pin={true} {...overlayProps}>
     {(props: OverlayChildrenProps) => (
-      <OverlaySurface {...props} {...CustomizablePopoverAttributes.surface}>
+      <OverlaySurface
+        arrow={arrow}
+        {...props}
+        {...CustomizablePopoverAttributes.surface}
+      >
         {children}
       </OverlaySurface>
     )}

@@ -7,6 +7,7 @@ import { ModalContext } from './ModalContext'
 import { ModalPortal } from './ModalPortal'
 
 export interface ModalSurfaceStyleProps {
+  arrow?: boolean
   animation?: string
   backgroundColor: string
   border: string
