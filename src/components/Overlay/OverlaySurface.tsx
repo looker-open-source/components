@@ -14,9 +14,7 @@ export interface OverlaySurfaceArrowProps {
 export interface OverlaySurfaceProps extends ModalSurfaceStyleProps {
   arrow?: boolean
   arrowProps: PopperArrowProps
-
   children: React.ReactNode
-
   eventHandlers?: React.DOMAttributes<{}>
   placement: Placement
   style?: React.CSSProperties
