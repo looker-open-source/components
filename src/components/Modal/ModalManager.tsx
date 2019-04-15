@@ -26,7 +26,6 @@ export interface ModalManagerProps extends ManagedModalProps {
    * @default bottom
    */
   placement?: Placement
-
   isOpen?: boolean
   pin?: boolean
 }
