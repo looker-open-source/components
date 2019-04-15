@@ -23,7 +23,7 @@ We want Looker to be accessible to the widest audience possible. Our color palet
 #### Color Palette
 
 ```js noeditor
-const chroma = require('chroma-js')
+const polished = require('polished')
 
 checkContrast = color => {
   let swatchList = []
@@ -34,8 +34,12 @@ checkContrast = color => {
       return obj.name === 'swatch'
     })
     const swatchFill = swatchLayer.fills[0].color
-    const convertedFill = `rgba(${swatchFill.r * 255}, ${swatchFill.g *
-      255}, ${swatchFill.b * 255}, ${swatchFill.a * 1})`
+    const fill = polished.rgba(
+      swatchFill.r * 255,
+      swatchFill.g * 255,
+      swatchFill.b * 255,
+      swatchFill.a * 1
+    )
 
     // Extract text layer and get color
     const swatchLabel = swatch.children.find(function(obj) {
@@ -43,28 +47,34 @@ checkContrast = color => {
     })
 
     const labelFill = swatchLabel.fills[0].color
-    const convertedLabelFill = `rgba(${labelFill.r * 255}, ${labelFill.g *
-      255}, ${labelFill.b * 255}, ${labelFill.a * 1})`
+    const labelColor = polished.rgba(
+      labelFill.r * 255,
+      labelFill.g * 255,
+      labelFill.b * 255,
+      labelFill.a * 1
+    )
 
-    const hexValue = chroma(convertedFill).hex()
+    const hexValue = polished.rgbToColorString({
+      red: swatchFill.r * 255,
+      green: swatchFill.g * 255,
+      blue: swatchFill.b * 255,
+    })
 
-    const contrastCheck = chroma.contrast(convertedFill, convertedLabelFill)
-    let wcag = ''
+    const labelLuminance = polished.getLuminance(labelColor)
+    const fillLuminance = polished.getLuminance(fill)
+    const constrast =
+      (Math.max(labelLuminance, fillLuminance) + 0.05) /
+      (Math.min(labelLuminance, fillLuminance) + 0.05)
 
-    if (contrastCheck >= 4.5) {
-      wcag = 'AAA'
-    } else if (contrastCheck >= 3) {
-      wcag = 'AA'
-    } else {
-      wcag = 'fail'
-    }
+    const contrastLevel =
+      constrast >= 4.5 ? 'AAA' : constrast >= 3 ? 'AA' : 'fail'
 
     swatchList.push({
-      fill: convertedFill,
+      fill,
       label: swatch.name,
-      labelColor: convertedLabelFill,
-      contrastLevel: wcag,
-      hexValue: hexValue,
+      labelColor,
+      contrastLevel,
+      hexValue,
       group: groupName,
     })
   })
