@@ -40,3 +40,28 @@ const wikipediaWildebeest = (
   </Popover>
 </>;
 ```
+
+You can use the `pin` and `arrow` properties to customize the `Popover`'s behavior
+
+```js
+const content = (
+  <PopoverContent p="large" width={350}>
+    <Paragraph fontWeight="bold" mb="small">
+      Customizations:
+    </Paragraph>
+    <List type="bullet">
+      <ListItem>I am pinned, so I won't reposition if my content overflows the window.</ListItem>
+      <ListItem>My arrow is also hidden.</ListItem>
+    </List>
+  </PopoverContent>
+);
+<>
+<Popover pin arrow={false} content={content}>
+  {(onClick, ref) => (
+  <Button onClick={onClick} innerRef={ref}>
+    Pinned and arrowless popover
+  </Button>
+  )}
+</Popover>
+</>
+```

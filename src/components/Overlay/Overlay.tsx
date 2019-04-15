@@ -25,7 +25,6 @@ export interface OverlayChildrenProps {
 
 export interface OverlayInteractiveProps {
   children: React.ReactNode
-
   /**
    * When true, renders the Backdrop, Surface and it's contained content
    * @default false
@@ -99,7 +98,10 @@ export const Overlay: React.SFC<OverlayProps> = ({ ...props }) => {
         <Popper
           positionFixed
           placement={props.placement}
-          modifiers={{ flip: { enabled: props.pin ? false : true } }}
+          modifiers={{
+            flip: { enabled: props.pin ? false : true },
+            preventOverflow: { padding: 0 },
+          }}
           referenceElement={triggerRef}
         >
           {({ ref, style, arrowProps, placement }) =>

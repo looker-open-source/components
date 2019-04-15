@@ -28,6 +28,11 @@ export interface TooltipBaseProps {
    * @default center
    */
   textAlign?: TextAlignProperty
+  /**
+   * Display and arrow that points to the trigger element on popovers
+   * @default true
+   */
+  arrow?: boolean
 }
 
 export interface TooltipInternalProps
@@ -41,6 +46,7 @@ export interface TooltipInternalProps
 }
 
 const TooltipInternal: React.SFC<TooltipInternalProps> = ({
+  arrow = true,
   children,
   textAlign,
   maxWidth,
@@ -49,7 +55,11 @@ const TooltipInternal: React.SFC<TooltipInternalProps> = ({
   return (
     <OverlayHover {...overlayProps}>
       {(props: OverlayChildrenProps) => (
-        <OverlaySurface {...props} {...CustomizableTooltipAttributes.surface}>
+        <OverlaySurface
+          arrow={arrow}
+          {...props}
+          {...CustomizableTooltipAttributes.surface}
+        >
           <Paragraph
             fontSize="xsmall"
             maxWidth={maxWidth || '16rem'}

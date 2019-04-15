@@ -6,13 +6,26 @@ import { ModalManager, ModalManagerProps } from '../Modal/ModalManager'
 import { Overlay, OverlayInteractiveProps, OverlaySurface } from './'
 import { OverlayChildrenProps } from './Overlay'
 
-const PopoverInternal: React.SFC<OverlayInteractiveProps> = ({
+export interface PopoverProps extends OverlayInteractiveProps {
+  /**
+   * Display and arrow that points to the trigger element on popovers
+   * @default true
+   */
+  arrow?: boolean
+}
+
+const PopoverInternal: React.SFC<PopoverProps> = ({
+  arrow = true,
   children,
   ...overlayProps
 }) => (
   <Overlay pin={true} {...overlayProps}>
     {(props: OverlayChildrenProps) => (
-      <OverlaySurface {...props} {...CustomizablePopoverAttributes.surface}>
+      <OverlaySurface
+        arrow={arrow}
+        {...props}
+        {...CustomizablePopoverAttributes.surface}
+      >
         {children}
       </OverlaySurface>
     )}

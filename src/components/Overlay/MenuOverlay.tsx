@@ -12,6 +12,7 @@ import {
 } from './'
 
 export interface MenuOverlayInternalProps extends OverlayInteractiveProps {
+  arrow?: boolean
   backdropOffset?: {
     top?: string
     left?: string
@@ -21,6 +22,7 @@ export interface MenuOverlayInternalProps extends OverlayInteractiveProps {
 }
 
 const MenuOverlayInternal: React.SFC<MenuOverlayInternalProps> = ({
+  arrow = true,
   children,
   backdropOffset,
   ...overlayProps
@@ -35,6 +37,7 @@ const MenuOverlayInternal: React.SFC<MenuOverlayInternalProps> = ({
     <Overlay backdropStyles={backdropStyles} {...overlayProps}>
       {(props: OverlayChildrenProps) => (
         <OverlaySurface
+          arrow={arrow}
           {...props}
           {...CustomizableMenuOverlayAttributes.surface}
         >
@@ -46,6 +49,7 @@ const MenuOverlayInternal: React.SFC<MenuOverlayInternalProps> = ({
 }
 
 export interface MenuOverlayProps extends ModalManagerProps {
+  arrow?: boolean
   backdropOffset?: {
     top?: string
     left?: string
