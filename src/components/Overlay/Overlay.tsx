@@ -57,10 +57,6 @@ export interface OverlayInteractiveProps {
    */
   placement?: Placement
   /**
-   * Display and arrow that points to the trigger element
-   * @default true
-   */
-  /**
    * Display and arrow that points to the trigger element on popovers
    * @default true
    */
