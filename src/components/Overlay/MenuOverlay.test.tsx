@@ -20,6 +20,18 @@ describe('MenuOverlay', () => {
     )
   })
 
+  test('Normal menu overlay arrow hidden', () => {
+    assertSnapshotShallow(
+      <MenuOverlay content={content} arrow={false}>
+        {(onClick, ref) => (
+          <Button onClick={onClick} innerRef={ref}>
+            Menu
+          </Button>
+        )}
+      </MenuOverlay>
+    )
+  })
+
   test('Open menu overlay with backdrop top=50px', () => {
     assertSnapshotShallow(
       <MenuOverlay content={content} backdropOffset={{ top: '50px' }} isOpen>

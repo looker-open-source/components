@@ -28,6 +28,10 @@ export interface TooltipBaseProps {
    * @default center
    */
   textAlign?: TextAlignProperty
+  /**
+   * Display and arrow that points to the trigger element on popovers
+   * @default true
+   */
   arrow?: boolean
 }
 
@@ -42,7 +46,7 @@ export interface TooltipInternalProps
 }
 
 const TooltipInternal: React.SFC<TooltipInternalProps> = ({
-  arrow,
+  arrow = true,
   children,
   textAlign,
   maxWidth,
