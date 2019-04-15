@@ -41,7 +41,7 @@
     "lint-staged": "^8.1.5",
     "ora": "^3.4.0",
     "pre-commit": "1.2.2",
-    "prettier": "^1.16.4",
+    "prettier": "^1.17.0",
     "prop-types": "^15.7.2",
     "react-docgen-typescript": "^1.12.3",
     "react-styleguidist": "7.3.10",
@@ -49,8 +49,8 @@
     "request": "^2.88.0",
     "rimraf": "^2.6.3",
     "styled-components": "^3.4.9",
-    "stylelint": "^9.10.1",
-    "stylelint-config-recommended": "2.1.0",
+    "stylelint": "^10.0.0",
+    "stylelint-config-recommended": "^2.2.0",
     "stylelint-config-styled-components": "0.1.1",
     "stylelint-order": "^2.2.1",
     "stylelint-processor-styled-components": "^1.6.0",
@@ -63,7 +63,7 @@
     "typescript": "^3.4.3",
     "typescript-tslint-plugin": "^0.3.1",
     "typings-for-css-modules-loader": "1.7.0",
-    "webpack": "^4.29.6"
+    "webpack": "^4.30.0"
   },
   "dependencies": {
     "body-scroll-lock": "^2.6.1",
@@ -79,8 +79,8 @@
     "react-dom": "^16.8.6",
     "react-hotkeys": "^1.1.4",
     "react-popper": "^1.3.3",
-    "react-resize-detector": "^4.1.1",
-    "react-transition-group": "^2.5.1",
+    "react-resize-detector": "^4.1.3",
+    "react-transition-group": "^3.0.0",
     "styled-system": "^3.1.6",
     "svg-inline-loader": "^0.8.0",
     "uuid": "^3.3.2"
