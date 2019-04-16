@@ -17,7 +17,9 @@ If you are not familiar with flex box, [here is a great guide](https://css-trick
 The `<Flex />` component has the ability to control the layout direction and order of its children. By default the children will layout in a row.
 
 ```js
-<Flex>
+import { Flex } from './Flex'
+import { FlexItem } from '../FlexItem'
+;<Flex>
   <FlexItem>👋</FlexItem>
   <FlexItem>💪</FlexItem>
   <FlexItem>📦</FlexItem>
@@ -29,7 +31,12 @@ The `<Flex />` component has the ability to control the layout direction and ord
 Using our `<Flex>` and `<FlexItem>` components we can quickly scaffold out real world use cases like a navigation bar.
 
 ```js
-<Flex
+import { Flex } from './Flex'
+import { FlexItem } from '../FlexItem'
+import { Box } from '../Box'
+import { Icon } from '../Icon/Icon'
+import { Text } from '../Text'
+;<Flex
   bg="palette.charcoal800"
   px="small"
   height="50px"
@@ -72,7 +79,7 @@ Using our `<Flex>` and `<FlexItem>` components we can quickly scaffold out real 
         <Icon name="Search" color="palette.white" size={24} />
       </FlexItem>
       <FlexItem mr="small">
-        <Icon name="LiveHelp" color="palette.white" size={24} />
+        <Icon name="Chat" color="palette.white" size={24} />
       </FlexItem>
       <FlexItem>
         <Icon name="Group" color="palette.white" size={24} />
@@ -87,7 +94,9 @@ Using our `<Flex>` and `<FlexItem>` components we can quickly scaffold out real 
 You can change the layout direction and order of flex children by using the `flexDirection` property. Below we use the same children in each example but can adjust the layout quickly using `flexDirection`.
 
 ```js
-<Flex>
+import { Flex } from './Flex'
+import { FlexItem } from '../FlexItem'
+;<Flex>
   <Flex mr="large">
     <FlexItem>1️⃣</FlexItem>
     <FlexItem>2️⃣</FlexItem>
@@ -119,7 +128,18 @@ You can change the layout direction and order of flex children by using the `fle
 The `<Flex>` component allows you to control how its children are distributed within its container. Using the `justifyContent` property you can adjust the distribution of the children. Below is a table with all the justify options:
 
 ```js noeditor
-<Table>
+import { Flex } from './Flex'
+import { FlexItem } from '../FlexItem'
+import {
+  Table,
+  TableHead,
+  TableRow,
+  TableHeaderCell,
+  TableBody,
+  TableDataCell,
+} from '../Table'
+import { Code, Text } from '../Text'
+;<Table>
   <TableHead>
     <TableRow>
       <TableHeaderCell width="40%">Justify Property</TableHeaderCell>
@@ -213,7 +233,10 @@ The `<Flex>` component allows you to control how its children are distributed wi
 Here is a visual example of how using `justifyContent` affects the distribution of items in a `<Flex />` component.
 
 ```js
-<div>
+import { Flex } from './Flex'
+import { Box } from '../Box'
+import { Text } from '../Text'
+;<div>
   <Flex justifyContent="flex-start" mb="medium" bg="palette.charcoal000">
     <Box>
       <Text fontSize="xxxxlarge">🕺</Text>
@@ -293,7 +316,16 @@ Here is a visual example of how using `justifyContent` affects the distribution 
 Flex box allows for quickly adjusting the alignment of items inside the flex container. Below are available alignment types:
 
 ```js noeditor
-<Table>
+import {
+  Table,
+  TableHead,
+  TableRow,
+  TableHeaderCell,
+  TableBody,
+  TableDataCell,
+} from '../Table'
+import { Code, Text } from '../Text'
+;<Table>
   <TableHead>
     <TableRow>
       <TableHeaderCell width="40%">AlignItems Property</TableHeaderCell>
@@ -351,7 +383,7 @@ Flex box allows for quickly adjusting the alignment of items inside the flex con
       <TableDataCell>
         <span className="prop-code">
           <Code>stretch</Code>
-        </span>{' '}
+        </span>
         <Text fontSize="xsmall">(default)</Text>
       </TableDataCell>
       <TableDataCell>
@@ -365,7 +397,9 @@ Flex box allows for quickly adjusting the alignment of items inside the flex con
 Here is an example of using `alignItems` to adjust how items are aligned within the flex container.
 
 ```js
-<div>
+import { Flex } from './Flex'
+import { FlexItem } from '../FlexItem'
+;<>
   <Flex mb="xxlarge">
     <FlexItem p="xxlarge" bg="palette.purple200">
       Default (stretch)
@@ -440,7 +474,7 @@ Here is an example of using `alignItems` to adjust how items are aligned within 
       Four
     </FlexItem>
   </Flex>
-</div>
+</>
 ```
 
 ### Aligning Content
@@ -448,7 +482,16 @@ Here is an example of using `alignItems` to adjust how items are aligned within 
 If you have multiple rows of flex items, the `alignContent` property determines how the rows are distributed within the flex container.
 
 ```js noeditor
-<Table>
+import { Code, Text } from '../Text'
+import {
+  Table,
+  TableHead,
+  TableRow,
+  TableHeaderCell,
+  TableBody,
+  TableDataCell,
+} from '../Table'
+;<Table>
   <TableHead>
     <TableRow>
       <TableHeaderCell width="40%">AlignContent Property</TableHeaderCell>
@@ -533,7 +576,9 @@ If you have multiple rows of flex items, the `alignContent` property determines 
 ```
 
 ```js
-<Flex justifyContent="space-between">
+import { Flex } from './Flex'
+import { FlexItem } from '../FlexItem'
+;<Flex justifyContent="space-between">
   <Flex
     alignContent="space-around"
     width="30%"
@@ -595,23 +640,45 @@ If you have multiple rows of flex items, the `alignContent` property determines 
 The `flexWrap` property determines if flex items should be forced into a single line or if they can wrap onto multiple lines.
 
 ```js
-<Flex width="80%" flexWrap="nowrap" mb="large">
-  <FlexItem width="40%" p="large" bg="palette.red200">These Lines</FlexItem>
-  <FlexItem width="40%" p="large" bg="palette.blue200">Will NOT</FlexItem>
-  <FlexItem width="40%" p="large" bg="palette.green200">Wrap</FlexItem>
-</Flex>
+import { Flex } from './Flex'
+import { FlexItem } from '../FlexItem'
+;<>
+  <Flex width="80%" flexWrap="nowrap" mb="large">
+    <FlexItem width="40%" p="large" bg="palette.red200">
+      These Lines
+    </FlexItem>
+    <FlexItem width="40%" p="large" bg="palette.blue200">
+      Will NOT
+    </FlexItem>
+    <FlexItem width="40%" p="large" bg="palette.green200">
+      Wrap
+    </FlexItem>
+  </Flex>
 
-<Flex width="50%" flexWrap="wrap" mb="large">
-  <FlexItem width="40%" p="large" bg="palette.red200">These Lines</FlexItem>
-  <FlexItem width="40%" p="large" bg="palette.blue200">Will</FlexItem>
-  <FlexItem width="40%" p="large" bg="palette.green200">Wrap</FlexItem>
-</Flex>
+  <Flex width="50%" flexWrap="wrap" mb="large">
+    <FlexItem width="40%" p="large" bg="palette.red200">
+      These Lines
+    </FlexItem>
+    <FlexItem width="40%" p="large" bg="palette.blue200">
+      Will
+    </FlexItem>
+    <FlexItem width="40%" p="large" bg="palette.green200">
+      Wrap
+    </FlexItem>
+  </Flex>
 
-<Flex width="50%" flexWrap="wrap-reverse" mb="large">
-  <FlexItem width="40%" p="large" bg="palette.red200">These Lines</FlexItem>
-  <FlexItem width="40%" p="large" bg="palette.blue200">Will</FlexItem>
-  <FlexItem width="40%" p="large" bg="palette.green200">Wrap Reverse</FlexItem>
-</Flex>
+  <Flex width="50%" flexWrap="wrap-reverse" mb="large">
+    <FlexItem width="40%" p="large" bg="palette.red200">
+      These Lines
+    </FlexItem>
+    <FlexItem width="40%" p="large" bg="palette.blue200">
+      Will
+    </FlexItem>
+    <FlexItem width="40%" p="large" bg="palette.green200">
+      Wrap Reverse
+    </FlexItem>
+  </Flex>
+</>
 ```
 
 ### Responsive Behavior
@@ -619,7 +686,9 @@ The `flexWrap` property determines if flex items should be forced into a single 
 Many of the properties you can set on the `<Flex />` component will accept an array of values that will then be applied at different breakpoints. There are 5 [breakpoints](/#!/Breakpoints) slots that you can target. Here is an example of what that looks like.
 
 ```js
-<Flex
+import { Flex } from './Flex'
+import { FlexItem } from '../FlexItem'
+;<Flex
   flexDirection={[
     'column', // column up to the first breakpoint
     null, // stay a column past first breakpoint

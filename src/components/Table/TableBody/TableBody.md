@@ -1,18 +1,27 @@
 ```js noeditor
-const StatusAndResources = require('../../../../styleguide_components/StatusAndResources').StatusAndResources;
+const StatusAndResources = require('../../../../styleguide_components/StatusAndResources')
+  .StatusAndResources
 
-<StatusAndResources
+;<StatusAndResources
   status="experimental"
   figmaURL="https://www.figma.com/file/TIVgrnhEWwRGvr5yEQA4CVlj/Tables"
   githubURL="https://github.com/looker/lens/blob/master/src/components/Table/TableBody/TableBody.tsx"
-  feedbackTitle="TableBody Component Feedback" />
+  feedbackTitle="TableBody Component Feedback"
+/>
 ```
+
 ### Table Body
 
 This component is used to define TableHeaderCell body of the table and holds the data for the table. The `<TableBody>` can have multiple `<TableRow>` tags for each row of data, and a `<TableDataCell>` tag for each cell of data to be semantically correct.
 
 ```js
-<Table>
+import { Table } from '../Table'
+import { TableBody } from './TableBody'
+import { TableDataCell } from '../TableDataCell'
+import { TableHead } from '../TableHead'
+import { TableHeaderCell } from '../TableHeaderCell'
+import { TableRow } from '../TableRow'
+;<Table>
   <TableHead>
     <TableRow>
       <TableHeaderCell>Column 1</TableHeaderCell>

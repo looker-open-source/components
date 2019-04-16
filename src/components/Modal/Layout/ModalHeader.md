@@ -3,7 +3,10 @@
 ModalHeader supports all [`Box`](/#!/Box) properties.
 
 ```js
-<ModalHeader>
+import { Heading } from '../../Heading'
+import { ModalHeader } from '../Layout'
+
+;<ModalHeader>
   <Heading fontWeight="semiBold">This is a ModalHeader</Heading>
 </ModalHeader>
 ```

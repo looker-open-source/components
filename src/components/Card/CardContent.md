@@ -15,7 +15,10 @@ const StatusAndResources = require('../../../styleguide_components/StatusAndReso
 The `CardContent` component is used to add padding around a `Card`'s content.
 
 ```js
-<Card>
+import { Card } from './Card'
+import { CardContent } from './CardContent'
+import { Text } from '../Text'
+;<Card>
   <CardContent>
     <Text fontSize="medium">Padding</Text>
     <Text fontSize="small" mode="subdued">

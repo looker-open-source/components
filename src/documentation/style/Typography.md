@@ -9,6 +9,17 @@
 Lens’ primary font is Open Sans, a humanist sans serif typeface. It was chosen for its open and friendly appearance as well as having excellent legibility for digital applications.
 
 ```js noeditor
+import { Box } from '../../components/Box'
+import {
+  Table,
+  TableBody,
+  TableDataCell,
+  TableHead,
+  TableHeaderCell,
+  TableRow,
+} from '../../components/Table'
+import { Code, Text } from '../../components/Text'
+
 const specimen =
   'Open Sans is the typographic base for the tone and content of Lens’, Lookers design system'
 const typeFamily = [
@@ -20,7 +31,7 @@ const typeFamily = [
 
 const tableRows = typeFamily.map(t => {
   return (
-    <TableRow>
+    <TableRow key={t.weight}>
       <TableDataCell>
         <Box px="small" is="span" className="prop-code">
           <Code fontSize="xsmall">{t.weight}</Code>
@@ -66,6 +77,17 @@ const tableRows = typeFamily.map(t => {
 The Lens type scale is designed to provide consistent and harmonious typographic styles.
 
 ```js noeditor
+import { Box } from '../../components/Box'
+import {
+  Table,
+  TableBody,
+  TableDataCell,
+  TableHead,
+  TableHeaderCell,
+  TableRow,
+} from '../../components/Table'
+import { Code, Text } from '../../components/Text'
+
 const specimen = 'Lens is great'
 const typeRamp = [
   { size: 'xxxxlarge', px: '46px', lh: '64px' },
@@ -81,7 +103,7 @@ const typeRamp = [
 
 const tableRows = typeRamp.map(t => {
   return (
-    <TableRow>
+    <TableRow key={t.size}>
       <TableDataCell>
         <Text fontSize={t.size}>{specimen}</Text>
       </TableDataCell>

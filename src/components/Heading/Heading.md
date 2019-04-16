@@ -15,8 +15,8 @@ The `<Heading />` component is used to render a HTML `<h1>` - `<h6>` element, by
 
 ```js
 // A heading component that defaults to a h3
-
-<Heading>Hello Good Looker 👋</Heading>
+import { Heading } from './Heading'
+;<Heading>Hello Good Looker 👋</Heading>
 ```
 
 <div class="doc-section-divider"></div>
@@ -26,9 +26,9 @@ The `<Heading />` component is used to render a HTML `<h1>` - `<h6>` element, by
 To use a different HTML heading element, the `<Heading />` component accepts a `is` attribute that corresponds to the `<h1>` - `<h6>` elements. The font-size of each heading element maps to the Lens [type ramp](/#!/Typography)
 
 ```js
+import { Heading } from './Heading'
 // Heading components using the level attribute (font-size / line-height)
-
-<div>
+;<div>
   <Heading is="h1">I’m a h1 element (25px/40px)</Heading>
   <Heading is="h2">I’m a h2 element (22px/32px)</Heading>
   <Heading is="h3">I’m a h3 element (18px/28px)</Heading>
@@ -45,9 +45,9 @@ To use a different HTML heading element, the `<Heading />` component accepts a `
 When creating accessible pages it is important that headings create a [logical document outline](https://bitsofco.de/using-heading-elements-to-create-a-document-outline/), but sometimes the font-size of the heading element doesn't match to the needs of the design or layout. Composing the `is` and the `fontSize` attributes lets you choose the semantically correct level heading and the desired size. The available size values come from the [type ramp](/#!/Typography).
 
 ```js
+import { Heading } from './Heading'
 // Heading components using the is and fontSize attribute (font-size / line-height)
-
-<div>
+;<div>
   <Heading fontSize="xxxxlarge">Viral meditation live-edge</Heading>
   <Heading fontSize="xxxlarge">Pork belly beard mustache </Heading>
   <Heading fontSize="xxlarge">Iceland trust fund hell of plaid</Heading>
@@ -73,8 +73,9 @@ When creating accessible pages it is important that headings create a [logical d
 Another common pattern for headings is to control the font-weight and the text-transform properties. The `<Heading />` component allows you to adjust those with the `weight` and `transform` attributes.
 
 ```js
+import { Heading } from './Heading'
 // Heading components using the weight and transform attributes
-<div>
+;<>
   <Heading fontWeight="light" transform="lower">
     Light and lower
   </Heading>
@@ -87,7 +88,7 @@ Another common pattern for headings is to control the font-weight and the text-t
   <Heading fontWeight="bold" transform="caps">
     Bold and caps
   </Heading>
-</div>
+</>
 ```
 
 <div class="doc-section-divider"></div>
@@ -97,9 +98,12 @@ Another common pattern for headings is to control the font-weight and the text-t
 The `align` property allows you to adjust the `text-align` property of your `<Heading />` component. This is useful if you need to center or right align the text.
 
 ```js
-<Heading align="left">◀️ Align left (Default) </Heading>
-<Heading align="center">◀️ Align Center ▶️</Heading>
-<Heading align="right">Align Right ▶️</Heading>
+import { Heading } from './Heading'
+;<>
+  <Heading align="left">◀️ Align left (Default) </Heading>
+  <Heading align="center">◀️ Align Center ▶️</Heading>
+  <Heading align="right">Align Right ▶️</Heading>
+</>
 ```
 
 <div class="doc-section-divider"></div>

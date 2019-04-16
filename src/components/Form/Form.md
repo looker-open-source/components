@@ -1,11 +1,13 @@
 ```js noeditor
-const StatusAndResources = require('../../../styleguide_components/StatusAndResources').StatusAndResources;
+const StatusAndResources = require('../../../styleguide_components/StatusAndResources')
+  .StatusAndResources
 
-<StatusAndResources
+;<StatusAndResources
   status="experimental"
   figmaURL="https://www.figma.com/file/2MG6DoSjk4IaLnjjFCnKFf/Forms"
   githubURL="https://github.com/looker/relens/blob/master/src/components/Form/Form.tsx"
-  feedbackTitle="Form Component Feedback" />
+  feedbackTitle="Form Component Feedback"
+/>
 ```
 
 ### Form Validation
@@ -15,7 +17,16 @@ The `<Form />` component wraps a collection of field components and allows for m
 See `ValidationMessage` [here](/#!/ValidationMessage)
 
 ```js
-<Form validationMessages={{"alpha": {type: "error", message: "This is an error"}, "bravo": {type: "error", message: "This is another error"}}}>
+import { Form } from './Form'
+import { FieldText } from './Fields/FieldText'
+import { Button } from '../Button'
+
+;<Form
+  validationMessages={{
+    alpha: { type: 'error', message: 'This is an error' },
+    bravo: { type: 'error', message: 'This is another error' },
+  }}
+>
   <FieldText label="Alpha" name="alpha" />
   <FieldText label="Bravo" name="bravo" />
   <FieldText label="Charlie" name="charlie" />
@@ -26,7 +37,8 @@ See `ValidationMessage` [here](/#!/ValidationMessage)
 A complete implementation that keeps track of state and updates validation messages onChange.
 
 ```js noeditor
-const FormValidationDemo = require('../../../styleguide_components/FormValidationDemo').FormValidationDemo;
+const FormValidationDemo = require('../../../styleguide_components/FormValidationDemo')
+  .FormValidationDemo
 
-<FormValidationDemo />
+;<FormValidationDemo />
 ```

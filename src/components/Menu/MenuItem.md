@@ -5,11 +5,17 @@ For accessibility reasons, if you want your `MenuItem` to link somewhere then yo
 An icon can be optionally be assigned to each item via the `icon` property.
 
 ```js
-<MenuItem>Home</MenuItem>
-<MenuItem icon="Home">Home</MenuItem>
-<Link href="https://google.com">
-  <MenuItem  itemRole="link" target="_blank" icon="Public">Away</MenuItem>
-</Link>
+import { Link } from '../Link'
+import { MenuItem } from './MenuItem'
+;<>
+  <MenuItem>Home</MenuItem>
+  <MenuItem icon="Home">Home</MenuItem>
+  <Link href="https://google.com">
+    <MenuItem itemRole="link" target="_blank" icon="Public">
+      Away
+    </MenuItem>
+  </Link>
+</>
 ```
 
 ### Detail Text
@@ -17,10 +23,13 @@ An icon can be optionally be assigned to each item via the `icon` property.
 Use the `detail` prop to provide explanatory detail to a given item.
 
 ```js
-<MenuItem detail="Get regular updates">Schedule</MenuItem>
-<MenuItem icon="Beaker" detail="Try the newest toys!">
-  Labs
-</MenuItem>
+import { MenuItem } from './MenuItem'
+;<>
+  <MenuItem detail="Get regular updates">Schedule</MenuItem>
+  <MenuItem icon="Beaker" detail="Try the newest toys!">
+    Labs
+  </MenuItem>
+</>
 ```
 
 ### Active & MenuGroup canActivate
@@ -30,7 +39,13 @@ Use the `active` prop to indicate the selected item(s).
 Note: This property behaves slightly differently depending on the context of the `MenuGroup` it is contained within. If the `MenuGroup` has the `canActivate` prop it will reserve space for the checkmark next to `active` items and any `icon` assignments on the items will be ignored.
 
 ```js
-<Menu>
+import { Box } from '../Box'
+import { IconButton } from '../Button'
+import { Tooltip } from '../Overlay'
+import { Menu } from './Menu'
+import { MenuGroup } from './MenuGroup'
+import { MenuItem } from './MenuItem'
+;<Menu>
   <MenuGroup
     label="canActivate=false, no icons"
     labelProps={{ transform: 'none' }}
@@ -38,10 +53,16 @@ Note: This property behaves slightly differently depending on the context of the
     <MenuItem active>Gouda</MenuItem>
     <MenuItem
       detail={
-        <Tooltip content="More things you should know..." open>
-          <Box>
-            <Icon name="CircleInfo" />
-          </Box>
+        <Tooltip content="More things you should know...">
+          {(eventHandlers, ref) => (
+            <IconButton
+              {...eventHandlers}
+              icon="CircleInfo"
+              label="Information"
+              innerRef={ref}
+              name="Home"
+            />
+          )}
         </Tooltip>
       }
     >
@@ -75,13 +96,16 @@ Note: This property behaves slightly differently depending on the context of the
 </Menu>
 ```
 
-
 ### Customizing a menu
 
 `Menu` accepts a `customizationProps` prop which allows for flexibly styling of the item. Below is an example of customizing the menu's display. Below is an example of all the options you can customize.
 
 ```js
-const palette = require('../../style').palette
+import { Link } from '../Link'
+import { Menu } from './Menu'
+import { MenuItem } from './MenuItem'
+import { MenuGroup } from './MenuGroup'
+import { palette } from '../../style'
 
 const menuCustomizations = {
   bg: palette.purple500,
@@ -114,19 +138,26 @@ const menuCustomizations = {
 }
 ;<Menu customizationProps={menuCustomizations}>
   <MenuGroup>
-    <Link href="https://en.wikipedia.org/wiki/Gouda_cheese"><MenuItem itemRole="link" icon="Home">Gouda</MenuItem></Link>
-    <Link href="https://en.wikipedia.org/wiki/Cheddar_cheese"><MenuItem
-      itemRole="link"
-      icon="FavoriteOutline"
-      current
-      currentMarker
-      detail="Is often orange"
-    >
-      Cheddar
-    </MenuItem>
+    <Link href="https://en.wikipedia.org/wiki/Gouda_cheese">
+      <MenuItem itemRole="link" icon="Home">
+        Gouda
+      </MenuItem>
+    </Link>
+    <Link href="https://en.wikipedia.org/wiki/Cheddar_cheese">
+      <MenuItem
+        itemRole="link"
+        icon="FavoriteOutline"
+        current
+        currentMarker
+        detail="Is often orange"
+      >
+        Cheddar
+      </MenuItem>
     </Link>
     <Link href="https://en.wikipedia.org/wiki/Swiss_cheese`">
-    <MenuItem itemRole="link" icon="Dashboard">Swiss</MenuItem>
+      <MenuItem itemRole="link" icon="Dashboard">
+        Swiss
+      </MenuItem>
     </Link>
   </MenuGroup>
 </Menu>
@@ -137,7 +168,10 @@ const menuCustomizations = {
 It's possible to selectively customize only select pieces of the menu as well as in this example below.
 
 ```js
-const palette = require('../../style').palette
+import { Menu } from './Menu'
+import { MenuItem } from './MenuItem'
+import { MenuGroup } from './MenuGroup'
+import { palette } from '../../style'
 
 const menuCustomizations = {
   bg: palette.charcoal100,

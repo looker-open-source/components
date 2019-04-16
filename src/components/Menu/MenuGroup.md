@@ -7,7 +7,11 @@ It supports an optional `label` prop to place a heading above the `MenuItem`s. W
 The `canActivate` prop can be used to display `MenuItems` with a check list style. `MenuItem` `icon` prop will be ignored for any items within MenuGroup with canActivate assigned. Any items that should appear active simply need to `active` prop.
 
 ```js
-<Menu bg="white">
+import { Menu } from './Menu'
+import { MenuGroup } from './MenuGroup'
+import { MenuItem } from './MenuItem'
+
+;<Menu bg="white">
   <MenuGroup>
     <MenuItem icon="LogoRings">Looker</MenuItem>
     <MenuItem icon="Validate">Validate</MenuItem>

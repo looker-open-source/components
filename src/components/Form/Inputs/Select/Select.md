@@ -14,6 +14,7 @@ const StatusAndResources = require('../../../../../styleguide_components/StatusA
 The `<Select />` component renders a single select element on the page, with no accompanying label. It is generally used to construct higher-order components like the `<FieldText />`. If you are building a form, you probably want to use `<FieldSelect />` instead as it provides label and validation support.
 
 ```js
+import { Select } from './Select'
 const options = [
   { value: 'cheddar', label: 'Cheddar' },
   { value: 'gouda', label: 'Gouda' },
@@ -37,6 +38,7 @@ const options = [
 #### Option Groups
 
 ```js
+import { Select } from './Select'
 const options = [
   {
     key: 'Italian',
@@ -64,6 +66,7 @@ const options = [
 A name and ID can be specified in the `<Select />` component. Names are important if the input is used in the context of a form, in which case a name is required for the value of the input to be captured.
 
 ```js
+import { Select } from './Select'
 const options = [
   { value: 'cheddar', label: 'Cheddar' },
   { value: 'gouda', label: 'Gouda' },
@@ -77,6 +80,7 @@ const options = [
 Use the disable property to make an input field uneditable.
 
 ```js
+import { Select } from './Select'
 const options = [
   { value: 'cheddar', label: 'Cheddar' },
   { value: 'gouda', label: 'Gouda' },
@@ -93,6 +97,7 @@ const options = [
 Placeholders are used to give a hint to the user of the expected value for the input. They should not be used as a complete replacement of labels. The `includeBlank` property (default: true) includes an inital option without a value.
 
 ```js
+import { Select } from './Select'
 const options = [
   { value: 'cheddar', label: 'Cheddar' },
   { value: 'gouda', label: 'Gouda' },
@@ -109,6 +114,7 @@ const options = [
 As the name suggests, "readOnly" makes the text uneditable.
 
 ```js
+import { Select } from './Select'
 const options = [
   { value: 'cheddar', label: 'Cheddar' },
   { value: 'gouda', label: 'Gouda' },
@@ -122,6 +128,8 @@ const options = [
 When set for `<Select />` in the context of a form, the input field must be filled out before submitting the form.
 
 ```js
+import { Select } from './Select'
+import { Button } from '../../../Button'
 const options = [
   { value: 'cheddar', label: 'Cheddar' },
   { value: 'gouda', label: 'Gouda' },

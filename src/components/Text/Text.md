@@ -14,9 +14,14 @@ const StatusAndResources = require('../../../styleguide_components/StatusAndReso
 By default the `<Text />` component will render text wrapped in a `<span>`, if you need another html element for semantic purposes you can use the `element` property
 
 ```js
-<Text>By default I am a span</Text>
-<Paragraph>Wrapped in a paragraph tag</Paragraph>
-<Code>Wrapped in a code tag</Code>
+import { Code } from './Code'
+import { Paragraph } from './Paragraph'
+import { Text } from './Text'
+;<>
+  <Text>By default I am a span</Text>
+  <Paragraph>Wrapped in a paragraph tag</Paragraph>
+  <Code>Wrapped in a code tag</Code>
+</>
 ```
 
 <div class="doc-section-divider"></div>
@@ -26,9 +31,12 @@ By default the `<Text />` component will render text wrapped in a `<span>`, if y
 If you need to adjust the font-size of the rendered text, you can use the `size` property and a value from the [type scale](/#!/Typography)
 
 ```js
- <Text fontSize="xxxxlarge">Sized to xxxxlarge</Text>
- <Text fontSize="xxlarge">Sized to xxlarge</Text>
- <Text fontSize="small">Sized to small</Text>
+import { Text } from './Text'
+;<>
+  <Text fontSize="xxxxlarge">Sized to xxxxlarge</Text>
+  <Text fontSize="xxlarge">Sized to xxlarge</Text>
+  <Text fontSize="small">Sized to small</Text>
+</>
 ```
 
 <div class="doc-section-divider"></div>
@@ -38,9 +46,18 @@ If you need to adjust the font-size of the rendered text, you can use the `size`
 Common patterns for text is to adjust the font weight and transform the text. Below is an example of using the `weight` and `textTransform` properties to modify the rendered text
 
 ```js
-  <Text fontSize="small" textTransform="upper" fontWeight="semiBold">A great story</Text>
-  <Text fontSize="xxxxlarge" fontWeight="light">This is a great headline</Text>
-  <Text fontSize="small" textTransform="caps">Some metadata about this story</Text>
+import { Text } from './Text'
+;<>
+  <Text fontSize="small" textTransform="upper" fontWeight="semiBold">
+    A great story
+  </Text>
+  <Text fontSize="xxxxlarge" fontWeight="light">
+    This is a great headline
+  </Text>
+  <Text fontSize="small" textTransform="caps">
+    Some metadata about this story
+  </Text>
+</>
 ```
 
 <div class="doc-section-divider"></div>
@@ -50,11 +67,14 @@ Common patterns for text is to adjust the font weight and transform the text. Be
 Lens provides a few variants for the `<Text />` component based on common patterns we use in our applications, the `variant` property will change that will change the color the rendered text.
 
 ```js
-<Text>Regular Text</Text>
-<Text variant="secondary">Secondary Text</Text>
-<Text variant="subdued">Subdued Text</Text>
-<Text variant="critical">Critical Text</Text>
-<Text variant="positive">Positive Text</Text>
+import { Text } from './Text'
+;<>
+  <Text>Regular Text</Text>
+  <Text variant="secondary">Secondary Text</Text>
+  <Text variant="subdued">Subdued Text</Text>
+  <Text variant="critical">Critical Text</Text>
+  <Text variant="positive">Positive Text</Text>
+</>
 ```
 
 <div class="doc-section-divider"></div>
@@ -64,7 +84,10 @@ Lens provides a few variants for the `<Text />` component based on common patter
 You can use the `align` property to change the alignment of the rendered text, below is an example with aligned text put into `<Card />`s.
 
 ```js
-<div>
+import { Card, CardContent } from '../Card'
+import { Paragraph } from './Paragraph'
+
+;<>
   <Card>
     <CardContent>
       <Paragraph> I am aligned left by default</Paragraph>
@@ -84,7 +107,7 @@ You can use the `align` property to change the alignment of the rendered text, b
       </Paragraph>
     </CardContent>
   </Card>
-</div>
+</>
 ```
 
 ### Truncate
@@ -92,7 +115,9 @@ You can use the `align` property to change the alignment of the rendered text, b
 At times you may want your `<Paragraph />` to truncate instead of the text wrapping, the `truncate` property will do that for you.
 
 ```js
-<div style={{ width: '40%' }}>
+import { Paragraph } from './Paragraph'
+
+;<div style={{ width: '40%' }}>
   <Paragraph truncate>
     Hello there I am some text that will truncate 🍕🥑🍪🥓
   </Paragraph>

@@ -15,7 +15,16 @@ The `<FlexItem />` component lets you have more control of the properties that a
 Using the `alignSelf` property on a `<FlexItem />` allows you to override the the `alignItems` value from the flex container. This is useful if you need to adjust how a single flex item aligns itself in the container.
 
 ```js noeditor
-<Table>
+import {
+  Table,
+  TableHead,
+  TableRow,
+  TableHeaderCell,
+  TableBody,
+  TableDataCell,
+} from '../Table'
+import { Code, Text } from '../Text'
+;<Table>
   <TableHead>
     <TableRow>
       <TableHeaderCell width="40%">alignSelf Property</TableHeaderCell>
@@ -25,7 +34,7 @@ Using the `alignSelf` property on a `<FlexItem />` allows you to override the th
   <TableBody>
     <TableRow>
       <TableDataCell>
-        <span class="prop-code">
+        <span className="prop-code">
           <Code>center</Code>
         </span>
       </TableDataCell>
@@ -35,7 +44,7 @@ Using the `alignSelf` property on a `<FlexItem />` allows you to override the th
     </TableRow>
     <TableRow>
       <TableDataCell>
-        <span class="prop-code">
+        <span className="prop-code">
           <Code>flex-start</Code>
         </span>
       </TableDataCell>
@@ -45,7 +54,7 @@ Using the `alignSelf` property on a `<FlexItem />` allows you to override the th
     </TableRow>
     <TableRow>
       <TableDataCell>
-        <span class="prop-code">
+        <span className="prop-code">
           <Code>flex-end</Code>
         </span>
       </TableDataCell>
@@ -55,7 +64,7 @@ Using the `alignSelf` property on a `<FlexItem />` allows you to override the th
     </TableRow>
     <TableRow>
       <TableDataCell>
-        <span class="prop-code">
+        <span className="prop-code">
           <Code>baseline</Code>
         </span>
       </TableDataCell>
@@ -65,7 +74,7 @@ Using the `alignSelf` property on a `<FlexItem />` allows you to override the th
     </TableRow>
     <TableRow>
       <TableDataCell>
-        <span class="prop-code">
+        <span className="prop-code">
           <Code>stretch</Code>
         </span>{' '}
         <Text fontSize="xsmall">(default)</Text>
@@ -79,7 +88,10 @@ Using the `alignSelf` property on a `<FlexItem />` allows you to override the th
 ```
 
 ```js
-<Flex height="200px" bg="palette.purple400">
+import { FlexItem } from './FlexItem'
+import { Flex } from '../Flex'
+import { Box } from '../Box'
+;<Flex height="200px" bg="palette.purple400">
   <FlexItem alignSelf="flex-start">
     <Box m="small" p="large" bg="palette.purple200">
       Flex Start
@@ -110,32 +122,66 @@ By default flex items are laid our in source order, the `order` property on a `<
 **Note:** the `order` value default is `0`, so setting an `order="1"` will put the item at the end unless another flex item has a higher `order` set. You can also use negative numbers to set an item at the beginning.
 
 ```js
+import { FlexItem } from './FlexItem'
+import { Flex } from '../Flex/Flex'
+import { Box } from '../Box'
+;<>
   <Flex bg="palette.charcoal000" mb="large">
-    <FlexItem><Box m="small" p="large" bg="palette.blue200">0</Box></FlexItem>
-    <FlexItem><Box m="small" p="large" bg="palette.purple200">1</Box></FlexItem>
-    <FlexItem><Box m="small" p="large" bg="palette.green200">2</Box></FlexItem>
-    <FlexItem><Box m="small" p="large" bg="palette.yellow200">3</Box></FlexItem>
-    <FlexItem><Box m="small" p="large" bg="palette.red200">4</Box></FlexItem>
+    <FlexItem>
+      <Box m="small" p="large" bg="palette.blue200">
+        0
+      </Box>
+    </FlexItem>
+    <FlexItem>
+      <Box m="small" p="large" bg="palette.purple200">
+        1
+      </Box>
+    </FlexItem>
+    <FlexItem>
+      <Box m="small" p="large" bg="palette.green200">
+        2
+      </Box>
+    </FlexItem>
+    <FlexItem>
+      <Box m="small" p="large" bg="palette.yellow200">
+        3
+      </Box>
+    </FlexItem>
+    <FlexItem>
+      <Box m="small" p="large" bg="palette.red200">
+        4
+      </Box>
+    </FlexItem>
   </Flex>
-
 
   <Flex bg="palette.charcoal000">
     <FlexItem>
-      <Box m="small" p="large" bg="palette.blue200">0</Box>
+      <Box m="small" p="large" bg="palette.blue200">
+        0
+      </Box>
     </FlexItem>
     <FlexItem order="2">
-      <Box m="small" p="large" bg="palette.purple200">1</Box>
+      <Box m="small" p="large" bg="palette.purple200">
+        1
+      </Box>
     </FlexItem>
     <FlexItem order="1">
-      <Box m="small" p="large" bg="palette.green200">2</Box>
+      <Box m="small" p="large" bg="palette.green200">
+        2
+      </Box>
     </FlexItem>
     <FlexItem>
-      <Box m="small" p="large" bg="palette.yellow200">3</Box>
+      <Box m="small" p="large" bg="palette.yellow200">
+        3
+      </Box>
     </FlexItem>
     <FlexItem order="-1">
-      <Box m="small" p="large" bg="palette.red200">4</Box>
+      <Box m="small" p="large" bg="palette.red200">
+        4
+      </Box>
     </FlexItem>
   </Flex>
+</>
 ```
 
 ### Controlling Item Size
@@ -147,7 +193,10 @@ The `<FlexItem>` has two properties for managing its size. You can use the `flex
 The `flexBasis` property defines the flex-items' default size before the remaining space is distributed.
 
 ```js
-<Flex>
+import { FlexItem } from './FlexItem'
+import { Flex } from '../Flex'
+import { Box } from '../Box'
+;<Flex>
   <FlexItem flexBasis="20%">
     <Box p="small" m="small" bg="palette.red200">
       I am 20% of container
@@ -178,7 +227,16 @@ The `flex` property is a shorthand for `flex-grow`, `flex-shrink`, and `flex-bas
 **Note**: The `flex` syntax can be a bit confusing, if you need a more detail set of examples check out this [MDN flex overview](https://developer.mozilla.org/en-US/docs/Web/CSS/flex).
 
 ```js noeditor
-<Table>
+import {
+  Table,
+  TableHead,
+  TableRow,
+  TableHeaderCell,
+  TableBody,
+  TableDataCell,
+} from '../Table'
+import { Code, Text } from '../Text'
+;<Table>
   <TableHead>
     <TableRow>
       <TableHeaderCell width="20%">flex Property</TableHeaderCell>
@@ -237,7 +295,10 @@ The `flex` property is a shorthand for `flex-grow`, `flex-shrink`, and `flex-bas
 Below we set the flex grow value of the first flex item to `2` so it will take up a factor of two in the flex container
 
 ```js
-<Flex>
+import { FlexItem } from './FlexItem'
+import { Flex } from '../Flex'
+import { Box } from '../Box'
+;<Flex>
   <FlexItem flex="2">
     <Box p="small" bg="palette.red200">
       Flex: 2
@@ -261,7 +322,10 @@ Below we set the flex grow value of the first flex item to `2` so it will take u
 Below we have a flex container with a set width of 500px and each child's `flex-basis` is set to 200px. The flex shrink value on the last two flex items is set to `1` and they will now shrink so that all the flex items fit within the flex container.
 
 ```js
-<Flex width="500px">
+import { FlexItem } from './FlexItem'
+import { Flex } from '../Flex'
+import { Box } from '../Box'
+;<Flex width="500px">
   <FlexItem flex="1 0 200px">
     <Box p="small" bg="palette.red200">
       No Shrink

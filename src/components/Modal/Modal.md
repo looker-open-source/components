@@ -14,12 +14,18 @@ Modals are assembled of two primary pieces a Backdrop (`ModalBackdrop`) and a Su
 
 This provides the backdrop behind Modal containers. It can be customized via the `backdropStyles` property. These must be a CSSProperty compatible key / value paired object.
 
-```
-<DialogManager
+```js
+import { Button } from '../Button'
+import { DialogManager } from './Dialog/DialogManager'
+;<DialogManager
   backdropStyles={{ background: 'purple', opacity: 1 }}
-  content={<>Stuff and text <a href='#'>Focus attention here...</a></>}
+  content={
+    <>
+      Stuff and text <a href="#">Focus attention here...</a>
+    </>
+  }
 >
-  {(onClick) => <Button onClick={onClick}>Purple Backdrop</Button>}
+  {onClick => <Button onClick={onClick}>Purple Backdrop</Button>}
 </DialogManager>
 ```
 
@@ -27,12 +33,18 @@ This provides the backdrop behind Modal containers. It can be customized via the
 
 `ModalSurface` provides the container that contains the content. It can be customized via the `surfaceStyles` property. These must be a CSSProperty compatible key / value paired object.
 
-```
-<DialogManager
+```js
+import { Button } from '../Button'
+import { DialogManager } from './Dialog/DialogManager'
+;<DialogManager
   surfaceStyles={{ background: 'pink', borderRadius: 0, padding: '3rem' }}
-  content={<>Stuff and text <a href="#">Focus attention here...</a></>}
+  content={
+    <>
+      Stuff and text <a href="#">Focus attention here...</a>
+    </>
+  }
 >
-  {(onClick) => <Button onClick={onClick}>Pink Surface, No Radiae</Button>}
+  {onClick => <Button onClick={onClick}>Pink Surface, No Radiae</Button>}
 </DialogManager>
 ```
 
@@ -40,10 +52,10 @@ This provides the backdrop behind Modal containers. It can be customized via the
 
 `ModalContext` is a [React Context](https://reactjs.org/docs/context.html) that provides access to Overlay functionality without requiring the developer to explicitly manage the Overlay's state. Currently the context simply provides access to the `closeModal()` method of the Modal.
 
-```
-const ModalContext = require('./ModalContext').ModalContext;
+```js static
+const ModalContext = require('./ModalContext').ModalContext
 
-<ModalContext.Consumer>
+;<ModalContext.Consumer>
   {({ closeModal }) => <Button onClick={closeModal}>Close!</Button>}
 </ModalContext.Consumer>
 ```

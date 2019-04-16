@@ -1,7 +1,8 @@
-The `<FieldToggleSwitch />` component is composed of a `<ToggleSwitch />`   component and a `<Label />` component. By default, the label will render to the right of the toggle switch, however this is adjustable with the alignLabel property.
-
+The `<FieldToggleSwitch />` component is composed of a `<ToggleSwitch />` component and a `<Label />` component. By default, the label will render to the right of the toggle switch, however this is adjustable with the alignLabel property.
 
 ```js
+import { FieldToggleSwitch } from './FieldToggleSwitch'
+
 class ToggleSwitchParent extends React.Component {
   constructor(props) {
     super(props)
@@ -24,5 +25,5 @@ class ToggleSwitchParent extends React.Component {
   }
 }
 
-  <ToggleSwitchParent />
+;<ToggleSwitchParent />
 ```

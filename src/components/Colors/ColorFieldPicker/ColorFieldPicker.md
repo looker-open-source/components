@@ -1,11 +1,13 @@
 ```js noeditor
-const StatusAndResources = require('../../../../styleguide_components/StatusAndResources').StatusAndResources;
+const StatusAndResources = require('../../../../styleguide_components/StatusAndResources')
+  .StatusAndResources
 
-<StatusAndResources
+;<StatusAndResources
   status="experimental"
   figmaURL="https://www.figma.com/file/h7RYPRCSlz3k8fLzEMRSzy/Color-Wheel?node-id=83%3A3"
   githubURL="https://github.com/looker/lens/blob/master/src/components/Colors/ColorWheel.tsx"
-  feedbackTitle="ColorWheel Component Feedback" />
+  feedbackTitle="ColorWheel Component Feedback"
+/>
 ```
 
 ### ColorFieldPicker
@@ -13,12 +15,14 @@ const StatusAndResources = require('../../../../styleguide_components/StatusAndR
 This component is composed of a `FieldText` and a `ColorWheel` that appears in a `RichToolTip` upon hover above its color swatch.
 
 ```js
-<ColorFieldPicker />
+import { ColorFieldPicker } from './ColorFieldPicker'
+;<ColorFieldPicker />
 ```
 
 Like the `FieldText` component, `value` and `onChange` are passed in as props creating an interactive `ColorFieldPicker`.
 
 ```js
-const ColorFieldPickerDemo = require('../../../../styleguide_components/ColorFieldPickerDemo').ColorFieldPickerDemo;
-<ColorFieldPickerDemo />
+const ColorFieldPickerDemo = require('../../../../styleguide_components/ColorFieldPickerDemo')
+  .ColorFieldPickerDemo
+;<ColorFieldPickerDemo />
 ```

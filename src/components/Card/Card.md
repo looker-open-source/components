@@ -18,8 +18,9 @@ At its most basic, a `Card` is a slightly styled container that organizes groups
 ```js
 // A Card
 // Try typing some content into the Card to see how it handles content by default
-
-<Card raised>
+import { Card } from './Card'
+import { Text } from '../Text'
+;<Card raised>
   <Text mode="subdued" fontSize="xlarge">
     Hello World!
   </Text>
@@ -33,7 +34,10 @@ At its most basic, a `Card` is a slightly styled container that organizes groups
 Using the [`CardContent`](/#!/CardContent) component quickly gives your content consistent spacing inside your `Card`. You can then use other components to layout your `Card`.
 
 ```js
-<Card raised>
+import { Card, CardContent } from './'
+import { Heading } from '../Heading'
+import { Text } from '../Text'
+;<Card raised>
   <CardContent>
     <Heading fontSize="xxxlarge">🎉 Looker Release Notes 🎉</Heading>
     <Heading is="h4" fontSize="small">
@@ -53,7 +57,14 @@ Using the [`CardContent`](/#!/CardContent) component quickly gives your content 
 A few common patterns for `Cards` are displaying them in groups and using images to reinforce the content of the card.
 
 ```js
-<Flex>
+import { Card } from './Card'
+import { CardContent } from './CardContent'
+import { CardMedia } from './CardMedia'
+import { Flex } from '../Flex'
+import { FlexItem } from '../FlexItem'
+import { Heading } from '../Heading'
+import { Text } from '../Text'
+;<Flex>
   <FlexItem width="33%" mr="small">
     <Card raised>
       <CardMedia

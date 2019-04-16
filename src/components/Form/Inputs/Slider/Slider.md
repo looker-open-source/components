@@ -1,10 +1,12 @@
 ```js noeditor
-const StatusAndResources = require('../../../../../styleguide_components/StatusAndResources').StatusAndResources;
+const StatusAndResources = require('../../../../../styleguide_components/StatusAndResources')
+  .StatusAndResources
 
-<StatusAndResources
+;<StatusAndResources
   status="experimental"
   githubURL="https://github.com/looker/lens/blob/master/src/components/Form/Inputs/Slider/Slider.tsx"
-  feedbackTitle="Slider Component Feedback" />
+  feedbackTitle="Slider Component Feedback"
+/>
 ```
 
 ### Default Slider
@@ -12,7 +14,8 @@ const StatusAndResources = require('../../../../../styleguide_components/StatusA
 The `<Slider />` component renders a single slider element on the page, with no accompanying label.
 
 ```js
-<Slider />
+import { Slider } from './Slider'
+;<Slider />
 ```
 
 ### Value, Min, Max and step
@@ -21,33 +24,36 @@ The `<Slider />` component accepts a `value` property, allowing the user to set 
 It also accepts a `min` and `max` value, as well as the `step` to set the granularity between values.
 
 ```js
+import { Slider } from './Slider'
+import { Text } from '../../../Text'
 class VolumeSlider extends React.Component {
-
-  constructor () {
+  constructor() {
     this.state = {
-      value: 11
+      value: 11,
     }
   }
 
-  handleChange (value) {
-    this.setState({value})
+  handleChange(value) {
+    this.setState({ value })
   }
 
-  render () {
+  render() {
     return (
       <div>
-        <Slider min={1}
-                    max={11}
-                    value={this.state.value}
-                    step={1}
-                    onChange={(event) => this.handleChange(event.target.value)} />
+        <Slider
+          min={1}
+          max={11}
+          value={this.state.value}
+          step={1}
+          onChange={event => this.handleChange(event.target.value)}
+        />
         <Text>Volume {this.state.value}</Text>
       </div>
     )
   }
 }
 
-<VolumeSlider />
+;<VolumeSlider />
 ```
 
 ### Disabled Property
@@ -55,5 +61,6 @@ class VolumeSlider extends React.Component {
 Use the disable property to gray out the Input, making it a fixed value.
 
 ```js
-<Slider disabled />
+import { Slider } from './Slider'
+;<Slider disabled />
 ```

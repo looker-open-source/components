@@ -1,11 +1,13 @@
 ```js noeditor
-const StatusAndResources = require('../../../../../styleguide_components/StatusAndResources').StatusAndResources;
+const StatusAndResources = require('../../../../../styleguide_components/StatusAndResources')
+  .StatusAndResources
 
-<StatusAndResources
+;<StatusAndResources
   status="experimental"
   figmaURL="https://www.figma.com/file/2MG6DoSjk4IaLnjjFCnKFf/Forms"
   githubURL="https://github.com/looker/lens/blob/master/src/components/Form/ToggleSwitch/ToggleSwitch.tsx"
-  feedbackTitle="ToggleSwitch Component Feedback" />
+  feedbackTitle="ToggleSwitch Component Feedback"
+/>
 ```
 
 ### Toggle Switch
@@ -13,6 +15,9 @@ const StatusAndResources = require('../../../../../styleguide_components/StatusA
 The `ToggleSwitch` component is essentially a decorated checkbox that is either toggled on or off. For accessibility reasons you should always provide a label with your toggle switch, you can use the `<FieldToggleSwitch>` component to quickly generate an accessible toggle switch with proper labeling. Its size can be changed using the `size` prop, which accepts px value as a number. Its default size is 20px.
 
 ```js
+import { ToggleSwitch } from './ToggleSwitch'
+import { Label } from '../../Label'
+
 class ToggleSwitchParent extends React.Component {
   constructor(props) {
     super(props)
@@ -26,17 +31,16 @@ class ToggleSwitchParent extends React.Component {
   render() {
     return (
       <Label htmlFor="switch">
-      Toggle Switch
-      <ToggleSwitch
-        onChange={this.handleChange.bind(this)}
-        on={this.state.on}
-        id="switch"
-      />
+        Toggle Switch
+        <ToggleSwitch
+          onChange={this.handleChange.bind(this)}
+          on={this.state.on}
+          id="switch"
+        />
       </Label>
     )
   }
 }
 
-<ToggleSwitchParent />
-
+;<ToggleSwitchParent />
 ```
