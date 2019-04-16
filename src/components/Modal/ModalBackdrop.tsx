@@ -10,7 +10,7 @@ export interface ModalBackdropProps extends BoxProps<HTMLElement> {
   className?: string
 }
 
-export const ModalBackdrop: React.SFC<ModalBackdropProps> = ({
+export const ModalBackdrop: React.FC<ModalBackdropProps> = ({
   className,
   onClick,
   style,

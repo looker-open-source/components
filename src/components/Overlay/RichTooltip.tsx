@@ -13,7 +13,7 @@ import {
   OverlaySurface,
 } from './'
 
-const RichTooltipInternal: React.SFC<OverlayInteractiveProps> = ({
+const RichTooltipInternal: React.FC<OverlayInteractiveProps> = ({
   children,
   ...overlayProps
 }) => (

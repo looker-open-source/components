@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-export const FigmaSvg: React.SFC = () => {
+export const FigmaSvg: React.FC = () => {
   return (
     <svg
       width="11"
@@ -31,7 +31,7 @@ export const FigmaSvg: React.SFC = () => {
   )
 }
 
-export const GithubSvg: React.SFC = () => {
+export const GithubSvg: React.FC = () => {
   return (
     <svg
       width="19"
@@ -51,7 +51,7 @@ export const GithubSvg: React.SFC = () => {
   )
 }
 
-export const FeedbackSvg: React.SFC = () => {
+export const FeedbackSvg: React.FC = () => {
   return (
     <svg
       width="19"

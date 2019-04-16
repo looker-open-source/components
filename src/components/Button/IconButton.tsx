@@ -61,7 +61,7 @@ function iconSizeHelper(size: IconButtonSizes) {
   }
 }
 
-export const IconButton: React.SFC<IconButtonProps> = ({
+export const IconButton: React.FC<IconButtonProps> = ({
   outline,
   icon,
   size,

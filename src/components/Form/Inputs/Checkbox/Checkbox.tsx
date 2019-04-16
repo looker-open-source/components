@@ -9,7 +9,7 @@ export interface CheckboxProps extends BoxProps<HTMLInputElement>, InputProps {
   checked?: boolean
 }
 
-export const Checkbox: React.SFC<CheckboxProps> = ({
+export const Checkbox: React.FC<CheckboxProps> = ({
   validationType,
   ...props
 }) => {

@@ -10,7 +10,7 @@ export interface CardMediaProps
   image: string
 }
 
-const InternalCardMedia: React.SFC<ThemedProps<CardMediaProps>> = ({
+const InternalCardMedia: React.FC<ThemedProps<CardMediaProps>> = ({
   image,
   ...props
 }) => <Box {...props}>{props.children}</Box>

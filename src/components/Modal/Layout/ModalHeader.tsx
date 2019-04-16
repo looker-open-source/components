@@ -20,7 +20,7 @@ export interface ModalHeaderProps
   closeIcon?: IconNames
 }
 
-const Internal: React.SFC<ModalHeaderProps> = ({
+const Internal: React.FC<ModalHeaderProps> = ({
   children,
   closeModal,
   closeIcon = 'Close' as IconNames,

@@ -10,7 +10,7 @@ export interface ModalSurfaceProps extends BoxProps<HTMLDivElement> {
   animationState?: string
 }
 
-export const ModalSurface: React.SFC<ModalSurfaceProps> = ({
+export const ModalSurface: React.FC<ModalSurfaceProps> = ({
   style,
   theme,
   className,

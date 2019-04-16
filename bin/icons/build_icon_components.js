@@ -52,7 +52,7 @@ async function convertSVGToComponent() {
  */
 async function generateTypescriptInterfaces() {
   const typescriptDeclaration = `import * as React from 'react'
-const Icon: React.SFC<React.SVGAttributes<SVGElement>>
+const Icon: React.FC<React.SVGAttributes<SVGElement>>
 export default Icon
 `
 

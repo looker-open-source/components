@@ -110,7 +110,7 @@ describe('Box', () => {
     })
 
     test('any prop can be passed to Box', () => {
-      const BoxAsInput: React.SFC<{ type?: string }> = ({ ...props }) => (
+      const BoxAsInput: React.FC<{ type?: string }> = ({ ...props }) => (
         <Box is="input" {...props} />
       )
       const boxAsCheckbox = mountWithTheme(<BoxAsInput type="checkbox" />)

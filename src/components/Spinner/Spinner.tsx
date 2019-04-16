@@ -14,7 +14,7 @@ export interface SpinnerProps
   color?: string
 }
 
-const InternalSpinner: React.SFC<SpinnerProps> = ({
+const InternalSpinner: React.FC<SpinnerProps> = ({
   color = '#000',
   markers = 13,
   markerRadius = 10,

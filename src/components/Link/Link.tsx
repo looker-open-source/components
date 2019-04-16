@@ -3,7 +3,7 @@ import { Box, BoxProps } from '../Box'
 
 export interface LinkProps extends BoxProps<HTMLAnchorElement> {}
 
-export const Link: React.SFC<LinkProps> = ({ ref, ...props }) => {
+export const Link: React.FC<LinkProps> = ({ ref, ...props }) => {
   return (
     <Box
       is="a"

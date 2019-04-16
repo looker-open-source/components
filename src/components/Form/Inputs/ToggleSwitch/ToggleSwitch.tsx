@@ -27,7 +27,7 @@ const knobTransform = (props: ThemedProps<KnobProps>) => {
   `
 }
 
-const KnobFactory: React.SFC<KnobProps> = ({ className, ...props }) => (
+const KnobFactory: React.FC<KnobProps> = ({ className, ...props }) => (
   <Box
     className={className}
     position="absolute"
@@ -48,10 +48,7 @@ const Knob = styled(KnobFactory)`
   ${knobTransform};
 `
 
-const KnobContainerFactory: React.SFC<KnobProps> = ({
-  className,
-  ...props
-}) => {
+const KnobContainerFactory: React.FC<KnobProps> = ({ className, ...props }) => {
   const hoverStyle = props.disabled
     ? undefined
     : { boxShadow: `0 0 .01rem 0.01rem ${rgba(palette.primary500, 0.5)}` }
@@ -80,7 +77,7 @@ const KnobContainer = styled(KnobContainerFactory)`
   transition: ${props => props.theme.transitions.durationModerate};
 `
 
-const InternalToggleSwitch: React.SFC<ToggleSwitchProps> = ({
+const InternalToggleSwitch: React.FC<ToggleSwitchProps> = ({
   size = 20,
   disabled,
   on,

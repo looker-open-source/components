@@ -11,7 +11,7 @@ export interface FlexBoxProps
   hidden?: boolean
 }
 
-const InternalFlex: React.SFC<FlexBoxProps> = ({ ...props }) => {
+const InternalFlex: React.FC<FlexBoxProps> = ({ ...props }) => {
   return (
     <Box display="flex" {...props}>
       {props.children}

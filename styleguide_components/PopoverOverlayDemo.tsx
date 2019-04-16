@@ -36,7 +36,7 @@ const menu = (
   </Menu>
 )
 
-export const PopoverOverlayDemo: React.SFC = () => {
+export const PopoverOverlayDemo: React.FC = () => {
   return (
     <>
       <Popover content={menu}>

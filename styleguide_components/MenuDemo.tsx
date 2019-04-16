@@ -12,7 +12,7 @@ const spacingSizes = [
   { value: 'xxxlarge', label: '60px' },
 ]
 
-export const MenuGroupDemo: React.SFC = () => {
+export const MenuGroupDemo: React.FC = () => {
   const items = spacingSizes.map(({ value, label, active }) => (
     <MenuItem
       itemRole="button"

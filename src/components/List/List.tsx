@@ -13,7 +13,7 @@ export type ListTypes = 'bullet' | 'number' | 'letter'
 /**
  * List are stacked groups of related content that can be useful in many contexts.
  */
-const ListGenerator: React.SFC<ListProps> = ({ type, ...props }) => {
+const ListGenerator: React.FC<ListProps> = ({ type, ...props }) => {
   const pl = props.nomarker ? 'none' : 'medium'
   delete props.nomarker
   switch (type) {

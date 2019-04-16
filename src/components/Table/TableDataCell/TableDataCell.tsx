@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Box, BoxProps } from '../../Box'
 
-export const TableDataCell: React.SFC<BoxProps<HTMLTableDataCellElement>> = ({
+export const TableDataCell: React.FC<BoxProps<HTMLTableDataCellElement>> = ({
   ...props
 }) => (
   <Box

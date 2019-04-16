@@ -29,7 +29,7 @@ function dividerAppearance(props: ThemedProps<DividerProps>) {
   }
 }
 
-const InternalDivider: React.SFC<DividerProps> = ({
+const InternalDivider: React.FC<DividerProps> = ({
   size,
   customColor,
   appearance,

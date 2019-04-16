@@ -10,7 +10,7 @@ export interface DrawerProps extends ModalProps {
   children: React.ReactNode
 }
 
-export const Drawer: React.SFC<DrawerProps> = ({
+export const Drawer: React.FC<DrawerProps> = ({
   width,
   children,
   surfaceStyles,

@@ -85,7 +85,7 @@ export interface OverlayProps extends OverlayInteractiveProps {
  * react-popper](https://github.com/FezVrasta/react-popper).
  */
 
-export const Overlay: React.SFC<OverlayProps> = ({ ...props }) => {
+export const Overlay: React.FC<OverlayProps> = ({ ...props }) => {
   const triggerRef =
     props.triggerRef && props.triggerRef.current
       ? props.triggerRef.current

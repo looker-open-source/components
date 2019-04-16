@@ -6,7 +6,7 @@ export interface LabelProps extends BoxProps<HTMLLabelElement> {
   htmlFor?: string
 }
 
-export const Label: React.SFC<LabelProps> = ({ ...props }) => (
+export const Label: React.FC<LabelProps> = ({ ...props }) => (
   <Box
     is="label"
     color={CustomizableLabelAttributes.color}

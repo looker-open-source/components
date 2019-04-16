@@ -15,7 +15,7 @@ export interface ValidationMessageProps extends BoxProps<HTMLDivElement> {
   message?: string
 }
 
-export const ValidationMessage: React.SFC<ValidationMessageProps> = ({
+export const ValidationMessage: React.FC<ValidationMessageProps> = ({
   type,
   message,
   ...props

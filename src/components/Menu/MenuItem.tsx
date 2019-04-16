@@ -88,7 +88,7 @@ export interface MenuItemProps
   onClick?: () => void
 }
 
-const MenuItemInteral: React.SFC<MenuItemProps> = ({
+const MenuItemInteral: React.FC<MenuItemProps> = ({
   active,
   current,
   currentMarker,

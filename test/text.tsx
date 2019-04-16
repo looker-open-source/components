@@ -3,7 +3,7 @@ import { TextProps } from '../src/components/Text/Text'
 import { createWithTheme } from './utils/create_with_theme'
 
 export const snapshotTestTextComponent = (
-  Component: React.SFC<TextProps> | React.ComponentClass
+  Component: React.FC<TextProps> | React.ComponentClass
 ) => {
   const component = createWithTheme(<Component>Hello</Component>)
   const tree = component.toJSON()
@@ -11,7 +11,7 @@ export const snapshotTestTextComponent = (
 }
 
 export const snapshotTestTextComponentAlign = (
-  Component: React.SFC<TextProps> | React.ComponentClass
+  Component: React.FC<TextProps> | React.ComponentClass
 ) => {
   const component = createWithTheme(<Component align="right">Hello</Component>)
   const tree = component.toJSON()
@@ -19,7 +19,7 @@ export const snapshotTestTextComponentAlign = (
 }
 
 export const snapshotTestTextComponentFontRamp = (
-  Component: React.SFC<TextProps> | React.ComponentClass
+  Component: React.FC<TextProps> | React.ComponentClass
 ) => {
   const component = createWithTheme(
     <Component fontSize="xxxxlarge">Hello</Component>
@@ -29,7 +29,7 @@ export const snapshotTestTextComponentFontRamp = (
 }
 
 export const snapshotTestTextComponentFontWeight = (
-  Component: React.SFC<TextProps> | React.ComponentClass
+  Component: React.FC<TextProps> | React.ComponentClass
 ) => {
   const component = createWithTheme(
     <Component fontWeight="bold">Hello</Component>
@@ -39,7 +39,7 @@ export const snapshotTestTextComponentFontWeight = (
 }
 
 export const snapshotTestTextComponentTransform = (
-  Component: React.SFC<TextProps> | React.ComponentClass
+  Component: React.FC<TextProps> | React.ComponentClass
 ) => {
   const component = createWithTheme(
     <Component textTransform="upper">Hello</Component>
@@ -49,7 +49,7 @@ export const snapshotTestTextComponentTransform = (
 }
 
 export const snapshotTestTextComponentWrap = (
-  Component: React.SFC<TextProps> | React.ComponentClass
+  Component: React.FC<TextProps> | React.ComponentClass
 ) => {
   const component = createWithTheme(<Component wrap>Hello</Component>)
   const tree = component.toJSON()
@@ -57,7 +57,7 @@ export const snapshotTestTextComponentWrap = (
 }
 
 export const snapshotTestTextComponentVariant = (
-  Component: React.SFC<TextProps> | React.ComponentClass
+  Component: React.FC<TextProps> | React.ComponentClass
 ) => {
   const component = createWithTheme(
     <Component variant="critical">Hello</Component>
@@ -67,7 +67,7 @@ export const snapshotTestTextComponentVariant = (
 }
 
 export const snapshotTestTextComponentColor = (
-  Component: React.SFC<TextProps> | React.ComponentClass
+  Component: React.FC<TextProps> | React.ComponentClass
 ) => {
   const component = createWithTheme(
     <Component color="palette.blue400">Hello</Component>
@@ -77,7 +77,7 @@ export const snapshotTestTextComponentColor = (
 }
 
 export const snapshotTestTextComponentDecoration = (
-  Component: React.SFC<TextProps> | React.ComponentClass
+  Component: React.FC<TextProps> | React.ComponentClass
 ) => {
   const component = createWithTheme(
     <Component decoration="line-through">Hello</Component>

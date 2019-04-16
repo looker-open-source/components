@@ -231,7 +231,7 @@ function getIcon(iconName: IconNames | undefined) {
 
 // color is extracted here to ensure it is not passed to Box, creating a type
 // error with the DOM's own color attribute.
-const InternalButton: React.SFC<ThemedProps<ButtonProps>> = ({
+const InternalButton: React.FC<ThemedProps<ButtonProps>> = ({
   color,
   iconBefore,
   iconAfter,

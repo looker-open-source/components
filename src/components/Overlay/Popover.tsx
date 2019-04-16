@@ -14,7 +14,7 @@ export interface PopoverProps extends OverlayInteractiveProps {
   arrow?: boolean
 }
 
-const PopoverInternal: React.SFC<PopoverProps> = ({
+const PopoverInternal: React.FC<PopoverProps> = ({
   arrow = true,
   children,
   ...overlayProps

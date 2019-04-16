@@ -65,7 +65,7 @@ class Internal extends React.Component<InternalContentProps, ContentState> {
   }
 }
 
-export const ModalContent: React.SFC<ModalContentProps> = props => {
+export const ModalContent: React.FC<ModalContentProps> = props => {
   return (
     <ReactResizeDetector handleHeight>
       {(height: string) => <Internal renderedHeight={height} {...props} />}

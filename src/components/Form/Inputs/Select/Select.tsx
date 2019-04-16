@@ -43,7 +43,7 @@ export interface SelectProps extends BoxProps<HTMLSelectElement>, InputProps {
   theme?: Theme
 }
 
-export const Select: React.SFC<SelectProps> = ({
+export const Select: React.FC<SelectProps> = ({
   includeBlank = true,
   options,
   placeholder,
@@ -69,8 +69,8 @@ export const Select: React.SFC<SelectProps> = ({
     !options || options.length === 0
       ? null
       : options[0].hasOwnProperty('key')
-        ? renderOptGroups(options as GroupedOptionsType<SelectOptionProps>)
-        : renderOptions(options as OptionsType<SelectOptionProps>)
+      ? renderOptGroups(options as GroupedOptionsType<SelectOptionProps>)
+      : renderOptions(options as OptionsType<SelectOptionProps>)
 
   return (
     <Box
