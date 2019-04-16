@@ -13,4 +13,24 @@ const BreakpointOptionsRender = require('../../../styleguide_components/Breakpoi
 <BreakpointOptionsRender />
 ```
 
+There are a few ways to use the breakpoints, for simpler responsive behaviors you can use them as an array of values inline like
+
+```js
+  <Box bg={['green', 'blue', 'red', 'purple']} p="xxlarge" color="white">My background changes color as you resize the window</Box>
+```
+
+Another option if you are writing more complex responsive behaviors you can import the breakpoints and use them a styled block
+
+```typescript jsx
+import { Box, styled, theme } from looker-lens
+
+const ResponsiveBox = styled(Box)`
+  background: green;
+
+  @media (min-width ${theme.breakpoints[1]}) {
+    background: red;
+  }
+
+`
+```
 
