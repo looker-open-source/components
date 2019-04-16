@@ -44,6 +44,8 @@ export interface IconButtonProps
    * Defines the color of the button. Can be the string name of a color listed in the color theme, or a color object.
    */
   color?: keyof SemanticColors | SemanticColor
+
+  innerRef?: React.RefObject<HTMLElement>
 }
 
 function iconSizeHelper(size: IconButtonSizes) {
