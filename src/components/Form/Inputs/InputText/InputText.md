@@ -1,11 +1,13 @@
 ```js noeditor
-const StatusAndResources = require('../../../../../styleguide_components/StatusAndResources').StatusAndResources;
+const StatusAndResources = require('../../../../../styleguide_components/StatusAndResources')
+  .StatusAndResources
 
-<StatusAndResources
+;<StatusAndResources
   status="experimental"
   figmaURL="https://www.figma.com/file/2MG6DoSjk4IaLnjjFCnKFf/Forms"
   githubURL="https://github.com/looker/lens/blob/master/src/components/Form/Inputs/InputText.tsx"
-  feedbackTitle="InputText Component Feedback" />
+  feedbackTitle="InputText Component Feedback"
+/>
 ```
 
 ### Default InputText
@@ -13,7 +15,8 @@ const StatusAndResources = require('../../../../../styleguide_components/StatusA
 The `<InputText />` component renders a single text input element on the page, with no accompanying label. It is generally used to construct higher-order components like the `<FieldText />`. If you are building a form, you probably want to use `<FieldText />` instead as it provides label and validation support.
 
 ```js
-<InputText />
+import { InputText } from './InputText'
+;<InputText />
 ```
 
 ### Name and ID
@@ -21,7 +24,8 @@ The `<InputText />` component renders a single text input element on the page, w
 A name and ID can be specified in the `<InputText />` component. Names are important if the input is used in the context of a form, in which case a name is required for the value of the input to be captured.
 
 ```js
-<InputText name="someName" id="someId" />
+import { InputText } from './InputText'
+;<InputText name="someName" id="someId" />
 ```
 
 ### Disabled Property
@@ -29,8 +33,11 @@ A name and ID can be specified in the `<InputText />` component. Names are impor
 Use the disable property to make an input field uneditable.
 
 ```js
-<InputText disabled />
-<InputText value="Hello!" disabled />
+import { InputText } from './InputText'
+;<>
+  <InputText disabled />
+  <InputText value="Hello!" disabled />
+</>
 ```
 
 ### Placeholders
@@ -38,7 +45,8 @@ Use the disable property to make an input field uneditable.
 Placeholders are used to give a hint to the user of the expected value for the input. They should not be used as a complete replacement of labels.
 
 ```js
-<InputText placeholder="Enter your text here..." />
+import { InputText } from './InputText'
+;<InputText placeholder="Enter your text here..." />
 ```
 
 ### ReadOnly Property
@@ -46,7 +54,8 @@ Placeholders are used to give a hint to the user of the expected value for the i
 As the name suggests, `readOnly` makes the text uneditable.
 
 ```js
-<InputText value="You can't change me." readOnly />
+import { InputText } from './InputText'
+;<InputText value="You can't change me." readOnly />
 ```
 
 ### Required Property
@@ -54,7 +63,9 @@ As the name suggests, `readOnly` makes the text uneditable.
 When set for `<InputText />` in the context of a form, the input field must be filled out before submitting the form.
 
 ```js
-<form>
+import { InputText } from './InputText'
+import { Button } from '../../../Button'
+;<form>
   <InputText required />
   <br />
   <br />

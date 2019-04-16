@@ -10,12 +10,20 @@ yarn add --dev @types/react @types/react-dom @types/styled-system
 Import some components from Lens:
 
 ```jsx static
-import { Card, CardContent, Heading, Text, ThemeProvider, theme } from 'looker-lens'
-
-<ThemeProvider theme={theme}>
+import {
+  Card,
+  CardContent,
+  Heading,
+  Text,
+  ThemeProvider,
+  theme,
+} from 'looker-lens'
+;<ThemeProvider theme={theme}>
   <Card raised>
     <CardContent>
-      <Heading fontWeight="semiBold" transform="caps">Welcome to Lens</Heading>
+      <Heading fontWeight="semiBold" transform="caps">
+        Welcome to Lens
+      </Heading>
       <Text>Looker's component library</Text>
     </CardContent>
   </Card>
@@ -25,7 +33,10 @@ import { Card, CardContent, Heading, Text, ThemeProvider, theme } from 'looker-l
 Which renders the following:
 
 ```jsx
-<Card raised>
+import { Card, CardContent } from '../../components/Card'
+import { Heading } from '../../components/Heading'
+import { Text } from '../../components/Text'
+;<Card raised>
   <CardContent>
     <Heading fontWeight="semiBold" transform="caps">
       Welcome to Lens

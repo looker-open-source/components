@@ -1,7 +1,9 @@
 Drawers are modal overlays that provide contextual information. They are frequantly used for creation or management action by the user. The Drawer blocks interactions with the other content until dismissed either through clicking or tapping on the Backdrop or by selecting a close or completion action within the Drawer.
 
 ```js
-<DrawerManager
+import { Button } from '../../Button'
+import { DrawerManager } from './DrawerManager'
+;<DrawerManager
   content={
     <>
       This is some content in the Drawer <a href="#">Focus point</a>
@@ -19,7 +21,12 @@ Drawers are modal overlays that provide contextual information. They are frequan
 Drawers can be constructed with Modal helpers to create a complex layout a fixed-position header and footer as well as a content area that indicates overflow and allows the user to scroll through its contents.
 
 ```js
-const ModalContext = require('../ModalContext').ModalContext
+import { Box } from '../../Box'
+import { Button } from '../../Button'
+import { Heading } from '../../Heading'
+import { DrawerManager } from './DrawerManager'
+import { ModalContent, ModalFooter, ModalHeader } from '../Layout'
+import { ModalContext } from '../ModalContext'
 
 const boxProps = {
   alignItems: 'center',

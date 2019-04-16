@@ -14,6 +14,8 @@ const StatusAndResources = require('../../../../../styleguide_components/StatusA
 The `<FieldSelect />` component is composed of an `<Select />` component and a `<Label />` component. Using `<FieldSelect />` allows for rendering validation messages. By default, the label will render directly above the input field, which is the recommended convention, however this is adjustable with the `alignLabel` property.
 
 ```js
+import { FieldSelect } from './FieldSelect'
+
 const options = [
   { value: 'cheddar', label: 'Cheddar' },
   { value: 'gouda', label: 'Gouda' },
@@ -54,6 +56,8 @@ If you have multiple fields in need of validation, it is recommended that you wr
 **_Note: In the current implementation, any `ValidationMessage` set in a `<FieldSelect />` component will be overridden by `ValidationMessages` set in the parent `<Form />` component. Because of this, it is highly recommended that you only ever directly set `ValidationMessage` if a `<FieldSelect />` is outside a `<Form />`._**
 
 ```js
+import { FieldSelect } from './FieldSelect'
+
 const options = [
   { value: 'cheddar', label: 'Cheddar' },
   { value: 'gouda', label: 'Gouda' },

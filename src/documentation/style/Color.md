@@ -23,6 +23,8 @@ We want Looker to be accessible to the widest audience possible. Our color palet
 #### Color Palette
 
 ```js noeditor
+import { Text } from '../../components/Text'
+
 const polished = require('polished')
 
 checkContrast = color => {
@@ -111,29 +113,25 @@ renderSwatch = (swatchList, key) => {
   )
 }
 
-class Swatch extends React.Component {
-  render(props) {
-    return (
-      <div className="swatch" style={{ background: this.props.hexValue }}>
-        <Text
-          className="swatch-label"
-          fontWeight="semiBold"
-          style={{ color: this.props.labelColor }}
-        >
-          {this.props.children}
-        </Text>
-        <Text
-          className="swatch-hex"
-          fontWeight="semiBold"
-          style={{ color: this.props.labelColor }}
-        >
-          {this.props.hexValue}
-        </Text>
-        <div className="contrast-box">{this.props.contrastLevel}</div>
-      </div>
-    )
-  }
-}
+const Swatch = props => (
+  <div className="swatch" style={{ background: props.hexValue }}>
+    <Text
+      className="swatch-label"
+      fontWeight="semiBold"
+      style={{ color: props.labelColor }}
+    >
+      {props.children}
+    </Text>
+    <Text
+      className="swatch-hex"
+      fontWeight="semiBold"
+      style={{ color: props.labelColor }}
+    >
+      {props.hexValue}
+    </Text>
+    <div className="contrast-box">{props.contrastLevel}</div>
+  </div>
+)
 
 class SwatchRender extends React.Component {
   constructor() {

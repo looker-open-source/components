@@ -27,7 +27,11 @@ On the left we have the form as designed and on the right you see the spacing in
 Using Lens and the [Box Component](/#!/Box) we can quickly apply the correct spacing (the parts in pink) to this form.
 
 ```js
-<form>
+import { Box } from '../../components/Box'
+import { Button } from '../../components/Button'
+import { FieldText } from '../../components/Form'
+import { Heading } from '../../components/Heading'
+;<form>
   <Heading fontWeight="light">Style</Heading>
   <Box pt="medium" pb="large" style={{ borderBottom: 'solid 1px #DEE1E5' }}>
     <FieldText id="style-name" name="styleName" label="Name" />

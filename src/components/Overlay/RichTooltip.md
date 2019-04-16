@@ -15,6 +15,12 @@ const RichTooltipDemo = require('../../../styleguide_components/RichTooltipDemo'
 ```
 
 ```js
+import { Box } from '../Box'
+import { Link } from '../Link'
+import { Text } from '../Text'
+import { RichTooltip } from './RichTooltip'
+import { RichTooltipContent } from './RichTooltipContent'
+
 const wikipediaWildebeest = (
   <RichTooltipContent width="360px">
     <img

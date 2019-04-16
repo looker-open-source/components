@@ -1,4 +1,4 @@
 ```js
-
-<LuminositySlider />
+import { LuminositySlider } from './LuminositySlider'
+;<LuminositySlider />
 ```

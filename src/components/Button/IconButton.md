@@ -5,9 +5,23 @@
 If you need an icon for purely decorative purposes use an `<Icon />` instead.
 
 ```js
-  <IconButton label="Add File" icon="Plus" size="xxsmall" mr="small"  />
+import { IconButton } from './IconButton'
+;<>
+  <IconButton label="Add File" icon="Plus" size="xxsmall" mr="small" />
   <IconButton label="Settings" icon="Gear" mr="small" />
-  <IconButton label="Add to Favorites" icon="Favorite" size="small" mr="small"  />
-  <IconButton label="Delete Look" icon="Trash"  size="medium" color="danger" mr="small" />
-  <IconButton label="Close" icon="Close"  size="large" outline  mr="small" />
+  <IconButton
+    label="Add to Favorites"
+    icon="Favorite"
+    size="small"
+    mr="small"
+  />
+  <IconButton
+    label="Delete Look"
+    icon="Trash"
+    size="medium"
+    color="danger"
+    mr="small"
+  />
+  <IconButton label="Close" icon="Close" size="large" outline mr="small" />
+</>
 ```

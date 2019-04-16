@@ -1,12 +1,13 @@
-
 ```js noeditor
-const StatusAndResources = require('../../../../../styleguide_components/StatusAndResources').StatusAndResources;
+const StatusAndResources = require('../../../../../styleguide_components/StatusAndResources')
+  .StatusAndResources
 
-<StatusAndResources
+;<StatusAndResources
   status="experimental"
   figmaURL="https://www.figma.com/file/2MG6DoSjk4IaLnjjFCnKFf/Forms"
   githubURL="https://github.com/looker/lens/blob/master/src/components/Form/Fields/FieldCheckbox.tsx"
-  feedbackTitle="FieldCheckbox Component Feedback" />
+  feedbackTitle="FieldCheckbox Component Feedback"
+/>
 ```
 
 ### FieldCheckbox
@@ -14,9 +15,12 @@ const StatusAndResources = require('../../../../../styleguide_components/StatusA
 The `<FieldCheckbox />` component is composed of a `<Checkbox />` component and a `<Label />` component. Using `<FieldCheckbox />` allows for rendering validation messages. By default, the label will render to the left of the checkbox, which is the recommended convention, however this is adjustable with the `alignLabel` property.
 
 ```js
-<FieldCheckbox name="box" label="Box" />
-<FieldCheckbox name="box-2" label="Box 2" alignLabel="left" />
-<FieldCheckbox name="requiredField" label="A required field" required />
+import { FieldCheckbox } from './FieldCheckbox'
+;<>
+  <FieldCheckbox name="box" label="Box" />
+  <FieldCheckbox name="box-2" label="Box 2" alignLabel="left" />
+  <FieldCheckbox name="requiredField" label="A required field" required />
+</>
 ```
 
 ### FieldCheckbox Validation
@@ -29,8 +33,13 @@ If you have multiple fields in need of validation, it is recommended that you wr
 
 The `alignValidationMessage` can also be used to adjust where the validation message appears in relation to the input field. By default, it will render to the right, which is the best practice in most cases.
 
-___Note: In the current implementation, any `ValidationMessage` set in a `<FieldCheckbox />` component will be overridden by `ValidationMessages` set in the parent `<Form />` component. Because of this, it is highly recommended that you only ever directly set `ValidationMessage` if a `<FieldCheckbox />` is outside a `<Form />`.___
+**_Note: In the current implementation, any `ValidationMessage` set in a `<FieldCheckbox />` component will be overridden by `ValidationMessages` set in the parent `<Form />` component. Because of this, it is highly recommended that you only ever directly set `ValidationMessage` if a `<FieldCheckbox />` is outside a `<Form />`._**
 
 ```js
-<FieldCheckbox name="someBox" label="Some Box" validationMessage={{type: "error", message: "This is an error"}}/>
+import { FieldCheckbox } from './FieldCheckbox'
+;<FieldCheckbox
+  name="someBox"
+  label="Some Box"
+  validationMessage={{ type: 'error', message: 'This is an error' }}
+/>
 ```

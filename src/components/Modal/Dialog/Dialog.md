@@ -1,6 +1,9 @@
 Dialogs inform users about a task and can contain critical information, require decisions, or involve multiple tasks.
 
 ```js
+import { Dialog } from './Dialog'
+import { Button } from '../../Button'
+
 class Component extends React.Component {
   constructor(props) {
     super(props)
@@ -37,7 +40,12 @@ class Component extends React.Component {
 A confirmation dialog can be easily assembled using the Dialog and its sibling components DialogHeader and DialogFooter.
 
 ```js
-const ModalContext = require('../ModalContext').ModalContext
+import { Button } from '../../Button'
+import { Heading } from '../../Heading'
+import { Dialog } from './Dialog'
+import { DialogManager } from './DialogManager'
+import { ModalFooter, ModalHeader } from '../Layout'
+import { ModalContext } from '../ModalContext'
 
 const content = (
   <>

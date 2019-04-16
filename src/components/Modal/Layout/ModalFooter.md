@@ -3,7 +3,10 @@
 ModalFooter supports all [`Box`](/#!/Box) properties.
 
 ```js
-<ModalFooter>
+import { Button } from '../../Button'
+import { ModalFooter } from '../Layout'
+
+;<ModalFooter>
   <Button mx="medium" variant="transparent">
     Cancel
   </Button>

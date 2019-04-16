@@ -1,4 +1,5 @@
 const path = require('path')
+
 const typescriptPropsParser = require('react-docgen-typescript').withDefaultConfig(
   {
     propFilter: prop => {
@@ -79,11 +80,6 @@ const contentSection = {
 
 module.exports = {
   assetsDir: 'static',
-  compilerConfig: {
-    transforms: {
-      dangerousTaggedTemplateString: true,
-    },
-  },
   ignore: ['**/index.tsx', '**/*.test.tsx', '**/*.test.helpers.tsx'],
   pagePerSection: true,
   propsParser: typescriptPropsParser,
@@ -229,6 +225,20 @@ module.exports = {
       base: '"Open Sans", sans-serif',
     },
     maxWidth: '784px',
+    color: {
+      codeBase: '#f8f8f2',
+      codeBackground: '#282a36',
+      codeComment: ' #6272a4',
+      codePunctuation: '#f8f8f2',
+      codeProperty: '#ff79c6;',
+      codeDeleted: '#ff79c6;',
+      codeString: '#50fa7b',
+      codeInserted: '#50fa7b',
+      codeOperator: '#f8f8f2',
+      codeKeyword: '#8be9fd',
+      codeFunction: '#ceb4ff',
+      codeVariable: '#f8f8f2',
+    },
   },
   styles: {
     Logo: {
@@ -325,8 +335,5 @@ module.exports = {
         padding: '0 12px',
       },
     },
-  },
-  editorConfig: {
-    theme: 'oceanic-next',
   },
 }

@@ -33,6 +33,7 @@ set the `:visited` color to our palette.red400 color. We can access the Theme
 via Styled Components, so this is easy enough:
 
 ```js
+import { Link } from '../../components/Link'
 const styled = require('../../style').styled
 
 const VisitedLink = styled(Link)`
@@ -52,6 +53,8 @@ need to add a new prop to our Link. In Typescript you might expect to do
 something like this, but it will cause a run time error like `Warning: Received 'true' for a non-boolean attribute 'visited'`:
 
 ```ts noeditor
+import { Link } from '../../components/Link'
+
 interface VisitedLink extends Link {
   visited?: boolean
 }
@@ -65,7 +68,6 @@ const VisitedLink = styled<VisitedLink>(Link)`
     text-decoration: ${props => (props.visited ? 'line-through' : 'underline')};
   }
 `
-
 ;<VisitedLink href="https://www.google.com">Hello</VisitedLink>
 ```
 
@@ -79,6 +81,7 @@ from being passed to `<Link/>`. It requires a bit of ceremony, but is easy
 enough with [ES6's spread syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax):
 
 ```js
+import { Link } from '../../components/Link'
 const styled = require('../../style').styled
 
 const VisitedLinkFactory = ({ visited, ...props }) => <Link {...props} />
@@ -111,7 +114,7 @@ import { styled, Link } from 'looker-lens'
 
 const Card = styled.div`
   ${/* sc-selector */ Link} {
-    background-color: ${props => props.theme.palette.green300}
+    background-color: ${props => props.theme.palette.green300};
   }
 `
 ```
