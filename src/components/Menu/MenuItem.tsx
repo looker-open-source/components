@@ -98,7 +98,7 @@ export interface MenuItemProps
   onClick?: () => void
 }
 
-const MenuItemInteral: React.FC<MenuItemProps> = ({
+const MenuItemInternal: React.FC<MenuItemProps> = ({
   active,
   current,
   currentMarker,
@@ -345,4 +345,4 @@ const MenuItemChildStyle = styled(MenuItemChildStyleFactory)`
   cursor: pointer;
 `
 
-export const MenuItem = withMenu(MenuItemInteral)
+export const MenuItem = styled<MenuItemProps>(withMenu(MenuItemInternal))``
