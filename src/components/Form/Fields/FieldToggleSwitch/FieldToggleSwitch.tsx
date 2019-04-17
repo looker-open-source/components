@@ -1,5 +1,6 @@
 import * as React from 'react'
 import uuid from 'uuid/v4'
+import { styled } from '../../../../style'
 import { withForm } from '../../Form'
 import { ToggleSwitch, ToggleSwitchProps } from '../../Inputs/ToggleSwitch'
 import { Field, FieldProps } from '../Field'
@@ -31,4 +32,4 @@ const InternalFieldToggleSwitch = (props: FieldToggleSwitchProps) => {
   )
 }
 
-export const FieldToggleSwitch = withForm(InternalFieldToggleSwitch)
+export const FieldToggleSwitch = styled(withForm(InternalFieldToggleSwitch))``

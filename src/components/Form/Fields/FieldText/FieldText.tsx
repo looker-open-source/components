@@ -1,5 +1,6 @@
 import * as React from 'react'
 import uuid from 'uuid/v4'
+import { styled } from '../../../../style'
 import { withForm } from '../../Form'
 import { InputText, InputTextProps } from '../../Inputs/InputText/InputText'
 import { Field, FieldProps } from '../Field'
@@ -34,4 +35,4 @@ const InternalFieldText = (props: FieldTextProps) => {
   )
 }
 
-export const FieldText = withForm(InternalFieldText)
+export const FieldText = styled(withForm(InternalFieldText))``

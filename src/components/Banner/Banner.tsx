@@ -5,7 +5,7 @@ import { Flex } from '../Flex'
 import { Icon } from '../Icon'
 import { Text } from '../Text'
 
-type BannerIntent = 'warning' | 'info' | 'error' | 'confirmation'
+export type BannerIntent = 'warning' | 'info' | 'error' | 'confirmation'
 
 export interface BannerProps extends BoxProps<HTMLDivElement> {
   intent: BannerIntent
@@ -73,7 +73,7 @@ const VisuallyHiddenText = styled(Text)`
   width: 1px;
 `
 
-export const Banner: React.FC<BannerProps> = ({
+export const InternalBanner: React.FC<BannerProps> = ({
   onDismiss,
   dismissable,
   ...props
@@ -113,3 +113,5 @@ export const Banner: React.FC<BannerProps> = ({
     </Flex>
   )
 }
+
+export const Banner = styled<BannerProps>(InternalBanner)``

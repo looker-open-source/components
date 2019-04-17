@@ -1,5 +1,6 @@
 import * as React from 'react'
 import uuid from 'uuid/v4'
+import { styled } from '../../../../style'
 import { withForm } from '../../Form'
 import { Select, SelectProps } from '../../Inputs/Select/Select'
 import { Field, FieldProps } from '../Field'
@@ -34,4 +35,4 @@ const InternalFieldSelect = (props: FieldSelectProps) => {
   )
 }
 
-export const FieldSelect = withForm(InternalFieldSelect)
+export const FieldSelect = styled(withForm(InternalFieldSelect))``

@@ -1,5 +1,6 @@
 import * as React from 'react'
 import uuid from 'uuid/v4'
+import { styled } from '../../../../style'
 import { withForm } from '../../Form'
 import { Radio, RadioProps } from '../../Inputs'
 import { Field, FieldProps } from '../Field'
@@ -34,4 +35,4 @@ const InternalFieldRadio = (props: FieldRadioProps) => {
   )
 }
 
-export const FieldRadio = withForm(InternalFieldRadio)
+export const FieldRadio = styled(withForm(InternalFieldRadio))``

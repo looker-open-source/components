@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Theme } from '../../../../style'
+import { styled, Theme } from '../../../../style'
 import { CustomizableAttributes } from '../../../../types/attributes'
 import { Box, BoxProps } from '../../../Box'
 import { InputProps } from '../InputProps'
@@ -43,7 +43,7 @@ export interface SelectProps extends BoxProps<HTMLSelectElement>, InputProps {
   theme?: Theme
 }
 
-export const Select: React.FC<SelectProps> = ({
+const InternalSelect: React.FC<SelectProps> = ({
   includeBlank = true,
   options,
   placeholder,
@@ -112,6 +112,8 @@ const renderOptGroups = (
     )
   })
 }
+
+export const Select = styled<SelectProps>(InternalSelect)``
 
 export const CustomizableSelectAttributes: CustomizableAttributes = {
   borderRadius: 'medium',

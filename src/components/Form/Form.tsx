@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { styled } from '../../style'
 import { Box } from '../Box'
 import { FieldProps } from './Fields'
 import { InputProps } from './Inputs/InputProps'
@@ -24,7 +25,7 @@ interface FormContextValue {
 
 export const FormContext = React.createContext<FormContextValue>({})
 
-export const Form: React.FC<FormProps> = ({ ...props }) => {
+const InternalForm: React.FC<FormProps> = ({ ...props }) => {
   const context = {
     validationMessages: props.validationMessages,
   }
@@ -37,6 +38,8 @@ export const Form: React.FC<FormProps> = ({ ...props }) => {
     </FormContext.Provider>
   )
 }
+
+export const Form = styled<FormProps>(InternalForm)``
 
 export const withForm = <T extends {}>(
   Component: React.ComponentType<FieldProps & InputProps & T>

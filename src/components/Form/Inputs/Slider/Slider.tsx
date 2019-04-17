@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { styled } from '../../../../style'
 import { Box, BoxProps } from '../../../Box'
 import { InputProps } from '../InputProps'
 
@@ -21,6 +22,11 @@ export interface SliderProps extends InputProps, BoxProps<HTMLInputElement> {
   value?: number
 }
 
-export const Slider: React.FC<SliderProps> = ({ validationType, ...props }) => {
+const InternalSlider: React.FC<SliderProps> = ({
+  validationType,
+  ...props
+}) => {
   return <Box is="input" type="range" {...props} />
 }
+
+export const Slider = styled<SliderProps>(InternalSlider)``

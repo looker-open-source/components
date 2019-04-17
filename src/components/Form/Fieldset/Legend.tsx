@@ -1,9 +1,11 @@
 import * as React from 'react'
-import { SpacingSizes } from '../../../style'
+import { SpacingSizes, styled } from '../../../style'
 import { CustomizableAttributes } from '../../../types/attributes'
 import { Box, BoxProps } from '../../Box'
 
-export const Legend: React.FC<BoxProps<HTMLLegendElement>> = ({ ...props }) => (
+const InternalLegend: React.FC<BoxProps<HTMLLegendElement>> = ({
+  ...props
+}) => (
   <Box
     is="legend"
     color={CustomizableLegendAttributes.color}
@@ -13,6 +15,8 @@ export const Legend: React.FC<BoxProps<HTMLLegendElement>> = ({ ...props }) => (
     {...props}
   />
 )
+
+export const Legend = styled(InternalLegend)``
 
 export interface CustomizableLegendAttributes extends CustomizableAttributes {
   bottomPadding: SpacingSizes

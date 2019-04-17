@@ -114,7 +114,7 @@ const getValidationMessageAlignment = (
  * and can render a validation message. Generally, this component is used with form inputs to give user
  * feedback about the status of the input values.
  */
-export const Field = (props: FieldProps & { children?: React.ReactNode }) => {
+const InternalField = (props: FieldProps & { children?: React.ReactNode }) => {
   const labelFontWeight = props.labelFontWeight
     ? { fontWeight: props.labelFontWeight }
     : {}
@@ -144,6 +144,8 @@ export const Field = (props: FieldProps & { children?: React.ReactNode }) => {
     </FormControl>
   )
 }
+
+export const Field = styled<FieldProps>(InternalField)``
 
 export interface CustomizableFieldAttributesInterface
   extends CustomizableAttributes {
