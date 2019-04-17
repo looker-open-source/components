@@ -139,7 +139,7 @@ class InternalColorFieldPicker extends React.Component<
             <RichTooltip content={content}>
               {(eventHandlers, ref) => (
                 <Swatch
-                  ref={ref}
+                  innerRef={ref}
                   color={ColorFormatUtils.hsv2hex(hsvColor)}
                   borderRadius={swatchBorderRadius}
                   borderRight={0}
