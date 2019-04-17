@@ -48,7 +48,7 @@ const OverlaySurfaceInternal: React.FC<OverlaySurfaceProps> = ({
         {children}
       </Box>
 
-      {props.arrow && (
+      {props.arrow !== false && (
         <OverlaySurfaceArrow
           backgroundColor={props.backgroundColor}
           border={props.border}
