@@ -192,7 +192,6 @@ exports[`Dismissable banner 1`] = `
 <div
   aria-live="polite"
   className="c0"
-  dismissable={true}
   intent="info"
   role="status"
 >

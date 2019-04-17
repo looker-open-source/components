@@ -73,12 +73,17 @@ const VisuallyHiddenText = styled(Text)`
   width: 1px;
 `
 
-export const Banner: React.FC<BannerProps> = ({ ...props }) => {
+export const Banner: React.FC<BannerProps> = ({
+  onDismiss,
+  dismissable,
+  ...props
+}) => {
   const {
     icon,
     accessibilityLabel,
     ...bannerIntentStyling
   } = getBannerIntentStyling(props.intent)
+
   return (
     <Flex
       {...bannerIntentStyling}
@@ -94,12 +99,12 @@ export const Banner: React.FC<BannerProps> = ({ ...props }) => {
       {icon}
       <VisuallyHiddenText>{accessibilityLabel}</VisuallyHiddenText>
       <Box>{props.children}</Box>
-      {props.dismissable && (
+      {dismissable && (
         <Box
           is="button"
           ml="auto"
           bg="transparent"
-          onClick={props.onDismiss}
+          onClick={onDismiss}
           aria-hidden
         >
           <CloseBannerIcon name="Close" size={24} color={palette.charcoal900} />

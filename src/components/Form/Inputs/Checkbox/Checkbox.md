@@ -35,8 +35,18 @@ The `<Checkbox />` component accepts the `checked` property, which sets the chec
 ```js
 import { Checkbox } from './Checkbox'
 ;<>
-  <Checkbox checked={true} />
-  <Checkbox checked={false} />
+  <Checkbox
+    checked={true}
+    onChange={() => {
+      return
+    }}
+  />
+  <Checkbox
+    checked={false}
+    onChange={() => {
+      return
+    }}
+  />
 </>
 ```
 
