@@ -15,6 +15,8 @@ export interface SwatchProps extends BoxProps<HTMLDivElement> {
    * Swatch width.
    */
   width?: string
+
+  innerRef?: React.RefObject<HTMLElement>
 }
 
 export const Swatch: React.FC<SwatchProps> = ({
