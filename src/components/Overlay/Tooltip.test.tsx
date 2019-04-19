@@ -2,10 +2,7 @@
 import 'jest-styled-components'
 import * as React from 'react'
 import { mountWithTheme } from '../../../test/utils/create_with_theme'
-import {
-  assertSnapshot,
-  assertSnapshotShallow,
-} from '../../../test/utils/snapshot'
+import { assertSnapshotShallow } from '../../../test/utils/snapshot'
 import { Box } from '../Box'
 import { Button } from '../Button'
 import { Paragraph } from '../Text'
@@ -17,7 +14,7 @@ import { Tooltip } from './Tooltip'
 
 describe('Tooltip', () => {
   test('snapshot', () => {
-    assertSnapshot(
+    assertSnapshotShallow(
       <Tooltip content="Hello world" isOpen>
         {(eventHandlers, ref) => (
           <Button innerRef={ref} {...eventHandlers}>
@@ -29,7 +26,7 @@ describe('Tooltip', () => {
   })
 
   test('Tooltip can hide its arrow', () => {
-    assertSnapshot(
+    assertSnapshotShallow(
       <Tooltip content="Hello world" arrow={false} isOpen>
         {(eventHandlers, ref) => (
           <Button innerRef={ref} {...eventHandlers}>

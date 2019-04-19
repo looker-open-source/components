@@ -1,9 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Overlay Generates a simple instance 1`] = `
-<div>
-  simple content
-</div>
-`;
+exports[`Overlay Generates a simple instance 1`] = `ShallowWrapper {}`;
 
-exports[`Overlay Generates a simple instanced, closed 1`] = `null`;
+exports[`Overlay Generates a simple instanced, closed 1`] = `ShallowWrapper {}`;

@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Popper } from 'react-popper'
-import { CustomizableModalAttributes } from '../Modal'
+import { ModalPortal } from '../Modal/ModalPortal'
 import { OverlayProps } from './Overlay'
 
 export interface OverlayHoverProps extends OverlayProps {
@@ -20,24 +20,27 @@ export const OverlayHover: React.FC<OverlayHoverProps> = ({
       : undefined
 
   return isOpen ? (
-    <Popper
-      positionFixed
-      innerRef={setSurfaceRef}
-      placement={props.placement}
-      referenceElement={triggerRef}
-    >
-      {({ ref, style, arrowProps, placement }) =>
-        children({
-          arrowProps,
-          eventHandlers: { onMouseOut: props.onMouseOut },
-          placement,
-          ref,
-          style: {
-            ...style,
-            zIndex: CustomizableModalAttributes.zIndex,
-          },
-        })
-      }
-    </Popper>
+    <ModalPortal portalRef={props.portalRef}>
+      <Popper
+        positionFixed
+        innerRef={setSurfaceRef}
+        placement={props.placement}
+        modifiers={{
+          flip: { enabled: props.pin ? false : true },
+          preventOverflow: { padding: 0 },
+        }}
+        referenceElement={triggerRef}
+      >
+        {({ ref, style, arrowProps, placement }) =>
+          children({
+            arrowProps,
+            eventHandlers: { onMouseOut: props.onMouseOut },
+            placement,
+            ref,
+            style,
+          })
+        }
+      </Popper>
+    </ModalPortal>
   ) : null
 }
