@@ -104,7 +104,9 @@
       "json",
       "node"
     ],
-    "setupTestFrameworkScriptFile": "./test/setupJest.js",
+    "setupFilesAfterEnv": [
+      "./test/setupJest.js"
+    ],
     "transform": {
       "^.+\\.(jsx)$": "babel-jest",
       "^.+\\.(ts|tsx)$": "ts-jest"

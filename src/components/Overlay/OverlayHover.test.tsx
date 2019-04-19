@@ -1,7 +1,7 @@
 import 'jest-styled-components'
 import * as React from 'react'
 import { mountWithTheme } from '../../../test/utils/create_with_theme'
-import { assertSnapshot } from '../../../test/utils/snapshot'
+import { assertSnapshotShallow } from '../../../test/utils/snapshot'
 import { SimpleContentSFC } from './overlay.test.helpers'
 import { OverlayHover } from './OverlayHover'
 
@@ -15,11 +15,11 @@ const SimpleOverlayHover: React.FC<OverlayTestProps> = ({ ...props }) => (
 
 describe('Overlay', () => {
   test('Generates a simple instance', () => {
-    assertSnapshot(<SimpleOverlayHover isOpen />)
+    assertSnapshotShallow(<SimpleOverlayHover isOpen />)
   })
 
   test('Generates a simple instanced, closed', () => {
-    assertSnapshot(<SimpleOverlayHover />)
+    assertSnapshotShallow(<SimpleOverlayHover />)
   })
 
   test('Contains content', () => {
