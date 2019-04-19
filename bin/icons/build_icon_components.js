@@ -128,9 +128,13 @@ async function generateMarkdownFileForAllIcons() {
     return `
 To use an Icon you pass the name of the icon to the \`name\` property on the \`<Icon />\` component
 \`\`\`js
-<Icon name="Check" size={24} />
-<Icon name="Favorite" size={24} color="palette.red400" />
-<Icon name="GearOutline" size={32} color="palette.charcoal500"/>
+import { Icon } from '../../components/Icon'
+import { Box } from '../../components/Box';
+<Box>
+  <Icon name="Check" size={24} />
+  <Icon name="Favorite" size={24} color="palette.red400" />
+  <Icon name="GearOutline" size={32} color="palette.charcoal500"/>
+</Box>
 \`\`\`
 
 # All Icons
@@ -138,6 +142,9 @@ To use an Icon you pass the name of the icon to the \`name\` property on the \`<
 **Tip: ** you can click an icon below to copy it to your clipboard.
 
 \`\`\`js noeditor
+import { Icon } from '../../components/Icon'
+import { Box } from '../../components/Box'
+import { Paragraph } from '../../components/Text/Paragraph'
 const CopyToClipboard = require('react-copy-to-clipboard');
 
 <div>
