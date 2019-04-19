@@ -143,7 +143,7 @@ import { Box } from '../../components/Box';
 
 \`\`\`js noeditor
 import { Icon } from '../../components/Icon'
-import { Box } from '../../components/Box';
+import { Box } from '../../components/Box'
 import { Paragraph } from '../../components/Text/Paragraph'
 const CopyToClipboard = require('react-copy-to-clipboard');
 
