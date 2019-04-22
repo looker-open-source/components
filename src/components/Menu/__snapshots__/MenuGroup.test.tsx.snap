@@ -353,9 +353,6 @@ exports[`MenuGroup - JSX label 1`] = `
 }
 
 .c1 {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-transform: uppercase;
 }
 
@@ -736,9 +733,6 @@ exports[`MenuGroup - label 1`] = `
 }
 
 .c1 {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-transform: uppercase;
 }
 
@@ -933,9 +927,6 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
 }
 
 .c1 {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-transform: uppercase;
 }
 

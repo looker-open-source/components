@@ -49,8 +49,8 @@ exports[`IconButton accepts color 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  height: 16px;
-  width: 16px;
+  height: 14px;
+  width: 14px;
 }
 
 .c0 {
@@ -58,9 +58,6 @@ exports[`IconButton accepts color 1`] = `
   outline: none;
   -webkit-transition: border 80ms;
   transition: border 80ms;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
   border-style: solid;
@@ -194,8 +191,8 @@ exports[`IconButton accepts events 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  height: 16px;
-  width: 16px;
+  height: 14px;
+  width: 14px;
 }
 
 .c0 {
@@ -203,9 +200,6 @@ exports[`IconButton accepts events 1`] = `
   outline: none;
   -webkit-transition: border 80ms;
   transition: border 80ms;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
   border-style: solid;
@@ -318,8 +312,8 @@ exports[`IconButton accepts events 2`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  height: 16px;
-  width: 16px;
+  height: 14px;
+  width: 14px;
 }
 
 .c1 {
@@ -350,9 +344,6 @@ exports[`IconButton accepts events 2`] = `
   outline: none;
   -webkit-transition: border 80ms;
   transition: border 80ms;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
   border-style: solid;
@@ -487,8 +478,8 @@ exports[`IconButton allows for ARIA attributes 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  height: 16px;
-  width: 16px;
+  height: 14px;
+  width: 14px;
 }
 
 .c0 {
@@ -496,9 +487,6 @@ exports[`IconButton allows for ARIA attributes 1`] = `
   outline: none;
   -webkit-transition: border 80ms;
   transition: border 80ms;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
   border-style: solid;
@@ -633,8 +621,8 @@ exports[`IconButton default 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  height: 16px;
-  width: 16px;
+  height: 14px;
+  width: 14px;
 }
 
 .c0 {
@@ -642,9 +630,6 @@ exports[`IconButton default 1`] = `
   outline: none;
   -webkit-transition: border 80ms;
   transition: border 80ms;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
   border-style: solid;
@@ -778,8 +763,8 @@ exports[`IconButton outline 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  height: 16px;
-  width: 16px;
+  height: 14px;
+  width: 14px;
 }
 
 .c0 {
@@ -787,9 +772,6 @@ exports[`IconButton outline 1`] = `
   outline: none;
   -webkit-transition: border 80ms;
   transition: border 80ms;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
   border-style: solid;
@@ -923,8 +905,8 @@ exports[`IconButton resized 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  height: 35px;
-  width: 35px;
+  height: 33px;
+  width: 33px;
 }
 
 .c0 {
@@ -932,9 +914,6 @@ exports[`IconButton resized 1`] = `
   outline: none;
   -webkit-transition: border 80ms;
   transition: border 80ms;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
   border-style: solid;

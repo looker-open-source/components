@@ -31,9 +31,6 @@ exports[`Button accepts a SemanticColor object for the color property 1`] = `
   outline: none;
   -webkit-transition: border 80ms;
   transition: border 80ms;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
   border-style: solid;
@@ -117,9 +114,6 @@ exports[`Button allows autoFocus 1`] = `
   outline: none;
   -webkit-transition: border 80ms;
   transition: border 80ms;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
   border-style: solid;
@@ -204,9 +198,6 @@ exports[`Button allows for ARIA attributes 1`] = `
   outline: none;
   -webkit-transition: border 80ms;
   transition: border 80ms;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
   border-style: solid;
@@ -291,9 +282,6 @@ exports[`Button allows for HTML events 1`] = `
   outline: none;
   -webkit-transition: border 80ms;
   transition: border 80ms;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
   border-style: solid;
@@ -379,9 +367,6 @@ exports[`Button allows for HTML events 2`] = `
   outline: none;
   -webkit-transition: border 80ms;
   transition: border 80ms;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
   border-style: solid;
@@ -466,9 +451,6 @@ exports[`Button danger color 1`] = `
   outline: none;
   -webkit-transition: border 80ms;
   transition: border 80ms;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
   border-style: solid;
@@ -552,9 +534,6 @@ exports[`Button default 1`] = `
   outline: none;
   -webkit-transition: border 80ms;
   transition: border 80ms;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
   border-style: solid;
@@ -635,9 +614,6 @@ exports[`Button padding 1`] = `
   outline: none;
   -webkit-transition: border 80ms;
   transition: border 80ms;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
   border-style: solid;
@@ -721,9 +697,6 @@ exports[`Button padding 2`] = `
   outline: none;
   -webkit-transition: border 80ms;
   transition: border 80ms;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
   border-style: solid;
@@ -807,9 +780,6 @@ exports[`Button primary color 1`] = `
   outline: none;
   -webkit-transition: border 80ms;
   transition: border 80ms;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
   border-style: solid;
@@ -893,9 +863,6 @@ exports[`Button should accept disabled 1`] = `
   outline: none;
   -webkit-transition: border 80ms;
   transition: border 80ms;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
   border-style: solid;
@@ -980,9 +947,6 @@ exports[`Button type button 1`] = `
   outline: none;
   -webkit-transition: border 80ms;
   transition: border 80ms;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
   border-style: solid;
@@ -1067,9 +1031,6 @@ exports[`Button type menu 1`] = `
   outline: none;
   -webkit-transition: border 80ms;
   transition: border 80ms;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
   border-style: solid;
@@ -1154,9 +1115,6 @@ exports[`Button type reset 1`] = `
   outline: none;
   -webkit-transition: border 80ms;
   transition: border 80ms;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
   border-style: solid;
@@ -1241,9 +1199,6 @@ exports[`Button type submit 1`] = `
   outline: none;
   -webkit-transition: border 80ms;
   transition: border 80ms;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
   border-style: solid;
@@ -1328,9 +1283,6 @@ exports[`Button validates all sizes 1`] = `
   outline: none;
   -webkit-transition: border 80ms;
   transition: border 80ms;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
   border-style: solid;
@@ -1414,9 +1366,6 @@ exports[`Button validates all sizes 2`] = `
   outline: none;
   -webkit-transition: border 80ms;
   transition: border 80ms;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
   border-style: solid;
@@ -1500,9 +1449,6 @@ exports[`Button validates all sizes 3`] = `
   outline: none;
   -webkit-transition: border 80ms;
   transition: border 80ms;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
   border-style: solid;
@@ -1586,9 +1532,6 @@ exports[`Button validates all sizes 4`] = `
   outline: none;
   -webkit-transition: border 80ms;
   transition: border 80ms;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
   border-style: solid;
@@ -1672,9 +1615,6 @@ exports[`Button variant outline 1`] = `
   outline: none;
   -webkit-transition: border 80ms;
   transition: border 80ms;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
   border-style: solid;
@@ -1761,9 +1701,6 @@ exports[`Button variant transparent 1`] = `
   outline: none;
   -webkit-transition: border 80ms;
   transition: border 80ms;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
   border-style: solid;
