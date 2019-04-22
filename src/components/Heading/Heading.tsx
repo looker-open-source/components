@@ -64,9 +64,6 @@ function textTransform(transform: HeadingTextTransforms | undefined) {
 }
 
 export const Heading = styled(InternalHeading)`
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   ${props => textTransform(props.transform)};
   ${props => shouldTruncate(props.truncate || false)};
 `

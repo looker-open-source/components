@@ -273,9 +273,6 @@ export const Button = styled<ButtonProps>(withTheme(InternalButton))`
   font-weight: 600;
   outline: none;
   transition: border 80ms;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
   ${variantHelper};
