@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import { styled } from '../../style'
 import { Box } from '../Box'
 
 export const VisuallyHidden = styled(Box)`
