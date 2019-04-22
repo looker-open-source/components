@@ -218,9 +218,6 @@ exports[`Form with one invalid child and a submit button 1`] = `
   outline: none;
   -webkit-transition: border 80ms;
   transition: border 80ms;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
   border-style: solid;

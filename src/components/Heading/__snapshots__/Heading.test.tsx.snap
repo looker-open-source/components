@@ -15,9 +15,6 @@ exports[`A <h1> Heading 1`] = `
 }
 
 .c0 {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-transform: none;
 }
 
@@ -43,9 +40,6 @@ exports[`A <h1> Heading sized to <h2> 1`] = `
 }
 
 .c0 {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-transform: none;
 }
 
@@ -71,9 +65,6 @@ exports[`A Heading to bold 1`] = `
 }
 
 .c0 {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-transform: none;
 }
 
@@ -99,9 +90,6 @@ exports[`A Heading transformed 1`] = `
 }
 
 .c0 {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-transform: capitalize;
 }
 
@@ -127,9 +115,6 @@ exports[`A Heading truncated 1`] = `
 }
 
 .c0 {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-transform: none;
   white-space: nowrap;
   overflow: hidden;
@@ -158,9 +143,6 @@ exports[`A default Heading 1`] = `
 }
 
 .c0 {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-transform: none;
 }
 

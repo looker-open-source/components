@@ -95,9 +95,6 @@ exports[`ModalHeader 1`] = `
 }
 
 .c2 {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-transform: none;
 }
 
@@ -106,9 +103,6 @@ exports[`ModalHeader 1`] = `
   outline: none;
   -webkit-transition: border 80ms;
   transition: border 80ms;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   vertical-align: middle;
   white-space: nowrap;
   border-style: solid;

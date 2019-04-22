@@ -51,15 +51,15 @@ export interface IconButtonProps
 function iconSizeHelper(size: IconButtonSizes) {
   switch (size) {
     case 'xxsmall':
-      return 12
+      return 10
     case 'xsmall':
-      return 16
+      return 14
     case 'small':
-      return 20
+      return 18
     case 'medium':
-      return 28
+      return 26
     default:
-      return 35
+      return 33
   }
 }
 
