@@ -56,6 +56,11 @@ describe('Box', () => {
     assertSnapshot(<Box bottom="1rem" />)
   })
 
+  test('Box supports responsive fontSize and lineHeight', () => {
+    assertSnapshot(<Box fontSize={['small', 'large']} />)
+    assertSnapshot(<Box lineHeight={['small', 'large']} />)
+  })
+
   describe('borders', () => {
     test('Box supports borders', () => {
       assertSnapshot(<Box border="1px solid black" />)
