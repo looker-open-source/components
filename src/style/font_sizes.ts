@@ -1,5 +1,5 @@
 import { rem } from 'polished'
-import { FontSizeProps } from 'styled-system'
+import { FontSizeProps, ResponsiveValue } from 'styled-system'
 import {
   SizeLarge,
   SizeMedium,
@@ -38,5 +38,7 @@ export const fontSizes: FontRamp = {
   xxsmall: rem(11),
 }
 // tslint:enable:object-literal-sort-keys
-
-export type LensFontSizeProps = { [P in keyof FontSizeProps]: RampSizes }
+export type ResponsiveFontSize = ResponsiveValue<RampSizes>
+export type LensFontSizeProps = {
+  [P in keyof FontSizeProps]: ResponsiveFontSize
+}

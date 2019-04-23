@@ -189,6 +189,52 @@ exports[`Box Box supports position, top, left, bottom, right 5`] = `
 />
 `;
 
+exports[`Box Box supports responsive fontSize and lineHeight 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-size: 0.875rem;
+}
+
+@media screen and (min-width:30rem) {
+  .c0 {
+    font-size: 1.125rem;
+  }
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Box Box supports responsive fontSize and lineHeight 2`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  line-height: 1.25rem;
+}
+
+@media screen and (min-width:30rem) {
+  .c0 {
+    line-height: 1.75rem;
+  }
+}
+
+<div
+  className="c0"
+/>
+`;
+
 exports[`Box Box supports width 1`] = `
 .c0 {
   border: 0;

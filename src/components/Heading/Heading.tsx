@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { css, RampSizes, shouldTruncate, styled } from '../../style'
+import { css, ResponsiveFontSize, shouldTruncate, styled } from '../../style'
 import { ThemedProps } from '../../types'
 import { Box, BoxPropsWithout } from '../Box'
 
@@ -90,7 +90,7 @@ function headingLevelSize(is?: HeadingLevels) {
   }
 }
 
-function headingLineHeight(is?: HeadingLevels, size?: RampSizes) {
+function headingLineHeight(is?: HeadingLevels, size?: ResponsiveFontSize) {
   if (size) return size
 
   switch (is) {
