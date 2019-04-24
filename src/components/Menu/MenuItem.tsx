@@ -197,6 +197,7 @@ const MenuItemInteral: React.FC<MenuItemProps> = ({
       active={active}
       activeStyle={{ color: customProps.activated.color }}
       current={current}
+      aria-current={current && 'page'}
       currentMarker={currentMarker}
       customizationProps={customProps}
       {...props}
