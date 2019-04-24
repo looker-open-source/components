@@ -719,6 +719,7 @@ exports[`MenuItem - current + marker 1`] = `
 }
 
 <li
+  aria-current="page"
   className="c0 c1"
 >
   <button
@@ -883,6 +884,7 @@ exports[`MenuItem - current 1`] = `
 }
 
 <li
+  aria-current="page"
   className="c0 c1"
 >
   <button
@@ -1297,6 +1299,7 @@ exports[`MenuItem - with customizations 1`] = `
 }
 
 <li
+  aria-current="page"
   className="c0 c1"
 >
   <button
