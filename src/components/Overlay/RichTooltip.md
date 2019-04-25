@@ -48,15 +48,7 @@ const wikipediaWildebeest = (
       <Link
         href="https://en.wikipedia.org/wiki/Wildebeest"
         innerRef={ref}
-        onBlur={eventHandlers.onBlur}
-        onFocus={eventHandlers.onFocus}
-        onMouseOut={eventHandlers.onMouseOut}
-        onMouseOver={eventHandlers.onMouseOver}
-        /* {...eventHandlers}
-         * IMPORTANT NOTE: eventHandlers should be applied as a spread but can't
-         * due to a bug with inline code editor in Styleguidist.
-         * Please use spread behavior in actual implementations.
-         */
+        {...eventHandlers}
       >
         A Wikipedia article about Wildebeests
       </Link>

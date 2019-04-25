@@ -12,13 +12,13 @@ Modals are assembled of two primary pieces a Backdrop (`ModalBackdrop`) and a Su
 
 ##### `ModalBackdrop`
 
-This provides the backdrop behind Modal containers. It can be customized via the `backdropStyles` property. These must be a CSSProperty compatible key / value paired object.
+This provides the backdrop behind Modal containers. It can be customized via the `backdrop` property. These must be a CSSProperty compatible key / value paired object.
 
 ```js
 import { Button } from '../Button'
 import { DialogManager } from './Dialog/DialogManager'
 ;<DialogManager
-  backdropStyles={{ background: 'purple', opacity: 1 }}
+  backdrop={{ background: 'purple', opacity: 1 }}
   content={
     <>
       Stuff and text <a href="#">Focus attention here...</a>

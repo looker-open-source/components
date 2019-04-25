@@ -19,7 +19,7 @@ const contentFC = () => content
 describe('Overlay', () => {
   test('Generates a simple Overlay', () => {
     assertSnapshotShallow(
-      <Overlay isOpen backdropStyles={{ backgroundColor: 'pink' }}>
+      <Overlay isOpen backdrop={{ backgroundColor: 'pink' }}>
         {SimpleContentSFC}
       </Overlay>
     )
@@ -37,7 +37,7 @@ describe('Overlay', () => {
 
   test('Overlay backdrop styles applied', () => {
     const overlay = mountWithTheme(
-      <Overlay isOpen backdropStyles={{ backgroundColor: 'pink' }}>
+      <Overlay isOpen backdrop={{ backgroundColor: 'pink' }}>
         {contentFC}
       </Overlay>
     )

@@ -30,7 +30,7 @@ test('Drawer Shown', () => {
 
 test('Drawer, backdrop customized', () => {
   assertSnapshotShallow(
-    <Drawer isOpen backdropStyles={{ background: 'purple', opacity: 1 }}>
+    <Drawer isOpen backdrop={{ background: 'purple', opacity: 1 }}>
       {content}
     </Drawer>
   )

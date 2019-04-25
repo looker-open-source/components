@@ -27,14 +27,12 @@ const MenuOverlayInternal: React.FC<MenuOverlayInternalProps> = ({
   backdropOffset,
   ...overlayProps
 }) => {
-  const backdropStyles = {
-    backgroundColor: 'transparent',
-    cursor: 'default',
+  const backdrop = {
     ...backdropOffset,
   }
 
   return (
-    <Overlay backdropStyles={backdropStyles} {...overlayProps}>
+    <Overlay backdrop={backdrop} {...overlayProps}>
       {(props: OverlayChildrenProps) => (
         <OverlaySurface
           arrow={arrow}

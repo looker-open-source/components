@@ -68,7 +68,7 @@ describe('Modal', () => {
       <Modal
         isOpen
         render={simpleContentFactory}
-        backdropStyles={{ backgroundColor: 'pink' }}
+        backdrop={{ backgroundColor: 'pink' }}
         surfaceStyles={{ backgroundColor: 'purple' }}
       />
     )

@@ -42,7 +42,7 @@ export interface ManagedModalProps {
    * must be a CSSProperty compatible key / value paired object. For example
    * {backgroundColor: 'pink'}.
    */
-  backdropStyles?: React.CSSProperties
+  backdrop?: React.CSSProperties
 
   /**
    * Optional surface styles to merge with the Surface implementation. These
@@ -83,24 +83,31 @@ export interface ModalInternalProps extends ModalProps {
   portalRef?: React.RefObject<HTMLElement>
 }
 
-export const Modal: React.FC<ModalInternalProps> = props => {
+export const Modal: React.FC<ModalInternalProps> = ({
+  backdrop,
+  isOpen,
+  onClose,
+  portalRef,
+  render,
+}) => {
   return (
-    <ModalContext.Provider value={{ closeModal: props.onClose }}>
+    <ModalContext.Provider value={{ closeModal: onClose }}>
       <CSSTransition
         classNames="modal"
         mountOnEnter
         unmountOnExit
-        in={props.isOpen}
+        in={isOpen}
         timeout={{ enter: 0, exit: 250 }}
       >
         {(state: string) => (
-          <ModalPortal portalRef={props.portalRef}>
+          <ModalPortal portalRef={portalRef}>
             <ModalBackdrop
               className={state}
-              style={props.backdropStyles}
-              onClick={props.onClose}
+              onClick={onClose}
+              visible={backdrop === undefined ? true : !!backdrop}
+              style={!!backdrop && backdrop !== true ? backdrop : undefined}
             />
-            {props.render(state)}
+            {render(state)}
           </ModalPortal>
         )}
       </CSSTransition>
