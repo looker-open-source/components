@@ -27,7 +27,10 @@ export const OverlayHover: React.FC<OverlayHoverProps> = ({
         placement={props.placement}
         modifiers={{
           flip: { enabled: props.pin ? false : true },
-          preventOverflow: { padding: 0 },
+          preventOverflow: {
+            escapeWithReference: true,
+            padding: 0,
+          },
         }}
         referenceElement={triggerRef}
       >
