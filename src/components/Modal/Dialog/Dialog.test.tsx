@@ -34,7 +34,7 @@ test('Dialog Shown', () => {
 
 test('Dialog, backdrop customized', () => {
   assertSnapshotShallow(
-    <Dialog isOpen backdropStyles={{ background: 'purple', opacity: 1 }}>
+    <Dialog isOpen backdrop={{ background: 'purple', opacity: 1 }}>
       {SimpleContent}
     </Dialog>
   )
@@ -106,7 +106,7 @@ describe('Dialog Styling', () => {
   const dialog = mountWithTheme(
     <Dialog
       isOpen
-      backdropStyles={{ backgroundColor: 'pink' }}
+      backdrop={{ backgroundColor: 'pink' }}
       surfaceStyles={{ backgroundColor: 'purple' }}
     >
       {SimpleContent}

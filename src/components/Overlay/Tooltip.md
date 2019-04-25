@@ -19,21 +19,9 @@ const TooltipDemo = require('../../../styleguide_components/TooltipDemo')
 ```js
 import { Button } from '../Button'
 import { Tooltip } from './Tooltip'
-
 ;<Tooltip content="More things you should know...">
   {(eventHandlers, ref) => (
-    <Button
-      innerRef={ref}
-      onBlur={eventHandlers.onBlur}
-      onFocus={eventHandlers.onFocus}
-      onMouseOut={eventHandlers.onMouseOut}
-      onMouseOver={eventHandlers.onMouseOver}
-      /* {...eventHandlers}
-       * IMPORTANT NOTE: eventHandlers should be applied as a spread but can't
-       * due to a bug with inline code editor in Styleguidist.
-       * Please use spread behavior in actual implementations.
-       */
-    >
+    <Button innerRef={ref} {...eventHandlers}>
       Hover for Tooltip
     </Button>
   )}
@@ -48,18 +36,7 @@ const content =
   'Lorem ipsum dolor amet artisan meditation four loko poutine pinterest meh cold-pressed flexitarian vaporware umami kale chips selvage salvia waistcoat occupy. Jianbing jean shorts VHS austin bushwick.'
 ;<Tooltip content={content}>
   {(eventHandlers, ref) => (
-    <Button
-      innerRef={ref}
-      onBlur={eventHandlers.onBlur}
-      onFocus={eventHandlers.onFocus}
-      onMouseOut={eventHandlers.onMouseOut}
-      onMouseOver={eventHandlers.onMouseOver}
-      /* {...eventHandlers}
-       * IMPORTANT NOTE: eventHandlers should be applied as a spread but can't
-       * due to a bug with inline code editor in Styleguidist.
-       * Please use spread behavior in actual implementations.
-       */
-    >
+    <Button innerRef={ref} {...eventHandlers}>
       Hover me! (with lots of text)
     </Button>
   )}

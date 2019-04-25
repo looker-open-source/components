@@ -8,40 +8,49 @@ import { CustomizableModalAttributes } from './Modal'
 export interface ModalBackdropProps extends BoxProps<HTMLElement> {
   style?: React.CSSProperties
   className?: string
+  visible?: boolean
 }
 
 export const ModalBackdrop: React.FC<ModalBackdropProps> = ({
   className,
   onClick,
   style,
+  visible = true,
 }) => {
+  const visibilityProps = visible
+    ? {
+        bg: rgba(
+          CustomizableModalAttributes.backdrop.backgroundColor,
+          CustomizableModalAttributes.backdrop.opacity
+        ),
+        inlineStyle: style,
+      }
+    : { bg: 'transparent' }
+
   return (
     <Backdrop
-      onClick={onClick}
-      className={className}
-      bg={rgba(
-        CustomizableModalAttributes.backdrop.backgroundColor,
-        CustomizableModalAttributes.backdrop.opacity
-      )}
-      position="fixed"
-      top="0"
-      left="0"
+      inlineStyle={style}
       bottom="0"
+      className={className}
+      left="0"
+      onClick={onClick}
+      position="fixed"
       right="0"
-      backdropStyles={style}
+      top="0"
+      {...visibilityProps}
     />
   )
 }
 
 interface BackdropStylesProps extends ModalBackdropProps {
-  backdropStyles?: React.CSSProperties
+  inlineStyle?: React.CSSProperties
 }
 
 //
-// All of this  drama is to not auto-spread `backdropStyles` onto Box and cause React run-time warnings
+// All of this  drama is to not auto-spread `inlineStyle` onto Box and cause React run-time warnings
 //
 const BackdropFactory = (props: BackdropStylesProps) => {
-  const { backdropStyles, ref, ...boxProps } = props
+  const { inlineStyle, ref, ...boxProps } = props
   return <Box {...boxProps} ref={ref} />
 }
 
@@ -49,8 +58,7 @@ const BackdropFactory = (props: BackdropStylesProps) => {
 // transitions will still apply to backdrop
 const Backdrop = styled(BackdropFactory)`
   transition: opacity ${props => props.theme.transitions.durationSimple};
-  cursor: pointer;
-  ${props => props.backdropStyles as Styles};
+  ${props => props.inlineStyle as Styles};
 
   &.entering,
   &.exiting {

@@ -51,6 +51,14 @@ export interface OverlayInteractiveProps {
    * @default bottom
    */
   placement?: Placement
+  /**
+   * Display a visible backdrop
+   * Optionally, backdrop prop can be supplied as CSSProperties object to merge with the Backdrop
+   * implementation. These must be a CSSProperty compatible key / value paired object. For example
+   * {backgroundColor: 'pink'}.
+   * @default false
+   */
+  backdrop?: boolean | React.CSSProperties
 }
 
 export interface OverlayProps extends OverlayInteractiveProps {
@@ -64,12 +72,6 @@ export interface OverlayProps extends OverlayInteractiveProps {
    * See OverlaySurface.tsx for an example of how to use these properties.
    */
   children: (props: OverlayChildrenProps) => React.ReactNode
-  /**
-   * Optional backdrop styles to merge with the Backdrop implementation. These
-   * must be a CSSProperty compatible key / value paired object. For example
-   * {backgroundColor: 'pink'}.
-   */
-  backdropStyles?: React.CSSProperties
 
   portalRef?: React.RefObject<HTMLElement>
 }
@@ -85,7 +87,10 @@ export interface OverlayProps extends OverlayInteractiveProps {
  * react-popper](https://github.com/FezVrasta/react-popper).
  */
 
-export const Overlay: React.FC<OverlayProps> = ({ ...props }) => {
+export const Overlay: React.FC<OverlayProps> = ({
+  backdrop = false,
+  ...props
+}) => {
   const triggerRef =
     props.triggerRef && props.triggerRef.current
       ? props.triggerRef.current
@@ -94,7 +99,11 @@ export const Overlay: React.FC<OverlayProps> = ({ ...props }) => {
   const surface = (
     <FocusTrap focusTrapOptions={{ clickOutsideDeactivates: true }}>
       <ModalPortal portalRef={props.portalRef}>
-        <ModalBackdrop onClick={props.onClose} style={props.backdropStyles} />
+        <ModalBackdrop
+          onClick={props.onClose}
+          visible={!!backdrop}
+          style={!!backdrop && backdrop !== true ? backdrop : undefined}
+        />
         <Popper
           positionFixed
           placement={props.placement}
