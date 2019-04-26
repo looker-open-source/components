@@ -29,7 +29,7 @@ const OverlaySurfaceInternal: React.FC<OverlaySurfaceProps> = ({
   ...props
 }) => (
   <Box
-    py="xsmall"
+    p="xsmall"
     overflow="visible"
     className="surface-overflow"
     innerRef={surfaceRef}
