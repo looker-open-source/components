@@ -40,7 +40,7 @@ Note: This property behaves slightly differently depending on the context of the
 
 ```js
 import { Box } from '../Box'
-import { IconButton } from '../Button'
+import { Icon } from '../Icon'
 import { Tooltip } from '../Overlay'
 import { Menu } from './Menu'
 import { MenuGroup } from './MenuGroup'
@@ -55,13 +55,7 @@ import { MenuItem } from './MenuItem'
       detail={
         <Tooltip content="More things you should know...">
           {(eventHandlers, ref) => (
-            <IconButton
-              {...eventHandlers}
-              icon="CircleInfo"
-              label="Information"
-              innerRef={ref}
-              name="Home"
-            />
+            <Icon {...eventHandlers} innerRef={ref} name="CircleInfo" />
           )}
         </Tooltip>
       }
