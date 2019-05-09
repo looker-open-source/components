@@ -260,6 +260,7 @@ function iconColor(props: StyleProps) {
   }
 }
 
+// tslint:disable:selector-list-comma-newline-after
 function hoverStyles(props: StyleProps) {
   if (props.current) {
     return false
@@ -277,6 +278,7 @@ function hoverStyles(props: StyleProps) {
     `
   }
 }
+// tslint:enable:selector-list-comma-newline-after
 
 interface StyleProps extends MenuItemProps {
   customizationProps: MenuItemCustomizationProps
@@ -313,6 +315,7 @@ const MenuItemStyle = styled(MenuItemStyleFactory)`
 
   :focus-within {
     box-shadow: 0 0 0.25rem 0.125rem ${palette.blue400};
+    background: ${props => !props.current && props.customizationProps.hover.bg};
     outline: 'none';
     z-index: 1;
   }
