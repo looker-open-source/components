@@ -132,6 +132,7 @@ exports[`MenuGrouo - menu customization 1`] = `
 
 .c3:focus-within {
   box-shadow: 0 0 0.25rem 0.125rem #49a9f2;
+  background: #341C7A;
   outline: 'none';
   z-index: 1;
 }
@@ -388,6 +389,7 @@ exports[`MenuGroup - JSX label 1`] = `
 
 .c5:focus-within {
   box-shadow: 0 0 0.25rem 0.125rem #49a9f2;
+  background: #F5F6F7;
   outline: 'none';
   z-index: 1;
 }
@@ -570,6 +572,7 @@ exports[`MenuGroup - canActivate 1`] = `
 
 .c3:focus-within {
   box-shadow: 0 0 0.25rem 0.125rem #49a9f2;
+  background: #F5F6F7;
   outline: 'none';
   z-index: 1;
 }
@@ -768,6 +771,7 @@ exports[`MenuGroup - label 1`] = `
 
 .c5:focus-within {
   box-shadow: 0 0 0.25rem 0.125rem #49a9f2;
+  background: #F5F6F7;
   outline: 'none';
   z-index: 1;
 }
@@ -962,6 +966,7 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
 
 .c5:focus-within {
   box-shadow: 0 0 0.25rem 0.125rem #49a9f2;
+  background: #F5F6F7;
   outline: 'none';
   z-index: 1;
 }
@@ -1134,6 +1139,7 @@ exports[`MenuGroup 1`] = `
 
 .c3:focus-within {
   box-shadow: 0 0 0.25rem 0.125rem #49a9f2;
+  background: #F5F6F7;
   outline: 'none';
   z-index: 1;
 }
