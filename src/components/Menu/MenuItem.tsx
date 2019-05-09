@@ -260,7 +260,6 @@ function iconColor(props: StyleProps) {
   }
 }
 
-// tslint:disable:selector-list-comma-newline-after
 function hoverStyles(props: StyleProps) {
   if (props.current) {
     return false
@@ -278,7 +277,6 @@ function hoverStyles(props: StyleProps) {
     `
   }
 }
-// tslint:enable:selector-list-comma-newline-after
 
 interface StyleProps extends MenuItemProps {
   customizationProps: MenuItemCustomizationProps
