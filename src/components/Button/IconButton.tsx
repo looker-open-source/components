@@ -1,4 +1,4 @@
-import { SemanticColor, SemanticColors } from '../../style'
+import { SemanticColor, SemanticColors, styled } from '../../style'
 import {
   SizeLarge,
   SizeMedium,
@@ -44,8 +44,6 @@ export interface IconButtonProps
    * Defines the color of the button. Can be the string name of a color listed in the color theme, or a color object.
    */
   color?: keyof SemanticColors | SemanticColor
-
-  innerRef?: React.RefObject<HTMLElement>
 }
 
 function iconSizeHelper(size: IconButtonSizes) {
@@ -63,22 +61,22 @@ function iconSizeHelper(size: IconButtonSizes) {
   }
 }
 
-export const IconButton: React.FC<IconButtonProps> = ({
-  outline,
-  icon,
-  size,
-  label,
-  color,
-  ...props
-}) => (
-  <Button
-    color={color || 'neutral'}
-    type="button"
-    variant={outline ? 'outline' : 'transparent'}
-    p="xxsmall"
-    {...props}
-  >
-    <VisuallyHidden is="span">{label}</VisuallyHidden>
-    <Icon name={icon} size={iconSizeHelper(size || 'xsmall')} />
-  </Button>
-)
+const IconButtonFactory = React.forwardRef((props: IconButtonProps, ref) => {
+  const { outline, icon, size, label, color, ...boxProps } = props
+
+  return (
+    <Button
+      innerRef={ref as React.RefObject<HTMLElement>}
+      color={color || 'neutral'}
+      type="button"
+      variant={outline ? 'outline' : 'transparent'}
+      p="xxsmall"
+      {...boxProps}
+    >
+      <VisuallyHidden is="span">{label}</VisuallyHidden>
+      <Icon name={icon} size={iconSizeHelper(size || 'xsmall')} />
+    </Button>
+  )
+})
+
+export const IconButton = styled(IconButtonFactory)``
