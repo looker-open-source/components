@@ -101,7 +101,7 @@ const InternalText: React.FC<ThemedProps<TextProps>> = ({
   wrap,
   theme,
   lineHeight,
-  fontSize,
+  fontSize = 'medium',
   fontWeight,
   ...props
 }) => {

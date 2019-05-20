@@ -9,6 +9,18 @@ exports[`Confirmation banner 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
 }
 
 .c0 {
@@ -64,7 +76,7 @@ exports[`Confirmation banner 1`] = `
     
   </span>
   <div
-    className="c3"
+    className="c4"
   >
     Confirmation
   </div>
@@ -73,6 +85,18 @@ exports[`Confirmation banner 1`] = `
 
 exports[`Dismissable banner 1`] = `
 .c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.c5 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -129,7 +153,7 @@ exports[`Dismissable banner 1`] = `
   width: 20px;
 }
 
-.c5 {
+.c6 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -141,7 +165,7 @@ exports[`Dismissable banner 1`] = `
   margin-left: auto;
 }
 
-.c7 {
+.c8 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -166,14 +190,14 @@ exports[`Dismissable banner 1`] = `
   text-transform: none;
 }
 
-.c6 {
+.c7 {
   opacity: 0.2;
   -webkit-transition: opactiy 100ms cubic-bezier(0.86,0,0.07,1);
   transition: opactiy 100ms cubic-bezier(0.86,0,0.07,1);
   vertical-align: middle;
 }
 
-.c6:hover {
+.c7:hover {
   opacity: 0.4;
 }
 
@@ -216,16 +240,16 @@ exports[`Dismissable banner 1`] = `
     Info
   </span>
   <div
-    className="c4"
+    className="c5"
   >
     Info!
   </div>
   <button
     aria-hidden={true}
-    className="c5"
+    className="c6"
   >
     <div
-      className="c6 c7"
+      className="c7 c8"
     >
       <svg
         fill="currentColor"
@@ -245,6 +269,18 @@ exports[`Dismissable banner 1`] = `
 
 exports[`Error banner 1`] = `
 .c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.c5 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -344,7 +380,7 @@ exports[`Error banner 1`] = `
     Error
   </span>
   <div
-    className="c4"
+    className="c5"
   >
     Error
   </div>
@@ -353,6 +389,18 @@ exports[`Error banner 1`] = `
 
 exports[`Info banner 1`] = `
 .c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.c5 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -452,7 +500,7 @@ exports[`Info banner 1`] = `
     Info
   </span>
   <div
-    className="c4"
+    className="c5"
   >
     Info
   </div>
@@ -515,6 +563,18 @@ exports[`Warning banner 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.c5 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
 }
 
 .c3 {
@@ -560,7 +620,7 @@ exports[`Warning banner 1`] = `
     Warning
   </span>
   <div
-    className="c4"
+    className="c5"
   >
     Warning
   </div>

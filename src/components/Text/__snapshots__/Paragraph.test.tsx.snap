@@ -9,6 +9,8 @@ exports[`A Paragraph component Aligned 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  font-size: 1rem;
+  line-height: 1.5rem;
   text-align: right;
 }
 
@@ -56,6 +58,8 @@ exports[`A Paragraph component text transformed 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
 
 .c0 {
@@ -78,6 +82,8 @@ exports[`A Paragraph component tuncated 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
 
 .c1 {
@@ -106,6 +112,8 @@ exports[`A Paragraph component with variant 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
 
 .c0 {
@@ -129,7 +137,9 @@ exports[`A Paragrapht component weight 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  font-size: 1rem;
   font-weight: 700;
+  line-height: 1.5rem;
 }
 
 .c0 {
@@ -152,6 +162,8 @@ exports[`A Text component decorated 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
 
 .c0 {
@@ -176,6 +188,8 @@ exports[`A Text component wrapped 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
 
 .c0 {
@@ -199,6 +213,8 @@ exports[`A default Paragraph component 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
 
 .c0 {
