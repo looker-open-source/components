@@ -95,3 +95,15 @@ test('MenuItem - with customizations', () => {
     </MenuItem>
   )
 })
+
+test('MenuItem - with single customization', () => {
+  const menuCustomizations = {
+    bg: palette.purple500,
+  }
+
+  assertSnapshot(
+    <MenuItem current currentMarker customizationProps={menuCustomizations}>
+      who!
+    </MenuItem>
+  )
+})

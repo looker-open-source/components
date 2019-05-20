@@ -1311,6 +1311,120 @@ exports[`MenuItem - with customizations 1`] = `
 </li>
 `;
 
+exports[`MenuItem - with single customization 1`] = `
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border: none;
+}
+
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #4C535B;
+  background-color: #4F2ABA;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  font-size: 0.875rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.c1:active {
+  color: #0087e1;
+}
+
+.c0 {
+  position: relative;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+  background: #F5F6F7;
+  color: #262D33;
+  font-weight: bold;
+}
+
+.c0 .c4 {
+  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c0 .c4 {
+  color: #262D33;
+}
+
+.c0::before {
+  content: '';
+  display: block;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: #262D33;
+  width: 4px;
+}
+
+.c0:focus-within {
+  box-shadow: 0 0 0.25rem 0.125rem #49a9f2;
+  outline: 'none';
+  z-index: 1;
+}
+
+.c2 {
+  outline: none;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  font-size: inherit;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+<li
+  aria-current="page"
+  className="c0 c1"
+>
+  <button
+    className="c2 c3"
+    role="menuitem"
+  >
+    who!
+  </button>
+</li>
+`;
+
 exports[`MenuItem 1`] = `
 .c1 {
   border: 0;
