@@ -28,6 +28,12 @@ export interface ModalManagerProps extends ManagedModalProps {
   placement?: Placement
   isOpen?: boolean
   pin?: boolean
+  /**
+   * The onClick event applied to the trigger will automatically stop the event
+   * from being propogated further up into the DOM. This is most frequently used when
+   * and Popover is placed inside another, larger clickable item.
+   */
+  stopPropagation?: boolean
 }
 
 export interface ModalManagerState {
@@ -67,7 +73,8 @@ export abstract class ModalManager<
     )
   }
 
-  public open() {
+  public open(e?: React.SyntheticEvent) {
+    if (e && this.props.stopPropagation) e.stopPropagation()
     window.addEventListener('keydown', this.handleEscapePress)
     this.setState({ isOpen: true })
   }

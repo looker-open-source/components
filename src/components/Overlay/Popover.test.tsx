@@ -47,4 +47,24 @@ describe('Popover', () => {
     trigger.simulate('click')
     expect(popover.contains(SimpleContent)).toBeTruthy()
   })
+
+  test('stopPropagation works - event on container is not called', () => {
+    const mockContainerOnClick = jest.fn()
+
+    const popover = mountWithTheme(
+      <div onClick={mockContainerOnClick}>
+        <Popover content={SimpleContent} stopPropagation>
+          {(onClick, ref) => (
+            <Button innerRef={ref} onClick={onClick}>
+              Test
+            </Button>
+          )}
+        </Popover>
+      </div>
+    )
+    const trigger = popover.find(Button)
+    trigger.simulate('click')
+    expect(popover.contains(SimpleContent)).toBeTruthy()
+    expect(mockContainerOnClick).not.toHaveBeenCalled()
+  })
 })
