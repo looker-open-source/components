@@ -28,6 +28,7 @@ const MenuOverlayInternal: React.FC<MenuOverlayInternalProps> = ({
   ...overlayProps
 }) => {
   const backdrop = {
+    background: 'transparent',
     ...backdropOffset,
   }
 

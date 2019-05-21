@@ -1,4 +1,4 @@
-Overlay is the abstract building block for building more specific implementations from. MenuOverlay, Popover and RichTooltip it under the hood.
+Overlay is the abstract building block for building more specific implementations from. Popover and RichTooltip it under the hood.
 
 NOTE: Code examples below don't work well within StyleGuidist so actual code is contained within `styleguide_components/OverlayDemo.tsx` but same code is embedded below to show how `Overlay` can be composed to create more complex components.
 

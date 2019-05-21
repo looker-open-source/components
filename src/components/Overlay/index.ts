@@ -1,4 +1,3 @@
-export * from './MenuOverlay'
 export * from './Overlay'
 export * from './OverlaySurface'
 export * from './OverlayHover'
