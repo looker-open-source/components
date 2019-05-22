@@ -1,8 +1,8 @@
 import * as React from 'react'
-import { styled, withTheme } from '../../../style'
+import { styled } from '../../../style'
 import { ModalSurface, ModalSurfaceProps } from '../ModalSurface'
 
-const Internal: React.FC<ModalSurfaceProps> = ({
+export const DrawerSurface: React.FC<ModalSurfaceProps> = ({
   children,
   width = '30rem',
   ...props
@@ -20,8 +20,6 @@ const Internal: React.FC<ModalSurfaceProps> = ({
     </Surface>
   )
 }
-
-export const DrawerSurface = withTheme(Internal)
 
 // Shadow here is designed to match theme.shadows[3] but with a single left-side shadow
 

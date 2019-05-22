@@ -31,4 +31,8 @@ const InternalFieldset: React.FC<FieldsetProps> = ({ legend, ...props }) => {
   )
 }
 
-export const Fieldset = styled<FieldsetProps>(InternalFieldset)``
+const FieldsetFactory = React.forwardRef((props: FieldsetProps, ref) => (
+  <InternalFieldset innerRef={ref as React.RefObject<HTMLElement>} {...props} />
+))
+
+export const Fieldset = styled<FieldsetProps>(FieldsetFactory)``

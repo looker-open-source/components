@@ -73,16 +73,19 @@ const VisuallyHiddenText = styled(Text)`
   width: 1px;
 `
 
-export const InternalBanner: React.FC<BannerProps> = ({
-  onDismiss,
+const InternalBanner: React.FC<BannerProps> = ({
+  children,
   dismissable,
-  ...props
+  intent,
+  onDismiss,
+  ref,
+  ...boxProps
 }) => {
   const {
     icon,
     accessibilityLabel,
     ...bannerIntentStyling
-  } = getBannerIntentStyling(props.intent)
+  } = getBannerIntentStyling(intent)
 
   return (
     <Flex
@@ -94,11 +97,11 @@ export const InternalBanner: React.FC<BannerProps> = ({
       alignItems="center"
       aria-live="polite"
       role="status"
-      {...props}
+      {...boxProps}
     >
       {icon}
       <VisuallyHiddenText>{accessibilityLabel}</VisuallyHiddenText>
-      <Box>{props.children}</Box>
+      <Box>{children}</Box>
       {dismissable && (
         <Box
           is="button"
@@ -114,4 +117,8 @@ export const InternalBanner: React.FC<BannerProps> = ({
   )
 }
 
-export const Banner = styled<BannerProps>(InternalBanner)``
+const BannerFactory = React.forwardRef((props: BannerProps, ref) => (
+  <InternalBanner innerRef={ref as React.RefObject<HTMLElement>} {...props} />
+))
+
+export const Banner = styled<BannerProps>(BannerFactory)``

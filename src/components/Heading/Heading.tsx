@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { css, ResponsiveFontSize, shouldTruncate, styled } from '../../style'
-import { ThemedProps } from '../../types'
 import { Box, BoxPropsWithout } from '../Box'
 
 export type HeadingLevels = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
@@ -18,30 +17,36 @@ export interface HeadingProps
   className?: string
 }
 
-const InternalHeading: React.FC<ThemedProps<HeadingProps>> = ({
+const InternalHeading: React.FC<HeadingProps> = ({
   fontSize,
   fontWeight,
   lineHeight,
   transform,
   truncate,
   is,
-  theme,
   ...props
-}) => {
-  return (
-    <Box
-      is={is || 'h2'}
-      fontSize={fontSize || headingLevelSize(is)}
-      lineHeight={lineHeight || headingLineHeight(is, fontSize)}
-      fontWeight={fontWeight || 'normal'}
-      {...props}
-    >
-      {props.children}
-    </Box>
-  )
-}
+}) => (
+  <Box
+    is={is || 'h2'}
+    fontSize={fontSize || headingLevelSize(is)}
+    lineHeight={lineHeight || headingLineHeight(is, fontSize)}
+    fontWeight={fontWeight || 'normal'}
+    {...props}
+  >
+    {props.children}
+  </Box>
+)
 
-function textTransform(transform: HeadingTextTransforms | undefined) {
+const HeadingFactory = React.forwardRef((props: HeadingProps, ref) => (
+  <InternalHeading innerRef={ref as React.RefObject<HTMLElement>} {...props} />
+))
+
+export const Heading = styled(HeadingFactory)`
+  ${props => textTransform(props.transform)};
+  ${props => shouldTruncate(props.truncate || false)};
+`
+
+const textTransform = (transform: HeadingTextTransforms | undefined) => {
   switch (transform) {
     case 'upper':
       return css`
@@ -63,12 +68,7 @@ function textTransform(transform: HeadingTextTransforms | undefined) {
   }
 }
 
-export const Heading = styled(InternalHeading)`
-  ${props => textTransform(props.transform)};
-  ${props => shouldTruncate(props.truncate || false)};
-`
-
-function headingLevelSize(is?: HeadingLevels) {
+const headingLevelSize = (is?: HeadingLevels) => {
   switch (is) {
     case 'h1':
       return 'xxlarge'
@@ -87,7 +87,7 @@ function headingLevelSize(is?: HeadingLevels) {
   }
 }
 
-function headingLineHeight(is?: HeadingLevels, size?: ResponsiveFontSize) {
+const headingLineHeight = (is?: HeadingLevels, size?: ResponsiveFontSize) => {
   if (size) return size
 
   switch (is) {

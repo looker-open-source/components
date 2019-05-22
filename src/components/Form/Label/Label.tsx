@@ -7,7 +7,7 @@ export interface LabelProps extends BoxProps<HTMLLabelElement> {
   htmlFor?: string
 }
 
-const InternalLabel: React.FC<LabelProps> = ({ ...props }) => (
+const LabelInternal: React.FC<LabelProps> = props => (
   <Box
     is="label"
     color={CustomizableLabelAttributes.color}
@@ -20,7 +20,11 @@ const InternalLabel: React.FC<LabelProps> = ({ ...props }) => (
   </Box>
 )
 
-export const Label = styled<LabelProps>(InternalLabel)``
+const LabelFactory = React.forwardRef((props: LabelProps, ref) => (
+  <LabelInternal innerRef={ref as React.RefObject<HTMLElement>} {...props} />
+))
+
+export const Label = styled(LabelFactory)``
 
 export const CustomizableLabelAttributes: CustomizableAttributes = {
   color: 'palette.charcoal800',

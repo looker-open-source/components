@@ -13,7 +13,7 @@ export type ListTypes = 'bullet' | 'number' | 'letter'
 /**
  * List are stacked groups of related content that can be useful in many contexts.
  */
-const ListGenerator: React.FC<ListProps> = ({ type, ...props }) => {
+const InternalList: React.FC<ListProps> = ({ type, ...props }) => {
   const pl = props.nomarker ? 'none' : 'medium'
   delete props.nomarker
   switch (type) {
@@ -60,6 +60,10 @@ function listStyleType(props: ListProps) {
   }
 }
 
-export const List = styled<ListProps>(ListGenerator)`
+const ListFactory = React.forwardRef((props: ListProps, ref) => (
+  <InternalList innerRef={ref as React.RefObject<HTMLElement>} {...props} />
+))
+
+export const List = styled<ListProps>(ListFactory)`
   ${listStyleType};
 `

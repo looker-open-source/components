@@ -2,12 +2,16 @@ import * as React from 'react'
 import { styled } from '../../style'
 import { Box, BoxProps } from '../Box'
 
-const InternalListItem: React.FC<BoxProps<HTMLLIElement>> = ({ ...props }) => {
-  return (
-    <Box is="li" mb="xxsmall" {...props}>
-      {props.children}
-    </Box>
-  )
-}
+export type ListItemProps = BoxProps<HTMLLIElement>
 
-export const ListItem = styled(InternalListItem)``
+const InternalListItem: React.FC<ListItemProps> = props => (
+  <Box is="li" mb="xxsmall" {...props}>
+    {props.children}
+  </Box>
+)
+
+const ListItemFactory = React.forwardRef((props: ListItemProps, ref) => (
+  <InternalListItem innerRef={ref as React.RefObject<HTMLElement>} {...props} />
+))
+
+export const ListItem = styled(ListItemFactory)``

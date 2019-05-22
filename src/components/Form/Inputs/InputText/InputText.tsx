@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { styled, Theme } from '../../../../style'
+import { styled } from '../../../../style'
 import { CustomizableAttributes } from '../../../../types/attributes'
 import { Box, BoxProps } from '../../../Box'
 import { InputProps } from '../InputProps'
@@ -13,7 +13,6 @@ export interface InputTextProps extends BoxProps<HTMLInputElement>, InputProps {
    * Displays an example value or short hint to the user. Should not replace a label.
    */
   placeholder?: string
-  theme?: Theme
 }
 
 const InternalInputText: React.FC<InputTextProps> = ({
@@ -45,7 +44,14 @@ const InternalInputText: React.FC<InputTextProps> = ({
   )
 }
 
-export const InputText = styled<InputTextProps>(InternalInputText)``
+const InputTextFactory = React.forwardRef((props: InputTextProps, ref) => (
+  <InternalInputText
+    innerRef={ref as React.RefObject<HTMLElement>}
+    {...props}
+  />
+))
+
+export const InputText = styled<InputTextProps>(InputTextFactory)``
 
 export const CustomizableInputTextAttributes: CustomizableAttributes = {
   borderRadius: 'medium',

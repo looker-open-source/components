@@ -1,6 +1,6 @@
 import { TextDecorationProperty } from 'csstype'
 import * as React from 'react'
-import { css, styled, withTheme } from '../../style'
+import { css, styled } from '../../style'
 import { ThemedProps } from '../../types'
 import { Box, BoxPropsWithout } from '../Box'
 
@@ -30,11 +30,46 @@ export interface TextProps
   variant?: TextVariants
   /** Should browser insert line breaks within words to prevent text from overflowing its content box  */
   wrap?: boolean
-  /** Custom css class */
-  className?: string
 }
 
-function getTextTransform(transform: TextTransforms | undefined) {
+const InternalText: React.FC<TextProps> = ({
+  is = 'span',
+  align,
+  decoration,
+  textTransform,
+  variant,
+  wrap,
+  lineHeight,
+  fontSize = 'medium',
+  fontWeight,
+  ...props
+}) => {
+  return (
+    <Box
+      is={is}
+      fontSize={fontSize}
+      fontWeight={fontWeight}
+      lineHeight={lineHeight || fontSize}
+      textAlign={align}
+      {...props}
+    >
+      {props.children}
+    </Box>
+  )
+}
+
+const TextFactory = React.forwardRef((props: TextProps, ref) => (
+  <InternalText innerRef={ref as React.RefObject<HTMLElement>} {...props} />
+))
+
+export const Text = styled<TextProps>(TextFactory)`
+  text-decoration: ${props => props.decoration};
+  ${props => getTextTransform(props.textTransform)};
+  ${props => getWrap(props.wrap || false)};
+  ${props => textVariant(props)};
+`
+
+const getTextTransform = (transform: TextTransforms | undefined) => {
   switch (transform) {
     case 'upper':
       return css`
@@ -56,7 +91,7 @@ function getTextTransform(transform: TextTransforms | undefined) {
   }
 }
 
-function textVariant(props: ThemedProps<TextProps>) {
+const textVariant = (props: ThemedProps<TextProps>) => {
   switch (props.variant) {
     case 'critical':
       return css`
@@ -83,45 +118,9 @@ function textVariant(props: ThemedProps<TextProps>) {
   }
 }
 
-function getWrap(doWrap: boolean) {
-  if (doWrap) {
-    return css`
-      overflow-wrap: break-word;
-    `
-  }
-  return ``
-}
-
-const InternalText: React.FC<ThemedProps<TextProps>> = ({
-  is = 'span',
-  align,
-  decoration,
-  textTransform,
-  variant,
-  wrap,
-  theme,
-  lineHeight,
-  fontSize = 'medium',
-  fontWeight,
-  ...props
-}) => {
-  return (
-    <Box
-      is={is}
-      fontSize={fontSize}
-      fontWeight={fontWeight}
-      lineHeight={lineHeight || fontSize}
-      textAlign={align}
-      {...props}
-    >
-      {props.children}
-    </Box>
-  )
-}
-
-export const Text = styled<TextProps>(withTheme(InternalText))`
-  text-decoration: ${props => props.decoration};
-  ${props => getTextTransform(props.textTransform)};
-  ${props => getWrap(props.wrap || false)};
-  ${textVariant};
-`
+const getWrap = (doWrap: boolean) =>
+  doWrap
+    ? css`
+        overflow-wrap: break-word;
+      `
+    : false

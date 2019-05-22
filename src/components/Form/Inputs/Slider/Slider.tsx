@@ -29,4 +29,8 @@ const InternalSlider: React.FC<SliderProps> = ({
   return <Box is="input" type="range" {...props} />
 }
 
-export const Slider = styled<SliderProps>(InternalSlider)``
+const SliderFactory = React.forwardRef((props: SliderProps, ref) => (
+  <InternalSlider innerRef={ref as React.RefObject<HTMLElement>} {...props} />
+))
+
+export const Slider = styled<SliderProps>(SliderFactory)``

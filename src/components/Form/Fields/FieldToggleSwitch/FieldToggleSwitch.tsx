@@ -32,4 +32,13 @@ const InternalFieldToggleSwitch = (props: FieldToggleSwitchProps) => {
   )
 }
 
-export const FieldToggleSwitch = styled(withForm(InternalFieldToggleSwitch))``
+const FieldToggleSwitchFactory = React.forwardRef(
+  (props: FieldToggleSwitchProps, ref) => (
+    <InternalFieldToggleSwitch
+      innerRef={ref as React.RefObject<HTMLElement>}
+      {...props}
+    />
+  )
+)
+
+export const FieldToggleSwitch = styled(withForm(FieldToggleSwitchFactory))``

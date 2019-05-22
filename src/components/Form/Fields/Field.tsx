@@ -45,6 +45,7 @@ export interface FieldProps {
    * Holds the type of validation (error, warning, etc.) and corresponding message.
    */
   validationMessage?: ValidationMessageProps
+  innerRef?: React.RefObject<HTMLElement>
 }
 
 interface LabelContainerAlignment {
@@ -145,7 +146,11 @@ const InternalField = (props: FieldProps & { children?: React.ReactNode }) => {
   )
 }
 
-export const Field = styled<FieldProps>(InternalField)``
+const FieldFactory = React.forwardRef((props: FieldProps, ref) => (
+  <InternalField innerRef={ref as React.RefObject<HTMLElement>} {...props} />
+))
+
+export const Field = styled<FieldProps>(FieldFactory)``
 
 export interface CustomizableFieldAttributesInterface
   extends CustomizableAttributes {

@@ -10,7 +10,7 @@ export interface TableBodyProps extends BoxProps<HTMLTableSectionElement> {
   textAlign?: TableTextAlignment
 }
 
-const InternalTableBody: React.FC<TableBodyProps> = ({ ...props }) => (
+const InternalTableBody: React.FC<TableBodyProps> = props => (
   <Box
     verticalAlign={props.align || 'top'}
     textAlign={props.textAlign || 'left'}
@@ -19,4 +19,11 @@ const InternalTableBody: React.FC<TableBodyProps> = ({ ...props }) => (
   />
 )
 
-export const TableBody = styled<TableBodyProps>(InternalTableBody)``
+const TableBodyFactory = React.forwardRef((props: TableBodyProps, ref) => (
+  <InternalTableBody
+    innerRef={ref as React.RefObject<HTMLElement>}
+    {...props}
+  />
+))
+
+export const TableBody = styled<TableBodyProps>(TableBodyFactory)``

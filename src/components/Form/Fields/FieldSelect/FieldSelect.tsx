@@ -35,4 +35,11 @@ const InternalFieldSelect = (props: FieldSelectProps) => {
   )
 }
 
-export const FieldSelect = styled(withForm(InternalFieldSelect))``
+const FieldSelectFactory = React.forwardRef((props: FieldSelectProps, ref) => (
+  <InternalFieldSelect
+    innerRef={ref as React.RefObject<HTMLElement>}
+    {...props}
+  />
+))
+
+export const FieldSelect = styled(withForm(FieldSelectFactory))``

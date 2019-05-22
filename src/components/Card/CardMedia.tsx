@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { backgroundPosition, BackgroundPositionProps } from 'styled-system'
-import { styled, withTheme } from '../../style'
-import { ThemedProps } from '../../types'
+import { styled } from '../../style'
 import { Box, BoxProps } from '../Box'
 
 export interface CardMediaProps
@@ -10,12 +9,18 @@ export interface CardMediaProps
   image: string
 }
 
-const InternalCardMedia: React.FC<ThemedProps<CardMediaProps>> = ({
-  image,
-  ...props
-}) => <Box {...props}>{props.children}</Box>
+const InternalCardMedia: React.FC<CardMediaProps> = ({ image, ...props }) => (
+  <Box {...props}>{props.children}</Box>
+)
 
-export const CardMedia = styled<CardMediaProps>(withTheme(InternalCardMedia))`
+const CardMediaFactory = React.forwardRef((props: CardMediaProps, ref) => (
+  <InternalCardMedia
+    innerRef={ref as React.RefObject<HTMLElement>}
+    {...props}
+  />
+))
+
+export const CardMedia = styled<CardMediaProps>(CardMediaFactory)`
   background-size: cover;
   background-repeat: no-repeat;
   ${backgroundPosition}

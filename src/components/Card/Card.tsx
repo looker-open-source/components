@@ -28,8 +28,17 @@ const InternalCard: React.FC<ThemedProps<CardProps>> = ({
   </Box>
 )
 
+const InternalCardThemed = withTheme(InternalCard)
+
+const CardFactory = React.forwardRef((props: CardProps, ref) => (
+  <InternalCardThemed
+    innerRef={ref as React.RefObject<HTMLElement>}
+    {...props}
+  />
+))
+
 // prettier-ignore
-export const Card = styled<CardProps>(withTheme(InternalCard))`
+export const Card = styled<CardProps>(CardFactory)`
   box-shadow: ${props => (props.raised ? props.theme.shadows[1] : 'none')};
   transition: border ${props => props.theme.transitions.durationQuick}
     ${props => props.theme.easings.ease},

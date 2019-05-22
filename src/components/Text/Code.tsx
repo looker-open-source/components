@@ -1,12 +1,17 @@
 import * as React from 'react'
-import { theme } from '../../style'
+import { styled, theme } from '../../style'
 import { Text, TextProps } from '../Text/Text'
 
-const InternalCode: React.FC<TextProps> = ({ ...props }) => {
+const InternalCode: React.FC<TextProps> = props => {
   return (
     <Text is="code" fontFamily={theme.fonts.code} {...props}>
       {props.children}
     </Text>
   )
 }
-export const Code = InternalCode
+
+const CodeFactory = React.forwardRef((props: TextProps, ref) => (
+  <InternalCode innerRef={ref as React.RefObject<HTMLElement>} {...props} />
+))
+
+export const Code = styled(CodeFactory)``
