@@ -41,8 +41,8 @@ const componentSections = [
   {
     name: 'Overlays: Popovers & Tooltips',
     sectionDepth: 1,
-    // content: 'src/components/Overlay/Overlay.md',
     components: ['src/components/Overlay/**/*.tsx'],
+    ignore: ['src/components/Overlay/MenuOverlay.tsx'],
   },
   {
     name: 'Modals: Dialog & Drawer',
