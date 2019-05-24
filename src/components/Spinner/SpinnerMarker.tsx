@@ -29,7 +29,13 @@ const markerTransform = (props: SpinnerMarkerProps) => {
   `
 }
 
-export const SpinnerMarker = styled<SpinnerMarkerProps>(InternalMarker)`
+const SpinnerMarkerFactory = React.forwardRef(
+  (props: SpinnerMarkerProps, ref) => (
+    <InternalMarker innerRef={ref as React.RefObject<HTMLElement>} {...props} />
+  )
+)
+
+export const SpinnerMarker = styled<SpinnerMarkerProps>(SpinnerMarkerFactory)`
   animation-duration: ${props => props.speed + 'ms'};
   width: 6%;
   height: 20%;

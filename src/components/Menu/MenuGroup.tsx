@@ -16,7 +16,7 @@ export interface MenuGroupProps
   customizationProps?: MenuItemCustomizationProps
 }
 
-const Internal: React.FC<MenuGroupProps> = ({
+const InternalMenuGroup: React.FC<MenuGroupProps> = ({
   children,
   label,
   labelProps,
@@ -71,4 +71,11 @@ const Internal: React.FC<MenuGroupProps> = ({
   )
 }
 
-export const MenuGroup = styled(Internal)``
+const MenuGroupFactory = React.forwardRef((props: MenuGroupProps, ref) => (
+  <InternalMenuGroup
+    innerRef={ref as React.RefObject<HTMLElement>}
+    {...props}
+  />
+))
+
+export const MenuGroup = styled(MenuGroupFactory)``

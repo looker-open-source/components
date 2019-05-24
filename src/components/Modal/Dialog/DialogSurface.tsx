@@ -1,9 +1,9 @@
 import * as React from 'react'
-import { styled, withTheme } from '../../../style'
+import { styled } from '../../../style'
 import { CustomizableModalAttributes } from '../Modal'
 import { ModalSurface, ModalSurfaceProps } from '../ModalSurface'
 
-export const Internal: React.FC<ModalSurfaceProps> = ({
+export const DialogSurface: React.FC<ModalSurfaceProps> = ({
   children,
   ...props
 }) => {
@@ -31,5 +31,3 @@ const Surface = styled(ModalSurface)`
     transform: translateY(0%);
   }
 `
-
-export const DialogSurface = withTheme(Internal)

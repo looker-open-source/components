@@ -47,7 +47,11 @@ const generateMarkers = (
   ))
 }
 
-export const Spinner = styled<SpinnerProps>(InternalSpinner)`
+const SpinnerFactory = React.forwardRef((props: SpinnerProps, ref) => (
+  <InternalSpinner innerRef={ref as React.RefObject<HTMLElement>} {...props} />
+))
+
+export const Spinner = styled<SpinnerProps>(SpinnerFactory)`
   ${SpinnerMarker} {
     animation-name: ${quarterFade};
     animation-iteration-count: infinite;

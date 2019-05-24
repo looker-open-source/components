@@ -67,7 +67,6 @@ exports[`Confirmation banner 1`] = `
 <div
   aria-live="polite"
   className="c0"
-  intent="confirmation"
   role="status"
 >
   <span
@@ -216,7 +215,6 @@ exports[`Dismissable banner 1`] = `
 <div
   aria-live="polite"
   className="c0"
-  intent="info"
   role="status"
 >
   <div
@@ -356,7 +354,6 @@ exports[`Error banner 1`] = `
 <div
   aria-live="polite"
   className="c0"
-  intent="error"
   role="status"
 >
   <div
@@ -476,7 +473,6 @@ exports[`Info banner 1`] = `
 <div
   aria-live="polite"
   className="c0"
-  intent="info"
   role="status"
 >
   <div
@@ -596,7 +592,6 @@ exports[`Warning banner 1`] = `
 <div
   aria-live="polite"
   className="c0"
-  intent="warning"
   role="status"
 >
   <div

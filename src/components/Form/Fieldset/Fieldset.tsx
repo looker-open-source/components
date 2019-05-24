@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { styled } from '../../../style'
 import { Box, BoxProps } from '../../Box'
 import { FlexItem } from '../../FlexItem'
 import { FormControl, FormControlDirections } from '../FormControl'
@@ -15,7 +16,7 @@ export interface FieldsetProps extends BoxProps<HTMLFieldSetElement> {
   legend?: string
 }
 
-export const Fieldset: React.FC<FieldsetProps> = ({ legend, ...props }) => {
+const InternalFieldset: React.FC<FieldsetProps> = ({ legend, ...props }) => {
   return (
     <Box is="fieldset" {...props}>
       <FormControl mb="xsmall" alignLabel={props.alignLegend}>
@@ -29,3 +30,9 @@ export const Fieldset: React.FC<FieldsetProps> = ({ legend, ...props }) => {
     </Box>
   )
 }
+
+const FieldsetFactory = React.forwardRef((props: FieldsetProps, ref) => (
+  <InternalFieldset innerRef={ref as React.RefObject<HTMLElement>} {...props} />
+))
+
+export const Fieldset = styled<FieldsetProps>(FieldsetFactory)``

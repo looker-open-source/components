@@ -1,5 +1,6 @@
 import * as React from 'react'
 import uuid from 'uuid/v4'
+import { styled } from '../../../../style'
 import { withForm } from '../../Form'
 import { InputText, InputTextProps } from '../../Inputs/InputText/InputText'
 import { Field, FieldProps } from '../Field'
@@ -34,4 +35,11 @@ const InternalFieldText = (props: FieldTextProps) => {
   )
 }
 
-export const FieldText = withForm(InternalFieldText)
+const FieldTextFactory = React.forwardRef((props: FieldTextProps, ref) => (
+  <InternalFieldText
+    innerRef={ref as React.RefObject<HTMLElement>}
+    {...props}
+  />
+))
+
+export const FieldText = styled(withForm(FieldTextFactory))``

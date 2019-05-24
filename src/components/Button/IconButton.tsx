@@ -61,22 +61,31 @@ function iconSizeHelper(size: IconButtonSizes) {
   }
 }
 
-const IconButtonFactory = React.forwardRef((props: IconButtonProps, ref) => {
-  const { outline, icon, size, label, color, ...boxProps } = props
+const InternalIconButton: React.FC<IconButtonProps> = ({
+  outline,
+  icon,
+  size,
+  label,
+  color,
+  ...boxProps
+}) => (
+  <Button
+    color={color || 'neutral'}
+    type="button"
+    variant={outline ? 'outline' : 'transparent'}
+    p="xxsmall"
+    {...boxProps}
+  >
+    <VisuallyHidden is="span">{label}</VisuallyHidden>
+    <Icon name={icon} size={iconSizeHelper(size || 'xsmall')} />
+  </Button>
+)
 
-  return (
-    <Button
-      innerRef={ref as React.RefObject<HTMLElement>}
-      color={color || 'neutral'}
-      type="button"
-      variant={outline ? 'outline' : 'transparent'}
-      p="xxsmall"
-      {...boxProps}
-    >
-      <VisuallyHidden is="span">{label}</VisuallyHidden>
-      <Icon name={icon} size={iconSizeHelper(size || 'xsmall')} />
-    </Button>
-  )
-})
+const IconButtonFactory = React.forwardRef((props: IconButtonProps, ref) => (
+  <InternalIconButton
+    innerRef={ref as React.RefObject<HTMLElement>}
+    {...props}
+  />
+))
 
 export const IconButton = styled(IconButtonFactory)``

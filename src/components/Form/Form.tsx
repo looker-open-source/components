@@ -1,12 +1,13 @@
 import * as React from 'react'
-import { Box } from '../Box'
+import { styled } from '../../style'
+import { Box, BoxProps } from '../Box'
 import { FieldProps } from './Fields'
 import { InputProps } from './Inputs/InputProps'
 import { ValidationMessageProps } from './ValidationMessage'
 
 export type ValidationMessages = Record<string, ValidationMessageProps>
 
-export interface FormProps {
+export interface FormProps extends BoxProps<HTMLFormElement> {
   /**
    * A record of all validation messages for the form, where the key is the name
    *  of the validated field and the value holds the information for the corresponding
@@ -18,25 +19,31 @@ export interface FormProps {
   onSubmit?: React.FormEventHandler<HTMLFormElement>
 }
 
-interface FormContextValue {
+export interface FormContext {
   validationMessages?: ValidationMessages
 }
 
-export const FormContext = React.createContext<FormContextValue>({})
+export const FormContext = React.createContext<FormContext>({})
 
-export const Form: React.FC<FormProps> = ({ ...props }) => {
+const InternalForm: React.FC<FormProps> = props => {
   const context = {
     validationMessages: props.validationMessages,
   }
-  const { validationMessages, ...rest } = props
+  const { validationMessages, children, ...boxProps } = props
   return (
     <FormContext.Provider value={context}>
-      <Box is="form" {...rest}>
-        {rest.children}
+      <Box is="form" {...boxProps}>
+        {children}
       </Box>
     </FormContext.Provider>
   )
 }
+
+const FormFactory = React.forwardRef((props: FormProps, ref) => (
+  <InternalForm innerRef={ref as React.RefObject<HTMLElement>} {...props} />
+))
+
+export const Form = styled<FormProps>(FormFactory)``
 
 export const withForm = <T extends {}>(
   Component: React.ComponentType<FieldProps & InputProps & T>
@@ -44,7 +51,7 @@ export const withForm = <T extends {}>(
   return (
     props: FieldProps & InputProps & T & { children?: React.ReactChildren }
   ) => {
-    const contextHelper = (context: FormContextValue) => {
+    const contextHelper = (context: FormContext) => {
       let validationMessage
       if (context.validationMessages && props.name) {
         validationMessage = context.validationMessages[props.name]

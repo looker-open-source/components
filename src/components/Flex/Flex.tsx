@@ -5,13 +5,13 @@ import { Box, BoxBasePropsWithout, BoxFlexProps } from '../Box'
 /**
  * styled-system has its own FlexProps, so we call this one FlexBoxProps to disambiguate.
  */
-export interface FlexBoxProps
+export interface FlexProps
   extends BoxBasePropsWithout<HTMLDivElement, 'display'>,
     BoxFlexProps {
   hidden?: boolean
 }
 
-const InternalFlex: React.FC<FlexBoxProps> = ({ ...props }) => {
+const InternalFlex: React.FC<FlexProps> = props => {
   return (
     <Box display="flex" {...props}>
       {props.children}
@@ -19,16 +19,17 @@ const InternalFlex: React.FC<FlexBoxProps> = ({ ...props }) => {
   )
 }
 
-function hidden(hide: boolean | undefined) {
-  if (hide) {
-    return css`
-      display: none;
-    `
-  } else {
-    return false
-  }
-}
+const FlexFactory = React.forwardRef((props: FlexProps, ref) => (
+  <InternalFlex innerRef={ref as React.RefObject<HTMLElement>} {...props} />
+))
 
-export const Flex = styled(InternalFlex)`
+export const Flex = styled(FlexFactory)`
   ${props => hidden(props.hidden)};
 `
+
+const hidden = (hide?: boolean) =>
+  hide
+    ? css`
+        display: none;
+      `
+    : false

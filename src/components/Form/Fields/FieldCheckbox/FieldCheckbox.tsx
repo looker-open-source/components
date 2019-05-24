@@ -1,5 +1,6 @@
 import * as React from 'react'
 import uuid from 'uuid/v4'
+import { styled } from '../../../../style'
 import { withForm } from '../../Form'
 import { Checkbox, CheckboxProps } from '../../Inputs/Checkbox/Checkbox'
 import { Field, FieldProps } from '../Field'
@@ -35,4 +36,11 @@ const InternalFieldCheckbox = (props: FieldCheckboxProps) => {
   )
 }
 
-export const FieldCheckbox = withForm(InternalFieldCheckbox)
+const FieldCheckboxFactory = React.forwardRef((props: FieldProps, ref) => (
+  <InternalFieldCheckbox
+    innerRef={ref as React.RefObject<HTMLElement>}
+    {...props}
+  />
+))
+
+export const FieldCheckbox = styled(withForm(FieldCheckboxFactory))``

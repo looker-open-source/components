@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Theme } from '../../../../style'
+import { styled } from '../../../../style'
 import { CustomizableAttributes } from '../../../../types/attributes'
 import { Box, BoxProps } from '../../../Box'
 import { InputProps } from '../InputProps'
@@ -40,10 +40,9 @@ export interface SelectProps extends BoxProps<HTMLSelectElement>, InputProps {
    * Displays an example value or short hint to the user. Should not replace a label.
    */
   placeholder?: string
-  theme?: Theme
 }
 
-export const Select: React.FC<SelectProps> = ({
+const InternalSelect: React.FC<SelectProps> = ({
   includeBlank = true,
   options,
   placeholder,
@@ -112,6 +111,12 @@ const renderOptGroups = (
     )
   })
 }
+
+const SelectFactory = React.forwardRef((props: SelectProps, ref) => (
+  <InternalSelect innerRef={ref as React.RefObject<HTMLElement>} {...props} />
+))
+
+export const Select = styled<SelectProps>(SelectFactory)``
 
 export const CustomizableSelectAttributes: CustomizableAttributes = {
   borderRadius: 'medium',

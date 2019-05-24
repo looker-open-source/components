@@ -247,7 +247,7 @@ import { Code, Text } from '../Text'
   <TableBody>
     <TableRow>
       <TableDataCell>
-        <span class="prop-code">
+        <span className="prop-code">
           <Code>flex-grow</Code>
         </span>
       </TableDataCell>
@@ -260,7 +260,7 @@ import { Code, Text } from '../Text'
     </TableRow>
     <TableRow>
       <TableDataCell>
-        <span class="prop-code">
+        <span className="prop-code">
           <Code>flex-shrink</Code>
         </span>
       </TableDataCell>
@@ -275,7 +275,7 @@ import { Code, Text } from '../Text'
     </TableRow>
     <TableRow>
       <TableDataCell>
-        <span class="prop-code">
+        <span className="prop-code">
           <Code>flex-basis</Code>
         </span>
       </TableDataCell>

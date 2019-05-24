@@ -98,54 +98,20 @@ export interface MenuItemProps
   onClick?: () => void
 }
 
-const MenuItemInteral: React.FC<MenuItemProps> = ({
-  active,
-  current,
-  currentMarker,
-  canActivate,
-  children,
-  detail,
-  icon,
-  customizationProps,
-  onClick,
-  itemRole,
-  ...props
-}) => {
-  // tslint:disable:object-literal-sort-keys
-  const defaultcustomizationProps: MenuItemStyleProps = {
-    bg: palette.white,
-    color: palette.charcoal600,
-    icon: {
-      color: palette.charcoal300,
-      size: 20,
-    },
-    marker: {
-      size: 4,
-      color: palette.charcoal900,
-    },
-    hover: {
-      bg: palette.charcoal100,
-      color: palette.charcoal900,
-      icon: {
-        color: palette.charcoal900,
-      },
-    },
-    current: {
-      bg: palette.charcoal100,
-      color: palette.charcoal900,
-      fontWeight: 'bold',
-      icon: {
-        color: palette.charcoal900,
-      },
-    },
-    activated: {
-      color: palette.blue500,
-      icon: {
-        color: palette.blue500,
-      },
-    },
-  }
-  // tslint:enable:object-literal-sort-keys
+const InternalMenuItem: React.FC<MenuItemProps> = props => {
+  const {
+    active,
+    current,
+    currentMarker,
+    canActivate,
+    children,
+    detail,
+    icon,
+    customizationProps,
+    onClick,
+    itemRole,
+    ...boxProps
+  } = props
 
   const customProps: MenuItemStyleProps = customizationProps
     ? deepmerge(defaultcustomizationProps, customizationProps)
@@ -178,6 +144,7 @@ const MenuItemInteral: React.FC<MenuItemProps> = ({
       return
     }
   }
+
   const childrenWrapper = () => {
     return (
       <MenuItemChildStyle
@@ -210,7 +177,7 @@ const MenuItemInteral: React.FC<MenuItemProps> = ({
       aria-current={current && 'page'}
       currentMarker={currentMarker}
       customizationProps={customProps}
-      {...props}
+      {...boxProps}
     >
       {childrenWrapper()}
       {formatDetail(detail)}
@@ -345,4 +312,44 @@ const MenuItemChildStyle = styled(MenuItemChildStyleFactory)`
   cursor: pointer;
 `
 
-export const MenuItem = withMenu(MenuItemInteral)
+const MenuItemFactory = React.forwardRef((props: MenuItemProps, ref) => (
+  <InternalMenuItem innerRef={ref as React.RefObject<HTMLElement>} {...props} />
+))
+
+export const MenuItem = styled<MenuItemProps>(withMenu(MenuItemFactory))``
+
+// tslint:disable:object-literal-sort-keys
+const defaultcustomizationProps: MenuItemStyleProps = {
+  bg: palette.white,
+  color: palette.charcoal600,
+  icon: {
+    color: palette.charcoal300,
+    size: 20,
+  },
+  marker: {
+    size: 4,
+    color: palette.charcoal900,
+  },
+  hover: {
+    bg: palette.charcoal100,
+    color: palette.charcoal900,
+    icon: {
+      color: palette.charcoal900,
+    },
+  },
+  current: {
+    bg: palette.charcoal100,
+    color: palette.charcoal900,
+    fontWeight: 'bold',
+    icon: {
+      color: palette.charcoal900,
+    },
+  },
+  activated: {
+    color: palette.blue500,
+    icon: {
+      color: palette.blue500,
+    },
+  },
+}
+// tslint:enable:object-literal-sort-keys

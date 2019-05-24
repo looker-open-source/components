@@ -9,7 +9,7 @@ export interface MenuProps extends BoxProps<HTMLDivElement>, MenuContextProps {
   focusOnMount?: boolean
 }
 
-export class Menu extends React.PureComponent<MenuProps> {
+class InternalMenu extends React.PureComponent<MenuProps> {
   private ref: React.RefObject<HTMLDivElement>
 
   constructor(props: MenuProps) {
@@ -86,6 +86,12 @@ export class Menu extends React.PureComponent<MenuProps> {
     }
   }
 }
+
+const MenuFactory = React.forwardRef((props: MenuProps, ref) => (
+  <InternalMenu innerRef={ref as React.RefObject<HTMLElement>} {...props} />
+))
+
+export const Menu = styled<MenuProps>(MenuFactory)``
 
 const MenuStyle = styled(Box)`
   list-style: none;

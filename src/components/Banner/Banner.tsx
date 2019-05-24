@@ -5,7 +5,7 @@ import { Flex } from '../Flex'
 import { Icon } from '../Icon'
 import { Text } from '../Text'
 
-type BannerIntent = 'warning' | 'info' | 'error' | 'confirmation'
+export type BannerIntent = 'warning' | 'info' | 'error' | 'confirmation'
 
 export interface BannerProps extends BoxProps<HTMLDivElement> {
   intent: BannerIntent
@@ -73,16 +73,19 @@ const VisuallyHiddenText = styled(Text)`
   width: 1px;
 `
 
-export const Banner: React.FC<BannerProps> = ({
-  onDismiss,
+const InternalBanner: React.FC<BannerProps> = ({
+  children,
   dismissable,
-  ...props
+  intent,
+  onDismiss,
+  ref,
+  ...boxProps
 }) => {
   const {
     icon,
     accessibilityLabel,
     ...bannerIntentStyling
-  } = getBannerIntentStyling(props.intent)
+  } = getBannerIntentStyling(intent)
 
   return (
     <Flex
@@ -94,11 +97,11 @@ export const Banner: React.FC<BannerProps> = ({
       alignItems="center"
       aria-live="polite"
       role="status"
-      {...props}
+      {...boxProps}
     >
       {icon}
       <VisuallyHiddenText>{accessibilityLabel}</VisuallyHiddenText>
-      <Box>{props.children}</Box>
+      <Box>{children}</Box>
       {dismissable && (
         <Box
           is="button"
@@ -113,3 +116,9 @@ export const Banner: React.FC<BannerProps> = ({
     </Flex>
   )
 }
+
+const BannerFactory = React.forwardRef((props: BannerProps, ref) => (
+  <InternalBanner innerRef={ref as React.RefObject<HTMLElement>} {...props} />
+))
+
+export const Banner = styled<BannerProps>(BannerFactory)``

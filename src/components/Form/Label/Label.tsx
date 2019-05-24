@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { styled } from '../../../style'
 import { CustomizableAttributes } from '../../../types/attributes'
 import { Box, BoxProps } from '../../Box'
 
@@ -6,7 +7,7 @@ export interface LabelProps extends BoxProps<HTMLLabelElement> {
   htmlFor?: string
 }
 
-export const Label: React.FC<LabelProps> = ({ ...props }) => (
+const LabelInternal: React.FC<LabelProps> = props => (
   <Box
     is="label"
     color={CustomizableLabelAttributes.color}
@@ -18,6 +19,12 @@ export const Label: React.FC<LabelProps> = ({ ...props }) => (
     {props.children}
   </Box>
 )
+
+const LabelFactory = React.forwardRef((props: LabelProps, ref) => (
+  <LabelInternal innerRef={ref as React.RefObject<HTMLElement>} {...props} />
+))
+
+export const Label = styled(LabelFactory)``
 
 export const CustomizableLabelAttributes: CustomizableAttributes = {
   color: 'palette.charcoal800',

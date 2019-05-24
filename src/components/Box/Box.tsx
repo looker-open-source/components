@@ -186,6 +186,7 @@ export interface BoxBaseProps<T>
    * @example <Box userSelect="none"/>
    */
   userSelect?: UserSelectProperty
+  innerRef?: React.RefObject<HTMLElement>
 }
 
 export interface BoxProps<T>
@@ -258,6 +259,7 @@ const BoxFactory = React.forwardRef((props: BoxProps<HTMLElement>, ref) => {
     lineHeight,
     fontWeight,
     fontSize,
+    innerRef,
     ...otherProps
   } = props
   return (
@@ -265,8 +267,8 @@ const BoxFactory = React.forwardRef((props: BoxProps<HTMLElement>, ref) => {
       lineHeight={lineHeight}
       fontSize={fontSize}
       fontWeight={fontWeight}
+      ref={ref || innerRef}
       {...otherProps}
-      ref={ref}
     />
   )
 })

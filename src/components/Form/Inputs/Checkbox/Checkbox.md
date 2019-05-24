@@ -58,6 +58,12 @@ Use the disable property to gray out the checkbox, making it unclickable.
 import { Checkbox } from './Checkbox'
 ;<>
   <Checkbox disabled />
-  <Checkbox disabled checked />
+  <Checkbox
+    disabled
+    checked
+    onChange={() => {
+      return
+    }}
+  />
 </>
 ```

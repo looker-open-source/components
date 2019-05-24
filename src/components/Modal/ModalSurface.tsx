@@ -1,18 +1,16 @@
 import FocusTrap from 'focus-trap-react'
 import * as React from 'react'
 import { Styles } from 'styled-components'
-import { styled, Theme } from '../../style'
+import { styled } from '../../style'
 import { Box, BoxProps } from '../Box'
 import { CustomizableModalAttributes } from './Modal'
 
 export interface ModalSurfaceProps extends BoxProps<HTMLDivElement> {
-  theme: Theme
   animationState?: string
 }
 
 export const ModalSurface: React.FC<ModalSurfaceProps> = ({
   style,
-  theme,
   className,
   ...props
 }) => {
@@ -25,7 +23,6 @@ export const ModalSurface: React.FC<ModalSurfaceProps> = ({
     >
       <TransitionTimers
         bg={CustomizableModalAttributes.surface.backgroundColor}
-        boxShadow={theme.shadows[3]}
         display="flex"
         className={`surface-overflow ${className}`}
         flexDirection="column"
@@ -51,6 +48,8 @@ const SurfaceFactory = (props: SurfaceInternalProps) => {
 
 const TransitionTimers = styled(SurfaceFactory)<SurfaceInternalProps>`
   /* stylelint-disable */
+  box-shadow: ${props => props.theme.shadows[3]};
+
   transition: transform ${props => props.theme.transitions.durationModerate}
       ${props => props.theme.easings.ease},
     opacity ${props => props.theme.transitions.durationModerate}

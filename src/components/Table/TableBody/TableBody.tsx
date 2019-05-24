@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { styled } from '../../../style'
 import { Box, BoxProps } from '../../Box'
 
 export type TableBodyAlignment = 'bottom' | 'middle' | 'top'
@@ -9,7 +10,7 @@ export interface TableBodyProps extends BoxProps<HTMLTableSectionElement> {
   textAlign?: TableTextAlignment
 }
 
-export const TableBody: React.FC<TableBodyProps> = ({ ...props }) => (
+const InternalTableBody: React.FC<TableBodyProps> = props => (
   <Box
     verticalAlign={props.align || 'top'}
     textAlign={props.textAlign || 'left'}
@@ -17,3 +18,12 @@ export const TableBody: React.FC<TableBodyProps> = ({ ...props }) => (
     {...props}
   />
 )
+
+const TableBodyFactory = React.forwardRef((props: TableBodyProps, ref) => (
+  <InternalTableBody
+    innerRef={ref as React.RefObject<HTMLElement>}
+    {...props}
+  />
+))
+
+export const TableBody = styled<TableBodyProps>(TableBodyFactory)``

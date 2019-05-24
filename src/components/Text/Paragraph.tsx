@@ -17,6 +17,14 @@ const InternalParagraph: React.FC<ParagraphProps> = ({
     </Text>
   )
 }
-export const Paragraph = styled<ParagraphProps>(InternalParagraph)`
+
+const ParagraphFactory = React.forwardRef((props: ParagraphProps, ref) => (
+  <InternalParagraph
+    innerRef={ref as React.RefObject<HTMLElement>}
+    {...props}
+  />
+))
+
+export const Paragraph = styled<ParagraphProps>(ParagraphFactory)`
   ${props => shouldTruncate(props.truncate || false)};
 `
