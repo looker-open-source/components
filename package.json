@@ -95,26 +95,6 @@
   "files": [
     "dist"
   ],
-  "jest": {
-    "moduleFileExtensions": [
-      "js",
-      "jsx",
-      "ts",
-      "tsx",
-      "json",
-      "node"
-    ],
-    "setupFilesAfterEnv": [
-      "./test/setupJest.js"
-    ],
-    "transform": {
-      "^.+\\.(jsx)$": "babel-jest",
-      "^.+\\.(ts|tsx)$": "ts-jest"
-    },
-    "testMatch": [
-      "**/?(*.)(spec|test).(ts|js)?(x)"
-    ]
-  },
   "lint-staged": {
     "**/*.ts?(x)": [
       "stylelint",

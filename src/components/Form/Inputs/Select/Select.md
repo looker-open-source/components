@@ -15,14 +15,16 @@ The `<Select />` component renders a single select element on the page, with no 
 
 ```js
 import { Select } from './Select'
+import { Flex } from '../../../Flex'
+
 const options = [
   { value: 'cheddar', label: 'Cheddar' },
   { value: 'gouda', label: 'Gouda' },
   { value: 'swiss', label: 'Swiss' },
 ]
-;<>
+;<Flex justifyContent="space-between">
   <Select options={options} />
-  <Select options={options} value="gouda" ml="large" />
+  <Select options={options} value="gouda" />
   <Select placeholder="awesome!" />
   <Select
     value="Some Value"
@@ -32,7 +34,7 @@ const options = [
       { value: '2', label: 'other' },
     ]}
   />
-</>
+</Flex>
 ```
 
 #### Option Groups

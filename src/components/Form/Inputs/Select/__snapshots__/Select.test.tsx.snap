@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Select default 1`] = `
-.c0 {
+.c1 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -12,6 +12,7 @@ exports[`Select default 1`] = `
   border: solid 1px;
   border-radius: 0.25rem;
   border-color: #C1C6CC;
+  background-color: #FFFFFF;
   font-size: 0.875rem;
   height: 28px;
   padding-left: 0.5rem;
@@ -20,8 +21,23 @@ exports[`Select default 1`] = `
   padding-bottom: 0rem;
 }
 
+.c0 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url('data:image/svg+xml;base64,dGVzdC1maWxlLXN0dWI='), linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
+  background-repeat: no-repeat,repeat;
+  background-position: right .25rem center,0 0;
+  background-size: 1rem,100%;
+  padding-right: calc(2 * .25rem + 1rem);
+}
+
+.c0::-ms-expand {
+  display: none;
+}
+
 <select
-  className="c0"
+  className="c0 c1"
 >
   <option
     value=""
@@ -30,7 +46,7 @@ exports[`Select default 1`] = `
 `;
 
 exports[`Select should accept disabled 1`] = `
-.c0 {
+.c1 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -41,6 +57,7 @@ exports[`Select should accept disabled 1`] = `
   border: solid 1px;
   border-radius: 0.25rem;
   border-color: #C1C6CC;
+  background-color: #FFFFFF;
   font-size: 0.875rem;
   height: 28px;
   padding-left: 0.5rem;
@@ -49,8 +66,23 @@ exports[`Select should accept disabled 1`] = `
   padding-bottom: 0rem;
 }
 
+.c0 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url('data:image/svg+xml;base64,dGVzdC1maWxlLXN0dWI='), linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
+  background-repeat: no-repeat,repeat;
+  background-position: right .25rem center,0 0;
+  background-size: 1rem,100%;
+  padding-right: calc(2 * .25rem + 1rem);
+}
+
+.c0::-ms-expand {
+  display: none;
+}
+
 <select
-  className="c0"
+  className="c0 c1"
   disabled={true}
 >
   <option
@@ -60,7 +92,7 @@ exports[`Select should accept disabled 1`] = `
 `;
 
 exports[`Select should accept empty options array 1`] = `
-.c0 {
+.c1 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -71,6 +103,7 @@ exports[`Select should accept empty options array 1`] = `
   border: solid 1px;
   border-radius: 0.25rem;
   border-color: #C1C6CC;
+  background-color: #FFFFFF;
   font-size: 0.875rem;
   height: 28px;
   padding-left: 0.5rem;
@@ -79,8 +112,23 @@ exports[`Select should accept empty options array 1`] = `
   padding-bottom: 0rem;
 }
 
+.c0 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url('data:image/svg+xml;base64,dGVzdC1maWxlLXN0dWI='), linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
+  background-repeat: no-repeat,repeat;
+  background-position: right .25rem center,0 0;
+  background-size: 1rem,100%;
+  padding-right: calc(2 * .25rem + 1rem);
+}
+
+.c0::-ms-expand {
+  display: none;
+}
+
 <select
-  className="c0"
+  className="c0 c1"
 >
   <option
     value=""
@@ -89,7 +137,7 @@ exports[`Select should accept empty options array 1`] = `
 `;
 
 exports[`Select should accept readOnly 1`] = `
-.c0 {
+.c1 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -100,6 +148,7 @@ exports[`Select should accept readOnly 1`] = `
   border: solid 1px;
   border-radius: 0.25rem;
   border-color: #C1C6CC;
+  background-color: #FFFFFF;
   font-size: 0.875rem;
   height: 28px;
   padding-left: 0.5rem;
@@ -108,8 +157,23 @@ exports[`Select should accept readOnly 1`] = `
   padding-bottom: 0rem;
 }
 
+.c0 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url('data:image/svg+xml;base64,dGVzdC1maWxlLXN0dWI='), linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
+  background-repeat: no-repeat,repeat;
+  background-position: right .25rem center,0 0;
+  background-size: 1rem,100%;
+  padding-right: calc(2 * .25rem + 1rem);
+}
+
+.c0::-ms-expand {
+  display: none;
+}
+
 <select
-  className="c0"
+  className="c0 c1"
   readOnly={true}
 >
   <option
@@ -119,7 +183,7 @@ exports[`Select should accept readOnly 1`] = `
 `;
 
 exports[`Select should accept required 1`] = `
-.c0 {
+.c1 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -130,6 +194,7 @@ exports[`Select should accept required 1`] = `
   border: solid 1px;
   border-radius: 0.25rem;
   border-color: #C1C6CC;
+  background-color: #FFFFFF;
   font-size: 0.875rem;
   height: 28px;
   padding-left: 0.5rem;
@@ -138,8 +203,23 @@ exports[`Select should accept required 1`] = `
   padding-bottom: 0rem;
 }
 
+.c0 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url('data:image/svg+xml;base64,dGVzdC1maWxlLXN0dWI='), linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
+  background-repeat: no-repeat,repeat;
+  background-position: right .25rem center,0 0;
+  background-size: 1rem,100%;
+  padding-right: calc(2 * .25rem + 1rem);
+}
+
+.c0::-ms-expand {
+  display: none;
+}
+
 <select
-  className="c0"
+  className="c0 c1"
   required={true}
 >
   <option
@@ -149,7 +229,7 @@ exports[`Select should accept required 1`] = `
 `;
 
 exports[`Select with a placeholder 1`] = `
-.c0 {
+.c1 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -160,6 +240,7 @@ exports[`Select with a placeholder 1`] = `
   border: solid 1px;
   border-radius: 0.25rem;
   border-color: #C1C6CC;
+  background-color: #FFFFFF;
   font-size: 0.875rem;
   height: 28px;
   padding-left: 0.5rem;
@@ -168,8 +249,23 @@ exports[`Select with a placeholder 1`] = `
   padding-bottom: 0rem;
 }
 
+.c0 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url('data:image/svg+xml;base64,dGVzdC1maWxlLXN0dWI='), linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
+  background-repeat: no-repeat,repeat;
+  background-position: right .25rem center,0 0;
+  background-size: 1rem,100%;
+  padding-right: calc(2 * .25rem + 1rem);
+}
+
+.c0::-ms-expand {
+  display: none;
+}
+
 <select
-  className="c0"
+  className="c0 c1"
 >
   <option
     value=""
@@ -180,7 +276,7 @@ exports[`Select with a placeholder 1`] = `
 `;
 
 exports[`Select with a value 1`] = `
-.c0 {
+.c1 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -191,6 +287,7 @@ exports[`Select with a value 1`] = `
   border: solid 1px;
   border-radius: 0.25rem;
   border-color: #C1C6CC;
+  background-color: #FFFFFF;
   font-size: 0.875rem;
   height: 28px;
   padding-left: 0.5rem;
@@ -199,8 +296,23 @@ exports[`Select with a value 1`] = `
   padding-bottom: 0rem;
 }
 
+.c0 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url('data:image/svg+xml;base64,dGVzdC1maWxlLXN0dWI='), linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
+  background-repeat: no-repeat,repeat;
+  background-position: right .25rem center,0 0;
+  background-size: 1rem,100%;
+  padding-right: calc(2 * .25rem + 1rem);
+}
+
+.c0::-ms-expand {
+  display: none;
+}
+
 <select
-  className="c0"
+  className="c0 c1"
   defaultValue="Some Value"
 >
   <option
@@ -225,7 +337,7 @@ exports[`Select with a value 1`] = `
 `;
 
 exports[`Select with an error validation 1`] = `
-.c0 {
+.c1 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -245,8 +357,23 @@ exports[`Select with an error validation 1`] = `
   padding-bottom: 0rem;
 }
 
+.c0 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url('data:image/svg+xml;base64,dGVzdC1maWxlLXN0dWI='), linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
+  background-repeat: no-repeat,repeat;
+  background-position: right .25rem center,0 0;
+  background-size: 1rem,100%;
+  padding-right: calc(2 * .25rem + 1rem);
+}
+
+.c0::-ms-expand {
+  display: none;
+}
+
 <select
-  className="c0"
+  className="c0 c1"
 >
   <option
     value=""
@@ -255,7 +382,7 @@ exports[`Select with an error validation 1`] = `
 `;
 
 exports[`Select with aria-describedby 1`] = `
-.c0 {
+.c1 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -266,6 +393,7 @@ exports[`Select with aria-describedby 1`] = `
   border: solid 1px;
   border-radius: 0.25rem;
   border-color: #C1C6CC;
+  background-color: #FFFFFF;
   font-size: 0.875rem;
   height: 28px;
   padding-left: 0.5rem;
@@ -274,9 +402,24 @@ exports[`Select with aria-describedby 1`] = `
   padding-bottom: 0rem;
 }
 
+.c0 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url('data:image/svg+xml;base64,dGVzdC1maWxlLXN0dWI='), linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
+  background-repeat: no-repeat,repeat;
+  background-position: right .25rem center,0 0;
+  background-size: 1rem,100%;
+  padding-right: calc(2 * .25rem + 1rem);
+}
+
+.c0::-ms-expand {
+  display: none;
+}
+
 <select
   aria-describedby="some-id"
-  className="c0"
+  className="c0 c1"
 >
   <option
     value=""
@@ -285,7 +428,7 @@ exports[`Select with aria-describedby 1`] = `
 `;
 
 exports[`Select with name and id 1`] = `
-.c0 {
+.c1 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -296,6 +439,7 @@ exports[`Select with name and id 1`] = `
   border: solid 1px;
   border-radius: 0.25rem;
   border-color: #C1C6CC;
+  background-color: #FFFFFF;
   font-size: 0.875rem;
   height: 28px;
   padding-left: 0.5rem;
@@ -304,8 +448,23 @@ exports[`Select with name and id 1`] = `
   padding-bottom: 0rem;
 }
 
+.c0 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url('data:image/svg+xml;base64,dGVzdC1maWxlLXN0dWI='), linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
+  background-repeat: no-repeat,repeat;
+  background-position: right .25rem center,0 0;
+  background-size: 1rem,100%;
+  padding-right: calc(2 * .25rem + 1rem);
+}
+
+.c0::-ms-expand {
+  display: none;
+}
+
 <select
-  className="c0"
+  className="c0 c1"
   id="Bobby"
   name="Bob"
 >
