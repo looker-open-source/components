@@ -78,7 +78,7 @@ export interface OverlayProps extends OverlayInteractiveProps {
 
 /**
  * Overlay is a low-level component that can be used to build Popovers,
- * Tooltips, Modals, etc. It handles coordinating a trigger component, like a
+ * Tooltips, etc. It handles coordinating a trigger component, like a
  * Button or Link, with the rendering of an "overlay" or "content surface" that
  * appears above other content in the page.
  *

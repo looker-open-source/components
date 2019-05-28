@@ -42,7 +42,11 @@ const componentSections = [
     name: 'Overlays: Popovers & Tooltips',
     sectionDepth: 1,
     components: ['src/components/Overlay/**/*.tsx'],
-    ignore: ['src/components/Overlay/MenuOverlay.tsx'],
+    ignore: [
+      'src/components/Overlay/MenuOverlay.tsx',
+      'src/components/Overlay/OverlayHover.tsx',
+      'src/components/Overlay/OverlaySurface.tsx',
+    ],
   },
   {
     name: 'Modals: Dialog & Drawer',
@@ -54,7 +58,11 @@ const componentSections = [
       'src/components/Modal/ModalContainer.tsx',
       'src/components/Modal/ModalContext.tsx',
       'src/components/Modal/Modal.tsx',
-      'src/components/Modal/SurfaceBase.tsx',
+      'src/components/Modal/ModalBackdrop.tsx',
+      'src/components/Modal/ModalHoverManager.tsx',
+      'src/components/Modal/ModalManager.tsx',
+      'src/components/Modal/ModalPortal.tsx',
+      'src/components/Modal/ModalSurface.tsx',
 
       'src/components/Modal/Dialog/DialogSurface.tsx',
       'src/components/Modal/Drawer/DrawerSurface.tsx',
