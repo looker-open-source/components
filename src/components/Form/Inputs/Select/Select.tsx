@@ -1,5 +1,6 @@
 import * as React from 'react'
-import { styled } from '../../../../style'
+import caretDownIcon from '../../../../icons/svg/Caret Down.svg'
+import { palette, styled } from '../../../../style'
 import { CustomizableAttributes } from '../../../../types/attributes'
 import { Box, BoxProps } from '../../../Box'
 import { InputProps } from '../InputProps'
@@ -54,7 +55,7 @@ const InternalSelect: React.FC<SelectProps> = ({
       case 'error':
         return 'palette.red000'
       default:
-        return undefined
+        return 'palette.white'
     }
   }
 
@@ -76,12 +77,14 @@ const InternalSelect: React.FC<SelectProps> = ({
       is="select"
       bg={handleValidationType()}
       border="solid 1px"
-      borderColor="palette.charcoal300"
+      borderColor={palette.charcoal300}
       borderRadius={CustomizableSelectAttributes.borderRadius}
       fontSize={CustomizableSelectAttributes.fontSize}
-      height={CustomizableSelectAttributes.height}
-      px={CustomizableSelectAttributes.px}
-      py={CustomizableSelectAttributes.py}
+      height={
+        props.py || props.p ? undefined : CustomizableSelectAttributes.height
+      }
+      px={props.px || props.p || CustomizableSelectAttributes.px}
+      py={props.py || props.p || CustomizableSelectAttributes.py}
       {...props}
       defaultValue={defaultValue}
       value={defaultValue ? undefined : props.value}
@@ -91,6 +94,36 @@ const InternalSelect: React.FC<SelectProps> = ({
     </Box>
   )
 }
+
+const indicatorSize = '1rem'
+const indicatorPadding = '.25rem'
+const indicator = caretDownIcon.replace('#1C2125', palette.charcoal500)
+
+// NOTE: Styling Selects is very complex
+//  See reference artice for background: https://www.filamentgroup.com/lab/select-css.html
+//  This component will likely be replaced with a React Select powered version
+
+const SelectFactory = React.forwardRef((props: SelectProps, ref) => (
+  <InternalSelect innerRef={ref as React.RefObject<HTMLElement>} {...props} />
+))
+
+export const Select = styled(SelectFactory)`
+  appearance: none;
+
+  background-image:
+    url('data:image/svg+xml;base64,${window.btoa(indicator)}'),
+    linear-gradient(to bottom, ${palette.white} 0%, ${palette.white} 100%);
+
+  background-repeat: no-repeat, repeat;
+  background-position: right ${indicatorPadding} center, 0 0;
+  background-size: ${indicatorSize}, 100%;
+
+  padding-right: calc(2 * ${indicatorPadding} + ${indicatorSize});
+
+  &::-ms-expand {
+    display: none;
+  }
+`
 
 const renderOptions = (options: OptionsType<SelectOptionProps>) => {
   return options.map(option => (
@@ -111,12 +144,6 @@ const renderOptGroups = (
     )
   })
 }
-
-const SelectFactory = React.forwardRef((props: SelectProps, ref) => (
-  <InternalSelect innerRef={ref as React.RefObject<HTMLElement>} {...props} />
-))
-
-export const Select = styled<SelectProps>(SelectFactory)``
 
 export const CustomizableSelectAttributes: CustomizableAttributes = {
   borderRadius: 'medium',
