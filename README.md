@@ -57,6 +57,7 @@ Lens follows a [semantic versioning scheme](https://semver.org/). That means:
 To publish components:
 
 1.  Increment the version number according to Lens' sematic versioning philosophy in [package.json](package.json) using `yarn version`
+1.  Update CHANGELOG
 1.  `git push origin --tags`
 1.  `yarn release`
 
