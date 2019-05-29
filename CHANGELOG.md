@@ -5,6 +5,35 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+
+## [0.0.1-beta.17] - 2019-05-29
+
+### Added
+
+- Link icon
+
+### Changed
+
+- All components should now support innerRef assignment
+- All (styleable) components are exported as Styled Components (`DialogManager` & `DialogManager` are examples of components that don't support style props)
+
+- `Select` visual rendering update to be consistent with Figma specs
+- Removed duplicate documentation for Modal & Overlay component families.
+- `Text` now has a default fontSize specified
+- `MenuItem` customizationProps supports partial object
+- `MenuItem` focus color is properly applied
+- `MenuOverlay` is no longer exported and should not be used except by MainNav
+- `Overlay` family components (Tooltip, Popover, etc) now support a `stopPropogation` prop that prevents the click from bubbling up to parents in the DOM. This will allow for removal of the `PreventDefault` component in Helltool.
+
+- CI/CD Improvements (move configuration to `./ci`)
+
+### Bug Fixes
+
+- MenuItem gets focus color assigned properly and other test improvements
+- MenuOverlay should have transparent background. 
+
+
+
 ## [0.0.1-beta.16] - 2019-04-26
 
 ### Added
