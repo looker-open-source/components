@@ -3,17 +3,15 @@ import { palette, styled } from '../../style'
 import { Box, BoxPropsWithout } from '../Box'
 import { Heading, HeadingProps } from '../Heading'
 import { List } from '../List'
-import { MenuContext, MenuContextProps } from './MenuContext'
-import { MenuItemCustomizationProps } from './MenuItem'
+import { MenuContext } from './MenuContext'
+import { MenuItemCustomization } from './MenuItem'
 
 export interface MenuGroupProps
-  extends BoxPropsWithout<HTMLDivElement, 'label'>,
-    MenuContextProps {
+  extends BoxPropsWithout<HTMLDivElement, 'label'> {
   label?: React.ReactNode
   labelProps?: HeadingProps
   labelStyles?: React.CSSProperties
-  canActivate?: boolean
-  customizationProps?: MenuItemCustomizationProps
+  customizationProps?: MenuItemCustomization
 }
 
 const InternalMenuGroup: React.FC<MenuGroupProps> = ({
@@ -23,10 +21,8 @@ const InternalMenuGroup: React.FC<MenuGroupProps> = ({
   labelStyles,
   ...props
 }) => {
-  const groupCanActivate = props.canActivate
-  const suppliedCustomizations = props.customizationProps
-  delete props.canActivate // Prevent canActivate from being applied to Heading component
-  delete props.customizationProps // Prevent customizationProps from being applied to Heading component
+  const { customizationProps, ...boxProps } = props
+  const menu = React.useContext(MenuContext)
 
   const labelComponent = label && (
     <Heading
@@ -49,25 +45,16 @@ const InternalMenuGroup: React.FC<MenuGroupProps> = ({
   )
 
   return (
-    <MenuContext.Consumer>
-      {({ canActivate, customizationProps }) => (
-        <MenuContext.Provider
-          value={{
-            canActivate:
-              groupCanActivate !== undefined ? groupCanActivate : canActivate,
-            customizationProps:
-              suppliedCustomizations !== undefined
-                ? suppliedCustomizations
-                : customizationProps,
-          }}
-        >
-          <Box is="li" {...props}>
-            {labelComponent}
-            <List nomarker>{children}</List>
-          </Box>
-        </MenuContext.Provider>
-      )}
-    </MenuContext.Consumer>
+    <MenuContext.Provider
+      value={{
+        customizationProps: customizationProps || menu.customizationProps,
+      }}
+    >
+      <Box is="li" {...boxProps}>
+        {labelComponent}
+        <List nomarker>{children}</List>
+      </Box>
+    </MenuContext.Provider>
   )
 }
 

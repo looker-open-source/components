@@ -1,14 +1,11 @@
 import * as React from 'react'
-import { MenuItemCustomizationProps } from './MenuItem'
+import { MenuItemCustomization } from './MenuItem/menuItemCustomization'
 
 export interface MenuContextProps {
-  canActivate?: boolean
-  customizationProps?: MenuItemCustomizationProps
+  customizationProps?: MenuItemCustomization
 }
 
-const context: MenuContextProps = {}
-
-export const MenuContext = React.createContext(context)
+export const MenuContext = React.createContext<MenuContextProps>({})
 
 export function withMenu<T extends MenuContextProps>(
   Component: React.ComponentType<T>

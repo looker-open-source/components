@@ -165,6 +165,7 @@ exports[`ModalHeader 1`] = `
         "lineHeight": "34px",
       }
     }
+    tabIndex={-1}
   >
     <div
       className="c6"

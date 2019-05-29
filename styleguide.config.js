@@ -72,6 +72,14 @@ const componentSections = [
     name: 'Menu',
     sectionDepth: 1,
     components: ['src/components/Menu/**/*.tsx'],
+    ignore: [
+      'src/components/Menu/MenuContext.tsx',
+      'src/components/Menu/MenuItem/MenuItemButton.tsx',
+      'src/components/Menu/MenuItem/MenuItemDetail.tsx',
+      'src/components/Menu/MenuItem/MenuItemListDetail.tsx',
+      'src/components/Menu/MenuItem/MenuItemListItem.tsx',
+      'src/components/Menu/MenuSearch/MenuSearchControls.tsx',
+    ],
   },
 ]
 

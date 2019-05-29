@@ -1,106 +1,59 @@
 import * as React from 'react'
 import { HotKeys } from 'react-hotkeys'
-import { styled } from '../../style'
+import { css, palette, styled } from '../../style'
 import { Box, BoxProps } from '../Box'
 import { MenuContext, MenuContextProps } from './MenuContext'
 import { MenuGroup } from './MenuGroup'
+import { moveFocus } from './moveFocus'
 
 export interface MenuProps extends BoxProps<HTMLDivElement>, MenuContextProps {
-  focusOnMount?: boolean
+  groupDividers?: boolean
 }
 
-class InternalMenu extends React.PureComponent<MenuProps> {
-  private ref: React.RefObject<HTMLDivElement>
-
-  constructor(props: MenuProps) {
-    super(props)
-    this.ref = React.createRef()
+const InternalMenu: React.FC<MenuProps> = ({
+  customizationProps,
+  children,
+  ...props
+}) => {
+  const { groupDividers, ...boxProps } = props
+  const ref = React.useRef<null | HTMLElement>(null)
+  const keyMap = { moveDown: 'down', moveUp: 'up' }
+  const keyHandlers = {
+    moveDown: () => moveFocus(1, 0, ref),
+    moveUp: () => moveFocus(-1, -1, ref),
   }
 
-  public componentDidMount() {
-    if (this.props.focusOnMount && this.ref.current) {
-      const x = window.scrollX
-      const y = window.scrollY
-      // preventScroll option is supported by Chrome but not Firefox or Safari
-      //    When preventScroll sees broad-adoption the x / y setting can be deprecated
-      this.ref.current.focus({ preventScroll: true })
-      window.scrollTo(x, y)
-    }
-  }
-
-  public render() {
-    const {
-      canActivate,
-      customizationProps,
-      children,
-      focusOnMount,
-      ...props
-    } = this.props
-    return (
-      <MenuContext.Provider value={{ canActivate, customizationProps }}>
-        <HotKeys keyMap={this.keyMap()} handlers={this.keyHandlers()}>
-          <MenuStyle
+  return (
+    <MenuContext.Provider value={{ customizationProps }}>
+      <HotKeys keyMap={keyMap} handlers={keyHandlers}>
+        <div ref={ref as React.RefObject<HTMLDivElement>}>
+          <Box
             is="ul"
-            innerRef={this.ref}
             tabIndex={-1}
-            userSelect="none"
             role="menu"
-            {...props}
+            userSelect="none"
+            {...boxProps}
           >
             {children}
-          </MenuStyle>
-        </HotKeys>
-      </MenuContext.Provider>
-    )
-  }
-
-  private keyMap() {
-    return { moveDown: 'down', moveUp: 'up' }
-  }
-
-  private moveFocus(direction: number, initial: number) {
-    if (!this.ref.current) return
-    /* tslint:disable */
-    const tabStops = Array.from(
-      this.ref.current.querySelectorAll('a,button,[tabindex]')
-    ) as HTMLElement[]
-    /* tslint:enable */
-
-    if (document.activeElement) {
-      const next =
-        tabStops.findIndex(f => f === document.activeElement) + direction
-
-      if (next === tabStops.length) return
-      if (!tabStops[next]) return
-      tabStops[next].focus()
-    } else {
-      tabStops.slice(initial)[0].focus()
-    }
-    return false
-  }
-
-  private keyHandlers() {
-    return {
-      moveDown: () => this.moveFocus(1, 0),
-      moveUp: () => this.moveFocus(-1, -1),
-    }
-  }
+          </Box>
+        </div>
+      </HotKeys>
+    </MenuContext.Provider>
+  )
 }
 
 const MenuFactory = React.forwardRef((props: MenuProps, ref) => (
   <InternalMenu innerRef={ref} {...props} />
 ))
 
-export const Menu = styled<MenuProps>(MenuFactory)``
-
-const MenuStyle = styled(Box)`
-  list-style: none;
-
+const dividersStyle = css`
   ${MenuGroup} ~ ${MenuGroup} { /* stylelint-disable-line */
-    border-top: 1px solid ${p => p.theme.colors.palette.charcoal200};
+    border-top: 1px solid ${palette.charcoal200};
   }
+`
 
-  &:focus {
-    outline: none;
-  }
+export const Menu = styled<MenuProps>(MenuFactory)`
+  list-style: none;
+  outline: none;
+  ${props => props.groupDividers !== false && dividersStyle};
 `

@@ -15,8 +15,6 @@ const StatusAndResources = require('../../../styleguide_components/StatusAndReso
 
 When a menu is focused the `up` and `down` arrow keys will move focus through the menu items within the menu.
 
-Set the `focusOnMount` prop to get the `Menu` to automatically have focus applied on compoment mount. Generally when loading with a ModalContext this prop should be set.
-
 ```js
 import { Menu } from './Menu'
 import { MenuItem } from './MenuItem'
@@ -50,7 +48,7 @@ import { Menu } from './Menu'
 import { MenuItem } from './MenuItem'
 ;<Popover
   content={
-    <Menu focusOnMount>
+    <Menu>
       <MenuItem icon="FavoriteOutline">Gouda</MenuItem>
       <MenuItem icon="FavoriteOutline" detail="Is often orange">
         Cheddar
@@ -115,7 +113,7 @@ const menuGroup = (
     <>
       <ModalHeader>Menu Demo</ModalHeader>
       <ModalContent innerProps={{ p: 'none' }}>
-        <Menu focusOnMount>
+        <Menu>
           <MenuGroup>
             <MenuItem icon="LogoRings">Looker</MenuItem>
             <MenuItem icon="Validate">Validate</MenuItem>
@@ -134,13 +132,8 @@ const menuGroup = (
     </>
   }
 >
-  {(onClick, ref) => (
-    <Button
-      variant="outline"
-      onClick={onClick}
-      innerRef={ref}
-      iconAfter="ArrowDropDown"
-    >
+  {onClick => (
+    <Button variant="outline" onClick={onClick} iconAfter="ArrowDropDown">
       Drawer + Menu...
     </Button>
   )}

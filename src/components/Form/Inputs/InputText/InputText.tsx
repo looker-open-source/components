@@ -36,8 +36,8 @@ const InternalInputText: React.FC<InputTextProps> = ({
       borderRadius={CustomizableInputTextAttributes.borderRadius}
       fontSize={CustomizableInputTextAttributes.fontSize}
       height={CustomizableInputTextAttributes.height}
-      px={CustomizableInputTextAttributes.px}
-      py={CustomizableInputTextAttributes.py}
+      px={props.p || CustomizableInputTextAttributes.px}
+      py={props.p || CustomizableInputTextAttributes.py}
       type="text"
       {...props}
     />
