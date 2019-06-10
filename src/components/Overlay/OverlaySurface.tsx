@@ -18,7 +18,7 @@ export interface OverlaySurfaceProps extends ModalSurfaceStyleProps {
   eventHandlers?: React.DOMAttributes<{}>
   placement: Placement
   style?: React.CSSProperties
-  surfaceRef?: React.RefObject<HTMLElement>
+  surfaceRef?: any
 }
 
 const OverlaySurfaceInternal: React.FC<OverlaySurfaceProps> = ({
@@ -64,10 +64,7 @@ const OverlaySurfaceInternal: React.FC<OverlaySurfaceProps> = ({
 
 export const OverlaySurface = React.forwardRef(
   (props: OverlaySurfaceProps, ref) => (
-    <OverlaySurfaceInternal
-      surfaceRef={ref as React.RefObject<HTMLElement>}
-      {...props}
-    />
+    <OverlaySurfaceInternal surfaceRef={ref} {...props} />
   )
 )
 
