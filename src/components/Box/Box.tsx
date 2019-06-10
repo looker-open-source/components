@@ -186,7 +186,7 @@ export interface BoxBaseProps<T>
    * @example <Box userSelect="none"/>
    */
   userSelect?: UserSelectProperty
-  innerRef?: React.RefObject<HTMLElement>
+  innerRef?: any
 }
 
 export interface BoxProps<T>

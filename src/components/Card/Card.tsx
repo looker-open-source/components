@@ -31,10 +31,7 @@ const InternalCard: React.FC<ThemedProps<CardProps>> = ({
 const InternalCardThemed = withTheme(InternalCard)
 
 const CardFactory = React.forwardRef((props: CardProps, ref) => (
-  <InternalCardThemed
-    innerRef={ref as React.RefObject<HTMLElement>}
-    {...props}
-  />
+  <InternalCardThemed innerRef={ref} {...props} />
 ))
 
 // prettier-ignore

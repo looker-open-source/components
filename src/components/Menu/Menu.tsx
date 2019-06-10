@@ -88,7 +88,7 @@ class InternalMenu extends React.PureComponent<MenuProps> {
 }
 
 const MenuFactory = React.forwardRef((props: MenuProps, ref) => (
-  <InternalMenu innerRef={ref as React.RefObject<HTMLElement>} {...props} />
+  <InternalMenu innerRef={ref} {...props} />
 ))
 
 export const Menu = styled<MenuProps>(MenuFactory)``

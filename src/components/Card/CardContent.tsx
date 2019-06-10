@@ -11,10 +11,7 @@ const InternalCardContent: React.FC<CardContentProps> = props => (
 )
 
 const CardContentFactory = React.forwardRef((props: CardContentProps, ref) => (
-  <InternalCardContent
-    innerRef={ref as React.RefObject<HTMLElement>}
-    {...props}
-  />
+  <InternalCardContent innerRef={ref} {...props} />
 ))
 
 export const CardContent = styled<CardContentProps>(CardContentFactory)``

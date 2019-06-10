@@ -48,7 +48,7 @@ const generateMarkers = (
 }
 
 const SpinnerFactory = React.forwardRef((props: SpinnerProps, ref) => (
-  <InternalSpinner innerRef={ref as React.RefObject<HTMLElement>} {...props} />
+  <InternalSpinner innerRef={ref} {...props} />
 ))
 
 export const Spinner = styled<SpinnerProps>(SpinnerFactory)`

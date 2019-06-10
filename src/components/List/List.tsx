@@ -61,7 +61,7 @@ function listStyleType(props: ListProps) {
 }
 
 const ListFactory = React.forwardRef((props: ListProps, ref) => (
-  <InternalList innerRef={ref as React.RefObject<HTMLElement>} {...props} />
+  <InternalList innerRef={ref} {...props} />
 ))
 
 export const List = styled<ListProps>(ListFactory)`

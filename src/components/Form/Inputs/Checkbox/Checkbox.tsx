@@ -19,7 +19,7 @@ const InternalCheckbox: React.FC<CheckboxProps> = ({
 }
 
 const CheckboxFactory = React.forwardRef((props: CheckboxProps, ref) => (
-  <InternalCheckbox innerRef={ref as React.RefObject<HTMLElement>} {...props} />
+  <InternalCheckbox innerRef={ref} {...props} />
 ))
 
 export const Checkbox = styled<CheckboxProps>(CheckboxFactory)``

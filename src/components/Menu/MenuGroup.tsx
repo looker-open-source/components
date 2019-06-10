@@ -72,10 +72,7 @@ const InternalMenuGroup: React.FC<MenuGroupProps> = ({
 }
 
 const MenuGroupFactory = React.forwardRef((props: MenuGroupProps, ref) => (
-  <InternalMenuGroup
-    innerRef={ref as React.RefObject<HTMLElement>}
-    {...props}
-  />
+  <InternalMenuGroup innerRef={ref} {...props} />
 ))
 
 export const MenuGroup = styled(MenuGroupFactory)``

@@ -34,10 +34,7 @@ const InternalFieldToggleSwitch = (props: FieldToggleSwitchProps) => {
 
 const FieldToggleSwitchFactory = React.forwardRef(
   (props: FieldToggleSwitchProps, ref) => (
-    <InternalFieldToggleSwitch
-      innerRef={ref as React.RefObject<HTMLElement>}
-      {...props}
-    />
+    <InternalFieldToggleSwitch innerRef={ref} {...props} />
   )
 )
 

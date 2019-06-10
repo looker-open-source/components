@@ -20,10 +20,7 @@ const InternalTableBody: React.FC<TableBodyProps> = props => (
 )
 
 const TableBodyFactory = React.forwardRef((props: TableBodyProps, ref) => (
-  <InternalTableBody
-    innerRef={ref as React.RefObject<HTMLElement>}
-    {...props}
-  />
+  <InternalTableBody innerRef={ref} {...props} />
 ))
 
 export const TableBody = styled<TableBodyProps>(TableBodyFactory)``

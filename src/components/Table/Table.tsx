@@ -9,7 +9,7 @@ const InternalTable: React.FC<TableProps> = props => (
 )
 
 const TableFactory = React.forwardRef((props: TableProps, ref) => (
-  <InternalTable innerRef={ref as React.RefObject<HTMLElement>} {...props} />
+  <InternalTable innerRef={ref} {...props} />
 ))
 
 export const Table = styled(TableFactory)`

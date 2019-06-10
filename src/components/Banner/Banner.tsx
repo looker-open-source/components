@@ -118,7 +118,7 @@ const InternalBanner: React.FC<BannerProps> = ({
 }
 
 const BannerFactory = React.forwardRef((props: BannerProps, ref) => (
-  <InternalBanner innerRef={ref as React.RefObject<HTMLElement>} {...props} />
+  <InternalBanner innerRef={ref} {...props} />
 ))
 
 export const Banner = styled<BannerProps>(BannerFactory)``

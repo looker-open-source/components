@@ -30,7 +30,7 @@ const InternalSlider: React.FC<SliderProps> = ({
 }
 
 const SliderFactory = React.forwardRef((props: SliderProps, ref) => (
-  <InternalSlider innerRef={ref as React.RefObject<HTMLElement>} {...props} />
+  <InternalSlider innerRef={ref} {...props} />
 ))
 
 export const Slider = styled<SliderProps>(SliderFactory)``

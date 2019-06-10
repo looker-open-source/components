@@ -13,7 +13,7 @@ const InternalFlexItem: React.FC<FlexItemProps> = props => {
 }
 
 const FlexItemFactory = React.forwardRef((props: FlexItemProps, ref) => (
-  <InternalFlexItem innerRef={ref as React.RefObject<HTMLElement>} {...props} />
+  <InternalFlexItem innerRef={ref} {...props} />
 ))
 
 export const FlexItem = styled<FlexItemProps>(FlexItemFactory)`
