@@ -11,6 +11,14 @@ test('A FieldCheckbox', () => {
   expect(tree).toMatchSnapshot()
 })
 
+test('A FieldCheckbox with checked value', () => {
+  const component = createWithTheme(
+    <FieldCheckbox label="👍" name="thumbsUp" id="thumbs-up" checked />
+  )
+  const tree = component.toJSON()
+  expect(tree).toMatchSnapshot()
+})
+
 test('A required FieldCheckbox', () => {
   const component = createWithTheme(
     <FieldCheckbox label="👍" name="thumbsUp" id="thumbs-up" required />

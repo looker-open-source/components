@@ -36,11 +36,10 @@ const InternalFieldCheckbox = (props: FieldCheckboxProps) => {
   )
 }
 
-const FieldCheckboxFactory = React.forwardRef((props: FieldProps, ref) => (
-  <InternalFieldCheckbox
-    innerRef={ref as React.RefObject<HTMLElement>}
-    {...props}
-  />
-))
+const FieldCheckboxFactory = React.forwardRef(
+  (props: FieldCheckboxProps, ref) => (
+    <InternalFieldCheckbox innerRef={ref} {...props} />
+  )
+)
 
 export const FieldCheckbox = styled(withForm(FieldCheckboxFactory))``
