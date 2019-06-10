@@ -1,5 +1,4 @@
 import * as React from 'react'
-import caretDownIcon from '../../../../icons/svg/Caret Down.svg'
 import { palette, styled } from '../../../../style'
 import { CustomizableAttributes } from '../../../../types/attributes'
 import { Box, BoxProps } from '../../../Box'
@@ -95,9 +94,16 @@ const InternalSelect: React.FC<SelectProps> = ({
   )
 }
 
+//
+// @TODO - Should be properly imported from `Caret Down.svg`
+// import caretDownIcon from '../../../../icons/svg/Caret Down.svg'
+//
+const indicatorRaw = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M7.41 8L12 12.58L16.59 8L18 9.41L12 15.41L6 9.41L7.41 8Z" fill="#1C2125"/>
+</svg>`
 const indicatorSize = '1rem'
 const indicatorPadding = '.25rem'
-const indicator = caretDownIcon.replace('#1C2125', palette.charcoal500)
+const indicator = indicatorRaw.replace('#1C2125', palette.charcoal500)
 
 // NOTE: Styling Selects is very complex
 //  See reference artice for background: https://www.filamentgroup.com/lab/select-css.html
