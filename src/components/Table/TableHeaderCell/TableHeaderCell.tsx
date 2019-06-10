@@ -17,10 +17,7 @@ const InternalTableHeaderCell: React.FC<TableHeaderCellProps> = props => (
 
 const TableHeaderCellFactory = React.forwardRef(
   (props: TableHeaderCellProps, ref) => (
-    <InternalTableHeaderCell
-      innerRef={ref as React.RefObject<HTMLElement>}
-      {...props}
-    />
+    <InternalTableHeaderCell innerRef={ref} {...props} />
   )
 )
 

@@ -14,10 +14,7 @@ const InternalCardMedia: React.FC<CardMediaProps> = ({ image, ...props }) => (
 )
 
 const CardMediaFactory = React.forwardRef((props: CardMediaProps, ref) => (
-  <InternalCardMedia
-    innerRef={ref as React.RefObject<HTMLElement>}
-    {...props}
-  />
+  <InternalCardMedia innerRef={ref} {...props} />
 ))
 
 export const CardMedia = styled<CardMediaProps>(CardMediaFactory)`

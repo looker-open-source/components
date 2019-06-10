@@ -36,10 +36,7 @@ const InternalFieldRadio = (props: FieldRadioProps) => {
 }
 
 const FieldRadioFactory = React.forwardRef((props: FieldProps, ref) => (
-  <InternalFieldRadio
-    innerRef={ref as React.RefObject<HTMLElement>}
-    {...props}
-  />
+  <InternalFieldRadio innerRef={ref} {...props} />
 ))
 
 export const FieldRadio = styled(withForm(FieldRadioFactory))``

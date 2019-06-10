@@ -45,10 +45,7 @@ const InternalInputText: React.FC<InputTextProps> = ({
 }
 
 const InputTextFactory = React.forwardRef((props: InputTextProps, ref) => (
-  <InternalInputText
-    innerRef={ref as React.RefObject<HTMLElement>}
-    {...props}
-  />
+  <InternalInputText innerRef={ref} {...props} />
 ))
 
 export const InputText = styled<InputTextProps>(InputTextFactory)``

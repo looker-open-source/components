@@ -16,7 +16,7 @@ const InternalRadio: React.FC<RadioProps> = ({ validationType, ...props }) => {
 }
 
 const RadioFactory = React.forwardRef((props: RadioProps, ref) => (
-  <InternalRadio innerRef={ref as React.RefObject<HTMLElement>} {...props} />
+  <InternalRadio innerRef={ref} {...props} />
 ))
 
 export const Radio = styled<RadioProps>(RadioFactory)``

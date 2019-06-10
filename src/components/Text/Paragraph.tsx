@@ -19,10 +19,7 @@ const InternalParagraph: React.FC<ParagraphProps> = ({
 }
 
 const ParagraphFactory = React.forwardRef((props: ParagraphProps, ref) => (
-  <InternalParagraph
-    innerRef={ref as React.RefObject<HTMLElement>}
-    {...props}
-  />
+  <InternalParagraph innerRef={ref} {...props} />
 ))
 
 export const Paragraph = styled<ParagraphProps>(ParagraphFactory)`

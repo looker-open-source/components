@@ -38,7 +38,7 @@ const InternalHeading: React.FC<HeadingProps> = ({
 )
 
 const HeadingFactory = React.forwardRef((props: HeadingProps, ref) => (
-  <InternalHeading innerRef={ref as React.RefObject<HTMLElement>} {...props} />
+  <InternalHeading innerRef={ref} {...props} />
 ))
 
 export const Heading = styled(HeadingFactory)`

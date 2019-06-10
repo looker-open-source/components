@@ -45,7 +45,7 @@ const InternalDivider: React.FC<DividerProps> = ({
 }
 
 const DividerFactory = React.forwardRef((props: DividerProps, ref) => (
-  <InternalDivider innerRef={ref as React.RefObject<HTMLElement>} {...props} />
+  <InternalDivider innerRef={ref} {...props} />
 ))
 
 export const Divider = styled<DividerProps>(DividerFactory)`

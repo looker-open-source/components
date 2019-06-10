@@ -40,7 +40,7 @@ const InternalForm: React.FC<FormProps> = props => {
 }
 
 const FormFactory = React.forwardRef((props: FormProps, ref) => (
-  <InternalForm innerRef={ref as React.RefObject<HTMLElement>} {...props} />
+  <InternalForm innerRef={ref} {...props} />
 ))
 
 export const Form = styled<FormProps>(FormFactory)``

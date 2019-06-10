@@ -36,10 +36,7 @@ const InternalFieldText = (props: FieldTextProps) => {
 }
 
 const FieldTextFactory = React.forwardRef((props: FieldTextProps, ref) => (
-  <InternalFieldText
-    innerRef={ref as React.RefObject<HTMLElement>}
-    {...props}
-  />
+  <InternalFieldText innerRef={ref} {...props} />
 ))
 
 export const FieldText = styled(withForm(FieldTextFactory))``

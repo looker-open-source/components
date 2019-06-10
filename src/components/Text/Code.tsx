@@ -11,7 +11,7 @@ const InternalCode: React.FC<TextProps> = props => {
 }
 
 const CodeFactory = React.forwardRef((props: TextProps, ref) => (
-  <InternalCode innerRef={ref as React.RefObject<HTMLElement>} {...props} />
+  <InternalCode innerRef={ref} {...props} />
 ))
 
 export const Code = styled(CodeFactory)``

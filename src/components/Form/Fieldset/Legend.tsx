@@ -17,7 +17,7 @@ const InternalLegend: React.FC<LegendProps> = props => (
 )
 
 const LegendFactory = React.forwardRef((props: LegendProps, ref) => (
-  <InternalLegend innerRef={ref as React.RefObject<HTMLElement>} {...props} />
+  <InternalLegend innerRef={ref} {...props} />
 ))
 
 export const Legend = styled(LegendFactory)``

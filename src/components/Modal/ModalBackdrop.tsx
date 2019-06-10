@@ -51,7 +51,7 @@ interface BackdropStylesProps extends ModalBackdropProps {
 //
 const BackdropFactory = (props: BackdropStylesProps) => {
   const { inlineStyle, ref, ...boxProps } = props
-  return <Box {...boxProps} innerRef={ref as React.RefObject<HTMLElement>} />
+  return <Box {...boxProps} innerRef={ref} />
 }
 
 // Backdrop styles are applied here (rather than using the inline `style={...}` prop) to ensure that

@@ -9,7 +9,7 @@ const InternalLink: React.FC<LinkProps> = ({ ref, ...props }) => {
     <Box
       is="a"
       color="semanticColors.primary.linkColor"
-      innerRef={ref as React.RefObject<HTMLElement>}
+      innerRef={ref}
       style={{ textDecoration: 'none' }}
       hoverStyle={{ textDecoration: 'underline ' }}
       {...props}
@@ -18,7 +18,7 @@ const InternalLink: React.FC<LinkProps> = ({ ref, ...props }) => {
 }
 
 const LinkFactory = React.forwardRef((props: LinkProps, ref) => (
-  <InternalLink innerRef={ref as React.RefObject<HTMLElement>} {...props} />
+  <InternalLink innerRef={ref} {...props} />
 ))
 
 export const Link = styled<LinkProps>(LinkFactory)``

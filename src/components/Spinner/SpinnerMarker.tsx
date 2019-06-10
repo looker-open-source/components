@@ -31,7 +31,7 @@ const markerTransform = (props: SpinnerMarkerProps) => {
 
 const SpinnerMarkerFactory = React.forwardRef(
   (props: SpinnerMarkerProps, ref) => (
-    <InternalMarker innerRef={ref as React.RefObject<HTMLElement>} {...props} />
+    <InternalMarker innerRef={ref} {...props} />
   )
 )
 

@@ -313,7 +313,7 @@ const MenuItemChildStyle = styled(MenuItemChildStyleFactory)`
 `
 
 const MenuItemFactory = React.forwardRef((props: MenuItemProps, ref) => (
-  <InternalMenuItem innerRef={ref as React.RefObject<HTMLElement>} {...props} />
+  <InternalMenuItem innerRef={ref} {...props} />
 ))
 
 export const MenuItem = styled<MenuItemProps>(withMenu(MenuItemFactory))``

@@ -82,10 +82,7 @@ const InternalIconButton: React.FC<IconButtonProps> = ({
 )
 
 const IconButtonFactory = React.forwardRef((props: IconButtonProps, ref) => (
-  <InternalIconButton
-    innerRef={ref as React.RefObject<HTMLElement>}
-    {...props}
-  />
+  <InternalIconButton innerRef={ref} {...props} />
 ))
 
 export const IconButton = styled(IconButtonFactory)``

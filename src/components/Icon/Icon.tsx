@@ -18,7 +18,7 @@ const IconFactory = React.forwardRef((props: IconProps, ref) => {
 
   return (
     <Box
-      innerRef={ref as React.RefObject<HTMLElement>}
+      innerRef={ref}
       width={size}
       height={size}
       alignItems="center"

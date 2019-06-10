@@ -21,7 +21,7 @@ const LabelInternal: React.FC<LabelProps> = props => (
 )
 
 const LabelFactory = React.forwardRef((props: LabelProps, ref) => (
-  <LabelInternal innerRef={ref as React.RefObject<HTMLElement>} {...props} />
+  <LabelInternal innerRef={ref} {...props} />
 ))
 
 export const Label = styled(LabelFactory)``

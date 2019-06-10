@@ -104,7 +104,7 @@ const indicator = caretDownIcon.replace('#1C2125', palette.charcoal500)
 //  This component will likely be replaced with a React Select powered version
 
 const SelectFactory = React.forwardRef((props: SelectProps, ref) => (
-  <InternalSelect innerRef={ref as React.RefObject<HTMLElement>} {...props} />
+  <InternalSelect innerRef={ref} {...props} />
 ))
 
 export const Select = styled(SelectFactory)`

@@ -11,7 +11,7 @@ const InternalListItem: React.FC<ListItemProps> = props => (
 )
 
 const ListItemFactory = React.forwardRef((props: ListItemProps, ref) => (
-  <InternalListItem innerRef={ref as React.RefObject<HTMLElement>} {...props} />
+  <InternalListItem innerRef={ref} {...props} />
 ))
 
 export const ListItem = styled(ListItemFactory)``
