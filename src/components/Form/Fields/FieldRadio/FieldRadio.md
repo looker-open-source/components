@@ -19,5 +19,6 @@ import { FieldRadio } from './FieldRadio'
 ;<>
   <FieldRadio name="radio" label="Radio" />
   <FieldRadio name="radio" label="Radio 2" alignLabel="left" />
+  <FieldRadio name="radio" label="Radio 3" labelFontWeight="normal" alignLabel="right" />
 </>
 ```

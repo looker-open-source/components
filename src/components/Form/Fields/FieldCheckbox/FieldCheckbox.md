@@ -20,6 +20,7 @@ import { FieldCheckbox } from './FieldCheckbox'
   <FieldCheckbox name="box" label="Box" />
   <FieldCheckbox name="box-2" label="Box 2" alignLabel="left" />
   <FieldCheckbox name="requiredField" label="A required field" required />
+  <FieldCheckbox name="normal-label" label="Normal Label" labelFontWeight="normal" alignLabel="right" />
 </>
 ```
 
