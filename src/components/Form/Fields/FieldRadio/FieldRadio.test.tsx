@@ -12,3 +12,9 @@ test('A FieldRadio with label aligned left', () => {
     <FieldRadio label="👍" name="thumbsUp" id="thumbs-up" alignLabel="left" />
   )
 })
+
+test('A FieldRadio checked', () => {
+  assertSnapshot(
+    <FieldRadio label="👍" name="thumbsUp" id="thumbs-up" checked />
+  )
+})
