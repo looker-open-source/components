@@ -35,7 +35,7 @@ const InternalFieldRadio = (props: FieldRadioProps) => {
   )
 }
 
-const FieldRadioFactory = React.forwardRef((props: FieldProps, ref) => (
+const FieldRadioFactory = React.forwardRef((props: FieldRadioProps, ref) => (
   <InternalFieldRadio innerRef={ref} {...props} />
 ))
 
