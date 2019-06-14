@@ -58,11 +58,14 @@ To publish components:
 
 1.  Increment the version number according to Lens' sematic versioning philosophy in [package.json](package.json)
 1.  Update CHANGELOG
-1.  To PR for package.json & CHANGELOG changes
+1.  PR for package.json & CHANGELOG changes
 1.  Merge PR
+1.  `git co master`
+1.  `yarn clean`
+1.  `yarn build-components`
+1.  `yarn release`
 1.  Add the tag `git tag -a ${version}` // e.g.: `git tag -a 0.0.1-beta.19`
 1.  `git push origin --tags`
-1.  `yarn release`
 
 This will publish Lens to Looker's private npm server, Nexus.
 
