@@ -18,8 +18,6 @@ import {
   MenuItemStyle,
 } from './menuItemStyle'
 
-// export const MenuItemIcon = styled(Icon)``
-
 export interface MenuItemProps
   extends BoxProps<HTMLAnchorElement>,
     MenuContextProps {
