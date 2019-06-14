@@ -5,6 +5,34 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.0.1-beta.19] - 2019-06-14
+
+### Added
+
+- Icons
+  - Alignment: `AlignCenter`, `AlignLeft`, `AlignRight`
+  - Color: `ColorFill`, `ColorText`
+  - `Flag`
+  - `SalesAnalytics`
+  - `Update`
+- `MenuSearch` component
+
+### Changed
+
+- Minor update to `FieldRadio` and `FieldChecked` examples
+- Major refactor of `MenuItem`, `MenuGroup` and `Menu`
+  - Better keyboard control support
+  - MenuItem now can be a link itself (supports `href` and `target` props)
+  - `customizations` prop now accepts `fontSize` & `iconSize`.
+  - `customizations` prop no longer accepts `icon: { color: '...', size: '...' }` instead use `iconColor: '...'`
+  - Deprecated "active" mode and `active` / `canActivate` props removed
+  - `Menu` now supports `groupDividers={false}` to hide the divider between adjacent MenuGroups
+  - `Menu` no longer supports `focusOnMount` prop (placing a Menu inside a Overlay or Modal will "just work" now)
+
+### Bug Fixes
+
+- Fixed typing on FieldRadio
+
 ## [0.0.1-beta.18.2] - 2019-06-10
 
 ### Bug Fixes
