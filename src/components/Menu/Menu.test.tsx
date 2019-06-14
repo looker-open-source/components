@@ -18,19 +18,6 @@ test('Menu', () => {
   )
 
   expect(menu).toMatchSnapshot()
-
-  expect(menu.find('div').find('a'))
-})
-
-test('Menu - focusOnMount', () => {
-  const menu = shallow(
-    <Menu focusOnMount>
-      <MenuItem>boo!</MenuItem>
-    </Menu>
-  )
-
-  expect(menu).toMatchSnapshot()
-
   expect(menu.find('div').find('a'))
 })
 
@@ -42,34 +29,12 @@ test('Menu - composed', () => {
         <MenuItem icon="Validate">Validate</MenuItem>
         <MenuItem icon="ChartPie">Pizza!</MenuItem>
       </MenuGroup>
-      <MenuGroup canActivate label="Cheeses">
+      <MenuGroup label="Cheeses">
         <MenuItem>Gouda</MenuItem>
         <MenuItem>Cheddar</MenuItem>
         <MenuItem>Swiss</MenuItem>
       </MenuGroup>
       <MenuGroup>
-        <MenuItem icon="Beaker">Scary Stuff</MenuItem>
-      </MenuGroup>
-    </Menu>
-  )
-
-  expect(menu).toMatchSnapshot()
-})
-
-test('Menu - canActivate composition', () => {
-  const menu = shallow(
-    <Menu canActivate>
-      <MenuGroup>
-        <MenuItem icon="LogoRings">Looker</MenuItem>
-        <MenuItem icon="Validate">Validate</MenuItem>
-        <MenuItem icon="ChartPie">Pizza!</MenuItem>
-      </MenuGroup>
-      <MenuGroup canActivate label="Cheeses">
-        <MenuItem>Gouda</MenuItem>
-        <MenuItem>Cheddar</MenuItem>
-        <MenuItem>Swiss</MenuItem>
-      </MenuGroup>
-      <MenuGroup canActivate={false}>
         <MenuItem icon="Beaker">Scary Stuff</MenuItem>
       </MenuGroup>
     </Menu>
@@ -84,10 +49,8 @@ test('Menu - menu customization', () => {
     {
       bg: palette.purple500,
       color: palette.purple200,
-      icon: {
-        color: palette.purple300,
-        size: 20,
-      },
+      iconColor: palette.purple300,
+      iconSize: 20,
       marker: {
         color: palette.purple900,
         size: 10,
@@ -95,19 +58,12 @@ test('Menu - menu customization', () => {
       hover: {
         bg: palette.purple700,
         color: palette.white,
-        icon: {
-          color: palette.purple100,
-        },
+        iconColor: palette.purple100,
       },
       current: {
         bg: palette.purple200,
         color: palette.purple900,
-        icon: {
-          color: palette.purple500,
-        },
-      },
-      activated: {
-        color: palette.blue500,
+        iconColor: palette.purple500,
       },
       // tslint:disable:enable-literal-sort-keys
     }

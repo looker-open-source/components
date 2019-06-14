@@ -1,10 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Menu - canActivate composition 1`] = `ShallowWrapper {}`;
-
 exports[`Menu - composed 1`] = `ShallowWrapper {}`;
-
-exports[`Menu - focusOnMount 1`] = `ShallowWrapper {}`;
 
 exports[`Menu - menu customization 1`] = `ShallowWrapper {}`;
 

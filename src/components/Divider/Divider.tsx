@@ -3,14 +3,14 @@ import { css, styled } from '../../style'
 import { ThemedProps } from '../../types'
 import { Box, BoxPropsWithout } from '../Box'
 
-interface DividerProps
+export interface DividerProps
   extends BoxPropsWithout<HTMLDivElement, 'color' | 'size'> {
   size?: string | number
   customColor?: string
   appearance?: 'light' | 'dark' | 'onDark'
 }
 
-function dividerAppearance(props: ThemedProps<DividerProps>) {
+const dividerAppearance = (props: ThemedProps<DividerProps>) => {
   switch (props.appearance) {
     case 'light':
       return css`
@@ -29,17 +29,14 @@ function dividerAppearance(props: ThemedProps<DividerProps>) {
   }
 }
 
-const InternalDivider: React.FC<DividerProps> = ({
-  size,
-  customColor,
-  appearance,
-  ...props
-}) => {
+const InternalDivider: React.FC<DividerProps> = props => {
+  const { size, customColor, appearance, ...boxProps } = props
+
   return (
     <Box
       height={size || '1px'}
       bg={customColor || 'palette.charcoal300'}
-      {...props}
+      {...boxProps}
     />
   )
 }
@@ -49,5 +46,5 @@ const DividerFactory = React.forwardRef((props: DividerProps, ref) => (
 ))
 
 export const Divider = styled<DividerProps>(DividerFactory)`
-  ${dividerAppearance};
+  ${props => dividerAppearance(props)};
 `

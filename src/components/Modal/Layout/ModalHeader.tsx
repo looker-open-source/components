@@ -43,6 +43,7 @@ const Internal: React.FC<ModalHeaderProps> = ({
     >
       <Box mr="xlarge">{children}</Box>
       <Button
+        tabIndex={-1}
         ml="auto"
         p="none"
         variant="transparent"

@@ -15,16 +15,6 @@ test('MenuGroup', () => {
   )
 })
 
-test('MenuGroup - canActivate', () => {
-  assertSnapshot(
-    <MenuGroup canActivate>
-      <MenuItem>what?</MenuItem>
-      <MenuItem>who?</MenuItem>
-      <MenuItem>where?</MenuItem>
-    </MenuGroup>
-  )
-})
-
 test('MenuGroup - label', () => {
   assertSnapshot(
     <MenuGroup label="Questions">
@@ -60,38 +50,28 @@ test('MenuGroup - labelProps & labelStyles', () => {
 })
 
 test('MenuGrouo - menu customization', () => {
-  const menuCustomizations =
-    // tslint:disable:object-literal-sort-keys
-    {
-      bg: palette.purple500,
-      color: palette.purple200,
-      icon: {
-        color: palette.purple300,
-        size: 20,
-      },
-      marker: {
-        color: palette.purple900,
-        size: 10,
-      },
-      hover: {
-        bg: palette.purple700,
-        color: palette.white,
-        icon: {
-          color: palette.purple100,
-        },
-      },
-      current: {
-        bg: palette.purple200,
-        color: palette.purple900,
-        icon: {
-          color: palette.purple500,
-        },
-      },
-      activated: {
-        color: palette.blue500,
-      },
-      // tslint:disable:enable-literal-sort-keys
-    }
+  // tslint:disable:object-literal-sort-keys
+  const menuCustomizations = {
+    bg: palette.purple500,
+    color: palette.purple200,
+    iconColor: palette.purple300,
+    iconSize: 20,
+    current: {
+      bg: palette.purple200,
+      color: palette.purple900,
+      iconColor: palette.purple500,
+    },
+    hover: {
+      bg: palette.purple700,
+      color: palette.white,
+      iconColor: palette.purple100,
+    },
+    marker: {
+      color: palette.purple900,
+      size: 10,
+    },
+  }
+  // tslint:disable:enable-literal-sort-keys
 
   const menu = assertSnapshot(
     <MenuGroup customizationProps={menuCustomizations}>
