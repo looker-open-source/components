@@ -78,3 +78,33 @@ const content = (
   </Popover>
 </>
 ```
+
+### `stopPropagation` Example
+
+You can use the `pin` and `arrow` properties to customize the `Popover`'s behavior
+
+```js
+import { Button } from '../Button'
+import { List, ListItem } from '../List'
+import { Paragraph } from '../Text'
+import { Popover } from './Popover'
+import { PopoverContent } from './PopoverContent'
+
+const content = (
+  <PopoverContent p="large" width={350}>
+    No trouble at all...
+  </PopoverContent>
+)
+;<>
+  <a href="http://google.com" target="_blank">
+    Open Google in new Tab
+    <Popover stopPropagation content={content}>
+      {(onClick, ref) => (
+        <Button onClick={onClick} innerRef={ref}>
+          Show Popover
+        </Button>
+      )}
+    </Popover>
+  </a>
+</>
+```
