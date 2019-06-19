@@ -73,8 +73,16 @@ export abstract class ModalManager<
     )
   }
 
-  public open(e?: React.SyntheticEvent) {
-    if (e && this.props.stopPropagation) e.stopPropagation()
+  public open(event?: React.SyntheticEvent) {
+    if (event && this.props.stopPropagation) {
+      event.stopPropagation()
+
+      const nativeEvent = event.nativeEvent
+      nativeEvent.preventDefault && nativeEvent.preventDefault()
+      nativeEvent.stopImmediatePropagation &&
+        nativeEvent.stopImmediatePropagation()
+    }
+
     window.addEventListener('keydown', this.handleEscapePress)
     this.setState({ isOpen: true })
   }
