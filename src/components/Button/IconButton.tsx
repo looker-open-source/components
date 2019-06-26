@@ -49,15 +49,15 @@ export interface IconButtonProps
 function iconSizeHelper(size: IconButtonSizes) {
   switch (size) {
     case 'xxsmall':
-      return 10
+      return 12
     case 'xsmall':
-      return 14
+      return 16
     case 'small':
-      return 18
+      return 20
     case 'medium':
-      return 26
+      return 28
     default:
-      return 33
+      return 36
   }
 }
 
@@ -73,7 +73,7 @@ const InternalIconButton: React.FC<IconButtonProps> = ({
     color={color || 'neutral'}
     type="button"
     variant={outline ? 'outline' : 'transparent'}
-    p="xxsmall"
+    style={{ padding: '3px' }}
     {...boxProps}
   >
     <VisuallyHidden is="span">{label}</VisuallyHidden>

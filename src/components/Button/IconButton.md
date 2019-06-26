@@ -6,6 +6,7 @@ If you need an icon for purely decorative purposes use an `<Icon />` instead.
 
 ```js
 import { IconButton } from './IconButton'
+import { Button } from './Button'
 import { Tooltip } from '../Overlay'
 import { styled } from '../../style'
 
@@ -32,6 +33,8 @@ const FancyIconButton = styled(IconButton)`
     color="danger"
     mr="small"
   />
+
+  <Button size="large">Test</Button>
 
   <Tooltip content="Add a new file">
     {(eventHandlers, ref) => (
