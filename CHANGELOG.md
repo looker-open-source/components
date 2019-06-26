@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.0.1-beta.19.45 - 2019-06-26
+
+### Changed
+- Icons `DashboardFile`, `ModelFile` and `ViewFile` sizes changed to be on the correct icon grid.
+
 ## [0.0.1-beta.19.4] - 2019-06-19
 
 ### Bug Fixes
