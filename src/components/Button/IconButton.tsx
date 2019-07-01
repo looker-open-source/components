@@ -73,6 +73,7 @@ const InternalIconButton: React.FC<IconButtonProps> = ({
     color={color || 'neutral'}
     type="button"
     variant={outline ? 'outline' : 'transparent'}
+    p="none"
     style={{ padding: '3px' }}
     {...boxProps}
   >
