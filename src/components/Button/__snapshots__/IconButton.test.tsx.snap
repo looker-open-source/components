@@ -20,7 +20,7 @@ exports[`IconButton accepts color 1`] = `
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-size: 1rem;
-  padding: 0.25rem;
+  padding: 0rem;
 }
 
 .c3 {
@@ -49,8 +49,8 @@ exports[`IconButton accepts color 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  height: 14px;
-  width: 14px;
+  height: 16px;
+  width: 16px;
 }
 
 .c0 {
@@ -115,6 +115,7 @@ exports[`IconButton accepts color 1`] = `
   style={
     Object {
       "lineHeight": "34px",
+      "padding": "3px",
     }
   }
   type="button"
@@ -162,7 +163,7 @@ exports[`IconButton accepts events 1`] = `
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-size: 1rem;
-  padding: 0.25rem;
+  padding: 0rem;
 }
 
 .c3 {
@@ -191,8 +192,8 @@ exports[`IconButton accepts events 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  height: 14px;
-  width: 14px;
+  height: 16px;
+  width: 16px;
 }
 
 .c0 {
@@ -258,6 +259,7 @@ exports[`IconButton accepts events 1`] = `
   style={
     Object {
       "lineHeight": "34px",
+      "padding": "3px",
     }
   }
   type="button"
@@ -312,8 +314,8 @@ exports[`IconButton accepts events 2`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  height: 14px;
-  width: 14px;
+  height: 16px;
+  width: 16px;
 }
 
 .c1 {
@@ -336,7 +338,7 @@ exports[`IconButton accepts events 2`] = `
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-size: 1rem;
-  padding: 0.25rem;
+  padding: 0rem;
 }
 
 .c0 {
@@ -402,6 +404,7 @@ exports[`IconButton accepts events 2`] = `
   style={
     Object {
       "lineHeight": "34px",
+      "padding": "3px",
     }
   }
   type="button"
@@ -449,7 +452,7 @@ exports[`IconButton allows for ARIA attributes 1`] = `
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-size: 1rem;
-  padding: 0.25rem;
+  padding: 0rem;
 }
 
 .c3 {
@@ -478,8 +481,8 @@ exports[`IconButton allows for ARIA attributes 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  height: 14px;
-  width: 14px;
+  height: 16px;
+  width: 16px;
 }
 
 .c0 {
@@ -545,6 +548,7 @@ exports[`IconButton allows for ARIA attributes 1`] = `
   style={
     Object {
       "lineHeight": "34px",
+      "padding": "3px",
     }
   }
   type="button"
@@ -592,7 +596,7 @@ exports[`IconButton default 1`] = `
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-size: 1rem;
-  padding: 0.25rem;
+  padding: 0rem;
 }
 
 .c3 {
@@ -621,8 +625,8 @@ exports[`IconButton default 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  height: 14px;
-  width: 14px;
+  height: 16px;
+  width: 16px;
 }
 
 .c0 {
@@ -687,6 +691,7 @@ exports[`IconButton default 1`] = `
   style={
     Object {
       "lineHeight": "34px",
+      "padding": "3px",
     }
   }
   type="button"
@@ -734,7 +739,7 @@ exports[`IconButton outline 1`] = `
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-size: 1rem;
-  padding: 0.25rem;
+  padding: 0rem;
 }
 
 .c3 {
@@ -763,8 +768,8 @@ exports[`IconButton outline 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  height: 14px;
-  width: 14px;
+  height: 16px;
+  width: 16px;
 }
 
 .c0 {
@@ -829,6 +834,7 @@ exports[`IconButton outline 1`] = `
   style={
     Object {
       "lineHeight": "34px",
+      "padding": "3px",
     }
   }
   type="button"
@@ -876,7 +882,7 @@ exports[`IconButton resized 1`] = `
   display: inline-flex;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
   font-size: 1rem;
-  padding: 0.25rem;
+  padding: 0rem;
 }
 
 .c3 {
@@ -905,8 +911,8 @@ exports[`IconButton resized 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  height: 33px;
-  width: 33px;
+  height: 36px;
+  width: 36px;
 }
 
 .c0 {
@@ -971,6 +977,7 @@ exports[`IconButton resized 1`] = `
   style={
     Object {
       "lineHeight": "34px",
+      "padding": "3px",
     }
   }
   type="button"
