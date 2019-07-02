@@ -37,6 +37,21 @@ import { MenuItem } from './MenuItem'
 </Menu>
 ```
 
+### Menu Item Spacing
+
+Menus accept a `compact` prop that will make the spacing between the `MenuItems` smaller
+
+```js
+import { Menu } from './Menu'
+import { MenuItem } from './MenuItem'
+;<Menu compact>
+  <MenuItem icon="LogoRings">Looker</MenuItem>
+  <MenuItem icon="Validate">Validate</MenuItem>
+  <MenuItem icon="ChartPie">Pizza</MenuItem>
+</Menu>
+```
+
+
 ### Compose Menus
 
 Menu can be easily composed with `Popover`, `Drawer` and `Dialog`

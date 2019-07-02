@@ -12,30 +12,40 @@ export interface MenuGroupProps
   labelProps?: HeadingProps
   labelStyles?: React.CSSProperties
   customizationProps?: MenuItemCustomization
+  compact?: boolean
+  groupLabelShadow?: boolean
 }
 
 const InternalMenuGroup: React.FC<MenuGroupProps> = ({
+  groupLabelShadow,
   children,
   label,
   labelProps,
   labelStyles,
   ...props
 }) => {
-  const { customizationProps, ...boxProps } = props
+  const { customizationProps, compact, ...boxProps } = props
   const menu = React.useContext(MenuContext)
+
+  const customizations = customizationProps
+    ? customizationProps
+    : menu.customizationProps
+
+  const shadow =
+    groupLabelShadow !== undefined ? groupLabelShadow : menu.groupLabelShadow
 
   const labelComponent = label && (
     <Heading
-      bg={palette.white}
+      bg={customizations ? customizations.bg : palette.white}
       fontSize="xsmall"
       is="h2"
       px="medium"
-      py="small"
+      py={compact || menu.compact ? 'small' : 'xxsmall'}
       transform="upper"
-      position="sticky"
+      position={shadow ? 'sticky' : 'initial'}
       top="0"
       fontWeight="semiBold"
-      boxShadow={`0 4px 8px -2px ${palette.charcoal200}`}
+      boxShadow={shadow ? `0 4px 8px -2px ${palette.charcoal200}` : 'none'}
       {...labelProps}
       style={labelStyles}
       zIndex={2}
@@ -47,10 +57,16 @@ const InternalMenuGroup: React.FC<MenuGroupProps> = ({
   return (
     <MenuContext.Provider
       value={{
+        compact: compact || menu.compact,
         customizationProps: customizationProps || menu.customizationProps,
       }}
     >
-      <Box is="li" {...boxProps}>
+      <Box
+        is="li"
+        {...boxProps}
+        bg={customizations ? customizations.bg : palette.white}
+        py="xxsmall"
+      >
         {labelComponent}
         <List nomarker>{children}</List>
       </Box>

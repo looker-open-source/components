@@ -56,6 +56,7 @@ const InternalMenuItem: React.FC<MenuItemProps> = props => {
     itemRole,
     href,
     target,
+    compact,
     ...boxProps
   } = props
 
@@ -68,6 +69,9 @@ const InternalMenuItem: React.FC<MenuItemProps> = props => {
   if (customizationProps && menu.customizationProps) {
     customizations = deepmerge(customizationProps, menu.customizationProps)
   }
+
+  const isCompact = compact !== undefined ? compact : menu.compact
+  const compactIconModifier = isCompact ? 1.25 : 1
 
   const style = assignCustomizations(defaultMenuItemStyle, customizations)
   const state = current ? style.current : style.initial
@@ -86,7 +90,7 @@ const InternalMenuItem: React.FC<MenuItemProps> = props => {
       is="li"
       onClick={onClick}
       px="medium"
-      py="small"
+      py={isCompact ? 'xxsmall' : 'small'}
       {...listItemProps}
       {...boxProps}
     >
@@ -97,7 +101,12 @@ const InternalMenuItem: React.FC<MenuItemProps> = props => {
         target={target}
       >
         {icon && (
-          <Icon name={icon} mr="xsmall" size={iconSize} color={iconColor} />
+          <Icon
+            name={icon}
+            mr="xsmall"
+            size={iconSize / compactIconModifier}
+            color={iconColor}
+          />
         )}
         {children}
       </MenuItemButton>

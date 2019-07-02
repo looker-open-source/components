@@ -8,10 +8,14 @@ import { moveFocus } from './moveFocus'
 
 export interface MenuProps extends BoxProps<HTMLDivElement>, MenuContextProps {
   groupDividers?: boolean
+  groupLabelShadow?: boolean
+  compact?: boolean
 }
 
 const InternalMenu: React.FC<MenuProps> = ({
   customizationProps,
+  groupLabelShadow = true,
+  compact,
   children,
   ...props
 }) => {
@@ -24,7 +28,9 @@ const InternalMenu: React.FC<MenuProps> = ({
   }
 
   return (
-    <MenuContext.Provider value={{ customizationProps }}>
+    <MenuContext.Provider
+      value={{ customizationProps, groupLabelShadow, compact }}
+    >
       <HotKeys keyMap={keyMap} handlers={keyHandlers}>
         <div ref={ref as React.RefObject<HTMLDivElement>}>
           <Box

@@ -25,6 +25,16 @@ test('MenuGroup - label', () => {
   )
 })
 
+test('MenuGroup - label no shadow', () => {
+  assertSnapshot(
+    <MenuGroup label="Questions" groupLabelShadow={false}>
+      <MenuItem>what?</MenuItem>
+      <MenuItem>who?</MenuItem>
+      <MenuItem>where?</MenuItem>
+    </MenuGroup>
+  )
+})
+
 test('MenuGroup - JSX label', () => {
   assertSnapshot(
     <MenuGroup label={<Box>Questions</Box>}>

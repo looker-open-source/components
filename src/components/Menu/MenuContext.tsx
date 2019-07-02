@@ -3,6 +3,8 @@ import { MenuItemCustomization } from './MenuItem/menuItemCustomization'
 
 export interface MenuContextProps {
   customizationProps?: MenuItemCustomization
+  compact?: boolean
+  groupLabelShadow?: boolean
 }
 
 export const MenuContext = React.createContext<MenuContextProps>({})

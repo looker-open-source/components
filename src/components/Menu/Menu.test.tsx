@@ -1,8 +1,7 @@
-import { shallow } from 'enzyme'
+import { mount, shallow } from 'enzyme'
 import 'jest-styled-components'
 import * as React from 'react'
-
-import { palette } from '../../style'
+import { palette, theme, ThemeProvider } from '../../style'
 import { Menu } from './Menu'
 import { MenuGroup } from './MenuGroup'
 import { MenuItem } from './MenuItem'
@@ -38,6 +37,54 @@ test('Menu - composed', () => {
         <MenuItem icon="Beaker">Scary Stuff</MenuItem>
       </MenuGroup>
     </Menu>
+  )
+
+  expect(menu).toMatchSnapshot()
+})
+
+test('Menu - compact', () => {
+  const menu = mount(
+    <ThemeProvider theme={theme}>
+      <Menu compact>
+        <MenuGroup>
+          <MenuItem icon="LogoRings">Looker</MenuItem>
+          <MenuItem icon="Validate">Validate</MenuItem>
+          <MenuItem icon="ChartPie">Pizza!</MenuItem>
+        </MenuGroup>
+        <MenuGroup label="Cheeses">
+          <MenuItem>Gouda</MenuItem>
+          <MenuItem>Cheddar</MenuItem>
+          <MenuItem>Swiss</MenuItem>
+        </MenuGroup>
+        <MenuGroup>
+          <MenuItem icon="Beaker">Scary Stuff</MenuItem>
+        </MenuGroup>
+      </Menu>
+    </ThemeProvider>
+  )
+
+  expect(menu).toMatchSnapshot()
+})
+
+test('Menu - no label shadow', () => {
+  const menu = mount(
+    <ThemeProvider theme={theme}>
+      <Menu groupLabelShadow={false}>
+        <MenuGroup>
+          <MenuItem icon="LogoRings">Looker</MenuItem>
+          <MenuItem icon="Validate">Validate</MenuItem>
+          <MenuItem icon="ChartPie">Pizza!</MenuItem>
+        </MenuGroup>
+        <MenuGroup label="Cheeses">
+          <MenuItem>Gouda</MenuItem>
+          <MenuItem>Cheddar</MenuItem>
+          <MenuItem>Swiss</MenuItem>
+        </MenuGroup>
+        <MenuGroup>
+          <MenuItem icon="Beaker">Scary Stuff</MenuItem>
+        </MenuGroup>
+      </Menu>
+    </ThemeProvider>
   )
 
   expect(menu).toMatchSnapshot()
