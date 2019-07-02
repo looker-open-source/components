@@ -61,6 +61,7 @@ const TooltipInternal: React.FC<TooltipInternalProps> = ({
           {...CustomizableTooltipAttributes.surface}
         >
           <Paragraph
+            style={{ overflowWrap: 'anywhere', hyphens: 'auto' }}
             fontSize="xsmall"
             maxWidth={maxWidth || '16rem'}
             p="xsmall"
