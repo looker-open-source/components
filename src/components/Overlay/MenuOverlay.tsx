@@ -33,7 +33,11 @@ const MenuOverlayInternal: React.FC<MenuOverlayInternalProps> = ({
   }
 
   return (
-    <Overlay backdrop={backdrop} {...overlayProps}>
+    <Overlay
+      backdrop={backdrop}
+      experimentalModifiers={{ flip: { enabled: false } }}
+      {...overlayProps}
+    >
       {(props: OverlayChildrenProps) => (
         <OverlaySurface
           arrow={arrow}

@@ -1,5 +1,5 @@
 import FocusTrap from 'focus-trap-react'
-import { Placement } from 'popper.js'
+import { Modifiers, Placement } from 'popper.js'
 import * as React from 'react'
 import { Popper, PopperArrowProps } from 'react-popper'
 import { ModalBackdrop, ModalContext } from '../Modal'
@@ -39,11 +39,6 @@ export interface OverlayInteractiveProps {
    */
   triggerRef?: React.RefObject<HTMLElement>
   /**
-   * Pins popper placement and prevents popper from moving on window resize.
-   * @default false
-   */
-  pin?: boolean
-  /**
    * Can be one of: top, bottom, left, right, auto, with the modifiers: start,
    * end. This value comes directly from popperjs. See
    * https://popper.js.org/popper-documentation.html#Popper.placements for more
@@ -59,6 +54,12 @@ export interface OverlayInteractiveProps {
    * @default false
    */
   backdrop?: boolean | React.CSSProperties
+
+  /**
+   * Send custom modifiers to the underlying Popper.js instance.
+   * This is only intended for internal Lens usage. Use at your own risk / experimental.
+   */
+  experimentalModifiers?: Modifiers
 }
 
 export interface OverlayProps extends OverlayInteractiveProps {
@@ -89,13 +90,13 @@ export interface OverlayProps extends OverlayInteractiveProps {
 
 export const Overlay: React.FC<OverlayProps> = ({
   backdrop = false,
+  experimentalModifiers,
   ...props
 }) => {
   const triggerRef =
     props.triggerRef && props.triggerRef.current
       ? props.triggerRef.current
       : undefined
-
   const surface = (
     <FocusTrap focusTrapOptions={{ clickOutsideDeactivates: true }}>
       <ModalPortal portalRef={props.portalRef}>
@@ -108,11 +109,18 @@ export const Overlay: React.FC<OverlayProps> = ({
           positionFixed
           placement={props.placement}
           modifiers={{
-            flip: { enabled: props.pin ? false : true },
+            flip: {
+              behavior: 'flip',
+              enabled: true,
+              flipVariations: true,
+              flipVariationsByContent: true,
+            },
             preventOverflow: {
+              boundariesElement: 'viewport',
               escapeWithReference: true,
               padding: 0,
             },
+            ...experimentalModifiers,
           }}
           referenceElement={triggerRef}
         >

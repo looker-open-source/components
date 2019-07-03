@@ -26,8 +26,14 @@ export const OverlayHover: React.FC<OverlayHoverProps> = ({
         innerRef={setSurfaceRef}
         placement={props.placement}
         modifiers={{
-          flip: { enabled: props.pin ? false : true },
+          flip: {
+            behavior: 'flip',
+            enabled: true,
+            flipVariations: true,
+            flipVariationsByContent: true,
+          },
           preventOverflow: {
+            boundariesElement: 'viewport',
             escapeWithReference: true,
             padding: 0,
           },
