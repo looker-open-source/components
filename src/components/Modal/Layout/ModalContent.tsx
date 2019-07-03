@@ -57,7 +57,7 @@ class Internal extends React.Component<InternalContentProps, ContentState> {
         flex="8"
         {...props}
       >
-        <Box p="large" {...innerProps}>
+        <Box p="large" px="xlarge" {...innerProps}>
           {children}
         </Box>
       </ContentContainer>

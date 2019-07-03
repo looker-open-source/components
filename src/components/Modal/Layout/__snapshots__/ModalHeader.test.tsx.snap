@@ -17,14 +17,12 @@ exports[`ModalHeader 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-basis: fit-content;
-  -ms-flex-preferred-size: fit-content;
-  flex-basis: fit-content;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  min-height: 4.75rem;
   padding: 1.25rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .c1 {

@@ -3,13 +3,58 @@
 ModalFooter supports all [`Box`](/#!/Box) properties.
 
 ```js
+import { Box } from '../../Box'
 import { Button } from '../../Button'
-import { ModalFooter } from '../Layout'
-
-;<ModalFooter>
-  <Button mx="medium" variant="transparent">
-    Cancel
-  </Button>
-  <Button>Do stuff...</Button>
-</ModalFooter>
+import { Divider } from '../../Divider'
+import { Icon } from '../../Icon'
+import { ModalContent, ModalFooter } from '../Layout'
+;<>
+  <ModalFooter>
+    <Button>Save Changes</Button>
+  </ModalFooter>
+  <Divider />
+  <ModalFooter>
+    <Button>Save Changes</Button>
+    <Button variant="transparent">Cancel</Button>
+  </ModalFooter>
+  <Divider />
+  <ModalFooter
+    secondary={
+      <Button variant="outline" iconBefore="Plus">
+        Create Item
+      </Button>
+    }
+  >
+    <Button>Save Changes</Button>
+    <Button variant="transparent">Cancel</Button>
+  </ModalFooter>
+  <Divider />
+  <ModalFooter
+    secondary={
+      <>
+        <Button variant="outline" iconBefore="Plus">
+          Create Item
+        </Button>
+        <Button variant="outline" iconBefore="Plus">
+          Yet Another
+        </Button>
+      </>
+    }
+  >
+    <Button>Save Changes</Button>
+    <Button variant="transparent">Cancel</Button>
+  </ModalFooter>
+  <Divider />
+  <ModalContent>
+    <Box bg="lavender" p="medium">
+      Example content
+    </Box>
+  </ModalContent>
+  <ModalFooter>
+    <Button size="xsmall">Save Changes</Button>
+    <Button size="xsmall" variant="transparent">
+      Cancel
+    </Button>
+  </ModalFooter>
+</>
 ```

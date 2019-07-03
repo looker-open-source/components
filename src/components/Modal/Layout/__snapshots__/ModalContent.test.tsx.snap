@@ -24,6 +24,8 @@ exports[`ModalContent - no overflow 1`] = `
   padding: 0;
   vertical-align: baseline;
   padding: 1.25rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .c0.overflow {
@@ -51,6 +53,8 @@ exports[`ModalContent - no overflow 2`] = `
   padding: 0;
   vertical-align: baseline;
   padding: 1.25rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .c1 {

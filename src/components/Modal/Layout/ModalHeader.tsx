@@ -34,11 +34,10 @@ const Internal: React.FC<ModalHeaderProps> = ({
     <Box
       alignItems="center"
       display="flex"
-      flexBasis="fit-content"
       flexDirection="row"
       is="header"
-      minHeight="4.75rem"
       p="large"
+      px="xlarge"
       {...props}
     >
       <Box mr="xlarge">{children}</Box>

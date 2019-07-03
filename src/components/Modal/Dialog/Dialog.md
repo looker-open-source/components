@@ -55,9 +55,6 @@ const content = (
     <ModalContext.Consumer>
       {({ closeModal }) => (
         <ModalFooter>
-          <Button onClick={closeModal} variant="transparent" mr="small">
-            Cancel
-          </Button>
           <Button
             onClick={() => {
               alert("doin' things...")
@@ -66,6 +63,9 @@ const content = (
             color="danger"
           >
             Yes, Delete "Stuff"
+          </Button>
+          <Button onClick={closeModal} variant="transparent">
+            Cancel
           </Button>
         </ModalFooter>
       )}
