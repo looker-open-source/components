@@ -44,10 +44,8 @@ test('Selection Drawer, Shown', () => {
       </ModalHeader>
       <ModalContent>Stuff and things...</ModalContent>
       <ModalFooter>
-        <Button variant="transparent" mr="small">
-          Cancel
-        </Button>
         <Button>Pick some stuff</Button>
+        <Button variant="transparent">Cancel</Button>
       </ModalFooter>
     </Drawer>
   )

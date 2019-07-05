@@ -9,9 +9,7 @@ import { ModalFooter } from './ModalFooter'
 test('ModalFooter with Button', () => {
   assertSnapshot(
     <ModalFooter>
-      <Button variant="transparent" mr="xsmall">
-        Cancel
-      </Button>
+      <Button variant="transparent">Cancel</Button>
     </ModalFooter>
   )
 })
@@ -23,7 +21,7 @@ test('ModalFooter with ModalContext', () => {
     <ModalContext.Consumer>
       {({ closeModal }) => (
         <ModalFooter>
-          <Button onClick={closeModal} variant="transparent" mr="small">
+          <Button onClick={closeModal} variant="transparent">
             Cancel
           </Button>
           <Button

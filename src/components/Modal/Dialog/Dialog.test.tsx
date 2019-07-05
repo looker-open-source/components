@@ -131,10 +131,8 @@ test('Confirmation Dialog, Shown', () => {
         <Heading>Are you sure you want to delete "Stuff"?</Heading>
       </ModalHeader>
       <ModalFooter>
-        <Button variant="transparent" mr="medium">
-          Cancel
-        </Button>
         <Button color="danger">Yes, Delete "Stuff"</Button>
+        <Button variant="transparent">Cancel</Button>
       </ModalFooter>
     </Dialog>
   )
