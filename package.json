@@ -87,10 +87,12 @@
     "uuid": "^3.3.2"
   },
   "peerDependencies": {
-    "@types/react": "16.8.6",
-    "@types/react-dom": "16.8.6",
-    "@types/styled-system": "^3.0.9",
-    "styled-components": "^3.4.9"
+    "react": "^16.8",
+    "react-dom": "^16.8",
+    "@types/react": "^16.8",
+    "@types/react-dom": "^16.8",
+    "@types/styled-system": "^3.0",
+    "styled-components": "^3.4"
   },
   "files": [
     "dist"
