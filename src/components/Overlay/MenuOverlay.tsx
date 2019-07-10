@@ -70,7 +70,6 @@ export class MenuOverlay extends ModalManager<MenuOverlayProps> {
 
   public open() {
     this.setState(prevState => ({ isOpen: !prevState.isOpen }))
-    window.addEventListener('keydown', this.handleEscapePress)
     document.addEventListener('mousedown', this.checkClickOrigin)
   }
 

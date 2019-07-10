@@ -48,6 +48,10 @@ class Internal extends React.Component<InternalContentProps, ContentState> {
   public render() {
     const { children, renderedHeight, innerProps, ...props } = this.props
 
+    if (innerProps && innerProps.p && !innerProps.px) {
+      innerProps.px = innerProps.p
+    }
+
     return (
       <ContentContainer
         overflow="auto"

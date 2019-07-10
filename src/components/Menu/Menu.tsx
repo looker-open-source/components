@@ -21,17 +21,18 @@ const InternalMenu: React.FC<MenuProps> = ({
 }) => {
   const { groupDividers, ...boxProps } = props
   const ref = React.useRef<null | HTMLElement>(null)
-  const keyMap = { moveDown: 'down', moveUp: 'up' }
-  const keyHandlers = {
-    moveDown: () => moveFocus(1, 0, ref),
-    moveUp: () => moveFocus(-1, -1, ref),
-  }
 
   return (
     <MenuContext.Provider
       value={{ customizationProps, groupLabelShadow, compact }}
     >
-      <HotKeys keyMap={keyMap} handlers={keyHandlers}>
+      <HotKeys
+        keyMap={{ MOVE_DOWN: 'down', MOVE_UP: 'up' }}
+        handlers={{
+          MOVE_DOWN: () => moveFocus(1, 0, ref),
+          MOVE_UP: () => moveFocus(-1, -1, ref),
+        }}
+      >
         <div ref={ref as React.RefObject<HTMLDivElement>}>
           <Box
             is="ul"

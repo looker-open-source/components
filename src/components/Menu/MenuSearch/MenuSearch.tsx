@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { HotKeys, ObserveKeys } from 'react-hotkeys'
 import { palette, styled } from '../../../style'
 import { Box, BoxProps } from '../../Box'
 import { InputText, InputTextProps } from '../../Form/Inputs'
@@ -38,34 +39,30 @@ const InternalMenuSearch: React.FC<MenuSearchProps> = ({
   value,
   ...props
 }) => {
-  const onKeyUp = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (!event.target) return
-
-    switch (event.key) {
-      case 'ArrowDown':
-        moveFocus(1, 0, menuRef)
-        break
-      case 'ArrowUp':
-        moveFocus(-1, -1, menuRef)
-        break
-    }
-  }
-
   return (
     <Box position="relative">
-      <SearchInput
-        type="search"
-        value={value}
-        borderRadius={0}
-        border="none"
-        borderBottom="1px solid"
-        borderColor={palette.charcoal200}
-        width="100%"
-        p="large"
-        height="auto"
-        onKeyUp={onKeyUp}
-        {...props}
-      />
+      <HotKeys
+        keyMap={{ MOVE_DOWN: 'down', MOVE_UP: 'up' }}
+        handlers={{
+          MOVE_DOWN: () => moveFocus(1, 0, menuRef),
+          MOVE_UP: () => moveFocus(-1, -1, menuRef),
+        }}
+      >
+        <ObserveKeys except={[]} only={['down', 'up']}>
+          <SearchInput
+            type="search"
+            value={value}
+            borderRadius={0}
+            border="none"
+            borderBottom="1px solid"
+            borderColor={palette.charcoal200}
+            width="100%"
+            p="large"
+            height="auto"
+            {...props}
+          />
+        </ObserveKeys>
+      </HotKeys>
       {!hideControls && (
         <MenuSearchControls
           onClear={onClear}
