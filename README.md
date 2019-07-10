@@ -69,18 +69,6 @@ To publish components:
 
 This will publish Lens to Looker's private npm server, Nexus.
 
-# Building the Lens Style Guide
-
-Lens is not current published anywhere on the web. To test the styleguidist build you can:
-
-1.  run `yarn build-styleguide`
-
-This should build the Lens style guide and place the build artifacts in `./styleguide`. The built artifacts can be tested by:
-
-1.  `cd styleguide`
-1.  `python -m SimpleHTTPServer`
-1.  open `localhost:8000`
-
 # Project Commands
 
 Each of these scripts can be run with `yarn <command>`. They are defined in the package.json [`scripts` stanza](https://github.com/looker/lens/blob/master/package.json#L122).
