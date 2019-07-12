@@ -83,13 +83,11 @@ export abstract class ModalManager<
         nativeEvent.stopImmediatePropagation()
     }
 
-    window.addEventListener('keydown', this.handleEscapePress)
     this.setState({ isOpen: true })
   }
 
   public close() {
     if (this.props.canClose && !this.props.canClose()) return
-    window.removeEventListener('keydown', this.handleEscapePress)
     this.setState({ isOpen: false })
   }
 
@@ -97,18 +95,4 @@ export abstract class ModalManager<
     content: React.ReactNode,
     props: ManagedModalProps
   ): React.ReactNode
-
-  protected handleEscapePress = (event: KeyboardEvent) => {
-    if (event.key !== 'Escape') return
-
-    if (!event.target) return
-    if (
-      !this.portalRef.current ||
-      !this.portalRef.current.contains(event.target as Node)
-    ) {
-      return
-    }
-
-    this.close()
-  }
 }

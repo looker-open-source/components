@@ -5336,17 +5336,9 @@ lodash.flattendeep@^4.4.0:
   version "4.4.0"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/lodash.flattendeep/-/lodash.flattendeep-4.4.0.tgz#fb030917f86a3134e5bc9bec0d69e0013ddfedb2"
 
-lodash.isboolean@^3.0.3:
-  version "3.0.3"
-  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/lodash.isboolean/-/lodash.isboolean-3.0.3.tgz#6c2e171db2a257cd96802fd43b01b20d5f5870f6"
-
 lodash.isequal@^4.5.0:
   version "4.5.0"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/lodash.isequal/-/lodash.isequal-4.5.0.tgz#415c4478f2bcc30120c22ce10ed3226f7d3e18e0"
-
-lodash.isobject@^3.0.2:
-  version "3.0.2"
-  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/lodash.isobject/-/lodash.isobject-3.0.2.tgz#3c8fb8d5b5bf4bf90ae06e14f2a530a4ed935e1d"
 
 lodash.sortby@^4.7.0:
   version "4.7.0"
@@ -5756,10 +5748,6 @@ mock-require@^3.0.2:
 moo@^0.4.3:
   version "0.4.3"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/moo/-/moo-0.4.3.tgz#3f847a26f31cf625a956a87f2b10fbc013bfd10e"
-
-mousetrap@^1.5.2:
-  version "1.6.3"
-  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/mousetrap/-/mousetrap-1.6.3.tgz#80fee49665fd478bccf072c9d46bdf1bfed3558a"
 
 move-concurrently@^1.0.1:
   version "1.0.1"
@@ -6698,7 +6686,7 @@ prop-types-exact@^1.2.0:
     object.assign "^4.1.0"
     reflect.ownkeys "^0.2.0"
 
-prop-types@^15.5.4, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.5.4, prop-types@^15.5.8, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://nexusrepo.looker.com/repository/looker-npm-group/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   dependencies:
@@ -6959,15 +6947,12 @@ react-group@^3.0.0:
   dependencies:
     prop-types "^15.6.2"
 
-react-hotkeys@^1.1.4:
-  version "1.1.4"
-  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/react-hotkeys/-/react-hotkeys-1.1.4.tgz#a0712aa2e0c03a759fd7885808598497a4dace72"
+react-hotkeys@^2.0.0-pre8:
+  version "2.0.0-pre8"
+  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/react-hotkeys/-/react-hotkeys-2.0.0-pre8.tgz#d2004697eb6452137779613955cb7bd3bb687c52"
+  integrity sha512-73uTFx4xCiAxfPdFUjiz/D0rglsB9OvYiTsz/vmjcpwKsyUWV/SVQG4fFujz+3bYkoiePjxy5RQUkv08Sge16Q==
   dependencies:
-    lodash.isboolean "^3.0.3"
-    lodash.isequal "^4.5.0"
-    lodash.isobject "^3.0.2"
-    mousetrap "^1.5.2"
-    prop-types "^15.6.0"
+    prop-types "^15.6.1"
 
 react-icon-base@2.1.0:
   version "2.1.0"
