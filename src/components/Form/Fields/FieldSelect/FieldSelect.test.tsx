@@ -1,8 +1,12 @@
 import { mount, render } from 'enzyme'
 import * as React from 'react'
-import { createWithTheme } from '../../../../../test/utils/create_with_theme'
+import {
+  createWithTheme,
+  mountWithTheme,
+} from '../../../../../test/utils/create_with_theme'
 import { assertSnapshot } from '../../../../../test/utils/snapshot'
 import { theme, ThemeProvider } from '../../../../style'
+import { Label } from '../../Label/Label'
 import { FieldSelect } from './FieldSelect'
 
 test('A FieldSelect', () => {
@@ -67,7 +71,7 @@ test('A required FieldSelect', () => {
 })
 
 test('A FieldSelect with an error validation aligned to the bottom', () => {
-  const component = createWithTheme(
+  const component = mountWithTheme(
     <FieldSelect
       label="👍"
       name="thumbsUp"
@@ -76,10 +80,8 @@ test('A FieldSelect with an error validation aligned to the bottom', () => {
       alignValidationMessage="bottom"
     />
   )
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
-  expect(tree!.children![0].props.htmlFor).toEqual(
-    tree!.children![1].children![0].children![0].props.id
+  expect(component.find(Label).props().htmlFor).toEqual(
+    component.find('select').props().id
   )
 })
 
@@ -95,9 +97,6 @@ test('A FieldSelect with an error validation aligned to the left', () => {
   )
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
-  expect(tree!.children![0].props.htmlFor).toEqual(
-    tree!.children![1].children![0].children![0].props.id
-  )
 })
 
 test('A FieldSelect with an error validation aligned to the right', () => {
@@ -112,7 +111,4 @@ test('A FieldSelect with an error validation aligned to the right', () => {
   )
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
-  expect(tree!.children![0].props.htmlFor).toEqual(
-    tree!.children![1].children![0].children![0].props.id
-  )
 })

@@ -1,0 +1,2 @@
+yarn.lock binary linguist-generated=true
+*.snap -text merge=ours linguist-generated=true
