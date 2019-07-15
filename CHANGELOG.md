@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.0.1-beta.21] - 2019-07-14
+
+### Changed
+
+- Documentation fix (removed spurious note about Lens not be published online)
+- Made `react` and `react-dom` peerDependencies
+- Update to `react-hotkeys` 2.x and use it for all hotkey registration consistently (`Modal` now supports hotkeys, previously only `ModalManager` offered support)
+- Upgraded all dependencies except Styled Components & Styled System
+- Addressed `lodash` security notice by resolving to version with fixes
+
 ## [0.0.1-beta.20] - 2019-07-05
 
 ### Changed
