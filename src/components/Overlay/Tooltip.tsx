@@ -24,6 +24,11 @@ export interface TooltipBaseProps {
    */
   maxWidth?: string
   /**
+   * Specify a fixed content width.
+   * @default auto
+   */
+  width?: string
+  /**
    * Specify the text aligment within tooltips.
    * @default center
    */
@@ -50,6 +55,7 @@ const TooltipInternal: React.FC<TooltipInternalProps> = ({
   children,
   textAlign,
   maxWidth,
+  width,
   ...overlayProps
 }) => {
   return (
@@ -64,6 +70,7 @@ const TooltipInternal: React.FC<TooltipInternalProps> = ({
             style={{ overflowWrap: 'anywhere', hyphens: 'auto' }}
             fontSize="xsmall"
             maxWidth={maxWidth || '16rem'}
+            width={width || 'auto'}
             p="xsmall"
             m="none"
             textAlign={textAlign || 'center'}
