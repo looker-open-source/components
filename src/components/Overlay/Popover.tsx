@@ -35,7 +35,7 @@ const PopoverInternal: React.FC<PopoverProps> = ({
   </Overlay>
 )
 
-export class Popover extends ModalManager<ModalManagerProps> {
+export class Popover extends ModalManager<ModalManagerProps & PopoverProps> {
   protected renderModal(content: React.ReactNode, props: ModalManagerProps) {
     return (
       <PopoverInternal
