@@ -1,16 +1,15 @@
 import { Placement } from 'popper.js'
 import * as React from 'react'
 import { Popper } from 'react-popper'
+import { ManagedHoverModalProps_ } from '../Modal/ModalHoverManager'
 import { ModalPortal } from '../Modal/ModalPortal'
 import { OverlayChildrenProps } from './Overlay'
 
-export interface OverlayHoverProps {
+export interface OverlayHoverProps extends Partial<ManagedHoverModalProps_> {
   children: (props: OverlayChildrenProps) => React.ReactNode
   isOpen?: boolean
-  onMouseOut?: (event: React.MouseEvent) => void
   placement?: Placement
   portalRef?: React.RefObject<HTMLElement>
-  setSurfaceRef?: (ref: HTMLElement | null) => void
   triggerRef?: React.RefObject<HTMLElement>
 }
 
