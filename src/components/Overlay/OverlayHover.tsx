@@ -1,30 +1,37 @@
+import { Placement } from 'popper.js'
 import * as React from 'react'
 import { Popper } from 'react-popper'
 import { ModalPortal } from '../Modal/ModalPortal'
-import { OverlayProps } from './Overlay'
+import { OverlayChildrenProps } from './Overlay'
 
-export interface OverlayHoverProps extends OverlayProps {
-  setSurfaceRef?: (ref: HTMLElement | null) => void
+export interface OverlayHoverProps {
+  children: (props: OverlayChildrenProps) => React.ReactNode
+  isOpen?: boolean
   onMouseOut?: (event: React.MouseEvent) => void
+  placement?: Placement
+  portalRef?: React.RefObject<HTMLElement>
+  setSurfaceRef?: (ref: HTMLElement | null) => void
+  triggerRef?: React.RefObject<HTMLElement>
 }
 
 export const OverlayHover: React.FC<OverlayHoverProps> = ({
   children,
   isOpen,
+  onMouseOut,
+  placement: outerPlacement,
+  portalRef,
   setSurfaceRef,
-  ...props
+  triggerRef,
 }) => {
-  const triggerRef =
-    props.triggerRef && props.triggerRef.current
-      ? props.triggerRef.current
-      : undefined
+  const referenceElement =
+    triggerRef && triggerRef.current ? triggerRef.current : undefined
 
   return isOpen ? (
-    <ModalPortal portalRef={props.portalRef}>
+    <ModalPortal portalRef={portalRef}>
       <Popper
         positionFixed
         innerRef={setSurfaceRef}
-        placement={props.placement}
+        placement={outerPlacement}
         modifiers={{
           flip: {
             behavior: 'flip',
@@ -38,13 +45,13 @@ export const OverlayHover: React.FC<OverlayHoverProps> = ({
             padding: 0,
           },
         }}
-        referenceElement={triggerRef}
+        referenceElement={referenceElement}
       >
-        {({ ref, style, arrowProps, placement }) =>
+        {({ ref, style, arrowProps, placement: innerPlacement }) =>
           children({
             arrowProps,
-            eventHandlers: { onMouseOut: props.onMouseOut },
-            placement,
+            eventHandlers: { onMouseOut },
+            placement: innerPlacement,
             ref,
             style,
           })
