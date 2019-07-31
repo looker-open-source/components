@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { fadeIn, palette, shadows } from '../../style'
 import { CustomizableAttributes } from '../../types/attributes'
-import { ManagedModalProps, ModalSurfaceStyleProps } from '../Modal'
+import { ModalSurfaceStyleProps } from '../Modal'
 import {
   ModalHoverManager,
   ModalHoverManagerProps,
@@ -12,6 +12,9 @@ import {
   OverlayInteractiveProps,
   OverlaySurface,
 } from './'
+
+// Remove when we upgrade to TypeScript 3.5
+type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
 
 const RichTooltipInternal: React.FC<OverlayInteractiveProps> = ({
   children,
@@ -26,20 +29,26 @@ const RichTooltipInternal: React.FC<OverlayInteractiveProps> = ({
   </OverlayHover>
 )
 
-export class RichTooltip extends ModalHoverManager<ModalHoverManagerProps> {
-  protected renderModal(content: React.ReactNode, props: ManagedModalProps) {
-    return this.triggerRef ? (
-      <RichTooltipInternal
-        isOpen={this.state.isOpen}
-        triggerRef={this.triggerRef}
-        onClose={this.close}
-        {...props}
-      >
-        {content}
-      </RichTooltipInternal>
-    ) : null
-  }
-}
+export const RichTooltip: React.FC<
+  Omit<ModalHoverManagerProps, 'renderModal'>
+> = ({ ...modalHoverManagerProps }) => (
+  <ModalHoverManager
+    // tslint:disable-next-line jsx-no-lambda
+    renderModal={(content, modalProps, isOpen, triggerRef, onClose) =>
+      triggerRef ? (
+        <RichTooltipInternal
+          isOpen={isOpen}
+          triggerRef={triggerRef}
+          onClose={onClose}
+          {...modalProps}
+        >
+          {content}
+        </RichTooltipInternal>
+      ) : null
+    }
+    {...modalHoverManagerProps}
+  />
+)
 
 export interface CustomizableRichTooltipAttributes
   extends CustomizableAttributes {
