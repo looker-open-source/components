@@ -18,6 +18,17 @@ export interface ModalHoverManagerProps extends ManagedModalProps {
    */
   content: React.ReactNode
   /**
+   * Function to render the Modal. Formerly a virtual method, will be refactored into a render prop
+   * @required
+   */
+  renderModal: (
+    content: React.ReactNode,
+    modalProps: ManagedHoverModalProps,
+    isOpen: boolean,
+    triggerRef: React.RefObject<HTMLElement>,
+    onClose: () => void
+  ) => React.ReactNode
+  /*
    * Specify a callback to be called before trying to close the Modal. This allows for
    * use-cases where the user might lose work (think common "Save before closing warning" type flow)
    * Specify a callback to be called each time this Modal is closed
@@ -73,7 +84,7 @@ export abstract class ModalHoverManager<
   }
 
   public render() {
-    const { content, children, isOpen, ...otherProps } = this.props
+    const { content, children, isOpen, renderModal, ...otherProps } = this.props
 
     const eventHandlers = {
       onBlur: this.close,
@@ -90,7 +101,13 @@ export abstract class ModalHoverManager<
 
     return (
       <>
-        {this.renderModal(content, modalProps)}
+        {renderModal(
+          content,
+          modalProps,
+          this.state.isOpen,
+          this.triggerRef,
+          this.close
+        )}
         {this.props.children(eventHandlers, this.triggerRef)}
       </>
     )
@@ -108,11 +125,6 @@ export abstract class ModalHoverManager<
   protected setSurfaceRef(ref: HTMLElement | null) {
     this.surfaceRef = ref
   }
-
-  protected abstract renderModal(
-    content: React.ReactNode,
-    props: ManagedHoverModalProps
-  ): React.ReactNode
 
   private handleMouseOut = (event: React.MouseEvent) => {
     if (!this.state.isOpen) return

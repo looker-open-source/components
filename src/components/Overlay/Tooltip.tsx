@@ -5,7 +5,6 @@ import { fadeIn, palette, shadows } from '../../style'
 import { CustomizableAttributes } from '../../types/attributes'
 import { ModalSurfaceStyleProps } from '../Modal'
 import {
-  ManagedHoverModalProps,
   ModalHoverManager,
   ModalHoverManagerProps,
 } from '../Modal/ModalHoverManager'
@@ -16,6 +15,9 @@ import {
   OverlayInteractiveProps,
   OverlaySurface,
 } from './'
+
+// Remove when we upgrade to TypeScript 3.5
+type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
 
 export interface TooltipBaseProps {
   /**
@@ -47,7 +49,7 @@ export interface TooltipInternalProps
    * Text to display in the tooltip
    * @required
    */
-  children: string
+  children: React.ReactNode
 }
 
 const TooltipInternal: React.FC<TooltipInternalProps> = ({
@@ -83,8 +85,10 @@ const TooltipInternal: React.FC<TooltipInternalProps> = ({
   )
 }
 
-export interface TooltipProps extends TooltipBaseProps, ModalHoverManagerProps {
-  content: string
+export interface TooltipProps
+  extends TooltipBaseProps,
+    Omit<ModalHoverManagerProps, 'renderModal'> {
+  content: React.ReactNode
   /**
    * Specify the maximum width before wrapping text.
    * @default 16rem
@@ -105,20 +109,22 @@ export interface TooltipProps extends TooltipBaseProps, ModalHoverManagerProps {
   placement?: Placement
 }
 
-export class Tooltip extends ModalHoverManager<TooltipProps> {
-  protected renderModal(content: string, props: ManagedHoverModalProps) {
-    return (
+export const Tooltip: React.FC<TooltipProps> = ({ ...tooltipProps }) => (
+  <ModalHoverManager
+    // tslint:disable-next-line jsx-no-lambda
+    renderModal={(content, modalProps, isOpen, triggerRef, onClose) => (
       <TooltipInternal
-        isOpen={this.state.isOpen}
-        triggerRef={this.triggerRef}
-        onClose={this.close}
-        {...props}
+        isOpen={isOpen}
+        triggerRef={triggerRef}
+        onClose={onClose}
+        {...modalProps}
       >
         {content}
       </TooltipInternal>
-    )
-  }
-}
+    )}
+    {...tooltipProps}
+  />
+)
 
 export interface CustomizableTooltipAttributes extends CustomizableAttributes {
   surface: ModalSurfaceStyleProps
