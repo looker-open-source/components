@@ -35,10 +35,13 @@ export interface ModalHoverManagerProps extends ManagedModalProps {
   isOpen?: boolean
 }
 
-export interface ManagedHoverModalProps extends ManagedModalProps {
+// tslint:disable-next-line:class-name
+export interface ManagedHoverModalProps_ {
   setSurfaceRef: (ref: HTMLElement | null) => void
   onMouseOut: (event: React.MouseEvent) => void
 }
+
+export type ManagedHoverModalProps = ManagedHoverModalProps_ & ManagedModalProps
 
 export interface ModalManagerState {
   isOpen: boolean
