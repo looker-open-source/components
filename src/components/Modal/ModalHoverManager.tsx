@@ -15,7 +15,7 @@ export interface ModalHoverManagerProps extends ManagedModalProps {
    */
   children: (
     modalProps: ManagedHoverModalProps & ManagedModalProps,
-    isOpen: boolean,
+    isOpen: ModalHoverManagerProps['isOpen'],
     triggerRef: React.RefObject<HTMLElement>,
     close: ModalHoverManager['close']
   ) => React.ReactNode
