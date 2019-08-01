@@ -16,7 +16,7 @@ export interface ModalHoverManagerProps extends ManagedModalProps {
     modalProps: ManagedHoverModalProps & ManagedModalProps,
     isOpen: boolean,
     triggerRef: React.RefObject<HTMLElement>,
-    onClose: () => void
+    close: ModalHoverManager['close']
   ) => React.ReactNode
   /*
    * Specify a callback to be called before trying to close the Modal. This allows for
