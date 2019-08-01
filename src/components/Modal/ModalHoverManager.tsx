@@ -4,7 +4,10 @@ import { PopperProps } from 'react-popper'
 import { ManagedModalProps } from '../Modal'
 
 export interface ManagedHoverModalProps {
+  close: () => void
+  isOpen: boolean
   setSurfaceRef: NonNullable<PopperProps['innerRef']>
+  triggerRef: React.RefObject<HTMLElement>
   onMouseOut: (event: React.MouseEvent) => void
 }
 
@@ -15,10 +18,7 @@ export interface ModalHoverManagerProps extends ManagedModalProps {
    * @required
    */
   children: (
-    modalProps: ManagedHoverModalProps & ManagedModalProps,
-    isOpen: boolean,
-    triggerRef: React.RefObject<HTMLElement>,
-    close: () => void
+    props: ManagedHoverModalProps & ManagedModalProps
   ) => React.ReactNode
   /**
    * Specify a callback to be called before trying to close the Modal. This allows for
@@ -100,17 +100,20 @@ export const ModalHoverManager: React.FC<ModalHoverManagerProps> = ({
     onMouseOver: handleOpen,
   }
 
-  const modalProps = {
+  const managedHoverModalProps = {
     ...otherProps,
+    close: handleClose,
+    isOpen,
     onMouseOut: handleMouseOut,
     setSurfaceRef: (ref: HTMLElement | null) => {
       surfaceRef.current = ref
     },
+    triggerRef,
   }
 
   return (
     <>
-      {children(modalProps, isOpen, triggerRef, handleClose)}
+      {children(managedHoverModalProps)}
       {wrappedComponent(eventHandlers, triggerRef)}
     </>
   )
