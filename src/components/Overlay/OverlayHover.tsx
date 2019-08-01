@@ -27,37 +27,37 @@ export const OverlayHover: React.FC<OverlayHoverProps> = ({
   const referenceElement =
     triggerRef && triggerRef.current ? triggerRef.current : undefined
 
-  return (
-    <ModalPortal portalRef={portalRef}>
-      <Popper
-        positionFixed
-        innerRef={setSurfaceRef}
-        placement={outerPlacement}
-        modifiers={{
-          flip: {
-            behavior: 'flip',
-            enabled: true,
-            flipVariations: true,
-            flipVariationsByContent: true,
-          },
-          preventOverflow: {
-            boundariesElement: 'viewport',
-            escapeWithReference: true,
-            padding: 0,
-          },
-        }}
-        referenceElement={referenceElement}
-      >
-        {({ ref, style, arrowProps, placement: innerPlacement }) =>
-          children({
-            arrowProps,
-            eventHandlers: { onMouseOut },
-            placement: innerPlacement,
-            ref,
-            style,
-          })
-        }
-      </Popper>
-    </ModalPortal>
+  const popper = (
+    <Popper
+      positionFixed
+      innerRef={setSurfaceRef}
+      placement={outerPlacement}
+      modifiers={{
+        flip: {
+          behavior: 'flip',
+          enabled: true,
+          flipVariations: true,
+          flipVariationsByContent: true,
+        },
+        preventOverflow: {
+          boundariesElement: 'viewport',
+          escapeWithReference: true,
+          padding: 0,
+        },
+      }}
+      referenceElement={referenceElement}
+    >
+      {({ ref, style, arrowProps, placement: innerPlacement }) =>
+        children({
+          arrowProps,
+          eventHandlers: { onMouseOut },
+          placement: innerPlacement,
+          ref,
+          style,
+        })
+      }
+    </Popper>
   )
+
+  return <ModalPortal portalRef={portalRef}>{popper}</ModalPortal>
 }
