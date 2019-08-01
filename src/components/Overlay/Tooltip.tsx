@@ -120,7 +120,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
   ...tooltipProps
 }) => (
   <ModalHoverManager wrappedComponent={children} {...tooltipProps}>
-    {(modalProps, isOpen, triggerRef, _onClose) => (
+    {(modalProps, isOpen, triggerRef, _close) => (
       <TooltipInternal isOpen={isOpen} triggerRef={triggerRef} {...modalProps}>
         {content}
       </TooltipInternal>
