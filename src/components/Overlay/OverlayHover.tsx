@@ -11,6 +11,7 @@ export interface OverlayHoverProps extends Partial<ManagedHoverModalProps_> {
   placement?: Placement
   portalRef?: React.RefObject<HTMLElement>
   triggerRef?: React.RefObject<HTMLElement>
+  usePortal?: boolean
 }
 
 export const OverlayHover: React.FC<OverlayHoverProps> = ({
@@ -21,6 +22,7 @@ export const OverlayHover: React.FC<OverlayHoverProps> = ({
   portalRef,
   setSurfaceRef,
   triggerRef,
+  usePortal,
 }) => {
   if (!isOpen) return null
 
@@ -59,5 +61,9 @@ export const OverlayHover: React.FC<OverlayHoverProps> = ({
     </Popper>
   )
 
-  return <ModalPortal portalRef={portalRef}>{popper}</ModalPortal>
+  return usePortal === undefined || usePortal === true ? (
+    <ModalPortal portalRef={portalRef}>{popper}</ModalPortal>
+  ) : (
+    popper
+  )
 }
