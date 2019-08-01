@@ -1,7 +1,6 @@
 import { Placement } from 'popper.js'
 import React, { useRef, useState } from 'react'
 import { PopperProps } from 'react-popper'
-import { ManagedModalProps } from '../Modal'
 
 export interface ManagedHoverModalProps {
   close: () => void
@@ -11,15 +10,13 @@ export interface ManagedHoverModalProps {
   onMouseOut: (event: React.MouseEvent) => void
 }
 
-export interface ModalHoverManagerProps extends ManagedModalProps {
+export interface ModalHoverManagerProps {
   __initializeOpenForLensTests?: boolean
   /**
-   * Render Prop to render the Modal.
+   * Render Prop to render the controlled hover popper.
    * @required
    */
-  children: (
-    props: ManagedHoverModalProps & ManagedModalProps
-  ) => React.ReactNode
+  children: (props: ManagedHoverModalProps) => React.ReactNode
   /**
    * Specify a callback to be called before trying to close the Modal. This allows for
    * use-cases where the user might lose work (think common "Save before closing warning" type flow)
