@@ -2,13 +2,18 @@ import { Placement } from 'popper.js'
 import * as React from 'react'
 import { ManagedModalProps } from '../Modal'
 
+export interface ManagedHoverModalProps {
+  setSurfaceRef: (ref: HTMLElement | null) => void
+  onMouseOut: (event: React.MouseEvent) => void
+}
+
 export interface ModalHoverManagerProps extends ManagedModalProps {
   /**
    * Render Prop to render the Modal.
    * @required
    */
   children: (
-    modalProps: ManagedHoverModalProps,
+    modalProps: ManagedHoverModalProps & ManagedModalProps,
     isOpen: boolean,
     triggerRef: React.RefObject<HTMLElement>,
     onClose: () => void
@@ -43,14 +48,6 @@ export interface ModalHoverManagerProps extends ManagedModalProps {
     ref: React.RefObject<HTMLElement>
   ) => React.ReactNode
 }
-
-// tslint:disable-next-line:class-name
-export interface ManagedHoverModalProps_ {
-  setSurfaceRef: (ref: HTMLElement | null) => void
-  onMouseOut: (event: React.MouseEvent) => void
-}
-
-export type ManagedHoverModalProps = ManagedHoverModalProps_ & ManagedModalProps
 
 export interface ModalManagerState {
   isOpen: boolean
