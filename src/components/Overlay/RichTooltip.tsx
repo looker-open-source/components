@@ -33,12 +33,20 @@ const RichTooltipInternal: React.FC<RichTooltipInternalProps> = ({
   </OverlayHover>
 )
 
-export const RichTooltip: React.FC<
-  Omit<ModalHoverManagerProps<React.ReactNode>, 'renderModal'>
-> = ({ ...modalHoverManagerProps }) => (
-  <ModalHoverManager
-    // tslint:disable-next-line jsx-no-lambda
-    renderModal={(content, modalProps, isOpen, triggerRef, _onClose) =>
+export interface RichTooltipProps
+  extends Omit<
+    ModalHoverManagerProps<React.ReactNode>,
+    'children' | 'wrappedComponent'
+  > {
+  children: ModalHoverManagerProps<React.ReactNode>['wrappedComponent']
+}
+
+export const RichTooltip: React.FC<RichTooltipProps> = ({
+  children,
+  ...modalHoverManagerProps
+}) => (
+  <ModalHoverManager wrappedComponent={children} {...modalHoverManagerProps}>
+    {(content, modalProps, isOpen, triggerRef, _onClose) =>
       triggerRef ? (
         <RichTooltipInternal
           isOpen={isOpen}
@@ -49,8 +57,7 @@ export const RichTooltip: React.FC<
         </RichTooltipInternal>
       ) : null
     }
-    {...modalHoverManagerProps}
-  />
+  </ModalHoverManager>
 )
 
 export interface CustomizableRichTooltipAttributes

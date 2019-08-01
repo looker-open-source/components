@@ -3,31 +3,22 @@ import * as React from 'react'
 import { ManagedModalProps } from '../Modal'
 
 export interface ModalHoverManagerProps<ContentT> extends ManagedModalProps {
+  /**
+   * Render Prop to render the Modal.
+   * @required
+   */
   children: (
-    eventsHandlers: {
-      onBlur: () => void
-      onFocus: () => void
-      onMouseOut: (event: React.MouseEvent) => void
-      onMouseOver: () => void
-    },
-    ref: React.RefObject<HTMLElement>
-  ) => React.ReactNode
-  /**
-   * Content that will be placed inside the Modal
-   * @required
-   */
-  content: ContentT
-  /**
-   * Function to render the Modal. Formerly a virtual method, will be refactored into a render prop
-   * @required
-   */
-  renderModal: (
     content: ContentT,
     modalProps: ManagedHoverModalProps,
     isOpen: boolean,
     triggerRef: React.RefObject<HTMLElement>,
     onClose: () => void
   ) => React.ReactNode
+  /**
+   * Content that will be placed inside the Modal
+   * @required
+   */
+  content: ContentT
   /*
    * Specify a callback to be called before trying to close the Modal. This allows for
    * use-cases where the user might lose work (think common "Save before closing warning" type flow)
@@ -41,9 +32,22 @@ export interface ModalHoverManagerProps<ContentT> extends ManagedModalProps {
    * info.
    * @default bottom
    */
-  placement?: Placement
-
   isOpen?: boolean
+  placement?: Placement
+  /**
+   * Component to wrap. The ModalHoverManager HOC will listen for mouse events on this
+   * component, maintain the state of isOpen accordingly, and pass that state into
+   * the modal renderProp.
+   */
+  wrappedComponent: (
+    eventsHandlers: {
+      onBlur: () => void
+      onFocus: () => void
+      onMouseOut: (event: React.MouseEvent) => void
+      onMouseOver: () => void
+    },
+    ref: React.RefObject<HTMLElement>
+  ) => React.ReactNode
 }
 
 // tslint:disable-next-line:class-name
@@ -85,7 +89,13 @@ export class ModalHoverManager<ContentT> extends React.Component<
   }
 
   public render() {
-    const { content, children, isOpen, renderModal, ...otherProps } = this.props
+    const {
+      content,
+      children,
+      isOpen,
+      wrappedComponent,
+      ...otherProps
+    } = this.props
 
     const eventHandlers = {
       onBlur: this.close,
@@ -102,14 +112,14 @@ export class ModalHoverManager<ContentT> extends React.Component<
 
     return (
       <>
-        {renderModal(
+        {children(
           content,
           modalProps,
           this.state.isOpen,
           this.triggerRef,
           this.close
         )}
-        {this.props.children(eventHandlers, this.triggerRef)}
+        {this.props.wrappedComponent(eventHandlers, this.triggerRef)}
       </>
     )
   }
