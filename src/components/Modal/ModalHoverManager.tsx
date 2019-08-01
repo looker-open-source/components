@@ -1,5 +1,5 @@
 import { Placement } from 'popper.js'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { PopperProps } from 'react-popper'
 import { ManagedModalProps } from '../Modal'
 
@@ -9,6 +9,7 @@ export interface ManagedHoverModalProps {
 }
 
 export interface ModalHoverManagerProps extends ManagedModalProps {
+  __initializeOpenForLensTests?: boolean
   /**
    * Render Prop to render the Modal.
    * @required
@@ -25,7 +26,6 @@ export interface ModalHoverManagerProps extends ManagedModalProps {
    * Specify a callback to be called each time this Modal is closed
    */
   canClose?: () => boolean
-  isOpen?: boolean
   /**
    * Can be one of: top, bottom, left, right, auto, with the modifiers: start,
    * end. This value comes directly from popperjs. See
@@ -50,16 +50,13 @@ export interface ModalHoverManagerProps extends ManagedModalProps {
   ) => React.ReactNode
 }
 
-export const ModalHoverManager: React.FC<ModalHoverManagerProps> = props => {
-  const [isOpenState, setIsOpen] = useState(false)
+export const ModalHoverManager: React.FC<ModalHoverManagerProps> = ({
+  __initializeOpenForLensTests,
+  ...props
+}) => {
+  const [isOpen, setIsOpen] = useState(__initializeOpenForLensTests || false)
   const surfaceRef = useRef<HTMLElement | null>(null)
   const triggerRef = useRef<HTMLElement>(null)
-
-  // This faithfully implements the componentDidMount behavior of the
-  // React.Component implementation, although it is a bit nonsensical.
-  useEffect(() => {
-    if (props.isOpen) handleOpen()
-  }, [])
 
   const handleOpen = () => {
     setIsOpen(true)
@@ -71,7 +68,7 @@ export const ModalHoverManager: React.FC<ModalHoverManagerProps> = props => {
   }
 
   const handleMouseOut = (event: React.MouseEvent) => {
-    if (!isOpenState) return
+    if (!isOpen) return
 
     const related = event.relatedTarget
 
@@ -94,7 +91,7 @@ export const ModalHoverManager: React.FC<ModalHoverManagerProps> = props => {
     handleClose()
   }
 
-  const { children, isOpen, wrappedComponent, ...otherProps } = props
+  const { children, wrappedComponent, ...otherProps } = props
 
   const eventHandlers = {
     onBlur: handleClose,
@@ -113,7 +110,7 @@ export const ModalHoverManager: React.FC<ModalHoverManagerProps> = props => {
 
   return (
     <>
-      {children(modalProps, isOpenState, triggerRef, handleClose)}
+      {children(modalProps, isOpen, triggerRef, handleClose)}
       {wrappedComponent(eventHandlers, triggerRef)}
     </>
   )
