@@ -1,9 +1,10 @@
 import { Placement } from 'popper.js'
 import * as React from 'react'
+import { PopperProps } from 'react-popper'
 import { ManagedModalProps } from '../Modal'
 
 export interface ManagedHoverModalProps {
-  setSurfaceRef: (ref: HTMLElement | null) => void
+  setSurfaceRef: NonNullable<PopperProps['innerRef']>
   onMouseOut: (event: React.MouseEvent) => void
 }
 
@@ -72,7 +73,6 @@ export class ModalHoverManager extends React.Component<
 
     this.open = this.open.bind(this)
     this.close = this.close.bind(this)
-    this.setSurfaceRef = this.setSurfaceRef.bind(this)
   }
 
   public componentDidMount() {
@@ -92,7 +92,9 @@ export class ModalHoverManager extends React.Component<
     const modalProps = {
       ...otherProps,
       onMouseOut: this.handleMouseOut,
-      setSurfaceRef: this.setSurfaceRef,
+      setSurfaceRef: (ref: HTMLElement | null) => {
+        this.surfaceRef = ref
+      },
     }
 
     return (
@@ -110,10 +112,6 @@ export class ModalHoverManager extends React.Component<
   private close() {
     if (this.props.canClose && !this.props.canClose()) return
     this.setState({ isOpen: false })
-  }
-
-  private setSurfaceRef(ref: HTMLElement | null) {
-    this.surfaceRef = ref
   }
 
   private handleMouseOut = (event: React.MouseEvent) => {
