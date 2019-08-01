@@ -1,6 +1,7 @@
 export * from './Overlay'
 export * from './OverlaySurface'
 export * from './OverlayHover'
+export * from './OverlayHoverManager'
 export * from './Popover'
 export * from './PopoverContent'
 export * from './RichTooltip'

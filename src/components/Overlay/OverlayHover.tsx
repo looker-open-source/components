@@ -1,11 +1,10 @@
 import { Placement } from 'popper.js'
 import * as React from 'react'
 import { Popper } from 'react-popper'
-import { ManagedHoverModalProps } from '../Modal/ModalHoverManager'
 import { ModalPortal } from '../Modal/ModalPortal'
-import { OverlayChildrenProps } from './Overlay'
+import { ManagedHoverOverlayProps, OverlayChildrenProps } from './'
 
-export interface OverlayHoverProps extends Partial<ManagedHoverModalProps> {
+export interface OverlayHoverProps extends Partial<ManagedHoverOverlayProps> {
   children: (props: OverlayChildrenProps) => React.ReactNode
   placement?: Placement
   portalRef?: React.RefObject<HTMLElement>

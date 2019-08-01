@@ -4,14 +4,12 @@ import * as React from 'react'
 import { fadeIn, palette, shadows } from '../../style'
 import { CustomizableAttributes } from '../../types/attributes'
 import { ModalSurfaceStyleProps } from '../Modal'
-import {
-  ModalHoverManager,
-  ModalHoverManagerProps,
-} from '../Modal/ModalHoverManager'
 import { Paragraph } from '../Text'
 import {
   OverlayChildrenProps,
   OverlayHover,
+  OverlayHoverManager,
+  OverlayHoverManagerProps,
   OverlayHoverProps,
   OverlaySurface,
 } from './'
@@ -87,8 +85,8 @@ const TooltipInternal: React.FC<TooltipInternalProps> = ({
 
 export interface TooltipProps
   extends TooltipBaseProps,
-    Omit<ModalHoverManagerProps, 'wrappedComponent' | 'children'> {
-  children: ModalHoverManagerProps['wrappedComponent']
+    Omit<OverlayHoverManagerProps, 'wrappedComponent' | 'children'> {
+  children: OverlayHoverManagerProps['wrappedComponent']
   /**
    * Content that will be placed inside the Tooltip
    * @required
@@ -119,11 +117,11 @@ export const Tooltip: React.FC<TooltipProps> = ({
   content,
   ...tooltipProps
 }) => (
-  <ModalHoverManager wrappedComponent={children} {...tooltipProps}>
-    {managedHoverModalProps => (
-      <TooltipInternal {...managedHoverModalProps}>{content}</TooltipInternal>
+  <OverlayHoverManager wrappedComponent={children} {...tooltipProps}>
+    {managedHoverOverlayProps => (
+      <TooltipInternal {...managedHoverOverlayProps}>{content}</TooltipInternal>
     )}
-  </ModalHoverManager>
+  </OverlayHoverManager>
 )
 
 export interface CustomizableTooltipAttributes extends CustomizableAttributes {

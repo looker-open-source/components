@@ -3,12 +3,10 @@ import { fadeIn, palette, shadows } from '../../style'
 import { CustomizableAttributes } from '../../types/attributes'
 import { ModalSurfaceStyleProps } from '../Modal'
 import {
-  ModalHoverManager,
-  ModalHoverManagerProps,
-} from '../Modal/ModalHoverManager'
-import {
   OverlayChildrenProps,
   OverlayHover,
+  OverlayHoverManager,
+  OverlayHoverManagerProps,
   OverlayHoverProps,
   OverlaySurface,
 } from './'
@@ -34,25 +32,28 @@ const RichTooltipInternal: React.FC<RichTooltipInternalProps> = ({
 )
 
 export interface RichTooltipProps
-  extends Omit<ModalHoverManagerProps, 'children' | 'wrappedComponent'> {
-  children: ModalHoverManagerProps['wrappedComponent']
+  extends Omit<OverlayHoverManagerProps, 'children' | 'wrappedComponent'> {
+  children: OverlayHoverManagerProps['wrappedComponent']
   content: React.ReactNode
 }
 
 export const RichTooltip: React.FC<RichTooltipProps> = ({
   children,
   content,
-  ...modalHoverManagerProps
+  ...overlayHoverManagerProps
 }) => (
-  <ModalHoverManager wrappedComponent={children} {...modalHoverManagerProps}>
-    {managedHoverModalProps =>
-      managedHoverModalProps.triggerRef ? (
-        <RichTooltipInternal {...managedHoverModalProps}>
+  <OverlayHoverManager
+    wrappedComponent={children}
+    {...overlayHoverManagerProps}
+  >
+    {managedHoverOverlayProps =>
+      managedHoverOverlayProps.triggerRef ? (
+        <RichTooltipInternal {...managedHoverOverlayProps}>
           {content}
         </RichTooltipInternal>
       ) : null
     }
-  </ModalHoverManager>
+  </OverlayHoverManager>
 )
 
 export interface CustomizableRichTooltipAttributes
