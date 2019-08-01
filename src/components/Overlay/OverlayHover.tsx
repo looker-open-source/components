@@ -22,10 +22,12 @@ export const OverlayHover: React.FC<OverlayHoverProps> = ({
   setSurfaceRef,
   triggerRef,
 }) => {
+  if (!isOpen) return null
+
   const referenceElement =
     triggerRef && triggerRef.current ? triggerRef.current : undefined
 
-  return isOpen ? (
+  return (
     <ModalPortal portalRef={portalRef}>
       <Popper
         positionFixed
@@ -57,5 +59,5 @@ export const OverlayHover: React.FC<OverlayHoverProps> = ({
         }
       </Popper>
     </ModalPortal>
-  ) : null
+  )
 }
