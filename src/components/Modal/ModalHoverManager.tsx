@@ -58,17 +58,18 @@ export interface ModalManagerState {
   isOpen: boolean
 }
 
-export abstract class ModalHoverManager<
-  T extends ModalHoverManagerProps
-> extends React.Component<T, ModalManagerState> {
+export class ModalHoverManager extends React.Component<
+  ModalHoverManagerProps,
+  ModalManagerState
+> {
   /*
    * Popper.js doesn't support React.RefObject so instead the reference to
    * the Surface (powered by Popper) needs to be retrieved via callback
    */
-  protected surfaceRef: HTMLElement | null
-  protected triggerRef: React.RefObject<HTMLElement>
+  private surfaceRef: HTMLElement | null
+  private triggerRef: React.RefObject<HTMLElement>
 
-  constructor(props: T) {
+  constructor(props: ModalHoverManagerProps) {
     super(props)
     this.state = { isOpen: false }
     this.surfaceRef = null
@@ -113,16 +114,16 @@ export abstract class ModalHoverManager<
     )
   }
 
-  public open() {
+  private open() {
     this.setState({ isOpen: true })
   }
 
-  public close() {
+  private close() {
     if (this.props.canClose && !this.props.canClose()) return
     this.setState({ isOpen: false })
   }
 
-  protected setSurfaceRef(ref: HTMLElement | null) {
+  private setSurfaceRef(ref: HTMLElement | null) {
     this.surfaceRef = ref
   }
 
