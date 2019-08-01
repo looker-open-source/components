@@ -1,5 +1,5 @@
 import { Placement } from 'popper.js'
-import * as React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { PopperProps } from 'react-popper'
 import { ManagedModalProps } from '../Modal'
 
@@ -15,16 +15,17 @@ export interface ModalHoverManagerProps extends ManagedModalProps {
    */
   children: (
     modalProps: ManagedHoverModalProps & ManagedModalProps,
-    isOpen: ModalHoverManagerProps['isOpen'],
+    isOpen: boolean,
     triggerRef: React.RefObject<HTMLElement>,
-    close: ModalHoverManager['close']
+    close: () => void
   ) => React.ReactNode
-  /*
+  /**
    * Specify a callback to be called before trying to close the Modal. This allows for
    * use-cases where the user might lose work (think common "Save before closing warning" type flow)
    * Specify a callback to be called each time this Modal is closed
    */
   canClose?: () => boolean
+  isOpen?: boolean
   /**
    * Can be one of: top, bottom, left, right, auto, with the modifiers: start,
    * end. This value comes directly from popperjs. See
@@ -32,7 +33,6 @@ export interface ModalHoverManagerProps extends ManagedModalProps {
    * info.
    * @default bottom
    */
-  isOpen?: boolean
   placement?: Placement
   /**
    * Component to wrap. The ModalHoverManager HOC will listen for mouse events on this
@@ -50,90 +50,71 @@ export interface ModalHoverManagerProps extends ManagedModalProps {
   ) => React.ReactNode
 }
 
-export interface ModalManagerState {
-  isOpen: boolean
-}
+export const ModalHoverManager: React.FC<ModalHoverManagerProps> = props => {
+  const [isOpenState, setIsOpen] = useState(false)
+  const surfaceRef = useRef<HTMLElement | null>(null)
+  const triggerRef = useRef<HTMLElement>(null)
 
-export class ModalHoverManager extends React.Component<
-  ModalHoverManagerProps,
-  ModalManagerState
-> {
-  /*
-   * Popper.js doesn't support React.RefObject so instead the reference to
-   * the Surface (powered by Popper) needs to be retrieved via callback
-   */
-  private surfaceRef: HTMLElement | null
-  private triggerRef: React.RefObject<HTMLElement>
+  // This faithfully implements the componentDidMount behavior of the
+  // React.Component implementation, although it is a bit nonsensical.
+  useEffect(() => {
+    if (props.isOpen) handleOpen()
+  }, [])
 
-  constructor(props: ModalHoverManagerProps) {
-    super(props)
-    this.state = { isOpen: false }
-    this.surfaceRef = null
-    this.triggerRef = React.createRef()
-
-    this.open = this.open.bind(this)
-    this.close = this.close.bind(this)
+  const handleOpen = () => {
+    setIsOpen(true)
   }
 
-  public componentDidMount() {
-    if (this.props.isOpen) this.open()
+  const handleClose = () => {
+    if (props.canClose && !props.canClose()) return
+    setIsOpen(false)
   }
 
-  public render() {
-    const { children, isOpen, wrappedComponent, ...otherProps } = this.props
-
-    const eventHandlers = {
-      onBlur: this.close,
-      onFocus: this.open,
-      onMouseOut: this.handleMouseOut,
-      onMouseOver: this.open,
-    }
-
-    const modalProps = {
-      ...otherProps,
-      onMouseOut: this.handleMouseOut,
-      setSurfaceRef: (ref: HTMLElement | null) => {
-        this.surfaceRef = ref
-      },
-    }
-
-    return (
-      <>
-        {children(modalProps, this.state.isOpen, this.triggerRef, this.close)}
-        {this.props.wrappedComponent(eventHandlers, this.triggerRef)}
-      </>
-    )
-  }
-
-  private open() {
-    this.setState({ isOpen: true })
-  }
-
-  private close() {
-    if (this.props.canClose && !this.props.canClose()) return
-    this.setState({ isOpen: false })
-  }
-
-  private handleMouseOut = (event: React.MouseEvent) => {
-    if (!this.state.isOpen) return
+  const handleMouseOut = (event: React.MouseEvent) => {
+    if (!isOpenState) return
 
     const related = event.relatedTarget
 
     if (
-      this.triggerRef.current &&
-      (this.triggerRef.current === related ||
-        this.triggerRef.current.contains(related as Node))
+      triggerRef.current &&
+      (triggerRef.current === related ||
+        triggerRef.current.contains(related as Node))
     ) {
       return
     }
 
     if (
-      this.surfaceRef &&
-      (this.surfaceRef === related || this.surfaceRef.contains(related as Node))
+      surfaceRef.current &&
+      (surfaceRef.current === related ||
+        surfaceRef.current.contains(related as Node))
     ) {
       return
     }
 
-    this.close()
+    handleClose()
   }
+
+  const { children, isOpen, wrappedComponent, ...otherProps } = props
+
+  const eventHandlers = {
+    onBlur: handleClose,
+    onFocus: handleOpen,
+    onMouseOut: handleMouseOut,
+    onMouseOver: handleOpen,
+  }
+
+  const modalProps = {
+    ...otherProps,
+    onMouseOut: handleMouseOut,
+    setSurfaceRef: (ref: HTMLElement | null) => {
+      surfaceRef.current = ref
+    },
+  }
+
+  return (
+    <>
+      {children(modalProps, isOpenState, triggerRef, handleClose)}
+      {wrappedComponent(eventHandlers, triggerRef)}
+    </>
+  )
 }
