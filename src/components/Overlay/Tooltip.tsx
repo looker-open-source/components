@@ -12,7 +12,7 @@ import { Paragraph } from '../Text'
 import {
   OverlayChildrenProps,
   OverlayHover,
-  OverlayInteractiveProps,
+  OverlayHoverProps,
   OverlaySurface,
 } from './'
 
@@ -44,12 +44,12 @@ export interface TooltipBaseProps {
 
 export interface TooltipInternalProps
   extends TooltipBaseProps,
-    OverlayInteractiveProps {
+    Omit<OverlayHoverProps, 'children'> {
   /**
    * Text to display in the tooltip
    * @required
    */
-  children: React.ReactNode
+  children: string
 }
 
 const TooltipInternal: React.FC<TooltipInternalProps> = ({
@@ -87,8 +87,7 @@ const TooltipInternal: React.FC<TooltipInternalProps> = ({
 
 export interface TooltipProps
   extends TooltipBaseProps,
-    Omit<ModalHoverManagerProps, 'renderModal'> {
-  content: React.ReactNode
+    Omit<ModalHoverManagerProps<string>, 'renderModal'> {
   /**
    * Specify the maximum width before wrapping text.
    * @default 16rem
@@ -112,13 +111,8 @@ export interface TooltipProps
 export const Tooltip: React.FC<TooltipProps> = ({ ...tooltipProps }) => (
   <ModalHoverManager
     // tslint:disable-next-line jsx-no-lambda
-    renderModal={(content, modalProps, isOpen, triggerRef, onClose) => (
-      <TooltipInternal
-        isOpen={isOpen}
-        triggerRef={triggerRef}
-        onClose={onClose}
-        {...modalProps}
-      >
+    renderModal={(content, modalProps, isOpen, triggerRef, _onClose) => (
+      <TooltipInternal isOpen={isOpen} triggerRef={triggerRef} {...modalProps}>
         {content}
       </TooltipInternal>
     )}

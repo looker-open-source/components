@@ -9,14 +9,18 @@ import {
 import {
   OverlayChildrenProps,
   OverlayHover,
-  OverlayInteractiveProps,
+  OverlayHoverProps,
   OverlaySurface,
 } from './'
 
 // Remove when we upgrade to TypeScript 3.5
 type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
 
-const RichTooltipInternal: React.FC<OverlayInteractiveProps> = ({
+interface RichTooltipInternalProps extends Omit<OverlayHoverProps, 'children'> {
+  children: React.ReactNode
+}
+
+const RichTooltipInternal: React.FC<RichTooltipInternalProps> = ({
   children,
   ...overlayProps
 }) => (
@@ -30,16 +34,15 @@ const RichTooltipInternal: React.FC<OverlayInteractiveProps> = ({
 )
 
 export const RichTooltip: React.FC<
-  Omit<ModalHoverManagerProps, 'renderModal'>
+  Omit<ModalHoverManagerProps<React.ReactNode>, 'renderModal'>
 > = ({ ...modalHoverManagerProps }) => (
   <ModalHoverManager
     // tslint:disable-next-line jsx-no-lambda
-    renderModal={(content, modalProps, isOpen, triggerRef, onClose) =>
+    renderModal={(content, modalProps, isOpen, triggerRef, _onClose) =>
       triggerRef ? (
         <RichTooltipInternal
           isOpen={isOpen}
           triggerRef={triggerRef}
-          onClose={onClose}
           {...modalProps}
         >
           {content}
