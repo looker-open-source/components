@@ -2,7 +2,7 @@ import { Placement } from 'popper.js'
 import * as React from 'react'
 import { ManagedModalProps } from '../Modal'
 
-export interface ModalHoverManagerProps extends ManagedModalProps {
+export interface ModalHoverManagerProps<ContentT> extends ManagedModalProps {
   children: (
     eventsHandlers: {
       onBlur: () => void
@@ -16,13 +16,13 @@ export interface ModalHoverManagerProps extends ManagedModalProps {
    * Content that will be placed inside the Modal
    * @required
    */
-  content: React.ReactNode
+  content: ContentT
   /**
    * Function to render the Modal. Formerly a virtual method, will be refactored into a render prop
    * @required
    */
   renderModal: (
-    content: React.ReactNode,
+    content: ContentT,
     modalProps: ManagedHoverModalProps,
     isOpen: boolean,
     triggerRef: React.RefObject<HTMLElement>,
@@ -58,8 +58,8 @@ export interface ModalManagerState {
   isOpen: boolean
 }
 
-export class ModalHoverManager extends React.Component<
-  ModalHoverManagerProps,
+export class ModalHoverManager<ContentT> extends React.Component<
+  ModalHoverManagerProps<ContentT>,
   ModalManagerState
 > {
   /*
@@ -69,7 +69,7 @@ export class ModalHoverManager extends React.Component<
   private surfaceRef: HTMLElement | null
   private triggerRef: React.RefObject<HTMLElement>
 
-  constructor(props: ModalHoverManagerProps) {
+  constructor(props: ModalHoverManagerProps<ContentT>) {
     super(props)
     this.state = { isOpen: false }
     this.surfaceRef = null
