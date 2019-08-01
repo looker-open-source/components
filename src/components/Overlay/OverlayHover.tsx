@@ -7,10 +7,8 @@ import { OverlayChildrenProps } from './Overlay'
 
 export interface OverlayHoverProps extends Partial<ManagedHoverModalProps> {
   children: (props: OverlayChildrenProps) => React.ReactNode
-  isOpen?: boolean
   placement?: Placement
   portalRef?: React.RefObject<HTMLElement>
-  triggerRef?: React.RefObject<HTMLElement>
   usePortal?: boolean
 }
 

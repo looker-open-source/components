@@ -45,13 +45,9 @@ export const RichTooltip: React.FC<RichTooltipProps> = ({
   ...modalHoverManagerProps
 }) => (
   <ModalHoverManager wrappedComponent={children} {...modalHoverManagerProps}>
-    {(modalProps, isOpen, triggerRef, _close) =>
-      triggerRef ? (
-        <RichTooltipInternal
-          isOpen={isOpen}
-          triggerRef={triggerRef}
-          {...modalProps}
-        >
+    {managedHoverModalProps =>
+      managedHoverModalProps.triggerRef ? (
+        <RichTooltipInternal {...managedHoverModalProps}>
           {content}
         </RichTooltipInternal>
       ) : null
