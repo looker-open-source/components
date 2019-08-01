@@ -2,23 +2,17 @@ import { Placement } from 'popper.js'
 import * as React from 'react'
 import { ManagedModalProps } from '../Modal'
 
-export interface ModalHoverManagerProps<ContentT> extends ManagedModalProps {
+export interface ModalHoverManagerProps extends ManagedModalProps {
   /**
    * Render Prop to render the Modal.
    * @required
    */
   children: (
-    content: ContentT,
     modalProps: ManagedHoverModalProps,
     isOpen: boolean,
     triggerRef: React.RefObject<HTMLElement>,
     onClose: () => void
   ) => React.ReactNode
-  /**
-   * Content that will be placed inside the Modal
-   * @required
-   */
-  content: ContentT
   /*
    * Specify a callback to be called before trying to close the Modal. This allows for
    * use-cases where the user might lose work (think common "Save before closing warning" type flow)
@@ -62,8 +56,8 @@ export interface ModalManagerState {
   isOpen: boolean
 }
 
-export class ModalHoverManager<ContentT> extends React.Component<
-  ModalHoverManagerProps<ContentT>,
+export class ModalHoverManager extends React.Component<
+  ModalHoverManagerProps,
   ModalManagerState
 > {
   /*
@@ -73,7 +67,7 @@ export class ModalHoverManager<ContentT> extends React.Component<
   private surfaceRef: HTMLElement | null
   private triggerRef: React.RefObject<HTMLElement>
 
-  constructor(props: ModalHoverManagerProps<ContentT>) {
+  constructor(props: ModalHoverManagerProps) {
     super(props)
     this.state = { isOpen: false }
     this.surfaceRef = null
@@ -89,13 +83,7 @@ export class ModalHoverManager<ContentT> extends React.Component<
   }
 
   public render() {
-    const {
-      content,
-      children,
-      isOpen,
-      wrappedComponent,
-      ...otherProps
-    } = this.props
+    const { children, isOpen, wrappedComponent, ...otherProps } = this.props
 
     const eventHandlers = {
       onBlur: this.close,
@@ -112,13 +100,7 @@ export class ModalHoverManager<ContentT> extends React.Component<
 
     return (
       <>
-        {children(
-          content,
-          modalProps,
-          this.state.isOpen,
-          this.triggerRef,
-          this.close
-        )}
+        {children(modalProps, this.state.isOpen, this.triggerRef, this.close)}
         {this.props.wrappedComponent(eventHandlers, this.triggerRef)}
       </>
     )

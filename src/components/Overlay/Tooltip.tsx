@@ -87,8 +87,13 @@ const TooltipInternal: React.FC<TooltipInternalProps> = ({
 
 export interface TooltipProps
   extends TooltipBaseProps,
-    Omit<ModalHoverManagerProps<string>, 'wrappedComponent' | 'children'> {
-  children: ModalHoverManagerProps<string>['wrappedComponent']
+    Omit<ModalHoverManagerProps, 'wrappedComponent' | 'children'> {
+  children: ModalHoverManagerProps['wrappedComponent']
+  /**
+   * Content that will be placed inside the Tooltip
+   * @required
+   */
+  content: string
   /**
    * Specify the maximum width before wrapping text.
    * @default 16rem
@@ -111,10 +116,11 @@ export interface TooltipProps
 
 export const Tooltip: React.FC<TooltipProps> = ({
   children,
+  content,
   ...tooltipProps
 }) => (
   <ModalHoverManager wrappedComponent={children} {...tooltipProps}>
-    {(content, modalProps, isOpen, triggerRef, _onClose) => (
+    {(modalProps, isOpen, triggerRef, _onClose) => (
       <TooltipInternal isOpen={isOpen} triggerRef={triggerRef} {...modalProps}>
         {content}
       </TooltipInternal>
