@@ -2,7 +2,7 @@ import { Placement } from 'popper.js'
 import React, { useRef, useState } from 'react'
 import { PopperProps } from 'react-popper'
 
-export interface ManagedHoverModalProps {
+export interface ManagedHoverOverlayProps {
   close: () => void
   isOpen: boolean
   setSurfaceRef: NonNullable<PopperProps['innerRef']>
@@ -10,13 +10,13 @@ export interface ManagedHoverModalProps {
   onMouseOut: (event: React.MouseEvent) => void
 }
 
-export interface ModalHoverManagerProps {
+export interface OverlayHoverManagerProps {
   __initializeOpenForLensTests?: boolean
   /**
    * Render Prop to render the controlled hover popper.
    * @required
    */
-  children: (props: ManagedHoverModalProps) => React.ReactNode
+  children: (props: ManagedHoverOverlayProps) => React.ReactNode
   /**
    * Specify a callback to be called before trying to close the Modal. This allows for
    * use-cases where the user might lose work (think common "Save before closing warning" type flow)
@@ -47,7 +47,7 @@ export interface ModalHoverManagerProps {
   ) => React.ReactNode
 }
 
-export const ModalHoverManager: React.FC<ModalHoverManagerProps> = ({
+export const OverlayHoverManager: React.FC<OverlayHoverManagerProps> = ({
   __initializeOpenForLensTests,
   ...props
 }) => {
@@ -97,7 +97,7 @@ export const ModalHoverManager: React.FC<ModalHoverManagerProps> = ({
     onMouseOver: handleOpen,
   }
 
-  const managedHoverModalProps = {
+  const managedHoverOverlayProps = {
     ...otherProps,
     close: handleClose,
     isOpen,
@@ -110,7 +110,7 @@ export const ModalHoverManager: React.FC<ModalHoverManagerProps> = ({
 
   return (
     <>
-      {children(managedHoverModalProps)}
+      {children(managedHoverOverlayProps)}
       {wrappedComponent(eventHandlers, triggerRef)}
     </>
   )

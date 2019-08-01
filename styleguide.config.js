@@ -46,6 +46,7 @@ const componentSections = [
       'src/components/Overlay/MenuOverlay.tsx',
       'src/components/Overlay/OverlayHover.tsx',
       'src/components/Overlay/OverlaySurface.tsx',
+      'src/components/Overlay/OverlayHoverManager.tsx',
     ],
   },
   {
@@ -59,7 +60,6 @@ const componentSections = [
       'src/components/Modal/ModalContext.tsx',
       'src/components/Modal/Modal.tsx',
       'src/components/Modal/ModalBackdrop.tsx',
-      'src/components/Modal/ModalHoverManager.tsx',
       'src/components/Modal/ModalManager.tsx',
       'src/components/Modal/ModalPortal.tsx',
       'src/components/Modal/ModalSurface.tsx',
