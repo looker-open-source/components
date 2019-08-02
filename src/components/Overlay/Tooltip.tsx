@@ -13,10 +13,15 @@ import {
   OverlaySurface,
 } from './'
 
-// Remove when we upgrade to TypeScript 3.5
+// Omit<T, K> is built in to TypeScript 3.5, delete next line when we upgrade
 type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
+type Childless<T extends JSX.ElementChildrenAttribute> = Omit<T, 'children'>
+// h/t https://stackoverflow.com/q/52702461
+// prettier-ignore
+type Rename<T, K extends keyof T, N extends string> =
+  Pick<T, Exclude<keyof T, K>> & { [P in N]: T[K] }
 
-interface TooltipInternalProps extends Omit<OverlayHoverProps, 'children'> {
+interface TooltipInternalProps extends Childless<OverlayHoverProps> {
   /**
    * Specify the maximum width before wrapping text.
    * @default 16rem
@@ -77,11 +82,15 @@ const TooltipInternal: React.FC<TooltipInternalProps> = ({
   )
 }
 
-export interface TooltipProps
-  extends TooltipInternalProps,
-    Pick<OverlayHoverManagerProps, '__initializeOpenForLensTests'> {
-  children: OverlayHoverManagerProps['wrappedComponent']
-}
+export type TooltipProps = TooltipInternalProps &
+  Rename<
+    Pick<
+      OverlayHoverManagerProps,
+      '__initializeOpenForLensTests' | 'wrappedComponent'
+    >,
+    'wrappedComponent',
+    'children'
+  >
 
 export const Tooltip: React.FC<TooltipProps> = ({
   __initializeOpenForLensTests,
