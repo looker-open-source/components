@@ -19,7 +19,7 @@ export const OverlayHover: React.FC<OverlayHoverProps> = ({
   portalRef,
   setSurfaceRef,
   triggerRef,
-  usePortal,
+  usePortal = true,
 }) => {
   if (!isOpen) return null
 
