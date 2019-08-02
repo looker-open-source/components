@@ -3,6 +3,7 @@ import React, { useRef, useState } from 'react'
 import { PopperProps } from 'react-popper'
 
 export interface ManagedHoverOverlayProps {
+  canClose: OverlayHoverManagerProps['canClose']
   close: () => void
   isOpen: boolean
   setSurfaceRef: NonNullable<PopperProps['innerRef']>
@@ -49,6 +50,7 @@ export interface OverlayHoverManagerProps {
 
 export const OverlayHoverManager: React.FC<OverlayHoverManagerProps> = ({
   __initializeOpenForLensTests,
+  canClose,
   ...props
 }) => {
   const [isOpen, setIsOpen] = useState(__initializeOpenForLensTests || false)
@@ -60,7 +62,7 @@ export const OverlayHoverManager: React.FC<OverlayHoverManagerProps> = ({
   }
 
   const handleClose = () => {
-    if (props.canClose && !props.canClose()) return
+    if (canClose && !canClose()) return
     setIsOpen(false)
   }
 
@@ -99,6 +101,7 @@ export const OverlayHoverManager: React.FC<OverlayHoverManagerProps> = ({
 
   const managedHoverOverlayProps = {
     ...otherProps,
+    canClose,
     close: handleClose,
     isOpen,
     onMouseOut: handleMouseOut,
