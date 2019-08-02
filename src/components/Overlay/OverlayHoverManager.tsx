@@ -1,4 +1,3 @@
-import { Placement } from 'popper.js'
 import React, { useRef, useState } from 'react'
 import { PopperProps } from 'react-popper'
 
@@ -24,14 +23,6 @@ export interface OverlayHoverManagerProps {
    * Specify a callback to be called each time this Modal is closed
    */
   canClose?: () => boolean
-  /**
-   * Can be one of: top, bottom, left, right, auto, with the modifiers: start,
-   * end. This value comes directly from popperjs. See
-   * https://popper.js.org/popper-documentation.html#Popper.placements for more
-   * info.
-   * @default bottom
-   */
-  placement?: Placement
   /**
    * Component to wrap. The ModalHoverManager HOC will listen for mouse events on this
    * component, maintain the state of isOpen accordingly, and pass that state into
