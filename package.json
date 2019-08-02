@@ -1,6 +1,6 @@
 {
   "name": "looker-lens",
-  "version": "0.0.1-beta.21",
+  "version": "0.0.1-beta.21-b",
   "main": "dist/index",
   "license": "MIT",
   "devDependencies": {
@@ -85,14 +85,6 @@
     "styled-system": "^3.1.6",
     "svg-inline-loader": "^0.8.0",
     "uuid": "^3.3.2"
-  },
-  "peerDependencies": {
-    "@types/react": "^16.8",
-    "@types/react-dom": "^16.8",
-    "@types/styled-system": "^3.0",
-    "react": "^16.8",
-    "react-dom": "^16.8",
-    "styled-components": "^3.4"
   },
   "resolutions": {
     "handlebars": "4.1.2",
