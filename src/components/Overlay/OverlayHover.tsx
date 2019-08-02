@@ -58,7 +58,7 @@ export const OverlayHover: React.FC<OverlayHoverProps> = ({
     </Popper>
   )
 
-  return usePortal === undefined || usePortal === true ? (
+  return usePortal ? (
     <ModalPortal portalRef={portalRef}>{popper}</ModalPortal>
   ) : (
     popper
