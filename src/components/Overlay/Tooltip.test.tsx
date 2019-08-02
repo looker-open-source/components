@@ -15,7 +15,7 @@ import { Tooltip } from './Tooltip'
 describe('Tooltip', () => {
   test('snapshot', () => {
     assertSnapshotShallow(
-      <Tooltip content="Hello world" __initializeOpenForLensTests>
+      <Tooltip content="Hello world" isOpen>
         {(eventHandlers, ref) => (
           <Button innerRef={ref} {...eventHandlers}>
             Example
@@ -27,7 +27,7 @@ describe('Tooltip', () => {
 
   test('Tooltip can hide its arrow', () => {
     assertSnapshotShallow(
-      <Tooltip content="Hello world" arrow={false} __initializeOpenForLensTests>
+      <Tooltip content="Hello world" arrow={false} isOpen>
         {(eventHandlers, ref) => (
           <Button innerRef={ref} {...eventHandlers}>
             Example
@@ -63,7 +63,7 @@ describe('Tooltip', () => {
 
   test('close on surface mouseout', () => {
     const tooltip = mountWithTheme(
-      <Tooltip content="Hello world" __initializeOpenForLensTests>
+      <Tooltip content="Hello world" isOpen>
         {(eventHandlers, ref) => (
           <Button innerRef={ref} {...eventHandlers}>
             Test
@@ -99,7 +99,7 @@ describe('Tooltip', () => {
 
   test('open initially, collapse on mouseout', () => {
     const tooltip = mountWithTheme(
-      <Tooltip content="Hello world" __initializeOpenForLensTests>
+      <Tooltip content="Hello world" isOpen>
         {(eventHandlers, ref) => (
           <Button innerRef={ref} {...eventHandlers}>
             Test
@@ -144,7 +144,7 @@ describe('Tooltip', () => {
   // Proves LENS-119 is invalid
   test('tooltip can exceed bounds of containing overlay', () => {
     const tooltip = (
-      <Tooltip content="Great knowledge here!" __initializeOpenForLensTests>
+      <Tooltip content="Great knowledge here!" isOpen>
         {(eventHandlers, ref) => (
           <Box innerRef={ref} {...eventHandlers}>
             I wish I knew more about this...

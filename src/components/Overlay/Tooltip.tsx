@@ -84,23 +84,17 @@ const TooltipInternal: React.FC<TooltipInternalProps> = ({
 
 export type TooltipProps = TooltipInternalProps &
   Rename<
-    Pick<
-      OverlayHoverManagerProps,
-      '__initializeOpenForLensTests' | 'wrappedComponent'
-    >,
+    Pick<OverlayHoverManagerProps, 'isOpen' | 'wrappedComponent'>,
     'wrappedComponent',
     'children'
   >
 
 export const Tooltip: React.FC<TooltipProps> = ({
-  __initializeOpenForLensTests,
+  isOpen,
   children,
   ...tooltipInternalProps
 }) => (
-  <OverlayHoverManager
-    __initializeOpenForLensTests={__initializeOpenForLensTests}
-    wrappedComponent={children}
-  >
+  <OverlayHoverManager isOpen={isOpen} wrappedComponent={children}>
     {managedHoverOverlayProps => (
       <TooltipInternal
         {...tooltipInternalProps}

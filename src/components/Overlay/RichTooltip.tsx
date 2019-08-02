@@ -42,23 +42,17 @@ const RichTooltipInternal: React.FC<RichTooltipInternalProps> = ({
 export interface RichTooltipProps
   extends RichTooltipInternalProps,
     Rename<
-      Pick<
-        OverlayHoverManagerProps,
-        '__initializeOpenForLensTests' | 'wrappedComponent'
-      >,
+      Pick<OverlayHoverManagerProps, 'isOpen' | 'wrappedComponent'>,
       'wrappedComponent',
       'children'
     > {}
 
 export const RichTooltip: React.FC<RichTooltipProps> = ({
-  __initializeOpenForLensTests,
+  isOpen,
   children,
   ...richTooltipInternalProps
 }) => (
-  <OverlayHoverManager
-    __initializeOpenForLensTests={__initializeOpenForLensTests}
-    wrappedComponent={children}
-  >
+  <OverlayHoverManager isOpen={isOpen} wrappedComponent={children}>
     {managedHoverOverlayProps =>
       managedHoverOverlayProps.triggerRef ? (
         <RichTooltipInternal

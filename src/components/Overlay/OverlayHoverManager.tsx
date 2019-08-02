@@ -11,7 +11,7 @@ export interface ManagedHoverOverlayProps {
 }
 
 export interface OverlayHoverManagerProps {
-  __initializeOpenForLensTests?: boolean
+  isOpen?: boolean
   /**
    * Render Prop to render the controlled hover popper.
    * @required
@@ -40,12 +40,12 @@ export interface OverlayHoverManagerProps {
 }
 
 export const OverlayHoverManager: React.FC<OverlayHoverManagerProps> = ({
-  __initializeOpenForLensTests,
+  isOpen: initializeOpen = false,
   canClose,
   children,
   wrappedComponent,
 }) => {
-  const [isOpen, setIsOpen] = useState(__initializeOpenForLensTests || false)
+  const [isOpen, setIsOpen] = useState(initializeOpen)
   const surfaceRef = useRef<HTMLElement | null>(null)
   const triggerRef = useRef<HTMLElement>(null)
 
