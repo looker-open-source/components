@@ -15,42 +15,56 @@ import {
 type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
 
 interface RichTooltipInternalProps extends Omit<OverlayHoverProps, 'children'> {
-  children: React.ReactNode
+  content: React.ReactNode
 }
 
 const RichTooltipInternal: React.FC<RichTooltipInternalProps> = ({
-  children,
-  ...overlayProps
+  content,
+  ...overlayHoverProps
 }) => (
-  <OverlayHover {...overlayProps}>
-    {(props: OverlayChildrenProps) => (
-      <OverlaySurface {...props} {...CustomizableRichTooltipAttributes.surface}>
-        {children}
+  <OverlayHover {...overlayHoverProps}>
+    {(overlayChildrenProps: OverlayChildrenProps) => (
+      <OverlaySurface
+        {...overlayChildrenProps}
+        {...CustomizableRichTooltipAttributes.surface}
+      >
+        {content}
       </OverlaySurface>
     )}
   </OverlayHover>
 )
 
 export interface RichTooltipProps
-  extends Omit<OverlayHoverManagerProps, 'children' | 'wrappedComponent'> {
+  extends RichTooltipInternalProps,
+    Omit<OverlayHoverManagerProps, 'children' | 'wrappedComponent'> {
   children: OverlayHoverManagerProps['wrappedComponent']
-  content: React.ReactNode
 }
 
 export const RichTooltip: React.FC<RichTooltipProps> = ({
+  __initializeOpenForLensTests,
+  canClose,
   children,
   content,
-  ...overlayHoverManagerProps
+  placement,
+  portalRef,
+  usePortal,
+  ...richTooltipInternalProps
 }) => (
   <OverlayHoverManager
+    __initializeOpenForLensTests={__initializeOpenForLensTests}
+    canClose={canClose}
     wrappedComponent={children}
-    {...overlayHoverManagerProps}
   >
     {managedHoverOverlayProps =>
       managedHoverOverlayProps.triggerRef ? (
-        <RichTooltipInternal {...managedHoverOverlayProps}>
-          {content}
-        </RichTooltipInternal>
+        <RichTooltipInternal
+          content={content}
+          placement={placement}
+          portalRef={portalRef}
+          usePortal={usePortal}
+          {...richTooltipInternalProps}
+          {...managedHoverOverlayProps}
+        />
       ) : null
     }
   </OverlayHoverManager>
