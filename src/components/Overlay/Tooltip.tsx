@@ -1,5 +1,4 @@
 import { TextAlignProperty } from 'csstype'
-import { Placement } from 'popper.js'
 import * as React from 'react'
 import { fadeIn, palette, shadows } from '../../style'
 import { CustomizableAttributes } from '../../types/attributes'
@@ -38,32 +37,30 @@ export interface TooltipBaseProps {
    * @default true
    */
   arrow?: boolean
-}
-
-export interface TooltipInternalProps
-  extends TooltipBaseProps,
-    Omit<OverlayHoverProps, 'children'> {
   /**
    * Text to display in the tooltip
    * @required
    */
-  children: string
+  content: string
 }
+
+type TooltipInternalProps = TooltipBaseProps &
+  Omit<OverlayHoverProps, 'children'>
 
 const TooltipInternal: React.FC<TooltipInternalProps> = ({
   arrow = true,
-  children,
+  content,
   textAlign,
   maxWidth,
   width,
-  ...overlayProps
+  ...overlayHoverProps
 }) => {
   return (
-    <OverlayHover {...overlayProps}>
-      {(props: OverlayChildrenProps) => (
+    <OverlayHover {...overlayHoverProps}>
+      {(overlayChildrenProps: OverlayChildrenProps) => (
         <OverlaySurface
           arrow={arrow}
-          {...props}
+          {...overlayChildrenProps}
           {...CustomizableTooltipAttributes.surface}
         >
           <Paragraph
@@ -75,7 +72,7 @@ const TooltipInternal: React.FC<TooltipInternalProps> = ({
             m="none"
             textAlign={textAlign || 'center'}
           >
-            {children}
+            {content}
           </Paragraph>
         </OverlaySurface>
       )}
@@ -87,39 +84,16 @@ export interface TooltipProps
   extends TooltipBaseProps,
     Omit<OverlayHoverManagerProps, 'wrappedComponent' | 'children'> {
   children: OverlayHoverManagerProps['wrappedComponent']
-  /**
-   * Content that will be placed inside the Tooltip
-   * @required
-   */
-  content: string
-  /**
-   * Specify the maximum width before wrapping text.
-   * @default 16rem
-   */
-  maxWidth?: string
-  /**
-   * Specify the text aligment within tooltips.
-   * @default center
-   */
-  textAlign?: TextAlignProperty
-  /**
-   * Can be one of: top, bottom, left, right, auto, with the modifiers: start,
-   * end. This value comes directly from popperjs. See
-   * https://popper.js.org/popper-documentation.html#Popper.placements for more
-   * info.
-   * @default bottom
-   */
-  placement?: Placement
 }
 
 export const Tooltip: React.FC<TooltipProps> = ({
-  children,
+  children: wrappedComponent,
   content,
   ...tooltipProps
 }) => (
-  <OverlayHoverManager wrappedComponent={children} {...tooltipProps}>
+  <OverlayHoverManager wrappedComponent={wrappedComponent} {...tooltipProps}>
     {managedHoverOverlayProps => (
-      <TooltipInternal {...managedHoverOverlayProps}>{content}</TooltipInternal>
+      <TooltipInternal content={content} {...managedHoverOverlayProps} />
     )}
   </OverlayHoverManager>
 )
