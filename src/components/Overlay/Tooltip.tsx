@@ -16,7 +16,8 @@ import {
 // Remove when we upgrade to TypeScript 3.5
 type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
 
-export interface TooltipBaseProps {
+export interface TooltipInternalProps
+  extends Omit<OverlayHoverProps, 'children'> {
   /**
    * Specify the maximum width before wrapping text.
    * @default 16rem
@@ -43,9 +44,6 @@ export interface TooltipBaseProps {
    */
   content: string
 }
-
-type TooltipInternalProps = TooltipBaseProps &
-  Omit<OverlayHoverProps, 'children'>
 
 const TooltipInternal: React.FC<TooltipInternalProps> = ({
   arrow = true,
