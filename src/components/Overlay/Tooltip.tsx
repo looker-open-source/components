@@ -89,11 +89,7 @@ export interface TooltipProps
 export const Tooltip: React.FC<TooltipProps> = ({
   __initializeOpenForLensTests,
   children,
-  content,
-  placement,
-  portalRef,
-  usePortal,
-  ...tooltipProps
+  ...tooltipInternalProps
 }) => (
   <OverlayHoverManager
     __initializeOpenForLensTests={__initializeOpenForLensTests}
@@ -101,11 +97,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
   >
     {managedHoverOverlayProps => (
       <TooltipInternal
-        content={content}
-        placement={placement}
-        portalRef={portalRef}
-        usePortal={usePortal}
-        {...tooltipProps}
+        {...tooltipInternalProps}
         {...managedHoverOverlayProps}
       />
     )}

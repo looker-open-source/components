@@ -43,10 +43,6 @@ export interface RichTooltipProps
 export const RichTooltip: React.FC<RichTooltipProps> = ({
   __initializeOpenForLensTests,
   children,
-  content,
-  placement,
-  portalRef,
-  usePortal,
   ...richTooltipInternalProps
 }) => (
   <OverlayHoverManager
@@ -56,10 +52,6 @@ export const RichTooltip: React.FC<RichTooltipProps> = ({
     {managedHoverOverlayProps =>
       managedHoverOverlayProps.triggerRef ? (
         <RichTooltipInternal
-          content={content}
-          placement={placement}
-          portalRef={portalRef}
-          usePortal={usePortal}
           {...richTooltipInternalProps}
           {...managedHoverOverlayProps}
         />
