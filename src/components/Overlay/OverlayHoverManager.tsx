@@ -42,7 +42,8 @@ export interface OverlayHoverManagerProps {
 export const OverlayHoverManager: React.FC<OverlayHoverManagerProps> = ({
   __initializeOpenForLensTests,
   canClose,
-  ...props
+  children,
+  wrappedComponent,
 }) => {
   const [isOpen, setIsOpen] = useState(__initializeOpenForLensTests || false)
   const surfaceRef = useRef<HTMLElement | null>(null)
@@ -81,8 +82,6 @@ export const OverlayHoverManager: React.FC<OverlayHoverManagerProps> = ({
     handleClose()
   }
 
-  const { children, wrappedComponent, ...otherProps } = props
-
   const eventHandlers = {
     onBlur: handleClose,
     onFocus: handleOpen,
@@ -91,7 +90,6 @@ export const OverlayHoverManager: React.FC<OverlayHoverManagerProps> = ({
   }
 
   const managedHoverOverlayProps = {
-    ...otherProps,
     canClose,
     close: handleClose,
     isOpen,
