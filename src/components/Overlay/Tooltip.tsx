@@ -82,13 +82,12 @@ const TooltipInternal: React.FC<TooltipInternalProps> = ({
 
 export interface TooltipProps
   extends TooltipInternalProps,
-    Omit<OverlayHoverManagerProps, 'children' | 'wrappedComponent'> {
+    Pick<OverlayHoverManagerProps, '__initializeOpenForLensTests'> {
   children: OverlayHoverManagerProps['wrappedComponent']
 }
 
 export const Tooltip: React.FC<TooltipProps> = ({
   __initializeOpenForLensTests,
-  canClose,
   children,
   content,
   placement,
@@ -98,7 +97,6 @@ export const Tooltip: React.FC<TooltipProps> = ({
 }) => (
   <OverlayHoverManager
     __initializeOpenForLensTests={__initializeOpenForLensTests}
-    canClose={canClose}
     wrappedComponent={children}
   >
     {managedHoverOverlayProps => (
