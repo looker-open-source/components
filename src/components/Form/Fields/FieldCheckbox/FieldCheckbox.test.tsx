@@ -1,6 +1,10 @@
 import 'jest-styled-components'
 import * as React from 'react'
-import { createWithTheme } from '../../../../../test/utils/create_with_theme'
+import {
+  createWithTheme,
+  mountWithTheme,
+} from '../../../../../test/utils/create_with_theme'
+import { Label } from '../../Label/Label'
 import { FieldCheckbox } from './FieldCheckbox'
 
 test('A FieldCheckbox', () => {
@@ -28,7 +32,7 @@ test('A required FieldCheckbox', () => {
 })
 
 test('A FieldCheckbox with an error validation aligned to the bottom', () => {
-  const component = createWithTheme(
+  const component = mountWithTheme(
     <FieldCheckbox
       label="👍"
       name="thumbsUp"
@@ -37,9 +41,7 @@ test('A FieldCheckbox with an error validation aligned to the bottom', () => {
       alignValidationMessage="bottom"
     />
   )
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
-  expect(tree!.children![0].props.htmlFor).toEqual(
-    tree!.children![1].children![0].children![0].props.id
+  expect(component.find(Label).props().htmlFor).toEqual(
+    component.find('input').props().id
   )
 })

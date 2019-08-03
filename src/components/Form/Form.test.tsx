@@ -1,11 +1,15 @@
 import { mount } from 'enzyme'
 import 'jest-styled-components'
 import * as React from 'react'
-import { createWithTheme } from '../../../test/utils/create_with_theme'
+import {
+  createWithTheme,
+  mountWithTheme,
+} from '../../../test/utils/create_with_theme'
 import { theme, ThemeProvider } from '../../style'
 import { Button } from '../Button/Button'
 import { FieldText } from './Fields/FieldText/FieldText'
 import { Form } from './Form'
+import { ValidationMessage } from './ValidationMessage'
 
 test('Form with one child', () => {
   const component = createWithTheme(
@@ -18,7 +22,7 @@ test('Form with one child', () => {
 })
 
 test('Form with two invalid children', () => {
-  const component = createWithTheme(
+  const component = mountWithTheme(
     <Form
       validationMessages={{
         name1: { type: 'error', message: 'e1' },
@@ -29,29 +33,25 @@ test('Form with two invalid children', () => {
       <FieldText label="label2" id="text-field" name="name2" />
     </Form>
   )
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
-  expect(tree!.children![0].children![1].children![1].children![0]).toEqual(
-    'e1'
-  )
-  expect(tree!.children![1].children![1].children![1].children![0]).toEqual(
-    'e2'
-  )
+
+  const messages = component.find(ValidationMessage)
+
+  expect(messages).toHaveLength(2)
+  expect(messages.map(validationMessage => validationMessage.text())).toEqual([
+    'e1',
+    'e2',
+  ])
 })
 
 test('Form with one invalid child and a submit button', () => {
-  const component = createWithTheme(
+  const component = mountWithTheme(
     <Form validationMessages={{ name2: { type: 'error', message: 'e2' } }}>
       <FieldText label="label1" id="text-field" name="name1" />
       <FieldText label="label2" id="text-field" name="name2" />
       <Button>Submit</Button>
     </Form>
   )
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
-  expect(tree!.children![1].children![1].children![1].children![0]).toEqual(
-    'e2'
-  )
+  expect(component.find(ValidationMessage).text()).toEqual('e2')
 })
 
 test('Should trigger onInput handler', () => {

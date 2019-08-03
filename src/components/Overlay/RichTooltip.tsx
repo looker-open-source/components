@@ -1,45 +1,68 @@
 import * as React from 'react'
 import { fadeIn, palette, shadows } from '../../style'
 import { CustomizableAttributes } from '../../types/attributes'
-import { ManagedModalProps, ModalSurfaceStyleProps } from '../Modal'
-import {
-  ModalHoverManager,
-  ModalHoverManagerProps,
-} from '../Modal/ModalHoverManager'
+import { ModalSurfaceStyleProps } from '../Modal'
 import {
   OverlayChildrenProps,
   OverlayHover,
-  OverlayInteractiveProps,
+  OverlayHoverManager,
+  OverlayHoverManagerProps,
+  OverlayHoverProps,
   OverlaySurface,
 } from './'
 
-const RichTooltipInternal: React.FC<OverlayInteractiveProps> = ({
-  children,
-  ...overlayProps
+// Omit<T, K> is built in to TypeScript 3.5, delete next line when we upgrade
+type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
+type Childless<T extends JSX.ElementChildrenAttribute> = Omit<T, 'children'>
+// h/t https://stackoverflow.com/q/52702461
+// prettier-ignore
+type Rename<T, K extends keyof T, N extends string> =
+  Pick<T, Exclude<keyof T, K>> & { [P in N]: T[K] }
+
+interface RichTooltipInternalProps extends Childless<OverlayHoverProps> {
+  content: React.ReactNode
+}
+
+const RichTooltipInternal: React.FC<RichTooltipInternalProps> = ({
+  content,
+  ...overlayHoverProps
 }) => (
-  <OverlayHover {...overlayProps}>
-    {(props: OverlayChildrenProps) => (
-      <OverlaySurface {...props} {...CustomizableRichTooltipAttributes.surface}>
-        {children}
+  <OverlayHover {...overlayHoverProps}>
+    {(overlayChildrenProps: OverlayChildrenProps) => (
+      <OverlaySurface
+        {...overlayChildrenProps}
+        {...CustomizableRichTooltipAttributes.surface}
+      >
+        {content}
       </OverlaySurface>
     )}
   </OverlayHover>
 )
 
-export class RichTooltip extends ModalHoverManager<ModalHoverManagerProps> {
-  protected renderModal(content: React.ReactNode, props: ManagedModalProps) {
-    return this.triggerRef ? (
-      <RichTooltipInternal
-        isOpen={this.state.isOpen}
-        triggerRef={this.triggerRef}
-        onClose={this.close}
-        {...props}
-      >
-        {content}
-      </RichTooltipInternal>
-    ) : null
-  }
-}
+export interface RichTooltipProps
+  extends RichTooltipInternalProps,
+    Rename<
+      Pick<OverlayHoverManagerProps, 'isOpen' | 'wrappedComponent'>,
+      'wrappedComponent',
+      'children'
+    > {}
+
+export const RichTooltip: React.FC<RichTooltipProps> = ({
+  isOpen,
+  children,
+  ...richTooltipInternalProps
+}) => (
+  <OverlayHoverManager isOpen={isOpen} wrappedComponent={children}>
+    {managedHoverOverlayProps =>
+      managedHoverOverlayProps.triggerRef ? (
+        <RichTooltipInternal
+          {...richTooltipInternalProps}
+          {...managedHoverOverlayProps}
+        />
+      ) : null
+    }
+  </OverlayHoverManager>
+)
 
 export interface CustomizableRichTooltipAttributes
   extends CustomizableAttributes {

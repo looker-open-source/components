@@ -1,23 +1,27 @@
 import { TextAlignProperty } from 'csstype'
-import { Placement } from 'popper.js'
 import * as React from 'react'
 import { fadeIn, palette, shadows } from '../../style'
 import { CustomizableAttributes } from '../../types/attributes'
 import { ModalSurfaceStyleProps } from '../Modal'
-import {
-  ManagedHoverModalProps,
-  ModalHoverManager,
-  ModalHoverManagerProps,
-} from '../Modal/ModalHoverManager'
 import { Paragraph } from '../Text'
 import {
   OverlayChildrenProps,
   OverlayHover,
-  OverlayInteractiveProps,
+  OverlayHoverManager,
+  OverlayHoverManagerProps,
+  OverlayHoverProps,
   OverlaySurface,
 } from './'
 
-export interface TooltipBaseProps {
+// Omit<T, K> is built in to TypeScript 3.5, delete next line when we upgrade
+type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
+type Childless<T extends JSX.ElementChildrenAttribute> = Omit<T, 'children'>
+// h/t https://stackoverflow.com/q/52702461
+// prettier-ignore
+type Rename<T, K extends keyof T, N extends string> =
+  Pick<T, Exclude<keyof T, K>> & { [P in N]: T[K] }
+
+interface TooltipInternalProps extends Childless<OverlayHoverProps> {
   /**
    * Specify the maximum width before wrapping text.
    * @default 16rem
@@ -38,32 +42,27 @@ export interface TooltipBaseProps {
    * @default true
    */
   arrow?: boolean
-}
-
-export interface TooltipInternalProps
-  extends TooltipBaseProps,
-    OverlayInteractiveProps {
   /**
    * Text to display in the tooltip
    * @required
    */
-  children: string
+  content: string
 }
 
 const TooltipInternal: React.FC<TooltipInternalProps> = ({
   arrow = true,
-  children,
+  content,
   textAlign,
   maxWidth,
   width,
-  ...overlayProps
+  ...overlayHoverProps
 }) => {
   return (
-    <OverlayHover {...overlayProps}>
-      {(props: OverlayChildrenProps) => (
+    <OverlayHover {...overlayHoverProps}>
+      {(overlayChildrenProps: OverlayChildrenProps) => (
         <OverlaySurface
           arrow={arrow}
-          {...props}
+          {...overlayChildrenProps}
           {...CustomizableTooltipAttributes.surface}
         >
           <Paragraph
@@ -75,7 +74,7 @@ const TooltipInternal: React.FC<TooltipInternalProps> = ({
             m="none"
             textAlign={textAlign || 'center'}
           >
-            {children}
+            {content}
           </Paragraph>
         </OverlaySurface>
       )}
@@ -83,42 +82,27 @@ const TooltipInternal: React.FC<TooltipInternalProps> = ({
   )
 }
 
-export interface TooltipProps extends TooltipBaseProps, ModalHoverManagerProps {
-  content: string
-  /**
-   * Specify the maximum width before wrapping text.
-   * @default 16rem
-   */
-  maxWidth?: string
-  /**
-   * Specify the text aligment within tooltips.
-   * @default center
-   */
-  textAlign?: TextAlignProperty
-  /**
-   * Can be one of: top, bottom, left, right, auto, with the modifiers: start,
-   * end. This value comes directly from popperjs. See
-   * https://popper.js.org/popper-documentation.html#Popper.placements for more
-   * info.
-   * @default bottom
-   */
-  placement?: Placement
-}
+export type TooltipProps = TooltipInternalProps &
+  Rename<
+    Pick<OverlayHoverManagerProps, 'isOpen' | 'wrappedComponent'>,
+    'wrappedComponent',
+    'children'
+  >
 
-export class Tooltip extends ModalHoverManager<TooltipProps> {
-  protected renderModal(content: string, props: ManagedHoverModalProps) {
-    return (
+export const Tooltip: React.FC<TooltipProps> = ({
+  isOpen,
+  children,
+  ...tooltipInternalProps
+}) => (
+  <OverlayHoverManager isOpen={isOpen} wrappedComponent={children}>
+    {managedHoverOverlayProps => (
       <TooltipInternal
-        isOpen={this.state.isOpen}
-        triggerRef={this.triggerRef}
-        onClose={this.close}
-        {...props}
-      >
-        {content}
-      </TooltipInternal>
-    )
-  }
-}
+        {...tooltipInternalProps}
+        {...managedHoverOverlayProps}
+      />
+    )}
+  </OverlayHoverManager>
+)
 
 export interface CustomizableTooltipAttributes extends CustomizableAttributes {
   surface: ModalSurfaceStyleProps

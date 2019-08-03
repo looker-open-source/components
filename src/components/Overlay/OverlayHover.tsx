@@ -1,55 +1,66 @@
+import { Placement } from 'popper.js'
 import * as React from 'react'
 import { Popper } from 'react-popper'
 import { ModalPortal } from '../Modal/ModalPortal'
-import { OverlayProps } from './Overlay'
+import { ManagedHoverOverlayProps, OverlayChildrenProps } from './'
 
-export interface OverlayHoverProps extends OverlayProps {
-  setSurfaceRef?: (ref: HTMLElement | null) => void
-  onMouseOut?: (event: React.MouseEvent) => void
+export interface OverlayHoverProps extends Partial<ManagedHoverOverlayProps> {
+  children: (props: OverlayChildrenProps) => React.ReactNode
+  placement?: Placement
+  portalRef?: React.RefObject<HTMLElement>
+  usePortal?: boolean
 }
 
 export const OverlayHover: React.FC<OverlayHoverProps> = ({
   children,
   isOpen,
+  onMouseOut,
+  placement: outerPlacement,
+  portalRef,
   setSurfaceRef,
-  ...props
+  triggerRef,
+  usePortal = true,
 }) => {
-  const triggerRef =
-    props.triggerRef && props.triggerRef.current
-      ? props.triggerRef.current
-      : undefined
+  if (!isOpen) return null
 
-  return isOpen ? (
-    <ModalPortal portalRef={props.portalRef}>
-      <Popper
-        positionFixed
-        innerRef={setSurfaceRef}
-        placement={props.placement}
-        modifiers={{
-          flip: {
-            behavior: 'flip',
-            enabled: true,
-            flipVariations: true,
-            flipVariationsByContent: true,
-          },
-          preventOverflow: {
-            boundariesElement: 'viewport',
-            escapeWithReference: true,
-            padding: 0,
-          },
-        }}
-        referenceElement={triggerRef}
-      >
-        {({ ref, style, arrowProps, placement }) =>
-          children({
-            arrowProps,
-            eventHandlers: { onMouseOut: props.onMouseOut },
-            placement,
-            ref,
-            style,
-          })
-        }
-      </Popper>
-    </ModalPortal>
-  ) : null
+  const referenceElement =
+    triggerRef && triggerRef.current ? triggerRef.current : undefined
+
+  const popper = (
+    <Popper
+      positionFixed
+      innerRef={setSurfaceRef}
+      placement={outerPlacement}
+      modifiers={{
+        flip: {
+          behavior: 'flip',
+          enabled: true,
+          flipVariations: true,
+          flipVariationsByContent: true,
+        },
+        preventOverflow: {
+          boundariesElement: 'viewport',
+          escapeWithReference: true,
+          padding: 0,
+        },
+      }}
+      referenceElement={referenceElement}
+    >
+      {({ ref, style, arrowProps, placement: innerPlacement }) =>
+        children({
+          arrowProps,
+          eventHandlers: { onMouseOut },
+          placement: innerPlacement,
+          ref,
+          style,
+        })
+      }
+    </Popper>
+  )
+
+  return usePortal ? (
+    <ModalPortal portalRef={portalRef}>{popper}</ModalPortal>
+  ) : (
+    popper
+  )
 }

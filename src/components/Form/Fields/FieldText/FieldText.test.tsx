@@ -1,8 +1,12 @@
 import { mount } from 'enzyme'
 import * as React from 'react'
-import { createWithTheme } from '../../../../../test/utils/create_with_theme'
+import {
+  createWithTheme,
+  mountWithTheme,
+} from '../../../../../test/utils/create_with_theme'
 import { assertSnapshot } from '../../../../../test/utils/snapshot'
 import { theme, ThemeProvider } from '../../../../style'
+import { Label } from '../../Label/Label'
 import { FieldText } from './FieldText'
 
 test('A FieldText', () => {
@@ -66,37 +70,48 @@ test('A required FieldText', () => {
 })
 
 test('A FieldText with an error validation aligned to the bottom', () => {
-  const component = createWithTheme(
+  const id = 'thumbs-up'
+  const component = mountWithTheme(
     <FieldText
       label="👍"
       name="thumbsUp"
-      id="thumbs-up"
+      id={id}
       validationMessage={{ type: 'error', message: 'This is an error' }}
       alignValidationMessage="bottom"
     />
   )
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
-  expect(tree!.children![0].props.htmlFor).toEqual(
-    tree!.children![1].children![0].children![0].props.id
-  )
+
+  expect(component.find(Label).props().htmlFor).toEqual(id)
 })
 
 test('A FieldText with an error validation aligned to the left', () => {
+  const id = 'thumbs-up'
   const component = createWithTheme(
     <FieldText
       label="👍"
       name="thumbsUp"
-      id="thumbs-up"
+      id={id}
       validationMessage={{ type: 'error', message: 'This is an error' }}
       alignValidationMessage="left"
     />
   )
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
-  expect(tree!.children![0].props.htmlFor).toEqual(
-    tree!.children![1].children![0].children![0].props.id
+})
+
+test("A FieldText htmlFor attribute references input's name", () => {
+  const id = 'thumbs-up'
+  const component = mountWithTheme(
+    <FieldText
+      label="👍"
+      name="thumbsUp"
+      id={id}
+      validationMessage={{ type: 'error', message: 'This is an error' }}
+      alignValidationMessage="left"
+    />
   )
+
+  expect(component.find(Label).props().htmlFor).toEqual(id)
 })
 
 test('A FieldText with an error validation aligned to the right', () => {
@@ -111,7 +126,4 @@ test('A FieldText with an error validation aligned to the right', () => {
   )
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
-  expect(tree!.children![0].props.htmlFor).toEqual(
-    tree!.children![1].children![0].children![0].props.id
-  )
 })
