@@ -1,8 +1,8 @@
 {
   "name": "looker-lens",
-  "version": "0.0.1-beta.22-rc1",
+  "version": "0.0.1-beta.22-rev2",
   "main": "dist/index",
-  "license": "MIT",
+  "license": "UNLICENSED",
   "devDependencies": {
     "@babel/cli": "^7.4.3",
     "@babel/core": "^7.4.3",
@@ -96,8 +96,8 @@
   },
   "resolutions": {
     "handlebars": "4.1.2",
-    "lodash": "4.17.14",
-    "lodash-es": "4.17.14"
+    "lodash": ">=4.17.14",
+    "lodash-es": ">=4.17.14"
   },
   "files": [
     "dist"

@@ -5,6 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.0.1-beta.22] - 2019-08-02
+
+### Added
+
+- Icons
+  - `Format Italic`
+  - `FormatBold`
+  - `FormatUnderlined`
+
+### Changed
+
+- Major refactor of `OverlayManager` (and `Tooltip` / `RichtoolTip`) [LENS-257]
+  - Now supports `usePortal={false}` to preserve `:hover` behavior.
+  - Major refactor / clean-up of Overlay code (BIG Thank you to @AprilArcus)
+
+### Bug Fixes
+
+- `Popover` now supports `arrow` property
+- `Tooltip` now supports `width` property [LENS-264]
+
 ## [0.0.1-beta.21] - 2019-07-14
 
 ### Changed
