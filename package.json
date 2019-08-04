@@ -1,6 +1,6 @@
 {
   "name": "looker-lens",
-  "version": "0.0.1-beta.22-rev2",
+  "version": "0.0.1-beta.23",
   "main": "dist/index",
   "license": "UNLICENSED",
   "devDependencies": {

@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.0.1-beta.23] - 2019-08-04
+
+### Bug Fixes
+
+- Correct layout issue introduced by `react-hotkeys` to `ModalSurface`
+- Re-introduce `react-hotkeys` to `OverlaySurface`
+- Stablize build issue introduced by errant Babel 7.5.5 dependencies in `yarn.lock`
+
 ## [0.0.1-beta.22] - 2019-08-02
 
 ### Added
