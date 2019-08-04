@@ -33,17 +33,16 @@ const InternalMenu: React.FC<MenuProps> = ({
           MOVE_UP: () => moveFocus(-1, -1, ref),
         }}
       >
-        <div ref={ref as React.RefObject<HTMLDivElement>}>
-          <Box
-            is="ul"
-            tabIndex={-1}
-            role="menu"
-            userSelect="none"
-            {...boxProps}
-          >
-            {children}
-          </Box>
-        </div>
+        <Box
+          is="ul"
+          tabIndex={-1}
+          role="menu"
+          userSelect="none"
+          innerRef={ref}
+          {...boxProps}
+        >
+          {children}
+        </Box>
       </HotKeys>
     </MenuContext.Provider>
   )

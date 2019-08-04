@@ -32,6 +32,12 @@ export const ModalSurface: React.FC<ModalSurfaceProps> = ({
           closeModal && closeModal()
         },
       }}
+      style={{ display: 'flex', justifyContent: 'center' }}
+      // NOTE: Styling is required because react-hotkeys injects a DOM element (`div` by default) that
+      // breaks the flex inheritance. Eventually they will offer a React Hook that should allow removal
+      // of this workaround.
+      //
+      // display: contents would be another workaround when it gains broader (corrected) support
     >
       <FocusTrap
         focusTrapOptions={{

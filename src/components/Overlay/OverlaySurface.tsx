@@ -1,9 +1,10 @@
 import { Placement } from 'popper.js'
 import * as React from 'react'
+import { HotKeys } from 'react-hotkeys'
 import { PopperArrowProps } from 'react-popper'
 import { styled } from '../../style'
 import { Box } from '../Box'
-import { ModalSurfaceStyleProps } from '../Modal'
+import { ModalContext, ModalSurfaceStyleProps } from '../Modal'
 
 export interface OverlaySurfaceArrowProps {
   backgroundColor: string
@@ -27,40 +28,59 @@ const OverlaySurfaceInternal: React.FC<OverlaySurfaceProps> = ({
   surfaceRef,
   style,
   ...props
-}) => (
-  <Box
-    p="xsmall"
-    overflow="visible"
-    className="surface-overflow"
-    innerRef={surfaceRef}
-    style={{ ...style, animation }}
-    {...props.eventHandlers}
-  >
-    <Box
-      bg={props.backgroundColor}
-      borderRadius={props.borderRadius}
-      border={props.border}
-      borderColor={props.borderColor}
-      boxShadow={props.boxShadow}
-      color={props.color}
-    >
-      <Box tabIndex={0} focusStyle={{ outline: 'none' }}>
-        {children}
-      </Box>
+}) => {
+  const { closeModal } = React.useContext(ModalContext)
 
-      {props.arrow !== false && (
-        <OverlaySurfaceArrow
-          backgroundColor={props.backgroundColor}
+  return (
+    <Box
+      p="xsmall"
+      overflow="visible"
+      className="surface-overflow"
+      innerRef={surfaceRef}
+      style={{ ...style, animation }}
+      {...props.eventHandlers}
+    >
+      <HotKeys
+        keyMap={{
+          CLOSE_MODAL: {
+            action: 'keyup',
+            name: 'Close Modal',
+            sequence: 'esc',
+          },
+        }}
+        handlers={{
+          CLOSE_MODAL: () => {
+            closeModal && closeModal()
+          },
+        }}
+      >
+        <Box
+          bg={props.backgroundColor}
+          borderRadius={props.borderRadius}
           border={props.border}
           borderColor={props.borderColor}
-          data-placement={props.placement}
-          innerRef={props.arrowProps.ref}
-          style={props.arrowProps.style}
-        />
-      )}
+          boxShadow={props.boxShadow}
+          color={props.color}
+        >
+          <Box tabIndex={0} focusStyle={{ outline: 'none' }}>
+            {children}
+          </Box>
+
+          {props.arrow !== false && (
+            <OverlaySurfaceArrow
+              backgroundColor={props.backgroundColor}
+              border={props.border}
+              borderColor={props.borderColor}
+              data-placement={props.placement}
+              innerRef={props.arrowProps.ref}
+              style={props.arrowProps.style}
+            />
+          )}
+        </Box>
+      </HotKeys>
     </Box>
-  </Box>
-)
+  )
+}
 
 export const OverlaySurface = React.forwardRef(
   (props: OverlaySurfaceProps, ref) => (
