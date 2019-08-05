@@ -32,7 +32,13 @@ export const ModalSurface: React.FC<ModalSurfaceProps> = ({
           closeModal && closeModal()
         },
       }}
-      style={{ display: 'flex', justifyContent: 'center' }}
+      style={{
+        alignItems: 'center',
+        display: 'flex',
+        height: '100%',
+        justifyContent: 'center',
+        width: '100%',
+      }}
       // NOTE: Styling is required because react-hotkeys injects a DOM element (`div` by default) that
       // breaks the flex inheritance. Eventually they will offer a React Hook that should allow removal
       // of this workaround.
