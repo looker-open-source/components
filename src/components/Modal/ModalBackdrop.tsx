@@ -57,6 +57,7 @@ const BackdropFactory = (props: BackdropStylesProps) => {
 // Backdrop styles are applied here (rather than using the inline `style={...}` prop) to ensure that
 // transitions will still apply to backdrop
 const Backdrop = styled(BackdropFactory)`
+  cursor: default;
   transition: opacity ${props => props.theme.transitions.durationSimple};
   ${props => props.inlineStyle as Styles};
 

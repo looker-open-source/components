@@ -19,10 +19,7 @@ const PopoverInternal: React.FC<PopoverProps> = ({
   children,
   ...overlayProps
 }) => (
-  <Overlay
-    {...overlayProps}
-    backdrop={{ cursor: 'default', backgroundColor: 'transparent' }}
-  >
+  <Overlay {...overlayProps} backdrop={{ backgroundColor: 'transparent' }}>
     {(props: OverlayChildrenProps) => (
       <OverlaySurface
         arrow={arrow}
