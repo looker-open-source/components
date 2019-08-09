@@ -67,6 +67,6 @@ const hasParentMatchingSelector = (target: HTMLElement, selector: string) => {
 
 const InvisiBox = styled(Box)`
   * {
-    pointer-events: initial;
+    pointer-events: auto;
   }
 `

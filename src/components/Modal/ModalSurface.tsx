@@ -8,10 +8,12 @@ import { CustomizableModalAttributes } from './Modal'
 import { ModalContext } from './ModalContext'
 
 export interface ModalSurfaceProps extends BoxProps<HTMLDivElement> {
+  anchor?: 'right'
   animationState?: string
 }
 
 export const ModalSurface: React.FC<ModalSurfaceProps> = ({
+  anchor,
   style,
   className,
   ...props
@@ -36,7 +38,7 @@ export const ModalSurface: React.FC<ModalSurfaceProps> = ({
         alignItems: 'center',
         display: 'flex',
         height: '100%',
-        justifyContent: 'center',
+        justifyContent: anchor === 'right' ? 'flex-end' : 'center',
         width: '100%',
       }}
       // NOTE: Styling is required because react-hotkeys injects a DOM element (`div` by default) that
@@ -57,7 +59,7 @@ export const ModalSurface: React.FC<ModalSurfaceProps> = ({
           className={`surface-overflow ${className}`}
           flexDirection="column"
           maxWidth="100%"
-          position="absolute"
+          position="relative"
           tabIndex={-1}
           surfaceStyle={style}
           focusStyle={{ outline: 'none' }}

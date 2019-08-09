@@ -5,15 +5,15 @@ import { ModalSurface, ModalSurfaceProps } from '../ModalSurface'
 export const DrawerSurface: React.FC<ModalSurfaceProps> = ({
   children,
   width = '30rem',
+  anchor = 'right',
   ...props
 }) => {
   return (
     <Surface
       height="100%"
       maxWidth="100%"
-      right={0}
-      top={0}
       width={width}
+      anchor={anchor}
       {...props}
     >
       {children}
