@@ -1,14 +1,11 @@
 import { Placement } from 'popper.js'
 import * as React from 'react'
 import { Popper } from 'react-popper'
-import { ModalPortal } from '../Modal/ModalPortal'
 import { ManagedHoverOverlayProps, OverlayChildrenProps } from './'
 
 export interface OverlayHoverProps extends Partial<ManagedHoverOverlayProps> {
   children: (props: OverlayChildrenProps) => React.ReactNode
   placement?: Placement
-  portalRef?: React.RefObject<HTMLElement>
-  usePortal?: boolean
 }
 
 export const OverlayHover: React.FC<OverlayHoverProps> = ({
@@ -16,17 +13,15 @@ export const OverlayHover: React.FC<OverlayHoverProps> = ({
   isOpen,
   onMouseOut,
   placement: outerPlacement,
-  portalRef,
   setSurfaceRef,
   triggerRef,
-  usePortal = true,
 }) => {
   if (!isOpen) return null
 
   const referenceElement =
     triggerRef && triggerRef.current ? triggerRef.current : undefined
 
-  const popper = (
+  return (
     <Popper
       positionFixed
       innerRef={setSurfaceRef}
@@ -56,11 +51,5 @@ export const OverlayHover: React.FC<OverlayHoverProps> = ({
         })
       }
     </Popper>
-  )
-
-  return usePortal ? (
-    <ModalPortal portalRef={portalRef}>{popper}</ModalPortal>
-  ) : (
-    popper
   )
 }

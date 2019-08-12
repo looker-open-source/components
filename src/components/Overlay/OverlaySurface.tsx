@@ -20,6 +20,7 @@ export interface OverlaySurfaceProps extends ModalSurfaceStyleProps {
   placement: Placement
   style?: React.CSSProperties
   surfaceRef?: any
+  zIndex?: number
 }
 
 const OverlaySurfaceInternal: React.FC<OverlaySurfaceProps> = ({
@@ -27,6 +28,7 @@ const OverlaySurfaceInternal: React.FC<OverlaySurfaceProps> = ({
   children,
   surfaceRef,
   style,
+  zIndex,
   ...props
 }) => {
   const { closeModal } = React.useContext(ModalContext)
@@ -35,9 +37,9 @@ const OverlaySurfaceInternal: React.FC<OverlaySurfaceProps> = ({
     <Box
       p="xsmall"
       overflow="visible"
-      className="surface-overflow"
       innerRef={surfaceRef}
       style={{ ...style, animation }}
+      zIndex={zIndex}
       {...props.eventHandlers}
     >
       <HotKeys
@@ -61,10 +63,10 @@ const OverlaySurfaceInternal: React.FC<OverlaySurfaceProps> = ({
           borderColor={props.borderColor}
           boxShadow={props.boxShadow}
           color={props.color}
+          focusStyle={{ outline: 'none' }}
+          tabIndex={0}
         >
-          <Box tabIndex={0} focusStyle={{ outline: 'none' }}>
-            {children}
-          </Box>
+          {children}
 
           {props.arrow !== false && (
             <OverlaySurfaceArrow

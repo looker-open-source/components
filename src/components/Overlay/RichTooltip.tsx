@@ -79,4 +79,5 @@ export const CustomizableRichTooltipAttributes: CustomizableRichTooltipAttribute
     boxShadow: shadows[3],
     color: palette.charcoal900,
   },
+  zIndex: 0,
 }

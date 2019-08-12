@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## @NEXT
+
+- Deprecate `usePortal` on `OverlayHover` (`Tooltip` & `RichTooltip`)
+  - Enable zIndex override for `RichTooltip` & `Tooltip` via `CustomizableRichTooltipAttributes.zIndex` and `CustomizableTooltipAttributes.zIndex` respectively. `CustomizableModalAttributes` is no longer extended onto these other components and needs to be explicitly specified.
+
 ## [0.0.1-beta.23,1] - 2019-08-05
 
 - Patched bug with `ModalSurface` positioning

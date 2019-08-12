@@ -118,4 +118,5 @@ export const CustomizableTooltipAttributes: CustomizableTooltipAttributes = {
     boxShadow: shadows[3],
     color: palette.charcoal000,
   },
+  zIndex: 0,
 }
