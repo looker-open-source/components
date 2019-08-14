@@ -224,6 +224,11 @@ module.exports = {
   ],
   title: 'Lens',
   webpackConfig: {
+    devServer: {
+      // Make the dever server accessible externally,
+      // e.g. from virtual machines
+      host: '0.0.0.0',
+    },
     devtool: 'inline-source-map',
     resolve: {
       extensions: ['.ts', '.tsx', '.js', '.jsx'],
