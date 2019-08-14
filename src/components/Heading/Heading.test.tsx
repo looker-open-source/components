@@ -31,7 +31,21 @@ test('A Heading to bold', () => {
 })
 
 test('A Heading transformed', () => {
-  const component = createWithTheme(<Heading transform="caps">🥑</Heading>)
+  const component = createWithTheme(<Heading textTransform="caps">🥑</Heading>)
+  const tree = component.toJSON()
+  expect(tree).toMatchSnapshot()
+})
+
+test('A Heading with variant', () => {
+  const component = createWithTheme(<Heading variant="subdued">🥑</Heading>)
+  const tree = component.toJSON()
+  expect(tree).toMatchSnapshot()
+})
+
+test('A Heading with color', () => {
+  const component = createWithTheme(
+    <Heading color="palette.charcoal100">🥑</Heading>
+  )
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
 })

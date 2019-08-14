@@ -1,18 +1,17 @@
 import { TextDecorationProperty } from 'csstype'
 import * as React from 'react'
-import { css, styled } from '../../style'
-import { ThemedProps } from '../../types'
+import {
+  css,
+  getTextTransform,
+  styled,
+  TextTransforms,
+  textVariant,
+  TextVariants,
+} from '../../style'
 import { Box, BoxPropsWithout } from '../Box'
 
-export type TextTransforms = 'caps' | 'lower' | 'none' | 'upper'
 export type TextAlignments = 'left' | 'center' | 'right'
 export type TextElements = 'span' | 'p' | 'code'
-export type TextVariants =
-  | 'critical'
-  | 'positive'
-  | 'secondary'
-  | 'subdued'
-  | 'inverted'
 
 export interface TextProps
   extends BoxPropsWithout<HTMLSpanElement, 'wrap' | 'is'> {
@@ -66,57 +65,8 @@ export const Text = styled<TextProps>(TextFactory)`
   text-decoration: ${props => props.decoration};
   ${props => getTextTransform(props.textTransform)};
   ${props => getWrap(props.wrap || false)};
-  ${props => textVariant(props)};
+  ${props => textVariant(props.theme, props.variant)};
 `
-
-const getTextTransform = (transform: TextTransforms | undefined) => {
-  switch (transform) {
-    case 'upper':
-      return css`
-        text-transform: uppercase;
-      `
-    case 'lower':
-      return css`
-        text-transform: lowercase;
-      `
-    case 'caps':
-      return css`
-        text-transform: capitalize;
-      `
-    case 'none':
-    default:
-      return css`
-        text-transform: none;
-      `
-  }
-}
-
-const textVariant = (props: ThemedProps<TextProps>) => {
-  switch (props.variant) {
-    case 'critical':
-      return css`
-        color: ${props.theme.colors.palette.red500};
-      `
-    case 'positive':
-      return css`
-        color: ${props.theme.colors.palette.green500};
-      `
-    case 'secondary':
-      return css`
-        color: ${props.theme.colors.palette.charcoal500};
-      `
-    case 'subdued':
-      return css`
-        color: ${props.theme.colors.palette.charcoal400};
-      `
-    case 'inverted':
-      return css`
-        color: ${props.theme.colors.palette.textInverted};
-      `
-    default:
-      return false
-  }
-}
 
 const getWrap = (doWrap: boolean) =>
   doWrap

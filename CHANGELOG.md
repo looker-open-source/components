@@ -10,6 +10,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Deprecate `usePortal` on `OverlayHover` (`Tooltip` & `RichTooltip`)
   - Enable zIndex override for `RichTooltip` & `Tooltip` via `CustomizableRichTooltipAttributes.zIndex` and `CustomizableTooltipAttributes.zIndex` respectively. `CustomizableModalAttributes` is no longer extended onto these other components and needs to be explicitly specified.
 
+### Added
+
+- `color` and `variant` on `Heading`, to be used as they are with `Box` and `Text` respectively
+
+### Changed
+
+- `transform` on `Heading` to `textTransform` to be consistent with `Text`
+
 ## [0.0.1-beta.23,1] - 2019-08-05
 
 - Patched bug with `ModalSurface` positioning

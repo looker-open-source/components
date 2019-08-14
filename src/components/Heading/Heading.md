@@ -70,22 +70,22 @@ import { Heading } from './Heading'
 
 ### **Weight and Transform**
 
-Another common pattern for headings is to control the font-weight and the text-transform properties. The `<Heading />` component allows you to adjust those with the `weight` and `transform` attributes.
+Another common pattern for headings is to control the font-weight and the text-transform properties. The `<Heading />` component allows you to adjust those with the `fontWweight` and `textTransform` attributes.
 
 ```js
 import { Heading } from './Heading'
-// Heading components using the weight and transform attributes
+// Heading components using the fontWeight and textTransform attributes
 ;<>
-  <Heading fontWeight="light" transform="lower">
+  <Heading fontWeight="light" textTransform="lower">
     Light and lower
   </Heading>
-  <Heading fontWeight="normal" transform="none">
+  <Heading fontWeight="normal" textTransform="none">
     Normal and none (default)
   </Heading>
-  <Heading fontWeight="semiBold" transform="upper">
+  <Heading fontWeight="semiBold" textTransform="upper">
     Semi-bold and upper
   </Heading>
-  <Heading fontWeight="bold" transform="caps">
+  <Heading fontWeight="bold" textTransform="caps">
     Bold and caps
   </Heading>
 </>
@@ -103,6 +103,23 @@ import { Heading } from './Heading'
   <Heading align="left">◀️ Align left (Default) </Heading>
   <Heading align="center">◀️ Align Center ▶️</Heading>
   <Heading align="right">Align Right ▶️</Heading>
+</>
+```
+
+<div class="doc-section-divider"></div>
+
+### Heading Variants
+
+Lens provides a few variants for the `<Heading />` component based on common patterns we use in our applications, the `variant` property will change that will change the color the rendered heading.
+
+```js
+import { Heading } from './Heading'
+;<>
+  <Heading>Regular Heading</Heading>
+  <Heading variant="secondary">Secondary Heading</Heading>
+  <Heading variant="subdued">Subdued Heading</Heading>
+  <Heading variant="critical">Critical Heading</Heading>
+  <Heading variant="positive">Positive Heading</Heading>
 </>
 ```
 

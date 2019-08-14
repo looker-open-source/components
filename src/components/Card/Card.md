@@ -74,7 +74,7 @@ import { Text } from '../Text'
       <CardContent>
         <Text
           fontSize="xsmall"
-          transform="upper"
+          textTransform="upper"
           fontWeight="semiBold"
           mode="subdued"
         >
@@ -100,7 +100,7 @@ import { Text } from '../Text'
       <CardContent>
         <Text
           fontSize="xsmall"
-          transform="upper"
+          textTransform="upper"
           fontWeight="semiBold"
           mode="subdued"
         >
@@ -127,7 +127,7 @@ import { Text } from '../Text'
       <CardContent>
         <Text
           fontSize="xsmall"
-          transform="upper"
+          textTransform="upper"
           fontWeight="semiBold"
           mode="subdued"
         >
