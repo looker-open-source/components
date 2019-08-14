@@ -16,7 +16,7 @@ export interface PopoverProps {
   arrow?: boolean
 
   /**
-   * When true, renders the Backdrop, Surface and it's contained content
+   * When true, display Surface and it's contained content
    * @default false
    */
   isOpen?: boolean
