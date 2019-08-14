@@ -2,7 +2,6 @@ import * as React from 'react'
 import { css, easings, styled, transitions } from '../../../style'
 import { Box, BoxProps } from '../../Box'
 import { Icon } from '../../Icon'
-import { MenuItemButton } from './MenuItemButton'
 import { MenuItemStyle } from './menuItemStyle'
 
 interface MenuListItemProps extends BoxProps<HTMLElement> {
@@ -65,11 +64,8 @@ export const MenuItemListItem = styled<MenuListItemProps>(MenuItemStyleFactory)`
     color ${transitions.durationQuick} ${easings.ease};
 
   &:focus-within {
-    background: ${props => !props.current && props.itemStyle.hover.bg};
-
-    ${MenuItemButton} {
-      text-decoration: underline;
-    }
+    box-shadow: ${props => `0 0 3px 1px ${props.theme.colors.palette.blue400}`};
+    z-index: 1;
   }
 
   ${currentBorder};

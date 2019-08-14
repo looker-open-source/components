@@ -8,9 +8,17 @@ const StatusAndResources = require('../../../styleguide_components/StatusAndReso
 />
 ```
 
+### Popover Accessibility
+
+ Popover triggers should have the `aria-haspopover` attribute set to `true`, you can see an example on the buttons that trigger the popovers below.
+
+ ---
+
+ ### Basic Popover
+
 ```js
 import { Button } from '../Button'
-import { Text } from '../Text'
+import { Paragraph, Text } from '../Text'
 import { Popover } from './Popover'
 import { PopoverContent } from './PopoverContent'
 
@@ -35,10 +43,10 @@ const wikipediaWildebeest = (
   </PopoverContent>
 )
 ;<>
-  <Text>Here's a Popover:</Text>
+  <Paragraph>Here's a Popover:</Paragraph>
   <Popover content={wikipediaWildebeest}>
     {(onClick, ref) => (
-      <Button onClick={onClick} innerRef={ref}>
+      <Button aria-haspopup="true" onClick={onClick} innerRef={ref}>
         A Wikipedia article about Wildebeests
       </Button>
     )}
@@ -70,7 +78,7 @@ const content = (
   <Box mb="xxxlarge">
     <Popover content={content}>
       {(onClick, ref) => (
-        <Button onClick={onClick} innerRef={ref} mr="xlarge">
+        <Button aria-haspopup="true" onClick={onClick} innerRef={ref} mr="xlarge">
           Default
         </Button>
       )}
@@ -78,7 +86,7 @@ const content = (
 
     <Popover content={content} placement="right">
       {(onClick, ref) => (
-        <Button onClick={onClick} innerRef={ref} mr="xlarge">
+        <Button aria-haspopup="true" onClick={onClick} innerRef={ref} mr="xlarge">
           Right
         </Button>
       )}
@@ -86,7 +94,7 @@ const content = (
 
     <Popover content={content} placement="left">
       {(onClick, ref) => (
-        <Button onClick={onClick} innerRef={ref} mr="xlarge">
+        <Button aria-haspopup="true" onClick={onClick} innerRef={ref} mr="xlarge">
           Left
         </Button>
       )}
@@ -96,7 +104,7 @@ const content = (
   <Box>
     <Popover content={content} placement="bottom-start">
       {(onClick, ref) => (
-        <Button onClick={onClick} innerRef={ref} mr="xlarge">
+        <Button aria-haspopup="true" onClick={onClick} innerRef={ref} mr="xlarge">
           Bottom Start
         </Button>
       )}
@@ -104,7 +112,7 @@ const content = (
 
     <Popover content={content} placement="right-end">
       {(onClick, ref) => (
-        <Button onClick={onClick} innerRef={ref} mr="xlarge">
+        <Button aria-haspopup="true" onClick={onClick} innerRef={ref} mr="xlarge">
           Right End
         </Button>
       )}
@@ -112,7 +120,7 @@ const content = (
 
     <Popover content={content} placement="top-start" arrow={false}>
       {(onClick, ref) => (
-        <Button onClick={onClick} innerRef={ref} mr="xlarge">
+        <Button aria-haspopup="true" onClick={onClick} innerRef={ref} mr="xlarge">
           Top Start - No arrow
         </Button>
       )}
@@ -123,7 +131,7 @@ const content = (
 
 #### `stopPropagation` Example
 
-Prevent a click event from a `<Popover>` contained element from propogating up to its ancestors in the DOM.
+Prevent a click event from a `<Popover>` contained element from propagating up to its ancestors in the DOM.
 
 ```js
 import { Button } from '../Button'
@@ -143,7 +151,7 @@ const content = (
     Open Google in new Tab
     <Popover stopPropagation content={content}>
       {(onClick, ref) => (
-        <Button onClick={onClick} innerRef={ref}>
+        <Button aria-haspopup="true" onClick={onClick} innerRef={ref}>
           Show Popover
         </Button>
       )}

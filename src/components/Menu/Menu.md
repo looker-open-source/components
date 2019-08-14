@@ -74,6 +74,7 @@ import { MenuItem } from './MenuItem'
 >
   {(onClick, ref) => (
     <Button
+      aria-haspopup="true"
       variant="outline"
       iconAfter="ArrowDropDown"
       onClick={onClick}
@@ -95,6 +96,7 @@ const MenuGroupDemo = require('../../../styleguide_components/MenuDemo')
 ;<Popover content={<MenuGroupDemo />}>
   {(onClick, ref) => (
     <Button
+      aria-haspopup="true"
       variant="outline"
       iconAfter="ArrowDropDown"
       onClick={onClick}

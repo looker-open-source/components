@@ -27,20 +27,14 @@ const InternalMenu: React.FC<MenuProps> = ({
       value={{ customizationProps, groupLabelShadow, compact }}
     >
       <HotKeys
+        innerRef={ref}
         keyMap={{ MOVE_DOWN: 'down', MOVE_UP: 'up' }}
         handlers={{
           MOVE_DOWN: () => moveFocus(1, 0, ref),
           MOVE_UP: () => moveFocus(-1, -1, ref),
         }}
       >
-        <Box
-          is="ul"
-          tabIndex={-1}
-          role="menu"
-          userSelect="none"
-          innerRef={ref}
-          {...boxProps}
-        >
+        <Box is="ul" tabIndex={-1} role="menu" userSelect="none" {...boxProps}>
           {children}
         </Box>
       </HotKeys>

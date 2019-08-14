@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MenuItem - current + marker 1`] = `
-.c4 {
+.c3 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -40,7 +40,7 @@ exports[`MenuItem - current + marker 1`] = `
   padding-bottom: 0.75rem;
 }
 
-.c6 {
+.c5 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -62,7 +62,7 @@ exports[`MenuItem - current + marker 1`] = `
   width: 20px;
 }
 
-.c3 {
+.c2 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -84,27 +84,17 @@ exports[`MenuItem - current + marker 1`] = `
   text-decoration: none;
 }
 
-.c7:focus-within .c2 {
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
-}
-
-.c7:hover .c5 {
+.c6:hover .c4 {
   color: #C1C6CC;
 }
 
-.c7 .c5 {
+.c6 .c4 {
   color: #C1C6CC;
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c8:focus-within .c2 {
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
-}
-
-.c8 .c5 {
+.c7 .c4 {
   color: #262D33;
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
@@ -118,9 +108,9 @@ exports[`MenuItem - current + marker 1`] = `
   transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c0:focus-within .c2 {
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
+.c0:focus-within {
+  box-shadow: 0 0 3px 1px #49a9f2;
+  z-index: 1;
 }
 
 .c0::before {
@@ -134,7 +124,7 @@ exports[`MenuItem - current + marker 1`] = `
   width: 4px;
 }
 
-.c0 .c5 {
+.c0 .c4 {
   color: #262D33;
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
@@ -145,11 +135,11 @@ exports[`MenuItem - current + marker 1`] = `
   className="c0 c1"
 >
   <button
-    className="c2 c3 c4"
+    className="c2 c3"
     role="menuitem"
   >
     <div
-      className="c5 c6"
+      className="c4 c5"
     >
       <svg
         fill="currentColor"
@@ -169,7 +159,7 @@ exports[`MenuItem - current + marker 1`] = `
 `;
 
 exports[`MenuItem - current 1`] = `
-.c4 {
+.c3 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -208,7 +198,7 @@ exports[`MenuItem - current 1`] = `
   padding-bottom: 0.75rem;
 }
 
-.c6 {
+.c5 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -230,7 +220,7 @@ exports[`MenuItem - current 1`] = `
   width: 20px;
 }
 
-.c3 {
+.c2 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -252,16 +242,11 @@ exports[`MenuItem - current 1`] = `
   text-decoration: none;
 }
 
-.c7:focus-within .c2 {
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
-}
-
-.c7:hover .c5 {
+.c6:hover .c4 {
   color: #C1C6CC;
 }
 
-.c7 .c5 {
+.c6 .c4 {
   color: #C1C6CC;
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
@@ -275,12 +260,12 @@ exports[`MenuItem - current 1`] = `
   transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c0:focus-within .c2 {
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
+.c0:focus-within {
+  box-shadow: 0 0 3px 1px #49a9f2;
+  z-index: 1;
 }
 
-.c0 .c5 {
+.c0 .c4 {
   color: #262D33;
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
@@ -291,11 +276,11 @@ exports[`MenuItem - current 1`] = `
   className="c0 c1"
 >
   <button
-    className="c2 c3 c4"
+    className="c2 c3"
     role="menuitem"
   >
     <div
-      className="c5 c6"
+      className="c4 c5"
     >
       <svg
         fill="currentColor"
@@ -344,7 +329,7 @@ exports[`MenuItem - detail 1`] = `
   padding-bottom: 0.75rem;
 }
 
-.c4 {
+.c3 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -354,7 +339,7 @@ exports[`MenuItem - detail 1`] = `
   vertical-align: baseline;
 }
 
-.c5 {
+.c4 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -368,7 +353,7 @@ exports[`MenuItem - detail 1`] = `
   padding-left: 1.25rem;
 }
 
-.c3 {
+.c2 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -399,12 +384,8 @@ exports[`MenuItem - detail 1`] = `
 }
 
 .c0:focus-within {
-  background: #F5F6F7;
-}
-
-.c0:focus-within .c2 {
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
+  box-shadow: 0 0 3px 1px #49a9f2;
+  z-index: 1;
 }
 
 .c0:hover {
@@ -414,11 +395,11 @@ exports[`MenuItem - detail 1`] = `
   font-weight: #262D33;
 }
 
-.c0:hover .c6 {
+.c0:hover .c5 {
   color: #C1C6CC;
 }
 
-.c0 .c6 {
+.c0 .c5 {
   color: #C1C6CC;
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
@@ -428,13 +409,13 @@ exports[`MenuItem - detail 1`] = `
   className="c0 c1"
 >
   <button
-    className="c2 c3 c4"
+    className="c2 c3"
     role="menuitem"
   >
     who!
   </button>
   <div
-    className="c5"
+    className="c4"
   >
     Is an excellent question
   </div>
@@ -471,7 +452,7 @@ exports[`MenuItem - icon 1`] = `
   padding-bottom: 0.75rem;
 }
 
-.c4 {
+.c3 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -481,7 +462,7 @@ exports[`MenuItem - icon 1`] = `
   vertical-align: baseline;
 }
 
-.c6 {
+.c5 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -503,7 +484,7 @@ exports[`MenuItem - icon 1`] = `
   width: 20px;
 }
 
-.c3 {
+.c2 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -534,12 +515,8 @@ exports[`MenuItem - icon 1`] = `
 }
 
 .c0:focus-within {
-  background: #F5F6F7;
-}
-
-.c0:focus-within .c2 {
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
+  box-shadow: 0 0 3px 1px #49a9f2;
+  z-index: 1;
 }
 
 .c0:hover {
@@ -549,11 +526,11 @@ exports[`MenuItem - icon 1`] = `
   font-weight: #262D33;
 }
 
-.c0:hover .c5 {
+.c0:hover .c4 {
   color: #C1C6CC;
 }
 
-.c0 .c5 {
+.c0 .c4 {
   color: #C1C6CC;
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
@@ -563,11 +540,11 @@ exports[`MenuItem - icon 1`] = `
   className="c0 c1"
 >
   <button
-    className="c2 c3 c4"
+    className="c2 c3"
     role="menuitem"
   >
     <div
-      className="c5 c6"
+      className="c4 c5"
     >
       <svg
         fill="currentColor"
@@ -601,7 +578,7 @@ exports[`MenuItem - icon 1`] = `
 `;
 
 exports[`MenuItem - with customizations 1`] = `
-.c4 {
+.c3 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -640,7 +617,7 @@ exports[`MenuItem - with customizations 1`] = `
   padding-bottom: 0.75rem;
 }
 
-.c3 {
+.c2 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -662,21 +639,6 @@ exports[`MenuItem - with customizations 1`] = `
   text-decoration: none;
 }
 
-.c5:focus-within .c2 {
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
-}
-
-.c6:focus-within .c2 {
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
-}
-
-.c7:focus-within .c2 {
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
-}
-
 .c0 {
   position: relative;
   -webkit-text-decoration: none;
@@ -685,9 +647,9 @@ exports[`MenuItem - with customizations 1`] = `
   transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c0:focus-within .c2 {
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
+.c0:focus-within {
+  box-shadow: 0 0 3px 1px #49a9f2;
+  z-index: 1;
 }
 
 .c0::before {
@@ -701,7 +663,7 @@ exports[`MenuItem - with customizations 1`] = `
   width: 10px;
 }
 
-.c0 .c8 {
+.c0 .c4 {
   color: #4F2ABA;
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
@@ -712,7 +674,7 @@ exports[`MenuItem - with customizations 1`] = `
   className="c0 c1"
 >
   <button
-    className="c2 c3 c4"
+    className="c2 c3"
     role="menuitem"
   >
     who!
@@ -721,7 +683,7 @@ exports[`MenuItem - with customizations 1`] = `
 `;
 
 exports[`MenuItem - with single customization 1`] = `
-.c4 {
+.c3 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -760,7 +722,7 @@ exports[`MenuItem - with single customization 1`] = `
   padding-bottom: 0.75rem;
 }
 
-.c3 {
+.c2 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -782,16 +744,6 @@ exports[`MenuItem - with single customization 1`] = `
   text-decoration: none;
 }
 
-.c5:focus-within .c2 {
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
-}
-
-.c6:focus-within .c2 {
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
-}
-
 .c0 {
   position: relative;
   -webkit-text-decoration: none;
@@ -800,9 +752,9 @@ exports[`MenuItem - with single customization 1`] = `
   transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
 }
 
-.c0:focus-within .c2 {
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
+.c0:focus-within {
+  box-shadow: 0 0 3px 1px #49a9f2;
+  z-index: 1;
 }
 
 .c0::before {
@@ -816,15 +768,10 @@ exports[`MenuItem - with single customization 1`] = `
   width: 4px;
 }
 
-.c0 .c8 {
+.c0 .c4 {
   color: #262D33;
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
-}
-
-.c7:focus-within .c2 {
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
 }
 
 <li
@@ -832,7 +779,7 @@ exports[`MenuItem - with single customization 1`] = `
   className="c0 c1"
 >
   <button
-    className="c2 c3 c4"
+    className="c2 c3"
     role="menuitem"
   >
     who!
@@ -870,7 +817,7 @@ exports[`MenuItem 1`] = `
   padding-bottom: 0.75rem;
 }
 
-.c4 {
+.c3 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -880,7 +827,7 @@ exports[`MenuItem 1`] = `
   vertical-align: baseline;
 }
 
-.c3 {
+.c2 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -911,12 +858,8 @@ exports[`MenuItem 1`] = `
 }
 
 .c0:focus-within {
-  background: #F5F6F7;
-}
-
-.c0:focus-within .c2 {
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
+  box-shadow: 0 0 3px 1px #49a9f2;
+  z-index: 1;
 }
 
 .c0:hover {
@@ -926,11 +869,11 @@ exports[`MenuItem 1`] = `
   font-weight: #262D33;
 }
 
-.c0:hover .c5 {
+.c0:hover .c4 {
   color: #C1C6CC;
 }
 
-.c0 .c5 {
+.c0 .c4 {
   color: #C1C6CC;
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
@@ -940,7 +883,7 @@ exports[`MenuItem 1`] = `
   className="c0 c1"
 >
   <button
-    className="c2 c3 c4"
+    className="c2 c3"
     role="menuitem"
   >
     who!

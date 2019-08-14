@@ -11,12 +11,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Enable zIndex override for `RichTooltip` & `Tooltip` via `CustomizableRichTooltipAttributes.zIndex` and `CustomizableTooltipAttributes.zIndex` respectively. `CustomizableModalAttributes` is no longer extended onto these other components and needs to be explicitly specified.
 
 ### Added
-
+- Accessibility documentation improvements to the `Popover` examples by including `aria-haspopup` on the button triggers.
 - `color` and `variant` on `Heading`, to be used as they are with `Box` and `Text` respectively
+- `transform` on `Heading` to `textTransform` to be consistent with `Text`
 
 ### Changed
+- `MenuItem`'s focus state has a few new improvements:
+  - Clearer and more prominent focus indicator
+  - Text no longer is underlined when it has focus
 
-- `transform` on `Heading` to `textTransform` to be consistent with `Text`
+### Bug Fixes
+- `Menu`'s down-arrow and up-arrow keyboard shortcuts fixed
+
 
 ## [0.0.1-beta.23,1] - 2019-08-05
 

@@ -36,7 +36,7 @@ const Menus = () => {
         content={content}
       >
         {(onClick, ref) => (
-          <Button onClick={onClick} innerRef={ref}>
+          <Button aria-haspopup="true" onClick={onClick} innerRef={ref}>
             Menu One
           </Button>
         )}
@@ -47,7 +47,7 @@ const Menus = () => {
         content={content}
       >
         {(onClick, ref) => (
-          <Button onClick={onClick} innerRef={ref}>
+          <Button aria-haspopup="true" onClick={onClick} innerRef={ref}>
             Menu Two
           </Button>
         )}
@@ -85,7 +85,7 @@ const Menus = () => {
         content={content}
       >
         {(onClick, ref) => (
-          <Button onClick={onClick} innerRef={ref}>
+          <Button aria-haspopup="true" onClick={onClick} innerRef={ref}>
             Pinned Menu
           </Button>
         )}
@@ -97,7 +97,7 @@ const Menus = () => {
         content={content}
       >
         {(onClick, ref) => (
-          <Button onClick={onClick} innerRef={ref}>
+          <Button aria-haspopup="true" onClick={onClick} innerRef={ref}>
             Arrowless Menu
           </Button>
         )}

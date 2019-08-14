@@ -59,7 +59,7 @@ test('MenuGroup - labelProps & labelStyles', () => {
   )
 })
 
-test('MenuGrouo - menu customization', () => {
+test('MenuGroup - menu customization', () => {
   // tslint:disable:object-literal-sort-keys
   const menuCustomizations = {
     bg: palette.purple500,

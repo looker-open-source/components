@@ -42,6 +42,7 @@ export const PopoverOverlayDemo: React.FC = () => {
       <Popover content={menu}>
         {(onClick, ref) => (
           <Button
+            aria-haspopup="true"
             onClick={onClick}
             innerRef={ref}
             variant="outline"
