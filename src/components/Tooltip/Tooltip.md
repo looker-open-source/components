@@ -11,12 +11,6 @@ const StatusAndResources = require('../../../styleguide_components/StatusAndReso
 ```
 
 ```js
-const TooltipDemo = require('../../../styleguide_components/TooltipDemo')
-  .TooltipDemo
-;<TooltipDemo />
-```
-
-```js
 import { Button } from '../Button'
 import { Tooltip } from './Tooltip'
 ;<Tooltip content="More things you should know...">

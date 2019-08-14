@@ -5,12 +5,11 @@ import { mountWithTheme } from '../../../test/utils/create_with_theme'
 import { assertSnapshotShallow } from '../../../test/utils/snapshot'
 import { Box } from '../Box'
 import { Button } from '../Button'
+import { OverlaySurface } from '../Overlay/OverlaySurface'
+import { Popover } from '../Popover'
 import { Paragraph } from '../Text'
-import { mouseEventSimulator } from './overlay.test.helpers'
-import { OverlayHover } from './OverlayHover'
-import { OverlaySurface } from './OverlaySurface'
-import { Popover } from './Popover'
 import { Tooltip } from './Tooltip'
+import { mouseEventSimulator } from './tooltip.test.helpers'
 
 describe('Tooltip', () => {
   test('snapshot', () => {
@@ -51,8 +50,6 @@ describe('Tooltip', () => {
     const trigger = tooltip.find(Button)
 
     trigger.simulate('mouseover', mouseEventSimulator)
-    const overlay = tooltip.find(OverlayHover)
-    expect(overlay.exists()).toBeTruthy()
     const surface = tooltip.find(OverlaySurface)
     expect(surface.exists()).toBeTruthy()
 

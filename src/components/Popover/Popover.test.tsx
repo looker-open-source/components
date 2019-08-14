@@ -2,16 +2,16 @@ import 'jest-styled-components'
 import * as React from 'react'
 import { mountWithTheme } from '../../../test/utils/create_with_theme'
 import { Button } from '../Button'
-import { ModalBackdrop } from '../Modal/ModalBackdrop'
-import { SimpleContent } from './overlay.test.helpers'
 import { Popover } from './Popover'
+
+const SimpleContent = <div>simple content</div>
 
 describe('Popover', () => {
   test('opens on click', () => {
     const popover = mountWithTheme(
       <Popover content={SimpleContent}>
-        {(onClick, ref) => (
-          <Button innerRef={ref} onClick={onClick}>
+        {(onClick, ref, className) => (
+          <Button innerRef={ref} onClick={onClick} className={className}>
             Test
           </Button>
         )}
@@ -27,17 +27,15 @@ describe('Popover', () => {
     // Find content
     expect(popover.contains(SimpleContent)).toBeTruthy()
 
-    const backdrop = popover.find(ModalBackdrop)
-    backdrop.simulate('click')
-
+    trigger.simulate('click')
     expect(popover.find(SimpleContent).exists()).toBeFalsy()
   })
 
   test('contains the content passed to it', () => {
     const popover = mountWithTheme(
       <Popover content={SimpleContent}>
-        {(onClick, ref) => (
-          <Button innerRef={ref} onClick={onClick}>
+        {(onClick, ref, className) => (
+          <Button innerRef={ref} onClick={onClick} className={className}>
             Test
           </Button>
         )}
@@ -53,9 +51,9 @@ describe('Popover', () => {
 
     const popover = mountWithTheme(
       <div onClick={mockContainerOnClick}>
-        <Popover content={SimpleContent} stopPropagation>
-          {(onClick, ref) => (
-            <Button innerRef={ref} onClick={onClick}>
+        <Popover content={SimpleContent}>
+          {(onClick, ref, className) => (
+            <Button innerRef={ref} onClick={onClick} className={className}>
               Test
             </Button>
           )}

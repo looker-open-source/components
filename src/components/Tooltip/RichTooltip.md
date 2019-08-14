@@ -1,9 +1,11 @@
+## RichTooltip
+
 ```js noeditor
 const StatusAndResources = require('../../../styleguide_components/StatusAndResources')
   .StatusAndResources
 ;<StatusAndResources
   status="stable"
-  githubURL="https://github.com/looker/lens/blob/master/src/components/Overlay/RichTooltip.tsx"
+  githubURL="https://github.com/looker/lens/blob/master/src/components/Tooltip/RichTooltip.tsx"
   feedbackTitle="RichTooltip Component Feedback"
 />
 ```

@@ -4,15 +4,19 @@ import { HotKeys } from 'react-hotkeys'
 import { PopperArrowProps } from 'react-popper'
 import { styled } from '../../style'
 import { Box } from '../Box'
-import { ModalContext, ModalSurfaceStyleProps } from '../Modal'
+import { ModalContext } from '../Modal'
 
-export interface OverlaySurfaceArrowProps {
+export interface SurfaceStyleProps {
+  animation?: string
   backgroundColor: string
-  border: React.ReactText
-  borderColor: React.ReactText
+  border: string
+  borderColor: string
+  borderRadius: string
+  boxShadow: string
+  color: string
 }
 
-export interface OverlaySurfaceProps extends ModalSurfaceStyleProps {
+export interface OverlaySurfaceProps extends SurfaceStyleProps {
   arrow?: boolean
   arrowProps: PopperArrowProps
   children: React.ReactNode
@@ -90,7 +94,11 @@ export const OverlaySurface = React.forwardRef(
   )
 )
 
-const OverlaySurfaceArrow = styled.div<OverlaySurfaceArrowProps>`
+const OverlaySurfaceArrow = styled.div<{
+  backgroundColor: string
+  border: React.ReactText
+  borderColor: React.ReactText
+}>`
   position: absolute;
 
   &::before {

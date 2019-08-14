@@ -39,15 +39,16 @@ const componentSections = [
     ],
   },
   {
-    name: 'Overlays: Popovers & Tooltips',
+    name: 'Popovers',
     sectionDepth: 1,
-    components: ['src/components/Overlay/**/*.tsx'],
-    ignore: [
-      'src/components/Overlay/MenuOverlay.tsx',
-      'src/components/Overlay/OverlayHover.tsx',
-      'src/components/Overlay/OverlaySurface.tsx',
-      'src/components/Overlay/OverlayHoverManager.tsx',
-    ],
+    components: ['src/components/Popover/*.tsx'],
+    content: 'src/components/Popover/Popover.md',
+  },
+  {
+    name: 'Tooltips',
+    sectionDepth: 1,
+    content: 'src/components/Tooltip/RichTooltip.md',
+    components: ['src/components/Tooltip/*.tsx'],
   },
   {
     name: 'Modals: Dialog & Drawer',
@@ -63,7 +64,6 @@ const componentSections = [
       'src/components/Modal/ModalManager.tsx',
       'src/components/Modal/ModalPortal.tsx',
       'src/components/Modal/ModalSurface.tsx',
-
       'src/components/Modal/Dialog/DialogSurface.tsx',
       'src/components/Modal/Drawer/DrawerSurface.tsx',
     ],
@@ -197,6 +197,10 @@ module.exports = {
       name: 'Components',
       sectionDepth: 1,
       sections: [...componentSections, contentSection],
+      ignore: [
+        'src/components/Overlay/*.tsx',
+        'src/components/Popover/MenuOverlay/*.tsx',
+      ],
     },
     {
       name: 'Icons',

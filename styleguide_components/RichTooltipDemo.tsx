@@ -6,8 +6,7 @@ import {
   SimpleHSV,
 } from '../src/components/Colors/ColorWheel/color_wheel_utils'
 import { ColorWheel } from '../src/components/Colors/ColorWheel/ColorWheel'
-import { RichTooltip } from '../src/components/Overlay/RichTooltip'
-import { RichTooltipContent } from '../src/components/Overlay/RichTooltipContent'
+import { RichTooltip, RichTooltipContent } from '../src/components/Tooltip'
 
 export interface RichTooltipDemoState {
   color: SimpleHSV

@@ -3,8 +3,9 @@ import { Box } from '../src/components/Box'
 import { Button } from '../src/components/Button'
 import { Menu, MenuItem } from '../src/components/Menu'
 import { DialogManager, ModalContent } from '../src/components/Modal'
-import { Popover, Tooltip } from '../src/components/Overlay'
+import { Popover } from '../src/components/Popover'
 import { Paragraph } from '../src/components/Text'
+import { Tooltip } from '../src/components/Tooltip'
 
 const warningContent = (
   <ModalContent>

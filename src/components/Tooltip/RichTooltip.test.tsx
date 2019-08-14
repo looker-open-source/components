@@ -2,13 +2,13 @@ import 'jest-styled-components'
 import * as React from 'react'
 import { mountWithTheme } from '../../../test/utils/create_with_theme'
 import { Button } from '../Button'
+import { RichTooltip } from './RichTooltip'
 import {
   assertClosed,
   assertOpen,
   mouseEventSimulator,
   SimpleContent,
-} from './overlay.test.helpers'
-import { RichTooltip } from './RichTooltip'
+} from './tooltip.test.helpers'
 
 describe('RichTooltip', () => {
   test('opens on mouseover', () => {

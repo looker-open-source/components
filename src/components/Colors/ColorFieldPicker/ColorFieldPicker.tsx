@@ -11,8 +11,7 @@ import {
   InputTextProps,
   withForm,
 } from '../../Form'
-import { RichTooltip } from '../../Overlay'
-import { RichTooltipContent } from '../../Overlay/RichTooltipContent'
+import { RichTooltip, RichTooltipContent } from '../../Tooltip'
 import {
   HueSaturation,
   polarbrightness2hsv,
