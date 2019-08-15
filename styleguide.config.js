@@ -117,6 +117,7 @@ module.exports = {
   },
   require: [
     'ts-polyfill/lib/es2017-object',
+    './static/monkeypatches/mainElement',
     'react-copy-to-clipboard',
     path.join(__dirname, 'styleguide_components/ThemeProvider'),
     path.join(__dirname, '/static/css/style-guide.css'),
