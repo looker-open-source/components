@@ -5,10 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## @NEXT
+## [Unreleased]
 
-- Deprecate `usePortal` on `OverlayHover` (`Tooltip` & `RichTooltip`)
-  - Enable zIndex override for `RichTooltip` & `Tooltip` via `CustomizableRichTooltipAttributes.zIndex` and `CustomizableTooltipAttributes.zIndex` respectively. `CustomizableModalAttributes` is no longer extended onto these other components and needs to be explicitly specified.
+### Added
+
+### Changed
+
+- `Popover` now highlights trigger with `active` className to leave indicator of the trigger element.
+- Major refactor and simplification of former Overlay descendant components:
+  - Removed `Backdrop` for `Popover` & Tooltip components (collapse is now consistently handled via document listeners)
+  - Tooltip now inherits from RichTooltip
+  - Removed `usePortal={false}` on `Tooltip` & `RichTooltip`
+  - Enable zIndex override for `RichTooltip` & `Tooltip` via `CustomizableRichTooltipAttributes.zIndex` and `CustomizableTooltipAttributes.zIndex` respectively. `CustomizableModalAttributes` is no longer extended onto these other components so they need to be explicitly configured like `CustomizableModalAttributes.zIndex` to continue to work as they have previously.
+
+### Removed
+
+- `Overlay` & `OverlayHover` removed components in favor of consolidating the various generic pieces into their constituent components (Popover, RichTooltip & Tooltip)
+- `MenuOverlay` is deprecated in lieu of `Popover` with “Grouped Popovers” functionality
 
 ### Added
 - Accessibility documentation improvements to the `Popover` examples by including `aria-haspopup` on the button triggers.

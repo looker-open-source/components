@@ -172,9 +172,11 @@ const content = (
 
 ### Grouped Popovers
 
-Popovers can be grouped together to allow the user to quickly jump through a collection of `Popover` components – commonly this functionality is used for items grouped to create a larger navigation component or associated controls such as a collection of filters.
+By default Popover cancels event bubbling when a click event triggers the closure of the Popover. \* This was deemed a best practice as it prevents inadveted destructive actions and mirrors behavior seen in many commonly used applications (e.g. Chrome).
 
-To create a group assigned a reference to an element and then assign the reference to that element to `allowClicksRef` on each `Popover`. This will override the `Popover` component's usual behavior of cancelling event propogation on the clicks outside of the `ModalPortal` associated with the `Popover`. The first click outside of the `ModalPortal` will still close the `Popover` but click event will _not_ be cancalled and instead will be allowed to produce it's event progation and whatever is triggered by those events.
+However, where several related Popover components are grouped together, cancelling event bubbling for the "dismissal click" can make for an awkward UX. This functionality is used for items grouped to create a larger navigation component or associated controls such as a collection of filters.
+
+To create a group, assigned a reference to an containing element and then assign the reference to that element to `groupedPopoversRef` on each `Popover`. This will override the `Popover` component's usual behavior of cancelling event propogation on the clicks outside of the `ModalPortal` associated with the `Popover`. The first click outside of the `ModalPortal` will still close the `Popover` but click event propogation or otherwise surpressed and instead will be allowed to produce its usual behavior.
 
 ```js
 import { Button } from '../Button'
@@ -183,7 +185,7 @@ import { Popover } from './Popover'
 import { PopoverContent } from './PopoverContent'
 
 const Component = () => {
-  const clickHereRef = React.useRef()
+  const groupRef = React.useRef()
 
   const content = (
     <PopoverContent p="large" width="360px">
@@ -196,11 +198,11 @@ const Component = () => {
       <Box
         display="flex"
         justifyContent="space-around"
-        innerRef={clickHereRef}
+        innerRef={groupRef}
         p="large"
         border="3px solid green"
       >
-        <Popover content={content} allowClicksRef={clickHereRef}>
+        <Popover content={content} groupedPopoversRef={groupRef}>
           {(onClick, ref, className) => (
             <Button
               aria-haspopup="true"
@@ -213,7 +215,7 @@ const Component = () => {
           )}
         </Popover>
 
-        <Popover content={content} allowClicksRef={clickHereRef}>
+        <Popover content={content} groupedPopoversRef={groupRef}>
           {(onClick, ref, className) => (
             <Button
               aria-haspopup="true"
@@ -259,4 +261,41 @@ const Component = () => {
   )
 }
 ;<Component />
+```
+
+```js
+import { Box } from '../Box'
+import { Link } from '../Link'
+import { Popover } from './Popover'
+
+const Test = () => {
+  const groupRef = React.useRef()
+
+  const hello = () => console.log('hello')
+  const goodbye = () => console.log('goodbye')
+  const content = <p>Example Popover text.</p>
+
+  return (
+    <>
+      <Box innerRef={groupRef}>
+        <Popover content={content} groupedPopoversRef={groupRef}>
+          {(onClick, ref, className) => (
+            <Link onClick={onClick} innerRef={ref} className={className}>
+              Instant Click
+            </Link>
+          )}
+        </Popover>
+
+        <button onClick={hello} id="instant">
+          Should activate instantly
+        </button>
+      </Box>
+
+      <button onClick={goodbye} id="dismissed">
+        Should require dismissal click
+      </button>
+    </>
+  )
+}
+;<Test />
 ```

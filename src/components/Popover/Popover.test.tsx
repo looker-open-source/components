@@ -1,10 +1,41 @@
 import 'jest-styled-components'
-import * as React from 'react'
+import React, { useRef } from 'react'
 import { mountWithTheme } from '../../../test/utils/create_with_theme'
+import { Box } from '../Box'
 import { Button } from '../Button'
+import { Link } from '../Link'
 import { Popover } from './Popover'
 
 const SimpleContent = <div>simple content</div>
+
+const instantClick = jest.fn()
+const requiresDismissal = jest.fn()
+
+const PopoverGroup = () => {
+  const groupRef = useRef<null | HTMLElement>(null)
+
+  return (
+    <>
+      <Box innerRef={groupRef}>
+        <Popover content={SimpleContent} groupedPopoversRef={groupRef}>
+          {(onClick, ref, className) => (
+            <Link onClick={onClick} innerRef={ref} className={className}>
+              Instant Click
+            </Link>
+          )}
+        </Popover>
+
+        <a onClick={instantClick} id="instant">
+          Should activate instantly
+        </a>
+      </Box>
+
+      <button onClick={requiresDismissal} id="dismissed">
+        Should require dismissal click
+      </button>
+    </>
+  )
+}
 
 describe('Popover', () => {
   test('opens on click', () => {
@@ -64,5 +95,82 @@ describe('Popover', () => {
     trigger.simulate('click')
     expect(popover.contains(SimpleContent)).toBeTruthy()
     expect(mockContainerOnClick).not.toHaveBeenCalled()
+  })
+
+  test('Popover opens and closes', () => {
+    const popover = mountWithTheme(
+      <Popover content={SimpleContent}>
+        {(onClick, ref, className) => (
+          <Link onClick={onClick} innerRef={ref} className={className}>
+            Instant Click
+          </Link>
+        )}
+      </Popover>
+    )
+
+    const trigger = popover.find(Link)
+    expect(trigger.exists()).toBeTruthy()
+
+    // Verify Popover close, then Open Popover and verify it's open
+    expect(popover.contains(SimpleContent)).toBeFalsy()
+    trigger.simulate('click')
+    expect(popover.contains(SimpleContent)).toBeTruthy()
+
+    // Collapse Popover by clicking outside of it (original trigger will do)
+    trigger.simulate('click')
+
+    // @FAIL - Doesn't work because Popover is looking for an event sent via document.addEventListener
+    expect(popover.contains(SimpleContent)).toBeFalsy()
+  })
+
+  test('Open popover cancels event on "dismissal click"', () => {
+    const doThing = jest.fn()
+
+    const popover = mountWithTheme(
+      <>
+        <Popover content={SimpleContent}>
+          {(onClick, ref, className) => (
+            <Button onClick={onClick} innerRef={ref} className={className}>
+              Instant Click
+            </Button>
+          )}
+        </Popover>
+        <a onClick={doThing}>Do thing...</a>
+      </>
+    )
+
+    const trigger = popover.find(Button)
+    trigger.simulate('click') // open Popover
+    const closer = popover.find('a')
+    closer.simulate('click')
+    // @FAIL - Doesn't work because Popover is looking for an event sent via document.addEventListener
+    expect(popover.contains(SimpleContent)).toBeFalsy()
+    expect(doThing).toBeCalledTimes(0)
+  })
+
+  test('Popover Group - item outside group does NOT receive first click event', () => {
+    const groupedPopovers = mountWithTheme(<PopoverGroup />)
+    const trigger = groupedPopovers.find(Link)
+    trigger.simulate('click') // open Popover
+
+    const dismissed = groupedPopovers.find('button')
+    expect(dismissed.exists()).toBeTruthy()
+    dismissed.simulate('click')
+    // @FAIL - Doesn't work because Popover is looking for an event sent via document.addEventListener
+    expect(groupedPopovers.contains(SimpleContent)).toBeFalsy()
+    expect(requiresDismissal).toBeCalledTimes(0)
+  })
+
+  test('Popover Group  - item within group immediately receives onClick', () => {
+    const groupedPopovers = mountWithTheme(<PopoverGroup />)
+    const trigger = groupedPopovers.find(Link)
+    trigger.simulate('click') // open Popover
+
+    const instant = groupedPopovers.find('#instant')
+    expect(instant.exists()).toBeTruthy()
+    instant.simulate('click')
+    // @FAIL - Doesn't work because Popover is looking for an event sent via document.addEventListener
+    expect(groupedPopovers.contains(SimpleContent)).toBeFalsy()
+    expect(instantClick).toBeCalledTimes(1)
   })
 })

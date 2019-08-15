@@ -61,14 +61,24 @@ export interface PopoverProps {
   canClose?: () => boolean
 
   portalRef?: React.RefObject<HTMLElement>
-  allowClicksRef?: React.RefObject<HTMLElement>
+
+  /**
+   * By default Popover cancels event bubbling when a click event triggers the closure of the Popover.
+   * This was deemed a best practice as it prevents inadveted destructive actions and mirrors behavior
+   * seen in many commonly used applications (e.g. Chrome).
+   *
+   * However, where several related Popover components are grouped together, cancelling event bubbling for
+   * the "dismissal click" can make for an awkward UX. In these cases the developer can specify a ref for a
+   * component that contains the related Popovers and the event-bubble cancellation will not take place.
+   */
+  groupedPopoversRef?: React.RefObject<HTMLElement>
 }
 
 export const Popover: React.FC<PopoverProps> = ({
-  allowClicksRef,
   canClose,
   content,
   children,
+  groupedPopoversRef,
   isOpen: initializeOpen = false,
   ...props
 }) => {
@@ -83,16 +93,21 @@ export const Popover: React.FC<PopoverProps> = ({
   }
 
   const handleClickOutside = (event: MouseEvent) => {
-    if (portalRef.current && portalRef.current.contains(event.target as Node)) {
+    if (
+      portalRef.current &&
+      portalRef.current.contains(event.relatedTarget as Node)
+    ) {
       return
     }
 
     setOpen(false)
 
     if (
-      allowClicksRef &&
-      allowClicksRef.current &&
-      allowClicksRef.current.contains(event.target as Node)
+      groupedPopoversRef &&
+      groupedPopoversRef.current &&
+      groupedPopoversRef.current.contains(event.relatedTarget as Node) &&
+      (triggerRef.current &&
+        !triggerRef.current.contains(event.relatedTarget as Node))
     ) {
       return
     }
