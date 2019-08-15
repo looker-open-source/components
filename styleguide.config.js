@@ -1,16 +1,27 @@
+const escapeRegExp = require('lodash/escapeRegExp')
 const path = require('path')
+const reactDocgenTypescript = require('react-docgen-typescript')
 
-const typescriptPropsParser = require('react-docgen-typescript').withDefaultConfig(
-  {
-    propFilter: prop => {
-      if (prop.parent == null) {
-        return true
-      }
+const includeNodeModules = modules => {
+  // npm/yarn might nest modules, so don't prefix with an absolute path
+  const prefix = escapeRegExp('node_modules' + path.sep)
+  const alternationGroup = '(' + modules.map(escapeRegExp).join('|') + ')'
+  // suffix with a path separator, or else includeNodeModules(['acorn'])
+  // will match 'node_modules/acorn/index.js'
+  // but also 'node_modules/acorn-jsx/index.js'
+  const suffix = escapeRegExp(path.sep)
+  return new RegExp(prefix + alternationGroup + suffix)
+}
 
-      return prop.parent.fileName.indexOf('node_modules/@types/react') < 0
-    },
-  }
-).parse
+const typescriptPropsParser = reactDocgenTypescript.withDefaultConfig({
+  propFilter: prop => {
+    if (prop.parent == null) {
+      return true
+    }
+
+    return prop.parent.fileName.indexOf('node_modules/@types/react') < 0
+  },
+}).parse
 
 const componentSections = [
   {
@@ -105,6 +116,7 @@ module.exports = {
     Wrapper: path.join(__dirname, 'styleguide_components/ThemeWrapper'),
   },
   require: [
+    'ts-polyfill/lib/es2017-object',
     'react-copy-to-clipboard',
     path.join(__dirname, 'styleguide_components/ThemeProvider'),
     path.join(__dirname, '/static/css/style-guide.css'),
@@ -218,14 +230,63 @@ module.exports = {
     module: {
       rules: [
         {
-          test: /\.(ts|tsx)$/,
+          test: /\.tsx?$/,
           exclude: /node_modules/,
-          loader: require.resolve('ts-loader'),
+          use: {
+            loader: 'ts-loader',
+            options: {
+              configFile: path.resolve(__dirname, 'tsconfig.styleguidist.json'),
+            },
+          },
         },
+        // `yarn build-icons` compiles icons to `.d.ts` and .jsx` files
+        // in `src/icons/build`. Special-case these `.jsx` files, but
+        // forbid other `.js` / `.jsx` files in favor of `.ts` / `.tsx`.
         {
-          test: /\.jsx?$/,
-          exclude: /node_modules/,
-          loader: 'babel-loader',
+          test: /\.jsx$/,
+          include: path.resolve(__dirname, 'src', 'icons', 'build'),
+          use: {
+            loader: 'babel-loader',
+            options: {
+              configFile: false,
+              babelrc: false,
+              presets: [
+                ['@babel/preset-env', { targets: { ie: '11' } }],
+                '@babel/preset-react',
+              ],
+            },
+          },
+        },
+        // styleguidist has transitive dependencies via bublé which are
+        // distributed as ES2015 packages. Opt these in to babel-loader
+        // so styleguidist can render in IE11.
+        // c.f. https://github.com/styleguidist/react-styleguidist/pull/1327#issuecomment-483928457
+        {
+          test: /\.js$/,
+          include: includeNodeModules([
+            'acorn-jsx',
+            'ansi-regex',
+            'ansi-styles',
+            'chalk',
+            'estree-walker',
+            'strip-ansi',
+            'react-dev-utils',
+            'regexpu-core',
+            'unicode-match-property-ecmascript',
+            'unicode-match-property-value-ecmascript',
+          ]),
+          use: {
+            loader: 'babel-loader',
+            options: {
+              configFile: false,
+              babelrc: false,
+              presets: [['@babel/preset-env', { targets: { ie: '11' } }]],
+              // We can't know a priori which dependencies use CommonJS
+              // and which use ES2015 modules. Promise Babel that no one
+              // is playing mix-and-match, and ask it to guess for us.
+              sourceType: 'unambiguous',
+            },
+          },
         },
         {
           test: /\.css$/,
