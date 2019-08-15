@@ -349,6 +349,7 @@ module.exports = {
         width: '300px',
         background: '#F4F6F7',
         padding: '0 12px',
+        paddingBottom: '60px',
       },
     },
   },
