@@ -9,9 +9,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Accessibility documentation improvements to the `Popover` examples by including `aria-haspopup` on the button triggers.
+- `color` and `variant` on `Heading`, to be used as they are with `Box` and `Text` respectively
+- `transform` on `Heading` to `textTransform` to be consistent with `Text`
+
 ### Changed
 
-- `Popover` now highlights trigger with `active` className to leave indicator of the trigger element.
+- `Popover`
+  - Now highlights trigger with `active` className to leave indicator of the trigger element (works nicely with `Button` & `IconButton` built-in styling)
+  - Added “Grouped Popovers” functionality to allow for a more nuanced UX when Popovers are grouped together (see Popover.md for example, further explaination)
 - Major refactor and simplification of former Overlay descendant components:
   - Removed `Backdrop` for `Popover` & Tooltip components (collapse is now consistently handled via document listeners)
   - Tooltip now inherits from RichTooltip
@@ -23,19 +29,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Overlay` & `OverlayHover` removed components in favor of consolidating the various generic pieces into their constituent components (Popover, RichTooltip & Tooltip)
 - `MenuOverlay` is deprecated in lieu of `Popover` with “Grouped Popovers” functionality
 
-### Added
-- Accessibility documentation improvements to the `Popover` examples by including `aria-haspopup` on the button triggers.
-- `color` and `variant` on `Heading`, to be used as they are with `Box` and `Text` respectively
-- `transform` on `Heading` to `textTransform` to be consistent with `Text`
-
 ### Changed
+
 - `MenuItem`'s focus state has a few new improvements:
   - Clearer and more prominent focus indicator
   - Text no longer is underlined when it has focus
 
 ### Bug Fixes
-- `Menu`'s down-arrow and up-arrow keyboard shortcuts fixed
 
+- `Menu`'s down-arrow and up-arrow keyboard shortcuts fixed
 
 ## [0.0.1-beta.23,1] - 2019-08-05
 

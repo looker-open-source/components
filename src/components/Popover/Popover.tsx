@@ -93,28 +93,33 @@ export const Popover: React.FC<PopoverProps> = ({
   }
 
   const handleClickOutside = (event: MouseEvent) => {
-    if (
-      portalRef.current &&
-      portalRef.current.contains(event.relatedTarget as Node)
-    ) {
+    // User clicked inside the Popover surface/portal
+    if (portalRef.current && portalRef.current.contains(event.target as Node)) {
       return
     }
 
     setOpen(false)
 
+    // User clicked the trigger while the Popover was open
+    if (
+      triggerRef.current &&
+      triggerRef.current.contains(event.target as Node)
+    ) {
+      // stopPropagation because instant Popover re-opening is silly
+      event.stopPropagation()
+      return
+    }
+
+    // Group-member clicked, allow event to propagate
     if (
       groupedPopoversRef &&
       groupedPopoversRef.current &&
-      groupedPopoversRef.current.contains(event.relatedTarget as Node) &&
-      (triggerRef.current &&
-        !triggerRef.current.contains(event.relatedTarget as Node))
+      groupedPopoversRef.current.contains(event.target as Node)
     ) {
       return
     }
 
     event.stopPropagation()
-    event.stopImmediatePropagation()
-    event.preventDefault()
   }
 
   useEffect(() => {
