@@ -81,6 +81,7 @@ export interface PopoverProps {
 }
 
 export const Popover: React.FC<PopoverProps> = ({
+  arrow = true,
   canClose,
   content,
   children,
@@ -176,6 +177,7 @@ export const Popover: React.FC<PopoverProps> = ({
           >
             {({ ref, style, arrowProps, placement }) => (
               <OverlaySurface
+                arrow={arrow}
                 arrowProps={arrowProps}
                 placement={placement}
                 surfaceRef={ref}

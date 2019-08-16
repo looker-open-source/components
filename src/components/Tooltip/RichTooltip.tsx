@@ -47,6 +47,7 @@ export interface RichTooltipProps {
 }
 
 export const RichTooltip: React.FC<RichTooltipProps> = ({
+  arrow = true,
   canClose,
   children,
   content,
@@ -125,6 +126,7 @@ export const RichTooltip: React.FC<RichTooltipProps> = ({
       >
         {({ ref, style, placement, arrowProps }) => (
           <OverlaySurface
+            arrow={arrow}
             arrowProps={arrowProps}
             eventHandlers={{ onMouseOut: handleMouseOut }}
             placement={placement}
