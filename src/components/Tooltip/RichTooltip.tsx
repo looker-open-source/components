@@ -3,7 +3,7 @@ import React, { useRef, useState } from 'react'
 import { Popper } from 'react-popper'
 import { fadeIn, palette, shadows } from '../../style'
 import { CustomizableAttributes } from '../../types/attributes'
-import { ModalSurfaceStyleProps } from '../Modal'
+import { ModalContext, ModalSurfaceStyleProps } from '../Modal'
 import { OverlaySurface, SurfaceStyleProps } from '../Overlay/OverlaySurface'
 
 export interface RichTooltipProps {
@@ -103,40 +103,42 @@ export const RichTooltip: React.FC<RichTooltipProps> = ({
     triggerRef && triggerRef.current ? triggerRef.current : undefined
 
   const popper = isOpen && (
-    <Popper
-      positionFixed
-      innerRef={setSurfaceRef}
-      placement={props.placement}
-      modifiers={{
-        flip: {
-          behavior: 'flip',
-          enabled: true,
-          flipVariations: true,
-          flipVariationsByContent: true,
-        },
-        preventOverflow: {
-          boundariesElement: 'viewport',
-          escapeWithReference: true,
-          padding: 0,
-        },
-      }}
-      referenceElement={referenceElement}
-    >
-      {({ ref, style, placement, arrowProps }) => (
-        <OverlaySurface
-          arrowProps={arrowProps}
-          eventHandlers={{ onMouseOut: handleMouseOut }}
-          placement={placement}
-          surfaceRef={ref}
-          style={style}
-          zIndex={CustomizableRichTooltipAttributes.zIndex}
-          {...CustomizableRichTooltipAttributes.surface}
-          {...surfaceStyle}
-        >
-          {content}
-        </OverlaySurface>
-      )}
-    </Popper>
+    <ModalContext.Provider value={{ closeModal: handleClose }}>
+      <Popper
+        positionFixed
+        innerRef={setSurfaceRef}
+        placement={props.placement}
+        modifiers={{
+          flip: {
+            behavior: 'flip',
+            enabled: true,
+            flipVariations: true,
+            flipVariationsByContent: true,
+          },
+          preventOverflow: {
+            boundariesElement: 'viewport',
+            escapeWithReference: true,
+            padding: 0,
+          },
+        }}
+        referenceElement={referenceElement}
+      >
+        {({ ref, style, placement, arrowProps }) => (
+          <OverlaySurface
+            arrowProps={arrowProps}
+            eventHandlers={{ onMouseOut: handleMouseOut }}
+            placement={placement}
+            surfaceRef={ref}
+            style={style}
+            zIndex={CustomizableRichTooltipAttributes.zIndex}
+            {...CustomizableRichTooltipAttributes.surface}
+            {...surfaceStyle}
+          >
+            {content}
+          </OverlaySurface>
+        )}
+      </Popper>
+    </ModalContext.Provider>
   )
 
   return (

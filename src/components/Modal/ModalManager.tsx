@@ -27,7 +27,6 @@ export interface ModalManagerProps extends ManagedModalProps {
    */
   placement?: Placement
   isOpen?: boolean
-  pin?: boolean
   /**
    * The onClick event applied to the trigger will automatically stop the event
    * from being propogated further up into the DOM. This is most frequently used when

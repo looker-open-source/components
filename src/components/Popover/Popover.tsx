@@ -72,6 +72,12 @@ export interface PopoverProps {
    * component that contains the related Popovers and the event-bubble cancellation will not take place.
    */
   groupedPopoversRef?: React.RefObject<HTMLElement>
+
+  /**
+   * By default Popover will reposition itself if they overflow the widow.
+   * You can use the pin property to override this behavior.
+   */
+  pin?: boolean
 }
 
 export const Popover: React.FC<PopoverProps> = ({
@@ -79,6 +85,7 @@ export const Popover: React.FC<PopoverProps> = ({
   content,
   children,
   groupedPopoversRef,
+  pin = false,
   isOpen: initializeOpen = false,
   ...props
 }) => {
@@ -92,7 +99,15 @@ export const Popover: React.FC<PopoverProps> = ({
     event.preventDefault()
   }
 
+  const handleClose = () => {
+    if (canClose && !canClose()) return
+    setOpen(false)
+    props.onClose && props.onClose()
+  }
+
   const handleClickOutside = (event: MouseEvent) => {
+    if (canClose && !canClose()) return
+
     // User clicked inside the Popover surface/portal
     if (portalRef.current && portalRef.current.contains(event.target as Node)) {
       return
@@ -138,47 +153,47 @@ export const Popover: React.FC<PopoverProps> = ({
     triggerRef && triggerRef.current ? triggerRef.current : undefined
 
   const surface = (
-    <FocusTrap focusTrapOptions={{ clickOutsideDeactivates: true }}>
-      <ModalPortal portalRef={portalRef}>
-        <Popper
-          positionFixed
-          placement={props.placement}
-          modifiers={{
-            flip: {
-              behavior: 'flip',
-              enabled: true,
-              flipVariations: true,
-              flipVariationsByContent: true,
-            },
-            preventOverflow: {
-              boundariesElement: 'viewport',
-              escapeWithReference: true,
-              padding: 0,
-            },
-          }}
-          referenceElement={referenceElement}
-        >
-          {({ ref, style, arrowProps, placement }) => (
-            <OverlaySurface
-              arrowProps={arrowProps}
-              placement={placement}
-              surfaceRef={ref}
-              style={style}
-              {...CustomizablePopoverAttributes.surface}
-            >
-              {content}
-            </OverlaySurface>
-          )}
-        </Popper>
-      </ModalPortal>
-    </FocusTrap>
+    <ModalContext.Provider value={{ closeModal: handleClose }}>
+      <FocusTrap focusTrapOptions={{ clickOutsideDeactivates: true }}>
+        <ModalPortal portalRef={portalRef}>
+          <Popper
+            positionFixed
+            placement={props.placement}
+            modifiers={{
+              flip: {
+                behavior: 'flip',
+                enabled: !pin ? true : false,
+                flipVariations: true,
+                flipVariationsByContent: true,
+              },
+              preventOverflow: {
+                boundariesElement: 'viewport',
+                escapeWithReference: true,
+                padding: 0,
+              },
+            }}
+            referenceElement={referenceElement}
+          >
+            {({ ref, style, arrowProps, placement }) => (
+              <OverlaySurface
+                arrowProps={arrowProps}
+                placement={placement}
+                surfaceRef={ref}
+                style={style}
+                {...CustomizablePopoverAttributes.surface}
+              >
+                {content}
+              </OverlaySurface>
+            )}
+          </Popper>
+        </ModalPortal>
+      </FocusTrap>
+    </ModalContext.Provider>
   )
 
   return (
     <>
-      <ModalContext.Provider value={{ closeModal: props.onClose }}>
-        {isOpen && surface}
-      </ModalContext.Provider>
+      {isOpen && surface}
       {children(handleOpen, triggerRef, isOpen ? 'active' : undefined)}
     </>
   )
