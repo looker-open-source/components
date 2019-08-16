@@ -39,7 +39,7 @@ async function cleanGlyphsAndComponents() {
  */
 async function convertSVGToComponent() {
   const result = await exec(
-    `yarn svgr --icon --ext ${iconGlyphFileExtension} --replace-attr-values "#1C2125=currentColor" --out-dir ${iconGlyphPath} ${iconSVGPath}`
+    `yarn svgr --icon --ext ${iconGlyphFileExtension} --replace-attr-values "#1C2125=currentColor" --out-dir "${iconGlyphPath}" "${iconSVGPath}"`
   )
   if (result.stderr) {
     console.log(result.stderr)

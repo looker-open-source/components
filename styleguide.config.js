@@ -113,14 +113,18 @@ module.exports = {
   propsParser: typescriptPropsParser,
   exampleMode: 'expand',
   styleguideComponents: {
-    Wrapper: path.join(__dirname, 'styleguide_components/ThemeWrapper'),
+    Wrapper: path.resolve(__dirname, 'styleguide_components/ThemeWrapper'),
   },
+  // These strings are prepended to webpackConfig.entry, where they
+  // are parsed according to Webpack's module resolution rules, which
+  // are cross-platform-safe. `path.resolve(__dirname, ...)` here will
+  // actually break on Windows.
   require: [
     'ts-polyfill/lib/es2017-object',
     './static/monkeypatches/mainElement',
     'react-copy-to-clipboard',
-    path.join(__dirname, 'styleguide_components/ThemeProvider'),
-    path.join(__dirname, '/static/css/style-guide.css'),
+    './styleguide_components/ThemeProvider',
+    './static/css/style-guide.css',
   ],
   sections: [
     {
@@ -250,7 +254,7 @@ module.exports = {
         // forbid other `.js` / `.jsx` files in favor of `.ts` / `.tsx`.
         {
           test: /\.jsx$/,
-          include: path.resolve(__dirname, 'src', 'icons', 'build'),
+          include: path.resolve(__dirname, 'src/icons/build'),
           use: {
             loader: 'babel-loader',
             options: {
