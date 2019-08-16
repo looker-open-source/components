@@ -132,7 +132,7 @@
     "lint": "yarn lint:ts && yarn lint:css",
     "lint:css": "stylelint \"src/**/*.ts?(x)\"",
     "lint:ts": "tslint -p tsconfig.test.json --format stylish",
-    "lint-staged": "$(yarn bin)/lint-staged",
+    "lint-staged": "yarn exec lint-staged",
     "npmrc": "bin/create_npmrc.sh",
     "npmrc:clean": "rm .npmrc",
     "pretest": "yarn lint",
