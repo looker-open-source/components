@@ -9,6 +9,10 @@ exports[`MenuItem - current + marker 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
 .c1 {
@@ -34,10 +38,6 @@ exports[`MenuItem - current + marker 1`] = `
   flex-wrap: wrap;
   font-size: 0.875rem;
   font-weight: 700;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
 }
 
 .c5 {
@@ -167,6 +167,10 @@ exports[`MenuItem - current 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
 .c1 {
@@ -192,10 +196,6 @@ exports[`MenuItem - current 1`] = `
   flex-wrap: wrap;
   font-size: 0.875rem;
   font-weight: 700;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
 }
 
 .c5 {
@@ -323,10 +323,6 @@ exports[`MenuItem - detail 1`] = `
   flex-wrap: wrap;
   font-size: 0.875rem;
   font-weight: 400;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
 }
 
 .c3 {
@@ -337,6 +333,10 @@ exports[`MenuItem - detail 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
 .c4 {
@@ -446,10 +446,6 @@ exports[`MenuItem - icon 1`] = `
   flex-wrap: wrap;
   font-size: 0.875rem;
   font-weight: 400;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
 }
 
 .c3 {
@@ -460,6 +456,10 @@ exports[`MenuItem - icon 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
 .c5 {
@@ -586,6 +586,10 @@ exports[`MenuItem - with customizations 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
 .c1 {
@@ -611,10 +615,6 @@ exports[`MenuItem - with customizations 1`] = `
   flex-wrap: wrap;
   font-size: 0.875rem;
   font-weight: 700;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
 }
 
 .c2 {
@@ -691,6 +691,10 @@ exports[`MenuItem - with single customization 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
 .c1 {
@@ -716,10 +720,6 @@ exports[`MenuItem - with single customization 1`] = `
   flex-wrap: wrap;
   font-size: 0.875rem;
   font-weight: 700;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
 }
 
 .c2 {
@@ -811,10 +811,6 @@ exports[`MenuItem 1`] = `
   flex-wrap: wrap;
   font-size: 0.875rem;
   font-weight: 400;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
 }
 
 .c3 {
@@ -825,6 +821,10 @@ exports[`MenuItem 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
 .c2 {

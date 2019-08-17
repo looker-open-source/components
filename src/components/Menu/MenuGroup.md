@@ -8,7 +8,7 @@ It supports an optional `label` prop to place a heading above the `MenuItem`s. W
 import { Menu } from './Menu'
 import { MenuGroup } from './MenuGroup'
 import { MenuItem } from './MenuItem'
-;<Menu groupDividers={false}>
+;<Menu>
   <MenuGroup>
     <MenuItem icon="LogoRings">Looker</MenuItem>
     <MenuItem icon="Validate">Validate</MenuItem>
@@ -16,37 +16,18 @@ import { MenuItem } from './MenuItem'
   </MenuGroup>
   <MenuGroup label="Cheeses">
     <MenuItem icon="FavoriteOutline">Cheddar</MenuItem>
-    <MenuItem icon="FavoriteOutline">Cheddar</MenuItem>
+    <MenuItem icon="FavoriteOutline">Mozerella</MenuItem>
     <MenuItem icon="FavoriteOutline">Swiss</MenuItem>
   </MenuGroup>
-  <MenuGroup label="Cheeses">
-    <MenuItem icon="FavoriteOutline">Cheddar</MenuItem>
-    <MenuItem icon="FavoriteOutline">Cheddar</MenuItem>
-    <MenuItem icon="FavoriteOutline">Swiss</MenuItem>
+  <MenuGroup label="Meats">
+    <MenuItem icon="FavoriteOutline">Sausage</MenuItem>
+    <MenuItem icon="FavoriteOutline">Pepperoni</MenuItem>
+    <MenuItem icon="FavoriteOutline">Salami</MenuItem>
+  </MenuGroup>
+  <MenuGroup label="Vegetables">
+    <MenuItem icon="FavoriteOutline">Onion</MenuItem>
+    <MenuItem icon="FavoriteOutline">Mushroom</MenuItem>
+    <MenuItem icon="FavoriteOutline">Peppers</MenuItem>
   </MenuGroup>
 </Menu>
 ```
-
-You can disable the shadows for `MenuGroup` `label`'s by setting the  `groupLabelShadow` prop to false either at the `Menu` level or individually on each `MenuGroup`
-
-```js
-import { Menu } from './Menu'
-import { MenuGroup } from './MenuGroup'
-import { MenuItem } from './MenuItem'
-;<Menu groupLabelShadow={false}>
-  <MenuGroup>
-    <MenuItem icon="LogoRings">Looker</MenuItem>
-    <MenuItem icon="Validate">Validate</MenuItem>
-    <MenuItem icon="ChartPie">Pizza!</MenuItem>
-  </MenuGroup>
-  <MenuGroup label="Cheeses">
-    <MenuItem icon="FavoriteOutline">Cheddar</MenuItem>
-    <MenuItem icon="FavoriteOutline">Cheddar</MenuItem>
-    <MenuItem icon="FavoriteOutline">Swiss</MenuItem>
-  </MenuGroup>
-  <MenuGroup label="Cheeses">
-    <MenuItem icon="FavoriteOutline">Cheddar</MenuItem>
-    <MenuItem icon="FavoriteOutline">Cheddar</MenuItem>
-    <MenuItem icon="FavoriteOutline">Swiss</MenuItem>
-  </MenuGroup>
-</Menu>

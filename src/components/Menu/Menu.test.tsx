@@ -66,30 +66,6 @@ test('Menu - compact', () => {
   expect(menu).toMatchSnapshot()
 })
 
-test('Menu - no label shadow', () => {
-  const menu = mount(
-    <ThemeProvider theme={theme}>
-      <Menu groupLabelShadow={false}>
-        <MenuGroup>
-          <MenuItem icon="LogoRings">Looker</MenuItem>
-          <MenuItem icon="Validate">Validate</MenuItem>
-          <MenuItem icon="ChartPie">Pizza!</MenuItem>
-        </MenuGroup>
-        <MenuGroup label="Cheeses">
-          <MenuItem>Gouda</MenuItem>
-          <MenuItem>Cheddar</MenuItem>
-          <MenuItem>Swiss</MenuItem>
-        </MenuGroup>
-        <MenuGroup>
-          <MenuItem icon="Beaker">Scary Stuff</MenuItem>
-        </MenuGroup>
-      </Menu>
-    </ThemeProvider>
-  )
-
-  expect(menu).toMatchSnapshot()
-})
-
 test('Menu - menu customization', () => {
   const menuCustomizations =
     // tslint:disable:object-literal-sort-keys

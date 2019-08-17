@@ -4,6 +4,7 @@ import { Box, BoxPropsWithout } from '../Box'
 import { Heading, HeadingProps } from '../Heading'
 import { List } from '../List'
 import { MenuContext } from './MenuContext'
+import { useElementVisibility } from './MenuGroup.hooks'
 import { MenuItemCustomization } from './MenuItem'
 
 export interface MenuGroupProps
@@ -13,11 +14,9 @@ export interface MenuGroupProps
   labelStyles?: React.CSSProperties
   customizationProps?: MenuItemCustomization
   compact?: boolean
-  groupLabelShadow?: boolean
 }
 
 const InternalMenuGroup: React.FC<MenuGroupProps> = ({
-  groupLabelShadow,
   children,
   label,
   labelProps,
@@ -31,27 +30,41 @@ const InternalMenuGroup: React.FC<MenuGroupProps> = ({
     ? customizationProps
     : menu.customizationProps
 
-  const shadow =
-    groupLabelShadow !== undefined ? groupLabelShadow : menu.groupLabelShadow
+  const labelShimRef: React.RefObject<any> = React.useRef()
 
   const labelComponent = label && (
-    <Heading
-      bg={customizations ? customizations.bg : palette.white}
-      fontSize="xsmall"
-      is="h2"
-      px="medium"
-      py={compact || menu.compact ? 'small' : 'xxsmall'}
-      textTransform="upper"
-      position={shadow ? 'sticky' : 'initial'}
-      top="0"
-      fontWeight="semiBold"
-      boxShadow={shadow ? `0 4px 8px -2px ${palette.charcoal200}` : 'none'}
-      {...labelProps}
-      style={labelStyles}
-      zIndex={2}
+    <div
+      style={{
+        background: customizations ? customizations.bg : palette.white,
+        boxShadow: useElementVisibility(labelShimRef)
+          ? 'none'
+          : `0 4px 8px -2px ${palette.charcoal200}`,
+        position: 'sticky',
+        top: '-1px',
+        zIndex: 2,
+      }}
     >
-      {label}
-    </Heading>
+      {/*
+        NOTE: This div is required for box-shadow to appear when the heading
+        is sticky to the top of the container. Using IntersectionObserver,
+        we detect when this 0-height element disappears from the page and then
+        render the shadow.
+      */}
+      <div ref={labelShimRef} style={{ height: '0' }} />
+      <Heading
+        fontSize="xsmall"
+        is="h2"
+        px="medium"
+        py={compact || menu.compact ? 'small' : 'xxsmall'}
+        textTransform="upper"
+        fontWeight="semiBold"
+        {...labelProps}
+        style={labelStyles}
+        zIndex={2}
+      >
+        {label}
+      </Heading>
+    </div>
   )
 
   return (

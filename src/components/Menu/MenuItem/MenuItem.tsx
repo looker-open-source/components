@@ -89,8 +89,6 @@ const InternalMenuItem: React.FC<MenuItemProps> = props => {
       flexWrap="wrap"
       is="li"
       onClick={onClick}
-      px="medium"
-      py={isCompact ? 'xxsmall' : 'small'}
       {...listItemProps}
       {...boxProps}
     >
@@ -99,6 +97,8 @@ const InternalMenuItem: React.FC<MenuItemProps> = props => {
         role="menuitem"
         href={href}
         target={target}
+        px="medium"
+        py={isCompact ? 'xxsmall' : 'small'}
       >
         {icon && (
           <Icon

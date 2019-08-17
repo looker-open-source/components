@@ -6,6 +6,4 @@ exports[`Menu - composed 1`] = `ShallowWrapper {}`;
 
 exports[`Menu - menu customization 1`] = `ShallowWrapper {}`;
 
-exports[`Menu - no label shadow 1`] = `ReactWrapper {}`;
-
 exports[`Menu 1`] = `ShallowWrapper {}`;

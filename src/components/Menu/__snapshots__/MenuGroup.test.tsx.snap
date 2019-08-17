@@ -49,13 +49,9 @@ exports[`MenuGroup - JSX label 1`] = `
   flex-wrap: wrap;
   font-size: 0.875rem;
   font-weight: 400;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
 }
 
-.c3 {
+.c9 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -63,6 +59,10 @@ exports[`MenuGroup - JSX label 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
 .c2 {
@@ -73,18 +73,24 @@ exports[`MenuGroup - JSX label 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  box-shadow: none;
-  background-color: #FFFFFF;
   font-size: 0.75rem;
   font-weight: 600;
   line-height: 1rem;
-  position: initial;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
-  top: 0;
   z-index: 2;
+}
+
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
 }
 
 .c1 {
@@ -137,11 +143,11 @@ exports[`MenuGroup - JSX label 1`] = `
   font-weight: #262D33;
 }
 
-.c6:hover .c9 {
+.c6:hover .c10 {
   color: #C1C6CC;
 }
 
-.c6 .c9 {
+.c6 .c10 {
   color: #C1C6CC;
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
@@ -150,15 +156,34 @@ exports[`MenuGroup - JSX label 1`] = `
 <li
   className="c0"
 >
-  <h2
-    className="c1 c2"
+  <div
+    style={
+      Object {
+        "background": "#FFFFFF",
+        "boxShadow": "0 4px 8px -2px #DEE1E5",
+        "position": "sticky",
+        "top": "-1px",
+        "zIndex": 2,
+      }
+    }
   >
     <div
-      className="c3"
+      style={
+        Object {
+          "height": "0",
+        }
+      }
+    />
+    <h2
+      className="c1 c2"
     >
-      Questions
-    </div>
-  </h2>
+      <div
+        className="c3"
+      >
+        Questions
+      </div>
+    </h2>
+  </div>
   <ul
     className="c4 c5"
   >
@@ -166,7 +191,7 @@ exports[`MenuGroup - JSX label 1`] = `
       className="c6 c7"
     >
       <button
-        className="c8 c3"
+        className="c8 c9"
         role="menuitem"
       >
         what?
@@ -176,7 +201,7 @@ exports[`MenuGroup - JSX label 1`] = `
       className="c6 c7"
     >
       <button
-        className="c8 c3"
+        className="c8 c9"
         role="menuitem"
       >
         who?
@@ -186,7 +211,7 @@ exports[`MenuGroup - JSX label 1`] = `
       className="c6 c7"
     >
       <button
-        className="c8 c3"
+        className="c8 c9"
         role="menuitem"
       >
         where?
@@ -245,10 +270,6 @@ exports[`MenuGroup - label 1`] = `
   flex-wrap: wrap;
   font-size: 0.875rem;
   font-weight: 400;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
 }
 
 .c8 {
@@ -259,6 +280,10 @@ exports[`MenuGroup - label 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
 .c2 {
@@ -269,17 +294,13 @@ exports[`MenuGroup - label 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  box-shadow: none;
-  background-color: #FFFFFF;
   font-size: 0.75rem;
   font-weight: 600;
   line-height: 1rem;
-  position: initial;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
-  top: 0;
   z-index: 2;
 }
 
@@ -346,203 +367,30 @@ exports[`MenuGroup - label 1`] = `
 <li
   className="c0"
 >
-  <h2
-    className="c1 c2"
+  <div
+    style={
+      Object {
+        "background": "#FFFFFF",
+        "boxShadow": "0 4px 8px -2px #DEE1E5",
+        "position": "sticky",
+        "top": "-1px",
+        "zIndex": 2,
+      }
+    }
   >
-    Questions
-  </h2>
-  <ul
-    className="c3 c4"
-  >
-    <li
-      className="c5 c6"
+    <div
+      style={
+        Object {
+          "height": "0",
+        }
+      }
+    />
+    <h2
+      className="c1 c2"
     >
-      <button
-        className="c7 c8"
-        role="menuitem"
-      >
-        what?
-      </button>
-    </li>
-    <li
-      className="c5 c6"
-    >
-      <button
-        className="c7 c8"
-        role="menuitem"
-      >
-        who?
-      </button>
-    </li>
-    <li
-      className="c5 c6"
-    >
-      <button
-        className="c7 c8"
-        role="menuitem"
-      >
-        where?
-      </button>
-    </li>
-  </ul>
-</li>
-`;
-
-exports[`MenuGroup - label no shadow 1`] = `
-.c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  background-color: #FFFFFF;
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
-}
-
-.c4 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  margin: 0rem;
-  padding: 0rem;
-}
-
-.c6 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  color: #4C535B;
-  background-color: #FFFFFF;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  font-size: 0.875rem;
-  font-weight: 400;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-}
-
-.c8 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-}
-
-.c2 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  box-shadow: none;
-  background-color: #FFFFFF;
-  font-size: 0.75rem;
-  font-weight: 600;
-  line-height: 1rem;
-  position: initial;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
-  top: 0;
-  z-index: 2;
-}
-
-.c1 {
-  text-transform: uppercase;
-}
-
-.c3 {
-  list-style-type: none;
-}
-
-.c7 {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  background: transparent;
-  color: inherit;
-  cursor: pointer;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  font-size: inherit;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  outline: none;
-  text-align: left;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c5 {
-  position: relative;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
-  transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
-}
-
-.c5:focus-within {
-  box-shadow: 0 0 3px 1px #49a9f2;
-  z-index: 1;
-}
-
-.c5:hover {
-  background: #F5F6F7;
-  color: #262D33;
-  font-size: #262D33;
-  font-weight: #262D33;
-}
-
-.c5:hover .c9 {
-  color: #C1C6CC;
-}
-
-.c5 .c9 {
-  color: #C1C6CC;
-  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
-  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
-}
-
-<li
-  className="c0"
->
-  <h2
-    className="c1 c2"
-  >
-    Questions
-  </h2>
+      Questions
+    </h2>
+  </div>
   <ul
     className="c3 c4"
   >
@@ -629,10 +477,6 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
   flex-wrap: wrap;
   font-size: 0.875rem;
   font-weight: 400;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
 }
 
 .c8 {
@@ -643,6 +487,10 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
 .c2 {
@@ -653,17 +501,13 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  box-shadow: none;
-  background-color: #FFFFFF;
   font-size: 1.5625rem;
   font-weight: 600;
   line-height: 2.5rem;
-  position: initial;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
-  top: 0;
   z-index: 2;
 }
 
@@ -730,16 +574,35 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
 <li
   className="c0"
 >
-  <h2
-    className="c1 c2"
+  <div
     style={
       Object {
-        "color": "rebeccapurple",
+        "background": "#FFFFFF",
+        "boxShadow": "0 4px 8px -2px #DEE1E5",
+        "position": "sticky",
+        "top": "-1px",
+        "zIndex": 2,
       }
     }
   >
-    Questions
-  </h2>
+    <div
+      style={
+        Object {
+          "height": "0",
+        }
+      }
+    />
+    <h2
+      className="c1 c2"
+      style={
+        Object {
+          "color": "rebeccapurple",
+        }
+      }
+    >
+      Questions
+    </h2>
+  </div>
   <ul
     className="c3 c4"
   >
@@ -798,6 +661,10 @@ exports[`MenuGroup - menu customization 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
 .c0 {
@@ -836,10 +703,6 @@ exports[`MenuGroup - menu customization 1`] = `
   flex-wrap: wrap;
   font-size: 0.875rem;
   font-weight: 400;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
 }
 
 .c8 {
@@ -1086,10 +949,6 @@ exports[`MenuGroup 1`] = `
   flex-wrap: wrap;
   font-size: 0.875rem;
   font-weight: 400;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
 }
 
 .c6 {
@@ -1100,6 +959,10 @@ exports[`MenuGroup 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
 .c1 {
