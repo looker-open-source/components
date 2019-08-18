@@ -5,32 +5,32 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
-
-### Added
-
-- Accessibility documentation improvements to the `Popover` examples by including `aria-haspopup` on the button triggers.
-- `color` and `variant` on `Heading`, to be used as they are with `Box` and `Text` respectively
-- `transform` on `Heading` to `textTransform` to be consistent with `Text`
+## [0.0.1-beta.24] - 2019-08-18
 
 ### Changed
 
-- `Popover`
-  - Now highlights trigger with `active` className to leave indicator of the trigger element (works nicely with `Button` & `IconButton` built-in styling)
-  - Added “Grouped Popovers” functionality to allow for a more nuanced UX when Popovers are grouped together (see Popover.md for example, further explaination)
-- Major refactor and simplification of former Overlay descendant components:
-  - Removed `Backdrop` for `Popover` & Tooltip components (collapse is now consistently handled via document listeners)
-  - Tooltip now inherits from RichTooltip
-  - Removed `usePortal={false}` on `Tooltip` & `RichTooltip`
-  - Enable zIndex override for `RichTooltip` & `Tooltip` via `CustomizableRichTooltipAttributes.zIndex` and `CustomizableTooltipAttributes.zIndex` respectively. `CustomizableModalAttributes` is no longer extended onto these other components so they need to be explicitly configured like `CustomizableModalAttributes.zIndex` to continue to work as they have previously.
+- `MenuGroup` no longer has a `hideGroupShadows` property (group shadows were previously only partially implemented)
+- `ModalBackdrop` now uses "default" cursor rather than pointer.
+- `Popover`, `Tooltip` & `RichTooltip` - major refactor and simplification of former Overlay descendant components:
+  - `Popover` accessibility documentation improvements – examples include `aria-haspopup` on the button triggers.
+  - `Popover` now highlights trigger with `active` className to leave indicator of the trigger element (works nicely with `Button` & `IconButton` built-in styling)
+  - `Popover` how supports “Grouped Popovers” functionality to allow for a more nuanced UX when Popovers are grouped together (see Popover.md for example, further explaination)
+  - `ModalBackdrop` removed for `Popover`, `RichTooltip`, & `Tooltip` components (collapse is now consistently handled via document listeners)
+  - `Tooltip` now inherits from `RichTooltip`
+  - Removed `usePortal={false}` on `Tooltip` & `RichTooltip` (portals no longer used for these)
+  - Enable zIndex override for `RichTooltip` & `Tooltip` via `CustomizableRichTooltipAttributes.zIndex` and `CustomizableTooltipAttributes.zIndex` respectively.
+    - `CustomizableModalAttributes` is no longer extended onto these other components so they need to be explicitly configured like `CustomizableModalAttributes.zIndex` to continue to work as they have previously.
 
 ### Removed
 
-- `Overlay` & `OverlayHover` removed components in favor of consolidating the various generic pieces into their constituent components (Popover, RichTooltip & Tooltip)
 - `MenuOverlay` is deprecated in lieu of `Popover` with “Grouped Popovers” functionality
+- `Overlay` & `OverlayHover` removed components in favor of consolidating the various generic pieces into their constituent components (`Popover`, `RichTooltip` & `Tooltip`)
 
 ### Changed
 
+- `Heading`
+  - now supports `color` and `variant` consistent with `Box`
+  - changed `transform` to `textTransform` for consistency with `Text`
 - `MenuItem`'s focus state has a few new improvements:
   - Clearer and more prominent focus indicator
   - Text no longer is underlined when it has focus
@@ -38,6 +38,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Bug Fixes
 
 - `Menu`'s down-arrow and up-arrow keyboard shortcuts fixed
+- `MenuGroup` now shows a subtle shadow under sticky-positioned labels
+- `Modal` position corrected in IE11 (requires matching fix in Helltool to address Angular / Style Components conflict)
 
 ## [0.0.1-beta.23,1] - 2019-08-05
 

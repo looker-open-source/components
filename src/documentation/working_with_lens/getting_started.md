@@ -21,7 +21,7 @@ import {
 ;<ThemeProvider theme={theme}>
   <Card raised>
     <CardContent>
-      <Heading fontWeight="semiBold" transform="caps">
+      <Heading fontWeight="semiBold" textTransform="caps">
         Welcome to Lens
       </Heading>
       <Text>Looker's component library</Text>
@@ -38,7 +38,7 @@ import { Heading } from '../../components/Heading'
 import { Text } from '../../components/Text'
 ;<Card raised>
   <CardContent>
-    <Heading fontWeight="semiBold" transform="caps">
+    <Heading fontWeight="semiBold" textTransform="caps">
       Welcome to Lens
     </Heading>
     <Text>Looker's component library</Text>
