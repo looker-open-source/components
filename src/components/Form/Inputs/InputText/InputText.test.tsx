@@ -4,6 +4,14 @@ import { mountWithTheme } from '../../../../../test/utils/create_with_theme'
 import { assertSnapshot } from '../../../../../test/utils/snapshot'
 import { InputText } from './InputText'
 
+beforeEach(() => {
+  global.console.warn = jest.fn()
+})
+
+afterEach(() => {
+  jest.clearAllMocks()
+})
+
 test('InputText default', () => {
   assertSnapshot(<InputText />)
 })
@@ -48,4 +56,12 @@ test('Should trigger onChange handler', () => {
 
   wrapper.find('input').simulate('change', { target: { value: '' } })
   expect(counter).toEqual(1)
+})
+
+test('Should call console.warn if `hidden` attribute is used', () => {
+  expect(window.console.warn).not.toHaveBeenCalled()
+
+  mountWithTheme(<InputText hidden />)
+
+  expect(window.console.warn).toHaveBeenCalledTimes(1)
 })

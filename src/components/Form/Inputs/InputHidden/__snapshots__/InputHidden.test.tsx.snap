@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InputHidden default 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+<input
+  className="c0"
+  type="hidden"
+/>
+`;
+
+exports[`InputHidden with a value 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+<input
+  className="c0"
+  type="hidden"
+  value="Some value"
+/>
+`;
+
+exports[`InputHidden with name and id 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+<input
+  className="c0"
+  id="Bobby"
+  name="Bob"
+  type="hidden"
+/>
+`;
