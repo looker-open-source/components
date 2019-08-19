@@ -114,6 +114,15 @@ export const Popover: React.FC<PopoverProps> = ({
       return
     }
 
+    if (
+      portalRef.current &&
+      event.target &&
+      portalRef.current.compareDocumentPosition(event.target as Node) ===
+        Node.DOCUMENT_POSITION_FOLLOWING
+    ) {
+      return
+    }
+
     setOpen(false)
 
     // User clicked the trigger while the Popover was open
