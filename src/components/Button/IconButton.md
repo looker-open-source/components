@@ -6,7 +6,7 @@ If you need an icon for purely decorative purposes use an `<Icon />` instead.
 
 ```js
 import { IconButton } from './IconButton'
-import { Tooltip } from '../Overlay'
+import { Tooltip } from '../Tooltip'
 import { styled } from '../../style'
 
 const FancyIconButton = styled(IconButton)`

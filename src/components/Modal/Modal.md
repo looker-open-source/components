@@ -50,7 +50,7 @@ import { DialogManager } from './Dialog/DialogManager'
 
 ### ModalContext
 
-`ModalContext` is a [React Context](https://reactjs.org/docs/context.html) that provides access to Overlay functionality without requiring the developer to explicitly manage the Overlay's state. Currently the context simply provides access to the `closeModal()` method of the Modal.
+`ModalContext` is a [React Context](https://reactjs.org/docs/context.html) that provides access to functionality without requiring the developer to explicitly manage the Modal's state. Currently the context simply provides access to the `closeModal()` method of the Modal.
 
 ```js static
 const ModalContext = require('./ModalContext').ModalContext

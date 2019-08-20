@@ -51,13 +51,12 @@ import { MenuItem } from './MenuItem'
 </Menu>
 ```
 
-
 ### Compose Menus
 
 Menu can be easily composed with `Popover`, `Drawer` and `Dialog`
 
 ```js
-import { Popover } from '../Overlay'
+import { Popover } from '../Popover'
 import { Button } from '../Button'
 import { Menu } from './Menu'
 import { MenuItem } from './MenuItem'
@@ -87,7 +86,7 @@ import { MenuItem } from './MenuItem'
 ```
 
 ```js
-import { Popover } from '../Overlay'
+import { Popover } from '../Popover'
 import { Button } from '../Button'
 
 const MenuGroupDemo = require('../../../styleguide_components/MenuDemo')
