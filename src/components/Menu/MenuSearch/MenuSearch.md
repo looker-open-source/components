@@ -1,41 +1,12 @@
 ```javascript
 import { MenuSearch } from './MenuSearch'
 import { Divider } from '../../Divider'
-
-const Example = ({ value = '', hideControls, searchResults = [] }) => {
-  const menuRef = React.useRef(null)
-  const [keywords, setKeywords] = React.useState(value)
-  const [results, setResults] = React.useState(searchResults)
-  const onChange = e => {
-    setKeywords(e.currentTarget.value)
-    setResults(['a', 'b', 'c'])
-  }
-  const clear = () => {
-    setKeywords('')
-    setResults([])
-  }
-
-  return (
-    <MenuSearch
-      placeholder="Search my menu"
-      summary={results.length > 0 && `${results.length} results`}
-      value={keywords}
-      onClear={clear}
-      onChange={onChange}
-      menuRef={menuRef}
-      hideControls={hideControls}
-    />
-  )
-}
-
 ;<>
-  <Example />
+  <MenuSearch />
   <Divider my="medium" />
-  <Example value="Stuff" />
+  <MenuSearch value="Stuff" summary="Faux results" />
   <Divider my="medium" />
-  <Example value="Stuff" searchResults={['a', 'b', 'c']} />
-  <Divider my="medium" />
-  <Example value="Stuff" searchResults={['a', 'b', 'c']} hideControls />
+  <MenuSearch value="Stuff" hideControls />
 </>
 ```
 

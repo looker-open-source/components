@@ -37,6 +37,7 @@ const componentSections = [
       'src/components/Button/**/*.tsx',
       'src/components/Form/**/*.tsx',
     ],
+    ignore: ['src/components/Form/Inputs/InputSearch/InputSearchControls.tsx'],
   },
   {
     name: 'Popovers',

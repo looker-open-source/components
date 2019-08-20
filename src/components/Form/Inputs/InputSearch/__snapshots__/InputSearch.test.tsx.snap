@@ -1,0 +1,84 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InputSearch default 1`] = `
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border: solid 1px;
+  border-radius: 0.25rem;
+  border-color: #C1C6CC;
+  background-color: white;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  width: 100%;
+}
+
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border: none;
+  border-radius: 0.25rem;
+  border-color: #C1C6CC;
+  font-size: 0.875rem;
+  height: 28px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  width: 100%;
+}
+
+.c3:focus {
+  outline: none;
+}
+
+.c0:focus-within {
+  border: 1px solid rgba(0,0,0,0);
+  outline: 5px auto -webkit-focus-ring-color;
+}
+
+.c0 .c2 {
+  border: none;
+  width: 100%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c0 .c2::-webkit-search-decoration,
+.c0 .c2::-webkit-search-cancel-button,
+.c0 .c2::-webkit-search-results-button,
+.c0 .c2::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+<div
+  className="c0 c1"
+>
+  <input
+    className="c2 c3"
+    onChange={[Function]}
+    type="search"
+    value=""
+  />
+</div>
+`;
