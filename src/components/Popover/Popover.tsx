@@ -34,7 +34,7 @@ export interface PopoverProps {
   placement?: Placement
 
   /**
-   * Render Prop to render the controlled hover popper.
+   * Content to rendered within the Popover surface.
    * @required
    */
   content: React.ReactNode

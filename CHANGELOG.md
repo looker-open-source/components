@@ -35,7 +35,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Popover`, `Tooltip` & `RichTooltip` - major refactor and simplification of former Overlay descendant components:
   - `Popover` accessibility documentation improvements – examples include `aria-haspopup` on the button triggers.
   - `Popover` now highlights trigger with `active` className to leave indicator of the trigger element (works nicely with `Button` & `IconButton` built-in styling)
-  - `Popover` how supports “Grouped Popovers” functionality to allow for a more nuanced UX when Popovers are grouped together (see Popover.md for example, further explaination)
+  - `Popover` now supports “Grouped Popovers” functionality to allow for a more nuanced UX when Popovers are grouped together (see [Popover.md](src/components/Popover/Popover.md) for example and further explanation)
   - `ModalBackdrop` removed for `Popover`, `RichTooltip`, & `Tooltip` components (collapse is now consistently handled via document listeners)
   - `Tooltip` now inherits from `RichTooltip`
   - Removed `usePortal={false}` on `Tooltip` & `RichTooltip` (portals no longer used for these)
@@ -85,7 +85,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Major refactor of `OverlayManager` (and `Tooltip` / `RichtoolTip`) [LENS-257]
+- Major refactor of `OverlayManager` (and `Tooltip` / `RichTooltip`) [LENS-257]
   - Now supports `usePortal={false}` to preserve `:hover` behavior.
   - Major refactor / clean-up of Overlay code (BIG Thank you to @AprilArcus)
 
@@ -134,7 +134,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Bug Fixes
 
-- Fix `Overlay` `stopPropogation` behavior to stop native DOM events too.
+- Fix `Overlay` `stopPropagation` behavior to stop native DOM events too.
 
 ## [0.0.1-beta.19.1,2,3] - 2019-06-14
 
@@ -190,7 +190,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - All components should now support innerRef assignment
-- All (styleable) components are exported as Styled Components (`DialogManager` & `DialogManager` are examples of components that don't support style props)
+- All (style-able) components are exported as Styled Components (`DialogManager` & `DialogManager` are examples of components that don't support style props)
 
 - `Select` visual rendering update to be consistent with Figma specs
 - Removed duplicate documentation for Modal & Overlay component families.
@@ -198,7 +198,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `MenuItem` customizationProps supports partial object
 - `MenuItem` focus color is properly applied
 - `MenuOverlay` is no longer exported and should not be used except by MainNav
-- `Overlay` family components (Tooltip, Popover, etc) now support a `stopPropogation` prop that prevents the click from bubbling up to parents in the DOM. This will allow for removal of the `PreventDefault` component in Helltool.
+- `Overlay` family components (Tooltip, Popover, etc) now support a `stopPropagation` prop that prevents the click from bubbling up to parents in the DOM. This will allow for removal of the `PreventDefault` component in Helltool.
 
 - CI/CD Improvements (move configuration to `./ci`)
 
@@ -217,7 +217,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fixed `IconButton` sizing to match `Button`
 - `VisuallyHidden` now exported as StyledComponent
-- Added respnosive values for `fontSize` & `lineHeight`
+- Added responsive values for `fontSize` & `lineHeight`
 - `MenuItem` aria enhancements
 - `Popover` backdrop is now transparent by default and cursor is `default`
 - `Icon` now accepts `ref` and exported as StyledComponent
@@ -235,7 +235,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- "Color Palette" shows up once again under Colors in the styleguide
+- "Color Palette" shows up once again under Colors in the style guide
 - Icon build docs fixed
 - OverlayHover now uses React Portal (via ModalPortal)
 

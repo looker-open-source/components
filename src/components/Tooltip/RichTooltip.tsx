@@ -14,15 +14,14 @@ export interface RichTooltipProps {
   arrow?: boolean
 
   /**
-   * Render Prop to render the controlled hover popper.
+   * Content to rendered within the Popover surface.
    * @required
    */
   content: React.ReactNode
 
   /**
-   * Component to wrap. The HOC will listen for mouse events on this
-   * component, maintain the state of isOpen accordingly, and pass that state into
-   * the modal renderProp.
+   * Component to wrap. The HOC will listen for mouse events on this component, maintain the
+   * state of isOpen accordingly, and pass that state into the children or "trigger" element
    */
   children: (
     eventsHandlers: {
