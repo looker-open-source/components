@@ -33,7 +33,7 @@ const InternalMenuGroup: React.FC<MenuGroupProps> = ({
   const labelShimRef: React.RefObject<any> = React.useRef()
 
   const labelComponent = label && (
-    <div
+    <MenuLabel
       style={{
         background: customizations ? customizations.bg : palette.white,
         boxShadow: useElementVisibility(labelShimRef)
@@ -52,11 +52,10 @@ const InternalMenuGroup: React.FC<MenuGroupProps> = ({
       */}
       <div ref={labelShimRef} style={{ height: '0' }} />
       <Heading
-        fontSize="xsmall"
+        fontSize="small"
         is="h2"
         px="medium"
-        py={compact || menu.compact ? 'small' : 'xxsmall'}
-        textTransform="upper"
+        py="xsmall"
         fontWeight="semiBold"
         {...labelProps}
         style={labelStyles}
@@ -64,7 +63,7 @@ const InternalMenuGroup: React.FC<MenuGroupProps> = ({
       >
         {label}
       </Heading>
-    </div>
+    </MenuLabel>
   )
 
   return (
@@ -78,7 +77,7 @@ const InternalMenuGroup: React.FC<MenuGroupProps> = ({
         is="li"
         {...boxProps}
         bg={customizations ? customizations.bg : palette.white}
-        py="xxsmall"
+        py="small"
       >
         {labelComponent}
         <List nomarker>{children}</List>
@@ -86,6 +85,8 @@ const InternalMenuGroup: React.FC<MenuGroupProps> = ({
     </MenuContext.Provider>
   )
 }
+
+const MenuLabel = styled.div``
 
 const MenuGroupFactory = React.forwardRef((props: MenuGroupProps, ref) => (
   <InternalMenuGroup innerRef={ref} {...props} />

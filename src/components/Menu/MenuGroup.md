@@ -31,3 +31,50 @@ import { MenuItem } from './MenuItem'
   </MenuGroup>
 </Menu>
 ```
+
+Real world `MenuGroup` example for how it might be used in helltool.
+
+```js
+import { Box } from '../Box'
+import { Menu } from './Menu'
+import { MenuGroup } from './MenuGroup'
+import { MenuItem } from './MenuItem'
+import { ToggleSwitch } from '../Form'
+;<Box>
+<Menu compact>
+  <MenuGroup>
+    <MenuItem detail={<ToggleSwitch />}>Developer Mode</MenuItem>
+  </MenuGroup>
+  <MenuGroup>
+    <MenuItem>SQL Runner</MenuItem>
+    <MenuItem>Content Validator</MenuItem>
+    <MenuItem>Manage LookML Projects</MenuItem>
+  </MenuGroup>
+  <MenuGroup>
+    <MenuItem>apps</MenuItem>
+    <MenuItem>apps-config</MenuItem>
+    <MenuItem>marketing</MenuItem>
+     <MenuItem>marketing-config</MenuItem>
+      <MenuItem>events</MenuItem>
+  </MenuGroup>
+</Menu>
+
+<Menu compact mt="xxlarge">
+  <MenuGroup label="Application GA360">
+    <MenuItem>Ga Sessions</MenuItem>
+  </MenuGroup>
+  <MenuGroup label="Auth">
+    <MenuItem>Audit</MenuItem>
+    <MenuItem>User</MenuItem>
+  </MenuGroup>
+
+    <MenuGroup label="Bq Pinger">
+    <MenuItem>Dashboard First Run Render</MenuItem>
+    <MenuItem>EC2 Restarts</MenuItem>
+    <MenuItem>GA Sessions</MenuItem>
+     <MenuItem>Looker app restarts (hosted)</MenuItem>
+      <MenuItem>New Relic Monitoring</MenuItem>
+  </MenuGroup>
+</Menu>
+</Box>
+```

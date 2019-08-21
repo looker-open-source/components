@@ -15,10 +15,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - `MenuSearch` now depends on `InputSearch`
+- `MenuGroup`'s spacing is now more consistent in both the regular and `compact` variations
+- `MenuGroup` labels are no longer `text-transform`ed to uppercase
 
 ### Removed
 
 ### Bug Fixes
+- `MenuItem`'s `detail` now has correct spacing from the edge of the `MenuItem`
 
 ## [0.0.1-beta.24.1] - 2019-08-18
 

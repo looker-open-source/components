@@ -10,8 +10,8 @@ exports[`MenuGroup - JSX label 1`] = `
   padding: 0;
   vertical-align: baseline;
   background-color: #FFFFFF;
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
 .c5 {
@@ -73,13 +73,13 @@ exports[`MenuGroup - JSX label 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 600;
-  line-height: 1rem;
+  line-height: 1.25rem;
   padding-left: 1rem;
   padding-right: 1rem;
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   z-index: 2;
 }
 
@@ -94,7 +94,7 @@ exports[`MenuGroup - JSX label 1`] = `
 }
 
 .c1 {
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .c4 {
@@ -157,6 +157,7 @@ exports[`MenuGroup - JSX label 1`] = `
   className="c0"
 >
   <div
+    className=""
     style={
       Object {
         "background": "#FFFFFF",
@@ -231,8 +232,8 @@ exports[`MenuGroup - label 1`] = `
   padding: 0;
   vertical-align: baseline;
   background-color: #FFFFFF;
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
 .c4 {
@@ -294,18 +295,18 @@ exports[`MenuGroup - label 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 600;
-  line-height: 1rem;
+  line-height: 1.25rem;
   padding-left: 1rem;
   padding-right: 1rem;
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   z-index: 2;
 }
 
 .c1 {
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .c3 {
@@ -368,6 +369,7 @@ exports[`MenuGroup - label 1`] = `
   className="c0"
 >
   <div
+    className=""
     style={
       Object {
         "background": "#FFFFFF",
@@ -438,8 +440,8 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
   padding: 0;
   vertical-align: baseline;
   background-color: #FFFFFF;
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
 .c4 {
@@ -506,13 +508,13 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
   line-height: 2.5rem;
   padding-left: 1rem;
   padding-right: 1rem;
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   z-index: 2;
 }
 
 .c1 {
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .c3 {
@@ -575,6 +577,7 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
   className="c0"
 >
   <div
+    className=""
     style={
       Object {
         "background": "#FFFFFF",
@@ -676,8 +679,8 @@ exports[`MenuGroup - menu customization 1`] = `
   padding: 0;
   vertical-align: baseline;
   background-color: #4F2ABA;
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
 .c4 {
@@ -910,8 +913,8 @@ exports[`MenuGroup 1`] = `
   padding: 0;
   vertical-align: baseline;
   background-color: #FFFFFF;
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
 .c2 {
