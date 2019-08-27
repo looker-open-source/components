@@ -86,7 +86,6 @@ You can use the `align` property to change the alignment of the rendered text, b
 ```js
 import { Card, CardContent } from '../Card'
 import { Paragraph } from './Paragraph'
-
 ;<>
   <Card>
     <CardContent>
@@ -112,14 +111,18 @@ import { Paragraph } from './Paragraph'
 
 ### Truncate
 
-At times you may want your `<Paragraph />` to truncate instead of the text wrapping, the `truncate` property will do that for you.
+At times you may want your `<Paragraph />` or `<Heading />` to truncate instead of the text wrapping, the `truncate` property will do that for you. For a multiline truncate, use `truncateLines` (this is not supported in IE11).
 
 ```js
+import { Heading } from '../Heading/Heading'
 import { Paragraph } from './Paragraph'
-
 ;<div style={{ width: '40%' }}>
-  <Paragraph truncate>
-    Hello there I am some text that will truncate 🍕🥑🍪🥓
+  <Heading truncate is="h2">
+    Hello there I am a heading that will truncate to one line 🍕🥑🍪🥓
+  </Heading>
+  <Paragraph truncateLines={2}>
+    And I am some text that is super long and gets truncated at two lines with
+    an ellipsis.
   </Paragraph>
 </div>
 ```

@@ -21,6 +21,8 @@ export interface HeadingProps
   textTransform?: TextTransforms
   /** Truncate heading text */
   truncate?: boolean
+  /** Truncate heading at a specified number of lines (whole number) */
+  truncateLines?: number
   /** Custom css class */
   className?: string
   /** Adjust style of text with more meaning by using an intent */
@@ -33,6 +35,7 @@ const InternalHeading: React.FC<HeadingProps> = ({
   lineHeight,
   textTransform,
   truncate,
+  truncateLines,
   is,
   ...props
 }) => (
@@ -53,7 +56,7 @@ const HeadingFactory = React.forwardRef((props: HeadingProps, ref) => (
 
 export const Heading = styled(HeadingFactory)`
   ${props => getTextTransform(props.textTransform)};
-  ${props => shouldTruncate(props.truncate || false)};
+  ${props => shouldTruncate(props.truncate, props.truncateLines)};
   ${props => textVariant(props.theme, props.variant)};
 `
 

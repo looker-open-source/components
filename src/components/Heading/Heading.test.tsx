@@ -55,3 +55,9 @@ test('A Heading truncated', () => {
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
 })
+
+test('A Heading with multiline truncate', () => {
+  const component = createWithTheme(<Heading truncateLines={2}>🥑</Heading>)
+  const tree = component.toJSON()
+  expect(tree).toMatchSnapshot()
+})

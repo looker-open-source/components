@@ -5,10 +5,13 @@ import { Text, TextProps } from '../Text/Text'
 export interface ParagraphProps extends TextProps {
   /** Truncate text on overflow */
   truncate?: boolean
+  /** Truncate text at a specified number of lines (whole number) */
+  truncateLines?: number
 }
 
 const InternalParagraph: React.FC<ParagraphProps> = ({
   truncate,
+  truncateLines,
   ...props
 }) => {
   return (
@@ -23,5 +26,5 @@ const ParagraphFactory = React.forwardRef((props: ParagraphProps, ref) => (
 ))
 
 export const Paragraph = styled<ParagraphProps>(ParagraphFactory)`
-  ${props => shouldTruncate(props.truncate || false)};
+  ${props => shouldTruncate(props.truncate, props.truncateLines)};
 `

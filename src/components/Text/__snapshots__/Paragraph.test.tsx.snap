@@ -73,7 +73,7 @@ exports[`A Paragraph component text transformed 1`] = `
 </p>
 `;
 
-exports[`A Paragraph component tuncated 1`] = `
+exports[`A Paragraph component truncated 1`] = `
 .c2 {
   border: 0;
   box-sizing: border-box;
@@ -94,6 +94,37 @@ exports[`A Paragraph component tuncated 1`] = `
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+<p
+  className="c0 c1 c2"
+>
+  Hello
+</p>
+`;
+
+exports[`A Paragraph component with multiline truncate 1`] = `
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.c1 {
+  text-transform: none;
+}
+
+.c0 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
 }
 
 <p

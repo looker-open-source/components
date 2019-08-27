@@ -154,6 +154,35 @@ exports[`A Heading with color 1`] = `
 </h2>
 `;
 
+exports[`A Heading with multiline truncate 1`] = `
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.75rem;
+}
+
+.c0 {
+  text-transform: none;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+<h2
+  className="c0 c1"
+>
+  🥑
+</h2>
+`;
+
 exports[`A Heading with variant 1`] = `
 .c1 {
   border: 0;

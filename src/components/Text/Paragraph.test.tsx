@@ -24,8 +24,12 @@ test('A Paragrapht component weight', () => {
   snapshotTestTextComponentFontWeight(Paragraph)
 })
 
-test('A Paragraph component tuncated', () => {
+test('A Paragraph component truncated', () => {
   assertSnapshot(<Paragraph truncate>Hello</Paragraph>)
+})
+
+test('A Paragraph component with multiline truncate', () => {
+  assertSnapshot(<Paragraph truncateLines={3}>Hello</Paragraph>)
 })
 
 test('A Paragraph component with variant', () => {
