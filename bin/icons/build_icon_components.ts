@@ -1,24 +1,29 @@
-const util = require('util')
-const exec = util.promisify(require('child_process').exec)
-const glob = util.promisify(require('glob'))
-const mkdir = util.promisify(require('fs').mkdir)
-const rimraf = util.promisify(require('rimraf'))
-const writeFile = util.promisify(require('fs').writeFile)
-const path = require('path')
-const ora = require('ora')
+import childProcess from 'child_process'
+import fs from 'fs'
+import glob from 'glob'
+import ora from 'ora'
+import path from 'path'
+import rimraf from 'rimraf'
+import util from 'util'
+const exec = util.promisify(childProcess.exec)
+const globPromise = util.promisify(glob)
+const mkdir = util.promisify(fs.mkdir)
+const rimrafPromise = util.promisify(rimraf)
+const writeFile = util.promisify(fs.writeFile)
 
 /**
  * Constants for directory names, file extensions, etc
  */
 const typescriptDeclarationExtension = 'd.ts'
 const iconGlyphFileExtension = 'jsx'
-const iconSrcPath = path.join(__dirname, '..', '..', 'src', 'icons')
+const iconSrcPath = path.join('src', 'icons')
 const iconBuildDirPath = path.join(iconSrcPath, 'build')
 const iconSVGPath = path.join(iconSrcPath, 'svg')
 const iconGlyphPath = path.join(iconSrcPath, 'build', 'glyphs')
+const iconTemplatePath = path.join('bin', 'icons', 'icon_template.js')
 
-async function getBasenames(globpath, ext) {
-  const filenames = await glob(path.join(globpath, `*.${ext}`))
+async function getBasenames(globpath: string, ext: string) {
+  const filenames = await globPromise(path.join(globpath, `*.${ext}`))
   const basenames = filenames.map(n => path.basename(n, `.${ext}`))
   basenames.sort()
   return basenames
@@ -28,20 +33,24 @@ async function getBasenames(globpath, ext) {
  * Step 0: Clean up prior build.
  */
 async function cleanGlyphsAndComponents() {
-  await rimraf(iconBuildDirPath)
+  await rimrafPromise(iconBuildDirPath)
   await mkdir(iconBuildDirPath)
 }
 
 /**
  * Step 1: convert the SVG to React components using CLI `svgr` command.
  * This by default converts all components to PascalCased filenames.
+ * The --title-prop flag adds a title tag and destructures a title prop (defaulted in icon-template to the filename in Start Case)
  * The --replace-attr-values flag is used to replace fills on exported svg files from Figma so Icon color can be changed
  */
 async function convertSVGToComponent() {
   const result = await exec(
-    `yarn svgr --icon --ext ${iconGlyphFileExtension} --replace-attr-values "#1C2125=currentColor" --out-dir "${iconGlyphPath}" "${iconSVGPath}"`
+    `yarn svgr --title-prop --icon --ext ${iconGlyphFileExtension} \
+    --replace-attr-values "#1C2125=currentColor"  \
+    --template "${iconTemplatePath}" --out-dir "${iconGlyphPath}" "${iconSVGPath}"`
   )
   if (result.stderr) {
+    // tslint:disable-next-line no-console
     console.log(result.stderr)
     process.exit(1)
   }
@@ -63,13 +72,13 @@ export default Icon
         iconGlyphPath,
         `${name}.${typescriptDeclarationExtension}`
       )
-      return await writeFile(declarationFilename, typescriptDeclaration)
+      return writeFile(declarationFilename, typescriptDeclaration)
     })
   )
 }
 
 async function generateGlyphIndexFile() {
-  function generateGlyphFileIndexModule(componentNames) {
+  function generateGlyphFileIndexModule(componentNames: string[]) {
     return (
       componentNames
         .map(name => {
@@ -86,7 +95,7 @@ async function generateGlyphIndexFile() {
 }
 
 async function generateIconNameFile() {
-  function iconNameFile(icons) {
+  function iconNameFile(icons: string[]) {
     const iconNames = icons
       .map(i => {
         return `'${i}'`
@@ -110,7 +119,7 @@ async function generateIconNameFile() {
  * Styleguidist documentation.
  */
 async function generateMarkdownFileForAllIcons() {
-  function styleguidistAllIconsMarkdown(componentNames) {
+  function styleguidistAllIconsMarkdown(componentNames: string[]) {
     const componentIconTags = componentNames
       .map(
         name => `
@@ -179,4 +188,5 @@ async function run() {
   spinner.succeed('Done building icons!')
   spinner.stop()
 }
-run()
+// tslint:disable-next-line no-console
+run().catch(err => console.log(err))

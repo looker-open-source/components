@@ -147,6 +147,9 @@ exports[`MenuItem - current + marker 1`] = `
         viewBox="0 0 24 24"
         width="100%"
       >
+        <title>
+          Home
+        </title>
         <path
           d="M12 5.69l5 4.5V18h-2v-6H9v6H7V10.19l5-4.5zM12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"
           fill="currentColor"
@@ -288,6 +291,9 @@ exports[`MenuItem - current 1`] = `
         viewBox="0 0 24 24"
         width="100%"
       >
+        <title>
+          Home
+        </title>
         <path
           d="M12 5.69l5 4.5V18h-2v-6H9v6H7V10.19l5-4.5zM12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"
           fill="currentColor"
@@ -553,6 +559,9 @@ exports[`MenuItem - icon 1`] = `
         viewBox="0 0 24 24"
         width="100%"
       >
+        <title>
+          Beaker
+        </title>
         <g
           clipPath="url(#Beaker_svg__clip0)"
         >

@@ -126,6 +126,7 @@ exports[`IconButton accepts color 1`] = `
     Test
   </span>
   <div
+    aria-hidden={true}
     className="c4"
   >
     <svg
@@ -134,6 +135,9 @@ exports[`IconButton accepts color 1`] = `
       viewBox="0 0 24 24"
       width="100%"
     >
+      <title>
+        Favorite
+      </title>
       <path
         d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
         fill="currentColor"
@@ -270,6 +274,7 @@ exports[`IconButton accepts events 1`] = `
     Test
   </span>
   <div
+    aria-hidden={true}
     className="c4"
   >
     <svg
@@ -278,6 +283,9 @@ exports[`IconButton accepts events 1`] = `
       viewBox="0 0 24 24"
       width="100%"
     >
+      <title>
+        Favorite
+      </title>
       <path
         d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
         fill="currentColor"
@@ -415,6 +423,7 @@ exports[`IconButton accepts events 2`] = `
     Test
   </span>
   <div
+    aria-hidden={true}
     className="c4"
   >
     <svg
@@ -423,6 +432,9 @@ exports[`IconButton accepts events 2`] = `
       viewBox="0 0 24 24"
       width="100%"
     >
+      <title>
+        Favorite
+      </title>
       <path
         d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
         fill="currentColor"
@@ -559,6 +571,7 @@ exports[`IconButton allows for ARIA attributes 1`] = `
     Test
   </span>
   <div
+    aria-hidden={true}
     className="c4"
   >
     <svg
@@ -567,6 +580,9 @@ exports[`IconButton allows for ARIA attributes 1`] = `
       viewBox="0 0 24 24"
       width="100%"
     >
+      <title>
+        Favorite
+      </title>
       <path
         d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
         fill="currentColor"
@@ -702,6 +718,7 @@ exports[`IconButton default 1`] = `
     Test
   </span>
   <div
+    aria-hidden={true}
     className="c4"
   >
     <svg
@@ -710,6 +727,9 @@ exports[`IconButton default 1`] = `
       viewBox="0 0 24 24"
       width="100%"
     >
+      <title>
+        Favorite
+      </title>
       <path
         d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
         fill="currentColor"
@@ -845,6 +865,7 @@ exports[`IconButton outline 1`] = `
     Test
   </span>
   <div
+    aria-hidden={true}
     className="c4"
   >
     <svg
@@ -853,6 +874,9 @@ exports[`IconButton outline 1`] = `
       viewBox="0 0 24 24"
       width="100%"
     >
+      <title>
+        Favorite
+      </title>
       <path
         d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
         fill="currentColor"
@@ -988,6 +1012,7 @@ exports[`IconButton resized 1`] = `
     Test
   </span>
   <div
+    aria-hidden={true}
     className="c4"
   >
     <svg
@@ -996,6 +1021,9 @@ exports[`IconButton resized 1`] = `
       viewBox="0 0 24 24"
       width="100%"
     >
+      <title>
+        Favorite
+      </title>
       <path
         d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
         fill="currentColor"

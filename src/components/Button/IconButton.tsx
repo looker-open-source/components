@@ -78,7 +78,11 @@ const InternalIconButton: React.FC<IconButtonProps> = ({
     {...boxProps}
   >
     <VisuallyHidden is="span">{label}</VisuallyHidden>
-    <Icon name={icon} size={iconSizeHelper(size || 'xsmall')} />
+    <Icon
+      name={icon}
+      size={iconSizeHelper(size || 'xsmall')}
+      aria-hidden={true}
+    />
   </Button>
 )
 

@@ -818,6 +818,9 @@ exports[`MenuGroup - menu customization 1`] = `
             viewBox="0 0 24 24"
             width="100%"
           >
+            <title>
+              Logo Rings
+            </title>
             <g
               clipPath="url(#Logo_Rings_svg__clip0)"
               fill="currentColor"
@@ -863,6 +866,9 @@ exports[`MenuGroup - menu customization 1`] = `
             viewBox="0 0 24 24"
             width="100%"
           >
+            <title>
+              Validate
+            </title>
             <path
               d="M11.749.09L2 4.423v6.499c0 6.01 4.16 11.633 9.749 12.998 5.589-1.365 9.749-6.986 9.749-12.998v-6.5L11.749.09zM9.582 17.42l-4.333-4.333 1.527-1.527 2.805 2.794 7.138-7.138 1.527 1.538-8.666 8.665h.002z"
               fill="currentColor"
@@ -888,6 +894,9 @@ exports[`MenuGroup - menu customization 1`] = `
             viewBox="0 0 24 24"
             width="100%"
           >
+            <title>
+              Chart Pie
+            </title>
             <path
               d="M11 2v20c-5.07-.5-9-4.79-9-10s3.93-9.5 9-10zm2.03 0v8.99H22c-.47-4.74-4.24-8.52-8.97-8.99zm0 11.01V22c4.74-.47 8.5-4.25 8.97-8.99h-8.97z"
               fill="currentColor"
