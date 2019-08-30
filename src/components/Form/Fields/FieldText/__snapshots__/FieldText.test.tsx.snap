@@ -9,6 +9,8 @@ exports[`A FieldText 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -27,6 +29,8 @@ exports[`A FieldText 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   color: #262D33;
   font-size: 0.875rem;
   font-weight: 600;
@@ -41,6 +45,8 @@ exports[`A FieldText 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c3 {
@@ -51,6 +57,8 @@ exports[`A FieldText 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   border: solid 1px;
   border-radius: 0.25rem;
   border-color: #C1C6CC;
@@ -97,6 +105,8 @@ exports[`A FieldText with an error validation aligned to the left 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -115,6 +125,8 @@ exports[`A FieldText with an error validation aligned to the left 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   color: #262D33;
   font-size: 0.875rem;
   font-weight: 600;
@@ -129,6 +141,8 @@ exports[`A FieldText with an error validation aligned to the left 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c4 {
@@ -139,6 +153,8 @@ exports[`A FieldText with an error validation aligned to the left 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   border: solid 1px;
   border-radius: 0.25rem;
   border-color: #C1C6CC;
@@ -159,6 +175,8 @@ exports[`A FieldText with an error validation aligned to the left 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   color: #990F14;
   font-size: 0.75rem;
   margin-right: 0.5rem;
@@ -177,6 +195,8 @@ exports[`A FieldText with an error validation aligned to the left 1`] = `
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
+  -webkit-animation: none;
+  animation: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -231,6 +251,8 @@ exports[`A FieldText with an error validation aligned to the right 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -249,6 +271,8 @@ exports[`A FieldText with an error validation aligned to the right 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   color: #262D33;
   font-size: 0.875rem;
   font-weight: 600;
@@ -263,6 +287,8 @@ exports[`A FieldText with an error validation aligned to the right 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c4 {
@@ -273,6 +299,8 @@ exports[`A FieldText with an error validation aligned to the right 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   border: solid 1px;
   border-radius: 0.25rem;
   border-color: #C1C6CC;
@@ -297,6 +325,8 @@ exports[`A FieldText with an error validation aligned to the right 1`] = `
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
+  -webkit-animation: none;
+  animation: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -315,6 +345,8 @@ exports[`A FieldText with an error validation aligned to the right 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   color: #990F14;
   font-size: 0.75rem;
   margin-left: 0.5rem;
@@ -362,6 +394,8 @@ exports[`A required FieldText 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -380,6 +414,8 @@ exports[`A required FieldText 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   color: #262D33;
   font-size: 0.875rem;
   font-weight: 600;
@@ -394,6 +430,8 @@ exports[`A required FieldText 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c4 {
@@ -404,6 +442,8 @@ exports[`A required FieldText 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   border: solid 1px;
   border-radius: 0.25rem;
   border-color: #C1C6CC;
@@ -462,6 +502,8 @@ exports[`FieldText supports labelWeight 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -480,6 +522,8 @@ exports[`FieldText supports labelWeight 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c3 {
@@ -490,6 +534,8 @@ exports[`FieldText supports labelWeight 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   border: solid 1px;
   border-radius: 0.25rem;
   border-color: #C1C6CC;
@@ -509,6 +555,8 @@ exports[`FieldText supports labelWeight 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   color: #262D33;
   font-size: 0.875rem;
   font-weight: 400;

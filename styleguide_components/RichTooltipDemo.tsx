@@ -58,7 +58,7 @@ export class RichTooltipDemo extends React.Component<{}, RichTooltipDemoState> {
         <RichTooltip placement="top" content={popoverContent}>
           {(eventHandlers, ref) => (
             <Box
-              innerRef={ref}
+              ref={ref}
               bg={color.toString()}
               p="medium"
               borderRadius="4px"

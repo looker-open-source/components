@@ -1,5 +1,6 @@
-import * as React from 'react'
+import React, { FunctionComponent } from 'react'
 import { HotKeys, ObserveKeys } from 'react-hotkeys'
+import styled, { StyledComponent } from 'styled-components'
 import { palette } from '../../../style'
 import { InputSearch, InputSearchProps } from '../../Form/Inputs'
 import { moveFocus } from '../moveFocus'
@@ -11,10 +12,13 @@ export interface MenuSearchProps extends InputSearchProps {
   menuRef?: React.RefObject<HTMLElement>
 }
 
-export const MenuSearch: React.FC<MenuSearchProps> = ({
-  menuRef,
-  ...props
-}) => {
+export type MenuSearchComponentType = FunctionComponent<MenuSearchProps>
+export type StyledMenuSearchComponentType = StyledComponent<
+  MenuSearchComponentType,
+  MenuSearchProps
+>
+
+const InternalMenuSearch: MenuSearchComponentType = ({ menuRef, ...props }) => {
   return (
     <HotKeys
       keyMap={{ MOVE_DOWN: 'down', MOVE_UP: 'up' }}
@@ -38,3 +42,8 @@ export const MenuSearch: React.FC<MenuSearchProps> = ({
     </HotKeys>
   )
 }
+
+/** @component */
+export const MenuSearch: StyledMenuSearchComponentType = styled<
+  MenuSearchComponentType
+>(InternalMenuSearch)``

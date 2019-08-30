@@ -49,7 +49,7 @@ const wikipediaWildebeest = (
     {(eventHandlers, ref) => (
       <Link
         href="https://en.wikipedia.org/wiki/Wildebeest"
-        innerRef={ref}
+        ref={ref}
         {...eventHandlers}
       >
         A Wikipedia article about Wildebeests

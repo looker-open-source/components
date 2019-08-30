@@ -1,27 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ModalFooter with Button 1`] = `
-.c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row-reverse;
-  -ms-flex-direction: row-reverse;
-  flex-direction: row-reverse;
-}
-
 .c3 {
   border: 0;
   box-sizing: border-box;
@@ -30,23 +9,12 @@ exports[`ModalFooter with Button 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-flex-direction: row-reverse;
-  -ms-flex-direction: row-reverse;
-  flex-direction: row-reverse;
-}
-
-.c5 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-animation: none;
+  animation: none;
   border-radius: 0.25rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -60,7 +28,7 @@ exports[`ModalFooter with Button 1`] = `
   padding-bottom: 0rem;
 }
 
-.c4 {
+.c2 {
   font-weight: 600;
   outline: none;
   -webkit-transition: border 80ms;
@@ -74,64 +42,96 @@ exports[`ModalFooter with Button 1`] = `
   color: #64518A;
 }
 
-.c4:focus {
+.c2:focus {
   box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
 }
 
-.c4[disabled] {
+.c2[disabled] {
   cursor: default;
   -webkit-filter: grayscale(0.3);
   filter: grayscale(0.3);
   opacity: 0.25;
 }
 
-.c4[disabled]:hover,
-.c4[disabled]:active,
-.c4[disabled]:focus {
+.c2[disabled]:hover,
+.c2[disabled]:active,
+.c2[disabled]:focus {
   background-color: transparent;
   border-color: transparent;
   color: #64518A;
 }
 
-.c4:hover,
-.c4:focus,
-.c4.hover {
+.c2:hover,
+.c2:focus,
+.c2.hover {
   background: #F3F2FF;
   border-color: #F3F2FF;
   color: #6C43E0;
 }
 
-.c4:active,
-.c4.active {
+.c2:active,
+.c2.active {
   background: #E8E5FF;
   border-color: #E8E5FF;
   color: #6C43E0;
 }
 
 .c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-animation: none;
+  animation: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row-reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
   padding: 1.25rem calc(2rem - 0.5rem);
 }
 
-.c2 {
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
+  -webkit-flex-direction: row-reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.c2 > * {
+.c1 > * {
   margin-right: 0.5rem;
   margin-left: 0.5rem;
 }
 
 <footer
-  className="c0 c1"
+  className="c0"
 >
   <div
-    className="c2 c3"
+    className="c1"
   >
     <button
-      className="c4 c5"
+      className="c2 c3"
       style={
         Object {
           "lineHeight": "34px",
@@ -145,27 +145,6 @@ exports[`ModalFooter with Button 1`] = `
 `;
 
 exports[`ModalFooter with ModalContext 1`] = `
-.c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row-reverse;
-  -ms-flex-direction: row-reverse;
-  flex-direction: row-reverse;
-}
-
 .c3 {
   border: 0;
   box-sizing: border-box;
@@ -174,23 +153,12 @@ exports[`ModalFooter with ModalContext 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-flex-direction: row-reverse;
-  -ms-flex-direction: row-reverse;
-  flex-direction: row-reverse;
-}
-
-.c5 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-animation: none;
+  animation: none;
   border-radius: 0.25rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -204,7 +172,7 @@ exports[`ModalFooter with ModalContext 1`] = `
   padding-bottom: 0rem;
 }
 
-.c7 {
+.c5 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -217,6 +185,8 @@ exports[`ModalFooter with ModalContext 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-animation: none;
+  animation: none;
   border-radius: 0.25rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -230,7 +200,7 @@ exports[`ModalFooter with ModalContext 1`] = `
   padding-bottom: 0rem;
 }
 
-.c4 {
+.c2 {
   font-weight: 600;
   outline: none;
   -webkit-transition: border 80ms;
@@ -244,41 +214,41 @@ exports[`ModalFooter with ModalContext 1`] = `
   color: #64518A;
 }
 
-.c4:focus {
+.c2:focus {
   box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
 }
 
-.c4[disabled] {
+.c2[disabled] {
   cursor: default;
   -webkit-filter: grayscale(0.3);
   filter: grayscale(0.3);
   opacity: 0.25;
 }
 
-.c4[disabled]:hover,
-.c4[disabled]:active,
-.c4[disabled]:focus {
+.c2[disabled]:hover,
+.c2[disabled]:active,
+.c2[disabled]:focus {
   background-color: transparent;
   border-color: transparent;
   color: #64518A;
 }
 
-.c4:hover,
-.c4:focus,
-.c4.hover {
+.c2:hover,
+.c2:focus,
+.c2.hover {
   background: #F3F2FF;
   border-color: #F3F2FF;
   color: #6C43E0;
 }
 
-.c4:active,
-.c4.active {
+.c2:active,
+.c2.active {
   background: #E8E5FF;
   border-color: #E8E5FF;
   color: #6C43E0;
 }
 
-.c6 {
+.c4 {
   font-weight: 600;
   outline: none;
   -webkit-transition: border 80ms;
@@ -292,61 +262,93 @@ exports[`ModalFooter with ModalContext 1`] = `
   color: #FFFFFF;
 }
 
-.c6:focus {
+.c4:focus {
   box-shadow: 0 0 0 0.15rem rgba(204,31,54,0.25);
 }
 
-.c6[disabled] {
+.c4[disabled] {
   cursor: default;
   -webkit-filter: grayscale(0.3);
   filter: grayscale(0.3);
   opacity: 0.25;
 }
 
-.c6[disabled]:hover,
-.c6[disabled]:active,
-.c6[disabled]:focus {
+.c4[disabled]:hover,
+.c4[disabled]:active,
+.c4[disabled]:focus {
   background-color: #CC1F36;
   border-color: #C1C6CC;
 }
 
-.c6:hover,
-.c6:focus,
-.c6.hover {
+.c4:hover,
+.c4:focus,
+.c4.hover {
   background: #B2121F;
   border-color: #B2121F;
 }
 
-.c6:active,
-.c6.active {
+.c4:active,
+.c4.active {
   background: #990F14;
   border-color: #990F14;
 }
 
 .c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-animation: none;
+  animation: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row-reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
   padding: 1.25rem calc(2rem - 0.5rem);
 }
 
-.c2 {
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
+  -webkit-flex-direction: row-reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.c2 > * {
+.c1 > * {
   margin-right: 0.5rem;
   margin-left: 0.5rem;
 }
 
 <footer
-  className="c0 c1"
+  className="c0"
 >
   <div
-    className="c2 c3"
+    className="c1"
   >
     <button
-      className="c4 c5"
+      className="c2 c3"
       style={
         Object {
           "lineHeight": "34px",
@@ -356,7 +358,7 @@ exports[`ModalFooter with ModalContext 1`] = `
       Cancel
     </button>
     <button
-      className="c6 c7"
+      className="c4 c5"
       onClick={[Function]}
       style={
         Object {

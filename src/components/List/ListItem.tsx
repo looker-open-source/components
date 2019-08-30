@@ -1,17 +1,22 @@
-import * as React from 'react'
-import { styled } from '../../style'
+import React, { FunctionComponent, Ref } from 'react'
+import styled, { StyledComponent } from 'styled-components'
 import { Box, BoxProps } from '../Box'
 
 export type ListItemProps = BoxProps<HTMLLIElement>
+type ComponentType = FunctionComponent<ListItemProps>
+type StyledComponentType = StyledComponent<ComponentType, ListItemProps>
 
-const InternalListItem: React.FC<ListItemProps> = props => (
+const InternalListItem: ComponentType = props => (
   <Box is="li" mb="xxsmall" {...props}>
     {props.children}
   </Box>
 )
 
-const ListItemFactory = React.forwardRef((props: ListItemProps, ref) => (
-  <InternalListItem innerRef={ref} {...props} />
-))
+const ListItemFactory = React.forwardRef<StyledComponentType, ListItemProps>(
+  (props: ListItemProps, ref: Ref<StyledComponentType>) => (
+    <InternalListItem ref={ref} {...props} />
+  )
+)
 
-export const ListItem = styled(ListItemFactory)``
+/** @component */
+export const ListItem = styled<ComponentType>(ListItemFactory)``

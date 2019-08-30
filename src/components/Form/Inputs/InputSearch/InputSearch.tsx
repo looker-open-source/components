@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { styled } from '../../../../style'
+import React, { FunctionComponent, useState } from 'react'
+import styled, { StyledComponent } from 'styled-components'
 import { Box, BoxProps } from '../../../Box'
 import {
   CustomizableInputTextAttributes,
@@ -25,13 +25,18 @@ export interface InputSearchProps
   summary?: string
 }
 
-const InternalSearchFactory: React.FC<InputSearchProps> = ({
+export type InputSearchComponentType = FunctionComponent<InputSearchProps>
+export type StyledInputSearchComponentType = StyledComponent<
+  InputSearchComponentType,
+  InputSearchProps
+>
+
+const InternalSearchFactory: InputSearchComponentType = ({
   hideControls = false,
   summary,
   onChange,
   value = '',
   width = '100%',
-
   border,
   borderTop,
   borderBottom,
@@ -85,16 +90,10 @@ const InternalSearchFactory: React.FC<InputSearchProps> = ({
   )
 }
 
-const InputSearchFactory = React.forwardRef((props: InputSearchProps, ref) => {
-  return (
-    <InternalSearchFactory
-      innerRef={ref as React.RefObject<HTMLElement>}
-      {...props}
-    />
-  )
-})
-
-export const InputSearch = styled<InputSearchProps>(InputSearchFactory)``
+/** @component */
+export const InputSearch: StyledInputSearchComponentType = styled<
+  InputSearchComponentType
+>(InternalSearchFactory)``
 
 const InputSearchLayout = styled(Box)`
   &:focus-within {

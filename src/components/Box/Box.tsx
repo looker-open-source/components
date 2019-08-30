@@ -1,7 +1,13 @@
-import tag from 'clean-tag'
+import Tag from 'clean-tag'
 import { UserSelectProperty } from 'csstype'
-import * as React from 'react'
-import { Styles } from 'styled-components'
+import omit from 'lodash/omit'
+import React, { FunctionComponent, Ref } from 'react'
+import styled, {
+  css,
+  CSSObject,
+  FlattenSimpleInterpolation,
+  StyledComponent,
+} from 'styled-components'
 import {
   alignContent,
   AlignContentProps,
@@ -85,18 +91,14 @@ import {
   ZIndexProps,
 } from 'styled-system'
 import {
-  css,
   LensFontSizeProps,
   LensFontWeightProps,
   LensLineHeightProps,
   LensSpaceProps,
   reset,
-  styled,
 } from '../../style'
 import { Omit } from '../../types'
 import { cursor, CursorProps } from './style_utilities'
-
-const Tag = tag
 
 export interface BoxFlexProps
   extends AlignContentProps,
@@ -114,7 +116,14 @@ export interface BoxFlexItemProps
 
 export type StyledSystemCompatibleHTMLProps<T> = Omit<
   React.HTMLProps<T>,
-  'width' | 'color' | 'height' | 'is' | 'fontSize' | 'fontWeight' | 'size'
+  | 'width'
+  | 'color'
+  | 'height'
+  | 'is'
+  | 'fontSize'
+  | 'fontWeight'
+  | 'size'
+  | 'as'
 >
 
 export interface BoxBaseProps<T>
@@ -154,7 +163,8 @@ export interface BoxBaseProps<T>
     WidthProps,
     ZIndexProps {
   className?: string
-  is?: string | React.ReactNode
+  animation?: FlattenSimpleInterpolation
+  is?: string | JSX.Element
   ref?: React.Ref<any>
   style?: React.CSSProperties
 
@@ -164,21 +174,21 @@ export interface BoxBaseProps<T>
    * [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Properties_Reference)
    * @example <Box hoverStyle={{border: '1px solid black'}}/>
    */
-  hoverStyle?: React.CSSProperties
+  hoverStyle?: CSSObject
   /**
    * Styling for :focus pseudo class.
    *
    * [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Properties_Reference)
    * @example <Box focusStyle={{border: '1px solid black'}}/>
    */
-  focusStyle?: React.CSSProperties
+  focusStyle?: CSSObject
   /**
    * Styling for :active pseudo class.
    *
    * [MDN Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Properties_Reference)
    * @example <Box activeStyle={{border: '1px solid black'}}/>
    */
-  activeStyle?: React.CSSProperties
+  activeStyle?: CSSObject
   /**
    * Property to set user-select CSS property
    *
@@ -197,12 +207,15 @@ export interface BoxProps<T>
 export type BoxBasePropsWithout<T, Keys> = Omit<BoxBaseProps<T>, Keys>
 export type BoxPropsWithout<T, Keys> = Omit<BoxProps<T>, Keys>
 
+type ComponentType = FunctionComponent<BoxProps<HTMLElement>>
+type StyledComponentType = StyledComponent<ComponentType, BoxProps<HTMLElement>>
+
 const pseudoClassHover = (props: BoxProps<HTMLElement>) => {
   return (
     props.hoverStyle &&
     css`
       :hover {
-        ${props.hoverStyle as Styles};
+        ${props.hoverStyle};
       }
     `
   )
@@ -213,7 +226,7 @@ const pseudoClassFocus = (props: BoxProps<HTMLElement>) => {
     props.focusStyle &&
     css`
       :focus {
-        ${props.focusStyle as Styles};
+        ${props.focusStyle};
       }
     `
   )
@@ -224,7 +237,7 @@ const pseudoClassActive = (props: BoxProps<HTMLElement>) => {
     props.activeStyle &&
     css`
       :active {
-        ${props.activeStyle as Styles};
+        ${props.activeStyle};
       }
     `
   )
@@ -250,30 +263,33 @@ const cursorPointerOnClick = (props: BoxProps<HTMLElement>) =>
 // Get theme from ThemeProvider
 //
 
-const BoxFactory = React.forwardRef((props: BoxProps<HTMLElement>, ref) => {
-  const {
-    activeStyle,
-    focusStyle,
-    hoverStyle,
-    userSelect,
-    lineHeight,
-    fontWeight,
-    fontSize,
-    innerRef,
-    ...otherProps
-  } = props
-  return (
-    <Tag
-      lineHeight={lineHeight}
-      fontSize={fontSize}
-      fontWeight={fontWeight}
-      ref={ref || innerRef}
-      {...otherProps}
-    />
-  )
-})
+const BoxFactory = React.forwardRef<StyledComponentType, BoxProps<HTMLElement>>(
+  (props: BoxProps<HTMLElement>, ref: Ref<StyledComponentType>) => {
+    const {
+      activeStyle,
+      focusStyle,
+      hoverStyle,
+      userSelect,
+      lineHeight,
+      fontWeight,
+      fontSize,
+      innerRef,
+      ...otherProps
+    } = props
+    return (
+      <Tag
+        lineHeight={lineHeight}
+        fontSize={fontSize}
+        fontWeight={fontWeight}
+        ref={ref || innerRef}
+        {...omit(otherProps, ['animation'])}
+      />
+    )
+  }
+)
 
-export const Box = styled<BoxProps<HTMLElement>>(BoxFactory)`
+/** @component */
+export const Box = styled<ComponentType>(BoxFactory)`
   /**
    * Global reset applied to prevent styling on top level tags outside of Lens
    * from interfering with Lens styles.
@@ -308,6 +324,7 @@ export const Box = styled<BoxProps<HTMLElement>>(BoxFactory)`
   ${alignContent};
   ${alignItems};
   ${alignSelf};
+  animation: ${(props: BoxProps<HTMLElement>) => props.animation || 'none'};
   ${border};
   ${borderRadius};
   ${borderRight};

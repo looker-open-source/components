@@ -1,8 +1,8 @@
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
-import * as React from 'react'
+import React, { Component, FunctionComponent } from 'react'
 import { createPortal } from 'react-dom'
-import { styled } from '../../style'
-import { Box } from '../Box'
+import styled, { StyledComponent } from 'styled-components'
+import { Box, BoxProps } from '../Box'
 import { CustomizableModalAttributes } from './Modal'
 import { getModalRoot } from './modalRoot'
 
@@ -10,7 +10,7 @@ export interface ModalPortalProps {
   portalRef?: React.RefObject<HTMLElement>
 }
 
-export class ModalPortal extends React.Component<ModalPortalProps> {
+export class ModalPortal extends Component<ModalPortalProps> {
   private el: HTMLElement
   private modalRoot?: HTMLElement
 
@@ -36,7 +36,7 @@ export class ModalPortal extends React.Component<ModalPortalProps> {
     this.modalRoot.removeChild(this.el)
   }
 
-  public render() {
+  public render(): any {
     const content = (
       <InvisiBox
         position="fixed"
@@ -44,7 +44,7 @@ export class ModalPortal extends React.Component<ModalPortalProps> {
         bottom="0"
         left="0"
         right="0"
-        innerRef={this.props.portalRef}
+        ref={this.props.portalRef}
         display="flex"
         justifyContent="center"
         alignItems="center"
@@ -65,7 +65,16 @@ const hasParentMatchingSelector = (target: HTMLElement, selector: string) => {
   )
 }
 
-const InvisiBox = styled(Box)`
+type InvisiBoxProps = BoxProps<HTMLElement>
+type InvisiBoxComponentType = FunctionComponent<InvisiBoxProps>
+type StyledInvisiBoxComponentType = StyledComponent<
+  InvisiBoxComponentType,
+  InvisiBoxProps
+>
+
+const InvisiBox: StyledInvisiBoxComponentType = styled<InvisiBoxComponentType>(
+  Box
+)`
   * {
     pointer-events: auto;
   }

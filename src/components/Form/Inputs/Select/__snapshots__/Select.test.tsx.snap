@@ -9,6 +9,8 @@ exports[`Select default 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   border: solid 1px;
   border-radius: 0.25rem;
   border-color: #C1C6CC;
@@ -54,6 +56,8 @@ exports[`Select should accept disabled 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   border: solid 1px;
   border-radius: 0.25rem;
   border-color: #C1C6CC;
@@ -100,6 +104,8 @@ exports[`Select should accept empty options array 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   border: solid 1px;
   border-radius: 0.25rem;
   border-color: #C1C6CC;
@@ -145,6 +151,8 @@ exports[`Select should accept readOnly 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   border: solid 1px;
   border-radius: 0.25rem;
   border-color: #C1C6CC;
@@ -191,6 +199,8 @@ exports[`Select should accept required 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   border: solid 1px;
   border-radius: 0.25rem;
   border-color: #C1C6CC;
@@ -237,6 +247,8 @@ exports[`Select with a placeholder 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   border: solid 1px;
   border-radius: 0.25rem;
   border-color: #C1C6CC;
@@ -284,6 +296,8 @@ exports[`Select with a value 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   border: solid 1px;
   border-radius: 0.25rem;
   border-color: #C1C6CC;
@@ -345,6 +359,8 @@ exports[`Select with an error validation 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   border: solid 1px;
   border-radius: 0.25rem;
   border-color: #C1C6CC;
@@ -390,6 +406,8 @@ exports[`Select with aria-describedby 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   border: solid 1px;
   border-radius: 0.25rem;
   border-color: #C1C6CC;
@@ -436,6 +454,8 @@ exports[`Select with name and id 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   border: solid 1px;
   border-radius: 0.25rem;
   border-color: #C1C6CC;

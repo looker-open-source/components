@@ -9,6 +9,8 @@ exports[`A Legend 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   color: #262D33;
   font-size: 2.25rem;
   font-weight: 300;

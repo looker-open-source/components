@@ -84,6 +84,8 @@ In preferences `(Cmd + ,)` find "Languages & Frameworks" > Typescript. Ensure yo
 
 In preferences `(Cmd + ,)` find "Languages & Frameworks" > Typescript > TSLint. Ensure your configuration looks like the following screenshot:
 
+<!-- TODO: what is the correct production path for these images? -->
+
 ![Configure TSLint](img/tslint_config.jpg)
 
 ##### Running Tests
@@ -94,17 +96,20 @@ Intellij should automatically detect Jest tests and provide inline test running 
 
 1. Create a new test configuration by selecting "Edit Configurations...":
 
-    ![New Test Configuration](img/intellij_test_configuration.jpg)
+   ![New Test Configuration](img/intellij_test_configuration.jpg)
+
 1. Click the `+` icon in the top left and choose "Jest":
 
-    ![Add Jest Configuration](img/intellij_test_configuration_add.jpg)
+   ![Add Jest Configuration](img/intellij_test_configuration_add.jpg)
+
 1. Name the configuration something like "All tests" and click "OK".
 1. Click the play button (or debug button) to run all the tests:
 
-    ![Run all tests](img/intellij_run_all_tests.jpg)
+   ![Run all tests](img/intellij_run_all_tests.jpg)
+
 1. Your output should look something like:
 
-    ![Run output](img/intellij_run_all_tests_output.jpg)
+   ![Run output](img/intellij_run_all_tests_output.jpg)
 
 ###### Run an individual test
 

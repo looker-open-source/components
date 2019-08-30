@@ -1,13 +1,20 @@
-import * as React from 'react'
+import React, { FunctionComponent, Ref } from 'react'
+import styled, { StyledComponent } from 'styled-components'
 import uuid from 'uuid/v4'
-import { styled } from '../../../../style'
-import { withForm } from '../../Form'
+import { ComponentWithForm, withForm } from '../../Form'
 import { ToggleSwitch, ToggleSwitchProps } from '../../Inputs/ToggleSwitch'
 import { Field, FieldProps } from '../Field'
 
-interface FieldToggleSwitchProps extends FieldProps, ToggleSwitchProps {}
+export interface FieldToggleSwitchProps extends FieldProps, ToggleSwitchProps {}
+type ComponentType = FunctionComponent<FieldToggleSwitchProps>
+type StyledComponentType = StyledComponent<
+  ComponentType,
+  FieldToggleSwitchProps
+>
 
-const InternalFieldToggleSwitch = (props: FieldToggleSwitchProps) => {
+const InternalFieldToggleSwitch: ComponentType = (
+  props: FieldToggleSwitchProps
+) => {
   const {
     alignLabel,
     alignValidationMessage,
@@ -32,10 +39,17 @@ const InternalFieldToggleSwitch = (props: FieldToggleSwitchProps) => {
   )
 }
 
-const FieldToggleSwitchFactory = React.forwardRef(
-  (props: FieldToggleSwitchProps, ref) => (
-    <InternalFieldToggleSwitch innerRef={ref} {...props} />
-  )
-)
+const FieldToggleSwitchFactory = React.forwardRef<
+  StyledComponentType,
+  FieldToggleSwitchProps
+>((props: FieldToggleSwitchProps, ref: Ref<StyledComponentType>) => (
+  <InternalFieldToggleSwitch ref={ref} {...props} />
+))
 
-export const FieldToggleSwitch = styled(withForm(FieldToggleSwitchFactory))``
+/** @component */
+export const FieldToggleSwitch: StyledComponent<
+  ComponentWithForm<FieldToggleSwitchProps>,
+  FieldToggleSwitchProps
+> = styled<ComponentWithForm<FieldToggleSwitchProps>>(
+  withForm<FieldToggleSwitchProps>(FieldToggleSwitchFactory)
+)``

@@ -5,7 +5,7 @@ import { Tooltip } from '../src/components/Tooltip'
 export const TooltipDemo: React.FC<{}> = () => (
   <Tooltip content="More things you should know...">
     {(eventHandlers, ref) => (
-      <Button innerRef={ref} {...eventHandlers}>
+      <Button ref={ref} {...eventHandlers}>
         Hover for Tooltip
       </Button>
     )}

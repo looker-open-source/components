@@ -9,6 +9,8 @@ exports[`A <TableHeaderCell> should render 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   color: #939BA5;
   font-size: 0.75rem;
   font-weight: 600;

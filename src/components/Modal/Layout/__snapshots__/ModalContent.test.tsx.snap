@@ -9,13 +9,14 @@ exports[`ModalContent - no overflow 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-flex: 8;
-  -ms-flex: 8;
-  flex: 8;
-  overflow: auto;
+  -webkit-animation: none;
+  animation: none;
+  padding: 1.25rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
-.c2 {
+.c0 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -23,9 +24,12 @@ exports[`ModalContent - no overflow 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  padding: 1.25rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
+  -webkit-animation: none;
+  animation: none;
+  -webkit-flex: 8;
+  -ms-flex: 8;
+  flex: 8;
+  overflow: auto;
 }
 
 .c0.overflow {
@@ -33,10 +37,10 @@ exports[`ModalContent - no overflow 1`] = `
 }
 
 <div
-  className="undefined false c0 c1"
+  className="undefined false c0"
 >
   <div
-    className="c2"
+    className="c1"
   >
     Stuff
   </div>
@@ -44,19 +48,6 @@ exports[`ModalContent - no overflow 1`] = `
 `;
 
 exports[`ModalContent - no overflow 2`] = `
-.c2 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  padding: 1.25rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
-}
-
 .c1 {
   border: 0;
   box-sizing: border-box;
@@ -65,14 +56,14 @@ exports[`ModalContent - no overflow 2`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-flex: 8;
-  -ms-flex: 8;
-  flex: 8;
-  height: 3rem;
-  overflow: auto;
+  -webkit-animation: none;
+  animation: none;
+  padding: 1.25rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
-.c3 {
+.c2 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -80,7 +71,25 @@ exports[`ModalContent - no overflow 2`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   height: 4rem;
+}
+
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
+  -webkit-flex: 8;
+  -ms-flex: 8;
+  flex: 8;
+  overflow: auto;
 }
 
 .c0.overflow {
@@ -88,13 +97,13 @@ exports[`ModalContent - no overflow 2`] = `
 }
 
 <div
-  className="undefined false c0 c1"
+  className="undefined false c0"
 >
   <div
-    className="c2"
+    className="c1"
   >
     <div
-      className="c3"
+      className="c2"
     >
       Stuff
     </div>

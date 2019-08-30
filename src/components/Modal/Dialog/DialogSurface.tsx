@@ -1,9 +1,15 @@
-import * as React from 'react'
-import { styled } from '../../../style'
+import React, { FunctionComponent } from 'react'
+import styled, { StyledComponent } from 'styled-components'
 import { CustomizableModalAttributes } from '../Modal'
 import { ModalSurface, ModalSurfaceProps } from '../ModalSurface'
 
-export const DialogSurface: React.FC<ModalSurfaceProps> = ({
+export type DialogSurfaceComponentType = FunctionComponent<ModalSurfaceProps>
+export type StyledDialogSurfaceComponentType = StyledComponent<
+  DialogSurfaceComponentType,
+  ModalSurfaceProps
+>
+
+export const DialogSurface: DialogSurfaceComponentType = ({
   children,
   ...props
 }) => {
@@ -19,7 +25,9 @@ export const DialogSurface: React.FC<ModalSurfaceProps> = ({
   )
 }
 
-const Surface = styled(ModalSurface)`
+const Surface: StyledDialogSurfaceComponentType = styled<
+  DialogSurfaceComponentType
+>(ModalSurface)`
   &.entering,
   &.exiting {
     opacity: 0.01;

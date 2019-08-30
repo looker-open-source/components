@@ -1,6 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Confirmation banner 1`] = `
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
 .c3 {
   border: 0;
   box-sizing: border-box;
@@ -9,18 +23,8 @@ exports[`Confirmation banner 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  font-size: 1rem;
-  line-height: 1.5rem;
-}
-
-.c4 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c0 {
@@ -35,6 +39,8 @@ exports[`Confirmation banner 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-animation: none;
+  animation: none;
   border-radius: 0.25rem;
   background-color: #e0ffe7;
   display: -webkit-box;
@@ -48,11 +54,8 @@ exports[`Confirmation banner 1`] = `
   padding-bottom: 0.5rem;
 }
 
-.c2 {
-  text-transform: none;
-}
-
 .c1 {
+  text-transform: none;
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -70,12 +73,12 @@ exports[`Confirmation banner 1`] = `
   role="status"
 >
   <span
-    className="c1 c2 c3"
+    className="c1 c2"
   >
     
   </span>
   <div
-    className="c4"
+    className="c3"
   >
     Confirmation
   </div>
@@ -83,6 +86,20 @@ exports[`Confirmation banner 1`] = `
 `;
 
 exports[`Dismissable banner 1`] = `
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
 .c4 {
   border: 0;
   box-sizing: border-box;
@@ -91,18 +108,8 @@ exports[`Dismissable banner 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  font-size: 1rem;
-  line-height: 1.5rem;
-}
-
-.c5 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c0 {
@@ -117,6 +124,8 @@ exports[`Dismissable banner 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-animation: none;
+  animation: none;
   border-radius: 0.25rem;
   background-color: #e0f2ff;
   display: -webkit-box;
@@ -142,6 +151,8 @@ exports[`Dismissable banner 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-animation: none;
+  animation: none;
   color: #49a9f2;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -152,7 +163,7 @@ exports[`Dismissable banner 1`] = `
   width: 20px;
 }
 
-.c6 {
+.c5 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -160,11 +171,13 @@ exports[`Dismissable banner 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   background-color: transparent;
   margin-left: auto;
 }
 
-.c8 {
+.c7 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -176,6 +189,8 @@ exports[`Dismissable banner 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-animation: none;
+  animation: none;
   color: #262D33;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -185,22 +200,19 @@ exports[`Dismissable banner 1`] = `
   width: 24px;
 }
 
-.c3 {
-  text-transform: none;
-}
-
-.c7 {
+.c6 {
   opacity: 0.2;
   -webkit-transition: opactiy 100ms cubic-bezier(0.86,0,0.07,1);
   transition: opactiy 100ms cubic-bezier(0.86,0,0.07,1);
   vertical-align: middle;
 }
 
-.c7:hover {
+.c6:hover {
   opacity: 0.4;
 }
 
 .c2 {
+  text-transform: none;
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -236,21 +248,21 @@ exports[`Dismissable banner 1`] = `
     </svg>
   </div>
   <span
-    className="c2 c3 c4"
+    className="c2 c3"
   >
     Info
   </span>
   <div
-    className="c5"
+    className="c4"
   >
     Info!
   </div>
   <button
     aria-hidden={true}
-    className="c6"
+    className="c5"
   >
     <div
-      className="c7 c8"
+      className="c6 c7"
     >
       <svg
         fill="currentColor"
@@ -272,6 +284,20 @@ exports[`Dismissable banner 1`] = `
 `;
 
 exports[`Error banner 1`] = `
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
 .c4 {
   border: 0;
   box-sizing: border-box;
@@ -280,18 +306,8 @@ exports[`Error banner 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  font-size: 1rem;
-  line-height: 1.5rem;
-}
-
-.c5 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c0 {
@@ -306,6 +322,8 @@ exports[`Error banner 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-animation: none;
+  animation: none;
   border-radius: 0.25rem;
   background-color: #FFE5E9;
   display: -webkit-box;
@@ -331,6 +349,8 @@ exports[`Error banner 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-animation: none;
+  animation: none;
   color: #B2121F;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -341,11 +361,8 @@ exports[`Error banner 1`] = `
   width: 20px;
 }
 
-.c3 {
-  text-transform: none;
-}
-
 .c2 {
+  text-transform: none;
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -381,12 +398,12 @@ exports[`Error banner 1`] = `
     </svg>
   </div>
   <span
-    className="c2 c3 c4"
+    className="c2 c3"
   >
     Error
   </span>
   <div
-    className="c5"
+    className="c4"
   >
     Error
   </div>
@@ -394,6 +411,20 @@ exports[`Error banner 1`] = `
 `;
 
 exports[`Info banner 1`] = `
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
 .c4 {
   border: 0;
   box-sizing: border-box;
@@ -402,18 +433,8 @@ exports[`Info banner 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  font-size: 1rem;
-  line-height: 1.5rem;
-}
-
-.c5 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c0 {
@@ -428,6 +449,8 @@ exports[`Info banner 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-animation: none;
+  animation: none;
   border-radius: 0.25rem;
   background-color: #e0f2ff;
   display: -webkit-box;
@@ -453,6 +476,8 @@ exports[`Info banner 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-animation: none;
+  animation: none;
   color: #49a9f2;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -463,11 +488,8 @@ exports[`Info banner 1`] = `
   width: 20px;
 }
 
-.c3 {
-  text-transform: none;
-}
-
 .c2 {
+  text-transform: none;
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -503,12 +525,12 @@ exports[`Info banner 1`] = `
     </svg>
   </div>
   <span
-    className="c2 c3 c4"
+    className="c2 c3"
   >
     Info
   </span>
   <div
-    className="c5"
+    className="c4"
   >
     Info
   </div>
@@ -528,6 +550,8 @@ exports[`Warning banner 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-animation: none;
+  animation: none;
   border-radius: 0.25rem;
   background-color: #FFEBC4;
   display: -webkit-box;
@@ -553,6 +577,8 @@ exports[`Warning banner 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-animation: none;
+  animation: none;
   color: #FFA800;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -563,6 +589,20 @@ exports[`Warning banner 1`] = `
   width: 20px;
 }
 
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
 .c4 {
   border: 0;
   box-sizing: border-box;
@@ -571,25 +611,12 @@ exports[`Warning banner 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  font-size: 1rem;
-  line-height: 1.5rem;
-}
-
-.c5 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-}
-
-.c3 {
-  text-transform: none;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c2 {
+  text-transform: none;
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -625,12 +652,12 @@ exports[`Warning banner 1`] = `
     </svg>
   </div>
   <span
-    className="c2 c3 c4"
+    className="c2 c3"
   >
     Warning
   </span>
   <div
-    className="c5"
+    className="c4"
   >
     Warning
   </div>

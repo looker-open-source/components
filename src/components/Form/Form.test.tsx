@@ -1,11 +1,12 @@
 import { mount } from 'enzyme'
 import 'jest-styled-components'
 import * as React from 'react'
+import { ThemeProvider } from 'styled-components'
 import {
   createWithTheme,
   mountWithTheme,
 } from '../../../test/utils/create_with_theme'
-import { theme, ThemeProvider } from '../../style'
+import { theme } from '../../style'
 import { Button } from '../Button/Button'
 import { FieldText } from './Fields/FieldText/FieldText'
 import { Form } from './Form'

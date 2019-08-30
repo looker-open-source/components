@@ -2,6 +2,7 @@
   "compilerOptions": {
     "declaration": true,
     "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "jsx": "react",
     "lib": ["es6", "es2017.object", "dom"],
     "moduleResolution": "node",

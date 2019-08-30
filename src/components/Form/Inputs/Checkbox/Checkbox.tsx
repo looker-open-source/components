@@ -1,5 +1,6 @@
-import * as React from 'react'
-import { styled } from '../../../../style'
+import omit from 'lodash/omit'
+import React, { FunctionComponent, Ref } from 'react'
+import styled, { StyledComponent } from 'styled-components'
 import { Box, BoxProps } from '../../../Box'
 import { InputProps } from '../InputProps'
 
@@ -10,16 +11,19 @@ export interface CheckboxProps extends BoxProps<HTMLInputElement>, InputProps {
   checked?: boolean
 }
 
-const InternalCheckbox: React.FC<CheckboxProps> = ({
-  validationType,
-  ...props
-}) => {
+type ComponentType = FunctionComponent<CheckboxProps>
+type StyledComponentType = StyledComponent<ComponentType, CheckboxProps>
+
+const InternalCheckbox: ComponentType = props => {
   const type = { type: 'checkbox' }
-  return <Box is="input" {...props} {...type} />
+  return <Box is="input" {...omit(props, ['validationType'])} {...type} />
 }
 
-const CheckboxFactory = React.forwardRef((props: CheckboxProps, ref) => (
-  <InternalCheckbox innerRef={ref} {...props} />
-))
+const CheckboxFactory = React.forwardRef<StyledComponentType, CheckboxProps>(
+  (props: CheckboxProps, ref: Ref<StyledComponentType>) => (
+    <InternalCheckbox ref={ref} {...props} />
+  )
+)
 
-export const Checkbox = styled<CheckboxProps>(CheckboxFactory)``
+/** @component */
+export const Checkbox = styled<ComponentType>(CheckboxFactory)``

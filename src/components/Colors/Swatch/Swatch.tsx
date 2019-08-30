@@ -17,7 +17,7 @@ export interface SwatchProps extends BoxProps<HTMLDivElement> {
   width?: string
 }
 
-export const Swatch: React.FC<SwatchProps> = ({
+const InternalSwatch: React.FC<SwatchProps> = ({
   color,
   width,
   height,
@@ -35,3 +35,9 @@ export const Swatch: React.FC<SwatchProps> = ({
     />
   )
 }
+
+export const Swatch = React.forwardRef<HTMLElement, SwatchProps>(
+  (props: SwatchProps, ref) => {
+    return <InternalSwatch {...props} innerRef={ref} />
+  }
+)

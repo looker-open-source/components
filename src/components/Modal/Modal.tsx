@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { CSSTransition } from 'react-transition-group'
+import { css, CSSObject, FlattenSimpleInterpolation } from 'styled-components'
 import { fadeIn, palette, shadows } from '../../style'
 import { CustomizableAttributes } from '../../types/attributes'
 import { BackdropStyles, ModalBackdrop } from './ModalBackdrop'
@@ -7,7 +8,7 @@ import { ModalContext } from './ModalContext'
 import { ModalPortal } from './ModalPortal'
 
 export interface ModalSurfaceStyleProps {
-  animation?: string
+  animation?: FlattenSimpleInterpolation
   backgroundColor: string
   border: string
   borderColor: string
@@ -22,10 +23,21 @@ export interface CustomizableModalAttributes extends CustomizableAttributes {
   zIndex: number
 }
 
+/*
+ * NOTE: Use longform version of tagged function to prevent stylelint
+ * from parsing and complaining about css`` keyframe interpolation.
+ *
+ * EQUIVALENT: css`${fadeIn} 0.2s linear;`
+ */
+const animationRule = css(
+  (['', ' 0.2s linear;'] as any) as TemplateStringsArray,
+  fadeIn
+)
+
 export const CustomizableModalAttributes: CustomizableModalAttributes = {
   backdrop: { backgroundColor: palette.charcoal200, opacity: 0.6 },
   surface: {
-    animation: `${fadeIn} 0.2s linear`,
+    animation: animationRule,
     backgroundColor: palette.white,
     border: 'none',
     borderColor: 'none',
@@ -78,7 +90,7 @@ export interface ModalInternalProps extends ModalProps {
    * animationState will be null, 'exited', 'entering' or 'exiting' and can be used to set CSS class on Surface
    * element to provide CSS transitions. (See DialogSurface & DrawerSurface for implementation examples)
    */
-  render: (animationState: string) => React.ReactNode
+  render: (animationState: string) => JSX.Element
 
   portalRef?: React.RefObject<HTMLElement>
 }
@@ -105,7 +117,11 @@ export const Modal: React.FC<ModalInternalProps> = ({
               className={state}
               onClick={onClose}
               visible={backdrop === undefined ? true : !!backdrop}
-              style={!!backdrop && backdrop !== true ? backdrop : undefined}
+              style={
+                !!backdrop && backdrop !== true
+                  ? (backdrop as CSSObject)
+                  : undefined
+              }
             />
             {render(state)}
           </ModalPortal>

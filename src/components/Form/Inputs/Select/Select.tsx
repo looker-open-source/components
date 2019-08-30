@@ -1,5 +1,6 @@
-import * as React from 'react'
-import { palette, styled } from '../../../../style'
+import React, { FunctionComponent, Ref } from 'react'
+import styled, { StyledComponent } from 'styled-components'
+import { palette } from '../../../../style'
 import { CustomizableAttributes } from '../../../../types/attributes'
 import { Box, BoxProps } from '../../../Box'
 import { InputProps } from '../InputProps'
@@ -42,7 +43,10 @@ export interface SelectProps extends BoxProps<HTMLSelectElement>, InputProps {
   placeholder?: string
 }
 
-const InternalSelect: React.FC<SelectProps> = ({
+type ComponentType = FunctionComponent<SelectProps>
+type StyledComponentType = StyledComponent<ComponentType, SelectProps>
+
+const InternalSelect: ComponentType = ({
   includeBlank = true,
   options,
   placeholder,
@@ -109,11 +113,14 @@ const indicator = indicatorRaw.replace('#1C2125', palette.charcoal500)
 //  See reference artice for background: https://www.filamentgroup.com/lab/select-css.html
 //  This component will likely be replaced with a React Select powered version
 
-const SelectFactory = React.forwardRef((props: SelectProps, ref) => (
-  <InternalSelect innerRef={ref} {...props} />
-))
+const SelectFactory = React.forwardRef<StyledComponentType, SelectProps>(
+  (props: SelectProps, ref: Ref<StyledComponentType>) => (
+    <InternalSelect ref={ref} {...props} />
+  )
+)
 
-export const Select = styled(SelectFactory)`
+/** @component */
+export const Select = styled<ComponentType>(SelectFactory)`
   appearance: none;
 
   background-image:

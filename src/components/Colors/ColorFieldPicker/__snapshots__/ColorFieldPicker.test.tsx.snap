@@ -11,6 +11,8 @@ exports[`ColorFieldPicker with a label 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -29,6 +31,8 @@ exports[`ColorFieldPicker with a label 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c4 {
@@ -43,6 +47,8 @@ exports[`ColorFieldPicker with a label 1`] = `
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
+  -webkit-animation: none;
+  animation: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -60,6 +66,8 @@ exports[`ColorFieldPicker with a label 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   margin-top: auto;
 }
 
@@ -71,6 +79,8 @@ exports[`ColorFieldPicker with a label 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   border: solid 1px;
   border-radius: 0 0.25rem 0.25rem 0;
   border-color: #C1C6CC;
@@ -94,6 +104,8 @@ exports[`ColorFieldPicker with a label 1`] = `
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
+  -webkit-animation: none;
+  animation: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -112,6 +124,8 @@ exports[`ColorFieldPicker with a label 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   color: #262D33;
   font-size: 0.875rem;
   font-weight: 600;
@@ -128,6 +142,8 @@ exports[`ColorFieldPicker with a label 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   border: 1px solid;
   border-radius: 0.25rem 0 0 0.25rem;
   border-right: 0;
@@ -190,6 +206,8 @@ exports[`ColorFieldPicker with a named color and size values 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -208,6 +226,8 @@ exports[`ColorFieldPicker with a named color and size values 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   color: #262D33;
   font-size: 0.875rem;
   font-weight: 600;
@@ -222,6 +242,8 @@ exports[`ColorFieldPicker with a named color and size values 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c3 {
@@ -236,6 +258,8 @@ exports[`ColorFieldPicker with a named color and size values 1`] = `
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
+  -webkit-animation: none;
+  animation: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -253,6 +277,8 @@ exports[`ColorFieldPicker with a named color and size values 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   margin-top: auto;
 }
 
@@ -264,6 +290,8 @@ exports[`ColorFieldPicker with a named color and size values 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   border: solid 1px;
   border-radius: 0 0.25rem 0.25rem 0;
   border-color: #C1C6CC;
@@ -283,6 +311,8 @@ exports[`ColorFieldPicker with a named color and size values 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   border: 1px solid;
   border-radius: 0.25rem 0 0 0.25rem;
   border-right: 0;
@@ -343,6 +373,8 @@ exports[`ColorFieldPicker with a validation message 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -361,6 +393,8 @@ exports[`ColorFieldPicker with a validation message 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c4 {
@@ -375,6 +409,8 @@ exports[`ColorFieldPicker with a validation message 1`] = `
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
+  -webkit-animation: none;
+  animation: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -392,6 +428,8 @@ exports[`ColorFieldPicker with a validation message 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   margin-top: auto;
 }
 
@@ -407,6 +445,8 @@ exports[`ColorFieldPicker with a validation message 1`] = `
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
+  -webkit-animation: none;
+  animation: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -425,6 +465,8 @@ exports[`ColorFieldPicker with a validation message 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   color: #262D33;
   font-size: 0.875rem;
   font-weight: 600;
@@ -441,6 +483,8 @@ exports[`ColorFieldPicker with a validation message 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   border: 1px solid;
   border-radius: 0.25rem 0 0 0.25rem;
   border-right: 0;
@@ -458,6 +502,8 @@ exports[`ColorFieldPicker with a validation message 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   border: solid 1px;
   border-radius: 0 0.25rem 0.25rem 0;
   border-color: #C1C6CC;
@@ -478,6 +524,8 @@ exports[`ColorFieldPicker with a validation message 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   color: #990F14;
   font-size: 0.75rem;
   margin-right: 0.5rem;
@@ -542,6 +590,8 @@ exports[`ColorFieldPicker with hidden input 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -560,6 +610,8 @@ exports[`ColorFieldPicker with hidden input 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   color: #262D33;
   font-size: 0.875rem;
   font-weight: 600;
@@ -574,6 +626,8 @@ exports[`ColorFieldPicker with hidden input 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c3 {
@@ -588,6 +642,8 @@ exports[`ColorFieldPicker with hidden input 1`] = `
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
+  -webkit-animation: none;
+  animation: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -605,6 +661,8 @@ exports[`ColorFieldPicker with hidden input 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   margin-top: auto;
 }
 
@@ -616,6 +674,8 @@ exports[`ColorFieldPicker with hidden input 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   border: 1px solid;
   border-radius: 0.25rem 0 0 0.25rem;
   border-right: 0;
@@ -633,6 +693,8 @@ exports[`ColorFieldPicker with hidden input 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   border: solid 1px;
   border-radius: 0 0.25rem 0.25rem 0;
   border-color: #C1C6CC;
@@ -694,6 +756,8 @@ exports[`Default ColorFieldPicker 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -712,6 +776,8 @@ exports[`Default ColorFieldPicker 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   color: #262D33;
   font-size: 0.875rem;
   font-weight: 600;
@@ -726,6 +792,8 @@ exports[`Default ColorFieldPicker 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c3 {
@@ -740,6 +808,8 @@ exports[`Default ColorFieldPicker 1`] = `
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
+  -webkit-animation: none;
+  animation: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -757,6 +827,8 @@ exports[`Default ColorFieldPicker 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   margin-top: auto;
 }
 
@@ -768,6 +840,8 @@ exports[`Default ColorFieldPicker 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   border: 1px solid;
   border-radius: 0.25rem 0 0 0.25rem;
   border-right: 0;
@@ -785,6 +859,8 @@ exports[`Default ColorFieldPicker 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   border: solid 1px;
   border-radius: 0 0.25rem 0.25rem 0;
   border-color: #C1C6CC;

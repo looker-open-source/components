@@ -1,8 +1,6 @@
-import FocusTrap from 'focus-trap-react'
-import * as React from 'react'
+import React, { FunctionComponent } from 'react'
 import { HotKeys } from 'react-hotkeys'
-import { Styles } from 'styled-components'
-import { styled } from '../../style'
+import styled, { CSSObject, StyledComponent } from 'styled-components'
 import { Box, BoxProps } from '../Box'
 import { CustomizableModalAttributes } from './Modal'
 import { ModalContext } from './ModalContext'
@@ -12,7 +10,13 @@ export interface ModalSurfaceProps extends BoxProps<HTMLDivElement> {
   animationState?: string
 }
 
-export const ModalSurface: React.FC<ModalSurfaceProps> = ({
+export type ModalSurfaceComponentType = FunctionComponent<ModalSurfaceProps>
+export type StyledModalSurfaceComponentType = StyledComponent<
+  ModalSurfaceComponentType,
+  ModalSurfaceProps
+>
+
+export const ModalSurface: ModalSurfaceComponentType = ({
   anchor,
   style,
   className,
@@ -47,39 +51,36 @@ export const ModalSurface: React.FC<ModalSurfaceProps> = ({
       //
       // display: contents would be another workaround when it gains broader (corrected) support
     >
-      <FocusTrap
-        focusTrapOptions={{
-          clickOutsideDeactivates: true,
-          escapeDeactivates: true,
-        }}
-      >
-        <TransitionTimers
-          bg={CustomizableModalAttributes.surface.backgroundColor}
-          display="flex"
-          className={`surface-overflow ${className}`}
-          flexDirection="column"
-          maxWidth="100%"
-          position="relative"
-          tabIndex={-1}
-          surfaceStyle={style}
-          focusStyle={{ outline: 'none' }}
-          {...props}
-        />
-      </FocusTrap>
+      <TransitionTimers
+        bg={CustomizableModalAttributes.surface.backgroundColor}
+        display="flex"
+        className={`surface-overflow ${className}`}
+        flexDirection="column"
+        maxWidth="100%"
+        position="relative"
+        tabIndex={-1}
+        surfaceStyle={style as CSSObject}
+        focusStyle={{ outline: 'none' }}
+        {...props}
+      />
     </HotKeys>
   )
 }
 
-interface SurfaceInternalProps extends BoxProps<HTMLElement> {
-  surfaceStyle?: React.CSSProperties
+export interface SurfaceInternalProps extends BoxProps<HTMLElement> {
+  surfaceStyle?: CSSObject
 }
 
-const SurfaceFactory = (props: SurfaceInternalProps) => {
+export type InternalSurfaceComponentType = FunctionComponent<
+  SurfaceInternalProps
+>
+
+const SurfaceFactory: InternalSurfaceComponentType = props => {
   const { surfaceStyle, ref, ...boxProps } = props
   return <Box {...boxProps} ref={ref} />
 }
 
-const TransitionTimers = styled(SurfaceFactory)<SurfaceInternalProps>`
+const TransitionTimers = styled<InternalSurfaceComponentType>(SurfaceFactory)`
   /* stylelint-disable */
   box-shadow: ${props => props.theme.shadows[3]};
 
@@ -88,5 +89,5 @@ const TransitionTimers = styled(SurfaceFactory)<SurfaceInternalProps>`
     opacity ${props => props.theme.transitions.durationModerate}
       ${props => props.theme.easings.ease};
 
-  ${props => props.surfaceStyle as Styles};
+  ${props => props.surfaceStyle};
 `

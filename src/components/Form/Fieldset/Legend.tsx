@@ -1,9 +1,12 @@
-import * as React from 'react'
-import { SpacingSizes, styled } from '../../../style'
+import React, { FunctionComponent, Ref } from 'react'
+import styled, { StyledComponent } from 'styled-components'
+import { SpacingSizes } from '../../../style'
 import { CustomizableAttributes } from '../../../types/attributes'
 import { Box, BoxProps } from '../../Box'
 
 export type LegendProps = BoxProps<HTMLLegendElement>
+type ComponentType = FunctionComponent<LegendProps>
+type StyledComponentType = StyledComponent<ComponentType, LegendProps>
 
 const InternalLegend: React.FC<LegendProps> = props => (
   <Box
@@ -16,11 +19,14 @@ const InternalLegend: React.FC<LegendProps> = props => (
   />
 )
 
-const LegendFactory = React.forwardRef((props: LegendProps, ref) => (
-  <InternalLegend innerRef={ref} {...props} />
-))
+const LegendFactory = React.forwardRef<StyledComponentType, LegendProps>(
+  (props: LegendProps, ref: Ref<StyledComponentType>) => (
+    <InternalLegend ref={ref} {...props} />
+  )
+)
 
-export const Legend = styled(LegendFactory)``
+/** @component */
+export const Legend = styled<ComponentType>(LegendFactory)``
 
 export interface CustomizableLegendAttributes extends CustomizableAttributes {
   bottomPadding: SpacingSizes

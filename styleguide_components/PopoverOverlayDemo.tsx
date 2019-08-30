@@ -24,7 +24,7 @@ const menu = (
       detail={
         <Tooltip content="... is delicious" placement="right">
           {(eventHandlers, ref) => (
-            <Box innerRef={ref} {...eventHandlers}>
+            <Box ref={ref} {...eventHandlers}>
               Pizza
             </Box>
           )}
@@ -45,7 +45,7 @@ export const PopoverOverlayDemo: React.FC = () => {
           <Button
             aria-haspopup="true"
             onClick={onClick}
-            innerRef={ref}
+            ref={ref}
             variant="outline"
             iconAfter="ArrowDropDown"
           >

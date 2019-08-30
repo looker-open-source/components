@@ -41,9 +41,9 @@ The `<Radio />` component accepts the `checked` property, which either sets the 
 ```js
 import { Radio } from './Radio'
 ;<>
-  <Radio checked={true} />
+  <Radio checked={true} readOnly />
   <br />
-  <Radio checked={false} />
+  <Radio checked={false} readOnly />
 </>
 ```
 

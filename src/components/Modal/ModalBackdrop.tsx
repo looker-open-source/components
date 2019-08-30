@@ -1,17 +1,23 @@
 import { rgba } from 'polished'
-import * as React from 'react'
-import { Styles } from 'styled-components'
-import { styled } from '../../style'
+import React, { FunctionComponent } from 'react'
+import styled, { CSSObject, StyledComponent } from 'styled-components'
 import { Box, BoxProps } from '../Box'
 import { CustomizableModalAttributes } from './Modal'
 
 export interface ModalBackdropProps extends BoxProps<HTMLElement> {
-  style?: React.CSSProperties
+  style?: CSSObject
   className?: string
   visible?: boolean
+  inlineStyle?: CSSObject
 }
 
-export const ModalBackdrop: React.FC<ModalBackdropProps> = ({
+export type ModalBackdropComponentType = FunctionComponent<ModalBackdropProps>
+export type StyledModalBackdropComponentType = StyledComponent<
+  ModalBackdropComponentType,
+  ModalBackdropProps
+>
+
+export const ModalBackdrop: ModalBackdropComponentType = ({
   className,
   onClick,
   style,
@@ -42,24 +48,24 @@ export const ModalBackdrop: React.FC<ModalBackdropProps> = ({
   )
 }
 
-interface BackdropStylesProps extends ModalBackdropProps {
-  inlineStyle?: React.CSSProperties
-}
-
 //
 // All of this  drama is to not auto-spread `inlineStyle` onto Box and cause React run-time warnings
 //
-const BackdropFactory = (props: BackdropStylesProps) => {
+const BackdropFactory: ModalBackdropComponentType = (
+  props: ModalBackdropProps
+) => {
   const { inlineStyle, ref, ...boxProps } = props
-  return <Box {...boxProps} innerRef={ref} />
+  return <Box {...boxProps} ref={ref} />
 }
 
 // Backdrop styles are applied here (rather than using the inline `style={...}` prop) to ensure that
 // transitions will still apply to backdrop
-const Backdrop = styled(BackdropFactory)`
+const Backdrop: StyledModalBackdropComponentType = styled<
+  ModalBackdropComponentType
+>(BackdropFactory)`
   cursor: default;
   transition: opacity ${props => props.theme.transitions.durationSimple};
-  ${props => props.inlineStyle as Styles};
+  ${props => props.inlineStyle};
 
   &.entering,
   &.exiting {

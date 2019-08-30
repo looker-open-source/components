@@ -1,13 +1,14 @@
 import { TextDecorationProperty } from 'csstype'
-import * as React from 'react'
+import omit from 'lodash/omit'
+import React, { FunctionComponent, Ref } from 'react'
+import styled, { css, StyledComponent } from 'styled-components'
 import {
-  css,
   getTextTransform,
-  styled,
   TextTransforms,
   textVariant,
   TextVariants,
 } from '../../style'
+import { ThemedProps } from '../../types'
 import { Box, BoxPropsWithout } from '../Box'
 
 export type TextAlignments = 'left' | 'center' | 'right'
@@ -31,13 +32,12 @@ export interface TextProps
   wrap?: boolean
 }
 
-const InternalText: React.FC<TextProps> = ({
+type ComponentType = FunctionComponent<TextProps>
+type StyledComponentType = StyledComponent<ComponentType, TextProps>
+
+const InternalText: ComponentType = ({
   is = 'span',
   align,
-  decoration,
-  textTransform,
-  variant,
-  wrap,
   lineHeight,
   fontSize = 'medium',
   fontWeight,
@@ -50,22 +50,25 @@ const InternalText: React.FC<TextProps> = ({
       fontWeight={fontWeight}
       lineHeight={lineHeight || fontSize}
       textAlign={align}
-      {...props}
+      {...omit(props, ['decoration', 'textTransform', 'variant', 'wrap'])}
     >
       {props.children}
     </Box>
   )
 }
 
-const TextFactory = React.forwardRef((props: TextProps, ref) => (
-  <InternalText innerRef={ref} {...props} />
-))
+const TextFactory = React.forwardRef<StyledComponentType, TextProps>(
+  (props: TextProps, ref: Ref<StyledComponentType>) => (
+    <InternalText ref={ref} {...props} />
+  )
+)
 
-export const Text = styled<TextProps>(TextFactory)`
-  text-decoration: ${props => props.decoration};
-  ${props => getTextTransform(props.textTransform)};
-  ${props => getWrap(props.wrap || false)};
-  ${props => textVariant(props.theme, props.variant)};
+/** @component */
+export const Text = styled<ComponentType>(TextFactory)`
+  text-decoration: ${(props: ThemedProps<TextProps>) => props.decoration};
+  ${(props: ThemedProps<TextProps>) => getTextTransform(props.textTransform)};
+  ${(props: ThemedProps<TextProps>) => getWrap(props.wrap || false)};
+  ${(props: ThemedProps<TextProps>) => textVariant(props.theme, props.variant)};
 `
 
 const getWrap = (doWrap: boolean) =>

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`InputSearch default 1`] = `
-.c1 {
+.c2 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -9,30 +9,8 @@ exports[`InputSearch default 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  border: solid 1px;
-  border-radius: 0.25rem;
-  border-color: #C1C6CC;
-  background-color: white;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  position: relative;
-  width: 100%;
-}
-
-.c3 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   border: none;
   border-radius: 0.25rem;
   border-color: #C1C6CC;
@@ -45,8 +23,34 @@ exports[`InputSearch default 1`] = `
   width: 100%;
 }
 
-.c3:focus {
+.c2:focus {
   outline: none;
+}
+
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-animation: none;
+  animation: none;
+  border: solid 1px;
+  border-radius: 0.25rem;
+  border-color: #C1C6CC;
+  background-color: white;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  width: 100%;
 }
 
 .c0:focus-within {
@@ -54,7 +58,7 @@ exports[`InputSearch default 1`] = `
   outline: 5px auto -webkit-focus-ring-color;
 }
 
-.c0 .c2 {
+.c0 .c1 {
   border: none;
   width: 100%;
   -webkit-appearance: none;
@@ -62,20 +66,20 @@ exports[`InputSearch default 1`] = `
   appearance: none;
 }
 
-.c0 .c2::-webkit-search-decoration,
-.c0 .c2::-webkit-search-cancel-button,
-.c0 .c2::-webkit-search-results-button,
-.c0 .c2::-webkit-search-results-decoration {
+.c0 .c1::-webkit-search-decoration,
+.c0 .c1::-webkit-search-cancel-button,
+.c0 .c1::-webkit-search-results-button,
+.c0 .c1::-webkit-search-results-decoration {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }
 
 <div
-  className="c0 c1"
+  className="c0"
 >
   <input
-    className="c2 c3"
+    className="c1 c2"
     onChange={[Function]}
     type="search"
     value=""

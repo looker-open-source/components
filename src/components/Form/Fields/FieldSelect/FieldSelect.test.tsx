@@ -1,11 +1,13 @@
 import { mount, render } from 'enzyme'
 import * as React from 'react'
+import { ThemeProvider } from 'styled-components'
+
 import {
   createWithTheme,
   mountWithTheme,
 } from '../../../../../test/utils/create_with_theme'
 import { assertSnapshot } from '../../../../../test/utils/snapshot'
-import { theme, ThemeProvider } from '../../../../style'
+import { theme } from '../../../../style'
 import { Label } from '../../Label/Label'
 import { FieldSelect } from './FieldSelect'
 

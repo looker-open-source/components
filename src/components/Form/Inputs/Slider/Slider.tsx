@@ -1,5 +1,6 @@
-import * as React from 'react'
-import { styled } from '../../../../style'
+import omit from 'lodash/omit'
+import React, { FunctionComponent, Ref } from 'react'
+import styled, { StyledComponent } from 'styled-components'
 import { Box, BoxProps } from '../../../Box'
 import { InputProps } from '../InputProps'
 
@@ -22,15 +23,18 @@ export interface SliderProps extends InputProps, BoxProps<HTMLInputElement> {
   value?: number
 }
 
-const InternalSlider: React.FC<SliderProps> = ({
-  validationType,
-  ...props
-}) => {
-  return <Box is="input" type="range" {...props} />
+type ComponentType = FunctionComponent<SliderProps>
+type StyledComponentType = StyledComponent<ComponentType, SliderProps>
+
+const InternalSlider: React.FC<SliderProps> = props => {
+  return <Box is="input" type="range" {...omit(props, ['validationType'])} />
 }
 
-const SliderFactory = React.forwardRef((props: SliderProps, ref) => (
-  <InternalSlider innerRef={ref} {...props} />
-))
+const SliderFactory = React.forwardRef<StyledComponentType, SliderProps>(
+  (props: SliderProps, ref: Ref<StyledComponentType>) => (
+    <InternalSlider ref={ref} {...props} />
+  )
+)
 
-export const Slider = styled<SliderProps>(SliderFactory)``
+/** @component */
+export const Slider = styled<ComponentType>(SliderFactory)``

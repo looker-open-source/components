@@ -13,6 +13,8 @@ exports[`A FieldRadio 1`] = `
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
+  -webkit-animation: none;
+  animation: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -35,6 +37,8 @@ exports[`A FieldRadio 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   color: #262D33;
   font-size: 0.875rem;
   font-weight: 600;
@@ -56,6 +60,8 @@ exports[`A FieldRadio 1`] = `
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
+  -webkit-animation: none;
+  animation: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -74,6 +80,8 @@ exports[`A FieldRadio 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
 }
 
 <div
@@ -115,6 +123,8 @@ exports[`A FieldRadio checked 1`] = `
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
+  -webkit-animation: none;
+  animation: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -137,6 +147,8 @@ exports[`A FieldRadio checked 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   color: #262D33;
   font-size: 0.875rem;
   font-weight: 600;
@@ -158,6 +170,8 @@ exports[`A FieldRadio checked 1`] = `
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
+  -webkit-animation: none;
+  animation: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -176,6 +190,8 @@ exports[`A FieldRadio checked 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
 }
 
 <div
@@ -218,6 +234,8 @@ exports[`A FieldRadio with label aligned left 1`] = `
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
+  -webkit-animation: none;
+  animation: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -236,6 +254,8 @@ exports[`A FieldRadio with label aligned left 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c1 {
@@ -246,6 +266,8 @@ exports[`A FieldRadio with label aligned left 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   color: #262D33;
   font-size: 0.875rem;
   font-weight: 600;

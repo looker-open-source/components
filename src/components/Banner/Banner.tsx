@@ -1,5 +1,7 @@
-import * as React from 'react'
-import { palette, styled, theme } from '../../style'
+import omit from 'lodash/omit'
+import React, { FunctionComponent, Ref } from 'react'
+import styled, { StyledComponent } from 'styled-components'
+import { palette, theme } from '../../style'
 import { Box, BoxProps } from '../Box'
 import { Flex } from '../Flex'
 import { Icon } from '../Icon'
@@ -16,8 +18,11 @@ export interface BannerProps extends BoxProps<HTMLDivElement> {
 interface BannerTypeStyling {
   bg?: string
   accessibilityLabel?: string
-  icon?: React.ReactNode
+  icon?: JSX.Element
 }
+
+type ComponentType = FunctionComponent<BannerProps>
+type StyledComponentType = StyledComponent<ComponentType, BannerProps>
 
 const getBannerIntentStyling = (intent: BannerIntent) => {
   const bannerTypeStyling: BannerTypeStyling = {}
@@ -73,12 +78,11 @@ const VisuallyHiddenText = styled(Text)`
   width: 1px;
 `
 
-const InternalBanner: React.FC<BannerProps> = ({
+const InternalBanner: ComponentType = ({
   children,
   dismissable,
   intent,
   onDismiss,
-  ref,
   ...boxProps
 }) => {
   const {
@@ -97,7 +101,7 @@ const InternalBanner: React.FC<BannerProps> = ({
       alignItems="center"
       aria-live="polite"
       role="status"
-      {...boxProps}
+      {...omit(boxProps, ['ref'])}
     >
       {icon}
       <VisuallyHiddenText>{accessibilityLabel}</VisuallyHiddenText>
@@ -117,8 +121,11 @@ const InternalBanner: React.FC<BannerProps> = ({
   )
 }
 
-const BannerFactory = React.forwardRef((props: BannerProps, ref) => (
-  <InternalBanner innerRef={ref} {...props} />
-))
+const BannerFactory = React.forwardRef<StyledComponentType, BannerProps>(
+  (props: BannerProps, ref: Ref<StyledComponentType>) => (
+    <InternalBanner ref={ref} {...props} />
+  )
+)
 
-export const Banner = styled<BannerProps>(BannerFactory)``
+/** @component */
+export const Banner = styled<ComponentType>(BannerFactory)``

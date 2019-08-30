@@ -11,7 +11,7 @@ test('ModalContent - no overflow', () => {
 
 test('ModalContent - no overflow', () => {
   assertSnapshot(
-    <ModalContent height="3rem">
+    <ModalContent>
       <Box height="4rem">Stuff</Box>
     </ModalContent>
   )

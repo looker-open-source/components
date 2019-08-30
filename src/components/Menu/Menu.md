@@ -77,7 +77,7 @@ import { MenuItem } from './MenuItem'
       variant="outline"
       iconAfter="ArrowDropDown"
       onClick={onClick}
-      innerRef={ref}
+      ref={ref}
     >
       Popover + Menu: Cheese Selector
     </Button>
@@ -99,7 +99,7 @@ const MenuGroupDemo = require('../../../styleguide_components/MenuDemo')
       variant="outline"
       iconAfter="ArrowDropDown"
       onClick={onClick}
-      innerRef={ref}
+      ref={ref}
     >
       Menu Example...
     </Button>

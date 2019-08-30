@@ -3,6 +3,7 @@ import { radii } from '../../../style/radii'
 import { Flex } from '../../Flex'
 import { FlexItem } from '../../FlexItem'
 import {
+  ComponentWithForm,
   CustomizableInputTextAttributes,
   Field,
   FieldProps,
@@ -24,7 +25,7 @@ import { Swatch } from '../Swatch/Swatch'
 import * as ColorFormatUtils from '../utils/color_format_utils'
 import { isValidColor } from '../utils/color_utils'
 
-interface ColorFieldPickerProps extends FieldProps, InputTextProps {
+export interface ColorFieldPickerProps extends FieldProps, InputTextProps {
   /**
    * Size, in pixels, of the canvas.
    */
@@ -138,7 +139,7 @@ class InternalColorFieldPicker extends React.Component<
             <RichTooltip content={content}>
               {(eventHandlers, ref) => (
                 <Swatch
-                  innerRef={ref}
+                  ref={ref}
                   color={ColorFormatUtils.hsv2hex(hsvColor)}
                   borderRadius={swatchBorderRadius}
                   borderRight={0}
@@ -247,4 +248,7 @@ class InternalColorFieldPicker extends React.Component<
   }
 }
 
-export const ColorFieldPicker = withForm(InternalColorFieldPicker)
+/** @component */
+export const ColorFieldPicker: ComponentWithForm<
+  ColorFieldPickerProps
+> = withForm<ColorFieldPickerProps>(InternalColorFieldPicker)

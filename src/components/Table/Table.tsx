@@ -1,17 +1,24 @@
-import * as React from 'react'
-import { styled } from '../../style'
+import React, { FunctionComponent, Ref } from 'react'
+import styled, { StyledComponent } from 'styled-components'
+
 import { Box, BoxProps } from '../Box'
 
 export type TableProps = BoxProps<HTMLTableElement>
 
-const InternalTable: React.FC<TableProps> = props => (
+type ComponentType = FunctionComponent<TableProps>
+type StyledComponentType = StyledComponent<ComponentType, TableProps>
+
+const InternalTable: ComponentType = props => (
   <Box width="100%" is="table" {...props} />
 )
 
-const TableFactory = React.forwardRef((props: TableProps, ref) => (
-  <InternalTable innerRef={ref} {...props} />
-))
+const TableFactory = React.forwardRef<StyledComponentType, TableProps>(
+  (props: TableProps, ref: Ref<StyledComponentType>) => (
+    <InternalTable ref={ref} {...props} />
+  )
+)
 
-export const Table = styled(TableFactory)`
+/** @component */
+export const Table = styled<ComponentType>(TableFactory)`
   border-collapse: collapse;
 `

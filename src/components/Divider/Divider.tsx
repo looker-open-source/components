@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { css, styled } from '../../style'
+import React, { FunctionComponent, Ref } from 'react'
+import styled, { css, StyledComponent } from 'styled-components'
 import { ThemedProps } from '../../types'
 import { Box, BoxPropsWithout } from '../Box'
 
@@ -10,7 +10,14 @@ export interface DividerProps
   appearance?: 'light' | 'dark' | 'onDark'
 }
 
-const dividerAppearance = (props: ThemedProps<DividerProps>) => {
+export type ThemedDividerProps = ThemedProps<DividerProps>
+export type DividerComponentType = FunctionComponent<ThemedDividerProps>
+export type StyledDividerComponentType = StyledComponent<
+  DividerComponentType,
+  DividerProps
+>
+
+const dividerAppearance = (props: ThemedDividerProps) => {
   switch (props.appearance) {
     case 'light':
       return css`
@@ -29,7 +36,7 @@ const dividerAppearance = (props: ThemedProps<DividerProps>) => {
   }
 }
 
-const InternalDivider: React.FC<DividerProps> = props => {
+const InternalDivider: DividerComponentType = props => {
   const { size, customColor, appearance, ...boxProps } = props
 
   return (
@@ -41,10 +48,16 @@ const InternalDivider: React.FC<DividerProps> = props => {
   )
 }
 
-const DividerFactory = React.forwardRef((props: DividerProps, ref) => (
-  <InternalDivider innerRef={ref} {...props} />
+const DividerFactory = React.forwardRef<
+  StyledDividerComponentType,
+  ThemedDividerProps
+>((props: ThemedDividerProps, ref: Ref<StyledDividerComponentType>) => (
+  <InternalDivider ref={ref} {...props} />
 ))
 
-export const Divider = styled<DividerProps>(DividerFactory)`
+/** @component */
+export const Divider: StyledDividerComponentType = styled<DividerComponentType>(
+  DividerFactory
+)`
   ${props => dividerAppearance(props)};
 `

@@ -9,6 +9,8 @@ exports[`MenuGroup - JSX label 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   background-color: #FFFFFF;
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
@@ -22,6 +24,8 @@ exports[`MenuGroup - JSX label 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   margin: 0rem;
   padding: 0rem;
 }
@@ -38,6 +42,8 @@ exports[`MenuGroup - JSX label 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-animation: none;
+  animation: none;
   color: #4C535B;
   background-color: #FFFFFF;
   display: -webkit-box;
@@ -59,6 +65,8 @@ exports[`MenuGroup - JSX label 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0.75rem;
@@ -73,6 +81,8 @@ exports[`MenuGroup - JSX label 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   font-size: 0.875rem;
   font-weight: 600;
   line-height: 1.25rem;
@@ -91,6 +101,8 @@ exports[`MenuGroup - JSX label 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c1 {
@@ -231,6 +243,8 @@ exports[`MenuGroup - label 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   background-color: #FFFFFF;
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
@@ -244,6 +258,8 @@ exports[`MenuGroup - label 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   margin: 0rem;
   padding: 0rem;
 }
@@ -260,6 +276,8 @@ exports[`MenuGroup - label 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-animation: none;
+  animation: none;
   color: #4C535B;
   background-color: #FFFFFF;
   display: -webkit-box;
@@ -281,6 +299,8 @@ exports[`MenuGroup - label 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0.75rem;
@@ -295,6 +315,8 @@ exports[`MenuGroup - label 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   font-size: 0.875rem;
   font-weight: 600;
   line-height: 1.25rem;
@@ -439,6 +461,8 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   background-color: #FFFFFF;
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
@@ -452,6 +476,8 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   margin: 0rem;
   padding: 0rem;
 }
@@ -468,6 +494,8 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-animation: none;
+  animation: none;
   color: #4C535B;
   background-color: #FFFFFF;
   display: -webkit-box;
@@ -489,6 +517,8 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0.75rem;
@@ -503,6 +533,8 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   font-size: 1.5625rem;
   font-weight: 600;
   line-height: 2.5rem;
@@ -652,6 +684,8 @@ exports[`MenuGroup - menu customization 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   margin: 0rem;
   padding: 0rem;
 }
@@ -664,6 +698,8 @@ exports[`MenuGroup - menu customization 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0.75rem;
@@ -678,6 +714,8 @@ exports[`MenuGroup - menu customization 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   background-color: #4F2ABA;
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
@@ -695,6 +733,8 @@ exports[`MenuGroup - menu customization 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-animation: none;
+  animation: none;
   color: #BFB2FF;
   background-color: #4F2ABA;
   display: -webkit-box;
@@ -720,6 +760,8 @@ exports[`MenuGroup - menu customization 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-animation: none;
+  animation: none;
   color: #9785F2;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -921,6 +963,8 @@ exports[`MenuGroup 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   background-color: #FFFFFF;
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
@@ -934,6 +978,8 @@ exports[`MenuGroup 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   margin: 0rem;
   padding: 0rem;
 }
@@ -950,6 +996,8 @@ exports[`MenuGroup 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-animation: none;
+  animation: none;
   color: #4C535B;
   background-color: #FFFFFF;
   display: -webkit-box;
@@ -971,6 +1019,8 @@ exports[`MenuGroup 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0.75rem;

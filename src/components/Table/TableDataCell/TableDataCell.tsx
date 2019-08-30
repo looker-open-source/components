@@ -1,10 +1,13 @@
-import * as React from 'react'
-import { styled } from '../../../style'
+import React, { FunctionComponent, Ref } from 'react'
+import styled, { StyledComponent } from 'styled-components'
 import { Box, BoxProps } from '../../Box'
 
 export type TableDataCellProps = BoxProps<HTMLTableDataCellElement>
 
-const InternalTableDataCell: React.FC<TableDataCellProps> = props => (
+type ComponentType = FunctionComponent<TableDataCellProps>
+type StyledComponentType = StyledComponent<ComponentType, TableDataCellProps>
+
+const InternalTableDataCell: ComponentType = props => (
   <Box
     is="td"
     px="none"
@@ -15,10 +18,12 @@ const InternalTableDataCell: React.FC<TableDataCellProps> = props => (
   />
 )
 
-const TableDataCellFactory = React.forwardRef(
-  (props: TableDataCellProps, ref) => (
-    <InternalTableDataCell innerRef={ref} {...props} />
-  )
-)
+const TableDataCellFactory = React.forwardRef<
+  StyledComponentType,
+  TableDataCellProps
+>((props: TableDataCellProps, ref: Ref<StyledComponentType>) => (
+  <InternalTableDataCell ref={ref} {...props} />
+))
 
-export const TableDataCell = styled(TableDataCellFactory)``
+/** @component */
+export const TableDataCell = styled<ComponentType>(TableDataCellFactory)``

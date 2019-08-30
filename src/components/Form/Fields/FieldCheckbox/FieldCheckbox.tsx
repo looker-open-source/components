@@ -1,13 +1,20 @@
-import * as React from 'react'
+import React, { FunctionComponent } from 'react'
+import styled, { StyledComponent } from 'styled-components'
 import uuid from 'uuid/v4'
-import { styled } from '../../../../style'
-import { withForm } from '../../Form'
+import { ComponentWithForm, withForm } from '../../Form'
 import { Checkbox, CheckboxProps } from '../../Inputs/Checkbox/Checkbox'
 import { Field, FieldProps } from '../Field'
 
-interface FieldCheckboxProps extends FieldProps, CheckboxProps {}
+export interface FieldCheckboxProps extends FieldProps, CheckboxProps {}
+export type FieldCheckboxComponentType = FunctionComponent<FieldCheckboxProps>
+export type StyledFieldCheckboxComponentType = StyledComponent<
+  ComponentWithForm<FieldCheckboxProps>,
+  FieldCheckboxProps
+>
 
-const InternalFieldCheckbox = (props: FieldCheckboxProps) => {
+const InternalFieldCheckbox: FieldCheckboxComponentType = (
+  props: FieldCheckboxProps
+) => {
   const {
     alignLabel,
     alignValidationMessage,
@@ -38,8 +45,11 @@ const InternalFieldCheckbox = (props: FieldCheckboxProps) => {
 
 const FieldCheckboxFactory = React.forwardRef(
   (props: FieldCheckboxProps, ref) => (
-    <InternalFieldCheckbox innerRef={ref} {...props} />
+    <InternalFieldCheckbox ref={ref} {...props} />
   )
 )
 
-export const FieldCheckbox = styled(withForm(FieldCheckboxFactory))``
+/** @component */
+export const FieldCheckbox: StyledFieldCheckboxComponentType = styled<
+  FieldCheckboxComponentType
+>(withForm<FieldCheckboxProps>(FieldCheckboxFactory))``

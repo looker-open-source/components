@@ -1,13 +1,15 @@
-import * as React from 'react'
+import React, { FunctionComponent, Ref } from 'react'
+import styled, { StyledComponent } from 'styled-components'
 import uuid from 'uuid/v4'
-import { styled } from '../../../../style'
-import { withForm } from '../../Form'
+import { ComponentWithForm, withForm } from '../../Form'
 import { InputText, InputTextProps } from '../../Inputs/InputText/InputText'
 import { Field, FieldProps } from '../Field'
 
-interface FieldTextProps extends FieldProps, InputTextProps {}
+export interface FieldTextProps extends FieldProps, InputTextProps {}
+type ComponentType = FunctionComponent<FieldTextProps>
+type StyledComponentType = StyledComponent<ComponentType, FieldTextProps>
 
-const InternalFieldText = (props: FieldTextProps) => {
+const InternalFieldText: ComponentType = (props: FieldTextProps) => {
   const {
     alignLabel,
     alignValidationMessage,
@@ -35,8 +37,16 @@ const InternalFieldText = (props: FieldTextProps) => {
   )
 }
 
-const FieldTextFactory = React.forwardRef((props: FieldTextProps, ref) => (
-  <InternalFieldText innerRef={ref} {...props} />
-))
+const FieldTextFactory = React.forwardRef<StyledComponentType, FieldTextProps>(
+  (props: FieldTextProps, ref: Ref<StyledComponentType>) => (
+    <InternalFieldText ref={ref} {...props} />
+  )
+)
 
-export const FieldText = styled(withForm(FieldTextFactory))``
+/** @component */
+export const FieldText: StyledComponent<
+  ComponentWithForm<FieldTextProps>,
+  FieldTextProps
+> = styled<ComponentWithForm<FieldTextProps>>(
+  withForm<FieldTextProps>(FieldTextFactory)
+)``

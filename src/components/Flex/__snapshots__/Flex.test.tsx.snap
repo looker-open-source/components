@@ -9,6 +9,8 @@ exports[`Flex can be hidden  1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -34,6 +36,8 @@ exports[`Flex default  1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -64,6 +68,8 @@ exports[`Flex supports alignContent  1`] = `
   -webkit-align-content: start;
   -ms-flex-line-pack: start;
   align-content: start;
+  -webkit-animation: none;
+  animation: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -88,6 +94,8 @@ exports[`Flex supports alignItems  1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-animation: none;
+  animation: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -108,6 +116,8 @@ exports[`Flex supports flexDirection  1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -131,6 +141,8 @@ exports[`Flex supports flexWrap  1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -154,6 +166,8 @@ exports[`Flex supports justifyContent  1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;

@@ -13,6 +13,8 @@ exports[`A FieldCheckbox 1`] = `
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
+  -webkit-animation: none;
+  animation: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -31,6 +33,8 @@ exports[`A FieldCheckbox 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   color: #262D33;
   font-size: 0.875rem;
   font-weight: 600;
@@ -47,6 +51,8 @@ exports[`A FieldCheckbox 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
 }
 
 <div
@@ -88,6 +94,8 @@ exports[`A FieldCheckbox with checked value 1`] = `
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
+  -webkit-animation: none;
+  animation: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -106,6 +114,8 @@ exports[`A FieldCheckbox with checked value 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   color: #262D33;
   font-size: 0.875rem;
   font-weight: 600;
@@ -122,6 +132,8 @@ exports[`A FieldCheckbox with checked value 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
 }
 
 <div
@@ -164,6 +176,8 @@ exports[`A required FieldCheckbox 1`] = `
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
+  -webkit-animation: none;
+  animation: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -182,6 +196,8 @@ exports[`A required FieldCheckbox 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   color: #262D33;
   font-size: 0.875rem;
   font-weight: 600;
@@ -198,6 +214,8 @@ exports[`A required FieldCheckbox 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c2 {

@@ -1,8 +1,14 @@
-import * as React from 'react'
-import { styled } from '../../../style'
+import React, { FunctionComponent } from 'react'
+import styled, { StyledComponent } from 'styled-components'
 import { ModalSurface, ModalSurfaceProps } from '../ModalSurface'
 
-export const DrawerSurface: React.FC<ModalSurfaceProps> = ({
+export type DrawerSurfaceComponentType = FunctionComponent<ModalSurfaceProps>
+export type StyledDrawerSurfaceComponentType = StyledComponent<
+  DrawerSurfaceComponentType,
+  ModalSurfaceProps
+>
+
+export const DrawerSurface: DrawerSurfaceComponentType = ({
   children,
   width = '30rem',
   anchor = 'right',
@@ -23,7 +29,9 @@ export const DrawerSurface: React.FC<ModalSurfaceProps> = ({
 
 // Shadow here is designed to match theme.shadows[3] but with a single left-side shadow
 
-const Surface = styled(ModalSurface)`
+const Surface: StyledDrawerSurfaceComponentType = styled<
+  DrawerSurfaceComponentType
+>(ModalSurface)`
   box-shadow: -18px 0 18px -18px rgba(0, 0, 0, 0.12);
 
   &.entering,

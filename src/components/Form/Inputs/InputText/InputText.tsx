@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { styled } from '../../../../style'
+import React, { FunctionComponent, Ref } from 'react'
+import styled, { StyledComponent } from 'styled-components'
 import { CustomizableAttributes } from '../../../../types/attributes'
 import { Box, BoxProps } from '../../../Box'
 import { InputProps } from '../InputProps'
@@ -15,7 +15,10 @@ export interface InputTextProps extends BoxProps<HTMLInputElement>, InputProps {
   placeholder?: string
 }
 
-const InternalInputText: React.FC<InputTextProps> = ({
+type ComponentType = FunctionComponent<InputTextProps>
+type StyledComponentType = StyledComponent<ComponentType, InputTextProps>
+
+const InternalInputText: ComponentType = ({
   validationType,
   hidden,
   ...props
@@ -52,11 +55,14 @@ const InternalInputText: React.FC<InputTextProps> = ({
   )
 }
 
-const InputTextFactory = React.forwardRef((props: InputTextProps, ref) => (
-  <InternalInputText innerRef={ref} {...props} />
-))
+const InputTextFactory = React.forwardRef<StyledComponentType, InputTextProps>(
+  (props: InputTextProps, ref: Ref<StyledComponentType>) => (
+    <InternalInputText ref={ref} {...props} />
+  )
+)
 
-export const InputText = styled<InputTextProps>(InputTextFactory)``
+/** @component */
+export const InputText = styled<ComponentType>(InputTextFactory)``
 
 export const CustomizableInputTextAttributes: CustomizableAttributes = {
   borderRadius: 'medium',

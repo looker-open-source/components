@@ -1,5 +1,6 @@
-import * as React from 'react'
-import { styled, withTheme } from '../../style'
+import omit from 'lodash/omit'
+import React, { FunctionComponent, Ref } from 'react'
+import styled, { StyledComponent, withTheme } from 'styled-components'
 import { ThemedProps } from '../../types'
 import { Box, BoxProps } from '../Box'
 
@@ -7,22 +8,23 @@ export interface CardProps extends BoxProps<HTMLDivElement> {
   raised?: boolean
 }
 
-const InternalCard: React.FC<ThemedProps<CardProps>> = ({
-  raised,
-  ...props
-}) => (
+export type CardComponentType = FunctionComponent<ThemedProps<CardProps>>
+export type StyledCardComponentType = StyledComponent<
+  CardComponentType,
+  CardProps
+>
+
+const InternalCard: CardComponentType = (props: ThemedProps<CardProps>) => (
   <Box
     bg="palette.white"
     borderRadius={props.theme.radii.medium}
-    border={`solid 1px ${
-      props.theme.colors.semanticColors.primary.borderColor
-    }`}
+    border={`solid 1px ${props.theme.colors.semanticColors.primary.borderColor}`}
     display="flex"
     flexDirection="column"
     height="100%"
     min-width="200px"
     overflow="hidden"
-    {...props}
+    {...omit(props, ['raised'])}
   >
     {props.children}
   </Box>
@@ -30,12 +32,15 @@ const InternalCard: React.FC<ThemedProps<CardProps>> = ({
 
 const InternalCardThemed = withTheme(InternalCard)
 
-const CardFactory = React.forwardRef((props: CardProps, ref) => (
-  <InternalCardThemed innerRef={ref} {...props} />
-))
+const CardFactory = React.forwardRef<StyledCardComponentType, CardProps>(
+  (props: CardProps, ref: Ref<StyledCardComponentType>) => (
+    <InternalCardThemed ref={ref} {...props} />
+  )
+)
 
+/** @component */
 // prettier-ignore
-export const Card = styled<CardProps>(CardFactory)`
+export const Card: StyledCardComponentType = styled<CardComponentType>(CardFactory)`
   box-shadow: ${props => (props.raised ? props.theme.shadows[1] : 'none')};
   transition: border ${props => props.theme.transitions.durationQuick}
     ${props => props.theme.easings.ease},

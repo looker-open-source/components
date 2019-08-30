@@ -1,12 +1,13 @@
 import { rem, rgba } from 'polished'
-import * as React from 'react'
-import { css, palette, styled } from '../../../../style'
+import React, { FunctionComponent } from 'react'
+import styled, { css, StyledComponent } from 'styled-components'
+import { palette } from '../../../../style'
 import { Omit, ThemedProps } from '../../../../types'
 import { CustomizableAttributes } from '../../../../types/attributes'
 import { Box, BoxProps } from '../../../Box'
 import { Checkbox } from '../Checkbox'
 
-interface KnobProps {
+export interface KnobProps {
   className?: string
   size: number
   disabled?: boolean
@@ -14,10 +15,13 @@ interface KnobProps {
 }
 
 export interface ToggleSwitchProps
-  extends BoxProps<HTMLDivElement>,
+  extends BoxProps<HTMLInputElement>,
     Omit<KnobProps, 'size'> {
   size?: number
 }
+
+type KnobComponentType = FunctionComponent<KnobProps>
+type StyledKnobComponentType = StyledComponent<KnobComponentType, KnobProps>
 
 const knobTransform = (props: ThemedProps<KnobProps>) => {
   const transform = props.on ? `translateX(${rem(props.size * 0.75)})` : ''
@@ -44,11 +48,11 @@ const KnobFactory: React.FC<KnobProps> = ({ className, ...props }) => (
   />
 )
 
-const Knob = styled(KnobFactory)`
+const Knob: StyledKnobComponentType = styled<KnobComponentType>(KnobFactory)`
   ${knobTransform};
 `
 
-const KnobContainerFactory: React.FC<KnobProps> = ({ className, ...props }) => {
+const KnobContainerFactory: KnobComponentType = ({ className, ...props }) => {
   const hoverStyle = props.disabled
     ? undefined
     : { boxShadow: `0 0 .01rem 0.01rem ${rgba(palette.primary500, 0.5)}` }
@@ -73,11 +77,19 @@ const KnobContainerFactory: React.FC<KnobProps> = ({ className, ...props }) => {
   )
 }
 
-const KnobContainer = styled(KnobContainerFactory)`
+const KnobContainer: StyledKnobComponentType = styled<KnobComponentType>(
+  KnobContainerFactory
+)`
   transition: ${props => props.theme.transitions.durationModerate};
 `
 
-const InternalToggleSwitch: React.FC<ToggleSwitchProps> = ({
+export type ToggleSwitchComponentType = FunctionComponent<ToggleSwitchProps>
+export type StyledToggleSwitchComponentType = StyledComponent<
+  ToggleSwitchComponentType,
+  ToggleSwitchProps
+>
+
+const InternalToggleSwitch: ToggleSwitchComponentType = ({
   size = 20,
   disabled,
   on,
@@ -123,7 +135,10 @@ const InternalToggleSwitch: React.FC<ToggleSwitchProps> = ({
   )
 }
 
-export const ToggleSwitch = styled(InternalToggleSwitch)`
+/** @component */
+export const ToggleSwitch: StyledToggleSwitchComponentType = styled<
+  ToggleSwitchComponentType
+>(InternalToggleSwitch)`
   :focus + ${Box} {
     box-shadow: 0 0 0 0.2rem ${rgba(palette.primary500, 0.4)};
   }

@@ -1,7 +1,16 @@
-import { styled } from '../../../style'
-import { Slider } from '../../Form/Inputs/Slider'
+import { ComponentType } from 'react'
+import styled, { StyledComponent } from 'styled-components'
+import { ThemedProps } from '../../../types'
+import { Slider, SliderProps } from '../../Form/Inputs/Slider'
 
-export const LuminositySlider = styled(Slider)`
+type ThemedSlider = ThemedProps<SliderProps>
+type StyledThemedSlider = StyledComponent<
+  ComponentType<SliderProps>,
+  ThemedSlider
+>
+
+/** @component */
+export const LuminositySlider = styled<StyledThemedSlider>(Slider)`
   appearance: none;
   background: transparent;
   width: 100%;

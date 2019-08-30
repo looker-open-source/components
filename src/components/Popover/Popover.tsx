@@ -1,7 +1,7 @@
-import FocusTrap from 'focus-trap-react'
 import { Placement } from 'popper.js'
 import React, { useEffect, useRef, useState } from 'react'
 import { Popper } from 'react-popper'
+import { css } from 'styled-components'
 import { fadeIn, palette, shadows } from '../../style'
 import { CustomizableAttributes } from '../../types/attributes'
 import { ModalContext, ModalSurfaceStyleProps } from '../Modal'
@@ -37,7 +37,7 @@ export interface PopoverProps {
    * Content to rendered within the Popover surface.
    * @required
    */
-  content: React.ReactNode
+  content: JSX.Element
 
   /**
    * Component to wrap. The HOC will listen for mouse events on this
@@ -51,7 +51,7 @@ export interface PopoverProps {
      */
     ref: React.RefObject<HTMLElement>,
     className?: string
-  ) => React.ReactNode
+  ) => JSX.Element
 
   /**
    * Specify a callback to be called before trying to close the Modal. This allows for
@@ -80,6 +80,7 @@ export interface PopoverProps {
   pin?: boolean
 }
 
+/** @component */
 export const Popover: React.FC<PopoverProps> = ({
   arrow = true,
   canClose,
@@ -164,41 +165,39 @@ export const Popover: React.FC<PopoverProps> = ({
 
   const surface = (
     <ModalContext.Provider value={{ closeModal: handleClose }}>
-      <FocusTrap focusTrapOptions={{ clickOutsideDeactivates: true }}>
-        <ModalPortal portalRef={portalRef}>
-          <Popper
-            positionFixed
-            placement={props.placement}
-            modifiers={{
-              flip: {
-                behavior: 'flip',
-                enabled: !pin ? true : false,
-                flipVariations: true,
-                flipVariationsByContent: true,
-              },
-              preventOverflow: {
-                boundariesElement: 'viewport',
-                escapeWithReference: true,
-                padding: 0,
-              },
-            }}
-            referenceElement={referenceElement}
-          >
-            {({ ref, style, arrowProps, placement }) => (
-              <OverlaySurface
-                arrow={arrow}
-                arrowProps={arrowProps}
-                placement={placement}
-                surfaceRef={ref}
-                style={style}
-                {...CustomizablePopoverAttributes.surface}
-              >
-                {content}
-              </OverlaySurface>
-            )}
-          </Popper>
-        </ModalPortal>
-      </FocusTrap>
+      <ModalPortal portalRef={portalRef}>
+        <Popper
+          positionFixed
+          placement={props.placement}
+          modifiers={{
+            flip: {
+              behavior: 'flip',
+              enabled: !pin ? true : false,
+              flipVariations: true,
+              flipVariationsByContent: true,
+            },
+            preventOverflow: {
+              boundariesElement: 'viewport',
+              escapeWithReference: true,
+              padding: 0,
+            },
+          }}
+          referenceElement={referenceElement}
+        >
+          {({ ref, style, arrowProps, placement }) => (
+            <OverlaySurface
+              arrow={arrow}
+              arrowProps={arrowProps}
+              placement={placement}
+              surfaceRef={ref}
+              style={style}
+              {...CustomizablePopoverAttributes.surface}
+            >
+              {content}
+            </OverlaySurface>
+          )}
+        </Popper>
+      </ModalPortal>
     </ModalContext.Provider>
   )
 
@@ -214,9 +213,20 @@ export interface CustomizablePopoverAttributes extends CustomizableAttributes {
   surface: ModalSurfaceStyleProps
 }
 
+/*
+ * NOTE: Use longform version of tagged function to prevent stylelint
+ * from parsing and complaining about css`` keyframe interpolation.
+ *
+ * EQUIVALENT: css`${fadeIn} 0.2s linear;`
+ */
+const animationRule = css(
+  (['', ' 0.2s linear;'] as any) as TemplateStringsArray,
+  fadeIn
+)
+
 export const CustomizablePopoverAttributes: CustomizablePopoverAttributes = {
   surface: {
-    animation: `${fadeIn} 0.2s linear`,
+    animation: animationRule,
     backgroundColor: palette.white,
     border: '1px solid',
     borderColor: palette.charcoal200,

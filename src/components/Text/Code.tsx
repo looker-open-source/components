@@ -1,8 +1,12 @@
-import * as React from 'react'
-import { styled, theme } from '../../style'
+import React, { FunctionComponent, Ref } from 'react'
+import styled, { StyledComponent } from 'styled-components'
+import { theme } from '../../style'
 import { Text, TextProps } from '../Text/Text'
 
-const InternalCode: React.FC<TextProps> = props => {
+type ComponentType = FunctionComponent<TextProps>
+type StyledComponentType = StyledComponent<ComponentType, TextProps>
+
+const InternalCode: ComponentType = props => {
   return (
     <Text is="code" fontFamily={theme.fonts.code} {...props}>
       {props.children}
@@ -10,8 +14,11 @@ const InternalCode: React.FC<TextProps> = props => {
   )
 }
 
-const CodeFactory = React.forwardRef((props: TextProps, ref) => (
-  <InternalCode innerRef={ref} {...props} />
-))
+const CodeFactory = React.forwardRef<StyledComponentType, TextProps>(
+  (props: TextProps, ref: Ref<StyledComponentType>) => (
+    <InternalCode ref={ref} {...props} />
+  )
+)
 
-export const Code = styled(CodeFactory)``
+/** @component */
+export const Code = styled<ComponentType>(CodeFactory)``

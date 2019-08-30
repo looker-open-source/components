@@ -33,15 +33,14 @@ set the `:visited` color to our palette.red400 color. We can access the Theme
 via Styled Components, so this is easy enough:
 
 ```js
+import styled from 'styled-components'
 import { Link } from '../../components/Link'
-const styled = require('../../style').styled
 
 const VisitedLink = styled(Link)`
   :visited {
     color: ${props => props.theme.colors.palette.red400};
   }
 `
-
 ;<VisitedLink href="https://www.google.com">Hello</VisitedLink>
 ```
 
@@ -59,7 +58,7 @@ interface VisitedLink extends Link {
   visited?: boolean
 }
 
-const VisitedLink = styled<VisitedLink>(Link)`
+const VisitedLink = styled(Link)`
   :visited {
     color: ${props => props.theme.colors.palette.red400};
   }
@@ -81,8 +80,8 @@ from being passed to `<Link/>`. It requires a bit of ceremony, but is easy
 enough with [ES6's spread syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax):
 
 ```js
+import styled from 'styled-components'
 import { Link } from '../../components/Link'
-const styled = require('../../style').styled
 
 const VisitedLinkFactory = ({ visited, ...props }) => <Link {...props} />
 
@@ -95,7 +94,6 @@ const VisitedLink = styled(VisitedLinkFactory)`
     text-decoration: ${props => (props.visited ? 'line-through' : 'underline')};
   }
 `
-
 ;<VisitedLink visited href="https://www.google.com">
   Hello
 </VisitedLink>

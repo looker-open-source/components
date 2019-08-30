@@ -13,6 +13,8 @@ exports[`A FieldToggleSwitch 1`] = `
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
+  -webkit-animation: none;
+  animation: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -35,6 +37,8 @@ exports[`A FieldToggleSwitch 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   color: #262D33;
   font-size: 0.875rem;
   font-weight: 600;
@@ -52,6 +56,8 @@ exports[`A FieldToggleSwitch 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -70,6 +76,8 @@ exports[`A FieldToggleSwitch 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c5 {
@@ -80,6 +88,8 @@ exports[`A FieldToggleSwitch 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   cursor: pointer;
   display: inline-block;
   height: 1.25rem;
@@ -96,6 +106,8 @@ exports[`A FieldToggleSwitch 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   height: 100%;
   left: 0;
   opacity: 0;
@@ -113,6 +125,8 @@ exports[`A FieldToggleSwitch 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   border-radius: 1.25rem;
   bottom: 0;
   background-color: #C1C6CC;
@@ -134,6 +148,8 @@ exports[`A FieldToggleSwitch 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   border-radius: 50%;
   bottom: 0.125rem;
   background-color: #FFFFFF;
@@ -209,6 +225,8 @@ exports[`A FieldToggleSwitch turned on 1`] = `
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
+  -webkit-animation: none;
+  animation: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -231,6 +249,8 @@ exports[`A FieldToggleSwitch turned on 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   color: #262D33;
   font-size: 0.875rem;
   font-weight: 600;
@@ -248,6 +268,8 @@ exports[`A FieldToggleSwitch turned on 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -266,6 +288,8 @@ exports[`A FieldToggleSwitch turned on 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c5 {
@@ -276,6 +300,8 @@ exports[`A FieldToggleSwitch turned on 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   cursor: pointer;
   display: inline-block;
   height: 1.25rem;
@@ -292,6 +318,8 @@ exports[`A FieldToggleSwitch turned on 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   height: 100%;
   left: 0;
   opacity: 0;
@@ -309,6 +337,8 @@ exports[`A FieldToggleSwitch turned on 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   border-radius: 50%;
   bottom: 0.125rem;
   background-color: #FFFFFF;
@@ -326,6 +356,8 @@ exports[`A FieldToggleSwitch turned on 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   border-radius: 1.25rem;
   bottom: 0;
   background-color: #9785F2;
@@ -406,6 +438,8 @@ exports[`A FieldToggleSwitch with label aligned left 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -424,6 +458,8 @@ exports[`A FieldToggleSwitch with label aligned left 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c5 {
@@ -434,6 +470,8 @@ exports[`A FieldToggleSwitch with label aligned left 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   cursor: pointer;
   display: inline-block;
   height: 1.25rem;
@@ -450,6 +488,8 @@ exports[`A FieldToggleSwitch with label aligned left 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   height: 100%;
   left: 0;
   opacity: 0;
@@ -467,6 +507,8 @@ exports[`A FieldToggleSwitch with label aligned left 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   border-radius: 1.25rem;
   bottom: 0;
   background-color: #C1C6CC;
@@ -488,6 +530,8 @@ exports[`A FieldToggleSwitch with label aligned left 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   border-radius: 50%;
   bottom: 0.125rem;
   background-color: #FFFFFF;
@@ -509,6 +553,8 @@ exports[`A FieldToggleSwitch with label aligned left 1`] = `
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
+  -webkit-animation: none;
+  animation: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -527,6 +573,8 @@ exports[`A FieldToggleSwitch with label aligned left 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   color: #262D33;
   font-size: 0.875rem;
   font-weight: 600;

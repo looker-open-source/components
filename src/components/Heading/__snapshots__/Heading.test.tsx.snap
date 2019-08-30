@@ -9,6 +9,8 @@ exports[`A <h1> Heading 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   font-size: 1.5625rem;
   font-weight: 400;
   line-height: 2.5rem;
@@ -34,6 +36,8 @@ exports[`A <h1> Heading sized to <h2> 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   font-size: 1.375rem;
   font-weight: 400;
   line-height: 2rem;
@@ -59,6 +63,8 @@ exports[`A Heading to bold 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   font-size: 1.125rem;
   font-weight: 700;
   line-height: 1.75rem;
@@ -84,6 +90,8 @@ exports[`A Heading transformed 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   font-size: 1.125rem;
   font-weight: 400;
   line-height: 1.75rem;
@@ -109,6 +117,8 @@ exports[`A Heading truncated 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   font-size: 1.125rem;
   font-weight: 400;
   line-height: 1.75rem;
@@ -137,6 +147,8 @@ exports[`A Heading with color 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   color: #F5F6F7;
   font-size: 1.125rem;
   font-weight: 400;
@@ -163,6 +175,8 @@ exports[`A Heading with multiline truncate 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   font-size: 1.125rem;
   font-weight: 400;
   line-height: 1.75rem;
@@ -192,6 +206,8 @@ exports[`A Heading with variant 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   font-size: 1.125rem;
   font-weight: 400;
   line-height: 1.75rem;
@@ -218,6 +234,8 @@ exports[`A default Heading 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   font-size: 1.125rem;
   font-weight: 400;
   line-height: 1.75rem;

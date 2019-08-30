@@ -13,6 +13,8 @@ exports[`Button accepts a SemanticColor object for the color property 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-animation: none;
+  animation: none;
   border-radius: 0.25rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -96,6 +98,8 @@ exports[`Button allows autoFocus 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-animation: none;
+  animation: none;
   border-radius: 0.25rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -180,6 +184,8 @@ exports[`Button allows for ARIA attributes 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-animation: none;
+  animation: none;
   border-radius: 0.25rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -264,6 +270,8 @@ exports[`Button allows for HTML events 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-animation: none;
+  animation: none;
   border-radius: 0.25rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -349,6 +357,8 @@ exports[`Button allows for HTML events 2`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-animation: none;
+  animation: none;
   border-radius: 0.25rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -433,6 +443,8 @@ exports[`Button danger color 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-animation: none;
+  animation: none;
   border-radius: 0.25rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -516,6 +528,8 @@ exports[`Button default 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-animation: none;
+  animation: none;
   border-radius: 0.25rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -599,6 +613,8 @@ exports[`Button padding 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-animation: none;
+  animation: none;
   border-radius: 0.25rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -679,6 +695,8 @@ exports[`Button padding 2`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-animation: none;
+  animation: none;
   border-radius: 0.25rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -762,6 +780,8 @@ exports[`Button primary color 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-animation: none;
+  animation: none;
   border-radius: 0.25rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -845,6 +865,8 @@ exports[`Button should accept disabled 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-animation: none;
+  animation: none;
   border-radius: 0.25rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -929,6 +951,8 @@ exports[`Button type button 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-animation: none;
+  animation: none;
   border-radius: 0.25rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -1013,6 +1037,8 @@ exports[`Button type menu 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-animation: none;
+  animation: none;
   border-radius: 0.25rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -1097,6 +1123,8 @@ exports[`Button type reset 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-animation: none;
+  animation: none;
   border-radius: 0.25rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -1181,6 +1209,8 @@ exports[`Button type submit 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-animation: none;
+  animation: none;
   border-radius: 0.25rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -1265,6 +1295,8 @@ exports[`Button validates all sizes 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-animation: none;
+  animation: none;
   border-radius: 0.25rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -1348,6 +1380,8 @@ exports[`Button validates all sizes 2`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-animation: none;
+  animation: none;
   border-radius: 0.25rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -1431,6 +1465,8 @@ exports[`Button validates all sizes 3`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-animation: none;
+  animation: none;
   border-radius: 0.25rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -1514,6 +1550,8 @@ exports[`Button validates all sizes 4`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-animation: none;
+  animation: none;
   border-radius: 0.25rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -1597,6 +1635,8 @@ exports[`Button variant outline 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-animation: none;
+  animation: none;
   border-radius: 0.25rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -1683,6 +1723,8 @@ exports[`Button variant transparent 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-animation: none;
+  animation: none;
   border-radius: 0.25rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;

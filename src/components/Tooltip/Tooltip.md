@@ -15,7 +15,7 @@ import { Button } from '../Button'
 import { Tooltip } from './Tooltip'
 ;<Tooltip content="More things you should know...">
   {(eventHandlers, ref) => (
-    <Button innerRef={ref} {...eventHandlers}>
+    <Button ref={ref} {...eventHandlers}>
       Hover for Tooltip
     </Button>
   )}
@@ -30,7 +30,7 @@ const content =
   'Lorem ipsum dolor amet artisan meditation four loko poutine pinterest meh cold-pressed flexitarian vaporware umami kale chips selvage salvia waistcoat occupy. Jianbing jean shorts VHS austin bushwick.'
 ;<Tooltip content={content}>
   {(eventHandlers, ref) => (
-    <Button innerRef={ref} {...eventHandlers}>
+    <Button ref={ref} {...eventHandlers}>
       Hover me! (with lots of text)
     </Button>
   )}

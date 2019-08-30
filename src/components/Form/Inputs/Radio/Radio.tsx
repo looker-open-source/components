@@ -1,5 +1,6 @@
-import * as React from 'react'
-import { styled } from '../../../../style'
+import omit from 'lodash/omit'
+import React, { FunctionComponent, Ref } from 'react'
+import styled, { StyledComponent } from 'styled-components'
 import { Box, BoxProps } from '../../../Box'
 import { InputProps } from '../InputProps'
 
@@ -10,13 +11,19 @@ export interface RadioProps extends BoxProps<HTMLInputElement>, InputProps {
   checked?: boolean
 }
 
-const InternalRadio: React.FC<RadioProps> = ({ validationType, ...props }) => {
+type ComponentType = FunctionComponent<RadioProps>
+type StyledComponentType = StyledComponent<ComponentType, RadioProps>
+
+const InternalRadio: ComponentType = props => {
   const type = { type: 'radio' }
-  return <Box is="input" {...props} {...type} />
+  return <Box is="input" {...omit(props, ['validationType'])} {...type} />
 }
 
-const RadioFactory = React.forwardRef((props: RadioProps, ref) => (
-  <InternalRadio innerRef={ref} {...props} />
-))
+const RadioFactory = React.forwardRef<StyledComponentType, RadioProps>(
+  (props: RadioProps, ref: Ref<StyledComponentType>) => (
+    <InternalRadio ref={ref} {...props} />
+  )
+)
 
-export const Radio = styled<RadioProps>(RadioFactory)``
+/** @component */
+export const Radio = styled<ComponentType>(RadioFactory)``

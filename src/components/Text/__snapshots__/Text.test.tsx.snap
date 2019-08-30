@@ -9,6 +9,8 @@ exports[`A Text component decorated 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   font-size: 1rem;
   line-height: 1.5rem;
 }
@@ -35,6 +37,8 @@ exports[`A Text component resized 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   font-size: 2.875rem;
   line-height: 4rem;
 }
@@ -59,6 +63,8 @@ exports[`A Text component text transformed 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   font-size: 1rem;
   line-height: 1.5rem;
 }
@@ -83,6 +89,8 @@ exports[`A Text component weight 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   font-size: 1rem;
   font-weight: 700;
   line-height: 1.5rem;
@@ -108,6 +116,8 @@ exports[`A Text component with color 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   color: #49a9f2;
   font-size: 1rem;
   line-height: 1.5rem;
@@ -133,6 +143,8 @@ exports[`A Text component with variant 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   font-size: 1rem;
   line-height: 1.5rem;
 }
@@ -158,6 +170,8 @@ exports[`A Text component wrapped 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   font-size: 1rem;
   line-height: 1.5rem;
 }
@@ -183,6 +197,8 @@ exports[`A default Text component 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   font-size: 1rem;
   line-height: 1.5rem;
 }

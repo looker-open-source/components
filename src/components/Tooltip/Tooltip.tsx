@@ -1,5 +1,6 @@
 import { TextAlignProperty } from 'csstype'
 import * as React from 'react'
+import { css } from 'styled-components'
 import { fadeIn, palette, shadows } from '../../style'
 import { CustomizableAttributes } from '../../types/attributes'
 import { ModalSurfaceStyleProps } from '../Modal'
@@ -66,9 +67,20 @@ export interface CustomizableTooltipAttributes extends CustomizableAttributes {
   surface: ModalSurfaceStyleProps
 }
 
+/*
+ * NOTE: Use longform version of tagged function to prevent stylelint
+ * from parsing and complaining about css`` keyframe interpolation.
+ *
+ * EQUIVALENT: css`${fadeIn} 0.2s linear;`
+ */
+const animationRule = css(
+  (['', ' 0.2s linear;'] as any) as TemplateStringsArray,
+  fadeIn
+)
+
 export const CustomizableTooltipAttributes: CustomizableTooltipAttributes = {
   surface: {
-    animation: `${fadeIn} 0.2s linear`,
+    animation: animationRule,
     backgroundColor: palette.charcoal600,
     border: 'none',
     borderColor: 'none',

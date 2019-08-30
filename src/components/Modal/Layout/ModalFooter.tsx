@@ -1,5 +1,6 @@
-import * as React from 'react'
-import { styled } from '../../../style'
+import React, { FunctionComponent } from 'react'
+import styled, { StyledComponent } from 'styled-components'
+import { ThemedProps } from '../../../types'
 import { Box, BoxProps } from '../../Box'
 
 export interface ModalFooterProps extends BoxProps<HTMLDivElement> {
@@ -13,9 +14,12 @@ export interface ModalFooterProps extends BoxProps<HTMLDivElement> {
    * Secondary content to place in the footer
    */
   secondary?: React.ReactNode
+  theme?: ThemedProps<any>
 }
 
-export const ModalFooter: React.FC<ModalFooterProps> = ({
+export type ModalFooterComponentType = FunctionComponent<ModalFooterProps>
+
+export const ModalFooter: ModalFooterComponentType = ({
   children,
   secondary,
   ...props
@@ -37,16 +41,22 @@ export const ModalFooter: React.FC<ModalFooterProps> = ({
   )
 }
 
+export type ThemedBoxProps = ThemedProps<BoxProps<HTMLElement>>
+export type BoxComponentType = FunctionComponent<ThemedBoxProps>
+export type StyledBoxComponentType = StyledComponent<
+  BoxComponentType,
+  ThemedBoxProps
+>
+
 // Subtract margin placed on children from the horizonal padding applied to the component
 // so that the content is properly aligned.
-
 // padding is: vertical: large, horizonal: calc(xlarge - xsmall)
-const Layout = styled(Box)`
+const Layout: StyledBoxComponentType = styled<BoxComponentType>(Box)`
   padding: ${props => props.theme.space.large}
     calc(${p => p.theme.space.xlarge} - ${p => p.theme.space.xsmall});
 `
 
-const SpaceChildren = styled(Box)`
+const SpaceChildren: StyledBoxComponentType = styled<BoxComponentType>(Box)`
   display: flex;
 
   & > * {

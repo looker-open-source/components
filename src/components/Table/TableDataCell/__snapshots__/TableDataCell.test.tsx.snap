@@ -9,6 +9,8 @@ exports[`A <TableDataCell> should render 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   border-top: solid 1px;
   border-color: #DEE1E5;
   padding-left: 0rem;

@@ -30,7 +30,7 @@ export const MenuGroupDemo: React.FC = () => {
           Pizza!
         </MenuItem>
       </MenuGroup>
-      <MenuGroup label="Spacing">{items}</MenuGroup>
+      <MenuGroup label={<>Spacing</>}>{items}</MenuGroup>
       <MenuGroup>
         <MenuItem itemRole="button" icon="Beaker">
           Scary Stuff

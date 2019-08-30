@@ -19,7 +19,6 @@ Use a primary button for the most frequently used action or most important actio
 
 ```js
 import { Button } from './Button'
-
 ;<Button>Primary Button</Button>
 ```
 
@@ -27,7 +26,6 @@ import { Button } from './Button'
 
 ```js noeditor
 import { Button } from './Button'
-
 ;<>
   <Button mr="xsmall">Primary Idle</Button>
   <Button mr="xsmall" className="hover">
@@ -214,13 +212,12 @@ import { List, ListItem } from '../List'
 Sometimes you may want to extend the Button defaults to create a specific styling effect. That should be straightforward by wrapped a StyledComponent in another `styled` call to extend it like so:
 
 ```js
+import styled from 'styled-components'
 import { Button } from './Button'
-const styled = require('../../style').styled
 
 const RoundButton = styled(Button)`
   border-radius: 2rem;
 `
-
 ;<RoundButton>Hello RoundButton</RoundButton>
 ```
 

@@ -1,15 +1,10 @@
+import omit from 'lodash/omit'
 import { rem, rgba } from 'polished'
-import * as React from 'react'
+import React, { FunctionComponent, Ref } from 'react'
+import styled, { css, StyledComponent, withTheme } from 'styled-components'
 import { merge } from 'styled-system'
 import { IconNames } from '../../icons/build/IconNames'
-import {
-  css,
-  RampSizes,
-  SemanticColor,
-  SemanticColors,
-  styled,
-  withTheme,
-} from '../../style'
+import { RampSizes, SemanticColor, SemanticColors } from '../../style'
 import {
   SizeLarge,
   SizeMedium,
@@ -60,6 +55,12 @@ export interface ButtonProps
   iconBefore?: IconNames | undefined
   iconAfter?: IconNames | undefined
 }
+
+type ComponentType = FunctionComponent<ThemedProps<ButtonProps>>
+type StyledComponentType = StyledComponent<
+  ComponentType,
+  ThemedProps<ButtonProps>
+>
 
 const variantCommonProps = (color: SemanticColor) => {
   return {
@@ -231,8 +232,7 @@ function getIcon(iconName: IconNames | undefined) {
 
 // color is extracted here to ensure it is not passed to Box, creating a type
 // error with the DOM's own color attribute.
-const InternalButton: React.FC<ThemedProps<ButtonProps>> = ({
-  color,
+const InternalButton: ComponentType = ({
   iconBefore,
   iconAfter,
   size,
@@ -253,7 +253,7 @@ const InternalButton: React.FC<ThemedProps<ButtonProps>> = ({
       display="inline-flex"
       alignItems="center"
       {...sizeHelperProps}
-      {...props}
+      {...omit(props, 'color')}
       style={{ lineHeight, ...style }}
     >
       {getIcon(iconBefore)}
@@ -263,13 +263,21 @@ const InternalButton: React.FC<ThemedProps<ButtonProps>> = ({
   )
 }
 
+const ButtonFactory = React.forwardRef<
+  StyledComponentType,
+  ThemedProps<ButtonProps>
+>((props: ThemedProps<ButtonProps>, ref: Ref<StyledComponentType>) => (
+  <InternalButton innerRef={ref} {...props} />
+))
+
 export const CustomizableButtonAttributes: CustomizableAttributes = {
   borderRadius: 'medium',
 }
 
 const ButtonIcon = styled(Icon)``
 
-export const Button = styled<ButtonProps>(withTheme(InternalButton))`
+/** @component */
+export const Button = styled<ComponentType>(withTheme(ButtonFactory))`
   font-weight: 600;
   outline: none;
   transition: border 80ms;

@@ -1,7 +1,8 @@
-import deepmerge from 'deepmerge'
-import * as React from 'react'
+import merge from 'lodash/merge'
+import React, { FunctionComponent, Ref } from 'react'
+import styled, { StyledComponent } from 'styled-components'
 import { IconNames } from '../../../icons/build/IconNames'
-import { RampSizes, styled } from '../../../style'
+import { RampSizes } from '../../../style'
 import { BoxProps } from '../../Box'
 import { Icon } from '../../Icon'
 import { MenuContext, MenuContextProps } from '../MenuContext'
@@ -44,7 +45,10 @@ export interface MenuItemProps
   target?: string
 }
 
-const InternalMenuItem: React.FC<MenuItemProps> = props => {
+type ComponentType = FunctionComponent<MenuItemProps>
+type StyledComponentType = StyledComponent<ComponentType, MenuItemProps>
+
+const InternalMenuItem: ComponentType = props => {
   const {
     current,
     currentMarker,
@@ -67,7 +71,7 @@ const InternalMenuItem: React.FC<MenuItemProps> = props => {
     : menu.customizationProps
 
   if (customizationProps && menu.customizationProps) {
-    customizations = deepmerge(customizationProps, menu.customizationProps)
+    customizations = merge(customizationProps, menu.customizationProps)
   }
 
   const isCompact = compact !== undefined ? compact : menu.compact
@@ -115,11 +119,14 @@ const InternalMenuItem: React.FC<MenuItemProps> = props => {
   )
 }
 
-const MenuItemFactory = React.forwardRef((props: MenuItemProps, ref) => (
-  <InternalMenuItem innerRef={ref as React.RefObject<HTMLElement>} {...props} />
-))
+const MenuItemFactory = React.forwardRef<StyledComponentType, MenuItemProps>(
+  (props: MenuItemProps, ref: Ref<StyledComponentType>) => (
+    <InternalMenuItem ref={ref} {...props} />
+  )
+)
 
-export const MenuItem = styled<MenuItemProps>(MenuItemFactory)``
+/** @component */
+export const MenuItem = styled<ComponentType>(MenuItemFactory)``
 
 const assignCustomizations = (
   defaultStyle: MenuItemStyle,

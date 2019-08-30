@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Styled Components 4.0
 - `MenuSearch` now depends on `InputSearch`
 - `MenuGroup`'s spacing is now more consistent in both the regular and `compact` variations
 - `MenuGroup` labels are no longer `text-transform`ed to uppercase

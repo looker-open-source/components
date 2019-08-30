@@ -26,7 +26,7 @@ import { Text } from '../Text'
 ;<>
   <Box>
     <Card>
-      <CardMedia image="http://fillmurray.com/200/300" title="Bill 1" />
+      <CardMedia image="https://www.fillmurray.com/300/150" title="Bill 1" />
       <CardContent>
         <Heading>A wild Bill appears</Heading>
       </CardContent>
@@ -34,7 +34,7 @@ import { Text } from '../Text'
   </Box>
   <Box mt="medium">
     <Card>
-      <CardMedia image="http://fillmurray.com/400/300" title="Bill 2" />
+      <CardMedia image="https://www.fillmurray.com/600/300" title="Bill 2" />
       <CardContent>
         <Heading>Another Bill spoting</Heading>
       </CardContent>

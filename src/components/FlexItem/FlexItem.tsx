@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { css, styled } from '../../style'
+import React, { FunctionComponent, Ref } from 'react'
+import styled, { css, StyledComponent } from 'styled-components'
 import { Box, BoxBasePropsWithout, BoxFlexItemProps } from '../Box'
 
 export interface FlexItemProps
@@ -7,16 +7,21 @@ export interface FlexItemProps
     BoxFlexItemProps {
   hidden?: boolean
 }
+type ComponentType = FunctionComponent<FlexItemProps>
+type StyledComponentType = StyledComponent<ComponentType, FlexItemProps>
 
-const InternalFlexItem: React.FC<FlexItemProps> = props => {
+const InternalFlexItem: ComponentType = props => {
   return <Box {...props}>{props.children}</Box>
 }
 
-const FlexItemFactory = React.forwardRef((props: FlexItemProps, ref) => (
-  <InternalFlexItem innerRef={ref} {...props} />
-))
+const FlexItemFactory = React.forwardRef<StyledComponentType, FlexItemProps>(
+  (props: FlexItemProps, ref: Ref<StyledComponentType>) => (
+    <InternalFlexItem ref={ref} {...props} />
+  )
+)
 
-export const FlexItem = styled<FlexItemProps>(FlexItemFactory)`
+/** @component */
+export const FlexItem = styled<ComponentType>(FlexItemFactory)`
   ${props => hidden(props.hidden)};
 `
 

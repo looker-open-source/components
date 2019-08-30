@@ -15,7 +15,7 @@ describe('RichTooltip', () => {
     const popover = mountWithTheme(
       <RichTooltip content={SimpleContent}>
         {(eventHandlers, ref) => (
-          <Button innerRef={ref} {...eventHandlers}>
+          <Button ref={ref} {...eventHandlers}>
             Test
           </Button>
         )}
@@ -32,7 +32,7 @@ describe('RichTooltip', () => {
     const popover = mountWithTheme(
       <RichTooltip content={SimpleContent}>
         {(eventHandlers, ref) => (
-          <Button innerRef={ref} {...eventHandlers}>
+          <Button ref={ref} {...eventHandlers}>
             Test
           </Button>
         )}

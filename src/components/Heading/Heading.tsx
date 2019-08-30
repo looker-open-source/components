@@ -1,9 +1,10 @@
-import * as React from 'react'
+import omit from 'lodash/omit'
+import React, { FunctionComponent, Ref } from 'react'
+import styled, { StyledComponent } from 'styled-components'
 import {
   getTextTransform,
   ResponsiveFontSize,
   shouldTruncate,
-  styled,
   TextTransforms,
   textVariant,
   TextVariants,
@@ -29,13 +30,13 @@ export interface HeadingProps
   variant?: TextVariants
 }
 
-const InternalHeading: React.FC<HeadingProps> = ({
+type ComponentType = FunctionComponent<HeadingProps>
+type StyledComponentType = StyledComponent<ComponentType, HeadingProps>
+
+const InternalHeading: ComponentType = ({
   fontSize,
   fontWeight,
   lineHeight,
-  textTransform,
-  truncate,
-  truncateLines,
   is,
   ...props
 }) => (
@@ -44,17 +45,20 @@ const InternalHeading: React.FC<HeadingProps> = ({
     fontSize={fontSize || headingLevelSize(is)}
     lineHeight={lineHeight || headingLineHeight(is, fontSize)}
     fontWeight={fontWeight || 'normal'}
-    {...props}
+    {...omit(props, ['textTransform', 'truncate', 'truncateLines'])}
   >
     {props.children}
   </Box>
 )
 
-const HeadingFactory = React.forwardRef((props: HeadingProps, ref) => (
-  <InternalHeading innerRef={ref} {...props} />
-))
+const HeadingFactory = React.forwardRef<StyledComponentType, HeadingProps>(
+  (props: HeadingProps, ref: Ref<StyledComponentType>) => (
+    <InternalHeading ref={ref} {...props} />
+  )
+)
 
-export const Heading = styled(HeadingFactory)`
+/** @component */
+export const Heading = styled<ComponentType>(HeadingFactory)`
   ${props => getTextTransform(props.textTransform)};
   ${props => shouldTruncate(props.truncate, props.truncateLines)};
   ${props => textVariant(props.theme, props.variant)};

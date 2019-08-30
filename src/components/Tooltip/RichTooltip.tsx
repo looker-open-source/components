@@ -1,6 +1,7 @@
 import { Placement } from 'popper.js'
 import React, { useRef, useState } from 'react'
 import { Popper } from 'react-popper'
+import { css } from 'styled-components'
 import { fadeIn, palette, shadows } from '../../style'
 import { CustomizableAttributes } from '../../types/attributes'
 import { ModalContext, ModalSurfaceStyleProps } from '../Modal'
@@ -45,6 +46,7 @@ export interface RichTooltipProps {
   surfaceStyle?: SurfaceStyleProps
 }
 
+/** @component */
 export const RichTooltip: React.FC<RichTooltipProps> = ({
   arrow = true,
   canClose,
@@ -155,9 +157,19 @@ export interface CustomizableRichTooltipAttributes
   surface: ModalSurfaceStyleProps
 }
 
+/*
+ * NOTE: Use longform version of tagged function to prevent stylelint
+ * from parsing and complaining about css`` keyframe interpolation.
+ *
+ * EQUIVALENT: css`${fadeIn} 0.2s linear;`
+ */
+const animationRule = css(
+  (['', ' 0.2s linear;'] as any) as TemplateStringsArray,
+  fadeIn
+)
 export const CustomizableRichTooltipAttributes: CustomizableRichTooltipAttributes = {
   surface: {
-    animation: `${fadeIn} 0.2s linear`,
+    animation: animationRule,
     backgroundColor: palette.white,
     border: '1px solid',
     borderColor: palette.charcoal200,

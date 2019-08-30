@@ -9,6 +9,8 @@ exports[`Form with one child 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c1 {
@@ -19,6 +21,8 @@ exports[`Form with one child 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -37,6 +41,8 @@ exports[`Form with one child 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   color: #262D33;
   font-size: 0.875rem;
   font-weight: 600;
@@ -51,6 +57,8 @@ exports[`Form with one child 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   border: solid 1px;
   border-radius: 0.25rem;
   border-color: #C1C6CC;

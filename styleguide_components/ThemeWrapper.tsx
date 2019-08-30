@@ -9,8 +9,12 @@ CustomizableModalAttributes.zIndex = 100
 CustomizableTooltipAttributes.zIndex = 100
 CustomizableRichTooltipAttributes.zIndex = 100
 
-export default class ThemeWrapper extends React.Component {
-  public render() {
-    return <ThemeProvider theme={theme}>{this.props.children}</ThemeProvider>
-  }
+export interface ThemeWrapperProps {
+  children: JSX.Element
 }
+
+const ThemeWrapper: React.FC<ThemeWrapperProps> = props => {
+  return <ThemeProvider theme={theme}>{props.children}</ThemeProvider>
+}
+
+export default ThemeWrapper

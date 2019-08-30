@@ -9,6 +9,8 @@ exports[`A custom Divider 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   background-color: turquoise;
   height: 20px;
 }
@@ -27,6 +29,8 @@ exports[`Default Divider 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   background-color: #C1C6CC;
   height: 1px;
 }
@@ -45,6 +49,8 @@ exports[`Divider with a variant 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   background-color: #C1C6CC;
   height: 1px;
 }

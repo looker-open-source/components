@@ -9,6 +9,8 @@ exports[`A Card 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   border: solid 1px #C1C6CC;
   border-radius: 0.25rem;
   background-color: #FFFFFF;
@@ -51,6 +53,8 @@ exports[`A raised Card 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   border: solid 1px #C1C6CC;
   border-radius: 0.25rem;
   background-color: #FFFFFF;
@@ -93,6 +97,8 @@ exports[`A raised Card with a CardMedia block 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   border: solid 1px #C1C6CC;
   border-radius: 0.25rem;
   background-color: #FFFFFF;
@@ -115,6 +121,8 @@ exports[`A raised Card with a CardMedia block 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
 }
 
 .c0 {

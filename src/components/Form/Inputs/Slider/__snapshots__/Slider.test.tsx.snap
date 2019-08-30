@@ -9,6 +9,8 @@ exports[`Slider default 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
 }
 
 <input
@@ -26,6 +28,8 @@ exports[`Slider should accept disabled 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
 }
 
 <input
@@ -44,6 +48,8 @@ exports[`Slider with aria-describedby 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
 }
 
 <input
@@ -62,6 +68,8 @@ exports[`Slider with min and max 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
 }
 
 <input
@@ -83,6 +91,8 @@ exports[`Slider with name and id 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
 }
 
 <input

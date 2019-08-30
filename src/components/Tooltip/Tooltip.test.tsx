@@ -16,7 +16,7 @@ describe('Tooltip', () => {
     assertSnapshotShallow(
       <Tooltip content="Hello world" isOpen>
         {(eventHandlers, ref) => (
-          <Button innerRef={ref} {...eventHandlers}>
+          <Button ref={ref} {...eventHandlers}>
             Example
           </Button>
         )}
@@ -28,7 +28,7 @@ describe('Tooltip', () => {
     assertSnapshotShallow(
       <Tooltip content="Hello world" arrow={false} isOpen>
         {(eventHandlers, ref) => (
-          <Button innerRef={ref} {...eventHandlers}>
+          <Button ref={ref} {...eventHandlers}>
             Example
           </Button>
         )}
@@ -40,7 +40,7 @@ describe('Tooltip', () => {
     const tooltip = mountWithTheme(
       <Tooltip content="Hello world">
         {(eventHandlers, ref) => (
-          <Button innerRef={ref} {...eventHandlers}>
+          <Button ref={ref} {...eventHandlers}>
             Test
           </Button>
         )}
@@ -62,7 +62,7 @@ describe('Tooltip', () => {
     const tooltip = mountWithTheme(
       <Tooltip content="Hello world" isOpen>
         {(eventHandlers, ref) => (
-          <Button innerRef={ref} {...eventHandlers}>
+          <Button ref={ref} {...eventHandlers}>
             Test
           </Button>
         )}
@@ -81,7 +81,7 @@ describe('Tooltip', () => {
     const tooltip = mountWithTheme(
       <Tooltip content="Hello world">
         {(eventHandlers, ref) => (
-          <Button innerRef={ref} {...eventHandlers}>
+          <Button ref={ref} {...eventHandlers}>
             Test
           </Button>
         )}
@@ -98,7 +98,7 @@ describe('Tooltip', () => {
     const tooltip = mountWithTheme(
       <Tooltip content="Hello world" isOpen>
         {(eventHandlers, ref) => (
-          <Button innerRef={ref} {...eventHandlers}>
+          <Button ref={ref} {...eventHandlers}>
             Test
           </Button>
         )}
@@ -119,7 +119,7 @@ describe('Tooltip', () => {
     const tooltip = mountWithTheme(
       <Tooltip content="Hello world" maxWidth="20rem" textAlign="right">
         {(eventHandlers, ref) => (
-          <Button innerRef={ref} {...eventHandlers}>
+          <Button ref={ref} {...eventHandlers}>
             Test
           </Button>
         )}
@@ -143,7 +143,7 @@ describe('Tooltip', () => {
     const tooltip = (
       <Tooltip content="Great knowledge here!" isOpen>
         {(eventHandlers, ref) => (
-          <Box innerRef={ref} {...eventHandlers}>
+          <Box ref={ref} {...eventHandlers}>
             I wish I knew more about this...
           </Box>
         )}
@@ -153,7 +153,7 @@ describe('Tooltip', () => {
     const popover = (
       <Popover isOpen content={tooltip}>
         {(onClick, ref) => (
-          <Button onClick={onClick} innerRef={ref}>
+          <Button onClick={onClick} ref={ref}>
             Test
           </Button>
         )}

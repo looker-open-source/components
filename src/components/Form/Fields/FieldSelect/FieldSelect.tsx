@@ -1,13 +1,15 @@
-import * as React from 'react'
+import React, { FunctionComponent, Ref } from 'react'
+import styled, { StyledComponent } from 'styled-components'
 import uuid from 'uuid/v4'
-import { styled } from '../../../../style'
-import { withForm } from '../../Form'
+import { ComponentWithForm, withForm } from '../../Form'
 import { Select, SelectProps } from '../../Inputs/Select/Select'
 import { Field, FieldProps } from '../Field'
 
-interface FieldSelectProps extends FieldProps, SelectProps {}
+export interface FieldSelectProps extends FieldProps, SelectProps {}
+type ComponentType = FunctionComponent<FieldSelectProps>
+type StyledComponentType = StyledComponent<ComponentType, FieldSelectProps>
 
-const InternalFieldSelect = (props: FieldSelectProps) => {
+const InternalFieldSelect: ComponentType = (props: FieldSelectProps) => {
   const {
     alignLabel,
     alignValidationMessage,
@@ -35,8 +37,17 @@ const InternalFieldSelect = (props: FieldSelectProps) => {
   )
 }
 
-const FieldSelectFactory = React.forwardRef((props: FieldSelectProps, ref) => (
-  <InternalFieldSelect innerRef={ref} {...props} />
+const FieldSelectFactory = React.forwardRef<
+  StyledComponentType,
+  FieldSelectProps
+>((props: FieldSelectProps, ref: Ref<StyledComponentType>) => (
+  <InternalFieldSelect ref={ref} {...props} />
 ))
 
-export const FieldSelect = styled(withForm(FieldSelectFactory))``
+/** @component */
+export const FieldSelect: StyledComponent<
+  ComponentWithForm<FieldSelectProps>,
+  FieldSelectProps
+> = styled<ComponentWithForm<FieldSelectProps>>(
+  withForm<FieldSelectProps>(FieldSelectFactory)
+)``

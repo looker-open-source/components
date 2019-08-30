@@ -1,6 +1,7 @@
-import * as React from 'react'
+import React, { FunctionComponent } from 'react'
 import { HotKeys } from 'react-hotkeys'
-import { css, palette, styled } from '../../style'
+import styled, { css, StyledComponent } from 'styled-components'
+import { palette } from '../../style'
 import { Box, BoxProps } from '../Box'
 import { MenuContext, MenuContextProps } from './MenuContext'
 import { MenuGroup } from './MenuGroup'
@@ -11,7 +12,13 @@ export interface MenuProps extends BoxProps<HTMLDivElement>, MenuContextProps {
   compact?: boolean
 }
 
-const InternalMenu: React.FC<MenuProps> = ({
+export type MenuComponentType = FunctionComponent<MenuProps>
+export type StyledMenuComponentType = StyledComponent<
+  MenuComponentType,
+  MenuProps
+>
+
+const InternalMenu: MenuComponentType = ({
   customizationProps,
   compact,
   children,
@@ -38,17 +45,16 @@ const InternalMenu: React.FC<MenuProps> = ({
   )
 }
 
-const MenuFactory = React.forwardRef((props: MenuProps, ref) => (
-  <InternalMenu innerRef={ref} {...props} />
-))
-
 const dividersStyle = css`
   ${MenuGroup} ~ ${MenuGroup} { /* stylelint-disable-line */
     border-top: 1px solid ${palette.charcoal200};
   }
 `
 
-export const Menu = styled<MenuProps>(MenuFactory)`
+/** @component */
+export const Menu: StyledMenuComponentType = styled<MenuComponentType>(
+  InternalMenu
+)`
   list-style: none;
   outline: none;
   ${props => props.groupDividers !== false && dividersStyle};

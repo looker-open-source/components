@@ -1,14 +1,20 @@
-import * as React from 'react'
-import { css, easings, styled, transitions } from '../../../style'
+import React, { FunctionComponent } from 'react'
+import styled, { css, StyledComponent } from 'styled-components'
+import { easings, transitions } from '../../../style'
 import { Box, BoxProps } from '../../Box'
 import { Icon } from '../../Icon'
 import { MenuItemStyle } from './menuItemStyle'
 
-interface MenuListItemProps extends BoxProps<HTMLElement> {
+export interface MenuListItemProps extends BoxProps<HTMLElement> {
   current?: boolean
   currentMarker?: boolean
   itemStyle: MenuItemStyle
 }
+export type ListItemComponentType = FunctionComponent<MenuListItemProps>
+export type StyledListItemComponentType = StyledComponent<
+  ListItemComponentType,
+  MenuListItemProps
+>
 
 const currentBorder = (props: MenuListItemProps) => {
   if (!props.current || !props.currentMarker) return false
@@ -52,12 +58,16 @@ const iconColor = (props: MenuListItemProps) =>
 //
 // All of this  drama is to not auto-spread bad props onto Box and cause React run-time warnings
 //
-const MenuItemStyleFactory = (props: MenuListItemProps) => {
+const MenuItemStyleFactory: ListItemComponentType = (
+  props: MenuListItemProps
+) => {
   const { current, currentMarker, itemStyle, ...boxProps } = props
   return <Box {...boxProps} />
 }
 
-export const MenuItemListItem = styled<MenuListItemProps>(MenuItemStyleFactory)`
+export const MenuItemListItem: StyledListItemComponentType = styled<
+  ListItemComponentType
+>(MenuItemStyleFactory)`
   position: relative;
   text-decoration: none;
   transition: background ${transitions.durationQuick} ${easings.ease},

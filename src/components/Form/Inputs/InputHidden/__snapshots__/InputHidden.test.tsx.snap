@@ -9,6 +9,8 @@ exports[`InputHidden default 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
 }
 
 <input
@@ -26,6 +28,8 @@ exports[`InputHidden with a value 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
 }
 
 <input
@@ -44,6 +48,8 @@ exports[`InputHidden with name and id 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
 }
 
 <input

@@ -9,6 +9,8 @@ exports[`A bulleted List 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   margin-bottom: 0.25rem;
 }
 
@@ -20,6 +22,8 @@ exports[`A bulleted List 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   margin: 0rem;
   padding-left: 1rem;
 }
@@ -58,6 +62,8 @@ exports[`A default List, should be a ul 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   margin: 0rem;
   padding: 0rem;
 }
@@ -70,6 +76,8 @@ exports[`A default List, should be a ul 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   margin-bottom: 0.25rem;
 }
 
@@ -107,6 +115,8 @@ exports[`A numerically ordered List 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   margin-bottom: 0.25rem;
 }
 
@@ -118,6 +128,8 @@ exports[`A numerically ordered List 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   margin: 0rem;
   padding-left: 1rem;
 }
@@ -156,6 +168,8 @@ exports[`A numerically ordered List marked as nomarker 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   margin-bottom: 0.25rem;
 }
 
@@ -167,6 +181,8 @@ exports[`A numerically ordered List marked as nomarker 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   margin: 0rem;
   padding-left: 0rem;
 }

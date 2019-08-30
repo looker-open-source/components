@@ -1,4 +1,6 @@
-import { SemanticColor, SemanticColors, styled } from '../../style'
+import React, { FunctionComponent, Ref } from 'react'
+import styled, { StyledComponent } from 'styled-components'
+import { SemanticColor, SemanticColors } from '../../style'
 import {
   SizeLarge,
   SizeMedium,
@@ -11,8 +13,6 @@ import { Button } from '../Button'
 import { Icon, IconNames } from '../Icon'
 import { VisuallyHidden } from '../VisuallyHidden'
 
-import * as React from 'react'
-
 export type IconButtonSizes =
   | SizeXXSmall
   | SizeXSmall
@@ -21,7 +21,7 @@ export type IconButtonSizes =
   | SizeLarge
 
 export interface IconButtonProps
-  extends BoxPropsWithout<HTMLButtonElement, 'type' | 'color'> {
+  extends BoxPropsWithout<HTMLButtonElement, 'type' | 'color' | 'as'> {
   /**
    *  Determines if the icon button has a border
    *  @default false
@@ -46,6 +46,9 @@ export interface IconButtonProps
   color?: keyof SemanticColors | SemanticColor
 }
 
+type ComponentType = FunctionComponent<IconButtonProps>
+type StyledComponentType = StyledComponent<ComponentType, IconButtonProps>
+
 function iconSizeHelper(size: IconButtonSizes) {
   switch (size) {
     case 'xxsmall':
@@ -61,7 +64,7 @@ function iconSizeHelper(size: IconButtonSizes) {
   }
 }
 
-const InternalIconButton: React.FC<IconButtonProps> = ({
+const InternalIconButton: ComponentType = ({
   outline,
   icon,
   size,
@@ -86,8 +89,12 @@ const InternalIconButton: React.FC<IconButtonProps> = ({
   </Button>
 )
 
-const IconButtonFactory = React.forwardRef((props: IconButtonProps, ref) => (
-  <InternalIconButton innerRef={ref} {...props} />
+const IconButtonFactory = React.forwardRef<
+  StyledComponentType,
+  IconButtonProps
+>((props: IconButtonProps, ref: Ref<StyledComponentType>) => (
+  <InternalIconButton ref={ref} {...props} />
 ))
 
-export const IconButton = styled(IconButtonFactory)``
+/** @component */
+export const IconButton = styled<ComponentType>(IconButtonFactory)``

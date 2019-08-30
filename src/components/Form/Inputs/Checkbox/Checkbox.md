@@ -40,12 +40,14 @@ import { Checkbox } from './Checkbox'
     onChange={() => {
       return
     }}
+    readOnly
   />
   <Checkbox
     checked={false}
     onChange={() => {
       return
     }}
+    readOnly
   />
 </>
 ```

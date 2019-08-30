@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { styled } from '../../../../style'
+import React, { FunctionComponent } from 'react'
+import styled, { StyledComponent } from 'styled-components'
 import { Box, BoxProps } from '../../../Box'
 import { InputProps } from '../InputProps'
 
@@ -13,7 +13,13 @@ export interface InputHiddenProps
   name?: string
 }
 
-const InternalInputHidden: React.FC<InputHiddenProps> = ({
+export type InputHiddenComponentType = FunctionComponent<InputHiddenProps>
+export type StyledInputHiddenComponentType = StyledComponent<
+  InputHiddenComponentType,
+  InputHiddenProps
+>
+
+const InternalInputHidden: InputHiddenComponentType = ({
   name,
   value,
   ...props
@@ -21,8 +27,7 @@ const InternalInputHidden: React.FC<InputHiddenProps> = ({
   return <Box is="input" type="hidden" name={name} value={value} {...props} />
 }
 
-const InputHiddenFactory = React.forwardRef((props: InputHiddenProps, ref) => (
-  <InternalInputHidden innerRef={ref} {...props} />
-))
-
-export const InputHidden = styled<InputHiddenProps>(InputHiddenFactory)``
+/** @component */
+export const InputHidden: StyledInputHiddenComponentType = styled<
+  InputHiddenComponentType
+>(InternalInputHidden)``

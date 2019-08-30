@@ -1,15 +1,18 @@
-import * as React from 'react'
-import { styled } from '../../style'
+import React, { FunctionComponent, Ref } from 'react'
+import styled, { StyledComponent } from 'styled-components'
+
 import { Box, BoxProps } from '../Box'
 
 export interface LinkProps extends BoxProps<HTMLAnchorElement> {}
 
-const InternalLink: React.FC<LinkProps> = ({ ref, ...props }) => {
+type ComponentType = FunctionComponent<LinkProps>
+type StyledComponentType = StyledComponent<ComponentType, LinkProps>
+
+const InternalLink: ComponentType = ({ ...props }) => {
   return (
     <Box
       is="a"
       color="semanticColors.primary.linkColor"
-      innerRef={ref}
       style={{ textDecoration: 'none' }}
       hoverStyle={{ textDecoration: 'underline ' }}
       {...props}
@@ -17,8 +20,11 @@ const InternalLink: React.FC<LinkProps> = ({ ref, ...props }) => {
   )
 }
 
-const LinkFactory = React.forwardRef((props: LinkProps, ref) => (
-  <InternalLink innerRef={ref} {...props} />
-))
+const LinkFactory = React.forwardRef<StyledComponentType, LinkProps>(
+  (props: LinkProps, ref: Ref<StyledComponentType>) => (
+    <InternalLink innerRef={ref} {...props} />
+  )
+)
 
-export const Link = styled<LinkProps>(LinkFactory)``
+/** @component */
+export const Link = styled<ComponentType>(LinkFactory)``

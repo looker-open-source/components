@@ -53,12 +53,11 @@ const Component = () => {
         placeholder="Filter menu items"
         summary="33 matches"
         value={keywords}
-        onClear={clearKeywords}
         onChange={onChange}
         menuRef={menuRef}
       />
       <ModalContent innerProps={{ p: 'none' }}>
-        <Menu innerRef={menuRef}>
+        <Menu>
           {menuGroupLinks}
           {menuGroupButtons}
           {menuGroupLinks}

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`VisuallyHiddenText default 1`] = `
-.c1 {
+.c0 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -9,9 +9,8 @@ exports[`VisuallyHiddenText default 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-}
-
-.c0 {
+  -webkit-animation: none;
+  animation: none;
   position: absolute;
   height: 1px;
   width: 1px;
@@ -21,7 +20,7 @@ exports[`VisuallyHiddenText default 1`] = `
 }
 
 <div
-  className="c0 c1"
+  className="c0"
 >
   I am hidden
 </div>

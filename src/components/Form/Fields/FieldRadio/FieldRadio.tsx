@@ -1,13 +1,16 @@
-import * as React from 'react'
+import React, { FunctionComponent, Ref } from 'react'
+import styled, { StyledComponent } from 'styled-components'
 import uuid from 'uuid/v4'
-import { styled } from '../../../../style'
-import { withForm } from '../../Form'
+import { ComponentWithForm, withForm } from '../../Form'
 import { Radio, RadioProps } from '../../Inputs'
 import { Field, FieldProps } from '../Field'
 
-interface FieldRadioProps extends FieldProps, RadioProps {}
+export interface FieldRadioProps extends FieldProps, RadioProps {}
 
-const InternalFieldRadio = (props: FieldRadioProps) => {
+type ComponentType = FunctionComponent<FieldRadioProps>
+type StyledComponentType = StyledComponent<ComponentType, FieldRadioProps>
+
+const InternalFieldRadio: ComponentType = (props: FieldRadioProps) => {
   const {
     alignLabel,
     alignValidationMessage,
@@ -35,8 +38,17 @@ const InternalFieldRadio = (props: FieldRadioProps) => {
   )
 }
 
-const FieldRadioFactory = React.forwardRef((props: FieldRadioProps, ref) => (
-  <InternalFieldRadio innerRef={ref} {...props} />
+const FieldRadioFactory = React.forwardRef<
+  StyledComponentType,
+  FieldRadioProps
+>((props: FieldRadioProps, ref: Ref<StyledComponentType>) => (
+  <InternalFieldRadio ref={ref} {...props} />
 ))
 
-export const FieldRadio = styled(withForm(FieldRadioFactory))``
+/** @component */
+export const FieldRadio: StyledComponent<
+  ComponentWithForm<FieldRadioProps>,
+  FieldRadioProps
+> = styled<ComponentWithForm<FieldRadioProps>>(
+  withForm<FieldRadioProps>(FieldRadioFactory)
+)``

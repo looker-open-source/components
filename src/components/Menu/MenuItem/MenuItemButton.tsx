@@ -1,11 +1,18 @@
-import * as React from 'react'
-import { styled } from '../../../style'
+import React, { FunctionComponent } from 'react'
+import styled, { StyledComponent } from 'styled-components'
 import { Box } from '../../Box'
 import { MenuItemProps } from './MenuItem'
 
+export type MenuItemComponentType = FunctionComponent<MenuItemProps>
+export type StyledMenuItemComponentType = StyledComponent<
+  MenuItemComponentType,
+  MenuItemProps
+>
 const MenuItemButtonFactory = (props: MenuItemProps) => <Box {...props} />
 
-export const MenuItemButton = styled(MenuItemButtonFactory)`
+export const MenuItemButton: StyledMenuItemComponentType = styled<
+  MenuItemComponentType
+>(MenuItemButtonFactory)`
   align-items: center;
   background: transparent;
   color: inherit;

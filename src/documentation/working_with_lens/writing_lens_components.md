@@ -1,11 +1,10 @@
-
 Lens is built using the following language and libraries:
 
-* [Typescript](https://www.typescriptlang.org/)
-* [React](https://reactjs.org/)
-* [JSX](https://reactjs.org/docs/introducing-jsx.html)
-* [StyledComponents](https://www.styled-components.com/)
-* [styled-system](https://github.com/jxnblk/styled-system)
+- [Typescript](https://www.typescriptlang.org/)
+- [React](https://reactjs.org/)
+- [JSX](https://reactjs.org/docs/introducing-jsx.html)
+- [StyledComponents](https://www.styled-components.com/)
+- [styled-system](https://github.com/jxnblk/styled-system)
 
 You **don't** have to be an expert in all of those technologies to start using Lens today, but it's good to have an understanding about why they were chosen and how they are employed inside Lens when writing new Lens components.
 
@@ -78,7 +77,7 @@ const BasePersonDetail = (props: PersonProps) => {
   )
 }
 
-const PersonDetail = styled<PersonProps>(BasePersonDetail)`
+const PersonDetail = styled(BasePersonDetail)`
   border: 2px solid black;
 `
 ```
@@ -106,7 +105,7 @@ const BasePersonDetail = (props: PersonProps) => {
 
 // `space` adds some margin and padding properties to the underlying component
 // which are tied into the theme object. See SpaceProps and Box.tsx for good examples.
-const PersonDetail = styled<PersonProps>(BasePersonDetail)`
+const PersonDetail = styled(BasePersonDetail)`
   ${space}
   border: 2px solid black;
 `

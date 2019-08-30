@@ -1,10 +1,12 @@
-import * as React from 'react'
-import { styled } from '../../../style'
+import React, { FunctionComponent, Ref } from 'react'
+import styled, { StyledComponent } from 'styled-components'
 import { Box, BoxProps } from '../../Box'
 
 export type TableHeaderCellProps = BoxProps<HTMLTableHeaderCellElement>
+type ComponentType = FunctionComponent<TableHeaderCellProps>
+type StyledComponentType = StyledComponent<ComponentType, TableHeaderCellProps>
 
-const InternalTableHeaderCell: React.FC<TableHeaderCellProps> = props => (
+const InternalTableHeaderCell: ComponentType = props => (
   <Box
     is="th"
     py="xsmall"
@@ -15,10 +17,11 @@ const InternalTableHeaderCell: React.FC<TableHeaderCellProps> = props => (
   />
 )
 
-const TableHeaderCellFactory = React.forwardRef(
-  (props: TableHeaderCellProps, ref) => (
-    <InternalTableHeaderCell innerRef={ref} {...props} />
-  )
-)
+const TableHeaderCellFactory = React.forwardRef<
+  StyledComponentType,
+  TableHeaderCellProps
+>((props: TableHeaderCellProps, ref: Ref<StyledComponentType>) => (
+  <InternalTableHeaderCell ref={ref} {...props} />
+))
 
-export const TableHeaderCell = styled(TableHeaderCellFactory)``
+export const TableHeaderCell = styled<ComponentType>(TableHeaderCellFactory)``

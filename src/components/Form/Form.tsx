@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { styled } from '../../style'
+import React, { FunctionComponent, Ref } from 'react'
+import styled, { StyledComponent } from 'styled-components'
 import { Box, BoxProps } from '../Box'
 import { FieldProps } from './Fields'
 import { InputProps } from './Inputs/InputProps'
@@ -23,6 +23,9 @@ export interface FormContext {
   validationMessages?: ValidationMessages
 }
 
+type ComponentType = FunctionComponent<FormProps>
+type StyledComponentType = StyledComponent<ComponentType, FormProps>
+
 export const FormContext = React.createContext<FormContext>({})
 
 const InternalForm: React.FC<FormProps> = props => {
@@ -39,18 +42,31 @@ const InternalForm: React.FC<FormProps> = props => {
   )
 }
 
-const FormFactory = React.forwardRef((props: FormProps, ref) => (
-  <InternalForm innerRef={ref} {...props} />
-))
+const FormFactory = React.forwardRef<StyledComponentType, FormProps>(
+  (props: FormProps, ref: Ref<StyledComponentType>) => (
+    <InternalForm ref={ref} {...props} />
+  )
+)
 
-export const Form = styled<FormProps>(FormFactory)``
+/** @component */
+export const Form = styled<ComponentType>(FormFactory)``
+
+export interface ChildProp {
+  children?: JSX.Element
+}
+
+export type FormComponentProps<T> = FieldProps & InputProps & T
+
+export type ComponentWithForm<T> = React.FunctionComponent<
+  FormComponentProps<T>
+>
 
 export const withForm = <T extends {}>(
-  Component: React.ComponentType<FieldProps & InputProps & T>
-) => {
-  return (
-    props: FieldProps & InputProps & T & { children?: React.ReactChildren }
-  ) => {
+  Component:
+    | React.ComponentType<FormComponentProps<T>>
+    | React.FunctionComponent<FormComponentProps<T>>
+): ComponentWithForm<T> => {
+  return (props: FormComponentProps<T & ChildProp>) => {
     const contextHelper = (context: FormContext) => {
       let validationMessage
       if (context.validationMessages && props.name) {

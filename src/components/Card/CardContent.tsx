@@ -1,17 +1,24 @@
-import * as React from 'react'
-import { styled } from '../../style'
+import React, { FunctionComponent, Ref } from 'react'
+import styled, { StyledComponent } from 'styled-components'
+
 import { Box, BoxProps } from '../Box'
 
 export type CardContentProps = BoxProps<HTMLDivElement>
+type ComponentType = FunctionComponent<CardContentProps>
+type StyledComponentType = StyledComponent<ComponentType, CardContentProps>
 
-const InternalCardContent: React.FC<CardContentProps> = props => (
+const InternalCardContent: ComponentType = props => (
   <Box p="medium" {...props}>
     {props.children}
   </Box>
 )
 
-const CardContentFactory = React.forwardRef((props: CardContentProps, ref) => (
-  <InternalCardContent innerRef={ref} {...props} />
+const CardContentFactory = React.forwardRef<
+  StyledComponentType,
+  CardContentProps
+>((props: CardContentProps, ref: Ref<StyledComponentType>) => (
+  <InternalCardContent ref={ref} {...props} />
 ))
 
-export const CardContent = styled<CardContentProps>(CardContentFactory)``
+/** @component */
+export const CardContent = styled<ComponentType>(CardContentFactory)``

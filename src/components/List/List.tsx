@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { css, styled } from '../../style'
+import React, { FunctionComponent, Ref } from 'react'
+import styled, { css, StyledComponent } from 'styled-components'
 import { Box, BoxProps } from '../Box'
 
 export interface ListProps
@@ -10,10 +10,13 @@ export interface ListProps
 
 export type ListTypes = 'bullet' | 'number' | 'letter'
 
+type ComponentType = FunctionComponent<ListProps>
+type StyledComponentType = StyledComponent<ComponentType, ListProps>
+
 /**
  * List are stacked groups of related content that can be useful in many contexts.
  */
-const InternalList: React.FC<ListProps> = ({ type, ...props }) => {
+const InternalList: ComponentType = ({ type, ...props }) => {
   const pl = props.nomarker ? 'none' : 'medium'
   delete props.nomarker
   switch (type) {
@@ -60,10 +63,13 @@ function listStyleType(props: ListProps) {
   }
 }
 
-const ListFactory = React.forwardRef((props: ListProps, ref) => (
-  <InternalList innerRef={ref} {...props} />
-))
+const ListFactory = React.forwardRef<StyledComponentType, ListProps>(
+  (props: ListProps, ref: Ref<StyledComponentType>) => (
+    <InternalList ref={ref} {...props} />
+  )
+)
 
-export const List = styled<ListProps>(ListFactory)`
+/** @component */
+export const List = styled<ComponentType>(ListFactory)`
   ${listStyleType};
 `

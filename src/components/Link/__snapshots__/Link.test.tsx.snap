@@ -9,6 +9,8 @@ exports[`A Link with an id 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   color: #0087e1;
 }
 
@@ -40,6 +42,8 @@ exports[`A default Link 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   color: #0087e1;
 }
 
@@ -70,6 +74,8 @@ exports[`A external Link 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   color: #0087e1;
 }
 

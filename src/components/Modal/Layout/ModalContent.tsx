@@ -1,6 +1,7 @@
-import * as React from 'react'
+import React, { FunctionComponent } from 'react'
 import ReactResizeDetector from 'react-resize-detector'
-import { palette, styled } from '../../../style'
+import styled, { StyledComponent } from 'styled-components'
+import { palette } from '../../../style'
 import { Box, BoxProps } from '../../Box'
 
 export interface ModalContentProps extends BoxProps<HTMLDivElement> {
@@ -24,6 +25,12 @@ interface ContentState {
 interface InternalContentProps extends ModalContentProps {
   renderedHeight: string
 }
+
+export type ModalContentComponentType = FunctionComponent<ModalContentProps>
+export type StyledModalContentComponentType = StyledComponent<
+  ModalContentComponentType,
+  ModalContentProps
+>
 
 class Internal extends React.Component<InternalContentProps, ContentState> {
   private ref: React.RefObject<HTMLDivElement>
@@ -57,7 +64,7 @@ class Internal extends React.Component<InternalContentProps, ContentState> {
         overflow="auto"
         className={`${props.className && props.className} ${this.state
           .overflow && 'overflow'}`}
-        innerRef={this.ref}
+        ref={this.ref}
         flex="8"
         {...props}
       >
@@ -69,7 +76,7 @@ class Internal extends React.Component<InternalContentProps, ContentState> {
   }
 }
 
-export const ModalContent: React.FC<ModalContentProps> = props => {
+export const ModalContent: ModalContentComponentType = props => {
   return (
     <ReactResizeDetector handleHeight>
       {(height: string) => <Internal renderedHeight={height} {...props} />}

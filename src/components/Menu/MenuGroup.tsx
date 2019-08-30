@@ -1,5 +1,6 @@
-import * as React from 'react'
-import { palette, styled } from '../../style'
+import React, { FunctionComponent, Ref } from 'react'
+import styled, { StyledComponent } from 'styled-components'
+import { palette } from '../../style'
 import { Box, BoxPropsWithout } from '../Box'
 import { Heading, HeadingProps } from '../Heading'
 import { List } from '../List'
@@ -16,7 +17,10 @@ export interface MenuGroupProps
   compact?: boolean
 }
 
-const InternalMenuGroup: React.FC<MenuGroupProps> = ({
+type ComponentType = FunctionComponent<MenuGroupProps>
+type StyledComponentType = StyledComponent<ComponentType, MenuGroupProps>
+
+const InternalMenuGroup: ComponentType = ({
   children,
   label,
   labelProps,
@@ -88,8 +92,11 @@ const InternalMenuGroup: React.FC<MenuGroupProps> = ({
 
 const MenuLabel = styled.div``
 
-const MenuGroupFactory = React.forwardRef((props: MenuGroupProps, ref) => (
-  <InternalMenuGroup innerRef={ref} {...props} />
-))
+const MenuGroupFactory = React.forwardRef<StyledComponentType, MenuGroupProps>(
+  (props: MenuGroupProps, ref: Ref<StyledComponentType>) => (
+    <InternalMenuGroup ref={ref} {...props} />
+  )
+)
 
-export const MenuGroup = styled(MenuGroupFactory)``
+/** @component */
+export const MenuGroup = styled<ComponentType>(MenuGroupFactory)``

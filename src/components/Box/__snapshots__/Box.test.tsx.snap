@@ -9,6 +9,8 @@ exports[`Box Box default 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   margin-top: 1.25rem;
 }
 
@@ -28,6 +30,8 @@ exports[`Box Box supports background-color 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   background-color: #64518A;
 }
 
@@ -45,6 +49,8 @@ exports[`Box Box supports display 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   display: inline-block;
 }
 
@@ -62,6 +68,8 @@ exports[`Box Box supports height properties 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   height: 1vh;
 }
 
@@ -79,6 +87,8 @@ exports[`Box Box supports height properties 2`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   max-height: 1vh;
 }
 
@@ -96,6 +106,8 @@ exports[`Box Box supports height properties 3`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   min-height: 1vh;
 }
 
@@ -113,6 +125,8 @@ exports[`Box Box supports position, top, left, bottom, right 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   position: absolute;
 }
 
@@ -130,6 +144,8 @@ exports[`Box Box supports position, top, left, bottom, right 2`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   top: 1rem;
 }
 
@@ -147,6 +163,8 @@ exports[`Box Box supports position, top, left, bottom, right 3`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   left: 1rem;
 }
 
@@ -164,6 +182,8 @@ exports[`Box Box supports position, top, left, bottom, right 4`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   right: 1rem;
 }
 
@@ -181,6 +201,8 @@ exports[`Box Box supports position, top, left, bottom, right 5`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   bottom: 1rem;
 }
 
@@ -198,6 +220,8 @@ exports[`Box Box supports responsive fontSize and lineHeight 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   font-size: 0.875rem;
 }
 
@@ -221,6 +245,8 @@ exports[`Box Box supports responsive fontSize and lineHeight 2`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   line-height: 1.25rem;
 }
 
@@ -244,6 +270,8 @@ exports[`Box Box supports width 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   width: 1vw;
 }
 
@@ -261,6 +289,8 @@ exports[`Box Box supports width 2`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   max-width: 1vw;
 }
 
@@ -278,6 +308,8 @@ exports[`Box Box supports width 3`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   min-width: 1vw;
 }
 
@@ -295,6 +327,8 @@ exports[`Box Box with SizeNone is valid 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   margin-top: 0rem;
 }
 
@@ -314,6 +348,8 @@ exports[`Box Box with null values are removed from styling 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   margin-top: 1.25rem;
 }
 
@@ -339,6 +375,8 @@ exports[`Box Responsive margin top Box 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   margin-top: 1.25rem;
 }
 
@@ -370,6 +408,8 @@ exports[`Box borders Box supports borders 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   border: 1px solid black;
 }
 
@@ -387,6 +427,8 @@ exports[`Box borders supports borderColor 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   border-color: #DEE1E5;
 }
 
@@ -404,6 +446,8 @@ exports[`Box borders supports borderRadius 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   border-radius: 0.25rem;
 }
 
@@ -421,6 +465,8 @@ exports[`Box core HTML attributes Box allows autoFocus 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
 }
 
 <div
@@ -440,6 +486,8 @@ exports[`Box core HTML attributes Box allows for ARIA attributes 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
 }
 
 <div
@@ -459,6 +507,8 @@ exports[`Box core HTML attributes Box allows for HTML events 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
 }
 
 <div
@@ -481,6 +531,8 @@ exports[`Box flex supports flex item properties 1`] = `
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   align-self: center;
+  -webkit-animation: none;
+  animation: none;
   -webkit-flex: 1 1;
   -ms-flex: 1 1;
   flex: 1 1;
@@ -513,6 +565,8 @@ exports[`Box flex supports flex properties 1`] = `
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
+  -webkit-animation: none;
+  animation: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -543,6 +597,8 @@ exports[`Box fonts font helpers 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   font-family: system-ui;
 }
 
@@ -560,6 +616,8 @@ exports[`Box fonts font helpers 2`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   font-size: 0.875rem;
 }
 
@@ -577,6 +635,8 @@ exports[`Box fonts font helpers 3`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   font-weight: 700;
 }
 
@@ -594,6 +654,8 @@ exports[`Box fonts font helpers 4`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   -webkit-letter-spacing: 10;
   -moz-letter-spacing: 10;
   -ms-letter-spacing: 10;
@@ -614,6 +676,8 @@ exports[`Box fonts font helpers 5`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   line-height: 1.5rem;
 }
 
@@ -631,6 +695,8 @@ exports[`Box fonts font helpers 6`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   text-align: right;
 }
 
@@ -648,6 +714,8 @@ exports[`Box fonts font helpers 7`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   color: #939BA5;
 }
 

@@ -7,7 +7,7 @@ If you need an icon for purely decorative purposes use an `<Icon />` instead.
 ```js
 import { IconButton } from './IconButton'
 import { Tooltip } from '../Tooltip'
-import { styled } from '../../style'
+import styled from 'styled-components'
 
 const FancyIconButton = styled(IconButton)`
   transition: transform 0.5s;
@@ -15,7 +15,6 @@ const FancyIconButton = styled(IconButton)`
     transform: rotate(45deg);
   }
 `
-
 ;<>
   <IconButton label="Add File" icon="Plus" size="xxsmall" mr="small" />
   <IconButton label="Settings" icon="Gear" mr="small" />
@@ -34,14 +33,13 @@ const FancyIconButton = styled(IconButton)`
   />
 
   <Tooltip content="Add a new file">
-    {(eventHandlers, ref) => (
+    {eventHandlers => (
       <FancyIconButton
         label="Close"
         icon="Close"
         size="large"
         outline
         mr="small"
-        innerRef={ref}
         {...eventHandlers}
       />
     )}

@@ -1,5 +1,5 @@
+import { css } from 'styled-components'
 import { ThemedProps } from '../types'
-import { css } from './styled_components'
 import { Theme } from './theme'
 
 export type TextTransforms = 'caps' | 'lower' | 'none' | 'upper'

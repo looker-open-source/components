@@ -1,13 +1,16 @@
 import { Placement } from 'popper.js'
-import * as React from 'react'
+import React, { CSSProperties, FunctionComponent, Ref } from 'react'
 import { HotKeys } from 'react-hotkeys'
 import { PopperArrowProps } from 'react-popper'
-import { styled } from '../../style'
+import styled, {
+  FlattenSimpleInterpolation,
+  StyledComponent,
+} from 'styled-components'
 import { Box } from '../Box'
 import { ModalContext } from '../Modal'
 
 export interface SurfaceStyleProps {
-  animation?: string
+  animation?: FlattenSimpleInterpolation
   backgroundColor: string
   border: string
   borderColor: string
@@ -22,12 +25,18 @@ export interface OverlaySurfaceProps extends SurfaceStyleProps {
   children: React.ReactNode
   eventHandlers?: React.DOMAttributes<{}>
   placement: Placement
-  style?: React.CSSProperties
+  style?: CSSProperties
   surfaceRef?: any
   zIndex?: number
 }
 
-const OverlaySurfaceInternal: React.FC<OverlaySurfaceProps> = ({
+type ComponentType = FunctionComponent<OverlaySurfaceProps>
+type StyledComponentType = StyledComponent<
+  FunctionComponent,
+  OverlaySurfaceProps
+>
+
+const OverlaySurfaceInternal: ComponentType = ({
   animation,
   children,
   surfaceRef,
@@ -41,9 +50,10 @@ const OverlaySurfaceInternal: React.FC<OverlaySurfaceProps> = ({
     <Box
       p="xsmall"
       overflow="visible"
-      innerRef={surfaceRef}
-      style={{ ...style, animation }}
+      ref={surfaceRef}
+      style={{ ...style }}
       zIndex={zIndex}
+      animation={animation}
       {...props.eventHandlers}
     >
       <HotKeys
@@ -78,7 +88,7 @@ const OverlaySurfaceInternal: React.FC<OverlaySurfaceProps> = ({
               border={props.border}
               borderColor={props.borderColor}
               data-placement={props.placement}
-              innerRef={props.arrowProps.ref}
+              ref={props.arrowProps.ref as any}
               style={props.arrowProps.style}
             />
           )}
@@ -88,17 +98,39 @@ const OverlaySurfaceInternal: React.FC<OverlaySurfaceProps> = ({
   )
 }
 
-export const OverlaySurface = React.forwardRef(
-  (props: OverlaySurfaceProps, ref) => (
-    <OverlaySurfaceInternal surfaceRef={ref} {...props} />
-  )
-)
+export const OverlaySurface = React.forwardRef<
+  StyledComponentType,
+  OverlaySurfaceProps
+>((props: OverlaySurfaceProps, ref: Ref<StyledComponentType>) => (
+  <OverlaySurfaceInternal surfaceRef={ref} {...props} />
+))
 
-const OverlaySurfaceArrow = styled.div<{
+interface SurfaceArrowProps extends PopperArrowProps {
+  className?: string
   backgroundColor: string
-  border: React.ReactText
-  borderColor: React.ReactText
-}>`
+  border: string
+  borderColor: string
+  ['data-placement']: string
+}
+
+type SurfaceArrowComponentType = FunctionComponent<SurfaceArrowProps>
+
+const OverlaySurfaceArrowFactory = React.forwardRef<
+  SurfaceArrowComponentType,
+  SurfaceArrowProps
+>((props, ref) => {
+  const { className, style } = props
+  return (
+    <Box
+      ref={ref}
+      className={className}
+      style={style}
+      data-placement={props['data-placement']}
+    />
+  )
+})
+
+const OverlaySurfaceArrow = styled(OverlaySurfaceArrowFactory)`
   position: absolute;
 
   &::before {

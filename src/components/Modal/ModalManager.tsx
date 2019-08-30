@@ -39,13 +39,14 @@ export interface ModalManagerState {
   isOpen: boolean
 }
 
-export abstract class ModalManager<
-  T extends ModalManagerProps
-> extends React.Component<T, ModalManagerState> {
+export abstract class ModalManager extends React.Component<
+  ModalManagerProps,
+  ModalManagerState
+> {
   protected triggerRef: React.RefObject<HTMLElement>
   protected portalRef: React.RefObject<HTMLElement>
 
-  constructor(props: T) {
+  constructor(props: ModalManagerProps) {
     super(props)
     this.state = { isOpen: false }
     this.triggerRef = React.createRef()

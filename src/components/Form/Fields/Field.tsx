@@ -1,7 +1,9 @@
 import { TextAlignProperty } from 'csstype'
-import * as React from 'react'
-import { FontWeights, SpacingSizes, styled } from '../../../style'
+import React, { FunctionComponent } from 'react'
+import styled, { StyledComponent } from 'styled-components'
+import { FontWeights, SpacingSizes } from '../../../style'
 import { ResponsiveSpaceValue } from '../../../style/responsive'
+import { ThemedProps } from '../../../types'
 import { CustomizableAttributes } from '../../../types/attributes'
 import { FlexItem } from '../../FlexItem'
 import { FormControl, FormControlDirections } from '../FormControl/FormControl'
@@ -55,12 +57,21 @@ interface LabelContainerAlignment {
   mr?: SpacingSizes
 }
 
-const RequiredStar = styled(props => (
-  <span {...props} aria-hidden="true">
-    {' '}
-    *
-  </span>
-))`
+export type ThemedStarProps = ThemedProps<{}>
+export type StarComponentType = FunctionComponent<ThemedStarProps>
+export type StyledStarComponentType = StyledComponent<
+  StarComponentType,
+  ThemedStarProps
+>
+
+const RequiredStar: StyledStarComponentType = styled<StarComponentType>(
+  (props: ThemedStarProps) => (
+    <span {...props} aria-hidden="true">
+      {' '}
+      *
+    </span>
+  )
+)`
   color: ${props => props.theme.colors.semanticColors.danger.darker};
 `
 const handleHorizontalAlignment = (
@@ -110,12 +121,17 @@ const getValidationMessageAlignment = (
   }
 }
 
+export type FieldComponentType = FunctionComponent<FieldProps>
+export type StyledFieldComponentType = StyledComponent<
+  FieldComponentType,
+  FieldProps
+>
 /**
  * `<Field />` allows the rendering of a label (optionally associated with a child input like `<InputText />`),
  * and can render a validation message. Generally, this component is used with form inputs to give user
  * feedback about the status of the input values.
  */
-const InternalField = (props: FieldProps & { children?: React.ReactNode }) => {
+const InternalField: FieldComponentType = props => {
   const labelFontWeight = props.labelFontWeight
     ? { fontWeight: props.labelFontWeight }
     : {}
@@ -146,11 +162,10 @@ const InternalField = (props: FieldProps & { children?: React.ReactNode }) => {
   )
 }
 
-const FieldFactory = React.forwardRef((props: FieldProps, ref) => (
-  <InternalField innerRef={ref} {...props} />
-))
-
-export const Field = styled<FieldProps>(FieldFactory)``
+/** @component */
+export const Field: StyledFieldComponentType = styled<FieldComponentType>(
+  InternalField
+)``
 
 export interface CustomizableFieldAttributesInterface
   extends CustomizableAttributes {

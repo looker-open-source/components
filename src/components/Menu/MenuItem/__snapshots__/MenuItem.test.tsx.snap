@@ -9,6 +9,8 @@ exports[`MenuItem - current + marker 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0.75rem;
@@ -27,6 +29,8 @@ exports[`MenuItem - current + marker 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-animation: none;
+  animation: none;
   color: #262D33;
   background-color: #F5F6F7;
   display: -webkit-box;
@@ -52,6 +56,8 @@ exports[`MenuItem - current + marker 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-animation: none;
+  animation: none;
   color: #262D33;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -170,6 +176,8 @@ exports[`MenuItem - current 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0.75rem;
@@ -188,6 +196,8 @@ exports[`MenuItem - current 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-animation: none;
+  animation: none;
   color: #262D33;
   background-color: #F5F6F7;
   display: -webkit-box;
@@ -213,6 +223,8 @@ exports[`MenuItem - current 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-animation: none;
+  animation: none;
   color: #262D33;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -318,6 +330,8 @@ exports[`MenuItem - detail 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-animation: none;
+  animation: none;
   color: #4C535B;
   background-color: #FFFFFF;
   display: -webkit-box;
@@ -339,6 +353,8 @@ exports[`MenuItem - detail 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0.75rem;
@@ -353,6 +369,8 @@ exports[`MenuItem - detail 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   color: #C1C6CC;
   font-size: 0.75rem;
   margin-left: auto;
@@ -442,6 +460,8 @@ exports[`MenuItem - icon 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-animation: none;
+  animation: none;
   color: #4C535B;
   background-color: #FFFFFF;
   display: -webkit-box;
@@ -463,6 +483,8 @@ exports[`MenuItem - icon 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0.75rem;
@@ -481,6 +503,8 @@ exports[`MenuItem - icon 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-animation: none;
+  animation: none;
   color: #C1C6CC;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -596,6 +620,8 @@ exports[`MenuItem - with customizations 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0.75rem;
@@ -614,6 +640,8 @@ exports[`MenuItem - with customizations 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-animation: none;
+  animation: none;
   color: #1E1047;
   background-color: #BFB2FF;
   display: -webkit-box;
@@ -701,6 +729,8 @@ exports[`MenuItem - with single customization 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0.75rem;
@@ -719,6 +749,8 @@ exports[`MenuItem - with single customization 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-animation: none;
+  animation: none;
   color: #262D33;
   background-color: #4F2ABA;
   display: -webkit-box;
@@ -810,6 +842,8 @@ exports[`MenuItem 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-animation: none;
+  animation: none;
   color: #4C535B;
   background-color: #FFFFFF;
   display: -webkit-box;
@@ -831,6 +865,8 @@ exports[`MenuItem 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-animation: none;
+  animation: none;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0.75rem;
