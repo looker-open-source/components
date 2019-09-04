@@ -9,19 +9,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- `InputHidden` added
-- `InputSearch` added
-
 ### Changed
 
-- Styled Components 4.0
-- `MenuSearch` now depends on `InputSearch`
-- `MenuGroup`'s spacing is now more consistent in both the regular and `compact` variations
-- `MenuGroup` labels are no longer `text-transform`ed to uppercase
+- Upgrade to Styled Components 4.x
 
 ### Removed
 
 ### Bug Fixes
+
+## [0.0.1-beta.25] - 2019-09-04
+
+### Added
+
+- `InputHidden` added
+- `InputSearch` added
+- `truncateLines` now supported by `Heading` & `Paragraph`
+
+### Changed
+
+- `MenuSearch` now depends on `InputSearch`
+- `MenuGroup`'s spacing is now more consistent in both the regular and `compact` variations
+- `MenuGroup` labels are no longer `text-transform`ed to uppercase
+- SVG icons now include a `<title>` element for improved accessibility and easier integration testing.
+
+### Bug Fixes
+
 - `MenuItem`'s `detail` now has correct spacing from the edge of the `MenuItem`
 
 ## [0.0.1-beta.24.1] - 2019-08-18
