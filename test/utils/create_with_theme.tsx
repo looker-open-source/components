@@ -1,3 +1,4 @@
+import { render } from '@testing-library/react'
 import { mount, shallow } from 'enzyme'
 import 'jest-styled-components'
 import * as React from 'react'
@@ -17,3 +18,6 @@ export const mountWithTheme = (Component: React.ReactElement<any>) =>
 
 export const shallowWithTheme = (Component: React.ReactElement<any>) =>
   shallow(withThemeProvider(Component))
+
+export const renderWithTheme = (Component: React.ReactElement<any>) =>
+  render(withThemeProvider(Component))
