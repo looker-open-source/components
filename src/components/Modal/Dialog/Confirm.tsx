@@ -9,13 +9,25 @@ export interface ConfirmProps extends ConfirmationProps {
   children: (open: () => void) => React.ReactNode
 }
 
-export const Confirm: React.FC<ConfirmProps> = ({ children, ...props }) => {
+export function useConfirm(
+  props: ConfirmationProps
+): [React.ReactNode, () => void] {
   const { value, setOn, setOff } = useToggle()
+
+  const rendered = (
+    <ConfirmationDialog {...props} isOpen={value} close={setOff} />
+  )
+
+  return [rendered, setOn]
+}
+
+export const Confirm: React.FC<ConfirmProps> = ({ children, ...props }) => {
+  const [confirmation, confirm] = useConfirm(props)
 
   return (
     <>
-      {children(setOn)}
-      <ConfirmationDialog isOpen={value} close={setOff} {...props} />
+      {children(confirm)}
+      {confirmation}
     </>
   )
 }

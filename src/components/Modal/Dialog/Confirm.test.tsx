@@ -27,12 +27,12 @@ const optionalProps = {
 }
 
 test('<Confirm/> with defaults', () => {
-  const result = renderWithTheme(
+  const { getByText, queryByText } = renderWithTheme(
     <Confirm {...requiredProps}>
       {open => <Button onClick={open}>Do Something</Button>}
     </Confirm>
   )
-  const { getByText, queryByText } = result
+
   const opener = getByText('Do Something')
   fireEvent.click(opener)
 
@@ -50,12 +50,12 @@ test('<Confirm/> with defaults', () => {
 })
 
 test('<Confirm/> with custom props', () => {
-  const result = renderWithTheme(
+  const { getByText } = renderWithTheme(
     <Confirm {...requiredProps} {...optionalProps} buttonColor="danger">
       {open => <Button onClick={open}>Do Something</Button>}
     </Confirm>
   )
-  const { getByText } = result
+
   const opener = getByText('Do Something')
   fireEvent.click(opener)
 

@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- `Confirm` and `useConfirm` added
+
 ### Changed
 
 - Upgrade to Styled Components 4.x

@@ -77,6 +77,7 @@ const componentSections = [
       'src/components/Modal/ModalPortal.tsx',
       'src/components/Modal/ModalSurface.tsx',
       'src/components/Modal/Dialog/DialogSurface.tsx',
+      'src/components/Modal/Dialog/ConfirmationDialog.tsx',
       'src/components/Modal/Drawer/DrawerSurface.tsx',
     ],
   },
