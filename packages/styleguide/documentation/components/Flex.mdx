@@ -1,135 +1,136 @@
-```js noeditor
-const StatusAndResources = require('../../../styleguide_components/StatusAndResources')
-  .StatusAndResources
-;<StatusAndResources
-  status="experimental"
-  githubURL="https://github.com/looker/lens/blob/master/src/components/Flex/Flex.tsx"
-  feedbackTitle="Flex Component Feedback"
-/>
-```
+---
+name: Flex
+menu: Layout
+---
+
+import { Playground } from 'docz';
+import { Flex, FlexItem, Box, Text /* Icon */ } from 'looker-lens-components';
+
+# Flex
 
 The `<Flex />` component creates a flex container for you to place `<FlexItem />` components inside. It lets you utilize [flex box](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout) to create a wide variety of layouts, with powerful alignment, directional, and space distribution abilities.
 
 If you are not familiar with flex box, [here is a great guide](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) for how it works.
 
-### Basic Usage
+## Basic Usage
 
 The `<Flex />` component has the ability to control the layout direction and order of its children. By default the children will layout in a row.
 
-```js
-import { Flex } from './Flex'
-import { FlexItem } from '../FlexItem'
-;<Flex>
-  <FlexItem>👋</FlexItem>
-  <FlexItem>💪</FlexItem>
-  <FlexItem>📦</FlexItem>
-</Flex>
-```
+<Playground>
+  <Flex>
+    <FlexItem>👋</FlexItem>
+    <FlexItem>💪</FlexItem>
+    <FlexItem>📦</FlexItem>
+  </Flex>
+</Playground>
 
-### A real world example
+## A real world example
 
 Using our `<Flex>` and `<FlexItem>` components we can quickly scaffold out real world use cases like a navigation bar.
 
-```js
-import { Flex } from './Flex'
-import { FlexItem } from '../FlexItem'
-import { Box } from '../Box'
-import { Icon } from '../Icon/Icon'
-import { Text } from '../Text'
-;<Flex
-  bg="palette.charcoal800"
-  px="small"
-  height="50px"
-  alignItems="center"
-  justifyContent="space-between"
->
-  <FlexItem mr="medium" pt="xsmall">
-    <Icon name="Hamburger" color="palette.white" size={24} />
-  </FlexItem>
-  <FlexItem>
-    <Icon name="LookerLogo" color="palette.white" size={60} />
-  </FlexItem>
-  <FlexItem flex="1">
-    <Flex justifyContent="center">
-      <Box px="small">
-        <Text fontSize="xsmall" variant="inverted">
-          Browse <Icon name="ExpandMore" />
-        </Text>
-      </Box>
-      <Box px="small">
-        <Text fontSize="xsmall" variant="inverted">
-          Explore <Icon name="ExpandMore" />
-        </Text>
-      </Box>
-      <Box px="small">
-        <Text fontSize="xsmall" variant="inverted">
-          Develop <Icon name="ExpandMore" />
-        </Text>
-      </Box>
-      <Box px="small">
-        <Text fontSize="xsmall" variant="inverted">
-          Admin <Icon name="ExpandMore" />
-        </Text>
-      </Box>
-    </Flex>
-  </FlexItem>
-  <FlexItem>
-    <Flex>
-      <FlexItem mr="small">
-        <Icon name="Search" color="palette.white" size={24} />
-      </FlexItem>
-      <FlexItem mr="small">
-        <Icon name="Chat" color="palette.white" size={24} />
-      </FlexItem>
-      <FlexItem>
-        <Icon name="Group" color="palette.white" size={24} />
-      </FlexItem>
-    </Flex>
-  </FlexItem>
-</Flex>
-```
+<Playground>
+  <Flex
+    bg="palette.charcoal800"
+    px="small"
+    height="50px"
+    alignItems="center"
+    justifyContent="space-between"
+  >
+    <FlexItem mr="medium" pt="xsmall">
+      Hamburger Icon
+      {/* <Icon name="Hamburger" color="palette.white" size={24} /> */}
+    </FlexItem>
+    <FlexItem>
+      Looker Logo
+      {/* <Icon name="LookerLogo" color="palette.white" size={60} /> */}
+    </FlexItem>
+    <FlexItem flex="1">
+      <Flex justifyContent="center">
+        <Box px="small">
+          <Text fontSize="xsmall" variant="inverted">
+            Browse
+            {/*  <Icon name="ExpandMore" /> */}
+          </Text>
+        </Box>
+        <Box px="small">
+          <Text fontSize="xsmall" variant="inverted">
+            Explore
+            {/* <Icon name="ExpandMore" /> */}
+          </Text>
+        </Box>
+        <Box px="small">
+          <Text fontSize="xsmall" variant="inverted">
+            Develop
+            {/* <Icon name="ExpandMore" /> */}
+          </Text>
+        </Box>
+        <Box px="small">
+          <Text fontSize="xsmall" variant="inverted">
+            Admin
+            {/* <Icon name="ExpandMore" /> */}
+          </Text>
+        </Box>
+      </Flex>
+    </FlexItem>
+    <FlexItem>
+      <Flex>
+        <FlexItem mr="small">
+          Search
+          {/* <Icon name="Search" color="palette.white" size={24} /> */}
+        </FlexItem>
+        <FlexItem mr="small">
+          Chat
+          {/* <Icon name="Chat" color="palette.white" size={24} /> */}
+        </FlexItem>
+        <FlexItem>
+          Group
+          {/* <Icon name="Group" color="palette.white" size={24} /> */}
+        </FlexItem>
+      </Flex>
+    </FlexItem>
+  </Flex>
+</Playground>
 
-### Changing direction and order
+## Changing direction and order
 
 You can change the layout direction and order of flex children by using the `flexDirection` property. Below we use the same children in each example but can adjust the layout quickly using `flexDirection`.
 
-```js
-import { Flex } from './Flex'
-import { FlexItem } from '../FlexItem'
-;<Flex>
-  <Flex mr="large">
-    <FlexItem>1️⃣</FlexItem>
-    <FlexItem>2️⃣</FlexItem>
-    <FlexItem>3️⃣</FlexItem>
-  </Flex>
+<Playground>
+  <Flex>
+    <Flex mr="large">
+      <FlexItem>1️⃣</FlexItem>
+      <FlexItem>2️⃣</FlexItem>
+      <FlexItem>3️⃣</FlexItem>
+    </Flex>
 
-  <Flex flexDirection="column" mr="large">
-    <FlexItem>1️⃣</FlexItem>
-    <FlexItem>2️⃣</FlexItem>
-    <FlexItem>3️⃣</FlexItem>
-  </Flex>
+    <Flex flexDirection="column" mr="large">
+      <FlexItem>1️⃣</FlexItem>
+      <FlexItem>2️⃣</FlexItem>
+      <FlexItem>3️⃣</FlexItem>
+    </Flex>
 
-  <Flex flexDirection="column-reverse" mr="large">
-    <FlexItem>1️⃣</FlexItem>
-    <FlexItem>2️⃣</FlexItem>
-    <FlexItem>3️⃣</FlexItem>
-  </Flex>
+    <Flex flexDirection="column-reverse" mr="large">
+      <FlexItem>1️⃣</FlexItem>
+      <FlexItem>2️⃣</FlexItem>
+      <FlexItem>3️⃣</FlexItem>
+    </Flex>
 
-  <Flex flexDirection="row-reverse" mr="large">
-    <FlexItem>1️⃣</FlexItem>
-    <FlexItem>2️⃣</FlexItem>
-    <FlexItem>3️⃣</FlexItem>
-  </Flex>
-</Flex>
-```
+    <Flex flexDirection="row-reverse" mr="large">
+      <FlexItem>1️⃣</FlexItem>
+      <FlexItem>2️⃣</FlexItem>
+      <FlexItem>3️⃣</FlexItem>
+    </Flex>
 
-### Item distribution
+  </Flex>
+</Playground>
+
+## Item distribution
 
 The `<Flex>` component allows you to control how its children are distributed within its container. Using the `justifyContent` property you can adjust the distribution of the children. Below is a table with all the justify options:
 
 ```js noeditor
-import { Flex } from './Flex'
-import { FlexItem } from '../FlexItem'
+import { Flex } from './Flex';
+import { FlexItem } from '../FlexItem';
 import {
   Table,
   TableHead,
@@ -137,9 +138,9 @@ import {
   TableHeaderCell,
   TableBody,
   TableDataCell,
-} from '../Table'
-import { Code, Text } from '../Text'
-;<Table>
+} from '../Table';
+import { Code, Text } from '../Text';
+<Table>
   <TableHead>
     <TableRow>
       <TableHeaderCell width="40%">Justify Property</TableHeaderCell>
@@ -227,16 +228,12 @@ import { Code, Text } from '../Text'
       </TableDataCell>
     </TableRow>
   </TableBody>
-</Table>
+</Table>;
 ```
 
 Here is a visual example of how using `justifyContent` affects the distribution of items in a `<Flex />` component.
 
-```js
-import { Flex } from './Flex'
-import { Box } from '../Box'
-import { Text } from '../Text'
-;<div>
+<Playground>
   <Flex justifyContent="flex-start" mb="medium" bg="palette.charcoal000">
     <Box>
       <Text fontSize="xxxxlarge">🕺</Text>
@@ -249,53 +246,53 @@ import { Text } from '../Text'
     </Box>
   </Flex>
 
-  <Flex justifyContent="space-between" mb="medium" bg="palette.charcoal000">
-    <Box>
-      <Text fontSize="xxxxlarge">🕺</Text>
-    </Box>
-    <Box>
-      <Text fontSize="xxxxlarge">🎶</Text>
-    </Box>
-    <Box>
-      <Text fontSize="xxxxlarge">💃</Text>
-    </Box>
-  </Flex>
+<Flex justifyContent="space-between" mb="medium" bg="palette.charcoal000">
+  <Box>
+    <Text fontSize="xxxxlarge">🕺</Text>
+  </Box>
+  <Box>
+    <Text fontSize="xxxxlarge">🎶</Text>
+  </Box>
+  <Box>
+    <Text fontSize="xxxxlarge">💃</Text>
+  </Box>
+</Flex>
 
-  <Flex justifyContent="space-around" mb="medium" bg="palette.charcoal000">
-    <Box>
-      <Text fontSize="xxxxlarge">🕺</Text>
-    </Box>
-    <Box>
-      <Text fontSize="xxxxlarge">🎶</Text>
-    </Box>
-    <Box>
-      <Text fontSize="xxxxlarge">💃</Text>
-    </Box>
-  </Flex>
+<Flex justifyContent="space-around" mb="medium" bg="palette.charcoal000">
+  <Box>
+    <Text fontSize="xxxxlarge">🕺</Text>
+  </Box>
+  <Box>
+    <Text fontSize="xxxxlarge">🎶</Text>
+  </Box>
+  <Box>
+    <Text fontSize="xxxxlarge">💃</Text>
+  </Box>
+</Flex>
 
-  <Flex justifyContent="space-evenly" mb="medium" bg="palette.charcoal000">
-    <Box>
-      <Text fontSize="xxxxlarge">🕺</Text>
-    </Box>
-    <Box>
-      <Text fontSize="xxxxlarge">🎶</Text>
-    </Box>
-    <Box>
-      <Text fontSize="xxxxlarge">💃</Text>
-    </Box>
-  </Flex>
+<Flex justifyContent="space-evenly" mb="medium" bg="palette.charcoal000">
+  <Box>
+    <Text fontSize="xxxxlarge">🕺</Text>
+  </Box>
+  <Box>
+    <Text fontSize="xxxxlarge">🎶</Text>
+  </Box>
+  <Box>
+    <Text fontSize="xxxxlarge">💃</Text>
+  </Box>
+</Flex>
 
-  <Flex justifyContent="center" mb="medium" bg="palette.charcoal000">
-    <Box>
-      <Text fontSize="xxxxlarge">🕺</Text>
-    </Box>
-    <Box>
-      <Text fontSize="xxxxlarge">🎶</Text>
-    </Box>
-    <Box>
-      <Text fontSize="xxxxlarge">💃</Text>
-    </Box>
-  </Flex>
+<Flex justifyContent="center" mb="medium" bg="palette.charcoal000">
+  <Box>
+    <Text fontSize="xxxxlarge">🕺</Text>
+  </Box>
+  <Box>
+    <Text fontSize="xxxxlarge">🎶</Text>
+  </Box>
+  <Box>
+    <Text fontSize="xxxxlarge">💃</Text>
+  </Box>
+</Flex>
 
   <Flex justifyContent="flex-end" mb="medium" bg="palette.charcoal000">
     <Box>
@@ -308,10 +305,9 @@ import { Text } from '../Text'
       <Text fontSize="xxxxlarge">💃</Text>
     </Box>
   </Flex>
-</div>
-```
+</Playground>
 
-### Aligning Items
+## Aligning Items
 
 Flex box allows for quickly adjusting the alignment of items inside the flex container. Below are available alignment types:
 
@@ -323,9 +319,9 @@ import {
   TableHeaderCell,
   TableBody,
   TableDataCell,
-} from '../Table'
-import { Code, Text } from '../Text'
-;<Table>
+} from '../Table';
+import { Code, Text } from '../Text';
+<Table>
   <TableHead>
     <TableRow>
       <TableHeaderCell width="40%">AlignItems Property</TableHeaderCell>
@@ -391,15 +387,12 @@ import { Code, Text } from '../Text'
       </TableDataCell>
     </TableRow>
   </TableBody>
-</Table>
+</Table>;
 ```
 
 Here is an example of using `alignItems` to adjust how items are aligned within the flex container.
 
-```js
-import { Flex } from './Flex'
-import { FlexItem } from '../FlexItem'
-;<>
+<Playground>
   <Flex mb="xxlarge">
     <FlexItem p="xxlarge" bg="palette.purple200">
       Default (stretch)
@@ -415,50 +408,50 @@ import { FlexItem } from '../FlexItem'
     </FlexItem>
   </Flex>
 
-  <Flex alignItems="center" mb="xxlarge">
-    <FlexItem p="xxlarge" bg="palette.purple200">
-      Center
-    </FlexItem>
-    <FlexItem p="large" bg="palette.blue200">
-      One
-    </FlexItem>
-    <FlexItem p="medium" bg="palette.green200">
-      Two
-    </FlexItem>
-    <FlexItem p="small" bg="palette.red200">
-      Three
-    </FlexItem>
-  </Flex>
+<Flex alignItems="center" mb="xxlarge">
+  <FlexItem p="xxlarge" bg="palette.purple200">
+    Center
+  </FlexItem>
+  <FlexItem p="large" bg="palette.blue200">
+    One
+  </FlexItem>
+  <FlexItem p="medium" bg="palette.green200">
+    Two
+  </FlexItem>
+  <FlexItem p="small" bg="palette.red200">
+    Three
+  </FlexItem>
+</Flex>
 
-  <Flex alignItems="flex-start" mb="xxlarge">
-    <FlexItem p="xxlarge" bg="palette.purple200">
-      Start
-    </FlexItem>
-    <FlexItem p="large" bg="palette.blue200">
-      Two
-    </FlexItem>
-    <FlexItem p="medium" bg="palette.green200">
-      Three
-    </FlexItem>
-    <FlexItem p="small" bg="palette.red200">
-      Four
-    </FlexItem>
-  </Flex>
+<Flex alignItems="flex-start" mb="xxlarge">
+  <FlexItem p="xxlarge" bg="palette.purple200">
+    Start
+  </FlexItem>
+  <FlexItem p="large" bg="palette.blue200">
+    Two
+  </FlexItem>
+  <FlexItem p="medium" bg="palette.green200">
+    Three
+  </FlexItem>
+  <FlexItem p="small" bg="palette.red200">
+    Four
+  </FlexItem>
+</Flex>
 
-  <Flex alignItems="flex-end" mb="xxlarge">
-    <FlexItem p="xxlarge" bg="palette.purple200">
-      End
-    </FlexItem>
-    <FlexItem p="large" bg="palette.blue200">
-      Two
-    </FlexItem>
-    <FlexItem p="medium" bg="palette.green200">
-      Three
-    </FlexItem>
-    <FlexItem p="small" bg="palette.red200">
-      Four
-    </FlexItem>
-  </Flex>
+<Flex alignItems="flex-end" mb="xxlarge">
+  <FlexItem p="xxlarge" bg="palette.purple200">
+    End
+  </FlexItem>
+  <FlexItem p="large" bg="palette.blue200">
+    Two
+  </FlexItem>
+  <FlexItem p="medium" bg="palette.green200">
+    Three
+  </FlexItem>
+  <FlexItem p="small" bg="palette.red200">
+    Four
+  </FlexItem>
+</Flex>
 
   <Flex alignItems="baseline" mb="xxlarge">
     <FlexItem p="xxlarge" bg="palette.purple200">
@@ -474,15 +467,14 @@ import { FlexItem } from '../FlexItem'
       Four
     </FlexItem>
   </Flex>
-</>
-```
+</Playground>
 
-### Aligning Content
+## Aligning Content
 
 If you have multiple rows of flex items, the `alignContent` property determines how the rows are distributed within the flex container.
 
 ```js noeditor
-import { Code, Text } from '../Text'
+import { Code, Text } from '../Text';
 import {
   Table,
   TableHead,
@@ -490,8 +482,8 @@ import {
   TableHeaderCell,
   TableBody,
   TableDataCell,
-} from '../Table'
-;<Table>
+} from '../Table';
+<Table>
   <TableHead>
     <TableRow>
       <TableHeaderCell width="40%">AlignContent Property</TableHeaderCell>
@@ -572,13 +564,11 @@ import {
       </TableDataCell>
     </TableRow>
   </TableBody>
-</Table>
+</Table>;
 ```
 
-```js
-import { Flex } from './Flex'
-import { FlexItem } from '../FlexItem'
-;<Flex justifyContent="space-between">
+<Playground>
+<Flex justifyContent="space-between">
   <Flex
     alignContent="space-around"
     width="30%"
@@ -597,23 +587,23 @@ import { FlexItem } from '../FlexItem'
     </FlexItem>
   </Flex>
 
-  <Flex
-    alignContent="flex-end"
-    width="30%"
-    height="150px"
-    flexWrap="wrap"
-    bg="palette.blue400"
-  >
-    <FlexItem width="70%" m="small" p="xsmall" bg="palette.blue200">
-      Aligned w/
-    </FlexItem>
-    <FlexItem width="30%" m="small" p="xsmall" bg="palette.blue200">
-      Flex
-    </FlexItem>
-    <FlexItem width="50%" m="small" p="xsmall" bg="palette.blue200">
-      End
-    </FlexItem>
-  </Flex>
+<Flex
+  alignContent="flex-end"
+  width="30%"
+  height="150px"
+  flexWrap="wrap"
+  bg="palette.blue400"
+>
+  <FlexItem width="70%" m="small" p="xsmall" bg="palette.blue200">
+    Aligned w/
+  </FlexItem>
+  <FlexItem width="30%" m="small" p="xsmall" bg="palette.blue200">
+    Flex
+  </FlexItem>
+  <FlexItem width="50%" m="small" p="xsmall" bg="palette.blue200">
+    End
+  </FlexItem>
+</Flex>
 
   <Flex
     alignContent="center"
@@ -633,16 +623,13 @@ import { FlexItem } from '../FlexItem'
     </FlexItem>
   </Flex>
 </Flex>
-```
+</Playground>
 
-### Wrapping Flex Items
+## Wrapping Flex Items
 
 The `flexWrap` property determines if flex items should be forced into a single line or if they can wrap onto multiple lines.
 
-```js
-import { Flex } from './Flex'
-import { FlexItem } from '../FlexItem'
-;<>
+<Playground>
   <Flex width="80%" flexWrap="nowrap" mb="large">
     <FlexItem width="40%" p="large" bg="palette.red200">
       These Lines
@@ -654,7 +641,6 @@ import { FlexItem } from '../FlexItem'
       Wrap
     </FlexItem>
   </Flex>
-
   <Flex width="50%" flexWrap="wrap" mb="large">
     <FlexItem width="40%" p="large" bg="palette.red200">
       These Lines
@@ -666,7 +652,6 @@ import { FlexItem } from '../FlexItem'
       Wrap
     </FlexItem>
   </Flex>
-
   <Flex width="50%" flexWrap="wrap-reverse" mb="large">
     <FlexItem width="40%" p="large" bg="palette.red200">
       These Lines
@@ -678,31 +663,28 @@ import { FlexItem } from '../FlexItem'
       Wrap Reverse
     </FlexItem>
   </Flex>
-</>
-```
+</Playground>
 
-### Responsive Behavior
+## Responsive Behavior
 
 Many of the properties you can set on the `<Flex />` component will accept an array of values that will then be applied at different breakpoints. There are 5 [breakpoints](/#!/Breakpoints) slots that you can target. Here is an example of what that looks like.
 
-```js
-import { Flex } from './Flex'
-import { FlexItem } from '../FlexItem'
-;<Flex
-  flexDirection={[
-    'column', // column up to the first breakpoint
-    null, // stay a column past first breakpoint
-    'row', // switch to row layout after second breakpoint
-  ]}
->
-  <FlexItem p="medium" bg="palette.yellow200">
-    👋
-  </FlexItem>
-  <FlexItem p="medium" bg="palette.green200">
-    💪
-  </FlexItem>
-  <FlexItem p="medium" bg="palette.purple200">
-    📦
-  </FlexItem>
-</Flex>
-```
+<Playground>
+  <Flex
+    flexDirection={[
+      'column', // column up to the first breakpoint
+      null, // stay a column past first breakpoint
+      'row', // switch to row layout after second breakpoint
+    ]}
+  >
+    <FlexItem p="medium" bg="palette.yellow200">
+      👋
+    </FlexItem>
+    <FlexItem p="medium" bg="palette.green200">
+      💪
+    </FlexItem>
+    <FlexItem p="medium" bg="palette.purple200">
+      📦
+    </FlexItem>
+  </Flex>
+</Playground>
