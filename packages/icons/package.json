@@ -1,0 +1,37 @@
+{
+  "name": "looker-lens-icons",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "main:src": "src/index.ts",
+  "scripts": {},
+  "dependencies": {
+    "cross-env": "5.0.5"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!src/setupTests.{js,jsx,ts,tsx}",
+      "!src/index.{js,jsx,ts,tsx}",
+      "!src/serviceWorker.{js,jsx,ts,tsx}",
+      "!src/**/*.(spec|test|stories).{js,jsx,ts,tsx}"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "statements": 98,
+        "branches": 98,
+        "functions": 98,
+        "lines": 98
+      }
+    }
+  },
+  "license": "MIT"
+}
