@@ -1,6 +1,6 @@
 module.exports = {
   automock: false,
-  setupFilesAfterEnv: ['./test/setupJest.js'],
+  setupFilesAfterEnv: ['./jest.setup.js'],
   moduleNameMapper: {
     '\\.(css)$': '<rootDir>/__mocks__/fileMock.js',
     '\\.(svg)$': '<rootDir>/__mocks__/fileMock.js',
