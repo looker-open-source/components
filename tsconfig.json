@@ -1,31 +1,26 @@
 {
   "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "./packages",
     "declaration": true,
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
+    "incremental": true,
     "jsx": "react",
     "lib": ["es6", "es2017.object", "dom"],
+    "module": "esnext",
     "moduleResolution": "node",
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "outDir": "dist",
-    "plugins": [
-      {
-        "name": "typescript-tslint-plugin",
-        "alwaysShowRuleFailuresAsWarnings": true,
-        "ignoreDefinitionFiles": true,
-        "configFile": "../tslint.json",
-        "suppressWhileTypeErrorsPresent": false,
-        "mockTypeScriptVersion": false
-      }
-    ],
+    "outDir": "lib",
+    "paths": {
+      "@quramy/*": ["./*/src"]
+    },
+    "resolveJsonModule": true,
     "skipLibCheck": true,
     "sourceMap": true,
     "strict": true,
     "target": "esnext"
-  },
-  "include": ["./src/**/*.ts", "./src/**/*.tsx", "./config/typescript/**/*"],
-  "exclude": ["./src/**/*.test.*"]
+  }
 }
