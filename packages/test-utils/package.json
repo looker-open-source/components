@@ -1,4 +1,17 @@
 {
-  "name": "@looker/component-test-utils",
-  "version": "0.1.0"
+  "name": "@looker/components-test-utils",
+  "license": "UNLICENSED",
+  "version": "0.1.0",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "@looker/design-tokens": "^0.1.0"
+  },
+  "scripts": {
+    "build:declaration": "tsc --project tsconfig.build.json",
+    "build:es": "BABEL_ENV=build babel src --root-mode upward --out-dir dist --source-maps --extensions .ts,.tsx --delete-dir-on-start --no-comments"
+  }
 }

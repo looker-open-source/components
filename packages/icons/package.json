@@ -1,7 +1,18 @@
 {
-  "name": "icons",
+  "name": "@looker/icons",
+  "license": "UNLICENSED",
   "version": "0.1.0",
   "scripts": {
-    "build": "ts-node bin/icons/build_icon_components.ts"
+    "build": "echo 'not ready'",
+    "xbuild": "ts-node ./bin/build_icon_components.ts"
+  },
+  "typings": "lib/index.d.ts",
+  "devDependencies": {
+    "@types/rimraf": "^2.0.2",
+    "@svgr/babel-plugin-add-jsx-attribute": "^4.2.0",
+    "@svgr/cli": "^4.3.2",
+    "glob": "^7.1.3",
+    "ora": "^3.4.0",
+    "rimraf": "^2.6.3"
   }
 }

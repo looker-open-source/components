@@ -1,4 +1,20 @@
 {
-  "name": "design-tokens",
-  "version": "0.1.0"
+  "name": "@looker/design-tokens",
+  "license": "UNLICENSED",
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "module": "src/index.ts",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build:declaration": "tsc --project tsconfig.build.json",
+    "build:es": "BABEL_ENV=build babel src --root-mode upward --out-dir dist --source-maps --extensions .ts,.tsx --delete-dir-on-start --no-comments"
+  },
+  "peerDependencies": {
+    "@types/styled-system": "^3.0",
+    "styled-system": "^3.1.6",
+    "styled-components": "^4.3.2"
+  }
 }

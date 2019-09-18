@@ -1,3 +1,10 @@
+import {
+  LensFontSizeProps,
+  LensFontWeightProps,
+  LensLineHeightProps,
+  LensSpaceProps,
+  reset,
+} from '@looker/design-tokens'
 import Tag from 'clean-tag'
 import { UserSelectProperty } from 'csstype'
 import omit from 'lodash/omit'
@@ -90,13 +97,7 @@ import {
   zIndex,
   ZIndexProps,
 } from 'styled-system'
-import {
-  LensFontSizeProps,
-  LensFontWeightProps,
-  LensLineHeightProps,
-  LensSpaceProps,
-  reset,
-} from '../../style'
+
 import { Omit } from '../../types'
 import { cursor, CursorProps } from './style_utilities'
 
