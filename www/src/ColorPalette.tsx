@@ -1,5 +1,5 @@
 import { getLuminance, rgba, rgbToColorString } from 'polished'
-import * as React from 'react'
+import React from 'react'
 import { Text } from '../src/components/Text'
 
 interface FigmaColor {

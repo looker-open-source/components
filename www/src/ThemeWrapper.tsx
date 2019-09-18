@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { ThemeProvider } from 'styled-components'
 import { CustomizableModalAttributes } from '../src/components/Modal/Modal'
 import { CustomizableRichTooltipAttributes } from '../src/components/Tooltip/RichTooltip'

@@ -1,6 +1,6 @@
 import { mount, shallow } from 'enzyme'
 import 'jest-styled-components'
-import * as React from 'react'
+import React from 'react'
 import { ThemeProvider } from 'styled-components'
 import { palette, theme } from '@looker/design-tokens'
 import { Menu } from './Menu'

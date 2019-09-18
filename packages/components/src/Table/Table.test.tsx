@@ -1,5 +1,5 @@
 import 'jest-styled-components'
-import * as React from 'react'
+import React from 'react'
 import { createWithTheme } from '@looker/components-test-utils'
 import { Table } from './Table'
 

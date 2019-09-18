@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { Card } from '../src/components/Card/Card'
 import { CardContent } from '../src/components/Card/CardContent'
 import {

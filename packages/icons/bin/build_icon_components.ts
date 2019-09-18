@@ -60,7 +60,7 @@ async function convertSVGToComponent() {
  * Step 2: Generate the correct typescript interfaces for the glyphs.
  */
 async function generateTypescriptInterfaces() {
-  const typescriptDeclaration = `import * as React from 'react'
+  const typescriptDeclaration = `import React from 'react'
 const Icon: React.FC<React.SVGAttributes<SVGElement>>
 export default Icon
 `

@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { createWithTheme } from '@looker/components-test-utils'
 import { List } from './List'
 import { ListItem } from './ListItem'

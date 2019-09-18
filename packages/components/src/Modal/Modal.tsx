@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { CSSTransition } from 'react-transition-group'
 import { css, CSSObject, FlattenSimpleInterpolation } from 'styled-components'
 import { fadeIn, palette, shadows } from '@looker/design-tokens'

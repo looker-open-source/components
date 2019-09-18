@@ -1,5 +1,5 @@
 import 'jest-styled-components'
-import * as React from 'react'
+import React from 'react'
 import { createWithTheme, shallowWithTheme } from './create_with_theme'
 
 export const assertSnapshot = <T extends {}>(

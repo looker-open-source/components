@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { Dialog } from '.'
 import { ManagedModalProps } from '../Modal'
 import { ModalManager } from '../ModalManager'

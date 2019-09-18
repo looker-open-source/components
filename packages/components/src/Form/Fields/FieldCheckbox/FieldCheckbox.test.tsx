@@ -1,5 +1,5 @@
 import 'jest-styled-components'
-import * as React from 'react'
+import React from 'react'
 import { createWithTheme, mountWithTheme } from '@looker/components-test-utils'
 import { Label } from '../../Label/Label'
 import { FieldCheckbox } from './FieldCheckbox'

@@ -1,5 +1,5 @@
 import { mount, render } from 'enzyme'
-import * as React from 'react'
+import React from 'react'
 import { ThemeProvider } from 'styled-components'
 
 import { createWithTheme, mountWithTheme } from '@looker/components-test-utils'

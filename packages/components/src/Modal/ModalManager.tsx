@@ -1,5 +1,5 @@
 import { Placement } from 'popper.js'
-import * as React from 'react'
+import React from 'react'
 import { ManagedModalProps } from '../Modal'
 
 export interface ModalManagerProps extends ManagedModalProps {

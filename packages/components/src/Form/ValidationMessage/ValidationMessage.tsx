@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { CustomizableAttributes } from '../../../types/attributes'
 import { Box, BoxProps } from '../../Box'
 

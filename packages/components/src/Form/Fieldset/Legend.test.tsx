@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { assertSnapshot } from '@looker/components-test-utils'
 import { Legend } from './Legend'
 

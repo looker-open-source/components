@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { Box } from '../src/components/Box/Box'
 import { Code } from '../src/components/Text/Code'
 import { Text } from '../src/components/Text/Text'

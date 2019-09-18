@@ -1,6 +1,6 @@
 // import { ReactWrapper } from 'enzyme'
 import 'jest-styled-components'
-import * as React from 'react'
+import React from 'react'
 import { mountWithTheme } from '@looker/components-test-utils'
 import { assertSnapshotShallow } from '@looker/components-test-utils'
 import { Box } from '../Box'

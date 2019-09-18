@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { Box, Code, Flex, FlexItem, Heading, Icon, Text } from '../src'
 
 export const Intro = () => {

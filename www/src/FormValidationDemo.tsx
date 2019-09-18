@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { FieldText } from '../src/components/Form/Fields'
 import { Form } from '../src/components/Form/Form'
 

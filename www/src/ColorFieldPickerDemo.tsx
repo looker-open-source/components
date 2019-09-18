@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { ColorFieldPicker } from '../src/components/Colors/ColorFieldPicker/ColorFieldPicker'
 
 interface ColorPickerState {

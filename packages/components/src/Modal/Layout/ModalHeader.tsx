@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { IconNames } from '../../../icons/build/IconNames'
 import { Box, BoxProps } from '../../Box'
 import { Button } from '../../Button'

@@ -1,5 +1,5 @@
 import { hsv } from 'd3-hsv'
-import * as React from 'react'
+import React from 'react'
 import { SimpleHSV } from './color_wheel_utils'
 import { CartesianCoordinate, translate } from './math_utils'
 

@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { palette } from '@looker/design-tokens'
 import { Box } from '../../Box'
 import { IconButton } from '../../Button'

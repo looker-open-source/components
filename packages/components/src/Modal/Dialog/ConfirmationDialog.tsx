@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { SemanticColor, SemanticColors } from '@looker/design-tokens'
 import { Button } from '../../Button'
 import { Heading } from '../../Heading'

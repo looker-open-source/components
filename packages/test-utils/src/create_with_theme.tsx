@@ -2,7 +2,7 @@ import { theme } from '@looker/design-tokens'
 import { render } from '@testing-library/react'
 import { mount, shallow } from 'enzyme'
 import 'jest-styled-components'
-import * as React from 'react'
+import React from 'react'
 import { create } from 'react-test-renderer'
 import { ThemeProvider } from 'styled-components'
 

@@ -1,6 +1,6 @@
 import { mount } from 'enzyme'
 import 'jest-styled-components'
-import * as React from 'react'
+import React from 'react'
 import { ThemeProvider } from 'styled-components'
 import { createWithTheme, mountWithTheme } from '@looker/components-test-utils'
 import { theme } from '@looker/design-tokens'

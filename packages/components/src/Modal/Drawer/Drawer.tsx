@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { Modal, ModalProps } from '../Modal'
 import { DrawerSurface } from './DrawerSurface'
 

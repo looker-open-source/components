@@ -1,5 +1,5 @@
 import 'jest-styled-components'
-import * as React from 'react'
+import React from 'react'
 import { mountWithTheme } from '@looker/components-test-utils'
 import { assertSnapshot } from '@looker/components-test-utils'
 import { Slider } from './Slider'

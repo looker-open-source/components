@@ -1,5 +1,5 @@
 import { ReactWrapper } from 'enzyme'
-import * as React from 'react'
+import React from 'react'
 
 export const SimpleContent = <div>simple content</div>
 export const SimpleContentSFC = () => SimpleContent

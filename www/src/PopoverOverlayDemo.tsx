@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { Box } from '../src/components/Box'
 import { Button } from '../src/components/Button'
 import { Menu, MenuItem } from '../src/components/Menu'

@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { Menu, MenuGroup, MenuItem } from '../src/components/Menu'
 
 const spacingSizes = [

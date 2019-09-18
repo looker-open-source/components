@@ -61,7 +61,7 @@ Because components operate behind an interface, they are a useful tool for build
 The above example shows Lens components in isolation. In practice, Lens components will exist as part of a larger React app (Lens components are written using React). Here's a simple example of a React component you might write to use in Helltool, composed of Lens components:
 
 ```jsx static
-import * as React from 'react'
+import React from 'react'
 import { Space } from 'looker-core'
 
 interface SpaceCardProps {
@@ -96,7 +96,7 @@ Lens (and React) rely heavily on the concept of composition, where smaller compo
 In rare cases Lens may not support the exact presentation or behavior necessary. Through composition and styling, most components can be extended and customized. Here's an example of a new LoggerButton that logs every click:
 
 ```jsx static
-import * as React from 'react'
+import React from 'react'
 import {
   Button as BaseButton,
   ButtonProps as BaseButtonProps,

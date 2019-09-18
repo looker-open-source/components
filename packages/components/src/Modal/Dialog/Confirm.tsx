@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { useToggle } from '../../utils/useToggle'
 import { ConfirmationDialog, ConfirmationProps } from './ConfirmationDialog'
 

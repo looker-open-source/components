@@ -1,5 +1,5 @@
 import { hsv } from 'd3-hsv'
-import * as React from 'react'
+import React from 'react'
 import { Box } from '../src/components/Box'
 import {
   HueSaturation,
