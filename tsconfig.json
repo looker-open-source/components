@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
     "lib": ["es6", "es2017.object", "dom"],
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,
