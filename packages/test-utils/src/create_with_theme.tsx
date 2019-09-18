@@ -1,10 +1,10 @@
+import { theme } from '@looker/design-tokens'
 import { render } from '@testing-library/react'
 import { mount, shallow } from 'enzyme'
 import 'jest-styled-components'
 import * as React from 'react'
 import { create } from 'react-test-renderer'
 import { ThemeProvider } from 'styled-components'
-import { theme } from '../../src/style/theme'
 
 export const withThemeProvider = (Component: React.ReactElement<any>) => (
   <ThemeProvider theme={theme}>{Component}</ThemeProvider>
