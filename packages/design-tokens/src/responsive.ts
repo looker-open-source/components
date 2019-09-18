@@ -1,4 +1,4 @@
-import * as CSS from 'csstype'
+import CSS from 'csstype'
 import { ResponsiveValue, TLengthStyledSystem } from 'styled-system'
 
 export type ResponsiveAlignItemsValue = ResponsiveValue<CSS.AlignItemsProperty>

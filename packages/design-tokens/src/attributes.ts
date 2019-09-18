@@ -1,9 +1,8 @@
-import { FontWeights, RampSizes, SpacingSizes } from './style'
-
+import { FontWeights, RampSizes, SpacingSizes } from './'
 import {
   ResponsiveBorderRadiusValue,
   ResponsiveHeightValue,
-} from './style/responsive'
+} from './responsive'
 
 export interface CustomizableAttributes {
   [key: string]: any

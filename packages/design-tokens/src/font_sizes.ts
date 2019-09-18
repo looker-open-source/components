@@ -10,7 +10,7 @@ import {
   SizeXXSmall,
   SizeXXXLarge,
   SizeXXXXLarge,
-} from '../types'
+} from './types'
 
 export type RampSizes =
   | SizeXXSmall

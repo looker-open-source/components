@@ -12,7 +12,7 @@ import {
   SizeXXSmall,
   SizeXXXLarge,
   SizeXXXXLarge,
-} from '../types'
+} from './types'
 import { Easings, easings } from './easings'
 import { shadows, Shadows } from './elevation'
 import { FontRamp, fontSizes } from './font_sizes'

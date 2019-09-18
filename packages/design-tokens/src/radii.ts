@@ -1,10 +1,4 @@
-import {
-  SizeLarge,
-  SizeMedium,
-  SizeNone,
-  SizeSmall,
-  SizeXSmall,
-} from '../types'
+import { SizeLarge, SizeMedium, SizeNone, SizeSmall, SizeXSmall } from './types'
 
 export type RadiusSizes =
   | SizeNone
