@@ -1,6 +1,6 @@
 import 'jest-styled-components'
 import * as React from 'react'
-import { createWithTheme } from '../../../../test/utils/create_with_theme'
+import { createWithTheme } from '@looker/components-test-utils'
 import { TableRow } from './TableRow'
 
 test('A <TableRow> should render', () => {

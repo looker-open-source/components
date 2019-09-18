@@ -3,8 +3,8 @@ import 'jest-styled-components'
 import * as React from 'react'
 import { ThemeProvider } from 'styled-components'
 
-import { mountWithTheme } from '../../../test/utils/create_with_theme'
-import { assertSnapshotShallow } from '../../../test/utils/snapshot'
+import { mountWithTheme } from '@looker/components-test-utils'
+import { assertSnapshotShallow } from '@looker/components-test-utils'
 
 import { theme } from '@looker/design-tokens'
 

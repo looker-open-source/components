@@ -1,7 +1,7 @@
 import 'jest-styled-components'
 import * as React from 'react'
-import { mountWithTheme } from '../../../../../test/utils/create_with_theme'
-import { assertSnapshot } from '../../../../../test/utils/snapshot'
+import { mountWithTheme } from '@looker/components-test-utils'
+import { assertSnapshot } from '@looker/components-test-utils'
 import { InputSearch } from './InputSearch'
 
 test('InputSearch default', () => {

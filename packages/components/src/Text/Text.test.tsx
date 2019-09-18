@@ -1,5 +1,4 @@
 import { Text } from './Text'
-
 import {
   snapshotTestTextComponent,
   snapshotTestTextComponentColor,
@@ -9,7 +8,7 @@ import {
   snapshotTestTextComponentTransform,
   snapshotTestTextComponentVariant,
   snapshotTestTextComponentWrap,
-} from '../../../test/text'
+} from './textTestHelpers'
 
 test('A default Text component', () => {
   snapshotTestTextComponent(Text)

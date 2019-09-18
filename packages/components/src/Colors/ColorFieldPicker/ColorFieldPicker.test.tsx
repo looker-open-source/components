@@ -3,7 +3,7 @@ import * as React from 'react'
 import {
   assertSnapshot,
   assertSnapshotShallow,
-} from '../../../../test/utils/snapshot'
+} from '@looker/components-test-utils'
 import { ColorFieldPicker } from './ColorFieldPicker'
 
 test('Default ColorFieldPicker', () => {

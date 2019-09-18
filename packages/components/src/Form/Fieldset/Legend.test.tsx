@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { assertSnapshot } from '../../../../test/utils/snapshot'
+import { assertSnapshot } from '@looker/components-test-utils'
 import { Legend } from './Legend'
 
 test('A Legend', () => {

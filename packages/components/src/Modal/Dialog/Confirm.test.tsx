@@ -2,7 +2,7 @@ import '@testing-library/jest-dom/extend-expect'
 import { fireEvent } from '@testing-library/react'
 import React from 'react'
 
-import { renderWithTheme } from '../../../../test/utils/create_with_theme'
+import { renderWithTheme } from '@looker/components-test-utils'
 import { semanticColors } from '@looker/design-tokens'
 import { Button } from '../../Button'
 import { Confirm } from './Confirm'

@@ -1,7 +1,7 @@
 import 'jest-styled-components'
 import * as React from 'react'
-import { createWithTheme } from '../../../test/utils/create_with_theme'
-import { assertSnapshot } from '../../../test/utils/snapshot'
+import { createWithTheme } from '@looker/components-test-utils'
+import { assertSnapshot } from '@looker/components-test-utils'
 import { SemanticColor, theme } from '@looker/design-tokens'
 import { Button, ButtonSizes } from './Button'
 

@@ -6,7 +6,7 @@ import {
   snapshotTestTextComponentTransform,
   snapshotTestTextComponentVariant,
   snapshotTestTextComponentWrap,
-} from '../../../test/text'
+} from './textTestHelpers'
 import { Code } from './Code'
 
 test('A default Code component', () => {

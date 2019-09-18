@@ -8,8 +8,8 @@ import {
   snapshotTestTextComponentTransform,
   snapshotTestTextComponentVariant,
   snapshotTestTextComponentWrap,
-} from '../../../test/text'
-import { assertSnapshot } from '../../../test/utils/snapshot'
+} from './textTestHelpers'
+import { assertSnapshot } from '@looker/components-test-utils'
 import { Paragraph } from './Paragraph'
 
 test('A default Paragraph component', () => {

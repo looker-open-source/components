@@ -2,11 +2,8 @@ import { mount, render } from 'enzyme'
 import * as React from 'react'
 import { ThemeProvider } from 'styled-components'
 
-import {
-  createWithTheme,
-  mountWithTheme,
-} from '../../../../../test/utils/create_with_theme'
-import { assertSnapshot } from '../../../../../test/utils/snapshot'
+import { createWithTheme, mountWithTheme } from '@looker/components-test-utils'
+import { assertSnapshot } from '@looker/components-test-utils'
 import { theme } from '@looker/design-tokens'
 import { Label } from '../../Label/Label'
 import { FieldSelect } from './FieldSelect'

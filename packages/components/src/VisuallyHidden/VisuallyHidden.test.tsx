@@ -1,6 +1,6 @@
+import { assertSnapshot } from '@looker/components-test-utils'
 import 'jest-styled-components'
-import * as React from 'react'
-import { assertSnapshot } from '../../../test/utils/snapshot'
+import React from 'react'
 import { VisuallyHidden } from './VisuallyHidden'
 
 test('VisuallyHiddenText default', () => {

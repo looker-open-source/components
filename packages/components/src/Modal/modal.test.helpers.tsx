@@ -1,6 +1,6 @@
 import { ReactWrapper } from 'enzyme'
 import * as React from 'react'
-import { shallowWithTheme } from '../../../test/utils/create_with_theme'
+import { shallowWithTheme } from '@looker/components-test-utils'
 
 export const SimpleContent = (
   <div>
