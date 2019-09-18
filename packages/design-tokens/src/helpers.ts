@@ -1,3 +1,4 @@
+import { isFunction } from 'lodash'
 import { css } from 'styled-components'
 import { ThemedProps } from './types'
 import { Theme } from './theme'
@@ -10,7 +11,11 @@ export type TextVariants =
   | 'subdued'
   | 'inverted'
 
-export const reset = <P>(props: ThemedProps<P>) => props.theme.reset()
+export const reset = <P>(props: ThemedProps<P>) => {
+  if (isFunction(props.theme.reset)) {
+    props.theme.reset()
+  }
+}
 
 export const shouldTruncate = (truncate?: boolean, truncateLines?: number) => {
   return truncate || truncateLines ? textTruncate(truncateLines) : ''
