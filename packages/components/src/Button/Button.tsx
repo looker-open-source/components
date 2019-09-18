@@ -4,16 +4,19 @@ import React, { FunctionComponent, Ref } from 'react'
 import styled, { css, StyledComponent, withTheme } from 'styled-components'
 import { merge } from 'styled-system'
 import { IconNames } from '../../icons/build/IconNames'
-import { RampSizes, SemanticColor, SemanticColors } from '../../style'
 import {
+  CustomizableAttributes,
+  RampSizes,
+  SemanticColor,
+  SemanticColors,
   SizeLarge,
   SizeMedium,
   SizeSmall,
   SizeXLarge,
   SizeXSmall,
   ThemedProps,
-} from '../../types'
-import { CustomizableAttributes } from '../../types/attributes'
+} from '@looker/design-tokens'
+
 import { Box, BoxPropsWithout } from '../Box'
 import { Icon } from '../Icon/Icon'
 

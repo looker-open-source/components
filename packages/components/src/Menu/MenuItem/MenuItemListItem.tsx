@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import styled, { css, StyledComponent } from 'styled-components'
-import { easings, transitions } from '../../../style'
+import { easings, transitions } from '@looker/design-tokens'
 import { Box, BoxProps } from '../../Box'
 import { Icon } from '../../Icon'
 import { MenuItemStyle } from './menuItemStyle'

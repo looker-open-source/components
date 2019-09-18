@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import { HotKeys, ObserveKeys } from 'react-hotkeys'
 import styled, { StyledComponent } from 'styled-components'
-import { palette } from '../../../style'
+import { palette } from '@looker/design-tokens'
 import { InputSearch, InputSearchProps } from '../../Form/Inputs'
 import { moveFocus } from '../moveFocus'
 

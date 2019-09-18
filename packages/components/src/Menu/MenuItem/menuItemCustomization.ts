@@ -1,4 +1,4 @@
-import { FontWeights, RampSizes } from '../../../style'
+import { FontWeights, RampSizes } from '@looker/design-tokens'
 
 export interface MenuItemCustomization extends MenuItemStateCustomizations {
   fontSize?: RampSizes

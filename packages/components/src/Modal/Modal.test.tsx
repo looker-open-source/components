@@ -6,7 +6,7 @@ import { ThemeProvider } from 'styled-components'
 import { mountWithTheme } from '../../../test/utils/create_with_theme'
 import { assertSnapshotShallow } from '../../../test/utils/snapshot'
 
-import { theme } from '../../style'
+import { theme } from '@looker/design-tokens'
 
 import { Button } from '../Button'
 import { Modal } from './Modal'

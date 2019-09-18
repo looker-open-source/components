@@ -1,6 +1,6 @@
 import React, { FunctionComponent, Ref } from 'react'
 import styled, { StyledComponent } from 'styled-components'
-import { palette } from '../../style'
+import { palette } from '@looker/design-tokens'
 import { Box, BoxPropsWithout } from '../Box'
 import { Heading, HeadingProps } from '../Heading'
 import { List } from '../List'

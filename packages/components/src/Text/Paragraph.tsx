@@ -1,7 +1,7 @@
 import omit from 'lodash/omit'
 import React, { FunctionComponent, Ref } from 'react'
 import styled, { StyledComponent } from 'styled-components'
-import { shouldTruncate } from '../../style'
+import { shouldTruncate } from '@looker/design-tokens'
 import { Text, TextProps } from '../Text/Text'
 
 export interface ParagraphProps extends TextProps {

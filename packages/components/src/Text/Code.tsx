@@ -1,6 +1,6 @@
 import React, { FunctionComponent, Ref } from 'react'
 import styled, { StyledComponent } from 'styled-components'
-import { theme } from '../../style'
+import { theme } from '@looker/design-tokens'
 import { Text, TextProps } from '../Text/Text'
 
 type ComponentType = FunctionComponent<TextProps>

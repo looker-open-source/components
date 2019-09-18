@@ -7,7 +7,7 @@ import {
   mountWithTheme,
 } from '../../../../../test/utils/create_with_theme'
 import { assertSnapshot } from '../../../../../test/utils/snapshot'
-import { theme } from '../../../../style'
+import { theme } from '@looker/design-tokens'
 import { Label } from '../../Label/Label'
 import { FieldSelect } from './FieldSelect'
 

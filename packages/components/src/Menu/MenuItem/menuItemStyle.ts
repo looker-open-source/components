@@ -1,4 +1,4 @@
-import { FontWeights, palette, RampSizes } from '../../../style'
+import { FontWeights, palette, RampSizes } from '@looker/design-tokens'
 import { BoxPropsWithout } from '../../Box'
 import { MenuItemStateStyle, MenuItemStyle } from './menuItemStyle'
 

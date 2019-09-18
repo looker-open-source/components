@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import { HotKeys } from 'react-hotkeys'
 import styled, { css, StyledComponent } from 'styled-components'
-import { palette } from '../../style'
+import { palette } from '@looker/design-tokens'
 import { Box, BoxProps } from '../Box'
 import { MenuContext, MenuContextProps } from './MenuContext'
 import { MenuGroup } from './MenuGroup'

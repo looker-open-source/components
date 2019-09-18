@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { CSSTransition } from 'react-transition-group'
 import { css, CSSObject, FlattenSimpleInterpolation } from 'styled-components'
-import { fadeIn, palette, shadows } from '../../style'
+import { fadeIn, palette, shadows } from '@looker/design-tokens'
 import { CustomizableAttributes } from '../../types/attributes'
 import { BackdropStyles, ModalBackdrop } from './ModalBackdrop'
 import { ModalContext } from './ModalContext'

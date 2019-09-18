@@ -1,7 +1,7 @@
 import omit from 'lodash/omit'
 import React, { FunctionComponent, Ref } from 'react'
 import styled, { StyledComponent } from 'styled-components'
-import { palette, theme } from '../../style'
+import { palette, theme } from '@looker/design-tokens'
 import { Box, BoxProps } from '../Box'
 import { Flex } from '../Flex'
 import { Icon } from '../Icon'

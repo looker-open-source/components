@@ -1,5 +1,5 @@
+import { radii } from '@looker/design-tokens'
 import * as React from 'react'
-import { radii } from '../../../style/radii'
 import { Flex } from '../../Flex'
 import { FlexItem } from '../../FlexItem'
 import {

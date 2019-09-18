@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import ReactResizeDetector from 'react-resize-detector'
 import styled, { StyledComponent } from 'styled-components'
-import { palette } from '../../../style'
+import { palette } from '@looker/design-tokens'
 import { Box, BoxProps } from '../../Box'
 
 export interface ModalContentProps extends BoxProps<HTMLDivElement> {

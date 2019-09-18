@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import styled, { css, StyledComponent } from 'styled-components'
-import { palette, quarterFade } from '../../style'
+import { palette, quarterFade } from '@looker/design-tokens'
 import { Box } from '../Box'
 import { SpinnerProps, StyledMarkerProps } from './Spinner'
 

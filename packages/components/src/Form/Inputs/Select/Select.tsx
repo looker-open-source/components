@@ -1,6 +1,6 @@
 import React, { FunctionComponent, Ref } from 'react'
 import styled, { StyledComponent } from 'styled-components'
-import { palette } from '../../../../style'
+import { palette } from '@looker/design-tokens'
 import { CustomizableAttributes } from '../../../../types/attributes'
 import { Box, BoxProps } from '../../../Box'
 import { InputProps } from '../InputProps'

@@ -1,8 +1,11 @@
 import { TextAlignProperty } from 'csstype'
 import React, { FunctionComponent } from 'react'
 import styled, { StyledComponent } from 'styled-components'
-import { FontWeights, SpacingSizes } from '../../../style'
-import { ResponsiveSpaceValue } from '../../../style/responsive'
+import {
+  FontWeights,
+  SpacingSizes,
+  ResponsiveSpaceValue,
+} from '@looker/design-tokens'
 import { ThemedProps } from '../../../types'
 import { CustomizableAttributes } from '../../../types/attributes'
 import { FlexItem } from '../../FlexItem'

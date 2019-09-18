@@ -6,7 +6,7 @@ import {
   createWithTheme,
   mountWithTheme,
 } from '../../../test/utils/create_with_theme'
-import { theme } from '../../style'
+import { theme } from '@looker/design-tokens'
 import { Button } from '../Button/Button'
 import { FieldText } from './Fields/FieldText/FieldText'
 import { Form } from './Form'

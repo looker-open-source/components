@@ -1,6 +1,6 @@
 import React, { FunctionComponent, Ref } from 'react'
 import styled, { StyledComponent } from 'styled-components'
-import { SemanticColor, SemanticColors } from '../../style'
+import { SemanticColor, SemanticColors } from '@looker/design-tokens'
 import {
   SizeLarge,
   SizeMedium,

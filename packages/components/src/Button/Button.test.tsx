@@ -2,7 +2,7 @@ import 'jest-styled-components'
 import * as React from 'react'
 import { createWithTheme } from '../../../test/utils/create_with_theme'
 import { assertSnapshot } from '../../../test/utils/snapshot'
-import { SemanticColor, theme } from '../../style'
+import { SemanticColor, theme } from '@looker/design-tokens'
 import { Button, ButtonSizes } from './Button'
 
 const noop = () => {

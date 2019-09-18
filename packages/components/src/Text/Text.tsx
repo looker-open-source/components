@@ -7,7 +7,7 @@ import {
   TextTransforms,
   textVariant,
   TextVariants,
-} from '../../style'
+} from '@looker/design-tokens'
 import { ThemedProps } from '../../types'
 import { Box, BoxPropsWithout } from '../Box'
 

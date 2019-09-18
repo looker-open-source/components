@@ -3,7 +3,7 @@ import {
   ResponsiveAlignItemsValue,
   ResponsiveFlexDirectionValue,
   ResponsiveJustifyContentValue,
-} from '../../../style/responsive'
+} from '@looker/design-tokens'
 import { BoxProps } from '../../Box'
 import { Flex } from '../../Flex'
 

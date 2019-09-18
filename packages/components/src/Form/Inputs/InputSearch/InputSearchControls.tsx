@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { palette } from '../../../../style'
+import { palette } from '@looker/design-tokens'
 import { Box } from '../../../Box'
 import { IconButton } from '../../../Button'
 import { Text } from '../../../Text'

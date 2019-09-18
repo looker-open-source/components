@@ -1,7 +1,7 @@
 import 'jest-styled-components'
 import * as React from 'react'
 import { assertSnapshot } from '../../../../test/utils/snapshot'
-import { palette } from '../../../style'
+import { palette } from '@looker/design-tokens'
 
 import { MenuItem } from './MenuItem'
 
