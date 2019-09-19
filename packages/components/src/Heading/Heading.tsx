@@ -9,15 +9,15 @@ import {
   textVariant,
   TextVariants,
 } from '@looker/design-tokens'
-import { Box, BoxPropsWithout } from '../Box'
+import { Box, BoxProps } from '../Box'
 
 export type HeadingLevels = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
 export type HeadingTextTransforms = 'caps' | 'lower' | 'none' | 'upper'
 
 export interface HeadingProps
-  extends BoxPropsWithout<HTMLHeadingElement, 'truncate'> {
+  extends Omit<BoxProps<HTMLHeadingElement>, 'truncate'> {
   /** Heading level from h1-h6 */
-  is?: HeadingLevels
+  as?: HeadingLevels
   /** Text tranform  */
   textTransform?: TextTransforms
   /** Truncate heading text */
@@ -37,13 +37,13 @@ const InternalHeading: ComponentType = ({
   fontSize,
   fontWeight,
   lineHeight,
-  is,
+  as,
   ...props
 }) => (
   <Box
-    is={is || 'h2'}
-    fontSize={fontSize || headingLevelSize(is)}
-    lineHeight={lineHeight || headingLineHeight(is, fontSize)}
+    as={as || 'h2'}
+    fontSize={fontSize || headingLevelSize(as)}
+    lineHeight={lineHeight || headingLineHeight(as, fontSize)}
     fontWeight={fontWeight || 'normal'}
     {...omit(props, ['textTransform', 'truncate', 'truncateLines'])}
   >
@@ -64,8 +64,8 @@ export const Heading = styled<ComponentType>(HeadingFactory)`
   ${props => textVariant(props.theme, props.variant)};
 `
 
-const headingLevelSize = (is?: HeadingLevels) => {
-  switch (is) {
+const headingLevelSize = (as?: HeadingLevels) => {
+  switch (as) {
     case 'h1':
       return 'xxlarge'
     case 'h2':

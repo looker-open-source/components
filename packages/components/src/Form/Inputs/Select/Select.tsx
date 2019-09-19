@@ -20,7 +20,9 @@ export interface SelectOptionProps {
   value: string
 }
 
-export interface SelectProps extends BoxProps<HTMLSelectElement>, InputProps {
+export interface SelectProps
+  extends Omit<BoxProps<HTMLSelectElement>, 'as'>,
+    InputProps {
   /**
    * Specifies value of the input field.
    */
@@ -76,7 +78,7 @@ const InternalSelect: ComponentType = ({
 
   return (
     <Box
-      is="select"
+      as="select"
       bg={handleValidationType()}
       border="solid 1px"
       borderColor={palette.charcoal300}

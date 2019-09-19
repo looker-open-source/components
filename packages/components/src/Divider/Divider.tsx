@@ -1,10 +1,10 @@
 import React, { FunctionComponent, Ref } from 'react'
 import styled, { css, StyledComponent } from 'styled-components'
 import { ThemedProps } from '@looker/design-tokens'
-import { Box, BoxPropsWithout } from '../Box'
+import { Box, BoxProps } from '../Box'
 
 export interface DividerProps
-  extends BoxPropsWithout<HTMLDivElement, 'color' | 'size'> {
+  extends Omit<BoxProps<HTMLDivElement>, 'color' | 'size' | 'as'> {
   size?: string | number
   customColor?: string
   appearance?: 'light' | 'dark' | 'onDark'

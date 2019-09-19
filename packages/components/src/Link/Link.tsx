@@ -3,7 +3,7 @@ import styled, { StyledComponent } from 'styled-components'
 
 import { Box, BoxProps } from '../Box'
 
-export interface LinkProps extends BoxProps<HTMLAnchorElement> {}
+export interface LinkProps extends Omit<BoxProps<HTMLAnchorElement>, 'as'> {}
 
 type ComponentType = FunctionComponent<LinkProps>
 type StyledComponentType = StyledComponent<ComponentType, LinkProps>
@@ -11,7 +11,7 @@ type StyledComponentType = StyledComponent<ComponentType, LinkProps>
 const InternalLink: ComponentType = ({ ...props }) => {
   return (
     <Box
-      is="a"
+      as="a"
       color="semanticColors.primary.linkColor"
       style={{ textDecoration: 'none' }}
       hoverStyle={{ textDecoration: 'underline ' }}

@@ -7,7 +7,9 @@ import { MenuContext, MenuContextProps } from './MenuContext'
 import { MenuGroup } from './MenuGroup'
 import { moveFocus } from './moveFocus'
 
-export interface MenuProps extends BoxProps<HTMLDivElement>, MenuContextProps {
+export interface MenuProps
+  extends Omit<BoxProps<HTMLDivElement>, 'as'>,
+    MenuContextProps {
   groupDividers?: boolean
   compact?: boolean
 }
@@ -37,7 +39,7 @@ const InternalMenu: MenuComponentType = ({
           MOVE_UP: () => moveFocus(-1, -1, ref),
         }}
       >
-        <Box is="ul" tabIndex={-1} role="menu" userSelect="none" {...boxProps}>
+        <Box as="ul" tabIndex={-1} role="menu" userSelect="none" {...boxProps}>
           {children}
         </Box>
       </HotKeys>

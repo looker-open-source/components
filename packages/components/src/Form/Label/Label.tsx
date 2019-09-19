@@ -3,7 +3,7 @@ import styled, { StyledComponent } from 'styled-components'
 import { CustomizableAttributes } from '@looker/design-tokens'
 import { Box, BoxProps } from '../../Box'
 
-export interface LabelProps extends BoxProps<HTMLLabelElement> {
+export interface LabelProps extends Omit<BoxProps<HTMLLabelElement>, 'as'> {
   htmlFor?: string
 }
 
@@ -12,7 +12,7 @@ type StyledComponentType = StyledComponent<ComponentType, LabelProps>
 
 const LabelInternal: ComponentType = props => (
   <Box
-    is="label"
+    as="label"
     color={CustomizableLabelAttributes.color}
     fontSize={CustomizableLabelAttributes.fontSize}
     fontWeight={CustomizableLabelAttributes.fontWeight}

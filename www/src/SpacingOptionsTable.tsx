@@ -58,7 +58,7 @@ const SpacingRow = (px: string, rem: string, key: number, label: string) => {
       <TableDataCell>{px}px</TableDataCell>
       <TableDataCell>{rem}</TableDataCell>
       <TableDataCell>
-        <Box px="small" is="span" className="prop-code">
+        <Box px="small" as="span" className="prop-code">
           <Code fontSize="xsmall">{label}</Code>
         </Box>
       </TableDataCell>

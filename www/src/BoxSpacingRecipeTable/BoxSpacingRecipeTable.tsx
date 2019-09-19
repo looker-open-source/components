@@ -47,7 +47,7 @@ const SpaceListHeader = (text: string, defaultLabel?: string) => {
       >
         {text}
       </Text>
-      <Box is="span" ml="xsmall">
+      <Box as="span" ml="xsmall">
         <Text fontSize="xsmall" variant="subdued">
           {defaultLabel}
         </Text>
@@ -66,16 +66,16 @@ const ListRender = (
     <ListItem key={key}>
       <Box
         px="small"
-        is="span"
+        as="span"
         bg="palette.charcoal200"
         borderRadius="4px"
         display="inline-block"
       >
         <Code fontSize="xsmall">{value}</Code>
       </Box>
-      <Box ml="small" is="span">
+      <Box ml="small" as="span">
         <Text fontSize="small">{label}</Text>
-        <Box is="span" ml="xsmall">
+        <Box as="span" ml="xsmall">
           <Text fontSize="xsmall" variant="subdued">
             {defaultLabel}
           </Text>

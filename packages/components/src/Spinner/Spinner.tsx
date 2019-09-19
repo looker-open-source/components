@@ -5,11 +5,11 @@ import styled, {
   StyledComponent,
 } from 'styled-components'
 import { sizedArray } from '../utils/array'
-import { Box, BoxPropsWithout } from '../Box'
+import { Box, BoxProps } from '../Box'
 import { generateStyleProps, StyledMarker } from './Spinner.styles'
 
 export interface SpinnerProps
-  extends BoxPropsWithout<HTMLDivElement, 'color' | 'size'> {
+  extends Omit<BoxProps<HTMLDivElement>, 'color' | 'size' | 'as'> {
   markers?: number
   markerRadius?: number
   speed?: number

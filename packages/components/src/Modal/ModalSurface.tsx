@@ -5,7 +5,8 @@ import { Box, BoxProps } from '../Box'
 import { CustomizableModalAttributes } from './Modal'
 import { ModalContext } from './ModalContext'
 
-export interface ModalSurfaceProps extends BoxProps<HTMLDivElement> {
+export interface ModalSurfaceProps
+  extends Omit<BoxProps<HTMLDivElement>, 'as'> {
   anchor?: 'right'
   animationState?: string
 }
@@ -67,7 +68,8 @@ export const ModalSurface: ModalSurfaceComponentType = ({
   )
 }
 
-export interface SurfaceInternalProps extends BoxProps<HTMLElement> {
+export interface SurfaceInternalProps
+  extends Omit<BoxProps<HTMLElement>, 'as'> {
   surfaceStyle?: CSSObject
 }
 

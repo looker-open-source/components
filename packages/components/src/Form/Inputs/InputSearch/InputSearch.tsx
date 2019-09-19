@@ -9,7 +9,7 @@ import {
 import { InputSearchControls } from './InputSearchControls'
 
 export interface InputSearchProps
-  extends BoxProps<HTMLInputElement>,
+  extends Omit<BoxProps<HTMLInputElement>, 'as'>,
     InputTextProps {
   /**
    * Specifies starter value for input field.

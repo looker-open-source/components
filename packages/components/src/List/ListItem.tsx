@@ -7,7 +7,12 @@ type ComponentType = FunctionComponent<ListItemProps>
 type StyledComponentType = StyledComponent<ComponentType, ListItemProps>
 
 const InternalListItem: ComponentType = props => (
-  <Box is="li" mb="xxsmall" {...props}>
+  <Box
+    // @ts-ignore
+    as="li"
+    mb="xxsmall"
+    {...props}
+  >
     {props.children}
   </Box>
 )

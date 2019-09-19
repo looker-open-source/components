@@ -5,7 +5,7 @@ import { Box, BoxProps } from '../../Box'
 import { Icon } from '../../Icon'
 import { MenuItemStyle } from './menuItemStyle'
 
-export interface MenuListItemProps extends BoxProps<HTMLElement> {
+export interface MenuListItemProps extends Omit<BoxProps<HTMLElement>, 'as'> {
   current?: boolean
   currentMarker?: boolean
   itemStyle: MenuItemStyle

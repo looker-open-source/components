@@ -4,7 +4,7 @@ import styled, { StyledComponent, withTheme } from 'styled-components'
 import { ThemedProps } from '@looker/design-tokens'
 import { Box, BoxProps } from '../Box'
 
-export interface CardProps extends BoxProps<HTMLDivElement> {
+export interface CardProps extends Omit<BoxProps<HTMLDivElement>, 'as'> {
   raised?: boolean
 }
 

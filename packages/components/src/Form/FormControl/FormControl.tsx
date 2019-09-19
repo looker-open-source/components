@@ -9,7 +9,7 @@ import { Flex } from '../../Flex'
 
 export type FormControlDirections = 'left' | 'right' | 'top' | 'bottom'
 
-export interface FormControlProps extends BoxProps<HTMLDivElement> {
+export interface FormControlProps extends Omit<BoxProps<HTMLDivElement>, 'as'> {
   alignLabel?: FormControlDirections
 }
 

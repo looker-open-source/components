@@ -5,7 +5,8 @@ import { FlexItem } from '../../FlexItem'
 import { FormControl, FormControlDirections } from '../FormControl'
 import { Legend } from './Legend'
 
-export interface FieldsetProps extends BoxProps<HTMLFieldSetElement> {
+export interface FieldsetProps
+  extends Omit<BoxProps<HTMLFieldSetElement>, 'as'> {
   /**
    * Specifies where to render the legend in relation to the set of inputs. Can be placed `left`, `right`, `bottom`, or `top`.
    */
@@ -21,7 +22,7 @@ type StyledComponentType = StyledComponent<ComponentType, FieldsetProps>
 
 const InternalFieldset: ComponentType = ({ legend, ...props }) => {
   return (
-    <Box is="fieldset" {...props}>
+    <Box as="fieldset" {...props}>
       <FormControl mb="xsmall" alignLabel={props.alignLegend}>
         {legend ? (
           <FlexItem>

@@ -9,7 +9,12 @@ type ComponentType = FunctionComponent<TableProps>
 type StyledComponentType = StyledComponent<ComponentType, TableProps>
 
 const InternalTable: ComponentType = props => (
-  <Box width="100%" is="table" {...props} />
+  <Box
+    width="100%"
+    // @ts-ignore
+    as="table"
+    {...props}
+  />
 )
 
 const TableFactory = React.forwardRef<StyledComponentType, TableProps>(

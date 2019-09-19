@@ -3,7 +3,7 @@ import styled, { StyledComponent } from 'styled-components'
 import { ThemedProps } from '@looker/design-tokens'
 import { Box, BoxProps } from '../../Box'
 
-export interface ModalFooterProps extends BoxProps<HTMLDivElement> {
+export interface ModalFooterProps extends Omit<BoxProps<HTMLDivElement>, 'as'> {
   /**
    * Content that will be placed inside the DialogHeader
    * @required
@@ -31,7 +31,8 @@ export const ModalFooter: ModalFooterComponentType = ({
     <Layout
       alignItems="center"
       display="flex"
-      is="footer"
+      // @ts-ignore
+      as="footer"
       flexDirection="row-reverse"
       {...props}
     >
@@ -41,7 +42,7 @@ export const ModalFooter: ModalFooterComponentType = ({
   )
 }
 
-export type ThemedBoxProps = ThemedProps<BoxProps<HTMLElement>>
+export type ThemedBoxProps = Omit<BoxProps<HTMLElement>, 'as'>
 export type BoxComponentType = FunctionComponent<ThemedBoxProps>
 export type StyledBoxComponentType = StyledComponent<
   BoxComponentType,
@@ -51,16 +52,20 @@ export type StyledBoxComponentType = StyledComponent<
 // Subtract margin placed on children from the horizonal padding applied to the component
 // so that the content is properly aligned.
 // padding is: vertical: large, horizonal: calc(xlarge - xsmall)
-const Layout: StyledBoxComponentType = styled<BoxComponentType>(Box)`
-  padding: ${props => props.theme.space.large}
-    calc(${p => p.theme.space.xlarge} - ${p => p.theme.space.xsmall});
+const Layout: StyledBoxComponentType = styled<StyledBoxComponentType>(Box)`
+  padding: ${(props: any) => props.theme.space.large}
+    calc(
+      ${(p: any) => p.theme.space.xlarge} - ${(p: any) => p.theme.space.xsmall}
+    );
 `
 
-const SpaceChildren: StyledBoxComponentType = styled<BoxComponentType>(Box)`
+const SpaceChildren: StyledBoxComponentType = styled<StyledBoxComponentType>(
+  Box
+)`
   display: flex;
 
   & > * {
-    margin-right: ${props => props.theme.space.xsmall};
-    margin-left: ${props => props.theme.space.xsmall};
+    margin-right: ${(props: any) => props.theme.space.xsmall};
+    margin-left: ${(props: any) => props.theme.space.xsmall};
   }
 `

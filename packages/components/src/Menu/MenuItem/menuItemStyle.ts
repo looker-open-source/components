@@ -1,5 +1,5 @@
 import { FontWeights, palette, RampSizes } from '@looker/design-tokens'
-import { BoxPropsWithout } from '../../Box'
+import { BoxProps } from '../../Box'
 import { MenuItemStateStyle, MenuItemStyle } from './menuItemStyle'
 
 export interface MenuItemStateStyle {
@@ -12,7 +12,7 @@ export interface MenuItemStateStyle {
 }
 
 export interface MenuItemStyle
-  extends BoxPropsWithout<HTMLDivElement, 'initial'> {
+  extends Omit<BoxProps<HTMLDivElement>, 'initial'> {
   current: MenuItemStateStyle
   hover: MenuItemStateStyle
   initial: MenuItemStateStyle

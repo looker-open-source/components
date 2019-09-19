@@ -12,9 +12,6 @@ import { Paragraph } from '../Text'
 
 import { RichTooltip, RichTooltipProps } from './RichTooltip'
 
-// Omit<T, K> is built in to TypeScript 3.5, delete next line when we upgrade
-type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
-
 export interface TooltipProps extends Omit<RichTooltipProps, 'content'> {
   content: string
 

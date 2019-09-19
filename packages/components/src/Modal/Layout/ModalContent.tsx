@@ -4,7 +4,8 @@ import styled, { StyledComponent } from 'styled-components'
 import { palette } from '@looker/design-tokens'
 import { Box, BoxProps } from '../../Box'
 
-export interface ModalContentProps extends BoxProps<HTMLDivElement> {
+export interface ModalContentProps
+  extends Omit<BoxProps<HTMLDivElement>, 'as'> {
   /**
    * Content that will be placed inside the DialogHeader
    * @required
@@ -15,7 +16,7 @@ export interface ModalContentProps extends BoxProps<HTMLDivElement> {
    * Often p="none" is applied if componennts within the the ModalContent need to the
    * touch the container edges.
    */
-  innerProps?: BoxProps<HTMLDivElement>
+  innerProps?: Omit<BoxProps<HTMLDivElement>, 'as'>
 }
 
 interface ContentState {

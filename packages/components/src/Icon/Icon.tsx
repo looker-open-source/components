@@ -1,10 +1,10 @@
 import React, { FunctionComponent, Ref } from 'react'
 import styled, { StyledComponent } from 'styled-components'
 import { Glyphs, IconNames } from '@looker/icons'
-import { Box, BoxPropsWithout } from '../Box'
+import { Box, BoxProps } from '../Box'
 
 export interface IconProps
-  extends BoxPropsWithout<HTMLDivElement, ['size', 'onClick']> {
+  extends Omit<BoxProps<HTMLDivElement>, 'size' | 'onClick' | 'as'> {
   name: IconNames
   size?: number | string
 }

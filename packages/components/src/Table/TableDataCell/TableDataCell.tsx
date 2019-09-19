@@ -9,7 +9,8 @@ type StyledComponentType = StyledComponent<ComponentType, TableDataCellProps>
 
 const InternalTableDataCell: ComponentType = props => (
   <Box
-    is="td"
+    // @ts-ignore
+    as="td"
     px="none"
     py="xsmall"
     borderTop="solid 1px"

@@ -4,7 +4,7 @@ import styled, { CSSObject, StyledComponent } from 'styled-components'
 import { Box, BoxProps } from '../Box'
 import { CustomizableModalAttributes } from './Modal'
 
-export interface ModalBackdropProps extends BoxProps<HTMLElement> {
+export interface ModalBackdropProps extends Omit<BoxProps<HTMLElement>, 'as'> {
   style?: CSSObject
   className?: string
   visible?: boolean

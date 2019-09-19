@@ -1,7 +1,7 @@
 import React, { FunctionComponent, Ref } from 'react'
 import styled, { StyledComponent } from 'styled-components'
 import { palette } from '@looker/design-tokens'
-import { Box, BoxPropsWithout } from '../Box'
+import { Box, BoxProps } from '../Box'
 import { Heading, HeadingProps } from '../Heading'
 import { List } from '../List'
 import { MenuContext } from './MenuContext'
@@ -9,7 +9,7 @@ import { useElementVisibility } from './MenuGroup.hooks'
 import { MenuItemCustomization } from './MenuItem'
 
 export interface MenuGroupProps
-  extends BoxPropsWithout<HTMLDivElement, 'label'> {
+  extends Omit<BoxProps<HTMLDivElement>, 'label' | 'as'> {
   label?: React.ReactNode
   labelProps?: HeadingProps
   labelStyles?: React.CSSProperties
@@ -57,7 +57,7 @@ const InternalMenuGroup: ComponentType = ({
       <div ref={labelShimRef} style={{ height: '0' }} />
       <Heading
         fontSize="small"
-        is="h2"
+        as="h2"
         px="medium"
         py="xsmall"
         fontWeight="semiBold"
@@ -78,7 +78,7 @@ const InternalMenuGroup: ComponentType = ({
       }}
     >
       <Box
-        is="li"
+        as="li"
         {...boxProps}
         bg={customizations ? customizations.bg : palette.white}
         py="small"

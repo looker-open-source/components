@@ -9,7 +9,7 @@ import { Text } from '../Text'
 
 export type BannerIntent = 'warning' | 'info' | 'error' | 'confirmation'
 
-export interface BannerProps extends BoxProps<HTMLDivElement> {
+export interface BannerProps extends Omit<BoxProps<HTMLDivElement>, 'as'> {
   intent: BannerIntent
   dismissable?: boolean
   onDismiss?: () => void
@@ -108,7 +108,7 @@ const InternalBanner: ComponentType = ({
       <Box>{children}</Box>
       {dismissable && (
         <Box
-          is="button"
+          as="button"
           ml="auto"
           bg="transparent"
           onClick={onDismiss}

@@ -9,17 +9,17 @@ import {
   TextVariants,
   ThemedProps,
 } from '@looker/design-tokens'
-import { Box, BoxPropsWithout } from '../Box'
+import { Box, BoxProps } from '../Box'
 
 export type TextAlignments = 'left' | 'center' | 'right'
 export type TextElements = 'span' | 'p' | 'code'
 
 export interface TextProps
-  extends BoxPropsWithout<HTMLSpanElement, 'wrap' | 'is'> {
+  extends Omit<BoxProps<HTMLSpanElement>, 'wrap' | 'as'> {
   /** Base html text element
    *  @default "span"
    */
-  is?: TextElements
+  as?: TextElements
   /** Align text */
   align?: TextAlignments
   /** Set text decoration property */
@@ -36,7 +36,7 @@ type ComponentType = FunctionComponent<TextProps>
 type StyledComponentType = StyledComponent<ComponentType, TextProps>
 
 const InternalText: ComponentType = ({
-  is = 'span',
+  as = 'span',
   align,
   lineHeight,
   fontSize = 'medium',
@@ -45,7 +45,7 @@ const InternalText: ComponentType = ({
 }) => {
   return (
     <Box
-      is={is}
+      as={as}
       fontSize={fontSize}
       fontWeight={fontWeight}
       lineHeight={lineHeight || fontSize}

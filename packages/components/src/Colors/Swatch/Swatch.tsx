@@ -2,7 +2,7 @@ import React from 'react'
 import { Box, BoxProps } from '../../Box'
 import { CustomizableInputTextAttributes } from '../../Form'
 
-export interface SwatchProps extends BoxProps<HTMLDivElement> {
+export interface SwatchProps extends Omit<BoxProps<HTMLDivElement>, 'as'> {
   /**
    * The background color to display on the swatch.
    */

@@ -3,7 +3,7 @@ import styled, { StyledComponent } from 'styled-components'
 
 import { Box, BoxProps } from '../Box'
 
-export type CardContentProps = BoxProps<HTMLDivElement>
+export type CardContentProps = Omit<BoxProps<HTMLDivElement>, 'as'>
 type ComponentType = FunctionComponent<CardContentProps>
 type StyledComponentType = StyledComponent<ComponentType, CardContentProps>
 

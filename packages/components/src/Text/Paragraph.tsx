@@ -16,7 +16,7 @@ type StyledComponentType = StyledComponent<ComponentType, ParagraphProps>
 
 const InternalParagraph: ComponentType = props => {
   return (
-    <Text is="p" {...omit(props, ['truncate', 'truncateLines'])}>
+    <Text as="p" {...omit(props, ['truncate', 'truncateLines'])}>
       {props.children}
     </Text>
   )

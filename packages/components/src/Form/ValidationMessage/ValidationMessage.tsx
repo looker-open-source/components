@@ -4,7 +4,8 @@ import { Box, BoxProps } from '../../Box'
 
 export type ValidationType = 'error'
 
-export interface ValidationMessageProps extends BoxProps<HTMLDivElement> {
+export interface ValidationMessageProps
+  extends Omit<BoxProps<HTMLDivElement>, 'as'> {
   /**
    * The type of validation, therefore changing the message's text color. Accepts: error.
    */

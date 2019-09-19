@@ -16,7 +16,7 @@ import { rem, rgba } from 'polished'
 import React, { FunctionComponent, Ref } from 'react'
 import styled, { css, StyledComponent, withTheme } from 'styled-components'
 import { merge } from 'styled-system'
-import { Box, BoxPropsWithout } from '../Box'
+import { Box, BoxProps } from '../Box'
 import { Icon } from '../Icon/Icon'
 
 export type ButtonSizes = SizeXSmall | SizeSmall | SizeMedium | SizeLarge
@@ -28,7 +28,7 @@ export type ButtonSpacingSizes =
   | SizeXLarge
 
 export interface ButtonProps
-  extends BoxPropsWithout<HTMLButtonElement, 'color' | 'size'> {
+  extends Omit<BoxProps<HTMLButtonElement>, 'size' | 'color'> {
   /**
    * Defines the color of the button. Can be the string name of a color listed in the color theme, or a color object.
    * @default "primary"
@@ -248,7 +248,6 @@ const InternalButton: ComponentType = ({
 
   return (
     <Box
-      is="button"
       borderRadius={CustomizableButtonAttributes.borderRadius}
       fontFamily="brand"
       py={props.p ? undefined : 'none'}
@@ -257,6 +256,8 @@ const InternalButton: ComponentType = ({
       {...sizeHelperProps}
       {...omit(props, 'color')}
       style={{ lineHeight, ...style }}
+      // ts-ignore
+      as="button"
     >
       {getIcon(iconBefore)}
       {props.children}

@@ -9,7 +9,8 @@ type StyledComponentType = StyledComponent<ComponentType, LegendProps>
 
 const InternalLegend: React.FC<LegendProps> = props => (
   <Box
-    is="legend"
+    // @ts-ignore
+    as="legend"
     color={CustomizableLegendAttributes.color}
     fontSize={CustomizableLegendAttributes.fontSize}
     fontWeight={CustomizableLegendAttributes.fontWeight}

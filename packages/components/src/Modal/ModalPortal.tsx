@@ -72,9 +72,9 @@ type StyledInvisiBoxComponentType = StyledComponent<
   InvisiBoxProps
 >
 
-const InvisiBox: StyledInvisiBoxComponentType = styled<InvisiBoxComponentType>(
-  Box
-)`
+const InvisiBox: StyledInvisiBoxComponentType = styled<
+  StyledInvisiBoxComponentType
+>(Box)`
   * {
     pointer-events: auto;
   }

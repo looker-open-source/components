@@ -1,12 +1,12 @@
 import React, { FunctionComponent, Ref } from 'react'
 import styled, { css, StyledComponent } from 'styled-components'
-import { Box, BoxBasePropsWithout, BoxFlexProps } from '../Box'
+import { Box, BoxBaseProps, BoxFlexProps } from '../Box'
 
 /**
  * styled-system has its own FlexProps, so we call this one FlexBoxProps to disambiguate.
  */
 export interface FlexProps
-  extends BoxBasePropsWithout<HTMLDivElement, 'display'>,
+  extends Omit<BoxBaseProps<HTMLDivElement>, 'display' | 'as'>,
     BoxFlexProps {
   hidden?: boolean
 }

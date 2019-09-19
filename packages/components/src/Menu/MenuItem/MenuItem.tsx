@@ -20,7 +20,7 @@ import {
 } from './menuItemStyle'
 
 export interface MenuItemProps
-  extends BoxProps<HTMLAnchorElement>,
+  extends Omit<BoxProps<HTMLAnchorElement>, 'as'>,
     MenuContextProps {
   detail?: React.ReactNode
   icon?: IconNames
@@ -91,7 +91,7 @@ const InternalMenuItem: ComponentType = props => {
       aria-current={current && 'page'}
       display="flex"
       flexWrap="wrap"
-      is="li"
+      as="li"
       onClick={onClick}
       {...listItemProps}
       {...boxProps}

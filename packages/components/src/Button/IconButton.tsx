@@ -10,7 +10,7 @@ import {
   SemanticColor,
   SemanticColors,
 } from '@looker/design-tokens'
-import { BoxPropsWithout } from '../Box'
+import { BoxProps } from '../Box'
 import { Button } from '../Button'
 import { Icon } from '../Icon'
 import { VisuallyHidden } from '../VisuallyHidden'
@@ -23,7 +23,7 @@ export type IconButtonSizes =
   | SizeLarge
 
 export interface IconButtonProps
-  extends BoxPropsWithout<HTMLButtonElement, 'type' | 'color' | 'as'> {
+  extends Omit<BoxProps<HTMLButtonElement>, 'type' | 'color' | 'as'> {
   /**
    *  Determines if the icon button has a border
    *  @default false
@@ -82,7 +82,7 @@ const InternalIconButton: ComponentType = ({
     style={{ padding: '3px' }}
     {...boxProps}
   >
-    <VisuallyHidden is="span">{label}</VisuallyHidden>
+    <VisuallyHidden as="span">{label}</VisuallyHidden>
     <Icon
       name={icon}
       size={iconSizeHelper(size || 'xsmall')}

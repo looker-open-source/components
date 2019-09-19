@@ -33,7 +33,7 @@ const tableRows = typeFamily.map(t => {
   return (
     <TableRow key={t.weight}>
       <TableDataCell>
-        <Box px="small" is="span" className="prop-code">
+        <Box px="small" as="span" className="prop-code">
           <Code fontSize="xsmall">{t.weight}</Code>
         </Box>
       </TableDataCell>
@@ -110,7 +110,7 @@ const tableRows = typeRamp.map(t => {
       <TableDataCell>{t.px}</TableDataCell>
       <TableDataCell>{t.lh}</TableDataCell>
       <TableDataCell>
-        <Box px="small" is="span" className="prop-code">
+        <Box px="small" as="span" className="prop-code">
           <Code fontSize="xsmall">{t.size}</Code>
         </Box>
       </TableDataCell>

@@ -7,7 +7,7 @@ import { ValidationMessageProps } from './ValidationMessage'
 
 export type ValidationMessages = Record<string, ValidationMessageProps>
 
-export interface FormProps extends BoxProps<HTMLFormElement> {
+export interface FormProps extends Omit<BoxProps<HTMLFormElement>, 'as'> {
   /**
    * A record of all validation messages for the form, where the key is the name
    *  of the validated field and the value holds the information for the corresponding
@@ -35,7 +35,7 @@ const InternalForm: React.FC<FormProps> = props => {
   const { validationMessages, children, ...boxProps } = props
   return (
     <FormContext.Provider value={context}>
-      <Box is="form" {...boxProps}>
+      <Box as="form" {...boxProps}>
         {children}
       </Box>
     </FormContext.Provider>

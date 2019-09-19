@@ -3,7 +3,7 @@ import {
   LensFontWeightProps,
   LensLineHeightProps,
   LensSpaceProps,
-  reset,
+  ThemedProps,
 } from '@looker/design-tokens'
 import Tag from 'clean-tag'
 import { UserSelectProperty } from 'csstype'
@@ -99,9 +99,6 @@ import {
 } from 'styled-system'
 import { cursor, CursorProps } from './style_utilities'
 
-// Omit<T, K> is built in to TypeScript 3.5, delete next line when we upgrade
-type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
-
 export interface BoxFlexProps
   extends AlignContentProps,
     AlignItemsProps,
@@ -118,14 +115,7 @@ export interface BoxFlexItemProps
 
 export type StyledSystemCompatibleHTMLProps<T> = Omit<
   React.HTMLProps<T>,
-  | 'width'
-  | 'color'
-  | 'height'
-  | 'is'
-  | 'fontSize'
-  | 'fontWeight'
-  | 'size'
-  | 'as'
+  'width' | 'color' | 'height' | 'fontSize' | 'fontWeight' | 'size'
 >
 
 export interface BoxBaseProps<T>
@@ -166,7 +156,6 @@ export interface BoxBaseProps<T>
     ZIndexProps {
   className?: string
   animation?: FlattenSimpleInterpolation
-  is?: string | JSX.Element
   ref?: React.Ref<any>
   style?: React.CSSProperties
 
@@ -205,9 +194,6 @@ export interface BoxProps<T>
   extends BoxBaseProps<T>,
     BoxFlexProps,
     BoxFlexItemProps {}
-
-export type BoxBasePropsWithout<T, Keys> = Omit<BoxBaseProps<T>, Keys>
-export type BoxPropsWithout<T, Keys> = Omit<BoxProps<T>, Keys>
 
 type ComponentType = FunctionComponent<BoxProps<HTMLElement>>
 type StyledComponentType = StyledComponent<ComponentType, BoxProps<HTMLElement>>
@@ -298,7 +284,8 @@ export const Box = styled<ComponentType>(BoxFactory)`
    *
    * This **must** be first.
    */
-  ${reset};
+  ${(props: ThemedProps<BoxProps<HTMLElement>>) =>
+    props.theme.reset ? props.theme.reset() : undefined};
 
   /**
    * Rules here should provide convenience styling for Box derived components.

@@ -4,7 +4,9 @@ import styled, { StyledComponent } from 'styled-components'
 import { Box, BoxProps } from '../../../Box'
 import { InputProps } from '../InputProps'
 
-export interface RadioProps extends BoxProps<HTMLInputElement>, InputProps {
+export interface RadioProps
+  extends Omit<BoxProps<HTMLInputElement>, 'as'>,
+    InputProps {
   /**
    * Determines if the radio button is selected or not.
    */
@@ -16,7 +18,7 @@ type StyledComponentType = StyledComponent<ComponentType, RadioProps>
 
 const InternalRadio: ComponentType = props => {
   const type = { type: 'radio' }
-  return <Box is="input" {...omit(props, ['validationType'])} {...type} />
+  return <Box as="input" {...omit(props, ['validationType'])} {...type} />
 }
 
 const RadioFactory = React.forwardRef<StyledComponentType, RadioProps>(

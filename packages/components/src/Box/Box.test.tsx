@@ -107,13 +107,13 @@ describe('Box', () => {
 
   describe('is=', () => {
     test('allows Box to render as any HTML tag', () => {
-      const boxAsButton = mountWithTheme(<Box is="button" />)
+      const boxAsButton = mountWithTheme(<Box as="button" />)
       expect(boxAsButton.find('button').exists()).toBeTruthy()
     })
 
     test('any prop can be passed to Box', () => {
       const BoxAsInput: React.FC<{ type?: string }> = props => (
-        <Box is="input" {...props} />
+        <Box as="input" {...props} />
       )
       const boxAsCheckbox = mountWithTheme(<BoxAsInput type="checkbox" />)
       expect(boxAsCheckbox.find('input[type="checkbox"]').exists()).toBeTruthy()

@@ -83,7 +83,7 @@ const BreakpointRow = (
         </Box>
       </TableDataCell>
       <TableDataCell>
-        <Box px="small" is="span" className="prop-code">
+        <Box px="small" as="span" className="prop-code">
           <Code fontSize="xsmall">min-width: {rem}</Code>
         </Box>
       </TableDataCell>

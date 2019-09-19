@@ -4,7 +4,7 @@ import { Box, BoxProps } from '../../../Box'
 import { InputProps } from '../InputProps'
 
 export interface InputHiddenProps
-  extends BoxProps<HTMLInputElement>,
+  extends Omit<BoxProps<HTMLInputElement>, 'as'>,
     InputProps {
   /**
    * Specifies value of the input field.
@@ -24,7 +24,7 @@ const InternalInputHidden: InputHiddenComponentType = ({
   value,
   ...props
 }) => {
-  return <Box is="input" type="hidden" name={name} value={value} {...props} />
+  return <Box as="input" type="hidden" name={name} value={value} {...props} />
 }
 
 /** @component */

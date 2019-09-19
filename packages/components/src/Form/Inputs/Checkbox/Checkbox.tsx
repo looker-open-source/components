@@ -4,7 +4,9 @@ import styled, { StyledComponent } from 'styled-components'
 import { Box, BoxProps } from '../../../Box'
 import { InputProps } from '../InputProps'
 
-export interface CheckboxProps extends BoxProps<HTMLInputElement>, InputProps {
+export interface CheckboxProps
+  extends Omit<BoxProps<HTMLInputElement>, 'as'>,
+    InputProps {
   /**
    * Determines if the checkbox is checked or not.
    */
@@ -16,7 +18,7 @@ type StyledComponentType = StyledComponent<ComponentType, CheckboxProps>
 
 const InternalCheckbox: ComponentType = props => {
   const type = { type: 'checkbox' }
-  return <Box is="input" {...omit(props, ['validationType'])} {...type} />
+  return <Box as="input" {...omit(props, ['validationType'])} {...type} />
 }
 
 const CheckboxFactory = React.forwardRef<StyledComponentType, CheckboxProps>(

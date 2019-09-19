@@ -27,7 +27,14 @@ type ComponentType = FunctionComponent<SliderProps>
 type StyledComponentType = StyledComponent<ComponentType, SliderProps>
 
 const InternalSlider: React.FC<SliderProps> = props => {
-  return <Box is="input" type="range" {...omit(props, ['validationType'])} />
+  return (
+    <Box
+      //@ts-ignore
+      as="input"
+      type="range"
+      {...omit(props, ['validationType'])}
+    />
+  )
 }
 
 const SliderFactory = React.forwardRef<StyledComponentType, SliderProps>(

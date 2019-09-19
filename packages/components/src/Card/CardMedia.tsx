@@ -4,7 +4,7 @@ import { backgroundPosition, BackgroundPositionProps } from 'styled-system'
 import { Box, BoxProps } from '../Box'
 
 export interface CardMediaProps
-  extends BoxProps<HTMLDivElement>,
+  extends Omit<BoxProps<HTMLDivElement>, 'as'>,
     BackgroundPositionProps {
   image: string
 }

@@ -4,7 +4,9 @@ import { CustomizableAttributes } from '@looker/design-tokens'
 import { Box, BoxProps } from '../../../Box'
 import { InputProps } from '../InputProps'
 
-export interface InputTextProps extends BoxProps<HTMLInputElement>, InputProps {
+export interface InputTextProps
+  extends Omit<BoxProps<HTMLInputElement>, 'as'>,
+    InputProps {
   /**
    * Specifies value of the input field.
    */
@@ -40,7 +42,7 @@ const InternalInputText: ComponentType = ({
   }
   return (
     <Box
-      is="input"
+      as="input"
       bg={handleValidationType()}
       border="solid 1px"
       borderColor="palette.charcoal300"

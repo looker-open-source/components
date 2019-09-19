@@ -3,7 +3,7 @@ import styled, { css, StyledComponent } from 'styled-components'
 import { Box, BoxProps } from '../Box'
 
 export interface ListProps
-  extends BoxProps<HTMLOListElement | HTMLUListElement> {
+  extends Omit<BoxProps<HTMLOListElement | HTMLUListElement>, 'as'> {
   type?: ListTypes
   nomarker?: boolean
 }
@@ -23,19 +23,19 @@ const InternalList: ComponentType = ({ type, ...props }) => {
     case 'number':
     case 'letter':
       return (
-        <Box is="ol" m="none" pl={pl} {...props}>
+        <Box as="ol" m="none" pl={pl} {...props}>
           {props.children}
         </Box>
       )
     case 'bullet':
       return (
-        <Box is="ul" m="none" pl={pl} {...props}>
+        <Box as="ul" m="none" pl={pl} {...props}>
           {props.children}
         </Box>
       )
     default:
       return (
-        <Box is="ul" m="none" p="none" {...props}>
+        <Box as="ul" m="none" p="none" {...props}>
           {props.children}
         </Box>
       )

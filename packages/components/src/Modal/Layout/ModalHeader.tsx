@@ -35,7 +35,8 @@ const Internal: React.FC<ModalHeaderProps> = ({
       alignItems="center"
       display="flex"
       flexDirection="row"
-      is="header"
+      // @ts-ignore
+      as="header"
       p="large"
       px="xlarge"
       {...props}

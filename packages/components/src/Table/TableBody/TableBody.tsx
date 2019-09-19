@@ -5,7 +5,8 @@ import { Box, BoxProps } from '../../Box'
 export type TableBodyAlignment = 'bottom' | 'middle' | 'top'
 export type TableTextAlignment = 'center' | 'left' | 'right'
 
-export interface TableBodyProps extends BoxProps<HTMLTableSectionElement> {
+export interface TableBodyProps
+  extends Omit<BoxProps<HTMLTableSectionElement>, 'as'> {
   align?: TableBodyAlignment
   textAlign?: TableTextAlignment
 }
@@ -17,7 +18,8 @@ const InternalTableBody: ComponentType = props => (
   <Box
     verticalAlign={props.align || 'top'}
     textAlign={props.textAlign || 'left'}
-    is="tbody"
+    // @ts-ignore
+    as="tbody"
     {...props}
   />
 )

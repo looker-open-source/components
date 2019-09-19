@@ -8,7 +8,7 @@ type StyledComponentType = StyledComponent<ComponentType, TextProps>
 
 const InternalCode: ComponentType = props => {
   return (
-    <Text is="code" fontFamily={theme.fonts.code} {...props}>
+    <Text as="code" fontFamily={theme.fonts.code} {...props}>
       {props.children}
     </Text>
   )
