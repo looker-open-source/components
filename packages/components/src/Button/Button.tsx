@@ -1,9 +1,3 @@
-import omit from 'lodash/omit'
-import { rem, rgba } from 'polished'
-import React, { FunctionComponent, Ref } from 'react'
-import styled, { css, StyledComponent, withTheme } from 'styled-components'
-import { merge } from 'styled-system'
-import { IconNames } from '../../icons/build/IconNames'
 import {
   CustomizableAttributes,
   RampSizes,
@@ -16,7 +10,12 @@ import {
   SizeXSmall,
   ThemedProps,
 } from '@looker/design-tokens'
-
+import { IconNames } from '@looker/icons'
+import omit from 'lodash/omit'
+import { rem, rgba } from 'polished'
+import React, { FunctionComponent, Ref } from 'react'
+import styled, { css, StyledComponent, withTheme } from 'styled-components'
+import { merge } from 'styled-system'
 import { Box, BoxPropsWithout } from '../Box'
 import { Icon } from '../Icon/Icon'
 

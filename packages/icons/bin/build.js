@@ -1,28 +1,25 @@
-import childProcess from 'child_process'
-import fs from 'fs'
-import glob from 'glob'
-import ora from 'ora'
-import path from 'path'
-import rimraf from 'rimraf'
-import util from 'util'
-const exec = util.promisify(childProcess.exec)
-const globPromise = util.promisify(glob)
-const mkdir = util.promisify(fs.mkdir)
-const rimrafPromise = util.promisify(rimraf)
-const writeFile = util.promisify(fs.writeFile)
+const util = require('util')
+const exec = util.promisify(require('child_process').exec)
+const globPromise = util.promisify(require('glob'))
+const mkdir = util.promisify(require('fs').mkdir)
+const rimrafPromise = util.promisify(require('rimraf'))
+const writeFile = util.promisify(require('fs').writeFile)
+const path = require('path')
+const ora = require('ora')
 
 /**
  * Constants for directory names, file extensions, etc
  */
 const typescriptDeclarationExtension = 'd.ts'
 const iconGlyphFileExtension = 'jsx'
-const iconSrcPath = path.join('src', 'icons')
-const iconBuildDirPath = path.join(iconSrcPath, 'build')
-const iconSVGPath = path.join(iconSrcPath, 'svg')
-const iconGlyphPath = path.join(iconSrcPath, 'build', 'glyphs')
-const iconTemplatePath = path.join('bin', 'icons', 'icon_template.js')
+const packageSrcPath = path.join('src')
+const buildPath = path.join(packageSrcPath, 'generated')
+const iconTemplatePath = path.join('bin', 'icon_template.js')
+const iconSVGPath = path.join(packageSrcPath, 'svg')
+const iconGlyphPath = path.join(buildPath, 'glyphs')
 
-async function getBasenames(globpath: string, ext: string) {
+// typescript (globpath: string, ext: string)
+async function getBasenames(globpath, ext) {
   const filenames = await globPromise(path.join(globpath, `*.${ext}`))
   const basenames = filenames.map(n => path.basename(n, `.${ext}`))
   basenames.sort()
@@ -33,8 +30,8 @@ async function getBasenames(globpath: string, ext: string) {
  * Step 0: Clean up prior build.
  */
 async function cleanGlyphsAndComponents() {
-  await rimrafPromise(iconBuildDirPath)
-  await mkdir(iconBuildDirPath)
+  await rimrafPromise(buildPath)
+  await mkdir(buildPath)
 }
 
 /**
@@ -78,7 +75,7 @@ export default Icon
 }
 
 async function generateGlyphIndexFile() {
-  function generateGlyphFileIndexModule(componentNames: string[]) {
+  function generateGlyphFileIndexModule(componentNames) {
     return (
       componentNames
         .map(name => {
@@ -95,7 +92,7 @@ async function generateGlyphIndexFile() {
 }
 
 async function generateIconNameFile() {
-  function iconNameFile(icons: string[]) {
+  function iconNameFile(icons) {
     const iconNames = icons
       .map(i => {
         return `'${i}'`
@@ -106,10 +103,7 @@ async function generateIconNameFile() {
   }
 
   const basenames = await getBasenames(iconGlyphPath, iconGlyphFileExtension)
-  await writeFile(
-    path.join(iconSrcPath, 'build', 'IconNames.ts'),
-    iconNameFile(basenames)
-  )
+  await writeFile(path.join(buildPath, 'IconNames.ts'), iconNameFile(basenames))
   return basenames
 }
 
@@ -118,8 +112,9 @@ async function generateIconNameFile() {
  * These are the Typescript files Lens exports and are compatible with our
  * Styleguidist documentation.
  */
+// ts: string[]
 async function generateMarkdownFileForAllIcons() {
-  function styleguidistAllIconsMarkdown(componentNames: string[]) {
+  function styleguidistAllIconsMarkdown(componentNames) {
     const componentIconTags = componentNames
       .map(
         name => `
@@ -164,7 +159,7 @@ ${componentIconTags}
   }
   const basenames = await getBasenames(iconGlyphPath, iconGlyphFileExtension)
   await writeFile(
-    path.join(iconSrcPath, 'build', 'AllIcons.md'),
+    path.join(buildPath, 'AllIcons.md'),
     styleguidistAllIconsMarkdown(basenames)
   )
 }
@@ -181,6 +176,7 @@ async function run() {
   spinner.text = 'Exporting Glyphs and generating Typescript interfaces...'
   await generateTypescriptInterfaces()
   await generateGlyphIndexFile()
+  // await generateIndexDefinition()
   await generateIconNameFile()
   spinner.color = 'blue'
   spinner.text = 'Compiling All Icons in Markdown...'

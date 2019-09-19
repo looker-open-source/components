@@ -1,7 +1,6 @@
 import React, { FunctionComponent, Ref } from 'react'
 import styled, { StyledComponent } from 'styled-components'
-import * as Glyphs from '../../icons/build/glyphs'
-import { IconNames } from '../../icons/build/IconNames'
+import { Glyphs, IconNames } from '@looker/icons'
 import { Box, BoxPropsWithout } from '../Box'
 
 export interface IconProps

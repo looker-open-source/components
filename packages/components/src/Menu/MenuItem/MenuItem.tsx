@@ -1,7 +1,7 @@
 import merge from 'lodash/merge'
 import React, { FunctionComponent, Ref } from 'react'
 import styled, { StyledComponent } from 'styled-components'
-import { IconNames } from '../../../icons/build/IconNames'
+import { IconNames } from '@looker/icons'
 import { RampSizes } from '@looker/design-tokens'
 import { BoxProps } from '../../Box'
 import { Icon } from '../../Icon'

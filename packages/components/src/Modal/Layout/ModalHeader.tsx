@@ -1,5 +1,5 @@
 import React from 'react'
-import { IconNames } from '../../../icons/build/IconNames'
+import { IconNames } from '@looker/icons'
 import { Box, BoxProps } from '../../Box'
 import { Button } from '../../Button'
 import { Icon } from '../../Icon'

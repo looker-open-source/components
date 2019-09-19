@@ -1,3 +1,4 @@
+import { IconNames } from '@looker/icons'
 import React, { FunctionComponent, Ref } from 'react'
 import styled, { StyledComponent } from 'styled-components'
 import {
@@ -11,7 +12,7 @@ import {
 } from '@looker/design-tokens'
 import { BoxPropsWithout } from '../Box'
 import { Button } from '../Button'
-import { Icon, IconNames } from '../Icon'
+import { Icon } from '../Icon'
 import { VisuallyHidden } from '../VisuallyHidden'
 
 export type IconButtonSizes =
