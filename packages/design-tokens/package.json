@@ -3,7 +3,6 @@
   "license": "UNLICENSED",
   "version": "0.1.0",
   "main": "dist/index.js",
-  "module": "src/index.ts",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
@@ -14,8 +13,8 @@
   },
   "dependencies": {},
   "peerDependencies": {
-    "@types/styled-system": "^3.0",
-    "styled-system": "^3.1.6",
+    "@types/styled-system": "^3.2.2",
+    "styled-system": "^3.2.1",
     "styled-components": "^4.3.2"
   }
 }
