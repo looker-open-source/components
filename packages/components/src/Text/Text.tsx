@@ -7,8 +7,8 @@ import {
   TextTransforms,
   textVariant,
   TextVariants,
+  ThemedProps,
 } from '@looker/design-tokens'
-import { ThemedProps } from '../../types'
 import { Box, BoxPropsWithout } from '../Box'
 
 export type TextAlignments = 'left' | 'center' | 'right'

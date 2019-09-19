@@ -1,7 +1,7 @@
 import omit from 'lodash/omit'
 import React, { FunctionComponent, Ref } from 'react'
 import styled, { StyledComponent, withTheme } from 'styled-components'
-import { ThemedProps } from '../../types'
+import { ThemedProps } from '@looker/design-tokens'
 import { Box, BoxProps } from '../Box'
 
 export interface CardProps extends BoxProps<HTMLDivElement> {

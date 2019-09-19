@@ -1,7 +1,6 @@
 import React, { FunctionComponent, Ref } from 'react'
 import styled, { StyledComponent } from 'styled-components'
-import { SpacingSizes } from '@looker/design-tokens'
-import { CustomizableAttributes } from '../../../types/attributes'
+import { CustomizableAttributes, SpacingSizes } from '@looker/design-tokens'
 import { Box, BoxProps } from '../../Box'
 
 export type LegendProps = BoxProps<HTMLLegendElement>

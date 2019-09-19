@@ -1,13 +1,14 @@
 import React, { FunctionComponent, Ref } from 'react'
 import styled, { StyledComponent } from 'styled-components'
-import { SemanticColor, SemanticColors } from '@looker/design-tokens'
 import {
   SizeLarge,
   SizeMedium,
   SizeSmall,
   SizeXSmall,
   SizeXXSmall,
-} from '../../types'
+  SemanticColor,
+  SemanticColors,
+} from '@looker/design-tokens'
 import { BoxPropsWithout } from '../Box'
 import { Button } from '../Button'
 import { Icon, IconNames } from '../Icon'

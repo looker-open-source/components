@@ -1,6 +1,6 @@
 import React, { FunctionComponent, Ref } from 'react'
 import styled, { css, StyledComponent } from 'styled-components'
-import { ThemedProps } from '../../types'
+import { ThemedProps } from '@looker/design-tokens'
 import { Box, BoxPropsWithout } from '../Box'
 
 export interface DividerProps

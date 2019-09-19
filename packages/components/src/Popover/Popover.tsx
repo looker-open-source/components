@@ -2,8 +2,12 @@ import { Placement } from 'popper.js'
 import React, { useEffect, useRef, useState } from 'react'
 import { Popper } from 'react-popper'
 import { css } from 'styled-components'
-import { fadeIn, palette, shadows } from '@looker/design-tokens'
-import { CustomizableAttributes } from '../../types/attributes'
+import {
+  CustomizableAttributes,
+  fadeIn,
+  palette,
+  shadows,
+} from '@looker/design-tokens'
 import { ModalContext, ModalSurfaceStyleProps } from '../Modal'
 import { ModalPortal } from '../Modal/ModalPortal'
 import { OverlaySurface } from '../Overlay/OverlaySurface'

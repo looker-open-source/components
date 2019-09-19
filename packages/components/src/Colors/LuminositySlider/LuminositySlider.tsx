@@ -1,6 +1,6 @@
 import { ComponentType } from 'react'
 import styled, { StyledComponent } from 'styled-components'
-import { ThemedProps } from '../../../types'
+import { ThemedProps } from '@looker/design-tokens'
 import { Slider, SliderProps } from '../../Form/Inputs/Slider'
 
 type ThemedSlider = ThemedProps<SliderProps>

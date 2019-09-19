@@ -1,9 +1,11 @@
 import { rem, rgba } from 'polished'
 import React, { FunctionComponent } from 'react'
 import styled, { css, StyledComponent } from 'styled-components'
-import { palette } from '@looker/design-tokens'
-import { Omit, ThemedProps } from '../../../../types'
-import { CustomizableAttributes } from '../../../../types/attributes'
+import {
+  CustomizableAttributes,
+  palette,
+  ThemedProps,
+} from '@looker/design-tokens'
 import { Box, BoxProps } from '../../../Box'
 import { Checkbox } from '../Checkbox'
 

@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import styled, { StyledComponent } from 'styled-components'
-import { ThemedProps } from '../../../types'
+import { ThemedProps } from '@looker/design-tokens'
 import { Box, BoxProps } from '../../Box'
 
 export interface ModalFooterProps extends BoxProps<HTMLDivElement> {

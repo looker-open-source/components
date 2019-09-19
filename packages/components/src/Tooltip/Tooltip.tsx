@@ -1,8 +1,12 @@
 import { TextAlignProperty } from 'csstype'
 import React from 'react'
 import { css } from 'styled-components'
-import { fadeIn, palette, shadows } from '@looker/design-tokens'
-import { CustomizableAttributes } from '../../types/attributes'
+import {
+  CustomizableAttributes,
+  fadeIn,
+  palette,
+  shadows,
+} from '@looker/design-tokens'
 import { ModalSurfaceStyleProps } from '../Modal'
 import { Paragraph } from '../Text'
 

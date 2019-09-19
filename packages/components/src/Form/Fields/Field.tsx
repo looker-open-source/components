@@ -5,9 +5,9 @@ import {
   FontWeights,
   SpacingSizes,
   ResponsiveSpaceValue,
+  ThemedProps,
+  CustomizableAttributes,
 } from '@looker/design-tokens'
-import { ThemedProps } from '../../../types'
-import { CustomizableAttributes } from '../../../types/attributes'
 import { FlexItem } from '../../FlexItem'
 import { FormControl, FormControlDirections } from '../FormControl/FormControl'
 import { Label } from '../Label/Label'
