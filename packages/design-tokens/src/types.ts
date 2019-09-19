@@ -13,4 +13,3 @@ export type SizeXXXLarge = 'xxxlarge'
 export type SizeXXXXLarge = 'xxxxlarge'
 
 export type ThemedProps<P> = ThemedStyledProps<P, Theme>
-export type Omit<T, K> = Pick<T, Exclude<keyof T, K>>

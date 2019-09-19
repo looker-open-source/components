@@ -7,6 +7,9 @@ import { CustomizableAttributes } from '../../../../types/attributes'
 import { Box, BoxProps } from '../../../Box'
 import { Checkbox } from '../Checkbox'
 
+// Omit<T, K> is built in to TypeScript 3.5, delete next line when we upgrade
+type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
+
 export interface KnobProps {
   className?: string
   size: number

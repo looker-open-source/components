@@ -97,9 +97,10 @@ import {
   zIndex,
   ZIndexProps,
 } from 'styled-system'
-
-import { Omit } from '../../types'
 import { cursor, CursorProps } from './style_utilities'
+
+// Omit<T, K> is built in to TypeScript 3.5, delete next line when we upgrade
+type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
 
 export interface BoxFlexProps
   extends AlignContentProps,
