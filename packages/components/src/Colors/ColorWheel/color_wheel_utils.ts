@@ -9,8 +9,7 @@ import {
   scaleRadius,
   translateDiagonal,
 } from './math_utils'
-
-import { sizedArray } from '../../../utils/array'
+import { sizedArray } from '../../utils/array'
 
 export interface HueSaturation {
   h: number

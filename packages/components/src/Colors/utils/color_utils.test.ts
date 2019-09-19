@@ -1,4 +1,4 @@
-import { sizedArray } from '../../../utils/array'
+import { sizedArray } from '../../utils/array'
 import { isValidColor } from './color_utils'
 
 describe('color_utils', () => {

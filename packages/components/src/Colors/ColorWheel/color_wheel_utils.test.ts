@@ -9,7 +9,7 @@ import {
   white,
 } from './color_wheel_utils'
 
-import { sizedArray } from '../../../utils/array'
+import { sizedArray } from '../../utils/array'
 
 describe('color_wheel_utils', () => {
   describe('white', () => {

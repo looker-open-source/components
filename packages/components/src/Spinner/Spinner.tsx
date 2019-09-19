@@ -4,7 +4,7 @@ import styled, {
   FlattenSimpleInterpolation,
   StyledComponent,
 } from 'styled-components'
-import { sizedArray } from '../../utils/array'
+import { sizedArray } from '../utils/array'
 import { Box, BoxPropsWithout } from '../Box'
 import { generateStyleProps, StyledMarker } from './Spinner.styles'
 
