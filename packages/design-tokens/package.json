@@ -11,7 +11,14 @@
     "build:declaration": "tsc --project tsconfig.build.json",
     "build:es": "BABEL_ENV=build babel src --root-mode upward --out-dir dist --source-maps --extensions .ts,.tsx --delete-dir-on-start --no-comments"
   },
-  "dependencies": {},
+  "dependencies": {
+    "csstype": "^2.6.3",
+    "polished": "^3.4.1",
+    "styled-components": "^4.3.2"
+  },
+  "devDependencies": {
+    "@types/styled-components": "^4.1.19"
+  },
   "peerDependencies": {
     "@types/styled-system": "^3.2.2",
     "styled-system": "^3.2.1",
