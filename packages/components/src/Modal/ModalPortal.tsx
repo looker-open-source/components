@@ -6,6 +6,12 @@ import { Box, BoxProps } from '../Box'
 import { CustomizableModalAttributes } from './Modal'
 import { getModalRoot } from './modalRoot'
 
+const hasParentMatchingSelector = (target: HTMLElement, selector: string) => {
+  return [...Array.from(document.querySelectorAll(selector))].some(
+    el => el !== target && el.contains(target)
+  )
+}
+
 export interface ModalPortalProps {
   portalRef?: React.RefObject<HTMLElement>
 }
@@ -57,12 +63,6 @@ export class ModalPortal extends Component<ModalPortalProps> {
 
     return createPortal(content, this.el)
   }
-}
-
-const hasParentMatchingSelector = (target: HTMLElement, selector: string) => {
-  return [...Array.from(document.querySelectorAll(selector))].some(
-    el => el !== target && el.contains(target)
-  )
 }
 
 type InvisiBoxProps = BoxProps<HTMLElement>

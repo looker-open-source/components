@@ -4,6 +4,10 @@ import { Box, BoxProps } from '../../Box'
 
 export type ValidationType = 'error'
 
+export const CustomizableValidationMessageAttributes: CustomizableAttributes = {
+  fontSize: 'xsmall',
+}
+
 export interface ValidationMessageProps
   extends Omit<BoxProps<HTMLDivElement>, 'as'> {
   /**
@@ -40,8 +44,4 @@ export const ValidationMessage: React.FC<ValidationMessageProps> = ({
       {message}
     </Box>
   )
-}
-
-export const CustomizableValidationMessageAttributes: CustomizableAttributes = {
-  fontSize: 'xsmall',
 }

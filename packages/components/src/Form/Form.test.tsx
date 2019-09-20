@@ -23,8 +23,8 @@ test('Form with two invalid children', () => {
   const component = mountWithTheme(
     <Form
       validationMessages={{
-        name1: { type: 'error', message: 'e1' },
-        name2: { type: 'error', message: 'e2' },
+        name1: { message: 'e1', type: 'error' },
+        name2: { message: 'e2', type: 'error' },
       }}
     >
       <FieldText label="label1" id="text-field" name="name1" />
@@ -43,7 +43,7 @@ test('Form with two invalid children', () => {
 
 test('Form with one invalid child and a submit button', () => {
   const component = mountWithTheme(
-    <Form validationMessages={{ name2: { type: 'error', message: 'e2' } }}>
+    <Form validationMessages={{ name2: { message: 'e2', type: 'error' } }}>
       <FieldText label="label1" id="text-field" name="name1" />
       <FieldText label="label2" id="text-field" name="name2" />
       <Button>Submit</Button>

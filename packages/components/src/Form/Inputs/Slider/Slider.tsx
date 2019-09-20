@@ -29,7 +29,7 @@ type StyledComponentType = StyledComponent<ComponentType, SliderProps>
 const InternalSlider: React.FC<SliderProps> = props => {
   return (
     <Box
-      //@ts-ignore
+      // @ts-ignore
       as="input"
       type="range"
       {...omit(props, ['validationType'])}

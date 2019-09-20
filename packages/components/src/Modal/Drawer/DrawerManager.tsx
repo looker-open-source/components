@@ -1,7 +1,7 @@
 import React from 'react'
-import { Drawer } from '.'
 import { ManagedModalProps } from '../Modal'
 import { ModalManager } from '../ModalManager'
+import { Drawer } from '.'
 
 export class DrawerManager extends ModalManager {
   protected renderModal(content: React.ReactNode, props: ManagedModalProps) {

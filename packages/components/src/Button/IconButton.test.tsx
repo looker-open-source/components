@@ -3,9 +3,7 @@ import React from 'react'
 import { assertSnapshot } from '@looker/components-test-utils'
 import { IconButton } from './IconButton'
 
-const noop = () => {
-  return
-}
+const noop = () => {}
 
 test('IconButton default', () => {
   assertSnapshot(<IconButton label="Test" icon="Favorite" />)

@@ -1,6 +1,7 @@
 import React, { FunctionComponent, Ref } from 'react'
 import styled, { css, StyledComponent } from 'styled-components'
 import { ThemedProps } from '@looker/design-tokens'
+import omit from 'lodash/omit'
 import { Box, BoxProps } from '../Box'
 
 export interface DividerProps
@@ -37,13 +38,13 @@ const dividerAppearance = (props: ThemedDividerProps) => {
 }
 
 const InternalDivider: DividerComponentType = props => {
-  const { size, customColor, appearance, ...boxProps } = props
+  const { size, customColor, ...boxProps } = props
 
   return (
     <Box
       height={size || '1px'}
       bg={customColor || 'palette.charcoal300'}
-      {...boxProps}
+      {...omit(boxProps, ['appearance'])}
     />
   )
 }

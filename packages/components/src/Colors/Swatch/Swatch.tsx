@@ -38,6 +38,6 @@ const InternalSwatch: React.FC<SwatchProps> = ({
 
 export const Swatch = React.forwardRef<HTMLElement, SwatchProps>(
   (props: SwatchProps, ref) => {
-    return <InternalSwatch {...props} innerRef={ref} />
+    return <InternalSwatch {...props} ref={ref} />
   }
 )

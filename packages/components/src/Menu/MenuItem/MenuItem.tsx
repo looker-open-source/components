@@ -19,6 +19,58 @@ import {
   MenuItemStyle,
 } from './menuItemStyle'
 
+const assignCustomizations = (
+  defaultStyle: MenuItemStyle,
+  changes?: MenuItemCustomization
+): MenuItemStyle => {
+  const { bg, color, iconColor, fontWeight, fontSize, iconSize } =
+    changes || ({} as MenuItemCustomization)
+
+  const customMarker = changes ? changes.marker : {}
+
+  // Need to spread fontSize & iconSize across all states
+  const defaults = {
+    fontSize: fontSize || ('small' as RampSizes),
+    iconSize: iconSize || 20,
+  }
+
+  const base: MenuItemStateCustomizations = {}
+
+  bg && (base.bg = bg)
+  color && (base.color = color)
+  fontWeight && (base.fontWeight = fontWeight)
+  iconColor && (base.iconColor = iconColor)
+
+  const initial: MenuItemStateStyle = {
+    ...defaultStyle.initial,
+    ...defaults,
+    ...base,
+  }
+
+  const current: MenuItemStateStyle = {
+    ...defaultStyle.current,
+    ...defaults,
+    ...base,
+    ...(changes ? changes.current : {}),
+  }
+
+  const hover: MenuItemStateStyle = {
+    ...defaultStyle.hover,
+    ...defaults,
+    ...base,
+    ...(changes ? changes.hover : {}),
+  }
+
+  const marker = { ...defaultStyle.marker, ...customMarker }
+
+  return {
+    current,
+    hover,
+    initial,
+    marker,
+  }
+}
+
 export interface MenuItemProps
   extends Omit<BoxProps<HTMLAnchorElement>, 'as'>,
     MenuContextProps {
@@ -66,9 +118,7 @@ const InternalMenuItem: ComponentType = props => {
 
   const menu = React.useContext(MenuContext)
 
-  let customizations = customizationProps
-    ? customizationProps
-    : menu.customizationProps
+  let customizations = customizationProps || menu.customizationProps
 
   if (customizationProps && menu.customizationProps) {
     customizations = merge(customizationProps, menu.customizationProps)
@@ -127,55 +177,3 @@ const MenuItemFactory = React.forwardRef<StyledComponentType, MenuItemProps>(
 
 /** @component */
 export const MenuItem = styled<ComponentType>(MenuItemFactory)``
-
-const assignCustomizations = (
-  defaultStyle: MenuItemStyle,
-  changes?: MenuItemCustomization
-): MenuItemStyle => {
-  const { bg, color, iconColor, fontWeight, fontSize, iconSize } =
-    changes || ({} as MenuItemCustomization)
-
-  const customMarker = changes ? changes.marker : {}
-
-  // Need to spread fontSize & iconSize across all states
-  const defaults = {
-    fontSize: fontSize || ('small' as RampSizes),
-    iconSize: iconSize || 20,
-  }
-
-  const base: MenuItemStateCustomizations = {}
-
-  bg && (base.bg = bg)
-  color && (base.color = color)
-  fontWeight && (base.fontWeight = fontWeight)
-  iconColor && (base.iconColor = iconColor)
-
-  const initial: MenuItemStateStyle = {
-    ...defaultStyle.initial,
-    ...defaults,
-    ...base,
-  }
-
-  const current: MenuItemStateStyle = {
-    ...defaultStyle.current,
-    ...defaults,
-    ...base,
-    ...(changes ? changes.current : {}),
-  }
-
-  const hover: MenuItemStateStyle = {
-    ...defaultStyle.hover,
-    ...defaults,
-    ...base,
-    ...(changes ? changes.hover : {}),
-  }
-
-  const marker = { ...defaultStyle.marker, ...customMarker }
-
-  return {
-    current,
-    hover,
-    initial,
-    marker,
-  }
-}

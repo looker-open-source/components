@@ -3,9 +3,7 @@ import React from 'react'
 import { assertSnapshot } from '@looker/components-test-utils'
 import { ListItem } from './ListItem'
 
-const noop = () => {
-  return
-}
+const noop = () => {}
 
 describe('ListItem', () => {
   test('A default ListItem, should be an li', () => {

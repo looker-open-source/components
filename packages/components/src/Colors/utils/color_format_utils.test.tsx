@@ -180,7 +180,7 @@ test('conversion table tests', () => {
       // check each match
       // only test if source is assigned
       if (source) {
-        Object.entries(set).forEach(([_, value]) => {
+        Object.entries(set).forEach(([, value]) => {
           value &&
             expect(ColorHelper.toFormattedColorString(value, target)).toBe(
               source
@@ -266,7 +266,10 @@ test('converts hsla to rgbpa', () => {
 
 test('converts rgba to hsva and back', () => {
   const expected = 'rgba(49, 93, 175, 0.65)'
-  const hsv = ColorHelper.toHSV(expected)!
+  const hsv = ColorHelper.toHSV(expected)
+
+  if (!hsv) throw new Error('hsv is null')
+
   expect(hsv.h).toBeCloseTo(219.05)
   expect(hsv.s).toBeCloseTo(0.72)
   expect(hsv.v).toBeCloseTo(0.69)
@@ -394,8 +397,11 @@ const hsvToStringTest = (matcher: MatchColor) => {
       ColorHelper.ColorFormat[key as keyof typeof ColorHelper.ColorFormat]
     const formatName = ColorHelper.ColorFormat[index].toLocaleLowerCase()
     const expected = set[formatName]
+
+    if (!hsv) throw new Error('hsv is null')
+
     if (expected) {
-      const actual = ColorHelper.hsvToColorString(hsv!, target)
+      const actual = ColorHelper.hsvToColorString(hsv, target)
       expect(actual).toBe(expected)
     }
   })

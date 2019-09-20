@@ -79,7 +79,7 @@ test('A FieldSelect with an error validation aligned to the bottom', () => {
       label="👍"
       name="thumbsUp"
       id="thumbs-up"
-      validationMessage={{ type: 'error', message: 'This is an error' }}
+      validationMessage={{ message: 'This is an error', type: 'error' }}
       alignValidationMessage="bottom"
     />
   )
@@ -94,7 +94,7 @@ test('A FieldSelect with an error validation aligned to the left', () => {
       label="👍"
       name="thumbsUp"
       id="thumbs-up"
-      validationMessage={{ type: 'error', message: 'This is an error' }}
+      validationMessage={{ message: 'This is an error', type: 'error' }}
       alignValidationMessage="left"
     />
   )
@@ -108,7 +108,7 @@ test('A FieldSelect with an error validation aligned to the right', () => {
       label="👍"
       name="thumbsUp"
       id="thumbs-up"
-      validationMessage={{ type: 'error', message: 'This is an error' }}
+      validationMessage={{ message: 'This is an error', type: 'error' }}
       alignValidationMessage="right"
     />
   )

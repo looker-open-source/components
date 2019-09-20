@@ -1,5 +1,6 @@
 import { radii } from '@looker/design-tokens'
 import React from 'react'
+import omit from 'lodash/omit'
 import { Flex } from '../../Flex'
 import { FlexItem } from '../../FlexItem'
 import {
@@ -80,14 +81,10 @@ class InternalColorFieldPicker extends React.Component<
 
   public render() {
     const {
-      alignLabel,
       alignValidationMessage,
       hideInput,
-      label,
       validationMessage,
       cwSize = 164,
-      open,
-      ...inputTextProps
     } = this.props
     const hsvColor = this.getHSVColor()
     let borderRadius
@@ -130,9 +127,7 @@ class InternalColorFieldPicker extends React.Component<
     return (
       <Field
         {...this.props}
-        alignValidationMessage={
-          alignValidationMessage ? alignValidationMessage : 'bottom'
-        }
+        alignValidationMessage={alignValidationMessage || 'bottom'}
       >
         <FormControl alignLabel="left">
           <FlexItem mt="auto">
@@ -153,7 +148,15 @@ class InternalColorFieldPicker extends React.Component<
           <FlexItem>
             <InputText
               type={hideInput ? 'hidden' : 'text'}
-              {...inputTextProps}
+              {...omit(this.props, [
+                'alignLabel',
+                'alignValidationMessage',
+                'hideInput',
+                'label',
+                'validationMessage',
+                'cwSize',
+                'open',
+              ])}
               validationType={validationMessage && validationMessage.type}
               onChange={this.handleInputTextChange}
               borderRadius={inputTextBorderRadius}

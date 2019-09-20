@@ -1,6 +1,7 @@
 import React, { FunctionComponent, Ref } from 'react'
-import styled, { css, StyledComponent } from 'styled-components'
+import styled, { StyledComponent } from 'styled-components'
 import { Box, BoxBaseProps, BoxFlexProps } from '../Box'
+import { hidden } from './flexHelpers'
 
 /**
  * styled-system has its own FlexProps, so we call this one FlexBoxProps to disambiguate.
@@ -32,10 +33,3 @@ const FlexFactory = React.forwardRef<StyledComponentType, FlexProps>(
 export const Flex = styled<ComponentType>(FlexFactory)`
   ${(props: FlexProps) => hidden(props.hidden)};
 `
-
-const hidden = (hide?: boolean) =>
-  hide
-    ? css`
-        display: none;
-      `
-    : false

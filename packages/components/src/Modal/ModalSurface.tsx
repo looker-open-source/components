@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import { HotKeys } from 'react-hotkeys'
 import styled, { CSSObject, StyledComponent } from 'styled-components'
+import omit from 'lodash/omit'
 import { Box, BoxProps } from '../Box'
 import { CustomizableModalAttributes } from './Modal'
 import { ModalContext } from './ModalContext'
@@ -77,10 +78,9 @@ export type InternalSurfaceComponentType = FunctionComponent<
   SurfaceInternalProps
 >
 
-const SurfaceFactory: InternalSurfaceComponentType = props => {
-  const { surfaceStyle, ref, ...boxProps } = props
-  return <Box {...boxProps} ref={ref} />
-}
+const SurfaceFactory: InternalSurfaceComponentType = props => (
+  <Box {...omit(props, 'surfaceStyle')} />
+)
 
 const TransitionTimers = styled<InternalSurfaceComponentType>(SurfaceFactory)`
   /* stylelint-disable */

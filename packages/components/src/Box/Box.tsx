@@ -187,7 +187,6 @@ export interface BoxBaseProps<T>
    * @example <Box userSelect="none"/>
    */
   userSelect?: UserSelectProperty
-  innerRef?: any
 }
 
 export interface BoxProps<T>
@@ -253,24 +252,16 @@ const cursorPointerOnClick = (props: BoxProps<HTMLElement>) =>
 
 const BoxFactory = React.forwardRef<StyledComponentType, BoxProps<HTMLElement>>(
   (props: BoxProps<HTMLElement>, ref: Ref<StyledComponentType>) => {
-    const {
-      activeStyle,
-      focusStyle,
-      hoverStyle,
-      userSelect,
-      lineHeight,
-      fontWeight,
-      fontSize,
-      innerRef,
-      ...otherProps
-    } = props
     return (
       <Tag
-        lineHeight={lineHeight}
-        fontSize={fontSize}
-        fontWeight={fontWeight}
-        ref={ref || innerRef}
-        {...omit(otherProps, ['animation'])}
+        ref={ref}
+        {...omit(props, [
+          'animation',
+          'activeStyle',
+          'focusStyle',
+          'hoverStyle',
+          'userSelect',
+        ])}
       />
     )
   }
@@ -285,7 +276,7 @@ export const Box = styled<ComponentType>(BoxFactory)`
    * This **must** be first.
    */
   ${(props: ThemedProps<BoxProps<HTMLElement>>) =>
-    props.theme.reset ? props.theme.reset() : undefined};
+    props.theme.reset && props.theme.reset()}
 
   /**
    * Rules here should provide convenience styling for Box derived components.

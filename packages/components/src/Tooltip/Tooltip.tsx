@@ -64,7 +64,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
 }) => {
   const contentFormatted = (
     <Paragraph
-      style={{ overflowWrap: 'anywhere', hyphens: 'auto' }}
+      style={{ hyphens: 'auto', overflowWrap: 'anywhere' }}
       fontSize="xsmall"
       maxWidth={maxWidth || '16rem'}
       width={width || 'auto'}

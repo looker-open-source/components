@@ -33,7 +33,7 @@ test('MenuItem - current + marker', () => {
 
 test('MenuItem - with customizations', () => {
   const menuCustomizations =
-    // eslint-disable object-literal-sort-keys
+    /* eslint-disable sort-keys */
     {
       bg: palette.purple500,
       color: palette.purple200,
@@ -53,7 +53,7 @@ test('MenuItem - with customizations', () => {
         color: palette.purple900,
         iconColor: palette.purple500,
       },
-      // eslint-disable enable-literal-sort-keys
+      /* eslint-enable sort-keys */
     }
 
   assertSnapshot(

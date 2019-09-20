@@ -4,6 +4,34 @@ import { CustomizableAttributes, palette } from '@looker/design-tokens'
 import { Box, BoxProps } from '../../../Box'
 import { InputProps } from '../InputProps'
 
+const renderOptions = (options: OptionsType<SelectOptionProps>) => {
+  return options.map(option => (
+    <option key={option.value} value={option.value}>
+      {option.label}
+    </option>
+  ))
+}
+
+const renderOptGroups = (
+  optionGroups: GroupedOptionsType<SelectOptionProps>
+) => {
+  return optionGroups.map(option => {
+    return (
+      <optgroup key={option.key} label={option.key}>
+        {renderOptions(option.options)}
+      </optgroup>
+    )
+  })
+}
+
+export const CustomizableSelectAttributes: CustomizableAttributes = {
+  borderRadius: 'medium',
+  fontSize: 'small',
+  height: '28px',
+  px: 'xsmall',
+  py: 'none',
+}
+
 export type OptionsType<OptionType> = OptionType[]
 
 export interface GroupType<OptionType> {
@@ -72,7 +100,7 @@ const InternalSelect: ComponentType = ({
   const optionElements =
     !options || options.length === 0
       ? null
-      : options[0].hasOwnProperty('key')
+      : Object.prototype.hasOwnProperty.call(options[0], 'key')
       ? renderOptGroups(options as GroupedOptionsType<SelectOptionProps>)
       : renderOptions(options as OptionsType<SelectOptionProps>)
 
@@ -138,31 +166,3 @@ export const Select = styled<ComponentType>(SelectFactory)`
     display: none;
   }
 `
-
-const renderOptions = (options: OptionsType<SelectOptionProps>) => {
-  return options.map(option => (
-    <option key={option.value} value={option.value}>
-      {option.label}
-    </option>
-  ))
-}
-
-const renderOptGroups = (
-  optionGroups: GroupedOptionsType<SelectOptionProps>
-) => {
-  return optionGroups.map(option => {
-    return (
-      <optgroup key={option.key} label={option.key}>
-        {renderOptions(option.options)}
-      </optgroup>
-    )
-  })
-}
-
-export const CustomizableSelectAttributes: CustomizableAttributes = {
-  borderRadius: 'medium',
-  fontSize: 'small',
-  height: '28px',
-  px: 'xsmall',
-  py: 'none',
-}

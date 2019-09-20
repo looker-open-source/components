@@ -3,7 +3,7 @@ import styled, { StyledComponent } from 'styled-components'
 import uuid from 'uuid/v4'
 import { ComponentWithForm, withForm } from '../../Form'
 import { ToggleSwitch, ToggleSwitchProps } from '../../Inputs/ToggleSwitch'
-import { Field, FieldProps } from '../Field'
+import { Field, FieldProps, omitFieldProps } from '../Field'
 
 export interface FieldToggleSwitchProps extends FieldProps, ToggleSwitchProps {}
 type ComponentType = FunctionComponent<FieldToggleSwitchProps>
@@ -15,26 +15,15 @@ type StyledComponentType = StyledComponent<
 const InternalFieldToggleSwitch: ComponentType = (
   props: FieldToggleSwitchProps
 ) => {
-  const {
-    alignLabel,
-    alignValidationMessage,
-    label,
-    labelWidth,
-    labelFontWeight,
-    validationMessage,
-    id = uuid(),
-    ...inputToggleSwitchProps
-  } = props
+  const { id = uuid() } = props
   return (
     <Field
       id={id}
-      alignLabel={alignLabel ? alignLabel : 'right'}
+      alignLabel="right"
+      alignValidationMessage="bottom"
       {...props}
-      alignValidationMessage={
-        alignValidationMessage ? alignValidationMessage : 'bottom'
-      }
     >
-      <ToggleSwitch id={id} {...inputToggleSwitchProps} />
+      <ToggleSwitch id={id} {...omitFieldProps(props)} />
     </Field>
   )
 }

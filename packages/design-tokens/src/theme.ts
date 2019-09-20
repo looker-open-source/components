@@ -81,7 +81,7 @@ export const theme: Theme = {
   },
   shadows,
   space: {
-    // eslint-disable object-literal-sort-keys
+    /* eslint-disable sort-keys */
     none: rem(0),
     xxsmall: rem(4),
     xsmall: rem(8),
@@ -92,7 +92,7 @@ export const theme: Theme = {
     xxlarge: rem(40),
     xxxlarge: rem(60),
     xxxxlarge: rem(80),
-    // eslint-enable object-literal-sort-keys
+    /* eslint-enable sort-keys */
   },
   transitions,
 }

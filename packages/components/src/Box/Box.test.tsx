@@ -8,9 +8,7 @@ import {
 
 import { Box } from './Box'
 
-const noop = () => {
-  return
-}
+const noop = () => {}
 
 describe('Box', () => {
   test('Box default', () => {

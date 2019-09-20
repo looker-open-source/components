@@ -63,6 +63,13 @@ const TextFactory = React.forwardRef<StyledComponentType, TextProps>(
   )
 )
 
+const getWrap = (doWrap: boolean) =>
+  doWrap
+    ? css`
+        overflow-wrap: break-word;
+      `
+    : false
+
 /** @component */
 export const Text = styled<ComponentType>(TextFactory)`
   text-decoration: ${(props: ThemedProps<TextProps>) => props.decoration};
@@ -70,10 +77,3 @@ export const Text = styled<ComponentType>(TextFactory)`
   ${(props: ThemedProps<TextProps>) => getWrap(props.wrap || false)};
   ${(props: ThemedProps<TextProps>) => textVariant(props.theme, props.variant)};
 `
-
-const getWrap = (doWrap: boolean) =>
-  doWrap
-    ? css`
-        overflow-wrap: break-word;
-      `
-    : false

@@ -7,7 +7,7 @@ export interface Transitions {
   durationSimple: string
 }
 
-// eslint-disable object-literal-sort-keys
+/* eslint-disable sort-keys */
 export const transitions: Transitions = {
   durationRapid: '100ms',
   durationQuick: '150ms',

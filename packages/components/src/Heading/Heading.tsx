@@ -14,6 +14,46 @@ import { Box, BoxProps } from '../Box'
 export type HeadingLevels = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
 export type HeadingTextTransforms = 'caps' | 'lower' | 'none' | 'upper'
 
+const headingLevelSize = (as?: HeadingLevels) => {
+  switch (as) {
+    case 'h1':
+      return 'xxlarge'
+    case 'h2':
+      return 'xlarge'
+    case 'h3':
+      return 'large'
+    case 'h4':
+      return 'medium'
+    case 'h5':
+      return 'small'
+    case 'h6':
+      return 'xsmall'
+    default:
+      return 'large'
+  }
+}
+
+const headingLineHeight = (as?: HeadingLevels, size?: ResponsiveFontSize) => {
+  if (size) return size
+
+  switch (as) {
+    case 'h1':
+      return 'xxlarge'
+    case 'h2':
+      return 'xlarge'
+    case 'h3':
+      return 'large'
+    case 'h4':
+      return 'medium'
+    case 'h5':
+      return 'small'
+    case 'h6':
+      return 'xsmall'
+    default:
+      return 'large'
+  }
+}
+
 export interface HeadingProps
   extends Omit<BoxProps<HTMLHeadingElement>, 'truncate'> {
   /** Heading level from h1-h6 */
@@ -63,43 +103,3 @@ export const Heading = styled<ComponentType>(HeadingFactory)`
   ${props => shouldTruncate(props.truncate, props.truncateLines)};
   ${props => textVariant(props.theme, props.variant)};
 `
-
-const headingLevelSize = (as?: HeadingLevels) => {
-  switch (as) {
-    case 'h1':
-      return 'xxlarge'
-    case 'h2':
-      return 'xlarge'
-    case 'h3':
-      return 'large'
-    case 'h4':
-      return 'medium'
-    case 'h5':
-      return 'small'
-    case 'h6':
-      return 'xsmall'
-    default:
-      return 'large'
-  }
-}
-
-const headingLineHeight = (is?: HeadingLevels, size?: ResponsiveFontSize) => {
-  if (size) return size
-
-  switch (is) {
-    case 'h1':
-      return 'xxlarge'
-    case 'h2':
-      return 'xlarge'
-    case 'h3':
-      return 'large'
-    case 'h4':
-      return 'medium'
-    case 'h5':
-      return 'small'
-    case 'h6':
-      return 'xsmall'
-    default:
-      return 'large'
-  }
-}

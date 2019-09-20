@@ -12,6 +12,29 @@ import { ModalContext, ModalSurfaceStyleProps } from '../Modal'
 import { ModalPortal } from '../Modal/ModalPortal'
 import { OverlaySurface } from '../Overlay/OverlaySurface'
 
+/*
+ * NOTE: Use longform version of tagged function to prevent stylelint
+ * from parsing and complaining about css`` keyframe interpolation.
+ *
+ * EQUIVALENT: css`${fadeIn} 0.2s linear;`
+ */
+const animationRule = css(
+  (['', ' 0.2s linear;'] as any) as TemplateStringsArray,
+  fadeIn
+)
+
+export const CustomizablePopoverAttributes: CustomizablePopoverAttributes = {
+  surface: {
+    animation: animationRule,
+    backgroundColor: palette.white,
+    border: '1px solid',
+    borderColor: palette.charcoal200,
+    borderRadius: 'medium',
+    boxShadow: shadows[3],
+    color: palette.charcoal900,
+  },
+}
+
 export interface PopoverProps {
   /**
    * Display and arrow that points to the trigger element on popovers
@@ -176,7 +199,7 @@ export const Popover: React.FC<PopoverProps> = ({
           modifiers={{
             flip: {
               behavior: 'flip',
-              enabled: !pin ? true : false,
+              enabled: !pin,
               flipVariations: true,
               flipVariationsByContent: true,
             },
@@ -215,27 +238,4 @@ export const Popover: React.FC<PopoverProps> = ({
 
 export interface CustomizablePopoverAttributes extends CustomizableAttributes {
   surface: ModalSurfaceStyleProps
-}
-
-/*
- * NOTE: Use longform version of tagged function to prevent stylelint
- * from parsing and complaining about css`` keyframe interpolation.
- *
- * EQUIVALENT: css`${fadeIn} 0.2s linear;`
- */
-const animationRule = css(
-  (['', ' 0.2s linear;'] as any) as TemplateStringsArray,
-  fadeIn
-)
-
-export const CustomizablePopoverAttributes: CustomizablePopoverAttributes = {
-  surface: {
-    animation: animationRule,
-    backgroundColor: palette.white,
-    border: '1px solid',
-    borderColor: palette.charcoal200,
-    borderRadius: 'medium',
-    boxShadow: shadows[3],
-    color: palette.charcoal900,
-  },
 }

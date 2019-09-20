@@ -12,5 +12,5 @@ export function useToggle(initialValue = false): UseToggleReturn {
   const setOn = () => setValue(true)
   const setOff = () => setValue(false)
   const toggle = () => setValue(!value)
-  return { value, setOn, setOff, toggle }
+  return { setOff, setOn, toggle, value }
 }

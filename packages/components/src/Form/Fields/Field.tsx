@@ -8,6 +8,7 @@ import {
   ThemedProps,
   CustomizableAttributes,
 } from '@looker/design-tokens'
+import omit from 'lodash/omit'
 import { FlexItem } from '../../FlexItem'
 import { FormControl, FormControlDirections } from '../FormControl/FormControl'
 import { Label } from '../Label/Label'
@@ -15,6 +16,17 @@ import {
   ValidationMessage,
   ValidationMessageProps,
 } from '../ValidationMessage/ValidationMessage'
+
+export interface CustomizableFieldAttributesInterface
+  extends CustomizableAttributes {
+  labelMargin: SpacingSizes
+  labelWidth: ResponsiveSpaceValue
+}
+
+export const CustomizableFieldAttributes: CustomizableFieldAttributesInterface = {
+  labelMargin: 'xsmall',
+  labelWidth: '20%',
+}
 
 export interface FieldProps {
   /**
@@ -50,8 +62,18 @@ export interface FieldProps {
    * Holds the type of validation (error, warning, etc.) and corresponding message.
    */
   validationMessage?: ValidationMessageProps
-  innerRef?: any
 }
+
+export const omitFieldProps = (props: FieldProps) =>
+  omit(props, [
+    'alignLabel',
+    'alignValidationMessage',
+    'id',
+    'label',
+    'labelWidth',
+    'labelFontWeight',
+    'validationMessage',
+  ])
 
 interface LabelContainerAlignment {
   textAlign?: TextAlignProperty
@@ -169,14 +191,3 @@ const InternalField: FieldComponentType = props => {
 export const Field: StyledFieldComponentType = styled<FieldComponentType>(
   InternalField
 )``
-
-export interface CustomizableFieldAttributesInterface
-  extends CustomizableAttributes {
-  labelMargin: SpacingSizes
-  labelWidth: ResponsiveSpaceValue
-}
-
-export const CustomizableFieldAttributes: CustomizableFieldAttributesInterface = {
-  labelMargin: 'xsmall',
-  labelWidth: '20%',
-}

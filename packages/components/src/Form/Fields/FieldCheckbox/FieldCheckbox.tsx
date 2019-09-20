@@ -3,7 +3,7 @@ import styled, { StyledComponent } from 'styled-components'
 import uuid from 'uuid/v4'
 import { ComponentWithForm, withForm } from '../../Form'
 import { Checkbox, CheckboxProps } from '../../Inputs/Checkbox/Checkbox'
-import { Field, FieldProps } from '../Field'
+import { Field, FieldProps, omitFieldProps } from '../Field'
 
 export interface FieldCheckboxProps extends FieldProps, CheckboxProps {}
 export type FieldCheckboxComponentType = FunctionComponent<FieldCheckboxProps>
@@ -15,28 +15,17 @@ export type StyledFieldCheckboxComponentType = StyledComponent<
 const InternalFieldCheckbox: FieldCheckboxComponentType = (
   props: FieldCheckboxProps
 ) => {
-  const {
-    alignLabel,
-    alignValidationMessage,
-    label,
-    labelWidth,
-    labelFontWeight,
-    validationMessage,
-    id = uuid(),
-    ...checkboxProps
-  } = props
+  const { id = uuid(), validationMessage } = props
   return (
     <Field
-      {...props}
       id={id}
-      alignLabel={alignLabel ? alignLabel : 'left'}
-      alignValidationMessage={
-        alignValidationMessage ? alignValidationMessage : 'right'
-      }
+      alignLabel={'left'}
+      alignValidationMessage={'right'}
+      {...props}
     >
       <Checkbox
+        {...omitFieldProps(props)}
         id={id}
-        {...checkboxProps}
         validationType={validationMessage && validationMessage.type}
       />
     </Field>

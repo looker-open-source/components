@@ -41,7 +41,7 @@ export const InputSearchControls: React.FC<InputSearchControlsProps> = ({
           pr="xsmall"
           variant="subdued"
           fontSize="small"
-          style={{ whiteSpace: 'nowrap', pointerEvents: 'none' }}
+          style={{ pointerEvents: 'none', whiteSpace: 'nowrap' }}
         >
           {summary}
         </Text>

@@ -1,3 +1,4 @@
+import { sizedArray } from '../../utils/array'
 import {
   cartesian2hsv,
   generateColorWheel,
@@ -8,8 +9,6 @@ import {
   scalePBRadius,
   white,
 } from './color_wheel_utils'
-
-import { sizedArray } from '../../utils/array'
 
 describe('color_wheel_utils', () => {
   describe('white', () => {
@@ -108,7 +107,7 @@ describe('color_wheel_utils', () => {
     }
 
     for (let i = 1; i <= 10; i++) {
-      testScale(i, { coord: { angle: Math.PI, radius: 3 }, brightness: 0.7 })
+      testScale(i, { brightness: 0.7, coord: { angle: Math.PI, radius: 3 } })
     }
   })
 

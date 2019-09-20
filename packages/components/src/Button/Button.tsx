@@ -66,9 +66,6 @@ type StyledComponentType = StyledComponent<
 
 const variantCommonProps = (color: SemanticColor) => {
   return {
-    borderStyle: 'solid',
-    borderWidth: rem(1),
-    // eslint-disable-next-line object-literal-sort-keys
     '&:focus': {
       boxShadow: `0 0 0 0.15rem ${rgba(color.main, 0.25)}`,
     },
@@ -77,22 +74,20 @@ const variantCommonProps = (color: SemanticColor) => {
       filter: 'grayscale(0.3)',
       opacity: '0.25',
     },
+    borderStyle: 'solid',
+    borderWidth: rem(1),
   }
 }
 
 const defaultVariant = (color: SemanticColor) => {
   return merge(variantCommonProps(color), {
-    background: color.main,
-    borderColor: color.main,
-    color: color.text,
-    // eslint-disable-next-line object-literal-sort-keys
-    '&:hover, &:focus, &.hover': {
-      background: color.dark,
-      borderColor: color.dark,
-    },
     '&:active, &.active': {
       background: color.darker,
       borderColor: color.darker,
+    },
+    '&:hover, &:focus, &.hover': {
+      background: color.dark,
+      borderColor: color.dark,
     },
     '&[disabled]': {
       '&:hover, &:active, &:focus': {
@@ -100,6 +95,9 @@ const defaultVariant = (color: SemanticColor) => {
         borderColor: color.borderColor,
       },
     },
+    background: color.main,
+    borderColor: color.main,
+    color: color.text,
   })
 }
 
@@ -108,19 +106,15 @@ const outlineVariant = (
   props: ThemedProps<ButtonProps>
 ) => {
   return merge(variantCommonProps(color), {
-    background: props.theme.colors.palette.white,
-    borderColor: color.borderColor,
-    color: color.main,
-    // eslint-disable-next-line object-literal-sort-keys
-    '&:hover, &:focus, &.hover': {
-      background: props.theme.colors.palette.white,
-      borderColor: color.main,
-      color: color.darker,
-    },
     '&:active, &.active': {
       background: color.main,
       borderColor: color.main,
       color: color.text,
+    },
+    '&:hover, &:focus, &.hover': {
+      background: props.theme.colors.palette.white,
+      borderColor: color.main,
+      color: color.darker,
     },
     '&[disabled]': {
       '&:hover, &:active, &:focus': {
@@ -129,6 +123,9 @@ const outlineVariant = (
         color: color.main,
       },
     },
+    background: props.theme.colors.palette.white,
+    borderColor: color.borderColor,
+    color: color.main,
   })
 }
 
@@ -140,15 +137,15 @@ const transparentVariant = (
     background: props.theme.colors.palette.transparent,
     borderColor: props.theme.colors.palette.transparent,
     color: color.main,
-    // eslint-disable-next-line object-literal-sort-keys
-    '&:hover, &:focus, &.hover': {
-      background: color.lighter,
-      borderColor: color.lighter,
-      color: color.altText,
-    },
+    /* eslint-disable-next-line sort-keys */
     '&:active, &.active': {
       background: color.light,
       borderColor: color.light,
+      color: color.altText,
+    },
+    '&:hover, &:focus, &.hover': {
+      background: color.lighter,
+      borderColor: color.lighter,
       color: color.altText,
     },
     '&[disabled]': {
@@ -232,6 +229,10 @@ function getIcon(iconName: IconNames | undefined) {
   return iconName ? <ButtonIcon name={iconName} /> : null
 }
 
+export const CustomizableButtonAttributes: CustomizableAttributes = {
+  borderRadius: 'medium',
+}
+
 // color is extracted here to ensure it is not passed to Box, creating a type
 // error with the DOM's own color attribute.
 const InternalButton: ComponentType = ({
@@ -270,12 +271,8 @@ const ButtonFactory = React.forwardRef<
   StyledComponentType,
   ThemedProps<ButtonProps>
 >((props: ThemedProps<ButtonProps>, ref: Ref<StyledComponentType>) => (
-  <InternalButton innerRef={ref} {...props} />
+  <InternalButton ref={ref} {...props} />
 ))
-
-export const CustomizableButtonAttributes: CustomizableAttributes = {
-  borderRadius: 'medium',
-}
 
 const ButtonIcon = styled(Icon)``
 

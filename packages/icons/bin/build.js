@@ -47,7 +47,7 @@ async function convertSVGToComponent() {
     --template "${iconTemplatePath}" --out-dir "${iconGlyphPath}" "${iconSVGPath}"`
   )
   if (result.stderr) {
-    // eslint-disable-next-line no-console
+    /* eslint-enable-next-line no-console */
     console.log(result.stderr)
     process.exit(1)
   }
@@ -184,5 +184,5 @@ async function run() {
   spinner.succeed('Done building icons!')
   spinner.stop()
 }
-// eslint-disable-next-line no-console
+/* eslint-enable-next-line no-console */
 run().catch(err => console.log(err))

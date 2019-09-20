@@ -3,6 +3,12 @@ import styled, { StyledComponent } from 'styled-components'
 import { CustomizableAttributes } from '@looker/design-tokens'
 import { Box, BoxProps } from '../../Box'
 
+export const CustomizableLabelAttributes: CustomizableAttributes = {
+  color: 'palette.charcoal800',
+  fontSize: 'small',
+  fontWeight: 'semiBold',
+}
+
 export interface LabelProps extends Omit<BoxProps<HTMLLabelElement>, 'as'> {
   htmlFor?: string
 }
@@ -31,9 +37,3 @@ const LabelFactory = React.forwardRef<StyledComponentType, LabelProps>(
 
 /** @component */
 export const Label = styled<ComponentType>(LabelFactory)``
-
-export const CustomizableLabelAttributes: CustomizableAttributes = {
-  color: 'palette.charcoal800',
-  fontSize: 'small',
-  fontWeight: 'semiBold',
-}

@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react'
 import ReactResizeDetector from 'react-resize-detector'
 import styled, { StyledComponent } from 'styled-components'
 import { palette } from '@looker/design-tokens'
+import omit from 'lodash/omit'
 import { Box, BoxProps } from '../../Box'
 
 export interface ModalContentProps
@@ -54,7 +55,7 @@ class Internal extends React.Component<InternalContentProps, ContentState> {
   }
 
   public render() {
-    const { children, renderedHeight, innerProps, ...props } = this.props
+    const { children, className, innerProps, ...props } = this.props
 
     if (innerProps && innerProps.p && !innerProps.px) {
       innerProps.px = innerProps.p
@@ -63,11 +64,11 @@ class Internal extends React.Component<InternalContentProps, ContentState> {
     return (
       <ContentContainer
         overflow="auto"
-        className={`${props.className && props.className} ${this.state
-          .overflow && 'overflow'}`}
+        className={`${className && className} ${this.state.overflow &&
+          'overflow'}`}
         ref={this.ref}
         flex="8"
-        {...props}
+        {...omit(props, ['renderedHeight'])}
       >
         <Box p="large" px="xlarge" {...innerProps}>
           {children}

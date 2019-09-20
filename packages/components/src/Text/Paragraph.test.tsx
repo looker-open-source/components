@@ -1,4 +1,5 @@
 import React from 'react'
+import { assertSnapshot } from '@looker/components-test-utils'
 import {
   snapshotTestTextComponent,
   snapshotTestTextComponentAlign,
@@ -9,7 +10,6 @@ import {
   snapshotTestTextComponentVariant,
   snapshotTestTextComponentWrap,
 } from './textTestHelpers'
-import { assertSnapshot } from '@looker/components-test-utils'
 import { Paragraph } from './Paragraph'
 
 test('A default Paragraph component', () => {

@@ -30,9 +30,7 @@ const InternalMenuGroup: ComponentType = ({
   const { customizationProps, compact, ...boxProps } = props
   const menu = React.useContext(MenuContext)
 
-  const customizations = customizationProps
-    ? customizationProps
-    : menu.customizationProps
+  const customizations = customizationProps || menu.customizationProps
 
   const labelShimRef: React.RefObject<any> = React.useRef()
 

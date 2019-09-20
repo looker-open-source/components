@@ -91,6 +91,7 @@ export interface Palette {
   red900: string
 }
 
+/* eslint-disable sort-keys */
 export const palette: Palette = {
   textInverted: '#FFFFFF',
   transparent: 'transparent',

@@ -63,12 +63,15 @@ export abstract class ModalManager extends React.Component<
   public render() {
     const { content, children, ...otherProps } = this.props
 
-    const modalProps = { ...otherProps, portalRef: this.portalRef }
+    const modalProps = {
+      ...otherProps,
+      portalRef: this.portalRef,
+    }
 
     return (
       <>
         {this.renderModal(content, modalProps)}
-        {this.props.children(this.open, this.triggerRef)}
+        {children(this.open, this.triggerRef)}
       </>
     )
   }

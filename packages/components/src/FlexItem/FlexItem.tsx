@@ -1,6 +1,7 @@
 import React, { FunctionComponent, Ref } from 'react'
-import styled, { css, StyledComponent } from 'styled-components'
+import styled, { StyledComponent } from 'styled-components'
 import { Box, BoxBaseProps, BoxFlexItemProps } from '../Box'
+import { hidden } from '../Flex/flexHelpers'
 
 export interface FlexItemProps
   extends Omit<BoxBaseProps<HTMLDivElement>, 'display' | 'as'>,
@@ -24,10 +25,3 @@ const FlexItemFactory = React.forwardRef<StyledComponentType, FlexItemProps>(
 export const FlexItem = styled<ComponentType>(FlexItemFactory)`
   ${props => hidden(props.hidden)};
 `
-
-const hidden = (hide?: boolean) =>
-  hide
-    ? css`
-        display: none;
-      `
-    : false

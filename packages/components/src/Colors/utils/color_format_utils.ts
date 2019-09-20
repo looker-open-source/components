@@ -57,7 +57,7 @@ const recognize = (format: string) => {
     ? ColorFormat.HSL
     : reHslaPercent.exec(format)
     ? ColorFormat.HSLA
-    : namedColors.hasOwnProperty(format)
+    : Object.prototype.hasOwnProperty.call(namedColors, 'format')
     ? ColorFormat.NAME
     : format === 'transparent'
     ? ColorFormat.TRANSPARENT
@@ -65,6 +65,87 @@ const recognize = (format: string) => {
 }
 
 export const getFormat = (value: string) => ColorFormat[recognize(value)]
+
+export const getOpacity = (color: d3color.Color): number => {
+  if (
+    color instanceof d3color.cubehelix ||
+    color instanceof d3color.hcl ||
+    color instanceof d3color.hsl ||
+    color instanceof d3color.rgb ||
+    color instanceof d3color.lab
+  ) {
+    return color.opacity
+  }
+  return 1
+}
+
+const namedColorLookup = (color: d3color.Color) => {
+  const hex = color.hex().replace(/^#/, '')
+  const lookup = parseInt(hex, 16)
+  const namedColorsFlipped = new Map(
+    Object.entries(namedColors).map<[number, string]>(([k, v]) => [v, k])
+  )
+  return namedColorsFlipped.get(lookup)
+}
+
+export const toColorName = (
+  color: d3color.RGBColor | d3color.HSLColor,
+  opacity: number | null = null
+) => {
+  const opacityUse = opacity || getOpacity(color)
+  const name = namedColorLookup(color)
+  if (name) return name
+  if (opacityUse !== 1) return d3color.rgb(color).toString()
+  return color.hex()
+}
+
+export const toRGBIString = (
+  color: d3color.RGBColor | d3color.HSLColor,
+  opacity: number | null = null,
+  useAlpha = false
+) => {
+  const opacityUse = opacity || getOpacity(color)
+  const rgb = color.rgb()
+  const r = Math.round(rgb.r)
+  const g = Math.round(rgb.g)
+  const b = Math.round(rgb.b)
+  if (useAlpha || opacityUse !== 1) {
+    return `rgba(${r}, ${g}, ${b}, ${opacityUse})`
+  }
+  return `rgb(${r}, ${g}, ${b})`
+}
+
+export const toRGBPString = (
+  color: d3color.RGBColor | d3color.HSLColor,
+  opacity: number | null = null,
+  useAlpha = false
+) => {
+  const opacityUse = opacity || getOpacity(color)
+  const rgb = color.rgb()
+  const r = toPerc(rgb.r, RGB_MAX_VALUE)
+  const g = toPerc(rgb.g, RGB_MAX_VALUE)
+  const b = toPerc(rgb.b, RGB_MAX_VALUE)
+  if (useAlpha || opacityUse !== 1) {
+    return `rgba(${r}%, ${g}%, ${b}%, ${opacityUse})`
+  }
+  return `rgb(${r}%, ${g}%, ${b}%)`
+}
+
+export const toHSLString = (
+  color: d3color.RGBColor | d3color.HSLColor,
+  opacity: number | null = null,
+  useAlpha = false
+) => {
+  const opacityUse = opacity || getOpacity(color)
+  const hsl = d3color.hsl(color)
+  const h = isNaN(hsl.h) ? 0 : hsl.h
+  const s = isNaN(hsl.s) ? 0 : Math.round(hsl.s * 100)
+  const l = isNaN(hsl.l) ? 100 : Math.round(hsl.l * 100)
+  if (useAlpha || opacityUse !== 1) {
+    return `hsla(${h}, ${s}%, ${l}%, ${opacityUse})`
+  }
+  return `hsl(${h}, ${s}%, ${l}%)`
+}
 
 export const toFormattedColorString = (
   value: string,
@@ -101,88 +182,6 @@ export const toFormattedColorString = (
       return color.toString()
   }
 }
-
-export const toRGBIString = (
-  color: d3color.RGBColor | d3color.HSLColor,
-  opacity: number | null = null,
-  useAlpha = false
-) => {
-  const opacityUse = opacity ? opacity : getOpacity(color)
-  const rgb = color.rgb()
-  const r = Math.round(rgb.r)
-  const g = Math.round(rgb.g)
-  const b = Math.round(rgb.b)
-  if (useAlpha || opacityUse !== 1) {
-    return `rgba(${r}, ${g}, ${b}, ${opacityUse})`
-  }
-  return `rgb(${r}, ${g}, ${b})`
-}
-
-export const toRGBPString = (
-  color: d3color.RGBColor | d3color.HSLColor,
-  opacity: number | null = null,
-  useAlpha = false
-) => {
-  const opacityUse = opacity ? opacity : getOpacity(color)
-  const rgb = color.rgb()
-  const r = toPerc(rgb.r, RGB_MAX_VALUE)
-  const g = toPerc(rgb.g, RGB_MAX_VALUE)
-  const b = toPerc(rgb.b, RGB_MAX_VALUE)
-  if (useAlpha || opacityUse !== 1) {
-    return `rgba(${r}%, ${g}%, ${b}%, ${opacityUse})`
-  }
-  return `rgb(${r}%, ${g}%, ${b}%)`
-}
-
-export const toHSLString = (
-  color: d3color.RGBColor | d3color.HSLColor,
-  opacity: number | null = null,
-  useAlpha = false
-) => {
-  const opacityUse = opacity ? opacity : getOpacity(color)
-  const hsl = d3color.hsl(color)
-  const h = isNaN(hsl.h) ? 0 : hsl.h
-  const s = isNaN(hsl.s) ? 0 : Math.round(hsl.s * 100)
-  const l = isNaN(hsl.l) ? 100 : Math.round(hsl.l * 100)
-  if (useAlpha || opacityUse !== 1) {
-    return `hsla(${h}, ${s}%, ${l}%, ${opacityUse})`
-  }
-  return `hsl(${h}, ${s}%, ${l}%)`
-}
-
-export const toColorName = (
-  color: d3color.RGBColor | d3color.HSLColor,
-  opacity: number | null = null
-) => {
-  const opacityUse = opacity ? opacity : getOpacity(color)
-  const name = namedColorLookup(color)
-  if (name) return name
-  if (opacityUse !== 1) return d3color.rgb(color).toString()
-  return color.hex()
-}
-
-export const getOpacity = (color: d3color.Color): number => {
-  if (
-    color instanceof d3color.cubehelix ||
-    color instanceof d3color.hcl ||
-    color instanceof d3color.hsl ||
-    color instanceof d3color.rgb ||
-    color instanceof d3color.lab
-  ) {
-    return color.opacity
-  }
-  return 1
-}
-
-const namedColorLookup = (color: d3color.Color) => {
-  const hex = color.hex().replace(/^#/, '')
-  const lookup = parseInt(hex, 16)
-  const namedColorsFlipped = new Map(
-    Object.entries(namedColors).map<[number, string]>(([k, v]) => [v, k])
-  )
-  return namedColorsFlipped.get(lookup)
-}
-
 export const toHSV = (value: string) => {
   const color = d3color.color(value)
   if (!color) return null

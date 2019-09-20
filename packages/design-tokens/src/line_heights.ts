@@ -2,7 +2,7 @@ import { rem } from 'polished'
 import { LineHeightProps, ResponsiveValue } from 'styled-system'
 import { FontRamp, RampSizes } from './font_sizes'
 
-// eslint-disable object-literal-sort-keys
+/* eslint-disable sort-keys */
 export const lineHeights: FontRamp = {
   xxxxlarge: rem(64),
   xxxlarge: rem(52),

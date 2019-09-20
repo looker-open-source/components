@@ -80,7 +80,7 @@
     "**/*.ts?(x)": [
       "stylelint",
       "prettier --write",
-      "lint",
+      "eslint",
       "git add"
     ],
     "**/*.js?(x)": [

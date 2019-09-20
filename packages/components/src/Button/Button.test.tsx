@@ -5,9 +5,7 @@ import { createWithTheme, assertSnapshot } from '@looker/components-test-utils'
 import { SemanticColor, theme } from '@looker/design-tokens'
 import { Button, ButtonSizes } from './Button'
 
-const noop = () => {
-  return
-}
+const noop = () => {}
 
 test('Button default', () => {
   assertSnapshot(<Button theme={theme}>🥑</Button>)

@@ -1,5 +1,6 @@
 import React, { FunctionComponent, Ref } from 'react'
 import styled, { StyledComponent } from 'styled-components'
+import omit from 'lodash/omit'
 import { Box, BoxProps } from '../Box'
 import { FieldProps } from './Fields'
 import { InputProps } from './Inputs/InputProps'
@@ -28,19 +29,15 @@ type StyledComponentType = StyledComponent<ComponentType, FormProps>
 
 export const FormContext = React.createContext<FormContext>({})
 
-const InternalForm: React.FC<FormProps> = props => {
-  const context = {
-    validationMessages: props.validationMessages,
-  }
-  const { validationMessages, children, ...boxProps } = props
-  return (
-    <FormContext.Provider value={context}>
-      <Box as="form" {...boxProps}>
-        {children}
-      </Box>
-    </FormContext.Provider>
-  )
-}
+const InternalForm: React.FC<FormProps> = props => (
+  <FormContext.Provider
+    value={{
+      validationMessages: props.validationMessages,
+    }}
+  >
+    <Box as="form" {...omit(props, 'validationMessages')} />
+  </FormContext.Provider>
+)
 
 const FormFactory = React.forwardRef<StyledComponentType, FormProps>(
   (props: FormProps, ref: Ref<StyledComponentType>) => (

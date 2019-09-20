@@ -7,11 +7,6 @@ import { semanticColors } from '@looker/design-tokens'
 import { Button } from '../../Button'
 import { Confirm } from './Confirm'
 
-afterEach(() => {
-  requiredProps.onConfirm.mockClear()
-  optionalProps.onCancel.mockClear()
-})
-
 const requiredProps = {
   message: 'Foo',
   onConfirm: jest.fn(),
@@ -25,6 +20,11 @@ const optionalProps = {
   onCancel: jest.fn(),
   title: 'Delete the thing?',
 }
+
+afterEach(() => {
+  requiredProps.onConfirm.mockClear()
+  optionalProps.onCancel.mockClear()
+})
 
 test('<Confirm/> with defaults', () => {
   const { getByText, queryByText } = renderWithTheme(

@@ -1,5 +1,8 @@
 import React from 'react'
 
+const getTabStops = (ref: HTMLElement): HTMLElement[] =>
+  Array.from(ref.querySelectorAll('a,button,[tabindex="0"]'))
+
 export const moveFocus = (
   direction: number,
   initial: number,
@@ -23,6 +26,3 @@ export const moveFocus = (
   }
   return false
 }
-
-const getTabStops = (ref: HTMLElement): HTMLElement[] =>
-  Array.from(ref.querySelectorAll('a,button,[tabindex="0"]'))

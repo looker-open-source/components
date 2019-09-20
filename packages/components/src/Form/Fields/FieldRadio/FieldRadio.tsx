@@ -3,7 +3,7 @@ import styled, { StyledComponent } from 'styled-components'
 import uuid from 'uuid/v4'
 import { ComponentWithForm, withForm } from '../../Form'
 import { Radio, RadioProps } from '../../Inputs'
-import { Field, FieldProps } from '../Field'
+import { Field, FieldProps, omitFieldProps } from '../Field'
 
 export interface FieldRadioProps extends FieldProps, RadioProps {}
 
@@ -11,27 +11,17 @@ type ComponentType = FunctionComponent<FieldRadioProps>
 type StyledComponentType = StyledComponent<ComponentType, FieldRadioProps>
 
 const InternalFieldRadio: ComponentType = (props: FieldRadioProps) => {
-  const {
-    alignLabel,
-    alignValidationMessage,
-    label,
-    labelFontWeight,
-    validationMessage,
-    id = uuid(),
-    ...radioProps
-  } = props
+  const { id = uuid(), validationMessage } = props
   return (
     <Field
       id={id}
+      alignLabel={'right'}
+      alignValidationMessage={'right'}
       {...props}
-      alignLabel={alignLabel ? alignLabel : 'right'}
-      alignValidationMessage={
-        alignValidationMessage ? alignValidationMessage : 'right'
-      }
     >
       <Radio
         id={id}
-        {...radioProps}
+        {...omitFieldProps(props)}
         validationType={validationMessage && validationMessage.type}
       />
     </Field>

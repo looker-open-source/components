@@ -1,6 +1,7 @@
 import { rgba } from 'polished'
 import React, { FunctionComponent } from 'react'
 import styled, { CSSObject, StyledComponent } from 'styled-components'
+import omit from 'lodash/omit'
 import { Box, BoxProps } from '../Box'
 import { CustomizableModalAttributes } from './Modal'
 
@@ -53,10 +54,7 @@ export const ModalBackdrop: ModalBackdropComponentType = ({
 //
 const BackdropFactory: ModalBackdropComponentType = (
   props: ModalBackdropProps
-) => {
-  const { inlineStyle, ref, ...boxProps } = props
-  return <Box {...boxProps} ref={ref} />
-}
+) => <Box {...omit(props, 'inlineStyle')} />
 
 // Backdrop styles are applied here (rather than using the inline `style={...}` prop) to ensure that
 // transitions will still apply to backdrop

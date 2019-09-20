@@ -248,8 +248,8 @@ export class ColorWheel extends React.Component<ColorWheelProps> {
     const ctx = canvas.getContext('2d')
     if (callback && ctx && position) {
       const color = cartesian2hsv(this.props.value, this.radius, position)
-
-      callback({ h: color.h, s: color.s })
+      const updateColorValues = { h: color.h, s: color.s }
+      callback(updateColorValues)
     }
   }
 }

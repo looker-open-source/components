@@ -1,6 +1,6 @@
 import React from 'react'
-import { TextProps } from '.'
 import { createWithTheme } from '@looker/components-test-utils'
+import { TextProps } from '.'
 
 export const snapshotTestTextComponent = (
   Component: React.FC<TextProps> | React.ComponentClass

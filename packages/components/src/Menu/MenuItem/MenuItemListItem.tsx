@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled, { css, StyledComponent } from 'styled-components'
 import { easings, transitions } from '@looker/design-tokens'
+import omit from 'lodash/omit'
 import { Box, BoxProps } from '../../Box'
 import { Icon } from '../../Icon'
 import { MenuItemStyle } from './menuItemStyle'
@@ -60,10 +61,7 @@ const iconColor = (props: MenuListItemProps) =>
 //
 const MenuItemStyleFactory: ListItemComponentType = (
   props: MenuListItemProps
-) => {
-  const { current, currentMarker, itemStyle, ...boxProps } = props
-  return <Box {...boxProps} />
-}
+) => <Box {...omit(props, ['current', 'currentMarker', 'itemStyle'])} />
 
 export const MenuItemListItem: StyledListItemComponentType = styled<
   ListItemComponentType

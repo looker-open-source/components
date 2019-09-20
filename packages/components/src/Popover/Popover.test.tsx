@@ -16,10 +16,10 @@ const PopoverGroup = () => {
 
   return (
     <>
-      <Box innerRef={groupRef}>
+      <Box ref={groupRef}>
         <Popover content={SimpleContent} groupedPopoversRef={groupRef}>
           {(onClick, ref, className) => (
-            <Link onClick={onClick} innerRef={ref} className={className}>
+            <Link onClick={onClick} ref={ref} className={className}>
               Instant Click
             </Link>
           )}
@@ -42,7 +42,7 @@ describe('Popover', () => {
     const popover = mountWithTheme(
       <Popover content={SimpleContent}>
         {(onClick, ref, className) => (
-          <Button innerRef={ref} onClick={onClick} className={className}>
+          <Button ref={ref} onClick={onClick} className={className}>
             Test
           </Button>
         )}
@@ -66,7 +66,7 @@ describe('Popover', () => {
     const popover = mountWithTheme(
       <Popover content={SimpleContent}>
         {(onClick, ref, className) => (
-          <Button innerRef={ref} onClick={onClick} className={className}>
+          <Button ref={ref} onClick={onClick} className={className}>
             Test
           </Button>
         )}
@@ -84,7 +84,7 @@ describe('Popover', () => {
       <div onClick={mockContainerOnClick}>
         <Popover content={SimpleContent}>
           {(onClick, ref, className) => (
-            <Button innerRef={ref} onClick={onClick} className={className}>
+            <Button ref={ref} onClick={onClick} className={className}>
               Test
             </Button>
           )}
@@ -101,7 +101,7 @@ describe('Popover', () => {
     const popover = mountWithTheme(
       <Popover content={SimpleContent}>
         {(onClick, ref, className) => (
-          <Link onClick={onClick} innerRef={ref} className={className}>
+          <Link onClick={onClick} ref={ref} className={className}>
             Instant Click
           </Link>
         )}
@@ -134,7 +134,7 @@ describe('Popover', () => {
       <>
         <Popover content={SimpleContent}>
           {(onClick, ref, className) => (
-            <Button onClick={onClick} innerRef={ref} className={className}>
+            <Button onClick={onClick} ref={ref} className={className}>
               Instant Click
             </Button>
           )}

@@ -3,34 +3,19 @@ import styled, { StyledComponent } from 'styled-components'
 import uuid from 'uuid/v4'
 import { ComponentWithForm, withForm } from '../../Form'
 import { Select, SelectProps } from '../../Inputs/Select/Select'
-import { Field, FieldProps } from '../Field'
+import { Field, FieldProps, omitFieldProps } from '../Field'
 
 export interface FieldSelectProps extends FieldProps, SelectProps {}
 type ComponentType = FunctionComponent<FieldSelectProps>
 type StyledComponentType = StyledComponent<ComponentType, FieldSelectProps>
 
 const InternalFieldSelect: ComponentType = (props: FieldSelectProps) => {
-  const {
-    alignLabel,
-    alignValidationMessage,
-    label,
-    labelWidth,
-    labelFontWeight,
-    validationMessage,
-    id = uuid(),
-    ...inputSelectProps
-  } = props
+  const { id = uuid(), validationMessage } = props
   return (
-    <Field
-      id={id}
-      {...props}
-      alignValidationMessage={
-        alignValidationMessage ? alignValidationMessage : 'bottom'
-      }
-    >
+    <Field id={id} alignValidationMessage="bottom" {...props}>
       <Select
         id={id}
-        {...inputSelectProps}
+        {...omitFieldProps(props)}
         validationType={validationMessage && validationMessage.type}
       />
     </Field>

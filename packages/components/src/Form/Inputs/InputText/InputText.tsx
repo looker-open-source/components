@@ -4,6 +4,14 @@ import { CustomizableAttributes } from '@looker/design-tokens'
 import { Box, BoxProps } from '../../../Box'
 import { InputProps } from '../InputProps'
 
+export const CustomizableInputTextAttributes: CustomizableAttributes = {
+  borderRadius: 'medium',
+  fontSize: 'small',
+  height: '28px',
+  px: 'xsmall',
+  py: 'none',
+}
+
 export interface InputTextProps
   extends Omit<BoxProps<HTMLInputElement>, 'as'>,
     InputProps {
@@ -26,11 +34,11 @@ const InternalInputText: ComponentType = ({
   ...props
 }) => {
   if (hidden && console) {
-    /*eslint-disable no-console */
+    /* eslint-disable no-console */
     console.warn(
       'InputText: Use of `hidden` attribute is discouraged. Please use <InputHidden /> instead to attach static values to your form submission'
     )
-    /*eslint-enable no-console */
+    /* eslint-enable no-console */
   }
 
   const handleValidationType = () => {
@@ -66,11 +74,3 @@ const InputTextFactory = React.forwardRef<StyledComponentType, InputTextProps>(
 
 /** @component */
 export const InputText = styled<ComponentType>(InputTextFactory)``
-
-export const CustomizableInputTextAttributes: CustomizableAttributes = {
-  borderRadius: 'medium',
-  fontSize: 'small',
-  height: '28px',
-  px: 'xsmall',
-  py: 'none',
-}

@@ -9,6 +9,21 @@ import {
 import { Box, BoxProps } from '../../../Box'
 import { Checkbox } from '../Checkbox'
 
+export interface CustomizableToggleSwitchAttributes
+  extends CustomizableAttributes {
+  knobOnColor: string
+  knobOffColor: string
+  onColor: string
+  offColor: string
+}
+
+export const CustomizableToggleSwitchAttributes: CustomizableToggleSwitchAttributes = {
+  knobOffColor: palette.white,
+  knobOnColor: palette.white,
+  offColor: palette.charcoal300,
+  onColor: palette.purple300,
+}
+
 export interface KnobProps {
   className?: string
   size: number
@@ -145,18 +160,3 @@ export const ToggleSwitch: StyledToggleSwitchComponentType = styled<
     box-shadow: 0 0 0 0.2rem ${rgba(palette.primary500, 0.4)};
   }
 `
-
-export interface CustomizableToggleSwitchAttributes
-  extends CustomizableAttributes {
-  knobOnColor: string
-  knobOffColor: string
-  onColor: string
-  offColor: string
-}
-
-export const CustomizableToggleSwitchAttributes: CustomizableToggleSwitchAttributes = {
-  knobOffColor: palette.white,
-  knobOnColor: palette.white,
-  offColor: palette.charcoal300,
-  onColor: palette.purple300,
-}

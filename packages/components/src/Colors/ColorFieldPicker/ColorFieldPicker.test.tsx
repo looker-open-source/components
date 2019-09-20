@@ -30,7 +30,7 @@ test('ColorFieldPicker with a validation message', () => {
       value="#4c6670"
       label="Pick a color"
       alignLabel="left"
-      validationMessage={{ type: 'error', message: 'Error!' }}
+      validationMessage={{ message: 'Error!', type: 'error' }}
     />
   )
 })

@@ -1,3 +1,4 @@
+import { sizedArray } from '../../utils/array'
 import {
   cartesian2polar,
   CartesianCoordinate,
@@ -9,7 +10,6 @@ import {
   scaleRadius,
   translateDiagonal,
 } from './math_utils'
-import { sizedArray } from '../../utils/array'
 
 export interface HueSaturation {
   h: number
@@ -54,7 +54,7 @@ export const cartesian2hsv = (
   [coord]
     .map(c => translateDiagonal(-radius, c))
     .map(cartesian2polar)
-    .map(c => (c.radius < radius ? { coord: c, brightness } : white()))
+    .map(c => (c.radius < radius ? { brightness, coord: c } : white()))
     .map(pb => scalePBRadius(1 / radius, pb))
     .map(polarbrightness2hsv)[0]
 

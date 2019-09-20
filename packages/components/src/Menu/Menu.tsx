@@ -30,7 +30,7 @@ const InternalMenu: MenuComponentType = ({
   const ref = React.useRef<null | HTMLElement>(null)
 
   return (
-    <MenuContext.Provider value={{ customizationProps, compact }}>
+    <MenuContext.Provider value={{ compact, customizationProps }}>
       <HotKeys
         innerRef={ref}
         keyMap={{ MOVE_DOWN: 'down', MOVE_UP: 'up' }}

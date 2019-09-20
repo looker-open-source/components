@@ -39,9 +39,9 @@ test('Select should accept required', () => {
 
 test('Select with a value', () => {
   const options = [
-    { value: '1', label: 'thing' },
-    { value: 'Some Value', label: "Some Value's Label" },
-    { value: '2', label: 'other' },
+    { label: 'thing', value: '1' },
+    { label: "Some Value's Label", value: 'Some Value' },
+    { label: 'other', value: '2' },
   ]
   assertSnapshot(<Select value="Some Value" options={options} />)
 })

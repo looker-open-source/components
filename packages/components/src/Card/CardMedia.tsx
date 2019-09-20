@@ -1,6 +1,7 @@
 import React, { FunctionComponent, Ref } from 'react'
 import styled, { StyledComponent } from 'styled-components'
 import { backgroundPosition, BackgroundPositionProps } from 'styled-system'
+import omit from 'lodash/omit'
 import { Box, BoxProps } from '../Box'
 
 export interface CardMediaProps
@@ -11,8 +12,8 @@ export interface CardMediaProps
 type ComponentType = FunctionComponent<CardMediaProps>
 type StyledComponentType = StyledComponent<ComponentType, CardMediaProps>
 
-const InternalCardMedia: React.FC<CardMediaProps> = ({ image, ...props }) => (
-  <Box {...props}>{props.children}</Box>
+const InternalCardMedia: React.FC<CardMediaProps> = props => (
+  <Box {...omit(props, 'image')} />
 )
 
 const CardMediaFactory = React.forwardRef<StyledComponentType, CardMediaProps>(
