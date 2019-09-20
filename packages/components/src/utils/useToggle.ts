@@ -7,7 +7,7 @@ export interface UseToggleReturn {
   toggle: () => void
 }
 
-export function useToggle(initialValue: boolean = false): UseToggleReturn {
+export function useToggle(initialValue = false): UseToggleReturn {
   const [value, setValue] = useState(initialValue)
   const setOn = () => setValue(true)
   const setOff = () => setValue(false)

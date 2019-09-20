@@ -1,6 +1,5 @@
 import React, { FunctionComponent, Ref } from 'react'
 import styled, { StyledComponent } from 'styled-components'
-
 import { Box, BoxProps } from '../Box'
 
 export interface LinkProps extends Omit<BoxProps<HTMLAnchorElement>, 'as'> {}

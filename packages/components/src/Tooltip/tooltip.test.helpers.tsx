@@ -12,7 +12,7 @@ export const mouseEventSimulator = {
 export const assertOverlayState = (
   overlay: ReactWrapper,
   content: React.ReactElement<any>,
-  open: boolean = true
+  open = true
 ) => {
   expect(overlay.contains(content)).toEqual(open)
 }

@@ -26,10 +26,11 @@ const InternalInputText: ComponentType = ({
   ...props
 }) => {
   if (hidden && console) {
-    // tslint:disable-next-line:no-console
+    /*eslint-disable no-console */
     console.warn(
       'InputText: Use of `hidden` attribute is discouraged. Please use <InputHidden /> instead to attach static values to your form submission'
     )
+    /*eslint-enable no-console */
   }
 
   const handleValidationType = () => {

@@ -1,7 +1,11 @@
 import 'jest-styled-components'
 import React from 'react'
-import { createWithTheme, mountWithTheme } from '@looker/components-test-utils'
-import { assertSnapshot } from '@looker/components-test-utils'
+import {
+  createWithTheme,
+  mountWithTheme,
+  assertSnapshot,
+} from '@looker/components-test-utils'
+
 import { Box } from './Box'
 
 const noop = () => {

@@ -1,7 +1,7 @@
 import 'jest-styled-components'
 import React from 'react'
-import { mountWithTheme } from '@looker/components-test-utils'
-import { assertSnapshot } from '@looker/components-test-utils'
+import { mountWithTheme, assertSnapshot } from '@looker/components-test-utils'
+
 import { ToggleSwitch } from './ToggleSwitch'
 
 test('ToggleSwitch default', () => {

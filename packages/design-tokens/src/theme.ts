@@ -24,15 +24,6 @@ import { radii, Radii } from './radii'
 import { SemanticColors, semanticColors } from './semantic_colors'
 import { transitions, Transitions } from './transitions'
 
-export * from './easings'
-export * from './elevation'
-export * from './font_sizes'
-export * from './font_weights'
-export * from './line_heights'
-export * from './palette'
-export * from './semantic_colors'
-export * from './transitions'
-
 export type SpacingSizes =
   | SizeNone
   | SizeXXSmall
@@ -90,7 +81,7 @@ export const theme: Theme = {
   },
   shadows,
   space: {
-    // tslint:disable:object-literal-sort-keys
+    // eslint-disable object-literal-sort-keys
     none: rem(0),
     xxsmall: rem(4),
     xsmall: rem(8),
@@ -101,7 +92,7 @@ export const theme: Theme = {
     xxlarge: rem(40),
     xxxlarge: rem(60),
     xxxxlarge: rem(80),
-    // tslint:enable:object-literal-sort-keys
+    // eslint-enable object-literal-sort-keys
   },
   transitions,
 }

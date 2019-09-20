@@ -25,7 +25,7 @@ export type RampSizes =
 
 export type FontRamp = Record<RampSizes, string>
 
-// tslint:disable:object-literal-sort-keys
+// eslint-disable object-literal-sort-keys
 export const fontSizes: FontRamp = {
   xxxxlarge: rem(46),
   xxxlarge: rem(36),
@@ -37,7 +37,7 @@ export const fontSizes: FontRamp = {
   xsmall: rem(12),
   xxsmall: rem(11),
 }
-// tslint:enable:object-literal-sort-keys
+// eslint-enable object-literal-sort-keys
 export type ResponsiveFontSize = ResponsiveValue<RampSizes>
 export type LensFontSizeProps = {
   [P in keyof FontSizeProps]: ResponsiveFontSize

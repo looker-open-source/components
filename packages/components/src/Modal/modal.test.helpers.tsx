@@ -13,7 +13,7 @@ export const SimpleContentSFC = () => SimpleContent
 export const assertModalState = (
   modal: ReactWrapper,
   content: React.ReactElement<any>,
-  open: boolean = true
+  open = true
 ) => {
   expect(modal.contains(content)).toEqual(open)
 }

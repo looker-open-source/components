@@ -9,10 +9,6 @@ export type TextVariants =
   | 'subdued'
   | 'inverted'
 
-export const shouldTruncate = (truncate?: boolean, truncateLines?: number) => {
-  return truncate || truncateLines ? textTruncate(truncateLines) : ''
-}
-
 export const textTruncate = (lines?: number) => {
   if (lines && lines > 1) {
     // Despite the vendor prefixes below, this works in all mondern browsers (not IE11)
@@ -30,6 +26,10 @@ export const textTruncate = (lines?: number) => {
     overflow: hidden;
     text-overflow: ellipsis;
   `
+}
+
+export const shouldTruncate = (truncate?: boolean, truncateLines?: number) => {
+  return truncate || truncateLines ? textTruncate(truncateLines) : ''
 }
 
 export const getTextTransform = (transform: TextTransforms | undefined) => {

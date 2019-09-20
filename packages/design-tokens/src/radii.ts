@@ -14,11 +14,11 @@ interface Radiii extends Radii {
 }
 
 export const radii: Radiii = {
-  // tslint:disable:object-literal-sort-keys
+  // eslint-disable object-literal-sort-keys
   none: '0rem',
   xsmall: '0.0625rem',
   small: '0.125rem',
   medium: '0.25rem',
   large: '0.5rem',
-  // tslint:enable:object-literal-sort-keys
+  // eslint-enable object-literal-sort-keys
 }

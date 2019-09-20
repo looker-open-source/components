@@ -69,7 +69,7 @@ test('Menu - compact', () => {
 
 test('Menu - menu customization', () => {
   const menuCustomizations =
-    // tslint:disable:object-literal-sort-keys
+    // eslint-disable object-literal-sort-keys
     {
       bg: palette.purple500,
       color: palette.purple200,
@@ -89,7 +89,7 @@ test('Menu - menu customization', () => {
         color: palette.purple900,
         iconColor: palette.purple500,
       },
-      // tslint:disable:enable-literal-sort-keys
+      // eslint-disable enable-literal-sort-keys
     }
 
   const menu = shallow(

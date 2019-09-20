@@ -56,7 +56,7 @@ export class ColorWheel extends React.Component<ColorWheelProps> {
   }
 
   private canvas!: HTMLCanvasElement
-  private mouseMoving: boolean = false
+  private mouseMoving = false
   private image?: ImageData
 
   public componentDidMount() {
@@ -140,7 +140,10 @@ export class ColorWheel extends React.Component<ColorWheelProps> {
    * Utility method to draw actual color wheel.
    */
   private drawWheel(canvas: HTMLCanvasElement) {
-    const ctx = canvas.getContext('2d')!
+    const ctx = canvas.getContext('2d')
+
+    if (!ctx) return
+
     const image = this.getImage(ctx)
 
     if (image) {

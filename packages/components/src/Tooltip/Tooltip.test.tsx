@@ -1,8 +1,11 @@
 // import { ReactWrapper } from 'enzyme'
 import 'jest-styled-components'
 import React from 'react'
-import { mountWithTheme } from '@looker/components-test-utils'
-import { assertSnapshotShallow } from '@looker/components-test-utils'
+import {
+  mountWithTheme,
+  assertSnapshotShallow,
+} from '@looker/components-test-utils'
+
 import { Box } from '../Box'
 import { Button } from '../Button'
 import { OverlaySurface } from '../Overlay/OverlaySurface'

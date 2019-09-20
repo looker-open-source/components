@@ -14,8 +14,6 @@ test('ModalFooter with Button', () => {
   )
 })
 
-/* tslint:disable:jsx-no-lambda */
-
 test('ModalFooter with ModalContext', () => {
   assertSnapshot(
     <ModalContext.Consumer>
@@ -38,5 +36,3 @@ test('ModalFooter with ModalContext', () => {
     </ModalContext.Consumer>
   )
 })
-
-/* tslint:enable:jsx-no-lambda */

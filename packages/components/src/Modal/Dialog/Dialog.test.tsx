@@ -1,8 +1,10 @@
 import 'jest-styled-components'
 import React from 'react'
 
-import { mountWithTheme } from '@looker/components-test-utils'
-import { assertSnapshotShallow } from '@looker/components-test-utils'
+import {
+  mountWithTheme,
+  assertSnapshotShallow,
+} from '@looker/components-test-utils'
 
 import { Button } from '../../Button'
 import { Heading } from '../../Heading'

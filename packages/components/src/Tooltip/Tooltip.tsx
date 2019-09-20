@@ -32,6 +32,29 @@ export interface TooltipProps extends Omit<RichTooltipProps, 'content'> {
   textAlign?: TextAlignProperty
 }
 
+/*
+ * NOTE: Use longform version of tagged function to prevent stylelint
+ * from parsing and complaining about css`` keyframe interpolation.
+ *
+ * EQUIVALENT: css`${fadeIn} 0.2s linear;`
+ */
+const animationRule = css(
+  (['', ' 0.2s linear;'] as any) as TemplateStringsArray,
+  fadeIn
+)
+
+export const CustomizableTooltipAttributes: CustomizableTooltipAttributes = {
+  surface: {
+    animation: animationRule,
+    backgroundColor: palette.charcoal600,
+    border: 'none',
+    borderColor: 'none',
+    borderRadius: 'medium',
+    boxShadow: shadows[3],
+    color: palette.charcoal000,
+  },
+}
+
 export const Tooltip: React.FC<TooltipProps> = ({
   maxWidth,
   width,
@@ -66,27 +89,4 @@ export const Tooltip: React.FC<TooltipProps> = ({
 
 export interface CustomizableTooltipAttributes extends CustomizableAttributes {
   surface: ModalSurfaceStyleProps
-}
-
-/*
- * NOTE: Use longform version of tagged function to prevent stylelint
- * from parsing and complaining about css`` keyframe interpolation.
- *
- * EQUIVALENT: css`${fadeIn} 0.2s linear;`
- */
-const animationRule = css(
-  (['', ' 0.2s linear;'] as any) as TemplateStringsArray,
-  fadeIn
-)
-
-export const CustomizableTooltipAttributes: CustomizableTooltipAttributes = {
-  surface: {
-    animation: animationRule,
-    backgroundColor: palette.charcoal600,
-    border: 'none',
-    borderColor: 'none',
-    borderRadius: 'medium',
-    boxShadow: shadows[3],
-    color: palette.charcoal000,
-  },
 }

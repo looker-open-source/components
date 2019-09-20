@@ -97,6 +97,7 @@ const MenuGroupFactory = React.forwardRef<StyledComponentType, MenuGroupProps>(
     <InternalMenuGroup ref={ref} {...props} />
   )
 )
+MenuGroupFactory.displayName = 'MenuGroupFactory'
 
 /** @component */
 export const MenuGroup = styled<ComponentType>(MenuGroupFactory)``

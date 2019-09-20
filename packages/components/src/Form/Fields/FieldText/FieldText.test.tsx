@@ -1,8 +1,12 @@
 import { mount } from 'enzyme'
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
-import { createWithTheme, mountWithTheme } from '@looker/components-test-utils'
-import { assertSnapshot } from '@looker/components-test-utils'
+import {
+  createWithTheme,
+  mountWithTheme,
+  assertSnapshot,
+} from '@looker/components-test-utils'
+
 import { theme } from '@looker/design-tokens'
 import { Label } from '../../Label/Label'
 import { FieldText } from './FieldText'

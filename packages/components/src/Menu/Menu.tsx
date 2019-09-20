@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import { HotKeys } from 'react-hotkeys'
 import styled, { css, StyledComponent } from 'styled-components'
+import omit from 'lodash/omit'
 import { palette } from '@looker/design-tokens'
 import { Box, BoxProps } from '../Box'
 import { MenuContext, MenuContextProps } from './MenuContext'
@@ -26,7 +27,6 @@ const InternalMenu: MenuComponentType = ({
   children,
   ...props
 }) => {
-  const { groupDividers, ...boxProps } = props
   const ref = React.useRef<null | HTMLElement>(null)
 
   return (
@@ -39,7 +39,13 @@ const InternalMenu: MenuComponentType = ({
           MOVE_UP: () => moveFocus(-1, -1, ref),
         }}
       >
-        <Box as="ul" tabIndex={-1} role="menu" userSelect="none" {...boxProps}>
+        <Box
+          as="ul"
+          tabIndex={-1}
+          role="menu"
+          userSelect="none"
+          {...omit(props, 'groupDividers')}
+        >
           {children}
         </Box>
       </HotKeys>

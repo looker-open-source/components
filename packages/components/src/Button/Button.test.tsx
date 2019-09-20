@@ -1,7 +1,7 @@
 import 'jest-styled-components'
 import React from 'react'
-import { createWithTheme } from '@looker/components-test-utils'
-import { assertSnapshot } from '@looker/components-test-utils'
+import { createWithTheme, assertSnapshot } from '@looker/components-test-utils'
+
 import { SemanticColor, theme } from '@looker/design-tokens'
 import { Button, ButtonSizes } from './Button'
 
@@ -124,7 +124,8 @@ test('Button accepts a SemanticColor object for the color property', () => {
 test('Button accepts a className prop', () => {
   const component = createWithTheme(<Button className="foobar">Hi</Button>)
   const tree = component.toJSON()
-  expect(tree!.props.className).toContain('foobar')
+  if (!tree) throw new Error('component is NULL')
+  expect(tree.props.className).toContain('foobar')
 })
 
 test('Button validates all sizes', () => {

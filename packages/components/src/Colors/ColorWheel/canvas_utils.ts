@@ -31,7 +31,7 @@ export const eventCartesianPosition = (
  * Stateful function that clears canvas context
  */
 export const clearCanvas = (canvas: HTMLCanvasElement) => {
-  const ctx = canvas.getContext('2d')!
+  const ctx = canvas.getContext('2d')
   if (ctx) {
     ctx.clearRect(0, 0, canvas.width, canvas.height)
   }

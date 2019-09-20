@@ -68,7 +68,7 @@ const variantCommonProps = (color: SemanticColor) => {
   return {
     borderStyle: 'solid',
     borderWidth: rem(1),
-    // tslint:disable-next-line:object-literal-sort-keys
+    // eslint-disable-next-line object-literal-sort-keys
     '&:focus': {
       boxShadow: `0 0 0 0.15rem ${rgba(color.main, 0.25)}`,
     },
@@ -85,7 +85,7 @@ const defaultVariant = (color: SemanticColor) => {
     background: color.main,
     borderColor: color.main,
     color: color.text,
-    // tslint:disable-next-line:object-literal-sort-keys
+    // eslint-disable-next-line object-literal-sort-keys
     '&:hover, &:focus, &.hover': {
       background: color.dark,
       borderColor: color.dark,
@@ -111,7 +111,7 @@ const outlineVariant = (
     background: props.theme.colors.palette.white,
     borderColor: color.borderColor,
     color: color.main,
-    // tslint:disable-next-line:object-literal-sort-keys
+    // eslint-disable-next-line object-literal-sort-keys
     '&:hover, &:focus, &.hover': {
       background: props.theme.colors.palette.white,
       borderColor: color.main,
@@ -140,7 +140,7 @@ const transparentVariant = (
     background: props.theme.colors.palette.transparent,
     borderColor: props.theme.colors.palette.transparent,
     color: color.main,
-    // tslint:disable-next-line:object-literal-sort-keys
+    // eslint-disable-next-line object-literal-sort-keys
     '&:hover, &:focus, &.hover': {
       background: color.lighter,
       borderColor: color.lighter,

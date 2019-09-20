@@ -50,7 +50,7 @@ test('MenuGroup - labelProps & labelStyles', () => {
 })
 
 test('MenuGroup - menu customization', () => {
-  // tslint:disable:object-literal-sort-keys
+  // eslint-disable object-literal-sort-keys
   const menuCustomizations = {
     bg: palette.purple500,
     color: palette.purple200,
@@ -71,7 +71,7 @@ test('MenuGroup - menu customization', () => {
       size: 10,
     },
   }
-  // tslint:disable:enable-literal-sort-keys
+  // eslint-disable enable-literal-sort-keys
 
   const menu = assertSnapshot(
     <MenuGroup customizationProps={menuCustomizations}>

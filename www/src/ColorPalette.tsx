@@ -48,13 +48,13 @@ const checkContrast = (color: FigmaColor) => {
     const swatchFill = docSwatch.fills[0].color
     const fill = figmaColorToRgba(swatchFill)
 
-    // tslint:disable:object-literal-sort-keys
+    // eslint-disable object-literal-sort-keys
     const hexValue = rgbToColorString({
       red: Math.round(swatchFill.r * 255),
       green: Math.round(swatchFill.g * 255),
       blue: Math.round(swatchFill.b * 255),
     })
-    // tslint:enable:object-literal-sort-keys
+    // eslint-enable object-literal-sort-keys
 
     const labelLuminance = getLuminance(labelColor)
     const fillLuminance = getLuminance(fill)

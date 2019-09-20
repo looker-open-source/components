@@ -50,6 +50,29 @@ export interface RichTooltipProps {
   surfaceStyle?: SurfaceStyleProps
 }
 
+/*
+ * NOTE: Use longform version of tagged function to prevent stylelint
+ * from parsing and complaining about css`` keyframe interpolation.
+ *
+ * EQUIVALENT: css`${fadeIn} 0.2s linear;`
+ */
+const animationRule = css(
+  (['', ' 0.2s linear;'] as any) as TemplateStringsArray,
+  fadeIn
+)
+export const CustomizableRichTooltipAttributes: CustomizableRichTooltipAttributes = {
+  surface: {
+    animation: animationRule,
+    backgroundColor: palette.white,
+    border: '1px solid',
+    borderColor: palette.charcoal200,
+    borderRadius: 'medium',
+    boxShadow: shadows[3],
+    color: palette.charcoal900,
+  },
+  zIndex: 0,
+}
+
 /** @component */
 export const RichTooltip: React.FC<RichTooltipProps> = ({
   arrow = true,
@@ -159,27 +182,4 @@ export const RichTooltip: React.FC<RichTooltipProps> = ({
 export interface CustomizableRichTooltipAttributes
   extends CustomizableAttributes {
   surface: ModalSurfaceStyleProps
-}
-
-/*
- * NOTE: Use longform version of tagged function to prevent stylelint
- * from parsing and complaining about css`` keyframe interpolation.
- *
- * EQUIVALENT: css`${fadeIn} 0.2s linear;`
- */
-const animationRule = css(
-  (['', ' 0.2s linear;'] as any) as TemplateStringsArray,
-  fadeIn
-)
-export const CustomizableRichTooltipAttributes: CustomizableRichTooltipAttributes = {
-  surface: {
-    animation: animationRule,
-    backgroundColor: palette.white,
-    border: '1px solid',
-    borderColor: palette.charcoal200,
-    borderRadius: 'medium',
-    boxShadow: shadows[3],
-    color: palette.charcoal900,
-  },
-  zIndex: 0,
 }
