@@ -1,3 +1,32 @@
+const { resolve } = require('path')
+const { readdirSync, lstatSync } = require('fs')
+
+const PACKAGE_DIR = 'packages/' // this could be replaced utilizing the globs in package.json's "workpackges" or from the lerna.json config
+
+// get files in packages
+const noExtraneousOverrides = readdirSync(resolve(__dirname, PACKAGE_DIR))
+  // filter for non-hidden dirs to get a list of packages
+  .filter(
+    entry =>
+      entry.substr(0, 1) !== '.' &&
+      lstatSync(resolve(__dirname, PACKAGE_DIR, entry)).isDirectory()
+  )
+  // map to override rules pointing to local and root package.json for rule
+  .map(entry => ({
+    files: [`${PACKAGE_DIR}${entry}/**/*`],
+    rules: {
+      'import/no-extraneous-dependencies': [
+        'error',
+        {
+          devDependencies: true,
+          optionalDependencies: false,
+          peerDependencies: false,
+          packageDir: [__dirname, resolve(__dirname, PACKAGE_DIR, entry)],
+        },
+      ],
+    },
+  }))
+
 module.exports = {
   env: {
     node: true,
@@ -28,18 +57,25 @@ module.exports = {
     },
   },
   rules: {
-    'react/prop-types': 'off',
-    'no-console': ['warn'],
     '@typescript-eslint/explicit-function-return-type': 'off',
+    'import/no-extraneous-dependencies': 'error',
+    'import/order': 'error',
+    'no-console': 'warn',
+    'react/prop-types': 'off',
+    'react/no-unescaped-entities': 'off',
+    'sort-keys': 'error',
+
+    'import/named': 'off',
+    /*
+
+     * 68 instances of `[StyledComponent |*] not found in 'styled-components'  import/named`
+     *  Appears to be related to: https://github.com/benmosher/eslint-plugin-import/issues/1174
+     * */
+
+    /* To level-up our code quality we should pobably should address all of these later */
+    'react/display-name': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
-    'import/no-extraneous-dependencies': ['error'],
+    '@typescript-eslint/ban-ts-ignore': 'off',
   },
-  overrides: [
-    {
-      files: ['*.{test,spec,story}.ts{,x}'],
-      rules: {
-        'import/no-extraneous-dependencies': ['error', { packageDir: './' }],
-      },
-    },
-  ],
+  overrides: [...noExtraneousOverrides],
 }
