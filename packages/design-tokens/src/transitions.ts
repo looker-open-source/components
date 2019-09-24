@@ -16,3 +16,4 @@ export const transitions: Transitions = {
   durationComplex: '300ms',
   durationIntricate: '500ms',
 }
+/* eslint-enable sort-keys */
