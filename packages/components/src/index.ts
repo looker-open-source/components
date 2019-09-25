@@ -19,3 +19,5 @@ export * from './Table'
 export * from './Tooltip'
 export * from './Text'
 export * from './VisuallyHidden'
+
+export * from './utils'
