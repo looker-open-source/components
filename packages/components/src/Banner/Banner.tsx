@@ -1,7 +1,7 @@
 import omit from 'lodash/omit'
 import React, { FunctionComponent, Ref } from 'react'
 import styled, { StyledComponent } from 'styled-components'
-import { palette, theme } from '@looker/design-tokens'
+import { palette } from '@looker/design-tokens'
 import { Box, BoxProps } from '../Box'
 import { Flex } from '../Flex'
 import { Icon } from '../Icon'
@@ -60,7 +60,8 @@ const getBannerIntentStyling = (intent: BannerIntent) => {
 
 const CloseBannerIcon = styled(Icon)`
   opacity: 0.2;
-  transition: opactiy ${theme.transitions.durationRapid} ${theme.easings.ease};
+  transition: opacity ${props => props.theme.transitions.durationRapid}
+    ${props => props.theme.easings.ease};
   vertical-align: middle;
   :hover {
     opacity: 0.4;
