@@ -95,9 +95,9 @@
     "registry": "https://nexusrepo.looker.com/repository/looker-npm-private/"
   },
   "scripts": {
-    "xprebuild": "run-p tsc lint",
-    "build": "lerna link && lerna run --parallel 'build:es'",
-    "postbuild": "yarn build:declarations",
+    "build": "yarn build:es",
+    "build:es": "lerna run --parallel 'build:es'",
+    "postbuild": "yarn build:declarations && yarn lint",
     "build:declarations": "lerna run --parallel 'build:declaration'",
     "fix": "run-p -c 'lint:ts-* --fix'",
     "lint": "run-p -c lint:*",

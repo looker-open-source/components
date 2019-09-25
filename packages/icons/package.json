@@ -3,13 +3,13 @@
   "license": "UNLICENSED",
   "version": "0.1.0",
   "main": "dist/index.js",
-  "types": "lib/index.d.ts",
+  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
     "build:declaration": "tsc --project tsconfig.build.json",
-    "build:es": "yarn build:icons && BABEL_ENV=build babel src --root-mode upward --out-dir dist --source-maps --extensions .ts,.tsx --delete-dir-on-start --no-comments",
+    "build:es": "yarn build:icons && BABEL_ENV=build babel src --root-mode upward --out-dir dist --source-maps --extensions .js,.jsx,.ts,.tsx --delete-dir-on-start --no-comments",
     "build:icons": "node bin/build.js"
   },
   "devDependencies": {

@@ -13,16 +13,27 @@ import {
   SizeXXXLarge,
   SizeXXXXLarge,
 } from './types'
-import { Easings, easings } from './easings'
-import { shadows, Shadows } from './elevation'
-import { FontRamp, fontSizes } from './font_sizes'
-import { FontWeightRamp, fontWeights } from './font_weights'
-import { fonts, Fonts } from './fonts'
-import { lineHeights } from './line_heights'
-import { palette, Palette } from './palette'
-import { radii, Radii } from './radii'
-import { SemanticColors, semanticColors } from './semantic_colors'
-import { transitions, Transitions } from './transitions'
+import {
+  Easings,
+  easings,
+  fonts,
+  Fonts,
+  FontRamp,
+  fontSizes,
+  FontWeightRamp,
+  fontWeights,
+  lineHeights,
+  palette,
+  Palette,
+  radii,
+  Radii,
+  SemanticColors,
+  semanticColors,
+  shadows,
+  Shadows,
+  transitions,
+  Transitions,
+} from './'
 
 export type SpacingSizes =
   | SizeNone
