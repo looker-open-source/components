@@ -96,9 +96,9 @@
   },
   "scripts": {
     "build": "yarn build:es",
-    "build:es": "lerna run --parallel 'build:es'",
+    "build:es": "lerna run 'build:es'",
     "postbuild": "yarn build:declarations && yarn lint",
-    "build:declarations": "lerna run --parallel 'build:declaration'",
+    "build:declarations": "lerna run 'build:declaration'",
     "fix": "run-p -c 'lint:ts-* --fix'",
     "lint": "run-p -c lint:*",
     "lint:css": "stylelint 'packages/**/*.ts{,x}'",
