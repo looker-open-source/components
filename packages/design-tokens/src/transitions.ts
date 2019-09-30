@@ -1,10 +1,10 @@
 export interface Transitions {
+  durationRapid: string
+  durationQuick: string
+  durationSimple: string
+  durationModerate: string
   durationComplex: string
   durationIntricate: string
-  durationModerate: string
-  durationQuick: string
-  durationRapid: string
-  durationSimple: string
 }
 
 /* eslint-disable sort-keys */

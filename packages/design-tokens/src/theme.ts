@@ -1,55 +1,21 @@
 import { rem } from 'polished'
 import { InterpolationValue } from 'styled-components'
-import { ResponsiveValue, SpaceProps } from 'styled-system'
-import {
-  SizeLarge,
-  SizeMedium,
-  SizeNone,
-  SizeSmall,
-  SizeXLarge,
-  SizeXSmall,
-  SizeXXLarge,
-  SizeXXSmall,
-  SizeXXXLarge,
-  SizeXXXXLarge,
-} from './types'
-import {
-  Easings,
-  easings,
-  fonts,
-  Fonts,
-  FontRamp,
-  fontSizes,
-  FontWeightRamp,
-  fontWeights,
-  lineHeights,
-  palette,
-  Palette,
-  radii,
-  Radii,
-  SemanticColors,
-  semanticColors,
-  shadows,
-  Shadows,
-  transitions,
-  Transitions,
-} from './'
+import { SpacingSizes } from './types'
 
-export type SpacingSizes =
-  | SizeNone
-  | SizeXXSmall
-  | SizeXSmall
-  | SizeSmall
-  | SizeMedium
-  | SizeLarge
-  | SizeXLarge
-  | SizeXXLarge
-  | SizeXXXLarge
-  | SizeXXXXLarge
-
-export type ResponsiveSpacingSize = ResponsiveValue<SpacingSizes> | 'auto'
-
-export type LensSpaceProps = { [P in keyof SpaceProps]: ResponsiveSpacingSize }
+/**
+ * Theme attributes shouldn't be exported as they should be consumed via `theme` rather than via
+ * direct import.
+ */
+import { fontFaces, FontFaces } from './font_faces'
+import { FontWeightRamp, fontWeights } from './font_weights'
+import { FontRamp, fontSizes } from './font_sizes'
+import { easings, Easings } from './easings'
+import { lineHeights } from './line_heights'
+import { palette, Palette } from './palette'
+import { radii, Radii } from './radii'
+import { SemanticColors, semanticColors } from './semantic_colors'
+import { shadows, Shadows } from './elevation'
+import { transitions, Transitions } from './transitions'
 
 export interface Theme {
   breakpoints: string[]
@@ -57,7 +23,7 @@ export interface Theme {
   easings: Easings
   fontSizes: FontRamp
   fontWeights: FontWeightRamp
-  fonts: Fonts
+  fonts: FontFaces
   lineHeights: FontRamp
   radii: Radii
   /**
@@ -76,7 +42,7 @@ export const theme: Theme = {
   easings,
   fontSizes,
   fontWeights,
-  fonts,
+  fonts: fontFaces,
   lineHeights,
   radii,
   reset: () => {

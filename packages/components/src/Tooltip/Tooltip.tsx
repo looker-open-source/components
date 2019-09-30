@@ -1,12 +1,7 @@
 import { TextAlignProperty } from 'csstype'
 import React from 'react'
 import { css } from 'styled-components'
-import {
-  CustomizableAttributes,
-  fadeIn,
-  palette,
-  shadows,
-} from '@looker/design-tokens'
+import { CustomizableAttributes, fadeIn, theme } from '@looker/design-tokens'
 import { ModalSurfaceStyleProps } from '../Modal'
 import { Paragraph } from '../Text'
 
@@ -46,12 +41,12 @@ const animationRule = css(
 export const CustomizableTooltipAttributes: CustomizableTooltipAttributes = {
   surface: {
     animation: animationRule,
-    backgroundColor: palette.charcoal600,
+    backgroundColor: theme.colors.palette.charcoal600,
     border: 'none',
     borderColor: 'none',
     borderRadius: 'medium',
-    boxShadow: shadows[3],
-    color: palette.charcoal000,
+    boxShadow: theme.shadows[3],
+    color: theme.colors.palette.charcoal000,
   },
 }
 

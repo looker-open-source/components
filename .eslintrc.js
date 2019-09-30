@@ -65,7 +65,7 @@ module.exports = {
     'react/prop-types': 'off',
     'react/no-unescaped-entities': 'off',
     'sort-keys': 'error',
-
+    indentation: 'off',
     'import/named': 'off',
     /*
 

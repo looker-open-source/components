@@ -10,6 +10,7 @@ import {
   SizeXSmall,
   ThemedProps,
 } from '@looker/design-tokens'
+
 import { IconNames } from '@looker/icons'
 import omit from 'lodash/omit'
 import { rem, rgba } from 'polished'
@@ -276,7 +277,6 @@ const ButtonFactory = React.forwardRef<
 
 const ButtonIcon = styled(Icon)``
 
-/** @component */
 export const Button = styled<ComponentType>(withTheme(ButtonFactory))`
   font-weight: 600;
   outline: none;

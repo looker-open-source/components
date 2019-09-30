@@ -152,7 +152,6 @@ const InternalToggleSwitch: ToggleSwitchComponentType = ({
   )
 }
 
-/** @component */
 export const ToggleSwitch: StyledToggleSwitchComponentType = styled<
   ToggleSwitchComponentType
 >(InternalToggleSwitch)`

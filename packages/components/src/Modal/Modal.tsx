@@ -1,12 +1,7 @@
 import React from 'react'
 import { CSSTransition } from 'react-transition-group'
 import { css, CSSObject, FlattenSimpleInterpolation } from 'styled-components'
-import {
-  CustomizableAttributes,
-  fadeIn,
-  palette,
-  shadows,
-} from '@looker/design-tokens'
+import { CustomizableAttributes, fadeIn, theme } from '@looker/design-tokens'
 import { BackdropStyles, ModalBackdrop } from './ModalBackdrop'
 import { ModalContext } from './ModalContext'
 import { ModalPortal } from './ModalPortal'
@@ -39,15 +34,15 @@ const animationRule = css(
 )
 
 export const CustomizableModalAttributes: CustomizableModalAttributes = {
-  backdrop: { backgroundColor: palette.charcoal200, opacity: 0.6 },
+  backdrop: { backgroundColor: theme.colors.palette.charcoal200, opacity: 0.6 },
   surface: {
     animation: animationRule,
-    backgroundColor: palette.white,
+    backgroundColor: theme.colors.palette.white,
     border: 'none',
     borderColor: 'none',
     borderRadius: 'medium',
-    boxShadow: shadows[3],
-    color: palette.charcoal000,
+    boxShadow: theme.shadows[3],
+    color: theme.colors.palette.charcoal000,
   },
   zIndex: 0,
 }

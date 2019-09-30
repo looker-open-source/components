@@ -26,7 +26,7 @@
   "peerDependencies": {
     "@types/styled-components": "^4.1.19",
     "@types/styled-system": "^3.2.2",
-    "styled-system": "^3.2.1",
-    "styled-components": "^4.3.2"
+    "styled-components": "^4.3.2",
+    "styled-system": "^3.2.1"
   }
 }

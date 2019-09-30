@@ -97,7 +97,6 @@ const HeadingFactory = React.forwardRef<StyledComponentType, HeadingProps>(
   )
 )
 
-/** @component */
 export const Heading = styled<ComponentType>(HeadingFactory)`
   ${props => getTextTransform(props.textTransform)};
   ${props => shouldTruncate(props.truncate, props.truncateLines)};

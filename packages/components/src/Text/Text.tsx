@@ -70,7 +70,6 @@ const getWrap = (doWrap: boolean) =>
       `
     : false
 
-/** @component */
 export const Text = styled<ComponentType>(TextFactory)`
   text-decoration: ${(props: ThemedProps<TextProps>) => props.decoration};
   ${(props: ThemedProps<TextProps>) => getTextTransform(props.textTransform)};

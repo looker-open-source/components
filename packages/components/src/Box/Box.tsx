@@ -267,7 +267,6 @@ const BoxFactory = React.forwardRef<StyledComponentType, BoxProps<HTMLElement>>(
   }
 )
 
-/** @component */
 export const Box = styled<ComponentType>(BoxFactory)`
   /**
    * Global reset applied to prevent styling on top level tags outside of Lens

@@ -38,13 +38,16 @@ const CardFactory = React.forwardRef<StyledCardComponentType, CardProps>(
   )
 )
 
-/** @component */
 // prettier-ignore
-export const Card: StyledCardComponentType = styled<CardComponentType>(CardFactory)`
+export const Card: StyledCardComponentType = styled<CardComponentType>(
+  CardFactory
+)`
   box-shadow: ${props => (props.raised ? props.theme.shadows[1] : 'none')};
-  transition: border ${props => props.theme.transitions.durationQuick}
+  transition: border
+    ${props => props.theme.transitions.durationQuick}
     ${props => props.theme.easings.ease},
-    box-shadow ${props => props.theme.transitions.durationQuick}
+    box-shadow
+    ${props => props.theme.transitions.durationQuick}
     ${props => props.theme.easings.ease};
   &:hover {
     border-color: ${props => props.theme.colors.palette.charcoal300};

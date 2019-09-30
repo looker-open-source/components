@@ -13,6 +13,9 @@ node_modules
 
 # code-gen
 /packages/icons/src/generated
+.docz/
+public/
+
 
 # lerna
 /packages/*/dist

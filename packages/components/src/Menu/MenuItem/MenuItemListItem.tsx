@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from 'react'
 import styled, { css, StyledComponent } from 'styled-components'
-import { easings, transitions } from '@looker/design-tokens'
 import omit from 'lodash/omit'
 import { Box, BoxProps } from '../../Box'
 import { Icon } from '../../Icon'
@@ -68,8 +67,9 @@ export const MenuItemListItem: StyledListItemComponentType = styled<
 >(MenuItemStyleFactory)`
   position: relative;
   text-decoration: none;
-  transition: background ${transitions.durationQuick} ${easings.ease},
-    color ${transitions.durationQuick} ${easings.ease};
+  transition: ${props =>
+    `background ${props.theme.transitions.durationQuick} ${props.theme.easings.ease},
+    color ${props.theme.transitions.durationQuick} ${props.theme.easings.ease}`};
 
   &:focus-within {
     box-shadow: ${props => `0 0 3px 1px ${props.theme.colors.palette.blue400}`};
@@ -81,6 +81,8 @@ export const MenuItemListItem: StyledListItemComponentType = styled<
 
   ${Icon} {
     color: ${iconColor};
-    transition: color ${transitions.durationQuick} ${easings.ease};
+    transition: color
+      ${props =>
+        `${props.theme.transitions.durationQuick} ${props.theme.easings.ease}`};
   }
 `

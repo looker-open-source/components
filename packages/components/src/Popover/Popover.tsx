@@ -2,12 +2,7 @@ import { Placement } from 'popper.js'
 import React, { useEffect, useRef, useState } from 'react'
 import { Popper } from 'react-popper'
 import { css } from 'styled-components'
-import {
-  CustomizableAttributes,
-  fadeIn,
-  palette,
-  shadows,
-} from '@looker/design-tokens'
+import { CustomizableAttributes, fadeIn, theme } from '@looker/design-tokens'
 import { ModalContext, ModalSurfaceStyleProps } from '../Modal'
 import { ModalPortal } from '../Modal/ModalPortal'
 import { OverlaySurface } from '../Overlay/OverlaySurface'
@@ -26,12 +21,12 @@ const animationRule = css(
 export const CustomizablePopoverAttributes: CustomizablePopoverAttributes = {
   surface: {
     animation: animationRule,
-    backgroundColor: palette.white,
+    backgroundColor: theme.colors.palette.white,
     border: '1px solid',
-    borderColor: palette.charcoal200,
+    borderColor: theme.colors.palette.charcoal200,
     borderRadius: 'medium',
-    boxShadow: shadows[3],
-    color: palette.charcoal900,
+    boxShadow: theme.shadows[3],
+    color: theme.colors.palette.charcoal900,
   },
 }
 
