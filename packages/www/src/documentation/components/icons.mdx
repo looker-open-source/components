@@ -1,14 +1,19 @@
+---
+name: Icons
+menu: Icons
+---
+
 # Lens Icons
 
 Lens icons are defined in SVG format and are automatically built by a build script to ensure they match Lens conventions.
 
-# Lens Icon Directories
+## Directories
 
- * `src/icons/svg`: All source SVG icon files are placed here. The build process uses the files in this directory to create Lens components.
-* `src/icons/build`: Built artifacts are placed into this directory, including a
+- `src/icons/svg`: All source SVG icon files are placed here. The build process uses the files in this directory to create Lens components.
+- `src/icons/build`: Built artifacts are placed into this directory, including a
   set of SVGs converted to React components in icons/build/glyphs.
 
-# Building Icons
+## Building
 
 All Lens icons should be exported as SVG and placed in the `src/icons/svg` directory. They do not need to be optimized beforehand, a build process will optimize them and convert them to Lens components.
 

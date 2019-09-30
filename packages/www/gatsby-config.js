@@ -10,12 +10,15 @@ module.exports = {
         title: 'Looker Components Styleguide',
         typescript: true,
         menu: [
-          'Getting Started',
-          'Design Tokens',
-          'Icons',
+          'Working with Lens',
+          'Advanced',
+          'Principles',
+          'Style',
+          // Components group
           'Layout',
           'Text',
           'Components',
+          'Icons',
         ],
       },
     },
