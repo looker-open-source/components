@@ -1,5 +1,135 @@
+---
+name: Input Hidden & Input Seach & Input Text
+route: /forms/input
+menu: Form & Inputs
+---
+
 import { Playground } from 'docz'
-import { InputText, Button } from '@looker/components'
+import {
+  Button,
+  Divider,
+  InputHidden,
+  InputSearch,
+  InputText,
+} from '@looker/components'
+import { ComponentDetail } from '../../components'
+import { ExampleInputSearch } from '../../components/Input'
+
+# Inputs
+
+## Input Hidden
+
+<ComponentDetail
+  of="InputHidden"
+  status="experimental"
+  figmaURL="file/2MG6DoSjk4IaLnjjFCnKFf/Forms"
+  githubURL="Form/Inputs/InputHidden"
+/>
+
+### Default Input Hidden
+
+The `<InputHidden />` component renders a single hidden input element on the page. This is used for storing static values in forms, and meant to remain invisible to the user and screen readers.
+
+<Playground>
+  <InputHidden />
+</Playground>
+
+### Name and ID
+
+A name and ID can be specified in the `<InputHidden />` component. Names are important if the input is used in the context of a form, in which case a name is required for the value of the input to be captured.
+
+<Playground>
+  <InputHidden name="someName" id="someId" />
+</Playground>
+
+# Accessibility
+
+### Best Practices
+
+- Use InputHidden to include static values (such as user ID) as part of form submission. These fields will not be rendered visually or read by screen readers.
+
+### Focus Expectations
+
+- Input hidden fields should not be focusable.
+
+## Input Search
+
+<ComponentDetail
+  of="InputSearch"
+  status="experimental"
+  figmaURL="file/2MG6DoSjk4IaLnjjFCnKFf/Forms"
+  githubURL="Form/InputSearch/InputSearch.tsx"
+/>
+
+The `<InputSearch />` component renders a single search input element. You can add a placeholder, and a starter value, also a summary text and a closing button associated with it. To remove the button and summary use the hideControls flag. If you are building a menu you probably want to use `<MenuSearch />`.
+
+### Basic Example
+
+<Playground>
+  <InputSearch placeholder="Type your search" />
+  <Divider my="medium" />
+
+  <InputSearch placeholder="Type your search" value="test search" />
+  <Divider my="medium" />
+
+  <InputSearch
+    width="50%"
+    placeholder="Type your search"
+    value="test search 0"
+    summary={'some text'}
+  />
+  <Divider my="medium" />
+
+  <InputSearch
+    placeholder="Type your search"
+    value="test search 1"
+    hideControls
+  />
+</Playground>
+
+### Controlled Example
+
+<ExampleInputSearch />
+
+```javascript
+const ExampleInputSearch = ({
+  value = '',
+  hideControls,
+  searchResults = [],
+}) => {
+  const [keywords, setKeywords] = React.useState(value)
+  const onChange = e => {
+    setKeywords(e.currentTarget.value)
+  }
+
+  return (
+    <InputSearch
+      placeholder="Type your search"
+      summary={keywords.length > 0 && `You typed ${keywords.length} characters`}
+      value={keywords}
+      onChange={onChange}
+      hideControls={hideControls}
+    />
+  )
+}
+
+;<>
+  <ExampleInputSearch />
+  <Divider my="medium" />
+  <ExampleInputSearch value="test search 2" />
+  <Divider my="medium" />
+  <ExampleInputSearch value="test search 3" hideControls />
+</>
+```
+
+## Input Text
+
+<ComponentDetail
+  of="InputText"
+  figmaURL="file/2MG6DoSjk4IaLnjjFCnKFf/Forms"
+  status="experimental"
+  githubURL="Form/Inputs/InputText.tsx"
+/>
 
 ### Default InputText
 
@@ -55,7 +185,7 @@ When set for `<InputText />` in the context of a form, the input field must be f
   </form>
 </Playground>
 
-## Accessibility
+# Accessibility
 
 ### Best Practices
 

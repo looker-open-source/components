@@ -1,5 +1,6 @@
 ---
 name: Text
+route: /text/text
 menu: Text
 ---
 
@@ -12,8 +13,15 @@ import {
   Heading,
   CardContent,
 } from '@looker/components'
+import { ComponentDetail } from '../../components'
 
 # Text
+
+<ComponentDetail
+  of="Text"
+  status="experimental"
+  Figma="file/SmIM3VUQUgo8xb4o7UUxflkT/Typography"
+/>
 
 By default the `<Text />` component will render text wrapped in a `<span>`, if you need another html element for semantic purposes you can use the `element` property
 

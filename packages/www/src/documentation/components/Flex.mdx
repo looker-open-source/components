@@ -1,12 +1,23 @@
 ---
-name: Flex
+name: Flex & FlexItem
+route: /layout/flex
 menu: Layout
 ---
 
-import { Playground } from 'docz';
-import { Flex, FlexItem, Box, Text /* Icon */ } from '@looker/components';
+import { Playground } from 'docz'
+import { Flex, FlexItem, Box, Text, Icon } from '@looker/components'
+import {
+  AdjustingIndividualAlignment,
+  AligningItems,
+  AligningContent,
+  FlexItemExample,
+  ItemDistribution,
+} from '../../components/Flex'
+import { ComponentDetail } from '../../components'
 
 # Flex
+
+<ComponentDetail of="Flex" status="experimental" />
 
 The `<Flex />` component creates a flex container for you to place `<FlexItem />` components inside. It lets you utilize [flex box](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout) to create a wide variety of layouts, with powerful alignment, directional, and space distribution abilities.
 
@@ -37,37 +48,31 @@ Using our `<Flex>` and `<FlexItem>` components we can quickly scaffold out real 
     justifyContent="space-between"
   >
     <FlexItem mr="medium" pt="xsmall">
-      Hamburger Icon
-      {/* <Icon name="Hamburger" color="palette.white" size={24} /> */}
+      <Icon name="Hamburger" color="palette.white" size={24} />
     </FlexItem>
     <FlexItem>
-      Looker Logo
-      {/* <Icon name="LookerLogo" color="palette.white" size={60} /> */}
+      <Icon name="LookerLogo" color="palette.white" size={60} />
     </FlexItem>
     <FlexItem flex="1">
       <Flex justifyContent="center">
         <Box px="small">
           <Text fontSize="xsmall" variant="inverted">
-            Browse
-            {/*  <Icon name="ExpandMore" /> */}
+            Browse <Icon name="ExpandMore" />
           </Text>
         </Box>
         <Box px="small">
           <Text fontSize="xsmall" variant="inverted">
-            Explore
-            {/* <Icon name="ExpandMore" /> */}
+            Explore <Icon name="ExpandMore" />
           </Text>
         </Box>
         <Box px="small">
           <Text fontSize="xsmall" variant="inverted">
-            Develop
-            {/* <Icon name="ExpandMore" /> */}
+            Develop <Icon name="ExpandMore" />
           </Text>
         </Box>
         <Box px="small">
           <Text fontSize="xsmall" variant="inverted">
-            Admin
-            {/* <Icon name="ExpandMore" /> */}
+            Admin <Icon name="ExpandMore" />
           </Text>
         </Box>
       </Flex>
@@ -75,16 +80,13 @@ Using our `<Flex>` and `<FlexItem>` components we can quickly scaffold out real 
     <FlexItem>
       <Flex>
         <FlexItem mr="small">
-          Search
-          {/* <Icon name="Search" color="palette.white" size={24} /> */}
+          <Icon name="Search" color="palette.white" size={24} />
         </FlexItem>
         <FlexItem mr="small">
-          Chat
-          {/* <Icon name="Chat" color="palette.white" size={24} /> */}
+          <Icon name="Chat" color="palette.white" size={24} />
         </FlexItem>
         <FlexItem>
-          Group
-          {/* <Icon name="Group" color="palette.white" size={24} /> */}
+          <Icon name="Group" color="palette.white" size={24} />
         </FlexItem>
       </Flex>
     </FlexItem>
@@ -128,108 +130,7 @@ You can change the layout direction and order of flex children by using the `fle
 
 The `<Flex>` component allows you to control how its children are distributed within its container. Using the `justifyContent` property you can adjust the distribution of the children. Below is a table with all the justify options:
 
-```js noeditor
-import { Flex } from './Flex';
-import { FlexItem } from '../FlexItem';
-import {
-  Table,
-  TableHead,
-  TableRow,
-  TableHeaderCell,
-  TableBody,
-  TableDataCell,
-} from '../Table';
-import { Code, Text } from '../Text';
-<Table>
-  <TableHead>
-    <TableRow>
-      <TableHeaderCell width="40%">Justify Property</TableHeaderCell>
-      <TableHeaderCell>Behavior</TableHeaderCell>
-    </TableRow>
-  </TableHead>
-  <TableBody>
-    <TableRow>
-      <TableDataCell>
-        <span className="prop-code">
-          <Code>center</Code>
-        </span>
-      </TableDataCell>
-      <TableDataCell>
-        <Text fontSize="xsmall">Pack items around the center</Text>
-      </TableDataCell>
-    </TableRow>
-    <TableRow>
-      <TableDataCell>
-        <span className="prop-code">
-          <Code>flex-start</Code>
-        </span>
-      </TableDataCell>
-      <TableDataCell>
-        <Text fontSize="xsmall">Pack items from the start</Text>
-      </TableDataCell>
-    </TableRow>
-    <TableRow>
-      <TableDataCell>
-        <span className="prop-code">
-          <Code>flex-end</Code>
-        </span>
-      </TableDataCell>
-      <TableDataCell>
-        <Text fontSize="xsmall">Pack items from the end</Text>
-      </TableDataCell>
-    </TableRow>
-    <TableRow>
-      <TableDataCell>
-        <span className="prop-code">
-          <Code>space-between</Code>
-        </span>
-      </TableDataCell>
-      <TableDataCell>
-        <Text fontSize="xsmall">
-          Distribute items evenly. The first item is flush with the start, the
-          last is flush with the end{' '}
-        </Text>
-      </TableDataCell>
-    </TableRow>
-    <TableRow>
-      <TableDataCell>
-        <span className="prop-code">
-          <Code>space-around</Code>
-        </span>
-      </TableDataCell>
-      <TableDataCell>
-        <Text fontSize="xsmall">
-          Distribute items evenly. Items have a half-size space on either end
-        </Text>
-      </TableDataCell>
-    </TableRow>
-    <TableRow>
-      <TableDataCell>
-        <span className="prop-code">
-          <Code>space-evenly</Code>
-        </span>
-      </TableDataCell>
-      <TableDataCell>
-        <Text fontSize="xsmall">
-          Distribute items evenly. Items have equal space around them
-        </Text>
-      </TableDataCell>
-    </TableRow>
-    <TableRow>
-      <TableDataCell>
-        <span className="prop-code">
-          <Code>stretch</Code>
-        </span>
-      </TableDataCell>
-      <TableDataCell>
-        <Text fontSize="xsmall">
-          Distribute items evenly. Items strechted to fit the container
-        </Text>
-      </TableDataCell>
-    </TableRow>
-  </TableBody>
-</Table>;
-```
+<ItemDistribution />
 
 Here is a visual example of how using `justifyContent` affects the distribution of items in a `<Flex />` component.
 
@@ -311,84 +212,7 @@ Here is a visual example of how using `justifyContent` affects the distribution 
 
 Flex box allows for quickly adjusting the alignment of items inside the flex container. Below are available alignment types:
 
-```js noeditor
-import {
-  Table,
-  TableHead,
-  TableRow,
-  TableHeaderCell,
-  TableBody,
-  TableDataCell,
-} from '../Table';
-import { Code, Text } from '../Text';
-<Table>
-  <TableHead>
-    <TableRow>
-      <TableHeaderCell width="40%">AlignItems Property</TableHeaderCell>
-      <TableHeaderCell>Behavior</TableHeaderCell>
-    </TableRow>
-  </TableHead>
-  <TableBody>
-    <TableRow>
-      <TableDataCell>
-        <span className="prop-code">
-          <Code>center</Code>
-        </span>
-      </TableDataCell>
-      <TableDataCell>
-        <Text fontSize="xsmall">Items are aligned center of container</Text>
-      </TableDataCell>
-    </TableRow>
-    <TableRow>
-      <TableDataCell>
-        <span className="prop-code">
-          <Code>flex-start</Code>
-        </span>
-      </TableDataCell>
-      <TableDataCell>
-        <Text fontSize="xsmall">
-          Items are aligned to the start of the container
-        </Text>
-      </TableDataCell>
-    </TableRow>
-    <TableRow>
-      <TableDataCell>
-        <span className="prop-code">
-          <Code>flex-end</Code>
-        </span>
-      </TableDataCell>
-      <TableDataCell>
-        <Text fontSize="xsmall">
-          Items are aligned to the start of the container
-        </Text>
-      </TableDataCell>
-    </TableRow>
-    <TableRow>
-      <TableDataCell>
-        <span className="prop-code">
-          <Code>baseline</Code>
-        </span>
-      </TableDataCell>
-      <TableDataCell>
-        <Text fontSize="xsmall">
-          All items are aligned so their baselines align
-        </Text>
-      </TableDataCell>
-    </TableRow>
-    <TableRow>
-      <TableDataCell>
-        <span className="prop-code">
-          <Code>stretch</Code>
-        </span>
-        <Text fontSize="xsmall">(default)</Text>
-      </TableDataCell>
-      <TableDataCell>
-        <Text fontSize="xsmall">Items strechted to fit the container</Text>
-      </TableDataCell>
-    </TableRow>
-  </TableBody>
-</Table>;
-```
+<AligningItems />
 
 Here is an example of using `alignItems` to adjust how items are aligned within the flex container.
 
@@ -473,99 +297,7 @@ Here is an example of using `alignItems` to adjust how items are aligned within 
 
 If you have multiple rows of flex items, the `alignContent` property determines how the rows are distributed within the flex container.
 
-```js noeditor
-import { Code, Text } from '../Text';
-import {
-  Table,
-  TableHead,
-  TableRow,
-  TableHeaderCell,
-  TableBody,
-  TableDataCell,
-} from '../Table';
-<Table>
-  <TableHead>
-    <TableRow>
-      <TableHeaderCell width="40%">AlignContent Property</TableHeaderCell>
-      <TableHeaderCell>Behavior</TableHeaderCell>
-    </TableRow>
-  </TableHead>
-  <TableBody>
-    <TableRow>
-      <TableDataCell>
-        <span className="prop-code">
-          <Code>center</Code>
-        </span>
-      </TableDataCell>
-      <TableDataCell>
-        <Text fontSize="xsmall">
-          Lines are packed to the center of container
-        </Text>
-      </TableDataCell>
-    </TableRow>
-    <TableRow>
-      <TableDataCell>
-        <span className="prop-code">
-          <Code>flex-start</Code>
-        </span>
-      </TableDataCell>
-      <TableDataCell>
-        <Text fontSize="xsmall">
-          Lines are packed to the start of the container
-        </Text>
-      </TableDataCell>
-    </TableRow>
-    <TableRow>
-      <TableDataCell>
-        <span className="prop-code">
-          <Code>flex-end</Code>
-        </span>
-      </TableDataCell>
-      <TableDataCell>
-        <Text fontSize="xsmall">
-          Lines are packed to the start of the container
-        </Text>
-      </TableDataCell>
-    </TableRow>
-    <TableRow>
-      <TableDataCell>
-        <span className="prop-code">
-          <Code>space-between</Code>
-        </span>
-      </TableDataCell>
-      <TableDataCell>
-        <Text fontSize="xsmall">
-          Lines evenly distributed. First line at start of container, last line
-          at end of container
-        </Text>
-      </TableDataCell>
-    </TableRow>
-    <TableRow>
-      <TableDataCell>
-        <span className="prop-code">
-          <Code>space-around</Code>
-        </span>
-      </TableDataCell>
-      <TableDataCell>
-        <Text fontSize="xsmall">
-          Lines evenly distributed. Even space around each line
-        </Text>
-      </TableDataCell>
-    </TableRow>
-    <TableRow>
-      <TableDataCell>
-        <span className="prop-code">
-          <Code>stretch</Code>
-        </span>{' '}
-        <Text fontSize="xsmall">(default)</Text>
-      </TableDataCell>
-      <TableDataCell>
-        <Text fontSize="xsmall">Items strechted to fit the container</Text>
-      </TableDataCell>
-    </TableRow>
-  </TableBody>
-</Table>;
-```
+<AligningContent />
 
 <Playground>
 <Flex justifyContent="space-between">
@@ -685,6 +417,196 @@ Many of the properties you can set on the `<Flex />` component will accept an ar
     </FlexItem>
     <FlexItem p="medium" bg="palette.purple200">
       📦
+    </FlexItem>
+  </Flex>
+</Playground>
+
+<ComponentDetail of="FlexItem" status="Experimental" />
+
+# FlexItem
+
+The `<FlexItem />` component lets you have more control of the properties that apply to just children inside a `<Flex />` container. These properties affect how a flex item aligns its self, it's order, and how it resizes to fill the available space in the flex container.
+
+## Adjusting Individual Alignment
+
+Using the `alignSelf` property on a `<FlexItem />` allows you to override the the `alignItems` value from the flex container. This is useful if you need to adjust how a single flex item aligns itself in the container.
+
+<AdjustingIndividualAlignment />
+
+<Playground>
+  <Flex height="200px" bg="palette.purple400">
+    <FlexItem alignSelf="flex-start">
+      <Box m="small" p="large" bg="palette.purple200">
+        Flex Start
+      </Box>
+    </FlexItem>
+    <FlexItem alignSelf="flex-end">
+      <Box m="small" p="large" bg="palette.purple200">
+        Flex End
+      </Box>
+    </FlexItem>
+    <FlexItem alignSelf="center">
+      <Box m="small" p="large" bg="palette.purple200">
+        Center
+      </Box>
+    </FlexItem>
+    <FlexItem alignSelf="baseline">
+      <Box m="small" p="large" bg="palette.purple200">
+        Baseline
+      </Box>
+    </FlexItem>
+  </Flex>
+</Playground>
+
+## Item Order
+
+By default flex items are laid our in source order, the `order` property on a `<FlexItem />` allows you to adjust how an individual flex item is is ordered in a flex container.
+
+**Note:** the `order` value default is `0`, so setting an `order="1"` will put the item at the end unless another flex item has a higher `order` set. You can also use negative numbers to set an item at the beginning.
+
+<Playground>
+  <Flex bg="palette.charcoal000" mb="large">
+    <FlexItem>
+      <Box m="small" p="large" bg="palette.blue200">
+        0
+      </Box>
+    </FlexItem>
+    <FlexItem>
+      <Box m="small" p="large" bg="palette.purple200">
+        1
+      </Box>
+    </FlexItem>
+    <FlexItem>
+      <Box m="small" p="large" bg="palette.green200">
+        2
+      </Box>
+    </FlexItem>
+    <FlexItem>
+      <Box m="small" p="large" bg="palette.yellow200">
+        3
+      </Box>
+    </FlexItem>
+    <FlexItem>
+      <Box m="small" p="large" bg="palette.red200">
+        4
+      </Box>
+    </FlexItem>
+  </Flex>
+
+  <Flex bg="palette.charcoal000">
+    <FlexItem>
+      <Box m="small" p="large" bg="palette.blue200">
+        0
+      </Box>
+    </FlexItem>
+    <FlexItem order="2">
+      <Box m="small" p="large" bg="palette.purple200">
+        1
+      </Box>
+    </FlexItem>
+    <FlexItem order="1">
+      <Box m="small" p="large" bg="palette.green200">
+        2
+      </Box>
+    </FlexItem>
+    <FlexItem>
+      <Box m="small" p="large" bg="palette.yellow200">
+        3
+      </Box>
+    </FlexItem>
+    <FlexItem order="-1">
+      <Box m="small" p="large" bg="palette.red200">
+        4
+      </Box>
+    </FlexItem>
+  </Flex>
+</Playground>
+
+## Controlling Item Size
+
+The `<FlexItem>` has two properties for managing its size. You can use the `flexBasis` property or the `flex` property.
+
+### Flex Basis example.
+
+The `flexBasis` property defines the flex-items' default size before the remaining space is distributed.
+
+<Playground>
+  <Flex>
+    <FlexItem flexBasis="20%">
+      <Box p="small" m="small" bg="palette.red200">
+        I am 20% of container
+      </Box>
+    </FlexItem>
+    <FlexItem flexBasis="5.5rem">
+      <Box p="small" m="small" bg="palette.green200">
+        I am 5.5rem of container
+      </Box>
+    </FlexItem>
+    <FlexItem flexBasis="150px">
+      <Box p="small" m="small" bg="palette.blue200">
+        I am 150px of container
+      </Box>
+    </FlexItem>
+    <FlexItem>
+      <Box p="small" m="small" bg="palette.purple200">
+        I am sized to my content
+      </Box>
+    </FlexItem>
+  </Flex>
+</Playground>
+
+### Flex Example
+
+The `flex` property is a shorthand for `flex-grow`, `flex-shrink`, and `flex-basis` properties. It specifies how a flex item will grow or shrink to fit the space in its flex container.
+
+**Note**: The `flex` syntax can be a bit confusing, if you need a more detail set of examples check out this [MDN flex overview](https://developer.mozilla.org/en-US/docs/Web/CSS/flex).
+
+<FlexItemExample />
+
+### Flex Grow Example
+
+Below we set the flex grow value of the first flex item to `2` so it will take up a factor of two in the flex container
+
+<Playground>
+  <Flex>
+    <FlexItem flex="2">
+      <Box p="small" bg="palette.red200">
+        Flex: 2
+      </Box>
+    </FlexItem>
+    <FlexItem flex="1">
+      <Box p="small" bg="palette.green200">
+        Flex: 1
+      </Box>
+    </FlexItem>
+    <FlexItem flex="1">
+      <Box p="small" bg="palette.blue200">
+        Flex: 1
+      </Box>
+    </FlexItem>
+  </Flex>
+</Playground>
+
+### Flex Shrink
+
+Below we have a flex container with a set width of 500px and each child's `flex-basis` is set to 200px. The flex shrink value on the last two flex items is set to `1` and they will now shrink so that all the flex items fit within the flex container.
+
+<Playground>
+  <Flex width="500px">
+    <FlexItem flex="1 0 200px">
+      <Box p="small" bg="palette.red200">
+        No Shrink
+      </Box>
+    </FlexItem>
+    <FlexItem flex="1 1 200px">
+      <Box p="small" bg="palette.green200">
+        I'll shrink
+      </Box>
+    </FlexItem>
+    <FlexItem flex="1 1 200px">
+      <Box p="small" bg="palette.blue200">
+        I'll shrink
+      </Box>
     </FlexItem>
   </Flex>
 </Playground>

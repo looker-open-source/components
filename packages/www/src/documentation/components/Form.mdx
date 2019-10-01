@@ -1,20 +1,21 @@
 ---
-name: Form
-menu: Components
+name: Forms
+route: /forms/form
+menu: Forms
 ---
 
-import { StatusAndResources, FormValidationDemo } from '../../components'
+import { FormValidationDemo } from '../../components'
 import { Playground } from 'docz'
 import { Form, FieldText, Button } from '@looker/components'
-
-<StatusAndResources
-  status="experimental"
-  figmaURL="https://www.figma.com/file/2MG6DoSjk4IaLnjjFCnKFf/Forms"
-  githubURL="https://github.com/looker/relens/blob/master/src/components/Form/Form.tsx"
-  feedbackTitle="Form Component Feedback"
-/>
+import { ComponentDetail } from '../../components'
 
 # Form
+
+<ComponentDetail
+  of="Form"
+  status="experimental"
+  figmaURL="file/2MG6DoSjk4IaLnjjFCnKFf/Forms"
+/>
 
 The `<Form />` component wraps a collection of field components and allows for multi-field validation message rendering by accepting a `validationMessages` property. The property takes a dictionary with key as field name and value as a `ValidationMessage` object which has a `type` and a `message`:
 
@@ -37,3 +38,11 @@ The `<Form />` component wraps a collection of field components and allows for m
 A complete implementation that keeps track of state and updates validation messages onChange.
 
 <FormValidationDemo />
+
+# Form Control
+
+<ComponentDetail
+  of="FormControl"
+  figmaURL="file/2MG6DoSjk4IaLnjjFCnKFf/Forms"
+  github="Form/FormControl/FormControl"
+/>

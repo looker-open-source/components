@@ -1,13 +1,17 @@
 ---
 name: Box
+route: /layout/box
 menu: Layout
 ---
 
 import { Playground } from 'docz'
 import { Box, List, ListItem } from '@looker/components'
 import { BoxSpacingRecipeTable } from '../../components'
+import { ComponentDetail } from '../../components'
 
 # Box
+
+<ComponentDetail of="Box" status="experimental" />
 
 ## About
 
@@ -95,6 +99,7 @@ Boxes provide a low-level customization interface which allows them to have diff
     ml="small"
     p="small"
     width="100px"
+    fontSize="small"
   >
     I'm 50px tall.
   </Box>

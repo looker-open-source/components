@@ -1,20 +1,22 @@
 ---
-name: Color Wheel
+name: Color Wheel & Color Field Picker
+route: /components/color-wheel
 menu: Components
 ---
 
-import { StatusAndResources, ColorWheelDemo } from '../../components'
+import { ColorFieldPickerDemo, ColorWheelDemo } from '../../components'
 import { Playground } from 'docz'
-import { ColorWheel } from '@looker/components'
-
-<StatusAndResources
-  status="experimental"
-  figmaURL="https://www.figma.com/file/h7RYPRCSlz3k8fLzEMRSzy/Color-Wheel?node-id=83%3A3"
-  githubURL="https://github.com/looker/lens/blob/master/src/components/Colors/ColorWheel.tsx"
-  feedbackTitle="ColorWheel Component Feedback"
-/>
+import { ColorFieldPicker, ColorWheel } from '@looker/components'
+import { ComponentDetail } from '../../components'
 
 # Color Wheel
+
+<ComponentDetail
+  of="Color Wheel"
+  status="experimental"
+  figmaURL="file/h7RYPRCSlz3k8fLzEMRSzy/Color-Wheel?node-id=83%3A3"
+  githubURL="src/components/Colors/ColorWheel.tsx"
+/>
 
 The `<ColorWheel/>` renders an HSV based color wheel. The wheel can be rendered at any needed size by providing a `size` property.
 The color wheel defaults to selecting a highly saturated and bright red hue.
@@ -43,3 +45,21 @@ Use this to provide a callback to know when a new (hue, saturation) tuple has be
 slice of a color wheel, and should be handled outside the color wheel component.
 
 <ColorWheelDemo />
+
+# Color Field Picker
+
+<ComponentDetail
+  of="ColorFieldPicker"
+  figmaURL="file/h7RYPRCSlz3k8fLzEMRSzy/Color-Wheel?node-id=83%3A3"
+  status="experimental"
+/>
+
+This component is composed of a `FieldText` and a `ColorWheel` that appears in a `RichToolTip` upon hover above its color swatch.
+
+<Playground>
+  <ColorFieldPicker />
+</Playground>
+
+Like the `FieldText` component, `value` and `onChange` are passed in as props creating an interactive `ColorFieldPicker`.
+
+<ColorFieldPickerDemo />

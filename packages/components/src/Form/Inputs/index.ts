@@ -1,4 +1,5 @@
 export * from './Checkbox'
+export * from './InputHidden'
 export * from './InputSearch'
 export * from './InputText'
 export * from './Radio'
