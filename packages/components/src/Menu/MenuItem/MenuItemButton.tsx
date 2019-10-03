@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import styled, { StyledComponent } from 'styled-components'
-import { Box } from '../../Box'
+import { Box } from '../../Layout/Box'
 import { MenuItemProps } from './MenuItem'
 
 export type MenuItemComponentType = FunctionComponent<MenuItemProps>

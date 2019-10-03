@@ -5,7 +5,7 @@ import styled, {
   StyledComponent,
 } from 'styled-components'
 import { sizedArray } from '../utils/array'
-import { Box, BoxProps } from '../Box'
+import { Box, BoxProps } from '../Layout/Box'
 import { generateStyleProps, StyledMarker } from './Spinner.styles'
 
 export interface SpinnerProps

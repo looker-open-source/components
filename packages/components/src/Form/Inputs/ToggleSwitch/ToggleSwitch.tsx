@@ -6,7 +6,7 @@ import {
   palette,
   ThemedProps,
 } from '@looker/design-tokens'
-import { Box, BoxProps } from '../../../Box'
+import { Box, BoxProps } from '../../../Layout/Box'
 import { Checkbox } from '../Checkbox'
 
 export interface CustomizableToggleSwitchAttributes

@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled, { css, StyledComponent } from 'styled-components'
 import { palette, quarterFade } from '@looker/design-tokens'
-import { Box } from '../Box'
+import { Box } from '../Layout/Box'
 import { SpinnerProps, StyledMarkerProps } from './Spinner'
 
 export type MarkerComponentType = FunctionComponent<StyledMarkerProps>

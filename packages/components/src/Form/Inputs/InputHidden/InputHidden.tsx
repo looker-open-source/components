@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import styled, { StyledComponent } from 'styled-components'
-import { Box, BoxProps } from '../../../Box'
+import { Box, BoxProps } from '../../../Layout/Box'
 import { InputProps } from '../InputProps'
 
 export interface InputHiddenProps

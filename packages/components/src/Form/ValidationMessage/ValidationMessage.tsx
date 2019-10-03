@@ -1,6 +1,6 @@
 import React from 'react'
 import { CustomizableAttributes } from '@looker/design-tokens'
-import { Box, BoxProps } from '../../Box'
+import { Box, BoxProps } from '../../Layout/Box'
 
 export type ValidationType = 'error'
 

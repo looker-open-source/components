@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, BoxProps } from '../../Box'
+import { Box, BoxProps } from '../../Layout/Box'
 import { CustomizableInputTextAttributes } from '../../Form'
 
 export interface SwatchProps extends Omit<BoxProps<HTMLDivElement>, 'as'> {

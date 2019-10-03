@@ -17,7 +17,7 @@ import { rem } from 'polished'
 import React, { FunctionComponent, Ref } from 'react'
 import styled, { css, StyledComponent, withTheme } from 'styled-components'
 // import { merge } from 'styled-system'
-import { Box, BoxProps } from '../Box'
+import { Box, BoxProps } from '../Layout/Box'
 import { Icon } from '../Icon/Icon'
 
 export type ButtonSizes = SizeXSmall | SizeSmall | SizeMedium | SizeLarge

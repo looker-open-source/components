@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled, { StyledComponent } from 'styled-components'
 import { ThemedProps } from '@looker/design-tokens'
-import { Box, BoxProps } from '../../Box'
+import { Box, BoxProps } from '../../Layout/Box'
 
 export interface ModalFooterProps extends Omit<BoxProps<HTMLDivElement>, 'as'> {
   /**

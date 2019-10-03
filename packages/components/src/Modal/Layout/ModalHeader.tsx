@@ -1,6 +1,6 @@
 import React from 'react'
 import { IconNames } from '@looker/icons'
-import { Box, BoxProps } from '../../Box'
+import { Box, BoxProps } from '../../Layout/Box'
 import { Button } from '../../Button'
 import { Icon } from '../../Icon'
 import { ModalContextProps, withModal } from '../ModalContext'

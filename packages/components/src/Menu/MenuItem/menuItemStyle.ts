@@ -1,5 +1,5 @@
 import { FontWeights, palette, FontSizes } from '@looker/design-tokens'
-import { BoxProps } from '../../Box'
+import { BoxProps } from '../../Layout/Box'
 import { MenuItemStateStyle, MenuItemStyle } from './menuItemStyle'
 
 export interface MenuItemStateStyle {

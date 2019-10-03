@@ -2,7 +2,7 @@ import React, { FunctionComponent, Ref } from 'react'
 import styled, { StyledComponent } from 'styled-components'
 import { backgroundPosition, BackgroundPositionProps } from 'styled-system'
 import omit from 'lodash/omit'
-import { Box, BoxProps } from '../Box'
+import { Box, BoxProps } from '../Layout/Box'
 
 export interface CardMediaProps
   extends Omit<BoxProps<HTMLDivElement>, 'as'>,

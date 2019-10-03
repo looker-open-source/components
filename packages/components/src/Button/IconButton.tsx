@@ -10,7 +10,7 @@ import {
   SemanticColor,
   SemanticColors,
 } from '@looker/design-tokens'
-import { BoxProps } from '../Box'
+import { BoxProps } from '../Layout/Box'
 import { Button } from '../Button'
 import { Icon } from '../Icon'
 import { VisuallyHidden } from '../VisuallyHidden'

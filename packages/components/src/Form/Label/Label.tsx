@@ -1,7 +1,7 @@
 import React, { FunctionComponent, Ref } from 'react'
 import styled, { StyledComponent } from 'styled-components'
 import { CustomizableAttributes } from '@looker/design-tokens'
-import { Box, BoxProps } from '../../Box'
+import { Box, BoxProps } from '../../Layout/Box'
 
 export const CustomizableLabelAttributes: CustomizableAttributes = {
   color: 'palette.charcoal800',

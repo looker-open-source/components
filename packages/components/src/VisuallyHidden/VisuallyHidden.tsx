@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react'
 import styled, { StyledComponent } from 'styled-components'
-import { Box, BoxProps } from '../Box'
+import { Box, BoxProps } from '../Layout/Box'
 
 type VisuallyHiddenComponentType = FunctionComponent<BoxProps<HTMLElement>>
 type StyledVisuallyHiddenComponentType = StyledComponent<

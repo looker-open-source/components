@@ -1,8 +1,8 @@
 import { radii } from '@looker/design-tokens'
 import React from 'react'
 import omit from 'lodash/omit'
-import { Flex } from '../../Flex'
-import { FlexItem } from '../../FlexItem'
+import { Flex } from '../../Layout/Flex'
+import { FlexItem } from '../../Layout/FlexItem'
 import {
   ComponentWithForm,
   CustomizableInputTextAttributes,

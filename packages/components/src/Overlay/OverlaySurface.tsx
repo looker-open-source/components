@@ -6,7 +6,7 @@ import styled, {
   FlattenSimpleInterpolation,
   StyledComponent,
 } from 'styled-components'
-import { Box } from '../Box'
+import { Box } from '../Layout/Box'
 import { ModalContext } from '../Modal'
 
 export interface SurfaceStyleProps {

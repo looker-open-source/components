@@ -2,7 +2,7 @@ import 'jest-styled-components'
 import React from 'react'
 import { assertSnapshot } from '@looker/components-test-utils'
 
-import { Box } from '../../Box'
+import { Box } from '../../Layout/Box'
 import { ModalContent } from './ModalContent'
 
 test('ModalContent - no overflow', () => {

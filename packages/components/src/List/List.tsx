@@ -1,6 +1,6 @@
 import React, { FunctionComponent, Ref } from 'react'
 import styled, { css, StyledComponent } from 'styled-components'
-import { Box, BoxProps } from '../Box'
+import { Box, BoxProps } from '../Layout/Box'
 
 export interface ListProps
   extends Omit<BoxProps<HTMLOListElement | HTMLUListElement>, 'as'> {

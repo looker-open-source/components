@@ -1,7 +1,7 @@
 import React, { FunctionComponent, Ref } from 'react'
 import styled, { StyledComponent } from 'styled-components'
 
-import { Box, BoxProps } from '../Box'
+import { Box, BoxProps } from '../Layout/Box'
 
 export type TableProps = BoxProps<HTMLTableElement>
 

@@ -1,7 +1,7 @@
 import 'jest-styled-components'
 import React, { useRef } from 'react'
 import { mountWithTheme } from '@looker/components-test-utils'
-import { Box } from '../Box'
+import { Box } from '../Layout/Box'
 import { Button } from '../Button'
 import { Link } from '../Link'
 import { Popover } from './Popover'

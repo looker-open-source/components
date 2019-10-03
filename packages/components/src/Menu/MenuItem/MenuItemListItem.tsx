@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled, { css, StyledComponent } from 'styled-components'
 import omit from 'lodash/omit'
-import { Box, BoxProps } from '../../Box'
+import { Box, BoxProps } from '../../Layout/Box'
 import { Icon } from '../../Icon'
 import { MenuItemStyle } from './menuItemStyle'
 

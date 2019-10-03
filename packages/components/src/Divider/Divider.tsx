@@ -2,7 +2,7 @@ import React, { FunctionComponent, Ref } from 'react'
 import styled, { css, StyledComponent } from 'styled-components'
 import { ThemedProps } from '@looker/design-tokens'
 import omit from 'lodash/omit'
-import { Box, BoxProps } from '../Box'
+import { Box, BoxProps } from '../Layout/Box'
 
 export interface DividerProps
   extends Omit<BoxProps<HTMLDivElement>, 'color' | 'size' | 'as'> {

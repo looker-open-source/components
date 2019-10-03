@@ -2,7 +2,7 @@ import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
 import React, { Component, FunctionComponent } from 'react'
 import { createPortal } from 'react-dom'
 import styled, { StyledComponent } from 'styled-components'
-import { Box, BoxProps } from '../Box'
+import { Box, BoxProps } from '../Layout/Box'
 import { CustomizableModalAttributes } from './Modal'
 import { getModalRoot } from './modalRoot'
 

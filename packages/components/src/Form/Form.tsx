@@ -1,7 +1,7 @@
 import React, { FunctionComponent, Ref } from 'react'
 import styled, { StyledComponent } from 'styled-components'
 import omit from 'lodash/omit'
-import { Box, BoxProps } from '../Box'
+import { Box, BoxProps } from '../Layout/Box'
 import { FieldProps } from './Fields'
 import { InputProps } from './Inputs/InputProps'
 import { ValidationMessageProps } from './ValidationMessage'

@@ -1,7 +1,7 @@
 import React, { FunctionComponent, Ref } from 'react'
 import styled, { StyledComponent } from 'styled-components'
 import { palette } from '@looker/design-tokens'
-import { Box, BoxProps } from '../Box'
+import { Box, BoxProps } from '../Layout/Box'
 import { Heading, HeadingProps } from '../Heading'
 import { List } from '../List'
 import { MenuContext } from './MenuContext'

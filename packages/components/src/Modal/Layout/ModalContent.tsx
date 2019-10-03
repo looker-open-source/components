@@ -3,7 +3,7 @@ import ReactResizeDetector from 'react-resize-detector'
 import styled, { StyledComponent } from 'styled-components'
 import { palette } from '@looker/design-tokens'
 import omit from 'lodash/omit'
-import { Box, BoxProps } from '../../Box'
+import { Box, BoxProps } from '../../Layout/Box'
 
 export interface ModalContentProps
   extends Omit<BoxProps<HTMLDivElement>, 'as'> {

@@ -1,6 +1,6 @@
 import React, { FunctionComponent, Ref } from 'react'
 import styled, { StyledComponent } from 'styled-components'
-import { Box, BoxProps } from '../../Box'
+import { Box, BoxProps } from '../../Layout/Box'
 
 export type TableBodyAlignment = 'bottom' | 'middle' | 'top'
 export type TableTextAlignment = 'center' | 'left' | 'right'

@@ -1,6 +1,6 @@
 import React, { FunctionComponent, Ref } from 'react'
 import styled, { StyledComponent } from 'styled-components'
-import { Box, BoxProps } from '../Box'
+import { Box, BoxProps } from '../Layout/Box'
 
 /* eslint-disable-next-line @typescript-eslint/no-empty-interface */
 export interface LinkProps extends Omit<BoxProps<HTMLAnchorElement>, 'as'> {}

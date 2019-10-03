@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { HotKeys } from 'react-hotkeys'
 import styled, { CSSObject, StyledComponent } from 'styled-components'
 import omit from 'lodash/omit'
-import { Box, BoxProps } from '../Box'
+import { Box, BoxProps } from '../Layout/Box'
 import { CustomizableModalAttributes } from './Modal'
 import { ModalContext } from './ModalContext'
 

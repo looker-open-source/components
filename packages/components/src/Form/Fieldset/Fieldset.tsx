@@ -1,7 +1,7 @@
 import React, { FunctionComponent, Ref } from 'react'
 import styled, { StyledComponent } from 'styled-components'
-import { Box, BoxProps } from '../../Box'
-import { FlexItem } from '../../FlexItem'
+import { Box, BoxProps } from '../../Layout/Box'
+import { FlexItem } from '../../Layout/FlexItem'
 import { FormControl, FormControlDirections } from '../FormControl'
 import { Legend } from './Legend'
 

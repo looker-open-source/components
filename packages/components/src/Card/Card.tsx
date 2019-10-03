@@ -2,7 +2,7 @@ import omit from 'lodash/omit'
 import React, { FunctionComponent, Ref } from 'react'
 import styled, { StyledComponent, withTheme } from 'styled-components'
 import { ThemedProps } from '@looker/design-tokens'
-import { Box, BoxProps } from '../Box'
+import { Box, BoxProps } from '../Layout/Box'
 
 export interface CardProps extends Omit<BoxProps<HTMLDivElement>, 'as'> {
   raised?: boolean

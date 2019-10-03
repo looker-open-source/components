@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components'
-import { Box, BoxProps } from '../../Box'
+import { Box, BoxProps } from '../../Layout/Box'
 
 export type TableHeaderCellProps = BoxProps<HTMLTableHeaderCellElement>
 type ComponentType = FunctionComponent<TableHeaderCellProps>

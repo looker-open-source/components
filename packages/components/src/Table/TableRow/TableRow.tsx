@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components'
-import { StyledSystemCompatibleHTMLProps } from '../../Box'
+import { StyledSystemCompatibleHTMLProps } from '../../Layout/Box'
 
 type TableRowProps = StyledSystemCompatibleHTMLProps<HTMLTableRowElement>
 type ComponentType = FunctionComponent<TableRowProps>
