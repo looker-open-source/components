@@ -1,21 +1,37 @@
-import { rem } from 'polished'
 import { InterpolationValue } from 'styled-components'
-import { SpacingSizes } from './types'
+import {
+  defaultReset,
+  Easings,
+  FontFamilyChoices,
+  FontSizeRamp,
+  FontWeightRamp,
+  LineHeightRamp,
+  Palette,
+  Radii,
+  SemanticColors,
+  Shadows,
+  SpaceRamp,
+  Transitions,
+} from './system'
 
 /**
  * Theme attributes shouldn't be exported as they should be consumed via `theme` rather than via
  * direct import.
  */
-import { fontFamilies, FontFamilyChoices } from './Typography/font_families'
-import { FontWeightRamp, fontWeights } from './Typography/font_weights'
-import { FontSizeRamp, fontSizes } from './Typography/font_sizes'
-import { easings, Easings } from './easings'
-import { lineHeights } from './Typography/line_heights'
-import { palette, Palette } from './palette'
-import { radii, Radii } from './radii'
-import { SemanticColors, semanticColors } from './semantic_colors'
-import { shadows, Shadows } from './elevation'
-import { transitions, Transitions } from './transitions'
+import {
+  breakpoints,
+  easings,
+  fontFamilies,
+  fontSizes,
+  fontWeights,
+  lineHeights,
+  palette,
+  radii,
+  semanticColors,
+  shadows,
+  space,
+  transitions,
+} from './tokens'
 
 export interface Theme {
   breakpoints: string[]
@@ -24,7 +40,7 @@ export interface Theme {
   fontSizes: FontSizeRamp
   fontWeights: FontWeightRamp
   fonts: FontFamilyChoices
-  lineHeights: FontSizeRamp
+  lineHeights: LineHeightRamp
   radii: Radii
   /**
    * A function that can be overridden to return different reset css properties
@@ -32,12 +48,12 @@ export interface Theme {
    */
   reset: () => InterpolationValue
   shadows: Shadows
-  space: Record<SpacingSizes, string>
+  space: SpaceRamp
   transitions: Transitions
 }
 
 export const theme: Theme = {
-  breakpoints: ['30rem', '48rem', '64rem', '75rem', '90rem'],
+  breakpoints,
   colors: { palette, semanticColors },
   easings,
   fontSizes,
@@ -45,31 +61,8 @@ export const theme: Theme = {
   fonts: fontFamilies,
   lineHeights,
   radii,
-  reset: () => {
-    return {
-      border: 0,
-      boxSizing: 'border-box',
-      font: 'inherit',
-      fontSize: '100%',
-      margin: 0,
-      padding: 0,
-      verticalAlign: 'baseline',
-    }
-  },
+  reset: defaultReset,
   shadows,
-  space: {
-    /* eslint-disable sort-keys */
-    none: rem(0),
-    xxsmall: rem(4),
-    xsmall: rem(8),
-    small: rem(12),
-    medium: rem(16),
-    large: rem(20),
-    xlarge: rem(32),
-    xxlarge: rem(40),
-    xxxlarge: rem(60),
-    xxxxlarge: rem(80),
-    /* eslint-enable sort-keys */
-  },
+  space,
   transitions,
 }

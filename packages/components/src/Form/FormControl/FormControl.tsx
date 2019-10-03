@@ -1,13 +1,14 @@
+import * as CSS from 'csstype'
 import React from 'react'
-import {
-  ResponsiveAlignItemsValue,
-  ResponsiveFlexDirectionValue,
-  ResponsiveJustifyContentValue,
-} from '@looker/design-tokens'
-import { BoxProps } from '../../Box'
-import { Flex } from '../../Flex'
+import { ResponsiveValue } from 'styled-system'
+import { BoxProps } from '../../Layout/Box'
+import { Flex } from '../../Layout/Flex'
 
-export type FormControlDirections = 'left' | 'right' | 'top' | 'bottom'
+type ResponsiveAlignItemsValue = ResponsiveValue<CSS.AlignItemsProperty>
+type ResponsiveFlexDirectionValue = ResponsiveValue<CSS.FlexDirectionProperty>
+type ResponsiveJustifyContentValue = ResponsiveValue<CSS.JustifyContentProperty>
+
+type FormControlDirections = 'left' | 'right' | 'top' | 'bottom'
 
 export interface FormControlProps extends Omit<BoxProps<HTMLDivElement>, 'as'> {
   alignLabel?: FormControlDirections

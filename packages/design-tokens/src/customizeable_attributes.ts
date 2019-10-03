@@ -1,10 +1,13 @@
-import {
-  ResponsiveBorderRadiusValue,
-  ResponsiveHeightValue,
-} from './responsive'
-import { FontWeights } from './Typography/font_weights'
-import { FontSizes } from './Typography/font_sizes'
-import { SpacingSizes } from './types'
+import * as CSS from 'csstype'
+import { ResponsiveValue, TLengthStyledSystem } from 'styled-system'
+import { FontSizes, FontWeights, SpacingSizes } from './system'
+
+export type ResponsiveHeightValue = ResponsiveValue<
+  CSS.HeightProperty<TLengthStyledSystem>
+>
+export type ResponsiveBorderRadiusValue = ResponsiveValue<
+  CSS.BorderRadiusProperty<TLengthStyledSystem>
+>
 
 export interface CustomizableAttributes {
   [key: string]: any

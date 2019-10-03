@@ -1,10 +1,4 @@
-export interface Easings {
-  ease: string
-  easeIn: string
-  easeInBack: string
-  easeOut: string
-  easeOutBack: string
-}
+import { Easings } from '../system'
 
 export const easings: Easings = {
   ease: 'cubic-bezier(0.86, 0, 0.07, 1)',

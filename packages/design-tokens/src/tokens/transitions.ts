@@ -1,11 +1,4 @@
-export interface Transitions {
-  durationRapid: string
-  durationQuick: string
-  durationSimple: string
-  durationModerate: string
-  durationComplex: string
-  durationIntricate: string
-}
+import { Transitions } from '../system'
 
 /* eslint-disable sort-keys */
 export const transitions: Transitions = {

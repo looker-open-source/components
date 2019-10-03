@@ -1,7 +1,3 @@
-import { ResponsiveValue, SpaceProps } from 'styled-system'
-import { ThemedStyledProps } from 'styled-components'
-import { Theme } from './theme'
-
 export type SizeNone = 'none'
 export type SizeXXSmall = 'xxsmall'
 export type SizeXSmall = 'xsmall'
@@ -12,8 +8,6 @@ export type SizeXLarge = 'xlarge'
 export type SizeXXLarge = 'xxlarge'
 export type SizeXXXLarge = 'xxxlarge'
 export type SizeXXXXLarge = 'xxxxlarge'
-
-export type ThemedProps<P> = ThemedStyledProps<P, Theme>
 
 export type SpacingSizes =
   | SizeNone
@@ -27,8 +21,6 @@ export type SpacingSizes =
   | SizeXXXLarge
   | SizeXXXXLarge
 
-export type LensSpaceProps = { [P in keyof SpaceProps]: ResponsiveSpacingSize }
+export type SpaceRamp = Record<SpacingSizes, string>
 
-export type ResponsiveSpacingSize = ResponsiveValue<SpacingSizes> | 'auto'
-
-export { SemanticColor, SemanticColors } from './semantic_colors'
+export { SpaceProps } from 'styled-system'

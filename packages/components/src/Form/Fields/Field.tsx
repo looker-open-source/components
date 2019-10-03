@@ -1,6 +1,7 @@
 import { TextAlignProperty } from 'csstype'
 import React, { FunctionComponent } from 'react'
 import styled, { StyledComponent } from 'styled-components'
+import { ResponsiveValue, TLengthStyledSystem } from 'styled-system'
 import {
   FontWeights,
   SpacingSizes,
@@ -9,13 +10,15 @@ import {
   CustomizableAttributes,
 } from '@looker/design-tokens'
 import omit from 'lodash/omit'
-import { FlexItem } from '../../FlexItem'
+import { FlexItem } from '../../Layout/FlexItem'
 import { FormControl, FormControlDirections } from '../FormControl/FormControl'
 import { Label } from '../Label/Label'
 import {
   ValidationMessage,
   ValidationMessageProps,
 } from '../ValidationMessage/ValidationMessage'
+
+type ResponsiveSpaceValue = ResponsiveValue<TLengthStyledSystem>
 
 export interface CustomizableFieldAttributesInterface
   extends CustomizableAttributes {

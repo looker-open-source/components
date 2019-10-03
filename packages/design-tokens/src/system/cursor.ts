@@ -3,8 +3,8 @@ import { css } from 'styled-components'
 
 export interface CursorProps {
   cursor?: CursorProperty
-  disabled?: boolean
-  onClick?: (event: React.SyntheticEvent) => void
+  // disabled?: boolean
+  // onClick?: (event: React.SyntheticEvent) => void
 }
 
 export const cursor = (props: CursorProps) =>
