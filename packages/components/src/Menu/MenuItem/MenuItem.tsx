@@ -2,7 +2,7 @@ import merge from 'lodash/merge'
 import React, { FunctionComponent, Ref } from 'react'
 import styled, { StyledComponent } from 'styled-components'
 import { IconNames } from '@looker/icons'
-import { RampSizes } from '@looker/design-tokens'
+import { FontSizes } from '@looker/design-tokens'
 import { BoxProps } from '../../Box'
 import { Icon } from '../../Icon'
 import { MenuContext, MenuContextProps } from '../MenuContext'
@@ -30,7 +30,7 @@ const assignCustomizations = (
 
   // Need to spread fontSize & iconSize across all states
   const defaults = {
-    fontSize: fontSize || ('small' as RampSizes),
+    fontSize: fontSize || ('small' as FontSizes),
     iconSize: iconSize || 20,
   }
 

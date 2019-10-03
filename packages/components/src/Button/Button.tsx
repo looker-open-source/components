@@ -1,6 +1,6 @@
 import {
   CustomizableAttributes,
-  RampSizes,
+  FontSizes,
   SemanticColor,
   SemanticColors,
   SizeLarge,
@@ -13,10 +13,10 @@ import {
 
 import { IconNames } from '@looker/icons'
 import omit from 'lodash/omit'
-import { rem, rgba } from 'polished'
+import { rem } from 'polished'
 import React, { FunctionComponent, Ref } from 'react'
 import styled, { css, StyledComponent, withTheme } from 'styled-components'
-import { merge } from 'styled-system'
+// import { merge } from 'styled-system'
 import { Box, BoxProps } from '../Box'
 import { Icon } from '../Icon/Icon'
 
@@ -65,23 +65,24 @@ type StyledComponentType = StyledComponent<
   ThemedProps<ButtonProps>
 >
 
-const variantCommonProps = (color: SemanticColor) => {
-  return {
-    '&:focus': {
-      boxShadow: `0 0 0 0.15rem ${rgba(color.main, 0.25)}`,
-    },
-    '&[disabled]': {
-      cursor: 'default',
-      filter: 'grayscale(0.3)',
-      opacity: '0.25',
-    },
-    borderStyle: 'solid',
-    borderWidth: rem(1),
-  }
-}
+// const variantCommonProps = (color: SemanticColor) => {
+//   return {
+//     '&:focus': {
+//       boxShadow: `0 0 0 0.15rem ${rgba(color.main, 0.25)}`,
+//     },
+//     '&[disabled]': {
+//       cursor: 'default',
+//       filter: 'grayscale(0.3)',
+//       opacity: '0.25',
+//     },
+//     borderStyle: 'solid',
+//     borderWidth: rem(1),
+//   }
+// }
 
 const defaultVariant = (color: SemanticColor) => {
-  return merge(variantCommonProps(color), {
+  // return merge(variantCommonProps(color),
+  return {
     '&:active, &.active': {
       background: color.darker,
       borderColor: color.darker,
@@ -99,14 +100,15 @@ const defaultVariant = (color: SemanticColor) => {
     background: color.main,
     borderColor: color.main,
     color: color.text,
-  })
+  }
 }
 
 const outlineVariant = (
   color: SemanticColor,
   props: ThemedProps<ButtonProps>
 ) => {
-  return merge(variantCommonProps(color), {
+  // return merge(variantCommonProps(color),
+  return {
     '&:active, &.active': {
       background: color.main,
       borderColor: color.main,
@@ -127,14 +129,15 @@ const outlineVariant = (
     background: props.theme.colors.palette.white,
     borderColor: color.borderColor,
     color: color.main,
-  })
+  }
 }
 
 const transparentVariant = (
   color: SemanticColor,
   props: ThemedProps<ButtonProps>
 ) => {
-  return merge(variantCommonProps(color), {
+  // return merge(variantCommonProps(color), {
+  return {
     background: props.theme.colors.palette.transparent,
     borderColor: props.theme.colors.palette.transparent,
     color: color.main,
@@ -156,7 +159,7 @@ const transparentVariant = (
         color: color.main,
       },
     },
-  })
+  }
 }
 
 const variantHelper = (props: ThemedProps<ButtonProps>) => {
@@ -183,7 +186,7 @@ function calcLineHeight(size: number) {
 }
 
 function sizeHelper(props: ThemedProps<ButtonProps>) {
-  const sizes: Record<ButtonSizes, [RampSizes, string, ButtonSpacingSizes]> = {
+  const sizes: Record<ButtonSizes, [FontSizes, string, ButtonSpacingSizes]> = {
     large: ['xlarge', calcLineHeight(44), 'large'],
     medium: ['medium', calcLineHeight(36), 'medium'],
     small: ['small', calcLineHeight(28), 'small'],
@@ -251,7 +254,6 @@ const InternalButton: ComponentType = ({
   return (
     <Box
       borderRadius={CustomizableButtonAttributes.borderRadius}
-      fontFamily="brand"
       py={props.p ? undefined : 'none'}
       display="inline-flex"
       alignItems="center"

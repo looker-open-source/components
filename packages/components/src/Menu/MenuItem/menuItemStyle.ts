@@ -1,4 +1,4 @@
-import { FontWeights, palette, RampSizes } from '@looker/design-tokens'
+import { FontWeights, palette, FontSizes } from '@looker/design-tokens'
 import { BoxProps } from '../../Box'
 import { MenuItemStateStyle, MenuItemStyle } from './menuItemStyle'
 
@@ -6,7 +6,7 @@ export interface MenuItemStateStyle {
   bg: string
   color: string
   fontWeight: FontWeights
-  fontSize: RampSizes
+  fontSize: FontSizes
   iconColor: string
   iconSize: number
 }
