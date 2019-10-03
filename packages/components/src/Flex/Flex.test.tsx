@@ -31,7 +31,3 @@ test('Flex supports flexDirection ', () => {
 test('Flex supports flexWrap ', () => {
   assertSnapshot(<Flex flexWrap="nowrap" />)
 })
-
-test('Flex can be hidden ', () => {
-  assertSnapshot(<Flex hidden />)
-})

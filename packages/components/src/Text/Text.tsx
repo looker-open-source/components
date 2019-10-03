@@ -1,78 +1,32 @@
 import { TextDecorationProperty } from 'csstype'
-import omit from 'lodash/omit'
-import React, { FunctionComponent, Ref } from 'react'
-import styled, { css, StyledComponent } from 'styled-components'
+import styled from 'styled-components'
 import {
-  getTextTransform,
-  TextTransforms,
-  textVariant,
-  TextVariants,
-  ThemedProps,
+  typography,
+  space,
+  CompatibleHTMLProps,
+  SpaceProps,
+  TypographyProps,
 } from '@looker/design-tokens'
-import { Box, BoxProps } from '../Box'
-
-export type TextAlignments = 'left' | 'center' | 'right'
-export type TextElements = 'span' | 'p' | 'code'
+import { textVariant, TextVariants } from '../Text/textHelpers'
 
 export interface TextProps
-  extends Omit<BoxProps<HTMLSpanElement>, 'wrap' | 'as'> {
-  /** Base html text element
-   *  @default "span"
-   */
-  as?: TextElements
-  /** Align text */
-  align?: TextAlignments
-  /** Set text decoration property */
-  decoration?: TextDecorationProperty<any>
-  /** Size mapping from type ramp */
-  textTransform?: TextTransforms
+  extends SpaceProps,
+    TypographyProps,
+    Omit<CompatibleHTMLProps<HTMLSpanElement>, 'wrap'> {
+  textDecoration?: TextDecorationProperty
   /** Adjust style of text with more meaning by using an intent */
   variant?: TextVariants
   /** Should browser insert line breaks within words to prevent text from overflowing its content box  */
   wrap?: boolean
 }
 
-type ComponentType = FunctionComponent<TextProps>
-type StyledComponentType = StyledComponent<ComponentType, TextProps>
+export const Text = styled.span<TextProps>`
+  ${typography}
+  ${space}
 
-const InternalText: ComponentType = ({
-  as = 'span',
-  align,
-  lineHeight,
-  fontSize = 'medium',
-  fontWeight,
-  ...props
-}) => {
-  return (
-    <Box
-      as={as}
-      fontSize={fontSize}
-      fontWeight={fontWeight}
-      lineHeight={lineHeight || fontSize}
-      textAlign={align}
-      {...omit(props, ['decoration', 'textTransform', 'variant', 'wrap'])}
-    >
-      {props.children}
-    </Box>
-  )
-}
+  font-size: ${props => props.fontSize || 'medium'};
+  text-decoration: ${props => props.textDecoration};
 
-const TextFactory = React.forwardRef<StyledComponentType, TextProps>(
-  (props: TextProps, ref: Ref<StyledComponentType>) => (
-    <InternalText ref={ref} {...props} />
-  )
-)
-
-const getWrap = (doWrap: boolean) =>
-  doWrap
-    ? css`
-        overflow-wrap: break-word;
-      `
-    : false
-
-export const Text = styled<ComponentType>(TextFactory)`
-  text-decoration: ${(props: ThemedProps<TextProps>) => props.decoration};
-  ${(props: ThemedProps<TextProps>) => getTextTransform(props.textTransform)};
-  ${(props: ThemedProps<TextProps>) => getWrap(props.wrap || false)};
-  ${(props: ThemedProps<TextProps>) => textVariant(props.theme, props.variant)};
+  ${props => props.wrap && 'overflow-wrap: break-word'};
+  ${props => textVariant(props.theme, props.variant)};
 `

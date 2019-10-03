@@ -1,24 +1,19 @@
-import React, { FunctionComponent, Ref } from 'react'
-import styled, { StyledComponent } from 'styled-components'
-import { theme } from '@looker/design-tokens'
-import { Text, TextProps } from '../Text/Text'
+import styled from 'styled-components'
+import {
+  typography,
+  space,
+  CompatibleHTMLProps,
+  SpaceProps,
+  TypographyProps,
+} from '@looker/design-tokens'
 
-type ComponentType = FunctionComponent<TextProps>
-type StyledComponentType = StyledComponent<ComponentType, TextProps>
-
-const InternalCode: ComponentType = props => {
-  return (
-    <Text as="code" fontFamily={theme.fonts.code} {...props}>
-      {props.children}
-    </Text>
-  )
-}
-
-const CodeFactory = React.forwardRef<StyledComponentType, TextProps>(
-  (props: TextProps, ref: Ref<StyledComponentType>) => (
-    <InternalCode ref={ref} {...props} />
-  )
-)
+export interface CodeProps
+  extends SpaceProps,
+    TypographyProps,
+    CompatibleHTMLProps<HTMLElement> {}
 
 /** @component */
-export const Code = styled<ComponentType>(CodeFactory)``
+export const Code = styled.code<CodeProps>`
+  ${typography}
+  ${space}
+`
