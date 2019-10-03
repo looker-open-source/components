@@ -31,12 +31,4 @@ export type LensSpaceProps = { [P in keyof SpaceProps]: ResponsiveSpacingSize }
 
 export type ResponsiveSpacingSize = ResponsiveValue<SpacingSizes> | 'auto'
 
-export {
-  LensFontSizeProps,
-  FontRamp,
-  RampSizes,
-  ResponsiveFontSize,
-} from './font_sizes'
-export { LensFontWeightProps, FontWeights } from './font_weights'
-export { LensLineHeightProps } from './line_heights'
 export { SemanticColor, SemanticColors } from './semantic_colors'

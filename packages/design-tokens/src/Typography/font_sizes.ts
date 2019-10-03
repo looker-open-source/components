@@ -1,5 +1,5 @@
 import { rem } from 'polished'
-import { FontSizeProps, ResponsiveValue } from 'styled-system'
+import { ResponsiveValue } from 'styled-system'
 import {
   SizeLarge,
   SizeMedium,
@@ -10,9 +10,9 @@ import {
   SizeXXSmall,
   SizeXXXLarge,
   SizeXXXXLarge,
-} from './types'
+} from '../types'
 
-export type RampSizes =
+export type FontSizes =
   | SizeXXSmall
   | SizeXSmall
   | SizeSmall
@@ -23,10 +23,10 @@ export type RampSizes =
   | SizeXXXLarge
   | SizeXXXXLarge
 
-export type FontRamp = Record<RampSizes, string>
+export type FontSizeRamp = Record<FontSizes, string>
 
 /* eslint-disable sort-keys */
-export const fontSizes: FontRamp = {
+export const fontSizes: FontSizeRamp = {
   xxxxlarge: rem(46),
   xxxlarge: rem(36),
   xxlarge: rem(25),
@@ -38,7 +38,10 @@ export const fontSizes: FontRamp = {
   xxsmall: rem(11),
 }
 /* eslint-enable sort-keys */
-export type ResponsiveFontSize = ResponsiveValue<RampSizes>
-export type LensFontSizeProps = {
-  [P in keyof FontSizeProps]: ResponsiveFontSize
+
+export interface FontSizeProps {
+  /**
+   * Use a @looker/components FontSizes to set font size
+   */
+  fontSize?: ResponsiveValue<FontSizes>
 }

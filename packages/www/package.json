@@ -31,7 +31,7 @@
     "react-transition-group": "4.2.2",
     "scroll-behavior": "^0.9.10",
     "styled-components": "^4.3.2",
-    "styled-system": "3.2.1"
+    "styled-system": "5.1.2"
   },
   "scripts": {
     "build": "gatsby build",

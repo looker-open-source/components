@@ -1,4 +1,4 @@
-import { FontWeightProps } from 'styled-system'
+import { ResponsiveValue } from 'styled-system'
 
 export type Bold = 'bold'
 export type ExtraBold = 'extraBold'
@@ -18,4 +18,10 @@ export const fontWeights: FontWeightRamp = {
   semiBold: 600,
 }
 
-export type LensFontWeightProps = { [P in keyof FontWeightProps]: FontWeights }
+export interface FontWeightProps {
+  /**
+   * Use a @looker/components FontWeights to set weight
+   *  light, normal, semiBold, bold, extrabold,
+   */
+  fontWeight?: ResponsiveValue<FontWeights>
+}

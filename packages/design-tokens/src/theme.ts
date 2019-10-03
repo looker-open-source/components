@@ -6,11 +6,11 @@ import { SpacingSizes } from './types'
  * Theme attributes shouldn't be exported as they should be consumed via `theme` rather than via
  * direct import.
  */
-import { fontFaces, FontFaces } from './font_faces'
-import { FontWeightRamp, fontWeights } from './font_weights'
-import { FontRamp, fontSizes } from './font_sizes'
+import { fontFamilies, FontFamilyChoices } from './Typography/font_families'
+import { FontWeightRamp, fontWeights } from './Typography/font_weights'
+import { FontSizeRamp, fontSizes } from './Typography/font_sizes'
 import { easings, Easings } from './easings'
-import { lineHeights } from './line_heights'
+import { lineHeights } from './Typography/line_heights'
 import { palette, Palette } from './palette'
 import { radii, Radii } from './radii'
 import { SemanticColors, semanticColors } from './semantic_colors'
@@ -21,10 +21,10 @@ export interface Theme {
   breakpoints: string[]
   colors: { palette: Palette; semanticColors: SemanticColors }
   easings: Easings
-  fontSizes: FontRamp
+  fontSizes: FontSizeRamp
   fontWeights: FontWeightRamp
-  fonts: FontFaces
-  lineHeights: FontRamp
+  fonts: FontFamilyChoices
+  lineHeights: FontSizeRamp
   radii: Radii
   /**
    * A function that can be overridden to return different reset css properties
@@ -42,7 +42,7 @@ export const theme: Theme = {
   easings,
   fontSizes,
   fontWeights,
-  fonts: fontFaces,
+  fonts: fontFamilies,
   lineHeights,
   radii,
   reset: () => {
