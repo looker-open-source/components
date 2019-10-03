@@ -1,15 +1,18 @@
+import { palette, CompatibleHTMLProps } from '@looker/design-tokens'
 import omit from 'lodash/omit'
-import React, { FunctionComponent, Ref } from 'react'
-import styled, { StyledComponent } from 'styled-components'
-import { palette } from '@looker/design-tokens'
-import { Box, BoxProps } from '../Box'
+import React from 'react'
+import styled from 'styled-components'
+import { SpaceProps } from 'styled-system'
+import { Box } from '../Box'
 import { Flex } from '../Flex'
 import { Icon } from '../Icon'
 import { Text } from '../Text'
 
 export type BannerIntent = 'warning' | 'info' | 'error' | 'confirmation'
 
-export interface BannerProps extends Omit<BoxProps<HTMLDivElement>, 'as'> {
+export interface BannerProps
+  extends CompatibleHTMLProps<HTMLElement>,
+    SpaceProps {
   intent: BannerIntent
   dismissable?: boolean
   onDismiss?: () => void
@@ -20,9 +23,6 @@ interface BannerTypeStyling {
   accessibilityLabel?: string
   icon?: JSX.Element
 }
-
-type ComponentType = FunctionComponent<BannerProps>
-type StyledComponentType = StyledComponent<ComponentType, BannerProps>
 
 const getBannerIntentStyling = (intent: BannerIntent) => {
   const bannerTypeStyling: BannerTypeStyling = {}
@@ -60,9 +60,11 @@ const getBannerIntentStyling = (intent: BannerIntent) => {
 
 const CloseBannerIcon = styled(Icon)`
   opacity: 0.2;
-  transition: opacity ${props => props.theme.transitions.durationRapid}
-    ${props => props.theme.easings.ease};
+  transition: opacity
+    ${props =>
+      `${props.theme.transitions.durationRapid} ${props.theme.easings.ease}`};
   vertical-align: middle;
+
   :hover {
     opacity: 0.4;
   }
@@ -79,54 +81,54 @@ const VisuallyHiddenText = styled(Text)`
   width: 1px;
 `
 
-const InternalBanner: ComponentType = ({
-  children,
-  dismissable,
-  intent,
-  onDismiss,
-  ...boxProps
-}) => {
-  const {
-    icon,
-    accessibilityLabel,
-    ...bannerIntentStyling
-  } = getBannerIntentStyling(intent)
+export const Banner = React.forwardRef(
+  (props: BannerProps, ref: React.Ref<HTMLDivElement>) => {
+    const { children, dismissable, intent, onDismiss, ...spaceProps } = omit(
+      props,
+      'as',
+      'ref'
+    )
+    const {
+      icon,
+      accessibilityLabel,
+      ...bannerIntentStyling
+    } = getBannerIntentStyling(intent)
 
-  return (
-    <Flex
-      {...bannerIntentStyling}
-      borderRadius="medium"
-      m="small"
-      py="xsmall"
-      px="small"
-      alignItems="center"
-      aria-live="polite"
-      role="status"
-      {...omit(boxProps, ['ref'])}
-    >
-      {icon}
-      <VisuallyHiddenText>{accessibilityLabel}</VisuallyHiddenText>
-      <Box>{children}</Box>
-      {dismissable && (
-        <Box
-          as="button"
-          ml="auto"
-          bg="transparent"
-          onClick={onDismiss}
-          aria-hidden
-        >
-          <CloseBannerIcon name="Close" size={24} color={palette.charcoal900} />
-        </Box>
-      )}
-    </Flex>
-  )
-}
-
-const BannerFactory = React.forwardRef<StyledComponentType, BannerProps>(
-  (props: BannerProps, ref: Ref<StyledComponentType>) => (
-    <InternalBanner ref={ref} {...props} />
-  )
+    return (
+      <Flex
+        ref={ref}
+        {...bannerIntentStyling}
+        borderRadius="medium"
+        m="small"
+        py="xsmall"
+        px="small"
+        alignItems="center"
+        aria-live="polite"
+        role="status"
+        {...spaceProps}
+      >
+        {icon}
+        <VisuallyHiddenText>{accessibilityLabel}</VisuallyHiddenText>
+        <div>{children}</div>
+        {dismissable && (
+          <Box
+            as="button"
+            ml="auto"
+            bg="transparent"
+            onClick={onDismiss}
+            aria-hidden
+          >
+            <CloseBannerIcon
+              name="Close"
+              size={24}
+              color={palette.charcoal900}
+            />
+          </Box>
+        )}
+      </Flex>
+    )
+  }
 )
 
-/** @component */
-export const Banner = styled<ComponentType>(BannerFactory)``
+// /** @component */
+// export const Banner = styled(BannerFactory)<BannerProps>``
