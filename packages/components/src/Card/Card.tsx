@@ -1,56 +1,50 @@
-import omit from 'lodash/omit'
-import React, { FunctionComponent, Ref } from 'react'
-import styled, { StyledComponent, withTheme } from 'styled-components'
-import { ThemedProps } from '@looker/design-tokens'
-import { Box, BoxProps } from '../Layout/Box'
+import {
+  CompatibleHTMLProps,
+  position,
+  PositionProps,
+  reset,
+  space,
+  SpaceProps,
+} from '@looker/design-tokens'
+import styled, { css } from 'styled-components'
 
-export interface CardProps extends Omit<BoxProps<HTMLDivElement>, 'as'> {
+export interface CardProps
+  extends CompatibleHTMLProps<HTMLDivElement>,
+    PositionProps,
+    SpaceProps {
+  /**
+   * Show card with a BoxShadow applied
+   * @default true
+   */
   raised?: boolean
 }
 
-export type CardComponentType = FunctionComponent<ThemedProps<CardProps>>
-export type StyledCardComponentType = StyledComponent<
-  CardComponentType,
-  CardProps
->
+const cardTransition = () => css`
+  ${props =>
+    `${props.theme.transitions.durationQuick} ${props.theme.easings.ease}`}
+`
 
-const InternalCard: CardComponentType = (props: ThemedProps<CardProps>) => (
-  <Box
-    bg="palette.white"
-    borderRadius={props.theme.radii.medium}
-    border={`solid 1px ${props.theme.colors.semanticColors.primary.borderColor}`}
-    display="flex"
-    flexDirection="column"
-    height="100%"
-    min-width="200px"
-    overflow="hidden"
-    {...omit(props, ['raised'])}
-  >
-    {props.children}
-  </Box>
-)
+export const Card = styled.div<CardProps>`
+  ${reset}
+  ${position}
+  ${space}
 
-const InternalCardThemed = withTheme(InternalCard)
-
-const CardFactory = React.forwardRef<StyledCardComponentType, CardProps>(
-  (props: CardProps, ref: Ref<StyledCardComponentType>) => (
-    <InternalCardThemed ref={ref} {...props} />
-  )
-)
-
-// prettier-ignore
-export const Card: StyledCardComponentType = styled<CardComponentType>(
-  CardFactory
-)`
+  background: ${props => props.theme.colors.palette.white};
+  border: solid 1px ${props =>
+    props.theme.colors.semanticColors.primary.borderColor};
+  border-radius: ${props => props.theme.radii.medium};
   box-shadow: ${props => (props.raised ? props.theme.shadows[1] : 'none')};
-  transition: border
-    ${props => props.theme.transitions.durationQuick}
-    ${props => props.theme.easings.ease},
-    box-shadow
-    ${props => props.theme.transitions.durationQuick}
-    ${props => props.theme.easings.ease};
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: 200px;
+  overflow: hidden;
+  transition: border ${cardTransition}, box-shadow ${cardTransition};
+
   &:hover {
     border-color: ${props => props.theme.colors.palette.charcoal300};
     box-shadow: ${props => (props.raised ? props.theme.shadows[2] : 'none')};
   }
 `
+
+Card.defaultProps = { raised: true }
