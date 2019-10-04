@@ -1,33 +1,7 @@
 import { css, createGlobalStyle } from 'styled-components'
 
-/*
- * @TODO - Explore local loading of font files.
- *
-
-import openSansSemi from '../fonts/open-sans-600.woff2'
-import openSansRegular from '../fonts/open-sans-regular.woff2'
-
-const fontFaces = css`
-  @font-face {
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 400;
-    src: local('Open Sans Regular'), local('OpenSans-Regular'),
-      url(${openSansRegular}) format('woff');
-  }
-
-  @font-face {
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 600;
-    src: local('Open Sans SemiBold'), local('OpenSans-SemiBold'),
-      url(${openSansSemi}) format('woff');
-  }
-`
-*/
-
 const fonts = css`
-  @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap');
+  @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Source+Code+Pro&display=swap');
 
   body,
   button,
