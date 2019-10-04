@@ -11,6 +11,9 @@ export type BannerIntent = 'warning' | 'info' | 'error' | 'confirmation'
 export interface BannerProps
   extends CompatibleHTMLProps<HTMLElement>,
     SpaceProps {
+  /**
+   * @default: 'info'
+   */
   intent?: BannerIntent
   dismissable?: boolean
   onDismiss?: () => void
@@ -48,7 +51,6 @@ const getBannerIntentStyling = (intent: BannerIntent) => {
       break
     case 'confirmation':
       bannerTypeStyling.bg = 'palette.green100'
-      bannerTypeStyling.accessibilityLabel = ''
       break
     default:
       break
@@ -101,3 +103,5 @@ export const Banner = React.forwardRef(
     )
   }
 )
+
+Banner.defaultProps = { intent: 'info' }
