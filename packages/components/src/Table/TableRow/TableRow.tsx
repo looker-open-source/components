@@ -1,10 +1,20 @@
-import React, { FunctionComponent } from 'react'
+import {
+  reset,
+  CompatibleHTMLProps,
+  border,
+  BorderProps,
+  typography,
+  TypographyProps,
+} from '@looker/design-tokens'
 import styled from 'styled-components'
-import { StyledSystemCompatibleHTMLProps } from '../../Layout/Box'
 
-type TableRowProps = StyledSystemCompatibleHTMLProps<HTMLTableRowElement>
-type ComponentType = FunctionComponent<TableRowProps>
+export interface TableRowProps
+  extends BorderProps,
+    TypographyProps,
+    CompatibleHTMLProps<HTMLTableRowElement> {}
 
-const InternalTableRow: ComponentType = props => <tr {...props} />
-
-export const TableRow = styled<ComponentType>(InternalTableRow)``
+export const TableRow = styled.tr<TableRowProps>`
+  ${reset}
+  ${border}
+  ${typography}
+`
