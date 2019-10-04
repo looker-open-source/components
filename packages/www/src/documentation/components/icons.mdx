@@ -4,13 +4,22 @@ route: /icons
 menu: Icons
 ---
 
+import { ComponentDetail } from '../../components'
+
 import { Playground } from 'docz'
-import { Icon } from '@looker/components'
+import { Icon, FlexItem, Box } from '@looker/components'
 import { IconList } from '../../components'
 
-# Icons
+# Icon
 
-To use an Icon you pass the `name` of the icon to the name property on the `<Icon />` component
+<ComponentDetail
+  of="Icon"
+  status="stable"
+  figma="file/Dirjx0RKbOOrLacqHq61By/Button-%26-Links?node-id=914%3A981&viewport=1741%2C951%2C1"
+  feedbackTitle="Icon component"
+/>
+
+To use an Icon you pass the `name` of the icon to the name property on the `<Icon />` component.
 
 <Playground>
   <Icon name="Check" size={24} />
@@ -18,7 +27,43 @@ To use an Icon you pass the `name` of the icon to the name property on the `<Ico
   <Icon name="GearOutline" size={32} color="palette.charcoal500" />
 </Playground>
 
-## All Icons
+<Playground>
+  <Icon name="Trash" />
+</Playground>
+
+By default, icons inherit the text color of the component they are embedded
+within and can be sized using the `size` property:
+
+<Playground>
+  <Box
+    color="palette.red300"
+    bg="palette.charcoal800"
+    p="large"
+    display="flex"
+    borderRadius="medium"
+  >
+    <Icon name="Trash" size="32px" mx="auto" />
+    The text in this Box is red and so is the icon.
+  </Box>
+</Playground>
+
+Alternatively, Icon can have its own color property, when it's appropriate to
+break the relationship between a container's text color and the icon color:
+
+<Playground>
+  <Box
+    color="palette.red300"
+    bg="palette.charcoal800"
+    p="large"
+    display="flex"
+    borderRadius="medium"
+  >
+    <Icon color="palette.purple300" name="Trash" size="32px" mx="auto" />
+    The text in this Box is red, but the Icon is purple.
+  </Box>
+</Playground>
+
+## Icon Library
 
 **Tip:** you can click an icon below to copy it to your clipboard.
 
