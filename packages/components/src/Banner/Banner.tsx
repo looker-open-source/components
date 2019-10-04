@@ -1,19 +1,17 @@
-import { palette, CompatibleHTMLProps } from '@looker/design-tokens'
-import omit from 'lodash/omit'
+import { CompatibleHTMLProps, SpaceProps } from '@looker/design-tokens'
 import React from 'react'
-import styled from 'styled-components'
-import { SpaceProps } from 'styled-system'
-import { Box } from '../Layout/Box'
-import { Flex } from '../Layout/Flex'
+// import styled from 'styled-components'
+import { IconButton } from '../Button'
 import { Icon } from '../Icon'
-import { Text } from '../Text'
+import { Flex } from '../Layout/Flex'
+import { VisuallyHidden } from '../VisuallyHidden'
 
 export type BannerIntent = 'warning' | 'info' | 'error' | 'confirmation'
 
 export interface BannerProps
   extends CompatibleHTMLProps<HTMLElement>,
     SpaceProps {
-  intent: BannerIntent
+  intent?: BannerIntent
   dismissable?: boolean
   onDismiss?: () => void
 }
@@ -58,36 +56,15 @@ const getBannerIntentStyling = (intent: BannerIntent) => {
   return bannerTypeStyling
 }
 
-const CloseBannerIcon = styled(Icon)`
-  opacity: 0.2;
-  transition: opacity
-    ${props =>
-      `${props.theme.transitions.durationRapid} ${props.theme.easings.ease}`};
-  vertical-align: middle;
-
-  :hover {
-    opacity: 0.4;
-  }
-`
-
-const VisuallyHiddenText = styled(Text)`
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-`
-
 export const Banner = React.forwardRef(
   (props: BannerProps, ref: React.Ref<HTMLDivElement>) => {
-    const { children, dismissable, intent, onDismiss, ...spaceProps } = omit(
-      props,
-      'as',
-      'ref'
-    )
+    const {
+      children,
+      dismissable,
+      intent = 'info',
+      onDismiss,
+      ...spaceProps
+    } = props
     const {
       icon,
       accessibilityLabel,
@@ -108,27 +85,19 @@ export const Banner = React.forwardRef(
         {...spaceProps}
       >
         {icon}
-        <VisuallyHiddenText>{accessibilityLabel}</VisuallyHiddenText>
+        <VisuallyHidden>{accessibilityLabel}</VisuallyHidden>
         <div>{children}</div>
         {dismissable && (
-          <Box
-            as="button"
+          <IconButton
             ml="auto"
-            bg="transparent"
             onClick={onDismiss}
+            icon="Close"
+            label="Dismiss"
             aria-hidden
-          >
-            <CloseBannerIcon
-              name="Close"
-              size={24}
-              color={palette.charcoal900}
-            />
-          </Box>
+            color="neutral"
+          />
         )}
       </Flex>
     )
   }
 )
-
-// /** @component */
-// export const Banner = styled(BannerFactory)<BannerProps>``

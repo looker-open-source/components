@@ -1,19 +1,21 @@
-import { IconNames } from '@looker/icons'
-import React, { FunctionComponent, Ref } from 'react'
-import styled, { StyledComponent } from 'styled-components'
+import styled from 'styled-components'
 import {
+  CompatibleHTMLProps,
+  reset,
+  SpaceProps,
+  space,
   SizeLarge,
   SizeMedium,
   SizeSmall,
   SizeXSmall,
   SizeXXSmall,
-  SemanticColor,
-  SemanticColors,
 } from '@looker/design-tokens'
-import { BoxProps } from '../Layout/Box'
-import { Button } from '../Button'
+import { IconNames } from '@looker/icons'
+import React, { forwardRef, Ref } from 'react'
 import { Icon } from '../Icon'
 import { VisuallyHidden } from '../VisuallyHidden'
+import { buttonCSS } from './Button'
+import { IconButtonVariantProps, iconButtonVariant } from './variant'
 
 export type IconButtonSizes =
   | SizeXXSmall
@@ -23,12 +25,11 @@ export type IconButtonSizes =
   | SizeLarge
 
 export interface IconButtonProps
-  extends Omit<BoxProps<HTMLButtonElement>, 'type' | 'color' | 'as'> {
-  /**
-   *  Determines if the icon button has a border
-   *  @default false
-   */
-  outline?: boolean
+  extends Omit<CompatibleHTMLProps<HTMLButtonElement>, 'children' | 'type'>,
+    IconButtonVariantProps,
+    SpaceProps {
+  type?: 'button' | 'submit' | 'reset'
+
   /**
    * The Icon to display inside of the button
    */
@@ -42,16 +43,9 @@ export interface IconButtonProps
    * @default 'xsmall'
    */
   size?: IconButtonSizes
-  /**
-   * Defines the color of the button. Can be the string name of a color listed in the color theme, or a color object.
-   */
-  color?: keyof SemanticColors | SemanticColor
 }
 
-type ComponentType = FunctionComponent<IconButtonProps>
-type StyledComponentType = StyledComponent<ComponentType, IconButtonProps>
-
-function iconSizeHelper(size: IconButtonSizes) {
+const iconSizeHelper = (size: IconButtonSizes) => {
   switch (size) {
     case 'xxsmall':
       return 12
@@ -61,42 +55,36 @@ function iconSizeHelper(size: IconButtonSizes) {
       return 20
     case 'medium':
       return 28
+    case 'large':
     default:
       return 36
   }
 }
 
-const InternalIconButton: ComponentType = ({
-  outline,
-  icon,
-  size,
-  label,
-  color,
-  ...boxProps
-}) => (
-  <Button
-    color={color || 'neutral'}
-    type="button"
-    variant={outline ? 'outline' : 'transparent'}
-    p="none"
-    style={{ padding: '3px' }}
-    {...boxProps}
-  >
-    <VisuallyHidden as="span">{label}</VisuallyHidden>
-    <Icon
-      name={icon}
-      size={iconSizeHelper(size || 'xsmall')}
-      aria-hidden={true}
-    />
-  </Button>
+const IconButtonComponent = forwardRef(
+  (props: IconButtonProps, ref: Ref<HTMLButtonElement>) => {
+    const { icon, size, label } = props
+    return (
+      <IconButtonBase ref={ref} color="neutral" p="none" {...props}>
+        <VisuallyHidden>{label}</VisuallyHidden>
+        <Icon
+          name={icon}
+          size={iconSizeHelper(size || 'xsmall')}
+          aria-hidden={true}
+        />
+      </IconButtonBase>
+    )
+  }
 )
 
-const IconButtonFactory = React.forwardRef<
-  StyledComponentType,
-  IconButtonProps
->((props: IconButtonProps, ref: Ref<StyledComponentType>) => (
-  <InternalIconButton ref={ref} {...props} />
-))
+const IconButtonBase = styled.button<IconButtonProps>`
+  ${reset}
+  ${space}
 
-/** @component */
-export const IconButton = styled<ComponentType>(IconButtonFactory)``
+  ${buttonCSS}
+  padding: 3px;
+
+  ${iconButtonVariant}
+`
+
+export const IconButton = styled(IconButtonComponent)``

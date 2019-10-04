@@ -1,17 +1,6 @@
-import { FunctionComponent } from 'react'
-import styled, { StyledComponent } from 'styled-components'
-import { Box, BoxProps } from '../Layout/Box'
+import styled from 'styled-components'
 
-type VisuallyHiddenComponentType = FunctionComponent<BoxProps<HTMLElement>>
-type StyledVisuallyHiddenComponentType = StyledComponent<
-  VisuallyHiddenComponentType,
-  BoxProps<HTMLElement>
->
-
-/** @component */
-export const VisuallyHidden: StyledVisuallyHiddenComponentType = styled<
-  StyledVisuallyHiddenComponentType
->(Box)`
+export const VisuallyHidden = styled.div`
   position: absolute;
   height: 1px;
   width: 1px;
