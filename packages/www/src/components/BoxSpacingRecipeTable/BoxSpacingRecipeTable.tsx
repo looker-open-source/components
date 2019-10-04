@@ -42,7 +42,7 @@ const SpaceListHeader = (text: string, defaultLabel?: string) => {
       <Text
         fontSize="medium"
         variant="secondary"
-        textTransform="upper"
+        textTransform="uppercase"
         fontWeight="semiBold"
       >
         {text}

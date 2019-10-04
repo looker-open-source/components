@@ -147,7 +147,7 @@ const InternalMenuItem: ComponentType = props => {
       {...boxProps}
     >
       <MenuItemButton
-        is={itemRole === 'link' ? 'a' : 'button'}
+        as={itemRole === 'link' ? 'a' : 'button'}
         role="menuitem"
         href={href}
         target={target}
