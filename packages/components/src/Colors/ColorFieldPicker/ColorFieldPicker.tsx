@@ -13,7 +13,7 @@ import {
   InputTextProps,
   withForm,
 } from '../../Form'
-import { RichTooltip, RichTooltipContent } from '../../Tooltip'
+import { Popover } from '../../Popover'
 import {
   HueSaturation,
   polarbrightness2hsv,
@@ -100,28 +100,23 @@ class InternalColorFieldPicker extends React.Component<
     const inputTextBorderRadius = `0 ${borderRadius} ${borderRadius} 0`
 
     const content = (
-      <RichTooltipContent>
-        <Flex flexDirection="column">
-          <ColorWheel
-            size={cwSize}
-            hue={hsvColor.h}
-            saturation={hsvColor.s}
-            value={hsvColor.v}
-            onColorChange={this.proxyHandleColorStateChange.bind(
-              this,
-              hsvColor
-            )}
-          />
-          <LuminositySlider
-            min={0}
-            max={100}
-            step={1}
-            value={hsvColor.v * 100}
-            width={cwSize}
-            onChange={this.proxyHandleSliderChange.bind(this, hsvColor)}
-          />
-        </Flex>
-      </RichTooltipContent>
+      <Flex flexDirection="column">
+        <ColorWheel
+          size={cwSize}
+          hue={hsvColor.h}
+          saturation={hsvColor.s}
+          value={hsvColor.v}
+          onColorChange={this.proxyHandleColorStateChange.bind(this, hsvColor)}
+        />
+        <LuminositySlider
+          min={0}
+          max={100}
+          step={1}
+          value={hsvColor.v * 100}
+          width={cwSize}
+          onChange={this.proxyHandleSliderChange.bind(this, hsvColor)}
+        />
+      </Flex>
     )
 
     return (
@@ -131,8 +126,8 @@ class InternalColorFieldPicker extends React.Component<
       >
         <FormControl alignLabel="left">
           <FlexItem mt="auto">
-            <RichTooltip content={content}>
-              {(eventHandlers, ref) => (
+            <Popover content={content}>
+              {(onClick, ref) => (
                 <Swatch
                   ref={ref}
                   color={ColorFormatUtils.hsv2hex(hsvColor)}
@@ -140,10 +135,10 @@ class InternalColorFieldPicker extends React.Component<
                   borderRight={0}
                   width="33px"
                   height="28px"
-                  {...eventHandlers}
+                  onClick={onClick}
                 />
               )}
-            </RichTooltip>
+            </Popover>
           </FlexItem>
           <FlexItem>
             <InputText

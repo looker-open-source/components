@@ -35,6 +35,6 @@ test('ColorFieldPicker with a validation message', () => {
   )
 })
 
-test('ColorFieldPicker renders a color picker in a RichTooltip', () => {
+test('ColorFieldPicker renders a color picker in a Popover', () => {
   assertSnapshotShallow(<ColorFieldPicker open />)
 })
