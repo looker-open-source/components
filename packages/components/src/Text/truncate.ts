@@ -7,15 +7,17 @@ export interface TruncateProps {
   truncateLines?: number
 }
 
-const textTruncate = (lines?: number) => {
-  if (lines && lines > 1) {
+const textTruncate = (props: TruncateProps) => {
+  const { truncateLines } = props
+
+  if (truncateLines && truncateLines > 1) {
     // Despite the vendor prefixes below, this works in all mondern browsers (not IE11)
     return css`
       overflow: hidden;
       /* stylelint-disable value-no-vendor-prefix, property-no-vendor-prefix */
       display: -webkit-box;
       -webkit-box-orient: vertical;
-      -webkit-line-clamp: ${lines};
+      -webkit-line-clamp: ${truncateLines};
       /* stylelint-enable */
     `
   }
@@ -26,12 +28,7 @@ const textTruncate = (lines?: number) => {
   `
 }
 
-const shouldTruncate = (truncate?: boolean, truncateLines?: number) => {
-  return truncate || truncateLines ? textTruncate(truncateLines) : ''
-}
-
-export const truncate = () =>
+export const truncate = (props: TruncateProps) =>
   css`
-    ${(props: TruncateProps) =>
-      shouldTruncate(props.truncate, props.truncateLines)}
+    ${props.truncate || props.truncateLines ? textTruncate : null}
   `

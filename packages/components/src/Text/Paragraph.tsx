@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import {
+  reset,
   layout,
   space,
   typography,
@@ -11,14 +12,15 @@ import {
 import { TruncateProps, truncate } from '../Text/truncate'
 
 export interface ParagraphProps
-  extends TruncateProps,
+  extends TypographyProps,
     SpaceProps,
     LayoutProps,
-    TypographyProps,
+    TruncateProps,
     CompatibleHTMLProps<HTMLParagraphElement> {}
 
 /** @component */
-export const Paragraph = styled.h1<ParagraphProps>`
+export const Paragraph = styled.p<ParagraphProps>`
+  ${reset}
   ${typography}
   ${space}
   ${layout}

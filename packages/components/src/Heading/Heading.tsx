@@ -5,12 +5,25 @@ import {
   FontSizes,
   SpaceProps,
   TypographyProps,
+  reset,
 } from '@looker/design-tokens'
 
-import { textVariant, TextVariants } from '../Text/textHelpers'
+import { textVariant, TextVariantProps } from '../Text/text_variant'
 import { TruncateProps, truncate } from '../Text/truncate'
 
 type HeadingLevels = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+
+export interface HeadingProps
+  extends TruncateProps,
+    SpaceProps,
+    TypographyProps,
+    TextVariantProps,
+    CompatibleHTMLProps<HTMLHeadingElement> {
+  /** Heading level from h1-h6
+   * @default: 'h2'
+   */
+  as?: HeadingLevels
+}
 
 const headingLevelSize = (as?: HeadingLevels) => {
   switch (as) {
@@ -55,26 +68,17 @@ const headingLineHeight = (
   }
 }
 
-export interface HeadingProps
-  extends TruncateProps,
-    SpaceProps,
-    TypographyProps,
-    CompatibleHTMLProps<HTMLHeadingElement> {
-  /** Heading level from h1-h6 */
-  as?: HeadingLevels
-  /** Adjust style of text with more meaning by using an intent */
-  variant?: TextVariants
-}
-
-export const Heading = styled.h1<HeadingProps>`
+export const Heading = styled.h2<HeadingProps>`
+  ${reset}
   ${typography}
   ${space}
+
   ${truncate}
+  ${textVariant};
 
   font-size: ${props => props.fontSize || headingLevelSize(props.as)};
-  font-weight: ${props => props.fontWeight || 'normal'};
   line-height: ${props =>
     props.lineHeight || headingLineHeight(props.as, props.fontSize)};
-
-  ${props => textVariant(props.theme, props.variant)};
 `
+
+Heading.defaultProps = { as: 'h2', fontWeight: 'normal' }

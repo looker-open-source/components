@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import {
+  reset,
   typography,
   space,
   CompatibleHTMLProps,
@@ -14,6 +15,7 @@ export interface CodeProps
 
 /** @component */
 export const Code = styled.code<CodeProps>`
+  ${reset}
   ${typography}
   ${space}
 `

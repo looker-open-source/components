@@ -42,7 +42,7 @@ export const snapshotTestTextComponentTransform = (
   Component: React.FC<TextProps> | React.ComponentClass
 ) => {
   const component = createWithTheme(
-    <Component textTransform="upper">Hello</Component>
+    <Component textTransform="uppercase">Hello</Component>
   )
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()

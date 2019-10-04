@@ -20,6 +20,8 @@ export type CompatibleHTMLProps<T> = Omit<
   'as' | 'color' | 'height' | 'ref' | 'size' | 'width'
 >
 
+export { userSelect, UserSelectProps } from './userSelect'
+
 export { Easings } from './easings'
 export { Radii } from './radii'
 export { Shadows } from './shadows'

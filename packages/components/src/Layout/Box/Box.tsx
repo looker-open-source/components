@@ -7,6 +7,8 @@ import {
   PsuedoProps,
   flexbox,
   FlexboxProps,
+  userSelect,
+  UserSelectProps,
 } from '@looker/design-tokens'
 import { layoutCSS, LayoutComponentProps } from '../layout'
 
@@ -15,11 +17,13 @@ export interface BoxProps
     LayoutComponentProps,
     FlexboxProps,
     AnimationProps,
-    PsuedoProps {}
+    PsuedoProps,
+    UserSelectProps {}
 
 export const Box = styled.div<BoxProps>`
   ${layoutCSS}
   ${flexbox}
   ${animation}
   ${psuedoClasses}
+  ${userSelect}
 `

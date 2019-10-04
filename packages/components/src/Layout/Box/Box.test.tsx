@@ -76,7 +76,7 @@ describe('Box', () => {
 
   describe('fonts', () => {
     test('font helpers', () => {
-      assertSnapshot(<Box fontFamily="system-ui" />)
+      assertSnapshot(<Box fontFamily="brand" />)
       assertSnapshot(<Box fontSize="small" />)
       assertSnapshot(<Box fontWeight="bold" />)
       assertSnapshot(<Box letterSpacing="10" />)
@@ -107,7 +107,7 @@ describe('Box', () => {
     })
   })
 
-  describe('is=', () => {
+  describe('as=', () => {
     test('allows Box to render as any HTML tag', () => {
       const boxAsButton = mountWithTheme(<Box as="button" />)
       expect(boxAsButton.find('button').exists()).toBeTruthy()

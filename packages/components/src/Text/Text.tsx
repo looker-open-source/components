@@ -1,32 +1,40 @@
-import { TextDecorationProperty } from 'csstype'
 import styled from 'styled-components'
 import {
+  reset,
   typography,
   space,
   CompatibleHTMLProps,
   SpaceProps,
+  textTransform,
+  TextTransformProps,
+  textDecoration,
+  TextDecorationProps,
   TypographyProps,
 } from '@looker/design-tokens'
-import { textVariant, TextVariants } from '../Text/textHelpers'
+import { textVariant, TextVariantProps } from './text_variant'
 
 export interface TextProps
   extends SpaceProps,
     TypographyProps,
+    TextDecorationProps,
+    TextTransformProps,
+    TextVariantProps,
     Omit<CompatibleHTMLProps<HTMLSpanElement>, 'wrap'> {
-  textDecoration?: TextDecorationProperty
-  /** Adjust style of text with more meaning by using an intent */
-  variant?: TextVariants
-  /** Should browser insert line breaks within words to prevent text from overflowing its content box  */
+  /** Should browser insert line breaks within words to prevent text from overflowing its content box
+   * @default: false
+   */
   wrap?: boolean
 }
 
 export const Text = styled.span<TextProps>`
+  ${reset}
   ${typography}
   ${space}
-
-  font-size: ${props => props.fontSize || 'medium'};
-  text-decoration: ${props => props.textDecoration};
+  ${textDecoration}
+  ${textVariant}
+  ${textTransform}
 
   ${props => props.wrap && 'overflow-wrap: break-word'};
-  ${props => textVariant(props.theme, props.variant)};
 `
+
+Text.defaultProps = { fontSize: 'medium' }
