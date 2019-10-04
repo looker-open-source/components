@@ -1,54 +1,40 @@
-```js noeditor
-const StatusAndResources = require('../../../styleguide_components/StatusAndResources')
-  .StatusAndResources
-;<StatusAndResources
-  status="experimental"
-  githubURL="https://github.com/looker/lens/blob/master/src/components/Banner/Banner.tsx"
-  feedbackTitle="Banner Component Feedback"
-/>
-```
+---
+name: Banner
+menu: Components
+route: /components/banner
+---
 
-### Banner
+import { ComponentDetail } from '../../components'
+
+# `Banner`
+
+<ComponentDetail of="Banner" />
 
 The `<Banner />` component is used to alert the user with `warning`, `error`, `info`, or `confirmation` messages, settable via the `intent` property.
 
-```js
-import { Banner } from './Banner'
-import { Box } from '../Box/Box'
-;<Box bg="white" p="medium">
-  <Banner intent="warning">Warning</Banner>
-  <Banner intent="error">Error</Banner>
-  <Banner intent="info">Info</Banner>
-  <Banner intent="confirmation">Confirmation</Banner>
-</Box>
-```
+import { Banner, Box, useToggle } from '@looker/components'
+import { Playground } from 'docz'
+
+<Playground>
+  <Box bg="white" p="medium">
+    <Banner intent="warning">Warning</Banner>
+    <Banner intent="error">Error</Banner>
+    <Banner intent="info">Info</Banner>
+    <Banner intent="confirmation">Confirmation</Banner>
+  </Box>
+</Playground>
+
+## Dismissable
 
 Banners can also be set to be `dismissable`, giving them a close button, and allows for a dismiss handler to be passed to `onDismiss`.
 
-```js
-import { Banner } from './Banner'
-
-class Parent extends React.Component {
-  constructor() {
-    this.state = {
-      show: true,
-    }
-  }
-
-  render() {
-    return (
-      this.state.show && (
-        <Banner
-          intent="warning"
-          onDismiss={() => this.setState({ show: false })}
-          dismissable
-        >
-          I can be closed
-        </Banner>
-      )
-    )
-  }
-}
-
-;<Parent />
-```
+<Playground>
+  {() => {
+    const { value, setOff } = useToggle(true)
+    return value ? (
+      <Banner intent="warning" onDismiss={setOff} dismissable>
+        I can be closed
+      </Banner>
+    ) : null
+  }}
+</Playground>

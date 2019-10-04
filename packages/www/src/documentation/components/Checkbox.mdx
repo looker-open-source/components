@@ -1,41 +1,43 @@
 ---
 name: Checkbox
-menu: Forms
+menu: Form
+route: /form/checkbox
 ---
 
 import { ComponentDetail } from '../../components'
 
+# Checkbox
+
 <ComponentDetail
   of="Checkbox"
-  github="Form/Inputs/Checkbox.tsx"
+  github="Form/Inputs/Checkbox/Checkbox"
   figma="file/2MG6DoSjk4IaLnjjFCnKFf/Forms"
 />
 
-### Default Checkbox
+## Default Checkbox
 
 The `<Checkbox />` component renders a single checkbox element on the page, with no accompanying label. It is generally used to construct higher-order components like the `<FieldCheckbox />`. If you are building a form, you probably want to use `<FieldCheckbox />` instead as it provides label support.
 
-```js
-import { Checkbox } from './Checkbox'
-;<Checkbox />
-```
+import { Checkbox } from '@looker/components'
+import { Playground } from 'docz'
 
-### Name and ID
+<Playground>
+  <Checkbox />
+</Playground>
+
+## Name and ID
 
 A name and ID can be specified in the `<Checkbox />` component. Names are important if the checkbox is used in the context of a form, in which case a name is required for the value of the checkbox to be captured.
 
-```js
-import { Checkbox } from './Checkbox'
-;<Checkbox name="someName" id="someId" />
-```
+<Playground>
+  <Checkbox name="someName" id="someId" />
+</Playground>
 
-### Checked Property
+## Checked Property
 
 The `<Checkbox />` component accepts the `checked` property, which sets the checkbox as either selected or not.
 
-```js
-import { Checkbox } from './Checkbox'
-;<>
+<Playground>
   <Checkbox
     checked={true}
     onChange={() => {
@@ -50,16 +52,13 @@ import { Checkbox } from './Checkbox'
     }}
     readOnly
   />
-</>
-```
+</Playground>
 
-### Disabled Property
+## Disabled Property
 
 Use the disable property to gray out the checkbox, making it unclickable.
 
-```js
-import { Checkbox } from './Checkbox'
-;<>
+<Playground>
   <Checkbox disabled />
   <Checkbox
     disabled
@@ -68,5 +67,4 @@ import { Checkbox } from './Checkbox'
       return
     }}
   />
-</>
-```
+</Playground>

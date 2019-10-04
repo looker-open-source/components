@@ -86,7 +86,7 @@ Each of these scripts can be run with `yarn <command>`. They are defined in the 
 
 Since Lens is often developed in tandem with another repo it can be useful to use Yarn's `link` fuctionality to develop new Lens components and test the built output without having to commit and publish the changes.
 
-See Yarn's Link documentation (https://yarnpkg.com/lang/en/docs/cli/link/) for setting up the link between the `looker-lens` package and your project.
+See Yarn's Link documentation (https://yarnpkg.com/lang/en/docs/cli/link/) for setting up the link between the `@looker/components` package and your project.
 
 To work properly you'll need to make this addition to your `webpack.config.js` file:
 

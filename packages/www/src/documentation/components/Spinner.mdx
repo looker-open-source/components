@@ -1,16 +1,19 @@
-```js noeditor
-const StatusAndResources = require('../../../styleguide_components/StatusAndResources')
-  .StatusAndResources
-;<StatusAndResources
-  status="stable"
-  githubURL="https://github.com/looker/lens/blob/master/src/components/Spinner/Spinner.tsx"
-  feedbackTitle="Spinner Component Feedback"
-/>
-```
+---
+name: Spinner
+menu: Components
+route: /components/spinner
+---
 
-```js
-import { Spinner } from './Spinner'
-;<>
+import { ComponentDetail } from '../../components'
+
+# `Spinner`
+
+<ComponentDetail of="Spinner" />
+
+import { Box, Spinner } from '@looker/components'
+import { Playground } from 'docz'
+
+<Playground>
   <Spinner />
   <Spinner
     size={80}
@@ -19,5 +22,4 @@ import { Spinner } from './Spinner'
     color="salmon"
     speed={2000}
   />
-</>
-```
+</Playground>

@@ -1,66 +1,52 @@
-```js noeditor
-const StatusAndResources = require('../../../../../styleguide_components/StatusAndResources')
-  .StatusAndResources
+---
+name: Slider
+menu: Form
+route: /form/slider
+---
 
-;<StatusAndResources
+import { ComponentDetail } from '../../components'
+
+# `Slider`
+
+<ComponentDetail
+  of="Slider"
   status="experimental"
-  githubURL="https://github.com/looker/lens/blob/master/src/components/Form/Inputs/Slider/Slider.tsx"
-  feedbackTitle="Slider Component Feedback"
+  github="Form/Inputs/Slider/Slider"
 />
-```
 
 ### Default Slider
 
 The `<Slider />` component renders a single slider element on the page, with no accompanying label.
 
-```js
-import { Slider } from './Slider'
-;<Slider />
-```
+import { Slider, Text } from '@looker/components'
+import { Playground } from 'docz'
+
+<Playground>
+  <Slider />
+</Playground>
 
 ### Value, Min, Max and step
 
 The `<Slider />` component accepts a `value` property, allowing the user to set the initial value at which the slider is initialized.
 It also accepts a `min` and `max` value, as well as the `step` to set the granularity between values.
 
-```js
-import { Slider } from './Slider'
-import { Text } from '../../../Text'
-class VolumeSlider extends React.Component {
-  constructor() {
-    this.state = {
-      value: 11,
-    }
-  }
-
-  handleChange(value) {
-    this.setState({ value })
-  }
-
-  render() {
+<Playground>
+  {() => {
+    const [value, setValue] = React.useState(11)
+    const onChange = event => setValue(event.target.value)
     return (
       <div>
-        <Slider
-          min={1}
-          max={11}
-          value={this.state.value}
-          step={1}
-          onChange={event => this.handleChange(event.target.value)}
-        />
-        <Text>Volume {this.state.value}</Text>
+        <Slider min={1} max={11} value={value} step={1} onChange={onChange} />
+        <Text>Volume {value}</Text>
       </div>
     )
-  }
-}
-
-;<VolumeSlider />
-```
+  }}
+</Playground>
 
 ### Disabled Property
 
 Use the disable property to gray out the Input, making it a fixed value.
 
-```js
-import { Slider } from './Slider'
-;<Slider disabled />
-```
+<Playground>
+  <Slider disabled />
+</Playground>

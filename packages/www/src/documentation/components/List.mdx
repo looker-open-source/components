@@ -1,12 +1,25 @@
 ---
 name: List
 menu: Components
+route: /components/list
 ---
 
-import { List, ListItem, Link, Code } from '@looker/components';
-import { Playground } from 'docz';
+import { ComponentDetail } from '../../components'
 
-# The Default List
+# List
+
+<ComponentDetail of="List" />
+
+## List Item
+
+<ComponentDetail of="ListItem" github="List/ListItem" />
+
+This component renders an `<li>` tag inside of a list
+
+import { List, ListItem, Link, Code } from '@looker/components'
+import { Playground } from 'docz'
+
+## The Default List
 
 By default a `<List />` component will render as an unordered list, `<ul>` tag, with no marker. Each item in the list should be wrapped in the `<ListItem />` component. Below is an example of creating a list of links using the default list behavior.
 

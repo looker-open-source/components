@@ -1,11 +1,13 @@
 ---
 name: Card
 menu: Components
+route: /components/card
 ---
 
 import { ComponentDetail } from '../../components'
 import { Playground } from 'docz'
 import {
+  Box,
   Card,
   Text,
   CardContent,
@@ -33,11 +35,11 @@ At its most basic, a `Card` is a slightly styled container that organizes groups
   </Card>
 </Playground>
 
----
+## `CardContent`
 
-## A Card with content
+<ComponentDetail of="CardContent" github="Card/CardContent" />
 
-Using the [`CardContent`](/#!/CardContent) component quickly gives your content consistent spacing inside your `Card`. You can then use other components to layout your `Card`.
+Using the `CardContent` component quickly gives your content consistent spacing inside your `Card`. You can then use other components to layout your `Card`.
 
 <Playground>
   <Card raised>
@@ -53,7 +55,32 @@ Using the [`CardContent`](/#!/CardContent) component quickly gives your content 
   </Card>
 </Playground>
 
----
+## `CardMedia`
+
+<ComponentDetail of="CardMedia" github="Card/CardMedia" />
+
+A common pattern for `Cards` is to display an image that reinforces what the content is about.
+
+The `CardMedia` component accepts and `image` property that will render the image as a background image and the optional `title` property used to give the image an accessible title if needed.
+
+<Playground>
+  <Box>
+    <Card>
+      <CardMedia image="https://www.fillmurray.com/300/150" title="Bill 1" />
+      <CardContent>
+        <Heading>A wild Bill appears</Heading>
+      </CardContent>
+    </Card>
+  </Box>
+  <Box mt="medium">
+    <Card>
+      <CardMedia image="https://www.fillmurray.com/600/300" title="Bill 2" />
+      <CardContent>
+        <Heading>Another Bill spoting</Heading>
+      </CardContent>
+    </Card>
+  </Box>
+</Playground>
 
 ## A group of media Cards
 
