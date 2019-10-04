@@ -17,6 +17,7 @@ export interface ButtonProps
     ButtonVariantProps,
     SpaceProps {
   type?: 'button' | 'submit' | 'reset'
+  forwardedAs?: 'a'
 }
 
 const ButtonComponent = forwardRef(

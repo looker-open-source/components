@@ -1,30 +1,26 @@
-import React, { FunctionComponent, Ref } from 'react'
-import styled, { StyledComponent } from 'styled-components'
-import { Box, BoxProps } from '../Layout/Box'
+import {
+  CompatibleHTMLProps,
+  ColorProps,
+  color,
+  reset,
+} from '@looker/design-tokens'
+import styled from 'styled-components'
 
-/* eslint-disable-next-line @typescript-eslint/no-empty-interface */
-export interface LinkProps extends Omit<BoxProps<HTMLAnchorElement>, 'as'> {}
+export interface LinkProps
+  extends CompatibleHTMLProps<HTMLAnchorElement>,
+    ColorProps {}
 
-type ComponentType = FunctionComponent<LinkProps>
-type StyledComponentType = StyledComponent<ComponentType, LinkProps>
+export const Link = styled.a<LinkProps>`
+  ${reset}
+  ${color}
 
-const InternalLink: ComponentType = ({ ...props }) => {
-  return (
-    <Box
-      as="a"
-      color="semanticColors.primary.linkColor"
-      style={{ textDecoration: 'none' }}
-      hoverStyle={{ textDecoration: 'underline ' }}
-      {...props}
-    />
-  )
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`
+
+Link.defaultProps = {
+  color: 'palette.blue500',
 }
-
-const LinkFactory = React.forwardRef<StyledComponentType, LinkProps>(
-  (props: LinkProps, ref: Ref<StyledComponentType>) => (
-    <InternalLink ref={ref} {...props} />
-  )
-)
-
-/** @component */
-export const Link = styled<ComponentType>(LinkFactory)``
