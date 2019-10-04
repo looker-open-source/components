@@ -10,6 +10,7 @@ import {
   TableHeaderCell,
   TableRow,
 } from '@looker/components'
+import { BreakpointTableWrapper } from './BreakpointTable.styles.tsx'
 
 const breakpointLabels = [
   'Breakpoint',
@@ -110,7 +111,7 @@ export default class BreakpointOptionsRender extends React.Component<
 
   public render() {
     return (
-      <div className="spacing-table">
+      <BreakpointTableWrapper>
         <Table>
           <TableHead>
             <TableRow>
@@ -131,7 +132,7 @@ export default class BreakpointOptionsRender extends React.Component<
             })}
           </TableBody>
         </Table>
-      </div>
+      </BreakpointTableWrapper>
     )
   }
 }

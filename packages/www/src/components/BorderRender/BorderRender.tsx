@@ -44,11 +44,14 @@ const renderBorder = (border: BorderType, index: number) => {
             style={{ borderColor: border.hex, background: example.bgColor }}
             key={`border-${idx}`}
           >
-            <div className={border.textClass}>
-              <Text fontSize="xsmall" fontWeight="semiBold">
-                On {example.name}
-              </Text>
-            </div>
+            <Text
+              fontSize="xsmall"
+              fontWeight="semiBold"
+              color={border.textColor}
+            >
+              On {example.name}
+            </Text>
+
             <BorderDividerExample style={{ background: border.hex }}>
               {' '}
             </BorderDividerExample>
@@ -68,7 +71,7 @@ export interface BorderType {
   hex: string
   label: string
   name: string
-  textClass?: string
+  textColor: string
   examples: BorderExample[]
 }
 
@@ -89,6 +92,7 @@ export default class BorderRender extends React.Component<
           hex: charcoal300,
           label: 'Default Border',
           name: 'charcoal300',
+          textColor: charcoal600,
         },
         {
           examples: [
@@ -100,6 +104,7 @@ export default class BorderRender extends React.Component<
           hex: charcoal400,
           label: 'Dark Border',
           name: 'charcoal400',
+          textColor: charcoal600,
         },
         {
           examples: [
@@ -110,6 +115,7 @@ export default class BorderRender extends React.Component<
           hex: charcoal200,
           label: 'Light Border',
           name: 'charcoal200',
+          textColor: charcoal600,
         },
         {
           examples: [
@@ -120,7 +126,7 @@ export default class BorderRender extends React.Component<
           hex: charcoal500,
           label: 'Border on Dark',
           name: 'charcoal500',
-          textClass: 'border-on-dark-text',
+          textColor: charcoal300,
         },
       ],
     }

@@ -7,7 +7,9 @@ import {
   Heading,
   Icon,
   Text,
+  Paragraph,
 } from '@looker/components'
+import { GridWrapper } from './Intro.styles'
 
 export const Intro = () => {
   return (
@@ -41,7 +43,7 @@ export const Intro = () => {
         <Heading fontWeight="semiBold" fontSize="xxxxlarge">
           LENS
         </Heading>
-        <Box my="large" maxWidth="600px">
+        <Box my="large">
           <Text fontSize="xlarge">
             A collections of assets for anyone making Looker software, providing
             Looker services, or telling Looker stories.
@@ -52,9 +54,9 @@ export const Intro = () => {
         <Box height="8px" bg="#F4F6F7" />
       </Box>
       <Box>
-        <Flex justifyContent="space-between">
-          <Flex maxWidth="215px" flexDirection="column" alignItems="center">
-            <Box mb="large">
+        <GridWrapper>
+          <Flex flexDirection="column" alignItems="center">
+            <Box mb="medium">
               <Flex
                 alignItems="center"
                 justifyContent="center"
@@ -80,16 +82,16 @@ export const Intro = () => {
             <Heading as="h4" fontSize="large" fontWeight="semiBold">
               Install
             </Heading>
-            <Box mt="small">
-              <Text fontSize="medium">
-                Lens packages are served by Looker&apos;s private package
-                server, Nexus, and can be installed through npm or yarn.
-              </Text>
-              <Code fontSize="medium">yarn add looker-lens</Code>
-            </Box>
+            <Paragraph fontSize="small">
+              Lens packages are served by Looker&apos;s private package server,
+              Nexus, and can be installed through npm or yarn.
+            </Paragraph>
+            <Code fontSize="small">
+              yarn add @looker/components @looker/design-tokens @looker/icons
+            </Code>
           </Flex>
-          <Flex maxWidth="215px" flexDirection="column" alignItems="center">
-            <Box mb="large">
+          <Flex flexDirection="column" alignItems="center">
+            <Box mb="medium">
               <Flex
                 alignItems="center"
                 justifyContent="center"
@@ -104,16 +106,14 @@ export const Intro = () => {
             <Heading as="h4" fontSize="large" fontWeight="semiBold">
               Explore
             </Heading>
-            <Box mt="small">
-              <Text fontSize="small">
-                Search or browse through the component listing on this site. You
-                can use the interactive prompts to compose whole components
-                right in Lens.
-              </Text>
-            </Box>
+            <Paragraph fontSize="small">
+              Search or browse through the component listing on this site. You
+              can use the interactive prompts to compose whole components right
+              in Lens.
+            </Paragraph>
           </Flex>
-          <Flex maxWidth="215px" flexDirection="column" alignItems="center">
-            <Box mb="large">
+          <Flex flexDirection="column" alignItems="center">
+            <Box mb="medium">
               <Flex
                 alignItems="center"
                 justifyContent="center"
@@ -128,15 +128,13 @@ export const Intro = () => {
             <Heading as="h4" fontSize="large" fontWeight="semiBold">
               Contribute
             </Heading>
-            <Box mt="small">
-              <Text fontSize="medium">
-                Want something in Lens you don&apos;t see here? Follow the
-                contribution guidelines and best practices, then open a Pull
-                Request on the Lens repository.
-              </Text>
-            </Box>
+            <Paragraph fontSize="small">
+              Want something in Lens you don&apos;t see here? Follow the
+              contribution guidelines and best practices, then open a Pull
+              Request on the Lens repository.
+            </Paragraph>
           </Flex>
-        </Flex>
+        </GridWrapper>
       </Box>
     </Box>
   )

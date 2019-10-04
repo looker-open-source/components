@@ -1,5 +1,6 @@
 ---
 name: Breakpoints
+route: style/breakpoints
 menu: Style
 ---
 
@@ -27,18 +28,18 @@ There are a few ways to use the breakpoints, for simpler responsive behaviors yo
 
 Another option if you are writing more complex responsive behaviors you can access the breakpoints from the theme and use them a styled block
 
-```typescript
+```js
 const ResponsiveBox = styled(Box)`
-  background: green;
+    background: green;
 
-// make the background red at breakpoint[0](480px)
-@media (min-width \${props => props.theme.breakpoints[0]}) {
-background: red;
-}
+    // make the background red at breakpoint[0](480px)
+    @media (min-width ${props => props.theme.breakpoints[0]}) {
+    background: red;
+    }
 
-// make the background red at breakpoint[1](768x)
-@media (min-width \${props => props.theme.breakpoints[1]}) {
-background: blue;
-}
+    // make the background red at breakpoint[1](768x)
+    @media (min-width ${props => props.theme.breakpoints[1]}) {
+    background: blue;
+  }
 `
 ```

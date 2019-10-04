@@ -93,75 +93,19 @@ async function generateGlyphIndexFile() {
 
 async function generateIconNameFile() {
   function iconNameFile(icons) {
-    const iconNames = icons
-      .map(i => {
-        return `'${i}'`
-      })
-      .join('|')
+    const iconNames = icons.map(i => {
+      return `'${i}'`
+    })
 
-    return `export type IconNames = ${iconNames}`
+    return `
+export type IconNames = ${iconNames.join('|')}
+export const iconNameList = [${iconNames.join(',')}]
+`
   }
 
   const basenames = await getBasenames(iconGlyphPath, iconGlyphFileExtension)
   await writeFile(path.join(buildPath, 'IconNames.ts'), iconNameFile(basenames))
   return basenames
-}
-
-/**
- * Step 3: Generate Icon*.tsx component files from the icon component glyphs.
- * These are the Typescript files Lens exports and are compatible with our
- * Styleguidist documentation.
- */
-// ts: string[]
-async function generateMarkdownFileForAllIcons() {
-  function styleguidistAllIconsMarkdown(componentNames) {
-    const componentIconTags = componentNames
-      .map(
-        name => `
-        <CopyToClipboard
-          text={'<Icon name="${name}" />'}
-          onCopy={() => alert('Copied icon "${name}" to clipboard.')}
-        >
-          <Box display="inline-block" px="xsmall" py="medium" width="16.66667%" textAlign="center">
-            <Icon name="${name}" size={32} />
-            <Paragraph mt="small" fontSize="xsmall" variant="secondary">${name}</Paragraph>
-          </Box>
-        </CopyToClipboard>`
-      )
-      .join('\n')
-    return `
-To use an Icon you pass the name of the icon to the \`name\` property on the \`<Icon />\` component
-\`\`\`js
-import { Icon } from '../../components/Icon'
-import { Box } from '../../components/Box';
-<Box>
-  <Icon name="Check" size={24} />
-  <Icon name="Favorite" size={24} color="palette.red400" />
-  <Icon name="GearOutline" size={32} color="palette.charcoal500"/>
-</Box>
-\`\`\`
-
-# All Icons
-
-**Tip: ** you can click an icon below to copy it to your clipboard.
-
-\`\`\`js noeditor
-import { Icon } from '../../components/Icon'
-import { Box } from '../../components/Box'
-import { Paragraph } from '../../components/Text/Paragraph'
-const CopyToClipboard = require('react-copy-to-clipboard');
-
-<div>
-${componentIconTags}
-</div>
-\`\`\`
-  `
-  }
-  const basenames = await getBasenames(iconGlyphPath, iconGlyphFileExtension)
-  await writeFile(
-    path.join(buildPath, 'AllIcons.md'),
-    styleguidistAllIconsMarkdown(basenames)
-  )
 }
 
 async function run() {
@@ -179,8 +123,6 @@ async function run() {
   // await generateIndexDefinition()
   await generateIconNameFile()
   spinner.color = 'blue'
-  spinner.text = 'Compiling All Icons in Markdown...'
-  await generateMarkdownFileForAllIcons()
   spinner.succeed('Done building icons!')
   spinner.stop()
 }

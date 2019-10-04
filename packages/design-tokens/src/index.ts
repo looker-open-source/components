@@ -9,6 +9,7 @@ export * from './helpers'
 // TODO: Eventually encapsulate all of these so they're not externally importable outside of `theme`
 export { radii } from './radii'
 export { palette } from './palette'
+export { fontSizes } from './font_sizes'
 export { semanticColors } from './semantic_colors'
 
 export * from './theme'

@@ -10,6 +10,7 @@ module.exports = {
         title: 'Looker Components Styleguide',
         typescript: true,
         menu: [
+          'Introduction',
           'Working with Lens',
           'Advanced',
           'Principles',

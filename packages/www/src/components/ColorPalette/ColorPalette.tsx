@@ -120,16 +120,14 @@ const Swatch = ({
 }: SwatchProps) => (
   <SwatchItem style={{ background: hexValue }}>
     <Text
-      className="swatch-label"
       fontWeight="semiBold"
-      style={{ color: labelColor }}
+      style={{ color: labelColor, marginRight: 'auto' }}
     >
       {children}
     </Text>
     <Text
-      className="swatch-hex"
       fontWeight="semiBold"
-      style={{ color: labelColor }}
+      style={{ color: labelColor, marginLeft: 'auto', marginRight: '1rem' }}
     >
       {hexValue}
     </Text>
