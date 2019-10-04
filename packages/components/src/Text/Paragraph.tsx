@@ -1,8 +1,10 @@
 import styled from 'styled-components'
 import {
-  typography,
+  layout,
   space,
+  typography,
   CompatibleHTMLProps,
+  LayoutProps,
   SpaceProps,
   TypographyProps,
 } from '@looker/design-tokens'
@@ -11,6 +13,7 @@ import { TruncateProps, truncate } from '../Text/truncate'
 export interface ParagraphProps
   extends TruncateProps,
     SpaceProps,
+    LayoutProps,
     TypographyProps,
     CompatibleHTMLProps<HTMLParagraphElement> {}
 
@@ -18,5 +21,6 @@ export interface ParagraphProps
 export const Paragraph = styled.h1<ParagraphProps>`
   ${typography}
   ${space}
+  ${layout}
   ${truncate}
 `

@@ -29,6 +29,7 @@ export * from './typography'
 export * from './space'
 
 // Custom Extensions
+export * from './animation'
 export * from './cursor'
 export * from './reset'
 export * from './psuedo'

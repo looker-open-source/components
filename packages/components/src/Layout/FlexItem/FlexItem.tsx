@@ -1,5 +1,9 @@
 import styled from 'styled-components'
 import {
+  alignSelf,
+  flexBasis,
+  flex,
+  order,
   AlignSelfProps,
   FlexBasisProps,
   FlexProps,
@@ -17,4 +21,8 @@ export interface FlexItemProps
 /** @component */
 export const FlexItem = styled.div<FlexItemProps>`
   ${layoutCSS}
+  ${alignSelf}
+  ${flexBasis}
+  ${flex}
+  ${order}
 `

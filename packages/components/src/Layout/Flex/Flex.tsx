@@ -1,4 +1,8 @@
-import { CompatibleHTMLProps, FlexboxProps } from '@looker/design-tokens'
+import {
+  CompatibleHTMLProps,
+  flexbox,
+  FlexboxProps,
+} from '@looker/design-tokens'
 import styled from 'styled-components'
 import { LayoutComponentProps, layoutCSS } from '../layout'
 
@@ -13,5 +17,6 @@ export interface FlexProps
 /** @component */
 export const Flex = styled.div<FlexProps>`
   ${layoutCSS}
+  ${flexbox};
   display: flex;
 `
