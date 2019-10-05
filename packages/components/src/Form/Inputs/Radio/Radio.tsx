@@ -4,6 +4,6 @@ import { InputProps } from '../InputProps'
 
 export interface RadioProps extends SpaceProps, Omit<InputProps, 'type'> {}
 
-export const Checkbox = styled.input.attrs({ type: 'radio' })<RadioProps>`
+export const Radio = styled.input.attrs({ type: 'radio' })<RadioProps>`
   ${space}
 `

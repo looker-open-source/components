@@ -9,6 +9,7 @@ export {
   space,
   typography,
   BorderProps,
+  BorderRadiusProps,
   BoxShadowProps,
   FlexboxProps,
   PositionProps,

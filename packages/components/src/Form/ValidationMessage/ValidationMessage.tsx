@@ -1,6 +1,15 @@
-import React from 'react'
-import { CustomizableAttributes } from '@looker/design-tokens'
-import { Box, BoxProps } from '../../Layout/Box'
+import {
+  CompatibleHTMLProps,
+  CustomizableAttributes,
+  layout,
+  LayoutProps,
+  space,
+  SpaceProps,
+  typography,
+  TypographyProps,
+} from '@looker/design-tokens'
+
+import styled from 'styled-components'
 
 export type ValidationType = 'error'
 
@@ -9,7 +18,10 @@ export const CustomizableValidationMessageAttributes: CustomizableAttributes = {
 }
 
 export interface ValidationMessageProps
-  extends Omit<BoxProps<HTMLDivElement>, 'as'> {
+  extends LayoutProps,
+    SpaceProps,
+    TypographyProps,
+    CompatibleHTMLProps<HTMLDivElement> {
   /**
    * The type of validation, therefore changing the message's text color. Accepts: error.
    */
@@ -20,28 +32,17 @@ export interface ValidationMessageProps
   message?: string
 }
 
-export const ValidationMessage: React.FC<ValidationMessageProps> = ({
-  type,
-  message,
-  ...props
-}) => {
-  const handleValidationType = () => {
-    switch (type) {
-      case 'error':
-        return 'palette.red700'
-      default:
-        return undefined
-    }
-  }
-  return (
-    <Box
-      {...props}
-      mr="xsmall"
-      mt="xsmall"
-      fontSize={CustomizableValidationMessageAttributes.fontSize}
-      color={handleValidationType()}
-    >
-      {message}
-    </Box>
-  )
+export const ValidationMessage = styled.div.attrs({
+  fontSize: CustomizableValidationMessageAttributes.fontSize,
+})<ValidationMessageProps>`
+  ${props =>
+    props.type === 'error' ? `color: ${props.theme.color.palette.red700}` : ''}
+  ${layout}
+  ${space}
+  ${typography}
+`
+
+ValidationMessage.defaultProps = {
+  mr: 'xsmall',
+  mt: 'xsmall',
 }
