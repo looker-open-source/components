@@ -1,4 +1,4 @@
-import { sizedArray } from '../../utils/array'
+import range from 'lodash/range'
 import {
   cartesian2polar,
   CartesianCoordinate,
@@ -75,8 +75,8 @@ export const generateColorWheel = (
   radius: number,
   brightness: number
 ): SimpleHSV[][] =>
-  sizedArray(diameter(radius)).map((_, x) =>
-    sizedArray(diameter(radius)).map((_$, y) =>
+  range(diameter(radius)).map((_, x) =>
+    range(diameter(radius)).map((_$, y) =>
       cartesian2hsv(brightness, radius, { x, y })
     )
   )

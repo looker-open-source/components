@@ -1,4 +1,4 @@
-import { sizedArray } from '../../utils/array'
+import range from 'lodash/range'
 import {
   cartesian2hsv,
   generateColorWheel,
@@ -21,10 +21,10 @@ describe('color_wheel_utils', () => {
     })
   })
 
-  describe('sizedArray', () => {
+  describe('range', () => {
     const worksForSize = (n: number) => {
       test(`Size ${n}`, () => {
-        const arr = sizedArray(n)
+        const arr = range(n)
         expect(arr.length).toEqual(n)
       })
     }

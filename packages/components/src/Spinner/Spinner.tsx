@@ -1,15 +1,20 @@
-import omit from 'lodash/omit'
-import React, { FunctionComponent, Ref } from 'react'
-import styled, {
-  FlattenSimpleInterpolation,
-  StyledComponent,
-} from 'styled-components'
-import { sizedArray } from '../utils/array'
-import { Box, BoxProps } from '../Layout/Box'
-import { generateStyleProps, StyledMarker } from './Spinner.styles'
+import {
+  CompatibleHTMLProps,
+  PositionProps,
+  position,
+  SpaceProps,
+  space,
+  reset,
+} from '@looker/design-tokens'
+import { omit, range } from 'lodash'
+import React, { FC } from 'react'
+import styled from 'styled-components'
+import { SpinnerMarker } from './SpinnerMarker'
 
 export interface SpinnerProps
-  extends Omit<BoxProps<HTMLDivElement>, 'color' | 'size' | 'as'> {
+  extends SpaceProps,
+    PositionProps,
+    CompatibleHTMLProps<HTMLElement> {
   markers?: number
   markerRadius?: number
   speed?: number
@@ -17,32 +22,41 @@ export interface SpinnerProps
   color?: string
 }
 
-export interface StyledMarkerProps extends SpinnerProps {
-  fadeRule: FlattenSimpleInterpolation
-  rotateAngle: number
-}
-
-type ComponentType = FunctionComponent<SpinnerProps>
-type StyledComponentType = StyledComponent<ComponentType, SpinnerProps>
-
-const InternalSpinner: ComponentType = (props: SpinnerProps) => {
-  const { size = 30, markers = 13 } = props
-  const boxProps = omit(props, ['markerRadius'])
-
+const SpinnerFactory: FC<SpinnerProps> = props => {
+  const {
+    color = 'palette.charcoal900',
+    markers = 13,
+    markerRadius,
+    speed = 1000,
+  } = props
   return (
-    <Box width={size} height={size} position="relative" {...boxProps}>
-      {sizedArray(markers).map((_, i) => (
-        <StyledMarker key={i} {...generateStyleProps(i, props)} />
+    <Style {...omit(props, 'color', 'markers', 'markersRadius', 'speed')}>
+      {range(markers).map(i => (
+        <SpinnerMarker
+          backgroundColor={color}
+          key={i}
+          speed={speed}
+          markers={markers}
+          markerIndex={i}
+          markerRadius={markerRadius}
+        />
       ))}
-    </Box>
+    </Style>
   )
 }
 
-const SpinnerFactory = React.forwardRef<StyledComponentType, SpinnerProps>(
-  (props: SpinnerProps, ref: Ref<StyledComponentType>) => (
-    <InternalSpinner ref={ref} {...props} />
-  )
-)
+const Style = styled.div<SpinnerProps>`
+  ${reset}
+  ${space}
+  ${position}
 
-/** @component */
-export const Spinner = styled<ComponentType>(SpinnerFactory)``
+  height: ${props => props.size};
+  position: relative;
+  width: ${props => props.size};
+`
+
+Style.defaultProps = {
+  size: 30,
+}
+
+export const Spinner = styled(SpinnerFactory)``

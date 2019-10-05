@@ -1,4 +1,4 @@
-import { sizedArray } from '../../utils/array'
+import range from 'lodash/range'
 import { isValidColor } from './color_utils'
 
 describe('color_utils', () => {
@@ -12,7 +12,7 @@ describe('color_utils', () => {
   const randChar = (str: string) => str[rand(str.length)]
   const randString = (chars: string, size: number) =>
     '#'.concat(
-      sizedArray(size)
+      range(size)
         .map(() => randChar(chars))
         .join('')
     )
@@ -50,25 +50,25 @@ describe('color_utils', () => {
   })
 
   describe('Valid 3 string RGB colors', () => {
-    sizedArray(20)
+    range(20)
       .map(() => randString('0123456789ABCDEF', 3))
       .map(testColor(true))
   })
 
   describe('Inalid 3 string RGB colors', () => {
-    sizedArray(20)
+    range(20)
       .map(() => randString('GHIJKLMNOPpo_+!&^%$', 3))
       .map(testColor(false))
   })
 
   describe('Valid 6 string RGB colors', () => {
-    sizedArray(20)
+    range(20)
       .map(() => randString('0123456789ABCDEF', 6))
       .map(testColor(true))
   })
 
   describe('Invalid 6 string RGB colors', () => {
-    sizedArray(20)
+    range(20)
       .map(() => randString('GHIJKLMNOPpo_+!&^%$', 6))
       .map(testColor(false))
   })
