@@ -1,27 +1,22 @@
-import React, { FunctionComponent, Ref } from 'react'
-import styled, { StyledComponent } from 'styled-components'
-import { Box, BoxProps } from '../Layout/Box'
+import {
+  CompatibleHTMLProps,
+  reset,
+  space,
+  SpaceProps,
+  typography,
+  TypographyProps,
+} from '@looker/design-tokens'
+import styled from 'styled-components'
 
-export type ListItemProps = BoxProps<HTMLLIElement>
-type ComponentType = FunctionComponent<ListItemProps>
-type StyledComponentType = StyledComponent<ComponentType, ListItemProps>
+export interface ListItemProps
+  extends CompatibleHTMLProps<HTMLLIElement>,
+    TypographyProps,
+    SpaceProps {}
 
-const InternalListItem: ComponentType = props => (
-  <Box
-    // @ts-ignore
-    as="li"
-    mb="xxsmall"
-    {...props}
-  >
-    {props.children}
-  </Box>
-)
+export const ListItem = styled.li<ListItemProps>`
+  ${reset}
+  ${typography}
+  ${space}
+`
 
-const ListItemFactory = React.forwardRef<StyledComponentType, ListItemProps>(
-  (props: ListItemProps, ref: Ref<StyledComponentType>) => (
-    <InternalListItem ref={ref} {...props} />
-  )
-)
-
-/** @component */
-export const ListItem = styled<ComponentType>(ListItemFactory)``
+ListItem.defaultProps = { mb: 'xxsmall' }
