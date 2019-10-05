@@ -1,8 +1,19 @@
-import React, { FunctionComponent, Ref } from 'react'
-import styled, { StyledComponent } from 'styled-components'
-import { CustomizableAttributes, palette } from '@looker/design-tokens'
-import { Box, BoxProps } from '../../../Layout/Box'
-import { InputProps } from '../InputProps'
+import React, { forwardRef, Ref } from 'react'
+// import styled, { StyledComponent } from 'styled-components'
+// import { CustomizableAttributes, palette } from '@looker/design-tokens'
+// import { Box, BoxProps } from '../../../Layout/Box'
+// import { InputProps } from '../InputProps'
+import styled from 'styled-components'
+import {
+  border,
+  typography,
+  layout,
+  CompatibleHTMLProps,
+  CustomizableAttributes,
+  space,
+  SpaceProps,
+} from '@looker/design-tokens'
+import { ValidationType } from '../../ValidationMessage'
 
 const renderOptions = (options: OptionsType<SelectOptionProps>) => {
   return options.map(option => (
@@ -49,15 +60,8 @@ export interface SelectOptionProps {
 }
 
 export interface SelectProps
-  extends Omit<BoxProps<HTMLSelectElement>, 'as'>,
-    InputProps {
-  /**
-   * Specifies value of the input field.
-   */
-  value?: string
-  /*
-   * Specifies the options that should be available to select
-   */
+  extends SpaceProps,
+    CompatibleHTMLProps<HTMLSelectElement> {
   options?:
     | OptionsType<SelectOptionProps>
     | GroupedOptionsType<SelectOptionProps>
@@ -70,62 +74,46 @@ export interface SelectProps
    * Displays an example value or short hint to the user. Should not replace a label.
    */
   placeholder?: string
+  validationType?: ValidationType
 }
 
-type ComponentType = FunctionComponent<SelectProps>
-type StyledComponentType = StyledComponent<ComponentType, SelectProps>
+const SelectComponent = forwardRef(
+  (
+    {
+      includeBlank = true,
+      options,
+      placeholder,
+      validationType,
+      ...props
+    }: SelectProps,
+    ref: Ref<HTMLSelectElement>
+  ) => {
+    // Gracefully deal with situation where `value` prop is set but `onChange` is not.
+    const defaultValue =
+      props.defaultValue || (props.value && !props.onChange)
+        ? props.value
+        : undefined
 
-const InternalSelect: ComponentType = ({
-  includeBlank = true,
-  options,
-  placeholder,
-  validationType,
-  ...props
-}) => {
-  const handleValidationType = () => {
-    switch (validationType) {
-      case 'error':
-        return 'palette.red000'
-      default:
-        return 'palette.white'
-    }
+    const optionElements =
+      !options || options.length === 0
+        ? null
+        : Object.prototype.hasOwnProperty.call(options[0], 'key')
+        ? renderOptGroups(options as GroupedOptionsType<SelectOptionProps>)
+        : renderOptions(options as OptionsType<SelectOptionProps>)
+
+    return (
+      <SelectBase
+        defaultValue={defaultValue ? defaultValue.toString() : undefined}
+        value={defaultValue ? undefined : props.value}
+        {...props}
+        ref={ref}
+      >
+        {includeBlank && <option value="">{placeholder}</option>}
+        {optionElements}
+      </SelectBase>
+    )
   }
-
-  // Gracefully deal with situation where `value` prop is set but `onChange` is not.
-  const defaultValue =
-    props.defaultValue || (props.value && !props.onChange)
-      ? props.value
-      : undefined
-
-  const optionElements =
-    !options || options.length === 0
-      ? null
-      : Object.prototype.hasOwnProperty.call(options[0], 'key')
-      ? renderOptGroups(options as GroupedOptionsType<SelectOptionProps>)
-      : renderOptions(options as OptionsType<SelectOptionProps>)
-
-  return (
-    <Box
-      as="select"
-      bg={handleValidationType()}
-      border="solid 1px"
-      borderColor={palette.charcoal300}
-      borderRadius={CustomizableSelectAttributes.borderRadius}
-      fontSize={CustomizableSelectAttributes.fontSize}
-      height={
-        props.py || props.p ? undefined : CustomizableSelectAttributes.height
-      }
-      px={props.px || props.p || CustomizableSelectAttributes.px}
-      py={props.py || props.p || CustomizableSelectAttributes.py}
-      {...props}
-      defaultValue={defaultValue}
-      value={defaultValue ? undefined : props.value}
-    >
-      {includeBlank && <option value="">{placeholder}</option>}
-      {optionElements}
-    </Box>
-  )
-}
+)
 
 //
 // @TODO - Should be properly imported from `Caret Down.svg`
@@ -136,25 +124,35 @@ const indicatorRaw = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none
 </svg>`
 const indicatorSize = '1rem'
 const indicatorPadding = '.25rem'
-const indicator = indicatorRaw.replace('#1C2125', palette.charcoal500)
+const indicator = (color: string) =>
+  window.btoa(indicatorRaw.replace('#1C2125', color))
 
 // NOTE: Styling Selects is very complex
 //  See reference artice for background: https://www.filamentgroup.com/lab/select-css.html
 //  This component will likely be replaced with a React Select powered version
 
-const SelectFactory = React.forwardRef<StyledComponentType, SelectProps>(
-  (props: SelectProps, ref: Ref<StyledComponentType>) => (
-    <InternalSelect ref={ref} {...props} />
-  )
-)
+const SelectBase = styled.select.attrs((props: SelectProps) => ({
+  borderRadius: CustomizableSelectAttributes.borderRadius,
+  fontSize: CustomizableSelectAttributes.fontSize,
+  height: props.py || props.p ? undefined : CustomizableSelectAttributes.height,
+  px: props.p || CustomizableSelectAttributes.px,
+  py: props.p || CustomizableSelectAttributes.py,
+  type: 'text',
+}))<SelectProps>`
+  background: ${props =>
+    props.validationType === 'error'
+      ? props.theme.colors.palette.red000
+      : props.theme.colors.palette.white};
+  border: solid 1px ${props => props.theme.colors.palette.charcoal300};
 
-/** @component */
-export const Select = styled<ComponentType>(SelectFactory)`
   appearance: none;
 
   background-image:
-    url('data:image/svg+xml;base64,${window.btoa(indicator)}'),
-    linear-gradient(to bottom, ${palette.white} 0%, ${palette.white} 100%);
+    url(data:image/svg+xml;base64,
+    ${props => indicator(props.theme.colors.palette.charcoal500)}),
+    linear-gradient(to bottom, ${props =>
+      props.theme.colors.palette.white} 0%, ${props =>
+  props.theme.colors.palette.white} 100%);
 
   background-repeat: no-repeat, repeat;
   background-position: right ${indicatorPadding} center, 0 0;
@@ -165,4 +163,10 @@ export const Select = styled<ComponentType>(SelectFactory)`
   &::-ms-expand {
     display: none;
   }
+  ${border}
+  ${layout}
+  ${typography}
+  ${space}
 `
+
+export const Select = styled(SelectComponent)``
