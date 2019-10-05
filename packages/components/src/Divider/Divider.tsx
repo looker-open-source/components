@@ -1,12 +1,14 @@
 import {
   CompatibleHTMLProps,
+  color,
   position,
   PositionProps,
   reset,
   space,
   SpaceProps,
 } from '@looker/design-tokens'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
+import { variant } from 'styled-system'
 
 export interface DividerProps
   extends CompatibleHTMLProps<HTMLDivElement>,
@@ -17,28 +19,31 @@ export interface DividerProps
   appearance?: 'light' | 'dark' | 'onDark'
 }
 
-const dividerAppearance = (props: DividerProps) => {
-  switch (props.appearance) {
-    case 'light':
-      return css`
-        background: ${props => props.theme.colors.palette.charcoal200};
-      `
-    case 'dark':
-      return css`
-        background: ${props => props.theme.colors.palette.charcoal400};
-      `
-    case 'onDark':
-      return css`
-        background: ${props => props.theme.colors.palette.charcoal500};
-      `
-    default:
-      return false
-  }
-}
+const appearanceVariant = variant({
+  prop: 'appearance',
+  variants: {
+    dark: {
+      bg: 'palette.charcoal400',
+    },
+    light: {
+      bg: 'palette.charcoal200',
+    },
+    onDark: {
+      bg: 'palette.charcoal500',
+    },
+  },
+})
 
-export const Divider = styled.div<DividerProps>`
+export const Divider = styled.hr.attrs((props: DividerProps) => ({
+  bg: props.customColor,
+}))<DividerProps>`
   ${reset}
   ${position}
   ${space}
-  ${dividerAppearance};
+
+  height: ${props => props.size};
+  ${color}
+  ${appearanceVariant};
 `
+
+Divider.defaultProps = { customColor: 'palette.charcoal300', size: '1px' }
