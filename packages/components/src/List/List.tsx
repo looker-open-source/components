@@ -6,7 +6,6 @@ import {
   typography,
   TypographyProps,
 } from '@looker/design-tokens'
-import React, { FC } from 'react'
 import styled from 'styled-components'
 import { variant } from 'styled-system'
 
@@ -36,13 +35,9 @@ const typeVariant = variant({
   },
 })
 
-export const List: FC<ListProps> = props => {
-  const as =
-    props.type === 'letter' || props.type === 'number' ? 'ol' : undefined
-  return <ListStyle as={as} {...props} />
-}
-
-const ListStyle = styled.ul<ListProps>`
+export const List = styled.ul.attrs((props: ListProps) => ({
+  as: ['letter', 'number'].includes(String(props.type)) ? 'ol' : undefined,
+}))<ListProps>`
   ${reset}
   ${typography}
 
