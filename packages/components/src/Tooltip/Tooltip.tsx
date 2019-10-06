@@ -1,11 +1,10 @@
-import { CustomizableAttributes, fadeIn, theme } from '@looker/design-tokens'
+import { CustomizableAttributes } from '@looker/design-tokens'
 import { TextAlignProperty } from 'csstype'
 import { Placement } from 'popper.js'
 import React, { useRef, useState } from 'react'
 import { Popper } from 'react-popper'
-import { css } from 'styled-components'
-import { ModalContext, ModalSurfaceStyleProps } from '../Modal'
-import { OverlaySurface } from '../Overlay'
+import { ModalContext } from '../Modal'
+import { OverlaySurface } from '../Overlay/OverlaySurface'
 import { Paragraph } from '../Text'
 
 export interface TooltipProps {
@@ -58,32 +57,7 @@ export interface TooltipProps {
   textAlign?: TextAlignProperty
 }
 
-/*
- * NOTE: Use longform version of tagged function to prevent stylelint
- * from parsing and complaining about css`` keyframe interpolation.
- *
- * EQUIVALENT: css`${fadeIn} 0.2s linear;`
- */
-const animationRule = css(
-  (['', ' 0.2s linear;'] as any) as TemplateStringsArray,
-  fadeIn
-)
-
-export const CustomizableTooltipAttributes: CustomizableTooltipAttributes = {
-  surface: {
-    animation: animationRule,
-    backgroundColor: theme.colors.palette.charcoal600,
-    border: 'none',
-    borderColor: 'none',
-    borderRadius: 'medium',
-    boxShadow: theme.shadows[3],
-    color: theme.colors.palette.charcoal000,
-  },
-}
-
-export interface CustomizableTooltipAttributes extends CustomizableAttributes {
-  surface: ModalSurfaceStyleProps
-}
+export const CustomizableTooltipAttributes: CustomizableAttributes = {}
 
 /** @component */
 export const Tooltip: React.FC<TooltipProps> = ({
@@ -186,10 +160,13 @@ export const Tooltip: React.FC<TooltipProps> = ({
             arrowProps={arrowProps}
             eventHandlers={{ onMouseOut: handleMouseOut }}
             placement={placement}
-            surfaceRef={ref}
+            ref={ref}
             style={style}
             zIndex={CustomizableTooltipAttributes.zIndex}
-            {...CustomizableTooltipAttributes.surface}
+            backgroundColor="palette.charcoal600"
+            borderRadius="medium"
+            boxShadow={3}
+            color="palette.charcoal000"
           >
             {contentFormatted}
           </OverlaySurface>

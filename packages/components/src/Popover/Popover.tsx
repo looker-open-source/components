@@ -1,34 +1,9 @@
 import { Placement } from 'popper.js'
 import React, { useEffect, useRef, useState } from 'react'
 import { Popper } from 'react-popper'
-import { css } from 'styled-components'
-import { CustomizableAttributes, fadeIn, theme } from '@looker/design-tokens'
-import { ModalContext, ModalSurfaceStyleProps } from '../Modal'
+import { ModalContext } from '../Modal'
 import { ModalPortal } from '../Modal/ModalPortal'
 import { OverlaySurface } from '../Overlay/OverlaySurface'
-
-/*
- * NOTE: Use longform version of tagged function to prevent stylelint
- * from parsing and complaining about css`` keyframe interpolation.
- *
- * EQUIVALENT: css`${fadeIn} 0.2s linear;`
- */
-const animationRule = css(
-  (['', ' 0.2s linear;'] as any) as TemplateStringsArray,
-  fadeIn
-)
-
-export const CustomizablePopoverAttributes: CustomizablePopoverAttributes = {
-  surface: {
-    animation: animationRule,
-    backgroundColor: theme.colors.palette.white,
-    border: '1px solid',
-    borderColor: theme.colors.palette.charcoal200,
-    borderRadius: 'medium',
-    boxShadow: theme.shadows[3],
-    color: theme.colors.palette.charcoal900,
-  },
-}
 
 export interface PopoverProps {
   /**
@@ -71,7 +46,7 @@ export interface PopoverProps {
     /**
      * Used by popper.js to position the OverlaySurface relative to the trigger
      */
-    ref: React.RefObject<HTMLElement>,
+    ref: React.RefObject<any>,
     className?: string
   ) => JSX.Element
 
@@ -211,9 +186,14 @@ export const Popover: React.FC<PopoverProps> = ({
               arrow={arrow}
               arrowProps={arrowProps}
               placement={placement}
-              surfaceRef={ref}
+              ref={ref}
               style={style}
-              {...CustomizablePopoverAttributes.surface}
+              backgroundColor="palette.white"
+              border="1px solid"
+              borderColor="palette.charcoal200"
+              borderRadius="medium"
+              boxShadow={3}
+              color="palette.charcoal900"
             >
               {content}
             </OverlaySurface>
@@ -229,8 +209,4 @@ export const Popover: React.FC<PopoverProps> = ({
       {children(handleOpen, triggerRef, isOpen ? 'active' : undefined)}
     </>
   )
-}
-
-export interface CustomizablePopoverAttributes extends CustomizableAttributes {
-  surface: ModalSurfaceStyleProps
 }

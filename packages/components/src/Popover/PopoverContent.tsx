@@ -1,6 +1,9 @@
-import React from 'react'
-import { Box, BoxProps } from '../Layout/Box'
+import styled from 'styled-components'
+import { reset, space, SpaceProps } from '@looker/design-tokens'
 
-export const PopoverContent: React.FC<Omit<BoxProps<HTMLDivElement>, 'as'>> = ({
-  ...props
-}) => <Box p="small" {...props} />
+export const PopoverContent = styled.div<SpaceProps>`
+  ${reset}
+  ${space}
+`
+
+PopoverContent.defaultProps = { p: 'small' }
