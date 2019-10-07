@@ -84,15 +84,15 @@ const SelectComponent = forwardRef(
       options,
       placeholder,
       validationType,
+      defaultValue: propsDefault,
+      value,
       ...props
     }: SelectProps,
     ref: Ref<HTMLSelectElement>
   ) => {
     // Gracefully deal with situation where `value` prop is set but `onChange` is not.
     const defaultValue =
-      props.defaultValue || (props.value && !props.onChange)
-        ? props.value
-        : undefined
+      propsDefault || (value && !props.onChange) ? value : undefined
 
     const optionElements =
       !options || options.length === 0
@@ -104,7 +104,7 @@ const SelectComponent = forwardRef(
     return (
       <SelectBase
         defaultValue={defaultValue ? defaultValue.toString() : undefined}
-        value={defaultValue ? undefined : props.value}
+        value={defaultValue ? undefined : value}
         {...props}
         ref={ref}
       >
@@ -138,6 +138,7 @@ const SelectBase = styled.select.attrs((props: SelectProps) => ({
   px: props.p || CustomizableSelectAttributes.px,
   py: props.p || CustomizableSelectAttributes.py,
   type: 'text',
+  ...props,
 }))<SelectProps>`
   background: ${props =>
     props.validationType === 'error'
