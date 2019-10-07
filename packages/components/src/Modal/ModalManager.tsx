@@ -3,10 +3,7 @@ import React from 'react'
 import { ManagedModalProps } from '../Modal'
 
 export interface ModalManagerProps extends ManagedModalProps {
-  children: (
-    onClick: () => void,
-    ref: React.RefObject<HTMLElement>
-  ) => React.ReactNode
+  children: (onClick: () => void, ref: React.RefObject<any>) => React.ReactNode
   /**
    * Content that will be placed inside the Modal
    * @required
@@ -43,8 +40,8 @@ export abstract class ModalManager extends React.Component<
   ModalManagerProps,
   ModalManagerState
 > {
-  protected triggerRef: React.RefObject<HTMLElement>
-  protected portalRef: React.RefObject<HTMLElement>
+  protected portalRef: React.RefObject<HTMLDivElement>
+  protected triggerRef: React.RefObject<any>
 
   constructor(props: ModalManagerProps) {
     super(props)

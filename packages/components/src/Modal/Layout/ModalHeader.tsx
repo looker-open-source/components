@@ -1,46 +1,36 @@
-import React from 'react'
+import {
+  SpaceProps,
+  space,
+  CompatibleHTMLProps,
+  reset,
+} from '@looker/design-tokens'
 import { IconNames } from '@looker/icons'
-import { Box, BoxProps } from '../../Layout/Box'
+import styled from 'styled-components'
+import React, { FC, useContext } from 'react'
+
+import { Box } from '../../Layout/Box'
 import { Button } from '../../Button'
 import { Icon } from '../../Icon'
-import { ModalContextProps, withModal } from '../ModalContext'
+import { ModalContext } from '../ModalContext'
 
 export interface ModalHeaderProps
-  extends ModalContextProps,
-    BoxProps<HTMLDivElement> {
-  /**
-   * Content that will be placed inside the DialogHeader
-   * @required
-   */
-  children: React.ReactNode
-
+  extends SpaceProps,
+    CompatibleHTMLProps<HTMLElement> {
   /**
    * Specify an icon to be used for close. Defaults to `Close`
    */
   closeIcon?: IconNames
 }
 
-const Internal: React.FC<ModalHeaderProps> = ({
+export const ModalHeader: FC<ModalHeaderProps> = ({
   children,
-  closeModal,
   closeIcon = 'Close',
   ...props
 }) => {
-  /*
-   * @TODO / Note: When chrome supports `flex-basis: fit-content` minHeight can be removed
-   */
+  const { closeModal } = useContext(ModalContext)
 
   return (
-    <Box
-      alignItems="center"
-      display="flex"
-      flexDirection="row"
-      // @ts-ignore
-      as="header"
-      p="large"
-      px="xlarge"
-      {...props}
-    >
+    <Header {...props}>
       <Box mr="xlarge">{children}</Box>
       <Button
         tabIndex={-1}
@@ -52,8 +42,20 @@ const Internal: React.FC<ModalHeaderProps> = ({
       >
         <Icon name={closeIcon} size="1.25rem" />
       </Button>
-    </Box>
+    </Header>
   )
 }
 
-export const ModalHeader = withModal(Internal)
+const Header = styled.header<SpaceProps>`
+  ${reset}
+  ${space}
+
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+`
+
+Header.defaultProps = {
+  p: 'large',
+  px: 'xlarge',
+}

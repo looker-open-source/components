@@ -1,24 +1,31 @@
-import React, { FunctionComponent } from 'react'
+import { CompatibleHTMLProps, reset } from '@looker/design-tokens'
+import React, { FC } from 'react'
 import { HotKeys } from 'react-hotkeys'
-import styled, { CSSObject, StyledComponent } from 'styled-components'
-import omit from 'lodash/omit'
-import { Box, BoxProps } from '../Layout/Box'
-import { CustomizableModalAttributes } from './Modal'
+import styled, { CSSObject, css } from 'styled-components'
+import {
+  BackgroundColorProps,
+  BorderProps,
+  BoxShadowProps,
+  boxShadow,
+  border,
+  color,
+  LayoutProps,
+  layout,
+} from 'styled-system'
 import { ModalContext } from './ModalContext'
 
 export interface ModalSurfaceProps
-  extends Omit<BoxProps<HTMLDivElement>, 'as'> {
+  extends CompatibleHTMLProps<HTMLDivElement>,
+    BorderProps,
+    BoxShadowProps,
+    BackgroundColorProps,
+    LayoutProps {
+  surfaceStyle?: CSSObject
   anchor?: 'right'
   animationState?: string
 }
 
-export type ModalSurfaceComponentType = FunctionComponent<ModalSurfaceProps>
-export type StyledModalSurfaceComponentType = StyledComponent<
-  ModalSurfaceComponentType,
-  ModalSurfaceProps
->
-
-export const ModalSurface: ModalSurfaceComponentType = ({
+export const ModalSurface: FC<ModalSurfaceProps> = ({
   anchor,
   style,
   className,
@@ -53,43 +60,45 @@ export const ModalSurface: ModalSurfaceComponentType = ({
       //
       // display: contents would be another workaround when it gains broader (corrected) support
     >
-      <TransitionTimers
-        bg={CustomizableModalAttributes.surface.backgroundColor}
-        display="flex"
+      <Style
         className={`surface-overflow ${className}`}
-        flexDirection="column"
-        maxWidth="100%"
-        position="relative"
         tabIndex={-1}
         surfaceStyle={style as CSSObject}
-        focusStyle={{ outline: 'none' }}
         {...props}
       />
     </HotKeys>
   )
 }
 
-export interface SurfaceInternalProps
-  extends Omit<BoxProps<HTMLElement>, 'as'> {
-  surfaceStyle?: CSSObject
-}
+const surfaceTransition = () => css`
+  ${props =>
+    `${props.theme.transitions.durationModerate} ${props.theme.easings.ease}`}
+`
 
-export type InternalSurfaceComponentType = FunctionComponent<
-  SurfaceInternalProps
->
+const Style = styled.div<ModalSurfaceProps>`
+  ${reset}
+  ${boxShadow}
+  ${border}
+  ${layout}
 
-const SurfaceFactory: InternalSurfaceComponentType = props => (
-  <Box {...omit(props, 'surfaceStyle')} />
-)
+  ${color}
 
-const TransitionTimers = styled<InternalSurfaceComponentType>(SurfaceFactory)`
-  /* stylelint-disable */
-  box-shadow: ${props => props.theme.shadows[3]};
-
-  transition: transform ${props => props.theme.transitions.durationModerate}
-      ${props => props.theme.easings.ease},
-    opacity ${props => props.theme.transitions.durationModerate}
-      ${props => props.theme.easings.ease};
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  position: relative;
+  transition: transform ${surfaceTransition}, opacity ${surfaceTransition};
 
   ${props => props.surfaceStyle};
+
+  &:focus {
+    outline: none;
+  }
 `
+
+Style.defaultProps = {
+  backgroundColor: 'palette.white',
+  borderRadius: 'medium',
+  boxShadow: 3,
+  color: 'palette.charcoal900',
+}

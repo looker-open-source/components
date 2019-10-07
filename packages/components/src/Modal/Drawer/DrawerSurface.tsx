@@ -1,38 +1,12 @@
-import React, { FunctionComponent } from 'react'
-import styled, { StyledComponent } from 'styled-components'
+import styled from 'styled-components'
 import { ModalSurface, ModalSurfaceProps } from '../ModalSurface'
 
-export type DrawerSurfaceComponentType = FunctionComponent<ModalSurfaceProps>
-export type StyledDrawerSurfaceComponentType = StyledComponent<
-  DrawerSurfaceComponentType,
-  ModalSurfaceProps
->
-
-export const DrawerSurface: DrawerSurfaceComponentType = ({
-  children,
-  width = '30rem',
-  anchor = 'right',
-  ...props
-}) => {
-  return (
-    <Surface
-      height="100%"
-      maxWidth="100%"
-      width={width}
-      anchor={anchor}
-      {...props}
-    >
-      {children}
-    </Surface>
-  )
-}
-
-// Shadow here is designed to match theme.shadows[3] but with a single left-side shadow
-
-const Surface: StyledDrawerSurfaceComponentType = styled<
-  DrawerSurfaceComponentType
->(ModalSurface)`
+export const DrawerSurface = styled(ModalSurface)<ModalSurfaceProps>`
+  border-radius: 0;
   box-shadow: -18px 0 18px -18px rgba(0, 0, 0, 0.12);
+  /* Shadow designed to match theme.shadows[3] but with a single left-side shadow */
+  height: 100%;
+  max-width: 100%;
 
   &.entering,
   &.exiting {
@@ -45,3 +19,8 @@ const Surface: StyledDrawerSurfaceComponentType = styled<
     transform: translateX(0%);
   }
 `
+
+DrawerSurface.defaultProps = {
+  anchor: 'right',
+  width: '30rem',
+}

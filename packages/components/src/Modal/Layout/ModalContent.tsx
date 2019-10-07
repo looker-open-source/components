@@ -1,23 +1,26 @@
-import React, { FunctionComponent } from 'react'
+import {
+  palette,
+  CompatibleHTMLProps,
+  SpaceProps,
+  reset,
+  space,
+  LayoutProps,
+  layout,
+} from '@looker/design-tokens'
+import React from 'react'
 import ReactResizeDetector from 'react-resize-detector'
-import styled, { StyledComponent } from 'styled-components'
-import { palette } from '@looker/design-tokens'
+import styled from 'styled-components'
 import omit from 'lodash/omit'
-import { Box, BoxProps } from '../../Layout/Box'
 
 export interface ModalContentProps
-  extends Omit<BoxProps<HTMLDivElement>, 'as'> {
-  /**
-   * Content that will be placed inside the DialogHeader
-   * @required
-   */
-  children: React.ReactNode
+  extends LayoutProps,
+    CompatibleHTMLProps<HTMLDivElement> {
   /**
    * Style the scrollable space within the ModalContent.
    * Often p="none" is applied if componennts within the the ModalContent need to the
    * touch the container edges.
    */
-  innerProps?: Omit<BoxProps<HTMLDivElement>, 'as'>
+  innerProps?: SpaceProps
 }
 
 interface ContentState {
@@ -27,12 +30,6 @@ interface ContentState {
 interface InternalContentProps extends ModalContentProps {
   renderedHeight: string
 }
-
-export type ModalContentComponentType = FunctionComponent<ModalContentProps>
-export type StyledModalContentComponentType = StyledComponent<
-  ModalContentComponentType,
-  ModalContentProps
->
 
 class Internal extends React.Component<InternalContentProps, ContentState> {
   private ref: React.RefObject<HTMLDivElement>
@@ -62,23 +59,18 @@ class Internal extends React.Component<InternalContentProps, ContentState> {
     }
 
     return (
-      <ContentContainer
-        overflow="auto"
-        className={`${className && className} ${this.state.overflow &&
-          'overflow'}`}
+      <Outer
+        className={`${className} ${this.state.overflow && 'overflow'}`}
         ref={this.ref}
-        flex="8"
         {...omit(props, ['renderedHeight'])}
       >
-        <Box p="large" px="xlarge" {...innerProps}>
-          {children}
-        </Box>
-      </ContentContainer>
+        <Inner {...innerProps}>{children}</Inner>
+      </Outer>
     )
   }
 }
 
-export const ModalContent: ModalContentComponentType = props => {
+export const ModalContent = (props: ModalContentProps) => {
   return (
     <ReactResizeDetector handleHeight>
       {(height: string) => <Internal renderedHeight={height} {...props} />}
@@ -86,9 +78,22 @@ export const ModalContent: ModalContentComponentType = props => {
   )
 }
 
-const ContentContainer = styled(Box)`
+const Outer = styled.div`
+  ${reset}
+  ${layout}
+
+  overflow: auto;
+  flex: 8;
+
   &.overflow {
     box-shadow: inset 0 -16px 16px -16px ${palette.charcoal200},
       inset 0 16px 16px -16px ${palette.charcoal200};
   }
 `
+
+const Inner = styled.div<SpaceProps>`
+  ${reset}
+  ${space}
+`
+
+Inner.defaultProps = { p: 'large', px: 'xlarge' }

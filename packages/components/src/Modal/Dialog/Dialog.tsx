@@ -2,15 +2,7 @@ import React from 'react'
 import { Modal, ModalProps } from '../Modal'
 import { DialogSurface } from './DialogSurface'
 
-export interface DialogProps extends ModalProps {
-  /**
-   * Content that will be placed inside the Dialog
-   * @required
-   */
-  children: React.ReactNode
-}
-
-export const Dialog: React.FC<DialogProps> = ({
+export const Dialog: React.FC<ModalProps> = ({
   width,
   children,
   surfaceStyles,

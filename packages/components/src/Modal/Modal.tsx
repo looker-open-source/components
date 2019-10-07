@@ -1,8 +1,8 @@
 import React from 'react'
 import { CSSTransition } from 'react-transition-group'
-import { css, CSSObject, FlattenSimpleInterpolation } from 'styled-components'
-import { CustomizableAttributes, fadeIn, theme } from '@looker/design-tokens'
-import { BackdropStyles, ModalBackdrop } from './ModalBackdrop'
+import { CSSObject, FlattenSimpleInterpolation } from 'styled-components'
+import { CustomizableAttributes } from '@looker/design-tokens'
+import { ModalBackdrop } from './ModalBackdrop'
 import { ModalContext } from './ModalContext'
 import { ModalPortal } from './ModalPortal'
 
@@ -17,34 +17,11 @@ export interface ModalSurfaceStyleProps {
 }
 
 export interface CustomizableModalAttributes extends CustomizableAttributes {
-  backdrop: BackdropStyles
-  surface: ModalSurfaceStyleProps
-  zIndex: number
+  zIndex?: number
 }
 
-/*
- * NOTE: Use longform version of tagged function to prevent stylelint
- * from parsing and complaining about css`` keyframe interpolation.
- *
- * EQUIVALENT: css`${fadeIn} 0.2s linear;`
- */
-const animationRule = css(
-  (['', ' 0.2s linear;'] as any) as TemplateStringsArray,
-  fadeIn
-)
-
 export const CustomizableModalAttributes: CustomizableModalAttributes = {
-  backdrop: { backgroundColor: theme.colors.palette.charcoal200, opacity: 0.6 },
-  surface: {
-    animation: animationRule,
-    backgroundColor: theme.colors.palette.white,
-    border: 'none',
-    borderColor: 'none',
-    borderRadius: 'medium',
-    boxShadow: theme.shadows[3],
-    color: theme.colors.palette.charcoal000,
-  },
-  zIndex: 0,
+  backdrop: { backgroundColor: 'palette.charcoal200', opacity: 0.6 },
 }
 
 export interface ManagedModalProps {
@@ -68,7 +45,7 @@ export interface ManagedModalProps {
    */
   width?: string
 
-  portalRef?: React.RefObject<HTMLElement>
+  portalRef?: React.RefObject<HTMLDivElement>
 }
 
 export interface ModalProps extends ManagedModalProps {
@@ -91,7 +68,7 @@ export interface ModalInternalProps extends ModalProps {
    */
   render: (animationState: string) => JSX.Element
 
-  portalRef?: React.RefObject<HTMLElement>
+  portalRef?: React.RefObject<HTMLDivElement>
 }
 
 export const Modal: React.FC<ModalInternalProps> = ({

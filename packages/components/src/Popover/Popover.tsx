@@ -57,7 +57,7 @@ export interface PopoverProps {
    */
   canClose?: () => boolean
 
-  portalRef?: React.RefObject<HTMLElement>
+  portalRef?: React.RefObject<HTMLDivElement>
 
   /**
    * By default Popover cancels event bubbling when a click event triggers the closure of the Popover.
@@ -89,8 +89,8 @@ export const Popover: React.FC<PopoverProps> = ({
   ...props
 }) => {
   const [isOpen, setOpen] = useState(initializeOpen)
-  const portalRef = useRef<HTMLElement | null>(null)
-  const triggerRef = useRef<HTMLElement>(null)
+  const portalRef = useRef<HTMLDivElement | null>(null)
+  const triggerRef = useRef<any>(null)
 
   const handleOpen = (event: React.SyntheticEvent) => {
     setOpen(true)

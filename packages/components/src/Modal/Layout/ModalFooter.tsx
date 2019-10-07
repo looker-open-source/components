@@ -1,71 +1,47 @@
-import React, { FunctionComponent } from 'react'
-import styled, { StyledComponent } from 'styled-components'
-import { ThemedProps } from '@looker/design-tokens'
-import { Box, BoxProps } from '../../Layout/Box'
+import React, { FC } from 'react'
+import styled from 'styled-components'
+import { CompatibleHTMLProps } from '@looker/design-tokens/src'
+import { SpaceProps, space } from 'styled-system'
 
-export interface ModalFooterProps extends Omit<BoxProps<HTMLDivElement>, 'as'> {
-  /**
-   * Content that will be placed inside the DialogHeader
-   * @required
-   */
-  children: React.ReactNode
-
+export interface ModalFooterProps extends CompatibleHTMLProps<HTMLDivElement> {
   /**
    * Secondary content to place in the footer
    */
   secondary?: React.ReactNode
-  theme?: ThemedProps<any>
 }
 
-export type ModalFooterComponentType = FunctionComponent<ModalFooterProps>
-
-export const ModalFooter: ModalFooterComponentType = ({
+export const ModalFooter: FC<ModalFooterProps> = ({
   children,
   secondary,
   ...props
 }) => {
-  /*
-   * @TODO / Note: When chrome supports `flex-basis: fit-content` minHeight can be removed
-   */
   return (
-    <Layout
-      alignItems="center"
-      display="flex"
-      // @ts-ignore
-      as="footer"
-      flexDirection="row-reverse"
-      {...props}
-    >
-      <SpaceChildren flexDirection="row-reverse">{children}</SpaceChildren>
+    <Layout {...props}>
+      <SpaceChildren>{children}</SpaceChildren>
       {secondary && <SpaceChildren mr="auto">{secondary}</SpaceChildren>}
     </Layout>
   )
 }
 
-export type ThemedBoxProps = Omit<BoxProps<HTMLElement>, 'as'>
-export type BoxComponentType = FunctionComponent<ThemedBoxProps>
-export type StyledBoxComponentType = StyledComponent<
-  BoxComponentType,
-  ThemedBoxProps
->
-
-// Subtract margin placed on children from the horizonal padding applied to the component
-// so that the content is properly aligned.
-// padding is: vertical: large, horizonal: calc(xlarge - xsmall)
-const Layout: StyledBoxComponentType = styled<StyledBoxComponentType>(Box)`
-  padding: ${(props: any) => props.theme.space.large}
-    calc(
-      ${(p: any) => p.theme.space.xlarge} - ${(p: any) => p.theme.space.xsmall}
-    );
+const Layout = styled.footer`
+  align-items: center;
+  flex-direction: row-reverse;
+  padding: ${props => props.theme.space.large}
+    calc(${p => p.theme.space.xlarge} - ${p => p.theme.space.xsmall});
+  /**
+    * Subtract margin placed on children from the horizonal padding applied to the component
+    * so that the content is properly aligned.
+    * padding is: vertical: large, horizonal: calc(xlarge - xsmall)
+    **/
 `
 
-const SpaceChildren: StyledBoxComponentType = styled<StyledBoxComponentType>(
-  Box
-)`
+const SpaceChildren = styled.div<SpaceProps>`
+  ${space};
   display: flex;
+  flex-direction: row-reverse;
 
   & > * {
-    margin-right: ${(props: any) => props.theme.space.xsmall};
-    margin-left: ${(props: any) => props.theme.space.xsmall};
+    margin-right: ${props => props.theme.space.xsmall};
+    margin-left: ${props => props.theme.space.xsmall};
   }
 `

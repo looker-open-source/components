@@ -1,33 +1,7 @@
-import React, { FunctionComponent } from 'react'
-import styled, { StyledComponent } from 'styled-components'
-import { CustomizableModalAttributes } from '../Modal'
+import styled from 'styled-components'
 import { ModalSurface, ModalSurfaceProps } from '../ModalSurface'
 
-export type DialogSurfaceComponentType = FunctionComponent<ModalSurfaceProps>
-export type StyledDialogSurfaceComponentType = StyledComponent<
-  DialogSurfaceComponentType,
-  ModalSurfaceProps
->
-
-export const DialogSurface: DialogSurfaceComponentType = ({
-  children,
-  ...props
-}) => {
-  return (
-    <Surface
-      borderRadius={CustomizableModalAttributes.surface.borderRadius}
-      maxHeight="90vh"
-      maxWidth="100%"
-      {...props}
-    >
-      {children}
-    </Surface>
-  )
-}
-
-const Surface: StyledDialogSurfaceComponentType = styled<
-  DialogSurfaceComponentType
->(ModalSurface)`
+export const DialogSurface = styled(ModalSurface)<ModalSurfaceProps>`
   &.entering,
   &.exiting {
     opacity: 0.01;
@@ -39,3 +13,8 @@ const Surface: StyledDialogSurfaceComponentType = styled<
     transform: translateY(0%);
   }
 `
+
+DialogSurface.defaultProps = {
+  maxHeight: '90vh',
+  maxWidth: '100%',
+}

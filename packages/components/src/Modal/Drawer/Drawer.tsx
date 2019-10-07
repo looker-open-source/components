@@ -2,15 +2,7 @@ import React from 'react'
 import { Modal, ModalProps } from '../Modal'
 import { DrawerSurface } from './DrawerSurface'
 
-export interface DrawerProps extends ModalProps {
-  /**
-   * Content that will be placed inside the Dialog
-   * @required
-   */
-  children: React.ReactNode
-}
-
-export const Drawer: React.FC<DrawerProps> = ({
+export const Drawer: React.FC<ModalProps> = ({
   width,
   children,
   surfaceStyles,
