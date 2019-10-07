@@ -19,7 +19,7 @@ export interface BoxProps
 
 export const Box = styled.div<BoxProps>`
   ${layoutCSS}
-  ${flexbox}
   ${psuedoClasses}
   ${userSelect}
+  ${flexbox}
 `

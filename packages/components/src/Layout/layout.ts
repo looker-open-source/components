@@ -2,7 +2,6 @@ import {
   border,
   boxShadow,
   color,
-  cursor,
   position,
   layout,
   reset,
@@ -11,7 +10,6 @@ import {
   BorderProps,
   BoxShadowProps,
   ColorProps,
-  CursorProps,
   PositionProps,
   LayoutProps,
   SpaceProps,
@@ -23,7 +21,6 @@ export interface LayoutComponentProps
   extends BorderProps,
     BoxShadowProps,
     ColorProps,
-    CursorProps,
     LayoutProps,
     PositionProps,
     SpaceProps,
@@ -37,7 +34,6 @@ export const layoutCSS = css`
    * would be overwritten by an explicit <Box cursor='copy'/>.
    */
   ${reset}
-  ${cursor}
 
   /**
    * Style Utilities that extend Box's props. Most of these come from
@@ -48,7 +44,6 @@ export const layoutCSS = css`
   ${border}
   ${boxShadow}
   ${color}
-  ${cursor}
   ${layout}
   ${position}
   ${space}
