@@ -1,16 +1,7 @@
-import { ComponentType } from 'react'
-import styled, { StyledComponent } from 'styled-components'
-import { ThemedProps } from '@looker/design-tokens'
+import styled from 'styled-components'
 import { Slider, SliderProps } from '../../Form/Inputs/Slider'
 
-type ThemedSlider = ThemedProps<SliderProps>
-type StyledThemedSlider = StyledComponent<
-  ComponentType<SliderProps>,
-  ThemedSlider
->
-
-/** @component */
-export const LuminositySlider = styled<StyledThemedSlider>(Slider)`
+export const LuminositySlider = styled(Slider)<SliderProps>`
   appearance: none;
   background: transparent;
   width: 100%;

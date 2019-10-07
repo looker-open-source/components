@@ -1,8 +1,8 @@
 import { radii } from '@looker/design-tokens'
 import React from 'react'
 import omit from 'lodash/omit'
-import { Flex } from '../../Layout/Flex'
-import { FlexItem } from '../../Layout/FlexItem'
+import { Flex } from '../Layout/Flex'
+import { FlexItem } from '../Layout/FlexItem'
 import {
   ComponentWithForm,
   CustomizableInputTextAttributes,
@@ -12,19 +12,19 @@ import {
   InputText,
   InputTextProps,
   withForm,
-} from '../../Form'
-import { Popover } from '../../Popover'
+} from '../Form'
+import { Popover } from '../Popover'
 import {
   HueSaturation,
   polarbrightness2hsv,
   SimpleHSV,
   white,
-} from '../ColorWheel/color_wheel_utils'
-import { ColorWheel } from '../ColorWheel/ColorWheel'
-import { LuminositySlider } from '../LuminositySlider/LuminositySlider'
-import { Swatch } from '../Swatch/Swatch'
-import * as ColorFormatUtils from '../utils/color_format_utils'
-import { isValidColor } from '../utils/color_utils'
+} from './ColorWheel/color_wheel_utils'
+import { ColorWheel } from './ColorWheel'
+import { LuminositySlider } from './LuminositySlider'
+import { Swatch } from './Swatch'
+import * as ColorFormatUtils from './utils/color_format_utils'
+import { isValidColor } from './utils/color_utils'
 
 export interface ColorFieldPickerProps extends FieldProps, InputTextProps {
   /**
@@ -87,15 +87,8 @@ class InternalColorFieldPicker extends React.Component<
       cwSize = 164,
     } = this.props
     const hsvColor = this.getHSVColor()
-    let borderRadius
-    if (
-      typeof CustomizableInputTextAttributes.borderRadius === 'string' &&
-      radii[CustomizableInputTextAttributes.borderRadius]
-    ) {
-      borderRadius = radii[CustomizableInputTextAttributes.borderRadius]
-    } else {
-      borderRadius = CustomizableInputTextAttributes.borderRadius
-    }
+    const borderRadius =
+      radii[CustomizableInputTextAttributes.borderRadius || 'medium']
     const swatchBorderRadius = `${borderRadius} 0 0 ${borderRadius}`
     const inputTextBorderRadius = `0 ${borderRadius} ${borderRadius} 0`
 
@@ -113,7 +106,7 @@ class InternalColorFieldPicker extends React.Component<
           max={100}
           step={1}
           value={hsvColor.v * 100}
-          width={cwSize}
+          // width={cwSize}
           onChange={this.proxyHandleSliderChange.bind(this, hsvColor)}
         />
       </Flex>
