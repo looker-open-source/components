@@ -3,11 +3,14 @@
   "private": true,
   "version": "0.1.0",
   "dependencies": {
+    "copy-text-to-clipboard": "^2.1.1",
     "gatsby": "^2.15.25",
     "gatsby-image": "^2.2.21",
     "gatsby-plugin-manifest": "^2.2.18",
-    "gatsby-plugin-offline": "^3.0.9",
-    "react-copy-to-clipboard": "^5.0.1"
+    "gatsby-plugin-offline": "^3.0.11",
+    "prism-react-renderer": "^1.0.1",
+    "react-copy-to-clipboard": "^5.0.1",
+    "react-live": "^2.2.1"
   },
   "devDependencies": {
     "@looker/components": "^0.1.0",
@@ -16,6 +19,7 @@
     "@looker/icons": "^0.1.0",
     "@typescript-eslint/parser": "^2.3.1",
     "d3-hsv": "^0.1.0",
+    "docz": "^2.0.0-rc.52",
     "eslint": "^6.4.0",
     "eslint-loader": "^3.0.0",
     "eslint-plugin-mdx": "^1.5.5",
