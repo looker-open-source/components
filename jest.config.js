@@ -1,15 +1,15 @@
 module.exports = {
   automock: false,
-  setupFilesAfterEnv: ['./jest.setup.js'],
+  moduleDirectories: ['./node_modules', './packages'],
+  moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json', 'node'],
   moduleNameMapper: {
     '\\.(css)$': '<rootDir>/__mocks__/fileMock.js',
     '\\.(svg)$': '<rootDir>/__mocks__/fileMock.js',
     '\\.(woff)$': '<rootDir>/__mocks__/fileMock.js',
   },
-  moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json', 'node'],
-  transform: {
-    '^.+\\.(jsx)$': 'babel-jest',
-    '^.+\\.(ts|tsx)$': 'ts-jest',
-  },
+  setupFilesAfterEnv: ['./jest.setup.js'],
   testMatch: ['**/?(*.)(spec|test).(ts|js)?(x)'],
+  transform: {
+    '^.+\\.(js|jsx|ts|tsx)$': 'babel-jest',
+  },
 }
