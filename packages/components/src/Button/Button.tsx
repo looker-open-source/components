@@ -53,13 +53,13 @@ export const buttonCSS = css`
 
 const ButtonBase = styled.button<ButtonProps>`
   ${reset}
-  ${space}
 
   ${buttonCSS}
-
   ${buttonSize}
   ${buttonVariant}
   ${buttonIcon}
+
+  ${space}
 `
 
 export const Button = styled(ButtonComponent)``
