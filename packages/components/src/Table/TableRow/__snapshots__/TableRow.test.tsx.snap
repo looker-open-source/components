@@ -9,8 +9,6 @@ exports[`A <TableRow> should render 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
 }
 
 <tr

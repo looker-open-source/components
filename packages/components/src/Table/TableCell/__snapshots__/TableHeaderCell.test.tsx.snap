@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`A <TableDataCell> should render 1`] = `
+exports[`A <TableHeaderCell> should render 1`] = `
 .c0 {
   border: 0;
   box-sizing: border-box;
@@ -9,15 +9,21 @@ exports[`A <TableDataCell> should render 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  border-top: solid 1px;
-  border-color: #DEE1E5;
+  color: #939BA5;
   padding-left: 0rem;
   padding-right: 0rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
 }
 
-<td
+<th
   className="c0"
-/>
+  color="palette.charcoal400"
+  fontSize="xsmall"
+  fontWeight="semiBold"
+>
+  1
+</th>
 `;

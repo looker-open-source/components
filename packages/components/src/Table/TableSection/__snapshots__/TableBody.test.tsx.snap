@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`A Table should render 1`] = `
+exports[`A <TableBody> should render 1`] = `
 .c0 {
   border: 0;
   box-sizing: border-box;
@@ -9,12 +9,10 @@ exports[`A Table should render 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  width: 100%;
-  border-collapse: collapse;
+  text-align: left;
 }
 
-<table
+<tbody
   className="c0"
-  width="100%"
 />
 `;
