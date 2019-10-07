@@ -5,6 +5,8 @@ import {
   CustomizableAttributes,
   palette,
   PsuedoProps,
+  space,
+  SpaceProps,
 } from '@looker/design-tokens'
 import { Checkbox } from '../Checkbox'
 import { InputProps } from '../InputProps'
@@ -32,7 +34,8 @@ export interface KnobProps {
 }
 
 export interface ToggleSwitchProps
-  extends Omit<InputProps, 'type'>,
+  extends SpaceProps,
+    Omit<InputProps, 'type'>,
     Omit<KnobProps, 'size'> {
   size?: number
 }
@@ -107,25 +110,13 @@ const DisabledKnob = styled.div<{ size: number }>`
   border-radius: ${props => rem(props.size)};
 `
 
-const ToggleSwitchContainer = styled.div<KnobProps>`
-  :focus + div {
-    box-shadow: 0 0 0 0.2rem ${rgba(palette.primary500, 0.4)};
-  }
-  width: ${props => rem((props.size || 20) * 1.75)};
-  height: ${props => rem(props.size || 20)};
-  display: inline-block;
-  position: relative;
-  vertical-align: middle;
-  cursor: ${props => (!props.disabled ? 'pointer' : undefined)};
-`
-
-export const ToggleSwitch = forwardRef(
+export const ToggleSwitchComponent = forwardRef(
   (
-    { disabled, on, size = 20, ...props }: ToggleSwitchProps,
+    { className, disabled, on, size = 20, ...props }: ToggleSwitchProps,
     ref: Ref<HTMLInputElement>
   ) => {
     return (
-      <ToggleSwitchContainer size={size} disabled={disabled}>
+      <div className={className}>
         <HiddenCheckbox
           checked={on}
           disabled={disabled}
@@ -136,7 +127,20 @@ export const ToggleSwitch = forwardRef(
         />
         <KnobContainer size={size} on={on} disabled={disabled} />
         {disabled && <DisabledKnob size={size} />}
-      </ToggleSwitchContainer>
+      </div>
     )
   }
 )
+
+export const ToggleSwitch = styled(ToggleSwitchComponent)`
+  :focus + div {
+    box-shadow: 0 0 0 0.2rem ${rgba(palette.primary500, 0.4)};
+  }
+  width: ${props => rem((props.size || 20) * 1.75)};
+  height: ${props => rem(props.size || 20)};
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  cursor: ${props => (!props.disabled ? 'pointer' : undefined)};
+  ${space}
+`
