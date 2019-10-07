@@ -1,12 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {
-  Banner,
-  Button,
-  GlobalStyle,
-  InputText,
-  Paragraph,
-} from '@looker/components'
+import { Banner, Button, GlobalStyle, Paragraph } from '@looker/components'
 import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
 
@@ -17,7 +11,6 @@ const App: React.FC = () => (
       <Paragraph fontSize="xxlarge">Hello world</Paragraph>
       <Button>Boot my app!</Button>
       <Banner intent="info">Boot my app!</Banner>
-      <InputText placeholder="foo" />
     </>
   </ThemeProvider>
 )
