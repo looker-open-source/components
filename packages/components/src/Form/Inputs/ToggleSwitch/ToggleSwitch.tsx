@@ -1,13 +1,13 @@
 import { rem, rgba } from 'polished'
-import React, { FunctionComponent } from 'react'
-import styled, { css, StyledComponent } from 'styled-components'
+import React, { forwardRef, Ref } from 'react'
+import styled from 'styled-components'
 import {
   CustomizableAttributes,
   palette,
-  ThemedProps,
+  PsuedoProps,
 } from '@looker/design-tokens'
-import { Box, BoxProps } from '../../../Layout/Box'
 import { Checkbox } from '../Checkbox'
+import { InputProps } from '../InputProps'
 
 export interface CustomizableToggleSwitchAttributes
   extends CustomizableAttributes {
@@ -32,130 +32,111 @@ export interface KnobProps {
 }
 
 export interface ToggleSwitchProps
-  extends Omit<BoxProps<HTMLInputElement>, 'as'>,
+  extends Omit<InputProps, 'type'>,
     Omit<KnobProps, 'size'> {
   size?: number
 }
 
-type KnobComponentType = FunctionComponent<KnobProps>
-type StyledKnobComponentType = StyledComponent<KnobComponentType, KnobProps>
+const Knob = styled.div<KnobProps>`
+  transform: ${props =>
+    props.on ? `translateX(${rem(props.size * 0.75)})` : ''};
+  transition: ${props => props.theme.transitions.durationModerate};
+  position: absolute;
+  bottom: ${props => rem(props.size * 0.1)};
+  left: ${props => rem(props.size * 0.1)};
+  width: ${props => rem(props.size * 0.8)};
+  height: ${props => rem(props.size * 0.8)};
+  border-radius: 50%;
+  background: ${props =>
+    props.on
+      ? CustomizableToggleSwitchAttributes.knobOnColor
+      : CustomizableToggleSwitchAttributes.knobOffColor};
+`
 
-const knobTransform = (props: ThemedProps<KnobProps>) => {
-  const transform = props.on ? `translateX(${rem(props.size * 0.75)})` : ''
-  return css`
-    transform: ${transform};
-    transition: ${props.theme.transitions.durationModerate};
-  `
-}
-
-const KnobFactory: React.FC<KnobProps> = ({ className, ...props }) => (
-  <Box
-    className={className}
-    position="absolute"
-    bottom={rem(props.size * 0.1)}
-    left={rem(props.size * 0.1)}
-    width={rem(props.size * 0.8)}
-    height={rem(props.size * 0.8)}
-    borderRadius="50%"
-    bg={
-      props.on
-        ? CustomizableToggleSwitchAttributes.knobOnColor
-        : CustomizableToggleSwitchAttributes.knobOffColor
-    }
-  />
+const KnobContainer = forwardRef(
+  ({ className, ...props }: KnobProps, ref: Ref<HTMLDivElement>) => {
+    const hoverStyle = props.disabled
+      ? undefined
+      : { boxShadow: `0 0 .01rem 0.01rem ${rgba(palette.primary500, 0.5)}` }
+    return (
+      <KnobContainerBase
+        className={className}
+        hoverStyle={hoverStyle}
+        size={props.size}
+        on={props.on}
+        ref={ref}
+      >
+        <Knob {...props} />
+      </KnobContainerBase>
+    )
+  }
 )
 
-const Knob: StyledKnobComponentType = styled<KnobComponentType>(KnobFactory)`
-  ${knobTransform};
-`
-
-const KnobContainerFactory: KnobComponentType = ({ className, ...props }) => {
-  const hoverStyle = props.disabled
-    ? undefined
-    : { boxShadow: `0 0 .01rem 0.01rem ${rgba(palette.primary500, 0.5)}` }
-  return (
-    <Box
-      className={className}
-      position="absolute"
-      top="0"
-      bottom="0"
-      left="0"
-      right="0"
-      borderRadius={rem(props.size)}
-      bg={
-        props.on
-          ? CustomizableToggleSwitchAttributes.onColor
-          : CustomizableToggleSwitchAttributes.offColor
-      }
-      hoverStyle={hoverStyle}
-    >
-      <Knob {...props} />
-    </Box>
-  )
-}
-
-const KnobContainer: StyledKnobComponentType = styled<KnobComponentType>(
-  KnobContainerFactory
-)`
+const KnobContainerBase = styled.div<KnobProps & PsuedoProps>`
   transition: ${props => props.theme.transitions.durationModerate};
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: ${props => rem(props.size)};
+  background: ${props =>
+    props.on
+      ? CustomizableToggleSwitchAttributes.onColor
+      : CustomizableToggleSwitchAttributes.offColor};
 `
 
-export type ToggleSwitchComponentType = FunctionComponent<ToggleSwitchProps>
-export type StyledToggleSwitchComponentType = StyledComponent<
-  ToggleSwitchComponentType,
-  ToggleSwitchProps
->
+const HiddenCheckbox = styled(Checkbox)`
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+`
 
-const InternalToggleSwitch: ToggleSwitchComponentType = ({
-  size = 20,
-  disabled,
-  on,
-  ...props
-}) => {
-  return (
-    <Box
-      width={rem(size * 1.75)}
-      height={rem(size)}
-      display="inline-block"
-      position="relative"
-      verticalAlign="middle"
-      cursor={!disabled ? 'pointer' : undefined}
-    >
-      <Checkbox
-        checked={on}
-        disabled={disabled}
-        opacity={0}
-        width="100%"
-        height="100%"
-        role="switch"
-        aria-checked={on}
-        position="absolute"
-        top="0"
-        left="0"
-        zIndex={1}
-        {...props}
-      />
-      <KnobContainer size={size} on={on} disabled={disabled} />
-      {disabled && (
-        <Box
-          position="absolute"
-          top="0"
-          bottom="0"
-          left="0"
-          right="0"
-          opacity={0.4}
-          bg={palette.charcoal300}
-          borderRadius={rem(size)}
-        />
-      )}
-    </Box>
-  )
-}
+const DisabledKnob = styled.div<{ size: number }>`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0.4;
+  background: ${props => props.theme.colors.palette.charcoal300};
+  border-radius: ${props => rem(props.size)};
+`
 
-export const ToggleSwitch: StyledToggleSwitchComponentType = styled<
-  ToggleSwitchComponentType
->(InternalToggleSwitch)`
-  :focus + ${Box} {
+const ToggleSwitchContainer = styled.div<KnobProps>`
+  :focus + div {
     box-shadow: 0 0 0 0.2rem ${rgba(palette.primary500, 0.4)};
   }
+  width: ${props => rem((props.size || 20) * 1.75)};
+  height: ${props => rem(props.size || 20)};
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  cursor: ${props => (!props.disabled ? 'pointer' : undefined)};
 `
+
+export const ToggleSwitch = forwardRef(
+  (
+    { disabled, on, size = 20, ...props }: ToggleSwitchProps,
+    ref: Ref<HTMLInputElement>
+  ) => {
+    return (
+      <ToggleSwitchContainer size={size} disabled={disabled}>
+        <HiddenCheckbox
+          checked={on}
+          disabled={disabled}
+          role="switch"
+          aria-checked={on}
+          ref={ref}
+          {...props}
+        />
+        <KnobContainer size={size} on={on} disabled={disabled} />
+        {disabled && <DisabledKnob size={size} />}
+      </ToggleSwitchContainer>
+    )
+  }
+)
