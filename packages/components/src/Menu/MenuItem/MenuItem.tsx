@@ -1,9 +1,7 @@
-import merge from 'lodash/merge'
-import React, { FunctionComponent, Ref } from 'react'
-import styled, { StyledComponent } from 'styled-components'
+import { FontSizes, CompatibleHTMLProps } from '@looker/design-tokens'
 import { IconNames } from '@looker/icons'
-import { FontSizes } from '@looker/design-tokens'
-import { BoxProps } from '../../Layout/Box'
+import merge from 'lodash/merge'
+import React, { FC } from 'react'
 import { Icon } from '../../Icon'
 import { MenuContext, MenuContextProps } from '../MenuContext'
 import { MenuItemButton } from './MenuItemButton'
@@ -72,7 +70,7 @@ const assignCustomizations = (
 }
 
 export interface MenuItemProps
-  extends Omit<BoxProps<HTMLAnchorElement>, 'as'>,
+  extends CompatibleHTMLProps<HTMLElement>,
     MenuContextProps {
   detail?: React.ReactNode
   icon?: IconNames
@@ -92,15 +90,12 @@ export interface MenuItemProps
    *
    */
   itemRole?: 'link' | 'button'
-  onClick?: () => void
-  href?: string
-  target?: string
+  // onClick?: () => void
+  // href?: string
+  // target?: string
 }
 
-type ComponentType = FunctionComponent<MenuItemProps>
-type StyledComponentType = StyledComponent<ComponentType, MenuItemProps>
-
-const InternalMenuItem: ComponentType = props => {
+export const MenuItem: FC<MenuItemProps> = props => {
   const {
     current,
     currentMarker,
@@ -128,20 +123,15 @@ const InternalMenuItem: ComponentType = props => {
   const compactIconModifier = isCompact ? 1.25 : 1
 
   const style = assignCustomizations(defaultMenuItemStyle, customizations)
-  const state = current ? style.current : style.initial
-
-  const { iconSize, iconColor, ...listItemProps } = state
+  const styleState = current ? style.current : style.initial
+  const { iconSize, iconColor, ...listItemProps } = styleState
 
   return (
     <MenuItemListItem
       current={current}
       currentMarker={currentMarker}
       itemStyle={style}
-      alignItems="center"
       aria-current={current && 'page'}
-      display="flex"
-      flexWrap="wrap"
-      as="li"
       onClick={onClick}
       {...listItemProps}
       {...boxProps}
@@ -168,12 +158,3 @@ const InternalMenuItem: ComponentType = props => {
     </MenuItemListItem>
   )
 }
-
-const MenuItemFactory = React.forwardRef<StyledComponentType, MenuItemProps>(
-  (props: MenuItemProps, ref: Ref<StyledComponentType>) => (
-    <InternalMenuItem ref={ref} {...props} />
-  )
-)
-
-/** @component */
-export const MenuItem = styled<ComponentType>(MenuItemFactory)``

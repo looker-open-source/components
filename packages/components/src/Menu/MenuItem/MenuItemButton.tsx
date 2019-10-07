@@ -1,18 +1,19 @@
-import React, { FunctionComponent } from 'react'
-import styled, { StyledComponent } from 'styled-components'
-import { Box } from '../../Layout/Box'
-import { MenuItemProps } from './MenuItem'
+import styled from 'styled-components'
+import {
+  reset,
+  space,
+  CompatibleHTMLProps,
+  SpaceProps,
+} from '@looker/design-tokens'
 
-export type MenuItemComponentType = FunctionComponent<MenuItemProps>
-export type StyledMenuItemComponentType = StyledComponent<
-  MenuItemComponentType,
-  MenuItemProps
->
-const MenuItemButtonFactory = (props: MenuItemProps) => <Box {...props} />
+export interface MenuItemButtonProps
+  extends SpaceProps,
+    CompatibleHTMLProps<HTMLElement> {}
 
-export const MenuItemButton: StyledMenuItemComponentType = styled<
-  MenuItemComponentType
->(MenuItemButtonFactory)`
+export const MenuItemButton = styled.button<MenuItemButtonProps>`
+  ${reset}
+  ${space}
+
   align-items: center;
   background: transparent;
   color: inherit;

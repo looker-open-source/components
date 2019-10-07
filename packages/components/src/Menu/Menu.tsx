@@ -1,32 +1,21 @@
-import React, { FunctionComponent } from 'react'
+import { CompatibleHTMLProps, palette } from '@looker/design-tokens'
+import React, { FC } from 'react'
 import { HotKeys } from 'react-hotkeys'
-import styled, { css, StyledComponent } from 'styled-components'
-import omit from 'lodash/omit'
-import { palette } from '@looker/design-tokens'
-import { Box, BoxProps } from '../Layout/Box'
+import styled, { css } from 'styled-components'
 import { MenuContext, MenuContextProps } from './MenuContext'
-import { MenuGroup } from './MenuGroup'
 import { moveFocus } from './moveFocus'
+import { MenuGroup } from './MenuGroup'
 
 export interface MenuProps
-  extends Omit<BoxProps<HTMLDivElement>, 'as'>,
+  extends CompatibleHTMLProps<HTMLUListElement>,
     MenuContextProps {
   groupDividers?: boolean
   compact?: boolean
 }
 
-export type MenuComponentType = FunctionComponent<MenuProps>
-export type StyledMenuComponentType = StyledComponent<
-  MenuComponentType,
-  MenuProps
->
+export const Menu: FC<MenuProps> = props => {
+  const { customizationProps, compact, children, ...styleProps } = props
 
-const InternalMenu: MenuComponentType = ({
-  customizationProps,
-  compact,
-  children,
-  ...props
-}) => {
   const ref = React.useRef<null | HTMLElement>(null)
 
   return (
@@ -39,15 +28,9 @@ const InternalMenu: MenuComponentType = ({
           MOVE_UP: () => moveFocus(-1, -1, ref),
         }}
       >
-        <Box
-          as="ul"
-          tabIndex={-1}
-          role="menu"
-          userSelect="none"
-          {...omit(props, 'groupDividers')}
-        >
+        <Style tabIndex={-1} role="menu" {...styleProps}>
           {children}
-        </Box>
+        </Style>
       </HotKeys>
     </MenuContext.Provider>
   )
@@ -59,11 +42,9 @@ const dividersStyle = css`
   }
 `
 
-/** @component */
-export const Menu: StyledMenuComponentType = styled<MenuComponentType>(
-  InternalMenu
-)`
+const Style = styled.ul<MenuProps>`
   list-style: none;
   outline: none;
+  user-select: none;
   ${props => props.groupDividers !== false && dividersStyle};
 `

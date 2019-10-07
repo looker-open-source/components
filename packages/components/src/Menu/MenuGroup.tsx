@@ -1,15 +1,24 @@
-import React, { FunctionComponent, Ref } from 'react'
-import styled, { StyledComponent } from 'styled-components'
-import { palette } from '@looker/design-tokens'
-import { Box, BoxProps } from '../Layout/Box'
+import React from 'react'
+import styled from 'styled-components'
+import {
+  palette,
+  CompatibleHTMLProps,
+  reset,
+  SpaceProps,
+  space,
+} from '@looker/design-tokens'
+import { background, BackgroundProps } from 'styled-system'
 import { Heading, HeadingProps } from '../Heading'
 import { List } from '../List'
 import { MenuContext } from './MenuContext'
+import { MenuGroupLabel } from './MenuGroupLabel'
 import { useElementVisibility } from './MenuGroup.hooks'
 import { MenuItemCustomization } from './MenuItem'
 
 export interface MenuGroupProps
-  extends Omit<BoxProps<HTMLDivElement>, 'label' | 'as'> {
+  extends Omit<CompatibleHTMLProps<HTMLElement>, 'label'>,
+    BackgroundProps,
+    SpaceProps {
   label?: React.ReactNode
   labelProps?: HeadingProps
   labelStyles?: React.CSSProperties
@@ -17,10 +26,7 @@ export interface MenuGroupProps
   compact?: boolean
 }
 
-type ComponentType = FunctionComponent<MenuGroupProps>
-type StyledComponentType = StyledComponent<ComponentType, MenuGroupProps>
-
-const InternalMenuGroup: ComponentType = ({
+const MenuGroupInternal: React.FC<MenuGroupProps> = ({
   children,
   label,
   labelProps,
@@ -35,16 +41,13 @@ const InternalMenuGroup: ComponentType = ({
   const labelShimRef: React.RefObject<any> = React.useRef()
 
   const labelComponent = label && (
-    <MenuLabel
-      style={{
-        background: customizations ? customizations.bg : palette.white,
-        boxShadow: useElementVisibility(labelShimRef)
+    <MenuGroupLabel
+      background={customizations && customizations.bg}
+      boxShadow={
+        useElementVisibility(labelShimRef)
           ? 'none'
-          : `0 4px 8px -2px ${palette.charcoal200}`,
-        position: 'sticky',
-        top: '-1px',
-        zIndex: 2,
-      }}
+          : `0 4px 8px -2px ${palette.charcoal200}`
+      }
     >
       {/*
         NOTE: This div is required for box-shadow to appear when the heading
@@ -60,12 +63,11 @@ const InternalMenuGroup: ComponentType = ({
         py="xsmall"
         fontWeight="semiBold"
         {...labelProps}
-        style={labelStyles}
-        zIndex={2}
+        style={{ zIndex: 2, ...labelStyles }}
       >
         {label}
       </Heading>
-    </MenuLabel>
+    </MenuGroupLabel>
   )
 
   return (
@@ -75,27 +77,24 @@ const InternalMenuGroup: ComponentType = ({
         customizationProps: customizationProps || menu.customizationProps,
       }}
     >
-      <Box
-        as="li"
+      <Style
         {...boxProps}
-        bg={customizations ? customizations.bg : palette.white}
+        background={customizations && customizations.bg}
         py="small"
       >
         {labelComponent}
         <List nomarker>{children}</List>
-      </Box>
+      </Style>
     </MenuContext.Provider>
   )
 }
 
-const MenuLabel = styled.div``
+const Style = styled.li<MenuGroupProps>`
+  ${reset}
+  ${space}
+  ${background}
+`
 
-const MenuGroupFactory = React.forwardRef<StyledComponentType, MenuGroupProps>(
-  (props: MenuGroupProps, ref: Ref<StyledComponentType>) => (
-    <InternalMenuGroup ref={ref} {...props} />
-  )
-)
-MenuGroupFactory.displayName = 'MenuGroupFactory'
+Style.defaultProps = { background: 'palette.white ' }
 
-/** @component */
-export const MenuGroup = styled<ComponentType>(MenuGroupFactory)``
+export const MenuGroup = styled(MenuGroupInternal)``

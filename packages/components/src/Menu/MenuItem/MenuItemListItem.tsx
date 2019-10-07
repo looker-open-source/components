@@ -1,20 +1,13 @@
-import React, { FunctionComponent } from 'react'
-import styled, { css, StyledComponent } from 'styled-components'
-import omit from 'lodash/omit'
-import { Box, BoxProps } from '../../Layout/Box'
+import { CompatibleHTMLProps, color, typography } from '@looker/design-tokens'
+import styled, { css } from 'styled-components'
 import { Icon } from '../../Icon'
 import { MenuItemStyle } from './menuItemStyle'
 
-export interface MenuListItemProps extends Omit<BoxProps<HTMLElement>, 'as'> {
+export interface MenuListItemProps extends CompatibleHTMLProps<HTMLLIElement> {
   current?: boolean
   currentMarker?: boolean
   itemStyle: MenuItemStyle
 }
-export type ListItemComponentType = FunctionComponent<MenuListItemProps>
-export type StyledListItemComponentType = StyledComponent<
-  ListItemComponentType,
-  MenuListItemProps
->
 
 const currentBorder = (props: MenuListItemProps) => {
   if (!props.current || !props.currentMarker) return false
@@ -55,16 +48,13 @@ const iconColor = (props: MenuListItemProps) =>
     ? props.itemStyle.current.iconColor
     : props.itemStyle.initial.iconColor
 
-//
-// All of this  drama is to not auto-spread bad props onto Box and cause React run-time warnings
-//
-const MenuItemStyleFactory: ListItemComponentType = (
-  props: MenuListItemProps
-) => <Box {...omit(props, ['current', 'currentMarker', 'itemStyle'])} />
+export const MenuItemListItem = styled.li<MenuListItemProps>`
+  ${color}
+  ${typography}
 
-export const MenuItemListItem: StyledListItemComponentType = styled<
-  ListItemComponentType
->(MenuItemStyleFactory)`
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
   position: relative;
   text-decoration: none;
   transition: ${props =>
