@@ -1,8 +1,4 @@
 import React, { forwardRef, Ref } from 'react'
-// import styled, { StyledComponent } from 'styled-components'
-// import { CustomizableAttributes, palette } from '@looker/design-tokens'
-// import { Box, BoxProps } from '../../../Layout/Box'
-// import { InputProps } from '../InputProps'
 import styled from 'styled-components'
 import {
   border,
