@@ -1,14 +1,35 @@
-import React, { FunctionComponent, Ref } from 'react'
-import styled, { StyledComponent } from 'styled-components'
+import React, {
+  ComponentType,
+  FunctionComponent,
+  forwardRef,
+  Ref,
+  useContext,
+} from 'react'
+import styled from 'styled-components'
 import omit from 'lodash/omit'
-import { Box, BoxProps } from '../Layout/Box'
+import {
+  CompatibleHTMLProps,
+  border,
+  flexbox,
+  layout,
+  space,
+  BorderProps,
+  FlexboxProps,
+  LayoutProps,
+  SpaceProps,
+} from '@looker/design-tokens'
 import { FieldProps } from './Fields'
 import { InputProps } from './Inputs/InputProps'
 import { ValidationMessageProps } from './ValidationMessage'
 
 export type ValidationMessages = Record<string, ValidationMessageProps>
 
-export interface FormProps extends Omit<BoxProps<HTMLFormElement>, 'as'> {
+export interface FormProps
+  extends BorderProps,
+    FlexboxProps,
+    LayoutProps,
+    SpaceProps,
+    CompatibleHTMLProps<HTMLFormElement> {
   /**
    * A record of all validation messages for the form, where the key is the name
    *  of the validated field and the value holds the information for the corresponding
@@ -24,29 +45,26 @@ export interface FormContext {
   validationMessages?: ValidationMessages
 }
 
-type ComponentType = FunctionComponent<FormProps>
-type StyledComponentType = StyledComponent<ComponentType, FormProps>
-
 export const FormContext = React.createContext<FormContext>({})
 
-const InternalForm: React.FC<FormProps> = props => (
-  <FormContext.Provider
-    value={{
-      validationMessages: props.validationMessages,
-    }}
-  >
-    <Box as="form" {...omit(props, 'validationMessages')} />
-  </FormContext.Provider>
-)
+const FormBase = styled.form`
+  ${border};
+  ${flexbox};
+  ${layout};
+  ${space};
+`
 
-const FormFactory = React.forwardRef<StyledComponentType, FormProps>(
-  (props: FormProps, ref: Ref<StyledComponentType>) => (
-    <InternalForm ref={ref} {...props} />
+export const Form = forwardRef(
+  (props: FormProps, ref: Ref<HTMLFormElement>) => (
+    <FormContext.Provider
+      value={{
+        validationMessages: props.validationMessages,
+      }}
+    >
+      <FormBase {...omit(props, 'validationMessages')} ref={ref} />
+    </FormContext.Provider>
   )
 )
-
-/** @component */
-export const Form = styled<ComponentType>(FormFactory)``
 
 export interface ChildProp {
   children?: JSX.Element
@@ -54,29 +72,30 @@ export interface ChildProp {
 
 export type FormComponentProps<T> = FieldProps & InputProps & T
 
-export type ComponentWithForm<T> = React.FunctionComponent<
-  FormComponentProps<T>
->
+export type ComponentWithForm<T> = FunctionComponent<FormComponentProps<T>>
+
+export function useFormContext<T>(props: FormComponentProps<T>) {
+  const context = useContext(FormContext)
+  let validationMessage
+  if (context.validationMessages && props.name) {
+    validationMessage = context.validationMessages[props.name]
+  } else if (props.validationMessage) {
+    validationMessage = props.validationMessage
+  }
+  return validationMessage
+}
 
 export const withForm = <T extends {}>(
   Component:
-    | React.ComponentType<FormComponentProps<T>>
-    | React.FunctionComponent<FormComponentProps<T>>
+    | ComponentType<FormComponentProps<T>>
+    | FunctionComponent<FormComponentProps<T>>
 ): ComponentWithForm<T> => {
   return (props: FormComponentProps<T & ChildProp>) => {
-    const contextHelper = (context: FormContext) => {
-      let validationMessage
-      if (context.validationMessages && props.name) {
-        validationMessage = context.validationMessages[props.name]
-      } else if (props.validationMessage) {
-        validationMessage = props.validationMessage
-      }
-      return (
-        <Component {...props} validationMessage={validationMessage}>
-          {props.children}
-        </Component>
-      )
-    }
-    return <FormContext.Consumer>{contextHelper}</FormContext.Consumer>
+    const validationMessage = useFormContext(props)
+    return (
+      <Component {...props} validationMessage={validationMessage}>
+        {props.children}
+      </Component>
+    )
   }
 }

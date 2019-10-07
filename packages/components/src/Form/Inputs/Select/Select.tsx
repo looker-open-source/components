@@ -79,7 +79,6 @@ const SelectComponent = forwardRef(
       includeBlank = true,
       options,
       placeholder,
-      validationType,
       defaultValue: propsDefault,
       value,
       ...props
