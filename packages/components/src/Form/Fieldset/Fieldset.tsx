@@ -1,12 +1,29 @@
-import React, { FunctionComponent, Ref } from 'react'
-import styled, { StyledComponent } from 'styled-components'
-import { Box, BoxProps } from '../../Layout/Box'
+import React, { forwardRef, Ref } from 'react'
+import styled from 'styled-components'
+import {
+  border,
+  BorderProps,
+  color,
+  CompatibleHTMLProps,
+  layout,
+  LayoutProps,
+  reset,
+  space,
+  SpaceProps,
+} from '@looker/design-tokens'
+import { BackgroundColorProps } from 'styled-system'
 import { FlexItem } from '../../Layout/FlexItem'
 import { FormControl, FormControlDirections } from '../FormControl'
 import { Legend } from './Legend'
 
-export interface FieldsetProps
-  extends Omit<BoxProps<HTMLFieldSetElement>, 'as'> {
+interface FieldsetBaseProps
+  extends BackgroundColorProps,
+    BorderProps,
+    LayoutProps,
+    SpaceProps,
+    CompatibleHTMLProps<HTMLFieldSetElement> {}
+
+export interface FieldsetProps extends FieldsetBaseProps {
   /**
    * Specifies where to render the legend in relation to the set of inputs. Can be placed `left`, `right`, `bottom`, or `top`.
    */
@@ -17,29 +34,32 @@ export interface FieldsetProps
   legend?: string
 }
 
-type ComponentType = FunctionComponent<FieldsetProps>
-type StyledComponentType = StyledComponent<ComponentType, FieldsetProps>
+const FieldsetBase = styled.fieldset<FieldsetBaseProps>`
+  ${reset}
+  ${border}
+  ${color}
+  ${layout}
+  ${space}
+`
 
-const InternalFieldset: ComponentType = ({ legend, ...props }) => {
-  return (
-    <Box as="fieldset" {...props}>
-      <FormControl mb="xsmall" alignLabel={props.alignLegend}>
-        {legend ? (
-          <FlexItem>
-            <Legend>{legend}</Legend>
-          </FlexItem>
-        ) : null}
-        <FlexItem>{props.children}</FlexItem>
-      </FormControl>
-    </Box>
-  )
-}
-
-const FieldsetFactory = React.forwardRef<StyledComponentType, FieldsetProps>(
-  (props: FieldsetProps, ref: Ref<StyledComponentType>) => (
-    <InternalFieldset ref={ref} {...props} />
-  )
+const FieldsetComponent = forwardRef(
+  (
+    { alignLegend, legend, ...props }: FieldsetProps,
+    ref: Ref<HTMLFieldSetElement>
+  ) => {
+    return (
+      <FieldsetBase {...props} ref={ref}>
+        <FormControl mb="xsmall" alignLabel={alignLegend}>
+          {legend ? (
+            <FlexItem>
+              <Legend>{legend}</Legend>
+            </FlexItem>
+          ) : null}
+          <FlexItem>{props.children}</FlexItem>
+        </FormControl>
+      </FieldsetBase>
+    )
+  }
 )
 
-/** @component */
-export const Fieldset = styled<ComponentType>(FieldsetFactory)``
+export const Fieldset = styled(FieldsetComponent)``

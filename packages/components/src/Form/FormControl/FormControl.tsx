@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 import { Flex, FlexProps } from '../../Layout/Flex'
 
-type FormControlDirections = 'left' | 'right' | 'top' | 'bottom'
+export type FormControlDirections = 'left' | 'right' | 'top' | 'bottom'
 
 export interface FormControlProps extends FlexProps {
   alignLabel?: FormControlDirections
