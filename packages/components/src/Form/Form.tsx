@@ -48,10 +48,10 @@ export interface FormContext {
 export const FormContext = React.createContext<FormContext>({})
 
 const FormBase = styled.form`
-  ${border};
-  ${flexbox};
-  ${layout};
-  ${space};
+  ${border}
+  ${flexbox}
+  ${layout}
+  ${space}
 `
 
 export const Form = forwardRef(

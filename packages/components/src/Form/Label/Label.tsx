@@ -28,10 +28,11 @@ export interface LabelProps
     TypographyProps,
     CompatibleHTMLProps<HTMLLabelElement> {}
 
-export const Label = styled.label<LabelProps>`
-  color: ${() => CustomizableLabelAttributes.color};
-  font-size: ${() => CustomizableLabelAttributes.fontSize};
-  font-weight: ${() => CustomizableLabelAttributes.fontWeight};
+export const Label = styled.label.attrs(() => ({
+  color: CustomizableLabelAttributes.color,
+  fontSize: CustomizableLabelAttributes.fontSize,
+  fontWeight: CustomizableLabelAttributes.fontWeight,
+}))<LabelProps>`
   margin-right: ${props => props.theme.space.xsmall};
   ${color};
   ${space};
