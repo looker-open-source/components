@@ -11,7 +11,7 @@ import styled from 'styled-components'
 import { variant } from 'styled-system'
 
 export interface DividerProps
-  extends CompatibleHTMLProps<HTMLDivElement>,
+  extends CompatibleHTMLProps<HTMLHRElement>,
     PositionProps,
     SpaceProps {
   size?: string | number
@@ -43,7 +43,7 @@ export const Divider = styled.hr.attrs((props: DividerProps) => ({
 
   height: ${props => props.size};
   ${color}
-  ${appearanceVariant};
+  ${appearanceVariant}
 `
 
 Divider.defaultProps = { customColor: 'palette.charcoal300', size: '1px' }
