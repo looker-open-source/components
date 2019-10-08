@@ -14,7 +14,6 @@ export interface FlexProps
     Omit<LayoutComponentProps, 'display'>,
     FlexboxProps {}
 
-/** @component */
 export const Flex = styled.div<FlexProps>`
   ${layoutCSS}
   ${flexbox};

@@ -59,7 +59,6 @@ export interface TooltipProps {
 
 export const CustomizableTooltipAttributes: CustomizableAttributes = {}
 
-/** @component */
 export const Tooltip: React.FC<TooltipProps> = ({
   arrow = true,
   canClose,

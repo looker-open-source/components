@@ -239,7 +239,6 @@ class InternalColorFieldPicker extends React.Component<
   }
 }
 
-/** @component */
 export const ColorFieldPicker: ComponentWithForm<
   ColorFieldPickerProps
 > = withForm<ColorFieldPickerProps>(InternalColorFieldPicker)

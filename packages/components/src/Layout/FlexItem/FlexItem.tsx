@@ -18,7 +18,6 @@ export interface FlexItemProps
     FlexProps,
     OrderProps {}
 
-/** @component */
 export const FlexItem = styled.div<FlexItemProps>`
   ${layoutCSS}
   ${alignSelf}

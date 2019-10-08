@@ -77,7 +77,6 @@ export interface PopoverProps {
   pin?: boolean
 }
 
-/** @component */
 export const Popover: React.FC<PopoverProps> = ({
   arrow = true,
   canClose,
