@@ -32,8 +32,6 @@ const headingLevelFontSize = (props: HeadingProps) => {
   switch (props.as) {
     case 'h1':
       return 'xxlarge'
-    case 'h2':
-      return 'xlarge'
     case 'h3':
       return 'large'
     case 'h4':
@@ -42,8 +40,9 @@ const headingLevelFontSize = (props: HeadingProps) => {
       return 'small'
     case 'h6':
       return 'xsmall'
+    case 'h2':
     default:
-      return 'large'
+      return 'xlarge'
   }
 }
 
@@ -63,4 +62,4 @@ export const Heading = styled.h2.attrs((props: HeadingProps) => ({
   ${textVariant};
 `
 
-Heading.defaultProps = { fontWeight: 'normal' }
+Heading.defaultProps = { as: 'h2', fontWeight: 'normal' }

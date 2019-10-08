@@ -79,14 +79,14 @@ exports[`A Heading transformed 1`] = `
   padding: 0;
   vertical-align: baseline;
   font-weight: 400;
-  font-size: 1.125rem;
-  line-height: 1.75rem;
+  font-size: 1.375rem;
+  line-height: 2rem;
   text-transform: capitalize;
 }
 
 <h2
   className="c0"
-  fontSize="large"
+  fontSize="xlarge"
   fontWeight="normal"
 >
   🥑
@@ -103,8 +103,8 @@ exports[`A Heading truncated 1`] = `
   padding: 0;
   vertical-align: baseline;
   font-weight: 400;
-  font-size: 1.125rem;
-  line-height: 1.75rem;
+  font-size: 1.375rem;
+  line-height: 2rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -112,7 +112,7 @@ exports[`A Heading truncated 1`] = `
 
 <h2
   className="c0"
-  fontSize="large"
+  fontSize="xlarge"
   fontWeight="normal"
 >
   🥑
@@ -129,8 +129,8 @@ exports[`A Heading with multiline truncate 1`] = `
   padding: 0;
   vertical-align: baseline;
   font-weight: 400;
-  font-size: 1.125rem;
-  line-height: 1.75rem;
+  font-size: 1.375rem;
+  line-height: 2rem;
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -139,7 +139,7 @@ exports[`A Heading with multiline truncate 1`] = `
 
 <h2
   className="c0"
-  fontSize="large"
+  fontSize="xlarge"
   fontWeight="normal"
 >
   🥑
@@ -156,14 +156,14 @@ exports[`A Heading with variant 1`] = `
   padding: 0;
   vertical-align: baseline;
   font-weight: 400;
-  font-size: 1.125rem;
-  line-height: 1.75rem;
+  font-size: 1.375rem;
+  line-height: 2rem;
   color: #939BA5;
 }
 
 <h2
   className="c0"
-  fontSize="large"
+  fontSize="xlarge"
   fontWeight="normal"
 >
   🥑
@@ -180,13 +180,13 @@ exports[`A default Heading 1`] = `
   padding: 0;
   vertical-align: baseline;
   font-weight: 400;
-  font-size: 1.125rem;
-  line-height: 1.75rem;
+  font-size: 1.375rem;
+  line-height: 2rem;
 }
 
 <h2
   className="c0"
-  fontSize="large"
+  fontSize="xlarge"
   fontWeight="normal"
 >
   🥑
