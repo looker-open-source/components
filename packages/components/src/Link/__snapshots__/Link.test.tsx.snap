@@ -9,9 +9,9 @@ exports[`A Link with an id 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
   color: #0087e1;
+  -webkit-text-decoration: none;
+  text-decoration: none;
 }
 
 .c0:hover {
@@ -21,13 +21,9 @@ exports[`A Link with an id 1`] = `
 
 <a
   className="c0"
+  color="palette.blue500"
   href="https://looker.com"
   id="link-id"
-  style={
-    Object {
-      "textDecoration": "none",
-    }
-  }
 >
   🥑
 </a>
@@ -42,9 +38,9 @@ exports[`A default Link 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
   color: #0087e1;
+  -webkit-text-decoration: none;
+  text-decoration: none;
 }
 
 .c0:hover {
@@ -54,12 +50,8 @@ exports[`A default Link 1`] = `
 
 <a
   className="c0"
+  color="palette.blue500"
   href="https://looker.com"
-  style={
-    Object {
-      "textDecoration": "none",
-    }
-  }
 >
   🥑
 </a>
@@ -74,9 +66,9 @@ exports[`A external Link 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
   color: #0087e1;
+  -webkit-text-decoration: none;
+  text-decoration: none;
 }
 
 .c0:hover {
@@ -86,12 +78,8 @@ exports[`A external Link 1`] = `
 
 <a
   className="c0"
+  color="palette.blue500"
   href="https://looker.com"
-  style={
-    Object {
-      "textDecoration": "none",
-    }
-  }
 >
   🥑
 </a>
