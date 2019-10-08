@@ -76,7 +76,8 @@ export const fieldPropKeys = [
   'validationMessage',
 ]
 
-export const pickFieldProps = (props: FieldProps) => pick(props, fieldPropKeys)
+export const pickFieldProps = (props: FieldProps) =>
+  pick(props, [...fieldPropKeys, 'required'])
 export const omitFieldProps = (props: FieldProps) => omit(props, fieldPropKeys)
 
 const RequiredStar = styled(props => (
