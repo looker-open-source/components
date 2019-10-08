@@ -9,16 +9,17 @@ exports[`A Legend 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
   color: #262D33;
+  padding-bottom: 0.5rem;
   font-size: 2.25rem;
   font-weight: 300;
-  padding-bottom: 0.5rem;
 }
 
 <legend
   className="c0"
+  color="palette.charcoal800"
+  fontSize="xxxlarge"
+  fontWeight="light"
 >
   This is a legend
 </legend>

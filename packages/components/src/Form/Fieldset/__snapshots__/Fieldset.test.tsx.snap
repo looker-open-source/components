@@ -1,40 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Fieldset with left aligned legend 1`] = `
-.c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
-}
-
-.c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-align-items: baseline;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
-  -webkit-animation: none;
-  animation: none;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  margin-bottom: 0.5rem;
+.c6 {
+  border: solid 1px #C1C6CC;
+  border-radius: 0.25rem;
+  height: 28px;
+  font-size: 0.875rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
 }
 
 .c2 {
@@ -45,15 +20,9 @@ exports[`Fieldset with left aligned legend 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
-  color: #262D33;
-  font-size: 2.25rem;
-  font-weight: 300;
-  padding-bottom: 0.5rem;
 }
 
-.c3 {
+.c1 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -61,16 +30,18 @@ exports[`Fieldset with left aligned legend 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
+  margin-bottom: 0.5rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  margin-bottom: 0.5rem;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
 }
 
 .c4 {
@@ -81,12 +52,14 @@ exports[`Fieldset with left aligned legend 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
-  color: #262D33;
-  font-size: 0.875rem;
-  font-weight: 600;
-  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 .c5 {
@@ -97,55 +70,79 @@ exports[`Fieldset with left aligned legend 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
-  border: solid 1px;
-  border-radius: 0.25rem;
-  border-color: #C1C6CC;
+  color: #262D33;
+  margin-right: 0.5rem;
+  font-weight: 600;
   font-size: 0.875rem;
-  height: 28px;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  padding-top: 0rem;
-  padding-bottom: 0rem;
+}
+
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #262D33;
+  padding-bottom: 0.5rem;
+  font-size: 2.25rem;
+  font-weight: 300;
+}
+
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
 }
 
 <fieldset
-  alignLegend="left"
-  className="c0"
+  className="c0 "
 >
   <div
     className="c1"
   >
     <div
-      className="c0"
+      className="c2"
     >
       <legend
-        className="c2"
+        className="c3"
+        color="palette.charcoal800"
+        fontSize="xxxlarge"
+        fontWeight="light"
       >
         Legend
       </legend>
     </div>
     <div
-      className="c0"
+      className="c2"
     >
       <div
-        className="c3"
+        className="c4 "
       >
         <label
-          className="c4"
+          className="c5"
+          color="palette.charcoal800"
+          fontSize="small"
+          fontWeight="semiBold"
           htmlFor="text-1"
         >
           One
         </label>
         <div
-          className="c3"
+          className="c4"
         >
           <div
-            className="c0"
+            className="c2"
           >
             <input
-              className="c5"
+              className="c6 "
+              fontSize="small"
+              height="28px"
               id="text-1"
               name="name1"
               type="text"
@@ -154,22 +151,27 @@ exports[`Fieldset with left aligned legend 1`] = `
         </div>
       </div>
       <div
-        className="c3"
+        className="c4 "
       >
         <label
-          className="c4"
+          className="c5"
+          color="palette.charcoal800"
+          fontSize="small"
+          fontWeight="semiBold"
           htmlFor="text-2"
         >
           two
         </label>
         <div
-          className="c3"
+          className="c4"
         >
           <div
-            className="c0"
+            className="c2"
           >
             <input
-              className="c5"
+              className="c6 "
+              fontSize="small"
+              height="28px"
               id="text-2"
               name="name2"
               type="text"
@@ -178,22 +180,27 @@ exports[`Fieldset with left aligned legend 1`] = `
         </div>
       </div>
       <div
-        className="c3"
+        className="c4 "
       >
         <label
-          className="c4"
+          className="c5"
+          color="palette.charcoal800"
+          fontSize="small"
+          fontWeight="semiBold"
           htmlFor="text-3"
         >
           three
         </label>
         <div
-          className="c3"
+          className="c4"
         >
           <div
-            className="c0"
+            className="c2"
           >
             <input
-              className="c5"
+              className="c6 "
+              fontSize="small"
+              height="28px"
               id="text-3"
               name="nam3"
               type="text"

@@ -2,15 +2,16 @@ import styled from 'styled-components'
 import {
   color,
   ColorProps,
-  layout,
-  LayoutProps,
-  space,
-  SpaceProps,
   CompatibleHTMLProps,
   CustomizableAttributes,
+  layout,
+  LayoutProps,
+  reset,
+  space,
+  SpaceProps,
+  SpacingSizes,
   textTransform,
   TextTransformProps,
-  SpacingSizes,
   typography,
   TypographyProps,
 } from '@looker/design-tokens'
@@ -43,6 +44,7 @@ export const Legend = styled.legend.attrs((props: LegendProps) => ({
       ? undefined
       : CustomizableLegendAttributes.bottomPadding,
 }))<LegendProps>`
+  ${reset}
   ${color}
   ${layout}
   ${space}
