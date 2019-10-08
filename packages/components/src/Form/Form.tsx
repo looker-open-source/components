@@ -74,15 +74,23 @@ export type FormComponentProps<T> = FieldProps & InputProps & T
 
 export type ComponentWithForm<T> = FunctionComponent<FormComponentProps<T>>
 
-export function useFormContext<T>(props: FormComponentProps<T>) {
+export interface UseFormContextProps {
+  name?: string
+  validationMessage?: ValidationMessageProps
+}
+
+export function useFormContext({
+  name,
+  validationMessage,
+}: UseFormContextProps) {
   const context = useContext(FormContext)
-  let validationMessage
-  if (context.validationMessages && props.name) {
-    validationMessage = context.validationMessages[props.name]
-  } else if (props.validationMessage) {
-    validationMessage = props.validationMessage
+  let vMessage
+  if (context.validationMessages && name) {
+    vMessage = context.validationMessages[name]
+  } else if (validationMessage) {
+    vMessage = validationMessage
   }
-  return validationMessage
+  return vMessage
 }
 
 export const withForm = <T extends {}>(

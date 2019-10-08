@@ -12,7 +12,12 @@ const FieldTextComponent = forwardRef(
     const { id = uuid() } = props
     const validationMessage = useFormContext(props)
     return (
-      <Field id={id} alignValidationMessage="bottom" {...pickFieldProps(props)}>
+      <Field
+        id={id}
+        alignValidationMessage="bottom"
+        validationMessage={validationMessage}
+        {...pickFieldProps(props)}
+      >
         <InputText
           {...omitFieldProps(props)}
           id={id}

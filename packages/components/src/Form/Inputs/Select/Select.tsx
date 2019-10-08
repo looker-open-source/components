@@ -154,8 +154,6 @@ const SelectBase = styled.select.attrs((props: SelectProps) => ({
   background-position: right ${indicatorPadding} center, 0 0;
   background-size: ${indicatorSize}, 100%;
 
-  padding-right: calc(2 * ${indicatorPadding} + ${indicatorSize});
-
   &::-ms-expand {
     display: none;
   }
@@ -163,6 +161,7 @@ const SelectBase = styled.select.attrs((props: SelectProps) => ({
   ${layout}
   ${typography}
   ${space}
+  padding-right: calc(2 * ${indicatorPadding} + ${indicatorSize});
 `
 
 export const Select = styled(SelectComponent)``
