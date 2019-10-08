@@ -107,6 +107,7 @@ const SelectComponent = forwardRef(
       <SelectBase
         defaultValue={defaultValue ? defaultValue.toString() : undefined}
         value={defaultValue ? undefined : value}
+        borderColor="palette.charcoal300"
         {...props}
         ref={ref}
       >
@@ -145,7 +146,7 @@ const SelectBase = styled.select.attrs((props: SelectProps) => ({
     props.validationType === 'error'
       ? props.theme.colors.palette.red000
       : props.theme.colors.palette.white};
-  border: solid 1px ${props => props.theme.colors.palette.charcoal300};
+  border: solid 1px;
 
   appearance: none;
 

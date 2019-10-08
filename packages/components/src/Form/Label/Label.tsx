@@ -35,10 +35,11 @@ export const Label = styled.label.attrs((props: LabelProps) => ({
   fontWeight: props.fontWeight || CustomizableLabelAttributes.fontWeight,
 }))<LabelProps>`
   ${reset}
-  margin-right: ${props => props.theme.space.xsmall};
   ${color};
   ${space};
   ${textDecoration}
   ${textTransform};
   ${typography};
 `
+
+Label.defaultProps = { marginRight: 'xsmall' }
