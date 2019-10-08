@@ -1,6 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`A FieldRadio 1`] = `
+.c6 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+.c5 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
 .c0 {
   border: 0;
   box-sizing: border-box;
@@ -9,12 +29,7 @@ exports[`A FieldRadio 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-align-items: baseline;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
-  -webkit-animation: none;
-  animation: none;
+  margin-bottom: 0.5rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -26,42 +41,21 @@ exports[`A FieldRadio 1`] = `
   -webkit-justify-content: flex-end;
   -ms-flex-pack: end;
   justify-content: flex-end;
-  margin-bottom: 0.5rem;
-}
-
-.c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
-  color: #262D33;
-  font-size: 0.875rem;
-  font-weight: 600;
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
-  text-align: left;
-  width: 20%;
-}
-
-.c2 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   -webkit-align-items: baseline;
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
-  -webkit-animation: none;
-  animation: none;
+}
+
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  margin-bottom: 0.5rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -69,7 +63,10 @@ exports[`A FieldRadio 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  margin-bottom: 0.5rem;
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
 }
 
 .c3 {
@@ -80,27 +77,39 @@ exports[`A FieldRadio 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
+  margin-right: 0.5rem;
+  color: #262D33;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.c1 .c2 {
+  text-align: left;
+  width: 20%;
+  margin-right: 0;
+  margin-left: 0.5rem;
 }
 
 <div
-  className="c0"
+  className="c0 c1 "
 >
   <label
-    className="c1"
+    className="c2 c3"
+    color="palette.charcoal800"
+    fontSize="small"
+    fontWeight="semiBold"
     htmlFor="thumbs-up"
   >
     👍
   </label>
   <div
-    className="c2"
+    className="c4"
   >
     <div
-      className="c3"
+      className="c5"
     >
       <input
-        className="c3"
+        className="c6 "
         id="thumbs-up"
         name="thumbsUp"
         type="radio"
@@ -111,6 +120,26 @@ exports[`A FieldRadio 1`] = `
 `;
 
 exports[`A FieldRadio checked 1`] = `
+.c6 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+.c5 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
 .c0 {
   border: 0;
   box-sizing: border-box;
@@ -119,12 +148,7 @@ exports[`A FieldRadio checked 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-align-items: baseline;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
-  -webkit-animation: none;
-  animation: none;
+  margin-bottom: 0.5rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -136,42 +160,21 @@ exports[`A FieldRadio checked 1`] = `
   -webkit-justify-content: flex-end;
   -ms-flex-pack: end;
   justify-content: flex-end;
-  margin-bottom: 0.5rem;
-}
-
-.c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
-  color: #262D33;
-  font-size: 0.875rem;
-  font-weight: 600;
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
-  text-align: left;
-  width: 20%;
-}
-
-.c2 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   -webkit-align-items: baseline;
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
-  -webkit-animation: none;
-  animation: none;
+}
+
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  margin-bottom: 0.5rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -179,7 +182,10 @@ exports[`A FieldRadio checked 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  margin-bottom: 0.5rem;
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
 }
 
 .c3 {
@@ -190,28 +196,45 @@ exports[`A FieldRadio checked 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
+  margin-right: 0.5rem;
+  color: #262D33;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.c1 .c2 {
+  text-align: left;
+  width: 20%;
+  margin-right: 0;
+  margin-left: 0.5rem;
+}
+
+.c7 .c2 {
+  text-align: right;
+  width: 20%;
 }
 
 <div
-  className="c0"
+  className="c0 c1 "
 >
   <label
-    className="c1"
+    className="c2 c3"
+    color="palette.charcoal800"
+    fontSize="small"
+    fontWeight="semiBold"
     htmlFor="thumbs-up"
   >
     👍
   </label>
   <div
-    className="c2"
+    className="c4"
   >
     <div
-      className="c3"
+      className="c5"
     >
       <input
         checked={true}
-        className="c3"
+        className="c6 "
         id="thumbs-up"
         name="thumbsUp"
         type="radio"
@@ -222,6 +245,26 @@ exports[`A FieldRadio checked 1`] = `
 `;
 
 exports[`A FieldRadio with label aligned left 1`] = `
+.c5 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
 .c0 {
   border: 0;
   box-sizing: border-box;
@@ -230,12 +273,7 @@ exports[`A FieldRadio with label aligned left 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-align-items: baseline;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
-  -webkit-animation: none;
-  animation: none;
+  margin-bottom: 0.5rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -243,10 +281,13 @@ exports[`A FieldRadio with label aligned left 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  margin-bottom: 0.5rem;
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
 }
 
-.c2 {
+.c3 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -254,33 +295,32 @@ exports[`A FieldRadio with label aligned left 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
-}
-
-.c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
-  color: #262D33;
-  font-size: 0.875rem;
-  font-weight: 600;
   margin-right: 0.5rem;
+  color: #262D33;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.c6 .c2 {
+  text-align: left;
+  width: 20%;
+  margin-right: 0;
+  margin-left: 0.5rem;
+}
+
+.c1 .c2 {
   text-align: right;
   width: 20%;
 }
 
 <div
-  className="c0"
+  className="c0 c1 "
 >
   <label
-    className="c1"
+    className="c2 c3"
+    color="palette.charcoal800"
+    fontSize="small"
+    fontWeight="semiBold"
     htmlFor="thumbs-up"
   >
     👍
@@ -289,10 +329,10 @@ exports[`A FieldRadio with label aligned left 1`] = `
     className="c0"
   >
     <div
-      className="c2"
+      className="c4"
     >
       <input
-        className="c2"
+        className="c5 "
         id="thumbs-up"
         name="thumbsUp"
         type="radio"
