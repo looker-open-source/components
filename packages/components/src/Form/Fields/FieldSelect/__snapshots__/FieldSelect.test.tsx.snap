@@ -93,7 +93,7 @@ exports[`A FieldSelect 1`] = `
       className="c2"
     >
       <select
-        className="c3 Select-sc-1grg5v4-1 gXASO FieldSelect-sc-60bbtf-0 hBpmaK"
+        className="c3 "
         fontSize="small"
         height="28px"
         id="thumbs-up"
@@ -234,7 +234,7 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
       className="c3"
     >
       <select
-        className="c4 Select-sc-1grg5v4-1 gXASO FieldSelect-sc-60bbtf-0 hBpmaK"
+        className="c4 "
         fontSize="small"
         height="28px"
         id="thumbs-up"
@@ -379,7 +379,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
       className="c3"
     >
       <select
-        className="c4 Select-sc-1grg5v4-1 gXASO FieldSelect-sc-60bbtf-0 hBpmaK"
+        className="c4 "
         fontSize="small"
         height="28px"
         id="thumbs-up"
@@ -505,7 +505,7 @@ exports[`A required FieldSelect 1`] = `
       className="c3"
     >
       <select
-        className="c4 Select-sc-1grg5v4-1 gXASO FieldSelect-sc-60bbtf-0 hBpmaK"
+        className="c4 "
         fontSize="small"
         height="28px"
         id="thumbs-up"
@@ -614,7 +614,7 @@ exports[`FieldSelect supports labelWeight 1`] = `
       className="c2"
     >
       <select
-        className="c3 Select-sc-1grg5v4-1 gXASO FieldSelect-sc-60bbtf-0 hBpmaK"
+        className="c3 "
         fontSize="small"
         height="28px"
         id="thumbs-up"
