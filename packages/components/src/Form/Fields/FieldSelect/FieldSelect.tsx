@@ -14,7 +14,7 @@ const FieldSelectComponent = forwardRef(
     return (
       <Field
         id={id}
-        alignValidationMessage={'bottom'}
+        alignValidationMessage="bottom"
         validationMessage={validationMessage}
         {...pickFieldProps(props)}
       >

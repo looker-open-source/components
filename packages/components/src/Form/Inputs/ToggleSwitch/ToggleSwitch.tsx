@@ -133,7 +133,7 @@ export const ToggleSwitchComponent = forwardRef(
 )
 
 export const ToggleSwitch = styled(ToggleSwitchComponent)`
-  :focus + div {
+  input:focus + div {
     box-shadow: 0 0 0 0.2rem ${rgba(palette.primary500, 0.4)};
   }
   width: ${props => rem((props.size || 20) * 1.75)};
