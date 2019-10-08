@@ -5,5 +5,5 @@ export interface FontFaces {
 
 export const fontFaces: FontFaces = {
   brand: `'Open Sans', Helvetica, Arial, sans-serif`,
-  code: `'Source Code Pro', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace`,
+  code: `'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace`,
 }

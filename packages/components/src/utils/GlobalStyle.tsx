@@ -1,7 +1,7 @@
 import { css, createGlobalStyle } from 'styled-components'
 
 const fonts = css`
-  @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Source+Code+Pro&display=swap');
+  @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap');
 
   body,
   button,
