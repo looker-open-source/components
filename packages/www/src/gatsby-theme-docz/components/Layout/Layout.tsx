@@ -3,9 +3,10 @@ import { Header } from '../Header'
 import { Sidebar } from '../Sidebar'
 import {
   PageLayout,
-  LowerPane,
   LayoutSidebar,
   LayoutMain,
+  ContentArea,
+  TopBar,
 } from './Layout.styles'
 
 export const Layout: React.FC = ({ children }) => {
@@ -13,11 +14,13 @@ export const Layout: React.FC = ({ children }) => {
 
   return (
     <PageLayout>
-      <Header />
-      <LowerPane>
-        <LayoutSidebar>{open && <Sidebar />}</LayoutSidebar>
+      <TopBar>
+        <Header />
+      </TopBar>
+      <LayoutSidebar>{open && <Sidebar />}</LayoutSidebar>
+      <ContentArea>
         <LayoutMain>{children}</LayoutMain>
-      </LowerPane>
+      </ContentArea>
     </PageLayout>
   )
 }
