@@ -16,7 +16,7 @@ export interface DividerProps
     SpaceProps {
   size?: string | number
   customColor?: string
-  appearance?: 'light' | 'dark' | 'onDark'
+  appearance?: 'default' | 'light' | 'dark' | 'onDark'
 }
 
 const appearanceVariant = variant({
@@ -24,6 +24,9 @@ const appearanceVariant = variant({
   variants: {
     dark: {
       bg: 'palette.charcoal400',
+    },
+    default: {
+      bg: 'palette.charcoal300',
     },
     light: {
       bg: 'palette.charcoal200',
@@ -42,8 +45,7 @@ export const Divider = styled.hr.attrs((props: DividerProps) => ({
   ${space}
 
   height: ${props => props.size};
-  ${color}
-  ${appearanceVariant}
+  ${props => (props.customColor ? color : appearanceVariant)}
 `
 
-Divider.defaultProps = { customColor: 'palette.charcoal300', size: '1px' }
+Divider.defaultProps = { appearance: 'default', size: '1px' }

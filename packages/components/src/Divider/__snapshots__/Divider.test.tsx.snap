@@ -9,14 +9,13 @@ exports[`A custom Divider 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
-  background-color: turquoise;
   height: 20px;
+  background-color: turquoise;
 }
 
-<div
+<hr
   className="c0"
+  size="20px"
 />
 `;
 
@@ -29,19 +28,18 @@ exports[`Default Divider 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
-  background-color: #C1C6CC;
   height: 1px;
+  background-color: #C1C6CC;
 }
 
-<div
+<hr
   className="c0"
+  size="1px"
 />
 `;
 
 exports[`Divider with a variant 1`] = `
-.c1 {
+.c0 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -49,17 +47,12 @@ exports[`Divider with a variant 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
-  background-color: #C1C6CC;
   height: 1px;
+  background-color: #707781;
 }
 
-.c0 {
-  background: #707781;
-}
-
-<div
-  className="c0 c1"
+<hr
+  className="c0"
+  size="1px"
 />
 `;
