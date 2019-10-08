@@ -9,8 +9,6 @@ exports[`ListItem A default ListItem, should be an li 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
   margin-bottom: 0.25rem;
 }
 
@@ -30,8 +28,6 @@ exports[`ListItem handles mouseenter 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
   margin-bottom: 0.25rem;
 }
 

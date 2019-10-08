@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`A bulleted List 1`] = `
-.c2 {
+.c0 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -9,9 +9,8 @@ exports[`A bulleted List 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
-  margin-bottom: 0.25rem;
+  list-style-type: disc;
+  padding-left: 1rem;
 }
 
 .c1 {
@@ -22,31 +21,25 @@ exports[`A bulleted List 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
-  margin: 0rem;
-  padding-left: 1rem;
-}
-
-.c0 {
-  list-style-type: disc;
+  margin-bottom: 0.25rem;
 }
 
 <ul
-  className="c0 c1"
+  className="c0"
+  type="bullet"
 >
   <li
-    className="c2"
+    className="c1"
   >
     🥑
   </li>
   <li
-    className="c2"
+    className="c1"
   >
     🍕
   </li>
   <li
-    className="c2"
+    className="c1"
   >
     🥨
   </li>
@@ -54,6 +47,16 @@ exports[`A bulleted List 1`] = `
 `;
 
 exports[`A default List, should be a ul 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
 .c1 {
   border: 0;
   box-sizing: border-box;
@@ -62,44 +65,24 @@ exports[`A default List, should be a ul 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
-  margin: 0rem;
-  padding: 0rem;
-}
-
-.c2 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
   margin-bottom: 0.25rem;
 }
 
-.c0 {
-  list-style-type: none;
-}
-
 <ul
-  className="c0 c1"
+  className="c0"
 >
   <li
-    className="c2"
+    className="c1"
   >
     🥑
   </li>
   <li
-    className="c2"
+    className="c1"
   >
     🍕
   </li>
   <li
-    className="c2"
+    className="c1"
   >
     🥨
   </li>
@@ -107,7 +90,7 @@ exports[`A default List, should be a ul 1`] = `
 `;
 
 exports[`A numerically ordered List 1`] = `
-.c2 {
+.c0 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -115,9 +98,8 @@ exports[`A numerically ordered List 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
-  margin-bottom: 0.25rem;
+  list-style-type: decimal;
+  padding-left: 1rem;
 }
 
 .c1 {
@@ -128,31 +110,25 @@ exports[`A numerically ordered List 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
-  margin: 0rem;
-  padding-left: 1rem;
-}
-
-.c0 {
-  list-style-type: decimal;
+  margin-bottom: 0.25rem;
 }
 
 <ol
-  className="c0 c1"
+  className="c0"
+  type="number"
 >
   <li
-    className="c2"
+    className="c1"
   >
     🥑
   </li>
   <li
-    className="c2"
+    className="c1"
   >
     🍕
   </li>
   <li
-    className="c2"
+    className="c1"
   >
     🥨
   </li>
@@ -160,7 +136,7 @@ exports[`A numerically ordered List 1`] = `
 `;
 
 exports[`A numerically ordered List marked as nomarker 1`] = `
-.c2 {
+.c0 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -168,9 +144,7 @@ exports[`A numerically ordered List marked as nomarker 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
-  margin-bottom: 0.25rem;
+  list-style-type: none;
 }
 
 .c1 {
@@ -181,31 +155,25 @@ exports[`A numerically ordered List marked as nomarker 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
-  margin: 0rem;
-  padding-left: 0rem;
-}
-
-.c0 {
-  list-style-type: none;
+  margin-bottom: 0.25rem;
 }
 
 <ol
-  className="c0 c1"
+  className="c0"
+  type="number"
 >
   <li
-    className="c2"
+    className="c1"
   >
     🥑
   </li>
   <li
-    className="c2"
+    className="c1"
   >
     🍕
   </li>
   <li
-    className="c2"
+    className="c1"
   >
     🥨
   </li>

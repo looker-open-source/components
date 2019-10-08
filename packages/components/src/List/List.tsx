@@ -41,8 +41,7 @@ export const List = styled.ul.attrs((props: ListProps) => ({
   ${reset}
   ${typography}
 
-  list-style-type: none;
-  ${props => !props.nomarker && typeVariant}
+  ${props => (props.nomarker ? `list-style-type: none;` : typeVariant)}
 
   ${space}
 `
