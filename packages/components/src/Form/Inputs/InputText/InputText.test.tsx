@@ -57,11 +57,3 @@ test('Should trigger onChange handler', () => {
   wrapper.find('input').simulate('change', { target: { value: '' } })
   expect(counter).toEqual(1)
 })
-
-test('Should call console.warn if `hidden` attribute is used', () => {
-  expect(window.console.warn).not.toHaveBeenCalled()
-
-  mountWithTheme(<InputText hidden />)
-
-  expect(window.console.warn).toHaveBeenCalledTimes(1)
-})

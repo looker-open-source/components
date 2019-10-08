@@ -1,10 +1,6 @@
-import * as CSS from 'csstype'
-import { ResponsiveValue, TLengthStyledSystem } from 'styled-system'
+import { HeightProperty } from 'csstype'
+import { ResponsiveValue } from 'styled-system'
 import { FontSizes, FontWeights, RadiusSizes, SpacingSizes } from './system'
-
-export type ResponsiveHeightValue = ResponsiveValue<
-  CSS.HeightProperty<TLengthStyledSystem>
->
 
 export interface CustomizableAttributes {
   [key: string]: any
@@ -12,7 +8,7 @@ export interface CustomizableAttributes {
   color?: string
   fontSize?: ResponsiveValue<FontSizes>
   fontWeight?: FontWeights
-  height?: ResponsiveValue<CSS.HeightProperty<TLengthStyledSystem>>
+  height?: ResponsiveValue<HeightProperty<any>>
   px?: SpacingSizes
   py?: SpacingSizes
 }

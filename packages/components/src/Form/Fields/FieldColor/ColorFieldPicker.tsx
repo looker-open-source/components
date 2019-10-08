@@ -38,6 +38,8 @@ export interface ColorFieldProps
    * Displays the color picker as visible on first render
    */
   open?: boolean
+
+  value?: string
 }
 
 interface ColorFieldState {
@@ -82,14 +84,12 @@ class InternalColorFieldPicker extends React.Component<
     const {
       alignValidationMessage,
       hideInput,
-      validationMessage,
       cwSize = 164,
+      validationMessage,
     } = this.props
     const hsvColor = this.getHSVColor()
     const borderRadius =
       radii[CustomizableInputTextAttributes.borderRadius || 'medium']
-    const swatchBorderRadius = `${borderRadius} 0 0 ${borderRadius}`
-    const inputTextBorderRadius = `0 ${borderRadius} ${borderRadius} 0`
 
     const content = (
       <Flex flexDirection="column">
@@ -105,7 +105,7 @@ class InternalColorFieldPicker extends React.Component<
           max={100}
           step={1}
           value={hsvColor.v * 100}
-          // width={cwSize}
+          width={cwSize}
           onChange={this.proxyHandleSliderChange.bind(this, hsvColor)}
         />
       </Flex>
@@ -123,7 +123,7 @@ class InternalColorFieldPicker extends React.Component<
                 <Swatch
                   ref={ref}
                   color={ColorFormatUtils.hsv2hex(hsvColor)}
-                  borderRadius={swatchBorderRadius}
+                  borderRadius={`${borderRadius} 0 0 ${borderRadius}`}
                   borderRight={0}
                   width="33px"
                   height="28px"
@@ -133,21 +133,22 @@ class InternalColorFieldPicker extends React.Component<
             </Popover>
           </FlexItem>
           <FlexItem>
-            <InputText
-              type={hideInput ? 'hidden' : 'text'}
-              {...omit(this.props, [
-                'alignLabel',
-                'alignValidationMessage',
-                'hideInput',
-                'label',
-                'validationMessage',
-                'cwSize',
-                'open',
-              ])}
-              validationType={validationMessage && validationMessage.type}
-              onChange={this.handleInputTextChange}
-              borderRadius={inputTextBorderRadius}
-            />
+            {hideInput && (
+              <InputText
+                {...omit(this.props, [
+                  'alignLabel',
+                  'alignValidationMessage',
+                  'hideInput',
+                  'label',
+                  'validationMessage',
+                  'cwSize',
+                  'open',
+                ])}
+                borderRadius={`0 ${borderRadius} ${borderRadius} 0`}
+                validationType={validationMessage && validationMessage.type}
+                onChange={this.handleInputTextChange}
+              />
+            )}
           </FlexItem>
         </FormControl>
       </Field>

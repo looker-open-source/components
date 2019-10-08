@@ -9,21 +9,21 @@ exports[`InputText default 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
   border: solid 1px;
-  border-radius: 0.25rem;
   border-color: #C1C6CC;
-  font-size: 0.875rem;
+  border-radius: 0.25rem;
   height: 28px;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
+  font-size: 0.875rem;
 }
 
 <input
   className="c0"
+  fontSize="small"
+  height="28px"
   type="text"
 />
 `;
@@ -37,22 +37,22 @@ exports[`InputText should accept disabled 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
   border: solid 1px;
-  border-radius: 0.25rem;
   border-color: #C1C6CC;
-  font-size: 0.875rem;
+  border-radius: 0.25rem;
   height: 28px;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
+  font-size: 0.875rem;
 }
 
 <input
   className="c0"
   disabled={true}
+  fontSize="small"
+  height="28px"
   type="text"
 />
 `;
@@ -66,21 +66,21 @@ exports[`InputText should accept readOnly 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
   border: solid 1px;
-  border-radius: 0.25rem;
   border-color: #C1C6CC;
-  font-size: 0.875rem;
+  border-radius: 0.25rem;
   height: 28px;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
+  font-size: 0.875rem;
 }
 
 <input
   className="c0"
+  fontSize="small"
+  height="28px"
   readOnly={true}
   type="text"
 />
@@ -95,21 +95,21 @@ exports[`InputText should accept required 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
   border: solid 1px;
-  border-radius: 0.25rem;
   border-color: #C1C6CC;
-  font-size: 0.875rem;
+  border-radius: 0.25rem;
   height: 28px;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
+  font-size: 0.875rem;
 }
 
 <input
   className="c0"
+  fontSize="small"
+  height="28px"
   required={true}
   type="text"
 />
@@ -124,21 +124,21 @@ exports[`InputText with a placeholder 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
   border: solid 1px;
-  border-radius: 0.25rem;
   border-color: #C1C6CC;
-  font-size: 0.875rem;
+  border-radius: 0.25rem;
   height: 28px;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
+  font-size: 0.875rem;
 }
 
 <input
   className="c0"
+  fontSize="small"
+  height="28px"
   placeholder="I am a placeholder"
   type="text"
 />
@@ -153,21 +153,21 @@ exports[`InputText with a value 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
   border: solid 1px;
-  border-radius: 0.25rem;
   border-color: #C1C6CC;
-  font-size: 0.875rem;
+  border-radius: 0.25rem;
   height: 28px;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
+  font-size: 0.875rem;
 }
 
 <input
   className="c0"
+  fontSize="small"
+  height="28px"
   type="text"
   value="Some value"
 />
@@ -182,22 +182,21 @@ exports[`InputText with an error validation 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
   border: solid 1px;
-  border-radius: 0.25rem;
   border-color: #C1C6CC;
-  background-color: #FFF2F4;
-  font-size: 0.875rem;
+  border-radius: 0.25rem;
   height: 28px;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
+  font-size: 0.875rem;
 }
 
 <input
   className="c0"
+  fontSize="small"
+  height="28px"
   type="text"
 />
 `;
@@ -211,22 +210,22 @@ exports[`InputText with aria-describedby 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
   border: solid 1px;
-  border-radius: 0.25rem;
   border-color: #C1C6CC;
-  font-size: 0.875rem;
+  border-radius: 0.25rem;
   height: 28px;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
+  font-size: 0.875rem;
 }
 
 <input
   aria-describedby="some-id"
   className="c0"
+  fontSize="small"
+  height="28px"
   type="text"
 />
 `;
@@ -240,21 +239,21 @@ exports[`InputText with name and id 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
   border: solid 1px;
-  border-radius: 0.25rem;
   border-color: #C1C6CC;
-  font-size: 0.875rem;
+  border-radius: 0.25rem;
   height: 28px;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
+  font-size: 0.875rem;
 }
 
 <input
   className="c0"
+  fontSize="small"
+  height="28px"
   id="Bobby"
   name="Bob"
   type="text"

@@ -10,7 +10,8 @@ import { InputSearchControls } from './InputSearchControls'
 
 interface InputSearchLayoutProps extends BorderProps, LayoutProps {}
 
-export interface InputSearchProps extends InputTextProps {
+export interface InputSearchProps
+  extends Omit<InputTextProps, 'height' | 'size' | 'width'> {
   /**
    * hides clear button and summary text
    */
@@ -19,6 +20,10 @@ export interface InputSearchProps extends InputTextProps {
    * adds text when input value in not empty
    */
   summary?: string
+
+  value?: string
+  width?: string
+  height?: string
 }
 
 const InputSearchLayout = styled.div<InputSearchLayoutProps>`
@@ -82,7 +87,6 @@ const InputSearchComponent = forwardRef(
 
     return (
       <InputSearchLayout
-        width={width}
         border={border || 'solid 1px'}
         borderColor={borderColor || 'palette.charcoal300'}
         borderRadius={
@@ -92,6 +96,7 @@ const InputSearchComponent = forwardRef(
         borderBottom={borderBottom}
         borderLeft={borderLeft}
         borderRight={borderRight}
+        width={width}
       >
         <InputText
           type="search"
@@ -100,8 +105,6 @@ const InputSearchComponent = forwardRef(
           focusStyle={{ outline: 'none' }}
           border="none"
           width="100%"
-          height={props.height as any}
-          size={props.size as any}
           {...props}
           ref={ref}
         />

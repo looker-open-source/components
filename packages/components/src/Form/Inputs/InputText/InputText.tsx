@@ -1,4 +1,3 @@
-import styled from 'styled-components'
 import {
   border,
   BorderProps,
@@ -10,7 +9,11 @@ import {
   PsuedoProps,
   space,
   SpaceProps,
+  TypographyProps,
+  reset,
+  color,
 } from '@looker/design-tokens'
+import styled from 'styled-components'
 import { InputProps } from '../InputProps'
 
 export const CustomizableInputTextAttributes: CustomizableAttributes = {
@@ -20,31 +23,37 @@ export const CustomizableInputTextAttributes: CustomizableAttributes = {
   px: 'xsmall',
   py: 'none',
 }
+
 export interface InputTextProps
   extends BorderProps,
     LayoutProps,
     PsuedoProps,
     SpaceProps,
     Omit<InputProps, 'type'> {
-  value?: string
+  type?: 'text' | 'search'
 }
 
+interface InternalInputTextProps extends InputTextProps, TypographyProps {}
+
 export const InputText = styled.input.attrs((props: InputTextProps) => ({
+  background: props.validationType === 'error' && 'palette.red000',
+}))<InternalInputTextProps>`
+  ${reset}
+  ${border}
+  ${color}
+  ${layout}
+  ${space}
+  ${typography}
+  ${psuedoClasses}
+`
+
+InputText.defaultProps = {
+  border: 'solid 1px',
+  borderColor: 'palette.charcoal300',
   borderRadius: CustomizableInputTextAttributes.borderRadius,
   fontSize: CustomizableInputTextAttributes.fontSize,
   height: CustomizableInputTextAttributes.height,
-  px: props.p || CustomizableInputTextAttributes.px,
-  py: props.p || CustomizableInputTextAttributes.py,
+  px: CustomizableInputTextAttributes.px,
+  py: CustomizableInputTextAttributes.py,
   type: 'text',
-}))<InputTextProps>`
-  ${props =>
-    props.validationType === 'error'
-      ? `background: ${props.theme.colors.palette.red000};`
-      : ''}
-  border: solid 1px ${props => props.theme.colors.palette.charcoal300};
-  ${border}
-  ${layout}
-  ${psuedoClasses}
-  ${typography}
-  ${space}
-`
+}
