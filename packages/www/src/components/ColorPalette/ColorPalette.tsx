@@ -21,7 +21,6 @@ interface SwatchProps {
   labelColor: string
   contrastLevel: WCAGContrastLevel
   group: string
-  children: React.ReactNode
 }
 
 interface FigmaSwatchProps extends SwatchProps {
