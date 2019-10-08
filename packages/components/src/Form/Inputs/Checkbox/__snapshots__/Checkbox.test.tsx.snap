@@ -9,8 +9,6 @@ exports[`Checkbox checked set to false 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
 }
 
 <input
@@ -29,8 +27,6 @@ exports[`Checkbox checked set to true 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
 }
 
 <input
@@ -49,8 +45,6 @@ exports[`Checkbox default 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
 }
 
 <input
@@ -68,8 +62,6 @@ exports[`Checkbox should accept disabled 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
 }
 
 <input
@@ -88,8 +80,6 @@ exports[`Checkbox with aria-describedby 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
 }
 
 <input
@@ -108,8 +98,6 @@ exports[`Checkbox with name and id 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
 }
 
 <input
