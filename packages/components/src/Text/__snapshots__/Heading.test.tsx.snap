@@ -10,8 +10,8 @@ exports[`A <h1> Heading 1`] = `
   padding: 0;
   vertical-align: baseline;
   font-weight: 400;
-  font-size: 1.5625rem;
   line-height: 2.5rem;
+  font-size: 1.5625rem;
 }
 
 <h1
@@ -79,8 +79,8 @@ exports[`A Heading transformed 1`] = `
   padding: 0;
   vertical-align: baseline;
   font-weight: 400;
-  font-size: 1.375rem;
   line-height: 2rem;
+  font-size: 1.375rem;
   text-transform: capitalize;
 }
 
@@ -103,8 +103,8 @@ exports[`A Heading truncated 1`] = `
   padding: 0;
   vertical-align: baseline;
   font-weight: 400;
-  font-size: 1.375rem;
   line-height: 2rem;
+  font-size: 1.375rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -129,8 +129,8 @@ exports[`A Heading with multiline truncate 1`] = `
   padding: 0;
   vertical-align: baseline;
   font-weight: 400;
-  font-size: 1.375rem;
   line-height: 2rem;
+  font-size: 1.375rem;
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -156,8 +156,8 @@ exports[`A Heading with variant 1`] = `
   padding: 0;
   vertical-align: baseline;
   font-weight: 400;
-  font-size: 1.375rem;
   line-height: 2rem;
+  font-size: 1.375rem;
   color: #939BA5;
 }
 
@@ -180,8 +180,8 @@ exports[`A default Heading 1`] = `
   padding: 0;
   vertical-align: baseline;
   font-weight: 400;
-  font-size: 1.375rem;
   line-height: 2rem;
+  font-size: 1.375rem;
 }
 
 <h2

@@ -1,27 +1,23 @@
 import styled from 'styled-components'
-import { typography, ResponsiveValue, space } from 'styled-system'
+import { ResponsiveValue } from 'styled-system'
 import {
   CompatibleHTMLProps,
   FontSizes,
-  reset,
-  SpaceProps,
-  TypographyProps,
-  TextTransformProps,
   textTransform,
+  TextTransformProps,
 } from '@looker/design-tokens'
-
-import { textVariant, TextVariantProps } from '../Text/text_variant'
-import { TruncateProps, truncate } from '../Text/truncate'
+import { TextBase, TextBaseProps } from './TextBase'
+import { TextVariantProps, textVariant } from './text_variant'
+import { TruncateProps, truncate } from './truncate'
 
 type HeadingLevels = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
 
 export interface HeadingProps
-  extends TruncateProps,
-    SpaceProps,
-    TypographyProps,
+  extends TextBaseProps,
     TextTransformProps,
     TextVariantProps,
-    CompatibleHTMLProps<HTMLHeadingElement> {
+    TruncateProps,
+    Omit<CompatibleHTMLProps<HTMLHeadingElement>, 'wrap'> {
   /** Heading level from h1-h6
    * @default: 'h2'
    */
@@ -49,17 +45,13 @@ const headingLevelFontSize = (props: HeadingProps) => {
 const headingLineHeight = (props: HeadingProps): ResponsiveValue<FontSizes> =>
   props.fontSize ? props.fontSize : headingLevelFontSize(props)
 
-export const Heading = styled.h2.attrs((props: HeadingProps) => ({
+export const Heading = styled(TextBase).attrs((props: HeadingProps) => ({
   fontSize: props.fontSize || headingLevelFontSize(props),
   lineHeight: props.lineHeight || headingLineHeight(props),
 }))<HeadingProps>`
-  ${reset}
-  ${typography}
   ${textTransform}
-  ${space}
-
+  ${textVariant}
   ${truncate}
-  ${textVariant};
 `
 
 Heading.defaultProps = { as: 'h2', fontWeight: 'normal' }

@@ -28,5 +28,3 @@ export const TextBase = styled.span.attrs((props: TypographyProps) => ({
   ${textDecoration}
   ${props => props.wrap && 'overflow-wrap: break-word'};
 `
-
-TextBase.defaultProps = { fontSize: 'medium' }

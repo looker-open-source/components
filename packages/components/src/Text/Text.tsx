@@ -17,3 +17,5 @@ export const Text = styled(TextBase)<TextProps>`
   ${textVariant}
   ${textTransform}
 `
+
+Text.defaultProps = { fontSize: 'medium' }

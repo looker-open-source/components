@@ -20,9 +20,9 @@ export interface ParagraphProps
 
 export const Paragraph = styled(TextBase).attrs({ as: 'p' })<ParagraphProps>`
   ${layout}
-  ${truncate}
   ${textTransform}
   ${textVariant}
+  ${truncate}
 `
 
 Paragraph.defaultProps = { fontSize: 'medium' }
