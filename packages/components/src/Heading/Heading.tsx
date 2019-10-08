@@ -3,9 +3,11 @@ import { typography, ResponsiveValue, space } from 'styled-system'
 import {
   CompatibleHTMLProps,
   FontSizes,
+  reset,
   SpaceProps,
   TypographyProps,
-  reset,
+  TextTransformProps,
+  textTransform,
 } from '@looker/design-tokens'
 
 import { textVariant, TextVariantProps } from '../Text/text_variant'
@@ -17,6 +19,7 @@ export interface HeadingProps
   extends TruncateProps,
     SpaceProps,
     TypographyProps,
+    TextTransformProps,
     TextVariantProps,
     CompatibleHTMLProps<HTMLHeadingElement> {
   /** Heading level from h1-h6
@@ -25,8 +28,8 @@ export interface HeadingProps
   as?: HeadingLevels
 }
 
-const headingLevelSize = (as?: HeadingLevels) => {
-  switch (as) {
+const headingLevelFontSize = (props: HeadingProps) => {
+  switch (props.as) {
     case 'h1':
       return 'xxlarge'
     case 'h2':
@@ -44,41 +47,20 @@ const headingLevelSize = (as?: HeadingLevels) => {
   }
 }
 
-const headingLineHeight = (
-  as?: HeadingLevels,
-  size?: ResponsiveValue<FontSizes>
-): ResponsiveValue<FontSizes> => {
-  if (size) return size
+const headingLineHeight = (props: HeadingProps): ResponsiveValue<FontSizes> =>
+  props.fontSize ? props.fontSize : headingLevelFontSize(props)
 
-  switch (as) {
-    case 'h1':
-      return 'xxlarge'
-    case 'h2':
-      return 'xlarge'
-    case 'h3':
-      return 'large'
-    case 'h4':
-      return 'medium'
-    case 'h5':
-      return 'small'
-    case 'h6':
-      return 'xsmall'
-    default:
-      return 'large'
-  }
-}
-
-export const Heading = styled.h2<HeadingProps>`
+export const Heading = styled.h2.attrs((props: HeadingProps) => ({
+  fontSize: props.fontSize || headingLevelFontSize(props),
+  lineHeight: props.lineHeight || headingLineHeight(props),
+}))<HeadingProps>`
   ${reset}
   ${typography}
+  ${textTransform}
   ${space}
 
   ${truncate}
   ${textVariant};
-
-  font-size: ${props => props.fontSize || headingLevelSize(props.as)};
-  line-height: ${props =>
-    props.lineHeight || headingLineHeight(props.as, props.fontSize)};
 `
 
-Heading.defaultProps = { as: 'h2', fontWeight: 'normal' }
+Heading.defaultProps = { fontWeight: 'normal' }
