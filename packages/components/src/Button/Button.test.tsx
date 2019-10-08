@@ -1,122 +1,61 @@
+import { createWithTheme, assertSnapshot } from '@looker/components-test-utils'
 import 'jest-styled-components'
 import React from 'react'
-import { createWithTheme, assertSnapshot } from '@looker/components-test-utils'
-
-import { SemanticColor, theme } from '@looker/design-tokens'
-import { Button, ButtonSizes } from './Button'
+import { Button } from './Button'
+import { ButtonSizes } from './size'
 
 const noop = () => {}
 
 test('Button default', () => {
-  assertSnapshot(<Button theme={theme}>🥑</Button>)
+  assertSnapshot(<Button>🥑</Button>)
 })
 
 test('Button variant outline', () => {
-  assertSnapshot(
-    <Button theme={theme} variant="outline">
-      🥑
-    </Button>
-  )
+  assertSnapshot(<Button variant="outline">🥑</Button>)
 })
 
 test('Button variant transparent', () => {
-  assertSnapshot(
-    <Button theme={theme} variant="transparent">
-      🥑
-    </Button>
-  )
+  assertSnapshot(<Button variant="transparent">🥑</Button>)
 })
 
 test('Button type submit', () => {
-  assertSnapshot(
-    <Button theme={theme} type="submit">
-      🥑
-    </Button>
-  )
+  assertSnapshot(<Button type="submit">🥑</Button>)
 })
 
 test('Button type reset', () => {
-  assertSnapshot(
-    <Button theme={theme} type="reset">
-      🥑
-    </Button>
-  )
+  assertSnapshot(<Button type="reset">🥑</Button>)
 })
 
 test('Button type button', () => {
-  assertSnapshot(
-    <Button theme={theme} type="button">
-      🥑
-    </Button>
-  )
+  assertSnapshot(<Button type="button">🥑</Button>)
 })
 
 test('Button type menu', () => {
-  assertSnapshot(
-    <Button theme={theme} type="menu">
-      🥑
-    </Button>
-  )
+  assertSnapshot(<Button>🥑</Button>)
+})
+
+test('Button padding', () => {
+  assertSnapshot(<Button p="none">🥑</Button>)
 })
 
 test('Button padding', () => {
   assertSnapshot(
-    <Button theme={theme} p="none">
-      🥑
-    </Button>
-  )
-})
-
-test('Button padding', () => {
-  assertSnapshot(
-    <Button theme={theme} px="xxsmall" py="xxxlarge">
+    <Button px="xxsmall" py="xxxlarge">
       🥑
     </Button>
   )
 })
 
 test('Button primary color', () => {
-  assertSnapshot(
-    <Button theme={theme} color="primary">
-      🥑
-    </Button>
-  )
+  assertSnapshot(<Button color="primary">🥑</Button>)
 })
 
 test('Button danger color', () => {
-  assertSnapshot(
-    <Button theme={theme} color="danger">
-      🥑
-    </Button>
-  )
+  assertSnapshot(<Button color="danger">🥑</Button>)
 })
 
 test('Button should accept disabled', () => {
-  assertSnapshot(
-    <Button theme={theme} disabled>
-      🥑
-    </Button>
-  )
-})
-
-test('Button accepts a SemanticColor object for the color property', () => {
-  const punkRockColor: SemanticColor = {
-    altText: 'LightPink',
-    borderColor: 'MediumVioletRed',
-    dark: 'PaleVioletRed',
-    darker: 'MediumVioletRed',
-    light: 'HotPink',
-    lighter: 'LightPink',
-    linkColor: 'DeepPink',
-    main: 'DeepPink',
-    text: 'White',
-  }
-
-  assertSnapshot(
-    <Button theme={theme} color={punkRockColor}>
-      🥑
-    </Button>
-  )
+  assertSnapshot(<Button disabled>🥑</Button>)
 })
 
 test('Button accepts a className prop', () => {

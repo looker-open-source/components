@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 import {
   CompatibleHTMLProps,
+  psuedoClasses,
+  PsuedoProps,
   reset,
   SpaceProps,
   space,
@@ -27,6 +29,7 @@ export type IconButtonSizes =
 export interface IconButtonProps
   extends Omit<CompatibleHTMLProps<HTMLButtonElement>, 'children' | 'type'>,
     IconButtonVariantProps,
+    PsuedoProps,
     SpaceProps {
   type?: 'button' | 'submit' | 'reset'
 
@@ -85,6 +88,7 @@ const IconButtonBase = styled.button<IconButtonProps>`
   padding: 3px;
 
   ${iconButtonVariant}
+  ${psuedoClasses}
 `
 
 export const IconButton = styled(IconButtonComponent)``

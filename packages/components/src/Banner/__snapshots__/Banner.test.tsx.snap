@@ -58,18 +58,18 @@ exports[`Dismissable banner 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  color: #49a9f2;
-  width: 20px;
-  height: 20px;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   margin-right: 0.75rem;
+  color: #49a9f2;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  height: 20;
+  width: 20;
 }
 
 .c4 {
@@ -80,16 +80,16 @@ exports[`Dismissable banner 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  width: 20px;
-  height: 20px;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  height: 20;
+  width: 20;
 }
 
 .c2 {
@@ -204,9 +204,7 @@ exports[`Dismissable banner 1`] = `
   <div
     className="c1 "
     color="palette.blue400"
-    display="inline-flex"
-    height={20}
-    width={20}
+    size={20}
   >
     <svg
       fill="currentColor"
@@ -251,9 +249,7 @@ exports[`Dismissable banner 1`] = `
     <div
       aria-hidden={true}
       className="c4 "
-      display="inline-flex"
-      height={20}
-      width={20}
+      size={20}
     >
       <svg
         fill="currentColor"
@@ -283,18 +279,18 @@ exports[`Error banner 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  color: #B2121F;
-  width: 20px;
-  height: 20px;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   margin-right: 0.75rem;
+  color: #B2121F;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  height: 20;
+  width: 20;
 }
 
 .c2 {
@@ -339,9 +335,7 @@ exports[`Error banner 1`] = `
   <div
     className="c1 "
     color="palette.red600"
-    display="inline-flex"
-    height={20}
-    width={20}
+    size={20}
   >
     <svg
       fill="currentColor"
@@ -378,18 +372,18 @@ exports[`Info banner 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  color: #49a9f2;
-  width: 20px;
-  height: 20px;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   margin-right: 0.75rem;
+  color: #49a9f2;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  height: 20;
+  width: 20;
 }
 
 .c2 {
@@ -434,9 +428,7 @@ exports[`Info banner 1`] = `
   <div
     className="c1 "
     color="palette.blue400"
-    display="inline-flex"
-    height={20}
-    width={20}
+    size={20}
   >
     <svg
       fill="currentColor"
@@ -473,18 +465,18 @@ exports[`Warning banner 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  color: #FFA800;
-  width: 20px;
-  height: 20px;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
   margin-right: 0.75rem;
+  color: #FFA800;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  height: 20;
+  width: 20;
 }
 
 .c2 {
@@ -529,9 +521,7 @@ exports[`Warning banner 1`] = `
   <div
     className="c1 "
     color="palette.yellow500"
-    display="inline-flex"
-    height={20}
-    width={20}
+    size={20}
   >
     <svg
       fill="currentColor"

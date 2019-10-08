@@ -6,12 +6,14 @@ import {
 } from '@looker/design-tokens'
 import { variant } from 'styled-system'
 
+export type ButtonSizes = SizeXSmall | SizeSmall | SizeMedium | SizeLarge
+
 export interface ButtonSizeProps {
   /**
    * Defines the size of the button.
    * @default "medium"
    */
-  size?: SizeXSmall | SizeSmall | SizeMedium | SizeLarge
+  size?: ButtonSizes
 }
 
 /* eslint-disable sort-keys */
