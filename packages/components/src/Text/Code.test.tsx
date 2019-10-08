@@ -1,38 +1,27 @@
-import {
-  snapshotTestTextComponent,
-  snapshotTestTextComponentDecoration,
-  snapshotTestTextComponentFontRamp,
-  snapshotTestTextComponentFontWeight,
-  snapshotTestTextComponentTransform,
-  snapshotTestTextComponentVariant,
-  snapshotTestTextComponentWrap,
-} from './textTestHelpers'
+import React from 'react'
+import { createWithTheme } from '@looker/components-test-utils'
 import { Code } from './Code'
 
 test('A default Code component', () => {
-  snapshotTestTextComponent(Code)
+  const component = createWithTheme(<Code>Hello</Code>)
+  const tree = component.toJSON()
+  expect(tree).toMatchSnapshot()
 })
 
 test('A Code component resized', () => {
-  snapshotTestTextComponentFontRamp(Code)
+  const component = createWithTheme(<Code fontSize="xxxxlarge">Hello</Code>)
+  const tree = component.toJSON()
+  expect(tree).toMatchSnapshot()
 })
 
-test('A Codet component weight', () => {
-  snapshotTestTextComponentFontWeight(Code)
+test('A Code component aligned', () => {
+  const component = createWithTheme(<Code textAlign="right">Hello</Code>)
+  const tree = component.toJSON()
+  expect(tree).toMatchSnapshot()
 })
 
-test('A Code component with variant', () => {
-  snapshotTestTextComponentVariant(Code)
-})
-
-test('A Code component text transformed', () => {
-  snapshotTestTextComponentTransform(Code)
-})
-
-test('A Code component wrapped', () => {
-  snapshotTestTextComponentWrap(Code)
-})
-
-test('A Text component decorated', () => {
-  snapshotTestTextComponentDecoration(Code)
+test('A Code component weight', () => {
+  const component = createWithTheme(<Code fontWeight="bold">Hello</Code>)
+  const tree = component.toJSON()
+  expect(tree).toMatchSnapshot()
 })

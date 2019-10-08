@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`A Text component decorated 1`] = `
-.c1 {
+.c0 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -9,27 +9,23 @@ exports[`A Text component decorated 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
   font-size: 1rem;
   line-height: 1.5rem;
-}
-
-.c0 {
   -webkit-text-decoration: line-through;
   text-decoration: line-through;
-  text-transform: none;
 }
 
 <span
-  className="c0 c1"
+  className="c0"
+  fontSize="medium"
+  textDecoration="line-through"
 >
   Hello
 </span>
 `;
 
 exports[`A Text component resized 1`] = `
-.c1 {
+.c0 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -37,25 +33,20 @@ exports[`A Text component resized 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
   font-size: 2.875rem;
   line-height: 4rem;
 }
 
-.c0 {
-  text-transform: none;
-}
-
 <span
-  className="c0 c1"
+  className="c0"
+  fontSize="xxxxlarge"
 >
   Hello
 </span>
 `;
 
 exports[`A Text component text transformed 1`] = `
-.c1 {
+.c0 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -63,25 +54,21 @@ exports[`A Text component text transformed 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
   font-size: 1rem;
   line-height: 1.5rem;
-}
-
-.c0 {
   text-transform: uppercase;
 }
 
 <span
-  className="c0 c1"
+  className="c0"
+  fontSize="medium"
 >
   Hello
 </span>
 `;
 
 exports[`A Text component weight 1`] = `
-.c1 {
+.c0 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -89,53 +76,22 @@ exports[`A Text component weight 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
-  font-size: 1rem;
   font-weight: 700;
-  line-height: 1.5rem;
-}
-
-.c0 {
-  text-transform: none;
-}
-
-<span
-  className="c0 c1"
->
-  Hello
-</span>
-`;
-
-exports[`A Text component with color 1`] = `
-.c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
-  color: #49a9f2;
   font-size: 1rem;
   line-height: 1.5rem;
 }
 
-.c0 {
-  text-transform: none;
-}
-
 <span
-  className="c0 c1"
+  className="c0"
+  fontSize="medium"
+  fontWeight="bold"
 >
   Hello
 </span>
 `;
 
 exports[`A Text component with variant 1`] = `
-.c1 {
+.c0 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -143,26 +99,21 @@ exports[`A Text component with variant 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
   font-size: 1rem;
   line-height: 1.5rem;
-}
-
-.c0 {
-  text-transform: none;
   color: #CC1F36;
 }
 
 <span
-  className="c0 c1"
+  className="c0"
+  fontSize="medium"
 >
   Hello
 </span>
 `;
 
 exports[`A Text component wrapped 1`] = `
-.c1 {
+.c0 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -170,26 +121,22 @@ exports[`A Text component wrapped 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
   font-size: 1rem;
   line-height: 1.5rem;
-}
-
-.c0 {
-  text-transform: none;
   overflow-wrap: break-word;
 }
 
 <span
-  className="c0 c1"
+  className="c0"
+  fontSize="medium"
+  wrap={true}
 >
   Hello
 </span>
 `;
 
 exports[`A default Text component 1`] = `
-.c1 {
+.c0 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -197,18 +144,13 @@ exports[`A default Text component 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
   font-size: 1rem;
   line-height: 1.5rem;
 }
 
-.c0 {
-  text-transform: none;
-}
-
 <span
-  className="c0 c1"
+  className="c0"
+  fontSize="medium"
 >
   Hello
 </span>

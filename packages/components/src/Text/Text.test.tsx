@@ -1,43 +1,55 @@
+import React from 'react'
+import { createWithTheme } from '@looker/components-test-utils'
 import { Text } from './Text'
-import {
-  snapshotTestTextComponent,
-  snapshotTestTextComponentColor,
-  snapshotTestTextComponentDecoration,
-  snapshotTestTextComponentFontRamp,
-  snapshotTestTextComponentFontWeight,
-  snapshotTestTextComponentTransform,
-  snapshotTestTextComponentVariant,
-  snapshotTestTextComponentWrap,
-} from './textTestHelpers'
 
 test('A default Text component', () => {
-  snapshotTestTextComponent(Text)
+  const component = createWithTheme(<Text>Hello</Text>)
+  const tree = component.toJSON()
+  expect(tree).toMatchSnapshot()
 })
 
 test('A Text component resized', () => {
-  snapshotTestTextComponentFontRamp(Text)
+  const component = createWithTheme(<Text fontSize="xxxxlarge">Hello</Text>)
+  const tree = component.toJSON()
+  expect(tree).toMatchSnapshot()
 })
 
 test('A Text component weight', () => {
-  snapshotTestTextComponentFontWeight(Text)
+  const component = createWithTheme(<Text fontWeight="bold">Hello</Text>)
+  const tree = component.toJSON()
+  expect(tree).toMatchSnapshot()
 })
 
 test('A Text component with variant', () => {
-  snapshotTestTextComponentVariant(Text)
-})
-
-test('A Text component with color', () => {
-  snapshotTestTextComponentColor(Text)
+  const component = createWithTheme(<Text variant="critical">Hello</Text>)
+  const tree = component.toJSON()
+  expect(tree).toMatchSnapshot()
 })
 
 test('A Text component text transformed', () => {
-  snapshotTestTextComponentTransform(Text)
+  const component = createWithTheme(
+    <Text textTransform="uppercase">Hello</Text>
+  )
+  const tree = component.toJSON()
+  expect(tree).toMatchSnapshot()
 })
 
 test('A Text component wrapped', () => {
-  snapshotTestTextComponentWrap(Text)
+  const component = createWithTheme(<Text wrap>Hello</Text>)
+  const tree = component.toJSON()
+  expect(tree).toMatchSnapshot()
 })
 
+// test('A Text component aligned', () => {
+//   const component = createWithTheme(<Text textAlign="right">Hello</Text>)
+//   const tree = component.toJSON()
+//   expect(tree).toMatchSnapshot()
+// })
+
 test('A Text component decorated', () => {
-  snapshotTestTextComponentDecoration(Text)
+  const component = createWithTheme(
+    <Text textDecoration="line-through">Hello</Text>
+  )
+  const tree = component.toJSON()
+  expect(tree).toMatchSnapshot()
 })

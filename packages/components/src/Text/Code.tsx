@@ -1,21 +1,6 @@
 import styled from 'styled-components'
-import {
-  reset,
-  typography,
-  space,
-  CompatibleHTMLProps,
-  SpaceProps,
-  TypographyProps,
-} from '@looker/design-tokens'
+import { TextBase } from './TextBase'
 
-export interface CodeProps
-  extends SpaceProps,
-    TypographyProps,
-    CompatibleHTMLProps<HTMLElement> {}
+export const Code = styled(TextBase).attrs({ as: 'code' })``
 
-/** @component */
-export const Code = styled.code<CodeProps>`
-  ${reset}
-  ${typography}
-  ${space}
-`
+Code.defaultProps = { fontFamily: 'code' }

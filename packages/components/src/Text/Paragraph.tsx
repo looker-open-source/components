@@ -1,28 +1,28 @@
 import styled from 'styled-components'
 import {
-  reset,
   layout,
-  space,
-  typography,
   CompatibleHTMLProps,
   LayoutProps,
-  SpaceProps,
-  TypographyProps,
+  textTransform,
+  TextTransformProps,
 } from '@looker/design-tokens'
 import { TruncateProps, truncate } from '../Text/truncate'
+import { TextVariantProps, textVariant } from './text_variant'
+import { TextBase, TextBaseProps } from './TextBase'
 
 export interface ParagraphProps
-  extends TypographyProps,
-    SpaceProps,
+  extends TextBaseProps,
     LayoutProps,
+    TextVariantProps,
+    TextTransformProps,
     TruncateProps,
-    CompatibleHTMLProps<HTMLParagraphElement> {}
+    Omit<CompatibleHTMLProps<HTMLParagraphElement>, 'wrap'> {}
 
-/** @component */
-export const Paragraph = styled.p<ParagraphProps>`
-  ${reset}
-  ${typography}
-  ${space}
+export const Paragraph = styled(TextBase).attrs({ as: 'p' })<ParagraphProps>`
   ${layout}
   ${truncate}
+  ${textTransform}
+  ${textVariant}
 `
+
+Paragraph.defaultProps = { fontSize: 'medium' }

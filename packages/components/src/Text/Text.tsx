@@ -1,40 +1,19 @@
 import styled from 'styled-components'
 import {
-  reset,
-  typography,
-  space,
   CompatibleHTMLProps,
-  SpaceProps,
   textTransform,
   TextTransformProps,
-  textDecoration,
-  TextDecorationProps,
-  TypographyProps,
 } from '@looker/design-tokens'
 import { textVariant, TextVariantProps } from './text_variant'
+import { TextBase, TextBaseProps } from './TextBase'
 
 export interface TextProps
-  extends SpaceProps,
-    TypographyProps,
-    TextDecorationProps,
+  extends TextBaseProps,
     TextTransformProps,
     TextVariantProps,
-    Omit<CompatibleHTMLProps<HTMLSpanElement>, 'wrap'> {
-  /** Should browser insert line breaks within words to prevent text from overflowing its content box
-   * @default: false
-   */
-  wrap?: boolean
-}
+    Omit<CompatibleHTMLProps<HTMLSpanElement>, 'wrap'> {}
 
-export const Text = styled.span<TextProps>`
-  ${reset}
-  ${typography}
-  ${space}
-  ${textDecoration}
+export const Text = styled(TextBase)<TextProps>`
   ${textVariant}
   ${textTransform}
-
-  ${props => props.wrap && 'overflow-wrap: break-word'};
 `
-
-Text.defaultProps = { fontSize: 'medium' }

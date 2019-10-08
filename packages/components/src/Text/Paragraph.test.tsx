@@ -1,53 +1,77 @@
 import React from 'react'
-import { assertSnapshot } from '@looker/components-test-utils'
-import {
-  snapshotTestTextComponent,
-  snapshotTestTextComponentAlign,
-  snapshotTestTextComponentDecoration,
-  snapshotTestTextComponentFontRamp,
-  snapshotTestTextComponentFontWeight,
-  snapshotTestTextComponentTransform,
-  snapshotTestTextComponentVariant,
-  snapshotTestTextComponentWrap,
-} from './textTestHelpers'
+import { createWithTheme } from '@looker/components-test-utils'
 import { Paragraph } from './Paragraph'
 
 test('A default Paragraph component', () => {
-  snapshotTestTextComponent(Paragraph)
+  const component = createWithTheme(<Paragraph>Hello</Paragraph>)
+  const tree = component.toJSON()
+  expect(tree).toMatchSnapshot()
 })
 
 test('A Paragraph component resized', () => {
-  snapshotTestTextComponentFontRamp(Paragraph)
+  const component = createWithTheme(
+    <Paragraph fontSize="xxxxlarge">Hello</Paragraph>
+  )
+  const tree = component.toJSON()
+  expect(tree).toMatchSnapshot()
 })
 
-test('A Paragrapht component weight', () => {
-  snapshotTestTextComponentFontWeight(Paragraph)
+test('A Paragraph component aligned', () => {
+  const component = createWithTheme(
+    <Paragraph textAlign="right">Hello</Paragraph>
+  )
+  const tree = component.toJSON()
+  expect(tree).toMatchSnapshot()
 })
 
-test('A Paragraph component truncated', () => {
-  assertSnapshot(<Paragraph truncate>Hello</Paragraph>)
-})
-
-test('A Paragraph component with multiline truncate', () => {
-  assertSnapshot(<Paragraph truncateLines={3}>Hello</Paragraph>)
+test('A Paragraph component weight', () => {
+  const component = createWithTheme(
+    <Paragraph fontWeight="bold">Hello</Paragraph>
+  )
+  const tree = component.toJSON()
+  expect(tree).toMatchSnapshot()
 })
 
 test('A Paragraph component with variant', () => {
-  snapshotTestTextComponentVariant(Paragraph)
+  const component = createWithTheme(
+    <Paragraph variant="critical">Hello</Paragraph>
+  )
+  const tree = component.toJSON()
+  expect(tree).toMatchSnapshot()
 })
 
 test('A Paragraph component text transformed', () => {
-  snapshotTestTextComponentTransform(Paragraph)
+  const component = createWithTheme(
+    <Paragraph textTransform="uppercase">Hello</Paragraph>
+  )
+  const tree = component.toJSON()
+  expect(tree).toMatchSnapshot()
 })
 
-test('A Paragraph component Aligned', () => {
-  snapshotTestTextComponentAlign(Paragraph)
+test('A Paragraph component wrapped', () => {
+  const component = createWithTheme(<Paragraph wrap>Hello</Paragraph>)
+  const tree = component.toJSON()
+  expect(tree).toMatchSnapshot()
 })
 
-test('A Text component wrapped', () => {
-  snapshotTestTextComponentWrap(Paragraph)
+test('A Paragraph component decorated', () => {
+  const component = createWithTheme(
+    <Paragraph textDecoration="line-through">Hello</Paragraph>
+  )
+  const tree = component.toJSON()
+  expect(tree).toMatchSnapshot()
 })
 
-test('A Text component decorated', () => {
-  snapshotTestTextComponentDecoration(Paragraph)
+test('A Paragraph component truncated', () => {
+  const component = createWithTheme(<Paragraph truncate>Hello</Paragraph>)
+  const tree = component.toJSON()
+  expect(tree).toMatchSnapshot()
+})
+
+test('A Paragraph component with multiline truncate', () => {
+  const component = createWithTheme(
+    <Paragraph truncateLines={2}>Hello</Paragraph>
+  )
+  const tree = component.toJSON()
+  expect(tree).toMatchSnapshot()
 })
