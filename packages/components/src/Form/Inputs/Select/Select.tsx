@@ -6,6 +6,7 @@ import {
   layout,
   CompatibleHTMLProps,
   CustomizableAttributes,
+  reset,
   space,
   SpaceProps,
 } from '@looker/design-tokens'
@@ -132,10 +133,10 @@ const SelectBase = styled.select.attrs((props: SelectProps) => ({
   height: props.py || props.p ? undefined : CustomizableSelectAttributes.height,
   px: props.p || CustomizableSelectAttributes.px,
   py: props.p || CustomizableSelectAttributes.py,
-  type: 'text',
   ...props,
 }))<SelectProps>`
-  background: ${props =>
+  ${reset}
+  background-color: ${props =>
     props.validationType === 'error'
       ? props.theme.colors.palette.red000
       : props.theme.colors.palette.white};

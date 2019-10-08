@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Select default 1`] = `
-.c1 {
+.c0 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -9,28 +9,22 @@ exports[`Select default 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
-  border: solid 1px;
-  border-radius: 0.25rem;
-  border-color: #C1C6CC;
   background-color: #FFFFFF;
-  font-size: 0.875rem;
+  border: solid 1px #C1C6CC;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+),linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
+  background-repeat: no-repeat,repeat;
+  background-position: right .25rem center,0 0;
+  background-size: 1rem,100%;
+  border-radius: 0.25rem;
   height: 28px;
+  font-size: 0.875rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
-}
-
-.c0 {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+'), linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
-  background-repeat: no-repeat,repeat;
-  background-position: right .25rem center,0 0;
-  background-size: 1rem,100%;
   padding-right: calc(2 * .25rem + 1rem);
 }
 
@@ -39,7 +33,9 @@ exports[`Select default 1`] = `
 }
 
 <select
-  className="c0 c1"
+  className="c0 Select-sc-1grg5v4-1 gXASO"
+  fontSize="small"
+  height="28px"
 >
   <option
     value=""
@@ -48,7 +44,7 @@ exports[`Select default 1`] = `
 `;
 
 exports[`Select should accept disabled 1`] = `
-.c1 {
+.c0 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -56,28 +52,22 @@ exports[`Select should accept disabled 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
-  border: solid 1px;
-  border-radius: 0.25rem;
-  border-color: #C1C6CC;
   background-color: #FFFFFF;
-  font-size: 0.875rem;
+  border: solid 1px #C1C6CC;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+),linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
+  background-repeat: no-repeat,repeat;
+  background-position: right .25rem center,0 0;
+  background-size: 1rem,100%;
+  border-radius: 0.25rem;
   height: 28px;
+  font-size: 0.875rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
-}
-
-.c0 {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+'), linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
-  background-repeat: no-repeat,repeat;
-  background-position: right .25rem center,0 0;
-  background-size: 1rem,100%;
   padding-right: calc(2 * .25rem + 1rem);
 }
 
@@ -86,8 +76,10 @@ exports[`Select should accept disabled 1`] = `
 }
 
 <select
-  className="c0 c1"
+  className="c0 Select-sc-1grg5v4-1 gXASO"
   disabled={true}
+  fontSize="small"
+  height="28px"
 >
   <option
     value=""
@@ -96,7 +88,7 @@ exports[`Select should accept disabled 1`] = `
 `;
 
 exports[`Select should accept empty options array 1`] = `
-.c1 {
+.c0 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -104,28 +96,22 @@ exports[`Select should accept empty options array 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
-  border: solid 1px;
-  border-radius: 0.25rem;
-  border-color: #C1C6CC;
   background-color: #FFFFFF;
-  font-size: 0.875rem;
+  border: solid 1px #C1C6CC;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+),linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
+  background-repeat: no-repeat,repeat;
+  background-position: right .25rem center,0 0;
+  background-size: 1rem,100%;
+  border-radius: 0.25rem;
   height: 28px;
+  font-size: 0.875rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
-}
-
-.c0 {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+'), linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
-  background-repeat: no-repeat,repeat;
-  background-position: right .25rem center,0 0;
-  background-size: 1rem,100%;
   padding-right: calc(2 * .25rem + 1rem);
 }
 
@@ -134,7 +120,9 @@ exports[`Select should accept empty options array 1`] = `
 }
 
 <select
-  className="c0 c1"
+  className="c0 Select-sc-1grg5v4-1 gXASO"
+  fontSize="small"
+  height="28px"
 >
   <option
     value=""
@@ -143,7 +131,7 @@ exports[`Select should accept empty options array 1`] = `
 `;
 
 exports[`Select should accept readOnly 1`] = `
-.c1 {
+.c0 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -151,28 +139,22 @@ exports[`Select should accept readOnly 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
-  border: solid 1px;
-  border-radius: 0.25rem;
-  border-color: #C1C6CC;
   background-color: #FFFFFF;
-  font-size: 0.875rem;
+  border: solid 1px #C1C6CC;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+),linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
+  background-repeat: no-repeat,repeat;
+  background-position: right .25rem center,0 0;
+  background-size: 1rem,100%;
+  border-radius: 0.25rem;
   height: 28px;
+  font-size: 0.875rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
-}
-
-.c0 {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+'), linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
-  background-repeat: no-repeat,repeat;
-  background-position: right .25rem center,0 0;
-  background-size: 1rem,100%;
   padding-right: calc(2 * .25rem + 1rem);
 }
 
@@ -181,7 +163,9 @@ exports[`Select should accept readOnly 1`] = `
 }
 
 <select
-  className="c0 c1"
+  className="c0 Select-sc-1grg5v4-1 gXASO"
+  fontSize="small"
+  height="28px"
   readOnly={true}
 >
   <option
@@ -191,7 +175,7 @@ exports[`Select should accept readOnly 1`] = `
 `;
 
 exports[`Select should accept required 1`] = `
-.c1 {
+.c0 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -199,28 +183,22 @@ exports[`Select should accept required 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
-  border: solid 1px;
-  border-radius: 0.25rem;
-  border-color: #C1C6CC;
   background-color: #FFFFFF;
-  font-size: 0.875rem;
+  border: solid 1px #C1C6CC;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+),linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
+  background-repeat: no-repeat,repeat;
+  background-position: right .25rem center,0 0;
+  background-size: 1rem,100%;
+  border-radius: 0.25rem;
   height: 28px;
+  font-size: 0.875rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
-}
-
-.c0 {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+'), linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
-  background-repeat: no-repeat,repeat;
-  background-position: right .25rem center,0 0;
-  background-size: 1rem,100%;
   padding-right: calc(2 * .25rem + 1rem);
 }
 
@@ -229,7 +207,9 @@ exports[`Select should accept required 1`] = `
 }
 
 <select
-  className="c0 c1"
+  className="c0 Select-sc-1grg5v4-1 gXASO"
+  fontSize="small"
+  height="28px"
   required={true}
 >
   <option
@@ -239,7 +219,7 @@ exports[`Select should accept required 1`] = `
 `;
 
 exports[`Select with a placeholder 1`] = `
-.c1 {
+.c0 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -247,28 +227,22 @@ exports[`Select with a placeholder 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
-  border: solid 1px;
-  border-radius: 0.25rem;
-  border-color: #C1C6CC;
   background-color: #FFFFFF;
-  font-size: 0.875rem;
+  border: solid 1px #C1C6CC;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+),linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
+  background-repeat: no-repeat,repeat;
+  background-position: right .25rem center,0 0;
+  background-size: 1rem,100%;
+  border-radius: 0.25rem;
   height: 28px;
+  font-size: 0.875rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
-}
-
-.c0 {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+'), linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
-  background-repeat: no-repeat,repeat;
-  background-position: right .25rem center,0 0;
-  background-size: 1rem,100%;
   padding-right: calc(2 * .25rem + 1rem);
 }
 
@@ -277,7 +251,9 @@ exports[`Select with a placeholder 1`] = `
 }
 
 <select
-  className="c0 c1"
+  className="c0 Select-sc-1grg5v4-1 gXASO"
+  fontSize="small"
+  height="28px"
 >
   <option
     value=""
@@ -288,7 +264,7 @@ exports[`Select with a placeholder 1`] = `
 `;
 
 exports[`Select with a value 1`] = `
-.c1 {
+.c0 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -296,28 +272,22 @@ exports[`Select with a value 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
-  border: solid 1px;
-  border-radius: 0.25rem;
-  border-color: #C1C6CC;
   background-color: #FFFFFF;
-  font-size: 0.875rem;
+  border: solid 1px #C1C6CC;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+),linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
+  background-repeat: no-repeat,repeat;
+  background-position: right .25rem center,0 0;
+  background-size: 1rem,100%;
+  border-radius: 0.25rem;
   height: 28px;
+  font-size: 0.875rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
-}
-
-.c0 {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+'), linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
-  background-repeat: no-repeat,repeat;
-  background-position: right .25rem center,0 0;
-  background-size: 1rem,100%;
   padding-right: calc(2 * .25rem + 1rem);
 }
 
@@ -326,8 +296,10 @@ exports[`Select with a value 1`] = `
 }
 
 <select
-  className="c0 c1"
+  className="c0 Select-sc-1grg5v4-1 gXASO"
   defaultValue="Some Value"
+  fontSize="small"
+  height="28px"
 >
   <option
     value=""
@@ -351,7 +323,7 @@ exports[`Select with a value 1`] = `
 `;
 
 exports[`Select with an error validation 1`] = `
-.c1 {
+.c0 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -359,28 +331,22 @@ exports[`Select with an error validation 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
-  border: solid 1px;
-  border-radius: 0.25rem;
-  border-color: #C1C6CC;
   background-color: #FFF2F4;
-  font-size: 0.875rem;
+  border: solid 1px #C1C6CC;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+),linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
+  background-repeat: no-repeat,repeat;
+  background-position: right .25rem center,0 0;
+  background-size: 1rem,100%;
+  border-radius: 0.25rem;
   height: 28px;
+  font-size: 0.875rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
-}
-
-.c0 {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+'), linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
-  background-repeat: no-repeat,repeat;
-  background-position: right .25rem center,0 0;
-  background-size: 1rem,100%;
   padding-right: calc(2 * .25rem + 1rem);
 }
 
@@ -389,7 +355,9 @@ exports[`Select with an error validation 1`] = `
 }
 
 <select
-  className="c0 c1"
+  className="c0 Select-sc-1grg5v4-1 gXASO"
+  fontSize="small"
+  height="28px"
 >
   <option
     value=""
@@ -398,7 +366,7 @@ exports[`Select with an error validation 1`] = `
 `;
 
 exports[`Select with aria-describedby 1`] = `
-.c1 {
+.c0 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -406,28 +374,22 @@ exports[`Select with aria-describedby 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
-  border: solid 1px;
-  border-radius: 0.25rem;
-  border-color: #C1C6CC;
   background-color: #FFFFFF;
-  font-size: 0.875rem;
+  border: solid 1px #C1C6CC;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+),linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
+  background-repeat: no-repeat,repeat;
+  background-position: right .25rem center,0 0;
+  background-size: 1rem,100%;
+  border-radius: 0.25rem;
   height: 28px;
+  font-size: 0.875rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
-}
-
-.c0 {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+'), linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
-  background-repeat: no-repeat,repeat;
-  background-position: right .25rem center,0 0;
-  background-size: 1rem,100%;
   padding-right: calc(2 * .25rem + 1rem);
 }
 
@@ -437,7 +399,9 @@ exports[`Select with aria-describedby 1`] = `
 
 <select
   aria-describedby="some-id"
-  className="c0 c1"
+  className="c0 Select-sc-1grg5v4-1 gXASO"
+  fontSize="small"
+  height="28px"
 >
   <option
     value=""
@@ -446,7 +410,7 @@ exports[`Select with aria-describedby 1`] = `
 `;
 
 exports[`Select with name and id 1`] = `
-.c1 {
+.c0 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -454,28 +418,22 @@ exports[`Select with name and id 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
-  border: solid 1px;
-  border-radius: 0.25rem;
-  border-color: #C1C6CC;
   background-color: #FFFFFF;
-  font-size: 0.875rem;
+  border: solid 1px #C1C6CC;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+),linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
+  background-repeat: no-repeat,repeat;
+  background-position: right .25rem center,0 0;
+  background-size: 1rem,100%;
+  border-radius: 0.25rem;
   height: 28px;
+  font-size: 0.875rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
-}
-
-.c0 {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+'), linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
-  background-repeat: no-repeat,repeat;
-  background-position: right .25rem center,0 0;
-  background-size: 1rem,100%;
   padding-right: calc(2 * .25rem + 1rem);
 }
 
@@ -484,7 +442,9 @@ exports[`Select with name and id 1`] = `
 }
 
 <select
-  className="c0 c1"
+  className="c0 Select-sc-1grg5v4-1 gXASO"
+  fontSize="small"
+  height="28px"
   id="Bobby"
   name="Bob"
 >
