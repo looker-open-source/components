@@ -9,18 +9,18 @@ exports[`Default Swatch 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
   border: 1px solid;
-  border-radius: 0.25rem;
   border-color: #C1C6CC;
+  border-radius: 0.25rem;
   background-color: white;
-  height: 28px;
   width: 28px;
+  height: 28px;
 }
 
 <div
   className="c0"
+  height="28px"
+  width="28px"
 />
 `;
 
@@ -33,18 +33,18 @@ exports[`Swatch with hex value passed 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
   border: 1px solid;
-  border-radius: 0.25rem;
   border-color: #C1C6CC;
+  border-radius: 0.25rem;
   background-color: #4c6670;
-  height: 28px;
   width: 28px;
+  height: 28px;
 }
 
 <div
   className="c0"
+  height="28px"
+  width="28px"
 />
 `;
 
@@ -57,17 +57,17 @@ exports[`Swatch with width and height set 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
   border: 1px solid;
-  border-radius: 0.25rem;
   border-color: #C1C6CC;
+  border-radius: 0.25rem;
   background-color: blue;
-  height: 25px;
   width: 50px;
+  height: 25px;
 }
 
 <div
   className="c0"
+  height="25px"
+  width="50px"
 />
 `;

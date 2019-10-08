@@ -57,7 +57,7 @@ const recognize = (format: string) => {
     ? ColorFormat.HSL
     : reHslaPercent.exec(format)
     ? ColorFormat.HSLA
-    : Object.prototype.hasOwnProperty.call(namedColors, 'format')
+    : Object.prototype.hasOwnProperty.call(namedColors, format)
     ? ColorFormat.NAME
     : format === 'transparent'
     ? ColorFormat.TRANSPARENT

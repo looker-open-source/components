@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ColorFieldPicker renders a color picker in a RichTooltip 1`] = `ShallowWrapper {}`;
+exports[`ColorFieldPicker renders a color picker in a Popover 1`] = `ShallowWrapper {}`;
 
 exports[`ColorFieldPicker with a label 1`] = `
 .c2 {
@@ -11,28 +11,14 @@ exports[`ColorFieldPicker with a label 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
+  margin-bottom: 0.5rem;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  margin-bottom: 0.5rem;
-}
-
-.c3 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
 }
 
 .c4 {
@@ -43,19 +29,49 @@ exports[`ColorFieldPicker with a label 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -webkit-align-items: baseline;
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
-  -webkit-animation: none;
-  animation: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+}
+
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  margin-bottom: 0.5rem;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
 }
 
 .c5 {
@@ -66,8 +82,6 @@ exports[`ColorFieldPicker with a label 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
   margin-top: auto;
 }
 
@@ -79,41 +93,15 @@ exports[`ColorFieldPicker with a label 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
   border: solid 1px;
-  border-radius: 0 0.25rem 0.25rem 0;
   border-color: #C1C6CC;
-  font-size: 0.875rem;
+  border-radius: 0 0.25rem 0.25rem 0;
   height: 28px;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
-}
-
-.c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-align-items: baseline;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
-  -webkit-animation: none;
-  animation: none;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
 }
 
 .c1 {
@@ -124,14 +112,12 @@ exports[`ColorFieldPicker with a label 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
   color: #262D33;
+  width: 20%;
+  margin-right: 0.5rem;
   font-size: 0.875rem;
   font-weight: 600;
-  margin-right: 0.5rem;
   text-align: right;
-  width: 20%;
 }
 
 .c6 {
@@ -142,22 +128,24 @@ exports[`ColorFieldPicker with a label 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
   border: 1px solid;
+  border-color: #C1C6CC;
   border-radius: 0.25rem 0 0 0.25rem;
   border-right: 0;
-  border-color: #C1C6CC;
   background-color: #e1ff83;
-  height: 28px;
   width: 33px;
+  height: 28px;
 }
 
 <div
   className="c0"
 >
   <label
-    className="c1"
+    className="c1 "
+    color="palette.charcoal800"
+    fontSize="small"
+    fontWeight="semiBold"
+    width="20%"
   >
     Pick a color
   </label>
@@ -175,17 +163,18 @@ exports[`ColorFieldPicker with a label 1`] = `
         >
           <div
             className="c6"
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
+            height="28px"
+            onClick={[Function]}
+            width="33px"
           />
         </div>
         <div
           className="c3"
         >
           <input
-            className="c7"
+            className="c7 "
+            fontSize="small"
+            height="28px"
             onChange={[Function]}
             type="text"
             value="#e1ff83"
@@ -206,44 +195,14 @@ exports[`ColorFieldPicker with a named color and size values 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
+  margin-bottom: 0.5rem;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  margin-bottom: 0.5rem;
-}
-
-.c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
-  color: #262D33;
-  font-size: 0.875rem;
-  font-weight: 600;
-  margin-right: 0.5rem;
-}
-
-.c2 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
 }
 
 .c3 {
@@ -254,19 +213,27 @@ exports[`ColorFieldPicker with a named color and size values 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -webkit-align-items: baseline;
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
-  -webkit-animation: none;
-  animation: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
+}
+
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
 }
 
 .c4 {
@@ -277,9 +244,21 @@ exports[`ColorFieldPicker with a named color and size values 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
   margin-top: auto;
+}
+
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #262D33;
+  margin-right: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
 }
 
 .c6 {
@@ -290,17 +269,15 @@ exports[`ColorFieldPicker with a named color and size values 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
   border: solid 1px;
-  border-radius: 0 0.25rem 0.25rem 0;
   border-color: #C1C6CC;
-  font-size: 0.875rem;
+  border-radius: 0 0.25rem 0.25rem 0;
   height: 28px;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
+  font-size: 0.875rem;
 }
 
 .c5 {
@@ -311,22 +288,23 @@ exports[`ColorFieldPicker with a named color and size values 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
   border: 1px solid;
+  border-color: #C1C6CC;
   border-radius: 0.25rem 0 0 0.25rem;
   border-right: 0;
-  border-color: #C1C6CC;
   background-color: #0000ff;
-  height: 28px;
   width: 33px;
+  height: 28px;
 }
 
 <div
   className="c0"
 >
   <label
-    className="c1"
+    className="c1 "
+    color="palette.charcoal800"
+    fontSize="small"
+    fontWeight="semiBold"
   />
   <div
     className="c0"
@@ -342,17 +320,18 @@ exports[`ColorFieldPicker with a named color and size values 1`] = `
         >
           <div
             className="c5"
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
+            height="28px"
+            onClick={[Function]}
+            width="33px"
           />
         </div>
         <div
           className="c2"
         >
           <input
-            className="c6"
+            className="c6 "
+            fontSize="small"
+            height="28px"
             onChange={[Function]}
             type="text"
             value="blue"
@@ -373,28 +352,14 @@ exports[`ColorFieldPicker with a validation message 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
+  margin-bottom: 0.5rem;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  margin-bottom: 0.5rem;
-}
-
-.c3 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
 }
 
 .c4 {
@@ -405,32 +370,17 @@ exports[`ColorFieldPicker with a validation message 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -webkit-align-items: baseline;
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
-  -webkit-animation: none;
-  animation: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-}
-
-.c5 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
-  margin-top: auto;
 }
 
 .c0 {
@@ -441,20 +391,39 @@ exports[`ColorFieldPicker with a validation message 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  margin-bottom: 0.5rem;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -webkit-align-items: baseline;
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
-  -webkit-animation: none;
-  animation: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  margin-bottom: 0.5rem;
+}
+
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+.c5 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  margin-top: auto;
 }
 
 .c1 {
@@ -465,14 +434,12 @@ exports[`ColorFieldPicker with a validation message 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
   color: #262D33;
+  width: 20%;
+  margin-right: 0.5rem;
   font-size: 0.875rem;
   font-weight: 600;
-  margin-right: 0.5rem;
   text-align: right;
-  width: 20%;
 }
 
 .c6 {
@@ -483,15 +450,13 @@ exports[`ColorFieldPicker with a validation message 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
   border: 1px solid;
+  border-color: #C1C6CC;
   border-radius: 0.25rem 0 0 0.25rem;
   border-right: 0;
-  border-color: #C1C6CC;
   background-color: #4c6670;
-  height: 28px;
   width: 33px;
+  height: 28px;
 }
 
 .c7 {
@@ -502,18 +467,16 @@ exports[`ColorFieldPicker with a validation message 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
   border: solid 1px;
-  border-radius: 0 0.25rem 0.25rem 0;
   border-color: #C1C6CC;
+  border-radius: 0 0.25rem 0.25rem 0;
   background-color: #FFF2F4;
-  font-size: 0.875rem;
   height: 28px;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
+  font-size: 0.875rem;
 }
 
 .c8 {
@@ -524,19 +487,21 @@ exports[`ColorFieldPicker with a validation message 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
   color: #990F14;
-  font-size: 0.75rem;
   margin-right: 0.5rem;
   margin-top: 0.5rem;
+  font-size: 0.75rem;
 }
 
 <div
   className="c0"
 >
   <label
-    className="c1"
+    className="c1 "
+    color="palette.charcoal800"
+    fontSize="small"
+    fontWeight="semiBold"
+    width="20%"
   >
     Pick a color
   </label>
@@ -554,17 +519,18 @@ exports[`ColorFieldPicker with a validation message 1`] = `
         >
           <div
             className="c6"
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
+            height="28px"
+            onClick={[Function]}
+            width="33px"
           />
         </div>
         <div
           className="c3"
         >
           <input
-            className="c7"
+            className="c7 "
+            fontSize="small"
+            height="28px"
             onChange={[Function]}
             type="text"
             value="#4c6670"
@@ -574,6 +540,8 @@ exports[`ColorFieldPicker with a validation message 1`] = `
     </div>
     <div
       className="c8"
+      color="palette.red700"
+      fontSize="xsmall"
     >
       Error!
     </div>
@@ -590,44 +558,14 @@ exports[`ColorFieldPicker with hidden input 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
+  margin-bottom: 0.5rem;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  margin-bottom: 0.5rem;
-}
-
-.c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
-  color: #262D33;
-  font-size: 0.875rem;
-  font-weight: 600;
-  margin-right: 0.5rem;
-}
-
-.c2 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
 }
 
 .c3 {
@@ -638,19 +576,27 @@ exports[`ColorFieldPicker with hidden input 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -webkit-align-items: baseline;
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
-  -webkit-animation: none;
-  animation: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
+}
+
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
 }
 
 .c4 {
@@ -661,9 +607,21 @@ exports[`ColorFieldPicker with hidden input 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
   margin-top: auto;
+}
+
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #262D33;
+  margin-right: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
 }
 
 .c5 {
@@ -674,15 +632,13 @@ exports[`ColorFieldPicker with hidden input 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
   border: 1px solid;
+  border-color: #C1C6CC;
   border-radius: 0.25rem 0 0 0.25rem;
   border-right: 0;
-  border-color: #C1C6CC;
   background-color: #ffffff;
-  height: 28px;
   width: 33px;
+  height: 28px;
 }
 
 .c6 {
@@ -693,24 +649,25 @@ exports[`ColorFieldPicker with hidden input 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
   border: solid 1px;
-  border-radius: 0 0.25rem 0.25rem 0;
   border-color: #C1C6CC;
-  font-size: 0.875rem;
+  border-radius: 0 0.25rem 0.25rem 0;
   height: 28px;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
+  font-size: 0.875rem;
 }
 
 <div
   className="c0"
 >
   <label
-    className="c1"
+    className="c1 "
+    color="palette.charcoal800"
+    fontSize="small"
+    fontWeight="semiBold"
   />
   <div
     className="c0"
@@ -726,17 +683,18 @@ exports[`ColorFieldPicker with hidden input 1`] = `
         >
           <div
             className="c5"
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
+            height="28px"
+            onClick={[Function]}
+            width="33px"
           />
         </div>
         <div
           className="c2"
         >
           <input
-            className="c6"
+            className="c6 "
+            fontSize="small"
+            height="28px"
             onChange={[Function]}
             type="hidden"
           />
@@ -756,44 +714,14 @@ exports[`Default ColorFieldPicker 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
+  margin-bottom: 0.5rem;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  margin-bottom: 0.5rem;
-}
-
-.c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
-  color: #262D33;
-  font-size: 0.875rem;
-  font-weight: 600;
-  margin-right: 0.5rem;
-}
-
-.c2 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
 }
 
 .c3 {
@@ -804,19 +732,27 @@ exports[`Default ColorFieldPicker 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -webkit-align-items: baseline;
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
-  -webkit-animation: none;
-  animation: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
+}
+
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
 }
 
 .c4 {
@@ -827,9 +763,21 @@ exports[`Default ColorFieldPicker 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
   margin-top: auto;
+}
+
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #262D33;
+  margin-right: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
 }
 
 .c5 {
@@ -840,15 +788,13 @@ exports[`Default ColorFieldPicker 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
   border: 1px solid;
+  border-color: #C1C6CC;
   border-radius: 0.25rem 0 0 0.25rem;
   border-right: 0;
-  border-color: #C1C6CC;
   background-color: #ffffff;
-  height: 28px;
   width: 33px;
+  height: 28px;
 }
 
 .c6 {
@@ -859,24 +805,25 @@ exports[`Default ColorFieldPicker 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
   border: solid 1px;
-  border-radius: 0 0.25rem 0.25rem 0;
   border-color: #C1C6CC;
-  font-size: 0.875rem;
+  border-radius: 0 0.25rem 0.25rem 0;
   height: 28px;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
+  font-size: 0.875rem;
 }
 
 <div
   className="c0"
 >
   <label
-    className="c1"
+    className="c1 "
+    color="palette.charcoal800"
+    fontSize="small"
+    fontWeight="semiBold"
   />
   <div
     className="c0"
@@ -892,17 +839,18 @@ exports[`Default ColorFieldPicker 1`] = `
         >
           <div
             className="c5"
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
+            height="28px"
+            onClick={[Function]}
+            width="33px"
           />
         </div>
         <div
           className="c2"
         >
           <input
-            className="c6"
+            className="c6 "
+            fontSize="small"
+            height="28px"
             onChange={[Function]}
             type="text"
           />
