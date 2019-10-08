@@ -77,7 +77,7 @@ export const fieldPropKeys = [
 ]
 
 export const pickFieldProps = (props: FieldProps) =>
-  pick(props, [...fieldPropKeys, 'required'])
+  pick(props, [...fieldPropKeys, 'required', 'className'])
 export const omitFieldProps = (props: FieldProps) => omit(props, fieldPropKeys)
 
 const RequiredStar = styled(props => (

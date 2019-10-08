@@ -1,6 +1,40 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`A FieldCheckbox 1`] = `
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  margin-right: 0.5rem;
+  color: #262D33;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.c5 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
 .c0 {
   border: 0;
   box-sizing: border-box;
@@ -9,12 +43,7 @@ exports[`A FieldCheckbox 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-align-items: baseline;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
-  -webkit-animation: none;
-  animation: none;
+  margin-bottom: 0.5rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -22,44 +51,25 @@ exports[`A FieldCheckbox 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  margin-bottom: 0.5rem;
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
 }
 
-.c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
-  color: #262D33;
-  font-size: 0.875rem;
-  font-weight: 600;
-  margin-right: 0.5rem;
+.c1 .c2 {
   text-align: right;
   width: 20%;
 }
 
-.c2 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
-}
-
 <div
-  className="c0"
+  className="c0 c1 "
 >
   <label
-    className="c1"
+    className="c2 c3"
+    color="palette.charcoal800"
+    fontSize="small"
+    fontWeight="semiBold"
     htmlFor="thumbs-up"
   >
     👍
@@ -68,10 +78,10 @@ exports[`A FieldCheckbox 1`] = `
     className="c0"
   >
     <div
-      className="c2"
+      className="c4"
     >
       <input
-        className="c2"
+        className="c5 "
         id="thumbs-up"
         name="thumbsUp"
         type="checkbox"
@@ -82,6 +92,40 @@ exports[`A FieldCheckbox 1`] = `
 `;
 
 exports[`A FieldCheckbox with checked value 1`] = `
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  margin-right: 0.5rem;
+  color: #262D33;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.c5 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
 .c0 {
   border: 0;
   box-sizing: border-box;
@@ -90,12 +134,7 @@ exports[`A FieldCheckbox with checked value 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-align-items: baseline;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
-  -webkit-animation: none;
-  animation: none;
+  margin-bottom: 0.5rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -103,44 +142,25 @@ exports[`A FieldCheckbox with checked value 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  margin-bottom: 0.5rem;
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
 }
 
-.c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
-  color: #262D33;
-  font-size: 0.875rem;
-  font-weight: 600;
-  margin-right: 0.5rem;
+.c1 .c2 {
   text-align: right;
   width: 20%;
 }
 
-.c2 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
-}
-
 <div
-  className="c0"
+  className="c0 c1 "
 >
   <label
-    className="c1"
+    className="c2 c3"
+    color="palette.charcoal800"
+    fontSize="small"
+    fontWeight="semiBold"
     htmlFor="thumbs-up"
   >
     👍
@@ -149,11 +169,11 @@ exports[`A FieldCheckbox with checked value 1`] = `
     className="c0"
   >
     <div
-      className="c2"
+      className="c4"
     >
       <input
         checked={true}
-        className="c2"
+        className="c5 "
         id="thumbs-up"
         name="thumbsUp"
         type="checkbox"
@@ -164,48 +184,6 @@ exports[`A FieldCheckbox with checked value 1`] = `
 `;
 
 exports[`A required FieldCheckbox 1`] = `
-.c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-align-items: baseline;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
-  -webkit-animation: none;
-  animation: none;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  margin-bottom: 0.5rem;
-}
-
-.c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
-  color: #262D33;
-  font-size: 0.875rem;
-  font-weight: 600;
-  margin-right: 0.5rem;
-  text-align: right;
-  width: 20%;
-}
-
 .c3 {
   border: 0;
   box-sizing: border-box;
@@ -214,25 +192,77 @@ exports[`A required FieldCheckbox 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
+  margin-right: 0.5rem;
+  color: #262D33;
+  font-weight: 600;
+  font-size: 0.875rem;
 }
 
-.c2 {
+.c6 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+.c5 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  margin-bottom: 0.5rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+}
+
+.c4 {
   color: #990F14;
 }
 
+.c1 .c2 {
+  text-align: right;
+  width: 20%;
+}
+
 <div
-  className="c0"
+  className="c0 c1 "
 >
   <label
-    className="c1"
+    className="c2 c3"
+    color="palette.charcoal800"
+    fontSize="small"
+    fontWeight="semiBold"
     htmlFor="thumbs-up"
   >
     👍
     <span
       aria-hidden="true"
-      className="c2"
+      className="c4"
     >
        
       *
@@ -242,10 +272,10 @@ exports[`A required FieldCheckbox 1`] = `
     className="c0"
   >
     <div
-      className="c3"
+      className="c5"
     >
       <input
-        className="c3"
+        className="c6 "
         id="thumbs-up"
         name="thumbsUp"
         required={true}
