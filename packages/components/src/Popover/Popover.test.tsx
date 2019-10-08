@@ -1,9 +1,6 @@
 import 'jest-styled-components'
 import React, { useRef } from 'react'
 import { mountWithTheme } from '@looker/components-test-utils'
-import { Box } from '../Layout/Box'
-import { Button } from '../Button'
-import { Link } from '../Link'
 import { Popover } from './Popover'
 
 const SimpleContent = <div>simple content</div>
@@ -12,23 +9,23 @@ const instantClick = jest.fn()
 const requiresDismissal = jest.fn()
 
 const PopoverGroup = () => {
-  const groupRef = useRef<null | HTMLElement>(null)
+  const groupRef = useRef<null | HTMLDivElement>(null)
 
   return (
     <>
-      <Box ref={groupRef}>
+      <div ref={groupRef}>
         <Popover content={SimpleContent} groupedPopoversRef={groupRef}>
           {(onClick, ref, className) => (
-            <Link onClick={onClick} ref={ref} className={className}>
+            <a onClick={onClick} ref={ref} className={className}>
               Instant Click
-            </Link>
+            </a>
           )}
         </Popover>
 
         <a onClick={instantClick} id="instant">
           Should activate instantly
         </a>
-      </Box>
+      </div>
 
       <button onClick={requiresDismissal} id="dismissed">
         Should require dismissal click
@@ -42,9 +39,9 @@ describe('Popover', () => {
     const popover = mountWithTheme(
       <Popover content={SimpleContent}>
         {(onClick, ref, className) => (
-          <Button ref={ref} onClick={onClick} className={className}>
+          <button ref={ref} onClick={onClick} className={className}>
             Test
-          </Button>
+          </button>
         )}
       </Popover>
     )
@@ -52,7 +49,7 @@ describe('Popover', () => {
     // Verify hidden
     expect(popover.contains(SimpleContent)).toBeFalsy()
 
-    const trigger = popover.find(Button)
+    const trigger = popover.find('button')
     trigger.simulate('click')
 
     // Find content
@@ -66,13 +63,13 @@ describe('Popover', () => {
     const popover = mountWithTheme(
       <Popover content={SimpleContent}>
         {(onClick, ref, className) => (
-          <Button ref={ref} onClick={onClick} className={className}>
+          <button ref={ref} onClick={onClick} className={className}>
             Test
-          </Button>
+          </button>
         )}
       </Popover>
     )
-    const trigger = popover.find(Button)
+    const trigger = popover.find('button')
     trigger.simulate('click')
     expect(popover.contains(SimpleContent)).toBeTruthy()
   })
@@ -84,14 +81,14 @@ describe('Popover', () => {
       <div onClick={mockContainerOnClick}>
         <Popover content={SimpleContent}>
           {(onClick, ref, className) => (
-            <Button ref={ref} onClick={onClick} className={className}>
+            <button ref={ref} onClick={onClick} className={className}>
               Test
-            </Button>
+            </button>
           )}
         </Popover>
       </div>
     )
-    const trigger = popover.find(Button)
+    const trigger = popover.find('button')
     trigger.simulate('click')
     expect(popover.contains(SimpleContent)).toBeTruthy()
     expect(mockContainerOnClick).not.toHaveBeenCalled()
@@ -101,14 +98,14 @@ describe('Popover', () => {
     const popover = mountWithTheme(
       <Popover content={SimpleContent}>
         {(onClick, ref, className) => (
-          <Link onClick={onClick} ref={ref} className={className}>
+          <a onClick={onClick} ref={ref} className={className}>
             Instant Click
-          </Link>
+          </a>
         )}
       </Popover>
     )
 
-    const trigger = popover.find(Link)
+    const trigger = popover.find('a')
     expect(trigger.exists()).toBeTruthy()
 
     // Verify Popover close, then Open Popover and verify it's open
@@ -134,16 +131,16 @@ describe('Popover', () => {
       <>
         <Popover content={SimpleContent}>
           {(onClick, ref, className) => (
-            <Button onClick={onClick} ref={ref} className={className}>
+            <button onClick={onClick} ref={ref} className={className}>
               Instant Click
-            </Button>
+            </button>
           )}
         </Popover>
         <a onClick={doThing}>Do thing...</a>
       </>
     )
 
-    const trigger = popover.find(Button)
+    const trigger = popover.find('button')
     trigger.simulate('click') // open Popover
     const closer = popover.find('a')
     closer.simulate('click')
@@ -159,7 +156,7 @@ describe('Popover', () => {
 
   xtest('Popover Group - item outside group does NOT receive first click event', () => {
     const groupedPopovers = mountWithTheme(<PopoverGroup />)
-    const trigger = groupedPopovers.find(Link)
+    const trigger = groupedPopovers.find('a')
     trigger.simulate('click') // open Popover
 
     const dismissed = groupedPopovers.find('button')
@@ -172,7 +169,7 @@ describe('Popover', () => {
 
   xtest('Popover Group  - item within group immediately receives onClick', () => {
     const groupedPopovers = mountWithTheme(<PopoverGroup />)
-    const trigger = groupedPopovers.find(Link)
+    const trigger = groupedPopovers.find('a')
     trigger.simulate('click') // open Popover
 
     const instant = groupedPopovers.find('#instant')
