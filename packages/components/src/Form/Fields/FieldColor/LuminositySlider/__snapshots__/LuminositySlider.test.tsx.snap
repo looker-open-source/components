@@ -2,16 +2,6 @@
 
 exports[`LuminositySlider default styling 1`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-}
-
-.c1 {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -19,11 +9,11 @@ exports[`LuminositySlider default styling 1`] = `
   width: 100%;
 }
 
-.c1:focus {
+.c0:focus {
   outline: none;
 }
 
-.c1::-webkit-slider-thumb {
+.c0::-webkit-slider-thumb {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -36,7 +26,7 @@ exports[`LuminositySlider default styling 1`] = `
   width: 14px;
 }
 
-.c1::-webkit-slider-runnable-track {
+.c0::-webkit-slider-runnable-track {
   background-image: linear-gradient(to right,#000,#fff);
   border: 1px solid #DEE1E5;
   cursor: pointer;
@@ -44,7 +34,7 @@ exports[`LuminositySlider default styling 1`] = `
   width: 100%;
 }
 
-.c1::-moz-range-thumb {
+.c0::-moz-range-thumb {
   background: #fff;
   border: 1px solid #C1C6CC;
   border-radius: 50%;
@@ -53,7 +43,7 @@ exports[`LuminositySlider default styling 1`] = `
   width: 12px;
 }
 
-.c1::-moz-range-track {
+.c0::-moz-range-track {
   background-image: linear-gradient(to right,#000,#fff);
   border: 1px solid #DEE1E5;
   cursor: pointer;
@@ -61,7 +51,7 @@ exports[`LuminositySlider default styling 1`] = `
   width: 100%;
 }
 
-.c1::-ms-thumb {
+.c0::-ms-thumb {
   background: #fff;
   border: 1px solid #C1C6CC;
   border-radius: 50%;
@@ -70,7 +60,7 @@ exports[`LuminositySlider default styling 1`] = `
   width: 12px;
 }
 
-.c1::-ms-track {
+.c0::-ms-track {
   background: transparent;
   border-color: transparent;
   border-width: 16px 0;
@@ -80,30 +70,30 @@ exports[`LuminositySlider default styling 1`] = `
   width: 100%;
 }
 
-.c1::-ms-fill-lower {
+.c0::-ms-fill-lower {
   background-image: linear-gradient(to right,#000,#fff);
   border: 1px solid #DEE1E5;
 }
 
-.c1::-ms-fill-upper {
+.c0::-ms-fill-upper {
   background-image: linear-gradient(to right,#000,#fff);
   border: 1px solid #DEE1E5;
 }
 
-.c1:focus::-webkit-slider-runnable-track {
+.c0:focus::-webkit-slider-runnable-track {
   background-image: linear-gradient(to right,#000,#fff);
 }
 
-.c1:focus::-ms-fill-lower {
+.c0:focus::-ms-fill-lower {
   background-image: linear-gradient(to right,#000,#fff);
 }
 
-.c1:focus::-ms-fill-upper {
+.c0:focus::-ms-fill-upper {
   background-image: linear-gradient(to right,#000,#fff);
 }
 
 <input
-  className="c0 c1"
+  className="c0"
   type="range"
 />
 `;

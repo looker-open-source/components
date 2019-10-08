@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { Slider, SliderProps } from '../../Form/Inputs/Slider'
+import { Slider } from '../../../Inputs/Slider'
 
-export const LuminositySlider = styled(Slider)<SliderProps>`
+export const LuminositySlider = styled(Slider)`
   appearance: none;
   background: transparent;
   width: 100%;

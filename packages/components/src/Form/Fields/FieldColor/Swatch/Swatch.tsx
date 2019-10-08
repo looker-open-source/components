@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react'
-import { Box, BoxProps } from '../../Layout/Box'
-import { CustomizableInputTextAttributes } from '../../Form'
+import { Box, BoxProps } from '../../../../Layout'
+import { CustomizableInputTextAttributes } from '../../../'
 
 export interface SwatchProps extends BoxProps {
   /**

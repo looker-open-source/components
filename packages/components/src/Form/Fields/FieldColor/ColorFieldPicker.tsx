@@ -1,19 +1,16 @@
 import { radii } from '@looker/design-tokens'
 import React from 'react'
 import omit from 'lodash/omit'
-import { Flex } from '../Layout/Flex'
-import { FlexItem } from '../Layout/FlexItem'
+import { Flex, FlexItem } from '../../../Layout'
+import { Popover } from '../../../Popover'
 import {
-  ComponentWithForm,
   CustomizableInputTextAttributes,
-  Field,
-  FieldProps,
-  FormControl,
   InputText,
   InputTextProps,
-  withForm,
-} from '../Form'
-import { Popover } from '../Popover'
+} from '../../Inputs/InputText'
+import { Field, FieldProps } from '../Field'
+import { FormControl } from '../../FormControl'
+import { withForm } from '../../Form'
 import {
   HueSaturation,
   polarbrightness2hsv,
@@ -26,7 +23,9 @@ import { Swatch } from './Swatch'
 import * as ColorFormatUtils from './utils/color_format_utils'
 import { isValidColor } from './utils/color_utils'
 
-export interface ColorFieldPickerProps extends FieldProps, InputTextProps {
+export interface ColorFieldProps
+  extends FieldProps,
+    Omit<InputTextProps, 'height' | 'width' | 'size'> {
   /**
    * Size, in pixels, of the canvas.
    */
@@ -41,7 +40,7 @@ export interface ColorFieldPickerProps extends FieldProps, InputTextProps {
   open?: boolean
 }
 
-interface ColorFieldPickerState {
+interface ColorFieldState {
   color?: SimpleHSV
   colorFormat?: string
   /**
@@ -71,10 +70,10 @@ const createEventWithHSVValue = (
 }
 
 class InternalColorFieldPicker extends React.Component<
-  ColorFieldPickerProps,
-  ColorFieldPickerState
+  ColorFieldProps,
+  ColorFieldState
 > {
-  constructor(props: ColorFieldPickerProps) {
+  constructor(props: ColorFieldProps) {
     super(props)
     this.state = {}
   }
@@ -239,6 +238,4 @@ class InternalColorFieldPicker extends React.Component<
   }
 }
 
-export const ColorFieldPicker: ComponentWithForm<
-  ColorFieldPickerProps
-> = withForm<ColorFieldPickerProps>(InternalColorFieldPicker)
+export const ColorFieldPicker = withForm(InternalColorFieldPicker)

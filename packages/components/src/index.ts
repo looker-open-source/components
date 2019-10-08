@@ -1,7 +1,6 @@
 export * from './Banner'
 export * from './Button'
 export * from './Card'
-export * from './ColorFieldPicker'
 export * from './Divider'
 export * from './Form'
 export * from './Icon'
