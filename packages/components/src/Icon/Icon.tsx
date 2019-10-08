@@ -1,38 +1,46 @@
-import React, { FunctionComponent, Ref } from 'react'
-import styled, { StyledComponent } from 'styled-components'
+import {
+  CompatibleHTMLProps,
+  SpaceProps,
+  space,
+  reset,
+  color,
+} from '@looker/design-tokens'
+import React, { forwardRef, Ref } from 'react'
+import styled from 'styled-components'
 import { Glyphs, IconNames } from '@looker/icons'
-import { Box, BoxProps } from '../Layout/Box'
+import omit from 'lodash/omit'
 
 export interface IconProps
-  extends Omit<BoxProps<HTMLDivElement>, 'size' | 'onClick' | 'as'> {
+  extends Omit<CompatibleHTMLProps<HTMLDivElement>, 'onClick'>,
+    SpaceProps {
+  color?: string
   name: IconNames
   size?: number | string
 }
 
-type ComponentType = FunctionComponent<IconProps>
-type StyledComponentType = StyledComponent<ComponentType, IconProps>
-
 export { IconNames }
 
-const IconFactory = React.forwardRef<StyledComponentType, IconProps>(
-  (props: IconProps, ref: Ref<StyledComponentType>) => {
-    const { name, size = '1em', ...boxProps } = props
-    const Glyph = Glyphs[name]
+const IconFactory = forwardRef((props: IconProps, ref: Ref<HTMLDivElement>) => {
+  const Glyph = Glyphs[props.name]
 
-    return (
-      <Box
-        ref={ref}
-        width={size}
-        height={size}
-        alignItems="center"
-        display="inline-flex"
-        {...boxProps}
-      >
-        <Glyph width="100%" height="100%" fill="currentColor" />
-      </Box>
-    )
-  }
-)
+  return (
+    <Styled ref={ref} {...omit(props, 'name')}>
+      <Glyph width="100%" height="100%" fill="currentColor" />
+    </Styled>
+  )
+})
 
-/** @component */
-export const Icon = styled<ComponentType>(IconFactory)``
+const Styled = styled.div<Omit<IconProps, 'name'>>`
+  ${reset}
+  ${space}
+  ${color}
+
+  align-items: center;
+  display: inline-flex;
+  height: ${props => props.size};
+  width: ${props => props.size};
+`
+
+Styled.defaultProps = { size: '1em' }
+
+export const Icon = styled(IconFactory)``
