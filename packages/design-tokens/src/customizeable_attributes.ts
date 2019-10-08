@@ -10,7 +10,7 @@ export interface CustomizableAttributes {
   [key: string]: any
   borderRadius?: RadiusSizes
   color?: string
-  fontSize?: FontSizes
+  fontSize?: ResponsiveValue<FontSizes>
   fontWeight?: FontWeights
   height?: ResponsiveHeightValue
   px?: SpacingSizes

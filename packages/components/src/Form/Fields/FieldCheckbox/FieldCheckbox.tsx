@@ -1,44 +1,32 @@
-import React, { FunctionComponent } from 'react'
-import styled, { StyledComponent } from 'styled-components'
+import React, { forwardRef, Ref } from 'react'
+import styled from 'styled-components'
 import uuid from 'uuid/v4'
-import { ComponentWithForm, withForm } from '../../Form'
+import { useFormContext } from '../../Form'
 import { Checkbox, CheckboxProps } from '../../Inputs/Checkbox/Checkbox'
-import { Field, FieldProps, omitFieldProps } from '../Field'
+import { Field, FieldProps, omitFieldProps, pickFieldProps } from '../Field'
 
 export interface FieldCheckboxProps extends FieldProps, CheckboxProps {}
-export type FieldCheckboxComponentType = FunctionComponent<FieldCheckboxProps>
-export type StyledFieldCheckboxComponentType = StyledComponent<
-  ComponentWithForm<FieldCheckboxProps>,
-  FieldCheckboxProps
->
 
-const InternalFieldCheckbox: FieldCheckboxComponentType = (
-  props: FieldCheckboxProps
-) => {
-  const { id = uuid(), validationMessage } = props
-  return (
-    <Field
-      id={id}
-      alignLabel={'left'}
-      alignValidationMessage={'right'}
-      {...props}
-    >
-      <Checkbox
-        {...omitFieldProps(props)}
+const FieldCheckboxComponent = forwardRef(
+  (props: FieldCheckboxProps, ref: Ref<HTMLInputElement>) => {
+    const validationMessage = useFormContext(props)
+    const { id = uuid() } = props
+    return (
+      <Field
         id={id}
-        validationType={validationMessage && validationMessage.type}
-      />
-    </Field>
-  )
-}
-
-const FieldCheckboxFactory = React.forwardRef(
-  (props: FieldCheckboxProps, ref) => (
-    <InternalFieldCheckbox ref={ref} {...props} />
-  )
+        alignLabel={'left'}
+        alignValidationMessage={'right'}
+        {...pickFieldProps(props)}
+      >
+        <Checkbox
+          {...omitFieldProps(props)}
+          id={id}
+          validationType={validationMessage && validationMessage.type}
+          ref={ref}
+        />
+      </Field>
+    )
+  }
 )
 
-/** @component */
-export const FieldCheckbox: StyledFieldCheckboxComponentType = styled<
-  FieldCheckboxComponentType
->(withForm<FieldCheckboxProps>(FieldCheckboxFactory))``
+export const FieldCheckbox = styled(FieldCheckboxComponent)``

@@ -1,15 +1,14 @@
-import { TextAlignProperty } from 'csstype'
+import { WidthProperty } from 'csstype'
 import React, { FunctionComponent } from 'react'
-import styled, { StyledComponent } from 'styled-components'
+import styled, { css } from 'styled-components'
 import { ResponsiveValue, TLengthStyledSystem } from 'styled-system'
 import {
   FontWeights,
   SpacingSizes,
-  ResponsiveSpaceValue,
-  ThemedProps,
   CustomizableAttributes,
 } from '@looker/design-tokens'
 import omit from 'lodash/omit'
+import pick from 'lodash/pick'
 import { FlexItem } from '../../Layout/FlexItem'
 import { FormControl, FormControlDirections } from '../FormControl/FormControl'
 import { Label } from '../Label/Label'
@@ -18,12 +17,12 @@ import {
   ValidationMessageProps,
 } from '../ValidationMessage/ValidationMessage'
 
-type ResponsiveSpaceValue = ResponsiveValue<TLengthStyledSystem>
+type ResponsiveSpaceValue = ResponsiveValue<SpacingSizes>
 
 export interface CustomizableFieldAttributesInterface
   extends CustomizableAttributes {
   labelMargin: SpacingSizes
-  labelWidth: ResponsiveSpaceValue
+  labelWidth: ResponsiveValue<WidthProperty<TLengthStyledSystem>>
 }
 
 export const CustomizableFieldAttributes: CustomizableFieldAttributesInterface = {
@@ -67,69 +66,49 @@ export interface FieldProps {
   validationMessage?: ValidationMessageProps
 }
 
-export const omitFieldProps = (props: FieldProps) =>
-  omit(props, [
-    'alignLabel',
-    'alignValidationMessage',
-    'id',
-    'label',
-    'labelWidth',
-    'labelFontWeight',
-    'validationMessage',
-  ])
+export const fieldPropKeys = [
+  'alignLabel',
+  'alignValidationMessage',
+  'id',
+  'label',
+  'labelWidth',
+  'labelFontWeight',
+  'validationMessage',
+]
 
-interface LabelContainerAlignment {
-  textAlign?: TextAlignProperty
-  width?: ResponsiveSpaceValue
-  ml?: SpacingSizes
-  mr?: SpacingSizes
-}
+export const pickFieldProps = (props: FieldProps) => pick(props, fieldPropKeys)
+export const omitFieldProps = (props: FieldProps) => omit(props, fieldPropKeys)
 
-export type ThemedStarProps = ThemedProps<{}>
-export type StarComponentType = FunctionComponent<ThemedStarProps>
-export type StyledStarComponentType = StyledComponent<
-  StarComponentType,
-  ThemedStarProps
->
-
-const RequiredStar: StyledStarComponentType = styled<StarComponentType>(
-  (props: ThemedStarProps) => (
-    <span {...props} aria-hidden="true">
-      {' '}
-      *
-    </span>
-  )
-)`
+const RequiredStar = styled(props => (
+  <span {...props} aria-hidden="true">
+    {' '}
+    *
+  </span>
+))`
   color: ${props => props.theme.colors.semanticColors.danger.darker};
 `
-const handleHorizontalAlignment = (
-  alignLabel?: FormControlDirections,
-  labelWidth?: ResponsiveSpaceValue
-): LabelContainerAlignment => {
-  const labelContainerAlignment: LabelContainerAlignment = {}
+const handleHorizontalAlignment = (props: FieldProps) => {
+  const { alignLabel, labelWidth } = props
+  const width = labelWidth || CustomizableFieldAttributes.labelWidth
   switch (alignLabel) {
     case 'left':
-      labelContainerAlignment.textAlign = 'right'
-      labelWidth
-        ? (labelContainerAlignment.width = labelWidth)
-        : (labelContainerAlignment.width =
-            CustomizableFieldAttributes.labelWidth)
-      labelContainerAlignment.mr = CustomizableFieldAttributes.labelMargin
-      break
+      return css`
+        text-align: right;
+        width: ${width};
+      `
     case 'right':
-      labelContainerAlignment.textAlign = 'left'
-      labelWidth
-        ? (labelContainerAlignment.width = labelWidth)
-        : (labelContainerAlignment.width =
-            CustomizableFieldAttributes.labelWidth)
-      labelContainerAlignment.mr = CustomizableFieldAttributes.labelMargin
-      break
+      return css`
+        text-align: left;
+        width: ${width};
+        margin-right: 0;
+        margin-left: ${props =>
+          props.theme.space[CustomizableFieldAttributes.labelMargin]};
+      `
     case 'bottom':
     case 'top':
     default:
-      break
+      return ''
   }
-  return labelContainerAlignment
 }
 
 const getValidationMessageAlignment = (
@@ -149,40 +128,36 @@ const getValidationMessageAlignment = (
   }
 }
 
-export type FieldComponentType = FunctionComponent<FieldProps>
-export type StyledFieldComponentType = StyledComponent<
-  FieldComponentType,
-  FieldProps
->
 /**
  * `<Field />` allows the rendering of a label (optionally associated with a child input like `<InputText />`),
  * and can render a validation message. Generally, this component is used with form inputs to give user
  * feedback about the status of the input values.
  */
-const InternalField: FieldComponentType = props => {
-  const labelFontWeight = props.labelFontWeight
-    ? { fontWeight: props.labelFontWeight }
-    : {}
+const FieldComponent: FunctionComponent<FieldProps> = ({
+  alignValidationMessage,
+  children,
+  id,
+  label,
+  labelFontWeight,
+  required,
+  validationMessage,
+  ...props
+}) => {
   return (
-    <FormControl alignLabel={props.alignLabel} mb="xsmall">
-      <Label
-        htmlFor={props.id}
-        {...handleHorizontalAlignment(props.alignLabel, props.labelWidth)}
-        ml={props.alignLabel === 'right' ? 'xsmall' : undefined}
-        {...labelFontWeight}
-      >
-        {props.label}
-        {props.required && <RequiredStar />}
+    <FormControl mb="xsmall" {...props}>
+      <Label htmlFor={id} fontWeight={labelFontWeight}>
+        {label}
+        {required && <RequiredStar />}
       </Label>
       <FormControl
-        alignLabel={getValidationMessageAlignment(props.alignValidationMessage)}
+        alignLabel={getValidationMessageAlignment(alignValidationMessage)}
         mb="xsmall"
       >
-        <FlexItem>{props.children}</FlexItem>
-        {props.validationMessage ? (
+        <FlexItem>{children}</FlexItem>
+        {validationMessage ? (
           <ValidationMessage
-            ml={props.alignValidationMessage === 'right' ? 'xsmall' : undefined}
-            {...props.validationMessage}
+            ml={alignValidationMessage === 'right' ? 'xsmall' : undefined}
+            {...validationMessage}
           />
         ) : null}
       </FormControl>
@@ -190,7 +165,8 @@ const InternalField: FieldComponentType = props => {
   )
 }
 
-/** @component */
-export const Field: StyledFieldComponentType = styled<FieldComponentType>(
-  InternalField
-)``
+export const Field = styled(FieldComponent)`
+  ${Label} {
+    ${handleHorizontalAlignment}
+  }
+`

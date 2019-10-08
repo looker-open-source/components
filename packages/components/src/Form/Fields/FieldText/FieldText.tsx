@@ -1,37 +1,27 @@
-import React, { FunctionComponent, Ref } from 'react'
-import styled, { StyledComponent } from 'styled-components'
+import React, { forwardRef, Ref } from 'react'
+import styled from 'styled-components'
 import uuid from 'uuid/v4'
-import { ComponentWithForm, withForm } from '../../Form'
+import { useFormContext } from '../../Form'
 import { InputText, InputTextProps } from '../../Inputs/InputText/InputText'
-import { Field, FieldProps, omitFieldProps } from '../Field'
+import { Field, FieldProps, omitFieldProps, pickFieldProps } from '../Field'
 
 export interface FieldTextProps extends FieldProps, InputTextProps {}
-type ComponentType = FunctionComponent<FieldTextProps>
-type StyledComponentType = StyledComponent<ComponentType, FieldTextProps>
 
-const InternalFieldText: ComponentType = (props: FieldTextProps) => {
-  const { validationMessage, id = uuid() } = props
-  return (
-    <Field id={id} alignValidationMessage="bottom" {...props}>
-      <InputText
-        {...omitFieldProps(props)}
-        id={id}
-        validationType={validationMessage && validationMessage.type}
-      />
-    </Field>
-  )
-}
-
-const FieldTextFactory = React.forwardRef<StyledComponentType, FieldTextProps>(
-  (props: FieldTextProps, ref: Ref<StyledComponentType>) => (
-    <InternalFieldText ref={ref} {...props} />
-  )
+const FieldTextComponent = forwardRef(
+  (props: FieldTextProps, ref: Ref<HTMLInputElement>) => {
+    const { id = uuid() } = props
+    const validationMessage = useFormContext(props)
+    return (
+      <Field id={id} alignValidationMessage="bottom" {...pickFieldProps(props)}>
+        <InputText
+          {...omitFieldProps(props)}
+          id={id}
+          validationType={validationMessage && validationMessage.type}
+          ref={ref}
+        />
+      </Field>
+    )
+  }
 )
 
-/** @component */
-export const FieldText: StyledComponent<
-  ComponentWithForm<FieldTextProps>,
-  FieldTextProps
-> = styled<ComponentWithForm<FieldTextProps>>(
-  withForm<FieldTextProps>(FieldTextFactory)
-)``
+export const FieldText = styled(FieldTextComponent)``

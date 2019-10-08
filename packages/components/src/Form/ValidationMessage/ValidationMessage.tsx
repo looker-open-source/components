@@ -32,9 +32,9 @@ export interface ValidationMessageProps
   message?: string
 }
 
-export const ValidationMessage = styled.div.attrs({
+export const ValidationMessage = styled.div.attrs(() => ({
   fontSize: CustomizableValidationMessageAttributes.fontSize,
-})<ValidationMessageProps>`
+}))<ValidationMessageProps>`
   ${props =>
     props.type === 'error' ? `color: ${props.theme.color.palette.red700}` : ''}
   ${layout}
