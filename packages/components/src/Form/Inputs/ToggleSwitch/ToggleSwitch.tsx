@@ -5,6 +5,7 @@ import {
   CustomizableAttributes,
   palette,
   PsuedoProps,
+  reset,
   space,
   SpaceProps,
 } from '@looker/design-tokens'
@@ -76,6 +77,7 @@ const KnobContainer = forwardRef(
 )
 
 const KnobContainerBase = styled.div<KnobProps & PsuedoProps>`
+  ${reset}
   transition: ${props => props.theme.transitions.durationModerate};
   position: absolute;
   top: 0;
@@ -100,6 +102,7 @@ const HiddenCheckbox = styled(Checkbox)`
 `
 
 const DisabledKnob = styled.div<{ size: number }>`
+  ${reset}
   position: absolute;
   top: 0;
   bottom: 0;
@@ -133,14 +136,17 @@ export const ToggleSwitchComponent = forwardRef(
 )
 
 export const ToggleSwitch = styled(ToggleSwitchComponent)`
-  input:focus + div {
-    box-shadow: 0 0 0 0.2rem ${rgba(palette.primary500, 0.4)};
+  ${reset}
+  input {
+    cursor: ${props => (!props.disabled ? 'pointer' : undefined)};
+    &:focus + div {
+      box-shadow: 0 0 0 0.2rem ${rgba(palette.primary500, 0.4)};
+    }
   }
   width: ${props => rem((props.size || 20) * 1.75)};
   height: ${props => rem(props.size || 20)};
   display: inline-block;
   position: relative;
   vertical-align: middle;
-  cursor: ${props => (!props.disabled ? 'pointer' : undefined)};
   ${space}
 `
