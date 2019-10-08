@@ -23,7 +23,7 @@ export interface TextProps
   /** Align text */
   align?: TextAlignments
   /** Set text decoration property */
-  decoration?: TextDecorationProperty
+  decoration?: TextDecorationProperty<any>
   /** Size mapping from type ramp */
   textTransform?: TextTransforms
   /** Adjust style of text with more meaning by using an intent */

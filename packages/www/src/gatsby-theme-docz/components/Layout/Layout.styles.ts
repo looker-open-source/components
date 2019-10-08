@@ -32,5 +32,5 @@ export const LayoutMain = styled.main`
   max-width: 70rem;
   margin: 0 auto;
   padding: ${({ theme: { space } }) =>
-    `${space.large} ${space.xxlarge} ${space.xxxlarge}`};
+    `${space.xxlarge} ${space.xxlarge} ${space.xxxxlarge}`};
 `
