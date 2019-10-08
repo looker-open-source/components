@@ -1,6 +1,6 @@
-import React, { FunctionComponent, useState } from 'react'
-import styled, { StyledComponent } from 'styled-components'
-import { Box, BoxProps } from '../../../Layout/Box'
+import React, { forwardRef, Ref, useState } from 'react'
+import styled from 'styled-components'
+import { border, BorderProps, layout, LayoutProps } from '@looker/design-tokens'
 import {
   CustomizableInputTextAttributes,
   InputText,
@@ -8,13 +8,9 @@ import {
 } from '../InputText'
 import { InputSearchControls } from './InputSearchControls'
 
-export interface InputSearchProps
-  extends Omit<BoxProps<HTMLInputElement>, 'as'>,
-    InputTextProps {
-  /**
-   * Specifies starter value for input field.
-   */
-  value?: string
+interface InputSearchLayoutProps extends BorderProps, LayoutProps {}
+
+export interface InputSearchProps extends InputTextProps {
   /**
    * hides clear button and summary text
    */
@@ -25,81 +21,18 @@ export interface InputSearchProps
   summary?: string
 }
 
-export type InputSearchComponentType = FunctionComponent<InputSearchProps>
-export type StyledInputSearchComponentType = StyledComponent<
-  InputSearchComponentType,
-  InputSearchProps
->
-
-const InternalSearchFactory: InputSearchComponentType = ({
-  hideControls = false,
-  summary,
-  onChange,
-  value = '',
-  width = '100%',
-  border,
-  borderTop,
-  borderBottom,
-  borderLeft,
-  borderRight,
-  borderRadius,
-  borderColor,
-  ...props
-}) => {
-  const [inputValue, setValue] = useState(value)
-
-  const onClear = () => setValue('')
-
-  const updateValue = (event: React.FormEvent<HTMLInputElement>) => {
-    setValue(event.currentTarget.value)
-    onChange && onChange(event)
-  }
-
-  const controls = !hideControls && inputValue.length > 0 && (
-    <InputSearchControls onClear={onClear} summary={summary} />
-  )
-
-  return (
-    <InputSearchLayout
-      display="flex"
-      width={width}
-      bg="white"
-      alignItems="center"
-      position="relative"
-      border={border || 'solid 1px'}
-      borderColor={borderColor || 'palette.charcoal300'}
-      borderRadius={
-        borderRadius || CustomizableInputTextAttributes.borderRadius
-      }
-      borderTop={borderTop}
-      borderBottom={borderBottom}
-      borderLeft={borderLeft}
-      borderRight={borderRight}
-    >
-      <InputText
-        type="search"
-        onChange={updateValue}
-        value={inputValue}
-        focusStyle={{ outline: 'none' }}
-        border="none"
-        width="100%"
-        {...props}
-      />
-      {controls}
-    </InputSearchLayout>
-  )
-}
-
-/** @component */
-export const InputSearch: StyledInputSearchComponentType = styled<
-  InputSearchComponentType
->(InternalSearchFactory)``
-
-const InputSearchLayout = styled(Box)`
+const InputSearchLayout = styled.div<InputSearchLayoutProps>`
   &:focus-within {
     border: 1px solid rgba(0, 0, 0, 0);
     outline: 5px auto -webkit-focus-ring-color;
   }
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: ${props => props.theme.colors.palette.white};
+
+  ${border}
+  ${layout}
 
   ${InputText} {
     border: none;
@@ -114,3 +47,67 @@ const InputSearchLayout = styled(Box)`
     }
   }
 `
+
+const InputSearchComponent = forwardRef(
+  (
+    {
+      hideControls = false,
+      summary,
+      onChange,
+      value = '',
+      width = '100%',
+      border,
+      borderTop,
+      borderBottom,
+      borderLeft,
+      borderRight,
+      borderRadius,
+      borderColor,
+      ...props
+    }: InputSearchProps,
+    ref: Ref<HTMLInputElement>
+  ) => {
+    const [inputValue, setValue] = useState(value)
+
+    const onClear = () => setValue('')
+
+    const updateValue = (event: React.FormEvent<HTMLInputElement>) => {
+      setValue(event.currentTarget.value)
+      onChange && onChange(event)
+    }
+
+    const controls = !hideControls && inputValue.length > 0 && (
+      <InputSearchControls onClear={onClear} summary={summary} />
+    )
+
+    return (
+      <InputSearchLayout
+        width={width}
+        border={border || 'solid 1px'}
+        borderColor={borderColor || 'palette.charcoal300'}
+        borderRadius={
+          borderRadius || CustomizableInputTextAttributes.borderRadius
+        }
+        borderTop={borderTop}
+        borderBottom={borderBottom}
+        borderLeft={borderLeft}
+        borderRight={borderRight}
+      >
+        <InputText
+          type="search"
+          onChange={updateValue}
+          value={inputValue}
+          focusStyle={{ outline: 'none' }}
+          border="none"
+          width="100%"
+          {...props}
+          ref={ref}
+        />
+        {controls}
+      </InputSearchLayout>
+    )
+  }
+)
+
+/** @component */
+export const InputSearch = styled(InputSearchComponent)``

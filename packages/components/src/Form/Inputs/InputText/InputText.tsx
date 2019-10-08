@@ -1,9 +1,13 @@
 import styled from 'styled-components'
 import {
   border,
+  BorderProps,
   typography,
   layout,
+  LayoutProps,
   CustomizableAttributes,
+  psuedoClasses,
+  PsuedoProps,
   space,
   SpaceProps,
 } from '@looker/design-tokens'
@@ -16,7 +20,14 @@ export const CustomizableInputTextAttributes: CustomizableAttributes = {
   px: 'xsmall',
   py: 'none',
 }
-export interface InputTextProps extends SpaceProps, Omit<InputProps, 'type'> {}
+export interface InputTextProps
+  extends BorderProps,
+    LayoutProps,
+    PsuedoProps,
+    SpaceProps,
+    Omit<InputProps, 'type'> {
+  value?: string
+}
 
 export const InputText = styled.input.attrs((props: InputTextProps) => ({
   borderRadius: CustomizableInputTextAttributes.borderRadius,
@@ -33,6 +44,7 @@ export const InputText = styled.input.attrs((props: InputTextProps) => ({
   border: solid 1px ${props => props.theme.colors.palette.charcoal300};
   ${border}
   ${layout}
+  ${psuedoClasses}
   ${typography}
   ${space}
 `

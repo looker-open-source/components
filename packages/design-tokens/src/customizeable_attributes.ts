@@ -12,7 +12,7 @@ export interface CustomizableAttributes {
   color?: string
   fontSize?: ResponsiveValue<FontSizes>
   fontWeight?: FontWeights
-  height?: ResponsiveHeightValue
+  height?: ResponsiveValue<CSS.HeightProperty<TLengthStyledSystem>>
   px?: SpacingSizes
   py?: SpacingSizes
 }
