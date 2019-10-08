@@ -23,7 +23,7 @@ import { Swatch } from './Swatch'
 import * as ColorFormatUtils from './utils/color_format_utils'
 import { isValidColor } from './utils/color_utils'
 
-export interface ColorFieldProps
+export interface FieldColorProps
   extends FieldProps,
     Omit<InputTextProps, 'height' | 'width' | 'size'> {
   /**
@@ -42,7 +42,7 @@ export interface ColorFieldProps
   value?: string
 }
 
-interface ColorFieldState {
+interface FieldColorState {
   color?: SimpleHSV
   colorFormat?: string
   /**
@@ -71,11 +71,11 @@ const createEventWithHSVValue = (
   } as React.ChangeEvent<HTMLInputElement>
 }
 
-class InternalColorFieldPicker extends React.Component<
-  ColorFieldProps,
-  ColorFieldState
+class InternalFieldColor extends React.Component<
+  FieldColorProps,
+  FieldColorState
 > {
-  constructor(props: ColorFieldProps) {
+  constructor(props: FieldColorProps) {
     super(props)
     this.state = {}
   }
@@ -239,4 +239,4 @@ class InternalColorFieldPicker extends React.Component<
   }
 }
 
-export const ColorFieldPicker = withForm(InternalColorFieldPicker)
+export const FieldColor = withForm(InternalFieldColor)

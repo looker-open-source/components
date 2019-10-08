@@ -1,0 +1,27 @@
+---
+name: Color Field Picker
+menu: Components
+---
+
+import { FieldColor } from '@looker/components'
+import { Playground } from 'docz'
+import { StatusAndResources, FieldColorDemo } from '../../components'
+
+<StatusAndResources
+  status="experimental"
+  figmaURL="https://www.figma.com/file/h7RYPRCSlz3k8fLzEMRSzy/Color-Wheel?node-id=83%3A3"
+  githubURL="https://github.com/looker/lens/blob/master/src/components/Colors/ColorWheel.tsx"
+  feedbackTitle="ColorWheel Component Feedback"
+/>
+
+# FieldColor
+
+This component is composed of a `FieldText` and a `ColorWheel` that appears in a `Popover` upon click of the color swatch.
+
+<Playground>
+  <FieldColor />
+</Playground>
+
+Like the `FieldText` component, `value` and `onChange` are passed in as props creating an interactive `FieldColor`.
+
+<FieldColorDemo />

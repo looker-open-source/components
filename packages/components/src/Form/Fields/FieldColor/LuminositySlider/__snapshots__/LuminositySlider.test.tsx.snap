@@ -2,6 +2,13 @@
 
 exports[`LuminositySlider default styling 1`] = `
 .c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;

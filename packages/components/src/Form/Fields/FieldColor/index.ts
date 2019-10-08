@@ -1,1 +1,1 @@
-export * from './ColorFieldPicker'
+export * from './FieldColor'

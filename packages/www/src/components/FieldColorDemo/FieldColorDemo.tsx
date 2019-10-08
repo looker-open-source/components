@@ -1,11 +1,11 @@
 import React from 'react'
-import { ColorFieldPicker } from '@looker/components'
+import { FieldColor } from '@looker/components'
 
 interface ColorPickerState {
   colorValue: string
 }
 
-export default class ColorFieldPickerDemo extends React.Component<
+export default class FieldColorDemo extends React.Component<
   {},
   ColorPickerState
 > {
@@ -22,7 +22,7 @@ export default class ColorFieldPickerDemo extends React.Component<
 
   public render() {
     return (
-      <ColorFieldPicker
+      <FieldColor
         label="Pick a color"
         alignLabel="left"
         value={this.state.colorValue}
