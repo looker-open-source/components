@@ -12,6 +12,7 @@ import {
   border,
   flexbox,
   layout,
+  reset,
   space,
   BorderProps,
   FlexboxProps,
@@ -48,6 +49,7 @@ export interface FormContext {
 export const FormContext = React.createContext<FormContext>({})
 
 const FormBase = styled.form`
+  ${reset}
   ${border}
   ${flexbox}
   ${layout}

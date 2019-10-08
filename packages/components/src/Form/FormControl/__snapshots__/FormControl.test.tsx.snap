@@ -9,8 +9,6 @@ exports[`A FormControl 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;

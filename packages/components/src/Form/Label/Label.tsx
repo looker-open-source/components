@@ -4,6 +4,7 @@ import {
   CustomizableAttributes,
   color,
   ColorProps,
+  reset,
   space,
   SpaceProps,
   textDecoration,
@@ -33,6 +34,7 @@ export const Label = styled.label.attrs(() => ({
   fontSize: CustomizableLabelAttributes.fontSize,
   fontWeight: CustomizableLabelAttributes.fontWeight,
 }))<LabelProps>`
+  ${reset}
   margin-right: ${props => props.theme.space.xsmall};
   ${color};
   ${space};
