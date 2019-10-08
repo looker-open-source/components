@@ -8,7 +8,7 @@ import {
   space,
 } from '@looker/design-tokens'
 import { background, BackgroundProps } from 'styled-system'
-import { Heading, HeadingProps } from '../Heading'
+import { Heading, HeadingProps } from '../Text/Heading'
 import { List } from '../List'
 import { MenuContext } from './MenuContext'
 import { MenuGroupLabel } from './MenuGroupLabel'

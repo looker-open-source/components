@@ -1,7 +1,7 @@
 import React from 'react'
 import { SemanticColors } from '@looker/design-tokens'
 import { Button } from '../../Button'
-import { Heading } from '../../Heading'
+import { Heading } from '../../Text/Heading'
 import { Paragraph } from '../../Text'
 import { ModalContent, ModalFooter, ModalHeader } from '../Layout'
 import { ManagedModalProps } from '../Modal'

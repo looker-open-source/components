@@ -111,5 +111,4 @@ const InputSearchComponent = forwardRef(
   }
 )
 
-/** @component */
 export const InputSearch = styled(InputSearchComponent)``

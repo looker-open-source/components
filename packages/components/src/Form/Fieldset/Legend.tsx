@@ -34,11 +34,14 @@ export interface LegendProps
     TypographyProps,
     CompatibleHTMLProps<HTMLLegendElement> {}
 
-export const Legend = styled.legend.attrs(() => ({
-  color: CustomizableLegendAttributes.color,
-  fontSize: CustomizableLegendAttributes.fontSize,
-  fontWeight: CustomizableLegendAttributes.fontWeight,
-  paddingBottom: CustomizableLegendAttributes.bottomPadding,
+export const Legend = styled.legend.attrs((props: LegendProps) => ({
+  color: props.color || CustomizableLegendAttributes.color,
+  fontSize: props.fontSize || CustomizableLegendAttributes.fontSize,
+  fontWeight: props.fontWeight || CustomizableLegendAttributes.fontWeight,
+  pb:
+    props.pb || props.py || props.p
+      ? undefined
+      : CustomizableLegendAttributes.bottomPadding,
 }))<LegendProps>`
   ${color}
   ${layout}

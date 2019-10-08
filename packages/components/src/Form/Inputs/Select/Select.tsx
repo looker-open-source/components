@@ -2,13 +2,16 @@ import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
 import {
   border,
-  typography,
-  layout,
+  BorderProps,
   CompatibleHTMLProps,
   CustomizableAttributes,
+  layout,
+  LayoutProps,
   reset,
   space,
   SpaceProps,
+  typography,
+  TypographyProps,
 } from '@looker/design-tokens'
 import { ValidationType } from '../../ValidationMessage'
 
@@ -57,7 +60,10 @@ export interface SelectOptionProps {
 }
 
 export interface SelectProps
-  extends SpaceProps,
+  extends BorderProps,
+    Omit<LayoutProps, 'size'>,
+    SpaceProps,
+    TypographyProps,
     CompatibleHTMLProps<HTMLSelectElement> {
   options?:
     | OptionsType<SelectOptionProps>
@@ -128,12 +134,11 @@ const indicator = (color: string) =>
 //  This component will likely be replaced with a React Select powered version
 
 const SelectBase = styled.select.attrs((props: SelectProps) => ({
-  borderRadius: CustomizableSelectAttributes.borderRadius,
-  fontSize: CustomizableSelectAttributes.fontSize,
+  borderRadius: props.borderRadius || CustomizableSelectAttributes.borderRadius,
+  fontSize: props.fontSize || CustomizableSelectAttributes.fontSize,
   height: props.py || props.p ? undefined : CustomizableSelectAttributes.height,
   px: props.p || CustomizableSelectAttributes.px,
   py: props.p || CustomizableSelectAttributes.py,
-  ...props,
 }))<SelectProps>`
   ${reset}
   background-color: ${props =>
