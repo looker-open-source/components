@@ -29,10 +29,10 @@ export interface LabelProps
     TypographyProps,
     CompatibleHTMLProps<HTMLLabelElement> {}
 
-export const Label = styled.label.attrs(() => ({
-  color: CustomizableLabelAttributes.color,
-  fontSize: CustomizableLabelAttributes.fontSize,
-  fontWeight: CustomizableLabelAttributes.fontWeight,
+export const Label = styled.label.attrs((props: LabelProps) => ({
+  color: props.color || CustomizableLabelAttributes.color,
+  fontSize: props.fontSize || CustomizableLabelAttributes.fontSize,
+  fontWeight: props.fontWeight || CustomizableLabelAttributes.fontWeight,
 }))<LabelProps>`
   ${reset}
   margin-right: ${props => props.theme.space.xsmall};
