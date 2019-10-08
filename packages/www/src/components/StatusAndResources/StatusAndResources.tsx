@@ -1,7 +1,6 @@
-import React, { FunctionComponent } from 'react'
-import styled, { css, StyledComponent } from 'styled-components'
+import React, { FC } from 'react'
+import styled, { css } from 'styled-components'
 import { Text } from '@looker/components'
-import { ThemedProps } from '@looker/design-tokens'
 import { FeedbackSvg, FigmaSvg, GithubSvg } from '../ResourceIcons'
 
 export type StatusLabels = 'experimental' | 'deprecated' | 'stable'
@@ -9,13 +8,7 @@ export interface StatusProps {
   status: StatusLabels
 }
 
-export type StatusComponentType = FunctionComponent<ThemedProps<StatusProps>>
-export type StyledStatusComponentType = StyledComponent<
-  StatusComponentType,
-  ThemedProps<StatusProps>
->
-
-const statusIndicator = ({ status, ...args }: StatusProps) => {
+const StatusIndicator = ({ status, ...args }: StatusProps) => {
   return (
     <a className="support-link" href="/#!/Support%20Levels">
       <Text fontSize="small" {...args}>
@@ -77,9 +70,7 @@ function getCorrectStatusColor(status: StatusLabels) {
   }
 }
 
-export const StatusDiv: StyledStatusComponentType = styled<StatusComponentType>(
-  statusIndicator
-)`
+export const StatusDiv = styled(StatusIndicator)`
   display: flex;
   text-transform: capitalize;
   padding: ${props => props.theme.space.small};
@@ -110,15 +101,8 @@ export const StatusDiv: StyledStatusComponentType = styled<StatusComponentType>(
 export interface ResourceProps {
   url: string
 }
-export type ResourceComponentType = FunctionComponent<
-  ThemedProps<ResourceProps>
->
-export type StyledResourceComponentType = StyledComponent<
-  ResourceComponentType,
-  ThemedProps<ResourceProps>
->
 
-const ResourceIconRender: ResourceComponentType = ({ url, ...args }) => {
+const ResourceIconRender: FC<ResourceProps> = ({ url, ...args }) => {
   if (!url) {
     return null
   } else {
@@ -130,11 +114,8 @@ const ResourceIconRender: ResourceComponentType = ({ url, ...args }) => {
   }
 }
 
-const ResourceIcon: StyledResourceComponentType = styled<ResourceComponentType>(
-  ResourceIconRender
-)`
-  margin-right: ${(props: ThemedProps<ResourceProps>) =>
-    props.theme.space.medium};
+const ResourceIcon = styled(ResourceIconRender)`
+  margin-right: ${props => props.theme.space.medium};
   svg {
     transition: ${props =>
       `transform ${props.theme.transitions.durationModerate} ${props.theme.easings.easeOut}`};
@@ -151,13 +132,6 @@ export interface StatusAndResourcesProps {
   githubURL: string
   feedbackTitle: string
 }
-export type StatusAndResourcesComponentType = FunctionComponent<
-  ThemedProps<StatusAndResourcesProps>
->
-export type StyledStatusAndResourcesComponentType = StyledComponent<
-  StatusAndResourcesComponentType,
-  ThemedProps<StatusAndResourcesProps>
->
 
 const StatusAndResourcesRenderer = ({
   status,
@@ -186,9 +160,7 @@ const StatusAndResourcesRenderer = ({
   )
 }
 
-export const StatusAndResources: StyledStatusAndResourcesComponentType = styled<
-  StatusAndResourcesComponentType
->(StatusAndResourcesRenderer)`
+export const StatusAndResources = styled(StatusAndResourcesRenderer)`
   border-top: solid 1px ${props => props.theme.colors.palette.charcoal200};
   border-bottom: solid 1px ${props => props.theme.colors.palette.charcoal200};
   display: flex;

@@ -1,15 +1,11 @@
 import React from 'react'
+import { Card, CardContent, Flex, Heading, Text } from '@looker/components'
 import {
-  Card,
-  CardContent,
   HueSaturation,
   SimpleHSV,
-  ColorWheel,
-  LuminositySlider,
-  Flex,
-  Heading,
-  Text,
-} from '@looker/components'
+} from '@looker/components/dist/ColorFieldPicker/ColorWheel/color_wheel_utils'
+import { ColorWheel } from '@looker/components/dist/ColorFieldPicker/ColorWheel'
+import { LuminositySlider } from '@looker/components/dist/ColorFieldPicker/LuminositySlider'
 
 interface ColorWheelDemoState {
   color: SimpleHSV
