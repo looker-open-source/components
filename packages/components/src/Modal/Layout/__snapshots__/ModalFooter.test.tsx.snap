@@ -1,99 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ModalFooter with Button 1`] = `
-.c3 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-animation: none;
-  animation: none;
-  border-radius: 0.25rem;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
-  font-size: 1rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0rem;
-  padding-bottom: 0rem;
-}
-
-.c2 {
-  font-weight: 600;
-  outline: none;
-  -webkit-transition: border 80ms;
-  transition: border 80ms;
-  vertical-align: middle;
-  white-space: nowrap;
-  border-style: solid;
-  border-width: 0.0625rem;
-  background: transparent;
-  border-color: transparent;
-  color: #64518A;
-}
-
-.c2:focus {
-  box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
-}
-
-.c2[disabled] {
-  cursor: default;
-  -webkit-filter: grayscale(0.3);
-  filter: grayscale(0.3);
-  opacity: 0.25;
-}
-
-.c2[disabled]:hover,
-.c2[disabled]:active,
-.c2[disabled]:focus {
-  background-color: transparent;
-  border-color: transparent;
-  color: #64518A;
-}
-
-.c2:hover,
-.c2:focus,
-.c2.hover {
-  background: #F3F2FF;
-  border-color: #F3F2FF;
-  color: #6C43E0;
-}
-
-.c2:active,
-.c2.active {
-  background: #E8E5FF;
-  border-color: #E8E5FF;
-  color: #6C43E0;
-}
-
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  -webkit-animation: none;
-  animation: none;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex-direction: row-reverse;
   -ms-flex-direction: row-reverse;
   flex-direction: row-reverse;
@@ -101,22 +13,13 @@ exports[`ModalFooter with Button 1`] = `
 }
 
 .c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
-  -webkit-flex-direction: row-reverse;
-  -ms-flex-direction: row-reverse;
-  flex-direction: row-reverse;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: row-reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
 }
 
 .c1 > * {
@@ -130,14 +33,7 @@ exports[`ModalFooter with Button 1`] = `
   <div
     className="c1"
   >
-    <button
-      className="c2 c3"
-      style={
-        Object {
-          "lineHeight": "34px",
-        }
-      }
-    >
+    <button>
       Cancel
     </button>
   </div>
@@ -145,172 +41,11 @@ exports[`ModalFooter with Button 1`] = `
 `;
 
 exports[`ModalFooter with ModalContext 1`] = `
-.c3 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-animation: none;
-  animation: none;
-  border-radius: 0.25rem;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
-  font-size: 1rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0rem;
-  padding-bottom: 0rem;
-}
-
-.c5 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  cursor: pointer;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-animation: none;
-  animation: none;
-  border-radius: 0.25rem;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
-  font-size: 1rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0rem;
-  padding-bottom: 0rem;
-}
-
-.c2 {
-  font-weight: 600;
-  outline: none;
-  -webkit-transition: border 80ms;
-  transition: border 80ms;
-  vertical-align: middle;
-  white-space: nowrap;
-  border-style: solid;
-  border-width: 0.0625rem;
-  background: transparent;
-  border-color: transparent;
-  color: #64518A;
-}
-
-.c2:focus {
-  box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
-}
-
-.c2[disabled] {
-  cursor: default;
-  -webkit-filter: grayscale(0.3);
-  filter: grayscale(0.3);
-  opacity: 0.25;
-}
-
-.c2[disabled]:hover,
-.c2[disabled]:active,
-.c2[disabled]:focus {
-  background-color: transparent;
-  border-color: transparent;
-  color: #64518A;
-}
-
-.c2:hover,
-.c2:focus,
-.c2.hover {
-  background: #F3F2FF;
-  border-color: #F3F2FF;
-  color: #6C43E0;
-}
-
-.c2:active,
-.c2.active {
-  background: #E8E5FF;
-  border-color: #E8E5FF;
-  color: #6C43E0;
-}
-
-.c4 {
-  font-weight: 600;
-  outline: none;
-  -webkit-transition: border 80ms;
-  transition: border 80ms;
-  vertical-align: middle;
-  white-space: nowrap;
-  border-style: solid;
-  border-width: 0.0625rem;
-  background: #CC1F36;
-  border-color: #CC1F36;
-  color: #FFFFFF;
-}
-
-.c4:focus {
-  box-shadow: 0 0 0 0.15rem rgba(204,31,54,0.25);
-}
-
-.c4[disabled] {
-  cursor: default;
-  -webkit-filter: grayscale(0.3);
-  filter: grayscale(0.3);
-  opacity: 0.25;
-}
-
-.c4[disabled]:hover,
-.c4[disabled]:active,
-.c4[disabled]:focus {
-  background-color: #CC1F36;
-  border-color: #C1C6CC;
-}
-
-.c4:hover,
-.c4:focus,
-.c4.hover {
-  background: #B2121F;
-  border-color: #B2121F;
-}
-
-.c4:active,
-.c4.active {
-  background: #990F14;
-  border-color: #990F14;
-}
-
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  -webkit-animation: none;
-  animation: none;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex-direction: row-reverse;
   -ms-flex-direction: row-reverse;
   flex-direction: row-reverse;
@@ -318,22 +53,13 @@ exports[`ModalFooter with ModalContext 1`] = `
 }
 
 .c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
-  -webkit-flex-direction: row-reverse;
-  -ms-flex-direction: row-reverse;
-  flex-direction: row-reverse;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: row-reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
 }
 
 .c1 > * {
@@ -347,24 +73,11 @@ exports[`ModalFooter with ModalContext 1`] = `
   <div
     className="c1"
   >
-    <button
-      className="c2 c3"
-      style={
-        Object {
-          "lineHeight": "34px",
-        }
-      }
-    >
+    <button>
       Cancel
     </button>
     <button
-      className="c4 c5"
       onClick={[Function]}
-      style={
-        Object {
-          "lineHeight": "34px",
-        }
-      }
     >
       Yes, Delete "Stuff"
     </button>

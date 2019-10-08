@@ -4,8 +4,6 @@ import {
   assertSnapshot,
   assertSnapshotShallow,
 } from '@looker/components-test-utils'
-import { Button } from '../../Button'
-import { Heading } from '../../Heading'
 import { ModalContent, ModalFooter, ModalHeader } from '../Layout'
 import { Drawer } from './Drawer'
 import { DrawerManager } from './DrawerManager'
@@ -19,7 +17,7 @@ const content = (
 test('Drawer Hidden', () => {
   assertSnapshot(
     <DrawerManager content={content}>
-      {onClick => <Button onClick={onClick}>🥑</Button>}
+      {onClick => <a onClick={onClick}>🥑</a>}
     </DrawerManager>
   )
 })
@@ -39,13 +37,11 @@ test('Drawer, backdrop customized', () => {
 test('Selection Drawer, Shown', () => {
   assertSnapshotShallow(
     <Drawer isOpen>
-      <ModalHeader>
-        <Heading>Pick stuff</Heading>
-      </ModalHeader>
+      <ModalHeader>Pick stuff</ModalHeader>
       <ModalContent>Stuff and things...</ModalContent>
       <ModalFooter>
-        <Button>Pick some stuff</Button>
-        <Button variant="transparent">Cancel</Button>
+        <button>Pick some stuff</button>
+        <button>Cancel</button>
       </ModalFooter>
     </Drawer>
   )

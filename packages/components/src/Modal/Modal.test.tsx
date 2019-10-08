@@ -2,18 +2,13 @@ import { mount } from 'enzyme'
 import 'jest-styled-components'
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
-
 import {
   mountWithTheme,
   assertSnapshotShallow,
 } from '@looker/components-test-utils'
-
 import { theme } from '@looker/design-tokens'
-
-import { Button } from '../Button'
 import { Modal } from './Modal'
 import { SimpleContent, SimpleContentSFC } from './modal.test.helpers'
-
 import { ModalBackdrop } from './ModalBackdrop'
 import { ModalPortal } from './ModalPortal'
 
@@ -31,7 +26,7 @@ describe('Modal', () => {
   test('Inactive w/ wrapped element', () => {
     assertSnapshotShallow(
       <Modal render={simpleContentFactory}>
-        <Button>Click Here</Button>
+        <button>Click Here</button>
       </Modal>
     )
   })
@@ -39,7 +34,7 @@ describe('Modal', () => {
   test('Active w/ wrapped element', () => {
     assertSnapshotShallow(
       <Modal isOpen render={simpleContentFactory}>
-        <Button>Click Here</Button>
+        <button>Click Here</button>
       </Modal>
     )
   })

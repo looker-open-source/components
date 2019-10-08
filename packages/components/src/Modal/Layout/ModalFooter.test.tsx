@@ -1,15 +1,13 @@
 import 'jest-styled-components'
 import React from 'react'
 import { assertSnapshot } from '@looker/components-test-utils'
-
-import { Button } from '../../Button'
 import { ModalContext } from '../ModalContext'
 import { ModalFooter } from './ModalFooter'
 
 test('ModalFooter with Button', () => {
   assertSnapshot(
     <ModalFooter>
-      <Button variant="transparent">Cancel</Button>
+      <button>Cancel</button>
     </ModalFooter>
   )
 })
@@ -19,18 +17,15 @@ test('ModalFooter with ModalContext', () => {
     <ModalContext.Consumer>
       {({ closeModal }) => (
         <ModalFooter>
-          <Button onClick={closeModal} variant="transparent">
-            Cancel
-          </Button>
-          <Button
+          <button onClick={closeModal}>Cancel</button>
+          <button
             onClick={() => {
               alert("doin' things...")
               close && close()
             }}
-            color="danger"
           >
             Yes, Delete "Stuff"
-          </Button>
+          </button>
         </ModalFooter>
       )}
     </ModalContext.Consumer>

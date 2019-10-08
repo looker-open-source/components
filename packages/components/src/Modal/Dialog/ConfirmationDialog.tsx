@@ -1,5 +1,5 @@
 import React from 'react'
-import { SemanticColor, SemanticColors } from '@looker/design-tokens'
+import { SemanticColors } from '@looker/design-tokens'
 import { Button } from '../../Button'
 import { Heading } from '../../Heading'
 import { Paragraph } from '../../Text'
@@ -19,7 +19,7 @@ export interface ConfirmationProps extends ManagedModalProps {
    * Defines the color of the confirm button. Can be the string name of a color listed in the color theme, or a color object.
    * @default "primary"
    */
-  buttonColor?: keyof SemanticColors | SemanticColor
+  buttonColor?: keyof SemanticColors
   /**
    * Confirmation button text
    * @default 'Confirm'

@@ -1,21 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ModalContent - no overflow 1`] = `
-.c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
-  padding: 1.25rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
-}
-
 .c0 {
   border: 0;
   box-sizing: border-box;
@@ -24,20 +9,31 @@ exports[`ModalContent - no overflow 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
+  overflow: auto;
   -webkit-flex: 8;
   -ms-flex: 8;
   flex: 8;
-  overflow: auto;
 }
 
 .c0.overflow {
-  box-shadow: inset 0 -16px 16px -16px #DEE1E5, inset 0 16px 16px -16px #DEE1E5;
+  box-shadow: inset 0 -16px 16px -16px #DEE1E5,inset 0 16px 16px -16px #DEE1E5;
+}
+
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  padding: 1.25rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 <div
-  className="undefined false c0"
+  className="c0 undefined false"
 >
   <div
     className="c1"
@@ -48,34 +44,6 @@ exports[`ModalContent - no overflow 1`] = `
 `;
 
 exports[`ModalContent - no overflow 2`] = `
-.c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
-  padding: 1.25rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
-}
-
-.c2 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
-  height: 4rem;
-}
-
 .c0 {
   border: 0;
   box-sizing: border-box;
@@ -84,26 +52,41 @@ exports[`ModalContent - no overflow 2`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
+  overflow: auto;
   -webkit-flex: 8;
   -ms-flex: 8;
   flex: 8;
-  overflow: auto;
 }
 
 .c0.overflow {
-  box-shadow: inset 0 -16px 16px -16px #DEE1E5, inset 0 16px 16px -16px #DEE1E5;
+  box-shadow: inset 0 -16px 16px -16px #DEE1E5,inset 0 16px 16px -16px #DEE1E5;
+}
+
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  padding: 1.25rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 <div
-  className="undefined false c0"
+  className="c0 undefined false"
 >
   <div
     className="c1"
   >
     <div
-      className="c2"
+      style={
+        Object {
+          "height": "4rem",
+        }
+      }
     >
       Stuff
     </div>

@@ -1,13 +1,9 @@
 import 'jest-styled-components'
 import React from 'react'
-
 import {
   mountWithTheme,
   assertSnapshotShallow,
 } from '@looker/components-test-utils'
-
-import { Button } from '../../Button'
-import { Heading } from '../../Heading'
 import { ModalFooter, ModalHeader } from '../Layout'
 import { SimpleContent } from '../modal.test.helpers'
 import { ModalBackdrop } from '../ModalBackdrop'
@@ -25,7 +21,7 @@ const content = (
 test('Dialog Hidden', () => {
   assertSnapshotShallow(
     <DialogManager content={content}>
-      {onClick => <Button onClick={onClick}>🥑</Button>}
+      {onClick => <a onClick={onClick}>🥑</a>}
     </DialogManager>
   )
 })
@@ -46,14 +42,14 @@ describe('Click events', () => {
   test('Trigger.click renders a backdrop, clicking backdrop closes it', () => {
     const dialog = mountWithTheme(
       <DialogManager content={SimpleContent}>
-        {onClick => <Button onClick={onClick}>Open Modal</Button>}
+        {onClick => <a onClick={onClick}>Open Modal</a>}
       </DialogManager>
     )
 
     // Drawer closed
     expect(dialog.find(ModalPortal).exists()).toBeFalsy()
 
-    const button = dialog.find(Button)
+    const button = dialog.find('a')
     expect(button.exists()).toBeTruthy()
     button.simulate('click') // Click to open
 
@@ -69,13 +65,13 @@ describe('Click events', () => {
 test('Dialog opens on click', () => {
   const dialog = mountWithTheme(
     <DialogManager content={SimpleContent}>
-      {onClick => <Button onClick={onClick}>Open Dialog</Button>}
+      {onClick => <a onClick={onClick}>Open Dialog</a>}
     </DialogManager>
   )
 
   expect(dialog.find(ModalPortal).exists()).toBeFalsy()
 
-  const button = dialog.find(Button)
+  const button = dialog.find('a')
   expect(button.exists()).toBeTruthy()
   button.simulate('click')
 
@@ -94,11 +90,11 @@ test('Dialog opens on click', () => {
 test('contains the content passed to it', () => {
   const dialog = mountWithTheme(
     <DialogManager content={SimpleContent}>
-      {onClick => <Button onClick={onClick}>Open Dialog</Button>}
+      {onClick => <a onClick={onClick}>Open Dialog</a>}
     </DialogManager>
   )
 
-  const button = dialog.find(Button)
+  const button = dialog.find('a')
   expect(button.exists()).toBeTruthy()
   button.simulate('click') // Click to open
   expect(dialog.contains(SimpleContent)).toBeTruthy()
@@ -129,12 +125,10 @@ describe('Dialog Styling', () => {
 test('Confirmation Dialog, Shown', () => {
   assertSnapshotShallow(
     <Dialog isOpen>
-      <ModalHeader>
-        <Heading>Are you sure you want to delete "Stuff"?</Heading>
-      </ModalHeader>
+      <ModalHeader>Are you sure you want to delete "Stuff"?</ModalHeader>
       <ModalFooter>
-        <Button color="danger">Yes, Delete "Stuff"</Button>
-        <Button variant="transparent">Cancel</Button>
+        <button>Yes, Delete "Stuff"</button>
+        <button>Cancel</button>
       </ModalFooter>
     </Dialog>
   )

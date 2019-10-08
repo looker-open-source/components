@@ -1,32 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ModalHeader 1`] = `
-.c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-animation: none;
-  animation: none;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  padding: 1.25rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
-}
-
 .c1 {
   border: 0;
   box-sizing: border-box;
@@ -35,8 +9,6 @@ exports[`ModalHeader 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
   margin-right: 2rem;
 }
 
@@ -48,52 +20,10 @@ exports[`ModalHeader 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
-  font-size: 1.125rem;
-  font-weight: 400;
-  line-height: 1.75rem;
-}
-
-.c5 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  -webkit-animation: none;
-  animation: none;
-  border-radius: 0.25rem;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  font-family: 'Open Sans',Helvetica,Arial,sans-serif;
-  font-size: 1rem;
-  margin-left: auto;
-  padding: 0rem;
-}
-
-.c6 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-animation: none;
-  animation: none;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -103,55 +33,96 @@ exports[`ModalHeader 1`] = `
 }
 
 .c2 {
-  text-transform: none;
-}
-
-.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   font-weight: 600;
   outline: none;
   -webkit-transition: border 80ms;
   transition: border 80ms;
   vertical-align: middle;
   white-space: nowrap;
-  border-style: solid;
-  border-width: 0.0625rem;
+  font-size: 1rem;
+  height: 34px;
+  padding-left: 1rem;
+  padding-right: 1rem;
   background: transparent;
-  border-color: transparent;
+  border: 1px solid transparent;
   color: #939BA5;
+  margin-left: auto;
+  padding: 0rem;
 }
 
-.c4:focus {
-  box-shadow: 0 0 0 0.15rem rgba(147,155,165,0.25);
-}
-
-.c4[disabled] {
+.c2[disabled] {
   cursor: default;
   -webkit-filter: grayscale(0.3);
   filter: grayscale(0.3);
   opacity: 0.25;
 }
 
-.c4[disabled]:hover,
-.c4[disabled]:active,
-.c4[disabled]:focus {
-  background-color: transparent;
-  border-color: transparent;
-  color: #939BA5;
+.c2:focus {
+  box-shadow: 0 0 0 0.15rem rgba(147,155,165,0.25);
 }
 
-.c4:hover,
-.c4:focus,
-.c4.hover {
+.c2:active,
+.c2.active {
+  background: #F5F6F7;
+  border-color: #F5F6F7;
+  color: #4C535B;
+}
+
+.c2:hover,
+.c2:focus,
+.c2.hover {
   background: #FBFBFC;
   border-color: #FBFBFC;
   color: #4C535B;
 }
 
-.c4:active,
-.c4.active {
-  background: #F5F6F7;
-  border-color: #F5F6F7;
-  color: #4C535B;
+.c2[disabled]:hover,
+.c2[disabled]:active,
+.c2[disabled]:focus {
+  background-color: transparent;
+  border-color: transparent;
+  color: #939BA5;
+}
+
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  padding: 1.25rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
 }
 
 <header
@@ -160,23 +131,17 @@ exports[`ModalHeader 1`] = `
   <div
     className="c1"
   >
-    <h2
-      className="c2 c3"
-    >
-      The Heading for a Dialog
-    </h2>
+    The Heading for a Dialog
   </div>
   <button
-    className="c4 c5"
-    style={
-      Object {
-        "lineHeight": "34px",
-      }
-    }
+    className="c2 "
+    color="neutral"
+    size="medium"
     tabIndex={-1}
   >
     <div
-      className="c6"
+      className="c3 "
+      size="1.25rem"
     >
       <svg
         fill="currentColor"
