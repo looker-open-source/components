@@ -100,6 +100,8 @@ const InputSearchComponent = forwardRef(
           focusStyle={{ outline: 'none' }}
           border="none"
           width="100%"
+          height={props.height as any}
+          size={props.size as any}
           {...props}
           ref={ref}
         />
