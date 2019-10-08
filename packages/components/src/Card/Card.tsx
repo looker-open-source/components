@@ -24,6 +24,16 @@ const cardTransition = () => css`
     `${props.theme.transitions.durationQuick} ${props.theme.easings.ease}`}
 `
 
+const raised = (props: CardProps) =>
+  props.raised &&
+  css`
+    box-shadow: ${props => props.theme.shadows[1]};
+
+    &:hover {
+      box-shadow: ${props => props.theme.shadows[2]};
+    }
+  `
+
 export const Card = styled.div<CardProps>`
   ${reset}
   ${position}
@@ -33,7 +43,6 @@ export const Card = styled.div<CardProps>`
   border: solid 1px ${props =>
     props.theme.colors.semanticColors.primary.borderColor};
   border-radius: ${props => props.theme.radii.medium};
-  box-shadow: ${props => (props.raised ? props.theme.shadows[1] : 'none')};
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -43,8 +52,9 @@ export const Card = styled.div<CardProps>`
 
   &:hover {
     border-color: ${props => props.theme.colors.palette.charcoal300};
-    box-shadow: ${props => (props.raised ? props.theme.shadows[2] : 'none')};
   }
+
+  ${raised}
 `
 
 Card.defaultProps = { raised: true }

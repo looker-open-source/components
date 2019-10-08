@@ -5,7 +5,7 @@ import { Card } from './Card'
 import { CardMedia } from './CardMedia'
 
 test('A Card', () => {
-  const component = createWithTheme(<Card>🥑</Card>)
+  const component = createWithTheme(<Card raised={false}>🥑</Card>)
   const tree = component.toJSON()
   expect(tree).toMatchSnapshot()
 })
