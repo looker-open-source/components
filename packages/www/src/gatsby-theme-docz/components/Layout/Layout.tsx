@@ -9,7 +9,7 @@ import {
   TopBar,
 } from './Layout.styles'
 
-export const Layout: React.FC = ({ children }) => {
+const Layout: React.FC = ({ children }) => {
   const [open] = useState(true)
 
   return (
@@ -24,3 +24,5 @@ export const Layout: React.FC = ({ children }) => {
     </PageLayout>
   )
 }
+
+export default Layout

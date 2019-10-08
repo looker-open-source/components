@@ -1,1 +1,3 @@
-export * from './Playground'
+import Playground from './Playground'
+
+export default Playground

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export const getDefaultValue = ({ defaultValue, type, flowType }: any) => {
+const getDefaultValue = ({ defaultValue, type, flowType }: any) => {
   const propType = flowType || type
   if (!defaultValue.value) return null
   if (defaultValue.value === "''") {
@@ -21,7 +21,7 @@ interface PropProps {
   getPropType: any
 }
 
-export const Prop: React.FC<PropProps> = ({ propName, prop, getPropType }) => {
+const Prop: React.FC<PropProps> = ({ propName, prop, getPropType }) => {
   const [showing, setShowing] = useState(false)
   if (!prop.type && !prop.flowType) return null
 
@@ -52,7 +52,7 @@ export const Prop: React.FC<PropProps> = ({ propName, prop, getPropType }) => {
   )
 }
 
-export const Props = ({ props, getPropType }) => {
+const Props = ({ props, getPropType }) => {
   const entries = Object.entries(props)
 
   return (
@@ -63,3 +63,5 @@ export const Props = ({ props, getPropType }) => {
     </div>
   )
 }
+
+export default Props

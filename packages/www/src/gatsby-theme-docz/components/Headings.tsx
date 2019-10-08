@@ -5,7 +5,7 @@ import styled from 'styled-components'
 const StyledHeading = styled(Heading)`
   margin-bottom: ${({ theme }) => theme.space.medium};
   line-height: ${({ theme }) => theme.lineHeights.xlarge};
-  font-weight: 400;
+  font-weight: normal;
 `
 
 export const h1: React.FC = ({ children }) => (

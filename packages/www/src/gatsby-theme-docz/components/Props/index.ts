@@ -1,1 +1,3 @@
-export * from './Props'
+import Props from './Props'
+
+export default Props

@@ -5,7 +5,7 @@ import { LiveProvider, LiveError, LivePreview, LiveEditor } from 'react-live'
 import { PlaygroundProps } from 'docz'
 import { LivePreviewWrapper } from './LivePreviewWrapper'
 
-export const Playground: React.FC<PlaygroundProps> = ({
+const Playground: React.FC<PlaygroundProps> = ({
   code,
   // language,
   scope,
@@ -78,3 +78,5 @@ export const Playground: React.FC<PlaygroundProps> = ({
     // </Resizable>
   )
 }
+
+export default Playground
