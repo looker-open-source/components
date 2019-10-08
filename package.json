@@ -114,6 +114,7 @@
     "tsc": "tsc"
   },
   "dependencies": {
+    "@types/react-copy-to-clipboard": "^4.3.0",
     "react-copy-to-clipboard": "^5.0.1"
   }
 }
