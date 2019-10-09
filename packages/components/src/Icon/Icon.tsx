@@ -1,9 +1,11 @@
 import {
+  color,
   CompatibleHTMLProps,
+  LayoutProps,
+  layout,
+  reset,
   SpaceProps,
   space,
-  reset,
-  color,
 } from '@looker/design-tokens'
 import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
@@ -12,6 +14,7 @@ import omit from 'lodash/omit'
 
 export interface IconProps
   extends Omit<CompatibleHTMLProps<HTMLDivElement>, 'onClick'>,
+    LayoutProps,
     SpaceProps {
   color?: string
   name: IconNames
@@ -30,15 +33,16 @@ const IconFactory = forwardRef((props: IconProps, ref: Ref<HTMLDivElement>) => {
   )
 })
 
-const Styled = styled.div<Omit<IconProps, 'name'>>`
+const Styled = styled.div.attrs((props: IconProps) => ({
+  height: props.height ? props.height : props.size,
+  width: props.width ? props.width : props.size,
+}))<Omit<IconProps, 'name'>>`
   ${reset}
-  ${space}
   ${color}
-
+  ${space}
+  ${layout}
   align-items: center;
   display: inline-flex;
-  height: ${props => props.size};
-  width: ${props => props.size};
 `
 
 Styled.defaultProps = { size: '1em' }

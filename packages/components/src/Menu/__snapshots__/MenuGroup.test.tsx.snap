@@ -651,8 +651,10 @@ exports[`MenuGroup - menu customization 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  margin-right: 0.5rem;
   color: #9785F2;
+  margin-right: 0.5rem;
+  width: 20px;
+  height: 20px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -661,8 +663,6 @@ exports[`MenuGroup - menu customization 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  height: 20;
-  width: 20;
 }
 
 .c3 {
@@ -772,7 +772,9 @@ exports[`MenuGroup - menu customization 1`] = `
         <div
           className="c4 c5 "
           color="#9785F2"
+          height={20}
           size={20}
+          width={20}
         >
           <svg
             fill="currentColor"
@@ -825,7 +827,9 @@ exports[`MenuGroup - menu customization 1`] = `
         <div
           className="c4 c5 "
           color="#9785F2"
+          height={20}
           size={20}
+          width={20}
         >
           <svg
             fill="currentColor"
@@ -858,7 +862,9 @@ exports[`MenuGroup - menu customization 1`] = `
         <div
           className="c4 c5 "
           color="#9785F2"
+          height={20}
           size={20}
+          width={20}
         >
           <svg
             fill="currentColor"

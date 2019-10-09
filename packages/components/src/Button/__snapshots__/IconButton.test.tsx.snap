@@ -9,6 +9,8 @@ exports[`IconButton accepts color 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  width: 16px;
+  height: 16px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -17,8 +19,6 @@ exports[`IconButton accepts color 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  height: 16;
-  width: 16;
 }
 
 .c1 {
@@ -108,7 +108,9 @@ exports[`IconButton accepts color 1`] = `
   <div
     aria-hidden={true}
     className="c2 "
+    height={16}
     size={16}
+    width={16}
   >
     <svg
       fill="currentColor"
@@ -137,6 +139,8 @@ exports[`IconButton accepts events 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  width: 16px;
+  height: 16px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -145,8 +149,6 @@ exports[`IconButton accepts events 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  height: 16;
-  width: 16;
 }
 
 .c1 {
@@ -237,7 +239,9 @@ exports[`IconButton accepts events 1`] = `
   <div
     aria-hidden={true}
     className="c2 "
+    height={16}
     size={16}
+    width={16}
   >
     <svg
       fill="currentColor"
@@ -266,6 +270,8 @@ exports[`IconButton accepts events 2`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  width: 16px;
+  height: 16px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -274,8 +280,6 @@ exports[`IconButton accepts events 2`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  height: 16;
-  width: 16;
 }
 
 .c1 {
@@ -366,7 +370,9 @@ exports[`IconButton accepts events 2`] = `
   <div
     aria-hidden={true}
     className="c2 "
+    height={16}
     size={16}
+    width={16}
   >
     <svg
       fill="currentColor"
@@ -395,6 +401,8 @@ exports[`IconButton allows for ARIA attributes 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  width: 16px;
+  height: 16px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -403,8 +411,6 @@ exports[`IconButton allows for ARIA attributes 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  height: 16;
-  width: 16;
 }
 
 .c1 {
@@ -495,7 +501,9 @@ exports[`IconButton allows for ARIA attributes 1`] = `
   <div
     aria-hidden={true}
     className="c2 "
+    height={16}
     size={16}
+    width={16}
   >
     <svg
       fill="currentColor"
@@ -524,6 +532,8 @@ exports[`IconButton default 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  width: 16px;
+  height: 16px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -532,8 +542,6 @@ exports[`IconButton default 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  height: 16;
-  width: 16;
 }
 
 .c1 {
@@ -623,7 +631,9 @@ exports[`IconButton default 1`] = `
   <div
     aria-hidden={true}
     className="c2 "
+    height={16}
     size={16}
+    width={16}
   >
     <svg
       fill="currentColor"
@@ -652,6 +662,8 @@ exports[`IconButton outline 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  width: 16px;
+  height: 16px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -660,8 +672,6 @@ exports[`IconButton outline 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  height: 16;
-  width: 16;
 }
 
 .c1 {
@@ -751,7 +761,9 @@ exports[`IconButton outline 1`] = `
   <div
     aria-hidden={true}
     className="c2 "
+    height={16}
     size={16}
+    width={16}
   >
     <svg
       fill="currentColor"
@@ -780,6 +792,8 @@ exports[`IconButton resized 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  width: 36px;
+  height: 36px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -788,8 +802,6 @@ exports[`IconButton resized 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  height: 36;
-  width: 36;
 }
 
 .c1 {
@@ -880,7 +892,9 @@ exports[`IconButton resized 1`] = `
   <div
     aria-hidden={true}
     className="c2 "
+    height={36}
     size={36}
+    width={36}
   >
     <svg
       fill="currentColor"
