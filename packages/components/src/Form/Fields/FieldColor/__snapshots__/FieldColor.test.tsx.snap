@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Default FieldColor 1`] = `
-.c5 {
+.c4 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -12,10 +12,30 @@ exports[`Default FieldColor 1`] = `
   border: 1px solid;
   border-color: #C1C6CC;
   border-radius: 0.25rem 0 0 0.25rem;
-  border-right: 0;
+  border-right: none;
   background-color: #ffffff;
   width: 33px;
   height: 28px;
+  margin-top: auto;
+}
+
+.c5 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border-radius: 0 0.25rem 0.25rem 0;
+  border: solid 1px;
+  border-color: #C1C6CC;
+  height: 28px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  font-size: 0.875rem;
 }
 
 .c2 {
@@ -26,17 +46,6 @@ exports[`Default FieldColor 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-}
-
-.c4 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  margin-top: auto;
 }
 
 .c0 {
@@ -112,16 +121,16 @@ exports[`Default FieldColor 1`] = `
       >
         <div
           className="c4"
-        >
-          <div
-            className="c5"
-            height="28px"
-            onClick={[Function]}
-            width="33px"
-          />
-        </div>
-        <div
-          className="c2"
+          height="28px"
+          onClick={[Function]}
+          width="33px"
+        />
+        <input
+          className="c5"
+          fontSize="small"
+          height="28px"
+          onChange={[Function]}
+          type="text"
         />
       </div>
     </div>
@@ -132,7 +141,7 @@ exports[`Default FieldColor 1`] = `
 exports[`FieldColor renders a color picker in a Popover 1`] = `ShallowWrapper {}`;
 
 exports[`FieldColor with a label 1`] = `
-.c8 {
+.c7 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -143,10 +152,30 @@ exports[`FieldColor with a label 1`] = `
   border: 1px solid;
   border-color: #C1C6CC;
   border-radius: 0.25rem 0 0 0.25rem;
-  border-right: 0;
+  border-right: none;
   background-color: #e1ff83;
   width: 33px;
   height: 28px;
+  margin-top: auto;
+}
+
+.c8 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border-radius: 0 0.25rem 0.25rem 0;
+  border: solid 1px;
+  border-color: #C1C6CC;
+  height: 28px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  font-size: 0.875rem;
 }
 
 .c5 {
@@ -157,17 +186,6 @@ exports[`FieldColor with a label 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-}
-
-.c7 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  margin-top: auto;
 }
 
 .c4 {
@@ -273,16 +291,17 @@ exports[`FieldColor with a label 1`] = `
       >
         <div
           className="c7"
-        >
-          <div
-            className="c8"
-            height="28px"
-            onClick={[Function]}
-            width="33px"
-          />
-        </div>
-        <div
-          className="c5"
+          height="28px"
+          onClick={[Function]}
+          width="33px"
+        />
+        <input
+          className="c8"
+          fontSize="small"
+          height="28px"
+          onChange={[Function]}
+          type="text"
+          value="#e1ff83"
         />
       </div>
     </div>
@@ -291,7 +310,7 @@ exports[`FieldColor with a label 1`] = `
 `;
 
 exports[`FieldColor with a named color and size values 1`] = `
-.c5 {
+.c4 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -302,10 +321,30 @@ exports[`FieldColor with a named color and size values 1`] = `
   border: 1px solid;
   border-color: #C1C6CC;
   border-radius: 0.25rem 0 0 0.25rem;
-  border-right: 0;
+  border-right: none;
   background-color: #0000ff;
   width: 33px;
   height: 28px;
+  margin-top: auto;
+}
+
+.c5 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border-radius: 0 0.25rem 0.25rem 0;
+  border: solid 1px;
+  border-color: #C1C6CC;
+  height: 28px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  font-size: 0.875rem;
 }
 
 .c2 {
@@ -316,17 +355,6 @@ exports[`FieldColor with a named color and size values 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-}
-
-.c4 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  margin-top: auto;
 }
 
 .c0 {
@@ -403,16 +431,17 @@ exports[`FieldColor with a named color and size values 1`] = `
       >
         <div
           className="c4"
-        >
-          <div
-            className="c5"
-            height="28px"
-            onClick={[Function]}
-            width="33px"
-          />
-        </div>
-        <div
-          className="c2"
+          height="28px"
+          onClick={[Function]}
+          width="33px"
+        />
+        <input
+          className="c5"
+          fontSize="small"
+          height="28px"
+          onChange={[Function]}
+          type="text"
+          value="blue"
         />
       </div>
     </div>
@@ -421,7 +450,7 @@ exports[`FieldColor with a named color and size values 1`] = `
 `;
 
 exports[`FieldColor with a validation message 1`] = `
-.c8 {
+.c7 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -432,10 +461,30 @@ exports[`FieldColor with a validation message 1`] = `
   border: 1px solid;
   border-color: #C1C6CC;
   border-radius: 0.25rem 0 0 0.25rem;
-  border-right: 0;
+  border-right: none;
   background-color: #4c6670;
   width: 33px;
   height: 28px;
+  margin-top: auto;
+}
+
+.c8 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border-radius: 0 0.25rem 0.25rem 0;
+  border: solid 1px;
+  border-color: #C1C6CC;
+  height: 28px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  font-size: 0.875rem;
 }
 
 .c5 {
@@ -446,17 +495,6 @@ exports[`FieldColor with a validation message 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-}
-
-.c7 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  margin-top: auto;
 }
 
 .c4 {
@@ -576,16 +614,17 @@ exports[`FieldColor with a validation message 1`] = `
       >
         <div
           className="c7"
-        >
-          <div
-            className="c8"
-            height="28px"
-            onClick={[Function]}
-            width="33px"
-          />
-        </div>
-        <div
-          className="c5"
+          height="28px"
+          onClick={[Function]}
+          width="33px"
+        />
+        <input
+          className="c8"
+          fontSize="small"
+          height="28px"
+          onChange={[Function]}
+          type="text"
+          value="#4c6670"
         />
       </div>
     </div>
@@ -601,7 +640,7 @@ exports[`FieldColor with a validation message 1`] = `
 `;
 
 exports[`FieldColor with hidden input 1`] = `
-.c5 {
+.c4 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -611,11 +650,11 @@ exports[`FieldColor with hidden input 1`] = `
   vertical-align: baseline;
   border: 1px solid;
   border-color: #C1C6CC;
-  border-radius: 0.25rem 0 0 0.25rem;
-  border-right: 0;
+  border-radius: 0.25rem;
   background-color: #ffffff;
   width: 33px;
   height: 28px;
+  margin-top: auto;
 }
 
 .c2 {
@@ -626,36 +665,6 @@ exports[`FieldColor with hidden input 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-}
-
-.c4 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  margin-top: auto;
-}
-
-.c6 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  border-radius: 0 0.25rem 0.25rem 0;
-  border: solid 1px;
-  border-color: #C1C6CC;
-  height: 28px;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  padding-top: 0rem;
-  padding-bottom: 0rem;
-  font-size: 0.875rem;
 }
 
 .c0 {
@@ -731,25 +740,10 @@ exports[`FieldColor with hidden input 1`] = `
       >
         <div
           className="c4"
-        >
-          <div
-            className="c5"
-            height="28px"
-            onClick={[Function]}
-            width="33px"
-          />
-        </div>
-        <div
-          className="c2"
-        >
-          <input
-            className="c6"
-            fontSize="small"
-            height="28px"
-            onChange={[Function]}
-            type="text"
-          />
-        </div>
+          height="28px"
+          onClick={[Function]}
+          width="33px"
+        />
       </div>
     </div>
   </div>

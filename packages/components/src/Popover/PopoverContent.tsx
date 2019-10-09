@@ -1,9 +1,20 @@
 import styled from 'styled-components'
-import { reset, space, SpaceProps } from '@looker/design-tokens'
+import {
+  FlexboxProps,
+  flexbox,
+  reset,
+  space,
+  SpaceProps,
+} from '@looker/design-tokens'
+import { layout, LayoutProps } from 'styled-system'
 
-export const PopoverContent = styled.div<SpaceProps>`
+interface PopoverContent extends SpaceProps, LayoutProps, FlexboxProps {}
+
+export const PopoverContent = styled.div<PopoverContent>`
   ${reset}
   ${space}
+  ${layout}
+  ${flexbox}
 `
 
 PopoverContent.defaultProps = { p: 'small' }

@@ -102,5 +102,6 @@ exports[`LuminositySlider default styling 1`] = `
 <input
   className="c0"
   type="range"
+  width="100%"
 />
 `;

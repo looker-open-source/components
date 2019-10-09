@@ -4,7 +4,7 @@ import { Slider } from '../../../Inputs/Slider'
 export const LuminositySlider = styled(Slider)`
   appearance: none;
   background: transparent;
-  width: 100%;
+  width: ${props => props.width};
 
   :focus {
     outline: none;
@@ -90,3 +90,5 @@ export const LuminositySlider = styled(Slider)`
     background-image: linear-gradient(to right, #000, #fff);
   }
 `
+
+LuminositySlider.defaultProps = { width: '100%' }

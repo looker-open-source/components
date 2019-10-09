@@ -1,8 +1,7 @@
 import { radii } from '@looker/design-tokens'
 import React from 'react'
 import omit from 'lodash/omit'
-import { Flex, FlexItem } from '../../../Layout'
-import { Popover } from '../../../Popover'
+import { Popover, PopoverContent } from '../../../Popover'
 import {
   CustomizableInputTextAttributes,
   InputText,
@@ -92,7 +91,7 @@ class InternalFieldColor extends React.Component<
       radii[CustomizableInputTextAttributes.borderRadius || 'medium']
 
     const content = (
-      <Flex flexDirection="column">
+      <PopoverContent display="flex" flexDirection="column">
         <ColorWheel
           size={cwSize}
           hue={hsvColor.h}
@@ -108,7 +107,7 @@ class InternalFieldColor extends React.Component<
           width={cwSize}
           onChange={this.proxyHandleSliderChange.bind(this, hsvColor)}
         />
-      </Flex>
+      </PopoverContent>
     )
 
     return (
@@ -117,39 +116,40 @@ class InternalFieldColor extends React.Component<
         alignValidationMessage={alignValidationMessage || 'bottom'}
       >
         <FormControl alignLabel="left">
-          <FlexItem mt="auto">
-            <Popover content={content}>
-              {(onClick, ref) => (
-                <Swatch
-                  ref={ref}
-                  color={ColorFormatUtils.hsv2hex(hsvColor)}
-                  borderRadius={`${borderRadius} 0 0 ${borderRadius}`}
-                  borderRight={0}
-                  width="33px"
-                  height="28px"
-                  onClick={onClick}
-                />
-              )}
-            </Popover>
-          </FlexItem>
-          <FlexItem>
-            {hideInput && (
-              <InputText
-                {...omit(this.props, [
-                  'alignLabel',
-                  'alignValidationMessage',
-                  'hideInput',
-                  'label',
-                  'validationMessage',
-                  'cwSize',
-                  'open',
-                ])}
-                borderRadius={`0 ${borderRadius} ${borderRadius} 0`}
-                validationType={validationMessage && validationMessage.type}
-                onChange={this.handleInputTextChange}
+          <Popover content={content}>
+            {(onClick, ref) => (
+              <Swatch
+                mt="auto"
+                ref={ref}
+                color={ColorFormatUtils.hsv2hex(hsvColor)}
+                borderRadius={
+                  hideInput
+                    ? borderRadius
+                    : `${borderRadius} 0 0 ${borderRadius}`
+                }
+                borderRight={!hideInput ? 'none' : undefined}
+                width="33px"
+                height="28px"
+                onClick={onClick}
               />
             )}
-          </FlexItem>
+          </Popover>
+          {!hideInput && (
+            <InputText
+              {...omit(this.props, [
+                'alignLabel',
+                'alignValidationMessage',
+                'hideInput',
+                'label',
+                'validationMessage',
+                'cwSize',
+                'open',
+              ])}
+              borderRadius={`0 ${borderRadius} ${borderRadius} 0`}
+              validationType={validationMessage && validationMessage.type}
+              onChange={this.handleInputTextChange}
+            />
+          )}
         </FormControl>
       </Field>
     )
