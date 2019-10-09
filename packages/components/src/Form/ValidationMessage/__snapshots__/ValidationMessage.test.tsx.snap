@@ -9,16 +9,16 @@ exports[`An error message 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
   color: #990F14;
-  font-size: 0.75rem;
   margin-right: 0.5rem;
   margin-top: 0.5rem;
+  font-size: 0.75rem;
 }
 
 <div
   className="c0"
+  fontSize="xsmall"
+  type="error"
 >
   Error!
 </div>

@@ -4,6 +4,7 @@ import {
   CustomizableAttributes,
   layout,
   LayoutProps,
+  reset,
   space,
   SpaceProps,
   typography,
@@ -38,6 +39,7 @@ const ValidationMessageBase = styled.div.attrs(
       props.fontSize || CustomizableValidationMessageAttributes.fontSize,
   })
 )<ValidationMessageProps>`
+  ${reset}
   ${props =>
     props.type === 'error'
       ? `color: ${props.theme.colors.palette.red700};`
