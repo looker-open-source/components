@@ -2,14 +2,22 @@
 
 exports[`Fieldset with left aligned legend 1`] = `
 .c6 {
-  border: solid 1px #C1C6CC;
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border: solid 1px;
+  border-color: #C1C6CC;
   border-radius: 0.25rem;
   height: 28px;
-  font-size: 0.875rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
+  font-size: 0.875rem;
 }
 
 .c2 {

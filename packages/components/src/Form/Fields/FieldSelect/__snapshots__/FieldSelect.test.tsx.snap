@@ -9,8 +9,8 @@ exports[`A FieldSelect 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  margin-right: 0.5rem;
   color: #262D33;
+  margin-right: 0.5rem;
   font-weight: 600;
   font-size: 0.875rem;
 }
@@ -24,7 +24,7 @@ exports[`A FieldSelect 1`] = `
   padding: 0;
   vertical-align: baseline;
   background-color: #FFFFFF;
-  border: solid 1px #C1C6CC;
+  border: solid 1px;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -32,6 +32,7 @@ exports[`A FieldSelect 1`] = `
   background-repeat: no-repeat,repeat;
   background-position: right .25rem center,0 0;
   background-size: 1rem,100%;
+  border-color: #C1C6CC;
   border-radius: 0.25rem;
   height: 28px;
   font-size: 0.875rem;
@@ -117,8 +118,8 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  margin-right: 0.5rem;
   color: #262D33;
+  margin-right: 0.5rem;
   font-weight: 600;
   font-size: 0.875rem;
 }
@@ -132,7 +133,7 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   padding: 0;
   vertical-align: baseline;
   background-color: #FFF2F4;
-  border: solid 1px #C1C6CC;
+  border: solid 1px;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -140,6 +141,7 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   background-repeat: no-repeat,repeat;
   background-position: right .25rem center,0 0;
   background-size: 1rem,100%;
+  border-color: #C1C6CC;
   border-radius: 0.25rem;
   height: 28px;
   font-size: 0.875rem;
@@ -265,8 +267,8 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  margin-right: 0.5rem;
   color: #262D33;
+  margin-right: 0.5rem;
   font-weight: 600;
   font-size: 0.875rem;
 }
@@ -280,7 +282,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   padding: 0;
   vertical-align: baseline;
   background-color: #FFF2F4;
-  border: solid 1px #C1C6CC;
+  border: solid 1px;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -288,6 +290,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   background-repeat: no-repeat,repeat;
   background-position: right .25rem center,0 0;
   background-size: 1rem,100%;
+  border-color: #C1C6CC;
   border-radius: 0.25rem;
   height: 28px;
   font-size: 0.875rem;
@@ -410,8 +413,8 @@ exports[`A required FieldSelect 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  margin-right: 0.5rem;
   color: #262D33;
+  margin-right: 0.5rem;
   font-weight: 600;
   font-size: 0.875rem;
 }
@@ -425,7 +428,7 @@ exports[`A required FieldSelect 1`] = `
   padding: 0;
   vertical-align: baseline;
   background-color: #FFFFFF;
-  border: solid 1px #C1C6CC;
+  border: solid 1px;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -433,6 +436,7 @@ exports[`A required FieldSelect 1`] = `
   background-repeat: no-repeat,repeat;
   background-position: right .25rem center,0 0;
   background-size: 1rem,100%;
+  border-color: #C1C6CC;
   border-radius: 0.25rem;
   height: 28px;
   font-size: 0.875rem;
@@ -530,8 +534,8 @@ exports[`FieldSelect supports labelWeight 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  margin-right: 0.5rem;
   color: #262D33;
+  margin-right: 0.5rem;
   font-weight: 400;
   font-size: 0.875rem;
 }
@@ -545,7 +549,7 @@ exports[`FieldSelect supports labelWeight 1`] = `
   padding: 0;
   vertical-align: baseline;
   background-color: #FFFFFF;
-  border: solid 1px #C1C6CC;
+  border: solid 1px;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -553,6 +557,7 @@ exports[`FieldSelect supports labelWeight 1`] = `
   background-repeat: no-repeat,repeat;
   background-position: right .25rem center,0 0;
   background-size: 1rem,100%;
+  border-color: #C1C6CC;
   border-radius: 0.25rem;
   height: 28px;
   font-size: 0.875rem;

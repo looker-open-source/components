@@ -9,8 +9,8 @@ exports[`A FieldCheckbox 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  margin-right: 0.5rem;
   color: #262D33;
+  margin-right: 0.5rem;
   font-weight: 600;
   font-size: 0.875rem;
 }
@@ -100,8 +100,8 @@ exports[`A FieldCheckbox with checked value 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  margin-right: 0.5rem;
   color: #262D33;
+  margin-right: 0.5rem;
   font-weight: 600;
   font-size: 0.875rem;
 }
@@ -192,8 +192,8 @@ exports[`A required FieldCheckbox 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  margin-right: 0.5rem;
   color: #262D33;
+  margin-right: 0.5rem;
   font-weight: 600;
   font-size: 0.875rem;
 }

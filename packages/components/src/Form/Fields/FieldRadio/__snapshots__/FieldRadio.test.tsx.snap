@@ -77,8 +77,8 @@ exports[`A FieldRadio 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  margin-right: 0.5rem;
   color: #262D33;
+  margin-right: 0.5rem;
   font-weight: 600;
   font-size: 0.875rem;
 }
@@ -196,8 +196,8 @@ exports[`A FieldRadio checked 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  margin-right: 0.5rem;
   color: #262D33;
+  margin-right: 0.5rem;
   font-weight: 600;
   font-size: 0.875rem;
 }
@@ -295,8 +295,8 @@ exports[`A FieldRadio with label aligned left 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  margin-right: 0.5rem;
   color: #262D33;
+  margin-right: 0.5rem;
   font-weight: 600;
   font-size: 0.875rem;
 }
