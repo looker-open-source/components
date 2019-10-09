@@ -1,10 +1,9 @@
 import { List } from '@looker/components'
 import styled from 'styled-components'
 
-const Ul = styled(List)`
-  list-style-type: disc;
-  line-height: ${({ theme }) => theme.lineHeights.medium};
-  margin-bottom: ${({ theme }) => theme.lineHeights.medium};
-  margin-left: ${({ theme }) => theme.space.xxlarge};
-`
-export default Ul
+export default styled(List).attrs({
+  type: 'bullet',
+  lineHeight: 'medium',
+  mb: 'medium',
+  ml: 'xxlarge',
+})``

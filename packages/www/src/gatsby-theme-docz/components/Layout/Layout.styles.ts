@@ -17,8 +17,6 @@ export const TopBar = styled.header`
 
 export const LayoutSidebar = styled.nav`
   grid-area: sidebar;
-  background: ${props => props.theme.colors.palette.charcoal100};
-  padding: ${props => props.theme.space.small};
   border-right: 1px solid ${props => props.theme.colors.palette.charcoal200};
   overflow: auto;
 `

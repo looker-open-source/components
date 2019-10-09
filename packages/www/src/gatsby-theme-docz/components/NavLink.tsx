@@ -32,7 +32,7 @@ export const NavLink: React.FC<NavLinkProps> = ({ item }) => {
   return (
     <React.Fragment>
       <Link to={to}>
-        <MenuItem itemRole="button" current={current}>
+        <MenuItem itemRole="button" current={isCurrent}>
           {item.name}
         </MenuItem>
       </Link>
@@ -42,6 +42,7 @@ export const NavLink: React.FC<NavLinkProps> = ({ item }) => {
           <Link
             key={heading.slug}
             to={`${to}#${heading.slug}`}
+            style={{ display: 'block' }}
             className={currentHash === `#${heading.slug}` ? 'active' : ''}
           >
             {heading.value}

@@ -1,9 +1,7 @@
 import * as headings from './Headings'
 import Code from './Code'
 import Layout from './Layout'
-import Playground from './Playground'
 import Pre from './Pre'
-import Props from './Props'
 import Paragraph from './Paragraph'
 import Ul from './Ul'
 import Ol from './Ol'
@@ -16,10 +14,8 @@ export default {
   a: Link,
   p: Paragraph,
   inlineCode: Code,
-  playground: Playground,
   pre: Pre,
   layout: Layout,
-  props: Props,
   ul: Ul,
   ol: Ol,
   li: Li,

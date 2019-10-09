@@ -6,12 +6,7 @@ menu: Components
 
 import { Playground } from 'docz'
 import { Box, Button, List, ListItem } from '@looker/components'
-import {
-  FancyIconBtn,
-  PunkRockButton,
-  RoundBtn,
-  ThemingButton,
-} from '../../components/Button'
+import { FancyIconBtn, RoundBtn, ThemingButton } from '../../components/Button'
 import { ComponentDetail } from '../../components'
 
 # Button
@@ -203,25 +198,6 @@ const RoundButton = styled(Button)`
   border-radius: 2rem;
 `
 <RoundButton>`Hello RoundButton`</RoundButton>
-```
-
-## Overriding A Color
-
-Buttons can be passed a SemanticColor object like so:
-
-<PunkRockButton />
-
-```js
-  const punkRockColor = {
-    main: 'DeepPink',
-    light: 'HotPink',
-    lighter: 'LightPink',
-    dark: 'PaleVioletRed',
-    darker: 'MediumVioletRed',
-    borderColor: 'MediumVioletRed',
-    text: 'White',
-  }
-  <Button color={punkRockColor}>`I'm a Punk Rock Button`</Button>
 ```
 
 ## Theming Button

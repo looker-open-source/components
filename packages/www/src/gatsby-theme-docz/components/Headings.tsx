@@ -2,11 +2,11 @@ import { Heading } from '@looker/components'
 import React from 'react'
 import styled from 'styled-components'
 
-const StyledHeading = styled(Heading)`
-  margin-bottom: ${({ theme }) => theme.space.medium};
-  line-height: ${({ theme }) => theme.lineHeights.xlarge};
-  font-weight: normal;
-`
+const StyledHeading = styled(Heading).attrs({
+  mb: 'medium',
+  lineHeight: 'xlarge',
+  fontWeight: 'normal',
+})``
 
 export const h1: React.FC = ({ children }) => (
   <StyledHeading as="h1" fontSize="xxlarge" fontWeight="light">
