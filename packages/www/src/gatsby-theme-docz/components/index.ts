@@ -1,6 +1,6 @@
 import * as headings from './Headings'
 import Code from './Code'
-import Layout from './Layout/Layout'
+import Layout from './Layout'
 import Playground from './Playground'
 import Pre from './Pre'
 import Props from './Props'

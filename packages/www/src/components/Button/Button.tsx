@@ -10,20 +10,6 @@ export const RoundBtn = () => (
   <RoundBtnStyled>Hello Round Button</RoundBtnStyled>
 )
 
-const punkRockColor = {
-  main: 'DeepPink',
-  light: 'HotPink',
-  lighter: 'LightPink',
-  dark: 'PaleVioletRed',
-  darker: 'MediumVioletRed',
-  borderColor: 'MediumVioletRed',
-  text: 'White',
-}
-
-export const PunkRockButton = () => (
-  <Button color={punkRockColor}>I am a Punk Rock Button</Button>
-)
-
 const mildTheme = (theme: any) => {
   const primary = Object.assign({}, theme.colors.semanticColors.primary, {
     main: '#2db264',

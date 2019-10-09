@@ -10,7 +10,7 @@ import {
   TableHeaderCell,
   TableRow,
 } from '@looker/components'
-import { BreakpointTableWrapper } from './BreakpointTable.styles.tsx'
+import { BreakpointTableWrapper } from './BreakpointTable.styles'
 
 const breakpointLabels = [
   'Breakpoint',

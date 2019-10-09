@@ -10,7 +10,7 @@ import {
   TableRow,
   Text,
 } from '@looker/components'
-import { FontWeights, RampSizes } from '@looker/design-tokens'
+import { FontWeights, FontSizes } from '@looker/design-tokens'
 
 const specimen =
   'Open Sans is the typographic base for the tone and content of Lens’, Lookers design system'
@@ -67,7 +67,7 @@ export function FontWeightDemo() {
 }
 
 const specimen2 = 'Lens is great'
-const typeRamp: Array<{ size: RampSizes; px: string; lh: string }> = [
+const typeRamp: Array<{ size: FontSizes; px: string; lh: string }> = [
   { size: 'xxxxlarge', px: '46px', lh: '64px' },
   { size: 'xxxlarge', px: '36px', lh: '52px' },
   { size: 'xxlarge', px: '25px', lh: '40px' },

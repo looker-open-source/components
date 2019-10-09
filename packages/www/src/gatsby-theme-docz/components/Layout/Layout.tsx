@@ -9,7 +9,7 @@ import {
   TopBar,
 } from './Layout.styles'
 
-const Layout: React.FC = ({ children }) => {
+export const Layout: React.FC = ({ children }) => {
   const [open] = useState(true)
 
   return (

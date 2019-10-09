@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { fontSizes, palette, radii } from '@looker/design-tokens'
 
 export const IconGrid = styled.div`
   display: grid;
@@ -10,14 +9,14 @@ export const IconGrid = styled.div`
 
 export const IconGridItem = styled.div`
   text-align: center;
-  font-size: ${fontSizes.small};
+  font-size: ${props => props.theme.fontSizes.small};
   cursor: pointer;
-  border: 1px solid ${palette.charcoal100};
+  border: 1px solid ${props => props.theme.colors.palette.charcoal100};
   padding: 1rem;
-  border-radius: ${radii.medium};
-  color: ${palette.charcoal600};
+  border-radius: ${props => props.theme.radii.medium};
+  color: ${props => props.theme.colors.palette.charcoal600};
   &:hover {
-    border-color: ${palette.blue300};
-    color: ${palette.blue600};
+    border-color: ${props => props.theme.colors.palette.blue300};
+    color: ${props => props.theme.colors.palette.blue600};
   }
 `

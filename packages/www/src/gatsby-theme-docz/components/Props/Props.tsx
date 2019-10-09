@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { FC, useState } from 'react'
 
 const getDefaultValue = ({ defaultValue, type, flowType }: any) => {
   const propType = flowType || type
@@ -15,13 +15,14 @@ const getDefaultValue = ({ defaultValue, type, flowType }: any) => {
   return defaultValue.value
 }
 
+// @TODO - Actually type this...
 interface PropProps {
   propName: string
   prop: any
   getPropType: any
 }
 
-const Prop: React.FC<PropProps> = ({ propName, prop, getPropType }) => {
+const Prop: FC<PropProps> = ({ propName, prop, getPropType }) => {
   const [showing, setShowing] = useState(false)
   if (!prop.type && !prop.flowType) return null
 
@@ -52,7 +53,13 @@ const Prop: React.FC<PropProps> = ({ propName, prop, getPropType }) => {
   )
 }
 
-const Props = ({ props, getPropType }) => {
+// @TODO - Actually type this...
+interface PropsProps {
+  props: any
+  getPropType: any
+}
+
+const Props: FC<PropsProps> = ({ props, getPropType }) => {
   const entries = Object.entries(props)
 
   return (
