@@ -9,16 +9,17 @@ exports[`A Label 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
   color: #262D33;
+  margin-right: 0.5rem;
   font-size: 0.875rem;
   font-weight: 600;
-  margin-right: 0.5rem;
 }
 
 <label
   className="c0"
+  color="palette.charcoal800"
+  fontSize="small"
+  fontWeight="semiBold"
   htmlFor="party"
 >
   🎉
@@ -34,16 +35,17 @@ exports[`Label supports fontWeight 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  -webkit-animation: none;
-  animation: none;
   color: #262D33;
-  font-size: 0.875rem;
-  font-weight: 400;
   margin-right: 0.5rem;
+  font-weight: 400;
+  font-size: 0.875rem;
 }
 
 <label
   className="c0"
+  color="palette.charcoal800"
+  fontSize="small"
+  fontWeight="normal"
   htmlFor="party"
 >
   test
