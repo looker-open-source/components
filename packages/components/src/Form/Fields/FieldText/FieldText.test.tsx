@@ -1,13 +1,9 @@
-import { mount } from 'enzyme'
 import React from 'react'
-import { ThemeProvider } from 'styled-components'
 import {
   createWithTheme,
   mountWithTheme,
   assertSnapshot,
 } from '@looker/components-test-utils'
-
-import { theme } from '@looker/design-tokens'
 import { Label } from '../../Label/Label'
 import { FieldText } from './FieldText'
 
@@ -27,16 +23,14 @@ test('FieldText supports labelWeight', () => {
 })
 
 test('Should accept a value', () => {
-  const wrapper = mount(
-    <ThemeProvider theme={theme}>
-      <FieldText
-        label="👍"
-        name="thumbsUp"
-        id="thumbs-up"
-        value="foobar"
-        readOnly
-      />
-    </ThemeProvider>
+  const wrapper = mountWithTheme(
+    <FieldText
+      label="👍"
+      name="thumbsUp"
+      id="thumbs-up"
+      value="foobar"
+      readOnly
+    />
   )
 
   const input = wrapper.find('input')
@@ -47,16 +41,14 @@ test('Should trigger onChange handler', () => {
   let counter = 0
   const handleChange = () => counter++
 
-  const wrapper = mount(
-    <ThemeProvider theme={theme}>
-      <FieldText
-        label="👍"
-        name="thumbsUp"
-        id="thumbs-up"
-        value="foobar"
-        onChange={handleChange}
-      />
-    </ThemeProvider>
+  const wrapper = mountWithTheme(
+    <FieldText
+      label="👍"
+      name="thumbsUp"
+      id="thumbs-up"
+      value="foobar"
+      onChange={handleChange}
+    />
   )
 
   wrapper.find('input').simulate('change', { target: { value: '' } })
