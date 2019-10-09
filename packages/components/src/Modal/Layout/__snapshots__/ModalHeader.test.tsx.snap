@@ -141,9 +141,7 @@ exports[`ModalHeader 1`] = `
   >
     <div
       className="c3 "
-      height="1.25rem"
       size="1.25rem"
-      width="1.25rem"
     >
       <svg
         fill="currentColor"

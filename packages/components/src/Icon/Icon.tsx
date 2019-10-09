@@ -18,7 +18,6 @@ export interface IconProps
     SpaceProps {
   color?: string
   name: IconNames
-  size?: number | string
 }
 
 export { IconNames }
@@ -33,18 +32,18 @@ const IconFactory = forwardRef((props: IconProps, ref: Ref<HTMLDivElement>) => {
   )
 })
 
-const Styled = styled.div.attrs((props: IconProps) => ({
-  height: props.height ? props.height : props.size,
-  width: props.width ? props.width : props.size,
-}))<Omit<IconProps, 'name'>>`
+const Styled = styled.div<Omit<IconProps, 'name'>>`
   ${reset}
   ${color}
   ${space}
   ${layout}
+
+  width: ${props => props.width};
+  height: ${props => props.height};
   align-items: center;
   display: inline-flex;
 `
 
-Styled.defaultProps = { size: '1em' }
+Styled.defaultProps = { size: '1rem' }
 
 export const Icon = styled(IconFactory)``

@@ -1,12 +1,10 @@
-import { color } from '@looker/design-tokens'
 import styled from 'styled-components'
-import { background, BackgroundProps, BoxShadowProps } from 'styled-system'
+import { color, BackgroundColorProps, BoxShadowProps } from 'styled-system'
 
-interface MenuGroupLabelProps extends BackgroundProps, BoxShadowProps {}
+interface MenuGroupLabelProps extends BackgroundColorProps, BoxShadowProps {}
 
 export const MenuGroupLabel = styled.div<MenuGroupLabelProps>`
   ${color}
-  ${background}
   box-shadow: ${props => props.boxShadow};
   position: sticky;
   top: -1px;
@@ -14,5 +12,5 @@ export const MenuGroupLabel = styled.div<MenuGroupLabelProps>`
 `
 
 MenuGroupLabel.defaultProps = {
-  background: 'palette.white',
+  backgroundColor: 'palette.white',
 }

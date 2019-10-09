@@ -1,13 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
 import {
+  color,
   palette,
   CompatibleHTMLProps,
   reset,
   SpaceProps,
   space,
 } from '@looker/design-tokens'
-import { background, BackgroundProps } from 'styled-system'
+import { BackgroundColorProps } from 'styled-system'
 import { Heading, HeadingProps } from '../Text/Heading'
 import { List } from '../List'
 import { MenuContext } from './MenuContext'
@@ -17,7 +18,7 @@ import { MenuItemCustomization } from './MenuItem'
 
 export interface MenuGroupProps
   extends Omit<CompatibleHTMLProps<HTMLElement>, 'label'>,
-    BackgroundProps,
+    BackgroundColorProps,
     SpaceProps {
   label?: React.ReactNode
   labelProps?: HeadingProps
@@ -42,7 +43,7 @@ const MenuGroupInternal: React.FC<MenuGroupProps> = ({
 
   const labelComponent = label && (
     <MenuGroupLabel
-      background={customizations && customizations.bg}
+      backgroundColor={customizations && customizations.bg}
       boxShadow={
         useElementVisibility(labelShimRef)
           ? 'none'
@@ -79,7 +80,7 @@ const MenuGroupInternal: React.FC<MenuGroupProps> = ({
     >
       <Style
         {...boxProps}
-        background={customizations && customizations.bg}
+        backgroundColor={customizations && customizations.bg}
         py="small"
       >
         {labelComponent}
@@ -92,9 +93,7 @@ const MenuGroupInternal: React.FC<MenuGroupProps> = ({
 const Style = styled.li<MenuGroupProps>`
   ${reset}
   ${space}
-  ${background}
+  ${color}
 `
-
-Style.defaultProps = { background: 'palette.white ' }
 
 export const MenuGroup = styled(MenuGroupInternal)``

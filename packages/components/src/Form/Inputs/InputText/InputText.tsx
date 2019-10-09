@@ -37,6 +37,8 @@ interface InternalInputTextProps extends InputTextProps, TypographyProps {}
 
 export const InputText = styled.input.attrs((props: InputTextProps) => ({
   background: props.validationType === 'error' && 'palette.red000',
+  px: props.px || props.p || CustomizableInputTextAttributes.px,
+  py: props.py || props.p || CustomizableInputTextAttributes.py,
 }))<InternalInputTextProps>`
   ${reset}
   ${border}
@@ -53,7 +55,5 @@ InputText.defaultProps = {
   borderRadius: CustomizableInputTextAttributes.borderRadius,
   fontSize: CustomizableInputTextAttributes.fontSize,
   height: CustomizableInputTextAttributes.height,
-  px: CustomizableInputTextAttributes.px,
-  py: CustomizableInputTextAttributes.py,
   type: 'text',
 }

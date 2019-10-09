@@ -24,8 +24,7 @@ export const MenuSearch: FC<MenuSearchProps> = ({ menuRef, ...props }) => {
         <InputSearch
           borderRadius={0}
           border="none"
-          borderBottom="1px solid"
-          borderColor={palette.charcoal200}
+          borderBottom={`1px solid ${palette.charcoal200}`}
           width="100%"
           p="large"
           height="auto"

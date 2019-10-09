@@ -1,6 +1,12 @@
 import React, { forwardRef, Ref, useState } from 'react'
 import styled from 'styled-components'
-import { border, BorderProps, layout, LayoutProps } from '@looker/design-tokens'
+import {
+  border,
+  BorderProps,
+  layout,
+  LayoutProps,
+  reset,
+} from '@looker/design-tokens'
 import {
   CustomizableInputTextAttributes,
   InputText,
@@ -27,17 +33,19 @@ export interface InputSearchProps
 }
 
 const InputSearchLayout = styled.div<InputSearchLayoutProps>`
-  &:focus-within {
-    border: 1px solid rgba(0, 0, 0, 0);
-    outline: 5px auto -webkit-focus-ring-color;
-  }
-  position: relative;
-  display: flex;
-  align-items: center;
-  background-color: ${props => props.theme.colors.palette.white};
-
+  ${reset}
   ${border}
   ${layout}
+
+  align-items: center;
+  display: flex;
+  background: ${props => props.theme.colors.palette.white};
+  position: relative;
+
+  &:focus-within {
+    border-color: transparent;
+    outline: 5px auto -webkit-focus-ring-color;
+  }
 
   ${InputText} {
     border: none;
@@ -53,9 +61,15 @@ const InputSearchLayout = styled.div<InputSearchLayoutProps>`
   }
 `
 
+InputSearchLayout.defaultProps = {
+  border: '1px solid',
+  borderColor: 'palette.charcoal300',
+  borderRadius: CustomizableInputTextAttributes.borderRadius,
+}
+
 const InputSearchComponent = forwardRef(
-  (
-    {
+  (props: InputSearchProps, ref: Ref<HTMLInputElement>) => {
+    const {
       hideControls = false,
       summary,
       onChange,
@@ -68,10 +82,8 @@ const InputSearchComponent = forwardRef(
       borderRight,
       borderRadius,
       borderColor,
-      ...props
-    }: InputSearchProps,
-    ref: Ref<HTMLInputElement>
-  ) => {
+      ...inputProps
+    } = props
     const [inputValue, setValue] = useState(value)
 
     const onClear = () => setValue('')
@@ -87,11 +99,9 @@ const InputSearchComponent = forwardRef(
 
     return (
       <InputSearchLayout
-        border={border || 'solid 1px'}
-        borderColor={borderColor || 'palette.charcoal300'}
-        borderRadius={
-          borderRadius || CustomizableInputTextAttributes.borderRadius
-        }
+        border={border}
+        borderColor={borderColor}
+        borderRadius={borderRadius}
         borderTop={borderTop}
         borderBottom={borderBottom}
         borderLeft={borderLeft}
@@ -105,7 +115,7 @@ const InputSearchComponent = forwardRef(
           focusStyle={{ outline: 'none' }}
           border="none"
           width="100%"
-          {...props}
+          {...inputProps}
           ref={ref}
         />
         {controls}

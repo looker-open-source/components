@@ -108,9 +108,7 @@ exports[`IconButton accepts color 1`] = `
   <div
     aria-hidden={true}
     className="c2 "
-    height={16}
     size={16}
-    width={16}
   >
     <svg
       fill="currentColor"
@@ -239,9 +237,7 @@ exports[`IconButton accepts events 1`] = `
   <div
     aria-hidden={true}
     className="c2 "
-    height={16}
     size={16}
-    width={16}
   >
     <svg
       fill="currentColor"
@@ -370,9 +366,7 @@ exports[`IconButton accepts events 2`] = `
   <div
     aria-hidden={true}
     className="c2 "
-    height={16}
     size={16}
-    width={16}
   >
     <svg
       fill="currentColor"
@@ -501,9 +495,7 @@ exports[`IconButton allows for ARIA attributes 1`] = `
   <div
     aria-hidden={true}
     className="c2 "
-    height={16}
     size={16}
-    width={16}
   >
     <svg
       fill="currentColor"
@@ -631,9 +623,7 @@ exports[`IconButton default 1`] = `
   <div
     aria-hidden={true}
     className="c2 "
-    height={16}
     size={16}
-    width={16}
   >
     <svg
       fill="currentColor"
@@ -761,9 +751,7 @@ exports[`IconButton outline 1`] = `
   <div
     aria-hidden={true}
     className="c2 "
-    height={16}
     size={16}
-    width={16}
   >
     <svg
       fill="currentColor"
@@ -892,9 +880,7 @@ exports[`IconButton resized 1`] = `
   <div
     aria-hidden={true}
     className="c2 "
-    height={36}
     size={36}
-    width={36}
   >
     <svg
       fill="currentColor"

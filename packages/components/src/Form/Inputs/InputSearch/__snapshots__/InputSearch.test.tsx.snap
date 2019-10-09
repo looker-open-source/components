@@ -26,24 +26,31 @@ exports[`InputSearch default 1`] = `
 }
 
 .c0 {
-  position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border: 1px solid;
+  border-color: #C1C6CC;
+  border-radius: 0.25rem;
+  width: 100%;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  background-color: #FFFFFF;
-  border: solid 1px;
-  border-color: #C1C6CC;
-  border-radius: 0.25rem;
-  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background: #FFFFFF;
+  position: relative;
 }
 
 .c0:focus-within {
-  border: 1px solid rgba(0,0,0,0);
+  border-color: transparent;
   outline: 5px auto -webkit-focus-ring-color;
 }
 
