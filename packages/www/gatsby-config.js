@@ -1,11 +1,11 @@
 module.exports = {
   siteMetadata: {
-    title: `Looker Components`,
+    title: 'Looker Components',
     description: '',
   },
   plugins: [
     {
-      resolve: `gatsby-theme-docz`,
+      resolve: 'gatsby-theme-docz',
       options: {
         title: 'Looker Components Styleguide',
         typescript: true,
@@ -41,7 +41,7 @@ module.exports = {
       resolve: `gatsby-plugin-typescript`,
       options: {
         isTSX: true, // defaults to false
-        jsxPragma: `jsx`, // defaults to "React"
+        jsxPragma: 'jsx', // defaults to "React"
         allExtensions: true, // defaults to false
       },
     },

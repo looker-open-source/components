@@ -1,5 +1,6 @@
 import Highlight, { defaultProps, Language } from 'prism-react-renderer'
 import React from 'react'
+import materialTheme from '../../prism-themes/looker-material'
 import { PreWrapper } from './Pre.styles'
 
 interface CodeProps {
@@ -22,8 +23,9 @@ const Pre: React.FC<CodeProps> = ({
   return (
     <Highlight
       {...defaultProps}
-      code={childContent}
+      code={childContent.trim()}
       language={language as Language}
+      theme={materialTheme}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <PreWrapper
