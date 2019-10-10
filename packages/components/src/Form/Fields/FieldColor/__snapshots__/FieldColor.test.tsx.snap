@@ -19,6 +19,16 @@ exports[`Default FieldColor 1`] = `
   margin-top: auto;
 }
 
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
 .c5 {
   border: 0;
   box-sizing: border-box;
@@ -36,16 +46,6 @@ exports[`Default FieldColor 1`] = `
   padding-top: 0rem;
   padding-bottom: 0rem;
   font-size: 0.875rem;
-}
-
-.c2 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
 }
 
 .c0 {
@@ -159,6 +159,16 @@ exports[`FieldColor with a label 1`] = `
   margin-top: auto;
 }
 
+.c5 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
 .c8 {
   border: 0;
   box-sizing: border-box;
@@ -176,16 +186,6 @@ exports[`FieldColor with a label 1`] = `
   padding-top: 0rem;
   padding-bottom: 0rem;
   font-size: 0.875rem;
-}
-
-.c5 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
 }
 
 .c4 {
@@ -328,6 +328,16 @@ exports[`FieldColor with a named color and size values 1`] = `
   margin-top: auto;
 }
 
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
 .c5 {
   border: 0;
   box-sizing: border-box;
@@ -345,16 +355,6 @@ exports[`FieldColor with a named color and size values 1`] = `
   padding-top: 0rem;
   padding-bottom: 0rem;
   font-size: 0.875rem;
-}
-
-.c2 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
 }
 
 .c0 {
@@ -468,6 +468,16 @@ exports[`FieldColor with a validation message 1`] = `
   margin-top: auto;
 }
 
+.c5 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
 .c8 {
   border: 0;
   box-sizing: border-box;
@@ -485,16 +495,6 @@ exports[`FieldColor with a validation message 1`] = `
   padding-top: 0rem;
   padding-bottom: 0rem;
   font-size: 0.875rem;
-}
-
-.c5 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
 }
 
 .c4 {

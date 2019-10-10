@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - `Confirm` and `useConfirm` added
+- `ButtonToggle` and `ButtonGroup` added
 
 ### Changed
 
