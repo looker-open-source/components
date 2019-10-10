@@ -124,4 +124,6 @@ const InputSearchComponent = forwardRef(
   }
 )
 
+InputSearchComponent.displayName = 'InputSearchComponent'
+
 export const InputSearch = styled(InputSearchComponent)``

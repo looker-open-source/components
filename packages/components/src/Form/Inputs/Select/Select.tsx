@@ -118,6 +118,8 @@ const SelectComponent = forwardRef(
   }
 )
 
+SelectComponent.displayName = 'SelectComponent'
+
 //
 // @TODO - Should be properly imported from `Caret Down.svg`
 // import caretDownIcon from '../../../../icons/svg/Caret Down.svg'

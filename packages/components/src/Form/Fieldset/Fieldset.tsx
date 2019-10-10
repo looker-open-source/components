@@ -62,4 +62,6 @@ const FieldsetComponent = forwardRef(
   }
 )
 
+FieldsetComponent.displayName = 'FieldsetComponent'
+
 export const Fieldset = styled(FieldsetComponent)``

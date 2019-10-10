@@ -80,6 +80,8 @@ const IconButtonComponent = forwardRef(
   }
 )
 
+IconButtonComponent.displayName = 'IconButtonComponent'
+
 const IconButtonBase = styled.button<IconButtonProps>`
   ${reset}
   ${space}

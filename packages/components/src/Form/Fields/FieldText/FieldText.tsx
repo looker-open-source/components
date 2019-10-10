@@ -29,4 +29,6 @@ const FieldTextComponent = forwardRef(
   }
 )
 
+FieldTextComponent.displayName = 'FieldTextComponent'
+
 export const FieldText = styled(FieldTextComponent)``

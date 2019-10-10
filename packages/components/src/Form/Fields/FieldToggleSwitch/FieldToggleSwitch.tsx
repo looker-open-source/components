@@ -33,4 +33,6 @@ const FieldToggleSwitchComponent = forwardRef(
   }
 )
 
+FieldToggleSwitchComponent.displayName = 'FieldToggleSwitchComponent'
+
 export const FieldToggleSwitch = styled(FieldToggleSwitchComponent)``

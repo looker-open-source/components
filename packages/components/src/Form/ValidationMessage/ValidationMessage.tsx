@@ -56,3 +56,5 @@ export const ValidationMessage = forwardRef(
     </ValidationMessageBase>
   )
 )
+
+ValidationMessage.displayName = 'ValidationMessage'

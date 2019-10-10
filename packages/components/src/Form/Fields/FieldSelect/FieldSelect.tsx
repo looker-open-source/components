@@ -29,4 +29,6 @@ const FieldSelectComponent = forwardRef(
   }
 )
 
+FieldSelectComponent.displayName = 'FieldSelectComponent'
+
 export const FieldSelect = styled(FieldSelectComponent)``

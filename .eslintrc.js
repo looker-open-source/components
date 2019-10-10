@@ -78,9 +78,7 @@ module.exports = {
      * */
 
     /* To level-up our code quality we should pobably should address all of these later */
-    'react/display-name': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
-    '@typescript-eslint/ban-ts-ignore': 'off',
   },
   overrides: [...noExtraneousOverrides],
 }

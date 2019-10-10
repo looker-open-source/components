@@ -30,4 +30,6 @@ const FieldCheckboxComponent = forwardRef(
   }
 )
 
+FieldCheckboxComponent.displayName = 'FieldCheckboxComponent'
+
 export const FieldCheckbox = styled(FieldCheckboxComponent)``

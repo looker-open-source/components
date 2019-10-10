@@ -135,6 +135,8 @@ export const ToggleSwitchComponent = forwardRef(
   }
 )
 
+ToggleSwitchComponent.displayName = 'ToggleSwitchComponent'
+
 export const ToggleSwitch = styled(ToggleSwitchComponent)`
   ${reset}
   input {

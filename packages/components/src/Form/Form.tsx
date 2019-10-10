@@ -68,6 +68,8 @@ export const Form = forwardRef(
   )
 )
 
+Form.displayName = 'Form'
+
 export interface ChildProp {
   children?: JSX.Element
 }
@@ -95,6 +97,8 @@ export function useFormContext({
   return vMessage
 }
 
+// This is due for deprecation once FieldColor is converted to functional component and withForm is out of use.
+/* eslint-disable react/display-name */
 export const withForm = <T extends {}>(
   Component:
     | ComponentType<FormComponentProps<T>>

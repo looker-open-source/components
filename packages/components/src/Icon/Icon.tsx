@@ -32,6 +32,8 @@ const IconFactory = forwardRef((props: IconProps, ref: Ref<HTMLDivElement>) => {
   )
 })
 
+IconFactory.displayName = 'IconFactory'
+
 const Styled = styled.div<Omit<IconProps, 'name'>>`
   ${reset}
   ${color}

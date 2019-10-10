@@ -39,3 +39,5 @@ export const Swatch = forwardRef(
     )
   }
 )
+
+Swatch.displayName = 'Swatch'

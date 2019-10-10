@@ -30,4 +30,6 @@ const FieldRadioComponent = forwardRef(
   }
 )
 
+FieldRadioComponent.displayName = 'FieldRadioComponent'
+
 export const FieldRadio = styled(FieldRadioComponent)``

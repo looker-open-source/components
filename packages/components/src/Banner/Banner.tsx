@@ -107,3 +107,4 @@ export const Banner = forwardRef(
 )
 
 Banner.defaultProps = { intent: 'info' }
+Banner.displayName = 'Banner'

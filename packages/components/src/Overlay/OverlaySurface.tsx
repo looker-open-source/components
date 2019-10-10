@@ -72,6 +72,8 @@ export const OverlaySurface = forwardRef(
   }
 )
 
+OverlaySurface.displayName = 'OverlaySurface'
+
 const Outer = styled.div<{ zIndex?: number }>`
   ${reset};
   animation: ${fadeIn} 0.2s linear;

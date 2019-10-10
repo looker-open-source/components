@@ -33,6 +33,8 @@ const ButtonComponent = forwardRef(
   }
 )
 
+ButtonComponent.displayName = 'ButtonComponent'
+
 export const buttonCSS = css`
   align-items: center;
   border-radius: 0.25rem;
