@@ -109,12 +109,10 @@
     "lint:es": "eslint 'packages/**/*.ts{,x}'",
     "lint:ts": "tsc",
     "lint-staged": "yarn exec lint-staged",
-    "commit": "git-cz",
     "npmrc": "bin/create_npmrc.sh",
     "npmrc:clean": "rm .npmrc",
     "prerelease": "yarn build",
     "release": "lerna publish",
-    "test": "jest",
-    "tsc": "tsc"
+    "test": "jest"
   }
 }

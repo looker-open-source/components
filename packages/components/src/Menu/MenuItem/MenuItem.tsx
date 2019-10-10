@@ -90,9 +90,6 @@ export interface MenuItemProps
    *
    */
   itemRole?: 'link' | 'button'
-  // onClick?: () => void
-  // href?: string
-  // target?: string
 }
 
 export const MenuItem: FC<MenuItemProps> = props => {

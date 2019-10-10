@@ -1,8 +1,20 @@
 # Lens [![Jenkins Status](https://jenkinsexternal.looker.com/buildStatus/icon?job=lens-master)](https://jenkins.looker.com/job/lens-master/)
 
-Lens is Looker's living and function design guide.
+Lens is Looker's design system. It exists as a series of Figma templates as well as the documentation within this repository.
 
 This repository hosts both the functional components Lens publishes and the code needed to generate a style guide which lives online, as an interactive resource.
+
+Lens is a monorepo utilizing [Lerna](https://lerna.js.org) and [Yarn Workspaces](https://yarnpkg.com/lang/en/docs/workspaces/). It is composed of a collection of packages:
+
+- `@looker/components`
+- `@looker/design-tokens` - default design values as well as our extensions to styled-system
+  - NOTE: `@looker/components-system` - will be extracted from this package in short-order
+- `@looker/icons` - icon set
+- `playground` - A local development playground for use when developing components
+  - See more details on local development in the [Playground README](./packages/playground/README.md)
+- `test-utils` - utility functions for testing components.
+- `www` - The Gatsby site that powers Lens' living style guide
+  - See more details on running Gatsby in the [WWW README](./packages/www/README.md)
 
 If you're looking for information about working or writing components you're probably best served by visiting https://lens.looker.com.
 
@@ -16,8 +28,6 @@ Please file issues on [Lens' JIRA board](https://looker.atlassian.net/secure/Rap
 - [Publishing Lens Components](#publishing-lens-components)
 - [Building the Lens Style Guide](#building-the-lens-style-guide)
 - [Project Commands](#project-commands)
-- Further Reading
-  - [Working in Lens](internal_docs/working_in_lens.md)
 - [Nexus Integration](#nexus)
 
 # Setting up the Lens Project
@@ -37,14 +47,15 @@ If you have Helltool installed and running, you've likely already setup your gra
 1.  `git clone git@github.com:looker/lens.git`
 1.  `yarn npmrc`
 1.  `yarn`
+1.  `yarn build`
 1.  `yarn test`
 
 ### 4. Run the Style Guide
 
-Lens' style guide is based on the [Styleguidist](https://react-styleguidist.js.org/) library. You can view its generated output by doing the following:
+Lens' style guide is based on the [Gatsby](https://gatsby.org/) and [DocZ](https://docz.site/) . You can view its generated output by doing the following:
 
-1.  `yarn start`
-1.  Open [http://localhost:6060](http://localhost:6060)
+1.  `yarn workspace www develop`
+1.  Open [http://localhost:8000](http://localhost:8000)
 
 # Publishing Lens Components
 
@@ -54,18 +65,17 @@ Lens follows a [semantic versioning scheme](https://semver.org/). That means:
 1.  Backwards compatible API changes can occur in minor version changes.
 1.  Bug fixes occur in patch version changes.
 
-To publish components:
+## Update Changelog & Version
 
 1.  Increment the version number according to Lens' sematic versioning philosophy in [package.json](package.json)
 1.  Update CHANGELOG
 1.  PR for package.json & CHANGELOG changes
 1.  Merge PR
+
+## Publish
+
 1.  `git co master`
-1.  `yarn clean`
-1.  `yarn build-components`
-1.  `yarn release`
-1.  Add the tag `git tag -a ${version}` // e.g.: `git tag -a 0.0.1-beta.19`
-1.  `git push origin --tags`
+1.  TODO - Need to rewrite this section
 
 This will publish Lens to Looker's private npm server, Nexus.
 
@@ -73,18 +83,35 @@ This will publish Lens to Looker's private npm server, Nexus.
 
 Each of these scripts can be run with `yarn <command>`. They are defined in the package.json [`scripts` stanza](https://github.com/looker/lens/blob/master/package.json#L122).
 
-- **start** starts the Styleguidist server
-- **build** builds the components and the static Styleguidist pages
-- **build-components** builds just the React components, inlining their styles
-- **build-styleguide** builds just the Styleguidist guide
-- **clean** removes the `dist` and `styleguide` directories if they exist
-- **release** runs the publishing process, distributing the package to Looker's private package repository
-- **test** runs the tests
+- **workspace www develop** starts the Gatsby server
+- **build** runs build across all packages. This calls several subtasks
+  - **build:es** use lerna to do babel build on all packages in proper order
+  - **postbuild** use lerna to typescript declarations in proper order and then run lint (see `lint` below)
+- **lint** runs all lint checks in parallel
+  - **lint:css** run stylelint
+  - **lint:es** run eslint
+  - **lint:ts** run tsc
+- **test** runs Jest across all packages. NOTE: `yarn build` must be completed before running this
 - **npmrc** regenerate the .npmrc file. This should only be necessary if the Nexus credentials change
+
+## Workspace Commands
+
+If you're working with a specific workspace you can run commands within that specific workspace (package) by prepending the yarn command like so:
+
+`yarn workspace [workspace-package-name] [command]`
+
+E.g.: `yarn workspace @looker/components build:es`
+
+Commonly used workspace commands are:
+
+See workspace specific README files:
+
+- [Playground](./packages/playground/README.md): Local development environment
+- [Gatsby Static Site Generator](./packages/www/README.md): Use this to start our local gatsby development server that powers our living style guide
 
 # Yarn Link
 
-Since Lens is often developed in tandem with another repo it can be useful to use Yarn's `link` fuctionality to develop new Lens components and test the built output without having to commit and publish the changes.
+Since Lens is often developed in tandem with another repo it can be useful to use Yarn's `link` functionality to develop new Lens components and test the built output without having to commit and publish the changes.
 
 See Yarn's Link documentation (https://yarnpkg.com/lang/en/docs/cli/link/) for setting up the link between the `@looker/components` package and your project.
 
