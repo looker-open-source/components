@@ -40,14 +40,13 @@ const MenuGroupInternal: React.FC<MenuGroupProps> = ({
   const customizations = customizationProps || menu.customizationProps
 
   const labelShimRef: React.RefObject<any> = React.useRef()
+  const labelVisible = useElementVisibility(labelShimRef)
 
   const labelComponent = label && (
     <MenuGroupLabel
       backgroundColor={customizations && customizations.bg}
       boxShadow={
-        useElementVisibility(labelShimRef)
-          ? 'none'
-          : `0 4px 8px -2px ${palette.charcoal200}`
+        labelVisible ? 'none' : `0 4px 8px -2px ${palette.charcoal200}`
       }
     >
       {/*

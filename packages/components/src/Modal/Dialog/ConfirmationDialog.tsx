@@ -70,7 +70,7 @@ export const ConfirmationDialog: React.FC<ConfirmationDialogProps> = ({
 }) => {
   const confirm = React.useCallback(() => {
     onConfirm(close)
-  }, [onConfirm])
+  }, [close, onConfirm])
 
   const cancel = React.useCallback(() => {
     if (onCancel) {
@@ -78,7 +78,7 @@ export const ConfirmationDialog: React.FC<ConfirmationDialogProps> = ({
     } else {
       close()
     }
-  }, [onCancel])
+  }, [close, onCancel])
 
   return (
     <Dialog isOpen={isOpen} onClose={cancel} {...props}>

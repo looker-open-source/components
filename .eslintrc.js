@@ -33,7 +33,6 @@ module.exports = {
     browser: true,
     jest: true,
   },
-  parser: '@typescript-eslint/parser', // Specifies the ESLint parser
   extends: [
     'eslint:recommended',
     'standard',
@@ -45,6 +44,7 @@ module.exports = {
     'plugin:import/warnings',
     'plugin:import/typescript',
   ],
+  parser: '@typescript-eslint/parser', // Specifies the ESLint parser
   parserOptions: {
     ecmaVersion: 2018, // Allows for the parsing of modern ECMAScript features
     sourceType: 'module', // Allows for the use of imports
@@ -52,6 +52,7 @@ module.exports = {
       jsx: true, // Allows for the parsing of JSX
     },
   },
+  plugins: ['react-hooks'],
   settings: {
     react: {
       version: 'detect', // Tells eslint-plugin-react to automatically detect the version of React to use
@@ -67,6 +68,9 @@ module.exports = {
     'sort-keys': 'error',
     indentation: 'off',
     'import/named': 'off',
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
+
     /*
 
      * 68 instances of `[StyledComponent |*] not found in 'styled-components'  import/named`

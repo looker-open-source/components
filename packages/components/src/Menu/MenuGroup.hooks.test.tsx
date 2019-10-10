@@ -20,9 +20,11 @@ describe('MenuGroup Hooks', () => {
     current: <div />,
   }
 
+  /* eslint-disable react-hooks/rules-of-hooks */
   const cb = (ref: React.RefObject<any>) => {
     isVisible = useElementVisibility(ref)
   }
+  /* eslint-enable react-hooks/rules-of-hooks */
 
   it('it returns false as the default visibility state', () => {
     act(() => {

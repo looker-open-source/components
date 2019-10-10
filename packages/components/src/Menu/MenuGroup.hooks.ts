@@ -23,7 +23,7 @@ export const useElementVisibility = (
         observer.unobserve(ref.current)
       }
     }
-  }, [ref])
+  }, [observer, ref])
 
   return isVisible
 }

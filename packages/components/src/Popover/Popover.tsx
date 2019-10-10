@@ -154,7 +154,7 @@ export const Popover: React.FC<PopoverProps> = ({
     return () => {
       document.removeEventListener('click', handleClickOutside, true)
     }
-  }, [isOpen])
+  }, [handleClickOutside, isOpen])
 
   const referenceElement =
     triggerRef && triggerRef.current ? triggerRef.current : undefined
