@@ -103,48 +103,50 @@ export const Popover: React.FC<PopoverProps> = ({
     props.onClose && props.onClose()
   }
 
-  const handleClickOutside = (event: MouseEvent) => {
-    if (canClose && !canClose()) return
-
-    // User clicked inside the Popover surface/portal
-    if (portalRef.current && portalRef.current.contains(event.target as Node)) {
-      return
-    }
-
-    if (
-      portalRef.current &&
-      event.target &&
-      portalRef.current.compareDocumentPosition(event.target as Node) ===
-        Node.DOCUMENT_POSITION_FOLLOWING
-    ) {
-      return
-    }
-
-    setOpen(false)
-
-    // User clicked the trigger while the Popover was open
-    if (
-      triggerRef.current &&
-      triggerRef.current.contains(event.target as Node)
-    ) {
-      // stopPropagation because instant Popover re-opening is silly
-      event.stopPropagation()
-      return
-    }
-
-    // Group-member clicked, allow event to propagate
-    if (
-      groupedPopoversRef &&
-      groupedPopoversRef.current &&
-      groupedPopoversRef.current.contains(event.target as Node)
-    ) {
-      return
-    }
-
-    event.stopPropagation()
-  }
-
   useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (canClose && !canClose()) return
+
+      // User clicked inside the Popover surface/portal
+      if (
+        portalRef.current &&
+        portalRef.current.contains(event.target as Node)
+      ) {
+        return
+      }
+
+      if (
+        portalRef.current &&
+        event.target &&
+        portalRef.current.compareDocumentPosition(event.target as Node) ===
+          Node.DOCUMENT_POSITION_FOLLOWING
+      ) {
+        return
+      }
+
+      setOpen(false)
+
+      // User clicked the trigger while the Popover was open
+      if (
+        triggerRef.current &&
+        triggerRef.current.contains(event.target as Node)
+      ) {
+        // stopPropagation because instant Popover re-opening is silly
+        event.stopPropagation()
+        return
+      }
+
+      // Group-member clicked, allow event to propagate
+      if (
+        groupedPopoversRef &&
+        groupedPopoversRef.current &&
+        groupedPopoversRef.current.contains(event.target as Node)
+      ) {
+        return
+      }
+
+      event.stopPropagation()
+    }
     if (isOpen) {
       document.addEventListener('click', handleClickOutside, true)
     } else {
@@ -154,7 +156,7 @@ export const Popover: React.FC<PopoverProps> = ({
     return () => {
       document.removeEventListener('click', handleClickOutside, true)
     }
-  }, [handleClickOutside, isOpen])
+  }, [canClose, groupedPopoversRef, isOpen])
 
   const referenceElement =
     triggerRef && triggerRef.current ? triggerRef.current : undefined
