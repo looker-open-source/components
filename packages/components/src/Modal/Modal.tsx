@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { CSSProperties, RefObject } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import { CSSObject, FlattenSimpleInterpolation } from 'styled-components'
 import { CustomizableAttributes } from '@looker/design-tokens'
@@ -30,13 +30,13 @@ export interface ManagedModalProps {
    * must be a CSSProperty compatible key / value paired object. For example
    * {backgroundColor: 'pink'}.
    */
-  backdrop?: React.CSSProperties
+  backdrop?: CSSProperties
 
   /**
    * Optional surface styles to merge with the Surface implementation. These
    * must be a CSSProperty compatible key / value paired object.
    */
-  surfaceStyles?: React.CSSProperties
+  surfaceStyles?: CSSProperties
 
   /**
    * Explicitly specifying a width will set the Surface to be the lesser of the specified width or the viewport width.
@@ -45,7 +45,7 @@ export interface ManagedModalProps {
    */
   width?: string
 
-  portalRef?: React.RefObject<HTMLDivElement>
+  portalRef?: RefObject<HTMLDivElement>
 }
 
 export interface ModalProps extends ManagedModalProps {
@@ -67,17 +67,15 @@ export interface ModalInternalProps extends ModalProps {
    * element to provide CSS transitions. (See DialogSurface & DrawerSurface for implementation examples)
    */
   render: (animationState: string) => JSX.Element
-
-  portalRef?: React.RefObject<HTMLDivElement>
 }
 
-export const Modal: React.FC<ModalInternalProps> = ({
+export function Modal({
   backdrop,
   isOpen,
   onClose,
   portalRef,
   render,
-}) => {
+}: ModalInternalProps) {
   return (
     <ModalContext.Provider value={{ closeModal: onClose }}>
       <CSSTransition

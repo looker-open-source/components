@@ -1,5 +1,5 @@
 import { CompatibleHTMLProps, reset } from '@looker/design-tokens'
-import React, { FC } from 'react'
+import React, { FC, useContext } from 'react'
 import { HotKeys } from 'react-hotkeys'
 import styled, { CSSObject, css } from 'styled-components'
 import {
@@ -12,6 +12,7 @@ import {
   LayoutProps,
   layout,
 } from 'styled-system'
+import { useFocusTrap } from '../Overlay/useFocusTrap.hook'
 import { ModalContext } from './ModalContext'
 
 export interface ModalSurfaceProps
@@ -31,7 +32,8 @@ export const ModalSurface: FC<ModalSurfaceProps> = ({
   className,
   ...props
 }) => {
-  const { closeModal } = React.useContext(ModalContext)
+  const { closeModal } = useContext(ModalContext)
+  const focusRef = useFocusTrap()
 
   return (
     <HotKeys
@@ -64,6 +66,7 @@ export const ModalSurface: FC<ModalSurfaceProps> = ({
         className={`surface-overflow ${className}`}
         tabIndex={-1}
         surfaceStyle={style as CSSObject}
+        ref={focusRef}
         {...props}
       />
     </HotKeys>

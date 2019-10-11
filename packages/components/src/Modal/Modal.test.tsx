@@ -24,19 +24,11 @@ describe('Modal', () => {
   })
 
   test('Inactive w/ wrapped element', () => {
-    assertSnapshotShallow(
-      <Modal render={simpleContentFactory}>
-        <button>Click Here</button>
-      </Modal>
-    )
+    assertSnapshotShallow(<Modal render={simpleContentFactory} />)
   })
 
   test('Active w/ wrapped element', () => {
-    assertSnapshotShallow(
-      <Modal isOpen render={simpleContentFactory}>
-        <button>Click Here</button>
-      </Modal>
-    )
+    assertSnapshotShallow(<Modal isOpen render={simpleContentFactory} />)
   })
 
   test('Verify initial state', () => {

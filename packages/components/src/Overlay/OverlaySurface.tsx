@@ -8,12 +8,13 @@ import {
   fadeIn,
 } from '@looker/design-tokens'
 import { Placement } from 'popper.js'
-import React, { CSSProperties, forwardRef, Ref } from 'react'
+import React, { CSSProperties, forwardRef, Ref, useContext } from 'react'
 import { HotKeys } from 'react-hotkeys'
 import { PopperArrowProps } from 'react-popper'
 import styled from 'styled-components'
 import { ModalContext } from '../Modal'
 import { OverlaySurfaceArrow } from './OverlaySurfaceArrow'
+import { useFocusTrap } from './useFocusTrap.hook'
 
 interface SurfaceStyleProps extends BorderProps, BoxShadowProps {
   color?: string
@@ -35,7 +36,8 @@ export interface OverlaySurfaceProps extends SurfaceStyleProps {
 export const OverlaySurface = forwardRef(
   (props: OverlaySurfaceProps, ref: Ref<HTMLDivElement>) => {
     const { children, eventHandlers, style, zIndex, ...innerProps } = props
-    const { closeModal } = React.useContext(ModalContext)
+    const { closeModal } = useContext(ModalContext)
+    const focusRef = useFocusTrap()
 
     return (
       <Outer ref={ref} zIndex={zIndex} style={style} {...eventHandlers}>
@@ -53,7 +55,7 @@ export const OverlaySurface = forwardRef(
             },
           }}
         >
-          <Inner {...innerProps} tabIndex={0}>
+          <Inner {...innerProps} tabIndex={-1} ref={focusRef}>
             {children}
             {props.arrow !== false && (
               <OverlaySurfaceArrow
@@ -89,6 +91,6 @@ const Inner = styled.div<SurfaceStyleProps>`
   ${color}
 
   &:focus {
-    outline: 'none';
+    outline: none;
   }
 `
