@@ -50,9 +50,9 @@ const Style = styled.div<SpinnerProps>`
   ${space}
   ${position}
 
-  height: ${props => props.size};
+  height: ${props => props.size}px;
   position: relative;
-  width: ${props => props.size};
+  width: ${props => props.size}px;
 `
 
 Style.defaultProps = {
