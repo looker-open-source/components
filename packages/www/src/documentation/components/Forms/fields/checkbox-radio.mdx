@@ -1,0 +1,67 @@
+---
+name: Checkbox & Radio
+route: components/forms/fields/checkbox
+---
+
+import { Playground } from 'docz'
+import { FieldCheckbox, FieldRadio } from '@looker/components'
+import { ComponentDetail } from '../../../../components'
+
+## FieldCheckbox
+
+<ComponentDetail
+  of="FieldCheckbox"
+  status="experimental"
+  figmaURL="file/2MG6DoSjk4IaLnjjFCnKFf/Forms"
+/>
+
+The `<FieldCheckbox />` component is composed of a `<Checkbox />` component and a `<Label />` component. Using `<FieldCheckbox />` allows for rendering validation messages. By default, the label will render to the left of the checkbox, which is the recommended convention, however this is adjustable with the `alignLabel` property.
+
+<Playground>
+  <FieldCheckbox name="box" label="Box" />
+  <FieldCheckbox name="box-2" label="Box 2" alignLabel="left" />
+  <FieldCheckbox name="requiredField" label="A required field" required />
+  <FieldCheckbox
+    name="normal-label"
+    label="Normal Label"
+    labelFontWeight="normal"
+    alignLabel="right"
+  />
+</Playground>
+
+### FieldCheckbox Validation
+
+The `<FieldCheckbox />` components accepts `validationMessage` as a property. This is an object with properties `type` and `message`.
+
+See `ValidationMessage` [here](/#!/ValidationMessage)
+
+If you have multiple fields in need of validation, it is recommended that you wrap them in a `<Form />` component and pass to it a dictionary with key as field name and value as a `ValidationMessage`.
+
+The `alignValidationMessage` can also be used to adjust where the validation message appears in relation to the input field. By default, it will render to the right, which is the best practice in most cases.
+
+**_Note: In the current implementation, any `ValidationMessage` set in a `<FieldCheckbox />` component will be overridden by `ValidationMessages` set in the parent `<Form />` component. Because of this, it is highly recommended that you only ever directly set `ValidationMessage` if a `<FieldCheckbox />` is outside a `<Form />`._**
+
+<Playground>
+  <FieldCheckbox
+    name="someBox"
+    label="Some Box"
+    validationMessage={{ type: 'error', message: 'This is an error' }}
+  />
+</Playground>
+
+## FieldRadio
+
+<ComponentDetail of="FieldRadio" figmaURL="file/2MG6DoSjk4IaLnjjFCnKFf/Forms" />
+
+The `<FieldRadio />` component is composed of a `<Radio />` component and a `<Label />` component. Using `<FieldRadio />` allows for rendering validation messages. By default, the label will render to the right of the radio button, however this is adjustable with the `alignLabel` property.
+
+<Playground>
+  <FieldRadio name="radio" label="Radio" />
+  <FieldRadio name="radio" label="Radio 2" alignLabel="left" />
+  <FieldRadio
+    name="radio"
+    label="Radio 3"
+    labelFontWeight="normal"
+    alignLabel="right"
+  />
+</Playground>

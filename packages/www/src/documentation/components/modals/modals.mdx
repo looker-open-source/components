@@ -1,0 +1,191 @@
+---
+name: Modal
+route: components/modals
+---
+
+import { ComponentDetail } from '../../../components'
+
+# Modal
+
+Modals are temporary overlays that offer contextual information or require user input/confirmation. Modals block interactions with the application until being explicitly dismissed. They can be used for lightweight tasks or hosting heavier temporary content.
+
+At its most basic, a Modal is a container for content that should sit above or aside the primary content.
+
+Currently Lens provides two kinds of Modals: [`Dialog`](/src-documentation-components-dialog) and [`Drawer`](/src-documentation-components-drawer). These components can used on their own or in combination with layout helpers designed expressly for use with modals, specifically: [`ModalHeader`](/#!/ModalHeader), [`ModalContent`](/#!/ModalContent) and [`ModalFooter`](/#!/ModalFooter).
+
+Modals can have a single child. If a child is specified it will automatically be assigned on an `onClick` event that triggers the modal to open.
+
+## Styling
+
+Modals are assembled of two primary pieces a Backdrop (`ModalBackdrop`) and a Surface (`SurfaceBase`).
+
+### `ModalBackdrop`
+
+This provides the backdrop behind Modal containers. It can be customized via the `backdrop` property. These must be a CSSProperty compatible key / value paired object.
+
+import { Button, DialogManager } from '@looker/components'
+import { Playground } from 'docz'
+
+<Playground>
+  <DialogManager
+    backdrop={{ background: 'purple', opacity: 1 }}
+    content={
+      <React.Fragment>
+        Stuff and text <a href="#">Focus attention here...</a>
+      </React.Fragment>
+    }
+  >
+    {onClick => <Button onClick={onClick}>Purple Backdrop</Button>}
+  </DialogManager>
+</Playground>
+
+### `ModalSurface`
+
+`ModalSurface` provides the container that contains the content. It can be customized via the `surfaceStyles` property. These must be a CSSProperty compatible key / value paired object.
+
+<Playground>
+  <DialogManager
+    surfaceStyles={{ background: 'pink', borderRadius: 0, padding: '3rem' }}
+    content={
+      <React.Fragment>
+        Stuff and text <a href="#">Focus attention here...</a>
+      </React.Fragment>
+    }
+  >
+    {onClick => <Button onClick={onClick}>Pink Surface, No Radiae</Button>}
+  </DialogManager>
+</Playground>
+
+## ModalContext
+
+`ModalContext` is a [React Context](https://reactjs.org/docs/context.html) that provides access to functionality without requiring the developer to explicitly manage the Modal's state. Currently the context simply provides access to the `closeModal()` method of the Modal.
+
+```js
+import React, { useContext } from 'react'
+import { Button, ModalContext } from '@looker/components'
+
+export function ModalContextDemo() {
+  return (
+    <ModalContext.Consumer>
+      {({ closeModal }) => <Button onClick={closeModal}>Close!</Button>}
+    </ModalContext.Consumer>
+  )
+}
+
+export function ModalUseContextDemo() {
+  const { closeModal } = useContext(ModalContext)
+  return <Button onClick={closeModal}>Close!</Button>
+}
+```
+
+### `withModal`
+
+Provides a React HOC (High Order Component) that will automatically inject any ModalContext properties into a compononent wrapped with `withModal`.
+
+## `ModalContent`
+
+<ComponentDetail of="ModalContent" github="Modal/ModalContent" />
+
+Using the `ModalContent` component quickly gives your content consistent spacing inside a modal component as well as managing overflow of content of the dialog is taller than the viewport.
+
+ModalContent supports all [`Box`](/src-documentation-components-box) properties.
+
+import { Box, ModalContent, Paragraph } from '@looker/components'
+
+<Playground>
+  <Box height="10rem" display="flex" bg="white" p="large">
+    <ModalContent>
+      <Box height="2rem" bg="rebeccapurple" />
+      <Paragraph>Scroll down here...</Paragraph>
+    </ModalContent>
+  </Box>
+</Playground>
+
+### Content Overflows
+
+If content overflows the component's height an visual indicator of content that extends beyond the visible edges is added (border on top and shadow on the bottom).
+
+<Playground>
+  <Box height="10rem" display="flex" bg="white" p="large">
+    <ModalContent>
+      <Box height="6rem" bg="rebeccapurple" />
+      <Paragraph>Scroll down here...</Paragraph>
+    </ModalContent>
+  </Box>
+</Playground>
+
+## `ModalHeader`
+
+<ComponentDetail of="ModalHeader" github="Modal/ModalHeader" />
+
+`ModalHeader` is attached to the top of modal and provides a button to close the containing modal. Uses the `withModal` to consume `ModalContext` and get access to the `close` method.
+
+ModalHeader supports all [`Box`](/src-documentation-components-box) properties.
+
+import { ModalHeader, Heading } from '@looker/components'
+
+<Playground>
+  <ModalHeader>
+    <Heading fontWeight="semiBold">This is a ModalHeader</Heading>
+  </ModalHeader>
+</Playground>
+
+## `ModalFooter`
+
+<ComponentDetail of="ModalFooter" github="Modal/ModalFooter" />
+
+`ModalFooter` is attached to the bottom of modal. Generally, the terminal action for a modal as well as an option to abandon the process done via the modal are available within this component. This component is generally used in combination with the `ModalContext.Provider` to get access to the `ModalContext.closeModal()` method.
+
+ModalFooter supports all [`Box`](/src-documentation-components-box) properties.
+
+import { Divider, ModalFooter } from '@looker/components'
+
+<Playground>
+  <ModalFooter>
+    <Button>Save Changes</Button>
+  </ModalFooter>
+  <Divider />
+  <ModalFooter>
+    <Button>Save Changes</Button>
+    <Button variant="transparent">Cancel</Button>
+  </ModalFooter>
+  <Divider />
+  <ModalFooter
+    secondary={
+      <Button variant="outline" iconBefore="Plus">
+        Create Item
+      </Button>
+    }
+  >
+    <Button>Save Changes</Button>
+    <Button variant="transparent">Cancel</Button>
+  </ModalFooter>
+  <Divider />
+  <ModalFooter
+    secondary={
+      <React.Fragment>
+        <Button variant="outline" iconBefore="Plus">
+          Create Item
+        </Button>
+        <Button variant="outline" iconBefore="Plus">
+          Yet Another
+        </Button>
+      </React.Fragment>
+    }
+  >
+    <Button>Save Changes</Button>
+    <Button variant="transparent">Cancel</Button>
+  </ModalFooter>
+  <Divider />
+  <ModalContent>
+    <Box bg="lavender" p="medium">
+      Example content
+    </Box>
+  </ModalContent>
+  <ModalFooter>
+    <Button size="xsmall">Save Changes</Button>
+    <Button size="xsmall" variant="transparent">
+      Cancel
+    </Button>
+  </ModalFooter>
+</Playground>

@@ -1,0 +1,45 @@
+---
+name: FieldToggle
+route: components/forms/fields/toggle
+---
+
+import { Playground } from 'docz'
+import { FieldToggleSwitch } from '@looker/components'
+import { ComponentDetail } from '../../../../components'
+import { ToggleSwitchParent } from './demos'
+
+# FieldToggle Switch
+
+<ComponentDetail
+  of="FieldToggleSwitch"
+  figmaURL="file/2MG6DoSjk4IaLnjjFCnKFf/Forms"
+/>
+
+The `<FieldToggleSwitch />` component is composed of a `<ToggleSwitch />` component and a `<Label />` component. By default, the label will render to the right of the toggle switch, however this is adjustable with the alignLabel property.
+
+<ToggleSwitchParent />
+
+```js
+export interface ToggleSwitchParentProps {
+  value: boolean;
+}
+
+export const ToggleSwitchParent: React.FC<ToggleSwitchParentProps> = ({
+  value = false,
+}) => {
+  const [on, setOn] = React.useState(value)
+  const onChange = (e: any) => {
+    setOn(e.target.checked)
+  }
+
+  return (
+    <FieldToggleSwitch
+      label="Development Mode"
+      alignLabel="left"
+      onChange={onChange}
+      on={on}
+    />
+  )
+}
+;<ToggleSwitchParent />
+```

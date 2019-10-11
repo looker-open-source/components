@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Header } from '../Header'
-import { Sidebar } from '../Sidebar'
+import Navigation from '../../../components/Navigation'
+import sitemap from '../../../documentation/sitemap'
 import {
   PageLayout,
   LayoutSidebar,
@@ -17,7 +18,7 @@ const Layout: React.FC = ({ children }) => {
       <TopBar>
         <Header />
       </TopBar>
-      <LayoutSidebar>{open && <Sidebar />}</LayoutSidebar>
+      <LayoutSidebar>{open && <Navigation sitemap={sitemap} />}</LayoutSidebar>
       <ContentArea>
         <LayoutMain>{children}</LayoutMain>
       </ContentArea>

@@ -1,0 +1,424 @@
+---
+name: Menu
+route: components/overlays/menu
+---
+
+import { ComponentDetail } from '../../../components'
+import { Playground } from 'docz'
+import {
+  Menu,
+  MenuGroup,
+  MenuItem,
+  MenuSearch,
+  Popover,
+  Button,
+  DrawerManager,
+  ModalContent,
+  ModalHeader,
+} from '@looker/components'
+
+# `Menu`
+
+<ComponentDetail of="Menu" figma="file/VyHO1Hv1XaW1v3lE9I4PVT/Menu" />
+
+`Menu` displays a list of choices.
+
+### Focus & Keyboard Controls
+
+When a menu is focused the `up` and `down` arrow keys will move focus through the menu items within the menu.
+
+<Playground>
+  <Menu>
+    <MenuItem onClick={() => alert('Hello world!')}>Gouda</MenuItem>
+    <MenuItem>Cheedar</MenuItem>
+    <MenuItem>Swiss</MenuItem>
+  </Menu>
+</Playground>
+
+### Customizing a menu
+
+`Menu` accepts a `customizationProps` prop which allows for flexibly styling of the item. Below is an example of customizing the menu's display. Below is an example of all the options you can customize.
+
+import { palette } from '@looker/design-tokens'
+
+<Playground>
+  <Menu
+    customizationProps={{
+      bg: palette.purple500,
+      color: palette.purple200,
+      fontSize: 'xlarge',
+      iconColor: palette.purple300,
+      iconSize: 40,
+      marker: {
+        color: palette.purple300,
+        size: 10,
+      },
+      hover: {
+        bg: palette.purple700,
+        color: palette.white,
+        iconColor: palette.purple100,
+      },
+      current: {
+        bg: palette.purple200,
+        color: palette.purple900,
+        iconColor: palette.purple500,
+      },
+    }}
+  >
+    <MenuGroup>
+      <MenuItem
+        href="https://en.wikipedia.org/wiki/Gouda_cheese"
+        itemRole="link"
+        icon="Home"
+      >
+        Gouda
+      </MenuItem>
+      <MenuItem
+        href="https://en.wikipedia.org/wiki/Cheddar_cheese"
+        itemRole="link"
+        icon="FavoriteOutline"
+        current
+        currentMarker
+        detail="Is often orange"
+      >
+        Cheddar
+      </MenuItem>
+      <MenuItem
+        itemRole="link"
+        icon="Dashboard"
+        href="https://en.wikipedia.org/wiki/Swiss_cheese`"
+      >
+        Swiss
+      </MenuItem>
+    </MenuGroup>
+  </Menu>
+</Playground>
+
+### Menu Item Spacing
+
+Menus accept a `compact` prop that will make the spacing between the `MenuItems` smaller
+
+<Playground>
+  <Menu compact>
+    <MenuItem icon="LogoRings">Looker</MenuItem>
+    <MenuItem icon="Validate">Validate</MenuItem>
+    <MenuItem icon="ChartPie">Pizza</MenuItem>
+  </Menu>
+</Playground>
+
+### Compose Menus
+
+Menu can be easily composed with `Popover`, `Drawer` and `Dialog`
+
+<Playground>
+  <Popover
+    content={
+      <Menu>
+        <MenuItem icon="FavoriteOutline">Gouda</MenuItem>
+        <MenuItem icon="FavoriteOutline" detail="Is often orange">
+          Cheddar
+        </MenuItem>
+        <MenuItem icon="FavoriteOutline">Swiss</MenuItem>
+      </Menu>
+    }
+  >
+    {(onClick, ref) => (
+      <Button
+        aria-haspopup="true"
+        variant="outline"
+        iconAfter="ArrowDropDown"
+        onClick={onClick}
+        ref={ref}
+      >
+        Popover + Menu: Cheese Selector
+      </Button>
+    )}
+  </Popover>
+</Playground>
+
+<Playground>
+  {() => {
+    const spacingSizes = [
+      { value: 'xxsmall', label: '4px' },
+      { value: 'xsmall', label: '8px' },
+      { value: 'small', label: '12px' },
+      { value: 'medium', label: '16px' },
+      { value: 'large', label: '20px' },
+      { value: 'xlarge', label: '32px' },
+      { value: 'xxlarge', label: '40px' },
+      { value: 'xxxlarge', label: '60px' },
+    ]
+    const items = spacingSizes.map(({ value, label }) => (
+      <MenuItem itemRole="button" key={value} detail={label}>
+        {value}
+      </MenuItem>
+    ))
+    return (
+      <Popover
+        content={
+          <Menu>
+            <MenuGroup>
+              <MenuItem itemRole="button" icon="LogoRings">
+                Looker
+              </MenuItem>
+              <MenuItem itemRole="button" icon="Validate">
+                Validate
+              </MenuItem>
+              <MenuItem itemRole="button" icon="ChartPie">
+                Pizza!
+              </MenuItem>
+            </MenuGroup>
+            <MenuGroup label="Spacing">{items}</MenuGroup>
+            <MenuGroup>
+              <MenuItem itemRole="button" icon="Beaker">
+                Scary Stuff
+              </MenuItem>
+            </MenuGroup>
+          </Menu>
+        }
+      >
+        {(onClick, ref) => (
+          <Button
+            aria-haspopup="true"
+            variant="outline"
+            iconAfter="ArrowDropDown"
+            onClick={onClick}
+            ref={ref}
+          >
+            Menu Example...
+          </Button>
+        )}
+      </Popover>
+    )
+  }}
+</Playground>
+
+<Playground>
+  <DrawerManager
+    content={
+      <React.Fragment>
+        <ModalHeader>Menu Demo</ModalHeader>
+        <ModalContent innerProps={{ p: 'none' }}>
+          <Menu>
+            <MenuGroup>
+              <MenuItem icon="LogoRings">Looker</MenuItem>
+              <MenuItem icon="Validate">Validate</MenuItem>
+              <MenuItem icon="ChartPie">Pizza!</MenuItem>
+            </MenuGroup>
+            <MenuGroup label="Spacing">
+              <MenuItem>Scroll Filler A</MenuItem>
+              <MenuItem>Scroll Filler B</MenuItem>
+              <MenuItem>Scroll Filler C</MenuItem>
+              <MenuItem>Scroll Filler D</MenuItem>
+              <MenuItem>Scroll Filler E</MenuItem>
+              <MenuItem>Scroll Filler F</MenuItem>
+            </MenuGroup>
+            <MenuGroup label="Spacing">
+              <MenuItem>Scroll Filler A</MenuItem>
+              <MenuItem>Scroll Filler B</MenuItem>
+              <MenuItem>Scroll Filler C</MenuItem>
+              <MenuItem>Scroll Filler D</MenuItem>
+              <MenuItem>Scroll Filler E</MenuItem>
+              <MenuItem>Scroll Filler F</MenuItem>
+            </MenuGroup>
+            <MenuGroup label="Spacing">
+              <MenuItem>Scroll Filler A</MenuItem>
+              <MenuItem>Scroll Filler B</MenuItem>
+              <MenuItem>Scroll Filler C</MenuItem>
+              <MenuItem>Scroll Filler D</MenuItem>
+              <MenuItem>Scroll Filler E</MenuItem>
+              <MenuItem>Scroll Filler F</MenuItem>
+            </MenuGroup>
+            <MenuGroup>
+              <MenuItem icon="Beaker">Scary Stuff</MenuItem>
+            </MenuGroup>
+          </Menu>
+        </ModalContent>
+      </React.Fragment>
+    }
+  >
+    {onClick => (
+      <Button variant="outline" onClick={onClick} iconAfter="ArrowDropDown">
+        Drawer + Menu...
+      </Button>
+    )}
+  </DrawerManager>
+</Playground>
+
+## `MenuItem`
+
+<ComponentDetail
+  of="MenuItem"
+  figma="file/VyHO1Hv1XaW1v3lE9I4PVT/Menu"
+  github="Menu/MenuItem"
+/>
+
+`MenuItem` is an `HTMLButtonElement` that supports all of the `BoxProps` properties. Use this for triggering actions from with in a `Menu` or `Drawer`, for example opening a modal.
+
+For accessibility reasons, if you want your `MenuItem` to link somewhere then you can use the `itemRole` prop to identify it as a link.
+
+An icon can be optionally be assigned to each item via the `icon` property.
+
+<Playground>
+  <Menu>
+    <MenuItem>Home</MenuItem>
+    <MenuItem icon="Home">Home</MenuItem>
+    <MenuItem
+      itemRole="link"
+      target="_blank"
+      icon="Public"
+      href="https://google.com"
+    >
+      Away
+    </MenuItem>
+  </Menu>
+</Playground>
+
+### Icon Support
+
+<Playground>
+  <Menu>
+    <MenuItem icon="LogoRings">Looker</MenuItem>
+    <MenuItem icon="Validate">Validate</MenuItem>
+    <MenuItem icon="ChartPie">Pizza</MenuItem>
+  </Menu>
+</Playground>
+
+### Detail Text
+
+Use the `detail` prop to provide explanatory detail to a given item.
+
+<Playground>
+  <React.Fragment>
+    <MenuItem detail="Get regular updates">Schedule</MenuItem>
+    <MenuItem icon="Beaker" detail="Try the newest toys!">
+      Labs
+    </MenuItem>
+  </React.Fragment>
+</Playground>
+
+### Digital Marketing Style Menu
+
+It's possible to selectively customize only select pieces of the menu as well as in this example below.
+
+<Playground>
+  <Menu
+    customizationProps={{
+      bg: palette.charcoal100,
+      iconColor: palette.charcoal800,
+      current: {
+        bg: palette.charcoal200,
+        iconColor: palette.purple500,
+      },
+      hover: {
+        iconColor: palette.purple500,
+      },
+    }}
+  >
+    <MenuGroup label="GOOGLE ADS" labelProps={{ bg: palette.charcoal100 }}>
+      <MenuItem icon="Home">Gouda</MenuItem>
+      <MenuItem icon="FavoriteOutline" current detail="Is often orange">
+        Cheddar
+      </MenuItem>
+      <MenuItem icon="Dashboard">Swiss</MenuItem>
+    </MenuGroup>
+  </Menu>
+</Playground>
+
+## `MenuGroup`
+
+<ComponentDetail
+  of="MenuGroup"
+  figma="file/VyHO1Hv1XaW1v3lE9I4PVT/Menu"
+  github="Menu/MenuGroup"
+/>
+
+`MenuGroup` is a way to group together similar collections of `MenuItem`s.
+
+It supports an optional `label` prop to place a heading above the `MenuItem`s. When placed within a scrolling container the label will stick to the top edge while the MenuGroup is visible. Look at the "Menu + Drawer" example above and try scrolling.
+
+`labelProps` and `labelStyles` can be used to apply styling to the label.
+
+<Playground>
+  <Menu>
+    <MenuGroup>
+      <MenuItem icon="LogoRings">Looker</MenuItem>
+      <MenuItem icon="Validate">Validate</MenuItem>
+      <MenuItem icon="ChartPie">Pizza!</MenuItem>
+    </MenuGroup>
+    <MenuGroup label="Cheeses">
+      <MenuItem icon="FavoriteOutline">Cheddar</MenuItem>
+      <MenuItem icon="FavoriteOutline">Mozerella</MenuItem>
+      <MenuItem icon="FavoriteOutline">Swiss</MenuItem>
+    </MenuGroup>
+    <MenuGroup label="Meats">
+      <MenuItem icon="FavoriteOutline">Sausage</MenuItem>
+      <MenuItem icon="FavoriteOutline">Pepperoni</MenuItem>
+      <MenuItem icon="FavoriteOutline">Salami</MenuItem>
+    </MenuGroup>
+    <MenuGroup label="Vegetables">
+      <MenuItem icon="FavoriteOutline">Onion</MenuItem>
+      <MenuItem icon="FavoriteOutline">Mushroom</MenuItem>
+      <MenuItem icon="FavoriteOutline">Peppers</MenuItem>
+    </MenuGroup>
+  </Menu>
+</Playground>
+
+## MenuSearch
+
+<ComponentDetail
+  of="MenuSearch"
+  figma="file/VyHO1Hv1XaW1v3lE9I4PVT/Menu"
+  github="Menu/MenuSearch"
+  feedbackTitle="MenuSearch Component Feedback"
+/>
+
+<Playground>
+  {() => {
+    const menuRef = React.useRef(null)
+    const items = ['a', 'b', 'c', 'd', 'e']
+    const [keywords, setKeywords] = React.useState('')
+    const onChange = e => setKeywords(e.currentTarget.value)
+    const menu = (
+      <React.Fragment>
+        <MenuSearch
+          placeholder="Filter menu items"
+          summary="33 matches"
+          value={keywords}
+          onChange={onChange}
+          menuRef={menuRef}
+        />
+        <ModalContent innerProps={{ p: 'none' }}>
+          <Menu>
+            <MenuGroup label="Spacing">
+              {items.map(item => (
+                <MenuItem itemRole="link" href={`#${item}`} key={item}>
+                  Example Link {item.toUpperCase()}
+                </MenuItem>
+              ))}
+            </MenuGroup>
+            <MenuGroup label="Spacing">
+              {items.map(item => (
+                <MenuItem detail={`Detail ${item}`} key={item}>
+                  Example Item {item.toUpperCase()}
+                </MenuItem>
+              ))}
+            </MenuGroup>
+            <MenuGroup>
+              <MenuItem icon="Beaker">Scary Stuff</MenuItem>
+            </MenuGroup>
+          </Menu>
+        </ModalContent>
+      </React.Fragment>
+    )
+    return (
+      <DrawerManager content={menu}>
+        {onClick => (
+          <Button variant="outline" onClick={onClick} iconAfter="ArrowDropDown">
+            Drawer w/ Searchable Menu
+          </Button>
+        )}
+      </DrawerManager>
+    )
+  }}
+</Playground>
