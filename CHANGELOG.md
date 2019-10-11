@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `Confirm` and `useConfirm` added
 - `ButtonToggle` and `ButtonGroup` added
+- `hoverDisclosureRef` added to `Popover` for an element that show/hides the popover's trigger on hover
+- `usePopover` added
+- `useRefHovered` added
 
 ### Changed
 

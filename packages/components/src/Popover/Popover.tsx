@@ -5,7 +5,7 @@ import { ModalContext } from '../Modal'
 import { ModalPortal } from '../Modal/ModalPortal'
 import { OverlaySurface } from '../Overlay/OverlaySurface'
 
-export interface PopoverProps {
+export interface UsePopoverProps {
   /**
    * Display and arrow that points to the trigger element on popovers
    * @default true
@@ -37,20 +37,6 @@ export interface PopoverProps {
   content: JSX.Element
 
   /**
-   * Component to wrap. The HOC will listen for mouse events on this
-   * component, maintain the state of isOpen accordingly, and pass that state into
-   * the modal renderProp.
-   */
-  children: (
-    onClick: (event: React.SyntheticEvent) => void,
-    /**
-     * Used by popper.js to position the OverlaySurface relative to the trigger
-     */
-    ref: React.RefObject<any>,
-    className?: string
-  ) => JSX.Element
-
-  /**
    * Specify a callback to be called before trying to close the Modal. This allows for
    * use-cases where the user might lose work (think common "Save before closing warning" type flow)
    * Specify a callback to be called each time this Modal is closed
@@ -75,32 +61,53 @@ export interface PopoverProps {
    * You can use the pin property to override this behavior.
    */
   pin?: boolean
+  /**
+   * The element which hovering on/off of will show/hide the triggering element
+   */
+  hoverDisclosureRef?: React.RefObject<HTMLElement>
 }
 
-export const Popover: React.FC<PopoverProps> = ({
+export interface PopoverProps extends UsePopoverProps {
+  /**
+   * Component to wrap. The HOC will listen for mouse events on this
+   * component, maintain the state of isOpen accordingly, and pass that state into
+   * the modal renderProp.
+   */
+  children: (
+    onClick: (event: React.SyntheticEvent) => void,
+    /**
+     * Used by popper.js to position the OverlaySurface relative to the trigger
+     */
+    ref: React.RefObject<any>,
+    className?: string
+  ) => JSX.Element
+}
+
+export function usePopover({
   arrow = true,
   canClose,
   content,
-  children,
   groupedPopoversRef,
   pin = false,
   isOpen: initializeOpen = false,
-  ...props
-}) => {
+  onClose,
+  placement: propsPlacement,
+  hoverDisclosureRef,
+}: UsePopoverProps) {
   const [isOpen, setOpen] = useState(initializeOpen)
   const portalRef = useRef<HTMLDivElement | null>(null)
   const triggerRef = useRef<any>(null)
 
-  const handleOpen = (event: React.SyntheticEvent) => {
+  function handleOpen(event: React.SyntheticEvent) {
     setOpen(true)
     event.stopPropagation()
     event.preventDefault()
   }
 
-  const handleClose = () => {
+  function handleClose() {
     if (canClose && !canClose()) return
     setOpen(false)
-    props.onClose && props.onClose()
+    onClose && onClose()
   }
 
   useEffect(() => {
@@ -158,15 +165,40 @@ export const Popover: React.FC<PopoverProps> = ({
     }
   }, [canClose, groupedPopoversRef, isOpen])
 
+  const [isHovered, setIsHovered] = useState(hoverDisclosureRef === undefined)
+
+  function handleMouseEnter() {
+    setIsHovered(true)
+  }
+  function handleMouseLeave() {
+    setIsHovered(false)
+  }
+
+  useEffect(() => {
+    const refCurrent = hoverDisclosureRef
+      ? hoverDisclosureRef.current
+      : undefined
+    if (refCurrent) {
+      refCurrent.addEventListener('mouseleave', handleMouseLeave)
+      refCurrent.addEventListener('mouseenter', handleMouseEnter)
+    }
+    return () => {
+      if (refCurrent) {
+        refCurrent.removeEventListener('mouseleave', handleMouseLeave)
+        refCurrent.removeEventListener('mouseenter', handleMouseEnter)
+      }
+    }
+  }, [hoverDisclosureRef])
+
   const referenceElement =
     triggerRef && triggerRef.current ? triggerRef.current : undefined
 
-  const surface = (
+  const popover = isOpen && (
     <ModalContext.Provider value={{ closeModal: handleClose }}>
       <ModalPortal portalRef={portalRef}>
         <Popper
           positionFixed
-          placement={props.placement}
+          placement={propsPlacement}
           modifiers={{
             flip: {
               behavior: 'flip',
@@ -203,11 +235,23 @@ export const Popover: React.FC<PopoverProps> = ({
       </ModalPortal>
     </ModalContext.Provider>
   )
+  return {
+    className: isOpen ? 'active' : undefined,
+    open: handleOpen,
+    popover,
+    ref: triggerRef,
+    triggerShown: isOpen || isHovered,
+  }
+}
+
+export function Popover({ children, ...props }: PopoverProps) {
+  const { popover, open, ref, className, triggerShown } = usePopover(props)
+  const childrenOutput = children(open, ref, className)
 
   return (
     <>
-      {isOpen && surface}
-      {children(handleOpen, triggerRef, isOpen ? 'active' : undefined)}
+      {popover}
+      {triggerShown && childrenOutput}
     </>
   )
 }

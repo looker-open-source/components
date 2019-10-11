@@ -22,6 +22,9 @@ import { Playground } from 'docz'
 import {
   Box,
   Button,
+  Card,
+  Flex,
+  IconButton,
   Paragraph,
   Popover,
   PopoverContent,
@@ -244,6 +247,38 @@ To create a group, assigned a reference to an containing element and then assign
           )}
         </Popover>
       </Box>
+    )
+  }}
+</Playground>
+
+## Disclosing the Trigger on Hover
+
+<Playground>
+  {() => {
+    const hoverRef = React.useRef()
+    const content = (
+      <PopoverContent p="large">I'm in the popover</PopoverContent>
+    )
+    return (
+      <Card ref={hoverRef} p="large">
+        <Flex justifyContent="space-between">
+          <Paragraph>
+            Hovering in this card will show the button that triggers the
+            popover.
+          </Paragraph>
+          <Popover content={content} hoverDisclosureRef={hoverRef}>
+            {(onClick, ref, className) => (
+              <IconButton
+                icon="DotsVert"
+                aria-haspopup="true"
+                onClick={onClick}
+                ref={ref}
+                className={className}
+              />
+            )}
+          </Popover>
+        </Flex>
+      </Card>
     )
   }}
 </Playground>

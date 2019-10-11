@@ -1,5 +1,5 @@
 import { theme } from '@looker/design-tokens'
-import { render } from '@testing-library/react'
+import { render, RenderOptions } from '@testing-library/react'
 import { mount, shallow } from 'enzyme'
 import 'jest-styled-components'
 import React from 'react'
@@ -19,5 +19,7 @@ export const mountWithTheme = (Component: React.ReactElement<any>) =>
 export const shallowWithTheme = (Component: React.ReactElement<any>) =>
   shallow(withThemeProvider(Component))
 
-export const renderWithTheme = (Component: React.ReactElement<any>) =>
-  render(withThemeProvider(Component))
+export const renderWithTheme = (
+  Component: React.ReactElement<any>,
+  options?: Omit<RenderOptions, 'queries'>
+) => render(withThemeProvider(Component), options)
