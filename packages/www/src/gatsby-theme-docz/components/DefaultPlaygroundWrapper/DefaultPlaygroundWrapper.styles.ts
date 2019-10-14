@@ -11,6 +11,10 @@ export const PlaygroundWrapper = styled.div`
       background: transparent;
       padding: 0;
     }
+    [class*="LivePreviewWrapper"] {
+      position:relative;
+      z-index: 1;
+    }
     [data-testid="live-editor"] {
       background: transparent !important;
       font-size: ${fontSizes.small};
