@@ -3,7 +3,6 @@ import { NavigationSection } from '../../components/Navigation'
 const navigation: NavigationSection = {
   title: 'Design System',
   path: 'system',
-  noLink: true,
   children: [
     {
       title: 'Borders & Dividers',

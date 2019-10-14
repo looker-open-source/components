@@ -1,17 +1,15 @@
-import { NavigationSection, NavigationPage } from '../../components/Navigation'
+import { NavigationSection } from '../../components/Navigation'
 import forms from './forms/navigation'
 
 const layout: NavigationSection = {
   title: 'Layout',
   path: 'layout',
-  noLink: true,
   children: [{ title: 'Box', path: 'box' }, { title: 'Flex', path: 'flex' }],
 }
 
 const text: NavigationSection = {
   title: 'Text',
   path: 'text',
-  noLink: true,
   children: [
     { title: 'Headings', path: 'headings' },
     { title: 'Paragraph', path: 'paragraph' },
@@ -20,15 +18,11 @@ const text: NavigationSection = {
   ],
 }
 
-const icons: NavigationPage = {
-  title: 'Icons',
-  path: 'icons',
-}
-
 const modals: NavigationSection = {
   title: 'Modal',
   path: 'modals',
   children: [
+    { title: 'Overview', path: '' },
     { title: 'Confirm', path: 'confirm' },
     { title: 'Dialog', path: 'dialog' },
     { title: 'Drawer', path: 'drawer' },
@@ -38,7 +32,6 @@ const modals: NavigationSection = {
 const overlays: NavigationSection = {
   title: 'Overlay',
   path: 'overlays',
-  noLink: true,
   children: [
     { title: 'Menu', path: 'menu' },
     { title: 'Popover', path: 'popover' },
@@ -49,11 +42,11 @@ const overlays: NavigationSection = {
 const content: NavigationSection = {
   title: 'Content',
   path: 'content',
-  noLink: true,
   children: [
     { title: 'Banner', path: 'banner' },
     { title: 'Card', path: 'card' },
     { title: 'Divider', path: 'divider' },
+    { title: 'Icons', path: 'icons' },
     { title: 'Link', path: 'link' },
     { title: 'List', path: 'list' },
     { title: 'Spinner', path: 'spinner' },
@@ -65,8 +58,7 @@ const content: NavigationSection = {
 const components: NavigationSection = {
   title: 'Components',
   path: 'components',
-  noLink: true,
-  children: [layout, text, icons, modals, overlays, forms, content],
+  children: [layout, text, modals, overlays, forms, content],
 }
 
 export default components

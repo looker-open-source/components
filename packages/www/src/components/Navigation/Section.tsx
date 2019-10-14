@@ -1,5 +1,5 @@
-import React, { FC, useContext, useState } from 'react'
-import styled from 'styled-components'
+import React, { FC, useContext } from 'react'
+import { SidebarGroup } from '@looker/components'
 import { NavigationSection } from './types'
 import Page, { pathToUri } from './Page'
 import { LocationContext } from './LocationContext'
@@ -12,37 +12,29 @@ interface SectionProps {
 const Section: FC<SectionProps> = ({ path = [], section }) => {
   const currentPath = useContext(LocationContext)
   const sectionPath = [...path, section.path]
-  const isCurrentSection = currentPath.startsWith(pathToUri(sectionPath))
 
-  const [isOpen, setOpen] = useState(false)
+  const navigationChildren = section.children.map(child => {
+    const uri = pathToUri([...path, child.path])
 
-  const toggle = () => {
-    setOpen(!isOpen)
-    return false
-  }
-
-  const showChildren = isCurrentSection || isOpen
-
-  const navigationChildren =
-    section.children &&
-    section.children.map(child => (
+    return (child as NavigationSection).children ? (
       <Section
-        key={pathToUri([...path, child.path])}
-        path={sectionPath}
+        key={uri}
         section={child as NavigationSection}
+        path={sectionPath}
       />
-    ))
+    ) : (
+      <Page key={uri} path={sectionPath} page={child} />
+    )
+  })
 
   return (
-    <NavGroup>
-      <Page onClick={toggle} path={path} page={section} />
-      {showChildren && navigationChildren}
-    </NavGroup>
+    <SidebarGroup
+      label={section.title}
+      showChildren={currentPath.startsWith(pathToUri(sectionPath))}
+    >
+      {navigationChildren}
+    </SidebarGroup>
   )
 }
-
-const NavGroup = styled.div`
-  margin: 0 1rem;
-`
 
 export default Section

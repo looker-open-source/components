@@ -1,10 +1,11 @@
 export interface NavigationPage {
   title: string
   path: string
-  noLink?: boolean
-  isMissing?: boolean
+  detail?: string
 }
 
-export interface NavigationSection extends NavigationPage {
+export interface NavigationSection {
+  title: string
+  path: string
   children: (NavigationPage | NavigationSection)[]
 }

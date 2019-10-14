@@ -3,7 +3,6 @@ import { NavigationSection } from '../../../components/Navigation'
 const forms: NavigationSection = {
   title: 'Forms & Fields',
   path: 'forms',
-  noLink: true,
   children: [
     {
       title: 'Button & IconButton',
@@ -20,7 +19,6 @@ const forms: NavigationSection = {
     {
       title: 'Fields',
       path: 'fields',
-      noLink: true,
       children: [
         {
           title: 'FieldCheckbox & FieldRadio',
@@ -47,7 +45,6 @@ const forms: NavigationSection = {
     {
       title: 'Inputs',
       path: 'inputs',
-      noLink: true,
       children: [
         {
           title: 'Checkbox',
