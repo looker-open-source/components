@@ -9,7 +9,8 @@
   ],
   "scripts": {
     "build:declaration": "tsc --project tsconfig.build.json",
-    "build:es": "BABEL_ENV=build babel src --root-mode upward --out-dir dist --source-maps --extensions .ts,.tsx --delete-dir-on-start --no-comments"
+    "build:es": "BABEL_ENV=build babel src --root-mode upward --out-dir dist --source-maps --extensions .ts,.tsx --delete-dir-on-start --no-comments",
+    "develop": "yarn build:es --watch --verbose & yarn build:declaration --watch"
   },
   "devDependencies": {
     "@looker/components-test-utils": "^0.1.0",
