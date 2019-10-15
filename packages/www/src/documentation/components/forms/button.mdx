@@ -259,6 +259,45 @@ const mildTheme = theme => {
 If you need an icon for purely decorative purposes use an `<Icon />` instead.
 
 <Playground>
+  <div>
+    <Tooltip content="Add a new file">
+      {(eventHandlers, ref) => (
+        <IconButton
+          label="Add File"
+          icon="Plus"
+          size="xxsmall"
+          mr="small"
+          ref={ref}
+          {...eventHandlers}
+        />
+      )}
+    </Tooltip>
+    <IconButton label="Settings" icon="Gear" mr="small" />
+    <IconButton
+      label="Add to Favorites"
+      icon="Favorite"
+      size="small"
+      mr="small"
+    />
+    <IconButton
+      label="Delete Look"
+      icon="Trash"
+      size="medium"
+      color="danger"
+      mr="small"
+    />
+    <IconButton
+      label="Forward"
+      icon="CaretRight"
+      size="large"
+      shape="round"
+      mr="small"
+      outline
+    />
+  </div>
+</Playground>
+
+<Playground>
   {() => {
     const HoverVariantButton = styled(IconButton)`
       transition: transform 0.5s;
@@ -267,43 +306,13 @@ If you need an icon for purely decorative purposes use an `<Icon />` instead.
       }
     `
     return (
-      <div>
-        <IconButton label="Add File" icon="Plus" size="xxsmall" mr="small" />
-        <IconButton label="Settings" icon="Gear" mr="small" />
-        <IconButton
-          label="Add to Favorites"
-          icon="Favorite"
-          size="small"
-          mr="small"
-        />
-        <IconButton
-          label="Delete Look"
-          icon="Trash"
-          size="medium"
-          color="danger"
-          mr="small"
-        />
-        <IconButton
-          label="Forward"
-          icon="CaretRight"
-          size="large"
-          shape="round"
-          mr="small"
-          outline
-        />
-        <Tooltip content="Add a new file">
-          {eventHandlers => (
-            <HoverVariantButton
-              label="Close"
-              icon="Close"
-              size="large"
-              outline
-              mr="small"
-              {...eventHandlers}
-            />
-          )}
-        </Tooltip>
-      </div>
+      <HoverVariantButton
+        label="Close"
+        icon="Close"
+        size="large"
+        outline
+        mr="small"
+      />
     )
   }}
 </Playground>
