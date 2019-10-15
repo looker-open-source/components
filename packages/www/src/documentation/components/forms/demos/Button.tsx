@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, { ThemeProvider } from 'styled-components'
-import { Box, Button, IconButton, Tooltip } from '@looker/components'
+import { Box, Button } from '@looker/components'
 
 const RoundBtnStyled = styled(Button)`
   border-radius: 2rem;
@@ -44,46 +44,3 @@ export const ThemingButton = () => (
     </Box>
   </ThemeProvider>
 )
-
-// IconButton
-
-const FancyIconButton = styled(IconButton)`
-  transition: transform 0.5s;
-  &:hover {
-    transform: rotate(45deg);
-  }
-`
-export const FancyIconBtn = () => {
-  return (
-    <div>
-      <IconButton label="Add File" icon="Plus" size="xxsmall" mr="small" />
-      <IconButton label="Settings" icon="Gear" mr="small" />
-      <IconButton
-        label="Add to Favorites"
-        icon="Favorite"
-        size="small"
-        mr="small"
-      />
-      <IconButton
-        label="Delete Look"
-        icon="Trash"
-        size="medium"
-        color="danger"
-        mr="small"
-      />
-
-      <Tooltip content="Add a new file">
-        {eventHandlers => (
-          <FancyIconButton
-            label="Close"
-            icon="Close"
-            size="large"
-            outline
-            mr="small"
-            {...eventHandlers}
-          />
-        )}
-      </Tooltip>
-    </div>
-  )
-}

@@ -46,6 +46,11 @@ export interface IconButtonProps
    * @default 'xsmall'
    */
   size?: IconButtonSizes
+  /**
+   *  Optional round icon button variant
+   * @default 'square'
+   */
+  shape?: 'round' | 'square'
 }
 
 const iconSizeHelper = (size: IconButtonSizes) => {
@@ -91,6 +96,7 @@ const IconButtonBase = styled.button<IconButtonProps>`
 
   ${iconButtonVariant}
   ${psuedoClasses}
+  ${({ shape }) => shape === 'round' && 'border-radius: 100%;'}
 `
 
 export const IconButton = styled(IconButtonComponent)``
