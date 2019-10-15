@@ -9,17 +9,19 @@ import Ol from './Ol'
 import Li from './Li'
 import Blockquote from './Blockquote'
 import Link from './Link'
+import Img from './Img'
 
 export default {
   ...headings,
   a: Link,
-  p: Paragraph,
+  blockquote: Blockquote,
+  img: Img,
   inlineCode: Code,
+  layout: Layout,
+  li: Li,
+  ol: Ol,
+  p: Paragraph,
   Playground: DefaultPlaygroundWrapper,
   pre: Pre,
-  layout: Layout,
   ul: Ul,
-  ol: Ol,
-  li: Li,
-  blockquote: Blockquote,
 }
