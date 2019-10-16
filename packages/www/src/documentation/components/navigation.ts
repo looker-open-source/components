@@ -51,6 +51,7 @@ const content: NavigationSection = {
     { title: 'List', path: 'list' },
     { title: 'Spinner', path: 'spinner' },
     { title: 'Table', path: 'table' },
+    { title: 'Tabs', path: 'tabs' },
     { title: 'VisuallyHidden', path: 'visually-hidden' },
   ],
 }
