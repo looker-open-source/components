@@ -1,10 +1,7 @@
-const config = require('../../.eslintrc.js')
-
 module.exports = {
-  ...config,
+  extends: ['plugin:mdx/recommended'],
   rules: {
-    ...config.rules,
+    'mdx/no-unescaped-entities': 'off',
     'sort-keys': 'off',
   },
-  extends: [...config.extends, 'plugin:mdx/recommended'],
 }

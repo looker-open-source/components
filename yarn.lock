@@ -7298,7 +7298,7 @@ eslint-plugin-jsx-a11y@^6.2.3:
     has "^1.0.3"
     jsx-ast-utils "^2.2.1"
 
-eslint-plugin-mdx@^1.5.5:
+eslint-plugin-mdx@^1.5.5, eslint-plugin-mdx@^1.5.6:
   version "1.5.6"
   resolved "https://registry.yarnpkg.com/eslint-plugin-mdx/-/eslint-plugin-mdx-1.5.6.tgz#06747e53cd587a632fa2a1306eb06b99a5355d2e"
   integrity sha512-UFxnx3o52Tvj/JuDyYAp5/rnKCQVF7lI31zDaWYBK3KC7wFP4suo8Ru7w2A+16DR52ZJIhl6U5A0J2yGBikgOQ==

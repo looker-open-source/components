@@ -3,6 +3,8 @@ name: Banner
 route: components/content/banner
 ---
 
+import { Banner, Box, useToggle } from '@looker/components'
+import { Playground } from 'docz'
 import { ComponentDetail } from '../../../components'
 
 # `Banner`
@@ -10,9 +12,6 @@ import { ComponentDetail } from '../../../components'
 <ComponentDetail of="Banner" />
 
 The `<Banner />` component is used to alert the user with `warning`, `error`, `info`, or `confirmation` messages, settable via the `intent` property.
-
-import { Banner, Box, useToggle } from '@looker/components'
-import { Playground } from 'docz'
 
 <Playground>
   <Box bg="white" p="medium">

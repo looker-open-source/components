@@ -3,6 +3,8 @@ name: Divider
 route: components/content/divider
 ---
 
+import { Box, Divider, Flex } from '@looker/components'
+import { Playground } from 'docz'
 import { ComponentDetail } from '../../../components'
 
 # `Divider`
@@ -16,9 +18,6 @@ import { ComponentDetail } from '../../../components'
 
 Dividers accept all the spacing props from `<Box />`, which gives you the ability to easily put spacing around your dividers. By default a divider's background color will be `charcoal300`
 
-import { Box, Divider, Flex } from '@looker/components'
-import { Playground } from 'docz'
-
 <Playground>
   <Flex justifyContent="space-around">
     <Box bg="white" p="xlarge" mr="large">
@@ -29,12 +28,10 @@ import { Playground } from 'docz'
       On Charcoal000
       <Divider mt="medium" />
     </Box>
-
     <Box bg="palette.charcoal100" p="xlarge">
       On Charcoal100
       <Divider mt="medium" />
     </Box>
-
   </Flex>
 </Playground>
 
@@ -52,12 +49,10 @@ There are three divider appearances `light`, `dark` and `onDark`.
       dark appearance
       <Divider mt="medium" appearance="dark" />
     </Box>
-
     <Box bg="palette.charcoal600" p="xlarge">
       onDark appearance
       <Divider mt="medium" appearance="onDark" />
     </Box>
-
   </Flex>
 </Playground>
 

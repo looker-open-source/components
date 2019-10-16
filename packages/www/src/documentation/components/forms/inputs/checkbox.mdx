@@ -3,9 +3,9 @@ name: Checkbox
 route: components/forms/inputs/checkbox
 ---
 
-import { ComponentDetail } from '../../../../components'
 import { Checkbox } from '@looker/components'
 import { Playground } from 'docz'
+import { ComponentDetail } from '../../../../components'
 
 # Checkbox
 
@@ -36,20 +36,8 @@ A name and ID can be specified in the `<Checkbox />` component. Names are import
 The `<Checkbox />` component accepts the `checked` property, which sets the checkbox as either selected or not.
 
 <Playground>
-  <Checkbox
-    checked={true}
-    onChange={() => {
-      return
-    }}
-    readOnly
-  />
-  <Checkbox
-    checked={false}
-    onChange={() => {
-      return
-    }}
-    readOnly
-  />
+  <Checkbox checked={true} onChange={() => {}} readOnly />
+  <Checkbox checked={false} onChange={() => {}} readOnly />
 </Playground>
 
 ## Disabled Property
@@ -58,13 +46,7 @@ Use the disable property to gray out the checkbox, making it unclickable.
 
 <Playground>
   <Checkbox disabled />
-  <Checkbox
-    disabled
-    checked
-    onChange={() => {
-      return
-    }}
-  />
+  <Checkbox disabled checked onChange={() => {}} />
 </Playground>
 
 # Accessibility Checkboxes

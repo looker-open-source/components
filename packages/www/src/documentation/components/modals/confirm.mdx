@@ -3,6 +3,8 @@ name: Confirm
 route: components/modals/confirm
 ---
 
+import { Playground } from 'docz'
+import { useConfirm, Paragraph, Confirm, Button } from '@looker/components'
 import { ComponentDetail } from '../../../components'
 
 # Confirmation
@@ -10,9 +12,6 @@ import { ComponentDetail } from '../../../components'
 ## useConfirm
 
 A custom hook that returns the opener function and rendered confirmation dialog. The following example is a complex usage to illustrate how the opener can be called from another hook.
-
-import { Playground } from 'docz'
-import { useConfirm, Paragraph } from '@looker/components'
 
 <Playground>
   {() => {
@@ -40,7 +39,7 @@ import { useConfirm, Paragraph } from '@looker/components'
       return () => {
         window.removeEventListener('keydown', onKeydown)
       }
-    }, [])
+    }, [confirm])
     return (
       <Paragraph>
         {confirmation}
@@ -55,8 +54,6 @@ import { useConfirm, Paragraph } from '@looker/components'
 <ComponentDetail of="DialogManager" github="Modal/Dialog/DialogManager" />
 
 A render-props version, for use in class components.
-
-import { Confirm, Button } from '@looker/components'
 
 <Playground>
   <Confirm

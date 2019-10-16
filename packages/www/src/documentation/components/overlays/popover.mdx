@@ -3,6 +3,18 @@ name: Popover
 route: components/overlays/popover
 ---
 
+import { Playground } from 'docz'
+import {
+  Box,
+  Button,
+  Card,
+  Flex,
+  IconButton,
+  Paragraph,
+  Popover,
+  PopoverContent,
+  Text,
+} from '@looker/components'
 import { ComponentDetail } from '../../../components'
 import { popoverContent } from './demos'
 
@@ -17,20 +29,6 @@ Popover triggers should have the `aria-haspopover` attribute set to `true`, you 
 ---
 
 ## Basic Popover
-
-import { Playground } from 'docz'
-import {
-  Box,
-  Button,
-  Card,
-  Flex,
-  IconButton,
-  Paragraph,
-  Popover,
-  PopoverContent,
-  Text,
-  useToggle,
-} from '@looker/components'
 
 <Playground>
   <Paragraph>Here's a Popover:</Paragraph>
@@ -91,7 +89,6 @@ If you want to hide the popover arrow you can set the prop `arrow` prop to false
         </Button>
       )}
     </Popover>
-
     <Popover content={popoverContent} placement="right">
       {(onClick, ref, className) => (
         <Button
@@ -105,7 +102,6 @@ If you want to hide the popover arrow you can set the prop `arrow` prop to false
         </Button>
       )}
     </Popover>
-
     <Popover content={popoverContent} placement="left">
       {(onClick, ref, className) => (
         <Button
@@ -119,9 +115,7 @@ If you want to hide the popover arrow you can set the prop `arrow` prop to false
         </Button>
       )}
     </Popover>
-
   </Box>
-
   <Box>
     <Popover content={popoverContent} placement="bottom-start">
       {(onClick, ref, className) => (
@@ -136,7 +130,6 @@ If you want to hide the popover arrow you can set the prop `arrow` prop to false
         </Button>
       )}
     </Popover>
-
     <Popover content={popoverContent} placement="right-end">
       {(onClick, ref, className) => (
         <Button
@@ -150,7 +143,6 @@ If you want to hide the popover arrow you can set the prop `arrow` prop to false
         </Button>
       )}
     </Popover>
-
     <Popover content={popoverContent} placement="top-start" arrow={false}>
       {(onClick, ref, className) => (
         <Button
@@ -164,7 +156,6 @@ If you want to hide the popover arrow you can set the prop `arrow` prop to false
         </Button>
       )}
     </Popover>
-
   </Box>
 </Playground>
 
@@ -179,7 +170,6 @@ To create a group, assigned a reference to an containing element and then assign
 <Playground>
   {() => {
     const groupRef = React.useRef()
-    const [toggleValue, toggle] = useToggle(false)
     const content = (
       <PopoverContent p="large" width="360px">
         Example Popover text.

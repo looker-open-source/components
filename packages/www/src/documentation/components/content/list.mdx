@@ -3,6 +3,8 @@ name: List
 route: components/content/list
 ---
 
+import { List, ListItem, Link, Code } from '@looker/components'
+import { Playground } from 'docz'
 import { ComponentDetail } from '../../../components'
 
 # List
@@ -14,9 +16,6 @@ import { ComponentDetail } from '../../../components'
 <ComponentDetail of="ListItem" github="List/ListItem" />
 
 This component renders an `<li>` tag inside of a list
-
-import { List, ListItem, Link, Code } from '@looker/components'
-import { Playground } from 'docz'
 
 ## The Default List
 
@@ -48,23 +47,20 @@ Often times you want to have a marker before each item in your list, you can use
     </ListItem>
     <ListItem>No marker</ListItem>
   </List>
-
-<List type="bullet">
-  <ListItem>An unordered list</ListItem>
-  <ListItem>
-    Wraps in a <Code>&lt;ul&gt;</Code> tag
-  </ListItem>
-  <ListItem>Bullet marker</ListItem>
-</List>
-
-<List type="number">
-  <ListItem>An orderd list</ListItem>
-  <ListItem>
-    Wraps in a <Code element="code">&lt;ol&gt;</Code> tag
-  </ListItem>
-  <ListItem>Number marker</ListItem>
-</List>
-
+  <List type="bullet">
+    <ListItem>An unordered list</ListItem>
+    <ListItem>
+      Wraps in a <Code>&lt;ul&gt;</Code> tag
+    </ListItem>
+    <ListItem>Bullet marker</ListItem>
+  </List>
+  <List type="number">
+    <ListItem>An orderd list</ListItem>
+    <ListItem>
+      Wraps in a <Code element="code">&lt;ol&gt;</Code> tag
+    </ListItem>
+    <ListItem>Number marker</ListItem>
+  </List>
   <List type="letter">
     <ListItem>An ordered list</ListItem>
     <ListItem>

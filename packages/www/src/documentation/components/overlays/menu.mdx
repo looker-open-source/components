@@ -3,7 +3,6 @@ name: Menu
 route: components/overlays/menu
 ---
 
-import { ComponentDetail } from '../../../components'
 import { Playground } from 'docz'
 import {
   Menu,
@@ -16,6 +15,8 @@ import {
   ModalContent,
   ModalHeader,
 } from '@looker/components'
+import { palette } from '@looker/design-tokens'
+import { ComponentDetail } from '../../../components'
 
 # `Menu`
 
@@ -38,8 +39,6 @@ When a menu is focused the `up` and `down` arrow keys will move focus through th
 ### Customizing a menu
 
 `Menu` accepts a `customizationProps` prop which allows for flexibly styling of the item. Below is an example of customizing the menu's display. Below is an example of all the options you can customize.
-
-import { palette } from '@looker/design-tokens'
 
 <Playground>
   <Menu

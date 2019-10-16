@@ -3,6 +3,10 @@ name: InputText
 route: components/forms/inputs/text
 ---
 
+import { InputText } from '@looker/components'
+import { Playground } from 'docz'
+import { ComponentDetail } from '../../../../components'
+
 # Input Text
 
 <ComponentDetail
@@ -87,14 +91,14 @@ When set for `<InputText />` in the context of a form, the input field must be f
 - **Always** include a descriptive label with each input, the `for` attribute of the label should match the `id` of the input it labels
 
 <Playground>
-  <label for="first-name">First Name</label>
+  <label htmlFor="first-name">First Name</label>
   <input id="first-name" type="text" />
 </Playground>
 
 - Fields with validations **must have** a the `aria-desrcibedby` attribute to ensure the error message for the field is read by assistive technology.
 
 <Playground>
-  <label for="first-name">First Name</label>
+  <label htmlFor="first-name">First Name</label>
   <input
     id="first-name"
     type="text"
@@ -121,7 +125,7 @@ When set for `<InputText />` in the context of a form, the input field must be f
 Use this to provide a detailed descriptions of a field that contains errors.
 
 <Playground>
-  <label for="email">Email Address</label>
+  <label htmlFor="email">Email Address</label>
   <input id="email" type="email" aria-describedby="email-error-message" />
   <p id="email-error-message">Please enter a valid email address</p>
 </Playground>

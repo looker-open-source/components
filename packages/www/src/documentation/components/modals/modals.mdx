@@ -3,6 +3,18 @@ name: Modal
 route: components/modals
 ---
 
+import {
+  Button,
+  DialogManager,
+  Box,
+  ModalContent,
+  Paragraph,
+  ModalHeader,
+  Heading,
+  Divider,
+  ModalFooter,
+} from '@looker/components'
+import { Playground } from 'docz'
 import { ComponentDetail } from '../../../components'
 
 # Modal
@@ -22,9 +34,6 @@ Modals are assembled of two primary pieces a Backdrop (`ModalBackdrop`) and a Su
 ### `ModalBackdrop`
 
 This provides the backdrop behind Modal containers. It can be customized via the `backdrop` property. These must be a CSSProperty compatible key / value paired object.
-
-import { Button, DialogManager } from '@looker/components'
-import { Playground } from 'docz'
 
 <Playground>
   <DialogManager
@@ -90,8 +99,6 @@ Using the `ModalContent` component quickly gives your content consistent spacing
 
 ModalContent supports all [`Box`](/src-documentation-components-box) properties.
 
-import { Box, ModalContent, Paragraph } from '@looker/components'
-
 <Playground>
   <Box height="10rem" display="flex" bg="white" p="large">
     <ModalContent>
@@ -122,8 +129,6 @@ If content overflows the component's height an visual indicator of content that 
 
 ModalHeader supports all [`Box`](/src-documentation-components-box) properties.
 
-import { ModalHeader, Heading } from '@looker/components'
-
 <Playground>
   <ModalHeader>
     <Heading fontWeight="semiBold">This is a ModalHeader</Heading>
@@ -137,8 +142,6 @@ import { ModalHeader, Heading } from '@looker/components'
 `ModalFooter` is attached to the bottom of modal. Generally, the terminal action for a modal as well as an option to abandon the process done via the modal are available within this component. This component is generally used in combination with the `ModalContext.Provider` to get access to the `ModalContext.closeModal()` method.
 
 ModalFooter supports all [`Box`](/src-documentation-components-box) properties.
-
-import { Divider, ModalFooter } from '@looker/components'
 
 <Playground>
   <ModalFooter>

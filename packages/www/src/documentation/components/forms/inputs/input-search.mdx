@@ -4,7 +4,7 @@ route: components/forms/inputs/search
 ---
 
 import { Playground } from 'docz'
-import { Button, Divider, InputSearch, InputText } from '@looker/components'
+import { Divider, InputSearch } from '@looker/components'
 import { ComponentDetail } from '../../../../components'
 import { ExampleInputSearch } from './demos'
 
@@ -24,10 +24,8 @@ The `<InputSearch />` component renders a single search input element. You can a
 <Playground>
   <InputSearch placeholder="Type your search" />
   <Divider my="medium" />
-
   <InputSearch placeholder="Type your search" value="test search" />
   <Divider my="medium" />
-
   <InputSearch
     width="50%"
     placeholder="Type your search"
@@ -35,7 +33,6 @@ The `<InputSearch />` component renders a single search input element. You can a
     summary={'some text'}
   />
   <Divider my="medium" />
-
   <InputSearch
     placeholder="Type your search"
     value="test search 1"
@@ -47,7 +44,7 @@ The `<InputSearch />` component renders a single search input element. You can a
 
 <ExampleInputSearch />
 
-```javascript
+```js
 const ExampleInputSearch = ({
   value = '',
   hideControls,
