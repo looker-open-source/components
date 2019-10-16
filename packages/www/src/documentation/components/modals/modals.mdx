@@ -31,7 +31,7 @@ Modals can have a single child. If a child is specified it will automatically be
 
 Modals are assembled of two primary pieces a Backdrop (`ModalBackdrop`) and a Surface (`SurfaceBase`).
 
-### `ModalBackdrop`
+### ModalBackdrop
 
 This provides the backdrop behind Modal containers. It can be customized via the `backdrop` property. These must be a CSSProperty compatible key / value paired object.
 
@@ -48,7 +48,7 @@ This provides the backdrop behind Modal containers. It can be customized via the
   </DialogManager>
 </Playground>
 
-### `ModalSurface`
+### ModalSurface
 
 `ModalSurface` provides the container that contains the content. It can be customized via the `surfaceStyles` property. These must be a CSSProperty compatible key / value paired object.
 
@@ -91,7 +91,7 @@ export function ModalUseContextDemo() {
 
 Provides a React HOC (High Order Component) that will automatically inject any ModalContext properties into a compononent wrapped with `withModal`.
 
-## `ModalContent`
+## ModalContent
 
 <ComponentDetail of="ModalContent" github="Modal/ModalContent" />
 
@@ -121,11 +121,11 @@ If content overflows the component's height an visual indicator of content that 
   </Box>
 </Playground>
 
-## `ModalHeader`
+## ModalHeader
 
 <ComponentDetail of="ModalHeader" github="Modal/ModalHeader" />
 
-`ModalHeader` is attached to the top of modal and provides a button to close the containing modal. Uses the `withModal` to consume `ModalContext` and get access to the `close` method.
+`ModalHeader` is attached to the top of modal and provides a button to close the containing modal. Uses the `ModalContext` to get access to the `closeModal` callback.
 
 ModalHeader supports all [`Box`](/src-documentation-components-box) properties.
 
@@ -135,7 +135,7 @@ ModalHeader supports all [`Box`](/src-documentation-components-box) properties.
   </ModalHeader>
 </Playground>
 
-## `ModalFooter`
+## ModalFooter
 
 <ComponentDetail of="ModalFooter" github="Modal/ModalFooter" />
 
