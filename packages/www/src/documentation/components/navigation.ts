@@ -1,5 +1,4 @@
 import { NavigationSection } from '../../components/Navigation'
-import forms from './forms/navigation'
 
 const layout: NavigationSection = {
   title: 'Layout',
@@ -15,6 +14,72 @@ const text: NavigationSection = {
     { title: 'Paragraph', path: 'paragraph' },
     { title: 'Text', path: 'text' },
     { title: 'Code', path: 'code' },
+  ],
+}
+
+const actions: NavigationSection = {
+  title: 'Actions',
+  path: 'actions',
+  children: [
+    { title: 'Button', path: 'button' },
+    {
+      title: 'ButtonGroup & ButtonToggle',
+      path: 'button-group',
+    },
+    { title: 'IconButton', path: 'icon-button' },
+    { title: 'Link', path: 'link' },
+  ],
+}
+
+const forms: NavigationSection = {
+  title: 'Forms',
+  path: 'forms',
+  children: [
+    { title: 'Checkbox', path: 'checkbox' },
+    {
+      title: 'Form',
+      path: 'form',
+    },
+    {
+      title: 'Fieldset',
+      path: 'fieldset',
+    },
+    {
+      title: 'Fields',
+      path: 'fields',
+    },
+    {
+      title: 'InputHidden',
+      path: 'hidden',
+    },
+    {
+      title: 'InputSearch',
+      path: 'search',
+    },
+    {
+      title: 'InputText',
+      path: 'text',
+    },
+    {
+      title: 'Label',
+      path: 'label',
+    },
+    {
+      title: 'Radio',
+      path: 'radio',
+    },
+    {
+      title: 'Select',
+      path: 'select',
+    },
+    {
+      title: 'Slider',
+      path: 'slider',
+    },
+    {
+      title: 'ToggleSwitch',
+      path: 'toggle-switch',
+    },
   ],
 }
 
@@ -47,7 +112,6 @@ const content: NavigationSection = {
     { title: 'Card', path: 'card' },
     { title: 'Divider', path: 'divider' },
     { title: 'Icons', path: 'icons' },
-    { title: 'Link', path: 'link' },
     { title: 'List', path: 'list' },
     { title: 'Spinner', path: 'spinner' },
     { title: 'Table', path: 'table' },
@@ -59,7 +123,7 @@ const content: NavigationSection = {
 const components: NavigationSection = {
   title: 'Components',
   path: 'components',
-  children: [layout, text, modals, overlays, forms, content],
+  children: [layout, text, actions, modals, overlays, forms, content],
 }
 
 export default components
