@@ -1,7 +1,77 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Checkbox checked set to false 1`] = `
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: solid 1px #DEE1E5;
+  border-radius: 0.125rem;
+  color: transparent;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
 .c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  position: relative;
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  margin: 3px;
+  vertical-align: middle;
+}
+
+.c0 input[type='checkbox'] {
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.c0 .c2 {
+  background: #FFFFFF;
+}
+
+.c0 input[type='checkbox']:checked + .c2 {
+  color: #fff;
+  background: #0087e1;
+  border-color: #0087e1;
+}
+
+.c0 input[type='checkbox']:focus + .c2 {
+  box-shadow: 0 0 .5px 1px #C1C6CC;
+}
+
+.c0 input[type='checkbox']:disabled + .c2 {
+  opacity: 0.5;
+}
+
+.c1 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -11,15 +81,108 @@ exports[`Checkbox checked set to false 1`] = `
   vertical-align: baseline;
 }
 
-<input
-  checked={false}
-  className="c0"
-  type="checkbox"
-/>
+<div
+  className="c0 "
+>
+  <input
+    checked={false}
+    className="c1"
+    type="checkbox"
+  />
+  <div
+    className="c2 c3"
+  >
+    <svg
+      fill="none"
+      height="16"
+      viewBox="0 0 16 16"
+      width="16"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M4 8L7 11L12 4"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+      />
+    </svg>
+  </div>
+</div>
 `;
 
 exports[`Checkbox checked set to true 1`] = `
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: solid 1px #DEE1E5;
+  border-radius: 0.125rem;
+  color: transparent;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
 .c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  position: relative;
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  margin: 3px;
+  vertical-align: middle;
+}
+
+.c0 input[type='checkbox'] {
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.c0 .c2 {
+  background: #FFFFFF;
+}
+
+.c0 input[type='checkbox']:checked + .c2 {
+  color: #fff;
+  background: #0087e1;
+  border-color: #0087e1;
+}
+
+.c0 input[type='checkbox']:focus + .c2 {
+  box-shadow: 0 0 .5px 1px #C1C6CC;
+}
+
+.c0 input[type='checkbox']:disabled + .c2 {
+  opacity: 0.5;
+}
+
+.c1 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -29,15 +192,108 @@ exports[`Checkbox checked set to true 1`] = `
   vertical-align: baseline;
 }
 
-<input
-  checked={true}
-  className="c0"
-  type="checkbox"
-/>
+<div
+  className="c0 "
+>
+  <input
+    checked={true}
+    className="c1"
+    type="checkbox"
+  />
+  <div
+    className="c2 c3"
+  >
+    <svg
+      fill="none"
+      height="16"
+      viewBox="0 0 16 16"
+      width="16"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M4 8L7 11L12 4"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+      />
+    </svg>
+  </div>
+</div>
 `;
 
 exports[`Checkbox default 1`] = `
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: solid 1px #DEE1E5;
+  border-radius: 0.125rem;
+  color: transparent;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
 .c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  position: relative;
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  margin: 3px;
+  vertical-align: middle;
+}
+
+.c0 input[type='checkbox'] {
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.c0 .c2 {
+  background: #FFFFFF;
+}
+
+.c0 input[type='checkbox']:checked + .c2 {
+  color: #fff;
+  background: #0087e1;
+  border-color: #0087e1;
+}
+
+.c0 input[type='checkbox']:focus + .c2 {
+  box-shadow: 0 0 .5px 1px #C1C6CC;
+}
+
+.c0 input[type='checkbox']:disabled + .c2 {
+  opacity: 0.5;
+}
+
+.c1 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -47,14 +303,107 @@ exports[`Checkbox default 1`] = `
   vertical-align: baseline;
 }
 
-<input
-  className="c0"
-  type="checkbox"
-/>
+<div
+  className="c0 "
+>
+  <input
+    className="c1"
+    type="checkbox"
+  />
+  <div
+    className="c2 c3"
+  >
+    <svg
+      fill="none"
+      height="16"
+      viewBox="0 0 16 16"
+      width="16"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M4 8L7 11L12 4"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+      />
+    </svg>
+  </div>
+</div>
 `;
 
 exports[`Checkbox should accept disabled 1`] = `
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: solid 1px #DEE1E5;
+  border-radius: 0.125rem;
+  color: transparent;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
 .c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  position: relative;
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  margin: 3px;
+  vertical-align: middle;
+}
+
+.c0 input[type='checkbox'] {
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.c0 .c2 {
+  background: #FFFFFF;
+}
+
+.c0 input[type='checkbox']:checked + .c2 {
+  color: #fff;
+  background: #0087e1;
+  border-color: #0087e1;
+}
+
+.c0 input[type='checkbox']:focus + .c2 {
+  box-shadow: 0 0 .5px 1px #C1C6CC;
+}
+
+.c0 input[type='checkbox']:disabled + .c2 {
+  opacity: 0.5;
+}
+
+.c1 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -64,15 +413,108 @@ exports[`Checkbox should accept disabled 1`] = `
   vertical-align: baseline;
 }
 
-<input
-  className="c0"
-  disabled={true}
-  type="checkbox"
-/>
+<div
+  className="c0 "
+>
+  <input
+    className="c1"
+    disabled={true}
+    type="checkbox"
+  />
+  <div
+    className="c2 c3"
+  >
+    <svg
+      fill="none"
+      height="16"
+      viewBox="0 0 16 16"
+      width="16"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M4 8L7 11L12 4"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+      />
+    </svg>
+  </div>
+</div>
 `;
 
 exports[`Checkbox with aria-describedby 1`] = `
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: solid 1px #DEE1E5;
+  border-radius: 0.125rem;
+  color: transparent;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
 .c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  position: relative;
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  margin: 3px;
+  vertical-align: middle;
+}
+
+.c0 input[type='checkbox'] {
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.c0 .c2 {
+  background: #FFFFFF;
+}
+
+.c0 input[type='checkbox']:checked + .c2 {
+  color: #fff;
+  background: #0087e1;
+  border-color: #0087e1;
+}
+
+.c0 input[type='checkbox']:focus + .c2 {
+  box-shadow: 0 0 .5px 1px #C1C6CC;
+}
+
+.c0 input[type='checkbox']:disabled + .c2 {
+  opacity: 0.5;
+}
+
+.c1 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -82,15 +524,108 @@ exports[`Checkbox with aria-describedby 1`] = `
   vertical-align: baseline;
 }
 
-<input
-  aria-describedby="some-id"
-  className="c0"
-  type="checkbox"
-/>
+<div
+  className="c0 "
+>
+  <input
+    aria-describedby="some-id"
+    className="c1"
+    type="checkbox"
+  />
+  <div
+    className="c2 c3"
+  >
+    <svg
+      fill="none"
+      height="16"
+      viewBox="0 0 16 16"
+      width="16"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M4 8L7 11L12 4"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+      />
+    </svg>
+  </div>
+</div>
 `;
 
 exports[`Checkbox with name and id 1`] = `
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: solid 1px #DEE1E5;
+  border-radius: 0.125rem;
+  color: transparent;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
 .c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  position: relative;
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  margin: 3px;
+  vertical-align: middle;
+}
+
+.c0 input[type='checkbox'] {
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.c0 .c2 {
+  background: #FFFFFF;
+}
+
+.c0 input[type='checkbox']:checked + .c2 {
+  color: #fff;
+  background: #0087e1;
+  border-color: #0087e1;
+}
+
+.c0 input[type='checkbox']:focus + .c2 {
+  box-shadow: 0 0 .5px 1px #C1C6CC;
+}
+
+.c0 input[type='checkbox']:disabled + .c2 {
+  opacity: 0.5;
+}
+
+.c1 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -100,10 +635,33 @@ exports[`Checkbox with name and id 1`] = `
   vertical-align: baseline;
 }
 
-<input
-  className="c0"
-  id="Chucky"
-  name="Chuck"
-  type="checkbox"
-/>
+<div
+  className="c0 "
+>
+  <input
+    className="c1"
+    id="Chucky"
+    name="Chuck"
+    type="checkbox"
+  />
+  <div
+    className="c2 c3"
+  >
+    <svg
+      fill="none"
+      height="16"
+      viewBox="0 0 16 16"
+      width="16"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M4 8L7 11L12 4"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+      />
+    </svg>
+  </div>
+</div>
 `;

@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Upgrade to Styled Components 4.x
+- Styling updated on `Checkbox` and `Radio` along with a new `branded` prop to use theme's primary color.
 
 ### Removed
 

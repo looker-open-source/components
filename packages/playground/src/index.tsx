@@ -7,6 +7,7 @@ import {
   Paragraph,
   InputSearch,
   Divider,
+  Checkbox,
 } from '@looker/components'
 import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
@@ -53,6 +54,7 @@ const App: React.FC = () => {
           onChange={onChange}
           hideControls={false}
         />
+        <Checkbox />
       </>
     </ThemeProvider>
   )

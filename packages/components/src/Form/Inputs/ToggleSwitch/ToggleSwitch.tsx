@@ -9,7 +9,6 @@ import {
   space,
   SpaceProps,
 } from '@looker/design-tokens'
-import { Checkbox } from '../Checkbox'
 import { InputProps } from '../InputProps'
 
 export interface CustomizableToggleSwitchAttributes
@@ -91,7 +90,7 @@ const KnobContainerBase = styled.div<KnobProps & PsuedoProps>`
       : CustomizableToggleSwitchAttributes.offColor};
 `
 
-const HiddenCheckbox = styled(Checkbox)`
+const HiddenCheckbox = styled.input.attrs({ type: 'checkbox' })`
   opacity: 0;
   width: 100%;
   height: 100%;

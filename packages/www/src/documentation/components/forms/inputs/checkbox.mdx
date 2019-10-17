@@ -3,8 +3,8 @@ name: Checkbox
 route: components/forms/inputs/checkbox
 ---
 
-import { Checkbox } from '@looker/components'
 import { Playground } from 'docz'
+import { Checkbox, Label, Fieldset } from '@looker/components'
 import { ComponentDetail } from '../../../../components'
 
 # Checkbox
@@ -21,6 +21,14 @@ The `<Checkbox />` component renders a single checkbox element on the page, with
 
 <Playground>
   <Checkbox />
+</Playground>
+
+## Branded Property
+
+The `branded` property turns the background to the theme's primary color when checked.
+
+<Playground>
+  <Checkbox branded />
 </Playground>
 
 ## Name and ID
@@ -55,38 +63,37 @@ Use the disable property to gray out the checkbox, making it unclickable.
 
 ## Best Practices
 
-- Individual checkboxes must have an onscreen `<label>`
-- Groups of checkboxes must have group label, using the `<fieldset>` and `<legend>` tags.
+- Individual checkboxes must have an onscreen `<Label>`
+- Groups of checkboxes must have group label, using the `<Fieldset>` and `<legend>` tags.
 - See related [ARIA attributes](#related-aria-attributes)
 
 ## Markup Expectations
 
-- **Always** include an unique id on the checkbox element so it can be referenced by a label `<input type="checkbox" id="agree">`
+- **Always** include an unique id on the checkbox element so it can be referenced by a label `<Checkbox id="agree">`
 
 ## Labeling Expectations
 
 - Use clear and descriptive labels that avoid ambiguity.
-- **Always** include a `<label>` with a `for` property that matches the checkbox `id`.
+- **Always** include a `<Label>` with a `for` property that matches the checkbox `id`.
 
 <Playground>
-  <label htmlFor="email-optin">
-    <input type="checkbox" id="email-optin" value="confirm" />
-    Subscript to our email list
-  </label>
+  <Label htmlFor="email-optin">
+    <Checkbox id="email-optin" value="confirm" />
+    Subscribe to our email list
+  </Label>
 </Playground>
 
 - Groups of checkboxes **must be** wrapped in a `<fieldset>` and have `<legend>` that describes the group
 
 <Playground>
-  <fieldset>
-    <legend>Pick your favorite emojis</legend>
-    <input type="checkbox" id="pizza" name="emoji" value="pizza" />
-    <label htmlFor="pizza">🍕</label>
-    <input type="checkbox" id="avocado" name="emoji" value="avocado" />
-    <label htmlFor="avocado">🥑</label>
-    <input type="checkbox" id="grapes" name="emoji" value="grapes" />
-    <label htmlFor="grapes">🍇</label>
-  </fieldset>
+  <Fieldset legend="Pick your favorite emojis">
+    <Checkbox id="pizza" name="emoji" value="pizza" />
+    <Label htmlFor="pizza">🍕</Label>
+    <Checkbox id="avocado" name="emoji" value="avocado" />
+    <Label htmlFor="avocado">🥑</Label>
+    <Checkbox id="grapes" name="emoji" value="grapes" />
+    <Label htmlFor="grapes">🍇</Label>
+  </Fieldset>
 </Playground>
 
 ## Focus Expectations
@@ -107,12 +114,8 @@ Use the disable property to gray out the checkbox, making it unclickable.
 Use this to provide a detailed descriptions of a field that contains errors.
 
 <Playground>
-  <label htmlFor="approve">Approve Changes</label>
-  <input
-    id="approve"
-    type="checkbox"
-    aria-describedby="confirm-error-message"
-  />
+  <Label htmlFor="approve">Approve Changes</Label>
+  <Checkbox id="approve" aria-describedby="confirm-error-message" />
   <p id="confirm-error-message">Confirm you approve these changes</p>
 </Playground>
 
