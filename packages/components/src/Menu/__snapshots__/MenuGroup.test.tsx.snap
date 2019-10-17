@@ -170,6 +170,7 @@ exports[`MenuGroup - JSX label 1`] = `
   </div>
   <ul
     className="c4"
+    type="none"
   >
     <li
       className="c5"
@@ -370,6 +371,7 @@ exports[`MenuGroup - label 1`] = `
   </div>
   <ul
     className="c3"
+    type="none"
   >
     <li
       className="c4"
@@ -571,6 +573,7 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
   </div>
   <ul
     className="c3"
+    type="none"
   >
     <li
       className="c4"
@@ -755,6 +758,7 @@ exports[`MenuGroup - menu customization 1`] = `
 >
   <ul
     className="c1"
+    type="none"
   >
     <li
       className="c2"
@@ -988,6 +992,7 @@ exports[`MenuGroup 1`] = `
 >
   <ul
     className="c1"
+    type="none"
   >
     <li
       className="c2"

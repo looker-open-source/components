@@ -13,7 +13,12 @@ export interface ListProps
   extends CompatibleHTMLProps<HTMLUListElement | HTMLOListElement>,
     TypographyProps,
     SpaceProps {
-  type?: 'bullet' | 'number' | 'letter'
+  /**
+   * Specify the type of marker to place next to list items.
+   *
+   * @default 'none'
+   */
+  type?: 'none' | 'bullet' | 'number' | 'letter'
   nomarker?: boolean
 }
 
@@ -28,6 +33,9 @@ const typeVariant = variant({
       listStyleType: 'upper-alpha',
       pl: 'medium',
     },
+    none: {
+      listStyleType: 'none',
+    },
     number: {
       listStyleType: 'decimal',
       pl: 'medium',
@@ -37,11 +45,12 @@ const typeVariant = variant({
 
 export const List = styled.ul.attrs((props: ListProps) => ({
   as: ['letter', 'number'].includes(String(props.type)) ? 'ol' : undefined,
+  type: props.nomarker ? 'none' : props.type,
 }))<ListProps>`
   ${reset}
   ${typography}
-
-  ${props => (props.nomarker ? `list-style-type: none;` : typeVariant)}
-
+  ${typeVariant}
   ${space}
 `
+
+List.defaultProps = { type: 'none' }

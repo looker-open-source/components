@@ -55,6 +55,7 @@ exports[`A default List, should be a ul 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  list-style-type: none;
 }
 
 .c1 {
@@ -70,6 +71,7 @@ exports[`A default List, should be a ul 1`] = `
 
 <ul
   className="c0"
+  type="none"
 >
   <li
     className="c1"
@@ -160,7 +162,7 @@ exports[`A numerically ordered List marked as nomarker 1`] = `
 
 <ol
   className="c0"
-  type="number"
+  type="none"
 >
   <li
     className="c1"
