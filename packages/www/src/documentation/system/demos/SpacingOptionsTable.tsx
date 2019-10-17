@@ -1,15 +1,14 @@
 import React from 'react'
 import {
-  Box,
   Code,
   Text,
-  Table,
   TableBody,
   TableDataCell,
   TableHead,
   TableHeaderCell,
   TableRow,
 } from '@looker/components'
+import { DocTable } from '../../../components'
 
 const spacingExamples = [
   { label: 'xxsmall', px: '4', rem: '0.25rem' },
@@ -57,47 +56,25 @@ const SpacingRow = (px: string, rem: string, key: number, label: string) => {
       <TableDataCell>{px}px</TableDataCell>
       <TableDataCell>{rem}</TableDataCell>
       <TableDataCell>
-        <Box px="small" as="span" className="prop-code">
-          <Code fontSize="xsmall">{label}</Code>
-        </Box>
+        <Code>{label}</Code>
       </TableDataCell>
     </TableRow>
   )
 }
 
-export class SpacingOptionsTable extends React.Component<
-  {},
-  {
-    labels: string[]
-    spaces: SpaceExample[]
-  }
-> {
-  constructor(props: {}) {
-    super(props)
-    this.state = {
-      labels: spacingLabels,
-      spaces: spacingExamples,
-    }
-  }
-
-  public render() {
-    return (
-      <div className="spacing-table">
-        <Table>
-          <TableHead>
-            <TableRow>
-              {this.state.labels.map((label, i) => {
-                return TableLabel(label, i)
-              })}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {this.state.spaces.map((space, i) => {
-              return SpacingRow(space.px, space.rem, i, space.label)
-            })}
-          </TableBody>
-        </Table>
-      </div>
-    )
-  }
-}
+export const SpacingOptionsTable = () => (
+  <DocTable>
+    <TableHead>
+      <TableRow>
+        {spacingLabels.map((label, i) => {
+          return TableLabel(label, i)
+        })}
+      </TableRow>
+    </TableHead>
+    <TableBody>
+      {spacingExamples.map((space, i) => {
+        return SpacingRow(space.px, space.rem, i, space.label)
+      })}
+    </TableBody>
+  </DocTable>
+)

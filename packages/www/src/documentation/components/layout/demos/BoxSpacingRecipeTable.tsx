@@ -1,8 +1,6 @@
 import { Box, Code, List, ListItem, Text } from '@looker/components'
-import { theme } from '@looker/design-tokens'
 import React from 'react'
-import { ThemeProvider } from 'styled-components'
-import { SpacingTable } from './BoxSpacingRecipeTable.styles'
+import styled from 'styled-components'
 
 const spacingTypes = [
   { value: 'm', label: 'Margin' },
@@ -10,7 +8,7 @@ const spacingTypes = [
 ]
 
 const spacingSides = [
-  { value: ' ', label: 'All', defaultLabel: '(default)' },
+  { value: '-', label: 'All', defaultLabel: '(default)' },
   { value: 't', label: 'Top' },
   { value: 'r', label: 'Right' },
   { value: 'b', label: 'Bottom' },
@@ -36,6 +34,18 @@ export interface ColumnExample {
   defaultLabel?: string
 }
 
+const SpacingTable = styled.div`
+  display: grid;
+  grid-column-gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  margin: 2rem 0;
+  & > div {
+    border-right: 1px solid ${props => props.theme.colors.palette.charcoal200};
+    &:last-child {
+      border-right: none;
+    }
+  }
+`
 const SpaceListHeader = (text: string, defaultLabel?: string) => {
   return (
     <Box mb="medium">
@@ -67,9 +77,10 @@ const ListRender = (
       <Box
         px="small"
         as="span"
-        bg="palette.charcoal200"
+        bg="palette.charcoal100"
         borderRadius="4px"
         display="inline-block"
+        color="palette.purple400"
       >
         <Code fontSize="xsmall">{value}</Code>
       </Box>
@@ -104,6 +115,7 @@ export class BoxSpacingRecipeTable extends React.Component<
 
   public render() {
     return (
+<<<<<<< HEAD
       <ThemeProvider theme={theme}>
         <SpacingTable>
           <div>
@@ -132,6 +144,34 @@ export class BoxSpacingRecipeTable extends React.Component<
           </div>
         </SpacingTable>
       </ThemeProvider>
+=======
+      <SpacingTable>
+        <div>
+          {SpaceListHeader('1. Type')}
+          <List pl="none">
+            {this.state.types.map((col, i) => {
+              return ListRender(col.value, col.label, i)
+            })}
+          </List>
+        </div>
+        <div>
+          {SpaceListHeader('2. Side', '(optional)')}
+          <List pl="none">
+            {this.state.sides.map((col, i) => {
+              return ListRender(col.value, col.label, i, col.defaultLabel)
+            })}
+          </List>
+        </div>
+        <div>
+          {SpaceListHeader('3. Amount')}
+          <List pl="none">
+            {this.state.sizes.map((col, i) => {
+              return ListRender(col.value, col.label, i)
+            })}
+          </List>
+        </div>
+      </SpacingTable>
+>>>>>>> Consistent documentation table style
     )
   }
 }

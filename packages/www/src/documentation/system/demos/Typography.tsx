@@ -1,8 +1,6 @@
 import React from 'react'
 import {
-  Box,
   Code,
-  Table,
   TableBody,
   TableDataCell,
   TableHead,
@@ -11,6 +9,7 @@ import {
   Text,
 } from '@looker/components'
 import { FontWeights, FontSizes } from '@looker/design-tokens'
+import { DocTable } from '../../../components'
 
 const specimen =
   'Open Sans is the typographic base for the tone and content of Lens’, Lookers design system'
@@ -25,9 +24,7 @@ const tableRows = typeFamily.map(t => {
   return (
     <TableRow key={t.weight}>
       <TableDataCell>
-        <Box px="small" as="span" className="prop-code">
-          <Code fontSize="xsmall">{t.weight}</Code>
-        </Box>
+        <Code>{t.weight}</Code>
       </TableDataCell>
       <TableDataCell>{t.value}</TableDataCell>
       <TableDataCell>
@@ -41,28 +38,16 @@ const tableRows = typeFamily.map(t => {
 
 export function FontWeightDemo() {
   return (
-    <Table>
+    <DocTable>
       <TableHead>
         <TableRow>
-          <TableHeaderCell>
-            <Text fontSize="small" fontWeight="semiBold" variant="subdued">
-              LENS REFERENCE
-            </Text>
-          </TableHeaderCell>
-          <TableHeaderCell>
-            <Text fontSize="small" fontWeight="semiBold" variant="subdued">
-              WEIGHT
-            </Text>
-          </TableHeaderCell>
-          <TableHeaderCell width="60%">
-            <Text fontSize="small" fontWeight="semiBold" variant="subdued">
-              SPECIMEN
-            </Text>
-          </TableHeaderCell>
+          <TableHeaderCell>Lens Reference</TableHeaderCell>
+          <TableHeaderCell>Weight</TableHeaderCell>
+          <TableHeaderCell width="60%">Specimen</TableHeaderCell>
         </TableRow>
       </TableHead>
       <TableBody>{tableRows}</TableBody>
-    </Table>
+    </DocTable>
   )
 }
 
@@ -88,9 +73,7 @@ const tableRows2 = typeRamp.map(t => {
       <TableDataCell>{t.px}</TableDataCell>
       <TableDataCell>{t.lh}</TableDataCell>
       <TableDataCell>
-        <Box px="small" as="span" className="prop-code">
-          <Code fontSize="xsmall">{t.size}</Code>
-        </Box>
+        <Code>{t.size}</Code>
       </TableDataCell>
     </TableRow>
   )
@@ -98,32 +81,16 @@ const tableRows2 = typeRamp.map(t => {
 
 export function TypeScaleDemo() {
   return (
-    <Table>
+    <DocTable>
       <TableHead>
         <TableRow>
-          <TableHeaderCell>
-            <Text fontSize="xsmall" fontWeight="semiBold" variant="subdued">
-              SPECIMEN
-            </Text>
-          </TableHeaderCell>
-          <TableHeaderCell>
-            <Text fontSize="xsmall" fontWeight="semiBold" variant="subdued">
-              FONT-SIZE
-            </Text>
-          </TableHeaderCell>
-          <TableHeaderCell>
-            <Text fontSize="xsmall" fontWeight="semiBold" variant="subdued">
-              LINE-HEIGHT
-            </Text>
-          </TableHeaderCell>
-          <TableHeaderCell>
-            <Text fontSize="xsmall" fontWeight="semiBold" variant="subdued">
-              LENS REFERENCE
-            </Text>
-          </TableHeaderCell>
+          <TableHeaderCell>Specimen</TableHeaderCell>
+          <TableHeaderCell>Font Size</TableHeaderCell>
+          <TableHeaderCell>Line Height</TableHeaderCell>
+          <TableHeaderCell>Lens Reference</TableHeaderCell>
         </TableRow>
       </TableHead>
       <TableBody>{tableRows2}</TableBody>
-    </Table>
+    </DocTable>
   )
 }

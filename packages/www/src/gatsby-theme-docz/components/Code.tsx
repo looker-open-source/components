@@ -5,8 +5,8 @@ export default styled(Box).attrs({
   as: 'span',
   bg: 'palette.charcoal100',
   borderRadius: 'small',
+  color: 'palette.purple500',
   fontFamily: 'code',
-  fontSize: 'small',
   lineHeight: 'medium',
   px: 'xxsmall',
 })``

@@ -1,17 +1,16 @@
 import React from 'react'
 import {
   Code,
-  Table,
   TableHead,
   TableRow,
   TableHeaderCell,
   TableBody,
   TableDataCell,
-  Text,
 } from '@looker/components'
+import { DocTable } from '../../../../components'
 
 export const ItemDistribution = () => (
-  <Table>
+  <DocTable>
     <TableHead>
       <TableRow>
         <TableHeaderCell width="40%">Justify Property</TableHeaderCell>
@@ -21,89 +20,61 @@ export const ItemDistribution = () => (
     <TableBody>
       <TableRow>
         <TableDataCell>
-          <span className="prop-code">
-            <Code>center</Code>
-          </span>
+          <Code>center</Code>
+        </TableDataCell>
+        <TableDataCell>Pack items around the center</TableDataCell>
+      </TableRow>
+      <TableRow>
+        <TableDataCell>
+          <Code>flex-start</Code>
+        </TableDataCell>
+        <TableDataCell>Pack items from the start</TableDataCell>
+      </TableRow>
+      <TableRow>
+        <TableDataCell>
+          <Code>flex-end</Code>
+        </TableDataCell>
+        <TableDataCell>Pack items from the end</TableDataCell>
+      </TableRow>
+      <TableRow>
+        <TableDataCell>
+          <Code>space-between</Code>
         </TableDataCell>
         <TableDataCell>
-          <Text fontSize="xsmall">Pack items around the center</Text>
+          Distribute items evenly. The first item is flush with the start, the
+          last is flush with the end
         </TableDataCell>
       </TableRow>
       <TableRow>
         <TableDataCell>
-          <span className="prop-code">
-            <Code>flex-start</Code>
-          </span>
+          <Code>space-around</Code>
         </TableDataCell>
         <TableDataCell>
-          <Text fontSize="xsmall">Pack items from the start</Text>
+          Distribute items evenly. Items have a half-size space on either end
         </TableDataCell>
       </TableRow>
       <TableRow>
         <TableDataCell>
-          <span className="prop-code">
-            <Code>flex-end</Code>
-          </span>
+          <Code>space-evenly</Code>
         </TableDataCell>
         <TableDataCell>
-          <Text fontSize="xsmall">Pack items from the end</Text>
+          Distribute items evenly. Items have equal space around them
         </TableDataCell>
       </TableRow>
       <TableRow>
         <TableDataCell>
-          <span className="prop-code">
-            <Code>space-between</Code>
-          </span>
+          <Code>stretch</Code>
         </TableDataCell>
         <TableDataCell>
-          <Text fontSize="xsmall">
-            Distribute items evenly. The first item is flush with the start, the
-            last is flush with the end{' '}
-          </Text>
-        </TableDataCell>
-      </TableRow>
-      <TableRow>
-        <TableDataCell>
-          <span className="prop-code">
-            <Code>space-around</Code>
-          </span>
-        </TableDataCell>
-        <TableDataCell>
-          <Text fontSize="xsmall">
-            Distribute items evenly. Items have a half-size space on either end
-          </Text>
-        </TableDataCell>
-      </TableRow>
-      <TableRow>
-        <TableDataCell>
-          <span className="prop-code">
-            <Code>space-evenly</Code>
-          </span>
-        </TableDataCell>
-        <TableDataCell>
-          <Text fontSize="xsmall">
-            Distribute items evenly. Items have equal space around them
-          </Text>
-        </TableDataCell>
-      </TableRow>
-      <TableRow>
-        <TableDataCell>
-          <span className="prop-code">
-            <Code>stretch</Code>
-          </span>
-        </TableDataCell>
-        <TableDataCell>
-          <Text fontSize="xsmall">
-            Distribute items evenly. Items strechted to fit the container
-          </Text>
+          Distribute items evenly. Items stretched to fit the container
         </TableDataCell>
       </TableRow>
     </TableBody>
-  </Table>
+  </DocTable>
 )
 
 export const AlignContent = () => (
-  <Table>
+  <DocTable>
     <TableHead>
       <TableRow>
         <TableHeaderCell width="40%">AlignContent Property</TableHeaderCell>
@@ -113,82 +84,57 @@ export const AlignContent = () => (
     <TableBody>
       <TableRow>
         <TableDataCell>
-          <span className="prop-code">
-            <Code>center</Code>
-          </span>
+          <Code>center</Code>
         </TableDataCell>
         <TableDataCell>
-          <Text fontSize="xsmall">
-            Lines are packed to the center of container
-          </Text>
+          Lines are packed to the center of container
         </TableDataCell>
       </TableRow>
       <TableRow>
         <TableDataCell>
-          <span className="prop-code">
-            <Code>flex-start</Code>
-          </span>
+          <Code>flex-start</Code>
         </TableDataCell>
         <TableDataCell>
-          <Text fontSize="xsmall">
-            Lines are packed to the start of the container
-          </Text>
+          Lines are packed to the start of the container
         </TableDataCell>
       </TableRow>
       <TableRow>
         <TableDataCell>
-          <span className="prop-code">
-            <Code>flex-end</Code>
-          </span>
+          <Code>flex-end</Code>
         </TableDataCell>
         <TableDataCell>
-          <Text fontSize="xsmall">
-            Lines are packed to the start of the container
-          </Text>
+          Lines are packed to the start of the container
         </TableDataCell>
       </TableRow>
       <TableRow>
         <TableDataCell>
-          <span className="prop-code">
-            <Code>space-between</Code>
-          </span>
+          <Code>space-between</Code>
         </TableDataCell>
         <TableDataCell>
-          <Text fontSize="xsmall">
-            Lines evenly distributed. First line at start of container, last
-            line at end of container
-          </Text>
+          Lines evenly distributed. First line at start of container, last line
+          at end of container
         </TableDataCell>
       </TableRow>
       <TableRow>
         <TableDataCell>
-          <span className="prop-code">
-            <Code>space-around</Code>
-          </span>
+          <Code>space-around</Code>
         </TableDataCell>
         <TableDataCell>
-          <Text fontSize="xsmall">
-            Lines evenly distributed. Even space around each line
-          </Text>
+          Lines evenly distributed. Even space around each line
         </TableDataCell>
       </TableRow>
       <TableRow>
         <TableDataCell>
-          <span className="prop-code">
-            <Code>stretch</Code>
-          </span>{' '}
-          <Text fontSize="xsmall">(default)</Text>
+          <Code>stretch </Code> (default)
         </TableDataCell>
-        <TableDataCell>
-          <Text fontSize="xsmall">Items strechted to fit the container</Text>
-        </TableDataCell>
+        <TableDataCell>Items stretched to fit the container</TableDataCell>
       </TableRow>
     </TableBody>
-  </Table>
+  </DocTable>
 )
 
 export const AligningItems = () => (
-  <Table>
+  <DocTable>
     <TableHead>
       <TableRow>
         <TableHeaderCell width="40%">AlignItems Property</TableHeaderCell>
@@ -198,67 +144,46 @@ export const AligningItems = () => (
     <TableBody>
       <TableRow>
         <TableDataCell>
-          <span className="prop-code">
-            <Code>center</Code>
-          </span>
+          <Code>center</Code>
+        </TableDataCell>
+        <TableDataCell>Items are aligned center of container</TableDataCell>
+      </TableRow>
+      <TableRow>
+        <TableDataCell>
+          <Code>flex-start</Code>
         </TableDataCell>
         <TableDataCell>
-          <Text fontSize="xsmall">Items are aligned center of container</Text>
+          Items are aligned to the start of the container
         </TableDataCell>
       </TableRow>
       <TableRow>
         <TableDataCell>
-          <span className="prop-code">
-            <Code>flex-start</Code>
-          </span>
+          <Code>flex-end</Code>
         </TableDataCell>
         <TableDataCell>
-          <Text fontSize="xsmall">
-            Items are aligned to the start of the container
-          </Text>
+          Items are aligned to the start of the container
         </TableDataCell>
       </TableRow>
       <TableRow>
         <TableDataCell>
-          <span className="prop-code">
-            <Code>flex-end</Code>
-          </span>
+          <Code>baseline</Code>
         </TableDataCell>
         <TableDataCell>
-          <Text fontSize="xsmall">
-            Items are aligned to the start of the container
-          </Text>
+          All items are aligned so their baselines align
         </TableDataCell>
       </TableRow>
       <TableRow>
         <TableDataCell>
-          <span className="prop-code">
-            <Code>baseline</Code>
-          </span>
+          <Code>stretch </Code> (default)
         </TableDataCell>
-        <TableDataCell>
-          <Text fontSize="xsmall">
-            All items are aligned so their baselines align
-          </Text>
-        </TableDataCell>
-      </TableRow>
-      <TableRow>
-        <TableDataCell>
-          <span className="prop-code">
-            <Code>stretch</Code>
-          </span>
-          <Text fontSize="xsmall">(default)</Text>
-        </TableDataCell>
-        <TableDataCell>
-          <Text fontSize="xsmall">Items strechted to fit the container</Text>
-        </TableDataCell>
+        <TableDataCell>Items stretched to fit the container</TableDataCell>
       </TableRow>
     </TableBody>
-  </Table>
+  </DocTable>
 )
 
 export const AligningContent = () => (
-  <Table>
+  <DocTable>
     <TableHead>
       <TableRow>
         <TableHeaderCell width="40%">AlignContent Property</TableHeaderCell>
@@ -268,84 +193,59 @@ export const AligningContent = () => (
     <TableBody>
       <TableRow>
         <TableDataCell>
-          <span className="prop-code">
-            <Code>center</Code>
-          </span>
+          <Code>center</Code>
         </TableDataCell>
         <TableDataCell>
-          <Text fontSize="xsmall">
-            Lines are packed to the center of container
-          </Text>
+          Lines are packed to the center of container
         </TableDataCell>
       </TableRow>
       <TableRow>
         <TableDataCell>
-          <span className="prop-code">
-            <Code>flex-start</Code>
-          </span>
+          <Code>flex-start</Code>
         </TableDataCell>
         <TableDataCell>
-          <Text fontSize="xsmall">
-            Lines are packed to the start of the container
-          </Text>
+          Lines are packed to the start of the container
         </TableDataCell>
       </TableRow>
       <TableRow>
         <TableDataCell>
-          <span className="prop-code">
-            <Code>flex-end</Code>
-          </span>
+          <Code>flex-end</Code>
         </TableDataCell>
         <TableDataCell>
-          <Text fontSize="xsmall">
-            Lines are packed to the start of the container
-          </Text>
+          Lines are packed to the start of the container
         </TableDataCell>
       </TableRow>
       <TableRow>
         <TableDataCell>
-          <span className="prop-code">
-            <Code>space-between</Code>
-          </span>
+          <Code>space-between</Code>
         </TableDataCell>
         <TableDataCell>
-          <Text fontSize="xsmall">
-            Lines evenly distributed. First line at start of container, last
-            line at end of container
-          </Text>
+          Lines evenly distributed. First line at start of container, last line
+          at end of container
         </TableDataCell>
       </TableRow>
       <TableRow>
         <TableDataCell>
-          <span className="prop-code">
-            <Code>space-around</Code>
-          </span>
+          <Code>space-around</Code>
         </TableDataCell>
         <TableDataCell>
-          <Text fontSize="xsmall">
-            Lines evenly distributed. Even space around each line
-          </Text>
+          Lines evenly distributed. Even space around each line
         </TableDataCell>
       </TableRow>
       <TableRow>
         <TableDataCell>
-          <span className="prop-code">
-            <Code>stretch</Code>
-          </span>{' '}
-          <Text fontSize="xsmall">(default)</Text>
+          <Code>stretch </Code> (default)
         </TableDataCell>
-        <TableDataCell>
-          <Text fontSize="xsmall">Items strechted to fit the container</Text>
-        </TableDataCell>
+        <TableDataCell>Items stretched to fit the container</TableDataCell>
       </TableRow>
     </TableBody>
-  </Table>
+  </DocTable>
 )
 
 // FlexItem
 
 export const AdjustingIndividualAlignment = () => (
-  <Table>
+  <DocTable>
     <TableHead>
       <TableRow>
         <TableHeaderCell width="40%">alignSelf Property</TableHeaderCell>
@@ -355,57 +255,36 @@ export const AdjustingIndividualAlignment = () => (
     <TableBody>
       <TableRow>
         <TableDataCell>
-          <span className="prop-code">
-            <Code>center</Code>
-          </span>
+          <Code>center</Code>
         </TableDataCell>
-        <TableDataCell>
-          <Text fontSize="xsmall">Pack items around the center</Text>
-        </TableDataCell>
+        <TableDataCell>Pack items around the center</TableDataCell>
       </TableRow>
       <TableRow>
         <TableDataCell>
-          <span className="prop-code">
-            <Code>flex-start</Code>
-          </span>
+          <Code>flex-start</Code>
         </TableDataCell>
-        <TableDataCell>
-          <Text fontSize="xsmall">Pack items from the start</Text>
-        </TableDataCell>
+        <TableDataCell>Pack items from the start</TableDataCell>
       </TableRow>
       <TableRow>
         <TableDataCell>
-          <span className="prop-code">
-            <Code>flex-end</Code>
-          </span>
+          <Code>flex-end</Code>
         </TableDataCell>
-        <TableDataCell>
-          <Text fontSize="xsmall">Pack items from the end</Text>
-        </TableDataCell>
+        <TableDataCell>Pack items from the end</TableDataCell>
       </TableRow>
       <TableRow>
         <TableDataCell>
-          <span className="prop-code">
-            <Code>baseline</Code>
-          </span>
+          <Code>baseline</Code>
         </TableDataCell>
-        <TableDataCell>
-          <Text fontSize="xsmall">Item aligned to its baseline</Text>
-        </TableDataCell>
+        <TableDataCell>Item aligned to its baseline</TableDataCell>
       </TableRow>
       <TableRow>
         <TableDataCell>
-          <span className="prop-code">
-            <Code>stretch</Code>
-          </span>{' '}
-          <Text fontSize="xsmall">(default)</Text>
+          <Code>stretch </Code> (default)
         </TableDataCell>
-        <TableDataCell>
-          <Text fontSize="xsmall">stretch to the container</Text>
-        </TableDataCell>
+        <TableDataCell>stretch to the container</TableDataCell>
       </TableRow>
     </TableBody>
-  </Table>
+  </DocTable>
 )
 
 export const FlexItemExample = () => (
@@ -420,46 +299,26 @@ export const FlexItemExample = () => (
     <TableBody>
       <TableRow>
         <TableDataCell>
-          <span className="prop-code">
-            <Code>flex-grow</Code>
-          </span>
+          <Code>flex-grow</Code>
         </TableDataCell>
-        <TableDataCell>
-          <Text fontSize="xsmall">
-            Specifies the grow factor of a flex item
-          </Text>
-        </TableDataCell>
-        <TableDataCell>
-          <Text fontSize="xsmall">A positive unitless number</Text>
-        </TableDataCell>
+        <TableDataCell>Specifies the grow factor of a flex item</TableDataCell>
+        <TableDataCell>A positive unitless number</TableDataCell>
       </TableRow>
       <TableRow>
         <TableDataCell>
-          <span className="prop-code">
-            <Code>flex-shrink</Code>
-          </span>
+          <Code>flex-shrink</Code>
         </TableDataCell>
         <TableDataCell>
-          <Text fontSize="xsmall">
-            Specifies the shrink factor of a flex item
-          </Text>
+          Specifies the shrink factor of a flex item
         </TableDataCell>
-        <TableDataCell>
-          <Text fontSize="xsmall">A positive unitless number</Text>
-        </TableDataCell>
+        <TableDataCell>A positive unitless number</TableDataCell>
       </TableRow>
       <TableRow>
         <TableDataCell>
-          <span className="prop-code">
-            <Code>flex-basis</Code>
-          </span>
+          <Code>flex-basis</Code>
         </TableDataCell>
-        <TableDataCell>
-          <Text fontSize="xsmall">Specifies the flex items size</Text>
-        </TableDataCell>
-        <TableDataCell>
-          <Text fontSize="xsmall">A valid width unit</Text>
-        </TableDataCell>
+        <TableDataCell>Specifies the flex items size</TableDataCell>
+        <TableDataCell>A valid width unit</TableDataCell>
       </TableRow>
     </TableBody>
   </TableRow>

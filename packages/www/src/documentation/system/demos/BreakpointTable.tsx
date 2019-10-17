@@ -1,16 +1,14 @@
 import React from 'react'
 import {
-  Box,
   Code,
   Text,
-  Table,
   TableBody,
   TableDataCell,
   TableHead,
   TableHeaderCell,
   TableRow,
 } from '@looker/components'
-import { BreakpointTableWrapper } from './BreakpointTable.styles'
+import { DocTable } from '../../../components'
 
 const breakpointLabels = [
   'Breakpoint',
@@ -74,22 +72,12 @@ const BreakpointRow = (
 ) => {
   return (
     <TableRow key={key} style={{ verticalAlign: 'middle' }}>
+      <TableDataCell>{slot}</TableDataCell>
+      <TableDataCell>{starts}</TableDataCell>
       <TableDataCell>
-        <Text fontSize="small">{slot}</Text>
+        <Code>min-width: {rem}</Code>
       </TableDataCell>
-      <TableDataCell>
-        <Box mr="large">
-          <Text fontSize="small">{starts}</Text>
-        </Box>
-      </TableDataCell>
-      <TableDataCell>
-        <Box px="small" as="span" className="prop-code">
-          <Code fontSize="xsmall">min-width: {rem}</Code>
-        </Box>
-      </TableDataCell>
-      <TableDataCell>
-        <Text fontSize="small">{description}</Text>
-      </TableDataCell>
+      <TableDataCell>{description}</TableDataCell>
     </TableRow>
   )
 }
@@ -111,28 +99,20 @@ export class BreakpointTable extends React.Component<
 
   public render() {
     return (
-      <BreakpointTableWrapper>
-        <Table>
-          <TableHead>
-            <TableRow>
-              {this.state.labels.map((label, i) => {
-                return TableLabel(label, i)
-              })}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {this.state.breakpoints.map((bp, i) => {
-              return BreakpointRow(
-                bp.slot,
-                bp.starts,
-                bp.rem,
-                bp.description,
-                i
-              )
+      <DocTable>
+        <TableHead>
+          <TableRow>
+            {this.state.labels.map((label, i) => {
+              return TableLabel(label, i)
             })}
-          </TableBody>
-        </Table>
-      </BreakpointTableWrapper>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {this.state.breakpoints.map((bp, i) => {
+            return BreakpointRow(bp.slot, bp.starts, bp.rem, bp.description, i)
+          })}
+        </TableBody>
+      </DocTable>
     )
   }
 }
