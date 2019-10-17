@@ -39,16 +39,18 @@ You can combine different spacing recipes to apply spacing to multiple sides at 
 Below are a few more examples of building a spacing recipe to help clarify how to use spacing with the `<Box>` component.
 
 <Playground>
-  <Box m="large">Margin All Sides - Large</Box>
-  <Box pl="xsmall">Padding left - Extra Small</Box>
-  <Box pl="medium">Padding left - Medium</Box>
-  <Box my="xxxlarge" ml="xlarge">
-    Margin Top & Bottom - XXXLarge, Margin left - XLarge
-  </Box>
-  <Box pb="xxlarge" ml="xxxlarge">
-    {' '}
-    Padding Bottom - XXLarge, Margin left - XXXLarge
-  </Box>
+  <React.Fragment>
+    <Box m="large">Margin All Sides - Large</Box>
+    <Box pl="xsmall">Padding left - Extra Small</Box>
+    <Box pl="medium">Padding left - Medium</Box>
+    <Box my="xxxlarge" ml="xlarge">
+      Margin Top & Bottom - XXXLarge, Margin left - XLarge
+    </Box>
+    <Box pb="xxlarge" ml="xxxlarge">
+      {' '}
+      Padding Bottom - XXLarge, Margin left - XXXLarge
+    </Box>
+  </React.Fragment>
 </Playground>
 
 ### Spacing Responsively
@@ -75,33 +77,37 @@ Boxes provide a low-level customization interface which allows them to have diff
 ### Customized Display
 
 <Playground>
-  <Box display="inline">I'm inline.</Box>
-  <Box display="inline">I'm also inline.</Box>
+  <React.Fragment>
+    <Box display="inline">I'm inline.</Box>
+    <Box display="inline">I'm also inline.</Box>
+  </React.Fragment>
 </Playground>
 
 ### Heights and Widths
 
 <Playground>
-  <Box
-    display="inline-block"
-    height="100px"
-    bg="palette.green200"
-    p="small"
-    minWidth="200px"
-  >
-    I'm 100px tall.
-  </Box>
-  <Box
-    display="inline-block"
-    height="50px"
-    bg="palette.blue200"
-    ml="small"
-    p="small"
-    width="100px"
-    fontSize="small"
-  >
-    I'm 50px tall.
-  </Box>
+  <React.Fragment>
+    <Box
+      display="inline-block"
+      height="100px"
+      bg="palette.green200"
+      p="small"
+      minWidth="200px"
+    >
+      I'm 100px tall.
+    </Box>
+    <Box
+      display="inline-block"
+      height="50px"
+      bg="palette.blue200"
+      ml="small"
+      p="small"
+      width="100px"
+      fontSize="small"
+    >
+      I'm 50px tall.
+    </Box>
+  </React.Fragment>
 </Playground>
 
 ### Background Colors
@@ -109,10 +115,12 @@ Boxes provide a low-level customization interface which allows them to have diff
 Boxes can reference colors from the theme object, pulling any color on the theme's `colors` property.
 
 <Playground>
-  <Box bg="palette.purple200">My background is purple200.</Box>
-  <Box bg="semanticColors.primary.main">
-    I'm the semantic color "primary.main".
-  </Box>
+  <React.Fragment>
+    <Box bg="palette.purple200">My background is purple200.</Box>
+    <Box bg="semanticColors.primary.main">
+      I'm the semantic color "primary.main".
+    </Box>
+  </React.Fragment>
 </Playground>
 
 ### Positioning

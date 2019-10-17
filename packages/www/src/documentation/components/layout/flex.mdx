@@ -130,72 +130,74 @@ The `<Flex>` component allows you to control how its children are distributed wi
 Here is a visual example of how using `justifyContent` affects the distribution of items in a `<Flex />` component.
 
 <Playground>
-  <Flex justifyContent="flex-start" mb="medium" bg="palette.charcoal000">
-    <Box>
-      <Text fontSize="xxxxlarge">🕺</Text>
-    </Box>
-    <Box>
-      <Text fontSize="xxxxlarge">🎶</Text>
-    </Box>
-    <Box>
-      <Text fontSize="xxxxlarge">💃</Text>
-    </Box>
-  </Flex>
-  <Flex justifyContent="space-between" mb="medium" bg="palette.charcoal000">
-    <Box>
-      <Text fontSize="xxxxlarge">🕺</Text>
-    </Box>
-    <Box>
-      <Text fontSize="xxxxlarge">🎶</Text>
-    </Box>
-    <Box>
-      <Text fontSize="xxxxlarge">💃</Text>
-    </Box>
-  </Flex>
-  <Flex justifyContent="space-around" mb="medium" bg="palette.charcoal000">
-    <Box>
-      <Text fontSize="xxxxlarge">🕺</Text>
-    </Box>
-    <Box>
-      <Text fontSize="xxxxlarge">🎶</Text>
-    </Box>
-    <Box>
-      <Text fontSize="xxxxlarge">💃</Text>
-    </Box>
-  </Flex>
-  <Flex justifyContent="space-evenly" mb="medium" bg="palette.charcoal000">
-    <Box>
-      <Text fontSize="xxxxlarge">🕺</Text>
-    </Box>
-    <Box>
-      <Text fontSize="xxxxlarge">🎶</Text>
-    </Box>
-    <Box>
-      <Text fontSize="xxxxlarge">💃</Text>
-    </Box>
-  </Flex>
-  <Flex justifyContent="center" mb="medium" bg="palette.charcoal000">
-    <Box>
-      <Text fontSize="xxxxlarge">🕺</Text>
-    </Box>
-    <Box>
-      <Text fontSize="xxxxlarge">🎶</Text>
-    </Box>
-    <Box>
-      <Text fontSize="xxxxlarge">💃</Text>
-    </Box>
-  </Flex>
-  <Flex justifyContent="flex-end" mb="medium" bg="palette.charcoal000">
-    <Box>
-      <Text fontSize="xxxxlarge">🕺</Text>
-    </Box>
-    <Box>
-      <Text fontSize="xxxxlarge">🎶</Text>
-    </Box>
-    <Box>
-      <Text fontSize="xxxxlarge">💃</Text>
-    </Box>
-  </Flex>
+  <React.Fragment>
+    <Flex justifyContent="flex-start" mb="medium" bg="palette.charcoal000">
+      <Box>
+        <Text fontSize="xxxxlarge">🕺</Text>
+      </Box>
+      <Box>
+        <Text fontSize="xxxxlarge">🎶</Text>
+      </Box>
+      <Box>
+        <Text fontSize="xxxxlarge">💃</Text>
+      </Box>
+    </Flex>
+    <Flex justifyContent="space-between" mb="medium" bg="palette.charcoal000">
+      <Box>
+        <Text fontSize="xxxxlarge">🕺</Text>
+      </Box>
+      <Box>
+        <Text fontSize="xxxxlarge">🎶</Text>
+      </Box>
+      <Box>
+        <Text fontSize="xxxxlarge">💃</Text>
+      </Box>
+    </Flex>
+    <Flex justifyContent="space-around" mb="medium" bg="palette.charcoal000">
+      <Box>
+        <Text fontSize="xxxxlarge">🕺</Text>
+      </Box>
+      <Box>
+        <Text fontSize="xxxxlarge">🎶</Text>
+      </Box>
+      <Box>
+        <Text fontSize="xxxxlarge">💃</Text>
+      </Box>
+    </Flex>
+    <Flex justifyContent="space-evenly" mb="medium" bg="palette.charcoal000">
+      <Box>
+        <Text fontSize="xxxxlarge">🕺</Text>
+      </Box>
+      <Box>
+        <Text fontSize="xxxxlarge">🎶</Text>
+      </Box>
+      <Box>
+        <Text fontSize="xxxxlarge">💃</Text>
+      </Box>
+    </Flex>
+    <Flex justifyContent="center" mb="medium" bg="palette.charcoal000">
+      <Box>
+        <Text fontSize="xxxxlarge">🕺</Text>
+      </Box>
+      <Box>
+        <Text fontSize="xxxxlarge">🎶</Text>
+      </Box>
+      <Box>
+        <Text fontSize="xxxxlarge">💃</Text>
+      </Box>
+    </Flex>
+    <Flex justifyContent="flex-end" mb="medium" bg="palette.charcoal000">
+      <Box>
+        <Text fontSize="xxxxlarge">🕺</Text>
+      </Box>
+      <Box>
+        <Text fontSize="xxxxlarge">🎶</Text>
+      </Box>
+      <Box>
+        <Text fontSize="xxxxlarge">💃</Text>
+      </Box>
+    </Flex>
+  </React.Fragment>
 </Playground>
 
 ## Aligning Items
@@ -207,76 +209,78 @@ Flex box allows for quickly adjusting the alignment of items inside the flex con
 Here is an example of using `alignItems` to adjust how items are aligned within the flex container.
 
 <Playground>
-  <Flex mb="xxlarge">
-    <FlexItem p="xxlarge" bg="palette.purple200">
-      Default (stretch)
-    </FlexItem>
-    <FlexItem p="large" bg="palette.blue200">
-      One
-    </FlexItem>
-    <FlexItem p="medium" bg="palette.green200">
-      Two
-    </FlexItem>
-    <FlexItem p="small" bg="palette.red200">
-      Three
-    </FlexItem>
-  </Flex>
-  <Flex alignItems="center" mb="xxlarge">
-    <FlexItem p="xxlarge" bg="palette.purple200">
-      Center
-    </FlexItem>
-    <FlexItem p="large" bg="palette.blue200">
-      One
-    </FlexItem>
-    <FlexItem p="medium" bg="palette.green200">
-      Two
-    </FlexItem>
-    <FlexItem p="small" bg="palette.red200">
-      Three
-    </FlexItem>
-  </Flex>
-  <Flex alignItems="flex-start" mb="xxlarge">
-    <FlexItem p="xxlarge" bg="palette.purple200">
-      Start
-    </FlexItem>
-    <FlexItem p="large" bg="palette.blue200">
-      Two
-    </FlexItem>
-    <FlexItem p="medium" bg="palette.green200">
-      Three
-    </FlexItem>
-    <FlexItem p="small" bg="palette.red200">
-      Four
-    </FlexItem>
-  </Flex>
-  <Flex alignItems="flex-end" mb="xxlarge">
-    <FlexItem p="xxlarge" bg="palette.purple200">
-      End
-    </FlexItem>
-    <FlexItem p="large" bg="palette.blue200">
-      Two
-    </FlexItem>
-    <FlexItem p="medium" bg="palette.green200">
-      Three
-    </FlexItem>
-    <FlexItem p="small" bg="palette.red200">
-      Four
-    </FlexItem>
-  </Flex>
-  <Flex alignItems="baseline" mb="xxlarge">
-    <FlexItem p="xxlarge" bg="palette.purple200">
-      Baseline
-    </FlexItem>
-    <FlexItem p="large" bg="palette.blue200">
-      Two
-    </FlexItem>
-    <FlexItem p="medium" bg="palette.green200">
-      Three
-    </FlexItem>
-    <FlexItem p="small" bg="palette.red200">
-      Four
-    </FlexItem>
-  </Flex>
+  <React.Fragment>
+    <Flex mb="xxlarge">
+      <FlexItem p="xxlarge" bg="palette.purple200">
+        Default (stretch)
+      </FlexItem>
+      <FlexItem p="large" bg="palette.blue200">
+        One
+      </FlexItem>
+      <FlexItem p="medium" bg="palette.green200">
+        Two
+      </FlexItem>
+      <FlexItem p="small" bg="palette.red200">
+        Three
+      </FlexItem>
+    </Flex>
+    <Flex alignItems="center" mb="xxlarge">
+      <FlexItem p="xxlarge" bg="palette.purple200">
+        Center
+      </FlexItem>
+      <FlexItem p="large" bg="palette.blue200">
+        One
+      </FlexItem>
+      <FlexItem p="medium" bg="palette.green200">
+        Two
+      </FlexItem>
+      <FlexItem p="small" bg="palette.red200">
+        Three
+      </FlexItem>
+    </Flex>
+    <Flex alignItems="flex-start" mb="xxlarge">
+      <FlexItem p="xxlarge" bg="palette.purple200">
+        Start
+      </FlexItem>
+      <FlexItem p="large" bg="palette.blue200">
+        Two
+      </FlexItem>
+      <FlexItem p="medium" bg="palette.green200">
+        Three
+      </FlexItem>
+      <FlexItem p="small" bg="palette.red200">
+        Four
+      </FlexItem>
+    </Flex>
+    <Flex alignItems="flex-end" mb="xxlarge">
+      <FlexItem p="xxlarge" bg="palette.purple200">
+        End
+      </FlexItem>
+      <FlexItem p="large" bg="palette.blue200">
+        Two
+      </FlexItem>
+      <FlexItem p="medium" bg="palette.green200">
+        Three
+      </FlexItem>
+      <FlexItem p="small" bg="palette.red200">
+        Four
+      </FlexItem>
+    </Flex>
+    <Flex alignItems="baseline" mb="xxlarge">
+      <FlexItem p="xxlarge" bg="palette.purple200">
+        Baseline
+      </FlexItem>
+      <FlexItem p="large" bg="palette.blue200">
+        Two
+      </FlexItem>
+      <FlexItem p="medium" bg="palette.green200">
+        Three
+      </FlexItem>
+      <FlexItem p="small" bg="palette.red200">
+        Four
+      </FlexItem>
+    </Flex>
+  </React.Fragment>
 </Playground>
 
 ## Aligning Content
@@ -346,39 +350,41 @@ If you have multiple rows of flex items, the `alignContent` property determines 
 The `flexWrap` property determines if flex items should be forced into a single line or if they can wrap onto multiple lines.
 
 <Playground>
-  <Flex width="80%" flexWrap="nowrap" mb="large">
-    <FlexItem width="40%" p="large" bg="palette.red200">
-      These Lines
-    </FlexItem>
-    <FlexItem width="40%" p="large" bg="palette.blue200">
-      Will NOT
-    </FlexItem>
-    <FlexItem width="40%" p="large" bg="palette.green200">
-      Wrap
-    </FlexItem>
-  </Flex>
-  <Flex width="50%" flexWrap="wrap" mb="large">
-    <FlexItem width="40%" p="large" bg="palette.red200">
-      These Lines
-    </FlexItem>
-    <FlexItem width="40%" p="large" bg="palette.blue200">
-      Will
-    </FlexItem>
-    <FlexItem width="40%" p="large" bg="palette.green200">
-      Wrap
-    </FlexItem>
-  </Flex>
-  <Flex width="50%" flexWrap="wrap-reverse" mb="large">
-    <FlexItem width="40%" p="large" bg="palette.red200">
-      These Lines
-    </FlexItem>
-    <FlexItem width="40%" p="large" bg="palette.blue200">
-      Will
-    </FlexItem>
-    <FlexItem width="40%" p="large" bg="palette.green200">
-      Wrap Reverse
-    </FlexItem>
-  </Flex>
+  <React.Fragment>
+    <Flex width="80%" flexWrap="nowrap" mb="large">
+      <FlexItem width="40%" p="large" bg="palette.red200">
+        These Lines
+      </FlexItem>
+      <FlexItem width="40%" p="large" bg="palette.blue200">
+        Will NOT
+      </FlexItem>
+      <FlexItem width="40%" p="large" bg="palette.green200">
+        Wrap
+      </FlexItem>
+    </Flex>
+    <Flex width="50%" flexWrap="wrap" mb="large">
+      <FlexItem width="40%" p="large" bg="palette.red200">
+        These Lines
+      </FlexItem>
+      <FlexItem width="40%" p="large" bg="palette.blue200">
+        Will
+      </FlexItem>
+      <FlexItem width="40%" p="large" bg="palette.green200">
+        Wrap
+      </FlexItem>
+    </Flex>
+    <Flex width="50%" flexWrap="wrap-reverse" mb="large">
+      <FlexItem width="40%" p="large" bg="palette.red200">
+        These Lines
+      </FlexItem>
+      <FlexItem width="40%" p="large" bg="palette.blue200">
+        Will
+      </FlexItem>
+      <FlexItem width="40%" p="large" bg="palette.green200">
+        Wrap Reverse
+      </FlexItem>
+    </Flex>
+  </React.Fragment>
 </Playground>
 
 ## Responsive Behavior
@@ -449,60 +455,62 @@ By default flex items are laid our in source order, the `order` property on a `<
 **Note:** the `order` value default is `0`, so setting an `order="1"` will put the item at the end unless another flex item has a higher `order` set. You can also use negative numbers to set an item at the beginning.
 
 <Playground>
-  <Flex bg="palette.charcoal000" mb="large">
-    <FlexItem>
-      <Box m="small" p="large" bg="palette.blue200">
-        0
-      </Box>
-    </FlexItem>
-    <FlexItem>
-      <Box m="small" p="large" bg="palette.purple200">
-        1
-      </Box>
-    </FlexItem>
-    <FlexItem>
-      <Box m="small" p="large" bg="palette.green200">
-        2
-      </Box>
-    </FlexItem>
-    <FlexItem>
-      <Box m="small" p="large" bg="palette.yellow200">
-        3
-      </Box>
-    </FlexItem>
-    <FlexItem>
-      <Box m="small" p="large" bg="palette.red200">
-        4
-      </Box>
-    </FlexItem>
-  </Flex>
-  <Flex bg="palette.charcoal000">
-    <FlexItem>
-      <Box m="small" p="large" bg="palette.blue200">
-        0
-      </Box>
-    </FlexItem>
-    <FlexItem order="2">
-      <Box m="small" p="large" bg="palette.purple200">
-        1
-      </Box>
-    </FlexItem>
-    <FlexItem order="1">
-      <Box m="small" p="large" bg="palette.green200">
-        2
-      </Box>
-    </FlexItem>
-    <FlexItem>
-      <Box m="small" p="large" bg="palette.yellow200">
-        3
-      </Box>
-    </FlexItem>
-    <FlexItem order="-1">
-      <Box m="small" p="large" bg="palette.red200">
-        4
-      </Box>
-    </FlexItem>
-  </Flex>
+  <React.Fragment>
+    <Flex bg="palette.charcoal000" mb="large">
+      <FlexItem>
+        <Box m="small" p="large" bg="palette.blue200">
+          0
+        </Box>
+      </FlexItem>
+      <FlexItem>
+        <Box m="small" p="large" bg="palette.purple200">
+          1
+        </Box>
+      </FlexItem>
+      <FlexItem>
+        <Box m="small" p="large" bg="palette.green200">
+          2
+        </Box>
+      </FlexItem>
+      <FlexItem>
+        <Box m="small" p="large" bg="palette.yellow200">
+          3
+        </Box>
+      </FlexItem>
+      <FlexItem>
+        <Box m="small" p="large" bg="palette.red200">
+          4
+        </Box>
+      </FlexItem>
+    </Flex>
+    <Flex bg="palette.charcoal000">
+      <FlexItem>
+        <Box m="small" p="large" bg="palette.blue200">
+          0
+        </Box>
+      </FlexItem>
+      <FlexItem order="2">
+        <Box m="small" p="large" bg="palette.purple200">
+          1
+        </Box>
+      </FlexItem>
+      <FlexItem order="1">
+        <Box m="small" p="large" bg="palette.green200">
+          2
+        </Box>
+      </FlexItem>
+      <FlexItem>
+        <Box m="small" p="large" bg="palette.yellow200">
+          3
+        </Box>
+      </FlexItem>
+      <FlexItem order="-1">
+        <Box m="small" p="large" bg="palette.red200">
+          4
+        </Box>
+      </FlexItem>
+    </Flex>
+  </React.Fragment>
 </Playground>
 
 ## Controlling Item Size

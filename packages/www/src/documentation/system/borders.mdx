@@ -16,15 +16,17 @@ Borders help define the space and structure of the interface.
 ### Using Border Colors
 
 <Playground>
-  <Box
-    borderColor="palette.charcoal300"
-    border="solid 1px"
-    p="large"
-    mb="small"
-  >
-    I have the default border
-  </Box>
-  <Box borderColor="palette.charcoal400" border="solid 1px" p="large">
-    I have the dark border
-  </Box>
+  <React.Fragment>
+    <Box
+      border="solid 1px"
+      borderColor="palette.charcoal300"
+      p="large"
+      mb="small"
+    >
+      I have the default border
+    </Box>
+    <Box borderColor="palette.charcoal400" border="solid 1px" p="large">
+      I have the dark border
+    </Box>
+  </React.Fragment>
 </Playground>

@@ -37,11 +37,13 @@ The `branded` property turns the background to the theme's primary color when ch
 A name and ID can be specified in the `<Radio />` component. Radio buttons of the same `name` are considered to be in a 'radio group' and only one radio button in a radio group can be selected at a time.
 
 <Playground>
-  <Radio name="someName" id="one" />
-  <br />
-  <Radio name="someName" id="two" />
-  <br />
-  <Radio name="someName" id="three" />
+  <React.Fragment>
+    <Radio name="someName" id="one" />
+    <br />
+    <Radio name="someName" id="two" />
+    <br />
+    <Radio name="someName" id="three" />
+  </React.Fragment>
 </Playground>
 
 ## Checked Property
@@ -49,9 +51,11 @@ A name and ID can be specified in the `<Radio />` component. Radio buttons of th
 The `<Radio />` component accepts the `checked` property, which either sets the radio button as selected or not.
 
 <Playground>
-  <Radio checked={true} readOnly />
-  <br />
-  <Radio checked={false} readOnly />
+  <React.Fragment>
+    <Radio checked={true} readOnly />
+    <br />
+    <Radio checked={false} readOnly />
+  </React.Fragment>
 </Playground>
 
 ## Disabled Property
@@ -59,7 +63,9 @@ The `<Radio />` component accepts the `checked` property, which either sets the 
 Use the disable property to gray out the radio button, making it unclickable.
 
 <Playground>
-  <Radio disabled />
-  <br />
-  <Radio disabled checked />
+  <React.Fragment>
+    <Radio disabled />
+    <br />
+    <Radio disabled checked />
+  </React.Fragment>
 </Playground>

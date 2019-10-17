@@ -108,7 +108,7 @@ export class BoxSpacingRecipeTable extends React.Component<
         <SpacingTable>
           <div>
             {SpaceListHeader('1. Type')}
-            <List pl="none">
+            <List pl="none" type="none">
               {this.state.types.map((col, i) => {
                 return ListRender(col.value, col.label, i)
               })}
@@ -116,7 +116,7 @@ export class BoxSpacingRecipeTable extends React.Component<
           </div>
           <div>
             {SpaceListHeader('2. Side', '(optional)')}
-            <List pl="none">
+            <List pl="none" type="none">
               {this.state.sides.map((col, i) => {
                 return ListRender(col.value, col.label, i, col.defaultLabel)
               })}
@@ -124,7 +124,7 @@ export class BoxSpacingRecipeTable extends React.Component<
           </div>
           <div>
             {SpaceListHeader('3. Amount')}
-            <List pl="none">
+            <List pl="none" type="none">
               {this.state.sizes.map((col, i) => {
                 return ListRender(col.value, col.label, i)
               })}

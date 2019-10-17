@@ -117,5 +117,8 @@
     "prerelease": "yarn build",
     "release": "lerna publish",
     "test": "jest"
+  },
+  "dependencies": {
+    "react-live": "^2.2.1"
   }
 }

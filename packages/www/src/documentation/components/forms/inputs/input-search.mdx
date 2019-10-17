@@ -22,22 +22,24 @@ The `<InputSearch />` component renders a single search input element. You can a
 ## Basic Example
 
 <Playground>
-  <InputSearch placeholder="Type your search" />
-  <Divider my="medium" />
-  <InputSearch placeholder="Type your search" value="test search" />
-  <Divider my="medium" />
-  <InputSearch
-    width="50%"
-    placeholder="Type your search"
-    value="test search 0"
-    summary={'some text'}
-  />
-  <Divider my="medium" />
-  <InputSearch
-    placeholder="Type your search"
-    value="test search 1"
-    hideControls
-  />
+  <React.Fragment>
+    <InputSearch placeholder="Type your search" />
+    <Divider my="medium" />
+    <InputSearch placeholder="Type your search" value="test search" />
+    <Divider my="medium" />
+    <InputSearch
+      width="50%"
+      placeholder="Type your search"
+      value="test search 0"
+      summary={'some text'}
+    />
+    <Divider my="medium" />
+    <InputSearch
+      placeholder="Type your search"
+      value="test search 1"
+      hideControls
+    />
+  </React.Fragment>
 </Playground>
 
 ## Controlled Example

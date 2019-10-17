@@ -25,9 +25,11 @@ import { ComponentDetail } from '../../../components'
 By default the `<Text />` component will render text wrapped in a `<span>`, if you need another html element for semantic purposes you can use the `element` property
 
 <Playground>
-  <Text>By default I am a span</Text>
-  <Paragraph>Wrapped in a paragraph tag</Paragraph>
-  <Code>Wrapped in a code tag</Code>
+  <React.Fragment>
+    <Text>By default I am a span</Text>
+    <Paragraph>Wrapped in a paragraph tag</Paragraph>
+    <Code>Wrapped in a code tag</Code>
+  </React.Fragment>
 </Playground>
 
 ---
@@ -37,9 +39,11 @@ By default the `<Text />` component will render text wrapped in a `<span>`, if y
 If you need to adjust the font-size of the rendered text, you can use the `size` property and a value from the [type scale](/#!/Typography)
 
 <Playground>
-  <Text fontSize="xxxxlarge">Sized to xxxxlarge</Text>
-  <Text fontSize="xxlarge">Sized to xxlarge</Text>
-  <Text fontSize="small">Sized to small</Text>
+  <React.Fragment>
+    <Text fontSize="xxxxlarge">Sized to xxxxlarge</Text>
+    <Text fontSize="xxlarge">Sized to xxlarge</Text>
+    <Text fontSize="small">Sized to small</Text>
+  </React.Fragment>
 </Playground>
 
 ---
@@ -49,15 +53,17 @@ If you need to adjust the font-size of the rendered text, you can use the `size`
 Common patterns for text is to adjust the font weight and transform the text. Below is an example of using the `weight` and `textTransform` properties to modify the rendered text
 
 <Playground>
-  <Text fontSize="small" textTransform="uppercase" fontWeight="semiBold">
-    A great story
-  </Text>
-  <Text fontSize="xxxxlarge" fontWeight="light">
-    This is a great headline
-  </Text>
-  <Text fontSize="small" textTransform="caps">
-    Some metadata about this story
-  </Text>
+  <React.Fragment>
+    <Text fontSize="small" textTransform="uppercase" fontWeight="semiBold">
+      A great story
+    </Text>
+    <Text fontSize="xxxxlarge" fontWeight="light">
+      This is a great headline
+    </Text>
+    <Text fontSize="small" textTransform="caps">
+      Some metadata about this story
+    </Text>
+  </React.Fragment>
 </Playground>
 
 ---
@@ -67,11 +73,13 @@ Common patterns for text is to adjust the font weight and transform the text. Be
 Lens provides a few variants for the `<Text />` component based on common patterns we use in our applications, the `variant` property will change that will change the color the rendered text.
 
 <Playground>
-  <Text>Regular Text</Text>
-  <Text variant="secondary">Secondary Text</Text>
-  <Text variant="subdued">Subdued Text</Text>
-  <Text variant="critical">Critical Text</Text>
-  <Text variant="positive">Positive Text</Text>
+  <React.Fragment>
+    <Text>Regular Text</Text>
+    <Text variant="secondary">Secondary Text</Text>
+    <Text variant="subdued">Subdued Text</Text>
+    <Text variant="critical">Critical Text</Text>
+    <Text variant="positive">Positive Text</Text>
+  </React.Fragment>
 </Playground>
 
 ---
@@ -81,25 +89,27 @@ Lens provides a few variants for the `<Text />` component based on common patter
 You can use the `align` property to change the alignment of the rendered text, below is an example with aligned text put into `<Card />`s.
 
 <Playground>
-  <Card>
-    <CardContent>
-      <Paragraph> I am aligned left by default</Paragraph>
-    </CardContent>
-  </Card>
-  <Card>
-    <CardContent>
-      <Paragraph align="center">
-        This is how you can center align Paragraph text
-      </Paragraph>
-    </CardContent>
-  </Card>
-  <Card>
-    <CardContent>
-      <Paragraph align="right">
-        This is how you can right align Paragraph text
-      </Paragraph>
-    </CardContent>
-  </Card>
+  <React.Fragment>
+    <Card>
+      <CardContent>
+        <Paragraph> I am aligned left by default</Paragraph>
+      </CardContent>
+    </Card>
+    <Card>
+      <CardContent>
+        <Paragraph align="center">
+          This is how you can center align Paragraph text
+        </Paragraph>
+      </CardContent>
+    </Card>
+    <Card>
+      <CardContent>
+        <Paragraph align="right">
+          This is how you can right align Paragraph text
+        </Paragraph>
+      </CardContent>
+    </Card>
+  </React.Fragment>
 </Playground>
 
 ## Truncate

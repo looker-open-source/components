@@ -31,7 +31,6 @@ Popover triggers should have the `aria-haspopover` attribute set to `true`, you 
 ## Basic Popover
 
 <Playground>
-  <Paragraph>Here's a Popover:</Paragraph>
   <Popover
     content={
       <PopoverContent p="large" width="360px">
@@ -75,88 +74,90 @@ Placement can be adjusted with the `placement` prop. Valid positions are `top`, 
 If you want to hide the popover arrow you can set the prop `arrow` prop to false.
 
 <Playground>
-  <Box mb="xxxlarge">
-    <Popover content={popoverContent}>
-      {(onClick, ref, className) => (
-        <Button
-          aria-haspopup="true"
-          onClick={onClick}
-          ref={ref}
-          className={className}
-          mr="xlarge"
-        >
-          Default
-        </Button>
-      )}
-    </Popover>
-    <Popover content={popoverContent} placement="right">
-      {(onClick, ref, className) => (
-        <Button
-          aria-haspopup="true"
-          onClick={onClick}
-          ref={ref}
-          className={className}
-          mr="xlarge"
-        >
-          Right
-        </Button>
-      )}
-    </Popover>
-    <Popover content={popoverContent} placement="left">
-      {(onClick, ref, className) => (
-        <Button
-          aria-haspopup="true"
-          onClick={onClick}
-          ref={ref}
-          className={className}
-          mr="xlarge"
-        >
-          Left
-        </Button>
-      )}
-    </Popover>
-  </Box>
-  <Box>
-    <Popover content={popoverContent} placement="bottom-start">
-      {(onClick, ref, className) => (
-        <Button
-          aria-haspopup="true"
-          onClick={onClick}
-          ref={ref}
-          className={className}
-          mr="xlarge"
-        >
-          Bottom Start
-        </Button>
-      )}
-    </Popover>
-    <Popover content={popoverContent} placement="right-end">
-      {(onClick, ref, className) => (
-        <Button
-          aria-haspopup="true"
-          onClick={onClick}
-          ref={ref}
-          className={className}
-          mr="xlarge"
-        >
-          Right End
-        </Button>
-      )}
-    </Popover>
-    <Popover content={popoverContent} placement="top-start" arrow={false}>
-      {(onClick, ref, className) => (
-        <Button
-          aria-haspopup="true"
-          onClick={onClick}
-          ref={ref}
-          className={className}
-          mr="xlarge"
-        >
-          Top Start - No arrow
-        </Button>
-      )}
-    </Popover>
-  </Box>
+  <React.Fragment>
+    <Box mb="xxxlarge">
+      <Popover content={popoverContent}>
+        {(onClick, ref, className) => (
+          <Button
+            aria-haspopup="true"
+            onClick={onClick}
+            ref={ref}
+            className={className}
+            mr="xlarge"
+          >
+            Default
+          </Button>
+        )}
+      </Popover>
+      <Popover content={popoverContent} placement="right">
+        {(onClick, ref, className) => (
+          <Button
+            aria-haspopup="true"
+            onClick={onClick}
+            ref={ref}
+            className={className}
+            mr="xlarge"
+          >
+            Right
+          </Button>
+        )}
+      </Popover>
+      <Popover content={popoverContent} placement="left">
+        {(onClick, ref, className) => (
+          <Button
+            aria-haspopup="true"
+            onClick={onClick}
+            ref={ref}
+            className={className}
+            mr="xlarge"
+          >
+            Left
+          </Button>
+        )}
+      </Popover>
+    </Box>
+    <Box>
+      <Popover content={popoverContent} placement="bottom-start">
+        {(onClick, ref, className) => (
+          <Button
+            aria-haspopup="true"
+            onClick={onClick}
+            ref={ref}
+            className={className}
+            mr="xlarge"
+          >
+            Bottom Start
+          </Button>
+        )}
+      </Popover>
+      <Popover content={popoverContent} placement="right-end">
+        {(onClick, ref, className) => (
+          <Button
+            aria-haspopup="true"
+            onClick={onClick}
+            ref={ref}
+            className={className}
+            mr="xlarge"
+          >
+            Right End
+          </Button>
+        )}
+      </Popover>
+      <Popover content={popoverContent} placement="top-start" arrow={false}>
+        {(onClick, ref, className) => (
+          <Button
+            aria-haspopup="true"
+            onClick={onClick}
+            ref={ref}
+            className={className}
+            mr="xlarge"
+          >
+            Top Start - No arrow
+          </Button>
+        )}
+      </Popover>
+    </Box>
+  </React.Fragment>
 </Playground>
 
 ## Grouped Popovers

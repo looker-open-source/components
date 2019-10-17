@@ -63,22 +63,24 @@ A common pattern for `Cards` is to display an image that reinforces what the con
 The `CardMedia` component accepts and `image` property that will render the image as a background image and the optional `title` property used to give the image an accessible title if needed.
 
 <Playground>
-  <Box>
-    <Card>
-      <CardMedia image="https://www.fillmurray.com/300/150" title="Bill 1" />
-      <CardContent>
-        <Heading>A wild Bill appears</Heading>
-      </CardContent>
-    </Card>
-  </Box>
-  <Box mt="medium">
-    <Card>
-      <CardMedia image="https://www.fillmurray.com/600/300" title="Bill 2" />
-      <CardContent>
-        <Heading>Another Bill spoting</Heading>
-      </CardContent>
-    </Card>
-  </Box>
+  <React.Fragment>
+    <Box>
+      <Card>
+        <CardMedia image="https://www.fillmurray.com/300/150" title="Bill 1" />
+        <CardContent>
+          <Heading>A wild Bill appears</Heading>
+        </CardContent>
+      </Card>
+    </Box>
+    <Box mt="medium">
+      <Card>
+        <CardMedia image="https://www.fillmurray.com/600/300" title="Bill 2" />
+        <CardContent>
+          <Heading>Another Bill spoting</Heading>
+        </CardContent>
+      </Card>
+    </Box>
+  </React.Fragment>
 </Playground>
 
 ## A group of media Cards

@@ -14,9 +14,11 @@ import { ComponentDetail } from '../../../../components'
 The `<FieldText />` component is composed of an `<InputText />` component and a `<Label />` component. Using `<FieldText />` allows for rendering validation messages. By default, the label will render directly above the input field, which is the recommended convention, however this is adjustable with the `alignLabel` property.
 
 <Playground>
-  <FieldText name="firstName" label="First Name" />
-  <FieldText name="lastName" label=" Last Name" alignLabel="left" />
-  <FieldText name="requiredField" label="A required field" required />
+  <React.Fragment>
+    <FieldText name="firstName" label="First Name" />
+    <FieldText name="lastName" label=" Last Name" alignLabel="left" />
+    <FieldText name="requiredField" label="A required field" required />
+  </React.Fragment>
 </Playground>
 
 ### FieldText Validation

@@ -32,14 +32,16 @@ Use a primary button for the most frequently used action or most important actio
 ## Primary states
 
 <Playground>
-  <Button mr="xsmall">Primary Idle</Button>
-  <Button mr="xsmall" className="hover">
-    Primary Hover
-  </Button>
-  <Button mr="xsmall" className="active">
-    Primary Active
-  </Button>
-  <Button disabled>Disabled</Button>
+  <React.Fragment>
+    <Button mr="xsmall">Primary Idle</Button>
+    <Button mr="xsmall" className="hover">
+      Primary Hover
+    </Button>
+    <Button mr="xsmall" className="active">
+      Primary Active
+    </Button>
+    <Button disabled>Disabled</Button>
+  </React.Fragment>
 </Playground>
 
 ---
@@ -55,18 +57,20 @@ Use an outline button alongside a primary button to provide alternative actions 
 ## Outline states
 
 <Playground>
-  <Button mr="xsmall" variant="outline">
-    Outline Idle
-  </Button>
-  <Button mr="xsmall" variant="outline" className="hover">
-    Outline Hover
-  </Button>
-  <Button mr="xsmall" variant="outline" className="active">
-    Outline Active
-  </Button>
-  <Button variant="outline" disabled>
-    Outline Disabled
-  </Button>
+  <React.Fragment>
+    <Button mr="xsmall" variant="outline">
+      Outline Idle
+    </Button>
+    <Button mr="xsmall" variant="outline" className="hover">
+      Outline Hover
+    </Button>
+    <Button mr="xsmall" variant="outline" className="active">
+      Outline Active
+    </Button>
+    <Button variant="outline" disabled>
+      Outline Disabled
+    </Button>
+  </React.Fragment>
 </Playground>
 
 ---
@@ -82,18 +86,20 @@ Use a transparent button as a tertiary action on a screen, they are often used a
 ## Transparent states
 
 <Playground>
-  <Button mr="xsmall" variant="transparent">
-    Transparent Idle
-  </Button>
-  <Button mr="xsmall" variant="transparent" className="hover">
-    Transparent Hover
-  </Button>
-  <Button mr="xsmall" variant="transparent" className="active">
-    Transparent Active
-  </Button>
-  <Button variant="transparent" disabled>
-    Transparent Disabled
-  </Button>
+  <React.Fragment>
+    <Button mr="xsmall" variant="transparent">
+      Transparent Idle
+    </Button>
+    <Button mr="xsmall" variant="transparent" className="hover">
+      Transparent Hover
+    </Button>
+    <Button mr="xsmall" variant="transparent" className="active">
+      Transparent Active
+    </Button>
+    <Button variant="transparent" disabled>
+      Transparent Disabled
+    </Button>
+  </React.Fragment>
 </Playground>
 
 ---
@@ -109,18 +115,20 @@ Danger Buttons are to be used in situations where you need to convey some very i
 ## Danger states
 
 <Playground>
-  <Button mr="xsmall" color="danger">
-    Danger Idle
-  </Button>
-  <Button mr="xsmall" color="danger" className="hover">
-    Danger Hover
-  </Button>
-  <Button mr="xsmall" color="danger" className="active">
-    Danger Active
-  </Button>
-  <Button color="danger" disabled>
-    Danger Disabled
-  </Button>
+  <React.Fragment>
+    <Button mr="xsmall" color="danger">
+      Danger Idle
+    </Button>
+    <Button mr="xsmall" color="danger" className="hover">
+      Danger Hover
+    </Button>
+    <Button mr="xsmall" color="danger" className="active">
+      Danger Active
+    </Button>
+    <Button color="danger" disabled>
+      Danger Disabled
+    </Button>
+  </React.Fragment>
 </Playground>
 
 ## Danger Variants
@@ -128,12 +136,14 @@ Danger Buttons are to be used in situations where you need to convey some very i
 Danger Buttons extend the default button, so they also have different variants
 
 <Playground>
-  <Button mr="xsmall" color="danger" variant="outline">
-    Danger Outline
-  </Button>
-  <Button color="danger" variant="transparent">
-    Danger Transparent
-  </Button>
+  <React.Fragment>
+    <Button mr="xsmall" color="danger" variant="outline">
+      Danger Outline
+    </Button>
+    <Button color="danger" variant="transparent">
+      Danger Transparent
+    </Button>
+  </React.Fragment>
 </Playground>
 
 ## Size
@@ -141,14 +151,16 @@ Danger Buttons extend the default button, so they also have different variants
 Use the size property on a `<Button />` to modify the size the button rendered. You can combine it with the `mode` property to get the correct style and size of button you need.
 
 <Playground>
-  <Button size="xsmall" mr="xsmall">
-    Xsmall Button
-  </Button>
-  <Button size="small" mr="xsmall">
-    Small Button
-  </Button>
-  <Button mr="xsmall">Medium (default) Button</Button>
-  <Button size="large">Large Button</Button>
+  <React.Fragment>
+    <Button size="xsmall" mr="xsmall">
+      Xsmall Button
+    </Button>
+    <Button size="small" mr="xsmall">
+      Small Button
+    </Button>
+    <Button mr="xsmall">Medium (default) Button</Button>
+    <Button size="large">Large Button</Button>
+  </React.Fragment>
 </Playground>
 
 ## Disabled
@@ -164,12 +176,14 @@ Use a disabled button to indicate to the user what action will be possible on a 
 Buttons can have an icon before or after their content, using the `iconBefore` and `iconAfter` property. Each property accepts the [name of an icon](/#!/Icons)
 
 <Playground>
-  <Button iconBefore="CircleAdd" mr="large">
-    Add To Cart
-  </Button>
-  <Button iconAfter="Trash" color="danger">
-    Delete
-  </Button>
+  <React.Fragment>
+    <Button iconBefore="CircleAdd" mr="large">
+      Add To Cart
+    </Button>
+    <Button iconAfter="Trash" color="danger">
+      Delete
+    </Button>
+  </React.Fragment>
 </Playground>
 
 ## Additional Action Considerations
@@ -252,7 +266,7 @@ const mildTheme = theme => {
 If you need an icon for purely decorative purposes use an `<Icon />` instead.
 
 <Playground>
-  <div>
+  <React.Fragment>
     <Tooltip content="Add a new file">
       {(eventHandlers, ref) => (
         <IconButton
@@ -287,7 +301,7 @@ If you need an icon for purely decorative purposes use an `<Icon />` instead.
       mr="small"
       outline
     />
-  </div>
+  </React.Fragment>
 </Playground>
 
 <Playground>

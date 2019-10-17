@@ -1,10 +1,12 @@
 import { PrismTheme } from 'prism-react-renderer'
-import { palette } from '@looker/design-tokens'
+import { palette, theme } from '@looker/design-tokens'
 
-const theme: PrismTheme = {
+const lookerMaterial: PrismTheme = {
   plain: {
     backgroundColor: palette.charcoal800,
     color: palette.charcoal300,
+    fontFamily: theme.fonts.code,
+    fontSize: theme.fontSizes.small,
   },
   styles: [
     {
@@ -121,4 +123,4 @@ const theme: PrismTheme = {
   ],
 }
 
-export default theme
+export default lookerMaterial
