@@ -25,13 +25,14 @@ export const ModalFooter: FC<ModalFooterProps> = ({
 
 const Layout = styled.footer`
   align-items: center;
+  display: flex;
   flex-direction: row-reverse;
   padding: ${props => props.theme.space.large}
     calc(${p => p.theme.space.xlarge} - ${p => p.theme.space.xsmall});
   /**
-    * Subtract margin placed on children from the horizonal padding applied to the component
+    * Subtract margin placed on children from the horizontal padding applied to the component
     * so that the content is properly aligned.
-    * padding is: vertical: large, horizonal: calc(xlarge - xsmall)
+    * padding is: vertical: large, horizontal: calc(xlarge - xsmall)
     **/
 `
 
