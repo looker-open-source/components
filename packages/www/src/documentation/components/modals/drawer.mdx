@@ -4,6 +4,7 @@ route: components/modals/drawer
 ---
 
 import {
+  Box,
   Button,
   DrawerManager,
   Heading,
@@ -51,9 +52,15 @@ Drawers can be constructed with Modal helpers to create a complex layout a fixed
           <Heading fontWeight="semiBold">Some Things to Look at</Heading>
         </ModalHeader>
         <ModalContent>
-          <Paragraph>Thing One</Paragraph>
-          <Paragraph>Thing Two</Paragraph>
-          <Paragraph>Thing Three</Paragraph>
+          <Box alignItems="center" p="xxlarge" mb="xlarge" display="flex" height="40vh" justifyContent="center" bg="lavender">
+            Thing One
+          </Box>
+          <Box alignItems="center" p="xxlarge" mb="xlarge" display="flex" height="40vh" justifyContent="center" bg="lavender">
+            Thing Two
+          </Box>
+          <Box alignItems="center" p="xxlarge" mb="xlarge" display="flex" height="40vh" justifyContent="center" bg="lavender">
+            Thing Three
+          </Box>
         </ModalContent>
         <ModalContext.Consumer>
           {({ closeModal }) => (
@@ -75,13 +82,13 @@ Drawers can be constructed with Modal helpers to create a complex layout a fixed
           )}
         </ModalContext.Consumer>
       </React.Fragment>
-    }
-  >
+    }>
     {onClick => (
       <Button onClick={onClick} variant="outline">
         See some things, in a Drawer!
       </Button>
     )}
+
   </DrawerManager>
 </Playground>
 

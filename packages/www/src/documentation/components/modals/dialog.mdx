@@ -14,32 +14,15 @@ import {
 } from '@looker/components'
 import { ComponentDetail } from '../../../components'
 
-# Dialogs
-
-## DialogManager
-
-<ComponentDetail of="DialogManager" github="Modal/Dialog/DialogManager" />
-
-DialogManager gives an easy way to compose a Dialog without the need to manage state.
-
-<Playground>
-  <DialogManager
-    content={
-      <ModalContent>
-        <Paragraph>Some content inside the Dialog</Paragraph>
-        <Button>A button too!</Button>
-      </ModalContent>
-    }
-  >
-    {onClick => <Button onClick={onClick}>Open Dialog </Button>}
-  </DialogManager>
-</Playground>
-
-## Dialog
+# Dialog
 
 <ComponentDetail of="Dialog" github="Modal/Dialog/Dialog" />
 
-Alternatively, `Dialog` requires that the developer manages the whether the Dialog is visible or not by assigning `true` or `false` to the `isOpen` prop
+Dialogs inform users about a task and can contain critical information, require decisions, or involve multiple tasks.
+
+## Basic Example
+
+`Dialog` requires that the developer manages the whether the Dialog is visible or not by assigning `true` or `false` to the `isOpen` prop
 
 <Playground>
   {() => {
@@ -56,4 +39,21 @@ Alternatively, `Dialog` requires that the developer manages the whether the Dial
       </div>
     )
   }}
+</Playground>
+
+## DialogManager
+
+DialogManager gives an easy way to compose a Dialog without the need to manage state.
+
+<Playground>
+  <DialogManager
+    content={
+      <ModalContent>
+        <Paragraph>Some content inside the Dialog</Paragraph>
+        <Button>A button too!</Button>
+      </ModalContent>
+    }
+  >
+    {onClick => <Button onClick={onClick}>Open Dialog </Button>}
+  </DialogManager>
 </Playground>
