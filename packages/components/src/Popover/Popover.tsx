@@ -1,9 +1,16 @@
 import { Placement } from 'popper.js'
-import React, { useEffect, useRef, useState } from 'react'
+import React, {
+  useEffect,
+  useRef,
+  useState,
+  RefObject,
+  SyntheticEvent,
+} from 'react'
 import { Popper } from 'react-popper'
 import { ModalContext } from '../Modal'
 import { ModalPortal } from '../Modal/ModalPortal'
 import { OverlaySurface } from '../Overlay/OverlaySurface'
+import { useControlWarn } from '../utils'
 
 export interface UsePopoverProps {
   /**
@@ -43,7 +50,7 @@ export interface UsePopoverProps {
    */
   canClose?: () => boolean
 
-  portalRef?: React.RefObject<HTMLDivElement>
+  portalRef?: RefObject<HTMLDivElement>
 
   /**
    * By default Popover cancels event bubbling when a click event triggers the closure of the Popover.
@@ -54,7 +61,7 @@ export interface UsePopoverProps {
    * the "dismissal click" can make for an awkward UX. In these cases the developer can specify a ref for a
    * component that contains the related Popovers and the event-bubble cancellation will not take place.
    */
-  groupedPopoversRef?: React.RefObject<HTMLElement>
+  groupedPopoversRef?: RefObject<HTMLElement>
 
   /**
    * By default Popover will reposition itself if they overflow the widow.
@@ -64,7 +71,16 @@ export interface UsePopoverProps {
   /**
    * The element which hovering on/off of will show/hide the triggering element
    */
-  hoverDisclosureRef?: React.RefObject<HTMLElement>
+  hoverDisclosureRef?: RefObject<HTMLElement>
+  /**
+   * Optional, for a controlled version of the component
+   */
+  setOpen?: (open: boolean) => void
+
+  /**
+   * The trigger element ref to use (if absent, one will be created and returned)
+   */
+  triggerRef?: RefObject<HTMLElement>
 }
 
 export interface PopoverProps extends UsePopoverProps {
@@ -74,11 +90,11 @@ export interface PopoverProps extends UsePopoverProps {
    * the modal renderProp.
    */
   children: (
-    onClick: (event: React.SyntheticEvent) => void,
+    onClick: (event: SyntheticEvent) => void,
     /**
      * Used by popper.js to position the OverlaySurface relative to the trigger
      */
-    ref: React.RefObject<any>,
+    ref: RefObject<any>,
     className?: string
   ) => JSX.Element
 }
@@ -89,24 +105,37 @@ export function usePopover({
   content,
   groupedPopoversRef,
   pin = false,
-  isOpen: initializeOpen = false,
+  isOpen: controlledIsOpen = false,
+  setOpen: controlledSetOpen,
   onClose,
-  placement: propsPlacement,
   hoverDisclosureRef,
+  placement: propsPlacement,
+  ...props
 }: UsePopoverProps) {
-  const [isOpen, setOpen] = useState(initializeOpen)
-  const portalRef = useRef<HTMLDivElement | null>(null)
-  const triggerRef = useRef<any>(null)
+  const isControlled = useControlWarn({
+    controllingProps: ['controlledSetOpen'],
+    isControlledCheck: () => controlledSetOpen !== undefined,
+    name: 'usePopover',
+  })
 
-  function handleOpen(event: React.SyntheticEvent) {
-    setOpen(true)
+  const [uncontrolledIsOpen, uncontrolledSetOpen] = useState(controlledIsOpen)
+
+  const portalRef = useRef<HTMLDivElement | null>(null)
+  const newTriggerRef = useRef<HTMLElement>(null)
+
+  const triggerRef = props.triggerRef || newTriggerRef
+  const isOpen = isControlled ? controlledIsOpen : uncontrolledIsOpen
+  const setOpen = isControlled ? controlledSetOpen : uncontrolledSetOpen
+
+  function handleOpen(event: SyntheticEvent) {
+    setOpen && setOpen(true)
     event.stopPropagation()
     event.preventDefault()
   }
 
   function handleClose() {
     if (canClose && !canClose()) return
-    setOpen(false)
+    setOpen && setOpen(false)
     onClose && onClose()
   }
 
@@ -131,7 +160,7 @@ export function usePopover({
         return
       }
 
-      setOpen(false)
+      setOpen && setOpen(false)
 
       // User clicked the trigger while the Popover was open
       if (
@@ -163,7 +192,7 @@ export function usePopover({
     return () => {
       document.removeEventListener('click', handleClickOutside, true)
     }
-  }, [canClose, groupedPopoversRef, isOpen])
+  }, [canClose, groupedPopoversRef, isOpen, triggerRef, setOpen])
 
   const [isHovered, setIsHovered] = useState(hoverDisclosureRef === undefined)
 

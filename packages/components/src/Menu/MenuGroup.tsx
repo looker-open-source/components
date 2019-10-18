@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC, RefObject } from 'react'
 import styled from 'styled-components'
 import {
   color,
@@ -11,10 +11,11 @@ import {
 import { BackgroundColorProps } from 'styled-system'
 import { Heading, HeadingProps } from '../Text/Heading'
 import { List } from '../List'
-import { MenuContext } from './MenuContext'
+
 import { MenuGroupLabel } from './MenuGroupLabel'
 import { useElementVisibility } from './MenuGroup.hooks'
 import { MenuItemCustomization } from './MenuItem'
+import { cloneMenuListChildren } from './MenuList'
 
 export interface MenuGroupProps
   extends Omit<CompatibleHTMLProps<HTMLElement>, 'label'>,
@@ -27,7 +28,11 @@ export interface MenuGroupProps
   compact?: boolean
 }
 
-const MenuGroupInternal: React.FC<MenuGroupProps> = ({
+export interface MenuGroupWithChildrenProps extends MenuGroupProps {
+  children: JSX.Element | JSX.Element[]
+}
+
+const MenuGroupInternal: FC<MenuGroupWithChildrenProps> = ({
   children,
   label,
   labelProps,
@@ -35,16 +40,13 @@ const MenuGroupInternal: React.FC<MenuGroupProps> = ({
   ...props
 }) => {
   const { customizationProps, compact, ...boxProps } = props
-  const menu = React.useContext(MenuContext)
 
-  const customizations = customizationProps || menu.customizationProps
-
-  const labelShimRef: React.RefObject<any> = React.useRef()
+  const labelShimRef: RefObject<any> = React.useRef()
   const labelVisible = useElementVisibility(labelShimRef)
 
   const labelComponent = label && (
     <MenuGroupLabel
-      backgroundColor={customizations && customizations.bg}
+      backgroundColor={customizationProps && customizationProps.bg}
       boxShadow={
         labelVisible ? 'none' : `0 4px 8px -2px ${palette.charcoal200}`
       }
@@ -70,22 +72,20 @@ const MenuGroupInternal: React.FC<MenuGroupProps> = ({
     </MenuGroupLabel>
   )
 
+  const clonedChildren = cloneMenuListChildren(children, {
+    compact,
+    customizationProps,
+  })
+
   return (
-    <MenuContext.Provider
-      value={{
-        compact: compact || menu.compact,
-        customizationProps: customizationProps || menu.customizationProps,
-      }}
+    <Style
+      {...boxProps}
+      backgroundColor={customizationProps && customizationProps.bg}
+      py="small"
     >
-      <Style
-        {...boxProps}
-        backgroundColor={customizations && customizations.bg}
-        py="small"
-      >
-        {labelComponent}
-        <List nomarker>{children}</List>
-      </Style>
-    </MenuContext.Provider>
+      {labelComponent}
+      <List nomarker>{clonedChildren}</List>
+    </Style>
   )
 }
 

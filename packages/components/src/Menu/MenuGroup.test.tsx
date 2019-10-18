@@ -54,8 +54,6 @@ test('MenuGroup - menu customization', () => {
   const menuCustomizations = {
     bg: palette.purple500,
     color: palette.purple200,
-    iconColor: palette.purple300,
-    iconSize: 20,
     current: {
       bg: palette.purple200,
       color: palette.purple900,
@@ -66,6 +64,8 @@ test('MenuGroup - menu customization', () => {
       color: palette.white,
       iconColor: palette.purple100,
     },
+    iconColor: palette.purple300,
+    iconSize: 20,
     marker: {
       color: palette.purple900,
       size: 10,

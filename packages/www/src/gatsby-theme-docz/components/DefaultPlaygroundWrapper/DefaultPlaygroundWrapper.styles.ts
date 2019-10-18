@@ -13,7 +13,7 @@ export const PlaygroundWrapper = styled.div`
     }
     [class*="LivePreviewWrapper"] {
       position:relative;
-      z-index: 1;
+      z-index: auto;
     }
     [data-testid="live-editor"] {
       background: transparent !important;

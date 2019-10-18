@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- `Menu`, `useMenu`, `MenuDisclosure` added
 - `Confirm` and `useConfirm` added
 - `ButtonToggle` and `ButtonGroup` added
 - `hoverDisclosureRef` added to `Popover` for an element that show/hides the popover's trigger on hover
@@ -17,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- `Menu` changed to `MenuList`
 - Upgrade to Styled Components 4.x
 - Styling updated on `Checkbox` and `Radio` along with a new `branded` prop to use theme's primary color.
 

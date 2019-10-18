@@ -1,32 +1,25 @@
 import { CustomizableAttributes } from '@looker/design-tokens'
 import { TextAlignProperty } from 'csstype'
 import { Placement } from 'popper.js'
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, RefObject, FC, ReactNode } from 'react'
 import { Popper } from 'react-popper'
 import { ModalContext } from '../Modal'
 import { OverlaySurface } from '../Overlay/OverlaySurface'
 import { Paragraph } from '../Text'
 
-export interface TooltipProps {
+interface EventHandlers {
+  onBlur: () => void
+  onFocus: () => void
+  onMouseOut: (event: React.MouseEvent) => void
+  onMouseOver: () => void
+}
+
+export interface UseTooltipProps {
   /**
    * Display and arrow that points to the trigger element on popovers
    * @default true
    */
   arrow?: boolean
-
-  /**
-   * Component to wrap. The HOC will listen for mouse events on this component, maintain the
-   * state of isOpen accordingly, and pass that state into the children or "trigger" element
-   */
-  children: (
-    eventsHandlers: {
-      onBlur: () => void
-      onFocus: () => void
-      onMouseOut: (event: React.MouseEvent) => void
-      onMouseOver: () => void
-    },
-    ref: React.RefObject<any>
-  ) => React.ReactNode
 
   /**
    * Specify a callback to be called before trying to close the Modal. This allows for
@@ -38,7 +31,7 @@ export interface TooltipProps {
   isOpen?: boolean
   placement?: Placement
 
-  content: string
+  content?: string
 
   /**
    * Specify the maximum width before wrapping text.
@@ -55,24 +48,43 @@ export interface TooltipProps {
    * @default center
    */
   textAlign?: TextAlignProperty
+
+  /**
+   * The trigger element ref to use (if absent, one will be created and returned)
+   */
+  triggerRef?: RefObject<HTMLElement>
+
+  /**
+   * If true, the useTooltip hook will return nothing
+   */
+  disabled?: boolean
 }
 
 export const CustomizableTooltipAttributes: CustomizableAttributes = {}
 
-export const Tooltip: React.FC<TooltipProps> = ({
+export interface TooltipProps extends UseTooltipProps {
+  content: string
+  /**
+   * Component to wrap. The HOC will listen for mouse events on this component, maintain the
+   * state of isOpen accordingly, and pass that state into the children or "trigger" element
+   */
+  children: (eventsHandlers: EventHandlers, ref: RefObject<any>) => ReactNode
+}
+export function useTooltip({
   arrow = true,
   canClose,
-  children,
   content,
   isOpen: initializeOpen = false,
   maxWidth = '16rem',
   width = 'auto',
   textAlign = 'center',
+  disabled,
   ...props
-}) => {
+}: UseTooltipProps) {
   const [isOpen, setIsOpen] = useState(initializeOpen)
   const surfaceRef = useRef<HTMLElement | null>(null)
-  const triggerRef = useRef<HTMLElement>(null)
+  const newTriggerRef = useRef<HTMLElement>(null)
+  const triggerRef = props.triggerRef || newTriggerRef
 
   const handleOpen = () => setIsOpen(true)
   const handleClose = () => {
@@ -132,52 +144,62 @@ export const Tooltip: React.FC<TooltipProps> = ({
     </Paragraph>
   )
 
-  const popper = isOpen && (
-    <ModalContext.Provider value={{ closeModal: handleClose }}>
-      <Popper
-        positionFixed
-        innerRef={setSurfaceRef}
-        placement={props.placement}
-        modifiers={{
-          flip: {
-            behavior: 'flip',
-            enabled: true,
-            flipVariations: true,
-            flipVariationsByContent: true,
-          },
-          preventOverflow: {
-            boundariesElement: 'viewport',
-            escapeWithReference: true,
-            padding: 0,
-          },
-        }}
-        referenceElement={referenceElement}
-      >
-        {({ ref, style, placement, arrowProps }) => (
-          <OverlaySurface
-            arrow={arrow}
-            arrowProps={arrowProps}
-            eventHandlers={{ onMouseOut: handleMouseOut }}
-            placement={placement}
-            ref={ref}
-            style={style}
-            zIndex={CustomizableTooltipAttributes.zIndex}
-            backgroundColor="palette.charcoal600"
-            borderRadius="medium"
-            boxShadow={3}
-            color="palette.charcoal000"
-          >
-            {contentFormatted}
-          </OverlaySurface>
-        )}
-      </Popper>
-    </ModalContext.Provider>
-  )
+  const popper =
+    isOpen && content && !disabled ? (
+      <ModalContext.Provider value={{ closeModal: handleClose }}>
+        <Popper
+          positionFixed
+          innerRef={setSurfaceRef}
+          placement={props.placement}
+          modifiers={{
+            flip: {
+              behavior: 'flip',
+              enabled: true,
+              flipVariations: true,
+              flipVariationsByContent: true,
+            },
+            preventOverflow: {
+              boundariesElement: 'viewport',
+              escapeWithReference: true,
+              padding: 0,
+            },
+          }}
+          referenceElement={referenceElement}
+        >
+          {({ ref, style, placement, arrowProps }) => (
+            <OverlaySurface
+              arrow={arrow}
+              arrowProps={arrowProps}
+              eventHandlers={{ onMouseOut: handleMouseOut }}
+              placement={placement}
+              ref={ref}
+              style={style}
+              zIndex={CustomizableTooltipAttributes.zIndex}
+              backgroundColor="palette.charcoal600"
+              borderRadius="medium"
+              boxShadow={3}
+              color="palette.charcoal000"
+            >
+              {contentFormatted}
+            </OverlaySurface>
+          )}
+        </Popper>
+      </ModalContext.Provider>
+    ) : null
 
+  return {
+    eventHandlers,
+    ref: triggerRef,
+    tooltip: popper,
+  }
+}
+
+export const Tooltip: FC<TooltipProps> = ({ children, ...props }) => {
+  const { eventHandlers, tooltip, ref } = useTooltip(props)
   return (
     <>
-      {popper}
-      {children(eventHandlers, triggerRef)}
+      {tooltip}
+      {children(eventHandlers, ref)}
     </>
   )
 }

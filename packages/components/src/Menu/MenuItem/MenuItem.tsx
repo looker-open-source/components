@@ -1,9 +1,7 @@
 import { FontSizes, CompatibleHTMLProps } from '@looker/design-tokens'
 import { IconNames } from '@looker/icons'
-import merge from 'lodash/merge'
 import React, { FC } from 'react'
 import { Icon } from '../../Icon'
-import { MenuContext, MenuContextProps } from '../MenuContext'
 import { MenuItemButton } from './MenuItemButton'
 import {
   MenuItemCustomization,
@@ -16,6 +14,11 @@ import {
   MenuItemStateStyle,
   MenuItemStyle,
 } from './menuItemStyle'
+
+export interface MenuSharedProps {
+  customizationProps?: MenuItemCustomization
+  compact?: boolean
+}
 
 const assignCustomizations = (
   defaultStyle: MenuItemStyle,
@@ -71,7 +74,7 @@ const assignCustomizations = (
 
 export interface MenuItemProps
   extends CompatibleHTMLProps<HTMLElement>,
-    MenuContextProps {
+    MenuSharedProps {
   detail?: React.ReactNode
   icon?: IconNames
   /**
@@ -108,18 +111,9 @@ export const MenuItem: FC<MenuItemProps> = props => {
     ...boxProps
   } = props
 
-  const menu = React.useContext(MenuContext)
+  const compactIconModifier = compact ? 1.25 : 1
 
-  let customizations = customizationProps || menu.customizationProps
-
-  if (customizationProps && menu.customizationProps) {
-    customizations = merge(customizationProps, menu.customizationProps)
-  }
-
-  const isCompact = compact !== undefined ? compact : menu.compact
-  const compactIconModifier = isCompact ? 1.25 : 1
-
-  const style = assignCustomizations(defaultMenuItemStyle, customizations)
+  const style = assignCustomizations(defaultMenuItemStyle, customizationProps)
   const styleState = current ? style.current : style.initial
   const { iconSize, iconColor, ...listItemProps } = styleState
 
@@ -139,7 +133,7 @@ export const MenuItem: FC<MenuItemProps> = props => {
         href={href}
         target={target}
         px="medium"
-        py={isCompact ? 'xxsmall' : 'small'}
+        py={compact ? 'xxsmall' : 'small'}
       >
         {icon && (
           <Icon

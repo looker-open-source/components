@@ -1,50 +1,38 @@
-import { CompatibleHTMLProps, palette } from '@looker/design-tokens'
-import React, { FC } from 'react'
-import { HotKeys } from 'react-hotkeys'
-import styled, { css } from 'styled-components'
-import { MenuContext, MenuContextProps } from './MenuContext'
-import { moveFocus } from './moveFocus'
-import { MenuGroup } from './MenuGroup'
+import React, { cloneElement, useRef, useState, FC, Children } from 'react'
 
-export interface MenuProps
-  extends CompatibleHTMLProps<HTMLUListElement>,
-    MenuContextProps {
-  groupDividers?: boolean
-  compact?: boolean
+export interface MenuCloneProps {
+  disabled?: boolean
+  isOpen?: boolean
+  setOpen?: (value: boolean) => void
+  triggerRef?: React.RefObject<HTMLElement>
 }
 
-export const Menu: FC<MenuProps> = props => {
-  const { customizationProps, compact, children, ...styleProps } = props
+export interface MenuProps {
+  children: JSX.Element[]
+  /**
+   * Disables the Menu, passed to child of MenuDisclosure
+   */
+  disabled?: boolean
 
-  const ref = React.useRef<null | HTMLElement>(null)
-
-  return (
-    <MenuContext.Provider value={{ compact, customizationProps }}>
-      <HotKeys
-        innerRef={ref}
-        keyMap={{ MOVE_DOWN: 'down', MOVE_UP: 'up' }}
-        handlers={{
-          MOVE_DOWN: () => moveFocus(1, 0, ref),
-          MOVE_UP: () => moveFocus(-1, -1, ref),
-        }}
-      >
-        <Style tabIndex={-1} role="menu" {...styleProps}>
-          {children}
-        </Style>
-      </HotKeys>
-    </MenuContext.Provider>
-  )
+  /**
+   * Initial state of Menu
+   * @default false
+   */
+  isOpen?: boolean
 }
 
-const dividersStyle = css`
-  ${MenuGroup} ~ ${MenuGroup} { /* stylelint-disable-line */
-    border-top: 1px solid ${palette.charcoal200};
-  }
-`
+export function useMenu(disabled?: boolean, initialIsOpen = false) {
+  const triggerRef = useRef<HTMLElement>(null)
+  const [isOpen, setOpen] = useState(initialIsOpen)
+  return { disabled, isOpen, setOpen, triggerRef }
+}
 
-const Style = styled.ul<MenuProps>`
-  list-style: none;
-  outline: none;
-  user-select: none;
-  ${props => props.groupDividers !== false && dividersStyle};
-`
+/** @component */
+export const Menu: FC<MenuProps> = ({ children, disabled, isOpen }) => {
+  const menu = useMenu(disabled, isOpen)
+
+  const cloned = Children.map(children, (child: JSX.Element) => {
+    return cloneElement(child, menu)
+  })
+  return <>{cloned}</>
+}

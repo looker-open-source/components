@@ -1,114 +1,90 @@
-import { mount, shallow } from 'enzyme'
-import 'jest-styled-components'
+import '@testing-library/jest-dom/extend-expect'
+import { fireEvent } from '@testing-library/react'
 import React from 'react'
-import { ThemeProvider } from 'styled-components'
-import { palette, theme } from '@looker/design-tokens'
-import { Menu } from './Menu'
-import { MenuGroup } from './MenuGroup'
-import { MenuItem } from './MenuItem'
 
-test('Menu', () => {
-  const menu = shallow(
-    <Menu>
-      <MenuItem>boo!</MenuItem>
-      <MenuItem itemRole="link" href="test">
-        boo!
-      </MenuItem>
-    </Menu>
-  )
+import { renderWithTheme } from '@looker/components-test-utils'
+import { Button } from '../Button'
+import { Menu, MenuDisclosure, MenuItem, MenuList } from './'
 
-  expect(menu).toMatchSnapshot()
-  expect(menu.find('div').find('a'))
-})
+const menu = (
+  <Menu>
+    <MenuDisclosure tooltip="Select your favorite kind">
+      <Button>Cheese</Button>
+    </MenuDisclosure>
+    <MenuList>
+      <MenuItem icon="FavoriteOutline">Gouda</MenuItem>
+      <MenuItem icon="FavoriteOutline">Swiss</MenuItem>
+    </MenuList>
+  </Menu>
+)
 
-test('Menu - composed', () => {
-  const menu = shallow(
-    <Menu>
-      <MenuGroup>
-        <MenuItem icon="LogoRings">Looker</MenuItem>
-        <MenuItem icon="Validate">Validate</MenuItem>
-        <MenuItem icon="ChartPie">Pizza!</MenuItem>
-      </MenuGroup>
-      <MenuGroup label="Cheeses">
-        <MenuItem>Gouda</MenuItem>
-        <MenuItem>Cheddar</MenuItem>
-        <MenuItem>Swiss</MenuItem>
-      </MenuGroup>
-      <MenuGroup>
-        <MenuItem icon="Beaker">Scary Stuff</MenuItem>
-      </MenuGroup>
-    </Menu>
-  )
+// Note to self: use "yarn jest Menu.test" to run Menu.test.tsx
+describe('<Menu />', () => {
+  test('Menu Opens and Closes', () => {
+    const { getByText, queryByText } = renderWithTheme(menu)
 
-  expect(menu).toMatchSnapshot()
-})
+    const button = getByText('Cheese')
 
-test('Menu - compact', () => {
-  const menu = mount(
-    <ThemeProvider theme={theme}>
-      <Menu compact>
-        <MenuGroup>
-          <MenuItem icon="LogoRings">Looker</MenuItem>
-          <MenuItem icon="Validate">Validate</MenuItem>
-          <MenuItem icon="ChartPie">Pizza!</MenuItem>
-        </MenuGroup>
-        <MenuGroup label="Cheeses">
-          <MenuItem>Gouda</MenuItem>
-          <MenuItem>Cheddar</MenuItem>
-          <MenuItem>Swiss</MenuItem>
-        </MenuGroup>
-        <MenuGroup>
-          <MenuItem icon="Beaker">Scary Stuff</MenuItem>
-        </MenuGroup>
+    expect(queryByText('Swiss')).not.toBeInTheDocument()
+
+    fireEvent.click(button)
+
+    expect(queryByText('Swiss')).toBeInTheDocument()
+
+    fireEvent.click(document)
+
+    expect(queryByText('Swiss')).not.toBeInTheDocument()
+  })
+
+  test('Menu Button has the tooltip', () => {
+    const { getByText, queryByText } = renderWithTheme(menu)
+
+    const button = getByText('Cheese')
+
+    expect(queryByText('Select your favorite kind')).not.toBeInTheDocument()
+
+    button.focus()
+
+    expect(queryByText('Select your favorite kind')).toBeInTheDocument()
+  })
+
+  test('Disabled Menu does not open when clicked and has disabled prop', () => {
+    const { getByText, queryByText } = renderWithTheme(
+      <Menu disabled={true}>
+        <MenuDisclosure tooltip="Select your favorite kind">
+          <Button>Cheese</Button>
+        </MenuDisclosure>
+        <MenuList>
+          <MenuItem icon="FavoriteOutline">Gouda</MenuItem>
+          <MenuItem icon="FavoriteOutline">Swiss</MenuItem>
+        </MenuList>
       </Menu>
-    </ThemeProvider>
-  )
+    )
 
-  expect(menu).toMatchSnapshot()
-})
+    const button = getByText('Cheese')
 
-test('Menu - menu customization', () => {
-  const menuCustomizations =
-    /* eslint-disable sort-keys */
-    {
-      bg: palette.purple500,
-      color: palette.purple200,
-      iconColor: palette.purple300,
-      iconSize: 20,
-      marker: {
-        color: palette.purple900,
-        size: 10,
-      },
-      hover: {
-        bg: palette.purple700,
-        color: palette.white,
-        iconColor: palette.purple100,
-      },
-      current: {
-        bg: palette.purple200,
-        color: palette.purple900,
-        iconColor: palette.purple500,
-      },
-      /* eslint-enable sort-keys */
-    }
+    expect(button).toHaveAttribute('disabled')
 
-  const menu = shallow(
-    <Menu customizationProps={menuCustomizations}>
-      <MenuGroup>
-        <MenuItem icon="LogoRings">Looker</MenuItem>
-        <MenuItem icon="Validate">Validate</MenuItem>
-        <MenuItem icon="ChartPie">Pizza!</MenuItem>
-      </MenuGroup>
-      <MenuGroup label="Cheeses">
-        <MenuItem>Gouda</MenuItem>
-        <MenuItem>Cheddar</MenuItem>
-        <MenuItem>Swiss</MenuItem>
-      </MenuGroup>
-      <MenuGroup>
-        <MenuItem icon="Beaker">Scary Stuff</MenuItem>
-      </MenuGroup>
-    </Menu>
-  )
+    expect(queryByText('Swiss')).not.toBeInTheDocument()
 
-  expect(menu).toMatchSnapshot()
+    fireEvent.click(button)
+
+    expect(queryByText('Swiss')).not.toBeInTheDocument()
+  })
+
+  test('Starting with Menu open', () => {
+    const { getByText } = renderWithTheme(
+      <Menu isOpen={true}>
+        <MenuDisclosure tooltip="Select your favorite kind">
+          <Button>Cheese</Button>
+        </MenuDisclosure>
+        <MenuList>
+          <MenuItem icon="FavoriteOutline">Gouda</MenuItem>
+          <MenuItem icon="FavoriteOutline">Swiss</MenuItem>
+        </MenuList>
+      </Menu>
+    )
+
+    expect(getByText('Swiss')).toBeInTheDocument()
+  })
 })

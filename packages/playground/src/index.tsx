@@ -7,6 +7,10 @@ import {
   Paragraph,
   InputSearch,
   Divider,
+  Menu,
+  MenuDisclosure,
+  MenuList,
+  MenuItem,
   Checkbox,
 } from '@looker/components'
 import { theme } from '@looker/design-tokens'
@@ -54,6 +58,15 @@ const App: React.FC = () => {
           onChange={onChange}
           hideControls={false}
         />
+        <Menu>
+          <MenuDisclosure tooltip="Select your favorite kind">
+            <Button>Cheese</Button>
+          </MenuDisclosure>
+          <MenuList>
+            <MenuItem icon="FavoriteOutline">Gouda</MenuItem>
+            <MenuItem icon="FavoriteOutline">Swiss</MenuItem>
+          </MenuList>
+        </Menu>
         <Checkbox />
       </>
     </ThemeProvider>
