@@ -11,7 +11,6 @@ const navigation: NavigationSection = {
     {
       title: 'Writing Components the Lens Way',
       path: 'the-lens-way',
-      detail: 'Coming Soon',
     },
     {
       title: 'Integrating Lens into Helltool',
@@ -20,12 +19,10 @@ const navigation: NavigationSection = {
     {
       title: 'Code Quality & IDE Setup',
       path: 'tooling',
-      detail: 'Coming Soon',
     },
     {
       title: 'Design Contribution',
       path: 'design-contribution',
-      detail: 'Coming Soon',
     },
     {
       title: 'Styled Components',
