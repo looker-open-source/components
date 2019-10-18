@@ -125,6 +125,10 @@ exports[`ModalHeader 1`] = `
   flex-direction: row;
 }
 
+.c0 .c4 {
+  font-size: 1rem;
+}
+
 <header
   className="c0"
 >

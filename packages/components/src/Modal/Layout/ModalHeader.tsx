@@ -10,6 +10,7 @@ import React, { FC, useContext } from 'react'
 
 import { Box } from '../../Layout/Box'
 import { Button } from '../../Button'
+import { Heading } from '../../Text'
 import { Icon } from '../../Icon'
 import { ModalContext } from '../ModalContext'
 
@@ -53,6 +54,10 @@ const Header = styled.header<SpaceProps>`
   display: flex;
   align-items: center;
   flex-direction: row;
+
+  ${Heading} {
+    font-size: ${props => props.theme.fontSizes.medium};
+  }
 `
 
 Header.defaultProps = {
