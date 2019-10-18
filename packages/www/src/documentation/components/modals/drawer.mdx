@@ -12,7 +12,6 @@ import {
   ModalContext,
   ModalFooter,
   ModalHeader,
-  Paragraph,
 } from '@looker/components'
 import { Playground } from 'docz'
 import { ComponentDetail } from '../../../components'
@@ -49,28 +48,26 @@ Drawers can be constructed with Modal helpers to create a complex layout a fixed
     content={
       <React.Fragment>
         <ModalHeader>
-          <Heading fontWeight="semiBold">Some Things to Look at</Heading>
+          <Heading>Some Things to Look at</Heading>
         </ModalHeader>
         <ModalContent>
-          <Box alignItems="center" p="xxlarge" mb="xlarge" display="flex" height="40vh" justifyContent="center" bg="lavender">
+          <Box height="40vh" bg="lavender" mb="large">
             Thing One
           </Box>
-          <Box alignItems="center" p="xxlarge" mb="xlarge" display="flex" height="40vh" justifyContent="center" bg="lavender">
+          <Box height="40vh" bg="lavender" mb="large">
             Thing Two
           </Box>
-          <Box alignItems="center" p="xxlarge" mb="xlarge" display="flex" height="40vh" justifyContent="center" bg="lavender">
+          <Box height="40vh" bg="lavender" mb="large">
             Thing Three
           </Box>
         </ModalContent>
         <ModalContext.Consumer>
-          {({ closeModal }) => (
+          {closeModal => (
             <ModalFooter>
               <Button
                 onClick={() => {
                   alert("Oh yeah! You're done")
-                  if (closeModal) {
-                    closeModal()
-                  }
+                  closeModal()
                 }}
               >
                 All Done
@@ -82,13 +79,13 @@ Drawers can be constructed with Modal helpers to create a complex layout a fixed
           )}
         </ModalContext.Consumer>
       </React.Fragment>
-    }>
+    }
+  >
     {onClick => (
       <Button onClick={onClick} variant="outline">
-        See some things, in a Drawer!
+        Drawer Example
       </Button>
     )}
-
   </DrawerManager>
 </Playground>
 

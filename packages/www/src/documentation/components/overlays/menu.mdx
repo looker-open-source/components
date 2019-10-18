@@ -13,15 +13,14 @@ import {
   MenuItem,
   MenuList,
   MenuSearch,
-  Popover,
+  Divider,
   Button,
   DrawerManager,
   ModalContent,
-  ModalHeader,
 } from '@looker/components'
 import { ComponentDetail } from '../../../components'
 
-## `Menu`
+# Menu
 
 <ComponentDetail of="Menu" figma="file/VyHO1Hv1XaW1v3lE9I4PVT/Menu" />
 
@@ -39,7 +38,7 @@ import { ComponentDetail } from '../../../components'
   </Menu>
 </Playground>
 
-## `useMenu`
+## useMenu
 
 Use the `useMenu` hook with `MenuDisclosure` and `MenuList`, spreading the return object as props on each.
 
@@ -60,7 +59,7 @@ Use the `useMenu` hook with `MenuDisclosure` and `MenuList`, spreading the retur
   }}
 </Playground>
 
-## `MenuList`
+## MenuList
 
 <ComponentDetail
   of="MenuList"
@@ -82,7 +81,7 @@ When a `MenuList` is focused the `up` and `down` arrow keys will move focus thro
   </MenuList>
 </Playground>
 
-### Customizing a `MenuList`
+### Customizing a MenuList
 
 `MenuList` accepts a `customizationProps` prop which allows for flexibly styling of the item. Below is an example of customizing the menu's display. Below is an example of all the options you can customize.
 
@@ -151,7 +150,7 @@ A `MenuList` accepts a `compact` prop that will make the spacing between the `Me
   </MenuList>
 </Playground>
 
-## `MenuItem`
+## MenuItem
 
 <ComponentDetail
   of="MenuItem"
@@ -231,7 +230,7 @@ It's possible to selectively customize only select pieces of a menu list as well
   </MenuList>
 </Playground>
 
-## `MenuGroup`
+## MenuGroup
 
 <ComponentDetail
   of="MenuGroup"
@@ -278,6 +277,14 @@ It supports an optional `label` prop to place a heading above the `MenuItem`s. W
   github="Menu/MenuSearch"
   feedbackTitle="MenuSearch Component Feedback"
 />
+
+<Playground>
+  <MenuSearch />
+  <Divider my="medium" />
+  <MenuSearch value="Stuff" summary="Faux results" />
+  <Divider my="medium" />
+  <MenuSearch value="Stuff" hideControls />
+</Playground>
 
 <Playground>
   {() => {

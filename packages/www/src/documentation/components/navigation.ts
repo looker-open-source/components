@@ -111,7 +111,7 @@ const content: NavigationSection = {
     { title: 'Banner', path: 'banner' },
     { title: 'Card', path: 'card' },
     { title: 'Divider', path: 'divider' },
-    { title: 'Icons', path: 'icons' },
+    { title: 'Icon', path: 'icon' },
     { title: 'List', path: 'list' },
     { title: 'Spinner', path: 'spinner' },
     { title: 'Table', path: 'table' },
