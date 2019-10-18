@@ -14,7 +14,7 @@ import {
   FieldText,
   FieldToggleSwitch,
 } from '@looker/components'
-import { StatusAndResources, ComponentDetail } from '../../../components'
+import { ComponentDetail } from '../../../components'
 
 ## FieldCheckbox
 
@@ -98,12 +98,16 @@ The `<FieldRadio />` component is composed of a `<Radio />` component and a `<La
 The `<FieldSelect />` component is composed of an `<Select />` component and a `<Label />` component. Using `<FieldSelect />` allows for rendering validation messages. By default, the label will render directly above the input field, which is the recommended convention, however this is adjustable with the `alignLabel` property.
 
 <Playground>
-  <FieldSelect name="Cheeses" label="Cheeses" value="cheddar" options={[
+  <FieldSelect
+    name="Cheeses"
+    label="Cheeses"
+    value="cheddar"
+    options={[
       { value: 'cheddar', label: 'Cheddar' },
       { value: 'gouda', label: 'Gouda' },
       { value: 'swiss', label: 'Swiss' },
-    ]} />
-
+    ]}
+  />
 </Playground>
 
 ### FieldSelect Validation
