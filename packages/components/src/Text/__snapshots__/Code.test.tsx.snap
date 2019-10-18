@@ -10,7 +10,7 @@ exports[`A Code component aligned 1`] = `
   padding: 0;
   vertical-align: baseline;
   text-align: right;
-  font-family: 'Monaco','Menlo','Ubuntu Mono','Consolas','source-code-pro',monospace;
+  font-family: Consolas,"Liberation Mono",Menlo,monospace;
   font-size: 1rem;
   line-height: 1.5rem;
 }
@@ -34,7 +34,7 @@ exports[`A Code component resized 1`] = `
   padding: 0;
   vertical-align: baseline;
   font-size: 2.875rem;
-  font-family: 'Monaco','Menlo','Ubuntu Mono','Consolas','source-code-pro',monospace;
+  font-family: Consolas,"Liberation Mono",Menlo,monospace;
   line-height: 4rem;
 }
 
@@ -57,7 +57,7 @@ exports[`A Code component weight 1`] = `
   padding: 0;
   vertical-align: baseline;
   font-weight: 700;
-  font-family: 'Monaco','Menlo','Ubuntu Mono','Consolas','source-code-pro',monospace;
+  font-family: Consolas,"Liberation Mono",Menlo,monospace;
   font-size: 1rem;
   line-height: 1.5rem;
 }
@@ -81,7 +81,7 @@ exports[`A default Code component 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  font-family: 'Monaco','Menlo','Ubuntu Mono','Consolas','source-code-pro',monospace;
+  font-family: Consolas,"Liberation Mono",Menlo,monospace;
   font-size: 1rem;
   line-height: 1.5rem;
 }
