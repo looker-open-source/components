@@ -49,6 +49,7 @@ const CodeSandbox: React.FC<CodeSandboxProps> = ({ __code, __scope }) => {
           </LiveConsumer>
         </LivePreviewWrapper>
         <EditorWrapper>
+          {showEditor && <LiveEditor />}
           <ActionLayout editorIsVisible={showEditor}>
             <CopyButton code={__code} editorIsVisible={showEditor} />
             <ToggleCodeButton
@@ -56,7 +57,6 @@ const CodeSandbox: React.FC<CodeSandboxProps> = ({ __code, __scope }) => {
               editorIsVisible={showEditor}
             />
           </ActionLayout>
-          {showEditor && <LiveEditor />}
         </EditorWrapper>
       </LiveProvider>
     </SandboxWrapper>
@@ -82,7 +82,6 @@ interface WithLiveProps {
 
 const LivePreviewWrapper = styled.div`
   position: relative;
-  z-index: 1;
 `
 
 export const LiveConsumer = withLive<WithLiveProps>(({ children, live }) => {
@@ -167,7 +166,6 @@ const ActionLayout = styled.div<ActionProps>`
   position: absolute;
   top: 0;
   right: 0;
-  z-index: 1;
   background: ${({ theme, editorIsVisible }) =>
     editorIsVisible
       ? theme.colors.palette.charcoal700
