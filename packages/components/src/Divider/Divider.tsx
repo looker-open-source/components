@@ -1,4 +1,6 @@
 import {
+  border,
+  BorderProps,
   CompatibleHTMLProps,
   color,
   position,
@@ -13,6 +15,7 @@ import { variant } from 'styled-system'
 export interface DividerProps
   extends CompatibleHTMLProps<HTMLHRElement>,
     PositionProps,
+    BorderProps,
     SpaceProps {
   size?: string | number
   customColor?: string
@@ -42,6 +45,7 @@ export const Divider = styled.hr.attrs((props: DividerProps) => ({
 }))<DividerProps>`
   ${reset}
   ${position}
+  ${border}
   ${space}
 
   height: ${props => props.size};
