@@ -1,10 +1,4 @@
-import React, {
-  ComponentType,
-  FunctionComponent,
-  forwardRef,
-  Ref,
-  useContext,
-} from 'react'
+import React, { forwardRef, Ref, useContext } from 'react'
 import styled from 'styled-components'
 import omit from 'lodash/omit'
 import {
@@ -19,8 +13,6 @@ import {
   LayoutProps,
   SpaceProps,
 } from '@looker/design-tokens'
-import { FieldProps } from './Fields'
-import { InputProps } from './Inputs/InputProps'
 import { ValidationMessageProps } from './ValidationMessage'
 
 export type ValidationMessages = Record<string, ValidationMessageProps>
@@ -74,10 +66,6 @@ export interface ChildProp {
   children?: JSX.Element
 }
 
-export type FormComponentProps<T> = FieldProps & InputProps & T
-
-export type ComponentWithForm<T> = FunctionComponent<FormComponentProps<T>>
-
 export interface UseFormContextProps {
   name?: string
   validationMessage?: ValidationMessageProps
@@ -95,21 +83,4 @@ export function useFormContext({
     vMessage = validationMessage
   }
   return vMessage
-}
-
-// This is due for deprecation once FieldColor is converted to functional component and withForm is out of use.
-/* eslint-disable react/display-name */
-export const withForm = <T extends {}>(
-  Component:
-    | ComponentType<FormComponentProps<T>>
-    | FunctionComponent<FormComponentProps<T>>
-): ComponentWithForm<T> => {
-  return (props: FormComponentProps<T & ChildProp>) => {
-    const validationMessage = useFormContext(props)
-    return (
-      <Component {...props} validationMessage={validationMessage}>
-        {props.children}
-      </Component>
-    )
-  }
 }

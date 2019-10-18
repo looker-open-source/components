@@ -1,40 +1,47 @@
 import 'jest-styled-components'
+import '@testing-library/jest-dom/extend-expect'
 import React from 'react'
+import { fireEvent } from '@testing-library/react'
 import {
-  assertSnapshot,
   assertSnapshotShallow,
+  renderWithTheme,
 } from '@looker/components-test-utils'
+import { theme } from '@looker/design-tokens'
+import { ThemeProvider } from 'styled-components'
+
 import { FieldColor } from './FieldColor'
 
 test('Default FieldColor', () => {
-  assertSnapshot(<FieldColor />)
+  assertSnapshotShallow(<FieldColor />)
 })
 
 test('FieldColor with hidden input', () => {
-  assertSnapshot(<FieldColor hideInput={true} />)
-})
-
-test('FieldColor with a named color and size values', () => {
-  assertSnapshot(<FieldColor value="blue" cwSize={300} />)
-})
-
-test('FieldColor with a label', () => {
-  assertSnapshot(
-    <FieldColor value="#e1ff83" label="Pick a color" alignLabel="left" />
+  const { queryByRole } = renderWithTheme(
+    <FieldColor value="yellow" hideInput />
   )
+  expect(queryByRole('input')).not.toBeInTheDocument()
 })
+
+test('FieldColor starts with a named color value', () => {
+  const { getByDisplayValue } = renderWithTheme(<FieldColor value="green" />)
+  expect(getByDisplayValue('green')).toBeInTheDocument()
+})
+
+test('FieldColor starts with a named color value', () => {
+  const { getByDisplayValue } = renderWithTheme(<FieldColor value="green" />)
+  fireEvent.change(getByDisplayValue('green'), { target: { value: 'blue' } })
+  expect(getByDisplayValue('blue')).toBeInTheDocument()
+})
+
+const FieldColorValidationMessage = () => {
+  return (
+    <ThemeProvider theme={theme}>
+      <FieldColor validationMessage={{ message: 'Error!', type: 'error' }} />
+    </ThemeProvider>
+  )
+}
 
 test('FieldColor with a validation message', () => {
-  assertSnapshot(
-    <FieldColor
-      value="#4c6670"
-      label="Pick a color"
-      alignLabel="left"
-      validationMessage={{ message: 'Error!', type: 'error' }}
-    />
-  )
-})
-
-test('FieldColor renders a color picker in a Popover', () => {
-  assertSnapshotShallow(<FieldColor open />)
+  const { queryByText } = renderWithTheme(<FieldColorValidationMessage />)
+  expect(queryByText('Error!')).toBeInTheDocument()
 })
