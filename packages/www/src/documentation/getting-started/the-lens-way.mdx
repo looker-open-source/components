@@ -15,51 +15,11 @@ You **don't** have to be an expert in all of those technologies to start using L
 
 The following technologies roughly form a "stack", in that each layer is used by the next to solve a more specific problem:
 
-### Typescript
-
-Lens is written in Typescript, which provides a structural static type system, allowing Lens components to define strict, enforceable interfaces.
-
-```jsx static
-interface PersonProps {
-  name: string
-  age: number
-}
-
-const PersonDetail = (props: PersonProps) => ...
-```
-
-### React
+### React & Typescript
 
 React is a Javascript library that makes it easy to build UI components as simple functions and classes.
 
-```jsx static
-interface PersonProps {
-  name: string
-  age: number
-}
-
-const PersonDetail = (props: PersonProps) => {
-  return (
-    <Box>
-      <Heading>{props.name}</Heading>
-      <Text>Age: {props.age}</Text>
-    </Box>
-  )
-}
-```
-
-### JSX
-
-JSX is an abstract syntax whose expressions look roughly like an XML tag language. In the context of React, JSX is used to define the use and composition of React components.
-
-Because it is an abstraction, JSX can be compiled to many different targets, including mobile OSes, and even other frontend libraries like Vue.
-
-```jsx static
-<Box>
-  <Heading>{props.name}</Heading>
-  <Text>Age: {props.age}</Text>
-</Box>
-```
+Lens is written in Typescript, which provides a structural static type system, allowing Lens components to define strict, enforceable interfaces.
 
 ### Styled Components
 

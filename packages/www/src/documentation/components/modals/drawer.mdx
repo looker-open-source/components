@@ -62,7 +62,7 @@ Drawers can be constructed with Modal helpers to create a complex layout a fixed
           </Box>
         </ModalContent>
         <ModalContext.Consumer>
-          {closeModal => (
+          {({ closeModal }) => (
             <ModalFooter>
               <Button
                 onClick={() => {
@@ -83,7 +83,7 @@ Drawers can be constructed with Modal helpers to create a complex layout a fixed
   >
     {onClick => (
       <Button onClick={onClick} variant="outline">
-        Drawer Example
+        Drawer with sample content
       </Button>
     )}
   </DrawerManager>

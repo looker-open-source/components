@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { Code, Table } from '@looker/components'
 
 const DocTable = styled(Table)`
-  margin-bottom: 2rem;
+  margin-bottom: ${props => props.theme.space.xlarge};
   font-size: ${props => props.theme.fontSizes.small};
 
   ${Code} {
