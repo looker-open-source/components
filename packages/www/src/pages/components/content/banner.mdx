@@ -1,0 +1,31 @@
+---
+name: Banner
+---
+
+# Banner
+
+<ComponentDetail of="Banner" />
+
+The `<Banner />` component is used to alert the user with `warning`, `error`, `info`, or `confirmation` messages, settable via the `intent` property.
+
+```jsx
+<Banner intent="warning">Warning</Banner>
+<Banner intent="error">Error</Banner>
+<Banner intent="info">Info</Banner>
+<Banner intent="confirmation">Confirmation</Banner>
+```
+
+## Dismissable
+
+Banners can also be set to be `dismissable`, giving them a close button, and allows for a dismiss handler to be passed to `onDismiss`.
+
+```jsx
+;() => {
+  const { value, setOff } = useToggle(true)
+  return value ? (
+    <Banner intent="warning" onDismiss={setOff} dismissable>
+      I can be closed
+    </Banner>
+  ) : null
+}
+```

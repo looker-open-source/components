@@ -1,0 +1,99 @@
+---
+name: Tab
+---
+
+# Tabs
+
+<ComponentDetail of="Tabs" />
+
+## Basic Tab
+
+Tabs expects to receive a TabList with one or more Tab components. TabPanels expects TabPanel(s). Tabs manages the visibility of a single TabPanel based on its internal state.
+
+The order in which elements are placed inside TabList and TabPanels defines the relationship between them. The first Tab is related to the first TabPanel and so on.
+
+To create a disabled Tab add the disabled prop. You must still create a TabPanel for each Tab to keep the index positions in sync.
+
+```jsx
+<Tabs>
+  <TabList>
+    <Tab>Dog Jumping</Tab>
+    <Tab>Disgruntled Cat</Tab>
+    <Tab disabled>Human</Tab>
+    <Tab>Bird</Tab>
+  </TabList>
+  <TabPanels>
+    <TabPanel>
+      <img
+        src="https://thumbs.dreamstime.com/b/jumping-dog-running-wet-speed-stick-37273789.jpg"
+        height="400"
+        width="500"
+      />
+      <Paragraph>
+        The domestic dog is a member of the genus Canis (canines), which forms
+        part of the wolf-like canids, and is the most widely abundant:
+        terrestrial carnivore. The dog and the extant gray wolf are sister taxa
+        as modern wolves are not closely related to the wolves that were first
+        domesticated, which implies that the direct ancestor of the dog is
+        extinct. The dog was the first species to be domesticated and has been
+        selectively bred over millennia for various behaviors, sensory
+        capabilities, and physical attributes.
+      </Paragraph>
+    </TabPanel>
+    <TabPanel>
+      <img
+        src="https://thumbs.dreamstime.com/b/wet-cat-bath-funny-maine-coon-96532640.jpg"
+        height="400"
+        width="500"
+      />
+      <Paragraph>
+        The cat (Felis catus) is a small carnivorous mammal. It is the only
+        domesticated species in the family Felidae and often referred to as the
+        domestic cat to distinguish it from wild members of the family. The cat
+        is either a house cat or a farm cat, which are pets, or a feral cat,
+        which ranges freely and avoids human contact. A house cat is valued by
+        humans for companionship and for its ability to hunt rodents. About 60
+        cat breeds are recognized by various cat registries.
+      </Paragraph>
+    </TabPanel>
+    <TabPanel>Placeholder for disabled "Human" tab</TabPanel>
+    <TabPanel>
+      <img
+        src="https://thumbs.dreamstime.com/b/baby-seagull-closed-eyes-fear-26195427.jpg"
+        height="400"
+        width="500"
+      />
+      <Paragraph>
+        Birds, also known as Aves or avian dinosaurs, are a group of endothermic
+        vertebrates, characterised by feathers, toothless beaked jaws, the
+        laying of hard-shelled eggs, a high metabolic rate, a four-chambered
+        heart, and a strong yet lightweight skeleton. Birds live worldwide and
+        range in size from the 5 cm (2 in) bee hummingbird to the 2.75 m (9 ft)
+        ostrich. They rank as the world's most numerically successful class of
+        tetrapods, with approximately ten thousand living species, more than
+        half of these being passerine, or "perching" birds.
+      </Paragraph>
+    </TabPanel>
+  </TabPanels>
+</Tabs>
+```
+
+## Tab using Hooks
+
+```jsx
+;() => {
+  const tab = useTabs()
+  return (
+    <div>
+      <TabList {...tab}>
+        <Tab>Tab Hook 1</Tab>
+        <Tab>Tab Hook 2</Tab>
+      </TabList>
+      <TabPanels {...tab}>
+        <TabPanel>1 this is the panel of tab hook 1</TabPanel>
+        <TabPanel>2 this is the panel of tab hook 2</TabPanel>
+      </TabPanels>
+    </div>
+  )
+}
+```

@@ -52,7 +52,7 @@ If you have Helltool installed and running, you've likely already setup your gra
 
 ### 4. Run the Style Guide
 
-Lens' style guide is based on the [Gatsby](https://gatsby.org/) and [DocZ](https://docz.site/) . You can view its generated output by doing the following:
+Lens' style guide is based on the [Gatsby](https://gatsby.org/) . You can view its generated output by doing the following:
 
 1.  `yarn workspace www develop`
 1.  Open [http://localhost:8000](http://localhost:8000)
