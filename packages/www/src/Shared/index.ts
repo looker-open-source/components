@@ -1,3 +1,4 @@
-export { default as ComponentDetail } from './ComponentDetail'
+export { default as ComponentResources } from './ComponentResources'
+export { default as ComponentStatus } from './ComponentStatus'
 export { default as DocTable } from './DocTable'
-export { default as StatusAndResources } from './StatusAndResources'
+export { default as Props } from './Props/Props'

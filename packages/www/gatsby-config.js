@@ -6,23 +6,16 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `pages`,
-        path: `${__dirname}/src/pages/`,
+        name: `documentation`,
+        path: `${__dirname}/src/documentation`,
       },
     },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `components`,
-        path: `${__dirname}/src/pages/components`,
-      },
-    },
-
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
         defaultLayouts: {
-          default: require.resolve('./src/Layout/Layout.tsx'),
+          documentation: require.resolve('./src/Layout/Documentation.tsx'),
+          default: require.resolve('./src/Layout/Default.tsx'),
         },
       },
     },
@@ -38,6 +31,7 @@ module.exports = {
         },
       },
     },
+    // `gatsby-plugin-react-helmet`, @TODO - configure this to set page titles
     `gatsby-plugin-typescript`,
     {
       resolve: `gatsby-plugin-manifest`,

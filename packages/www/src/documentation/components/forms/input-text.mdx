@@ -1,0 +1,120 @@
+---
+title: InputText
+propsOf: InputText
+figma: file/2MG6DoSjk4IaLnjjFCnKFf/Forms
+github: Form/Inputs/InputText.tsx
+---
+
+The `<InputText />` component renders a single text input element on the page, with no accompanying label. It is generally used to construct higher-order components like the `<FieldText />`. If you are building a form, you probably want to use `<FieldText />` instead as it provides label and validation support.
+
+```jsx
+<InputText />
+```
+
+## Name and ID
+
+A name and ID can be specified in the `<InputText />` component. Names are important if the input is used in the context of a form, in which case a name is required for the value of the input to be captured.
+
+```jsx
+<InputText name="someName" id="someId" />
+```
+
+### #Disabled Property
+
+Use the disable property to make an input field uneditable.
+
+```jsx
+    <InputText disabled />
+    <InputText value="Hello!" disabled />
+```
+
+### Placeholders
+
+Placeholders are used to give a hint to the user of the expected value for the input. They should not be used as a complete replacement of labels.
+
+```jsx
+<InputText placeholder="Enter your text here..." />
+```
+
+### ReadOnly Property
+
+As the name suggests, `readOnly` makes the text uneditable.
+
+```jsx
+<InputText value="You can't change me." readOnly />
+```
+
+### Required Property
+
+When set for `<InputText />` in the context of a form, the input field must be filled out before submitting the form.
+
+```jsx
+<form>
+  <InputText required />
+  <br />
+  <br />
+  <Button>Submit</Button>
+</form>
+```
+
+## Accessibility
+
+### Best Practices
+
+- Placeholders are not a substitute for labels.
+- Use the correct [input type](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Form_%3Cinput%3E_types_) for the required data to get more accessible fields for free.
+- See related [ARIA attributes](#related-aria-attributes)
+
+### Markup Expectations
+
+- **Always** use the `<input>` element with the proper `type` attribute for the content, e.g. `<input type="text">` for text content and `<input type"=number">` for numbers.
+- **Always** include an unique id on the `<input>` element so it can be referenced by a label `<input type="text" id="first-name">`
+- Fields that are required **must have** the `required` attribute: `<input type="text" id="first-name" required>`
+
+### Labeling Expectations
+
+- Use clear and descriptive labels that avoid ambiguity.
+- Make required fields obvious.
+- **Always** include a descriptive label with each input, the `for` attribute of the label should match the `id` of the input it labels
+
+```jsx
+    <label htmlFor="first-name">First Name</label>
+    <input id="first-name" type="text" />
+```
+
+- Fields with validations **must have** a the `aria-desrcibedby` attribute to ensure the error message for the field is read by assistive technology.
+
+```jsx
+    <label htmlFor="first-name">First Name</label>
+    <input
+      id="first-name"
+      type="text"
+      aria-describedby="fn-error-message"
+      required
+    />
+    <p id="fn-error-message">This field is required</p>
+```
+
+### Focus Expectations
+
+- Input fields with `:focus` should have an outline and/or a visible change to show it has focus.
+- If the input field with `:focus` has an error, the error should be read by a screen reader
+
+### Keyboard Expectations
+
+- If input has focus, `TAB` and `SHIFT+TAB` should move focus to next focusable element...
+- If input has focus the `Enter` key should submit the form.
+
+### Related Aria Attributes
+
+#### aria-describedby
+
+Use this to provide a detailed descriptions of a field that contains errors.
+
+```jsx
+    <label htmlFor="email">Email Address</label>
+    <input id="email" type="email" aria-describedby="email-error-message" />
+    <p id="email-error-message">Please enter a valid email address</p>
+```
+
+This would announce "Email Address, edit text. Please enter a valid email address"

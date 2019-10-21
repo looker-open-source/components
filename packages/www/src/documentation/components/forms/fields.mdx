@@ -1,0 +1,186 @@
+---
+title: Checkbox & Radio
+figma: file/2MG6DoSjk4IaLnjjFCnKFf/Forms
+---
+
+import { Props } from '../../../Shared'
+
+## FieldCheckbox
+
+<Props of="FieldCheckbox" />
+
+The `<FieldCheckbox />` component is composed of a `<Checkbox />` component and a `<Label />` component. Using `<FieldCheckbox />` allows for rendering validation messages. By default, the label will render to the left of the checkbox, which is the recommended convention, however this is adjustable with the `alignLabel` property.
+
+```jsx
+  <FieldCheckbox name="box" label="Box" />
+  <FieldCheckbox name="box-2" label="Box 2" alignLabel="left" />
+  <FieldCheckbox name="requiredField" label="A required field" required />
+  <FieldCheckbox
+    name="normal-label"
+    label="Normal Label"
+    labelFontWeight="normal"
+    alignLabel="right"
+  />
+```
+
+### FieldCheckbox Validation
+
+The `<FieldCheckbox />` components accepts `validationMessage` as a property. This is an object with properties `type` and `message`.
+
+See `ValidationMessage` [here](/#!/ValidationMessage)
+
+If you have multiple fields in need of validation, it is recommended that you wrap them in a `<Form />` component and pass to it a dictionary with key as field name and value as a `ValidationMessage`.
+
+The `alignValidationMessage` can also be used to adjust where the validation message appears in relation to the input field. By default, it will render to the right, which is the best practice in most cases.
+
+**_Note: In the current implementation, any `ValidationMessage` set in a `<FieldCheckbox />` component will be overridden by `ValidationMessages` set in the parent `<Form />` component. Because of this, it is highly recommended that you only ever directly set `ValidationMessage` if a `<FieldCheckbox />` is outside a `<Form />`._**
+
+```jsx
+<FieldCheckbox
+  name="someBox"
+  label="Some Box"
+  validationMessage={{ type: 'error', message: 'This is an error' }}
+/>
+```
+
+## FieldColor
+
+<Props of="FieldColor" />
+
+This component is composed of a `FieldText` and a `ColorWheel` that appears in a `Popover` upon click of the color swatch.
+
+```jsx
+<FieldColor label="Pick a color" alignLabel="left" />
+```
+
+## FieldRadio
+
+<Props of="FieldRadio" />
+
+The `<FieldRadio />` component is composed of a `<Radio />` component and a `<Label />` component. Using `<FieldRadio />` allows for rendering validation messages. By default, the label will render to the right of the radio button, however this is adjustable with the `alignLabel` property.
+
+```jsx
+  <FieldRadio name="radio" label="Radio" />
+  <FieldRadio name="radio" label="Radio 2" alignLabel="left" />
+  <FieldRadio
+    name="radio"
+    label="Radio 3"
+    labelFontWeight="normal"
+    alignLabel="right"
+  />
+```
+
+## FieldSelect
+
+<Props of="FieldSelect" />
+
+The `<FieldSelect />` component is composed of an `<Select />` component and a `<Label />` component. Using `<FieldSelect />` allows for rendering validation messages. By default, the label will render directly above the input field, which is the recommended convention, however this is adjustable with the `alignLabel` property.
+
+```jsx
+<FieldSelect
+  name="Cheeses"
+  label="Cheeses"
+  value="cheddar"
+  options={[
+    { value: 'cheddar', label: 'Cheddar' },
+    { value: 'gouda', label: 'Gouda' },
+    { value: 'swiss', label: 'Swiss' },
+  ]}
+/>
+```
+
+### FieldSelect Validation
+
+The `<FieldSelect />` component accepts `validationMessage` as a property. This is an object with properties `type` and `message`.
+
+```jsx
+<FieldSelect
+  name="someField"
+  label="Some Field"
+  options={[
+    { value: 'cheddar', label: 'Cheddar' },
+    { value: 'gouda', label: 'Gouda' },
+    { value: 'swiss', label: 'Swiss' },
+  ]}
+  validationMessage={{ type: 'error', message: 'This is an error' }}
+  alignValidationMessage="right"
+/>
+```
+
+If you have multiple fields in need of validation, it is recommended that you wrap them in a `<Form />` component and pass to it a dictionary with key as field name and value as a `ValidationMessage`.
+
+Note: In the current implementation, any `ValidationMessage` set in a `<FieldSelect />` component will be overridden by `ValidationMessages` set in the parent `<Form />` component. Because of this, it is highly recommended that you only ever directly set `ValidationMessage` if a `<FieldSelect />` is outside a `<Form />`.
+
+```jsx static
+const options = [
+  { value: 'cheddar', label: 'Cheddar' },
+  { value: 'gouda', label: 'Gouda' },
+  { value: 'swiss', label: 'Swiss' },
+]
+
+<FieldSelect
+  name="someField"
+  label="Some Field"
+  options={options}
+  validationMessage={{ type: 'error', message: 'This is an error' }}
+  alignValidationMessage="right"
+/>
+```
+
+## FieldText
+
+<Props of="FieldText" />
+
+The `<FieldText />` component is composed of an `<InputText />` component and a `<Label />` component. Using `<FieldText />` allows for rendering validation messages. By default, the label will render directly above the input field, which is the recommended convention, however this is adjustable with the `alignLabel` property.
+
+```jsx
+  <FieldText name="firstName" label="First Name" />
+  <FieldText name="lastName" label=" Last Name" alignLabel="left" />
+  <FieldText name="requiredField" label="A required field" required />
+```
+
+### FieldText Validation
+
+The `<FieldText />` component accepts `validationMessage` as a property. This is an object with properties `type` and `message`.
+
+See `ValidationMessage` [here](/#!/ValidationMessage)
+
+If you have multiple fields in need of validation, it is recommended that you wrap them in a `<Form />` component and pass to it a dictionary with key as field name and value as a `ValidationMessage`.
+
+**_Note: In the current implementation, any `ValidationMessage` set in a `<FieldText />` component will be overridden by `ValidationMessages` set in the parent `<Form />` component. Because of this, it is highly recommended that you only ever directly set `ValidationMessage` if a `<FieldText />` is outside a `<Form />`._**
+
+```jsx
+<FieldText
+  name="someField"
+  label="Some Field"
+  validationMessage={{ type: 'error', message: 'This is an error' }}
+  alignValidationMessage="right"
+/>
+```
+
+## FieldToggle Switch
+
+<Props of="FieldToggleSwitch" />
+
+The `<FieldToggleSwitch />` component is composed of a `<ToggleSwitch />` component and a `<Label />` component. By default, the label will render to the right of the toggle switch, however this is adjustable with the alignLabel property.
+
+```jsx
+;() => {
+  const [on, setOn] = React.useState(false)
+  const onChange = e => {
+    setOn(e.target.checked)
+  }
+  return (
+    <FieldToggleSwitch
+      label="Development Mode"
+      alignLabel="left"
+      onChange={onChange}
+      on={on}
+    />
+  )
+}
+```
+
+## ValidationMessage
+
+This component renders a validation message, and is used by Field components after they are validated.

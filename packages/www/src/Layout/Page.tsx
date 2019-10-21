@@ -3,10 +3,10 @@ import { theme } from '@looker/design-tokens'
 import React, { Fragment } from 'react'
 import { ThemeProvider } from 'styled-components'
 import { MDXProvider } from '@mdx-js/react'
-import { ComponentDetail, StatusAndResources } from '../Shared'
+import { Props } from '../Shared'
 import MDXComponents from '../MDX'
 
-const all = { ...MDXComponents, ComponentDetail, StatusAndResources }
+const all = { ...MDXComponents, Props }
 
 const Page: React.FC = ({ children }) => {
   return (

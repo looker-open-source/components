@@ -54,4 +54,4 @@ export const Heading = styled(TextBase).attrs((props: HeadingProps) => ({
   ${truncate}
 `
 
-Heading.defaultProps = { as: 'h2', fontWeight: 'normal' }
+Heading.defaultProps = { as: 'h2', fontWeight: 'normal', variant: 'default' }

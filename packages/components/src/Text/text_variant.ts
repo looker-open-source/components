@@ -2,6 +2,7 @@ import { variant } from 'styled-system'
 
 export type TextVariants =
   | 'critical'
+  | 'default'
   | 'positive'
   | 'secondary'
   | 'subdued'
@@ -17,6 +18,9 @@ export const textVariant = variant({
   variants: {
     critical: {
       color: 'palette.red500',
+    },
+    default: {
+      color: 'palette.charcoal800',
     },
     inverted: {
       color: 'palette.textInverted',

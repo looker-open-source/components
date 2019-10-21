@@ -1,11 +1,18 @@
-import { Heading } from '@looker/components'
-import React from 'react'
+import { Heading, HeadingProps } from '@looker/components'
+import React, { ReactNode } from 'react'
 import styled from 'styled-components'
 
-const StyledHeading = styled(Heading).attrs({
-  mb: 'medium',
-  lineHeight: 'xlarge',
-  fontWeight: 'normal',
+const generateHeadingAnchor = (children?: ReactNode) => {
+  return (children as string).toLowerCase().replace(/\s/g, '-')
+}
+
+const StyledHeading = styled(Heading).attrs((props: HeadingProps) => {
+  return {
+    mb: 'medium',
+    lineHeight: 'xlarge',
+    fontWeight: 'normal',
+    id: generateHeadingAnchor(props.children),
+  }
 })``
 
 export const h1: React.FC = ({ children }) => (
