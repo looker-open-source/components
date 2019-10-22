@@ -12,6 +12,7 @@ exports[`A <h1> Heading 1`] = `
   font-weight: 400;
   line-height: 2.5rem;
   font-size: 1.5625rem;
+  color: #262D33;
 }
 
 <h1
@@ -35,6 +36,7 @@ exports[`A <h1> Heading sized to <h2> 1`] = `
   font-size: 1.375rem;
   font-weight: 400;
   line-height: 2rem;
+  color: #262D33;
 }
 
 <h1
@@ -58,6 +60,7 @@ exports[`A Heading to bold 1`] = `
   font-size: 1.125rem;
   font-weight: 700;
   line-height: 1.75rem;
+  color: #262D33;
 }
 
 <h2
@@ -82,6 +85,7 @@ exports[`A Heading transformed 1`] = `
   line-height: 2rem;
   font-size: 1.375rem;
   text-transform: capitalize;
+  color: #262D33;
 }
 
 <h2
@@ -105,6 +109,7 @@ exports[`A Heading truncated 1`] = `
   font-weight: 400;
   line-height: 2rem;
   font-size: 1.375rem;
+  color: #262D33;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -131,6 +136,7 @@ exports[`A Heading with multiline truncate 1`] = `
   font-weight: 400;
   line-height: 2rem;
   font-size: 1.375rem;
+  color: #262D33;
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -182,6 +188,7 @@ exports[`A default Heading 1`] = `
   font-weight: 400;
   line-height: 2rem;
   font-size: 1.375rem;
+  color: #262D33;
 }
 
 <h2

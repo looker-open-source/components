@@ -26,6 +26,7 @@ exports[`MenuGroup - JSX label 1`] = `
   padding-right: 1rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+  color: #262D33;
 }
 
 .c4 {
@@ -231,6 +232,7 @@ exports[`MenuGroup - label 1`] = `
   padding-right: 1rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+  color: #262D33;
 }
 
 .c3 {
@@ -432,6 +434,7 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
   padding-right: 1rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+  color: #262D33;
 }
 
 .c3 {
