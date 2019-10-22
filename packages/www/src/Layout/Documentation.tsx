@@ -31,12 +31,10 @@ interface DocQuery {
   }
 }
 
-const TableOfContents: FC<{ toc: TableOfContents }> = ({ toc }) => {
-  const { items } = toc
+const TableOfContents: FC<{ toc?: TableOfContents }> = ({ toc }) => {
+  if (!toc || !toc.items) return null
 
-  if (!items) return null
-
-  const sections = items.map(({ url, title }) => (
+  const sections = toc.items.map(({ url, title }) => (
     <ListItem fontSize="small" key={url} my="medium">
       <Link color="palette.charcoal500" href={url}>
         {title}
@@ -44,7 +42,12 @@ const TableOfContents: FC<{ toc: TableOfContents }> = ({ toc }) => {
     </ListItem>
   ))
 
-  return <List>{sections}</List>
+  return (
+    <>
+      <Divider color="palette.charcoal200" my="large" />
+      <List>{sections}</List>
+    </>
+  )
 }
 
 const DocumentationLayout = (props: DocQuery) => {
@@ -68,8 +71,7 @@ const DocumentationLayout = (props: DocQuery) => {
             feedbackTitle={title}
             github={github}
           />
-          <Divider color="palette.charcoal200" my="large" />
-          {mdx.tableOfContents && <TableOfContents toc={mdx.tableOfContents} />}
+          <TableOfContents toc={mdx.tableOfContents} />
         </Meta>
       </Grid>
     </Layout>

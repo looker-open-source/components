@@ -10,8 +10,8 @@ interface ComponentResourcesProps {
 }
 
 const figmaBase = 'https://www.figma.com/'
-const githubBase = 'https://github.com/looker/lens/blob/master/src/components/'
-const githubComponentExtension = '.tsx'
+const githubBase =
+  'https://github.com/looker/lens/blob/master/packages/components/src/'
 
 const ComponentResources: FC<ComponentResourcesProps> = ({
   figma,
@@ -21,7 +21,7 @@ const ComponentResources: FC<ComponentResourcesProps> = ({
   return (
     <List>
       {github && (
-        <Resource url={`${githubBase}${github}${githubComponentExtension}`}>
+        <Resource url={`${githubBase}${github}`}>
           <GithubSvg /> Source
         </Resource>
       )}
