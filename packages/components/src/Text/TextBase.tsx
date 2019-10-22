@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import {
+  color,
   reset,
   typography,
   space,
@@ -25,6 +26,7 @@ export const TextBase = styled.span.attrs((props: TypographyProps) => ({
   ${reset}
   ${typography}
   ${space}
+  ${color}
   ${textDecoration}
   ${props => props.wrap && 'overflow-wrap: break-word'};
 `
