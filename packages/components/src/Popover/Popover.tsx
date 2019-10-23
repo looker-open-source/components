@@ -7,6 +7,7 @@ import React, {
   SyntheticEvent,
 } from 'react'
 import { Popper } from 'react-popper'
+import { Box } from '../Layout'
 import { ModalContext } from '../Modal'
 import { ModalPortal } from '../Modal/ModalPortal'
 import { OverlaySurface } from '../Overlay/OverlaySurface'
@@ -54,7 +55,7 @@ export interface UsePopoverProps {
 
   /**
    * By default Popover cancels event bubbling when a click event triggers the closure of the Popover.
-   * This was deemed a best practice as it prevents inadveted destructive actions and mirrors behavior
+   * This was deemed a best practice as it prevents inadvertent destructive actions and mirrors behavior
    * seen in many commonly used applications (e.g. Chrome).
    *
    * However, where several related Popover components are grouped together, cancelling event bubbling for
@@ -99,45 +100,76 @@ export interface PopoverProps extends UsePopoverProps {
   ) => JSX.Element
 }
 
-export function usePopover({
-  arrow = true,
-  canClose,
-  content,
-  groupedPopoversRef,
-  pin = false,
-  isOpen: controlledIsOpen = false,
-  setOpen: controlledSetOpen,
-  onClose,
-  hoverDisclosureRef,
-  placement: propsPlacement,
-  ...props
-}: UsePopoverProps) {
+function useVerticalSpace(
+  ref: RefObject<HTMLElement>,
+  pin: boolean,
+  placement: Placement,
+  isOpen: boolean
+) {
+  const [verticalSpace, setVerticalSpace] = useState(0)
+
+  useEffect(() => {
+    function getVerticalSpace() {
+      if (ref.current) {
+        // If popover is pinned, get the available vertical space
+        if (pin) {
+          const { top, bottom } = ref.current.getBoundingClientRect()
+          if (placement.indexOf('top') > -1) {
+            setVerticalSpace(top)
+          } else if (placement.indexOf('bottom') > -1) {
+            setVerticalSpace(window.innerHeight - bottom)
+          }
+        }
+      }
+    }
+
+    if (isOpen) {
+      window.addEventListener('resize', getVerticalSpace)
+      getVerticalSpace()
+    }
+
+    return () => {
+      window.removeEventListener('resize', getVerticalSpace)
+    }
+  }, [ref, pin, placement, isOpen])
+
+  return verticalSpace
+}
+
+function useOpenWithoutElement(isOpen: boolean, ref: RefObject<HTMLElement>) {
+  const [openWithoutElem, setOpenWithoutElem] = useState(
+    isOpen && ref.current === null
+  )
+  useEffect(() => {
+    if (ref.current && openWithoutElem) {
+      setOpenWithoutElem(false)
+    }
+  }, [openWithoutElem, ref])
+  return openWithoutElem
+}
+
+function usePopoverToggle(
+  {
+    isOpen: controlledIsOpen = false,
+    setOpen: controlledSetOpen,
+    canClose,
+    groupedPopoversRef,
+  }: Pick<
+    UsePopoverProps,
+    'isOpen' | 'setOpen' | 'canClose' | 'groupedPopoversRef'
+  >,
+  portalRef: RefObject<HTMLDivElement>,
+  triggerRef: RefObject<HTMLElement>
+): [boolean, (value: boolean) => void] {
+  const [uncontrolledIsOpen, uncontrolledSetOpen] = useState(controlledIsOpen)
   const isControlled = useControlWarn({
     controllingProps: ['controlledSetOpen'],
     isControlledCheck: () => controlledSetOpen !== undefined,
     name: 'usePopover',
   })
-
-  const [uncontrolledIsOpen, uncontrolledSetOpen] = useState(controlledIsOpen)
-
-  const portalRef = useRef<HTMLDivElement | null>(null)
-  const newTriggerRef = useRef<HTMLElement>(null)
-
-  const triggerRef = props.triggerRef || newTriggerRef
   const isOpen = isControlled ? controlledIsOpen : uncontrolledIsOpen
-  const setOpen = isControlled ? controlledSetOpen : uncontrolledSetOpen
-
-  function handleOpen(event: SyntheticEvent) {
-    setOpen && setOpen(true)
-    event.stopPropagation()
-    event.preventDefault()
-  }
-
-  function handleClose() {
-    if (canClose && !canClose()) return
-    setOpen && setOpen(false)
-    onClose && onClose()
-  }
+  const setOpen =
+    isControlled && controlledSetOpen ? controlledSetOpen : uncontrolledSetOpen
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -160,7 +192,7 @@ export function usePopover({
         return
       }
 
-      setOpen && setOpen(false)
+      setOpen(false)
 
       // User clicked the trigger while the Popover was open
       if (
@@ -192,8 +224,60 @@ export function usePopover({
     return () => {
       document.removeEventListener('click', handleClickOutside, true)
     }
-  }, [canClose, groupedPopoversRef, isOpen, triggerRef, setOpen])
+  }, [canClose, groupedPopoversRef, isOpen, setOpen, triggerRef, portalRef])
 
+  return [isOpen, setOpen]
+}
+
+export function usePopover({
+  arrow = true,
+  canClose,
+  content,
+  groupedPopoversRef,
+  pin = false,
+  isOpen: controlledIsOpen = false,
+  onClose,
+  placement: propsPlacement = 'bottom',
+  hoverDisclosureRef,
+  setOpen: controlledSetOpen,
+  ...props
+}: UsePopoverProps) {
+  const portalRef = useRef<HTMLDivElement | null>(null)
+  const newTriggerRef = useRef<HTMLElement>(null)
+
+  const triggerRef = props.triggerRef || newTriggerRef
+
+  const [isOpen, setOpen] = usePopoverToggle(
+    {
+      canClose,
+      groupedPopoversRef,
+      isOpen: controlledIsOpen,
+      setOpen: controlledSetOpen,
+    },
+    portalRef,
+    triggerRef
+  )
+  const verticalSpace = useVerticalSpace(
+    triggerRef,
+    pin,
+    propsPlacement,
+    isOpen
+  )
+  const openWithoutElem = useOpenWithoutElement(isOpen, triggerRef)
+
+  function handleOpen(event: React.SyntheticEvent) {
+    setOpen(true)
+    event.stopPropagation()
+    event.preventDefault()
+  }
+
+  function handleClose() {
+    if (canClose && !canClose()) return
+    setOpen(false)
+    onClose && onClose()
+  }
+
+  // Logic to track the hover state of the hoverDisclosureRef and toggle the disclosure
   const [isHovered, setIsHovered] = useState(hoverDisclosureRef === undefined)
 
   function handleMouseEnter() {
@@ -222,7 +306,7 @@ export function usePopover({
   const referenceElement =
     triggerRef && triggerRef.current ? triggerRef.current : undefined
 
-  const popover = isOpen && (
+  const popover = !openWithoutElem && isOpen && (
     <ModalContext.Provider value={{ closeModal: handleClose }}>
       <ModalPortal portalRef={portalRef}>
         <Popper
@@ -236,8 +320,7 @@ export function usePopover({
               flipVariationsByContent: true,
             },
             preventOverflow: {
-              boundariesElement: 'viewport',
-              escapeWithReference: true,
+              escapeWithReference: verticalSpace > 50,
               padding: 0,
             },
           }}
@@ -257,7 +340,16 @@ export function usePopover({
               boxShadow={3}
               color="palette.charcoal900"
             >
-              {content}
+              {verticalSpace > 50 ? (
+                <Box
+                  maxHeight={`calc(${verticalSpace - 10}px - 1rem)`}
+                  overflowY="scroll"
+                >
+                  {content}
+                </Box>
+              ) : (
+                content
+              )}
             </OverlaySurface>
           )}
         </Popper>

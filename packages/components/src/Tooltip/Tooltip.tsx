@@ -159,8 +159,6 @@ export function useTooltip({
               flipVariationsByContent: true,
             },
             preventOverflow: {
-              boundariesElement: 'viewport',
-              escapeWithReference: true,
               padding: 0,
             },
           }}
