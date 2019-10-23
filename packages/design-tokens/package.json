@@ -11,7 +11,6 @@
     "build:declaration": "tsc --project tsconfig.build.json",
     "build:es": "BABEL_ENV=build babel src --root-mode upward --out-dir dist --source-maps --extensions .ts,.tsx --delete-dir-on-start --no-comments"
   },
-  "dependencies": {},
   "devDependencies": {
     "@types/lodash": "^4.14.136",
     "@types/styled-components": "^4.1.19",
