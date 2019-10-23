@@ -1,58 +1,35 @@
-import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
-import React, { Component } from 'react'
+import React, { FC, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import styled from 'styled-components'
+import { useScrollLock } from '../utils/useScrollLock'
 import { CustomizableModalAttributes } from './Modal'
 import { getModalRoot } from './modalRoot'
-
-const hasParentMatchingSelector = (target: HTMLElement, selector: string) => {
-  return [...Array.from(document.querySelectorAll(selector))].some(
-    el => el !== target && el.contains(target)
-  )
-}
 
 export interface ModalPortalProps {
   portalRef?: React.RefObject<HTMLDivElement>
 }
 
-export class ModalPortal extends Component<ModalPortalProps> {
-  private el: HTMLElement
-  private modalRoot?: HTMLElement
+export const ModalPortal: FC<ModalPortalProps> = ({ portalRef, children }) => {
+  const el = document.createElement('div')
+  useScrollLock(false, portalRef)
 
-  constructor(props: ModalPortalProps) {
-    super(props)
-    this.el = document.createElement('div')
-  }
+  useEffect(() => {
+    const modalRoot = getModalRoot()
+    if (!modalRoot) return
+    modalRoot.appendChild(el)
 
-  public componentDidMount() {
-    this.modalRoot = getModalRoot()
-    if (!this.modalRoot) return
-    this.modalRoot.appendChild(this.el)
-    disableBodyScroll(this.el, {
-      allowTouchMove: (el: HTMLElement) =>
-        hasParentMatchingSelector(el, '.surface-overflow'),
-      reserveScrollBarGap: true,
-    })
-  }
+    return () => {
+      modalRoot.removeChild(el)
+    }
+  }, [el])
 
-  public componentWillUnmount() {
-    enableBodyScroll(this.el)
-    if (!this.modalRoot) return
-    this.modalRoot.removeChild(this.el)
-  }
+  const content = (
+    <InvisiBox ref={portalRef} zIndex={CustomizableModalAttributes.zIndex}>
+      {children}
+    </InvisiBox>
+  )
 
-  public render(): any {
-    const content = (
-      <InvisiBox
-        ref={this.props.portalRef}
-        zIndex={CustomizableModalAttributes.zIndex}
-      >
-        {this.props.children}
-      </InvisiBox>
-    )
-
-    return createPortal(content, this.el)
-  }
+  return createPortal(content, el)
 }
 
 const InvisiBox = styled.div<{ zIndex?: number }>`

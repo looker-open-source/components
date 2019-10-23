@@ -38,6 +38,12 @@ export const OverlaySurface = forwardRef(
     const { children, eventHandlers, style, zIndex, ...innerProps } = props
     const { closeModal } = useContext(ModalContext)
     const focusRef = useFocusTrap()
+    // workaround for react-popper -caused error:
+    // `NaN` is an invalid value for the `left` css style property
+    const cleanArrowStyle = {
+      ...props.arrowProps.style,
+      left: props.arrowProps.style.left || 'auto',
+    }
 
     return (
       <Outer ref={ref} zIndex={zIndex} style={style} {...eventHandlers}>
@@ -64,7 +70,7 @@ export const OverlaySurface = forwardRef(
                 borderColor={props.borderColor}
                 data-placement={props.placement}
                 ref={props.arrowProps.ref}
-                style={props.arrowProps.style}
+                style={cleanArrowStyle}
               />
             )}
           </Inner>
