@@ -1,5 +1,7 @@
 import {
   CompatibleHTMLProps,
+  ColorProps,
+  color,
   layout,
   LayoutProps,
   position,
@@ -12,6 +14,7 @@ import styled, { css } from 'styled-components'
 
 export interface CardProps
   extends CompatibleHTMLProps<HTMLDivElement>,
+    ColorProps,
     PositionProps,
     LayoutProps,
     SpaceProps {
@@ -42,6 +45,7 @@ export const Card = styled.div<CardProps>`
   ${layout}
   ${position}
   ${space}
+  ${color}
 
   background: ${props => props.theme.colors.palette.white};
   border: solid 1px ${props =>
