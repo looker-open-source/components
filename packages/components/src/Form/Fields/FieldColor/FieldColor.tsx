@@ -24,7 +24,7 @@ const colorWheelSize = 164
 
 export interface FieldColorProps
   extends FieldProps,
-    Omit<InputTextProps, 'height' | 'width' | 'size'> {
+    Omit<InputTextProps, 'height' | 'size'> {
   /**
    * If true, hides input and only show color swatch.
    */
