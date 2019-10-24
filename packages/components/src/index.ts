@@ -21,4 +21,14 @@ export * from './VisuallyHidden'
 
 export * from './utils'
 
-export { palette, radii, semanticColors, theme } from 'looker-design-tokens'
+/** Provided here for backwards compatibility.
+ * @TODO - Remove before 1.0
+ **/
+
+export {
+  palette,
+  radii,
+  semanticColors,
+  theme,
+  Theme,
+} from 'looker-design-tokens'
