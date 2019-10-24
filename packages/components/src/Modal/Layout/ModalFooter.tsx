@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
-import { CompatibleHTMLProps } from 'looker-design-tokens/src'
+import { CompatibleHTMLProps } from 'looker-design-tokens'
 import { SpaceProps, space } from 'styled-system'
 
 export interface ModalFooterProps extends CompatibleHTMLProps<HTMLDivElement> {
