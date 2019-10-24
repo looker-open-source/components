@@ -7,7 +7,7 @@ import {
   TableHead,
   TableHeaderCell,
   TableRow,
-} from 'looker-lens'
+} from '@looker/components'
 import { DocTable } from '../../../Shared'
 
 const spacingExamples = [

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Heading, Code, Text } from 'looker-lens'
+import { Heading, Code, Text } from '@looker/components'
 import { palette } from '@looker/design-tokens'
 import {
   BorderExamples,

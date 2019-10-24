@@ -1,4 +1,4 @@
-import { GlobalStyle } from 'looker-lens'
+import { GlobalStyle } from '@looker/components'
 import { theme } from '@looker/design-tokens'
 import React, { Fragment } from 'react'
 import { ThemeProvider } from 'styled-components'

@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react'
-import { IconButton, IconNames } from 'looker-lens'
+import { IconButton, IconNames } from '@looker/components'
 import styled from 'styled-components'
 
 interface SidebarToggleProps {

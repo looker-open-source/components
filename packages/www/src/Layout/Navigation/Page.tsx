@@ -1,4 +1,4 @@
-import { Badge, SidebarItem } from 'looker-lens'
+import { Badge, SidebarItem } from '@looker/components'
 import React, { FC, useContext } from 'react'
 import { LocationContext } from './LocationContext'
 import { NavigationPage } from './types'

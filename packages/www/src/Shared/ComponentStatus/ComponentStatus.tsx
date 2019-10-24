@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import styled, { css } from 'styled-components'
-import { Box, Link, Paragraph } from 'looker-lens'
+import { Box, Link, Paragraph } from '@looker/components'
 
 export type StatusLabels = 'experimental' | 'deprecated' | 'stable'
 

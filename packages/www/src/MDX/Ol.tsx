@@ -1,4 +1,4 @@
-import { List } from 'looker-lens'
+import { List } from '@looker/components'
 import styled from 'styled-components'
 
 export default styled(List).attrs({
