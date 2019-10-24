@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, { ThemeProvider } from 'styled-components'
-import { Box, Button } from '@looker/components'
+import { Box, Button } from 'looker-lens'
 
 const RoundBtnStyled = styled(Button)`
   border-radius: 2rem;

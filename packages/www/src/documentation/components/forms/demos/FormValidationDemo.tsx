@@ -1,5 +1,5 @@
 import React from 'react'
-import { FieldText, Form } from '@looker/components'
+import { FieldText, Form } from 'looker-lens'
 
 interface ValidationErrors {
   [key: string]: { message?: string; type?: 'error' }

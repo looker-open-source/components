@@ -1,4 +1,4 @@
-import { Link as LookerLink } from '@looker/components'
+import { Link as LookerLink } from 'looker-lens'
 import styled from 'styled-components'
 
 const Link = styled(LookerLink)`

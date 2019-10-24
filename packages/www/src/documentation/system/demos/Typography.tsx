@@ -7,7 +7,7 @@ import {
   TableHeaderCell,
   TableRow,
   Text,
-} from '@looker/components'
+} from 'looker-lens'
 import { FontWeights, FontSizes } from '@looker/design-tokens'
 import { DocTable } from '../../../Shared'
 

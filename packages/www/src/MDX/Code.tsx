@@ -1,4 +1,4 @@
-import { Box } from '@looker/components'
+import { Box } from 'looker-lens'
 import styled from 'styled-components'
 
 export default styled(Box).attrs({

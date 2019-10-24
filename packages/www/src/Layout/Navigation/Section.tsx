@@ -1,5 +1,5 @@
 import React, { FC, useContext } from 'react'
-import { SidebarGroup } from '@looker/components'
+import { SidebarGroup } from 'looker-lens'
 import { NavigationSection } from './types'
 import Page, { pathToUri } from './Page'
 import { LocationContext } from './LocationContext'

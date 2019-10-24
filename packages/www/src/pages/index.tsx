@@ -7,7 +7,7 @@ import {
   Icon,
   Text,
   Paragraph,
-} from '@looker/components'
+} from 'looker-lens'
 import React from 'react'
 import styled from 'styled-components'
 import Layout from '../Layout'
