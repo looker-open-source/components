@@ -5,14 +5,20 @@ import {
   SpaceProps,
   typography,
   TypographyProps,
+  PositionProps,
+  LayoutProps,
+  position,
+  layout,
 } from 'looker-design-tokens'
 import styled from 'styled-components'
 import { variant } from 'styled-system'
 
 export interface ListProps
   extends CompatibleHTMLProps<HTMLUListElement | HTMLOListElement>,
-    TypographyProps,
-    SpaceProps {
+    PositionProps,
+    LayoutProps,
+    SpaceProps,
+    TypographyProps {
   /**
    * Specify the type of marker to place next to list items.
    *
@@ -51,6 +57,9 @@ export const List = styled.ul.attrs((props: ListProps) => ({
   ${typography}
   ${typeVariant}
   ${space}
+
+  ${position}
+  ${layout}
 `
 
 List.defaultProps = { type: 'none' }
