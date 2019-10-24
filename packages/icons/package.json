@@ -4,6 +4,7 @@
   "version": "0.1.1-alpha.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "private": true,
   "files": [
     "dist"
   ],
@@ -22,5 +23,5 @@
     "ora": "^3.4.0",
     "rimraf": "^3.0.0"
   },
-  "gitHead": "ad7885bba04657e6587cf80e93e988cb569993ce"
+  "gitHead": "0eb0e8b7fe4a010f33c38cfebde222f8c7d4e79d"
 }
