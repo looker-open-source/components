@@ -1,5 +1,7 @@
 import {
   CompatibleHTMLProps,
+  layout,
+  LayoutProps,
   position,
   PositionProps,
   reset,
@@ -11,6 +13,7 @@ import styled, { css } from 'styled-components'
 export interface CardProps
   extends CompatibleHTMLProps<HTMLDivElement>,
     PositionProps,
+    LayoutProps,
     SpaceProps {
   /**
    * Show card with a BoxShadow applied
@@ -36,6 +39,7 @@ const raised = (props: CardProps) =>
 
 export const Card = styled.div<CardProps>`
   ${reset}
+  ${layout}
   ${position}
   ${space}
 
@@ -43,11 +47,7 @@ export const Card = styled.div<CardProps>`
   border: solid 1px ${props =>
     props.theme.colors.semanticColors.primary.borderColor};
   border-radius: ${props => props.theme.radii.medium};
-  display: flex;
   flex-direction: column;
-  height: 100%;
-  min-width: 200px;
-  overflow: hidden;
   transition: border ${cardTransition}, box-shadow ${cardTransition};
 
   &:hover {
@@ -57,4 +57,10 @@ export const Card = styled.div<CardProps>`
   ${raised}
 `
 
-Card.defaultProps = { raised: true }
+Card.defaultProps = {
+  display: 'flex',
+  height: '100%',
+  minWidth: '200px',
+  overflow: 'hidden',
+  raised: true,
+}

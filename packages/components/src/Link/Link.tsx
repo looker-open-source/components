@@ -3,18 +3,24 @@ import {
   ColorProps,
   color,
   reset,
+  textDecoration,
+  TextDecorationProps,
+  typography,
+  TypographyProps,
 } from 'looker-design-tokens'
 import styled from 'styled-components'
 
 export interface LinkProps
   extends CompatibleHTMLProps<HTMLAnchorElement>,
-    ColorProps {}
+    ColorProps,
+    TextDecorationProps,
+    TypographyProps {}
 
 export const Link = styled.a<LinkProps>`
   ${reset}
   ${color}
-
-  text-decoration: none;
+  ${typography}
+  ${textDecoration}
 
   &:hover {
     text-decoration: underline;
@@ -23,4 +29,5 @@ export const Link = styled.a<LinkProps>`
 
 Link.defaultProps = {
   color: 'palette.blue500',
+  textDecoration: 'none',
 }
