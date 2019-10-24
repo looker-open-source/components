@@ -1,7 +1,7 @@
 {
   "name": "looker-icons",
   "license": "UNLICENSED",
-  "version": "0.1.14-alpha.0",
+  "version": "0.1.15-alpha.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -22,5 +22,5 @@
     "ora": "^3.4.0",
     "rimraf": "^3.0.0"
   },
-  "gitHead": "231eeb69af17638b22b4e567f096316023a5829f"
+  "gitHead": "80c72c13c8c249836057a9089d775e296e84cb12"
 }

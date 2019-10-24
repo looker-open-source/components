@@ -1,7 +1,7 @@
 {
   "name": "looker-design-tokens",
   "license": "UNLICENSED",
-  "version": "0.1.14-alpha.0",
+  "version": "0.1.15-alpha.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -28,5 +28,5 @@
     "styled-components": "^4.3.2",
     "styled-system": "^5.1.2"
   },
-  "gitHead": "231eeb69af17638b22b4e567f096316023a5829f"
+  "gitHead": "80c72c13c8c249836057a9089d775e296e84cb12"
 }
