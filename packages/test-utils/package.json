@@ -1,7 +1,7 @@
 {
   "name": "looker-components-test-utils",
   "license": "UNLICENSED",
-  "version": "0.1.12-alpha.0",
+  "version": "0.1.13-alpha.0",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
@@ -11,7 +11,7 @@
     "@testing-library/react": "^9.1.3",
     "enzyme": "^3.9.0",
     "jest-styled-components": "^6.3.3",
-    "looker-design-tokens": "^0.1.12-alpha.0",
+    "looker-design-tokens": "^0.1.13-alpha.0",
     "react-test-renderer": "^16.9.0",
     "styled-components": "^4.3.2"
   },
@@ -28,5 +28,5 @@
     "build:declaration": "tsc --project tsconfig.build.json",
     "build:es": "BABEL_ENV=build babel src --root-mode upward --out-dir dist --source-maps --extensions .ts,.tsx --delete-dir-on-start --no-comments"
   },
-  "gitHead": "ad7885bba04657e6587cf80e93e988cb569993ce"
+  "gitHead": "492b9aaa6e927d6051918dd13591ff78b0f6c07d"
 }
