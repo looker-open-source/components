@@ -28,5 +28,5 @@
     "build:declaration": "tsc --project tsconfig.build.json",
     "build:es": "BABEL_ENV=build babel src --root-mode upward --out-dir dist --source-maps --extensions .ts,.tsx --delete-dir-on-start --no-comments"
   },
-  "gitHead": "80c72c13c8c249836057a9089d775e296e84cb12"
+  "gitHead": "05deaab6fabe072f9754f7164520db0d0616cab0"
 }
