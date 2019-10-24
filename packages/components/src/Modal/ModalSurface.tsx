@@ -1,4 +1,4 @@
-import { CompatibleHTMLProps, reset } from '@looker/design-tokens'
+import { CompatibleHTMLProps, reset } from 'looker-design-tokens'
 import React, { FC, useContext } from 'react'
 import { HotKeys } from 'react-hotkeys'
 import styled, { CSSObject, css } from 'styled-components'

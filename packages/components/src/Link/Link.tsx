@@ -3,7 +3,7 @@ import {
   ColorProps,
   color,
   reset,
-} from '@looker/design-tokens'
+} from 'looker-design-tokens'
 import styled from 'styled-components'
 
 export interface LinkProps

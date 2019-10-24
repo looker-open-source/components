@@ -11,7 +11,7 @@ import {
   typography,
   layout,
   border,
-} from '@looker/design-tokens'
+} from 'looker-design-tokens'
 
 export interface TabProps
   extends BorderProps,

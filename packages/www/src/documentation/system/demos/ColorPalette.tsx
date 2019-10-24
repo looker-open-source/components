@@ -1,6 +1,6 @@
 import { getLuminance, rgba, rgbToColorString } from 'polished'
 import React from 'react'
-import { Text } from '@looker/components'
+import { Text } from 'looker-lens'
 import {
   SwatchGrid,
   SwatchHolder,

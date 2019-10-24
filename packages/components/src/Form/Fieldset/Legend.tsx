@@ -14,7 +14,7 @@ import {
   TextTransformProps,
   typography,
   TypographyProps,
-} from '@looker/design-tokens'
+} from 'looker-design-tokens'
 
 export interface CustomizableLegendAttributes extends CustomizableAttributes {
   bottomPadding: SpacingSizes

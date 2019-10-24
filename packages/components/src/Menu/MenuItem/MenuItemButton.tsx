@@ -4,7 +4,7 @@ import {
   space,
   CompatibleHTMLProps,
   SpaceProps,
-} from '@looker/design-tokens'
+} from 'looker-design-tokens'
 
 export interface MenuItemButtonProps
   extends SpaceProps,

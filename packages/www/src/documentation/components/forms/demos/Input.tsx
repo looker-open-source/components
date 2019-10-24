@@ -1,5 +1,5 @@
 import React from 'react'
-import { Divider, InputSearch } from '@looker/components'
+import { Divider, InputSearch } from 'looker-lens'
 
 export interface InputSearchElementProps {
   value?: string

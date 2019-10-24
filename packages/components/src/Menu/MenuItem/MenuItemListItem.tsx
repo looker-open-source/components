@@ -1,4 +1,4 @@
-import { CompatibleHTMLProps, color, typography } from '@looker/design-tokens'
+import { CompatibleHTMLProps, color, typography } from 'looker-design-tokens'
 import styled, { css } from 'styled-components'
 import { Icon } from '../../Icon'
 import { MenuItemStyle } from './menuItemStyle'

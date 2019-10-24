@@ -1,4 +1,4 @@
-import { SemanticColor } from '@looker/design-tokens'
+import { SemanticColor } from 'looker-design-tokens'
 import { css } from 'styled-components'
 import { CheckboxRadioContainerProps } from './InputProps'
 

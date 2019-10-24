@@ -3,7 +3,7 @@ import {
   CompatibleHTMLProps,
   textTransform,
   TextTransformProps,
-} from '@looker/design-tokens'
+} from 'looker-design-tokens'
 import { textVariant, TextVariantProps } from './text_variant'
 import { TextBase, TextBaseProps } from './TextBase'
 

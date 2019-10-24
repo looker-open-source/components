@@ -2,7 +2,7 @@ import '@testing-library/jest-dom/extend-expect'
 import React from 'react'
 import { Simulate } from 'react-dom/test-utils'
 
-import { renderWithTheme } from '@looker/components-test-utils'
+import { renderWithTheme } from 'looker-components-test-utils'
 import { ButtonItem } from './ButtonItem'
 import { ButtonToggle } from './ButtonToggle'
 

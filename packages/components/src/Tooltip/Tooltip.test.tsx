@@ -4,7 +4,7 @@ import React from 'react'
 import {
   mountWithTheme,
   assertSnapshotShallow,
-} from '@looker/components-test-utils'
+} from 'looker-components-test-utils'
 
 import { Box } from '../Layout/Box'
 import { Button } from '../Button'

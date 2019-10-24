@@ -8,7 +8,7 @@ import {
   reset,
   space,
   SpaceProps,
-} from '@looker/design-tokens'
+} from 'looker-design-tokens'
 import styled from 'styled-components'
 import { variant } from 'styled-system'
 

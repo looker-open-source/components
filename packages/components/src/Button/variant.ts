@@ -3,7 +3,7 @@ import {
   semanticColors,
   SemanticColor,
   SemanticColors,
-} from '@looker/design-tokens'
+} from 'looker-design-tokens'
 import { css } from 'styled-components'
 
 type ButtonVariants = 'default' | 'outline' | 'transparent'

@@ -5,8 +5,8 @@ import { fireEvent } from '@testing-library/react'
 import {
   assertSnapshotShallow,
   renderWithTheme,
-} from '@looker/components-test-utils'
-import { theme } from '@looker/design-tokens'
+} from 'looker-components-test-utils'
+import { theme } from 'looker-design-tokens'
 import { ThemeProvider } from 'styled-components'
 
 import { FieldColor } from './FieldColor'

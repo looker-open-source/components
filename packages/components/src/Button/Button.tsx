@@ -3,7 +3,7 @@ import {
   SpaceProps,
   space,
   reset,
-} from '@looker/design-tokens'
+} from 'looker-design-tokens'
 import React, { forwardRef, Ref } from 'react'
 import styled, { css } from 'styled-components'
 import { buttonSize, ButtonSizeProps } from './size'

@@ -1,7 +1,7 @@
-import { Flex, Heading, Icon } from '@looker/components'
+import { Flex, Heading, Icon } from 'looker-lens'
 import React, { FC } from 'react'
 import styled from 'styled-components'
-import { space, SpaceProps } from '@looker/design-tokens'
+import { space, SpaceProps } from 'looker-design-tokens'
 
 export const HeaderJsx: FC<{ className?: string }> = ({ className }) => (
   <a href="/" className={className}>

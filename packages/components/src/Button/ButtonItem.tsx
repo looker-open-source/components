@@ -7,7 +7,7 @@ import {
   SpaceProps,
   typography,
   TypographyProps,
-} from '@looker/design-tokens'
+} from 'looker-design-tokens'
 
 export interface ButtonItemProps
   extends SpaceProps,

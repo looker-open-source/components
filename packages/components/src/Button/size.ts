@@ -3,7 +3,7 @@ import {
   SizeMedium,
   SizeSmall,
   SizeXSmall,
-} from '@looker/design-tokens'
+} from 'looker-design-tokens'
 import { variant } from 'styled-system'
 
 export type ButtonSizes = SizeXSmall | SizeSmall | SizeMedium | SizeLarge

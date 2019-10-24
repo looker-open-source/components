@@ -11,7 +11,7 @@ import {
   TypographyProps,
   space,
   SpaceProps,
-} from '@looker/design-tokens'
+} from 'looker-design-tokens'
 import { css } from 'styled-components'
 
 export interface TableCellProps

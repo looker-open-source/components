@@ -1,4 +1,4 @@
-import { Icon, IconButton, IconNames, Tooltip } from '@looker/components'
+import { Icon, IconButton, IconNames, Tooltip } from 'looker-lens'
 import { PrismTheme, Language } from 'prism-react-renderer'
 import React, { useState } from 'react'
 import CopyToClipboard from 'react-copy-to-clipboard'

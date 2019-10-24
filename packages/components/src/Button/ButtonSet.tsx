@@ -9,7 +9,7 @@ import {
   BorderProps,
   PositionProps,
   SpaceProps,
-} from '@looker/design-tokens'
+} from 'looker-design-tokens'
 import { Box } from '../Layout'
 import { ButtonItemProps } from './ButtonItem'
 

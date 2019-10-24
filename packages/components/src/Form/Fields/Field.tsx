@@ -6,7 +6,7 @@ import {
   FontWeights,
   SpacingSizes,
   CustomizableAttributes,
-} from '@looker/design-tokens'
+} from 'looker-design-tokens'
 import omit from 'lodash/omit'
 import pick from 'lodash/pick'
 import { FlexItem } from '../../Layout/FlexItem'

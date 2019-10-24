@@ -1,8 +1,8 @@
 import { fireEvent } from '@testing-library/react'
 import React from 'react'
 
-import { renderWithTheme } from '@looker/components-test-utils'
-import { semanticColors } from '@looker/design-tokens'
+import { renderWithTheme } from 'looker-components-test-utils'
+import { semanticColors } from 'looker-design-tokens'
 import { Button } from '../../Button'
 import { Confirm } from './Confirm'
 

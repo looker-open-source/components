@@ -1,5 +1,5 @@
 import React from 'react'
-import { createWithTheme } from '@looker/components-test-utils'
+import { createWithTheme } from 'looker-components-test-utils'
 import { ValidationMessage } from './ValidationMessage'
 
 test('An error message', () => {

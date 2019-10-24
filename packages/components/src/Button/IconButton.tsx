@@ -11,8 +11,8 @@ import {
   SizeSmall,
   SizeXSmall,
   SizeXXSmall,
-} from '@looker/design-tokens'
-import { IconNames } from '@looker/icons'
+} from 'looker-design-tokens'
+import { IconNames } from 'looker-icons'
 import React, { forwardRef, Ref } from 'react'
 import { Icon } from '../Icon'
 import { VisuallyHidden } from '../VisuallyHidden'

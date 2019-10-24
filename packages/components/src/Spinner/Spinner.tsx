@@ -5,7 +5,7 @@ import {
   SpaceProps,
   space,
   reset,
-} from '@looker/design-tokens'
+} from 'looker-design-tokens'
 import { omit, range } from 'lodash'
 import React, { FC } from 'react'
 import styled from 'styled-components'

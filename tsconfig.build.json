@@ -5,7 +5,7 @@
     "emitDeclarationOnly": true,
     "declaration": true,
     "paths": {
-      "@looker/*": ["./node_modules/@looker/*/src"]
+      "looker-*": ["./node_modules/looker-*/src"]
     }
   },
   "exclude": ["**/*.story.*", "**/*.test.*", "dist"],

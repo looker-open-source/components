@@ -20,7 +20,7 @@
     "rootDir": ".",
     "baseUrl": ".",
     "paths": {
-      "@looker/*": ["packages/*/src"],
+      "looker-*": ["packages/*/src"],
       "*": ["node_modules", "packages"]
     }
   },

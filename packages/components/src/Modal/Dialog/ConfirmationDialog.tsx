@@ -1,5 +1,5 @@
 import React from 'react'
-import { SemanticColors } from '@looker/design-tokens'
+import { SemanticColors } from 'looker-design-tokens'
 import { Button } from '../../Button'
 import { Heading } from '../../Text/Heading'
 import { Paragraph } from '../../Text'

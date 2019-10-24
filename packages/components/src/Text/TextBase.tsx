@@ -8,7 +8,7 @@ import {
   TypographyProps,
   textDecoration,
   TextDecorationProps,
-} from '@looker/design-tokens'
+} from 'looker-design-tokens'
 
 export interface TextBaseProps
   extends SpaceProps,

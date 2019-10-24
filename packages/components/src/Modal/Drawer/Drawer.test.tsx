@@ -3,7 +3,7 @@ import React from 'react'
 import {
   assertSnapshot,
   assertSnapshotShallow,
-} from '@looker/components-test-utils'
+} from 'looker-components-test-utils'
 import { ModalContent, ModalFooter, ModalHeader } from '../Layout'
 import { Drawer } from './Drawer'
 import { DrawerManager } from './DrawerManager'

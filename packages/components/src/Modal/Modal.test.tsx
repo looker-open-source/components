@@ -5,8 +5,8 @@ import { ThemeProvider } from 'styled-components'
 import {
   mountWithTheme,
   assertSnapshotShallow,
-} from '@looker/components-test-utils'
-import { theme } from '@looker/design-tokens'
+} from 'looker-components-test-utils'
+import { theme } from 'looker-design-tokens'
 import { Modal } from './Modal'
 import { SimpleContent, SimpleContentSFC } from './modal.test.helpers'
 import { ModalBackdrop } from './ModalBackdrop'

@@ -13,7 +13,7 @@ import {
   TextTransformProps,
   typography,
   TypographyProps,
-} from '@looker/design-tokens'
+} from 'looker-design-tokens'
 
 export const CustomizableLabelAttributes: CustomizableAttributes = {
   color: 'palette.charcoal800',
