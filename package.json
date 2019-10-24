@@ -94,9 +94,6 @@
   "pre-commit": [
     "lint-staged"
   ],
-  "publishConfig": {
-    "registry": "https://nexusrepo.looker.com/repository/looker-npm-private/"
-  },
   "scripts": {
     "build": "yarn build:es",
     "build:es": "lerna run 'build:es'",

@@ -1,7 +1,7 @@
 {
   "name": "looker-icons",
   "license": "UNLICENSED",
-  "version": "0.1.5-alpha.0",
+  "version": "0.1.22-alpha.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -22,5 +22,8 @@
     "ora": "^3.4.0",
     "rimraf": "^3.0.0"
   },
-  "gitHead": "0eb0e8b7fe4a010f33c38cfebde222f8c7d4e79d"
+  "publishConfig": {
+    "registry": "https://nexusrepo.looker.com/repository/looker-npm-private/"
+  },
+  "gitHead": "5d353bb0df716b9a34ab1953ce90c6dc8a74fb92"
 }

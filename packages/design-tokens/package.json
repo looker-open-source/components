@@ -1,12 +1,15 @@
 {
   "name": "looker-design-tokens",
   "license": "UNLICENSED",
-  "version": "0.1.5-alpha.0",
+  "version": "0.1.22-alpha.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "registry": "https://nexusrepo.looker.com/repository/looker-npm-private/"
+  },
   "scripts": {
     "build:declaration": "tsc --project tsconfig.build.json",
     "build:es": "BABEL_ENV=build babel src --root-mode upward --out-dir dist --source-maps --extensions .ts,.tsx --delete-dir-on-start --no-comments"
@@ -28,5 +31,5 @@
     "styled-components": "^4.3.2",
     "styled-system": "^5.1.2"
   },
-  "gitHead": "ad7885bba04657e6587cf80e93e988cb569993ce"
+  "gitHead": "5d353bb0df716b9a34ab1953ce90c6dc8a74fb92"
 }
