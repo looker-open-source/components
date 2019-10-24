@@ -6,7 +6,7 @@ import {
   TableHeaderCell,
   TableBody,
   TableDataCell,
-} from 'looker-lens'
+} from '@looker/components'
 import { DocTable } from '../../../../Shared'
 
 export const ItemDistribution = () => (

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Code, Flex, FlexItem } from 'looker-lens'
+import { Code, Flex, FlexItem } from '@looker/components'
 
 interface PropsProps {
   of: string

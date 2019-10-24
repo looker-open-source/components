@@ -2,7 +2,7 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { graphql } from 'gatsby'
 import React, { FC } from 'react'
 import styled from 'styled-components'
-import { Heading, Divider, ListItem, Link, List } from 'looker-lens'
+import { Heading, Divider, ListItem, Link, List } from '@looker/components'
 import { ComponentResources, ComponentStatus, Props } from '../Shared'
 import Layout, { LayoutMain } from './Layout'
 

@@ -3,7 +3,6 @@
   "license": "UNLICENSED",
   "version": "0.1.3-alpha.0",
   "main": "dist/index.js",
-  "private": true,
   "types": "dist/index.d.ts",
   "files": [
     "dist"

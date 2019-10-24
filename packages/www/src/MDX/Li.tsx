@@ -1,4 +1,4 @@
-import { ListItem } from 'looker-lens'
+import { ListItem } from '@looker/components'
 import styled from 'styled-components'
 
 const Li = styled(ListItem).attrs({
