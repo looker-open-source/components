@@ -1,6 +1,6 @@
 {
   "name": "playground",
-  "version": "0.1.9-alpha.0",
+  "version": "0.1.10-alpha.0",
   "main": "index.js",
   "license": "UNLICENSED",
   "private": true,
@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "looker-design-tokens": "^0.1.5-alpha.0",
-    "looker-lens": "^0.1.9-alpha.0",
+    "looker-lens": "^0.1.10-alpha.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0"
   },
