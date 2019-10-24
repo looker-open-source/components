@@ -111,7 +111,7 @@
     "lint-staged": "yarn exec lint-staged",
     "npmrc": "bin/create_npmrc.sh",
     "npmrc:clean": "rm .npmrc",
-    "prerelease": "yarn build",
+    "prepublish": "yarn build",
     "release": "lerna publish",
     "test": "jest"
   },

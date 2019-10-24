@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { backgroundPosition, BackgroundPositionProps } from 'styled-system'
-import { CompatibleHTMLProps } from 'looker-design-tokens/src'
+import { CompatibleHTMLProps } from 'looker-design-tokens'
 
 export interface CardMediaProps
   extends BackgroundPositionProps,
