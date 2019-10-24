@@ -7,7 +7,7 @@ import {
   TableHead,
   TableHeaderCell,
   TableRow,
-} from '@looker/components'
+} from 'looker-lens'
 import { DocTable } from '../../../Shared'
 
 const breakpointLabels = [

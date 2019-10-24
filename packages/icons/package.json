@@ -1,5 +1,5 @@
 {
-  "name": "@looker/icons",
+  "name": "looker-icons",
   "license": "UNLICENSED",
   "version": "0.1.4-alpha.0",
   "main": "dist/index.js",

@@ -7,7 +7,7 @@ import {
   FlexboxProps,
   userSelect,
   UserSelectProps,
-} from '@looker/design-tokens'
+} from 'looker-design-tokens'
 import { layoutCSS, LayoutComponentProps } from '../layout'
 
 export interface BoxProps

@@ -6,9 +6,9 @@ import {
   createWithTheme,
   mountWithTheme,
   assertSnapshot,
-} from '@looker/components-test-utils'
+} from 'looker-components-test-utils'
 
-import { theme } from '@looker/design-tokens'
+import { theme } from 'looker-design-tokens'
 import { Label } from '../../Label/Label'
 import { FieldSelect } from './FieldSelect'
 

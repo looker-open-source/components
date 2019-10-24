@@ -1,4 +1,4 @@
-import { CompatibleHTMLProps, reset } from '@looker/design-tokens'
+import { CompatibleHTMLProps, reset } from 'looker-design-tokens'
 import {
   OpacityProps,
   // opacity,

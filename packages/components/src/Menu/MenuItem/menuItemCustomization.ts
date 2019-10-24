@@ -1,4 +1,4 @@
-import { FontWeights, FontSizes } from '@looker/design-tokens'
+import { FontWeights, FontSizes } from 'looker-design-tokens'
 
 export interface MenuItemCustomization extends MenuItemStateCustomizations {
   fontSize?: FontSizes

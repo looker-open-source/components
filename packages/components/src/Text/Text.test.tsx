@@ -1,5 +1,5 @@
 import React from 'react'
-import { createWithTheme } from '@looker/components-test-utils'
+import { createWithTheme } from 'looker-components-test-utils'
 import { Text } from './Text'
 
 test('A default Text component', () => {

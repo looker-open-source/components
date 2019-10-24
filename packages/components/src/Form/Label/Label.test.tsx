@@ -1,5 +1,5 @@
 import React from 'react'
-import { assertSnapshot } from '@looker/components-test-utils'
+import { assertSnapshot } from 'looker-components-test-utils'
 import { Label } from './Label'
 
 test('A Label', () => {

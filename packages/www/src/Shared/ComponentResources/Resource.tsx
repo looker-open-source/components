@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
-import { Link, ListItem } from '@looker/components'
+import { Link, ListItem } from 'looker-lens'
 
 const Resource: FC<{ url: string }> = ({ children, url }) => (
   <Link href={url} target="_blank" rel="noopener noreferrer">

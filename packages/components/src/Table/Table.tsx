@@ -7,7 +7,7 @@ import {
   border,
   LayoutProps,
   layout,
-} from '@looker/design-tokens'
+} from 'looker-design-tokens'
 import styled from 'styled-components'
 
 export interface TableProps

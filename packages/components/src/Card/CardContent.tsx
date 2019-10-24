@@ -4,7 +4,7 @@ import {
   reset,
   space,
   SpaceProps,
-} from '@looker/design-tokens'
+} from 'looker-design-tokens'
 
 export interface CardContentProps
   extends SpaceProps,

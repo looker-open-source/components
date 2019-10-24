@@ -5,7 +5,7 @@ import {
   LayoutProps,
   textTransform,
   TextTransformProps,
-} from '@looker/design-tokens'
+} from 'looker-design-tokens'
 import { TruncateProps, truncate } from '../Text/truncate'
 import { TextVariantProps, textVariant } from './text_variant'
 import { TextBase, TextBaseProps } from './TextBase'

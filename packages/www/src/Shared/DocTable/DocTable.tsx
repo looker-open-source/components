@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Code, Table } from '@looker/components'
+import { Code, Table } from 'looker-lens'
 
 const DocTable = styled(Table)`
   margin-bottom: ${props => props.theme.space.xlarge};

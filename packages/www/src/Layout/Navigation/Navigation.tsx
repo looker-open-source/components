@@ -1,6 +1,6 @@
 import { lighten } from 'polished'
 import { Location } from '@reach/router'
-import { Box, Sidebar } from '@looker/components'
+import { Box, Sidebar } from 'looker-lens'
 import styled from 'styled-components'
 import React, { FC } from 'react'
 import Section from './Section'

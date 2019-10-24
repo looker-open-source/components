@@ -4,7 +4,7 @@ import {
   createWithTheme,
   mountWithTheme,
   assertSnapshot,
-} from '@looker/components-test-utils'
+} from 'looker-components-test-utils'
 
 import { Box } from './Box'
 

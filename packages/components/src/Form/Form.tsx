@@ -12,7 +12,7 @@ import {
   FlexboxProps,
   LayoutProps,
   SpaceProps,
-} from '@looker/design-tokens'
+} from 'looker-design-tokens'
 import { ValidationMessageProps } from './ValidationMessage'
 
 export type ValidationMessages = Record<string, ValidationMessageProps>

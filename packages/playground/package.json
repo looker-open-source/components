@@ -8,8 +8,8 @@
     "develop": "webpack-dev-server --port 3000 --disable-host-check"
   },
   "dependencies": {
-    "@looker/components": "^0.1.4-alpha.0",
-    "@looker/design-tokens": "^0.1.4-alpha.0",
+    "looker-lens": "^0.1.4-alpha.0",
+    "looker-design-tokens": "^0.1.4-alpha.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0"
   },

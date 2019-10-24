@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { Box } from '@looker/components'
+import { Box } from 'looker-lens'
 
 import { ContentOverflow } from './ContentOverflow'
 import { EdgeOverflow } from './EdgeOverflow'

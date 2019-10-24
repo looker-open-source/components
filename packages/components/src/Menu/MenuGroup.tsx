@@ -7,7 +7,7 @@ import {
   reset,
   SpaceProps,
   space,
-} from '@looker/design-tokens'
+} from 'looker-design-tokens'
 import { BackgroundColorProps } from 'styled-system'
 import { Heading, HeadingProps } from '../Text/Heading'
 import { List } from '../List'

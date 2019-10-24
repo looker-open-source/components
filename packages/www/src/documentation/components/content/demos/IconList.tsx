@@ -1,7 +1,7 @@
 import React from 'react'
 import CopyToClipboard from 'react-copy-to-clipboard'
-import { Icon } from '@looker/components'
-import { iconNameList, IconNames } from '@looker/icons'
+import { Icon } from 'looker-lens'
+import { iconNameList, IconNames } from 'looker-icons'
 import { IconGrid, IconGridItem } from './IconList.styles'
 
 export const IconList = () => {

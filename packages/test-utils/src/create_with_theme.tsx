@@ -1,4 +1,4 @@
-import { theme } from '@looker/design-tokens'
+import { theme } from 'looker-design-tokens'
 import { render, RenderOptions } from '@testing-library/react'
 import { mount, shallow } from 'enzyme'
 import 'jest-styled-components'

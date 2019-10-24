@@ -6,7 +6,7 @@ import {
   space,
   LayoutProps,
   layout,
-} from '@looker/design-tokens'
+} from 'looker-design-tokens'
 import React from 'react'
 import ReactResizeDetector from 'react-resize-detector'
 import styled from 'styled-components'

@@ -5,7 +5,7 @@ import {
   reset,
   space,
   SpaceProps,
-} from '@looker/design-tokens'
+} from 'looker-design-tokens'
 import styled, { css } from 'styled-components'
 
 export interface CardProps

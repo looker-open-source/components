@@ -3,8 +3,8 @@ import {
   space,
   CompatibleHTMLProps,
   reset,
-} from '@looker/design-tokens'
-import { IconNames } from '@looker/icons'
+} from 'looker-design-tokens'
+import { IconNames } from 'looker-icons'
 import styled from 'styled-components'
 import React, { FC, useContext } from 'react'
 

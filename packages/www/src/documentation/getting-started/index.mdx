@@ -7,13 +7,13 @@ Lens is currently published to Nexus, Looker's private package server. [First, e
 Next, add Lens to your project.
 
 ```bash static
-yarn add @looker/components @looker/design-tokens
+yarn add looker-components looker-design-tokens
 ```
 
 Import some components from Lens:
 
 ```jsx static
-import { ThemeProvider, theme } from '@looker/components'
+import { ThemeProvider, theme } from 'looker-lens'
 
 <ThemeProvider theme={theme}>
   <Card>{Source here...}</Card>
@@ -52,7 +52,7 @@ import React from 'react'
 import {
   Button as BaseButton,
   ButtonProps as BaseButtonProps,
-} from '@looker/components'
+} from 'looker-lens'
 
 const logHandler = (event: React.MouseEvent<HTMLElement>) => {
   logger(event.target.value)
@@ -80,7 +80,7 @@ export const LoggerButton: React.FC<ButtonProps> = ({ onClick, ...props }) => {
 Styling can also be extended, but care is needed to ensure you do not violate Looker's design principles.
 
 ```jsx static
-import { Button } from '@looker/components'
+import { Button } from 'looker-lens'
 import styled from 'styled-components'
 
 const CircularButton = styled(Button)`
@@ -95,7 +95,7 @@ const CircularButton = styled(Button)`
 To help stay withing Looker's design principles, [Lens publishes a theme object](https://github.com/looker/lens/blob/master/src/style/theme.ts), along with libraries, like Styled Components and styled-system, to easily access the theme object within components. For example, when styling components using Lens' `styled` function, the theme object becomes part of a component's props:
 
 ```jsx static
-import { Button } from '@looker/components'
+import { Button } from 'looker-lens'
 import styled from 'styled-components'
 
 const DangerButton = styled(Button)`
@@ -104,7 +104,7 @@ const DangerButton = styled(Button)`
 ```
 
 ```jsx static
-import { Heading } from '@looker/components'
+import { Heading } from 'looker-lens'
 
 interface PersonTitleProps {
   person: Person;

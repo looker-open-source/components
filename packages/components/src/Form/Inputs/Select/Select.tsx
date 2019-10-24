@@ -12,7 +12,7 @@ import {
   SpaceProps,
   typography,
   TypographyProps,
-} from '@looker/design-tokens'
+} from 'looker-design-tokens'
 import { ValidationType } from '../../ValidationMessage'
 
 const renderOptions = (options: OptionsType<SelectOptionProps>) => {

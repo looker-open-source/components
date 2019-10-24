@@ -1,4 +1,4 @@
-import { quarterFade } from '@looker/design-tokens'
+import { quarterFade } from 'looker-design-tokens'
 import styled, { css } from 'styled-components'
 import { color, ColorProps } from 'styled-system'
 

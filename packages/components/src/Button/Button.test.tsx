@@ -1,4 +1,4 @@
-import { createWithTheme, assertSnapshot } from '@looker/components-test-utils'
+import { createWithTheme, assertSnapshot } from 'looker-components-test-utils'
 import 'jest-styled-components'
 import React from 'react'
 import { Button } from './Button'

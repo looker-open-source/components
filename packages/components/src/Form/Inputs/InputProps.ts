@@ -1,4 +1,4 @@
-import { CompatibleHTMLProps, SpaceProps } from '@looker/design-tokens'
+import { CompatibleHTMLProps, SpaceProps } from 'looker-design-tokens'
 import { ValidationType } from '../ValidationMessage'
 
 export interface InputProps extends CompatibleHTMLProps<HTMLInputElement> {

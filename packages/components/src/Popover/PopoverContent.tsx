@@ -5,7 +5,7 @@ import {
   reset,
   space,
   SpaceProps,
-} from '@looker/design-tokens'
+} from 'looker-design-tokens'
 import { layout, LayoutProps } from 'styled-system'
 
 interface PopoverContent extends SpaceProps, LayoutProps, FlexboxProps {}

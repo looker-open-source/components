@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { HotKeys, ObserveKeys } from 'react-hotkeys'
-import { palette } from '@looker/design-tokens'
+import { palette } from 'looker-design-tokens'
 import { InputSearch, InputSearchProps } from '../../Form/Inputs'
 import { moveFocus } from '../moveFocus'
 

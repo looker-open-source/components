@@ -6,10 +6,10 @@ import {
   reset,
   SpaceProps,
   space,
-} from '@looker/design-tokens'
+} from 'looker-design-tokens'
 import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
-import { Glyphs, IconNames } from '@looker/icons'
+import { Glyphs, IconNames } from 'looker-icons'
 import omit from 'lodash/omit'
 
 export interface IconProps

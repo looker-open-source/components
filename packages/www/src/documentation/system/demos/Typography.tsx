@@ -7,8 +7,8 @@ import {
   TableHeaderCell,
   TableRow,
   Text,
-} from '@looker/components'
-import { FontWeights, FontSizes } from '@looker/design-tokens'
+} from 'looker-lens'
+import { FontWeights, FontSizes } from 'looker-design-tokens'
 import { DocTable } from '../../../Shared'
 
 const specimen =

@@ -1,4 +1,4 @@
-import { Link } from '@looker/components'
+import { Link } from 'looker-lens'
 import styled from 'styled-components'
 
 export const VisitedLink = styled(Link)`

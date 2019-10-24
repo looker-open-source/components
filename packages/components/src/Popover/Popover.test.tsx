@@ -2,7 +2,7 @@ import '@testing-library/jest-dom/extend-expect'
 import { fireEvent } from '@testing-library/react'
 import 'jest-styled-components'
 import React, { useRef } from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
+import { renderWithTheme } from 'looker-components-test-utils'
 import { Button } from '../Button'
 import { Popover } from './Popover'
 

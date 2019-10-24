@@ -9,7 +9,7 @@ import {
   SpaceProps,
   typography,
   TypographyProps,
-} from '@looker/design-tokens'
+} from 'looker-design-tokens'
 import styled from 'styled-components'
 
 export type ValidationType = 'error'

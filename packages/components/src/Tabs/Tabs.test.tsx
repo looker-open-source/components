@@ -4,8 +4,8 @@ import { shallow } from 'enzyme'
 import {
   assertSnapshotShallow,
   mountWithTheme,
-} from '@looker/components-test-utils'
-import { theme } from '@looker/design-tokens'
+} from 'looker-components-test-utils'
+import { theme } from 'looker-design-tokens'
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
 import { fireEvent, render } from '@testing-library/react'

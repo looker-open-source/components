@@ -3,7 +3,7 @@ import {
   createWithTheme,
   mountWithTheme,
   assertSnapshot,
-} from '@looker/components-test-utils'
+} from 'looker-components-test-utils'
 import { Label } from '../../Label/Label'
 import { FieldText } from './FieldText'
 
