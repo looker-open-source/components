@@ -25,9 +25,9 @@
   },
   "peerDependencies": {
     "@types/styled-components": "^4.1.19",
-    "@types/styled-system": "^3.2.2",
+    "@types/styled-system": "^5.1.2",
     "styled-components": "^4.3.2",
-    "styled-system": "^3.2.1"
+    "styled-system": "^5.1.2"
   },
   "gitHead": "ad7885bba04657e6587cf80e93e988cb569993ce"
 }
