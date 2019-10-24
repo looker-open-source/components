@@ -5,7 +5,7 @@ import {
   BorderProps,
   typography,
   TypographyProps,
-} from '@looker/design-tokens'
+} from 'looker-design-tokens'
 import styled from 'styled-components'
 
 export interface TableRowProps

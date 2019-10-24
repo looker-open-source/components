@@ -1,5 +1,5 @@
 {
-  "name": "@looker/design-tokens",
+  "name": "looker-design-tokens",
   "license": "UNLICENSED",
   "version": "0.1.4-alpha.0",
   "main": "dist/index.js",

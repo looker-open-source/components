@@ -6,7 +6,7 @@ import {
   BoxShadowProps,
   color,
   fadeIn,
-} from '@looker/design-tokens'
+} from 'looker-design-tokens'
 import { Placement } from 'popper.js'
 import React, { CSSProperties, forwardRef, Ref, useContext } from 'react'
 import { HotKeys } from 'react-hotkeys'

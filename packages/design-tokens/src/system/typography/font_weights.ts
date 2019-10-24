@@ -11,7 +11,7 @@ export type FontWeightRamp = Record<FontWeights, number>
 
 export interface FontWeightProps {
   /**
-   * Use a @looker/components FontWeights to set weight
+   * Use a looker-components FontWeights to set weight
    *  light, normal, semiBold, bold, extrabold,
    */
   fontWeight?: ResponsiveValue<FontWeights>

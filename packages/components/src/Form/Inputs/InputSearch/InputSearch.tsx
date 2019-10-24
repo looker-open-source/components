@@ -6,7 +6,7 @@ import {
   layout,
   LayoutProps,
   reset,
-} from '@looker/design-tokens'
+} from 'looker-design-tokens'
 import {
   CustomizableInputTextAttributes,
   InputText,

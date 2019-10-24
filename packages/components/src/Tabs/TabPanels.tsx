@@ -1,6 +1,6 @@
 import React, { cloneElement } from 'react'
 import styled from 'styled-components'
-import { SpaceProps, space, reset } from '@looker/design-tokens'
+import { SpaceProps, space, reset } from 'looker-design-tokens'
 import omit from 'lodash/omit'
 
 export interface TabPanelsProps extends SpaceProps {

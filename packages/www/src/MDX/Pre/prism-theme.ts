@@ -1,5 +1,5 @@
 import { PrismTheme } from 'prism-react-renderer'
-import { palette, theme } from '@looker/design-tokens'
+import { palette, theme } from 'looker-design-tokens'
 
 const prismTheme: PrismTheme = {
   plain: {

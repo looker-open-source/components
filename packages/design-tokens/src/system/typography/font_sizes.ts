@@ -26,7 +26,7 @@ export type FontSizeRamp = Record<FontSizes, string>
 
 export interface FontSizeProps {
   /**
-   * Use a @looker/components FontSizes to set font size
+   * Use a looker-components FontSizes to set font size
    */
   fontSize?: ResponsiveValue<FontSizes>
 }

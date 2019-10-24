@@ -1,7 +1,7 @@
 import React, { CSSProperties, RefObject } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import { CSSObject, FlattenSimpleInterpolation } from 'styled-components'
-import { CustomizableAttributes } from '@looker/design-tokens'
+import { CustomizableAttributes } from 'looker-design-tokens'
 import { ModalBackdrop } from './ModalBackdrop'
 import { ModalContext } from './ModalContext'
 import { ModalPortal } from './ModalPortal'

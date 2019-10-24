@@ -1,4 +1,4 @@
-import { CompatibleHTMLProps } from '@looker/design-tokens'
+import { CompatibleHTMLProps } from 'looker-design-tokens'
 import styled from 'styled-components'
 import { TableCellProps, tableCellCSS, tableCellDefaults } from './tableCell'
 

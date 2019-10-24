@@ -8,7 +8,7 @@ import {
   reset,
   space,
   SpaceProps,
-} from '@looker/design-tokens'
+} from 'looker-design-tokens'
 import { InputProps } from '../InputProps'
 
 export interface CustomizableToggleSwitchAttributes

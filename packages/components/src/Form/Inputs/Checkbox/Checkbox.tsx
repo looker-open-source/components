@@ -2,7 +2,7 @@ import omit from 'lodash/omit'
 import pick from 'lodash/pick'
 import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
-import { reset, space } from '@looker/design-tokens'
+import { reset, space } from 'looker-design-tokens'
 import {
   CheckboxRadioContainerProps,
   InputProps,

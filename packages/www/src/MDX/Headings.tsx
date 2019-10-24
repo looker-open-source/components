@@ -1,4 +1,4 @@
-import { Heading, HeadingProps } from '@looker/components'
+import { Heading, HeadingProps } from 'looker-lens'
 import React, { ReactNode } from 'react'
 import styled from 'styled-components'
 

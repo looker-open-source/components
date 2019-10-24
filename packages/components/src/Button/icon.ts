@@ -1,4 +1,4 @@
-import { IconNames } from '@looker/icons'
+import { IconNames } from 'looker-icons'
 import styled, { css } from 'styled-components'
 import { rem } from 'polished'
 import { Icon } from '../Icon'

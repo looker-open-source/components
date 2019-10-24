@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { List } from '@looker/components'
+import { List } from 'looker-lens'
 import { FeedbackSvg, FigmaSvg, GithubSvg } from './ResourceIcons'
 import Resource from './Resource'
 

@@ -16,4 +16,4 @@ Icons are automatically built when starting or publishing the Lens style guide,
 running the tests, building the Lens components or publishing the Lens component
 module. The icons can be manually built using the command:
 
-`lerna run build:icons --scope @looker/icons`
+`lerna run build:icons --scope looker-icons`

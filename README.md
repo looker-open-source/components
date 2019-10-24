@@ -6,10 +6,10 @@ This repository hosts both the functional components Lens publishes and the code
 
 Lens is a monorepo utilizing [Lerna](https://lerna.js.org) and [Yarn Workspaces](https://yarnpkg.com/lang/en/docs/workspaces/). It is composed of a collection of packages:
 
-- `@looker/components`
-- `@looker/design-tokens` - default design values as well as our extensions to styled-system
-  - NOTE: `@looker/components-system` - will be extracted from this package in short-order
-- `@looker/icons` - icon set
+- `looker-components`
+- `looker-design-tokens` - default design values as well as our extensions to styled-system
+  - NOTE: `looker-components-system` - will be extracted from this package in short-order
+- `looker-icons` - icon set
 - `playground` - A local development playground for use when developing components
   - See more details on local development in the [Playground README](./packages/playground/README.md)
 - `test-utils` - utility functions for testing components.
@@ -100,7 +100,7 @@ If you're working with a specific workspace you can run commands within that spe
 
 `yarn workspace [workspace-package-name] [command]`
 
-E.g.: `yarn workspace @looker/components build:es`
+E.g.: `yarn workspace looker-components build:es`
 
 Commonly used workspace commands are:
 
@@ -113,7 +113,7 @@ See workspace specific README files:
 
 Since Lens is often developed in tandem with another repo it can be useful to use Yarn's `link` functionality to develop new Lens components and test the built output without having to commit and publish the changes.
 
-See Yarn's Link documentation (https://yarnpkg.com/lang/en/docs/cli/link/) for setting up the link between the `@looker/components` package and your project.
+See Yarn's Link documentation (https://yarnpkg.com/lang/en/docs/cli/link/) for setting up the link between the `looker-components` package and your project.
 
 To work properly you'll need to make this addition to your `webpack.config.js` file:
 

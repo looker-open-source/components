@@ -5,7 +5,7 @@ import {
   SpaceProps,
   typography,
   TypographyProps,
-} from '@looker/design-tokens'
+} from 'looker-design-tokens'
 
 interface BadgeProps extends SpaceProps, TypographyProps {
   color?: string

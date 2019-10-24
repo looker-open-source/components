@@ -10,7 +10,7 @@ import {
   reset,
   space,
   SpaceProps,
-} from '@looker/design-tokens'
+} from 'looker-design-tokens'
 import { BackgroundColorProps } from 'styled-system'
 import { FlexItem } from '../../Layout/FlexItem'
 import { FormControl, FormControlDirections } from '../FormControl'

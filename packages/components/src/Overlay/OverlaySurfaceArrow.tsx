@@ -1,4 +1,4 @@
-import { color, ColorProps, CompatibleHTMLProps } from '@looker/design-tokens'
+import { color, ColorProps, CompatibleHTMLProps } from 'looker-design-tokens'
 import { PopperArrowProps } from 'react-popper'
 import styled from 'styled-components'
 

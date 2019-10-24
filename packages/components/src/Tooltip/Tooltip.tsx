@@ -1,4 +1,4 @@
-import { CustomizableAttributes } from '@looker/design-tokens'
+import { CustomizableAttributes } from 'looker-design-tokens'
 import { TextAlignProperty } from 'csstype'
 import { Placement } from 'popper.js'
 import React, { useRef, useState, RefObject, FC, ReactNode } from 'react'

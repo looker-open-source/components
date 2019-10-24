@@ -1,4 +1,4 @@
-import { CompatibleHTMLProps, SpaceProps } from '@looker/design-tokens'
+import { CompatibleHTMLProps, SpaceProps } from 'looker-design-tokens'
 import React, { forwardRef } from 'react'
 import { IconButton } from '../Button'
 import { Icon } from '../Icon'

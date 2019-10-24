@@ -1,6 +1,6 @@
 import 'jest-styled-components'
 import React from 'react'
-import { assertSnapshot } from '@looker/components-test-utils'
+import { assertSnapshot } from 'looker-components-test-utils'
 import { ModalContext } from '../ModalContext'
 import { ModalFooter } from './ModalFooter'
 

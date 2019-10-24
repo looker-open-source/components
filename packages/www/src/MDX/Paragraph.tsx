@@ -1,4 +1,4 @@
-import { Paragraph as LookerParagraph } from '@looker/components'
+import { Paragraph as LookerParagraph } from 'looker-lens'
 import styled from 'styled-components'
 
 const Paragraph = styled(LookerParagraph).attrs({

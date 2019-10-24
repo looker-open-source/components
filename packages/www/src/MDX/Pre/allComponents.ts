@@ -71,8 +71,8 @@ import {
   useTabs,
   useToggle,
   VisuallyHidden,
-} from '@looker/components'
-import { palette } from '@looker/design-tokens'
+} from 'looker-lens'
+import { palette } from 'looker-design-tokens'
 
 import styled from 'styled-components'
 import { useState } from 'react'

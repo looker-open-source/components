@@ -1,5 +1,5 @@
-import { FontSizes, CompatibleHTMLProps } from '@looker/design-tokens'
-import { IconNames } from '@looker/icons'
+import { FontSizes, CompatibleHTMLProps } from 'looker-design-tokens'
+import { IconNames } from 'looker-icons'
 import React, { FC } from 'react'
 import { Icon } from '../../Icon'
 import { MenuItemButton } from './MenuItemButton'
