@@ -1,7 +1,7 @@
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { graphql } from 'gatsby'
 import React from 'react'
-import { Heading } from '@looker/components'
+import { Heading } from 'looker-lens'
 import Layout, { LayoutMain } from './Layout'
 
 interface PageQuery {

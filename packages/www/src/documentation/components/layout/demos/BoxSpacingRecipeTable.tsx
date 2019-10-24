@@ -1,4 +1,4 @@
-import { Box, Code, List, ListItem, Text } from '@looker/components'
+import { Box, Code, List, ListItem, Text } from 'looker-lens'
 import React from 'react'
 import styled from 'styled-components'
 

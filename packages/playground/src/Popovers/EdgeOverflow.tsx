@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { Box, Button, Popover, PopoverContent } from '@looker/components'
+import { Box, Button, Popover, PopoverContent } from 'looker-lens'
 
 interface Props {
   top?: number

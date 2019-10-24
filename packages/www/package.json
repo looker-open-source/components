@@ -23,7 +23,7 @@
     "react-live": "^2.2.1"
   },
   "devDependencies": {
-    "@looker/components": "^0.1.0",
+    "looker-lens": "^0.1.0",
     "@looker/components-test-utils": "^0.1.0",
     "@looker/design-tokens": "^0.1.0",
     "@looker/icons": "^0.1.0",

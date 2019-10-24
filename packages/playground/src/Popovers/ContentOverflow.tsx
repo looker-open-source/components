@@ -1,11 +1,5 @@
 import React, { FC } from 'react'
-import {
-  Box,
-  Button,
-  Popover,
-  PopoverContent,
-  Paragraph,
-} from '@looker/components'
+import { Box, Button, Popover, PopoverContent, Paragraph } from 'looker-lens'
 
 export const ContentOverflow: FC = ({ children }) => (
   <Box position="absolute" top="40%" left="40%">

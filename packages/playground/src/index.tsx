@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import ReactDOM from 'react-dom'
-import { GlobalStyle } from '@looker/components'
+import { GlobalStyle } from 'looker-lens'
 import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
 
