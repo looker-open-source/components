@@ -11,7 +11,7 @@ import {
 import { layoutCSS, LayoutComponentProps } from '../layout'
 
 export interface BoxProps
-  extends CompatibleHTMLProps<HTMLDivElement>,
+  extends CompatibleHTMLProps<HTMLElement>,
     LayoutComponentProps,
     FlexboxProps,
     PsuedoProps,
