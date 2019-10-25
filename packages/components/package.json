@@ -1,6 +1,6 @@
 {
   "name": "looker-lens",
-  "version": "0.1.23-alpha.0",
+  "version": "0.1.24-alpha.0",
   "license": "UNLICENSED",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -24,14 +24,14 @@
     "@types/styled-system": "^5.1.2",
     "csstype": "^2.6.3",
     "enzyme": "^3.9.0",
-    "looker-components-test-utils": "^0.1.23-alpha.0",
+    "looker-components-test-utils": "^0.1.24-alpha.0",
     "react-test-renderer": "^16.9.0"
   },
   "dependencies": {
     "d3-color": "^1.3.0",
     "d3-hsv": "^0.1.0",
     "focus-trap": "^5.0.2",
-    "looker-design-tokens": "^0.1.23-alpha.0",
+    "looker-design-tokens": "^0.1.24-alpha.0",
     "looker-icons": "^0.1.23-alpha.0",
     "popper.js": "^1.14.7",
     "react-hotkeys": "^2.0.0",
@@ -50,5 +50,5 @@
     "react-dom": "^16.9.0",
     "styled-components": "^4.3.2"
   },
-  "gitHead": "5d353bb0df716b9a34ab1953ce90c6dc8a74fb92"
+  "gitHead": "740f664b951ef6ebdd6a572cd125b68c723e35f0"
 }
