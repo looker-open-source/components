@@ -206,7 +206,6 @@ const SandboxWrapper = styled.div`
     background: ${colors.palette.charcoal100};
     border-radius: ${radii.medium};
     color: ${colors.white};
-    border-top: 1px solid ${colors.palette.charcoal200};
   `}
 `
 
