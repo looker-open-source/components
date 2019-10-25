@@ -1,23 +1,15 @@
 import {
   CompatibleHTMLProps,
-  ColorProps,
-  color,
-  layout,
-  LayoutProps,
-  position,
-  PositionProps,
-  reset,
-  space,
-  SpaceProps,
+  FlexboxProps,
+  flexbox,
 } from 'looker-design-tokens'
 import styled, { css } from 'styled-components'
+import { LayoutComponentProps, layoutCSS } from '../Layout/layout'
 
 export interface CardProps
-  extends CompatibleHTMLProps<HTMLDivElement>,
-    ColorProps,
-    PositionProps,
-    LayoutProps,
-    SpaceProps {
+  extends CompatibleHTMLProps<HTMLElement>,
+    FlexboxProps,
+    LayoutComponentProps {
   /**
    * Show card with a BoxShadow applied
    * @default true
@@ -41,28 +33,25 @@ const raised = (props: CardProps) =>
   `
 
 export const Card = styled.div<CardProps>`
-  ${reset}
-  ${layout}
-  ${position}
-  ${space}
-  ${color}
+  ${layoutCSS}
+  ${flexbox}
 
-  background: ${props => props.theme.colors.palette.white};
-  border: solid 1px ${props =>
-    props.theme.colors.semanticColors.primary.borderColor};
-  border-radius: ${props => props.theme.radii.medium};
-  flex-direction: column;
   transition: border ${cardTransition}, box-shadow ${cardTransition};
 
   &:hover {
-    border-color: ${props => props.theme.colors.palette.charcoal300};
+    border-color: ${props => props.theme.colors.palette.charcoal400};
   }
 
   ${raised}
 `
 
 Card.defaultProps = {
+  bg: 'palette.white',
+  border: '1px solid',
+  borderColor: 'palette.charcoal300',
+  borderRadius: 'medium',
   display: 'flex',
+  flexDirection: 'column',
   height: '100%',
   minWidth: '200px',
   overflow: 'hidden',

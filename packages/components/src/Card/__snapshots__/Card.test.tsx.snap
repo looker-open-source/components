@@ -9,6 +9,10 @@ exports[`A Card 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  border: 1px solid;
+  border-color: #C1C6CC;
+  border-radius: 0.25rem;
+  background-color: #FFFFFF;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -16,9 +20,6 @@ exports[`A Card 1`] = `
   height: 100%;
   min-width: 200px;
   overflow: hidden;
-  background: #FFFFFF;
-  border: solid 1px #C1C6CC;
-  border-radius: 0.25rem;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -27,7 +28,7 @@ exports[`A Card 1`] = `
 }
 
 .c0:hover {
-  border-color: #C1C6CC;
+  border-color: #939BA5;
 }
 
 <div
@@ -49,6 +50,10 @@ exports[`A raised Card 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  border: 1px solid;
+  border-color: #C1C6CC;
+  border-radius: 0.25rem;
+  background-color: #FFFFFF;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -56,9 +61,6 @@ exports[`A raised Card 1`] = `
   height: 100%;
   min-width: 200px;
   overflow: hidden;
-  background: #FFFFFF;
-  border: solid 1px #C1C6CC;
-  border-radius: 0.25rem;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -68,7 +70,7 @@ exports[`A raised Card 1`] = `
 }
 
 .c0:hover {
-  border-color: #C1C6CC;
+  border-color: #939BA5;
 }
 
 .c0:hover {
@@ -94,6 +96,10 @@ exports[`A raised Card with a CardMedia block 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  border: 1px solid;
+  border-color: #C1C6CC;
+  border-radius: 0.25rem;
+  background-color: #FFFFFF;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -101,9 +107,6 @@ exports[`A raised Card with a CardMedia block 1`] = `
   height: 100%;
   min-width: 200px;
   overflow: hidden;
-  background: #FFFFFF;
-  border: solid 1px #C1C6CC;
-  border-radius: 0.25rem;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
@@ -113,7 +116,7 @@ exports[`A raised Card with a CardMedia block 1`] = `
 }
 
 .c0:hover {
-  border-color: #C1C6CC;
+  border-color: #939BA5;
 }
 
 .c0:hover {

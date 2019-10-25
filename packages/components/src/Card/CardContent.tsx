@@ -1,18 +1,19 @@
 import styled from 'styled-components'
 import {
   CompatibleHTMLProps,
-  reset,
-  space,
-  SpaceProps,
+  FlexboxProps,
+  flexbox,
 } from 'looker-design-tokens'
+import { LayoutComponentProps, layoutCSS } from '../Layout/layout'
 
 export interface CardContentProps
-  extends SpaceProps,
-    CompatibleHTMLProps<HTMLDivElement> {}
+  extends LayoutComponentProps,
+    FlexboxProps,
+    CompatibleHTMLProps<HTMLElement> {}
 
 export const CardContent = styled.div<CardContentProps>`
-  ${reset}
-  ${space}
+  ${layoutCSS}
+  ${flexbox}
 `
 
 CardContent.defaultProps = { p: 'medium' }
