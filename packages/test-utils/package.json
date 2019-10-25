@@ -31,5 +31,5 @@
   "publishConfig": {
     "registry": "https://nexusrepo.looker.com/repository/looker-npm-private/"
   },
-  "gitHead": "5d353bb0df716b9a34ab1953ce90c6dc8a74fb92"
+  "gitHead": "740f664b951ef6ebdd6a572cd125b68c723e35f0"
 }

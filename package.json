@@ -108,9 +108,9 @@
     "lint-staged": "yarn exec lint-staged",
     "npmrc": "bin/create_npmrc.sh",
     "npmrc:clean": "rm .npmrc",
-    "prepublish": "yarn build",
-    "release": "lerna publish",
-    "test": "jest"
+    "prepare": "yarn build",
+    "prepublishOnly": "yarn test",
+    "test": "yarn jest"
   },
   "dependencies": {
     "react-live": "^2.2.1"
