@@ -6,13 +6,14 @@ function template(
   { imports, componentName, props, jsx, exports }
 ) {
   const titleOverride = opts.titleProp
-    ? `title = title || '${startCase(
+    ? `const title = props.title || '${startCase(
         opts.state.componentName.replace('Svg', '')
       )}'`
     : ''
-  return template.ast`
+  const typeScriptTpl = template.smart({ plugins: ['typescript'] })
+  return typeScriptTpl.ast`
     ${imports}
-    const ${componentName} = (${props}) => {
+    const ${componentName} = (props: React.SVGProps<SVGSVGElement> & { title?: string }) => {
       ${titleOverride}
       return ${jsx}
     }

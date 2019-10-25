@@ -10,8 +10,7 @@ const ora = require('ora')
 /**
  * Constants for directory names, file extensions, etc
  */
-const typescriptDeclarationExtension = 'd.ts'
-const iconGlyphFileExtension = 'jsx'
+const iconGlyphFileExtension = 'tsx'
 const packageSrcPath = path.join('src')
 const buildPath = path.join(packageSrcPath, 'generated')
 const iconTemplatePath = path.join('bin', 'icon_template.js')
@@ -35,14 +34,14 @@ async function cleanGlyphsAndComponents() {
 }
 
 /**
- * Step 1: convert the SVG to React components using CLI `svgr` command.
+ * Convert the SVG to React components using CLI `svgr` command.
  * This by default converts all components to PascalCased filenames.
  * The --title-prop flag adds a title tag and destructures a title prop (defaulted in icon-template to the filename in Start Case)
  * The --replace-attr-values flag is used to replace fills on exported svg files from Figma so Icon color can be changed
  */
 async function convertSVGToComponent() {
   const result = await exec(
-    `yarn svgr --title-prop --icon --ext ${iconGlyphFileExtension} \
+    `yarn svgr --typescript --title-prop --icon --ext ${iconGlyphFileExtension} \
     --replace-attr-values "#1C2125=currentColor"  \
     --template "${iconTemplatePath}" --out-dir "${iconGlyphPath}" "${iconSVGPath}"`
   )
@@ -51,27 +50,6 @@ async function convertSVGToComponent() {
     console.log(result.stderr)
     process.exit(1)
   }
-}
-
-/**
- * Step 2: Generate the correct typescript interfaces for the glyphs.
- */
-async function generateTypescriptInterfaces() {
-  const typescriptDeclaration = `import React from 'react'
-const Icon: React.FC<React.SVGAttributes<SVGElement>>
-export default Icon
-`
-
-  const basenames = await getBasenames(iconGlyphPath, iconGlyphFileExtension)
-  await Promise.all(
-    basenames.map(async name => {
-      const declarationFilename = path.join(
-        iconGlyphPath,
-        `${name}.${typescriptDeclarationExtension}`
-      )
-      return writeFile(declarationFilename, typescriptDeclaration)
-    })
-  )
 }
 
 async function generateGlyphIndexFile() {
@@ -118,9 +96,7 @@ async function run() {
   await convertSVGToComponent()
   spinner.color = 'green'
   spinner.text = 'Exporting Glyphs and generating Typescript interfaces...'
-  await generateTypescriptInterfaces()
   await generateGlyphIndexFile()
-  // await generateIndexDefinition()
   await generateIconNameFile()
   spinner.color = 'blue'
   spinner.succeed('Done building icons!')
