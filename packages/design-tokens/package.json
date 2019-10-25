@@ -1,7 +1,7 @@
 {
   "name": "looker-design-tokens",
   "license": "UNLICENSED",
-  "version": "0.1.22-alpha.0",
+  "version": "0.1.23-alpha.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
