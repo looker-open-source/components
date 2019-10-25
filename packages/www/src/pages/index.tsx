@@ -86,9 +86,7 @@ export const Intro = () => (
             Lens packages are served by Looker&apos;s private package server,
             Nexus, and can be installed through npm or yarn.
           </Paragraph>
-          <Code fontSize="small">
-            yarn add looker-components looker-design-tokens looker-icons
-          </Code>
+          <Code fontSize="small">yarn add looker-lens</Code>
         </Flex>
         <Flex flexDirection="column" alignItems="center">
           <Box mb="medium">
