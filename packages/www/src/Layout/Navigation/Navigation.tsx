@@ -42,7 +42,7 @@ const StyledSidebar = styled(Sidebar).attrs({ p: 'none' })`
     border-bottom: solid 1px ${props => props.theme.colors.palette.purple100};
     padding: ${props =>
       `${props.theme.space.xsmall} ${props.theme.space.large}`};
-    /* stylelint-disable */
+    /* stylelint-disable max-nesting-depth */
     ${SidebarGroup} {
       border: none;
       padding: ${props => `${props.theme.space.xxsmall} 0`};
