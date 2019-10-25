@@ -26,11 +26,15 @@ export const CustomizableInputTextAttributes: CustomizableAttributes = {
 
 export interface InputTextProps
   extends BorderProps,
-    LayoutProps,
+    Omit<LayoutProps, 'size'>,
     PsuedoProps,
     SpaceProps,
     Omit<InputProps, 'type'> {
-  type?: 'text' | 'search'
+  /**
+   *
+   * @default 'text'
+   */
+  type?: 'number' | 'password' | 'text' | 'search'
 }
 
 interface InternalInputTextProps extends InputTextProps, TypographyProps {}
