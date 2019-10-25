@@ -9,7 +9,7 @@ export const HeaderJsx: FC<{ className?: string }> = ({ className }) => (
       <Icon
         name="LookerLogo"
         alt="Looker"
-        color="palette.charcoal400"
+        color="palette.charcoal800"
         width="60px"
         height="26px"
       />
