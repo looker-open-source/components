@@ -29,6 +29,8 @@ export {
   palette,
   radii,
   semanticColors,
+  SemanticColor,
+  SemanticColors,
   theme,
   Theme,
 } from 'looker-design-tokens'
