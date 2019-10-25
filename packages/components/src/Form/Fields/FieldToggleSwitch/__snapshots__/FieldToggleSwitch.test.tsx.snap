@@ -32,6 +32,10 @@ exports[`A FieldToggleSwitch 1`] = `
   background: #C1C6CC;
 }
 
+.c8:hover {
+  box-shadow: 0 0 .01rem 0.01rem rgba(100,81,138,0.5);
+}
+
 .c7 {
   opacity: 0;
   width: 100%;
@@ -216,6 +220,10 @@ exports[`A FieldToggleSwitch turned on 1`] = `
   right: 0;
   border-radius: 1.25rem;
   background: #9785F2;
+}
+
+.c8:hover {
+  box-shadow: 0 0 .01rem 0.01rem rgba(100,81,138,0.5);
 }
 
 .c7 {
@@ -406,6 +414,10 @@ exports[`A FieldToggleSwitch with label aligned left 1`] = `
   right: 0;
   border-radius: 1.25rem;
   background: #C1C6CC;
+}
+
+.c8:hover {
+  box-shadow: 0 0 .01rem 0.01rem rgba(100,81,138,0.5);
 }
 
 .c7 {

@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 import {
   CompatibleHTMLProps,
-  psuedoClasses,
-  PsuedoProps,
+  pseudoClasses,
+  PseudoProps,
   reset,
   SpaceProps,
   space,
@@ -29,7 +29,7 @@ export type IconButtonSizes =
 export interface IconButtonProps
   extends Omit<CompatibleHTMLProps<HTMLButtonElement>, 'children' | 'type'>,
     IconButtonVariantProps,
-    PsuedoProps,
+    PseudoProps,
     SpaceProps {
   type?: 'button' | 'submit' | 'reset'
 
@@ -95,7 +95,7 @@ const IconButtonBase = styled.button<IconButtonProps>`
   padding: 3px;
 
   ${iconButtonVariant}
-  ${psuedoClasses}
+  ${pseudoClasses}
   ${({ shape }) => shape === 'round' && 'border-radius: 100%;'}
 `
 

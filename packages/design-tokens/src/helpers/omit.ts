@@ -83,7 +83,7 @@ const spaceProps = [
 ]
 
 const otherProps = ['animation', 'color']
-const psuedoProps = ['activeStyle', 'focusStyle', 'hoverStyle', 'userSelect']
+const pseudoProps = ['activeStyle', 'focusStyle', 'hoverStyle', 'userSelect']
 
 const styledSystemProps = [
   ...borderProps,
@@ -95,7 +95,7 @@ const styledSystemProps = [
   ...spaceProps,
   ...typographyProps,
   ...otherProps,
-  ...psuedoProps,
+  ...pseudoProps,
 ]
 
 export const omitStyledProps = (props: any) => {

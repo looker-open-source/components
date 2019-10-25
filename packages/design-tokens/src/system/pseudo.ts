@@ -1,6 +1,6 @@
 import { css, CSSObject } from 'styled-components'
 
-export interface PsuedoProps {
+export interface PseudoProps {
   /**
    * Styling for :hover pseudo class.
    *
@@ -24,7 +24,7 @@ export interface PsuedoProps {
   activeStyle?: CSSObject
 }
 
-const pseudoClassHover = (props: PsuedoProps) => {
+const pseudoClassHover = (props: PseudoProps) => {
   return (
     props.hoverStyle &&
     css`
@@ -35,7 +35,7 @@ const pseudoClassHover = (props: PsuedoProps) => {
   )
 }
 
-const pseudoClassFocus = (props: PsuedoProps) => {
+const pseudoClassFocus = (props: PseudoProps) => {
   return (
     props.focusStyle &&
     css`
@@ -46,7 +46,7 @@ const pseudoClassFocus = (props: PsuedoProps) => {
   )
 }
 
-const pseudoClassActive = (props: PsuedoProps) => {
+const pseudoClassActive = (props: PseudoProps) => {
   return (
     props.activeStyle &&
     css`
@@ -57,7 +57,7 @@ const pseudoClassActive = (props: PsuedoProps) => {
   )
 }
 
-export const psuedoClasses = css`
+export const pseudoClasses = css`
   /**
    * Pseudo classes can be styled by passing a CSS.Properties type to the
    * corresponding pseudo class helper prop. For example: <Box

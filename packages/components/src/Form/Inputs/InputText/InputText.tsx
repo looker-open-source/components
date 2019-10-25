@@ -5,8 +5,8 @@ import {
   layout,
   LayoutProps,
   CustomizableAttributes,
-  psuedoClasses,
-  PsuedoProps,
+  pseudoClasses,
+  PseudoProps,
   space,
   SpaceProps,
   TypographyProps,
@@ -27,7 +27,7 @@ export const CustomizableInputTextAttributes: CustomizableAttributes = {
 export interface InputTextProps
   extends BorderProps,
     Omit<LayoutProps, 'size'>,
-    PsuedoProps,
+    PseudoProps,
     SpaceProps,
     Omit<InputProps, 'type'> {
   /**
@@ -50,7 +50,7 @@ export const InputText = styled.input.attrs((props: InputTextProps) => ({
   ${layout}
   ${space}
   ${typography}
-  ${psuedoClasses}
+  ${pseudoClasses}
 `
 
 InputText.defaultProps = {

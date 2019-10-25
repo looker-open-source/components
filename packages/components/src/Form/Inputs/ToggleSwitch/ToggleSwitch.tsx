@@ -4,7 +4,8 @@ import styled from 'styled-components'
 import {
   CustomizableAttributes,
   palette,
-  PsuedoProps,
+  PseudoProps,
+  pseudoClasses,
   reset,
   space,
   SpaceProps,
@@ -75,8 +76,10 @@ const KnobContainer = forwardRef(
   }
 )
 
-const KnobContainerBase = styled.div<KnobProps & PsuedoProps>`
+const KnobContainerBase = styled.div<KnobProps & PseudoProps>`
   ${reset}
+  ${pseudoClasses}
+
   transition: ${props => props.theme.transitions.durationModerate};
   position: absolute;
   top: 0;

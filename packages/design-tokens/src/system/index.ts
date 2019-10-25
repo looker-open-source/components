@@ -33,4 +33,4 @@ export * from './space'
 
 // Custom Extensions
 export * from './reset'
-export * from './psuedo'
+export * from './pseudo'

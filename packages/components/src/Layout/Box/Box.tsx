@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 import {
   CompatibleHTMLProps,
-  psuedoClasses,
-  PsuedoProps,
+  pseudoClasses,
+  PseudoProps,
   flexbox,
   FlexboxProps,
   userSelect,
@@ -14,12 +14,12 @@ export interface BoxProps
   extends CompatibleHTMLProps<HTMLElement>,
     LayoutComponentProps,
     FlexboxProps,
-    PsuedoProps,
+    PseudoProps,
     UserSelectProps {}
 
 export const Box = styled.div<BoxProps>`
   ${layoutCSS}
-  ${psuedoClasses}
+  ${pseudoClasses}
   ${userSelect}
   ${flexbox}
 `
