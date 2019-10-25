@@ -5,6 +5,7 @@ import { Box } from '../Layout'
 import { Icon } from '../Icon'
 
 interface SidebarGroupProps {
+  className?: string
   label: string
   showChildren?: boolean
 }
@@ -54,4 +55,4 @@ const SidebarGroupHeading = styled(Heading).attrs({
   }
 `
 
-export const SidebarGroup = styled(InternalSidebarGroup)<SidebarGroupProps>``
+export const SidebarGroup = styled(InternalSidebarGroup)``

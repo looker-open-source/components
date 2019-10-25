@@ -1,6 +1,6 @@
-import { transparentize } from 'polished'
+import { lighten } from 'polished'
 import { Location } from '@reach/router'
-import { Box, Sidebar, SidebarGroup } from 'looker-lens'
+import { Box, Sidebar, SidebarProps, SidebarGroup } from 'looker-lens'
 import styled from 'styled-components'
 import React, { FC } from 'react'
 import Section from './Section'
@@ -29,11 +29,11 @@ const Navigation: FC<NavigationProps> = ({ sitemap }) => (
   </StyledSidebar>
 )
 
-const StyledSidebar = styled(Sidebar).attrs({ p: 'none' })`
-  background: ${props =>
-    transparentize(0.6, props.theme.colors.palette.purple000)};
+const StyledSidebar = styled(Sidebar)<SidebarProps>`
+  background: ${props => lighten(0.6, props.theme.colors.palette.purple000)};
   height: 100%;
 
+  /* stylelint-disable max-nesting-depth */
   h2 {
     color: ${props => props.theme.colors.palette.purple700};
   }
@@ -43,7 +43,6 @@ const StyledSidebar = styled(Sidebar).attrs({ p: 'none' })`
     cursor: pointer;
     padding: ${props =>
       `${props.theme.space.xsmall} ${props.theme.space.large}`};
-    /* stylelint-disable max-nesting-depth */
     ${SidebarGroup} {
       border: none;
       padding: ${props => `${props.theme.space.xxsmall} 0`};
@@ -69,7 +68,7 @@ const StyledSidebar = styled(Sidebar).attrs({ p: 'none' })`
         background-color: ${props => props.theme.colors.palette.purple000};
       }
     }
-    /* stylelint-enable */
+    /* stylelint-enable max-nesting-depth */
   }
 `
 
