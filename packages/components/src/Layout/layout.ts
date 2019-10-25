@@ -24,7 +24,9 @@ export interface LayoutComponentProps
     LayoutProps,
     PositionProps,
     SpaceProps,
-    TypographyProps {}
+    TypographyProps {
+  color?: any
+}
 
 export const layoutCSS = css`
   /**
