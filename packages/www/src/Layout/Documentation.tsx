@@ -1,6 +1,7 @@
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { graphql } from 'gatsby'
 import React, { FC } from 'react'
+import Helmet from 'react-helmet'
 import styled from 'styled-components'
 import { Heading, Divider, ListItem, Link, List } from 'looker-lens'
 import { ComponentResources, ComponentStatus, Props } from '../Shared'
@@ -17,6 +18,11 @@ interface TableOfContents {
 
 interface DocQuery {
   data: {
+    site: {
+      siteMetadata: {
+        title: string
+      }
+    }
     mdx: {
       body: string
       frontmatter: {
@@ -51,13 +57,14 @@ const TableOfContents: FC<{ toc?: TableOfContents }> = ({ toc }) => {
 }
 
 const DocumentationLayout = (props: DocQuery) => {
-  const { mdx } = props.data
+  const { mdx, site } = props.data
   const { figma, github, propsOf, status, title } = mdx.frontmatter
 
   return (
     <Layout>
       <Grid>
         <LayoutMain>
+          <Helmet title={`${title} - ${site.siteMetadata.title}`} />
           <Heading as="h1" fontSize="xxxxlarge" fontWeight="light">
             {title}
           </Heading>
@@ -96,6 +103,11 @@ const Grid = styled.div`
 
 export const pageQuery = graphql`
   query Doc($id: String) {
+    site {
+      siteMetadata {
+        title
+      }
+    }
     mdx(id: { eq: $id }) {
       id
       body

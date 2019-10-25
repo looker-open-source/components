@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: 'Looker Components',
+    title: 'Looker UI Components',
   },
   plugins: [
     {
@@ -31,12 +31,11 @@ module.exports = {
         },
       },
     },
-    // `gatsby-plugin-react-helmet`, @TODO - configure this to set page titles
     `gatsby-plugin-typescript`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: 'Looker Components and Style Guide',
+        name: 'Looker UI Components',
         short_name: 'Components',
         start_url: '/',
         // Enables "Add to Homescreen" prompt and disables browser UI (including back button)
@@ -46,5 +45,6 @@ module.exports = {
         crossOrigin: `use-credentials`,
       },
     },
+    'gatsby-plugin-react-helmet',
   ],
 }
