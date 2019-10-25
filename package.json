@@ -108,8 +108,8 @@
     "lint-staged": "yarn exec lint-staged",
     "npmrc": "bin/create_npmrc.sh",
     "npmrc:clean": "rm .npmrc",
-    "prepublish": "yarn build",
-    "release": "lerna publish",
+    "prepare": "build",
+    "prepublishOnly": "test",
     "test": "jest"
   },
   "dependencies": {
