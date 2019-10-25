@@ -47,7 +47,7 @@ const ContentArea = styled.div`
 `
 
 export const LayoutMain = styled.main`
-  max-width: 70rem;
+  max-width: 50rem;
   overflow: auto;
   margin: 0 auto;
   padding: ${({ theme: { space } }) =>

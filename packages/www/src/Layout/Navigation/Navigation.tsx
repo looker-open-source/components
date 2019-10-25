@@ -40,6 +40,7 @@ const StyledSidebar = styled(Sidebar).attrs({ p: 'none' })`
 
   ${SidebarGroup} {
     border-bottom: solid 1px ${props => props.theme.colors.palette.purple100};
+    cursor: pointer;
     padding: ${props =>
       `${props.theme.space.xsmall} ${props.theme.space.large}`};
     /* stylelint-disable max-nesting-depth */
