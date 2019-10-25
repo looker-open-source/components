@@ -1,6 +1,6 @@
 import { transparentize } from 'polished'
 import { Location } from '@reach/router'
-import { Box, Sidebar } from 'looker-lens'
+import { Box, Sidebar, SidebarGroup } from 'looker-lens'
 import styled from 'styled-components'
 import React, { FC } from 'react'
 import Section from './Section'
