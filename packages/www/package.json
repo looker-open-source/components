@@ -1,7 +1,7 @@
 {
   "name": "www",
   "private": true,
-  "version": "0.1.24-alpha.0",
+  "version": "0.1.25-alpha.0",
   "dependencies": {
     "@mdx-js/mdx": "^1.5.1",
     "@mdx-js/react": "^1.5.1",
@@ -32,10 +32,10 @@
     "d3-hsv": "^0.1.0",
     "eslint": "^6.4.0",
     "eslint-loader": "^3.0.0",
-    "looker-components-test-utils": "^0.1.24-alpha.0",
-    "looker-design-tokens": "^0.1.24-alpha.0",
+    "looker-components-test-utils": "^0.1.25-alpha.0",
+    "looker-design-tokens": "^0.1.25-alpha.0",
     "looker-icons": "^0.1.23-alpha.0",
-    "looker-lens": "^0.1.24-alpha.0",
+    "looker-lens": "^0.1.25-alpha.0",
     "react-transition-group": "4.2.2",
     "scroll-behavior": "^0.9.10",
     "styled-components": "^4.3.2",
