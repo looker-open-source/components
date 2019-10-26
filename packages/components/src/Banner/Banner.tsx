@@ -1,9 +1,9 @@
 import { CompatibleHTMLProps, SpaceProps } from 'looker-design-tokens'
-import React, { forwardRef } from 'react'
+import React, { forwardRef, Ref } from 'react'
+import { IconButton } from '../Button'
 import { Icon } from '../Icon'
 import { Flex } from '../Layout/Flex'
 import { VisuallyHidden } from '../VisuallyHidden'
-import { IconButton } from '../Button/IconButton'
 
 export type BannerIntent = 'warning' | 'info' | 'error' | 'confirmation'
 
@@ -58,7 +58,7 @@ const getBannerIntentStyling = (intent: BannerIntent) => {
 }
 
 export const Banner = forwardRef(
-  (props: BannerProps, ref: React.Ref<HTMLDivElement>) => {
+  (props: BannerProps, ref: Ref<HTMLDivElement>) => {
     const {
       children,
       dismissable,

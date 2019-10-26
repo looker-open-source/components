@@ -1,11 +1,11 @@
 import { mount } from 'enzyme'
-import React from 'react'
+import React, { RefObject } from 'react'
 import { act } from 'react-dom/test-utils'
 import { useElementVisibility } from './MenuGroup.hooks'
 
 interface TestProps {
   callback: (...args: any[]) => void
-  testRef: React.RefObject<any>
+  testRef: RefObject<any>
 }
 
 const TestHook = ({ callback, testRef }: TestProps) => {
@@ -21,7 +21,7 @@ describe('MenuGroup Hooks', () => {
   }
 
   /* eslint-disable react-hooks/rules-of-hooks */
-  const cb = (ref: React.RefObject<any>) => {
+  const cb = (ref: RefObject<any>) => {
     isVisible = useElementVisibility(ref)
   }
   /* eslint-enable react-hooks/rules-of-hooks */

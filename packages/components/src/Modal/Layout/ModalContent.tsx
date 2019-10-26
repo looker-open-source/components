@@ -7,7 +7,7 @@ import {
   LayoutProps,
   layout,
 } from 'looker-design-tokens'
-import React from 'react'
+import React, { Component, createRef, RefObject } from 'react'
 import ReactResizeDetector from 'react-resize-detector'
 import styled from 'styled-components'
 import omit from 'lodash/omit'
@@ -31,13 +31,13 @@ interface InternalContentProps extends ModalContentProps {
   renderedHeight: string
 }
 
-class Internal extends React.Component<InternalContentProps, ContentState> {
-  private ref: React.RefObject<HTMLDivElement>
+class Internal extends Component<InternalContentProps, ContentState> {
+  private ref: RefObject<HTMLDivElement>
 
   constructor(props: InternalContentProps) {
     super(props)
     this.state = { overflow: false }
-    this.ref = React.createRef()
+    this.ref = createRef()
   }
 
   public hasOverflow(e: HTMLDivElement) {

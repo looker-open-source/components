@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react'
+import React, { FC, RefObject, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import styled from 'styled-components'
 import { useScrollLock } from '../utils/useScrollLock'
@@ -6,7 +6,7 @@ import { CustomizableModalAttributes } from './Modal'
 import { getModalRoot } from './modalRoot'
 
 export interface ModalPortalProps {
-  portalRef?: React.RefObject<HTMLDivElement>
+  portalRef?: RefObject<HTMLDivElement>
 }
 
 export const ModalPortal: FC<ModalPortalProps> = ({ portalRef, children }) => {

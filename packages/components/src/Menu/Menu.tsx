@@ -1,10 +1,17 @@
-import React, { cloneElement, useRef, useState, FC, Children } from 'react'
+import React, {
+  Children,
+  cloneElement,
+  FC,
+  RefObject,
+  useRef,
+  useState,
+} from 'react'
 
 export interface MenuCloneProps {
   disabled?: boolean
   isOpen?: boolean
   setOpen?: (value: boolean) => void
-  triggerRef?: React.RefObject<HTMLElement>
+  triggerRef?: RefObject<HTMLElement>
 }
 
 export interface MenuProps {
