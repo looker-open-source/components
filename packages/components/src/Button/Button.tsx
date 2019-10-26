@@ -1,67 +1,76 @@
-import {
-  CompatibleHTMLProps,
-  SpaceProps,
-  space,
-  reset,
-} from 'looker-design-tokens'
 import React, { forwardRef, Ref } from 'react'
-import styled, { css } from 'styled-components'
-import { buttonSize, ButtonSizeProps } from './size'
-import { buttonVariant, ButtonVariantProps } from './variant'
-import { buttonIcon, ButtonIconProps, ButtonIcon } from './icon'
+import styled from 'styled-components'
+import { rgba } from 'polished'
+import { ButtonBase, ButtonProps } from './ButtonBase'
+import { ButtonTransparent } from './ButtonTransparent'
+import { ButtonOutline } from './ButtonOutline'
 
-export interface ButtonProps
-  extends Omit<CompatibleHTMLProps<HTMLButtonElement>, 'type'>,
-    ButtonIconProps,
-    ButtonSizeProps,
-    ButtonVariantProps,
-    SpaceProps {
-  type?: 'button' | 'submit' | 'reset'
-  forwardedAs?: 'a'
+export const ButtonDefault = styled(ButtonBase)`
+  &:focus {
+    box-shadow: 0 0 0 0.15rem
+      ${({ theme, color = 'primary' }) =>
+        rgba(theme.colors.semanticColors[color].main, 0.25)};
+  }
+  background: ${({ theme, color = 'primary' }) =>
+    theme.colors.semanticColors[color].main};
+  border: 1px solid
+    ${({ theme, color = 'primary' }) => theme.colors.semanticColors[color].main};
+  color: ${({ theme, color = 'primary' }) =>
+    theme.colors.semanticColors[color].text};
+
+  &:active,
+  &.active {
+    background: ${({ theme, color = 'primary' }) =>
+      theme.colors.semanticColors[color].darker};
+    border-color: ${({ theme, color = 'primary' }) =>
+      theme.colors.semanticColors[color].darker};
+  }
+  &:hover,
+  &:focus,
+  &.hover {
+    background: ${({ theme, color = 'primary' }) =>
+      theme.colors.semanticColors[color].dark};
+    border-color: ${({ theme, color = 'primary' }) =>
+      theme.colors.semanticColors[color].dark};
+  }
+  &[disabled] {
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: ${({ theme, color = 'primary' }) =>
+        theme.colors.semanticColors[color].main};
+      border-color: ${({ theme, color = 'primary' }) =>
+        theme.colors.semanticColors[color].borderColor};
+    }
+  }
+`
+
+// proxy should be removed when variant is completely removed from code base.
+interface ButtonProxyProps extends ButtonProps {
+  variant?: 'default' | 'transparent' | 'outline'
 }
 
-const ButtonComponent = forwardRef(
-  (props: ButtonProps, ref: Ref<HTMLButtonElement>) => {
-    const { children, iconBefore, iconAfter } = props
-    return (
-      <ButtonBase ref={ref} size="medium" {...props}>
-        {iconBefore && <ButtonIcon name={iconBefore} />}
-        {children}
-        {iconAfter && <ButtonIcon name={iconAfter} />}
-      </ButtonBase>
-    )
+export const Button = forwardRef(
+  (props: ButtonProxyProps, ref: Ref<HTMLButtonElement>) => {
+    const { variant, ...restProps } = props
+    switch (variant || 'default') {
+      case 'transparent':
+        // eslint-disable-next-line no-console
+        console.warn(
+          'WARNING: variant Transparent is deprecated. Use the component <ButtonTransparent> instead.'
+        )
+        return <ButtonTransparent ref={ref} {...restProps} />
+      case 'outline':
+        // eslint-disable-next-line no-console
+        console.warn(
+          'WARNING: variant Outline is deprecated. Use the component <ButtonOutline> instead.'
+        )
+        return <ButtonOutline ref={ref} {...restProps} />
+      case 'default':
+      default:
+        return <ButtonDefault ref={ref} {...restProps} />
+    }
   }
 )
 
-ButtonComponent.displayName = 'ButtonComponent'
-
-export const buttonCSS = css`
-  align-items: center;
-  border-radius: 0.25rem;
-  cursor: pointer;
-  display: inline-flex;
-  font-weight: 600;
-  outline: none;
-  transition: border 80ms;
-  vertical-align: middle;
-  white-space: nowrap;
-
-  &[disabled] {
-    cursor: default;
-    filter: grayscale(0.3);
-    opacity: 0.25;
-  }
-`
-
-const ButtonBase = styled.button<ButtonProps>`
-  ${reset}
-
-  ${buttonCSS}
-  ${buttonSize}
-  ${buttonVariant}
-  ${buttonIcon}
-
-  ${space}
-`
-
-export const Button = styled(ButtonComponent)``
+Button.displayName = 'Button'

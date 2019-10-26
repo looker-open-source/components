@@ -16,7 +16,7 @@ import { IconNames } from 'looker-icons'
 import React, { forwardRef, Ref } from 'react'
 import { Icon } from '../Icon'
 import { VisuallyHidden } from '../VisuallyHidden'
-import { buttonCSS } from './Button'
+import { buttonCSS } from './ButtonBase'
 import { IconButtonVariantProps, iconButtonVariant } from './variant'
 
 export type IconButtonSizes =
@@ -69,34 +69,36 @@ const iconSizeHelper = (size: IconButtonSizes) => {
   }
 }
 
+export const IconButtonStyle = styled.button<IconButtonProps>`
+  ${buttonCSS}
+  height: auto;
+`
+
 const IconButtonComponent = forwardRef(
   (props: IconButtonProps, ref: Ref<HTMLButtonElement>) => {
     const { icon, size, label } = props
     return (
-      <IconButtonBase ref={ref} color="neutral" p="none" {...props}>
+      <IconButtonStyle ref={ref} color="neutral" p="none" {...props}>
         <VisuallyHidden>{label}</VisuallyHidden>
         <Icon
           name={icon}
           size={iconSizeHelper(size || 'xsmall')}
           aria-hidden={true}
         />
-      </IconButtonBase>
+      </IconButtonStyle>
     )
   }
 )
 
 IconButtonComponent.displayName = 'IconButtonComponent'
 
-const IconButtonBase = styled.button<IconButtonProps>`
+export const IconButton = styled(IconButtonComponent)<IconButtonProps>`
   ${reset}
   ${space}
 
-  ${buttonCSS}
   padding: 3px;
 
   ${iconButtonVariant}
   ${pseudoClasses}
   ${({ shape }) => shape === 'round' && 'border-radius: 100%;'}
 `
-
-export const IconButton = styled(IconButtonComponent)``

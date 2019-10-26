@@ -107,7 +107,7 @@ export const Intro = () => {
               Nexus, and can be installed through npm or yarn.
             </Paragraph>
             <Code fontSize="small">
-              yarn add @looker/components @looker/design-tokens @looker/icons
+              yarn add looker-lens looker-design-tokens looker-icons
             </Code>
           </Flex>
           <Flex flexDirection="column" alignItems="center">

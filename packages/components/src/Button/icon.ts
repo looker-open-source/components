@@ -2,7 +2,7 @@ import { IconNames } from 'looker-icons'
 import styled, { css } from 'styled-components'
 import { rem } from 'polished'
 import { Icon } from '../Icon'
-import { ButtonProps } from './Button'
+import { ButtonProps } from './ButtonBase'
 
 export interface ButtonIconProps {
   iconBefore?: IconNames | undefined

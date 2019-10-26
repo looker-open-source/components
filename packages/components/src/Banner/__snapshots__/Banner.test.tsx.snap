@@ -1,15 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Confirmation banner 1`] = `
-.c1 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-  -webkit-clip: rect(1px,1px,1px,1px);
-  clip: rect(1px,1px,1px,1px);
-}
-
 .c0 {
   border: 0;
   box-sizing: border-box;
@@ -33,6 +24,15 @@ exports[`Confirmation banner 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+}
+
+.c1 {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  -webkit-clip: rect(1px,1px,1px,1px);
+  clip: rect(1px,1px,1px,1px);
 }
 
 <div
@@ -72,7 +72,7 @@ exports[`Dismissable banner 1`] = `
   display: inline-flex;
 }
 
-.c4 {
+.c5 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -90,85 +90,6 @@ exports[`Dismissable banner 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-}
-
-.c2 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-  -webkit-clip: rect(1px,1px,1px,1px);
-  clip: rect(1px,1px,1px,1px);
-}
-
-.c3 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  padding: 0rem;
-  margin-left: auto;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  border-radius: 0.25rem;
-  cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  font-weight: 600;
-  outline: none;
-  -webkit-transition: border 80ms;
-  transition: border 80ms;
-  vertical-align: middle;
-  white-space: nowrap;
-  padding: 3px;
-  background: transparent;
-  border: 1px solid transparent;
-  color: #939BA5;
-}
-
-.c3[disabled] {
-  cursor: default;
-  -webkit-filter: grayscale(0.3);
-  filter: grayscale(0.3);
-  opacity: 0.25;
-}
-
-.c3:focus {
-  box-shadow: 0 0 0 0.15rem rgba(147,155,165,0.25);
-}
-
-.c3:active,
-.c3.active {
-  background: #F5F6F7;
-  border-color: #F5F6F7;
-  color: #4C535B;
-}
-
-.c3:hover,
-.c3:focus,
-.c3.hover {
-  background: #FBFBFC;
-  border-color: #FBFBFC;
-  color: #4C535B;
-}
-
-.c3[disabled]:hover,
-.c3[disabled]:active,
-.c3[disabled]:focus {
-  background-color: transparent;
-  border-color: transparent;
-  color: #939BA5;
-}
-
-.c3:hover {
-  background: none;
 }
 
 .c0 {
@@ -194,6 +115,101 @@ exports[`Dismissable banner 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+}
+
+.c2 {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  -webkit-clip: rect(1px,1px,1px,1px);
+  clip: rect(1px,1px,1px,1px);
+}
+
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-weight: 600;
+  outline: none;
+  -webkit-transition: border 80ms;
+  transition: border 80ms;
+  vertical-align: middle;
+  white-space: nowrap;
+  font-size: 0.875rem;
+  height: 26px;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding: 0rem;
+  margin-left: auto;
+  height: auto;
+}
+
+.c3[disabled] {
+  cursor: default;
+  -webkit-filter: grayscale(0.3);
+  filter: grayscale(0.3);
+  opacity: 0.25;
+}
+
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  margin-left: auto;
+  padding: 3px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: #939BA5;
+}
+
+.c4:focus {
+  box-shadow: 0 0 0 0.15rem rgba(147,155,165,0.25);
+}
+
+.c4:active,
+.c4.active {
+  background: #F5F6F7;
+  border-color: #F5F6F7;
+  color: #4C535B;
+}
+
+.c4:hover,
+.c4:focus,
+.c4.hover {
+  background: #FBFBFC;
+  border-color: #FBFBFC;
+  color: #4C535B;
+}
+
+.c4[disabled]:hover,
+.c4[disabled]:active,
+.c4[disabled]:focus {
+  background-color: transparent;
+  border-color: transparent;
+  color: #939BA5;
+}
+
+.c4:hover {
+  background: none;
 }
 
 <div
@@ -231,7 +247,7 @@ exports[`Dismissable banner 1`] = `
   </div>
   <button
     aria-hidden={true}
-    className="c3 "
+    className="c3 c4"
     color="neutral"
     label="Dismiss"
     size="small"
@@ -248,7 +264,7 @@ exports[`Dismissable banner 1`] = `
     </div>
     <div
       aria-hidden={true}
-      className="c4 "
+      className="c5 "
       size={20}
     >
       <svg
@@ -293,15 +309,6 @@ exports[`Error banner 1`] = `
   display: inline-flex;
 }
 
-.c2 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-  -webkit-clip: rect(1px,1px,1px,1px);
-  clip: rect(1px,1px,1px,1px);
-}
-
 .c0 {
   border: 0;
   box-sizing: border-box;
@@ -325,6 +332,15 @@ exports[`Error banner 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+}
+
+.c2 {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  -webkit-clip: rect(1px,1px,1px,1px);
+  clip: rect(1px,1px,1px,1px);
 }
 
 <div
@@ -386,15 +402,6 @@ exports[`Info banner 1`] = `
   display: inline-flex;
 }
 
-.c2 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-  -webkit-clip: rect(1px,1px,1px,1px);
-  clip: rect(1px,1px,1px,1px);
-}
-
 .c0 {
   border: 0;
   box-sizing: border-box;
@@ -418,6 +425,15 @@ exports[`Info banner 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+}
+
+.c2 {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  -webkit-clip: rect(1px,1px,1px,1px);
+  clip: rect(1px,1px,1px,1px);
 }
 
 <div
@@ -479,15 +495,6 @@ exports[`Warning banner 1`] = `
   display: inline-flex;
 }
 
-.c2 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-  -webkit-clip: rect(1px,1px,1px,1px);
-  clip: rect(1px,1px,1px,1px);
-}
-
 .c0 {
   border: 0;
   box-sizing: border-box;
@@ -511,6 +518,15 @@ exports[`Warning banner 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+}
+
+.c2 {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  -webkit-clip: rect(1px,1px,1px,1px);
+  clip: rect(1px,1px,1px,1px);
 }
 
 <div

@@ -12,7 +12,7 @@ exports[`ModalHeader 1`] = `
   margin-right: 2rem;
 }
 
-.c3 {
+.c4 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -60,9 +60,6 @@ exports[`ModalHeader 1`] = `
   height: 34px;
   padding-left: 1rem;
   padding-right: 1rem;
-  background: transparent;
-  border: 1px solid transparent;
-  color: #939BA5;
   margin-left: auto;
   padding: 0rem;
 }
@@ -74,30 +71,29 @@ exports[`ModalHeader 1`] = `
   opacity: 0.25;
 }
 
-.c2:focus {
-  box-shadow: 0 0 0 0.15rem rgba(147,155,165,0.25);
+.c3 {
+  border: 1px solid;
+  color: #939BA5;
 }
 
-.c2:active,
-.c2.active {
+.c3:active,
+.c3.active {
   background: #F5F6F7;
   border-color: #F5F6F7;
   color: #4C535B;
 }
 
-.c2:hover,
-.c2:focus,
-.c2.hover {
+.c3:hover,
+.c3:focus,
+.c3.hover {
   background: #FBFBFC;
   border-color: #FBFBFC;
   color: #4C535B;
 }
 
-.c2[disabled]:hover,
-.c2[disabled]:active,
-.c2[disabled]:focus {
-  background-color: transparent;
-  border-color: transparent;
+.c3[disabled]:hover,
+.c3[disabled]:active,
+.c3[disabled]:focus {
   color: #939BA5;
 }
 
@@ -125,7 +121,7 @@ exports[`ModalHeader 1`] = `
   flex-direction: row;
 }
 
-.c0 .c4 {
+.c0 .c5 {
   font-size: 1rem;
 }
 
@@ -138,13 +134,13 @@ exports[`ModalHeader 1`] = `
     The Heading for a Dialog
   </div>
   <button
-    className="c2 "
+    className="c2 c3"
     color="neutral"
     size="medium"
     tabIndex={-1}
   >
     <div
-      className="c3 "
+      className="c4 "
       size="1.25rem"
     >
       <svg

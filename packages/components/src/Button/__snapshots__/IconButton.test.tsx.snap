@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`IconButton accepts color 1`] = `
-.c2 {
+.c3 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -21,7 +21,7 @@ exports[`IconButton accepts color 1`] = `
   display: inline-flex;
 }
 
-.c1 {
+.c2 {
   position: absolute;
   height: 1px;
   width: 1px;
@@ -38,7 +38,6 @@ exports[`IconButton accepts color 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  padding: 0rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -55,10 +54,8 @@ exports[`IconButton accepts color 1`] = `
   transition: border 80ms;
   vertical-align: middle;
   white-space: nowrap;
-  padding: 3px;
-  background: transparent;
-  border: 1px solid transparent;
-  color: #CC1F36;
+  padding: 0rem;
+  height: auto;
 }
 
 .c0[disabled] {
@@ -68,46 +65,60 @@ exports[`IconButton accepts color 1`] = `
   opacity: 0.25;
 }
 
-.c0:focus {
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  padding: 3px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: #CC1F36;
+}
+
+.c1:focus {
   box-shadow: 0 0 0 0.15rem rgba(204,31,54,0.25);
 }
 
-.c0:active,
-.c0.active {
+.c1:active,
+.c1.active {
   background: #FFE5E9;
   border-color: #FFE5E9;
   color: #ED3B53;
 }
 
-.c0:hover,
-.c0:focus,
-.c0.hover {
+.c1:hover,
+.c1:focus,
+.c1.hover {
   background: #FFF2F4;
   border-color: #FFF2F4;
   color: #ED3B53;
 }
 
-.c0[disabled]:hover,
-.c0[disabled]:active,
-.c0[disabled]:focus {
+.c1[disabled]:hover,
+.c1[disabled]:active,
+.c1[disabled]:focus {
   background-color: transparent;
   border-color: transparent;
   color: #CC1F36;
 }
 
 <button
-  className="c0 "
+  className="c0 c1"
   color="danger"
   label="Test"
 >
   <div
-    className="c1"
+    className="c2"
   >
     Test
   </div>
   <div
     aria-hidden={true}
-    className="c2 "
+    className="c3 "
     size={16}
   >
     <svg
@@ -129,7 +140,7 @@ exports[`IconButton accepts color 1`] = `
 `;
 
 exports[`IconButton accepts events 1`] = `
-.c2 {
+.c3 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -149,7 +160,7 @@ exports[`IconButton accepts events 1`] = `
   display: inline-flex;
 }
 
-.c1 {
+.c2 {
   position: absolute;
   height: 1px;
   width: 1px;
@@ -166,7 +177,6 @@ exports[`IconButton accepts events 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  padding: 0rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -183,10 +193,8 @@ exports[`IconButton accepts events 1`] = `
   transition: border 80ms;
   vertical-align: middle;
   white-space: nowrap;
-  padding: 3px;
-  background: transparent;
-  border: 1px solid transparent;
-  color: #939BA5;
+  padding: 0rem;
+  height: auto;
 }
 
 .c0[disabled] {
@@ -196,47 +204,61 @@ exports[`IconButton accepts events 1`] = `
   opacity: 0.25;
 }
 
-.c0:focus {
-  box-shadow: 0 0 0 0.15rem rgba(147,155,165,0.25);
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  padding: 3px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: #64518A;
 }
 
-.c0:active,
-.c0.active {
-  background: #F5F6F7;
-  border-color: #F5F6F7;
-  color: #4C535B;
+.c1:focus {
+  box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
 }
 
-.c0:hover,
-.c0:focus,
-.c0.hover {
-  background: #FBFBFC;
-  border-color: #FBFBFC;
-  color: #4C535B;
+.c1:active,
+.c1.active {
+  background: #E8E5FF;
+  border-color: #E8E5FF;
+  color: #6C43E0;
 }
 
-.c0[disabled]:hover,
-.c0[disabled]:active,
-.c0[disabled]:focus {
+.c1:hover,
+.c1:focus,
+.c1.hover {
+  background: #F3F2FF;
+  border-color: #F3F2FF;
+  color: #6C43E0;
+}
+
+.c1[disabled]:hover,
+.c1[disabled]:active,
+.c1[disabled]:focus {
   background-color: transparent;
   border-color: transparent;
-  color: #939BA5;
+  color: #64518A;
 }
 
 <button
-  className="c0 "
+  className="c0 c1"
   color="neutral"
   label="Test"
   onMouseEnter={[Function]}
 >
   <div
-    className="c1"
+    className="c2"
   >
     Test
   </div>
   <div
     aria-hidden={true}
-    className="c2 "
+    className="c3 "
     size={16}
   >
     <svg
@@ -258,7 +280,7 @@ exports[`IconButton accepts events 1`] = `
 `;
 
 exports[`IconButton accepts events 2`] = `
-.c2 {
+.c3 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -278,7 +300,7 @@ exports[`IconButton accepts events 2`] = `
   display: inline-flex;
 }
 
-.c1 {
+.c2 {
   position: absolute;
   height: 1px;
   width: 1px;
@@ -295,7 +317,6 @@ exports[`IconButton accepts events 2`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  padding: 0rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -312,10 +333,8 @@ exports[`IconButton accepts events 2`] = `
   transition: border 80ms;
   vertical-align: middle;
   white-space: nowrap;
-  padding: 3px;
-  background: transparent;
-  border: 1px solid transparent;
-  color: #939BA5;
+  padding: 0rem;
+  height: auto;
 }
 
 .c0[disabled] {
@@ -325,47 +344,61 @@ exports[`IconButton accepts events 2`] = `
   opacity: 0.25;
 }
 
-.c0:focus {
-  box-shadow: 0 0 0 0.15rem rgba(147,155,165,0.25);
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  padding: 3px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: #64518A;
 }
 
-.c0:active,
-.c0.active {
-  background: #F5F6F7;
-  border-color: #F5F6F7;
-  color: #4C535B;
+.c1:focus {
+  box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
 }
 
-.c0:hover,
-.c0:focus,
-.c0.hover {
-  background: #FBFBFC;
-  border-color: #FBFBFC;
-  color: #4C535B;
+.c1:active,
+.c1.active {
+  background: #E8E5FF;
+  border-color: #E8E5FF;
+  color: #6C43E0;
 }
 
-.c0[disabled]:hover,
-.c0[disabled]:active,
-.c0[disabled]:focus {
+.c1:hover,
+.c1:focus,
+.c1.hover {
+  background: #F3F2FF;
+  border-color: #F3F2FF;
+  color: #6C43E0;
+}
+
+.c1[disabled]:hover,
+.c1[disabled]:active,
+.c1[disabled]:focus {
   background-color: transparent;
   border-color: transparent;
-  color: #939BA5;
+  color: #64518A;
 }
 
 <button
-  className="c0 "
+  className="c0 c1"
   color="neutral"
   label="Test"
   onClick={[Function]}
 >
   <div
-    className="c1"
+    className="c2"
   >
     Test
   </div>
   <div
     aria-hidden={true}
-    className="c2 "
+    className="c3 "
     size={16}
   >
     <svg
@@ -387,7 +420,7 @@ exports[`IconButton accepts events 2`] = `
 `;
 
 exports[`IconButton allows for ARIA attributes 1`] = `
-.c2 {
+.c3 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -407,7 +440,7 @@ exports[`IconButton allows for ARIA attributes 1`] = `
   display: inline-flex;
 }
 
-.c1 {
+.c2 {
   position: absolute;
   height: 1px;
   width: 1px;
@@ -424,7 +457,6 @@ exports[`IconButton allows for ARIA attributes 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  padding: 0rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -441,10 +473,8 @@ exports[`IconButton allows for ARIA attributes 1`] = `
   transition: border 80ms;
   vertical-align: middle;
   white-space: nowrap;
-  padding: 3px;
-  background: transparent;
-  border: 1px solid transparent;
-  color: #939BA5;
+  padding: 0rem;
+  height: auto;
 }
 
 .c0[disabled] {
@@ -454,47 +484,61 @@ exports[`IconButton allows for ARIA attributes 1`] = `
   opacity: 0.25;
 }
 
-.c0:focus {
-  box-shadow: 0 0 0 0.15rem rgba(147,155,165,0.25);
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  padding: 3px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: #64518A;
 }
 
-.c0:active,
-.c0.active {
-  background: #F5F6F7;
-  border-color: #F5F6F7;
-  color: #4C535B;
+.c1:focus {
+  box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
 }
 
-.c0:hover,
-.c0:focus,
-.c0.hover {
-  background: #FBFBFC;
-  border-color: #FBFBFC;
-  color: #4C535B;
+.c1:active,
+.c1.active {
+  background: #E8E5FF;
+  border-color: #E8E5FF;
+  color: #6C43E0;
 }
 
-.c0[disabled]:hover,
-.c0[disabled]:active,
-.c0[disabled]:focus {
+.c1:hover,
+.c1:focus,
+.c1.hover {
+  background: #F3F2FF;
+  border-color: #F3F2FF;
+  color: #6C43E0;
+}
+
+.c1[disabled]:hover,
+.c1[disabled]:active,
+.c1[disabled]:focus {
   background-color: transparent;
   border-color: transparent;
-  color: #939BA5;
+  color: #64518A;
 }
 
 <button
   aria-haspopup={true}
-  className="c0 "
+  className="c0 c1"
   color="neutral"
   label="Test"
 >
   <div
-    className="c1"
+    className="c2"
   >
     Test
   </div>
   <div
     aria-hidden={true}
-    className="c2 "
+    className="c3 "
     size={16}
   >
     <svg
@@ -516,7 +560,7 @@ exports[`IconButton allows for ARIA attributes 1`] = `
 `;
 
 exports[`IconButton default 1`] = `
-.c2 {
+.c3 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -536,7 +580,7 @@ exports[`IconButton default 1`] = `
   display: inline-flex;
 }
 
-.c1 {
+.c2 {
   position: absolute;
   height: 1px;
   width: 1px;
@@ -553,7 +597,6 @@ exports[`IconButton default 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  padding: 0rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -570,10 +613,8 @@ exports[`IconButton default 1`] = `
   transition: border 80ms;
   vertical-align: middle;
   white-space: nowrap;
-  padding: 3px;
-  background: transparent;
-  border: 1px solid transparent;
-  color: #939BA5;
+  padding: 0rem;
+  height: auto;
 }
 
 .c0[disabled] {
@@ -583,46 +624,60 @@ exports[`IconButton default 1`] = `
   opacity: 0.25;
 }
 
-.c0:focus {
-  box-shadow: 0 0 0 0.15rem rgba(147,155,165,0.25);
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  padding: 3px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: #64518A;
 }
 
-.c0:active,
-.c0.active {
-  background: #F5F6F7;
-  border-color: #F5F6F7;
-  color: #4C535B;
+.c1:focus {
+  box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
 }
 
-.c0:hover,
-.c0:focus,
-.c0.hover {
-  background: #FBFBFC;
-  border-color: #FBFBFC;
-  color: #4C535B;
+.c1:active,
+.c1.active {
+  background: #E8E5FF;
+  border-color: #E8E5FF;
+  color: #6C43E0;
 }
 
-.c0[disabled]:hover,
-.c0[disabled]:active,
-.c0[disabled]:focus {
+.c1:hover,
+.c1:focus,
+.c1.hover {
+  background: #F3F2FF;
+  border-color: #F3F2FF;
+  color: #6C43E0;
+}
+
+.c1[disabled]:hover,
+.c1[disabled]:active,
+.c1[disabled]:focus {
   background-color: transparent;
   border-color: transparent;
-  color: #939BA5;
+  color: #64518A;
 }
 
 <button
-  className="c0 "
+  className="c0 c1"
   color="neutral"
   label="Test"
 >
   <div
-    className="c1"
+    className="c2"
   >
     Test
   </div>
   <div
     aria-hidden={true}
-    className="c2 "
+    className="c3 "
     size={16}
   >
     <svg
@@ -644,7 +699,7 @@ exports[`IconButton default 1`] = `
 `;
 
 exports[`IconButton outline 1`] = `
-.c2 {
+.c3 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -664,7 +719,7 @@ exports[`IconButton outline 1`] = `
   display: inline-flex;
 }
 
-.c1 {
+.c2 {
   position: absolute;
   height: 1px;
   width: 1px;
@@ -681,7 +736,6 @@ exports[`IconButton outline 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  padding: 0rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -698,10 +752,8 @@ exports[`IconButton outline 1`] = `
   transition: border 80ms;
   vertical-align: middle;
   white-space: nowrap;
-  padding: 3px;
-  background: #FFFFFF;
-  border: 1px solid #C1C6CC;
-  color: #939BA5;
+  padding: 0rem;
+  height: auto;
 }
 
 .c0[disabled] {
@@ -711,46 +763,60 @@ exports[`IconButton outline 1`] = `
   opacity: 0.25;
 }
 
-.c0:focus {
-  box-shadow: 0 0 0 0.15rem rgba(147,155,165,0.25);
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  padding: 3px;
+  background: #FFFFFF;
+  border: 1px solid #C1C6CC;
+  color: #64518A;
 }
 
-.c0:active,
-.c0.active {
-  background: #939BA5;
-  border-color: #939BA5;
+.c1:focus {
+  box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
+}
+
+.c1:active,
+.c1.active {
+  background: #64518A;
+  border-color: #64518A;
   color: #FFFFFF;
 }
 
-.c0:hover,
-.c0:focus,
-.c0.hover {
+.c1:hover,
+.c1:focus,
+.c1.hover {
   background: #FFFFFF;
-  border-color: #939BA5;
-  color: #4C535B;
+  border-color: #64518A;
+  color: #2A1B60;
 }
 
-.c0[disabled]:hover,
-.c0[disabled]:active,
-.c0[disabled]:focus {
+.c1[disabled]:hover,
+.c1[disabled]:active,
+.c1[disabled]:focus {
   background-color: #FFFFFF;
   border-color: #C1C6CC;
-  color: #939BA5;
+  color: #64518A;
 }
 
 <button
-  className="c0 "
+  className="c0 c1"
   color="neutral"
   label="Test"
 >
   <div
-    className="c1"
+    className="c2"
   >
     Test
   </div>
   <div
     aria-hidden={true}
-    className="c2 "
+    className="c3 "
     size={16}
   >
     <svg
@@ -772,7 +838,7 @@ exports[`IconButton outline 1`] = `
 `;
 
 exports[`IconButton resized 1`] = `
-.c2 {
+.c3 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -792,7 +858,7 @@ exports[`IconButton resized 1`] = `
   display: inline-flex;
 }
 
-.c1 {
+.c2 {
   position: absolute;
   height: 1px;
   width: 1px;
@@ -809,7 +875,6 @@ exports[`IconButton resized 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  padding: 0rem;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -826,10 +891,12 @@ exports[`IconButton resized 1`] = `
   transition: border 80ms;
   vertical-align: middle;
   white-space: nowrap;
-  padding: 3px;
-  background: transparent;
-  border: 1px solid transparent;
-  color: #939BA5;
+  font-size: 1.375rem;
+  height: 42px;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  padding: 0rem;
+  height: auto;
 }
 
 .c0[disabled] {
@@ -839,47 +906,61 @@ exports[`IconButton resized 1`] = `
   opacity: 0.25;
 }
 
-.c0:focus {
-  box-shadow: 0 0 0 0.15rem rgba(147,155,165,0.25);
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  padding: 3px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: #64518A;
 }
 
-.c0:active,
-.c0.active {
-  background: #F5F6F7;
-  border-color: #F5F6F7;
-  color: #4C535B;
+.c1:focus {
+  box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
 }
 
-.c0:hover,
-.c0:focus,
-.c0.hover {
-  background: #FBFBFC;
-  border-color: #FBFBFC;
-  color: #4C535B;
+.c1:active,
+.c1.active {
+  background: #E8E5FF;
+  border-color: #E8E5FF;
+  color: #6C43E0;
 }
 
-.c0[disabled]:hover,
-.c0[disabled]:active,
-.c0[disabled]:focus {
+.c1:hover,
+.c1:focus,
+.c1.hover {
+  background: #F3F2FF;
+  border-color: #F3F2FF;
+  color: #6C43E0;
+}
+
+.c1[disabled]:hover,
+.c1[disabled]:active,
+.c1[disabled]:focus {
   background-color: transparent;
   border-color: transparent;
-  color: #939BA5;
+  color: #64518A;
 }
 
 <button
-  className="c0 "
+  className="c0 c1"
   color="neutral"
   label="Test"
   size="large"
 >
   <div
-    className="c1"
+    className="c2"
   >
     Test
   </div>
   <div
     aria-hidden={true}
-    className="c2 "
+    className="c3 "
     size={36}
   >
     <svg

@@ -1,86 +1,77 @@
-import { createWithTheme, assertSnapshot } from 'looker-components-test-utils'
-import 'jest-styled-components'
+import { assertSnapshotShallow } from 'looker-components-test-utils'
 import React from 'react'
+import { render } from '@testing-library/react'
+import { ThemeProvider } from 'styled-components'
+import { theme } from 'looker-design-tokens'
 import { Button } from './Button'
-import { ButtonSizes } from './size'
 
-const noop = () => {}
-
-test('Button default', () => {
-  assertSnapshot(<Button>🥑</Button>)
+test('Button is rendered ', () => {
+  assertSnapshotShallow(<Button>click here</Button>)
 })
 
-test('Button variant outline', () => {
-  assertSnapshot(<Button variant="outline">🥑</Button>)
-})
-
-test('Button variant transparent', () => {
-  assertSnapshot(<Button variant="transparent">🥑</Button>)
-})
-
-test('Button type submit', () => {
-  assertSnapshot(<Button type="submit">🥑</Button>)
-})
-
-test('Button type reset', () => {
-  assertSnapshot(<Button type="reset">🥑</Button>)
-})
-
-test('Button type button', () => {
-  assertSnapshot(<Button type="button">🥑</Button>)
-})
-
-test('Button type menu', () => {
-  assertSnapshot(<Button>🥑</Button>)
-})
-
-test('Button padding', () => {
-  assertSnapshot(<Button p="none">🥑</Button>)
-})
-
-test('Button padding', () => {
-  assertSnapshot(
-    <Button px="xxsmall" py="xxxlarge">
-      🥑
-    </Button>
+test('Button still works with variate outline', () => {
+  const { getByText } = render(
+    <ThemeProvider theme={theme}>
+      <Button variant="outline">outline</Button>
+    </ThemeProvider>
   )
+  expect(getByText('outline')).toMatchSnapshot()
 })
 
-test('Button primary color', () => {
-  assertSnapshot(<Button color="primary">🥑</Button>)
+test('Button still works with variate transparent', () => {
+  const { getByText } = render(
+    <ThemeProvider theme={theme}>
+      <Button variant="transparent">transparent</Button>
+    </ThemeProvider>
+  )
+
+  expect(getByText('transparent')).toMatchSnapshot()
 })
 
-test('Button danger color', () => {
-  assertSnapshot(<Button color="danger">🥑</Button>)
+test('Button works with color danger', () => {
+  const { getByText } = render(
+    <ThemeProvider theme={theme}>
+      <Button color="danger">danger</Button>
+    </ThemeProvider>
+  )
+
+  expect(getByText('danger')).toMatchSnapshot()
 })
 
-test('Button should accept disabled', () => {
-  assertSnapshot(<Button disabled>🥑</Button>)
+test('Button disable', () => {
+  const { getByText } = render(
+    <ThemeProvider theme={theme}>
+      <Button disabled>disabled</Button>
+    </ThemeProvider>
+  )
+
+  expect(getByText('disabled')).toMatchSnapshot()
 })
 
 test('Button accepts a className prop', () => {
-  const component = createWithTheme(<Button className="foobar">Hi</Button>)
-  const tree = component.toJSON()
-  if (!tree) throw new Error('component is NULL')
-  expect(tree.props.className).toContain('foobar')
+  const { container } = render(
+    <ThemeProvider theme={theme}>
+      <Button className="foo">button with class</Button>
+    </ThemeProvider>
+  )
+
+  expect(container.firstChild).toHaveClass('foo')
 })
 
 test('Button validates all sizes', () => {
-  const sizes: ButtonSizes[] = ['xsmall', 'small', 'medium', 'large']
-  sizes.forEach(size => {
-    assertSnapshot(<Button size={size}>Test</Button>)
-  })
-})
+  const { getByText } = render(
+    <ThemeProvider theme={theme}>
+      <>
+        <Button size={'xsmall'}>xsmall button</Button>
+        <Button size={'small'}>small button</Button>
+        <Button size={'medium'}>medium button</Button>
+        <Button size={'large'}>large button</Button>
+      </>
+    </ThemeProvider>
+  )
 
-test('Button allows autoFocus', () => {
-  assertSnapshot(<Button autoFocus>Autofocus?</Button>)
-})
-
-test('Button allows for HTML events', () => {
-  assertSnapshot(<Button onMouseEnter={noop}>Mouseenter?</Button>)
-  assertSnapshot(<Button onClick={noop}>Click?</Button>)
-})
-
-test('Button allows for ARIA attributes', () => {
-  assertSnapshot(<Button aria-disabled>aria-disabled</Button>)
+  expect(getByText('xsmall button')).toMatchSnapshot()
+  expect(getByText('small button')).toMatchSnapshot()
+  expect(getByText('medium button')).toMatchSnapshot()
+  expect(getByText('large button')).toMatchSnapshot()
 })

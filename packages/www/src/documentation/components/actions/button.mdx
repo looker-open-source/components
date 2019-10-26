@@ -8,10 +8,6 @@ figma: file/Dirjx0RKbOOrLacqHq61By/Button-%26-Links?node-id=914%3A981&viewport=1
 
 import { RoundBtn } from './demos'
 
-## Variants
-
-The `<Button />` component accepts a `variant` property which allows you to select the proper button style for the context and action the button is for.
-
 ### Default
 
 Use a primary button for the most frequently used action or most important action on a page. Primary buttons should only appear once on a page. They are sometimes accompanied by a secondary button.
@@ -29,40 +25,51 @@ Use a primary button for the most frequently used action or most important actio
 <Button disabled>Disabled</Button>
 ```
 
+⚠️ The variant property is deprecated, and will be removed for the 1.0 release ⚠️
+
+#### Variant
+
+The Button component accepts a variant property which allows you to select the proper button style for the context and action the button is for.
+
+`variant="outline"` instead use the component `ButtonOutline`
+`variant="transparent"` instead use the component `ButtonTransparent`
+
 ---
 
-### Outline
+### ButtonOutline
 
 Use an outline button alongside a primary button to provide alternative actions on a page. Outline buttons should only appear alongside primary buttons for secondary actions. Use no more than two secondary buttons on a page.
 
 ```jsx
-<Button variant="outline">Outline</Button>
+<ButtonOutline>Outline</ButtonOutline>
 ```
 
 #### Outline states
 
 ```jsx
-<Button mr="xsmall" variant="outline">Outline Idle</Button>
-<Button mr="xsmall" variant="outline" className="hover">Outline Hover</Button>
-<Button mr="xsmall" variant="outline" className="active">Outline Active</Button>
-<Button variant="outline" disabled>Outline Disabled</Button>
+<ButtonOutline m="xsmall">Outline Idle</ButtonOutline>
+<ButtonOutline m="xsmall" className="hover">Outline Hover</ButtonOutline>
+<ButtonOutline m="xsmall" className="active">Outline Active</ButtonOutline>
+<ButtonOutline m="xsmall" color="danger">Outline Danger</ButtonOutline>
+<ButtonOutline disabled>Outline Disabled</ButtonOutline>
 ```
 
-### Transparent
+### ButtonTransparent
 
 Use a transparent button as a tertiary action on a screen, they are often used as a Cancel button on a form. Typically it performs the opposite action of a primary button
 
 ```jsx
-<Button variant="transparent">Transparent</Button>
+<ButtonTransparent>Transparent</ButtonTransparent>
 ```
 
 #### Transparent states
 
 ```jsx
-<Button mr="xsmall" variant="transparent"> Transparent Idle </Button>
-<Button mr="xsmall" variant="transparent" className="hover"> Transparent Hover </Button>
-<Button mr="xsmall" variant="transparent" className="active"> Transparent Active </Button>
-<Button variant="transparent" disabled> Transparent Disabled </Button>
+<ButtonTransparent m="xsmall"> Transparent Idle </ButtonTransparent>
+<ButtonTransparent m="xsmall" className="hover"> Transparent Hover </ButtonTransparent>
+<ButtonTransparent m="xsmall" className="active"> Transparent Active </ButtonTransparent>
+<ButtonTransparent m="xsmall" color="danger"> Transparent Danger </ButtonTransparent>
+<ButtonTransparent disabled> Transparent Disabled </ButtonTransparent>
 ```
 
 ## Colors
@@ -82,15 +89,6 @@ Danger Buttons are to be used in situations where you need to convey some very i
 <Button mr="xsmall" color="danger" className="hover">Danger Hover</Button>
 <Button mr="xsmall" color="danger" className="active">Danger Active</Button>
 <Button color="danger" disabled>Danger Disabled</Button>
-```
-
-#### Danger Variants
-
-Danger Buttons extend the default button, so they also have different variants
-
-```jsx
-<Button mr="xsmall" color="danger" variant="outline"> Danger Outline </Button>
-<Button color="danger" variant="transparent">Danger Transparent </Button>
 ```
 
 ## Size
