@@ -29,7 +29,7 @@ export interface MenuGroupProps
 }
 
 export interface MenuGroupWithChildrenProps extends MenuGroupProps {
-  children: JSX.Element | JSX.Element[]
+  children: ReactNode
 }
 
 const MenuGroupInternal: FC<MenuGroupWithChildrenProps> = ({
@@ -72,7 +72,7 @@ const MenuGroupInternal: FC<MenuGroupWithChildrenProps> = ({
     </MenuGroupLabel>
   )
 
-  const clonedChildren = cloneMenuListChildren(children, {
+  const clonedChildren = cloneMenuListChildren(children as JSX.Element[], {
     compact,
     customizationProps,
   })
