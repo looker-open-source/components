@@ -1,14 +1,14 @@
 import { Placement } from 'popper.js'
-import React from 'react'
+import React, { Component, RefObject, ReactNode } from 'react'
 import { ManagedModalProps } from '../Modal'
 
 export interface ModalManagerProps extends ManagedModalProps {
-  children: (onClick: () => void, ref: React.RefObject<any>) => React.ReactNode
+  children: (onClick: () => void, ref: RefObject<any>) => ReactNode
   /**
    * Content that will be placed inside the Modal
    * @required
    */
-  content: React.ReactNode
+  content: ReactNode
   /**
    * Specify a callback to be called before trying to close the Modal. This allows for
    * use-cases where the user might lose work (think common "Save before closing warning" type flow)
@@ -36,7 +36,7 @@ export interface ModalManagerState {
   isOpen: boolean
 }
 
-export abstract class ModalManager extends React.Component<
+export abstract class ModalManager extends Component<
   ModalManagerProps,
   ModalManagerState
 > {

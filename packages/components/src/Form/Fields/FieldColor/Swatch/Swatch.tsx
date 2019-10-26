@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react'
+import React, { forwardRef, Ref } from 'react'
 import { Box, BoxProps } from '../../../../Layout'
 import { CustomizableInputTextAttributes } from '../../../'
 
@@ -18,7 +18,7 @@ export interface SwatchProps extends BoxProps {
 }
 
 export const Swatch = forwardRef(
-  (props: SwatchProps, ref: React.Ref<HTMLDivElement>) => {
+  (props: SwatchProps, ref: Ref<HTMLDivElement>) => {
     const {
       color = 'white',
       width = '28px',

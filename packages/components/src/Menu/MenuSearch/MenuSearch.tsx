@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, RefObject } from 'react'
 import { HotKeys, ObserveKeys } from 'react-hotkeys'
 import { palette } from 'looker-design-tokens'
 import { InputSearch, InputSearchProps } from '../../Form/Inputs'
@@ -8,7 +8,7 @@ export interface MenuSearchProps extends Omit<InputSearchProps, 'as'> {
   /**
    * Specify ref of the Menu element that MenuSearch is related to.
    */
-  menuRef?: React.RefObject<HTMLElement>
+  menuRef?: RefObject<HTMLElement>
 }
 
 export const MenuSearch: FC<MenuSearchProps> = ({ menuRef, ...props }) => {

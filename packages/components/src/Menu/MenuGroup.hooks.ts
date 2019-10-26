@@ -1,9 +1,7 @@
-import React from 'react'
+import { RefObject, useEffect, useState } from 'react'
 
-export const useElementVisibility = (
-  ref: React.RefObject<HTMLElement>
-): boolean => {
-  const [isVisible, setIsVisible] = React.useState(false)
+export const useElementVisibility = (ref: RefObject<HTMLElement>): boolean => {
+  const [isVisible, setIsVisible] = useState(false)
 
   const observer = new IntersectionObserver(
     ([entry]) => {
@@ -14,7 +12,7 @@ export const useElementVisibility = (
     }
   )
 
-  React.useEffect(() => {
+  useEffect(() => {
     const refCurrent = ref.current
     if (refCurrent) {
       observer.observe(refCurrent)
