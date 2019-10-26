@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC } from 'react'
 import styled from 'styled-components'
 
 interface ImgProps {
@@ -9,7 +9,7 @@ const Img = styled.img`
   max-width: 100%;
 `
 
-const ImgLink: React.FC<ImgProps> = ({ src, ...props }) => {
+const ImgLink: FC<ImgProps> = ({ src, ...props }) => {
   return (
     <a href={src} target="_blank" rel="noopener noreferrer">
       <Img src={src} {...props} />

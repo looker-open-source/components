@@ -1,5 +1,11 @@
 import { Placement } from 'popper.js'
-import React, { Component, RefObject, ReactNode } from 'react'
+import React, {
+  Component,
+  createRef,
+  ReactNode,
+  RefObject,
+  SyntheticEvent,
+} from 'react'
 import { ManagedModalProps } from '../Modal'
 
 export interface ModalManagerProps extends ManagedModalProps {
@@ -17,7 +23,7 @@ export interface ModalManagerProps extends ManagedModalProps {
   canClose?: () => boolean
   /**
    * Can be one of: top, bottom, left, right, auto, with the modifiers: start,
-   * end. This value comes directly from popperjs. See
+   * end. This value comes directly from popper.js. See
    * https://popper.js.org/popper-documentation.html#Popper.placements for more
    * info.
    * @default bottom
@@ -26,7 +32,7 @@ export interface ModalManagerProps extends ManagedModalProps {
   isOpen?: boolean
   /**
    * The onClick event applied to the trigger will automatically stop the event
-   * from being propogated further up into the DOM. This is most frequently used when
+   * from being propagated further up into the DOM. This is most frequently used when
    * and Popover is placed inside another, larger clickable item.
    */
   stopPropagation?: boolean
@@ -40,14 +46,14 @@ export abstract class ModalManager extends Component<
   ModalManagerProps,
   ModalManagerState
 > {
-  protected portalRef: React.RefObject<HTMLDivElement>
-  protected triggerRef: React.RefObject<any>
+  protected portalRef: RefObject<HTMLDivElement>
+  protected triggerRef: RefObject<any>
 
   constructor(props: ModalManagerProps) {
     super(props)
     this.state = { isOpen: false }
-    this.triggerRef = React.createRef()
-    this.portalRef = React.createRef()
+    this.triggerRef = createRef()
+    this.portalRef = createRef()
 
     this.close = this.close.bind(this)
     this.open = this.open.bind(this)
@@ -73,7 +79,7 @@ export abstract class ModalManager extends Component<
     )
   }
 
-  public open(event?: React.SyntheticEvent) {
+  public open(event?: SyntheticEvent) {
     if (event && this.props.stopPropagation) {
       event.stopPropagation()
 
@@ -92,7 +98,7 @@ export abstract class ModalManager extends Component<
   }
 
   protected abstract renderModal(
-    content: React.ReactNode,
+    content: ReactNode,
     props: ManagedModalProps
-  ): React.ReactNode
+  ): ReactNode
 }

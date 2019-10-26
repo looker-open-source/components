@@ -17,7 +17,7 @@ export interface ModalContentProps
     CompatibleHTMLProps<HTMLDivElement> {
   /**
    * Style the scrollable space within the ModalContent.
-   * Often p="none" is applied if componennts within the the ModalContent need to the
+   * Often p="none" is applied if components within the the ModalContent need to the
    * touch the container edges.
    */
   innerProps?: SpaceProps

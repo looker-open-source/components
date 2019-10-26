@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react'
+import React, { FC, useState, useCallback } from 'react'
 import { IconButton, IconNames } from 'looker-lens'
 import styled from 'styled-components'
 
@@ -7,7 +7,7 @@ interface SidebarToggleProps {
   onClick: () => void
 }
 
-const SidebarToggle: React.FC<SidebarToggleProps> = ({ isOpen, onClick }) => {
+const SidebarToggle: FC<SidebarToggleProps> = ({ isOpen, onClick }) => {
   const [buttonWidth, setButtonWidth] = useState(0)
   const iconName: IconNames = isOpen ? 'CaretLeft' : 'CaretRight'
 

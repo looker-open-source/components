@@ -1,6 +1,6 @@
 import Highlight, { defaultProps, Language } from 'prism-react-renderer'
 import styled from 'styled-components'
-import React from 'react'
+import React, { FC } from 'react'
 import prismTheme from './prism-theme'
 
 interface CodeStaticProps {
@@ -9,11 +9,7 @@ interface CodeStaticProps {
   className?: string
 }
 
-const CodeStatic: React.FC<CodeStaticProps> = ({
-  code,
-  language,
-  ...props
-}) => {
+const CodeStatic: FC<CodeStaticProps> = ({ code, language, ...props }) => {
   const outerClassName = props.className
 
   return (

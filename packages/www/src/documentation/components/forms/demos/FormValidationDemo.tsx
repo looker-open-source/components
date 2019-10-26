@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ChangeEvent, Component } from 'react'
 import { FieldText, Form } from 'looker-lens'
 
 interface ValidationErrors {
@@ -11,10 +11,7 @@ interface FormValidationState {
   validationErrors: ValidationErrors
 }
 
-export class FormValidationDemo extends React.Component<
-  {},
-  FormValidationState
-> {
+export class FormValidationDemo extends Component<{}, FormValidationState> {
   public state = {
     val1: '',
     val2: '',
@@ -42,10 +39,7 @@ export class FormValidationDemo extends React.Component<
     return Object.assign({}, this.state)
   }
 
-  public changeHandler(
-    val: string,
-    event: React.ChangeEvent<HTMLInputElement>
-  ) {
+  public changeHandler(val: string, event: ChangeEvent<HTMLInputElement>) {
     const stateCopy: FormValidationState = this.copyState()
     if (val === 'val1') {
       stateCopy[val] = event.target.value

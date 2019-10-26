@@ -171,7 +171,7 @@ describe('Popover', () => {
 
   test('Popover trigger is shown/hidden on hover of hoverDisclosureRef', () => {
     const Component = () => {
-      const hoverRef = React.useRef<HTMLDivElement>(null)
+      const hoverRef = useRef<HTMLDivElement>(null)
       return (
         <div ref={hoverRef}>
           <Popover content={SimpleContent} hoverDisclosureRef={hoverRef}>

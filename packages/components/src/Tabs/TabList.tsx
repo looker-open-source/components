@@ -1,4 +1,4 @@
-import React, { cloneElement } from 'react'
+import React, { Children, cloneElement, FC } from 'react'
 import styled from 'styled-components'
 
 export interface TabListProps {
@@ -7,12 +7,12 @@ export interface TabListProps {
   onSelectTab?: (index: any) => void
 }
 
-export const TabList: React.FC<TabListProps> = ({
+export const TabList: FC<TabListProps> = ({
   children,
   selectedIndex,
   onSelectTab,
 }) => {
-  const clonedChildren = React.Children.map(
+  const clonedChildren = Children.map(
     children,
     (child: JSX.Element, index: number) => {
       return cloneElement(child, {

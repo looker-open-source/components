@@ -1,4 +1,4 @@
-import React, { forwardRef, Ref, useState } from 'react'
+import React, { FormEvent, forwardRef, Ref, useState } from 'react'
 import styled from 'styled-components'
 import {
   border,
@@ -88,7 +88,7 @@ const InputSearchComponent = forwardRef(
 
     const onClear = () => setValue('')
 
-    const updateValue = (event: React.FormEvent<HTMLInputElement>) => {
+    const updateValue = (event: FormEvent<HTMLInputElement>) => {
       setValue(event.currentTarget.value)
       onChange && onChange(event)
     }

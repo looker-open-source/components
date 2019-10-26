@@ -118,7 +118,7 @@ So we need:
 To build the Lens powered version of the form, we can start by defining a React component in Helltool. Let's call the file `admin_connection_form.tsx`. Its contents might look something like so (some parts of this example are abbreviated for the sake of instruction):
 
 ```jsx static
-import React from 'react'
+import React, { Component} from 'react'
 import {
   Button,
   FieldText,
@@ -136,7 +136,7 @@ interface AdminConnectionFormProps {
   onTest: (connection: Connection) => ResultMessage
 }
 
-export class AdminConnectionForm extends React.Component<AdminConnectionFormProps> {
+export class AdminConnectionForm extends Component<AdminConnectionFormProps> {
   render () {
     return <Form>
       <FieldText label='name' name='name' hint='The name you use to refer to this connection in models.' />

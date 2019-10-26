@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, ReactNode } from 'react'
 import styled from 'styled-components'
 import { CompatibleHTMLProps } from 'looker-design-tokens'
 import { SpaceProps, space } from 'styled-system'
@@ -7,7 +7,7 @@ export interface ModalFooterProps extends CompatibleHTMLProps<HTMLDivElement> {
   /**
    * Secondary content to place in the footer
    */
-  secondary?: React.ReactNode
+  secondary?: ReactNode
 }
 
 export const ModalFooter: FC<ModalFooterProps> = ({

@@ -1,5 +1,5 @@
 import { getLuminance, rgba, rgbToColorString } from 'polished'
-import React from 'react'
+import React, { Component, ReactNode } from 'react'
 import { Text } from 'looker-lens'
 import {
   SwatchGrid,
@@ -21,7 +21,7 @@ interface SwatchProps {
   labelColor: string
   contrastLevel: WCAGContrastLevel
   group: string
-  children?: React.ReactNode
+  children?: ReactNode
 }
 
 interface FigmaSwatchProps extends SwatchProps {
@@ -66,12 +66,12 @@ const checkContrast = (color: FigmaColor) => {
 
     const labelLuminance = getLuminance(labelColor)
     const fillLuminance = getLuminance(fill)
-    const constrast =
+    const contrast =
       (Math.max(labelLuminance, fillLuminance) + 0.05) /
       (Math.min(labelLuminance, fillLuminance) + 0.05)
 
     const contrastLevel: WCAGContrastLevel =
-      constrast >= 4.5 ? 'AAA' : constrast >= 3 ? 'AA' : 'fail'
+      contrast >= 4.5 ? 'AAA' : contrast >= 3 ? 'AA' : 'fail'
 
     return {
       contrastLevel,
@@ -146,7 +146,7 @@ export interface ColorPaletteState {
   swatches: any[]
 }
 
-export class ColorPalette extends React.Component<
+export class ColorPalette extends Component<
   ColorPaletteProps,
   ColorPaletteState
 > {

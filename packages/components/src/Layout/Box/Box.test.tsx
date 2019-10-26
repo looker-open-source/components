@@ -1,5 +1,5 @@
 import 'jest-styled-components'
-import React from 'react'
+import React, { FC } from 'react'
 import {
   createWithTheme,
   mountWithTheme,
@@ -114,7 +114,7 @@ describe('Box', () => {
     })
 
     test('any prop can be passed to Box', () => {
-      const BoxAsInput: React.FC<{ type?: string }> = props => (
+      const BoxAsInput: FC<{ type?: string }> = props => (
         <Box as="input" {...props} />
       )
       const boxAsCheckbox = mountWithTheme(<BoxAsInput type="checkbox" />)

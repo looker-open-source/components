@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { palette } from 'looker-design-tokens'
 import { Box } from '../../Layout/Box'
 import { IconButton } from '../../Button'
@@ -10,7 +10,7 @@ export interface MenuSearchControlsProps {
   onClear?: () => void
 }
 
-export const MenuSearchControls: React.FC<MenuSearchControlsProps> = ({
+export const MenuSearchControls: FC<MenuSearchControlsProps> = ({
   onClear,
   hasValue,
   summary,

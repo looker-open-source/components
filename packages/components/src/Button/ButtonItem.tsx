@@ -1,5 +1,5 @@
 import { parseToHsl } from 'polished'
-import React, { ChangeEvent, forwardRef, Ref } from 'react'
+import React, { ChangeEvent, forwardRef, Ref, useState } from 'react'
 import styled from 'styled-components'
 import {
   CompatibleHTMLProps,
@@ -98,9 +98,7 @@ const ButtonItemComponent = forwardRef(
     }: ButtonItemProps,
     ref: Ref<HTMLInputElement>
   ) => {
-    const [uncontrolledSelected, setUncontrolledSelected] = React.useState(
-      selected
-    )
+    const [uncontrolledSelected, setUncontrolledSelected] = useState(selected)
 
     function handleChange(e: ChangeEvent<HTMLInputElement>) {
       if (onChange) {

@@ -1,4 +1,10 @@
-import React, { forwardRef, Ref, useContext } from 'react'
+import React, {
+  forwardRef,
+  Ref,
+  useContext,
+  FormEventHandler,
+  createContext,
+} from 'react'
 import styled from 'styled-components'
 import omit from 'lodash/omit'
 import {
@@ -29,16 +35,16 @@ export interface FormProps
    *  message and validation type.
    */
   validationMessages?: ValidationMessages
-  onChange?: React.FormEventHandler<HTMLFormElement>
-  onInput?: React.FormEventHandler<HTMLFormElement>
-  onSubmit?: React.FormEventHandler<HTMLFormElement>
+  onChange?: FormEventHandler<HTMLFormElement>
+  onInput?: FormEventHandler<HTMLFormElement>
+  onSubmit?: FormEventHandler<HTMLFormElement>
 }
 
 export interface FormContext {
   validationMessages?: ValidationMessages
 }
 
-export const FormContext = React.createContext<FormContext>({})
+export const FormContext = createContext<FormContext>({})
 
 const FormBase = styled.form`
   ${reset}

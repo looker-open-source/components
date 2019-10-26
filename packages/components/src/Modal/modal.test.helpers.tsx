@@ -1,5 +1,5 @@
 import { ReactWrapper } from 'enzyme'
-import React from 'react'
+import React, { ReactElement } from 'react'
 import { shallowWithTheme } from 'looker-components-test-utils'
 
 export const SimpleContent = (
@@ -12,7 +12,7 @@ export const SimpleContentSFC = () => SimpleContent
 
 export const assertModalState = (
   modal: ReactWrapper,
-  content: React.ReactElement<any>,
+  content: ReactElement<any>,
   open = true
 ) => {
   expect(modal.contains(content)).toEqual(open)
@@ -25,7 +25,7 @@ export const assertClosed = (modal: ReactWrapper) =>
   assertModalState(modal, SimpleContent, false)
 
 export const returnTriggerAndModal = (
-  Inst: React.ReactElement<any>,
+  Inst: ReactElement<any>,
   trigger = 'button'
 ) => {
   const modal = shallowWithTheme(Inst)

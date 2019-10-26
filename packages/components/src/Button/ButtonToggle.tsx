@@ -1,5 +1,5 @@
 import uniqueId from 'lodash/uniqueId'
-import React, { forwardRef, Ref } from 'react'
+import React, { forwardRef, Ref, useState, ChangeEvent, FC } from 'react'
 import styled from 'styled-components'
 import { useControlWarn } from '../utils'
 import { ButtonItemLabel } from './ButtonItem'
@@ -22,9 +22,9 @@ const ButtonToggleFactory = forwardRef(
       name: 'ButtonToggle',
     })
 
-    const [value, setValue] = React.useState<string>()
+    const [value, setValue] = useState<string>()
 
-    function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    function handleChange(e: ChangeEvent<HTMLInputElement>) {
       if (onChange) {
         onChange(e.target.value)
       } else {
@@ -49,7 +49,7 @@ const ButtonToggleFactory = forwardRef(
   }
 )
 
-export const ButtonToggle = styled<React.FC<ButtonGroupOrToggleProps<string>>>(
+export const ButtonToggle = styled<FC<ButtonGroupOrToggleProps<string>>>(
   ButtonToggleFactory
 )`
   border: solid 1px ${props => props.theme.colors.palette.charcoal200};

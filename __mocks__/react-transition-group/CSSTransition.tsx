@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component, ReactNode } from 'react'
 
 interface MockedCSSTransitionProps {
   in: boolean
@@ -6,10 +6,10 @@ interface MockedCSSTransitionProps {
   mountOnEnter?: boolean
   unmountOnExit?: boolean
   timeout: number | { enter: number; exit: number }
-  children: (state: string) => React.ReactNode
+  children: (state: string) => ReactNode
 }
 
-class CSSTransition extends React.Component<MockedCSSTransitionProps> {
+class CSSTransition extends Component<MockedCSSTransitionProps> {
   public render() {
     return <>{this.props.in && this.props.children('faux')}</>
   }

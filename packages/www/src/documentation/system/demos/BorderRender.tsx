@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Heading, Code, Text } from 'looker-lens'
 import { palette } from 'looker-design-tokens'
 import {
@@ -75,10 +75,7 @@ export interface BorderType {
   examples: BorderExample[]
 }
 
-export class BorderRender extends React.Component<
-  {},
-  { borders: BorderType[] }
-> {
+export class BorderRender extends Component<{}, { borders: BorderType[] }> {
   constructor(props: {}) {
     super(props)
     this.state = {

@@ -1,6 +1,6 @@
 import uniqueId from 'lodash/uniqueId'
 import xor from 'lodash/xor'
-import React, { forwardRef, Ref } from 'react'
+import React, { ChangeEvent, FC, forwardRef, Ref } from 'react'
 import styled from 'styled-components'
 import { useControlWarn } from '../utils'
 import { ButtonItem, ButtonItemLabel } from './ButtonItem'
@@ -17,7 +17,7 @@ const ButtonGroupFactory = forwardRef(
       name: 'ButtonGroup',
     })
 
-    function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    function handleChange(e: ChangeEvent<HTMLInputElement>) {
       const newValue = xor(value, [e.target.value])
       onChange && onChange(newValue)
     }
@@ -37,7 +37,7 @@ const ButtonGroupFactory = forwardRef(
   }
 )
 
-export const ButtonGroup = styled<React.FC<ButtonGroupOrToggleProps<string[]>>>(
+export const ButtonGroup = styled<FC<ButtonGroupOrToggleProps<string[]>>>(
   ButtonGroupFactory
 )`
   ${ButtonItem} {
