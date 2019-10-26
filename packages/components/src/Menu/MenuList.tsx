@@ -1,6 +1,12 @@
 import merge from 'lodash/merge'
 import { Placement } from 'popper.js'
-import React, { Children, cloneElement, useRef } from 'react'
+import React, {
+  Children,
+  cloneElement,
+  ReactNode,
+  RefObject,
+  useRef,
+} from 'react'
 import { HotKeys } from 'react-hotkeys'
 import styled, { css } from 'styled-components'
 import { CompatibleHTMLProps } from 'looker-design-tokens'
@@ -14,9 +20,11 @@ export interface MenuListProps
   extends CompatibleHTMLProps<HTMLUListElement>,
     MenuSharedProps,
     MenuCloneProps {
-  children: JSX.Element | JSX.Element[]
+  children: ReactNode
   compact?: boolean
   groupDividers?: boolean
+
+  ref?: RefObject<HTMLUListElement>
 
   /**
    * Can be one of: top, bottom, left, right, auto, with the modifiers: start,
@@ -52,25 +60,26 @@ export function MenuList({
   placement,
   setOpen,
   triggerRef,
+  ref,
   ...styleProps
 }: MenuListProps) {
-  const ref = useRef<null | HTMLElement>(null)
+  const innerRef = useRef<null | HTMLElement>(null)
 
-  const clonedChildren = cloneMenuListChildren(children, {
+  const clonedChildren = cloneMenuListChildren(children as JSX.Element[], {
     compact,
     customizationProps,
   })
 
   const menuList = (
     <HotKeys
-      innerRef={ref}
+      innerRef={innerRef}
       keyMap={{ MOVE_DOWN: 'down', MOVE_UP: 'up' }}
       handlers={{
-        MOVE_DOWN: () => moveFocus(1, 0, ref),
-        MOVE_UP: () => moveFocus(-1, -1, ref),
+        MOVE_DOWN: () => moveFocus(1, 0, innerRef),
+        MOVE_UP: () => moveFocus(-1, -1, innerRef),
       }}
     >
-      <Style tabIndex={-1} role="menu" {...styleProps}>
+      <Style ref={ref} tabIndex={-1} role="menu" {...styleProps}>
         {clonedChildren}
       </Style>
     </HotKeys>
