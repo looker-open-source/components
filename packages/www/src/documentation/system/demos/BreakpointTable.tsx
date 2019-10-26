@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import {
   Code,
   Text,
@@ -82,7 +82,7 @@ const BreakpointRow = (
   )
 }
 
-export class BreakpointTable extends React.Component<
+export class BreakpointTable extends Component<
   {},
   {
     breakpoints: BreakpointExample[]

@@ -1,4 +1,4 @@
-import React, { cloneElement, useRef, useState } from 'react'
+import React, { Children, cloneElement, FC, useRef, useState } from 'react'
 
 export interface UseTabsProps {
   controlledIndex?: number
@@ -30,7 +30,7 @@ export function useTabs(props?: UseTabsProps) {
   }
 }
 
-export const Tabs: React.FC<TabsProps> = ({
+export const Tabs: FC<TabsProps> = ({
   children,
   index: controlledIndex,
   defaultIndex,
@@ -54,7 +54,7 @@ export const Tabs: React.FC<TabsProps> = ({
 
   const tabs = useTabs({ defaultIndex, isControlled, onChange })
 
-  const clonedChildren = React.Children.map(children, (child: JSX.Element) => {
+  const clonedChildren = Children.map(children, (child: JSX.Element) => {
     return cloneElement(child, tabs)
   })
 

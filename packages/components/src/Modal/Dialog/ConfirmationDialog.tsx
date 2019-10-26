@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC, useCallback } from 'react'
 import { SemanticColors } from 'looker-design-tokens'
 import { Button } from '../../Button'
 import { Heading } from '../../Text/Heading'
@@ -56,7 +56,7 @@ export interface ConfirmationDialogProps extends ConfirmationProps {
   isOpen?: boolean
 }
 
-export const ConfirmationDialog: React.FC<ConfirmationDialogProps> = ({
+export const ConfirmationDialog: FC<ConfirmationDialogProps> = ({
   cancelLabel = 'Cancel',
   close,
   confirmLabel = 'Confirm',
@@ -68,11 +68,11 @@ export const ConfirmationDialog: React.FC<ConfirmationDialogProps> = ({
   title,
   ...props
 }) => {
-  const confirm = React.useCallback(() => {
+  const confirm = useCallback(() => {
     onConfirm(close)
   }, [close, onConfirm])
 
-  const cancel = React.useCallback(() => {
+  const cancel = useCallback(() => {
     if (onCancel) {
       onCancel(close)
     } else {

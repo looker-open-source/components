@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, MouseEvent, cloneElement, Children } from 'react'
 import { Placement } from 'popper.js'
 import { useTooltip } from '../Tooltip'
 import { MenuCloneProps } from './Menu'
@@ -9,13 +9,13 @@ export interface MenuDisclosureProps extends MenuCloneProps {
   tooltipPlacement?: Placement
 }
 
-type MouseEventCallback = (e: React.MouseEvent) => void
+type MouseEventCallback = (e: MouseEvent) => void
 
 function wrapCallback(
   cbParent: MouseEventCallback,
   cbChild?: MouseEventCallback
 ) {
-  return (e: React.MouseEvent) => {
+  return (e: MouseEvent) => {
     cbParent(e)
     cbChild && cbChild(e)
   }
@@ -41,7 +41,7 @@ export const MenuDisclosure: FC<MenuDisclosureProps> = ({
 
   const allCallbacks = { ...eventHandlers, onClick: handleClick }
 
-  const cloned = React.Children.map(children, (child: JSX.Element) => {
+  const cloned = Children.map(children, (child: JSX.Element) => {
     const childProps = child.props
 
     const wrappedCallbacks: { [key: string]: MouseEventCallback } = {}
@@ -50,7 +50,7 @@ export const MenuDisclosure: FC<MenuDisclosureProps> = ({
       wrappedCallbacks[cbName] = wrapCallback(cbParent, childProps[cbName])
     })
 
-    return React.cloneElement(child, {
+    return cloneElement(child, {
       ...wrappedCallbacks,
       disabled,
       ref,

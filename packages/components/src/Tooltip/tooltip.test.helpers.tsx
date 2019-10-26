@@ -1,5 +1,5 @@
 import { ReactWrapper } from 'enzyme'
-import React from 'react'
+import React, { ReactElement } from 'react'
 
 export const SimpleContent = <div>simple content</div>
 export const SimpleContentSFC = () => SimpleContent
@@ -11,7 +11,7 @@ export const mouseEventSimulator = {
 
 export const assertOverlayState = (
   overlay: ReactWrapper,
-  content: React.ReactElement<any>,
+  content: ReactElement<any>,
   open = true
 ) => {
   expect(overlay.contains(content)).toEqual(open)

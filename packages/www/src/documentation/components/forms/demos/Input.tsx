@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC, useState } from 'react'
 import { Divider, InputSearch } from 'looker-lens'
 
 export interface InputSearchElementProps {
@@ -6,11 +6,11 @@ export interface InputSearchElementProps {
   hideControls?: boolean
 }
 
-const InputSearchElement: React.FC<InputSearchElementProps> = ({
+const InputSearchElement: FC<InputSearchElementProps> = ({
   value = '',
   hideControls,
 }) => {
-  const [keywords, setKeywords] = React.useState(value)
+  const [keywords, setKeywords] = useState(value)
   const onChange = (e: any) => {
     setKeywords(e.currentTarget.value)
   }

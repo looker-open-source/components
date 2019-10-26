@@ -1,9 +1,9 @@
-import React from 'react'
+import { createContext, SyntheticEvent } from 'react'
 
 export interface ModalContextProps {
-  closeModal?: (event?: React.SyntheticEvent, doCallbacks?: boolean) => void
+  closeModal?: (event?: SyntheticEvent, doCallbacks?: boolean) => void
 }
 
 const context: ModalContextProps = {}
 
-export const ModalContext = React.createContext(context)
+export const ModalContext = createContext(context)

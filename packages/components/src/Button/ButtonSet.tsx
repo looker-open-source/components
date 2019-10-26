@@ -1,7 +1,11 @@
 import React, {
+  cloneElement,
   ChangeEvent,
+  Children,
   forwardRef,
   ForwardRefExoticComponent,
+  isValidElement,
+  ReactNode,
   Ref,
 } from 'react'
 import {
@@ -27,7 +31,7 @@ export interface ButtonGroupOrToggleProps<
   /**
    * One or more ButtonItem
    */
-  children: React.ReactNode
+  children: ReactNode
   /**
    * Value for controlling the component
    */
@@ -61,15 +65,15 @@ export const ButtonSet = forwardRef(
     }: ButtonSetProps,
     ref: Ref<HTMLDivElement>
   ) => {
-    const clonedChildren = React.Children.map(children, child => {
-      if (!React.isValidElement(child)) return child
+    const clonedChildren = Children.map(children, child => {
+      if (!isValidElement(child)) return child
 
       const { props: childProps } = child
       const childValue =
         childProps.value ||
         (typeof childProps.children === 'string' ? childProps.children : null)
 
-      return React.cloneElement<ButtonItemProps>(child, {
+      return cloneElement<ButtonItemProps>(child, {
         isControlled: groupOnChange !== undefined,
         name,
         type: isToggle ? 'radio' : 'checkbox',
@@ -85,7 +89,7 @@ export const ButtonSet = forwardRef(
         ...(disabled ? { disabled } : {}),
         ...(groupOnChange
           ? {
-              onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
+              onChange: (e: ChangeEvent<HTMLInputElement>) => {
                 groupOnChange && groupOnChange(e)
                 childProps.onChange && childProps.onChange(e)
               },

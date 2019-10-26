@@ -1,4 +1,4 @@
-import React from 'react'
+import { MutableRefObject } from 'react'
 
 const getTabStops = (ref: HTMLElement): HTMLElement[] =>
   Array.from(ref.querySelectorAll('a,button,[tabindex="0"]'))
@@ -6,7 +6,7 @@ const getTabStops = (ref: HTMLElement): HTMLElement[] =>
 export const moveFocus = (
   direction: number,
   initial: number,
-  containerRef?: React.MutableRefObject<HTMLElement | null>
+  containerRef?: MutableRefObject<HTMLElement | null>
 ) => {
   if (!containerRef || !containerRef.current) return
   const tabStops = getTabStops(containerRef.current)

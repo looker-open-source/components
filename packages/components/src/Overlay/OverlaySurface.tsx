@@ -8,7 +8,14 @@ import {
   fadeIn,
 } from 'looker-design-tokens'
 import { Placement } from 'popper.js'
-import React, { CSSProperties, forwardRef, Ref, useContext } from 'react'
+import React, {
+  CSSProperties,
+  DOMAttributes,
+  forwardRef,
+  ReactNode,
+  Ref,
+  useContext,
+} from 'react'
 import { HotKeys } from 'react-hotkeys'
 import { PopperArrowProps } from 'react-popper'
 import styled from 'styled-components'
@@ -26,8 +33,8 @@ interface SurfaceStyleProps extends BorderProps, BoxShadowProps {
 export interface OverlaySurfaceProps extends SurfaceStyleProps {
   arrow?: boolean
   arrowProps: PopperArrowProps
-  children: React.ReactNode
-  eventHandlers?: React.DOMAttributes<{}>
+  children: ReactNode
+  eventHandlers?: DOMAttributes<{}>
   placement: Placement
   style?: CSSProperties
   zIndex?: number

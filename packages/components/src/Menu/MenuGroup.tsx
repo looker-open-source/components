@@ -1,4 +1,4 @@
-import React, { FC, RefObject } from 'react'
+import React, { CSSProperties, FC, ReactNode, RefObject, useRef } from 'react'
 import styled from 'styled-components'
 import {
   color,
@@ -21,9 +21,9 @@ export interface MenuGroupProps
   extends Omit<CompatibleHTMLProps<HTMLElement>, 'label'>,
     BackgroundColorProps,
     SpaceProps {
-  label?: React.ReactNode
+  label?: ReactNode
   labelProps?: HeadingProps
-  labelStyles?: React.CSSProperties
+  labelStyles?: CSSProperties
   customizationProps?: MenuItemCustomization
   compact?: boolean
 }
@@ -41,7 +41,7 @@ const MenuGroupInternal: FC<MenuGroupWithChildrenProps> = ({
 }) => {
   const { customizationProps, compact, ...boxProps } = props
 
-  const labelShimRef: RefObject<any> = React.useRef()
+  const labelShimRef: RefObject<any> = useRef()
   const labelVisible = useElementVisibility(labelShimRef)
 
   const labelComponent = label && (

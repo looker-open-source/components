@@ -265,7 +265,7 @@ export function usePopover({
   )
   const openWithoutElem = useOpenWithoutElement(isOpen, triggerRef)
 
-  function handleOpen(event: React.SyntheticEvent) {
+  function handleOpen(event: SyntheticEvent) {
     setOpen(true)
     event.stopPropagation()
     event.preventDefault()

@@ -1,6 +1,6 @@
 import { Icon, IconButton, IconNames, Tooltip } from 'looker-lens'
 import { PrismTheme, Language } from 'prism-react-renderer'
-import React, { useState } from 'react'
+import React, { FC, ReactNode, useState } from 'react'
 import CopyToClipboard from 'react-copy-to-clipboard'
 import {
   LiveProvider,
@@ -102,7 +102,7 @@ interface LiveProps {
 }
 
 interface WithLiveProps {
-  children: (error?: string) => React.ReactNode
+  children: (error?: string) => ReactNode
   live?: LiveProps
 }
 
@@ -111,7 +111,7 @@ const LivePreviewWrapper = styled.div`
 `
 
 export const LiveConsumer = withLive<WithLiveProps>(({ children, live }) => {
-  return <React.Fragment>{children((live as LiveProps).error)}</React.Fragment>
+  return <>{children((live as LiveProps).error)}</>
 })
 
 interface ActionProps {
@@ -122,10 +122,7 @@ interface CopyButtonProps extends ActionProps {
   code: string
 }
 
-export const CopyButton: React.FC<CopyButtonProps> = ({
-  code,
-  editorIsVisible,
-}) => {
+export const CopyButton: FC<CopyButtonProps> = ({ code, editorIsVisible }) => {
   return (
     <Tooltip content="Copy sample code">
       {(eventHandlers, ref) => (
@@ -151,7 +148,7 @@ interface ToggleButtonProps extends ActionProps {
   onClick: () => void
 }
 
-export const ToggleCodeButton: React.FC<ToggleButtonProps> = ({
+export const ToggleCodeButton: FC<ToggleButtonProps> = ({
   editorIsVisible,
   onClick,
 }) => {

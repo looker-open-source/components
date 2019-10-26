@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 
 import {
   canvasMargin,
@@ -47,7 +47,7 @@ interface ColorWheelProps {
   onColorChange?: UpdateHueSaturationCallbackType
 }
 
-export class ColorWheel extends React.Component<ColorWheelProps> {
+export class ColorWheel extends Component<ColorWheelProps> {
   public static defaultProps = {
     hue: 0,
     saturation: 1,

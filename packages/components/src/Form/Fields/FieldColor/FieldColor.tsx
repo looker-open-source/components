@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, ChangeEvent, FC, FormEvent } from 'react'
 import { Popover, PopoverContent } from '../../../Popover'
 import { InputText, InputTextProps } from '../../Inputs/InputText'
 import { Field, FieldProps } from '../Field'
@@ -35,7 +35,7 @@ export interface FieldColorProps
 
 const createEventWithHSVValue = (
   color: SimpleHSV
-): React.ChangeEvent<HTMLInputElement> => {
+): ChangeEvent<HTMLInputElement> => {
   return {
     currentTarget: {
       value: simpleHSVtoFormattedColorString(color),
@@ -43,10 +43,10 @@ const createEventWithHSVValue = (
     target: {
       value: simpleHSVtoFormattedColorString(color),
     },
-  } as React.ChangeEvent<HTMLInputElement>
+  } as ChangeEvent<HTMLInputElement>
 }
 
-export const FieldColor: React.FC<FieldColorProps> = ({
+export const FieldColor: FC<FieldColorProps> = ({
   alignValidationMessage,
   hideInput,
   ...props
@@ -74,13 +74,13 @@ export const FieldColor: React.FC<FieldColorProps> = ({
   const handleColorChange = (hs: HueSaturation) =>
     setColorState({ ...hs, v: color.v })
 
-  const handleSliderChange = (event: React.FormEvent<HTMLInputElement>) =>
+  const handleSliderChange = (event: FormEvent<HTMLInputElement>) =>
     setColorState({
       ...color,
       v: Number(event.currentTarget.value) / 100,
     })
 
-  const handleInputTextChange = (event: React.FormEvent<HTMLInputElement>) => {
+  const handleInputTextChange = (event: FormEvent<HTMLInputElement>) => {
     const value = event.currentTarget.value
     setInputTextValue(value)
 

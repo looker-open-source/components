@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { palette } from 'looker-design-tokens'
 import { Box } from '../../../Layout/Box'
 import { IconButton } from '../../../Button'
@@ -9,7 +9,7 @@ export interface InputSearchControlsProps {
   onClear: () => void
 }
 
-export const InputSearchControls: React.FC<InputSearchControlsProps> = ({
+export const InputSearchControls: FC<InputSearchControlsProps> = ({
   onClear,
   summary,
 }) => {

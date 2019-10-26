@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { Modal, ModalProps } from '../Modal'
 import { DialogSurface } from './DialogSurface'
 
-export const Dialog: React.FC<ModalProps> = ({
+export const Dialog: FC<ModalProps> = ({
   width,
   children,
   surfaceStyles,

@@ -1,4 +1,4 @@
-import React from 'react'
+import { HTMLProps } from 'react'
 export {
   border,
   boxShadow,
@@ -17,7 +17,7 @@ export {
 } from 'styled-system'
 
 export type CompatibleHTMLProps<T> = Omit<
-  React.HTMLProps<T>,
+  HTMLProps<T>,
   'as' | 'color' | 'height' | 'ref' | 'size' | 'width'
 >
 

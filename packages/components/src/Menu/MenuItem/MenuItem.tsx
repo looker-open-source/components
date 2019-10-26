@@ -1,6 +1,6 @@
 import { FontSizes, CompatibleHTMLProps } from 'looker-design-tokens'
 import { IconNames } from 'looker-icons'
-import React, { FC } from 'react'
+import React, { FC, ReactNode } from 'react'
 import { Icon } from '../../Icon'
 import { MenuItemButton } from './MenuItemButton'
 import {
@@ -75,7 +75,7 @@ const assignCustomizations = (
 export interface MenuItemProps
   extends CompatibleHTMLProps<HTMLElement>,
     MenuSharedProps {
-  detail?: React.ReactNode
+  detail?: ReactNode
   icon?: IconNames
   /**
    * Indicates the MenuItem is checked

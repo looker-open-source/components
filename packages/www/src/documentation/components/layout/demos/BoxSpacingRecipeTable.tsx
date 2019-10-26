@@ -1,5 +1,5 @@
 import { Box, Code, List, ListItem, Text } from 'looker-lens'
-import React from 'react'
+import React, { Component } from 'react'
 import styled from 'styled-components'
 
 const spacingTypes = [
@@ -96,7 +96,7 @@ const ListRender = (
   )
 }
 
-export class BoxSpacingRecipeTable extends React.Component<
+export class BoxSpacingRecipeTable extends Component<
   {},
   {
     types: ColumnExample[]

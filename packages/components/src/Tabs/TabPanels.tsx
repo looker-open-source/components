@@ -1,4 +1,4 @@
-import React, { cloneElement } from 'react'
+import React, { Children, cloneElement, FC } from 'react'
 import styled from 'styled-components'
 import { SpaceProps, space, reset } from 'looker-design-tokens'
 import omit from 'lodash/omit'
@@ -9,14 +9,14 @@ export interface TabPanelsProps extends SpaceProps {
   onSelectTab?: (index: number) => void
 }
 
-export const TabPanels: React.FC<TabPanelsProps> = ({
+export const TabPanels: FC<TabPanelsProps> = ({
   children,
   selectedIndex,
   ...props
 }) => {
   const spaceProps = omit(props, 'onSelectTab')
 
-  const clonedChildren = React.Children.map(
+  const clonedChildren = Children.map(
     children,
     (child: JSX.Element, index: number) => {
       return cloneElement(child, {
