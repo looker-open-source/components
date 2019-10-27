@@ -2,14 +2,14 @@ import { IconNames } from 'looker-icons'
 import styled, { css } from 'styled-components'
 import { rem } from 'polished'
 import { Icon } from '../Icon'
-import { ButtonProps } from './ButtonBase'
+import { ButtonBaseProps } from './ButtonBase'
 
 export interface ButtonIconProps {
   iconBefore?: IconNames | undefined
   iconAfter?: IconNames | undefined
 }
 
-export const iconMargins = (props: ButtonProps) => {
+export const iconMargins = (props: ButtonBaseProps) => {
   const spacing = { large: 0, small: 0 }
   switch (props.size) {
     case 'xsmall':
@@ -40,7 +40,7 @@ export const iconMargins = (props: ButtonProps) => {
 
 export const ButtonIcon = styled(Icon)``
 
-export const buttonIcon = (props: ButtonProps) => css`
+export const buttonIcon = (props: ButtonBaseProps) => css`
   ${ButtonIcon} {
     ${iconMargins(props)};
   }
