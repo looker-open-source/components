@@ -174,6 +174,7 @@ exports[`MenuGroup - JSX label 1`] = `
     type="none"
   >
     <li
+      bg="#FFFFFF"
       className="c5"
       color="#4C535B"
       fontSize="small"
@@ -187,6 +188,7 @@ exports[`MenuGroup - JSX label 1`] = `
       </button>
     </li>
     <li
+      bg="#FFFFFF"
       className="c5"
       color="#4C535B"
       fontSize="small"
@@ -200,6 +202,7 @@ exports[`MenuGroup - JSX label 1`] = `
       </button>
     </li>
     <li
+      bg="#FFFFFF"
       className="c5"
       color="#4C535B"
       fontSize="small"
@@ -376,6 +379,7 @@ exports[`MenuGroup - label 1`] = `
     type="none"
   >
     <li
+      bg="#FFFFFF"
       className="c4"
       color="#4C535B"
       fontSize="small"
@@ -389,6 +393,7 @@ exports[`MenuGroup - label 1`] = `
       </button>
     </li>
     <li
+      bg="#FFFFFF"
       className="c4"
       color="#4C535B"
       fontSize="small"
@@ -402,6 +407,7 @@ exports[`MenuGroup - label 1`] = `
       </button>
     </li>
     <li
+      bg="#FFFFFF"
       className="c4"
       color="#4C535B"
       fontSize="small"
@@ -579,6 +585,7 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
     type="none"
   >
     <li
+      bg="#FFFFFF"
       className="c4"
       color="#4C535B"
       fontSize="small"
@@ -592,6 +599,7 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
       </button>
     </li>
     <li
+      bg="#FFFFFF"
       className="c4"
       color="#4C535B"
       fontSize="small"
@@ -605,6 +613,7 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
       </button>
     </li>
     <li
+      bg="#FFFFFF"
       className="c4"
       color="#4C535B"
       fontSize="small"
@@ -764,6 +773,7 @@ exports[`MenuGroup - menu customization 1`] = `
     type="none"
   >
     <li
+      bg="#4F2ABA"
       className="c2"
       color="#BFB2FF"
       fontSize="small"
@@ -817,6 +827,7 @@ exports[`MenuGroup - menu customization 1`] = `
       </button>
     </li>
     <li
+      bg="#4F2ABA"
       className="c2"
       color="#BFB2FF"
       fontSize="small"
@@ -850,6 +861,7 @@ exports[`MenuGroup - menu customization 1`] = `
       </button>
     </li>
     <li
+      bg="#4F2ABA"
       className="c2"
       color="#BFB2FF"
       fontSize="small"
@@ -998,6 +1010,7 @@ exports[`MenuGroup 1`] = `
     type="none"
   >
     <li
+      bg="#FFFFFF"
       className="c2"
       color="#4C535B"
       fontSize="small"

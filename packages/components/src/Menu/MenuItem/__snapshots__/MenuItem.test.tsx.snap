@@ -119,6 +119,7 @@ exports[`MenuItem - current + marker 1`] = `
 
 <li
   aria-current="page"
+  bg="#F5F6F7"
   className="c0"
   color="#262D33"
   fontSize="small"
@@ -255,6 +256,7 @@ exports[`MenuItem - current 1`] = `
 
 <li
   aria-current="page"
+  bg="#F5F6F7"
   className="c0"
   color="#262D33"
   fontSize="small"
@@ -384,6 +386,7 @@ exports[`MenuItem - detail 1`] = `
 }
 
 <li
+  bg="#FFFFFF"
   className="c0"
   color="#4C535B"
   fontSize="small"
@@ -507,6 +510,7 @@ exports[`MenuItem - icon 1`] = `
 }
 
 <li
+  bg="#FFFFFF"
   className="c0"
   color="#4C535B"
   fontSize="small"
@@ -636,6 +640,7 @@ exports[`MenuItem - with customizations 1`] = `
 
 <li
   aria-current="page"
+  bg="#BFB2FF"
   className="c0"
   color="#1E1047"
   fontSize="small"
@@ -731,6 +736,7 @@ exports[`MenuItem - with single customization 1`] = `
 
 <li
   aria-current="page"
+  bg="#4F2ABA"
   className="c0"
   color="#262D33"
   fontSize="small"
@@ -825,6 +831,7 @@ exports[`MenuItem 1`] = `
 }
 
 <li
+  bg="#FFFFFF"
   className="c0"
   color="#4C535B"
   fontSize="small"

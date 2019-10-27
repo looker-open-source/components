@@ -1,9 +1,11 @@
+import omit from 'lodash/omit'
 import {
   CompatibleHTMLProps,
   color,
   space,
   typography,
 } from 'looker-design-tokens'
+import React, { forwardRef, Ref } from 'react'
 import styled, { css } from 'styled-components'
 import { Icon } from '../../Icon'
 import { MenuItemStyle } from './menuItemStyle'
@@ -53,7 +55,18 @@ const iconColor = (props: MenuListItemProps) =>
     ? props.itemStyle.current.iconColor
     : props.itemStyle.initial.iconColor
 
-export const MenuItemListItem = styled.li<MenuListItemProps>`
+/**
+ * All of this drama is to deal with SC's behavior of auto-spreading the Element interface
+ * used when styled extends a base type. E.g. (styled.li has `color` prop)
+ */
+const Li = forwardRef((props: MenuListItemProps, ref: Ref<HTMLLIElement>) => {
+  const domProps = omit(props, 'current', 'currentMarker', 'itemStyle')
+  return <li {...domProps} ref={ref} />
+})
+
+Li.displayName = 'Li'
+
+export const MenuItemListItem = styled(Li)<MenuListItemProps>`
   ${color}
   ${space}
   ${typography}
