@@ -1,5 +1,5 @@
 declare module '@mdx-js/react' {
-  import React, { ComponentType, ReactNode } from 'react'
+  import * as React from 'react'
   type ComponentType =
     | 'p'
     | 'h1'
@@ -27,11 +27,11 @@ declare module '@mdx-js/react' {
     | 'img'
 
   export type Components = {
-    [key in ComponentType]?: ComponentType<any>
+    [key in ComponentType]?: React.ComponentType<any>
   }
   export interface MDXProviderProps {
-    children?: ReactNode
+    children?: React.ReactNode
     components: Components
   }
-  export class MDXProvider extends Component<MDXProviderProps> {}
+  export class MDXProvider extends React.Component<MDXProviderProps> {}
 }
