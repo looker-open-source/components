@@ -74,7 +74,6 @@ export const MenuListInternal: FC<MenuListProps> = ({
   setOpen,
   triggerRef,
   ref,
-  ...styleProps
 }) => {
   const innerRef = useRef<null | HTMLElement>(null)
 
@@ -92,13 +91,7 @@ export const MenuListInternal: FC<MenuListProps> = ({
         MOVE_UP: () => moveFocus(-1, -1, innerRef),
       }}
     >
-      <ul
-        className={className}
-        ref={ref}
-        tabIndex={-1}
-        role="menu"
-        {...styleProps}
-      >
+      <ul className={className} ref={ref} tabIndex={-1} role="menu">
         {clonedChildren}
       </ul>
     </HotKeys>
@@ -126,9 +119,7 @@ const dividersStyle = css`
   }
 `
 
-export const MenuList = styled(MenuListInternal).attrs(
-  (props: MenuListProps) => ({ minWidth: props.minWidth || '10rem ' })
-)`
+export const MenuList = styled(MenuListInternal)`
   ${reset}
   ${minWidth}
   ${maxWidth}
@@ -139,3 +130,5 @@ export const MenuList = styled(MenuListInternal).attrs(
   user-select: none;
   ${props => props.groupDividers !== false && dividersStyle};
 `
+
+MenuList.defaultProps = { minWidth: '10rem' }
