@@ -151,6 +151,7 @@ exports[`A FieldRadio 1`] = `
   margin-right: 0.5rem;
   font-weight: 600;
   font-size: 0.875rem;
+  display: inline-block;
 }
 
 .c1 .c2 {
@@ -347,6 +348,7 @@ exports[`A FieldRadio checked 1`] = `
   margin-right: 0.5rem;
   font-weight: 600;
   font-size: 0.875rem;
+  display: inline-block;
 }
 
 .c1 .c2 {
@@ -523,6 +525,7 @@ exports[`A FieldRadio with label aligned left 1`] = `
   margin-right: 0.5rem;
   font-weight: 600;
   font-size: 0.875rem;
+  display: inline-block;
 }
 
 .c9 .c2 {
