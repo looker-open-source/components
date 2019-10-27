@@ -12,7 +12,7 @@ import { ButtonIcon, buttonIcon, ButtonIconProps } from './icon'
 
 type ButtonColors = keyof SemanticColors
 
-export interface ButtonProps
+export interface ButtonBaseProps
   extends Omit<CompatibleHTMLProps<HTMLButtonElement>, 'type'>,
     ButtonIconProps,
     ButtonSizeProps,
@@ -52,12 +52,12 @@ export const buttonCSS = css`
   ${space}
 `
 
-const ButtonStyle = styled.button<ButtonProps>`
+const ButtonStyle = styled.button<ButtonBaseProps>`
   ${buttonCSS}
 `
 
 export const ButtonBase = forwardRef(
-  (props: ButtonProps, ref: Ref<HTMLButtonElement>) => {
+  (props: ButtonBaseProps, ref: Ref<HTMLButtonElement>) => {
     const { children, iconBefore, iconAfter, ...restProps } = props
 
     return (

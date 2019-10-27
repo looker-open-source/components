@@ -1,7 +1,7 @@
 import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
 import { rgba } from 'polished'
-import { ButtonBase, ButtonProps } from './ButtonBase'
+import { ButtonBase, ButtonBaseProps } from './ButtonBase'
 import { ButtonTransparent } from './ButtonTransparent'
 import { ButtonOutline } from './ButtonOutline'
 
@@ -46,12 +46,12 @@ export const ButtonDefault = styled(ButtonBase)`
 `
 
 // proxy should be removed when variant is completely removed from code base.
-interface ButtonProxyProps extends ButtonProps {
+export interface ButtonProps extends ButtonBaseProps {
   variant?: 'default' | 'transparent' | 'outline'
 }
 
 export const Button = forwardRef(
-  (props: ButtonProxyProps, ref: Ref<HTMLButtonElement>) => {
+  (props: ButtonProps, ref: Ref<HTMLButtonElement>) => {
     const { variant, ...restProps } = props
     switch (variant || 'default') {
       case 'transparent':
