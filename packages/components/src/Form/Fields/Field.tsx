@@ -3,9 +3,10 @@ import React, { FunctionComponent } from 'react'
 import styled, { css } from 'styled-components'
 import { ResponsiveValue, TLengthStyledSystem } from 'styled-system'
 import {
+  CustomizableAttributes,
+  FontSizes,
   FontWeights,
   SpacingSizes,
-  CustomizableAttributes,
 } from 'looker-design-tokens'
 import omit from 'lodash/omit'
 import pick from 'lodash/pick'
@@ -17,7 +18,7 @@ import {
   ValidationMessageProps,
 } from '../ValidationMessage/ValidationMessage'
 
-type ResponsiveSpaceValue = ResponsiveValue<SpacingSizes>
+type ResponsiveSpaceValue = ResponsiveValue<TLengthStyledSystem>
 
 export interface CustomizableFieldAttributesInterface
   extends CustomizableAttributes {
@@ -53,6 +54,11 @@ export interface FieldProps {
   labelWidth?: ResponsiveSpaceValue
   /**
    * Specifies the fontWeight of the internal Label.
+   * TODO - Deprecate usage in HT, then here.
+   */
+  labelFontSize?: FontSizes
+  /**
+   * Specifies the fontWeight of the internal Label.
    */
   labelFontWeight?: FontWeights
   /**
@@ -71,8 +77,9 @@ export const fieldPropKeys = [
   'alignValidationMessage',
   'id',
   'label',
-  'labelWidth',
+  'labelFontSize',
   'labelFontWeight',
+  'labelWidth',
   'validationMessage',
 ]
 
@@ -139,6 +146,7 @@ const FieldComponent: FunctionComponent<FieldProps> = ({
   children,
   id,
   label,
+  labelFontSize,
   labelFontWeight,
   required,
   validationMessage,
@@ -146,7 +154,7 @@ const FieldComponent: FunctionComponent<FieldProps> = ({
 }) => {
   return (
     <FormControl mb="xsmall" {...props}>
-      <Label htmlFor={id} fontWeight={labelFontWeight}>
+      <Label htmlFor={id} fontWeight={labelFontWeight} fontSize={labelFontSize}>
         {label}
         {required && <RequiredStar />}
       </Label>
