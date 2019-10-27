@@ -1,5 +1,6 @@
 import {
   CompatibleHTMLProps,
+  ColorProps,
   FontSizes,
   SpaceProps,
   TypographyProps,
@@ -79,6 +80,7 @@ const assignCustomizations = (
 
 export interface MenuItemProps
   extends CompatibleHTMLProps<HTMLElement>,
+    ColorProps,
     SpaceProps,
     TypographyProps,
     MenuSharedProps {

@@ -118,11 +118,7 @@ exports[`MenuItem - current + marker 1`] = `
 }
 
 <li
-  aria-current="page"
   className="c0"
-  color="#262D33"
-  fontSize="small"
-  fontWeight="bold"
 >
   <button
     className="c1"
@@ -254,11 +250,7 @@ exports[`MenuItem - current 1`] = `
 }
 
 <li
-  aria-current="page"
   className="c0"
-  color="#262D33"
-  fontSize="small"
-  fontWeight="bold"
 >
   <button
     className="c1"
@@ -385,9 +377,6 @@ exports[`MenuItem - detail 1`] = `
 
 <li
   className="c0"
-  color="#4C535B"
-  fontSize="small"
-  fontWeight="normal"
 >
   <button
     className="c1"
@@ -508,9 +497,6 @@ exports[`MenuItem - icon 1`] = `
 
 <li
   className="c0"
-  color="#4C535B"
-  fontSize="small"
-  fontWeight="normal"
 >
   <button
     className="c1"
@@ -635,11 +621,7 @@ exports[`MenuItem - with customizations 1`] = `
 }
 
 <li
-  aria-current="page"
   className="c0"
-  color="#1E1047"
-  fontSize="small"
-  fontWeight="bold"
 >
   <button
     className="c1"
@@ -730,11 +712,7 @@ exports[`MenuItem - with single customization 1`] = `
 }
 
 <li
-  aria-current="page"
   className="c0"
-  color="#262D33"
-  fontSize="small"
-  fontWeight="bold"
 >
   <button
     className="c1"
@@ -826,9 +804,6 @@ exports[`MenuItem 1`] = `
 
 <li
   className="c0"
-  color="#4C535B"
-  fontSize="small"
-  fontWeight="normal"
 >
   <button
     className="c1"

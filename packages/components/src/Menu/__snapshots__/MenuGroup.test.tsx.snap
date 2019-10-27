@@ -175,9 +175,6 @@ exports[`MenuGroup - JSX label 1`] = `
   >
     <li
       className="c5"
-      color="#4C535B"
-      fontSize="small"
-      fontWeight="normal"
     >
       <button
         className="c6"
@@ -188,9 +185,6 @@ exports[`MenuGroup - JSX label 1`] = `
     </li>
     <li
       className="c5"
-      color="#4C535B"
-      fontSize="small"
-      fontWeight="normal"
     >
       <button
         className="c6"
@@ -201,9 +195,6 @@ exports[`MenuGroup - JSX label 1`] = `
     </li>
     <li
       className="c5"
-      color="#4C535B"
-      fontSize="small"
-      fontWeight="normal"
     >
       <button
         className="c6"
@@ -377,9 +368,6 @@ exports[`MenuGroup - label 1`] = `
   >
     <li
       className="c4"
-      color="#4C535B"
-      fontSize="small"
-      fontWeight="normal"
     >
       <button
         className="c5"
@@ -390,9 +378,6 @@ exports[`MenuGroup - label 1`] = `
     </li>
     <li
       className="c4"
-      color="#4C535B"
-      fontSize="small"
-      fontWeight="normal"
     >
       <button
         className="c5"
@@ -403,9 +388,6 @@ exports[`MenuGroup - label 1`] = `
     </li>
     <li
       className="c4"
-      color="#4C535B"
-      fontSize="small"
-      fontWeight="normal"
     >
       <button
         className="c5"
@@ -580,9 +562,6 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
   >
     <li
       className="c4"
-      color="#4C535B"
-      fontSize="small"
-      fontWeight="normal"
     >
       <button
         className="c5"
@@ -593,9 +572,6 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
     </li>
     <li
       className="c4"
-      color="#4C535B"
-      fontSize="small"
-      fontWeight="normal"
     >
       <button
         className="c5"
@@ -606,9 +582,6 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
     </li>
     <li
       className="c4"
-      color="#4C535B"
-      fontSize="small"
-      fontWeight="normal"
     >
       <button
         className="c5"
@@ -765,9 +738,6 @@ exports[`MenuGroup - menu customization 1`] = `
   >
     <li
       className="c2"
-      color="#BFB2FF"
-      fontSize="small"
-      fontWeight="normal"
     >
       <button
         className="c3"
@@ -818,9 +788,6 @@ exports[`MenuGroup - menu customization 1`] = `
     </li>
     <li
       className="c2"
-      color="#BFB2FF"
-      fontSize="small"
-      fontWeight="normal"
     >
       <button
         className="c3"
@@ -851,9 +818,6 @@ exports[`MenuGroup - menu customization 1`] = `
     </li>
     <li
       className="c2"
-      color="#BFB2FF"
-      fontSize="small"
-      fontWeight="normal"
     >
       <button
         className="c3"
@@ -999,9 +963,6 @@ exports[`MenuGroup 1`] = `
   >
     <li
       className="c2"
-      color="#4C535B"
-      fontSize="small"
-      fontWeight="normal"
     >
       <button
         className="c3"
