@@ -28,12 +28,6 @@ const App: React.FC = () => {
         <br />
         <br />
         <Button disabled>I am disabled</Button>
-        <br />
-        <br />
-        <Button variant="outline">outline</Button>
-        <br />
-        <br />
-        <Button variant="transparent">transparent</Button>
       </>
     </ThemeProvider>
   )

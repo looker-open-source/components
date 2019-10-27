@@ -158,23 +158,21 @@ To create a group, assigned a reference to an containing element and then assign
         </Popover>
         <Popover content={content}>
           {(onClick, ref, className) => (
-            <Button
+            <ButtonOutline
               aria-haspopup="true"
-              variant="outline"
               onClick={onClick}
               ref={ref}
               className={className}
             >
               Defer Click
-            </Button>
+            </ButtonOutline>
           )}
         </Popover>
       </Box>
       <Popover content={content}>
         {(onClick, ref, className) => (
-          <Button
+          <ButtonTransparent
             aria-haspopup="true"
-            variant="transparent"
             mx="xlarge"
             my="large"
             onClick={onClick}
@@ -182,7 +180,7 @@ To create a group, assigned a reference to an containing element and then assign
             className={className}
           >
             Outside Group
-          </Button>
+          </ButtonTransparent>
         )}
       </Popover>
     </Box>

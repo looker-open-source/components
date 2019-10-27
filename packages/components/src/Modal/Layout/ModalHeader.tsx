@@ -9,7 +9,7 @@ import styled from 'styled-components'
 import React, { FC, useContext } from 'react'
 
 import { Box } from '../../Layout/Box'
-import { Button } from '../../Button'
+import { ButtonTransparent } from '../../Button'
 import { Heading } from '../../Text'
 import { Icon } from '../../Icon'
 import { ModalContext } from '../ModalContext'
@@ -33,16 +33,15 @@ export const ModalHeader: FC<ModalHeaderProps> = ({
   return (
     <Header {...props}>
       <Box mr="xlarge">{children}</Box>
-      <Button
+      <ButtonTransparent
         tabIndex={-1}
         ml="auto"
         p="none"
-        variant="transparent"
         color="neutral"
         onClick={closeModal}
       >
         <Icon name={closeIcon} size="1.25rem" />
-      </Button>
+      </ButtonTransparent>
     </Header>
   )
 }
