@@ -3,13 +3,22 @@ import { Placement } from 'popper.js'
 import React, {
   Children,
   cloneElement,
+  FC,
   ReactNode,
   RefObject,
   useRef,
 } from 'react'
 import { HotKeys } from 'react-hotkeys'
 import styled, { css } from 'styled-components'
-import { CompatibleHTMLProps } from 'looker-design-tokens'
+import {
+  width,
+  WidthProps,
+  MaxWidthProps,
+  MinWidthProps,
+  minWidth,
+  maxWidth,
+} from 'styled-system'
+import { CompatibleHTMLProps, reset } from 'looker-design-tokens'
 import { usePopover } from '../Popover'
 import { MenuCloneProps } from './Menu'
 import { MenuGroup } from './MenuGroup'
@@ -18,6 +27,9 @@ import { moveFocus } from './moveFocus'
 
 export interface MenuListProps
   extends CompatibleHTMLProps<HTMLUListElement>,
+    MaxWidthProps,
+    MinWidthProps,
+    WidthProps,
     MenuSharedProps,
     MenuCloneProps {
   children: ReactNode
@@ -51,8 +63,9 @@ export function cloneMenuListChildren(
   })
 }
 
-export function MenuList({
+export const MenuListInternal: FC<MenuListProps> = ({
   children,
+  className,
   compact,
   customizationProps,
   disabled,
@@ -62,7 +75,7 @@ export function MenuList({
   triggerRef,
   ref,
   ...styleProps
-}: MenuListProps) {
+}) => {
   const innerRef = useRef<null | HTMLElement>(null)
 
   const clonedChildren = cloneMenuListChildren(children as JSX.Element[], {
@@ -79,9 +92,15 @@ export function MenuList({
         MOVE_UP: () => moveFocus(-1, -1, innerRef),
       }}
     >
-      <Style ref={ref} tabIndex={-1} role="menu" {...styleProps}>
+      <ul
+        className={className}
+        ref={ref}
+        tabIndex={-1}
+        role="menu"
+        {...styleProps}
+      >
         {clonedChildren}
-      </Style>
+      </ul>
     </HotKeys>
   )
 
@@ -107,7 +126,14 @@ const dividersStyle = css`
   }
 `
 
-const Style = styled.ul<MenuListProps>`
+export const MenuList = styled(MenuListInternal).attrs(
+  (props: MenuListProps) => ({ minWidth: props.minWidth || '10rem ' })
+)`
+  ${reset}
+  ${minWidth}
+  ${maxWidth}
+  ${width}
+
   list-style: none;
   outline: none;
   user-select: none;
