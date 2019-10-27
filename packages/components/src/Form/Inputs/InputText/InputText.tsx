@@ -1,3 +1,5 @@
+import pick from 'lodash/pick'
+import omit from 'lodash/omit'
 import {
   border,
   BorderProps,
@@ -13,8 +15,9 @@ import {
   reset,
   color,
 } from 'looker-design-tokens'
+import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
-import { InputProps } from '../InputProps'
+import { InputProps, inputPropKeys } from '../InputProps'
 
 export const CustomizableInputTextAttributes: CustomizableAttributes = {
   borderRadius: 'medium',
@@ -29,6 +32,7 @@ export interface InputTextProps
     Omit<LayoutProps, 'size'>,
     PseudoProps,
     SpaceProps,
+    TypographyProps,
     Omit<InputProps, 'type'> {
   /**
    *
@@ -37,13 +41,26 @@ export interface InputTextProps
   type?: 'number' | 'password' | 'text' | 'search'
 }
 
-interface InternalInputTextProps extends InputTextProps, TypographyProps {}
+const InputComponent = forwardRef(
+  (props: InputTextProps, ref: Ref<HTMLInputElement>) => {
+    return (
+      <input
+        {...pick(omit(props, 'height', 'width'), inputPropKeys)}
+        className={props.className}
+        ref={ref}
+      />
+    )
+  }
+)
+InputComponent.displayName = 'InputComponent'
 
-export const InputText = styled.input.attrs((props: InputTextProps) => ({
-  background: props.validationType === 'error' && 'palette.red000',
-  px: props.px || props.p || CustomizableInputTextAttributes.px,
-  py: props.py || props.p || CustomizableInputTextAttributes.py,
-}))<InternalInputTextProps>`
+export const InputText = styled(InputComponent).attrs(
+  (props: InputTextProps) => ({
+    background: props.validationType === 'error' && 'palette.red000',
+    px: props.px || props.p || CustomizableInputTextAttributes.px,
+    py: props.py || props.p || CustomizableInputTextAttributes.py,
+  })
+)<InputTextProps>`
   ${reset}
   ${border}
   ${color}
