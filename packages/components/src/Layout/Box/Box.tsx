@@ -1,10 +1,12 @@
 import styled from 'styled-components'
 import {
   CompatibleHTMLProps,
-  pseudoClasses,
-  PseudoProps,
+  cursor,
+  CursorProps,
   flexbox,
   FlexboxProps,
+  pseudoClasses,
+  PseudoProps,
   userSelect,
   UserSelectProps,
 } from 'looker-design-tokens'
@@ -15,6 +17,7 @@ export interface BoxProps
     LayoutComponentProps,
     FlexboxProps,
     PseudoProps,
+    CursorProps,
     UserSelectProps {}
 
 export const Box = styled.div<BoxProps>`
@@ -22,4 +25,5 @@ export const Box = styled.div<BoxProps>`
   ${pseudoClasses}
   ${userSelect}
   ${flexbox}
+  ${cursor}
 `

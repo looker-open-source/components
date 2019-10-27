@@ -23,6 +23,7 @@ export type CompatibleHTMLProps<T> = Omit<
 
 export { userSelect, UserSelectProps } from './userSelect'
 
+export { cursor, CursorProps } from './cursor'
 export { Easings } from './easings'
 export { RadiusSizes, Radii } from './radii'
 export { Shadows } from './shadows'
