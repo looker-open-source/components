@@ -9,25 +9,6 @@ test('Button is rendered ', () => {
   assertSnapshotShallow(<Button>click here</Button>)
 })
 
-test('Button still works with variate outline', () => {
-  const { getByText } = render(
-    <ThemeProvider theme={theme}>
-      <Button variant="outline">outline</Button>
-    </ThemeProvider>
-  )
-  expect(getByText('outline')).toMatchSnapshot()
-})
-
-test('Button still works with variate transparent', () => {
-  const { getByText } = render(
-    <ThemeProvider theme={theme}>
-      <Button variant="transparent">transparent</Button>
-    </ThemeProvider>
-  )
-
-  expect(getByText('transparent')).toMatchSnapshot()
-})
-
 test('Button works with color danger', () => {
   const { getByText } = render(
     <ThemeProvider theme={theme}>

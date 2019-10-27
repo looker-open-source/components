@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { Box, Button, Popover, PopoverContent } from 'looker-lens'
+import { Box, ButtonOutline, Popover, PopoverContent } from 'looker-lens'
 
 interface Props {
   top?: number
@@ -24,16 +24,15 @@ export const EdgeOverflow: FC<Props> = ({
       }
     >
       {(onClick, ref, className) => (
-        <Button
+        <ButtonOutline
           iconAfter="ArrowDropDown"
           m="xxlarge"
-          variant="outline"
           className={className}
           onClick={onClick}
           ref={ref}
         >
           {children}
-        </Button>
+        </ButtonOutline>
       )}
     </Popover>
   </Box>

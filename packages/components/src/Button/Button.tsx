@@ -1,11 +1,8 @@
-import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
 import { rgba } from 'polished'
-import { ButtonBase, ButtonBaseProps } from './ButtonBase'
-import { ButtonTransparent } from './ButtonTransparent'
-import { ButtonOutline } from './ButtonOutline'
+import { ButtonBase } from './ButtonBase'
 
-export const ButtonDefault = styled(ButtonBase)`
+export const Button = styled(ButtonBase)`
   &:focus {
     box-shadow: 0 0 0 0.15rem
       ${({ theme, color = 'primary' }) =>
@@ -44,33 +41,3 @@ export const ButtonDefault = styled(ButtonBase)`
     }
   }
 `
-
-// proxy should be removed when variant is completely removed from code base.
-export interface ButtonProps extends ButtonBaseProps {
-  variant?: 'default' | 'transparent' | 'outline'
-}
-
-export const Button = forwardRef(
-  (props: ButtonProps, ref: Ref<HTMLButtonElement>) => {
-    const { variant, ...restProps } = props
-    switch (variant || 'default') {
-      case 'transparent':
-        // eslint-disable-next-line no-console
-        console.warn(
-          'WARNING: variant Transparent is deprecated. Use the component <ButtonTransparent> instead.'
-        )
-        return <ButtonTransparent ref={ref} {...restProps} />
-      case 'outline':
-        // eslint-disable-next-line no-console
-        console.warn(
-          'WARNING: variant Outline is deprecated. Use the component <ButtonOutline> instead.'
-        )
-        return <ButtonOutline ref={ref} {...restProps} />
-      case 'default':
-      default:
-        return <ButtonDefault ref={ref} {...restProps} />
-    }
-  }
-)
-
-Button.displayName = 'Button'

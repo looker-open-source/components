@@ -1,6 +1,6 @@
 import React, { FC, useCallback } from 'react'
 import { SemanticColors } from 'looker-design-tokens'
-import { Button } from '../../Button'
+import { Button, ButtonTransparent } from '../../Button'
 import { Heading } from '../../Text/Heading'
 import { Paragraph } from '../../Text'
 import { ModalContent, ModalFooter, ModalHeader } from '../Layout'
@@ -94,9 +94,7 @@ export const ConfirmationDialog: FC<ConfirmationDialogProps> = ({
         <Button onClick={confirm} color={buttonColor}>
           {confirmLabel}
         </Button>
-        <Button onClick={cancel} variant="transparent">
-          {cancelLabel}
-        </Button>
+        <ButtonTransparent onClick={cancel}>{cancelLabel}</ButtonTransparent>
       </ModalFooter>
     </Dialog>
   )

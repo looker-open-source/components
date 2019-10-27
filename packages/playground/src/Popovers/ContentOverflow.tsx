@@ -1,5 +1,11 @@
 import React, { FC } from 'react'
-import { Box, Button, Popover, PopoverContent, Paragraph } from 'looker-lens'
+import {
+  Box,
+  ButtonOutline,
+  Popover,
+  PopoverContent,
+  Paragraph,
+} from 'looker-lens'
 
 export const ContentOverflow: FC = ({ children }) => (
   <Box position="absolute" top="40%" left="40%">
@@ -17,16 +23,15 @@ export const ContentOverflow: FC = ({ children }) => (
       }
     >
       {(onClick, ref, className) => (
-        <Button
+        <ButtonOutline
           iconAfter="ArrowDropDown"
           m="xxlarge"
-          variant="outline"
           className={className}
           onClick={onClick}
           ref={ref}
         >
           {children}
-        </Button>
+        </ButtonOutline>
       )}
     </Popover>
   </Box>
