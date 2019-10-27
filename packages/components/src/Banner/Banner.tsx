@@ -1,4 +1,8 @@
-import { CompatibleHTMLProps, SpaceProps } from 'looker-design-tokens'
+import {
+  CompatibleHTMLProps,
+  SpaceProps,
+  TypographyProps,
+} from 'looker-design-tokens'
 import React, { forwardRef, Ref } from 'react'
 import { IconButton } from '../Button'
 import { Icon } from '../Icon'
@@ -9,7 +13,8 @@ export type BannerIntent = 'warning' | 'info' | 'error' | 'confirmation'
 
 export interface BannerProps
   extends CompatibleHTMLProps<HTMLElement>,
-    SpaceProps {
+    SpaceProps,
+    TypographyProps {
   /**
    * @default: 'info'
    */
@@ -64,7 +69,7 @@ export const Banner = forwardRef(
       dismissable,
       intent = 'info',
       onDismiss,
-      ...spaceProps
+      ...typeAndSpaceProps
     } = props
     const {
       icon,
@@ -83,7 +88,7 @@ export const Banner = forwardRef(
         alignItems="center"
         aria-live="polite"
         role="status"
-        {...spaceProps}
+        {...typeAndSpaceProps}
       >
         {icon}
         <VisuallyHidden>{accessibilityLabel}</VisuallyHidden>
