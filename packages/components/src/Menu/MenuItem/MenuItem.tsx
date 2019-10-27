@@ -1,4 +1,9 @@
-import { FontSizes, CompatibleHTMLProps } from 'looker-design-tokens'
+import {
+  CompatibleHTMLProps,
+  FontSizes,
+  SpaceProps,
+  TypographyProps,
+} from 'looker-design-tokens'
 import { IconNames } from 'looker-icons'
 import React, { FC, ReactNode } from 'react'
 import { Icon } from '../../Icon'
@@ -74,6 +79,8 @@ const assignCustomizations = (
 
 export interface MenuItemProps
   extends CompatibleHTMLProps<HTMLElement>,
+    SpaceProps,
+    TypographyProps,
     MenuSharedProps {
   detail?: ReactNode
   icon?: IconNames
@@ -108,7 +115,7 @@ export const MenuItem: FC<MenuItemProps> = props => {
     href,
     target,
     compact,
-    ...boxProps
+    ...remainingProps
   } = props
 
   const compactIconModifier = compact ? 1.25 : 1
@@ -116,6 +123,16 @@ export const MenuItem: FC<MenuItemProps> = props => {
   const style = assignCustomizations(defaultMenuItemStyle, customizationProps)
   const styleState = current ? style.current : style.initial
   const { iconSize, iconColor, ...listItemProps } = styleState
+
+  const { p, py, px, pr, pl, pt, pb, ...outerProps } = remainingProps
+
+  const clickTargetProps = {
+    p,
+    pb: pb || py || p || compact ? 'xxsmall' : 'small',
+    pl: pl || px || p || 'medium',
+    pr: pr || px || p || 'medium',
+    pt: pt || py || p || compact ? 'xxsmall' : 'small',
+  }
 
   return (
     <MenuItemListItem
@@ -125,15 +142,14 @@ export const MenuItem: FC<MenuItemProps> = props => {
       aria-current={current && 'page'}
       onClick={onClick}
       {...listItemProps}
-      {...boxProps}
+      {...outerProps}
     >
       <MenuItemButton
         as={itemRole === 'link' ? 'a' : 'button'}
         role="menuitem"
         href={href}
         target={target}
-        px="medium"
-        py={compact ? 'xxsmall' : 'small'}
+        {...clickTargetProps}
       >
         {icon && (
           <Icon

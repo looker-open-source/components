@@ -1,4 +1,9 @@
-import { CompatibleHTMLProps, color, typography } from 'looker-design-tokens'
+import {
+  CompatibleHTMLProps,
+  color,
+  space,
+  typography,
+} from 'looker-design-tokens'
 import styled, { css } from 'styled-components'
 import { Icon } from '../../Icon'
 import { MenuItemStyle } from './menuItemStyle'
@@ -50,6 +55,7 @@ const iconColor = (props: MenuListItemProps) =>
 
 export const MenuItemListItem = styled.li<MenuListItemProps>`
   ${color}
+  ${space}
   ${typography}
 
   align-items: center;
