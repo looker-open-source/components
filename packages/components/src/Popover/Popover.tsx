@@ -3,6 +3,7 @@ import React, {
   useEffect,
   useRef,
   useState,
+  ReactNode,
   RefObject,
   SyntheticEvent,
 } from 'react'
@@ -42,7 +43,7 @@ export interface UsePopoverProps {
    * Content to rendered within the Popover surface.
    * @required
    */
-  content: JSX.Element
+  content: ReactNode
 
   /**
    * Specify a callback to be called before trying to close the Modal. This allows for
