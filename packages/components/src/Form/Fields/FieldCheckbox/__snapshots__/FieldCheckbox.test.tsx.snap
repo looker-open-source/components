@@ -13,6 +13,7 @@ exports[`A FieldCheckbox 1`] = `
   margin-right: 0.5rem;
   font-weight: 600;
   font-size: 0.875rem;
+  display: inline-block;
 }
 
 .c8 {
@@ -197,6 +198,7 @@ exports[`A FieldCheckbox with checked value 1`] = `
   margin-right: 0.5rem;
   font-weight: 600;
   font-size: 0.875rem;
+  display: inline-block;
 }
 
 .c8 {
@@ -382,6 +384,7 @@ exports[`A required FieldCheckbox 1`] = `
   margin-right: 0.5rem;
   font-weight: 600;
   font-size: 0.875rem;
+  display: inline-block;
 }
 
 .c9 {

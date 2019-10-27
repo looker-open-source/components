@@ -135,6 +135,7 @@ exports[`A FieldToggleSwitch 1`] = `
   margin-right: 0.5rem;
   font-weight: 600;
   font-size: 0.875rem;
+  display: inline-block;
 }
 
 .c1 .c2 {
@@ -325,6 +326,7 @@ exports[`A FieldToggleSwitch turned on 1`] = `
   margin-right: 0.5rem;
   font-weight: 600;
   font-size: 0.875rem;
+  display: inline-block;
 }
 
 .c1 .c2 {
@@ -515,6 +517,7 @@ exports[`A FieldToggleSwitch with label aligned left 1`] = `
   margin-right: 0.5rem;
   font-weight: 600;
   font-size: 0.875rem;
+  display: inline-block;
 }
 
 .c10 .c2 {
