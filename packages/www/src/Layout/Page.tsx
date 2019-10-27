@@ -11,10 +11,10 @@ const all = { ...MDXComponents, Props }
 const Page: FC = ({ children }) => {
   return (
     <ThemeProvider theme={theme}>
-      <>
+      <MDXProvider components={all}>
         <GlobalStyle />
-        <MDXProvider components={all}>{children}</MDXProvider>
-      </>
+        {children}
+      </MDXProvider>
     </ThemeProvider>
   )
 }
