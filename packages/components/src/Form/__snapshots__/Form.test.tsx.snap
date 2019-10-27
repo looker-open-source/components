@@ -96,11 +96,8 @@ exports[`Form with one child 1`] = `
       >
         <input
           className="c4 "
-          fontSize="small"
-          height="28px"
           id="text-field"
           name="name"
-          type="text"
         />
       </div>
     </div>

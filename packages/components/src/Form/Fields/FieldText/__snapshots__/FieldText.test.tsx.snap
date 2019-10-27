@@ -83,11 +83,8 @@ exports[`A FieldText 1`] = `
     >
       <input
         className="c3 "
-        fontSize="small"
-        height="28px"
         id="thumbs-up"
         name="thumbsUp"
-        type="text"
       />
     </div>
   </div>
@@ -217,11 +214,8 @@ exports[`A FieldText with an error validation aligned to the left 1`] = `
     >
       <input
         className="c4 "
-        fontSize="small"
-        height="28px"
         id="thumbs-up"
         name="thumbsUp"
-        type="text"
       />
     </div>
     <div
@@ -355,11 +349,8 @@ exports[`A FieldText with an error validation aligned to the right 1`] = `
     >
       <input
         className="c4 "
-        fontSize="small"
-        height="28px"
         id="thumbs-up"
         name="thumbsUp"
-        type="text"
       />
     </div>
     <div
@@ -467,12 +458,9 @@ exports[`A required FieldText 1`] = `
     >
       <input
         className="c4 "
-        fontSize="small"
-        height="28px"
         id="thumbs-up"
         name="thumbsUp"
         required={true}
-        type="text"
       />
     </div>
   </div>
@@ -562,11 +550,8 @@ exports[`FieldText supports labelWeight 1`] = `
     >
       <input
         className="c3 "
-        fontSize="small"
-        height="28px"
         id="thumbs-up"
         name="thumbsUp"
-        type="text"
       />
     </div>
   </div>
