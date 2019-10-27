@@ -1,6 +1,7 @@
 import {
   CompatibleHTMLProps,
   color,
+  ColorProps,
   space,
   typography,
 } from 'looker-design-tokens'
@@ -8,7 +9,9 @@ import styled, { css } from 'styled-components'
 import { Icon } from '../../Icon'
 import { MenuItemStyle } from './menuItemStyle'
 
-export interface MenuListItemProps extends CompatibleHTMLProps<HTMLLIElement> {
+export interface MenuListItemProps
+  extends ColorProps,
+    CompatibleHTMLProps<HTMLLIElement> {
   current?: boolean
   currentMarker?: boolean
   itemStyle: MenuItemStyle
