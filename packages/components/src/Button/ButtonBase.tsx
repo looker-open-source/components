@@ -1,21 +1,42 @@
 import {
   CompatibleHTMLProps,
-  space,
-  SpaceProps,
+  radii,
+  RadiusSizes,
   reset,
   SemanticColors,
+  space,
+  SpaceProps,
 } from 'looker-design-tokens'
-import styled, { css } from 'styled-components'
 import React, { forwardRef, Ref } from 'react'
+import styled, { css } from 'styled-components'
+import {
+  minWidth,
+  MinWidthProps,
+  maxWidth,
+  MaxWidthProps,
+  WidthProps,
+  width,
+} from 'styled-system'
 import { buttonSize, ButtonSizeProps } from './size'
 import { ButtonIcon, buttonIcon, ButtonIconProps } from './icon'
 
+export interface CustomizableButtonAttributes {
+  borderRadius: RadiusSizes
+}
+
+export const CustomizableButtonAttributes: CustomizableButtonAttributes = {
+  borderRadius: 'medium',
+}
+
 type ButtonColors = keyof SemanticColors
 
-export interface ButtonBaseProps
+export interface ButtonProps
   extends Omit<CompatibleHTMLProps<HTMLButtonElement>, 'type'>,
     ButtonIconProps,
     ButtonSizeProps,
+    MaxWidthProps,
+    MinWidthProps,
+    WidthProps,
     SpaceProps {
   type?: 'button' | 'submit' | 'reset'
   forwardedAs?: 'a'
@@ -25,13 +46,34 @@ export interface ButtonBaseProps
    * @default "primary"
    */
   color?: ButtonColors
+
+  className?: string
 }
+
+const ButtonJSX = forwardRef(
+  (props: ButtonProps, ref: Ref<HTMLButtonElement>) => {
+    const { children, className, iconBefore, iconAfter, ...restProps } = props
+
+    return (
+      <button className={className} ref={ref} {...restProps}>
+        {iconBefore && <ButtonIcon name={iconBefore} />}
+        {children}
+        {iconAfter && <ButtonIcon name={iconAfter} />}
+      </button>
+    )
+  }
+)
+
+ButtonJSX.displayName = 'ButtonJSX'
 
 export const buttonCSS = css`
   ${reset}
+  ${maxWidth}
+  ${minWidth}
+  ${width}
 
   align-items: center;
-  border-radius: 0.25rem;
+  border-radius: ${radii[CustomizableButtonAttributes.borderRadius]};
   cursor: pointer;
   display: inline-flex;
   font-weight: 600;
@@ -52,22 +94,8 @@ export const buttonCSS = css`
   ${space}
 `
 
-const ButtonStyle = styled.button<ButtonBaseProps>`
+export const ButtonBase = styled(ButtonJSX)<ButtonProps>`
   ${buttonCSS}
 `
 
-export const ButtonBase = forwardRef(
-  (props: ButtonBaseProps, ref: Ref<HTMLButtonElement>) => {
-    const { children, iconBefore, iconAfter, ...restProps } = props
-
-    return (
-      <ButtonStyle ref={ref} size="medium" {...restProps}>
-        {iconBefore && <ButtonIcon name={iconBefore} />}
-        {children}
-        {iconAfter && <ButtonIcon name={iconAfter} />}
-      </ButtonStyle>
-    )
-  }
-)
-
-ButtonBase.displayName = 'ButtonBase'
+ButtonBase.defaultProps = { size: 'medium' }
