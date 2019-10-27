@@ -31,7 +31,7 @@ export interface UseTooltipProps {
   isOpen?: boolean
   placement?: Placement
 
-  content?: string
+  content?: ReactNode
 
   /**
    * Specify the maximum width before wrapping text.
@@ -63,7 +63,7 @@ export interface UseTooltipProps {
 export const CustomizableTooltipAttributes: CustomizableAttributes = {}
 
 export interface TooltipProps extends UseTooltipProps {
-  content: string
+  content: ReactNode
   /**
    * Component to wrap. The HOC will listen for mouse events on this component, maintain the
    * state of isOpen accordingly, and pass that state into the children or "trigger" element
