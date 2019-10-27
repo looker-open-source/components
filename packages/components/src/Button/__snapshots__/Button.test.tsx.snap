@@ -29,6 +29,9 @@ exports[`Button disable 1`] = `
   height: 34px;
   padding-left: 1rem;
   padding-right: 1rem;
+  background: #64518A;
+  border: 1px solid #64518A;
+  color: #FFFFFF;
 }
 
 .c0[disabled] {
@@ -38,38 +41,32 @@ exports[`Button disable 1`] = `
   opacity: 0.25;
 }
 
-.c1 {
-  background: #64518A;
-  border: 1px solid #64518A;
-  color: #FFFFFF;
-}
-
-.c1:focus {
+.c0:focus {
   box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
 }
 
-.c1:active,
-.c1.active {
+.c0:active,
+.c0.active {
   background: #2A1B60;
   border-color: #2A1B60;
 }
 
-.c1:hover,
-.c1:focus,
-.c1.hover {
+.c0:hover,
+.c0:focus,
+.c0.hover {
   background: #473764;
   border-color: #473764;
 }
 
-.c1[disabled]:hover,
-.c1[disabled]:active,
-.c1[disabled]:focus {
+.c0[disabled]:hover,
+.c0[disabled]:active,
+.c0[disabled]:focus {
   background-color: #64518A;
   border-color: #C1C6CC;
 }
 
 <button
-  class="c0 c1"
+  class="c0"
   disabled=""
 >
   disabled
@@ -77,148 +74,6 @@ exports[`Button disable 1`] = `
 `;
 
 exports[`Button is rendered  1`] = `ShallowWrapper {}`;
-
-exports[`Button still works with variate outline 1`] = `
-.c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  border-radius: 0.25rem;
-  cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  font-weight: 600;
-  outline: none;
-  -webkit-transition: border 80ms;
-  transition: border 80ms;
-  vertical-align: middle;
-  white-space: nowrap;
-  font-size: 1rem;
-  height: 34px;
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-.c0[disabled] {
-  cursor: default;
-  -webkit-filter: grayscale(0.3);
-  filter: grayscale(0.3);
-  opacity: 0.25;
-}
-
-.c1 {
-  border: 1px solid #C1C6CC;
-  color: #64518A;
-}
-
-.c1:active,
-.c1.active {
-  background: #64518A;
-  border-color: #64518A;
-  color: #FFFFFF;
-}
-
-.c1:hover,
-.c1:focus,
-.c1.hover {
-  border-color: #64518A;
-  color: #2A1B60;
-}
-
-.c1[disabled]:hover,
-.c1[disabled]:active,
-.c1[disabled]:focus {
-  border-color: #C1C6CC;
-  color: #64518A;
-}
-
-<button
-  class="c0 c1"
->
-  outline
-</button>
-`;
-
-exports[`Button still works with variate transparent 1`] = `
-.c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  border-radius: 0.25rem;
-  cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  font-weight: 600;
-  outline: none;
-  -webkit-transition: border 80ms;
-  transition: border 80ms;
-  vertical-align: middle;
-  white-space: nowrap;
-  font-size: 1rem;
-  height: 34px;
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-.c0[disabled] {
-  cursor: default;
-  -webkit-filter: grayscale(0.3);
-  filter: grayscale(0.3);
-  opacity: 0.25;
-}
-
-.c1 {
-  border: 1px solid;
-  color: #64518A;
-}
-
-.c1:active,
-.c1.active {
-  background: #E8E5FF;
-  border-color: #E8E5FF;
-  color: #6C43E0;
-}
-
-.c1:hover,
-.c1:focus,
-.c1.hover {
-  background: #F3F2FF;
-  border-color: #F3F2FF;
-  color: #6C43E0;
-}
-
-.c1[disabled]:hover,
-.c1[disabled]:active,
-.c1[disabled]:focus {
-  color: #64518A;
-}
-
-<button
-  class="c0 c1"
->
-  transparent
-</button>
-`;
 
 exports[`Button validates all sizes 1`] = `
 .c0 {
@@ -249,6 +104,9 @@ exports[`Button validates all sizes 1`] = `
   height: 22px;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+  background: #64518A;
+  border: 1px solid #64518A;
+  color: #FFFFFF;
 }
 
 .c0[disabled] {
@@ -258,38 +116,32 @@ exports[`Button validates all sizes 1`] = `
   opacity: 0.25;
 }
 
-.c1 {
-  background: #64518A;
-  border: 1px solid #64518A;
-  color: #FFFFFF;
-}
-
-.c1:focus {
+.c0:focus {
   box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
 }
 
-.c1:active,
-.c1.active {
+.c0:active,
+.c0.active {
   background: #2A1B60;
   border-color: #2A1B60;
 }
 
-.c1:hover,
-.c1:focus,
-.c1.hover {
+.c0:hover,
+.c0:focus,
+.c0.hover {
   background: #473764;
   border-color: #473764;
 }
 
-.c1[disabled]:hover,
-.c1[disabled]:active,
-.c1[disabled]:focus {
+.c0[disabled]:hover,
+.c0[disabled]:active,
+.c0[disabled]:focus {
   background-color: #64518A;
   border-color: #C1C6CC;
 }
 
 <button
-  class="c0 c1"
+  class="c0"
 >
   xsmall button
 </button>
@@ -324,6 +176,9 @@ exports[`Button validates all sizes 2`] = `
   height: 26px;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
+  background: #64518A;
+  border: 1px solid #64518A;
+  color: #FFFFFF;
 }
 
 .c0[disabled] {
@@ -333,38 +188,32 @@ exports[`Button validates all sizes 2`] = `
   opacity: 0.25;
 }
 
-.c1 {
-  background: #64518A;
-  border: 1px solid #64518A;
-  color: #FFFFFF;
-}
-
-.c1:focus {
+.c0:focus {
   box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
 }
 
-.c1:active,
-.c1.active {
+.c0:active,
+.c0.active {
   background: #2A1B60;
   border-color: #2A1B60;
 }
 
-.c1:hover,
-.c1:focus,
-.c1.hover {
+.c0:hover,
+.c0:focus,
+.c0.hover {
   background: #473764;
   border-color: #473764;
 }
 
-.c1[disabled]:hover,
-.c1[disabled]:active,
-.c1[disabled]:focus {
+.c0[disabled]:hover,
+.c0[disabled]:active,
+.c0[disabled]:focus {
   background-color: #64518A;
   border-color: #C1C6CC;
 }
 
 <button
-  class="c0 c1"
+  class="c0"
 >
   small button
 </button>
@@ -399,6 +248,9 @@ exports[`Button validates all sizes 3`] = `
   height: 34px;
   padding-left: 1rem;
   padding-right: 1rem;
+  background: #64518A;
+  border: 1px solid #64518A;
+  color: #FFFFFF;
 }
 
 .c0[disabled] {
@@ -408,38 +260,32 @@ exports[`Button validates all sizes 3`] = `
   opacity: 0.25;
 }
 
-.c1 {
-  background: #64518A;
-  border: 1px solid #64518A;
-  color: #FFFFFF;
-}
-
-.c1:focus {
+.c0:focus {
   box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
 }
 
-.c1:active,
-.c1.active {
+.c0:active,
+.c0.active {
   background: #2A1B60;
   border-color: #2A1B60;
 }
 
-.c1:hover,
-.c1:focus,
-.c1.hover {
+.c0:hover,
+.c0:focus,
+.c0.hover {
   background: #473764;
   border-color: #473764;
 }
 
-.c1[disabled]:hover,
-.c1[disabled]:active,
-.c1[disabled]:focus {
+.c0[disabled]:hover,
+.c0[disabled]:active,
+.c0[disabled]:focus {
   background-color: #64518A;
   border-color: #C1C6CC;
 }
 
 <button
-  class="c0 c1"
+  class="c0"
 >
   medium button
 </button>
@@ -474,6 +320,9 @@ exports[`Button validates all sizes 4`] = `
   height: 42px;
   padding-left: 1.25rem;
   padding-right: 1.25rem;
+  background: #64518A;
+  border: 1px solid #64518A;
+  color: #FFFFFF;
 }
 
 .c0[disabled] {
@@ -483,38 +332,32 @@ exports[`Button validates all sizes 4`] = `
   opacity: 0.25;
 }
 
-.c1 {
-  background: #64518A;
-  border: 1px solid #64518A;
-  color: #FFFFFF;
-}
-
-.c1:focus {
+.c0:focus {
   box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
 }
 
-.c1:active,
-.c1.active {
+.c0:active,
+.c0.active {
   background: #2A1B60;
   border-color: #2A1B60;
 }
 
-.c1:hover,
-.c1:focus,
-.c1.hover {
+.c0:hover,
+.c0:focus,
+.c0.hover {
   background: #473764;
   border-color: #473764;
 }
 
-.c1[disabled]:hover,
-.c1[disabled]:active,
-.c1[disabled]:focus {
+.c0[disabled]:hover,
+.c0[disabled]:active,
+.c0[disabled]:focus {
   background-color: #64518A;
   border-color: #C1C6CC;
 }
 
 <button
-  class="c0 c1"
+  class="c0"
 >
   large button
 </button>
@@ -549,6 +392,9 @@ exports[`Button works with color danger 1`] = `
   height: 34px;
   padding-left: 1rem;
   padding-right: 1rem;
+  background: #CC1F36;
+  border: 1px solid #CC1F36;
+  color: #FFFFFF;
 }
 
 .c0[disabled] {
@@ -558,38 +404,32 @@ exports[`Button works with color danger 1`] = `
   opacity: 0.25;
 }
 
-.c1 {
-  background: #CC1F36;
-  border: 1px solid #CC1F36;
-  color: #FFFFFF;
-}
-
-.c1:focus {
+.c0:focus {
   box-shadow: 0 0 0 0.15rem rgba(204,31,54,0.25);
 }
 
-.c1:active,
-.c1.active {
+.c0:active,
+.c0.active {
   background: #990F14;
   border-color: #990F14;
 }
 
-.c1:hover,
-.c1:focus,
-.c1.hover {
+.c0:hover,
+.c0:focus,
+.c0.hover {
   background: #B2121F;
   border-color: #B2121F;
 }
 
-.c1[disabled]:hover,
-.c1[disabled]:active,
-.c1[disabled]:focus {
+.c0[disabled]:hover,
+.c0[disabled]:active,
+.c0[disabled]:focus {
   background-color: #CC1F36;
   border-color: #C1C6CC;
 }
 
 <button
-  class="c0 c1"
+  class="c0"
   color="danger"
 >
   danger

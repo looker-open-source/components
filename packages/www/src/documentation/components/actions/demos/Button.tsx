@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, { ThemeProvider } from 'styled-components'
-import { Box, Button } from 'looker-lens'
+import { Box, Button, ButtonOutline } from 'looker-lens'
 
 const RoundBtnStyled = styled(Button)`
   border-radius: 2rem;
@@ -37,9 +37,7 @@ export const ThemingButton = () => (
     <Box>
       <Button>Mild Button</Button>
       <Box ml="small" display="inline-block">
-        <Button color="danger" variant="outline">
-          Mild Danger Outline Button
-        </Button>
+        <ButtonOutline color="danger">Mild Danger Outline Button</ButtonOutline>
       </Box>
     </Box>
   </ThemeProvider>

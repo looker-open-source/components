@@ -29,6 +29,8 @@ exports[`ButtonTransparent has the correct style 1`] = `
   height: 34px;
   padding-left: 1rem;
   padding-right: 1rem;
+  border: 1px solid;
+  color: #64518A;
 }
 
 .c0[disabled] {
@@ -38,34 +40,29 @@ exports[`ButtonTransparent has the correct style 1`] = `
   opacity: 0.25;
 }
 
-.c1 {
-  border: 1px solid;
-  color: #64518A;
-}
-
-.c1:active,
-.c1.active {
+.c0:active,
+.c0.active {
   background: #E8E5FF;
   border-color: #E8E5FF;
   color: #6C43E0;
 }
 
-.c1:hover,
-.c1:focus,
-.c1.hover {
+.c0:hover,
+.c0:focus,
+.c0.hover {
   background: #F3F2FF;
   border-color: #F3F2FF;
   color: #6C43E0;
 }
 
-.c1[disabled]:hover,
-.c1[disabled]:active,
-.c1[disabled]:focus {
+.c0[disabled]:hover,
+.c0[disabled]:active,
+.c0[disabled]:focus {
   color: #64518A;
 }
 
 <button
-  class="c0 c1"
+  class="c0"
 >
   transparent
 </button>

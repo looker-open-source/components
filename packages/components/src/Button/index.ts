@@ -1,4 +1,5 @@
 export * from './Button'
+export * from './ButtonBase'
 export * from './ButtonGroup'
 export * from './ButtonItem'
 export * from './ButtonOutline'
