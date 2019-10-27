@@ -31,7 +31,7 @@ export interface UseTooltipProps {
   isOpen?: boolean
   placement?: Placement
 
-  content?: string
+  content?: ReactNode
 
   /**
    * Specify the maximum width before wrapping text.
