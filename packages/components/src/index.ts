@@ -31,6 +31,7 @@ export {
   semanticColors,
   SemanticColor,
   SemanticColors,
+  SpacingSizes,
   theme,
   Theme,
 } from 'looker-design-tokens'
