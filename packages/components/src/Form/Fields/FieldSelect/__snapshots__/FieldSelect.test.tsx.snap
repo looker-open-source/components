@@ -13,6 +13,7 @@ exports[`A FieldSelect 1`] = `
   margin-right: 0.5rem;
   font-weight: 600;
   font-size: 0.875rem;
+  display: inline-block;
 }
 
 .c3 {
@@ -122,6 +123,7 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   margin-right: 0.5rem;
   font-weight: 600;
   font-size: 0.875rem;
+  display: inline-block;
 }
 
 .c4 {
@@ -278,6 +280,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   margin-right: 0.5rem;
   font-weight: 600;
   font-size: 0.875rem;
+  display: inline-block;
 }
 
 .c4 {
@@ -431,6 +434,7 @@ exports[`A required FieldSelect 1`] = `
   margin-right: 0.5rem;
   font-weight: 600;
   font-size: 0.875rem;
+  display: inline-block;
 }
 
 .c4 {
@@ -552,6 +556,7 @@ exports[`FieldSelect supports labelWeight 1`] = `
   margin-right: 0.5rem;
   font-weight: 400;
   font-size: 0.875rem;
+  display: inline-block;
 }
 
 .c3 {

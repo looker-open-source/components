@@ -82,6 +82,7 @@ exports[`Fieldset with left aligned legend 1`] = `
   margin-right: 0.5rem;
   font-weight: 600;
   font-size: 0.875rem;
+  display: inline-block;
 }
 
 .c3 {
