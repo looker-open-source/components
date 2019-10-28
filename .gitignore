@@ -8,9 +8,6 @@ node_modules
 /coverage
 .cache
 
-# production
-/dist
-
 # code-gen
 /packages/icons/src/generated
 public/
