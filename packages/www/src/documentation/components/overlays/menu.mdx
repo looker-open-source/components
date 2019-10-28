@@ -252,53 +252,51 @@ It supports an optional `label` prop to place a heading above the `MenuItem`s. W
 ```
 
 ```jsx
-{
-  ;() => {
-    const menuRef = React.useRef(null)
-    const items = ['a', 'b', 'c', 'd', 'e']
-    const [keywords, setKeywords] = React.useState('')
-    const onChange = e => setKeywords(e.currentTarget.value)
-    const menu = (
-      <React.Fragment>
-        <MenuSearch
-          placeholder="Filter menu items"
-          summary="33 matches"
-          value={keywords}
-          onChange={onChange}
-          menuRef={menuRef}
-        />
-        <ModalContent innerProps={{ p: 'none' }}>
-          <MenuList>
-            <MenuGroup label="Spacing">
-              {items.map(item => (
-                <MenuItem itemRole="link" href={`#${item}`} key={item}>
-                  Example Link {item.toUpperCase()}
-                </MenuItem>
-              ))}
-            </MenuGroup>
-            <MenuGroup label="Spacing">
-              {items.map(item => (
-                <MenuItem detail={`Detail ${item}`} key={item}>
-                  Example Item {item.toUpperCase()}
-                </MenuItem>
-              ))}
-            </MenuGroup>
-            <MenuGroup>
-              <MenuItem icon="Beaker">Scary Stuff</MenuItem>
-            </MenuGroup>
-          </MenuList>
-        </ModalContent>
-      </React.Fragment>
-    )
-    return (
-      <DrawerManager content={menu}>
-        {onClick => (
-          <Button variant="outline" onClick={onClick} iconAfter="ArrowDropDown">
-            Drawer w/ Searchable Menu
-          </Button>
-        )}
-      </DrawerManager>
-    )
-  }
+;() => {
+  const menuRef = React.useRef(null)
+  const items = ['a', 'b', 'c', 'd', 'e']
+  const [keywords, setKeywords] = React.useState('')
+  const onChange = e => setKeywords(e.currentTarget.value)
+  const menu = (
+    <React.Fragment>
+      <MenuSearch
+        placeholder="Filter menu items"
+        summary="33 matches"
+        value={keywords}
+        onChange={onChange}
+        menuRef={menuRef}
+      />
+      <ModalContent innerProps={{ p: 'none' }}>
+        <MenuList>
+          <MenuGroup label="Spacing">
+            {items.map(item => (
+              <MenuItem itemRole="link" href={`#${item}`} key={item}>
+                Example Link {item.toUpperCase()}
+              </MenuItem>
+            ))}
+          </MenuGroup>
+          <MenuGroup label="Spacing">
+            {items.map(item => (
+              <MenuItem detail={`Detail ${item}`} key={item}>
+                Example Item {item.toUpperCase()}
+              </MenuItem>
+            ))}
+          </MenuGroup>
+          <MenuGroup>
+            <MenuItem icon="Beaker">Scary Stuff</MenuItem>
+          </MenuGroup>
+        </MenuList>
+      </ModalContent>
+    </React.Fragment>
+  )
+  return (
+    <DrawerManager content={menu}>
+      {onClick => (
+        <Button variant="outline" onClick={onClick} iconAfter="ArrowDropDown">
+          Drawer w/ Searchable Menu
+        </Button>
+      )}
+    </DrawerManager>
+  )
 }
 ```

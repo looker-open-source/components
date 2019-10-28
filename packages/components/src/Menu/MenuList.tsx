@@ -40,12 +40,18 @@ export interface MenuListProps
 
   /**
    * Can be one of: top, bottom, left, right, auto, with the modifiers: start,
-   * end. This value comes directly from popperjs. See
+   * end. This value comes directly from popper.js. See
    * https://popper.js.org/popper-documentation.html#Popper.placements for more
    * info.
    * @default bottom
    */
   placement?: Placement
+
+  /**
+   * By default MenuList will reposition itself if they overflow the widow.
+   * You can use the pin property to override this behavior.
+   */
+  pin?: boolean
 }
 
 export function cloneMenuListChildren(
@@ -70,6 +76,7 @@ export const MenuListInternal: FC<MenuListProps> = ({
   customizationProps,
   disabled,
   isOpen,
+  pin,
   placement,
   setOpen,
   triggerRef,
@@ -101,6 +108,7 @@ export const MenuListInternal: FC<MenuListProps> = ({
   const { popover } = usePopover({
     content: menuList,
     isOpen,
+    pin,
     placement,
     setOpen,
     triggerRef,
