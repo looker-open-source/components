@@ -32,7 +32,7 @@ export interface MenuListProps
     WidthProps,
     MenuSharedProps,
     MenuCloneProps {
-  children: ReactElement
+  children: ReactNode
   compact?: boolean
   groupDividers?: boolean
 
