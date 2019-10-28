@@ -3,7 +3,12 @@ import React, { FC } from 'react'
 import styled from 'styled-components'
 import { space, SpaceProps } from 'looker-design-tokens'
 
-export const HeaderJsx: FC<{ className?: string }> = ({ className }) => (
+interface HeaderProps {
+  className?: string
+  height: string
+}
+
+export const HeaderJsx: FC<HeaderProps> = ({ className }) => (
   <a href="/" className={className}>
     <Flex alignItems="flex-end">
       <Icon
@@ -31,7 +36,7 @@ export const HeaderJsx: FC<{ className?: string }> = ({ className }) => (
 const Header = styled(HeaderJsx)`
   display: flex;
   align-items: center;
-  height: 5rem;
+  height: ${props => props.height};
 
   padding: ${props => props.theme.space.large};
 

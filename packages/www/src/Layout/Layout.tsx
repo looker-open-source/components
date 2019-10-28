@@ -9,14 +9,22 @@ const Layout: FC = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(true)
   const toggleFn = () => setSidebarOpen(!sidebarOpen)
 
+  const sidebarHeaderHeight = '5rem'
+
   return (
     <Page>
       <PageLayout open={sidebarOpen}>
         <LayoutSidebar>
-          {sidebarOpen && <Navigation sitemap={sitemap} />}
+          {sidebarOpen && (
+            <Navigation sitemap={sitemap} headerHeight={sidebarHeaderHeight} />
+          )}
         </LayoutSidebar>
         <SidebarDivider open={sidebarOpen}>
-          <SidebarToggle isOpen={sidebarOpen} onClick={toggleFn} />
+          <SidebarToggle
+            isOpen={sidebarOpen}
+            onClick={toggleFn}
+            headerHeight={sidebarHeaderHeight}
+          />
         </SidebarDivider>
         <ContentArea>{children}</ContentArea>
       </PageLayout>

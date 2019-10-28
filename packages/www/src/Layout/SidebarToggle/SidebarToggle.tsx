@@ -4,10 +4,15 @@ import styled from 'styled-components'
 
 interface SidebarToggleProps {
   isOpen: boolean
+  headerHeight: string
   onClick: () => void
 }
 
-const SidebarToggle: FC<SidebarToggleProps> = ({ isOpen, onClick }) => {
+const SidebarToggle: FC<SidebarToggleProps> = ({
+  isOpen,
+  onClick,
+  headerHeight,
+}) => {
   const [buttonWidth, setButtonWidth] = useState(0)
   const iconName: IconNames = isOpen ? 'CaretLeft' : 'CaretRight'
 
@@ -18,7 +23,7 @@ const SidebarToggle: FC<SidebarToggleProps> = ({ isOpen, onClick }) => {
   }, [])
 
   return (
-    <SidebarToggleWrapper buttonWidth={buttonWidth}>
+    <SidebarToggleWrapper headerHeight={headerHeight} buttonWidth={buttonWidth}>
       <IconButton
         ref={measuredRef}
         shape="round"
@@ -26,7 +31,6 @@ const SidebarToggle: FC<SidebarToggleProps> = ({ isOpen, onClick }) => {
         onClick={onClick}
         label={open ? 'Close Sidebar' : 'Open Sidebar'}
         size="small"
-        mt="medium"
         px="large"
         outline
       />
@@ -36,11 +40,14 @@ const SidebarToggle: FC<SidebarToggleProps> = ({ isOpen, onClick }) => {
 
 interface WrapperProps {
   buttonWidth: number
+  headerHeight?: string
 }
 
 const SidebarToggleWrapper = styled.div<WrapperProps>`
   position: relative;
   left: ${({ buttonWidth }) => `-${buttonWidth / 2}px`};
+  margin-top: ${({ buttonWidth, headerHeight }) =>
+    `calc(${headerHeight}/2 - ${buttonWidth}px/2)`};
 `
 
 export default SidebarToggle

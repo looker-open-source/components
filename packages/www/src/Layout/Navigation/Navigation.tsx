@@ -10,11 +10,12 @@ import Header from './Header'
 
 interface NavigationProps {
   sitemap: NavigationSection[]
+  headerHeight: string
 }
 
-const Navigation: FC<NavigationProps> = ({ sitemap }) => (
+const Navigation: FC<NavigationProps> = ({ sitemap, headerHeight }) => (
   <StyledSidebar>
-    <Header />
+    <Header height={headerHeight} />
     <Box>
       <Location>
         {({ location }) => (
