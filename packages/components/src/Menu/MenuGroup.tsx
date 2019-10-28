@@ -1,4 +1,10 @@
-import React, { CSSProperties, FC, ReactNode, RefObject, useRef } from 'react'
+import React, {
+  CSSProperties,
+  FC,
+  ReactElement,
+  RefObject,
+  useRef,
+} from 'react'
 import styled from 'styled-components'
 import {
   color,
@@ -21,7 +27,7 @@ export interface MenuGroupProps
   extends Omit<CompatibleHTMLProps<HTMLElement>, 'label'>,
     BackgroundColorProps,
     SpaceProps {
-  label?: ReactNode
+  label?: ReactElement
   labelProps?: HeadingProps
   labelStyles?: CSSProperties
   customizationProps?: MenuItemCustomization
@@ -29,7 +35,7 @@ export interface MenuGroupProps
 }
 
 export interface MenuGroupWithChildrenProps extends MenuGroupProps {
-  children: ReactNode
+  children: ReactElement
 }
 
 const MenuGroupInternal: FC<MenuGroupWithChildrenProps> = ({
