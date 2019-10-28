@@ -89,20 +89,6 @@ It's suggested that developers try to find small to medium sized chunks of UI to
 
 For example, write a whole form in Lens and put that behind the Bridge, instead of putting each button and input in a form behind the Bridge. Let's look at a quick example of how we might apply this to the Admin Connection form.
 
-### Example: Using Lens in the Admin Connection Form
-
-> ⚠️ Heads up ⚠️
->
-> This is a contrived example and does not reflect actual code in Helltool. The intent is to describe a reasonable workflow when integrating Lens into an existing Helltool UI.
-
-The Admin Connection page displays a relatively simple form which allows admins to configure new database connections:
-
-![Admin connection form](../../assets/admin_connection_form.jpg)
-
-Using the Bridge, we can define the scope of work as the entire form, encode it as a new component composed of Lens components, and put it behind the Bridge:
-
-![Admin connection form highlighted](../../assets/admin_connection_form_highlighted.jpg)
-
 ### Deciding on an Interface
 
 Before starting on the Lens powered version of the Connection form, we should decide on the form component's interface. It likely receives an object that describes a current connection if the user is editing a connection, or null if the user is creating a new connection. Let's assume that it saving and testing the connection is a complex process already well defined in Helltool's Angular code. Instead of immediately porting that to a Lens / React environment we can reuse the logic by passing handlers across the Bridge and into our form component.

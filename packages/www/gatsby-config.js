@@ -3,10 +3,19 @@ module.exports = {
     title: 'Looker UI Components',
   },
   plugins: [
+    `gatsby-plugin-sharp`,
+    `gatsby-plugin-typescript`,
+    'gatsby-plugin-react-helmet',
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `documentation`,
+        path: `${__dirname}/src/documentation`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
         path: `${__dirname}/src/documentation`,
       },
     },
@@ -17,6 +26,15 @@ module.exports = {
           documentation: require.resolve('./src/Layout/Documentation.tsx'),
           default: require.resolve('./src/Layout/Default.tsx'),
         },
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 800,
+            },
+          },
+        ],
+        plugins: [`gatsby-remark-images`],
       },
     },
     {
@@ -31,7 +49,6 @@ module.exports = {
         },
       },
     },
-    `gatsby-plugin-typescript`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -45,6 +62,5 @@ module.exports = {
         crossOrigin: `use-credentials`,
       },
     },
-    'gatsby-plugin-react-helmet',
   ],
 }

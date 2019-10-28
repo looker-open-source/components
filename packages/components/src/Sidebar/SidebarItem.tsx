@@ -8,7 +8,7 @@ interface SidebarItemProps {
 export const SidebarItem = styled.a.attrs(({ current }: SidebarItemProps) => ({
   backgroundColor: current && 'palette.purple100',
   color: current ? 'palette.purple700' : 'palette.charcoal600',
-  fontWeight: current && 'semiBold',
+  fontWeight: current ? 'semiBold' : undefined,
 }))<SidebarItemProps>`
   ${reset}
   ${typography}

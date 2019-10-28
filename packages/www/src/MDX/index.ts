@@ -2,7 +2,6 @@ import * as headings from './Headings'
 import Blockquote from './Blockquote'
 import Code from './Code'
 import Hr from './Hr'
-import Img from './Img'
 import Li from './Li'
 import Link from './Link'
 import Ol from './Ol'
@@ -15,7 +14,6 @@ const MDXComponents = {
   a: Link,
   blockquote: Blockquote,
   hr: Hr,
-  img: Img,
   inlineCode: Code,
   li: Li,
   ol: Ol,
