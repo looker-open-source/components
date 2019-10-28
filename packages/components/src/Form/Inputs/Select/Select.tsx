@@ -130,6 +130,7 @@ const indicatorRaw = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none
 const indicatorSize = '1rem'
 const indicatorPadding = '.25rem'
 const indicator = (color: string) =>
+  typeof window !== 'undefined' &&
   window.btoa(indicatorRaw.replace('#1C2125', color))
 
 // NOTE: Styling Selects is very complex

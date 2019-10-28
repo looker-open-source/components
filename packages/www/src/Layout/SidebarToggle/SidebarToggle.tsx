@@ -29,7 +29,7 @@ const SidebarToggle: FC<SidebarToggleProps> = ({
         shape="round"
         icon={iconName}
         onClick={onClick}
-        label={open ? 'Close Sidebar' : 'Open Sidebar'}
+        label={isOpen ? 'Close Sidebar' : 'Open Sidebar'}
         size="small"
         px="large"
         outline
