@@ -6,13 +6,18 @@ propsOf: Tooltip
 A simple Tooltip component with out of the box styles and behavior.
 
 ```jsx
-<Tooltip content="More things you should know...">
-  {(eventHandlers, ref) => (
-    <Button ref={ref} {...eventHandlers}>
-      Hover for Tooltip
-    </Button>
-  )}
-</Tooltip>
+;() => {
+  CustomizableTooltipAttributes.zIndex = 1
+  return (
+    <Tooltip content="More things you should know...">
+      {(eventHandlers, ref) => (
+        <Button ref={ref} {...eventHandlers}>
+          Hover for Tooltip
+        </Button>
+      )}
+    </Tooltip>
+  )
+}
 ```
 
 ```jsx

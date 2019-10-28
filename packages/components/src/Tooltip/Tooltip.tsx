@@ -4,7 +4,7 @@ import { Placement } from 'popper.js'
 import React, { useRef, useState, RefObject, FC, ReactNode } from 'react'
 import { Popper } from 'react-popper'
 import { ModalContext } from '../Modal'
-import { OverlaySurface } from '../Overlay/OverlaySurface'
+import { OverlaySurface, SurfaceStyleProps } from '../Overlay/OverlaySurface'
 import { Paragraph } from '../Text'
 
 interface EventHandlers {
@@ -29,8 +29,16 @@ export interface UseTooltipProps {
   canClose?: () => boolean
 
   isOpen?: boolean
+  /**
+   * Can be one of: top, bottom, left, right, auto, with the modifiers: start,
+   * end. This value comes directly from popperjs. See
+   * https://popper.js.org/popper-documentation.html#Popper.placements for more
+   * info.
+   */
   placement?: Placement
-
+  /**
+   * Content to display inside the tooltip. Can be a string or JSX.
+   */
   content?: ReactNode
 
   /**
@@ -44,7 +52,7 @@ export interface UseTooltipProps {
    */
   width?: string
   /**
-   * Specify the text aligment within tooltips.
+   * Specify the text alignment within tooltips.
    * @default center
    */
   textAlign?: TextAlignProperty
@@ -58,6 +66,11 @@ export interface UseTooltipProps {
    * If true, the useTooltip hook will return nothing
    */
   disabled?: boolean
+
+  /**
+   * Customizes the style of the tooltip
+   */
+  surfaceStyles?: SurfaceStyleProps
 }
 
 export const CustomizableTooltipAttributes: CustomizableAttributes = {}
@@ -79,6 +92,7 @@ export function useTooltip({
   width = 'auto',
   textAlign = 'center',
   disabled,
+  surfaceStyles,
   ...props
 }: UseTooltipProps) {
   const [isOpen, setIsOpen] = useState(initializeOpen)
@@ -177,6 +191,7 @@ export function useTooltip({
               borderRadius="medium"
               boxShadow={3}
               color="palette.charcoal000"
+              {...surfaceStyles}
             >
               {contentFormatted}
             </OverlaySurface>
