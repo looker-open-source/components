@@ -40,18 +40,18 @@ exports[`ButtonOutline has the correct style 1`] = `
   opacity: 0.25;
 }
 
-.c0:active,
-.c0.active {
-  background: #64518A;
-  border-color: #64518A;
-  color: #FFFFFF;
-}
-
 .c0:hover,
 .c0:focus,
 .c0.hover {
   border-color: #64518A;
   color: #2A1B60;
+}
+
+.c0:active,
+.c0.active {
+  background: #64518A;
+  border-color: #64518A;
+  color: #FFFFFF;
 }
 
 .c0[disabled]:hover,

@@ -10,16 +10,6 @@ export const ButtonOutline = styled(ButtonBase)`
   color: ${({ theme, color = 'primary' }) =>
     theme.colors.semanticColors[color].main};
 
-  &:active,
-  &.active {
-    background: ${({ theme, color = 'primary' }) =>
-      theme.colors.semanticColors[color].main};
-    border-color: ${({ theme, color = 'primary' }) =>
-      theme.colors.semanticColors[color].main};
-    color: ${({ theme, color = 'primary' }) =>
-      theme.colors.semanticColors[color].text};
-  }
-
   &:hover,
   &:focus,
   &.hover {
@@ -29,6 +19,16 @@ export const ButtonOutline = styled(ButtonBase)`
       theme.colors.semanticColors[color].main};
     color: ${({ theme, color = 'primary' }) =>
       theme.colors.semanticColors[color].darker};
+  }
+
+  &:active,
+  &.active {
+    background: ${({ theme, color = 'primary' }) =>
+      theme.colors.semanticColors[color].main};
+    border-color: ${({ theme, color = 'primary' }) =>
+      theme.colors.semanticColors[color].main};
+    color: ${({ theme, color = 'primary' }) =>
+      theme.colors.semanticColors[color].text};
   }
 
   &[disabled] {
