@@ -1,8 +1,7 @@
-import { TextDecorationProperty } from 'csstype'
 import { css } from 'styled-components'
 
 export interface TextDecorationProps {
-  textDecoration?: TextDecorationProperty<any>
+  textDecoration?: string
 }
 
 export const textDecoration = (props: TextDecorationProps) => css`
