@@ -15,7 +15,7 @@ const Page: FC<PageProps> = ({ page, path }) => {
   const uri = pathToUri([...path, page.path])
 
   return (
-    <SidebarItem href={uri} current={currentPath === uri}>
+    <SidebarItem href={uri} current={currentPath === `${uri}/`}>
       {page.title}
       {page.detail && <Badge>{page.detail}</Badge>}
     </SidebarItem>
