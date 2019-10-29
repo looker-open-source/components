@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
-yarn build
+. ~/.nvm/nvm.sh
 yarn test

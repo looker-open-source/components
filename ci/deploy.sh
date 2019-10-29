@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
+. ~/.nvm/nvm.sh
 yarn workspace www build
-cd packages/www/public
-aws s3 sync . s3://lens.looker.com --delete
+cd packages/www/public && aws s3 sync . s3://lens.looker.com --delete
