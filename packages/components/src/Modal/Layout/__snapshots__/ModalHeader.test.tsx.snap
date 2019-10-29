@@ -52,6 +52,7 @@ exports[`ModalHeader 1`] = `
   display: inline-flex;
   font-weight: 600;
   outline: none;
+  text-align: center;
   -webkit-transition: border 80ms;
   transition: border 80ms;
   vertical-align: middle;

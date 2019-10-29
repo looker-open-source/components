@@ -50,6 +50,7 @@ exports[`IconButton accepts color 1`] = `
   display: inline-flex;
   font-weight: 600;
   outline: none;
+  text-align: center;
   -webkit-transition: border 80ms;
   transition: border 80ms;
   vertical-align: middle;
@@ -193,6 +194,7 @@ exports[`IconButton accepts events 1`] = `
   display: inline-flex;
   font-weight: 600;
   outline: none;
+  text-align: center;
   -webkit-transition: border 80ms;
   transition: border 80ms;
   vertical-align: middle;
@@ -337,6 +339,7 @@ exports[`IconButton accepts events 2`] = `
   display: inline-flex;
   font-weight: 600;
   outline: none;
+  text-align: center;
   -webkit-transition: border 80ms;
   transition: border 80ms;
   vertical-align: middle;
@@ -481,6 +484,7 @@ exports[`IconButton allows for ARIA attributes 1`] = `
   display: inline-flex;
   font-weight: 600;
   outline: none;
+  text-align: center;
   -webkit-transition: border 80ms;
   transition: border 80ms;
   vertical-align: middle;
@@ -625,6 +629,7 @@ exports[`IconButton default 1`] = `
   display: inline-flex;
   font-weight: 600;
   outline: none;
+  text-align: center;
   -webkit-transition: border 80ms;
   transition: border 80ms;
   vertical-align: middle;
@@ -768,6 +773,7 @@ exports[`IconButton outline 1`] = `
   display: inline-flex;
   font-weight: 600;
   outline: none;
+  text-align: center;
   -webkit-transition: border 80ms;
   transition: border 80ms;
   vertical-align: middle;
@@ -911,6 +917,7 @@ exports[`IconButton resized 1`] = `
   display: inline-flex;
   font-weight: 600;
   outline: none;
+  text-align: center;
   -webkit-transition: border 80ms;
   transition: border 80ms;
   vertical-align: middle;

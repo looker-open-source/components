@@ -111,6 +111,7 @@ export const buttonCSS = css`
   display: inline-flex;
   font-weight: 600;
   outline: none;
+  text-align: center;
   transition: border 80ms;
   vertical-align: middle;
   white-space: nowrap;
