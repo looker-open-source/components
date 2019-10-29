@@ -29,7 +29,8 @@ exports[`ButtonTransparent has the correct style 1`] = `
   height: 34px;
   padding-left: 1rem;
   padding-right: 1rem;
-  border: 1px solid;
+  background: transparent;
+  border: 1px solid transparent;
   color: #64518A;
 }
 

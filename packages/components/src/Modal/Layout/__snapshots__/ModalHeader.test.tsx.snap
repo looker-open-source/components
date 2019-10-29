@@ -62,7 +62,8 @@ exports[`ModalHeader 1`] = `
   padding-right: 1rem;
   margin-left: auto;
   padding: 0rem;
-  border: 1px solid;
+  background: transparent;
+  border: 1px solid transparent;
   color: #939BA5;
 }
 
