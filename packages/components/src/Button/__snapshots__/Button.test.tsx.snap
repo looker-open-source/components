@@ -34,15 +34,15 @@ exports[`Button disable 1`] = `
   color: #FFFFFF;
 }
 
+.c0:focus {
+  box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
+}
+
 .c0[disabled] {
   cursor: default;
   -webkit-filter: grayscale(0.3);
   filter: grayscale(0.3);
   opacity: 0.25;
-}
-
-.c0:focus {
-  box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
 }
 
 .c0:active,
@@ -109,15 +109,15 @@ exports[`Button validates all sizes 1`] = `
   color: #FFFFFF;
 }
 
+.c0:focus {
+  box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
+}
+
 .c0[disabled] {
   cursor: default;
   -webkit-filter: grayscale(0.3);
   filter: grayscale(0.3);
   opacity: 0.25;
-}
-
-.c0:focus {
-  box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
 }
 
 .c0:active,
@@ -181,15 +181,15 @@ exports[`Button validates all sizes 2`] = `
   color: #FFFFFF;
 }
 
+.c0:focus {
+  box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
+}
+
 .c0[disabled] {
   cursor: default;
   -webkit-filter: grayscale(0.3);
   filter: grayscale(0.3);
   opacity: 0.25;
-}
-
-.c0:focus {
-  box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
 }
 
 .c0:active,
@@ -253,15 +253,15 @@ exports[`Button validates all sizes 3`] = `
   color: #FFFFFF;
 }
 
+.c0:focus {
+  box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
+}
+
 .c0[disabled] {
   cursor: default;
   -webkit-filter: grayscale(0.3);
   filter: grayscale(0.3);
   opacity: 0.25;
-}
-
-.c0:focus {
-  box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
 }
 
 .c0:active,
@@ -325,15 +325,15 @@ exports[`Button validates all sizes 4`] = `
   color: #FFFFFF;
 }
 
+.c0:focus {
+  box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
+}
+
 .c0[disabled] {
   cursor: default;
   -webkit-filter: grayscale(0.3);
   filter: grayscale(0.3);
   opacity: 0.25;
-}
-
-.c0:focus {
-  box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
 }
 
 .c0:active,
@@ -397,15 +397,15 @@ exports[`Button works with color danger 1`] = `
   color: #FFFFFF;
 }
 
+.c0:focus {
+  box-shadow: 0 0 0 0.15rem rgba(204,31,54,0.25);
+}
+
 .c0[disabled] {
   cursor: default;
   -webkit-filter: grayscale(0.3);
   filter: grayscale(0.3);
   opacity: 0.25;
-}
-
-.c0:focus {
-  box-shadow: 0 0 0 0.15rem rgba(204,31,54,0.25);
 }
 
 .c0:active,

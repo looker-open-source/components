@@ -33,6 +33,10 @@ exports[`ButtonTransparent has the correct style 1`] = `
   color: #64518A;
 }
 
+.c0:focus {
+  box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
+}
+
 .c0[disabled] {
   cursor: default;
   -webkit-filter: grayscale(0.3);

@@ -58,6 +58,10 @@ exports[`IconButton accepts color 1`] = `
   height: auto;
 }
 
+.c0:focus {
+  box-shadow: 0 0 0 0.15rem rgba(204,31,54,0.25);
+}
+
 .c0[disabled] {
   cursor: default;
   -webkit-filter: grayscale(0.3);
@@ -195,6 +199,10 @@ exports[`IconButton accepts events 1`] = `
   white-space: nowrap;
   padding: 0rem;
   height: auto;
+}
+
+.c0:focus {
+  box-shadow: 0 0 0 0.15rem rgba(147,155,165,0.25);
 }
 
 .c0[disabled] {
@@ -337,6 +345,10 @@ exports[`IconButton accepts events 2`] = `
   height: auto;
 }
 
+.c0:focus {
+  box-shadow: 0 0 0 0.15rem rgba(147,155,165,0.25);
+}
+
 .c0[disabled] {
   cursor: default;
   -webkit-filter: grayscale(0.3);
@@ -475,6 +487,10 @@ exports[`IconButton allows for ARIA attributes 1`] = `
   white-space: nowrap;
   padding: 0rem;
   height: auto;
+}
+
+.c0:focus {
+  box-shadow: 0 0 0 0.15rem rgba(147,155,165,0.25);
 }
 
 .c0[disabled] {
@@ -617,6 +633,10 @@ exports[`IconButton default 1`] = `
   height: auto;
 }
 
+.c0:focus {
+  box-shadow: 0 0 0 0.15rem rgba(147,155,165,0.25);
+}
+
 .c0[disabled] {
   cursor: default;
   -webkit-filter: grayscale(0.3);
@@ -754,6 +774,10 @@ exports[`IconButton outline 1`] = `
   white-space: nowrap;
   padding: 0rem;
   height: auto;
+}
+
+.c0:focus {
+  box-shadow: 0 0 0 0.15rem rgba(147,155,165,0.25);
 }
 
 .c0[disabled] {
@@ -897,6 +921,10 @@ exports[`IconButton resized 1`] = `
   padding-right: 1.25rem;
   padding: 0rem;
   height: auto;
+}
+
+.c0:focus {
+  box-shadow: 0 0 0 0.15rem rgba(147,155,165,0.25);
 }
 
 .c0[disabled] {

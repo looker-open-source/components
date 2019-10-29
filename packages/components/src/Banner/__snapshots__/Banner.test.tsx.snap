@@ -159,6 +159,10 @@ exports[`Dismissable banner 1`] = `
   height: auto;
 }
 
+.c3:focus {
+  box-shadow: 0 0 0 0.15rem rgba(147,155,165,0.25);
+}
+
 .c3[disabled] {
   cursor: default;
   -webkit-filter: grayscale(0.3);
