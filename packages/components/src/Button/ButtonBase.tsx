@@ -110,8 +110,8 @@ export const buttonCSS = css`
   cursor: pointer;
   display: inline-flex;
   font-weight: 600;
+  justify-content: center;
   outline: none;
-  text-align: center;
   transition: border 80ms;
   vertical-align: middle;
   white-space: nowrap;

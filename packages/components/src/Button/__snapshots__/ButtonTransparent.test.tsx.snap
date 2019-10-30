@@ -20,8 +20,11 @@ exports[`ButtonTransparent has the correct style 1`] = `
   display: -ms-inline-flexbox;
   display: inline-flex;
   font-weight: 600;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   outline: none;
-  text-align: center;
   -webkit-transition: border 80ms;
   transition: border 80ms;
   vertical-align: middle;
