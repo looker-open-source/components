@@ -57,15 +57,18 @@ export const CustomizableButtonAttributes: CustomizableButtonAttributes = {
 
 type ButtonColors = keyof SemanticColors
 
-export interface ButtonProps
+export interface OuterButtonProps
   extends Omit<CompatibleHTMLProps<HTMLButtonElement>, 'type'>,
-    ButtonIconProps,
     ButtonSizeProps,
     MaxWidthProps,
     MinWidthProps,
     WidthProps,
     SpaceProps {
   type?: 'button' | 'submit' | 'reset'
+
+  /**
+   * Used along with `href` for an anchor link styled as a Button
+   */
   forwardedAs?: 'a'
 
   /**
@@ -73,27 +76,11 @@ export interface ButtonProps
    * @default "primary"
    */
   color?: ButtonColors
-
-  className?: string
 }
 
-const ButtonJSX = forwardRef(
-  (props: ButtonProps, ref: Ref<HTMLButtonElement>) => {
-    const { children, className, iconBefore, iconAfter, ...restProps } = props
+export interface ButtonProps extends OuterButtonProps, ButtonIconProps {}
 
-    return (
-      <button className={className} ref={ref} {...restProps}>
-        {iconBefore && <ButtonIcon name={iconBefore} />}
-        {children}
-        {iconAfter && <ButtonIcon name={iconAfter} />}
-      </button>
-    )
-  }
-)
-
-ButtonJSX.displayName = 'ButtonJSX'
-
-export const buttonCSS = css`
+export const buttonCSS = css<OuterButtonProps>`
   ${reset}
   ${maxWidth}
   ${minWidth}
@@ -123,13 +110,32 @@ export const buttonCSS = css`
   }
 
   ${buttonSize}
-  ${buttonIcon}
 
   ${space}
 `
 
-export const ButtonBase = styled(ButtonJSX)<ButtonProps>`
+const ButtonOuter = styled.button<OuterButtonProps>`
   ${buttonCSS}
+`
+
+const ButtonJSX = forwardRef(
+  (props: ButtonProps, ref: Ref<HTMLButtonElement>) => {
+    const { children, iconBefore, iconAfter, ...restProps } = props
+
+    return (
+      <ButtonOuter {...restProps} ref={ref}>
+        {iconBefore && <ButtonIcon name={iconBefore} />}
+        {children}
+        {iconAfter && <ButtonIcon name={iconAfter} />}
+      </ButtonOuter>
+    )
+  }
+)
+
+ButtonJSX.displayName = 'ButtonJSX'
+
+export const ButtonBase = styled(ButtonJSX)<ButtonProps>`
+  ${buttonIcon}
 `
 
 ButtonBase.defaultProps = { size: 'medium' }

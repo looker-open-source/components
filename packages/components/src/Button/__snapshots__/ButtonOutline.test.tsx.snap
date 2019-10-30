@@ -33,8 +33,6 @@ exports[`ButtonOutline has the correct style 1`] = `
   height: 34px;
   padding-left: 1rem;
   padding-right: 1rem;
-  border: 1px solid #C1C6CC;
-  color: #64518A;
 }
 
 .c0:focus {
@@ -48,29 +46,34 @@ exports[`ButtonOutline has the correct style 1`] = `
   opacity: 0.25;
 }
 
-.c0:hover,
-.c0:focus,
-.c0.hover {
+.c1 {
+  border: 1px solid #C1C6CC;
+  color: #64518A;
+}
+
+.c1:hover,
+.c1:focus,
+.c1.hover {
   border-color: #64518A;
   color: #2A1B60;
 }
 
-.c0:active,
-.c0.active {
+.c1:active,
+.c1.active {
   background: #64518A;
   border-color: #64518A;
   color: #FFFFFF;
 }
 
-.c0[disabled]:hover,
-.c0[disabled]:active,
-.c0[disabled]:focus {
+.c1[disabled]:hover,
+.c1[disabled]:active,
+.c1[disabled]:focus {
   border-color: #C1C6CC;
   color: #64518A;
 }
 
 <button
-  class="c0"
+  class="c0 c1"
 >
   Outline
 </button>

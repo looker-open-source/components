@@ -42,7 +42,12 @@ const App: React.FC = () => {
         <GlobalStyle />
         <br />
         <br />
-        <Button iconAfter="Trash" color="danger">
+        <Button
+          iconAfter="Trash"
+          color="danger"
+          forwardedAs="a"
+          href="http://google.com"
+        >
           default
         </Button>
         <br />
