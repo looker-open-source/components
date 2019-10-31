@@ -23,7 +23,7 @@ import { Popover } from './Popover'
 import { PopoverContent } from './PopoverContent'
 
 const wikipediaWildebeest = (
-  <PopoverContent p="large" width="360px">
+  <PopoverContent p="large" width="660px">
     <img
       width="100%"
       src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Blue_Wildebeest%2C_Ngorongoro.jpg/440px-Blue_Wildebeest%2C_Ngorongoro.jpg"
@@ -47,6 +47,7 @@ const wikipediaWildebeest = (
   <Popover content={wikipediaWildebeest}>
     {(onClick, ref, className) => (
       <Button
+        style={{ position: 'absolute', right: '20px' }}
         aria-haspopup="true"
         onClick={onClick}
         innerRef={ref}

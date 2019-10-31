@@ -177,8 +177,6 @@ export const Popover: React.FC<PopoverProps> = ({
                 flipVariationsByContent: true,
               },
               preventOverflow: {
-                boundariesElement: 'viewport',
-                escapeWithReference: true,
                 padding: 0,
               },
             }}
