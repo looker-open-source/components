@@ -1,6 +1,6 @@
 {
   "name": "looker-lens",
-  "version": "0.1.38-alpha.0",
+  "version": "0.1.39-alpha.0",
   "license": "UNLICENSED",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
