@@ -129,6 +129,7 @@ exports[`InputText with a placeholder 1`] = `
 
 <input
   className="c0"
+  placeholder="I am a placeholder"
   type="text"
 />
 `;
