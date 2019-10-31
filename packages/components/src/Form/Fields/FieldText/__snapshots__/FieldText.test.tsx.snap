@@ -85,6 +85,7 @@ exports[`A FieldText 1`] = `
         className="c3 "
         id="thumbs-up"
         name="thumbsUp"
+        type="text"
       />
     </div>
   </div>
@@ -216,6 +217,7 @@ exports[`A FieldText with an error validation aligned to the left 1`] = `
         className="c4 "
         id="thumbs-up"
         name="thumbsUp"
+        type="text"
       />
     </div>
     <div
@@ -351,6 +353,7 @@ exports[`A FieldText with an error validation aligned to the right 1`] = `
         className="c4 "
         id="thumbs-up"
         name="thumbsUp"
+        type="text"
       />
     </div>
     <div
@@ -461,6 +464,7 @@ exports[`A required FieldText 1`] = `
         id="thumbs-up"
         name="thumbsUp"
         required={true}
+        type="text"
       />
     </div>
   </div>
@@ -552,6 +556,7 @@ exports[`FieldText supports labelWeight 1`] = `
         className="c3 "
         id="thumbs-up"
         name="thumbsUp"
+        type="text"
       />
     </div>
   </div>

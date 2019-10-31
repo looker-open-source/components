@@ -152,6 +152,7 @@ exports[`Fieldset with left aligned legend 1`] = `
               className="c6 "
               id="text-1"
               name="name1"
+              type="text"
             />
           </div>
         </div>
@@ -178,6 +179,7 @@ exports[`Fieldset with left aligned legend 1`] = `
               className="c6 "
               id="text-2"
               name="name2"
+              type="text"
             />
           </div>
         </div>
@@ -204,6 +206,7 @@ exports[`Fieldset with left aligned legend 1`] = `
               className="c6 "
               id="text-3"
               name="nam3"
+              type="text"
             />
           </div>
         </div>
