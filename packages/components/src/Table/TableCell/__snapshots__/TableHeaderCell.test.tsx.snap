@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`A <TableHeaderCell> should render 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  padding: 0.5rem 0;
+  color: #939BA5;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+<th
+  className="c0"
+  color="palette.charcoal400"
+  fontSize="xsmall"
+  fontWeight="semiBold"
+>
+  1
+</th>
+`;

@@ -1,0 +1,183 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`A bulleted List 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  list-style-type: disc;
+  padding-left: 1rem;
+}
+
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  margin-bottom: 0.25rem;
+}
+
+<ul
+  className="c0"
+  type="bullet"
+>
+  <li
+    className="c1"
+  >
+    🥑
+  </li>
+  <li
+    className="c1"
+  >
+    🍕
+  </li>
+  <li
+    className="c1"
+  >
+    🥨
+  </li>
+</ul>
+`;
+
+exports[`A default List, should be a ul 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  list-style-type: none;
+}
+
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  margin-bottom: 0.25rem;
+}
+
+<ul
+  className="c0"
+  type="none"
+>
+  <li
+    className="c1"
+  >
+    🥑
+  </li>
+  <li
+    className="c1"
+  >
+    🍕
+  </li>
+  <li
+    className="c1"
+  >
+    🥨
+  </li>
+</ul>
+`;
+
+exports[`A numerically ordered List 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  list-style-type: decimal;
+  padding-left: 1rem;
+}
+
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  margin-bottom: 0.25rem;
+}
+
+<ol
+  className="c0"
+  type="number"
+>
+  <li
+    className="c1"
+  >
+    🥑
+  </li>
+  <li
+    className="c1"
+  >
+    🍕
+  </li>
+  <li
+    className="c1"
+  >
+    🥨
+  </li>
+</ol>
+`;
+
+exports[`A numerically ordered List marked as nomarker 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  list-style-type: none;
+}
+
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  margin-bottom: 0.25rem;
+}
+
+<ol
+  className="c0"
+  type="none"
+>
+  <li
+    className="c1"
+  >
+    🥑
+  </li>
+  <li
+    className="c1"
+  >
+    🍕
+  </li>
+  <li
+    className="c1"
+  >
+    🥨
+  </li>
+</ol>
+`;

@@ -1,0 +1,570 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Confirmation banner 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+  background-color: #e0ffe7;
+  margin: 0.75rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c1 {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  -webkit-clip: rect(1px,1px,1px,1px);
+  clip: rect(1px,1px,1px,1px);
+}
+
+<div
+  aria-live="polite"
+  className="c0"
+  role="status"
+>
+  <div
+    className="c1"
+  />
+  <div>
+    Confirmation
+  </div>
+</div>
+`;
+
+exports[`Dismissable banner 1`] = `
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #49a9f2;
+  margin-right: 0.75rem;
+  width: 20px;
+  height: 20px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c5 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  width: 20px;
+  height: 20px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+  background-color: #e0f2ff;
+  margin: 0.75rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c2 {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  -webkit-clip: rect(1px,1px,1px,1px);
+  clip: rect(1px,1px,1px,1px);
+}
+
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-weight: 600;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  outline: none;
+  -webkit-transition: border 80ms;
+  transition: border 80ms;
+  vertical-align: middle;
+  white-space: nowrap;
+  font-size: 0.875rem;
+  height: 26px;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding: 0rem;
+  margin-left: auto;
+  height: auto;
+}
+
+.c3[disabled] {
+  cursor: default;
+  -webkit-filter: grayscale(0.3);
+  filter: grayscale(0.3);
+  opacity: 0.25;
+}
+
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  margin-left: auto;
+  padding: 3px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: #939BA5;
+}
+
+.c4:focus {
+  box-shadow: 0 0 0 0.15rem rgba(147,155,165,0.25);
+}
+
+.c4:active,
+.c4.active {
+  background: #F5F6F7;
+  border-color: #F5F6F7;
+  color: #4C535B;
+}
+
+.c4:hover,
+.c4:focus,
+.c4.hover {
+  background: #FBFBFC;
+  border-color: #FBFBFC;
+  color: #4C535B;
+}
+
+.c4[disabled]:hover,
+.c4[disabled]:active,
+.c4[disabled]:focus {
+  background-color: transparent;
+  border-color: transparent;
+  color: #939BA5;
+}
+
+.c4:hover {
+  background: none;
+}
+
+<div
+  aria-live="polite"
+  className="c0"
+  role="status"
+>
+  <div
+    className="c1 "
+    color="palette.blue400"
+    size={20}
+  >
+    <svg
+      fill="currentColor"
+      height="100%"
+      viewBox="0 0 24 24"
+      width="100%"
+    >
+      <title>
+        Circle Info
+      </title>
+      <path
+        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
+        fill="currentColor"
+      />
+    </svg>
+  </div>
+  <div
+    className="c2"
+  >
+    Info
+  </div>
+  <div>
+    Info!
+  </div>
+  <button
+    aria-hidden={true}
+    className="c3 c4"
+    color="neutral"
+    label="Dismiss"
+    size="small"
+    style={
+      Object {
+        "padding": "1px",
+      }
+    }
+  >
+    <div
+      className="c2"
+    >
+      Dismiss
+    </div>
+    <div
+      aria-hidden={true}
+      className="c5 "
+      size={20}
+    >
+      <svg
+        fill="currentColor"
+        height="100%"
+        viewBox="0 0 24 24"
+        width="100%"
+      >
+        <title>
+          Close
+        </title>
+        <path
+          d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"
+          fill="currentColor"
+        />
+      </svg>
+    </div>
+  </button>
+</div>
+`;
+
+exports[`Error banner 1`] = `
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #B2121F;
+  margin-right: 0.75rem;
+  width: 20px;
+  height: 20px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+  background-color: #FFE5E9;
+  margin: 0.75rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c2 {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  -webkit-clip: rect(1px,1px,1px,1px);
+  clip: rect(1px,1px,1px,1px);
+}
+
+<div
+  aria-live="polite"
+  className="c0"
+  role="status"
+>
+  <div
+    className="c1 "
+    color="palette.red600"
+    size={20}
+  >
+    <svg
+      fill="currentColor"
+      height="100%"
+      viewBox="0 0 22 19"
+      width="100%"
+    >
+      <title>
+        Warning
+      </title>
+      <path
+        d="M0 19h22L11 0 0 19zm12-3h-2v-2h2v2zm0-4h-2V8h2v4z"
+        fill="currentColor"
+      />
+    </svg>
+  </div>
+  <div
+    className="c2"
+  >
+    Error
+  </div>
+  <div>
+    Error
+  </div>
+</div>
+`;
+
+exports[`Info banner 1`] = `
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #49a9f2;
+  margin-right: 0.75rem;
+  width: 20px;
+  height: 20px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+  background-color: #e0f2ff;
+  margin: 0.75rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c2 {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  -webkit-clip: rect(1px,1px,1px,1px);
+  clip: rect(1px,1px,1px,1px);
+}
+
+<div
+  aria-live="polite"
+  className="c0"
+  role="status"
+>
+  <div
+    className="c1 "
+    color="palette.blue400"
+    size={20}
+  >
+    <svg
+      fill="currentColor"
+      height="100%"
+      viewBox="0 0 24 24"
+      width="100%"
+    >
+      <title>
+        Circle Info
+      </title>
+      <path
+        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
+        fill="currentColor"
+      />
+    </svg>
+  </div>
+  <div
+    className="c2"
+  >
+    Info
+  </div>
+  <div>
+    Info
+  </div>
+</div>
+`;
+
+exports[`Warning banner 1`] = `
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #FFA800;
+  margin-right: 0.75rem;
+  width: 20px;
+  height: 20px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+  background-color: #FFEBC4;
+  margin: 0.75rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c2 {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  -webkit-clip: rect(1px,1px,1px,1px);
+  clip: rect(1px,1px,1px,1px);
+}
+
+<div
+  aria-live="polite"
+  className="c0"
+  role="status"
+>
+  <div
+    className="c1 "
+    color="palette.yellow500"
+    size={20}
+  >
+    <svg
+      fill="currentColor"
+      height="100%"
+      viewBox="0 0 22 19"
+      width="100%"
+    >
+      <title>
+        Warning
+      </title>
+      <path
+        d="M0 19h22L11 0 0 19zm12-3h-2v-2h2v2zm0-4h-2V8h2v4z"
+        fill="currentColor"
+      />
+    </svg>
+  </div>
+  <div
+    className="c2"
+  >
+    Warning
+  </div>
+  <div>
+    Warning
+  </div>
+</div>
+`;

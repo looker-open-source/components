@@ -1,0 +1,302 @@
+---
+title: Menu
+status: stable
+github: Menu
+figma: file/VyHO1Hv1XaW1v3lE9I4PVT/Menu
+propsOf: Menu
+---
+
+import { Props } from '../../../Shared'
+
+`Menu` is a wrapper component that wraps a `MenuDisclosure` element and a `MenuList` element. When using a `Menu`, the child of your `MenuDisclosure` will be rendered and, when clicked, will generate a `Popover` with your `MenuList` and its children.
+
+```jsx
+<Menu>
+  <MenuDisclosure tooltip="Select your favorite kind">
+    <Button>Cheese</Button>
+  </MenuDisclosure>
+  <MenuList>
+    <MenuItem icon="FavoriteOutline">Gouda</MenuItem>
+    <MenuItem icon="FavoriteOutline">Swiss</MenuItem>
+  </MenuList>
+</Menu>
+```
+
+## useMenu
+
+Use the `useMenu` hook with `MenuDisclosure` and `MenuList`, spreading the return object as props on each.
+
+```jsx
+;() => {
+  const menu = useMenu()
+  return (
+    <>
+      <MenuDisclosure tooltip="Select export format" {...menu}>
+        <Button>Export</Button>
+      </MenuDisclosure>
+      <MenuList {...menu}>
+        <MenuItem icon="Mail">Email</MenuItem>
+        <MenuItem icon="Table">Spreadsheet</MenuItem>
+      </MenuList>
+    </>
+  )
+}
+```
+
+## MenuList
+
+<Props of="MenuList" />
+
+`MenuList` displays a list of choices.
+
+### Focus & Keyboard Controls
+
+When a `MenuList` is focused the `up` and `down` arrow keys will move focus through the menu items within the list.
+
+```jsx
+<MenuList>
+  <MenuItem onClick={() => alert('Hello world!')}>Gouda</MenuItem>
+  <MenuItem>Cheedar</MenuItem>
+  <MenuItem>Swiss</MenuItem>
+</MenuList>
+```
+
+### Customizing a MenuList
+
+`MenuList` accepts a `customizationProps` prop which allows for flexibly styling of the item. Below is an example of customizing the menu's display. Below is an example of all the options you can customize.
+
+```jsx
+<MenuList
+  customizationProps={{
+    bg: palette.purple500,
+    color: palette.purple200,
+    fontSize: 'xlarge',
+    iconColor: palette.purple300,
+    iconSize: 40,
+    marker: {
+      color: palette.purple300,
+      size: 10,
+    },
+    hover: {
+      bg: palette.purple700,
+      color: palette.white,
+      iconColor: palette.purple100,
+    },
+    current: {
+      bg: palette.purple200,
+      color: palette.purple900,
+      iconColor: palette.purple500,
+    },
+  }}
+>
+  <MenuGroup>
+    <MenuItem
+      href="https://en.wikipedia.org/wiki/Gouda_cheese"
+      itemRole="link"
+      icon="Home"
+    >
+      Gouda
+    </MenuItem>
+    <MenuItem
+      href="https://en.wikipedia.org/wiki/Cheddar_cheese"
+      itemRole="link"
+      icon="FavoriteOutline"
+      current
+      currentMarker
+      detail="Is often orange"
+    >
+      Cheddar
+    </MenuItem>
+    <MenuItem
+      itemRole="link"
+      icon="Dashboard"
+      href="https://en.wikipedia.org/wiki/Swiss_cheese`"
+    >
+      Swiss
+    </MenuItem>
+  </MenuGroup>
+</MenuList>
+```
+
+### Menu Item Spacing
+
+A `MenuList` accepts a `compact` prop that will make the spacing between the `MenuItems` smaller.
+
+```jsx
+<MenuList compact>
+  <MenuItem icon="LogoRings">Looker</MenuItem>
+  <MenuItem icon="Validate">Validate</MenuItem>
+  <MenuItem icon="ChartPie">Pizza</MenuItem>
+</MenuList>
+```
+
+## MenuItem
+
+<Props of="MenuItem" />
+
+`MenuItem` is an `HTMLButtonElement` that supports all of the `BoxProps` properties. Use this for triggering actions from with in a `MenuList` or `Drawer`. For example, opening a modal.
+
+For accessibility reasons, if you want your `MenuItem` to link somewhere then you can use the `itemRole` prop to identify it as a link.
+
+An icon can optionally be assigned to each item via the `icon` property.
+
+```jsx
+<MenuList>
+  <MenuItem>Home</MenuItem>
+  <MenuItem icon="Home">Home</MenuItem>
+  <MenuItem
+    itemRole="link"
+    target="_blank"
+    icon="Public"
+    href="https://google.com"
+  >
+    Away
+  </MenuItem>
+</MenuList>
+```
+
+### Icon Support
+
+```jsx
+<MenuList>
+  <MenuItem icon="LogoRings">Looker</MenuItem>
+  <MenuItem icon="Validate">Validate</MenuItem>
+  <MenuItem icon="ChartPie">Pizza</MenuItem>
+</MenuList>
+```
+
+### Detail Text
+
+Use the `detail` prop to provide explanatory detail to a given item.
+
+```jsx
+    <MenuItem detail="Get regular updates">Schedule</MenuItem>
+    <MenuItem icon="Beaker" detail="Try the newest toys!">
+      Labs
+    </MenuItem>
+```
+
+### Digital Marketing Style Menu
+
+It's possible to selectively customize only select pieces of a menu list as well, like in this example below.
+
+```jsx
+<MenuList
+  customizationProps={{
+    bg: palette.charcoal100,
+    iconColor: palette.charcoal800,
+    current: {
+      bg: palette.charcoal200,
+      iconColor: palette.purple500,
+    },
+    hover: {
+      iconColor: palette.purple500,
+    },
+  }}
+>
+  <MenuGroup label="GOOGLE ADS" labelProps={{ bg: palette.charcoal100 }}>
+    <MenuItem icon="Home">Gouda</MenuItem>
+    <MenuItem icon="FavoriteOutline" current detail="Is often orange">
+      Cheddar
+    </MenuItem>
+    <MenuItem icon="Dashboard">Swiss</MenuItem>
+  </MenuGroup>
+</MenuList>
+```
+
+## MenuGroup
+
+<Props of="MenuItem" />
+
+`MenuGroup` is a way to group together similar collections of `MenuItem`s.
+
+It supports an optional `label` prop to place a heading above the `MenuItem`s. When placed within a scrolling container the label will stick to the top edge while the `MenuGroup` is visible. Look at the "Menu + Drawer" example above and try scrolling.
+
+`labelProps` and `labelStyles` can be used to apply styling to the label.
+
+```jsx
+<MenuList>
+  <MenuGroup>
+    <MenuItem icon="LogoRings">Looker</MenuItem>
+    <MenuItem icon="Validate">Validate</MenuItem>
+    <MenuItem icon="ChartPie">Pizza!</MenuItem>
+  </MenuGroup>
+  <MenuGroup label="Cheeses">
+    <MenuItem icon="FavoriteOutline">Cheddar</MenuItem>
+    <MenuItem icon="FavoriteOutline">Mozerella</MenuItem>
+    <MenuItem icon="FavoriteOutline">Swiss</MenuItem>
+  </MenuGroup>
+  <MenuGroup label="Meats">
+    <MenuItem icon="FavoriteOutline">Sausage</MenuItem>
+    <MenuItem icon="FavoriteOutline">Pepperoni</MenuItem>
+    <MenuItem icon="FavoriteOutline">Salami</MenuItem>
+  </MenuGroup>
+  <MenuGroup label="Vegetables">
+    <MenuItem icon="FavoriteOutline">Onion</MenuItem>
+    <MenuItem icon="FavoriteOutline">Mushroom</MenuItem>
+    <MenuItem icon="FavoriteOutline">Peppers</MenuItem>
+  </MenuGroup>
+</MenuList>
+```
+
+## MenuSearch
+
+<Props of="MenuItem" />
+
+```jsx
+  <MenuSearch />
+  <Divider my="medium" />
+  <MenuSearch value="Stuff" summary="Faux results" />
+  <Divider my="medium" />
+  <MenuSearch value="Stuff" hideControls />
+```
+
+```jsx
+;() => {
+  const menuRef = React.useRef(null)
+  const items = ['a', 'b', 'c', 'd', 'e']
+  const [keywords, setKeywords] = React.useState('')
+  const onChange = e => setKeywords(e.currentTarget.value)
+  const menu = (
+    <React.Fragment>
+      <MenuSearch
+        placeholder="Filter menu items"
+        summary="33 matches"
+        value={keywords}
+        onChange={onChange}
+        menuRef={menuRef}
+      />
+      <ModalContent innerProps={{ p: 'none' }}>
+        <MenuList>
+          <MenuGroup label="Spacing">
+            {items.map(item => (
+              <MenuItem itemRole="link" href={`#${item}`} key={item}>
+                Example Link {item.toUpperCase()}
+              </MenuItem>
+            ))}
+          </MenuGroup>
+          <MenuGroup label="Spacing">
+            {items.map(item => (
+              <MenuItem detail={`Detail ${item}`} key={item}>
+                Example Item {item.toUpperCase()}
+              </MenuItem>
+            ))}
+          </MenuGroup>
+          <MenuGroup>
+            <MenuItem icon="Beaker">Scary Stuff</MenuItem>
+          </MenuGroup>
+        </MenuList>
+      </ModalContent>
+    </React.Fragment>
+  )
+  return (
+    <DrawerManager content={menu}>
+      {onClick => (
+        <Button variant="outline" onClick={onClick} iconAfter="ArrowDropDown">
+          Drawer w/ Searchable Menu
+        </Button>
+      )}
+    </DrawerManager>
+  )
+}
+```

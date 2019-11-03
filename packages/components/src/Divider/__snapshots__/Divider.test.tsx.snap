@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`A custom Divider 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  height: 20px;
+  background-color: turquoise;
+}
+
+<hr
+  className="c0"
+  size="20px"
+/>
+`;
+
+exports[`Default Divider 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  height: 1px;
+  background-color: #C1C6CC;
+}
+
+<hr
+  className="c0"
+  size="1px"
+/>
+`;
+
+exports[`Divider with a variant 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  height: 1px;
+  background-color: #707781;
+}
+
+<hr
+  className="c0"
+  size="1px"
+/>
+`;

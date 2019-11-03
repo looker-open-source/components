@@ -1,0 +1,1010 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`IconButton accepts color 1`] = `
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  width: 16px;
+  height: 16px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c2 {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  -webkit-clip: rect(1px,1px,1px,1px);
+  clip: rect(1px,1px,1px,1px);
+}
+
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-weight: 600;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  outline: none;
+  -webkit-transition: border 80ms;
+  transition: border 80ms;
+  vertical-align: middle;
+  white-space: nowrap;
+  padding: 0rem;
+  height: auto;
+}
+
+.c0[disabled] {
+  cursor: default;
+  -webkit-filter: grayscale(0.3);
+  filter: grayscale(0.3);
+  opacity: 0.25;
+}
+
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  padding: 3px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: #CC1F36;
+}
+
+.c1:focus {
+  box-shadow: 0 0 0 0.15rem rgba(204,31,54,0.25);
+}
+
+.c1:active,
+.c1.active {
+  background: #FFE5E9;
+  border-color: #FFE5E9;
+  color: #ED3B53;
+}
+
+.c1:hover,
+.c1:focus,
+.c1.hover {
+  background: #FFF2F4;
+  border-color: #FFF2F4;
+  color: #ED3B53;
+}
+
+.c1[disabled]:hover,
+.c1[disabled]:active,
+.c1[disabled]:focus {
+  background-color: transparent;
+  border-color: transparent;
+  color: #CC1F36;
+}
+
+<button
+  className="c0 c1"
+  color="danger"
+  label="Test"
+>
+  <div
+    className="c2"
+  >
+    Test
+  </div>
+  <div
+    aria-hidden={true}
+    className="c3 "
+    size={16}
+  >
+    <svg
+      fill="currentColor"
+      height="100%"
+      viewBox="0 0 24 24"
+      width="100%"
+    >
+      <title>
+        Favorite
+      </title>
+      <path
+        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+        fill="currentColor"
+      />
+    </svg>
+  </div>
+</button>
+`;
+
+exports[`IconButton accepts events 1`] = `
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  width: 16px;
+  height: 16px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c2 {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  -webkit-clip: rect(1px,1px,1px,1px);
+  clip: rect(1px,1px,1px,1px);
+}
+
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-weight: 600;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  outline: none;
+  -webkit-transition: border 80ms;
+  transition: border 80ms;
+  vertical-align: middle;
+  white-space: nowrap;
+  padding: 0rem;
+  height: auto;
+}
+
+.c0[disabled] {
+  cursor: default;
+  -webkit-filter: grayscale(0.3);
+  filter: grayscale(0.3);
+  opacity: 0.25;
+}
+
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  padding: 3px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: #64518A;
+}
+
+.c1:focus {
+  box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
+}
+
+.c1:active,
+.c1.active {
+  background: #E8E5FF;
+  border-color: #E8E5FF;
+  color: #6C43E0;
+}
+
+.c1:hover,
+.c1:focus,
+.c1.hover {
+  background: #F3F2FF;
+  border-color: #F3F2FF;
+  color: #6C43E0;
+}
+
+.c1[disabled]:hover,
+.c1[disabled]:active,
+.c1[disabled]:focus {
+  background-color: transparent;
+  border-color: transparent;
+  color: #64518A;
+}
+
+<button
+  className="c0 c1"
+  color="neutral"
+  label="Test"
+  onMouseEnter={[Function]}
+>
+  <div
+    className="c2"
+  >
+    Test
+  </div>
+  <div
+    aria-hidden={true}
+    className="c3 "
+    size={16}
+  >
+    <svg
+      fill="currentColor"
+      height="100%"
+      viewBox="0 0 24 24"
+      width="100%"
+    >
+      <title>
+        Favorite
+      </title>
+      <path
+        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+        fill="currentColor"
+      />
+    </svg>
+  </div>
+</button>
+`;
+
+exports[`IconButton accepts events 2`] = `
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  width: 16px;
+  height: 16px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c2 {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  -webkit-clip: rect(1px,1px,1px,1px);
+  clip: rect(1px,1px,1px,1px);
+}
+
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-weight: 600;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  outline: none;
+  -webkit-transition: border 80ms;
+  transition: border 80ms;
+  vertical-align: middle;
+  white-space: nowrap;
+  padding: 0rem;
+  height: auto;
+}
+
+.c0[disabled] {
+  cursor: default;
+  -webkit-filter: grayscale(0.3);
+  filter: grayscale(0.3);
+  opacity: 0.25;
+}
+
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  padding: 3px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: #64518A;
+}
+
+.c1:focus {
+  box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
+}
+
+.c1:active,
+.c1.active {
+  background: #E8E5FF;
+  border-color: #E8E5FF;
+  color: #6C43E0;
+}
+
+.c1:hover,
+.c1:focus,
+.c1.hover {
+  background: #F3F2FF;
+  border-color: #F3F2FF;
+  color: #6C43E0;
+}
+
+.c1[disabled]:hover,
+.c1[disabled]:active,
+.c1[disabled]:focus {
+  background-color: transparent;
+  border-color: transparent;
+  color: #64518A;
+}
+
+<button
+  className="c0 c1"
+  color="neutral"
+  label="Test"
+  onClick={[Function]}
+>
+  <div
+    className="c2"
+  >
+    Test
+  </div>
+  <div
+    aria-hidden={true}
+    className="c3 "
+    size={16}
+  >
+    <svg
+      fill="currentColor"
+      height="100%"
+      viewBox="0 0 24 24"
+      width="100%"
+    >
+      <title>
+        Favorite
+      </title>
+      <path
+        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+        fill="currentColor"
+      />
+    </svg>
+  </div>
+</button>
+`;
+
+exports[`IconButton allows for ARIA attributes 1`] = `
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  width: 16px;
+  height: 16px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c2 {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  -webkit-clip: rect(1px,1px,1px,1px);
+  clip: rect(1px,1px,1px,1px);
+}
+
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-weight: 600;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  outline: none;
+  -webkit-transition: border 80ms;
+  transition: border 80ms;
+  vertical-align: middle;
+  white-space: nowrap;
+  padding: 0rem;
+  height: auto;
+}
+
+.c0[disabled] {
+  cursor: default;
+  -webkit-filter: grayscale(0.3);
+  filter: grayscale(0.3);
+  opacity: 0.25;
+}
+
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  padding: 3px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: #64518A;
+}
+
+.c1:focus {
+  box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
+}
+
+.c1:active,
+.c1.active {
+  background: #E8E5FF;
+  border-color: #E8E5FF;
+  color: #6C43E0;
+}
+
+.c1:hover,
+.c1:focus,
+.c1.hover {
+  background: #F3F2FF;
+  border-color: #F3F2FF;
+  color: #6C43E0;
+}
+
+.c1[disabled]:hover,
+.c1[disabled]:active,
+.c1[disabled]:focus {
+  background-color: transparent;
+  border-color: transparent;
+  color: #64518A;
+}
+
+<button
+  aria-haspopup={true}
+  className="c0 c1"
+  color="neutral"
+  label="Test"
+>
+  <div
+    className="c2"
+  >
+    Test
+  </div>
+  <div
+    aria-hidden={true}
+    className="c3 "
+    size={16}
+  >
+    <svg
+      fill="currentColor"
+      height="100%"
+      viewBox="0 0 24 24"
+      width="100%"
+    >
+      <title>
+        Favorite
+      </title>
+      <path
+        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+        fill="currentColor"
+      />
+    </svg>
+  </div>
+</button>
+`;
+
+exports[`IconButton default 1`] = `
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  width: 16px;
+  height: 16px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c2 {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  -webkit-clip: rect(1px,1px,1px,1px);
+  clip: rect(1px,1px,1px,1px);
+}
+
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-weight: 600;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  outline: none;
+  -webkit-transition: border 80ms;
+  transition: border 80ms;
+  vertical-align: middle;
+  white-space: nowrap;
+  padding: 0rem;
+  height: auto;
+}
+
+.c0[disabled] {
+  cursor: default;
+  -webkit-filter: grayscale(0.3);
+  filter: grayscale(0.3);
+  opacity: 0.25;
+}
+
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  padding: 3px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: #64518A;
+}
+
+.c1:focus {
+  box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
+}
+
+.c1:active,
+.c1.active {
+  background: #E8E5FF;
+  border-color: #E8E5FF;
+  color: #6C43E0;
+}
+
+.c1:hover,
+.c1:focus,
+.c1.hover {
+  background: #F3F2FF;
+  border-color: #F3F2FF;
+  color: #6C43E0;
+}
+
+.c1[disabled]:hover,
+.c1[disabled]:active,
+.c1[disabled]:focus {
+  background-color: transparent;
+  border-color: transparent;
+  color: #64518A;
+}
+
+<button
+  className="c0 c1"
+  color="neutral"
+  label="Test"
+>
+  <div
+    className="c2"
+  >
+    Test
+  </div>
+  <div
+    aria-hidden={true}
+    className="c3 "
+    size={16}
+  >
+    <svg
+      fill="currentColor"
+      height="100%"
+      viewBox="0 0 24 24"
+      width="100%"
+    >
+      <title>
+        Favorite
+      </title>
+      <path
+        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+        fill="currentColor"
+      />
+    </svg>
+  </div>
+</button>
+`;
+
+exports[`IconButton outline 1`] = `
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  width: 16px;
+  height: 16px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c2 {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  -webkit-clip: rect(1px,1px,1px,1px);
+  clip: rect(1px,1px,1px,1px);
+}
+
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-weight: 600;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  outline: none;
+  -webkit-transition: border 80ms;
+  transition: border 80ms;
+  vertical-align: middle;
+  white-space: nowrap;
+  padding: 0rem;
+  height: auto;
+}
+
+.c0[disabled] {
+  cursor: default;
+  -webkit-filter: grayscale(0.3);
+  filter: grayscale(0.3);
+  opacity: 0.25;
+}
+
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  padding: 3px;
+  background: #FFFFFF;
+  border: 1px solid #C1C6CC;
+  color: #64518A;
+}
+
+.c1:focus {
+  box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
+}
+
+.c1:active,
+.c1.active {
+  background: #64518A;
+  border-color: #64518A;
+  color: #FFFFFF;
+}
+
+.c1:hover,
+.c1:focus,
+.c1.hover {
+  background: #FFFFFF;
+  border-color: #64518A;
+  color: #2A1B60;
+}
+
+.c1[disabled]:hover,
+.c1[disabled]:active,
+.c1[disabled]:focus {
+  background-color: #FFFFFF;
+  border-color: #C1C6CC;
+  color: #64518A;
+}
+
+<button
+  className="c0 c1"
+  color="neutral"
+  label="Test"
+>
+  <div
+    className="c2"
+  >
+    Test
+  </div>
+  <div
+    aria-hidden={true}
+    className="c3 "
+    size={16}
+  >
+    <svg
+      fill="currentColor"
+      height="100%"
+      viewBox="0 0 24 24"
+      width="100%"
+    >
+      <title>
+        Favorite
+      </title>
+      <path
+        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+        fill="currentColor"
+      />
+    </svg>
+  </div>
+</button>
+`;
+
+exports[`IconButton resized 1`] = `
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  width: 36px;
+  height: 36px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c2 {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  -webkit-clip: rect(1px,1px,1px,1px);
+  clip: rect(1px,1px,1px,1px);
+}
+
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-weight: 600;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  outline: none;
+  -webkit-transition: border 80ms;
+  transition: border 80ms;
+  vertical-align: middle;
+  white-space: nowrap;
+  font-size: 1.375rem;
+  height: 42px;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  padding: 0rem;
+  height: auto;
+}
+
+.c0[disabled] {
+  cursor: default;
+  -webkit-filter: grayscale(0.3);
+  filter: grayscale(0.3);
+  opacity: 0.25;
+}
+
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  padding: 3px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: #64518A;
+}
+
+.c1:focus {
+  box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25);
+}
+
+.c1:active,
+.c1.active {
+  background: #E8E5FF;
+  border-color: #E8E5FF;
+  color: #6C43E0;
+}
+
+.c1:hover,
+.c1:focus,
+.c1.hover {
+  background: #F3F2FF;
+  border-color: #F3F2FF;
+  color: #6C43E0;
+}
+
+.c1[disabled]:hover,
+.c1[disabled]:active,
+.c1[disabled]:focus {
+  background-color: transparent;
+  border-color: transparent;
+  color: #64518A;
+}
+
+<button
+  className="c0 c1"
+  color="neutral"
+  label="Test"
+  size="large"
+>
+  <div
+    className="c2"
+  >
+    Test
+  </div>
+  <div
+    aria-hidden={true}
+    className="c3 "
+    size={36}
+  >
+    <svg
+      fill="currentColor"
+      height="100%"
+      viewBox="0 0 24 24"
+      width="100%"
+    >
+      <title>
+        Favorite
+      </title>
+      <path
+        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+        fill="currentColor"
+      />
+    </svg>
+  </div>
+</button>
+`;

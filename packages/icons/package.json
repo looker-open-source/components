@@ -1,0 +1,31 @@
+{
+  "name": "@looker/icons",
+  "license": "MIT",
+  "version": "0.6.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build:declaration": "tsc --project tsconfig.build.json",
+    "build:es": "yarn build:icons && BABEL_ENV=build babel src --root-mode upward --out-dir dist --source-maps --extensions .js,.jsx,.ts,.tsx --delete-dir-on-start --no-comments",
+    "build:icons": "node bin/build.js"
+  },
+  "devDependencies": {
+    "@svgr/babel-plugin-add-jsx-attribute": "^4.2.0",
+    "@svgr/cli": "^4.3.2",
+    "@types/glob": "^7.1.1",
+    "@types/node": "^12.7.5",
+    "@types/rimraf": "^2.0.2",
+    "glob": "^7.1.3",
+    "ora": "^3.4.0",
+    "rimraf": "^3.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/looker-open-source/lens",
+    "directory": "packages/icons"
+  },
+  "gitHead": "5d353bb0df716b9a34ab1953ce90c6dc8a74fb92"
+}

@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Menu - compact 1`] = `ReactWrapper {}`;
+
+exports[`Menu - composed 1`] = `ShallowWrapper {}`;
+
+exports[`Menu - menu customization 1`] = `ShallowWrapper {}`;
+
+exports[`Menu 1`] = `ShallowWrapper {}`;

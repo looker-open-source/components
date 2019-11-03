@@ -1,0 +1,578 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`A FieldToggleSwitch 1`] = `
+.c9 {
+  -webkit-transition: 300ms;
+  transition: 300ms;
+  position: absolute;
+  bottom: 0.125rem;
+  left: 0.125rem;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: #FFFFFF;
+}
+
+.c8 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-transition: 300ms;
+  transition: 300ms;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 1.25rem;
+  background: #C1C6CC;
+}
+
+.c8:hover {
+  box-shadow: 0 0 .01rem 0.01rem rgba(100,81,138,0.5);
+}
+
+.c7 {
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.c6 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  width: 2.1875rem;
+  height: 1.25rem;
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+}
+
+.c6 input {
+  cursor: pointer;
+}
+
+.c6 input:focus + div {
+  box-shadow: 0 0 0 0.2rem rgba(100,81,138,0.4);
+}
+
+.c5 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  margin-bottom: 0.5rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row-reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+}
+
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  margin-bottom: 0.5rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #262D33;
+  margin-right: 0.5rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  display: inline-block;
+}
+
+.c1 .c2 {
+  text-align: left;
+  width: 20%;
+  margin-right: 0;
+  margin-left: 0.5rem;
+}
+
+<div
+  className="c0 c1 "
+>
+  <label
+    className="c2 c3"
+    color="palette.charcoal800"
+    fontSize="small"
+    fontWeight="semiBold"
+    htmlFor="thumbs-up"
+  >
+    👍
+  </label>
+  <div
+    className="c4"
+  >
+    <div
+      className="c5"
+    >
+      <div
+        className="c6 "
+      >
+        <input
+          className="c7"
+          id="thumbs-up"
+          name="thumbsUp"
+          role="switch"
+          type="checkbox"
+        />
+        <div
+          className="c8"
+          size={20}
+        >
+          <div
+            className="c9"
+            size={20}
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`A FieldToggleSwitch turned on 1`] = `
+.c9 {
+  -webkit-transform: translateX(0.9375rem);
+  -ms-transform: translateX(0.9375rem);
+  transform: translateX(0.9375rem);
+  -webkit-transition: 300ms;
+  transition: 300ms;
+  position: absolute;
+  bottom: 0.125rem;
+  left: 0.125rem;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: #FFFFFF;
+}
+
+.c8 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-transition: 300ms;
+  transition: 300ms;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 1.25rem;
+  background: #9785F2;
+}
+
+.c8:hover {
+  box-shadow: 0 0 .01rem 0.01rem rgba(100,81,138,0.5);
+}
+
+.c7 {
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.c6 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  width: 2.1875rem;
+  height: 1.25rem;
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+}
+
+.c6 input {
+  cursor: pointer;
+}
+
+.c6 input:focus + div {
+  box-shadow: 0 0 0 0.2rem rgba(100,81,138,0.4);
+}
+
+.c5 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  margin-bottom: 0.5rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row-reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+}
+
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  margin-bottom: 0.5rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #262D33;
+  margin-right: 0.5rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  display: inline-block;
+}
+
+.c1 .c2 {
+  text-align: left;
+  width: 20%;
+  margin-right: 0;
+  margin-left: 0.5rem;
+}
+
+.c10 .c2 {
+  text-align: right;
+  width: 20%;
+}
+
+<div
+  className="c0 c1 "
+>
+  <label
+    className="c2 c3"
+    color="palette.charcoal800"
+    fontSize="small"
+    fontWeight="semiBold"
+    htmlFor="thumbs-up"
+  >
+    👍
+  </label>
+  <div
+    className="c4"
+  >
+    <div
+      className="c5"
+    >
+      <div
+        className="c6 "
+      >
+        <input
+          aria-checked={true}
+          checked={true}
+          className="c7"
+          id="thumbs-up"
+          name="thumbsUp"
+          role="switch"
+          type="checkbox"
+        />
+        <div
+          className="c8"
+          on={true}
+          size={20}
+        >
+          <div
+            className="c9"
+            on={true}
+            size={20}
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`A FieldToggleSwitch with label aligned left 1`] = `
+.c9 {
+  -webkit-transition: 300ms;
+  transition: 300ms;
+  position: absolute;
+  bottom: 0.125rem;
+  left: 0.125rem;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: #FFFFFF;
+}
+
+.c8 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-transition: 300ms;
+  transition: 300ms;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 1.25rem;
+  background: #C1C6CC;
+}
+
+.c8:hover {
+  box-shadow: 0 0 .01rem 0.01rem rgba(100,81,138,0.5);
+}
+
+.c7 {
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.c6 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  width: 2.1875rem;
+  height: 1.25rem;
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+}
+
+.c6 input {
+  cursor: pointer;
+}
+
+.c6 input:focus + div {
+  box-shadow: 0 0 0 0.2rem rgba(100,81,138,0.4);
+}
+
+.c5 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  margin-bottom: 0.5rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  margin-bottom: 0.5rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+}
+
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #262D33;
+  margin-right: 0.5rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  display: inline-block;
+}
+
+.c10 .c2 {
+  text-align: left;
+  width: 20%;
+  margin-right: 0;
+  margin-left: 0.5rem;
+}
+
+.c1 .c2 {
+  text-align: right;
+  width: 20%;
+}
+
+<div
+  className="c0 c1 "
+>
+  <label
+    className="c2 c3"
+    color="palette.charcoal800"
+    fontSize="small"
+    fontWeight="semiBold"
+    htmlFor="thumbs-up"
+  >
+    👍
+  </label>
+  <div
+    className="c4"
+  >
+    <div
+      className="c5"
+    >
+      <div
+        className="c6 "
+      >
+        <input
+          className="c7"
+          id="thumbs-up"
+          name="thumbsUp"
+          role="switch"
+          type="checkbox"
+        />
+        <div
+          className="c8"
+          size={20}
+        >
+          <div
+            className="c9"
+            size={20}
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

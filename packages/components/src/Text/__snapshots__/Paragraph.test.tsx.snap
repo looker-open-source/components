@@ -1,0 +1,228 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`A Paragraph component aligned 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  text-align: right;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+<p
+  className="c0"
+  fontSize="medium"
+>
+  Hello
+</p>
+`;
+
+exports[`A Paragraph component decorated 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  -webkit-text-decoration: line-through;
+  text-decoration: line-through;
+}
+
+<p
+  className="c0"
+  fontSize="medium"
+  textDecoration="line-through"
+>
+  Hello
+</p>
+`;
+
+exports[`A Paragraph component resized 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-size: 2.875rem;
+  line-height: 4rem;
+}
+
+<p
+  className="c0"
+  fontSize="xxxxlarge"
+>
+  Hello
+</p>
+`;
+
+exports[`A Paragraph component text transformed 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  text-transform: uppercase;
+}
+
+<p
+  className="c0"
+  fontSize="medium"
+>
+  Hello
+</p>
+`;
+
+exports[`A Paragraph component truncated 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+<p
+  className="c0"
+  fontSize="medium"
+>
+  Hello
+</p>
+`;
+
+exports[`A Paragraph component weight 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+<p
+  className="c0"
+  fontSize="medium"
+  fontWeight="bold"
+>
+  Hello
+</p>
+`;
+
+exports[`A Paragraph component with multiline truncate 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+<p
+  className="c0"
+  fontSize="medium"
+>
+  Hello
+</p>
+`;
+
+exports[`A Paragraph component with variant 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: #CC1F36;
+}
+
+<p
+  className="c0"
+  fontSize="medium"
+>
+  Hello
+</p>
+`;
+
+exports[`A Paragraph component wrapped 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  overflow-wrap: break-word;
+}
+
+<p
+  className="c0"
+  fontSize="medium"
+  wrap={true}
+>
+  Hello
+</p>
+`;
+
+exports[`A default Paragraph component 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+<p
+  className="c0"
+  fontSize="medium"
+>
+  Hello
+</p>
+`;

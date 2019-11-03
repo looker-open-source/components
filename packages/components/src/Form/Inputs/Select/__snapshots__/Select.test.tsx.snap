@@ -1,0 +1,465 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Select default 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  background-color: #FFFFFF;
+  border: solid 1px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+),linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
+  background-repeat: no-repeat,repeat;
+  background-position: right .25rem center,0 0;
+  background-size: 1rem,100%;
+  border-color: #C1C6CC;
+  border-radius: 0.25rem;
+  height: 28px;
+  font-size: 0.875rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  padding-right: calc(2 * .25rem + 1rem);
+}
+
+.c0::-ms-expand {
+  display: none;
+}
+
+<select
+  className="c0 "
+  fontSize="small"
+  height="28px"
+>
+  <option
+    value=""
+  />
+</select>
+`;
+
+exports[`Select should accept disabled 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  background-color: #FFFFFF;
+  border: solid 1px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+),linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
+  background-repeat: no-repeat,repeat;
+  background-position: right .25rem center,0 0;
+  background-size: 1rem,100%;
+  border-color: #C1C6CC;
+  border-radius: 0.25rem;
+  height: 28px;
+  font-size: 0.875rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  padding-right: calc(2 * .25rem + 1rem);
+}
+
+.c0::-ms-expand {
+  display: none;
+}
+
+<select
+  className="c0 "
+  disabled={true}
+  fontSize="small"
+  height="28px"
+>
+  <option
+    value=""
+  />
+</select>
+`;
+
+exports[`Select should accept empty options array 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  background-color: #FFFFFF;
+  border: solid 1px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+),linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
+  background-repeat: no-repeat,repeat;
+  background-position: right .25rem center,0 0;
+  background-size: 1rem,100%;
+  border-color: #C1C6CC;
+  border-radius: 0.25rem;
+  height: 28px;
+  font-size: 0.875rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  padding-right: calc(2 * .25rem + 1rem);
+}
+
+.c0::-ms-expand {
+  display: none;
+}
+
+<select
+  className="c0 "
+  fontSize="small"
+  height="28px"
+>
+  <option
+    value=""
+  />
+</select>
+`;
+
+exports[`Select should accept readOnly 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  background-color: #FFFFFF;
+  border: solid 1px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+),linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
+  background-repeat: no-repeat,repeat;
+  background-position: right .25rem center,0 0;
+  background-size: 1rem,100%;
+  border-color: #C1C6CC;
+  border-radius: 0.25rem;
+  height: 28px;
+  font-size: 0.875rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  padding-right: calc(2 * .25rem + 1rem);
+}
+
+.c0::-ms-expand {
+  display: none;
+}
+
+<select
+  className="c0 "
+  fontSize="small"
+  height="28px"
+  readOnly={true}
+>
+  <option
+    value=""
+  />
+</select>
+`;
+
+exports[`Select should accept required 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  background-color: #FFFFFF;
+  border: solid 1px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+),linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
+  background-repeat: no-repeat,repeat;
+  background-position: right .25rem center,0 0;
+  background-size: 1rem,100%;
+  border-color: #C1C6CC;
+  border-radius: 0.25rem;
+  height: 28px;
+  font-size: 0.875rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  padding-right: calc(2 * .25rem + 1rem);
+}
+
+.c0::-ms-expand {
+  display: none;
+}
+
+<select
+  className="c0 "
+  fontSize="small"
+  height="28px"
+  required={true}
+>
+  <option
+    value=""
+  />
+</select>
+`;
+
+exports[`Select with a placeholder 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  background-color: #FFFFFF;
+  border: solid 1px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+),linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
+  background-repeat: no-repeat,repeat;
+  background-position: right .25rem center,0 0;
+  background-size: 1rem,100%;
+  border-color: #C1C6CC;
+  border-radius: 0.25rem;
+  height: 28px;
+  font-size: 0.875rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  padding-right: calc(2 * .25rem + 1rem);
+}
+
+.c0::-ms-expand {
+  display: none;
+}
+
+<select
+  className="c0 "
+  fontSize="small"
+  height="28px"
+>
+  <option
+    value=""
+  >
+    I am a placeholder
+  </option>
+</select>
+`;
+
+exports[`Select with a value 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  background-color: #FFFFFF;
+  border: solid 1px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+),linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
+  background-repeat: no-repeat,repeat;
+  background-position: right .25rem center,0 0;
+  background-size: 1rem,100%;
+  border-color: #C1C6CC;
+  border-radius: 0.25rem;
+  height: 28px;
+  font-size: 0.875rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  padding-right: calc(2 * .25rem + 1rem);
+}
+
+.c0::-ms-expand {
+  display: none;
+}
+
+<select
+  className="c0 "
+  defaultValue="Some Value"
+  fontSize="small"
+  height="28px"
+>
+  <option
+    value=""
+  />
+  <option
+    value="1"
+  >
+    thing
+  </option>
+  <option
+    value="Some Value"
+  >
+    Some Value's Label
+  </option>
+  <option
+    value="2"
+  >
+    other
+  </option>
+</select>
+`;
+
+exports[`Select with an error validation 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  background-color: #FFF2F4;
+  border: solid 1px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+),linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
+  background-repeat: no-repeat,repeat;
+  background-position: right .25rem center,0 0;
+  background-size: 1rem,100%;
+  border-color: #C1C6CC;
+  border-radius: 0.25rem;
+  height: 28px;
+  font-size: 0.875rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  padding-right: calc(2 * .25rem + 1rem);
+}
+
+.c0::-ms-expand {
+  display: none;
+}
+
+<select
+  className="c0 "
+  fontSize="small"
+  height="28px"
+>
+  <option
+    value=""
+  />
+</select>
+`;
+
+exports[`Select with aria-describedby 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  background-color: #FFFFFF;
+  border: solid 1px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+),linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
+  background-repeat: no-repeat,repeat;
+  background-position: right .25rem center,0 0;
+  background-size: 1rem,100%;
+  border-color: #C1C6CC;
+  border-radius: 0.25rem;
+  height: 28px;
+  font-size: 0.875rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  padding-right: calc(2 * .25rem + 1rem);
+}
+
+.c0::-ms-expand {
+  display: none;
+}
+
+<select
+  aria-describedby="some-id"
+  className="c0 "
+  fontSize="small"
+  height="28px"
+>
+  <option
+    value=""
+  />
+</select>
+`;
+
+exports[`Select with name and id 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  background-color: #FFFFFF;
+  border: solid 1px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+),linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
+  background-repeat: no-repeat,repeat;
+  background-position: right .25rem center,0 0;
+  background-size: 1rem,100%;
+  border-color: #C1C6CC;
+  border-radius: 0.25rem;
+  height: 28px;
+  font-size: 0.875rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  padding-right: calc(2 * .25rem + 1rem);
+}
+
+.c0::-ms-expand {
+  display: none;
+}
+
+<select
+  className="c0 "
+  fontSize="small"
+  height="28px"
+  id="Bobby"
+  name="Bob"
+>
+  <option
+    value=""
+  />
+</select>
+`;

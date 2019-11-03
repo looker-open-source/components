@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Drawer Hidden 1`] = `
+<a
+  onClick={[Function]}
+>
+  🥑
+</a>
+`;
+
+exports[`Drawer Shown 1`] = `ShallowWrapper {}`;
+
+exports[`Drawer, backdrop customized 1`] = `ShallowWrapper {}`;
+
+exports[`Selection Drawer, Shown 1`] = `ShallowWrapper {}`;

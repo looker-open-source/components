@@ -1,0 +1,43 @@
+---
+title: Dialog
+propsOf: Dialog
+github: Modal/Dialog/Dialog
+---
+
+Dialogs inform users about a task and can contain critical information, require decisions, or involve multiple tasks.
+
+`Dialog` requires that the developer manages the whether the Dialog is visible or not by assigning `true` or `false` to the `isOpen` prop
+
+```jsx
+;() => {
+  const { value, setOn, setOff } = useToggle()
+  return (
+    <div>
+      <Dialog isOpen={value} onClose={() => setOff()}>
+        <ModalContent>
+          <Paragraph>Some content inside the Dialog</Paragraph>
+          <Button>A button too!</Button>
+        </ModalContent>
+      </Dialog>
+      <Button onClick={() => setOn()}>Open Dialog</Button>
+    </div>
+  )
+}
+```
+
+## DialogManager
+
+DialogManager gives an easy way to compose a Dialog without the need to manage state.
+
+```jsx
+<DialogManager
+  content={
+    <ModalContent>
+      <Paragraph>Some content inside the Dialog</Paragraph>
+      <Button>A button too!</Button>
+    </ModalContent>
+  }
+>
+  {onClick => <Button onClick={onClick}>Open Dialog </Button>}
+</DialogManager>
+```

@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InputHidden default 1`] = `
+<input
+  className=""
+  type="hidden"
+/>
+`;
+
+exports[`InputHidden with a value 1`] = `
+<input
+  className=""
+  type="hidden"
+  value="Some value"
+/>
+`;
+
+exports[`InputHidden with name and id 1`] = `
+<input
+  className=""
+  id="Bobby"
+  name="Bob"
+  type="hidden"
+/>
+`;

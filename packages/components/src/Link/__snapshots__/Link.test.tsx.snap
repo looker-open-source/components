@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`A Link with an id 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #0087e1;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c0:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+}
+
+<a
+  className="c0"
+  color="palette.blue500"
+  href="https://looker.com"
+  id="link-id"
+  textDecoration="none"
+>
+  🥑
+</a>
+`;
+
+exports[`A default Link 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #0087e1;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c0:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+}
+
+<a
+  className="c0"
+  color="palette.blue500"
+  href="https://looker.com"
+  textDecoration="none"
+>
+  🥑
+</a>
+`;
+
+exports[`A external Link 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #0087e1;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c0:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+}
+
+<a
+  className="c0"
+  color="palette.blue500"
+  href="https://looker.com"
+  textDecoration="none"
+>
+  🥑
+</a>
+`;

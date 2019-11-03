@@ -1,0 +1,217 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Fieldset with left aligned legend 1`] = `
+.c6 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border: solid 1px;
+  border-color: #C1C6CC;
+  border-radius: 0.25rem;
+  height: 28px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  font-size: 0.875rem;
+}
+
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  margin-bottom: 0.5rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+}
+
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  margin-bottom: 0.5rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c5 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #262D33;
+  margin-right: 0.5rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  display: inline-block;
+}
+
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #262D33;
+  padding-bottom: 0.5rem;
+  font-size: 2.25rem;
+  font-weight: 300;
+}
+
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+<fieldset
+  className="c0 "
+>
+  <div
+    className="c1"
+  >
+    <div
+      className="c2"
+    >
+      <legend
+        className="c3"
+        color="palette.charcoal800"
+        fontSize="xxxlarge"
+        fontWeight="light"
+      >
+        Legend
+      </legend>
+    </div>
+    <div
+      className="c2"
+    >
+      <div
+        className="c4 "
+      >
+        <label
+          className="c5"
+          color="palette.charcoal800"
+          fontSize="small"
+          fontWeight="semiBold"
+          htmlFor="text-1"
+        >
+          One
+        </label>
+        <div
+          className="c4"
+        >
+          <div
+            className="c2"
+          >
+            <input
+              className="c6 "
+              id="text-1"
+              name="name1"
+              type="text"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="c4 "
+      >
+        <label
+          className="c5"
+          color="palette.charcoal800"
+          fontSize="small"
+          fontWeight="semiBold"
+          htmlFor="text-2"
+        >
+          two
+        </label>
+        <div
+          className="c4"
+        >
+          <div
+            className="c2"
+          >
+            <input
+              className="c6 "
+              id="text-2"
+              name="name2"
+              type="text"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="c4 "
+      >
+        <label
+          className="c5"
+          color="palette.charcoal800"
+          fontSize="small"
+          fontWeight="semiBold"
+          htmlFor="text-3"
+        >
+          three
+        </label>
+        <div
+          className="c4"
+        >
+          <div
+            className="c2"
+          >
+            <input
+              className="c6 "
+              id="text-3"
+              name="nam3"
+              type="text"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</fieldset>
+`;

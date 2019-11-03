@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListItem A default ListItem, should be an li 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  margin-bottom: 0.25rem;
+}
+
+<li
+  className="c0"
+>
+  🥑
+</li>
+`;
+
+exports[`ListItem handles mouseenter 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  margin-bottom: 0.25rem;
+}
+
+<li
+  className="c0"
+  onMouseEnter={[Function]}
+>
+  🐭
+</li>
+`;

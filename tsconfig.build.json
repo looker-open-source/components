@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "emitDeclarationOnly": true,
+    "declaration": true,
+    "paths": {
+      "looker-*": ["./node_modules/looker-*/src"]
+    }
+  },
+  "exclude": ["**/*.story.*", "**/*.test.*", "dist"],
+  "include": []
+}

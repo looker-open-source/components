@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modal Active 1`] = `ShallowWrapper {}`;
+
+exports[`Modal Active w/ wrapped element 1`] = `ShallowWrapper {}`;
+
+exports[`Modal Inactive 1`] = `ShallowWrapper {}`;
+
+exports[`Modal Inactive w/ wrapped element 1`] = `ShallowWrapper {}`;

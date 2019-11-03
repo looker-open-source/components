@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tooltip Tooltip can hide its arrow 1`] = `ShallowWrapper {}`;
+
+exports[`Tooltip snapshot 1`] = `ShallowWrapper {}`;
+
+exports[`Tooltip tooltip can exceed bounds of containing overlay 1`] = `ShallowWrapper {}`;

@@ -1,0 +1,131 @@
+---
+title: Getting Started
+---
+
+To add Looker UI Components to your project, run the following command:
+
+```bash static
+yarn add @looker/components
+```
+
+Import some components:
+
+```jsx static
+import { Card, theme } from '@looker/components'
+import { ThemeProvider } from 'styled-components'
+
+<ThemeProvider theme={theme}>
+  <Card>{Source here...}</Card>
+</ThemeProvider>
+```
+
+Which renders the following:
+
+```jsx
+<Card raised>
+  <CardContent>
+    <Heading fontWeight="semiBold" textTransform="caps">
+      Welcome to Looker Components
+    </Heading>
+    <Text>Looker's component library</Text>
+  </CardContent>
+</Card>
+```
+
+Try editing the code above, you should see the changes appear live.
+
+These live editing blocks are found throughout our styleguide documentation, providing a space for rapid experimentation with components.
+
+## Extending
+
+### Composition
+
+Looker UI Components (and React) rely heavily on the concept of composition, where smaller components can be composed to create higher-order behavior. In the `SpaceCard` example above the `Card`, `CardContent` and `Heading` are composed to define a what it means to display a Space object in Card format.
+
+### Extending behavior
+
+In rare cases we may not support the exact presentation or behavior necessary. Through composition and styling, most components can be extended and customized. Here's an example of a new LoggerButton that logs every click:
+
+```jsx static
+import React from 'react'
+import {
+  Button as BaseButton,
+  ButtonProps as BaseButtonProps,
+} from '@looker/components'
+
+const logHandler = (event: React.MouseEvent<HTMLElement>) => {
+  logger(event.target.value)
+}
+
+export const LoggerButton: React.FC<ButtonProps> = ({ onClick, ...props }) => {
+  let clickHandler = logHandler
+  if (onClick !== undefined) {
+    clickHandler = (event: React.MouseEvent<HTMLElement>) => {
+      logHandler(event)
+      if (onClick) onClick(event)
+    }
+  }
+
+  return (
+    <Button onClick={clickHandler} {...props}>
+      {props.children}
+    </Button>
+  )
+}
+```
+
+### Extending styling
+
+Styling can also be extended, but care is needed to ensure you do not violate Looker's design principles.
+
+```jsx static
+import { Button } from '@looker/components'
+import styled from 'styled-components'
+
+const CircularButton = styled(Button)`
+  border-radius: 4rem;
+`
+
+<CircularButton>+</CircularButton>
+```
+
+#### Theme
+
+To help stay withing Looker's design principles, [we publish a theme object](https://github.com/looker-open-source/lens/blob/master/packages/design-tokens/src/theme.ts), along with libraries, like Styled Components and styled-system, to easily access the theme object within components. For example, when styling components using the `styled` function, the theme object becomes part of a component's props:
+
+```jsx static
+import { Button } from '@looker/components'
+import styled from 'styled-components'
+
+const DangerButton = styled(Button)`
+  background-color: ${props => props.theme.colors.semanticColors.danger.main};
+`
+```
+
+```jsx static
+import { Heading } from '@looker/components'
+
+interface PersonTitleProps {
+  person: Person;
+}
+
+const BasePersonTitle = ({ propsOf: PersonTitleProps }) => {
+  return (
+    <Heading as="h2">
+      {props.person.name} - {props.person.title}
+    </Heading>
+  )
+}
+
+const PersonTitle =
+  styled <
+  PersonTitleProps >
+  BasePersonTitle`
+  background-color: ${props =>
+    props.theme.colors.semanticColors.primary.lighter};
+  font-size: ${props => props.theme.fontSizes[5]};
+  padding: ${props => props.spacing.large};
+`
+```
+
+Using the Theme ensures your styling stays within the Looker design guidelines and will align in all Looker apps.

@@ -1,0 +1,108 @@
+---
+title: Checkbox
+propsOf: Checkbox
+github: Form/Inputs/Checkbox/Checkbox
+figma: file/2MG6DoSjk4IaLnjjFCnKFf/Forms
+---
+
+The `<Checkbox />` component renders a single checkbox element on the page, with no accompanying label. It is generally used to construct higher-order components like the `<FieldCheckbox />`. If you are building a form, you probably want to use `<FieldCheckbox />` instead as it provides label support.
+
+```jsx
+<Checkbox />
+```
+
+## Branded Property
+
+The `branded` property turns the background to the theme's primary color when checked.
+
+```jsx
+<Checkbox branded />
+```
+
+## Name and ID
+
+A name and ID can be specified in the `<Checkbox />` component. Names are important if the checkbox is used in the context of a form, in which case a name is required for the value of the checkbox to be captured.
+
+```jsx
+<Checkbox name="someName" id="someId" />
+```
+
+## Checked Property
+
+The `<Checkbox />` component accepts the `checked` property, which sets the checkbox as either selected or not.
+
+```jsx
+<Checkbox checked={true} onChange={() => {}} readOnly />
+<Checkbox checked={false} onChange={() => {}} readOnly />
+```
+
+## Disabled Property
+
+Use the disable property to gray out the checkbox, making it unclickable.
+
+```jsx
+<Checkbox disabled />
+<Checkbox disabled checked onChange={() => {}} />
+```
+
+## Accessibility
+
+### Best Practices
+
+- Individual checkboxes must have an onscreen `<Label>`
+- Groups of checkboxes must have group label, using the `<Fieldset>` and `<legend>` tags.
+- See related [ARIA attributes](#related-aria-attributes)
+
+### Markup Expectations
+
+- **Always** include an unique id on the checkbox element so it can be referenced by a label `<Checkbox id="agree">`
+
+### Labeling Expectations
+
+- Use clear and descriptive labels that avoid ambiguity.
+- **Always** include a `<Label>` with a `for` property that matches the checkbox `id`.
+
+```jsx
+<Label htmlFor="email-optin">
+  <Checkbox id="email-optin" value="confirm" />
+  Subscribe to our email list
+</Label>
+```
+
+- Groups of checkboxes **must be** wrapped in a `<fieldset>` and have `<legend>` that describes the group
+
+```jsx
+<Fieldset legend="Pick your favorite emojis">
+  <Checkbox id="pizza" name="emoji" value="pizza" />
+  <Label htmlFor="pizza">🍕</Label>
+  <Checkbox id="avocado" name="emoji" value="avocado" />
+  <Label htmlFor="avocado">🥑</Label>
+  <Checkbox id="grapes" name="emoji" value="grapes" />
+  <Label htmlFor="grapes">🍇</Label>
+</Fieldset>
+```
+
+## Focus Expectations
+
+- checkboxes with `:focus` should have an outline and/or a visible change to show it has focus.
+- If the checkbox with `:focus` has an error, the error should be read by a screen reader
+
+## Keyboard Expectations
+
+- If checkbox has focus the `SPACE` key should toggle the state.
+- If checkbox has focus the `Enter` key should submit the form.
+- If checkbox has focus, `TAB` and `SHIFT+TAB` should move focus to next focusable element.
+
+## Related Aria Attributes
+
+### aria-describedby
+
+Use this to provide a detailed descriptions of a field that contains errors.
+
+```jsx
+<Label htmlFor="approve">Approve Changes</Label>
+<Checkbox id="approve" aria-describedby="confirm-error-message" />
+<p id="confirm-error-message">Confirm you approve these changes</p>
+```
+
+This would announce "Approve, unchecked checkbox. Confirm you approve these changes"

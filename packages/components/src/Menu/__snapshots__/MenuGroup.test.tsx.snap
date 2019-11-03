@@ -1,0 +1,1028 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MenuGroup - JSX label 1`] = `
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.25rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  color: #262D33;
+}
+
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  list-style-type: none;
+}
+
+.c1 {
+  background-color: #FFFFFF;
+  box-shadow: 0 4px 8px -2px #DEE1E5;
+  position: -webkit-sticky;
+  position: sticky;
+  top: -1px;
+  z-index: 2;
+}
+
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.c6 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  padding-bottom: 0.75rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: inherit;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  outline: none;
+  text-align: left;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c5 {
+  background-color: #FFFFFF;
+  color: #4C535B;
+  font-size: 0.875rem;
+  font-weight: 400;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  position: relative;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c5:focus-within {
+  box-shadow: 0 0 3px 1px #49a9f2;
+  z-index: 1;
+}
+
+.c5:hover {
+  background: #F5F6F7;
+  color: #262D33;
+  font-size: #262D33;
+  font-weight: #262D33;
+}
+
+.c5:hover .c7 {
+  color: #C1C6CC;
+}
+
+.c5 .c7 {
+  color: #C1C6CC;
+  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+<li
+  className="c0 "
+>
+  <div
+    className="c1"
+  >
+    <div
+      style={
+        Object {
+          "height": "0",
+        }
+      }
+    />
+    <h2
+      className="c2"
+      fontSize="small"
+      fontWeight="semiBold"
+      style={
+        Object {
+          "zIndex": 2,
+        }
+      }
+    >
+      <div
+        className="c3"
+      >
+        Questions
+      </div>
+    </h2>
+  </div>
+  <ul
+    className="c4"
+    type="none"
+  >
+    <li
+      bg="#FFFFFF"
+      className="c5"
+      color="#4C535B"
+      fontSize="small"
+      fontWeight="normal"
+    >
+      <button
+        className="c6"
+        role="menuitem"
+      >
+        what?
+      </button>
+    </li>
+    <li
+      bg="#FFFFFF"
+      className="c5"
+      color="#4C535B"
+      fontSize="small"
+      fontWeight="normal"
+    >
+      <button
+        className="c6"
+        role="menuitem"
+      >
+        who?
+      </button>
+    </li>
+    <li
+      bg="#FFFFFF"
+      className="c5"
+      color="#4C535B"
+      fontSize="small"
+      fontWeight="normal"
+    >
+      <button
+        className="c6"
+        role="menuitem"
+      >
+        where?
+      </button>
+    </li>
+  </ul>
+</li>
+`;
+
+exports[`MenuGroup - label 1`] = `
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.25rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  color: #262D33;
+}
+
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  list-style-type: none;
+}
+
+.c1 {
+  background-color: #FFFFFF;
+  box-shadow: 0 4px 8px -2px #DEE1E5;
+  position: -webkit-sticky;
+  position: sticky;
+  top: -1px;
+  z-index: 2;
+}
+
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.c5 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  padding-bottom: 0.75rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: inherit;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  outline: none;
+  text-align: left;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c4 {
+  background-color: #FFFFFF;
+  color: #4C535B;
+  font-size: 0.875rem;
+  font-weight: 400;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  position: relative;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c4:focus-within {
+  box-shadow: 0 0 3px 1px #49a9f2;
+  z-index: 1;
+}
+
+.c4:hover {
+  background: #F5F6F7;
+  color: #262D33;
+  font-size: #262D33;
+  font-weight: #262D33;
+}
+
+.c4:hover .c6 {
+  color: #C1C6CC;
+}
+
+.c4 .c6 {
+  color: #C1C6CC;
+  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+<li
+  className="c0 "
+>
+  <div
+    className="c1"
+  >
+    <div
+      style={
+        Object {
+          "height": "0",
+        }
+      }
+    />
+    <h2
+      className="c2"
+      fontSize="small"
+      fontWeight="semiBold"
+      style={
+        Object {
+          "zIndex": 2,
+        }
+      }
+    >
+      Questions
+    </h2>
+  </div>
+  <ul
+    className="c3"
+    type="none"
+  >
+    <li
+      bg="#FFFFFF"
+      className="c4"
+      color="#4C535B"
+      fontSize="small"
+      fontWeight="normal"
+    >
+      <button
+        className="c5"
+        role="menuitem"
+      >
+        what?
+      </button>
+    </li>
+    <li
+      bg="#FFFFFF"
+      className="c4"
+      color="#4C535B"
+      fontSize="small"
+      fontWeight="normal"
+    >
+      <button
+        className="c5"
+        role="menuitem"
+      >
+        who?
+      </button>
+    </li>
+    <li
+      bg="#FFFFFF"
+      className="c4"
+      color="#4C535B"
+      fontSize="small"
+      fontWeight="normal"
+    >
+      <button
+        className="c5"
+        role="menuitem"
+      >
+        where?
+      </button>
+    </li>
+  </ul>
+</li>
+`;
+
+exports[`MenuGroup - labelProps & labelStyles 1`] = `
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-size: 1.5625rem;
+  font-weight: 600;
+  line-height: 2.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  color: #262D33;
+}
+
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  list-style-type: none;
+}
+
+.c1 {
+  background-color: #FFFFFF;
+  box-shadow: 0 4px 8px -2px #DEE1E5;
+  position: -webkit-sticky;
+  position: sticky;
+  top: -1px;
+  z-index: 2;
+}
+
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.c5 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  padding-bottom: 0.75rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: inherit;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  outline: none;
+  text-align: left;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c4 {
+  background-color: #FFFFFF;
+  color: #4C535B;
+  font-size: 0.875rem;
+  font-weight: 400;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  position: relative;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c4:focus-within {
+  box-shadow: 0 0 3px 1px #49a9f2;
+  z-index: 1;
+}
+
+.c4:hover {
+  background: #F5F6F7;
+  color: #262D33;
+  font-size: #262D33;
+  font-weight: #262D33;
+}
+
+.c4:hover .c6 {
+  color: #C1C6CC;
+}
+
+.c4 .c6 {
+  color: #C1C6CC;
+  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+<li
+  className="c0 "
+>
+  <div
+    className="c1"
+  >
+    <div
+      style={
+        Object {
+          "height": "0",
+        }
+      }
+    />
+    <h2
+      className="c2"
+      fontSize="xxlarge"
+      fontWeight="semiBold"
+      style={
+        Object {
+          "color": "rebeccapurple",
+          "zIndex": 2,
+        }
+      }
+    >
+      Questions
+    </h2>
+  </div>
+  <ul
+    className="c3"
+    type="none"
+  >
+    <li
+      bg="#FFFFFF"
+      className="c4"
+      color="#4C535B"
+      fontSize="small"
+      fontWeight="normal"
+    >
+      <button
+        className="c5"
+        role="menuitem"
+      >
+        what?
+      </button>
+    </li>
+    <li
+      bg="#FFFFFF"
+      className="c4"
+      color="#4C535B"
+      fontSize="small"
+      fontWeight="normal"
+    >
+      <button
+        className="c5"
+        role="menuitem"
+      >
+        who?
+      </button>
+    </li>
+    <li
+      bg="#FFFFFF"
+      className="c4"
+      color="#4C535B"
+      fontSize="small"
+      fontWeight="normal"
+    >
+      <button
+        className="c5"
+        role="menuitem"
+      >
+        where?
+      </button>
+    </li>
+  </ul>
+</li>
+`;
+
+exports[`MenuGroup - menu customization 1`] = `
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  list-style-type: none;
+}
+
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #9785F2;
+  margin-right: 0.5rem;
+  width: 20px;
+  height: 20px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  background-color: #4F2ABA;
+}
+
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  padding-bottom: 0.75rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: inherit;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  outline: none;
+  text-align: left;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c6:hover .c5 {
+  color: #C1C6CC;
+}
+
+.c6 .c5 {
+  color: #C1C6CC;
+  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c2 {
+  background-color: #4F2ABA;
+  color: #BFB2FF;
+  font-size: 0.875rem;
+  font-weight: 400;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  position: relative;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c2:focus-within {
+  box-shadow: 0 0 3px 1px #49a9f2;
+  z-index: 1;
+}
+
+.c2:hover {
+  background: #341C7A;
+  color: #FFFFFF;
+  font-size: #FFFFFF;
+  font-weight: #FFFFFF;
+}
+
+.c2:hover .c5 {
+  color: #E8E5FF;
+}
+
+.c2 .c5 {
+  color: #9785F2;
+  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+<li
+  className="c0 "
+>
+  <ul
+    className="c1"
+    type="none"
+  >
+    <li
+      bg="#4F2ABA"
+      className="c2"
+      color="#BFB2FF"
+      fontSize="small"
+      fontWeight="normal"
+    >
+      <button
+        className="c3"
+        role="menuitem"
+      >
+        <div
+          className="c4 c5 "
+          color="#9785F2"
+          size={20}
+        >
+          <svg
+            fill="currentColor"
+            height="100%"
+            viewBox="0 0 24 24"
+            width="100%"
+          >
+            <title>
+              Logo Rings
+            </title>
+            <g
+              clipPath="url(#LogoRings_svg__clip0)"
+              fill="currentColor"
+            >
+              <path
+                d="M13.913 11.36a6.339 6.339 0 00-3.199.864l.914 1.207a4.841 4.841 0 012.286-.572 4.88 4.88 0 014.875 4.875 4.88 4.88 0 01-4.875 4.875 4.88 4.88 0 01-4.875-4.875c0-1.323.531-2.523 1.39-3.402l-.913-1.206a6.354 6.354 0 00-1.977 4.608 6.382 6.382 0 006.375 6.375 6.382 6.382 0 006.375-6.375 6.382 6.382 0 00-6.375-6.375v.001zM9.785 8.735c0 .59-.198 1.132-.527 1.57l.927 1.224a4.1 4.1 0 00.319-5.201l-1.1 1.052c.24.396.38.858.38 1.354v.001zM7.16 11.361a2.629 2.629 0 01-2.625-2.625A2.628 2.628 0 017.16 6.111c.405 0 .79.095 1.132.26l1.13-1.08a4.1 4.1 0 00-2.262-.68 4.13 4.13 0 00-4.125 4.125 4.13 4.13 0 004.125 4.125c.655 0 1.273-.158 1.824-.43l-.93-1.23c-.28.102-.58.16-.894.16zM11.285 3.111c0-.827.673-1.5 1.5-1.5s1.5.673 1.5 1.5a1.502 1.502 0 01-1.92 1.44l-1.158 1.107c.46.285 1 .453 1.578.453 1.654 0 3-1.346 3-3s-1.346-3-3-3-3 1.346-3 3c0 .532.141 1.031.384 1.464l1.16-1.11a1.481 1.481 0 01-.044-.355v.001z"
+              />
+              <path
+                d="M10.184 11.53a4.143 4.143 0 01-1.2.9l.528.696a6.457 6.457 0 011.2-.902l-.527-.695v.001zM10.504 6.33l.703-.673a3.018 3.018 0 01-1.038-1.083l-.747.715c.422.278.788.631 1.083 1.041h-.001z"
+              />
+              <path
+                d="M11.625 13.434l-.914-1.207a6.37 6.37 0 00-1.2.902l.914 1.206a4.93 4.93 0 011.199-.901zM9.407 7.381l1.099-1.052a4.153 4.153 0 00-1.083-1.04L8.293 6.37a2.64 2.64 0 011.113 1.011h.001zM10.186 11.53l-.927-1.223a2.63 2.63 0 01-1.204.894l.93 1.229c.454-.225.86-.531 1.2-.9zM11.21 5.659l1.158-1.108a1.502 1.502 0 01-1.036-1.084l-1.16 1.11c.249.443.608.815 1.038 1.083v-.001z"
+              />
+            </g>
+            <defs>
+              <clipPath
+                id="LogoRings_svg__clip0"
+              >
+                <path
+                  d="M0 0h24v24H0z"
+                  fill="#fff"
+                />
+              </clipPath>
+            </defs>
+          </svg>
+        </div>
+        Looker
+      </button>
+    </li>
+    <li
+      bg="#4F2ABA"
+      className="c2"
+      color="#BFB2FF"
+      fontSize="small"
+      fontWeight="normal"
+    >
+      <button
+        className="c3"
+        role="menuitem"
+      >
+        <div
+          className="c4 c5 "
+          color="#9785F2"
+          size={20}
+        >
+          <svg
+            fill="currentColor"
+            height="100%"
+            viewBox="0 0 24 24"
+            width="100%"
+          >
+            <title>
+              Validate
+            </title>
+            <path
+              d="M11.749.09L2 4.423v6.499c0 6.01 4.16 11.633 9.749 12.998 5.589-1.365 9.749-6.986 9.749-12.998v-6.5L11.749.09zM9.582 17.42l-4.333-4.333 1.527-1.527 2.805 2.794 7.138-7.138 1.527 1.538-8.666 8.665h.002z"
+              fill="currentColor"
+            />
+          </svg>
+        </div>
+        Validate
+      </button>
+    </li>
+    <li
+      bg="#4F2ABA"
+      className="c2"
+      color="#BFB2FF"
+      fontSize="small"
+      fontWeight="normal"
+    >
+      <button
+        className="c3"
+        role="menuitem"
+      >
+        <div
+          className="c4 c5 "
+          color="#9785F2"
+          size={20}
+        >
+          <svg
+            fill="currentColor"
+            height="100%"
+            viewBox="0 0 24 24"
+            width="100%"
+          >
+            <title>
+              Chart Pie
+            </title>
+            <path
+              d="M11 2v20c-5.07-.5-9-4.79-9-10s3.93-9.5 9-10zm2.03 0v8.99H22c-.47-4.74-4.24-8.52-8.97-8.99zm0 11.01V22c4.74-.47 8.5-4.25 8.97-8.99h-8.97z"
+              fill="currentColor"
+            />
+          </svg>
+        </div>
+        Pizza!
+      </button>
+    </li>
+  </ul>
+</li>
+`;
+
+exports[`MenuGroup - menu customization 2`] = `undefined`;
+
+exports[`MenuGroup 1`] = `
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  list-style-type: none;
+}
+
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  padding-bottom: 0.75rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: inherit;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  outline: none;
+  text-align: left;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c2 {
+  background-color: #FFFFFF;
+  color: #4C535B;
+  font-size: 0.875rem;
+  font-weight: 400;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  position: relative;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+.c2:focus-within {
+  box-shadow: 0 0 3px 1px #49a9f2;
+  z-index: 1;
+}
+
+.c2:hover {
+  background: #F5F6F7;
+  color: #262D33;
+  font-size: #262D33;
+  font-weight: #262D33;
+}
+
+.c2:hover .c4 {
+  color: #C1C6CC;
+}
+
+.c2 .c4 {
+  color: #C1C6CC;
+  -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+  transition: color 150ms cubic-bezier(0.86,0,0.07,1);
+}
+
+<li
+  className="c0 "
+>
+  <ul
+    className="c1"
+    type="none"
+  >
+    <li
+      bg="#FFFFFF"
+      className="c2"
+      color="#4C535B"
+      fontSize="small"
+      fontWeight="normal"
+    >
+      <button
+        className="c3"
+        role="menuitem"
+      >
+        who!
+      </button>
+    </li>
+  </ul>
+</li>
+`;

@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ButtonOutline has the correct style 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-weight: 600;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  outline: none;
+  -webkit-transition: border 80ms;
+  transition: border 80ms;
+  vertical-align: middle;
+  white-space: nowrap;
+  font-size: 1rem;
+  height: 34px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.c0[disabled] {
+  cursor: default;
+  -webkit-filter: grayscale(0.3);
+  filter: grayscale(0.3);
+  opacity: 0.25;
+}
+
+.c1 {
+  border: 1px solid #C1C6CC;
+  color: #64518A;
+}
+
+.c1:hover,
+.c1:focus,
+.c1.hover {
+  border-color: #64518A;
+  color: #2A1B60;
+}
+
+.c1:active,
+.c1.active {
+  background: #64518A;
+  border-color: #64518A;
+  color: #FFFFFF;
+}
+
+.c1[disabled]:hover,
+.c1[disabled]:active,
+.c1[disabled]:focus {
+  border-color: #C1C6CC;
+  color: #64518A;
+}
+
+<button
+  class="c0 c1"
+>
+  Outline
+</button>
+`;
+
+exports[`ButtonOutline is rendered  1`] = `ShallowWrapper {}`;

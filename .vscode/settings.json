@@ -1,0 +1,34 @@
+{
+  "editor.tabSize": 2,
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "eslint.validate": [
+    {
+      "language": "typescript",
+      "autoFix": true
+    },
+    {
+      "language": "typescriptreact",
+      "autoFix": true
+    }
+  ],
+  "cSpell.words": [
+    "JIRA",
+    "describedby",
+    "easings",
+    "figma",
+    "frontmatter",
+    "labelledby",
+    "nomarker",
+    "polarbrightness",
+    "stylelint",
+    "xlarge",
+    "xsmall",
+    "xxlarge",
+    "xxsmall",
+    "xxxlarge",
+    "xxxxlarge"
+  ]
+}

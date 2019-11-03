@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModalFooter with Button 1`] = `
+.c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row-reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+  padding: 1.25rem calc(2rem - 0.5rem);
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row-reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+}
+
+.c1 > * {
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+<footer
+  className="c0"
+>
+  <div
+    className="c1"
+  >
+    <button>
+      Cancel
+    </button>
+  </div>
+</footer>
+`;
+
+exports[`ModalFooter with ModalContext 1`] = `
+.c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row-reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+  padding: 1.25rem calc(2rem - 0.5rem);
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row-reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+}
+
+.c1 > * {
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+<footer
+  className="c0"
+>
+  <div
+    className="c1"
+  >
+    <button>
+      Cancel
+    </button>
+    <button
+      onClick={[Function]}
+    >
+      Yes, Delete "Stuff"
+    </button>
+  </div>
+</footer>
+`;
