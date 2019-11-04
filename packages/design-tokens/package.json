@@ -12,6 +12,9 @@
     "url": "https://github.com/looker-open-source/lens",
     "directory": "packages/design-tokens"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build:declaration": "tsc --project tsconfig.build.json",
     "build:es": "BABEL_ENV=build babel src --root-mode upward --out-dir dist --source-maps --extensions .ts,.tsx --delete-dir-on-start --no-comments"
@@ -33,5 +36,5 @@
     "styled-components": "^4.3.2",
     "styled-system": "^5.1.2"
   },
-  "gitHead": "740f664b951ef6ebdd6a572cd125b68c723e35f0"
+  "gitHead": "05b63c793e74648ca4ada0d1bb9d4cc278256778"
 }

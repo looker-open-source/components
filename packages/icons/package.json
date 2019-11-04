@@ -7,6 +7,14 @@
   "files": [
     "dist"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/looker-open-source/lens",
+    "directory": "packages/icons"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build:declaration": "tsc --project tsconfig.build.json",
     "build:es": "yarn build:icons && BABEL_ENV=build babel src --root-mode upward --out-dir dist --source-maps --extensions .js,.jsx,.ts,.tsx --delete-dir-on-start --no-comments",
@@ -22,10 +30,5 @@
     "ora": "^3.4.0",
     "rimraf": "^3.0.0"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/looker-open-source/lens",
-    "directory": "packages/icons"
-  },
-  "gitHead": "5d353bb0df716b9a34ab1953ce90c6dc8a74fb92"
+  "gitHead": "05b63c793e74648ca4ada0d1bb9d4cc278256778"
 }
