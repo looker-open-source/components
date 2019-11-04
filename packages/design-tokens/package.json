@@ -36,5 +36,9 @@
     "styled-components": "^4.3.2",
     "styled-system": "^5.1.2"
   },
-  "gitHead": "05b63c793e74648ca4ada0d1bb9d4cc278256778"
+  "gitHead": "05b63c793e74648ca4ada0d1bb9d4cc278256778",
+  "dependencies": {
+    "lodash": "^4.17.15",
+    "polished": "^3.4.2"
+  }
 }
