@@ -23,6 +23,7 @@
     "build:es": "yarn lerna run 'build:es'",
     "postbuild": "yarn build:declarations && run-p -c 'lint'",
     "build:declarations": "yarn lerna run 'build:declaration'",
+    "deploy": "yarn workspace www deploy",
     "fix": "run-p -c 'lint:ts-* --fix'",
     "lint": "run-p -c lint:*",
     "lint:css": "stylelint 'packages/**/*.ts{,x}'",
