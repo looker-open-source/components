@@ -72,7 +72,7 @@ exports[`Dismissable banner 1`] = `
   display: inline-flex;
 }
 
-.c5 {
+.c6 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -90,40 +90,6 @@ exports[`Dismissable banner 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-}
-
-.c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  border-radius: 0.25rem;
-  background-color: #e0f2ff;
-  margin: 0.75rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c2 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-  -webkit-clip: rect(1px,1px,1px,1px);
-  clip: rect(1px,1px,1px,1px);
 }
 
 .c3 {
@@ -160,7 +126,6 @@ exports[`Dismissable banner 1`] = `
   padding-right: 0.75rem;
   padding: 0rem;
   margin-left: auto;
-  height: auto;
 }
 
 .c3[disabled] {
@@ -170,7 +135,7 @@ exports[`Dismissable banner 1`] = `
   opacity: 0.25;
 }
 
-.c4 {
+.c0 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -178,15 +143,27 @@ exports[`Dismissable banner 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  margin-left: auto;
-  padding: 3px;
+  border-radius: 0.25rem;
+  background-color: #e0f2ff;
+  margin: 0.75rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c4 {
   background: transparent;
   border: 1px solid transparent;
   color: #939BA5;
-}
-
-.c4:focus {
-  box-shadow: 0 0 0 0.15rem rgba(147,155,165,0.25);
 }
 
 .c4:active,
@@ -207,12 +184,31 @@ exports[`Dismissable banner 1`] = `
 .c4[disabled]:hover,
 .c4[disabled]:active,
 .c4[disabled]:focus {
-  background-color: transparent;
-  border-color: transparent;
   color: #939BA5;
 }
 
-.c4:hover {
+.c2 {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  -webkit-clip: rect(1px,1px,1px,1px);
+  clip: rect(1px,1px,1px,1px);
+}
+
+.c5 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  margin-left: auto;
+  padding: 3px;
+}
+
+.c5:hover {
   background: none;
 }
 
@@ -251,9 +247,10 @@ exports[`Dismissable banner 1`] = `
   </div>
   <button
     aria-hidden={true}
-    className="c3 c4"
+    className="c3 c4 c5"
     color="neutral"
-    label="Dismiss"
+    onBlur={[Function]}
+    onKeyUp={[Function]}
     size="small"
     style={
       Object {
@@ -268,7 +265,7 @@ exports[`Dismissable banner 1`] = `
     </div>
     <div
       aria-hidden={true}
-      className="c5 "
+      className="c6 "
       size={20}
     >
       <svg

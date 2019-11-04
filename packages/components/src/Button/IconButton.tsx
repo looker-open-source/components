@@ -24,12 +24,13 @@
 
  */
 
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import {
   CompatibleHTMLProps,
   pseudoClasses,
   PseudoProps,
   reset,
+  SemanticColors,
   SpaceProps,
   space,
   SizeLarge,
@@ -43,7 +44,7 @@ import React, { forwardRef, Ref } from 'react'
 import { Icon } from '../Icon'
 import { VisuallyHidden } from '../VisuallyHidden'
 import { buttonCSS } from './ButtonBase'
-import { IconButtonVariantProps, iconButtonVariant } from './variant'
+import { ButtonTransparent } from './ButtonTransparent'
 
 export type IconButtonSizes =
   | SizeXXSmall
@@ -52,13 +53,23 @@ export type IconButtonSizes =
   | SizeMedium
   | SizeLarge
 
+type ButtonColors = keyof SemanticColors
+
+// this props refer to the keyboard expected focus behavior
+interface IconButtonFocusProps {
+  focusVisible?: boolean
+}
+
 export interface IconButtonProps
-  extends Omit<CompatibleHTMLProps<HTMLButtonElement>, 'children' | 'type'>,
-    IconButtonVariantProps,
+  extends IconButtonFocusProps,
+    Omit<CompatibleHTMLProps<HTMLButtonElement>, 'children' | 'type'>,
     PseudoProps,
     SpaceProps {
   type?: 'button' | 'submit' | 'reset'
 
+  color?: ButtonColors
+
+  outline?: boolean
   /**
    * The Icon to display inside of the button
    */
@@ -102,21 +113,59 @@ export const IconButtonStyle = styled.button<IconButtonProps>`
 
 const IconButtonComponent = forwardRef(
   (props: IconButtonProps, ref: Ref<HTMLButtonElement>) => {
-    const { icon, size, label } = props
+    const { icon, size, label, ...rest } = props
+
+    const actualSize = size === 'xxsmall' ? 'xsmall' : size
+
     return (
-      <IconButtonStyle ref={ref} color="neutral" p="none" {...props}>
+      <ButtonTransparent
+        ref={ref}
+        color="neutral"
+        p="none"
+        size={actualSize}
+        {...rest}
+      >
         <VisuallyHidden>{label}</VisuallyHidden>
         <Icon
           name={icon}
           size={iconSizeHelper(size || 'xsmall')}
           aria-hidden={true}
         />
-      </IconButtonStyle>
+      </ButtonTransparent>
     )
   }
 )
 
 IconButtonComponent.displayName = 'IconButtonComponent'
+
+const outlineCSS = (props: IconButtonProps) => {
+  const { color = 'primary' } = props
+
+  return css`
+    border: 1px solid
+      ${props => props.theme.colors.semanticColors[color].borderColor};
+
+    &:hover,
+    &:focus,
+    &.hover {
+      border-color: ${props => props.theme.colors.semanticColors[color].main};
+    }
+
+    &:active,
+    &.active {
+      border-color: ${props => props.theme.colors.semanticColors[color].main};
+    }
+
+    &[disabled] {
+      &:hover,
+      &:active,
+      &:focus {
+        border-color: ${props =>
+          props.theme.colors.semanticColors[color].borderColor};
+      }
+    }
+  `
+}
 
 export const IconButton = styled(IconButtonComponent)<IconButtonProps>`
   ${reset}
@@ -124,7 +173,8 @@ export const IconButton = styled(IconButtonComponent)<IconButtonProps>`
 
   padding: 3px;
 
-  ${iconButtonVariant}
+  ${props => props.outline && outlineCSS}
+
   ${pseudoClasses}
   ${({ shape }) => shape === 'round' && 'border-radius: 100%;'}
 `
