@@ -16,7 +16,7 @@
   },
   "engines": {
     "node": ">=12",
-    "yarn": ">=1.19.0"
+    "yarn": ">=1.14.0"
   },
   "scripts": {
     "build": "yarn build:es",
