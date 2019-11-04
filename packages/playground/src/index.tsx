@@ -26,48 +26,67 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {
-  Button,
-  Popover,
-  PopoverContent,
-  GlobalStyle,
-  InputText,
-} from '@looker/components'
+import { Button, GlobalStyle, IconButton } from '@looker/components'
 import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
 
 const App: React.FC = () => {
-  const [value, setValue] = React.useState('')
-  function handleChange(e: React.FormEvent<HTMLInputElement>) {
-    setValue(e.currentTarget.value)
-  }
+  // const [value, setValue] = React.useState('')
+  // function handleChange(e: React.FormEvent<HTMLInputElement>) {
+  //   setValue(e.currentTarget.value)
+  // }
   return (
     <ThemeProvider theme={theme}>
       <>
         <GlobalStyle />
-        <Popover
-          content={
-            <PopoverContent p="large">
-              <InputText
-                onChange={handleChange}
-                value={value}
-                placeholder="Type in me"
-              />
-            </PopoverContent>
-          }
-        >
-          {(onClick, ref, className) => (
-            <Button
-              aria-haspopup="true"
-              onClick={onClick}
-              ref={ref}
-              className={className}
-              m="small"
-            >
-              Reproduces Helltool Modal/Popover Bug
-            </Button>
-          )}
-        </Popover>
+        <br />
+        <br />
+        <Button>default</Button>
+        <br />
+        <br />
+        <IconButton label="Add File" icon="Plus" mr="small" /> <br />
+        <br />
+        <Button iconAfter="Trash" color="danger">
+          trash
+        </Button>
+        <br />
+        <br />
+        <IconButton label="Test" icon="Favorite" outline />
+        <br />
+        <br />
+        <IconButton
+          label="Delete Look"
+          icon="Trash"
+          size="medium"
+          color="danger"
+          mr="small"
+          outline
+        />
+        <IconButton
+          label="Delete Look"
+          icon="Trash"
+          size="small"
+          color="danger"
+          mr="small"
+        />
+        <IconButton
+          label="Delete Look"
+          icon="Trash"
+          size="xsmall"
+          color="danger"
+          mr="small"
+        />
+        <IconButton
+          label="Delete Look"
+          icon="Trash"
+          size="xxsmall"
+          color="danger"
+          mr="small"
+        />
+        <br />
+        <br />
+        <IconButton label="Favorite" icon="Favorite" />
+        <IconButton label="Trash" icon="Trash" />
       </>
     </ThemeProvider>
   )
