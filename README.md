@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/looker-open-source/lens.svg?branch=master)](https://travis-ci.com/looker-open-source/lens)
+
 Lens is Looker's design system. It exists as a series of Figma templates as well as the documentation within this repository.
 
 This repository hosts the Looker UI Components library Lens publishes and the platform needed to generate our style guide. If you're looking for documentation for using Looker UI Components within your own application, you can view the documentation online at [lens.looker.com](https://lens.looker.com)
