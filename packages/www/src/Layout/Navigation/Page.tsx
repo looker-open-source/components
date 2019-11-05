@@ -34,7 +34,7 @@ interface PageProps {
   path: string[]
 }
 
-export const pathToUri = (path: string[]) => `/${path.join('/')}`
+export const pathToUri = (path: string[]) => `/components/${path.join('/')}`
 
 const Page: FC<PageProps> = ({ page, path }) => {
   const currentPath = useContext(LocationContext)
