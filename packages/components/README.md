@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This package provides a series of components that implement Looker's Design System. See http://looker-open-source.github.io/components for additional detail on Looker Components.
+This package provides a series of components that implement Looker's Design System. See http://components.looker.com for additional detail on Looker Components.
 
 ## Installation
 
