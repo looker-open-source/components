@@ -1,6 +1,6 @@
 {
   "name": "@looker/components",
-  "version": "0.6.3-alpha.0",
+  "version": "0.7.0",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -21,7 +21,7 @@
     "develop": "yarn build:es --watch --verbose & yarn build:declaration --watch"
   },
   "devDependencies": {
-    "@looker/components-test-utils": "^0.6.3-alpha.0",
+    "@looker/components-test-utils": "^0.7.0",
     "@types/d3-color": "^1.2.2",
     "@types/d3-hsv": "^0.1.3",
     "@types/react-resize-detector": "^4.0.1",
@@ -34,8 +34,8 @@
     "react-test-renderer": "^16.9.0"
   },
   "dependencies": {
-    "@looker/design-tokens": "^0.6.3-alpha.0",
-    "@looker/icons": "^0.6.3-alpha.0",
+    "@looker/design-tokens": "^0.7.0",
+    "@looker/icons": "^0.7.0",
     "d3-color": "^1.3.0",
     "d3-hsv": "^0.1.0",
     "focus-trap": "^5.0.2",
