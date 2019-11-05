@@ -26,48 +26,27 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {
-  Button,
-  Popover,
-  PopoverContent,
-  GlobalStyle,
-  InputText,
-} from '@looker/components'
+import { Divider, GlobalStyle, MenuSearch } from '@looker/components'
 import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
 
 const App: React.FC = () => {
-  const [value, setValue] = React.useState('')
-  function handleChange(e: React.FormEvent<HTMLInputElement>) {
-    setValue(e.currentTarget.value)
-  }
+  // const [value, setValue] = React.useState('')
+  // function handleChange(e: React.FormEvent<HTMLInputElement>) {
+  //   setValue(e.currentTarget.value)
+  // }
+
+  const onClear = () => console.log('onClear was called')
+
   return (
     <ThemeProvider theme={theme}>
       <>
         <GlobalStyle />
-        <Popover
-          content={
-            <PopoverContent p="large">
-              <InputText
-                onChange={handleChange}
-                value={value}
-                placeholder="Type in me"
-              />
-            </PopoverContent>
-          }
-        >
-          {(onClick, ref, className) => (
-            <Button
-              aria-haspopup="true"
-              onClick={onClick}
-              ref={ref}
-              className={className}
-              m="small"
-            >
-              Reproduces Helltool Modal/Popover Bug
-            </Button>
-          )}
-        </Popover>
+        <MenuSearch />
+        <Divider my="medium" />
+        <MenuSearch value="Stuff" summary="Faux results" onClear={onClear} />
+        <Divider my="medium" />
+        <MenuSearch value="Stuff" hideControls />
       </>
     </ThemeProvider>
   )
