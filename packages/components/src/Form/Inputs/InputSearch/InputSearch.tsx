@@ -53,6 +53,8 @@ export interface InputSearchProps
    */
   summary?: string
 
+  onClear?: () => void
+
   value?: string
   width?: string
   height?: string
@@ -99,6 +101,7 @@ const InputSearchComponent = forwardRef(
       hideControls = false,
       summary,
       onChange,
+      onClear,
       value = '',
       width = '100%',
       border,
@@ -112,7 +115,10 @@ const InputSearchComponent = forwardRef(
     } = props
     const [inputValue, setValue] = useState(value)
 
-    const onClear = () => setValue('')
+    const handleClear = () => {
+      setValue('')
+      onClear && onClear()
+    }
 
     const updateValue = (event: FormEvent<HTMLInputElement>) => {
       setValue(event.currentTarget.value)
@@ -120,7 +126,7 @@ const InputSearchComponent = forwardRef(
     }
 
     const controls = !hideControls && inputValue.length > 0 && (
-      <InputSearchControls onClear={onClear} summary={summary} />
+      <InputSearchControls onClear={handleClear} summary={summary} />
     )
 
     return (
