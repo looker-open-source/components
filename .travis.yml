@@ -1,0 +1,11 @@
+language: node_js
+branches:
+  only:
+    - master
+deploy:
+  provider: script
+  script: yarn && yarn deploy
+  script: yarn deploy
+  skip_cleanup: true
+  # on:
+  # branch: master

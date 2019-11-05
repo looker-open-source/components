@@ -1,7 +1,7 @@
 {
   "name": "www",
   "private": true,
-  "version": "0.6.2-alpha.0",
+  "version": "0.6.3-alpha.0",
   "dependencies": {
     "@mdx-js/mdx": "^1.5.1",
     "@mdx-js/react": "^1.5.1",
@@ -21,6 +21,7 @@
     "gatsby-plugin-typescript": "^2.1.15",
     "gatsby-remark-images": "^3.1.28",
     "gatsby-source-filesystem": "^2.1.33",
+    "polished": "^3.4.2",
     "prism-react-renderer": "^1.0.1",
     "react": "^16.9.0",
     "react-copy-to-clipboard": "^5.0.1",
@@ -29,16 +30,18 @@
     "react-live": "^2.2.1"
   },
   "devDependencies": {
-    "@looker/components": "^0.6.2-alpha.0",
-    "@looker/components-test-utils": "^0.6.2-alpha.0",
-    "@looker/design-tokens": "^0.6.2-alpha.0",
-    "@looker/icons": "^0.6.2-alpha.0",
+    "@looker/components": "^0.6.3-alpha.0",
+    "@looker/components-test-utils": "^0.6.3-alpha.0",
+    "@looker/design-tokens": "^0.6.3-alpha.0",
+    "@looker/icons": "^0.6.3-alpha.0",
     "@types/react": "^16.9.9",
+    "@types/react-copy-to-clipboard": "^4.3.0",
     "@types/react-dom": "^16.9.2",
     "@typescript-eslint/parser": "^2.3.1",
     "d3-hsv": "^0.1.0",
     "eslint": "^6.4.0",
     "eslint-loader": "^3.0.0",
+    "gh-pages": "^2.1.1",
     "react-transition-group": "4.2.2",
     "scroll-behavior": "^0.9.10",
     "styled-components": "^4.3.2",
@@ -48,6 +51,7 @@
   "scripts": {
     "lint": "eslint . --ext mdx",
     "build": "gatsby build",
+    "deploy": "yarn build && gh-pages -d public -r https://$GITHUB_TOKEN@github.com/looker-open-source/lens.git",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "serve": "gatsby serve",
