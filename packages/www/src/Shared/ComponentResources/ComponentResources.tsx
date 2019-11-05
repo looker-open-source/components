@@ -37,7 +37,7 @@ interface ComponentResourcesProps {
 
 const figmaBase = 'https://www.figma.com/'
 const githubBase =
-  'https://github.com/looker-open-source/lens/blob/master/packages/components/src/'
+  'https://github.com/looker-open-source/components/blob/master/packages/components/src/'
 
 const ComponentResources: FC<ComponentResourcesProps> = ({
   figma,
@@ -58,7 +58,7 @@ const ComponentResources: FC<ComponentResourcesProps> = ({
       )}
       {feedbackTitle && (
         <Resource
-          url={`https://github.com/looker-open-source/lens/issues/new?title=${feedbackTitle}+Component+Feedback`}
+          url={`https://github.com/looker-open-source/components/issues/new?title=${feedbackTitle}+Component+Feedback`}
         >
           <FeedbackSvg /> Feedback
         </Resource>

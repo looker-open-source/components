@@ -65,7 +65,7 @@ export const layoutCSS = css`
 
   /**
    * Style Utilities that extend Box's props. Most of these come from
-   * styled-system but some are Lens specific.
+   * styled-system but some are Looker UI Components specific.
    *
    * These should be last to override rules with lower priority.
    */

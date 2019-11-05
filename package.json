@@ -1,18 +1,18 @@
 {
-  "name": "lens",
+  "name": "monorepo",
   "license": "MIT",
   "author": "Looker",
   "private": true,
   "workspaces": [
     "packages/*"
   ],
-  "homepage": "https://lens.looker.com",
+  "homepage": "https://looker-open-source.github.io/componentsm",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/looker-open-source/lens.git"
+    "url": "git+https://github.com/looker-open-source/components.git"
   },
   "bugs": {
-    "url": "https://github.com/looker-open-source/lens/issues"
+    "url": "https://github.com/looker-open-source/components/issues"
   },
   "engines": {
     "node": ">=12",

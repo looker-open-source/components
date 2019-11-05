@@ -50,8 +50,8 @@
   },
   "scripts": {
     "lint": "eslint . --ext mdx",
-    "build": "gatsby build",
-    "deploy": "yarn build && gh-pages -d public -r https://$GITHUB_TOKEN@github.com/looker-open-source/lens.git",
+    "build": "gatsby build --prefix-paths",
+    "deploy": "yarn build && gh-pages -d public -r https://$GITHUB_TOKEN@github.com/looker-open-source/components.git",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "serve": "gatsby serve",
@@ -59,7 +59,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/looker-open-source/lens",
+    "url": "https://github.com/looker-open-source/components",
     "directory": "packages/www"
   }
 }

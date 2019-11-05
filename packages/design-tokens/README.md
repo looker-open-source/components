@@ -39,7 +39,7 @@ const myTheme = {
 const MyApp = () => {
   return (
     <ThemeProvider theme={myTheme}>
-      {/*...Lens components here */}
+      {/*... Looker UI Components here */}
     </ThemeProvider>
   )
 }
