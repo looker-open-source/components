@@ -167,7 +167,6 @@ describe('Tooltip', () => {
     expect(paragraph.props().textAlign).toEqual('right')
   })
 
-  // Proves LENS-119 is invalid
   test('tooltip can exceed bounds of containing overlay', () => {
     const tooltip = (
       <Tooltip content="Great knowledge here!" isOpen>

@@ -1,7 +1,7 @@
 {
   "name": "@looker/design-tokens",
   "license": "MIT",
-  "version": "0.6.3-alpha.0",
+  "version": "0.7.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -9,7 +9,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/looker-open-source/lens",
+    "url": "https://github.com/looker-open-source/components",
     "directory": "packages/design-tokens"
   },
   "publishConfig": {

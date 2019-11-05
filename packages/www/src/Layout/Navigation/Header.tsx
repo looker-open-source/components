@@ -28,7 +28,7 @@ import { Flex, Heading, Icon } from '@looker/components'
 import React, { FC } from 'react'
 import styled from 'styled-components'
 import { space, SpaceProps } from '@looker/design-tokens'
-import LensLogo from './LensLogo'
+import ComponentsLogo from './ComponentsLogo'
 
 interface HeaderProps {
   className?: string
@@ -46,7 +46,7 @@ export const HeaderJsx: FC<HeaderProps> = ({ className }) => (
         height="26px"
       />
       <DividerVertical ml="medium" mr="small" />
-      <LensLogo />
+      <ComponentsLogo />
       <Heading
         variant="default"
         lineHeight="small"

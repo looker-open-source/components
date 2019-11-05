@@ -1,12 +1,12 @@
 {
   "name": "playground",
-  "version": "0.6.3-alpha.0",
+  "version": "0.7.0",
   "main": "index.js",
   "license": "MIT",
   "author": "Looker",
   "repository": {
     "type": "git",
-    "url": "https://github.com/looker-open-source/lens",
+    "url": "https://github.com/looker-open-source/components",
     "directory": "packages/components"
   },
   "private": true,
@@ -14,8 +14,8 @@
     "develop": "webpack-dev-server --port 3000 --disable-host-check"
   },
   "dependencies": {
-    "@looker/components": "^0.6.3-alpha.0",
-    "@looker/design-tokens": "^0.6.3-alpha.0",
+    "@looker/components": "^0.7.0",
+    "@looker/design-tokens": "^0.7.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0"
   },

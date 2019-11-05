@@ -38,7 +38,7 @@ import { FontWeights, FontSizes } from '@looker/design-tokens'
 import { DocTable } from '../../../Shared'
 
 const specimen =
-  'Open Sans is the typographic base for the tone and content of Lens’, Lookers design system'
+  "Open Sans is the typographic base for the tone and content of Looker's design system"
 const typeFamily: Array<{ weight: FontWeights; value: string }> = [
   { weight: 'light', value: '300' },
   { weight: 'normal', value: '400' },
