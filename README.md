@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.com/looker-open-source/components.svg?branch=master)](https://travis-ci.com/looker-open-source/components)
 
-This repository hosts the Looker UI Components library and the platform needed to generate our style guide. If you're looking for documentation for using Looker UI Components within your own application, you can view the documentation online at [https://looker-open-source.github.io/components/](https://looker-open-source.github.io/components/)
+This repository hosts the Looker UI Components library and the platform needed to generate our style guide. If you're looking for documentation for using Looker UI Components within your own application, you can view the documentation online at [http://components.looker.com](http://components.looker.com)
 
 ## Bugs & Feature Requests
 
