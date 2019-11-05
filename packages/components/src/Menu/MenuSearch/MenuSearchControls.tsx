@@ -51,7 +51,7 @@ export const MenuSearchControls: FC<MenuSearchControlsProps> = ({
     />
   )
 
-  const seperator = (
+  const separator = (
     <Box
       mr="small"
       ml="medium"
@@ -82,7 +82,7 @@ export const MenuSearchControls: FC<MenuSearchControlsProps> = ({
           {summary}
         </Text>
       )}
-      {summary && clear && seperator}
+      {summary && clear && separator}
       {clear}
     </Box>
   )
