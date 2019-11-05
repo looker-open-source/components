@@ -28,7 +28,6 @@ module.exports = {
   siteMetadata: {
     title: 'Looker UI Components',
   },
-  pathPrefix: '/lens',
   plugins: [
     `gatsby-plugin-sharp`,
     `gatsby-plugin-typescript`,
