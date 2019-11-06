@@ -31,7 +31,6 @@
   },
   "devDependencies": {
     "@looker/components": "^0.7.0",
-    "@looker/components-test-utils": "^0.7.0",
     "@looker/design-tokens": "^0.7.0",
     "@looker/icons": "^0.7.0",
     "@types/react": "^16.9.9",
@@ -45,7 +44,6 @@
     "react-transition-group": "4.2.2",
     "scroll-behavior": "^0.9.10",
     "styled-components": "^4.3.2",
-    "styled-system": "5.1.2",
     "typescript": "^3.6.4"
   },
   "scripts": {

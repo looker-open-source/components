@@ -28,12 +28,12 @@
     "styled-components": "^4.3.2"
   },
   "devDependencies": {
+    "@types/react": "^16.9.2",
     "@types/react-test-renderer": "^16.9.0",
     "@types/styled-components": "^4.1.19",
     "react": "^16.9.0"
   },
   "peerDependencies": {
-    "@types/react": "^16.9",
     "react": "^16.9.0"
   },
   "gitHead": "05b63c793e74648ca4ada0d1bb9d4cc278256778"
