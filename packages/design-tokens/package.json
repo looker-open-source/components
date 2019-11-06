@@ -19,26 +19,27 @@
     "build:declaration": "tsc --project tsconfig.build.json",
     "build:es": "BABEL_ENV=build babel src --root-mode upward --out-dir dist --source-maps --extensions .ts,.tsx --delete-dir-on-start --no-comments"
   },
+  "dependencies": {
+    "lodash": "^4.17.15",
+    "polished": "^3.4.2",
+    "styled-system": "^5.1.2"
+  },
   "devDependencies": {
     "@types/lodash": "^4.14.136",
     "@types/styled-components": "^4.1.19",
     "@types/styled-system": "^5.1.2",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "styled-components": "^4.3.2",
     "csstype": "^2.6.3",
     "lodash": "^4.17.15",
     "polished": "^3.4.1",
-    "styled-components": "^4.3.2",
-    "styled-system": "^5.1.2",
     "uuid": "^3.3.2"
   },
   "peerDependencies": {
-    "@types/styled-components": "^4.1.19",
-    "@types/styled-system": "^5.1.2",
-    "styled-components": "^4.3.2",
-    "styled-system": "^5.1.2"
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "styled-components": "^4"
   },
-  "gitHead": "05b63c793e74648ca4ada0d1bb9d4cc278256778",
-  "dependencies": {
-    "lodash": "^4.17.15",
-    "polished": "^3.4.2"
-  }
+  "gitHead": "05b63c793e74648ca4ada0d1bb9d4cc278256778"
 }
