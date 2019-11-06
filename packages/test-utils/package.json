@@ -1,7 +1,7 @@
 {
   "name": "@looker/components-test-utils",
   "license": "MIT",
-  "version": "0.7.0",
+  "version": "0.7.1-alpha.0",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
@@ -20,7 +20,7 @@
     "build:es": "BABEL_ENV=build babel src --root-mode upward --out-dir dist --source-maps --extensions .ts,.tsx --delete-dir-on-start --no-comments"
   },
   "dependencies": {
-    "@looker/design-tokens": "^0.7.0",
+    "@looker/design-tokens": "^0.7.1-alpha.0",
     "@testing-library/react": "^9.1.3",
     "enzyme": "^3.9.0",
     "jest-styled-components": "^6.3.3",
@@ -28,12 +28,12 @@
     "styled-components": "^4.3.2"
   },
   "devDependencies": {
+    "@types/react": "^16.9.2",
     "@types/react-test-renderer": "^16.9.0",
     "@types/styled-components": "^4.1.19",
     "react": "^16.9.0"
   },
   "peerDependencies": {
-    "@types/react": "^16.9",
     "react": "^16.9.0"
   },
   "gitHead": "05b63c793e74648ca4ada0d1bb9d4cc278256778"

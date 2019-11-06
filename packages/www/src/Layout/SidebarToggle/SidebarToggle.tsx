@@ -39,7 +39,7 @@ const SidebarToggle: FC<SidebarToggleProps> = ({
   onClick,
   headerHeight,
 }) => {
-  const [buttonWidth, setButtonWidth] = useState(0)
+  const [buttonWidth, setButtonWidth] = useState(28)
   const iconName: IconNames = isOpen ? 'CaretLeft' : 'CaretRight'
 
   const measuredRef = useCallback(node => {
