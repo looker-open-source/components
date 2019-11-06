@@ -39,17 +39,23 @@ const SidebarToggle: FC<SidebarToggleProps> = ({
   onClick,
   headerHeight,
 }) => {
+  const [isVisible, setVisibility] = useState(false)
   const [buttonWidth, setButtonWidth] = useState(28)
   const iconName: IconNames = isOpen ? 'CaretLeft' : 'CaretRight'
 
   const measuredRef = useCallback(node => {
     if (node !== null) {
+      setVisibility(true)
       setButtonWidth(node.getBoundingClientRect().width)
     }
   }, [])
 
   return (
-    <SidebarToggleWrapper headerHeight={headerHeight} buttonWidth={buttonWidth}>
+    <SidebarToggleWrapper
+      headerHeight={headerHeight}
+      buttonWidth={buttonWidth}
+      isVisible={isVisible}
+    >
       <IconButton
         ref={measuredRef}
         shape="round"
@@ -66,10 +72,13 @@ const SidebarToggle: FC<SidebarToggleProps> = ({
 
 interface WrapperProps {
   buttonWidth: number
+  isVisible: boolean
   headerHeight?: string
 }
 
 const SidebarToggleWrapper = styled.div<WrapperProps>`
+  transition: opacity 0.5s;
+  opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
   position: relative;
   left: ${({ buttonWidth }) => `-${buttonWidth / 2}px`};
   margin-top: ${({ buttonWidth, headerHeight }) =>
