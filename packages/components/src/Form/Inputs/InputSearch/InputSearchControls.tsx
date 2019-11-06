@@ -50,7 +50,7 @@ export const InputSearchControls: FC<InputSearchControlsProps> = ({
     />
   )
 
-  const seperator = (
+  const separator = (
     <Box
       style={{
         borderRight: `1px solid ${palette.charcoal200}`,
@@ -72,7 +72,7 @@ export const InputSearchControls: FC<InputSearchControlsProps> = ({
           {summary}
         </Text>
       )}
-      {summary && clear && seperator}
+      {summary && clear && separator}
       {clear}
     </Box>
   )

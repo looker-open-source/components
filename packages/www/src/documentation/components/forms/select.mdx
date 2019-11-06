@@ -84,24 +84,24 @@ A name and ID can be specified in the `<Select />` component. Names are importan
 Use the disable property to make an input field uneditable.
 
 ```jsx
-    <Select
-      disabled
-      options={[
-        { value: 'cheddar', label: 'Cheddar' },
-        { value: 'gouda', label: 'Gouda' },
-        { value: 'swiss', label: 'Swiss' },
-      ]}
-    />
-    <Select
-      value="gouda"
-      disabled
-      options={[
-        { value: 'cheddar', label: 'Cheddar' },
-        { value: 'gouda', label: 'Gouda' },
-        { value: 'swiss', label: 'Swiss' },
-      ]}
-      ml="large"
-    />
+<Select
+  disabled
+  options={[
+    { value: 'cheddar', label: 'Cheddar' },
+    { value: 'gouda', label: 'Gouda' },
+    { value: 'swiss', label: 'Swiss' },
+  ]}
+/>
+<Select
+  value="gouda"
+  disabled
+  options={[
+    { value: 'cheddar', label: 'Cheddar' },
+    { value: 'gouda', label: 'Gouda' },
+    { value: 'swiss', label: 'Swiss' },
+  ]}
+  ml="large"
+/>
 ```
 
 ## Placeholders & includeBlank
@@ -109,23 +109,23 @@ Use the disable property to make an input field uneditable.
 Placeholders are used to give a hint to the user of the expected value for the input. They should not be used as a complete replacement of labels. The `includeBlank` property (default: true) includes an inital option without a value.
 
 ```jsx
-    <Select
-      placeholder="Select your cheese of choice..."
-      options={[
-        { value: 'cheddar', label: 'Cheddar' },
-        { value: 'gouda', label: 'Gouda' },
-        { value: 'swiss', label: 'Swiss' },
-      ]}
-    />
-    <Select
-      includeBlank={false}
-      options={[
-        { value: 'cheddar', label: 'Cheddar' },
-        { value: 'gouda', label: 'Gouda' },
-        { value: 'swiss', label: 'Swiss' },
-      ]}
-      ml="large"
-    />
+<Select
+  placeholder="Select your cheese of choice..."
+  options={[
+    { value: 'cheddar', label: 'Cheddar' },
+    { value: 'gouda', label: 'Gouda' },
+    { value: 'swiss', label: 'Swiss' },
+  ]}
+/>
+<Select
+  includeBlank={false}
+  options={[
+    { value: 'cheddar', label: 'Cheddar' },
+    { value: 'gouda', label: 'Gouda' },
+    { value: 'swiss', label: 'Swiss' },
+  ]}
+  ml="large"
+/>
 ```
 
 ## ReadOnly Property
