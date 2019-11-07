@@ -25,7 +25,7 @@
  */
 
 import { rem, rgba } from 'polished'
-import React, { forwardRef, Ref } from 'react'
+import React, { forwardRef, Ref, ReactNode, FC } from 'react'
 import styled from 'styled-components'
 import {
   CustomizableAttributes,
@@ -60,6 +60,10 @@ export interface KnobProps {
   on?: boolean
 }
 
+interface KnobContainerBaseProps extends KnobProps, PseudoProps {
+  children: ReactNode
+}
+
 export interface ToggleSwitchProps
   extends SpaceProps,
     Omit<InputProps, 'type'>,
@@ -67,7 +71,7 @@ export interface ToggleSwitchProps
   size?: number
 }
 
-const Knob = styled.div<KnobProps>`
+const Knob = styled(({ className }) => <div className={className} />)`
   transform: ${props =>
     props.on ? `translateX(${rem(props.size * 0.75)})` : ''};
   transition: ${props => props.theme.transitions.durationModerate};
@@ -83,26 +87,25 @@ const Knob = styled.div<KnobProps>`
       : CustomizableToggleSwitchAttributes.knobOffColor};
 `
 
-const KnobContainer = forwardRef(
-  ({ className, ...props }: KnobProps, ref: Ref<HTMLDivElement>) => {
-    const hoverStyle = props.disabled
-      ? undefined
-      : { boxShadow: `0 0 .01rem 0.01rem ${rgba(palette.primary500, 0.5)}` }
-    return (
-      <KnobContainerBase
-        className={className}
-        hoverStyle={hoverStyle}
-        size={props.size}
-        on={props.on}
-        ref={ref}
-      >
-        <Knob {...props} />
-      </KnobContainerBase>
-    )
-  }
-)
+const KnobContainer: FC<KnobProps> = ({ className, ...props }) => {
+  const hoverStyle = props.disabled
+    ? undefined
+    : { boxShadow: `0 0 .01rem 0.01rem ${rgba(palette.primary500, 0.5)}` }
+  return (
+    <KnobContainerBase
+      className={className}
+      hoverStyle={hoverStyle}
+      size={props.size}
+      on={props.on}
+    >
+      <Knob {...props} />
+    </KnobContainerBase>
+  )
+}
 
-const KnobContainerBase = styled.div<KnobProps & PseudoProps>`
+const KnobContainerBase = styled(({ children, className }) => (
+  <div className={className}>{children}</div>
+))<KnobContainerBaseProps>`
   ${reset}
   ${pseudoClasses}
 
