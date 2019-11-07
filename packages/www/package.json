@@ -48,7 +48,7 @@
   },
   "scripts": {
     "lint": "eslint . --ext mdx",
-    "build": "gatsby build",
+    "build": "gatsby build && echo \"components.looker.com\" > public/CNAME",
     "deploy": "yarn build && gh-pages -d public -r https://$GITHUB_TOKEN@github.com/looker-open-source/components.git",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
