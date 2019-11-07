@@ -24,7 +24,7 @@
 
  */
 
-import React, { FC, useState, useCallback } from 'react'
+import React, { FC } from 'react'
 import { IconButton, IconNames } from '@looker/components'
 import styled from 'styled-components'
 
@@ -39,19 +39,11 @@ const SidebarToggle: FC<SidebarToggleProps> = ({
   onClick,
   headerHeight,
 }) => {
-  const [buttonWidth, setButtonWidth] = useState(28)
   const iconName: IconNames = isOpen ? 'CaretLeft' : 'CaretRight'
 
-  const measuredRef = useCallback(node => {
-    if (node !== null) {
-      setButtonWidth(node.getBoundingClientRect().width)
-    }
-  }, [])
-
   return (
-    <SidebarToggleWrapper headerHeight={headerHeight} buttonWidth={buttonWidth}>
+    <SidebarToggleWrapper headerHeight={headerHeight}>
       <IconButton
-        ref={measuredRef}
         shape="round"
         icon={iconName}
         onClick={onClick}
@@ -65,15 +57,17 @@ const SidebarToggle: FC<SidebarToggleProps> = ({
 }
 
 interface WrapperProps {
-  buttonWidth: number
   headerHeight?: string
 }
 
 const SidebarToggleWrapper = styled.div<WrapperProps>`
   position: relative;
-  left: ${({ buttonWidth }) => `-${buttonWidth / 2}px`};
-  margin-top: ${({ buttonWidth, headerHeight }) =>
-    `calc(${headerHeight}/2 - ${buttonWidth}px/2)`};
+  margin-top: calc(${props => props.headerHeight} / 2);
+
+  ${IconButton} {
+    background: #fff;
+    transform: translateX(-50%) translateY(-50%);
+  }
 `
 
 export default SidebarToggle
