@@ -10,4 +10,8 @@ Thank you for your contribution to Looker Components! To ensure a successful rev
 
 -
 
+## :paperclip: Any related github issue(s)
+
+-
+
 ## :camera: Screenshots
