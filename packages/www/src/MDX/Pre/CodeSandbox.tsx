@@ -101,11 +101,13 @@ const CodeSandbox = ({
         <EditorWrapper>
           {showEditor && <LiveEditor />}
           <ActionLayout editorIsVisible={showEditor}>
-            <CopyButton code={code} editorIsVisible={showEditor} />
             <ToggleCodeButton
               onClick={toggleEditorView}
               editorIsVisible={showEditor}
             />
+            {showEditor && (
+              <CopyButton code={code} editorIsVisible={showEditor} />
+            )}
           </ActionLayout>
         </EditorWrapper>
       </LiveProvider>
@@ -150,7 +152,7 @@ interface CopyButtonProps extends ActionProps {
 
 export const CopyButton: FC<CopyButtonProps> = ({ code, editorIsVisible }) => {
   return (
-    <Tooltip content="Copy sample code">
+    <Tooltip content="Copy sample code" placement="left">
       {(eventHandlers, ref) => (
         <CopyToClipboard
           text={code}
@@ -163,6 +165,7 @@ export const CopyButton: FC<CopyButtonProps> = ({ code, editorIsVisible }) => {
             icon="Clipboard"
             size="xsmall"
             editorIsVisible={editorIsVisible}
+            mt="small"
           />
         </CopyToClipboard>
       )}
@@ -181,7 +184,7 @@ export const ToggleCodeButton: FC<ToggleButtonProps> = ({
   const toggleIcon: IconNames = editorIsVisible ? 'CaretUp' : 'CaretDown'
   const toggleLabel = editorIsVisible ? 'Hide code editor' : 'Show code editor'
   return (
-    <Tooltip content={toggleLabel}>
+    <Tooltip content={toggleLabel} placement="left">
       {(eventHandlers, ref) => (
         <ActionButton
           ref={ref}
@@ -205,16 +208,12 @@ const ActionButton = styled(IconButton)<ActionProps>`
 `
 
 const ActionLayout = styled.div<ActionProps>`
-  transition: background 0.3s;
+  transition: background 0.35s;
   width: auto;
   display: grid;
-  grid-template-columns: auto auto;
-  grid-column-gap: ${({ theme }) => theme.space.xsmall};
+  grid-template-rows: auto auto 1fr;
   justify-content: right;
-  padding: ${({ theme }) => `${theme.space.xsmall} ${theme.space.small}`};
-  position: absolute;
-  top: 0;
-  right: 0;
+  padding: ${({ theme }) => `${theme.space.xsmall}`};
   background: ${({ theme, editorIsVisible }) =>
     editorIsVisible
       ? theme.colors.palette.charcoal700
@@ -239,8 +238,9 @@ const PreviewWrapper = styled.div`
 `
 
 const EditorWrapper = styled.div`
-  position: relative;
-  min-height: 2.5rem;
+  background: ${({ theme }) => theme.colors.palette.charcoal700};
+  display: grid;
+  grid-template-columns: 1fr auto;
   textarea,
   pre {
     ${({ theme: { space } }) => `
