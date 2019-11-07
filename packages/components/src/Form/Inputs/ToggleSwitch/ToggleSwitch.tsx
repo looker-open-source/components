@@ -60,6 +60,10 @@ export interface KnobProps {
   on?: boolean
 }
 
+interface KnobContainerBaseProps extends KnobProps, PseudoProps {
+  children: ReactNode
+}
+
 export interface ToggleSwitchProps
   extends SpaceProps,
     Omit<InputProps, 'type'>,
@@ -99,14 +103,9 @@ const KnobContainer: FC<KnobProps> = ({ className, ...props }) => {
   )
 }
 
-const KnobContainerBase = styled(
-  ({
-    children,
-    className,
-  }: KnobProps & PseudoProps & { children: ReactNode }) => (
-    <div className={className}>{children}</div>
-  )
-)`
+const KnobContainerBase = styled(({ children, className }) => (
+  <div className={className}>{children}</div>
+))<KnobContainerBaseProps>`
   ${reset}
   ${pseudoClasses}
 
