@@ -27,7 +27,9 @@
 import 'jest-styled-components'
 import React from 'react'
 import { mountWithTheme, assertSnapshot } from '@looker/components-test-utils'
-
+import { theme } from '@looker/design-tokens'
+import { ThemeProvider } from 'styled-components'
+import { render, fireEvent } from '@testing-library/react'
 import { InputSearch } from './InputSearch'
 
 test('InputSearch default', () => {
@@ -72,4 +74,18 @@ test('InputSearch hides controls when using the flag hideControls', () => {
     <InputSearch value="start value" summary="summary value" hideControls />
   )
   expect(wrapper.find('button').exists()).toEqual(false)
+})
+
+test('InputSearch onClear can be updated by user', () => {
+  const onClear = jest.fn()
+
+  const { getByRole } = render(
+    <ThemeProvider theme={theme}>
+      <InputSearch value="Search" onClear={onClear} />
+    </ThemeProvider>
+  )
+
+  const inputButton = getByRole('button')
+  inputButton && fireEvent.click(inputButton)
+  expect(onClear).toHaveBeenCalled()
 })
