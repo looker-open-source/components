@@ -61,11 +61,14 @@ exports[`A FieldCheckbox 1`] = `
 }
 
 .c5 input[type='checkbox'] {
-  opacity: 0;
   position: absolute;
   width: 100%;
   height: 100%;
   z-index: 1;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
 }
 
 .c5 .c7 {
@@ -246,11 +249,14 @@ exports[`A FieldCheckbox with checked value 1`] = `
 }
 
 .c5 input[type='checkbox'] {
-  opacity: 0;
   position: absolute;
   width: 100%;
   height: 100%;
   z-index: 1;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
 }
 
 .c5 .c7 {
@@ -432,11 +438,14 @@ exports[`A required FieldCheckbox 1`] = `
 }
 
 .c6 input[type='checkbox'] {
-  opacity: 0;
   position: absolute;
   width: 100%;
   height: 100%;
   z-index: 1;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
 }
 
 .c6 .c8 {

@@ -63,11 +63,12 @@ const RadioContainer = styled.div<CheckboxRadioContainerProps>`
   margin: 3px;
   vertical-align: middle;
   input[type='radio'] {
-    opacity: 0;
     position: absolute;
     width: 100%;
     height: 100%;
     z-index: 1;
+    appearance: none;
+    outline: none;
   }
   ${FauxRadio} {
     background: ${props => props.theme.colors.palette.white};

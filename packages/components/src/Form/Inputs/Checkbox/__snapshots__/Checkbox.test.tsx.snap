@@ -46,11 +46,14 @@ exports[`Checkbox checked set to false 1`] = `
 }
 
 .c0 input[type='checkbox'] {
-  opacity: 0;
   position: absolute;
   width: 100%;
   height: 100%;
   z-index: 1;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
 }
 
 .c0 .c2 {
@@ -157,11 +160,14 @@ exports[`Checkbox checked set to true 1`] = `
 }
 
 .c0 input[type='checkbox'] {
-  opacity: 0;
   position: absolute;
   width: 100%;
   height: 100%;
   z-index: 1;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
 }
 
 .c0 .c2 {
@@ -268,11 +274,14 @@ exports[`Checkbox default 1`] = `
 }
 
 .c0 input[type='checkbox'] {
-  opacity: 0;
   position: absolute;
   width: 100%;
   height: 100%;
   z-index: 1;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
 }
 
 .c0 .c2 {
@@ -378,11 +387,14 @@ exports[`Checkbox should accept disabled 1`] = `
 }
 
 .c0 input[type='checkbox'] {
-  opacity: 0;
   position: absolute;
   width: 100%;
   height: 100%;
   z-index: 1;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
 }
 
 .c0 .c2 {
@@ -489,11 +501,14 @@ exports[`Checkbox with aria-describedby 1`] = `
 }
 
 .c0 input[type='checkbox'] {
-  opacity: 0;
   position: absolute;
   width: 100%;
   height: 100%;
   z-index: 1;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
 }
 
 .c0 .c2 {
@@ -600,11 +615,14 @@ exports[`Checkbox with name and id 1`] = `
 }
 
 .c0 input[type='checkbox'] {
-  opacity: 0;
   position: absolute;
   width: 100%;
   height: 100%;
   z-index: 1;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
 }
 
 .c0 .c2 {
