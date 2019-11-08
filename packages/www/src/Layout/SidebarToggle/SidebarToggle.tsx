@@ -49,7 +49,6 @@ const SidebarToggle: FC<SidebarToggleProps> = ({
         onClick={onClick}
         label={isOpen ? 'Close Sidebar' : 'Open Sidebar'}
         size="small"
-        px="large"
         outline
       />
     </SidebarToggleWrapper>

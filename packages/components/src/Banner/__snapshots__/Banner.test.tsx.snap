@@ -100,6 +100,7 @@ exports[`Dismissable banner 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  width: 26px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -205,7 +206,6 @@ exports[`Dismissable banner 1`] = `
   padding: 0;
   vertical-align: baseline;
   margin-left: auto;
-  padding: 3px;
 }
 
 .c5:hover {
@@ -257,6 +257,7 @@ exports[`Dismissable banner 1`] = `
         "padding": "1px",
       }
     }
+    width={26}
   >
     <div
       className="c2"

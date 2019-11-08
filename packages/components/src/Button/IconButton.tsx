@@ -45,6 +45,7 @@ import { Icon } from '../Icon'
 import { VisuallyHidden } from '../VisuallyHidden'
 import { buttonCSS } from './ButtonBase'
 import { ButtonTransparent } from './ButtonTransparent'
+import { buttonSizeMap } from './size'
 
 export type IconButtonSizes =
   | SizeXXSmall
@@ -86,22 +87,6 @@ export interface IconButtonProps
   shape?: 'round' | 'square'
 }
 
-const iconSizeHelper = (size: IconButtonSizes) => {
-  switch (size) {
-    case 'xxsmall':
-      return 12
-    case 'xsmall':
-      return 16
-    case 'small':
-      return 20
-    case 'medium':
-      return 28
-    case 'large':
-    default:
-      return 36
-  }
-}
-
 export const IconButtonStyle = styled.button<IconButtonProps>`
   ${buttonCSS}
   height: auto;
@@ -109,7 +94,7 @@ export const IconButtonStyle = styled.button<IconButtonProps>`
 
 const IconButtonComponent = forwardRef(
   (props: IconButtonProps, ref: Ref<HTMLButtonElement>) => {
-    const { icon, size, label, ...rest } = props
+    const { icon, size = 'xsmall', label, ...rest } = props
 
     const actualSize = size === 'xxsmall' ? 'xsmall' : size
 
@@ -119,12 +104,13 @@ const IconButtonComponent = forwardRef(
         color="neutral"
         p="none"
         size={actualSize}
+        width={buttonSizeMap[size]}
         {...rest}
       >
         <VisuallyHidden>{label}</VisuallyHidden>
         <Icon
           name={icon}
-          size={iconSizeHelper(size || 'xsmall')}
+          size={(buttonSizeMap[size] || buttonSizeMap.xsmall) - 6}
           aria-hidden={true}
         />
       </ButtonTransparent>
@@ -166,8 +152,6 @@ const outlineCSS = (props: IconButtonProps) => {
 export const IconButton = styled(IconButtonComponent)<IconButtonProps>`
   ${reset}
   ${space}
-
-  padding: 3px;
 
   ${props => props.outline && outlineCSS}
 
