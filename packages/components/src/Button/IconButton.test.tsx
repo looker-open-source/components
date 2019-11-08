@@ -72,7 +72,6 @@ test('Button renders focus ring on tab input but not on click', () => {
   )
 
   fireEvent.click(getByTitle('Favorite'))
-  expect(getByTitle('Favorite')).not.toHaveStyle(`box-shadow: none)`)
   const button = getByTitle('Favorite').closest('button')
 
   button &&
@@ -82,5 +81,6 @@ test('Button renders focus ring on tab input but not on click', () => {
       key: 'Tab',
     })
 
-  expect(button).toHaveStyle(`box-shadow: 0 0 0 0.15rem rgba(204,31,54,0.25)`)
+  assertSnapshot(<IconButton label="Favorite" color="danger" icon="Favorite" />)
+  assertSnapshot(<IconButton label="Trash" color="danger" icon="Trash" />)
 })

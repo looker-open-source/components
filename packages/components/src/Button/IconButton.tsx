@@ -55,20 +55,16 @@ export type IconButtonSizes =
 
 type ButtonColors = keyof SemanticColors
 
-// this props refer to the keyboard expected focus behavior
-interface IconButtonFocusProps {
-  focusVisible?: boolean
-}
-
 export interface IconButtonProps
-  extends IconButtonFocusProps,
-    Omit<CompatibleHTMLProps<HTMLButtonElement>, 'children' | 'type'>,
+  extends Omit<CompatibleHTMLProps<HTMLButtonElement>, 'children' | 'type'>,
     PseudoProps,
     SpaceProps {
   type?: 'button' | 'submit' | 'reset'
-
   color?: ButtonColors
-
+  /*
+   * this props refer to the keyboard expected focus behavior
+   */
+  focusVisible?: boolean
   outline?: boolean
   /**
    * The Icon to display inside of the button
