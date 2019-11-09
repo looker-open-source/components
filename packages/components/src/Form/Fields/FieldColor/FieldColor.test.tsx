@@ -71,3 +71,16 @@ test('FieldColor with a validation message', () => {
   const { queryByText } = renderWithTheme(<FieldColorValidationMessage />)
   expect(queryByText('Error!')).toBeInTheDocument()
 })
+
+test('FieldColor with an onChange', () => {
+  const onChangeMock = jest.fn()
+  const { getByLabelText } = renderWithTheme(
+    <FieldColor onChange={onChangeMock} label="Background Color" />
+  )
+  const input = getByLabelText('Background Color')
+  fireEvent.change(input, { target: { value: '#FFFF00' } })
+  expect(onChangeMock).toHaveBeenCalledWith({
+    currentTarget: { value: '#ffff00' },
+    target: { value: '#ffff00' },
+  })
+})
