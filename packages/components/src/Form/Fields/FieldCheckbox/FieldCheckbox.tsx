@@ -29,6 +29,7 @@ import styled from 'styled-components'
 import uuid from 'uuid/v4'
 import { useFormContext } from '../../Form'
 import { Checkbox, CheckboxProps } from '../../Inputs/Checkbox/Checkbox'
+import { Label } from '../../Label'
 import { Field, FieldProps, omitFieldProps, pickFieldProps } from '../Field'
 
 export interface FieldCheckboxProps extends FieldProps, CheckboxProps {}
@@ -59,5 +60,8 @@ const FieldCheckboxComponent = forwardRef(
 FieldCheckboxComponent.displayName = 'FieldCheckboxComponent'
 
 export const FieldCheckbox = styled(FieldCheckboxComponent)`
-  margin-left: 20%;
+  ${props => props.alignLabel === 'right' && `margin-left: 20%;`}
+  ${props =>
+    (!props.alignLabel || props.alignLabel === 'right') &&
+    `${Label} { width: auto; }`}
 `

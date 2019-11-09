@@ -161,8 +161,8 @@ exports[`A FieldCheckbox 1`] = `
   margin-left: 0.5rem;
 }
 
-.c2 {
-  margin-left: 20%;
+.c2 .c3 {
+  width: auto;
 }
 
 <div
@@ -378,8 +378,8 @@ exports[`A FieldCheckbox with checked value 1`] = `
   margin-left: 0.5rem;
 }
 
-.c2 {
-  margin-left: 20%;
+.c2 .c3 {
+  width: auto;
 }
 
 <div
@@ -600,8 +600,8 @@ exports[`A required FieldCheckbox 1`] = `
   margin-left: 0.5rem;
 }
 
-.c2 {
-  margin-left: 20%;
+.c2 .c3 {
+  width: auto;
 }
 
 <div
