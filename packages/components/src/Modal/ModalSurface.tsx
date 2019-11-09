@@ -24,8 +24,8 @@
 
  */
 
-import { CompatibleHTMLProps, reset } from '@looker/design-tokens'
-import React, { FC, useContext } from 'react'
+import { CompatibleHTMLProps, reset, theme } from '@looker/design-tokens'
+import React, { FC, useContext, useEffect, useState } from 'react'
 import { HotKeys } from 'react-hotkeys'
 import styled, { CSSObject, css } from 'styled-components'
 import {
@@ -38,7 +38,7 @@ import {
   LayoutProps,
   layout,
 } from 'styled-system'
-import { useFocusTrap } from '../Overlay/useFocusTrap.hook'
+import { useFocusTrap } from '../utils'
 import { ModalContext } from './ModalContext'
 
 export interface ModalSurfaceProps
@@ -59,7 +59,14 @@ export const ModalSurface: FC<ModalSurfaceProps> = ({
   ...props
 }) => {
   const { closeModal } = useContext(ModalContext)
-  const focusRef = useFocusTrap()
+  const [focusTrapEnabled, setFocusTrapEnabled] = useState(false)
+  const focusRef = useFocusTrap(focusTrapEnabled)
+
+  useEffect(() => {
+    window.setTimeout(() => {
+      setFocusTrapEnabled(true)
+    }, theme.transitions.durationModerate)
+  }, [])
 
   return (
     <HotKeys

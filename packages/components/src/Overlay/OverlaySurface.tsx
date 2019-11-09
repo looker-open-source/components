@@ -47,7 +47,6 @@ import { PopperArrowProps } from 'react-popper'
 import styled from 'styled-components'
 import { ModalContext } from '../Modal'
 import { OverlaySurfaceArrow } from './OverlaySurfaceArrow'
-import { useFocusTrap } from './useFocusTrap.hook'
 
 export interface SurfaceStyleProps extends BorderProps, BoxShadowProps {
   color?: string
@@ -79,7 +78,6 @@ export const OverlaySurface = forwardRef(
       ...innerProps
     } = props
     const { closeModal } = useContext(ModalContext)
-    const focusRef = useFocusTrap()
     // workaround for react-popper -caused error:
     // `NaN` is an invalid value for the `left` css style property
     if (Number.isNaN(arrowProps.style.left as number)) {
@@ -90,7 +88,13 @@ export const OverlaySurface = forwardRef(
     }
 
     return (
-      <Outer ref={ref} zIndex={zIndex} style={style} {...eventHandlers}>
+      <Outer
+        ref={ref}
+        zIndex={zIndex}
+        style={style}
+        {...eventHandlers}
+        tabIndex={-1}
+      >
         <HotKeys
           keyMap={{
             CLOSE_MODAL: {
@@ -105,7 +109,7 @@ export const OverlaySurface = forwardRef(
             },
           }}
         >
-          <Inner {...innerProps} tabIndex={-1} ref={focusRef}>
+          <Inner {...innerProps}>
             {children}
             {arrow !== false && (
               <OverlaySurfaceArrow
