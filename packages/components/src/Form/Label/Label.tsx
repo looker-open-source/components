@@ -70,4 +70,4 @@ export const Label = styled.label.attrs((props: LabelProps) => ({
   display: inline-block; /* Ensure that applied padding/margin actually works */
 `
 
-Label.defaultProps = { marginRight: 'xsmall' }
+Label.defaultProps = { pr: 'xsmall' }

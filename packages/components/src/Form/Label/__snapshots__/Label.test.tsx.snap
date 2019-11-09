@@ -10,7 +10,7 @@ exports[`A Label 1`] = `
   padding: 0;
   vertical-align: baseline;
   color: #262D33;
-  margin-right: 0.5rem;
+  padding-right: 0.5rem;
   font-size: 0.875rem;
   font-weight: 600;
   display: inline-block;
@@ -37,7 +37,7 @@ exports[`Label supports fontWeight 1`] = `
   padding: 0;
   vertical-align: baseline;
   color: #262D33;
-  margin-right: 0.5rem;
+  padding-right: 0.5rem;
   font-weight: 400;
   font-size: 0.875rem;
   display: inline-block;

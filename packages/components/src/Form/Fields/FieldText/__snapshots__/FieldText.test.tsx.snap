@@ -10,7 +10,7 @@ exports[`A FieldText 1`] = `
   padding: 0;
   vertical-align: baseline;
   color: #262D33;
-  margin-right: 0.5rem;
+  padding-right: 0.5rem;
   font-weight: 600;
   font-size: 0.875rem;
   display: inline-block;
@@ -102,7 +102,7 @@ exports[`A FieldText with an error validation aligned to the left 1`] = `
   padding: 0;
   vertical-align: baseline;
   color: #262D33;
-  margin-right: 0.5rem;
+  padding-right: 0.5rem;
   font-weight: 600;
   font-size: 0.875rem;
   display: inline-block;
@@ -241,7 +241,7 @@ exports[`A FieldText with an error validation aligned to the right 1`] = `
   padding: 0;
   vertical-align: baseline;
   color: #262D33;
-  margin-right: 0.5rem;
+  padding-right: 0.5rem;
   font-weight: 600;
   font-size: 0.875rem;
   display: inline-block;
@@ -377,7 +377,7 @@ exports[`A required FieldText 1`] = `
   padding: 0;
   vertical-align: baseline;
   color: #262D33;
-  margin-right: 0.5rem;
+  padding-right: 0.5rem;
   font-weight: 600;
   font-size: 0.875rem;
   display: inline-block;
@@ -481,7 +481,7 @@ exports[`FieldText supports labelWeight 1`] = `
   padding: 0;
   vertical-align: baseline;
   color: #262D33;
-  margin-right: 0.5rem;
+  padding-right: 0.5rem;
   font-weight: 400;
   font-size: 0.875rem;
   display: inline-block;
