@@ -18,11 +18,15 @@ Banners can also be set to be `dismissable`, giving them a close button, and all
 
 ```jsx
 ;() => {
-  const { value, setOff } = useToggle(true)
+  const { value, setOff, setOn } = useToggle(true)
   return value ? (
     <Banner intent="warning" onDismiss={setOff} dismissable>
       I can be closed
     </Banner>
-  ) : null
+  ) : (
+    <ButtonOutline m="medium" onClick={setOn}>
+      Show Banner
+    </ButtonOutline>
+  )
 }
 ```

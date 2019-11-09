@@ -26,7 +26,10 @@
 
 import 'jest-styled-components'
 import React from 'react'
+import { theme } from '@looker/design-tokens'
 import { assertSnapshot } from '@looker/components-test-utils'
+import { ThemeProvider } from 'styled-components'
+import { render, fireEvent } from '@testing-library/react'
 import { IconButton } from './IconButton'
 
 const noop = () => {}
@@ -56,4 +59,28 @@ test('IconButton accepts events', () => {
     <IconButton label="Test" icon="Favorite" onMouseEnter={noop} />
   )
   assertSnapshot(<IconButton label="Test" icon="Favorite" onClick={noop} />)
+})
+
+test('Button renders focus ring on tab input but not on click', () => {
+  const { getByTitle } = render(
+    <ThemeProvider theme={theme}>
+      <>
+        <IconButton label="Favorite" color="danger" icon="Favorite" />
+        <IconButton label="Trash" color="danger" icon="Trash" />
+      </>
+    </ThemeProvider>
+  )
+
+  fireEvent.click(getByTitle('Favorite'))
+  const button = getByTitle('Favorite').closest('button')
+
+  button &&
+    fireEvent.keyUp(button, {
+      charCode: 9,
+      code: 9,
+      key: 'Tab',
+    })
+
+  assertSnapshot(<IconButton label="Favorite" color="danger" icon="Favorite" />)
+  assertSnapshot(<IconButton label="Trash" color="danger" icon="Trash" />)
 })

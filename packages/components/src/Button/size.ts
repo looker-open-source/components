@@ -43,27 +43,36 @@ export interface ButtonSizeProps {
 }
 
 /* eslint-disable sort-keys */
+export const buttonSizeMap = {
+  xxsmall: 18,
+  xsmall: 22,
+  small: 26,
+  medium: 34,
+  large: 42,
+}
+
+/* eslint-disable sort-keys */
 export const buttonSize = variant({
   prop: 'size',
   variants: {
     xsmall: {
       fontSize: 'xsmall',
-      height: '22px',
+      height: `${buttonSizeMap.xsmall}px`,
       px: 'xsmall',
     },
     small: {
       fontSize: 'small',
-      height: '26px',
+      height: `${buttonSizeMap.small}px`,
       px: 'small',
     },
     medium: {
       fontSize: 'medium',
-      height: '34px',
+      height: `${buttonSizeMap.medium}px`,
       px: 'medium',
     },
     large: {
       fontSize: 'xlarge',
-      height: '42px',
+      height: `${buttonSizeMap.large}px`,
       px: 'large',
     },
   },
