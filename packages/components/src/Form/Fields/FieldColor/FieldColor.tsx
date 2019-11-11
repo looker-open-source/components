@@ -93,15 +93,15 @@ export const FieldColorComponent = forwardRef(
     const [color, setColor] = useState<SimpleHSV>(initialValue)
     const [inputTextValue, setInputTextValue] = useState(props.value || '')
 
-    const callOnChange = () => {
-      if (!props.onChange || !color) return
-      props.onChange(createEventWithHSVValue(color))
+    const callOnChange = (newColor: SimpleHSV) => {
+      if (!props.onChange || !newColor) return
+      props.onChange(createEventWithHSVValue(newColor))
     }
 
     const setColorState = (newColor: SimpleHSV) => {
       setColor(newColor)
       newColor && setInputTextValue(simpleHSVtoFormattedColorString(newColor))
-      callOnChange()
+      callOnChange(newColor)
     }
 
     const handleColorChange = (hs: HueSaturation) =>
@@ -118,9 +118,9 @@ export const FieldColorComponent = forwardRef(
       setInputTextValue(value)
 
       if (!value || !isValidColor(value)) return
-
-      setColor(str2simpleHsv(value))
-      callOnChange()
+      const newColor = str2simpleHsv(value)
+      setColor(newColor)
+      callOnChange(newColor)
     }
 
     const content = (
