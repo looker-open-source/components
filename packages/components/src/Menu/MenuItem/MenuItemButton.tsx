@@ -48,6 +48,7 @@ export const MenuItemButton = styled.button<MenuItemButtonProps>`
   font-size: inherit;
   flex: 1;
   outline: none;
+  padding-left: ${({ theme }) => theme.space.small};
   text-align: left;
   text-decoration: none;
 `

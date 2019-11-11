@@ -51,7 +51,7 @@ test('MenuItem - current', () => {
 
 test('MenuItem - current + marker', () => {
   assertSnapshot(
-    <MenuItem current currentMarker icon="Home">
+    <MenuItem current icon="Home">
       who!
     </MenuItem>
   )
@@ -83,7 +83,7 @@ test('MenuItem - with customizations', () => {
     }
 
   assertSnapshot(
-    <MenuItem current currentMarker customizationProps={menuCustomizations}>
+    <MenuItem current customizationProps={menuCustomizations}>
       who!
     </MenuItem>
   )
@@ -95,7 +95,7 @@ test('MenuItem - with single customization', () => {
   }
 
   assertSnapshot(
-    <MenuItem current currentMarker customizationProps={menuCustomizations}>
+    <MenuItem current customizationProps={menuCustomizations}>
       who!
     </MenuItem>
   )
