@@ -96,6 +96,7 @@ export const OverlaySurface = forwardRef(
         tabIndex={-1}
       >
         <HotKeys
+          className="hotkeys"
           keyMap={{
             CLOSE_MODAL: {
               action: 'keyup',
@@ -133,6 +134,15 @@ const Outer = styled.div<{ zIndex?: number }>`
   overflow: visible;
   padding: ${props => props.theme.space.xsmall};
   z-index: ${props => props.zIndex};
+
+  &:focus {
+    outline: none;
+  }
+
+  /* react-hotkeys focus suppression */
+  & > div.hotkeys:focus {
+    outline: none;
+  }
 `
 
 const Inner = styled.div<SurfaceStyleProps>`
