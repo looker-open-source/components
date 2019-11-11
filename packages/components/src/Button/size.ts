@@ -29,8 +29,16 @@ import {
   SizeMedium,
   SizeSmall,
   SizeXSmall,
+  SizeXXSmall,
 } from '@looker/design-tokens'
 import { variant } from 'styled-system'
+
+export type ButtonBaseSizes =
+  | SizeXXSmall
+  | SizeXSmall
+  | SizeSmall
+  | SizeMedium
+  | SizeLarge
 
 export type ButtonSizes = SizeXSmall | SizeSmall | SizeMedium | SizeLarge
 
@@ -39,7 +47,7 @@ export interface ButtonSizeProps {
    * Defines the size of the button.
    * @default "medium"
    */
-  size?: ButtonSizes
+  size?: ButtonBaseSizes
 }
 
 /* eslint-disable sort-keys */
@@ -55,6 +63,11 @@ export const buttonSizeMap = {
 export const buttonSize = variant({
   prop: 'size',
   variants: {
+    xxsmall: {
+      fontSize: 'xsmall',
+      height: '16px',
+      px: 'xxsmall',
+    },
     xsmall: {
       fontSize: 'xsmall',
       height: `${buttonSizeMap.xsmall}px`,

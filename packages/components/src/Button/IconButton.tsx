@@ -43,9 +43,10 @@ import { IconNames } from '@looker/icons'
 import React, { forwardRef, Ref } from 'react'
 import { Icon } from '../Icon'
 import { VisuallyHidden } from '../VisuallyHidden'
-import { buttonCSS } from './ButtonBase'
+import { ButtonBaseProps, buttonCSS } from './ButtonBase'
 import { ButtonTransparent } from './ButtonTransparent'
 import { buttonSizeMap } from './size'
+import { IconButtonVariantProps } from './variant'
 
 export type IconButtonSizes =
   | SizeXXSmall
@@ -58,6 +59,8 @@ type ButtonColors = keyof SemanticColors
 
 export interface IconButtonProps
   extends Omit<CompatibleHTMLProps<HTMLButtonElement>, 'children' | 'type'>,
+    ButtonBaseProps,
+    IconButtonVariantProps,
     PseudoProps,
     SpaceProps {
   type?: 'button' | 'submit' | 'reset'
