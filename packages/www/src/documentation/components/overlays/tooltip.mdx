@@ -33,3 +33,56 @@ A simple Tooltip component with out of the box styles and behavior.
   )}
 </Tooltip>
 ```
+
+## Tooltip Placement
+
+Tooltip allows you to specify where it should appear in relation to the target element. It accepts the following values:
+
+1. `auto`
+1. `auto-end`
+1. `top-start`
+1. `top`
+1. `top-end`
+1. `right-start`
+1. `right`
+1. `right-end`
+1. `bottom-end`
+1. `bottom`
+1. `bottom-start`
+1. `left-end`
+1. `left`
+1. `left-start`
+
+```jsx
+<Tooltip content="I'm on top" placement="top">
+  {(eventHandlers, ref) => (
+    <Button ref={ref} {...eventHandlers} mr="small">
+      Top
+    </Button>
+  )}
+</Tooltip>
+
+<Tooltip content="I'm on bottom" placement="bottom">
+  {(eventHandlers, ref) => (
+    <Button ref={ref} {...eventHandlers} mr="small">
+      Bottom
+    </Button>
+  )}
+</Tooltip>
+
+<Tooltip content="I'm on the left" placement="left">
+  {(eventHandlers, ref) => (
+    <Button ref={ref} {...eventHandlers} mr="small">
+      Left
+    </Button>
+  )}
+</Tooltip>
+
+<Tooltip content="I'm on the right" placement="right">
+  {(eventHandlers, ref) => (
+    <Button ref={ref} {...eventHandlers} mr="small">
+      Right
+    </Button>
+  )}
+</Tooltip>
+```
