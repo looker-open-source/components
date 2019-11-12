@@ -85,15 +85,21 @@ export const MenuItemListItem = styled(Li)<MenuListItemProps>`
   transition: ${props =>
     `background ${props.theme.transitions.durationQuick} ${props.theme.easings.ease},
     color ${props.theme.transitions.durationQuick} ${props.theme.easings.ease}`};
-  margin: 3px 0;
-  &:focus-within {
-    box-shadow: ${props => `0 0 3px 1px ${props.theme.colors.palette.blue400}`};
+
+  button,
+  a {
+    border-left-width: ${({ itemStyle }) => itemStyle.marker.size}px;
+    border-left-style: solid;
+    border-left-color: ${({ itemStyle, current }) =>
+      current ? itemStyle.marker.color : 'transparent'};
   }
 
-  border-left-width: ${({ itemStyle }) => itemStyle.marker.size}px;
-  border-left-style: solid;
-  border-left-color: ${({ itemStyle, current }) =>
-    current ? itemStyle.marker.color : 'transparent'};
+  &:focus-within button,
+  &:focus-within a {
+    box-shadow:  ${props =>
+      `0 0 3px 1px ${props.theme.colors.palette.blue400}`};
+  }
+
   ${hoverStyles};
 
   ${Icon} {
