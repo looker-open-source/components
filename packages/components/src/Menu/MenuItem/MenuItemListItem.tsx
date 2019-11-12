@@ -38,25 +38,7 @@ import { MenuItemStyle } from './menuItemStyle'
 
 export interface MenuListItemProps extends CompatibleHTMLProps<HTMLLIElement> {
   current?: boolean
-  currentMarker?: boolean
   itemStyle: MenuItemStyle
-}
-
-const currentBorder = (props: MenuListItemProps) => {
-  if (!props.current || !props.currentMarker) return false
-
-  return css`
-    ::before {
-      content: '';
-      display: block;
-      height: 100%;
-      position: absolute;
-      left: 0;
-      top: 0;
-      background: ${props.itemStyle.marker.color};
-      width: ${props.itemStyle.marker.size}px;
-    }
-  `
 }
 
 const hoverStyles = (props: MenuListItemProps) => {
@@ -86,7 +68,7 @@ const iconColor = (props: MenuListItemProps) =>
  * used when styled extends a base type. E.g. (styled.li has `color` prop)
  */
 const Li = forwardRef((props: MenuListItemProps, ref: Ref<HTMLLIElement>) => {
-  const domProps = omit(props, 'current', 'currentMarker', 'itemStyle')
+  const domProps = omit(props, 'current', 'itemStyle')
   return <li {...domProps} ref={ref} />
 })
 
@@ -96,22 +78,30 @@ export const MenuItemListItem = styled(Li)<MenuListItemProps>`
   ${color}
   ${space}
   ${typography}
-
   align-items: center;
   display: flex;
   flex-wrap: wrap;
-  position: relative;
   text-decoration: none;
   transition: ${props =>
     `background ${props.theme.transitions.durationQuick} ${props.theme.easings.ease},
     color ${props.theme.transitions.durationQuick} ${props.theme.easings.ease}`};
 
-  &:focus-within {
-    box-shadow: ${props => `0 0 3px 1px ${props.theme.colors.palette.blue400}`};
-    z-index: 1;
+  button,
+  a {
+    border-left-width: ${({ itemStyle }) => itemStyle.marker.size}px;
+    border-left-style: solid;
+    border-left-color: ${({ itemStyle, current }) =>
+      current ? itemStyle.marker.color : 'transparent'};
+    padding-left: calc(${({ theme, itemStyle }) =>
+      `${theme.space.medium} - ${itemStyle.marker.size}px`});
   }
 
-  ${currentBorder};
+  &:focus-within button,
+  &:focus-within a {
+    box-shadow:  ${props =>
+      `0 0 3px 1px ${props.theme.colors.palette.blue400}`};
+  }
+
   ${hoverStyles};
 
   ${Icon} {

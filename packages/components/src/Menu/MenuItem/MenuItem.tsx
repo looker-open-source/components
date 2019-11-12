@@ -117,10 +117,6 @@ export interface MenuItemProps
    */
   current?: boolean
   /**
-   * Display a marker next to the MenuItem if it is current
-   */
-  currentMarker?: boolean
-  /**
    * Sets the correct accessible role for the MenuItem:
    * - Use **'link'** for items that navigation to another page
    * - Use **'button'** for items that trigger in page interactions, like displaying a modal
@@ -133,7 +129,6 @@ export interface MenuItemProps
 export const MenuItem: FC<MenuItemProps> = props => {
   const {
     current,
-    currentMarker,
     children,
     detail,
     icon,
@@ -165,7 +160,6 @@ export const MenuItem: FC<MenuItemProps> = props => {
   return (
     <MenuItemListItem
       current={current}
-      currentMarker={currentMarker}
       itemStyle={style}
       aria-current={current && 'page'}
       onClick={onClick}

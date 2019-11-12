@@ -27,48 +27,61 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import {
-  Button,
-  Popover,
-  PopoverContent,
+  Box,
+  ButtonOutline,
+  Menu,
+  MenuDisclosure,
+  MenuGroup,
+  MenuList,
+  MenuItem,
   GlobalStyle,
-  InputText,
 } from '@looker/components'
 import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
 
 const App: React.FC = () => {
-  const [value, setValue] = React.useState('')
-  function handleChange(e: React.FormEvent<HTMLInputElement>) {
-    setValue(e.currentTarget.value)
-  }
+  const contents = (
+    <>
+      <MenuGroup label="Cheeses">
+        <MenuItem icon="FavoriteOutline">Cheddar</MenuItem>
+        <MenuItem icon="FavoriteOutline">Mozerella</MenuItem>
+        <MenuItem icon="FavoriteOutline">Swiss</MenuItem>
+      </MenuGroup>
+      <MenuGroup label="Meats">
+        <MenuItem icon="FavoriteOutline">Sausage</MenuItem>
+        <MenuItem icon="FavoriteOutline">Pepperoni</MenuItem>
+        <MenuItem icon="FavoriteOutline">Salami</MenuItem>
+      </MenuGroup>
+      <MenuGroup label="Vegetables">
+        <MenuItem icon="FavoriteOutline">Onion</MenuItem>
+        <MenuItem icon="FavoriteOutline">Mushroom</MenuItem>
+        <MenuItem icon="FavoriteOutline">Peppers</MenuItem>
+      </MenuGroup>
+    </>
+  )
+
   return (
     <ThemeProvider theme={theme}>
-      <>
+      <Box m="xxxlarge">
         <GlobalStyle />
-        <Popover
-          content={
-            <PopoverContent p="large">
-              <InputText
-                onChange={handleChange}
-                value={value}
-                placeholder="Type in me"
-              />
-            </PopoverContent>
-          }
-        >
-          {(onClick, ref, className) => (
-            <Button
-              aria-haspopup="true"
-              onClick={onClick}
-              ref={ref}
-              className={className}
-              m="small"
-            >
-              Reproduces Helltool Modal/Popover Bug
-            </Button>
-          )}
-        </Popover>
-      </>
+        <Menu>
+          <MenuDisclosure>
+            <ButtonOutline mr="xlarge">
+              Pizza Menu Selection.... (Scroll)
+            </ButtonOutline>
+          </MenuDisclosure>
+          <MenuList height="20rem" minWidth="18rem">
+            {contents}
+          </MenuList>
+        </Menu>
+
+        <Menu>
+          <MenuDisclosure>
+            <ButtonOutline>Pizza Menu Selection....</ButtonOutline>
+          </MenuDisclosure>
+          <MenuList minWidth="18rem">{contents}</MenuList>
+        </Menu>
+      </Box>
     </ThemeProvider>
   )
 }
