@@ -26,40 +26,62 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { MenuGroup, MenuList, MenuItem, GlobalStyle } from '@looker/components'
+import {
+  Box,
+  ButtonOutline,
+  Menu,
+  MenuDisclosure,
+  MenuGroup,
+  MenuList,
+  MenuItem,
+  GlobalStyle,
+} from '@looker/components'
 import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
 
 const App: React.FC = () => {
+  const contents = (
+    <>
+      <MenuGroup label="Cheeses">
+        <MenuItem icon="FavoriteOutline">Cheddar</MenuItem>
+        <MenuItem icon="FavoriteOutline">Mozerella</MenuItem>
+        <MenuItem icon="FavoriteOutline">Swiss</MenuItem>
+      </MenuGroup>
+      <MenuGroup label="Meats">
+        <MenuItem icon="FavoriteOutline">Sausage</MenuItem>
+        <MenuItem icon="FavoriteOutline">Pepperoni</MenuItem>
+        <MenuItem icon="FavoriteOutline">Salami</MenuItem>
+      </MenuGroup>
+      <MenuGroup label="Vegetables">
+        <MenuItem icon="FavoriteOutline">Onion</MenuItem>
+        <MenuItem icon="FavoriteOutline">Mushroom</MenuItem>
+        <MenuItem icon="FavoriteOutline">Peppers</MenuItem>
+      </MenuGroup>
+    </>
+  )
+
   return (
     <ThemeProvider theme={theme}>
-      <>
+      <Box m="xxxlarge">
         <GlobalStyle />
-        <MenuList>
-          <MenuGroup label="Links">
-            <MenuItem icon="LogoRings" current>
-              Looker
-            </MenuItem>
-            <MenuItem icon="Validate">Validate</MenuItem>
-            <MenuItem icon="ChartPie">Pizza!</MenuItem>
-          </MenuGroup>
-          <MenuGroup label="Cheeses">
-            <MenuItem icon="FavoriteOutline">Cheddar</MenuItem>
-            <MenuItem icon="FavoriteOutline">Mozerella</MenuItem>
-            <MenuItem icon="FavoriteOutline">Swiss</MenuItem>
-          </MenuGroup>
-          <MenuGroup label="Meats">
-            <MenuItem icon="FavoriteOutline">Sausage</MenuItem>
-            <MenuItem icon="FavoriteOutline">Pepperoni</MenuItem>
-            <MenuItem icon="FavoriteOutline">Salami</MenuItem>
-          </MenuGroup>
-          <MenuGroup label="Vegetables">
-            <MenuItem icon="FavoriteOutline">Onion</MenuItem>
-            <MenuItem icon="FavoriteOutline">Mushroom</MenuItem>
-            <MenuItem icon="FavoriteOutline">Peppers</MenuItem>
-          </MenuGroup>
-        </MenuList>
-      </>
+        <Menu>
+          <MenuDisclosure>
+            <ButtonOutline mr="xlarge">
+              Pizza Menu Selection.... (Scroll)
+            </ButtonOutline>
+          </MenuDisclosure>
+          <MenuList height="20rem" minWidth="18rem">
+            {contents}
+          </MenuList>
+        </Menu>
+
+        <Menu>
+          <MenuDisclosure>
+            <ButtonOutline>Pizza Menu Selection....</ButtonOutline>
+          </MenuDisclosure>
+          <MenuList minWidth="18rem">{contents}</MenuList>
+        </Menu>
+      </Box>
     </ThemeProvider>
   )
 }

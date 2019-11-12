@@ -37,6 +37,12 @@ import React, {
 import { HotKeys } from 'react-hotkeys'
 import styled, { css } from 'styled-components'
 import {
+  MaxHeightProps,
+  MinHeightProps,
+  HeightProps,
+  height,
+  minHeight,
+  maxHeight,
   width,
   WidthProps,
   MaxWidthProps,
@@ -53,6 +59,9 @@ import { moveFocus } from './moveFocus'
 
 export interface MenuListProps
   extends CompatibleHTMLProps<HTMLUListElement>,
+    MaxHeightProps,
+    MinHeightProps,
+    HeightProps,
     MaxWidthProps,
     MinWidthProps,
     WidthProps,
@@ -157,9 +166,16 @@ const dividersStyle = css`
 
 export const MenuList = styled(MenuListInternal)`
   ${reset}
+
+  ${minHeight}
+  ${maxHeight}
+  ${height}
+
   ${minWidth}
   ${maxWidth}
   ${width}
+
+  overflow: auto;
 
   list-style: none;
   outline: none;
@@ -167,4 +183,4 @@ export const MenuList = styled(MenuListInternal)`
   ${props => props.groupDividers !== false && dividersStyle};
 `
 
-MenuList.defaultProps = { minWidth: '10rem' }
+MenuList.defaultProps = { minWidth: '12rem' }
