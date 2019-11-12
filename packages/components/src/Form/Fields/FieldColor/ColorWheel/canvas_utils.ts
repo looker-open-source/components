@@ -3,17 +3,17 @@
  MIT License
 
  Copyright (c) 2019 Looker Data Sciences, Inc.
- 
+
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
  in the Software without restriction, including without limitation the rights
  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  copies of the Software, and to permit persons to whom the Software is
  furnished to do so, subject to the following conditions:
- 
+
  The above copyright notice and this permission notice shall be included in all
  copies or substantial portions of the Software.
- 
+
  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -64,7 +64,9 @@ export const clearCanvas = (canvas: HTMLCanvasElement) => {
 }
 
 /**
- * Stateful function that draws color wheel pixels into provided array
+ * Stateful function that draws color wheel pixels into provided array.
+ * Helpful reading for context in the Uint8ClampedArray:
+ * https://medium.com/@bantic/hand-coding-a-color-wheel-with-canvas-78256c9d7d43
  */
 export const drawColorWheelIntoCanvasImage = (
   image: Uint8ClampedArray,
@@ -81,9 +83,7 @@ export const drawColorWheelIntoCanvasImage = (
       image[index] = rgbColor.r
       image[index + 1] = rgbColor.g
       image[index + 2] = rgbColor.b
-
-      // Currently hardcoding alpha channel to be completely opaque.
-      image[index + 3] = rgbColor.opacity * 255
+      image[index + 3] = 255 // render full opacity
     })
   })
 }

@@ -4,9 +4,6 @@ github: ColorWheel
 propsOf: ColorWheel
 ---
 
-import { Props } from '../../../Shared'
-import { ColorWheelDemo } from './demos'
-
 The `<ColorWheel/>` renders an HSV based color wheel. The wheel can be rendered at any needed size by providing a `size` property.
 The color wheel defaults to selecting a highly saturated and bright red hue.
 
@@ -33,4 +30,60 @@ of the color wheel itself, while changing the `hue` and `saturation` will indica
 Use this to provide a callback to know when a new (hue, saturation) tuple has been clicked. Note that the brightness will never change for a given
 slice of a color wheel, and should be handled outside the color wheel component.
 
-<ColorWheelDemo />
+```jsx
+;() => {
+  const [color, setColor] = useState({
+    h: 140,
+    s: 0.5,
+    v: 0.5,
+  })
+
+  const handleColorStateChange = hs => {
+    setColor({
+      ...hs,
+      v: color.v,
+    })
+  }
+
+  const handleSliderChange = event => {
+    const value = Number(event.currentTarget.value)
+    setColor({ ...color, v: value / 100 })
+  }
+
+  return (
+    <Flex>
+      <Card raised>
+        <CardContent>
+          <Heading as="h2">Color wheel</Heading>
+          <ColorWheel
+            size={300}
+            hue={color.h}
+            saturation={color.s}
+            value={color.v}
+            onColorChange={handleColorStateChange}
+          />
+
+          <LuminositySlider
+            id="typeinp"
+            min={0}
+            max={100}
+            value={color.v * 100}
+            onChange={handleSliderChange}
+            step={1}
+          />
+        </CardContent>
+      </Card>
+      <Card raised>
+        <CardContent>
+          <Heading as="h2">HSV values</Heading>
+          <List>
+            <ListItem>Hue: {color.h.toFixed(0)}</ListItem>
+            <ListItem>Saturation: {color.s.toFixed(1)}</ListItem>
+            <ListItem>Value: {color.v}</ListItem>
+          </List>
+        </CardContent>
+      </Card>
+    </Flex>
+  )
+}
+```

@@ -25,4 +25,3 @@
  */
 
 export * from './IconList'
-export { default as ColorWheelDemo } from './ColorWheelDemo'

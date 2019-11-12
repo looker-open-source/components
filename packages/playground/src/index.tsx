@@ -24,72 +24,84 @@
 
  */
 
-import React, { useState, useEffect } from 'react'
-import 'core-js' // polyfills for IE
+import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 import {
-  Button,
+  ColorWheel,
+  LuminositySlider,
   GlobalStyle,
-  MenuDisclosure,
-  MenuGroup,
-  MenuItem,
-  MenuList,
-  MenuSearch,
-  Menu,
+  Heading,
+  Card,
+  CardContent,
+  Flex,
+  List,
+  ListItem,
 } from '@looker/components'
 import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
 
-const defaultCheeses = ['Gouda', 'Swiss', 'Cheddar', 'Goat', 'Parmesan']
+const ColorWheelDemo = () => {
+  const [color, setColor] = useState({
+    h: 140,
+    s: 0.5,
+    v: 0.5,
+  })
 
-const App: React.FC = () => {
-  const menuRef = React.useRef(null)
-
-  const [keywordSearch, setKeywordSearch] = useState('')
-  const [searchResults, setSearchResults] = useState(defaultCheeses)
-
-  // setting 'keywordSearch' to be equal to the value added to inputSearch
-  const handleChange = (event: React.FormEvent<HTMLInputElement>) => {
-    setKeywordSearch(event.currentTarget.value)
+  const handleColorStateChange = (hs: any) => {
+    setColor({
+      ...hs,
+      v: color.v,
+    })
   }
 
-  // reset the search results, after clear the search, to the first result before search
-  const handleClear = () => setKeywordSearch('')
+  const handleSliderChange = (event: any) => {
+    const value = Number(event.currentTarget.value)
+    setColor({ ...color, v: value / 100 })
+  }
 
-  // return search based on what is on the 'keywordSearch' AKA inputSearch value
-  useEffect(() => {
-    const results = defaultCheeses.filter(cheese =>
-      cheese.toLowerCase().includes(keywordSearch.toLowerCase())
-    )
-    setSearchResults(results)
-  }, [keywordSearch])
+  return (
+    <Flex>
+      <Card raised>
+        <CardContent>
+          <Heading as="h2">Color wheel</Heading>
+          <ColorWheel
+            size={400}
+            hue={color.h}
+            saturation={color.s}
+            value={color.v}
+            onColorChange={handleColorStateChange}
+          />
 
+          <LuminositySlider
+            id="typeinp"
+            min={0}
+            max={100}
+            value={color.v * 100}
+            onChange={handleSliderChange}
+            step={1}
+          />
+        </CardContent>
+      </Card>
+      <Card raised>
+        <CardContent>
+          <Heading as="h2">HSV values</Heading>
+          <List>
+            <ListItem>Hue: {color.h.toFixed(0)}</ListItem>
+            <ListItem>Saturation: {color.s.toFixed(1)}</ListItem>
+            <ListItem>Value: {color.v}</ListItem>
+          </List>
+        </CardContent>
+      </Card>
+    </Flex>
+  )
+}
+
+const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <>
         <GlobalStyle />
-        <Menu>
-          <MenuDisclosure tooltip="Select your favorite kind">
-            <Button m="medium">cheese</Button>
-          </MenuDisclosure>
-
-          <MenuList ref={menuRef}>
-            <MenuSearch
-              placeholder="start your search..."
-              value={keywordSearch}
-              onChange={handleChange}
-              menuRef={menuRef}
-              onClear={handleClear}
-            />
-            <MenuGroup label="cheeses">
-              {searchResults.map(cheese => (
-                <MenuItem itemRole="link" href={`#${cheese}`} key={cheese}>
-                  {cheese.toUpperCase()}
-                </MenuItem>
-              ))}
-            </MenuGroup>
-          </MenuList>
-        </Menu>
+        <ColorWheelDemo />
       </>
     </ThemeProvider>
   )
