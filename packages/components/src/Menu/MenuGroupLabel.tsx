@@ -34,6 +34,7 @@ export const MenuGroupLabel = styled.div<MenuGroupLabelProps>`
   box-shadow: ${props => props.boxShadow};
   position: sticky;
   top: -1px;
+  margin-bottom: ${({ theme }) => theme.space.xxsmall};
 `
 
 MenuGroupLabel.defaultProps = {

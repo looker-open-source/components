@@ -46,6 +46,7 @@ exports[`MenuGroup - JSX label 1`] = `
   position: -webkit-sticky;
   position: sticky;
   top: -1px;
+  margin-bottom: 0.25rem;
 }
 
 .c0 {
@@ -88,7 +89,6 @@ exports[`MenuGroup - JSX label 1`] = `
   -ms-flex: 1;
   flex: 1;
   outline: none;
-  padding-left: 0.75rem;
   text-align: left;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -121,6 +121,7 @@ exports[`MenuGroup - JSX label 1`] = `
   border-left-width: 4px;
   border-left-style: solid;
   border-left-color: transparent;
+  padding-left: calc(1rem - 4px);
 }
 
 .c5:focus-within button,
@@ -261,6 +262,7 @@ exports[`MenuGroup - label 1`] = `
   position: -webkit-sticky;
   position: sticky;
   top: -1px;
+  margin-bottom: 0.25rem;
 }
 
 .c0 {
@@ -303,7 +305,6 @@ exports[`MenuGroup - label 1`] = `
   -ms-flex: 1;
   flex: 1;
   outline: none;
-  padding-left: 0.75rem;
   text-align: left;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -336,6 +337,7 @@ exports[`MenuGroup - label 1`] = `
   border-left-width: 4px;
   border-left-style: solid;
   border-left-color: transparent;
+  padding-left: calc(1rem - 4px);
 }
 
 .c4:focus-within button,
@@ -472,6 +474,7 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
   position: -webkit-sticky;
   position: sticky;
   top: -1px;
+  margin-bottom: 0.25rem;
 }
 
 .c0 {
@@ -514,7 +517,6 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
   -ms-flex: 1;
   flex: 1;
   outline: none;
-  padding-left: 0.75rem;
   text-align: left;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -547,6 +549,7 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
   border-left-width: 4px;
   border-left-style: solid;
   border-left-color: transparent;
+  padding-left: calc(1rem - 4px);
 }
 
 .c4:focus-within button,
@@ -723,7 +726,6 @@ exports[`MenuGroup - menu customization 1`] = `
   -ms-flex: 1;
   flex: 1;
   outline: none;
-  padding-left: 0.75rem;
   text-align: left;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -766,6 +768,7 @@ exports[`MenuGroup - menu customization 1`] = `
   border-left-width: 10px;
   border-left-style: solid;
   border-left-color: transparent;
+  padding-left: calc(1rem - 10px);
 }
 
 .c2:focus-within button,
@@ -977,7 +980,6 @@ exports[`MenuGroup 1`] = `
   -ms-flex: 1;
   flex: 1;
   outline: none;
-  padding-left: 0.75rem;
   text-align: left;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -1010,6 +1012,7 @@ exports[`MenuGroup 1`] = `
   border-left-width: 4px;
   border-left-style: solid;
   border-left-color: transparent;
+  padding-left: calc(1rem - 4px);
 }
 
 .c2:focus-within button,

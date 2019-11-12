@@ -92,6 +92,8 @@ export const MenuItemListItem = styled(Li)<MenuListItemProps>`
     border-left-style: solid;
     border-left-color: ${({ itemStyle, current }) =>
       current ? itemStyle.marker.color : 'transparent'};
+    padding-left: calc(${({ theme, itemStyle }) =>
+      `${theme.space.medium} - ${itemStyle.marker.size}px`});
   }
 
   &:focus-within button,
