@@ -340,6 +340,7 @@ export function usePopover({
         <Popper
           positionFixed
           placement={propsPlacement}
+          innerRef={focusRef}
           modifiers={{
             flip: {
               behavior: 'flip',
@@ -359,10 +360,7 @@ export function usePopover({
               arrow={arrow}
               arrowProps={arrowProps}
               placement={placement}
-              ref={node => {
-                ref(node)
-                focusRef(node)
-              }}
+              ref={ref}
               style={style}
               backgroundColor="palette.white"
               border="1px solid"

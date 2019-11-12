@@ -3,17 +3,17 @@
  MIT License
 
  Copyright (c) 2019 Looker Data Sciences, Inc.
- 
+
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
  in the Software without restriction, including without limitation the rights
  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  copies of the Software, and to permit persons to whom the Software is
  furnished to do so, subject to the following conditions:
- 
+
  The above copyright notice and this permission notice shall be included in all
  copies or substantial portions of the Software.
- 
+
  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -27,7 +27,7 @@
 import * as d3color from 'd3-color'
 import * as d3hsv from 'd3-hsv'
 import { SimpleHSV } from '../ColorWheel/color_wheel_utils'
-import { toPerc } from './math_utils'
+import { toPercent } from './math_utils'
 import { namedColors } from './named_colors'
 
 export enum ColorFormat {
@@ -148,9 +148,9 @@ export const toRGBPString = (
 ) => {
   const opacityUse = opacity || getOpacity(color)
   const rgb = color.rgb()
-  const r = toPerc(rgb.r, RGB_MAX_VALUE)
-  const g = toPerc(rgb.g, RGB_MAX_VALUE)
-  const b = toPerc(rgb.b, RGB_MAX_VALUE)
+  const r = toPercent(rgb.r, RGB_MAX_VALUE)
+  const g = toPercent(rgb.g, RGB_MAX_VALUE)
+  const b = toPercent(rgb.b, RGB_MAX_VALUE)
   if (useAlpha || opacityUse !== 1) {
     return `rgba(${r}%, ${g}%, ${b}%, ${opacityUse})`
   }

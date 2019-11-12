@@ -25,7 +25,6 @@
  */
 
 import { FontWeights, palette, FontSizes } from '@looker/design-tokens'
-import { MenuItemStateStyle, MenuItemStyle } from './menuItemStyle'
 
 export interface MenuItemStateStyle {
   bg: string

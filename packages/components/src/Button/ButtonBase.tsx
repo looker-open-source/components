@@ -44,7 +44,7 @@ import {
   WidthProps,
   width,
 } from 'styled-system'
-import { buttonSize, ButtonSizeProps } from './size'
+import { buttonSize, ButtonSizes, ButtonSizeProps } from './size'
 import { ButtonIcon, buttonIcon, ButtonIconProps } from './icon'
 
 export interface CustomizableButtonAttributes {
@@ -57,7 +57,7 @@ export const CustomizableButtonAttributes: CustomizableButtonAttributes = {
 
 type ButtonColors = keyof SemanticColors
 
-export interface OuterButtonProps
+export interface ButtonBaseProps
   extends Omit<CompatibleHTMLProps<HTMLButtonElement>, 'type'>,
     ButtonSizeProps,
     MaxWidthProps,
@@ -76,19 +76,15 @@ export interface OuterButtonProps
    * @default "primary"
    */
   color?: ButtonColors
-}
 
-// this props refer to the keyboard expected focus behavior
-interface ButtonFocusProps {
   focusVisible?: boolean
 }
 
-export interface ButtonProps
-  extends OuterButtonProps,
-    ButtonFocusProps,
-    ButtonIconProps {}
+export interface ButtonProps extends ButtonBaseProps, ButtonIconProps {
+  size?: ButtonSizes
+}
 
-export const buttonCSS = css<ButtonProps>`
+export const buttonCSS = css<ButtonBaseProps>`
   ${reset}
   ${maxWidth}
   ${minWidth}
