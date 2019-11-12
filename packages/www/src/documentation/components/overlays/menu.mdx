@@ -253,6 +253,39 @@ It supports an optional `label` prop to place a heading above the `MenuItem`s. W
 ```jsx
 ;() => {
   const menuRef = React.useRef(null)
+  const cheeses = ['Gouda', 'Swiss', 'Cheddar', 'Goat', 'Parmesan']
+  const [keywords, setKeywords] = React.useState('')
+  const onChange = e => {
+    setKeywords(e.currentTarget.value)
+  }
+
+  return (
+    <Menu>
+      <MenuDisclosure tooltip="Select your favorite kind">
+        <Button m="medium">cheese</Button>
+      </MenuDisclosure>
+
+      <MenuList menuRef={menuRef}>
+        <MenuSearch
+          placeholder="start your search..."
+          value={keywords}
+          onChange={onChange}
+          menuRef={menuRef}
+        />
+        <MenuGroup label="cheeses">
+          {cheeses.map(cheese => (
+            <MenuItem itemRole="link" href={`#${cheese}`} key={cheese}>
+              {cheese.toUpperCase()}
+            </MenuItem>
+          ))}
+        </MenuGroup>
+      </MenuList>
+    </Menu>
+  )
+}
+```
+
+<!-- const menuRef = React.useRef(null)
   const items = ['a', 'b', 'c', 'd', 'e']
   const [keywords, setKeywords] = React.useState('')
   const onChange = e => setKeywords(e.currentTarget.value)
@@ -296,6 +329,4 @@ It supports an optional `label` prop to place a heading above the `MenuItem`s. W
         </Button>
       )}
     </DrawerManager>
-  )
-}
-```
+  ) -->

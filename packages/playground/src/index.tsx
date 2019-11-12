@@ -27,64 +27,57 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import {
-  Box,
-  ButtonOutline,
-  Menu,
+  Button,
+  GlobalStyle,
   MenuDisclosure,
   MenuGroup,
-  MenuList,
   MenuItem,
-  GlobalStyle,
+  MenuList,
+  MenuSearch,
+  Menu,
 } from '@looker/components'
 import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
 
 const App: React.FC = () => {
-  const contents = (
-    <>
-      <MenuGroup label="Cheeses">
-        <MenuItem icon="FavoriteOutline">Cheddar</MenuItem>
-        <MenuItem icon="FavoriteOutline">Mozerella</MenuItem>
-        <MenuItem icon="FavoriteOutline">Swiss</MenuItem>
-      </MenuGroup>
-      <MenuGroup label="Meats">
-        <MenuItem icon="FavoriteOutline">Sausage</MenuItem>
-        <MenuItem icon="FavoriteOutline">Pepperoni</MenuItem>
-        <MenuItem icon="FavoriteOutline">Salami</MenuItem>
-      </MenuGroup>
-      <MenuGroup label="Vegetables">
-        <MenuItem icon="FavoriteOutline">Onion</MenuItem>
-        <MenuItem icon="FavoriteOutline">Mushroom</MenuItem>
-        <MenuItem icon="FavoriteOutline">Peppers</MenuItem>
-      </MenuGroup>
-    </>
-  )
+  const menuRef = React.useRef(null)
+  const cheeses = ['Gouda', 'Swiss', 'Cheddar', 'Goat', 'Parmesan']
+  // const fruits = ['apple', 'pear', 'pineapple', 'watermelon', 'banana']
+  const [keywords, setKeywords] = React.useState('')
+  const onChange = (e: React.FormEvent<HTMLInputElement>) => {
+    setKeywords(e.currentTarget.value)
+  }
 
   return (
     <ThemeProvider theme={theme}>
       <Box m="xxxlarge">
         <GlobalStyle />
         <Menu>
-          <MenuDisclosure>
-            <ButtonOutline mr="xlarge">
-              Pizza Menu Selection.... (Scroll)
-            </ButtonOutline>
+          <MenuDisclosure tooltip="Select your favorite kind">
+            <Button m="medium">cheese</Button>
           </MenuDisclosure>
-          <MenuList height="20rem" minWidth="18rem">
-            {contents}
+
+          <MenuList ref={menuRef}>
+            <MenuSearch
+              placeholder="start your search..."
+              value={keywords}
+              onChange={onChange}
+              menuRef={menuRef}
+            />
+            <MenuGroup label="cheeses">
+              {cheeses.map(cheese => (
+                <MenuItem itemRole="link" href={`#${cheese}`} key={cheese}>
+                  {cheese.toUpperCase()}
+                </MenuItem>
+              ))}
+            </MenuGroup>
           </MenuList>
         </Menu>
-
-        <Menu>
-          <MenuDisclosure>
-            <ButtonOutline>Pizza Menu Selection....</ButtonOutline>
-          </MenuDisclosure>
-          <MenuList minWidth="18rem">{contents}</MenuList>
-        </Menu>
-      </Box>
+      </>
     </ThemeProvider>
   )
 }
+
 /**
  * This is the binding site for the playground. If you want to edit the
  * primary application, do your work in App.tsx instead.
