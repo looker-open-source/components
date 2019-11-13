@@ -24,7 +24,7 @@
 
  */
 
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import ReactDOM from 'react-dom'
 import {
   Button,
@@ -39,14 +39,26 @@ import {
 import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
 
+const defaultCheeses = ['Gouda', 'Swiss', 'Cheddar', 'Goat', 'Parmesan']
+
 const App: React.FC = () => {
   const menuRef = React.useRef(null)
-  const cheeses = ['Gouda', 'Swiss', 'Cheddar', 'Goat', 'Parmesan']
-  // const fruits = ['apple', 'pear', 'pineapple', 'watermelon', 'banana']
-  const [keywords, setKeywords] = React.useState('')
-  const onChange = (e: React.FormEvent<HTMLInputElement>) => {
-    setKeywords(e.currentTarget.value)
+
+  const [keywordSearch, setKeywordSearch] = useState('')
+  const [searchResults, setSearchResults] = useState(defaultCheeses)
+
+  const handleChange = (event: React.FormEvent<HTMLInputElement>) => {
+    setKeywordSearch(event.currentTarget.value)
   }
+
+  const handleClear = () => setKeywordSearch('')
+
+  useEffect(() => {
+    const results = defaultCheeses.filter(cheese =>
+      cheese.toLowerCase().includes(keywordSearch.toLowerCase())
+    )
+    setSearchResults(results)
+  }, [keywordSearch])
 
   return (
     <ThemeProvider theme={theme}>
@@ -60,12 +72,13 @@ const App: React.FC = () => {
           <MenuList ref={menuRef}>
             <MenuSearch
               placeholder="start your search..."
-              value={keywords}
-              onChange={onChange}
+              value={keywordSearch}
+              onChange={handleChange}
               menuRef={menuRef}
+              onClear={handleClear}
             />
             <MenuGroup label="cheeses">
-              {cheeses.map(cheese => (
+              {searchResults.map(cheese => (
                 <MenuItem itemRole="link" href={`#${cheese}`} key={cheese}>
                   {cheese.toUpperCase()}
                 </MenuItem>
