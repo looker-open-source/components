@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Fix bug where menu group headers render a drop shadow by default
+- Refactor z-index out of menu styles
 - Implement a vertical layout for the Code Sandbox toolbar to prevent unintentional obfuscation of code samples
 
 ## [0.7.2] - 2019-11-11
