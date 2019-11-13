@@ -47,12 +47,15 @@ const App: React.FC = () => {
   const [keywordSearch, setKeywordSearch] = useState('')
   const [searchResults, setSearchResults] = useState(defaultCheeses)
 
+  // setting 'keywordSearch' to be equal to the value added to inputSearch
   const handleChange = (event: React.FormEvent<HTMLInputElement>) => {
     setKeywordSearch(event.currentTarget.value)
   }
 
+  // reset the search results, after clear the search, to the first result before search
   const handleClear = () => setKeywordSearch('')
 
+  // return search based on what is on the 'keywordSearch' AKA inputSearch value
   useEffect(() => {
     const results = defaultCheeses.filter(cheese =>
       cheese.toLowerCase().includes(keywordSearch.toLowerCase())
@@ -62,7 +65,7 @@ const App: React.FC = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Box m="xxxlarge">
+      <>
         <GlobalStyle />
         <Menu>
           <MenuDisclosure tooltip="Select your favorite kind">
