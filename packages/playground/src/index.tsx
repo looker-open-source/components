@@ -23,7 +23,7 @@
  SOFTWARE.
 
  */
-
+import 'core-js' // polyfills for IE
 import React from 'react'
 import ReactDOM from 'react-dom'
 import {
