@@ -150,7 +150,6 @@ const Inner = styled.div<SurfaceStyleProps>`
   ${border}
   ${boxShadow}
   ${color}
-
   &:focus {
     outline: none;
   }
