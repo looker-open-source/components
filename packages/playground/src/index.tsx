@@ -26,62 +26,29 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {
-  Box,
-  ButtonOutline,
-  Menu,
-  MenuDisclosure,
-  MenuGroup,
-  MenuList,
-  MenuItem,
-  GlobalStyle,
-} from '@looker/components'
+import { AvatarUser, GlobalStyle } from '@looker/components'
 import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
 
-const App: React.FC = () => {
-  const contents = (
-    <>
-      <MenuGroup label="Cheeses">
-        <MenuItem icon="FavoriteOutline">Cheddar</MenuItem>
-        <MenuItem icon="FavoriteOutline">Mozerella</MenuItem>
-        <MenuItem icon="FavoriteOutline">Swiss</MenuItem>
-      </MenuGroup>
-      <MenuGroup label="Meats">
-        <MenuItem icon="FavoriteOutline">Sausage</MenuItem>
-        <MenuItem icon="FavoriteOutline">Pepperoni</MenuItem>
-        <MenuItem icon="FavoriteOutline">Salami</MenuItem>
-      </MenuGroup>
-      <MenuGroup label="Vegetables">
-        <MenuItem icon="FavoriteOutline">Onion</MenuItem>
-        <MenuItem icon="FavoriteOutline">Mushroom</MenuItem>
-        <MenuItem icon="FavoriteOutline">Peppers</MenuItem>
-      </MenuGroup>
-    </>
-  )
+const data = {
+  // eslint-disable-next-line @typescript-eslint/camelcase
+  avatar_url:
+    'https://gravatar.lookercdn.com/avatar/e8ebbdf1a644117215036eac62995731?s=156&d=blank',
+  // eslint-disable-next-line @typescript-eslint/camelcase
+  first_name: 'Luke',
+  id: 61,
+  // eslint-disable-next-line @typescript-eslint/camelcase
+  last_name: 'Bowerman',
+}
 
+// want to add < m="medium" > to AvatarUser
+const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
-      <Box m="xxxlarge">
+      <>
         <GlobalStyle />
-        <Menu>
-          <MenuDisclosure>
-            <ButtonOutline mr="xlarge">
-              Pizza Menu Selection.... (Scroll)
-            </ButtonOutline>
-          </MenuDisclosure>
-          <MenuList height="20rem" minWidth="18rem">
-            {contents}
-          </MenuList>
-        </Menu>
-
-        <Menu>
-          <MenuDisclosure>
-            <ButtonOutline>Pizza Menu Selection....</ButtonOutline>
-          </MenuDisclosure>
-          <MenuList minWidth="18rem">{contents}</MenuList>
-        </Menu>
-      </Box>
+        <AvatarUser user={data} />
+      </>
     </ThemeProvider>
   )
 }
