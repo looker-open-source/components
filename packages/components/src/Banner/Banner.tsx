@@ -93,7 +93,7 @@ export const Banner = forwardRef(
     const {
       children,
       dismissable,
-      intent = 'info',
+      intent = 'warning',
       onDismiss,
       ...typeAndSpaceProps
     } = props
