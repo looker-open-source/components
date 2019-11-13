@@ -32,7 +32,7 @@ import { CartesianCoordinate, translate } from './math_utils'
 /**
  * Default margin for canvas margin so we can easily show mouse cursor as well.
  */
-export const canvasMargin = 5
+export const canvasMargin = 10
 
 /**
  * Returns a radius for a given canvas element that has a given margin on all sides.

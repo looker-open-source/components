@@ -80,7 +80,7 @@ export const cartesian2hsv = (
   [coord]
     .map(c => translateDiagonal(-radius, c))
     .map(cartesian2polar)
-    .map(c => (c.radius < radius ? { brightness, coord: c } : white()))
+    .map(c => (c.radius <= radius ? { brightness, coord: c } : white()))
     .map(pb => scalePBRadius(1 / radius, pb))
     .map(polarbrightness2hsv)[0]
 

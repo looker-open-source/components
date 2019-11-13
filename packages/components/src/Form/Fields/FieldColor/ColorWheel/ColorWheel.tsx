@@ -46,7 +46,7 @@ import {
 import {
   CartesianCoordinate,
   diameter,
-  isInCircle,
+  limitByRadius,
   translateDiagonal,
 } from './math_utils'
 
@@ -83,7 +83,7 @@ export class ColorWheel extends Component<ColorWheelProps> {
     value: 1,
   }
 
-  private mouseMoving = false
+  private isMouseDragging = false
   private colorWheelImage?: ImageData
   private colorWheelCanvas!: HTMLCanvasElement
   private valueCanvas!: HTMLCanvasElement
@@ -147,18 +147,33 @@ export class ColorWheel extends Component<ColorWheelProps> {
           height={this.props.size}
           onMouseDown={this.mouseDown}
           onMouseMove={this.mouseMove}
-          onMouseUp={this.mouseUp}
+          onMouseUp={this.setMouseDragging.bind(this, false)}
+          onMouseLeave={this.setMouseDragging.bind(this, false)}
         />
       </ColorWheelWrapper>
     )
   }
 
   public mouseDown = (event: React.MouseEvent<HTMLCanvasElement>) => {
+    this.setMouseDragging(true)
     const canvasCartesian = eventCartesianPosition(this.colorWheelCanvas, event)
-    const position = translateDiagonal(-canvasMargin, canvasCartesian)
+    const position = limitByRadius(
+      translateDiagonal(-canvasMargin, canvasCartesian),
+      this.radius
+    )
+    this.updateColor(this.colorWheelCanvas, position, this.props.onColorChange)
+  }
 
-    if (isInCircle(position, this.radius)) {
-      this.mouseMoving = true
+  public mouseMove = (event: React.MouseEvent<HTMLCanvasElement>) => {
+    if (this.isMouseDragging) {
+      const canvasCartesian = eventCartesianPosition(
+        this.colorWheelCanvas,
+        event
+      )
+      const position = limitByRadius(
+        translateDiagonal(-canvasMargin, canvasCartesian),
+        this.radius
+      )
       this.updateColor(
         this.colorWheelCanvas,
         position,
@@ -167,25 +182,8 @@ export class ColorWheel extends Component<ColorWheelProps> {
     }
   }
 
-  public mouseMove = (event: React.MouseEvent<HTMLCanvasElement>) => {
-    if (this.mouseMoving) {
-      const canvasCartesian = eventCartesianPosition(
-        this.colorWheelCanvas,
-        event
-      )
-      const position = translateDiagonal(-canvasMargin, canvasCartesian)
-      if (isInCircle(position, this.radius)) {
-        this.updateColor(
-          this.colorWheelCanvas,
-          position,
-          this.props.onColorChange
-        )
-      }
-    }
-  }
-
-  public mouseUp = () => {
-    this.mouseMoving = false
+  public setMouseDragging = (isDragging: boolean) => {
+    this.isMouseDragging = isDragging
   }
 
   private get radius(): number {
@@ -205,6 +203,9 @@ export class ColorWheel extends Component<ColorWheelProps> {
       ctx.arc(centerX, centerY, this.radius, 0, 2 * Math.PI, false)
       ctx.fillStyle = `rgb(${r},${g},${b})`
       ctx.fill()
+      ctx.lineWidth = 3
+      ctx.strokeStyle = '#ffffff'
+      ctx.stroke()
     }
   }
 
@@ -243,8 +244,8 @@ export class ColorWheel extends Component<ColorWheelProps> {
       2 * Math.PI,
       false
     )
-    ctx.lineWidth = 2
-    ctx.strokeStyle = '#FEFEFE'
+    ctx.lineWidth = 3
+    ctx.strokeStyle = '#ffffff'
     ctx.stroke()
   }
 
