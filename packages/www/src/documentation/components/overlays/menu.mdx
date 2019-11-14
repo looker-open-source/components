@@ -253,49 +253,41 @@ It supports an optional `label` prop to place a heading above the `MenuItem`s. W
 ```jsx
 ;() => {
   const menuRef = React.useRef(null)
-  const items = ['a', 'b', 'c', 'd', 'e']
-  const [keywords, setKeywords] = React.useState('')
-  const onChange = e => setKeywords(e.currentTarget.value)
-  const menu = (
-    <React.Fragment>
-      <MenuSearch
-        placeholder="Filter menu items"
-        summary="33 matches"
-        value={keywords}
-        onChange={onChange}
-        menuRef={menuRef}
-      />
-      <ModalContent innerProps={{ p: 'none' }}>
-        <MenuList>
-          <MenuGroup label="Spacing">
-            {items.map(item => (
-              <MenuItem itemRole="link" href={`#${item}`} key={item}>
-                Example Link {item.toUpperCase()}
-              </MenuItem>
-            ))}
-          </MenuGroup>
-          <MenuGroup label="Spacing">
-            {items.map(item => (
-              <MenuItem detail={`Detail ${item}`} key={item}>
-                Example Item {item.toUpperCase()}
-              </MenuItem>
-            ))}
-          </MenuGroup>
-          <MenuGroup>
-            <MenuItem icon="Beaker">Scary Stuff</MenuItem>
-          </MenuGroup>
-        </MenuList>
-      </ModalContent>
-    </React.Fragment>
+  const defaultCheeses = ['Gouda', 'Swiss', 'Cheddar', 'Goat', 'Parmesan']
+
+  const [keywordSearch, setKeywordSearch] = React.useState('')
+
+  const handleChange = event => setKeywordSearch(event.currentTarget.value)
+
+  const handleClear = () => setKeywordSearch('')
+
+  const searchResults = defaultCheeses.filter(cheese =>
+    cheese.toLowerCase().includes(keywordSearch.toLowerCase())
   )
+
   return (
-    <DrawerManager content={menu}>
-      {onClick => (
-        <Button variant="outline" onClick={onClick} iconAfter="ArrowDropDown">
-          Drawer w/ Searchable Menu
-        </Button>
-      )}
-    </DrawerManager>
+    <Menu>
+      <MenuDisclosure tooltip="Select your favorite kind">
+        <Button m="medium">cheese</Button>
+      </MenuDisclosure>
+
+      <MenuList ref={menuRef}>
+        <MenuSearch
+          placeholder="start your search..."
+          value={keywordSearch}
+          onChange={handleChange}
+          onClear={handleClear}
+          menuRef={menuRef}
+        />
+        <MenuGroup label="cheeses">
+          {searchResults.map(cheese => (
+            <MenuItem itemRole="link" href={`#${cheese}`} key={cheese}>
+              {cheese.toUpperCase()}
+            </MenuItem>
+          ))}
+        </MenuGroup>
+      </MenuList>
+    </Menu>
   )
 }
 ```

@@ -23,68 +23,78 @@
  SOFTWARE.
 
  */
+
+import React, { useState, useEffect } from 'react'
 import 'core-js' // polyfills for IE
-import React from 'react'
 import ReactDOM from 'react-dom'
 import {
-  Box,
-  ButtonOutline,
-  Menu,
+  Button,
+  GlobalStyle,
   MenuDisclosure,
   MenuGroup,
-  MenuList,
   MenuItem,
-  GlobalStyle,
+  MenuList,
+  MenuSearch,
+  Menu,
 } from '@looker/components'
 import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
 
+const defaultCheeses = ['Gouda', 'Swiss', 'Cheddar', 'Goat', 'Parmesan']
+
 const App: React.FC = () => {
-  const contents = (
-    <>
-      <MenuGroup label="Cheeses">
-        <MenuItem icon="FavoriteOutline">Cheddar</MenuItem>
-        <MenuItem icon="FavoriteOutline">Mozerella</MenuItem>
-        <MenuItem icon="FavoriteOutline">Swiss</MenuItem>
-      </MenuGroup>
-      <MenuGroup label="Meats">
-        <MenuItem icon="FavoriteOutline">Sausage</MenuItem>
-        <MenuItem icon="FavoriteOutline">Pepperoni</MenuItem>
-        <MenuItem icon="FavoriteOutline">Salami</MenuItem>
-      </MenuGroup>
-      <MenuGroup label="Vegetables">
-        <MenuItem icon="FavoriteOutline">Onion</MenuItem>
-        <MenuItem icon="FavoriteOutline">Mushroom</MenuItem>
-        <MenuItem icon="FavoriteOutline">Peppers</MenuItem>
-      </MenuGroup>
-    </>
-  )
+  const menuRef = React.useRef(null)
+
+  const [keywordSearch, setKeywordSearch] = useState('')
+  const [searchResults, setSearchResults] = useState(defaultCheeses)
+
+  // setting 'keywordSearch' to be equal to the value added to inputSearch
+  const handleChange = (event: React.FormEvent<HTMLInputElement>) => {
+    setKeywordSearch(event.currentTarget.value)
+  }
+
+  // reset the search results, after clear the search, to the first result before search
+  const handleClear = () => setKeywordSearch('')
+
+  // return search based on what is on the 'keywordSearch' AKA inputSearch value
+  useEffect(() => {
+    const results = defaultCheeses.filter(cheese =>
+      cheese.toLowerCase().includes(keywordSearch.toLowerCase())
+    )
+    setSearchResults(results)
+  }, [keywordSearch])
 
   return (
     <ThemeProvider theme={theme}>
-      <Box m="xxxlarge">
+      <>
         <GlobalStyle />
         <Menu>
-          <MenuDisclosure>
-            <ButtonOutline mr="xlarge">
-              Pizza Menu Selection.... (Scroll)
-            </ButtonOutline>
+          <MenuDisclosure tooltip="Select your favorite kind">
+            <Button m="medium">cheese</Button>
           </MenuDisclosure>
-          <MenuList height="20rem" minWidth="18rem">
-            {contents}
+
+          <MenuList ref={menuRef}>
+            <MenuSearch
+              placeholder="start your search..."
+              value={keywordSearch}
+              onChange={handleChange}
+              menuRef={menuRef}
+              onClear={handleClear}
+            />
+            <MenuGroup label="cheeses">
+              {searchResults.map(cheese => (
+                <MenuItem itemRole="link" href={`#${cheese}`} key={cheese}>
+                  {cheese.toUpperCase()}
+                </MenuItem>
+              ))}
+            </MenuGroup>
           </MenuList>
         </Menu>
-
-        <Menu>
-          <MenuDisclosure>
-            <ButtonOutline>Pizza Menu Selection....</ButtonOutline>
-          </MenuDisclosure>
-          <MenuList minWidth="18rem">{contents}</MenuList>
-        </Menu>
-      </Box>
+      </>
     </ThemeProvider>
   )
 }
+
 /**
  * This is the binding site for the playground. If you want to edit the
  * primary application, do your work in App.tsx instead.

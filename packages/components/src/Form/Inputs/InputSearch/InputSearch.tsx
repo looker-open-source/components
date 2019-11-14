@@ -124,8 +124,12 @@ const InputSearchComponent = forwardRef(
       onChange && onChange(event)
     }
 
-    const controls = !hideControls && inputValue.length > 0 && (
-      <InputSearchControls onClear={handleClear} summary={summary} />
+    const controls = !hideControls && (
+      <InputSearchControls
+        onClear={handleClear}
+        showClear={inputValue.length > 0}
+        summary={summary}
+      />
     )
 
     return (
