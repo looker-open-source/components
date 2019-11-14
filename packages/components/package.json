@@ -18,11 +18,11 @@
   },
   "scripts": {
     "build:all": "yarn clean && yarn run build:es2015 && yarn run build:esm && yarn run build:cjs",
-    "build:es2015": "tsc --project tsconfig.build.json --module es2015 --target es2015 --outDir dist/es2015",
-    "build:esm": "tsc --project tsconfig.build.json --module es2015 --target es5 --outDir dist/esm",
-    "build:cjs": "tsc --project tsconfig.build.json --module commonjs --target es5 --outDir dist/cjs",
+    "build:es2015": "ttsc --project tsconfig.build.json --module es2015 --target es2015 --outDir dist/es2015",
+    "build:esm": "ttsc --project tsconfig.build.json --module es2015 --target es5 --outDir dist/esm",
+    "build:cjs": "ttsc --project tsconfig.build.json --module commonjs --target es5 --outDir dist/cjs",
     "clean": "rm -Rf ./dist",
-    "develop": "yarn clean && tsc --project tsconfig.build.json --watch --module commonjs --target es5 --outDir dist/cjs"
+    "develop": "yarn clean && ttsc --project tsconfig.build.json --watch --module commonjs --target es5 --outDir dist/cjs"
   },
   "dependencies": {
     "@looker/design-tokens": "^0.7.3",
@@ -55,7 +55,7 @@
     "enzyme": "^3.9.0",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
-    "react-test-renderer": "^16.9.0",
+    "react-test-renderer": "^16.11.0",
     "styled-components": "^4.4.1"
   },
   "peerDependencies": {
