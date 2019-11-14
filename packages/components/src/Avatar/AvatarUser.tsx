@@ -25,18 +25,20 @@
  */
 
 import React, { FC } from 'react'
-import { palette } from '@looker/design-tokens'
-import { Box } from '../Layout'
+import { color, reset, space, layout, SpaceProps } from '@looker/design-tokens'
+import styled, { css } from 'styled-components'
 
-export interface AvatarProps {
+export interface AvatarProps extends SpaceProps {
   /**
-   *  @default `2rem`
+   *  @default `40px`
    **/
   size?: number
   /**
    *  @default `palette.purple500`
    **/
   color?: string
+
+  className?: string
 }
 
 interface AvatarUserProps extends AvatarProps {
@@ -47,55 +49,61 @@ interface AvatarUserProps extends AvatarProps {
   }
 }
 
-export const AvatarUser: FC<AvatarUserProps> = ({
-  size = '2rem',
-  color = 'palette.purple500',
-  user,
-  ...props
-}) => {
+const AvatarLayout: FC<AvatarUserProps> = ({ color, className, user }) => {
   const initials =
     user.first_name &&
     user.last_name &&
     `${user.first_name.substr(0, 1)}${user.last_name.substr(0, 1)}`
 
-  const avatarStyleSpecs = {
-    // border: '1px solid #4F2ABA',
-    borderRadius: '100%',
-    height: '100%',
-    left: 0,
-    style: { fontSize: `calc({size} / 2.5)` },
-    top: 0,
-    width: '100%',
-  }
-
   return (
-    <Box
-      display="block"
-      height={size}
-      width={size}
-      position="relative"
-      {...props}
-    >
-      <Box
-        alignItems="center"
-        bg={color}
-        display="flex"
-        color={palette.white}
-        position="absolute"
-        fontWeight="normal"
-        justifyContent="center"
-        {...avatarStyleSpecs}
-      >
-        {initials}
-      </Box>
-      {user.avatar_url && (
-        <Box
-          is="img"
-          position="absolute"
-          {...avatarStyleSpecs}
-          src={user.avatar_url}
-        />
-      )}
-    </Box>
+    <div className={className}>
+      <AvatarInitials color={color}>{initials}</AvatarInitials>
+      {user.avatar_url && <AvatarPhoto src={user.avatar_url} />}
+    </div>
   )
+}
+
+const avatarCircle = css`
+  border: 1px solid;
+  border-color: currentColor;
+  border-radius: 100%;
+  font-size: small;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+
+  /* fontSize: calc({size} / 2.5) */
+`
+
+const AvatarPhoto = styled.img`
+  ${avatarCircle}
+`
+
+const AvatarInitials = styled.div.attrs((props: AvatarUserProps) => ({
+  bg: props.color,
+}))`
+  ${color}
+  ${avatarCircle}
+  align-items: center;
+  color: ${props => props.theme.colors.palette.white};
+  display: flex;
+  font-weight: normal;
+  justify-content: center;
+  position: relative;
+`
+
+export const AvatarUser = styled(AvatarLayout)`
+  ${reset}
+  ${space}
+  ${layout}
+
+  display: block;
+  position: relative;
+`
+
+AvatarUser.defaultProps = {
+  color: 'palette.purple500',
+  size: 40,
 }

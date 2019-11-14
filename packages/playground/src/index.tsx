@@ -33,6 +33,8 @@ import { ThemeProvider } from 'styled-components'
 const data = {
   // eslint-disable-next-line @typescript-eslint/camelcase
   avatar_url:
+    // null,
+    // 'https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank',
     'https://gravatar.lookercdn.com/avatar/e8ebbdf1a644117215036eac62995731?s=156&d=blank',
   // eslint-disable-next-line @typescript-eslint/camelcase
   first_name: 'Luke',
@@ -47,7 +49,7 @@ const App: React.FC = () => {
     <ThemeProvider theme={theme}>
       <>
         <GlobalStyle />
-        <AvatarUser user={data} />
+        <AvatarUser m="medium" user={data} />
       </>
     </ThemeProvider>
   )
