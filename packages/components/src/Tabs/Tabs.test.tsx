@@ -73,7 +73,7 @@ test('shows the correct number of navigation tabs', () => {
       </TabPanels>
     </Tabs>
   )
-  expect(tabs.find('Tab')).toHaveLength(3)
+  expect(tabs.find(Tab)).toHaveLength(3)
 })
 
 test('starts with Tab at index 0 opened', () => {

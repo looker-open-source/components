@@ -29,7 +29,7 @@ exports[`A FieldSelect 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+),linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
+  background-image: url(data:image/svg+xml;base64, PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+), linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
   background-repeat: no-repeat,repeat;
   background-position: right .25rem center,0 0;
   background-size: 1rem,100%;
@@ -139,7 +139,7 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+),linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
+  background-image: url(data:image/svg+xml;base64, PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+), linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
   background-repeat: no-repeat,repeat;
   background-position: right .25rem center,0 0;
   background-size: 1rem,100%;
@@ -296,7 +296,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+),linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
+  background-image: url(data:image/svg+xml;base64, PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+), linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
   background-repeat: no-repeat,repeat;
   background-position: right .25rem center,0 0;
   background-size: 1rem,100%;
@@ -450,7 +450,7 @@ exports[`A required FieldSelect 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+),linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
+  background-image: url(data:image/svg+xml;base64, PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+), linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
   background-repeat: no-repeat,repeat;
   background-position: right .25rem center,0 0;
   background-size: 1rem,100%;
@@ -572,7 +572,7 @@ exports[`FieldSelect supports labelWeight 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+),linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
+  background-image: url(data:image/svg+xml;base64, PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+), linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
   background-repeat: no-repeat,repeat;
   background-position: right .25rem center,0 0;
   background-size: 1rem,100%;

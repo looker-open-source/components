@@ -19,10 +19,8 @@
     "yarn": ">=1.14.0"
   },
   "scripts": {
-    "build": "yarn build:es",
-    "build:es": "yarn lerna run 'build:es'",
-    "postbuild": "yarn build:declarations && run-p -c 'lint'",
-    "build:declarations": "yarn lerna run 'build:declaration'",
+    "build": "yarn lerna run 'build:all'",
+    "postbuild": "run-p -c 'lint'",
     "deploy": "yarn workspace www deploy",
     "fix": "run-p -c 'lint:ts-* --fix'",
     "lint": "run-p -c lint:*",
@@ -39,11 +37,11 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.4.3",
-    "@babel/core": "^7.4.3",
+    "@babel/core": "^7.7.2",
     "@babel/plugin-proposal-class-properties": "^7.4.0",
     "@babel/plugin-proposal-object-rest-spread": "^7.4.3",
     "@babel/plugin-transform-runtime": "^7.4.3",
-    "@babel/preset-env": "^7.4.3",
+    "@babel/preset-env": "^7.7.1",
     "@babel/preset-react": "7.7.0",
     "@babel/preset-typescript": "^7.3.3",
     "@babel/runtime": "^7.4.3",
@@ -56,9 +54,9 @@
     "@typescript-eslint/eslint-plugin": "^2.7.0",
     "@typescript-eslint/parser": "^2.7.0",
     "babel-core": "^7.0.0-bridge",
-    "babel-jest": "^24.7.1",
     "babel-loader": "^8.0.5",
     "babel-plugin-styled-components": "^1.10.6",
+    "core-js": "^3.4.1",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.12.1",
     "eslint": "^6.4.0",
@@ -87,7 +85,11 @@
     "stylelint-config-recommended": "^3.0.0",
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-processor-styled-components": "^1.8.0",
-    "typescript": "^3.6.2",
+    "ts-jest": "^24.1.0",
+    "ts-node": "^8.5.0",
+    "ttypescript": "^1.5.8",
+    "typescript": "^3.7.2",
+    "typescript-plugin-styled-components": "^1.4.3",
     "webpack": "^4.41.2"
   },
   "lint-staged": {
@@ -106,6 +108,7 @@
     "lint-staged"
   ],
   "dependencies": {
-    "react-live": "^2.2.1"
+    "react-live": "^2.2.1",
+    "react-test-renderer": "^16.11.0"
   }
 }

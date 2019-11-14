@@ -25,6 +25,7 @@
  */
 
 import React, { useState, useEffect } from 'react'
+import 'core-js' // polyfills for IE
 import ReactDOM from 'react-dom'
 import {
   Button,

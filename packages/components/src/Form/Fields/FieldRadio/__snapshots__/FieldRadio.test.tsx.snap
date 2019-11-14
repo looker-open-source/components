@@ -15,8 +15,8 @@ exports[`A FieldRadio 1`] = `
   border: solid 1px #DEE1E5;
   border-radius: 50%;
   color: transparent;
-  -webkit-transition: background-color 25ms linear,border-color 25ms linear,box-shadow 25ms linear;
-  transition: background-color 25ms linear,border-color 25ms linear,box-shadow 25ms linear;
+  -webkit-transition: background-color 25ms linear,border-color 25ms linear, box-shadow 25ms linear;
+  transition: background-color 25ms linear,border-color 25ms linear, box-shadow 25ms linear;
 }
 
 .c6 {
@@ -212,8 +212,8 @@ exports[`A FieldRadio checked 1`] = `
   border: solid 1px #DEE1E5;
   border-radius: 50%;
   color: transparent;
-  -webkit-transition: background-color 25ms linear,border-color 25ms linear,box-shadow 25ms linear;
-  transition: background-color 25ms linear,border-color 25ms linear,box-shadow 25ms linear;
+  -webkit-transition: background-color 25ms linear,border-color 25ms linear, box-shadow 25ms linear;
+  transition: background-color 25ms linear,border-color 25ms linear, box-shadow 25ms linear;
 }
 
 .c6 {
@@ -415,8 +415,8 @@ exports[`A FieldRadio with label aligned left 1`] = `
   border: solid 1px #DEE1E5;
   border-radius: 50%;
   color: transparent;
-  -webkit-transition: background-color 25ms linear,border-color 25ms linear,box-shadow 25ms linear;
-  transition: background-color 25ms linear,border-color 25ms linear,box-shadow 25ms linear;
+  -webkit-transition: background-color 25ms linear,border-color 25ms linear, box-shadow 25ms linear;
+  transition: background-color 25ms linear,border-color 25ms linear, box-shadow 25ms linear;
 }
 
 .c5 {
