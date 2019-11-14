@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`math_utils limitByRadius limitByRadius (2, 2) of radius 5 1`] = `
+Object {
+  "x": 2.0000000000000004,
+  "y": 2,
+}
+`;
+
+exports[`math_utils limitByRadius limitByRadius (5, 5) of radius 2 1`] = `
+Object {
+  "x": 3.414213562373095,
+  "y": 3.414213562373095,
+}
+`;

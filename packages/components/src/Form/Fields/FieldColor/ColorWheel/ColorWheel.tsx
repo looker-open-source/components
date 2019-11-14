@@ -142,6 +142,7 @@ export class ColorWheel extends Component<ColorWheelProps> {
         />
         {/* Layer 4: Render marker position (selected Hue/Saturation location on color wheel) */}
         <Canvas
+          data-testid="mouse-marker"
           ref={this.setMarkerCanvasRef}
           width={this.props.size}
           height={this.props.size}
@@ -161,7 +162,8 @@ export class ColorWheel extends Component<ColorWheelProps> {
       translateDiagonal(-canvasMargin, canvasCartesian),
       this.radius
     )
-    this.updateColor(this.colorWheelCanvas, position, this.props.onColorChange)
+
+    this.updateColor(position, this.props.onColorChange)
   }
 
   public mouseMove = (event: React.MouseEvent<HTMLCanvasElement>) => {
@@ -174,11 +176,7 @@ export class ColorWheel extends Component<ColorWheelProps> {
         translateDiagonal(-canvasMargin, canvasCartesian),
         this.radius
       )
-      this.updateColor(
-        this.colorWheelCanvas,
-        position,
-        this.props.onColorChange
-      )
+      this.updateColor(position, this.props.onColorChange)
     }
   }
 
@@ -322,12 +320,10 @@ export class ColorWheel extends Component<ColorWheelProps> {
    * action called when user clicks on a color.  Will let client know color has been updated.
    */
   private updateColor(
-    canvas: HTMLCanvasElement,
     position?: CartesianCoordinate,
     callback?: UpdateHueSaturationCallbackType
   ) {
-    const ctx = canvas.getContext('2d')
-    if (callback && ctx && position) {
+    if (callback && position) {
       const color = cartesian2hsv(this.props.value, this.radius, position)
       const updateColorValues = { h: color.h, s: color.s }
       callback(updateColorValues)

@@ -24,19 +24,46 @@
 
  */
 
-import 'jest-styled-components'
+import { render, fireEvent } from '@testing-library/react'
 import React from 'react'
-import { assertSnapshot } from '@looker/components-test-utils'
 import { ColorWheel } from './ColorWheel'
 
-test('Color wheel default ', () => {
-  assertSnapshot(<ColorWheel />)
-})
+test('Color wheel responds to clicks', async () => {
+  const handleColorChange = jest.fn()
+  const { findByTestId } = render(
+    <ColorWheel
+      hue={260}
+      saturation={0.5}
+      value={1}
+      size={400}
+      onColorChange={handleColorChange}
+    />
+  )
 
-test('Color wheel with h, s, v defined ', () => {
-  assertSnapshot(<ColorWheel hue={260} saturation={0.5} value={1} />)
-})
+  expect(handleColorChange).not.toHaveBeenCalled()
 
-test('Color wheel with h, s, v, size defined ', () => {
-  assertSnapshot(<ColorWheel hue={260} saturation={0.5} value={1} size={400} />)
+  const mouseMarkerCanvas = await findByTestId('mouse-marker')
+  expect(mouseMarkerCanvas).toBeInTheDocument()
+
+  fireEvent(
+    mouseMarkerCanvas,
+    new MouseEvent('mousedown', {
+      bubbles: true,
+      cancelable: true,
+      clientX: 20,
+      clientY: 20,
+    })
+  )
+
+  fireEvent(
+    mouseMarkerCanvas,
+    new MouseEvent('mousedown', {
+      bubbles: true,
+      cancelable: true,
+      clientX: 300,
+      clientY: 300,
+    })
+  )
+
+  expect(handleColorChange.mock.calls).toMatchSnapshot()
 })
