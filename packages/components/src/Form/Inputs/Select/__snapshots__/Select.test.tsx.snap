@@ -14,7 +14,7 @@ exports[`Select default 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+),linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
+  background-image: url(data:image/svg+xml;base64, PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+), linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
   background-repeat: no-repeat,repeat;
   background-position: right .25rem center,0 0;
   background-size: 1rem,100%;
@@ -58,7 +58,7 @@ exports[`Select should accept disabled 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+),linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
+  background-image: url(data:image/svg+xml;base64, PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+), linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
   background-repeat: no-repeat,repeat;
   background-position: right .25rem center,0 0;
   background-size: 1rem,100%;
@@ -103,7 +103,7 @@ exports[`Select should accept empty options array 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+),linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
+  background-image: url(data:image/svg+xml;base64, PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+), linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
   background-repeat: no-repeat,repeat;
   background-position: right .25rem center,0 0;
   background-size: 1rem,100%;
@@ -147,7 +147,7 @@ exports[`Select should accept readOnly 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+),linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
+  background-image: url(data:image/svg+xml;base64, PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+), linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
   background-repeat: no-repeat,repeat;
   background-position: right .25rem center,0 0;
   background-size: 1rem,100%;
@@ -192,7 +192,7 @@ exports[`Select should accept required 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+),linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
+  background-image: url(data:image/svg+xml;base64, PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+), linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
   background-repeat: no-repeat,repeat;
   background-position: right .25rem center,0 0;
   background-size: 1rem,100%;
@@ -237,7 +237,7 @@ exports[`Select with a placeholder 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+),linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
+  background-image: url(data:image/svg+xml;base64, PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+), linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
   background-repeat: no-repeat,repeat;
   background-position: right .25rem center,0 0;
   background-size: 1rem,100%;
@@ -283,7 +283,7 @@ exports[`Select with a value 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+),linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
+  background-image: url(data:image/svg+xml;base64, PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+), linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
   background-repeat: no-repeat,repeat;
   background-position: right .25rem center,0 0;
   background-size: 1rem,100%;
@@ -343,7 +343,7 @@ exports[`Select with an error validation 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+),linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
+  background-image: url(data:image/svg+xml;base64, PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+), linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
   background-repeat: no-repeat,repeat;
   background-position: right .25rem center,0 0;
   background-size: 1rem,100%;
@@ -387,7 +387,7 @@ exports[`Select with aria-describedby 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+),linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
+  background-image: url(data:image/svg+xml;base64, PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+), linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
   background-repeat: no-repeat,repeat;
   background-position: right .25rem center,0 0;
   background-size: 1rem,100%;
@@ -432,7 +432,7 @@ exports[`Select with name and id 1`] = `
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+),linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
+  background-image: url(data:image/svg+xml;base64, PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OEwxNi41OSA4TDE4IDkuNDFMMTIgMTUuNDFMNiA5LjQxTDcuNDEgOFoiIGZpbGw9IiM3MDc3ODEiLz4KPC9zdmc+), linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
   background-repeat: no-repeat,repeat;
   background-position: right .25rem center,0 0;
   background-size: 1rem,100%;

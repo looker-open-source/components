@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
+    "allowJs": true,
     "lib": ["es6", "es2017.object", "dom"],
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,
@@ -22,7 +23,13 @@
     "paths": {
       "@looker/*": ["packages/*/src"],
       "*": ["node_modules", "packages"]
-    }
+    },
+    "plugins": [
+      {
+        "transform": "typescript-plugin-styled-components",
+        "type": "config"
+      }
+    ]
   },
   "include": ["packages"],
   "exclude": ["node_modules", "dist"]
