@@ -26,7 +26,7 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { AvatarUser, GlobalStyle } from '@looker/components'
+import { AvatarIcon, AvatarUser, GlobalStyle } from '@looker/components'
 import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
 
@@ -49,7 +49,8 @@ const App: React.FC = () => {
     <ThemeProvider theme={theme}>
       <>
         <GlobalStyle />
-        <AvatarUser m="medium" user={data} />
+        {/* <AvatarUser m="medium" user={data} /> */}
+        <AvatarIcon icon="Trash" m="medium"></AvatarIcon>
       </>
     </ThemeProvider>
   )

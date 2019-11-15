@@ -25,4 +25,4 @@
  */
 
 export * from './AvatarUser'
-// export * from './AvatarIcon'
+export * from './AvatarIcon'

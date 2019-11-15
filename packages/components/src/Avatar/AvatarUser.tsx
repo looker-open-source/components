@@ -73,8 +73,6 @@ const avatarCircle = css`
   position: absolute;
   top: 0;
   width: 100%;
-
-  /* fontSize: calc({size} / 2.5) */
 `
 
 const AvatarPhoto = styled.img`
