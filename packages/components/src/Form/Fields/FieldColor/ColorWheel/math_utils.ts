@@ -70,7 +70,8 @@ export const scaleRadius = (by: number, coord: PolarCoordinate) => ({
 })
 
 /**
- * Utility that returns the nearest valid point within a circle
+ * Utility that returns the nearest valid point within a circle. Useful if
+ * you accidentally click outside the circle radius.
  */
 export const limitByRadius = (
   coord: CartesianCoordinate,

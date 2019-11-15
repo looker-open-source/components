@@ -230,11 +230,11 @@ describe('math_utils', () => {
   })
 
   describe('limitByRadius', () => {
-    test(`limitByRadius (5, 5) of radius 2`, () => {
+    test(`Clicks outside the circle: limitByRadius (5, 5) of radius 2`, () => {
       expect(limitByRadius({ x: 5, y: 5 }, 2)).toMatchSnapshot()
     })
 
-    test(`limitByRadius (2, 2) of radius 5`, () => {
+    test(`Clicks inside the circle: limitByRadius (2, 2) of radius 5`, () => {
       expect(limitByRadius({ x: 2, y: 2 }, 5)).toMatchSnapshot()
     })
   })

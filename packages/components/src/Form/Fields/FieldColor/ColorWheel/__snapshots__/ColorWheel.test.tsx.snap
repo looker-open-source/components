@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Color wheel responds to clicks 1`] = `
+exports[`ColorWheel updates color on click 1`] = `
 Array [
   Array [
     Object {

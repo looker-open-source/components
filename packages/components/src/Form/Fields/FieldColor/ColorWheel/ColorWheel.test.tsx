@@ -28,7 +28,7 @@ import { render, fireEvent } from '@testing-library/react'
 import React from 'react'
 import { ColorWheel } from './ColorWheel'
 
-test('Color wheel responds to clicks', async () => {
+test('ColorWheel updates color on click', async () => {
   const handleColorChange = jest.fn()
   const { findByTestId } = render(
     <ColorWheel
