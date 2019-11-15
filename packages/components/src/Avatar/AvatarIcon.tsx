@@ -26,7 +26,7 @@
 
 import React, { FC } from 'react'
 import { IconNames } from '@looker/icons'
-import { reset, space, layout } from '@looker/design-tokens'
+import { color, layout, reset, space } from '@looker/design-tokens'
 import styled from 'styled-components'
 import { Icon } from '../Icon'
 import { AvatarProps } from './AvatarUser'
@@ -38,12 +38,13 @@ interface AvatarIconProps extends AvatarProps {
 const AvatarLayout: FC<AvatarIconProps> = ({
   color,
   className,
+  size = '16',
   icon = 'Users',
 }) => {
   return (
     <div className={className}>
       <AvatarIconCircle>
-        <Icon name={icon} size={24} color={color} />
+        <Icon name={icon} color={color} />
       </AvatarIconCircle>
     </div>
   )
@@ -51,21 +52,21 @@ const AvatarLayout: FC<AvatarIconProps> = ({
 
 const AvatarIconCircle = styled.div`
   align-items: center;
-  display: flex;
-  justify-content: center;
-  border: 1px solid;
-  border-color: currentColor;
+  border: 1px solid currentColor;
   border-radius: 100%;
+  display: flex;
   height: 100%;
+  justify-content: center;
   left: 0;
+  top: 0;
 `
 
 export const AvatarIcon = styled(AvatarLayout)`
+  ${color}
+  ${layout}
   ${reset}
   ${space}
-  ${layout}
   display: block;
-  position: absolute;
 `
 
 AvatarIcon.defaultProps = {

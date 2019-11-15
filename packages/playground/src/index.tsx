@@ -30,12 +30,31 @@ import { AvatarIcon, AvatarUser, GlobalStyle } from '@looker/components'
 import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
 
-const data = {
+const goodData = {
   // eslint-disable-next-line @typescript-eslint/camelcase
   avatar_url:
-    // null,
-    // 'https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank',
     'https://gravatar.lookercdn.com/avatar/e8ebbdf1a644117215036eac62995731?s=156&d=blank',
+  // eslint-disable-next-line @typescript-eslint/camelcase
+  first_name: 'Luke',
+  id: 61,
+  // eslint-disable-next-line @typescript-eslint/camelcase
+  last_name: 'Bowerman',
+}
+
+const bedData = {
+  // eslint-disable-next-line @typescript-eslint/camelcase
+  avatar_url:
+    'https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank',
+  // eslint-disable-next-line @typescript-eslint/camelcase
+  first_name: 'Luke',
+  id: 61,
+  // eslint-disable-next-line @typescript-eslint/camelcase
+  last_name: 'Bowerman',
+}
+
+const nullData = {
+  // eslint-disable-next-line @typescript-eslint/camelcase
+  avatar_url: null,
   // eslint-disable-next-line @typescript-eslint/camelcase
   first_name: 'Luke',
   id: 61,
@@ -49,8 +68,11 @@ const App: React.FC = () => {
     <ThemeProvider theme={theme}>
       <>
         <GlobalStyle />
-        {/* <AvatarUser m="medium" user={data} /> */}
-        <AvatarIcon icon="Trash" m="medium"></AvatarIcon>
+        <AvatarUser m="medium" user={goodData} />
+        <AvatarUser m="medium" user={bedData} />
+        <AvatarUser m="medium" user={nullData} />
+        <AvatarIcon icon="Trash" m="medium" />
+        <AvatarIcon m="medium" />
       </>
     </ThemeProvider>
   )
