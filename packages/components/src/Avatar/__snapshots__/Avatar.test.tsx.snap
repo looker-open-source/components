@@ -4,10 +4,6 @@ exports[`AvatarIcon renders  1`] = `ShallowWrapper {}`;
 
 exports[`AvatarIcon renders different icon if specified 1`] = `ShallowWrapper {}`;
 
-exports[`AvatarIcon renders users icon as default but can take a different icon if specified 1`] = `ShallowWrapper {}`;
-
-exports[`AvatarIcon renders users icon as default but can take a different icon if specified 2`] = `ShallowWrapper {}`;
-
 exports[`AvatarUser has null as photo url  1`] = `ShallowWrapper {}`;
 
 exports[`AvatarUser has photo with bed url  1`] = `ShallowWrapper {}`;
