@@ -24,7 +24,16 @@
 
  */
 
-import React, { forwardRef, Ref } from 'react'
+import React, {
+  forwardRef,
+  Ref,
+  RefObject,
+  FormEvent,
+  MouseEvent,
+  useRef,
+  useState,
+} from 'react'
+import { HotKeys } from 'react-hotkeys'
 import styled from 'styled-components'
 import {
   border,
@@ -36,30 +45,15 @@ import {
   reset,
   space,
   SpaceProps,
+  Theme,
   typography,
   TypographyProps,
 } from '@looker/design-tokens'
 import { ValidationType } from '../../ValidationMessage'
-
-const renderOptions = (options: OptionsType<SelectOptionProps>) => {
-  return options.map(option => (
-    <option key={option.value} value={option.value}>
-      {option.label}
-    </option>
-  ))
-}
-
-const renderOptGroups = (
-  optionGroups: GroupedOptionsType<SelectOptionProps>
-) => {
-  return optionGroups.map(option => {
-    return (
-      <optgroup key={option.key} label={option.key}>
-        {renderOptions(option.options)}
-      </optgroup>
-    )
-  })
-}
+import { MenuList } from '../../../Menu'
+import { usePopover } from '../../../Popover'
+import { SelectContext } from './SelectContext'
+import { useIndexNavigation } from '../../../utils/useIndexNavigation'
 
 export const CustomizableSelectAttributes: CustomizableAttributes = {
   borderRadius: 'medium',
@@ -69,77 +63,106 @@ export const CustomizableSelectAttributes: CustomizableAttributes = {
   py: 'none',
 }
 
-export type OptionsType<OptionType> = OptionType[]
-
-export interface GroupType<OptionType> {
-  options: OptionsType<OptionType>
-  [key: string]: any
-}
-
-export type GroupedOptionsType<UnionOptionType> = Array<
-  GroupType<UnionOptionType>
->
-
-export interface SelectOptionProps {
-  label: string
-  value: string
-}
-
 export interface SelectProps
   extends BorderProps,
     Omit<LayoutProps, 'size'>,
     SpaceProps,
     TypographyProps,
-    CompatibleHTMLProps<HTMLSelectElement> {
-  options?:
-    | OptionsType<SelectOptionProps>
-    | GroupedOptionsType<SelectOptionProps>
+    Omit<CompatibleHTMLProps<HTMLDivElement>, 'onChange'> {
   /**
-   * Include a blank item as the first entry. If placeholder is specified it will be the label.
-   * @default true
+   * Use when Select is not controlled
    */
-  includeBlank?: boolean
+  defaultValue?: any
   /**
    * Displays an example value or short hint to the user. Should not replace a label.
    */
   placeholder?: string
+  /**
+   * Callback function fired when a SelectOption is selected
+   */
+  onChange?: (event: FormEvent<{ value: any }>) => void
+  /**
+   * Use value 'error' for error styling
+   */
   validationType?: ValidationType
+  /**
+   * Use when Select is controlled
+   */
+  value?: any
 }
+
+const StyledInput = styled.input`
+  ${reset}
+  border: none;
+  outline: none;
+  background-color: transparent;
+`
 
 const SelectComponent = forwardRef(
   (
     {
-      includeBlank = true,
-      options,
+      children,
       placeholder,
       defaultValue: propsDefault,
-      value,
+      value: propsValue,
+      onChange,
+      onClick,
       ...props
     }: SelectProps,
-    ref: Ref<HTMLSelectElement>
+    ref: Ref<HTMLInputElement>
   ) => {
-    // Gracefully deal with situation where `value` prop is set but `onChange` is not.
-    const defaultValue =
-      propsDefault || (value && !props.onChange) ? value : undefined
+    const [stateValue, setStateValue] = useState(propsDefault)
+    const { index, gotoNext, gotoPrev } = useIndexNavigation()
+    const innerRef = useRef<null | HTMLElement>(null)
 
-    const optionElements =
-      !options || options.length === 0
-        ? null
-        : Object.prototype.hasOwnProperty.call(options[0], 'key')
-        ? renderOptGroups(options as GroupedOptionsType<SelectOptionProps>)
-        : renderOptions(options as OptionsType<SelectOptionProps>)
+    const menu = <MenuList>{children}</MenuList>
+
+    const { popover, open, ref: triggerRef } = usePopover({
+      arrow: false,
+      content: menu,
+    })
+
+    function handleClick(event: MouseEvent<HTMLDivElement>) {
+      open(event)
+      onClick && onClick(event)
+    }
+    function handleChange(event: FormEvent<{ value: any }>) {
+      onChange && onChange(event)
+    }
+
+    function handleTextChange(e: FormEvent<HTMLInputElement>) {
+      setStateValue(e.currentTarget.value)
+    }
 
     return (
-      <SelectBase
-        defaultValue={defaultValue ? defaultValue.toString() : undefined}
-        value={defaultValue ? undefined : value}
-        borderColor="palette.charcoal300"
-        {...props}
-        ref={ref}
-      >
-        {includeBlank && <option value="">{placeholder}</option>}
-        {optionElements}
-      </SelectBase>
+      <SelectContext.Provider value={{ onChange: handleChange }}>
+        <HotKeys
+          innerRef={innerRef}
+          keyMap={{ MOVE_DOWN: 'down', MOVE_UP: 'up' }}
+          handlers={{
+            MOVE_DOWN: () => moveFocus(1, 0, innerRef),
+            MOVE_UP: () => moveFocus(-1, -1, innerRef),
+          }}
+        >
+          <SelectBase
+            borderColor="palette.charcoal300"
+            display="inline-flex"
+            onClick={handleClick}
+            {...props}
+            ref={triggerRef as RefObject<HTMLDivElement>}
+          >
+            <StyledInput
+              type="text"
+              readOnly
+              value={propsValue || stateValue}
+              placeholder={placeholder}
+              onChange={handleTextChange}
+              ref={ref}
+            />
+            {popover}
+          </SelectBase>
+        </HotKeys>
+      </SelectContext.Provider>
     )
   }
 )
@@ -155,15 +178,11 @@ const indicatorRaw = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none
 </svg>`
 const indicatorSize = '1rem'
 const indicatorPadding = '.25rem'
-const indicator = (color: string) =>
+const indicator = ({ theme }: { theme: Theme }) =>
   typeof window !== 'undefined' &&
-  window.btoa(indicatorRaw.replace('#1C2125', color))
+  window.btoa(indicatorRaw.replace('#1C2125', theme.colors.palette.charcoal500))
 
-// NOTE: Styling Selects is very complex
-//  See reference artice for background: https://www.filamentgroup.com/lab/select-css.html
-//  This component will likely be replaced with a React Select powered version
-
-const SelectBase = styled.select.attrs((props: SelectProps) => ({
+const SelectBase = styled.div.attrs((props: SelectProps) => ({
   borderRadius: props.borderRadius || CustomizableSelectAttributes.borderRadius,
   fontSize: props.fontSize || CustomizableSelectAttributes.fontSize,
   height: props.py || props.p ? undefined : CustomizableSelectAttributes.height,
@@ -171,33 +190,29 @@ const SelectBase = styled.select.attrs((props: SelectProps) => ({
   py: props.p || CustomizableSelectAttributes.py,
 }))<SelectProps>`
   ${reset}
+  display: inline-flex;
+  align-items: stretch;
+
   background-color: ${props =>
     props.validationType === 'error'
       ? props.theme.colors.palette.red000
       : props.theme.colors.palette.white};
   border: solid 1px;
 
-  appearance: none;
-
   background-image:
-    url(data:image/svg+xml;base64,
-    ${props => indicator(props.theme.colors.palette.charcoal500)}),
-    linear-gradient(to bottom, ${props =>
-      props.theme.colors.palette.white} 0%, ${props =>
-  props.theme.colors.palette.white} 100%);
+    url('data:image/svg+xml;base64,${indicator}'),
+    linear-gradient(to bottom, white 0%, white 100%);
 
   background-repeat: no-repeat, repeat;
   background-position: right ${indicatorPadding} center, 0 0;
   background-size: ${indicatorSize}, 100%;
 
-  &::-ms-expand {
-    display: none;
-  }
   ${border}
   ${layout}
   ${typography}
   ${space}
   padding-right: calc(2 * ${indicatorPadding} + ${indicatorSize});
+
 `
 
 export const Select = styled(SelectComponent)``

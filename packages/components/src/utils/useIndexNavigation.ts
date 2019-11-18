@@ -24,37 +24,34 @@
 
  */
 
-import React, { forwardRef, Ref } from 'react'
-import styled from 'styled-components'
-import uuid from 'uuid/v4'
-import { useFormContext } from '../../Form'
-import { Select, SelectProps } from '../../Inputs/Select/Select'
-import { Field, FieldProps, omitFieldProps, pickFieldProps } from '../Field'
+import { useState } from 'react'
 
-export interface FieldSelectProps extends FieldProps, SelectProps {}
+export interface UseIndexNavigationReturn {
+  index: number
+  gotoNext: () => void
+  gotoPrev: () => void
+  gotoIndex: (index: number) => void
+}
 
-const FieldSelectComponent = forwardRef(
-  (props: FieldSelectProps, ref: Ref<HTMLInputElement>) => {
-    const validationMessage = useFormContext(props)
-    const { id = uuid() } = props
-    return (
-      <Field
-        id={id}
-        alignValidationMessage="bottom"
-        validationMessage={validationMessage}
-        {...pickFieldProps(props)}
-      >
-        <Select
-          {...omitFieldProps(props)}
-          id={id}
-          validationType={validationMessage && validationMessage.type}
-          ref={ref}
-        />
-      </Field>
-    )
+export function useIndexNavigation(
+  length: number,
+  initialIndex = -1,
+  circular = false
+): UseIndexNavigationReturn {
+  const [index, setIndex] = useState(initialIndex)
+  function gotoNext() {
+    if (index === -1 || (circular && index === length - 1)) {
+      setIndex(0)
+    } else if (index < length + 1) {
+      setIndex(index + 1)
+    }
   }
-)
-
-FieldSelectComponent.displayName = 'FieldSelectComponent'
-
-export const FieldSelect = styled(FieldSelectComponent)``
+  function gotoPrev() {
+    if (index === -1 || (circular && index === 0)) {
+      setIndex(length - 1)
+    } else if (index > 0) {
+      setIndex(index - 1)
+    }
+  }
+  return { gotoIndex: setIndex, gotoNext, gotoPrev, index }
+}

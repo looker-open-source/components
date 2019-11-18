@@ -24,37 +24,12 @@
 
  */
 
-import React, { forwardRef, Ref } from 'react'
-import styled from 'styled-components'
-import uuid from 'uuid/v4'
-import { useFormContext } from '../../Form'
-import { Select, SelectProps } from '../../Inputs/Select/Select'
-import { Field, FieldProps, omitFieldProps, pickFieldProps } from '../Field'
+import { createContext, FormEvent } from 'react'
 
-export interface FieldSelectProps extends FieldProps, SelectProps {}
+export interface SelectContextProps {
+  onChange?: (event: FormEvent<{ value: any }>) => void
+}
 
-const FieldSelectComponent = forwardRef(
-  (props: FieldSelectProps, ref: Ref<HTMLInputElement>) => {
-    const validationMessage = useFormContext(props)
-    const { id = uuid() } = props
-    return (
-      <Field
-        id={id}
-        alignValidationMessage="bottom"
-        validationMessage={validationMessage}
-        {...pickFieldProps(props)}
-      >
-        <Select
-          {...omitFieldProps(props)}
-          id={id}
-          validationType={validationMessage && validationMessage.type}
-          ref={ref}
-        />
-      </Field>
-    )
-  }
-)
+const context: SelectContextProps = {}
 
-FieldSelectComponent.displayName = 'FieldSelectComponent'
-
-export const FieldSelect = styled(FieldSelectComponent)``
+export const SelectContext = createContext(context)

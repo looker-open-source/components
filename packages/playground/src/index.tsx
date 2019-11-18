@@ -99,7 +99,7 @@ const ColorWheelDemo = () => {
 const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
-      <>
+      <Box p="large">
         <GlobalStyle />
         <ColorWheelDemo />
       </>

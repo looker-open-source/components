@@ -24,37 +24,27 @@
 
  */
 
-import React, { forwardRef, Ref } from 'react'
-import styled from 'styled-components'
-import uuid from 'uuid/v4'
-import { useFormContext } from '../../Form'
-import { Select, SelectProps } from '../../Inputs/Select/Select'
-import { Field, FieldProps, omitFieldProps, pickFieldProps } from '../Field'
+import React, { ReactNode, useContext, MouseEvent } from 'react'
+import { MenuItem } from '../../../Menu'
+import { SelectContext } from './SelectContext'
 
-export interface FieldSelectProps extends FieldProps, SelectProps {}
+export interface SelectOptionProps {
+  value?: any
+  children?: ReactNode
+}
 
-const FieldSelectComponent = forwardRef(
-  (props: FieldSelectProps, ref: Ref<HTMLInputElement>) => {
-    const validationMessage = useFormContext(props)
-    const { id = uuid() } = props
-    return (
-      <Field
-        id={id}
-        alignValidationMessage="bottom"
-        validationMessage={validationMessage}
-        {...pickFieldProps(props)}
-      >
-        <Select
-          {...omitFieldProps(props)}
-          id={id}
-          validationType={validationMessage && validationMessage.type}
-          ref={ref}
-        />
-      </Field>
-    )
+export function SelectOption({ children, value }: SelectOptionProps) {
+  const { onChange } = useContext(SelectContext)
+  function handleChange(event: MouseEvent<HTMLLIElement>) {
+    if (onChange) {
+      event.persist()
+      // currentTarget is read only property on a native event.
+      Object.defineProperty(event, 'target', {
+        value: { value },
+        writable: true,
+      })
+      onChange(event)
+    }
   }
-)
-
-FieldSelectComponent.displayName = 'FieldSelectComponent'
-
-export const FieldSelect = styled(FieldSelectComponent)``
+  return <MenuItem onClick={handleChange}>{children || String(value)}</MenuItem>
+}
