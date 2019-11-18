@@ -5,17 +5,36 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## UNRELEASED
+## [0.7.6] - 2019-11-18
 
 ### Changed
 
-- Fix bug where menu group headers render a drop shadow by default
-- Refactor z-index out of menu styles
-- Improvements to documentation layout and scrolling behavior
-- SVG for `ApplicationSelect`,`ArrowChange`,`Beaker`,`BrowseTable`,`ChangeHistory`,`DimensionFill`,`Explore`,`LogoRings`,`NoteOutline`,`Notes`,`Reports`,`SqlRunner`,`User`,`UserAttributes`,`Users`,`ViewGrid`,`VisArea`,`VisBar`,`VisColumn`,`VisLine`,`VisMap`,`VisPie`,`VisScatter`,`VisSingleValue`,`VisTable` icons resized redrawn to fit on the correct icon grid.
-- Optimize ColorWheel value change performance
-- Restore ColorWheel documentation
-- Implement a vertical layout for the Code Sandbox toolbar to prevent unintentional obfuscation of code samples
+- `Menu` - Refactor z-index out of menu styles
+- Documentation
+  - Vertical layout for the Code Sandbox toolbar to prevent unintentional obfuscation of code samples
+  - Improved documentation layout and scrolling behavior
+
+### Fixed
+
+- `ColorWheel` - Optimize ColorWheel value change performance & restored `ColorWheel` documentation
+- `MenuGroup` - Fix bug where menu group headers render a drop shadow by default
+- `MenuSearch` - fixed keyboard shortcuts (up / down arrows to escape focus on input) and Improved documentation example.
+- `ModalPortal` - Fixed scrolling within a `Modal` (`Dialog` & `Drawer`)
+- Icons - SVG for `ApplicationSelect`, `ArrowChange`, `Beaker`, `BrowseTable`, `ChangeHistory`, `DimensionFill`,`Explore`, `LogoRings`, `NoteOutline`, `Notes`, `Reports`, `SqlRunner`, `User`, `UserAttributes`, `Users`, `ViewGrid`,`VisArea`, `VisBar`, `VisColumn`, `VisLine`, `VisMap`, `VisPie`, `VisScatter`, `VisSingleValue`,`VisTable` icons resized redrawn to fit on the correct icon grid.
+
+## [0.7.5] - 2019-11-13
+
+- Use `ttsc` to offer better formatted Styled Components snapshots
+
+## [0.7.4] - 2019-11-13
+
+- Use `tsc` for build (Babel build pipeline is causing issues for Internet Explorer 11)
+
+## [0.7.3] - 2019-11-13
+
+- Improve package build (CJS, ESM and ES2015 modules now available)
+- Updated dependencies including Typescript 3.7
+- Removed z-index from Menu
 
 ## [0.7.2] - 2019-11-11
 
