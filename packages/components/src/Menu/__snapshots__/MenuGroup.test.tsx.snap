@@ -11,6 +11,17 @@ exports[`MenuGroup - JSX label 1`] = `
   vertical-align: baseline;
 }
 
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  list-style-type: none;
+}
+
 .c2 {
   border: 0;
   box-sizing: border-box;
@@ -26,23 +37,12 @@ exports[`MenuGroup - JSX label 1`] = `
   padding-right: 1rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+  background-color: #FFFFFF;
   color: #262D33;
 }
 
-.c4 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  list-style-type: none;
-}
-
 .c1 {
-  background-color: #FFFFFF;
-  box-shadow: 0 4px 8px -2px #DEE1E5;
+  box-shadow: none;
   position: -webkit-sticky;
   position: sticky;
   top: -1px;
@@ -163,11 +163,6 @@ exports[`MenuGroup - JSX label 1`] = `
       className="c2"
       fontSize="small"
       fontWeight="semiBold"
-      style={
-        Object {
-          "zIndex": 2,
-        }
-      }
     >
       <div
         className="c3"
@@ -227,6 +222,17 @@ exports[`MenuGroup - JSX label 1`] = `
 `;
 
 exports[`MenuGroup - label 1`] = `
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  list-style-type: none;
+}
+
 .c2 {
   border: 0;
   box-sizing: border-box;
@@ -242,23 +248,12 @@ exports[`MenuGroup - label 1`] = `
   padding-right: 1rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+  background-color: #FFFFFF;
   color: #262D33;
 }
 
-.c3 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  list-style-type: none;
-}
-
 .c1 {
-  background-color: #FFFFFF;
-  box-shadow: 0 4px 8px -2px #DEE1E5;
+  box-shadow: none;
   position: -webkit-sticky;
   position: sticky;
   top: -1px;
@@ -379,11 +374,6 @@ exports[`MenuGroup - label 1`] = `
       className="c2"
       fontSize="small"
       fontWeight="semiBold"
-      style={
-        Object {
-          "zIndex": 2,
-        }
-      }
     >
       Questions
     </h2>
@@ -439,6 +429,17 @@ exports[`MenuGroup - label 1`] = `
 `;
 
 exports[`MenuGroup - labelProps & labelStyles 1`] = `
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  list-style-type: none;
+}
+
 .c2 {
   border: 0;
   box-sizing: border-box;
@@ -454,23 +455,12 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
   padding-right: 1rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+  background-color: #FFFFFF;
   color: #262D33;
 }
 
-.c3 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  list-style-type: none;
-}
-
 .c1 {
-  background-color: #FFFFFF;
-  box-shadow: 0 4px 8px -2px #DEE1E5;
+  box-shadow: none;
   position: -webkit-sticky;
   position: sticky;
   top: -1px;
@@ -594,7 +584,6 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
       style={
         Object {
           "color": "rebeccapurple",
-          "zIndex": 2,
         }
       }
     >
