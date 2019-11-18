@@ -184,7 +184,7 @@ export class ColorWheel extends Component<ColorWheelProps> {
     this.isMouseDragging = isDragging
   }
 
-  private get radius(): number {
+  public get radius(): number {
     return this.colorWheelCanvas
       ? canvasRadius(this.colorWheelCanvas, canvasMargin)
       : 0
