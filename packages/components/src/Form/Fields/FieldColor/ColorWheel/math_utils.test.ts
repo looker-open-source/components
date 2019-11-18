@@ -3,17 +3,17 @@
  MIT License
 
  Copyright (c) 2019 Looker Data Sciences, Inc.
- 
+
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
  in the Software without restriction, including without limitation the rights
  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  copies of the Software, and to permit persons to whom the Software is
  furnished to do so, subject to the following conditions:
- 
+
  The above copyright notice and this permission notice shall be included in all
  copies or substantial portions of the Software.
- 
+
  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -28,7 +28,7 @@ import {
   cartesian2polar,
   deg2rad,
   diameter,
-  isInCircle,
+  limitByRadius,
   polar2cartesian,
   rad2deg,
   scaleRadius,
@@ -75,7 +75,7 @@ describe('math_utils', () => {
     test('cartesian2polar (0.5, 0.5)', () => {
       const polar = cartesian2polar({ x: 0.5, y: 0.5 })
       expect(polar.angle).toEqual(Math.PI / 4)
-      expect(polar.radius).toEqual(Math.sqrt(2) / 2)
+      expect(polar.radius).toEqual(1) // actual 0.707... rounded up
     })
   })
 
@@ -229,17 +229,13 @@ describe('math_utils', () => {
     })
   })
 
-  describe('isInCircle', () => {
-    test(`isInCircle (5, 5) of radius 5`, () => {
-      expect(isInCircle({ x: 5, y: 5 }, 5)).toBeTruthy()
+  describe('limitByRadius', () => {
+    test(`Clicks outside the circle: limitByRadius (5, 5) of radius 2`, () => {
+      expect(limitByRadius({ x: 5, y: 5 }, 2)).toMatchSnapshot()
     })
 
-    test(`isInCircle (2, 2) of radius 5`, () => {
-      expect(isInCircle({ x: 2, y: 2 }, 5)).toBeTruthy()
-    })
-
-    test(`isInCircle (10, 10) of radius 5`, () => {
-      expect(isInCircle({ x: 10, y: 10 }, 5)).toBeFalsy()
+    test(`Clicks inside the circle: limitByRadius (2, 2) of radius 5`, () => {
+      expect(limitByRadius({ x: 2, y: 2 }, 5)).toMatchSnapshot()
     })
   })
 })

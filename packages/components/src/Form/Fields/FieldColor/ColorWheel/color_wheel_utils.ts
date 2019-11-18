@@ -3,17 +3,17 @@
  MIT License
 
  Copyright (c) 2019 Looker Data Sciences, Inc.
- 
+
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
  in the Software without restriction, including without limitation the rights
  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  copies of the Software, and to permit persons to whom the Software is
  furnished to do so, subject to the following conditions:
- 
+
  The above copyright notice and this permission notice shall be included in all
  copies or substantial portions of the Software.
- 
+
  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -80,7 +80,7 @@ export const cartesian2hsv = (
   [coord]
     .map(c => translateDiagonal(-radius, c))
     .map(cartesian2polar)
-    .map(c => (c.radius < radius ? { brightness, coord: c } : white()))
+    .map(c => (c.radius <= radius ? { brightness, coord: c } : white()))
     .map(pb => scalePBRadius(1 / radius, pb))
     .map(polarbrightness2hsv)[0]
 
@@ -95,7 +95,7 @@ export const hsv2cartesian = (
     .map(coord => translateDiagonal(radius, coord))[0]
 
 /**
- * Generate a 2d represenrtation of a color wheel.
+ * Generate a 2d representation of a color wheel.
  */
 export const generateColorWheel = (
   radius: number,

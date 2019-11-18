@@ -25,6 +25,8 @@
  */
 
 import React, { Component } from 'react'
+import styled from 'styled-components'
+import { hsv } from 'd3-hsv'
 
 import {
   canvasMargin,
@@ -44,7 +46,7 @@ import {
 import {
   CartesianCoordinate,
   diameter,
-  isInCircle,
+  limitByRadius,
   translateDiagonal,
 } from './math_utils'
 
@@ -81,96 +83,150 @@ export class ColorWheel extends Component<ColorWheelProps> {
     value: 1,
   }
 
-  private canvas!: HTMLCanvasElement
-  private mouseMoving = false
-  private image?: ImageData
+  private isMouseDragging = false
+  private colorWheelImage?: ImageData
+  private colorWheelCanvas!: HTMLCanvasElement
+  private valueCanvas!: HTMLCanvasElement
+  private compositeCanvas!: HTMLCanvasElement
+  private markerCanvas!: HTMLCanvasElement
 
   public componentDidMount() {
-    this.updateCanvas()
+    this.drawWheel()
+    this.drawValueLayer()
+    this.drawCompositeCanvas()
+    this.drawMouseMarker()
   }
 
-  public componentDidUpdate(previousProps: ColorWheelProps) {
-    if (previousProps.value !== this.props.value) {
-      this.invalidateImage()
-    }
-
-    this.updateCanvas()
+  public componentDidUpdate() {
+    this.drawValueLayer()
+    this.drawCompositeCanvas()
+    this.drawMouseMarker()
   }
 
-  public setCanvasRef = (element: HTMLCanvasElement) => {
-    this.canvas = element
+  public setColorWheelCanvasRef = (element: HTMLCanvasElement) => {
+    this.colorWheelCanvas = element
+  }
+
+  public setValueCanvasRef = (element: HTMLCanvasElement) => {
+    this.valueCanvas = element
+  }
+
+  public setCompositeCanvasRef = (element: HTMLCanvasElement) => {
+    this.compositeCanvas = element
+  }
+
+  public setMarkerCanvasRef = (element: HTMLCanvasElement) => {
+    this.markerCanvas = element
   }
 
   public render() {
     return (
-      <canvas
-        ref={this.setCanvasRef}
-        onMouseDown={this.mouseDown}
-        onMouseMove={this.mouseMove}
-        onMouseUp={this.mouseUp}
-        width={this.props.size}
-        height={this.props.size}
-      />
+      <ColorWheelWrapper size={this.props.size}>
+        {/* LAYER 1: Hue/Saturation color wheel background */}
+        <Canvas
+          ref={this.setColorWheelCanvasRef}
+          width={this.props.size}
+          height={this.props.size}
+        />
+        {/* LAYER 2: Value layer to adjust color brightness by provided value */}
+        <Canvas
+          ref={this.setValueCanvasRef}
+          width={this.props.size}
+          height={this.props.size}
+        />
+        {/* Layer 3: blend color wheel and value layers to simulate HSV rendering */}
+        <Canvas
+          ref={this.setCompositeCanvasRef}
+          width={this.props.size}
+          height={this.props.size}
+        />
+        {/* Layer 4: Render marker position (selected Hue/Saturation location on color wheel) */}
+        <Canvas
+          data-testid="mouse-marker"
+          ref={this.setMarkerCanvasRef}
+          width={this.props.size}
+          height={this.props.size}
+          onMouseDown={this.mouseDown}
+          onMouseMove={this.mouseMove}
+          onMouseUp={this.setMouseDragging.bind(this, false)}
+          onMouseLeave={this.setMouseDragging.bind(this, false)}
+        />
+      </ColorWheelWrapper>
     )
   }
 
   public mouseDown = (event: React.MouseEvent<HTMLCanvasElement>) => {
-    const canvasCartesian = eventCartesianPosition(this.canvas, event)
-    const position = translateDiagonal(-canvasMargin, canvasCartesian)
+    this.setMouseDragging(true)
+    const canvasCartesian = eventCartesianPosition(this.colorWheelCanvas, event)
+    const position = limitByRadius(
+      translateDiagonal(-canvasMargin, canvasCartesian),
+      this.radius
+    )
 
-    if (isInCircle(position, this.radius)) {
-      this.mouseMoving = true
-      this.updateColor(this.canvas, position, this.props.onColorChange)
-    }
+    this.updateColor(position, this.props.onColorChange)
   }
 
   public mouseMove = (event: React.MouseEvent<HTMLCanvasElement>) => {
-    if (this.mouseMoving) {
-      const canvasCartesian = eventCartesianPosition(this.canvas, event)
-      const position = translateDiagonal(-canvasMargin, canvasCartesian)
-      if (isInCircle(position, this.radius)) {
-        this.updateColor(this.canvas, position, this.props.onColorChange)
-      }
+    if (this.isMouseDragging) {
+      const canvasCartesian = eventCartesianPosition(
+        this.colorWheelCanvas,
+        event
+      )
+      const position = limitByRadius(
+        translateDiagonal(-canvasMargin, canvasCartesian),
+        this.radius
+      )
+      this.updateColor(position, this.props.onColorChange)
     }
   }
 
-  public mouseUp = () => {
-    this.mouseMoving = false
+  public setMouseDragging = (isDragging: boolean) => {
+    this.isMouseDragging = isDragging
   }
 
   public get radius(): number {
-    return this.canvas ? canvasRadius(this.canvas, canvasMargin) : 0
+    return this.colorWheelCanvas
+      ? canvasRadius(this.colorWheelCanvas, canvasMargin)
+      : 0
   }
 
-  private updateCanvas() {
-    const position = hsv2cartesian(this.radius, {
-      h: this.props.hue,
-      s: this.props.saturation,
-      v: this.props.value,
-    })
-
-    if (this.canvas) {
-      this.renderWheel(this.canvas, translateDiagonal(canvasMargin, position))
+  private drawValueLayer = () => {
+    clearCanvas(this.valueCanvas)
+    const ctx = this.valueCanvas.getContext('2d')
+    const centerX = this.valueCanvas.width / 2
+    const centerY = this.valueCanvas.height / 2
+    if (ctx) {
+      const { r, g, b } = hsv(0, 0, this.props.value).rgb() // convert greyscale value to rgb
+      ctx.beginPath()
+      ctx.arc(centerX, centerY, this.radius, 0, 2 * Math.PI, false)
+      ctx.fillStyle = `rgb(${r},${g},${b})`
+      ctx.fill()
+      ctx.lineWidth = 3
+      ctx.strokeStyle = '#ffffff'
+      ctx.stroke()
     }
   }
 
-  /**
-   * Sometimes the image will need to be regenerated (e.g when brightness changes).
-   * Call this method to invalidate image to trigger a redraw.
-   */
-  private invalidateImage() {
-    this.image = undefined
+  private drawCompositeCanvas = () => {
+    clearCanvas(this.compositeCanvas)
+    const ctx = this.compositeCanvas.getContext('2d')
+
+    if (ctx) {
+      ctx.globalCompositeOperation = 'multiply'
+      ctx.drawImage(this.colorWheelCanvas, 0, 0)
+      ctx.drawImage(this.valueCanvas, 0, 0)
+    }
   }
 
   /**
    * Utility method to draw actual color wheel.
    */
-  private drawWheel(canvas: HTMLCanvasElement) {
-    const ctx = canvas.getContext('2d')
+  private drawWheel() {
+    const ctx = this.colorWheelCanvas.getContext('2d')
 
     if (!ctx) return
 
-    const image = this.getImage(ctx)
+    const image = this.getColorWheelImage()
 
     if (image) {
       ctx.putImageData(image, canvasMargin, canvasMargin)
@@ -179,15 +235,15 @@ export class ColorWheel extends Component<ColorWheelProps> {
     // Draw a border around circle
     ctx.beginPath()
     ctx.arc(
-      canvas.width / 2,
-      canvas.width / 2,
+      this.colorWheelCanvas.width / 2,
+      this.colorWheelCanvas.width / 2,
       this.radius,
       0,
       2 * Math.PI,
       false
     )
-    ctx.lineWidth = 2
-    ctx.strokeStyle = '#FEFEFE'
+    ctx.lineWidth = 3
+    ctx.strokeStyle = '#ffffff'
     ctx.stroke()
   }
 
@@ -196,29 +252,39 @@ export class ColorWheel extends Component<ColorWheelProps> {
    * This method writes to a 2D array that will then get pushed onto the canvas context. Takes parameters
    * for circle radius, any added margins, etc to draw a sweet HSV-based gradient
    */
-  private getImage(ctx: CanvasRenderingContext2D): ImageData | null {
-    if (!this.image) {
-      this.image = ctx.createImageData(
+  private getColorWheelImage(): ImageData | undefined {
+    const ctx = this.colorWheelCanvas.getContext('2d')
+
+    if (!this.colorWheelImage && ctx) {
+      const colorValue = 1 // render base wheel at full brightness
+      this.colorWheelImage = ctx.createImageData(
         diameter(this.radius),
         diameter(this.radius)
       )
       drawColorWheelIntoCanvasImage(
-        this.image.data,
-        generateColorWheel(this.radius, this.props.value)
+        this.colorWheelImage.data,
+        generateColorWheel(this.radius, colorValue)
       )
     }
 
-    return this.image
+    return this.colorWheelImage
   }
 
   /**
    * Utility Method to draw mouse position onto the canvas.
    */
-  private drawMouse(
-    canvas: HTMLCanvasElement,
-    mousePosition?: CartesianCoordinate
-  ) {
-    const ctx = canvas.getContext('2d')
+  private drawMouseMarker() {
+    clearCanvas(this.markerCanvas)
+
+    const canvasCartesian: CartesianCoordinate = hsv2cartesian(this.radius, {
+      h: this.props.hue,
+      s: this.props.saturation,
+      v: this.props.value,
+    })
+
+    const mousePosition = translateDiagonal(canvasMargin, canvasCartesian)
+
+    const ctx = this.markerCanvas.getContext('2d')
     if (ctx && mousePosition) {
       const mouseRadius = 4
 
@@ -250,32 +316,33 @@ export class ColorWheel extends Component<ColorWheelProps> {
     }
   }
 
-  private renderWheel(
-    canvas: HTMLCanvasElement,
-    mousePosition?: CartesianCoordinate
-  ) {
-    const ctx = canvas.getContext('2d')
-
-    if (ctx) {
-      clearCanvas(canvas)
-      this.drawWheel(canvas)
-      this.drawMouse(canvas, mousePosition)
-    }
-  }
-
   /**
    * action called when user clicks on a color.  Will let client know color has been updated.
    */
   private updateColor(
-    canvas: HTMLCanvasElement,
     position?: CartesianCoordinate,
     callback?: UpdateHueSaturationCallbackType
   ) {
-    const ctx = canvas.getContext('2d')
-    if (callback && ctx && position) {
+    if (callback && position) {
       const color = cartesian2hsv(this.props.value, this.radius, position)
       const updateColorValues = { h: color.h, s: color.s }
       callback(updateColorValues)
     }
   }
 }
+
+interface CanvasProps {
+  size: number
+}
+
+const ColorWheelWrapper = styled.div<CanvasProps>`
+  position: relative;
+  width: ${({ size }) => size}px;
+  height: ${({ size }) => size}px;
+`
+
+const Canvas = styled.canvas`
+  position: absolute;
+  left: 0;
+  top: 0;
+`

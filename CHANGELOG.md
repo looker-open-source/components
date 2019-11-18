@@ -13,6 +13,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Refactor z-index out of menu styles
 - Improvements to documentation layout and scrolling behavior
 - SVG for `ApplicationSelect`,`ArrowChange`,`Beaker`,`BrowseTable`,`ChangeHistory`,`DimensionFill`,`Explore`,`LogoRings`,`NoteOutline`,`Notes`,`Reports`,`SqlRunner`,`User`,`UserAttributes`,`Users`,`ViewGrid`,`VisArea`,`VisBar`,`VisColumn`,`VisLine`,`VisMap`,`VisPie`,`VisScatter`,`VisSingleValue`,`VisTable` icons resized redrawn to fit on the correct icon grid.
+- Optimize ColorWheel value change performance
+- Restore ColorWheel documentation
 - Implement a vertical layout for the Code Sandbox toolbar to prevent unintentional obfuscation of code samples
 
 ## [0.7.2] - 2019-11-11
