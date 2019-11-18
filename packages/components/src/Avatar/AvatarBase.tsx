@@ -26,7 +26,7 @@ export interface AvatarBaseProps extends SpaceProps {
   /**
    *  @default `40px`
    **/
-  size?: number
+  size?: number | string
 }
 
 export const AvatarJSX: FC<AvatarBaseProps> = ({ ...props }) => {

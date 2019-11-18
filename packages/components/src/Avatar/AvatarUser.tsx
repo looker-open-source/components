@@ -27,7 +27,7 @@ export interface AvatarProps extends SpaceProps {
   /**
    *  @default `40px`
    **/
-  size?: number
+  size?: number | string
   /**
    *  @default `palette.purple500`
    **/
@@ -77,7 +77,7 @@ const AvatarInitials = styled.div.attrs((props: AvatarUserProps) => ({
 export const AvatarUser = styled(AvatarLayout).attrs(
   (props: AvatarUserProps) => ({
     bg: props.color,
-    borderColor: props.color,
+    bordercolor: props.color,
   })
 )`
   ${color}

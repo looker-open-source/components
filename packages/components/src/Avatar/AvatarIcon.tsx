@@ -26,7 +26,7 @@
 
 import React, { FC } from 'react'
 import { IconNames } from '@looker/icons'
-import { color, layout, reset, space } from '@looker/design-tokens'
+import { color, reset, space, layout } from '@looker/design-tokens'
 import styled from 'styled-components'
 import { Icon } from '../Icon'
 import { AvatarProps } from './AvatarUser'

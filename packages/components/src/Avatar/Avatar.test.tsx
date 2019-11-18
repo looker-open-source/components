@@ -26,9 +26,6 @@
 
 import { assertSnapshotShallow } from '@looker/components-test-utils'
 import React from 'react'
-import { render, fireEvent } from '@testing-library/react'
-import { ThemeProvider } from 'styled-components'
-import { theme } from '@looker/design-tokens'
 import { AvatarIcon } from './AvatarIcon'
 import { AvatarUser } from './AvatarUser'
 
