@@ -25,6 +25,141 @@ exports[`InputSearch default 1`] = `
   outline: none;
 }
 
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c8 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  width: 16px;
+  height: 16px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  width: 22px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-weight: 600;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  outline: none;
+  -webkit-transition: border 80ms;
+  transition: border 80ms;
+  vertical-align: middle;
+  white-space: nowrap;
+  font-size: 0.75rem;
+  height: 22px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding: 0rem;
+  padding-right: 0.5rem;
+}
+
+.c4[disabled] {
+  cursor: default;
+  -webkit-filter: grayscale(0.3);
+  filter: grayscale(0.3);
+  opacity: 0.25;
+}
+
+.c5 {
+  background: transparent;
+  border: 1px solid transparent;
+  color: #939BA5;
+}
+
+.c5:active,
+.c5.active {
+  background: #F5F6F7;
+  border-color: #F5F6F7;
+  color: #4C535B;
+}
+
+.c5:hover,
+.c5:focus,
+.c5.hover {
+  background: #FBFBFC;
+  border-color: #FBFBFC;
+  color: #4C535B;
+}
+
+.c5[disabled]:hover,
+.c5[disabled]:active,
+.c5[disabled]:focus {
+  color: #939BA5;
+}
+
+.c7 {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  -webkit-clip: rect(1px,1px,1px,1px);
+  clip: rect(1px,1px,1px,1px);
+}
+
+.c6 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  padding-right: 0.5rem;
+  opacity: 0;
+  -webkit-transition: opacity 300ms cubic-bezier(0.86,0,0.07,1);
+  transition: opacity 300ms cubic-bezier(0.86,0,0.07,1);
+}
+
 .c0 {
   border: 0;
   box-sizing: border-box;
@@ -81,5 +216,46 @@ exports[`InputSearch default 1`] = `
     type="search"
     value=""
   />
+  <div
+    className="c3"
+    display="flex"
+    height="100%"
+  >
+    <button
+      className="c4 c5 c6"
+      color="neutral"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onKeyUp={[Function]}
+      size="xsmall"
+      width={22}
+    >
+      <div
+        className="c7"
+      >
+        Clear Filter
+      </div>
+      <div
+        aria-hidden={true}
+        className="c8 "
+        size={16}
+      >
+        <svg
+          fill="currentColor"
+          height="100%"
+          viewBox="0 0 24 24"
+          width="100%"
+        >
+          <title>
+            Close
+          </title>
+          <path
+            d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"
+            fill="currentColor"
+          />
+        </svg>
+      </div>
+    </button>
+  </div>
 </div>
 `;

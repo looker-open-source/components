@@ -29,7 +29,14 @@ import { graphql } from 'gatsby'
 import React, { FC } from 'react'
 import Helmet from 'react-helmet'
 import styled from 'styled-components'
-import { Heading, Divider, ListItem, Link, List } from '@looker/components'
+import {
+  Heading,
+  Divider,
+  Flex,
+  ListItem,
+  Link,
+  List,
+} from '@looker/components'
 import { ComponentResources, ComponentStatus, Props } from '../Shared'
 import Layout, { LayoutMain } from './Layout'
 
@@ -88,7 +95,7 @@ const DocumentationLayout = (props: DocQuery) => {
 
   return (
     <Layout>
-      <Grid>
+      <Flex>
         <LayoutMain>
           <Helmet title={`${title} - ${site.siteMetadata.title}`} />
           <Heading as="h1" fontSize="xxxxlarge" fontWeight="light">
@@ -106,7 +113,7 @@ const DocumentationLayout = (props: DocQuery) => {
           />
           <TableOfContents toc={mdx.tableOfContents} />
         </Meta>
-      </Grid>
+      </Flex>
     </Layout>
   )
 }
@@ -114,19 +121,18 @@ const DocumentationLayout = (props: DocQuery) => {
 export default DocumentationLayout
 
 const Meta = styled.div`
-  padding: ${props => props.theme.space.large};
-  height: 100%;
   background: ${props => props.theme.colors.palette.charcoal000};
-`
-
-const Grid = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 18rem;
-  grid-template-rows: 1fr;
-
   height: 100vh;
-`
+  overflow-y: auto;
+  padding: ${props => props.theme.space.large};
+  position: sticky;
+  top: 0;
+  width: 17rem;
 
+  @media screen and (max-width: ${props => props.theme.breakpoints[3]}) {
+    display: none;
+  }
+`
 export const pageQuery = graphql`
   query Doc($id: String) {
     site {

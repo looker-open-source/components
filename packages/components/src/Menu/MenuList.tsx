@@ -29,10 +29,10 @@ import { Placement } from 'popper.js'
 import React, {
   Children,
   cloneElement,
-  FC,
   ReactNode,
-  RefObject,
+  Ref,
   useRef,
+  forwardRef,
 } from 'react'
 import { HotKeys } from 'react-hotkeys'
 import styled, { css } from 'styled-components'
@@ -71,8 +71,6 @@ export interface MenuListProps
   compact?: boolean
   groupDividers?: boolean
 
-  ref?: RefObject<HTMLUListElement>
-
   /**
    * Can be one of: top, bottom, left, right, auto, with the modifiers: start,
    * end. This value comes directly from popper.js. See
@@ -106,57 +104,60 @@ export function cloneMenuListChildren(
   })
 }
 
-export const MenuListInternal: FC<MenuListProps> = ({
-  children,
-  className,
-  compact,
-  customizationProps,
-  disabled,
-  isOpen,
-  pin,
-  placement,
-  setOpen,
-  triggerRef,
-  ref,
-}) => {
-  const innerRef = useRef<null | HTMLElement>(null)
+export const MenuListInternal = forwardRef(
+  (props: MenuListProps, ref: Ref<HTMLUListElement>) => {
+    const {
+      children,
+      className,
+      compact,
+      customizationProps,
+      disabled,
+      isOpen,
+      pin,
+      placement,
+      setOpen,
+      triggerRef,
+    } = props
 
-  const clonedChildren = cloneMenuListChildren(children as JSX.Element[], {
-    compact,
-    customizationProps,
-  })
+    const innerRef = useRef<null | HTMLElement>(null)
 
-  const menuList = (
-    <HotKeys
-      innerRef={innerRef}
-      keyMap={{ MOVE_DOWN: 'down', MOVE_UP: 'up' }}
-      handlers={{
-        MOVE_DOWN: () => moveFocus(1, 0, innerRef),
-        MOVE_UP: () => moveFocus(-1, -1, innerRef),
-      }}
-    >
-      <ul className={className} ref={ref} tabIndex={-1} role="menu">
-        {clonedChildren}
-      </ul>
-    </HotKeys>
-  )
+    const clonedChildren = cloneMenuListChildren(children as JSX.Element[], {
+      compact,
+      customizationProps,
+    })
 
-  const isMenu = isOpen !== undefined
-  const { popover } = usePopover({
-    content: menuList,
-    isOpen,
-    pin,
-    placement,
-    setOpen,
-    triggerRef,
-  })
+    const menuList = (
+      <HotKeys
+        innerRef={innerRef}
+        keyMap={{ MOVE_DOWN: 'down', MOVE_UP: 'up' }}
+        handlers={{
+          MOVE_DOWN: () => moveFocus(1, 0, innerRef),
+          MOVE_UP: () => moveFocus(-1, -1, innerRef),
+        }}
+      >
+        <ul className={className} ref={ref} tabIndex={-1} role="menu">
+          {clonedChildren}
+        </ul>
+      </HotKeys>
+    )
 
-  if (disabled) return null
+    const isMenu = isOpen !== undefined
+    const { popover } = usePopover({
+      content: menuList,
+      isOpen,
+      pin,
+      placement,
+      setOpen,
+      triggerRef,
+    })
 
-  if (isMenu) return popover || null
+    if (disabled) return null
 
-  return menuList
-}
+    if (isMenu) return popover || null
+
+    return menuList
+  }
+)
 
 const dividersStyle = css`
   ${MenuGroup} ~ ${MenuGroup} { /* stylelint-disable-line */

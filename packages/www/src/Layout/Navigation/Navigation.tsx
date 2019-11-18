@@ -42,7 +42,7 @@ interface NavigationProps {
 const Navigation: FC<NavigationProps> = ({ sitemap, headerHeight }) => (
   <StyledSidebar>
     <Header height={headerHeight} />
-    <Box>
+    <SidebarNavWrapper height={`calc(100% - ${headerHeight})`}>
       <Location>
         {({ location }) => (
           <LocationContext.Provider value={location.pathname}>
@@ -52,9 +52,13 @@ const Navigation: FC<NavigationProps> = ({ sitemap, headerHeight }) => (
           </LocationContext.Provider>
         )}
       </Location>
-    </Box>
+    </SidebarNavWrapper>
   </StyledSidebar>
 )
+
+const SidebarNavWrapper = styled(Box)`
+  overflow-y: auto;
+`
 
 const StyledSidebar = styled(Sidebar)<SidebarProps>`
   background: ${props => lighten(0.6, props.theme.colors.palette.purple000)};
