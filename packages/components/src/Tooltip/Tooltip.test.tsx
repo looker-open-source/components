@@ -36,8 +36,8 @@ import { Box } from '../Layout/Box'
 import { Button } from '../Button'
 import { OverlaySurface } from '../Overlay/OverlaySurface'
 import { Popover } from '../Popover'
-import { Paragraph } from '../Text'
 import { Tooltip } from './Tooltip'
+import { TooltipContent } from './TooltipContent'
 import { mouseEventSimulator } from './tooltip.test.helpers'
 
 describe('Tooltip', () => {
@@ -146,7 +146,7 @@ describe('Tooltip', () => {
 
   test('supports styling props', () => {
     const tooltip = mountWithTheme(
-      <Tooltip content="Hello world" maxWidth="20rem" textAlign="right">
+      <Tooltip content="Hello world" width="20rem" textAlign="right">
         {(eventHandlers, ref) => (
           <Button ref={ref} {...eventHandlers}>
             Test
@@ -162,9 +162,9 @@ describe('Tooltip', () => {
     const surface = tooltip.find(OverlaySurface)
     expect(surface.exists()).toBeTruthy()
 
-    const paragraph = surface.find(Paragraph)
-    expect(paragraph.props().maxWidth).toEqual('20rem')
-    expect(paragraph.props().textAlign).toEqual('right')
+    const content = surface.find(TooltipContent)
+    expect(content.props().width).toEqual('20rem')
+    expect(content.props().textAlign).toEqual('right')
   })
 
   test('tooltip can exceed bounds of containing overlay', () => {
