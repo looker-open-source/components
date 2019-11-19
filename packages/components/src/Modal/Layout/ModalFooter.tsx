@@ -53,22 +53,16 @@ const Layout = styled.footer`
   align-items: center;
   display: flex;
   flex-direction: row-reverse;
-  padding: ${props => props.theme.space.large}
-    calc(${p => p.theme.space.xlarge} - ${p => p.theme.space.xsmall});
-  /**
-    * Subtract margin placed on children from the horizontal padding applied to the component
-    * so that the content is properly aligned.
-    * padding is: vertical: large, horizontal: calc(xlarge - xsmall)
-    **/
+  padding: ${({ theme }) => `${theme.space.large} ${theme.space.xlarge}`};
 `
 
 const SpaceChildren = styled.div<SpaceProps>`
   ${space};
-  display: flex;
-  flex-direction: row-reverse;
-
-  & > * {
-    margin-right: ${props => props.theme.space.xsmall};
-    margin-left: ${props => props.theme.space.xsmall};
+  display: grid;
+  grid-gap: ${({ theme }) => theme.space.medium};
+  grid-auto-flow: column;
+  direction: rtl; /* Grid equivalent to flex-direction: row-reverse */
+  * {
+    direction: ltr;
   }
 `

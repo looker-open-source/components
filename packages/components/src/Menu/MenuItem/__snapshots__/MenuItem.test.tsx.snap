@@ -23,6 +23,10 @@ exports[`MenuItem - current + marker 1`] = `
   display: inline-flex;
 }
 
+.c2 svg {
+  width: inherit;
+}
+
 .c1 {
   border: 0;
   box-sizing: border-box;
@@ -165,6 +169,10 @@ exports[`MenuItem - current 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+}
+
+.c2 svg {
+  width: inherit;
 }
 
 .c1 {
@@ -433,6 +441,10 @@ exports[`MenuItem - icon 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+}
+
+.c2 svg {
+  width: inherit;
 }
 
 .c1 {

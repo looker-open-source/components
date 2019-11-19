@@ -19,9 +19,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update theme object to use more vibrant colors by default.
 - updated documentation to include Avatar
 - Improved documentation around installation of NPM package
+- Improved modal styling and `Confirm` layout
+- Updates Dialog documentation to endorse use of Confirm instead
+- Hard-code modal header styling, and no longer accept `Header` as a sub-component
+- Use css grid to lay out `ModalFooter` actions
 
 ### Fixed
 
+- Banner icons are rendered at proper sizes when used in www
 - `Tooltip`
   - Respects `width` property as expected
   - Removed confusing `maxWidth` property
