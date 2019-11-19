@@ -1,0 +1,42 @@
+---
+title: Theme
+---
+
+To help stay within Looker's design principles, [we publish a theme object](https://github.com/looker-open-source/components/blob/master/packages/design-tokens/src/theme.ts), along with libraries, like Styled Components and styled-system, to easily access the theme object within components. For example, when styling components using the `styled` function, the theme object becomes part of a component's props:
+
+```jsx static
+import { Button } from '@looker/components'
+import styled from 'styled-components'
+
+const DangerButton = styled(Button)`
+  background-color: ${props => props.theme.colors.semanticColors.danger.main};
+`
+```
+
+```jsx static
+import { Heading } from '@looker/components'
+
+interface PersonTitleProps {
+  person: Person;
+}
+
+const BasePersonTitle = ({ propsOf: PersonTitleProps }) => {
+  return (
+    <Heading as="h2">
+      {props.person.name} - {props.person.title}
+    </Heading>
+  )
+}
+
+const PersonTitle =
+  styled <
+  PersonTitleProps >
+  BasePersonTitle`
+  background-color: ${props =>
+    props.theme.colors.semanticColors.primary.lighter};
+  font-size: ${props => props.theme.fontSizes[5]};
+  padding: ${props => props.spacing.large};
+`
+```
+
+Using the Theme ensures your styling stays within the Looker design guidelines and will align in all Looker apps.

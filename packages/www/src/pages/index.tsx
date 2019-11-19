@@ -31,6 +31,7 @@ import {
   FlexItem,
   Heading,
   Icon,
+  Link,
   Text,
   Paragraph,
 } from '@looker/components'
@@ -93,8 +94,7 @@ const Intro = () => {
           </Heading>
           <Box my="large">
             <Text fontSize="xlarge">
-              A collections of assets for anyone making Looker software,
-              providing Looker services, or telling Looker stories.
+              A collection of tools for building Looker data experiences.
             </Text>
           </Box>
         </Flex>
@@ -131,10 +131,9 @@ const Intro = () => {
                 Install
               </Heading>
               <Paragraph fontSize="small">
-                Looker UI Components packages are served by NPM and can be
-                installed through npm or yarn.
+                Visit <Link href="/getting-started/">Getting Started</Link> for
+                instructions on installing <Code>@looker/components</Code>
               </Paragraph>
-              <Code fontSize="small">yarn add @looker/components</Code>
             </Flex>
             <Flex flexDirection="column" alignItems="center">
               <Box mb="medium">
