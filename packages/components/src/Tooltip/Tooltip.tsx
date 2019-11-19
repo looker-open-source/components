@@ -31,7 +31,7 @@ import React, { useRef, useState, RefObject, FC, ReactNode } from 'react'
 import { Popper } from 'react-popper'
 import { ModalContext } from '../Modal'
 import { OverlaySurface, SurfaceStyleProps } from '../Overlay/OverlaySurface'
-import { Paragraph } from '../Text'
+import { TooltipContent } from './TooltipContent'
 
 interface EventHandlers {
   onBlur: () => void
@@ -66,12 +66,6 @@ export interface UseTooltipProps {
    * Content to display inside the tooltip. Can be a string or JSX.
    */
   content?: ReactNode
-
-  /**
-   * Specify the maximum width before wrapping text.
-   * @default 16rem
-   */
-  maxWidth?: string
   /**
    * Specify a fixed content width.
    * @default auto
@@ -114,9 +108,8 @@ export function useTooltip({
   canClose,
   content,
   isOpen: initializeOpen = false,
-  maxWidth = '16rem',
-  width = 'auto',
-  textAlign = 'center',
+  width,
+  textAlign,
   disabled,
   surfaceStyles,
   ...props
@@ -170,20 +163,6 @@ export function useTooltip({
   const referenceElement =
     triggerRef && triggerRef.current ? triggerRef.current : undefined
 
-  const contentFormatted = (
-    <Paragraph
-      style={{ hyphens: 'auto', overflowWrap: 'anywhere' }}
-      fontSize="xsmall"
-      maxWidth={maxWidth}
-      width={width}
-      p="xsmall"
-      m="none"
-      textAlign={textAlign}
-    >
-      {content}
-    </Paragraph>
-  )
-
   const popper =
     isOpen && content && !disabled ? (
       <ModalContext.Provider value={{ closeModal: handleClose }}>
@@ -219,7 +198,9 @@ export function useTooltip({
               color="palette.charcoal000"
               {...surfaceStyles}
             >
-              {contentFormatted}
+              <TooltipContent width={width} textAlign={textAlign}>
+                {content}
+              </TooltipContent>
             </OverlaySurface>
           )}
         </Popper>
