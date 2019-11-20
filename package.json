@@ -80,7 +80,7 @@
     "pre-commit": "1.2.2",
     "prettier": "^1.19.1",
     "react": "^16.11.0",
-    "react-dom": "^16.11.0",
+    "react-dom": "^16.12.0",
     "styled-components": "^4.4.1",
     "stylelint": "^11.0.0",
     "stylelint-config-recommended": "^3.0.0",
