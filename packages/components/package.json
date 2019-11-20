@@ -53,7 +53,7 @@
     "@types/uuid": "^3.4.6",
     "csstype": "^2.6.3",
     "enzyme": "^3.9.0",
-    "react": "^16.11.0",
+    "react": "^16.12.0",
     "react-dom": "^16.11.0",
     "react-test-renderer": "^16.12.0",
     "styled-components": "^4.4.1"
