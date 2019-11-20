@@ -68,11 +68,21 @@ const App: React.FC = () => {
     <ThemeProvider theme={theme}>
       <>
         <GlobalStyle />
+        <AvatarUser size="small" m="medium" user={goodData} />
+        <AvatarUser size="medium" m="medium" user={goodData} />
         <AvatarUser m="medium" user={goodData} />
-        <AvatarUser m="medium" user={bedData} />
-        <AvatarUser m="medium" user={nullData} />
-        <AvatarIcon icon="Trash" m="medium" />
+
+        <AvatarUser size="small" m="medium" user={bedData} />
+        <AvatarUser size="medium" m="medium" user={nullData} />
+        <AvatarUser m="small" user={bedData} />
+
+        <AvatarIcon size="small" m="medium" />
+        <AvatarIcon size="medium" m="medium" />
         <AvatarIcon m="medium" />
+
+        <AvatarIcon size="small" icon="Trash" m="medium" />
+        <AvatarIcon size="medium" icon="Block" m="medium" />
+        <AvatarIcon icon="ChartPie" m="medium" />
       </>
     </ThemeProvider>
   )

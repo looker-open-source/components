@@ -31,6 +31,7 @@ import styled from 'styled-components'
 import { Icon } from '../Icon'
 import { AvatarProps } from './AvatarUser'
 import { AvatarBase } from './AvatarBase'
+import { avatarSize, AvatarSizeProps } from './size'
 
 interface AvatarIconProps extends AvatarProps {
   icon?: IconNames
@@ -39,16 +40,19 @@ interface AvatarIconProps extends AvatarProps {
 const AvatarLayout: FC<AvatarIconProps> = ({
   color,
   icon = 'Users',
+  size,
   ...props
 }) => {
+  console.log('size: ', size)
   return (
-    <AvatarBase {...props}>
-      <Icon name={icon} size={20} color={color} />
+    <AvatarBase size={size} {...props}>
+      <Icon name={icon} size={size} color={color} />
     </AvatarBase>
   )
 }
 
 export const AvatarIcon = styled(AvatarLayout)`
+  ${avatarSize}
   ${color}
   ${layout}
   ${reset}
@@ -58,5 +62,5 @@ export const AvatarIcon = styled(AvatarLayout)`
 
 AvatarIcon.defaultProps = {
   color: 'palette.purple500',
-  size: 40,
+  size: 'large',
 }

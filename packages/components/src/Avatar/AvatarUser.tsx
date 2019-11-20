@@ -22,12 +22,9 @@ import React, { FC } from 'react'
 import { color, layout, reset, space, SpaceProps } from '@looker/design-tokens'
 import styled from 'styled-components'
 import { AvatarBase } from './AvatarBase'
+import { avatarSize, AvatarSizeProps } from './size'
 
-export interface AvatarProps extends SpaceProps {
-  /**
-   *  @default `40px`
-   **/
-  size?: number | string
+export interface AvatarProps extends AvatarSizeProps, SpaceProps {
   /**
    *  @default `palette.purple500`
    **/
@@ -44,15 +41,17 @@ interface AvatarUserProps extends AvatarProps {
   }
 }
 
-const AvatarLayout: FC<AvatarUserProps> = ({ color, user, ...props }) => {
-  const initials =
-    user.first_name &&
-    user.last_name &&
-    `${user.first_name.substr(0, 1)}${user.last_name.substr(0, 1)}`
+const AvatarLayout: FC<AvatarUserProps> = ({ color, user, size, ...props }) => {
+  const firstInitial =
+    user.first_name && user.last_name && `${user.first_name[0]}`
+  const lastInitial =
+    user.first_name && user.last_name && `${user.last_name[0]}`
 
   return (
-    <AvatarBase {...props}>
-      <AvatarInitials color={color}>{initials}</AvatarInitials>
+    <AvatarBase size={size} {...props}>
+      <AvatarInitials color={color}>
+        {size === 'small' ? `${firstInitial}` : `${firstInitial}${lastInitial}`}
+      </AvatarInitials>
       {user.avatar_url && <AvatarPhoto color={color} src={user.avatar_url} />}
     </AvatarBase>
   )
@@ -80,6 +79,7 @@ export const AvatarUser = styled(AvatarLayout).attrs(
     bordercolor: props.color,
   })
 )`
+  ${avatarSize}
   ${color}
   ${layout}
   ${reset}
@@ -89,5 +89,5 @@ export const AvatarUser = styled(AvatarLayout).attrs(
 
 AvatarUser.defaultProps = {
   color: 'palette.purple500',
-  size: 40,
+  size: 'large',
 }

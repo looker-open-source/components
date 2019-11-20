@@ -9,13 +9,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- implemented `Avatar` with: `AvatarUser` and `AvatarIcon` as its components
+
 - Implement a vertical layout for the Code Sandbox toolbar to prevent unintentional obfuscation of code samples
+
+### Added
+
+- `AvatarUser`
+- `AvatarIcon`
 
 ## [0.7.2] - 2019-11-11
 
 ### Added
 
 - `IconButton` now supports focusVisible behavior
+- `AvatarUser`
+- `AvatarIcon`
 
 ### Changed
 
