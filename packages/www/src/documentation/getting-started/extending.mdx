@@ -10,7 +10,7 @@ Looker UI Components (and React) rely heavily on the concept of composition, whe
 ;() => {
   const BoardCard = ({ title, description, previewImage }) => (
     <Card raised width="24rem">
-      <CardMedia src={previewImage} />
+      <CardMedia image={previewImage} />
       <CardContent>
         <Heading as="h3" fontWeight="semiBold">
           {title}
@@ -25,7 +25,7 @@ Looker UI Components (and React) rely heavily on the concept of composition, whe
   return (
     <BoardCard
       title="Business Metrics"
-      previewImage="someimage.png"
+      previewImage="https://www.fillmurray.com/384/192"
       description="Important metrics we use to understand our daily operational performance."
     />
   )
