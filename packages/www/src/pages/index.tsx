@@ -132,7 +132,8 @@ const Intro = () => {
               </Heading>
               <Paragraph fontSize="small">
                 Visit <Link href="/getting-started/">Getting Started</Link> for
-                instructions on installing <Code>@looker/components</Code>
+                instructions on installing{' '}
+                <Code fontSize="small">@looker/components</Code>
               </Paragraph>
             </Flex>
             <Flex flexDirection="column" alignItems="center">
