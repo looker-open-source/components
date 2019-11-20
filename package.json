@@ -110,6 +110,6 @@
   ],
   "dependencies": {
     "react-live": "^2.2.1",
-    "react-test-renderer": "^16.11.0"
+    "react-test-renderer": "^16.12.0"
   }
 }
