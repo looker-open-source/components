@@ -26,10 +26,9 @@
 
 import 'jest-styled-components'
 import React from 'react'
+import noop from 'lodash/noop'
 import { assertSnapshot } from '@looker/components-test-utils'
 import { ListItem } from './ListItem'
-
-const noop = () => {}
 
 describe('ListItem', () => {
   test('A default ListItem, should be an li', () => {
