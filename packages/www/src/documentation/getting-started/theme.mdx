@@ -4,39 +4,109 @@ title: Theme
 
 To help stay within Looker's design principles, [we publish a theme object](https://github.com/looker-open-source/components/blob/master/packages/design-tokens/src/theme.ts), along with libraries, like Styled Components and styled-system, to easily access the theme object within components. For example, when styling components using the `styled` function, the theme object becomes part of a component's props:
 
-```jsx static
-import { Button } from '@looker/components'
-import styled from 'styled-components'
+## ThemeProvider
 
-const DangerButton = styled(Button)`
-  background-color: ${props => props.theme.colors.semanticColors.danger.main};
-`
-```
+Looker Components require that a Styled Components `ThemeProvider` be available and that theme specified have the same structure that is provided by Looker Component's stock `theme` object. See below for information on extending the stock theme for your own use case.
 
-```jsx static
-import { Heading } from '@looker/components'
+NOTE: For the sake of brevity examples within the documentation generally don't show the ThemeProvider. It's injected as part of the site's code sandbox setup.
 
-interface PersonTitleProps {
-  person: Person;
-}
+```jsx
+;() => {
+  /**
+   *  import { Button, theme } from '@looker/components'
+   *  import { ThemeProvider } from 'styled-components'
+   **/
 
-const BasePersonTitle = ({ propsOf: PersonTitleProps }) => {
   return (
-    <Heading as="h2">
-      {props.person.name} - {props.person.title}
-    </Heading>
+    <ThemeProvider theme={theme}>
+      <Button>Just a regular button</Button>
+    </ThemeProvider>
   )
 }
-
-const PersonTitle =
-  styled <
-  PersonTitleProps >
-  BasePersonTitle`
-  background-color: ${props =>
-    props.theme.colors.semanticColors.primary.lighter};
-  font-size: ${props => props.theme.fontSizes[5]};
-  padding: ${props => props.spacing.large};
-`
 ```
 
-Using the Theme ensures your styling stays within the Looker design guidelines and will align in all Looker apps.
+You can use the theme's properties within your custom components:
+
+```jsx
+;() => {
+  /**
+   *  import { Button, theme } from '@looker/components'
+   *  import styled, { ThemeProvider } from 'styled-components'
+   **/
+
+  const DangerButton = styled(Button)`
+    border-color: ${props => props.theme.colors.palette.red500};
+    background-color: ${props => props.theme.colors.palette.red500};
+  `
+
+  return (
+    <ThemeProvider theme={theme}>
+      <DangerButton>Danger Wil Robinson!</DangerButton>
+    </ThemeProvider>
+  )
+}
+```
+
+## Extending the Theme
+
+You can extend the theme provided by Looker Components by creating a copy and then providing that version of theme to the ThemeProvider.
+
+```jsx
+;() => {
+  /**
+   *  import { Button, theme } from '@looker/components'
+   *  import styled, { ThemeProvider } from 'styled-components'
+   **/
+
+  const myTheme = {
+    ...theme,
+    myCustomAttribute: 'hotpink',
+  }
+
+  const PrettyButton = styled(Button)`
+    border-color: ${props => props.theme.myCustomAttribute};
+    background-color: ${props => props.theme.myCustomAttribute};
+  `
+
+  return (
+    <ThemeProvider theme={myTheme}>
+      <PrettyButton>Pink is so Pretty!</PrettyButton>
+    </ThemeProvider>
+  )
+}
+```
+
+## Nesting ThemeProviders
+
+Styled Components' ThemeProvider acts as a React Context and in so doing is able to support the standard behavior of nested contexts – the theme defined nearest to the component will be the version used.
+
+NOTE: You'll also see that `PrettyButton` in the example simply falls back to `Button`'s default style when `myCustomAttribute` isn't assigned.
+
+```jsx
+;() => {
+  /**
+   *  import { Button, theme } from '@looker/components'
+   *  import styled, { ThemeProvider } from 'styled-components'
+   **/
+
+  const myTheme = {
+    ...theme,
+    myCustomAttribute: 'hotpink',
+  }
+
+  const PrettyButton = styled(Button)`
+    border-color: ${props => props.theme.myCustomAttribute};
+    background-color: ${props => props.theme.myCustomAttribute};
+  `
+
+  return (
+    <ThemeProvider theme={theme}>
+      <PrettyButton mr="large">Stock Theme</PrettyButton>
+
+      <ThemeProvider theme={myTheme}>
+        <PrettyButton>Pretty Button with Custom Theme</PrettyButton>
+      </ThemeProvider>
+    </ThemeProvider>
+  )
+}
+```

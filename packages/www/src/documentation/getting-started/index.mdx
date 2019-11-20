@@ -7,11 +7,11 @@ title: Installation
 To add Looker UI Components to your project, add the [NPM package](https://www.npmjs.com/package/@looker/components) to your project:
 
 ```bash static
+# Looker projects generally utilize Yarn (https://yarnpkg.com/) for package management:
+yarn add @looker/components styled-components react react-dom
+
+# If you prefer you can of course also use NPM directly:
 npm install @looker/components styled-components
-
-# -OR- if you prefer Yarn (https://yarnpkg.com/) for package management.
-
-yarn add @looker/components styled-components
 ```
 
 ### Using Typescript?
@@ -19,10 +19,10 @@ yarn add @looker/components styled-components
 If you're using Typescript you'll also need to add the type definitions for Styled Components.
 
 ```bash static
-yarn add --dev @types/styled-components
+yarn add --dev @types/styled-components @types/react @types/react-dom
 ```
 
-Unfortunately, due to [this issue with the type definitions for Styled Components](https://github.com/DefinitelyTyped/DefinitelyTyped/issues/33311) you'll need to apply a minor workaround:
+Unfortunately, due to [this issue with the type definitions for Styled Components](https://github.com/DefinitelyTyped/DefinitelyTyped/issues/33311) you'll need to apply a minor workaround if you're using ESLint along with Styled Component's Typescript definitions.
 
 ```bash static
 rm -R node_modules/@types/react-native
@@ -42,7 +42,7 @@ import { ThemeProvider } from 'styled-components'
 </ThemeProvider>
 ```
 
-Which renders the following:
+Which could be used to render the following:
 
 ```jsx
 <Card raised>
