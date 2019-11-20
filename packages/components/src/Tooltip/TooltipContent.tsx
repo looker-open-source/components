@@ -17,6 +17,12 @@ export const TooltipContent = styled(Paragraph).attrs(
 
   ${Link} {
     color: ${props => props.theme.colors.palette.blue200};
+    text-decoration: underline;
+
+    &:focus,
+    &:hover {
+      color: ${props => props.theme.colors.palette.blue100};
+    }
   }
 `
 
