@@ -24,10 +24,11 @@
 
  */
 
-import React, { CSSProperties, RefObject } from 'react'
+import React, { CSSProperties, useCallback, useState } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import { CSSObject, FlattenSimpleInterpolation } from 'styled-components'
 import { CustomizableAttributes } from '@looker/design-tokens'
+import { useFocusTrap } from '../utils'
 import { ModalBackdrop } from './ModalBackdrop'
 import { ModalContext } from './ModalContext'
 import { ModalPortal } from './ModalPortal'
@@ -70,8 +71,6 @@ export interface ManagedModalProps {
    * @default auto
    */
   width?: string
-
-  portalRef?: RefObject<HTMLDivElement>
 }
 
 export interface ModalProps extends ManagedModalProps {
@@ -99,11 +98,14 @@ export function Modal({
   backdrop,
   isOpen,
   onClose,
-  portalRef,
   render,
 }: ModalInternalProps) {
+  const [focusTrapEnabled, setFocusTrapEnabled] = useState(false)
+  const onDeactivate = useCallback(() => setFocusTrapEnabled(false), [])
+  const focusRef = useFocusTrap(focusTrapEnabled, onDeactivate)
+
   return (
-    <ModalContext.Provider value={{ closeModal: onClose }}>
+    <ModalContext.Provider value={{ closeModal: onClose, setFocusTrapEnabled }}>
       <CSSTransition
         classNames="modal"
         mountOnEnter
@@ -112,7 +114,7 @@ export function Modal({
         timeout={{ enter: 0, exit: 250 }}
       >
         {(state: string) => (
-          <ModalPortal portalRef={portalRef}>
+          <ModalPortal ref={focusRef}>
             <ModalBackdrop
               className={state}
               onClick={onClose}

@@ -32,15 +32,12 @@ export interface UseFocusOptions {
   clickOutsideDeactivates?: boolean
 }
 
-export function useFocusTrap(
-  enabled = true,
-  escapeDeactivates = false,
-  clickOutsideDeactivates = true
-) {
+export function useFocusTrap(enabled = true, onDeactivate?: () => void) {
   const trap = useRef<FocusTrap>()
 
   return useCallback(
     node => {
+      console.log(node, enabled)
       if (!node || !enabled) {
         trap.current && trap.current.deactivate()
       } else if (node && enabled) {
@@ -48,15 +45,16 @@ export function useFocusTrap(
           '[data-autofocus="true"]'
         ) as HTMLElement
         trap.current = createFocusTrap(node, {
-          clickOutsideDeactivates,
-          escapeDeactivates,
+          clickOutsideDeactivates: true,
+          escapeDeactivates: false,
           fallbackFocus: node,
+          onDeactivate,
           ...(autoFocusElement ? { initialFocus: autoFocusElement } : {}),
         })
 
         trap.current.activate()
       }
     },
-    [enabled, escapeDeactivates, clickOutsideDeactivates]
+    [enabled, onDeactivate]
   )
 }
