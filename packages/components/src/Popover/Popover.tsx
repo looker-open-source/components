@@ -38,7 +38,7 @@ import { Box } from '../Layout'
 import { ModalContext } from '../Modal'
 import { ModalPortal } from '../Modal/ModalPortal'
 import { OverlaySurface } from '../Overlay/OverlaySurface'
-import { useControlWarn, useFocusTrap } from '../utils'
+import { useControlWarn, useFocusTrap, useScrollLock } from '../utils'
 
 export interface UsePopoverProps {
   /**
@@ -104,6 +104,11 @@ export interface UsePopoverProps {
    * Optional, for a controlled version of the component
    */
   setOpen?: (open: boolean) => void
+
+  /**
+   * Set whether to disable scrolling outside the popover
+   */
+  disableScrollLock?: boolean
 
   /**
    * The trigger element ref to use (if absent, one will be created and returned)
@@ -185,7 +190,7 @@ function usePopoverToggle(
     UsePopoverProps,
     'isOpen' | 'setOpen' | 'canClose' | 'groupedPopoversRef'
   >,
-  portalRef: RefObject<HTMLDivElement>,
+  portalRef: RefObject<HTMLDivElement | null>,
   triggerRef: RefObject<HTMLElement>
 ): [boolean, (value: boolean) => void] {
   const [uncontrolledIsOpen, uncontrolledSetOpen] = useState(controlledIsOpen)
@@ -243,13 +248,13 @@ function usePopoverToggle(
       event.stopPropagation()
     }
     if (isOpen) {
-      document.addEventListener('click', handleClickOutside, true)
+      document.addEventListener('mousedown', handleClickOutside, true)
     } else {
-      document.removeEventListener('click', handleClickOutside, true)
+      document.removeEventListener('mousedown', handleClickOutside, true)
     }
 
     return () => {
-      document.removeEventListener('click', handleClickOutside, true)
+      document.removeEventListener('mousedown', handleClickOutside, true)
     }
   }, [canClose, groupedPopoversRef, isOpen, setOpen, triggerRef, portalRef])
 
@@ -266,10 +271,11 @@ export function usePopover({
   onClose,
   placement: propsPlacement = 'bottom',
   hoverDisclosureRef,
+  disableScrollLock,
   setOpen: controlledSetOpen,
   ...props
 }: UsePopoverProps) {
-  const portalRef = useRef<HTMLDivElement | null>(null)
+  const portalRef = useScrollLock(disableScrollLock, true)
   const newTriggerRef = useRef<HTMLElement>(null)
   const focusRef = useFocusTrap()
 
@@ -336,7 +342,7 @@ export function usePopover({
 
   const popover = !openWithoutElem && isOpen && (
     <ModalContext.Provider value={{ closeModal: handleClose }}>
-      <ModalPortal portalRef={portalRef}>
+      <ModalPortal ref={portalRef}>
         <Popper
           positionFixed
           placement={propsPlacement}
@@ -386,7 +392,7 @@ export function usePopover({
     </ModalContext.Provider>
   )
   return {
-    className: isOpen ? 'active' : undefined,
+    isOpen,
     open: handleOpen,
     popover,
     ref: triggerRef,
@@ -395,8 +401,8 @@ export function usePopover({
 }
 
 export function Popover({ children, ...props }: PopoverProps) {
-  const { popover, open, ref, className, triggerShown } = usePopover(props)
-  const childrenOutput = children(open, ref, className)
+  const { popover, open, ref, isOpen, triggerShown } = usePopover(props)
+  const childrenOutput = children(open, ref, isOpen ? 'active' : '')
 
   return (
     <>

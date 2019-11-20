@@ -27,4 +27,5 @@
 export * from './GlobalStyle'
 export * from './useControlWarn'
 export * from './useFocusTrap'
+export * from './useScrollLock'
 export * from './useToggle'

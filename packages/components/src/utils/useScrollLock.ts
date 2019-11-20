@@ -24,12 +24,16 @@
 
  */
 
-import { RefObject, useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 
 export function useScrollLock(
-  allowScrollWithin: RefObject<HTMLElement | null>,
-  disabled = false
+  disabled = false,
+  useCapture = false,
+  allowScrollWithin?: HTMLElement
 ) {
+  const ref = useRef<HTMLDivElement>(null)
+  const scrollWithin = allowScrollWithin || ref.current
+
   useEffect(() => {
     let scrollTop = window.scrollY
     let scrollTarget: EventTarget | HTMLElement | null = document
@@ -45,26 +49,25 @@ export function useScrollLock(
 
       if (
         scrollTarget instanceof Element &&
-        !(
-          allowScrollWithin &&
-          allowScrollWithin.current &&
-          allowScrollWithin.current.contains(scrollTarget)
-        )
+        !(scrollWithin && scrollWithin.contains(scrollTarget))
       ) {
         scrollTarget.scrollTop = scrollTop
       } else if (scrollTarget === document) {
+        console.log(e)
         window.scrollTo({ top: scrollTop })
       }
     }
 
     if (disabled) {
-      window.removeEventListener('scroll', stopScroll, true)
+      window.removeEventListener('scroll', stopScroll, useCapture)
     } else {
-      window.addEventListener('scroll', stopScroll, true)
+      window.addEventListener('scroll', stopScroll, useCapture)
     }
 
     return () => {
-      window.removeEventListener('scroll', stopScroll, true)
+      window.removeEventListener('scroll', stopScroll, useCapture)
     }
-  }, [disabled, allowScrollWithin])
+  }, [disabled, scrollWithin, useCapture])
+
+  return ref
 }

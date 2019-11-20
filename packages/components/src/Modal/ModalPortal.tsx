@@ -24,44 +24,39 @@
 
  */
 
-import React, { FC, RefObject, useEffect, useRef } from 'react'
+import React, { forwardRef, Ref, useEffect, useRef, ReactNode } from 'react'
 import { createPortal } from 'react-dom'
 import styled from 'styled-components'
-import { useScrollLock } from '../utils/useScrollLock'
 import { CustomizableModalAttributes } from './Modal'
 import { getModalRoot } from './modalRoot'
 
-export interface ModalPortalProps {
-  portalRef?: RefObject<HTMLDivElement>
-}
+export const ModalPortal = forwardRef(
+  ({ children }: { children: ReactNode }, ref: Ref<HTMLDivElement>) => {
+    const el = useRef(document.createElement('div'))
 
-export const ModalPortal: FC<ModalPortalProps> = ({ portalRef, children }) => {
-  const el = useRef(document.createElement('div'))
-  const ref = useRef<HTMLDivElement>(null)
-  const refToUse = portalRef || ref
+    useEffect(() => {
+      const modalRoot = getModalRoot()
+      if (!modalRoot) return
 
-  useScrollLock(refToUse)
+      const elCurrent = el.current
+      modalRoot.appendChild(elCurrent)
 
-  useEffect(() => {
-    const modalRoot = getModalRoot()
-    if (!modalRoot) return
+      return () => {
+        modalRoot.removeChild(elCurrent)
+      }
+    }, [el])
 
-    const elCurrent = el.current
-    modalRoot.appendChild(elCurrent)
+    const content = (
+      <InvisiBox ref={ref} zIndex={CustomizableModalAttributes.zIndex}>
+        {children}
+      </InvisiBox>
+    )
 
-    return () => {
-      modalRoot.removeChild(elCurrent)
-    }
-  }, [el])
+    return createPortal(content, el.current)
+  }
+)
 
-  const content = (
-    <InvisiBox ref={refToUse} zIndex={CustomizableModalAttributes.zIndex}>
-      {children}
-    </InvisiBox>
-  )
-
-  return createPortal(content, el.current)
-}
+ModalPortal.displayName = 'ModalPortal'
 
 const InvisiBox = styled.div<{ zIndex?: number }>`
   position: fixed;
