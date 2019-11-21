@@ -51,25 +51,25 @@ This provides the backdrop behind Modal containers. It can be customized via the
 </DialogManager>
 ```
 
-## ModalContext
+## InterstitialContext
 
-`ModalContext` is a [React Context](https://reactjs.org/docs/context.html) that provides access to functionality without requiring the developer to explicitly manage the Modal's state. Currently the context simply provides access to the `closeModal()` method of the Modal.
+`InterstitialContext` is a [React Context](https://reactjs.org/docs/context.html) that provides access to functionality without requiring the developer to explicitly manage the Modal's state. Currently the context simply provides access to the `close()` method of the Modal.
 
 ```js static
 import React, { useContext } from 'react'
-import { Button, ModalContext } from '@looker/components'
+import { Button, InterstitialContext } from '@looker/components'
 
-export function ModalContextDemo() {
+export function InterstitialContextDemo() {
   return (
-    <ModalContext.Consumer>
-      {({ closeModal }) => <Button onClick={closeModal}>Close!</Button>}
-    </ModalContext.Consumer>
+    <InterstitialContext.Consumer>
+      {({ close }) => <Button onClick={close}>Close!</Button>}
+    </InterstitialContext.Consumer>
   )
 }
 
 export function ModalUseContextDemo() {
-  const { closeModal } = useContext(ModalContext)
-  return <Button onClick={closeModal}>Close!</Button>
+  const { close } = useContext(InterstitialContext)
+  return <Button onClick={close}>Close!</Button>
 }
 ```
 
@@ -107,7 +107,7 @@ If content overflows the component's height an visual indicator of content that 
 
 <Props of="ModalHeader" />
 
-`ModalHeader` is attached to the top of modal and provides a button to close the containing modal. Uses the `ModalContext` to get access to the `closeModal` callback.
+`ModalHeader` is attached to the top of modal and provides a button to close the containing modal. Uses the `InterstitialContext` to get access to the `close` callback.
 
 ModalHeader supports all [`Box`](/src-documentation-components-box) properties.
 
@@ -119,7 +119,7 @@ ModalHeader supports all [`Box`](/src-documentation-components-box) properties.
 
 <Props of="ModalFooter" />
 
-`ModalFooter` is attached to the bottom of modal. Generally, the terminal action for a modal as well as an option to abandon the process done via the modal are available within this component. This component is generally used in combination with the `ModalContext.Provider` to get access to the `ModalContext.closeModal()` method.
+`ModalFooter` is attached to the bottom of modal. Generally, the terminal action for a modal as well as an option to abandon the process done via the modal are available within this component. This component is generally used in combination with the `InterstitialContext.Provider` to get access to the `InterstitialContext.close()` method.
 
 ModalFooter supports all [`Box`](/src-documentation-components-box) properties.
 

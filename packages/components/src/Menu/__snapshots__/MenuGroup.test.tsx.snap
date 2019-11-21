@@ -652,6 +652,19 @@ exports[`MenuGroup - menu customization 1`] = `
   list-style-type: none;
 }
 
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  background-color: #4F2ABA;
+}
+
 .c4 {
   border: 0;
   box-sizing: border-box;
@@ -672,19 +685,6 @@ exports[`MenuGroup - menu customization 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-}
-
-.c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  background-color: #4F2ABA;
 }
 
 .c3 {

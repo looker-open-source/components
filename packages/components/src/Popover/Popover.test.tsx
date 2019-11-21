@@ -73,7 +73,7 @@ describe('Popover', () => {
     }
   })
 
-  test('opens on click', () => {
+  test('opens and closes', () => {
     const { getByText, queryByText } = renderWithTheme(
       <Popover content={SimpleContent}>
         {(onClick, ref, className) => (
@@ -115,30 +115,6 @@ describe('Popover', () => {
     fireEvent.click(trigger)
     expect(getByText('simple content')).toBeInTheDocument()
     expect(mockContainerOnClick).not.toHaveBeenCalled()
-  })
-
-  test('Popover opens and closes', () => {
-    const { getByText, queryByText } = renderWithTheme(
-      <Popover content={SimpleContent}>
-        {(onClick, ref, className) => (
-          <a onClick={onClick} ref={ref} className={className}>
-            Instant Click
-          </a>
-        )}
-      </Popover>
-    )
-
-    const trigger = getByText('Instant Click')
-    expect(trigger).toBeInTheDocument()
-
-    // Verify Popover close, then Open Popover and verify it's open
-    expect(queryByText('simple content')).not.toBeInTheDocument()
-    fireEvent.click(trigger)
-    expect(getByText('simple content')).toBeInTheDocument()
-
-    // Collapse Popover by clicking outside of it (original trigger will do)
-    fireEvent.click(document)
-    expect(queryByText('simple content')).not.toBeInTheDocument()
   })
 
   test('Open popover cancels event on "dismissal click"', () => {

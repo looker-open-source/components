@@ -24,15 +24,6 @@
 
  */
 
-// enableFocusTrap?: () => void
-// disableFocusTrap?: () => void
-// enableFocusTrap: () => {
-//   setFocusTrapEnabled(true)
-// },
-// disableFocusTrap: () => {
-//   setFocusTrapEnabled(false)
-// },
-
 import createFocusTrap, { FocusTrap } from 'focus-trap'
 import { useContext, useEffect, useRef } from 'react'
 import { useToggle } from '../utils/useToggle'
@@ -44,31 +35,27 @@ export interface UseFocusOptions {
   clickOutsideDeactivates?: boolean
 }
 
-export function useFocusTrap(
-  enabled = true,
-  keepFocusWithin?: HTMLElement
-  // onDeactivate?: () => void
-) {
+export function useFocusTrap(enabled = true, keepFocusWithin?: HTMLElement) {
   const trap = useRef<FocusTrap>()
 
-  const [focusWithin, callbackRef] = useCallbackRef(keepFocusWithin)
+  const [element, callbackRef] = useCallbackRef(keepFocusWithin)
   const { disableFocusTrap, enableFocusTrap } = useContext(InterstitialContext)
   const { value, setOn, setOff } = useToggle(enabled)
 
   useEffect(() => {
-    if (focusWithin && value) {
-      const autoFocusElement = focusWithin.querySelector(
+    if (element && value) {
+      const autoFocusElement = element.querySelector(
         '[data-autofocus="true"]'
       ) as HTMLElement
-      trap.current = createFocusTrap(focusWithin, {
+      trap.current = createFocusTrap(element, {
         clickOutsideDeactivates: true,
         escapeDeactivates: false,
-        fallbackFocus: focusWithin,
-        // onDeactivate: () => setOff(),
+        fallbackFocus: element,
         ...(autoFocusElement ? { initialFocus: autoFocusElement } : {}),
       })
-      trap.current.activate()
       disableFocusTrap && disableFocusTrap()
+      // Wait for any other focus trap to complete deactivation
+      window.setTimeout(() => trap.current && trap.current.activate(), 0)
     } else {
       trap.current && trap.current.deactivate()
       enableFocusTrap && enableFocusTrap()
@@ -77,13 +64,13 @@ export function useFocusTrap(
     return () => {
       trap.current && trap.current.deactivate()
     }
-  }, [value, focusWithin, disableFocusTrap, enableFocusTrap])
+  }, [value, element, disableFocusTrap, enableFocusTrap])
 
   return {
     callbackRef,
     disable: setOff,
+    element: element || null,
     enable: setOn,
-    enabled: value,
-    focusWithin: focusWithin || null,
+    isEnabled: value,
   }
 }

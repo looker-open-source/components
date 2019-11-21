@@ -40,7 +40,7 @@ exports[`ModalFooter with Button 1`] = `
 </footer>
 `;
 
-exports[`ModalFooter with ModalContext 1`] = `
+exports[`ModalFooter with InterstitialContext 1`] = `
 .c0 {
   -webkit-align-items: center;
   -webkit-box-align: center;
