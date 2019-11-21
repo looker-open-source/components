@@ -8389,20 +8389,20 @@ gatsby-react-router-scroll@^2.1.16:
     scroll-behavior "^0.9.10"
     warning "^3.0.0"
 
-gatsby-remark-images@^3.1.30:
-  version "3.1.30"
-  resolved "https://registry.yarnpkg.com/gatsby-remark-images/-/gatsby-remark-images-3.1.30.tgz#c71527d56ab941878d0b576f61192d17fdca881d"
-  integrity sha512-iednni/e2p55EaTz5HHEC7xd5u/1vpeYWuQkEa1uZglNdje8x+JS3/cXUFYE3/M9T/w+HXqk9WGtdPMUuoC9oA==
+gatsby-remark-images@^3.1.32:
+  version "3.1.32"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-images/-/gatsby-remark-images-3.1.32.tgz#62ef581b1a8778949b2248e8e5c7d49e938ddeb2"
+  integrity sha512-/15LOrN0ljaWfPSRTKdGJKlfv9q/n0dFh32AHFAOnA32S2xkP1cysUu7wIV9FCG50tXny4HguIYmBp6r/ddAuA==
   dependencies:
     "@babel/runtime" "^7.7.2"
     chalk "^2.4.2"
     cheerio "^1.0.0-rc.3"
+    gatsby-core-utils "^1.0.20"
     is-relative-url "^3.0.0"
     lodash "^4.17.15"
     mdast-util-definitions "^1.2.5"
     potrace "^2.1.2"
     query-string "^6.8.3"
-    slash "^3.0.0"
     unist-util-select "^1.5.0"
     unist-util-visit-parents "^2.1.2"
 
@@ -11973,14 +11973,7 @@ mdast-util-compact@^1.0.0:
   dependencies:
     unist-util-visit "^1.1.0"
 
-mdast-util-definitions@^1.2.0:
-  version "1.2.4"
-  resolved "https://registry.yarnpkg.com/mdast-util-definitions/-/mdast-util-definitions-1.2.4.tgz#2b54ad4eecaff9d9fcb6bf6f9f6b68b232d77ca7"
-  integrity sha512-HfUArPog1j4Z78Xlzy9Q4aHLnrF/7fb57cooTHypyGoe2XFNbcx/kWZDoOz+ra8CkUzvg3+VHV434yqEd1DRmA==
-  dependencies:
-    unist-util-visit "^1.0.0"
-
-mdast-util-definitions@^1.2.5:
+mdast-util-definitions@^1.2.0, mdast-util-definitions@^1.2.5:
   version "1.2.5"
   resolved "https://registry.yarnpkg.com/mdast-util-definitions/-/mdast-util-definitions-1.2.5.tgz#3fe622a4171c774ebd06f11e9f8af7ec53ea5c74"
   integrity sha512-CJXEdoLfiISCDc2JB6QLb79pYfI6+GcIH+W2ox9nMc7od0Pz+bovcHsiq29xAQY6ayqe/9CsK2VzkSJdg1pFYA==
