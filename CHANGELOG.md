@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Update theme object to use more vibrant colors by default.
+- creates new legacyTheme export for users who don't like the colors changing
 - Improved documentation around installation of NPM package
 
 ### Fixed
