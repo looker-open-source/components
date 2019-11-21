@@ -32,9 +32,9 @@ export const palette: Palette = {
   transparent: 'transparent',
   white: '#FFFFFF',
 
-  primary500: '#64518A',
-  primary600: '#473764',
-  primary700: '#2A1B60',
+  primary500: '#4F2ABA', // duplicate purple500
+  primary600: '#412399', // duplicate purple600
+  primary700: '#341C7A', // duplicate purple700
 
   charcoal000: '#FBFBFC',
   charcoal100: '#F5F6F7',
@@ -108,9 +108,9 @@ export const legacyPalette: Palette = {
   transparent: 'transparent',
   white: '#FFFFFF',
 
-  primary500: '#4F2ABA', // duplicate purple500
-  primary600: '#412399', // duplicate purple600
-  primary700: '#341C7A', // duplicate purple700
+  primary500: '#64518A',
+  primary600: '#473764',
+  primary700: '#2A1B60',
 
   charcoal000: '#FBFBFC',
   charcoal100: '#F5F6F7',
