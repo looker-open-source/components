@@ -24,14 +24,62 @@
 
  */
 
+import React, { FC, useRef, RefObject, CSSProperties, ReactNode } from 'react'
 import styled from 'styled-components'
-import { color, BackgroundColorProps, BoxShadowProps } from 'styled-system'
+import { color, BackgroundColorProps, BorderRadiusProps } from 'styled-system'
+import { Heading, HeadingProps } from '../Text/Heading'
+import { useElementVisibility } from './MenuGroup.hooks'
 
-interface MenuGroupLabelProps extends BackgroundColorProps, BoxShadowProps {}
+interface MenuGroupLabelProps
+  extends BackgroundColorProps,
+    HeadingProps,
+    BorderRadiusProps {
+  labelContent: ReactNode
+  labelStyles?: CSSProperties
+}
 
-export const MenuGroupLabel = styled.div<MenuGroupLabelProps>`
+export const MenuGroupLabel: FC<MenuGroupLabelProps> = ({
+  labelContent,
+  labelStyles,
+  ...props
+}) => {
+  const labelShimRef: RefObject<any> = useRef()
+  const isLabelShimVisible = useElementVisibility(labelShimRef)
+
+  return (
+    <MenuGroupLabelWrapper renderBoxShadow={!isLabelShimVisible}>
+      {/*
+        NOTE: The labelShimRef div is required for box-shadow to appear when the heading
+        is sticky to the top of the container. Using IntersectionObserver,
+        we detect when this 0-height element disappears from the page and then
+        render the shadow.
+      */}
+      <div ref={labelShimRef} style={{ height: '0' }} />
+      <Heading
+        fontSize="small"
+        as="h2"
+        px="medium"
+        py="xsmall"
+        fontWeight="semiBold"
+        style={labelStyles}
+        {...props}
+      >
+        {labelContent}
+      </Heading>
+    </MenuGroupLabelWrapper>
+  )
+}
+
+interface MenuGroupLabelWrapperProps {
+  renderBoxShadow: boolean
+}
+
+const MenuGroupLabelWrapper = styled.div<MenuGroupLabelWrapperProps>`
   ${color}
-  box-shadow: ${props => props.boxShadow};
+  box-shadow: ${({ renderBoxShadow, theme }) =>
+    renderBoxShadow
+      ? `0 4px 8px -2px ${theme.colors.palette.charcoal200}`
+      : 'none'};
   position: sticky;
   top: -1px;
   margin-bottom: ${({ theme }) => theme.space.xxsmall};

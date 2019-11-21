@@ -138,6 +138,7 @@ const components: NavigationSection = {
         { title: 'Avatar', path: 'avatar' },
         { title: 'Banner', path: 'banner' },
         { title: 'Card', path: 'card' },
+        { title: 'ColorWheel', path: 'color-wheel' },
         { title: 'Divider', path: 'divider' },
         { title: 'Icon', path: 'icon' },
         { title: 'List', path: 'list' },

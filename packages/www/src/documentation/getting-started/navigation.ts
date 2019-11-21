@@ -30,8 +30,16 @@ const navigation: NavigationSection = {
   path: 'getting-started',
   children: [
     {
-      title: 'Overview',
+      title: 'Installation',
       path: '',
+    },
+    {
+      title: 'Extending',
+      path: 'extending',
+    },
+    {
+      title: 'Theme',
+      path: 'theme',
     },
     {
       title: 'Writing Components',

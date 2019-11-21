@@ -66,6 +66,7 @@ const SidebarToggleWrapper = styled.div<WrapperProps>`
   ${IconButton} {
     background: #fff;
     transform: translateX(-50%) translateY(-50%);
+    position: fixed;
   }
 `
 

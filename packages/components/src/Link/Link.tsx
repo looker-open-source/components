@@ -48,6 +48,7 @@ export const Link = styled.a<LinkProps>`
   ${typography}
   ${textDecoration}
 
+  &:focus,
   &:hover {
     text-decoration: underline;
   }

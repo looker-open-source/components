@@ -38,6 +38,7 @@ import {
   CardMedia,
   Checkbox,
   Code,
+  ColorWheel,
   Confirm,
   CustomizableTooltipAttributes,
   Dialog,
@@ -65,6 +66,7 @@ import {
   Link,
   List,
   ListItem,
+  LuminositySlider,
   Menu,
   MenuDisclosure,
   MenuGroup,
@@ -94,6 +96,7 @@ import {
   TabPanels,
   Tabs,
   Text,
+  theme,
   ToggleSwitch,
   Tooltip,
   useConfirm,
@@ -104,13 +107,14 @@ import {
 } from '@looker/components'
 import { palette } from '@looker/design-tokens'
 
-import styled from 'styled-components'
+import styled, { ThemeProvider } from 'styled-components'
 import { useState } from 'react'
 
 export const allComponents = {
   useState,
 
   styled,
+  ThemeProvider,
 
   palette,
 
@@ -127,6 +131,7 @@ export const allComponents = {
   CardMedia,
   Checkbox,
   Code,
+  ColorWheel,
   Confirm,
   CustomizableTooltipAttributes,
   Dialog,
@@ -154,6 +159,7 @@ export const allComponents = {
   Link,
   List,
   ListItem,
+  LuminositySlider,
   Menu,
   MenuDisclosure,
   MenuGroup,
@@ -183,6 +189,7 @@ export const allComponents = {
   TabPanels,
   Tabs,
   Text,
+  theme,
   ToggleSwitch,
   Tooltip,
   useConfirm,

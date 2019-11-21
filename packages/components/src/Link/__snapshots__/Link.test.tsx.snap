@@ -14,6 +14,7 @@ exports[`A Link with an id 1`] = `
   text-decoration: none;
 }
 
+.c0:focus,
 .c0:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
@@ -44,6 +45,7 @@ exports[`A default Link 1`] = `
   text-decoration: none;
 }
 
+.c0:focus,
 .c0:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
@@ -73,6 +75,7 @@ exports[`A external Link 1`] = `
   text-decoration: none;
 }
 
+.c0:focus,
 .c0:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;

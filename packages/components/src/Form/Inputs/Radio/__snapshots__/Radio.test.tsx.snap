@@ -15,8 +15,8 @@ exports[`Radio checked set to false 1`] = `
   border: solid 1px #DEE1E5;
   border-radius: 50%;
   color: transparent;
-  -webkit-transition: background-color 25ms linear,border-color 25ms linear,box-shadow 25ms linear;
-  transition: background-color 25ms linear,border-color 25ms linear,box-shadow 25ms linear;
+  -webkit-transition: background-color 25ms linear,border-color 25ms linear, box-shadow 25ms linear;
+  transition: background-color 25ms linear,border-color 25ms linear, box-shadow 25ms linear;
 }
 
 .c0 {
@@ -110,8 +110,8 @@ exports[`Radio checked set to true 1`] = `
   border: solid 1px #DEE1E5;
   border-radius: 50%;
   color: transparent;
-  -webkit-transition: background-color 25ms linear,border-color 25ms linear,box-shadow 25ms linear;
-  transition: background-color 25ms linear,border-color 25ms linear,box-shadow 25ms linear;
+  -webkit-transition: background-color 25ms linear,border-color 25ms linear, box-shadow 25ms linear;
+  transition: background-color 25ms linear,border-color 25ms linear, box-shadow 25ms linear;
 }
 
 .c0 {
@@ -205,8 +205,8 @@ exports[`Radio default 1`] = `
   border: solid 1px #DEE1E5;
   border-radius: 50%;
   color: transparent;
-  -webkit-transition: background-color 25ms linear,border-color 25ms linear,box-shadow 25ms linear;
-  transition: background-color 25ms linear,border-color 25ms linear,box-shadow 25ms linear;
+  -webkit-transition: background-color 25ms linear,border-color 25ms linear, box-shadow 25ms linear;
+  transition: background-color 25ms linear,border-color 25ms linear, box-shadow 25ms linear;
 }
 
 .c0 {
@@ -299,8 +299,8 @@ exports[`Radio should accept disabled 1`] = `
   border: solid 1px #DEE1E5;
   border-radius: 50%;
   color: transparent;
-  -webkit-transition: background-color 25ms linear,border-color 25ms linear,box-shadow 25ms linear;
-  transition: background-color 25ms linear,border-color 25ms linear,box-shadow 25ms linear;
+  -webkit-transition: background-color 25ms linear,border-color 25ms linear, box-shadow 25ms linear;
+  transition: background-color 25ms linear,border-color 25ms linear, box-shadow 25ms linear;
 }
 
 .c0 {
@@ -394,8 +394,8 @@ exports[`Radio with aria-describedby 1`] = `
   border: solid 1px #DEE1E5;
   border-radius: 50%;
   color: transparent;
-  -webkit-transition: background-color 25ms linear,border-color 25ms linear,box-shadow 25ms linear;
-  transition: background-color 25ms linear,border-color 25ms linear,box-shadow 25ms linear;
+  -webkit-transition: background-color 25ms linear,border-color 25ms linear, box-shadow 25ms linear;
+  transition: background-color 25ms linear,border-color 25ms linear, box-shadow 25ms linear;
 }
 
 .c0 {
@@ -489,8 +489,8 @@ exports[`Radio with name and id 1`] = `
   border: solid 1px #DEE1E5;
   border-radius: 50%;
   color: transparent;
-  -webkit-transition: background-color 25ms linear,border-color 25ms linear,box-shadow 25ms linear;
-  transition: background-color 25ms linear,border-color 25ms linear,box-shadow 25ms linear;
+  -webkit-transition: background-color 25ms linear,border-color 25ms linear, box-shadow 25ms linear;
+  transition: background-color 25ms linear,border-color 25ms linear, box-shadow 25ms linear;
 }
 
 .c0 {
