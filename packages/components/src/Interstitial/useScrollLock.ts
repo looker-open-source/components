@@ -24,15 +24,21 @@
 
  */
 
-import { useEffect, useRef } from 'react'
+import { useContext, useEffect } from 'react'
+import { useToggle } from '../utils/useToggle'
+import { useCallbackRef } from '../utils/useCallbackRef'
+import { InterstitialContext } from './InterstitialContext'
 
 export function useScrollLock(
-  disabled = false,
+  enabled = false,
   useCapture = false,
   allowScrollWithin?: HTMLElement
 ) {
-  const ref = useRef<HTMLDivElement>(null)
-  const scrollWithin = allowScrollWithin || ref.current
+  const [scrollWithin, callbackRef] = useCallbackRef(allowScrollWithin)
+  const { disableScrollLock, enableScrollLock } = useContext(
+    InterstitialContext
+  )
+  const { value, setOn, setOff } = useToggle(enabled)
 
   useEffect(() => {
     let scrollTop = window.scrollY
@@ -53,21 +59,28 @@ export function useScrollLock(
       ) {
         scrollTarget.scrollTop = scrollTop
       } else if (scrollTarget === document) {
-        console.log(e)
         window.scrollTo({ top: scrollTop })
       }
     }
 
-    if (disabled) {
-      window.removeEventListener('scroll', stopScroll, useCapture)
-    } else {
+    if (scrollWithin && value) {
       window.addEventListener('scroll', stopScroll, useCapture)
+      disableScrollLock && disableScrollLock()
+    } else {
+      window.removeEventListener('scroll', stopScroll, useCapture)
+      enableScrollLock && enableScrollLock()
     }
 
     return () => {
       window.removeEventListener('scroll', stopScroll, useCapture)
     }
-  }, [disabled, scrollWithin, useCapture])
+  }, [value, scrollWithin, useCapture, disableScrollLock, enableScrollLock])
 
-  return ref
+  return {
+    callbackRef,
+    disable: setOff,
+    enable: setOn,
+    enabled: value,
+    scrollWithin: scrollWithin || null,
+  }
 }

@@ -24,19 +24,6 @@
 
  */
 
-import { useState, useCallback } from 'react'
-
-export interface UseToggleReturn {
-  value: boolean
-  setOn: () => void
-  setOff: () => void
-  toggle: () => void
-}
-
-export function useToggle(initialValue = false): UseToggleReturn {
-  const [value, setValue] = useState(initialValue)
-  const setOn = useCallback(() => setValue(true), [])
-  const setOff = useCallback(() => setValue(false), [])
-  const toggle = useCallback(() => setValue(!value), [value])
-  return { setOff, setOn, toggle, value }
-}
+export * from './InterstitialContext'
+export * from './useFocusTrap'
+export * from './useScrollLock'

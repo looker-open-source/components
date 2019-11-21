@@ -24,13 +24,16 @@
 
  */
 
-import React, { CSSProperties, useCallback, useState } from 'react'
+import React, { CSSProperties } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import { CSSObject, FlattenSimpleInterpolation } from 'styled-components'
 import { CustomizableAttributes } from '@looker/design-tokens'
-import { useFocusTrap } from '../utils'
+import {
+  useFocusTrap,
+  useScrollLock,
+  InterstitialContext,
+} from '../Interstitial'
 import { ModalBackdrop } from './ModalBackdrop'
-import { ModalContext } from './ModalContext'
 import { ModalPortal } from './ModalPortal'
 
 export interface ModalSurfaceStyleProps {
@@ -100,12 +103,27 @@ export function Modal({
   onClose,
   render,
 }: ModalInternalProps) {
-  const [focusTrapEnabled, setFocusTrapEnabled] = useState(false)
-  const onDeactivate = useCallback(() => setFocusTrapEnabled(false), [])
-  const focusRef = useFocusTrap(focusTrapEnabled, onDeactivate)
+  const {
+    callbackRef: focusRef,
+    disable: disableFocusTrap,
+    enable: enableFocusTrap,
+  } = useFocusTrap(isOpen)
+  const {
+    callbackRef: scrollRef,
+    disable: disableScrollLock,
+    enable: enableScrollLock,
+  } = useScrollLock(isOpen, false)
 
   return (
-    <ModalContext.Provider value={{ closeModal: onClose, setFocusTrapEnabled }}>
+    <InterstitialContext.Provider
+      value={{
+        close: onClose,
+        disableFocusTrap,
+        disableScrollLock,
+        enableFocusTrap,
+        enableScrollLock,
+      }}
+    >
       <CSSTransition
         classNames="modal"
         mountOnEnter
@@ -124,11 +142,12 @@ export function Modal({
                   ? (backdrop as CSSObject)
                   : undefined
               }
+              ref={scrollRef}
             />
             {render(state)}
           </ModalPortal>
         )}
       </CSSTransition>
-    </ModalContext.Provider>
+    </InterstitialContext.Provider>
   )
 }
