@@ -27,7 +27,7 @@
 import 'jest-styled-components'
 import React from 'react'
 import { assertSnapshot } from '@looker/components-test-utils'
-import { ModalContext } from '../ModalContext'
+import { InterstitialContext } from '../../Interstitial'
 import { ModalFooter } from './ModalFooter'
 
 test('ModalFooter with Button', () => {
@@ -38,12 +38,12 @@ test('ModalFooter with Button', () => {
   )
 })
 
-test('ModalFooter with ModalContext', () => {
+test('ModalFooter with InterstitialContext', () => {
   assertSnapshot(
-    <ModalContext.Consumer>
-      {({ closeModal }) => (
+    <InterstitialContext.Consumer>
+      {({ close }) => (
         <ModalFooter>
-          <button onClick={closeModal}>Cancel</button>
+          <button onClick={close}>Cancel</button>
           <button
             onClick={() => {
               alert("doin' things...")
@@ -54,6 +54,6 @@ test('ModalFooter with ModalContext', () => {
           </button>
         </ModalFooter>
       )}
-    </ModalContext.Consumer>
+    </InterstitialContext.Consumer>
   )
 })

@@ -32,13 +32,13 @@ import {
   ButtonTransparent,
   GlobalStyle,
   Button,
-  useScrollLock,
+  // useScrollLock,
   getModalRoot,
   Flex,
   FlexItem,
   Paragraph,
   ModalContent,
-  ModalContext,
+  InterstitialContext,
   Popover,
   PopoverContent,
   DialogManager,
@@ -79,9 +79,9 @@ const options = [
 ]
 
 const Content: React.FC = () => {
-  const { setFocusTrapEnabled } = useContext(ModalContext)
+  const { enableFocusTrap } = useContext(InterstitialContext)
   const handleMenuClose = () => {
-    setFocusTrapEnabled && setFocusTrapEnabled(true)
+    enableFocusTrap && enableFocusTrap()
   }
 
   return (
@@ -197,7 +197,7 @@ const Content: React.FC = () => {
 
 // const PopoverReactSelect = () => {
 //   useScrollLock(false, true, getModalRoot())
-//   const { closeModal } = useContext(ModalContext)
+//   const { close } = useContext(InterstitialContext)
 //   return (
 //     <PopoverContent width={300}>
 //       <Paragraph>A React Select:</Paragraph>
@@ -207,14 +207,14 @@ const Content: React.FC = () => {
 //         isSearchable={false}
 //         captureMenuScroll={false}
 //       />
-//       <ButtonTransparent mt="medium" onClick={closeModal}>
+//       <ButtonTransparent mt="medium" onClick={close}>
 //         Cancel
 //       </ButtonTransparent>
 //     </PopoverContent>
 //   )
 // }
 const PopoverInner = () => {
-  const { closeModal } = useContext(ModalContext)
+  const { close } = useContext(InterstitialContext)
   return (
     <PopoverContent width={300}>
       <Paragraph>A React Select:</Paragraph>
@@ -309,7 +309,7 @@ const PopoverInner = () => {
       <Paragraph>Text</Paragraph>
       <Paragraph>Text</Paragraph>
       <Paragraph>Text</Paragraph>
-      <ButtonTransparent mt="medium" onClick={closeModal}>
+      <ButtonTransparent mt="medium" onClick={close}>
         Cancel
       </ButtonTransparent>
     </PopoverContent>

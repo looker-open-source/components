@@ -34,7 +34,7 @@ export function useScrollLock(
   useCapture = false,
   allowScrollWithin?: HTMLElement
 ) {
-  const [scrollWithin, callbackRef] = useCallbackRef(allowScrollWithin)
+  const [element, callbackRef] = useCallbackRef(allowScrollWithin)
   const { disableScrollLock, enableScrollLock } = useContext(
     InterstitialContext
   )
@@ -55,7 +55,7 @@ export function useScrollLock(
 
       if (
         scrollTarget instanceof Element &&
-        !(scrollWithin && scrollWithin.contains(scrollTarget))
+        !(element && element.contains(scrollTarget))
       ) {
         scrollTarget.scrollTop = scrollTop
       } else if (scrollTarget === document) {
@@ -63,7 +63,7 @@ export function useScrollLock(
       }
     }
 
-    if (scrollWithin && value) {
+    if (element && value) {
       window.addEventListener('scroll', stopScroll, useCapture)
       disableScrollLock && disableScrollLock()
     } else {
@@ -74,13 +74,13 @@ export function useScrollLock(
     return () => {
       window.removeEventListener('scroll', stopScroll, useCapture)
     }
-  }, [value, scrollWithin, useCapture, disableScrollLock, enableScrollLock])
+  }, [value, element, useCapture, disableScrollLock, enableScrollLock])
 
   return {
     callbackRef,
     disable: setOff,
+    element: element || null,
     enable: setOn,
-    enabled: value,
-    scrollWithin: scrollWithin || null,
+    isEnabled: value,
   }
 }

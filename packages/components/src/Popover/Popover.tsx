@@ -249,13 +249,13 @@ function usePopoverToggle(
       event.stopPropagation()
     }
     if (isOpen) {
-      document.addEventListener('mousedown', handleClickOutside, true)
+      document.addEventListener('click', handleClickOutside, true)
     } else {
-      document.removeEventListener('mousedown', handleClickOutside, true)
+      document.removeEventListener('click', handleClickOutside, true)
     }
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside, true)
+      document.removeEventListener('click', handleClickOutside, true)
     }
   }, [canClose, groupedPopoversRef, isOpen, setOpen, triggerRef, portalElement])
 
@@ -276,16 +276,16 @@ export function usePopover({
   ...props
 }: UsePopoverProps) {
   const {
-    scrollWithin,
-    callbackRef,
+    element: scrollElement,
+    callbackRef: scrollRef,
     enable: enableScrollLock,
-    enabled: scrollLockEnabled,
+    isEnabled: scrollLockEnabled,
     disable: disableScrollLock,
   } = useScrollLock(controlledIsOpen, true)
   const {
     callbackRef: focusRef,
     enable: enableFocusTrap,
-    enabled: focusTrapEnabled,
+    isEnabled: focusTrapEnabled,
     disable: disableFocusTrap,
   } = useFocusTrap(controlledIsOpen)
 
@@ -300,7 +300,7 @@ export function usePopover({
       isOpen: controlledIsOpen,
       setOpen: controlledSetOpen,
     },
-    scrollWithin,
+    scrollElement,
     triggerRef
   )
   const verticalSpace = useVerticalSpace(
@@ -366,7 +366,7 @@ export function usePopover({
         scrollLockEnabled,
       }}
     >
-      <ModalPortal ref={callbackRef}>
+      <ModalPortal ref={scrollRef}>
         <Popper
           positionFixed
           placement={propsPlacement}

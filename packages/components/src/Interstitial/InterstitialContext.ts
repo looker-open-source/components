@@ -24,13 +24,10 @@
 
  */
 
-import { createContext, SyntheticEvent } from 'react'
+import { createContext } from 'react'
 
-export interface ModalContextProps {
-  close?: (event?: SyntheticEvent, doCallbacks?: boolean) => void
-}
-
-export interface InterstitialContextProps extends ModalContextProps {
+export interface InterstitialContextProps {
+  close?: () => void
   enableScrollLock?: () => void
   disableScrollLock?: () => void
   enableFocusTrap?: () => void
@@ -39,8 +36,6 @@ export interface InterstitialContextProps extends ModalContextProps {
   scrollLockEnabled?: boolean
 }
 
-const modalContext: ModalContextProps = {}
 const interstitialContext: InterstitialContextProps = {}
 
-export const ModalContext = createContext(modalContext)
 export const InterstitialContext = createContext(interstitialContext)

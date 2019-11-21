@@ -69,21 +69,21 @@ Drawers can be constructed with Modal helpers to create a complex layout a fixed
           Thing Three
         </Box>
       </ModalContent>
-      <ModalContext.Consumer>
-        {({ closeModal }) => (
+      <InterstitialContext.Consumer>
+        {({ close }) => (
           <ModalFooter>
             <Button
               onClick={() => {
                 alert("Oh yeah! You're done")
-                closeModal()
+                close()
               }}
             >
               All Done
             </Button>
-            <ButtonTransparent onClick={closeModal}>Cancel</ButtonTransparent>
+            <ButtonTransparent onClick={close}>Cancel</ButtonTransparent>
           </ModalFooter>
         )}
-      </ModalContext.Consumer>
+      </InterstitialContext.Consumer>
     </React.Fragment>
   }
 >
