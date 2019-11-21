@@ -38,8 +38,7 @@ import {
   LayoutProps,
   layout,
 } from 'styled-system'
-import { useScrollLock } from '../utils'
-import { ModalContext } from './ModalContext'
+import { InterstitialContext } from '../Interstitial'
 
 export interface ModalSurfaceProps
   extends CompatibleHTMLProps<HTMLDivElement>,
@@ -58,17 +57,16 @@ export const ModalSurface: FC<ModalSurfaceProps> = ({
   className,
   ...props
 }) => {
-  const { closeModal, setFocusTrapEnabled } = useContext(ModalContext)
-  const scrollRef = useScrollLock(false, false)
+  const { close, enableFocusTrap } = useContext(InterstitialContext)
 
   useEffect(() => {
     const t = window.setTimeout(() => {
-      setFocusTrapEnabled && setFocusTrapEnabled(true)
+      enableFocusTrap && enableFocusTrap()
     }, theme.transitions.durationModerate)
     return () => {
       window.clearTimeout(t)
     }
-  }, [setFocusTrapEnabled])
+  }, [enableFocusTrap])
 
   return (
     <HotKeys
@@ -81,7 +79,7 @@ export const ModalSurface: FC<ModalSurfaceProps> = ({
       }}
       handlers={{
         CLOSE_MODAL: () => {
-          closeModal && closeModal()
+          close && close()
         },
       }}
       style={{
@@ -102,7 +100,6 @@ export const ModalSurface: FC<ModalSurfaceProps> = ({
         tabIndex={-1}
         surfaceStyle={style as CSSObject}
         {...props}
-        ref={scrollRef}
       />
     </HotKeys>
   )

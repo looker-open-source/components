@@ -45,7 +45,7 @@ import React, {
 import { HotKeys } from 'react-hotkeys'
 import { PopperArrowProps } from 'react-popper'
 import styled from 'styled-components'
-import { ModalContext } from '../Modal'
+import { InterstitialContext } from '../Interstitial'
 import { OverlaySurfaceArrow } from './OverlaySurfaceArrow'
 
 export interface SurfaceStyleProps extends BorderProps, BoxShadowProps {
@@ -77,7 +77,7 @@ export const OverlaySurface = forwardRef(
       zIndex,
       ...innerProps
     } = props
-    const { closeModal } = useContext(ModalContext)
+    const { close } = useContext(InterstitialContext)
     // workaround for react-popper -caused error:
     // `NaN` is an invalid value for the `left` css style property
     if (Number.isNaN(arrowProps.style.left as number)) {
@@ -106,7 +106,7 @@ export const OverlaySurface = forwardRef(
           }}
           handlers={{
             CLOSE_MODAL: () => {
-              closeModal && closeModal()
+              close && close()
             },
           }}
         >

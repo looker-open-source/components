@@ -28,7 +28,10 @@ import { createContext, SyntheticEvent } from 'react'
 
 export interface ModalContextProps {
   closeModal?: (event?: SyntheticEvent, doCallbacks?: boolean) => void
-  setFocusTrapEnabled?: (value: boolean) => void
+  enableScrollLock?: () => void
+  disableScrollLock?: () => void
+  enableFocusTrap?: (element: HTMLElement) => void
+  disableFocusTrap?: (element: HTMLElement) => void
 }
 
 const context: ModalContextProps = {}

@@ -113,6 +113,74 @@ const Content: React.FC = () => {
             <Paragraph>Text</Paragraph>
           </FlexItem>
           <FlexItem>
+            <Popover
+              pin
+              placement="bottom"
+              content={
+                <PopoverContent>
+                  <ButtonTransparent>Text</ButtonTransparent>
+                  <br />
+                  <ButtonTransparent>Text</ButtonTransparent>
+                  <br />
+                  <ButtonTransparent>Text</ButtonTransparent>
+                  <br />
+                  <ButtonTransparent>Text</ButtonTransparent>
+                  <br />
+                  <ButtonTransparent>Text</ButtonTransparent>
+                  <br />
+                  <ButtonTransparent>Text</ButtonTransparent>
+                  <br />
+                  <ButtonTransparent>Text</ButtonTransparent>
+                  <br />
+                  <ButtonTransparent>Text</ButtonTransparent>
+                  <br />
+                  <ButtonTransparent>Text</ButtonTransparent>
+                  <br />
+                  <ButtonTransparent>Text</ButtonTransparent>
+                  <br />
+                  <ButtonTransparent>Text</ButtonTransparent>
+                  <br />
+                  <ButtonTransparent>Text</ButtonTransparent>
+                  <br />
+                  <ButtonTransparent>Text</ButtonTransparent>
+                  <br />
+                  <ButtonTransparent>Text</ButtonTransparent>
+                  <br />
+                  <ButtonTransparent>Text</ButtonTransparent>
+                  <br />
+                  <ButtonTransparent>Text</ButtonTransparent>
+                  <br />
+                  <ButtonTransparent>Text</ButtonTransparent>
+                  <br />
+                  <ButtonTransparent>Text</ButtonTransparent>
+                  <br />
+                  <ButtonTransparent>Text</ButtonTransparent>
+                  <br />
+                  <ButtonTransparent>Text</ButtonTransparent>
+                  <br />
+                  <ButtonTransparent>Text</ButtonTransparent>
+                  <br />
+                  <ButtonTransparent>Text</ButtonTransparent>
+                  <br />
+                  <ButtonTransparent>Text</ButtonTransparent>
+                  <br />
+                  <ButtonTransparent>Text</ButtonTransparent>
+                  <br />
+                  <ButtonTransparent>Text</ButtonTransparent>
+                  <br />
+                  <ButtonTransparent>Text</ButtonTransparent>
+                  <br />
+                </PopoverContent>
+              }
+            >
+              {(onClick, ref, className) => (
+                <Button onClick={onClick} ref={ref} className={className}>
+                  Open Popover
+                </Button>
+              )}
+            </Popover>
+          </FlexItem>
+          <FlexItem>
             <Paragraph>A React Select:</Paragraph>
             <Select
               options={options}
@@ -127,18 +195,120 @@ const Content: React.FC = () => {
   )
 }
 
+// const PopoverReactSelect = () => {
+//   useScrollLock(false, true, getModalRoot())
+//   const { closeModal } = useContext(ModalContext)
+//   return (
+//     <PopoverContent width={300}>
+//       <Paragraph>A React Select:</Paragraph>
+//       <Select
+//         options={options}
+//         menuPortalTarget={getModalRoot()}
+//         isSearchable={false}
+//         captureMenuScroll={false}
+//       />
+//       <ButtonTransparent mt="medium" onClick={closeModal}>
+//         Cancel
+//       </ButtonTransparent>
+//     </PopoverContent>
+//   )
+// }
 const PopoverInner = () => {
-  useScrollLock(false, true, getModalRoot())
   const { closeModal } = useContext(ModalContext)
   return (
     <PopoverContent width={300}>
       <Paragraph>A React Select:</Paragraph>
-      <Select
-        options={options}
-        menuPortalTarget={getModalRoot()}
-        isSearchable={false}
-        captureMenuScroll={false}
-      />
+      <Popover
+        pin
+        placement="bottom"
+        content={
+          <PopoverContent>
+            <ButtonTransparent>Text</ButtonTransparent>
+            <br />
+            <ButtonTransparent>Text</ButtonTransparent>
+            <br />
+            <ButtonTransparent>Text</ButtonTransparent>
+            <br />
+            <ButtonTransparent>Text</ButtonTransparent>
+            <br />
+            <ButtonTransparent>Text</ButtonTransparent>
+            <br />
+            <ButtonTransparent>Text</ButtonTransparent>
+            <br />
+            <ButtonTransparent>Text</ButtonTransparent>
+            <br />
+            <ButtonTransparent>Text</ButtonTransparent>
+            <br />
+            <ButtonTransparent>Text</ButtonTransparent>
+            <br />
+            <ButtonTransparent>Text</ButtonTransparent>
+            <br />
+            <ButtonTransparent>Text</ButtonTransparent>
+            <br />
+            <ButtonTransparent>Text</ButtonTransparent>
+            <br />
+            <ButtonTransparent>Text</ButtonTransparent>
+            <br />
+            <ButtonTransparent>Text</ButtonTransparent>
+            <br />
+            <ButtonTransparent>Text</ButtonTransparent>
+            <br />
+            <ButtonTransparent>Text</ButtonTransparent>
+            <br />
+            <ButtonTransparent>Text</ButtonTransparent>
+            <br />
+            <ButtonTransparent>Text</ButtonTransparent>
+            <br />
+            <ButtonTransparent>Text</ButtonTransparent>
+            <br />
+            <ButtonTransparent>Text</ButtonTransparent>
+            <br />
+            <ButtonTransparent>Text</ButtonTransparent>
+            <br />
+            <ButtonTransparent>Text</ButtonTransparent>
+            <br />
+            <ButtonTransparent>Text</ButtonTransparent>
+            <br />
+            <ButtonTransparent>Text</ButtonTransparent>
+            <br />
+            <ButtonTransparent>Text</ButtonTransparent>
+            <br />
+            <ButtonTransparent>Text</ButtonTransparent>
+          </PopoverContent>
+        }
+      >
+        {(onClick, ref, className) => (
+          <Button onClick={onClick} ref={ref} className={className}>
+            Open Popover
+          </Button>
+        )}
+      </Popover>
+      <Paragraph>Text</Paragraph>
+      <Paragraph>Text</Paragraph>
+      <Paragraph>Text</Paragraph>
+      <Paragraph>Text</Paragraph>
+      <Paragraph>Text</Paragraph>
+      <Paragraph>Text</Paragraph>
+      <Paragraph>Text</Paragraph>
+      <Paragraph>Text</Paragraph>
+      <Paragraph>Text</Paragraph>
+      <Paragraph>Text</Paragraph>
+      <Paragraph>Text</Paragraph>
+      <Paragraph>Text</Paragraph>
+      <Paragraph>Text</Paragraph>
+      <Paragraph>Text</Paragraph>
+      <Paragraph>Text</Paragraph>
+      <Paragraph>Text</Paragraph>
+      <Paragraph>Text</Paragraph>
+      <Paragraph>Text</Paragraph>
+      <Paragraph>Text</Paragraph>
+      <Paragraph>Text</Paragraph>
+      <Paragraph>Text</Paragraph>
+      <Paragraph>Text</Paragraph>
+      <Paragraph>Text</Paragraph>
+      <Paragraph>Text</Paragraph>
+      <Paragraph>Text</Paragraph>
+      <Paragraph>Text</Paragraph>
       <ButtonTransparent mt="medium" onClick={closeModal}>
         Cancel
       </ButtonTransparent>
@@ -156,7 +326,7 @@ const App: React.FC = () => {
             {onClick => <Button onClick={onClick}>Open Modal</Button>}
           </DialogManager>
           <Divider my="large" />
-          <Popover disableScrollLock content={<PopoverInner />}>
+          <Popover pin placement="bottom-start" content={<PopoverInner />}>
             {(onClick, ref, className) => (
               <Button onClick={onClick} ref={ref} className={className}>
                 Open Popover

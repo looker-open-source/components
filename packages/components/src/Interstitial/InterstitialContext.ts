@@ -24,37 +24,23 @@
 
  */
 
-import createFocusTrap, { FocusTrap } from 'focus-trap'
-import { useRef, useCallback } from 'react'
+import { createContext, SyntheticEvent } from 'react'
 
-export interface UseFocusOptions {
-  escapeDeactivates?: boolean
-  clickOutsideDeactivates?: boolean
+export interface ModalContextProps {
+  close?: (event?: SyntheticEvent, doCallbacks?: boolean) => void
 }
 
-export function useFocusTrap(enabled = true, onDeactivate?: () => void) {
-  const trap = useRef<FocusTrap>()
-
-  return useCallback(
-    node => {
-      console.log(node, enabled)
-      if (!node || !enabled) {
-        trap.current && trap.current.deactivate()
-      } else if (node && enabled) {
-        const autoFocusElement = node.querySelector(
-          '[data-autofocus="true"]'
-        ) as HTMLElement
-        trap.current = createFocusTrap(node, {
-          clickOutsideDeactivates: true,
-          escapeDeactivates: false,
-          fallbackFocus: node,
-          onDeactivate,
-          ...(autoFocusElement ? { initialFocus: autoFocusElement } : {}),
-        })
-
-        trap.current.activate()
-      }
-    },
-    [enabled, onDeactivate]
-  )
+export interface InterstitialContextProps extends ModalContextProps {
+  enableScrollLock?: () => void
+  disableScrollLock?: () => void
+  enableFocusTrap?: () => void
+  disableFocusTrap?: () => void
+  focusTrapEnabled?: boolean
+  scrollLockEnabled?: boolean
 }
+
+const modalContext: ModalContextProps = {}
+const interstitialContext: InterstitialContextProps = {}
+
+export const ModalContext = createContext(modalContext)
+export const InterstitialContext = createContext(interstitialContext)
