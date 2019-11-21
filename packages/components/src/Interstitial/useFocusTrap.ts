@@ -51,6 +51,7 @@ export function useFocusTrap(enabled = true, keepFocusWithin?: HTMLElement) {
         clickOutsideDeactivates: true,
         escapeDeactivates: false,
         fallbackFocus: element,
+        onDeactivate: () => setOff(),
         ...(autoFocusElement ? { initialFocus: autoFocusElement } : {}),
       })
       disableFocusTrap && disableFocusTrap()
@@ -64,7 +65,7 @@ export function useFocusTrap(enabled = true, keepFocusWithin?: HTMLElement) {
     return () => {
       trap.current && trap.current.deactivate()
     }
-  }, [value, element, disableFocusTrap, enableFocusTrap])
+  }, [value, element, disableFocusTrap, enableFocusTrap, setOff])
 
   return {
     callbackRef,

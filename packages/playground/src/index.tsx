@@ -30,6 +30,8 @@ import { SliderDemo } from './Slider/SliderDemo'
 // want to add < m="medium" > to AvatarUser
 
 const App: React.FC = () => {
+  const modalRoot = getModalRoot()
+  modalRoot.appendChild(menuTarget)
   return (
     <ThemeProvider theme={theme}>
       <>
