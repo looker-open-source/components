@@ -33,7 +33,7 @@ import {
   assertSnapshotShallow,
 } from '@looker/components-test-utils'
 import { theme } from '@looker/design-tokens'
-import { InterstitialPortal } from '../Interstitial/InterstitialPortal'
+import { InterstitialPortal } from '../Interstitial'
 import { Modal } from './Modal'
 import { SimpleContent, SimpleContentSFC } from './modal.test.helpers'
 import { ModalBackdrop } from './ModalBackdrop'
