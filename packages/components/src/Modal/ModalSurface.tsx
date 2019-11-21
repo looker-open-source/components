@@ -57,16 +57,19 @@ export const ModalSurface: FC<ModalSurfaceProps> = ({
   className,
   ...props
 }) => {
-  const { close, enableFocusTrap } = useContext(InterstitialContext)
+  const { close, enableFocusTrap, enableScrollLock } = useContext(
+    InterstitialContext
+  )
 
   useEffect(() => {
+    enableScrollLock && enableScrollLock()
     const t = window.setTimeout(() => {
       enableFocusTrap && enableFocusTrap()
     }, theme.transitions.durationModerate)
     return () => {
       window.clearTimeout(t)
     }
-  }, [enableFocusTrap])
+  }, [enableFocusTrap, enableScrollLock])
 
   return (
     <HotKeys

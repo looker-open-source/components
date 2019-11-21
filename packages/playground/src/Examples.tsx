@@ -5,7 +5,7 @@ import {
   ButtonTransparent,
   Button,
   useScrollLock,
-  getModalRoot,
+  getInterstitialRoot,
   Flex,
   FlexItem,
   Paragraph,
@@ -20,7 +20,7 @@ import {
 export const getMenuTarget = () => {
   // Make sure #modal-root is first in DOM in order for
   // Popover click-outside behavior to work
-  getModalRoot()
+  getInterstitialRoot()
 
   const existing = document.getElementById('menu-target')
   if (existing) {

@@ -29,12 +29,12 @@ import { CSSTransition } from 'react-transition-group'
 import { CSSObject, FlattenSimpleInterpolation } from 'styled-components'
 import { CustomizableAttributes } from '@looker/design-tokens'
 import {
+  InterstitialPortal,
   useFocusTrap,
   useScrollLock,
   InterstitialContext,
 } from '../Interstitial'
 import { ModalBackdrop } from './ModalBackdrop'
-import { ModalPortal } from './ModalPortal'
 
 export interface ModalSurfaceStyleProps {
   animation?: FlattenSimpleInterpolation
@@ -132,7 +132,12 @@ export function Modal({
         timeout={{ enter: 0, exit: 250 }}
       >
         {(state: string) => (
-          <ModalPortal ref={focusRef}>
+          <InterstitialPortal
+            ref={node => {
+              focusRef(node)
+              scrollRef(node)
+            }}
+          >
             <ModalBackdrop
               className={state}
               onClick={onClose}
@@ -142,10 +147,9 @@ export function Modal({
                   ? (backdrop as CSSObject)
                   : undefined
               }
-              ref={scrollRef}
             />
             {render(state)}
-          </ModalPortal>
+          </InterstitialPortal>
         )}
       </CSSTransition>
     </InterstitialContext.Provider>

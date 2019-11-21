@@ -113,7 +113,7 @@ By default Popover cancels event bubbling when a click event triggers the closur
 
 However, where several related Popover components are grouped together, cancelling event bubbling for the "dismissal click" can make for an awkward UX. This functionality is used for items grouped to create a larger navigation component or associated controls such as a collection of filters.
 
-To create a group, assigned a reference to an containing element and then assign the reference to that element to `groupedPopoversRef` on each `Popover`. This will override the `Popover` component's usual behavior of cancelling event propogation on the clicks outside of the `ModalPortal` associated with the `Popover`. The first click outside of the `ModalPortal` will still close the `Popover` but click event propogation or otherwise surpressed and instead will be allowed to produce its usual behavior.
+To create a group, assigned a reference to an containing element and then assign the reference to that element to `groupedPopoversRef` on each `Popover`. This will override the `Popover` component's usual behavior of cancelling event propogation on the clicks outside of the `InterstitialPortal` associated with the `Popover`. The first click outside of the `InterstitialPortal` will still close the `Popover` but click event propogation or otherwise surpressed and instead will be allowed to produce its usual behavior.
 
 ```jsx
 ;() => {

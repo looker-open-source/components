@@ -52,7 +52,6 @@ export function useScrollLock(
             ? scrollTarget.scrollTop
             : window.scrollY
       }
-
       if (
         scrollTarget instanceof Element &&
         !(element && element.contains(scrollTarget))
@@ -64,15 +63,15 @@ export function useScrollLock(
     }
 
     if (element && value) {
-      window.addEventListener('scroll', stopScroll, useCapture)
+      window.addEventListener('scroll', stopScroll, true)
       disableScrollLock && disableScrollLock()
     } else {
-      window.removeEventListener('scroll', stopScroll, useCapture)
+      window.removeEventListener('scroll', stopScroll, true)
       enableScrollLock && enableScrollLock()
     }
 
     return () => {
-      window.removeEventListener('scroll', stopScroll, useCapture)
+      window.removeEventListener('scroll', stopScroll, true)
     }
   }, [value, element, useCapture, disableScrollLock, enableScrollLock])
 

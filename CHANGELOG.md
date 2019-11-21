@@ -48,7 +48,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `ColorWheel` - Optimize ColorWheel value change performance & restored `ColorWheel` documentation
 - `MenuGroup` - Fix bug where menu group headers render a drop shadow by default
 - `MenuSearch` - fixed keyboard shortcuts (up / down arrows to escape focus on input) and Improved documentation example.
-- `ModalPortal` - Fixed scrolling within a `Modal` (`Dialog` & `Drawer`)
+- `InterstitialPortal` - Fixed scrolling within a `Modal` (`Dialog` & `Drawer`)
 - Icons - SVG for `ApplicationSelect`, `ArrowChange`, `Beaker`, `BrowseTable`, `ChangeHistory`, `DimensionFill`,`Explore`, `LogoRings`, `NoteOutline`, `Notes`, `Reports`, `SqlRunner`, `User`, `UserAttributes`, `Users`, `ViewGrid`,`VisArea`, `VisBar`, `VisColumn`, `VisLine`, `VisMap`, `VisPie`, `VisScatter`, `VisSingleValue`,`VisTable` icons resized redrawn to fit on the correct icon grid.
 
 ## [0.7.5] - 2019-11-13

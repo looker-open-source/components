@@ -25,5 +25,7 @@
  */
 
 export * from './InterstitialContext'
+export * from './InterstitialPortal'
+export * from './interstitialRoot'
 export * from './useFocusTrap'
 export * from './useScrollLock'

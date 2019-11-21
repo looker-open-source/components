@@ -35,7 +35,7 @@ import React, {
 } from 'react'
 import { Popper } from 'react-popper'
 import { Box } from '../Layout'
-import { ModalPortal } from '../Modal/ModalPortal'
+import { InterstitialPortal } from '../Interstitial/InterstitialPortal'
 import { OverlaySurface } from '../Overlay/OverlaySurface'
 import { useControlWarn } from '../utils'
 import {
@@ -378,7 +378,7 @@ export function usePopover({
         scrollLockEnabled,
       }}
     >
-      <ModalPortal ref={scrollRef}>
+      <InterstitialPortal ref={scrollRef}>
         <Popper
           positionFixed
           placement={propsPlacement}
@@ -424,7 +424,7 @@ export function usePopover({
             </OverlaySurface>
           )}
         </Popper>
-      </ModalPortal>
+      </InterstitialPortal>
     </InterstitialContext.Provider>
   )
   return {
