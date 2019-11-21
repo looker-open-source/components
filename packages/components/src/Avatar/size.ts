@@ -37,13 +37,6 @@ export interface AvatarSizeProps {
   size?: AvatarSizes
 }
 
-/*
-  icon sizes:
-    small: 9.6,
-    medium: 12.8,
-    large: 16,
-*/
-
 /* eslint-disable sort-keys */
 export const avatarSize = variant({
   prop: 'size',
@@ -51,19 +44,16 @@ export const avatarSize = variant({
     small: {
       fontSize: 'xsmall',
       height: '24px',
-      icon: '9.6',
       width: '24px',
     },
     medium: {
-      fontSize: 'medium',
+      fontSize: 'xsmall',
       height: '32px',
-      icon: '12.8',
       width: '32px',
     },
     large: {
-      fontSize: 'large',
+      fontSize: 'small',
       height: '40px',
-      icon: '16',
       width: '40px',
     },
   },

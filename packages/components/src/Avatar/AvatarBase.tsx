@@ -19,24 +19,31 @@
  */
 
 import React, { FC } from 'react'
-import { color, reset, space, layout, SpaceProps } from '@looker/design-tokens'
+import {
+  color,
+  reset,
+  space,
+  layout,
+  SpaceProps,
+  typography,
+} from '@looker/design-tokens'
 import styled from 'styled-components'
 import { avatarSize, AvatarSizeProps } from './size'
 
 export interface AvatarBaseProps extends AvatarSizeProps, SpaceProps {}
 
 export const AvatarJSX: FC<AvatarBaseProps> = ({ ...props }) => {
-  // const { size = 'large' } = props
-
   return <div {...props}>{props.children}</div>
 }
 
 export const AvatarBase = styled(AvatarJSX)`
+  ${reset}
+
   ${avatarSize}
   ${color}
   ${layout}
-  ${reset}
   ${space}
+  ${typography}
 
   border-radius: 100%;
   position: relative;

@@ -31,11 +31,17 @@ import styled from 'styled-components'
 import { Icon } from '../Icon'
 import { AvatarProps } from './AvatarUser'
 import { AvatarBase } from './AvatarBase'
-import { avatarSize, AvatarSizeProps } from './size'
 
 interface AvatarIconProps extends AvatarProps {
   icon?: IconNames
 }
+
+/*
+  icon sizes:
+    small: 9.6,
+    medium: 12.8,
+    large: 16,
+*/
 
 const AvatarLayout: FC<AvatarIconProps> = ({
   color,
@@ -43,20 +49,30 @@ const AvatarLayout: FC<AvatarIconProps> = ({
   size,
   ...props
 }) => {
-  console.log('size: ', size)
+  const iconSize = () => {
+    if (size === 'small') {
+      return 9.6
+    } else if (size === 'medium') {
+      return 12.8
+    } else {
+      return 16
+    }
+  }
+
   return (
     <AvatarBase size={size} {...props}>
-      <Icon name={icon} size={size} color={color} />
+      <Icon name={icon} size={iconSize()} color={color} />
     </AvatarBase>
   )
 }
 
 export const AvatarIcon = styled(AvatarLayout)`
-  ${avatarSize}
+  ${reset}
+
   ${color}
   ${layout}
-  ${reset}
   ${space}
+
   border: solid 1px currentColor;
 `
 

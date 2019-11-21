@@ -1,51 +1,73 @@
 ---
 title: Avatar
-figma: file/Dirjx0RKbOOrLacqHq61By/Button-%26-Links?node-id=914%3A981&viewport=1741%2C951%2C1
 propsOf: Avatar
 ---
 
-`Avatar` is most often used to identify individual users or groups. To use the component there are three main ways:
-`AvatarUser` where it displays an image if user has one saved, or the user's initials.
-`AvatarIcon` where an Icon should be determined and that will be displayed. If on `Icon` is set the default pne is `users`.
+`Avatar` is most often used to identify individual users or groups. Lens offer to variations on it:
 
-Basic Uses
+- `AvatarUser` displays the profile image, if there is one availabe, or user's initials.
+- `AvatarIcon` displays icon as the avatar - icon can be changed adding `icon` flag.
+- `AvatarCombo` - comming soon.
+
+## AvatarUser
 
 ```jsx
 ;() => {
-  const ImageData = {
-    // eslint-disable-next-line @typescript-eslint/camelcase
+  const goodData = {
     avatar_url:
-      'https://gravatar.lookercdn.com/avatar/e8ebbdf1a644117215036eac62995731?s=156&d=blank',
-    // eslint-disable-next-line @typescript-eslint/camelcase
-    first_name: 'Luke',
-    id: 61,
-    // eslint-disable-next-line @typescript-eslint/camelcase
-    last_name: 'Bowerman',
+      'https://media.istockphoto.com/vectors/noisy-glitch-pixelated-seamless-pattern-vector-id1051777344',
+    first_name: 'John',
+    id: 1,
+    last_name: 'Smith',
   }
 
-  const noImageData = {
-    // eslint-disable-next-line @typescript-eslint/camelcase
+  const noImage = {
     avatar_url:
       'https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank',
-    // eslint-disable-next-line @typescript-eslint/camelcase
-    first_name: 'Luke',
-    id: 61,
-    // eslint-disable-next-line @typescript-eslint/camelcase
-    last_name: 'Bowerman',
+    first_name: 'John',
+    id: 2,
+    last_name: 'Smith',
   }
 
-  <AvatarUser user={goodData} />
-  <AvatarUser user={bedData} />
-  <AvatarIcon  />
-  <AvatarIcon  icon="Beaker" />
+  return (
+    <>
+      <AvatarUser m="medium" user={goodData} />
+      <AvatarUser m="medium" user={noImage} />
+    </>
+  )
 }
 ```
 
-Avatar can be set as small medium or large, large being the default. If using AvatarUser with intials on size small there will be only the first initail displayed.
+## AvatarIcon
 
 ```jsx
-<AvatarIcon  size="small" />
-<AvatarIcon  size="medium" />
-<AvatarIcon />
-<AvatarUser user={bedData} size="small" />
+<AvatarIcon m="medium" />
+<AvatarIcon m="medium" icon="Code" />
+```
+
+- `size`: small || medium || large - large being the default.
+  - If `AvatarUser` has size set to small there will be only the first initail displayed.
+- `color`: difault value is `#4F2ABA` but that can be changed by the flag color.
+
+```jsx
+;() => {
+  const data = {
+    avatar_url:
+      'https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank',
+    first_name: 'John',
+    id: 3,
+    last_name: 'Smith',
+  }
+
+  return (
+    <>
+      <AvatarIcon m="medium" size="small" />
+      <AvatarIcon m="medium" icon="LogoRings" color="#FF4500" size="medium" />
+      <AvatarIcon m="medium" icon="Code" color="#6495ED" />
+      <AvatarUser m="medium" user={data} />
+      <AvatarUser m="medium" user={data} size="medium" />
+      <AvatarUser m="medium" user={data} size="small" />
+    </>
+  )
+}
 ```

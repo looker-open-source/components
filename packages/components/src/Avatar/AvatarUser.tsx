@@ -21,10 +21,9 @@
 import React, { FC } from 'react'
 import { color, layout, reset, space, SpaceProps } from '@looker/design-tokens'
 import styled from 'styled-components'
-import { AvatarBase } from './AvatarBase'
-import { avatarSize, AvatarSizeProps } from './size'
+import { AvatarBase, AvatarBaseProps } from './AvatarBase'
 
-export interface AvatarProps extends AvatarSizeProps, SpaceProps {
+export interface AvatarProps extends AvatarBaseProps, SpaceProps {
   /**
    *  @default `palette.purple500`
    **/
@@ -79,11 +78,12 @@ export const AvatarUser = styled(AvatarLayout).attrs(
     bordercolor: props.color,
   })
 )`
-  ${avatarSize}
+  ${reset}
+
   ${color}
   ${layout}
-  ${reset}
   ${space}
+
   border: solid 1px currentColor;
 `
 

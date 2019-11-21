@@ -25,6 +25,8 @@
  */
 
 import {
+  AvatarIcon,
+  AvatarUser,
   Banner,
   Box,
   Button,
@@ -114,6 +116,8 @@ export const allComponents = {
 
   palette,
 
+  AvatarIcon,
+  AvatarUser,
   Banner,
   Box,
   Button,
