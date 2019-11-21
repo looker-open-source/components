@@ -30,11 +30,6 @@ import { useToggle } from '../utils/useToggle'
 import { useCallbackRef } from '../utils/useCallbackRef'
 import { InterstitialContext } from './InterstitialContext'
 
-export interface UseFocusOptions {
-  escapeDeactivates?: boolean
-  clickOutsideDeactivates?: boolean
-}
-
 export function useFocusTrap(enabled = true, keepFocusWithin?: HTMLElement) {
   const trap = useRef<FocusTrap>()
 
