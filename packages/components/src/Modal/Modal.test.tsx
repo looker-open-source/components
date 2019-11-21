@@ -33,10 +33,10 @@ import {
   assertSnapshotShallow,
 } from '@looker/components-test-utils'
 import { theme } from '@looker/design-tokens'
+import { InterstitialPortal } from '../Interstitial/InterstitialPortal'
 import { Modal } from './Modal'
 import { SimpleContent, SimpleContentSFC } from './modal.test.helpers'
 import { ModalBackdrop } from './ModalBackdrop'
-import { ModalPortal } from './ModalPortal'
 
 const simpleContentFactory = () => <SimpleContentSFC />
 
@@ -64,7 +64,7 @@ describe('Modal', () => {
       </ThemeProvider>
     )
 
-    expect(modal.find(ModalPortal).exists()).toEqual(false)
+    expect(modal.find(InterstitialPortal).exists()).toEqual(false)
     expect(modal.contains(SimpleContent)).toBeFalsy()
   })
 
@@ -75,7 +75,7 @@ describe('Modal', () => {
       </ThemeProvider>
     )
 
-    expect(modal.find(ModalPortal).exists()).toEqual(true)
+    expect(modal.find(InterstitialPortal).exists()).toEqual(true)
     expect(modal.contains(SimpleContent)).toBeTruthy()
   })
 

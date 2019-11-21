@@ -33,7 +33,7 @@ import {
 import { ModalFooter, ModalHeader } from '../Layout'
 import { SimpleContent } from '../modal.test.helpers'
 import { ModalBackdrop } from '../ModalBackdrop'
-import { ModalPortal } from '../ModalPortal'
+import { InterstitialPortal } from '../../Interstitial/InterstitialPortal'
 import { ModalSurface } from '../ModalSurface'
 import { Dialog } from './Dialog'
 import { DialogManager } from './DialogManager'
@@ -73,14 +73,14 @@ describe('Click events', () => {
     )
 
     // Drawer closed
-    expect(dialog.find(ModalPortal).exists()).toBeFalsy()
+    expect(dialog.find(InterstitialPortal).exists()).toBeFalsy()
 
     const button = dialog.find('a')
     expect(button.exists()).toBeTruthy()
     button.simulate('click') // Click to open
 
     // Drawer open
-    expect(dialog.find(ModalPortal).exists()).toBeTruthy()
+    expect(dialog.find(InterstitialPortal).exists()).toBeTruthy()
 
     const backdrop = dialog.find(ModalBackdrop)
     expect(backdrop.exists()).toBeTruthy()
@@ -95,13 +95,13 @@ test('Dialog opens on click', () => {
     </DialogManager>
   )
 
-  expect(dialog.find(ModalPortal).exists()).toBeFalsy()
+  expect(dialog.find(InterstitialPortal).exists()).toBeFalsy()
 
   const button = dialog.find('a')
   expect(button.exists()).toBeTruthy()
   button.simulate('click')
 
-  expect(dialog.find(ModalPortal).exists()).toBeTruthy()
+  expect(dialog.find(InterstitialPortal).exists()).toBeTruthy()
 
   const backdrop = dialog.find(ModalBackdrop)
   expect(backdrop.exists()).toEqual(true)

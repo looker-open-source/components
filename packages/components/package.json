@@ -22,7 +22,7 @@
     "build:esm": "ttsc --project tsconfig.build.json --module es2015 --target es5 --outDir dist/esm",
     "build:cjs": "ttsc --project tsconfig.build.json --module commonjs --target es5 --outDir dist/cjs",
     "clean": "rm -Rf ./dist",
-    "develop": "ttsc --project tsconfig.build.json --watch --module es2015 --target es5 --outDir dist/esm"
+    "develop": "ttsc --project tsconfig.build.json --watch --module commonjs --target es5 --outDir dist/cjs"
   },
   "dependencies": {
     "@looker/design-tokens": "^0.7.4",
