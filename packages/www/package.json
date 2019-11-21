@@ -39,7 +39,7 @@
     "@typescript-eslint/parser": "^2.8.0",
     "d3-hsv": "^0.1.0",
     "eslint": "^6.6.0",
-    "eslint-loader": "^3.0.0",
+    "eslint-loader": "^3.0.2",
     "gh-pages": "^2.1.1",
     "react-transition-group": "4.3.0",
     "scroll-behavior": "^0.9.10",
