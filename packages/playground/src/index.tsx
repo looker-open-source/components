@@ -32,7 +32,7 @@ import {
   ButtonTransparent,
   GlobalStyle,
   Button,
-  // useScrollLock,
+  useScrollLock,
   getModalRoot,
   Flex,
   FlexItem,
@@ -78,10 +78,17 @@ const options = [
   { label: '27', value: '27' },
 ]
 
+const menuTarget = document.createElement('div')
 const Content: React.FC = () => {
-  const { enableFocusTrap } = useContext(InterstitialContext)
+  const { enable, disable } = useScrollLock(false, true, menuTarget)
+  const { disableScrollLock, enableFocusTrap } = useContext(InterstitialContext)
   const handleMenuClose = () => {
     enableFocusTrap && enableFocusTrap()
+    disable()
+  }
+  const handleMenuOpen = () => {
+    disableScrollLock && disableScrollLock()
+    enable()
   }
 
   return (
@@ -184,9 +191,10 @@ const Content: React.FC = () => {
             <Paragraph>A React Select:</Paragraph>
             <Select
               options={options}
-              menuPortalTarget={getModalRoot()}
+              menuPortalTarget={menuTarget}
               isSearchable={false}
               onMenuClose={handleMenuClose}
+              onMenuOpen={handleMenuOpen}
             />
           </FlexItem>
         </Flex>
@@ -317,6 +325,8 @@ const PopoverInner = () => {
 }
 
 const App: React.FC = () => {
+  const modalRoot = getModalRoot()
+  modalRoot.appendChild(menuTarget)
   return (
     <ThemeProvider theme={theme}>
       <>
