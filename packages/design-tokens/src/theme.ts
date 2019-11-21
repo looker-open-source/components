@@ -50,6 +50,8 @@ import {
   fontFamilies,
   fontSizes,
   fontWeights,
+  legacySemanticColors,
+  legacyPalette,
   lineHeights,
   palette,
   radii,
@@ -81,6 +83,21 @@ export interface Theme {
 export const theme: Theme = {
   breakpoints,
   colors: { palette, semanticColors },
+  easings,
+  fontSizes,
+  fontWeights,
+  fonts: fontFamilies,
+  lineHeights,
+  radii,
+  reset: defaultReset,
+  shadows,
+  space,
+  transitions,
+}
+
+export const legacyTheme: Theme = {
+  breakpoints,
+  colors: { palette: legacyPalette, semanticColors: legacySemanticColors },
   easings,
   fontSizes,
   fontWeights,

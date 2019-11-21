@@ -1139,12 +1139,12 @@ exports[`IconButton outline 1`] = `
 .c2:hover,
 .c2:focus,
 .c2.hover {
-  border-color: #64518A;
+  border-color: #6C43E0;
 }
 
 .c2:active,
 .c2.active {
-  border-color: #64518A;
+  border-color: #6C43E0;
 }
 
 .c2[disabled]:hover,
