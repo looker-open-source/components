@@ -26,358 +26,54 @@
 
 import React, { useContext } from 'react'
 import ReactDOM from 'react-dom'
-import Select from 'react-select'
 import {
   Box,
-  ButtonTransparent,
-  GlobalStyle,
   Button,
-  useScrollLock,
-  getModalRoot,
-  Flex,
-  FlexItem,
-  Paragraph,
-  ModalContent,
-  InterstitialContext,
+  GlobalStyle,
   Popover,
-  PopoverContent,
   DialogManager,
   Divider,
-  ModalHeader,
 } from '@looker/components'
 import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
-
-const options = [
-  { label: '1', value: '1' },
-  { label: '2', value: '2' },
-  { label: '3', value: '3' },
-  { label: '4', value: '4' },
-  { label: '5', value: '5' },
-  { label: '6', value: '6' },
-  { label: '7', value: '7' },
-  { label: '8', value: '8' },
-  { label: '9', value: '9' },
-  { label: '10', value: '10' },
-  { label: '11', value: '11' },
-  { label: '12', value: '12' },
-  { label: '13', value: '13' },
-  { label: '14', value: '14' },
-  { label: '15', value: '15' },
-  { label: '16', value: '16' },
-  { label: '17', value: '17' },
-  { label: '18', value: '18' },
-  { label: '19', value: '19' },
-  { label: '20', value: '20' },
-  { label: '21', value: '21' },
-  { label: '22', value: '22' },
-  { label: '23', value: '23' },
-  { label: '24', value: '24' },
-  { label: '25', value: '25' },
-  { label: '26', value: '26' },
-  { label: '27', value: '27' },
-]
-
-const menuTarget = document.createElement('div')
-const Content: React.FC = () => {
-  const { enable, disable } = useScrollLock(false, true, menuTarget)
-  const { disableScrollLock, enableFocusTrap } = useContext(InterstitialContext)
-  const handleMenuClose = () => {
-    enableFocusTrap && enableFocusTrap()
-    disable()
-  }
-  const handleMenuOpen = () => {
-    disableScrollLock && disableScrollLock()
-    enable()
-  }
-
-  return (
-    <>
-      <ModalHeader>A React Select inside a Dialog</ModalHeader>
-      <ModalContent width={500}>
-        <Flex>
-          <FlexItem flex="1">
-            <Paragraph>Text</Paragraph>
-            <Paragraph>Text</Paragraph>
-            <Paragraph>Text</Paragraph>
-            <Paragraph>Text</Paragraph>
-            <Paragraph>Text</Paragraph>
-            <Paragraph>Text</Paragraph>
-            <Paragraph>Text</Paragraph>
-            <Paragraph>Text</Paragraph>
-            <Paragraph>Text</Paragraph>
-            <Paragraph>Text</Paragraph>
-            <Paragraph>Text</Paragraph>
-            <Paragraph>Text</Paragraph>
-            <Paragraph>Text</Paragraph>
-            <Paragraph>Text</Paragraph>
-            <Paragraph>Text</Paragraph>
-            <Paragraph>Text</Paragraph>
-            <Paragraph>Text</Paragraph>
-            <Paragraph>Text</Paragraph>
-            <Paragraph>Text</Paragraph>
-            <Paragraph>Text</Paragraph>
-            <Paragraph>Text</Paragraph>
-          </FlexItem>
-          <FlexItem>
-            <Popover
-              pin
-              placement="bottom"
-              content={
-                <PopoverContent>
-                  <ButtonTransparent>Text</ButtonTransparent>
-                  <br />
-                  <ButtonTransparent>Text</ButtonTransparent>
-                  <br />
-                  <ButtonTransparent>Text</ButtonTransparent>
-                  <br />
-                  <ButtonTransparent>Text</ButtonTransparent>
-                  <br />
-                  <ButtonTransparent>Text</ButtonTransparent>
-                  <br />
-                  <ButtonTransparent>Text</ButtonTransparent>
-                  <br />
-                  <ButtonTransparent>Text</ButtonTransparent>
-                  <br />
-                  <ButtonTransparent>Text</ButtonTransparent>
-                  <br />
-                  <ButtonTransparent>Text</ButtonTransparent>
-                  <br />
-                  <ButtonTransparent>Text</ButtonTransparent>
-                  <br />
-                  <ButtonTransparent>Text</ButtonTransparent>
-                  <br />
-                  <ButtonTransparent>Text</ButtonTransparent>
-                  <br />
-                  <ButtonTransparent>Text</ButtonTransparent>
-                  <br />
-                  <ButtonTransparent>Text</ButtonTransparent>
-                  <br />
-                  <ButtonTransparent>Text</ButtonTransparent>
-                  <br />
-                  <ButtonTransparent>Text</ButtonTransparent>
-                  <br />
-                  <ButtonTransparent>Text</ButtonTransparent>
-                  <br />
-                  <ButtonTransparent>Text</ButtonTransparent>
-                  <br />
-                  <ButtonTransparent>Text</ButtonTransparent>
-                  <br />
-                  <ButtonTransparent>Text</ButtonTransparent>
-                  <br />
-                  <ButtonTransparent>Text</ButtonTransparent>
-                  <br />
-                  <ButtonTransparent>Text</ButtonTransparent>
-                  <br />
-                  <ButtonTransparent>Text</ButtonTransparent>
-                  <br />
-                  <ButtonTransparent>Text</ButtonTransparent>
-                  <br />
-                  <ButtonTransparent>Text</ButtonTransparent>
-                  <br />
-                  <ButtonTransparent>Text</ButtonTransparent>
-                  <br />
-                </PopoverContent>
-              }
-            >
-              {(onClick, ref, className) => (
-                <Button onClick={onClick} ref={ref} className={className}>
-                  Open Popover
-                </Button>
-              )}
-            </Popover>
-          </FlexItem>
-          <FlexItem>
-            <Paragraph>A React Select:</Paragraph>
-            <Select
-              options={options}
-              menuPortalTarget={menuTarget}
-              isSearchable={false}
-              onMenuClose={handleMenuClose}
-              onMenuOpen={handleMenuOpen}
-            />
-          </FlexItem>
-        </Flex>
-      </ModalContent>
-    </>
-  )
-}
-
-// const PopoverReactSelect = () => {
-//   useScrollLock(false, true, getModalRoot())
-//   const { close } = useContext(InterstitialContext)
-//   return (
-//     <PopoverContent width={300}>
-//       <Paragraph>A React Select:</Paragraph>
-//       <Select
-//         options={options}
-//         menuPortalTarget={getModalRoot()}
-//         isSearchable={false}
-//         captureMenuScroll={false}
-//       />
-//       <ButtonTransparent mt="medium" onClick={close}>
-//         Cancel
-//       </ButtonTransparent>
-//     </PopoverContent>
-//   )
-// }
-const PopoverInner = () => {
-  const { close } = useContext(InterstitialContext)
-  return (
-    <PopoverContent width={300}>
-      <Paragraph>A React Select:</Paragraph>
-      <Popover
-        pin
-        placement="bottom"
-        content={
-          <PopoverContent>
-            <ButtonTransparent>Text</ButtonTransparent>
-            <br />
-            <ButtonTransparent>Text</ButtonTransparent>
-            <br />
-            <ButtonTransparent>Text</ButtonTransparent>
-            <br />
-            <ButtonTransparent>Text</ButtonTransparent>
-            <br />
-            <ButtonTransparent>Text</ButtonTransparent>
-            <br />
-            <ButtonTransparent>Text</ButtonTransparent>
-            <br />
-            <ButtonTransparent>Text</ButtonTransparent>
-            <br />
-            <ButtonTransparent>Text</ButtonTransparent>
-            <br />
-            <ButtonTransparent>Text</ButtonTransparent>
-            <br />
-            <ButtonTransparent>Text</ButtonTransparent>
-            <br />
-            <ButtonTransparent>Text</ButtonTransparent>
-            <br />
-            <ButtonTransparent>Text</ButtonTransparent>
-            <br />
-            <ButtonTransparent>Text</ButtonTransparent>
-            <br />
-            <ButtonTransparent>Text</ButtonTransparent>
-            <br />
-            <ButtonTransparent>Text</ButtonTransparent>
-            <br />
-            <ButtonTransparent>Text</ButtonTransparent>
-            <br />
-            <ButtonTransparent>Text</ButtonTransparent>
-            <br />
-            <ButtonTransparent>Text</ButtonTransparent>
-            <br />
-            <ButtonTransparent>Text</ButtonTransparent>
-            <br />
-            <ButtonTransparent>Text</ButtonTransparent>
-            <br />
-            <ButtonTransparent>Text</ButtonTransparent>
-            <br />
-            <ButtonTransparent>Text</ButtonTransparent>
-            <br />
-            <ButtonTransparent>Text</ButtonTransparent>
-            <br />
-            <ButtonTransparent>Text</ButtonTransparent>
-            <br />
-            <ButtonTransparent>Text</ButtonTransparent>
-            <br />
-            <ButtonTransparent>Text</ButtonTransparent>
-          </PopoverContent>
-        }
-      >
-        {(onClick, ref, className) => (
-          <Button onClick={onClick} ref={ref} className={className}>
-            Open Popover
-          </Button>
-        )}
-      </Popover>
-      <Paragraph>Text</Paragraph>
-      <Paragraph>Text</Paragraph>
-      <Paragraph>Text</Paragraph>
-      <Paragraph>Text</Paragraph>
-      <Paragraph>Text</Paragraph>
-      <Paragraph>Text</Paragraph>
-      <Paragraph>Text</Paragraph>
-      <Paragraph>Text</Paragraph>
-      <Paragraph>Text</Paragraph>
-      <Paragraph>Text</Paragraph>
-      <Paragraph>Text</Paragraph>
-      <Paragraph>Text</Paragraph>
-      <Paragraph>Text</Paragraph>
-      <Paragraph>Text</Paragraph>
-      <Paragraph>Text</Paragraph>
-      <Paragraph>Text</Paragraph>
-      <Paragraph>Text</Paragraph>
-      <Paragraph>Text</Paragraph>
-      <Paragraph>Text</Paragraph>
-      <Paragraph>Text</Paragraph>
-      <Paragraph>Text</Paragraph>
-      <Paragraph>Text</Paragraph>
-      <Paragraph>Text</Paragraph>
-      <Paragraph>Text</Paragraph>
-      <Paragraph>Text</Paragraph>
-      <Paragraph>Text</Paragraph>
-      <ButtonTransparent mt="medium" onClick={close}>
-        Cancel
-      </ButtonTransparent>
-    </PopoverContent>
-  )
-}
+import {
+  LongText,
+  ModalInner,
+  PopoverInner,
+  PopoverReactSelect,
+} from './Examples'
 
 const App: React.FC = () => {
-  const modalRoot = getModalRoot()
-  modalRoot.appendChild(menuTarget)
   return (
     <ThemeProvider theme={theme}>
       <>
         <GlobalStyle />
         <Box padding="xlarge">
-          <DialogManager content={<Content />}>
+          <DialogManager content={<ModalInner />}>
             {onClick => <Button onClick={onClick}>Open Modal</Button>}
           </DialogManager>
           <Divider my="large" />
           <Popover pin placement="bottom-start" content={<PopoverInner />}>
             {(onClick, ref, className) => (
               <Button onClick={onClick} ref={ref} className={className}>
-                Open Popover
+                Open Nested Popover
               </Button>
             )}
           </Popover>
-          <Paragraph>Text</Paragraph>
-          <Paragraph>Text</Paragraph>
-          <Paragraph>Text</Paragraph>
-          <Paragraph>Text</Paragraph>
-          <Paragraph>Text</Paragraph>
-          <Paragraph>Text</Paragraph>
-          <Paragraph>Text</Paragraph>
-          <Paragraph>Text</Paragraph>
-          <Paragraph>Text</Paragraph>
-          <Paragraph>Text</Paragraph>
-          <Paragraph>Text</Paragraph>
-          <Paragraph>Text</Paragraph>
-          <Paragraph>Text</Paragraph>
-          <Paragraph>Text</Paragraph>
-          <Paragraph>Text</Paragraph>
-          <Paragraph>Text</Paragraph>
-          <Paragraph>Text</Paragraph>
-          <Paragraph>Text</Paragraph>
-          <Paragraph>Text</Paragraph>
-          <Paragraph>Text</Paragraph>
-          <Paragraph>Text</Paragraph>
-          <Paragraph>Text</Paragraph>
-          <Paragraph>Text</Paragraph>
-          <Paragraph>Text</Paragraph>
-          <Paragraph>Text</Paragraph>
-          <Paragraph>Text</Paragraph>
-          <Paragraph>Text</Paragraph>
-          <Paragraph>Text</Paragraph>
-          <Paragraph>Text</Paragraph>
-          <Paragraph>Text</Paragraph>
-          <Paragraph>Text</Paragraph>
-          <Paragraph>Text</Paragraph>
-          <Paragraph>Text</Paragraph>
-          <Paragraph>Text</Paragraph>
-          <Paragraph>Text</Paragraph>
+          <Divider my="large" />
+          <Popover
+            pin
+            placement="bottom-start"
+            content={<PopoverReactSelect />}
+          >
+            {(onClick, ref, className) => (
+              <Button onClick={onClick} ref={ref} className={className}>
+                Open React Select Popover
+              </Button>
+            )}
+          </Popover>
+          <Divider my="large" />
+          <LongText />
         </Box>
       </>
     </ThemeProvider>
