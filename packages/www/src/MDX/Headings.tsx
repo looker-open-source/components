@@ -36,7 +36,7 @@ const StyledHeading = styled(Heading).attrs((props: HeadingProps) => {
   return {
     mb: 'medium',
     lineHeight: 'xlarge',
-    fontWeight: 'normal',
+    fontWeight: 'semiBold',
     id: generateHeadingAnchor(props.children),
   }
 })``

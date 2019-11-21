@@ -37,7 +37,10 @@ export interface ModalPortalProps {
 
 export const ModalPortal: FC<ModalPortalProps> = ({ portalRef, children }) => {
   const el = useRef(document.createElement('div'))
-  useScrollLock(false, portalRef)
+  const ref = useRef<HTMLDivElement>(null)
+  const refToUse = portalRef || ref
+
+  useScrollLock(refToUse)
 
   useEffect(() => {
     const modalRoot = getModalRoot()
@@ -52,7 +55,7 @@ export const ModalPortal: FC<ModalPortalProps> = ({ portalRef, children }) => {
   }, [el])
 
   const content = (
-    <InvisiBox ref={portalRef} zIndex={CustomizableModalAttributes.zIndex}>
+    <InvisiBox ref={refToUse} zIndex={CustomizableModalAttributes.zIndex}>
       {children}
     </InvisiBox>
   )

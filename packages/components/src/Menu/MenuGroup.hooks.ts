@@ -27,7 +27,7 @@
 import { RefObject, useEffect, useState } from 'react'
 
 export const useElementVisibility = (ref: RefObject<HTMLElement>): boolean => {
-  const [isVisible, setIsVisible] = useState(false)
+  const [isVisible, setIsVisible] = useState(true)
 
   const observer =
     typeof IntersectionObserver === 'undefined'
@@ -40,6 +40,7 @@ export const useElementVisibility = (ref: RefObject<HTMLElement>): boolean => {
             threshold: [0, 1],
           }
         )
+
   useEffect(() => {
     const refCurrent = ref.current
     if (refCurrent) {

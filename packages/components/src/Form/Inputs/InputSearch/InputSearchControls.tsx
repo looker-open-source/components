@@ -25,6 +25,7 @@
  */
 
 import React, { FC } from 'react'
+import styled from 'styled-components'
 import { palette } from '@looker/design-tokens'
 import { Box } from '../../../Layout/Box'
 import { IconButton } from '../../../Button'
@@ -32,20 +33,23 @@ import { Text } from '../../../Text'
 
 export interface InputSearchControlsProps {
   summary?: string
+  showClear: boolean
   onClear: () => void
 }
 
 export const InputSearchControls: FC<InputSearchControlsProps> = ({
   onClear,
+  showClear,
   summary,
 }) => {
   const clear = (
-    <IconButton
+    <FadeIconButton
       color="neutral"
       size="xsmall"
       icon="Close"
       pr="xsmall"
       label="Clear Filter"
+      show={showClear}
       onClick={onClear}
     />
   )
@@ -77,3 +81,12 @@ export const InputSearchControls: FC<InputSearchControlsProps> = ({
     </Box>
   )
 }
+
+interface FaceIconButtonProps {
+  show: boolean
+}
+const FadeIconButton = styled(IconButton)<FaceIconButtonProps>`
+  opacity: ${props => (props.show ? 1 : 0)};
+  transition: ${props =>
+    `opacity ${props.theme.transitions.durationModerate} ${props.theme.easings.ease};`};
+`

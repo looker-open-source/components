@@ -24,22 +24,20 @@
 
  */
 
-import React, { CSSProperties, FC, ReactNode, RefObject, useRef } from 'react'
+import React, { CSSProperties, FC, ReactNode } from 'react'
 import styled from 'styled-components'
 import {
   color,
-  palette,
   CompatibleHTMLProps,
   reset,
   SpaceProps,
   space,
 } from '@looker/design-tokens'
 import { BackgroundColorProps } from 'styled-system'
-import { Heading, HeadingProps } from '../Text/Heading'
+import { HeadingProps } from '../Text/Heading'
 import { List } from '../List'
 
 import { MenuGroupLabel } from './MenuGroupLabel'
-import { useElementVisibility } from './MenuGroup.hooks'
 import { MenuItemCustomization } from './MenuItem'
 import { cloneMenuListChildren } from './MenuList'
 
@@ -67,55 +65,31 @@ const MenuGroupInternal: FC<MenuGroupWithChildrenProps> = ({
 }) => {
   const { customizationProps, compact, ...boxProps } = props
 
-  const labelShimRef: RefObject<any> = useRef()
-  const labelVisible = useElementVisibility(labelShimRef)
-
-  const labelComponent = label && (
-    <MenuGroupLabel
-      backgroundColor={customizationProps && customizationProps.bg}
-      boxShadow={
-        labelVisible ? 'none' : `0 4px 8px -2px ${palette.charcoal200}`
-      }
-    >
-      {/*
-        NOTE: This div is required for box-shadow to appear when the heading
-        is sticky to the top of the container. Using IntersectionObserver,
-        we detect when this 0-height element disappears from the page and then
-        render the shadow.
-      */}
-      <div ref={labelShimRef} style={{ height: '0' }} />
-      <Heading
-        fontSize="small"
-        as="h2"
-        px="medium"
-        py="xsmall"
-        fontWeight="semiBold"
-        {...labelProps}
-        style={{ zIndex: 2, ...labelStyles }}
-      >
-        {label}
-      </Heading>
-    </MenuGroupLabel>
-  )
-
   const clonedChildren = cloneMenuListChildren(children as JSX.Element[], {
     compact,
     customizationProps,
   })
 
   return (
-    <Style
+    <MenuGroupWrapper
       {...boxProps}
       backgroundColor={customizationProps && customizationProps.bg}
       py="small"
     >
-      {labelComponent}
+      {label && (
+        <MenuGroupLabel
+          backgroundColor={customizationProps && customizationProps.bg}
+          labelStyles={labelStyles}
+          labelContent={label}
+          {...labelProps}
+        />
+      )}
       <List nomarker>{clonedChildren}</List>
-    </Style>
+    </MenuGroupWrapper>
   )
 }
 
-const Style = styled.li<MenuGroupProps>`
+const MenuGroupWrapper = styled.li<MenuGroupProps>`
   ${reset}
   ${space}
   ${color}

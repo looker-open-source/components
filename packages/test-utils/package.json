@@ -1,9 +1,10 @@
 {
   "name": "@looker/components-test-utils",
   "license": "MIT",
-  "version": "0.7.2",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "version": "0.7.4",
+  "main": "dist/cjs/index.js",
+  "types": "dist/types/index.d.ts",
+  "module": "dist/esm/index.js",
   "files": [
     "dist"
   ],
@@ -16,20 +17,25 @@
     "access": "public"
   },
   "scripts": {
-    "build:declaration": "tsc --project tsconfig.build.json",
-    "build:es": "BABEL_ENV=build babel src --root-mode upward --out-dir dist --source-maps --extensions .ts,.tsx --delete-dir-on-start --no-comments"
+    "build:all": "yarn clean && yarn run build:es2015 && yarn run build:esm && yarn run build:cjs",
+    "build:es2015": "ttsc --project tsconfig.build.json --module es2015 --target es2015 --outDir dist/es2015",
+    "build:esm": "ttsc --project tsconfig.build.json --module es2015 --target es5 --outDir dist/esm",
+    "build:cjs": "ttsc --project tsconfig.build.json --module commonjs --target es5 --outDir dist/cjs",
+    "clean": "rm -Rf ./dist",
+    "declaration": "ttsc --project tsconfig.json",
+    "develop": "yarn build:es --watch --verbose & yarn declaration --watch"
   },
   "dependencies": {
-    "@looker/design-tokens": "^0.7.2",
+    "@looker/design-tokens": "^0.7.4",
     "@testing-library/react": "^9.3.2",
-    "enzyme": "^3.9.0",
-    "jest-styled-components": "^6.3.3",
-    "react-test-renderer": "^16.9.0",
+    "enzyme": "^3.10.0",
+    "jest-styled-components": "^6.3.4",
+    "react-test-renderer": "^16.12.0",
     "styled-components": "^4.4.1"
   },
   "devDependencies": {
-    "@types/react": "^16.9.2",
-    "@types/react-test-renderer": "^16.9.0",
+    "@types/react": "^16.9.11",
+    "@types/react-test-renderer": "^16.9.1",
     "@types/styled-components": "^4.4.0",
     "react": "^16.11.0"
   },
