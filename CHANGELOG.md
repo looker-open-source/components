@@ -15,6 +15,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Update theme object to use more vibrant colors by default.
 - Improved documentation around installation of NPM package
+- `ModalContext`, `ModalPortal`, `getModalRoot`, and `CustomizableModalAttributes` renamed to `IntersitialContext`, `IntersitialPortal`, `getIntersitialRoot`, and `CustomizableIntersitialAttributes`, respectively.
+- Focus trap and scroll lock methods added to `InterstitialContext`
 
 ### Fixed
 
@@ -22,6 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Respects `width` property as expected
   - Removed confusing `maxWidth` property
   - `Link` color within `Tooltip` is set to `blue200` to ensure readability.
+- `useFocusTrap` and `useScrollLock` behavior when `Popover` is nested in a `Modal` or another `Popover`.
 
 ## [0.7.6] - 2019-11-18
 
