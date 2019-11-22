@@ -52,53 +52,6 @@ const {
   white,
 } = palette
 
-export const semanticColors: SemanticColors = {
-  danger: {
-    altText: red400,
-    borderColor: charcoal300,
-    dark: red600,
-    darker: red700,
-    light: red100,
-    lighter: red000,
-    linkColor: blue500,
-    main: red500,
-    text: white,
-  },
-  neutral: {
-    altText: charcoal600,
-    borderColor: charcoal300,
-    dark: charcoal500,
-    darker: charcoal600,
-    light: charcoal100,
-    lighter: charcoal000,
-    linkColor: blue500,
-    main: charcoal400,
-    text: white,
-  },
-  primary: {
-    altText: purple400,
-    borderColor: charcoal300,
-    dark: purple500,
-    darker: purple600,
-    light: purple100,
-    lighter: purple000,
-    linkColor: blue500,
-    main: purple400,
-    text: white,
-  },
-  secondary: {
-    altText: purple400,
-    borderColor: charcoal300,
-    dark: primary600,
-    darker: primary700,
-    light: purple100,
-    lighter: purple000,
-    linkColor: blue500,
-    main: primary500,
-    text: white,
-  },
-}
-
 export const classicSemanticColors: SemanticColors = {
   danger: {
     altText: red400,
@@ -143,5 +96,15 @@ export const classicSemanticColors: SemanticColors = {
     linkColor: blue500,
     main: primary500,
     text: white,
+  },
+}
+
+export const semanticColors: SemanticColors = {
+  ...classicSemanticColors,
+  primary: {
+    ...classicSemanticColors.primary,
+    dark: purple500,
+    darker: purple600,
+    main: purple400,
   },
 }
