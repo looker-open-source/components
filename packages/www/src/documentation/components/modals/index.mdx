@@ -51,29 +51,42 @@ This provides the backdrop behind Modal containers. It can be customized via the
 </DialogManager>
 ```
 
-## InterstitialContext
+## ModalContext
 
-`InterstitialContext` is a [React Context](https://reactjs.org/docs/context.html) that provides access to functionality without requiring the developer to explicitly manage the Modal's state. Currently the context simply provides access to the `close()` method of the Modal.
+`ModalContext` is a [React Context](https://reactjs.org/docs/context.html) that provides access to functionality without requiring the developer to explicitly manage the Modal's state. The context provides access to the following methods:
+
+- `close`
+- `enableFocusTrap` and `disableFocusTrap`
+- `enableScrollLock` and `disableScrollLock`
+
+As well as the following values:
+
+- `scrollLockEnabled`
+- `focusTrapEnabled`
+
+The `close` method simply allows you to close the Modal or Popover.
+
+The other methods and values above are for rare use when the interstitial behaviors of focus trap and scroll lock are interfering with the desired behavior. For example a popover from another library nested inside of a `@looker/components` Popover or Modal.
 
 ```js static
 import React, { useContext } from 'react'
-import { Button, InterstitialContext } from '@looker/components'
+import { Button, ModalContext } from '@looker/components'
 
-export function InterstitialContextDemo() {
+export function ModalContextDemo() {
   return (
-    <InterstitialContext.Consumer>
+    <ModalContext.Consumer>
       {({ close }) => <Button onClick={close}>Close!</Button>}
-    </InterstitialContext.Consumer>
+    </ModalContext.Consumer>
   )
 }
 
 export function ModalUseContextDemo() {
-  const { close } = useContext(InterstitialContext)
+  const { close } = useContext(ModalContext)
   return <Button onClick={close}>Close!</Button>
 }
 ```
 
-## ModalContent
+### ModalContent
 
 <Props of="ModalContent" />
 
@@ -107,7 +120,7 @@ If content overflows the component's height an visual indicator of content that 
 
 <Props of="ModalHeader" />
 
-`ModalHeader` is attached to the top of modal and provides a button to close the containing modal. Uses the `InterstitialContext` to get access to the `close` callback.
+`ModalHeader` is attached to the top of modal and provides a button to close the containing modal. Uses the `ModalContext` to get access to the `closeModal` callback.
 
 ModalHeader supports all [`Box`](/src-documentation-components-box) properties.
 
@@ -121,7 +134,7 @@ ModalHeader supports all [`Box`](/src-documentation-components-box) properties.
 
 <Props of="ModalFooter" />
 
-`ModalFooter` is attached to the bottom of modal. Generally, the terminal action for a modal as well as an option to abandon the process done via the modal are available within this component. This component is generally used in combination with the `InterstitialContext.Provider` to get access to the `InterstitialContext.close()` method.
+`ModalFooter` is attached to the bottom of modal. Generally, the terminal action for a modal as well as an option to abandon the process done via the modal are available within this component. This component is generally used in combination with the `ModalContext.Provider` to get access to the `ModalContext.closeModal()` method.
 
 ModalFooter supports all [`Box`](/src-documentation-components-box) properties.
 

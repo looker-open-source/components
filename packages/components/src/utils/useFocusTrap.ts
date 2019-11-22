@@ -26,15 +26,15 @@
 
 import createFocusTrap, { FocusTrap } from 'focus-trap'
 import { useContext, useEffect, useRef } from 'react'
-import { useToggle } from '../utils/useToggle'
-import { useCallbackRef } from '../utils/useCallbackRef'
-import { InterstitialContext } from './InterstitialContext'
+import { ModalContext } from '../Modal/ModalContext'
+import { useToggle } from './useToggle'
+import { useCallbackRef } from './useCallbackRef'
 
 export function useFocusTrap(enabled = true, keepFocusWithin?: HTMLElement) {
   const trap = useRef<FocusTrap>()
 
   const [element, callbackRef] = useCallbackRef(keepFocusWithin)
-  const { disableFocusTrap, enableFocusTrap } = useContext(InterstitialContext)
+  const { disableFocusTrap, enableFocusTrap } = useContext(ModalContext)
   const { value, setOn, setOff } = useToggle(enabled)
 
   useEffect(() => {

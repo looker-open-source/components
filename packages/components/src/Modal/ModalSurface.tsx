@@ -38,7 +38,7 @@ import {
   LayoutProps,
   layout,
 } from 'styled-system'
-import { InterstitialContext } from '../Interstitial'
+import { ModalContext } from './ModalContext'
 
 export interface ModalSurfaceProps
   extends CompatibleHTMLProps<HTMLDivElement>,
@@ -57,9 +57,7 @@ export const ModalSurface: FC<ModalSurfaceProps> = ({
   className,
   ...props
 }) => {
-  const { close, enableFocusTrap, enableScrollLock } = useContext(
-    InterstitialContext
-  )
+  const { close, enableFocusTrap, enableScrollLock } = useContext(ModalContext)
 
   useEffect(() => {
     enableScrollLock && enableScrollLock()

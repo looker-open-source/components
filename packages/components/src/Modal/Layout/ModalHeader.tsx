@@ -38,7 +38,7 @@ import { Box } from '../../Layout/Box'
 import { ButtonTransparent } from '../../Button'
 import { Heading } from '../../Text'
 import { Icon } from '../../Icon'
-import { InterstitialContext } from '../../Interstitial'
+import { ModalContext } from '../ModalContext'
 
 export interface ModalHeaderProps
   extends SpaceProps,
@@ -54,7 +54,7 @@ export const ModalHeader: FC<ModalHeaderProps> = ({
   closeIcon = 'Close',
   ...props
 }) => {
-  const { close } = useContext(InterstitialContext)
+  const { close } = useContext(ModalContext)
 
   return (
     <Header {...props}>

@@ -27,15 +27,22 @@
 import React, { forwardRef, Ref, useEffect, useRef, ReactNode } from 'react'
 import { createPortal } from 'react-dom'
 import styled from 'styled-components'
-import { CustomizableModalAttributes } from '../Modal/Modal'
-import { getInterstitialRoot } from './interstitialRoot'
+import { getModalRoot } from './modalRoot'
 
-export const InterstitialPortal = forwardRef(
+export interface CustomizableModalAttributes extends CustomizableAttributes {
+  zIndex?: number
+}
+
+export const CustomizableModalAttributes: CustomizableModalAttributes = {
+  backdrop: { backgroundColor: 'palette.charcoal200', opacity: 0.6 },
+}
+
+export const ModalPortal = forwardRef(
   ({ children }: { children: ReactNode }, ref: Ref<HTMLDivElement>) => {
     const el = useRef(document.createElement('div'))
 
     useEffect(() => {
-      const modalRoot = getInterstitialRoot()
+      const modalRoot = getModalRoot()
       if (!modalRoot) return
 
       const elCurrent = el.current
@@ -56,7 +63,7 @@ export const InterstitialPortal = forwardRef(
   }
 )
 
-InterstitialPortal.displayName = 'InterstitialPortal'
+ModalPortal.displayName = 'ModalPortal'
 
 const InvisiBox = styled.div<{ zIndex?: number }>`
   position: fixed;

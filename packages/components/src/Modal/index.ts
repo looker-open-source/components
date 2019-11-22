@@ -30,5 +30,8 @@ export * from './Layout'
 
 export * from './Modal'
 export * from './ModalBackdrop'
+export * from './ModalContext'
 export * from './ModalManager'
+export * from './ModalPortal'
+export * from './modalRoot'
 export * from './ModalSurface'
