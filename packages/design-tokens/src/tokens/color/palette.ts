@@ -103,7 +103,7 @@ export const palette: Palette = {
   red900: '#52080B',
 }
 
-export const legacyPalette: Palette = {
+export const classicPalette: Palette = {
   textInverted: '#FFFFFF',
   transparent: 'transparent',
   white: '#FFFFFF',

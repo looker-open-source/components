@@ -99,7 +99,7 @@ export const semanticColors: SemanticColors = {
   },
 }
 
-export const legacySemanticColors: SemanticColors = {
+export const classicSemanticColors: SemanticColors = {
   danger: {
     altText: red400,
     borderColor: charcoal300,
