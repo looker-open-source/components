@@ -28,6 +28,7 @@ import { createContext } from 'react'
 
 export interface ModalContextProps {
   close?: () => void
+  closeModal?: () => void
   enableScrollLock?: () => void
   disableScrollLock?: () => void
   enableFocusTrap?: () => void
@@ -36,6 +37,6 @@ export interface ModalContextProps {
   scrollLockEnabled?: boolean
 }
 
-const interstitialContext: ModalContextProps = {}
+const modalContext: ModalContextProps = {}
 
-export const ModalContext = createContext(interstitialContext)
+export const ModalContext = createContext(modalContext)

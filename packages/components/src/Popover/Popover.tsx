@@ -353,6 +353,7 @@ export function usePopover({
     <ModalContext.Provider
       value={{
         close: handleClose,
+        closeModal: handleClose,
         disableFocusTrap,
         disableScrollLock,
         enableFocusTrap,
