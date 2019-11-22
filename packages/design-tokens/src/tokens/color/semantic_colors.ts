@@ -25,7 +25,7 @@
  */
 
 import { SemanticColors } from '../../system'
-import { palette } from './palette'
+import { palette, classicPalette } from './palette'
 
 const {
   blue500,
@@ -52,7 +52,7 @@ const {
   white,
 } = palette
 
-export const classicSemanticColors: SemanticColors = {
+export const semanticColors: SemanticColors = {
   danger: {
     altText: red400,
     borderColor: charcoal300,
@@ -78,12 +78,12 @@ export const classicSemanticColors: SemanticColors = {
   primary: {
     altText: purple400,
     borderColor: charcoal300,
-    dark: primary600,
-    darker: primary700,
+    dark: purple500,
+    darker: purple600,
     light: purple100,
     lighter: purple000,
     linkColor: blue500,
-    main: primary500,
+    main: purple400,
     text: white,
   },
   secondary: {
@@ -99,12 +99,12 @@ export const classicSemanticColors: SemanticColors = {
   },
 }
 
-export const semanticColors: SemanticColors = {
-  ...classicSemanticColors,
+export const classicSemanticColors: SemanticColors = {
+  ...semanticColors,
   primary: {
-    ...classicSemanticColors.primary,
-    dark: purple500,
-    darker: purple600,
-    main: purple400,
+    ...semanticColors.primary,
+    dark: classicPalette.primary600,
+    darker: classicPalette.primary700,
+    main: classicPalette.primary500,
   },
 }

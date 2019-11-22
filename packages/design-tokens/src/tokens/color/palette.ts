@@ -28,14 +28,14 @@ import { Palette } from '../../system'
 
 /* eslint-disable sort-keys */
 
-export const classicPalette: Palette = {
+export const palette: Palette = {
   textInverted: '#FFFFFF',
   transparent: 'transparent',
   white: '#FFFFFF',
 
-  primary500: '#64518A',
-  primary600: '#473764',
-  primary700: '#2A1B60',
+  primary500: '#4F2ABA', // duplicate purple500
+  primary600: '#412399', // duplicate purple600
+  primary700: '#341C7A', // duplicate purple700
 
   charcoal000: '#FBFBFC',
   charcoal100: '#F5F6F7',
@@ -104,10 +104,9 @@ export const classicPalette: Palette = {
   red900: '#52080B',
 }
 
-export const palette: Palette = {
-  ...classicPalette,
-
-  primary500: '#4F2ABA', // duplicate purple500
-  primary600: '#412399', // duplicate purple600
-  primary700: '#341C7A', // duplicate purple700
+export const classicPalette: Palette = {
+  ...palette,
+  primary500: '#64518A',
+  primary600: '#473764',
+  primary700: '#2A1B60',
 }
