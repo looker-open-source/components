@@ -24,16 +24,18 @@
 
  */
 
-export const getInterstitialRoot = () => {
-  const existing = document.getElementById('interstitial-root')
+import { createContext } from 'react'
 
-  if (existing) {
-    return existing
-  } else {
-    const newElement = document.createElement('div')
-    newElement.id = 'interstitial-root'
-    document.body.appendChild(newElement)
-
-    return newElement
-  }
+export interface ModalContextProps {
+  close?: () => void
+  enableScrollLock?: () => void
+  disableScrollLock?: () => void
+  enableFocusTrap?: () => void
+  disableFocusTrap?: () => void
+  focusTrapEnabled?: boolean
+  scrollLockEnabled?: boolean
 }
+
+const interstitialContext: ModalContextProps = {}
+
+export const ModalContext = createContext(interstitialContext)

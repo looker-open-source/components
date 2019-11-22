@@ -5,12 +5,12 @@ import {
   ButtonTransparent,
   Button,
   useScrollLock,
-  getInterstitialRoot,
+  getModalRoot,
   Flex,
   FlexItem,
   Paragraph,
   ModalContent,
-  InterstitialContext,
+  ModalContext,
   Popover,
   PopoverContent,
   ModalHeader,
@@ -20,7 +20,7 @@ import {
 export const getMenuTarget = () => {
   // Make sure #modal-root is first in DOM in order for
   // Popover click-outside behavior to work
-  getInterstitialRoot()
+  getModalRoot()
 
   const existing = document.getElementById('menu-target')
   if (existing) {
@@ -161,9 +161,7 @@ const PopoverWithButtons = () => (
 
 export const ModalInner: React.FC = () => {
   const { enable, disable } = useScrollLock(false, true, getMenuTarget())
-  const { close, disableScrollLock, enableFocusTrap } = useContext(
-    InterstitialContext
-  )
+  const { close, disableScrollLock, enableFocusTrap } = useContext(ModalContext)
   const handleMenuClose = () => {
     enableFocusTrap && enableFocusTrap()
     disable()
@@ -211,7 +209,7 @@ export const ModalInner: React.FC = () => {
 
 export const PopoverReactSelect = () => {
   const { enable, disable } = useScrollLock(false, true, getMenuTarget())
-  const { disableScrollLock, enableFocusTrap } = useContext(InterstitialContext)
+  const { disableScrollLock, enableFocusTrap } = useContext(ModalContext)
   const handleMenuClose = () => {
     enableFocusTrap && enableFocusTrap()
     disable()
@@ -239,7 +237,7 @@ export const PopoverReactSelect = () => {
   )
 }
 export const PopoverInner = () => {
-  const { close } = useContext(InterstitialContext)
+  const { close } = useContext(ModalContext)
   return (
     <PopoverContent width={300}>
       <Paragraph>A Popover:</Paragraph>

@@ -132,11 +132,6 @@ const components: NavigationSection = {
       ],
     },
     {
-      title: 'Interstitial',
-      path: 'interstitial',
-      children: [{ title: 'Interstitial', path: '' }],
-    },
-    {
       title: 'Content',
       path: 'content',
       children: [

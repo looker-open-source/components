@@ -27,13 +27,10 @@
 import React, { CSSProperties } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import { CSSObject, FlattenSimpleInterpolation } from 'styled-components'
-import {
-  InterstitialPortal,
-  useFocusTrap,
-  useScrollLock,
-  InterstitialContext,
-} from '../Interstitial'
+import { useFocusTrap, useScrollLock } from '../utils'
 import { ModalBackdrop } from './ModalBackdrop'
+import { ModalPortal } from './ModalPortal'
+import { ModalContext } from './ModalContext'
 
 export interface ModalSurfaceStyleProps {
   animation?: FlattenSimpleInterpolation
@@ -106,7 +103,7 @@ export function Modal({
   } = useScrollLock(isOpen, false)
 
   return (
-    <InterstitialContext.Provider
+    <ModalContext.Provider
       value={{
         close: onClose,
         disableFocusTrap,
@@ -123,7 +120,7 @@ export function Modal({
         timeout={{ enter: 0, exit: 250 }}
       >
         {(state: string) => (
-          <InterstitialPortal
+          <ModalPortal
             ref={node => {
               focusRef(node)
               scrollRef(node)
@@ -140,9 +137,9 @@ export function Modal({
               }
             />
             {render(state)}
-          </InterstitialPortal>
+          </ModalPortal>
         )}
       </CSSTransition>
-    </InterstitialContext.Provider>
+    </ModalContext.Provider>
   )
 }

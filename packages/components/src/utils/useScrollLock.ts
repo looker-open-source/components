@@ -25,9 +25,9 @@
  */
 
 import { useContext, useEffect } from 'react'
-import { useToggle } from '../utils/useToggle'
-import { useCallbackRef } from '../utils/useCallbackRef'
-import { InterstitialContext } from './InterstitialContext'
+import { ModalContext } from '../Modal/ModalContext'
+import { useToggle } from './useToggle'
+import { useCallbackRef } from './useCallbackRef'
 
 export function useScrollLock(
   enabled = false,
@@ -35,9 +35,7 @@ export function useScrollLock(
   allowScrollWithin?: HTMLElement
 ) {
   const [element, callbackRef] = useCallbackRef(allowScrollWithin)
-  const { disableScrollLock, enableScrollLock } = useContext(
-    InterstitialContext
-  )
+  const { disableScrollLock, enableScrollLock } = useContext(ModalContext)
   const { value, setOn, setOff } = useToggle(enabled)
 
   useEffect(() => {

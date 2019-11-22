@@ -29,7 +29,7 @@ import { TextAlignProperty } from 'csstype'
 import { Placement } from 'popper.js'
 import React, { useRef, useState, RefObject, FC, ReactNode } from 'react'
 import { Popper } from 'react-popper'
-import { InterstitialContext } from '../Interstitial'
+import { ModalContext } from '../Modal'
 import { OverlaySurface, SurfaceStyleProps } from '../Overlay/OverlaySurface'
 import { TooltipContent } from './TooltipContent'
 
@@ -165,7 +165,7 @@ export function useTooltip({
 
   const popper =
     isOpen && content && !disabled ? (
-      <InterstitialContext.Provider value={{ close: handleClose }}>
+      <ModalContext.Provider value={{ close: handleClose }}>
         <Popper
           positionFixed
           innerRef={setSurfaceRef}
@@ -204,7 +204,7 @@ export function useTooltip({
             </OverlaySurface>
           )}
         </Popper>
-      </InterstitialContext.Provider>
+      </ModalContext.Provider>
     ) : null
 
   return {
