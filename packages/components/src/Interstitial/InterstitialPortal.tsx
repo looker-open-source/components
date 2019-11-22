@@ -24,11 +24,20 @@
 
  */
 
+import { CustomizableAttributes } from '@looker/design-tokens'
 import React, { forwardRef, Ref, useEffect, useRef, ReactNode } from 'react'
 import { createPortal } from 'react-dom'
 import styled from 'styled-components'
-import { CustomizableModalAttributes } from '../Modal/Modal'
 import { getInterstitialRoot } from './interstitialRoot'
+
+export interface CustomizableInterstitialAttributes
+  extends CustomizableAttributes {
+  zIndex?: number
+}
+
+export const CustomizableInterstitialAttributes: CustomizableInterstitialAttributes = {
+  backdrop: { backgroundColor: 'palette.charcoal200', opacity: 0.6 },
+}
 
 export const InterstitialPortal = forwardRef(
   ({ children }: { children: ReactNode }, ref: Ref<HTMLDivElement>) => {
@@ -47,7 +56,7 @@ export const InterstitialPortal = forwardRef(
     }, [el])
 
     const content = (
-      <InvisiBox ref={ref} zIndex={CustomizableModalAttributes.zIndex}>
+      <InvisiBox ref={ref} zIndex={CustomizableInterstitialAttributes.zIndex}>
         {children}
       </InvisiBox>
     )

@@ -1,0 +1,40 @@
+---
+title: Interstitial
+propsOf: InterstitialContext
+github: InterstitialContext
+---
+
+## InterstitialContext
+
+`InterstitialContext` is a [React Context](https://reactjs.org/docs/context.html) that provides access to functionality without requiring the developer to explicitly manage the Modal's state. The context provides access to the following methods:
+
+- `close`
+- `enableFocusTrap` and `disableFocusTrap`
+- `enableScrollLock` and `disableScrollLock`
+
+As well as the following values:
+
+- `scrollLockEnabled`
+- `focusTrapEnabled`
+
+The `close` method simply allows you to close the Modal or Popover.
+
+The other methods and values above are for rare use when the interstitial behaviors of focus trap and scroll lock are interfering with the desired behavior. For example a popover from another library nested inside of a `@looker/components` Popover or Modal.
+
+```js static
+import React, { useContext } from 'react'
+import { Button, InterstitialContext } from '@looker/components'
+
+export function InterstitialContextDemo() {
+  return (
+    <InterstitialContext.Consumer>
+      {({ close }) => <Button onClick={close}>Close!</Button>}
+    </InterstitialContext.Consumer>
+  )
+}
+
+export function InterstitialUseContextDemo() {
+  const { close } = useContext(InterstitialContext)
+  return <Button onClick={close}>Close!</Button>
+}
+```

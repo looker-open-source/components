@@ -51,28 +51,6 @@ This provides the backdrop behind Modal containers. It can be customized via the
 </DialogManager>
 ```
 
-## InterstitialContext
-
-`InterstitialContext` is a [React Context](https://reactjs.org/docs/context.html) that provides access to functionality without requiring the developer to explicitly manage the Modal's state. Currently the context simply provides access to the `close()` method of the Modal.
-
-```js static
-import React, { useContext } from 'react'
-import { Button, InterstitialContext } from '@looker/components'
-
-export function InterstitialContextDemo() {
-  return (
-    <InterstitialContext.Consumer>
-      {({ close }) => <Button onClick={close}>Close!</Button>}
-    </InterstitialContext.Consumer>
-  )
-}
-
-export function ModalUseContextDemo() {
-  const { close } = useContext(InterstitialContext)
-  return <Button onClick={close}>Close!</Button>
-}
-```
-
 ## ModalContent
 
 <Props of="ModalContent" />

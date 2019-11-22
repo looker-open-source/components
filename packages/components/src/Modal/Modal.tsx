@@ -27,7 +27,6 @@
 import React, { CSSProperties } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import { CSSObject, FlattenSimpleInterpolation } from 'styled-components'
-import { CustomizableAttributes } from '@looker/design-tokens'
 import {
   InterstitialPortal,
   useFocusTrap,
@@ -44,14 +43,6 @@ export interface ModalSurfaceStyleProps {
   borderRadius: string
   boxShadow: string
   color: string
-}
-
-export interface CustomizableModalAttributes extends CustomizableAttributes {
-  zIndex?: number
-}
-
-export const CustomizableModalAttributes: CustomizableModalAttributes = {
-  backdrop: { backgroundColor: 'palette.charcoal200', opacity: 0.6 },
 }
 
 export interface ManagedModalProps {
