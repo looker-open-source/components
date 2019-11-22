@@ -365,7 +365,7 @@ export function usePopover({
   const popover = !openWithoutElem && isOpen && (
     <ModalContext.Provider
       value={{
-        close: handleClose,
+        closeModal: handleClose,
         disableFocusTrap,
         disableScrollLock,
         enableFocusTrap,

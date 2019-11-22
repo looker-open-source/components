@@ -54,7 +54,7 @@ export const ModalHeader: FC<ModalHeaderProps> = ({
   closeIcon = 'Close',
   ...props
 }) => {
-  const { close } = useContext(ModalContext)
+  const { closeModal } = useContext(ModalContext)
 
   return (
     <Header {...props}>
@@ -64,7 +64,7 @@ export const ModalHeader: FC<ModalHeaderProps> = ({
         ml="auto"
         p="none"
         color="neutral"
-        onClick={close}
+        onClick={closeModal}
       >
         <Icon name={closeIcon} size="1.25rem" />
       </ButtonTransparent>

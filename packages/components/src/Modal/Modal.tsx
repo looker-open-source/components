@@ -113,7 +113,7 @@ export function Modal({
   return (
     <ModalContext.Provider
       value={{
-        close: onClose,
+        closeModal: onClose,
         disableFocusTrap,
         disableScrollLock,
         enableFocusTrap,

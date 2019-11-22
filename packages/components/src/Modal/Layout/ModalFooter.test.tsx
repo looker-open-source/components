@@ -41,13 +41,13 @@ test('ModalFooter with Button', () => {
 test('ModalFooter with ModalContext', () => {
   assertSnapshot(
     <ModalContext.Consumer>
-      {({ close }) => (
+      {({ closeModal }) => (
         <ModalFooter>
-          <button onClick={close}>Cancel</button>
+          <button onClick={closeModal}>Cancel</button>
           <button
             onClick={() => {
               alert("doin' things...")
-              close && close()
+              closeModal && closeModal()
             }}
           >
             Yes, Delete "Stuff"

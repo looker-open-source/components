@@ -77,7 +77,7 @@ export const OverlaySurface = forwardRef(
       zIndex,
       ...innerProps
     } = props
-    const { close } = useContext(ModalContext)
+    const { closeModal } = useContext(ModalContext)
     // workaround for react-popper -caused error:
     // `NaN` is an invalid value for the `left` css style property
     if (Number.isNaN(arrowProps.style.left as number)) {
@@ -106,7 +106,7 @@ export const OverlaySurface = forwardRef(
           }}
           handlers={{
             CLOSE_MODAL: () => {
-              close && close()
+              closeModal && closeModal()
             },
           }}
         >
