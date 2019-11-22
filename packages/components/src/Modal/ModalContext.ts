@@ -27,7 +27,6 @@
 import { createContext } from 'react'
 
 export interface ModalContextProps {
-  close?: () => void
   closeModal?: () => void
   enableScrollLock?: () => void
   disableScrollLock?: () => void

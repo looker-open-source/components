@@ -57,7 +57,9 @@ export const ModalSurface: FC<ModalSurfaceProps> = ({
   className,
   ...props
 }) => {
-  const { close, enableFocusTrap, enableScrollLock } = useContext(ModalContext)
+  const { closeModal, enableFocusTrap, enableScrollLock } = useContext(
+    ModalContext
+  )
 
   useEffect(() => {
     enableScrollLock && enableScrollLock()
@@ -80,7 +82,7 @@ export const ModalSurface: FC<ModalSurfaceProps> = ({
       }}
       handlers={{
         CLOSE_MODAL: () => {
-          close && close()
+          closeModal && closeModal()
         },
       }}
       style={{

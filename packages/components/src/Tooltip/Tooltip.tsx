@@ -165,9 +165,7 @@ export function useTooltip({
 
   const popper =
     isOpen && content && !disabled ? (
-      <ModalContext.Provider
-        value={{ close: handleClose, closeModal: handleClose }}
-      >
+      <ModalContext.Provider value={{ closeModal: handleClose }}>
         <Popper
           positionFixed
           innerRef={setSurfaceRef}
