@@ -24,57 +24,84 @@
 
  */
 
-import React from 'react'
+import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 import {
-  Box,
-  Button,
+  ColorWheel,
+  LuminositySlider,
   GlobalStyle,
-  Popover,
-  DialogManager,
-  Divider,
+  Heading,
+  Card,
+  CardContent,
+  Flex,
+  List,
+  ListItem,
 } from '@looker/components'
 import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
-import {
-  LongText,
-  ModalInner,
-  PopoverInner,
-  PopoverReactSelect,
-} from './Examples'
+
+const ColorWheelDemo = () => {
+  const [color, setColor] = useState({
+    h: 140,
+    s: 0.5,
+    v: 0.5,
+  })
+
+  const handleColorStateChange = (hs: any) => {
+    setColor({
+      ...hs,
+      v: color.v,
+    })
+  }
+
+  const handleSliderChange = (event: any) => {
+    const value = Number(event.currentTarget.value)
+    setColor({ ...color, v: value / 100 })
+  }
+
+  return (
+    <Flex>
+      <Card raised>
+        <CardContent>
+          <Heading as="h2">Color wheel</Heading>
+          <ColorWheel
+            size={400}
+            hue={color.h}
+            saturation={color.s}
+            value={color.v}
+            onColorChange={handleColorStateChange}
+          />
+
+          <LuminositySlider
+            id="typeinp"
+            min={0}
+            max={100}
+            value={color.v * 100}
+            onChange={handleSliderChange}
+            step={1}
+          />
+        </CardContent>
+      </Card>
+      <Card raised>
+        <CardContent>
+          <Heading as="h2">HSV values</Heading>
+          <List>
+            <ListItem>Hue: {color.h.toFixed(0)}</ListItem>
+            <ListItem>Saturation: {color.s.toFixed(1)}</ListItem>
+            <ListItem>Value: {color.v}</ListItem>
+          </List>
+        </CardContent>
+      </Card>
+    </Flex>
+  )
+}
 
 const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <>
         <GlobalStyle />
-        <Box padding="xlarge">
-          <DialogManager content={<ModalInner />}>
-            {onClick => <Button onClick={onClick}>Open Modal</Button>}
-          </DialogManager>
-          <Divider my="large" />
-          <Popover pin placement="bottom-start" content={<PopoverInner />}>
-            {(onClick, ref, className) => (
-              <Button onClick={onClick} ref={ref} className={className}>
-                Open Nested Popover
-              </Button>
-            )}
-          </Popover>
-          <Divider my="large" />
-          <Popover
-            pin
-            placement="bottom-start"
-            content={<PopoverReactSelect />}
-          >
-            {(onClick, ref, className) => (
-              <Button onClick={onClick} ref={ref} className={className}>
-                Open React Select Popover
-              </Button>
-            )}
-          </Popover>
-          <Divider my="large" />
-          <LongText />
-        </Box>
+        <ColorWheelDemo />
       </>
     </ThemeProvider>
   )
