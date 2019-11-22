@@ -50,8 +50,6 @@ import {
   fontFamilies,
   fontSizes,
   fontWeights,
-  classicSemanticColors,
-  classicPalette,
   lineHeights,
   palette,
   radii,
@@ -93,9 +91,4 @@ export const theme: Theme = {
   shadows,
   space,
   transitions,
-}
-
-export const classicTheme: Theme = {
-  ...theme,
-  colors: { palette: classicPalette, semanticColors: classicSemanticColors },
 }

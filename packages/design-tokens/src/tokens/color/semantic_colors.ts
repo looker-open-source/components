@@ -25,7 +25,7 @@
  */
 
 import { SemanticColors } from '../../system'
-import { palette, classicPalette } from './palette'
+import { palette } from './palette'
 
 const {
   blue500,
@@ -96,15 +96,5 @@ export const semanticColors: SemanticColors = {
     linkColor: blue500,
     main: primary500,
     text: white,
-  },
-}
-
-export const classicSemanticColors: SemanticColors = {
-  ...semanticColors,
-  primary: {
-    ...semanticColors.primary,
-    dark: classicPalette.primary600,
-    darker: classicPalette.primary700,
-    main: classicPalette.primary500,
   },
 }

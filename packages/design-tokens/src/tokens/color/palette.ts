@@ -103,10 +103,3 @@ export const palette: Palette = {
   red800: '#730B0F',
   red900: '#52080B',
 }
-
-export const classicPalette: Palette = {
-  ...palette,
-  primary500: '#64518A',
-  primary600: '#473764',
-  primary700: '#2A1B60',
-}
