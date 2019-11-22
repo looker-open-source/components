@@ -2851,7 +2851,7 @@
 
 "@types/react-select@^3.0.8":
   version "3.0.8"
-  resolved "https://nexusrepo.looker.com/repository/looker-npm-group/@types/react-select/-/react-select-3.0.8.tgz#b824a12d438dd493c30ffff49a805f797602a837"
+  resolved "https://registry.yarnpkg.com/@types/react-select/-/react-select-3.0.8.tgz#b824a12d438dd493c30ffff49a805f797602a837"
   integrity sha512-0763TXYZc8bTiHM+DUnWoy9Rg5mk6PxYWBrEe6Fkjgc0Kv0r1RqjZk9/BrK4wdM0RNjYjixlFPnUhOJb76sMGg==
   dependencies:
     "@types/react" "*"
