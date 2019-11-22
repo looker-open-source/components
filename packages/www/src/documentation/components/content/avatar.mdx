@@ -1,0 +1,70 @@
+---
+title: Avatar
+propsOf: Avatar
+---
+
+`Avatar` is most often used to identify individual users or groups. Lens offer to variations on it:
+
+- `AvatarUser` displays the profile image, if there is one availabe, or user's initials.
+- `AvatarIcon` displays icon as the avatar - icon can be changed adding `icon` flag.
+- `AvatarCombo` - comming soon.
+
+## AvatarUser
+
+```jsx
+;() => {
+  const goodData = {
+    avatar_url:
+      'https://media.istockphoto.com/vectors/noisy-glitch-pixelated-seamless-pattern-vector-id1051777344',
+    first_name: 'John',
+    id: 1,
+    last_name: 'Smith',
+  }
+  const noImage = {
+    avatar_url:
+      'https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank',
+    first_name: 'John',
+    id: 2,
+    last_name: 'Smith',
+  }
+  return (
+    <>
+      <AvatarUser m="medium" user={goodData} />
+      <AvatarUser m="medium" user={noImage} />
+    </>
+  )
+}
+```
+
+## AvatarIcon
+
+```jsx
+<AvatarIcon m="medium" />
+<AvatarIcon m="medium" icon="Code" />
+```
+
+- `size`: small || medium || large - large being the default.
+  - If `AvatarUser` has size set to small there will be only the first initail displayed.
+- `color`: difault value is `#4F2ABA` but that can be changed by the flag color.
+
+```jsx
+;() => {
+  const data = {
+    avatar_url:
+      'https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank',
+    first_name: 'John',
+    id: 3,
+    last_name: 'Smith',
+  }
+  return (
+    <>
+      <AvatarIcon m="medium" size="small" />
+      <AvatarIcon m="medium" icon="LogoRings" color="#FF4500" size="medium" />
+      <AvatarIcon m="medium" icon="Code" color="#6495ED" />
+      <AvatarUser m="medium" user={data} />
+      <AvatarUser m="medium" user={data} size="medium" />
+      <AvatarUser m="medium" user={data} size="small" />
+    </>
+  )
+}
+```
