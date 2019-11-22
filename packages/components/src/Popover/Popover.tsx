@@ -194,7 +194,6 @@ function usePopoverToggle(
   triggerRef: RefObject<HTMLElement>
 ): [boolean, (value: boolean) => void] {
   const [uncontrolledIsOpen, uncontrolledSetOpen] = useState(controlledIsOpen)
-  const mouseDownTarget = useRef<EventTarget | null>()
   const isControlled = useControlWarn({
     controllingProps: ['controlledSetOpen'],
     isControlledCheck: () => controlledSetOpen !== undefined,
@@ -205,27 +204,18 @@ function usePopoverToggle(
     isControlled && controlledSetOpen ? controlledSetOpen : uncontrolledSetOpen
 
   useEffect(() => {
-    function handleMouseDown(event: MouseEvent) {
-      mouseDownTarget.current = event.target
-    }
-
     function handleClickOutside(event: MouseEvent) {
       if (canClose && !canClose()) return
-
       // User clicked inside the Popover surface/portal
-      if (
-        portalElement &&
-        portalElement.contains(mouseDownTarget.current as Node)
-      ) {
+      if (portalElement && portalElement.contains(event.target as Node)) {
         return
       }
 
       if (
         portalElement &&
-        mouseDownTarget.current &&
-        portalElement.compareDocumentPosition(
-          mouseDownTarget.current as Node
-        ) === Node.DOCUMENT_POSITION_FOLLOWING
+        event.target &&
+        portalElement.compareDocumentPosition(event.target as Node) ===
+          Node.DOCUMENT_POSITION_FOLLOWING
       ) {
         return
       }
@@ -235,7 +225,7 @@ function usePopoverToggle(
       // User clicked the trigger while the Popover was open
       if (
         triggerRef.current &&
-        triggerRef.current.contains(mouseDownTarget.current as Node)
+        triggerRef.current.contains(event.target as Node)
       ) {
         // stopPropagation because instant Popover re-opening is silly
         event.stopPropagation()
@@ -254,15 +244,12 @@ function usePopoverToggle(
       event.stopPropagation()
     }
     if (isOpen) {
-      document.addEventListener('mousedown', handleMouseDown, true)
       document.addEventListener('click', handleClickOutside, true)
     } else {
-      document.removeEventListener('mousedown', handleMouseDown, true)
       document.removeEventListener('click', handleClickOutside, true)
     }
 
     return () => {
-      document.removeEventListener('mousedown', handleMouseDown, true)
       document.removeEventListener('click', handleClickOutside, true)
     }
   }, [canClose, groupedPopoversRef, isOpen, setOpen, triggerRef, portalElement])

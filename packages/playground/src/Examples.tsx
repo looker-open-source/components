@@ -196,6 +196,7 @@ export const ModalInner: React.FC = () => {
               isSearchable={false}
               onMenuClose={handleMenuClose}
               onMenuOpen={handleMenuOpen}
+              menuPosition="fixed"
             />
           </FlexItem>
         </Flex>
@@ -228,11 +229,8 @@ export const PopoverReactSelect = () => {
         captureMenuScroll={false}
         onMenuClose={handleMenuClose}
         onMenuOpen={handleMenuOpen}
+        menuPosition="fixed"
       />
-      <LongText />
-      <ButtonTransparent mt="medium" onClick={close}>
-        Cancel
-      </ButtonTransparent>
     </PopoverContent>
   )
 }
