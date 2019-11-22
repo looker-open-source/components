@@ -26,7 +26,7 @@ import { Icon } from '../Icon'
 import { AvatarProps } from './AvatarUser'
 import { AvatarBase } from './AvatarBase'
 
-interface AvatarIconProps extends AvatarProps {
+export interface AvatarIconProps extends AvatarProps {
   icon?: IconNames
 }
 
@@ -44,7 +44,9 @@ const AvatarLayout: FC<AvatarIconProps> = ({
   ...props
 }) => {
   const iconSize = () => {
-    if (size === 'small') {
+    if (size === 'xsmall') {
+      return 10
+    } else if (size === 'small') {
       return 9.6
     } else if (size === 'medium') {
       return 12.8

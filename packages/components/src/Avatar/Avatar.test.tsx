@@ -20,51 +20,40 @@
 
 import { assertSnapshotShallow } from '@looker/components-test-utils'
 import React from 'react'
+import { AvatarCombo } from './AvatarCombo'
 import { AvatarIcon } from './AvatarIcon'
 import { AvatarUser } from './AvatarUser'
 
-test('AvatarUser has photo with good url ', () => {
+test('AvatarCombo renders Avatar and its badge', () => {
   const data = {
     // eslint-disable-next-line @typescript-eslint/camelcase
     avatar_url:
-      'https://gravatar.lookercdn.com/avatar/e8ebbdf1a644117215036eac62995731?s=156&d=blank',
+      'https://media.istockphoto.com/vectors/noisy-glitch-pixelated-seamless-pattern-vector-id1051777344',
     // eslint-disable-next-line @typescript-eslint/camelcase
-    first_name: 'Luke',
-    id: 61,
+    first_name: 'John',
+    id: 1,
     // eslint-disable-next-line @typescript-eslint/camelcase
-    last_name: 'Bowerman',
+    last_name: 'Smith',
   }
-
-  assertSnapshotShallow(<AvatarUser user={data} />)
+  assertSnapshotShallow(<AvatarCombo user={data} />)
 })
 
-test('AvatarUser has photo with bed url ', () => {
+test('AvatarCombo renders Avatar initials and badge with Code icon', () => {
   const data = {
     // eslint-disable-next-line @typescript-eslint/camelcase
     avatar_url:
       'https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank',
     // eslint-disable-next-line @typescript-eslint/camelcase
-    first_name: 'Luke',
-    id: 61,
+    first_name: 'John',
+    id: 1,
     // eslint-disable-next-line @typescript-eslint/camelcase
-    last_name: 'Bowerman',
+    last_name: 'Smith',
   }
-
-  assertSnapshotShallow(<AvatarUser user={data} />)
+  assertSnapshotShallow(<AvatarCombo user={data} icon="Code" />)
 })
 
-test('AvatarUser has null as photo url ', () => {
-  const data = {
-    // eslint-disable-next-line @typescript-eslint/camelcase
-    avatar_url: null,
-    // eslint-disable-next-line @typescript-eslint/camelcase
-    first_name: 'Luke',
-    id: 61,
-    // eslint-disable-next-line @typescript-eslint/camelcase
-    last_name: 'Bowerman',
-  }
-
-  assertSnapshotShallow(<AvatarUser user={data} />)
+test('AvatarCombo renders AvatarIcon and badge if user is not available', () => {
+  assertSnapshotShallow(<AvatarCombo icon="Code" />)
 })
 
 test('AvatarIcon renders ', () => {
@@ -72,5 +61,49 @@ test('AvatarIcon renders ', () => {
 })
 
 test('AvatarIcon renders different icon if specified', () => {
-  assertSnapshotShallow(<AvatarIcon icon="Trash" />)
+  assertSnapshotShallow(<AvatarIcon icon="Code" />)
+})
+
+test('AvatarUser shows user profile picture if it has good avatar_url ', () => {
+  const data = {
+    // eslint-disable-next-line @typescript-eslint/camelcase
+    avatar_url:
+      'https://media.istockphoto.com/vectors/noisy-glitch-pixelated-seamless-pattern-vector-id1051777344',
+    // eslint-disable-next-line @typescript-eslint/camelcase
+    first_name: 'John',
+    id: 1,
+    // eslint-disable-next-line @typescript-eslint/camelcase
+    last_name: 'Smith',
+  }
+
+  assertSnapshotShallow(<AvatarUser user={data} />)
+})
+
+test('AvatarUser shows initials if has broken url as avatar_url', () => {
+  const data = {
+    // eslint-disable-next-line @typescript-eslint/camelcase
+    avatar_url:
+      'https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank',
+    // eslint-disable-next-line @typescript-eslint/camelcase
+    first_name: 'John',
+    id: 2,
+    // eslint-disable-next-line @typescript-eslint/camelcase
+    last_name: 'Smith',
+  }
+
+  assertSnapshotShallow(<AvatarUser user={data} />)
+})
+
+test('AvatarUser shows initials if it has null as  avatar_url ', () => {
+  const data = {
+    // eslint-disable-next-line @typescript-eslint/camelcase
+    avatar_url: null,
+    // eslint-disable-next-line @typescript-eslint/camelcase
+    first_name: 'John',
+    id: 1,
+    // eslint-disable-next-line @typescript-eslint/camelcase
+    last_name: 'Smith',
+  }
+
+  assertSnapshotShallow(<AvatarUser user={data} />)
 })

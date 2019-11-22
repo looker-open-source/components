@@ -32,8 +32,8 @@ export interface AvatarProps extends AvatarBaseProps, SpaceProps {
   className?: string
 }
 
-interface AvatarUserProps extends AvatarProps {
-  user: {
+export interface AvatarUserProps extends AvatarProps {
+  user?: {
     first_name: string | null
     last_name: string | null
     avatar_url: string | null
@@ -42,16 +42,18 @@ interface AvatarUserProps extends AvatarProps {
 
 const AvatarLayout: FC<AvatarUserProps> = ({ color, user, size, ...props }) => {
   const firstInitial =
-    user.first_name && user.last_name && `${user.first_name[0]}`
+    user && user.first_name && user.last_name && `${user.first_name[0]}`
   const lastInitial =
-    user.first_name && user.last_name && `${user.last_name[0]}`
+    user && user.first_name && user.last_name && `${user.last_name[0]}`
 
   return (
     <AvatarBase size={size} {...props}>
       <AvatarInitials color={color}>
         {size === 'small' ? `${firstInitial}` : `${firstInitial}${lastInitial}`}
       </AvatarInitials>
-      {user.avatar_url && <AvatarPhoto color={color} src={user.avatar_url} />}
+      {user && user.avatar_url && (
+        <AvatarPhoto color={color} src={user.avatar_url} />
+      )}
     </AvatarBase>
   )
 }

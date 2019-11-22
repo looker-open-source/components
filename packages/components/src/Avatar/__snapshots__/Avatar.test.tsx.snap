@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AvatarCombo renders Avatar and its badge 1`] = `ShallowWrapper {}`;
+
+exports[`AvatarCombo renders Avatar initials and badge with Code icon 1`] = `ShallowWrapper {}`;
+
+exports[`AvatarIcon renders  1`] = `ShallowWrapper {}`;
+
+exports[`AvatarIcon renders different icon if specified 1`] = `ShallowWrapper {}`;
+
+exports[`AvatarUser shows initials if has broken url as avatar_url 1`] = `ShallowWrapper {}`;
+
+exports[`AvatarUser shows initials if it has null as  avatar_url  1`] = `ShallowWrapper {}`;
+
+exports[`AvatarUser shows user profile picture if it has good avatar_url  1`] = `ShallowWrapper {}`;

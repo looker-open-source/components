@@ -18,10 +18,15 @@
  SOFTWARE.
  */
 
-import { SizeLarge, SizeMedium, SizeSmall } from '@looker/design-tokens'
+import {
+  SizeLarge,
+  SizeMedium,
+  SizeSmall,
+  SizeXSmall,
+} from '@looker/design-tokens'
 import { variant } from 'styled-system'
 
-export type AvatarSizes = SizeSmall | SizeMedium | SizeLarge
+export type AvatarSizes = SizeXSmall | SizeSmall | SizeMedium | SizeLarge
 
 export interface AvatarSizeProps {
   /**
@@ -35,6 +40,11 @@ export interface AvatarSizeProps {
 export const avatarSize = variant({
   prop: 'size',
   variants: {
+    xsmall: {
+      fontSize: 'xsmall',
+      height: '20px',
+      width: '20px',
+    },
     small: {
       fontSize: 'xsmall',
       height: '24px',

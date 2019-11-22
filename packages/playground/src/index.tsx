@@ -20,19 +20,24 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { AvatarIcon, AvatarUser, GlobalStyle } from '@looker/components'
+import {
+  AvatarCombo,
+  AvatarIcon,
+  AvatarUser,
+  GlobalStyle,
+} from '@looker/components'
 import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
 
 const goodData = {
   // eslint-disable-next-line @typescript-eslint/camelcase
   avatar_url:
-    'https://gravatar.lookercdn.com/avatar/e8ebbdf1a644117215036eac62995731?s=156&d=blank',
+    'https://media.istockphoto.com/vectors/noisy-glitch-pixelated-seamless-pattern-vector-id1051777344',
   // eslint-disable-next-line @typescript-eslint/camelcase
-  first_name: 'Luke',
-  id: 61,
+  first_name: 'John',
+  id: 1,
   // eslint-disable-next-line @typescript-eslint/camelcase
-  last_name: 'Bowerman',
+  last_name: 'Smith',
 }
 
 const bedData = {
@@ -40,20 +45,20 @@ const bedData = {
   avatar_url:
     'https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank',
   // eslint-disable-next-line @typescript-eslint/camelcase
-  first_name: 'Luke',
-  id: 61,
+  first_name: 'John',
+  id: 1,
   // eslint-disable-next-line @typescript-eslint/camelcase
-  last_name: 'Bowerman',
+  last_name: 'Smith',
 }
 
 const nullData = {
   // eslint-disable-next-line @typescript-eslint/camelcase
   avatar_url: null,
   // eslint-disable-next-line @typescript-eslint/camelcase
-  first_name: 'Luke',
-  id: 61,
+  first_name: 'John',
+  id: 1,
   // eslint-disable-next-line @typescript-eslint/camelcase
-  last_name: 'Bowerman',
+  last_name: 'Smith',
 }
 
 // want to add < m="medium" > to AvatarUser
@@ -78,6 +83,11 @@ const App: React.FC = () => {
         <AvatarIcon size="small" icon="Trash" m="medium" />
         <AvatarIcon size="medium" icon="Block" m="medium" />
         <AvatarIcon icon="ChartPie" m="medium" />
+
+        <AvatarCombo m="medium" user={goodData} />
+        <AvatarCombo m="medium" />
+        <AvatarCombo m="medium" icon="Code" />
+        <AvatarCombo m="medium" user={bedData} icon="Code" />
       </>
     </ThemeProvider>
   )
