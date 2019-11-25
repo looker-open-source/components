@@ -58,12 +58,8 @@ test('ButtonTransparent Focus split - on tab not on click', () => {
   )
 
   fireEvent.click(getByText('ButtonTransparent'))
-  expect(getByText('focus')).not.toHaveStyle(
-    `box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25)`
-  )
+  expect(getByText('focus')).toMatchSnapshot()
 
   fireEvent.keyUp(getByText('focus'), { charCode: 9, code: 9, key: 'Tab' })
-  expect(getByText('focus')).toHaveStyle(
-    `box-shadow: 0 0 0 0.15rem rgba(100,81,138,0.25)`
-  )
+  expect(getByText('focus')).toMatchSnapshot()
 })
