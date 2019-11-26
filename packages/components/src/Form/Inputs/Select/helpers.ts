@@ -56,7 +56,6 @@ export function useKeyDown() {
         // If the developer didn't render any options, there's no point in
         // trying to navigate--but seriously what the heck? Give us some
         // options fam.
-        console.log(options)
         // TODO: Circle back to see if this check is necessary
         // if (!options || options.length === 0) {
         //   return

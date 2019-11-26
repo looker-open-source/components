@@ -28,7 +28,9 @@ import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 import {
   GlobalStyle,
-  Flex,
+  Divider,
+  Box,
+  InputText,
   Select,
   SelectInput,
   SelectList,
@@ -38,20 +40,30 @@ import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
 
 const App: React.FC = () => {
+  const [val, setVal] = React.useState('')
+  React.useEffect(() => {
+    setTimeout(() => {
+      setVal('!')
+    }, 3000)
+  }, [])
   return (
     <>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <Select>
-          <SelectInput aria-labelledby="demo" />
-          <SelectList aria-labelledby="demo">
-            <SelectOption value="Apple" />
-            <SelectOption value="Banana" />
-            <SelectOption value="Orange" />
-            <SelectOption value="Pineapple" />
-            <SelectOption value="Kiwi" />
-          </SelectList>
-        </Select>
+        <Box m="xlarge">
+          <Select openOnFocus={true}>
+            <SelectInput aria-labelledby="demo" readOnly />
+            <SelectList aria-labelledby="demo" persistSelection>
+              <SelectOption value="Apple" />
+              <SelectOption value={`Banana${val}`} />
+              <SelectOption value="Orange" />
+              <SelectOption value="Pineapple" />
+              <SelectOption value="Kiwi" />
+            </SelectList>
+          </Select>
+          <Divider my="xlarge" />
+          <InputText />
+        </Box>
       </ThemeProvider>
     </>
   )
