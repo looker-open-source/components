@@ -23,13 +23,38 @@
  SOFTWARE.
 
  */
-
-import { createContext, FormEvent } from 'react'
+import { createContext, Ref, RefObject, MutableRefObject } from 'react'
+import { SelectData, SelectTransition } from './state'
 
 export interface SelectContextProps {
-  onChange?: (event: FormEvent<{ value: any }>) => void
+  data: SelectData
+  inputRef?: RefObject<HTMLInputElement>
+  popoverRef?: Ref<HTMLElement>
+  buttonRef?: Ref<HTMLButtonElement>
+  onSelect?: (value: string) => void
+  optionsRef?: MutableRefObject<number[]>
+  state?: string
+  transition?: SelectTransition
+  listboxId?: string
+  autocompletePropRef?: MutableRefObject<boolean>
+  persistSelectionRef?: MutableRefObject<boolean>
+  isVisible?: boolean
+  openOnFocus?: boolean
 }
 
-const context: SelectContextProps = {}
+export const defaultData = {
+  // the value the user has navigated to with the keyboard
+  navigationValue: undefined,
+  // the value the user has typed, we derived this also when the developer is
+  // controlling the value of SelectInput
+  value: '',
+}
 
-export const SelectContext = createContext(context)
+export const SelectContext = createContext<SelectContextProps>({
+  data: defaultData,
+})
+
+// Allows us to put the option's value on context so that SelectOptionText
+// can work it's highlight text magic no matter what else is rendered around
+// it.
+export const OptionContext = createContext({})
