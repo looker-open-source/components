@@ -37,14 +37,15 @@ const AvatarLayout: FC<AvatarIconProps> = ({
   ...props
 }) => {
   const iconSize = () => {
-    if (size === 'xsmall') {
-      return 10
-    } else if (size === 'small') {
-      return 9.6
-    } else if (size === 'medium') {
-      return 12.8
-    } else {
-      return 16
+    switch (size) {
+      case 'xsmall':
+        return 9
+      case 'small':
+        return 9.6
+      case 'medium':
+        return 12.8
+      default:
+        return 16
     }
   }
 

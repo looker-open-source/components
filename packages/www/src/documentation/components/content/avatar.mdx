@@ -3,10 +3,10 @@ title: Avatar
 propsOf: Avatar
 ---
 
-`Avatar` is most often used to identify individual users or groups. Lens offer to variations on it:
+`Avatar` is most often used to identify individual users or groups. Lens offer three variations on it:
 
 - `AvatarUser` displays the profile image, if there is one availabe, or user's initials.
-- `AvatarIcon` displays icon as the avatar - icon can be changed adding `icon` flag.
+- `AvatarIcon` displays an icon as the avatar, which can selected with the icon prop.
 - `AvatarCombo` displayed AvatarUser or AvatarIcon and a badge connected to it.
 
 ## AvatarUser
@@ -44,8 +44,8 @@ propsOf: Avatar
 ```
 
 - `size`: small || medium || large - large being the default.
-  - If `AvatarUser` has size set to small there will be only the first initail displayed.
-- `color`: difault value is `#4F2ABA` but that can be changed by the flag color.
+  - If you choose the small size for `AvatarUser`, it will only render the first initial.
+- `color`: default value is `#4F2ABA` but that can be changed by the `color` prop.
 
 ```jsx
 ;() => {
@@ -71,7 +71,7 @@ propsOf: Avatar
 
 ## AvatarCombo
 
-It's a combination of `AvatarUser` and `AvatarIcon`. The Avatar identity can be set to an user profile image, the user initials and it can also be set to an icon using the flag `icon` - if nothing is set and no user data is passed the Avatar Identity will be set to `users` as on the `AvatarIocn` case. As for the badge on `AvatarCombo` the icon has no default value. It has to be set when the Avatar is created.
+It's a combination of `AvatarUser` and `AvatarIcon`. The Avatar identity can be set in three ways. As the user profile image. As the user initials. Or as an icon using the props. If no data is passed as the user the Avatar Identity will be set to to `users` as on the `AvatarIocn` case. As for the badge on `AvatarCombo` the icon has no default value. So it has to be set when the Avatar is created.
 
 ```jsx
 ;() => {

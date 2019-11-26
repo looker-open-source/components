@@ -18,7 +18,6 @@
  SOFTWARE.
  */
 
-import React, { FC } from 'react'
 import {
   color,
   reset,
@@ -32,11 +31,7 @@ import { avatarSize, AvatarSizeProps } from './size'
 
 export interface AvatarBaseProps extends AvatarSizeProps, SpaceProps {}
 
-export const AvatarJSX: FC<AvatarBaseProps> = ({ ...props }) => {
-  return <div {...props}>{props.children}</div>
-}
-
-export const AvatarBase = styled(AvatarJSX)`
+export const AvatarBase = styled.div<AvatarBaseProps>`
   ${reset}
 
   ${avatarSize}
@@ -48,10 +43,10 @@ export const AvatarBase = styled(AvatarJSX)`
   align-items: center;
   background-color: ${props => props.theme.colors.palette.white};
   border-radius: 100%;
-  display: flex;
-  justify-content: center;
+  display: grid;
+  justify-items: center;
   overflow: hidden;
-  position: relative;
+  grid-template-areas: 'avatar';
 `
 AvatarBase.defaultProps = {
   size: 'large',

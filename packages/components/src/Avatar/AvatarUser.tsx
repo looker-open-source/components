@@ -41,10 +41,8 @@ export interface AvatarUserProps extends AvatarProps {
 }
 
 const AvatarLayout: FC<AvatarUserProps> = ({ color, user, size, ...props }) => {
-  const firstInitial =
-    user && user.first_name && user.last_name && `${user.first_name[0]}`
-  const lastInitial =
-    user && user.first_name && user.last_name && `${user.last_name[0]}`
+  const firstInitial = user && user.first_name && user.first_name[0]
+  const lastInitial = user && user.last_name && user.last_name[0]
 
   return (
     <AvatarBase size={size} {...props}>
@@ -61,7 +59,7 @@ const AvatarLayout: FC<AvatarUserProps> = ({ color, user, size, ...props }) => {
 const AvatarPhoto = styled.img`
   width: 100%;
   height: 100%;
-  position: absolute;
+  grid-area: avatar;
   top: 0;
   left: 0;
   bottom: 0;
@@ -71,6 +69,7 @@ const AvatarPhoto = styled.img`
 const AvatarInitials = styled.div.attrs((props: AvatarUserProps) => ({
   bg: props.color,
 }))`
+  grid-area: avatar;
   color: ${props => props.theme.colors.palette.white};
 `
 

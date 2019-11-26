@@ -22,7 +22,6 @@ import React, { FC } from 'react'
 import { color, layout, reset, space, SpaceProps } from '@looker/design-tokens'
 import styled from 'styled-components'
 import { IconNames } from '@looker/icons'
-import { Box } from '../Layout'
 import { AvatarUser, AvatarProps, AvatarUserProps } from './AvatarUser'
 import { AvatarIcon, AvatarIconProps } from './AvatarIcon'
 
@@ -34,6 +33,12 @@ export interface AvatarComboProps
   badge: IconNames
 }
 
+const AvatarIconBadge = styled(AvatarIcon)`
+  bottom: -4px;
+  right: -4px;
+  position: absolute;
+`
+
 const AvatarLayout: FC<AvatarComboProps> = ({
   badge,
   color,
@@ -42,19 +47,19 @@ const AvatarLayout: FC<AvatarComboProps> = ({
   ...props
 }) => {
   return (
-    <Box {...props}>
+    <div {...props}>
       {user ? (
         <AvatarUser user={user} color={color} />
       ) : (
         <AvatarIcon color={color} icon={icon} />
       )}
-      <AvatarIcon
+      <AvatarIconBadge
         className="badge-style"
         size="xsmall"
         color={color}
         icon={badge}
       />
-    </Box>
+    </div>
   )
 }
 
@@ -68,12 +73,6 @@ export const AvatarCombo = styled(AvatarLayout)`
   height: 40px;
   position: relative;
   width: 40px;
-
-  .badge-style{
-    bottom: -4px;
-    right: -4px;
-    position: absolute;
-  }
 `
 
 AvatarUser.defaultProps = {
