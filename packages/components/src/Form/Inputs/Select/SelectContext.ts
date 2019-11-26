@@ -32,7 +32,7 @@ export interface SelectContextProps {
   popoverRef?: Ref<HTMLElement>
   buttonRef?: Ref<HTMLButtonElement>
   onSelect?: (value: string) => void
-  optionsRef?: MutableRefObject<number[]>
+  optionsRef?: MutableRefObject<string[]>
   state?: string
   transition?: SelectTransition
   listboxId?: string
@@ -57,4 +57,4 @@ export const SelectContext = createContext<SelectContextProps>({
 // Allows us to put the option's value on context so that SelectOptionText
 // can work it's highlight text magic no matter what else is rendered around
 // it.
-export const OptionContext = createContext({})
+export const OptionContext = createContext<string | undefined>(undefined)

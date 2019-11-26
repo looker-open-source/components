@@ -27,6 +27,7 @@
 // Much of the following is pulled directly from https://github.com/reach/reach-ui
 // because their work is exceptional (but is not written in TypeScript)
 
+import { CompatibleHTMLProps } from '@looker/design-tokens'
 import React, {
   FormEvent,
   forwardRef,
@@ -56,8 +57,13 @@ import {
   wrapEvent,
 } from './helpers'
 import { SelectActionType, SelectState, useReducerMachine } from './state'
-import { SelectInputProps, SelectListProps, SelectProps } from './types'
-import { SelectContext } from './SelectContext'
+import {
+  SelectInputProps,
+  SelectListProps,
+  SelectOptionProps,
+  SelectProps,
+} from './types'
+import { OptionContext, SelectContext } from './SelectContext'
 
 // Select
 
@@ -81,7 +87,7 @@ export const Select = forwardRef(function Select(
   // parent/child relationship between SelectList and SelectOption with
   // cloneElement or fall back to DOM traversal. It's a new trick for me and
   // I'm pretty excited about it.
-  const optionsRef = useRef(null)
+  const optionsRef = useRef<string[]>([])
 
   // Need this to focus it
   const inputRef = useRef<HTMLInputElement>(null)
@@ -274,7 +280,9 @@ export const SelectList = forwardRef(function SelectList(
   }: SelectListProps,
   forwardedRef: Ref<HTMLUListElement>
 ) {
-  const { optionsRef, persistSelectionRef } = useContext(SelectContext)
+  const { optionsRef, persistSelectionRef, transition } = useContext(
+    SelectContext
+  )
 
   if (persistSelection) {
     if (persistSelectionRef) persistSelectionRef.current = true
@@ -294,6 +302,14 @@ export const SelectList = forwardRef(function SelectList(
   const handleKeyDown = useKeyDown()
   const handleBlur = useBlur()
 
+  const setOpen = (isOpen: boolean) => {
+    if (isOpen) {
+      transition && transition(SelectActionType.FOCUS)
+    } else {
+      transition && transition(SelectActionType.BLUR)
+    }
+  }
+
   const content = (
     <ul
       {...props}
@@ -305,16 +321,17 @@ export const SelectList = forwardRef(function SelectList(
   const { popover } = usePopover({
     content,
     isOpen: isVisible,
+    setOpen,
     triggerRef: inputRef,
   })
-  return popover
+  return popover || null
 })
 
 SelectList.displayName = 'SelectList'
 
 export const SelectOption = forwardRef(function SelectOption(
-  { children, value, onClick, ...props },
-  forwardedRef
+  { children, value, onClick, ...props }: SelectOptionProps,
+  forwardedRef: Ref<HTMLLIElement>
 ) {
   const {
     onSelect,
@@ -324,14 +341,14 @@ export const SelectOption = forwardRef(function SelectOption(
   } = useContext(SelectContext)
 
   useEffect(() => {
-    optionsRef.current.push(value)
+    if (optionsRef) optionsRef.current.push(value)
   })
 
   const isActive = navigationValue === value
 
   const handleClick = () => {
     onSelect && onSelect(value)
-    transition(SELECT_WITH_CLICK, { value })
+    transition && transition(SelectActionType.SELECT_WITH_CLICK, { value })
   }
 
   return (
@@ -340,67 +357,76 @@ export const SelectOption = forwardRef(function SelectOption(
         {...props}
         data-reach-combobox-option=""
         ref={forwardedRef}
-        id={makeHash(value)}
+        id={String(makeHash(value))}
         role="option"
         aria-selected={isActive}
         data-highlighted={isActive ? '' : undefined}
         // without this the menu will close from `onBlur`, but with it the
         // element can be `document.activeElement` and then our focus checks in
         // onBlur will work as intended
-        tabIndex="-1"
+        tabIndex={-1}
         onClick={wrapEvent(handleClick, onClick)}
-        children={children || <SelectOptionText />}
-      />
+      >
+        {children || <SelectOptionText />}
+      </li>
     </OptionContext.Provider>
   )
 })
 
 SelectOption.displayName = 'SelectOption'
 
-////////////////////////////////////////////////////////////////////////////////
 // SelectOptionText
 
 // We don't forwardRef or spread props because we render multiple spans or null,
 // should be fine 🤙
 export function SelectOptionText() {
-  const value = useContext(OptionContext)
-  const {
-    data: { value: contextValue },
-  } = useContext(SelectContext)
+  const value = useContext(OptionContext) || ''
+  // TODO: Implement our own word highlighting
+  // const {
+  //   data: { value: contextValue },
+  // } = useContext(SelectContext)
 
-  const results = useMemo(
-    () =>
-      findAll({
-        searchWords: escapeRegexp(contextValue).split(/\s+/),
-        textToHighlight: value,
-      }),
-    [contextValue, value]
+  // const results = useMemo(
+  //   () =>
+  //     findAll({
+  //       searchWords: escapeRegexp(contextValue).split(/\s+/),
+  //       textToHighlight: value,
+  //     }),
+  //   [contextValue, value]
+  // )
+  const results: Array<{ start: number; end: number; highlight: boolean }> = []
+
+  return (
+    <>
+      {results.length
+        ? results.map((result, index) => {
+            const str = value.slice(result.start, result.end)
+            return (
+              <span
+                key={index}
+                data-user-value={result.highlight ? true : undefined}
+                data-suggested-value={result.highlight ? undefined : true}
+              >
+                {str}
+              </span>
+            )
+          })
+        : value}
+    </>
   )
-
-  return results.length
-    ? results.map((result, index) => {
-        const str = value.slice(result.start, result.end)
-        return (
-          <span
-            key={index}
-            data-user-value={result.highlight ? true : undefined}
-            data-suggested-value={result.highlight ? undefined : true}
-          >
-            {str}
-          </span>
-        )
-      })
-    : value
 }
 
 SelectOptionText.displayName = 'SelectOptionText'
 
-////////////////////////////////////////////////////////////////////////////////
 // SelectButton
 
 export const SelectButton = forwardRef(function SelectButton(
-  { as: Comp = 'button', onClick, onKeyDown, ...props },
-  forwardedRef
+  {
+    onClick,
+    onKeyDown,
+    ...props
+  }: Omit<CompatibleHTMLProps<HTMLButtonElement>, 'type'>,
+  forwardedRef: Ref<HTMLButtonElement>
 ) {
   const { transition, state, buttonRef, listboxId, isVisible } = useContext(
     SelectContext
@@ -410,15 +436,15 @@ export const SelectButton = forwardRef(function SelectButton(
   const handleKeyDown = useKeyDown()
 
   const handleClick = () => {
-    if (state === IDLE) {
-      transition(OPEN_WITH_BUTTON)
+    if (state === SelectState.IDLE) {
+      transition && transition(SelectActionType.OPEN_WITH_BUTTON)
     } else {
-      transition(CLOSE_WITH_BUTTON)
+      transition && transition(SelectActionType.CLOSE_WITH_BUTTON)
     }
   }
 
   return (
-    <Comp
+    <button
       data-reach-combobox-button=""
       aria-controls={listboxId}
       aria-haspopup="listbox"
@@ -432,10 +458,3 @@ export const SelectButton = forwardRef(function SelectButton(
 })
 
 SelectButton.displayName = 'SelectButton'
-
-////////////////////////////////////////////////////////////////////////////////
-// The rest is all implementation details
-
-// Move focus back to the input if we start navigating w/ the
-// keyboard after focus has moved to any focusable content in
-// the popup.

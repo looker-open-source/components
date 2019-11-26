@@ -18,7 +18,7 @@ export interface SelectProps
   openOnFocus?: boolean
 }
 
-export interface SelectInputProps extends InputTextProps {
+export interface SelectInputProps extends Omit<InputTextProps, 'value'> {
   /**
    * If true, when the user clicks inside the text box the current value will
    * be selected. Use this if the user is likely to delete all the text anyway
@@ -56,7 +56,7 @@ export interface SelectListProps extends CompatibleHTMLProps<HTMLUListElement> {
    * matches the value in the input, it will automatically be highlighted and
    * be the starting point for any keyboard navigation of the list.
    *
-   * This allows you to treat a Combobox more like a `<select>` than an
+   * This allows you to treat a Select more like a `<select>` than an
    * `<input/>`, but be mindful that the user is still able to put any
    * arbitrary value into the input, so if the only valid values for the input
    * are from the list, your app will need to do that validation on blur or
@@ -65,4 +65,28 @@ export interface SelectListProps extends CompatibleHTMLProps<HTMLUListElement> {
    * @see Docs https://reacttraining.com/reach-ui/combobox#comboboxlist-persistselection
    */
   persistSelection?: boolean
+}
+
+export interface SelectOptionProps extends CompatibleHTMLProps<HTMLLIElement> {
+  /**
+   * Optional. If omitted, the `value` will be used as the children like:
+   * `<SelectOption value="Seattle, Tacoma, Washington" />`. But if you need
+   * to control a bit more, you can put whatever children you want, but make
+   * sure to render a `SelectOptionText` as well, so the value is still
+   * displayed with the text highlighting on the matched portions.
+   *
+   * @example
+   *   <SelectOption value="Apple" />
+   *     🍎 <SelectOptionText />
+   *   </SelectOption>
+   *
+   * @see Docs https://reacttraining.com/reach-ui/combobox#comboboxoption-children
+   */
+  children?: React.ReactNode
+  /**
+   * The value to match against when suggesting.
+   *
+   * @see Docs https://reacttraining.com/reach-ui/combobox#comboboxoption-value
+   */
+  value: string
 }

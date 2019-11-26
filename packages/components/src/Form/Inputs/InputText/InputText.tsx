@@ -105,3 +105,5 @@ InputText.defaultProps = {
   height: CustomizableInputTextAttributes.height,
   type: 'text',
 }
+
+const foo = <InputText value="hey" />

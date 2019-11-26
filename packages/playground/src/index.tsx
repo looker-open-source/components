@@ -27,83 +27,33 @@
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 import {
-  ColorWheel,
-  LuminositySlider,
   GlobalStyle,
-  Heading,
-  Card,
-  CardContent,
   Flex,
-  List,
-  ListItem,
+  Select,
+  SelectInput,
+  SelectList,
+  SelectOption,
 } from '@looker/components'
 import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
 
-const ColorWheelDemo = () => {
-  const [color, setColor] = useState({
-    h: 140,
-    s: 0.5,
-    v: 0.5,
-  })
-
-  const handleColorStateChange = (hs: any) => {
-    setColor({
-      ...hs,
-      v: color.v,
-    })
-  }
-
-  const handleSliderChange = (event: any) => {
-    const value = Number(event.currentTarget.value)
-    setColor({ ...color, v: value / 100 })
-  }
-
-  return (
-    <Flex>
-      <Card raised>
-        <CardContent>
-          <Heading as="h2">Color wheel</Heading>
-          <ColorWheel
-            size={400}
-            hue={color.h}
-            saturation={color.s}
-            value={color.v}
-            onColorChange={handleColorStateChange}
-          />
-
-          <LuminositySlider
-            id="typeinp"
-            min={0}
-            max={100}
-            value={color.v * 100}
-            onChange={handleSliderChange}
-            step={1}
-          />
-        </CardContent>
-      </Card>
-      <Card raised>
-        <CardContent>
-          <Heading as="h2">HSV values</Heading>
-          <List>
-            <ListItem>Hue: {color.h.toFixed(0)}</ListItem>
-            <ListItem>Saturation: {color.s.toFixed(1)}</ListItem>
-            <ListItem>Value: {color.v}</ListItem>
-          </List>
-        </CardContent>
-      </Card>
-    </Flex>
-  )
-}
-
 const App: React.FC = () => {
   return (
-    <ThemeProvider theme={theme}>
-      <Box p="large">
+    <>
+      <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <ColorWheelDemo />
-      </>
-    </ThemeProvider>
+        <Select>
+          <SelectInput aria-labelledby="demo" />
+          <SelectList aria-labelledby="demo">
+            <SelectOption value="Apple" />
+            <SelectOption value="Banana" />
+            <SelectOption value="Orange" />
+            <SelectOption value="Pineapple" />
+            <SelectOption value="Kiwi" />
+          </SelectList>
+        </Select>
+      </ThemeProvider>
+    </>
   )
 }
 

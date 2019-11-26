@@ -10,6 +10,10 @@ const visibleStates = [
 
 export const isVisible = (state: SelectState) => visibleStates.includes(state)
 
+// Move focus back to the input if we start navigating w/ the
+// keyboard after focus has moved to any focusable content in
+// the popup.
+
 export function useFocusManagement(
   lastActionType?: SelectActionType,
   inputRef?: RefObject<HTMLInputElement>
@@ -52,9 +56,11 @@ export function useKeyDown() {
         // If the developer didn't render any options, there's no point in
         // trying to navigate--but seriously what the heck? Give us some
         // options fam.
-        if (!options || options.length === 0) {
-          return
-        }
+        console.log(options)
+        // TODO: Circle back to see if this check is necessary
+        // if (!options || options.length === 0) {
+        //   return
+        // }
 
         if (state === SelectState.IDLE) {
           // Opening a closed list

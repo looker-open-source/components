@@ -24,6 +24,6 @@
 
  */
 
-export * from './Select'
+export * from './Select2'
 export * from './SelectContext'
-export * from './SelectOption'
+// export * from './SelectOption'

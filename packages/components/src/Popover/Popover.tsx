@@ -196,7 +196,7 @@ function usePopoverToggle(
   const [uncontrolledIsOpen, uncontrolledSetOpen] = useState(controlledIsOpen)
   const mouseDownTarget = useRef<EventTarget | null>()
   const isControlled = useControlWarn({
-    controllingProps: ['controlledSetOpen'],
+    controllingProps: ['setOpen'],
     isControlledCheck: () => controlledSetOpen !== undefined,
     name: 'usePopover',
   })
