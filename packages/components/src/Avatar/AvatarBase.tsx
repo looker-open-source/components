@@ -38,17 +38,20 @@ export const AvatarJSX: FC<AvatarBaseProps> = ({ ...props }) => {
 
 export const AvatarBase = styled(AvatarJSX)`
   ${reset}
+
   ${avatarSize}
   ${color}
   ${layout}
   ${space}
   ${typography}
-  border-radius: 100%;
-  position: relative;
-  overflow: hidden;
-  display: flex;
+
   align-items: center;
+  background-color: ${props => props.theme.colors.palette.white};
+  border-radius: 100%;
+  display: flex;
   justify-content: center;
+  overflow: hidden;
+  position: relative;
 `
 AvatarBase.defaultProps = {
   size: 'large',

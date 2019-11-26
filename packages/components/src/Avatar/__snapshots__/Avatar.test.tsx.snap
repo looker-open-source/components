@@ -4,6 +4,8 @@ exports[`AvatarCombo renders Avatar and its badge 1`] = `ShallowWrapper {}`;
 
 exports[`AvatarCombo renders Avatar initials and badge with Code icon 1`] = `ShallowWrapper {}`;
 
+exports[`AvatarCombo renders AvatarIcon and badge if user is not available and updates icon if passed. 1`] = `ShallowWrapper {}`;
+
 exports[`AvatarIcon renders  1`] = `ShallowWrapper {}`;
 
 exports[`AvatarIcon renders different icon if specified 1`] = `ShallowWrapper {}`;

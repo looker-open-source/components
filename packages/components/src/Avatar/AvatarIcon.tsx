@@ -30,13 +30,6 @@ export interface AvatarIconProps extends AvatarProps {
   icon?: IconNames
 }
 
-/*
-  icon sizes:
-    small: 9.6,
-    medium: 12.8,
-    large: 16,
-*/
-
 const AvatarLayout: FC<AvatarIconProps> = ({
   color,
   icon = 'Users',

@@ -7,7 +7,7 @@ propsOf: Avatar
 
 - `AvatarUser` displays the profile image, if there is one availabe, or user's initials.
 - `AvatarIcon` displays icon as the avatar - icon can be changed adding `icon` flag.
-- `AvatarCombo` - comming soon.
+- `AvatarCombo` displayed AvatarUser or AvatarIcon and a badge connected to it.
 
 ## AvatarUser
 
@@ -61,9 +61,41 @@ propsOf: Avatar
       <AvatarIcon m="medium" size="small" />
       <AvatarIcon m="medium" icon="LogoRings" color="#FF4500" size="medium" />
       <AvatarIcon m="medium" icon="Code" color="#6495ED" />
-      <AvatarUser m="medium" user={data} />
-      <AvatarUser m="medium" user={data} size="medium" />
+      <AvatarUser m="medium" color="#6495ED" user={data} />
+      <AvatarUser m="medium" color="#FF4500" user={data} size="medium" />
       <AvatarUser m="medium" user={data} size="small" />
+    </>
+  )
+}
+```
+
+## AvatarCombo
+
+It's a combination of `AvatarUser` and `AvatarIcon`. The Avatar identity can be set to an user profile image, the user initials and it can also be set to an icon using the flag `icon` - if nothing is set and no user data is passed the Avatar Identity will be set to `users` as on the `AvatarIocn` case. As for the badge on `AvatarCombo` the icon has no default value. It has to be set when the Avatar is created.
+
+```jsx
+;() => {
+  const data = {
+    avatar_url:
+      'https://media.istockphoto.com/vectors/noisy-glitch-pixelated-seamless-pattern-vector-id1051777344',
+    first_name: 'John',
+    id: 3,
+    last_name: 'Smith',
+  }
+
+  const noImageData = {
+    avatar_url:
+      'https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank',
+    first_name: 'John',
+    id: 2,
+    last_name: 'Smith',
+  }
+  return (
+    <>
+      <AvatarCombo m="medium" user={data} badge="LogoRings" />
+      <AvatarCombo m="medium" user={noImageData} icon="Code" badge="Code" />
+      <AvatarCombo m="medium" color="#6495ED" badge="Beaker" />
+      <AvatarCombo m="medium" color="#FF4500" badge="Code" />
     </>
   )
 }

@@ -35,7 +35,7 @@ test('AvatarCombo renders Avatar and its badge', () => {
     // eslint-disable-next-line @typescript-eslint/camelcase
     last_name: 'Smith',
   }
-  assertSnapshotShallow(<AvatarCombo user={data} />)
+  assertSnapshotShallow(<AvatarCombo badge="Code" user={data} />)
 })
 
 test('AvatarCombo renders Avatar initials and badge with Code icon', () => {
@@ -49,11 +49,13 @@ test('AvatarCombo renders Avatar initials and badge with Code icon', () => {
     // eslint-disable-next-line @typescript-eslint/camelcase
     last_name: 'Smith',
   }
-  assertSnapshotShallow(<AvatarCombo user={data} icon="Code" />)
+  assertSnapshotShallow(
+    <AvatarCombo badge="LogoRings" icon="Code" user={data} />
+  )
 })
 
-test('AvatarCombo renders AvatarIcon and badge if user is not available', () => {
-  assertSnapshotShallow(<AvatarCombo icon="Code" />)
+test('AvatarCombo renders AvatarIcon and badge if user is not available and updates icon if passed.', () => {
+  assertSnapshotShallow(<AvatarCombo icon="Code" badge="LogoRings" />)
 })
 
 test('AvatarIcon renders ', () => {

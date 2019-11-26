@@ -84,10 +84,10 @@ const App: React.FC = () => {
         <AvatarIcon size="medium" icon="Block" m="medium" />
         <AvatarIcon icon="ChartPie" m="medium" />
 
-        <AvatarCombo m="medium" user={goodData} />
-        <AvatarCombo m="medium" />
-        <AvatarCombo m="medium" icon="Code" />
-        <AvatarCombo m="medium" user={bedData} icon="Code" />
+        <AvatarCombo m="medium" user={goodData} badge="Code" />
+        <AvatarCombo m="medium" badge="LogoRings" />
+        <AvatarCombo m="medium" icon="Code" badge="Trash" />
+        <AvatarCombo m="medium" user={bedData} icon="Code" badge="Trash" />
       </>
     </ThemeProvider>
   )
