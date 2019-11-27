@@ -3,9 +3,9 @@ title: Avatar
 propsOf: Avatar
 ---
 
-`Avatar` is most often used to identify individual users or groups. Lens offer three variations on it:
+`Avatar` is most often used to identify individual users or groups. Lens offers three variations on it:
 
-- `AvatarUser` displays the profile image, if there is one availabe, or user's initials.
+- `AvatarUser` displays the profile image, if there is one available, or user's initials.
 - `AvatarIcon` displays an icon as the avatar, which can be selected with the icon prop.
 - `AvatarCombo` displayed AvatarUser or AvatarIcon and a badge connected to it.
 
@@ -71,7 +71,7 @@ propsOf: Avatar
 
 ## AvatarCombo
 
-It's a combination of `AvatarUser` and `AvatarIcon`. The Avatar identity can be set in three ways. As the user profile image. As the user initials. Or as an icon using the props. If no data is passed as the user the Avatar Identity will be set to to `users` as on the `AvatarIocn` case. As for the badge on `AvatarCombo` the icon has no default value. So it has to be set when the Avatar is created.
+It's a combination of `AvatarUser` and `AvatarIcon`. Avatar provides three options to identify a user: a user profile image, user initials, or an SVG icon. If no data is passed as the user the Avatar Identity will be set to to `users` as on the `AvatarIcon` case. As for the badge on `AvatarCombo` the icon has no default value. So it has to be set when the Avatar is created.
 
 ```jsx
 ;() => {

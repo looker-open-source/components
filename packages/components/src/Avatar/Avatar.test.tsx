@@ -18,7 +18,7 @@
  SOFTWARE.
  */
 
-import { assertSnapshotShallow } from '@looker/components-test-utils'
+import { assertSnapshot } from '@looker/components-test-utils'
 import React from 'react'
 import { AvatarCombo } from './AvatarCombo'
 import { AvatarIcon } from './AvatarIcon'
@@ -35,7 +35,7 @@ test('AvatarCombo renders Avatar and its badge', () => {
     // eslint-disable-next-line @typescript-eslint/camelcase
     last_name: 'Smith',
   }
-  assertSnapshotShallow(<AvatarCombo badge="Code" user={data} />)
+  assertSnapshot(<AvatarCombo badge="Code" user={data} />)
 })
 
 test('AvatarCombo renders Avatar initials and badge with Code icon', () => {
@@ -49,21 +49,19 @@ test('AvatarCombo renders Avatar initials and badge with Code icon', () => {
     // eslint-disable-next-line @typescript-eslint/camelcase
     last_name: 'Smith',
   }
-  assertSnapshotShallow(
-    <AvatarCombo badge="LogoRings" icon="Code" user={data} />
-  )
+  assertSnapshot(<AvatarCombo badge="LogoRings" icon="Code" user={data} />)
 })
 
 test('AvatarCombo renders AvatarIcon and badge if user is not available and updates icon if passed.', () => {
-  assertSnapshotShallow(<AvatarCombo icon="Code" badge="LogoRings" />)
+  assertSnapshot(<AvatarCombo icon="Code" badge="LogoRings" />)
 })
 
 test('AvatarIcon renders ', () => {
-  assertSnapshotShallow(<AvatarIcon />)
+  assertSnapshot(<AvatarIcon />)
 })
 
 test('AvatarIcon renders different icon if specified', () => {
-  assertSnapshotShallow(<AvatarIcon icon="Code" />)
+  assertSnapshot(<AvatarIcon icon="Code" />)
 })
 
 test('AvatarUser shows user profile picture if it has good avatar_url ', () => {
@@ -78,7 +76,7 @@ test('AvatarUser shows user profile picture if it has good avatar_url ', () => {
     last_name: 'Smith',
   }
 
-  assertSnapshotShallow(<AvatarUser user={data} />)
+  assertSnapshot(<AvatarUser user={data} />)
 })
 
 test('AvatarUser shows initials if has broken url as avatar_url', () => {
@@ -93,7 +91,7 @@ test('AvatarUser shows initials if has broken url as avatar_url', () => {
     last_name: 'Smith',
   }
 
-  assertSnapshotShallow(<AvatarUser user={data} />)
+  assertSnapshot(<AvatarUser user={data} />)
 })
 
 test('AvatarUser shows initials if it has null as  avatar_url ', () => {
@@ -107,5 +105,5 @@ test('AvatarUser shows initials if it has null as  avatar_url ', () => {
     last_name: 'Smith',
   }
 
-  assertSnapshotShallow(<AvatarUser user={data} />)
+  assertSnapshot(<AvatarUser user={data} />)
 })

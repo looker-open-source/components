@@ -53,12 +53,7 @@ const AvatarLayout: FC<AvatarComboProps> = ({
       ) : (
         <AvatarIcon color={color} icon={icon} />
       )}
-      <AvatarIconBadge
-        className="badge-style"
-        size="xsmall"
-        color={color}
-        icon={badge}
-      />
+      <AvatarIconBadge size="xsmall" color={color} icon={badge} />
     </div>
   )
 }

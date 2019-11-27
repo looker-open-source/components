@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Avatra components and documentation - AvatraIcon, AvatarUser, AvatarCombo
+- Avatar components and documentation - AvatarIcon, AvatarUser, AvatarCombo
 
 - Instructions for documenting new components in WWW
 

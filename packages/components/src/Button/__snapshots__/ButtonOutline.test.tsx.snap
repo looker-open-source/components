@@ -44,20 +44,20 @@ exports[`ButtonOutline Focus split - on tab not on click 1`] = `
 
 .c1 {
   border: 1px solid #C1C6CC;
-  color: #6C43E0;
+  color: #64518A;
 }
 
 .c1:hover,
 .c1:focus,
 .c1.hover {
-  border-color: #6C43E0;
-  color: #412399;
+  border-color: #64518A;
+  color: #2A1B60;
 }
 
 .c1:active,
 .c1.active {
-  background: #6C43E0;
-  border-color: #6C43E0;
+  background: #64518A;
+  border-color: #64518A;
   color: #FFFFFF;
 }
 
@@ -65,7 +65,7 @@ exports[`ButtonOutline Focus split - on tab not on click 1`] = `
 .c1[disabled]:active,
 .c1[disabled]:focus {
   border-color: #C1C6CC;
-  color: #6C43E0;
+  color: #64518A;
 }
 
 <button
@@ -77,7 +77,7 @@ exports[`ButtonOutline Focus split - on tab not on click 1`] = `
 
 exports[`ButtonOutline Focus split - on tab not on click 2`] = `
 <button
-  class="sc-bxivhb cwuduv sc-ifAKCX sc-EHOje dFdbyE"
+  class="sc-bxivhb cyPJeD sc-ifAKCX sc-EHOje hkXmDW"
 >
   focus
 </button>
@@ -127,20 +127,20 @@ exports[`ButtonOutline has the correct style 1`] = `
 
 .c1 {
   border: 1px solid #C1C6CC;
-  color: #6C43E0;
+  color: #64518A;
 }
 
 .c1:hover,
 .c1:focus,
 .c1.hover {
-  border-color: #6C43E0;
-  color: #412399;
+  border-color: #64518A;
+  color: #2A1B60;
 }
 
 .c1:active,
 .c1.active {
-  background: #6C43E0;
-  border-color: #6C43E0;
+  background: #64518A;
+  border-color: #64518A;
   color: #FFFFFF;
 }
 
@@ -148,7 +148,7 @@ exports[`ButtonOutline has the correct style 1`] = `
 .c1[disabled]:active,
 .c1[disabled]:focus {
   border-color: #C1C6CC;
-  color: #6C43E0;
+  color: #64518A;
 }
 
 <button
