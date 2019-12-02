@@ -344,6 +344,7 @@ export const SelectList = forwardRef(function SelectList(
     isOpen: isVisible,
     setOpen,
     triggerRef: inputRef,
+    triggerToggle: false,
   })
   return popover || null
 })

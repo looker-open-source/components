@@ -114,6 +114,12 @@ export interface UsePopoverProps {
    * The trigger element ref to use (if absent, one will be created and returned)
    */
   triggerRef?: RefObject<HTMLElement>
+
+  /**
+   * Whether to close the popover when the toggle is clicked again
+   * @default true
+   */
+  triggerToggle?: boolean
 }
 
 export interface PopoverProps extends UsePopoverProps {
@@ -186,9 +192,10 @@ function usePopoverToggle(
     setOpen: controlledSetOpen,
     canClose,
     groupedPopoversRef,
+    triggerToggle,
   }: Pick<
     UsePopoverProps,
-    'isOpen' | 'setOpen' | 'canClose' | 'groupedPopoversRef'
+    'isOpen' | 'setOpen' | 'canClose' | 'groupedPopoversRef' | 'triggerToggle'
   >,
   portalElement: HTMLElement | null,
   triggerRef: RefObject<HTMLElement>
@@ -230,13 +237,17 @@ function usePopoverToggle(
         return
       }
 
+      const clickedOnToggle =
+        triggerRef.current && triggerRef.current.contains(event.target as Node)
+
+      if (!triggerToggle && clickedOnToggle) {
+        return
+      }
+
       setOpen(false)
 
       // User clicked the trigger while the Popover was open
-      if (
-        triggerRef.current &&
-        triggerRef.current.contains(mouseDownTarget.current as Node)
-      ) {
+      if (clickedOnToggle) {
         // stopPropagation because instant Popover re-opening is silly
         event.stopPropagation()
         return
@@ -265,7 +276,15 @@ function usePopoverToggle(
       document.removeEventListener('mousedown', handleMouseDown, true)
       document.removeEventListener('click', handleClickOutside, true)
     }
-  }, [canClose, groupedPopoversRef, isOpen, setOpen, triggerRef, portalElement])
+  }, [
+    canClose,
+    groupedPopoversRef,
+    isOpen,
+    setOpen,
+    triggerRef,
+    portalElement,
+    triggerToggle,
+  ])
 
   return [isOpen, setOpen]
 }
@@ -281,6 +300,7 @@ export function usePopover({
   placement: propsPlacement = 'bottom',
   hoverDisclosureRef,
   setOpen: controlledSetOpen,
+  triggerToggle = true,
   ...props
 }: UsePopoverProps) {
   const {
@@ -307,6 +327,7 @@ export function usePopover({
       groupedPopoversRef,
       isOpen: controlledIsOpen,
       setOpen: controlledSetOpen,
+      triggerToggle,
     },
     scrollElement,
     triggerRef
