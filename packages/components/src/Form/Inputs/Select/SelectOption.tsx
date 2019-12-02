@@ -24,27 +24,143 @@
 
  */
 
-import React, { ReactNode, useContext, MouseEvent } from 'react'
-import { MenuItem } from '../../../Menu'
-import { SelectContext } from './SelectContext'
+// Much of the following is pulled from https://github.com/reach/reach-ui
+// because their work is fantastic (but is not in TypeScript)
 
-export interface SelectOptionProps {
-  value?: any
-  children?: ReactNode
+import { CompatibleHTMLProps, reset } from '@looker/design-tokens'
+import React, { forwardRef, useEffect, useRef, useContext, Ref } from 'react'
+import styled from 'styled-components'
+import { makeHash, wrapEvent } from './helpers'
+import { OptionContext, SelectContext } from './SelectContext'
+import { SelectActionType } from './state'
+
+export interface SelectOptionProps extends CompatibleHTMLProps<HTMLLIElement> {
+  /**
+   * Optional. If omitted, the `value` will be used as the children like:
+   * `<SelectOption value="Seattle, Tacoma, Washington" />`. But if you need
+   * to control a bit more, you can put whatever children you want, but make
+   * sure to render a `SelectOptionText` as well, so the value is still
+   * displayed with the text highlighting on the matched portions.
+   *
+   * @example
+   *   <SelectOption value="Apple" />
+   *     🍎 <SelectOptionText />
+   *   </SelectOption>
+   *
+   * @see Docs https://reacttraining.com/reach-ui/combobox#comboboxoption-children
+   */
+  children?: React.ReactNode
+  /**
+   * The value to match against when suggesting.
+   *
+   * @see Docs https://reacttraining.com/reach-ui/combobox#comboboxoption-value
+   */
+  value: string
 }
 
-export function SelectOption({ children, value }: SelectOptionProps) {
-  const { onChange } = useContext(SelectContext)
-  function handleChange(event: MouseEvent<HTMLLIElement>) {
-    if (onChange) {
-      event.persist()
-      // currentTarget is read only property on a native event.
-      Object.defineProperty(event, 'target', {
-        value: { value },
-        writable: true,
-      })
-      onChange(event)
+export const SelectOption = forwardRef(function SelectOption(
+  { children, value, onClick, ...props }: SelectOptionProps,
+  forwardedRef: Ref<HTMLLIElement>
+) {
+  const {
+    onSelect,
+    data: { navigationValue },
+    transition,
+    optionsRef,
+  } = useContext(SelectContext)
+
+  const valueRef = useRef<string>()
+
+  useEffect(() => {
+    if (optionsRef) {
+      // Was there an old value for this SelectOption the list?
+      // If so, add the new value at the same spot
+      if (valueRef.current) {
+        const index = optionsRef.current.indexOf(valueRef.current)
+        if (index > -1) {
+          optionsRef.current[index] = value
+        }
+      } else {
+        optionsRef.current.push(value)
+      }
+      valueRef.current = value
     }
+  }, [value, optionsRef])
+
+  const isActive = navigationValue === value
+
+  const handleClick = () => {
+    onSelect && onSelect(value)
+    transition && transition(SelectActionType.SELECT_WITH_CLICK, { value })
   }
-  return <MenuItem onClick={handleChange}>{children || String(value)}</MenuItem>
+
+  return (
+    <OptionContext.Provider value={value}>
+      <SelectListItem
+        {...props}
+        ref={forwardedRef}
+        id={String(makeHash(value))}
+        role="option"
+        aria-selected={isActive}
+        isActive={isActive}
+        // without this the menu will close from `onBlur`, but with it the
+        // element can be `document.activeElement` and then our focus checks in
+        // onBlur will work as intended
+        tabIndex={-1}
+        onClick={wrapEvent(handleClick, onClick)}
+      >
+        {children || <SelectOptionText />}
+      </SelectListItem>
+    </OptionContext.Provider>
+  )
+})
+
+SelectOption.displayName = 'SelectOption'
+
+export const SelectListItem = styled.li<{ isActive: boolean }>`
+  ${reset}
+  color: ${props => (props.isActive ? 'red' : 'green')};
+`
+
+// SelectOptionText
+
+// We don't forwardRef or spread props because we render multiple spans or null,
+// should be fine 🤙
+export function SelectOptionText() {
+  const value = useContext(OptionContext) || ''
+  // TODO: Implement our own word highlighting
+  // const {
+  //   data: { value: contextValue },
+  // } = useContext(SelectContext)
+
+  // const results = useMemo(
+  //   () =>
+  //     findAll({
+  //       searchWords: escapeRegexp(contextValue).split(/\s+/),
+  //       textToHighlight: value,
+  //     }),
+  //   [contextValue, value]
+  // )
+  const results: Array<{ start: number; end: number; highlight: boolean }> = []
+
+  return (
+    <>
+      {results.length
+        ? results.map((result, index) => {
+            const str = value.slice(result.start, result.end)
+            return (
+              <span
+                key={index}
+                data-user-value={result.highlight ? true : undefined}
+                data-suggested-value={result.highlight ? undefined : true}
+              >
+                {str}
+              </span>
+            )
+          })
+        : value}
+    </>
+  )
 }
+
+SelectOptionText.displayName = 'SelectOptionText'

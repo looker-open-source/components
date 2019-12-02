@@ -1,0 +1,137 @@
+/*
+
+ MIT License
+
+ Copyright (c) 2019 Looker Data Sciences, Inc.
+
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in all
+ copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ SOFTWARE.
+
+ */
+
+// Much of the following is pulled from https://github.com/reach/reach-ui
+// because their work is fantastic (but is not in TypeScript)
+
+import { CompatibleHTMLProps, reset } from '@looker/design-tokens'
+import React, { forwardRef, Ref, useContext, useLayoutEffect } from 'react'
+import styled from 'styled-components'
+import { PopoverContent, usePopover } from '../../../Popover'
+import { SelectContext } from './SelectContext'
+import { useKeyDown, useBlur } from './helpers'
+import { SelectActionType } from './state'
+
+export interface SelectListProps extends CompatibleHTMLProps<HTMLUListElement> {
+  /**
+   * Defaults to false. When true and the list is opened, if an option's value
+   * matches the value in the input, it will automatically be highlighted and
+   * be the starting point for any keyboard navigation of the list.
+   *
+   * This allows you to treat a Select more like a `<select>` than an
+   * `<input/>`, but be mindful that the user is still able to put any
+   * arbitrary value into the input, so if the only valid values for the input
+   * are from the list, your app will need to do that validation on blur or
+   * submit of the form.
+   *
+   * @see Docs https://reacttraining.com/reach-ui/combobox#comboboxlist-persistselection
+   */
+  persistSelection?: boolean
+}
+
+const SelectListContent = forwardRef(
+  (props, forwardedRef: Ref<HTMLUListElement>) => {
+    const { inputRef, optionsRef, popoverRef } = useContext(SelectContext)
+
+    // WEIRD? Reset the options ref every render so that they are always
+    // accurate and ready for keyboard navigation handlers. Using layout
+    // effect to schedule this effect before the SelectOptions push into
+    // the array
+    useLayoutEffect(() => {
+      if (optionsRef) optionsRef.current = []
+      return () => {
+        if (optionsRef) optionsRef.current = []
+      }
+    }, [optionsRef])
+    const handleKeyDown = useKeyDown()
+    const handleBlur = useBlur()
+    const width =
+      inputRef && inputRef.current
+        ? inputRef.current.getBoundingClientRect().width
+        : 'auto'
+
+    return (
+      <PopoverContent
+        width={width}
+        onKeyDown={handleKeyDown}
+        onBlur={handleBlur}
+        ref={popoverRef}
+      >
+        <SelectUL
+          {...props}
+          ref={forwardedRef}
+          data-reach-combobox-list=""
+          role="listbox"
+        />
+      </PopoverContent>
+    )
+  }
+)
+
+SelectListContent.displayName = 'SelectListContent'
+
+export const SelectList = forwardRef(function SelectList(
+  {
+    // when true, and the list opens again, the option with a matching value will be
+    // automatically highlighted.
+    persistSelection = false,
+    ...props
+  }: SelectListProps,
+  forwardedRef: Ref<HTMLUListElement>
+) {
+  const { persistSelectionRef, transition, inputRef, isVisible } = useContext(
+    SelectContext
+  )
+
+  if (persistSelection) {
+    if (persistSelectionRef) persistSelectionRef.current = true
+  }
+
+  const setOpen = (isOpen: boolean) => {
+    if (isOpen) {
+      transition && transition(SelectActionType.FOCUS)
+    } else {
+      transition && transition(SelectActionType.BLUR)
+    }
+  }
+
+  const { popover } = usePopover({
+    arrow: false,
+    content: <SelectListContent {...props} ref={forwardedRef} />,
+    isOpen: isVisible,
+    setOpen,
+    triggerRef: inputRef,
+    triggerToggle: false,
+  })
+  return popover || null
+})
+
+SelectList.displayName = 'SelectList'
+
+const SelectUL = styled.ul`
+  ${reset}
+  list-style-type: none;
+`

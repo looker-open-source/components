@@ -1,4 +1,39 @@
-import { RefObject, SyntheticEvent, useContext, useLayoutEffect } from 'react'
+/*
+
+ MIT License
+
+ Copyright (c) 2019 Looker Data Sciences, Inc.
+
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in all
+ copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ SOFTWARE.
+
+ */
+
+// Much of the following is pulled from https://github.com/reach/reach-ui
+// because their work is fantastic (but is not in TypeScript)
+
+import {
+  KeyboardEvent,
+  RefObject,
+  SyntheticEvent,
+  useContext,
+  useLayoutEffect,
+} from 'react'
 import { SelectActionType, SelectState } from './state'
 import { SelectContext } from './SelectContext'
 
@@ -46,8 +81,8 @@ export function useKeyDown() {
     persistSelectionRef,
   } = useContext(SelectContext)
 
-  return function handleKeyDown(event) {
-    const { current: options } = optionsRef
+  return function handleKeyDown(event: KeyboardEvent<HTMLDivElement>) {
+    const options = optionsRef ? optionsRef.current : []
     switch (event.key) {
       case 'ArrowDown': {
         // Don't scroll the page
@@ -69,12 +104,12 @@ export function useKeyDown() {
                 persistSelectionRef && persistSelectionRef.current,
             })
         } else {
-          const index = options.indexOf(navigationValue)
+          const index = navigationValue ? options.indexOf(navigationValue) : -1
           const atBottom = index === options.length - 1
           if (atBottom) {
             if (autocompletePropRef && autocompletePropRef.current) {
               // Go back to the value the user has typed because we are
-              // autocompleting and they need to be able to get back to what
+              // auto-completing and they need to be able to get back to what
               // they had typed w/o having to backspace out.
               transition &&
                 transition(SelectActionType.NAVIGATE, { value: undefined })
@@ -101,18 +136,18 @@ export function useKeyDown() {
         // If the developer didn't render any options, there's no point in
         // trying to navigate--but seriously what the heck? Give us some
         // options fam.
-        if (!options || options.length === 0) {
+        if (options.length === 0) {
           return
         }
 
         if (state === SelectState.IDLE) {
           transition && transition(SelectActionType.NAVIGATE)
         } else {
-          const index = options.indexOf(navigationValue)
+          const index = navigationValue ? options.indexOf(navigationValue) : -1
           if (index === 0) {
             if (autocompletePropRef && autocompletePropRef.current) {
               // Go back to the value the user has typed because we are
-              // autocompleting and they need to be able to get back to what
+              // auto-completing and they need to be able to get back to what
               // they had typed w/o having to backspace out.
               transition &&
                 transition(SelectActionType.NAVIGATE, { value: undefined })
@@ -124,7 +159,7 @@ export function useKeyDown() {
             }
           } else if (index === -1) {
             // displaying the user's value, so go select the last one
-            const value = options.length ? options[options.length - 1] : null
+            const value = options[options.length - 1]
             transition && transition(SelectActionType.NAVIGATE, { value })
           } else {
             // normal case, select previous
@@ -144,7 +179,7 @@ export function useKeyDown() {
         break
       }
       case 'Enter': {
-        if (state === SelectState.NAVIGATING && navigationValue !== null) {
+        if (state === SelectState.NAVIGATING && navigationValue !== undefined) {
           // don't want to submit forms
           event.preventDefault()
           onSelect && onSelect(navigationValue)
@@ -157,23 +192,15 @@ export function useKeyDown() {
 }
 
 export function useBlur() {
-  const { state, transition, popoverRef, inputRef, buttonRef } = useContext(
-    SelectContext
-  )
+  const { state, transition, popoverRef, inputRef } = useContext(SelectContext)
 
-  return function handleBlur(event) {
+  return function handleBlur() {
     requestAnimationFrame(() => {
-      // we on want to close only if focus rests outside the combobox
-      if (
-        document.activeElement !== inputRef.current &&
-        document.activeElement !== buttonRef.current &&
-        popoverRef.current
-      ) {
-        if (
-          popoverRef &&
-          popoverRef.current &&
-          popoverRef.current.contains(document.activeElement)
-        ) {
+      // we on want to close only if focus rests outside the select
+      const inputCurrent = inputRef ? inputRef.current : null
+      const popoverCurrent = popoverRef ? popoverRef.current : null
+      if (document.activeElement !== inputCurrent && popoverCurrent) {
+        if (popoverCurrent && popoverCurrent.contains(document.activeElement)) {
           // focus landed inside the combobox, keep it open
           if (state !== SelectState.INTERACTING) {
             transition && transition(SelectActionType.INTERACT)

@@ -23,14 +23,13 @@
  SOFTWARE.
 
  */
-import { createContext, Ref, RefObject, MutableRefObject } from 'react'
+import { createContext, RefObject, MutableRefObject } from 'react'
 import { SelectData, SelectTransition } from './state'
 
 export interface SelectContextProps {
   data: SelectData
   inputRef?: RefObject<HTMLInputElement>
-  popoverRef?: Ref<HTMLElement>
-  buttonRef?: Ref<HTMLButtonElement>
+  popoverRef?: RefObject<HTMLDivElement>
   onSelect?: (value: string) => void
   optionsRef?: MutableRefObject<string[]>
   state?: string
