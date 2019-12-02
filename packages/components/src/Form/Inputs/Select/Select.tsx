@@ -27,16 +27,28 @@
 // Much of the following is pulled from https://github.com/reach/reach-ui
 // because their work is fantastic (but is not in TypeScript)
 
-import { CompatibleHTMLProps } from '@looker/design-tokens'
+import {
+  CompatibleHTMLProps,
+  layout,
+  LayoutProps,
+  position,
+  PositionProps,
+  reset,
+  space,
+  SpaceProps,
+} from '@looker/design-tokens'
 import React, { forwardRef, useRef, Ref } from 'react'
 import uuid from 'uuid/v4'
-import { Box } from '../../../Layout'
+import styled from 'styled-components'
 import { isVisible, useFocusManagement } from './helpers'
 import { useReducerMachine } from './state'
 import { SelectContext } from './SelectContext'
 
 export interface SelectProps
-  extends Omit<CompatibleHTMLProps<HTMLDivElement>, 'onSelect'> {
+  extends LayoutProps,
+    PositionProps,
+    SpaceProps,
+    Omit<CompatibleHTMLProps<HTMLDivElement>, 'onSelect'> {
   /**
    * Called with the selection value when the user makes a selection from the
    * list.
@@ -116,19 +128,26 @@ export const Select = forwardRef(function Select(
 
   return (
     <SelectContext.Provider value={context}>
-      <Box
+      <SelectContainer
         {...rest}
         data-reach-combobox=""
         ref={forwardedRef}
-        role="combobox"
+        role="select"
         aria-haspopup="listbox"
         aria-owns={listboxId}
         aria-expanded={context.isVisible}
       >
         {children}
-      </Box>
+      </SelectContainer>
     </SelectContext.Provider>
   )
 })
 
 Select.displayName = 'Select'
+
+const SelectContainer = styled.div`
+  ${reset}
+  ${layout}
+  ${position}
+  ${space}
+`
