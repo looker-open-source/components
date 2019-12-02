@@ -109,7 +109,7 @@
     "lint-staged"
   ],
   "dependencies": {
-    "react-live": "^2.2.1",
+    "react-live": "^2.2.2",
     "react-test-renderer": "^16.12.0"
   }
 }
