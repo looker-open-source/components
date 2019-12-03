@@ -32,6 +32,7 @@
     "d3-color": "^1.4.0",
     "d3-hsv": "^0.1.0",
     "focus-trap": "^5.1.0",
+    "highlight-words-core": "^1.2.2",
     "lodash": "^4.17.15",
     "polished": "^3.4.2",
     "popper.js": "^1.16.0",

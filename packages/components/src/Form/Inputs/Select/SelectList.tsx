@@ -27,7 +27,14 @@
 // Much of the following is pulled from https://github.com/reach/reach-ui
 // because their work is fantastic (but is not in TypeScript)
 
-import { CompatibleHTMLProps, reset } from '@looker/design-tokens'
+import {
+  CompatibleHTMLProps,
+  reset,
+  space,
+  SpaceProps,
+  typography,
+  TypographyProps,
+} from '@looker/design-tokens'
 import React, { forwardRef, Ref, useContext, useLayoutEffect } from 'react'
 import styled from 'styled-components'
 import { PopoverContent, usePopover } from '../../../Popover'
@@ -35,7 +42,10 @@ import { SelectContext } from './SelectContext'
 import { useKeyDown, useBlur } from './helpers'
 import { SelectActionType } from './state'
 
-export interface SelectListProps extends CompatibleHTMLProps<HTMLUListElement> {
+export interface SelectListProps
+  extends SpaceProps,
+    TypographyProps,
+    CompatibleHTMLProps<HTMLUListElement> {
   /**
    * Defaults to false. When true and the list is opened, if an option's value
    * matches the value in the input, it will automatically be highlighted and
@@ -79,6 +89,7 @@ const SelectListContent = forwardRef(
         onKeyDown={handleKeyDown}
         onBlur={handleBlur}
         ref={popoverRef}
+        p="none"
       >
         <SelectUL
           {...props}
@@ -133,5 +144,7 @@ SelectList.displayName = 'SelectList'
 
 const SelectUL = styled.ul`
   ${reset}
+  ${space}
+  ${typography}
   list-style-type: none;
 `

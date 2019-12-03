@@ -52,7 +52,7 @@ const App: React.FC = () => {
         <GlobalStyle />
         <Box m="xlarge">
           <Select openOnFocus={true}>
-            <SelectInput aria-labelledby="demo" readOnly />
+            <SelectInput aria-labelledby="demo" />
             <SelectList aria-labelledby="demo" persistSelection>
               <SelectOption value="Apple" />
               <SelectOption value={`Banana${val}`} />

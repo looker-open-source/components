@@ -27,14 +27,25 @@
 // Much of the following is pulled from https://github.com/reach/reach-ui
 // because their work is fantastic (but is not in TypeScript)
 
-import { CompatibleHTMLProps, reset } from '@looker/design-tokens'
+import {
+  CompatibleHTMLProps,
+  reset,
+  space,
+  SpaceProps,
+  typography,
+  TypographyProps,
+} from '@looker/design-tokens'
 import React, { forwardRef, useEffect, useRef, useContext, Ref } from 'react'
 import styled from 'styled-components'
+import { useHighlightWords } from '../../../utils'
 import { makeHash, wrapEvent } from './helpers'
 import { OptionContext, SelectContext } from './SelectContext'
 import { SelectActionType } from './state'
 
-export interface SelectOptionProps extends CompatibleHTMLProps<HTMLLIElement> {
+export interface SelectOptionProps
+  extends SpaceProps,
+    TypographyProps,
+    CompatibleHTMLProps<HTMLLIElement> {
   /**
    * Optional. If omitted, the `value` will be used as the children like:
    * `<SelectOption value="Seattle, Tacoma, Washington" />`. But if you need
@@ -58,7 +69,7 @@ export interface SelectOptionProps extends CompatibleHTMLProps<HTMLLIElement> {
   value: string
 }
 
-export const SelectOption = forwardRef(function SelectOption(
+export const SelectOptionInternal = forwardRef(function SelectOption(
   { children, value, onClick, ...props }: SelectOptionProps,
   forwardedRef: Ref<HTMLLIElement>
 ) {
@@ -96,13 +107,12 @@ export const SelectOption = forwardRef(function SelectOption(
 
   return (
     <OptionContext.Provider value={value}>
-      <SelectListItem
+      <li
         {...props}
         ref={forwardedRef}
         id={String(makeHash(value))}
         role="option"
         aria-selected={isActive}
-        isActive={isActive}
         // without this the menu will close from `onBlur`, but with it the
         // element can be `document.activeElement` and then our focus checks in
         // onBlur will work as intended
@@ -110,49 +120,56 @@ export const SelectOption = forwardRef(function SelectOption(
         onClick={wrapEvent(handleClick, onClick)}
       >
         {children || <SelectOptionText />}
-      </SelectListItem>
+      </li>
     </OptionContext.Provider>
   )
 })
 
-SelectOption.displayName = 'SelectOption'
+SelectOptionInternal.displayName = 'SelectOptionInternal'
 
-export const SelectListItem = styled.li<{ isActive: boolean }>`
+export const SelectOption = styled(SelectOptionInternal)`
   ${reset}
-  color: ${props => (props.isActive ? 'red' : 'green')};
+  ${space}
+  ${typography}
+  &[aria-selected='true'] {
+    background-color: ${props =>
+      props.theme.colors.semanticColors.primary.lighter}
+  }
 `
+
+SelectOption.defaultProps = {
+  px: 'medium',
+  py: 'xxsmall',
+}
 
 // SelectOptionText
 
 // We don't forwardRef or spread props because we render multiple spans or null,
 // should be fine 🤙
-export function SelectOptionText() {
+export function SelectOptionTextInternal(
+  props: CompatibleHTMLProps<HTMLSpanElement>
+) {
   const value = useContext(OptionContext) || ''
-  // TODO: Implement our own word highlighting
-  // const {
-  //   data: { value: contextValue },
-  // } = useContext(SelectContext)
+  const {
+    data: { value: contextValue },
+  } = useContext(SelectContext)
 
-  // const results = useMemo(
-  //   () =>
-  //     findAll({
-  //       searchWords: escapeRegexp(contextValue).split(/\s+/),
-  //       textToHighlight: value,
-  //     }),
-  //   [contextValue, value]
-  // )
-  const results: Array<{ start: number; end: number; highlight: boolean }> = []
+  const results = useHighlightWords({
+    searchText: contextValue,
+    textToHighlight: value,
+  })
 
   return (
     <>
       {results.length
-        ? results.map((result, index) => {
-            const str = value.slice(result.start, result.end)
+        ? results.map(({ start, end, highlight }, index) => {
+            const str = value.slice(start, end)
             return (
               <span
+                {...props}
                 key={index}
-                data-user-value={result.highlight ? true : undefined}
-                data-suggested-value={result.highlight ? undefined : true}
+                data-user-value={highlight ? true : undefined}
+                data-suggested-value={highlight ? undefined : true}
               >
                 {str}
               </span>
@@ -163,4 +180,8 @@ export function SelectOptionText() {
   )
 }
 
-SelectOptionText.displayName = 'SelectOptionText'
+export const SelectOptionText = styled(SelectOptionTextInternal)`
+  &[data-user-value='true'] {
+    font-weight: bold;
+  }
+`
