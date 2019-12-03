@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- `ChangeHistory` icon fixed
+- `ChangeHistory` and `DragHandleDots` icons fixed
 - Update theme object to use more vibrant colors by default.
 - Improved documentation around installation of NPM package
 
