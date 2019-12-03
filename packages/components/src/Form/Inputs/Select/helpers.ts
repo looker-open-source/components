@@ -68,6 +68,7 @@ export function useKeyDown() {
   const {
     data: { navigationValue },
     onSelect,
+    options: contextOptions,
     optionsRef,
     state,
     transition,
@@ -77,7 +78,7 @@ export function useKeyDown() {
   } = useContext(SelectContext)
 
   return function handleKeyDown(event: KeyboardEvent<HTMLDivElement>) {
-    const options = optionsRef ? optionsRef.current : []
+    const options = optionsRef ? optionsRef.current : contextOptions || []
     switch (event.key) {
       case 'ArrowDown': {
         // Don't scroll the page

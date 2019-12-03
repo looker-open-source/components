@@ -31,6 +31,7 @@ export interface SelectContextProps {
   inputRef?: RefObject<HTMLInputElement>
   popoverRef?: RefObject<HTMLDivElement>
   onSelect?: (value: string) => void
+  options?: string[]
   optionsRef?: MutableRefObject<string[]>
   state?: SelectState
   transition?: SelectTransition

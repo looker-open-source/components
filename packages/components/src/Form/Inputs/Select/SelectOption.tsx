@@ -145,7 +145,6 @@ SelectOptionInternal.displayName = 'SelectOptionInternal'
 
 export const SelectOption = styled(SelectOptionInternal)`
   ${reset}
-  display: flex;
   ${flexbox}
   ${layout}
   ${space}
@@ -157,6 +156,7 @@ export const SelectOption = styled(SelectOptionInternal)`
 `
 
 SelectOption.defaultProps = {
+  display: 'flex',
   px: 'medium',
   py: 'xxsmall',
 }

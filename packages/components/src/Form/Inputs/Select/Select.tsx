@@ -43,6 +43,9 @@ import styled from 'styled-components'
 import { isVisible, useFocusManagement } from './helpers'
 import { useReducerMachine } from './state'
 import { SelectContext } from './SelectContext'
+import { SelectInputProps, SelectInput } from './SelectInput'
+import { SelectList, SelectListProps } from './SelectList'
+import { SelectOption, SelectOptionProps } from './SelectOption'
 
 export interface SelectProps
   extends LayoutProps,
@@ -58,9 +61,29 @@ export interface SelectProps
    * If true, the popover opens when focus is on the text box.
    */
   openOnFocus?: boolean
+  /**
+   * Use options to build a select with props instead of children
+   * (do not use if also using children)
+   */
+  options?: string[]
+  /**
+   * Props for the internal SelectInput component when building a select with the options prop
+   * (do not use if also using children)
+   */
+  inputProps?: SelectInputProps
+  /**
+   * Props for the internal SelectList component when building a select with the options prop
+   * (do not use if also using children)
+   */
+  listProps?: SelectListProps
+  /**
+   * Props for the internal SelectOptions components when building a select with the options prop
+   * (do not use if also using children)
+   */
+  optionProps?: SelectOptionProps
 }
 
-export const Select = forwardRef(function Select(
+export const SelectInternal = forwardRef(function Select(
   {
     // Called whenever the user selects an item from the list
     onSelect,
@@ -70,6 +93,13 @@ export const Select = forwardRef(function Select(
     openOnFocus = false,
 
     children,
+
+    // these props allow the user to build a Select without children
+    inputProps,
+    listProps,
+    optionProps,
+    options,
+
     ...rest
   }: SelectProps,
   forwardedRef: Ref<HTMLDivElement>
@@ -116,7 +146,8 @@ export const Select = forwardRef(function Select(
     listboxId,
     onSelect,
     openOnFocus,
-    optionsRef,
+    options,
+    optionsRef: options ? undefined : optionsRef,
     persistSelectionRef,
     popoverRef,
     readOnlyPropRef,
@@ -124,9 +155,29 @@ export const Select = forwardRef(function Select(
     transition,
   }
 
+  let content = children
+
+  if (options) {
+    if (children) {
+      // eslint-disable-next-line no-console
+      console.warn(`Warning: options and children cannot be used together.
+      If you wish to build your Select with the options prop, do not define any children.`)
+    }
+    content = (
+      <>
+        <SelectInput {...inputProps} />
+        <SelectList {...listProps}>
+          {options.map((option: string) => (
+            <SelectOption {...optionProps} value={option} key={option} />
+          ))}
+        </SelectList>
+      </>
+    )
+  }
+
   return (
     <SelectContext.Provider value={context}>
-      <SelectContainer
+      <div
         {...rest}
         ref={forwardedRef}
         role="select"
@@ -134,15 +185,15 @@ export const Select = forwardRef(function Select(
         aria-owns={listboxId}
         aria-expanded={context.isVisible}
       >
-        {children}
-      </SelectContainer>
+        {content}
+      </div>
     </SelectContext.Provider>
   )
 })
 
-Select.displayName = 'Select'
+SelectInternal.displayName = 'SelectInternal'
 
-const SelectContainer = styled.div`
+export const Select = styled(SelectInternal)`
   ${reset}
   ${layout}
   ${position}

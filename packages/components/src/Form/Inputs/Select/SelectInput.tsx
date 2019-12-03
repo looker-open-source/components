@@ -185,6 +185,7 @@ export const SelectInputInternal = forwardRef(function SelectInput(
       aria-activedescendant={
         navigationValue ? String(makeHash(navigationValue)) : undefined
       }
+      width="100%"
     />
   )
 })
