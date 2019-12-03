@@ -29,6 +29,10 @@
 
 import {
   CompatibleHTMLProps,
+  flexbox,
+  FlexboxProps,
+  layout,
+  LayoutProps,
   reset,
   space,
   SpaceProps,
@@ -37,13 +41,16 @@ import {
 } from '@looker/design-tokens'
 import React, { forwardRef, useEffect, useRef, useContext, Ref } from 'react'
 import styled from 'styled-components'
-import { useHighlightWords } from '../../../utils'
-import { makeHash, wrapEvent } from './helpers'
+import { useHighlightWords, wrapEvent } from '../../../utils'
+import { Icon } from '../../../Icon'
+import { makeHash } from './helpers'
 import { OptionContext, SelectContext } from './SelectContext'
 import { SelectActionType } from './state'
 
 export interface SelectOptionProps
-  extends SpaceProps,
+  extends FlexboxProps,
+    LayoutProps,
+    SpaceProps,
     TypographyProps,
     CompatibleHTMLProps<HTMLLIElement> {
   /**
@@ -57,23 +64,26 @@ export interface SelectOptionProps
    *   <SelectOption value="Apple" />
    *     🍎 <SelectOptionText />
    *   </SelectOption>
-   *
-   * @see Docs https://reacttraining.com/reach-ui/combobox#comboboxoption-children
    */
   children?: React.ReactNode
   /**
    * The value to match against when suggesting.
-   *
-   * @see Docs https://reacttraining.com/reach-ui/combobox#comboboxoption-value
    */
   value: string
 }
 
-export const SelectOptionInternal = forwardRef(function SelectOption(
+export const SelectOptionDetail = styled.div`
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+`
+
+const SelectOptionInternal = forwardRef(function SelectOption(
   { children, value, onClick, ...props }: SelectOptionProps,
   forwardedRef: Ref<HTMLLIElement>
 ) {
   const {
+    data: { value: contextValue },
     onSelect,
     data: { navigationValue },
     transition,
@@ -99,6 +109,7 @@ export const SelectOptionInternal = forwardRef(function SelectOption(
   }, [value, optionsRef])
 
   const isActive = navigationValue === value
+  const isCurrent = contextValue === value
 
   const handleClick = () => {
     onSelect && onSelect(value)
@@ -120,6 +131,11 @@ export const SelectOptionInternal = forwardRef(function SelectOption(
         onClick={wrapEvent(handleClick, onClick)}
       >
         {children || <SelectOptionText />}
+        {isCurrent && (
+          <SelectOptionDetail>
+            <Icon name="Check" />
+          </SelectOptionDetail>
+        )}
       </li>
     </OptionContext.Provider>
   )
@@ -129,6 +145,9 @@ SelectOptionInternal.displayName = 'SelectOptionInternal'
 
 export const SelectOption = styled(SelectOptionInternal)`
   ${reset}
+  display: flex;
+  ${flexbox}
+  ${layout}
   ${space}
   ${typography}
   &[aria-selected='true'] {
@@ -152,16 +171,18 @@ export function SelectOptionTextInternal(
   const value = useContext(OptionContext) || ''
   const {
     data: { value: contextValue },
+    readOnlyPropRef,
   } = useContext(SelectContext)
 
   const results = useHighlightWords({
     searchText: contextValue,
     textToHighlight: value,
   })
+  const noHighlight = readOnlyPropRef && readOnlyPropRef.current
 
   return (
     <>
-      {results.length
+      {results.length && !noHighlight
         ? results.map(({ start, end, highlight }, index) => {
             const str = value.slice(start, end)
             return (

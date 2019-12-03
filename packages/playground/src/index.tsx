@@ -52,7 +52,11 @@ const App: React.FC = () => {
         <GlobalStyle />
         <Box m="xlarge">
           <Select openOnFocus={true}>
-            <SelectInput aria-labelledby="demo" />
+            <SelectInput
+              aria-labelledby="demo"
+              width={240}
+              placeholder="Placeholder text"
+            />
             <SelectList aria-labelledby="demo" persistSelection>
               <SelectOption value="Apple" />
               <SelectOption value={`Banana${val}`} />
@@ -62,7 +66,7 @@ const App: React.FC = () => {
             </SelectList>
           </Select>
           <Divider my="xlarge" />
-          <InputText />
+          <InputText width={240} />
         </Box>
       </ThemeProvider>
     </>

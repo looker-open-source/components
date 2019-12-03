@@ -52,14 +52,10 @@ export interface SelectProps
   /**
    * Called with the selection value when the user makes a selection from the
    * list.
-   *
-   * @see Docs https://reacttraining.com/reach-ui/combobox#combobox-onselect
    */
   onSelect?: (value: string) => void
   /**
    * If true, the popover opens when focus is on the text box.
-   *
-   * @see Docs https://reacttraining.com/reach-ui/combobox#combobox-openonfocus
    */
   openOnFocus?: boolean
 }
@@ -100,6 +96,7 @@ export const Select = forwardRef(function Select(
   // can use it anywhere else 😛. Another new trick for me and I'm excited
   // about this one too!
   const autocompletePropRef = useRef(true)
+  const readOnlyPropRef = useRef(false)
 
   const persistSelectionRef = useRef(false)
 
@@ -122,6 +119,7 @@ export const Select = forwardRef(function Select(
     optionsRef,
     persistSelectionRef,
     popoverRef,
+    readOnlyPropRef,
     state,
     transition,
   }
@@ -130,7 +128,6 @@ export const Select = forwardRef(function Select(
     <SelectContext.Provider value={context}>
       <SelectContainer
         {...rest}
-        data-reach-combobox=""
         ref={forwardedRef}
         role="select"
         aria-haspopup="listbox"

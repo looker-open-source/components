@@ -27,13 +27,7 @@
 // Much of the following is pulled from https://github.com/reach/reach-ui
 // because their work is fantastic (but is not in TypeScript)
 
-import {
-  KeyboardEvent,
-  RefObject,
-  SyntheticEvent,
-  useContext,
-  useLayoutEffect,
-} from 'react'
+import { KeyboardEvent, RefObject, useContext, useLayoutEffect } from 'react'
 import { SelectActionType, SelectState } from './state'
 import { SelectContext } from './SelectContext'
 
@@ -46,7 +40,7 @@ const visibleStates = [
 export const isVisible = (state: SelectState) => visibleStates.includes(state)
 
 // Move focus back to the input if we start navigating w/ the
-// keyboard after focus has moved to any focusable content in
+// keyboard after focus has moved to any focus-able content in
 // the popup.
 
 export function useFocusManagement(
@@ -79,6 +73,7 @@ export function useKeyDown() {
     transition,
     autocompletePropRef,
     persistSelectionRef,
+    readOnlyPropRef,
   } = useContext(SelectContext)
 
   return function handleKeyDown(event: KeyboardEvent<HTMLDivElement>) {
@@ -178,6 +173,19 @@ export function useKeyDown() {
         }
         break
       }
+      case ' ':
+      case 'Spacebar': {
+        if (
+          readOnlyPropRef &&
+          readOnlyPropRef.current &&
+          state === SelectState.NAVIGATING &&
+          navigationValue !== undefined
+        ) {
+          onSelect && onSelect(navigationValue)
+          transition && transition(SelectActionType.SELECT_WITH_KEYBOARD)
+        }
+        break
+      }
       case 'Enter': {
         if (state === SelectState.NAVIGATING && navigationValue !== undefined) {
           // don't want to submit forms
@@ -201,12 +209,12 @@ export function useBlur() {
       const popoverCurrent = popoverRef ? popoverRef.current : null
       if (document.activeElement !== inputCurrent && popoverCurrent) {
         if (popoverCurrent && popoverCurrent.contains(document.activeElement)) {
-          // focus landed inside the combobox, keep it open
+          // focus landed inside the select, keep it open
           if (state !== SelectState.INTERACTING) {
             transition && transition(SelectActionType.INTERACT)
           }
         } else {
-          // focus landed outside the combobox, close it.
+          // focus landed outside the select, close it.
           transition && transition(SelectActionType.BLUR)
         }
       }
@@ -215,11 +223,10 @@ export function useBlur() {
 }
 
 // We don't want to track the active descendant with indexes because nothing is
-// more annoying in a combobox than having it change values RIGHT AS YOU HIT
+// more annoying in a select than having it change values RIGHT AS YOU HIT
 // ENTER. That only happens if you use the index as your data, rather than
 // *your data as your data*. We use this to generate a unique ID based on the
-// value of each item.  This function is short, sweet, and good enough™ (I also
-// don't know how it works, tbqh)
+// value of each item.  This function is short, sweet, and good enough™
 // https://stackoverflow.com/questions/6122571/simple-non-secure-hash-function-for-javascript
 export function makeHash(str: string) {
   let hash = 0
@@ -232,16 +239,4 @@ export function makeHash(str: string) {
     hash = hash & hash
   }
   return hash
-}
-
-export function wrapEvent<E extends SyntheticEvent>(
-  ourHandler: (e: E) => void,
-  theirHandler?: (e: E) => void
-) {
-  return (event: E) => {
-    theirHandler && theirHandler(event)
-    if (!event.defaultPrevented) {
-      return ourHandler(event)
-    }
-  }
 }

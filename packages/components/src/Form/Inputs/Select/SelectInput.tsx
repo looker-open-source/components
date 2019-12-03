@@ -35,9 +35,10 @@ import React, {
   useContext,
   Ref,
 } from 'react'
-import { useForkedRef } from '../../../utils'
+import styled from 'styled-components'
+import { useForkedRef, wrapEvent } from '../../../utils'
 import { InputText, InputTextProps } from '../InputText'
-import { makeHash, useBlur, useKeyDown, wrapEvent } from './helpers'
+import { makeHash, useBlur, useKeyDown } from './helpers'
 import { SelectContext } from './SelectContext'
 import { SelectActionType, SelectState } from './state'
 
@@ -50,8 +51,6 @@ export interface SelectInputProps extends Omit<InputTextProps, 'value'> {
    * However, if the user is likely to want to tweak the value, leave this
    * false, like a google search--the user is likely wanting to edit their
    * search, not replace it completely.
-   *
-   * @see Docs https://reacttraining.com/reach-ui/combobox#comboboxinput-selectonclick
    */
   selectOnClick?: boolean
   /**
@@ -63,23 +62,19 @@ export interface SelectInputProps extends Omit<InputTextProps, 'value'> {
    * want to populate some other state (like the recipient selector in Gmail).
    * But if your input is more like a normal `<input type="text"/>`, then leave
    * the `true` default.
-   *
-   * @see Docs https://reacttraining.com/reach-ui/combobox#comboboxinput-autocomplete
    */
   autocomplete?: boolean
-  /**
-   * @see Docs https://reacttraining.com/reach-ui/combobox#comboboxinput-value
-   */
   value?: string
 }
 
-export const SelectInput = forwardRef(function SelectInput(
+export const SelectInputInternal = forwardRef(function SelectInput(
   {
     // highlights all the text in the box on click when true
     selectOnClick = false,
 
     // updates the value in the input when navigating w/ the keyboard
     autocomplete = true,
+    readOnly = false,
 
     // wrapped events
     onClick,
@@ -101,6 +96,7 @@ export const SelectInput = forwardRef(function SelectInput(
     transition,
     listboxId,
     autocompletePropRef,
+    readOnlyPropRef,
     openOnFocus,
   } = useContext(SelectContext)
 
@@ -118,8 +114,9 @@ export const SelectInput = forwardRef(function SelectInput(
 
   useLayoutEffect(() => {
     if (autocompletePropRef) autocompletePropRef.current = autocomplete
+    if (readOnlyPropRef) readOnlyPropRef.current = readOnly
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [autocomplete])
+  }, [autocomplete, readOnly])
 
   const handleValueChange = (value: string) => {
     if (value.trim() === '') {
@@ -175,9 +172,9 @@ export const SelectInput = forwardRef(function SelectInput(
   return (
     <InputText
       {...props}
-      data-reach-combobox-input=""
       ref={ref}
       value={inputValue}
+      readOnly={readOnly}
       onClick={wrapEvent(handleClick, onClick)}
       onBlur={wrapEvent(handleBlur, onBlur)}
       onFocus={wrapEvent(handleFocus, onFocus)}
@@ -192,4 +189,25 @@ export const SelectInput = forwardRef(function SelectInput(
   )
 })
 
-SelectInput.displayName = 'SelectInput'
+SelectInputInternal.displayName = 'SelectInputInternal'
+
+const indicatorRaw = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M7.41 8L12 12.58L16.59 8L18 9.41L12 15.41L6 9.41L7.41 8Z" fill="#1C2125"/>
+</svg>`
+const indicatorSize = '1rem'
+const indicatorPadding = '.25rem'
+const indicatorPrefix = 'data:image/svg+xml;base64,'
+export const selectIndicatorBG = (color: string) =>
+  typeof window !== 'undefined' &&
+  `url('${indicatorPrefix}${window.btoa(
+    indicatorRaw.replace('#1C2125', color)
+  )}')`
+
+export const SelectInput = styled(SelectInputInternal)`
+  background-image: ${props =>
+    selectIndicatorBG(props.theme.colors.palette.charcoal500)};
+  background-repeat: no-repeat, repeat;
+  background-position: right ${indicatorPadding} center, 0 0;
+  background-size: ${indicatorSize}, 100%;
+  padding-right: calc(2 * ${indicatorPadding} + ${indicatorSize});
+`

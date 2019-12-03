@@ -19,7 +19,9 @@ export function useHighlightWords({
   return useMemo(
     () =>
       findAll({
-        searchWords: searchText.split(/\s+/),
+        searchWords: searchText
+          .replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+          .split(/\s+/),
         textToHighlight,
       }),
     [searchText, textToHighlight]

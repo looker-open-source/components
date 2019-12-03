@@ -56,55 +56,11 @@ export interface SelectListProps
    * arbitrary value into the input, so if the only valid values for the input
    * are from the list, your app will need to do that validation on blur or
    * submit of the form.
-   *
-   * @see Docs https://reacttraining.com/reach-ui/combobox#comboboxlist-persistselection
    */
   persistSelection?: boolean
 }
 
-const SelectListContent = forwardRef(
-  (props, forwardedRef: Ref<HTMLUListElement>) => {
-    const { inputRef, optionsRef, popoverRef } = useContext(SelectContext)
-
-    // WEIRD? Reset the options ref every render so that they are always
-    // accurate and ready for keyboard navigation handlers. Using layout
-    // effect to schedule this effect before the SelectOptions push into
-    // the array
-    useLayoutEffect(() => {
-      if (optionsRef) optionsRef.current = []
-      return () => {
-        if (optionsRef) optionsRef.current = []
-      }
-    }, [optionsRef])
-    const handleKeyDown = useKeyDown()
-    const handleBlur = useBlur()
-    const width =
-      inputRef && inputRef.current
-        ? inputRef.current.getBoundingClientRect().width
-        : 'auto'
-
-    return (
-      <PopoverContent
-        width={width}
-        onKeyDown={handleKeyDown}
-        onBlur={handleBlur}
-        ref={popoverRef}
-        p="none"
-      >
-        <SelectUL
-          {...props}
-          ref={forwardedRef}
-          data-reach-combobox-list=""
-          role="listbox"
-        />
-      </PopoverContent>
-    )
-  }
-)
-
-SelectListContent.displayName = 'SelectListContent'
-
-export const SelectList = forwardRef(function SelectList(
+export const SelectListInternal = forwardRef(function SelectList(
   {
     // when true, and the list opens again, the option with a matching value will be
     // automatically highlighted.
@@ -113,13 +69,50 @@ export const SelectList = forwardRef(function SelectList(
   }: SelectListProps,
   forwardedRef: Ref<HTMLUListElement>
 ) {
-  const { persistSelectionRef, transition, inputRef, isVisible } = useContext(
-    SelectContext
-  )
+  const {
+    persistSelectionRef,
+    transition,
+    inputRef,
+    isVisible,
+    optionsRef,
+    popoverRef,
+  } = useContext(SelectContext)
 
   if (persistSelection) {
     if (persistSelectionRef) persistSelectionRef.current = true
   }
+
+  // WEIRD? Reset the options ref every render so that they are always
+  // accurate and ready for keyboard navigation handlers. Using layout
+  // effect to schedule this effect before the SelectOptions push into
+  // the array
+  useLayoutEffect(() => {
+    if (optionsRef) optionsRef.current = []
+    return () => {
+      if (optionsRef) optionsRef.current = []
+    }
+    // Without isVisible in the dependency array,
+    // updated options won't go into the optionsRef array
+  }, [optionsRef, isVisible])
+
+  const handleKeyDown = useKeyDown()
+  const handleBlur = useBlur()
+  const width =
+    inputRef && inputRef.current
+      ? inputRef.current.getBoundingClientRect().width
+      : 'auto'
+
+  const content = (
+    <PopoverContent
+      width={width}
+      onKeyDown={handleKeyDown}
+      onBlur={handleBlur}
+      ref={popoverRef}
+      p="none"
+    >
+      <ul {...props} ref={forwardedRef} role="listbox" />
+    </PopoverContent>
+  )
 
   const setOpen = (isOpen: boolean) => {
     if (isOpen) {
@@ -131,7 +124,7 @@ export const SelectList = forwardRef(function SelectList(
 
   const { popover } = usePopover({
     arrow: false,
-    content: <SelectListContent {...props} ref={forwardedRef} />,
+    content,
     isOpen: isVisible,
     setOpen,
     triggerRef: inputRef,
@@ -140,11 +133,15 @@ export const SelectList = forwardRef(function SelectList(
   return popover || null
 })
 
-SelectList.displayName = 'SelectList'
+SelectListInternal.displayName = 'SelectListInternal'
 
-const SelectUL = styled.ul`
+export const SelectList = styled(SelectListInternal)`
   ${reset}
-  ${space}
   ${typography}
   list-style-type: none;
+  ${space}
 `
+
+SelectList.defaultProps = {
+  py: 'xsmall',
+}

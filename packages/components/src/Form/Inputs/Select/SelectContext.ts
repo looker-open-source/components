@@ -24,7 +24,7 @@
 
  */
 import { createContext, RefObject, MutableRefObject } from 'react'
-import { SelectData, SelectTransition } from './state'
+import { SelectData, SelectTransition, SelectState } from './state'
 
 export interface SelectContextProps {
   data: SelectData
@@ -32,11 +32,12 @@ export interface SelectContextProps {
   popoverRef?: RefObject<HTMLDivElement>
   onSelect?: (value: string) => void
   optionsRef?: MutableRefObject<string[]>
-  state?: string
+  state?: SelectState
   transition?: SelectTransition
   listboxId?: string
   autocompletePropRef?: MutableRefObject<boolean>
   persistSelectionRef?: MutableRefObject<boolean>
+  readOnlyPropRef?: MutableRefObject<boolean>
   isVisible?: boolean
   openOnFocus?: boolean
 }
