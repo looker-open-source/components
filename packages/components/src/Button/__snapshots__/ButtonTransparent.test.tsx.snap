@@ -45,7 +45,7 @@ exports[`ButtonTransparent Focus split - on tab not on click 1`] = `
 .c1 {
   background: transparent;
   border: 1px solid transparent;
-  color: #64518A;
+  color: #6C43E0;
 }
 
 .c1:active,
@@ -66,7 +66,7 @@ exports[`ButtonTransparent Focus split - on tab not on click 1`] = `
 .c1[disabled]:hover,
 .c1[disabled]:active,
 .c1[disabled]:focus {
-  color: #64518A;
+  color: #6C43E0;
 }
 
 <button
@@ -78,7 +78,7 @@ exports[`ButtonTransparent Focus split - on tab not on click 1`] = `
 
 exports[`ButtonTransparent Focus split - on tab not on click 2`] = `
 <button
-  class="sc-bxivhb cyPJeD sc-ifAKCX sc-EHOje fPsgCk"
+  class="sc-bxivhb cwuduv sc-ifAKCX sc-EHOje ewBWhA"
 >
   focus
 </button>
@@ -129,7 +129,7 @@ exports[`ButtonTransparent has the correct style 1`] = `
 .c1 {
   background: transparent;
   border: 1px solid transparent;
-  color: #64518A;
+  color: #6C43E0;
 }
 
 .c1:active,
@@ -150,7 +150,7 @@ exports[`ButtonTransparent has the correct style 1`] = `
 .c1[disabled]:hover,
 .c1[disabled]:active,
 .c1[disabled]:focus {
-  color: #64518A;
+  color: #6C43E0;
 }
 
 <button
