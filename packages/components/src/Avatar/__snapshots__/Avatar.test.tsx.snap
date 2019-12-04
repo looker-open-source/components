@@ -1,0 +1,972 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AvatarCombo renders Avatar and its badge 1`] = `
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-size: 0.875rem;
+  height: 40px;
+  width: 40px;
+  background-color: #4F2ABA;
+  width: large;
+  height: large;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #FFFFFF;
+  border-radius: 100%;
+  display: grid;
+  justify-items: center;
+  overflow: hidden;
+  grid-template-areas: 'avatar';
+}
+
+.c5 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-size: 0.75rem;
+  height: 20px;
+  width: 20px;
+  width: xsmall;
+  height: xsmall;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #FFFFFF;
+  border-radius: 100%;
+  display: grid;
+  justify-items: center;
+  overflow: hidden;
+  grid-template-areas: 'avatar';
+}
+
+.c4 {
+  width: 100%;
+  height: 100%;
+  grid-area: avatar;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.c3 {
+  grid-area: avatar;
+  color: #FFFFFF;
+}
+
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #4F2ABA;
+  background-color: #4F2ABA;
+  border: solid 1px currentColor;
+}
+
+.c7 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #4F2ABA;
+  width: 9px;
+  height: 9px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c6 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #4F2ABA;
+  width: xsmall;
+  height: xsmall;
+  border: solid 1px currentColor;
+  bottom: -4px;
+  right: -4px;
+  position: absolute;
+}
+
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  height: 40px;
+  position: relative;
+  width: 40px;
+}
+
+<div
+  className="c0"
+>
+  <div
+    className="c1 c2"
+    size="large"
+  >
+    <div
+      className="c3"
+      color="palette.purple500"
+    >
+      JS
+    </div>
+    <img
+      className="c4"
+      color="palette.purple500"
+      src="https://media.istockphoto.com/vectors/noisy-glitch-pixelated-seamless-pattern-vector-id1051777344"
+    />
+  </div>
+  <div
+    className="c5 c6"
+    size="xsmall"
+  >
+    <div
+      className="c7 "
+      color="palette.purple500"
+      size={9}
+    >
+      <svg
+        fill="currentColor"
+        height="100%"
+        viewBox="0 0 24 24"
+        width="100%"
+      >
+        <title>
+          Code
+        </title>
+        <path
+          d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"
+          fill="currentColor"
+        />
+      </svg>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`AvatarCombo renders Avatar initials and badge with Code icon 1`] = `
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-size: 0.875rem;
+  height: 40px;
+  width: 40px;
+  background-color: #4F2ABA;
+  width: large;
+  height: large;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #FFFFFF;
+  border-radius: 100%;
+  display: grid;
+  justify-items: center;
+  overflow: hidden;
+  grid-template-areas: 'avatar';
+}
+
+.c5 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-size: 0.75rem;
+  height: 20px;
+  width: 20px;
+  width: xsmall;
+  height: xsmall;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #FFFFFF;
+  border-radius: 100%;
+  display: grid;
+  justify-items: center;
+  overflow: hidden;
+  grid-template-areas: 'avatar';
+}
+
+.c4 {
+  width: 100%;
+  height: 100%;
+  grid-area: avatar;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.c3 {
+  grid-area: avatar;
+  color: #FFFFFF;
+}
+
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #4F2ABA;
+  background-color: #4F2ABA;
+  border: solid 1px currentColor;
+}
+
+.c7 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #4F2ABA;
+  width: 9px;
+  height: 9px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c6 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #4F2ABA;
+  width: xsmall;
+  height: xsmall;
+  border: solid 1px currentColor;
+  bottom: -4px;
+  right: -4px;
+  position: absolute;
+}
+
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  height: 40px;
+  position: relative;
+  width: 40px;
+}
+
+<div
+  className="c0"
+>
+  <div
+    className="c1 c2"
+    size="large"
+  >
+    <div
+      className="c3"
+      color="palette.purple500"
+    >
+      JS
+    </div>
+    <img
+      className="c4"
+      color="palette.purple500"
+      src="https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank"
+    />
+  </div>
+  <div
+    className="c5 c6"
+    size="xsmall"
+  >
+    <div
+      className="c7 "
+      color="palette.purple500"
+      size={9}
+    >
+      <svg
+        fill="currentColor"
+        height="100%"
+        viewBox="0 0 24 24"
+        width="100%"
+      >
+        <title>
+          Logo Rings
+        </title>
+        <g
+          clipPath="url(#LogoRings_svg__clip0)"
+          fill="currentColor"
+        >
+          <path
+            d="M13.594 11.467c-.97 0-1.881.263-2.666.72l.762 1.006a4.035 4.035 0 011.905-.477 4.067 4.067 0 014.063 4.063 4.067 4.067 0 01-4.063 4.062 4.067 4.067 0 01-4.062-4.062c0-1.103.442-2.103 1.158-2.835l-.76-1.005a5.295 5.295 0 00-1.648 3.84 5.319 5.319 0 005.312 5.312 5.319 5.319 0 005.313-5.312 5.319 5.319 0 00-5.313-5.313v.001zM10.155 9.28c0 .49-.165.943-.44 1.308l.773 1.02a3.417 3.417 0 00.266-4.334l-.916.877c.2.33.317.715.317 1.128v.001zM7.968 11.468A2.19 2.19 0 015.78 9.28a2.19 2.19 0 012.188-2.187c.337 0 .657.079.943.216l.942-.9a3.417 3.417 0 00-1.885-.566A3.442 3.442 0 004.53 9.28a3.442 3.442 0 003.438 3.438c.545 0 1.06-.132 1.52-.36l-.775-1.024a2.17 2.17 0 01-.745.134zM11.405 4.593c0-.69.561-1.25 1.25-1.25.69 0 1.25.56 1.25 1.25a1.252 1.252 0 01-1.6 1.199l-.965.923c.383.238.833.378 1.315.378 1.379 0 2.5-1.122 2.5-2.5 0-1.379-1.121-2.5-2.5-2.5a2.503 2.503 0 00-2.5 2.5c0 .443.118.859.32 1.22l.967-.925a1.236 1.236 0 01-.037-.296z"
+          />
+          <path
+            d="M10.487 11.609a3.453 3.453 0 01-1 .749l.44.58c.302-.287.637-.54 1-.751l-.44-.58v.002zM10.754 7.275l.586-.56a2.515 2.515 0 01-.865-.903l-.623.595c.352.232.657.526.903.868z"
+          />
+          <path
+            d="M11.688 13.194l-.762-1.006c-.363.211-.697.464-1 .752l.762 1.005a4.107 4.107 0 01.999-.75zM9.838 8.152l.916-.877a3.463 3.463 0 00-.902-.867l-.942.901a2.2 2.2 0 01.928.843zM10.489 11.608l-.773-1.02c-.253.338-.6.599-1.003.745l.775 1.024a3.461 3.461 0 001-.749zM11.342 6.716l.965-.924a1.252 1.252 0 01-.864-.903l-.966.925c.207.37.506.68.865.902z"
+          />
+        </g>
+        <defs>
+          <clipPath
+            id="LogoRings_svg__clip0"
+          >
+            <path
+              d="M0 0h20v20H0z"
+              fill="#fff"
+              transform="translate(2 2)"
+            />
+          </clipPath>
+        </defs>
+      </svg>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`AvatarCombo renders AvatarIcon and badge if user is not available and updates icon if passed. 1`] = `
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-size: 0.75rem;
+  height: 20px;
+  width: 20px;
+  width: xsmall;
+  height: xsmall;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #FFFFFF;
+  border-radius: 100%;
+  display: grid;
+  justify-items: center;
+  overflow: hidden;
+  grid-template-areas: 'avatar';
+}
+
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-size: 0.875rem;
+  height: 40px;
+  width: 40px;
+  width: large;
+  height: large;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #FFFFFF;
+  border-radius: 100%;
+  display: grid;
+  justify-items: center;
+  overflow: hidden;
+  grid-template-areas: 'avatar';
+}
+
+.c6 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #4F2ABA;
+  width: 9px;
+  height: 9px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #4F2ABA;
+  width: 16px;
+  height: 16px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #4F2ABA;
+  width: large;
+  height: large;
+  border: solid 1px currentColor;
+}
+
+.c5 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #4F2ABA;
+  width: xsmall;
+  height: xsmall;
+  border: solid 1px currentColor;
+  bottom: -4px;
+  right: -4px;
+  position: absolute;
+}
+
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  height: 40px;
+  position: relative;
+  width: 40px;
+}
+
+<div
+  className="c0"
+>
+  <div
+    className="c1 c2"
+    size="large"
+  >
+    <div
+      className="c3 "
+      color="palette.purple500"
+      size={16}
+    >
+      <svg
+        fill="currentColor"
+        height="100%"
+        viewBox="0 0 24 24"
+        width="100%"
+      >
+        <title>
+          Code
+        </title>
+        <path
+          d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"
+          fill="currentColor"
+        />
+      </svg>
+    </div>
+  </div>
+  <div
+    className="c4 c5"
+    size="xsmall"
+  >
+    <div
+      className="c6 "
+      color="palette.purple500"
+      size={9}
+    >
+      <svg
+        fill="currentColor"
+        height="100%"
+        viewBox="0 0 24 24"
+        width="100%"
+      >
+        <title>
+          Logo Rings
+        </title>
+        <g
+          clipPath="url(#LogoRings_svg__clip0)"
+          fill="currentColor"
+        >
+          <path
+            d="M13.594 11.467c-.97 0-1.881.263-2.666.72l.762 1.006a4.035 4.035 0 011.905-.477 4.067 4.067 0 014.063 4.063 4.067 4.067 0 01-4.063 4.062 4.067 4.067 0 01-4.062-4.062c0-1.103.442-2.103 1.158-2.835l-.76-1.005a5.295 5.295 0 00-1.648 3.84 5.319 5.319 0 005.312 5.312 5.319 5.319 0 005.313-5.312 5.319 5.319 0 00-5.313-5.313v.001zM10.155 9.28c0 .49-.165.943-.44 1.308l.773 1.02a3.417 3.417 0 00.266-4.334l-.916.877c.2.33.317.715.317 1.128v.001zM7.968 11.468A2.19 2.19 0 015.78 9.28a2.19 2.19 0 012.188-2.187c.337 0 .657.079.943.216l.942-.9a3.417 3.417 0 00-1.885-.566A3.442 3.442 0 004.53 9.28a3.442 3.442 0 003.438 3.438c.545 0 1.06-.132 1.52-.36l-.775-1.024a2.17 2.17 0 01-.745.134zM11.405 4.593c0-.69.561-1.25 1.25-1.25.69 0 1.25.56 1.25 1.25a1.252 1.252 0 01-1.6 1.199l-.965.923c.383.238.833.378 1.315.378 1.379 0 2.5-1.122 2.5-2.5 0-1.379-1.121-2.5-2.5-2.5a2.503 2.503 0 00-2.5 2.5c0 .443.118.859.32 1.22l.967-.925a1.236 1.236 0 01-.037-.296z"
+          />
+          <path
+            d="M10.487 11.609a3.453 3.453 0 01-1 .749l.44.58c.302-.287.637-.54 1-.751l-.44-.58v.002zM10.754 7.275l.586-.56a2.515 2.515 0 01-.865-.903l-.623.595c.352.232.657.526.903.868z"
+          />
+          <path
+            d="M11.688 13.194l-.762-1.006c-.363.211-.697.464-1 .752l.762 1.005a4.107 4.107 0 01.999-.75zM9.838 8.152l.916-.877a3.463 3.463 0 00-.902-.867l-.942.901a2.2 2.2 0 01.928.843zM10.489 11.608l-.773-1.02c-.253.338-.6.599-1.003.745l.775 1.024a3.461 3.461 0 001-.749zM11.342 6.716l.965-.924a1.252 1.252 0 01-.864-.903l-.966.925c.207.37.506.68.865.902z"
+          />
+        </g>
+        <defs>
+          <clipPath
+            id="LogoRings_svg__clip0"
+          >
+            <path
+              d="M0 0h20v20H0z"
+              fill="#fff"
+              transform="translate(2 2)"
+            />
+          </clipPath>
+        </defs>
+      </svg>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`AvatarIcon renders  1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-size: 0.875rem;
+  height: 40px;
+  width: 40px;
+  width: large;
+  height: large;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #FFFFFF;
+  border-radius: 100%;
+  display: grid;
+  justify-items: center;
+  overflow: hidden;
+  grid-template-areas: 'avatar';
+}
+
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #4F2ABA;
+  width: 16px;
+  height: 16px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #4F2ABA;
+  width: large;
+  height: large;
+  border: solid 1px currentColor;
+}
+
+<div
+  className="c0 c1"
+  size="large"
+>
+  <div
+    className="c2 "
+    color="palette.purple500"
+    size={16}
+  >
+    <svg
+      fill="currentColor"
+      height="100%"
+      viewBox="0 0 24 24"
+      width="100%"
+    >
+      <title>
+        Users
+      </title>
+      <path
+        d="M16.5 13c-1.2 0-3.07.34-4.5 1-1.43-.67-3.3-1-4.5-1C5.33 13 1 14.08 1 16.25V19h22v-2.75c0-2.17-4.33-3.25-6.5-3.25zm-4 4.5h-10v-1.25c0-.54 2.56-1.75 5-1.75s5 1.21 5 1.75v1.25zm9 0H14v-1.25c0-.46-.2-.86-.52-1.22.88-.3 1.96-.53 3.02-.53 2.44 0 5 1.21 5 1.75v1.25zM7.5 12c1.93 0 3.5-1.57 3.5-3.5S9.43 5 7.5 5 4 6.57 4 8.5 5.57 12 7.5 12zm0-5.5c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 5.5c1.93 0 3.5-1.57 3.5-3.5S18.43 5 16.5 5 13 6.57 13 8.5s1.57 3.5 3.5 3.5zm0-5.5c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2z"
+        fill="currentColor"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`AvatarIcon renders different icon if specified 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-size: 0.875rem;
+  height: 40px;
+  width: 40px;
+  width: large;
+  height: large;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #FFFFFF;
+  border-radius: 100%;
+  display: grid;
+  justify-items: center;
+  overflow: hidden;
+  grid-template-areas: 'avatar';
+}
+
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #4F2ABA;
+  width: 16px;
+  height: 16px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #4F2ABA;
+  width: large;
+  height: large;
+  border: solid 1px currentColor;
+}
+
+<div
+  className="c0 c1"
+  size="large"
+>
+  <div
+    className="c2 "
+    color="palette.purple500"
+    size={16}
+  >
+    <svg
+      fill="currentColor"
+      height="100%"
+      viewBox="0 0 24 24"
+      width="100%"
+    >
+      <title>
+        Code
+      </title>
+      <path
+        d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"
+        fill="currentColor"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`AvatarUser shows initials if has broken url as avatar_url 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-size: 0.875rem;
+  height: 40px;
+  width: 40px;
+  background-color: #4F2ABA;
+  width: large;
+  height: large;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #FFFFFF;
+  border-radius: 100%;
+  display: grid;
+  justify-items: center;
+  overflow: hidden;
+  grid-template-areas: 'avatar';
+}
+
+.c3 {
+  width: 100%;
+  height: 100%;
+  grid-area: avatar;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.c2 {
+  grid-area: avatar;
+  color: #FFFFFF;
+}
+
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #4F2ABA;
+  background-color: #4F2ABA;
+  border: solid 1px currentColor;
+}
+
+<div
+  className="c0 c1"
+  size="large"
+>
+  <div
+    className="c2"
+    color="palette.purple500"
+  >
+    JS
+  </div>
+  <img
+    className="c3"
+    color="palette.purple500"
+    src="https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank"
+  />
+</div>
+`;
+
+exports[`AvatarUser shows initials if it has null as  avatar_url  1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-size: 0.875rem;
+  height: 40px;
+  width: 40px;
+  background-color: #4F2ABA;
+  width: large;
+  height: large;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #FFFFFF;
+  border-radius: 100%;
+  display: grid;
+  justify-items: center;
+  overflow: hidden;
+  grid-template-areas: 'avatar';
+}
+
+.c2 {
+  grid-area: avatar;
+  color: #FFFFFF;
+}
+
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #4F2ABA;
+  background-color: #4F2ABA;
+  border: solid 1px currentColor;
+}
+
+<div
+  className="c0 c1"
+  size="large"
+>
+  <div
+    className="c2"
+    color="palette.purple500"
+  >
+    JS
+  </div>
+</div>
+`;
+
+exports[`AvatarUser shows user profile picture if it has good avatar_url  1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-size: 0.875rem;
+  height: 40px;
+  width: 40px;
+  background-color: #4F2ABA;
+  width: large;
+  height: large;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #FFFFFF;
+  border-radius: 100%;
+  display: grid;
+  justify-items: center;
+  overflow: hidden;
+  grid-template-areas: 'avatar';
+}
+
+.c3 {
+  width: 100%;
+  height: 100%;
+  grid-area: avatar;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.c2 {
+  grid-area: avatar;
+  color: #FFFFFF;
+}
+
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  color: #4F2ABA;
+  background-color: #4F2ABA;
+  border: solid 1px currentColor;
+}
+
+<div
+  className="c0 c1"
+  size="large"
+>
+  <div
+    className="c2"
+    color="palette.purple500"
+  >
+    JS
+  </div>
+  <img
+    className="c3"
+    color="palette.purple500"
+    src="https://media.istockphoto.com/vectors/noisy-glitch-pixelated-seamless-pattern-vector-id1051777344"
+  />
+</div>
+`;

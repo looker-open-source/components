@@ -25,6 +25,9 @@
  */
 
 import {
+  AvatarCombo,
+  AvatarIcon,
+  AvatarUser,
   Banner,
   Box,
   Button,
@@ -117,7 +120,9 @@ export const allComponents = {
   ThemeProvider,
 
   palette,
-
+  AvatarCombo,
+  AvatarIcon,
+  AvatarUser,
   Banner,
   Box,
   Button,

@@ -9,12 +9,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Avatar components and documentation - AvatarIcon, AvatarUser, AvatarCombo
+
 - Instructions for documenting new components in WWW
 
 ### Changed
 
 - `ChangeHistory` icon fixed
 - Update theme object to use more vibrant colors by default.
+- updated documentation to include Avatar
 - Improved documentation around installation of NPM package
 
 ### Fixed
