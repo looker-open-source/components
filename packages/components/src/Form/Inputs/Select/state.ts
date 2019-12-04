@@ -29,6 +29,7 @@
 
 import { Reducer, useReducer, useState, useCallback } from 'react'
 import { defaultData } from './SelectContext'
+import { SelectOptionObject } from './SelectOption'
 
 export enum SelectState {
   // Nothing going on, waiting for the user to type or use the arrow keys
@@ -75,8 +76,8 @@ export enum SelectActionType {
 }
 
 export interface SelectData {
-  value?: string
-  navigationValue?: string
+  value?: string | SelectOptionObject
+  navigationValue?: string | SelectOptionObject
   lastActionType?: SelectActionType
 }
 
@@ -87,7 +88,7 @@ export interface SelectAction {
 }
 
 export interface SelectActionPayload {
-  value?: string
+  value?: string | SelectOptionObject
   persistSelection?: boolean
 }
 

@@ -45,7 +45,12 @@ import { useReducerMachine } from './state'
 import { SelectContext } from './SelectContext'
 import { SelectInputProps, SelectInput } from './SelectInput'
 import { SelectList, SelectListProps } from './SelectList'
-import { SelectOption, SelectOptionProps } from './SelectOption'
+import {
+  getOptionText,
+  SelectOption,
+  SelectOptionObject,
+  SelectOptionProps,
+} from './SelectOption'
 
 export interface SelectProps
   extends LayoutProps,
@@ -56,7 +61,7 @@ export interface SelectProps
    * Called with the selection value when the user makes a selection from the
    * list.
    */
-  onSelect?: (value: string) => void
+  onSelect?: (value: string | SelectOptionObject) => void
   /**
    * If true, the popover opens when focus is on the text box.
    */
@@ -65,7 +70,7 @@ export interface SelectProps
    * Use options to build a select with props instead of children
    * (do not use if also using children)
    */
-  options?: string[]
+  options?: Array<string | SelectOptionObject>
   /**
    * Props for the internal SelectInput component when building a select with the options prop
    * (do not use if also using children)
@@ -167,9 +172,16 @@ export const SelectInternal = forwardRef(function Select(
       <>
         <SelectInput {...inputProps} />
         <SelectList {...listProps}>
-          {options.map((option: string) => (
-            <SelectOption {...optionProps} value={option} key={option} />
-          ))}
+          {options.map((option: string | SelectOptionObject) => {
+            const optionValue = getOptionText(option)
+            return (
+              <SelectOption
+                {...optionProps}
+                value={optionValue}
+                key={optionValue}
+              />
+            )
+          })}
         </SelectList>
       </>
     )

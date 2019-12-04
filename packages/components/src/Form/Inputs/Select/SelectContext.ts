@@ -25,14 +25,17 @@
  */
 import { createContext, RefObject, MutableRefObject } from 'react'
 import { SelectData, SelectTransition, SelectState } from './state'
+import { SelectOptionObject } from './SelectOption'
+
+export type SelectOptions = Array<string | SelectOptionObject>
 
 export interface SelectContextProps {
   data: SelectData
   inputRef?: RefObject<HTMLInputElement>
   popoverRef?: RefObject<HTMLDivElement>
-  onSelect?: (value: string) => void
-  options?: string[]
-  optionsRef?: MutableRefObject<string[]>
+  onSelect?: (value: string | SelectOptionObject) => void
+  options?: SelectOptions
+  optionsRef?: MutableRefObject<SelectOptions>
   state?: SelectState
   transition?: SelectTransition
   listboxId?: string

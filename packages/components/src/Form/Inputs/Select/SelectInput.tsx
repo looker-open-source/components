@@ -40,6 +40,7 @@ import { useForkedRef, wrapEvent } from '../../../utils'
 import { InputText, InputTextProps } from '../InputText'
 import { makeHash, useBlur, useKeyDown } from './helpers'
 import { SelectContext } from './SelectContext'
+import { getOptionText } from './SelectOption'
 import { SelectActionType, SelectState } from './state'
 
 export interface SelectInputProps extends Omit<InputTextProps, 'value'> {
@@ -173,7 +174,7 @@ export const SelectInputInternal = forwardRef(function SelectInput(
     <InputText
       {...props}
       ref={ref}
-      value={inputValue}
+      value={inputValue && getOptionText(inputValue)}
       readOnly={readOnly}
       onClick={wrapEvent(handleClick, onClick)}
       onBlur={wrapEvent(handleBlur, onBlur)}
@@ -183,9 +184,10 @@ export const SelectInputInternal = forwardRef(function SelectInput(
       id={listboxId}
       aria-autocomplete="both"
       aria-activedescendant={
-        navigationValue ? String(makeHash(navigationValue)) : undefined
+        navigationValue
+          ? String(makeHash(getOptionText(navigationValue)))
+          : undefined
       }
-      width="100%"
     />
   )
 })
@@ -212,3 +214,7 @@ export const SelectInput = styled(SelectInputInternal)`
   background-size: ${indicatorSize}, 100%;
   padding-right: calc(2 * ${indicatorPadding} + ${indicatorSize});
 `
+
+SelectInput.defaultProps = {
+  width: '100%',
+}

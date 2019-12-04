@@ -47,12 +47,21 @@ import { makeHash } from './helpers'
 import { OptionContext, SelectContext } from './SelectContext'
 import { SelectActionType } from './state'
 
+export interface SelectOptionObject {
+  value: string
+  [key: string]: any
+}
+
+export function getOptionText(option: string | SelectOptionObject) {
+  return typeof option === 'string' ? option : option.value
+}
+
 export interface SelectOptionProps
   extends FlexboxProps,
     LayoutProps,
     SpaceProps,
     TypographyProps,
-    CompatibleHTMLProps<HTMLLIElement> {
+    Omit<CompatibleHTMLProps<HTMLLIElement>, 'data'> {
   /**
    * Optional. If omitted, the `value` will be used as the children like:
    * `<SelectOption value="Seattle, Tacoma, Washington" />`. But if you need
@@ -67,6 +76,10 @@ export interface SelectOptionProps
    */
   children?: React.ReactNode
   /**
+   * Additional data associated with the option, will be passed to onSelect.
+   */
+  data?: { [key: string]: any }
+  /**
    * The value to match against when suggesting.
    */
   value: string
@@ -79,7 +92,7 @@ export const SelectOptionDetail = styled.div`
 `
 
 const SelectOptionInternal = forwardRef(function SelectOption(
-  { children, value, onClick, ...props }: SelectOptionProps,
+  { children, data, value, onClick, ...props }: SelectOptionProps,
   forwardedRef: Ref<HTMLLIElement>
 ) {
   const {
@@ -90,23 +103,24 @@ const SelectOptionInternal = forwardRef(function SelectOption(
     optionsRef,
   } = useContext(SelectContext)
 
-  const valueRef = useRef<string>()
+  const valueRef = useRef<string | SelectOptionObject>()
 
   useEffect(() => {
     if (optionsRef) {
+      const optionValue = data ? { value, ...data } : value
       // Was there an old value for this SelectOption the list?
       // If so, add the new value at the same spot
       if (valueRef.current) {
         const index = optionsRef.current.indexOf(valueRef.current)
         if (index > -1) {
-          optionsRef.current[index] = value
+          optionsRef.current[index] = optionValue
         }
       } else {
-        optionsRef.current.push(value)
+        optionsRef.current.push(optionValue)
       }
-      valueRef.current = value
+      valueRef.current = optionValue
     }
-  }, [value, optionsRef])
+  }, [value, data, optionsRef])
 
   const isActive = navigationValue === value
   const isCurrent = contextValue === value
@@ -175,7 +189,7 @@ export function SelectOptionTextInternal(
   } = useContext(SelectContext)
 
   const results = useHighlightWords({
-    searchText: contextValue,
+    searchText: contextValue && getOptionText(contextValue),
     textToHighlight: value,
   })
   const noHighlight = readOnlyPropRef && readOnlyPropRef.current
