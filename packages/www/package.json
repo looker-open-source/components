@@ -44,7 +44,7 @@
     "react-transition-group": "4.3.0",
     "scroll-behavior": "^0.9.10",
     "styled-components": "^4.4.1",
-    "typescript": "^3.7.2"
+    "typescript": "^3.7.3"
   },
   "scripts": {
     "lint": "eslint . --ext mdx",
