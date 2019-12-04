@@ -19,17 +19,14 @@
  */
 
 import React, { FC } from 'react'
-import { color, layout, reset, space, SpaceProps } from '@looker/design-tokens'
+import { color, layout, reset, space } from '@looker/design-tokens'
 import styled from 'styled-components'
 import { IconNames } from '@looker/icons'
-import { AvatarUser, AvatarProps, AvatarUserProps } from './AvatarUser'
+import { AvatarUser, AvatarUserProps } from './AvatarUser'
 import { AvatarIcon, AvatarIconProps } from './AvatarIcon'
 
 export interface AvatarComboProps
-  extends AvatarProps,
-    AvatarIconProps,
-    AvatarUserProps,
-    SpaceProps {
+  extends Omit<AvatarIconProps & AvatarUserProps, 'size'> {
   badge: IconNames
 }
 

@@ -19,11 +19,11 @@
  */
 
 import React, { FC } from 'react'
-import { color, layout, reset, space, SpaceProps } from '@looker/design-tokens'
+import { color, layout, reset, space } from '@looker/design-tokens'
 import styled from 'styled-components'
 import { AvatarBase, AvatarBaseProps } from './AvatarBase'
 
-export interface AvatarProps extends AvatarBaseProps, SpaceProps {
+export interface AvatarProps extends AvatarBaseProps {
   /**
    *  @default `palette.purple500`
    **/
