@@ -40,6 +40,7 @@ import {
 import React, { forwardRef, useRef, Ref } from 'react'
 import uuid from 'uuid/v4'
 import styled from 'styled-components'
+import { ValidationType } from '../../ValidationMessage'
 import { isVisible, useFocusManagement } from './helpers'
 import { useReducerMachine } from './state'
 import { SelectContext } from './SelectContext'
@@ -86,6 +87,10 @@ export interface SelectProps
    * (do not use if also using children)
    */
   optionProps?: SelectOptionProps
+  /**
+   * Provides error styling
+   */
+  validationType?: ValidationType
 }
 
 export const SelectInternal = forwardRef(function Select(

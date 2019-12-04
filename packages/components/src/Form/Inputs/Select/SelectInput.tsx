@@ -113,6 +113,8 @@ export const SelectInputInternal = forwardRef(function SelectInput(
 
   const isControlled = controlledValue !== undefined
 
+  const isInputting = useRef(false)
+
   useLayoutEffect(() => {
     if (autocompletePropRef) autocompletePropRef.current = autocomplete
     if (readOnlyPropRef) readOnlyPropRef.current = readOnly
@@ -131,16 +133,27 @@ export const SelectInputInternal = forwardRef(function SelectInput(
   // we have this derived state to emulate onChange of the input as we receive
   // new `value`s ...[*]
   if (controlledValue && controlledValue !== value) {
-    handleValueChange(controlledValue)
+    if (!isInputting.current) {
+      // this is most likely the initial value so we want to
+      // update the value without transitioning to suggesting
+      transition &&
+        transition(SelectActionType.CHANGE_SILENT, { value: controlledValue })
+    } else {
+      handleValueChange(controlledValue)
+    }
   }
 
   // [*]... and when controlled, we don't trigger handleValueChange as the user
   // types, instead the developer controls it with the normal input onChange
   // prop
   const handleChange = (event: FormEvent<HTMLInputElement>) => {
+    isInputting.current = true
     if (!isControlled) {
       handleValueChange(event.currentTarget.value)
     }
+    setTimeout(() => {
+      isInputting.current = false
+    }, 0)
   }
 
   const handleFocus = () => {

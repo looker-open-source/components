@@ -11,26 +11,26 @@ The `<Select />` component renders a single select element on the page, with no 
 <Flex justifyContent="space-between">
   <Select
     options={[
-      { value: 'cheddar', label: 'Cheddar' },
-      { value: 'gouda', label: 'Gouda' },
-      { value: 'swiss', label: 'Swiss' },
+      { id: 'cheddar', value: 'Cheddar' },
+      { id: 'gouda', value: 'Gouda' },
+      { id: 'swiss', value: 'Swiss' },
     ]}
   />
   <Select
     options={[
-      { value: 'cheddar', label: 'Cheddar' },
-      { value: 'gouda', label: 'Gouda' },
-      { value: 'swiss', label: 'Swiss' },
+      { id: 'cheddar', value: 'Cheddar' },
+      { id: 'gouda', value: 'Gouda' },
+      { id: 'swiss', value: 'Swiss' },
     ]}
-    value="gouda"
+    inputProps={{ value: 'Gouda' }}
   />
   <Select placeholder="awesome!" />
   <Select
-    value="Some Value"
+    inputProps={{ value: "Some Value's Label" }}
     options={[
-      { value: '1', label: 'thing' },
-      { value: 'Some Value', label: "Some Value's Label" },
-      { value: '2', label: 'other' },
+      { id: '1', value: 'thing' },
+      { id: 'Some Value', value: "Some Value's Label" },
+      { id: '2', value: 'other' },
     ]}
   />
 </Flex>
@@ -44,18 +44,18 @@ The `<Select />` component renders a single select element on the page, with no 
     {
       key: 'Italian',
       options: [
-        { value: 'asiago', label: 'Asiago' },
-        { value: 'ricotta', label: 'Ricotta' },
-        { value: 'grana', label: 'Grana' },
+        { id: 'asiago', value: 'Asiago' },
+        { id: 'ricotta', value: 'Ricotta' },
+        { id: 'grana', value: 'Grana' },
       ],
     },
     {
       key: 'American',
       options: [
-        { value: 'american', label: 'American (not actually cheese)' },
-        { value: 'colby-jack', label: 'Colby-Jack' },
-        { value: 'swiss', label: 'Swiss' },
-        { value: 'vermont', label: 'Vermont' },
+        { id: 'american', value: 'American (not actually cheese)' },
+        { id: 'colby-jack', value: 'Colby-Jack' },
+        { id: 'swiss', value: 'Swiss' },
+        { id: 'vermont', value: 'Vermont' },
       ],
     },
   ]}
@@ -72,9 +72,9 @@ A name and ID can be specified in the `<Select />` component. Names are importan
   name="someName"
   id="someId"
   options={[
-    { value: 'cheddar', label: 'Cheddar' },
-    { value: 'gouda', label: 'Gouda' },
-    { value: 'swiss', label: 'Swiss' },
+    { id: 'cheddar', value: 'Cheddar' },
+    { id: 'gouda', value: 'Gouda' },
+    { id: 'swiss', value: 'Swiss' },
   ]}
 />
 ```
@@ -87,18 +87,18 @@ Use the disable property to make an input field uneditable.
 <Select
   disabled
   options={[
-    { value: 'cheddar', label: 'Cheddar' },
-    { value: 'gouda', label: 'Gouda' },
-    { value: 'swiss', label: 'Swiss' },
+    { id: 'cheddar', value: 'Cheddar' },
+    { id: 'gouda', value: 'Gouda' },
+    { id: 'swiss', value: 'Swiss' },
   ]}
 />
 <Select
   value="gouda"
   disabled
   options={[
-    { value: 'cheddar', label: 'Cheddar' },
-    { value: 'gouda', label: 'Gouda' },
-    { value: 'swiss', label: 'Swiss' },
+    { id: 'cheddar', value: 'Cheddar' },
+    { id: 'gouda', value: 'Gouda' },
+    { id: 'swiss', value: 'Swiss' },
   ]}
   ml="large"
 />
@@ -112,17 +112,17 @@ Placeholders are used to give a hint to the user of the expected value for the i
 <Select
   placeholder="Select your cheese of choice..."
   options={[
-    { value: 'cheddar', label: 'Cheddar' },
-    { value: 'gouda', label: 'Gouda' },
-    { value: 'swiss', label: 'Swiss' },
+    { id: 'cheddar', value: 'Cheddar' },
+    { id: 'gouda', value: 'Gouda' },
+    { id: 'swiss', value: 'Swiss' },
   ]}
 />
 <Select
   includeBlank={false}
   options={[
-    { value: 'cheddar', label: 'Cheddar' },
-    { value: 'gouda', label: 'Gouda' },
-    { value: 'swiss', label: 'Swiss' },
+    { id: 'cheddar', value: 'Cheddar' },
+    { id: 'gouda', value: 'Gouda' },
+    { id: 'swiss', value: 'Swiss' },
   ]}
   ml="large"
 />
@@ -137,9 +137,9 @@ As the name suggests, "readOnly" makes the text uneditable.
   value="gouda"
   readOnly
   options={[
-    { value: 'cheddar', label: 'Cheddar' },
-    { value: 'gouda', label: 'Gouda' },
-    { value: 'swiss', label: 'Swiss' },
+    { id: 'cheddar', value: 'Cheddar' },
+    { id: 'gouda', value: 'Gouda' },
+    { id: 'swiss', value: 'Swiss' },
   ]}
 />
 ```
@@ -153,9 +153,9 @@ When set for `<Select />` in the context of a form, the input field must be fill
   <Select
     required
     options={[
-      { value: 'cheddar', label: 'Cheddar' },
-      { value: 'gouda', label: 'Gouda' },
-      { value: 'swiss', label: 'Swiss' },
+      { id: 'cheddar', value: 'Cheddar' },
+      { id: 'gouda', value: 'Gouda' },
+      { id: 'swiss', value: 'Swiss' },
     ]}
   />
   <br />

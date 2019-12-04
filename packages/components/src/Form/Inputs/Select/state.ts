@@ -53,6 +53,9 @@ export enum SelectActionType {
   // User is typing
   CHANGE = 'CHANGE',
 
+  // Used for the setting the initial value
+  CHANGE_SILENT = 'CHANGE_SILENT',
+
   // User is navigating w/ the keyboard
   NAVIGATE = 'NAVIGATE',
 
@@ -114,6 +117,7 @@ export const stateChart: StateChart = {
         [SelectActionType.BLUR]: SelectState.IDLE,
         [SelectActionType.CLEAR]: SelectState.IDLE,
         [SelectActionType.CHANGE]: SelectState.SUGGESTING,
+        [SelectActionType.CHANGE_SILENT]: SelectState.IDLE,
         [SelectActionType.FOCUS]: SelectState.SUGGESTING,
         [SelectActionType.NAVIGATE]: SelectState.NAVIGATING,
         [SelectActionType.OPEN_WITH_BUTTON]: SelectState.SUGGESTING,
@@ -181,6 +185,7 @@ const reducer: Reducer<SelectData, SelectActionWithPayload> = (
   const nextState = { ...data, lastActionType: action.type }
   switch (action.type) {
     case SelectActionType.CHANGE:
+    case SelectActionType.CHANGE_SILENT:
       return {
         ...nextState,
         navigationValue: undefined,
