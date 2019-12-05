@@ -101,10 +101,6 @@ exports[`AvatarCombo renders Avatar and its badge 1`] = `
   display: inline-flex;
 }
 
-.c7 svg {
-  width: inherit;
-}
-
 .c6 {
   border: 0;
   box-sizing: border-box;
@@ -283,10 +279,6 @@ exports[`AvatarCombo renders Avatar initials and badge with Code icon 1`] = `
   display: inline-flex;
 }
 
-.c7 svg {
-  width: inherit;
-}
-
 .c6 {
   border: 0;
   box-sizing: border-box;
@@ -457,10 +449,6 @@ exports[`AvatarCombo renders AvatarIcon and badge if user is not available and u
   display: inline-flex;
 }
 
-.c6 svg {
-  width: inherit;
-}
-
 .c3 {
   border: 0;
   box-sizing: border-box;
@@ -480,10 +468,6 @@ exports[`AvatarCombo renders AvatarIcon and badge if user is not available and u
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-}
-
-.c3 svg {
-  width: inherit;
 }
 
 .c2 {
@@ -654,10 +638,6 @@ exports[`AvatarIcon renders  1`] = `
   display: inline-flex;
 }
 
-.c2 svg {
-  width: inherit;
-}
-
 .c1 {
   border: 0;
   box-sizing: border-box;
@@ -744,10 +724,6 @@ exports[`AvatarIcon renders different icon if specified 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-}
-
-.c2 svg {
-  width: inherit;
 }
 
 .c1 {
