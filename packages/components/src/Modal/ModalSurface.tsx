@@ -121,7 +121,6 @@ const Style = styled.div<ModalSurfaceProps>`
 
   display: flex;
   flex-direction: column;
-  max-width: 100%;
   position: relative;
   transition: transform ${surfaceTransition}, opacity ${surfaceTransition};
 
@@ -137,4 +136,7 @@ Style.defaultProps = {
   borderRadius: 'medium',
   boxShadow: 3,
   color: 'palette.charcoal900',
+  maxHeight: '90vh',
+  maxWidth: ['90vw', '90vw', '700px'],
+  minWidth: ['80vw', '400px'],
 }

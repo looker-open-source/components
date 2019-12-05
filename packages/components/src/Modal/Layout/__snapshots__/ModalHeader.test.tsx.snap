@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ModalHeader 1`] = `
-.c1 {
+.c7 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -9,19 +9,8 @@ exports[`ModalHeader 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  margin-right: 2rem;
-}
-
-.c4 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  width: 1.25rem;
-  height: 1.25rem;
+  width: 20px;
+  height: 20px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -32,7 +21,7 @@ exports[`ModalHeader 1`] = `
   display: inline-flex;
 }
 
-.c2 {
+.c3 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -40,6 +29,7 @@ exports[`ModalHeader 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  width: 26px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -60,46 +50,103 @@ exports[`ModalHeader 1`] = `
   transition: border 80ms;
   vertical-align: middle;
   white-space: nowrap;
-  font-size: 1rem;
-  height: 34px;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  margin-left: auto;
+  font-size: 0.875rem;
+  height: 26px;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
   padding: 0rem;
+  margin-right: -10px;
 }
 
-.c2[disabled] {
+.c3[disabled] {
   cursor: default;
   -webkit-filter: grayscale(0.3);
   filter: grayscale(0.3);
   opacity: 0.25;
 }
 
-.c3 {
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c4 {
   background: transparent;
   border: 1px solid transparent;
   color: #939BA5;
 }
 
-.c3:active,
-.c3.active {
+.c4:active,
+.c4.active {
   background: #F5F6F7;
   border-color: #F5F6F7;
   color: #4C535B;
 }
 
-.c3:hover,
-.c3:focus,
-.c3.hover {
+.c4:hover,
+.c4:focus,
+.c4.hover {
   background: #FBFBFC;
   border-color: #FBFBFC;
   color: #4C535B;
 }
 
-.c3[disabled]:hover,
-.c3[disabled]:active,
-.c3[disabled]:focus {
+.c4[disabled]:hover,
+.c4[disabled]:active,
+.c4[disabled]:focus {
   color: #939BA5;
+}
+
+.c6 {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  -webkit-clip: rect(1px,1px,1px,1px);
+  clip: rect(1px,1px,1px,1px);
+}
+
+.c5 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  margin-right: -10px;
+}
+
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-weight: 600;
+  line-height: 1.75rem;
+  font-size: 1.125rem;
+  margin-right: 2rem;
+  color: #262D33;
 }
 
 .c0 {
@@ -113,21 +160,6 @@ exports[`ModalHeader 1`] = `
   padding: 1.25rem;
   padding-left: 2rem;
   padding-right: 2rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-}
-
-.c0 .c5 {
-  font-size: 1rem;
 }
 
 <header
@@ -136,35 +168,48 @@ exports[`ModalHeader 1`] = `
   <div
     className="c1"
   >
-    The Heading for a Dialog
-  </div>
-  <button
-    className="c2 c3"
-    color="neutral"
-    onBlur={[Function]}
-    onKeyUp={[Function]}
-    size="medium"
-    tabIndex={-1}
-  >
-    <div
-      className="c4 "
-      size="1.25rem"
+    <h3
+      className="c2"
+      fontSize="large"
+      fontWeight="semiBold"
     >
-      <svg
-        fill="currentColor"
-        height="100%"
-        viewBox="0 0 24 24"
-        width="100%"
+      The Heading for a Dialog
+    </h3>
+    <button
+      className="c3 c4 c5"
+      color="neutral"
+      onBlur={[Function]}
+      onKeyUp={[Function]}
+      size="small"
+      tabIndex={-1}
+      width={26}
+    >
+      <div
+        className="c6"
       >
-        <title>
-          Close
-        </title>
-        <path
-          d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"
+        Close
+      </div>
+      <div
+        aria-hidden={true}
+        className="c7 "
+        size={20}
+      >
+        <svg
           fill="currentColor"
-        />
-      </svg>
-    </div>
-  </button>
+          height="100%"
+          viewBox="0 0 24 24"
+          width="100%"
+        >
+          <title>
+            Close
+          </title>
+          <path
+            d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"
+            fill="currentColor"
+          />
+        </svg>
+      </div>
+    </button>
+  </div>
 </header>
 `;

@@ -24,10 +24,9 @@
 
  */
 
-import React, { FC, useCallback } from 'react'
+import React, { FC, useCallback, ReactElement } from 'react'
 import { SemanticColors } from '@looker/design-tokens'
 import { Button, ButtonTransparent } from '../../Button'
-import { Heading } from '../../Text/Heading'
 import { Paragraph } from '../../Text'
 import { ModalContent, ModalFooter, ModalHeader } from '../Layout'
 import { ManagedModalProps } from '../Modal'
@@ -54,7 +53,7 @@ export interface ConfirmationProps extends ManagedModalProps {
   /**
    * Additional information about the action requiring confirmation
    */
-  message: string
+  message: ReactElement | string
   /**
    * Callback if user clicks Cancel button or closes the dialog
    */
@@ -108,14 +107,14 @@ export const ConfirmationDialog: FC<ConfirmationDialogProps> = ({
 
   return (
     <Dialog isOpen={isOpen} onClose={cancel} {...props}>
-      <ModalHeader>
-        <Heading>{title}</Heading>
-      </ModalHeader>
-      {message && (
-        <ModalContent>
+      <ModalHeader>{title}</ModalHeader>
+      <ModalContent innerProps={{ py: 'none' }}>
+        {typeof message === 'string' ? (
           <Paragraph>{message}</Paragraph>
-        </ModalContent>
-      )}
+        ) : (
+          message
+        )}
+      </ModalContent>
       <ModalFooter>
         <Button onClick={confirm} color={buttonColor}>
           {confirmLabel}

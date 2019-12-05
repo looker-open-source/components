@@ -112,9 +112,7 @@ If content overflows the component's height an visual indicator of content that 
 ModalHeader supports all [`Box`](/src-documentation-components-box) properties.
 
 ```jsx
-<ModalHeader>
-  <Heading>This is a ModalHeader</Heading>
-</ModalHeader>
+<ModalHeader>This is a ModalHeader</ModalHeader>
 ```
 
 ## ModalFooter
@@ -137,9 +135,9 @@ ModalFooter supports all [`Box`](/src-documentation-components-box) properties.
 <Divider />
 <ModalFooter
   secondary={
-    <Button variant="outline" iconBefore="Plus">
+    <ButtonOutline iconBefore="Plus">
       Create Item
-    </Button>
+    </ButtonOutline>
   }
 >
   <Button>Save Changes</Button>
@@ -149,12 +147,12 @@ ModalFooter supports all [`Box`](/src-documentation-components-box) properties.
 <ModalFooter
   secondary={
     <React.Fragment>
-      <Button variant="outline" iconBefore="Plus">
+      <ButtonOutline iconBefore="Plus">
         Create Item
-      </Button>
-      <Button variant="outline" iconBefore="Plus">
+      </ButtonOutline>
+      <ButtonOutline iconBefore="Plus">
         Yet Another
-      </Button>
+      </ButtonOutline>
     </React.Fragment>
   }
 >

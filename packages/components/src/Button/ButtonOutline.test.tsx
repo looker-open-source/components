@@ -47,7 +47,7 @@ test('ButtonOutline has the correct style', () => {
   expect(getByText('Outline')).toMatchSnapshot()
 })
 
-test('ButtonOutline Focus split - on tab not on click', () => {
+test('ButtonOutline Focus: renders outline when tabbing into focus, but not when clicking', () => {
   const { getByText } = render(
     <ThemeProvider theme={theme}>
       <>

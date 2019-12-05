@@ -60,3 +60,60 @@ A render-props version, for use in class components.
   {open => <Button onClick={open}>Do Something</Button>}
 </Confirm>
 ```
+
+## Rich Message Content
+
+In addition to strings, `Confirm` also supports passing in a react component for the message content. This allows for richer formatting and fine-grained control of the message.
+
+```jsx
+;() => {
+  /*
+   * import { Confirm, Flex, FlexItem, Icon, Paragraph, Link } from '@looker/components'
+   * import styled from 'styled-components'
+   */
+
+  const RichMessage = () => (
+    <Flex>
+      <FlexItem>
+        <Icon
+          mr="large"
+          name="CircleInfoOutline"
+          size="80px"
+          color="palette.purple400"
+        />
+      </FlexItem>
+      <FlexItem>
+        <Paragraph>
+          Canadians say "sorry" so often that{' '}
+          <strong>in 2009 a law was passed</strong> declaring that an apology
+          cannot be used as an admission of guilt.
+        </Paragraph>
+        <Paragraph mt="xsmall" variant="subdued" fontSize="small">
+          <cite>
+            SOURCE:{' '}
+            <Link
+              href="https://www.theloop.ca/canadians-love-to-say-sorry-so-much-we-had-to-make-this-law/"
+              target="_blank"
+            >
+              the loop
+            </Link>
+          </cite>
+        </Paragraph>
+      </FlexItem>
+    </Flex>
+  )
+
+  return (
+    <Confirm
+      title="Did you know?"
+      message={<RichMessage />}
+      onConfirm={close => {
+        alert('Now you know.')
+        close()
+      }}
+    >
+      {open => <Button onClick={open}>Do something fancy</Button>}
+    </Confirm>
+  )
+}
+```

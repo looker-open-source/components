@@ -13,22 +13,18 @@ exports[`ModalFooter with Button 1`] = `
   -webkit-flex-direction: row-reverse;
   -ms-flex-direction: row-reverse;
   flex-direction: row-reverse;
-  padding: 1.25rem calc(2rem - 0.5rem);
+  padding: 1.25rem 2rem;
 }
 
 .c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row-reverse;
-  -ms-flex-direction: row-reverse;
-  flex-direction: row-reverse;
+  display: grid;
+  grid-gap: 1rem;
+  grid-auto-flow: column;
+  direction: rtl;
 }
 
-.c1 > * {
-  margin-right: 0.5rem;
-  margin-left: 0.5rem;
+.c1 * {
+  direction: ltr;
 }
 
 <footer
@@ -57,22 +53,18 @@ exports[`ModalFooter with ModalContext 1`] = `
   -webkit-flex-direction: row-reverse;
   -ms-flex-direction: row-reverse;
   flex-direction: row-reverse;
-  padding: 1.25rem calc(2rem - 0.5rem);
+  padding: 1.25rem 2rem;
 }
 
 .c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row-reverse;
-  -ms-flex-direction: row-reverse;
-  flex-direction: row-reverse;
+  display: grid;
+  grid-gap: 1rem;
+  grid-auto-flow: column;
+  direction: rtl;
 }
 
-.c1 > * {
-  margin-right: 0.5rem;
-  margin-left: 0.5rem;
+.c1 * {
+  direction: ltr;
 }
 
 <footer

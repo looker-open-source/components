@@ -122,4 +122,4 @@ const Inner = styled.div<SpaceProps>`
   ${space}
 `
 
-Inner.defaultProps = { p: 'large', px: 'xlarge' }
+Inner.defaultProps = { px: 'xlarge', py: 'large' }
