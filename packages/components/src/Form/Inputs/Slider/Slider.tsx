@@ -42,6 +42,7 @@ export interface SliderProps
   branded?: boolean
   max?: number
   min?: number
+  ref?: Ref<HTMLInputElement>
   step?: number
   value?: number
 }

@@ -49,8 +49,6 @@ export const SliderDemo = () => {
 
   const sliderRef = useRef<HTMLInputElement>(null)
 
-  console.log(sliderRef.current)
-
   const handleEvent = (cb: Dispatch<SetStateAction<number>>) => {
     return (event: SyntheticEvent<HTMLInputElement>) => {
       const target = event.target as HTMLInputElement
