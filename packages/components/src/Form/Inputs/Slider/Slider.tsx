@@ -24,7 +24,7 @@
 
  */
 
-import React, { FC, forwardRef, Ref, SyntheticEvent, useState } from 'react'
+import React, { forwardRef, Ref, SyntheticEvent, useState } from 'react'
 import isFunction from 'lodash/isFunction'
 import styled, { css } from 'styled-components'
 import { reset, space, SpaceProps } from '@looker/design-tokens'
@@ -42,12 +42,11 @@ export interface SliderProps
   branded?: boolean
   max?: number
   min?: number
-  ref?: Ref<HTMLInputElement>
   step?: number
   value?: number
 }
 
-const SliderInternal: FC<SliderProps> = forwardRef(
+const SliderInternal = forwardRef(
   (
     {
       branded,
@@ -62,7 +61,7 @@ const SliderInternal: FC<SliderProps> = forwardRef(
       className,
       disabled,
       ...restProps
-    },
+    }: SliderProps,
     ref: Ref<HTMLInputElement>
   ) => {
     const [isFocused, setIsFocused] = useState(false)
