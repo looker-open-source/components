@@ -48,20 +48,23 @@ import { OptionContext, SelectContext } from './SelectContext'
 import { SelectActionType } from './state'
 
 export interface SelectOptionObject {
+  /**
+   * Additional data associated with the option, will be passed to onSelect.
+   */
+  data?: any
+  /**
+   * The value to match against when suggesting.
+   */
   value: string
-  [key: string]: any
-}
-
-export function getOptionText(option: string | SelectOptionObject) {
-  return typeof option === 'string' ? option : option.value
 }
 
 export interface SelectOptionProps
-  extends FlexboxProps,
+  extends SelectOptionObject,
+    FlexboxProps,
     LayoutProps,
     SpaceProps,
     TypographyProps,
-    Omit<CompatibleHTMLProps<HTMLLIElement>, 'data'> {
+    Omit<CompatibleHTMLProps<HTMLLIElement>, 'data' | 'value'> {
   /**
    * Optional. If omitted, the `value` will be used as the children like:
    * `<SelectOption value="Seattle, Tacoma, Washington" />`. But if you need
@@ -75,14 +78,6 @@ export interface SelectOptionProps
    *   </SelectOption>
    */
   children?: React.ReactNode
-  /**
-   * Additional data associated with the option, will be passed to onSelect.
-   */
-  data?: { [key: string]: any }
-  /**
-   * The value to match against when suggesting.
-   */
-  value: string
 }
 
 export const SelectOptionDetail = styled.div`
@@ -96,38 +91,38 @@ const SelectOptionInternal = forwardRef(function SelectOption(
   forwardedRef: Ref<HTMLLIElement>
 ) {
   const {
-    data: { value: contextValue },
+    data: { option: contextOption, navigationOption },
     onSelect,
-    data: { navigationValue },
     transition,
     optionsRef,
   } = useContext(SelectContext)
 
-  const valueRef = useRef<string | SelectOptionObject>()
+  const valueRef = useRef<SelectOptionObject>()
 
   useEffect(() => {
+    const option = { data, value }
     if (optionsRef) {
-      const optionValue = data ? { value, ...data } : value
       // Was there an old value for this SelectOption the list?
       // If so, add the new value at the same spot
       if (valueRef.current) {
         const index = optionsRef.current.indexOf(valueRef.current)
         if (index > -1) {
-          optionsRef.current[index] = optionValue
+          optionsRef.current[index] = option
         }
       } else {
-        optionsRef.current.push(optionValue)
+        optionsRef.current.push(option)
       }
-      valueRef.current = optionValue
+      valueRef.current = option
     }
   }, [value, data, optionsRef])
 
-  const isActive = navigationValue === value
-  const isCurrent = contextValue === value
+  const isActive = navigationOption && navigationOption.value === value
+  const isCurrent = contextOption && contextOption.value === value
 
   const handleClick = () => {
-    onSelect && onSelect(value)
-    transition && transition(SelectActionType.SELECT_WITH_CLICK, { value })
+    const option = { data, value }
+    onSelect && onSelect(option)
+    transition && transition(SelectActionType.SELECT_WITH_CLICK, { option })
   }
 
   return (
@@ -184,12 +179,12 @@ export function SelectOptionTextInternal(
 ) {
   const value = useContext(OptionContext) || ''
   const {
-    data: { value: contextValue },
+    data: { option: contextOption },
     readOnlyPropRef,
   } = useContext(SelectContext)
 
   const results = useHighlightWords({
-    searchText: contextValue && getOptionText(contextValue),
+    searchText: contextOption && contextOption.value,
     textToHighlight: value,
   })
   const noHighlight = readOnlyPropRef && readOnlyPropRef.current

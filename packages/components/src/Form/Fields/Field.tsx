@@ -180,7 +180,12 @@ const FieldComponent: FunctionComponent<FieldProps> = ({
 }) => {
   return (
     <FormControl mb="xsmall" {...props}>
-      <Label htmlFor={id} fontWeight={labelFontWeight} fontSize={labelFontSize}>
+      <Label
+        htmlFor={id}
+        id={`label-${id}`}
+        fontWeight={labelFontWeight}
+        fontSize={labelFontSize}
+      >
         {label}
         {required && <RequiredStar />}
       </Label>

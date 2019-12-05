@@ -79,8 +79,8 @@ export enum SelectActionType {
 }
 
 export interface SelectData {
-  value?: string | SelectOptionObject
-  navigationValue?: string | SelectOptionObject
+  option?: SelectOptionObject
+  navigationOption?: SelectOptionObject
   lastActionType?: SelectActionType
 }
 
@@ -91,7 +91,7 @@ export interface SelectAction {
 }
 
 export interface SelectActionPayload {
-  value?: string | SelectOptionObject
+  option?: SelectOptionObject
   persistSelection?: boolean
 }
 
@@ -163,16 +163,16 @@ export const stateChart: StateChart = {
   },
 }
 
-// When we open a list, set the navigation value to the value in the input, if
+// When we open a list, set the navigation option to the option in the input, if
 // it's in the list, then it'll automatically be highlighted.
 const findNavigationValue = (
   state: SelectData,
   action: SelectActionPayload
 ) => {
-  if (action.value) {
-    return action.value
+  if (action.option) {
+    return action.option
   } else if (action.persistSelection) {
-    return state.value
+    return state.option
   } else {
     return undefined
   }
@@ -188,50 +188,50 @@ const reducer: Reducer<SelectData, SelectActionWithPayload> = (
     case SelectActionType.CHANGE_SILENT:
       return {
         ...nextState,
-        navigationValue: undefined,
-        value: action.value,
+        navigationOption: undefined,
+        option: action.option,
       }
     case SelectActionType.NAVIGATE:
     case SelectActionType.OPEN_WITH_BUTTON:
       return {
         ...nextState,
-        navigationValue: findNavigationValue(nextState, action),
+        navigationOption: findNavigationValue(nextState, action),
       }
     case SelectActionType.CLEAR:
       return {
         ...nextState,
-        navigationValue: undefined,
-        value: '',
+        navigationOption: undefined,
+        option: { value: '' },
       }
     case SelectActionType.BLUR:
     case SelectActionType.ESCAPE:
       return {
         ...nextState,
-        navigationValue: undefined,
+        navigationOption: undefined,
       }
     case SelectActionType.SELECT_WITH_CLICK:
       return {
         ...nextState,
-        navigationValue: undefined,
-        value: action.value,
+        navigationOption: undefined,
+        option: action.option,
       }
     case SelectActionType.SELECT_WITH_KEYBOARD:
       return {
         ...nextState,
-        navigationValue: undefined,
-        value: data.navigationValue,
+        navigationOption: undefined,
+        option: data.navigationOption,
       }
     case SelectActionType.CLOSE_WITH_BUTTON:
       return {
         ...nextState,
-        navigationValue: undefined,
+        navigationOption: undefined,
       }
     case SelectActionType.INTERACT:
       return nextState
     case SelectActionType.FOCUS:
       return {
         ...nextState,
-        navigationValue: findNavigationValue(nextState, action),
+        navigationOption: findNavigationValue(nextState, action),
       }
 
     default:

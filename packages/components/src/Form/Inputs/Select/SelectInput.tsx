@@ -40,7 +40,6 @@ import { useForkedRef, wrapEvent } from '../../../utils'
 import { InputText, InputTextProps } from '../InputText'
 import { makeHash, useBlur, useKeyDown } from './helpers'
 import { SelectContext } from './SelectContext'
-import { getOptionText } from './SelectOption'
 import { SelectActionType, SelectState } from './state'
 
 export interface SelectInputProps extends Omit<InputTextProps, 'value'> {
@@ -60,7 +59,7 @@ export interface SelectInputProps extends Omit<InputTextProps, 'value'> {
    * change.
    *
    * Set this to false when you don't really need the value from the input but
-   * want to populate some other state (like the recipient selector in Gmail).
+   * want to populate some other state (like the recipient selector in an email client).
    * But if your input is more like a normal `<input type="text"/>`, then leave
    * the `true` default.
    */
@@ -91,7 +90,7 @@ export const SelectInputInternal = forwardRef(function SelectInput(
   forwardedRef: Ref<HTMLInputElement>
 ) {
   const {
-    data: { navigationValue, value, lastActionType },
+    data: { navigationOption, option, lastActionType },
     inputRef,
     state,
     transition,
@@ -125,19 +124,21 @@ export const SelectInputInternal = forwardRef(function SelectInput(
     if (value.trim() === '') {
       transition && transition(SelectActionType.CLEAR)
     } else {
-      transition && transition(SelectActionType.CHANGE, { value })
+      transition && transition(SelectActionType.CHANGE, { option: { value } })
     }
   }
 
   // If they are controlling the value we still need to do our transitions, so
   // we have this derived state to emulate onChange of the input as we receive
   // new `value`s ...[*]
-  if (controlledValue && controlledValue !== value) {
+  if (controlledValue && option && controlledValue !== option.value) {
     if (!isInputting.current) {
       // this is most likely the initial value so we want to
       // update the value without transitioning to suggesting
       transition &&
-        transition(SelectActionType.CHANGE_SILENT, { value: controlledValue })
+        transition(SelectActionType.CHANGE_SILENT, {
+          option: { value: controlledValue },
+        })
     } else {
       handleValueChange(controlledValue)
     }
@@ -176,18 +177,22 @@ export const SelectInputInternal = forwardRef(function SelectInput(
     }
   }
 
-  const inputValue =
+  const inputOption =
     autocomplete &&
     (state === SelectState.NAVIGATING || state === SelectState.INTERACTING)
-      ? // When idle, we don't have a navigationValue on ArrowUp/Down
-        navigationValue || controlledValue || value
-      : controlledValue || value
+      ? // When idle, we don't have a navigationOption on ArrowUp/Down
+        navigationOption || controlledValue || option
+      : controlledValue || option
+  const inputValue =
+    typeof inputOption === 'string'
+      ? inputOption
+      : inputOption && inputOption.value
 
   return (
     <InputText
       {...props}
       ref={ref}
-      value={inputValue && getOptionText(inputValue)}
+      value={inputValue}
       readOnly={readOnly}
       onClick={wrapEvent(handleClick, onClick)}
       onBlur={wrapEvent(handleBlur, onBlur)}
@@ -197,8 +202,8 @@ export const SelectInputInternal = forwardRef(function SelectInput(
       id={listboxId}
       aria-autocomplete="both"
       aria-activedescendant={
-        navigationValue
-          ? String(makeHash(getOptionText(navigationValue)))
+        navigationOption
+          ? String(makeHash(navigationOption ? navigationOption.value : ''))
           : undefined
       }
     />

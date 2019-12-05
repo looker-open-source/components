@@ -47,11 +47,12 @@ import { SelectContext } from './SelectContext'
 import { SelectInputProps, SelectInput } from './SelectInput'
 import { SelectList, SelectListProps } from './SelectList'
 import {
-  getOptionText,
   SelectOption,
   SelectOptionObject,
   SelectOptionProps,
 } from './SelectOption'
+
+export type OnSelect = (option: SelectOptionObject) => void
 
 export interface SelectProps
   extends LayoutProps,
@@ -62,7 +63,7 @@ export interface SelectProps
    * Called with the selection value when the user makes a selection from the
    * list.
    */
-  onSelect?: (value: string | SelectOptionObject) => void
+  onSelect?: OnSelect
   /**
    * If true, the popover opens when focus is on the text box.
    */
@@ -71,7 +72,7 @@ export interface SelectProps
    * Use options to build a select with props instead of children
    * (do not use if also using children)
    */
-  options?: Array<string | SelectOptionObject>
+  options?: SelectOptionObject[]
   /**
    * Props for the internal SelectInput component when building a select with the options prop
    * (do not use if also using children)
@@ -120,7 +121,7 @@ export const SelectInternal = forwardRef(function Select(
   // parent/child relationship between SelectList and SelectOption with
   // cloneElement or fall back to DOM traversal. It's a new trick for me and
   // I'm pretty excited about it.
-  const optionsRef = useRef<string[]>([])
+  const optionsRef = useRef<SelectOptionObject[]>([])
 
   // Need this to focus it
   const inputRef = useRef<HTMLInputElement>(null)
@@ -177,14 +178,9 @@ export const SelectInternal = forwardRef(function Select(
       <>
         <SelectInput {...inputProps} />
         <SelectList {...listProps}>
-          {options.map((option: string | SelectOptionObject) => {
-            const optionValue = getOptionText(option)
+          {options.map((option: SelectOptionObject) => {
             return (
-              <SelectOption
-                {...optionProps}
-                value={optionValue}
-                key={optionValue}
-              />
+              <SelectOption {...optionProps} {...option} key={option.value} />
             )
           })}
         </SelectList>

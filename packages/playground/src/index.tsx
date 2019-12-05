@@ -32,15 +32,19 @@ import {
   Box,
   InputText,
   Select,
-  SelectInput,
-  SelectList,
-  SelectOption,
 } from '@looker/components'
 import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
 
+interface MyModel {
+  id?: number
+}
+
 const App: React.FC = () => {
   const [val, setVal] = React.useState('')
+  function handleSelect({ data }: { value: string; data?: MyModel }) {
+    console.log(data && data.id)
+  }
   React.useEffect(() => {
     setTimeout(() => {
       setVal('!')
@@ -51,20 +55,23 @@ const App: React.FC = () => {
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <Box m="xlarge">
-          <Select openOnFocus={true}>
-            <SelectInput
-              aria-labelledby="demo"
-              width={240}
-              placeholder="Placeholder text"
-            />
-            <SelectList aria-labelledby="demo" persistSelection>
-              <SelectOption value="Apple" />
-              <SelectOption value={`Banana${val}`} />
-              <SelectOption value="Orange" />
-              <SelectOption value="Pineapple" />
-              <SelectOption value="Kiwi" />
-            </SelectList>
-          </Select>
+          <Select
+            openOnFocus={true}
+            onSelect={handleSelect}
+            width={240}
+            inputProps={{
+              autocomplete: false,
+              placeholder: 'Placeholder text',
+            }}
+            listProps={{ persistSelection: true }}
+            options={[
+              { data: { id: 1 }, value: 'Apples' },
+              { data: { id: 2 }, value: `Banana${val}` },
+              { data: { id: 3 }, value: 'Orange' },
+              { data: { id: 4 }, value: 'Pineapple' },
+              { data: { id: 5 }, value: 'Kiwi' },
+            ]}
+          />
           <Divider my="xlarge" />
           <InputText width={240} />
         </Box>

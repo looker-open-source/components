@@ -26,16 +26,15 @@
 import { createContext, RefObject, MutableRefObject } from 'react'
 import { SelectData, SelectTransition, SelectState } from './state'
 import { SelectOptionObject } from './SelectOption'
-
-export type SelectOptions = Array<string | SelectOptionObject>
+import { OnSelect } from './Select'
 
 export interface SelectContextProps {
   data: SelectData
   inputRef?: RefObject<HTMLInputElement>
   popoverRef?: RefObject<HTMLDivElement>
-  onSelect?: (value: string | SelectOptionObject) => void
-  options?: SelectOptions
-  optionsRef?: MutableRefObject<SelectOptions>
+  onSelect?: OnSelect
+  options?: SelectOptionObject[]
+  optionsRef?: MutableRefObject<SelectOptionObject[]>
   state?: SelectState
   transition?: SelectTransition
   listboxId?: string
@@ -46,12 +45,12 @@ export interface SelectContextProps {
   openOnFocus?: boolean
 }
 
-export const defaultData = {
+export const defaultData: SelectData = {
   // the value the user has navigated to with the keyboard
-  navigationValue: undefined,
+  navigationOption: undefined,
   // the value the user has typed, we derived this also when the developer is
   // controlling the value of SelectInput
-  value: '',
+  option: { value: '' },
 }
 
 export const SelectContext = createContext<SelectContextProps>({

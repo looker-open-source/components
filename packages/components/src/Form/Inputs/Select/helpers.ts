@@ -66,7 +66,7 @@ export function useFocusManagement(
 // HOOKS BTW?) This is probably the hairiest piece but it's not bad.
 export function useKeyDown() {
   const {
-    data: { navigationValue },
+    data: { navigationOption },
     onSelect,
     options: contextOptions,
     optionsRef,
@@ -100,7 +100,9 @@ export function useKeyDown() {
                 persistSelectionRef && persistSelectionRef.current,
             })
         } else {
-          const index = navigationValue ? options.indexOf(navigationValue) : -1
+          const index = navigationOption
+            ? options.indexOf(navigationOption)
+            : -1
           const atBottom = index === options.length - 1
           if (atBottom) {
             if (autocompletePropRef && autocompletePropRef.current) {
@@ -108,18 +110,18 @@ export function useKeyDown() {
               // auto-completing and they need to be able to get back to what
               // they had typed w/o having to backspace out.
               transition &&
-                transition(SelectActionType.NAVIGATE, { value: undefined })
+                transition(SelectActionType.NAVIGATE, { option: undefined })
             } else {
               // cycle through
               const firstOption = options[0]
               transition &&
-                transition(SelectActionType.NAVIGATE, { value: firstOption })
+                transition(SelectActionType.NAVIGATE, { option: firstOption })
             }
           } else {
             // Go to the next item in the list
-            const nextValue = options[(index + 1) % options.length]
+            const nextOption = options[(index + 1) % options.length]
             transition &&
-              transition(SelectActionType.NAVIGATE, { value: nextValue })
+              transition(SelectActionType.NAVIGATE, { option: nextOption })
           }
         }
         break
@@ -139,31 +141,33 @@ export function useKeyDown() {
         if (state === SelectState.IDLE) {
           transition && transition(SelectActionType.NAVIGATE)
         } else {
-          const index = navigationValue ? options.indexOf(navigationValue) : -1
+          const index = navigationOption
+            ? options.indexOf(navigationOption)
+            : -1
           if (index === 0) {
             if (autocompletePropRef && autocompletePropRef.current) {
               // Go back to the value the user has typed because we are
               // auto-completing and they need to be able to get back to what
               // they had typed w/o having to backspace out.
               transition &&
-                transition(SelectActionType.NAVIGATE, { value: undefined })
+                transition(SelectActionType.NAVIGATE, { option: undefined })
             } else {
               // cycle through
               const lastOption = options[options.length - 1]
               transition &&
-                transition(SelectActionType.NAVIGATE, { value: lastOption })
+                transition(SelectActionType.NAVIGATE, { option: lastOption })
             }
           } else if (index === -1) {
             // displaying the user's value, so go select the last one
-            const value = options[options.length - 1]
-            transition && transition(SelectActionType.NAVIGATE, { value })
+            const option = options[options.length - 1]
+            transition && transition(SelectActionType.NAVIGATE, { option })
           } else {
             // normal case, select previous
-            const nextValue =
+            const nextOption =
               options[(index - 1 + options.length) % options.length]
             transition &&
               transition &&
-              transition(SelectActionType.NAVIGATE, { value: nextValue })
+              transition(SelectActionType.NAVIGATE, { option: nextOption })
           }
         }
         break
@@ -180,18 +184,21 @@ export function useKeyDown() {
           readOnlyPropRef &&
           readOnlyPropRef.current &&
           state === SelectState.NAVIGATING &&
-          navigationValue !== undefined
+          navigationOption !== undefined
         ) {
-          onSelect && onSelect(navigationValue)
+          onSelect && onSelect(navigationOption)
           transition && transition(SelectActionType.SELECT_WITH_KEYBOARD)
         }
         break
       }
       case 'Enter': {
-        if (state === SelectState.NAVIGATING && navigationValue !== undefined) {
+        if (
+          state === SelectState.NAVIGATING &&
+          navigationOption !== undefined
+        ) {
           // don't want to submit forms
           event.preventDefault()
-          onSelect && onSelect(navigationValue)
+          onSelect && onSelect(navigationOption)
           transition && transition(SelectActionType.SELECT_WITH_KEYBOARD)
         }
         break
