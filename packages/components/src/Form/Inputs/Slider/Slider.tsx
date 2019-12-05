@@ -24,7 +24,7 @@
 
  */
 
-import React, { FC, SyntheticEvent, useState } from 'react'
+import React, { FC, forwardRef, Ref, SyntheticEvent, useState } from 'react'
 import isFunction from 'lodash/isFunction'
 import styled, { css } from 'styled-components'
 import { reset, space, SpaceProps } from '@looker/design-tokens'
@@ -38,112 +38,120 @@ export interface SliderProps
     WidthProps,
     Omit<InputProps, 'type'>,
     SliderSizeProps {
-  value?: number
-  min?: number
-  max?: number
-  step?: number
-  branded?: boolean
   'aria-labelledby'?: string
+  branded?: boolean
+  max?: number
+  min?: number
+  step?: number
+  value?: number
 }
 
-const SliderInternal: FC<SliderProps> = ({
-  branded,
-  min = 0,
-  max = 10,
-  value = 0,
-  step,
-  onChange,
-  size = 'medium',
-  name,
-  id,
-  className,
-  disabled,
-  ...restProps
-}) => {
-  const [isFocused, setIsFocused] = useState(false)
-  const [internalValue, setInternalValue] = useState(value)
+const SliderInternal: FC<SliderProps> = forwardRef(
+  (
+    {
+      branded,
+      min = 0,
+      max = 10,
+      value = 0,
+      step,
+      onChange,
+      size = 'medium',
+      name,
+      id,
+      className,
+      disabled,
+      ...restProps
+    },
+    ref: Ref<HTMLInputElement>
+  ) => {
+    const [isFocused, setIsFocused] = useState(false)
+    const [internalValue, setInternalValue] = useState(value)
 
-  if (min > max) {
-    // Props don't make sense. ABORT!!
-    // eslint-disable-next-line no-console
-    console.warn(
-      `Unable to render <Slider /> because the 'min' prop was set greater than 'max' value. MIN: ${min}, MAX: ${max}`
-    )
-    return null
-  }
+    if (min > max) {
+      // Props don't make sense. ABORT!!
+      // eslint-disable-next-line no-console
+      console.warn(
+        `Unable to render <Slider /> because the 'min' prop was set greater than 'max' value. MIN: ${min}, MAX: ${max}`
+      )
+      return null
+    }
 
-  const boundSliderValue = (v: number) => Math.min(Math.max(v, min), max) // enforce that value stays between min and max
+    const boundSliderValue = (v: number) => Math.min(Math.max(v, min), max) // enforce that value stays between min and max
 
-  const displayValue = isFunction(onChange)
-    ? boundSliderValue(value)
-    : boundSliderValue(internalValue)
+    const displayValue = isFunction(onChange)
+      ? boundSliderValue(value)
+      : boundSliderValue(internalValue)
 
-  const fillPercent = ((displayValue - min) / (max - min)) * 100
+    const fillPercent = ((displayValue - min) / (max - min)) * 100
 
-  const { knobSize, trackHeight, fontSize, valueSpacing } = sliderSize({ size })
+    const { knobSize, trackHeight, fontSize, valueSpacing } = sliderSize({
+      size,
+    })
 
-  const handleFocus = () => {
-    setIsFocused(true)
-  }
+    const handleFocus = () => {
+      setIsFocused(true)
+    }
 
-  const handleUnfocus = () => {
-    setIsFocused(false)
-  }
+    const handleUnfocus = () => {
+      setIsFocused(false)
+    }
 
-  const internalChangeHandler = (event: SyntheticEvent<HTMLInputElement>) => {
-    const evtValue = (event.target as HTMLInputElement).value
-    setInternalValue(parseInt(evtValue))
-  }
+    const internalChangeHandler = (event: SyntheticEvent<HTMLInputElement>) => {
+      const evtValue = (event.target as HTMLInputElement).value
+      setInternalValue(parseInt(evtValue))
+    }
 
-  const handleChange = isFunction(onChange) ? onChange : internalChangeHandler
+    const handleChange = isFunction(onChange) ? onChange : internalChangeHandler
 
-  return (
-    <div
-      className={className}
-      onBlur={handleUnfocus}
-      onKeyUp={handleFocus}
-      onMouseDown={handleUnfocus}
-      data-testid="container"
-    >
-      <SliderInput
-        branded={branded}
-        disabled={disabled}
-        id={id}
-        isFocused={isFocused}
-        knobSize={knobSize}
-        max={max}
-        min={min}
-        name={name}
-        onChange={handleChange}
-        step={step}
-        type="range"
-        value={displayValue}
-        aria-labelledby={restProps['aria-labelledby']}
-        data-testid="slider-input"
-      />
-      <SliderTrack knobSize={knobSize} trackHeight={trackHeight}>
-        <SliderFill
-          offsetPercent={fillPercent}
+    return (
+      <div
+        className={className}
+        onBlur={handleUnfocus}
+        onKeyUp={handleFocus}
+        onMouseDown={handleUnfocus}
+        data-testid="container"
+      >
+        <SliderInput
           branded={branded}
           disabled={disabled}
+          id={id}
+          isFocused={isFocused}
+          knobSize={knobSize}
+          max={max}
+          min={min}
+          name={name}
+          onChange={handleChange}
+          step={step}
+          type="range"
+          value={displayValue}
+          aria-labelledby={restProps['aria-labelledby']}
+          data-testid="slider-input"
+          ref={ref}
         />
-        <SliderValueWrapper
-          offsetPercent={fillPercent}
-          valueSpacing={valueSpacing}
-        >
-          <SliderValue
-            fontSize={fontSize}
-            knobSize={knobSize}
+        <SliderTrack knobSize={knobSize} trackHeight={trackHeight}>
+          <SliderFill
+            offsetPercent={fillPercent}
             branded={branded}
             disabled={disabled}
+          />
+          <SliderValueWrapper
+            offsetPercent={fillPercent}
+            valueSpacing={valueSpacing}
           >
-            <SliderValueContent>{displayValue}</SliderValueContent>
-          </SliderValue>
-        </SliderValueWrapper>
-      </SliderTrack>
-    </div>
-  )
-}
+            <SliderValue
+              fontSize={fontSize}
+              knobSize={knobSize}
+              branded={branded}
+              disabled={disabled}
+            >
+              <SliderValueContent>{displayValue}</SliderValueContent>
+            </SliderValue>
+          </SliderValueWrapper>
+        </SliderTrack>
+      </div>
+    )
+  }
+)
 
 interface SliderInputProps {
   knobSize: number
@@ -345,4 +353,5 @@ export const Slider = styled(SliderInternal).attrs(props => ({
   position: relative;
 `
 
+SliderInternal.displayName = 'Slider'
 Slider.defaultProps = { width: '100%' }

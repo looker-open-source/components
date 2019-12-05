@@ -26,6 +26,7 @@
 
 import React, {
   useState,
+  useRef,
   SyntheticEvent,
   Dispatch,
   SetStateAction,
@@ -45,6 +46,10 @@ export const SliderDemo = () => {
   const [value9, setValue9] = useState(1)
   const [value10, setValue10] = useState(2)
   const [value11, setValue11] = useState(3)
+
+  const sliderRef = useRef<HTMLInputElement>(null)
+
+  console.log(sliderRef.current)
 
   const handleEvent = (cb: Dispatch<SetStateAction<number>>) => {
     return (event: SyntheticEvent<HTMLInputElement>) => {
@@ -172,6 +177,13 @@ export const SliderDemo = () => {
           />
           <Heading pt="large">Uncontrolled:</Heading>
           <Slider min={0} max={5} />
+        </CardContent>
+      </Card>
+      <Card height="auto">
+        <CardContent>
+          <Heading pt="large">Ref Forwarding:</Heading>
+          <Slider min={0} max={5} ref={sliderRef} />
+          <p>Ref Value: {sliderRef.current && sliderRef.current.value}</p>
         </CardContent>
       </Card>
     </DemoGrid>
