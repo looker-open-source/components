@@ -16,6 +16,9 @@ exports[`Confirmation banner 1`] = `
   padding-bottom: 0.5rem;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -72,10 +75,6 @@ exports[`Dismissable banner 1`] = `
   display: inline-flex;
 }
 
-.c1 svg {
-  width: inherit;
-}
-
 .c6 {
   border: 0;
   box-sizing: border-box;
@@ -94,10 +93,6 @@ exports[`Dismissable banner 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-}
-
-.c6 svg {
-  width: inherit;
 }
 
 .c3 {
@@ -159,6 +154,9 @@ exports[`Dismissable banner 1`] = `
   padding-bottom: 0.5rem;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -229,6 +227,11 @@ exports[`Dismissable banner 1`] = `
     className="c1 "
     color="palette.blue400"
     size={20}
+    style={
+      Object {
+        "flexBasis": "20px",
+      }
+    }
   >
     <svg
       fill="currentColor"
@@ -319,10 +322,6 @@ exports[`Error banner 1`] = `
   display: inline-flex;
 }
 
-.c1 svg {
-  width: inherit;
-}
-
 .c0 {
   border: 0;
   box-sizing: border-box;
@@ -338,6 +337,9 @@ exports[`Error banner 1`] = `
   padding-bottom: 0.5rem;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -366,6 +368,11 @@ exports[`Error banner 1`] = `
     className="c1 "
     color="palette.red600"
     size={20}
+    style={
+      Object {
+        "flexBasis": "20px",
+      }
+    }
   >
     <svg
       fill="currentColor"
@@ -416,10 +423,6 @@ exports[`Info banner 1`] = `
   display: inline-flex;
 }
 
-.c1 svg {
-  width: inherit;
-}
-
 .c0 {
   border: 0;
   box-sizing: border-box;
@@ -435,6 +438,9 @@ exports[`Info banner 1`] = `
   padding-bottom: 0.5rem;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -463,6 +469,11 @@ exports[`Info banner 1`] = `
     className="c1 "
     color="palette.blue400"
     size={20}
+    style={
+      Object {
+        "flexBasis": "20px",
+      }
+    }
   >
     <svg
       fill="currentColor"
@@ -513,10 +524,6 @@ exports[`Warning banner 1`] = `
   display: inline-flex;
 }
 
-.c1 svg {
-  width: inherit;
-}
-
 .c0 {
   border: 0;
   box-sizing: border-box;
@@ -532,6 +539,9 @@ exports[`Warning banner 1`] = `
   padding-bottom: 0.5rem;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -560,6 +570,11 @@ exports[`Warning banner 1`] = `
     className="c1 "
     color="palette.yellow500"
     size={20}
+    style={
+      Object {
+        "flexBasis": "20px",
+      }
+    }
   >
     <svg
       fill="currentColor"

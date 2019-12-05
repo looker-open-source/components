@@ -21,10 +21,6 @@ exports[`ModalHeader 1`] = `
   display: inline-flex;
 }
 
-.c7 svg {
-  width: inherit;
-}
-
 .c3 {
   border: 0;
   box-sizing: border-box;

@@ -70,10 +70,6 @@ const Styled = styled.div<Omit<IconProps, 'name'>>`
   height: ${props => props.height};
   align-items: center;
   display: inline-flex;
-
-  svg {
-    width: inherit;
-  }
 `
 
 Styled.defaultProps = { size: '1rem' }

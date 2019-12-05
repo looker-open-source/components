@@ -674,10 +674,6 @@ exports[`MenuGroup - menu customization 1`] = `
   display: inline-flex;
 }
 
-.c4 svg {
-  width: inherit;
-}
-
 .c0 {
   border: 0;
   box-sizing: border-box;

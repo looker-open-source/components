@@ -66,10 +66,6 @@ exports[`InputSearch default 1`] = `
   display: inline-flex;
 }
 
-.c8 svg {
-  width: inherit;
-}
-
 .c4 {
   border: 0;
   box-sizing: border-box;
