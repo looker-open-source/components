@@ -24,7 +24,8 @@
 
  */
 
-import React, { FormEvent, forwardRef, Ref, useState } from 'react'
+import React, { FormEvent, forwardRef, Ref, useState, useRef } from 'react'
+import isFunction from 'lodash/isFunction'
 import styled from 'styled-components'
 import {
   border,
@@ -94,7 +95,7 @@ InputSearchLayout.defaultProps = {
 }
 
 const InputSearchComponent = forwardRef(
-  (props: InputSearchProps, ref: Ref<HTMLInputElement>) => {
+  (props: InputSearchProps, forwardRef: Ref<HTMLInputElement>) => {
     const {
       border,
       borderBottom,
@@ -112,10 +113,16 @@ const InputSearchComponent = forwardRef(
 
       ...inputProps
     } = props
+
+    const ref = forwardRef || useRef<null | HTMLInputElement>(null)
     const [inputValue, setValue] = useState(value)
+
+    const focusInput = () =>
+      ref && !isFunction(ref) && ref.current && ref.current.focus()
 
     const handleClear = () => {
       setValue('')
+      focusInput()
       onClear && onClear()
     }
 
@@ -127,6 +134,7 @@ const InputSearchComponent = forwardRef(
     const controls = !hideControls && (
       <InputSearchControls
         onClear={handleClear}
+        onClick={focusInput}
         showClear={inputValue.length > 0}
         summary={summary}
       />
