@@ -42,14 +42,6 @@ export interface ModalSurfaceStyleProps {
   color: string
 }
 
-export interface CustomizableModalAttributes extends CustomizableAttributes {
-  zIndex?: number
-}
-
-export const CustomizableModalAttributes: CustomizableModalAttributes = {
-  backdrop: { backgroundColor: 'palette.charcoal200', opacity: 0.6 },
-}
-
 export interface ManagedModalProps {
   /**
    * Optional backdrop styles to merge with the Backdrop implementation. These
