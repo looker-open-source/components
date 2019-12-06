@@ -37,11 +37,20 @@ const App: React.FC = () => {
           large
         </Badge>
 
-        <Badge color="positive" size="medium" m="medium">
+        <Badge intent="positive" size="medium" m="medium">
           positive
         </Badge>
-        <Badge color="plain" size="medium" m="medium">
-          plain
+        <Badge intent="info" size="medium" m="medium">
+          info
+        </Badge>
+        <Badge intent="neutral" size="medium" m="medium">
+          neutral
+        </Badge>
+        <Badge intent="warning" size="medium" m="medium">
+          warning
+        </Badge>
+        <Badge intent="critical" size="medium" m="medium">
+          critical
         </Badge>
         <Badge size="medium" round m="medium">
           round

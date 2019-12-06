@@ -54,14 +54,6 @@ interface BadgeProps extends BadgeSizeProps, SpaceProps, TypographyProps {
    *  @default false
    **/
   round?: boolean
-<<<<<<< HEAD
-
-  /**
-   *  @default false
-   **/
-  transparent?: boolean
-=======
->>>>>>> -mfirst commit Badge work in progress
 }
 const BadgeLayout: FC<BadgeProps> = ({ children, color, size, ...props }) => {
   const howRound = () => {
@@ -90,11 +82,7 @@ const BadgeLayout: FC<BadgeProps> = ({ children, color, size, ...props }) => {
     }
   }
   return (
-<<<<<<< HEAD
-    <span background-color="red" size={size} {...props}>
-=======
     <span bg={badgeColor()} size={size} {...props}>
->>>>>>> -mfirst commit Badge work in progress
       {children}
     </span>
   )
