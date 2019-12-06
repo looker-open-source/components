@@ -25,6 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updates Dialog documentation to endorse use of Confirm instead
 - Hard-code modal header styling, and no longer accept `Header` as a sub-component
 - Use css grid to lay out `ModalFooter` actions
+- Focus trap and scroll lock methods added to `ModalContext`
 
 ### Fixed
 
@@ -33,6 +34,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Respects `width` property as expected
   - Removed confusing `maxWidth` property
   - `Link` color within `Tooltip` is set to `blue200` to ensure readability.
+- `useFocusTrap` and `useScrollLock` behavior when `Popover` is nested in a `Modal` or another `Popover`.
 
 ## [0.7.6] - 2019-11-18
 

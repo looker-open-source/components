@@ -47,7 +47,7 @@ test('ModalFooter with ModalContext', () => {
           <button
             onClick={() => {
               alert("doin' things...")
-              close && close()
+              closeModal && closeModal()
             }}
           >
             Yes, Delete "Stuff"

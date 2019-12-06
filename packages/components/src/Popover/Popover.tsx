@@ -35,10 +35,10 @@ import React, {
 } from 'react'
 import { Popper } from 'react-popper'
 import { Box } from '../Layout'
-import { ModalContext } from '../Modal'
 import { ModalPortal } from '../Modal/ModalPortal'
 import { OverlaySurface } from '../Overlay/OverlaySurface'
-import { useControlWarn, useFocusTrap } from '../utils'
+import { useControlWarn, useFocusTrap, useScrollLock } from '../utils'
+import { ModalContext } from '../Modal'
 
 export interface UsePopoverProps {
   /**
@@ -78,7 +78,7 @@ export interface UsePopoverProps {
    */
   canClose?: () => boolean
 
-  portalRef?: RefObject<HTMLDivElement>
+  portalElement?: RefObject<HTMLDivElement>
 
   /**
    * By default Popover cancels event bubbling when a click event triggers the closure of the Popover.
@@ -104,6 +104,11 @@ export interface UsePopoverProps {
    * Optional, for a controlled version of the component
    */
   setOpen?: (open: boolean) => void
+
+  /**
+   * Set whether to disable scrolling outside the popover
+   */
+  disableScrollLock?: boolean
 
   /**
    * The trigger element ref to use (if absent, one will be created and returned)
@@ -185,7 +190,7 @@ function usePopoverToggle(
     UsePopoverProps,
     'isOpen' | 'setOpen' | 'canClose' | 'groupedPopoversRef'
   >,
-  portalRef: RefObject<HTMLDivElement>,
+  portalElement: HTMLElement | null,
   triggerRef: RefObject<HTMLElement>
 ): [boolean, (value: boolean) => void] {
   const [uncontrolledIsOpen, uncontrolledSetOpen] = useState(controlledIsOpen)
@@ -201,19 +206,15 @@ function usePopoverToggle(
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (canClose && !canClose()) return
-
       // User clicked inside the Popover surface/portal
-      if (
-        portalRef.current &&
-        portalRef.current.contains(event.target as Node)
-      ) {
+      if (portalElement && portalElement.contains(event.target as Node)) {
         return
       }
 
       if (
-        portalRef.current &&
+        portalElement &&
         event.target &&
-        portalRef.current.compareDocumentPosition(event.target as Node) ===
+        portalElement.compareDocumentPosition(event.target as Node) ===
           Node.DOCUMENT_POSITION_FOLLOWING
       ) {
         return
@@ -251,7 +252,7 @@ function usePopoverToggle(
     return () => {
       document.removeEventListener('click', handleClickOutside, true)
     }
-  }, [canClose, groupedPopoversRef, isOpen, setOpen, triggerRef, portalRef])
+  }, [canClose, groupedPopoversRef, isOpen, setOpen, triggerRef, portalElement])
 
   return [isOpen, setOpen]
 }
@@ -269,9 +270,21 @@ export function usePopover({
   setOpen: controlledSetOpen,
   ...props
 }: UsePopoverProps) {
-  const portalRef = useRef<HTMLDivElement | null>(null)
+  const {
+    element: scrollElement,
+    callbackRef: scrollRef,
+    enable: enableScrollLock,
+    isEnabled: scrollLockEnabled,
+    disable: disableScrollLock,
+  } = useScrollLock(controlledIsOpen, true)
+  const {
+    callbackRef: focusRef,
+    enable: enableFocusTrap,
+    isEnabled: focusTrapEnabled,
+    disable: disableFocusTrap,
+  } = useFocusTrap(controlledIsOpen)
+
   const newTriggerRef = useRef<HTMLElement>(null)
-  const focusRef = useFocusTrap()
 
   const triggerRef = props.triggerRef || newTriggerRef
 
@@ -282,7 +295,7 @@ export function usePopover({
       isOpen: controlledIsOpen,
       setOpen: controlledSetOpen,
     },
-    portalRef,
+    scrollElement,
     triggerRef
   )
   const verticalSpace = useVerticalSpace(
@@ -295,6 +308,8 @@ export function usePopover({
 
   function handleOpen(event: SyntheticEvent) {
     setOpen(true)
+    enableScrollLock()
+    enableFocusTrap()
     event.stopPropagation()
     event.preventDefault()
   }
@@ -335,8 +350,18 @@ export function usePopover({
     triggerRef && triggerRef.current ? triggerRef.current : undefined
 
   const popover = !openWithoutElem && isOpen && (
-    <ModalContext.Provider value={{ closeModal: handleClose }}>
-      <ModalPortal portalRef={portalRef}>
+    <ModalContext.Provider
+      value={{
+        closeModal: handleClose,
+        disableFocusTrap,
+        disableScrollLock,
+        enableFocusTrap,
+        enableScrollLock,
+        focusTrapEnabled,
+        scrollLockEnabled,
+      }}
+    >
+      <ModalPortal ref={scrollRef}>
         <Popper
           positionFixed
           placement={propsPlacement}
@@ -386,7 +411,7 @@ export function usePopover({
     </ModalContext.Provider>
   )
   return {
-    className: isOpen ? 'active' : undefined,
+    isOpen,
     open: handleOpen,
     popover,
     ref: triggerRef,
@@ -395,8 +420,8 @@ export function usePopover({
 }
 
 export function Popover({ children, ...props }: PopoverProps) {
-  const { popover, open, ref, className, triggerShown } = usePopover(props)
-  const childrenOutput = children(open, ref, className)
+  const { popover, open, ref, isOpen, triggerShown } = usePopover(props)
+  const childrenOutput = children(open, ref, isOpen ? 'active' : '')
 
   return (
     <>

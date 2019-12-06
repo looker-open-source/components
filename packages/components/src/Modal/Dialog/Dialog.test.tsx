@@ -33,7 +33,7 @@ import {
 import { ModalFooter, ModalHeader } from '../Layout'
 import { SimpleContent } from '../modal.test.helpers'
 import { ModalBackdrop } from '../ModalBackdrop'
-import { ModalPortal } from '../ModalPortal'
+import { ModalPortal } from '../../Modal/ModalPortal'
 import { ModalSurface } from '../ModalSurface'
 import { Dialog } from './Dialog'
 import { DialogManager } from './DialogManager'

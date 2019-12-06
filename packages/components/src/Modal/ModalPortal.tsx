@@ -24,44 +24,47 @@
 
  */
 
-import React, { FC, RefObject, useEffect, useRef } from 'react'
+import { CustomizableAttributes } from '@looker/design-tokens'
+import React, { forwardRef, Ref, useEffect, useRef, ReactNode } from 'react'
 import { createPortal } from 'react-dom'
 import styled from 'styled-components'
-import { useScrollLock } from '../utils/useScrollLock'
-import { CustomizableModalAttributes } from './Modal'
 import { getModalRoot } from './modalRoot'
 
-export interface ModalPortalProps {
-  portalRef?: RefObject<HTMLDivElement>
+export interface CustomizableModalAttributes extends CustomizableAttributes {
+  zIndex?: number
 }
 
-export const ModalPortal: FC<ModalPortalProps> = ({ portalRef, children }) => {
-  const el = useRef(document.createElement('div'))
-  const ref = useRef<HTMLDivElement>(null)
-  const refToUse = portalRef || ref
-
-  useScrollLock(refToUse)
-
-  useEffect(() => {
-    const modalRoot = getModalRoot()
-    if (!modalRoot) return
-
-    const elCurrent = el.current
-    modalRoot.appendChild(elCurrent)
-
-    return () => {
-      modalRoot.removeChild(elCurrent)
-    }
-  }, [el])
-
-  const content = (
-    <InvisiBox ref={refToUse} zIndex={CustomizableModalAttributes.zIndex}>
-      {children}
-    </InvisiBox>
-  )
-
-  return createPortal(content, el.current)
+export const CustomizableModalAttributes: CustomizableModalAttributes = {
+  backdrop: { backgroundColor: 'palette.charcoal200', opacity: 0.6 },
 }
+
+export const ModalPortal = forwardRef(
+  ({ children }: { children: ReactNode }, ref: Ref<HTMLDivElement>) => {
+    const el = useRef(document.createElement('div'))
+
+    useEffect(() => {
+      const modalRoot = getModalRoot()
+      if (!modalRoot) return
+
+      const elCurrent = el.current
+      modalRoot.appendChild(elCurrent)
+
+      return () => {
+        modalRoot.removeChild(elCurrent)
+      }
+    }, [el])
+
+    const content = (
+      <InvisiBox ref={ref} zIndex={CustomizableModalAttributes.zIndex}>
+        {children}
+      </InvisiBox>
+    )
+
+    return createPortal(content, el.current)
+  }
+)
+
+ModalPortal.displayName = 'ModalPortal'
 
 const InvisiBox = styled.div<{ zIndex?: number }>`
   position: fixed;

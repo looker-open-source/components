@@ -24,13 +24,13 @@
 
  */
 
-import React, { CSSProperties, RefObject } from 'react'
+import React, { CSSProperties } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import { CSSObject, FlattenSimpleInterpolation } from 'styled-components'
-import { CustomizableAttributes } from '@looker/design-tokens'
+import { useFocusTrap, useScrollLock } from '../utils'
 import { ModalBackdrop } from './ModalBackdrop'
-import { ModalContext } from './ModalContext'
 import { ModalPortal } from './ModalPortal'
+import { ModalContext } from './ModalContext'
 
 export interface ModalSurfaceStyleProps {
   animation?: FlattenSimpleInterpolation
@@ -40,14 +40,6 @@ export interface ModalSurfaceStyleProps {
   borderRadius: string
   boxShadow: string
   color: string
-}
-
-export interface CustomizableModalAttributes extends CustomizableAttributes {
-  zIndex?: number
-}
-
-export const CustomizableModalAttributes: CustomizableModalAttributes = {
-  backdrop: { backgroundColor: 'palette.charcoal200', opacity: 0.6 },
 }
 
 export interface ManagedModalProps {
@@ -70,8 +62,6 @@ export interface ManagedModalProps {
    * @default auto
    */
   width?: string
-
-  portalRef?: RefObject<HTMLDivElement>
 }
 
 export interface ModalProps extends ManagedModalProps {
@@ -99,11 +89,29 @@ export function Modal({
   backdrop,
   isOpen,
   onClose,
-  portalRef,
   render,
 }: ModalInternalProps) {
+  const {
+    callbackRef: focusRef,
+    disable: disableFocusTrap,
+    enable: enableFocusTrap,
+  } = useFocusTrap(isOpen)
+  const {
+    callbackRef: scrollRef,
+    disable: disableScrollLock,
+    enable: enableScrollLock,
+  } = useScrollLock(isOpen, false)
+
   return (
-    <ModalContext.Provider value={{ closeModal: onClose }}>
+    <ModalContext.Provider
+      value={{
+        closeModal: onClose,
+        disableFocusTrap,
+        disableScrollLock,
+        enableFocusTrap,
+        enableScrollLock,
+      }}
+    >
       <CSSTransition
         classNames="modal"
         mountOnEnter
@@ -112,7 +120,12 @@ export function Modal({
         timeout={{ enter: 0, exit: 250 }}
       >
         {(state: string) => (
-          <ModalPortal portalRef={portalRef}>
+          <ModalPortal
+            ref={node => {
+              focusRef(node)
+              scrollRef(node)
+            }}
+          >
             <ModalBackdrop
               className={state}
               onClick={onClose}

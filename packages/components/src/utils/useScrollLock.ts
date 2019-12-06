@@ -24,12 +24,20 @@
 
  */
 
-import { RefObject, useEffect } from 'react'
+import { useContext, useEffect } from 'react'
+import { ModalContext } from '../Modal/ModalContext'
+import { useToggle } from './useToggle'
+import { useCallbackRef } from './useCallbackRef'
 
 export function useScrollLock(
-  allowScrollWithin: RefObject<HTMLElement | null>,
-  disabled = false
+  enabled = false,
+  useCapture = false,
+  allowScrollWithin?: HTMLElement
 ) {
+  const [element, callbackRef] = useCallbackRef(allowScrollWithin)
+  const { disableScrollLock, enableScrollLock } = useContext(ModalContext)
+  const { value, setOn, setOff } = useToggle(enabled)
+
   useEffect(() => {
     let scrollTop = window.scrollY
     let scrollTarget: EventTarget | HTMLElement | null = document
@@ -42,14 +50,9 @@ export function useScrollLock(
             ? scrollTarget.scrollTop
             : window.scrollY
       }
-
       if (
         scrollTarget instanceof Element &&
-        !(
-          allowScrollWithin &&
-          allowScrollWithin.current &&
-          allowScrollWithin.current.contains(scrollTarget)
-        )
+        !(element && element.contains(scrollTarget))
       ) {
         scrollTarget.scrollTop = scrollTop
       } else if (scrollTarget === document) {
@@ -57,14 +60,24 @@ export function useScrollLock(
       }
     }
 
-    if (disabled) {
-      window.removeEventListener('scroll', stopScroll, true)
-    } else {
+    if (element && value) {
       window.addEventListener('scroll', stopScroll, true)
+      disableScrollLock && disableScrollLock()
+    } else {
+      window.removeEventListener('scroll', stopScroll, true)
+      enableScrollLock && enableScrollLock()
     }
 
     return () => {
       window.removeEventListener('scroll', stopScroll, true)
     }
-  }, [disabled, allowScrollWithin])
+  }, [value, element, useCapture, disableScrollLock, enableScrollLock])
+
+  return {
+    callbackRef,
+    disable: setOff,
+    element: element || null,
+    enable: setOn,
+    isEnabled: value,
+  }
 }

@@ -3,17 +3,17 @@
  MIT License
 
  Copyright (c) 2019 Looker Data Sciences, Inc.
- 
+
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
  in the Software without restriction, including without limitation the rights
  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  copies of the Software, and to permit persons to whom the Software is
  furnished to do so, subject to the following conditions:
- 
+
  The above copyright notice and this permission notice shall be included in all
  copies or substantial portions of the Software.
- 
+
  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -24,7 +24,7 @@
 
  */
 
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 
 export interface UseToggleReturn {
   value: boolean
@@ -35,8 +35,8 @@ export interface UseToggleReturn {
 
 export function useToggle(initialValue = false): UseToggleReturn {
   const [value, setValue] = useState(initialValue)
-  const setOn = () => setValue(true)
-  const setOff = () => setValue(false)
-  const toggle = () => setValue(!value)
+  const setOn = useCallback(() => setValue(true), [])
+  const setOff = useCallback(() => setValue(false), [])
+  const toggle = useCallback(() => setValue(!value), [value])
   return { setOff, setOn, toggle, value }
 }

@@ -25,38 +25,48 @@
  */
 
 import createFocusTrap, { FocusTrap } from 'focus-trap'
-import { useRef, useCallback } from 'react'
+import { useContext, useEffect, useRef } from 'react'
+import { ModalContext } from '../Modal/ModalContext'
+import { useToggle } from './useToggle'
+import { useCallbackRef } from './useCallbackRef'
 
-export interface UseFocusOptions {
-  escapeDeactivates?: boolean
-  clickOutsideDeactivates?: boolean
-}
-
-export function useFocusTrap(
-  enabled = true,
-  escapeDeactivates = false,
-  clickOutsideDeactivates = true
-) {
+export function useFocusTrap(enabled = true, keepFocusWithin?: HTMLElement) {
   const trap = useRef<FocusTrap>()
 
-  return useCallback(
-    node => {
-      if (!node || !enabled) {
-        trap.current && trap.current.deactivate()
-      } else if (node && enabled) {
-        const autoFocusElement = node.querySelector(
-          '[data-autofocus="true"]'
-        ) as HTMLElement
-        trap.current = createFocusTrap(node, {
-          clickOutsideDeactivates,
-          escapeDeactivates,
-          fallbackFocus: node,
-          ...(autoFocusElement ? { initialFocus: autoFocusElement } : {}),
-        })
+  const [element, callbackRef] = useCallbackRef(keepFocusWithin)
+  const { disableFocusTrap, enableFocusTrap } = useContext(ModalContext)
+  const { value, setOn, setOff } = useToggle(enabled)
 
-        trap.current.activate()
-      }
-    },
-    [enabled, escapeDeactivates, clickOutsideDeactivates]
-  )
+  useEffect(() => {
+    if (element && value) {
+      const autoFocusElement = element.querySelector(
+        '[data-autofocus="true"]'
+      ) as HTMLElement
+      trap.current = createFocusTrap(element, {
+        clickOutsideDeactivates: true,
+        escapeDeactivates: false,
+        fallbackFocus: element,
+        onDeactivate: () => setOff(),
+        ...(autoFocusElement ? { initialFocus: autoFocusElement } : {}),
+      })
+      disableFocusTrap && disableFocusTrap()
+      // Wait for any other focus trap to complete deactivation
+      window.setTimeout(() => trap.current && trap.current.activate(), 0)
+    } else {
+      trap.current && trap.current.deactivate()
+      enableFocusTrap && enableFocusTrap()
+    }
+
+    return () => {
+      trap.current && trap.current.deactivate()
+    }
+  }, [value, element, disableFocusTrap, enableFocusTrap, setOff])
+
+  return {
+    callbackRef,
+    disable: setOff,
+    element: element || null,
+    enable: setOn,
+    isEnabled: value,
+  }
 }

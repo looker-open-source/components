@@ -33,10 +33,10 @@ import {
   assertSnapshotShallow,
 } from '@looker/components-test-utils'
 import { theme } from '@looker/design-tokens'
+import { ModalPortal } from './ModalPortal'
 import { Modal } from './Modal'
 import { SimpleContent, SimpleContentSFC } from './modal.test.helpers'
 import { ModalBackdrop } from './ModalBackdrop'
-import { ModalPortal } from './ModalPortal'
 
 const simpleContentFactory = () => <SimpleContentSFC />
 
