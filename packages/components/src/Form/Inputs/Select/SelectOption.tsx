@@ -39,9 +39,16 @@ import {
   typography,
   TypographyProps,
 } from '@looker/design-tokens'
-import React, { forwardRef, useEffect, useRef, useContext, Ref } from 'react'
+import React, {
+  forwardRef,
+  useEffect,
+  useRef,
+  useContext,
+  Ref,
+  useCallback,
+} from 'react'
 import styled from 'styled-components'
-import { useHighlightWords, wrapEvent } from '../../../utils'
+import { useHighlightWords, useWrapEvent } from '../../../utils'
 import { Icon } from '../../../Icon'
 import { makeHash } from './helpers'
 import { OptionContext, SelectContext } from './SelectContext'
@@ -119,11 +126,13 @@ const SelectOptionInternal = forwardRef(function SelectOption(
   const isActive = navigationOption && navigationOption.value === value
   const isCurrent = contextOption && contextOption.value === value
 
-  const handleClick = () => {
+  const handleClick = useCallback(() => {
     const option = { data, value }
     onSelect && onSelect(option)
     transition && transition(SelectActionType.SELECT_WITH_CLICK, { option })
-  }
+  }, [onSelect, data, transition, value])
+
+  const wrappedOnClick = useWrapEvent(handleClick, onClick)
 
   return (
     <OptionContext.Provider value={value}>
@@ -137,7 +146,7 @@ const SelectOptionInternal = forwardRef(function SelectOption(
         // element can be `document.activeElement` and then our focus checks in
         // onBlur will work as intended
         tabIndex={-1}
-        onClick={wrapEvent(handleClick, onClick)}
+        onClick={wrappedOnClick}
       >
         {children || <SelectOptionText />}
         {isCurrent && (

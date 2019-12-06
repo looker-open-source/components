@@ -61,7 +61,7 @@ test('Should accept a value', () => {
         name="thumbsUp"
         id="thumbs-up"
         value="foobar"
-        options={[{ label: 'Foodbar', value: 'foobar' }]}
+        options={[{ data: 'foobar', value: 'Foodbar' }]}
         readOnly
       />
     </ThemeProvider>

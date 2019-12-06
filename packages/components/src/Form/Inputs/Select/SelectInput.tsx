@@ -34,9 +34,10 @@ import React, {
   useRef,
   useContext,
   Ref,
+  useCallback,
 } from 'react'
 import styled from 'styled-components'
-import { useForkedRef, wrapEvent } from '../../../utils'
+import { useForkedRef, useWrapEvent } from '../../../utils'
 import { InputText, InputTextProps } from '../InputText'
 import { makeHash, useBlur, useKeyDown } from './helpers'
 import { SelectContext } from './SelectContext'
@@ -112,6 +113,8 @@ export const SelectInputInternal = forwardRef(function SelectInput(
 
   const isControlled = controlledValue !== undefined
 
+  // Need to determine whether the updated value come from change event on the input
+  // or from a new value prop (controlled)
   const isInputting = useRef(false)
 
   useLayoutEffect(() => {
@@ -120,13 +123,16 @@ export const SelectInputInternal = forwardRef(function SelectInput(
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [autocomplete, readOnly])
 
-  const handleValueChange = (value: string) => {
-    if (value.trim() === '') {
-      transition && transition(SelectActionType.CLEAR)
-    } else {
-      transition && transition(SelectActionType.CHANGE, { option: { value } })
-    }
-  }
+  const handleValueChange = useCallback(
+    (value: string) => {
+      if (value.trim() === '') {
+        transition && transition(SelectActionType.CLEAR)
+      } else {
+        transition && transition(SelectActionType.CHANGE, { option: { value } })
+      }
+    },
+    [transition]
+  )
 
   // If they are controlling the value we still need to do our transitions, so
   // we have this derived state to emulate onChange of the input as we receive
@@ -147,17 +153,20 @@ export const SelectInputInternal = forwardRef(function SelectInput(
   // [*]... and when controlled, we don't trigger handleValueChange as the user
   // types, instead the developer controls it with the normal input onChange
   // prop
-  const handleChange = (event: FormEvent<HTMLInputElement>) => {
-    isInputting.current = true
-    if (!isControlled) {
-      handleValueChange(event.currentTarget.value)
-    }
-    setTimeout(() => {
-      isInputting.current = false
-    }, 0)
-  }
+  const handleChange = useCallback(
+    (event: FormEvent<HTMLInputElement>) => {
+      isInputting.current = true
+      if (!isControlled) {
+        handleValueChange(event.currentTarget.value)
+      }
+      setTimeout(() => {
+        isInputting.current = false
+      }, 0)
+    },
+    [isInputting, isControlled, handleValueChange]
+  )
 
-  const handleFocus = () => {
+  const handleFocus = useCallback(() => {
     if (selectOnClick) {
       selectOnClickRef.current = true
     }
@@ -168,14 +177,14 @@ export const SelectInputInternal = forwardRef(function SelectInput(
     if (openOnFocus && lastActionType !== SelectActionType.SELECT_WITH_CLICK) {
       transition && transition(SelectActionType.FOCUS)
     }
-  }
+  }, [openOnFocus, lastActionType, selectOnClick, transition])
 
-  const handleClick = () => {
+  const handleClick = useCallback(() => {
     if (selectOnClickRef.current) {
       selectOnClickRef.current = false
       inputRef && inputRef.current && inputRef.current.select()
     }
-  }
+  }, [selectOnClickRef, inputRef])
 
   const inputOption =
     autocomplete &&
@@ -188,17 +197,23 @@ export const SelectInputInternal = forwardRef(function SelectInput(
       ? inputOption
       : inputOption && inputOption.value
 
+  const wrappedOnClick = useWrapEvent(handleClick, onClick)
+  const wrappedOnBlur = useWrapEvent(handleBlur, onBlur)
+  const wrappedOnFocus = useWrapEvent(handleFocus, onFocus)
+  const wrappedOnChange = useWrapEvent(handleChange, onChange)
+  const wrappedOnKeyDown = useWrapEvent(handleKeyDown, onKeyDown)
+
   return (
     <InputText
       {...props}
       ref={ref}
       value={inputValue}
       readOnly={readOnly}
-      onClick={wrapEvent(handleClick, onClick)}
-      onBlur={wrapEvent(handleBlur, onBlur)}
-      onFocus={wrapEvent(handleFocus, onFocus)}
-      onChange={wrapEvent(handleChange, onChange)}
-      onKeyDown={wrapEvent(handleKeyDown, onKeyDown)}
+      onClick={wrappedOnClick}
+      onBlur={wrappedOnBlur}
+      onFocus={wrappedOnFocus}
+      onChange={wrappedOnChange}
+      onKeyDown={wrappedOnKeyDown}
       id={listboxId}
       aria-autocomplete="both"
       aria-activedescendant={

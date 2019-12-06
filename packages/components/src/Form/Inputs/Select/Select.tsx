@@ -37,7 +37,7 @@ import {
   space,
   SpaceProps,
 } from '@looker/design-tokens'
-import React, { forwardRef, useRef, Ref } from 'react'
+import React, { forwardRef, useRef, useState, Ref, useCallback } from 'react'
 import uuid from 'uuid/v4'
 import styled from 'styled-components'
 import { ValidationType } from '../../ValidationMessage'
@@ -53,6 +53,21 @@ import {
 } from './SelectOption'
 
 export type OnSelect = (option: SelectOptionObject) => void
+
+export function useControlledSelect(initialValue = '') {
+  const [value, setOption] = useState(initialValue)
+  const handleSelect = useCallback((option: SelectOptionObject) => {
+    setOption(option.value)
+  }, [])
+  const handleChange = useCallback((e: React.FormEvent<HTMLInputElement>) => {
+    setOption(e.currentTarget.value)
+  }, [])
+  return {
+    inputProps: { onChange: handleChange },
+    onSelect: handleSelect,
+    value,
+  }
+}
 
 export interface SelectProps
   extends LayoutProps,
@@ -92,6 +107,11 @@ export interface SelectProps
    * Provides error styling
    */
   validationType?: ValidationType
+  /**
+   * The current value, for controlled use
+   * (do not use if also using children – instead use value on SelectInput)
+   */
+  value?: string
 }
 
 export const SelectInternal = forwardRef(function Select(
@@ -110,6 +130,7 @@ export const SelectInternal = forwardRef(function Select(
     listProps,
     optionProps,
     options,
+    value,
 
     ...rest
   }: SelectProps,
@@ -174,9 +195,10 @@ export const SelectInternal = forwardRef(function Select(
       console.warn(`Warning: options and children cannot be used together.
       If you wish to build your Select with the options prop, do not define any children.`)
     }
+
     content = (
       <>
-        <SelectInput {...inputProps} />
+        <SelectInput value={value} {...inputProps} />
         <SelectList {...listProps}>
           {options.map((option: SelectOptionObject) => {
             return (

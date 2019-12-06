@@ -24,54 +24,62 @@
 
  */
 
-import React from 'react'
+import React, { MouseEvent } from 'react'
 import ReactDOM from 'react-dom'
 import {
+  Button,
   GlobalStyle,
   Divider,
   Box,
   InputText,
+  Paragraph,
   Select,
+  useControlledSelect,
 } from '@looker/components'
 import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
 
-interface MyModel {
-  id?: number
-}
-
 const App: React.FC = () => {
-  const [val, setVal] = React.useState('')
-  function handleSelect({ data }: { value: string; data?: MyModel }) {
-    console.log(data && data.id)
+  const { inputProps, ...selectProps } = useControlledSelect('Apples')
+  const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
+    const fruit = e.currentTarget.getAttribute('data-fruit') || ''
+    selectProps.onSelect({ value: fruit })
   }
-  React.useEffect(() => {
-    setTimeout(() => {
-      setVal('!')
-    }, 3000)
-  }, [])
   return (
     <>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <Box m="xlarge">
+          <Paragraph mb="medium">{selectProps.value}</Paragraph>
           <Select
             openOnFocus={true}
-            onSelect={handleSelect}
             width={240}
             inputProps={{
+              ...inputProps,
               autocomplete: false,
               placeholder: 'Placeholder text',
             }}
             listProps={{ persistSelection: true }}
             options={[
               { data: { id: 1 }, value: 'Apples' },
-              { data: { id: 2 }, value: `Banana${val}` },
-              { data: { id: 3 }, value: 'Orange' },
-              { data: { id: 4 }, value: 'Pineapple' },
-              { data: { id: 5 }, value: 'Kiwi' },
+              { data: { id: 2 }, value: 'Bananas' },
+              { data: { id: 3 }, value: 'Oranges' },
+              { data: { id: 4 }, value: 'Pineapples' },
+              { data: { id: 5 }, value: 'Kiwis' },
             ]}
+            {...selectProps}
           />
+          <Button
+            mt="medium"
+            mr="small"
+            data-fruit="Kiwis"
+            onClick={handleClick}
+          >
+            Pick Kiwis
+          </Button>
+          <Button mt="medium" data-fruit="Oranges" onClick={handleClick}>
+            Pick Oranges
+          </Button>
           <Divider my="xlarge" />
           <InputText width={240} />
         </Box>
