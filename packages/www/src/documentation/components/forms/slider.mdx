@@ -4,36 +4,124 @@ propsOf: Slider
 github: Form/Inputs/Slider/Slider
 ---
 
-### Default Slider
+# Default Slider
 
-The `<Slider />` component renders a single slider element on the page, with no accompanying label.
+The `<Slider />` component renders a styled range slider on the page, with no accompanying label.
 
 ```jsx
 <Slider />
 ```
 
-### Value, Min, Max and step
+# Value, Min, Max
 
 The `<Slider />` component accepts a `value` property, allowing the user to set the initial value at which the slider is initialized.
-It also accepts a `min` and `max` value, as well as the `step` to set the granularity between values.
+It also accepts `min` and `max` values.
+
+```jsx
+<Slider min={10} max={20} value={15} />
+```
+
+Min and max default to the following values:
+
+- **min**: 0
+- **max**: 10
+
+The slider component will disregard any value prop that goes outside of the defined min or max. The following example illustrates default settings when `max=10` but `value=5000`
+
+```jsx
+<Slider min={0} max={10} value={5000} />
+```
+
+# Controlled component with an onChange callback
+
+If you'd like to read and control the input value externally, `Slider` accepts an onChange event callback.
 
 ```jsx
 ;() => {
-  const [value, setValue] = React.useState(11)
-  const onChange = event => setValue(event.target.value)
+  const [sliderValue, setSliderValue] = useState(0)
+  const onChange = event => {
+    setSliderValue(event.target.value)
+  }
   return (
     <div>
-      <Slider min={1} max={11} value={value} step={1} onChange={onChange} />
-      <Text>Volume {value}</Text>
+      <Slider onChange={onChange} value={sliderValue} />
+      <Heading>
+        <strong>Value:</strong> {sliderValue}
+      </Heading>
     </div>
   )
 }
 ```
 
-### Disabled Property
+# Sizes
+
+`Slider` comes in four sizes, which can be specified in the `size` prop:
+
+```jsx
+<Slider size="xsmall" value={2} />
+<Slider size="small" value={4} />
+<Slider size="medium" value={6} />
+<Slider size="large" value={8} />
+```
+
+# Colors
+
+In addition to the standard blue default color scheme, `Slider` provides an alternate `branded` color which uses brand colors specified <a href="http://localhost:8000/getting-started/theme">our standard Theme object.</a>
+
+```jsx
+<Slider size="xsmall" value={2} branded />
+<Slider size="small" value={4} branded />
+<Slider size="medium" value={6} branded />
+<Slider size="large" value={8} branded />
+```
+
+You can customize the appearance by modifying the `theme.colors.semanticColors.primary.main` value:
+
+```jsx
+;() => {
+  /**
+   *  import { theme } from '@looker/components'
+   *  import { ThemeProvider } from 'styled-components'
+   **/
+
+  const myTheme = {
+    ...theme,
+  }
+
+  myTheme.colors.semanticColors.primary.main = '#008930'
+
+  return (
+    <ThemeProvider theme={myTheme}>
+      <Slider size="xsmall" value={2} branded />
+      <Slider size="small" value={4} branded />
+      <Slider size="medium" value={6} branded />
+      <Slider size="large" value={8} branded />
+    </ThemeProvider>
+  )
+}
+```
+
+# Step
+
+Just like the standard HTML range input, you change the granularity of slider options by using the `step` prop.
+
+```jsx
+<Slider max={10000} step={2500} />
+```
+
+# Accessibility
+
+Slider accepts the standard aria-labelledby to help screen readers associate the range input with the relevant form label.
+
+```jsx
+<label id="slider-label">Slider:</label>
+<Slider aria-labelledby="slider-label" />
+```
+
+# Disabled
 
 Use the disable property to gray out the Input, making it a fixed value.
 
 ```jsx
-<Slider disabled />
+<Slider value={3} disabled />
 ```
