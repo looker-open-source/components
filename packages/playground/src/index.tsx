@@ -20,22 +20,35 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { GlobalStyle } from '@looker/components'
+import { Badge, GlobalStyle } from '@looker/components'
 import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
-
-import { ConfirmDemo } from './Confirm/ConfirmDemo'
-import { SliderDemo } from './Slider/SliderDemo'
-
-// want to add < m="medium" > to AvatarUser
 
 const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <>
         <GlobalStyle />
-        <SliderDemo />
-        <ConfirmDemo />
+        <Badge m="medium">basic</Badge>
+        <Badge size="medium" m="medium">
+          medium
+        </Badge>
+        <Badge size="large" m="medium">
+          large
+        </Badge>
+
+        <Badge color="positive" size="medium" m="medium">
+          positive
+        </Badge>
+        <Badge color="plain" size="medium" m="medium">
+          plain
+        </Badge>
+        <Badge size="medium" round m="medium">
+          round
+        </Badge>
+        <Badge size="medium" transparent m="medium">
+          transparent
+        </Badge>
       </>
     </ThemeProvider>
   )
