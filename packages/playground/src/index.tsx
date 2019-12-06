@@ -75,10 +75,10 @@ const App: React.FC = () => {
             data-fruit="Kiwis"
             onClick={handleClick}
           >
-            Pick Kiwis
+            Kiwis
           </Button>
           <Button mt="medium" data-fruit="Oranges" onClick={handleClick}>
-            Pick Oranges
+            Oranges
           </Button>
           <Divider my="xlarge" />
           <InputText width={240} />

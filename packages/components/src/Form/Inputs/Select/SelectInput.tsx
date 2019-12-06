@@ -137,16 +137,20 @@ export const SelectInputInternal = forwardRef(function SelectInput(
   // If they are controlling the value we still need to do our transitions, so
   // we have this derived state to emulate onChange of the input as we receive
   // new `value`s ...[*]
-  if (controlledValue && option && controlledValue !== option.value) {
-    if (!isInputting.current) {
+  if (
+    controlledValue !== undefined &&
+    option &&
+    controlledValue !== option.value
+  ) {
+    if (isInputting.current) {
+      handleValueChange(controlledValue)
+    } else {
       // this is most likely the initial value so we want to
       // update the value without transitioning to suggesting
       transition &&
         transition(SelectActionType.CHANGE_SILENT, {
           option: { value: controlledValue },
         })
-    } else {
-      handleValueChange(controlledValue)
     }
   }
 
