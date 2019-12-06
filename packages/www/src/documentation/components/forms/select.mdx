@@ -10,17 +10,18 @@ The `<Select />` component renders a single select element on the page, with no 
 ```jsx
 <Flex justifyContent="space-between">
   <Select
+    openOnFocus
     options={[
-      { id: 'cheddar', value: 'Cheddar' },
-      { id: 'gouda', value: 'Gouda' },
-      { id: 'swiss', value: 'Swiss' },
+      { data: 'cheddar', value: 'Cheddar' },
+      { data: 'gouda', value: 'Gouda' },
+      { data: 'swiss', value: 'Swiss' },
     ]}
   />
   <Select
     options={[
-      { id: 'cheddar', value: 'Cheddar' },
-      { id: 'gouda', value: 'Gouda' },
-      { id: 'swiss', value: 'Swiss' },
+      { data: 'cheddar', value: 'Cheddar' },
+      { data: 'gouda', value: 'Gouda' },
+      { data: 'swiss', value: 'Swiss' },
     ]}
     inputProps={{ value: 'Gouda' }}
   />
@@ -28,9 +29,9 @@ The `<Select />` component renders a single select element on the page, with no 
   <Select
     inputProps={{ value: "Some Value's Label" }}
     options={[
-      { id: '1', value: 'thing' },
-      { id: 'Some Value', value: "Some Value's Label" },
-      { id: '2', value: 'other' },
+      { data: '1', value: 'thing' },
+      { data: 'Some Value', value: "Some Value's Label" },
+      { data: '2', value: 'other' },
     ]}
   />
 </Flex>
@@ -44,18 +45,18 @@ The `<Select />` component renders a single select element on the page, with no 
     {
       key: 'Italian',
       options: [
-        { id: 'asiago', value: 'Asiago' },
-        { id: 'ricotta', value: 'Ricotta' },
-        { id: 'grana', value: 'Grana' },
+        { data: 'asiago', value: 'Asiago' },
+        { data: 'ricotta', value: 'Ricotta' },
+        { data: 'grana', value: 'Grana' },
       ],
     },
     {
       key: 'American',
       options: [
-        { id: 'american', value: 'American (not actually cheese)' },
-        { id: 'colby-jack', value: 'Colby-Jack' },
-        { id: 'swiss', value: 'Swiss' },
-        { id: 'vermont', value: 'Vermont' },
+        { data: 'american', value: 'American (not actually cheese)' },
+        { data: 'colby-jack', value: 'Colby-Jack' },
+        { data: 'swiss', value: 'Swiss' },
+        { data: 'vermont', value: 'Vermont' },
       ],
     },
   ]}
@@ -72,9 +73,9 @@ A name and ID can be specified in the `<Select />` component. Names are importan
   name="someName"
   id="someId"
   options={[
-    { id: 'cheddar', value: 'Cheddar' },
-    { id: 'gouda', value: 'Gouda' },
-    { id: 'swiss', value: 'Swiss' },
+    { data: 'cheddar', value: 'Cheddar' },
+    { data: 'gouda', value: 'Gouda' },
+    { data: 'swiss', value: 'Swiss' },
   ]}
 />
 ```
@@ -87,18 +88,18 @@ Use the disable property to make an input field uneditable.
 <Select
   disabled
   options={[
-    { id: 'cheddar', value: 'Cheddar' },
-    { id: 'gouda', value: 'Gouda' },
-    { id: 'swiss', value: 'Swiss' },
+    { data: 'cheddar', value: 'Cheddar' },
+    { data: 'gouda', value: 'Gouda' },
+    { data: 'swiss', value: 'Swiss' },
   ]}
 />
 <Select
   value="gouda"
   disabled
   options={[
-    { id: 'cheddar', value: 'Cheddar' },
-    { id: 'gouda', value: 'Gouda' },
-    { id: 'swiss', value: 'Swiss' },
+    { data: 'cheddar', value: 'Cheddar' },
+    { data: 'gouda', value: 'Gouda' },
+    { data: 'swiss', value: 'Swiss' },
   ]}
   ml="large"
 />
@@ -112,17 +113,17 @@ Placeholders are used to give a hint to the user of the expected value for the i
 <Select
   placeholder="Select your cheese of choice..."
   options={[
-    { id: 'cheddar', value: 'Cheddar' },
-    { id: 'gouda', value: 'Gouda' },
-    { id: 'swiss', value: 'Swiss' },
+    { data: 'cheddar', value: 'Cheddar' },
+    { data: 'gouda', value: 'Gouda' },
+    { data: 'swiss', value: 'Swiss' },
   ]}
 />
 <Select
   includeBlank={false}
   options={[
-    { id: 'cheddar', value: 'Cheddar' },
-    { id: 'gouda', value: 'Gouda' },
-    { id: 'swiss', value: 'Swiss' },
+    { data: 'cheddar', value: 'Cheddar' },
+    { data: 'gouda', value: 'Gouda' },
+    { data: 'swiss', value: 'Swiss' },
   ]}
   ml="large"
 />
@@ -137,9 +138,9 @@ As the name suggests, "readOnly" makes the text uneditable.
   value="gouda"
   readOnly
   options={[
-    { id: 'cheddar', value: 'Cheddar' },
-    { id: 'gouda', value: 'Gouda' },
-    { id: 'swiss', value: 'Swiss' },
+    { data: 'cheddar', value: 'Cheddar' },
+    { data: 'gouda', value: 'Gouda' },
+    { data: 'swiss', value: 'Swiss' },
   ]}
 />
 ```
@@ -153,9 +154,9 @@ When set for `<Select />` in the context of a form, the input field must be fill
   <Select
     required
     options={[
-      { id: 'cheddar', value: 'Cheddar' },
-      { id: 'gouda', value: 'Gouda' },
-      { id: 'swiss', value: 'Swiss' },
+      { data: 'cheddar', value: 'Cheddar' },
+      { data: 'gouda', value: 'Gouda' },
+      { data: 'swiss', value: 'Swiss' },
     ]}
   />
   <br />
