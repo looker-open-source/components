@@ -32,80 +32,97 @@
  */
 
 import React, { ReactNode, FC } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import {
+  border,
+  BorderProps,
   color,
   reset,
   space,
   SpaceProps,
   typography,
   TypographyProps,
+  CompatibleHTMLProps,
 } from '@looker/design-tokens'
+import { variant } from 'styled-system'
 import { badgeSize, BadgeSizeProps } from './size'
 
-interface BadgeProps extends BadgeSizeProps, SpaceProps, TypographyProps {
+interface BadgeProps
+  extends BadgeSizeProps,
+    BorderProps,
+    SpaceProps,
+    TypographyProps,
+    CompatibleHTMLProps<HTMLSpanElement> {
   children: ReactNode
   /**
-   *  @default `palette.purple500`
+   *  @default `plain`
    **/
-  color?: string
+  intent?: 'warning' | 'positive' | 'critical' | 'info' | 'neutral' | 'plain'
 
   /**
    *  @default false
    **/
   round?: boolean
+
+  /**
+   *  @ false
+   **/
+  transparent?: boolean
 }
-const BadgeLayout: FC<BadgeProps> = ({ children, color, size, ...props }) => {
-  const howRound = () => {
-    // if round is passed set it to radius = 100%
+const howRound = ({ round }: BadgeProps) => {
+  if (round) {
+    return css`
+      border-radius: 100%;
+    `
   }
-  const setTransparent = () => {
-    // if transparent flag is passed set back ground to transparent and color to ?
+  return ``
+  // if round is passed set it to radius = 100%
+}
+const setTransparent = ({ transparent }: BadgeProps) => {
+  if (transparent) {
+    return css`
+      background-color: transparent;
+      color: inherit;
+    `
   }
-  const badgeColor = () => {
-    // if hte color is plain the text should be purple500
-    switch (color) {
-      case 'warning':
-        return 'palette.yellow500'
-      case 'positive':
-        return 'palette.green500'
-      case 'critical':
-        return 'palette.red500'
-      case 'info':
-        return 'palette.blue500'
-      case 'neutral':
-        return 'palette.grey500'
-      case 'plain':
-        return 'palette.white'
-      default:
-        return 'palette.purple500'
-    }
-  }
-  return (
-    <span bg={badgeColor()} size={size} {...props}>
-      {children}
-    </span>
-  )
+  return ``
+  // if transparent flag is passed set back ground to transparent and color to ?
+}
+const badgeColor = variant({
+  prop: 'intent',
+  variants: {
+    critical: { bg: 'palette.red500', color: 'palette.white' },
+    info: { bg: 'palette.blue500', color: 'palette.white' },
+    neutral: { bg: 'palette.charcoal200' },
+    plain: { bg: 'palette.purple500', color: 'palette.white' },
+    positive: { bg: 'palette.green500', color: 'palette.white' },
+    warning: { bg: 'palette.yellow500', color: 'palette.white' },
+  },
+})
+const BadgeLayout: FC<BadgeProps> = ({ children, ...props }) => {
+  return <span {...props}>{children}</span>
 }
 
 export const Badge = styled(BadgeLayout)`
   ${reset}
 
-  ${badgeSize}
+  ${border}
   ${color}
   ${space}
   ${typography}
+  ${badgeSize}
+  ${badgeColor}
+  ${howRound}
+  ${setTransparent}
 
-  border-radius: ${props => props.theme.radii.medium};
   display: inline-block;
 `
 // border: 1px solid ${props => props.theme.colors.palette.purple500};
 // color: ${props => props.theme.colors.palette.white};
 
 Badge.defaultProps = {
-  bg: 'palette.purple500',
   borderColor: 'palette.purple500',
   borderRadius: 'medium', // 4px ?
-  color: 'palette.white',
+  intent: 'plain',
   size: 'small',
 }
