@@ -24,6 +24,7 @@
 
  */
 
+import merge from 'lodash/merge'
 import {
   CompatibleHTMLProps,
   ColorProps,
@@ -32,8 +33,9 @@ import {
   TypographyProps,
 } from '@looker/design-tokens'
 import { IconNames } from '@looker/icons'
-import React, { FC, ReactNode } from 'react'
+import React, { FC, ReactNode, useContext } from 'react'
 import { Icon } from '../../Icon'
+import { MenuContext } from '../MenuContext'
 import { MenuItemButton } from './MenuItemButton'
 import {
   MenuItemCustomization,
@@ -141,9 +143,19 @@ export const MenuItem: FC<MenuItemProps> = props => {
     ...remainingProps
   } = props
 
+  const { customizationPropRef } = useContext(MenuContext)
+  const parentCustomizations = customizationPropRef
+    ? customizationPropRef.current || {}
+    : {}
+
+  let customizations = parentCustomizations || customizationProps
+  if (customizationProps && parentCustomizations) {
+    customizations = merge({}, parentCustomizations, customizationProps)
+  }
+
   const compactIconModifier = compact ? 1.25 : 1
 
-  const style = assignCustomizations(defaultMenuItemStyle, customizationProps)
+  const style = assignCustomizations(defaultMenuItemStyle, customizations)
   const styleState = current ? style.current : style.initial
   const { iconSize, iconColor, ...listItemProps } = styleState
 

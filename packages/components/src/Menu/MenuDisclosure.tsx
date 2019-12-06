@@ -3,17 +3,17 @@
  MIT License
 
  Copyright (c) 2019 Looker Data Sciences, Inc.
- 
+
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
  in the Software without restriction, including without limitation the rights
  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  copies of the Software, and to permit persons to whom the Software is
  furnished to do so, subject to the following conditions:
- 
+
  The above copyright notice and this permission notice shall be included in all
  copies or substantial portions of the Software.
- 
+
  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -24,12 +24,23 @@
 
  */
 
-import React, { FC, MouseEvent, cloneElement, Children } from 'react'
+import React, {
+  FC,
+  MouseEvent,
+  cloneElement,
+  Children,
+  useContext,
+  useCallback,
+} from 'react'
 import { Placement } from 'popper.js'
 import { useTooltip } from '../Tooltip'
-import { MenuCloneProps } from './Menu'
+import { MenuContext } from './MenuContext'
 
-export interface MenuDisclosureProps extends MenuCloneProps {
+export interface MenuDisclosureProps {
+  /**
+   * Direct child be a single JSX Element that accepts
+   * onClick, onBlur, onFocus, onMouseOver, onMouseOut and disabled
+   */
   children: JSX.Element
   tooltip?: string
   tooltipPlacement?: Placement
@@ -49,21 +60,26 @@ function wrapCallback(
 
 export const MenuDisclosure: FC<MenuDisclosureProps> = ({
   children,
-  disabled,
-  isOpen,
-  setOpen,
   tooltip,
   tooltipPlacement,
-  triggerRef,
 }) => {
-  const { eventHandlers, tooltip: renderedTooltip, ref } = useTooltip({
+  const {
+    disabled,
+    isOpen,
+    setOpen,
+    triggerElement,
+    triggerCallbackRef,
+  } = useContext(MenuContext)
+  const { eventHandlers, tooltip: renderedTooltip } = useTooltip({
     content: tooltip,
     disabled: isOpen,
     placement: tooltipPlacement || 'top',
-    triggerRef,
+    triggerElement,
   })
 
-  const handleClick = () => setOpen && setOpen(!isOpen)
+  const handleClick = useCallback(() => {
+    setOpen && setOpen(!isOpen)
+  }, [setOpen, isOpen])
 
   const allCallbacks = { ...eventHandlers, onClick: handleClick }
 
@@ -79,7 +95,7 @@ export const MenuDisclosure: FC<MenuDisclosureProps> = ({
     return cloneElement(child, {
       ...wrappedCallbacks,
       disabled,
-      ref,
+      ref: triggerCallbackRef,
     })
   })
 

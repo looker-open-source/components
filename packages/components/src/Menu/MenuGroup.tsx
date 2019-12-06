@@ -39,7 +39,6 @@ import { List } from '../List'
 
 import { MenuGroupLabel } from './MenuGroupLabel'
 import { MenuItemCustomization } from './MenuItem'
-import { cloneMenuListChildren } from './MenuList'
 
 export interface MenuGroupProps
   extends Omit<CompatibleHTMLProps<HTMLElement>, 'label'>,
@@ -63,12 +62,7 @@ const MenuGroupInternal: FC<MenuGroupWithChildrenProps> = ({
   labelStyles,
   ...props
 }) => {
-  const { customizationProps, compact, ...boxProps } = props
-
-  const clonedChildren = cloneMenuListChildren(children as JSX.Element[], {
-    compact,
-    customizationProps,
-  })
+  const { customizationProps, ...boxProps } = props
 
   return (
     <MenuGroupWrapper
@@ -84,7 +78,7 @@ const MenuGroupInternal: FC<MenuGroupWithChildrenProps> = ({
           {...labelProps}
         />
       )}
-      <List nomarker>{clonedChildren}</List>
+      <List nomarker>{children}</List>
     </MenuGroupWrapper>
   )
 }

@@ -24,15 +24,14 @@
 
  */
 
-import merge from 'lodash/merge'
 import { Placement } from 'popper.js'
 import React, {
-  Children,
-  cloneElement,
   ReactNode,
   Ref,
   useRef,
   forwardRef,
+  useContext,
+  useLayoutEffect,
 } from 'react'
 import { HotKeys } from 'react-hotkeys'
 import styled, { css } from 'styled-components'
@@ -51,8 +50,8 @@ import {
   maxWidth,
 } from 'styled-system'
 import { CompatibleHTMLProps, reset } from '@looker/design-tokens'
-import { usePopover } from '../Popover'
-import { MenuCloneProps } from './Menu'
+import { usePopover, PopoverContent } from '../Popover'
+import { MenuContext } from './MenuContext'
 import { MenuGroup } from './MenuGroup'
 import { MenuSharedProps } from './MenuItem'
 import { moveFocus } from './moveFocus'
@@ -65,8 +64,7 @@ export interface MenuListProps
     MaxWidthProps,
     MinWidthProps,
     WidthProps,
-    MenuSharedProps,
-    MenuCloneProps {
+    MenuSharedProps {
   children: ReactNode
   compact?: boolean
   groupDividers?: boolean
@@ -87,23 +85,6 @@ export interface MenuListProps
   pin?: boolean
 }
 
-export function cloneMenuListChildren(
-  children: JSX.Element | JSX.Element[],
-  { customizationProps: parentCustomizations, compact }: MenuSharedProps
-) {
-  return Children.map(children, (child: JSX.Element) => {
-    if (!child || typeof child.type === 'string') return child
-
-    const childCustomizations = child.props.customizationProps
-    let customizationProps = parentCustomizations || childCustomizations
-    if (childCustomizations && parentCustomizations) {
-      customizationProps = merge({}, parentCustomizations, childCustomizations)
-    }
-
-    return cloneElement(child, { compact, customizationProps })
-  })
-}
-
 export const MenuListInternal = forwardRef(
   (props: MenuListProps, ref: Ref<HTMLUListElement>) => {
     const {
@@ -112,19 +93,25 @@ export const MenuListInternal = forwardRef(
       compact,
       customizationProps,
       disabled,
-      isOpen,
       pin,
       placement,
-      setOpen,
-      triggerRef,
     } = props
 
-    const innerRef = useRef<null | HTMLElement>(null)
+    const {
+      compactPropRef,
+      customizationPropRef,
+      isOpen,
+      setOpen,
+      triggerElement,
+    } = useContext(MenuContext)
 
-    const clonedChildren = cloneMenuListChildren(children as JSX.Element[], {
-      compact,
-      customizationProps,
-    })
+    useLayoutEffect(() => {
+      if (compactPropRef) compactPropRef.current = compact || false
+      if (customizationPropRef)
+        customizationPropRef.current = customizationProps || null
+    }, [compact, customizationProps, compactPropRef, customizationPropRef])
+
+    const innerRef = useRef<null | HTMLElement>(null)
 
     const menuList = (
       <HotKeys
@@ -136,7 +123,7 @@ export const MenuListInternal = forwardRef(
         }}
       >
         <ul className={className} ref={ref} tabIndex={-1} role="menu">
-          {clonedChildren}
+          {children}
         </ul>
       </HotKeys>
     )
@@ -148,7 +135,7 @@ export const MenuListInternal = forwardRef(
       pin,
       placement,
       setOpen,
-      triggerRef,
+      triggerElement,
     })
 
     if (disabled) return null
