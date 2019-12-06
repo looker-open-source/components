@@ -20,74 +20,35 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {
-  AvatarCombo,
-  AvatarIcon,
-  AvatarUser,
-  GlobalStyle,
-} from '@looker/components'
+import { Badge, GlobalStyle } from '@looker/components'
 import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
-
-const goodData = {
-  // eslint-disable-next-line @typescript-eslint/camelcase
-  avatar_url:
-    'https://media.istockphoto.com/vectors/noisy-glitch-pixelated-seamless-pattern-vector-id1051777344',
-  // eslint-disable-next-line @typescript-eslint/camelcase
-  first_name: 'John',
-  id: 1,
-  // eslint-disable-next-line @typescript-eslint/camelcase
-  last_name: 'Smith',
-}
-
-const bedData = {
-  // eslint-disable-next-line @typescript-eslint/camelcase
-  avatar_url:
-    'https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank',
-  // eslint-disable-next-line @typescript-eslint/camelcase
-  first_name: 'John',
-  id: 1,
-  // eslint-disable-next-line @typescript-eslint/camelcase
-  last_name: 'Smith',
-}
-
-const nullData = {
-  // eslint-disable-next-line @typescript-eslint/camelcase
-  avatar_url: null,
-  // eslint-disable-next-line @typescript-eslint/camelcase
-  first_name: 'John',
-  id: 1,
-  // eslint-disable-next-line @typescript-eslint/camelcase
-  last_name: 'Smith',
-}
-
-// want to add < m="medium" > to AvatarUser
 
 const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <>
         <GlobalStyle />
-        <AvatarUser size="small" m="medium" user={goodData} />
-        <AvatarUser size="medium" m="medium" user={goodData} />
-        <AvatarUser m="medium" user={goodData} />
+        <Badge m="medium">basic</Badge>
+        <Badge size="medium" m="medium">
+          medium
+        </Badge>
+        <Badge size="large" m="medium">
+          large
+        </Badge>
 
-        <AvatarUser size="small" m="medium" user={bedData} />
-        <AvatarUser size="medium" m="medium" user={nullData} />
-        <AvatarUser m="small" user={bedData} />
-
-        <AvatarIcon size="small" m="medium" />
-        <AvatarIcon size="medium" m="medium" />
-        <AvatarIcon m="medium" />
-
-        <AvatarIcon size="small" icon="Trash" m="medium" />
-        <AvatarIcon size="medium" icon="Block" m="medium" />
-        <AvatarIcon icon="ChartPie" m="medium" />
-
-        <AvatarCombo m="medium" user={goodData} badge="Code" />
-        <AvatarCombo m="medium" badge="LogoRings" />
-        <AvatarCombo m="medium" icon="Code" badge="Trash" />
-        <AvatarCombo m="medium" user={bedData} icon="Code" badge="Trash" />
+        <Badge color="positive" size="medium" m="medium">
+          positive
+        </Badge>
+        <Badge color="plain" size="medium" m="medium">
+          plain
+        </Badge>
+        <Badge size="medium" round m="medium">
+          round
+        </Badge>
+        <Badge size="medium" transparent m="medium">
+          transparent
+        </Badge>
       </>
     </ThemeProvider>
   )
