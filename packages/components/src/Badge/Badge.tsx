@@ -24,35 +24,93 @@
 
  */
 
+/*
+  default color - looker purple
+  other colors: red, blue, yellow, white, green, grey
+  size (font and diameter): xsmall, small, medium, large
+  extra flags: transparent(color: ? ) | round: boolean
+ */
+
+import React, { ReactNode, FC } from 'react'
 import styled from 'styled-components'
 import {
+  color,
   reset,
   space,
   SpaceProps,
   typography,
   TypographyProps,
 } from '@looker/design-tokens'
+import { badgeSize, BadgeSizeProps } from './size'
 
-interface BadgeProps extends SpaceProps, TypographyProps {
+interface BadgeProps extends BadgeSizeProps, SpaceProps, TypographyProps {
+  children: ReactNode
+  /**
+   *  @default `palette.purple500`
+   **/
   color?: string
+
+  /**
+   *  @default false
+   **/
+  round?: boolean
+
+  /**
+   *  @default false
+   **/
+  transparent?: boolean
+}
+const BadgeLayout: FC<BadgeProps> = ({ children, color, size, ...props }) => {
+  const howRound = () => {
+    // if round is passed set it to radius = 100%
+  }
+  const setTransparent = () => {
+    // if transparent flag is passed set back ground to transparent and color to ?
+  }
+  const badgeColor = () => {
+    // if hte color is plain the text should be purple500
+    switch (color) {
+      case 'warning':
+        return 'palette.yellow500'
+      case 'positive':
+        return 'palette.green500'
+      case 'critical':
+        return 'palette.red500'
+      case 'info':
+        return 'palette.blue500'
+      case 'neutral':
+        return 'palette.grey500'
+      case 'plain':
+        return 'palette.white'
+      default:
+        return 'palette.purple500'
+    }
+  }
+  return (
+    <span background-color="red" size={size} {...props}>
+      {children}
+    </span>
+  )
 }
 
-export const Badge = styled.span<BadgeProps>`
+export const Badge = styled(BadgeLayout)`
   ${reset}
 
-  border: 1px solid ${props => props.theme.colors.palette.charcoal200};
-  border-radius: ${props => props.theme.radii.medium};
-  background: ${props => props.theme.colors.palette.charcoal100};
-  color: ${props => props.theme.colors.palette.charcoal600};
-
-  display: inline-block;
+  ${badgeSize}
+  ${color}
   ${space}
   ${typography}
+
+  border-radius: ${props => props.theme.radii.medium};
+  display: inline-block;
 `
+// border: 1px solid ${props => props.theme.colors.palette.purple500};
+// color: ${props => props.theme.colors.palette.white};
 
 Badge.defaultProps = {
-  fontSize: 'xxsmall',
-  mx: 'xsmall',
-  px: 'xxsmall',
-  py: 'xxxsmall',
+  bg: 'palette.purple500',
+  borderColor: 'palette.purple500',
+  borderRadius: 'medium', // 4px ?
+  color: 'palette.white',
+  size: 'small',
 }
