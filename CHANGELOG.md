@@ -35,6 +35,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Removed confusing `maxWidth` property
   - `Link` color within `Tooltip` is set to `blue200` to ensure readability.
 - `useFocusTrap` and `useScrollLock` behavior when `Popover` is nested in a `Modal` or another `Popover`.
+- Added missing border on `OverlaySurfaceArrow`
 
 ## [0.7.6] - 2019-11-18
 
