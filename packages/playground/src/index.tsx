@@ -18,7 +18,7 @@
  SOFTWARE.
  */
 
-import React, { useState } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom'
 import { GlobalStyle } from '@looker/components'
 import { theme } from '@looker/design-tokens'
