@@ -26,6 +26,7 @@
 
 import 'jest-styled-components'
 import React, { FC } from 'react'
+import noop from 'lodash/noop'
 import {
   createWithTheme,
   mountWithTheme,
@@ -33,8 +34,6 @@ import {
 } from '@looker/components-test-utils'
 
 import { Box } from './Box'
-
-const noop = () => {}
 
 describe('Box', () => {
   test('Box default', () => {

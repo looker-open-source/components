@@ -25,6 +25,7 @@ import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
 
 import { ConfirmDemo } from './Confirm/ConfirmDemo'
+import { SliderDemo } from './Slider/SliderDemo'
 
 // want to add < m="medium" > to AvatarUser
 
@@ -33,6 +34,7 @@ const App: React.FC = () => {
     <ThemeProvider theme={theme}>
       <>
         <GlobalStyle />
+        <SliderDemo />
         <ConfirmDemo />
       </>
     </ThemeProvider>

@@ -16,6 +16,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - `ChangeHistory` and `DragHandleDots` icons fixed
+- Customize Slider input appearance
+- Use standard range input as basis for LuminositySlider (rather than extending Slider component)
 - Update theme object to use more vibrant colors by default.
 - updated documentation to include Avatar
 - Improved documentation around installation of NPM package

@@ -28,6 +28,7 @@ const Adapter = require('enzyme-adapter-react-16')
 const Enzyme = require('enzyme')
 require('@testing-library/jest-dom/extend-expect')
 require('jest-canvas-mock')
+require('jest-styled-components')
 
 Enzyme.configure({ adapter: new Adapter() })
 
