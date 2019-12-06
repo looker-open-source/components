@@ -109,6 +109,15 @@ Just like the standard HTML range input, you change the granularity of slider op
 <Slider max={10000} step={2500} />
 ```
 
+# Accessibility
+
+Slider accepts the standard aria-labelledby to help screen readers associate the range input with the relevant form label.
+
+```jsx
+<label id="slider-label">Slider:</label>
+<Slider aria-labelledby="slider-label" />
+```
+
 # Disabled Property
 
 Use the disable property to gray out the Input, making it a fixed value.
