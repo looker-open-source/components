@@ -32,7 +32,7 @@ import {
   MenuDisclosure,
   MenuList,
   MenuItem,
-  MenuContext,
+  ModalContext,
   MenuGroup,
   Paragraph,
 } from '@looker/components'
@@ -43,10 +43,10 @@ const FancyMenuItem = ({
   text: string
   current?: boolean
 }) => {
-  const { setOpen } = useContext(MenuContext)
+  const { closeModal } = useContext(ModalContext)
   const handleClick = () => {
     alert(`You picked ${text}`)
-    setOpen && setOpen(false)
+    closeModal && closeModal()
   }
   return (
     <MenuItem icon="FavoriteOutline" onClick={handleClick} current={current}>
@@ -58,7 +58,7 @@ export function MenuDemo() {
   const [isOpen, setOpen] = React.useState(true)
   return (
     <Box m="large">
-      <Paragraph>{String(isOpen)}</Paragraph>
+      <Paragraph pb="medium">{isOpen ? 'Menu Open' : 'Menu Closed'}</Paragraph>
       <Menu isOpen={isOpen} setOpen={setOpen}>
         <MenuDisclosure tooltip="Select your favorite kind">
           <Button>Cheese</Button>
@@ -67,8 +67,8 @@ export function MenuDemo() {
           <FancyMenuItem text="Gouda" />
           <FancyMenuItem text="Swiss" current />
           <MenuGroup compact={false}>
-            <FancyMenuItem text="Gouda" />
-            <FancyMenuItem text="Swiss" />
+            <FancyMenuItem text="Gouda w/ Space" />
+            <FancyMenuItem text="Swiss w/ Space" />
           </MenuGroup>
         </MenuList>
       </Menu>
