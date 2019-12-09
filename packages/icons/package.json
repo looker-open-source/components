@@ -30,7 +30,7 @@
     "@svgr/babel-plugin-add-jsx-attribute": "^4.2.0",
     "@svgr/cli": "^4.3.3",
     "@types/glob": "^7.1.1",
-    "@types/node": "^12.12.14",
+    "@types/node": "^12.12.15",
     "@types/rimraf": "^2.0.3",
     "glob": "^7.1.6",
     "lodash": "^4.17.15",
