@@ -150,6 +150,8 @@ const Inner = styled.div<SurfaceStyleProps>`
   ${border}
   ${boxShadow}
   ${color}
+  /* Prevent bg color of children from overflowing rounded corners */
+  overflow: hidden;
   &:focus {
     outline: none;
   }
