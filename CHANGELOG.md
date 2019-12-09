@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Badge component with test and documentation
+
 - Avatar components and documentation - AvatarIcon, AvatarUser, AvatarCombo
 
 - Instructions for documenting new components in WWW
