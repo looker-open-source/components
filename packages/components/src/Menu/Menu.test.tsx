@@ -26,10 +26,11 @@
 
 import '@testing-library/jest-dom/extend-expect'
 import { fireEvent } from '@testing-library/react'
-import React from 'react'
+import React, { useContext } from 'react'
 
 import { renderWithTheme } from '@looker/components-test-utils'
 import { Button } from '../Button'
+import { ModalContext } from '../Modal'
 import { Menu, MenuDisclosure, MenuItem, MenuList } from './'
 
 const menu = (
@@ -72,6 +73,41 @@ describe('<Menu />', () => {
     button.focus()
 
     expect(queryByText('Select your favorite kind')).toBeInTheDocument()
+  })
+
+  test('Use context to close menu', () => {
+    const FancyItem = () => {
+      const { closeModal } = useContext(ModalContext)
+      return (
+        <MenuItem icon="FavoriteOutline" onClick={closeModal}>
+          Swiss
+        </MenuItem>
+      )
+    }
+    const menu2 = (
+      <Menu>
+        <MenuDisclosure tooltip="Select your favorite kind">
+          <Button>Cheese</Button>
+        </MenuDisclosure>
+        <MenuList>
+          <FancyItem />
+        </MenuList>
+      </Menu>
+    )
+    const { getByText, queryByText } = renderWithTheme(menu2)
+
+    const button = getByText('Cheese')
+
+    expect(queryByText('Swiss')).not.toBeInTheDocument()
+
+    fireEvent.click(button)
+
+    expect(queryByText('Swiss')).toBeInTheDocument()
+
+    const fancyItem = getByText('Swiss')
+    fireEvent.click(fancyItem)
+
+    expect(fancyItem).not.toBeInTheDocument()
   })
 
   test('Disabled Menu does not open when clicked and has disabled prop', () => {

@@ -69,6 +69,8 @@ test('Menu - composed', () => {
   expect(menu).toMatchSnapshot()
 })
 
+const WrappedMenuItem = () => <MenuItem icon="Beaker">Scary Stuff</MenuItem>
+
 test('Menu - compact', () => {
   const menu = mount(
     <ThemeProvider theme={theme}>
@@ -84,7 +86,7 @@ test('Menu - compact', () => {
           <MenuItem>Swiss</MenuItem>
         </MenuGroup>
         <MenuGroup>
-          <MenuItem icon="Beaker">Scary Stuff</MenuItem>
+          <WrappedMenuItem />
         </MenuGroup>
       </MenuList>
     </ThemeProvider>
@@ -131,7 +133,7 @@ test('Menu - menu customization', () => {
         <MenuItem>Swiss</MenuItem>
       </MenuGroup>
       <MenuGroup>
-        <MenuItem icon="Beaker">Scary Stuff</MenuItem>
+        <WrappedMenuItem />
       </MenuGroup>
     </MenuList>
   )

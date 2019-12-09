@@ -20,33 +20,18 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {
-  Button,
-  GlobalStyle,
-  Menu,
-  MenuDisclosure,
-  MenuList,
-  MenuItem,
-} from '@looker/components'
+import { GlobalStyle } from '@looker/components'
 import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
 
-// want to add < m="medium" > to AvatarUser
+import { MenuDemo } from './Menu/MenuDemo'
 
 const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <>
         <GlobalStyle />
-        <Menu>
-          <MenuDisclosure tooltip="Select your favorite kind">
-            <Button>Cheese</Button>
-          </MenuDisclosure>
-          <MenuList>
-            <MenuItem icon="FavoriteOutline">Gouda</MenuItem>
-            <MenuItem icon="FavoriteOutline">Swiss</MenuItem>
-          </MenuList>
-        </Menu>
+        <MenuDemo />
       </>
     </ThemeProvider>
   )

@@ -40,6 +40,7 @@ export interface MenuDisclosureProps {
   /**
    * Direct child be a single JSX Element that accepts
    * onClick, onBlur, onFocus, onMouseOver, onMouseOut and disabled
+   * unable to enforce typing of props https://github.com/DefinitelyTyped/DefinitelyTyped/issues/34713
    */
   children: JSX.Element
   tooltip?: string

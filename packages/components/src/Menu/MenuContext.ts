@@ -24,12 +24,10 @@
 
  */
 
-import { createContext, MutableRefObject } from 'react'
-import { MenuItemCustomization } from './MenuItem'
+import { createContext } from 'react'
+import { MenuSharedProps } from './MenuItem'
 
 export interface MenuContextProps {
-  compactPropRef?: MutableRefObject<boolean>
-  customizationPropRef?: MutableRefObject<MenuItemCustomization | null>
   disabled?: boolean
   isOpen?: boolean
   setOpen?: (isOpen: boolean) => void
@@ -38,5 +36,7 @@ export interface MenuContextProps {
 }
 
 const menuContext: MenuContextProps = {}
+const menuItemStyleContext: MenuSharedProps = {}
 
 export const MenuContext = createContext(menuContext)
+export const MenuItemStyleContext = createContext(menuItemStyleContext)

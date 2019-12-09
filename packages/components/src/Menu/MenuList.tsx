@@ -25,14 +25,7 @@
  */
 
 import { Placement } from 'popper.js'
-import React, {
-  ReactNode,
-  Ref,
-  useRef,
-  forwardRef,
-  useContext,
-  useLayoutEffect,
-} from 'react'
+import React, { Ref, useRef, forwardRef, useContext } from 'react'
 import { HotKeys } from 'react-hotkeys'
 import styled, { css } from 'styled-components'
 import {
@@ -50,8 +43,8 @@ import {
   maxWidth,
 } from 'styled-system'
 import { CompatibleHTMLProps, reset } from '@looker/design-tokens'
-import { usePopover, PopoverContent } from '../Popover'
-import { MenuContext } from './MenuContext'
+import { usePopover } from '../Popover'
+import { MenuContext, MenuItemStyleContext } from './MenuContext'
 import { MenuGroup } from './MenuGroup'
 import { MenuSharedProps } from './MenuItem'
 import { moveFocus } from './moveFocus'
@@ -65,7 +58,6 @@ export interface MenuListProps
     MinWidthProps,
     WidthProps,
     MenuSharedProps {
-  children: ReactNode
   compact?: boolean
   groupDividers?: boolean
 
@@ -97,35 +89,25 @@ export const MenuListInternal = forwardRef(
       placement,
     } = props
 
-    const {
-      compactPropRef,
-      customizationPropRef,
-      isOpen,
-      setOpen,
-      triggerElement,
-    } = useContext(MenuContext)
-
-    useLayoutEffect(() => {
-      if (compactPropRef) compactPropRef.current = compact || false
-      if (customizationPropRef)
-        customizationPropRef.current = customizationProps || null
-    }, [compact, customizationProps, compactPropRef, customizationPropRef])
+    const { isOpen, setOpen, triggerElement } = useContext(MenuContext)
 
     const innerRef = useRef<null | HTMLElement>(null)
 
     const menuList = (
-      <HotKeys
-        innerRef={innerRef}
-        keyMap={{ MOVE_DOWN: 'down', MOVE_UP: 'up' }}
-        handlers={{
-          MOVE_DOWN: () => moveFocus(1, 0, innerRef),
-          MOVE_UP: () => moveFocus(-1, -1, innerRef),
-        }}
-      >
-        <ul className={className} ref={ref} tabIndex={-1} role="menu">
-          {children}
-        </ul>
-      </HotKeys>
+      <MenuItemStyleContext.Provider value={{ compact, customizationProps }}>
+        <HotKeys
+          innerRef={innerRef}
+          keyMap={{ MOVE_DOWN: 'down', MOVE_UP: 'up' }}
+          handlers={{
+            MOVE_DOWN: () => moveFocus(1, 0, innerRef),
+            MOVE_UP: () => moveFocus(-1, -1, innerRef),
+          }}
+        >
+          <ul className={className} ref={ref} tabIndex={-1} role="menu">
+            {children}
+          </ul>
+        </HotKeys>
+      </MenuItemStyleContext.Provider>
     )
 
     const isMenu = isOpen !== undefined

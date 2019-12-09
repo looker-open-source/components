@@ -37,49 +37,51 @@ import { BackgroundColorProps } from 'styled-system'
 import { HeadingProps } from '../Text/Heading'
 import { List } from '../List'
 
+import { MenuItemStyleContext } from './MenuContext'
 import { MenuGroupLabel } from './MenuGroupLabel'
-import { MenuItemCustomization } from './MenuItem'
+import { MenuSharedProps, useMenuItemStyleContext } from './MenuItem'
 
 export interface MenuGroupProps
   extends Omit<CompatibleHTMLProps<HTMLElement>, 'label'>,
     BackgroundColorProps,
-    SpaceProps {
+    SpaceProps,
+    MenuSharedProps {
   label?: ReactNode
   labelProps?: HeadingProps
   labelStyles?: CSSProperties
-  customizationProps?: MenuItemCustomization
-  compact?: boolean
 }
 
-export interface MenuGroupWithChildrenProps extends MenuGroupProps {
-  children: ReactNode
-}
-
-const MenuGroupInternal: FC<MenuGroupWithChildrenProps> = ({
+const MenuGroupInternal: FC<MenuGroupProps> = ({
   children,
+  compact,
   label,
   labelProps,
   labelStyles,
-  ...props
+  customizationProps,
+  ...boxProps
 }) => {
-  const { customizationProps, ...boxProps } = props
-
+  const mergedContextValue = useMenuItemStyleContext({
+    compact,
+    customizationProps,
+  })
   return (
-    <MenuGroupWrapper
-      {...boxProps}
-      backgroundColor={customizationProps && customizationProps.bg}
-      py="small"
-    >
-      {label && (
-        <MenuGroupLabel
-          backgroundColor={customizationProps && customizationProps.bg}
-          labelStyles={labelStyles}
-          labelContent={label}
-          {...labelProps}
-        />
-      )}
-      <List nomarker>{children}</List>
-    </MenuGroupWrapper>
+    <MenuItemStyleContext.Provider value={mergedContextValue}>
+      <MenuGroupWrapper
+        {...boxProps}
+        backgroundColor={customizationProps && customizationProps.bg}
+        py="small"
+      >
+        {label && (
+          <MenuGroupLabel
+            backgroundColor={customizationProps && customizationProps.bg}
+            labelStyles={labelStyles}
+            labelContent={label}
+            {...labelProps}
+          />
+        )}
+        <List nomarker>{children}</List>
+      </MenuGroupWrapper>
+    </MenuItemStyleContext.Provider>
   )
 }
 
