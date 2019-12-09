@@ -176,12 +176,13 @@ const sliderThumbCss = css<SliderInputProps>`
 `
 
 const SliderInput = styled.input.attrs({ type: 'range' })<SliderInputProps>`
-  width: 100%;
-  -webkit-appearance: none; /* stylelint-disable-line */
   background: transparent;
   display: block;
+  height: ${({ knobSize }) => knobSize + 6}px;
   position: relative;
+  width: 100%;
   z-index: 1;
+  -webkit-appearance: none; /* stylelint-disable-line */
 
   &::-webkit-slider-thumb {
     -webkit-appearance: none; /* stylelint-disable-line */

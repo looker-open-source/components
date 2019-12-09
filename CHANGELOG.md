@@ -30,6 +30,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Prevent www theme examples from bleeding into global scope
+- Fix slider overflow issue in Windows/Edge
+- Fix www sidebar nav button appearance in Windows/Edge
 - Banner icons are rendered at proper sizes when used in www
 - `Tooltip`
   - Respects `width` property as expected
