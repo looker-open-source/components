@@ -2,12 +2,13 @@
 
 exports[`renders focus styles on keypress 1`] = `
 .c0 {
-  width: 100%;
-  -webkit-appearance: none;
   background: transparent;
   display: block;
+  height: 30px;
   position: relative;
+  width: 100%;
   z-index: 1;
+  -webkit-appearance: none;
 }
 
 .c0::-webkit-slider-thumb {
