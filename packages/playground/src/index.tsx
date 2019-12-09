@@ -29,14 +29,26 @@ const App: React.FC = () => {
     <ThemeProvider theme={theme}>
       <>
         <GlobalStyle />
-        <Badge m="medium">basic</Badge>
+        <Badge m="medium">small</Badge>
+        <Badge round m="medium">
+          small
+        </Badge>
         <Badge size="medium" m="medium">
+          medium
+        </Badge>
+        <Badge round size="medium" m="medium">
           medium
         </Badge>
         <Badge size="large" m="medium">
           large
         </Badge>
+        <Badge round size="large" m="medium">
+          large
+        </Badge>
 
+        <Badge intent="plain" size="medium" m="medium">
+          plain
+        </Badge>
         <Badge intent="positive" size="medium" m="medium">
           positive
         </Badge>
@@ -52,9 +64,7 @@ const App: React.FC = () => {
         <Badge intent="critical" size="medium" m="medium">
           critical
         </Badge>
-        <Badge size="medium" round m="medium">
-          round
-        </Badge>
+
         <Badge size="medium" transparent m="medium">
           transparent
         </Badge>
