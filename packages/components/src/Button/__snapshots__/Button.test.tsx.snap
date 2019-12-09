@@ -43,28 +43,28 @@ exports[`Button Focus: renders outline when tabbing into focus, but not when cli
 }
 
 .c1 {
-  background: #6C43E0;
-  border: 1px solid #6C43E0;
+  background: #64518A;
+  border: 1px solid #64518A;
   color: #FFFFFF;
 }
 
 .c1:active,
 .c1.active {
-  background: #412399;
-  border-color: #412399;
+  background: #2A1B60;
+  border-color: #2A1B60;
 }
 
 .c1:hover,
 .c1:focus,
 .c1.hover {
-  background: #4F2ABA;
-  border-color: #4F2ABA;
+  background: #473764;
+  border-color: #473764;
 }
 
 .c1[disabled]:hover,
 .c1[disabled]:active,
 .c1[disabled]:focus {
-  background-color: #6C43E0;
+  background-color: #64518A;
   border-color: #C1C6CC;
 }
 
@@ -77,7 +77,7 @@ exports[`Button Focus: renders outline when tabbing into focus, but not when cli
 
 exports[`Button Focus: renders outline when tabbing into focus, but not when clicking 2`] = `
 <button
-  class="sc-bxivhb cwuduv sc-ifAKCX sc-EHOje kAurnO"
+  class="sc-bxivhb cyPJeD sc-ifAKCX sc-EHOje knOqFs"
 >
   focus
 </button>
@@ -126,28 +126,28 @@ exports[`Button disable 1`] = `
 }
 
 .c1 {
-  background: #6C43E0;
-  border: 1px solid #6C43E0;
+  background: #64518A;
+  border: 1px solid #64518A;
   color: #FFFFFF;
 }
 
 .c1:active,
 .c1.active {
-  background: #412399;
-  border-color: #412399;
+  background: #2A1B60;
+  border-color: #2A1B60;
 }
 
 .c1:hover,
 .c1:focus,
 .c1.hover {
-  background: #4F2ABA;
-  border-color: #4F2ABA;
+  background: #473764;
+  border-color: #473764;
 }
 
 .c1[disabled]:hover,
 .c1[disabled]:active,
 .c1[disabled]:focus {
-  background-color: #6C43E0;
+  background-color: #64518A;
   border-color: #C1C6CC;
 }
 
@@ -204,28 +204,28 @@ exports[`Button validates all sizes 1`] = `
 }
 
 .c1 {
-  background: #6C43E0;
-  border: 1px solid #6C43E0;
+  background: #64518A;
+  border: 1px solid #64518A;
   color: #FFFFFF;
 }
 
 .c1:active,
 .c1.active {
-  background: #412399;
-  border-color: #412399;
+  background: #2A1B60;
+  border-color: #2A1B60;
 }
 
 .c1:hover,
 .c1:focus,
 .c1.hover {
-  background: #4F2ABA;
-  border-color: #4F2ABA;
+  background: #473764;
+  border-color: #473764;
 }
 
 .c1[disabled]:hover,
 .c1[disabled]:active,
 .c1[disabled]:focus {
-  background-color: #6C43E0;
+  background-color: #64518A;
   border-color: #C1C6CC;
 }
 
@@ -279,28 +279,28 @@ exports[`Button validates all sizes 2`] = `
 }
 
 .c1 {
-  background: #6C43E0;
-  border: 1px solid #6C43E0;
+  background: #64518A;
+  border: 1px solid #64518A;
   color: #FFFFFF;
 }
 
 .c1:active,
 .c1.active {
-  background: #412399;
-  border-color: #412399;
+  background: #2A1B60;
+  border-color: #2A1B60;
 }
 
 .c1:hover,
 .c1:focus,
 .c1.hover {
-  background: #4F2ABA;
-  border-color: #4F2ABA;
+  background: #473764;
+  border-color: #473764;
 }
 
 .c1[disabled]:hover,
 .c1[disabled]:active,
 .c1[disabled]:focus {
-  background-color: #6C43E0;
+  background-color: #64518A;
   border-color: #C1C6CC;
 }
 
@@ -354,28 +354,28 @@ exports[`Button validates all sizes 3`] = `
 }
 
 .c1 {
-  background: #6C43E0;
-  border: 1px solid #6C43E0;
+  background: #64518A;
+  border: 1px solid #64518A;
   color: #FFFFFF;
 }
 
 .c1:active,
 .c1.active {
-  background: #412399;
-  border-color: #412399;
+  background: #2A1B60;
+  border-color: #2A1B60;
 }
 
 .c1:hover,
 .c1:focus,
 .c1.hover {
-  background: #4F2ABA;
-  border-color: #4F2ABA;
+  background: #473764;
+  border-color: #473764;
 }
 
 .c1[disabled]:hover,
 .c1[disabled]:active,
 .c1[disabled]:focus {
-  background-color: #6C43E0;
+  background-color: #64518A;
   border-color: #C1C6CC;
 }
 
@@ -429,28 +429,28 @@ exports[`Button validates all sizes 4`] = `
 }
 
 .c1 {
-  background: #6C43E0;
-  border: 1px solid #6C43E0;
+  background: #64518A;
+  border: 1px solid #64518A;
   color: #FFFFFF;
 }
 
 .c1:active,
 .c1.active {
-  background: #412399;
-  border-color: #412399;
+  background: #2A1B60;
+  border-color: #2A1B60;
 }
 
 .c1:hover,
 .c1:focus,
 .c1.hover {
-  background: #4F2ABA;
-  border-color: #4F2ABA;
+  background: #473764;
+  border-color: #473764;
 }
 
 .c1[disabled]:hover,
 .c1[disabled]:active,
 .c1[disabled]:focus {
-  background-color: #6C43E0;
+  background-color: #64518A;
   border-color: #C1C6CC;
 }
 

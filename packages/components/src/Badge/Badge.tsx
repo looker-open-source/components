@@ -24,13 +24,6 @@
 
  */
 
-/*
-  default color - looker purple
-  other colors: red, blue, yellow, white, green, grey
-  size (font and diameter): xsmall, small, medium, large
-  extra flags: transparent(color: ? ) | round: boolean
- */
-
 import React, { ReactNode, FC } from 'react'
 import styled, { css } from 'styled-components'
 import {
@@ -38,6 +31,10 @@ import {
   BorderProps,
   color,
   reset,
+  SizeLarge,
+  SizeMedium,
+  SizeSmall,
+  SizeXSmall,
   space,
   SpaceProps,
   typography,
@@ -45,11 +42,33 @@ import {
   CompatibleHTMLProps,
 } from '@looker/design-tokens'
 import { variant } from 'styled-system'
-import { badgeSize, BadgeSizeProps } from './size'
+
+export type BadgeSizes = SizeXSmall | SizeSmall | SizeMedium | SizeLarge
+
+/* eslint-disable sort-keys */
+export const badgeSize = variant({
+  prop: 'size',
+  variants: {
+    small: {
+      fontSize: 'xxsmall',
+      px: 'xxsmall',
+      py: 'none',
+    },
+    medium: {
+      fontSize: 'xsmall',
+      px: 'xsmall',
+      py: 'xxsmall',
+    },
+    large: {
+      fontSize: 'medium',
+      px: 'xsmall',
+      py: 'xxsmall',
+    },
+  },
+})
 
 interface BadgeProps
-  extends BadgeSizeProps,
-    BorderProps,
+  extends BorderProps,
     SpaceProps,
     TypographyProps,
     CompatibleHTMLProps<HTMLSpanElement> {
@@ -69,15 +88,21 @@ interface BadgeProps
   /**
    *  @default false
    **/
-  round?: boolean
+  rounded?: boolean
+
+  /**
+   * Defines the size of Badge diameter.
+   * @default "small"
+   */
+  size?: BadgeSizes
 
   /**
    *  @default false
    **/
   transparent?: boolean
 }
-const badgeRound = ({ round }: BadgeProps) =>
-  round
+const badgeRounded = ({ rounded }: BadgeProps) =>
+  rounded
     ? css`
         border-radius: 50px;
       `
@@ -116,13 +141,11 @@ export const Badge = styled(BadgeLayout)`
   ${typography}
   ${badgeSize}
   ${badgeColor}
-  ${badgeRound}
+  ${badgeRounded}
   ${badgeTransparent}
 
   display: inline-block;
 `
-// border: 1px solid ${props => props.theme.colors.palette.purple500};
-// color: ${props => props.theme.colors.palette.white};
 
 Badge.defaultProps = {
   borderColor: 'palette.purple500',

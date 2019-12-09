@@ -358,7 +358,7 @@ exports[`Badge renders with round flag 2`] = `
   round={true}
   size="medium"
 >
-  mediaum
+  medium
 </span>
 `;
 
