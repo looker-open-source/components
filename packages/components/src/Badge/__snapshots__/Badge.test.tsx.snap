@@ -15,6 +15,8 @@ exports[`Badge renders all intents 1`] = `
   font-size: 0.6875rem;
   padding-left: 0.25rem;
   padding-right: 0.25rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
   background-color: #FFFFFF;
   color: #4F2ABA;
   display: inline-block;
@@ -47,6 +49,8 @@ exports[`Badge renders all intents 2`] = `
   font-size: 0.6875rem;
   padding-left: 0.25rem;
   padding-right: 0.25rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
   background-color: #FFFFFF;
   color: #4F2ABA;
   display: inline-block;
@@ -79,6 +83,8 @@ exports[`Badge renders all intents 3`] = `
   font-size: 0.6875rem;
   padding-left: 0.25rem;
   padding-right: 0.25rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
   background-color: #FFFFFF;
   color: #4F2ABA;
   display: inline-block;
@@ -111,6 +117,8 @@ exports[`Badge renders all intents 4`] = `
   font-size: 0.6875rem;
   padding-left: 0.25rem;
   padding-right: 0.25rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
   background-color: #FFFFFF;
   color: #4F2ABA;
   display: inline-block;
@@ -143,6 +151,8 @@ exports[`Badge renders all intents 5`] = `
   font-size: 0.6875rem;
   padding-left: 0.25rem;
   padding-right: 0.25rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
   background-color: #FFFFFF;
   color: #4F2ABA;
   display: inline-block;
@@ -175,6 +185,8 @@ exports[`Badge renders all intents 6`] = `
   font-size: 0.6875rem;
   padding-left: 0.25rem;
   padding-right: 0.25rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
   background-color: #FFFFFF;
   color: #4F2ABA;
   display: inline-block;
@@ -207,6 +219,8 @@ exports[`Badge renders all sizes 1`] = `
   font-size: 0.6875rem;
   padding-left: 0.25rem;
   padding-right: 0.25rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
   background-color: #4F2ABA;
   color: #FFFFFF;
   display: inline-block;
@@ -307,6 +321,8 @@ exports[`Badge renders with round flag 1`] = `
   font-size: 0.6875rem;
   padding-left: 0.25rem;
   padding-right: 0.25rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
   background-color: #4F2ABA;
   color: #FFFFFF;
   border-radius: 50px;
@@ -319,7 +335,7 @@ exports[`Badge renders with round flag 1`] = `
   className="c0"
   fontWeight="semiBold"
   intent="default"
-  round={true}
+  rounded={true}
   size="small"
 >
   small
@@ -355,7 +371,7 @@ exports[`Badge renders with round flag 2`] = `
   className="c0"
   fontWeight="semiBold"
   intent="default"
-  round={true}
+  rounded={true}
   size="medium"
 >
   medium
@@ -391,7 +407,7 @@ exports[`Badge renders with round flag 3`] = `
   className="c0"
   fontWeight="semiBold"
   intent="default"
-  round={true}
+  rounded={true}
   size="large"
 >
   large
@@ -413,6 +429,8 @@ exports[`Badge renders with transparent flag 1`] = `
   font-size: 0.6875rem;
   padding-left: 0.25rem;
   padding-right: 0.25rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
   background-color: #4F2ABA;
   color: #FFFFFF;
   background-color: transparent;

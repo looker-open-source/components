@@ -18,14 +18,14 @@ test('Badge renders all intents', () => {
 })
 
 test('Badge renders with round flag', () => {
-  assertSnapshot(<Badge round>small</Badge>)
+  assertSnapshot(<Badge rounded>small</Badge>)
   assertSnapshot(
-    <Badge size="medium" round>
+    <Badge size="medium" rounded>
       medium
     </Badge>
   )
   assertSnapshot(
-    <Badge size="large" round>
+    <Badge size="large" rounded>
       large
     </Badge>
   )
