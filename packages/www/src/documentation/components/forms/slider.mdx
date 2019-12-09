@@ -86,9 +86,14 @@ You can customize the appearance by modifying the `theme.colors.semanticColors.p
 
   const myTheme = {
     ...theme,
+    colors: {
+      ...theme.colors,
+      semanticColors: {
+        ...theme.colors.semanticColors,
+        primary: { ...theme.colors.semanticColors.primary, main: '#008930' },
+      },
+    },
   }
-
-  myTheme.colors.semanticColors.primary.main = '#008930'
 
   return (
     <ThemeProvider theme={myTheme}>
