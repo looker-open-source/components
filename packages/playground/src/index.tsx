@@ -29,23 +29,42 @@ const App: React.FC = () => {
     <ThemeProvider theme={theme}>
       <>
         <GlobalStyle />
-        <Badge m="medium">basic</Badge>
+        <Badge m="medium">small</Badge>
+        <Badge round m="medium">
+          small
+        </Badge>
         <Badge size="medium" m="medium">
+          medium
+        </Badge>
+        <Badge round size="medium" m="medium">
           medium
         </Badge>
         <Badge size="large" m="medium">
           large
         </Badge>
-
-        <Badge color="positive" size="medium" m="medium">
-          positive
+        <Badge round size="large" m="medium">
+          large
         </Badge>
-        <Badge color="plain" size="medium" m="medium">
+
+        <Badge intent="plain" size="medium" m="medium">
           plain
         </Badge>
-        <Badge size="medium" round m="medium">
-          round
+        <Badge intent="positive" size="medium" m="medium">
+          positive
         </Badge>
+        <Badge intent="info" size="medium" m="medium">
+          info
+        </Badge>
+        <Badge intent="neutral" size="medium" m="medium">
+          neutral
+        </Badge>
+        <Badge intent="warning" size="medium" m="medium">
+          warning
+        </Badge>
+        <Badge intent="critical" size="medium" m="medium">
+          critical
+        </Badge>
+
         <Badge size="medium" transparent m="medium">
           transparent
         </Badge>
