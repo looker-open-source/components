@@ -30,7 +30,6 @@ import { MenuContext } from './MenuContext'
 import { MenuItemCustomization } from './MenuItem'
 
 export interface MenuProps {
-  children: JSX.Element[]
   /**
    * Disables the Menu, passed to child of MenuDisclosure
    */

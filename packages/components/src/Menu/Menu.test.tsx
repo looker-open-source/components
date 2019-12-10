@@ -30,8 +30,7 @@ import React, { useContext } from 'react'
 
 import { renderWithTheme } from '@looker/components-test-utils'
 import { Button } from '../Button'
-import { ModalContext } from '../Modal'
-import { Menu, MenuDisclosure, MenuItem, MenuList } from './'
+import { Menu, MenuContext, MenuDisclosure, MenuItem, MenuList } from './'
 
 const menu = (
   <Menu>
@@ -76,22 +75,25 @@ describe('<Menu />', () => {
   })
 
   test('Use context to close menu', () => {
-    const FancyItem = () => {
-      const { closeModal } = useContext(ModalContext)
+    const Closable = () => {
+      const { setOpen } = useContext(MenuContext)
+      const handleClick = () => setOpen && setOpen(false)
       return (
-        <MenuItem icon="FavoriteOutline" onClick={closeModal}>
-          Swiss
-        </MenuItem>
+        <>
+          <MenuDisclosure tooltip="Select your favorite kind">
+            <Button>Cheese</Button>
+          </MenuDisclosure>
+          <MenuList>
+            <MenuItem icon="FavoriteOutline" onClick={handleClick}>
+              Swiss
+            </MenuItem>
+          </MenuList>
+        </>
       )
     }
     const menu2 = (
       <Menu>
-        <MenuDisclosure tooltip="Select your favorite kind">
-          <Button>Cheese</Button>
-        </MenuDisclosure>
-        <MenuList>
-          <FancyItem />
-        </MenuList>
+        <Closable />
       </Menu>
     )
     const { getByText, queryByText } = renderWithTheme(menu2)

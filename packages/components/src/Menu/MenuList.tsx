@@ -78,17 +78,18 @@ export interface MenuListProps
 }
 
 export const MenuListInternal = forwardRef(
-  (props: MenuListProps, ref: Ref<HTMLUListElement>) => {
-    const {
+  (
+    {
       children,
-      className,
       compact,
       customizationProps,
       disabled,
       pin,
       placement,
-    } = props
-
+      ...props
+    }: MenuListProps,
+    ref: Ref<HTMLUListElement>
+  ) => {
     const { isOpen, setOpen, triggerElement } = useContext(MenuContext)
 
     const innerRef = useRef<null | HTMLElement>(null)
@@ -104,7 +105,7 @@ export const MenuListInternal = forwardRef(
           }}
           style={{ borderRadius: 'inherit' }}
         >
-          <ul className={className} ref={ref} tabIndex={-1} role="menu">
+          <ul ref={ref} tabIndex={-1} role="menu" {...props}>
             {children}
           </ul>
         </HotKeys>
@@ -142,6 +143,7 @@ export const MenuList = styled(MenuListInternal)`
   ${maxHeight}
   ${height}
 
+  min-width: 12rem;
   ${minWidth}
   ${maxWidth}
   ${width}
@@ -154,5 +156,3 @@ export const MenuList = styled(MenuListInternal)`
   user-select: none;
   ${props => props.groupDividers !== false && dividersStyle};
 `
-
-MenuList.defaultProps = { minWidth: '12rem' }
