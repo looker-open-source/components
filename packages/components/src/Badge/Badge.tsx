@@ -24,35 +24,104 @@
 
  */
 
-import styled from 'styled-components'
 import {
+  color,
   reset,
+  SizeLarge,
+  SizeMedium,
+  SizeSmall,
   space,
   SpaceProps,
   typography,
-  TypographyProps,
+  CompatibleHTMLProps,
 } from '@looker/design-tokens'
+import React, { ReactNode, FC } from 'react'
+import styled from 'styled-components'
+import { variant } from 'styled-system'
 
-interface BadgeProps extends SpaceProps, TypographyProps {
-  color?: string
+export type BadgeSizes = SizeSmall | SizeMedium | SizeLarge
+
+export interface BadgeProps
+  extends SpaceProps,
+    CompatibleHTMLProps<HTMLSpanElement> {
+  children: ReactNode
+  /**
+   *  @default `default`
+   **/
+  intent?:
+    | 'warning'
+    | 'positive'
+    | 'critical'
+    | 'info'
+    | 'neutral'
+    | 'plain'
+    | 'default'
+
+  /**
+   *  @default false
+   **/
+  rounded?: boolean
+
+  /**
+   * Defines the size of Badge diameter.
+   * @default "medium"
+   */
+  size?: BadgeSizes
 }
 
-export const Badge = styled.span<BadgeProps>`
+/* eslint-disable sort-keys */
+const size = variant({
+  prop: 'size',
+  variants: {
+    small: {
+      fontSize: 'xxsmall',
+      lineHeight: '16px',
+      px: 'xxsmall',
+    },
+    medium: {
+      fontSize: 'xsmall',
+      lineHeight: '24px',
+      px: 'xsmall',
+    },
+    large: {
+      fontSize: 'medium',
+      lineHeight: '32px',
+      px: 'xsmall',
+    },
+  },
+})
+
+const intent = variant({
+  prop: 'intent',
+  variants: {
+    critical: { bg: 'palette.red500', color: 'palette.white' },
+    default: { bg: 'palette.purple500', color: 'palette.white' },
+    info: { bg: 'palette.blue500', color: 'palette.white' },
+    neutral: { bg: 'palette.charcoal500', color: 'palette.white' },
+    plain: { bg: 'palette.white', color: 'palette.purple500' },
+    positive: { bg: 'palette.green500', color: 'palette.white' },
+    warning: { bg: 'palette.yellow500', color: 'palette.white' },
+  },
+})
+const BadgeLayout: FC<BadgeProps> = ({ children, ...props }) => {
+  return <span {...props}>{children}</span>
+}
+
+export const Badge = styled(BadgeLayout).attrs({ fontWeight: 'semiBold' })`
   ${reset}
 
-  border: 1px solid ${props => props.theme.colors.palette.charcoal200};
-  border-radius: ${props => props.theme.radii.medium};
-  background: ${props => props.theme.colors.palette.charcoal100};
-  color: ${props => props.theme.colors.palette.charcoal600};
-
-  display: inline-block;
+  ${color}
   ${space}
   ${typography}
+  ${size}
+  ${intent}
+
+  display: inline-flex;
+  border-radius: ${props =>
+    props.rounded ? '50px' : props.theme.radii.medium};
 `
 
 Badge.defaultProps = {
-  fontSize: 'xxsmall',
-  mx: 'xsmall',
-  px: 'xxsmall',
-  py: 'xxxsmall',
+  intent: 'default',
+  size: 'medium',
 }

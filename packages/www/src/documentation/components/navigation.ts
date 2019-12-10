@@ -136,6 +136,7 @@ const components: NavigationSection = {
       path: 'content',
       children: [
         { title: 'Avatar', path: 'avatar' },
+        { title: 'Badge', path: 'badge' },
         { title: 'Banner', path: 'banner' },
         { title: 'Card', path: 'card' },
         { title: 'ColorWheel', path: 'color-wheel' },
