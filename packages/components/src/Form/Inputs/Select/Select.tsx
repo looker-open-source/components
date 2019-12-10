@@ -37,9 +37,10 @@ import {
   space,
   SpaceProps,
 } from '@looker/design-tokens'
-import React, { forwardRef, useRef, useState, Ref, useCallback } from 'react'
+import React, { forwardRef, useRef, useState, Ref } from 'react'
 import uuid from 'uuid/v4'
 import styled from 'styled-components'
+import { useCallbackRef } from '../../../utils'
 import { ValidationType } from '../../ValidationMessage'
 import { isVisible, useFocusManagement } from './helpers'
 import { useReducerMachine } from './state'
@@ -56,12 +57,12 @@ export type OnSelect = (option: SelectOptionObject) => void
 
 export function useControlledSelect(initialValue = '') {
   const [value, setOption] = useState(initialValue)
-  const handleSelect = useCallback((option: SelectOptionObject) => {
+  function handleSelect(option: SelectOptionObject) {
     setOption(option.value)
-  }, [])
-  const handleChange = useCallback((e: React.FormEvent<HTMLInputElement>) => {
+  }
+  function handleChange(e: React.FormEvent<HTMLInputElement>) {
     setOption(e.currentTarget.value)
-  }, [])
+  }
   return {
     inputProps: { onChange: handleChange },
     onSelect: handleSelect,

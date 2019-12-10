@@ -34,17 +34,46 @@ import {
   InputText,
   Paragraph,
   Select,
+  SelectInput,
+  SelectList,
+  SelectOption,
   useControlledSelect,
 } from '@looker/components'
 import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
 
+const options = [
+  { data: { id: 1 }, value: 'Apples' },
+  { data: { id: 2 }, value: 'Bananas' },
+  { data: { id: 3 }, value: 'Oranges' },
+  { data: { id: 4 }, value: 'Pineapples' },
+  { data: { id: 5 }, value: 'Kiwis' },
+]
+const listProps = { persistSelection: true }
+
 const App: React.FC = () => {
+  const [show, setShow] = React.useState(false)
   const { inputProps, ...selectProps } = useControlledSelect('Apples')
   const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
     const fruit = e.currentTarget.getAttribute('data-fruit') || ''
     selectProps.onSelect({ value: fruit })
   }
+  const inputPropsMemo = React.useMemo(
+    () => ({
+      ...inputProps,
+      autocomplete: false,
+      placeholder: 'Placeholder text',
+    }),
+    [inputProps]
+  )
+  React.useEffect(() => {
+    const t = setTimeout(() => {
+      setShow(!show)
+    }, 3000)
+    return () => {
+      clearTimeout(t)
+    }
+  }, [show])
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -54,19 +83,9 @@ const App: React.FC = () => {
           <Select
             openOnFocus={true}
             width={240}
-            inputProps={{
-              ...inputProps,
-              autocomplete: false,
-              placeholder: 'Placeholder text',
-            }}
-            listProps={{ persistSelection: true }}
-            options={[
-              { data: { id: 1 }, value: 'Apples' },
-              { data: { id: 2 }, value: 'Bananas' },
-              { data: { id: 3 }, value: 'Oranges' },
-              { data: { id: 4 }, value: 'Pineapples' },
-              { data: { id: 5 }, value: 'Kiwis' },
-            ]}
+            inputProps={inputPropsMemo}
+            listProps={listProps}
+            options={options}
             {...selectProps}
           />
           <Button
@@ -82,6 +101,16 @@ const App: React.FC = () => {
           </Button>
           <Divider my="xlarge" />
           <InputText width={240} />
+          <Divider my="xlarge" />
+          <Select openOnFocus={true} width={240}>
+            {show && <SelectInput />}
+            <SelectList>
+              <SelectOption value="Foo" />
+              <SelectOption value="Bar" />
+              <SelectOption value="Baz" />
+              <SelectOption value="Qux" />
+            </SelectList>
+          </Select>
         </Box>
       </ThemeProvider>
     </>

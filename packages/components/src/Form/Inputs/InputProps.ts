@@ -33,7 +33,7 @@ export interface InputProps extends CompatibleHTMLProps<HTMLInputElement> {
 
 export const inputPropKeys = [
   'accept',
-  'autoFocus',
+  'autofocus',
   'autocomplete',
   'checked',
   'data-autofocus',

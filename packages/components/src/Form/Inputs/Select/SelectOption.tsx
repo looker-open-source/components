@@ -39,14 +39,7 @@ import {
   typography,
   TypographyProps,
 } from '@looker/design-tokens'
-import React, {
-  forwardRef,
-  useEffect,
-  useRef,
-  useContext,
-  Ref,
-  useCallback,
-} from 'react'
+import React, { forwardRef, useEffect, useRef, useContext, Ref } from 'react'
 import styled from 'styled-components'
 import { useHighlightWords, useWrapEvent } from '../../../utils'
 import { Icon } from '../../../Icon'
@@ -126,11 +119,11 @@ const SelectOptionInternal = forwardRef(function SelectOption(
   const isActive = navigationOption && navigationOption.value === value
   const isCurrent = contextOption && contextOption.value === value
 
-  const handleClick = useCallback(() => {
+  function handleClick() {
     const option = { data, value }
     onSelect && onSelect(option)
     transition && transition(SelectActionType.SELECT_WITH_CLICK, { option })
-  }, [onSelect, data, transition, value])
+  }
 
   const wrappedOnClick = useWrapEvent(handleClick, onClick)
 

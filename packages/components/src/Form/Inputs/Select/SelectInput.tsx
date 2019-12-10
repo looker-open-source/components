@@ -34,7 +34,6 @@ import React, {
   useRef,
   useContext,
   Ref,
-  useCallback,
 } from 'react'
 import styled from 'styled-components'
 import { useForkedRef, useWrapEvent } from '../../../utils'
@@ -123,16 +122,13 @@ export const SelectInputInternal = forwardRef(function SelectInput(
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [autocomplete, readOnly])
 
-  const handleValueChange = useCallback(
-    (value: string) => {
-      if (value.trim() === '') {
-        transition && transition(SelectActionType.CLEAR)
-      } else {
-        transition && transition(SelectActionType.CHANGE, { option: { value } })
-      }
-    },
-    [transition]
-  )
+  function handleValueChange(value: string) {
+    if (value.trim() === '') {
+      transition && transition(SelectActionType.CLEAR)
+    } else {
+      transition && transition(SelectActionType.CHANGE, { option: { value } })
+    }
+  }
 
   // If they are controlling the value we still need to do our transitions, so
   // we have this derived state to emulate onChange of the input as we receive
@@ -157,20 +153,17 @@ export const SelectInputInternal = forwardRef(function SelectInput(
   // [*]... and when controlled, we don't trigger handleValueChange as the user
   // types, instead the developer controls it with the normal input onChange
   // prop
-  const handleChange = useCallback(
-    (event: FormEvent<HTMLInputElement>) => {
-      isInputting.current = true
-      if (!isControlled) {
-        handleValueChange(event.currentTarget.value)
-      }
-      setTimeout(() => {
-        isInputting.current = false
-      }, 0)
-    },
-    [isInputting, isControlled, handleValueChange]
-  )
+  function handleChange(event: FormEvent<HTMLInputElement>) {
+    isInputting.current = true
+    if (!isControlled) {
+      handleValueChange(event.currentTarget.value)
+    }
+    setTimeout(() => {
+      isInputting.current = false
+    }, 0)
+  }
 
-  const handleFocus = useCallback(() => {
+  function handleFocus() {
     if (selectOnClick) {
       selectOnClickRef.current = true
     }
@@ -181,14 +174,14 @@ export const SelectInputInternal = forwardRef(function SelectInput(
     if (openOnFocus && lastActionType !== SelectActionType.SELECT_WITH_CLICK) {
       transition && transition(SelectActionType.FOCUS)
     }
-  }, [openOnFocus, lastActionType, selectOnClick, transition])
+  }
 
-  const handleClick = useCallback(() => {
+  function handleClick() {
     if (selectOnClickRef.current) {
       selectOnClickRef.current = false
       inputRef && inputRef.current && inputRef.current.select()
     }
-  }, [selectOnClickRef, inputRef])
+  }
 
   const inputOption =
     autocomplete &&

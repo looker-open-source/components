@@ -27,7 +27,7 @@
 // Much of the following is pulled from https://github.com/reach/reach-ui
 // because their work is fantastic (but is not in TypeScript)
 
-import { Reducer, useReducer, useState, useCallback } from 'react'
+import { Reducer, useReducer, useState } from 'react'
 import { defaultData } from './SelectContext'
 import { SelectOptionObject } from './SelectOption'
 
@@ -249,18 +249,18 @@ export function useReducerMachine(): [
   const [state, setState] = useState(stateChart.initial)
   const [data, dispatch] = useReducer(reducer, defaultData)
 
-  const transition = useCallback(
-    (action: SelectActionType, payload: SelectActionPayload = {}) => {
-      const currentState = stateChart.states[state]
-      const nextState = currentState.on[action]
-      if (!nextState) {
-        throw new Error(`Unknown action "${action}" for state "${state}"`)
-      }
-      dispatch({ nextState: state, state, type: action, ...payload })
-      setState(nextState)
-    },
-    [state]
-  )
+  function transition(
+    action: SelectActionType,
+    payload: SelectActionPayload = {}
+  ) {
+    const currentState = stateChart.states[state]
+    const nextState = currentState.on[action]
+    if (!nextState) {
+      throw new Error(`Unknown action "${action}" for state "${state}"`)
+    }
+    dispatch({ nextState: state, state, type: action, ...payload })
+    setState(nextState)
+  }
 
   return [state, data, transition]
 }
