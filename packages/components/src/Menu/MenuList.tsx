@@ -75,6 +75,11 @@ export interface MenuListProps
    * You can use the pin property to override this behavior.
    */
   pin?: boolean
+
+  /**
+   * Allow the overlay to break out of the scroll parent
+   */
+  escapeWithReference?: boolean
 }
 
 export const MenuListInternal = forwardRef(
@@ -86,6 +91,7 @@ export const MenuListInternal = forwardRef(
       disabled,
       pin,
       placement,
+      escapeWithReference,
       ...props
     }: MenuListProps,
     ref: Ref<HTMLUListElement>
@@ -115,6 +121,7 @@ export const MenuListInternal = forwardRef(
     const isMenu = isOpen !== undefined
     const { popover } = usePopover({
       content: menuList,
+      escapeWithReference,
       isOpen,
       pin,
       placement,

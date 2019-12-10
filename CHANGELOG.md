@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Avatar components and documentation - AvatarIcon, AvatarUser, AvatarCombo
 - Instructions for documenting new components in WWW
 - `MenuContext` for holding `Menu` state and `MenuItemStyleContext` for `MenuItem` styling inheritance
+- `escapeWithReference` prop on Popover for allowing the overlay to break out of the scroll parent
 
 ### Changed
 

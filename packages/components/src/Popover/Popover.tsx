@@ -101,10 +101,17 @@ export interface UsePopoverProps {
    * You can use the pin property to override this behavior.
    */
   pin?: boolean
+
+  /**
+   * Allow the overlay to break out of the scroll parent
+   */
+  escapeWithReference?: boolean
+
   /**
    * The element which hovering on/off of will show/hide the triggering element
    */
   hoverDisclosureRef?: RefObject<HTMLElement>
+
   /**
    * Optional, for a controlled version of the component
    */
@@ -278,6 +285,7 @@ export function usePopover({
   hoverDisclosureRef,
   setOpen: controlledSetOpen,
   triggerElement,
+  escapeWithReference,
 }: UsePopoverProps) {
   const {
     element: scrollElement,
@@ -351,6 +359,10 @@ export function usePopover({
     }
   }, [hoverDisclosureRef])
 
+  // If the height of the overlay will be 50px or less,
+  // it's too small to do the scrolling behavior
+  const pinAndScroll = verticalSpace > 50
+
   const popover = !openWithoutElem && isOpen && (
     <ModalContext.Provider
       value={{
@@ -376,7 +388,7 @@ export function usePopover({
               flipVariationsByContent: true,
             },
             preventOverflow: {
-              escapeWithReference: verticalSpace > 50,
+              escapeWithReference: escapeWithReference || pinAndScroll,
               padding: 0,
             },
           }}

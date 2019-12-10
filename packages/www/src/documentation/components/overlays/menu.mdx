@@ -9,13 +9,49 @@ propsOf: Menu
 import { Props } from '../../../Shared'
 
 `Menu` is a wrapper component that wraps a `MenuDisclosure` element and a `MenuList` element. When using a `Menu`, the child of your `MenuDisclosure` will be rendered and, when clicked, will generate a `Popover` with your `MenuList` and its children.
+The entire menu can be disabled via the `disabled` prop.
+
+**Note:** The direct child of `MenuDisclosure` should be able to accept the following props. TypeScript currently doesn't support the enforcement of this.
+
+- `disabled`
+- `onClick` – toggles the menu
+- `onFocus` - and `onMouseOver` - show the tooltip
+- `onBlur` - and `onMouseOut` - hides the toolitp
+- `ref` - tooltip and popover placement
+
+```jsx
+<Menu>
+  <MenuDisclosure tooltip="Select your favorite kind">
+    <Button mr="small">Cheese</Button>
+  </MenuDisclosure>
+  <MenuList>
+    <MenuItem icon="FavoriteOutline">Gouda</MenuItem>
+    <MenuItem icon="FavoriteOutline">Swiss</MenuItem>
+  </MenuList>
+</Menu>
+
+<Menu disabled>
+  <MenuDisclosure tooltip="Select your favorite kind">
+    <Button>Disabled Cheese</Button>
+  </MenuDisclosure>
+  <MenuList>
+    <MenuItem icon="FavoriteOutline">Gouda</MenuItem>
+    <MenuItem icon="FavoriteOutline">Swiss</MenuItem>
+  </MenuList>
+</Menu>
+```
+
+## Menu Placement
+
+To position the overlay that contains `MenuList` add the `placement` prop on `MenuList`.
+The `escapeWithReference` and `pin` props allow you to enforce the placement to varying degrees.
 
 ```jsx
 <Menu>
   <MenuDisclosure tooltip="Select your favorite kind">
     <Button>Cheese</Button>
   </MenuDisclosure>
-  <MenuList>
+  <MenuList placement="left" escapeWithReference>
     <MenuItem icon="FavoriteOutline">Gouda</MenuItem>
     <MenuItem icon="FavoriteOutline">Swiss</MenuItem>
   </MenuList>
