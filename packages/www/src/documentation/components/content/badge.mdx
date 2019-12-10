@@ -8,42 +8,32 @@ propsOf: Badge
 ## Badge Sizes
 
 ```jsx
-<Badge mr="small">small</Badge>
-<Badge mr="small" size="medium" >
-  medium
-</Badge>
-<Badge mr="small" size="large" >
-  large
-</Badge>
+<Flex alignItems="center" justifyContent="space-around">
+  <Badge size="small">small</Badge>
+  <Badge size="medium">medium</Badge>
+  <Badge size="large">large</Badge>
+</Flex>
 ```
 
 ## Badge Intent
 
 ```jsx
-<Badge intent="plain" mr="small" size="medium" >
-  plain
-</Badge>
-<Badge intent="positive" mr="small" size="medium" >
-  positive
-</Badge>
-<Badge intent="info" mr="small" size="medium" >
-  info
-</Badge>
-<Badge intent="neutral" mr="small" size="medium" >
-  neutral
-</Badge>
-<Badge intent="warning" mr="small" size="medium" >
-  warning
-</Badge>
-<Badge intent="critical" mr="small" size="medium" >
-  critical
-</Badge>
+<Flex alignItems="center" justifyContent="space-around">
+  <Badge intent="plain">plain</Badge>
+  <Badge intent="positive">positive</Badge>
+  <Badge intent="info">info</Badge>
+  <Badge intent="neutral">neutral</Badge>
+  <Badge intent="warning">warning</Badge>
+  <Badge intent="critical">critical</Badge>
+</Flex>
 ```
 
-## Badge Extra Flag
+## Badge Options
+
+### Rounded
+
+Ends of badge are fully-rounded instead of just receiving a slight radius without `rounded` property.
 
 ```jsx
-<Badge mr="small" rounded size="medium">
-  rounded
-</Badge>
+<Badge rounded>Rounded Badge</Badge>
 ```
