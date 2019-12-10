@@ -38,9 +38,8 @@ import {
   SpaceProps,
 } from '@looker/design-tokens'
 import React, { forwardRef, useRef, useState, Ref } from 'react'
-import uuid from 'uuid/v4'
 import styled from 'styled-components'
-import { useCallbackRef } from '../../../utils'
+import { useID } from '../../../utils'
 import { ValidationType } from '../../ValidationMessage'
 import { isVisible, useFocusManagement } from './helpers'
 import { useReducerMachine } from './state'
@@ -74,7 +73,7 @@ export interface SelectProps
   extends LayoutProps,
     PositionProps,
     SpaceProps,
-    Omit<CompatibleHTMLProps<HTMLDivElement>, 'onSelect'> {
+    Omit<CompatibleHTMLProps<HTMLDivElement>, 'onSelect' | 'onChange'> {
   /**
    * Called with the selection value when the user makes a selection from the
    * list.
@@ -167,7 +166,7 @@ export const SelectInternal = forwardRef(function Select(
 
   useFocusManagement(data.lastActionType, inputRef)
 
-  const id = rest.id || uuid()
+  const id = useID(rest.id)
   const listboxId = `listbox-${id}`
 
   const context = {
@@ -190,25 +189,24 @@ export const SelectInternal = forwardRef(function Select(
 
   let content = children
 
-  if (options) {
-    if (children) {
-      // eslint-disable-next-line no-console
-      console.warn(`Warning: options and children cannot be used together.
-      If you wish to build your Select with the options prop, do not define any children.`)
-    }
-
+  if (!children) {
     content = (
       <>
         <SelectInput value={value} {...inputProps} />
         <SelectList {...listProps}>
-          {options.map((option: SelectOptionObject) => {
-            return (
-              <SelectOption {...optionProps} {...option} key={option.value} />
-            )
-          })}
+          {options &&
+            options.map((option: SelectOptionObject) => {
+              return (
+                <SelectOption {...optionProps} {...option} key={option.value} />
+              )
+            })}
         </SelectList>
       </>
     )
+  } else if (options) {
+    // eslint-disable-next-line no-console
+    console.warn(`Warning: options and children cannot be used together.
+      If you wish to build your Select with the options prop, do not define any children.`)
   }
 
   return (

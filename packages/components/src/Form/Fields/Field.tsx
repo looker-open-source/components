@@ -75,6 +75,10 @@ export interface FieldProps {
    */
   label?: string
   /**
+   * id attribute for the label.
+   */
+  labelID?: string
+  /**
    * Specifies for horizontally aligned labels how much space to take up.
    */
   labelWidth?: ResponsiveSpaceValue
@@ -173,6 +177,7 @@ const FieldComponent: FunctionComponent<FieldProps> = ({
   id,
   label,
   labelFontSize,
+  labelID,
   labelFontWeight,
   required,
   validationMessage,
@@ -182,7 +187,7 @@ const FieldComponent: FunctionComponent<FieldProps> = ({
     <FormControl mb="xsmall" {...props}>
       <Label
         htmlFor={id}
-        id={`label-${id}`}
+        id={labelID}
         fontWeight={labelFontWeight}
         fontSize={labelFontSize}
       >
