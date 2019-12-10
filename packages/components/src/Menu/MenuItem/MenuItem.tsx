@@ -54,6 +54,7 @@ export interface MenuSharedProps {
   compact?: boolean
 }
 
+// For merging compact and customizationProps from props with those from context
 export function useMenuItemStyleContext(props: MenuSharedProps) {
   const { customizationProps: propCustomizations, compact: compactProp } = props
   const {
