@@ -46,13 +46,6 @@ export interface MenuProps {
    */
   setOpen?: (isOpen: boolean) => void
 }
-
-export function useMenu(disabled?: boolean, initialIsOpen = false) {
-  const triggerRef = useRef<HTMLElement>(null)
-  const [isOpen, setOpen] = useState(initialIsOpen)
-  return { disabled, isOpen, setOpen, triggerRef }
-}
-
 /** @component */
 export const Menu: FC<MenuProps> = ({
   children,

@@ -102,6 +102,7 @@ export const MenuListInternal = forwardRef(
             MOVE_DOWN: () => moveFocus(1, 0, innerRef),
             MOVE_UP: () => moveFocus(-1, -1, innerRef),
           }}
+          style={{ borderRadius: 'inherit' }}
         >
           <ul className={className} ref={ref} tabIndex={-1} role="menu">
             {children}
@@ -146,6 +147,7 @@ export const MenuList = styled(MenuListInternal)`
   ${width}
 
   overflow: auto;
+  border-radius: inherit;
 
   list-style: none;
   outline: none;

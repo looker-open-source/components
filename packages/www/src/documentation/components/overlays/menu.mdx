@@ -22,22 +22,25 @@ import { Props } from '../../../Shared'
 </Menu>
 ```
 
-## useMenu
+## Controlled Menu
 
-Use the `useMenu` hook with `MenuDisclosure` and `MenuList`, spreading the return object as props on each.
+Control the state of the menu React's `useState` hook:
 
 ```jsx
 ;() => {
-  const menu = useMenu()
+  const [isOpen, setOpen] = React.useState(false)
   return (
     <>
-      <MenuDisclosure tooltip="Select export format" {...menu}>
-        <Button>Export</Button>
-      </MenuDisclosure>
-      <MenuList {...menu}>
-        <MenuItem icon="Mail">Email</MenuItem>
-        <MenuItem icon="Table">Spreadsheet</MenuItem>
-      </MenuList>
+      <Paragraph pb="medium">{isOpen ? 'Menu Open' : 'Menu Closed'}</Paragraph>
+      <Menu isOpen={isOpen} setOpen={setOpen}>
+        <MenuDisclosure tooltip="Select export format">
+          <Button>Export</Button>
+        </MenuDisclosure>
+        <MenuList>
+          <MenuItem icon="Mail">Email</MenuItem>
+          <MenuItem icon="Table">Spreadsheet</MenuItem>
+        </MenuList>
+      </Menu>
     </>
   )
 }
