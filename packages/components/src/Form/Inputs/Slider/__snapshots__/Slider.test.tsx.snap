@@ -1,94 +1,84 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Slider default 1`] = `
+exports[`renders focus styles on keypress 1`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
+  background: transparent;
+  display: block;
+  height: 30px;
+  position: relative;
+  width: 100%;
+  z-index: 1;
+  -webkit-appearance: none;
+}
+
+.c0::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border-radius: 100%;
+  cursor: pointer;
+  border: 3px solid #0087e1;
+  height: 24px;
+  width: 24px;
+  background: #FFFFFF;
+  box-shadow: 0 0 6px #00418c;
+}
+
+.c0::-moz-range-thumb {
+  border-radius: 100%;
+  cursor: pointer;
+  border: 3px solid #0087e1;
+  height: 24px;
+  width: 24px;
+  background: #FFFFFF;
+  box-shadow: 0 0 6px #00418c;
+}
+
+.c0::-ms-thumb {
+  border-radius: 100%;
+  cursor: pointer;
+  border: 3px solid #0087e1;
+  height: 24px;
+  width: 24px;
+  background: #FFFFFF;
+  box-shadow: 0 0 6px #00418c;
+}
+
+.c0::-ms-track {
+  width: 100%;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+.c0::-moz-focus-outer {
+  border: none;
+}
+
+.c0:focus {
+  outline: none;
+}
+
+.c0:disabled::-webkit-slider-thumb {
+  border-color: #4C535B;
+  cursor: default;
+}
+
+.c0:disabled::-moz-range-thumb {
+  border-color: #4C535B;
+  cursor: default;
+}
+
+.c0:disabled::-ms-thumb {
+  border-color: #4C535B;
+  cursor: default;
 }
 
 <input
-  className="c0"
+  class="c0"
+  data-testid="slider-input"
+  max="10"
+  min="0"
   type="range"
-/>
-`;
-
-exports[`Slider should accept disabled 1`] = `
-.c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-}
-
-<input
-  className="c0"
-  disabled={true}
-  type="range"
-/>
-`;
-
-exports[`Slider with aria-describedby 1`] = `
-.c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-}
-
-<input
-  aria-describedby="some-id"
-  className="c0"
-  type="range"
-/>
-`;
-
-exports[`Slider with min and max 1`] = `
-.c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-}
-
-<input
-  className="c0"
-  max={11}
-  min={1}
-  step={0.01}
-  type="range"
-  value={11}
-/>
-`;
-
-exports[`Slider with name and id 1`] = `
-.c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-}
-
-<input
-  className="c0"
-  id="Slide"
-  name="Slip"
-  type="range"
+  value="0"
 />
 `;

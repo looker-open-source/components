@@ -27,7 +27,7 @@
 // Much of the following is pulled from https://github.com/reach/reach-ui
 // because their work is fantastic (but is not in TypeScript)
 
-import { KeyboardEvent, RefObject, useContext, useLayoutEffect } from 'react'
+import { KeyboardEvent, useContext, useLayoutEffect } from 'react'
 import { SelectActionType, SelectState } from './state'
 import { SelectContext } from './SelectContext'
 
@@ -45,7 +45,7 @@ export const isVisible = (state: SelectState) => visibleStates.includes(state)
 
 export function useFocusManagement(
   lastActionType?: SelectActionType,
-  inputRef?: RefObject<HTMLInputElement>
+  inputElement?: HTMLInputElement | null
 ) {
   // useLayoutEffect so that the cursor goes to the end of the input instead
   // of awkwardly at the beginning, unclear to my why ...
@@ -56,7 +56,7 @@ export function useFocusManagement(
       lastActionType === SelectActionType.SELECT_WITH_CLICK ||
       lastActionType === SelectActionType.OPEN_WITH_BUTTON
     ) {
-      inputRef && inputRef.current && inputRef.current.focus()
+      inputElement && inputElement.focus()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lastActionType])
@@ -208,14 +208,15 @@ export function useKeyDown() {
 }
 
 export function useBlur() {
-  const { state, transition, popoverRef, inputRef } = useContext(SelectContext)
+  const { state, transition, popoverRef, inputElement } = useContext(
+    SelectContext
+  )
 
   return function handleBlur() {
     requestAnimationFrame(() => {
       // we on want to close only if focus rests outside the select
-      const inputCurrent = inputRef ? inputRef.current : null
       const popoverCurrent = popoverRef ? popoverRef.current : null
-      if (document.activeElement !== inputCurrent && popoverCurrent) {
+      if (document.activeElement !== inputElement && popoverCurrent) {
         if (popoverCurrent && popoverCurrent.contains(document.activeElement)) {
           // focus landed inside the select, keep it open
           if (state !== SelectState.INTERACTING) {

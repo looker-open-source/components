@@ -72,7 +72,7 @@ export const SelectListInternal = forwardRef(function SelectList(
   const {
     persistSelectionRef,
     transition,
-    inputRef,
+    inputElement,
     isVisible,
     optionsRef,
     popoverRef,
@@ -97,10 +97,9 @@ export const SelectListInternal = forwardRef(function SelectList(
 
   const handleKeyDown = useKeyDown()
   const handleBlur = useBlur()
-  const width =
-    inputRef && inputRef.current
-      ? inputRef.current.getBoundingClientRect().width
-      : 'auto'
+  const width = inputElement
+    ? inputElement.getBoundingClientRect().width
+    : 'auto'
 
   const content = (
     <PopoverContent
@@ -125,9 +124,10 @@ export const SelectListInternal = forwardRef(function SelectList(
   const { popover } = usePopover({
     arrow: false,
     content,
+    focusTrap: false,
     isOpen: isVisible,
     setOpen,
-    triggerRef: inputRef,
+    triggerElement: inputElement,
     triggerToggle: false,
   })
   return popover || null

@@ -39,7 +39,7 @@ import {
 } from '@looker/design-tokens'
 import React, { forwardRef, useRef, useState, Ref } from 'react'
 import styled from 'styled-components'
-import { useID } from '../../../utils'
+import { useID, useCallbackRef } from '../../../utils'
 import { ValidationType } from '../../ValidationMessage'
 import { isVisible, useFocusManagement } from './helpers'
 import { useReducerMachine } from './state'
@@ -145,7 +145,7 @@ export const SelectInternal = forwardRef(function Select(
   const optionsRef = useRef<SelectOptionObject[]>([])
 
   // Need this to focus it
-  const inputRef = useRef<HTMLInputElement>(null)
+  const [inputElement, inputCallbackRef] = useCallbackRef<HTMLInputElement>()
 
   const popoverRef = useRef<HTMLDivElement>(null)
 
@@ -164,7 +164,7 @@ export const SelectInternal = forwardRef(function Select(
 
   const [state, data, transition] = useReducerMachine()
 
-  useFocusManagement(data.lastActionType, inputRef)
+  useFocusManagement(data.lastActionType, inputElement)
 
   const id = useID(rest.id)
   const listboxId = `listbox-${id}`
@@ -173,7 +173,8 @@ export const SelectInternal = forwardRef(function Select(
     autocompletePropRef,
     buttonRef,
     data,
-    inputRef,
+    inputCallbackRef,
+    inputElement,
     isVisible: isVisible(state),
     listboxId,
     onSelect,

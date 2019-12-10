@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Button Focus split - on tab not on click 1`] = `
+exports[`Button Focus: renders outline when tabbing into focus, but not when clicking 1`] = `
 .c0 {
   border: 0;
   box-sizing: border-box;
@@ -75,7 +75,7 @@ exports[`Button Focus split - on tab not on click 1`] = `
 </button>
 `;
 
-exports[`Button Focus split - on tab not on click 2`] = `
+exports[`Button Focus: renders outline when tabbing into focus, but not when clicking 2`] = `
 <button
   class="sc-bxivhb cwuduv sc-ifAKCX sc-EHOje kAurnO"
 >

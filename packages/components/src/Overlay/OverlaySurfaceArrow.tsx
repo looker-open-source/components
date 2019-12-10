@@ -24,16 +24,21 @@
 
  */
 
-import { color, ColorProps, CompatibleHTMLProps } from '@looker/design-tokens'
+import {
+  border,
+  BorderProps,
+  color,
+  ColorProps,
+  CompatibleHTMLProps,
+} from '@looker/design-tokens'
 import { PopperArrowProps } from 'react-popper'
 import styled from 'styled-components'
 
 interface OverlaySurfaceArrowProps
-  extends Omit<CompatibleHTMLProps<HTMLDivElement>, 'style'>,
+  extends BorderProps,
     ColorProps,
+    Omit<CompatibleHTMLProps<HTMLDivElement>, 'style'>,
     PopperArrowProps {
-  borderColor?: string
-  border?: string
   ['data-placement']: string
 }
 
@@ -52,9 +57,11 @@ export const OverlaySurfaceArrow = styled.div.attrs(
     height: 0.5rem;
 
     ${color}
-
-    border-bottom: ${props => props.border} ${props => props.borderColor};
-    border-right: ${props => props.border} ${props => props.borderColor};
+    ${border}
+    /* only want border-right and border-bottom from styled-system's border */
+    border-top: none;
+    border-left: none;
+    border-radius: 0;
   }
 
   &[data-placement*='top'] {

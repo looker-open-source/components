@@ -27,9 +27,10 @@
 import { CustomizableAttributes } from '@looker/design-tokens'
 import { TextAlignProperty } from 'csstype'
 import { Placement } from 'popper.js'
-import React, { useRef, useState, RefObject, FC, ReactNode } from 'react'
+import React, { useState, Ref, FC, ReactNode } from 'react'
 import { Popper } from 'react-popper'
 import { ModalContext } from '../Modal'
+import { useCallbackRef } from '../utils'
 import { OverlaySurface, SurfaceStyleProps } from '../Overlay/OverlaySurface'
 import { TooltipContent } from './TooltipContent'
 
@@ -80,7 +81,7 @@ export interface UseTooltipProps {
   /**
    * The trigger element ref to use (if absent, one will be created and returned)
    */
-  triggerRef?: RefObject<HTMLElement>
+  triggerElement?: HTMLElement | null
 
   /**
    * If true, the useTooltip hook will return nothing
@@ -101,7 +102,7 @@ export interface TooltipProps extends UseTooltipProps {
    * Component to wrap. The HOC will listen for mouse events on this component, maintain the
    * state of isOpen accordingly, and pass that state into the children or "trigger" element
    */
-  children: (eventsHandlers: EventHandlers, ref: RefObject<any>) => ReactNode
+  children: (eventsHandlers: EventHandlers, ref: Ref<any>) => ReactNode
 }
 export function useTooltip({
   arrow = true,
@@ -112,12 +113,15 @@ export function useTooltip({
   textAlign,
   disabled,
   surfaceStyles,
-  ...props
+  triggerElement,
+  placement: propsPlacement,
 }: UseTooltipProps) {
   const [isOpen, setIsOpen] = useState(initializeOpen)
-  const surfaceRef = useRef<HTMLElement | null>(null)
-  const newTriggerRef = useRef<HTMLElement>(null)
-  const triggerRef = props.triggerRef || newTriggerRef
+  const [surfaceElement, surfaceCallbackRef] = useCallbackRef()
+  const [newTriggerElement, callbackRef] = useCallbackRef()
+  // If the triggerElement is passed in props, use that instead of the new element
+  const element =
+    typeof triggerElement === 'undefined' ? newTriggerElement : triggerElement
 
   const handleOpen = () => setIsOpen(true)
   const handleClose = () => {
@@ -130,18 +134,13 @@ export function useTooltip({
 
     const related = event.relatedTarget
 
-    if (
-      triggerRef.current &&
-      (triggerRef.current === related ||
-        triggerRef.current.contains(related as Node))
-    ) {
+    if (element && (element === related || element.contains(related as Node))) {
       return
     }
 
     if (
-      surfaceRef.current &&
-      (surfaceRef.current === related ||
-        surfaceRef.current.contains(related as Node))
+      surfaceElement &&
+      (surfaceElement === related || surfaceElement.contains(related as Node))
     ) {
       return
     }
@@ -156,20 +155,13 @@ export function useTooltip({
     onMouseOver: handleOpen,
   }
 
-  const setSurfaceRef = (ref: HTMLElement | null) => {
-    surfaceRef.current = ref
-  }
-
-  const referenceElement =
-    triggerRef && triggerRef.current ? triggerRef.current : undefined
-
   const popper =
     isOpen && content && !disabled ? (
       <ModalContext.Provider value={{ closeModal: handleClose }}>
         <Popper
           positionFixed
-          innerRef={setSurfaceRef}
-          placement={props.placement}
+          innerRef={surfaceCallbackRef}
+          placement={propsPlacement}
           modifiers={{
             flip: {
               behavior: 'flip',
@@ -181,7 +173,7 @@ export function useTooltip({
               padding: 0,
             },
           }}
-          referenceElement={referenceElement}
+          referenceElement={element || undefined}
         >
           {({ ref, style, placement, arrowProps }) => (
             <OverlaySurface
@@ -209,7 +201,7 @@ export function useTooltip({
 
   return {
     eventHandlers,
-    ref: triggerRef,
+    ref: callbackRef,
     tooltip: popper,
   }
 }

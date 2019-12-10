@@ -47,7 +47,7 @@ test('ButtonTransparent has the correct style', () => {
   expect(getByText('transparent')).toMatchSnapshot()
 })
 
-test('ButtonTransparent Focus split - on tab not on click', () => {
+test('ButtonTransparent Focus: renders outline when tabbing into focus, but not when clicking', () => {
   const { getByText } = render(
     <ThemeProvider theme={theme}>
       <>

@@ -26,13 +26,12 @@
 
 import 'jest-styled-components'
 import React from 'react'
+import noop from 'lodash/noop'
 import { theme } from '@looker/design-tokens'
 import { assertSnapshot } from '@looker/components-test-utils'
 import { ThemeProvider } from 'styled-components'
 import { render, fireEvent } from '@testing-library/react'
 import { IconButton } from './IconButton'
-
-const noop = () => {}
 
 test('IconButton default', () => {
   assertSnapshot(<IconButton label="Test" icon="Favorite" />)

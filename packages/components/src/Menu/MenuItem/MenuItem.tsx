@@ -24,6 +24,7 @@
 
  */
 
+import merge from 'lodash/merge'
 import {
   CompatibleHTMLProps,
   ColorProps,
@@ -32,8 +33,9 @@ import {
   TypographyProps,
 } from '@looker/design-tokens'
 import { IconNames } from '@looker/icons'
-import React, { FC, ReactNode } from 'react'
+import React, { FC, ReactNode, useContext } from 'react'
 import { Icon } from '../../Icon'
+import { MenuItemStyleContext } from '../MenuContext'
 import { MenuItemButton } from './MenuItemButton'
 import {
   MenuItemCustomization,
@@ -50,6 +52,25 @@ import {
 export interface MenuSharedProps {
   customizationProps?: MenuItemCustomization
   compact?: boolean
+}
+
+// For merging compact and customizationProps from props with those from context
+export function useMenuItemStyleContext(props: MenuSharedProps) {
+  const { customizationProps: propCustomizations, compact: compactProp } = props
+  const {
+    customizationProps: contextCustomizations,
+    compact: contextCompact,
+  } = useContext(MenuItemStyleContext)
+  const parentCustomizations = contextCustomizations || {}
+
+  let customizationProps = parentCustomizations || propCustomizations
+  if (customizationProps && parentCustomizations) {
+    customizationProps = merge({}, parentCustomizations, propCustomizations)
+  }
+
+  const compact = compactProp === undefined ? contextCompact : compactProp
+
+  return { compact, customizationProps }
 }
 
 const assignCustomizations = (
@@ -132,15 +153,18 @@ export const MenuItem: FC<MenuItemProps> = props => {
     children,
     detail,
     icon,
-    customizationProps,
+    customizationProps: propCustomizations,
     onClick,
     itemRole,
     href,
     target,
-    compact,
+    compact: propCompact,
     ...remainingProps
   } = props
-
+  const { customizationProps, compact } = useMenuItemStyleContext({
+    compact: propCompact,
+    customizationProps: propCustomizations,
+  })
   const compactIconModifier = compact ? 1.25 : 1
 
   const style = assignCustomizations(defaultMenuItemStyle, customizationProps)

@@ -27,18 +27,23 @@
 import { Placement } from 'popper.js'
 import React, {
   useEffect,
-  useRef,
   useState,
   ReactNode,
   RefObject,
+  Ref,
   SyntheticEvent,
+  useRef,
 } from 'react'
 import { Popper } from 'react-popper'
 import { Box } from '../Layout'
-import { ModalPortal } from '../Modal/ModalPortal'
+import { ModalPortal, ModalContext } from '../Modal'
 import { OverlaySurface } from '../Overlay/OverlaySurface'
-import { useControlWarn, useFocusTrap, useScrollLock } from '../utils'
-import { ModalContext } from '../Modal'
+import {
+  useCallbackRef,
+  useControlWarn,
+  useFocusTrap,
+  useScrollLock,
+} from '../utils'
 
 export interface UsePopoverProps {
   /**
@@ -78,7 +83,7 @@ export interface UsePopoverProps {
    */
   canClose?: () => boolean
 
-  portalElement?: RefObject<HTMLDivElement>
+  portalElement?: HTMLDivElement | null
 
   /**
    * By default Popover cancels event bubbling when a click event triggers the closure of the Popover.
@@ -96,10 +101,17 @@ export interface UsePopoverProps {
    * You can use the pin property to override this behavior.
    */
   pin?: boolean
+
+  /**
+   * Allow the overlay to break out of the scroll parent
+   */
+  escapeWithReference?: boolean
+
   /**
    * The element which hovering on/off of will show/hide the triggering element
    */
   hoverDisclosureRef?: RefObject<HTMLElement>
+
   /**
    * Optional, for a controlled version of the component
    */
@@ -113,13 +125,19 @@ export interface UsePopoverProps {
   /**
    * The trigger element ref to use (if absent, one will be created and returned)
    */
-  triggerRef?: RefObject<HTMLElement>
+  triggerElement?: HTMLElement | null
 
   /**
    * Whether to close the popover when the toggle is clicked again
    * @default true
    */
   triggerToggle?: boolean
+
+  /**
+   * Whether to trap focus within the popover
+   * @default true
+   */
+  focusTrap?: boolean
 }
 
 export interface PopoverProps extends UsePopoverProps {
@@ -133,13 +151,13 @@ export interface PopoverProps extends UsePopoverProps {
     /**
      * Used by popper.js to position the OverlaySurface relative to the trigger
      */
-    ref: RefObject<any>,
+    ref: Ref<any>,
     className?: string
   ) => JSX.Element
 }
 
 function useVerticalSpace(
-  ref: RefObject<HTMLElement>,
+  element: HTMLElement | null,
   pin: boolean,
   placement: Placement,
   isOpen: boolean
@@ -148,10 +166,10 @@ function useVerticalSpace(
 
   useEffect(() => {
     function getVerticalSpace() {
-      if (ref.current) {
+      if (element) {
         // If popover is pinned, get the available vertical space
         if (pin) {
-          const { top, bottom } = ref.current.getBoundingClientRect()
+          const { top, bottom } = element.getBoundingClientRect()
           if (placement.indexOf('top') > -1) {
             setVerticalSpace(top)
           } else if (placement.indexOf('bottom') > -1) {
@@ -169,20 +187,20 @@ function useVerticalSpace(
     return () => {
       window.removeEventListener('resize', getVerticalSpace)
     }
-  }, [ref, pin, placement, isOpen])
+  }, [element, pin, placement, isOpen])
 
   return verticalSpace
 }
 
-function useOpenWithoutElement(isOpen: boolean, ref: RefObject<HTMLElement>) {
+function useOpenWithoutElement(isOpen: boolean, element: HTMLElement | null) {
   const [openWithoutElem, setOpenWithoutElem] = useState(
-    isOpen && ref.current === null
+    isOpen && element === null
   )
   useEffect(() => {
-    if (ref.current && openWithoutElem) {
+    if (element && openWithoutElem) {
       setOpenWithoutElem(false)
     }
-  }, [openWithoutElem, ref])
+  }, [openWithoutElem, element])
   return openWithoutElem
 }
 
@@ -198,7 +216,7 @@ function usePopoverToggle(
     'isOpen' | 'setOpen' | 'canClose' | 'groupedPopoversRef' | 'triggerToggle'
   >,
   portalElement: HTMLElement | null,
-  triggerRef: RefObject<HTMLElement>
+  triggerElement: HTMLElement | null
 ): [boolean, (value: boolean) => void] {
   const [uncontrolledIsOpen, uncontrolledSetOpen] = useState(controlledIsOpen)
   const mouseDownTarget = useRef<EventTarget | null>()
@@ -218,12 +236,8 @@ function usePopoverToggle(
 
     function handleClickOutside(event: MouseEvent) {
       if (canClose && !canClose()) return
-
       // User clicked inside the Popover surface/portal
-      if (
-        portalElement &&
-        portalElement.contains(mouseDownTarget.current as Node)
-      ) {
+      if (portalElement && portalElement.contains(event.target as Node)) {
         return
       }
 
@@ -238,7 +252,7 @@ function usePopoverToggle(
       }
 
       const clickedOnToggle =
-        triggerRef.current && triggerRef.current.contains(event.target as Node)
+        triggerElement && triggerElement.contains(event.target as Node)
 
       if (!triggerToggle && clickedOnToggle) {
         return
@@ -281,7 +295,7 @@ function usePopoverToggle(
     groupedPopoversRef,
     isOpen,
     setOpen,
-    triggerRef,
+    triggerElement,
     portalElement,
     triggerToggle,
   ])
@@ -300,8 +314,10 @@ export function usePopover({
   placement: propsPlacement = 'bottom',
   hoverDisclosureRef,
   setOpen: controlledSetOpen,
+  triggerElement,
   triggerToggle = true,
-  ...props
+  escapeWithReference,
+  focusTrap = true,
 }: UsePopoverProps) {
   const {
     element: scrollElement,
@@ -310,16 +326,18 @@ export function usePopover({
     isEnabled: scrollLockEnabled,
     disable: disableScrollLock,
   } = useScrollLock(controlledIsOpen, true)
+
   const {
     callbackRef: focusRef,
     enable: enableFocusTrap,
     isEnabled: focusTrapEnabled,
     disable: disableFocusTrap,
-  } = useFocusTrap(controlledIsOpen)
+  } = useFocusTrap(controlledIsOpen && focusTrap)
 
-  const newTriggerRef = useRef<HTMLElement>(null)
-
-  const triggerRef = props.triggerRef || newTriggerRef
+  const [newTriggerElement, callbackRef] = useCallbackRef()
+  // If the triggerElement is passed in props, use that instead of the new element
+  const element =
+    typeof triggerElement === 'undefined' ? newTriggerElement : triggerElement
 
   const [isOpen, setOpen] = usePopoverToggle(
     {
@@ -330,15 +348,10 @@ export function usePopover({
       triggerToggle,
     },
     scrollElement,
-    triggerRef
+    element
   )
-  const verticalSpace = useVerticalSpace(
-    triggerRef,
-    pin,
-    propsPlacement,
-    isOpen
-  )
-  const openWithoutElem = useOpenWithoutElement(isOpen, triggerRef)
+  const verticalSpace = useVerticalSpace(element, pin, propsPlacement, isOpen)
+  const openWithoutElem = useOpenWithoutElement(isOpen, element)
 
   function handleOpen(event: SyntheticEvent) {
     setOpen(true)
@@ -380,8 +393,9 @@ export function usePopover({
     }
   }, [hoverDisclosureRef])
 
-  const referenceElement =
-    triggerRef && triggerRef.current ? triggerRef.current : undefined
+  // If the height of the overlay will be 50px or less,
+  // it's too small to do the scrolling behavior
+  const pinAndScroll = verticalSpace > 50
 
   const popover = !openWithoutElem && isOpen && (
     <ModalContext.Provider
@@ -408,11 +422,11 @@ export function usePopover({
               flipVariationsByContent: true,
             },
             preventOverflow: {
-              escapeWithReference: verticalSpace > 50,
+              escapeWithReference: escapeWithReference || pinAndScroll,
               padding: 0,
             },
           }}
-          referenceElement={referenceElement}
+          referenceElement={element || undefined}
         >
           {({ ref, style, arrowProps, placement }) => (
             <OverlaySurface
@@ -432,6 +446,7 @@ export function usePopover({
                 <Box
                   maxHeight={`calc(${verticalSpace - 10}px - 1rem)`}
                   overflowY="scroll"
+                  borderRadius="inherit"
                 >
                   {content}
                 </Box>
@@ -448,7 +463,7 @@ export function usePopover({
     isOpen,
     open: handleOpen,
     popover,
-    ref: triggerRef,
+    ref: callbackRef,
     triggerShown: isOpen || isHovered,
   }
 }

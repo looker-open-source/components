@@ -30,14 +30,14 @@ import {
   CompatibleHTMLProps,
   reset,
 } from '@looker/design-tokens'
+
 import { IconNames } from '@looker/icons'
 import styled from 'styled-components'
 import React, { FC, useContext } from 'react'
 
-import { Box } from '../../Layout/Box'
-import { ButtonTransparent } from '../../Button'
+import { IconButton } from '../../Button'
+import { Flex } from '../../Layout'
 import { Heading } from '../../Text'
-import { Icon } from '../../Icon'
 import { ModalContext } from '../ModalContext'
 
 export interface ModalHeaderProps
@@ -47,6 +47,7 @@ export interface ModalHeaderProps
    * Specify an icon to be used for close. Defaults to `Close`
    */
   closeIcon?: IconNames
+  children: string
 }
 
 export const ModalHeader: FC<ModalHeaderProps> = ({
@@ -58,16 +59,20 @@ export const ModalHeader: FC<ModalHeaderProps> = ({
 
   return (
     <Header {...props}>
-      <Box mr="xlarge">{children}</Box>
-      <ButtonTransparent
-        tabIndex={-1}
-        ml="auto"
-        p="none"
-        color="neutral"
-        onClick={closeModal}
-      >
-        <Icon name={closeIcon} size="1.25rem" />
-      </ButtonTransparent>
+      <Flex justifyContent="space-between" alignItems="center">
+        <Heading as="h3" mr="xlarge" fontWeight="semiBold">
+          {children}
+        </Heading>
+        <IconButton
+          tabIndex={-1}
+          color="neutral"
+          size="small"
+          onClick={closeModal}
+          label="Close"
+          icon={closeIcon}
+          mr="-10px"
+        />
+      </Flex>
     </Header>
   )
 }
@@ -75,14 +80,6 @@ export const ModalHeader: FC<ModalHeaderProps> = ({
 const Header = styled.header<SpaceProps>`
   ${reset}
   ${space}
-
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-
-  ${Heading} {
-    font-size: ${props => props.theme.fontSizes.medium};
-  }
 `
 
 Header.defaultProps = {

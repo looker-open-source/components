@@ -30,10 +30,16 @@ import { ModalContext } from '../Modal/ModalContext'
 import { useToggle } from './useToggle'
 import { useCallbackRef } from './useCallbackRef'
 
-export function useFocusTrap(enabled = true, keepFocusWithin?: HTMLElement) {
+export function useFocusTrap(
+  enabled = true,
+  keepFocusWithin?: HTMLElement | null
+) {
   const trap = useRef<FocusTrap>()
 
-  const [element, callbackRef] = useCallbackRef(keepFocusWithin)
+  const [newElement, callbackRef] = useCallbackRef()
+  // If the keepFocusWithin is passed in arguments, use that instead of the new element
+  const element =
+    typeof keepFocusWithin === 'undefined' ? newElement : keepFocusWithin
   const { disableFocusTrap, enableFocusTrap } = useContext(ModalContext)
   const { value, setOn, setOff } = useToggle(enabled)
 

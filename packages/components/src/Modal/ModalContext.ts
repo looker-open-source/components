@@ -36,6 +36,6 @@ export interface ModalContextProps {
   scrollLockEnabled?: boolean
 }
 
-const interstitialContext: ModalContextProps = {}
+const modalContext: ModalContextProps = {}
 
-export const ModalContext = createContext(interstitialContext)
+export const ModalContext = createContext(modalContext)

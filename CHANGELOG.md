@@ -9,21 +9,40 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Avatar components and documentation - AvatarIcon, AvatarUser, AvatarCombo
 - Instructions for documenting new components in WWW
+- `MenuContext` for holding `Menu` state and `MenuItemStyleContext` for `MenuItem` styling inheritance
+- `escapeWithReference` prop on Popover for allowing the overlay to break out of the scroll parent
 
 ### Changed
 
+- `ChangeHistory` and `DragHandleDots` icons fixed
+- Customize Slider input appearance
+- Update Slider documentation to match updated appearance and functionality
+- Use standard range input as basis for LuminositySlider (rather than extending Slider component)
 - Update theme object to use more vibrant colors by default.
+- updated documentation to include Avatar
 - Improved documentation around installation of NPM package
+- Improved modal styling and `Confirm` layout
+- Updates Dialog documentation to endorse use of Confirm instead
+- Hard-code modal header styling, and no longer accept `Header` as a sub-component
+- Use css grid to lay out `ModalFooter` actions
 - Focus trap and scroll lock methods added to `ModalContext`
+- Remove `useMenu` hook in favor of `MenuContext`
 
 ### Fixed
 
+- Prevent www theme examples from bleeding into global scope
+- Fix slider overflow issue in Windows/Edge
+- Fix www sidebar nav button appearance in Windows/Edge
+- Banner icons are rendered at proper sizes when used in www
 - `Tooltip`
   - Respects `width` property as expected
   - Removed confusing `maxWidth` property
   - `Link` color within `Tooltip` is set to `blue200` to ensure readability.
 - `useFocusTrap` and `useScrollLock` behavior when `Popover` is nested in a `Modal` or another `Popover`.
+- Added missing border on `OverlaySurfaceArrow`
+- `Menu` issues arising from use of `cloneElement`
 
 ## [0.7.6] - 2019-11-18
 

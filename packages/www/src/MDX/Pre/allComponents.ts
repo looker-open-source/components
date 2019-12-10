@@ -25,6 +25,9 @@
  */
 
 import {
+  AvatarCombo,
+  AvatarIcon,
+  AvatarUser,
   Banner,
   Box,
   Button,
@@ -68,6 +71,7 @@ import {
   ListItem,
   LuminositySlider,
   Menu,
+  MenuContext,
   MenuDisclosure,
   MenuGroup,
   MenuItem,
@@ -100,7 +104,6 @@ import {
   ToggleSwitch,
   Tooltip,
   useConfirm,
-  useMenu,
   useTabs,
   useToggle,
   VisuallyHidden,
@@ -117,7 +120,9 @@ export const allComponents = {
   ThemeProvider,
 
   palette,
-
+  AvatarCombo,
+  AvatarIcon,
+  AvatarUser,
   Banner,
   Box,
   Button,
@@ -161,6 +166,7 @@ export const allComponents = {
   ListItem,
   LuminositySlider,
   Menu,
+  MenuContext,
   MenuDisclosure,
   MenuGroup,
   MenuItem,
@@ -193,7 +199,6 @@ export const allComponents = {
   ToggleSwitch,
   Tooltip,
   useConfirm,
-  useMenu,
   useTabs,
   useToggle,
   VisuallyHidden,

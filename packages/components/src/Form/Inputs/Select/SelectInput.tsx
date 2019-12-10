@@ -91,7 +91,8 @@ export const SelectInputInternal = forwardRef(function SelectInput(
 ) {
   const {
     data: { navigationOption, option, lastActionType },
-    inputRef,
+    inputCallbackRef,
+    inputElement,
     state,
     transition,
     listboxId,
@@ -100,7 +101,7 @@ export const SelectInputInternal = forwardRef(function SelectInput(
     openOnFocus,
   } = useContext(SelectContext)
 
-  const ref = useForkedRef<HTMLInputElement>(inputRef, forwardedRef)
+  const ref = useForkedRef<HTMLInputElement>(inputCallbackRef, forwardedRef)
 
   // Because we close the List on blur, we need to track if the blur is
   // caused by clicking inside the list, and if so, don't close the List.
@@ -179,7 +180,7 @@ export const SelectInputInternal = forwardRef(function SelectInput(
   function handleClick() {
     if (selectOnClickRef.current) {
       selectOnClickRef.current = false
-      inputRef && inputRef.current && inputRef.current.select()
+      inputElement && inputElement.select()
     }
   }
 

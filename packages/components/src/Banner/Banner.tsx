@@ -57,25 +57,31 @@ interface BannerTypeStyling {
 
 const getBannerIntentStyling = (intent: BannerIntent) => {
   const bannerTypeStyling: BannerTypeStyling = {}
+  const iconProps = {
+    mr: 'small',
+    size: 20,
+    style: { flexBasis: '20px' },
+  }
+
   switch (intent) {
     case 'warning':
       bannerTypeStyling.bg = 'palette.yellow100'
       bannerTypeStyling.icon = (
-        <Icon mr="small" size={20} name="Warning" color="palette.yellow500" />
+        <Icon {...iconProps} name="Warning" color="palette.yellow500" />
       )
       bannerTypeStyling.accessibilityLabel = 'Warning'
       break
     case 'info':
       bannerTypeStyling.bg = 'palette.blue100'
       bannerTypeStyling.icon = (
-        <Icon mr="small" size={20} name="CircleInfo" color="palette.blue400" />
+        <Icon {...iconProps} name="CircleInfo" color="palette.blue400" />
       )
       bannerTypeStyling.accessibilityLabel = 'Info'
       break
     case 'error':
       bannerTypeStyling.bg = 'palette.red100'
       bannerTypeStyling.icon = (
-        <Icon mr="small" size={20} name="Warning" color="palette.red600" />
+        <Icon {...iconProps} name="Warning" color="palette.red600" />
       )
       bannerTypeStyling.accessibilityLabel = 'Error'
       break
@@ -106,6 +112,7 @@ export const Banner = forwardRef(
     return (
       <Flex
         ref={ref}
+        flex="auto"
         {...bannerIntentStyling}
         borderRadius="medium"
         m="small"

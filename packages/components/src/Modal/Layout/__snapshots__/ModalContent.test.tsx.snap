@@ -27,9 +27,10 @@ exports[`ModalContent - no overflow 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  padding: 1.25rem;
   padding-left: 2rem;
   padding-right: 2rem;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
 }
 
 <div
@@ -70,9 +71,10 @@ exports[`ModalContent - no overflow 2`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  padding: 1.25rem;
   padding-left: 2rem;
   padding-right: 2rem;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
 }
 
 <div
