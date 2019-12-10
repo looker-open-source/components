@@ -10,8 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Avatar components and documentation - AvatarIcon, AvatarUser, AvatarCombo
-
 - Instructions for documenting new components in WWW
+- `MenuContext` for holding `Menu` state and `MenuItemStyleContext` for `MenuItem` styling inheritance
 
 ### Changed
 
@@ -40,6 +40,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `Link` color within `Tooltip` is set to `blue200` to ensure readability.
 - `useFocusTrap` and `useScrollLock` behavior when `Popover` is nested in a `Modal` or another `Popover`.
 - Added missing border on `OverlaySurfaceArrow`
+- `Menu` issues arising from use of `cloneElement`
 
 ## [0.7.6] - 2019-11-18
 

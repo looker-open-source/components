@@ -56,12 +56,7 @@ export const Menu: FC<MenuProps> = ({
   const [isOpen, setOpen] = useState(controlledIsOpen)
   const [triggerElement, triggerCallbackRef] = useCallbackRef()
 
-  const compactPropRef = useRef(false)
-  const customizationPropRef = useRef<MenuItemCustomization>(null)
-
   const context = {
-    compactPropRef,
-    customizationPropRef,
     disabled,
     isOpen: isControlled.current ? controlledIsOpen : isOpen,
     setOpen: isControlled.current ? controlledSetOpen : setOpen,
