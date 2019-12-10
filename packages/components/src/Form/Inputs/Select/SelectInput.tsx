@@ -27,6 +27,7 @@
 // Much of the following is pulled from https://github.com/reach/reach-ui
 // because their work is fantastic (but is not in TypeScript)
 
+import { CaretDown } from '@looker/icons'
 import React, {
   FormEvent,
   forwardRef,
@@ -35,6 +36,7 @@ import React, {
   useContext,
   Ref,
 } from 'react'
+import ReactDOMServer from 'react-dom/server'
 import styled from 'styled-components'
 import { useForkedRef, useWrapEvent } from '../../../utils'
 import { InputText, InputTextProps } from '../InputText'
@@ -233,16 +235,16 @@ export const SelectInputInternal = forwardRef(function SelectInput(
 
 SelectInputInternal.displayName = 'SelectInputInternal'
 
-const indicatorRaw = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M7.41 8L12 12.58L16.59 8L18 9.41L12 15.41L6 9.41L7.41 8Z" fill="#1C2125"/>
-</svg>`
+const indicatorRaw = ReactDOMServer.renderToString(<CaretDown />)
+  .replace(/1em/g, '24')
+  .replace('data-reactroot=""', 'xmlns="http://www.w3.org/2000/svg"')
 const indicatorSize = '1rem'
 const indicatorPadding = '.25rem'
 const indicatorPrefix = 'data:image/svg+xml;base64,'
 export const selectIndicatorBG = (color: string) =>
   typeof window !== 'undefined' &&
   `url('${indicatorPrefix}${window.btoa(
-    indicatorRaw.replace('#1C2125', color)
+    indicatorRaw.replace('currentColor', color)
   )}')`
 
 export const SelectInput = styled(SelectInputInternal)`
