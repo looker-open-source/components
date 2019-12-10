@@ -96,8 +96,8 @@ const App: React.FC = () => {
           <Divider my="xlarge" />
           <InputText width={240} />
           <Divider my="xlarge" />
-          <Select openOnFocus={true} width={240}>
-            {show && <SelectInput />}
+          <Select width={240}>
+            <SelectInput />
             <SelectList>
               <SelectOption value="Foo" />
               <SelectOption value="Bar" />

@@ -47,11 +47,13 @@ import { makeHash } from './helpers'
 import { OptionContext, SelectContext } from './SelectContext'
 import { SelectActionType } from './state'
 
+type Data = string | number | object
+
 export interface SelectOptionObject {
   /**
    * Additional data associated with the option, will be passed to onSelect.
    */
-  data?: any
+  data?: Data | Data[]
   /**
    * The value to match against when suggesting.
    */

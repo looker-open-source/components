@@ -97,6 +97,7 @@ export const SelectInputInternal = forwardRef(function SelectInput(
     transition,
     listboxId,
     autocompletePropRef,
+    persistSelectionRef,
     readOnlyPropRef,
     openOnFocus,
   } = useContext(SelectContext)
@@ -181,6 +182,13 @@ export const SelectInputInternal = forwardRef(function SelectInput(
     if (selectOnClickRef.current) {
       selectOnClickRef.current = false
       inputElement && inputElement.select()
+    }
+    if (state === SelectState.IDLE) {
+      // Opening a closed list
+      transition &&
+        transition(SelectActionType.NAVIGATE, {
+          persistSelection: persistSelectionRef && persistSelectionRef.current,
+        })
     }
   }
 

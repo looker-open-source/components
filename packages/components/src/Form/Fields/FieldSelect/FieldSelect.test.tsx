@@ -72,8 +72,7 @@ test('Should accept a value', () => {
 })
 
 test('Should trigger onChange handler', () => {
-  let counter = 0
-  const handleChange = () => counter++
+  const handleSelect = jest.fn()
 
   const wrapper = mount(
     <ThemeProvider theme={theme}>
@@ -82,13 +81,13 @@ test('Should trigger onChange handler', () => {
         name="thumbsUp"
         id="thumbs-up"
         value="foobar"
-        onChange={handleChange}
+        onSelect={handleSelect}
       />
     </ThemeProvider>
   )
 
   wrapper.find('select').simulate('change', { target: { value: '' } })
-  expect(counter).toEqual(1)
+  expect(handleSelect).toHaveBeenCalledTimes(1)
 })
 
 test('A required FieldSelect', () => {
