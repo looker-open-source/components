@@ -95,24 +95,11 @@ interface BadgeProps
    * @default "small"
    */
   size?: BadgeSizes
-
-  /**
-   *  @default false
-   **/
-  transparent?: boolean
 }
 const badgeRounded = ({ rounded }: BadgeProps) =>
   rounded
     ? css`
         border-radius: 50px;
-      `
-    : ``
-
-const badgeTransparent = ({ transparent }: BadgeProps) =>
-  transparent
-    ? css`
-        background-color: transparent;
-        color: inherit;
       `
     : ``
 
@@ -142,7 +129,6 @@ export const Badge = styled(BadgeLayout)`
   ${badgeSize}
   ${badgeColor}
   ${badgeRounded}
-  ${badgeTransparent}
 
   display: inline-block;
 `

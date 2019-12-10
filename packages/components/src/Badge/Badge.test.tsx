@@ -30,7 +30,3 @@ test('Badge renders with round flag', () => {
     </Badge>
   )
 })
-
-test('Badge renders with transparent flag', () => {
-  assertSnapshot(<Badge transparent>small</Badge>)
-})
