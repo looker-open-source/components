@@ -27,7 +27,6 @@
 import React, { FC, useRef, useState } from 'react'
 import { useCallbackRef } from '../utils'
 import { MenuContext } from './MenuContext'
-import { MenuItemCustomization } from './MenuItem'
 
 export interface MenuProps {
   /**
