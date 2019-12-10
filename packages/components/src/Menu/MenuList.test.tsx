@@ -69,6 +69,7 @@ test('Menu - composed', () => {
   expect(menu).toMatchSnapshot()
 })
 
+// Tests that wrapping MenuItem in another component doesn't break styling inheritance
 const WrappedMenuItem = () => <MenuItem icon="Beaker">Scary Stuff</MenuItem>
 
 test('Menu - compact', () => {
