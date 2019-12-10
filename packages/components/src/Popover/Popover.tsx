@@ -293,7 +293,10 @@ export function usePopover({
     disable: disableFocusTrap,
   } = useFocusTrap(controlledIsOpen)
 
-  const [element, callbackRef] = useCallbackRef(triggerElement || undefined)
+  const [newTriggerElement, callbackRef] = useCallbackRef()
+  // If the triggerElement is passed in props, use that instead of the new element
+  const element =
+    typeof triggerElement === 'undefined' ? newTriggerElement : triggerElement
 
   const [isOpen, setOpen] = usePopoverToggle(
     {

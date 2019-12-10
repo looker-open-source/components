@@ -118,7 +118,10 @@ export function useTooltip({
 }: UseTooltipProps) {
   const [isOpen, setIsOpen] = useState(initializeOpen)
   const [surfaceElement, surfaceCallbackRef] = useCallbackRef()
-  const [element, callbackRef] = useCallbackRef(triggerElement)
+  const [newTriggerElement, callbackRef] = useCallbackRef()
+  // If the triggerElement is passed in props, use that instead of the new element
+  const element =
+    typeof triggerElement === 'undefined' ? newTriggerElement : triggerElement
 
   const handleOpen = () => setIsOpen(true)
   const handleClose = () => {

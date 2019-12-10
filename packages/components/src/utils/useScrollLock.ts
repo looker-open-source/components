@@ -32,9 +32,12 @@ import { useCallbackRef } from './useCallbackRef'
 export function useScrollLock(
   enabled = false,
   useCapture = false,
-  allowScrollWithin?: HTMLElement
+  allowScrollWithin?: HTMLElement | null
 ) {
-  const [element, callbackRef] = useCallbackRef(allowScrollWithin)
+  const [newElement, callbackRef] = useCallbackRef()
+  // If the keepFocusWithin is passed in arguments, use that instead of the new element
+  const element =
+    typeof allowScrollWithin === 'undefined' ? newElement : allowScrollWithin
   const { disableScrollLock, enableScrollLock } = useContext(ModalContext)
   const { value, setOn, setOff } = useToggle(enabled)
 

@@ -27,6 +27,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Hard-code modal header styling, and no longer accept `Header` as a sub-component
 - Use css grid to lay out `ModalFooter` actions
 - Focus trap and scroll lock methods added to `ModalContext`
+- Remove `useMenu` hook in favor of `MenuContext`
 
 ### Fixed
 
