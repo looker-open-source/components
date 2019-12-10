@@ -31,7 +31,7 @@ import { mountWithTheme, assertSnapshot } from '@looker/components-test-utils'
 import { Select } from './Select'
 
 test('Select default', () => {
-  assertSnapshot(<Select />)
+  assertSnapshot(<Select id="default" />)
 })
 
 test('Select with name and id', () => {
@@ -39,37 +39,39 @@ test('Select with name and id', () => {
 })
 
 test('Select should accept disabled', () => {
-  assertSnapshot(<Select disabled />)
+  assertSnapshot(<Select disabled id="disabled" />)
 })
 
 test('Select should accept empty options array', () => {
-  assertSnapshot(<Select options={[]} />)
+  assertSnapshot(<Select options={[]} id="empty-options" />)
 })
 
 test('Select with a placeholder', () => {
-  assertSnapshot(<Select placeholder="I am a placeholder" />)
+  assertSnapshot(<Select placeholder="I am a placeholder" id="placeholder" />)
 })
 
 test('Select placeholder option does not have a value', () => {
-  const select = mountWithTheme(<Select placeholder="Boo!" />)
-  expect(select.find('option').prop('value')).toEqual('')
+  const select = mountWithTheme(<Select placeholder="Boo!" id="no-value" />)
+  expect(select.find('input').prop('value')).toEqual('')
 })
 
 test('Select should accept readOnly', () => {
-  assertSnapshot(<Select readOnly />)
+  assertSnapshot(<Select readOnly id="read-only" />)
 })
 
 test('Select should accept required', () => {
-  assertSnapshot(<Select required />)
+  assertSnapshot(<Select required id="required" />)
 })
 
 test('Select with a value', () => {
   const options = [
-    { label: 'thing', value: '1' },
-    { label: "Some Value's Label", value: 'Some Value' },
-    { label: 'other', value: '2' },
+    { data: '1', value: 'thing' },
+    { data: '1.5', value: 'Some Value' },
+    { data: '2', value: 'other' },
   ]
-  assertSnapshot(<Select value="Some Value" options={options} />)
+  assertSnapshot(
+    <Select value="Some Value" options={options} id="value-and-options" />
+  )
 })
 
 test('Select with aria-describedby', () => {
@@ -77,15 +79,26 @@ test('Select with aria-describedby', () => {
 })
 
 test('Select with an error validation', () => {
-  assertSnapshot(<Select validationType="error" />)
+  assertSnapshot(<Select validationType="error" id="error" />)
 })
 
 test('Should trigger onChange handler', () => {
-  let counter = 0
-  const handleChange = () => counter++
+  const handleChange = jest.fn()
 
-  const wrapper = mountWithTheme(<Select onChange={handleChange} />)
+  const wrapper = mountWithTheme(
+    <Select
+      openOnFocus
+      onSelect={handleChange}
+      options={[{ value: 'foo' }, { value: 'bar' }]}
+    />
+  )
 
-  wrapper.find('select').simulate('change', { target: { value: '' } })
-  expect(counter).toEqual(1)
+  wrapper.find('input').simulate('focus')
+  wrapper.update()
+  wrapper
+    .find('li')
+    .at(0)
+    .simulate('click')
+  expect(handleChange).toHaveBeenCalledTimes(1)
+  expect(handleChange).toHaveBeenCalledWith({ value: 'foo' })
 })
