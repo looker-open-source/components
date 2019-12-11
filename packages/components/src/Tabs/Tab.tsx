@@ -26,7 +26,7 @@
 
 import React, { forwardRef, Ref, useState } from 'react'
 import { rgba } from 'polished'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import {
   border,
   BorderProps,
@@ -52,7 +52,7 @@ export interface TabProps
   onSelect?: () => void
 }
 
-export const tabCSS = css<TabProps>`
+const TabStyle = styled.button<TabProps>`
   ${reset}
   ${space}
   ${layout}
@@ -110,17 +110,6 @@ export const tabCSS = css<TabProps>`
   }
 `
 
-const TabStyle = styled.button.attrs((props: TabProps) => ({
-  minWidth: '3rem',
-  onClick: () => {
-    if (!props.disabled && props.onSelect) {
-      props.onSelect()
-    }
-  },
-}))<TabProps>`
-  ${tabCSS}
-`
-
 const TabJSX = forwardRef((props: TabProps, ref: Ref<HTMLButtonElement>) => {
   const { children, onBlur, onKeyDown, ...restProps } = props
 
@@ -136,11 +125,18 @@ const TabJSX = forwardRef((props: TabProps, ref: Ref<HTMLButtonElement>) => {
     onBlur && onBlur(event)
   }
 
+  const onClick = () => {
+    if (!props.disabled && props.onSelect) {
+      props.onSelect()
+    }
+  }
+
   return (
     <TabStyle
       focusVisible={isFocusVisible}
       onKeyUp={handleOnKeyUp}
       onBlur={handleOnBlur}
+      onClick={onClick}
       {...restProps}
       ref={ref}
     >
@@ -153,4 +149,9 @@ TabJSX.displayName = 'TabJSX'
 
 export const Tab = styled(TabJSX)``
 
-Tab.defaultProps = { fontWeight: 'semiBold', pb: 'small', pt: 'xsmall' }
+Tab.defaultProps = {
+  fontWeight: 'semiBold',
+  minWidth: '3rem',
+  pb: 'small',
+  pt: 'xsmall',
+}
