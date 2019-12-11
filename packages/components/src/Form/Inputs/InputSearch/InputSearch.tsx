@@ -25,7 +25,6 @@
  */
 
 import React, { FormEvent, forwardRef, Ref, useState, useRef } from 'react'
-import isFunction from 'lodash/isFunction'
 import styled from 'styled-components'
 import {
   border,
@@ -39,6 +38,7 @@ import {
   InputText,
   InputTextProps,
 } from '../InputText'
+import { useForkedRef } from '../../../utils'
 import { InputSearchControls } from './InputSearchControls'
 
 interface InputSearchLayoutProps extends BorderProps, LayoutProps {}
@@ -95,7 +95,7 @@ InputSearchLayout.defaultProps = {
 }
 
 const InputSearchComponent = forwardRef(
-  (props: InputSearchProps, forwardRef: Ref<HTMLInputElement>) => {
+  (props: InputSearchProps, forwardedRef: Ref<HTMLInputElement>) => {
     const {
       border,
       borderBottom,
@@ -114,11 +114,11 @@ const InputSearchComponent = forwardRef(
       ...inputProps
     } = props
 
-    const ref = forwardRef || useRef<null | HTMLInputElement>(null)
+    const internalRef = useRef<null | HTMLInputElement>(null)
+    const ref = useForkedRef<HTMLInputElement>(internalRef, forwardedRef)
     const [inputValue, setValue] = useState(value)
 
-    const focusInput = () =>
-      ref && !isFunction(ref) && ref.current && ref.current.focus()
+    const focusInput = () => internalRef.current && internalRef.current.focus()
 
     const handleClear = () => {
       setValue('')
