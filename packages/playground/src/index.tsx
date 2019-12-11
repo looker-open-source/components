@@ -73,15 +73,17 @@ const App: React.FC = () => {
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <Box m="xlarge">
-          <Paragraph mb="medium">{selectProps.value}</Paragraph>
           <Select
             openOnFocus={true}
             width={240}
+            mb="medium"
             inputProps={inputPropsMemo}
             listProps={listProps}
             options={options}
+            aria-label="Fruits"
             {...selectProps}
           />
+          <Paragraph>{selectProps.value}</Paragraph>
           <Button
             mt="medium"
             mr="small"

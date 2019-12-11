@@ -66,6 +66,7 @@ export const inputPropKeys = [
   'pattern',
   'step',
   'value',
+  'aria-label',
   'aria-describedby',
   'aria-labelledby',
 ]

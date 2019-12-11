@@ -131,6 +131,8 @@ export const SelectInternal = forwardRef(function Select(
     optionProps,
     options,
     value,
+    'aria-label': ariaLabel,
+    'aria-labelledby': ariaLabelledby,
 
     ...rest
   }: SelectProps,
@@ -168,6 +170,10 @@ export const SelectInternal = forwardRef(function Select(
 
   const id = useID(rest.id)
   const listboxId = `listbox-${id}`
+  const ariaProps = {
+    'aria-label': ariaLabel,
+    'aria-labelledby': ariaLabelledby,
+  }
 
   const context = {
     autocompletePropRef,
@@ -193,8 +199,8 @@ export const SelectInternal = forwardRef(function Select(
   if (!children) {
     content = (
       <>
-        <SelectInput value={value} {...inputProps} />
-        <SelectList {...listProps}>
+        <SelectInput value={value} {...ariaProps} {...inputProps} />
+        <SelectList {...ariaProps} {...listProps}>
           {options &&
             options.map((option: SelectOptionObject) => {
               return (

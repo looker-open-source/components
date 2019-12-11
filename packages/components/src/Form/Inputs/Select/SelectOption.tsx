@@ -162,6 +162,7 @@ export const SelectOption = styled(SelectOptionInternal)`
   ${layout}
   ${space}
   ${typography}
+  cursor: default;
   &[aria-selected='true'] {
     background-color: ${props =>
       props.theme.colors.semanticColors.primary.lighter}

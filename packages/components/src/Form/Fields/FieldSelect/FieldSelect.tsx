@@ -50,6 +50,7 @@ const FieldSelectComponent = forwardRef(
           id={id}
           validationType={validationMessage && validationMessage.type}
           ref={ref}
+          aria-labelledby={`label-${id}`}
         />
       </Field>
     )
