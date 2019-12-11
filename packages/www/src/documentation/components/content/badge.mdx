@@ -1,0 +1,39 @@
+---
+title: Badge
+propsOf: Badge
+---
+
+`Badge` has its default values as size small and background color as purple. The styles can be updated for size, color, and it has a flag for `rounded` border.
+
+## Badge Sizes
+
+```jsx
+<Flex alignItems="center" justifyContent="space-around">
+  <Badge size="small">Small</Badge>
+  <Badge size="medium">Medium</Badge>
+  <Badge size="large">Large</Badge>
+</Flex>
+```
+
+## Badge Intent
+
+```jsx
+<Flex alignItems="center" justifyContent="space-around">
+  <Badge intent="plain">Plain</Badge>
+  <Badge intent="positive">Positive</Badge>
+  <Badge intent="info">Info</Badge>
+  <Badge intent="neutral">Neutral</Badge>
+  <Badge intent="warning">Warning</Badge>
+  <Badge intent="critical">Critical</Badge>
+</Flex>
+```
+
+## Badge Options
+
+### Rounded
+
+Ends of badge are fully-rounded instead of just receiving a slight radius without `rounded` property.
+
+```jsx
+<Badge rounded>Rounded Badge</Badge>
+```

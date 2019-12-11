@@ -1,0 +1,433 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Badge renders all intents 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-weight: 600;
+  font-size: 0.75rem;
+  line-height: 24px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  background-color: #FFFFFF;
+  color: #4F2ABA;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  border-radius: 0.25rem;
+}
+
+<span
+  className="c0"
+  fontWeight="semiBold"
+  intent="plain"
+  size="medium"
+>
+  plain
+</span>
+`;
+
+exports[`Badge renders all intents 2`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-weight: 600;
+  font-size: 0.75rem;
+  line-height: 24px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  background-color: #24b25f;
+  color: #FFFFFF;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  border-radius: 0.25rem;
+}
+
+<span
+  className="c0"
+  fontWeight="semiBold"
+  intent="positive"
+  size="medium"
+>
+  positive
+</span>
+`;
+
+exports[`Badge renders all intents 3`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-weight: 600;
+  font-size: 0.75rem;
+  line-height: 24px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  background-color: #0087e1;
+  color: #FFFFFF;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  border-radius: 0.25rem;
+}
+
+<span
+  className="c0"
+  fontWeight="semiBold"
+  intent="info"
+  size="medium"
+>
+  info
+</span>
+`;
+
+exports[`Badge renders all intents 4`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-weight: 600;
+  font-size: 0.75rem;
+  line-height: 24px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  background-color: #707781;
+  color: #FFFFFF;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  border-radius: 0.25rem;
+}
+
+<span
+  className="c0"
+  fontWeight="semiBold"
+  intent="neutral"
+  size="medium"
+>
+  neutral
+</span>
+`;
+
+exports[`Badge renders all intents 5`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-weight: 600;
+  font-size: 0.75rem;
+  line-height: 24px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  background-color: #FFA800;
+  color: #FFFFFF;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  border-radius: 0.25rem;
+}
+
+<span
+  className="c0"
+  fontWeight="semiBold"
+  intent="warning"
+  size="medium"
+>
+  warning
+</span>
+`;
+
+exports[`Badge renders all intents 6`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-weight: 600;
+  font-size: 0.75rem;
+  line-height: 24px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  background-color: #CC1F36;
+  color: #FFFFFF;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  border-radius: 0.25rem;
+}
+
+<span
+  className="c0"
+  fontWeight="semiBold"
+  intent="critical"
+  size="medium"
+>
+  critical
+</span>
+`;
+
+exports[`Badge renders all sizes 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-weight: 600;
+  font-size: 0.75rem;
+  line-height: 24px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  background-color: #4F2ABA;
+  color: #FFFFFF;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  border-radius: 0.25rem;
+}
+
+<span
+  className="c0"
+  fontWeight="semiBold"
+  intent="default"
+  size="medium"
+>
+  default (medium)
+</span>
+`;
+
+exports[`Badge renders all sizes 2`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-weight: 600;
+  font-size: 0.6875rem;
+  line-height: 16px;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+  background-color: #4F2ABA;
+  color: #FFFFFF;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  border-radius: 0.25rem;
+}
+
+<span
+  className="c0"
+  fontWeight="semiBold"
+  intent="default"
+  size="small"
+>
+  small
+</span>
+`;
+
+exports[`Badge renders all sizes 3`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-weight: 600;
+  font-size: 0.75rem;
+  line-height: 24px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  background-color: #4F2ABA;
+  color: #FFFFFF;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  border-radius: 0.25rem;
+}
+
+<span
+  className="c0"
+  fontWeight="semiBold"
+  intent="default"
+  size="medium"
+>
+  medium
+</span>
+`;
+
+exports[`Badge renders all sizes 4`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 32px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  background-color: #4F2ABA;
+  color: #FFFFFF;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  border-radius: 0.25rem;
+}
+
+<span
+  className="c0"
+  fontWeight="semiBold"
+  intent="default"
+  size="large"
+>
+  large
+</span>
+`;
+
+exports[`Badge renders with round flag 1`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-weight: 600;
+  font-size: 0.75rem;
+  line-height: 24px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  background-color: #4F2ABA;
+  color: #FFFFFF;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  border-radius: 50px;
+}
+
+<span
+  className="c0"
+  fontWeight="semiBold"
+  intent="default"
+  rounded={true}
+  size="medium"
+>
+  small
+</span>
+`;
+
+exports[`Badge renders with round flag 2`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-weight: 600;
+  font-size: 0.75rem;
+  line-height: 24px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  background-color: #4F2ABA;
+  color: #FFFFFF;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  border-radius: 50px;
+}
+
+<span
+  className="c0"
+  fontWeight="semiBold"
+  intent="default"
+  rounded={true}
+  size="medium"
+>
+  medium
+</span>
+`;
+
+exports[`Badge renders with round flag 3`] = `
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 32px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  background-color: #0087e1;
+  color: #FFFFFF;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  border-radius: 50px;
+}
+
+<span
+  className="c0"
+  fontWeight="semiBold"
+  intent="info"
+  rounded={true}
+  size="large"
+>
+  large
+</span>
+`;
