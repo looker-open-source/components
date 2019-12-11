@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Avatar components and documentation - `AvatarIcon`, `AvatarUser`, `AvatarCombo`
+- `Badge` component with test and documentation
 - `MenuContext` for holding `Menu` state and `MenuItemStyleContext` for `MenuItem` styling inheritance
 - `Popover` now has `escapeWithReference` prop for allowing the overlay to break out of the scroll parent
 
