@@ -192,3 +192,28 @@ test('hooks working', () => {
   ).not.toBeInTheDocument()
   expect(queryByText('2 this is the panel of tab hook 2')).toBeInTheDocument()
 })
+
+test('Tab Focus: renders outline when tabbing into focus, but not when clicking', () => {
+  const { getByText } = render(
+    <ThemeProvider theme={theme}>
+      <>
+        <Tabs>
+          <TabList>
+            <Tab>tab1</Tab>
+            <Tab>tab2</Tab>
+          </TabList>
+          <TabPanels>
+            <TabPanel>this is tab1 content</TabPanel>
+            <TabPanel>this is tab2 content</TabPanel>
+          </TabPanels>
+        </Tabs>
+      </>
+    </ThemeProvider>
+  )
+
+  fireEvent.click(getByText('tab1'))
+  expect(getByText('tab2')).toMatchSnapshot()
+
+  fireEvent.keyUp(getByText('tab2'), { charCode: 9, code: 9, key: 'Tab' })
+  expect(getByText('tab2')).toMatchSnapshot()
+})

@@ -1,3 +1,71 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Tab Focus: renders outline when tabbing into focus, but not when clicking 1`] = `
+.c2 + .c0 {
+  margin-left: 2rem;
+}
+
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  padding-bottom: 0.75rem;
+  padding-top: 0.5rem;
+  min-width: 3rem;
+  font-weight: 600;
+  background: transparent;
+  border-bottom: 3px solid;
+  border-bottom-color: transparent;
+  border-radius: 0;
+  color: #707781;
+  cursor: pointer;
+}
+
+.c1 + .c0 {
+  margin-left: 2rem;
+}
+
+.c1:hover {
+  border-bottom-color: #C1C6CC;
+}
+
+.c1:active {
+  border-bottom-color: #939BA5;
+}
+
+.c1:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+.c1:disabled {
+  color: #C1C6CC;
+}
+
+.c1:disabled:active,
+.c1:disabled:hover {
+  border-bottom-color: transparent;
+}
+
+<button
+  class="c0 c1 "
+  font-weight="semiBold"
+>
+  tab2
+</button>
+`;
+
+exports[`Tab Focus: renders outline when tabbing into focus, but not when clicking 2`] = `
+<button
+  class="sc-bdVaJa kaiJUs sc-bwzfXH uTxCW"
+  font-weight="semiBold"
+>
+  tab2
+</button>
+`;
+
 exports[`Tabs snapshot works as expected 1`] = `ShallowWrapper {}`;
