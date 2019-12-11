@@ -179,6 +179,7 @@ exports[`InputText with an error validation 1`] = `
   padding-top: 0rem;
   padding-bottom: 0rem;
   font-size: 0.875rem;
+  background: #FFF2F4;
 }
 
 <input

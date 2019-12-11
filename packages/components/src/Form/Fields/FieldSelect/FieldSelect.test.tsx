@@ -24,119 +24,54 @@
 
  */
 
-import { mount, render } from 'enzyme'
+import { fireEvent } from '@testing-library/react'
 import React from 'react'
-import { ThemeProvider } from 'styled-components'
 
-import {
-  createWithTheme,
-  mountWithTheme,
-  assertSnapshot,
-} from '@looker/components-test-utils'
+import { renderWithTheme } from '@looker/components-test-utils'
 
-import { theme } from '@looker/design-tokens'
-import { Label } from '../../Label/Label'
+// import { Label } from '../../Label/Label'
 import { FieldSelect } from './FieldSelect'
 
-test('A FieldSelect', () => {
-  assertSnapshot(<FieldSelect label="👍" name="thumbsUp" id="thumbs-up" />)
-})
-
-test('FieldSelect supports labelWeight', () => {
-  assertSnapshot(
-    <FieldSelect
-      label="👍"
-      name="thumbsUp"
-      id="thumbs-up"
-      labelFontWeight="normal"
-    />
-  )
-})
-
-test('Should accept a value', () => {
-  const wrapper = render(
-    <ThemeProvider theme={theme}>
+describe('<FieldSelect/>', () => {
+  test('value', () => {
+    const { getAllByLabelText } = renderWithTheme(
       <FieldSelect
-        label="👍"
+        label="Thumbs Up"
+        name="thumbsUp"
+        id="thumbs-up"
+        value="Foo bar"
+        options={[{ data: 'foobar', value: 'Foo bar' }]}
+      />
+    )
+
+    const input = getAllByLabelText('Thumbs Up')[1]
+    expect(input).toHaveValue('Foo bar')
+  })
+
+  test('input onChange handler', () => {
+    const handleChange = jest.fn()
+
+    const { getByLabelText } = renderWithTheme(
+      <FieldSelect
+        label="Thumbs Up"
         name="thumbsUp"
         id="thumbs-up"
         value="foobar"
-        options={[{ data: 'foobar', value: 'Foodbar' }]}
-        readOnly
+        required
+        inputProps={{ onChange: handleChange }}
       />
-    </ThemeProvider>
-  )
+    )
 
-  const select = wrapper.find('select')
-  expect(select.find('option[selected]').prop('value')).toEqual('foobar')
-})
+    const input = getByLabelText('Thumbs Up')
+    fireEvent.change(input, { target: { value: '' } })
+    expect(handleChange).toHaveBeenCalledTimes(1)
+  })
 
-test('Should trigger onChange handler', () => {
-  const handleSelect = jest.fn()
-
-  const wrapper = mount(
-    <ThemeProvider theme={theme}>
-      <FieldSelect
-        label="👍"
-        name="thumbsUp"
-        id="thumbs-up"
-        value="foobar"
-        onSelect={handleSelect}
-      />
-    </ThemeProvider>
-  )
-
-  wrapper.find('select').simulate('change', { target: { value: '' } })
-  expect(handleSelect).toHaveBeenCalledTimes(1)
-})
-
-test('A required FieldSelect', () => {
-  const component = createWithTheme(
-    <FieldSelect label="👍" name="thumbsUp" id="thumbs-up" required />
-  )
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
-})
-
-test('A FieldSelect with an error validation aligned to the bottom', () => {
-  const component = mountWithTheme(
-    <FieldSelect
-      label="👍"
-      name="thumbsUp"
-      id="thumbs-up"
-      validationMessage={{ message: 'This is an error', type: 'error' }}
-      alignValidationMessage="bottom"
-    />
-  )
-  expect(component.find(Label).props().htmlFor).toEqual(
-    component.find('select').props().id
-  )
-})
-
-test('A FieldSelect with an error validation aligned to the left', () => {
-  const component = createWithTheme(
-    <FieldSelect
-      label="👍"
-      name="thumbsUp"
-      id="thumbs-up"
-      validationMessage={{ message: 'This is an error', type: 'error' }}
-      alignValidationMessage="left"
-    />
-  )
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
-})
-
-test('A FieldSelect with an error validation aligned to the right', () => {
-  const component = createWithTheme(
-    <FieldSelect
-      label="👍"
-      name="thumbsUp"
-      id="thumbs-up"
-      validationMessage={{ message: 'This is an error', type: 'error' }}
-      alignValidationMessage="right"
-    />
-  )
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
+  test('required', () => {
+    const { getByLabelText } = renderWithTheme(
+      <FieldSelect label="Thumbs Up" name="thumbsUp" id="thumbs-up" required />
+    )
+    const input = getByLabelText('Thumbs Up')
+    expect(input).toHaveAttribute('required')
+  })
 })

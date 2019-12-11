@@ -28,14 +28,14 @@ import { renderWithTheme } from '@looker/components-test-utils'
 import { act, cleanup, fireEvent } from '@testing-library/react'
 import React from 'react'
 
-import { Select } from './Select'
+import { Select, SelectInput, SelectList, SelectOption } from './'
 
 // for the requestAnimationFrame in handleBlur (not working currently)
 // jest.useFakeTimers()
 
 afterEach(cleanup)
 
-describe('<Select/>', () => {
+describe('<Select/> with options', () => {
   test('with handleSelect', () => {
     const options = [{ value: 'FOO' }, { value: 'BAR' }]
     const handleSelect = jest.fn()
@@ -213,5 +213,35 @@ describe('<Select/>', () => {
       expect(input).toHaveValue('BAR')
       expect(queryByRole('listbox')).not.toBeInTheDocument()
     })
+  })
+})
+
+describe('<Select/> with children', () => {
+  test('Renders children, merges callbacks', () => {
+    const handleSelect = jest.fn()
+    const handleClick = jest.fn()
+    const { getByText, getByTestId, queryByText } = renderWithTheme(
+      <Select options={[{ value: 'Apples' }]} onSelect={handleSelect}>
+        <SelectInput data-testid="select-input" />
+        <SelectList>
+          <SelectOption value="Foo" data={101} onClick={handleClick} />
+          <SelectOption value="Bar" data={102} />
+        </SelectList>
+      </Select>
+    )
+
+    const input = getByTestId('select-input')
+    fireEvent.click(input)
+
+    expect(queryByText('Apples')).not.toBeInTheDocument()
+    const foo = getByText('Foo')
+    expect(getByText('Foo')).toBeInTheDocument()
+    expect(getByText('Bar')).toBeInTheDocument()
+
+    fireEvent.click(foo)
+
+    expect(handleClick).toHaveBeenCalledTimes(1)
+    expect(handleSelect).toHaveBeenCalledTimes(1)
+    expect(handleSelect).toHaveBeenCalledWith({ data: 101, value: 'Foo' })
   })
 })

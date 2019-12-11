@@ -46,7 +46,6 @@ const options = [
 const listProps = { persistSelection: true }
 
 const App: React.FC = () => {
-  const [show, setShow] = React.useState(false)
   const { inputProps, ...selectProps } = useControlledSelect('Apples')
   const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
     const fruit = e.currentTarget.getAttribute('data-fruit') || ''
@@ -57,17 +56,11 @@ const App: React.FC = () => {
       ...inputProps,
       autocomplete: false,
       placeholder: 'Placeholder text',
+      required: true,
+      validationType: 'error' as 'error',
     }),
     [inputProps]
   )
-  React.useEffect(() => {
-    const t = setTimeout(() => {
-      setShow(!show)
-    }, 3000)
-    return () => {
-      clearTimeout(t)
-    }
-  }, [show])
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -96,7 +89,7 @@ const App: React.FC = () => {
             Oranges
           </Button>
           <Divider my="xlarge" />
-          <InputText width={240} />
+          <InputText width={240} validationType="error" />
           <Divider my="xlarge" />
           <Select width={240}>
             <SelectInput />

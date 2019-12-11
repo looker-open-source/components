@@ -125,6 +125,7 @@ exports[`A FieldText with an error validation aligned to the left 1`] = `
   padding-top: 0rem;
   padding-bottom: 0rem;
   font-size: 0.875rem;
+  background: #FFF2F4;
 }
 
 .c3 {
@@ -264,6 +265,7 @@ exports[`A FieldText with an error validation aligned to the right 1`] = `
   padding-top: 0rem;
   padding-bottom: 0rem;
   font-size: 0.875rem;
+  background: #FFF2F4;
 }
 
 .c3 {

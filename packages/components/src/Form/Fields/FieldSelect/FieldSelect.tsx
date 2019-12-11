@@ -34,9 +34,13 @@ import { Field, FieldProps, omitFieldProps, pickFieldProps } from '../Field'
 export interface FieldSelectProps extends FieldProps, SelectProps {}
 
 const FieldSelectComponent = forwardRef(
-  ({ id: propsID, ...props }: FieldSelectProps, ref: Ref<HTMLInputElement>) => {
+  (
+    { id: propsID, inputProps, ...props }: FieldSelectProps,
+    ref: Ref<HTMLInputElement>
+  ) => {
     const validationMessage = useFormContext(props)
     const id = useID(propsID)
+    const validationType = validationMessage && validationMessage.type
     return (
       <Field
         id={id}
@@ -47,8 +51,12 @@ const FieldSelectComponent = forwardRef(
       >
         <Select
           {...omitFieldProps(props)}
+          inputProps={{
+            required: props.required,
+            validationType,
+            ...inputProps,
+          }}
           id={id}
-          validationType={validationMessage && validationMessage.type}
           ref={ref}
           aria-labelledby={`label-${id}`}
         />

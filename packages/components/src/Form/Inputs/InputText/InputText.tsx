@@ -83,7 +83,6 @@ InputComponent.displayName = 'InputComponent'
 
 export const InputText = styled(InputComponent).attrs(
   (props: InputTextProps) => ({
-    background: props.validationType === 'error' && 'palette.red000',
     px: props.px || props.p || CustomizableInputTextAttributes.px,
     py: props.py || props.p || CustomizableInputTextAttributes.py,
   })
@@ -95,6 +94,10 @@ export const InputText = styled(InputComponent).attrs(
   ${space}
   ${typography}
   ${pseudoClasses}
+  ${props =>
+    props.validationType === 'error'
+      ? `background: ${props.theme.colors.palette.red000};`
+      : ''}
 `
 
 InputText.defaultProps = {

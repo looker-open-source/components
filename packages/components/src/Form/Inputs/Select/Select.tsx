@@ -73,7 +73,10 @@ export interface SelectProps
   extends LayoutProps,
     PositionProps,
     SpaceProps,
-    Omit<CompatibleHTMLProps<HTMLDivElement>, 'onSelect' | 'onChange'> {
+    Omit<
+      CompatibleHTMLProps<HTMLDivElement>,
+      'readOnly' | 'onSelect' | 'onChange'
+    > {
   /**
    * Called with the selection value when the user makes a selection from the
    * list.
@@ -212,8 +215,8 @@ export const SelectInternal = forwardRef(function Select(
     )
   } else if (options) {
     // eslint-disable-next-line no-console
-    console.warn(`Warning: options and children cannot be used together.
-      If you wish to build your Select with the options prop, do not define any children.`)
+    console.warn(`Options and children cannot be used together on Select.
+If you wish to build your Select with the options prop, do not define any children.`)
   }
 
   return (

@@ -37,6 +37,7 @@ export const inputPropKeys = [
   'autocomplete',
   'checked',
   'data-autofocus',
+  'data-testid',
   'defaultValue',
   'defaultChecked',
   'disabled',
