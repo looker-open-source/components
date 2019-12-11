@@ -175,7 +175,11 @@ export const SelectInputInternal = forwardRef(function SelectInput(
     // If we select an option with click, useFocusManagement will focus the
     // input, in those cases we don't want to cause the menu to open back up,
     // so we guard behind these states
-    if (openOnFocus && lastActionType !== SelectActionType.SELECT_WITH_CLICK) {
+    if (
+      openOnFocus &&
+      lastActionType !== SelectActionType.SELECT_WITH_CLICK &&
+      lastActionType !== SelectActionType.NAVIGATE
+    ) {
       transition && transition(SelectActionType.FOCUS)
     }
   }

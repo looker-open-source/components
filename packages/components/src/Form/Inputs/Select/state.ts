@@ -256,7 +256,9 @@ export function useReducerMachine(): [
     const currentState = stateChart.states[state]
     const nextState = currentState.on[action]
     if (!nextState) {
-      throw new Error(`Unknown action "${action}" for state "${state}"`)
+      // eslint-disable-next-line no-console
+      console.warn(`Unknown action "${action}" for state "${state}"`)
+      return
     }
     dispatch({ nextState: state, state, type: action, ...payload })
     setState(nextState)

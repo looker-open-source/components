@@ -114,9 +114,7 @@ export const SelectListInternal = forwardRef(function SelectList(
   )
 
   const setOpen = (isOpen: boolean) => {
-    if (isOpen) {
-      transition && transition(SelectActionType.FOCUS)
-    } else {
+    if (!isOpen) {
       transition && transition(SelectActionType.BLUR)
     }
   }
