@@ -52,24 +52,12 @@ export interface TabProps
   onSelect?: () => void
 }
 
-const tabFocusRing = (color: string) => css`
-  box-shadow: 0 0 0 0.15rem ${rgba(color, 0.25)};
-  outline: none;
-`
-
 export const tabCSS = css<TabProps>`
   ${reset}
   ${space}
   ${layout}
   ${border}
   ${typography}
-
-  ${props =>
-    props.focusVisible &&
-    `
-    box-shadow: 0 0 0 0.15rem
-      ${rgba(props.theme.colors.palette.purple300, 0.25)};
-  `}
 
   background: transparent;
   border-bottom: 3px solid;
@@ -101,7 +89,15 @@ export const tabCSS = css<TabProps>`
   }
 
   &:focus {
-    ${props => tabFocusRing(props.theme.colors.palette.purple300)}
+    ${props =>
+      props.focusVisible
+        ? `box-shadow: 0 0 0 0.15rem ${rgba(
+            props.theme.colors.palette.purple300,
+            0.25
+          )};
+          outline: none;`
+        : `box-shadow: none;
+          outline: none;`};
   }
 
   &:disabled {
@@ -125,35 +121,33 @@ const TabStyle = styled.button.attrs((props: TabProps) => ({
   ${tabCSS}
 `
 
-export const TabJSX = forwardRef(
-  (props: TabProps, ref: Ref<HTMLButtonElement>) => {
-    const { children, onBlur, onKeyDown, ...restProps } = props
+const TabJSX = forwardRef((props: TabProps, ref: Ref<HTMLButtonElement>) => {
+  const { children, onBlur, onKeyDown, ...restProps } = props
 
-    const [isFocusVisible, setFocusVisible] = useState(false)
+  const [isFocusVisible, setFocusVisible] = useState(false)
 
-    const handleOnKeyUp = (event: React.KeyboardEvent<HTMLButtonElement>) => {
-      setFocusVisible(true)
-      onKeyDown && onKeyDown(event)
-    }
-
-    const handleOnBlur = (event: React.FocusEvent<HTMLButtonElement>) => {
-      setFocusVisible(false)
-      onBlur && onBlur(event)
-    }
-
-    return (
-      <TabStyle
-        focusVisible={isFocusVisible}
-        onKeyUp={handleOnKeyUp}
-        onBlur={handleOnBlur}
-        {...restProps}
-        ref={ref}
-      >
-        {children}
-      </TabStyle>
-    )
+  const handleOnKeyUp = (event: React.KeyboardEvent<HTMLButtonElement>) => {
+    setFocusVisible(true)
+    onKeyDown && onKeyDown(event)
   }
-)
+
+  const handleOnBlur = (event: React.FocusEvent<HTMLButtonElement>) => {
+    setFocusVisible(false)
+    onBlur && onBlur(event)
+  }
+
+  return (
+    <TabStyle
+      focusVisible={isFocusVisible}
+      onKeyUp={handleOnKeyUp}
+      onBlur={handleOnBlur}
+      {...restProps}
+      ref={ref}
+    >
+      {children}
+    </TabStyle>
+  )
+})
 
 TabJSX.displayName = 'TabJSX'
 
