@@ -24,29 +24,31 @@
 
  */
 
-import { ReactNode } from 'react'
+import React, { forwardRef, Ref, useState } from 'react'
 import { rgba } from 'polished'
 import styled, { css } from 'styled-components'
 import {
-  reset,
-  SpaceProps,
-  LayoutProps,
-  BorderProps,
-  space,
-  TypographyProps,
-  typography,
-  layout,
   border,
+  BorderProps,
+  CompatibleHTMLProps,
+  layout,
+  LayoutProps,
+  reset,
+  space,
+  SpaceProps,
+  typography,
+  TypographyProps,
 } from '@looker/design-tokens'
 
 export interface TabProps
-  extends BorderProps,
+  extends Omit<CompatibleHTMLProps<HTMLButtonElement>, 'type'>,
+    BorderProps,
     LayoutProps,
     SpaceProps,
     TypographyProps {
-  children: ReactNode
-  selected?: boolean
   disabled?: boolean
+  focusVisible?: boolean
+  selected?: boolean
   onSelect?: () => void
 }
 
@@ -55,19 +57,19 @@ const tabFocusRing = (color: string) => css`
   outline: none;
 `
 
-export const Tab = styled.button.attrs((props: TabProps) => ({
-  minWidth: '3rem',
-  onClick: () => {
-    if (!props.disabled && props.onSelect) {
-      props.onSelect()
-    }
-  },
-}))<TabProps>`
+export const tabCSS = css<TabProps>`
   ${reset}
   ${space}
   ${layout}
   ${border}
   ${typography}
+
+  ${props =>
+    props.focusVisible &&
+    `
+    box-shadow: 0 0 0 0.15rem
+      ${rgba(props.theme.colors.palette.purple300, 0.25)};
+  `}
 
   background: transparent;
   border-bottom: 3px solid;
@@ -111,5 +113,50 @@ export const Tab = styled.button.attrs((props: TabProps) => ({
     }
   }
 `
+
+const TabStyle = styled.button.attrs((props: TabProps) => ({
+  minWidth: '3rem',
+  onClick: () => {
+    if (!props.disabled && props.onSelect) {
+      props.onSelect()
+    }
+  },
+}))<TabProps>`
+  ${tabCSS}
+`
+
+export const TabJSX = forwardRef(
+  (props: TabProps, ref: Ref<HTMLButtonElement>) => {
+    const { children, onBlur, onKeyDown, ...restProps } = props
+
+    const [isFocusVisible, setFocusVisible] = useState(false)
+
+    const handleOnKeyUp = (event: React.KeyboardEvent<HTMLButtonElement>) => {
+      setFocusVisible(true)
+      onKeyDown && onKeyDown(event)
+    }
+
+    const handleOnBlur = (event: React.FocusEvent<HTMLButtonElement>) => {
+      setFocusVisible(false)
+      onBlur && onBlur(event)
+    }
+
+    return (
+      <TabStyle
+        focusVisible={isFocusVisible}
+        onKeyUp={handleOnKeyUp}
+        onBlur={handleOnBlur}
+        {...restProps}
+        ref={ref}
+      >
+        {children}
+      </TabStyle>
+    )
+  }
+)
+
+TabJSX.displayName = 'TabJSX'
+
+export const Tab = styled(TabJSX)``
 
 Tab.defaultProps = { fontWeight: 'semiBold', pb: 'small', pt: 'xsmall' }
