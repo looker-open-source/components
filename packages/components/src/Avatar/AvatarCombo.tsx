@@ -24,6 +24,7 @@ import styled from 'styled-components'
 import { IconNames } from '@looker/icons'
 import { AvatarUser, AvatarUserProps } from './AvatarUser'
 import { AvatarIcon, AvatarIconProps } from './AvatarIcon'
+import { avatarSize } from './size'
 
 export interface AvatarComboProps
   extends Omit<AvatarIconProps & AvatarUserProps, 'size'> {
@@ -58,6 +59,7 @@ const AvatarLayout: FC<AvatarComboProps> = ({
 export const AvatarCombo = styled(AvatarLayout)`
   ${reset}
 
+  ${avatarSize}
   ${color}
   ${layout}
   ${space}

@@ -25,6 +25,7 @@ import styled from 'styled-components'
 import { Icon } from '../Icon'
 import { AvatarProps } from './AvatarUser'
 import { AvatarBase } from './AvatarBase'
+import { avatarSize } from './size'
 
 export interface AvatarIconProps extends AvatarProps {
   icon?: IconNames
@@ -32,20 +33,20 @@ export interface AvatarIconProps extends AvatarProps {
 
 const AvatarLayout: FC<AvatarIconProps> = ({
   color,
-  icon = 'Users',
+  icon = 'User',
   size,
   ...props
 }) => {
   const iconSize = () => {
     switch (size) {
       case 'xsmall':
-        return 9
+        return 14
       case 'small':
-        return 9.6
-      case 'medium':
-        return 12.8
-      default:
         return 16
+      case 'medium':
+        return 20
+      default:
+        return 20
     }
   }
 
@@ -58,6 +59,8 @@ const AvatarLayout: FC<AvatarIconProps> = ({
 
 export const AvatarIcon = styled(AvatarLayout)`
   ${reset}
+
+  ${avatarSize}
   ${color}
   ${layout}
   ${space}

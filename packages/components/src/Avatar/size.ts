@@ -42,21 +42,25 @@ export const avatarSize = variant({
   variants: {
     xsmall: {
       fontSize: 'xsmall',
+      lineHeight: '1',
       height: '20px',
       width: '20px',
     },
     small: {
       fontSize: 'xsmall',
+      lineHeight: '1',
       height: '24px',
       width: '24px',
     },
     medium: {
       fontSize: 'xsmall',
+      lineHeight: '1',
       height: '32px',
       width: '32px',
     },
     large: {
       fontSize: 'small',
+      lineHeight: '1',
       height: '40px',
       width: '40px',
     },

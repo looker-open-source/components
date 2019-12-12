@@ -22,6 +22,7 @@ import React, { FC } from 'react'
 import { color, layout, reset, space } from '@looker/design-tokens'
 import styled from 'styled-components'
 import { AvatarBase, AvatarBaseProps } from './AvatarBase'
+import { avatarSize } from './size'
 
 export interface AvatarProps extends AvatarBaseProps {
   /**
@@ -80,6 +81,7 @@ export const AvatarUser = styled(AvatarLayout).attrs(
   })
 )`
   ${reset}
+  ${avatarSize}
   ${color}
   ${layout}
   ${space}

@@ -20,23 +20,48 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { GlobalStyle } from '@looker/components'
+import {
+  AvatarCombo,
+  AvatarIcon,
+  AvatarUser,
+  GlobalStyle,
+} from '@looker/components'
 import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
 
-import { MenuDemo } from './Menu/MenuDemo'
+// import { MenuDemo } from './Menu/MenuDemo'
 
 const App: React.FC = () => {
+  const data = {
+    // eslint-disable-next-line @typescript-eslint/camelcase
+    avatar_url:
+      'https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank',
+
+    // eslint-disable-next-line @typescript-eslint/camelcase
+    first_name: 'Mohn',
+
+    id: 3,
+
+    // eslint-disable-next-line @typescript-eslint/camelcase
+    last_name: 'Mmith',
+  }
   return (
     <ThemeProvider theme={theme}>
       <>
         <GlobalStyle />
-        <MenuDemo />
+        <AvatarIcon m="medium" size="small" />
+        <AvatarIcon m="medium" icon="LogoRings" color="#FF4500" size="medium" />
+        <AvatarIcon m="medium" icon="Code" color="#6495ED" />
+        <AvatarUser m="medium" color="#6495ED" user={data} />
+        <AvatarUser m="medium" color="#FF4500" user={data} size="medium" />
+        <AvatarUser m="medium" user={data} size="small" />
+        <AvatarCombo m="medium" user={data} badge="LogoRings" />
       </>
     </ThemeProvider>
   )
 }
 
+// <MenuDemo />
 /**
  * This is the binding site for the playground. If you want to edit the
  * primary application, do your work in App.tsx instead.
