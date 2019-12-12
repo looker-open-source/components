@@ -45,6 +45,7 @@ exports[`ModalHeader 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  line-height: 1;
   outline: none;
   -webkit-transition: border 80ms;
   transition: border 80ms;
