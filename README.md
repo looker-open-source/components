@@ -35,12 +35,15 @@ We recommend using [Node Version Manager (NVM)](https://github.com/nvm-sh/nvm#in
 - [@looker/components-test-utils](./packages/test-utils/README.md) — Useful functions for mocking values and testing components.
 - [www](./packages/www/README.md) — The Gatsby site which powers our living style guide
 - [playground](./packages/playground/README.md) — A convenient React environment used for developing Looker UI Components
+- [server](./packages/server/README.md) — A local proxy server used for querying data from production endpoints while in development.
 
 ### Common Project Commands
 
+- **yarn develop** shortcut for booting up www, playground, and server packages for local development
 - **yarn workspace www develop** starts the Gatsby server
 - **yarn workspace @looker/components develop** builds the component library with a `--watch` flag. Useful when actively developing a component and you wish to see the changes appear in either the [style guide](./packages/www/README.md) or [react playground](./packages/playground/README.md)
 - **yarn workspace playground develop** starts a bare-bones React app used for developing our shared components
+- **yarn workspace server develop** starts a local proxy server to facilitate local fetch requests
 - **yarn build** runs build across all packages. This calls several subtasks
   - **yarn build:es** use lerna to do babel build on all packages in proper order
   - **yarn postbuild** use lerna to typescript declarations in proper order and then run lint (see `lint` below)
@@ -48,7 +51,7 @@ We recommend using [Node Version Manager (NVM)](https://github.com/nvm-sh/nvm#in
   - **yarn lint:css** run stylelint
   - **yarn lint:es** run eslint
   - **yarn lint:ts** run tsc
-- **yarn test** runs Jest across all packages.
+- **yarn test** runs Jest across all packages
 
 ### Workspace Commands
 

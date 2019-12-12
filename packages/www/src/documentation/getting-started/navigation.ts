@@ -38,6 +38,10 @@ const navigation: NavigationSection = {
       path: 'extending',
     },
     {
+      title: 'Data Fetching',
+      path: 'data-fetching',
+    },
+    {
       title: 'Theme',
       path: 'theme',
     },

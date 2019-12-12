@@ -1,5 +1,6 @@
 # local credentials
 .npmrc
+looker.ini
 
 # dependencies
 node_modules
