@@ -111,7 +111,7 @@ const TabStyle = styled.button<TabProps>`
 `
 
 const TabJSX = forwardRef((props: TabProps, ref: Ref<HTMLButtonElement>) => {
-  const { children, onBlur, onKeyUp, onSelect, ...restProps } = props
+  const { children, disabled, onBlur, onKeyUp, onSelect, ...restProps } = props
 
   const [isFocusVisible, setFocusVisible] = useState(false)
 
@@ -126,7 +126,7 @@ const TabJSX = forwardRef((props: TabProps, ref: Ref<HTMLButtonElement>) => {
   }
 
   const onClick = () => {
-    if (!props.disabled && onSelect) {
+    if (!disabled && onSelect) {
       onSelect()
     }
     setFocusVisible(false)
@@ -138,6 +138,7 @@ const TabJSX = forwardRef((props: TabProps, ref: Ref<HTMLButtonElement>) => {
       onKeyUp={handleOnKeyUp}
       onBlur={handleOnBlur}
       onClick={onClick}
+      disabled={disabled}
       {...restProps}
       ref={ref}
     >
