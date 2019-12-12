@@ -54,9 +54,10 @@ export interface TabProps
 
 const TabStyle = styled.button<TabProps>`
   ${reset}
-  ${space}
-  ${layout}
+
   ${border}
+  ${layout}
+  ${space}
   ${typography}
 
   background: transparent;
@@ -74,13 +75,6 @@ const TabStyle = styled.button<TabProps>`
     margin-left: ${props => props.theme.space.xlarge};
   }
 
-  &:hover {
-    border-bottom-color: ${props =>
-      props.selected
-        ? props.theme.colors.palette.purple400
-        : props.theme.colors.palette.charcoal300};
-  }
-
   &:active {
     border-bottom-color: ${props =>
       props.selected
@@ -88,36 +82,42 @@ const TabStyle = styled.button<TabProps>`
         : props.theme.colors.palette.charcoal400};
   }
 
-  &:focus {
-    ${props =>
-      props.focusVisible
-        ? `box-shadow: 0 0 0 0.15rem ${rgba(
-            props.theme.colors.palette.purple300,
-            0.25
-          )};
-          outline: none;`
-        : `box-shadow: none;
-          outline: none;`};
+  &:active,
+  &:hover {
+    border-bottom-color: transparent;
   }
 
   &:disabled {
     color: ${props => props.theme.colors.palette.charcoal300};
+  }
 
-    &:active,
-    &:hover {
-      border-bottom-color: transparent;
-    }
+  &:focus {
+    outline: none;
+  }
+
+  ${props =>
+    props.focusVisible &&
+    `box-shadow: 0 0 0 0.15rem ${rgba(
+      props.theme.colors.palette.purple300,
+      0.25
+    )};`};
+
+  &:hover {
+    border-bottom-color: ${props =>
+      props.selected
+        ? props.theme.colors.palette.purple400
+        : props.theme.colors.palette.charcoal300};
   }
 `
 
 const TabJSX = forwardRef((props: TabProps, ref: Ref<HTMLButtonElement>) => {
-  const { children, onBlur, onKeyDown, ...restProps } = props
+  const { children, onBlur, onKeyUp, onSelect, ...restProps } = props
 
   const [isFocusVisible, setFocusVisible] = useState(false)
 
   const handleOnKeyUp = (event: React.KeyboardEvent<HTMLButtonElement>) => {
     setFocusVisible(true)
-    onKeyDown && onKeyDown(event)
+    onKeyUp && onKeyUp(event)
   }
 
   const handleOnBlur = (event: React.FocusEvent<HTMLButtonElement>) => {
@@ -126,9 +126,10 @@ const TabJSX = forwardRef((props: TabProps, ref: Ref<HTMLButtonElement>) => {
   }
 
   const onClick = () => {
-    if (!props.disabled && props.onSelect) {
-      props.onSelect()
+    if (!props.disabled && onSelect) {
+      onSelect()
     }
+    setFocusVisible(false)
   }
 
   return (
@@ -148,6 +149,64 @@ const TabJSX = forwardRef((props: TabProps, ref: Ref<HTMLButtonElement>) => {
 TabJSX.displayName = 'TabJSX'
 
 export const Tab = styled(TabJSX)``
+/*
+<TabProps>`
+  ${reset}
+
+  ${border}
+  ${layout}
+  ${space}
+  ${typography}
+
+  background: transparent;
+  border-bottom: 3px solid;
+  border-bottom-color: ${props =>
+    props.selected ? props.theme.colors.palette.purple400 : 'transparent'};
+  border-radius: 0;
+  color: ${props =>
+    props.selected
+      ? props.theme.colors.palette.charcoal800
+      : props.theme.colors.palette.charcoal500};
+  cursor: pointer;
+
+  & + & {
+    margin-left: ${props => props.theme.space.xlarge};
+  }
+
+  &:active {
+    border-bottom-color: ${props =>
+      props.selected
+        ? props.theme.colors.palette.purple400
+        : props.theme.colors.palette.charcoal400};
+  }
+
+  &:active,
+  &:hover {
+    border-bottom-color: transparent;
+  }
+
+  &:disabled {
+    color: ${props => props.theme.colors.palette.charcoal300};
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  ${props =>
+    props.focusVisible &&
+    `box-shadow: 0 0 0 0.15rem ${rgba(
+      props.theme.colors.palette.purple300,
+      0.25
+    )};`};
+
+  &:hover {
+    border-bottom-color: ${props =>
+      props.selected
+        ? props.theme.colors.palette.purple400
+        : props.theme.colors.palette.charcoal300};
+  }
+` */
 
 Tab.defaultProps = {
   fontWeight: 'semiBold',
