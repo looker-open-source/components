@@ -43,11 +43,12 @@ export const MenuSearchControls: FC<MenuSearchControlsProps> = ({
 }) => {
   const clear = onClear && hasValue && (
     <IconButton
-      color="neutral"
       size="small"
       icon="Close"
       label="Clear Filter"
       onClick={onClear}
+      tooltipPlacement="left"
+      tabIndex={-1}
     />
   )
 

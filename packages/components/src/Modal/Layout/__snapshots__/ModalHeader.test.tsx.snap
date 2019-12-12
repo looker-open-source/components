@@ -55,7 +55,6 @@ exports[`ModalHeader 1`] = `
   padding-left: 0.75rem;
   padding-right: 0.75rem;
   padding: 0rem;
-  margin-right: -10px;
 }
 
 .c3[disabled] {
@@ -114,6 +113,21 @@ exports[`ModalHeader 1`] = `
   color: #939BA5;
 }
 
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  font-weight: 600;
+  line-height: 1.75rem;
+  font-size: 1.125rem;
+  margin-right: 2rem;
+  color: #262D33;
+}
+
 .c6 {
   position: absolute;
   height: 1px;
@@ -131,22 +145,10 @@ exports[`ModalHeader 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  margin-right: -10px;
 }
 
-.c2 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  font-weight: 600;
-  line-height: 1.75rem;
-  font-size: 1.125rem;
-  margin-right: 2rem;
-  color: #262D33;
+.c5 svg {
+  pointer-events: none;
 }
 
 .c0 {
@@ -158,8 +160,8 @@ exports[`ModalHeader 1`] = `
   padding: 0;
   vertical-align: baseline;
   padding: 1.25rem;
-  padding-left: 2rem;
   padding-right: 2rem;
+  padding-left: 2rem;
 }
 
 <header
@@ -179,7 +181,10 @@ exports[`ModalHeader 1`] = `
       className="c3 c4 c5"
       color="neutral"
       onBlur={[Function]}
+      onFocus={[Function]}
       onKeyUp={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
       size="small"
       tabIndex={-1}
       width={26}

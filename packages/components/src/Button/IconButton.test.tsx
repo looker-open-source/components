@@ -27,10 +27,8 @@
 import 'jest-styled-components'
 import React from 'react'
 import noop from 'lodash/noop'
-import { theme } from '@looker/design-tokens'
-import { assertSnapshot } from '@looker/components-test-utils'
-import { ThemeProvider } from 'styled-components'
-import { render, fireEvent } from '@testing-library/react'
+import { assertSnapshot, renderWithTheme } from '@looker/components-test-utils'
+import { fireEvent } from '@testing-library/react'
 import { IconButton } from './IconButton'
 
 test('IconButton default', () => {
@@ -60,14 +58,12 @@ test('IconButton accepts events', () => {
   assertSnapshot(<IconButton label="Test" icon="Favorite" onClick={noop} />)
 })
 
-test('Button renders focus ring on tab input but not on click', () => {
-  const { getByTitle } = render(
-    <ThemeProvider theme={theme}>
-      <>
-        <IconButton label="Favorite" color="danger" icon="Favorite" />
-        <IconButton label="Trash" color="danger" icon="Trash" />
-      </>
-    </ThemeProvider>
+test('IconButton renders focus ring on tab input but not on click', () => {
+  const { getByTitle } = renderWithTheme(
+    <>
+      <IconButton label="Favorite" color="danger" icon="Favorite" />
+      <IconButton label="Trash" color="danger" icon="Trash" />
+    </>
   )
 
   fireEvent.click(getByTitle('Favorite'))
@@ -82,4 +78,29 @@ test('Button renders focus ring on tab input but not on click', () => {
 
   assertSnapshot(<IconButton label="Favorite" color="danger" icon="Favorite" />)
   assertSnapshot(<IconButton label="Trash" color="danger" icon="Trash" />)
+})
+
+test('IconButton has built-in tooltip', () => {
+  const label = 'Mark as my Favorite'
+  const { getByTitle, container } = renderWithTheme(
+    <IconButton label={label} icon="Favorite" />
+  )
+
+  const notTooltip = container.querySelector('p') // Get Tooltip content
+  expect(notTooltip).toBeNull()
+
+  fireEvent.mouseOver(getByTitle('Favorite'))
+  const tooltip = container.querySelector('p') // Get Tooltip content
+  expect(tooltip).toHaveTextContent(label)
+})
+
+test('IconButton tooltipDisabled actually disables tooltip', () => {
+  const label = 'Mark as my Favorite'
+  const { getByTitle, container } = renderWithTheme(
+    <IconButton tooltipDisabled label={label} icon="Favorite" />
+  )
+
+  fireEvent.mouseOver(getByTitle('Favorite'))
+  const notTooltip = container.querySelector('p') // Get Tooltip content
+  expect(notTooltip).toBeNull()
 })

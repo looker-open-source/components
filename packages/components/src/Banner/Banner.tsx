@@ -134,9 +134,8 @@ export const Banner = forwardRef(
             hoverStyle={{ background: 'none' }}
             icon="Close"
             size="small"
-            label="Dismiss"
+            label={`Dismiss ${intent}`}
             aria-hidden
-            color="neutral"
           />
         )}
       </Flex>
