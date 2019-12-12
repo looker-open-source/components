@@ -162,9 +162,9 @@ export const SelectInputInternal = forwardRef(function SelectInput(
     if (!isControlled) {
       handleValueChange(event.currentTarget.value)
     }
-    setTimeout(() => {
+    requestAnimationFrame(() => {
       isInputting.current = false
-    }, 0)
+    })
   }
 
   function handleFocus() {
