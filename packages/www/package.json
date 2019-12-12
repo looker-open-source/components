@@ -28,8 +28,7 @@
     "react-copy-to-clipboard": "^5.0.2",
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",
-    "react-live": "^2.2.2",
-    "use-throttle": "^0.0.3"
+    "react-live": "^2.2.2"
   },
   "devDependencies": {
     "@looker/components": "^0.7.6",
