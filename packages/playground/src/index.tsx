@@ -24,19 +24,17 @@ import { GlobalStyle } from '@looker/components'
 import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
 
-import { MenuDemo } from './Menu/MenuDemo'
-
 const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <>
         <GlobalStyle />
-        <MenuDemo />
       </>
     </ThemeProvider>
   )
 }
 
+// <MenuDemo />
 /**
  * This is the binding site for the playground. If you want to edit the
  * primary application, do your work in App.tsx instead.

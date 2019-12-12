@@ -5,98 +5,129 @@ propsOf: Avatar
 
 `Avatar` is most often used to identify individual users or groups. Lens offers three variations on it:
 
-- `AvatarUser` displays the profile image, if there is one available, or user's initials.
-- `AvatarIcon` displays an icon as the avatar, which can be selected with the icon prop.
-- `AvatarCombo` displayed AvatarUser or AvatarIcon and a badge connected to it.
+- `AvatarUser` displays the profile image, if there is one available, or the user's initials.
+- `AvatarIcon` displays an icon as the avatar, which can be selected with the icon prop, and has the `User` icon as default.
+- `AvatarCombo` displayed `AvatarUser` or `AvatarIcon` with secondary `AvatarIcon` connected to it.
 
 ## AvatarUser
 
+Takes a `User` object as specified by Looker's SDK and produces an `Avatar`. The minimum keys in object are `avatar_url`, `first_name` and `last_name`. If the user in question has a blank image (Gravatar's default if the user hasn't yet selected a profile picture) the user's initials will be used instead of the image.
+
 ```jsx
 ;() => {
-  const goodData = {
-    avatar_url:
-      'https://media.istockphoto.com/vectors/noisy-glitch-pixelated-seamless-pattern-vector-id1051777344',
-    first_name: 'John',
-    id: 1,
-    last_name: 'Smith',
+  const user = {
+    avatar_url: 'https://www.fillmurray.com/150/150',
+    first_name: 'Bill',
+    last_name: 'Murray',
   }
-  const noImage = {
-    avatar_url:
-      'https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank',
-    first_name: 'John',
-    id: 2,
-    last_name: 'Smith',
-  }
+
   return (
-    <>
-      <AvatarUser m="medium" user={goodData} />
-      <AvatarUser m="medium" user={noImage} />
-    </>
+    <Flex justifyContent="space-around" alignItems="center">
+      <AvatarUser user={user} size="xxsmall" />
+      <AvatarUser user={user} />
+      <AvatarUser user={{ ...user, avatar_url: null }} size="xxsmall" />
+      <AvatarUser user={{ ...user, avatar_url: null }} />
+    </Flex>
   )
 }
 ```
 
 ## AvatarIcon
 
+Has a default icon value of `User`. That value can be specified by setting the `icon` property.
+
 ```jsx
-<AvatarIcon m="medium" />
-<AvatarIcon m="medium" icon="Code" />
+<Flex justifyContent="space-around" alignItems="center">
+  <AvatarIcon />
+  <AvatarIcon icon="Code" />
+</Flex>
 ```
 
-- `size`: small || medium || large - large being the default.
-  - If you choose the small size for `AvatarUser`, it will only render the first initial.
-- `color`: default value is `#4F2ABA` but that can be changed by the `color` prop.
+### Size
+
+Both `AvatarIcon` and `AvatarUser` can have a specify a size. Possible values are `xxsmall`, `xsmall`, `small`, `medium` or `large` and `small` is the default value. If you specify `xxsmall` for `AvatarUser` will only display the first initial.
 
 ```jsx
 ;() => {
   const data = {
-    avatar_url:
-      'https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank',
-    first_name: 'John',
-    id: 3,
-    last_name: 'Smith',
+    avatar_url: 'https://www.fillmurray.com/150/150',
+    first_name: 'Bill',
+    last_name: 'Murray',
   }
   return (
-    <>
-      <AvatarIcon m="medium" size="small" />
-      <AvatarIcon m="medium" icon="LogoRings" color="#FF4500" size="medium" />
-      <AvatarIcon m="medium" icon="Code" color="#6495ED" />
-      <AvatarUser m="medium" color="#6495ED" user={data} />
-      <AvatarUser m="medium" color="#FF4500" user={data} size="medium" />
-      <AvatarUser m="medium" user={data} size="small" />
-    </>
+    <Flex justifyContent="space-around" alignItems="center">
+      <AvatarIcon size="xxsmall" />
+      <AvatarIcon size="xsmall" />
+      <AvatarIcon />
+      <AvatarIcon size="medium" />
+      <AvatarIcon size="large" />
+      <AvatarUser user={data} size="xxsmall" />
+      <AvatarUser user={data} size="xsmall" />
+      <AvatarUser user={data} />
+      <AvatarUser user={data} size="medium" />
+      <AvatarUser user={data} size="large" />
+    </Flex>
+  )
+}
+```
+
+### Color
+
+Avatars allow the developer to specify a color to use. Default Colors:
+
+- `AvatarIcon`: `palette.purple300`
+- `AvatarUser`: `palette.purple400`
+
+```jsx
+;() => {
+  const data = {
+    first_name: 'Bill',
+    last_name: 'Murray',
+  }
+  return (
+    <Flex justifyContent="space-around" alignItems="center">
+      <AvatarUser user={data} />
+      <AvatarIcon />
+      <AvatarUser color="palette.blue500" user={data} />
+      <AvatarIcon color="palette.blue400" />
+      <AvatarUser color="palette.green500" user={data} />
+      <AvatarIcon color="palette.green400" />
+      <AvatarIcon color="palette.white" bg="palette.green500" />
+    </Flex>
   )
 }
 ```
 
 ## AvatarCombo
 
-It's a combination of `AvatarUser` and `AvatarIcon`. Avatar provides three options to identify a user: a user profile image, user initials, or an SVG icon. If no data is passed as the user the Avatar Identity will be set to to `users` as on the `AvatarIcon` case. As for the badge on `AvatarCombo` the icon has no default value. So it has to be set when the Avatar is created.
+A combination of `AvatarUser` and `AvatarIcon`.
+
+- `secondaryIcon` - icon used for secondary avatar. Default: `User`
+- `secondaryColor` - color to use for secondary avatar border & icon. Default: `palette.purple400`
+- `secondaryBg` - color to use for secondary avatar background. Default: `palette.white`
 
 ```jsx
 ;() => {
   const data = {
-    avatar_url:
-      'https://media.istockphoto.com/vectors/noisy-glitch-pixelated-seamless-pattern-vector-id1051777344',
-    first_name: 'John',
-    id: 3,
-    last_name: 'Smith',
+    avatar_url: 'https://www.fillmurray.com/150/150',
+    first_name: 'Bill',
+    last_name: 'Murray',
   }
+  const noImageData = { ...data, avatar_url: null }
 
-  const noImageData = {
-    avatar_url:
-      'https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank',
-    first_name: 'John',
-    id: 2,
-    last_name: 'Smith',
-  }
   return (
-    <>
-      <AvatarCombo m="medium" user={data} badge="LogoRings" />
-      <AvatarCombo m="medium" user={noImageData} icon="Code" badge="Code" />
-      <AvatarCombo m="medium" color="#6495ED" badge="Beaker" />
-      <AvatarCombo m="medium" color="#FF4500" badge="Code" />
-    </>
+    <Flex justifyContent="space-around" alignItems="center">
+      <AvatarCombo />
+      <AvatarCombo user={noImageData} />
+      <AvatarCombo user={data} />
+      <AvatarCombo
+        user={noImageData}
+        color="palette.blue400"
+        secondaryBg="palette.purple500"
+        secondaryColor="palette.white"
+        secondaryIcon="User"
+      />
+    </Flex>
   )
 }
 ```

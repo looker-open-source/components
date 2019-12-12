@@ -20,51 +20,76 @@
 
 import React, { FC } from 'react'
 import { IconNames } from '@looker/icons'
-import { color, reset, space, layout } from '@looker/design-tokens'
 import styled from 'styled-components'
+import { variant } from 'styled-system'
 import { Icon } from '../Icon'
-import { AvatarProps } from './AvatarUser'
-import { AvatarBase } from './AvatarBase'
+import { avatarCSS, AvatarProps } from './Avatar'
 
 export interface AvatarIconProps extends AvatarProps {
+  /**
+   * @default User
+   */
   icon?: IconNames
+
+  /**
+   * @default 'palette.purple300'
+   */
+  color?: string
+
+  /**
+   * @default 'palette.white'
+   */
+  bg?: string
 }
+
+/* eslint-disable sort-keys */
+const size = variant({
+  prop: 'size',
+  variants: {
+    xxsmall: {
+      height: '16px',
+      width: '16px',
+    },
+    xsmall: {
+      height: '20px',
+      width: '20px',
+    },
+    small: {
+      height: '20px',
+      width: '20px',
+    },
+    medium: {
+      height: '30px',
+      width: '30px',
+    },
+    large: {
+      height: '36px',
+      width: '36px',
+    },
+  },
+})
 
 const AvatarLayout: FC<AvatarIconProps> = ({
+  className,
   color,
-  icon = 'Users',
-  size,
-  ...props
-}) => {
-  const iconSize = () => {
-    switch (size) {
-      case 'xsmall':
-        return 9
-      case 'small':
-        return 9.6
-      case 'medium':
-        return 12.8
-      default:
-        return 16
-    }
-  }
-
-  return (
-    <AvatarBase size={size} {...props}>
-      <Icon name={icon} size={iconSize()} color={color} />
-    </AvatarBase>
-  )
-}
+  icon = 'User',
+}) => (
+  <div className={className}>
+    <Icon name={icon} color={color} />
+  </div>
+)
 
 export const AvatarIcon = styled(AvatarLayout)`
-  ${reset}
-  ${color}
-  ${layout}
-  ${space}
+  ${avatarCSS}
   border: solid 1px currentColor;
+
+  ${Icon} {
+    ${size}
+  }
 `
 
 AvatarIcon.defaultProps = {
-  color: 'palette.purple500',
-  size: 'large',
+  bg: 'palette.white',
+  color: 'palette.purple300',
+  size: 'small',
 }

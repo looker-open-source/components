@@ -19,54 +19,67 @@
  */
 
 import React, { FC } from 'react'
-import { color, layout, reset, space } from '@looker/design-tokens'
 import styled from 'styled-components'
 import { IconNames } from '@looker/icons'
+import { Icon } from '../Icon'
 import { AvatarUser, AvatarUserProps } from './AvatarUser'
 import { AvatarIcon, AvatarIconProps } from './AvatarIcon'
 
 export interface AvatarComboProps
   extends Omit<AvatarIconProps & AvatarUserProps, 'size'> {
-  badge: IconNames
+  secondaryIcon: IconNames
+  /**
+   *  @default `palette.purple300`
+   **/
+  secondaryColor?: string
+  /**
+   *  @default `palette.purple300`
+   **/
+  secondaryBg?: string
 }
 
-const AvatarIconBadge = styled(AvatarIcon)`
-  bottom: -4px;
-  right: -4px;
-  position: absolute;
-`
+const AvatarIconSecondary = styled(AvatarIcon)``
 
 const AvatarLayout: FC<AvatarComboProps> = ({
-  badge,
+  secondaryIcon,
+  secondaryColor,
+  secondaryBg,
   color,
-  icon,
+  icon = 'User',
   user,
-  ...props
+  className,
 }) => {
   return (
-    <div {...props}>
+    <div className={className}>
       {user ? (
         <AvatarUser user={user} color={color} />
       ) : (
         <AvatarIcon color={color} icon={icon} />
       )}
-      <AvatarIconBadge size="xsmall" color={color} icon={badge} />
+      <AvatarIconSecondary
+        bg={secondaryBg}
+        color={secondaryColor}
+        icon={secondaryIcon}
+      />
     </div>
   )
 }
 
 export const AvatarCombo = styled(AvatarLayout)`
-  ${reset}
-
-  ${color}
-  ${layout}
-  ${space}
-
-  height: 40px;
   position: relative;
+  height: 40px;
   width: 40px;
-`
 
-AvatarUser.defaultProps = {
-  color: 'palette.purple500',
-}
+  ${AvatarIconSecondary} {
+    bottom: -4px;
+    right: -4px;
+    position: absolute;
+    height: 20px;
+    width: 20px;
+
+    ${Icon} {
+      height: 14px;
+      width: 14px;
+    }
+  }
+`
