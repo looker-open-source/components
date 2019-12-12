@@ -1,16 +1,19 @@
 ---
 title: Select
-figma: file/2MG6DoSjk4IaLnjjFCnKFf/Forms
+figma: file/2MG6DoSjk4IaLnjjFCnKFf/Forms?node-id=1095%3A0
 github: Form/Inputs/Select/Select
 propsOf: Select
 ---
 
 The `<Select />` component renders a single select element on the page, with no accompanying label. It is generally used to construct higher-order components like the `<FieldText />`. If you are building a form, you probably want to use `<FieldSelect />` instead as it provides label and validation support.
+By default `<Select />` is a combobox-type element, where the user can type in the field and also pick options from the menu via click or keyboard.
+The input can be customized using `inputProps` like `placeholder`, `disabled`, and `readOnly` (for when you want the element to behave more like a native select).
+
+For more customization, see [Composable Select](#composable-select) below.
 
 ```jsx
 <Flex justifyContent="space-between">
   <Select
-    openOnFocus
     options={[
       { data: 'cheddar', value: 'Cheddar' },
       { data: 'gouda', value: 'Gouda' },
@@ -18,149 +21,114 @@ The `<Select />` component renders a single select element on the page, with no 
     ]}
   />
   <Select
+    inputProps={{ placeholder: 'Placeholder Text' }}
     options={[
       { data: 'cheddar', value: 'Cheddar' },
       { data: 'gouda', value: 'Gouda' },
       { data: 'swiss', value: 'Swiss' },
     ]}
-    inputProps={{ value: 'Gouda' }}
   />
-  <Select placeholder="awesome!" />
   <Select
-    inputProps={{ value: "Some Value's Label" }}
+    inputProps={{ placeholder: 'Select one', readOnly: true }}
     options={[
       { data: '1', value: 'thing' },
-      { data: 'Some Value', value: "Some Value's Label" },
+      {
+        data: 'Data can be used for extra identifying info',
+        value: 'Value is rendered',
+      },
       { data: '2', value: 'other' },
     ]}
   />
 </Flex>
 ```
 
-## Option Groups
+## useControlledSelect
+
+Use the `useControlledSelect` hook to take control of your select's state.
 
 ```jsx
-<Select
-  options={[
-    {
-      key: 'Italian',
-      options: [
-        { data: 'asiago', value: 'Asiago' },
-        { data: 'ricotta', value: 'Ricotta' },
-        { data: 'grana', value: 'Grana' },
-      ],
-    },
-    {
-      key: 'American',
-      options: [
-        { data: 'american', value: 'American (not actually cheese)' },
-        { data: 'colby-jack', value: 'Colby-Jack' },
-        { data: 'swiss', value: 'Swiss' },
-        { data: 'vermont', value: 'Vermont' },
-      ],
-    },
-  ]}
-  value="american"
-/>
+;() => {
+  const selectControlProps = useControlledSelect('Cheddar')
+  return (
+    <Flex>
+      <FlexItem mr="medium">
+        <Select
+          {...selectControlProps}
+          options={[
+            { data: 'cheddar', value: 'Cheddar' },
+            { data: 'gouda', value: 'Gouda' },
+            { data: 'swiss', value: 'Swiss' },
+          ]}
+        />
+      </FlexItem>
+      <FlexItem>Current value: {selectControlProps.value}</FlexItem>
+    </Flex>
+  )
+}
 ```
 
-## Name and ID
+## Composable Select
 
-A name and ID can be specified in the `<Select />` component. Names are important if the input is used in the context of a form, in which case a name is required for the value of the input to be captured.
+For ultimate customization, build your `Select` with `SelectInput`, `SelectList` and `SelectOption` children.
 
-```jsx
-<Select
-  name="someName"
-  id="someId"
-  options={[
-    { data: 'cheddar', value: 'Cheddar' },
-    { data: 'gouda', value: 'Gouda' },
-    { data: 'swiss', value: 'Swiss' },
-  ]}
-/>
-```
-
-## Disabled Property
-
-Use the disable property to make an input field uneditable.
+(This example is borrowed from [Reach UI's Combobox](https://reacttraining.com/reach-ui/combobox/) where much of our `Select` code comes from.)
 
 ```jsx
-<Select
-  disabled
-  options={[
-    { data: 'cheddar', value: 'Cheddar' },
-    { data: 'gouda', value: 'Gouda' },
-    { data: 'swiss', value: 'Swiss' },
-  ]}
-/>
-<Select
-  value="gouda"
-  disabled
-  options={[
-    { data: 'cheddar', value: 'Cheddar' },
-    { data: 'gouda', value: 'Gouda' },
-    { data: 'swiss', value: 'Swiss' },
-  ]}
-  ml="large"
-/>
-```
+;() => {
+  function Example() {
+    const [term, setTerm] = useState('')
+    // useCityMatch for demo purposes only
+    const [results, debouncedTerm] = useCityMatch(term)
+    const handleChange = event => setTerm(event.target.value)
 
-## Placeholders & includeBlank
+    return (
+      <Box>
+        <Label>Lots of stuff going on</Label>
+        <Select width="50%">
+          <SelectInput
+            onChange={handleChange}
+            style={{ width: 300, margin: 0 }}
+          />
+          <SelectList>
+            {results && results.length > 0 ? (
+              <>
+                <Heading as="h4" mx="medium" fontWeight="bold">
+                  Top 3 results!
+                </Heading>
+                {results.slice(0, 3).map((result, index) => (
+                  <SelectOption
+                    key={index}
+                    value={`${result.city}, ${result.state}`}
+                  />
+                ))}
+                {results.length > 3 && (
+                  <>
+                    <Heading as="h4" mx="medium" fontWeight="bold">
+                      The rest
+                    </Heading>
+                    {results.slice(3, 10).map((result, index) => (
+                      <SelectOption
+                        key={index}
+                        value={`${result.city}, ${result.state}`}
+                      />
+                    ))}
+                  </>
+                )}
+              </>
+            ) : debouncedTerm.trim() === '' ? (
+              <Box textAlign="center">Start typing to search cities</Box>
+            ) : (
+              <Box textAlign="center">
+                <Paragraph mb="medium">No results 😞</Paragraph>
+                <Button>Create a new record "{debouncedTerm}"</Button>
+              </Box>
+            )}
+          </SelectList>
+        </Select>
+      </Box>
+    )
+  }
 
-Placeholders are used to give a hint to the user of the expected value for the input. They should not be used as a complete replacement of labels. The `includeBlank` property (default: true) includes an inital option without a value.
-
-```jsx
-<Select
-  placeholder="Select your cheese of choice..."
-  options={[
-    { data: 'cheddar', value: 'Cheddar' },
-    { data: 'gouda', value: 'Gouda' },
-    { data: 'swiss', value: 'Swiss' },
-  ]}
-/>
-<Select
-  includeBlank={false}
-  options={[
-    { data: 'cheddar', value: 'Cheddar' },
-    { data: 'gouda', value: 'Gouda' },
-    { data: 'swiss', value: 'Swiss' },
-  ]}
-  ml="large"
-/>
-```
-
-## ReadOnly Property
-
-As the name suggests, "readOnly" makes the text uneditable.
-
-```jsx
-<Select
-  value="gouda"
-  readOnly
-  options={[
-    { data: 'cheddar', value: 'Cheddar' },
-    { data: 'gouda', value: 'Gouda' },
-    { data: 'swiss', value: 'Swiss' },
-  ]}
-/>
-```
-
-## Required Property
-
-When set for `<Select />` in the context of a form, the input field must be filled out before submitting the form.
-
-```jsx
-<form>
-  <Select
-    required
-    options={[
-      { data: 'cheddar', value: 'Cheddar' },
-      { data: 'gouda', value: 'Gouda' },
-      { data: 'swiss', value: 'Swiss' },
-    ]}
-  />
-  <br />
-  <br />
-  <Button>Submit</Button>
-</form>
+  return <Example />
+}
 ```

@@ -109,7 +109,7 @@ export const SelectListInternal = forwardRef(function SelectList(
       ref={popoverRef}
       p="none"
     >
-      <ul {...props} ref={forwardedRef} role="listbox" />
+      <ul {...props} ref={forwardedRef} role="listbox" tabIndex={-1} />
     </PopoverContent>
   )
 
@@ -124,6 +124,8 @@ export const SelectListInternal = forwardRef(function SelectList(
     content,
     focusTrap: false,
     isOpen: isVisible,
+    pin: true,
+    placement: 'bottom',
     setOpen,
     triggerElement: inputElement,
     triggerToggle: false,

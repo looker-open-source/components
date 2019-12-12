@@ -87,6 +87,10 @@ import {
   PopoverContent,
   Radio,
   Select,
+  SelectInput,
+  SelectList,
+  SelectOption,
+  SelectOptionText,
   Slider,
   Spinner,
   Tab,
@@ -105,6 +109,7 @@ import {
   ToggleSwitch,
   Tooltip,
   useConfirm,
+  useControlledSelect,
   useTabs,
   useToggle,
   VisuallyHidden,
@@ -113,9 +118,13 @@ import { palette } from '@looker/design-tokens'
 
 import styled, { ThemeProvider } from 'styled-components'
 import { useState } from 'react'
+import { useCityMatch } from '../../Shared/cities'
 
 export const allComponents = {
   useState,
+
+  // For Select example
+  useCityMatch,
 
   styled,
   ThemeProvider,
@@ -183,6 +192,10 @@ export const allComponents = {
   PopoverContent,
   Radio,
   Select,
+  SelectInput,
+  SelectList,
+  SelectOption,
+  SelectOptionText,
   Slider,
   Spinner,
   Tab,
@@ -201,6 +214,7 @@ export const allComponents = {
   ToggleSwitch,
   Tooltip,
   useConfirm,
+  useControlledSelect,
   useTabs,
   useToggle,
   VisuallyHidden,

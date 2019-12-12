@@ -29,6 +29,8 @@
 
 import {
   CompatibleHTMLProps,
+  color,
+  ColorProps,
   flexbox,
   FlexboxProps,
   layout,
@@ -39,9 +41,10 @@ import {
   typography,
   TypographyProps,
 } from '@looker/design-tokens'
+import omit from 'lodash/omit'
 import React, { forwardRef, useEffect, useRef, useContext, Ref } from 'react'
 import styled from 'styled-components'
-import { useHighlightWords, useWrapEvent } from '../../../utils'
+import { useWrapEvent } from '../../../utils'
 import { Icon } from '../../../Icon'
 import { makeHash } from './helpers'
 import { OptionContext, SelectContext } from './SelectContext'
@@ -62,6 +65,7 @@ export interface SelectOptionObject {
 
 export interface SelectOptionProps
   extends SelectOptionObject,
+    ColorProps,
     FlexboxProps,
     LayoutProps,
     SpaceProps,
@@ -132,7 +136,7 @@ const SelectOptionInternal = forwardRef(function SelectOption(
   return (
     <OptionContext.Provider value={value}>
       <li
-        {...props}
+        {...omit(props, 'color')}
         ref={forwardedRef}
         id={String(makeHash(value))}
         role="option"
@@ -158,6 +162,7 @@ SelectOptionInternal.displayName = 'SelectOptionInternal'
 
 export const SelectOption = styled(SelectOptionInternal)`
   ${reset}
+  ${color}
   ${flexbox}
   ${layout}
   ${space}
@@ -170,7 +175,9 @@ export const SelectOption = styled(SelectOptionInternal)`
 `
 
 SelectOption.defaultProps = {
+  color: 'palette.charcoal700',
   display: 'flex',
+  fontSize: 'small',
   px: 'medium',
   py: 'xxsmall',
 }
@@ -183,40 +190,7 @@ export function SelectOptionTextInternal(
   props: CompatibleHTMLProps<HTMLSpanElement>
 ) {
   const value = useContext(OptionContext) || ''
-  const {
-    data: { option: contextOption },
-    readOnlyPropRef,
-  } = useContext(SelectContext)
-
-  const results = useHighlightWords({
-    searchText: contextOption && contextOption.value,
-    textToHighlight: value,
-  })
-  const noHighlight = readOnlyPropRef && readOnlyPropRef.current
-
-  return (
-    <>
-      {results.length && !noHighlight
-        ? results.map(({ start, end, highlight }, index) => {
-            const str = value.slice(start, end)
-            return (
-              <span
-                {...props}
-                key={index}
-                data-user-value={highlight ? true : undefined}
-                data-suggested-value={highlight ? undefined : true}
-              >
-                {str}
-              </span>
-            )
-          })
-        : value}
-    </>
-  )
+  return <span {...props}>{value}</span>
 }
 
-export const SelectOptionText = styled(SelectOptionTextInternal)`
-  &[data-user-value='true'] {
-    font-weight: bold;
-  }
-`
+export const SelectOptionText = styled(SelectOptionTextInternal)``
