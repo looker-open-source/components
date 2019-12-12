@@ -14,28 +14,22 @@ propsOf: Avatar
 Expects an object that is set to the `user` flag. This object should have: `avatar_url` to be the avatar image, or `first_name` and `last_name` as a secondary input.
 
 ```jsx
-;() => {
-  const goodData = {
-    avatar_url:
-      'https://media.istockphoto.com/vectors/noisy-glitch-pixelated-seamless-pattern-vector-id1051777344',
-    first_name: 'Paul',
-    id: 1,
-    last_name: 'Smith',
-  }
-  const noImage = {
-    avatar_url:
-      'https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank',
-    first_name: 'Paul',
-    id: 2,
-    last_name: 'Smith',
-  }
-  return (
-    <>
-      <AvatarUser m="medium" user={goodData} />
-      <AvatarUser m="medium" user={noImage} />
-    </>
-  )
-}
+<Flex justifyContent="space-around" alignItems="center">
+  <AvatarUser
+    user={{
+      avatar_url: 'https://www.fillmurray.com/150/150',
+      first_name: 'Paul',
+      last_name: 'Smith',
+    }}
+  />
+  <AvatarUser
+    user={{
+      avatar_url: null,
+      first_name: 'Paul',
+      last_name: 'Smith',
+    }}
+  />
+</Flex>
 ```
 
 ## AvatarIcon
@@ -43,8 +37,10 @@ Expects an object that is set to the `user` flag. This object should have: `avat
 Has a default icon value of `User`. That value can be changed by the use of the flag `icon`.
 
 ```jsx
-<AvatarIcon m="medium" />
-<AvatarIcon m="medium" icon="Code" />
+<Flex justifyContent="space-around" alignItems="center">
+  <AvatarIcon />
+  <AvatarIcon icon="Code" />
+</Flex>
 ```
 
 ### Avatar Options
@@ -61,18 +57,19 @@ Both `AvatarIcon` and `AvatarUser` can be styled for size abd color:
     avatar_url:
       'https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank',
     first_name: 'Paul',
-    id: 3,
     last_name: 'Smith',
   }
   return (
-    <>
-      <AvatarIcon m="medium" size="small" />
-      <AvatarIcon m="medium" icon="LogoRings" color="#FF4500" size="medium" />
-      <AvatarIcon m="medium" icon="Code" color="#6495ED" />
-      <AvatarUser m="medium" color="#6495ED" user={data} />
-      <AvatarUser m="medium" color="#FF4500" user={data} size="medium" />
-      <AvatarUser m="medium" user={data} size="small" />
-    </>
+    <Flex justifyContent="space-around" alignItems="center">
+      <AvatarIcon size="small" />
+      <AvatarIcon icon="Group" size="medium" />
+      <AvatarIcon icon="Code" />
+      <AvatarUser user={data} size="small" />
+      <AvatarUser user={data} size="medium" />
+      <AvatarUser user={data} />
+      <AvatarUser user={data} color="palette.blue500" />
+      <AvatarUser user={data} color="palette.green500" />
+    </Flex>
   )
 }
 ```
@@ -87,38 +84,24 @@ The badge has two flags:
 ```jsx
 ;() => {
   const data = {
-    avatar_url:
-      'https://media.istockphoto.com/vectors/noisy-glitch-pixelated-seamless-pattern-vector-id1051777344',
+    avatar_url: 'https://www.fillmurray.com/150/150',
     first_name: 'Paul',
-    id: 3,
     last_name: 'Smith',
   }
+  const noImageData = { ...data, avatar_url: null }
 
-  const noImageData = {
-    avatar_url:
-      'https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank',
-    first_name: 'Paul',
-    id: 2,
-    last_name: 'Smith',
-  }
   return (
-    <>
-      <AvatarCombo m="medium" user={data} badge="LogoRings" />
-      <AvatarCombo m="medium" user={noImageData} icon="Code" badgeIcon="Code" />
+    <Flex justifyContent="space-around" alignItems="center">
+      <AvatarCombo />
+      <AvatarCombo user={noImageData} />
+      <AvatarCombo user={data} />
       <AvatarCombo
-        m="medium"
-        color="#6495ED"
-        badgeIcon="Beaker"
-        badgeColor="#FF4500"
-      />
-      <AvatarCombo
-        m="medium"
         user={noImageData}
-        color="green"
-        badgeColor="lime"
-        badge="LogoRings"
+        color="palette.charcoal400"
+        badgeColor="palette.red500"
+        badgeIcon="LockClosed"
       />
-    </>
+    </Flex>
   )
 }
 ```
