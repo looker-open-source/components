@@ -26,28 +26,28 @@ import { AvatarUser } from './AvatarUser'
 
 /*  eslint-disable @typescript-eslint/camelcase */
 
-test('AvatarCombo renders Avatar and its badge', () => {
+test('AvatarCombo renders Avatar and its secondary avatar', () => {
   const data = {
     avatar_url:
       'https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank',
     first_name: 'John',
     last_name: 'Smith',
   }
-  assertSnapshot(<AvatarCombo badgeIcon="Code" user={data} />)
+  assertSnapshot(<AvatarCombo secondaryIcon="Code" user={data} />)
 })
 
-test('AvatarCombo renders Avatar initials and badge with Code icon', () => {
+test('AvatarCombo renders Avatar initials and secondary with Code icon', () => {
   const data = {
     avatar_url:
       'https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank',
     first_name: 'John',
     last_name: 'Smith',
   }
-  assertSnapshot(<AvatarCombo badgeIcon="Code" user={data} />)
+  assertSnapshot(<AvatarCombo secondaryIcon="Code" user={data} />)
 })
 
-test('AvatarCombo renders AvatarIcon and badge if user is not available and updates icon if passed.', () => {
-  assertSnapshot(<AvatarCombo badgeIcon="LogoRings" />)
+test('AvatarCombo renders AvatarIcon and secondary avatar if user is not available and updates icon if passed.', () => {
+  assertSnapshot(<AvatarCombo secondaryIcon="LogoRings" />)
 })
 
 test('AvatarIcon renders ', () => {

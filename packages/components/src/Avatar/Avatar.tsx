@@ -24,16 +24,13 @@ import {
   space,
   SpaceProps,
   typography,
-} from '@looker/design-tokens'
-import { css } from 'styled-components'
-
-import {
   SizeLarge,
   SizeMedium,
   SizeSmall,
   SizeXSmall,
   SizeXXSmall,
 } from '@looker/design-tokens'
+import { css } from 'styled-components'
 import { variant } from 'styled-system'
 
 export type AvatarSizes =
@@ -97,7 +94,6 @@ export const avatarCSS = css`
   ${size}
 
   align-items: center;
-  background-color: ${props => props.theme.colors.palette.white};
   border-radius: 100%;
   display: grid;
   justify-items: center;

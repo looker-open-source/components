@@ -21,28 +21,29 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
 import { IconNames } from '@looker/icons'
+import { Icon } from '../Icon'
 import { AvatarUser, AvatarUserProps } from './AvatarUser'
 import { AvatarIcon, AvatarIconProps } from './AvatarIcon'
-import { avatarCSS } from './Avatar'
 
 export interface AvatarComboProps
   extends Omit<AvatarIconProps & AvatarUserProps, 'size'> {
-  badgeIcon: IconNames
+  secondaryIcon: IconNames
   /**
    *  @default `palette.purple300`
    **/
-  badgeColor?: string
+  secondaryColor?: string
+  /**
+   *  @default `palette.purple300`
+   **/
+  secondaryBg?: string
 }
 
-const AvatarIconBadge = styled(AvatarIcon)`
-  bottom: -4px;
-  right: -4px;
-  position: absolute;
-`
+const AvatarIconSecondary = styled(AvatarIcon)``
 
 const AvatarLayout: FC<AvatarComboProps> = ({
-  badgeIcon,
-  badgeColor,
+  secondaryIcon,
+  secondaryColor,
+  secondaryBg,
   color,
   icon = 'User',
   user,
@@ -55,19 +56,30 @@ const AvatarLayout: FC<AvatarComboProps> = ({
       ) : (
         <AvatarIcon color={color} icon={icon} />
       )}
-      <AvatarIconBadge size="20px" color={badgeColor} icon={badgeIcon} />
+      <AvatarIconSecondary
+        bg={secondaryBg}
+        color={secondaryColor}
+        icon={secondaryIcon}
+      />
     </div>
   )
 }
 
 export const AvatarCombo = styled(AvatarLayout)`
-  ${avatarCSS}
-
   position: relative;
   height: 40px;
   width: 40px;
-`
 
-AvatarUser.defaultProps = {
-  color: 'palette.purple300',
-}
+  ${AvatarIconSecondary} {
+    bottom: -4px;
+    right: -4px;
+    position: absolute;
+    height: 20px;
+    width: 20px;
+
+    ${Icon} {
+      height: 14px;
+      width: 14px;
+    }
+  }
+`

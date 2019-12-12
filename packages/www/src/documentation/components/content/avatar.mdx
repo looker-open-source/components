@@ -7,7 +7,7 @@ propsOf: Avatar
 
 - `AvatarUser` displays the profile image, if there is one available, or the user's initials.
 - `AvatarIcon` displays an icon as the avatar, which can be selected with the icon prop, and has the `User` icon as default.
-- `AvatarCombo` displayed AvatarUser or AvatarIcon and a badge with an icon connected to it.
+- `AvatarCombo` displayed `AvatarUser` or `AvatarIcon` with secondary `AvatarIcon` connected to it.
 
 ## AvatarUser
 
@@ -17,8 +17,8 @@ Takes a `User` object as specified by Looker's SDK and produces an `Avatar`. The
 ;() => {
   const user = {
     avatar_url: 'https://www.fillmurray.com/150/150',
-    first_name: 'Paul',
-    last_name: 'Smith',
+    first_name: 'Bill',
+    last_name: 'Murray',
   }
 
   return (
@@ -50,10 +50,9 @@ Both `AvatarIcon` and `AvatarUser` can have a specify a size. Possible values ar
 ```jsx
 ;() => {
   const data = {
-    avatar_url:
-      'https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank',
-    first_name: 'Paul',
-    last_name: 'Smith',
+    avatar_url: 'https://www.fillmurray.com/150/150',
+    first_name: 'Bill',
+    last_name: 'Murray',
   }
   return (
     <Flex justifyContent="space-around" alignItems="center">
@@ -74,21 +73,26 @@ Both `AvatarIcon` and `AvatarUser` can have a specify a size. Possible values ar
 
 ### Color
 
-You can specify a specific color as well. Default value is `palette.purple400`
+Avatars allow the developer to specify a color to use. Default Colors:
+
+- `AvatarIcon`: `palette.purple300`
+- `AvatarUser`: `palette.purple400`
 
 ```jsx
 ;() => {
   const data = {
-    avatar_url:
-      'https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank',
-    first_name: 'Paul',
-    last_name: 'Smith',
+    first_name: 'Bill',
+    last_name: 'Murray',
   }
   return (
     <Flex justifyContent="space-around" alignItems="center">
       <AvatarUser user={data} />
-      <AvatarUser user={data} color="palette.blue500" />
-      <AvatarUser user={data} color="palette.green500" />
+      <AvatarIcon />
+      <AvatarUser color="palette.blue500" user={data} />
+      <AvatarIcon color="palette.blue400" />
+      <AvatarUser color="palette.green500" user={data} />
+      <AvatarIcon color="palette.green400" />
+      <AvatarIcon color="palette.white" bg="palette.green500" />
     </Flex>
   )
 }
@@ -96,17 +100,18 @@ You can specify a specific color as well. Default value is `palette.purple400`
 
 ## AvatarCombo
 
-It's a combination of `AvatarUser` and `AvatarIcon`. Avatar provides three options to identify a user: a user profile image, user initials, or an SVG icon. If no data is passed as the user the Avatar Identity will be set to to `users` as on the `AvatarIcon` case.
-The badge has two properties:
-`badgeIcon` defines the icon to be placed as badge. The default value here is `User`,
-`badgeColor` defined the color to be placed on badge. The default value here is `palette.purple400`.
+A combination of `AvatarUser` and `AvatarIcon`.
+
+- `secondaryIcon` - icon used for secondary avatar. Default: `User`
+- `secondaryColor` - color to use for secondary avatar border & icon. Default: `palette.purple400`
+- `secondaryBg` - color to use for secondary avatar background. Default: `palette.white`
 
 ```jsx
 ;() => {
   const data = {
     avatar_url: 'https://www.fillmurray.com/150/150',
-    first_name: 'Paul',
-    last_name: 'Smith',
+    first_name: 'Bill',
+    last_name: 'Murray',
   }
   const noImageData = { ...data, avatar_url: null }
 
@@ -117,9 +122,10 @@ The badge has two properties:
       <AvatarCombo user={data} />
       <AvatarCombo
         user={noImageData}
-        color="palette.charcoal400"
-        badgeColor="palette.red500"
-        badgeIcon="LockClosed"
+        color="palette.blue400"
+        secondaryBg="palette.purple500"
+        secondaryColor="palette.white"
+        secondaryIcon="User"
       />
     </Flex>
   )

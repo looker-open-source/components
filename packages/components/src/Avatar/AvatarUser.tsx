@@ -75,7 +75,6 @@ export const AvatarUser = styled(AvatarLayout).attrs(props => ({
   ${avatarCSS}
 
   background: currentColor;
-  border: solid 1px currentColor;
   position: relative;
 `
 
