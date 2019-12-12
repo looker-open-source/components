@@ -1,6 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AvatarCombo renders Avatar and its badge 1`] = `
+.c3 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.c2 {
+  color: #FFFFFF;
+}
+
 .c1 {
   border: 0;
   box-sizing: border-box;
@@ -9,13 +23,10 @@ exports[`AvatarCombo renders Avatar and its badge 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  color: #9785F2;
   font-size: 0.875rem;
-  line-height: 1;
   height: 40px;
   width: 40px;
-  background-color: #9785F2;
-  width: large;
-  height: large;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -25,7 +36,9 @@ exports[`AvatarCombo renders Avatar and its badge 1`] = `
   display: grid;
   justify-items: center;
   overflow: hidden;
-  grid-template-areas: 'avatar';
+  background: currentColor;
+  border: solid 1px currentColor;
+  position: relative;
 }
 
 .c5 {
@@ -36,63 +49,9 @@ exports[`AvatarCombo renders Avatar and its badge 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  font-size: 0.75rem;
-  line-height: 1;
-  height: 20px;
-  width: 20px;
-  width: xsmall;
-  height: xsmall;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  background-color: #FFFFFF;
-  border-radius: 100%;
-  display: grid;
-  justify-items: center;
-  overflow: hidden;
-  grid-template-areas: 'avatar';
-}
-
-.c4 {
-  width: 100%;
-  height: 100%;
-  grid-area: avatar;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-}
-
-.c3 {
-  grid-area: avatar;
-  color: #FFFFFF;
-}
-
-.c2 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   color: #9785F2;
-  background-color: #9785F2;
-  border: solid 1px currentColor;
-}
-
-.c7 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  color: #9785F2;
-  width: 14px;
-  height: 14px;
+  width: calc(50% + 5px);
+  height: calc(50% + 5px);
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -103,7 +62,7 @@ exports[`AvatarCombo renders Avatar and its badge 1`] = `
   display: inline-flex;
 }
 
-.c6 {
+.c4 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -111,13 +70,16 @@ exports[`AvatarCombo renders Avatar and its badge 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  font-size: 0.75rem;
-  line-height: 1;
-  height: 20px;
-  width: 20px;
   color: #9785F2;
-  width: xsmall;
-  height: xsmall;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #FFFFFF;
+  border-radius: 100%;
+  display: grid;
+  justify-items: center;
+  overflow: hidden;
   border: solid 1px currentColor;
   bottom: -4px;
   right: -4px;
@@ -132,8 +94,17 @@ exports[`AvatarCombo renders Avatar and its badge 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  height: 40px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #FFFFFF;
+  border-radius: 100%;
+  display: grid;
+  justify-items: center;
+  overflow: hidden;
   position: relative;
+  height: 40px;
   width: 40px;
 }
 
@@ -141,29 +112,27 @@ exports[`AvatarCombo renders Avatar and its badge 1`] = `
   className="c0"
 >
   <div
-    className="c1 c2"
-    size="large"
+    className="c1"
   >
     <div
-      className="c3"
+      className="c2"
       color="palette.purple300"
     >
       JS
     </div>
     <img
-      className="c4"
+      className="c3"
       color="palette.purple300"
       src="https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank"
     />
   </div>
   <div
-    className="c5 c6"
-    size="xsmall"
+    className="c4"
   >
     <div
-      className="c7 "
+      className="c5 "
       color="palette.purple300"
-      size={14}
+      size="calc(50% + 5px)"
     >
       <svg
         fill="currentColor"
@@ -185,6 +154,20 @@ exports[`AvatarCombo renders Avatar and its badge 1`] = `
 `;
 
 exports[`AvatarCombo renders Avatar initials and badge with Code icon 1`] = `
+.c3 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.c2 {
+  color: #FFFFFF;
+}
+
 .c1 {
   border: 0;
   box-sizing: border-box;
@@ -193,13 +176,10 @@ exports[`AvatarCombo renders Avatar initials and badge with Code icon 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  color: #9785F2;
   font-size: 0.875rem;
-  line-height: 1;
   height: 40px;
   width: 40px;
-  background-color: #9785F2;
-  width: large;
-  height: large;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -209,7 +189,9 @@ exports[`AvatarCombo renders Avatar initials and badge with Code icon 1`] = `
   display: grid;
   justify-items: center;
   overflow: hidden;
-  grid-template-areas: 'avatar';
+  background: currentColor;
+  border: solid 1px currentColor;
+  position: relative;
 }
 
 .c5 {
@@ -220,63 +202,9 @@ exports[`AvatarCombo renders Avatar initials and badge with Code icon 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  font-size: 0.75rem;
-  line-height: 1;
-  height: 20px;
-  width: 20px;
-  width: xsmall;
-  height: xsmall;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  background-color: #FFFFFF;
-  border-radius: 100%;
-  display: grid;
-  justify-items: center;
-  overflow: hidden;
-  grid-template-areas: 'avatar';
-}
-
-.c4 {
-  width: 100%;
-  height: 100%;
-  grid-area: avatar;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-}
-
-.c3 {
-  grid-area: avatar;
-  color: #FFFFFF;
-}
-
-.c2 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   color: #9785F2;
-  background-color: #9785F2;
-  border: solid 1px currentColor;
-}
-
-.c7 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  color: #9785F2;
-  width: 14px;
-  height: 14px;
+  width: calc(50% + 5px);
+  height: calc(50% + 5px);
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -287,7 +215,7 @@ exports[`AvatarCombo renders Avatar initials and badge with Code icon 1`] = `
   display: inline-flex;
 }
 
-.c6 {
+.c4 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -295,13 +223,16 @@ exports[`AvatarCombo renders Avatar initials and badge with Code icon 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  font-size: 0.75rem;
-  line-height: 1;
-  height: 20px;
-  width: 20px;
   color: #9785F2;
-  width: xsmall;
-  height: xsmall;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #FFFFFF;
+  border-radius: 100%;
+  display: grid;
+  justify-items: center;
+  overflow: hidden;
   border: solid 1px currentColor;
   bottom: -4px;
   right: -4px;
@@ -316,8 +247,17 @@ exports[`AvatarCombo renders Avatar initials and badge with Code icon 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  height: 40px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #FFFFFF;
+  border-radius: 100%;
+  display: grid;
+  justify-items: center;
+  overflow: hidden;
   position: relative;
+  height: 40px;
   width: 40px;
 }
 
@@ -325,29 +265,27 @@ exports[`AvatarCombo renders Avatar initials and badge with Code icon 1`] = `
   className="c0"
 >
   <div
-    className="c1 c2"
-    size="large"
+    className="c1"
   >
     <div
-      className="c3"
+      className="c2"
       color="palette.purple300"
     >
       JS
     </div>
     <img
-      className="c4"
+      className="c3"
       color="palette.purple300"
       src="https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank"
     />
   </div>
   <div
-    className="c5 c6"
-    size="xsmall"
+    className="c4"
   >
     <div
-      className="c7 "
+      className="c5 "
       color="palette.purple300"
-      size={14}
+      size="calc(50% + 5px)"
     >
       <svg
         fill="currentColor"
@@ -369,7 +307,7 @@ exports[`AvatarCombo renders Avatar initials and badge with Code icon 1`] = `
 `;
 
 exports[`AvatarCombo renders AvatarIcon and badge if user is not available and updates icon if passed. 1`] = `
-.c4 {
+.c2 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -377,22 +315,17 @@ exports[`AvatarCombo renders AvatarIcon and badge if user is not available and u
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  font-size: 0.75rem;
-  line-height: 1;
-  height: 20px;
-  width: 20px;
-  width: xsmall;
-  height: xsmall;
+  color: #9785F2;
+  width: calc(50% + 5px);
+  height: calc(50% + 5px);
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  background-color: #FFFFFF;
-  border-radius: 100%;
-  display: grid;
-  justify-items: center;
-  overflow: hidden;
-  grid-template-areas: 'avatar';
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
 }
 
 .c1 {
@@ -403,12 +336,10 @@ exports[`AvatarCombo renders AvatarIcon and badge if user is not available and u
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  color: #9785F2;
   font-size: 0.875rem;
-  line-height: 1;
   height: 40px;
   width: 40px;
-  width: large;
-  height: large;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -418,28 +349,7 @@ exports[`AvatarCombo renders AvatarIcon and badge if user is not available and u
   display: grid;
   justify-items: center;
   overflow: hidden;
-  grid-template-areas: 'avatar';
-}
-
-.c6 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  color: #9785F2;
-  width: 14px;
-  height: 14px;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
+  border: solid 1px currentColor;
 }
 
 .c3 {
@@ -451,51 +361,15 @@ exports[`AvatarCombo renders AvatarIcon and badge if user is not available and u
   padding: 0;
   vertical-align: baseline;
   color: #9785F2;
-  width: 20px;
-  height: 20px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-}
-
-.c2 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  font-size: 0.875rem;
-  line-height: 1;
-  height: 40px;
-  width: 40px;
-  color: #9785F2;
-  width: large;
-  height: large;
-  border: solid 1px currentColor;
-}
-
-.c5 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  font-size: 0.75rem;
-  line-height: 1;
-  height: 20px;
-  width: 20px;
-  color: #9785F2;
-  width: xsmall;
-  height: xsmall;
+  background-color: #FFFFFF;
+  border-radius: 100%;
+  display: grid;
+  justify-items: center;
+  overflow: hidden;
   border: solid 1px currentColor;
   bottom: -4px;
   right: -4px;
@@ -510,8 +384,17 @@ exports[`AvatarCombo renders AvatarIcon and badge if user is not available and u
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  height: 40px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #FFFFFF;
+  border-radius: 100%;
+  display: grid;
+  justify-items: center;
+  overflow: hidden;
   position: relative;
+  height: 40px;
   width: 40px;
 }
 
@@ -519,13 +402,12 @@ exports[`AvatarCombo renders AvatarIcon and badge if user is not available and u
   className="c0"
 >
   <div
-    className="c1 c2"
-    size="large"
+    className="c1"
   >
     <div
-      className="c3 "
+      className="c2 "
       color="palette.purple300"
-      size={20}
+      size="calc(50% + 5px)"
     >
       <svg
         fill="currentColor"
@@ -544,13 +426,12 @@ exports[`AvatarCombo renders AvatarIcon and badge if user is not available and u
     </div>
   </div>
   <div
-    className="c4 c5"
-    size="xsmall"
+    className="c3"
   >
     <div
-      className="c6 "
+      className="c2 "
       color="palette.purple300"
-      size={14}
+      size="calc(50% + 5px)"
     >
       <svg
         fill="currentColor"
@@ -593,33 +474,7 @@ exports[`AvatarCombo renders AvatarIcon and badge if user is not available and u
 `;
 
 exports[`AvatarIcon renders  1`] = `
-.c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  font-size: 0.875rem;
-  line-height: 1;
-  height: 40px;
-  width: 40px;
-  width: large;
-  height: large;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  background-color: #FFFFFF;
-  border-radius: 100%;
-  display: grid;
-  justify-items: center;
-  overflow: hidden;
-  grid-template-areas: 'avatar';
-}
-
-.c2 {
+.c1 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -628,8 +483,8 @@ exports[`AvatarIcon renders  1`] = `
   padding: 0;
   vertical-align: baseline;
   color: #9785F2;
-  width: 20px;
-  height: 20px;
+  width: calc(50% + 5px);
+  height: calc(50% + 5px);
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -640,7 +495,7 @@ exports[`AvatarIcon renders  1`] = `
   display: inline-flex;
 }
 
-.c1 {
+.c0 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -648,24 +503,29 @@ exports[`AvatarIcon renders  1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  color: #9785F2;
   font-size: 0.875rem;
-  line-height: 1;
   height: 40px;
   width: 40px;
-  color: #9785F2;
-  width: large;
-  height: large;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #FFFFFF;
+  border-radius: 100%;
+  display: grid;
+  justify-items: center;
+  overflow: hidden;
   border: solid 1px currentColor;
 }
 
 <div
-  className="c0 c1"
-  size="large"
+  className="c0"
 >
   <div
-    className="c2 "
+    className="c1 "
     color="palette.purple300"
-    size={20}
+    size="calc(50% + 5px)"
   >
     <svg
       fill="currentColor"
@@ -686,33 +546,7 @@ exports[`AvatarIcon renders  1`] = `
 `;
 
 exports[`AvatarIcon renders different icon if specified 1`] = `
-.c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  font-size: 0.875rem;
-  line-height: 1;
-  height: 40px;
-  width: 40px;
-  width: large;
-  height: large;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  background-color: #FFFFFF;
-  border-radius: 100%;
-  display: grid;
-  justify-items: center;
-  overflow: hidden;
-  grid-template-areas: 'avatar';
-}
-
-.c2 {
+.c1 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -721,8 +555,8 @@ exports[`AvatarIcon renders different icon if specified 1`] = `
   padding: 0;
   vertical-align: baseline;
   color: #9785F2;
-  width: 20px;
-  height: 20px;
+  width: calc(50% + 5px);
+  height: calc(50% + 5px);
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -733,7 +567,7 @@ exports[`AvatarIcon renders different icon if specified 1`] = `
   display: inline-flex;
 }
 
-.c1 {
+.c0 {
   border: 0;
   box-sizing: border-box;
   font: inherit;
@@ -741,24 +575,29 @@ exports[`AvatarIcon renders different icon if specified 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  color: #9785F2;
   font-size: 0.875rem;
-  line-height: 1;
   height: 40px;
   width: 40px;
-  color: #9785F2;
-  width: large;
-  height: large;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #FFFFFF;
+  border-radius: 100%;
+  display: grid;
+  justify-items: center;
+  overflow: hidden;
   border: solid 1px currentColor;
 }
 
 <div
-  className="c0 c1"
-  size="large"
+  className="c0"
 >
   <div
-    className="c2 "
+    className="c1 "
     color="palette.purple300"
-    size={20}
+    size="calc(50% + 5px)"
   >
     <svg
       fill="currentColor"
@@ -779,6 +618,20 @@ exports[`AvatarIcon renders different icon if specified 1`] = `
 `;
 
 exports[`AvatarUser shows initials if has broken url as avatar_url 1`] = `
+.c2 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.c1 {
+  color: #FFFFFF;
+}
+
 .c0 {
   border: 0;
   box-sizing: border-box;
@@ -787,13 +640,10 @@ exports[`AvatarUser shows initials if has broken url as avatar_url 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  color: #9785F2;
   font-size: 0.875rem;
-  line-height: 1;
   height: 40px;
   width: 40px;
-  background-color: #9785F2;
-  width: large;
-  height: large;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -803,49 +653,22 @@ exports[`AvatarUser shows initials if has broken url as avatar_url 1`] = `
   display: grid;
   justify-items: center;
   overflow: hidden;
-  grid-template-areas: 'avatar';
-}
-
-.c3 {
-  width: 100%;
-  height: 100%;
-  grid-area: avatar;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-}
-
-.c2 {
-  grid-area: avatar;
-  color: #FFFFFF;
-}
-
-.c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  color: #9785F2;
-  background-color: #9785F2;
+  background: currentColor;
   border: solid 1px currentColor;
+  position: relative;
 }
 
 <div
-  className="c0 c1"
-  size="large"
+  className="c0"
 >
   <div
-    className="c2"
+    className="c1"
     color="palette.purple300"
   >
     JS
   </div>
   <img
-    className="c3"
+    className="c2"
     color="palette.purple300"
     src="https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank"
   />
@@ -853,6 +676,10 @@ exports[`AvatarUser shows initials if has broken url as avatar_url 1`] = `
 `;
 
 exports[`AvatarUser shows initials if it has null as avatar_url  1`] = `
+.c1 {
+  color: #FFFFFF;
+}
+
 .c0 {
   border: 0;
   box-sizing: border-box;
@@ -861,13 +688,10 @@ exports[`AvatarUser shows initials if it has null as avatar_url  1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  color: #9785F2;
   font-size: 0.875rem;
-  line-height: 1;
   height: 40px;
   width: 40px;
-  background-color: #9785F2;
-  width: large;
-  height: large;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -877,33 +701,16 @@ exports[`AvatarUser shows initials if it has null as avatar_url  1`] = `
   display: grid;
   justify-items: center;
   overflow: hidden;
-  grid-template-areas: 'avatar';
-}
-
-.c2 {
-  grid-area: avatar;
-  color: #FFFFFF;
-}
-
-.c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  color: #9785F2;
-  background-color: #9785F2;
+  background: currentColor;
   border: solid 1px currentColor;
+  position: relative;
 }
 
 <div
-  className="c0 c1"
-  size="large"
+  className="c0"
 >
   <div
-    className="c2"
+    className="c1"
     color="palette.purple300"
   >
     JS
@@ -912,6 +719,20 @@ exports[`AvatarUser shows initials if it has null as avatar_url  1`] = `
 `;
 
 exports[`AvatarUser shows user profile picture if it has good avatar_url  1`] = `
+.c2 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.c1 {
+  color: #FFFFFF;
+}
+
 .c0 {
   border: 0;
   box-sizing: border-box;
@@ -920,13 +741,10 @@ exports[`AvatarUser shows user profile picture if it has good avatar_url  1`] = 
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  color: #9785F2;
   font-size: 0.875rem;
-  line-height: 1;
   height: 40px;
   width: 40px;
-  background-color: #9785F2;
-  width: large;
-  height: large;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -936,49 +754,22 @@ exports[`AvatarUser shows user profile picture if it has good avatar_url  1`] = 
   display: grid;
   justify-items: center;
   overflow: hidden;
-  grid-template-areas: 'avatar';
-}
-
-.c3 {
-  width: 100%;
-  height: 100%;
-  grid-area: avatar;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-}
-
-.c2 {
-  grid-area: avatar;
-  color: #FFFFFF;
-}
-
-.c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  color: #9785F2;
-  background-color: #9785F2;
+  background: currentColor;
   border: solid 1px currentColor;
+  position: relative;
 }
 
 <div
-  className="c0 c1"
-  size="large"
+  className="c0"
 >
   <div
-    className="c2"
+    className="c1"
     color="palette.purple300"
   >
     JS
   </div>
   <img
-    className="c3"
+    className="c2"
     color="palette.purple300"
     src="https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank"
   />

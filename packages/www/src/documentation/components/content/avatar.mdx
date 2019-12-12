@@ -11,30 +11,30 @@ propsOf: Avatar
 
 ## AvatarUser
 
-Expects an object that is set to the `user` flag. This object should have: `avatar_url` to be the avatar image, or `first_name` and `last_name` as a secondary input.
+Takes a `User` object as specified by Looker's SDK and produces an `Avatar`. The minimum keys in object are `avatar_url`, `first_name` and `last_name`. If the user in question has a blank image (Gravatar's default if the user hasn't yet selected a profile picture) the user's initials will be used instead of the image.
 
 ```jsx
-<Flex justifyContent="space-around" alignItems="center">
-  <AvatarUser
-    user={{
-      avatar_url: 'https://www.fillmurray.com/150/150',
-      first_name: 'Paul',
-      last_name: 'Smith',
-    }}
-  />
-  <AvatarUser
-    user={{
-      avatar_url: null,
-      first_name: 'Paul',
-      last_name: 'Smith',
-    }}
-  />
-</Flex>
+;() => {
+  const user = {
+    avatar_url: 'https://www.fillmurray.com/150/150',
+    first_name: 'Paul',
+    last_name: 'Smith',
+  }
+
+  return (
+    <Flex justifyContent="space-around" alignItems="center">
+      <AvatarUser user={user} size="xxsmall" />
+      <AvatarUser user={user} />
+      <AvatarUser user={{ ...user, avatar_url: null }} size="xxsmall" />
+      <AvatarUser user={{ ...user, avatar_url: null }} />
+    </Flex>
+  )
+}
 ```
 
 ## AvatarIcon
 
-Has a default icon value of `User`. That value can be changed by the use of the flag `icon`.
+Has a default icon value of `User`. That value can be specified by setting the `icon` property.
 
 ```jsx
 <Flex justifyContent="space-around" alignItems="center">
@@ -43,13 +43,9 @@ Has a default icon value of `User`. That value can be changed by the use of the 
 </Flex>
 ```
 
-### Avatar Options
+### Size
 
-Both `AvatarIcon` and `AvatarUser` can be styled for size abd color:
-
-- flag `size`: default value `large`. That can be update to small, medium, large.
-  If you choose the small size for `AvatarUser`, it will only render the first initial.
-- flag `color`: default value is `#9785F2`. That can be updated using the flag color.
+Both `AvatarIcon` and `AvatarUser` can have a specify a size. Possible values are `xxsmall`, `xsmall`, `small`, `medium` or `large` and `small` is the default value. If you specify `xxsmall` for `AvatarUser` will only display the first initial.
 
 ```jsx
 ;() => {
@@ -61,11 +57,35 @@ Both `AvatarIcon` and `AvatarUser` can be styled for size abd color:
   }
   return (
     <Flex justifyContent="space-around" alignItems="center">
-      <AvatarIcon size="small" />
-      <AvatarIcon icon="Group" size="medium" />
-      <AvatarIcon icon="Code" />
-      <AvatarUser user={data} size="small" />
+      <AvatarIcon size="xxsmall" />
+      <AvatarIcon size="xsmall" />
+      <AvatarIcon />
+      <AvatarIcon size="medium" />
+      <AvatarIcon size="large" />
+      <AvatarUser user={data} size="xxsmall" />
+      <AvatarUser user={data} size="xsmall" />
+      <AvatarUser user={data} />
       <AvatarUser user={data} size="medium" />
+      <AvatarUser user={data} size="large" />
+    </Flex>
+  )
+}
+```
+
+### Color
+
+You can specify a specific color as well. Default value is `palette.purple400`
+
+```jsx
+;() => {
+  const data = {
+    avatar_url:
+      'https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank',
+    first_name: 'Paul',
+    last_name: 'Smith',
+  }
+  return (
+    <Flex justifyContent="space-around" alignItems="center">
       <AvatarUser user={data} />
       <AvatarUser user={data} color="palette.blue500" />
       <AvatarUser user={data} color="palette.green500" />
@@ -77,9 +97,9 @@ Both `AvatarIcon` and `AvatarUser` can be styled for size abd color:
 ## AvatarCombo
 
 It's a combination of `AvatarUser` and `AvatarIcon`. Avatar provides three options to identify a user: a user profile image, user initials, or an SVG icon. If no data is passed as the user the Avatar Identity will be set to to `users` as on the `AvatarIcon` case.
-The badge has two flags:
+The badge has two properties:
 `badgeIcon` defines the icon to be placed as badge. The default value here is `User`,
-`badgeColor` defined the color to be placed on badge. The default value here is `#9785F2`.
+`badgeColor` defined the color to be placed on badge. The default value here is `palette.purple400`.
 
 ```jsx
 ;() => {

@@ -31,7 +31,6 @@ test('AvatarCombo renders Avatar and its badge', () => {
     avatar_url:
       'https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank',
     first_name: 'John',
-    id: 1,
     last_name: 'Smith',
   }
   assertSnapshot(<AvatarCombo badgeIcon="Code" user={data} />)
@@ -42,7 +41,6 @@ test('AvatarCombo renders Avatar initials and badge with Code icon', () => {
     avatar_url:
       'https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank',
     first_name: 'John',
-    id: 1,
     last_name: 'Smith',
   }
   assertSnapshot(<AvatarCombo badgeIcon="Code" user={data} />)
@@ -65,7 +63,6 @@ test('AvatarUser shows user profile picture if it has good avatar_url ', () => {
     avatar_url:
       'https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank',
     first_name: 'John',
-    id: 1,
     last_name: 'Smith',
   }
 
@@ -77,7 +74,6 @@ test('AvatarUser shows initials if has broken url as avatar_url', () => {
     avatar_url:
       'https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank',
     first_name: 'John',
-    id: 2,
     last_name: 'Smith',
   }
 
@@ -88,7 +84,6 @@ test('AvatarUser shows initials if it has null as avatar_url ', () => {
   const data = {
     avatar_url: null,
     first_name: 'John',
-    id: 1,
     last_name: 'Smith',
   }
 

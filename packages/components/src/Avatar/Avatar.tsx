@@ -22,23 +22,79 @@ import {
   color,
   reset,
   space,
-  layout,
   SpaceProps,
   typography,
 } from '@looker/design-tokens'
-import styled from 'styled-components'
-import { avatarSize, AvatarSizeProps } from './size'
+import { css } from 'styled-components'
 
-export interface AvatarBaseProps extends AvatarSizeProps, SpaceProps {}
+import {
+  SizeLarge,
+  SizeMedium,
+  SizeSmall,
+  SizeXSmall,
+  SizeXXSmall,
+} from '@looker/design-tokens'
+import { variant } from 'styled-system'
 
-export const AvatarBase = styled.div<AvatarBaseProps>`
+export type AvatarSizes =
+  | SizeXXSmall
+  | SizeXSmall
+  | SizeSmall
+  | SizeMedium
+  | SizeLarge
+
+export interface AvatarProps extends SpaceProps {
+  className?: string
+  /**
+   *  @default `palette.purple400`
+   **/
+  color?: string
+  /**
+   * Defines the size of the Avatar
+   * @default "small"
+   */
+  size?: AvatarSizes | string
+}
+
+/* eslint-disable sort-keys */
+const size = variant({
+  prop: 'size',
+  variants: {
+    xxsmall: {
+      fontSize: 'xsmall',
+      height: '24px',
+      width: '24px',
+    },
+    xsmall: {
+      fontSize: 'xsmall',
+      height: '32px',
+      width: '32px',
+    },
+    small: {
+      fontSize: 'small',
+      height: '40px',
+      width: '40px',
+    },
+    medium: {
+      fontSize: 'medium',
+      height: '54px',
+      width: '54px',
+    },
+    large: {
+      fontSize: 'large',
+      height: '60px',
+      width: '60px',
+    },
+  },
+})
+
+export const avatarCSS = css`
   ${reset}
 
-  ${avatarSize}
   ${color}
-  ${layout}
   ${space}
   ${typography}
+  ${size}
 
   align-items: center;
   background-color: ${props => props.theme.colors.palette.white};
@@ -46,8 +102,4 @@ export const AvatarBase = styled.div<AvatarBaseProps>`
   display: grid;
   justify-items: center;
   overflow: hidden;
-  grid-template-areas: 'avatar';
 `
-AvatarBase.defaultProps = {
-  size: 'large',
-}
