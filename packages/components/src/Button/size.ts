@@ -65,7 +65,6 @@ export const buttonSize = variant({
   variants: {
     xxsmall: {
       fontSize: 'xsmall',
-      lineHeight: '8px',
       height: '16px',
       px: 'xxsmall',
     },

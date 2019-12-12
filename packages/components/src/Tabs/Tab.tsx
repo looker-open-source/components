@@ -150,64 +150,6 @@ const TabJSX = forwardRef((props: TabProps, ref: Ref<HTMLButtonElement>) => {
 TabJSX.displayName = 'TabJSX'
 
 export const Tab = styled(TabJSX)``
-/*
-<TabProps>`
-  ${reset}
-
-  ${border}
-  ${layout}
-  ${space}
-  ${typography}
-
-  background: transparent;
-  border-bottom: 3px solid;
-  border-bottom-color: ${props =>
-    props.selected ? props.theme.colors.palette.purple400 : 'transparent'};
-  border-radius: 0;
-  color: ${props =>
-    props.selected
-      ? props.theme.colors.palette.charcoal800
-      : props.theme.colors.palette.charcoal500};
-  cursor: pointer;
-
-  & + & {
-    margin-left: ${props => props.theme.space.xlarge};
-  }
-
-  &:active {
-    border-bottom-color: ${props =>
-      props.selected
-        ? props.theme.colors.palette.purple400
-        : props.theme.colors.palette.charcoal400};
-  }
-
-  &:active,
-  &:hover {
-    border-bottom-color: transparent;
-  }
-
-  &:disabled {
-    color: ${props => props.theme.colors.palette.charcoal300};
-  }
-
-  &:focus {
-    outline: none;
-  }
-
-  ${props =>
-    props.focusVisible &&
-    `box-shadow: 0 0 0 0.15rem ${rgba(
-      props.theme.colors.palette.purple300,
-      0.25
-    )};`};
-
-  &:hover {
-    border-bottom-color: ${props =>
-      props.selected
-        ? props.theme.colors.palette.purple400
-        : props.theme.colors.palette.charcoal300};
-  }
-` */
 
 Tab.defaultProps = {
   fontWeight: 'semiBold',

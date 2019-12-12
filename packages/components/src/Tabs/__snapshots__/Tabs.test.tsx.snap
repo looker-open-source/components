@@ -1,7 +1,71 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Tab Focus: renders outline when tabbing into focus, but not when clicking 1`] = `
+exports[`Tabs snapshot works as expected 1`] = `ShallowWrapper {}`;
+
+exports[`focus behavior Tab Focus: does not render focus ring after click 1`] = `
+.c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  min-width: 3rem;
+  padding-bottom: 0.75rem;
+  padding-top: 0.5rem;
+  font-weight: 600;
+  background: transparent;
+  border-bottom: 3px solid;
+  border-bottom-color: #6C43E0;
+  border-radius: 0;
+  color: #262D33;
+  cursor: pointer;
+}
+
+.c1 + .c0 {
+  margin-left: 2rem;
+}
+
+.c1:active {
+  border-bottom-color: #6C43E0;
+}
+
+.c1:active,
+.c1:hover {
+  border-bottom-color: transparent;
+}
+
+.c1:disabled {
+  color: #C1C6CC;
+}
+
+.c1:focus {
+  outline: none;
+}
+
+.c1:hover {
+  border-bottom-color: #6C43E0;
+}
+
 .c2 + .c0 {
+  margin-left: 2rem;
+}
+
+<button
+  class="c0 c1 "
+  font-weight="semiBold"
+>
+  tab1
+</button>
+`;
+
+exports[`focus behavior Tab Focus: renders focus ring for keyboard navigation 1`] = `
+.c2 + .c0 {
+  margin-left: 2rem;
+}
+
+.c3 + .c0 {
   margin-left: 2rem;
 }
 
@@ -23,6 +87,7 @@ exports[`Tab Focus: renders outline when tabbing into focus, but not when clicki
   border-radius: 0;
   color: #707781;
   cursor: pointer;
+  box-shadow: 0 0 0 0.15rem rgba(151,133,242,0.25);
 }
 
 .c1 + .c0 {
@@ -57,14 +122,3 @@ exports[`Tab Focus: renders outline when tabbing into focus, but not when clicki
   tab2
 </button>
 `;
-
-exports[`Tab Focus: renders outline when tabbing into focus, but not when clicking 2`] = `
-<button
-  class="sc-bdVaJa INnXc sc-bwzfXH uTxCW"
-  font-weight="semiBold"
->
-  tab2
-</button>
-`;
-
-exports[`Tabs snapshot works as expected 1`] = `ShallowWrapper {}`;
