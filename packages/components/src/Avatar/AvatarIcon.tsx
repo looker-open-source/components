@@ -68,6 +68,6 @@ export const AvatarIcon = styled(AvatarLayout)`
 `
 
 AvatarIcon.defaultProps = {
-  color: 'palette.purple500',
+  color: 'palette.purple300',
   size: 'large',
 }

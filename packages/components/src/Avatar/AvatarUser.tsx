@@ -89,6 +89,6 @@ export const AvatarUser = styled(AvatarLayout).attrs(
 `
 
 AvatarUser.defaultProps = {
-  color: 'palette.purple500',
+  color: 'palette.purple300',
   size: 'large',
 }

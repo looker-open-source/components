@@ -10,9 +10,10 @@ exports[`AvatarCombo renders Avatar and its badge 1`] = `
   padding: 0;
   vertical-align: baseline;
   font-size: 0.875rem;
+  line-height: 1;
   height: 40px;
   width: 40px;
-  background-color: #4F2ABA;
+  background-color: #9785F2;
   width: large;
   height: large;
   -webkit-align-items: center;
@@ -36,6 +37,7 @@ exports[`AvatarCombo renders Avatar and its badge 1`] = `
   padding: 0;
   vertical-align: baseline;
   font-size: 0.75rem;
+  line-height: 1;
   height: 20px;
   width: 20px;
   width: xsmall;
@@ -75,8 +77,8 @@ exports[`AvatarCombo renders Avatar and its badge 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  color: #4F2ABA;
-  background-color: #4F2ABA;
+  color: #9785F2;
+  background-color: #9785F2;
   border: solid 1px currentColor;
 }
 
@@ -88,9 +90,9 @@ exports[`AvatarCombo renders Avatar and its badge 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  color: #4F2ABA;
-  width: 9px;
-  height: 9px;
+  color: #9785F2;
+  width: 14px;
+  height: 14px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -109,7 +111,11 @@ exports[`AvatarCombo renders Avatar and its badge 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  color: #4F2ABA;
+  font-size: 0.75rem;
+  line-height: 1;
+  height: 20px;
+  width: 20px;
+  color: #9785F2;
   width: xsmall;
   height: xsmall;
   border: solid 1px currentColor;
@@ -140,13 +146,13 @@ exports[`AvatarCombo renders Avatar and its badge 1`] = `
   >
     <div
       className="c3"
-      color="palette.purple500"
+      color="palette.purple300"
     >
       JS
     </div>
     <img
       className="c4"
-      color="palette.purple500"
+      color="palette.purple300"
       src="https://media.istockphoto.com/vectors/noisy-glitch-pixelated-seamless-pattern-vector-id1051777344"
     />
   </div>
@@ -156,8 +162,8 @@ exports[`AvatarCombo renders Avatar and its badge 1`] = `
   >
     <div
       className="c7 "
-      color="palette.purple500"
-      size={9}
+      color="palette.purple300"
+      size={14}
     >
       <svg
         fill="currentColor"
@@ -188,9 +194,10 @@ exports[`AvatarCombo renders Avatar initials and badge with Code icon 1`] = `
   padding: 0;
   vertical-align: baseline;
   font-size: 0.875rem;
+  line-height: 1;
   height: 40px;
   width: 40px;
-  background-color: #4F2ABA;
+  background-color: #9785F2;
   width: large;
   height: large;
   -webkit-align-items: center;
@@ -214,6 +221,7 @@ exports[`AvatarCombo renders Avatar initials and badge with Code icon 1`] = `
   padding: 0;
   vertical-align: baseline;
   font-size: 0.75rem;
+  line-height: 1;
   height: 20px;
   width: 20px;
   width: xsmall;
@@ -253,8 +261,8 @@ exports[`AvatarCombo renders Avatar initials and badge with Code icon 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  color: #4F2ABA;
-  background-color: #4F2ABA;
+  color: #9785F2;
+  background-color: #9785F2;
   border: solid 1px currentColor;
 }
 
@@ -266,9 +274,9 @@ exports[`AvatarCombo renders Avatar initials and badge with Code icon 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  color: #4F2ABA;
-  width: 9px;
-  height: 9px;
+  color: #9785F2;
+  width: 14px;
+  height: 14px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -287,7 +295,11 @@ exports[`AvatarCombo renders Avatar initials and badge with Code icon 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  color: #4F2ABA;
+  font-size: 0.75rem;
+  line-height: 1;
+  height: 20px;
+  width: 20px;
+  color: #9785F2;
   width: xsmall;
   height: xsmall;
   border: solid 1px currentColor;
@@ -318,13 +330,13 @@ exports[`AvatarCombo renders Avatar initials and badge with Code icon 1`] = `
   >
     <div
       className="c3"
-      color="palette.purple500"
+      color="palette.purple300"
     >
       JS
     </div>
     <img
       className="c4"
-      color="palette.purple500"
+      color="palette.purple300"
       src="https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank"
     />
   </div>
@@ -334,8 +346,8 @@ exports[`AvatarCombo renders Avatar initials and badge with Code icon 1`] = `
   >
     <div
       className="c7 "
-      color="palette.purple500"
-      size={9}
+      color="palette.purple300"
+      size={14}
     >
       <svg
         fill="currentColor"
@@ -387,6 +399,7 @@ exports[`AvatarCombo renders AvatarIcon and badge if user is not available and u
   padding: 0;
   vertical-align: baseline;
   font-size: 0.75rem;
+  line-height: 1;
   height: 20px;
   width: 20px;
   width: xsmall;
@@ -412,6 +425,7 @@ exports[`AvatarCombo renders AvatarIcon and badge if user is not available and u
   padding: 0;
   vertical-align: baseline;
   font-size: 0.875rem;
+  line-height: 1;
   height: 40px;
   width: 40px;
   width: large;
@@ -436,9 +450,9 @@ exports[`AvatarCombo renders AvatarIcon and badge if user is not available and u
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  color: #4F2ABA;
-  width: 9px;
-  height: 9px;
+  color: #9785F2;
+  width: 14px;
+  height: 14px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -457,9 +471,9 @@ exports[`AvatarCombo renders AvatarIcon and badge if user is not available and u
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  color: #4F2ABA;
-  width: 16px;
-  height: 16px;
+  color: #9785F2;
+  width: 20px;
+  height: 20px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -478,7 +492,11 @@ exports[`AvatarCombo renders AvatarIcon and badge if user is not available and u
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  color: #4F2ABA;
+  font-size: 0.875rem;
+  line-height: 1;
+  height: 40px;
+  width: 40px;
+  color: #9785F2;
   width: large;
   height: large;
   border: solid 1px currentColor;
@@ -492,7 +510,11 @@ exports[`AvatarCombo renders AvatarIcon and badge if user is not available and u
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  color: #4F2ABA;
+  font-size: 0.75rem;
+  line-height: 1;
+  height: 20px;
+  width: 20px;
+  color: #9785F2;
   width: xsmall;
   height: xsmall;
   border: solid 1px currentColor;
@@ -523,8 +545,8 @@ exports[`AvatarCombo renders AvatarIcon and badge if user is not available and u
   >
     <div
       className="c3 "
-      color="palette.purple500"
-      size={16}
+      color="palette.purple300"
+      size={20}
     >
       <svg
         fill="currentColor"
@@ -548,8 +570,8 @@ exports[`AvatarCombo renders AvatarIcon and badge if user is not available and u
   >
     <div
       className="c6 "
-      color="palette.purple500"
-      size={9}
+      color="palette.purple300"
+      size={14}
     >
       <svg
         fill="currentColor"
@@ -601,6 +623,7 @@ exports[`AvatarIcon renders  1`] = `
   padding: 0;
   vertical-align: baseline;
   font-size: 0.875rem;
+  line-height: 1;
   height: 40px;
   width: 40px;
   width: large;
@@ -625,9 +648,9 @@ exports[`AvatarIcon renders  1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  color: #4F2ABA;
-  width: 16px;
-  height: 16px;
+  color: #9785F2;
+  width: 20px;
+  height: 20px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -646,7 +669,11 @@ exports[`AvatarIcon renders  1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  color: #4F2ABA;
+  font-size: 0.875rem;
+  line-height: 1;
+  height: 40px;
+  width: 40px;
+  color: #9785F2;
   width: large;
   height: large;
   border: solid 1px currentColor;
@@ -658,8 +685,8 @@ exports[`AvatarIcon renders  1`] = `
 >
   <div
     className="c2 "
-    color="palette.purple500"
-    size={16}
+    color="palette.purple300"
+    size={20}
   >
     <svg
       fill="currentColor"
@@ -668,10 +695,10 @@ exports[`AvatarIcon renders  1`] = `
       width="100%"
     >
       <title>
-        Users
+        User
       </title>
       <path
-        d="M16.5 13c-1.2 0-3.07.34-4.5 1-1.43-.67-3.3-1-4.5-1C5.33 13 1 14.08 1 16.25V19h22v-2.75c0-2.17-4.33-3.25-6.5-3.25zm-4 4.5h-10v-1.25c0-.54 2.56-1.75 5-1.75s5 1.21 5 1.75v1.25zm9 0H14v-1.25c0-.46-.2-.86-.52-1.22.88-.3 1.96-.53 3.02-.53 2.44 0 5 1.21 5 1.75v1.25zM7.5 12c1.93 0 3.5-1.57 3.5-3.5S9.43 5 7.5 5 4 6.57 4 8.5 5.57 12 7.5 12zm0-5.5c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 5.5c1.93 0 3.5-1.57 3.5-3.5S18.43 5 16.5 5 13 6.57 13 8.5s1.57 3.5 3.5 3.5zm0-5.5c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2z"
+        d="M12 5.9a2.1 2.1 0 110 4.2 2.1 2.1 0 010-4.2zm0 9c2.97 0 6.1 1.46 6.1 2.1v1.1H5.9V17c0-.64 3.13-2.1 6.1-2.1zM12 4C9.79 4 8 5.79 8 8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 9c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4z"
         fill="currentColor"
       />
     </svg>
@@ -689,6 +716,7 @@ exports[`AvatarIcon renders different icon if specified 1`] = `
   padding: 0;
   vertical-align: baseline;
   font-size: 0.875rem;
+  line-height: 1;
   height: 40px;
   width: 40px;
   width: large;
@@ -713,9 +741,9 @@ exports[`AvatarIcon renders different icon if specified 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  color: #4F2ABA;
-  width: 16px;
-  height: 16px;
+  color: #9785F2;
+  width: 20px;
+  height: 20px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -734,7 +762,11 @@ exports[`AvatarIcon renders different icon if specified 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  color: #4F2ABA;
+  font-size: 0.875rem;
+  line-height: 1;
+  height: 40px;
+  width: 40px;
+  color: #9785F2;
   width: large;
   height: large;
   border: solid 1px currentColor;
@@ -746,8 +778,8 @@ exports[`AvatarIcon renders different icon if specified 1`] = `
 >
   <div
     className="c2 "
-    color="palette.purple500"
-    size={16}
+    color="palette.purple300"
+    size={20}
   >
     <svg
       fill="currentColor"
@@ -777,9 +809,10 @@ exports[`AvatarUser shows initials if has broken url as avatar_url 1`] = `
   padding: 0;
   vertical-align: baseline;
   font-size: 0.875rem;
+  line-height: 1;
   height: 40px;
   width: 40px;
-  background-color: #4F2ABA;
+  background-color: #9785F2;
   width: large;
   height: large;
   -webkit-align-items: center;
@@ -817,8 +850,8 @@ exports[`AvatarUser shows initials if has broken url as avatar_url 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  color: #4F2ABA;
-  background-color: #4F2ABA;
+  color: #9785F2;
+  background-color: #9785F2;
   border: solid 1px currentColor;
 }
 
@@ -828,13 +861,13 @@ exports[`AvatarUser shows initials if has broken url as avatar_url 1`] = `
 >
   <div
     className="c2"
-    color="palette.purple500"
+    color="palette.purple300"
   >
     JS
   </div>
   <img
     className="c3"
-    color="palette.purple500"
+    color="palette.purple300"
     src="https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank"
   />
 </div>
@@ -850,9 +883,10 @@ exports[`AvatarUser shows initials if it has null as  avatar_url  1`] = `
   padding: 0;
   vertical-align: baseline;
   font-size: 0.875rem;
+  line-height: 1;
   height: 40px;
   width: 40px;
-  background-color: #4F2ABA;
+  background-color: #9785F2;
   width: large;
   height: large;
   -webkit-align-items: center;
@@ -880,8 +914,8 @@ exports[`AvatarUser shows initials if it has null as  avatar_url  1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  color: #4F2ABA;
-  background-color: #4F2ABA;
+  color: #9785F2;
+  background-color: #9785F2;
   border: solid 1px currentColor;
 }
 
@@ -891,7 +925,7 @@ exports[`AvatarUser shows initials if it has null as  avatar_url  1`] = `
 >
   <div
     className="c2"
-    color="palette.purple500"
+    color="palette.purple300"
   >
     JS
   </div>
@@ -908,9 +942,10 @@ exports[`AvatarUser shows user profile picture if it has good avatar_url  1`] = 
   padding: 0;
   vertical-align: baseline;
   font-size: 0.875rem;
+  line-height: 1;
   height: 40px;
   width: 40px;
-  background-color: #4F2ABA;
+  background-color: #9785F2;
   width: large;
   height: large;
   -webkit-align-items: center;
@@ -948,8 +983,8 @@ exports[`AvatarUser shows user profile picture if it has good avatar_url  1`] = 
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  color: #4F2ABA;
-  background-color: #4F2ABA;
+  color: #9785F2;
+  background-color: #9785F2;
   border: solid 1px currentColor;
 }
 
@@ -959,13 +994,13 @@ exports[`AvatarUser shows user profile picture if it has good avatar_url  1`] = 
 >
   <div
     className="c2"
-    color="palette.purple500"
+    color="palette.purple300"
   >
     JS
   </div>
   <img
     className="c3"
-    color="palette.purple500"
+    color="palette.purple300"
     src="https://media.istockphoto.com/vectors/noisy-glitch-pixelated-seamless-pattern-vector-id1051777344"
   />
 </div>

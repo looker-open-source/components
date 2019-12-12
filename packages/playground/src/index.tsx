@@ -38,12 +38,12 @@ const App: React.FC = () => {
       'https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank',
 
     // eslint-disable-next-line @typescript-eslint/camelcase
-    first_name: 'Mohn',
+    first_name: 'Paul',
 
     id: 3,
 
     // eslint-disable-next-line @typescript-eslint/camelcase
-    last_name: 'Mmith',
+    last_name: 'Smith',
   }
   return (
     <ThemeProvider theme={theme}>
@@ -55,7 +55,12 @@ const App: React.FC = () => {
         <AvatarUser m="medium" color="#6495ED" user={data} />
         <AvatarUser m="medium" color="#FF4500" user={data} size="medium" />
         <AvatarUser m="medium" user={data} size="small" />
-        <AvatarCombo m="medium" user={data} badge="LogoRings" />
+        <AvatarCombo
+          m="medium"
+          user={data}
+          badgeColor="black"
+          badgeIcon="LogoRings"
+        />
       </>
     </ThemeProvider>
   )

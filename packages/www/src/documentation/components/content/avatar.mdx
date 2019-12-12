@@ -5,25 +5,27 @@ propsOf: Avatar
 
 `Avatar` is most often used to identify individual users or groups. Lens offers three variations on it:
 
-- `AvatarUser` displays the profile image, if there is one available, or user's initials.
-- `AvatarIcon` displays an icon as the avatar, which can be selected with the icon prop.
-- `AvatarCombo` displayed AvatarUser or AvatarIcon and a badge connected to it.
+- `AvatarUser` displays the profile image, if there is one available, or the user's initials.
+- `AvatarIcon` displays an icon as the avatar, which can be selected with the icon prop, and has the `User` icon as default.
+- `AvatarCombo` displayed AvatarUser or AvatarIcon and a badge with an icon connected to it.
 
 ## AvatarUser
+
+Expects an object that is set to the `user` flag. This object should have: `avatar_url` to be the avatar image, or `first_name` and `last_name` as a secondary input.
 
 ```jsx
 ;() => {
   const goodData = {
     avatar_url:
       'https://media.istockphoto.com/vectors/noisy-glitch-pixelated-seamless-pattern-vector-id1051777344',
-    first_name: 'John',
+    first_name: 'Paul',
     id: 1,
     last_name: 'Smith',
   }
   const noImage = {
     avatar_url:
       'https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank',
-    first_name: 'John',
+    first_name: 'Paul',
     id: 2,
     last_name: 'Smith',
   }
@@ -38,21 +40,27 @@ propsOf: Avatar
 
 ## AvatarIcon
 
+Has a default icon value of `User`. That value can be changed by the use of the flag `icon`.
+
 ```jsx
 <AvatarIcon m="medium" />
 <AvatarIcon m="medium" icon="Code" />
 ```
 
-- `size`: small || medium || large - large being the default.
-  - If you choose the small size for `AvatarUser`, it will only render the first initial.
-- `color`: default value is `#4F2ABA` but that can be changed by the `color` prop.
+### Avatar Options
+
+Both `AvatarIcon` and `AvatarUser` can be styled for size abd color:
+
+- flag `size`: default value `large`. That can be update to small, medium, large.
+  If you choose the small size for `AvatarUser`, it will only render the first initial.
+- flag `color`: default value is `#9785F2`. That can be updated using the flag color.
 
 ```jsx
 ;() => {
   const data = {
     avatar_url:
       'https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank',
-    first_name: 'John',
+    first_name: 'Paul',
     id: 3,
     last_name: 'Smith',
   }
@@ -71,14 +79,17 @@ propsOf: Avatar
 
 ## AvatarCombo
 
-It's a combination of `AvatarUser` and `AvatarIcon`. Avatar provides three options to identify a user: a user profile image, user initials, or an SVG icon. If no data is passed as the user the Avatar Identity will be set to to `users` as on the `AvatarIcon` case. As for the badge on `AvatarCombo` the icon has no default value. So it has to be set when the Avatar is created.
+It's a combination of `AvatarUser` and `AvatarIcon`. Avatar provides three options to identify a user: a user profile image, user initials, or an SVG icon. If no data is passed as the user the Avatar Identity will be set to to `users` as on the `AvatarIcon` case.
+The badge has two flags:
+`badgeIcon` defines the icon to be placed as badge. The default value here is `User`,
+`badgeColor` defined the color to be placed on badge. The default value here is `#9785F2`.
 
 ```jsx
 ;() => {
   const data = {
     avatar_url:
       'https://media.istockphoto.com/vectors/noisy-glitch-pixelated-seamless-pattern-vector-id1051777344',
-    first_name: 'John',
+    first_name: 'Paul',
     id: 3,
     last_name: 'Smith',
   }
@@ -86,16 +97,27 @@ It's a combination of `AvatarUser` and `AvatarIcon`. Avatar provides three optio
   const noImageData = {
     avatar_url:
       'https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank',
-    first_name: 'John',
+    first_name: 'Paul',
     id: 2,
     last_name: 'Smith',
   }
   return (
     <>
       <AvatarCombo m="medium" user={data} badge="LogoRings" />
-      <AvatarCombo m="medium" user={noImageData} icon="Code" badge="Code" />
-      <AvatarCombo m="medium" color="#6495ED" badge="Beaker" />
-      <AvatarCombo m="medium" color="#FF4500" badge="Code" />
+      <AvatarCombo m="medium" user={noImageData} icon="Code" badgeIcon="Code" />
+      <AvatarCombo
+        m="medium"
+        color="#6495ED"
+        badgeIcon="Beaker"
+        badgeColor="#FF4500"
+      />
+      <AvatarCombo
+        m="medium"
+        user={noImageData}
+        color="green"
+        badgeColor="lime"
+        badge="LogoRings"
+      />
     </>
   )
 }

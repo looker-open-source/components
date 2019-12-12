@@ -28,7 +28,11 @@ import { avatarSize } from './size'
 
 export interface AvatarComboProps
   extends Omit<AvatarIconProps & AvatarUserProps, 'size'> {
-  badge: IconNames
+  badgeIcon: IconNames
+  /**
+   *  @default `palette.purple300`
+   **/
+  badgeColor?: string
 }
 
 const AvatarIconBadge = styled(AvatarIcon)`
@@ -38,9 +42,10 @@ const AvatarIconBadge = styled(AvatarIcon)`
 `
 
 const AvatarLayout: FC<AvatarComboProps> = ({
-  badge,
+  badgeIcon,
+  badgeColor,
   color,
-  icon,
+  icon = 'User',
   user,
   ...props
 }) => {
@@ -51,7 +56,7 @@ const AvatarLayout: FC<AvatarComboProps> = ({
       ) : (
         <AvatarIcon color={color} icon={icon} />
       )}
-      <AvatarIconBadge size="xsmall" color={color} icon={badge} />
+      <AvatarIconBadge size="xsmall" color={badgeColor} icon={badgeIcon} />
     </div>
   )
 }
@@ -70,5 +75,5 @@ export const AvatarCombo = styled(AvatarLayout)`
 `
 
 AvatarUser.defaultProps = {
-  color: 'palette.purple500',
+  color: 'palette.purple300',
 }
