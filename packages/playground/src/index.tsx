@@ -18,89 +18,20 @@
  SOFTWARE.
  */
 
-import React, { MouseEvent } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom'
-import {
-  Button,
-  GlobalStyle,
-  Divider,
-  Box,
-  InputText,
-  Paragraph,
-  Select,
-  SelectInput,
-  SelectList,
-  SelectOption,
-  useControlledSelect,
-} from '@looker/components'
+import { GlobalStyle } from '@looker/components'
 import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
 
-const options = [
-  { data: { id: 1 }, value: 'Apples' },
-  { data: { id: 2 }, value: 'Bananas' },
-  { data: { id: 3 }, value: 'Oranges' },
-  { data: { id: 4 }, value: 'Pineapples' },
-  { data: { id: 5 }, value: 'Kiwis' },
-]
-const listProps = { persistSelection: true }
+import { SelectDemo } from './Select/SelectDemo'
 
 const App: React.FC = () => {
-  const { inputProps, ...selectProps } = useControlledSelect('Apples')
-  const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
-    const fruit = e.currentTarget.getAttribute('data-fruit') || ''
-    selectProps.onSelect({ value: fruit })
-  }
-  const inputPropsMemo = React.useMemo(
-    () => ({
-      ...inputProps,
-      autocomplete: false,
-      placeholder: 'Placeholder text',
-      required: true,
-      validationType: 'error' as 'error',
-    }),
-    [inputProps]
-  )
   return (
     <>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <Box m="xlarge">
-          <Select
-            openOnFocus={true}
-            width={240}
-            mb="medium"
-            inputProps={inputPropsMemo}
-            listProps={listProps}
-            options={options}
-            aria-label="Fruits"
-            {...selectProps}
-          />
-          <Paragraph>{selectProps.value}</Paragraph>
-          <Button
-            mt="medium"
-            mr="small"
-            data-fruit="Kiwis"
-            onClick={handleClick}
-          >
-            Kiwis
-          </Button>
-          <Button mt="medium" data-fruit="Oranges" onClick={handleClick}>
-            Oranges
-          </Button>
-          <Divider my="xlarge" />
-          <InputText width={240} validationType="error" />
-          <Divider my="xlarge" />
-          <Select width={240}>
-            <SelectInput />
-            <SelectList>
-              <SelectOption value="Foo" />
-              <SelectOption value="Bar" />
-              <SelectOption value="Baz" />
-              <SelectOption value="Qux" />
-            </SelectList>
-          </Select>
-        </Box>
+        <SelectDemo />
       </ThemeProvider>
     </>
   )
