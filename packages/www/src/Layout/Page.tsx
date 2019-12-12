@@ -24,13 +24,15 @@
 
  */
 
-import { GlobalStyle } from '@looker/components'
+import { GlobalStyle, CustomizableTooltipAttributes } from '@looker/components'
 import { theme } from '@looker/design-tokens'
 import React, { FC } from 'react'
 import { ThemeProvider } from 'styled-components'
 import { MDXProvider } from '@mdx-js/react'
 import { Props } from '../Shared'
 import MDXComponents from '../MDX'
+
+CustomizableTooltipAttributes.zIndex = 1
 
 const all = { ...MDXComponents, Props }
 

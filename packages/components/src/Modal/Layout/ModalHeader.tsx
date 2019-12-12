@@ -70,7 +70,6 @@ export const ModalHeader: FC<ModalHeaderProps> = ({
           onClick={closeModal}
           label="Close"
           icon={closeIcon}
-          mr="-10px"
         />
       </Flex>
     </Header>
@@ -84,5 +83,6 @@ const Header = styled.header<SpaceProps>`
 
 Header.defaultProps = {
   p: 'large',
+  pr: 'medium',
   px: 'xlarge',
 }

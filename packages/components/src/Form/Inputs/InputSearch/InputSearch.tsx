@@ -24,7 +24,7 @@
 
  */
 
-import React, { FormEvent, forwardRef, Ref, useState } from 'react'
+import React, { FormEvent, forwardRef, Ref, useState, useRef } from 'react'
 import styled from 'styled-components'
 import {
   border,
@@ -38,6 +38,7 @@ import {
   InputText,
   InputTextProps,
 } from '../InputText'
+import { useForkedRef } from '../../../utils'
 import { InputSearchControls } from './InputSearchControls'
 
 interface InputSearchLayoutProps extends BorderProps, LayoutProps {}
@@ -94,7 +95,7 @@ InputSearchLayout.defaultProps = {
 }
 
 const InputSearchComponent = forwardRef(
-  (props: InputSearchProps, ref: Ref<HTMLInputElement>) => {
+  (props: InputSearchProps, forwardedRef: Ref<HTMLInputElement>) => {
     const {
       border,
       borderBottom,
@@ -112,10 +113,16 @@ const InputSearchComponent = forwardRef(
 
       ...inputProps
     } = props
+
+    const internalRef = useRef<null | HTMLInputElement>(null)
+    const ref = useForkedRef<HTMLInputElement>(internalRef, forwardedRef)
     const [inputValue, setValue] = useState(value)
+
+    const focusInput = () => internalRef.current && internalRef.current.focus()
 
     const handleClear = () => {
       setValue('')
+      focusInput()
       onClear && onClear()
     }
 
@@ -127,6 +134,7 @@ const InputSearchComponent = forwardRef(
     const controls = !hideControls && (
       <InputSearchControls
         onClear={handleClear}
+        onClick={focusInput}
         showClear={inputValue.length > 0}
         summary={summary}
       />
