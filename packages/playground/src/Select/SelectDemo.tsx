@@ -23,7 +23,6 @@ import {
   Button,
   Divider,
   Box,
-  InputText,
   Paragraph,
   Select,
   SelectInput,
