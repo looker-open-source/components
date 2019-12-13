@@ -45,6 +45,7 @@ exports[`IconButton accepts color 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  line-height: 1;
   outline: none;
   -webkit-transition: border 80ms;
   transition: border 80ms;
@@ -198,6 +199,7 @@ exports[`IconButton accepts events 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  line-height: 1;
   outline: none;
   -webkit-transition: border 80ms;
   transition: border 80ms;
@@ -352,6 +354,7 @@ exports[`IconButton accepts events 2`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  line-height: 1;
   outline: none;
   -webkit-transition: border 80ms;
   transition: border 80ms;
@@ -506,6 +509,7 @@ exports[`IconButton allows for ARIA attributes 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  line-height: 1;
   outline: none;
   -webkit-transition: border 80ms;
   transition: border 80ms;
@@ -660,6 +664,7 @@ exports[`IconButton default 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  line-height: 1;
   outline: none;
   -webkit-transition: border 80ms;
   transition: border 80ms;
@@ -813,6 +818,7 @@ exports[`IconButton outline 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  line-height: 1;
   outline: none;
   -webkit-transition: border 80ms;
   transition: border 80ms;
@@ -984,6 +990,7 @@ exports[`IconButton renders focus ring on tab input but not on click 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  line-height: 1;
   outline: none;
   -webkit-transition: border 80ms;
   transition: border 80ms;
@@ -1137,6 +1144,7 @@ exports[`IconButton renders focus ring on tab input but not on click 2`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  line-height: 1;
   outline: none;
   -webkit-transition: border 80ms;
   transition: border 80ms;
@@ -1290,6 +1298,7 @@ exports[`IconButton resized 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  line-height: 1;
   outline: none;
   -webkit-transition: border 80ms;
   transition: border 80ms;

@@ -19,18 +19,8 @@
  */
 
 import React, { FC } from 'react'
-import { color, layout, reset, space } from '@looker/design-tokens'
 import styled from 'styled-components'
-import { AvatarBase, AvatarBaseProps } from './AvatarBase'
-
-export interface AvatarProps extends AvatarBaseProps {
-  /**
-   *  @default `palette.purple500`
-   **/
-  color?: string
-
-  className?: string
-}
+import { avatarCSS, AvatarProps } from './Avatar'
 
 export interface AvatarUserProps extends AvatarProps {
   user?: {
@@ -40,26 +30,33 @@ export interface AvatarUserProps extends AvatarProps {
   }
 }
 
-const AvatarLayout: FC<AvatarUserProps> = ({ color, user, size, ...props }) => {
+const AvatarLayout: FC<AvatarUserProps> = ({
+  color,
+  className,
+  user,
+  size,
+}) => {
   const firstInitial = user && user.first_name && user.first_name[0]
   const lastInitial = user && user.last_name && user.last_name[0]
 
   return (
-    <AvatarBase size={size} {...props}>
+    <div className={className}>
       <AvatarInitials color={color}>
-        {size === 'small' ? `${firstInitial}` : `${firstInitial}${lastInitial}`}
+        {size === 'xxsmall'
+          ? `${firstInitial}`
+          : `${firstInitial}${lastInitial}`}
       </AvatarInitials>
       {user && user.avatar_url && (
         <AvatarPhoto color={color} src={user.avatar_url} />
       )}
-    </AvatarBase>
+    </div>
   )
 }
 
 const AvatarPhoto = styled.img`
   width: 100%;
   height: 100%;
-  grid-area: avatar;
+  position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
@@ -69,24 +66,19 @@ const AvatarPhoto = styled.img`
 const AvatarInitials = styled.div.attrs((props: AvatarUserProps) => ({
   bg: props.color,
 }))`
-  grid-area: avatar;
   color: ${props => props.theme.colors.palette.white};
 `
 
-export const AvatarUser = styled(AvatarLayout).attrs(
-  (props: AvatarUserProps) => ({
-    bg: props.color,
-    bordercolor: props.color,
-  })
-)`
-  ${reset}
-  ${color}
-  ${layout}
-  ${space}
-  border: solid 1px currentColor;
+export const AvatarUser = styled(AvatarLayout).attrs(props => ({
+  size: props.size || 'small',
+}))`
+  ${avatarCSS}
+
+  background: currentColor;
+  position: relative;
 `
 
 AvatarUser.defaultProps = {
-  color: 'palette.purple500',
-  size: 'large',
+  color: 'palette.purple400',
+  size: 'small',
 }

@@ -28,15 +28,14 @@ import { SelectDemo } from './Select/SelectDemo'
 
 const App: React.FC = () => {
   return (
-    <>
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <SelectDemo />
-      </ThemeProvider>
-    </>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <SelectDemo />
+    </ThemeProvider>
   )
 }
 
+// <MenuDemo />
 /**
  * This is the binding site for the playground. If you want to edit the
  * primary application, do your work in App.tsx instead.
