@@ -103,11 +103,6 @@ export interface UsePopoverProps {
   pin?: boolean
 
   /**
-   * Allow the overlay to break out of the scroll parent
-   */
-  escapeWithReference?: boolean
-
-  /**
    * The element which hovering on/off of will show/hide the triggering element
    */
   hoverDisclosureRef?: RefObject<HTMLElement>
@@ -162,19 +157,31 @@ function useVerticalSpace(
   placement: Placement,
   isOpen: boolean
 ) {
-  const [verticalSpace, setVerticalSpace] = useState(0)
+  const [spaceTop, setSpaceTop] = useState(0)
+  const [spaceBottom, setSpaceBottom] = useState(0)
+  const placementIsBottom = placement && placement.indexOf('bottom') > -1
+  const placementIsTop = placement && placement.indexOf('top') > -1
 
   useEffect(() => {
     function getVerticalSpace() {
       if (element) {
-        // If popover is pinned, get the available vertical space
-        if (pin) {
+        if (placementIsBottom || placementIsTop) {
           const { top, bottom } = element.getBoundingClientRect()
-          if (placement.indexOf('top') > -1) {
-            setVerticalSpace(top)
-          } else if (placement.indexOf('bottom') > -1) {
-            setVerticalSpace(window.innerHeight - bottom)
+          // If pin = true, we only care about the space on the placement side
+          // Otherwise, we want both the top and bottom and pick the bigger
+          if (!pin || placementIsTop) {
+            setSpaceTop(top)
+          } else if (pin) {
+            setSpaceTop(0)
           }
+          if (!pin || placementIsBottom) {
+            setSpaceBottom(window.innerHeight - bottom)
+          } else if (pin) {
+            setSpaceBottom(0)
+          }
+        } else {
+          // Horizontally placed Popovers can be as tall as the window
+          setSpaceTop(window.innerHeight)
         }
       }
     }
@@ -187,9 +194,16 @@ function useVerticalSpace(
     return () => {
       window.removeEventListener('resize', getVerticalSpace)
     }
-  }, [element, pin, placement, isOpen])
+  }, [element, pin, placementIsBottom, placementIsTop, isOpen])
 
-  return verticalSpace
+  // Set height to the larger, popper will take care of flipping as needed
+  const max = Math.max(spaceTop, spaceBottom)
+
+  // If the height of the overlay will be 50px or less,
+  // it's too small to scroll
+  // Popper will awkwardly move the overlay to try to fit in the window
+  // but that's better than squishing it so small.
+  return max > 50 ? max : window.innerHeight
 }
 
 function useOpenWithoutElement(isOpen: boolean, element: HTMLElement | null) {
@@ -316,7 +330,6 @@ export function usePopover({
   setOpen: controlledSetOpen,
   triggerElement,
   triggerToggle = true,
-  escapeWithReference,
   focusTrap = true,
 }: UsePopoverProps) {
   const {
@@ -393,10 +406,6 @@ export function usePopover({
     }
   }, [hoverDisclosureRef])
 
-  // If the height of the overlay will be 50px or less,
-  // it's too small to do the scrolling behavior
-  const pinAndScroll = verticalSpace > 50
-
   const popover = !openWithoutElem && isOpen && (
     <ModalContext.Provider
       value={{
@@ -422,7 +431,7 @@ export function usePopover({
               flipVariationsByContent: true,
             },
             preventOverflow: {
-              escapeWithReference: escapeWithReference || pinAndScroll,
+              boundariesElement: 'window',
               padding: 0,
             },
           }}
@@ -442,17 +451,13 @@ export function usePopover({
               boxShadow={3}
               color="palette.charcoal900"
             >
-              {verticalSpace > 50 ? (
-                <Box
-                  maxHeight={`calc(${verticalSpace - 10}px - 1rem)`}
-                  overflowY="scroll"
-                  borderRadius="inherit"
-                >
-                  {content}
-                </Box>
-              ) : (
-                content
-              )}
+              <Box
+                maxHeight={`calc(${verticalSpace - 10}px - 1rem)`}
+                overflowY="scroll"
+                borderRadius="inherit"
+              >
+                {content}
+              </Box>
             </OverlaySurface>
           )}
         </Popper>

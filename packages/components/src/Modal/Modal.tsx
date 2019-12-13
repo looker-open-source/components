@@ -95,11 +95,13 @@ export function Modal({
     callbackRef: focusRef,
     disable: disableFocusTrap,
     enable: enableFocusTrap,
+    isEnabled: focusTrapEnabled,
   } = useFocusTrap(isOpen)
   const {
     callbackRef: scrollRef,
     disable: disableScrollLock,
     enable: enableScrollLock,
+    isEnabled: scrollLockEnabled,
   } = useScrollLock(isOpen, false)
 
   return (
@@ -110,6 +112,8 @@ export function Modal({
         disableScrollLock,
         enableFocusTrap,
         enableScrollLock,
+        focusTrapEnabled,
+        scrollLockEnabled,
       }}
     >
       <CSSTransition

@@ -124,7 +124,6 @@ export const SelectListInternal = forwardRef(function SelectList(
     content,
     focusTrap: false,
     isOpen: isVisible,
-    pin: true,
     placement: 'bottom',
     setOpen,
     triggerElement: inputElement,
@@ -138,8 +137,8 @@ SelectListInternal.displayName = 'SelectListInternal'
 export const SelectList = styled(SelectListInternal)`
   ${reset}
   ${typography}
-  list-style-type: none;
   ${space}
+  list-style-type: none;
 `
 
 SelectList.defaultProps = {

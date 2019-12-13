@@ -21,15 +21,100 @@
 import React, { MouseEvent } from 'react'
 import {
   Button,
+  DialogManager,
+  ModalContent,
+  ModalContext,
+  ModalHeader,
+  ModalFooter,
   Divider,
   Box,
   Paragraph,
+  Popover,
+  PopoverContent,
   Select,
   SelectInput,
   SelectList,
   SelectOption,
   useControlledSelect,
 } from '@looker/components'
+
+function LongText() {
+  return (
+    <>
+      <Paragraph my="xlarge">Text</Paragraph>
+      <Paragraph my="xlarge">Text</Paragraph>
+      <Paragraph my="xlarge">Text</Paragraph>
+      <Paragraph my="xlarge">Text</Paragraph>
+      <Paragraph my="xlarge">Text</Paragraph>
+      <Paragraph my="xlarge">Text</Paragraph>
+      <Paragraph my="xlarge">Text</Paragraph>
+      <Paragraph my="xlarge">Text</Paragraph>
+      <Paragraph my="xlarge">Text</Paragraph>
+      <Paragraph my="xlarge">Text</Paragraph>
+      <Paragraph my="xlarge">Text</Paragraph>
+      <Paragraph my="xlarge">Text</Paragraph>
+      <Paragraph my="xlarge">Text</Paragraph>
+      <Paragraph my="xlarge">Text</Paragraph>
+      <Paragraph my="xlarge">Text</Paragraph>
+      <Paragraph my="xlarge">Text</Paragraph>
+      <Paragraph my="xlarge">Text</Paragraph>
+    </>
+  )
+}
+
+function ModalInner() {
+  const { closeModal } = React.useContext(ModalContext)
+  // useEffect(() => {
+  //   scrollLockEnabled && disableScrollLock && disableScrollLock()
+  // }, [disableScrollLock, scrollLockEnabled])
+
+  return (
+    <>
+      <ModalHeader>A Modal</ModalHeader>
+      <ModalContent>
+        <LongText />
+        <ComposedSelect />
+      </ModalContent>
+      <ModalFooter>
+        <Button onClick={closeModal}>Close</Button>
+      </ModalFooter>
+    </>
+  )
+}
+
+function ComposedSelect() {
+  return (
+    <Select width={240}>
+      <SelectInput />
+      <SelectList>
+        <SelectOption value="Foo" />
+        <SelectOption value="Bar" />
+        <SelectOption value="Baz" />
+        <SelectOption value="Qux" />
+        <SelectOption value="Qux" />
+        <SelectOption value="Qux" />
+        <SelectOption value="Qux" />
+        <SelectOption value="Qux" />
+        <SelectOption value="Qux" />
+        <SelectOption value="Qux" />
+        <SelectOption value="Qux" />
+        <SelectOption value="Qux" />
+        <SelectOption value="Qux" />
+        <SelectOption value="Qux" />
+        <SelectOption value="Qux" />
+        <SelectOption value="Qux" />
+        <SelectOption value="Qux" />
+        <SelectOption value="Qux" />
+        <SelectOption value="Qux" />
+        <SelectOption value="Qux" />
+        <SelectOption value="Qux" />
+        <SelectOption value="Qux" />
+        <SelectOption value="Qux" />
+        <SelectOption value="Qux" />
+      </SelectList>
+    </Select>
+  )
+}
 
 const options = [
   { data: { id: 1 }, value: 'Apples' },
@@ -74,15 +159,27 @@ export function SelectDemo() {
         Oranges
       </Button>
       <Divider my="xlarge" />
-      <Select width={240}>
-        <SelectInput />
-        <SelectList>
-          <SelectOption value="Foo" />
-          <SelectOption value="Bar" />
-          <SelectOption value="Baz" />
-          <SelectOption value="Qux" />
-        </SelectList>
-      </Select>
+      <ComposedSelect />
+      <Divider my="xlarge" />
+      <DialogManager content={<ModalInner />}>
+        {onClick => <Button onClick={onClick}>Open Modal</Button>}
+      </DialogManager>
+      <Divider my="xlarge" />
+      <Popover
+        content={
+          <PopoverContent>
+            <Box height={300} />
+            <ComposedSelect />
+          </PopoverContent>
+        }
+      >
+        {(onClick, ref, className) => (
+          <Button onClick={onClick} ref={ref} className={className}>
+            Open Popover
+          </Button>
+        )}
+      </Popover>
+      <LongText />
     </Box>
   )
 }
