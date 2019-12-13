@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## UNRELEASED
+## [0.7.7] - 2019-12-19
 
 ### Added
 
@@ -13,24 +13,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Badge` component with test and documentation
 - `MenuContext` for holding `Menu` state and `MenuItemStyleContext` for `MenuItem` styling inheritance
 - `Popover` now has `escapeWithReference` prop for allowing the overlay to break out of the scroll parent
-- Api icon added to `Icon` list
+- `Icon` - added `Api` icon
+
 ### Changed
 
 - `Icon` - `ChangeHistory` and `DragHandleDots` artwork fixed up
 - `IconButton` now displays a `Tooltip` with the `IconButton`'s label text.
   - Also added `tooltipDisabled` and `tooltipPlacement` to allow for customization of the built-in behavior.
 - `InputSearch` - clicking "summary" text or clear button will restore focus to underlying input reproducing the behavior of the native input type="search" control.
-- `Slider`
-  - Customized appearance / support for `branded` property
-  - Update documentation to match updated appearance and functionality
 - `LuminositySlider` now use standard range input as basis for (rather than extending Slider component)
-- Update `theme` object to use more vibrant colors by default.
 - Modals
   - Improved `Confirm` layout
   - `Dialog` has updated documentation to endorse use of `Confirm` where appropriate
   - `ModalFooter` now uses css grid to lay out actions
   - `ModalHeader` has improved styling, no longer accepts `Heading` as a sub-component
   - `ModalContext` now includes focus trap and scroll lock methods
+- `Slider`
+  - Customized appearance / support for `branded` property
+  - Update documentation to match updated appearance and functionality
+- `Tab` component now replicates `Button` focus behavior. Focus ring only displayed when focus is applied via keyboard interaction
+- Update `theme` object to use more vibrant colors by default.
 - Documentation Improvements
   - Improved NPM package installation instructions
   - Instructions for adding new components to `www` project (Gatsby documentation)
@@ -42,11 +44,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Tab component focus fixed - focus ring only show on keyboard interactions
-- Prevent www theme examples from bleeding into global scope
-- Fix slider overflow issue in Windows/Edge
-- Fix www sidebar nav button appearance in Windows/Edge
-- Banner icons are rendered at proper sizes when used in www
 - `Banner` - icons are rendered at proper sizes when used in `www`
 - `Menu` issues arising from use of `cloneElement`
 - `OverlaySurfaceArrow` - added missing border on
