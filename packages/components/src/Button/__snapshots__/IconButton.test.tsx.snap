@@ -1,297 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Button renders focus ring on tab input but not on click 1`] = `
-.c4 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  width: 16px;
-  height: 16px;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-}
-
-.c3 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-  -webkit-clip: rect(1px,1px,1px,1px);
-  clip: rect(1px,1px,1px,1px);
-}
-
-.c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  width: 22px;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  border-radius: 0.25rem;
-  cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  font-weight: 600;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  outline: none;
-  -webkit-transition: border 80ms;
-  transition: border 80ms;
-  vertical-align: middle;
-  white-space: nowrap;
-  font-size: 0.75rem;
-  height: 22px;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  padding: 0rem;
-}
-
-.c0[disabled] {
-  cursor: default;
-  -webkit-filter: grayscale(0.3);
-  filter: grayscale(0.3);
-  opacity: 0.25;
-}
-
-.c1 {
-  background: transparent;
-  border: 1px solid transparent;
-  color: #CC1F36;
-}
-
-.c1:active,
-.c1.active {
-  background: #FFE5E9;
-  border-color: #FFE5E9;
-  color: #ED3B53;
-}
-
-.c1:hover,
-.c1:focus,
-.c1.hover {
-  background: #FFF2F4;
-  border-color: #FFF2F4;
-  color: #ED3B53;
-}
-
-.c1[disabled]:hover,
-.c1[disabled]:active,
-.c1[disabled]:focus {
-  color: #CC1F36;
-}
-
-.c2 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-}
-
-<button
-  className="c0 c1 c2"
-  color="danger"
-  onBlur={[Function]}
-  onKeyUp={[Function]}
-  size="xsmall"
-  width={22}
->
-  <div
-    className="c3"
-  >
-    Favorite
-  </div>
-  <div
-    aria-hidden={true}
-    className="c4 "
-    size={16}
-  >
-    <svg
-      fill="currentColor"
-      height="100%"
-      viewBox="0 0 24 24"
-      width="100%"
-    >
-      <title>
-        Favorite
-      </title>
-      <path
-        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
-        fill="currentColor"
-      />
-    </svg>
-  </div>
-</button>
-`;
-
-exports[`Button renders focus ring on tab input but not on click 2`] = `
-.c4 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  width: 16px;
-  height: 16px;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-}
-
-.c3 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-  -webkit-clip: rect(1px,1px,1px,1px);
-  clip: rect(1px,1px,1px,1px);
-}
-
-.c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  width: 22px;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  border-radius: 0.25rem;
-  cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  font-weight: 600;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  outline: none;
-  -webkit-transition: border 80ms;
-  transition: border 80ms;
-  vertical-align: middle;
-  white-space: nowrap;
-  font-size: 0.75rem;
-  height: 22px;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  padding: 0rem;
-}
-
-.c0[disabled] {
-  cursor: default;
-  -webkit-filter: grayscale(0.3);
-  filter: grayscale(0.3);
-  opacity: 0.25;
-}
-
-.c1 {
-  background: transparent;
-  border: 1px solid transparent;
-  color: #CC1F36;
-}
-
-.c1:active,
-.c1.active {
-  background: #FFE5E9;
-  border-color: #FFE5E9;
-  color: #ED3B53;
-}
-
-.c1:hover,
-.c1:focus,
-.c1.hover {
-  background: #FFF2F4;
-  border-color: #FFF2F4;
-  color: #ED3B53;
-}
-
-.c1[disabled]:hover,
-.c1[disabled]:active,
-.c1[disabled]:focus {
-  color: #CC1F36;
-}
-
-.c2 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-}
-
-<button
-  className="c0 c1 c2"
-  color="danger"
-  onBlur={[Function]}
-  onKeyUp={[Function]}
-  size="xsmall"
-  width={22}
->
-  <div
-    className="c3"
-  >
-    Trash
-  </div>
-  <div
-    aria-hidden={true}
-    className="c4 "
-    size={16}
-  >
-    <svg
-      fill="currentColor"
-      height="100%"
-      viewBox="0 0 24 24"
-      width="100%"
-    >
-      <title>
-        Trash
-      </title>
-      <path
-        d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
-        fill="currentColor"
-      />
-    </svg>
-  </div>
-</button>
-`;
-
 exports[`IconButton accepts color 1`] = `
 .c4 {
   border: 0;
@@ -313,15 +21,6 @@ exports[`IconButton accepts color 1`] = `
   display: inline-flex;
 }
 
-.c3 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-  -webkit-clip: rect(1px,1px,1px,1px);
-  clip: rect(1px,1px,1px,1px);
-}
-
 .c0 {
   border: 0;
   box-sizing: border-box;
@@ -346,6 +45,7 @@ exports[`IconButton accepts color 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  line-height: 1;
   outline: none;
   -webkit-transition: border 80ms;
   transition: border 80ms;
@@ -392,6 +92,15 @@ exports[`IconButton accepts color 1`] = `
   color: #CC1F36;
 }
 
+.c3 {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  -webkit-clip: rect(1px,1px,1px,1px);
+  clip: rect(1px,1px,1px,1px);
+}
+
 .c2 {
   border: 0;
   box-sizing: border-box;
@@ -402,11 +111,18 @@ exports[`IconButton accepts color 1`] = `
   vertical-align: baseline;
 }
 
+.c2 svg {
+  pointer-events: none;
+}
+
 <button
   className="c0 c1 c2"
   color="danger"
   onBlur={[Function]}
+  onFocus={[Function]}
   onKeyUp={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
   size="xsmall"
   width={22}
 >
@@ -459,15 +175,6 @@ exports[`IconButton accepts events 1`] = `
   display: inline-flex;
 }
 
-.c3 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-  -webkit-clip: rect(1px,1px,1px,1px);
-  clip: rect(1px,1px,1px,1px);
-}
-
 .c0 {
   border: 0;
   box-sizing: border-box;
@@ -492,6 +199,7 @@ exports[`IconButton accepts events 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  line-height: 1;
   outline: none;
   -webkit-transition: border 80ms;
   transition: border 80ms;
@@ -538,6 +246,15 @@ exports[`IconButton accepts events 1`] = `
   color: #939BA5;
 }
 
+.c3 {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  -webkit-clip: rect(1px,1px,1px,1px);
+  clip: rect(1px,1px,1px,1px);
+}
+
 .c2 {
   border: 0;
   box-sizing: border-box;
@@ -548,12 +265,19 @@ exports[`IconButton accepts events 1`] = `
   vertical-align: baseline;
 }
 
+.c2 svg {
+  pointer-events: none;
+}
+
 <button
   className="c0 c1 c2"
   color="neutral"
   onBlur={[Function]}
+  onFocus={[Function]}
   onKeyUp={[Function]}
   onMouseEnter={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
   size="xsmall"
   width={22}
 >
@@ -606,15 +330,6 @@ exports[`IconButton accepts events 2`] = `
   display: inline-flex;
 }
 
-.c3 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-  -webkit-clip: rect(1px,1px,1px,1px);
-  clip: rect(1px,1px,1px,1px);
-}
-
 .c0 {
   border: 0;
   box-sizing: border-box;
@@ -639,6 +354,7 @@ exports[`IconButton accepts events 2`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  line-height: 1;
   outline: none;
   -webkit-transition: border 80ms;
   transition: border 80ms;
@@ -685,6 +401,15 @@ exports[`IconButton accepts events 2`] = `
   color: #939BA5;
 }
 
+.c3 {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  -webkit-clip: rect(1px,1px,1px,1px);
+  clip: rect(1px,1px,1px,1px);
+}
+
 .c2 {
   border: 0;
   box-sizing: border-box;
@@ -695,12 +420,19 @@ exports[`IconButton accepts events 2`] = `
   vertical-align: baseline;
 }
 
+.c2 svg {
+  pointer-events: none;
+}
+
 <button
   className="c0 c1 c2"
   color="neutral"
   onBlur={[Function]}
   onClick={[Function]}
+  onFocus={[Function]}
   onKeyUp={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
   size="xsmall"
   width={22}
 >
@@ -753,15 +485,6 @@ exports[`IconButton allows for ARIA attributes 1`] = `
   display: inline-flex;
 }
 
-.c3 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-  -webkit-clip: rect(1px,1px,1px,1px);
-  clip: rect(1px,1px,1px,1px);
-}
-
 .c0 {
   border: 0;
   box-sizing: border-box;
@@ -786,6 +509,7 @@ exports[`IconButton allows for ARIA attributes 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  line-height: 1;
   outline: none;
   -webkit-transition: border 80ms;
   transition: border 80ms;
@@ -832,6 +556,15 @@ exports[`IconButton allows for ARIA attributes 1`] = `
   color: #939BA5;
 }
 
+.c3 {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  -webkit-clip: rect(1px,1px,1px,1px);
+  clip: rect(1px,1px,1px,1px);
+}
+
 .c2 {
   border: 0;
   box-sizing: border-box;
@@ -842,12 +575,19 @@ exports[`IconButton allows for ARIA attributes 1`] = `
   vertical-align: baseline;
 }
 
+.c2 svg {
+  pointer-events: none;
+}
+
 <button
   aria-haspopup={true}
   className="c0 c1 c2"
   color="neutral"
   onBlur={[Function]}
+  onFocus={[Function]}
   onKeyUp={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
   size="xsmall"
   width={22}
 >
@@ -900,15 +640,6 @@ exports[`IconButton default 1`] = `
   display: inline-flex;
 }
 
-.c3 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-  -webkit-clip: rect(1px,1px,1px,1px);
-  clip: rect(1px,1px,1px,1px);
-}
-
 .c0 {
   border: 0;
   box-sizing: border-box;
@@ -933,6 +664,7 @@ exports[`IconButton default 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  line-height: 1;
   outline: none;
   -webkit-transition: border 80ms;
   transition: border 80ms;
@@ -979,6 +711,15 @@ exports[`IconButton default 1`] = `
   color: #939BA5;
 }
 
+.c3 {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  -webkit-clip: rect(1px,1px,1px,1px);
+  clip: rect(1px,1px,1px,1px);
+}
+
 .c2 {
   border: 0;
   box-sizing: border-box;
@@ -989,11 +730,18 @@ exports[`IconButton default 1`] = `
   vertical-align: baseline;
 }
 
+.c2 svg {
+  pointer-events: none;
+}
+
 <button
   className="c0 c1 c2"
   color="neutral"
   onBlur={[Function]}
+  onFocus={[Function]}
   onKeyUp={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
   size="xsmall"
   width={22}
 >
@@ -1046,15 +794,6 @@ exports[`IconButton outline 1`] = `
   display: inline-flex;
 }
 
-.c3 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-  -webkit-clip: rect(1px,1px,1px,1px);
-  clip: rect(1px,1px,1px,1px);
-}
-
 .c0 {
   border: 0;
   box-sizing: border-box;
@@ -1079,6 +818,7 @@ exports[`IconButton outline 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  line-height: 1;
   outline: none;
   -webkit-transition: border 80ms;
   transition: border 80ms;
@@ -1125,6 +865,15 @@ exports[`IconButton outline 1`] = `
   color: #939BA5;
 }
 
+.c3 {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  -webkit-clip: rect(1px,1px,1px,1px);
+  clip: rect(1px,1px,1px,1px);
+}
+
 .c2 {
   border: 0;
   box-sizing: border-box;
@@ -1139,12 +888,12 @@ exports[`IconButton outline 1`] = `
 .c2:hover,
 .c2:focus,
 .c2.hover {
-  border-color: #6C43E0;
+  border-color: #939BA5;
 }
 
 .c2:active,
 .c2.active {
-  border-color: #6C43E0;
+  border-color: #939BA5;
 }
 
 .c2[disabled]:hover,
@@ -1153,11 +902,18 @@ exports[`IconButton outline 1`] = `
   border-color: #C1C6CC;
 }
 
+.c2 svg {
+  pointer-events: none;
+}
+
 <button
   className="c0 c1 c2"
   color="neutral"
   onBlur={[Function]}
+  onFocus={[Function]}
   onKeyUp={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
   size="xsmall"
   width={22}
 >
@@ -1189,6 +945,314 @@ exports[`IconButton outline 1`] = `
 </button>
 `;
 
+exports[`IconButton renders focus ring on tab input but not on click 1`] = `
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  width: 16px;
+  height: 16px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  width: 22px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-weight: 600;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  line-height: 1;
+  outline: none;
+  -webkit-transition: border 80ms;
+  transition: border 80ms;
+  vertical-align: middle;
+  white-space: nowrap;
+  font-size: 0.75rem;
+  height: 22px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding: 0rem;
+}
+
+.c0[disabled] {
+  cursor: default;
+  -webkit-filter: grayscale(0.3);
+  filter: grayscale(0.3);
+  opacity: 0.25;
+}
+
+.c1 {
+  background: transparent;
+  border: 1px solid transparent;
+  color: #CC1F36;
+}
+
+.c1:active,
+.c1.active {
+  background: #FFE5E9;
+  border-color: #FFE5E9;
+  color: #ED3B53;
+}
+
+.c1:hover,
+.c1:focus,
+.c1.hover {
+  background: #FFF2F4;
+  border-color: #FFF2F4;
+  color: #ED3B53;
+}
+
+.c1[disabled]:hover,
+.c1[disabled]:active,
+.c1[disabled]:focus {
+  color: #CC1F36;
+}
+
+.c3 {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  -webkit-clip: rect(1px,1px,1px,1px);
+  clip: rect(1px,1px,1px,1px);
+}
+
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+.c2 svg {
+  pointer-events: none;
+}
+
+<button
+  className="c0 c1 c2"
+  color="danger"
+  onBlur={[Function]}
+  onFocus={[Function]}
+  onKeyUp={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+  size="xsmall"
+  width={22}
+>
+  <div
+    className="c3"
+  >
+    Favorite
+  </div>
+  <div
+    aria-hidden={true}
+    className="c4 "
+    size={16}
+  >
+    <svg
+      fill="currentColor"
+      height="100%"
+      viewBox="0 0 24 24"
+      width="100%"
+    >
+      <title>
+        Favorite
+      </title>
+      <path
+        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+        fill="currentColor"
+      />
+    </svg>
+  </div>
+</button>
+`;
+
+exports[`IconButton renders focus ring on tab input but not on click 2`] = `
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  width: 16px;
+  height: 16px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  width: 22px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-weight: 600;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  line-height: 1;
+  outline: none;
+  -webkit-transition: border 80ms;
+  transition: border 80ms;
+  vertical-align: middle;
+  white-space: nowrap;
+  font-size: 0.75rem;
+  height: 22px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding: 0rem;
+}
+
+.c0[disabled] {
+  cursor: default;
+  -webkit-filter: grayscale(0.3);
+  filter: grayscale(0.3);
+  opacity: 0.25;
+}
+
+.c1 {
+  background: transparent;
+  border: 1px solid transparent;
+  color: #CC1F36;
+}
+
+.c1:active,
+.c1.active {
+  background: #FFE5E9;
+  border-color: #FFE5E9;
+  color: #ED3B53;
+}
+
+.c1:hover,
+.c1:focus,
+.c1.hover {
+  background: #FFF2F4;
+  border-color: #FFF2F4;
+  color: #ED3B53;
+}
+
+.c1[disabled]:hover,
+.c1[disabled]:active,
+.c1[disabled]:focus {
+  color: #CC1F36;
+}
+
+.c3 {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  -webkit-clip: rect(1px,1px,1px,1px);
+  clip: rect(1px,1px,1px,1px);
+}
+
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+.c2 svg {
+  pointer-events: none;
+}
+
+<button
+  className="c0 c1 c2"
+  color="danger"
+  onBlur={[Function]}
+  onFocus={[Function]}
+  onKeyUp={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+  size="xsmall"
+  width={22}
+>
+  <div
+    className="c3"
+  >
+    Trash
+  </div>
+  <div
+    aria-hidden={true}
+    className="c4 "
+    size={16}
+  >
+    <svg
+      fill="currentColor"
+      height="100%"
+      viewBox="0 0 24 24"
+      width="100%"
+    >
+      <title>
+        Trash
+      </title>
+      <path
+        d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+        fill="currentColor"
+      />
+    </svg>
+  </div>
+</button>
+`;
+
 exports[`IconButton resized 1`] = `
 .c4 {
   border: 0;
@@ -1208,15 +1272,6 @@ exports[`IconButton resized 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-}
-
-.c3 {
-  position: absolute;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-  -webkit-clip: rect(1px,1px,1px,1px);
-  clip: rect(1px,1px,1px,1px);
 }
 
 .c0 {
@@ -1243,6 +1298,7 @@ exports[`IconButton resized 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  line-height: 1;
   outline: none;
   -webkit-transition: border 80ms;
   transition: border 80ms;
@@ -1289,6 +1345,15 @@ exports[`IconButton resized 1`] = `
   color: #939BA5;
 }
 
+.c3 {
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  -webkit-clip: rect(1px,1px,1px,1px);
+  clip: rect(1px,1px,1px,1px);
+}
+
 .c2 {
   border: 0;
   box-sizing: border-box;
@@ -1299,11 +1364,18 @@ exports[`IconButton resized 1`] = `
   vertical-align: baseline;
 }
 
+.c2 svg {
+  pointer-events: none;
+}
+
 <button
   className="c0 c1 c2"
   color="neutral"
   onBlur={[Function]}
+  onFocus={[Function]}
   onKeyUp={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
   size="large"
   width={42}
 >

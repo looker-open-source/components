@@ -119,6 +119,7 @@ exports[`Dismissable banner 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  line-height: 1;
   outline: none;
   -webkit-transition: border 80ms;
   transition: border 80ms;
@@ -218,6 +219,10 @@ exports[`Dismissable banner 1`] = `
   background: none;
 }
 
+.c5 svg {
+  pointer-events: none;
+}
+
 <div
   aria-live="polite"
   className="c0"
@@ -261,7 +266,10 @@ exports[`Dismissable banner 1`] = `
     className="c3 c4 c5"
     color="neutral"
     onBlur={[Function]}
+    onFocus={[Function]}
     onKeyUp={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
     size="small"
     style={
       Object {
@@ -273,7 +281,7 @@ exports[`Dismissable banner 1`] = `
     <div
       className="c2"
     >
-      Dismiss
+      Dismiss info
     </div>
     <div
       aria-hidden={true}

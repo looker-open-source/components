@@ -25,7 +25,6 @@
  */
 
 import React, { FC } from 'react'
-import styled from 'styled-components'
 import { palette } from '@looker/design-tokens'
 import { Box } from '../../../Layout/Box'
 import { IconButton } from '../../../Button'
@@ -35,22 +34,23 @@ export interface InputSearchControlsProps {
   summary?: string
   showClear: boolean
   onClear: () => void
+  onClick: () => void
 }
 
 export const InputSearchControls: FC<InputSearchControlsProps> = ({
   onClear,
+  onClick,
   showClear,
   summary,
 }) => {
   const clear = (
-    <FadeIconButton
-      color="neutral"
+    <IconButton
       size="xsmall"
       icon="Close"
-      pr="xsmall"
-      label="Clear Filter"
-      show={showClear}
+      label="Clear Field"
       onClick={onClear}
+      tabIndex={-1}
+      tooltipPlacement="left"
     />
   )
 
@@ -64,29 +64,27 @@ export const InputSearchControls: FC<InputSearchControlsProps> = ({
     />
   )
 
+  // @TODO - User should be able to "click through" the text (not the button tho)
   return (
-    <Box mx="xxsmall" height="100%" display="flex" alignItems="center">
+    <Box
+      mx="xxsmall"
+      height="100%"
+      display="flex"
+      alignItems="center"
+      onClick={onClick}
+    >
       {summary && (
         <Text
           pr="xsmall"
           variant="subdued"
           fontSize="small"
-          style={{ pointerEvents: 'none', whiteSpace: 'nowrap' }}
+          style={{ whiteSpace: 'nowrap' }}
         >
           {summary}
         </Text>
       )}
-      {summary && clear && separator}
-      {clear}
+      {summary && showClear && separator}
+      {showClear && clear}
     </Box>
   )
 }
-
-interface FaceIconButtonProps {
-  show: boolean
-}
-const FadeIconButton = styled(IconButton)<FaceIconButtonProps>`
-  opacity: ${props => (props.show ? 1 : 0)};
-  transition: ${props =>
-    `opacity ${props.theme.transitions.durationModerate} ${props.theme.easings.ease};`};
-`

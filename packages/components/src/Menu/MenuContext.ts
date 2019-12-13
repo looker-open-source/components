@@ -24,27 +24,19 @@
 
  */
 
-import { GlobalStyle, CustomizableTooltipAttributes } from '@looker/components'
-import { theme } from '@looker/design-tokens'
-import React, { FC } from 'react'
-import { ThemeProvider } from 'styled-components'
-import { MDXProvider } from '@mdx-js/react'
-import { Props } from '../Shared'
-import MDXComponents from '../MDX'
+import { createContext } from 'react'
+import { MenuSharedProps } from './MenuItem'
 
-CustomizableTooltipAttributes.zIndex = 1
-
-const all = { ...MDXComponents, Props }
-
-const Page: FC = ({ children }) => {
-  return (
-    <ThemeProvider theme={theme}>
-      <MDXProvider components={all}>
-        <GlobalStyle />
-        {children}
-      </MDXProvider>
-    </ThemeProvider>
-  )
+export interface MenuContextProps {
+  disabled?: boolean
+  isOpen?: boolean
+  setOpen?: (isOpen: boolean) => void
+  triggerElement?: HTMLElement | null
+  triggerCallbackRef?: (node: HTMLElement | null) => void
 }
 
-export default Page
+const menuContext: MenuContextProps = {}
+const menuItemStyleContext: MenuSharedProps = {}
+
+export const MenuContext = createContext(menuContext)
+export const MenuItemStyleContext = createContext(menuItemStyleContext)

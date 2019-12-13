@@ -24,16 +24,8 @@
 
  */
 
-import merge from 'lodash/merge'
 import { Placement } from 'popper.js'
-import React, {
-  Children,
-  cloneElement,
-  ReactNode,
-  Ref,
-  useRef,
-  forwardRef,
-} from 'react'
+import React, { Ref, useRef, forwardRef, useContext } from 'react'
 import { HotKeys } from 'react-hotkeys'
 import styled, { css } from 'styled-components'
 import {
@@ -52,7 +44,7 @@ import {
 } from 'styled-system'
 import { CompatibleHTMLProps, reset } from '@looker/design-tokens'
 import { usePopover } from '../Popover'
-import { MenuCloneProps } from './Menu'
+import { MenuContext, MenuItemStyleContext } from './MenuContext'
 import { MenuGroup } from './MenuGroup'
 import { MenuSharedProps } from './MenuItem'
 import { moveFocus } from './moveFocus'
@@ -65,9 +57,7 @@ export interface MenuListProps
     MaxWidthProps,
     MinWidthProps,
     WidthProps,
-    MenuSharedProps,
-    MenuCloneProps {
-  children: ReactNode
+    MenuSharedProps {
   compact?: boolean
   groupDividers?: boolean
 
@@ -85,70 +75,58 @@ export interface MenuListProps
    * You can use the pin property to override this behavior.
    */
   pin?: boolean
-}
 
-export function cloneMenuListChildren(
-  children: JSX.Element | JSX.Element[],
-  { customizationProps: parentCustomizations, compact }: MenuSharedProps
-) {
-  return Children.map(children, (child: JSX.Element) => {
-    if (!child || typeof child.type === 'string') return child
-
-    const childCustomizations = child.props.customizationProps
-    let customizationProps = parentCustomizations || childCustomizations
-    if (childCustomizations && parentCustomizations) {
-      customizationProps = merge({}, parentCustomizations, childCustomizations)
-    }
-
-    return cloneElement(child, { compact, customizationProps })
-  })
+  /**
+   * Allow the overlay to break out of the scroll parent
+   */
+  escapeWithReference?: boolean
 }
 
 export const MenuListInternal = forwardRef(
-  (props: MenuListProps, ref: Ref<HTMLUListElement>) => {
-    const {
+  (
+    {
       children,
-      className,
       compact,
       customizationProps,
       disabled,
-      isOpen,
       pin,
       placement,
-      setOpen,
-      triggerRef,
-    } = props
+      escapeWithReference,
+      ...props
+    }: MenuListProps,
+    ref: Ref<HTMLUListElement>
+  ) => {
+    const { isOpen, setOpen, triggerElement } = useContext(MenuContext)
 
     const innerRef = useRef<null | HTMLElement>(null)
 
-    const clonedChildren = cloneMenuListChildren(children as JSX.Element[], {
-      compact,
-      customizationProps,
-    })
-
     const menuList = (
-      <HotKeys
-        innerRef={innerRef}
-        keyMap={{ MOVE_DOWN: 'down', MOVE_UP: 'up' }}
-        handlers={{
-          MOVE_DOWN: () => moveFocus(1, 0, innerRef),
-          MOVE_UP: () => moveFocus(-1, -1, innerRef),
-        }}
-      >
-        <ul className={className} ref={ref} tabIndex={-1} role="menu">
-          {clonedChildren}
-        </ul>
-      </HotKeys>
+      <MenuItemStyleContext.Provider value={{ compact, customizationProps }}>
+        <HotKeys
+          innerRef={innerRef}
+          keyMap={{ MOVE_DOWN: 'down', MOVE_UP: 'up' }}
+          handlers={{
+            MOVE_DOWN: () => moveFocus(1, 0, innerRef),
+            MOVE_UP: () => moveFocus(-1, -1, innerRef),
+          }}
+          style={{ borderRadius: 'inherit' }}
+        >
+          <ul ref={ref} tabIndex={-1} role="menu" {...props}>
+            {children}
+          </ul>
+        </HotKeys>
+      </MenuItemStyleContext.Provider>
     )
 
     const isMenu = isOpen !== undefined
     const { popover } = usePopover({
       content: menuList,
+      escapeWithReference,
       isOpen,
       pin,
       placement,
       setOpen,
-      triggerRef,
+      triggerElement,
     })
 
     if (disabled) return null
@@ -172,16 +150,16 @@ export const MenuList = styled(MenuListInternal)`
   ${maxHeight}
   ${height}
 
+  min-width: 12rem;
   ${minWidth}
   ${maxWidth}
   ${width}
 
   overflow: auto;
+  border-radius: inherit;
 
   list-style: none;
   outline: none;
   user-select: none;
   ${props => props.groupDividers !== false && dividersStyle};
 `
-
-MenuList.defaultProps = { minWidth: '12rem' }

@@ -24,18 +24,14 @@ import { GlobalStyle } from '@looker/components'
 import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
 
-import { ConfirmDemo } from './Confirm/ConfirmDemo'
-import { SliderDemo } from './Slider/SliderDemo'
-
-// want to add < m="medium" > to AvatarUser
+import { MenuDemo } from './Menu/MenuDemo'
 
 const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <>
         <GlobalStyle />
-        <SliderDemo />
-        <ConfirmDemo />
+        <MenuDemo />
       </>
     </ThemeProvider>
   )

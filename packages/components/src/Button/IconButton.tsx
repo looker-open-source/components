@@ -41,7 +41,10 @@ import {
 } from '@looker/design-tokens'
 import { IconNames } from '@looker/icons'
 import React, { forwardRef, Ref } from 'react'
+import { Placement } from 'popper.js'
 import { Icon } from '../Icon'
+import { useTooltip } from '../Tooltip'
+import { useForkedRef } from '../utils'
 import { VisuallyHidden } from '../VisuallyHidden'
 import { ButtonBaseProps, buttonCSS } from './ButtonBase'
 import { ButtonTransparent } from './ButtonTransparent'
@@ -64,6 +67,9 @@ export interface IconButtonProps
     PseudoProps,
     SpaceProps {
   type?: 'button' | 'submit' | 'reset'
+  /*
+   * @default 'neutral'
+   */
   color?: ButtonColors
   /*
    * this props refer to the keyboard expected focus behavior
@@ -88,6 +94,15 @@ export interface IconButtonProps
    * @default 'square'
    */
   shape?: 'round' | 'square'
+  /**
+   * By default IconButton shows a Tooltip with the Button's label text. Setting disableTooltip will disable that behavior.
+   * @default false
+   */
+  tooltipDisabled?: boolean
+  /**
+   * Assign the placement of the built-in Tooltip.
+   */
+  tooltipPlacement?: Placement
 }
 
 export const IconButtonStyle = styled.button<IconButtonProps>`
@@ -96,27 +111,47 @@ export const IconButtonStyle = styled.button<IconButtonProps>`
 `
 
 const IconButtonComponent = forwardRef(
-  (props: IconButtonProps, ref: Ref<HTMLButtonElement>) => {
-    const { icon, size = 'xsmall', label, ...rest } = props
+  (props: IconButtonProps, forwardRef: Ref<HTMLButtonElement>) => {
+    const {
+      icon,
+      size = 'xsmall',
+      label,
+      color,
+      tooltipDisabled,
+      tooltipPlacement,
+      ...rest
+    } = props
 
     const actualSize = size === 'xxsmall' ? 'xsmall' : size
 
+    const tooltip = useTooltip({
+      content: label,
+      disabled: tooltipDisabled,
+      placement: tooltipPlacement,
+    })
+
+    const actualRef = useForkedRef<HTMLButtonElement>(forwardRef, tooltip.ref)
+
     return (
-      <ButtonTransparent
-        ref={ref}
-        color="neutral"
-        p="none"
-        size={actualSize}
-        width={buttonSizeMap[size]}
-        {...rest}
-      >
-        <VisuallyHidden>{label}</VisuallyHidden>
-        <Icon
-          name={icon}
-          size={(buttonSizeMap[size] || buttonSizeMap.xsmall) - 6}
-          aria-hidden={true}
-        />
-      </ButtonTransparent>
+      <>
+        {tooltip.tooltip}
+        <ButtonTransparent
+          ref={actualRef}
+          color={color}
+          p="none"
+          size={actualSize}
+          width={buttonSizeMap[size]}
+          {...tooltip.eventHandlers}
+          {...rest}
+        >
+          <VisuallyHidden>{label}</VisuallyHidden>
+          <Icon
+            name={icon}
+            size={(buttonSizeMap[size] || buttonSizeMap.xsmall) - 6}
+            aria-hidden={true}
+          />
+        </ButtonTransparent>
+      </>
     )
   }
 )
@@ -160,4 +195,10 @@ export const IconButton = styled(IconButtonComponent)<IconButtonProps>`
 
   ${pseudoClasses}
   ${({ shape }) => shape === 'round' && 'border-radius: 100%;'}
+
+  svg {
+    pointer-events: none;
+  }
 `
+
+IconButton.defaultProps = { color: 'neutral' }

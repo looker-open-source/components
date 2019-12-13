@@ -106,6 +106,7 @@ export const buttonCSS = css<ButtonBaseProps>`
   display: inline-flex;
   font-weight: 600;
   justify-content: center;
+  line-height: 1;
   outline: none;
   transition: border 80ms;
   vertical-align: middle;
