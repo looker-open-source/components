@@ -87,7 +87,6 @@ export interface SelectData {
 export interface SelectAction {
   type: SelectActionType
   state: SelectState
-  nextState: SelectState
 }
 
 export interface SelectActionPayload {
@@ -260,7 +259,7 @@ export function useReducerMachine(): [
       console.warn(`Unknown action "${action}" for state "${state}"`)
       return
     }
-    dispatch({ nextState: state, state, type: action, ...payload })
+    dispatch({ state, type: action, ...payload })
     setState(nextState)
   }
 

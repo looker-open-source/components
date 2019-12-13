@@ -181,6 +181,8 @@ export function useKeyDown() {
       case ' ':
       case 'Spacebar': {
         if (
+          // readOnly makes this more like a native select, which opens on spacebar
+          // (otherwise the user is actually typing a space)
           readOnlyPropRef &&
           readOnlyPropRef.current &&
           state === SelectState.NAVIGATING &&

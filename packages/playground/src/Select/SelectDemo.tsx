@@ -91,26 +91,6 @@ function ComposedSelect() {
         <SelectOption value="Bar" />
         <SelectOption value="Baz" />
         <SelectOption value="Qux" />
-        <SelectOption value="Qux" />
-        <SelectOption value="Qux" />
-        <SelectOption value="Qux" />
-        <SelectOption value="Qux" />
-        <SelectOption value="Qux" />
-        <SelectOption value="Qux" />
-        <SelectOption value="Qux" />
-        <SelectOption value="Qux" />
-        <SelectOption value="Qux" />
-        <SelectOption value="Qux" />
-        <SelectOption value="Qux" />
-        <SelectOption value="Qux" />
-        <SelectOption value="Qux" />
-        <SelectOption value="Qux" />
-        <SelectOption value="Qux" />
-        <SelectOption value="Qux" />
-        <SelectOption value="Qux" />
-        <SelectOption value="Qux" />
-        <SelectOption value="Qux" />
-        <SelectOption value="Qux" />
       </SelectList>
     </Select>
   )

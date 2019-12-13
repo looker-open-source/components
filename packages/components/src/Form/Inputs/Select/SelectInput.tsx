@@ -180,7 +180,10 @@ export const SelectInputInternal = forwardRef(function SelectInput(
       lastActionType !== SelectActionType.SELECT_WITH_CLICK &&
       lastActionType !== SelectActionType.NAVIGATE
     ) {
-      transition && transition(SelectActionType.FOCUS)
+      transition &&
+        transition(SelectActionType.FOCUS, {
+          persistSelection: persistSelectionRef && persistSelectionRef.current,
+        })
     }
   }
 
@@ -192,7 +195,7 @@ export const SelectInputInternal = forwardRef(function SelectInput(
     if (state === SelectState.IDLE) {
       // Opening a closed list
       transition &&
-        transition(SelectActionType.NAVIGATE, {
+        transition(SelectActionType.FOCUS, {
           persistSelection: persistSelectionRef && persistSelectionRef.current,
         })
     }
