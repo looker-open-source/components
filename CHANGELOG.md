@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Badge` component with test and documentation
 - `MenuContext` for holding `Menu` state and `MenuItemStyleContext` for `MenuItem` styling inheritance
 - `Popover` now has `escapeWithReference` prop for allowing the overlay to break out of the scroll parent
-
+- Api icon added to `Icon` list
 ### Changed
 
 - `Icon` - `ChangeHistory` and `DragHandleDots` artwork fixed up
