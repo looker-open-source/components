@@ -42,6 +42,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Tab component focus fixed - focus ring only show on keyboard interactions
+- Prevent www theme examples from bleeding into global scope
+- Fix slider overflow issue in Windows/Edge
+- Fix www sidebar nav button appearance in Windows/Edge
+- Banner icons are rendered at proper sizes when used in www
 - `Banner` - icons are rendered at proper sizes when used in `www`
 - `Menu` issues arising from use of `cloneElement`
 - `OverlaySurfaceArrow` - added missing border on
