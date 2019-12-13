@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- updated tests for Text, so it account for textTransform
 - `Icon` - `ChangeHistory` and `DragHandleDots` artwork fixed up
 - `IconButton` now displays a `Tooltip` with the `IconButton`'s label text.
   - Also added `tooltipDisabled` and `tooltipPlacement` to allow for customization of the built-in behavior.
@@ -41,6 +42,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Edited headings.mdx file to display correct use of textTransform
 - `Banner` - icons are rendered at proper sizes when used in `www`
 - `Menu` issues arising from use of `cloneElement`
 - `OverlaySurfaceArrow` - added missing border on
