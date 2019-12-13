@@ -40,7 +40,12 @@ export type ButtonBaseSizes =
   | SizeMedium
   | SizeLarge
 
-export type ButtonSizes = SizeXSmall | SizeSmall | SizeMedium | SizeLarge
+export type ButtonSizes =
+  | SizeXXSmall
+  | SizeXSmall
+  | SizeSmall
+  | SizeMedium
+  | SizeLarge
 
 export interface ButtonSizeProps {
   /**

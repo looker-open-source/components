@@ -4,11 +4,11 @@ status: stable
 github: Button/IconButton
 ---
 
-`IconButton`'s are used when you need an icon to trigger an action, such as showing a dialog or deleting an item. Icon buttons require a `label` that describes it's action. The `label` should be descriptive and succinct.
-
-`IconButton`'s come in five sizes: `xxsmall`, `xsmall` (default), `small`, `medium`, and `large`. It also supports two shapes: `round` and `square`.
-
+`IconButton`'s are used when you need an icon to trigger an action, such as showing a dialog or deleting an item.
+It require a `label` that describes it's action. The `label` should be descriptive and succinct.
 If you need an icon for purely decorative purposes use an `<Icon />` instead.
+
+### IconButton Basic
 
 ```jsx
 ;() => {
@@ -22,26 +22,104 @@ If you need an icon for purely decorative purposes use an `<Icon />` instead.
 
   return (
     <ButtonCollection>
-      <IconButton label="Add Something Neat" icon="Plus" size="xxsmall" />
-      <IconButton label="Settings" icon="Gear" />
-      <IconButton label="Add to Favorites" icon="Favorite" size="small" />
+      <IconButton icon="Plus" label="Add Something Neat" />
+      <IconButton icon="Gear" label="Settings" />
+      <IconButton icon="Trash" label="Trash It" />
+      <IconButton icon="Close" label="Close" />
+      <IconButton icon="Favorite" label="Add to Favorites" />
+    </ButtonCollection>
+  )
+}
+```
+
+### IconButton Props
+
+`IconButton`'s sizes:
+
+- `xxsmall` | `xsmall` (default) | `small` | `medium` | `large`
+
+```jsx
+;() => {
+  const ButtonCollection = styled.div`
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: ${({ theme }) => theme.space.medium};
+    justify-items: center;
+    align-items: center;
+  `
+  return (
+    <ButtonCollection>
+      <IconButton icon="Favorite" label="Add to Favorites" size="xxsmall" />
+      <IconButton icon="Favorite" label="Add to Favorites" />
+      <IconButton icon="Favorite" label="Add to Favorites" size="small" />
+      <IconButton icon="Favorite" label="Add to Favorites" size="medium" />
+      <IconButton icon="Favorite" label="Add to Favorites" size="large" />
+    </ButtonCollection>
+  )
+}
+```
+
+`IconButton`'s shapes:
+
+- `round` | `square` (default)
+
+```jsx
+;() => {
+  const ButtonCollection = styled.div`
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: ${({ theme }) => theme.space.medium};
+    justify-items: center;
+    align-items: center;
+  `
+
+  return (
+    <ButtonCollection>
       <IconButton
-        label="Delete not-so-great Thing"
         icon="Trash"
-        size="medium"
-        color="danger"
+        label="Trash it"
+        outline
+        shape="round"
+        size="xxsmall"
       />
       <IconButton
-        label="Forward"
-        icon="CaretRight"
-        size="large"
-        shape="round"
+        icon="Trash"
+        label="Trash it"
         outline
+        shape="round"
+        size="large"
       />
     </ButtonCollection>
   )
 }
 ```
+
+`IconButton`'s colors:
+
+- `danger` | `neutral` (default) | `primary` | `secondary`
+
+```jsx
+;() => {
+  const ButtonCollection = styled.div`
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: ${({ theme }) => theme.space.medium};
+    justify-items: center;
+    align-items: center;
+  `
+
+  return (
+    <ButtonCollection>
+      <IconButton color="danger" icon="Gear" label="Settings" size="large" />
+      <IconButton color="neutral" icon="Gear" label="Settings" size="large" />
+      <IconButton color="primary" icon="Gear" label="Settings" size="large" />
+      <IconButton color="secondary" icon="Gear" label="Settings" size="large" />
+    </ButtonCollection>
+  )
+}
+```
+
+### animation
 
 ```jsx
 ;() => {

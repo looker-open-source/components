@@ -9,8 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Button size map was updated with new sizes
-- Test for Button got updates to reflect the new sizes
+- Button size map was updated with correct sizes
+- Test for Button got updates to reflect the correct sizes
 
 ## [0.7.7] - 2019-12-19
 
