@@ -18,7 +18,7 @@ test('Badge renders all intents', () => {
   assertSnapshot(<Badge intent="critical">critical</Badge>)
 })
 
-test('Badge renders with round flag', () => {
+test('Badge rendered with rounded property', () => {
   assertSnapshot(<Badge rounded>small</Badge>)
   assertSnapshot(
     <Badge size="medium" rounded>

@@ -69,7 +69,7 @@ test('InputSearch shows clear button and summary', () => {
   expect(wrapper.props().children.props.summary).toEqual('summary value')
 })
 
-test('InputSearch hides controls when using the flag hideControls', () => {
+test('InputSearch hides controls when using hideControls option', () => {
   const wrapper = mountWithTheme(
     <InputSearch value="start value" summary="summary value" hideControls />
   )

@@ -37,6 +37,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+- `Icon` - removed `Users` (use `Group` instead)
 - `useMenu` hook deprecated in favor of `MenuContext`
 
 ### Fixed
