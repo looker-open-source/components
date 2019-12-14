@@ -58,6 +58,15 @@ test('IconButton accepts events', () => {
   assertSnapshot(<IconButton label="Test" icon="Favorite" onClick={noop} />)
 })
 
+test('IconButton is a square by default', () => {
+  const { getByTitle } = renderWithTheme(
+    <IconButton label="Gear" icon="Gear" size="large" />
+  )
+
+  expect(getByTitle('Gear')).toHaveStyle('width: 44')
+  expect(getByTitle('Gear')).toHaveStyle('height: 44')
+})
+
 test('IconButton renders focus ring on tab input but not on click', () => {
   const { getByTitle } = renderWithTheme(
     <>
