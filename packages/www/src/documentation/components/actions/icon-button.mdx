@@ -8,8 +8,6 @@ github: Button/IconButton
 It require a `label` that describes it's action. The `label` should be descriptive and succinct.
 If you need an icon for purely decorative purposes use an `<Icon />` instead.
 
-### IconButton Basic
-
 ```jsx
 ;() => {
   const ButtonCollection = styled.div`
@@ -32,9 +30,9 @@ If you need an icon for purely decorative purposes use an `<Icon />` instead.
 }
 ```
 
-### IconButton Props
+### IconButton Options
 
-`IconButton`'s sizes:
+## Sizes
 
 - `xxsmall` | `xsmall` (default) | `small` | `medium` | `large`
 
@@ -59,7 +57,7 @@ If you need an icon for purely decorative purposes use an `<Icon />` instead.
 }
 ```
 
-`IconButton`'s shapes:
+## Shapes
 
 - `round` | `square` (default)
 
@@ -94,7 +92,7 @@ If you need an icon for purely decorative purposes use an `<Icon />` instead.
 }
 ```
 
-`IconButton`'s colors:
+## Color
 
 - `danger` | `neutral` (default) | `primary` | `secondary`
 
@@ -119,7 +117,9 @@ If you need an icon for purely decorative purposes use an `<Icon />` instead.
 }
 ```
 
-### animation
+## Animation
+
+Create the styled rules desired and wrap the `IconButton` component on it.
 
 ```jsx
 ;() => {
@@ -140,6 +140,8 @@ If you need an icon for purely decorative purposes use an `<Icon />` instead.
   )
 }
 ```
+
+## IconButton & Tooltip
 
 You can also use your own `Tooltip` around `IconButton` (this will effectively remove the "built-in" `Tooltip`)
 
