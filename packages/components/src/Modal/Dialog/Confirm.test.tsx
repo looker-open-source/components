@@ -39,7 +39,7 @@ const requiredProps = {
 }
 
 const optionalProps = {
-  cancelLabel: 'Dont Delete',
+  cancelLabel: "Don't Delete",
   confirmLabel: 'Delete',
   message: 'This is permanent',
   onCancel: jest.fn(),

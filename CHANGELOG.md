@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- update button color to be neutral for useConfirm and Confirm components.
 - Button size map was updated with correct sizes
 - Test for Button got updates to reflect the correct sizes
 - `ModalManager` (and it's derived `DialogManager` & `DrawerManager`) now support a `onClose` callback that will be called when the modal is closed.
