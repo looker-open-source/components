@@ -122,8 +122,6 @@ const IconButtonComponent = forwardRef(
       ...rest
     } = props
 
-    const actualSize = size === 'xxsmall' ? 'xsmall' : size
-
     const tooltip = useTooltip({
       content: label,
       disabled: tooltipDisabled,
@@ -139,17 +137,13 @@ const IconButtonComponent = forwardRef(
           ref={actualRef}
           color={color}
           p="none"
-          size={actualSize}
+          size={size}
           width={buttonSizeMap[size]}
           {...tooltip.eventHandlers}
           {...rest}
         >
           <VisuallyHidden>{label}</VisuallyHidden>
-          <Icon
-            name={icon}
-            size={(buttonSizeMap[size] || buttonSizeMap.xsmall) - 6}
-            aria-hidden={true}
-          />
+          <Icon name={icon} size={buttonSizeMap[size] - 6} aria-hidden={true} />
         </ButtonTransparent>
       </>
     )

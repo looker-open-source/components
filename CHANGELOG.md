@@ -7,12 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.7.8] - 2018-12-16
 
-### Changes
+### Changed
 
+- Button size map was updated with correct sizes
+- Test for Button got updates to reflect the correct sizes
 - `ModalManager` (and it's derived `DialogManager` & `DrawerManager`) now support a `onClose` callback that will be called when the modal is closed.
 
 ### Bug Fixes
 
+- Button size map was updated with new sizes and Test got updates to reflect the new sizes
 - Correct issue `ModalManager` `surfaceStyles` had `minWidth` and `maxWidth` properties that were difficult to override on an instance.
 - Correct usage of `textTransform` in documentation and updated related test suite
 

@@ -9,8 +9,8 @@ exports[`IconButton accepts color 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -29,7 +29,7 @@ exports[`IconButton accepts color 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  width: 22px;
+  width: 24px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -52,7 +52,7 @@ exports[`IconButton accepts color 1`] = `
   vertical-align: middle;
   white-space: nowrap;
   font-size: 0.75rem;
-  height: 22px;
+  height: 24px;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   padding: 0rem;
@@ -124,7 +124,7 @@ exports[`IconButton accepts color 1`] = `
   onMouseOut={[Function]}
   onMouseOver={[Function]}
   size="xsmall"
-  width={22}
+  width={24}
 >
   <div
     className="c3"
@@ -134,7 +134,7 @@ exports[`IconButton accepts color 1`] = `
   <div
     aria-hidden={true}
     className="c4 "
-    size={16}
+    size={18}
   >
     <svg
       fill="currentColor"
@@ -163,8 +163,8 @@ exports[`IconButton accepts events 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -183,7 +183,7 @@ exports[`IconButton accepts events 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  width: 22px;
+  width: 24px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -206,7 +206,7 @@ exports[`IconButton accepts events 1`] = `
   vertical-align: middle;
   white-space: nowrap;
   font-size: 0.75rem;
-  height: 22px;
+  height: 24px;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   padding: 0rem;
@@ -279,7 +279,7 @@ exports[`IconButton accepts events 1`] = `
   onMouseOut={[Function]}
   onMouseOver={[Function]}
   size="xsmall"
-  width={22}
+  width={24}
 >
   <div
     className="c3"
@@ -289,7 +289,7 @@ exports[`IconButton accepts events 1`] = `
   <div
     aria-hidden={true}
     className="c4 "
-    size={16}
+    size={18}
   >
     <svg
       fill="currentColor"
@@ -318,8 +318,8 @@ exports[`IconButton accepts events 2`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -338,7 +338,7 @@ exports[`IconButton accepts events 2`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  width: 22px;
+  width: 24px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -361,7 +361,7 @@ exports[`IconButton accepts events 2`] = `
   vertical-align: middle;
   white-space: nowrap;
   font-size: 0.75rem;
-  height: 22px;
+  height: 24px;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   padding: 0rem;
@@ -434,7 +434,7 @@ exports[`IconButton accepts events 2`] = `
   onMouseOut={[Function]}
   onMouseOver={[Function]}
   size="xsmall"
-  width={22}
+  width={24}
 >
   <div
     className="c3"
@@ -444,7 +444,7 @@ exports[`IconButton accepts events 2`] = `
   <div
     aria-hidden={true}
     className="c4 "
-    size={16}
+    size={18}
   >
     <svg
       fill="currentColor"
@@ -473,8 +473,8 @@ exports[`IconButton allows for ARIA attributes 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -493,7 +493,7 @@ exports[`IconButton allows for ARIA attributes 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  width: 22px;
+  width: 24px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -516,7 +516,7 @@ exports[`IconButton allows for ARIA attributes 1`] = `
   vertical-align: middle;
   white-space: nowrap;
   font-size: 0.75rem;
-  height: 22px;
+  height: 24px;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   padding: 0rem;
@@ -589,7 +589,7 @@ exports[`IconButton allows for ARIA attributes 1`] = `
   onMouseOut={[Function]}
   onMouseOver={[Function]}
   size="xsmall"
-  width={22}
+  width={24}
 >
   <div
     className="c3"
@@ -599,7 +599,7 @@ exports[`IconButton allows for ARIA attributes 1`] = `
   <div
     aria-hidden={true}
     className="c4 "
-    size={16}
+    size={18}
   >
     <svg
       fill="currentColor"
@@ -628,8 +628,8 @@ exports[`IconButton default 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -648,7 +648,7 @@ exports[`IconButton default 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  width: 22px;
+  width: 24px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -671,7 +671,7 @@ exports[`IconButton default 1`] = `
   vertical-align: middle;
   white-space: nowrap;
   font-size: 0.75rem;
-  height: 22px;
+  height: 24px;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   padding: 0rem;
@@ -743,7 +743,7 @@ exports[`IconButton default 1`] = `
   onMouseOut={[Function]}
   onMouseOver={[Function]}
   size="xsmall"
-  width={22}
+  width={24}
 >
   <div
     className="c3"
@@ -753,7 +753,7 @@ exports[`IconButton default 1`] = `
   <div
     aria-hidden={true}
     className="c4 "
-    size={16}
+    size={18}
   >
     <svg
       fill="currentColor"
@@ -782,8 +782,8 @@ exports[`IconButton outline 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -802,7 +802,7 @@ exports[`IconButton outline 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  width: 22px;
+  width: 24px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -825,7 +825,7 @@ exports[`IconButton outline 1`] = `
   vertical-align: middle;
   white-space: nowrap;
   font-size: 0.75rem;
-  height: 22px;
+  height: 24px;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   padding: 0rem;
@@ -915,7 +915,7 @@ exports[`IconButton outline 1`] = `
   onMouseOut={[Function]}
   onMouseOver={[Function]}
   size="xsmall"
-  width={22}
+  width={24}
 >
   <div
     className="c3"
@@ -925,7 +925,7 @@ exports[`IconButton outline 1`] = `
   <div
     aria-hidden={true}
     className="c4 "
-    size={16}
+    size={18}
   >
     <svg
       fill="currentColor"
@@ -954,8 +954,8 @@ exports[`IconButton renders focus ring on tab input but not on click 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -974,7 +974,7 @@ exports[`IconButton renders focus ring on tab input but not on click 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  width: 22px;
+  width: 24px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -997,7 +997,7 @@ exports[`IconButton renders focus ring on tab input but not on click 1`] = `
   vertical-align: middle;
   white-space: nowrap;
   font-size: 0.75rem;
-  height: 22px;
+  height: 24px;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   padding: 0rem;
@@ -1069,7 +1069,7 @@ exports[`IconButton renders focus ring on tab input but not on click 1`] = `
   onMouseOut={[Function]}
   onMouseOver={[Function]}
   size="xsmall"
-  width={22}
+  width={24}
 >
   <div
     className="c3"
@@ -1079,7 +1079,7 @@ exports[`IconButton renders focus ring on tab input but not on click 1`] = `
   <div
     aria-hidden={true}
     className="c4 "
-    size={16}
+    size={18}
   >
     <svg
       fill="currentColor"
@@ -1108,8 +1108,8 @@ exports[`IconButton renders focus ring on tab input but not on click 2`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1128,7 +1128,7 @@ exports[`IconButton renders focus ring on tab input but not on click 2`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  width: 22px;
+  width: 24px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1151,7 +1151,7 @@ exports[`IconButton renders focus ring on tab input but not on click 2`] = `
   vertical-align: middle;
   white-space: nowrap;
   font-size: 0.75rem;
-  height: 22px;
+  height: 24px;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   padding: 0rem;
@@ -1223,7 +1223,7 @@ exports[`IconButton renders focus ring on tab input but not on click 2`] = `
   onMouseOut={[Function]}
   onMouseOver={[Function]}
   size="xsmall"
-  width={22}
+  width={24}
 >
   <div
     className="c3"
@@ -1233,7 +1233,7 @@ exports[`IconButton renders focus ring on tab input but not on click 2`] = `
   <div
     aria-hidden={true}
     className="c4 "
-    size={16}
+    size={18}
   >
     <svg
       fill="currentColor"
@@ -1262,8 +1262,8 @@ exports[`IconButton resized 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1282,7 +1282,7 @@ exports[`IconButton resized 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  width: 42px;
+  width: 44px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -1305,7 +1305,7 @@ exports[`IconButton resized 1`] = `
   vertical-align: middle;
   white-space: nowrap;
   font-size: 1.375rem;
-  height: 42px;
+  height: 44px;
   padding-left: 1.25rem;
   padding-right: 1.25rem;
   padding: 0rem;
@@ -1377,7 +1377,7 @@ exports[`IconButton resized 1`] = `
   onMouseOut={[Function]}
   onMouseOver={[Function]}
   size="large"
-  width={42}
+  width={44}
 >
   <div
     className="c3"
@@ -1387,7 +1387,7 @@ exports[`IconButton resized 1`] = `
   <div
     aria-hidden={true}
     className="c4 "
-    size={36}
+    size={38}
   >
     <svg
       fill="currentColor"

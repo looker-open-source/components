@@ -83,8 +83,8 @@ exports[`Dismissable banner 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -103,7 +103,7 @@ exports[`Dismissable banner 1`] = `
   margin: 0;
   padding: 0;
   vertical-align: baseline;
-  width: 26px;
+  width: 28px;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -126,7 +126,7 @@ exports[`Dismissable banner 1`] = `
   vertical-align: middle;
   white-space: nowrap;
   font-size: 0.875rem;
-  height: 26px;
+  height: 28px;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
   padding: 0rem;
@@ -276,7 +276,7 @@ exports[`Dismissable banner 1`] = `
         "padding": "1px",
       }
     }
-    width={26}
+    width={28}
   >
     <div
       className="c2"
@@ -286,7 +286,7 @@ exports[`Dismissable banner 1`] = `
     <div
       aria-hidden={true}
       className="c6 "
-      size={20}
+      size={22}
     >
       <svg
         fill="currentColor"
