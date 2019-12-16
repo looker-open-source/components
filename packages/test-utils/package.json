@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@looker/design-tokens": "^0.7.7",
-    "@testing-library/react": "^9.3.3",
+    "@testing-library/react": "^9.4.0",
     "enzyme": "^3.10.0",
     "jest-styled-components": "^6.3.4",
     "react-test-renderer": "^16.12.0",
