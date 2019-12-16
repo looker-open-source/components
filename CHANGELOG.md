@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## UNRELEASED
+## [0.7.8] - 2018-12-16
 
 ### Changed
 
@@ -13,7 +13,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Test for Button got updates to reflect the correct sizes
 - `ModalManager` (and it's derived `DialogManager` & `DrawerManager`) now support a `onClose` callback that will be called when the modal is closed.
 
-## [0.7.7] - 2019-12-19
+### Bug Fixes
+
+- Correct issue `ModalManager` `surfaceStyles` had `minWidth` and `maxWidth` properties that were difficult to override on an instance.
+- Correct usage of `textTransform` in documentation and updated related test suite
+
+## [0.7.7] - 2019-12-13
 
 ### Added
 
@@ -25,7 +30,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- updated tests for Text, so it account for textTransform
 - `Icon` - `ChangeHistory` and `DragHandleDots` artwork fixed up
 - `IconButton` now displays a `Tooltip` with the `IconButton`'s label text.
   - Also added `tooltipDisabled` and `tooltipPlacement` to allow for customization of the built-in behavior.
@@ -53,7 +57,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Edited headings.mdx file to display correct use of textTransform
 - `Banner` - icons are rendered at proper sizes when used in `www`
 - `Menu` issues arising from use of `cloneElement`
 - `OverlaySurfaceArrow` - added missing border on
