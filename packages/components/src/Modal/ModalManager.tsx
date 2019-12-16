@@ -48,6 +48,10 @@ export interface ModalManagerProps extends ManagedModalProps {
    */
   canClose?: () => boolean
   /**
+   * Specify a callback to be called each time this Modal is closed
+   */
+  onClose?: () => void
+  /**
    * Can be one of: top, bottom, left, right, auto, with the modifiers: start,
    * end. This value comes directly from popper.js. See
    * https://popper.js.org/popper-documentation.html#Popper.placements for more
@@ -117,6 +121,7 @@ export abstract class ModalManager extends Component<
 
   public close() {
     if (this.props.canClose && !this.props.canClose()) return
+    this.props.onClose && this.props.onClose()
     this.setState({ isOpen: false })
   }
 
