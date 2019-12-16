@@ -6964,10 +6964,10 @@ eslint-loader@^3.0.3:
     object-hash "^2.0.1"
     schema-utils "^2.6.1"
 
-eslint-mdx@^1.6.3:
-  version "1.6.3"
-  resolved "https://registry.yarnpkg.com/eslint-mdx/-/eslint-mdx-1.6.3.tgz#f70a94d52c39aca0de93ee03fa1b09d744ff7056"
-  integrity sha512-KGGZmOMufSdfXQWdEdmVr+V4g58DnROY7SKtBSmndhT/2vVjg/9hZSasyB/Ov32SqsAY6QJGDAR87qUxersV9A==
+eslint-mdx@^1.6.3, eslint-mdx@^1.6.4:
+  version "1.6.4"
+  resolved "https://registry.yarnpkg.com/eslint-mdx/-/eslint-mdx-1.6.4.tgz#987b765bccc2d5911f7ba2a1edc4d65c7b8ced6d"
+  integrity sha512-6IWeQS1fDSITGNhiBFlQdNJWb2V+nEoXI3JvacwdeiWQXc+ovBIAJPfspe9WAgDjIuatBEPNC5TRDMV7iHa1pg==
   dependencies:
     espree "^6.1.2"
     remark-mdx "^1.5.1"
