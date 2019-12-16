@@ -2,13 +2,6 @@
 
 exports[`ModalContent - no overflow 1`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   overflow: auto;
   -webkit-flex: 8;
   -ms-flex: 8;
@@ -20,13 +13,6 @@ exports[`ModalContent - no overflow 1`] = `
 }
 
 .c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   padding-left: 2rem;
   padding-right: 2rem;
   padding-top: 1.25rem;
@@ -46,13 +32,6 @@ exports[`ModalContent - no overflow 1`] = `
 
 exports[`ModalContent - no overflow 2`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   overflow: auto;
   -webkit-flex: 8;
   -ms-flex: 8;
@@ -64,13 +43,6 @@ exports[`ModalContent - no overflow 2`] = `
 }
 
 .c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   padding-left: 2rem;
   padding-right: 2rem;
   padding-top: 1.25rem;

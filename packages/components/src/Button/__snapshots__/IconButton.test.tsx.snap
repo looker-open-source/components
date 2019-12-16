@@ -2,13 +2,6 @@
 
 exports[`IconButton accepts color 1`] = `
 .c4 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   width: 18px;
   height: 18px;
   -webkit-align-items: center;
@@ -22,13 +15,6 @@ exports[`IconButton accepts color 1`] = `
 }
 
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   width: 24px;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -101,16 +87,6 @@ exports[`IconButton accepts color 1`] = `
   clip: rect(1px,1px,1px,1px);
 }
 
-.c2 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-}
-
 .c2 svg {
   pointer-events: none;
 }
@@ -156,13 +132,6 @@ exports[`IconButton accepts color 1`] = `
 
 exports[`IconButton accepts events 1`] = `
 .c4 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   width: 18px;
   height: 18px;
   -webkit-align-items: center;
@@ -176,13 +145,6 @@ exports[`IconButton accepts events 1`] = `
 }
 
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   width: 24px;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -253,16 +215,6 @@ exports[`IconButton accepts events 1`] = `
   overflow: hidden;
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
-}
-
-.c2 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
 }
 
 .c2 svg {
@@ -311,13 +263,6 @@ exports[`IconButton accepts events 1`] = `
 
 exports[`IconButton accepts events 2`] = `
 .c4 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   width: 18px;
   height: 18px;
   -webkit-align-items: center;
@@ -331,13 +276,6 @@ exports[`IconButton accepts events 2`] = `
 }
 
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   width: 24px;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -408,16 +346,6 @@ exports[`IconButton accepts events 2`] = `
   overflow: hidden;
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
-}
-
-.c2 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
 }
 
 .c2 svg {
@@ -466,13 +394,6 @@ exports[`IconButton accepts events 2`] = `
 
 exports[`IconButton allows for ARIA attributes 1`] = `
 .c4 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   width: 18px;
   height: 18px;
   -webkit-align-items: center;
@@ -486,13 +407,6 @@ exports[`IconButton allows for ARIA attributes 1`] = `
 }
 
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   width: 24px;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -563,16 +477,6 @@ exports[`IconButton allows for ARIA attributes 1`] = `
   overflow: hidden;
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
-}
-
-.c2 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
 }
 
 .c2 svg {
@@ -621,13 +525,6 @@ exports[`IconButton allows for ARIA attributes 1`] = `
 
 exports[`IconButton default 1`] = `
 .c4 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   width: 18px;
   height: 18px;
   -webkit-align-items: center;
@@ -641,13 +538,6 @@ exports[`IconButton default 1`] = `
 }
 
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   width: 24px;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -718,16 +608,6 @@ exports[`IconButton default 1`] = `
   overflow: hidden;
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
-}
-
-.c2 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
 }
 
 .c2 svg {
@@ -775,13 +655,6 @@ exports[`IconButton default 1`] = `
 
 exports[`IconButton outline 1`] = `
 .c4 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   width: 18px;
   height: 18px;
   -webkit-align-items: center;
@@ -795,13 +668,6 @@ exports[`IconButton outline 1`] = `
 }
 
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   width: 24px;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -875,13 +741,6 @@ exports[`IconButton outline 1`] = `
 }
 
 .c2 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   border: 1px solid #C1C6CC;
 }
 
@@ -947,13 +806,6 @@ exports[`IconButton outline 1`] = `
 
 exports[`IconButton renders focus ring on tab input but not on click 1`] = `
 .c4 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   width: 18px;
   height: 18px;
   -webkit-align-items: center;
@@ -967,13 +819,6 @@ exports[`IconButton renders focus ring on tab input but not on click 1`] = `
 }
 
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   width: 24px;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -1044,16 +889,6 @@ exports[`IconButton renders focus ring on tab input but not on click 1`] = `
   overflow: hidden;
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
-}
-
-.c2 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
 }
 
 .c2 svg {
@@ -1101,13 +936,6 @@ exports[`IconButton renders focus ring on tab input but not on click 1`] = `
 
 exports[`IconButton renders focus ring on tab input but not on click 2`] = `
 .c4 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   width: 18px;
   height: 18px;
   -webkit-align-items: center;
@@ -1121,13 +949,6 @@ exports[`IconButton renders focus ring on tab input but not on click 2`] = `
 }
 
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   width: 24px;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -1200,16 +1021,6 @@ exports[`IconButton renders focus ring on tab input but not on click 2`] = `
   clip: rect(1px,1px,1px,1px);
 }
 
-.c2 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-}
-
 .c2 svg {
   pointer-events: none;
 }
@@ -1255,13 +1066,6 @@ exports[`IconButton renders focus ring on tab input but not on click 2`] = `
 
 exports[`IconButton resized 1`] = `
 .c4 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   width: 38px;
   height: 38px;
   -webkit-align-items: center;
@@ -1275,13 +1079,6 @@ exports[`IconButton resized 1`] = `
 }
 
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   width: 44px;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -1352,16 +1149,6 @@ exports[`IconButton resized 1`] = `
   overflow: hidden;
   -webkit-clip: rect(1px,1px,1px,1px);
   clip: rect(1px,1px,1px,1px);
-}
-
-.c2 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
 }
 
 .c2 svg {

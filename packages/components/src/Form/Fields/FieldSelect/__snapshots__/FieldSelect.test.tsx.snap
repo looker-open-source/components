@@ -2,13 +2,6 @@
 
 exports[`A FieldSelect 1`] = `
 .c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   color: #262D33;
   margin-right: 0.5rem;
   font-weight: 600;
@@ -16,14 +9,7 @@ exports[`A FieldSelect 1`] = `
   display: inline-block;
 }
 
-.c3 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
+.c2 {
   background-color: #FFFFFF;
   border: solid 1px;
   -webkit-appearance: none;
@@ -44,28 +30,11 @@ exports[`A FieldSelect 1`] = `
   padding-right: calc(2 * .25rem + 1rem);
 }
 
-.c3::-ms-expand {
+.c2::-ms-expand {
   display: none;
 }
 
-.c2 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-}
-
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   margin-bottom: 0.5rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -92,10 +61,10 @@ exports[`A FieldSelect 1`] = `
     className="c0"
   >
     <div
-      className="c2"
+      className=""
     >
       <select
-        className="c3 "
+        className="c2 "
         fontSize="small"
         height="28px"
         id="thumbs-up"
@@ -112,13 +81,6 @@ exports[`A FieldSelect 1`] = `
 
 exports[`A FieldSelect with an error validation aligned to the left 1`] = `
 .c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   color: #262D33;
   margin-right: 0.5rem;
   font-weight: 600;
@@ -126,14 +88,7 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   display: inline-block;
 }
 
-.c4 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
+.c3 {
   background-color: #FFF2F4;
   border: solid 1px;
   -webkit-appearance: none;
@@ -154,28 +109,11 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   padding-right: calc(2 * .25rem + 1rem);
 }
 
-.c4::-ms-expand {
+.c3::-ms-expand {
   display: none;
 }
 
-.c3 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-}
-
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   margin-bottom: 0.5rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -187,13 +125,6 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
 }
 
 .c2 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   margin-bottom: 0.5rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -212,14 +143,7 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   align-items: baseline;
 }
 
-.c5 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
+.c4 {
   color: #990F14;
   margin-right: 0.5rem;
   margin-top: 0.5rem;
@@ -242,10 +166,10 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
     className="c2"
   >
     <div
-      className="c3"
+      className=""
     >
       <select
-        className="c4 "
+        className="c3 "
         fontSize="small"
         height="28px"
         id="thumbs-up"
@@ -257,7 +181,7 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
       </select>
     </div>
     <div
-      className="c5"
+      className="c4"
       fontSize="xsmall"
       type="error"
     >
@@ -269,13 +193,6 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
 
 exports[`A FieldSelect with an error validation aligned to the right 1`] = `
 .c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   color: #262D33;
   margin-right: 0.5rem;
   font-weight: 600;
@@ -283,14 +200,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   display: inline-block;
 }
 
-.c4 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
+.c3 {
   background-color: #FFF2F4;
   border: solid 1px;
   -webkit-appearance: none;
@@ -311,28 +221,11 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   padding-right: calc(2 * .25rem + 1rem);
 }
 
-.c4::-ms-expand {
+.c3::-ms-expand {
   display: none;
 }
 
-.c3 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-}
-
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   margin-bottom: 0.5rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -344,13 +237,6 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
 }
 
 .c2 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   margin-bottom: 0.5rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -365,14 +251,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   align-items: baseline;
 }
 
-.c5 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
+.c4 {
   color: #990F14;
   margin-right: 0.5rem;
   margin-top: 0.5rem;
@@ -396,10 +275,10 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
     className="c2"
   >
     <div
-      className="c3"
+      className=""
     >
       <select
-        className="c4 "
+        className="c3 "
         fontSize="small"
         height="28px"
         id="thumbs-up"
@@ -411,7 +290,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
       </select>
     </div>
     <div
-      className="c5"
+      className="c4"
       fontSize="xsmall"
       type="error"
     >
@@ -423,13 +302,6 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
 
 exports[`A required FieldSelect 1`] = `
 .c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   color: #262D33;
   margin-right: 0.5rem;
   font-weight: 600;
@@ -437,14 +309,7 @@ exports[`A required FieldSelect 1`] = `
   display: inline-block;
 }
 
-.c4 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
+.c3 {
   background-color: #FFFFFF;
   border: solid 1px;
   -webkit-appearance: none;
@@ -465,28 +330,11 @@ exports[`A required FieldSelect 1`] = `
   padding-right: calc(2 * .25rem + 1rem);
 }
 
-.c4::-ms-expand {
+.c3::-ms-expand {
   display: none;
 }
 
-.c3 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-}
-
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   margin-bottom: 0.5rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -524,10 +372,10 @@ exports[`A required FieldSelect 1`] = `
     className="c0"
   >
     <div
-      className="c3"
+      className=""
     >
       <select
-        className="c4 "
+        className="c3 "
         fontSize="small"
         height="28px"
         id="thumbs-up"
@@ -545,13 +393,6 @@ exports[`A required FieldSelect 1`] = `
 
 exports[`FieldSelect supports labelWeight 1`] = `
 .c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   color: #262D33;
   margin-right: 0.5rem;
   font-weight: 400;
@@ -559,14 +400,7 @@ exports[`FieldSelect supports labelWeight 1`] = `
   display: inline-block;
 }
 
-.c3 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
+.c2 {
   background-color: #FFFFFF;
   border: solid 1px;
   -webkit-appearance: none;
@@ -587,28 +421,11 @@ exports[`FieldSelect supports labelWeight 1`] = `
   padding-right: calc(2 * .25rem + 1rem);
 }
 
-.c3::-ms-expand {
+.c2::-ms-expand {
   display: none;
 }
 
-.c2 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-}
-
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   margin-bottom: 0.5rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -635,10 +452,10 @@ exports[`FieldSelect supports labelWeight 1`] = `
     className="c0"
   >
     <div
-      className="c2"
+      className=""
     >
       <select
-        className="c3 "
+        className="c2 "
         fontSize="small"
         height="28px"
         id="thumbs-up"

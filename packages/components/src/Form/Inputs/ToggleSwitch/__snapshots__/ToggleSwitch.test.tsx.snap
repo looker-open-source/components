@@ -14,13 +14,6 @@ exports[`Big ToggleSwitch 1`] = `
 }
 
 .c2 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   -webkit-transition: 300ms;
   transition: 300ms;
   position: absolute;
@@ -47,13 +40,6 @@ exports[`Big ToggleSwitch 1`] = `
 }
 
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   width: 6.5625rem;
   height: 3.75rem;
   display: inline-block;
@@ -101,13 +87,6 @@ exports[`ToggleSwitch default 1`] = `
 }
 
 .c2 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   -webkit-transition: 300ms;
   transition: 300ms;
   position: absolute;
@@ -134,13 +113,6 @@ exports[`ToggleSwitch default 1`] = `
 }
 
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   width: 2.1875rem;
   height: 1.25rem;
   display: inline-block;
@@ -188,13 +160,6 @@ exports[`ToggleSwitch on set to false 1`] = `
 }
 
 .c2 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   -webkit-transition: 300ms;
   transition: 300ms;
   position: absolute;
@@ -221,13 +186,6 @@ exports[`ToggleSwitch on set to false 1`] = `
 }
 
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   width: 2.1875rem;
   height: 1.25rem;
   display: inline-block;
@@ -280,13 +238,6 @@ exports[`ToggleSwitch on set to true 1`] = `
 }
 
 .c2 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   -webkit-transition: 300ms;
   transition: 300ms;
   position: absolute;
@@ -313,13 +264,6 @@ exports[`ToggleSwitch on set to true 1`] = `
 }
 
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   width: 2.1875rem;
   height: 1.25rem;
   display: inline-block;
@@ -372,13 +316,6 @@ exports[`ToggleSwitch that is disabled 1`] = `
 }
 
 .c2 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   -webkit-transition: 300ms;
   transition: 300ms;
   position: absolute;
@@ -401,13 +338,6 @@ exports[`ToggleSwitch that is disabled 1`] = `
 }
 
 .c4 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -419,13 +349,6 @@ exports[`ToggleSwitch that is disabled 1`] = `
 }
 
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   width: 2.1875rem;
   height: 1.25rem;
   display: inline-block;

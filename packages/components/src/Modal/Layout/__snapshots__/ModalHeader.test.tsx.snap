@@ -2,13 +2,6 @@
 
 exports[`ModalHeader 1`] = `
 .c7 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   width: 22px;
   height: 22px;
   -webkit-align-items: center;
@@ -22,13 +15,6 @@ exports[`ModalHeader 1`] = `
 }
 
 .c3 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   width: 28px;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -66,13 +52,6 @@ exports[`ModalHeader 1`] = `
 }
 
 .c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
@@ -115,13 +94,6 @@ exports[`ModalHeader 1`] = `
 }
 
 .c2 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   font-weight: 600;
   line-height: 1.75rem;
   font-size: 1.125rem;
@@ -138,28 +110,11 @@ exports[`ModalHeader 1`] = `
   clip: rect(1px,1px,1px,1px);
 }
 
-.c5 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-}
-
 .c5 svg {
   pointer-events: none;
 }
 
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   padding: 1.25rem;
   padding-right: 2rem;
   padding-left: 2rem;

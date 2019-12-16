@@ -1,24 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Form with one child 1`] = `
-.c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-}
-
-.c4 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
+.c2 {
   border: solid 1px;
   border-color: #C1C6CC;
   border-radius: 0.25rem;
@@ -30,24 +13,7 @@ exports[`Form with one child 1`] = `
   font-size: 0.875rem;
 }
 
-.c3 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-}
-
-.c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
+.c0 {
   margin-bottom: 0.5rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -58,14 +24,7 @@ exports[`Form with one child 1`] = `
   flex-direction: column;
 }
 
-.c2 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
+.c1 {
   color: #262D33;
   margin-right: 0.5rem;
   font-weight: 600;
@@ -74,13 +33,13 @@ exports[`Form with one child 1`] = `
 }
 
 <form
-  className="c0"
+  className=""
 >
   <div
-    className="c1 "
+    className="c0 "
   >
     <label
-      className="c2"
+      className="c1"
       color="palette.charcoal800"
       fontSize="small"
       fontWeight="semiBold"
@@ -89,13 +48,13 @@ exports[`Form with one child 1`] = `
       label
     </label>
     <div
-      className="c1"
+      className="c0"
     >
       <div
-        className="c3"
+        className=""
       >
         <input
-          className="c4 "
+          className="c2 "
           id="text-field"
           name="name"
           type="text"

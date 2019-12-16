@@ -2,13 +2,6 @@
 
 exports[`AvatarCombo renders Avatar and its secondary avatar 1`] = `
 .c6 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   color: #9785F2;
   width: 1rem;
   height: 1rem;
@@ -37,13 +30,6 @@ exports[`AvatarCombo renders Avatar and its secondary avatar 1`] = `
 }
 
 .c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   color: #6C43E0;
   font-size: 0.875rem;
   height: 40px;
@@ -61,13 +47,6 @@ exports[`AvatarCombo renders Avatar and its secondary avatar 1`] = `
 }
 
 .c5 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   background-color: #FFFFFF;
   color: #9785F2;
   font-size: 0.875rem;
@@ -155,13 +134,6 @@ exports[`AvatarCombo renders Avatar and its secondary avatar 1`] = `
 
 exports[`AvatarCombo renders Avatar initials and secondary with Code icon 1`] = `
 .c6 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   color: #9785F2;
   width: 1rem;
   height: 1rem;
@@ -190,13 +162,6 @@ exports[`AvatarCombo renders Avatar initials and secondary with Code icon 1`] = 
 }
 
 .c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   color: #6C43E0;
   font-size: 0.875rem;
   height: 40px;
@@ -214,13 +179,6 @@ exports[`AvatarCombo renders Avatar initials and secondary with Code icon 1`] = 
 }
 
 .c5 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   background-color: #FFFFFF;
   color: #9785F2;
   font-size: 0.875rem;
@@ -308,13 +266,6 @@ exports[`AvatarCombo renders Avatar initials and secondary with Code icon 1`] = 
 
 exports[`AvatarCombo renders AvatarIcon and secondary avatar if user is not available and updates icon if passed. 1`] = `
 .c2 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   color: #9785F2;
   width: 1rem;
   height: 1rem;
@@ -329,13 +280,6 @@ exports[`AvatarCombo renders AvatarIcon and secondary avatar if user is not avai
 }
 
 .c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   color: #9785F2;
   background-color: #FFFFFF;
   font-size: 0.875rem;
@@ -358,13 +302,6 @@ exports[`AvatarCombo renders AvatarIcon and secondary avatar if user is not avai
 }
 
 .c5 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   background-color: #FFFFFF;
   color: #9785F2;
   font-size: 0.875rem;
@@ -482,13 +419,6 @@ exports[`AvatarCombo renders AvatarIcon and secondary avatar if user is not avai
 
 exports[`AvatarIcon renders  1`] = `
 .c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   color: #9785F2;
   width: 1rem;
   height: 1rem;
@@ -508,13 +438,6 @@ exports[`AvatarIcon renders  1`] = `
 }
 
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   background-color: #FFFFFF;
   color: #9785F2;
   font-size: 0.875rem;
@@ -574,13 +497,6 @@ exports[`AvatarIcon renders  1`] = `
 
 exports[`AvatarIcon renders different icon if specified 1`] = `
 .c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   color: #9785F2;
   width: 1rem;
   height: 1rem;
@@ -600,13 +516,6 @@ exports[`AvatarIcon renders different icon if specified 1`] = `
 }
 
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   background-color: #FFFFFF;
   color: #9785F2;
   font-size: 0.875rem;
@@ -680,13 +589,6 @@ exports[`AvatarUser shows initials if has broken url as avatar_url 1`] = `
 }
 
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   color: #6C43E0;
   font-size: 0.875rem;
   height: 40px;
@@ -726,13 +628,6 @@ exports[`AvatarUser shows initials if it has null as avatar_url  1`] = `
 }
 
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   color: #6C43E0;
   font-size: 0.875rem;
   height: 40px;
@@ -777,13 +672,6 @@ exports[`AvatarUser shows user profile picture if it has good avatar_url  1`] = 
 }
 
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   color: #6C43E0;
   font-size: 0.875rem;
   height: 40px;

@@ -2,13 +2,6 @@
 
 exports[`Button Focus: renders outline when tabbing into focus, but not when clicking 1`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -78,7 +71,7 @@ exports[`Button Focus: renders outline when tabbing into focus, but not when cli
 
 exports[`Button Focus: renders outline when tabbing into focus, but not when clicking 2`] = `
 <button
-  class="sc-bxivhb hIhotn sc-ifAKCX sc-EHOje kAurnO"
+  class="sc-bxivhb byEMEJ sc-ifAKCX sc-EHOje kAurnO"
 >
   focus
 </button>
@@ -86,13 +79,6 @@ exports[`Button Focus: renders outline when tabbing into focus, but not when cli
 
 exports[`Button disable 1`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -165,13 +151,6 @@ exports[`Button is rendered  1`] = `ShallowWrapper {}`;
 
 exports[`Button validates all sizes 1`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -241,13 +220,6 @@ exports[`Button validates all sizes 1`] = `
 
 exports[`Button validates all sizes 2`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -317,13 +289,6 @@ exports[`Button validates all sizes 2`] = `
 
 exports[`Button validates all sizes 3`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -393,13 +358,6 @@ exports[`Button validates all sizes 3`] = `
 
 exports[`Button validates all sizes 4`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -469,13 +427,6 @@ exports[`Button validates all sizes 4`] = `
 
 exports[`Button works with color danger 1`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;

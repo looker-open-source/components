@@ -2,13 +2,6 @@
 
 exports[`Confirmation banner 1`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   border-radius: 0.25rem;
   background-color: #e0ffe7;
   margin: 0.75rem;
@@ -54,13 +47,6 @@ exports[`Confirmation banner 1`] = `
 
 exports[`Dismissable banner 1`] = `
 .c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   color: #49a9f2;
   margin-right: 0.75rem;
   width: 20px;
@@ -76,13 +62,6 @@ exports[`Dismissable banner 1`] = `
 }
 
 .c6 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   width: 22px;
   height: 22px;
   -webkit-align-items: center;
@@ -96,13 +75,6 @@ exports[`Dismissable banner 1`] = `
 }
 
 .c3 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   width: 28px;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -141,13 +113,6 @@ exports[`Dismissable banner 1`] = `
 }
 
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   border-radius: 0.25rem;
   background-color: #e0f2ff;
   margin: 0.75rem;
@@ -205,13 +170,6 @@ exports[`Dismissable banner 1`] = `
 }
 
 .c5 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   margin-left: auto;
 }
 
@@ -309,13 +267,6 @@ exports[`Dismissable banner 1`] = `
 
 exports[`Error banner 1`] = `
 .c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   color: #B2121F;
   margin-right: 0.75rem;
   width: 20px;
@@ -331,13 +282,6 @@ exports[`Error banner 1`] = `
 }
 
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   border-radius: 0.25rem;
   background-color: #FFE5E9;
   margin: 0.75rem;
@@ -410,13 +354,6 @@ exports[`Error banner 1`] = `
 
 exports[`Info banner 1`] = `
 .c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   color: #49a9f2;
   margin-right: 0.75rem;
   width: 20px;
@@ -432,13 +369,6 @@ exports[`Info banner 1`] = `
 }
 
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   border-radius: 0.25rem;
   background-color: #e0f2ff;
   margin: 0.75rem;
@@ -511,13 +441,6 @@ exports[`Info banner 1`] = `
 
 exports[`Warning banner 1`] = `
 .c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   color: #FFA800;
   margin-right: 0.75rem;
   width: 20px;
@@ -533,13 +456,6 @@ exports[`Warning banner 1`] = `
 }
 
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   border-radius: 0.25rem;
   background-color: #FFEBC4;
   margin: 0.75rem;

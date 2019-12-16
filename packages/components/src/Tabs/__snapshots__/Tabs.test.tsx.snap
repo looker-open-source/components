@@ -4,13 +4,6 @@ exports[`Tabs snapshot works as expected 1`] = `ShallowWrapper {}`;
 
 exports[`focus behavior Tab Focus: does not render focus ring after click 1`] = `
 .c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   min-width: 3rem;
   padding-bottom: 0.75rem;
   padding-top: 0.5rem;
@@ -70,13 +63,6 @@ exports[`focus behavior Tab Focus: renders focus ring for keyboard navigation 1`
 }
 
 .c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   min-width: 3rem;
   padding-bottom: 0.75rem;
   padding-top: 0.5rem;

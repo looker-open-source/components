@@ -197,13 +197,6 @@ exports[`Spinner A default spinner 1`] = `
 }
 
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   height: 30px;
   position: relative;
   width: 30px;
@@ -465,13 +458,6 @@ exports[`Spinner Spinner can be resized 1`] = `
 }
 
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   height: 200px;
   position: relative;
   width: 200px;
@@ -733,13 +719,6 @@ exports[`Spinner Spinner can change markger color 1`] = `
 }
 
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   height: 30px;
   position: relative;
   width: 30px;
@@ -1106,13 +1085,6 @@ exports[`Spinner Spinner can have n number of markers 1`] = `
 }
 
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   height: 30px;
   position: relative;
   width: 30px;
@@ -1415,13 +1387,6 @@ exports[`Spinner Spinner makers radius can be adjusted 1`] = `
 }
 
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   height: 30px;
   position: relative;
   width: 30px;
@@ -1683,13 +1648,6 @@ exports[`Spinner Spinner speed can be set 1`] = `
 }
 
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   height: 30px;
   position: relative;
   width: 30px;

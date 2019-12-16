@@ -2,13 +2,6 @@
 
 exports[`Select default 1`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   background-color: #FFFFFF;
   border: solid 1px;
   -webkit-appearance: none;
@@ -46,13 +39,6 @@ exports[`Select default 1`] = `
 
 exports[`Select should accept disabled 1`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   background-color: #FFFFFF;
   border: solid 1px;
   -webkit-appearance: none;
@@ -91,13 +77,6 @@ exports[`Select should accept disabled 1`] = `
 
 exports[`Select should accept empty options array 1`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   background-color: #FFFFFF;
   border: solid 1px;
   -webkit-appearance: none;
@@ -135,13 +114,6 @@ exports[`Select should accept empty options array 1`] = `
 
 exports[`Select should accept readOnly 1`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   background-color: #FFFFFF;
   border: solid 1px;
   -webkit-appearance: none;
@@ -180,13 +152,6 @@ exports[`Select should accept readOnly 1`] = `
 
 exports[`Select should accept required 1`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   background-color: #FFFFFF;
   border: solid 1px;
   -webkit-appearance: none;
@@ -225,13 +190,6 @@ exports[`Select should accept required 1`] = `
 
 exports[`Select with a placeholder 1`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   background-color: #FFFFFF;
   border: solid 1px;
   -webkit-appearance: none;
@@ -271,13 +229,6 @@ exports[`Select with a placeholder 1`] = `
 
 exports[`Select with a value 1`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   background-color: #FFFFFF;
   border: solid 1px;
   -webkit-appearance: none;
@@ -331,13 +282,6 @@ exports[`Select with a value 1`] = `
 
 exports[`Select with an error validation 1`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   background-color: #FFF2F4;
   border: solid 1px;
   -webkit-appearance: none;
@@ -375,13 +319,6 @@ exports[`Select with an error validation 1`] = `
 
 exports[`Select with aria-describedby 1`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   background-color: #FFFFFF;
   border: solid 1px;
   -webkit-appearance: none;
@@ -420,13 +357,6 @@ exports[`Select with aria-describedby 1`] = `
 
 exports[`Select with name and id 1`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   background-color: #FFFFFF;
   border: solid 1px;
   -webkit-appearance: none;

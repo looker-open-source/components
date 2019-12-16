@@ -2,13 +2,6 @@
 
 exports[`A Link with an id 1`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   color: #0087e1;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -33,13 +26,6 @@ exports[`A Link with an id 1`] = `
 
 exports[`A default Link 1`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   color: #0087e1;
   -webkit-text-decoration: none;
   text-decoration: none;
@@ -63,13 +49,6 @@ exports[`A default Link 1`] = `
 
 exports[`A external Link 1`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   color: #0087e1;
   -webkit-text-decoration: none;
   text-decoration: none;

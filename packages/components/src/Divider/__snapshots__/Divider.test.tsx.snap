@@ -2,13 +2,6 @@
 
 exports[`A custom Divider 1`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   height: 20px;
   background-color: turquoise;
 }
@@ -21,13 +14,6 @@ exports[`A custom Divider 1`] = `
 
 exports[`Default Divider 1`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   height: 1px;
   background-color: #C1C6CC;
 }
@@ -40,13 +26,6 @@ exports[`Default Divider 1`] = `
 
 exports[`Divider with a variant 1`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   height: 1px;
   background-color: #707781;
 }

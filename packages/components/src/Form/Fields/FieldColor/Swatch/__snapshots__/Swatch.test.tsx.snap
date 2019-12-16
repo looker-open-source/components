@@ -2,13 +2,6 @@
 
 exports[`Default Swatch 1`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   border: 1px solid;
   border-color: #C1C6CC;
   border-radius: 0.25rem;
@@ -26,13 +19,6 @@ exports[`Default Swatch 1`] = `
 
 exports[`Swatch with hex value passed 1`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   border: 1px solid;
   border-color: #C1C6CC;
   border-radius: 0.25rem;
@@ -50,13 +36,6 @@ exports[`Swatch with hex value passed 1`] = `
 
 exports[`Swatch with width and height set 1`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   border: 1px solid;
   border-color: #C1C6CC;
   border-radius: 0.25rem;
