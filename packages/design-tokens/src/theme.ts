@@ -26,7 +26,6 @@
 
 import { InterpolationValue } from 'styled-components'
 import {
-  defaultReset,
   Easings,
   FontFamilyChoices,
   FontSizeRamp,
@@ -72,7 +71,7 @@ export interface Theme {
    * A function that can be overridden to return different reset css properties
    * or null to remove all resets. Most base elements implement the reset.
    */
-  reset: () => InterpolationValue
+  reset?: () => InterpolationValue
   shadows: Shadows
   space: SpaceRamp
   transitions: Transitions
@@ -87,7 +86,6 @@ export const theme: Theme = {
   fonts: fontFamilies,
   lineHeights,
   radii,
-  reset: defaultReset,
   shadows,
   space,
   transitions,
