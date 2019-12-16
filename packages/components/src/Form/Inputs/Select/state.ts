@@ -73,8 +73,6 @@ export enum SelectActionType {
 
   FOCUS = 'FOCUS',
 
-  OPEN_WITH_BUTTON = 'OPEN_WITH_BUTTON',
-
   CLOSE_WITH_BUTTON = 'CLOSE_WITH_BUTTON',
 }
 
@@ -119,7 +117,6 @@ export const stateChart: StateChart = {
         [SelectActionType.CHANGE_SILENT]: SelectState.IDLE,
         [SelectActionType.FOCUS]: SelectState.SUGGESTING,
         [SelectActionType.NAVIGATE]: SelectState.NAVIGATING,
-        [SelectActionType.OPEN_WITH_BUTTON]: SelectState.SUGGESTING,
       },
     },
     [SelectState.SUGGESTING]: {
@@ -191,7 +188,6 @@ const reducer: Reducer<SelectData, SelectActionWithPayload> = (
         option: action.option,
       }
     case SelectActionType.NAVIGATE:
-    case SelectActionType.OPEN_WITH_BUTTON:
       return {
         ...nextState,
         navigationOption: findNavigationValue(nextState, action),

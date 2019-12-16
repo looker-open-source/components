@@ -53,8 +53,7 @@ export function useFocusManagement(
     if (
       lastActionType === SelectActionType.NAVIGATE ||
       lastActionType === SelectActionType.ESCAPE ||
-      lastActionType === SelectActionType.SELECT_WITH_CLICK ||
-      lastActionType === SelectActionType.OPEN_WITH_BUTTON
+      lastActionType === SelectActionType.SELECT_WITH_CLICK
     ) {
       inputElement && inputElement.focus()
     }
