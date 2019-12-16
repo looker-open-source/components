@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Bug Fixes
 
+- Button size map was updated with new sizes and Test got updates to reflect the new sizes
 - Correct issue `ModalManager` `surfaceStyles` had `minWidth` and `maxWidth` properties that were difficult to override on an instance.
 - Correct usage of `textTransform` in documentation and updated related test suite
 
