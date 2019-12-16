@@ -46,6 +46,11 @@ export interface ConfirmationProps extends ManagedModalProps {
    */
   buttonColor?: keyof SemanticColors
   /**
+   * Defines the color of the confirm button. Can be the string name of a color listed in the color theme, or a color object.
+   * @default "neutral"
+   */
+  cancelColor?: keyof SemanticColors
+  /**
    * Confirmation button text
    * @default 'Confirm'
    */
@@ -86,6 +91,7 @@ export const ConfirmationDialog: FC<ConfirmationDialogProps> = ({
   close,
   confirmLabel = 'Confirm',
   buttonColor = 'primary',
+  cancelColor = 'neutral',
   isOpen = false,
   message,
   onCancel,
@@ -119,7 +125,9 @@ export const ConfirmationDialog: FC<ConfirmationDialogProps> = ({
         <Button onClick={confirm} color={buttonColor}>
           {confirmLabel}
         </Button>
-        <ButtonTransparent onClick={cancel}>{cancelLabel}</ButtonTransparent>
+        <ButtonTransparent color={cancelColor} onClick={cancel}>
+          {cancelLabel}
+        </ButtonTransparent>
       </ModalFooter>
     </Dialog>
   )
