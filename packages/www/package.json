@@ -8,7 +8,7 @@
     "@reach/router": "^1.2.1",
     "@types/react-helmet": "^5.0.14",
     "copy-text-to-clipboard": "^2.1.1",
-    "eslint-plugin-mdx": "^1.6.3",
+    "eslint-plugin-mdx": "^1.6.4",
     "gatsby": "^2.18.12",
     "gatsby-image": "^2.2.36",
     "gatsby-plugin-eslint": "^2.0.8",
