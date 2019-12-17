@@ -26,6 +26,7 @@
 
 import { InterpolationValue } from 'styled-components'
 import {
+  Colors,
   Easings,
   FontFamilyChoices,
   FontSizeRamp,
@@ -33,7 +34,6 @@ import {
   LineHeightRamp,
   Palette,
   Radii,
-  SemanticColors,
   Shadows,
   SpaceRamp,
   Transitions,
@@ -52,15 +52,19 @@ import {
   lineHeights,
   palette,
   radii,
-  semanticColors,
+  colors,
   shadows,
   space,
   transitions,
 } from './tokens'
 
+interface ThemeColors extends Colors {
+  palette: Palette
+}
+
 export interface Theme {
   breakpoints: string[]
-  colors: { palette: Palette; semanticColors: SemanticColors }
+  colors: ThemeColors
   easings: Easings
   fontSizes: FontSizeRamp
   fontWeights: FontWeightRamp
@@ -79,7 +83,7 @@ export interface Theme {
 
 export const theme: Theme = {
   breakpoints,
-  colors: { palette, semanticColors },
+  colors: { palette, ...colors },
   easings,
   fontSizes,
   fontWeights,
