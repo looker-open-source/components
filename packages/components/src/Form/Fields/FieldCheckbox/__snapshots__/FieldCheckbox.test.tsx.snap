@@ -2,13 +2,6 @@
 
 exports[`A FieldCheckbox 1`] = `
 .c3 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   color: #262D33;
   margin-right: 0.5rem;
   font-weight: 600;
@@ -16,14 +9,7 @@ exports[`A FieldCheckbox 1`] = `
   display: inline-block;
 }
 
-.c8 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
+.c6 {
   position: relative;
   width: 100%;
   height: 100%;
@@ -44,14 +30,7 @@ exports[`A FieldCheckbox 1`] = `
   align-items: center;
 }
 
-.c5 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
+.c4 {
   position: relative;
   display: inline-block;
   width: 1rem;
@@ -60,7 +39,7 @@ exports[`A FieldCheckbox 1`] = `
   vertical-align: middle;
 }
 
-.c5 input[type='checkbox'] {
+.c4 input[type='checkbox'] {
   opacity: 0;
   position: absolute;
   width: 100%;
@@ -68,52 +47,25 @@ exports[`A FieldCheckbox 1`] = `
   z-index: 1;
 }
 
-.c5 .c7 {
+.c4 .c5 {
   background: #FFFFFF;
 }
 
-.c5 input[type='checkbox']:checked + .c7 {
+.c4 input[type='checkbox']:checked + .c5 {
   color: #fff;
   background: #0087e1;
   border-color: #0087e1;
 }
 
-.c5 input[type='checkbox']:focus + .c7 {
+.c4 input[type='checkbox']:focus + .c5 {
   box-shadow: 0 0 .5px 1px #C1C6CC;
 }
 
-.c5 input[type='checkbox']:disabled + .c7 {
+.c4 input[type='checkbox']:disabled + .c5 {
   opacity: 0.5;
 }
 
-.c6 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-}
-
-.c4 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-}
-
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   margin-bottom: 0.5rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -149,19 +101,19 @@ exports[`A FieldCheckbox 1`] = `
     className="c0"
   >
     <div
-      className="c4"
+      className=""
     >
       <div
-        className="c5 "
+        className="c4 "
       >
         <input
-          className="c6"
+          className=""
           id="thumbs-up"
           name="thumbsUp"
           type="checkbox"
         />
         <div
-          className="c7 c8"
+          className="c5 c6"
         >
           <svg
             fill="none"
@@ -187,13 +139,6 @@ exports[`A FieldCheckbox 1`] = `
 
 exports[`A FieldCheckbox with checked value 1`] = `
 .c3 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   color: #262D33;
   margin-right: 0.5rem;
   font-weight: 600;
@@ -201,14 +146,7 @@ exports[`A FieldCheckbox with checked value 1`] = `
   display: inline-block;
 }
 
-.c8 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
+.c6 {
   position: relative;
   width: 100%;
   height: 100%;
@@ -229,14 +167,7 @@ exports[`A FieldCheckbox with checked value 1`] = `
   align-items: center;
 }
 
-.c5 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
+.c4 {
   position: relative;
   display: inline-block;
   width: 1rem;
@@ -245,7 +176,7 @@ exports[`A FieldCheckbox with checked value 1`] = `
   vertical-align: middle;
 }
 
-.c5 input[type='checkbox'] {
+.c4 input[type='checkbox'] {
   opacity: 0;
   position: absolute;
   width: 100%;
@@ -253,52 +184,25 @@ exports[`A FieldCheckbox with checked value 1`] = `
   z-index: 1;
 }
 
-.c5 .c7 {
+.c4 .c5 {
   background: #FFFFFF;
 }
 
-.c5 input[type='checkbox']:checked + .c7 {
+.c4 input[type='checkbox']:checked + .c5 {
   color: #fff;
   background: #0087e1;
   border-color: #0087e1;
 }
 
-.c5 input[type='checkbox']:focus + .c7 {
+.c4 input[type='checkbox']:focus + .c5 {
   box-shadow: 0 0 .5px 1px #C1C6CC;
 }
 
-.c5 input[type='checkbox']:disabled + .c7 {
+.c4 input[type='checkbox']:disabled + .c5 {
   opacity: 0.5;
 }
 
-.c6 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-}
-
-.c4 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-}
-
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   margin-bottom: 0.5rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -334,20 +238,20 @@ exports[`A FieldCheckbox with checked value 1`] = `
     className="c0"
   >
     <div
-      className="c4"
+      className=""
     >
       <div
-        className="c5 "
+        className="c4 "
       >
         <input
           checked={true}
-          className="c6"
+          className=""
           id="thumbs-up"
           name="thumbsUp"
           type="checkbox"
         />
         <div
-          className="c7 c8"
+          className="c5 c6"
         >
           <svg
             fill="none"
@@ -373,13 +277,6 @@ exports[`A FieldCheckbox with checked value 1`] = `
 
 exports[`A required FieldCheckbox 1`] = `
 .c3 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   color: #262D33;
   margin-right: 0.5rem;
   font-weight: 600;
@@ -387,14 +284,7 @@ exports[`A required FieldCheckbox 1`] = `
   display: inline-block;
 }
 
-.c9 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
+.c7 {
   position: relative;
   width: 100%;
   height: 100%;
@@ -415,14 +305,7 @@ exports[`A required FieldCheckbox 1`] = `
   align-items: center;
 }
 
-.c6 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
+.c5 {
   position: relative;
   display: inline-block;
   width: 1rem;
@@ -431,7 +314,7 @@ exports[`A required FieldCheckbox 1`] = `
   vertical-align: middle;
 }
 
-.c6 input[type='checkbox'] {
+.c5 input[type='checkbox'] {
   opacity: 0;
   position: absolute;
   width: 100%;
@@ -439,52 +322,25 @@ exports[`A required FieldCheckbox 1`] = `
   z-index: 1;
 }
 
-.c6 .c8 {
+.c5 .c6 {
   background: #FFFFFF;
 }
 
-.c6 input[type='checkbox']:checked + .c8 {
+.c5 input[type='checkbox']:checked + .c6 {
   color: #fff;
   background: #0087e1;
   border-color: #0087e1;
 }
 
-.c6 input[type='checkbox']:focus + .c8 {
+.c5 input[type='checkbox']:focus + .c6 {
   box-shadow: 0 0 .5px 1px #C1C6CC;
 }
 
-.c6 input[type='checkbox']:disabled + .c8 {
+.c5 input[type='checkbox']:disabled + .c6 {
   opacity: 0.5;
 }
 
-.c7 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-}
-
-.c5 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-}
-
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   margin-bottom: 0.5rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -531,20 +387,20 @@ exports[`A required FieldCheckbox 1`] = `
     className="c0"
   >
     <div
-      className="c5"
+      className=""
     >
       <div
-        className="c6 "
+        className="c5 "
       >
         <input
-          className="c7"
+          className=""
           id="thumbs-up"
           name="thumbsUp"
           required={true}
           type="checkbox"
         />
         <div
-          className="c8 c9"
+          className="c6 c7"
         >
           <svg
             fill="none"

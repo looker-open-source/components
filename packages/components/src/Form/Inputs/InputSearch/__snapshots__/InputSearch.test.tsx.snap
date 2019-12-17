@@ -2,13 +2,6 @@
 
 exports[`InputSearch default 1`] = `
 .c2 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   border: none;
   border-color: #C1C6CC;
   border-radius: 0.25rem;
@@ -26,13 +19,6 @@ exports[`InputSearch default 1`] = `
 }
 
 .c3 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   height: 100%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -47,13 +33,6 @@ exports[`InputSearch default 1`] = `
 }
 
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   border: 1px solid;
   border-color: #C1C6CC;
   border-radius: 0.25rem;

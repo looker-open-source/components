@@ -24,28 +24,12 @@
 
  */
 
-import { css, InterpolationValue } from 'styled-components'
-
-export const defaultReset = () => {
-  const simpleReset: InterpolationValue = {
-    border: 0,
-    boxSizing: 'border-box',
-    font: 'inherit',
-    fontSize: '100%',
-    margin: 0,
-    padding: 0,
-    verticalAlign: 'baseline',
-  }
-
-  return simpleReset
-}
+import { css } from 'styled-components'
 
 export const reset = css`
   /**
-     * Global reset applied to prevent styling on top level tags outside of Looker 
-     * UI Components from interfering with styles.
-     *
-     * This **must** be first.
-     */
+    * Global reset applied to prevent styling on top level tags outside of Looker
+    * UI Components from interfering with styles.
+    **/
   ${props => props.theme.reset && props.theme.reset()}
 `

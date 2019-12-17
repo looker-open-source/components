@@ -1,14 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Radio checked set to false 1`] = `
-.c3 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
+.c2 {
   position: relative;
   width: 100%;
   height: 100%;
@@ -20,13 +13,6 @@ exports[`Radio checked set to false 1`] = `
 }
 
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   position: relative;
   display: inline-block;
   width: 1rem;
@@ -43,16 +29,16 @@ exports[`Radio checked set to false 1`] = `
   z-index: 1;
 }
 
-.c0 .c2 {
+.c0 .c1 {
   background: #FFFFFF;
 }
 
-.c0 input[type='radio']:checked + .c2 {
+.c0 input[type='radio']:checked + .c1 {
   background: #0087e1;
   border-color: #0087e1;
 }
 
-.c0 input[type='radio']:checked + .c2::after {
+.c0 input[type='radio']:checked + .c1::after {
   content: '';
   position: absolute;
   background: #fff;
@@ -63,22 +49,12 @@ exports[`Radio checked set to false 1`] = `
   right: calc(50% - 3px);
 }
 
-.c0 input[type='radio']:focus + .c2 {
+.c0 input[type='radio']:focus + .c1 {
   box-shadow: 0 0 .5px 1px #C1C6CC;
 }
 
-.c0 input[type='radio']:disabled + .c2 {
+.c0 input[type='radio']:disabled + .c1 {
   opacity: 0.5;
-}
-
-.c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
 }
 
 <div
@@ -86,24 +62,17 @@ exports[`Radio checked set to false 1`] = `
 >
   <input
     checked={false}
-    className="c1"
+    className=""
     type="radio"
   />
   <div
-    className="c2 c3"
+    className="c1 c2"
   />
 </div>
 `;
 
 exports[`Radio checked set to true 1`] = `
-.c3 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
+.c2 {
   position: relative;
   width: 100%;
   height: 100%;
@@ -115,13 +84,6 @@ exports[`Radio checked set to true 1`] = `
 }
 
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   position: relative;
   display: inline-block;
   width: 1rem;
@@ -138,16 +100,16 @@ exports[`Radio checked set to true 1`] = `
   z-index: 1;
 }
 
-.c0 .c2 {
+.c0 .c1 {
   background: #FFFFFF;
 }
 
-.c0 input[type='radio']:checked + .c2 {
+.c0 input[type='radio']:checked + .c1 {
   background: #0087e1;
   border-color: #0087e1;
 }
 
-.c0 input[type='radio']:checked + .c2::after {
+.c0 input[type='radio']:checked + .c1::after {
   content: '';
   position: absolute;
   background: #fff;
@@ -158,22 +120,12 @@ exports[`Radio checked set to true 1`] = `
   right: calc(50% - 3px);
 }
 
-.c0 input[type='radio']:focus + .c2 {
+.c0 input[type='radio']:focus + .c1 {
   box-shadow: 0 0 .5px 1px #C1C6CC;
 }
 
-.c0 input[type='radio']:disabled + .c2 {
+.c0 input[type='radio']:disabled + .c1 {
   opacity: 0.5;
-}
-
-.c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
 }
 
 <div
@@ -181,24 +133,17 @@ exports[`Radio checked set to true 1`] = `
 >
   <input
     checked={true}
-    className="c1"
+    className=""
     type="radio"
   />
   <div
-    className="c2 c3"
+    className="c1 c2"
   />
 </div>
 `;
 
 exports[`Radio default 1`] = `
-.c3 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
+.c2 {
   position: relative;
   width: 100%;
   height: 100%;
@@ -210,13 +155,6 @@ exports[`Radio default 1`] = `
 }
 
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   position: relative;
   display: inline-block;
   width: 1rem;
@@ -233,16 +171,16 @@ exports[`Radio default 1`] = `
   z-index: 1;
 }
 
-.c0 .c2 {
+.c0 .c1 {
   background: #FFFFFF;
 }
 
-.c0 input[type='radio']:checked + .c2 {
+.c0 input[type='radio']:checked + .c1 {
   background: #0087e1;
   border-color: #0087e1;
 }
 
-.c0 input[type='radio']:checked + .c2::after {
+.c0 input[type='radio']:checked + .c1::after {
   content: '';
   position: absolute;
   background: #fff;
@@ -253,46 +191,29 @@ exports[`Radio default 1`] = `
   right: calc(50% - 3px);
 }
 
-.c0 input[type='radio']:focus + .c2 {
+.c0 input[type='radio']:focus + .c1 {
   box-shadow: 0 0 .5px 1px #C1C6CC;
 }
 
-.c0 input[type='radio']:disabled + .c2 {
+.c0 input[type='radio']:disabled + .c1 {
   opacity: 0.5;
-}
-
-.c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
 }
 
 <div
   className="c0 "
 >
   <input
-    className="c1"
+    className=""
     type="radio"
   />
   <div
-    className="c2 c3"
+    className="c1 c2"
   />
 </div>
 `;
 
 exports[`Radio should accept disabled 1`] = `
-.c3 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
+.c2 {
   position: relative;
   width: 100%;
   height: 100%;
@@ -304,13 +225,6 @@ exports[`Radio should accept disabled 1`] = `
 }
 
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   position: relative;
   display: inline-block;
   width: 1rem;
@@ -327,16 +241,16 @@ exports[`Radio should accept disabled 1`] = `
   z-index: 1;
 }
 
-.c0 .c2 {
+.c0 .c1 {
   background: #FFFFFF;
 }
 
-.c0 input[type='radio']:checked + .c2 {
+.c0 input[type='radio']:checked + .c1 {
   background: #0087e1;
   border-color: #0087e1;
 }
 
-.c0 input[type='radio']:checked + .c2::after {
+.c0 input[type='radio']:checked + .c1::after {
   content: '';
   position: absolute;
   background: #fff;
@@ -347,47 +261,30 @@ exports[`Radio should accept disabled 1`] = `
   right: calc(50% - 3px);
 }
 
-.c0 input[type='radio']:focus + .c2 {
+.c0 input[type='radio']:focus + .c1 {
   box-shadow: 0 0 .5px 1px #C1C6CC;
 }
 
-.c0 input[type='radio']:disabled + .c2 {
+.c0 input[type='radio']:disabled + .c1 {
   opacity: 0.5;
-}
-
-.c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
 }
 
 <div
   className="c0 "
 >
   <input
-    className="c1"
+    className=""
     disabled={true}
     type="radio"
   />
   <div
-    className="c2 c3"
+    className="c1 c2"
   />
 </div>
 `;
 
 exports[`Radio with aria-describedby 1`] = `
-.c3 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
+.c2 {
   position: relative;
   width: 100%;
   height: 100%;
@@ -399,13 +296,6 @@ exports[`Radio with aria-describedby 1`] = `
 }
 
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   position: relative;
   display: inline-block;
   width: 1rem;
@@ -422,16 +312,16 @@ exports[`Radio with aria-describedby 1`] = `
   z-index: 1;
 }
 
-.c0 .c2 {
+.c0 .c1 {
   background: #FFFFFF;
 }
 
-.c0 input[type='radio']:checked + .c2 {
+.c0 input[type='radio']:checked + .c1 {
   background: #0087e1;
   border-color: #0087e1;
 }
 
-.c0 input[type='radio']:checked + .c2::after {
+.c0 input[type='radio']:checked + .c1::after {
   content: '';
   position: absolute;
   background: #fff;
@@ -442,22 +332,12 @@ exports[`Radio with aria-describedby 1`] = `
   right: calc(50% - 3px);
 }
 
-.c0 input[type='radio']:focus + .c2 {
+.c0 input[type='radio']:focus + .c1 {
   box-shadow: 0 0 .5px 1px #C1C6CC;
 }
 
-.c0 input[type='radio']:disabled + .c2 {
+.c0 input[type='radio']:disabled + .c1 {
   opacity: 0.5;
-}
-
-.c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
 }
 
 <div
@@ -465,24 +345,17 @@ exports[`Radio with aria-describedby 1`] = `
 >
   <input
     aria-describedby="some-id"
-    className="c1"
+    className=""
     type="radio"
   />
   <div
-    className="c2 c3"
+    className="c1 c2"
   />
 </div>
 `;
 
 exports[`Radio with name and id 1`] = `
-.c3 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
+.c2 {
   position: relative;
   width: 100%;
   height: 100%;
@@ -494,13 +367,6 @@ exports[`Radio with name and id 1`] = `
 }
 
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   position: relative;
   display: inline-block;
   width: 1rem;
@@ -517,16 +383,16 @@ exports[`Radio with name and id 1`] = `
   z-index: 1;
 }
 
-.c0 .c2 {
+.c0 .c1 {
   background: #FFFFFF;
 }
 
-.c0 input[type='radio']:checked + .c2 {
+.c0 input[type='radio']:checked + .c1 {
   background: #0087e1;
   border-color: #0087e1;
 }
 
-.c0 input[type='radio']:checked + .c2::after {
+.c0 input[type='radio']:checked + .c1::after {
   content: '';
   position: absolute;
   background: #fff;
@@ -537,35 +403,25 @@ exports[`Radio with name and id 1`] = `
   right: calc(50% - 3px);
 }
 
-.c0 input[type='radio']:focus + .c2 {
+.c0 input[type='radio']:focus + .c1 {
   box-shadow: 0 0 .5px 1px #C1C6CC;
 }
 
-.c0 input[type='radio']:disabled + .c2 {
+.c0 input[type='radio']:disabled + .c1 {
   opacity: 0.5;
-}
-
-.c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
 }
 
 <div
   className="c0 "
 >
   <input
-    className="c1"
+    className=""
     id="Chucky"
     name="Chuck"
     type="radio"
   />
   <div
-    className="c2 c3"
+    className="c1 c2"
   />
 </div>
 `;

@@ -2,13 +2,6 @@
 
 exports[`A FieldText 1`] = `
 .c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   color: #262D33;
   margin-right: 0.5rem;
   font-weight: 600;
@@ -16,14 +9,7 @@ exports[`A FieldText 1`] = `
   display: inline-block;
 }
 
-.c3 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
+.c2 {
   border: solid 1px;
   border-color: #C1C6CC;
   border-radius: 0.25rem;
@@ -35,24 +21,7 @@ exports[`A FieldText 1`] = `
   font-size: 0.875rem;
 }
 
-.c2 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-}
-
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   margin-bottom: 0.5rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -79,10 +48,10 @@ exports[`A FieldText 1`] = `
     className="c0"
   >
     <div
-      className="c2"
+      className=""
     >
       <input
-        className="c3 "
+        className="c2 "
         id="thumbs-up"
         name="thumbsUp"
         type="text"
@@ -94,13 +63,6 @@ exports[`A FieldText 1`] = `
 
 exports[`A FieldText with an error validation aligned to the left 1`] = `
 .c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   color: #262D33;
   margin-right: 0.5rem;
   font-weight: 600;
@@ -108,14 +70,7 @@ exports[`A FieldText with an error validation aligned to the left 1`] = `
   display: inline-block;
 }
 
-.c4 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
+.c3 {
   border: solid 1px;
   border-color: #C1C6CC;
   border-radius: 0.25rem;
@@ -127,24 +82,7 @@ exports[`A FieldText with an error validation aligned to the left 1`] = `
   font-size: 0.875rem;
 }
 
-.c3 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-}
-
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   margin-bottom: 0.5rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -156,13 +94,6 @@ exports[`A FieldText with an error validation aligned to the left 1`] = `
 }
 
 .c2 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   margin-bottom: 0.5rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -181,14 +112,7 @@ exports[`A FieldText with an error validation aligned to the left 1`] = `
   align-items: baseline;
 }
 
-.c5 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
+.c4 {
   color: #990F14;
   margin-right: 0.5rem;
   margin-top: 0.5rem;
@@ -211,17 +135,17 @@ exports[`A FieldText with an error validation aligned to the left 1`] = `
     className="c2"
   >
     <div
-      className="c3"
+      className=""
     >
       <input
-        className="c4 "
+        className="c3 "
         id="thumbs-up"
         name="thumbsUp"
         type="text"
       />
     </div>
     <div
-      className="c5"
+      className="c4"
       fontSize="xsmall"
       type="error"
     >
@@ -233,13 +157,6 @@ exports[`A FieldText with an error validation aligned to the left 1`] = `
 
 exports[`A FieldText with an error validation aligned to the right 1`] = `
 .c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   color: #262D33;
   margin-right: 0.5rem;
   font-weight: 600;
@@ -247,14 +164,7 @@ exports[`A FieldText with an error validation aligned to the right 1`] = `
   display: inline-block;
 }
 
-.c4 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
+.c3 {
   border: solid 1px;
   border-color: #C1C6CC;
   border-radius: 0.25rem;
@@ -266,24 +176,7 @@ exports[`A FieldText with an error validation aligned to the right 1`] = `
   font-size: 0.875rem;
 }
 
-.c3 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-}
-
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   margin-bottom: 0.5rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -295,13 +188,6 @@ exports[`A FieldText with an error validation aligned to the right 1`] = `
 }
 
 .c2 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   margin-bottom: 0.5rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -316,14 +202,7 @@ exports[`A FieldText with an error validation aligned to the right 1`] = `
   align-items: baseline;
 }
 
-.c5 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
+.c4 {
   color: #990F14;
   margin-right: 0.5rem;
   margin-top: 0.5rem;
@@ -347,17 +226,17 @@ exports[`A FieldText with an error validation aligned to the right 1`] = `
     className="c2"
   >
     <div
-      className="c3"
+      className=""
     >
       <input
-        className="c4 "
+        className="c3 "
         id="thumbs-up"
         name="thumbsUp"
         type="text"
       />
     </div>
     <div
-      className="c5"
+      className="c4"
       fontSize="xsmall"
       type="error"
     >
@@ -369,13 +248,6 @@ exports[`A FieldText with an error validation aligned to the right 1`] = `
 
 exports[`A required FieldText 1`] = `
 .c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   color: #262D33;
   margin-right: 0.5rem;
   font-weight: 600;
@@ -383,14 +255,7 @@ exports[`A required FieldText 1`] = `
   display: inline-block;
 }
 
-.c4 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
+.c3 {
   border: solid 1px;
   border-color: #C1C6CC;
   border-radius: 0.25rem;
@@ -402,24 +267,7 @@ exports[`A required FieldText 1`] = `
   font-size: 0.875rem;
 }
 
-.c3 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-}
-
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   margin-bottom: 0.5rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -457,10 +305,10 @@ exports[`A required FieldText 1`] = `
     className="c0"
   >
     <div
-      className="c3"
+      className=""
     >
       <input
-        className="c4 "
+        className="c3 "
         id="thumbs-up"
         name="thumbsUp"
         required={true}
@@ -473,13 +321,6 @@ exports[`A required FieldText 1`] = `
 
 exports[`FieldText supports labelWeight 1`] = `
 .c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   color: #262D33;
   margin-right: 0.5rem;
   font-weight: 400;
@@ -487,14 +328,7 @@ exports[`FieldText supports labelWeight 1`] = `
   display: inline-block;
 }
 
-.c3 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
+.c2 {
   border: solid 1px;
   border-color: #C1C6CC;
   border-radius: 0.25rem;
@@ -506,24 +340,7 @@ exports[`FieldText supports labelWeight 1`] = `
   font-size: 0.875rem;
 }
 
-.c2 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-}
-
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   margin-bottom: 0.5rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -550,10 +367,10 @@ exports[`FieldText supports labelWeight 1`] = `
     className="c0"
   >
     <div
-      className="c2"
+      className=""
     >
       <input
-        className="c3 "
+        className="c2 "
         id="thumbs-up"
         name="thumbsUp"
         type="text"

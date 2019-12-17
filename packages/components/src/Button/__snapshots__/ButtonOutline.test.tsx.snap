@@ -2,13 +2,6 @@
 
 exports[`ButtonOutline Focus: renders outline when tabbing into focus, but not when clicking 1`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -78,7 +71,7 @@ exports[`ButtonOutline Focus: renders outline when tabbing into focus, but not w
 
 exports[`ButtonOutline Focus: renders outline when tabbing into focus, but not when clicking 2`] = `
 <button
-  class="sc-bxivhb hIhotn sc-ifAKCX sc-EHOje dFdbyE"
+  class="sc-bxivhb byEMEJ sc-ifAKCX sc-EHOje dFdbyE"
 >
   focus
 </button>
@@ -86,13 +79,6 @@ exports[`ButtonOutline Focus: renders outline when tabbing into focus, but not w
 
 exports[`ButtonOutline has the correct style 1`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;

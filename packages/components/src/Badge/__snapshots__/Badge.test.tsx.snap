@@ -2,13 +2,6 @@
 
 exports[`Badge rendered with rounded property 1`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   font-weight: 600;
   font-size: 0.75rem;
   line-height: 24px;
@@ -36,13 +29,6 @@ exports[`Badge rendered with rounded property 1`] = `
 
 exports[`Badge rendered with rounded property 2`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   font-weight: 600;
   font-size: 0.75rem;
   line-height: 24px;
@@ -70,13 +56,6 @@ exports[`Badge rendered with rounded property 2`] = `
 
 exports[`Badge rendered with rounded property 3`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   font-weight: 600;
   font-size: 1rem;
   line-height: 32px;
@@ -104,13 +83,6 @@ exports[`Badge rendered with rounded property 3`] = `
 
 exports[`Badge renders all intents 1`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   font-weight: 600;
   font-size: 0.75rem;
   line-height: 24px;
@@ -137,13 +109,6 @@ exports[`Badge renders all intents 1`] = `
 
 exports[`Badge renders all intents 2`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   font-weight: 600;
   font-size: 0.75rem;
   line-height: 24px;
@@ -170,13 +135,6 @@ exports[`Badge renders all intents 2`] = `
 
 exports[`Badge renders all intents 3`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   font-weight: 600;
   font-size: 0.75rem;
   line-height: 24px;
@@ -203,13 +161,6 @@ exports[`Badge renders all intents 3`] = `
 
 exports[`Badge renders all intents 4`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   font-weight: 600;
   font-size: 0.75rem;
   line-height: 24px;
@@ -236,13 +187,6 @@ exports[`Badge renders all intents 4`] = `
 
 exports[`Badge renders all intents 5`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   font-weight: 600;
   font-size: 0.75rem;
   line-height: 24px;
@@ -269,13 +213,6 @@ exports[`Badge renders all intents 5`] = `
 
 exports[`Badge renders all intents 6`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   font-weight: 600;
   font-size: 0.75rem;
   line-height: 24px;
@@ -302,13 +239,6 @@ exports[`Badge renders all intents 6`] = `
 
 exports[`Badge renders all sizes 1`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   font-weight: 600;
   font-size: 0.75rem;
   line-height: 24px;
@@ -335,13 +265,6 @@ exports[`Badge renders all sizes 1`] = `
 
 exports[`Badge renders all sizes 2`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   font-weight: 600;
   font-size: 0.6875rem;
   line-height: 16px;
@@ -368,13 +291,6 @@ exports[`Badge renders all sizes 2`] = `
 
 exports[`Badge renders all sizes 3`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   font-weight: 600;
   font-size: 0.75rem;
   line-height: 24px;
@@ -401,13 +317,6 @@ exports[`Badge renders all sizes 3`] = `
 
 exports[`Badge renders all sizes 4`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   font-weight: 600;
   font-size: 1rem;
   line-height: 32px;

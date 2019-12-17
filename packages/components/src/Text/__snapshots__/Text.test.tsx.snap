@@ -2,13 +2,6 @@
 
 exports[`A Text component decorated 1`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   font-size: 1rem;
   line-height: 1.5rem;
   -webkit-text-decoration: line-through;
@@ -26,13 +19,6 @@ exports[`A Text component decorated 1`] = `
 
 exports[`A Text component resized 1`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   font-size: 2.875rem;
   line-height: 4rem;
 }
@@ -47,13 +33,6 @@ exports[`A Text component resized 1`] = `
 
 exports[`A Text component text transformed 1`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   font-size: 1rem;
   line-height: 1.5rem;
   text-transform: uppercase;
@@ -69,13 +48,6 @@ exports[`A Text component text transformed 1`] = `
 
 exports[`A Text component weight 1`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   font-weight: 700;
   font-size: 1rem;
   line-height: 1.5rem;
@@ -92,13 +64,6 @@ exports[`A Text component weight 1`] = `
 
 exports[`A Text component with variant 1`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   font-size: 1rem;
   line-height: 1.5rem;
   color: #CC1F36;
@@ -114,13 +79,6 @@ exports[`A Text component with variant 1`] = `
 
 exports[`A Text component wrapped 1`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   font-size: 1rem;
   line-height: 1.5rem;
   overflow-wrap: break-word;
@@ -137,13 +95,6 @@ exports[`A Text component wrapped 1`] = `
 
 exports[`A default Text component 1`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   font-size: 1rem;
   line-height: 1.5rem;
 }

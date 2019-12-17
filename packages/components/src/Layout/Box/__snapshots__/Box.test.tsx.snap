@@ -2,13 +2,6 @@
 
 exports[`Box Box default 1`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   margin-top: 1.25rem;
 }
 
@@ -21,13 +14,6 @@ exports[`Box Box default 1`] = `
 
 exports[`Box Box supports background-color 1`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   background-color: #6C43E0;
 }
 
@@ -38,13 +24,6 @@ exports[`Box Box supports background-color 1`] = `
 
 exports[`Box Box supports display 1`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   display: inline-block;
 }
 
@@ -56,13 +35,6 @@ exports[`Box Box supports display 1`] = `
 
 exports[`Box Box supports height properties 1`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   height: 1vh;
 }
 
@@ -74,13 +46,6 @@ exports[`Box Box supports height properties 1`] = `
 
 exports[`Box Box supports height properties 2`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   max-height: 1vh;
 }
 
@@ -91,13 +56,6 @@ exports[`Box Box supports height properties 2`] = `
 
 exports[`Box Box supports height properties 3`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   min-height: 1vh;
 }
 
@@ -108,13 +66,6 @@ exports[`Box Box supports height properties 3`] = `
 
 exports[`Box Box supports position, top, left, bottom, right 1`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   position: absolute;
 }
 
@@ -125,13 +76,6 @@ exports[`Box Box supports position, top, left, bottom, right 1`] = `
 
 exports[`Box Box supports position, top, left, bottom, right 2`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   top: 1rem;
 }
 
@@ -142,13 +86,6 @@ exports[`Box Box supports position, top, left, bottom, right 2`] = `
 
 exports[`Box Box supports position, top, left, bottom, right 3`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   left: 1rem;
 }
 
@@ -159,13 +96,6 @@ exports[`Box Box supports position, top, left, bottom, right 3`] = `
 
 exports[`Box Box supports position, top, left, bottom, right 4`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   right: 1rem;
 }
 
@@ -176,13 +106,6 @@ exports[`Box Box supports position, top, left, bottom, right 4`] = `
 
 exports[`Box Box supports position, top, left, bottom, right 5`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   bottom: 1rem;
 }
 
@@ -193,13 +116,6 @@ exports[`Box Box supports position, top, left, bottom, right 5`] = `
 
 exports[`Box Box supports responsive fontSize and lineHeight 1`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   font-size: 0.875rem;
 }
 
@@ -222,13 +138,6 @@ exports[`Box Box supports responsive fontSize and lineHeight 1`] = `
 
 exports[`Box Box supports responsive fontSize and lineHeight 2`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   line-height: 1.25rem;
 }
 
@@ -245,13 +154,6 @@ exports[`Box Box supports responsive fontSize and lineHeight 2`] = `
 
 exports[`Box Box supports width 1`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   width: 1vw;
 }
 
@@ -263,13 +165,6 @@ exports[`Box Box supports width 1`] = `
 
 exports[`Box Box supports width 2`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   max-width: 1vw;
 }
 
@@ -280,13 +175,6 @@ exports[`Box Box supports width 2`] = `
 
 exports[`Box Box supports width 3`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   min-width: 1vw;
 }
 
@@ -297,13 +185,6 @@ exports[`Box Box supports width 3`] = `
 
 exports[`Box Box with SizeNone is valid 1`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   margin-top: 0rem;
 }
 
@@ -316,13 +197,6 @@ exports[`Box Box with SizeNone is valid 1`] = `
 
 exports[`Box Box with null values are removed from styling 1`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   margin-top: 1.25rem;
 }
 
@@ -341,13 +215,6 @@ exports[`Box Box with null values are removed from styling 1`] = `
 
 exports[`Box Responsive margin top Box 1`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   margin-top: 1.25rem;
 }
 
@@ -372,13 +239,6 @@ exports[`Box Responsive margin top Box 1`] = `
 
 exports[`Box borders Box supports borders 1`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   border: 1px solid black;
 }
 
@@ -389,13 +249,6 @@ exports[`Box borders Box supports borders 1`] = `
 
 exports[`Box borders supports borderColor 1`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   border-color: #DEE1E5;
 }
 
@@ -406,13 +259,6 @@ exports[`Box borders supports borderColor 1`] = `
 
 exports[`Box borders supports borderRadius 1`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   border-radius: 0.25rem;
 }
 
@@ -422,56 +268,26 @@ exports[`Box borders supports borderRadius 1`] = `
 `;
 
 exports[`Box core HTML attributes Box allows autoFocus 1`] = `
-.c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-}
-
 <div
   autoFocus={true}
-  className="c0"
+  className=""
 >
   Autofocus?
 </div>
 `;
 
 exports[`Box core HTML attributes Box allows for ARIA attributes 1`] = `
-.c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-}
-
 <div
   aria-disabled={true}
-  className="c0"
+  className=""
 >
   aria-disabled
 </div>
 `;
 
 exports[`Box core HTML attributes Box allows for HTML events 1`] = `
-.c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-}
-
 <div
-  className="c0"
+  className=""
   onMouseEnter={[Function]}
 >
   Autofocus?
@@ -480,13 +296,6 @@ exports[`Box core HTML attributes Box allows for HTML events 1`] = `
 
 exports[`Box flex supports flex item properties 1`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   align-self: center;
@@ -509,13 +318,6 @@ exports[`Box flex supports flex item properties 1`] = `
 
 exports[`Box flex supports flex properties 1`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -547,13 +349,6 @@ exports[`Box flex supports flex properties 1`] = `
 
 exports[`Box fonts font helpers 1`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   font-family: 'Open Sans',Helvetica,Arial,sans-serif;
 }
 
@@ -565,13 +360,6 @@ exports[`Box fonts font helpers 1`] = `
 
 exports[`Box fonts font helpers 2`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   font-size: 0.875rem;
 }
 
@@ -583,13 +371,6 @@ exports[`Box fonts font helpers 2`] = `
 
 exports[`Box fonts font helpers 3`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   font-weight: 700;
 }
 
@@ -601,13 +382,6 @@ exports[`Box fonts font helpers 3`] = `
 
 exports[`Box fonts font helpers 4`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   -webkit-letter-spacing: 10;
   -moz-letter-spacing: 10;
   -ms-letter-spacing: 10;
@@ -622,13 +396,6 @@ exports[`Box fonts font helpers 4`] = `
 
 exports[`Box fonts font helpers 5`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   line-height: 1.5rem;
 }
 
@@ -639,13 +406,6 @@ exports[`Box fonts font helpers 5`] = `
 
 exports[`Box fonts font helpers 6`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   text-align: right;
 }
 
@@ -656,13 +416,6 @@ exports[`Box fonts font helpers 6`] = `
 
 exports[`Box fonts font helpers 7`] = `
 .c0 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   color: #939BA5;
 }
 
