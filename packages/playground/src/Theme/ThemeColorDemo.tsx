@@ -23,23 +23,33 @@
  SOFTWARE.
 
  */
-import React from 'react'
-import { render } from 'react-dom'
-import { ComponentsProvider } from '@looker/components'
-import { ButtonDemo } from './Button/ButtonDemo'
-import { ThemeColorDemo } from './Theme/ThemeColorDemo'
 
-const App = () => (
-  <ComponentsProvider ie11Support>
-    <ThemeColorDemo />
-    <ButtonDemo />
-  </ComponentsProvider>
-)
+import { Swatch, Theme, Heading, Card, Grid } from '@looker/components'
+import React, { useContext } from 'react'
+import { ThemeContext } from 'styled-components'
+import omit from 'lodash/omit'
 
-/*
-  This is the binding site for the playground. If you want to edit the
-  primary application, do your work in App.tsx instead.
- */
-document.addEventListener('DOMContentLoaded', () => {
-  render(<App />, document.getElementById('container'))
-})
+export const ThemeColorDemo = () => {
+  const theme = useContext<Theme>(ThemeContext)
+
+  const colors = omit(theme.colors, 'palette')
+
+  const swatches = Object.entries(colors).map(([name, color]) => (
+    <Card key={name} minWidth="auto">
+      <Swatch color={color} width="100%" />
+      <Heading p="small" as="h5">
+        {name}
+      </Heading>
+    </Card>
+  ))
+
+  return (
+    <Grid m="xlarge" columns={6} gap="medium">
+      {swatches}
+    </Grid>
+  )
+
+  // console.log(theme.colors)
+
+  // return <pre>{String(theme.colors)}</pre>
+}

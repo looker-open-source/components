@@ -97,6 +97,8 @@ exports[`Banner can be dismissed 1`] = `
 .c5[disabled]:hover,
 .c5[disabled]:active,
 .c5[disabled]:focus {
+  background-color: transparent;
+  border-color: transparent;
   color: #939BA5;
 }
 

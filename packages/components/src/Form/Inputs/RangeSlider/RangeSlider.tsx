@@ -415,7 +415,7 @@ const ThumbLabel = styled.div<ThumbLabelProps>`
   transform: translateX(calc(${({ position = 0 }) => `${position}px`} - 50%));
   text-align: center;
   color: ${({ theme: { colors }, disabled }) =>
-    disabled ? colors.palette.charcoal700 : colors.semanticColors.primary.main};
+    disabled ? colors.neutral : colors.key};
   padding: 0 0.5rem;
   border-radius: 1rem;
   z-index: ${({ focus }) => (focus ? 1 : 0)};
@@ -434,9 +434,7 @@ const Thumb = styled.div<ThumbProps>`
   cursor: pointer;
   border: 3px solid
     ${({ theme: { colors }, disabled }) =>
-      disabled
-        ? colors.palette.charcoal500
-        : colors.semanticColors.primary.main};
+      disabled ? colors.neutral : colors.key};
   height: 16px;
   width: 16px;
   background: ${({ theme }) => theme.colors.palette.white};
@@ -460,7 +458,7 @@ interface SliderFillProps {
 const SliderFill = styled.div<SliderFillProps>`
   height: 100%;
   background: ${({ theme: { colors }, disabled }) =>
-    disabled ? colors.palette.charcoal400 : colors.semanticColors.primary.main};
+    disabled ? colors.neutral : colors.key};
   position: absolute;
   left: ${({ fillStart }) => fillStart}px;
   width: ${({ fillWidth }) => fillWidth}px;

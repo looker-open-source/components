@@ -81,6 +81,8 @@ exports[`ModalHeader 1`] = `
 .c3[disabled]:hover,
 .c3[disabled]:active,
 .c3[disabled]:focus {
+  background-color: transparent;
+  border-color: transparent;
   color: #939BA5;
 }
 

@@ -73,7 +73,7 @@ export const AccordionDisclosure = styled(AccordionDisclosureLayout)`
   ${typography}
 
   align-items: center;
-  border: 1px solid ${({ theme }) => theme.colors.palette.transparent};
+  border: 1px solid transparent;
   display: flex;
   cursor: pointer;
   outline: none;

@@ -28,7 +28,7 @@ Updating color and text of the button
 ```jsx
 <Confirm
   confirmLabel="Delete"
-  buttonColor="danger"
+  buttonColor="critical"
   title="Delete Something"
   message="Is this what you want to do?"
   onConfirm={(close) => {
@@ -37,7 +37,7 @@ Updating color and text of the button
   }}
 >
   {(open) => (
-    <Button color="danger" onClick={open}>
+    <Button color="critical" onClick={open}>
       Delete
     </Button>
   )}
@@ -57,7 +57,7 @@ If you want more control over markup and state, we provide a custom hook that re
 
   const [confirmationDialog, openDialog] = useConfirm({
     confirmLabel: 'Yes, Delete all',
-    buttonColor: 'danger',
+    buttonColor: 'critical',
     title: `Delete all`,
     message: 'Are you sure you want to delete all?',
     onConfirm: handleConfirm,
@@ -92,7 +92,7 @@ To help standardize that layout, we created the `ConfirmLayout` component for co
       titleIcon={<Icon name="Warning" color="palette.red500" size={22} />}
       message="Are you sure you want to close the dialog? Unsaved changes will be lost."
       primaryButton={
-        <Button onClick={handleConfirm} color="danger">
+        <Button onClick={handleConfirm} color="critical">
           Discard Changes
         </Button>
       }

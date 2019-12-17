@@ -14,7 +14,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `ActionListItem` accepts `actionsButtonLabel` prop to help with testing
 
 ### Changed
-- Font sizes for the various `Button`'s updated to match spec
+
+- `Button*` font sizes updated to match design specifications
+- `theme.colors` shape has been significantly refactored (documentation updates to follow)
 - `CheckboxGroup` and `RadioGroup` `name` is now optional
 - Updated `LookerLogo` and `LogoRings` to match new branding
 
@@ -27,6 +29,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `usePopper` reinstate the `adaptive` option of `computeStyles`
 - `CheckboxGroup` and `RadioGroup` now reflect changes to `value` prop
 - `InlineInputText` no longer adds a special character to prevent vertical-collapse when empty
+
+### Removed
+
+- `SemanticColor[s]` are no longer supported (see new `theme.colors` shape above)
 
 ## [0.7.37] - 2020-05-20
 

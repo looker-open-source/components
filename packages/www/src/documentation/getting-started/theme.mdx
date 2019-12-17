@@ -37,14 +37,14 @@ You can use the theme's properties within your custom components:
    *  import styled from 'styled-components'
    **/
 
-  const DangerButton = styled(Button)`
-    border-color: ${(props) => props.theme.colors.palette.red500};
-    background-color: ${(props) => props.theme.colors.palette.red500};
+  const PositiveButton = styled(Button)`
+    border-color: ${(props) => props.theme.colors.positive};
+    background-color: ${(props) => props.theme.colors.positive};
   `
 
   return (
     <ComponentsProvider>
-      <DangerButton>Danger Wil Robinson!</DangerButton>
+      <PositiveButton>Engage!</PositiveButton>
     </ComponentsProvider>
   )
 }

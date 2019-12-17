@@ -37,37 +37,12 @@ exports[`ButtonOutline Focus: renders outline when tabbing into focus, but not w
 }
 
 .c1 {
-  background: #FFFFFF;
-  border: 1px solid #C1C6CC;
-  color: #6C43E0;
+  border: 1px solid;
 }
 
 .c1 .c2 {
   width: 18px;
   height: 18px;
-}
-
-.c1:hover,
-.c1:focus,
-.c1.hover {
-  background: #FFFFFF;
-  border-color: #6C43E0;
-  color: #412399;
-}
-
-.c1:active,
-.c1.active {
-  background: #6C43E0;
-  border-color: #6C43E0;
-  color: #FFFFFF;
-}
-
-.c1[disabled]:hover,
-.c1[disabled]:active,
-.c1[disabled]:focus {
-  background-color: #FFFFFF;
-  border-color: #C1C6CC;
-  color: #6C43E0;
 }
 
 <button
@@ -122,37 +97,12 @@ exports[`ButtonOutline has the correct style 1`] = `
 }
 
 .c1 {
-  background: #FFFFFF;
-  border: 1px solid #C1C6CC;
-  color: #6C43E0;
+  border: 1px solid;
 }
 
 .c1 .c2 {
   width: 18px;
   height: 18px;
-}
-
-.c1:hover,
-.c1:focus,
-.c1.hover {
-  background: #FFFFFF;
-  border-color: #6C43E0;
-  color: #412399;
-}
-
-.c1:active,
-.c1.active {
-  background: #6C43E0;
-  border-color: #6C43E0;
-  color: #FFFFFF;
-}
-
-.c1[disabled]:hover,
-.c1[disabled]:active,
-.c1[disabled]:focus {
-  background-color: #FFFFFF;
-  border-color: #C1C6CC;
-  color: #6C43E0;
 }
 
 <button

@@ -419,10 +419,7 @@ Clicking on this header checkbox will trigger the callback passed into the `<Act
       onClick={() => alert(`${name} clicked`)}
       actions={
         <>
-          <ActionListItemAction
-            color="danger"
-            onClick={() => alert(`${name} deleted`)}
-          >
+          <ActionListItemAction onClick={() => alert(`${name} deleted`)}>
             Delete
           </ActionListItemAction>
         </>

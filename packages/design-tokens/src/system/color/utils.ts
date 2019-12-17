@@ -24,9 +24,19 @@
 
  */
 
-import { css } from 'styled-components'
+// const blendDefaults = {
+//   keyBlends: [8, 12, 20, 30, 40],
+//   textBlends: [40, 60, 70, 80, 100],
+//   uiBlends: [40, 60, 70, 80, 100],
+// }
 
-export const inputColor = css`
-  background: ${(props) => props.theme.colors.semanticColors.primary.main};
-  border-color: ${(props) => props.theme.colors.semanticColors.primary.main};
-`
+// export const generateDerivedColors = (key: string, background: string) => {
+//   const derivedSwatches = {
+//     actionText: background,
+//     surface: tint(0.05, background),
+//     primaryInteractive: tintOrShadeUiColor(10, key),
+//     primaryPressed: tintOrShadeUiColor(18, key),
+//   }
+
+//   return derivedSwatches
+// }

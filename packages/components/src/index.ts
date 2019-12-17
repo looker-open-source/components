@@ -65,10 +65,6 @@ export { ComponentsProvider } from '@looker/components-providers'
 export {
   GlobalStyle,
   palette,
-  radii,
-  semanticColors,
-  SemanticColor,
-  SemanticColors,
   SpacingSizes,
   theme,
   Theme,

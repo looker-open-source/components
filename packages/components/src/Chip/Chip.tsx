@@ -164,7 +164,6 @@ const ChipJSX = forwardRef((props: ChipProps, ref: Ref<HTMLSpanElement>) => {
       </ChipLabel>
       {onDelete && !disabled && (
         <IconButton
-          color="primary"
           disabled={disabled}
           icon="Close"
           label="Delete"
