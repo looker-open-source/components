@@ -24,222 +24,180 @@
 
  */
 
-// Much of the following is pulled from https://github.com/reach/reach-ui
-// because their work is fantastic (but is not in TypeScript)
-
+import React, { forwardRef, Ref } from 'react'
+import styled from 'styled-components'
 import {
+  border,
+  BorderProps,
   CompatibleHTMLProps,
+  CustomizableAttributes,
   layout,
   LayoutProps,
-  position,
-  PositionProps,
   reset,
   space,
   SpaceProps,
+  typography,
+  TypographyProps,
 } from '@looker/design-tokens'
-import React, { forwardRef, useRef, useState, Ref } from 'react'
-import styled from 'styled-components'
-import { useID, useCallbackRef } from '../../../utils'
 import { ValidationType } from '../../ValidationMessage'
-import { isVisible, useFocusManagement } from './helpers'
-import { useReducerMachine } from './state'
-import { SelectContext } from './SelectContext'
-import { SelectInputProps, SelectInput } from './SelectInput'
-import { SelectList, SelectListProps } from './SelectList'
-import {
-  SelectOption,
-  SelectOptionObject,
-  SelectOptionProps,
-} from './SelectOption'
 
-export type OnSelect = (option: SelectOptionObject) => void
+const renderOptions = (options: OptionsType<SelectOptionProps>) => {
+  return options.map(option => (
+    <option key={option.value} value={option.value}>
+      {option.label}
+    </option>
+  ))
+}
 
-export function useControlledSelect(initialValue = '') {
-  const [value, setOption] = useState(initialValue)
-  function handleSelect(option: SelectOptionObject) {
-    setOption(option.value)
-  }
-  function handleChange(e: React.FormEvent<HTMLInputElement>) {
-    setOption(e.currentTarget.value)
-  }
-  return {
-    inputProps: { onChange: handleChange },
-    onSelect: handleSelect,
-    value,
-  }
+const renderOptGroups = (
+  optionGroups: GroupedOptionsType<SelectOptionProps>
+) => {
+  return optionGroups.map(option => {
+    return (
+      <optgroup key={option.key} label={option.key}>
+        {renderOptions(option.options)}
+      </optgroup>
+    )
+  })
+}
+
+export const CustomizableSelectAttributes: CustomizableAttributes = {
+  borderRadius: 'medium',
+  fontSize: 'small',
+  height: '28px',
+  px: 'xsmall',
+  py: 'none',
+}
+
+export type OptionsType<OptionType> = OptionType[]
+
+export interface GroupType<OptionType> {
+  options: OptionsType<OptionType>
+  [key: string]: any
+}
+
+export type GroupedOptionsType<UnionOptionType> = Array<
+  GroupType<UnionOptionType>
+>
+
+export interface SelectOptionProps {
+  label: string
+  value: string
 }
 
 export interface SelectProps
-  extends LayoutProps,
-    PositionProps,
+  extends BorderProps,
+    Omit<LayoutProps, 'size'>,
     SpaceProps,
-    Omit<
-      CompatibleHTMLProps<HTMLDivElement>,
-      'readOnly' | 'onSelect' | 'onChange'
-    > {
+    TypographyProps,
+    CompatibleHTMLProps<HTMLSelectElement> {
+  options?:
+    | OptionsType<SelectOptionProps>
+    | GroupedOptionsType<SelectOptionProps>
   /**
-   * Called with the selection value when the user makes a selection from the
-   * list.
+   * Include a blank item as the first entry. If placeholder is specified it will be the label.
+   * @default true
    */
-  onSelect?: OnSelect
+  includeBlank?: boolean
   /**
-   * If true, the popover opens when focus is on the text box.
+   * Displays an example value or short hint to the user. Should not replace a label.
    */
-  openOnFocus?: boolean
-  /**
-   * Use options to build a select with props instead of children
-   * (do not use if also using children)
-   */
-  options?: SelectOptionObject[]
-  /**
-   * Props for the internal SelectInput component when building a select with the options prop
-   * (do not use if also using children)
-   */
-  inputProps?: SelectInputProps
-  /**
-   * Props for the internal SelectList component when building a select with the options prop
-   * (do not use if also using children)
-   */
-  listProps?: SelectListProps
-  /**
-   * Props for the internal SelectOptions components when building a select with the options prop
-   * (do not use if also using children)
-   */
-  optionProps?: SelectOptionProps
-  /**
-   * Provides error styling
-   */
+  placeholder?: string
   validationType?: ValidationType
-  /**
-   * The current value, for controlled use
-   * (do not use if also using children – instead use value on SelectInput)
-   */
-  value?: string
 }
 
-export const SelectInternal = forwardRef(function Select(
-  {
-    // Called whenever the user selects an item from the list
-    onSelect,
+const SelectComponent = forwardRef(
+  (
+    {
+      includeBlank = true,
+      options,
+      placeholder,
+      defaultValue: propsDefault,
+      value,
+      ...props
+    }: SelectProps,
+    ref: Ref<HTMLSelectElement>
+  ) => {
+    // Gracefully deal with situation where `value` prop is set but `onChange` is not.
+    const defaultValue =
+      propsDefault || (value && !props.onChange) ? value : undefined
 
-    // opens the list when the input receives focused (but only if there are
-    // items in the list)
-    openOnFocus = false,
+    const optionElements =
+      !options || options.length === 0
+        ? null
+        : Object.prototype.hasOwnProperty.call(options[0], 'key')
+        ? renderOptGroups(options as GroupedOptionsType<SelectOptionProps>)
+        : renderOptions(options as OptionsType<SelectOptionProps>)
 
-    children,
-
-    // these props allow the user to build a Select without children
-    inputProps,
-    listProps,
-    optionProps,
-    options,
-    value,
-    'aria-label': ariaLabel,
-    'aria-labelledby': ariaLabelledby,
-
-    ...rest
-  }: SelectProps,
-  forwardedRef: Ref<HTMLDivElement>
-) {
-  // We store the values of all the SelectOptions on this ref. This makes it
-  // possible to perform the keyboard navigation from the input on the list. We
-  // manipulate this array through context so that we don't have to enforce a
-  // parent/child relationship between SelectList and SelectOption with
-  // cloneElement or fall back to DOM traversal. It's a new trick for me and
-  // I'm pretty excited about it.
-  const optionsRef = useRef<SelectOptionObject[]>([])
-
-  // Need this to focus it
-  const [inputElement, inputCallbackRef] = useCallbackRef<HTMLInputElement>()
-
-  const popoverRef = useRef<HTMLDivElement>(null)
-
-  const buttonRef = useRef<HTMLButtonElement>(null)
-
-  // When <SelectInput autocomplete={false} /> we don't want cycle back to
-  // the user's value while navigating (because it's always the user's value),
-  // but we need to know this in useKeyDown which is far away from the prop
-  // here, so we do something sneaky and write it to this ref on context so we
-  // can use it anywhere else 😛. Another new trick for me and I'm excited
-  // about this one too!
-  const autocompletePropRef = useRef(true)
-  const readOnlyPropRef = useRef(false)
-
-  const persistSelectionRef = useRef(false)
-
-  const [state, data, transition] = useReducerMachine()
-
-  useFocusManagement(data.lastActionType, inputElement)
-
-  const id = useID(rest.id)
-  const listboxId = `listbox-${id}`
-  const ariaProps = {
-    'aria-label': ariaLabel,
-    'aria-labelledby': ariaLabelledby,
-  }
-
-  const context = {
-    autocompletePropRef,
-    buttonRef,
-    data,
-    inputCallbackRef,
-    inputElement,
-    isVisible: isVisible(state),
-    listboxId,
-    onSelect,
-    openOnFocus,
-    options,
-    optionsRef: options ? undefined : optionsRef,
-    persistSelectionRef,
-    popoverRef,
-    readOnlyPropRef,
-    state,
-    transition,
-  }
-
-  let content = children
-
-  if (!children) {
-    content = (
-      <>
-        <SelectInput value={value} {...ariaProps} {...inputProps} />
-        <SelectList {...ariaProps} {...listProps}>
-          {options &&
-            options.map((option: SelectOptionObject) => {
-              return (
-                <SelectOption {...optionProps} {...option} key={option.value} />
-              )
-            })}
-        </SelectList>
-      </>
-    )
-  } else if (options) {
-    // eslint-disable-next-line no-console
-    console.warn(`Options and children cannot be used together on Select.
-If you wish to build your Select with the options prop, do not define any children.`)
-  }
-
-  return (
-    <SelectContext.Provider value={context}>
-      <div
-        {...rest}
-        ref={forwardedRef}
-        role="select"
-        aria-haspopup="listbox"
-        aria-owns={listboxId}
-        aria-expanded={context.isVisible}
+    return (
+      <SelectBase
+        defaultValue={defaultValue ? defaultValue.toString() : undefined}
+        value={defaultValue ? undefined : value}
+        borderColor="palette.charcoal300"
+        {...props}
+        ref={ref}
       >
-        {content}
-      </div>
-    </SelectContext.Provider>
-  )
-})
+        {includeBlank && <option value="">{placeholder}</option>}
+        {optionElements}
+      </SelectBase>
+    )
+  }
+)
 
-SelectInternal.displayName = 'SelectInternal'
+SelectComponent.displayName = 'SelectComponent'
 
-export const Select = styled(SelectInternal)`
+//
+// @TODO - Should be properly imported from `Caret Down.svg`
+// import caretDownIcon from '../../../../icons/svg/Caret Down.svg'
+//
+const indicatorRaw = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M7.41 8L12 12.58L16.59 8L18 9.41L12 15.41L6 9.41L7.41 8Z" fill="#1C2125"/>
+</svg>`
+const indicatorSize = '1rem'
+const indicatorPadding = '.25rem'
+const indicator = (color: string) =>
+  typeof window !== 'undefined' &&
+  window.btoa(indicatorRaw.replace('#1C2125', color))
+
+// NOTE: Styling Selects is very complex
+//  See reference artice for background: https://www.filamentgroup.com/lab/select-css.html
+//  This component will likely be replaced with a React Select powered version
+
+const SelectBase = styled.select.attrs((props: SelectProps) => ({
+  borderRadius: props.borderRadius || CustomizableSelectAttributes.borderRadius,
+  fontSize: props.fontSize || CustomizableSelectAttributes.fontSize,
+  height: props.py || props.p ? undefined : CustomizableSelectAttributes.height,
+  px: props.p || CustomizableSelectAttributes.px,
+  py: props.p || CustomizableSelectAttributes.py,
+}))<SelectProps>`
   ${reset}
+  background-color: ${props =>
+    props.validationType === 'error'
+      ? props.theme.colors.palette.red000
+      : props.theme.colors.palette.white};
+  border: solid 1px;
+
+  appearance: none;
+
+  background-image:
+    url(data:image/svg+xml;base64,
+    ${props => indicator(props.theme.colors.palette.charcoal500)}),
+    linear-gradient(to bottom, ${props =>
+      props.theme.colors.palette.white} 0%, ${props =>
+  props.theme.colors.palette.white} 100%);
+
+  background-repeat: no-repeat, repeat;
+  background-position: right ${indicatorPadding} center, 0 0;
+  background-size: ${indicatorSize}, 100%;
+
+  &::-ms-expand {
+    display: none;
+  }
+  ${border}
   ${layout}
-  ${position}
+  ${typography}
   ${space}
+  padding-right: calc(2 * ${indicatorPadding} + ${indicatorSize});
 `
+
+export const Select = styled(SelectComponent)``

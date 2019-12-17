@@ -24,224 +24,68 @@
 
  */
 
-import { renderWithTheme } from '@looker/components-test-utils'
-import { act, cleanup, fireEvent } from '@testing-library/react'
+import 'jest-styled-components'
 import React from 'react'
+import { mountWithTheme, assertSnapshot } from '@looker/components-test-utils'
 
-import { Select, SelectInput, SelectList, SelectOption } from './'
+import { Select } from './Select'
 
-// for the requestAnimationFrame in handleBlur (not working currently)
-// jest.useFakeTimers()
-
-afterEach(cleanup)
-
-describe('<Select/> with options', () => {
-  test('with handleSelect', () => {
-    const options = [{ value: 'FOO' }, { value: 'BAR' }]
-    const handleSelect = jest.fn()
-    const {
-      // getAllByRole,
-      queryByText,
-      getByText,
-      getByPlaceholderText,
-    } = renderWithTheme(
-      <Select
-        options={options}
-        id="with-options"
-        inputProps={{ placeholder: 'Search' }}
-        onSelect={handleSelect}
-      />
-    )
-    expect(queryByText('FOO')).not.toBeInTheDocument()
-    expect(queryByText('BAR')).not.toBeInTheDocument()
-
-    const input = getByPlaceholderText('Search')
-    expect(input).toBeVisible()
-
-    act(() => {
-      fireEvent.click(input)
-    })
-
-    const foo = getByText('FOO')
-    const bar = getByText('BAR')
-
-    // Clicking on the options should fire onBlur on the input and
-    // trigger the state transition that allows in an updated input value.
-    // It doesn't, and the following doesn't work to fake it, so we can't test input value.
-    // act(() => {
-    // getAllByRole('option')[0].focus()
-    // input.blur()
-    // })
-    fireEvent.click(bar)
-    fireEvent.click(foo)
-
-    expect(handleSelect).toHaveBeenCalledTimes(2)
-    expect(handleSelect).toHaveBeenCalledWith({ value: 'FOO' })
-    expect(handleSelect).toHaveBeenCalledWith({ value: 'BAR' })
-  })
-
-  test('with openOnFocus', () => {
-    const options = [{ value: 'FOO' }, { value: 'BAR' }]
-    const { getByRole, queryByRole, getByPlaceholderText } = renderWithTheme(
-      <Select
-        options={options}
-        id="with-options"
-        inputProps={{ placeholder: 'Search' }}
-        openOnFocus
-      />
-    )
-
-    expect(queryByRole('listbox')).not.toBeInTheDocument()
-
-    getByPlaceholderText('Search').focus()
-    expect(getByRole('listbox')).toBeInTheDocument()
-  })
-
-  describe('Keyboard navigation', () => {
-    const arrowDown = {
-      key: 'ArrowDown',
-    }
-    const arrowUp = {
-      key: 'ArrowUp',
-    }
-    const enter = {
-      key: 'Enter',
-    }
-
-    test('arrows and enter', () => {
-      const options = [{ value: 'FOO' }, { value: 'BAR' }]
-      const {
-        getAllByRole,
-        getByRole,
-        queryByRole,
-        getByPlaceholderText,
-      } = renderWithTheme(
-        <Select
-          options={options}
-          id="with-options"
-          inputProps={{ placeholder: 'Search' }}
-          openOnFocus
-        />
-      )
-
-      expect(queryByRole('listbox')).not.toBeInTheDocument()
-
-      const input = getByPlaceholderText('Search')
-
-      fireEvent.keyDown(input, arrowDown)
-      expect(getByRole('listbox')).toBeInTheDocument()
-
-      const items = getAllByRole('option')
-      expect(input).toHaveValue('')
-      expect(items[0]).not.toHaveAttribute('aria-selected')
-      expect(items[1]).not.toHaveAttribute('aria-selected')
-
-      fireEvent.keyDown(input, arrowDown)
-      expect(input).toHaveValue('FOO')
-      expect(items[0]).toHaveAttribute('aria-selected', 'true')
-      expect(items[1]).toHaveAttribute('aria-selected', 'false')
-
-      fireEvent.keyDown(input, arrowDown)
-      expect(input).toHaveValue('BAR')
-      expect(items[0]).toHaveAttribute('aria-selected', 'false')
-      expect(items[1]).toHaveAttribute('aria-selected', 'true')
-
-      fireEvent.keyDown(input, arrowDown)
-      expect(input).toHaveValue('')
-      expect(items[0]).not.toHaveAttribute('aria-selected')
-      expect(items[1]).not.toHaveAttribute('aria-selected')
-
-      fireEvent.keyDown(input, arrowUp)
-      expect(input).toHaveValue('BAR')
-      expect(items[0]).toHaveAttribute('aria-selected', 'false')
-      expect(items[1]).toHaveAttribute('aria-selected', 'true')
-
-      fireEvent.keyDown(input, enter)
-      expect(input).toHaveValue('BAR')
-      expect(queryByRole('listbox')).not.toBeInTheDocument()
-    })
-
-    test('arrows and enter with autoComplete = false', () => {
-      const options = [{ value: 'FOO' }, { value: 'BAR' }]
-      const {
-        getAllByRole,
-        getByRole,
-        queryByRole,
-        getByPlaceholderText,
-      } = renderWithTheme(
-        <Select
-          options={options}
-          id="with-options"
-          inputProps={{ autocomplete: false, placeholder: 'Search' }}
-          openOnFocus
-        />
-      )
-
-      expect(queryByRole('listbox')).not.toBeInTheDocument()
-
-      const input = getByPlaceholderText('Search')
-
-      fireEvent.keyDown(input, arrowDown)
-      expect(getByRole('listbox')).toBeInTheDocument()
-
-      const items = getAllByRole('option')
-      expect(input).toHaveValue('')
-      expect(items[0]).not.toHaveAttribute('aria-selected')
-      expect(items[1]).not.toHaveAttribute('aria-selected')
-
-      fireEvent.keyDown(input, arrowDown)
-      expect(input).toHaveValue('')
-      expect(items[0]).toHaveAttribute('aria-selected', 'true')
-      expect(items[1]).toHaveAttribute('aria-selected', 'false')
-
-      fireEvent.keyDown(input, arrowDown)
-      expect(input).toHaveValue('')
-      expect(items[0]).toHaveAttribute('aria-selected', 'false')
-      expect(items[1]).toHaveAttribute('aria-selected', 'true')
-
-      fireEvent.keyDown(input, arrowDown)
-      expect(input).toHaveValue('')
-      expect(items[0]).toHaveAttribute('aria-selected', 'true')
-      expect(items[1]).toHaveAttribute('aria-selected', 'false')
-
-      fireEvent.keyDown(input, arrowUp)
-      expect(input).toHaveValue('')
-      expect(items[0]).toHaveAttribute('aria-selected', 'false')
-      expect(items[1]).toHaveAttribute('aria-selected', 'true')
-
-      fireEvent.keyDown(input, enter)
-      expect(input).toHaveValue('BAR')
-      expect(queryByRole('listbox')).not.toBeInTheDocument()
-    })
-  })
+test('Select default', () => {
+  assertSnapshot(<Select />)
 })
 
-describe('<Select/> with children', () => {
-  test('Renders children, merges callbacks', () => {
-    const handleSelect = jest.fn()
-    const handleClick = jest.fn()
-    const { getByText, getByTestId, queryByText } = renderWithTheme(
-      <Select options={[{ value: 'Apples' }]} onSelect={handleSelect}>
-        <SelectInput data-testid="select-input" />
-        <SelectList>
-          <SelectOption value="Foo" data={101} onClick={handleClick} />
-          <SelectOption value="Bar" data={102} />
-        </SelectList>
-      </Select>
-    )
+test('Select with name and id', () => {
+  assertSnapshot(<Select name="Bob" id="Bobby" />)
+})
 
-    const input = getByTestId('select-input')
-    fireEvent.click(input)
+test('Select should accept disabled', () => {
+  assertSnapshot(<Select disabled />)
+})
 
-    expect(queryByText('Apples')).not.toBeInTheDocument()
-    const foo = getByText('Foo')
-    expect(getByText('Foo')).toBeInTheDocument()
-    expect(getByText('Bar')).toBeInTheDocument()
+test('Select should accept empty options array', () => {
+  assertSnapshot(<Select options={[]} />)
+})
 
-    fireEvent.click(foo)
+test('Select with a placeholder', () => {
+  assertSnapshot(<Select placeholder="I am a placeholder" />)
+})
 
-    expect(handleClick).toHaveBeenCalledTimes(1)
-    expect(handleSelect).toHaveBeenCalledTimes(1)
-    expect(handleSelect).toHaveBeenCalledWith({ data: 101, value: 'Foo' })
-  })
+test('Select placeholder option does not have a value', () => {
+  const select = mountWithTheme(<Select placeholder="Boo!" />)
+  expect(select.find('option').prop('value')).toEqual('')
+})
+
+test('Select should accept readOnly', () => {
+  assertSnapshot(<Select readOnly />)
+})
+
+test('Select should accept required', () => {
+  assertSnapshot(<Select required />)
+})
+
+test('Select with a value', () => {
+  const options = [
+    { label: 'thing', value: '1' },
+    { label: "Some Value's Label", value: 'Some Value' },
+    { label: 'other', value: '2' },
+  ]
+  assertSnapshot(<Select value="Some Value" options={options} />)
+})
+
+test('Select with aria-describedby', () => {
+  assertSnapshot(<Select aria-describedby="some-id" />)
+})
+
+test('Select with an error validation', () => {
+  assertSnapshot(<Select validationType="error" />)
+})
+
+test('Should trigger onChange handler', () => {
+  let counter = 0
+  const handleChange = () => counter++
+
+  const wrapper = mountWithTheme(<Select onChange={handleChange} />)
+
+  wrapper.find('select').simulate('change', { target: { value: '' } })
+  expect(counter).toEqual(1)
 })
