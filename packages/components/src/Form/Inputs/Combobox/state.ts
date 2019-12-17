@@ -28,10 +28,10 @@
 // because their work is fantastic (but is not in TypeScript)
 
 import { Reducer, useReducer, useState } from 'react'
-import { defaultData } from './SelectContext'
-import { SelectOptionObject } from './SelectOption'
+import { defaultData } from './ComboboxContext'
+import { ComboboxOptionObject } from './ComboboxOption'
 
-export enum SelectState {
+export enum ComboboxState {
   // Nothing going on, waiting for the user to type or use the arrow keys
   IDLE = 'IDLE',
 
@@ -42,11 +42,11 @@ export enum SelectState {
   NAVIGATING = 'NAVIGATING',
 
   // The user is interacting with arbitrary elements inside the popup that
-  // are not SelectInputs
+  // are not ComboboxInputs
   INTERACTING = 'INTERACTING',
 }
 
-export enum SelectActionType {
+export enum ComboboxActionType {
   // User cleared the value w/ backspace, but input still has focus
   CLEAR = 'CLEAR',
 
@@ -76,84 +76,86 @@ export enum SelectActionType {
   CLOSE_WITH_BUTTON = 'CLOSE_WITH_BUTTON',
 }
 
-export interface SelectData {
-  option?: SelectOptionObject
-  navigationOption?: SelectOptionObject
-  lastActionType?: SelectActionType
+export interface ComboboxData {
+  option?: ComboboxOptionObject
+  navigationOption?: ComboboxOptionObject
+  lastActionType?: ComboboxActionType
 }
 
-export interface SelectAction {
-  type: SelectActionType
-  state: SelectState
+export interface ComboboxAction {
+  type: ComboboxActionType
+  state: ComboboxState
 }
 
-export interface SelectActionPayload {
-  option?: SelectOptionObject
-  persistSelection?: boolean
+export interface ComboboxActionPayload {
+  option?: ComboboxOptionObject
+  persistComboboxion?: boolean
 }
 
-export type SelectActionWithPayload = SelectAction & SelectActionPayload
+export type ComboboxActionWithPayload = ComboboxAction & ComboboxActionPayload
 
 export interface StateChart {
-  initial: SelectState
+  initial: ComboboxState
   states: {
-    [key in SelectState]: { on: { [key in SelectActionType]?: SelectState } }
+    [key in ComboboxState]: {
+      on: { [key in ComboboxActionType]?: ComboboxState }
+    }
   }
 }
 
-export type SelectTransition = (
-  action: SelectActionType,
-  payload?: SelectActionPayload
+export type ComboboxTransition = (
+  action: ComboboxActionType,
+  payload?: ComboboxActionPayload
 ) => void
 
 export const stateChart: StateChart = {
-  initial: SelectState.IDLE,
+  initial: ComboboxState.IDLE,
   states: {
-    [SelectState.IDLE]: {
+    [ComboboxState.IDLE]: {
       on: {
-        [SelectActionType.BLUR]: SelectState.IDLE,
-        [SelectActionType.CLEAR]: SelectState.IDLE,
-        [SelectActionType.CHANGE]: SelectState.SUGGESTING,
-        [SelectActionType.CHANGE_SILENT]: SelectState.IDLE,
-        [SelectActionType.FOCUS]: SelectState.SUGGESTING,
-        [SelectActionType.NAVIGATE]: SelectState.NAVIGATING,
+        [ComboboxActionType.BLUR]: ComboboxState.IDLE,
+        [ComboboxActionType.CLEAR]: ComboboxState.IDLE,
+        [ComboboxActionType.CHANGE]: ComboboxState.SUGGESTING,
+        [ComboboxActionType.CHANGE_SILENT]: ComboboxState.IDLE,
+        [ComboboxActionType.FOCUS]: ComboboxState.SUGGESTING,
+        [ComboboxActionType.NAVIGATE]: ComboboxState.NAVIGATING,
       },
     },
-    [SelectState.SUGGESTING]: {
+    [ComboboxState.SUGGESTING]: {
       on: {
-        [SelectActionType.CHANGE]: SelectState.SUGGESTING,
-        [SelectActionType.FOCUS]: SelectState.SUGGESTING,
-        [SelectActionType.NAVIGATE]: SelectState.NAVIGATING,
-        [SelectActionType.CLEAR]: SelectState.IDLE,
-        [SelectActionType.ESCAPE]: SelectState.IDLE,
-        [SelectActionType.BLUR]: SelectState.IDLE,
-        [SelectActionType.SELECT_WITH_CLICK]: SelectState.IDLE,
-        [SelectActionType.INTERACT]: SelectState.INTERACTING,
-        [SelectActionType.CLOSE_WITH_BUTTON]: SelectState.IDLE,
+        [ComboboxActionType.CHANGE]: ComboboxState.SUGGESTING,
+        [ComboboxActionType.FOCUS]: ComboboxState.SUGGESTING,
+        [ComboboxActionType.NAVIGATE]: ComboboxState.NAVIGATING,
+        [ComboboxActionType.CLEAR]: ComboboxState.IDLE,
+        [ComboboxActionType.ESCAPE]: ComboboxState.IDLE,
+        [ComboboxActionType.BLUR]: ComboboxState.IDLE,
+        [ComboboxActionType.SELECT_WITH_CLICK]: ComboboxState.IDLE,
+        [ComboboxActionType.INTERACT]: ComboboxState.INTERACTING,
+        [ComboboxActionType.CLOSE_WITH_BUTTON]: ComboboxState.IDLE,
       },
     },
-    [SelectState.NAVIGATING]: {
+    [ComboboxState.NAVIGATING]: {
       on: {
-        [SelectActionType.CHANGE]: SelectState.SUGGESTING,
-        [SelectActionType.FOCUS]: SelectState.SUGGESTING,
-        [SelectActionType.CLEAR]: SelectState.IDLE,
-        [SelectActionType.BLUR]: SelectState.IDLE,
-        [SelectActionType.ESCAPE]: SelectState.IDLE,
-        [SelectActionType.NAVIGATE]: SelectState.NAVIGATING,
-        [SelectActionType.SELECT_WITH_KEYBOARD]: SelectState.IDLE,
-        [SelectActionType.CLOSE_WITH_BUTTON]: SelectState.IDLE,
-        [SelectActionType.INTERACT]: SelectState.INTERACTING,
+        [ComboboxActionType.CHANGE]: ComboboxState.SUGGESTING,
+        [ComboboxActionType.FOCUS]: ComboboxState.SUGGESTING,
+        [ComboboxActionType.CLEAR]: ComboboxState.IDLE,
+        [ComboboxActionType.BLUR]: ComboboxState.IDLE,
+        [ComboboxActionType.ESCAPE]: ComboboxState.IDLE,
+        [ComboboxActionType.NAVIGATE]: ComboboxState.NAVIGATING,
+        [ComboboxActionType.SELECT_WITH_KEYBOARD]: ComboboxState.IDLE,
+        [ComboboxActionType.CLOSE_WITH_BUTTON]: ComboboxState.IDLE,
+        [ComboboxActionType.INTERACT]: ComboboxState.INTERACTING,
       },
     },
-    [SelectState.INTERACTING]: {
+    [ComboboxState.INTERACTING]: {
       on: {
-        [SelectActionType.CHANGE]: SelectState.SUGGESTING,
-        [SelectActionType.FOCUS]: SelectState.SUGGESTING,
-        [SelectActionType.BLUR]: SelectState.IDLE,
-        [SelectActionType.ESCAPE]: SelectState.IDLE,
-        [SelectActionType.NAVIGATE]: SelectState.NAVIGATING,
-        [SelectActionType.CLOSE_WITH_BUTTON]: SelectState.IDLE,
-        [SelectActionType.SELECT_WITH_CLICK]: SelectState.IDLE,
+        [ComboboxActionType.CHANGE]: ComboboxState.SUGGESTING,
+        [ComboboxActionType.FOCUS]: ComboboxState.SUGGESTING,
+        [ComboboxActionType.BLUR]: ComboboxState.IDLE,
+        [ComboboxActionType.ESCAPE]: ComboboxState.IDLE,
+        [ComboboxActionType.NAVIGATE]: ComboboxState.NAVIGATING,
+        [ComboboxActionType.CLOSE_WITH_BUTTON]: ComboboxState.IDLE,
+        [ComboboxActionType.SELECT_WITH_CLICK]: ComboboxState.IDLE,
       },
     },
   },
@@ -162,68 +164,68 @@ export const stateChart: StateChart = {
 // When we open a list, set the navigation option to the option in the input, if
 // it's in the list, then it'll automatically be highlighted.
 const findNavigationValue = (
-  state: SelectData,
-  action: SelectActionPayload
+  state: ComboboxData,
+  action: ComboboxActionPayload
 ) => {
   if (action.option) {
     return action.option
-  } else if (action.persistSelection) {
+  } else if (action.persistComboboxion) {
     return state.option
   } else {
     return undefined
   }
 }
 
-const reducer: Reducer<SelectData, SelectActionWithPayload> = (
-  data: SelectData,
-  action: SelectActionWithPayload
+const reducer: Reducer<ComboboxData, ComboboxActionWithPayload> = (
+  data: ComboboxData,
+  action: ComboboxActionWithPayload
 ) => {
   const nextState = { ...data, lastActionType: action.type }
   switch (action.type) {
-    case SelectActionType.CHANGE:
-    case SelectActionType.CHANGE_SILENT:
+    case ComboboxActionType.CHANGE:
+    case ComboboxActionType.CHANGE_SILENT:
       return {
         ...nextState,
         navigationOption: undefined,
         option: action.option,
       }
-    case SelectActionType.NAVIGATE:
+    case ComboboxActionType.NAVIGATE:
       return {
         ...nextState,
         navigationOption: findNavigationValue(nextState, action),
       }
-    case SelectActionType.CLEAR:
+    case ComboboxActionType.CLEAR:
       return {
         ...nextState,
         navigationOption: undefined,
         option: { value: '' },
       }
-    case SelectActionType.BLUR:
-    case SelectActionType.ESCAPE:
+    case ComboboxActionType.BLUR:
+    case ComboboxActionType.ESCAPE:
       return {
         ...nextState,
         navigationOption: undefined,
       }
-    case SelectActionType.SELECT_WITH_CLICK:
+    case ComboboxActionType.SELECT_WITH_CLICK:
       return {
         ...nextState,
         navigationOption: undefined,
         option: action.option,
       }
-    case SelectActionType.SELECT_WITH_KEYBOARD:
+    case ComboboxActionType.SELECT_WITH_KEYBOARD:
       return {
         ...nextState,
         navigationOption: undefined,
         option: data.navigationOption,
       }
-    case SelectActionType.CLOSE_WITH_BUTTON:
+    case ComboboxActionType.CLOSE_WITH_BUTTON:
       return {
         ...nextState,
         navigationOption: undefined,
       }
-    case SelectActionType.INTERACT:
+    case ComboboxActionType.INTERACT:
       return nextState
-    case SelectActionType.FOCUS:
+    case ComboboxActionType.FOCUS:
       return {
         ...nextState,
         navigationOption: findNavigationValue(nextState, action),
@@ -237,16 +239,16 @@ const reducer: Reducer<SelectData, SelectActionWithPayload> = (
 // This manages transitions between states with a built in reducer to manage
 // the data that goes with those transitions.
 export function useReducerMachine(): [
-  SelectState,
-  SelectData,
-  SelectTransition
+  ComboboxState,
+  ComboboxData,
+  ComboboxTransition
 ] {
   const [state, setState] = useState(stateChart.initial)
   const [data, dispatch] = useReducer(reducer, defaultData)
 
   function transition(
-    action: SelectActionType,
-    payload: SelectActionPayload = {}
+    action: ComboboxActionType,
+    payload: ComboboxActionPayload = {}
   ) {
     const currentState = stateChart.states[state]
     const nextState = currentState.on[action]

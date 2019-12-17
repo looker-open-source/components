@@ -31,11 +31,11 @@ import {
   Paragraph,
   Popover,
   PopoverContent,
-  Select,
-  SelectInput,
-  SelectList,
-  SelectOption,
-  useControlledSelect,
+  Combobox,
+  ComboboxInput,
+  ComboboxList,
+  ComboboxOption,
+  useControlledCombobox,
 } from '@looker/components'
 
 function LongText() {
@@ -73,7 +73,7 @@ function ModalInner() {
       <ModalHeader>A Modal</ModalHeader>
       <ModalContent>
         <LongText />
-        <ComposedSelect />
+        <ComposedCombobox />
       </ModalContent>
       <ModalFooter>
         <Button onClick={closeModal}>Close</Button>
@@ -82,17 +82,17 @@ function ModalInner() {
   )
 }
 
-function ComposedSelect() {
+function ComposedCombobox() {
   return (
-    <Select width={240}>
-      <SelectInput />
-      <SelectList>
-        <SelectOption value="Foo" />
-        <SelectOption value="Bar" />
-        <SelectOption value="Baz" />
-        <SelectOption value="Qux" />
-      </SelectList>
-    </Select>
+    <Combobox width={240}>
+      <ComboboxInput />
+      <ComboboxList>
+        <ComboboxOption value="Foo" />
+        <ComboboxOption value="Bar" />
+        <ComboboxOption value="Baz" />
+        <ComboboxOption value="Qux" />
+      </ComboboxList>
+    </Combobox>
   )
 }
 
@@ -103,13 +103,13 @@ const options = [
   { data: { id: 4 }, value: 'Pineapples' },
   { data: { id: 5 }, value: 'Kiwis' },
 ]
-const listProps = { persistSelection: true }
+const listProps = { persistComboboxion: true }
 
 export function SelectDemo() {
-  const { inputProps, ...selectProps } = useControlledSelect('Apples')
+  const { inputProps, ...selectProps } = useControlledCombobox('Apples')
   const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
     const fruit = e.currentTarget.getAttribute('data-fruit') || ''
-    selectProps.onSelect({ value: fruit })
+    selectProps.onCombobox({ value: fruit })
   }
   const inputPropsMemo = React.useMemo(
     () => ({
@@ -121,7 +121,7 @@ export function SelectDemo() {
   )
   return (
     <Box m="xlarge">
-      <Select
+      <Combobox
         openOnFocus={true}
         width={240}
         mb="medium"
@@ -139,7 +139,7 @@ export function SelectDemo() {
         Oranges
       </Button>
       <Divider my="xlarge" />
-      <ComposedSelect />
+      <ComposedCombobox />
       <Divider my="xlarge" />
       <DialogManager content={<ModalInner />}>
         {onClick => <Button onClick={onClick}>Open Modal</Button>}
@@ -149,7 +149,7 @@ export function SelectDemo() {
         content={
           <PopoverContent>
             <Box height={300} />
-            <ComposedSelect />
+            <ComposedCombobox />
           </PopoverContent>
         }
       >

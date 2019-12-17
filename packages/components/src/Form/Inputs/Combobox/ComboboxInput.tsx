@@ -41,10 +41,10 @@ import styled from 'styled-components'
 import { useForkedRef, useWrapEvent } from '../../../utils'
 import { InputText, InputTextProps } from '../InputText'
 import { makeHash, useBlur, useKeyDown } from './helpers'
-import { SelectContext } from './SelectContext'
-import { SelectActionType, SelectState } from './state'
+import { ComboboxContext } from './ComboboxContext'
+import { ComboboxActionType, ComboboxState } from './state'
 
-export interface SelectInputProps extends Omit<InputTextProps, 'value'> {
+export interface ComboboxInputProps extends Omit<InputTextProps, 'value'> {
   /**
    * If true, when the user clicks inside the text box the current value will
    * be selected. Use this if the user is likely to delete all the text anyway
@@ -69,7 +69,7 @@ export interface SelectInputProps extends Omit<InputTextProps, 'value'> {
   value?: string
 }
 
-export const SelectInputInternal = forwardRef(function SelectInput(
+export const ComboboxInputInternal = forwardRef(function ComboboxInput(
   {
     // highlights all the text in the box on click when true
     selectOnClick = false,
@@ -88,7 +88,7 @@ export const SelectInputInternal = forwardRef(function SelectInput(
     // might be controlled
     value: controlledValue,
     ...props
-  }: SelectInputProps,
+  }: ComboboxInputProps,
   forwardedRef: Ref<HTMLInputElement>
 ) {
   const {
@@ -99,10 +99,10 @@ export const SelectInputInternal = forwardRef(function SelectInput(
     transition,
     listboxId,
     autocompletePropRef,
-    persistSelectionRef,
+    persistComboboxionRef,
     readOnlyPropRef,
     openOnFocus,
-  } = useContext(SelectContext)
+  } = useContext(ComboboxContext)
 
   const ref = useForkedRef<HTMLInputElement>(inputCallbackRef, forwardedRef)
 
@@ -128,9 +128,9 @@ export const SelectInputInternal = forwardRef(function SelectInput(
 
   function handleValueChange(value: string) {
     if (value.trim() === '') {
-      transition && transition(SelectActionType.CLEAR)
+      transition && transition(ComboboxActionType.CLEAR)
     } else {
-      transition && transition(SelectActionType.CHANGE, { option: { value } })
+      transition && transition(ComboboxActionType.CHANGE, { option: { value } })
     }
   }
 
@@ -148,7 +148,7 @@ export const SelectInputInternal = forwardRef(function SelectInput(
       // this is most likely the initial value so we want to
       // update the value without transitioning to suggesting
       transition &&
-        transition(SelectActionType.CHANGE_SILENT, {
+        transition(ComboboxActionType.CHANGE_SILENT, {
           option: { value: controlledValue },
         })
     }
@@ -177,12 +177,13 @@ export const SelectInputInternal = forwardRef(function SelectInput(
     // so we guard behind these states
     if (
       openOnFocus &&
-      lastActionType !== SelectActionType.SELECT_WITH_CLICK &&
-      lastActionType !== SelectActionType.NAVIGATE
+      lastActionType !== ComboboxActionType.SELECT_WITH_CLICK &&
+      lastActionType !== ComboboxActionType.NAVIGATE
     ) {
       transition &&
-        transition(SelectActionType.FOCUS, {
-          persistSelection: persistSelectionRef && persistSelectionRef.current,
+        transition(ComboboxActionType.FOCUS, {
+          persistComboboxion:
+            persistComboboxionRef && persistComboboxionRef.current,
         })
     }
   }
@@ -192,18 +193,19 @@ export const SelectInputInternal = forwardRef(function SelectInput(
       selectOnClickRef.current = false
       inputElement && inputElement.select()
     }
-    if (state === SelectState.IDLE) {
+    if (state === ComboboxState.IDLE) {
       // Opening a closed list
       transition &&
-        transition(SelectActionType.FOCUS, {
-          persistSelection: persistSelectionRef && persistSelectionRef.current,
+        transition(ComboboxActionType.FOCUS, {
+          persistComboboxion:
+            persistComboboxionRef && persistComboboxionRef.current,
         })
     }
   }
 
   const inputOption =
     autocomplete &&
-    (state === SelectState.NAVIGATING || state === SelectState.INTERACTING)
+    (state === ComboboxState.NAVIGATING || state === ComboboxState.INTERACTING)
       ? // When idle, we don't have a navigationOption on ArrowUp/Down
         navigationOption || controlledValue || option
       : controlledValue || option
@@ -240,7 +242,7 @@ export const SelectInputInternal = forwardRef(function SelectInput(
   )
 })
 
-SelectInputInternal.displayName = 'SelectInputInternal'
+ComboboxInputInternal.displayName = 'ComboboxInputInternal'
 
 const indicatorRaw = ReactDOMServer.renderToString(<CaretDown />)
   .replace(/1em/g, '24')
@@ -254,7 +256,7 @@ export const selectIndicatorBG = (color: string) =>
     indicatorRaw.replace('currentColor', color)
   )}')`
 
-export const SelectInput = styled(SelectInputInternal)`
+export const ComboboxInput = styled(ComboboxInputInternal)`
   background-image: ${props =>
     selectIndicatorBG(props.theme.colors.palette.charcoal500)};
   background-repeat: no-repeat, repeat;
@@ -263,6 +265,6 @@ export const SelectInput = styled(SelectInputInternal)`
   padding-right: calc(2 * ${indicatorPadding} + ${indicatorSize});
 `
 
-SelectInput.defaultProps = {
+ComboboxInput.defaultProps = {
   width: '100%',
 }

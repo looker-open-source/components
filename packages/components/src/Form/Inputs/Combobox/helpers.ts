@@ -28,32 +28,32 @@
 // because their work is fantastic (but is not in TypeScript)
 
 import { KeyboardEvent, useContext, useLayoutEffect } from 'react'
-import { SelectActionType, SelectState } from './state'
-import { SelectContext } from './SelectContext'
+import { ComboboxActionType, ComboboxState } from './state'
+import { ComboboxContext } from './ComboboxContext'
 
 const visibleStates = [
-  SelectState.SUGGESTING,
-  SelectState.NAVIGATING,
-  SelectState.INTERACTING,
+  ComboboxState.SUGGESTING,
+  ComboboxState.NAVIGATING,
+  ComboboxState.INTERACTING,
 ]
 
-export const isVisible = (state: SelectState) => visibleStates.includes(state)
+export const isVisible = (state: ComboboxState) => visibleStates.includes(state)
 
 // Move focus back to the input if we start navigating w/ the
 // keyboard after focus has moved to any focus-able content in
 // the popup.
 
 export function useFocusManagement(
-  lastActionType?: SelectActionType,
+  lastActionType?: ComboboxActionType,
   inputElement?: HTMLInputElement | null
 ) {
   // useLayoutEffect so that the cursor goes to the end of the input instead
   // of awkwardly at the beginning, unclear to my why ...
   useLayoutEffect(() => {
     if (
-      lastActionType === SelectActionType.NAVIGATE ||
-      lastActionType === SelectActionType.ESCAPE ||
-      lastActionType === SelectActionType.SELECT_WITH_CLICK
+      lastActionType === ComboboxActionType.NAVIGATE ||
+      lastActionType === ComboboxActionType.ESCAPE ||
+      lastActionType === ComboboxActionType.SELECT_WITH_CLICK
     ) {
       inputElement && inputElement.focus()
     }
@@ -66,15 +66,15 @@ export function useFocusManagement(
 export function useKeyDown() {
   const {
     data: { navigationOption },
-    onSelect,
+    onCombobox,
     options: contextOptions,
     optionsRef,
     state,
     transition,
     autocompletePropRef,
-    persistSelectionRef,
+    persistComboboxionRef,
     readOnlyPropRef,
-  } = useContext(SelectContext)
+  } = useContext(ComboboxContext)
 
   return function handleKeyDown(event: KeyboardEvent<HTMLDivElement>) {
     const options = optionsRef ? optionsRef.current : contextOptions || []
@@ -91,12 +91,12 @@ export function useKeyDown() {
         //   return
         // }
 
-        if (state === SelectState.IDLE) {
+        if (state === ComboboxState.IDLE) {
           // Opening a closed list
           transition &&
-            transition(SelectActionType.NAVIGATE, {
-              persistSelection:
-                persistSelectionRef && persistSelectionRef.current,
+            transition(ComboboxActionType.NAVIGATE, {
+              persistComboboxion:
+                persistComboboxionRef && persistComboboxionRef.current,
             })
         } else {
           const index = navigationOption
@@ -109,18 +109,18 @@ export function useKeyDown() {
               // auto-completing and they need to be able to get back to what
               // they had typed w/o having to backspace out.
               transition &&
-                transition(SelectActionType.NAVIGATE, { option: undefined })
+                transition(ComboboxActionType.NAVIGATE, { option: undefined })
             } else {
               // cycle through
               const firstOption = options[0]
               transition &&
-                transition(SelectActionType.NAVIGATE, { option: firstOption })
+                transition(ComboboxActionType.NAVIGATE, { option: firstOption })
             }
           } else {
             // Go to the next item in the list
             const nextOption = options[(index + 1) % options.length]
             transition &&
-              transition(SelectActionType.NAVIGATE, { option: nextOption })
+              transition(ComboboxActionType.NAVIGATE, { option: nextOption })
           }
         }
         break
@@ -137,8 +137,8 @@ export function useKeyDown() {
           return
         }
 
-        if (state === SelectState.IDLE) {
-          transition && transition(SelectActionType.NAVIGATE)
+        if (state === ComboboxState.IDLE) {
+          transition && transition(ComboboxActionType.NAVIGATE)
         } else {
           const index = navigationOption
             ? options.indexOf(navigationOption)
@@ -149,31 +149,31 @@ export function useKeyDown() {
               // auto-completing and they need to be able to get back to what
               // they had typed w/o having to backspace out.
               transition &&
-                transition(SelectActionType.NAVIGATE, { option: undefined })
+                transition(ComboboxActionType.NAVIGATE, { option: undefined })
             } else {
               // cycle through
               const lastOption = options[options.length - 1]
               transition &&
-                transition(SelectActionType.NAVIGATE, { option: lastOption })
+                transition(ComboboxActionType.NAVIGATE, { option: lastOption })
             }
           } else if (index === -1) {
             // displaying the user's value, so go select the last one
             const option = options[options.length - 1]
-            transition && transition(SelectActionType.NAVIGATE, { option })
+            transition && transition(ComboboxActionType.NAVIGATE, { option })
           } else {
             // normal case, select previous
             const nextOption =
               options[(index - 1 + options.length) % options.length]
             transition &&
               transition &&
-              transition(SelectActionType.NAVIGATE, { option: nextOption })
+              transition(ComboboxActionType.NAVIGATE, { option: nextOption })
           }
         }
         break
       }
       case 'Escape': {
-        if (state !== SelectState.IDLE) {
-          transition && transition(SelectActionType.ESCAPE)
+        if (state !== ComboboxState.IDLE) {
+          transition && transition(ComboboxActionType.ESCAPE)
         }
         break
       }
@@ -184,23 +184,23 @@ export function useKeyDown() {
           // (otherwise the user is actually typing a space)
           readOnlyPropRef &&
           readOnlyPropRef.current &&
-          state === SelectState.NAVIGATING &&
+          state === ComboboxState.NAVIGATING &&
           navigationOption !== undefined
         ) {
-          onSelect && onSelect(navigationOption)
-          transition && transition(SelectActionType.SELECT_WITH_KEYBOARD)
+          onCombobox && onCombobox(navigationOption)
+          transition && transition(ComboboxActionType.SELECT_WITH_KEYBOARD)
         }
         break
       }
       case 'Enter': {
         if (
-          state === SelectState.NAVIGATING &&
+          state === ComboboxState.NAVIGATING &&
           navigationOption !== undefined
         ) {
           // don't want to submit forms
           event.preventDefault()
-          onSelect && onSelect(navigationOption)
-          transition && transition(SelectActionType.SELECT_WITH_KEYBOARD)
+          onCombobox && onCombobox(navigationOption)
+          transition && transition(ComboboxActionType.SELECT_WITH_KEYBOARD)
         }
         break
       }
@@ -210,7 +210,7 @@ export function useKeyDown() {
 
 export function useBlur() {
   const { state, transition, popoverRef, inputElement } = useContext(
-    SelectContext
+    ComboboxContext
   )
 
   return function handleBlur() {
@@ -220,12 +220,12 @@ export function useBlur() {
       if (document.activeElement !== inputElement && popoverCurrent) {
         if (popoverCurrent && popoverCurrent.contains(document.activeElement)) {
           // focus landed inside the select, keep it open
-          if (state !== SelectState.INTERACTING) {
-            transition && transition(SelectActionType.INTERACT)
+          if (state !== ComboboxState.INTERACTING) {
+            transition && transition(ComboboxActionType.INTERACT)
           }
         } else {
           // focus landed outside the select, close it.
-          transition && transition(SelectActionType.BLUR)
+          transition && transition(ComboboxActionType.BLUR)
         }
       }
     })

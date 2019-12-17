@@ -47,14 +47,14 @@ import styled from 'styled-components'
 import { useWrapEvent } from '../../../utils'
 import { Icon } from '../../../Icon'
 import { makeHash } from './helpers'
-import { OptionContext, SelectContext } from './SelectContext'
-import { SelectActionType } from './state'
+import { OptionContext, ComboboxContext } from './ComboboxContext'
+import { ComboboxActionType } from './state'
 
 type Data = string | number | object
 
-export interface SelectOptionObject {
+export interface ComboboxOptionObject {
   /**
-   * Additional data associated with the option, will be passed to onSelect.
+   * Additional data associated with the option, will be passed to onCombobox.
    */
   data?: Data | Data[]
   /**
@@ -63,8 +63,8 @@ export interface SelectOptionObject {
   value: string
 }
 
-export interface SelectOptionProps
-  extends SelectOptionObject,
+export interface ComboboxOptionProps
+  extends ComboboxOptionObject,
     ColorProps,
     FlexboxProps,
     LayoutProps,
@@ -73,42 +73,42 @@ export interface SelectOptionProps
     Omit<CompatibleHTMLProps<HTMLLIElement>, 'data' | 'value'> {
   /**
    * Optional. If omitted, the `value` will be used as the children like:
-   * `<SelectOption value="Seattle, Tacoma, Washington" />`. But if you need
+   * `<ComboboxOption value="Seattle, Tacoma, Washington" />`. But if you need
    * to control a bit more, you can put whatever children you want, but make
-   * sure to render a `SelectOptionText` as well, so the value is still
+   * sure to render a `ComboboxOptionText` as well, so the value is still
    * displayed with the text highlighting on the matched portions.
    *
    * @example
-   *   <SelectOption value="Apple" />
-   *     🍎 <SelectOptionText />
-   *   </SelectOption>
+   *   <ComboboxOption value="Apple" />
+   *     🍎 <ComboboxOptionText />
+   *   </ComboboxOption>
    */
   children?: React.ReactNode
 }
 
-export const SelectOptionDetail = styled.div`
+export const ComboboxOptionDetail = styled.div`
   flex: 1;
   display: flex;
   justify-content: flex-end;
 `
 
-const SelectOptionInternal = forwardRef(function SelectOption(
-  { children, data, value, onClick, ...props }: SelectOptionProps,
+const ComboboxOptionInternal = forwardRef(function ComboboxOption(
+  { children, data, value, onClick, ...props }: ComboboxOptionProps,
   forwardedRef: Ref<HTMLLIElement>
 ) {
   const {
     data: { option: contextOption, navigationOption },
-    onSelect,
+    onCombobox,
     transition,
     optionsRef,
-  } = useContext(SelectContext)
+  } = useContext(ComboboxContext)
 
-  const valueRef = useRef<SelectOptionObject>()
+  const valueRef = useRef<ComboboxOptionObject>()
 
   useEffect(() => {
     const option = { data, value }
     if (optionsRef) {
-      // Was there an old value for this SelectOption the list?
+      // Was there an old value for this ComboboxOption the list?
       // If so, add the new value at the same spot
       if (valueRef.current) {
         const index = optionsRef.current.indexOf(valueRef.current)
@@ -127,8 +127,8 @@ const SelectOptionInternal = forwardRef(function SelectOption(
 
   function handleClick() {
     const option = { data, value }
-    onSelect && onSelect(option)
-    transition && transition(SelectActionType.SELECT_WITH_CLICK, { option })
+    onCombobox && onCombobox(option)
+    transition && transition(ComboboxActionType.SELECT_WITH_CLICK, { option })
   }
 
   const wrappedOnClick = useWrapEvent(handleClick, onClick)
@@ -147,20 +147,20 @@ const SelectOptionInternal = forwardRef(function SelectOption(
         tabIndex={-1}
         onClick={wrappedOnClick}
       >
-        {children || <SelectOptionText />}
+        {children || <ComboboxOptionText />}
         {isCurrent && (
-          <SelectOptionDetail>
+          <ComboboxOptionDetail>
             <Icon name="Check" />
-          </SelectOptionDetail>
+          </ComboboxOptionDetail>
         )}
       </li>
     </OptionContext.Provider>
   )
 })
 
-SelectOptionInternal.displayName = 'SelectOptionInternal'
+ComboboxOptionInternal.displayName = 'ComboboxOptionInternal'
 
-export const SelectOption = styled(SelectOptionInternal)`
+export const ComboboxOption = styled(ComboboxOptionInternal)`
   ${reset}
   ${color}
   ${flexbox}
@@ -174,7 +174,7 @@ export const SelectOption = styled(SelectOptionInternal)`
   }
 `
 
-SelectOption.defaultProps = {
+ComboboxOption.defaultProps = {
   color: 'palette.charcoal700',
   display: 'flex',
   fontSize: 'small',
@@ -182,15 +182,15 @@ SelectOption.defaultProps = {
   py: 'xxsmall',
 }
 
-// SelectOptionText
+// ComboboxOptionText
 
 // We don't forwardRef or spread props because we render multiple spans or null,
 // should be fine 🤙
-export function SelectOptionTextInternal(
+export function ComboboxOptionTextInternal(
   props: CompatibleHTMLProps<HTMLSpanElement>
 ) {
   const value = useContext(OptionContext) || ''
   return <span {...props}>{value}</span>
 }
 
-export const SelectOptionText = styled(SelectOptionTextInternal)``
+export const ComboboxOptionText = styled(ComboboxOptionTextInternal)``

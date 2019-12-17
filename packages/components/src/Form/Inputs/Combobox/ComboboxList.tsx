@@ -38,11 +38,11 @@ import {
 import React, { forwardRef, Ref, useContext, useLayoutEffect } from 'react'
 import styled from 'styled-components'
 import { PopoverContent, usePopover } from '../../../Popover'
-import { SelectContext } from './SelectContext'
+import { ComboboxContext } from './ComboboxContext'
 import { useKeyDown, useBlur } from './helpers'
-import { SelectActionType } from './state'
+import { ComboboxActionType } from './state'
 
-export interface SelectListProps
+export interface ComboboxListProps
   extends SpaceProps,
     TypographyProps,
     CompatibleHTMLProps<HTMLUListElement> {
@@ -51,40 +51,40 @@ export interface SelectListProps
    * matches the value in the input, it will automatically be highlighted and
    * be the starting point for any keyboard navigation of the list.
    *
-   * This allows you to treat a Select more like a `<select>` than an
+   * This allows you to treat a Combobox more like a `<select>` than an
    * `<input/>`, but be mindful that the user is still able to put any
    * arbitrary value into the input, so if the only valid values for the input
    * are from the list, your app will need to do that validation on blur or
    * submit of the form.
    */
-  persistSelection?: boolean
+  persistComboboxion?: boolean
 }
 
-export const SelectListInternal = forwardRef(function SelectList(
+export const ComboboxListInternal = forwardRef(function ComboboxList(
   {
     // when true, and the list opens again, the option with a matching value will be
     // automatically highlighted.
-    persistSelection = false,
+    persistComboboxion = false,
     ...props
-  }: SelectListProps,
+  }: ComboboxListProps,
   forwardedRef: Ref<HTMLUListElement>
 ) {
   const {
-    persistSelectionRef,
+    persistComboboxionRef,
     transition,
     inputElement,
     isVisible,
     optionsRef,
     popoverRef,
-  } = useContext(SelectContext)
+  } = useContext(ComboboxContext)
 
-  if (persistSelection) {
-    if (persistSelectionRef) persistSelectionRef.current = true
+  if (persistComboboxion) {
+    if (persistComboboxionRef) persistComboboxionRef.current = true
   }
 
   // WEIRD? Reset the options ref every render so that they are always
   // accurate and ready for keyboard navigation handlers. Using layout
-  // effect to schedule this effect before the SelectOptions push into
+  // effect to schedule this effect before the ComboboxOptions push into
   // the array
   useLayoutEffect(() => {
     if (optionsRef) optionsRef.current = []
@@ -115,7 +115,7 @@ export const SelectListInternal = forwardRef(function SelectList(
 
   const setOpen = (isOpen: boolean) => {
     if (!isOpen) {
-      transition && transition(SelectActionType.BLUR)
+      transition && transition(ComboboxActionType.BLUR)
     }
   }
 
@@ -132,15 +132,15 @@ export const SelectListInternal = forwardRef(function SelectList(
   return popover || null
 })
 
-SelectListInternal.displayName = 'SelectListInternal'
+ComboboxListInternal.displayName = 'ComboboxListInternal'
 
-export const SelectList = styled(SelectListInternal)`
+export const ComboboxList = styled(ComboboxListInternal)`
   ${reset}
   ${typography}
   ${space}
   list-style-type: none;
 `
 
-SelectList.defaultProps = {
+ComboboxList.defaultProps = {
   py: 'xsmall',
 }

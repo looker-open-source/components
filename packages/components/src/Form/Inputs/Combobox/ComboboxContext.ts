@@ -24,41 +24,41 @@
 
  */
 import { createContext, RefObject, Ref, MutableRefObject } from 'react'
-import { SelectData, SelectTransition, SelectState } from './state'
-import { SelectOptionObject } from './SelectOption'
-import { OnSelect } from './Select'
+import { ComboboxData, ComboboxTransition, ComboboxState } from './state'
+import { ComboboxOptionObject } from './ComboboxOption'
+import { OnCombobox } from './Combobox'
 
-export interface SelectContextProps {
-  data: SelectData
+export interface ComboboxContextProps {
+  data: ComboboxData
   inputCallbackRef?: Ref<HTMLInputElement>
   inputElement?: HTMLInputElement | null
   popoverRef?: RefObject<HTMLDivElement>
-  onSelect?: OnSelect
-  options?: SelectOptionObject[]
-  optionsRef?: MutableRefObject<SelectOptionObject[]>
-  state?: SelectState
-  transition?: SelectTransition
+  onCombobox?: OnCombobox
+  options?: ComboboxOptionObject[]
+  optionsRef?: MutableRefObject<ComboboxOptionObject[]>
+  state?: ComboboxState
+  transition?: ComboboxTransition
   listboxId?: string
   autocompletePropRef?: MutableRefObject<boolean>
-  persistSelectionRef?: MutableRefObject<boolean>
+  persistComboboxionRef?: MutableRefObject<boolean>
   readOnlyPropRef?: MutableRefObject<boolean>
   isVisible?: boolean
   openOnFocus?: boolean
 }
 
-export const defaultData: SelectData = {
+export const defaultData: ComboboxData = {
   // the value the user has navigated to with the keyboard
   navigationOption: undefined,
   // the value the user has typed, we derived this also when the developer is
-  // controlling the value of SelectInput
+  // controlling the value of ComboboxInput
   option: { value: '' },
 }
 
-export const SelectContext = createContext<SelectContextProps>({
+export const ComboboxContext = createContext<ComboboxContextProps>({
   data: defaultData,
 })
 
-// Allows us to put the option's value on context so that SelectOptionText
+// Allows us to put the option's value on context so that ComboboxOptionText
 // can work it's highlight text magic no matter what else is rendered around
 // it.
 export const OptionContext = createContext<string | undefined>(undefined)

@@ -24,12 +24,8 @@
 
  */
 
-export * from './Checkbox'
 export * from './Combobox'
-export * from './InputHidden'
-export * from './InputSearch'
-export * from './InputText'
-export * from './Radio'
-export * from './Select'
-export * from './Slider'
-export * from './ToggleSwitch'
+export * from './ComboboxContext'
+export * from './ComboboxInput'
+export * from './ComboboxList'
+export * from './ComboboxOption'
