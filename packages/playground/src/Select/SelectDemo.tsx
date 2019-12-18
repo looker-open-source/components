@@ -19,7 +19,7 @@
  */
 
 import React, { MouseEvent } from 'react'
-import { Button, Divider, Box, Select } from '@looker/components'
+import { Button, Divider, Box, Select, FieldSelect } from '@looker/components'
 
 const options = [
   { label: 'Apples', value: '1' },
@@ -30,39 +30,74 @@ const options = [
 ]
 
 export function SelectDemo() {
-  const [value, setValue] = React.useState('1')
-  // const [inputValue, setInputValue] = React.useState('1')
+  const [value, setValue] = React.useState()
+  const [searchTerm, setSearchTerm] = React.useState('')
   const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
     const fruit = e.currentTarget.getAttribute('data-fruit') || ''
     setValue(fruit)
   }
+  function handleChange(value: string) {
+    setValue(value)
+  }
+  function handleFilter(term: string) {
+    setSearchTerm(term)
+  }
+  const newOptions = React.useMemo(() => {
+    if (searchTerm === '') return options
+    return options.filter((option: { label: string; value: string }) => {
+      return option.label.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1
+    })
+  }, [searchTerm])
   return (
     <Box m="xlarge">
       <Select
         width={300}
         mb="medium"
-        options={options}
+        options={newOptions}
         aria-label="Fruits"
         placeholder="Controlled, searchable, clearable"
         isClearable
         value={value}
-        onChange={value => setValue(value)}
-        isSearchable
+        onChange={handleChange}
+        onFilter={handleFilter}
+        isFilterable
+        mr="small"
       />
-      {/* <Paragraph>{selectProps.value}</Paragraph> */}
-      <Button mt="medium" mr="small" data-fruit="5" onClick={handleClick}>
-        Kiwis
-      </Button>
-      <Button mt="medium" data-fruit="3" onClick={handleClick}>
-        Oranges
-      </Button>
+      <Box>
+        <Button mt="medium" mr="small" data-fruit="5" onClick={handleClick}>
+          Kiwis
+        </Button>
+        <Button mt="medium" data-fruit="3" onClick={handleClick}>
+          Oranges
+        </Button>
+      </Box>
       <Divider my="xlarge" />
-      <Select
+      <FieldSelect
+        label="Default Value"
+        width={300}
+        mb="medium"
+        options={options}
+        aria-label="Fruits"
+        defaultValue="1"
+      />
+      <FieldSelect
+        label="Disabled"
         width={300}
         mb="medium"
         options={options}
         aria-label="Fruits"
         placeholder="Select One"
+        disabled
+        defaultValue="1"
+      />
+      <FieldSelect
+        label="Error"
+        width={300}
+        options={options}
+        aria-label="Fruits"
+        placeholder="Select One"
+        defaultValue="1"
+        validationMessage={{ message: 'An error message', type: 'error' }}
       />
     </Box>
   )

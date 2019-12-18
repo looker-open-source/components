@@ -55,10 +55,6 @@ test('Select placeholder option does not have a value', () => {
   expect(select.find('option').prop('value')).toEqual('')
 })
 
-test('Select should accept readOnly', () => {
-  assertSnapshot(<Select readOnly />)
-})
-
 test('Select should accept required', () => {
   assertSnapshot(<Select required />)
 })

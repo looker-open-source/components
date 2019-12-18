@@ -147,8 +147,8 @@ export const ComboboxInputInternal = forwardRef(function ComboboxInput(
   // new `value`s ...[*]
   if (
     controlledValue !== undefined &&
-    option &&
-    controlledValue !== option.value
+    contextInputValue &&
+    controlledValue !== contextInputValue
   ) {
     if (isInputting.current) {
       handleValueChange(controlledValue)
@@ -209,12 +209,8 @@ export const ComboboxInputInternal = forwardRef(function ComboboxInput(
     }
   }
 
-  let inputOption =
-    controlledValue !== undefined
-      ? controlledValue
-      : contextInputValue !== undefined
-      ? contextInputValue
-      : option
+  let inputOption = contextInputValue !== undefined ? contextInputValue : option
+
   if (
     autocomplete &&
     (state === ComboboxState.NAVIGATING || state === ComboboxState.INTERACTING)

@@ -32,18 +32,28 @@ import {
   layout,
   LayoutProps,
   position,
-  PositionProps,
+  TypographyProps,
   reset,
   space,
   SpaceProps,
 } from '@looker/design-tokens'
-import React, { forwardRef, useRef, useState, Ref } from 'react'
+import React, { forwardRef, useRef, useState, Ref, useEffect } from 'react'
 import styled from 'styled-components'
 import { useID, useCallbackRef, useForkedRef } from '../../../utils'
-import { isVisible, useFocusManagement } from './helpers'
-import { useReducerMachine } from './state'
-import { ComboboxContext } from './ComboboxContext'
-import { ComboboxOptionObject } from './ComboboxOption'
+import { Box } from '../../../Layout'
+import { useFocusManagement } from './helpers'
+import { useReducerMachine, ComboboxActionType, ComboboxState } from './state'
+import { ComboboxContext, defaultData } from './ComboboxContext'
+import { ComboboxOptionObject, getComboboxText } from './ComboboxOption'
+
+const visibleStates = [
+  ComboboxState.SUGGESTING,
+  ComboboxState.NAVIGATING,
+  ComboboxState.INTERACTING,
+]
+
+export const getIsVisible = (state: ComboboxState) =>
+  visibleStates.includes(state)
 
 export type OnComboboxChange = (option?: ComboboxOptionObject) => void
 
@@ -63,12 +73,12 @@ export function useControlledCombobox(initialValue = '') {
 }
 
 export interface ComboboxProps
-  extends LayoutProps,
-    PositionProps,
+  extends Omit<LayoutProps, 'size'>,
     SpaceProps,
+    TypographyProps,
     Omit<
       CompatibleHTMLProps<HTMLDivElement>,
-      'readOnly' | 'onChange' | 'value'
+      'readOnly' | 'onChange' | 'value' | 'defaultValue'
     > {
   /**
    * If true, the popover opens when focus is on the text box.
@@ -78,7 +88,22 @@ export interface ComboboxProps
    * Called when an option is selected (not when user types – use ComboboxInput.onChange for that)
    */
   onChange?: OnComboboxChange
+  /**
+   * The current option (controlled)
+   */
   value?: ComboboxOptionObject
+  /**
+   * The initial option (uncontrolled)
+   */
+  defaultValue?: ComboboxOptionObject
+  /**
+   * Called when the suggestion list closes, whether via blur, escape or selection
+   */
+  onClose?: (option?: ComboboxOptionObject) => void
+  /**
+   * Called when the suggestion list opens, whether via typing, click, or focus
+   */
+  onOpen?: (option?: ComboboxOptionObject) => void
 }
 
 export const ComboboxInternal = forwardRef(function Combobox(
@@ -89,6 +114,10 @@ export const ComboboxInternal = forwardRef(function Combobox(
 
     children,
     onChange,
+    value,
+    defaultValue,
+    onClose,
+    onOpen,
 
     ...rest
   }: ComboboxProps,
@@ -123,13 +152,40 @@ export const ComboboxInternal = forwardRef(function Combobox(
   const readOnlyPropRef = useRef(false)
 
   const persistSelectionRef = useRef(false)
+  const initialOption = defaultValue
+    ? { inputValue: getComboboxText(defaultValue), option: defaultValue }
+    : {}
 
-  const [state, data, transition] = useReducerMachine()
+  const [state, data, transition] = useReducerMachine({
+    ...defaultData,
+    ...initialOption,
+  })
+  const { option } = data
+
+  if (value !== undefined && option?.value !== value.value) {
+    transition &&
+      transition(ComboboxActionType.SELECT_SILENT, {
+        option: value,
+      })
+  }
 
   useFocusManagement(data.lastActionType, inputElement)
 
   const id = useID(rest.id)
   const listboxId = `listbox-${id}`
+
+  const isVisible = getIsVisible(state)
+  const isVisibleRef = useRef(isVisible)
+
+  useEffect(() => {
+    if (isVisible && !isVisibleRef.current) {
+      onOpen && onOpen(option)
+      isVisibleRef.current = true
+    } else if (!isVisible && isVisibleRef.current) {
+      onClose && onClose(option)
+      isVisibleRef.current = false
+    }
+  }, [isVisible, isVisibleRef, onOpen, onClose, option])
 
   const context = {
     autocompletePropRef,
@@ -137,7 +193,7 @@ export const ComboboxInternal = forwardRef(function Combobox(
     data,
     inputCallbackRef,
     inputElement,
-    isVisible: isVisible(state),
+    isVisible,
     listboxId,
     onChange,
     openOnFocus,
@@ -152,7 +208,8 @@ export const ComboboxInternal = forwardRef(function Combobox(
 
   return (
     <ComboboxContext.Provider value={context}>
-      <div
+      <Box
+        display="inline-block"
         {...rest}
         ref={ref}
         role="select"
@@ -161,7 +218,7 @@ export const ComboboxInternal = forwardRef(function Combobox(
         aria-expanded={context.isVisible}
       >
         {children}
-      </div>
+      </Box>
     </ComboboxContext.Provider>
   )
 })

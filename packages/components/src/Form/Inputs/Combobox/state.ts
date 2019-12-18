@@ -28,7 +28,6 @@
 // because their work is fantastic (but is not in TypeScript)
 
 import { Reducer, useReducer, useState } from 'react'
-import { defaultData } from './ComboboxContext'
 import { ComboboxOptionObject, getComboboxText } from './ComboboxOption'
 
 export enum ComboboxState {
@@ -63,6 +62,9 @@ export enum ComboboxActionType {
   // value from the click, not the current nav item
   SELECT_WITH_KEYBOARD = 'SELECT_WITH_KEYBOARD',
   SELECT_WITH_CLICK = 'SELECT_WITH_CLICK',
+
+  // Used for the setting the initial option
+  SELECT_SILENT = 'SELECT_SILENT',
 
   // Pretty self-explanatory, user can hit escape or blur to close the popover
   ESCAPE = 'ESCAPE',
@@ -119,40 +121,47 @@ export const stateChart: StateChart = {
         [ComboboxActionType.CHANGE_SILENT]: ComboboxState.IDLE,
         [ComboboxActionType.FOCUS]: ComboboxState.SUGGESTING,
         [ComboboxActionType.NAVIGATE]: ComboboxState.NAVIGATING,
+        [ComboboxActionType.SELECT_SILENT]: ComboboxState.IDLE,
       },
     },
     [ComboboxState.SUGGESTING]: {
       on: {
         [ComboboxActionType.CHANGE]: ComboboxState.SUGGESTING,
+        [ComboboxActionType.CHANGE_SILENT]: ComboboxState.SUGGESTING,
         [ComboboxActionType.FOCUS]: ComboboxState.SUGGESTING,
         [ComboboxActionType.NAVIGATE]: ComboboxState.NAVIGATING,
         [ComboboxActionType.CLEAR]: ComboboxState.IDLE,
         [ComboboxActionType.ESCAPE]: ComboboxState.IDLE,
         [ComboboxActionType.BLUR]: ComboboxState.IDLE,
         [ComboboxActionType.SELECT_WITH_CLICK]: ComboboxState.IDLE,
+        [ComboboxActionType.SELECT_SILENT]: ComboboxState.IDLE,
         [ComboboxActionType.INTERACT]: ComboboxState.INTERACTING,
       },
     },
     [ComboboxState.NAVIGATING]: {
       on: {
         [ComboboxActionType.CHANGE]: ComboboxState.SUGGESTING,
+        [ComboboxActionType.CHANGE_SILENT]: ComboboxState.NAVIGATING,
         [ComboboxActionType.FOCUS]: ComboboxState.SUGGESTING,
         [ComboboxActionType.CLEAR]: ComboboxState.IDLE,
         [ComboboxActionType.BLUR]: ComboboxState.IDLE,
         [ComboboxActionType.ESCAPE]: ComboboxState.IDLE,
         [ComboboxActionType.NAVIGATE]: ComboboxState.NAVIGATING,
         [ComboboxActionType.SELECT_WITH_KEYBOARD]: ComboboxState.IDLE,
+        [ComboboxActionType.SELECT_SILENT]: ComboboxState.IDLE,
         [ComboboxActionType.INTERACT]: ComboboxState.INTERACTING,
       },
     },
     [ComboboxState.INTERACTING]: {
       on: {
         [ComboboxActionType.CHANGE]: ComboboxState.SUGGESTING,
+        [ComboboxActionType.CHANGE_SILENT]: ComboboxState.SUGGESTING,
         [ComboboxActionType.FOCUS]: ComboboxState.SUGGESTING,
         [ComboboxActionType.BLUR]: ComboboxState.IDLE,
         [ComboboxActionType.ESCAPE]: ComboboxState.IDLE,
         [ComboboxActionType.NAVIGATE]: ComboboxState.NAVIGATING,
         [ComboboxActionType.SELECT_WITH_CLICK]: ComboboxState.IDLE,
+        [ComboboxActionType.SELECT_SILENT]: ComboboxState.IDLE,
       },
     },
   },
@@ -206,6 +215,7 @@ const reducer: Reducer<ComboboxData, ComboboxActionWithPayload> = (
         navigationOption: undefined,
       }
     case ComboboxActionType.SELECT_WITH_CLICK:
+    case ComboboxActionType.SELECT_SILENT:
       return {
         ...nextState,
         inputValue: getComboboxText(action.option),
@@ -235,10 +245,10 @@ const reducer: Reducer<ComboboxData, ComboboxActionWithPayload> = (
 // This manages transitions between states with a built in reducer to manage
 // the data that goes with those transitions.
 export function useReducerMachine(
-  initialData: ComboboxData = defaultData
+  initialData: ComboboxData
 ): [ComboboxState, ComboboxData, ComboboxTransition] {
   const [state, setState] = useState(stateChart.initial)
-  const [data, dispatch] = useReducer(reducer, defaultData)
+  const [data, dispatch] = useReducer(reducer, initialData)
 
   function transition(
     action: ComboboxActionType,

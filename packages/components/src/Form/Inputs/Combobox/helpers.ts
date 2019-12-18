@@ -27,17 +27,10 @@
 // Much of the following is pulled from https://github.com/reach/reach-ui
 // because their work is fantastic (but is not in TypeScript)
 
+import findIndex from 'lodash/findIndex'
 import { KeyboardEvent, useContext, useLayoutEffect } from 'react'
 import { ComboboxActionType, ComboboxState } from './state'
 import { ComboboxContext } from './ComboboxContext'
-
-const visibleStates = [
-  ComboboxState.SUGGESTING,
-  ComboboxState.NAVIGATING,
-  ComboboxState.INTERACTING,
-]
-
-export const isVisible = (state: ComboboxState) => visibleStates.includes(state)
 
 // Move focus back to the input if we start navigating w/ the
 // keyboard after focus has moved to any focus-able content in
@@ -66,6 +59,7 @@ export function useFocusManagement(
 export function useKeyDown() {
   const {
     data: { navigationOption },
+    onChange,
     optionsRef,
     state,
     transition,
@@ -98,7 +92,7 @@ export function useKeyDown() {
             })
         } else {
           const index = navigationOption
-            ? options.indexOf(navigationOption)
+            ? findIndex(options, navigationOption)
             : -1
           const atBottom = index === options.length - 1
           if (atBottom) {
@@ -139,7 +133,7 @@ export function useKeyDown() {
           transition && transition(ComboboxActionType.NAVIGATE)
         } else {
           const index = navigationOption
-            ? options.indexOf(navigationOption)
+            ? findIndex(options, navigationOption)
             : -1
           if (index === 0) {
             if (autocompletePropRef && autocompletePropRef.current) {
@@ -185,6 +179,7 @@ export function useKeyDown() {
           state === ComboboxState.NAVIGATING &&
           navigationOption !== undefined
         ) {
+          onChange && onChange(navigationOption)
           transition && transition(ComboboxActionType.SELECT_WITH_KEYBOARD)
         }
         break
@@ -196,6 +191,7 @@ export function useKeyDown() {
         ) {
           // don't want to submit forms
           event.preventDefault()
+          onChange && onChange(navigationOption)
           transition && transition(ComboboxActionType.SELECT_WITH_KEYBOARD)
         }
         break

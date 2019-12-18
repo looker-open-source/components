@@ -24,17 +24,9 @@
 
  */
 
-import React, { forwardRef, Ref, FormEvent, useMemo } from 'react'
+import React, { forwardRef, Ref, FormEvent } from 'react'
 import styled from 'styled-components'
-import { CaretDown } from '@looker/icons'
-import {
-  BorderProps,
-  CompatibleHTMLProps,
-  CustomizableAttributes,
-  LayoutProps,
-  SpaceProps,
-  TypographyProps,
-} from '@looker/design-tokens'
+import { CustomizableAttributes } from '@looker/design-tokens'
 import { ValidationType } from '../../ValidationMessage'
 import {
   Combobox,
@@ -42,6 +34,8 @@ import {
   ComboboxList,
   ComboboxOption,
   ComboboxOptionObject,
+  ComboboxProps,
+  getComboboxText,
 } from '../Combobox'
 
 export const CustomizableSelectAttributes: CustomizableAttributes = {
@@ -66,11 +60,7 @@ export type GroupedOptionsType<UnionOptionType> = Array<
 export type SelectOptionProps = ComboboxOptionObject
 
 export interface SelectProps
-  extends BorderProps,
-    Omit<LayoutProps, 'size'>,
-    SpaceProps,
-    TypographyProps,
-    Omit<CompatibleHTMLProps<HTMLDivElement>, 'onChange'> {
+  extends Omit<ComboboxProps, 'value' | 'defaultValue' | 'onChange'> {
   options?: SelectOptionProps[]
   /**
    * Displays an example value or short hint to the user. Should not replace a label.
@@ -79,80 +69,117 @@ export interface SelectProps
   /**
    * The user can type in the input (default false to mimic traditional select tag)
    */
-  isSearchable?: boolean
+  isFilterable?: boolean
   /**
    * The user can clear the current value by clicking an x icon button
    */
   isClearable?: boolean
   /**
-   * The current value of the input
+   * Handle when the user types in the field,
+   * or the menu opens with a pre-populated value
    */
-  inputValue?: string
-  /**
-   * Handle the change event of the text input
-   */
-  onInputChange?: (e: FormEvent<HTMLInputElement>) => void
+  onFilter?: (term: string) => void
 
   validationType?: ValidationType
   /**
-   * Value of the current selected option
+   * Value of the current selected option (controlled)
    */
   value?: string
+  /**
+   * Value of the initial option
+   */
+  defaultValue?: string
   /**
    * Handle an option being selected
    */
   onChange?: (value: string) => void
 }
 
+function getOption(value?: string, options?: SelectOptionProps[]) {
+  return value ? { label: getComboboxText(value, options), value } : undefined
+}
+
 const SelectComponent = forwardRef(
   (
     {
       options,
-      isSearchable,
+      disabled,
+      isFilterable,
       isClearable,
       placeholder,
-      inputValue,
-      onInputChange,
+      onFilter,
       onChange,
       value,
+      defaultValue,
       'aria-label': ariaLabel,
       'aria-labelledby': ariaLabelledby,
+      validationType,
       ...props
     }: SelectProps,
     ref: Ref<HTMLInputElement>
   ) => {
+    const optionValue = getOption(value, options)
+    const defaultOptionValue = getOption(defaultValue, options)
+
     function handleChange(option?: ComboboxOptionObject) {
       const newValue = option ? option.value : ''
       onChange && onChange(newValue)
+      onFilter && onFilter(getComboboxText(option))
     }
 
-    const val = useMemo(() => {
-      return options?.find(option => option.value === value)
-    }, [value, options])
+    function handleInputChange(e: FormEvent<HTMLInputElement>) {
+      onFilter && onFilter(e.currentTarget.value)
+    }
+
+    function handleClose(option?: ComboboxOptionObject) {
+      // when the list closes, the input's value reverts to the current option
+      onFilter && onFilter(getComboboxText(option))
+    }
 
     const ariaProps = {
       'aria-label': ariaLabel,
       'aria-labelledby': ariaLabelledby,
     }
 
+    const inputProps = {
+      disabled,
+      placeholder,
+      validationType,
+    }
+
     return (
-      <Combobox {...props} value={val} onChange={handleChange}>
+      <Combobox
+        {...props}
+        value={optionValue}
+        defaultValue={defaultOptionValue}
+        onChange={handleChange}
+        onClose={handleClose}
+      >
         <ComboboxInput
-          autocomplete={false}
-          placeholder={placeholder}
-          readOnly={!isSearchable}
-          value={inputValue}
-          onChange={onInputChange}
-          hideControls={!isClearable}
+          {...inputProps}
           {...ariaProps}
+          autocomplete={false}
+          readOnly={!isFilterable}
+          onChange={handleInputChange}
+          hideControls={!isClearable}
+          selectOnClick
           ref={ref}
         />
-        <ComboboxList persistSelection {...ariaProps}>
-          {options &&
-            options.map(option => (
-              <ComboboxOption {...option} key={option.value} />
-            ))}
-        </ComboboxList>
+        {!disabled && (
+          <ComboboxList persistSelection {...ariaProps}>
+            {options && options.length > 0 ? (
+              options.map((option, index: number) => (
+                <ComboboxOption {...option} key={index} />
+              ))
+            ) : (
+              <ComboboxOption
+                value=""
+                label="No options"
+                color="palette.charcoal400"
+              />
+            )}
+          </ComboboxList>
+        )}
       </Combobox>
     )
   }

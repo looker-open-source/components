@@ -49,9 +49,12 @@ import {
   InputTextProps,
 } from '../InputText'
 import { useControlWarn, useForkedRef, useWrapEvent } from '../../../utils'
+import { ValidationType } from '../../ValidationMessage'
 import { InputSearchControls } from './InputSearchControls'
 
-interface InputSearchLayoutProps extends BorderProps, LayoutProps {}
+interface InputSearchLayoutProps extends BorderProps, LayoutProps {
+  validationType?: ValidationType
+}
 
 export interface InputSearchProps extends InputTextProps {
   /**
@@ -82,9 +85,12 @@ const InputSearchLayout = styled.div<InputSearchLayoutProps>`
   ${border}
   ${layout}
 
+  background: ${props =>
+    props.validationType === 'error'
+      ? props.theme.colors.palette.red000
+      : props.theme.colors.palette.white};
   align-items: center;
   display: flex;
-  background: ${props => props.theme.colors.palette.white};
   position: relative;
 
   &:focus-within {
@@ -128,8 +134,8 @@ const InputSearchComponent = forwardRef(
       onMouseUp,
 
       summary,
-
       value: controlledValue = '',
+      validationType,
 
       ...props
     }: InputSearchProps,
@@ -181,13 +187,18 @@ const InputSearchComponent = forwardRef(
     // resulting in undetectable changes that effect the value
 
     return (
-      <InputSearchLayout {...omit(props, inputPropKeys)} {...mouseHandlers}>
+      <InputSearchLayout
+        validationType={validationType}
+        {...omit(props, inputPropKeys)}
+        {...mouseHandlers}
+      >
         <InputText
           onChange={handleChange}
           value={inputValue}
           focusStyle={{ outline: 'none' }}
           border="none"
           width="100%"
+          validationType={validationType}
           {...pick(props, inputPropKeys)}
           ref={ref}
         />
