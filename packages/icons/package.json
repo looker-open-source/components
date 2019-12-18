@@ -17,8 +17,7 @@
     "access": "public"
   },
   "scripts": {
-    "build:all": "yarn clean && yarn build:icons && yarn run build:es2015 && yarn run build:esm && yarn run build:cjs",
-    "build:es2015": "ttsc --project tsconfig.build.json --module es2015 --target es2015 --outDir dist/es2015",
+    "build:all": "yarn clean && yarn build:icons && yarn run build:esm && yarn run build:cjs",
     "build:esm": "ttsc --project tsconfig.build.json --module es2015 --target es5 --outDir dist/esm",
     "build:cjs": "ttsc --project tsconfig.build.json --module commonjs --target es5 --outDir dist/cjs",
     "build:icons": "node bin/build.js",
