@@ -62,6 +62,8 @@ export interface FieldsetProps extends FieldsetBaseProps {
 
 const FieldsetBase = styled.fieldset<FieldsetBaseProps>`
   ${reset}
+  border: none;
+
   ${border}
   ${color}
   ${layout}

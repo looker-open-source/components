@@ -70,6 +70,8 @@ export const Divider = styled.hr.attrs((props: DividerProps) => ({
   bg: props.customColor,
 }))<DividerProps>`
   ${reset}
+  border: none;
+
   ${position}
   ${border}
   ${space}

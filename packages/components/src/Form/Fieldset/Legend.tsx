@@ -71,6 +71,7 @@ export const Legend = styled.legend.attrs((props: LegendProps) => ({
       : CustomizableLegendAttributes.bottomPadding,
 }))<LegendProps>`
   ${reset}
+
   ${color}
   ${layout}
   ${space}

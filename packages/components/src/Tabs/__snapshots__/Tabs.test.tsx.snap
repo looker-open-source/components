@@ -4,9 +4,11 @@ exports[`Tabs snapshot works as expected 1`] = `ShallowWrapper {}`;
 
 exports[`focus behavior Tab Focus: does not render focus ring after click 1`] = `
 .c1 {
+  border: none;
   min-width: 3rem;
   padding-bottom: 0.75rem;
   padding-top: 0.5rem;
+  font-size: 0.875rem;
   font-weight: 600;
   background: transparent;
   border-bottom: 3px solid;
@@ -29,10 +31,6 @@ exports[`focus behavior Tab Focus: does not render focus ring after click 1`] = 
   border-bottom-color: transparent;
 }
 
-.c1:disabled {
-  color: #C1C6CC;
-}
-
 .c1:focus {
   outline: none;
 }
@@ -41,12 +39,19 @@ exports[`focus behavior Tab Focus: does not render focus ring after click 1`] = 
   border-bottom-color: #6C43E0;
 }
 
+.c1:disabled {
+  cursor: default;
+  color: #C1C6CC;
+  border-bottom-color: transparent;
+}
+
 .c2 + .c0 {
   margin-left: 2rem;
 }
 
 <button
   class="c0 c1 "
+  font-size="small"
   font-weight="semiBold"
 >
   tab1
@@ -63,9 +68,11 @@ exports[`focus behavior Tab Focus: renders focus ring for keyboard navigation 1`
 }
 
 .c1 {
+  border: none;
   min-width: 3rem;
   padding-bottom: 0.75rem;
   padding-top: 0.5rem;
+  font-size: 0.875rem;
   font-weight: 600;
   background: transparent;
   border-bottom: 3px solid;
@@ -89,10 +96,6 @@ exports[`focus behavior Tab Focus: renders focus ring for keyboard navigation 1`
   border-bottom-color: transparent;
 }
 
-.c1:disabled {
-  color: #C1C6CC;
-}
-
 .c1:focus {
   outline: none;
 }
@@ -101,8 +104,15 @@ exports[`focus behavior Tab Focus: renders focus ring for keyboard navigation 1`
   border-bottom-color: #C1C6CC;
 }
 
+.c1:disabled {
+  cursor: default;
+  color: #C1C6CC;
+  border-bottom-color: transparent;
+}
+
 <button
   class="c0 c1 "
+  font-size="small"
   font-weight="semiBold"
 >
   tab2

@@ -2,6 +2,7 @@
 
 exports[`A custom Divider 1`] = `
 .c0 {
+  border: none;
   height: 20px;
   background-color: turquoise;
 }
@@ -14,6 +15,7 @@ exports[`A custom Divider 1`] = `
 
 exports[`Default Divider 1`] = `
 .c0 {
+  border: none;
   height: 1px;
   background-color: #C1C6CC;
 }
@@ -26,6 +28,7 @@ exports[`Default Divider 1`] = `
 
 exports[`Divider with a variant 1`] = `
 .c0 {
+  border: none;
   height: 1px;
   background-color: #707781;
 }
