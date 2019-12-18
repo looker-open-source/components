@@ -149,6 +149,11 @@ const components: NavigationSection = {
         { title: 'VisuallyHidden', path: 'visually-hidden' },
       ],
     },
+    {
+      title: 'Visualizations',
+      path: 'visualizations',
+      children: [{ title: 'SingleValueVis ', path: 'single-value-vis' }],
+    },
   ],
 }
 

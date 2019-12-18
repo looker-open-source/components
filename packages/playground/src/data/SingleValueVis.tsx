@@ -18,30 +18,26 @@
  SOFTWARE.
  */
 
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { GlobalStyle } from '@looker/components'
-import { theme } from '@looker/design-tokens'
-import { ThemeProvider } from 'styled-components'
+import React, { FC, useEffect, useState } from 'react'
 
-import { SingleValueVis } from './data/SingleValueVis'
-
-const App: React.FC = () => {
-  return (
-    <ThemeProvider theme={theme}>
-      <>
-        <GlobalStyle />
-        <SingleValueVis lookID={3} />
-      </>
-    </ThemeProvider>
-  )
+interface SingleValueVisProps {
+  lookID: number
 }
 
-// <MenuDemo />
-/**
- * This is the binding site for the playground. If you want to edit the
- * primary application, do your work in App.tsx instead.
- */
-document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(<App />, document.getElementById('container'))
-})
+const fetchLook = async (id: number, setLookValue: any) => {
+  const lookResponse = await fetch(`/api/looks/${id}`)
+  const lookJSON = await lookResponse.json()
+  setLookValue(lookJSON)
+}
+
+export const SingleValueVis: FC<SingleValueVisProps> = ({ lookID }) => {
+  const [lookValue, setLookValue] = useState({})
+
+  useEffect(() => {
+    fetchLook(lookID, setLookValue)
+  }, [lookID])
+
+  console.log(lookValue) // eslint-disable-line no-console
+
+  return <div>Render Single Value Look</div>
+}
