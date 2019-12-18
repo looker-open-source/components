@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [UNRELEASED]
 
+### Added
+
+- Proxy Server package
+  - New documentation: getting started with local data fetching
+
 ### Changes
 
 - Default `theme.reset` is inactive by default now. If your use depends on the previous behavior you can reproduce it via the instructions in this gist: https://gist.github.com/lukelooker/29576e0db918914137638cf9d2649bea
@@ -25,14 +30,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Button size map was updated with new sizes and Test got updates to reflect the new sizes
 - Correct issue `ModalManager` `surfaceStyles` had `minWidth` and `maxWidth` properties that were difficult to override on an instance.
 - Correct usage of `textTransform` in documentation and updated related test suite
-- Badge component with test and documentation
 
 ## [0.7.7] - 2019-12-13
 
 ### Added
 
-- Proxy Server subpackage
-- New documentation: getting started with local data fetching
 - Avatar components and documentation - `AvatarIcon`, `AvatarUser`, `AvatarCombo`
 - `Badge` component with test and documentation
 - `MenuContext` for holding `Menu` state and `MenuItemStyleContext` for `MenuItem` styling inheritance
