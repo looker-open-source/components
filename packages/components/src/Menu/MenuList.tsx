@@ -91,7 +91,6 @@ export const MenuListInternal = forwardRef(
       disabled,
       pin,
       placement,
-      escapeWithReference,
       ...props
     }: MenuListProps,
     ref: Ref<HTMLUListElement>
@@ -121,7 +120,6 @@ export const MenuListInternal = forwardRef(
     const isMenu = isOpen !== undefined
     const { popover } = usePopover({
       content: menuList,
-      escapeWithReference,
       isOpen,
       pin,
       placement,

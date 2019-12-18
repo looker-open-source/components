@@ -29,7 +29,7 @@
 
 import { Reducer, useReducer, useState } from 'react'
 import { defaultData } from './ComboboxContext'
-import { ComboboxOptionObject } from './ComboboxOption'
+import { ComboboxOptionObject, getComboboxText } from './ComboboxOption'
 
 export enum ComboboxState {
   // Nothing going on, waiting for the user to type or use the arrow keys
@@ -72,11 +72,10 @@ export enum ComboboxActionType {
   INTERACT = 'INTERACT',
 
   FOCUS = 'FOCUS',
-
-  CLOSE_WITH_BUTTON = 'CLOSE_WITH_BUTTON',
 }
 
 export interface ComboboxData {
+  inputValue?: string
   option?: ComboboxOptionObject
   navigationOption?: ComboboxOptionObject
   lastActionType?: ComboboxActionType
@@ -89,7 +88,8 @@ export interface ComboboxAction {
 
 export interface ComboboxActionPayload {
   option?: ComboboxOptionObject
-  persistComboboxion?: boolean
+  persistSelection?: boolean
+  inputValue?: string
 }
 
 export type ComboboxActionWithPayload = ComboboxAction & ComboboxActionPayload
@@ -131,7 +131,6 @@ export const stateChart: StateChart = {
         [ComboboxActionType.BLUR]: ComboboxState.IDLE,
         [ComboboxActionType.SELECT_WITH_CLICK]: ComboboxState.IDLE,
         [ComboboxActionType.INTERACT]: ComboboxState.INTERACTING,
-        [ComboboxActionType.CLOSE_WITH_BUTTON]: ComboboxState.IDLE,
       },
     },
     [ComboboxState.NAVIGATING]: {
@@ -143,7 +142,6 @@ export const stateChart: StateChart = {
         [ComboboxActionType.ESCAPE]: ComboboxState.IDLE,
         [ComboboxActionType.NAVIGATE]: ComboboxState.NAVIGATING,
         [ComboboxActionType.SELECT_WITH_KEYBOARD]: ComboboxState.IDLE,
-        [ComboboxActionType.CLOSE_WITH_BUTTON]: ComboboxState.IDLE,
         [ComboboxActionType.INTERACT]: ComboboxState.INTERACTING,
       },
     },
@@ -154,7 +152,6 @@ export const stateChart: StateChart = {
         [ComboboxActionType.BLUR]: ComboboxState.IDLE,
         [ComboboxActionType.ESCAPE]: ComboboxState.IDLE,
         [ComboboxActionType.NAVIGATE]: ComboboxState.NAVIGATING,
-        [ComboboxActionType.CLOSE_WITH_BUTTON]: ComboboxState.IDLE,
         [ComboboxActionType.SELECT_WITH_CLICK]: ComboboxState.IDLE,
       },
     },
@@ -169,7 +166,7 @@ const findNavigationValue = (
 ) => {
   if (action.option) {
     return action.option
-  } else if (action.persistComboboxion) {
+  } else if (action.persistSelection) {
     return state.option
   } else {
     return undefined
@@ -186,8 +183,8 @@ const reducer: Reducer<ComboboxData, ComboboxActionWithPayload> = (
     case ComboboxActionType.CHANGE_SILENT:
       return {
         ...nextState,
+        inputValue: action.inputValue,
         navigationOption: undefined,
-        option: action.option,
       }
     case ComboboxActionType.NAVIGATE:
       return {
@@ -197,31 +194,30 @@ const reducer: Reducer<ComboboxData, ComboboxActionWithPayload> = (
     case ComboboxActionType.CLEAR:
       return {
         ...nextState,
+        inputValue: '',
         navigationOption: undefined,
-        option: { value: '' },
+        option: undefined,
       }
     case ComboboxActionType.BLUR:
     case ComboboxActionType.ESCAPE:
       return {
         ...nextState,
+        inputValue: getComboboxText(data.option),
         navigationOption: undefined,
       }
     case ComboboxActionType.SELECT_WITH_CLICK:
       return {
         ...nextState,
+        inputValue: getComboboxText(action.option),
         navigationOption: undefined,
         option: action.option,
       }
     case ComboboxActionType.SELECT_WITH_KEYBOARD:
       return {
         ...nextState,
+        inputValue: getComboboxText(data.navigationOption),
         navigationOption: undefined,
         option: data.navigationOption,
-      }
-    case ComboboxActionType.CLOSE_WITH_BUTTON:
-      return {
-        ...nextState,
-        navigationOption: undefined,
       }
     case ComboboxActionType.INTERACT:
       return nextState
@@ -238,11 +234,9 @@ const reducer: Reducer<ComboboxData, ComboboxActionWithPayload> = (
 
 // This manages transitions between states with a built in reducer to manage
 // the data that goes with those transitions.
-export function useReducerMachine(): [
-  ComboboxState,
-  ComboboxData,
-  ComboboxTransition
-] {
+export function useReducerMachine(
+  initialData: ComboboxData = defaultData
+): [ComboboxState, ComboboxData, ComboboxTransition] {
   const [state, setState] = useState(stateChart.initial)
   const [data, dispatch] = useReducer(reducer, defaultData)
 

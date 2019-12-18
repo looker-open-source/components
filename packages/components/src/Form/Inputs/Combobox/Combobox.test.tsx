@@ -36,9 +36,9 @@ import { Combobox, ComboboxInput, ComboboxList, ComboboxOption } from '.'
 afterEach(cleanup)
 
 describe('<Combobox/> with options', () => {
-  test('with handleCombobox', () => {
+  test('with handleChange', () => {
     const options = [{ value: 'FOO' }, { value: 'BAR' }]
-    const handleCombobox = jest.fn()
+    const handleChange = jest.fn()
     const {
       // getAllByRole,
       queryByText,
@@ -49,7 +49,7 @@ describe('<Combobox/> with options', () => {
         options={options}
         id="with-options"
         inputProps={{ placeholder: 'Search' }}
-        onCombobox={handleCombobox}
+        onChange={handleChange}
       />
     )
     expect(queryByText('FOO')).not.toBeInTheDocument()
@@ -75,9 +75,9 @@ describe('<Combobox/> with options', () => {
     fireEvent.click(bar)
     // fireEvent.click(foo)
 
-    expect(handleCombobox).toHaveBeenCalledTimes(1)
-    // expect(handleCombobox).toHaveBeenCalledWith({ value: 'FOO' })
-    expect(handleCombobox).toHaveBeenCalledWith({ value: 'BAR' })
+    expect(handleChange).toHaveBeenCalledTimes(1)
+    // expect(handleChange).toHaveBeenCalledWith({ value: 'FOO' })
+    expect(handleChange).toHaveBeenCalledWith({ value: 'BAR' })
   })
 
   test('with openOnFocus', () => {
@@ -218,10 +218,10 @@ describe('<Combobox/> with options', () => {
 
 describe('<Combobox/> with children', () => {
   test('Renders children, merges callbacks', () => {
-    const handleCombobox = jest.fn()
+    const handleChange = jest.fn()
     const handleClick = jest.fn()
     const { getByText, getByTestId, queryByText } = renderWithTheme(
-      <Combobox options={[{ value: 'Apples' }]} onCombobox={handleCombobox}>
+      <Combobox options={[{ value: 'Apples' }]} onChange={handleChange}>
         <ComboboxInput data-testid="select-input" />
         <ComboboxList>
           <ComboboxOption value="Foo" data={101} onClick={handleClick} />
@@ -241,7 +241,7 @@ describe('<Combobox/> with children', () => {
     fireEvent.click(foo)
 
     expect(handleClick).toHaveBeenCalledTimes(1)
-    expect(handleCombobox).toHaveBeenCalledTimes(1)
-    expect(handleCombobox).toHaveBeenCalledWith({ data: 101, value: 'Foo' })
+    expect(handleChange).toHaveBeenCalledTimes(1)
+    expect(handleChange).toHaveBeenCalledWith({ data: 101, value: 'Foo' })
   })
 })

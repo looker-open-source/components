@@ -39,32 +39,25 @@ import {
 } from '@looker/design-tokens'
 import React, { forwardRef, useRef, useState, Ref } from 'react'
 import styled from 'styled-components'
-import { useID, useCallbackRef } from '../../../utils'
-import { ValidationType } from '../../ValidationMessage'
+import { useID, useCallbackRef, useForkedRef } from '../../../utils'
 import { isVisible, useFocusManagement } from './helpers'
 import { useReducerMachine } from './state'
 import { ComboboxContext } from './ComboboxContext'
-import { ComboboxInputProps, ComboboxInput } from './ComboboxInput'
-import { ComboboxList, ComboboxListProps } from './ComboboxList'
-import {
-  ComboboxOption,
-  ComboboxOptionObject,
-  ComboboxOptionProps,
-} from './ComboboxOption'
+import { ComboboxOptionObject } from './ComboboxOption'
 
-export type OnCombobox = (option: ComboboxOptionObject) => void
+export type OnComboboxChange = (option?: ComboboxOptionObject) => void
 
 export function useControlledCombobox(initialValue = '') {
   const [value, setOption] = useState(initialValue)
-  function handleCombobox(option: ComboboxOptionObject) {
+  function handleChange(option: ComboboxOptionObject) {
     setOption(option.value)
   }
-  function handleChange(e: React.FormEvent<HTMLInputElement>) {
+  function handleInputChange(e: React.FormEvent<HTMLInputElement>) {
     setOption(e.currentTarget.value)
   }
   return {
-    inputProps: { onChange: handleChange },
-    onCombobox: handleCombobox,
+    inputProps: { onChange: handleInputChange },
+    onChange: handleChange,
     value,
   }
 }
@@ -75,67 +68,27 @@ export interface ComboboxProps
     SpaceProps,
     Omit<
       CompatibleHTMLProps<HTMLDivElement>,
-      'readOnly' | 'onCombobox' | 'onChange'
+      'readOnly' | 'onChange' | 'value'
     > {
-  /**
-   * Called with the selection value when the user makes a selection from the
-   * list.
-   */
-  onCombobox?: OnCombobox
   /**
    * If true, the popover opens when focus is on the text box.
    */
   openOnFocus?: boolean
   /**
-   * Use options to build a select with props instead of children
-   * (do not use if also using children)
+   * Called when an option is selected (not when user types – use ComboboxInput.onChange for that)
    */
-  options?: ComboboxOptionObject[]
-  /**
-   * Props for the internal ComboboxInput component when building a select with the options prop
-   * (do not use if also using children)
-   */
-  inputProps?: ComboboxInputProps
-  /**
-   * Props for the internal ComboboxList component when building a select with the options prop
-   * (do not use if also using children)
-   */
-  listProps?: ComboboxListProps
-  /**
-   * Props for the internal ComboboxOptions components when building a select with the options prop
-   * (do not use if also using children)
-   */
-  optionProps?: ComboboxOptionProps
-  /**
-   * Provides error styling
-   */
-  validationType?: ValidationType
-  /**
-   * The current value, for controlled use
-   * (do not use if also using children – instead use value on ComboboxInput)
-   */
-  value?: string
+  onChange?: OnComboboxChange
+  value?: ComboboxOptionObject
 }
 
 export const ComboboxInternal = forwardRef(function Combobox(
   {
-    // Called whenever the user selects an item from the list
-    onCombobox,
-
     // opens the list when the input receives focused (but only if there are
     // items in the list)
     openOnFocus = false,
 
     children,
-
-    // these props allow the user to build a Combobox without children
-    inputProps,
-    listProps,
-    optionProps,
-    options,
-    value,
-    'aria-label': ariaLabel,
-    'aria-labelledby': ariaLabelledby,
+    onChange,
 
     ...rest
   }: ComboboxProps,
@@ -152,6 +105,10 @@ export const ComboboxInternal = forwardRef(function Combobox(
   // Need this to focus it
   const [inputElement, inputCallbackRef] = useCallbackRef<HTMLInputElement>()
 
+  // Need this to get the menu width
+  const [wrapperElement, wrapperCallbackRef] = useCallbackRef<HTMLDivElement>()
+  const ref = useForkedRef(forwardedRef, wrapperCallbackRef)
+
   const popoverRef = useRef<HTMLDivElement>(null)
 
   const buttonRef = useRef<HTMLButtonElement>(null)
@@ -165,7 +122,7 @@ export const ComboboxInternal = forwardRef(function Combobox(
   const autocompletePropRef = useRef(true)
   const readOnlyPropRef = useRef(false)
 
-  const persistComboboxionRef = useRef(false)
+  const persistSelectionRef = useRef(false)
 
   const [state, data, transition] = useReducerMachine()
 
@@ -173,10 +130,6 @@ export const ComboboxInternal = forwardRef(function Combobox(
 
   const id = useID(rest.id)
   const listboxId = `listbox-${id}`
-  const ariaProps = {
-    'aria-label': ariaLabel,
-    'aria-labelledby': ariaLabelledby,
-  }
 
   const context = {
     autocompletePropRef,
@@ -186,54 +139,28 @@ export const ComboboxInternal = forwardRef(function Combobox(
     inputElement,
     isVisible: isVisible(state),
     listboxId,
-    onCombobox,
+    onChange,
     openOnFocus,
-    options,
-    optionsRef: options ? undefined : optionsRef,
-    persistComboboxionRef,
+    optionsRef,
+    persistSelectionRef,
     popoverRef,
     readOnlyPropRef,
     state,
     transition,
-  }
-
-  let content = children
-
-  if (!children) {
-    content = (
-      <>
-        <ComboboxInput value={value} {...ariaProps} {...inputProps} />
-        <ComboboxList {...ariaProps} {...listProps}>
-          {options &&
-            options.map((option: ComboboxOptionObject) => {
-              return (
-                <ComboboxOption
-                  {...optionProps}
-                  {...option}
-                  key={option.value}
-                />
-              )
-            })}
-        </ComboboxList>
-      </>
-    )
-  } else if (options) {
-    // eslint-disable-next-line no-console
-    console.warn(`Options and children cannot be used together on Combobox.
-If you wish to build your Combobox with the options prop, do not define any children.`)
+    wrapperElement,
   }
 
   return (
     <ComboboxContext.Provider value={context}>
       <div
         {...rest}
-        ref={forwardedRef}
+        ref={ref}
         role="select"
         aria-haspopup="listbox"
         aria-owns={listboxId}
         aria-expanded={context.isVisible}
       >
-        {content}
+        {children}
       </div>
     </ComboboxContext.Provider>
   )

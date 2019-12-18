@@ -24,7 +24,16 @@
 
  */
 
-import React, { FormEvent, forwardRef, Ref, useState, useRef } from 'react'
+import omit from 'lodash/omit'
+import pick from 'lodash/pick'
+import React, {
+  FormEvent,
+  MouseEvent,
+  forwardRef,
+  Ref,
+  useState,
+  useRef,
+} from 'react'
 import styled from 'styled-components'
 import {
   border,
@@ -33,18 +42,18 @@ import {
   LayoutProps,
   reset,
 } from '@looker/design-tokens'
+import { inputPropKeys } from '../InputProps'
 import {
   CustomizableInputTextAttributes,
   InputText,
   InputTextProps,
 } from '../InputText'
-import { useForkedRef } from '../../../utils'
+import { useControlWarn, useForkedRef, useWrapEvent } from '../../../utils'
 import { InputSearchControls } from './InputSearchControls'
 
 interface InputSearchLayoutProps extends BorderProps, LayoutProps {}
 
-export interface InputSearchProps
-  extends Omit<InputTextProps, 'height' | 'size' | 'width'> {
+export interface InputSearchProps extends InputTextProps {
   /**
    * hides clear button and summary text
    */
@@ -53,10 +62,19 @@ export interface InputSearchProps
    * adds text when input value in not empty
    */
   summary?: string
-  onClear?: () => void
+  /**
+   * handle when the user clicks the x icon button to clear the value
+   */
+  onClear?: (e: MouseEvent<HTMLButtonElement>) => void
   value?: string
-  width?: string
-  height?: string
+
+  onClick?: (e: MouseEvent<HTMLDivElement>) => void
+  onMouseDown?: (e: MouseEvent<HTMLDivElement>) => void
+  onMouseEnter?: (e: MouseEvent<HTMLDivElement>) => void
+  onMouseLeave?: (e: MouseEvent<HTMLDivElement>) => void
+  onMouseOver?: (e: MouseEvent<HTMLDivElement>) => void
+  onMouseOut?: (e: MouseEvent<HTMLDivElement>) => void
+  onMouseUp?: (e: MouseEvent<HTMLDivElement>) => void
 }
 
 const InputSearchLayout = styled.div<InputSearchLayoutProps>`
@@ -95,38 +113,48 @@ InputSearchLayout.defaultProps = {
 }
 
 const InputSearchComponent = forwardRef(
-  (props: InputSearchProps, forwardedRef: Ref<HTMLInputElement>) => {
-    const {
-      border,
-      borderBottom,
-      borderColor,
-      borderLeft,
-      borderRadius,
-      borderRight,
-      borderTop,
+  (
+    {
       hideControls = false,
+
       onChange,
       onClear,
-      summary,
-      value = '',
-      width = '100%',
+      onClick,
+      onMouseDown,
+      onMouseEnter,
+      onMouseLeave,
+      onMouseOut,
+      onMouseOver,
+      onMouseUp,
 
-      ...inputProps
-    } = props
+      summary,
+
+      value: controlledValue = '',
+
+      ...props
+    }: InputSearchProps,
+    forwardedRef: Ref<HTMLInputElement>
+  ) => {
+    const isControlled = useControlWarn({
+      controllingProps: ['onChange', 'onClear', 'value'],
+      isControlledCheck: () => onChange !== undefined,
+      name: 'ButtonGroup',
+    })
+    const [uncontrolledValue, setValue] = useState(controlledValue)
+    const inputValue = isControlled ? controlledValue : uncontrolledValue
 
     const internalRef = useRef<null | HTMLInputElement>(null)
     const ref = useForkedRef<HTMLInputElement>(internalRef, forwardedRef)
-    const [inputValue, setValue] = useState(value)
 
     const focusInput = () => internalRef.current && internalRef.current.focus()
 
-    const handleClear = () => {
+    const handleClear = (e: MouseEvent<HTMLButtonElement>) => {
       setValue('')
-      focusInput()
-      onClear && onClear()
+      // focusInput()
+      onClear && onClear(e)
     }
 
-    const updateValue = (event: FormEvent<HTMLInputElement>) => {
+    const handleChange = (event: FormEvent<HTMLInputElement>) => {
       setValue(event.currentTarget.value)
       onChange && onChange(event)
     }
@@ -134,31 +162,33 @@ const InputSearchComponent = forwardRef(
     const controls = !hideControls && (
       <InputSearchControls
         onClear={handleClear}
-        onClick={focusInput}
         showClear={inputValue.length > 0}
         summary={summary}
       />
     )
 
+    const mouseHandlers = {
+      onClick: useWrapEvent(focusInput, onClick),
+      onMouseDown,
+      onMouseEnter,
+      onMouseLeave,
+      onMouseOut,
+      onMouseOver,
+      onMouseUp,
+    }
+
+    // 12/17/2019 removing type="search" since React doesn't support onSearch yet
+    // resulting in undetectable changes that effect the value
+
     return (
-      <InputSearchLayout
-        border={border}
-        borderColor={borderColor}
-        borderRadius={borderRadius}
-        borderTop={borderTop}
-        borderBottom={borderBottom}
-        borderLeft={borderLeft}
-        borderRight={borderRight}
-        width={width}
-      >
+      <InputSearchLayout {...omit(props, inputPropKeys)} {...mouseHandlers}>
         <InputText
-          type="search"
-          onChange={updateValue}
+          onChange={handleChange}
           value={inputValue}
           focusStyle={{ outline: 'none' }}
           border="none"
           width="100%"
-          {...inputProps}
+          {...pick(props, inputPropKeys)}
           ref={ref}
         />
         {controls}

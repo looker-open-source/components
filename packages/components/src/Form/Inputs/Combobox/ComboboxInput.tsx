@@ -39,12 +39,13 @@ import React, {
 import ReactDOMServer from 'react-dom/server'
 import styled from 'styled-components'
 import { useForkedRef, useWrapEvent } from '../../../utils'
-import { InputText, InputTextProps } from '../InputText'
+import { InputSearch, InputSearchProps } from '../InputSearch'
 import { makeHash, useBlur, useKeyDown } from './helpers'
 import { ComboboxContext } from './ComboboxContext'
+import { getComboboxText } from './ComboboxOption'
 import { ComboboxActionType, ComboboxState } from './state'
 
-export interface ComboboxInputProps extends Omit<InputTextProps, 'value'> {
+export interface ComboboxInputProps extends InputSearchProps {
   /**
    * If true, when the user clicks inside the text box the current value will
    * be selected. Use this if the user is likely to delete all the text anyway
@@ -66,7 +67,6 @@ export interface ComboboxInputProps extends Omit<InputTextProps, 'value'> {
    * the `true` default.
    */
   autocomplete?: boolean
-  value?: string
 }
 
 export const ComboboxInputInternal = forwardRef(function ComboboxInput(
@@ -80,6 +80,7 @@ export const ComboboxInputInternal = forwardRef(function ComboboxInput(
 
     // wrapped events
     onClick,
+    onClear,
     onChange,
     onKeyDown,
     onBlur,
@@ -92,14 +93,20 @@ export const ComboboxInputInternal = forwardRef(function ComboboxInput(
   forwardedRef: Ref<HTMLInputElement>
 ) {
   const {
-    data: { navigationOption, option, lastActionType },
+    data: {
+      navigationOption,
+      option,
+      lastActionType,
+      inputValue: contextInputValue,
+    },
+    onChange: contextOnChange,
     inputCallbackRef,
     inputElement,
     state,
     transition,
     listboxId,
     autocompletePropRef,
-    persistComboboxionRef,
+    persistSelectionRef,
     readOnlyPropRef,
     openOnFocus,
   } = useContext(ComboboxContext)
@@ -126,12 +133,13 @@ export const ComboboxInputInternal = forwardRef(function ComboboxInput(
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [autocomplete, readOnly])
 
+  function handleClear() {
+    contextOnChange && contextOnChange()
+    transition && transition(ComboboxActionType.CLEAR)
+  }
+
   function handleValueChange(value: string) {
-    if (value.trim() === '') {
-      transition && transition(ComboboxActionType.CLEAR)
-    } else {
-      transition && transition(ComboboxActionType.CHANGE, { option: { value } })
-    }
+    transition && transition(ComboboxActionType.CHANGE, { inputValue: value })
   }
 
   // If they are controlling the value we still need to do our transitions, so
@@ -149,7 +157,7 @@ export const ComboboxInputInternal = forwardRef(function ComboboxInput(
       // update the value without transitioning to suggesting
       transition &&
         transition(ComboboxActionType.CHANGE_SILENT, {
-          option: { value: controlledValue },
+          inputValue: controlledValue,
         })
     }
   }
@@ -182,8 +190,7 @@ export const ComboboxInputInternal = forwardRef(function ComboboxInput(
     ) {
       transition &&
         transition(ComboboxActionType.FOCUS, {
-          persistComboboxion:
-            persistComboboxionRef && persistComboboxionRef.current,
+          persistSelection: persistSelectionRef && persistSelectionRef.current,
         })
     }
   }
@@ -197,23 +204,30 @@ export const ComboboxInputInternal = forwardRef(function ComboboxInput(
       // Opening a closed list
       transition &&
         transition(ComboboxActionType.FOCUS, {
-          persistComboboxion:
-            persistComboboxionRef && persistComboboxionRef.current,
+          persistSelection: persistSelectionRef && persistSelectionRef.current,
         })
     }
   }
 
-  const inputOption =
+  let inputOption =
+    controlledValue !== undefined
+      ? controlledValue
+      : contextInputValue !== undefined
+      ? contextInputValue
+      : option
+  if (
     autocomplete &&
     (state === ComboboxState.NAVIGATING || state === ComboboxState.INTERACTING)
-      ? // When idle, we don't have a navigationOption on ArrowUp/Down
-        navigationOption || controlledValue || option
-      : controlledValue || option
-  const inputValue =
-    typeof inputOption === 'string'
-      ? inputOption
-      : inputOption && inputOption.value
+  ) {
+    // When idle, we don't have a navigationOption on ArrowUp/Down
+    inputOption =
+      navigationOption || controlledValue !== undefined
+        ? controlledValue
+        : option
+  }
+  const inputValue = getComboboxText(inputOption)
 
+  const wrappedOnClear = useWrapEvent(handleClear, onClear)
   const wrappedOnClick = useWrapEvent(handleClick, onClick)
   const wrappedOnBlur = useWrapEvent(handleBlur, onBlur)
   const wrappedOnFocus = useWrapEvent(handleFocus, onFocus)
@@ -221,12 +235,13 @@ export const ComboboxInputInternal = forwardRef(function ComboboxInput(
   const wrappedOnKeyDown = useWrapEvent(handleKeyDown, onKeyDown)
 
   return (
-    <InputText
+    <InputSearch
       {...props}
       ref={ref}
       value={inputValue}
       readOnly={readOnly}
       onClick={wrappedOnClick}
+      onClear={wrappedOnClear}
       onBlur={wrappedOnBlur}
       onFocus={wrappedOnFocus}
       onChange={wrappedOnChange}

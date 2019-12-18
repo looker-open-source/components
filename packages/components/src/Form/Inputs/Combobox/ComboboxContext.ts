@@ -26,32 +26,35 @@
 import { createContext, RefObject, Ref, MutableRefObject } from 'react'
 import { ComboboxData, ComboboxTransition, ComboboxState } from './state'
 import { ComboboxOptionObject } from './ComboboxOption'
-import { OnCombobox } from './Combobox'
+import { OnComboboxChange } from './Combobox'
 
 export interface ComboboxContextProps {
   data: ComboboxData
   inputCallbackRef?: Ref<HTMLInputElement>
   inputElement?: HTMLInputElement | null
+  wrapperElement?: HTMLDivElement | null
   popoverRef?: RefObject<HTMLDivElement>
-  onCombobox?: OnCombobox
-  options?: ComboboxOptionObject[]
+  onChange?: OnComboboxChange
   optionsRef?: MutableRefObject<ComboboxOptionObject[]>
   state?: ComboboxState
   transition?: ComboboxTransition
   listboxId?: string
   autocompletePropRef?: MutableRefObject<boolean>
-  persistComboboxionRef?: MutableRefObject<boolean>
+  persistSelectionRef?: MutableRefObject<boolean>
   readOnlyPropRef?: MutableRefObject<boolean>
   isVisible?: boolean
   openOnFocus?: boolean
 }
 
 export const defaultData: ComboboxData = {
+  // the value the user has typed, we derived this also when the developer is
+  // controlling the value of ComboboxInput
+  inputValue: '',
   // the value the user has navigated to with the keyboard
   navigationOption: undefined,
   // the value the user has typed, we derived this also when the developer is
-  // controlling the value of ComboboxInput
-  option: { value: '' },
+  // controlling the value of Combobox
+  option: undefined,
 }
 
 export const ComboboxContext = createContext<ComboboxContextProps>({
@@ -61,4 +64,6 @@ export const ComboboxContext = createContext<ComboboxContextProps>({
 // Allows us to put the option's value on context so that ComboboxOptionText
 // can work it's highlight text magic no matter what else is rendered around
 // it.
-export const OptionContext = createContext<string | undefined>(undefined)
+export const OptionContext = createContext<ComboboxOptionObject | undefined>(
+  undefined
+)

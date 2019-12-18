@@ -50,17 +50,30 @@ import { makeHash } from './helpers'
 import { OptionContext, ComboboxContext } from './ComboboxContext'
 import { ComboboxActionType } from './state'
 
-type Data = string | number | object
-
 export interface ComboboxOptionObject {
   /**
-   * Additional data associated with the option, will be passed to onCombobox.
+   * Additional data associated with the option, will be passed to onChange.
    */
-  data?: Data | Data[]
+  label?: string
   /**
    * The value to match against when suggesting.
    */
   value: string
+}
+
+export function getComboboxText(
+  value?: string | ComboboxOptionObject,
+  options?: ComboboxOptionObject[]
+): string {
+  if (!value) return ''
+  if (typeof value === 'string') {
+    if (options && options.length > 0) {
+      const currentOption = options.find(option => option.value === value)
+      return getComboboxText(currentOption)
+    }
+    return value
+  }
+  return value.label || value.value
 }
 
 export interface ComboboxOptionProps
@@ -93,12 +106,12 @@ export const ComboboxOptionDetail = styled.div`
 `
 
 const ComboboxOptionInternal = forwardRef(function ComboboxOption(
-  { children, data, value, onClick, ...props }: ComboboxOptionProps,
+  { children, label, value, onClick, ...props }: ComboboxOptionProps,
   forwardedRef: Ref<HTMLLIElement>
 ) {
   const {
     data: { option: contextOption, navigationOption },
-    onCombobox,
+    onChange,
     transition,
     optionsRef,
   } = useContext(ComboboxContext)
@@ -106,7 +119,7 @@ const ComboboxOptionInternal = forwardRef(function ComboboxOption(
   const valueRef = useRef<ComboboxOptionObject>()
 
   useEffect(() => {
-    const option = { data, value }
+    const option = { label, value }
     if (optionsRef) {
       // Was there an old value for this ComboboxOption the list?
       // If so, add the new value at the same spot
@@ -120,21 +133,21 @@ const ComboboxOptionInternal = forwardRef(function ComboboxOption(
       }
       valueRef.current = option
     }
-  }, [value, data, optionsRef])
+  }, [value, label, optionsRef])
 
   const isActive = navigationOption && navigationOption.value === value
   const isCurrent = contextOption && contextOption.value === value
 
   function handleClick() {
-    const option = { data, value }
-    onCombobox && onCombobox(option)
+    const option = { label, value }
+    onChange && onChange(option)
     transition && transition(ComboboxActionType.SELECT_WITH_CLICK, { option })
   }
 
   const wrappedOnClick = useWrapEvent(handleClick, onClick)
 
   return (
-    <OptionContext.Provider value={value}>
+    <OptionContext.Provider value={{ label, value }}>
       <li
         {...omit(props, 'color')}
         ref={forwardedRef}
@@ -168,6 +181,7 @@ export const ComboboxOption = styled(ComboboxOptionInternal)`
   ${space}
   ${typography}
   cursor: default;
+  outline: none;
   &[aria-selected='true'] {
     background-color: ${props =>
       props.theme.colors.semanticColors.primary.lighter}
@@ -189,8 +203,8 @@ ComboboxOption.defaultProps = {
 export function ComboboxOptionTextInternal(
   props: CompatibleHTMLProps<HTMLSpanElement>
 ) {
-  const value = useContext(OptionContext) || ''
-  return <span {...props}>{value}</span>
+  const option = useContext(OptionContext)
+  return <span {...props}>{getComboboxText(option)}</span>
 }
 
 export const ComboboxOptionText = styled(ComboboxOptionTextInternal)``

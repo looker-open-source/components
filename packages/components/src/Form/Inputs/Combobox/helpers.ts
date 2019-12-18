@@ -66,18 +66,16 @@ export function useFocusManagement(
 export function useKeyDown() {
   const {
     data: { navigationOption },
-    onCombobox,
-    options: contextOptions,
     optionsRef,
     state,
     transition,
     autocompletePropRef,
-    persistComboboxionRef,
+    persistSelectionRef,
     readOnlyPropRef,
   } = useContext(ComboboxContext)
 
   return function handleKeyDown(event: KeyboardEvent<HTMLDivElement>) {
-    const options = optionsRef ? optionsRef.current : contextOptions || []
+    const options = optionsRef ? optionsRef.current : []
     switch (event.key) {
       case 'ArrowDown': {
         // Don't scroll the page
@@ -95,8 +93,8 @@ export function useKeyDown() {
           // Opening a closed list
           transition &&
             transition(ComboboxActionType.NAVIGATE, {
-              persistComboboxion:
-                persistComboboxionRef && persistComboboxionRef.current,
+              persistSelection:
+                persistSelectionRef && persistSelectionRef.current,
             })
         } else {
           const index = navigationOption
@@ -187,7 +185,6 @@ export function useKeyDown() {
           state === ComboboxState.NAVIGATING &&
           navigationOption !== undefined
         ) {
-          onCombobox && onCombobox(navigationOption)
           transition && transition(ComboboxActionType.SELECT_WITH_KEYBOARD)
         }
         break
@@ -199,7 +196,6 @@ export function useKeyDown() {
         ) {
           // don't want to submit forms
           event.preventDefault()
-          onCombobox && onCombobox(navigationOption)
           transition && transition(ComboboxActionType.SELECT_WITH_KEYBOARD)
         }
         break

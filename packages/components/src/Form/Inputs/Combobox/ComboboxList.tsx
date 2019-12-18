@@ -57,29 +57,29 @@ export interface ComboboxListProps
    * are from the list, your app will need to do that validation on blur or
    * submit of the form.
    */
-  persistComboboxion?: boolean
+  persistSelection?: boolean
 }
 
 export const ComboboxListInternal = forwardRef(function ComboboxList(
   {
     // when true, and the list opens again, the option with a matching value will be
     // automatically highlighted.
-    persistComboboxion = false,
+    persistSelection = false,
     ...props
   }: ComboboxListProps,
   forwardedRef: Ref<HTMLUListElement>
 ) {
   const {
-    persistComboboxionRef,
+    persistSelectionRef,
     transition,
-    inputElement,
+    wrapperElement,
     isVisible,
     optionsRef,
     popoverRef,
   } = useContext(ComboboxContext)
 
-  if (persistComboboxion) {
-    if (persistComboboxionRef) persistComboboxionRef.current = true
+  if (persistSelection) {
+    if (persistSelectionRef) persistSelectionRef.current = true
   }
 
   // WEIRD? Reset the options ref every render so that they are always
@@ -97,8 +97,8 @@ export const ComboboxListInternal = forwardRef(function ComboboxList(
 
   const handleKeyDown = useKeyDown()
   const handleBlur = useBlur()
-  const width = inputElement
-    ? inputElement.getBoundingClientRect().width
+  const width = wrapperElement
+    ? wrapperElement.getBoundingClientRect().width
     : 'auto'
 
   const content = (
@@ -126,7 +126,7 @@ export const ComboboxListInternal = forwardRef(function ComboboxList(
     isOpen: isVisible,
     placement: 'bottom',
     setOpen,
-    triggerElement: inputElement,
+    triggerElement: wrapperElement,
     triggerToggle: false,
   })
   return popover || null
