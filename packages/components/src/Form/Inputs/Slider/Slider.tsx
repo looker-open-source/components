@@ -111,23 +111,6 @@ const SliderInternal = forwardRef(
         onMouseDown={handleUnfocus}
         data-testid="container"
       >
-        <SliderInput
-          branded={branded}
-          disabled={disabled}
-          id={id}
-          isFocused={isFocused}
-          knobSize={knobSize}
-          max={max}
-          min={min}
-          name={name}
-          onChange={handleChange}
-          step={step}
-          type="range"
-          value={displayValue}
-          aria-labelledby={restProps['aria-labelledby']}
-          data-testid="slider-input"
-          ref={ref}
-        />
         <SliderTrack knobSize={knobSize} trackHeight={trackHeight}>
           <SliderFill
             offsetPercent={fillPercent}
@@ -148,6 +131,23 @@ const SliderInternal = forwardRef(
             </SliderValue>
           </SliderValueWrapper>
         </SliderTrack>
+        <SliderInput
+          branded={branded}
+          disabled={disabled}
+          id={id}
+          isFocused={isFocused}
+          knobSize={knobSize}
+          max={max}
+          min={min}
+          name={name}
+          onChange={handleChange}
+          step={step}
+          type="range"
+          value={displayValue}
+          aria-labelledby={restProps['aria-labelledby']}
+          data-testid="slider-input"
+          ref={ref}
+        />
       </div>
     )
   }
@@ -181,7 +181,6 @@ const SliderInput = styled.input.attrs({ type: 'range' })<SliderInputProps>`
   height: ${({ knobSize }) => knobSize + 6}px;
   position: relative;
   width: 100%;
-  z-index: 1;
   -webkit-appearance: none; /* stylelint-disable-line */
 
   &::-webkit-slider-thumb {
@@ -242,7 +241,6 @@ const SliderTrack = styled.div<SliderTrackProps>`
   top: 50%;
   left: ${({ knobSize }) => `${knobSize / 2}px`};
   margin-top: ${({ trackHeight }) => `-${trackHeight / 2}px`};
-  z-index: 0;
 `
 
 interface ControlProps {
@@ -303,14 +301,13 @@ const SliderValue = styled.div<SliderValueProps>`
     border-bottom: none;
     border-right: none;
     content: ' ';
-    display: block;
     height: 8px;
-    left: calc(50% - 4px);
-    transform: rotate(45deg);
+    left: 50%;
+    margin-left: -4px;
     position: absolute;
-    top: -5px;
+    transform: rotate(45deg);
+    top: -6px;
     width: 8px;
-    z-index: 0;
   }
   &::after {
     /* mask out border overshoot on "word bubble" stem */
@@ -322,14 +319,10 @@ const SliderValue = styled.div<SliderValueProps>`
     position: absolute;
     top: 0;
     width: 80%;
-    z-index: 0;
   }
 `
 
-const SliderValueContent = styled.span`
-  position: relative;
-  z-index: 1;
-`
+const SliderValueContent = styled.span``
 
 interface SliderValueWrapperProps {
   valueSpacing: string
@@ -340,7 +333,6 @@ const SliderValueWrapper = styled.div<SliderValueWrapperProps>`
   display: grid;
   justify-items: center;
   left: calc(${({ offsetPercent }) => offsetPercent}%);
-  overflow: visible;
   position: absolute;
   top: ${({ valueSpacing }) => valueSpacing};
 `
