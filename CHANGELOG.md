@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - custom slider knobs now have proper stacking order so as not to appear over modals
+- fixed documentation crosslinking between Dialog and Confirm
 
 ## [0.7.8] - 2018-12-16
 
