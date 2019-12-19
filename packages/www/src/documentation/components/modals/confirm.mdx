@@ -4,46 +4,6 @@ propsOf: Confirm
 github: Modal/Dialog/DialogManager
 ---
 
-## useConfirm
-
-A custom hook that returns the opener function and rendered confirmation dialog. The following example is a complex usage to illustrate how the opener can be called from another hook.
-
-```jsx
-;() => {
-  const [keyPressed, setKeypressed] = React.useState('none')
-  function handleConfirm(close) {
-    alert('You deleted it')
-    close()
-  }
-  const [confirmation, confirm] = useConfirm({
-    confirmLabel: 'Yes, Delete',
-    buttonColor: 'danger',
-    title: `You pressed ${keyPressed}`,
-    message: 'Are you sure you want to delete it?',
-    onConfirm: handleConfirm,
-  })
-  React.useEffect(() => {
-    function onKeydown(event) {
-      const key = event.keyCode || event.charCode
-      if (key === 8 || key === 46) {
-        setKeypressed(key === 8 ? 'Backspace' : 'Delete')
-        confirm()
-      }
-    }
-    window.addEventListener('keydown', onKeydown)
-    return () => {
-      window.removeEventListener('keydown', onKeydown)
-    }
-  }, [confirm])
-  return (
-    <Paragraph>
-      {confirmation}
-      To trigger a confirmation dialog, hit the delete or backspace key.
-    </Paragraph>
-  )
-}
-```
-
 ## Confirm
 
 A render-props version, for use in class components.
@@ -59,6 +19,54 @@ A render-props version, for use in class components.
 >
   {open => <Button onClick={open}>Do Something</Button>}
 </Confirm>
+```
+
+Updating color and text of the button
+
+```jsx
+<Confirm
+  confirmLabel="Delete"
+  buttonColor="danger"
+  title="Delete Something"
+  message="Is this what you want to do?"
+  onConfirm={close => {
+    alert('You deleted something')
+    close()
+  }}
+>
+  {open => (
+    <Button color="danger" onClick={open}>
+      Delete
+    </Button>
+  )}
+</Confirm>
+```
+
+## useConfirm
+
+A custom hook that returns the opener function and rendered confirmation dialog. The following example is a complex usage to illustrate how the opener can be called from another hook.
+
+```jsx
+;() => {
+  function handleConfirm(close) {
+    alert('You deleted it')
+    close()
+  }
+  const [confirmation, confirm] = useConfirm({
+    confirmLabel: 'Yes, Delete all',
+    buttonColor: 'danger',
+    title: `Delete all`,
+    message: 'Are you sure you want to delete all?',
+    onConfirm: handleConfirm,
+  })
+
+  return (
+    <>
+      {confirmation}
+      <ButtonOutline onClick={confirm}>useConfirm</ButtonOutline>
+    </>
+  )
+}
 ```
 
 ## Rich Message Content
