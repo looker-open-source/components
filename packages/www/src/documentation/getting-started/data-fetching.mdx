@@ -1,0 +1,58 @@
+---
+title: Data Fetching
+status: experimental
+---
+
+import { Banner } from '@looker/components'
+
+<Banner intent="warning">
+  This is experimental and only works for local development. Data fetching in
+  production environments will be supported in early 2020.
+</Banner>
+
+In the course of developing data experiences on the Looker platform, you will find it useful to fetch production data in the [lens development playground](https://github.com/looker-open-source/components/tree/master/packages/playground/README.md). To facilitate that, we've set up a local proxy server which will forward api requests to any target looker instance you have permissions to view.
+
+## Proxy Configuration
+
+Instructions for configuring and starting the lens proxy can be found on our [packages/Server README](https://github.com/looker-open-source/components/tree/master/packages/server/README.md).
+
+To validate that the proxy server is configured correctly it's helpful to query the authenticated user, which can be tested with the following example:
+
+```js
+;() => {
+  const [user, setUser] = useState()
+
+  function fetchUser() {
+    fetch('/api/user')
+      .then(response => response.json())
+      .then(state => setUser(state))
+  }
+
+  return (
+    <>
+      <Button onClick={fetchUser}>Fetch User Data</Button>
+      {user && (
+        <List mt="large">
+          <>
+            <ListItem>
+              <strong>ID:</strong> {user.id}
+            </ListItem>
+            <ListItem>
+              <strong>Name:</strong> {user.display_name}
+            </ListItem>
+            <ListItem>
+              <strong>Email:</strong> {user.email}
+            </ListItem>
+            <ListItem>
+              <strong>Home Space:</strong> {user.home_space_id}
+            </ListItem>
+            <ListItem>
+              <strong>Role IDs:</strong> {JSON.stringify(user.role_ids)}
+            </ListItem>
+          </>
+        </List>
+      )}
+    </>
+  )
+}
+```

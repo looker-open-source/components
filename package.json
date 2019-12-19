@@ -21,6 +21,11 @@
   "scripts": {
     "build": "yarn lerna run 'build:all'",
     "postbuild": "run-p -c 'lint'",
+    "develop": "npm-run-all build develop:components sleep --parallel develop:server develop:playground develop:www",
+    "develop:components": "yarn workspace @looker/components develop &",
+    "develop:playground": "yarn workspace playground develop",
+    "develop:server": "yarn workspace server develop",
+    "develop:www": "yarn workspace www develop",
     "deploy": "yarn workspace www deploy",
     "fix": "run-p -c 'lint:ts-* --fix'",
     "lint": "run-p -c lint:*",
@@ -33,6 +38,7 @@
     "npmrc:clean": "rm .npmrc",
     "prepare": "yarn build",
     "prepublishOnly": "yarn test",
+    "sleep": "sleep 10",
     "test": "yarn jest"
   },
   "devDependencies": {

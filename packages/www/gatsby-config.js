@@ -28,6 +28,10 @@ module.exports = {
   siteMetadata: {
     title: 'Looker UI Components',
   },
+  proxy: {
+    prefix: '/api',
+    url: 'http://localhost:3001',
+  },
   plugins: [
     `gatsby-plugin-sharp`,
     `gatsby-plugin-typescript`,

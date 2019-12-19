@@ -1,0 +1,36 @@
+{
+  "name": "server",
+  "license": "MIT",
+  "version": "0.7.4",
+  "main": "index.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/looker-open-source/components",
+    "directory": "packages/server"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "develop": "node-env-run src --exec nodemon | pino-colada"
+  },
+  "dependencies": {
+    "@looker/sdk": "^0.2.0-beta.27",
+    "@types/node-fetch": "^2.5.4",
+    "dotenv": "^8.2.0",
+    "node-fetch": "^2.6.0"
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.17.1",
+    "@types/express": "^4.17.2",
+    "@types/express-pino-logger": "^4.0.2",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express-pino-logger": "^4.0.0",
+    "node-env-run": "^3.0.2",
+    "nodemon": "^2.0.1",
+    "pino-colada": "^1.5.0",
+    "ts-node": "^8.5.4"
+  },
+  "peerDependencies": {}
+}
