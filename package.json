@@ -62,7 +62,7 @@
     "babel-core": "^7.0.0-bridge",
     "babel-loader": "^8.0.5",
     "babel-plugin-styled-components": "^1.10.6",
-    "core-js": "^3.5.0",
+    "core-js": "^3.6.0",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.12.1",
     "eslint": "^6.7.2",
