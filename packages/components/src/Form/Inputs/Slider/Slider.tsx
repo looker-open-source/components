@@ -322,7 +322,9 @@ const SliderValue = styled.div<SliderValueProps>`
   }
 `
 
-const SliderValueContent = styled.span``
+const SliderValueContent = styled.span`
+  position: relative;
+`
 
 interface SliderValueWrapperProps {
   valueSpacing: string
