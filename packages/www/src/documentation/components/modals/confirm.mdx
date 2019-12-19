@@ -48,7 +48,6 @@ A custom hook that returns the opener function and rendered confirmation dialog.
 
 ```jsx
 ;() => {
-  const [keyPressed, setKeypressed] = React.useState('none')
   function handleConfirm(close) {
     alert('You deleted it')
     close()
@@ -60,24 +59,12 @@ A custom hook that returns the opener function and rendered confirmation dialog.
     message: 'Are you sure you want to delete all?',
     onConfirm: handleConfirm,
   })
-  React.useEffect(() => {
-    function onKeydown(event) {
-      const key = event.keyCode || event.charCode
-      if (key === 16) {
-        setKeypressed('Shift')
-        confirm()
-      }
-    }
-    window.addEventListener('keydown', onKeydown)
-    return () => {
-      window.removeEventListener('keydown', onKeydown)
-    }
-  }, [confirm])
+
   return (
-    <Paragraph>
+    <>
       {confirmation}
-      To trigger a confirmation dialog, hit the shift key.
-    </Paragraph>
+      <ButtonTransparent onClick={confirm}>useConfirm</ButtonTransparent>
+    </>
   )
 }
 ```
