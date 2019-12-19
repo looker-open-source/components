@@ -7,7 +7,6 @@ exports[`renders focus styles on keypress 1`] = `
   height: 30px;
   position: relative;
   width: 100%;
-  z-index: 1;
   -webkit-appearance: none;
 }
 
