@@ -16,6 +16,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Default `theme.reset` is inactive by default now. If your use depends on the previous behavior you can reproduce it via the instructions in this gist: https://gist.github.com/lukelooker/29576e0db918914137638cf9d2649bea
 
+### Fixed
+
+- custom slider knobs now have proper stacking order so as not to appear over modals
+
 ## [0.7.8] - 2018-12-16
 
 ### Changed
