@@ -31,7 +31,7 @@ const App: React.FC = () => {
     <ThemeProvider theme={theme}>
       <>
         <GlobalStyle />
-        <SingleValueVis lookID={3} />
+        <SingleValueVis lookID={158} />
       </>
     </ThemeProvider>
   )

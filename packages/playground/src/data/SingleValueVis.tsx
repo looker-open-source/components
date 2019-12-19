@@ -24,20 +24,50 @@ interface SingleValueVisProps {
   lookID: number
 }
 
-const fetchLook = async (id: number, setLookValue: any) => {
-  const lookResponse = await fetch(`/api/looks/${id}`)
-  const lookJSON = await lookResponse.json()
-  setLookValue(lookJSON)
+const fetchLook = async (id: number, fetchJson?: boolean) => {
+  const jsonArgs =
+    '/run/json_detail?server_table_calcs=true&apply_formatting=true'
+
+  const lookResponse = await fetch(
+    `/api/looks/${id}${fetchJson ? jsonArgs : ''}`
+  )
+  const formattedResponse = await lookResponse.json()
+  return formattedResponse
+}
+
+interface LookMeta {
+  title: string
+}
+
+interface LookData {
+  'product.title': { value: string }
+  'product.count': { value: number }
 }
 
 export const SingleValueVis: FC<SingleValueVisProps> = ({ lookID }) => {
-  const [lookValue, setLookValue] = useState({})
+  const [lookMeta, setLookMeta] = useState<LookMeta>()
+  const [lookValue, setLookValue] = useState<LookData>()
 
   useEffect(() => {
-    fetchLook(lookID, setLookValue)
+    const getData = async () => {
+      const metadata = await fetchLook(lookID)
+      const data = await fetchLook(lookID, true)
+
+      setLookMeta(metadata)
+      setLookValue(data.data[0])
+    }
+    getData()
   }, [lookID])
 
-  console.log(lookValue) // eslint-disable-line no-console
+  if (!lookMeta || !lookValue) {
+    return null
+  }
 
-  return <div>Render Single Value Look</div>
+  return (
+    <div>
+      <h1>Render Single Value Look</h1>
+      <div>Title: {lookMeta.title}</div>
+      <div>Value: {lookValue['product.count'].value}</div>
+    </div>
+  )
 }
