@@ -61,19 +61,17 @@ test('Should accept a value', () => {
         name="thumbsUp"
         id="thumbs-up"
         value="foobar"
-        options={[{ label: 'Foodbar', value: 'foobar' }]}
-        readOnly
+        options={[{ label: 'Foobar', value: 'foobar' }]}
       />
     </ThemeProvider>
   )
 
-  const select = wrapper.find('select')
-  expect(select.find('option[selected]').prop('value')).toEqual('foobar')
+  const input = wrapper.find('input')
+  expect(input.prop('value')).toEqual('Foobar')
 })
 
 test('Should trigger onChange handler', () => {
-  let counter = 0
-  const handleChange = () => counter++
+  const handleChange = jest.fn()
 
   const wrapper = mount(
     <ThemeProvider theme={theme}>
@@ -87,8 +85,12 @@ test('Should trigger onChange handler', () => {
     </ThemeProvider>
   )
 
-  wrapper.find('select').simulate('change', { target: { value: '' } })
-  expect(counter).toEqual(1)
+  wrapper.find('input').simulate('click')
+  wrapper
+    .find('li')
+    .at(0)
+    .simulate('click')
+  expect(handleChange).toHaveBeenCalledTimes(1)
 })
 
 test('A required FieldSelect', () => {
@@ -109,8 +111,8 @@ test('A FieldSelect with an error validation aligned to the bottom', () => {
       alignValidationMessage="bottom"
     />
   )
-  expect(component.find(Label).props().htmlFor).toEqual(
-    component.find('select').props().id
+  expect(`listbox-${component.find(Label).props().htmlFor}`).toEqual(
+    component.find('input').props().id
   )
 })
 

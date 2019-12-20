@@ -40,7 +40,6 @@ import {
 import React, { forwardRef, useRef, useState, Ref, useEffect } from 'react'
 import styled from 'styled-components'
 import { useID, useCallbackRef, useForkedRef } from '../../../utils'
-import { Box } from '../../../Layout'
 import { useFocusManagement } from './helpers'
 import { useReducerMachine, ComboboxActionType, ComboboxState } from './state'
 import { ComboboxContext, defaultData } from './ComboboxContext'
@@ -152,8 +151,9 @@ export const ComboboxInternal = forwardRef(function Combobox(
   const readOnlyPropRef = useRef(false)
 
   const persistSelectionRef = useRef(false)
-  const initialOption = defaultValue
-    ? { inputValue: getComboboxText(defaultValue), option: defaultValue }
+  const initialValue = value || defaultValue
+  const initialOption = initialValue
+    ? { inputValue: getComboboxText(initialValue), option: initialValue }
     : {}
 
   const [state, data, transition] = useReducerMachine({
@@ -162,7 +162,7 @@ export const ComboboxInternal = forwardRef(function Combobox(
   })
   const { option } = data
 
-  if (value !== undefined && option?.value !== value.value) {
+  if (value !== undefined && option && option.value !== value.value) {
     transition &&
       transition(ComboboxActionType.SELECT_SILENT, {
         option: value,
@@ -208,7 +208,7 @@ export const ComboboxInternal = forwardRef(function Combobox(
 
   return (
     <ComboboxContext.Provider value={context}>
-      <Box
+      <div
         display="inline-block"
         {...rest}
         ref={ref}
@@ -218,7 +218,7 @@ export const ComboboxInternal = forwardRef(function Combobox(
         aria-expanded={context.isVisible}
       >
         {children}
-      </Box>
+      </div>
     </ComboboxContext.Provider>
   )
 })
@@ -231,3 +231,5 @@ export const Combobox = styled(ComboboxInternal)`
   ${position}
   ${space}
 `
+
+Combobox.defaultProps = { width: '100%' }

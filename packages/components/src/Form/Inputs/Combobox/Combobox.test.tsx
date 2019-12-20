@@ -25,7 +25,7 @@
  */
 
 import { renderWithTheme } from '@looker/components-test-utils'
-import { act, cleanup, fireEvent } from '@testing-library/react'
+import { cleanup, fireEvent } from '@testing-library/react'
 import React from 'react'
 
 import { Combobox, ComboboxInput, ComboboxList, ComboboxOption } from '.'
@@ -58,6 +58,140 @@ describe('<Combobox/> with children', () => {
 
     expect(handleClick).toHaveBeenCalledTimes(1)
     expect(handleChange).toHaveBeenCalledTimes(1)
-    expect(handleChange).toHaveBeenCalledWith({ data: 101, value: 'Foo' })
+    expect(handleChange).toHaveBeenCalledWith({ label: 'Foo', value: '101' })
+  })
+
+  test('with openOnFocus', () => {
+    const { getByRole, queryByRole, getByTestId } = renderWithTheme(
+      <Combobox id="with-options" openOnFocus>
+        <ComboboxInput data-testid="select-input" />
+        <ComboboxList>
+          <ComboboxOption label="Foo" value="101" />
+          <ComboboxOption label="Bar" value="102" />
+        </ComboboxList>
+      </Combobox>
+    )
+
+    expect(queryByRole('listbox')).not.toBeInTheDocument()
+
+    getByTestId('select-input').focus()
+    expect(getByRole('listbox')).toBeInTheDocument()
+  })
+})
+describe('Keyboard navigation', () => {
+  const arrowDown = {
+    key: 'ArrowDown',
+  }
+  const arrowUp = {
+    key: 'ArrowUp',
+  }
+  const enter = {
+    key: 'Enter',
+  }
+
+  test('arrows and enter', () => {
+    const {
+      getAllByRole,
+      getByRole,
+      queryByRole,
+      getByTestId,
+    } = renderWithTheme(
+      <Combobox id="with-options" openOnFocus>
+        <ComboboxInput data-testid="select-input" />
+        <ComboboxList>
+          <ComboboxOption label="Foo" value="101" />
+          <ComboboxOption label="Bar" value="102" />
+        </ComboboxList>
+      </Combobox>
+    )
+
+    expect(queryByRole('listbox')).not.toBeInTheDocument()
+
+    const input = getByTestId('select-input')
+
+    fireEvent.keyDown(input, arrowDown)
+    expect(getByRole('listbox')).toBeInTheDocument()
+
+    const items = getAllByRole('option')
+    expect(input).toHaveValue('')
+    expect(items[0]).not.toHaveAttribute('aria-selected')
+    expect(items[1]).not.toHaveAttribute('aria-selected')
+
+    fireEvent.keyDown(input, arrowDown)
+    expect(input).toHaveValue('Foo')
+    expect(items[0]).toHaveAttribute('aria-selected', 'true')
+    expect(items[1]).toHaveAttribute('aria-selected', 'false')
+
+    fireEvent.keyDown(input, arrowDown)
+    expect(input).toHaveValue('Bar')
+    expect(items[0]).toHaveAttribute('aria-selected', 'false')
+    expect(items[1]).toHaveAttribute('aria-selected', 'true')
+
+    fireEvent.keyDown(input, arrowDown)
+    expect(input).toHaveValue('')
+    expect(items[0]).not.toHaveAttribute('aria-selected')
+    expect(items[1]).not.toHaveAttribute('aria-selected')
+
+    fireEvent.keyDown(input, arrowUp)
+    expect(input).toHaveValue('Bar')
+    expect(items[0]).toHaveAttribute('aria-selected', 'false')
+    expect(items[1]).toHaveAttribute('aria-selected', 'true')
+
+    fireEvent.keyDown(input, enter)
+    expect(input).toHaveValue('Bar')
+    expect(queryByRole('listbox')).not.toBeInTheDocument()
+  })
+
+  test('arrows and enter with autocomplete = false', () => {
+    const {
+      getAllByRole,
+      getByRole,
+      queryByRole,
+      getByTestId,
+    } = renderWithTheme(
+      <Combobox id="with-options" openOnFocus>
+        <ComboboxInput data-testid="select-input" autocomplete={false} />
+        <ComboboxList>
+          <ComboboxOption label="Foo" value="101" />
+          <ComboboxOption label="Bar" value="102" />
+        </ComboboxList>
+      </Combobox>
+    )
+
+    expect(queryByRole('listbox')).not.toBeInTheDocument()
+
+    const input = getByTestId('select-input')
+
+    fireEvent.keyDown(input, arrowDown)
+    expect(getByRole('listbox')).toBeInTheDocument()
+
+    const items = getAllByRole('option')
+    expect(input).toHaveValue('')
+    expect(items[0]).not.toHaveAttribute('aria-selected')
+    expect(items[1]).not.toHaveAttribute('aria-selected')
+
+    fireEvent.keyDown(input, arrowDown)
+    expect(input).toHaveValue('')
+    expect(items[0]).toHaveAttribute('aria-selected', 'true')
+    expect(items[1]).toHaveAttribute('aria-selected', 'false')
+
+    fireEvent.keyDown(input, arrowDown)
+    expect(input).toHaveValue('')
+    expect(items[0]).toHaveAttribute('aria-selected', 'false')
+    expect(items[1]).toHaveAttribute('aria-selected', 'true')
+
+    fireEvent.keyDown(input, arrowDown)
+    expect(input).toHaveValue('')
+    expect(items[0]).toHaveAttribute('aria-selected', 'true')
+    expect(items[1]).toHaveAttribute('aria-selected', 'false')
+
+    fireEvent.keyDown(input, arrowUp)
+    expect(input).toHaveValue('')
+    expect(items[0]).toHaveAttribute('aria-selected', 'false')
+    expect(items[1]).toHaveAttribute('aria-selected', 'true')
+
+    fireEvent.keyDown(input, enter)
+    expect(input).toHaveValue('Bar')
+    expect(queryByRole('listbox')).not.toBeInTheDocument()
   })
 })

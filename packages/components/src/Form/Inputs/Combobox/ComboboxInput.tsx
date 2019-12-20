@@ -217,9 +217,8 @@ export const ComboboxInputInternal = forwardRef(function ComboboxInput(
   ) {
     // When idle, we don't have a navigationOption on ArrowUp/Down
     inputOption =
-      navigationOption || controlledValue !== undefined
-        ? controlledValue
-        : option
+      navigationOption ||
+      (controlledValue !== undefined ? controlledValue : option)
   }
   const inputValue = getComboboxText(inputOption)
 

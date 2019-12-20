@@ -85,12 +85,12 @@ const InputSearchLayout = styled.div<InputSearchLayoutProps>`
   ${border}
   ${layout}
 
+  align-items: center;
+  display: flex;
   background: ${props =>
     props.validationType === 'error'
       ? props.theme.colors.palette.red000
       : props.theme.colors.palette.white};
-  align-items: center;
-  display: flex;
   position: relative;
 
   &:focus-within {
@@ -136,6 +136,7 @@ const InputSearchComponent = forwardRef(
       summary,
       value: controlledValue = '',
       validationType,
+      width = '100%',
 
       ...props
     }: InputSearchProps,
@@ -191,6 +192,7 @@ const InputSearchComponent = forwardRef(
         validationType={validationType}
         {...omit(props, inputPropKeys)}
         {...mouseHandlers}
+        width={width}
       >
         <InputText
           onChange={handleChange}

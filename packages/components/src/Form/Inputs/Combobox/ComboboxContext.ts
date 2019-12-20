@@ -49,7 +49,7 @@ export interface ComboboxContextProps {
 export const defaultData: ComboboxData = {
   // the value the user has typed, we derived this also when the developer is
   // controlling the value of ComboboxInput
-  inputValue: '',
+  inputValue: undefined,
   // the value the user has navigated to with the keyboard
   navigationOption: undefined,
   // the value the user has typed, we derived this also when the developer is

@@ -72,20 +72,20 @@ exports[`InputSearch default 1`] = `
 }
 
 <div
-  className="c0"
+  className="c0 "
+  onClick={[Function]}
   width="100%"
 >
   <input
-    className="c1 c2 "
+    className="c1 c2"
     onChange={[Function]}
-    type="search"
+    type="text"
     value=""
   />
   <div
     className="c3"
     display="flex"
     height="100%"
-    onClick={[Function]}
   />
 </div>
 `;

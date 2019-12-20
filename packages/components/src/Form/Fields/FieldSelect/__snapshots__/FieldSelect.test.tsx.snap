@@ -9,29 +9,103 @@ exports[`A FieldSelect 1`] = `
   display: inline-block;
 }
 
-.c2 {
-  background-color: #FFFFFF;
-  border: solid 1px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+Q2FyZXQgRG93bjwvdGl0bGU+PHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OCAxNi41OSA4IDE4IDkuNDFsLTYgNi02LTZMNy40MSA4eiIgZmlsbD0iIzcwNzc4MSI+PC9wYXRoPjwvc3ZnPg=='), linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
-  background-repeat: no-repeat,repeat;
-  background-position: right .25rem center,0 0;
-  background-size: 1rem,100%;
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  width: 100%;
+}
+
+.c7 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border: none;
   border-color: #C1C6CC;
   border-radius: 0.25rem;
+  width: 100%;
   height: 28px;
-  font-size: 0.875rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
-  padding-right: calc(2 * .25rem + 1rem);
+  font-size: 0.875rem;
 }
 
-.c2::-ms-expand {
-  display: none;
+.c7:focus {
+  outline: none;
+}
+
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border: 1px solid;
+  border-color: #C1C6CC;
+  border-radius: 0.25rem;
+  width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background: #FFFFFF;
+  position: relative;
+}
+
+.c4:focus-within {
+  border-color: transparent;
+  outline: 5px auto -webkit-focus-ring-color;
+}
+
+.c4 .c6 {
+  border: none;
+  width: 100%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c4 .c6::-webkit-search-decoration,
+.c4 .c6::-webkit-search-cancel-button,
+.c4 .c6::-webkit-search-results-button,
+.c4 .c6::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c5 {
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+Q2FyZXQgRG93bjwvdGl0bGU+PHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OCAxNi41OSA4IDE4IDkuNDFsLTYgNi02LTZMNy40MSA4eiIgZmlsbD0iIzcwNzc4MSI+PC9wYXRoPjwvc3ZnPg==');
+  background-repeat: no-repeat,repeat;
+  background-position: right .25rem center,0 0;
+  background-size: 1rem,100%;
+  padding-right: calc(2 * .25rem + 1rem);
 }
 
 .c0 {
@@ -63,17 +137,36 @@ exports[`A FieldSelect 1`] = `
     <div
       className=""
     >
-      <select
-        className="c2 "
-        fontSize="small"
-        height="28px"
+      <div
+        aria-expanded={false}
+        aria-haspopup="listbox"
+        aria-owns="listbox-thumbs-up"
+        className="c3 "
+        display="inline-block"
         id="thumbs-up"
         name="thumbsUp"
+        role="select"
+        width="100%"
       >
-        <option
-          value=""
-        />
-      </select>
+        <div
+          aria-autocomplete="both"
+          className="c4 c5"
+          onClick={[Function]}
+          width="100%"
+        >
+          <input
+            className="c6 c7"
+            id="listbox-thumbs-up"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            readOnly={true}
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -88,29 +181,121 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   display: inline-block;
 }
 
-.c3 {
-  background-color: #FFF2F4;
-  border: solid 1px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+Q2FyZXQgRG93bjwvdGl0bGU+PHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OCAxNi41OSA4IDE4IDkuNDFsLTYgNi02LTZMNy40MSA4eiIgZmlsbD0iIzcwNzc4MSI+PC9wYXRoPjwvc3ZnPg=='), linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
-  background-repeat: no-repeat,repeat;
-  background-position: right .25rem center,0 0;
-  background-size: 1rem,100%;
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  width: 100%;
+}
+
+.c8 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border: none;
   border-color: #C1C6CC;
   border-radius: 0.25rem;
+  width: 100%;
   height: 28px;
-  font-size: 0.875rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
-  padding-right: calc(2 * .25rem + 1rem);
+  font-size: 0.875rem;
+  background: #FFF2F4;
 }
 
-.c3::-ms-expand {
-  display: none;
+.c8:focus {
+  outline: none;
+}
+
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+.c10 .c7 {
+  border: none;
+  width: 100%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c10 .c7::-webkit-search-decoration,
+.c10 .c7::-webkit-search-cancel-button,
+.c10 .c7::-webkit-search-results-button,
+.c10 .c7::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c5 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border: 1px solid;
+  border-color: #C1C6CC;
+  border-radius: 0.25rem;
+  width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background: #FFF2F4;
+  position: relative;
+}
+
+.c5:focus-within {
+  border-color: transparent;
+  outline: 5px auto -webkit-focus-ring-color;
+}
+
+.c5 .c7 {
+  border: none;
+  width: 100%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c5 .c7::-webkit-search-decoration,
+.c5 .c7::-webkit-search-cancel-button,
+.c5 .c7::-webkit-search-results-button,
+.c5 .c7::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c6 {
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+Q2FyZXQgRG93bjwvdGl0bGU+PHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OCAxNi41OSA4IDE4IDkuNDFsLTYgNi02LTZMNy40MSA4eiIgZmlsbD0iIzcwNzc4MSI+PC9wYXRoPjwvc3ZnPg==');
+  background-repeat: no-repeat,repeat;
+  background-position: right .25rem center,0 0;
+  background-size: 1rem,100%;
+  padding-right: calc(2 * .25rem + 1rem);
 }
 
 .c0 {
@@ -143,7 +328,14 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   align-items: baseline;
 }
 
-.c4 {
+.c9 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   color: #990F14;
   margin-right: 0.5rem;
   margin-top: 0.5rem;
@@ -168,20 +360,39 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
     <div
       className=""
     >
-      <select
-        className="c3 "
-        fontSize="small"
-        height="28px"
+      <div
+        aria-expanded={false}
+        aria-haspopup="listbox"
+        aria-owns="listbox-thumbs-up"
+        className="c4 "
+        display="inline-block"
         id="thumbs-up"
         name="thumbsUp"
+        role="select"
+        width="100%"
       >
-        <option
-          value=""
-        />
-      </select>
+        <div
+          aria-autocomplete="both"
+          className="c5 c6"
+          onClick={[Function]}
+          width="100%"
+        >
+          <input
+            className="c7 c8"
+            id="listbox-thumbs-up"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            readOnly={true}
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
     </div>
     <div
-      className="c4"
+      className="c9"
       fontSize="xsmall"
       type="error"
     >
@@ -200,29 +411,121 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   display: inline-block;
 }
 
-.c3 {
-  background-color: #FFF2F4;
-  border: solid 1px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+Q2FyZXQgRG93bjwvdGl0bGU+PHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OCAxNi41OSA4IDE4IDkuNDFsLTYgNi02LTZMNy40MSA4eiIgZmlsbD0iIzcwNzc4MSI+PC9wYXRoPjwvc3ZnPg=='), linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
-  background-repeat: no-repeat,repeat;
-  background-position: right .25rem center,0 0;
-  background-size: 1rem,100%;
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  width: 100%;
+}
+
+.c8 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border: none;
   border-color: #C1C6CC;
   border-radius: 0.25rem;
+  width: 100%;
   height: 28px;
-  font-size: 0.875rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
-  padding-right: calc(2 * .25rem + 1rem);
+  font-size: 0.875rem;
+  background: #FFF2F4;
 }
 
-.c3::-ms-expand {
-  display: none;
+.c8:focus {
+  outline: none;
+}
+
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+.c10 .c7 {
+  border: none;
+  width: 100%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c10 .c7::-webkit-search-decoration,
+.c10 .c7::-webkit-search-cancel-button,
+.c10 .c7::-webkit-search-results-button,
+.c10 .c7::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c5 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border: 1px solid;
+  border-color: #C1C6CC;
+  border-radius: 0.25rem;
+  width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background: #FFF2F4;
+  position: relative;
+}
+
+.c5:focus-within {
+  border-color: transparent;
+  outline: 5px auto -webkit-focus-ring-color;
+}
+
+.c5 .c7 {
+  border: none;
+  width: 100%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c5 .c7::-webkit-search-decoration,
+.c5 .c7::-webkit-search-cancel-button,
+.c5 .c7::-webkit-search-results-button,
+.c5 .c7::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c6 {
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+Q2FyZXQgRG93bjwvdGl0bGU+PHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OCAxNi41OSA4IDE4IDkuNDFsLTYgNi02LTZMNy40MSA4eiIgZmlsbD0iIzcwNzc4MSI+PC9wYXRoPjwvc3ZnPg==');
+  background-repeat: no-repeat,repeat;
+  background-position: right .25rem center,0 0;
+  background-size: 1rem,100%;
+  padding-right: calc(2 * .25rem + 1rem);
 }
 
 .c0 {
@@ -251,7 +554,14 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   align-items: baseline;
 }
 
-.c4 {
+.c9 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   color: #990F14;
   margin-right: 0.5rem;
   margin-top: 0.5rem;
@@ -277,20 +587,39 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
     <div
       className=""
     >
-      <select
-        className="c3 "
-        fontSize="small"
-        height="28px"
+      <div
+        aria-expanded={false}
+        aria-haspopup="listbox"
+        aria-owns="listbox-thumbs-up"
+        className="c4 "
+        display="inline-block"
         id="thumbs-up"
         name="thumbsUp"
+        role="select"
+        width="100%"
       >
-        <option
-          value=""
-        />
-      </select>
+        <div
+          aria-autocomplete="both"
+          className="c5 c6"
+          onClick={[Function]}
+          width="100%"
+        >
+          <input
+            className="c7 c8"
+            id="listbox-thumbs-up"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            readOnly={true}
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
     </div>
     <div
-      className="c4"
+      className="c9"
       fontSize="xsmall"
       type="error"
     >
@@ -309,29 +638,103 @@ exports[`A required FieldSelect 1`] = `
   display: inline-block;
 }
 
-.c3 {
-  background-color: #FFFFFF;
-  border: solid 1px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+Q2FyZXQgRG93bjwvdGl0bGU+PHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OCAxNi41OSA4IDE4IDkuNDFsLTYgNi02LTZMNy40MSA4eiIgZmlsbD0iIzcwNzc4MSI+PC9wYXRoPjwvc3ZnPg=='), linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
-  background-repeat: no-repeat,repeat;
-  background-position: right .25rem center,0 0;
-  background-size: 1rem,100%;
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  width: 100%;
+}
+
+.c8 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border: none;
   border-color: #C1C6CC;
   border-radius: 0.25rem;
+  width: 100%;
   height: 28px;
-  font-size: 0.875rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
-  padding-right: calc(2 * .25rem + 1rem);
+  font-size: 0.875rem;
 }
 
-.c3::-ms-expand {
-  display: none;
+.c8:focus {
+  outline: none;
+}
+
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+.c5 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border: 1px solid;
+  border-color: #C1C6CC;
+  border-radius: 0.25rem;
+  width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background: #FFFFFF;
+  position: relative;
+}
+
+.c5:focus-within {
+  border-color: transparent;
+  outline: 5px auto -webkit-focus-ring-color;
+}
+
+.c5 .c7 {
+  border: none;
+  width: 100%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c5 .c7::-webkit-search-decoration,
+.c5 .c7::-webkit-search-cancel-button,
+.c5 .c7::-webkit-search-results-button,
+.c5 .c7::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c6 {
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+Q2FyZXQgRG93bjwvdGl0bGU+PHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OCAxNi41OSA4IDE4IDkuNDFsLTYgNi02LTZMNy40MSA4eiIgZmlsbD0iIzcwNzc4MSI+PC9wYXRoPjwvc3ZnPg==');
+  background-repeat: no-repeat,repeat;
+  background-position: right .25rem center,0 0;
+  background-size: 1rem,100%;
+  padding-right: calc(2 * .25rem + 1rem);
 }
 
 .c0 {
@@ -364,7 +767,7 @@ exports[`A required FieldSelect 1`] = `
       aria-hidden="true"
       className="c2"
     >
-       
+
       *
     </span>
   </label>
@@ -374,18 +777,37 @@ exports[`A required FieldSelect 1`] = `
     <div
       className=""
     >
-      <select
-        className="c3 "
-        fontSize="small"
-        height="28px"
+      <div
+        aria-expanded={false}
+        aria-haspopup="listbox"
+        aria-owns="listbox-thumbs-up"
+        className="c4 "
+        display="inline-block"
         id="thumbs-up"
         name="thumbsUp"
         required={true}
+        role="select"
+        width="100%"
       >
-        <option
-          value=""
-        />
-      </select>
+        <div
+          aria-autocomplete="both"
+          className="c5 c6"
+          onClick={[Function]}
+          width="100%"
+        >
+          <input
+            className="c7 c8"
+            id="listbox-thumbs-up"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            readOnly={true}
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -400,29 +822,103 @@ exports[`FieldSelect supports labelWeight 1`] = `
   display: inline-block;
 }
 
-.c2 {
-  background-color: #FFFFFF;
-  border: solid 1px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+Q2FyZXQgRG93bjwvdGl0bGU+PHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OCAxNi41OSA4IDE4IDkuNDFsLTYgNi02LTZMNy40MSA4eiIgZmlsbD0iIzcwNzc4MSI+PC9wYXRoPjwvc3ZnPg=='), linear-gradient(to bottom,#FFFFFF 0%,#FFFFFF 100%);
-  background-repeat: no-repeat,repeat;
-  background-position: right .25rem center,0 0;
-  background-size: 1rem,100%;
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  width: 100%;
+}
+
+.c7 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border: none;
   border-color: #C1C6CC;
   border-radius: 0.25rem;
+  width: 100%;
   height: 28px;
-  font-size: 0.875rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
-  padding-right: calc(2 * .25rem + 1rem);
+  font-size: 0.875rem;
 }
 
-.c2::-ms-expand {
-  display: none;
+.c7:focus {
+  outline: none;
+}
+
+.c2 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border: 1px solid;
+  border-color: #C1C6CC;
+  border-radius: 0.25rem;
+  width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background: #FFFFFF;
+  position: relative;
+}
+
+.c4:focus-within {
+  border-color: transparent;
+  outline: 5px auto -webkit-focus-ring-color;
+}
+
+.c4 .c6 {
+  border: none;
+  width: 100%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c4 .c6::-webkit-search-decoration,
+.c4 .c6::-webkit-search-cancel-button,
+.c4 .c6::-webkit-search-results-button,
+.c4 .c6::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c5 {
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+Q2FyZXQgRG93bjwvdGl0bGU+PHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OCAxNi41OSA4IDE4IDkuNDFsLTYgNi02LTZMNy40MSA4eiIgZmlsbD0iIzcwNzc4MSI+PC9wYXRoPjwvc3ZnPg==');
+  background-repeat: no-repeat,repeat;
+  background-position: right .25rem center,0 0;
+  background-size: 1rem,100%;
+  padding-right: calc(2 * .25rem + 1rem);
 }
 
 .c0 {
@@ -454,17 +950,36 @@ exports[`FieldSelect supports labelWeight 1`] = `
     <div
       className=""
     >
-      <select
-        className="c2 "
-        fontSize="small"
-        height="28px"
+      <div
+        aria-expanded={false}
+        aria-haspopup="listbox"
+        aria-owns="listbox-thumbs-up"
+        className="c3 "
+        display="inline-block"
         id="thumbs-up"
         name="thumbsUp"
+        role="select"
+        width="100%"
       >
-        <option
-          value=""
-        />
-      </select>
+        <div
+          aria-autocomplete="both"
+          className="c4 c5"
+          onClick={[Function]}
+          width="100%"
+        >
+          <input
+            className="c6 c7"
+            id="listbox-thumbs-up"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            readOnly={true}
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
     </div>
   </div>
 </div>
