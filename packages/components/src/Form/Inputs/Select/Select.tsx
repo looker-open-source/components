@@ -25,7 +25,9 @@
  */
 
 import React, { forwardRef, Ref } from 'react'
+import ReactDOMServer from 'react-dom/server'
 import styled from 'styled-components'
+import { CaretDown } from '@looker/icons'
 import {
   border,
   BorderProps,
@@ -146,18 +148,17 @@ const SelectComponent = forwardRef(
 
 SelectComponent.displayName = 'SelectComponent'
 
-//
-// @TODO - Should be properly imported from `Caret Down.svg`
-// import caretDownIcon from '../../../../icons/svg/Caret Down.svg'
-//
-const indicatorRaw = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M7.41 8L12 12.58L16.59 8L18 9.41L12 15.41L6 9.41L7.41 8Z" fill="#1C2125"/>
-</svg>`
+const indicatorRaw = ReactDOMServer.renderToString(<CaretDown />)
+  .replace(/1em/g, '24')
+  .replace('data-reactroot=""', 'xmlns="http://www.w3.org/2000/svg"')
 const indicatorSize = '1rem'
 const indicatorPadding = '.25rem'
-const indicator = (color: string) =>
+const indicatorPrefix = 'data:image/svg+xml;base64,'
+export const selectIndicatorBG = (color: string) =>
   typeof window !== 'undefined' &&
-  window.btoa(indicatorRaw.replace('#1C2125', color))
+  `url('${indicatorPrefix}${window.btoa(
+    indicatorRaw.replace('currentColor', color)
+  )}')`
 
 // NOTE: Styling Selects is very complex
 //  See reference artice for background: https://www.filamentgroup.com/lab/select-css.html
@@ -179,9 +180,8 @@ const SelectBase = styled.select.attrs((props: SelectProps) => ({
 
   appearance: none;
 
-  background-image:
-    url(data:image/svg+xml;base64,
-    ${props => indicator(props.theme.colors.palette.charcoal500)}),
+  background-image:${props =>
+    selectIndicatorBG(props.theme.colors.palette.charcoal500)},
     linear-gradient(to bottom, ${props =>
       props.theme.colors.palette.white} 0%, ${props =>
   props.theme.colors.palette.white} 100%);

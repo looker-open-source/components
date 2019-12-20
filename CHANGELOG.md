@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - custom slider knobs now have proper stacking order so as not to appear over modals
 - fixed documentation crosslinking between Dialog and Confirm
+- Custom down arrow icon on `Select`
 
 ## [0.7.8] - 2018-12-16
 
