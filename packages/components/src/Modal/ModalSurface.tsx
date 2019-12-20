@@ -25,7 +25,7 @@
  */
 
 import { CompatibleHTMLProps, reset, theme } from '@looker/design-tokens'
-import React, { FC, useContext, useEffect } from 'react'
+import React, { Ref, useContext, useEffect, forwardRef } from 'react'
 import { HotKeys } from 'react-hotkeys'
 import styled, { CSSObject, css } from 'styled-components'
 import {
@@ -51,62 +51,65 @@ export interface ModalSurfaceProps
   animationState?: string
 }
 
-export const ModalSurface: FC<ModalSurfaceProps> = ({
-  anchor,
-  style,
-  className,
-  ...props
-}) => {
-  const { closeModal, enableFocusTrap, enableScrollLock } = useContext(
-    ModalContext
-  )
+export const ModalSurface = forwardRef(
+  (
+    { anchor, style, className, ...props }: ModalSurfaceProps,
+    ref: Ref<HTMLDivElement>
+  ) => {
+    const { closeModal, enableFocusTrap, enableScrollLock } = useContext(
+      ModalContext
+    )
 
-  useEffect(() => {
-    enableScrollLock && enableScrollLock()
-    const t = window.setTimeout(() => {
-      enableFocusTrap && enableFocusTrap()
-    }, theme.transitions.durationModerate)
-    return () => {
-      window.clearTimeout(t)
-    }
-  }, [enableFocusTrap, enableScrollLock])
+    useEffect(() => {
+      enableScrollLock && enableScrollLock()
+      const t = window.setTimeout(() => {
+        enableFocusTrap && enableFocusTrap()
+      }, theme.transitions.durationModerate)
+      return () => {
+        window.clearTimeout(t)
+      }
+    }, [enableFocusTrap, enableScrollLock])
 
-  return (
-    <HotKeys
-      keyMap={{
-        CLOSE_MODAL: {
-          action: 'keyup',
-          name: 'Close Modal',
-          sequence: 'esc',
-        },
-      }}
-      handlers={{
-        CLOSE_MODAL: () => {
-          closeModal && closeModal()
-        },
-      }}
-      style={{
-        alignItems: 'center',
-        display: 'flex',
-        height: '100%',
-        justifyContent: anchor === 'right' ? 'flex-end' : 'center',
-        width: '100%',
-      }}
-      // NOTE: Styling is required because react-hotkeys injects a DOM element (`div` by default) that
-      // breaks the flex inheritance. Eventually they will offer a React Hook that should allow removal
-      // of this workaround.
-      //
-      // display: contents would be another workaround when it gains broader (corrected) support
-    >
-      <Style
-        className={`surface-overflow ${className}`}
-        tabIndex={-1}
-        surfaceStyle={style as CSSObject}
-        {...props}
-      />
-    </HotKeys>
-  )
-}
+    return (
+      <HotKeys
+        keyMap={{
+          CLOSE_MODAL: {
+            action: 'keyup',
+            name: 'Close Modal',
+            sequence: 'esc',
+          },
+        }}
+        handlers={{
+          CLOSE_MODAL: () => {
+            closeModal && closeModal()
+          },
+        }}
+        style={{
+          alignItems: 'center',
+          display: 'flex',
+          height: '100%',
+          justifyContent: anchor === 'right' ? 'flex-end' : 'center',
+          width: '100%',
+        }}
+        // NOTE: Styling is required because react-hotkeys injects a DOM element (`div` by default) that
+        // breaks the flex inheritance. Eventually they will offer a React Hook that should allow removal
+        // of this workaround.
+        //
+        // display: contents would be another workaround when it gains broader (corrected) support
+      >
+        <Style
+          className={`surface-overflow ${className}`}
+          tabIndex={-1}
+          surfaceStyle={style as CSSObject}
+          ref={ref}
+          {...props}
+        />
+      </HotKeys>
+    )
+  }
+)
+
+ModalSurface.displayName = 'ModalSurface'
 
 const surfaceTransition = () => css`
   ${props =>

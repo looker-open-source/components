@@ -24,28 +24,39 @@
 
  */
 
-import React, { forwardRef, Ref } from 'react'
-import styled from 'styled-components'
+import React from 'react'
+import {
+  Button,
+  Confirm,
+  FieldCheckbox,
+  FieldText,
+  Heading,
+} from '@looker/components'
 
-import { ModalSurface, ModalSurfaceProps } from '../ModalSurface'
-
-export const DialogSurface = forwardRef(
-  (props: ModalSurfaceProps, ref: Ref<HTMLDivElement>) => (
-    <StyledDialogSurface {...props} ref={ref} />
+export const ProtectedModalDemo: React.FC = () => {
+  return (
+    <Confirm
+      title="Please enter your information"
+      message={<UserForm />}
+      onConfirm={() => alert('Saved')}
+      width="500px"
+      protectChanges
+    >
+      {open => <Button onClick={open}>Open modal form</Button>}
+    </Confirm>
   )
+}
+
+const UserForm: React.FC = () => (
+  <form>
+    <Heading as="h3" mb="small">
+      Who are you?
+    </Heading>
+    <FieldText name="name" label="Full Name" />
+    <Heading as="h3" mb="small">
+      Cookie Preference??
+    </Heading>
+    <FieldCheckbox name="chocolate-chip" label="Chocolate Chip" />
+    <FieldCheckbox name="peanut-butter" label="Peanut Butter" />
+  </form>
 )
-
-DialogSurface.displayName = 'DialogSurface'
-
-const StyledDialogSurface = styled(ModalSurface)<ModalSurfaceProps>`
-  &.entering,
-  &.exiting {
-    opacity: 0.01;
-    transform: translateY(100%);
-  }
-
-  &.exited {
-    opacity: 1;
-    transform: translateY(0%);
-  }
-`

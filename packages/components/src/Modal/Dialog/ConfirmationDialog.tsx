@@ -24,15 +24,14 @@
 
  */
 
-import React, { FC, useCallback, ReactElement } from 'react'
+import React, { FC, ReactElement, useEffect, useRef } from 'react'
 import { SemanticColors } from '@looker/design-tokens'
+import isFunction from 'lodash/isFunction'
 import { Button, ButtonTransparent } from '../../Button'
 import { Paragraph } from '../../Text'
 import { ModalContent, ModalFooter, ModalHeader } from '../Layout'
 import { ManagedModalProps } from '../Modal'
 import { Dialog } from './Dialog'
-
-export type ConfirmationCallback = (close: () => void) => void
 
 export interface ConfirmationProps extends ManagedModalProps {
   /**
@@ -62,12 +61,12 @@ export interface ConfirmationProps extends ManagedModalProps {
   /**
    * Callback if user clicks Cancel button or closes the dialog
    */
-  onCancel?: ConfirmationCallback
+  onCancel: () => void
   /**
    * Function called when user clicks to confirm
    * close function is passed as an argument to control when to close the dialog
    */
-  onConfirm: ConfirmationCallback
+  onConfirm: () => void
   /**
    * Dialog title text
    */
@@ -76,43 +75,57 @@ export interface ConfirmationProps extends ManagedModalProps {
 
 export interface ConfirmationDialogProps extends ConfirmationProps {
   /**
-   * For triggering close from within the dialog
-   */
-  close: () => void
-  /**
    * Toggling this after mounting will trigger the animation
    * @default false
    */
   isOpen?: boolean
+  /**
+   * Callback to fire if any form input children change.
+   */
+  onChange?: () => void
 }
 
 export const ConfirmationDialog: FC<ConfirmationDialogProps> = ({
   cancelLabel = 'Cancel',
-  close,
   confirmLabel = 'Confirm',
   buttonColor = 'primary',
   cancelColor = 'neutral',
   isOpen = false,
   message,
   onCancel,
+  onChange,
   onConfirm,
   title,
   ...props
 }) => {
-  const confirm = useCallback(() => {
-    onConfirm(close)
-  }, [close, onConfirm])
+  const ref = useRef<HTMLDivElement>(null)
 
-  const cancel = useCallback(() => {
-    if (onCancel) {
-      onCancel(close)
-    } else {
-      close()
+  useEffect(() => {
+    /**
+     * watch for changes to any input elements within the dialog content
+     */
+    const changeListener = () => {
+      if (isFunction(onChange)) {
+        onChange()
+      }
     }
-  }, [close, onCancel])
+
+    const inputs =
+      ref.current !== null ? ref.current.querySelectorAll('input') : []
+
+    inputs.forEach((input: HTMLInputElement) => {
+      input.addEventListener('change', changeListener)
+    })
+
+    return () => {
+      inputs.forEach((input: HTMLInputElement) => {
+        input.removeEventListener('change', changeListener)
+      })
+    }
+  }, [onChange, ref])
 
   return (
-    <Dialog isOpen={isOpen} onClose={cancel} {...props}>
+    <Dialog isOpen={isOpen} onClose={onCancel} ref={ref} {...props}>
       <ModalHeader>{title}</ModalHeader>
       <ModalContent innerProps={{ py: 'none' }}>
         {typeof message === 'string' ? (
@@ -122,10 +135,10 @@ export const ConfirmationDialog: FC<ConfirmationDialogProps> = ({
         )}
       </ModalContent>
       <ModalFooter>
-        <Button onClick={confirm} color={buttonColor}>
+        <Button onClick={onConfirm} color={buttonColor}>
           {confirmLabel}
         </Button>
-        <ButtonTransparent color={cancelColor} onClick={cancel}>
+        <ButtonTransparent color={cancelColor} onClick={onCancel}>
           {cancelLabel}
         </ButtonTransparent>
       </ModalFooter>
