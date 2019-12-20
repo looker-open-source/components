@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [UNRELEASED]
+## [0.7.10]
 
 ### Added
 
@@ -14,28 +14,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changes
 
--update documentation on Confirm to not expect the use of backspace for better user experience
-
-- Default `theme.reset` is inactive by default now. If your use depends on the previous behavior you can reproduce it via the instructions in this gist: https://gist.github.com/lukelooker/29576e0db918914137638cf9d2649bea
+- `Button` sizes updated to match design specifications
+- `Confirm` secondary button color now defaults to `neutral`
+  - `Confirm` documentation example simplified
+- `esm` & `cjs` builds now produce `es6` (previously produced `es5`)
+- Default `theme.reset` is inactive by default now.
+  - If your use depends on the previous behavior you can reproduce it via the instructions in this gist: https://gist.github.com/lukelooker/29576e0db918914137638cf9d2649bea
 
 ### Fixed
 
-- custom slider knobs now have proper stacking order so as not to appear over modals
-- fixed documentation crosslinking between Dialog and Confirm
-- Custom down arrow icon on `Select`
+- `Select` drop-down indicator arrow reintroduced
+- `Slider` custom knobs now have proper stacking order so as not to appear over `Dialog`, `Popover` and `Drawer`
+- Documentation
+  - Links between `Dialog` and `Confirm`
 
 ## [0.7.8] - 2018-12-16
 
 ### Changed
 
-- update button color to be neutral for useConfirm and Confirm components.
-- Button size map was updated with correct sizes
-- Test for Button got updates to reflect the correct sizes
 - `ModalManager` (and it's derived `DialogManager` & `DrawerManager`) now support a `onClose` callback that will be called when the modal is closed.
 
 ### Bug Fixes
 
-- Button size map was updated with new sizes and Test got updates to reflect the new sizes
 - Correct issue `ModalManager` `surfaceStyles` had `minWidth` and `maxWidth` properties that were difficult to override on an instance.
 - Correct usage of `textTransform` in documentation and updated related test suite
 
