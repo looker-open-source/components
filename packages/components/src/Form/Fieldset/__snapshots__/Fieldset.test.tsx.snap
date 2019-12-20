@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Fieldset with left aligned legend 1`] = `
-.c4 {
+.c5 {
   border: solid 1px;
   border-color: #C1C6CC;
   border-radius: 0.25rem;
@@ -13,7 +13,7 @@ exports[`Fieldset with left aligned legend 1`] = `
   font-size: 0.875rem;
 }
 
-.c0 {
+.c1 {
   margin-bottom: 0.5rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -28,7 +28,7 @@ exports[`Fieldset with left aligned legend 1`] = `
   align-items: baseline;
 }
 
-.c2 {
+.c3 {
   margin-bottom: 0.5rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -39,7 +39,7 @@ exports[`Fieldset with left aligned legend 1`] = `
   flex-direction: column;
 }
 
-.c3 {
+.c4 {
   color: #262D33;
   margin-right: 0.5rem;
   font-weight: 600;
@@ -47,24 +47,28 @@ exports[`Fieldset with left aligned legend 1`] = `
   display: inline-block;
 }
 
-.c1 {
+.c2 {
   color: #262D33;
   padding-bottom: 0.5rem;
   font-size: 2.25rem;
   font-weight: 300;
 }
 
+.c0 {
+  border: none;
+}
+
 <fieldset
-  className=""
+  className="c0 "
 >
   <div
-    className="c0"
+    className="c1"
   >
     <div
       className=""
     >
       <legend
-        className="c1"
+        className="c2"
         color="palette.charcoal800"
         fontSize="xxxlarge"
         fontWeight="light"
@@ -76,10 +80,10 @@ exports[`Fieldset with left aligned legend 1`] = `
       className=""
     >
       <div
-        className="c2 "
+        className="c3 "
       >
         <label
-          className="c3"
+          className="c4"
           color="palette.charcoal800"
           fontSize="small"
           fontWeight="semiBold"
@@ -88,13 +92,13 @@ exports[`Fieldset with left aligned legend 1`] = `
           One
         </label>
         <div
-          className="c2"
+          className="c3"
         >
           <div
             className=""
           >
             <input
-              className="c4 "
+              className="c5 "
               id="text-1"
               name="name1"
               type="text"
@@ -103,10 +107,10 @@ exports[`Fieldset with left aligned legend 1`] = `
         </div>
       </div>
       <div
-        className="c2 "
+        className="c3 "
       >
         <label
-          className="c3"
+          className="c4"
           color="palette.charcoal800"
           fontSize="small"
           fontWeight="semiBold"
@@ -115,13 +119,13 @@ exports[`Fieldset with left aligned legend 1`] = `
           two
         </label>
         <div
-          className="c2"
+          className="c3"
         >
           <div
             className=""
           >
             <input
-              className="c4 "
+              className="c5 "
               id="text-2"
               name="name2"
               type="text"
@@ -130,10 +134,10 @@ exports[`Fieldset with left aligned legend 1`] = `
         </div>
       </div>
       <div
-        className="c2 "
+        className="c3 "
       >
         <label
-          className="c3"
+          className="c4"
           color="palette.charcoal800"
           fontSize="small"
           fontWeight="semiBold"
@@ -142,13 +146,13 @@ exports[`Fieldset with left aligned legend 1`] = `
           three
         </label>
         <div
-          className="c2"
+          className="c3"
         >
           <div
             className=""
           >
             <input
-              className="c4 "
+              className="c5 "
               id="text-3"
               name="nam3"
               type="text"

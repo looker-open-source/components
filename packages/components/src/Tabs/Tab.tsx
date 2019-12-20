@@ -54,6 +54,7 @@ export interface TabProps
 
 const TabStyle = styled.button<TabProps>`
   ${reset}
+  border: none;
 
   ${border}
   ${layout}
@@ -87,10 +88,6 @@ const TabStyle = styled.button<TabProps>`
     border-bottom-color: transparent;
   }
 
-  &:disabled {
-    color: ${props => props.theme.colors.palette.charcoal300};
-  }
-
   &:focus {
     outline: none;
   }
@@ -107,6 +104,12 @@ const TabStyle = styled.button<TabProps>`
       props.selected
         ? props.theme.colors.palette.purple400
         : props.theme.colors.palette.charcoal300};
+  }
+
+  &:disabled {
+    cursor: default;
+    color: ${props => props.theme.colors.palette.charcoal300};
+    border-bottom-color: transparent;
   }
 `
 
@@ -152,6 +155,7 @@ TabJSX.displayName = 'TabJSX'
 export const Tab = styled(TabJSX)``
 
 Tab.defaultProps = {
+  fontSize: 'small',
   fontWeight: 'semiBold',
   minWidth: '3rem',
   pb: 'small',
