@@ -162,7 +162,7 @@ export const ComboboxInternal = forwardRef(function Combobox(
   })
   const { option } = data
 
-  if (value !== undefined && option && option.value !== value.value) {
+  if (value !== undefined && (!option || option.value !== value.value)) {
     transition &&
       transition(ComboboxActionType.SELECT_SILENT, {
         option: value,
