@@ -1,7 +1,7 @@
 {
   "name": "www",
   "private": true,
-  "version": "0.7.8",
+  "version": "0.7.10-alpha.0",
   "dependencies": {
     "@mdx-js/mdx": "^1.5.2",
     "@mdx-js/react": "^1.5.2",
@@ -30,9 +30,9 @@
     "react-live": "^2.2.2"
   },
   "devDependencies": {
-    "@looker/components": "^0.7.8",
-    "@looker/design-tokens": "^0.7.8",
-    "@looker/icons": "^0.7.7",
+    "@looker/components": "^0.7.10-alpha.0",
+    "@looker/design-tokens": "^0.7.10-alpha.0",
+    "@looker/icons": "^0.7.10-alpha.0",
     "@types/react": "^16.9.17",
     "@types/react-copy-to-clipboard": "^4.3.0",
     "@types/react-dom": "^16.9.4",
@@ -42,7 +42,6 @@
     "eslint-loader": "^3.0.3",
     "gh-pages": "^2.1.1",
     "react-transition-group": "4.3.0",
-    "scroll-behavior": "^0.9.10",
     "styled-components": "^4.4.1",
     "typescript": "^3.7.3"
   },

@@ -1,7 +1,7 @@
 {
   "name": "@looker/components-test-utils",
   "license": "MIT",
-  "version": "0.7.8",
+  "version": "0.7.10-alpha.0",
   "main": "dist/cjs/index.js",
   "types": "dist/types/index.d.ts",
   "module": "dist/esm/index.js",
@@ -18,14 +18,14 @@
   },
   "scripts": {
     "build:all": "yarn clean && yarn run build:esm && yarn run build:cjs",
-    "build:esm": "ttsc --project tsconfig.build.json --module es2015 --target es5 --outDir dist/esm",
-    "build:cjs": "ttsc --project tsconfig.build.json --module commonjs --target es5 --outDir dist/cjs",
+    "build:esm": "ttsc --project tsconfig.build.json --module es2015 --target es6 --outDir dist/esm",
+    "build:cjs": "ttsc --project tsconfig.build.json --module commonjs --target es6 --outDir dist/cjs",
     "clean": "rm -Rf ./dist",
     "declaration": "ttsc --project tsconfig.json",
     "develop": "yarn build:es --watch --verbose & yarn declaration --watch"
   },
   "dependencies": {
-    "@looker/design-tokens": "^0.7.8",
+    "@looker/design-tokens": "^0.7.10-alpha.0",
     "@testing-library/react": "^9.4.0",
     "enzyme": "^3.11.0",
     "jest-styled-components": "^6.3.4",
