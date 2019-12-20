@@ -1,7 +1,7 @@
 {
   "name": "server",
   "license": "MIT",
-  "version": "0.7.4",
+  "version": "0.7.9-alpha.0",
   "main": "index.ts",
   "repository": {
     "type": "git",
@@ -31,6 +31,5 @@
     "nodemon": "^2.0.1",
     "pino-colada": "^1.5.0",
     "ts-node": "^8.5.4"
-  },
-  "peerDependencies": {}
+  }
 }
