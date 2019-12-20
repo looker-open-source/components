@@ -33,11 +33,13 @@ import {
 } from '@looker/design-tokens'
 import React, { forwardRef, Ref } from 'react'
 import styled, { css } from 'styled-components'
+import { rgba } from 'polished'
 import { Icon } from '../../Icon'
 import { MenuItemStyle } from './menuItemStyle'
 
 export interface MenuListItemProps extends CompatibleHTMLProps<HTMLLIElement> {
   current?: boolean
+  focusVisible?: boolean
   itemStyle: MenuItemStyle
 }
 
@@ -101,6 +103,17 @@ export const MenuItemListItem = styled(Li)<MenuListItemProps>`
     box-shadow:  ${props =>
       `0 0 3px 1px ${props.theme.colors.palette.blue400}`};
   }
+
+  &:focus {
+    outline: none;
+  }
+
+  ${props =>
+    props.focusVisible &&
+    `box-shadow: 0 0 0 0.15rem ${rgba(
+      props.theme.colors.palette.purple300,
+      0.25
+    )};`}
 
   ${hoverStyles};
 
