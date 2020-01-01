@@ -267,8 +267,12 @@ export const selectIndicatorBG = (color: string) =>
   )}')`
 
 export const ComboboxInput = styled(ComboboxInputInternal)`
-  background-image: ${props =>
-    selectIndicatorBG(props.theme.colors.palette.charcoal500)};
+  background-image: ${props => {
+    const color = props.disabled
+      ? props.theme.colors.palette.charcoal300
+      : props.theme.colors.palette.charcoal500
+    return selectIndicatorBG(color)
+  }};
   background-repeat: no-repeat, repeat;
   background-position: right ${indicatorPadding} center, 0 0;
   background-size: ${indicatorSize}, 100%;

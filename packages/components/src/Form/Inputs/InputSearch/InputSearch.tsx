@@ -35,26 +35,16 @@ import React, {
   useRef,
 } from 'react'
 import styled from 'styled-components'
-import {
-  border,
-  BorderProps,
-  layout,
-  LayoutProps,
-  reset,
-} from '@looker/design-tokens'
 import { inputPropKeys } from '../InputProps'
 import {
   CustomizableInputTextAttributes,
   InputText,
   InputTextProps,
+  inputTextStyles,
 } from '../InputText'
 import { useControlWarn, useForkedRef, useWrapEvent } from '../../../utils'
-import { ValidationType } from '../../ValidationMessage'
+import { Box } from '../../../Layout'
 import { InputSearchControls } from './InputSearchControls'
-
-interface InputSearchLayoutProps extends BorderProps, LayoutProps {
-  validationType?: ValidationType
-}
 
 export interface InputSearchProps extends InputTextProps {
   /**
@@ -80,44 +70,6 @@ export interface InputSearchProps extends InputTextProps {
   onMouseUp?: (e: MouseEvent<HTMLDivElement>) => void
 }
 
-const InputSearchLayout = styled.div<InputSearchLayoutProps>`
-  ${reset}
-  ${border}
-  ${layout}
-
-  align-items: center;
-  display: flex;
-  background: ${props =>
-    props.validationType === 'error'
-      ? props.theme.colors.palette.red000
-      : props.theme.colors.palette.white};
-  position: relative;
-
-  &:focus-within {
-    border-color: transparent;
-    outline: 5px auto -webkit-focus-ring-color;
-  }
-
-  ${InputText} {
-    border: none;
-    width: 100%;
-    appearance: none;
-
-    &::-webkit-search-decoration,
-    &::-webkit-search-cancel-button,
-    &::-webkit-search-results-button,
-    &::-webkit-search-results-decoration {
-      appearance: none;
-    }
-  }
-`
-
-InputSearchLayout.defaultProps = {
-  border: '1px solid',
-  borderColor: 'palette.charcoal300',
-  borderRadius: CustomizableInputTextAttributes.borderRadius,
-}
-
 const InputSearchComponent = forwardRef(
   (
     {
@@ -133,6 +85,7 @@ const InputSearchComponent = forwardRef(
       onMouseOver,
       onMouseUp,
 
+      className,
       summary,
       value: controlledValue = '',
       validationType,
@@ -157,8 +110,13 @@ const InputSearchComponent = forwardRef(
 
     const handleClear = (e: MouseEvent<HTMLButtonElement>) => {
       setValue('')
-      // focusInput()
-      onClear && onClear(e)
+      if (onClear) {
+        onClear(e)
+      } else if (onChange) {
+        onChange({
+          currentTarget: { value: '' },
+        } as FormEvent<HTMLInputElement>)
+      }
     }
 
     const handleChange = (event: FormEvent<HTMLInputElement>) => {
@@ -188,28 +146,55 @@ const InputSearchComponent = forwardRef(
     // resulting in undetectable changes that effect the value
 
     return (
-      <InputSearchLayout
-        validationType={validationType}
+      <Box
+        className={className}
         {...omit(props, inputPropKeys)}
         {...mouseHandlers}
-        width={width}
       >
         <InputText
           onChange={handleChange}
           value={inputValue}
           focusStyle={{ outline: 'none' }}
-          border="none"
-          width="100%"
-          validationType={validationType}
           {...pick(props, inputPropKeys)}
           ref={ref}
         />
         {controls}
-      </InputSearchLayout>
+      </Box>
     )
   }
 )
 
 InputSearchComponent.displayName = 'InputSearchComponent'
 
-export const InputSearch = styled(InputSearchComponent)``
+export const InputSearch = styled(InputSearchComponent)`
+  align-items: center;
+  display: flex;
+  position: relative;
+
+  ${inputTextStyles}
+
+  &:focus-within {
+    border-color: transparent;
+    outline: 5px auto -webkit-focus-ring-color;
+  }
+
+  ${InputText} {
+    border: none;
+    width: 100%;
+    appearance: none;
+    background: transparent;
+
+    &::-webkit-search-decoration,
+    &::-webkit-search-cancel-button,
+    &::-webkit-search-results-button,
+    &::-webkit-search-results-decoration {
+      appearance: none;
+    }
+  }
+`
+
+InputSearch.defaultProps = {
+  border: '1px solid',
+  borderColor: 'palette.charcoal300',
+  borderRadius: CustomizableInputTextAttributes.borderRadius,
+}

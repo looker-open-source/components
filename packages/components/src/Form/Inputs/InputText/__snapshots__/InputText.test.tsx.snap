@@ -11,6 +11,7 @@ exports[`InputText default 1`] = `
   padding-top: 0rem;
   padding-bottom: 0rem;
   font-size: 0.875rem;
+  background: #FFFFFF;
 }
 
 <input
@@ -30,6 +31,9 @@ exports[`InputText should accept disabled 1`] = `
   padding-top: 0rem;
   padding-bottom: 0rem;
   font-size: 0.875rem;
+  background: #F5F6F7;
+  color: #939BA5;
+  border-color: #DEE1E5;
 }
 
 <input
@@ -50,6 +54,7 @@ exports[`InputText should accept readOnly 1`] = `
   padding-top: 0rem;
   padding-bottom: 0rem;
   font-size: 0.875rem;
+  background: #FFFFFF;
 }
 
 <input
@@ -70,6 +75,7 @@ exports[`InputText should accept required 1`] = `
   padding-top: 0rem;
   padding-bottom: 0rem;
   font-size: 0.875rem;
+  background: #FFFFFF;
 }
 
 <input
@@ -90,6 +96,7 @@ exports[`InputText with a placeholder 1`] = `
   padding-top: 0rem;
   padding-bottom: 0rem;
   font-size: 0.875rem;
+  background: #FFFFFF;
 }
 
 <input
@@ -110,6 +117,7 @@ exports[`InputText with a value 1`] = `
   padding-top: 0rem;
   padding-bottom: 0rem;
   font-size: 0.875rem;
+  background: #FFFFFF;
 }
 
 <input
@@ -150,6 +158,7 @@ exports[`InputText with aria-describedby 1`] = `
   padding-top: 0rem;
   padding-bottom: 0rem;
   font-size: 0.875rem;
+  background: #FFFFFF;
 }
 
 <input
@@ -170,6 +179,7 @@ exports[`InputText with name and id 1`] = `
   padding-top: 0rem;
   padding-bottom: 0rem;
   font-size: 0.875rem;
+  background: #FFFFFF;
 }
 
 <input

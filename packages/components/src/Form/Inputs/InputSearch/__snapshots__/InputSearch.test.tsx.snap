@@ -1,24 +1,51 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`InputSearch default 1`] = `
-.c2 {
-  border: none;
+.c3 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border: solid 1px;
   border-color: #C1C6CC;
   border-radius: 0.25rem;
-  width: 100%;
   height: 28px;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
   font-size: 0.875rem;
+  background: #FFFFFF;
 }
 
-.c2:focus {
+.c3:focus {
   outline: none;
 }
 
-.c3 {
+.c0 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  border: 1px solid;
+  border-color: #C1C6CC;
+  border-radius: 0.25rem;
+}
+
+.c4 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   height: 100%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -32,11 +59,7 @@ exports[`InputSearch default 1`] = `
   align-items: center;
 }
 
-.c0 {
-  border: 1px solid;
-  border-color: #C1C6CC;
-  border-radius: 0.25rem;
-  width: 100%;
+.c1 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -45,45 +68,45 @@ exports[`InputSearch default 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  background: #FFFFFF;
   position: relative;
+  background: #FFFFFF;
 }
 
-.c0:focus-within {
+.c1:focus-within {
   border-color: transparent;
   outline: 5px auto -webkit-focus-ring-color;
 }
 
-.c0 .c1 {
+.c1 .c2 {
   border: none;
   width: 100%;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  background: transparent;
 }
 
-.c0 .c1::-webkit-search-decoration,
-.c0 .c1::-webkit-search-cancel-button,
-.c0 .c1::-webkit-search-results-button,
-.c0 .c1::-webkit-search-results-decoration {
+.c1 .c2::-webkit-search-decoration,
+.c1 .c2::-webkit-search-cancel-button,
+.c1 .c2::-webkit-search-results-button,
+.c1 .c2::-webkit-search-results-decoration {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }
 
 <div
-  className="c0 "
+  className="c0 c1"
   onClick={[Function]}
-  width="100%"
 >
   <input
-    className="c1 c2"
+    className="c2 c3"
     onChange={[Function]}
     type="text"
     value=""
   />
   <div
-    className="c3"
+    className="c4"
     display="flex"
     height="100%"
   />

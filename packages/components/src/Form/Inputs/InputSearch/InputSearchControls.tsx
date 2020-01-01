@@ -62,7 +62,6 @@ export const InputSearchControls: FC<InputSearchControlsProps> = ({
     />
   )
 
-  // @TODO - User should be able to "click through" the text (not the button tho)
   return (
     <Box mx="xxsmall" height="100%" display="flex" alignItems="center">
       {summary && (
