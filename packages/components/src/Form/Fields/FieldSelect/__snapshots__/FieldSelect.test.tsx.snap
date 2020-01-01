@@ -9,25 +9,11 @@ exports[`A FieldSelect 1`] = `
   display: inline-block;
 }
 
-.c3 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
+.c2 {
   width: 100%;
 }
 
-.c8 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
+.c7 {
   border: solid 1px;
   border-color: #C1C6CC;
   border-radius: 0.25rem;
@@ -40,34 +26,18 @@ exports[`A FieldSelect 1`] = `
   background: #FFFFFF;
 }
 
-.c8:focus {
+.c7:focus {
   outline: none;
 }
 
-.c4 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
+.c3 {
   border: 1px solid;
   border-color: #C1C6CC;
   border-radius: 0.25rem;
+  width: 100%;
 }
 
-.c2 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-}
-
-.c5 {
+.c4 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -80,12 +50,12 @@ exports[`A FieldSelect 1`] = `
   background: #FFFFFF;
 }
 
-.c5:focus-within {
+.c4:focus-within {
   border-color: transparent;
   outline: 5px auto -webkit-focus-ring-color;
 }
 
-.c5 .c7 {
+.c4 .c6 {
   border: none;
   width: 100%;
   -webkit-appearance: none;
@@ -94,16 +64,16 @@ exports[`A FieldSelect 1`] = `
   background: transparent;
 }
 
-.c5 .c7::-webkit-search-decoration,
-.c5 .c7::-webkit-search-cancel-button,
-.c5 .c7::-webkit-search-results-button,
-.c5 .c7::-webkit-search-results-decoration {
+.c4 .c6::-webkit-search-decoration,
+.c4 .c6::-webkit-search-cancel-button,
+.c4 .c6::-webkit-search-results-button,
+.c4 .c6::-webkit-search-results-decoration {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }
 
-.c6 {
+.c5 {
   background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+Q2FyZXQgRG93bjwvdGl0bGU+PHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OCAxNi41OSA4IDE4IDkuNDFsLTYgNi02LTZMNy40MSA4eiIgZmlsbD0iIzcwNzc4MSI+PC9wYXRoPjwvc3ZnPg==');
   background-repeat: no-repeat,repeat;
   background-position: right .25rem center,0 0;
@@ -144,7 +114,7 @@ exports[`A FieldSelect 1`] = `
         aria-expanded={false}
         aria-haspopup="listbox"
         aria-owns="listbox-thumbs-up"
-        className="c3 "
+        className="c2 "
         display="inline-block"
         id="thumbs-up"
         name="thumbsUp"
@@ -153,11 +123,12 @@ exports[`A FieldSelect 1`] = `
       >
         <div
           aria-autocomplete="both"
-          className="c4 c5 c6"
+          className="c3 c4 c5"
           onClick={[Function]}
+          width="100%"
         >
           <input
-            className="c7 c8"
+            className="c6 c7"
             id="listbox-thumbs-up"
             onBlur={[Function]}
             onChange={[Function]}
@@ -183,25 +154,11 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   display: inline-block;
 }
 
-.c4 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
+.c3 {
   width: 100%;
 }
 
-.c9 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
+.c8 {
   border: solid 1px;
   border-color: #C1C6CC;
   border-radius: 0.25rem;
@@ -214,34 +171,18 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   background: #FFFFFF;
 }
 
-.c9:focus {
+.c8:focus {
   outline: none;
 }
 
-.c5 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
+.c4 {
   border: 1px solid;
   border-color: #C1C6CC;
   border-radius: 0.25rem;
+  width: 100%;
 }
 
-.c3 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-}
-
-.c11 .c8 {
+.c10 .c7 {
   border: none;
   width: 100%;
   -webkit-appearance: none;
@@ -250,16 +191,16 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   background: transparent;
 }
 
-.c11 .c8::-webkit-search-decoration,
-.c11 .c8::-webkit-search-cancel-button,
-.c11 .c8::-webkit-search-results-button,
-.c11 .c8::-webkit-search-results-decoration {
+.c10 .c7::-webkit-search-decoration,
+.c10 .c7::-webkit-search-cancel-button,
+.c10 .c7::-webkit-search-results-button,
+.c10 .c7::-webkit-search-results-decoration {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }
 
-.c6 {
+.c5 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -272,12 +213,12 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   background: #FFF2F4;
 }
 
-.c6:focus-within {
+.c5:focus-within {
   border-color: transparent;
   outline: 5px auto -webkit-focus-ring-color;
 }
 
-.c6 .c8 {
+.c5 .c7 {
   border: none;
   width: 100%;
   -webkit-appearance: none;
@@ -286,16 +227,16 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   background: transparent;
 }
 
-.c6 .c8::-webkit-search-decoration,
-.c6 .c8::-webkit-search-cancel-button,
-.c6 .c8::-webkit-search-results-button,
-.c6 .c8::-webkit-search-results-decoration {
+.c5 .c7::-webkit-search-decoration,
+.c5 .c7::-webkit-search-cancel-button,
+.c5 .c7::-webkit-search-results-button,
+.c5 .c7::-webkit-search-results-decoration {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }
 
-.c7 {
+.c6 {
   background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+Q2FyZXQgRG93bjwvdGl0bGU+PHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OCAxNi41OSA4IDE4IDkuNDFsLTYgNi02LTZMNy40MSA4eiIgZmlsbD0iIzcwNzc4MSI+PC9wYXRoPjwvc3ZnPg==');
   background-repeat: no-repeat,repeat;
   background-position: right .25rem center,0 0;
@@ -333,14 +274,7 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   align-items: baseline;
 }
 
-.c10 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
+.c9 {
   color: #990F14;
   margin-right: 0.5rem;
   margin-top: 0.5rem;
@@ -369,7 +303,7 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
         aria-expanded={false}
         aria-haspopup="listbox"
         aria-owns="listbox-thumbs-up"
-        className="c4 "
+        className="c3 "
         display="inline-block"
         id="thumbs-up"
         name="thumbsUp"
@@ -378,11 +312,12 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
       >
         <div
           aria-autocomplete="both"
-          className="c5 c6 c7"
+          className="c4 c5 c6"
           onClick={[Function]}
+          width="100%"
         >
           <input
-            className="c8 c9"
+            className="c7 c8"
             id="listbox-thumbs-up"
             onBlur={[Function]}
             onChange={[Function]}
@@ -396,7 +331,7 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
       </div>
     </div>
     <div
-      className="c10"
+      className="c9"
       fontSize="xsmall"
       type="error"
     >
@@ -415,25 +350,11 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   display: inline-block;
 }
 
-.c4 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
+.c3 {
   width: 100%;
 }
 
-.c9 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
+.c8 {
   border: solid 1px;
   border-color: #C1C6CC;
   border-radius: 0.25rem;
@@ -446,34 +367,18 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   background: #FFFFFF;
 }
 
-.c9:focus {
+.c8:focus {
   outline: none;
 }
 
-.c5 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
+.c4 {
   border: 1px solid;
   border-color: #C1C6CC;
   border-radius: 0.25rem;
+  width: 100%;
 }
 
-.c3 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-}
-
-.c11 .c8 {
+.c10 .c7 {
   border: none;
   width: 100%;
   -webkit-appearance: none;
@@ -482,16 +387,16 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   background: transparent;
 }
 
-.c11 .c8::-webkit-search-decoration,
-.c11 .c8::-webkit-search-cancel-button,
-.c11 .c8::-webkit-search-results-button,
-.c11 .c8::-webkit-search-results-decoration {
+.c10 .c7::-webkit-search-decoration,
+.c10 .c7::-webkit-search-cancel-button,
+.c10 .c7::-webkit-search-results-button,
+.c10 .c7::-webkit-search-results-decoration {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }
 
-.c6 {
+.c5 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -504,12 +409,12 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   background: #FFF2F4;
 }
 
-.c6:focus-within {
+.c5:focus-within {
   border-color: transparent;
   outline: 5px auto -webkit-focus-ring-color;
 }
 
-.c6 .c8 {
+.c5 .c7 {
   border: none;
   width: 100%;
   -webkit-appearance: none;
@@ -518,16 +423,16 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   background: transparent;
 }
 
-.c6 .c8::-webkit-search-decoration,
-.c6 .c8::-webkit-search-cancel-button,
-.c6 .c8::-webkit-search-results-button,
-.c6 .c8::-webkit-search-results-decoration {
+.c5 .c7::-webkit-search-decoration,
+.c5 .c7::-webkit-search-cancel-button,
+.c5 .c7::-webkit-search-results-button,
+.c5 .c7::-webkit-search-results-decoration {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }
 
-.c7 {
+.c6 {
   background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+Q2FyZXQgRG93bjwvdGl0bGU+PHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OCAxNi41OSA4IDE4IDkuNDFsLTYgNi02LTZMNy40MSA4eiIgZmlsbD0iIzcwNzc4MSI+PC9wYXRoPjwvc3ZnPg==');
   background-repeat: no-repeat,repeat;
   background-position: right .25rem center,0 0;
@@ -561,14 +466,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   align-items: baseline;
 }
 
-.c10 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
+.c9 {
   color: #990F14;
   margin-right: 0.5rem;
   margin-top: 0.5rem;
@@ -598,7 +496,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
         aria-expanded={false}
         aria-haspopup="listbox"
         aria-owns="listbox-thumbs-up"
-        className="c4 "
+        className="c3 "
         display="inline-block"
         id="thumbs-up"
         name="thumbsUp"
@@ -607,11 +505,12 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
       >
         <div
           aria-autocomplete="both"
-          className="c5 c6 c7"
+          className="c4 c5 c6"
           onClick={[Function]}
+          width="100%"
         >
           <input
-            className="c8 c9"
+            className="c7 c8"
             id="listbox-thumbs-up"
             onBlur={[Function]}
             onChange={[Function]}
@@ -625,7 +524,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
       </div>
     </div>
     <div
-      className="c10"
+      className="c9"
       fontSize="xsmall"
       type="error"
     >
@@ -644,211 +543,11 @@ exports[`A required FieldSelect 1`] = `
   display: inline-block;
 }
 
-.c4 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  width: 100%;
-}
-
-.c9 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  border: solid 1px;
-  border-color: #C1C6CC;
-  border-radius: 0.25rem;
-  height: 28px;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  padding-top: 0rem;
-  padding-bottom: 0rem;
-  font-size: 0.875rem;
-  background: #FFFFFF;
-}
-
-.c9:focus {
-  outline: none;
-}
-
-.c5 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-  border: 1px solid;
-  border-color: #C1C6CC;
-  border-radius: 0.25rem;
-}
-
 .c3 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
-}
-
-.c6 {
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  position: relative;
-  background: #FFFFFF;
-}
-
-.c6:focus-within {
-  border-color: transparent;
-  outline: 5px auto -webkit-focus-ring-color;
-}
-
-.c6 .c8 {
-  border: none;
-  width: 100%;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background: transparent;
-}
-
-.c6 .c8::-webkit-search-decoration,
-.c6 .c8::-webkit-search-cancel-button,
-.c6 .c8::-webkit-search-results-button,
-.c6 .c8::-webkit-search-results-decoration {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
-.c7 {
-  background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+Q2FyZXQgRG93bjwvdGl0bGU+PHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OCAxNi41OSA4IDE4IDkuNDFsLTYgNi02LTZMNy40MSA4eiIgZmlsbD0iIzcwNzc4MSI+PC9wYXRoPjwvc3ZnPg==');
-  background-repeat: no-repeat,repeat;
-  background-position: right .25rem center,0 0;
-  background-size: 1rem,100%;
-  padding-right: calc(2 * .25rem + 1rem);
-}
-
-.c0 {
-  margin-bottom: 0.5rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-.c2 {
-  color: #990F14;
-}
-
-<div
-  className="c0 "
->
-  <label
-    className="c1"
-    color="palette.charcoal800"
-    fontSize="small"
-    fontWeight="semiBold"
-    htmlFor="thumbs-up"
-  >
-    👍
-    <span
-      aria-hidden="true"
-      className="c2"
-    >
-
-      *
-    </span>
-  </label>
-  <div
-    className="c0"
-  >
-    <div
-      className=""
-    >
-      <div
-        aria-expanded={false}
-        aria-haspopup="listbox"
-        aria-owns="listbox-thumbs-up"
-        className="c4 "
-        display="inline-block"
-        id="thumbs-up"
-        name="thumbsUp"
-        role="select"
-        width="100%"
-      >
-        <div
-          aria-autocomplete="both"
-          className="c5 c6 c7"
-          onClick={[Function]}
-        >
-          <input
-            className="c8 c9"
-            id="listbox-thumbs-up"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            readOnly={true}
-            required={true}
-            type="text"
-            value=""
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`FieldSelect supports labelWeight 1`] = `
-.c1 {
-  color: #262D33;
-  margin-right: 0.5rem;
-  font-weight: 400;
-  font-size: 0.875rem;
-  display: inline-block;
-}
-
-.c3 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   width: 100%;
 }
 
 .c8 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   border: solid 1px;
   border-color: #C1C6CC;
   border-radius: 0.25rem;
@@ -866,26 +565,10 @@ exports[`FieldSelect supports labelWeight 1`] = `
 }
 
 .c4 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   border: 1px solid;
   border-color: #C1C6CC;
   border-radius: 0.25rem;
-}
-
-.c2 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
+  width: 100%;
 }
 
 .c5 {
@@ -925,6 +608,163 @@ exports[`FieldSelect supports labelWeight 1`] = `
 }
 
 .c6 {
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+Q2FyZXQgRG93bjwvdGl0bGU+PHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OCAxNi41OSA4IDE4IDkuNDFsLTYgNi02LTZMNy40MSA4eiIgZmlsbD0iIzcwNzc4MSI+PC9wYXRoPjwvc3ZnPg==');
+  background-repeat: no-repeat,repeat;
+  background-position: right .25rem center,0 0;
+  background-size: 1rem,100%;
+  padding-right: calc(2 * .25rem + 1rem);
+}
+
+.c0 {
+  margin-bottom: 0.5rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c2 {
+  color: #990F14;
+}
+
+<div
+  className="c0 "
+>
+  <label
+    className="c1"
+    color="palette.charcoal800"
+    fontSize="small"
+    fontWeight="semiBold"
+    htmlFor="thumbs-up"
+  >
+    👍
+    <span
+      aria-hidden="true"
+      className="c2"
+    >
+       
+      *
+    </span>
+  </label>
+  <div
+    className="c0"
+  >
+    <div
+      className=""
+    >
+      <div
+        aria-expanded={false}
+        aria-haspopup="listbox"
+        aria-owns="listbox-thumbs-up"
+        className="c3 "
+        display="inline-block"
+        id="thumbs-up"
+        name="thumbsUp"
+        required={true}
+        role="select"
+        width="100%"
+      >
+        <div
+          aria-autocomplete="both"
+          className="c4 c5 c6"
+          onClick={[Function]}
+          width="100%"
+        >
+          <input
+            className="c7 c8"
+            id="listbox-thumbs-up"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            readOnly={true}
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`FieldSelect supports labelWeight 1`] = `
+.c1 {
+  color: #262D33;
+  margin-right: 0.5rem;
+  font-weight: 400;
+  font-size: 0.875rem;
+  display: inline-block;
+}
+
+.c2 {
+  width: 100%;
+}
+
+.c7 {
+  border: solid 1px;
+  border-color: #C1C6CC;
+  border-radius: 0.25rem;
+  height: 28px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  font-size: 0.875rem;
+  background: #FFFFFF;
+}
+
+.c7:focus {
+  outline: none;
+}
+
+.c3 {
+  border: 1px solid;
+  border-color: #C1C6CC;
+  border-radius: 0.25rem;
+  width: 100%;
+}
+
+.c4 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  background: #FFFFFF;
+}
+
+.c4:focus-within {
+  border-color: transparent;
+  outline: 5px auto -webkit-focus-ring-color;
+}
+
+.c4 .c6 {
+  border: none;
+  width: 100%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: transparent;
+}
+
+.c4 .c6::-webkit-search-decoration,
+.c4 .c6::-webkit-search-cancel-button,
+.c4 .c6::-webkit-search-results-button,
+.c4 .c6::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.c5 {
   background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+Q2FyZXQgRG93bjwvdGl0bGU+PHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OCAxNi41OSA4IDE4IDkuNDFsLTYgNi02LTZMNy40MSA4eiIgZmlsbD0iIzcwNzc4MSI+PC9wYXRoPjwvc3ZnPg==');
   background-repeat: no-repeat,repeat;
   background-position: right .25rem center,0 0;
@@ -965,7 +805,7 @@ exports[`FieldSelect supports labelWeight 1`] = `
         aria-expanded={false}
         aria-haspopup="listbox"
         aria-owns="listbox-thumbs-up"
-        className="c3 "
+        className="c2 "
         display="inline-block"
         id="thumbs-up"
         name="thumbsUp"
@@ -974,11 +814,12 @@ exports[`FieldSelect supports labelWeight 1`] = `
       >
         <div
           aria-autocomplete="both"
-          className="c4 c5 c6"
+          className="c3 c4 c5"
           onClick={[Function]}
+          width="100%"
         >
           <input
-            className="c7 c8"
+            className="c6 c7"
             id="listbox-thumbs-up"
             onBlur={[Function]}
             onChange={[Function]}

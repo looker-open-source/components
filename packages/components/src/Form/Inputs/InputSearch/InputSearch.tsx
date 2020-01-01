@@ -88,8 +88,6 @@ const InputSearchComponent = forwardRef(
       className,
       summary,
       value: controlledValue = '',
-      validationType,
-      width = '100%',
 
       ...props
     }: InputSearchProps,
