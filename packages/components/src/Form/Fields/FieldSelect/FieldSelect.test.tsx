@@ -30,12 +30,11 @@ import { ThemeProvider } from 'styled-components'
 
 import {
   createWithTheme,
-  mountWithTheme,
+  renderWithTheme,
   assertSnapshot,
 } from '@looker/components-test-utils'
 
 import { theme } from '@looker/design-tokens'
-import { Label } from '../../Label/Label'
 import { FieldSelect } from './FieldSelect'
 
 test('A FieldSelect', () => {
@@ -102,18 +101,17 @@ test('A required FieldSelect', () => {
 })
 
 test('A FieldSelect with an error validation aligned to the bottom', () => {
-  const component = mountWithTheme(
+  const { getByLabelText, getByText } = renderWithTheme(
     <FieldSelect
-      label="👍"
+      label="thumbs up"
       name="thumbsUp"
       id="thumbs-up"
       validationMessage={{ message: 'This is an error', type: 'error' }}
       alignValidationMessage="bottom"
     />
   )
-  expect(`listbox-${component.find(Label).props().htmlFor}`).toEqual(
-    component.find('input').props().id
-  )
+  expect(getByLabelText('thumbs up')).toBeVisible()
+  expect(getByText('This is an error')).toBeVisible()
 })
 
 test('A FieldSelect with an error validation aligned to the left', () => {

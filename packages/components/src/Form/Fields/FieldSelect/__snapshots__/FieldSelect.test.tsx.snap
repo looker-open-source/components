@@ -1,14 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`A FieldSelect 1`] = `
-.c1 {
-  color: #262D33;
-  margin-right: 0.5rem;
-  font-weight: 600;
-  font-size: 0.875rem;
-  display: inline-block;
-}
-
 .c2 {
   width: 100%;
 }
@@ -92,6 +84,14 @@ exports[`A FieldSelect 1`] = `
   flex-direction: column;
 }
 
+.c1 {
+  color: #262D33;
+  margin-right: 0.5rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  display: inline-block;
+}
+
 <div
   className="c0 "
 >
@@ -146,14 +146,6 @@ exports[`A FieldSelect 1`] = `
 `;
 
 exports[`A FieldSelect with an error validation aligned to the left 1`] = `
-.c1 {
-  color: #262D33;
-  margin-right: 0.5rem;
-  font-weight: 600;
-  font-size: 0.875rem;
-  display: inline-block;
-}
-
 .c3 {
   width: 100%;
 }
@@ -274,6 +266,14 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   align-items: baseline;
 }
 
+.c1 {
+  color: #262D33;
+  margin-right: 0.5rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  display: inline-block;
+}
+
 .c9 {
   color: #990F14;
   margin-right: 0.5rem;
@@ -342,14 +342,6 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
 `;
 
 exports[`A FieldSelect with an error validation aligned to the right 1`] = `
-.c1 {
-  color: #262D33;
-  margin-right: 0.5rem;
-  font-weight: 600;
-  font-size: 0.875rem;
-  display: inline-block;
-}
-
 .c3 {
   width: 100%;
 }
@@ -466,6 +458,14 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   align-items: baseline;
 }
 
+.c1 {
+  color: #262D33;
+  margin-right: 0.5rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  display: inline-block;
+}
+
 .c9 {
   color: #990F14;
   margin-right: 0.5rem;
@@ -535,14 +535,6 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
 `;
 
 exports[`A required FieldSelect 1`] = `
-.c1 {
-  color: #262D33;
-  margin-right: 0.5rem;
-  font-weight: 600;
-  font-size: 0.875rem;
-  display: inline-block;
-}
-
 .c3 {
   width: 100%;
 }
@@ -626,6 +618,14 @@ exports[`A required FieldSelect 1`] = `
   flex-direction: column;
 }
 
+.c1 {
+  color: #262D33;
+  margin-right: 0.5rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  display: inline-block;
+}
+
 .c2 {
   color: #990F14;
 }
@@ -692,14 +692,6 @@ exports[`A required FieldSelect 1`] = `
 `;
 
 exports[`FieldSelect supports labelWeight 1`] = `
-.c1 {
-  color: #262D33;
-  margin-right: 0.5rem;
-  font-weight: 400;
-  font-size: 0.875rem;
-  display: inline-block;
-}
-
 .c2 {
   width: 100%;
 }
@@ -781,6 +773,14 @@ exports[`FieldSelect supports labelWeight 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+}
+
+.c1 {
+  color: #262D33;
+  margin-right: 0.5rem;
+  font-weight: 400;
+  font-size: 0.875rem;
+  display: inline-block;
 }
 
 <div
