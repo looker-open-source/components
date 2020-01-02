@@ -124,16 +124,16 @@ const SelectComponent = forwardRef(
     function handleChange(option?: ComboboxOptionObject) {
       const newValue = option ? option.value : ''
       onChange && onChange(newValue)
-      onFilter && onFilter(getComboboxText(option))
+      onFilter && onFilter('')
     }
 
     function handleInputChange(e: FormEvent<HTMLInputElement>) {
       onFilter && onFilter(e.currentTarget.value)
     }
 
-    function handleClose(option?: ComboboxOptionObject) {
+    function handleClose() {
       // when the list closes, the input's value reverts to the current option
-      onFilter && onFilter(getComboboxText(option))
+      onFilter && onFilter('')
     }
 
     const ariaProps = {

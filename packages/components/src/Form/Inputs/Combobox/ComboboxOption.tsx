@@ -116,22 +116,26 @@ const ComboboxOptionInternal = forwardRef(function ComboboxOption(
     optionsRef,
   } = useContext(ComboboxContext)
 
-  const valueRef = useRef<ComboboxOptionObject>()
+  const indexRef = useRef<number>(-1)
 
   useEffect(() => {
     const option = { label, value }
     if (optionsRef) {
-      // Was there an old value for this ComboboxOption the list?
-      // If so, add the new value at the same spot
-      if (valueRef.current) {
-        const index = optionsRef.current.indexOf(valueRef.current)
-        if (index > -1) {
-          optionsRef.current[index] = option
-        }
+      // Was this option already in the list?
+      // If so, re-insert it at the same spot
+      if (indexRef.current > -1) {
+        optionsRef.current.splice(indexRef.current, 0, option)
       } else {
         optionsRef.current.push(option)
       }
-      valueRef.current = option
+    }
+    return () => {
+      // Delete option from the array but save the index so it can be re-inserted there
+      if (optionsRef) {
+        const index = optionsRef.current.indexOf(option)
+        indexRef.current = index
+        optionsRef.current.splice(index, 1)
+      }
     }
   }, [value, label, optionsRef])
 

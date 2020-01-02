@@ -152,13 +152,13 @@ export const ComboboxInternal = forwardRef(function Combobox(
 
   const persistSelectionRef = useRef(false)
   const initialValue = value || defaultValue
-  const initialOption = initialValue
+  const initialData = initialValue
     ? { inputValue: getComboboxText(initialValue), option: initialValue }
     : {}
 
   const [state, data, transition] = useReducerMachine({
     ...defaultData,
-    ...initialOption,
+    ...initialData,
   })
   const { option } = data
 
@@ -212,7 +212,7 @@ export const ComboboxInternal = forwardRef(function Combobox(
         display="inline-block"
         {...rest}
         ref={ref}
-        role="select"
+        role="combobox"
         aria-haspopup="listbox"
         aria-owns={listboxId}
         aria-expanded={context.isVisible}

@@ -22,11 +22,11 @@ The `<Select />` component renders a single menu on the page, with no accompanyi
       { value: 'gouda', label: 'Gouda' },
       { value: 'swiss', label: 'Swiss' },
     ]}
-    value="gouda"
+    defaultValue="gouda"
   />
   <Select placeholder="awesome!" />
   <Select
-    value="Some Value"
+    defaultValue="Some Value"
     options={[
       { value: '1', label: 'thing' },
       { value: 'Some Value', label: "Some Value's Label" },
@@ -116,7 +116,7 @@ Use the disable property to make an input field uneditable.
     ]}
   />
   <Select
-    value="gouda"
+    defaultValue="gouda"
     disabled
     options={[
       { value: 'cheddar', label: 'Cheddar' },
@@ -154,21 +154,4 @@ To allow the user to clear the `Select`'s value, add the `isClearable` prop.
     ml="large"
   />
 </Flex>
-```
-
-## ReadOnly Property
-
-As the name suggests, "readOnly" makes the text uneditable.
-
-```jsx
-<Select
-  value="gouda"
-  readOnly
-  options={[
-    { value: 'cheddar', label: 'Cheddar' },
-    { value: 'gouda', label: 'Gouda' },
-    { value: 'swiss', label: 'Swiss' },
-  ]}
-  width={300}
-/>
 ```
