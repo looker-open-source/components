@@ -36,7 +36,7 @@ describe('<Combobox/> with children', () => {
   test('Renders children, merges callbacks', () => {
     const handleChange = jest.fn()
     const handleClick = jest.fn()
-    const { getByText, getByTestId, queryByText } = renderWithTheme(
+    const { getByText, getByTestId } = renderWithTheme(
       <Combobox onChange={handleChange}>
         <ComboboxInput data-testid="select-input" />
         <ComboboxList>
@@ -49,10 +49,11 @@ describe('<Combobox/> with children', () => {
     const input = getByTestId('select-input')
     fireEvent.click(input)
 
-    expect(queryByText('Apples')).not.toBeInTheDocument()
     const foo = getByText('Foo')
     expect(getByText('Foo')).toBeInTheDocument()
     expect(getByText('Bar')).toBeInTheDocument()
+    expect(handleClick).toHaveBeenCalledTimes(0)
+    expect(handleChange).toHaveBeenCalledTimes(0)
 
     fireEvent.click(foo)
 
