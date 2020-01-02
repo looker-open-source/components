@@ -70,7 +70,6 @@ export function useKeyDown() {
 
   return function handleKeyDown(event: KeyboardEvent<HTMLDivElement>) {
     const options = optionsRef ? optionsRef.current : []
-    console.log(options)
     switch (event.key) {
       case 'ArrowDown': {
         // Don't scroll the page

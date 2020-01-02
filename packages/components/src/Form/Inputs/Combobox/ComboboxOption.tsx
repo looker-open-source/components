@@ -120,21 +120,22 @@ const ComboboxOptionInternal = forwardRef(function ComboboxOption(
 
   useEffect(() => {
     const option = { label, value }
-    if (optionsRef) {
+    const optionsRefCurrent = optionsRef && optionsRef.current
+    if (optionsRefCurrent) {
       // Was this option already in the list?
       // If so, re-insert it at the same spot
       if (indexRef.current > -1) {
-        optionsRef.current.splice(indexRef.current, 0, option)
+        optionsRefCurrent.splice(indexRef.current, 0, option)
       } else {
-        optionsRef.current.push(option)
+        optionsRefCurrent.push(option)
       }
     }
     return () => {
       // Delete option from the array but save the index so it can be re-inserted there
-      if (optionsRef) {
-        const index = optionsRef.current.indexOf(option)
+      if (optionsRefCurrent) {
+        const index = optionsRefCurrent.indexOf(option)
         indexRef.current = index
-        optionsRef.current.splice(index, 1)
+        optionsRefCurrent.splice(index, 1)
       }
     }
   }, [value, label, optionsRef])
