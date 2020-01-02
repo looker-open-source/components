@@ -162,7 +162,7 @@ export const FieldColorComponent = forwardRef(
                 borderBottomLeftRadius="medium"
                 borderRight={!hideInput ? 'none' : undefined}
                 width="33px"
-                height="28px"
+                height="36px"
                 onClick={onClick}
               />
             )}

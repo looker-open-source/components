@@ -3,15 +3,30 @@
 exports[`InputText default 1`] = `
 .c0 {
   border: solid 1px;
-  border-color: #C1C6CC;
+  border-color: #DEE1E5;
   border-radius: 0.25rem;
-  height: 28px;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  height: 36px;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
   font-size: 0.875rem;
-  background: #FFFFFF;
+  color: #343C42;
+}
+
+.c0:hover {
+  border-color: #C1C6CC;
+}
+
+.c0:focus {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c0:disabled {
+  background: #F5F6F7;
+  color: #939BA5;
 }
 
 <input
@@ -23,17 +38,30 @@ exports[`InputText default 1`] = `
 exports[`InputText should accept disabled 1`] = `
 .c0 {
   border: solid 1px;
-  border-color: #C1C6CC;
+  border-color: #DEE1E5;
   border-radius: 0.25rem;
-  height: 28px;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  height: 36px;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
   font-size: 0.875rem;
+  color: #343C42;
+}
+
+.c0:hover {
+  border-color: #C1C6CC;
+}
+
+.c0:focus {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c0:disabled {
   background: #F5F6F7;
   color: #939BA5;
-  border-color: #DEE1E5;
 }
 
 <input
@@ -46,15 +74,30 @@ exports[`InputText should accept disabled 1`] = `
 exports[`InputText should accept readOnly 1`] = `
 .c0 {
   border: solid 1px;
-  border-color: #C1C6CC;
+  border-color: #DEE1E5;
   border-radius: 0.25rem;
-  height: 28px;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  height: 36px;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
   font-size: 0.875rem;
-  background: #FFFFFF;
+  color: #343C42;
+}
+
+.c0:hover {
+  border-color: #C1C6CC;
+}
+
+.c0:focus {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c0:disabled {
+  background: #F5F6F7;
+  color: #939BA5;
 }
 
 <input
@@ -67,15 +110,30 @@ exports[`InputText should accept readOnly 1`] = `
 exports[`InputText should accept required 1`] = `
 .c0 {
   border: solid 1px;
-  border-color: #C1C6CC;
+  border-color: #DEE1E5;
   border-radius: 0.25rem;
-  height: 28px;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  height: 36px;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
   font-size: 0.875rem;
-  background: #FFFFFF;
+  color: #343C42;
+}
+
+.c0:hover {
+  border-color: #C1C6CC;
+}
+
+.c0:focus {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c0:disabled {
+  background: #F5F6F7;
+  color: #939BA5;
 }
 
 <input
@@ -88,15 +146,30 @@ exports[`InputText should accept required 1`] = `
 exports[`InputText with a placeholder 1`] = `
 .c0 {
   border: solid 1px;
-  border-color: #C1C6CC;
+  border-color: #DEE1E5;
   border-radius: 0.25rem;
-  height: 28px;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  height: 36px;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
   font-size: 0.875rem;
-  background: #FFFFFF;
+  color: #343C42;
+}
+
+.c0:hover {
+  border-color: #C1C6CC;
+}
+
+.c0:focus {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c0:disabled {
+  background: #F5F6F7;
+  color: #939BA5;
 }
 
 <input
@@ -109,15 +182,30 @@ exports[`InputText with a placeholder 1`] = `
 exports[`InputText with a value 1`] = `
 .c0 {
   border: solid 1px;
-  border-color: #C1C6CC;
+  border-color: #DEE1E5;
   border-radius: 0.25rem;
-  height: 28px;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  height: 36px;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
   font-size: 0.875rem;
-  background: #FFFFFF;
+  color: #343C42;
+}
+
+.c0:hover {
+  border-color: #C1C6CC;
+}
+
+.c0:focus {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c0:disabled {
+  background: #F5F6F7;
+  color: #939BA5;
 }
 
 <input
@@ -130,15 +218,30 @@ exports[`InputText with a value 1`] = `
 exports[`InputText with an error validation 1`] = `
 .c0 {
   border: solid 1px;
-  border-color: #C1C6CC;
+  border-color: #DEE1E5;
   border-radius: 0.25rem;
-  height: 28px;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  height: 36px;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
   font-size: 0.875rem;
-  background: #FFF2F4;
+  color: #343C42;
+}
+
+.c0:hover {
+  border-color: #C1C6CC;
+}
+
+.c0:focus {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c0:disabled {
+  background: #F5F6F7;
+  color: #939BA5;
 }
 
 <input
@@ -150,15 +253,30 @@ exports[`InputText with an error validation 1`] = `
 exports[`InputText with aria-describedby 1`] = `
 .c0 {
   border: solid 1px;
-  border-color: #C1C6CC;
+  border-color: #DEE1E5;
   border-radius: 0.25rem;
-  height: 28px;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  height: 36px;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
   font-size: 0.875rem;
-  background: #FFFFFF;
+  color: #343C42;
+}
+
+.c0:hover {
+  border-color: #C1C6CC;
+}
+
+.c0:focus {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c0:disabled {
+  background: #F5F6F7;
+  color: #939BA5;
 }
 
 <input
@@ -171,15 +289,30 @@ exports[`InputText with aria-describedby 1`] = `
 exports[`InputText with name and id 1`] = `
 .c0 {
   border: solid 1px;
-  border-color: #C1C6CC;
+  border-color: #DEE1E5;
   border-radius: 0.25rem;
-  height: 28px;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  height: 36px;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
   font-size: 0.875rem;
-  background: #FFFFFF;
+  color: #343C42;
+}
+
+.c0:hover {
+  border-color: #C1C6CC;
+}
+
+.c0:focus {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c0:disabled {
+  background: #F5F6F7;
+  color: #939BA5;
 }
 
 <input
