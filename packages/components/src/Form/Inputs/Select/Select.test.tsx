@@ -24,68 +24,58 @@
 
  */
 
-import 'jest-styled-components'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { act, cleanup, fireEvent } from '@testing-library/react'
 import React from 'react'
-import { mountWithTheme, assertSnapshot } from '@looker/components-test-utils'
 
 import { Select } from './Select'
+// for the requestAnimationFrame in handleBlur (not working currently)
+// jest.useFakeTimers()
 
-test('Select default', () => {
-  assertSnapshot(<Select />)
-})
+afterEach(cleanup)
 
-test('Select with name and id', () => {
-  assertSnapshot(<Select name="Bob" id="Bobby" />)
-})
+describe('<Select/> with options', () => {
+  test('with handleChange', () => {
+    const options = [{ value: 'FOO' }, { value: 'BAR' }]
+    const handleChange = jest.fn()
+    const {
+      // getAllByRole,
+      queryByText,
+      getByText,
+      getByPlaceholderText,
+    } = renderWithTheme(
+      <Select
+        options={options}
+        id="with-options"
+        placeholder="Search"
+        onChange={handleChange}
+      />
+    )
+    expect(queryByText('FOO')).not.toBeInTheDocument()
+    expect(queryByText('BAR')).not.toBeInTheDocument()
 
-test('Select should accept disabled', () => {
-  assertSnapshot(<Select disabled />)
-})
+    const input = getByPlaceholderText('Search')
+    expect(input).toBeVisible()
 
-test('Select should accept empty options array', () => {
-  assertSnapshot(<Select options={[]} />)
-})
+    act(() => {
+      fireEvent.click(input)
+    })
 
-test('Select with a placeholder', () => {
-  assertSnapshot(<Select placeholder="I am a placeholder" />)
-})
+    // const foo = getByText('FOO')
+    const bar = getByText('BAR')
 
-test('Select placeholder option does not have a value', () => {
-  const select = mountWithTheme(<Select placeholder="Boo!" />)
-  expect(select.find('option').prop('value')).toEqual('')
-})
+    // Clicking on the options should fire onBlur on the input and
+    // trigger the state transition that allows in an updated input value.
+    // It doesn't, and the following doesn't work to fake it, so we can't test input value.
+    // act(() => {
+    // getAllByRole('option')[0].focus()
+    // input.blur()
+    // })
+    fireEvent.click(bar)
+    // fireEvent.click(foo)
 
-test('Select should accept readOnly', () => {
-  assertSnapshot(<Select readOnly />)
-})
-
-test('Select should accept required', () => {
-  assertSnapshot(<Select required />)
-})
-
-test('Select with a value', () => {
-  const options = [
-    { label: 'thing', value: '1' },
-    { label: "Some Value's Label", value: 'Some Value' },
-    { label: 'other', value: '2' },
-  ]
-  assertSnapshot(<Select value="Some Value" options={options} />)
-})
-
-test('Select with aria-describedby', () => {
-  assertSnapshot(<Select aria-describedby="some-id" />)
-})
-
-test('Select with an error validation', () => {
-  assertSnapshot(<Select validationType="error" />)
-})
-
-test('Should trigger onChange handler', () => {
-  let counter = 0
-  const handleChange = () => counter++
-
-  const wrapper = mountWithTheme(<Select onChange={handleChange} />)
-
-  wrapper.find('select').simulate('change', { target: { value: '' } })
-  expect(counter).toEqual(1)
+    expect(handleChange).toHaveBeenCalledTimes(1)
+    // expect(handleChange).toHaveBeenCalledWith({ value: 'FOO' })
+    expect(handleChange).toHaveBeenCalledWith('BAR')
+  })
 })

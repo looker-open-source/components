@@ -24,7 +24,7 @@
 
  */
 
-import React, { FC } from 'react'
+import React, { FC, MouseEvent } from 'react'
 import { palette } from '@looker/design-tokens'
 import { Box } from '../../../Layout/Box'
 import { IconButton } from '../../../Button'
@@ -33,13 +33,11 @@ import { Text } from '../../../Text'
 export interface InputSearchControlsProps {
   summary?: string
   showClear: boolean
-  onClear: () => void
-  onClick: () => void
+  onClear: (e: MouseEvent<HTMLButtonElement>) => void
 }
 
 export const InputSearchControls: FC<InputSearchControlsProps> = ({
   onClear,
-  onClick,
   showClear,
   summary,
 }) => {
@@ -64,15 +62,8 @@ export const InputSearchControls: FC<InputSearchControlsProps> = ({
     />
   )
 
-  // @TODO - User should be able to "click through" the text (not the button tho)
   return (
-    <Box
-      mx="xxsmall"
-      height="100%"
-      display="flex"
-      alignItems="center"
-      onClick={onClick}
-    >
+    <Box mx="xxsmall" height="100%" display="flex" alignItems="center">
       {summary && (
         <Text
           pr="xsmall"

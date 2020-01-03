@@ -42,7 +42,7 @@ import {
   color,
 } from '@looker/design-tokens'
 import React, { forwardRef, Ref } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { InputProps, inputPropKeys } from '../InputProps'
 
 export const CustomizableInputTextAttributes: CustomizableAttributes = {
@@ -71,7 +71,7 @@ const InputComponent = forwardRef(
   ({ type = 'text', ...props }: InputTextProps, ref: Ref<HTMLInputElement>) => {
     return (
       <input
-        {...pick(omit(props, 'height', 'width'), inputPropKeys)}
+        {...pick(omit(props, 'color', 'height', 'width'), inputPropKeys)}
         type={type}
         className={props.className}
         ref={ref}
@@ -81,9 +81,22 @@ const InputComponent = forwardRef(
 )
 InputComponent.displayName = 'InputComponent'
 
+export const inputTextStyles = css<InputTextProps>`
+  background: ${props =>
+    props.validationType === 'error'
+      ? props.theme.colors.palette.red000
+      : props.disabled
+      ? props.theme.colors.palette.charcoal100
+      : props.theme.colors.palette.white};
+  ${props =>
+    props.disabled
+      ? `color: ${props.theme.colors.palette.charcoal400};
+          border-color: ${props.theme.colors.palette.charcoal200};`
+      : ''}
+`
+
 export const InputText = styled(InputComponent).attrs(
   (props: InputTextProps) => ({
-    background: props.validationType === 'error' && 'palette.red000',
     px: props.px || props.p || CustomizableInputTextAttributes.px,
     py: props.py || props.p || CustomizableInputTextAttributes.py,
   })
@@ -95,6 +108,7 @@ export const InputText = styled(InputComponent).attrs(
   ${space}
   ${typography}
   ${pseudoClasses}
+  ${inputTextStyles}
 `
 
 InputText.defaultProps = {

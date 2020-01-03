@@ -24,27 +24,29 @@
 
  */
 
-import React, { FormEvent, forwardRef, Ref, useState, useRef } from 'react'
+import omit from 'lodash/omit'
+import pick from 'lodash/pick'
+import React, {
+  FormEvent,
+  MouseEvent,
+  forwardRef,
+  Ref,
+  useState,
+  useRef,
+} from 'react'
 import styled from 'styled-components'
-import {
-  border,
-  BorderProps,
-  layout,
-  LayoutProps,
-  reset,
-} from '@looker/design-tokens'
+import { inputPropKeys } from '../InputProps'
 import {
   CustomizableInputTextAttributes,
   InputText,
   InputTextProps,
+  inputTextStyles,
 } from '../InputText'
-import { useForkedRef } from '../../../utils'
+import { useControlWarn, useForkedRef, useWrapEvent } from '../../../utils'
+import { Box } from '../../../Layout'
 import { InputSearchControls } from './InputSearchControls'
 
-interface InputSearchLayoutProps extends BorderProps, LayoutProps {}
-
-export interface InputSearchProps
-  extends Omit<InputTextProps, 'height' | 'size' | 'width'> {
+export interface InputSearchProps extends InputTextProps {
   /**
    * hides clear button and summary text
    */
@@ -53,21 +55,121 @@ export interface InputSearchProps
    * adds text when input value in not empty
    */
   summary?: string
-  onClear?: () => void
+  /**
+   * handle when the user clicks the x icon button to clear the value
+   */
+  onClear?: (e: MouseEvent<HTMLButtonElement>) => void
   value?: string
-  width?: string
-  height?: string
+
+  onClick?: (e: MouseEvent<HTMLDivElement>) => void
+  onMouseDown?: (e: MouseEvent<HTMLDivElement>) => void
+  onMouseEnter?: (e: MouseEvent<HTMLDivElement>) => void
+  onMouseLeave?: (e: MouseEvent<HTMLDivElement>) => void
+  onMouseOver?: (e: MouseEvent<HTMLDivElement>) => void
+  onMouseOut?: (e: MouseEvent<HTMLDivElement>) => void
+  onMouseUp?: (e: MouseEvent<HTMLDivElement>) => void
 }
 
-const InputSearchLayout = styled.div<InputSearchLayoutProps>`
-  ${reset}
-  ${border}
-  ${layout}
+const InputSearchComponent = forwardRef(
+  (
+    {
+      hideControls = false,
 
+      onChange,
+      onClear,
+      onClick,
+      onMouseDown,
+      onMouseEnter,
+      onMouseLeave,
+      onMouseOut,
+      onMouseOver,
+      onMouseUp,
+
+      className,
+      summary,
+      value: controlledValue = '',
+
+      ...props
+    }: InputSearchProps,
+    forwardedRef: Ref<HTMLInputElement>
+  ) => {
+    const isControlled = useControlWarn({
+      controllingProps: ['onChange', 'onClear', 'value'],
+      isControlledCheck: () => onChange !== undefined,
+      name: 'ButtonGroup',
+    })
+    const [uncontrolledValue, setValue] = useState(controlledValue)
+    const inputValue = isControlled ? controlledValue : uncontrolledValue
+
+    const internalRef = useRef<null | HTMLInputElement>(null)
+    const ref = useForkedRef<HTMLInputElement>(internalRef, forwardedRef)
+
+    const focusInput = () => internalRef.current && internalRef.current.focus()
+
+    const handleClear = (e: MouseEvent<HTMLButtonElement>) => {
+      setValue('')
+      if (onClear) {
+        onClear(e)
+      } else if (onChange) {
+        onChange({
+          currentTarget: { value: '' },
+        } as FormEvent<HTMLInputElement>)
+      }
+    }
+
+    const handleChange = (event: FormEvent<HTMLInputElement>) => {
+      setValue(event.currentTarget.value)
+      onChange && onChange(event)
+    }
+
+    const controls = !hideControls && (
+      <InputSearchControls
+        onClear={handleClear}
+        showClear={inputValue.length > 0}
+        summary={summary}
+      />
+    )
+
+    const mouseHandlers = {
+      onClick: useWrapEvent(focusInput, onClick),
+      onMouseDown,
+      onMouseEnter,
+      onMouseLeave,
+      onMouseOut,
+      onMouseOver,
+      onMouseUp,
+    }
+
+    // 12/17/2019 removing type="search" since React doesn't support onSearch yet
+    // resulting in undetectable changes that effect the value
+
+    return (
+      <Box
+        className={className}
+        {...omit(props, inputPropKeys)}
+        {...mouseHandlers}
+      >
+        <InputText
+          onChange={handleChange}
+          value={inputValue}
+          focusStyle={{ outline: 'none' }}
+          {...pick(props, inputPropKeys)}
+          ref={ref}
+        />
+        {controls}
+      </Box>
+    )
+  }
+)
+
+InputSearchComponent.displayName = 'InputSearchComponent'
+
+export const InputSearch = styled(InputSearchComponent)`
   align-items: center;
   display: flex;
-  background: ${props => props.theme.colors.palette.white};
   position: relative;
+
+  ${inputTextStyles}
 
   &:focus-within {
     border-color: transparent;
@@ -78,6 +180,7 @@ const InputSearchLayout = styled.div<InputSearchLayoutProps>`
     border: none;
     width: 100%;
     appearance: none;
+    background: transparent;
 
     &::-webkit-search-decoration,
     &::-webkit-search-cancel-button,
@@ -88,85 +191,8 @@ const InputSearchLayout = styled.div<InputSearchLayoutProps>`
   }
 `
 
-InputSearchLayout.defaultProps = {
+InputSearch.defaultProps = {
   border: '1px solid',
   borderColor: 'palette.charcoal300',
   borderRadius: CustomizableInputTextAttributes.borderRadius,
 }
-
-const InputSearchComponent = forwardRef(
-  (props: InputSearchProps, forwardedRef: Ref<HTMLInputElement>) => {
-    const {
-      border,
-      borderBottom,
-      borderColor,
-      borderLeft,
-      borderRadius,
-      borderRight,
-      borderTop,
-      hideControls = false,
-      onChange,
-      onClear,
-      summary,
-      value = '',
-      width = '100%',
-
-      ...inputProps
-    } = props
-
-    const internalRef = useRef<null | HTMLInputElement>(null)
-    const ref = useForkedRef<HTMLInputElement>(internalRef, forwardedRef)
-    const [inputValue, setValue] = useState(value)
-
-    const focusInput = () => internalRef.current && internalRef.current.focus()
-
-    const handleClear = () => {
-      setValue('')
-      focusInput()
-      onClear && onClear()
-    }
-
-    const updateValue = (event: FormEvent<HTMLInputElement>) => {
-      setValue(event.currentTarget.value)
-      onChange && onChange(event)
-    }
-
-    const controls = !hideControls && (
-      <InputSearchControls
-        onClear={handleClear}
-        onClick={focusInput}
-        showClear={inputValue.length > 0}
-        summary={summary}
-      />
-    )
-
-    return (
-      <InputSearchLayout
-        border={border}
-        borderColor={borderColor}
-        borderRadius={borderRadius}
-        borderTop={borderTop}
-        borderBottom={borderBottom}
-        borderLeft={borderLeft}
-        borderRight={borderRight}
-        width={width}
-      >
-        <InputText
-          type="search"
-          onChange={updateValue}
-          value={inputValue}
-          focusStyle={{ outline: 'none' }}
-          border="none"
-          width="100%"
-          {...inputProps}
-          ref={ref}
-        />
-        {controls}
-      </InputSearchLayout>
-    )
-  }
-)
-
-InputSearchComponent.displayName = 'InputSearchComponent'
-
-export const InputSearch = styled(InputSearchComponent)``

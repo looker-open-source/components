@@ -24,44 +24,19 @@
 
  */
 
-import React, { forwardRef, Ref } from 'react'
-import ReactDOMServer from 'react-dom/server'
+import React, { forwardRef, Ref, FormEvent } from 'react'
 import styled from 'styled-components'
-import { CaretDown } from '@looker/icons'
-import {
-  border,
-  BorderProps,
-  CompatibleHTMLProps,
-  CustomizableAttributes,
-  layout,
-  LayoutProps,
-  reset,
-  space,
-  SpaceProps,
-  typography,
-  TypographyProps,
-} from '@looker/design-tokens'
+import { CustomizableAttributes } from '@looker/design-tokens'
 import { ValidationType } from '../../ValidationMessage'
-
-const renderOptions = (options: OptionsType<SelectOptionProps>) => {
-  return options.map(option => (
-    <option key={option.value} value={option.value}>
-      {option.label}
-    </option>
-  ))
-}
-
-const renderOptGroups = (
-  optionGroups: GroupedOptionsType<SelectOptionProps>
-) => {
-  return optionGroups.map(option => {
-    return (
-      <optgroup key={option.key} label={option.key}>
-        {renderOptions(option.options)}
-      </optgroup>
-    )
-  })
-}
+import {
+  Combobox,
+  ComboboxInput,
+  ComboboxList,
+  ComboboxOption,
+  ComboboxOptionObject,
+  ComboboxProps,
+  getComboboxText,
+} from '../Combobox'
 
 export const CustomizableSelectAttributes: CustomizableAttributes = {
   borderRadius: 'medium',
@@ -82,122 +57,134 @@ export type GroupedOptionsType<UnionOptionType> = Array<
   GroupType<UnionOptionType>
 >
 
-export interface SelectOptionProps {
-  label: string
-  value: string
-}
+export type SelectOptionProps = ComboboxOptionObject
 
 export interface SelectProps
-  extends BorderProps,
-    Omit<LayoutProps, 'size'>,
-    SpaceProps,
-    TypographyProps,
-    CompatibleHTMLProps<HTMLSelectElement> {
-  options?:
-    | OptionsType<SelectOptionProps>
-    | GroupedOptionsType<SelectOptionProps>
-  /**
-   * Include a blank item as the first entry. If placeholder is specified it will be the label.
-   * @default true
-   */
-  includeBlank?: boolean
+  extends Omit<ComboboxProps, 'value' | 'defaultValue' | 'onChange'> {
+  options?: SelectOptionProps[]
   /**
    * Displays an example value or short hint to the user. Should not replace a label.
    */
   placeholder?: string
+  /**
+   * The user can type in the input (default false to mimic traditional select tag)
+   */
+  isFilterable?: boolean
+  /**
+   * The user can clear the current value by clicking an x icon button
+   */
+  isClearable?: boolean
+  /**
+   * Handle when the user types in the field,
+   * or the menu opens with a pre-populated value
+   */
+  onFilter?: (term: string) => void
+
   validationType?: ValidationType
+  /**
+   * Value of the current selected option (controlled)
+   */
+  value?: string
+  /**
+   * Value of the initial option
+   */
+  defaultValue?: string
+  /**
+   * Handle an option being selected
+   */
+  onChange?: (value: string) => void
+}
+
+function getOption(value?: string, options?: SelectOptionProps[]) {
+  return value ? { label: getComboboxText(value, options), value } : undefined
 }
 
 const SelectComponent = forwardRef(
   (
     {
-      includeBlank = true,
       options,
+      disabled,
+      isFilterable,
+      isClearable,
       placeholder,
-      defaultValue: propsDefault,
+      onFilter,
+      onChange,
       value,
+      defaultValue,
+      'aria-label': ariaLabel,
+      'aria-labelledby': ariaLabelledby,
+      validationType,
       ...props
     }: SelectProps,
-    ref: Ref<HTMLSelectElement>
+    ref: Ref<HTMLInputElement>
   ) => {
-    // Gracefully deal with situation where `value` prop is set but `onChange` is not.
-    const defaultValue =
-      propsDefault || (value && !props.onChange) ? value : undefined
+    const optionValue = getOption(value, options)
+    const defaultOptionValue = getOption(defaultValue, options)
 
-    const optionElements =
-      !options || options.length === 0
-        ? null
-        : Object.prototype.hasOwnProperty.call(options[0], 'key')
-        ? renderOptGroups(options as GroupedOptionsType<SelectOptionProps>)
-        : renderOptions(options as OptionsType<SelectOptionProps>)
+    function handleChange(option?: ComboboxOptionObject) {
+      const newValue = option ? option.value : ''
+      onChange && onChange(newValue)
+      onFilter && onFilter('')
+    }
+
+    function handleInputChange(e: FormEvent<HTMLInputElement>) {
+      onFilter && onFilter(e.currentTarget.value)
+    }
+
+    function handleClose() {
+      // when the list closes, the input's value reverts to the current option
+      onFilter && onFilter('')
+    }
+
+    const ariaProps = {
+      'aria-label': ariaLabel,
+      'aria-labelledby': ariaLabelledby,
+    }
+
+    const inputProps = {
+      disabled,
+      placeholder,
+      validationType,
+    }
 
     return (
-      <SelectBase
-        defaultValue={defaultValue ? defaultValue.toString() : undefined}
-        value={defaultValue ? undefined : value}
-        borderColor="palette.charcoal300"
+      <Combobox
         {...props}
-        ref={ref}
+        value={optionValue}
+        defaultValue={defaultOptionValue}
+        onChange={handleChange}
+        onClose={handleClose}
       >
-        {includeBlank && <option value="">{placeholder}</option>}
-        {optionElements}
-      </SelectBase>
+        <ComboboxInput
+          {...inputProps}
+          {...ariaProps}
+          autocomplete={false}
+          readOnly={!isFilterable}
+          onChange={handleInputChange}
+          hideControls={!isClearable}
+          selectOnClick
+          ref={ref}
+        />
+        {!disabled && (
+          <ComboboxList persistSelection {...ariaProps}>
+            {options && options.length > 0 ? (
+              options.map((option, index: number) => (
+                <ComboboxOption {...option} key={index} />
+              ))
+            ) : (
+              <ComboboxOption
+                value=""
+                label="No options"
+                color="palette.charcoal400"
+              />
+            )}
+          </ComboboxList>
+        )}
+      </Combobox>
     )
   }
 )
 
 SelectComponent.displayName = 'SelectComponent'
-
-const indicatorRaw = ReactDOMServer.renderToString(<CaretDown />)
-  .replace(/1em/g, '24')
-  .replace('data-reactroot=""', 'xmlns="http://www.w3.org/2000/svg"')
-const indicatorSize = '1rem'
-const indicatorPadding = '.25rem'
-const indicatorPrefix = 'data:image/svg+xml;base64,'
-export const selectIndicatorBG = (color: string) =>
-  typeof window !== 'undefined' &&
-  `url('${indicatorPrefix}${window.btoa(
-    indicatorRaw.replace('currentColor', color)
-  )}')`
-
-// NOTE: Styling Selects is very complex
-//  See reference artice for background: https://www.filamentgroup.com/lab/select-css.html
-//  This component will likely be replaced with a React Select powered version
-
-const SelectBase = styled.select.attrs((props: SelectProps) => ({
-  borderRadius: props.borderRadius || CustomizableSelectAttributes.borderRadius,
-  fontSize: props.fontSize || CustomizableSelectAttributes.fontSize,
-  height: props.py || props.p ? undefined : CustomizableSelectAttributes.height,
-  px: props.p || CustomizableSelectAttributes.px,
-  py: props.p || CustomizableSelectAttributes.py,
-}))<SelectProps>`
-  ${reset}
-  background-color: ${props =>
-    props.validationType === 'error'
-      ? props.theme.colors.palette.red000
-      : props.theme.colors.palette.white};
-  border: solid 1px;
-
-  appearance: none;
-
-  background-image:${props =>
-    selectIndicatorBG(props.theme.colors.palette.charcoal500)},
-    linear-gradient(to bottom, ${props =>
-      props.theme.colors.palette.white} 0%, ${props =>
-  props.theme.colors.palette.white} 100%);
-
-  background-repeat: no-repeat, repeat;
-  background-position: right ${indicatorPadding} center, 0 0;
-  background-size: ${indicatorSize}, 100%;
-
-  &::-ms-expand {
-    display: none;
-  }
-  ${border}
-  ${layout}
-  ${typography}
-  ${space}
-  padding-right: calc(2 * ${indicatorPadding} + ${indicatorSize});
-`
 
 export const Select = styled(SelectComponent)``
