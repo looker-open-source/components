@@ -40,6 +40,7 @@ export const MenuItemButton = styled.button<MenuItemButtonProps>`
   ${reset}
   ${space}
 
+  border: none;
   align-items: center;
   background: transparent;
   color: inherit;

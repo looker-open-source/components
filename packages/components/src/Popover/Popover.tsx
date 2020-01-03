@@ -42,6 +42,7 @@ import {
   useCallbackRef,
   useControlWarn,
   useFocusTrap,
+  useHovered,
   useScrollLock,
 } from '../utils'
 
@@ -105,7 +106,7 @@ export interface UsePopoverProps {
   /**
    * The element which hovering on/off of will show/hide the triggering element
    */
-  hoverDisclosureRef?: RefObject<HTMLElement>
+  hoverDisclosureRef?: HTMLElement | null | RefObject<HTMLElement>
 
   /**
    * Optional, for a controlled version of the component
@@ -380,31 +381,7 @@ export function usePopover({
     onClose && onClose()
   }
 
-  // Logic to track the hover state of the hoverDisclosureRef and toggle the disclosure
-  const [isHovered, setIsHovered] = useState(hoverDisclosureRef === undefined)
-
-  function handleMouseEnter() {
-    setIsHovered(true)
-  }
-  function handleMouseLeave() {
-    setIsHovered(false)
-  }
-
-  useEffect(() => {
-    const refCurrent = hoverDisclosureRef
-      ? hoverDisclosureRef.current
-      : undefined
-    if (refCurrent) {
-      refCurrent.addEventListener('mouseleave', handleMouseLeave)
-      refCurrent.addEventListener('mouseenter', handleMouseEnter)
-    }
-    return () => {
-      if (refCurrent) {
-        refCurrent.removeEventListener('mouseleave', handleMouseLeave)
-        refCurrent.removeEventListener('mouseenter', handleMouseEnter)
-      }
-    }
-  }, [hoverDisclosureRef])
+  const [isHovered] = useHovered(hoverDisclosureRef)
 
   const popover = !openWithoutElem && isOpen && (
     <ModalContext.Provider

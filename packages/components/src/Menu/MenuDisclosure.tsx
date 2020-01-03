@@ -66,11 +66,13 @@ export const MenuDisclosure: FC<MenuDisclosureProps> = ({
 }) => {
   const {
     disabled,
+    isHovered,
     isOpen,
     setOpen,
     triggerElement,
     triggerCallbackRef,
   } = useContext(MenuContext)
+
   const { eventHandlers, tooltip: renderedTooltip } = useTooltip({
     content: tooltip,
     disabled: isOpen,
@@ -82,7 +84,12 @@ export const MenuDisclosure: FC<MenuDisclosureProps> = ({
     setOpen && setOpen(!isOpen)
   }, [setOpen, isOpen])
 
-  const allCallbacks = { ...eventHandlers, onClick: handleClick }
+  if (!isHovered && !isOpen) return null
+
+  const allCallbacks = {
+    ...(tooltip ? eventHandlers : {}),
+    onClick: handleClick,
+  }
 
   const cloned = Children.map(children, (child: JSX.Element) => {
     const childProps = child.props
@@ -95,6 +102,8 @@ export const MenuDisclosure: FC<MenuDisclosureProps> = ({
 
     return cloneElement(child, {
       ...wrappedCallbacks,
+      'aria-haspopup': true,
+      className: `${childProps.className || ''}${isOpen ? ' active' : ''}`,
       disabled,
       ref: triggerCallbackRef,
     })

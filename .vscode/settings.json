@@ -4,6 +4,7 @@
   "files.trimTrailingWhitespace": true,
   "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.updateImportsOnFileMove.enabled": "always",
+  "eslint.enable": true,
   "eslint.validate": [
     {
       "language": "typescript",
