@@ -25,7 +25,7 @@
  */
 
 import React, { FC, RefObject, useRef, useState } from 'react'
-import { useCallbackRef, useHovered } from '../utils'
+import { useCallbackRef, useHovered, useID } from '../utils'
 import { MenuContext } from './MenuContext'
 
 export interface MenuProps {
@@ -39,6 +39,8 @@ export interface MenuProps {
    */
   hoverDisclosureRef?: HTMLElement | null | RefObject<HTMLElement>
 
+  id?: string
+
   /**
    * Initial state of Menu (or use for controlled menu)
    * @default false
@@ -49,11 +51,12 @@ export interface MenuProps {
    */
   setOpen?: (isOpen: boolean) => void
 }
-/** @component */
+
 export const Menu: FC<MenuProps> = ({
   children,
   disabled,
   hoverDisclosureRef,
+  id: propsID,
   isOpen: controlledIsOpen = false,
   setOpen: controlledSetOpen,
 }) => {
@@ -61,9 +64,11 @@ export const Menu: FC<MenuProps> = ({
   const [isOpen, setOpen] = useState(controlledIsOpen)
   const [triggerElement, triggerCallbackRef] = useCallbackRef()
   const [isHovered] = useHovered(hoverDisclosureRef)
+  const id = useID(propsID)
 
   const context = {
     disabled,
+    id,
     isHovered,
     isOpen: isControlled.current ? controlledIsOpen : isOpen,
     setOpen: isControlled.current ? controlledSetOpen : setOpen,

@@ -29,6 +29,7 @@ import { MenuSharedProps } from './MenuItem'
 
 export interface MenuContextProps {
   disabled?: boolean
+  id?: string
   isHovered?: boolean
   isOpen?: boolean
   setOpen?: (isOpen: boolean) => void

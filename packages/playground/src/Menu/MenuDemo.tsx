@@ -93,7 +93,7 @@ export function MenuDemo() {
   return (
     <Box m="large">
       <Paragraph pb="medium">{isOpen ? 'Menu Open' : 'Menu Closed'}</Paragraph>
-      <Menu isOpen={isOpen} setOpen={setOpen}>
+      <Menu isOpen={isOpen} setOpen={setOpen} id="my-menu">
         <MenuDisclosure tooltip="Select your favorite kind">
           <Button mb="large">Cheese</Button>
         </MenuDisclosure>

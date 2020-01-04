@@ -66,6 +66,7 @@ export const MenuDisclosure: FC<MenuDisclosureProps> = ({
 }) => {
   const {
     disabled,
+    id,
     isHovered,
     isOpen,
     setOpen,
@@ -102,9 +103,12 @@ export const MenuDisclosure: FC<MenuDisclosureProps> = ({
 
     return cloneElement(child, {
       ...wrappedCallbacks,
+      'aria-controls': id,
+      'aria-expanded': isOpen,
       'aria-haspopup': true,
       className: `${childProps.className || ''}${isOpen ? ' active' : ''}`,
       disabled,
+      id: `button-${id}`,
       ref: triggerCallbackRef,
     })
   })

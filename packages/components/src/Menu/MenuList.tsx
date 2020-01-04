@@ -95,7 +95,7 @@ export const MenuListInternal = forwardRef(
     }: MenuListProps,
     ref: Ref<HTMLUListElement>
   ) => {
-    const { isOpen, setOpen, triggerElement } = useContext(MenuContext)
+    const { id, isOpen, setOpen, triggerElement } = useContext(MenuContext)
 
     const innerRef = useRef<null | HTMLElement>(null)
 
@@ -110,7 +110,14 @@ export const MenuListInternal = forwardRef(
           }}
           style={{ borderRadius: 'inherit' }}
         >
-          <ul ref={ref} tabIndex={-1} role="menu" {...props}>
+          <ul
+            ref={ref}
+            tabIndex={-1}
+            role="menu"
+            id={id}
+            aria-labelledby={`button-${id}`}
+            {...props}
+          >
             {children}
           </ul>
         </HotKeys>
