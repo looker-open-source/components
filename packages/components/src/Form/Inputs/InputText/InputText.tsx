@@ -113,11 +113,14 @@ export const inputTextValidation = css<InputTextProps>`
   ${props =>
     props.validationType === 'error'
       ? `
-      border-color: ${props.theme.colors.palette.red500};
-      &:hover,
+      border-color: ${props.theme.colors.palette.red400};
+      &:hover {
+        border-color: ${props.theme.colors.palette.red500};
+      }
       &:focus,
       :focus-within {
         border-color: ${props.theme.colors.palette.red500};
+        box-shadow: 0 0 0 2px ${props.theme.colors.palette.red100};
       }
       `
       : ''}
