@@ -69,6 +69,7 @@ exports[`InputSearch default 1`] = `
   display: -ms-flexbox;
   display: flex;
   position: relative;
+  background-color: #FFFFFF;
 }
 
 .c1:hover {

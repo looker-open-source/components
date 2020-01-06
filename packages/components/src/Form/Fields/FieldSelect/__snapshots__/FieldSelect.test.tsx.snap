@@ -60,6 +60,7 @@ exports[`A FieldSelect 1`] = `
   display: -ms-flexbox;
   display: flex;
   position: relative;
+  background-color: #FFFFFF;
 }
 
 .c4:hover {
@@ -253,6 +254,7 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   display: -ms-flexbox;
   display: flex;
   position: relative;
+  background-color: #FFFFFF;
   border-color: #CC1F36;
 }
 
@@ -486,6 +488,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   display: -ms-flexbox;
   display: flex;
   position: relative;
+  background-color: #FFFFFF;
   border-color: #CC1F36;
 }
 
@@ -697,6 +700,7 @@ exports[`A required FieldSelect 1`] = `
   display: -ms-flexbox;
   display: flex;
   position: relative;
+  background-color: #FFFFFF;
 }
 
 .c5:hover {
@@ -883,6 +887,7 @@ exports[`FieldSelect supports labelWeight 1`] = `
   display: -ms-flexbox;
   display: flex;
   position: relative;
+  background-color: #FFFFFF;
 }
 
 .c4:hover {

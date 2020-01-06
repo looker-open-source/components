@@ -171,6 +171,7 @@ export const InputSearch = styled(InputSearchComponent)`
   align-items: center;
   display: flex;
   position: relative;
+  background-color: ${props => props.theme.colors.palette.white};
 
   &:hover {
     ${inputTextHover}

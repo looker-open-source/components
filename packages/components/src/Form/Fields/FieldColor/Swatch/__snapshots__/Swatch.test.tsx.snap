@@ -5,8 +5,8 @@ exports[`Default Swatch 1`] = `
   width: 36px;
   height: 36px;
   border-color: #DEE1E5;
-  margin-top: auto;
   background-color: white;
+  margin-top: auto;
 }
 
 .c0:hover {
@@ -26,8 +26,8 @@ exports[`Swatch with hex value passed 1`] = `
   width: 36px;
   height: 36px;
   border-color: #DEE1E5;
-  margin-top: auto;
   background-color: #4c6670;
+  margin-top: auto;
 }
 
 .c0:hover {
@@ -47,8 +47,8 @@ exports[`Swatch with width and height set 1`] = `
   width: 50px;
   height: 25px;
   border-color: #DEE1E5;
-  margin-top: auto;
   background-color: blue;
+  margin-top: auto;
 }
 
 .c0:hover {
