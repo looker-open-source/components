@@ -29,6 +29,10 @@ exports[`InputText default 1`] = `
   color: #939BA5;
 }
 
+.c0:disabled:hover {
+  border-color: #DEE1E5;
+}
+
 <input
   className="c0"
   type="text"
@@ -62,6 +66,10 @@ exports[`InputText should accept disabled 1`] = `
 .c0:disabled {
   background: #F5F6F7;
   color: #939BA5;
+}
+
+.c0:disabled:hover {
+  border-color: #DEE1E5;
 }
 
 <input
@@ -100,6 +108,10 @@ exports[`InputText should accept readOnly 1`] = `
   color: #939BA5;
 }
 
+.c0:disabled:hover {
+  border-color: #DEE1E5;
+}
+
 <input
   className="c0"
   readOnly={true}
@@ -134,6 +146,10 @@ exports[`InputText should accept required 1`] = `
 .c0:disabled {
   background: #F5F6F7;
   color: #939BA5;
+}
+
+.c0:disabled:hover {
+  border-color: #DEE1E5;
 }
 
 <input
@@ -172,6 +188,10 @@ exports[`InputText with a placeholder 1`] = `
   color: #939BA5;
 }
 
+.c0:disabled:hover {
+  border-color: #DEE1E5;
+}
+
 <input
   className="c0"
   placeholder="I am a placeholder"
@@ -208,6 +228,10 @@ exports[`InputText with a value 1`] = `
   color: #939BA5;
 }
 
+.c0:disabled:hover {
+  border-color: #DEE1E5;
+}
+
 <input
   className="c0"
   type="text"
@@ -227,6 +251,7 @@ exports[`InputText with an error validation 1`] = `
   padding-bottom: 0rem;
   font-size: 0.875rem;
   color: #343C42;
+  border-color: #CC1F36;
 }
 
 .c0:hover {
@@ -242,6 +267,16 @@ exports[`InputText with an error validation 1`] = `
 .c0:disabled {
   background: #F5F6F7;
   color: #939BA5;
+}
+
+.c0:disabled:hover {
+  border-color: #DEE1E5;
+}
+
+.c0:hover,
+.c0:focus,
+.c0:focus-within {
+  border-color: #CC1F36;
 }
 
 <input
@@ -279,6 +314,10 @@ exports[`InputText with aria-describedby 1`] = `
   color: #939BA5;
 }
 
+.c0:disabled:hover {
+  border-color: #DEE1E5;
+}
+
 <input
   aria-describedby="some-id"
   className="c0"
@@ -313,6 +352,10 @@ exports[`InputText with name and id 1`] = `
 .c0:disabled {
   background: #F5F6F7;
   color: #939BA5;
+}
+
+.c0:disabled:hover {
+  border-color: #DEE1E5;
 }
 
 <input

@@ -29,6 +29,10 @@ exports[`Form with one child 1`] = `
   color: #939BA5;
 }
 
+.c2:disabled:hover {
+  border-color: #DEE1E5;
+}
+
 .c0 {
   margin-bottom: 0.5rem;
   display: -webkit-box;

@@ -29,6 +29,10 @@ exports[`Fieldset with left aligned legend 1`] = `
   color: #939BA5;
 }
 
+.c5:disabled:hover {
+  border-color: #DEE1E5;
+}
+
 .c1 {
   margin-bottom: 0.5rem;
   display: -webkit-box;

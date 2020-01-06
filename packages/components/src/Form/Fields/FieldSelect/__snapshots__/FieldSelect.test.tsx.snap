@@ -7,26 +7,47 @@ exports[`A FieldSelect 1`] = `
 
 .c7 {
   border: solid 1px;
-  border-color: #C1C6CC;
+  border-color: #DEE1E5;
   border-radius: 0.25rem;
-  height: 28px;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  height: 36px;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
   font-size: 0.875rem;
-  background: #FFFFFF;
+  color: #343C42;
 }
 
 .c7:focus {
   outline: none;
 }
 
-.c3 {
-  border: 1px solid;
+.c7:hover {
   border-color: #C1C6CC;
+}
+
+.c7:focus {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c7:disabled {
+  background: #F5F6F7;
+  color: #939BA5;
+}
+
+.c7:disabled:hover {
+  border-color: #DEE1E5;
+}
+
+.c3 {
+  border: solid 1px;
+  border-color: #DEE1E5;
   border-radius: 0.25rem;
   width: 100%;
+  height: 36px;
+  font-size: 0.875rem;
 }
 
 .c4 {
@@ -39,12 +60,16 @@ exports[`A FieldSelect 1`] = `
   display: -ms-flexbox;
   display: flex;
   position: relative;
-  background: #FFFFFF;
+}
+
+.c4:hover {
+  border-color: #C1C6CC;
 }
 
 .c4:focus-within {
-  border-color: transparent;
-  outline: 5px auto -webkit-focus-ring-color;
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
 }
 
 .c4 .c6 {
@@ -54,6 +79,7 @@ exports[`A FieldSelect 1`] = `
   -moz-appearance: none;
   appearance: none;
   background: transparent;
+  box-shadow: none;
 }
 
 .c4 .c6::-webkit-search-decoration,
@@ -123,6 +149,8 @@ exports[`A FieldSelect 1`] = `
       >
         <div
           className="c3 c4 c5"
+          fontSize="small"
+          height="36px"
           onClick={[Function]}
           width="100%"
         >
@@ -153,26 +181,47 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
 
 .c8 {
   border: solid 1px;
-  border-color: #C1C6CC;
+  border-color: #DEE1E5;
   border-radius: 0.25rem;
-  height: 28px;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  height: 36px;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
   font-size: 0.875rem;
-  background: #FFFFFF;
+  color: #343C42;
 }
 
 .c8:focus {
   outline: none;
 }
 
-.c4 {
-  border: 1px solid;
+.c8:hover {
   border-color: #C1C6CC;
+}
+
+.c8:focus {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c8:disabled {
+  background: #F5F6F7;
+  color: #939BA5;
+}
+
+.c8:disabled:hover {
+  border-color: #DEE1E5;
+}
+
+.c4 {
+  border: solid 1px;
+  border-color: #DEE1E5;
   border-radius: 0.25rem;
   width: 100%;
+  height: 36px;
+  font-size: 0.875rem;
 }
 
 .c10 .c7 {
@@ -182,6 +231,7 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   -moz-appearance: none;
   appearance: none;
   background: transparent;
+  box-shadow: none;
 }
 
 .c10 .c7::-webkit-search-decoration,
@@ -203,12 +253,23 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   display: -ms-flexbox;
   display: flex;
   position: relative;
-  background: #FFF2F4;
+  border-color: #CC1F36;
+}
+
+.c5:hover {
+  border-color: #C1C6CC;
 }
 
 .c5:focus-within {
-  border-color: transparent;
-  outline: 5px auto -webkit-focus-ring-color;
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c5:hover,
+.c5:focus,
+.c5:focus-within {
+  border-color: #CC1F36;
 }
 
 .c5 .c7 {
@@ -218,6 +279,7 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   -moz-appearance: none;
   appearance: none;
   background: transparent;
+  box-shadow: none;
 }
 
 .c5 .c7::-webkit-search-decoration,
@@ -276,7 +338,7 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
 }
 
 .c9 {
-  color: #990F14;
+  color: #CC1F36;
   margin-right: 0.5rem;
   margin-top: 0.5rem;
   font-size: 0.75rem;
@@ -313,6 +375,8 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
       >
         <div
           className="c4 c5 c6"
+          fontSize="small"
+          height="36px"
           onClick={[Function]}
           width="100%"
         >
@@ -350,26 +414,47 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
 
 .c8 {
   border: solid 1px;
-  border-color: #C1C6CC;
+  border-color: #DEE1E5;
   border-radius: 0.25rem;
-  height: 28px;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  height: 36px;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
   font-size: 0.875rem;
-  background: #FFFFFF;
+  color: #343C42;
 }
 
 .c8:focus {
   outline: none;
 }
 
-.c4 {
-  border: 1px solid;
+.c8:hover {
   border-color: #C1C6CC;
+}
+
+.c8:focus {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c8:disabled {
+  background: #F5F6F7;
+  color: #939BA5;
+}
+
+.c8:disabled:hover {
+  border-color: #DEE1E5;
+}
+
+.c4 {
+  border: solid 1px;
+  border-color: #DEE1E5;
   border-radius: 0.25rem;
   width: 100%;
+  height: 36px;
+  font-size: 0.875rem;
 }
 
 .c10 .c7 {
@@ -379,6 +464,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   -moz-appearance: none;
   appearance: none;
   background: transparent;
+  box-shadow: none;
 }
 
 .c10 .c7::-webkit-search-decoration,
@@ -400,12 +486,23 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   display: -ms-flexbox;
   display: flex;
   position: relative;
-  background: #FFF2F4;
+  border-color: #CC1F36;
+}
+
+.c5:hover {
+  border-color: #C1C6CC;
 }
 
 .c5:focus-within {
-  border-color: transparent;
-  outline: 5px auto -webkit-focus-ring-color;
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c5:hover,
+.c5:focus,
+.c5:focus-within {
+  border-color: #CC1F36;
 }
 
 .c5 .c7 {
@@ -415,6 +512,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   -moz-appearance: none;
   appearance: none;
   background: transparent;
+  box-shadow: none;
 }
 
 .c5 .c7::-webkit-search-decoration,
@@ -469,7 +567,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
 }
 
 .c9 {
-  color: #990F14;
+  color: #CC1F36;
   margin-right: 0.5rem;
   margin-top: 0.5rem;
   margin-left: 0.5rem;
@@ -507,6 +605,8 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
       >
         <div
           className="c4 c5 c6"
+          fontSize="small"
+          height="36px"
           onClick={[Function]}
           width="100%"
         >
@@ -544,26 +644,47 @@ exports[`A required FieldSelect 1`] = `
 
 .c8 {
   border: solid 1px;
-  border-color: #C1C6CC;
+  border-color: #DEE1E5;
   border-radius: 0.25rem;
-  height: 28px;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  height: 36px;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
   font-size: 0.875rem;
-  background: #FFFFFF;
+  color: #343C42;
 }
 
 .c8:focus {
   outline: none;
 }
 
-.c4 {
-  border: 1px solid;
+.c8:hover {
   border-color: #C1C6CC;
+}
+
+.c8:focus {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c8:disabled {
+  background: #F5F6F7;
+  color: #939BA5;
+}
+
+.c8:disabled:hover {
+  border-color: #DEE1E5;
+}
+
+.c4 {
+  border: solid 1px;
+  border-color: #DEE1E5;
   border-radius: 0.25rem;
   width: 100%;
+  height: 36px;
+  font-size: 0.875rem;
 }
 
 .c5 {
@@ -576,12 +697,16 @@ exports[`A required FieldSelect 1`] = `
   display: -ms-flexbox;
   display: flex;
   position: relative;
-  background: #FFFFFF;
+}
+
+.c5:hover {
+  border-color: #C1C6CC;
 }
 
 .c5:focus-within {
-  border-color: transparent;
-  outline: 5px auto -webkit-focus-ring-color;
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
 }
 
 .c5 .c7 {
@@ -591,6 +716,7 @@ exports[`A required FieldSelect 1`] = `
   -moz-appearance: none;
   appearance: none;
   background: transparent;
+  box-shadow: none;
 }
 
 .c5 .c7::-webkit-search-decoration,
@@ -672,6 +798,8 @@ exports[`A required FieldSelect 1`] = `
       >
         <div
           className="c4 c5 c6"
+          fontSize="small"
+          height="36px"
           onClick={[Function]}
           width="100%"
         >
@@ -702,26 +830,47 @@ exports[`FieldSelect supports labelWeight 1`] = `
 
 .c7 {
   border: solid 1px;
-  border-color: #C1C6CC;
+  border-color: #DEE1E5;
   border-radius: 0.25rem;
-  height: 28px;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  height: 36px;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
   font-size: 0.875rem;
-  background: #FFFFFF;
+  color: #343C42;
 }
 
 .c7:focus {
   outline: none;
 }
 
-.c3 {
-  border: 1px solid;
+.c7:hover {
   border-color: #C1C6CC;
+}
+
+.c7:focus {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c7:disabled {
+  background: #F5F6F7;
+  color: #939BA5;
+}
+
+.c7:disabled:hover {
+  border-color: #DEE1E5;
+}
+
+.c3 {
+  border: solid 1px;
+  border-color: #DEE1E5;
   border-radius: 0.25rem;
   width: 100%;
+  height: 36px;
+  font-size: 0.875rem;
 }
 
 .c4 {
@@ -734,12 +883,16 @@ exports[`FieldSelect supports labelWeight 1`] = `
   display: -ms-flexbox;
   display: flex;
   position: relative;
-  background: #FFFFFF;
+}
+
+.c4:hover {
+  border-color: #C1C6CC;
 }
 
 .c4:focus-within {
-  border-color: transparent;
-  outline: 5px auto -webkit-focus-ring-color;
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
 }
 
 .c4 .c6 {
@@ -749,6 +902,7 @@ exports[`FieldSelect supports labelWeight 1`] = `
   -moz-appearance: none;
   appearance: none;
   background: transparent;
+  box-shadow: none;
 }
 
 .c4 .c6::-webkit-search-decoration,
@@ -818,6 +972,8 @@ exports[`FieldSelect supports labelWeight 1`] = `
       >
         <div
           className="c3 c4 c5"
+          fontSize="small"
+          height="36px"
           onClick={[Function]}
           width="100%"
         >
