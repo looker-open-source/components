@@ -457,8 +457,6 @@ export function Popover({
   const [isHovered] = useHovered(hoverDisclosureRef)
   const triggerShown = isHovered || isOpen
 
-  console.log(isHovered)
-
   return (
     <>
       {popover}
