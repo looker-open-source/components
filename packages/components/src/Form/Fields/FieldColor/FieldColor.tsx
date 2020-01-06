@@ -27,7 +27,7 @@
 import React, { useState, ChangeEvent, FormEvent, forwardRef, Ref } from 'react'
 import styled from 'styled-components'
 import uuid from 'uuid/v4'
-import { Popover, PopoverContent } from '../../../Popover'
+import { usePopover, PopoverContent } from '../../../Popover'
 import { InputText, InputTextProps } from '../../Inputs/InputText'
 import { Field, FieldProps, omitFieldProps, pickFieldProps } from '../Field'
 import { FormControl } from '../../FormControl'
@@ -85,10 +85,11 @@ export const FieldColorComponent = forwardRef(
     ref: Ref<HTMLInputElement>
   ) => {
     const validationMessage = useFormContext(props)
+    const initialWhite = polarbrightness2hsv(white())
     const initialValue =
       props.value && isValidColor(props.value)
         ? str2simpleHsv(props.value)
-        : polarbrightness2hsv(white())
+        : initialWhite
 
     const [color, setColor] = useState<SimpleHSV>(initialValue)
     const [inputTextValue, setInputTextValue] = useState(props.value || '')
@@ -117,8 +118,8 @@ export const FieldColorComponent = forwardRef(
       const value = event.currentTarget.value
       setInputTextValue(value)
 
-      if (!value || !isValidColor(value)) return
-      const newColor = str2simpleHsv(value)
+      const newColor =
+        !value || !isValidColor(value) ? initialWhite : str2simpleHsv(value)
       setColor(newColor)
       callOnChange(newColor)
     }
@@ -143,6 +144,8 @@ export const FieldColorComponent = forwardRef(
       </PopoverContent>
     )
 
+    const { open, popover, ref: triggerRef } = usePopover({ content })
+
     return (
       <Field
         id={id}
@@ -151,22 +154,18 @@ export const FieldColorComponent = forwardRef(
         {...pickFieldProps(props)}
       >
         <FormControl alignLabel="left">
-          <Popover content={content}>
-            {(onClick, ref) => (
-              <Swatch
-                mt="auto"
-                ref={ref}
-                color={hsv2hex(color)}
-                borderRadius={hideInput ? 'medium' : 'none'}
-                borderTopLeftRadius="medium"
-                borderBottomLeftRadius="medium"
-                borderRight={!hideInput ? 'none' : undefined}
-                width="33px"
-                height="36px"
-                onClick={onClick}
-              />
-            )}
-          </Popover>
+          <Swatch
+            ref={triggerRef}
+            color={hsv2hex(color)}
+            borderRadius={hideInput ? 'medium' : 'none'}
+            borderTopLeftRadius="medium"
+            borderBottomLeftRadius="medium"
+            border="1px solid"
+            borderRight={hideInput ? undefined : 'none'}
+            disabled={props.disabled}
+            onClick={open}
+          />
+          {!props.disabled && popover}
           {!hideInput && (
             <InputText
               {...omitFieldProps(props)}
