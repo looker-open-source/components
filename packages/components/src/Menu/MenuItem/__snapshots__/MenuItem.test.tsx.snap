@@ -21,6 +21,7 @@ exports[`MenuItem - current + marker 1`] = `
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0.75rem;
+  border: 0;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -151,6 +152,7 @@ exports[`MenuItem - current 1`] = `
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0.75rem;
+  border: 0;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -266,6 +268,7 @@ exports[`MenuItem - detail 1`] = `
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0.75rem;
+  border: 0;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -391,6 +394,7 @@ exports[`MenuItem - icon 1`] = `
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0.75rem;
+  border: 0;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -506,6 +510,7 @@ exports[`MenuItem - with customizations 1`] = `
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0.75rem;
+  border: 0;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -591,6 +596,7 @@ exports[`MenuItem - with single customization 1`] = `
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0.75rem;
+  border: 0;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -676,6 +682,7 @@ exports[`MenuItem 1`] = `
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0.75rem;
+  border: 0;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
