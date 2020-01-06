@@ -97,6 +97,30 @@ and access the `setOpen` function via `MenuContext` from deep within the menu.
 }
 ```
 
+## Toggling the menu button on hover
+
+```jsx
+;() => {
+  const hoverRef = React.useRef()
+  return (
+    <Card ref={hoverRef} p="large">
+      <Flex justifyContent="space-between">
+        <Paragraph>Hovering in this card will show the menu button.</Paragraph>
+        <Menu hoverDisclosureRef={hoverRef}>
+          <MenuDisclosure>
+            <IconButton icon="DotsVert" label="More Options" />
+          </MenuDisclosure>
+          <MenuList>
+            <MenuItem>Edit item</MenuItem>
+            <MenuItem>Create new sub-item</MenuItem>
+          </MenuList>
+        </Menu>
+      </Flex>
+    </Card>
+  )
+}
+```
+
 ## MenuList
 
 <Props of="MenuList" />
