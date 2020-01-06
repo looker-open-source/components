@@ -101,7 +101,7 @@ exports[`A FieldText with an error validation aligned to the left 1`] = `
   padding-bottom: 0rem;
   font-size: 0.875rem;
   color: #343C42;
-  border-color: #CC1F36;
+  border-color: #ED3B53;
 }
 
 .c3:hover {
@@ -123,10 +123,14 @@ exports[`A FieldText with an error validation aligned to the left 1`] = `
   border-color: #DEE1E5;
 }
 
-.c3:hover,
+.c3:hover {
+  border-color: #CC1F36;
+}
+
 .c3:focus,
 .c3:focus-within {
   border-color: #CC1F36;
+  box-shadow: 0 0 0 2px #FFE5E9;
 }
 
 .c0 {
@@ -222,7 +226,7 @@ exports[`A FieldText with an error validation aligned to the right 1`] = `
   padding-bottom: 0rem;
   font-size: 0.875rem;
   color: #343C42;
-  border-color: #CC1F36;
+  border-color: #ED3B53;
 }
 
 .c3:hover {
@@ -244,10 +248,14 @@ exports[`A FieldText with an error validation aligned to the right 1`] = `
   border-color: #DEE1E5;
 }
 
-.c3:hover,
+.c3:hover {
+  border-color: #CC1F36;
+}
+
 .c3:focus,
 .c3:focus-within {
   border-color: #CC1F36;
+  box-shadow: 0 0 0 2px #FFE5E9;
 }
 
 .c0 {

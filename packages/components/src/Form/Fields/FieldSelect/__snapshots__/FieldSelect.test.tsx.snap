@@ -255,7 +255,7 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   display: flex;
   position: relative;
   background-color: #FFFFFF;
-  border-color: #CC1F36;
+  border-color: #ED3B53;
 }
 
 .c5:hover {
@@ -268,10 +268,14 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   outline: none;
 }
 
-.c5:hover,
+.c5:hover {
+  border-color: #CC1F36;
+}
+
 .c5:focus,
 .c5:focus-within {
   border-color: #CC1F36;
+  box-shadow: 0 0 0 2px #FFE5E9;
 }
 
 .c5 .c7 {
@@ -489,7 +493,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   display: flex;
   position: relative;
   background-color: #FFFFFF;
-  border-color: #CC1F36;
+  border-color: #ED3B53;
 }
 
 .c5:hover {
@@ -502,10 +506,14 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   outline: none;
 }
 
-.c5:hover,
+.c5:hover {
+  border-color: #CC1F36;
+}
+
 .c5:focus,
 .c5:focus-within {
   border-color: #CC1F36;
+  box-shadow: 0 0 0 2px #FFE5E9;
 }
 
 .c5 .c7 {

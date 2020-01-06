@@ -251,7 +251,7 @@ exports[`InputText with an error validation 1`] = `
   padding-bottom: 0rem;
   font-size: 0.875rem;
   color: #343C42;
-  border-color: #CC1F36;
+  border-color: #ED3B53;
 }
 
 .c0:hover {
@@ -273,10 +273,14 @@ exports[`InputText with an error validation 1`] = `
   border-color: #DEE1E5;
 }
 
-.c0:hover,
+.c0:hover {
+  border-color: #CC1F36;
+}
+
 .c0:focus,
 .c0:focus-within {
   border-color: #CC1F36;
+  box-shadow: 0 0 0 2px #FFE5E9;
 }
 
 <input
