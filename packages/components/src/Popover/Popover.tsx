@@ -104,11 +104,6 @@ export interface UsePopoverProps {
   pin?: boolean
 
   /**
-   * The element which hovering on/off of will show/hide the triggering element
-   */
-  hoverDisclosureRef?: HTMLElement | null | RefObject<HTMLElement>
-
-  /**
    * Optional, for a controlled version of the component
    */
   setOpen?: (open: boolean) => void
@@ -150,6 +145,11 @@ export interface PopoverProps extends UsePopoverProps {
     ref: Ref<any>,
     className?: string
   ) => JSX.Element
+
+  /**
+   * The element which hovering on/off of will show/hide the triggering element
+   */
+  hoverDisclosureRef?: HTMLElement | null | RefObject<HTMLElement>
 }
 
 function useVerticalSpace(
@@ -327,7 +327,6 @@ export function usePopover({
   isOpen: controlledIsOpen = false,
   onClose,
   placement: propsPlacement = 'bottom',
-  hoverDisclosureRef,
   setOpen: controlledSetOpen,
   triggerElement,
   triggerToggle = true,
@@ -380,8 +379,6 @@ export function usePopover({
     setOpen(false)
     onClose && onClose()
   }
-
-  const [isHovered] = useHovered(hoverDisclosureRef)
 
   const popover = !openWithoutElem && isOpen && (
     <ModalContext.Provider
@@ -446,13 +443,21 @@ export function usePopover({
     open: handleOpen,
     popover,
     ref: callbackRef,
-    triggerShown: isOpen || isHovered,
   }
 }
 
-export function Popover({ children, ...props }: PopoverProps) {
-  const { popover, open, ref, isOpen, triggerShown } = usePopover(props)
+export function Popover({
+  children,
+  hoverDisclosureRef,
+  ...props
+}: PopoverProps) {
+  const { popover, open, ref, isOpen } = usePopover(props)
   const childrenOutput = children(open, ref, isOpen ? 'active' : '')
+
+  const [isHovered] = useHovered(hoverDisclosureRef)
+  const triggerShown = isHovered || isOpen
+
+  console.log(isHovered)
 
   return (
     <>
