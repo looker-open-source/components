@@ -70,7 +70,7 @@ const iconColor = (props: MenuListItemProps) =>
  * used when styled extends a base type. E.g. (styled.li has `color` prop)
  */
 const Li = forwardRef((props: MenuListItemProps, ref: Ref<HTMLLIElement>) => {
-  const domProps = omit(props, 'current', 'itemStyle')
+  const domProps = omit(props, 'current', 'focusVisible', 'itemStyle')
   return <li {...domProps} ref={ref} />
 })
 
@@ -80,9 +80,18 @@ export const MenuItemListItem = styled(Li)<MenuListItemProps>`
   ${color}
   ${space}
   ${typography}
+
+  ${props =>
+    props.focusVisible &&
+    `box-shadow: 0 0 0 0.15rem ${rgba(
+      props.theme.colors.palette.purple300,
+      0.25
+    )};`}
+
   align-items: center;
   display: flex;
   flex-wrap: wrap;
+  outline: none;
   text-decoration: none;
   transition: ${props =>
     `background ${props.theme.transitions.durationQuick} ${props.theme.easings.ease},
@@ -107,13 +116,6 @@ export const MenuItemListItem = styled(Li)<MenuListItemProps>`
   &:focus {
     outline: none;
   }
-
-  ${props =>
-    props.focusVisible &&
-    `box-shadow: 0 0 0 0.15rem ${rgba(
-      props.theme.colors.palette.purple300,
-      0.25
-    )};`}
 
   ${hoverStyles};
 

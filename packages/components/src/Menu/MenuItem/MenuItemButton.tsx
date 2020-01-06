@@ -31,18 +31,21 @@ import {
   CompatibleHTMLProps,
   SpaceProps,
 } from '@looker/design-tokens'
+import { rgba } from 'polished'
 
 export interface MenuItemButtonProps
   extends SpaceProps,
-    CompatibleHTMLProps<HTMLElement> {}
+    CompatibleHTMLProps<HTMLElement> {
+  focusVisible?: boolean
+}
 
 export const MenuItemButton = styled.button<MenuItemButtonProps>`
   ${reset}
   ${space}
 
-  border: 0;
   align-items: center;
   background: transparent;
+  border: 0;
   color: inherit;
   cursor: pointer;
   display: flex;
@@ -51,4 +54,11 @@ export const MenuItemButton = styled.button<MenuItemButtonProps>`
   outline: none;
   text-align: left;
   text-decoration: none;
+
+  ${props =>
+    props.focusVisible &&
+    `box-shadow: 0 0 0 0.15rem ${rgba(
+      props.theme.colors.palette.purple300,
+      0.25
+    )};`}
 `

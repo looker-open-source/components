@@ -215,8 +215,9 @@ export const MenuItem: FC<MenuItemProps> = props => {
     >
       <MenuItemButton
         as={itemRole === 'link' ? 'a' : 'button'}
-        role="menuitem"
+        focusVisible={isFocusVisible}
         href={href}
+        role="menuitem"
         target={target}
         {...clickTargetProps}
       >
