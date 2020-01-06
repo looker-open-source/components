@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [UNRELEASED]
+
+### Added
+
+- `Select` now renders a custom component instead of the native `select`. This allows for new features including `isFilterable` / `onFilter` to allow the user to filter through options, and `isClearable` to allow the user to clear out the value.
+
+### Changes
+
+-
+
+### Fixed
+
+-
+
 ## [0.7.10]
 
 ### Added
