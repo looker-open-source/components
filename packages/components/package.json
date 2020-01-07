@@ -49,7 +49,7 @@
     "@types/lodash": "^4.14.149",
     "@types/react": "^16.9.17",
     "@types/react-resize-detector": "^4.2.0",
-    "@types/styled-components": "^4.4.1",
+    "@types/styled-components": "^4.4.2",
     "@types/uuid": "^3.4.6",
     "csstype": "^2.6.8",
     "enzyme": "^3.11.0",
