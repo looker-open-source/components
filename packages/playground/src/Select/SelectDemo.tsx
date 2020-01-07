@@ -26,7 +26,6 @@ import {
   Box,
   Select,
   FieldSelect,
-  InputText,
   ModalContent,
 } from '@looker/components'
 
@@ -79,12 +78,6 @@ function SelectContent() {
         <Button mt="medium" data-fruit="3" onClick={handleClick}>
           Oranges
         </Button>
-        <Divider my="xlarge" />
-        <InputText disabled />
-        <Divider my="xlarge" />
-        <InputText />
-        <Divider my="xlarge" />
-        <InputText validationType="error" />
       </Box>
       <Divider my="xlarge" />
       <FieldSelect
