@@ -35,6 +35,9 @@ import {
   ModalContext,
   MenuGroup,
   Paragraph,
+  Card,
+  Flex,
+  IconButton,
 } from '@looker/components'
 const FancyMenuItem = ({
   text,
@@ -54,14 +57,45 @@ const FancyMenuItem = ({
     </MenuItem>
   )
 }
+
+const HoverMenu = () => {
+  const hoverRef = React.useRef<HTMLDivElement>(null)
+  return (
+    <Card ref={hoverRef} p="large" raised height="auto">
+      <Flex justifyContent="space-between">
+        <Paragraph>
+          Hovering in this card will show the button that triggers the menu.
+        </Paragraph>
+        <Menu hoverDisclosureRef={hoverRef}>
+          <MenuDisclosure>
+            <IconButton
+              icon="DotsVert"
+              label="More Options"
+              aria-haspopup="true"
+            />
+          </MenuDisclosure>
+          <MenuList compact>
+            <FancyMenuItem text="Gouda" />
+            <FancyMenuItem text="Swiss" current />
+            <MenuGroup compact={false}>
+              <FancyMenuItem text="Gouda w/ Space" />
+              <FancyMenuItem text="Swiss w/ Space" />
+            </MenuGroup>
+          </MenuList>
+        </Menu>
+      </Flex>
+    </Card>
+  )
+}
+
 export function MenuDemo() {
-  const [isOpen, setOpen] = React.useState(true)
+  const [isOpen, setOpen] = React.useState(false)
   return (
     <Box m="large">
       <Paragraph pb="medium">{isOpen ? 'Menu Open' : 'Menu Closed'}</Paragraph>
-      <Menu isOpen={isOpen} setOpen={setOpen}>
+      <Menu isOpen={isOpen} setOpen={setOpen} id="my-menu">
         <MenuDisclosure tooltip="Select your favorite kind">
-          <Button>Cheese</Button>
+          <Button mb="large">Cheese</Button>
         </MenuDisclosure>
         <MenuList compact>
           <FancyMenuItem text="Gouda" />
@@ -72,6 +106,7 @@ export function MenuDemo() {
           </MenuGroup>
         </MenuList>
       </Menu>
+      <HoverMenu />
     </Box>
   )
 }

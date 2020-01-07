@@ -24,8 +24,8 @@
 
  */
 
-import React, { FC, useRef, useState } from 'react'
-import { useCallbackRef } from '../utils'
+import React, { FC, RefObject, useRef, useState } from 'react'
+import { useCallbackRef, useHovered, useID } from '../utils'
 import { MenuContext } from './MenuContext'
 
 export interface MenuProps {
@@ -33,6 +33,13 @@ export interface MenuProps {
    * Disables the Menu, passed to child of MenuDisclosure
    */
   disabled?: boolean
+
+  /**
+   * The element which hovering on/off of will show/hide the disclosure element
+   */
+  hoverDisclosureRef?: HTMLElement | null | RefObject<HTMLElement>
+
+  id?: string
 
   /**
    * Initial state of Menu (or use for controlled menu)
@@ -44,19 +51,25 @@ export interface MenuProps {
    */
   setOpen?: (isOpen: boolean) => void
 }
-/** @component */
+
 export const Menu: FC<MenuProps> = ({
   children,
   disabled,
+  hoverDisclosureRef,
+  id: propsID,
   isOpen: controlledIsOpen = false,
   setOpen: controlledSetOpen,
 }) => {
   const isControlled = useRef(controlledSetOpen !== undefined)
   const [isOpen, setOpen] = useState(controlledIsOpen)
   const [triggerElement, triggerCallbackRef] = useCallbackRef()
+  const [isHovered] = useHovered(hoverDisclosureRef)
+  const id = useID(propsID)
 
   const context = {
     disabled,
+    id,
+    isHovered,
     isOpen: isControlled.current ? controlledIsOpen : isOpen,
     setOpen: isControlled.current ? controlledSetOpen : setOpen,
     triggerCallbackRef,

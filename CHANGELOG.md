@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- `hoverDisclosureRef` prop on `Menu` allows the `MenuDisclosure` only to be shown when the element in question is hovered over.
 - `Select` now renders a custom component instead of the native `select`. This allows for new features including `isFilterable` / `onFilter` to allow the user to filter through options, and `isClearable` to allow the user to clear out the value.
 
 ### Changes

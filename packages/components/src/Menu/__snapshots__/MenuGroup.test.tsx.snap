@@ -30,6 +30,7 @@ exports[`MenuGroup - JSX label 1`] = `
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0.75rem;
+  border: 0;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -213,6 +214,7 @@ exports[`MenuGroup - label 1`] = `
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0.75rem;
+  border: 0;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -392,6 +394,7 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0.75rem;
+  border: 0;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -571,6 +574,7 @@ exports[`MenuGroup - menu customization 1`] = `
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0.75rem;
+  border: 0;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -806,6 +810,7 @@ exports[`MenuGroup 1`] = `
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0.75rem;
+  border: 0;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;

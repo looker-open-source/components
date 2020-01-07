@@ -165,7 +165,7 @@ describe('Popover', () => {
     /*
      * Testing this with Jest is frustrating because the component expects to operating with a real DOM
      * environment. Popover is looking for an event sent via document.addEventListener which isn't
-     * produced within Jest's enviornment. Attempts at mocking haven't been successful.
+     * produced within Jest's environment. Attempts at mocking haven't been successful.
      */
     expect(queryByText('simple content')).not.toBeInTheDocument()
     expect(instantClick).toBeCalledTimes(1)

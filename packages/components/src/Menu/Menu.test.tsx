@@ -26,7 +26,7 @@
 
 import '@testing-library/jest-dom/extend-expect'
 import { fireEvent } from '@testing-library/react'
-import React, { useContext } from 'react'
+import React, { useContext, useRef } from 'react'
 
 import { renderWithTheme } from '@looker/components-test-utils'
 import { Button } from '../Button'
@@ -150,5 +150,43 @@ describe('<Menu />', () => {
     )
 
     expect(getByText('Swiss')).toBeInTheDocument()
+  })
+
+  test('MenuDisclosure is shown/hidden on hover of hoverDisclosureRef', () => {
+    const Component = () => {
+      const hoverRef = useRef<HTMLDivElement>(null)
+      return (
+        <div ref={hoverRef}>
+          <Menu hoverDisclosureRef={hoverRef}>
+            <MenuDisclosure tooltip="Select your favorite kind">
+              <Button>Cheese</Button>
+            </MenuDisclosure>
+            <MenuList>
+              <MenuItem icon="FavoriteOutline">Gouda</MenuItem>
+              <MenuItem icon="FavoriteOutline">Swiss</MenuItem>
+            </MenuList>
+          </Menu>
+          Some text in the div
+        </div>
+      )
+    }
+    const { getByText, queryByText } = renderWithTheme(<Component />)
+
+    const trigger = queryByText('Cheese')
+    const div = getByText('Some text in the div')
+
+    expect(trigger).not.toBeInTheDocument()
+
+    fireEvent(
+      div,
+      new MouseEvent('mouseenter', {
+        bubbles: true,
+        cancelable: true,
+      })
+    )
+    const triggerNew = getByText('Cheese')
+    expect(queryByText('Gouda')).not.toBeInTheDocument()
+    fireEvent.click(triggerNew) // open Menu
+    expect(queryByText('Gouda')).toBeInTheDocument()
   })
 })
