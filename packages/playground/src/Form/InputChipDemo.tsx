@@ -19,26 +19,16 @@
  */
 
 import React from 'react'
-import ReactDOM from 'react-dom'
-import { GlobalStyle } from '@looker/components'
-import { theme } from '@looker/design-tokens'
-import { ThemeProvider } from 'styled-components'
+import { Button, Divider, Box, InputChip } from '@looker/components'
 
-import { InputChipDemo } from './Form/InputChipDemo'
-
-const App: React.FC = () => {
+export function InputChipDemo() {
+  const [values, setValues] = React.useState<string[]>([])
+  function handleChange(vals: string[]) {
+    setValues(vals)
+  }
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <InputChipDemo />
-    </ThemeProvider>
+    <Box m="xlarge">
+      <InputChip name="FOO" values={values} onChange={handleChange} />
+    </Box>
   )
 }
-
-/**
- * This is the binding site for the playground. If you want to edit the
- * primary application, do your work in App.tsx instead.
- */
-document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(<App />, document.getElementById('container'))
-})
