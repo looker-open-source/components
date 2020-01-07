@@ -33,7 +33,6 @@ import {
 } from '@looker/design-tokens'
 import React, { forwardRef, Ref } from 'react'
 import styled, { css } from 'styled-components'
-import { rgba } from 'polished'
 import { Icon } from '../../Icon'
 import { MenuItemStyle } from './menuItemStyle'
 
@@ -81,13 +80,7 @@ export const MenuItemListItem = styled(Li)<MenuListItemProps>`
   ${space}
   ${typography}
 
-  ${props =>
-    props.focusVisible &&
-    `box-shadow: 0 0 0 0.15rem ${rgba(
-      props.theme.colors.palette.purple300,
-      0.25
-    )};`}
-
+  border: none;
   align-items: center;
   display: flex;
   flex-wrap: wrap;
@@ -99,23 +92,23 @@ export const MenuItemListItem = styled(Li)<MenuListItemProps>`
 
   button,
   a {
+    border: none;
     border-left-width: ${({ itemStyle }) => itemStyle.marker.size}px;
     border-left-style: solid;
     border-left-color: ${({ itemStyle, current }) =>
       current ? itemStyle.marker.color : 'transparent'};
+    outline: none;
     padding-left: calc(${({ theme, itemStyle }) =>
       `${theme.space.medium} - ${itemStyle.marker.size}px`});
   }
 
-  &:focus-within button,
-  &:focus-within a {
-    box-shadow:  ${props =>
-      `0 0 3px 1px ${props.theme.colors.palette.blue400}`};
-  }
-
-  &:focus {
-    outline: none;
-  }
+  ${props =>
+    props.focusVisible &&
+    `&:focus-within button,
+    &:focus-within a {
+      box-shadow: 0 0 3px 1px ${props.theme.colors.palette.blue400};
+    }
+`}
 
   ${hoverStyles};
 
@@ -125,4 +118,29 @@ export const MenuItemListItem = styled(Li)<MenuListItemProps>`
       ${props =>
         `${props.theme.transitions.durationQuick} ${props.theme.easings.ease}`};
   }
+
+  &:active {
+    border: none;
+    outline: none;
+  }
+
+  &:focus {
+    border: none;
+    outline: none;
+  }
 `
+
+/*
+
+  ${props =>
+    props.focusVisible &&
+    `box-shadow: 0 0 0 0.15rem ${rgba(
+      props.theme.colors.palette.purple300,
+      0.25
+    )};`}
+
+
+  &:focus {
+    border: none;
+    outline: none;
+  } */

@@ -31,13 +31,10 @@ import {
   CompatibleHTMLProps,
   SpaceProps,
 } from '@looker/design-tokens'
-import { rgba } from 'polished'
 
 export interface MenuItemButtonProps
   extends SpaceProps,
-    CompatibleHTMLProps<HTMLElement> {
-  focusVisible?: boolean
-}
+    CompatibleHTMLProps<HTMLElement> {}
 
 export const MenuItemButton = styled.button<MenuItemButtonProps>`
   ${reset}
