@@ -12,6 +12,9 @@ export const TooltipContent = styled(Paragraph).attrs(
     width: 'auto',
   })
 )`
+  white-space: normal;
+  text-transform: none;
+  word-break: break-word;
   hyphens: auto;
   overflow-wrap: anywhere;
 
