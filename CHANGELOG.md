@@ -18,7 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
--
+- update tooltip to not use parent CSS config
 
 ## [0.7.10]
 
