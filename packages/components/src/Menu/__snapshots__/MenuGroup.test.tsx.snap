@@ -30,12 +30,12 @@ exports[`MenuGroup - JSX label 1`] = `
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0.75rem;
-  border: 0;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   background: transparent;
+  border: 0;
   color: inherit;
   cursor: pointer;
   display: -webkit-box;
@@ -68,6 +68,7 @@ exports[`MenuGroup - JSX label 1`] = `
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  outline: none;
   -webkit-text-decoration: none;
   text-decoration: none;
   -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
@@ -79,12 +80,8 @@ exports[`MenuGroup - JSX label 1`] = `
   border-left-width: 4px;
   border-left-style: solid;
   border-left-color: transparent;
+  outline: none;
   padding-left: calc(1rem - 4px);
-}
-
-.c4:focus-within button,
-.c4:focus-within a {
-  box-shadow: 0 0 3px 1px #49a9f2;
 }
 
 .c4:hover {
@@ -144,6 +141,9 @@ exports[`MenuGroup - JSX label 1`] = `
       color="#4C535B"
       fontSize="small"
       fontWeight="normal"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onKeyUp={[Function]}
     >
       <button
         className="c5"
@@ -158,6 +158,9 @@ exports[`MenuGroup - JSX label 1`] = `
       color="#4C535B"
       fontSize="small"
       fontWeight="normal"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onKeyUp={[Function]}
     >
       <button
         className="c5"
@@ -172,6 +175,9 @@ exports[`MenuGroup - JSX label 1`] = `
       color="#4C535B"
       fontSize="small"
       fontWeight="normal"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onKeyUp={[Function]}
     >
       <button
         className="c5"
@@ -214,12 +220,12 @@ exports[`MenuGroup - label 1`] = `
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0.75rem;
-  border: 0;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   background: transparent;
+  border: 0;
   color: inherit;
   cursor: pointer;
   display: -webkit-box;
@@ -252,6 +258,7 @@ exports[`MenuGroup - label 1`] = `
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  outline: none;
   -webkit-text-decoration: none;
   text-decoration: none;
   -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
@@ -263,12 +270,8 @@ exports[`MenuGroup - label 1`] = `
   border-left-width: 4px;
   border-left-style: solid;
   border-left-color: transparent;
+  outline: none;
   padding-left: calc(1rem - 4px);
-}
-
-.c4:focus-within button,
-.c4:focus-within a {
-  box-shadow: 0 0 3px 1px #49a9f2;
 }
 
 .c4:hover {
@@ -324,6 +327,9 @@ exports[`MenuGroup - label 1`] = `
       color="#4C535B"
       fontSize="small"
       fontWeight="normal"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onKeyUp={[Function]}
     >
       <button
         className="c5"
@@ -338,6 +344,9 @@ exports[`MenuGroup - label 1`] = `
       color="#4C535B"
       fontSize="small"
       fontWeight="normal"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onKeyUp={[Function]}
     >
       <button
         className="c5"
@@ -352,6 +361,9 @@ exports[`MenuGroup - label 1`] = `
       color="#4C535B"
       fontSize="small"
       fontWeight="normal"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onKeyUp={[Function]}
     >
       <button
         className="c5"
@@ -394,12 +406,12 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0.75rem;
-  border: 0;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   background: transparent;
+  border: 0;
   color: inherit;
   cursor: pointer;
   display: -webkit-box;
@@ -432,6 +444,7 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  outline: none;
   -webkit-text-decoration: none;
   text-decoration: none;
   -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
@@ -443,12 +456,8 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
   border-left-width: 4px;
   border-left-style: solid;
   border-left-color: transparent;
+  outline: none;
   padding-left: calc(1rem - 4px);
-}
-
-.c4:focus-within button,
-.c4:focus-within a {
-  box-shadow: 0 0 3px 1px #49a9f2;
 }
 
 .c4:hover {
@@ -509,6 +518,9 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
       color="#4C535B"
       fontSize="small"
       fontWeight="normal"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onKeyUp={[Function]}
     >
       <button
         className="c5"
@@ -523,6 +535,9 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
       color="#4C535B"
       fontSize="small"
       fontWeight="normal"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onKeyUp={[Function]}
     >
       <button
         className="c5"
@@ -537,6 +552,9 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
       color="#4C535B"
       fontSize="small"
       fontWeight="normal"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onKeyUp={[Function]}
     >
       <button
         className="c5"
@@ -574,12 +592,12 @@ exports[`MenuGroup - menu customization 1`] = `
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0.75rem;
-  border: 0;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   background: transparent;
+  border: 0;
   color: inherit;
   cursor: pointer;
   display: -webkit-box;
@@ -622,6 +640,7 @@ exports[`MenuGroup - menu customization 1`] = `
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  outline: none;
   -webkit-text-decoration: none;
   text-decoration: none;
   -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
@@ -633,12 +652,8 @@ exports[`MenuGroup - menu customization 1`] = `
   border-left-width: 10px;
   border-left-style: solid;
   border-left-color: transparent;
+  outline: none;
   padding-left: calc(1rem - 10px);
-}
-
-.c2:focus-within button,
-.c2:focus-within a {
-  box-shadow: 0 0 3px 1px #49a9f2;
 }
 
 .c2:hover {
@@ -677,6 +692,9 @@ exports[`MenuGroup - menu customization 1`] = `
       color="#BFB2FF"
       fontSize="small"
       fontWeight="normal"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onKeyUp={[Function]}
     >
       <button
         className="c3"
@@ -732,6 +750,9 @@ exports[`MenuGroup - menu customization 1`] = `
       color="#BFB2FF"
       fontSize="small"
       fontWeight="normal"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onKeyUp={[Function]}
     >
       <button
         className="c3"
@@ -766,6 +787,9 @@ exports[`MenuGroup - menu customization 1`] = `
       color="#BFB2FF"
       fontSize="small"
       fontWeight="normal"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onKeyUp={[Function]}
     >
       <button
         className="c3"
@@ -810,12 +834,12 @@ exports[`MenuGroup 1`] = `
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0.75rem;
-  border: 0;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   background: transparent;
+  border: 0;
   color: inherit;
   cursor: pointer;
   display: -webkit-box;
@@ -848,6 +872,7 @@ exports[`MenuGroup 1`] = `
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  outline: none;
   -webkit-text-decoration: none;
   text-decoration: none;
   -webkit-transition: background 150ms cubic-bezier(0.86,0,0.07,1), color 150ms cubic-bezier(0.86,0,0.07,1);
@@ -859,12 +884,8 @@ exports[`MenuGroup 1`] = `
   border-left-width: 4px;
   border-left-style: solid;
   border-left-color: transparent;
+  outline: none;
   padding-left: calc(1rem - 4px);
-}
-
-.c2:focus-within button,
-.c2:focus-within a {
-  box-shadow: 0 0 3px 1px #49a9f2;
 }
 
 .c2:hover {
@@ -902,6 +923,9 @@ exports[`MenuGroup 1`] = `
       color="#4C535B"
       fontSize="small"
       fontWeight="normal"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onKeyUp={[Function]}
     >
       <button
         className="c3"

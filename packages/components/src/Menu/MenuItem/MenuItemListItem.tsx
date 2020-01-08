@@ -38,6 +38,7 @@ import { MenuItemStyle } from './menuItemStyle'
 
 export interface MenuListItemProps extends CompatibleHTMLProps<HTMLLIElement> {
   current?: boolean
+  focusVisible?: boolean
   itemStyle: MenuItemStyle
 }
 
@@ -68,7 +69,7 @@ const iconColor = (props: MenuListItemProps) =>
  * used when styled extends a base type. E.g. (styled.li has `color` prop)
  */
 const Li = forwardRef((props: MenuListItemProps, ref: Ref<HTMLLIElement>) => {
-  const domProps = omit(props, 'current', 'itemStyle')
+  const domProps = omit(props, 'current', 'focusVisible', 'itemStyle')
   return <li {...domProps} ref={ref} />
 })
 
@@ -78,9 +79,11 @@ export const MenuItemListItem = styled(Li)<MenuListItemProps>`
   ${color}
   ${space}
   ${typography}
+
   align-items: center;
   display: flex;
   flex-wrap: wrap;
+  outline: none;
   text-decoration: none;
   transition: ${props =>
     `background ${props.theme.transitions.durationQuick} ${props.theme.easings.ease},
@@ -92,15 +95,18 @@ export const MenuItemListItem = styled(Li)<MenuListItemProps>`
     border-left-style: solid;
     border-left-color: ${({ itemStyle, current }) =>
       current ? itemStyle.marker.color : 'transparent'};
+    outline: none;
     padding-left: calc(${({ theme, itemStyle }) =>
       `${theme.space.medium} - ${itemStyle.marker.size}px`});
   }
 
-  &:focus-within button,
-  &:focus-within a {
-    box-shadow:  ${props =>
-      `0 0 3px 1px ${props.theme.colors.palette.blue400}`};
-  }
+  ${props =>
+    props.focusVisible &&
+    `&:focus-within button,
+    &:focus-within a {
+      box-shadow: 0 0 3px 1px ${props.theme.colors.palette.blue400};
+    }
+`}
 
   ${hoverStyles};
 

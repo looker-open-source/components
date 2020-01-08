@@ -26,7 +26,7 @@
     "develop": "yarn build:es --watch --verbose & yarn declaration --watch"
   },
   "devDependencies": {
-    "@svgr/babel-plugin-add-jsx-attribute": "^4.2.0",
+    "@svgr/babel-plugin-add-jsx-attribute": "^5.0.1",
     "@svgr/cli": "^4.3.3",
     "@types/glob": "^7.1.1",
     "@types/rimraf": "^2.0.3",
