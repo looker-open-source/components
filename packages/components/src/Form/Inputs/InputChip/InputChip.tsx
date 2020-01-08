@@ -1,7 +1,7 @@
-import React, { FormEvent, useState } from 'react'
+import React, { FormEvent, forwardRef, Ref, useState } from 'react'
 import styled from 'styled-components'
 
-import { useControlWarn } from '../../../utils'
+import { useControlWarn, useForkedRef, useCallbackRef } from '../../../utils'
 import { Flex } from '../../../Layout'
 import { InputText } from '../InputText'
 
@@ -24,11 +24,11 @@ export const Chip = styled(ChipInternal)`
 `
 
 /**
- * ChipInput is a component that appears to be a regular text input,
+ * InputChip is a component that appears to be a regular text input,
  * but also allows (validated) user inputs to be stored as 'chips' (see the Chip element)
  */
 
-interface ChipInputProps {
+interface InputChipProps {
   name: string
   placeholder?: string
   values: string[]
@@ -68,117 +68,131 @@ function getValuesFromInput(
   }
 }
 
-export function InputChip({
-  values,
-  onChange,
-  inputValue: controlledInputValue,
-  onInputChange,
-  validate,
-  ...props
-}: ChipInputProps) {
-  const isControlled = useControlWarn({
-    controllingProps: ['onInputChange', 'inputValue'],
-    isControlledCheck: () => controlledInputValue !== undefined,
-    name: 'InputChip',
-  })
-  const [uncontrolledInputValue, setInputValue] = useState('')
-  const inputValue =
-    isControlled && controlledInputValue !== undefined
-      ? controlledInputValue
-      : uncontrolledInputValue
-
-  function updateValues() {
-    const { newValues, newInputValue } = getValuesFromInput(
-      inputValue,
+export const InputChip = forwardRef(
+  (
+    {
       values,
-      validate
-    )
+      onChange,
+      inputValue: controlledInputValue,
+      onInputChange,
+      validate,
+      ...props
+    }: InputChipProps,
+    forwardedRef: Ref<HTMLInputElement>
+  ) => {
+    const isControlled = useControlWarn({
+      controllingProps: ['onInputChange', 'inputValue'],
+      isControlledCheck: () => controlledInputValue !== undefined,
+      name: 'InputChip',
+    })
 
-    onChange(newValues)
-    if (!isControlled) {
-      setInputValue(newInputValue)
-    }
-    onInputChange && onInputChange(newInputValue)
-  }
+    const [element, callbackRef] = useCallbackRef()
+    const ref = useForkedRef(forwardedRef, callbackRef)
 
-  function handleDeleteChip(value: string) {
-    const newValues = values.filter(v => value !== v)
-    onChange(newValues)
-  }
+    const [uncontrolledInputValue, setInputValue] = useState('')
+    const inputValue =
+      isControlled && controlledInputValue !== undefined
+        ? controlledInputValue
+        : uncontrolledInputValue
 
-  function handleBlur() {
-    updateValues()
-  }
-
-  function handleKeyDown(e: React.KeyboardEvent) {
-    switch (e.key) {
-      // Remove items via backspace
-      case 'Backspace':
-        // If we hit backspace and there is no text left to delete, remove the last entry instead
-        inputValue === '' && handleDeleteChip(values[values.length - 1])
-        break
-      case 'Enter':
-        // Update values when the user hits return
-        updateValues()
-    }
-  }
-
-  function handleInputChange(e: FormEvent<HTMLInputElement>) {
-    const { value } = e.currentTarget
-    let newValue = value
-    // If the last character is a comma, update the values
-    if (value[value.length - 1] === ',') {
+    function updateValues() {
       const { newValues, newInputValue } = getValuesFromInput(
-        value,
+        inputValue,
         values,
         validate
       )
+
       onChange(newValues)
-      newValue = newInputValue
+      if (!isControlled) {
+        setInputValue(newInputValue)
+      }
+      onInputChange && onInputChange(newInputValue)
     }
 
-    if (!isControlled) {
-      setInputValue(newValue)
+    function handleDeleteChip(value: string) {
+      const newValues = values.filter(v => value !== v)
+      onChange(newValues)
     }
-    onInputChange && onInputChange(newValue)
+
+    function handleBlur() {
+      updateValues()
+    }
+
+    function handleKeyDown(e: React.KeyboardEvent) {
+      switch (e.key) {
+        // Remove items via backspace
+        case 'Backspace':
+          // If we hit backspace and there is no text left to delete, remove the last entry instead
+          inputValue === '' && handleDeleteChip(values[values.length - 1])
+          break
+        case 'Enter':
+          // Don't submit a form if there is one
+          e.preventDefault()
+          // Update values when the user hits return
+          updateValues()
+      }
+    }
+
+    function handleInputChange(e: FormEvent<HTMLInputElement>) {
+      const { value } = e.currentTarget
+      let newValue = value
+      // If the last character is a comma, update the values
+      if (value[value.length - 1] === ',') {
+        const { newValues, newInputValue } = getValuesFromInput(
+          value,
+          values,
+          validate
+        )
+        onChange(newValues)
+        newValue = newInputValue
+      }
+
+      if (!isControlled) {
+        setInputValue(newValue)
+      }
+      onInputChange && onInputChange(newValue)
+    }
+
+    function handleClick() {
+      element.focus()
+    }
+
+    const chips = values.map(value => {
+      function onChipDelete() {
+        handleDeleteChip(value)
+      }
+      return <Chip onDelete={onChipDelete} value={value} key={value} />
+    })
+
+    return (
+      <Flex
+        name={props.name}
+        minHeight="28px"
+        width="100%"
+        flexWrap="wrap"
+        border="1px solid"
+        borderColor="palette.charcoal300"
+        borderRadius="5px"
+        onClick={handleClick}
+      >
+        {chips}
+        <InputText
+          ref={ref}
+          value={inputValue}
+          onChange={handleInputChange}
+          placeholder={props.placeholder}
+          border="0"
+          // Input should be full width if there are no values; otherwise, narrow the input to stay on one line
+          width={values.length < 1 ? '100%' : '35%'}
+          style={{ margin: '1px' }} // Special case to align within InputChip
+          focusStyle={{
+            border: '0',
+            outline: 'none',
+          }}
+          onBlur={handleBlur}
+          onKeyDown={handleKeyDown}
+        />
+      </Flex>
+    )
   }
-
-  const chips = values.map(value => {
-    function onChipDelete() {
-      handleDeleteChip(value)
-    }
-    return <Chip onDelete={onChipDelete} value={value} key={value} />
-  })
-
-  return (
-    <Flex
-      name={props.name}
-      minHeight="28px"
-      width="100%"
-      flexWrap="wrap"
-      border="1px solid"
-      borderColor="palette.charcoal300"
-      borderRadius="5px"
-    >
-      {chips}
-      <InputText
-        id="input"
-        height="24px"
-        value={inputValue}
-        onChange={handleInputChange}
-        type="text"
-        placeholder={props.placeholder}
-        border="0"
-        // Input should be full width if there are no values; otherwise, narrow the input to stay on one line
-        width={values.length < 1 ? '100%' : '35%'}
-        style={{ margin: '1px' }} // Special case to align within ChipInput
-        focusStyle={{
-          border: '0',
-          outline: 'none',
-        }}
-        onBlur={handleBlur}
-        onKeyDown={handleKeyDown}
-      />
-    </Flex>
-  )
-}
+)

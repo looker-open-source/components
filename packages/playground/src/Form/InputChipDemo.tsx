@@ -32,13 +32,15 @@ export function InputChipDemo() {
   }
   return (
     <Box m="xlarge">
-      <InputChip
-        name="FOO"
-        values={values}
-        inputValue={inputValue}
-        onChange={handleChange}
-        onInputChange={handleInputChange}
-      />
+      <form>
+        <InputChip
+          name="FOO"
+          values={values}
+          inputValue={inputValue}
+          onChange={handleChange}
+          onInputChange={handleInputChange}
+        />
+      </form>
     </Box>
   )
 }
