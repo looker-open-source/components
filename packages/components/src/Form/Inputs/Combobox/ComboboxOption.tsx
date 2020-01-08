@@ -100,9 +100,11 @@ export interface ComboboxOptionProps
 }
 
 export const ComboboxOptionDetail = styled.div`
-  flex: 1;
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
 `
 
 const ComboboxOptionInternal = forwardRef(function ComboboxOption(
@@ -165,12 +167,10 @@ const ComboboxOptionInternal = forwardRef(function ComboboxOption(
         tabIndex={-1}
         onClick={wrappedOnClick}
       >
+        <ComboboxOptionDetail>
+          {isCurrent && <Icon name="Check" mr="xxsmall" size={16} />}
+        </ComboboxOptionDetail>
         {children || <ComboboxOptionText />}
-        {isCurrent && (
-          <ComboboxOptionDetail>
-            <Icon name="Check" />
-          </ComboboxOptionDetail>
-        )}
       </li>
     </OptionContext.Provider>
   )
@@ -186,10 +186,21 @@ export const ComboboxOption = styled(ComboboxOptionInternal)`
   ${space}
   ${typography}
   cursor: default;
+  align-items: flex-start;
+  display: grid;
+  grid-gap: 4px;
+  grid-template-columns: 16px 1fr;
   outline: none;
+
   &[aria-selected='true'] {
     background-color: ${props =>
-      props.theme.colors.semanticColors.primary.lighter}
+      props.theme.colors.semanticColors.primary.lighter};
+    color:  ${props => props.theme.colors.semanticColors.primary.darker};
+  }
+
+  &:hover:not([aria-selected='true']) {
+    background-color: ${props =>
+      props.theme.colors.semanticColors.primary.lighter};
   }
 `
 
@@ -197,7 +208,7 @@ ComboboxOption.defaultProps = {
   color: 'palette.charcoal700',
   display: 'flex',
   fontSize: 'small',
-  px: 'medium',
+  px: 'xsmall',
   py: 'xxsmall',
 }
 

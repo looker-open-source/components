@@ -40,6 +40,7 @@ import ReactDOMServer from 'react-dom/server'
 import styled from 'styled-components'
 import { useForkedRef, useWrapEvent } from '../../../utils'
 import { InputSearch, InputSearchProps } from '../InputSearch'
+import { InputText } from '../InputText'
 import { makeHash, useBlur, useKeyDown } from './helpers'
 import { ComboboxContext } from './ComboboxContext'
 import { getComboboxText } from './ComboboxOption'
@@ -235,7 +236,7 @@ export const ComboboxInputInternal = forwardRef(function ComboboxInput(
       ref={ref}
       value={inputValue}
       readOnly={readOnly}
-      onClick={wrappedOnClick}
+      onMouseDown={wrappedOnClick}
       onClear={wrappedOnClear}
       onBlur={wrappedOnBlur}
       onFocus={wrappedOnFocus}
@@ -277,6 +278,10 @@ export const ComboboxInput = styled(ComboboxInputInternal)`
   background-position: right ${indicatorPadding} center, 0 0;
   background-size: ${indicatorSize}, 100%;
   padding-right: calc(2 * ${indicatorPadding} + ${indicatorSize});
+
+  ${InputText} {
+    cursor: ${props => (props.selectOnClick ? 'text' : 'default')};
+  }
 `
 
 ComboboxInput.defaultProps = {
