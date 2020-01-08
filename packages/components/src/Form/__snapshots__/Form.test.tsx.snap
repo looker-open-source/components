@@ -45,10 +45,10 @@ exports[`Form with one child 1`] = `
 }
 
 .c1 {
-  color: #262D33;
+  color: #343C42;
   margin-right: 0.5rem;
   font-weight: 600;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   display: inline-block;
 }
 
@@ -60,8 +60,8 @@ exports[`Form with one child 1`] = `
   >
     <label
       className="c1"
-      color="palette.charcoal800"
-      fontSize="small"
+      color="palette.charcoal700"
+      fontSize="xsmall"
       fontWeight="semiBold"
       htmlFor="text-field"
     >

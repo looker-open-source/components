@@ -112,10 +112,10 @@ exports[`A FieldSelect 1`] = `
 }
 
 .c1 {
-  color: #262D33;
+  color: #343C42;
   margin-right: 0.5rem;
   font-weight: 600;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   display: inline-block;
 }
 
@@ -124,8 +124,8 @@ exports[`A FieldSelect 1`] = `
 >
   <label
     className="c1"
-    color="palette.charcoal800"
-    fontSize="small"
+    color="palette.charcoal700"
+    fontSize="xsmall"
     fontWeight="semiBold"
     htmlFor="thumbs-up"
   >
@@ -336,10 +336,10 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
 }
 
 .c1 {
-  color: #262D33;
+  color: #343C42;
   margin-right: 0.5rem;
   font-weight: 600;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   display: inline-block;
 }
 
@@ -355,8 +355,8 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
 >
   <label
     className="c1"
-    color="palette.charcoal800"
-    fontSize="small"
+    color="palette.charcoal700"
+    fontSize="xsmall"
     fontWeight="semiBold"
     htmlFor="thumbs-up"
   >
@@ -570,10 +570,10 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
 }
 
 .c1 {
-  color: #262D33;
+  color: #343C42;
   margin-right: 0.5rem;
   font-weight: 600;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   display: inline-block;
 }
 
@@ -590,8 +590,8 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
 >
   <label
     className="c1"
-    color="palette.charcoal800"
-    fontSize="small"
+    color="palette.charcoal700"
+    fontSize="xsmall"
     fontWeight="semiBold"
     htmlFor="thumbs-up"
   >
@@ -760,10 +760,10 @@ exports[`A required FieldSelect 1`] = `
 }
 
 .c1 {
-  color: #262D33;
+  color: #343C42;
   margin-right: 0.5rem;
   font-weight: 600;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   display: inline-block;
 }
 
@@ -776,8 +776,8 @@ exports[`A required FieldSelect 1`] = `
 >
   <label
     className="c1"
-    color="palette.charcoal800"
-    fontSize="small"
+    color="palette.charcoal700"
+    fontSize="xsmall"
     fontWeight="semiBold"
     htmlFor="thumbs-up"
   >
@@ -947,10 +947,10 @@ exports[`FieldSelect supports labelWeight 1`] = `
 }
 
 .c1 {
-  color: #262D33;
+  color: #343C42;
   margin-right: 0.5rem;
   font-weight: 400;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   display: inline-block;
 }
 
@@ -959,8 +959,8 @@ exports[`FieldSelect supports labelWeight 1`] = `
 >
   <label
     className="c1"
-    color="palette.charcoal800"
-    fontSize="small"
+    color="palette.charcoal700"
+    fontSize="xsmall"
     fontWeight="normal"
     htmlFor="thumbs-up"
   >

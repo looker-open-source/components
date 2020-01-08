@@ -60,10 +60,10 @@ exports[`Fieldset with left aligned legend 1`] = `
 }
 
 .c4 {
-  color: #262D33;
+  color: #343C42;
   margin-right: 0.5rem;
   font-weight: 600;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   display: inline-block;
 }
 
@@ -104,8 +104,8 @@ exports[`Fieldset with left aligned legend 1`] = `
       >
         <label
           className="c4"
-          color="palette.charcoal800"
-          fontSize="small"
+          color="palette.charcoal700"
+          fontSize="xsmall"
           fontWeight="semiBold"
           htmlFor="text-1"
         >
@@ -131,8 +131,8 @@ exports[`Fieldset with left aligned legend 1`] = `
       >
         <label
           className="c4"
-          color="palette.charcoal800"
-          fontSize="small"
+          color="palette.charcoal700"
+          fontSize="xsmall"
           fontWeight="semiBold"
           htmlFor="text-2"
         >
@@ -158,8 +158,8 @@ exports[`Fieldset with left aligned legend 1`] = `
       >
         <label
           className="c4"
-          color="palette.charcoal800"
-          fontSize="small"
+          color="palette.charcoal700"
+          fontSize="xsmall"
           fontWeight="semiBold"
           htmlFor="text-3"
         >
