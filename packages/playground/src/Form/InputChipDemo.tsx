@@ -19,16 +19,26 @@
  */
 
 import React from 'react'
-import { Button, Divider, Box, InputChip } from '@looker/components'
+import { Box, InputChip } from '@looker/components'
 
 export function InputChipDemo() {
-  const [values, setValues] = React.useState<string[]>([])
+  const [values, setValues] = React.useState<string[]>(['hello'])
+  const [inputValue, setInputValue] = React.useState('hi')
   function handleChange(vals: string[]) {
     setValues(vals)
   }
+  function handleInputChange(value: string) {
+    setInputValue(value)
+  }
   return (
     <Box m="xlarge">
-      <InputChip name="FOO" values={values} onChange={handleChange} />
+      <InputChip
+        name="FOO"
+        values={values}
+        inputValue={inputValue}
+        onChange={handleChange}
+        onInputChange={handleInputChange}
+      />
     </Box>
   )
 }
