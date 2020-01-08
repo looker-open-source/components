@@ -57,7 +57,6 @@ exports[`MenuGroup - JSX label 1`] = `
   color: #4C535B;
   font-size: 0.875rem;
   font-weight: 400;
-  border: none;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -78,7 +77,6 @@ exports[`MenuGroup - JSX label 1`] = `
 
 .c4 button,
 .c4 a {
-  border: none;
   border-left-width: 4px;
   border-left-style: solid;
   border-left-color: transparent;
@@ -101,16 +99,6 @@ exports[`MenuGroup - JSX label 1`] = `
   color: #C1C6CC;
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
-}
-
-.c4:active {
-  border: none;
-  outline: none;
-}
-
-.c4:focus {
-  border: none;
-  outline: none;
 }
 
 .c0 {
@@ -259,7 +247,6 @@ exports[`MenuGroup - label 1`] = `
   color: #4C535B;
   font-size: 0.875rem;
   font-weight: 400;
-  border: none;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -280,7 +267,6 @@ exports[`MenuGroup - label 1`] = `
 
 .c4 button,
 .c4 a {
-  border: none;
   border-left-width: 4px;
   border-left-style: solid;
   border-left-color: transparent;
@@ -303,16 +289,6 @@ exports[`MenuGroup - label 1`] = `
   color: #C1C6CC;
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
-}
-
-.c4:active {
-  border: none;
-  outline: none;
-}
-
-.c4:focus {
-  border: none;
-  outline: none;
 }
 
 .c0 {
@@ -457,7 +433,6 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
   color: #4C535B;
   font-size: 0.875rem;
   font-weight: 400;
-  border: none;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -478,7 +453,6 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
 
 .c4 button,
 .c4 a {
-  border: none;
   border-left-width: 4px;
   border-left-style: solid;
   border-left-color: transparent;
@@ -501,16 +475,6 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
   color: #C1C6CC;
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
-}
-
-.c4:active {
-  border: none;
-  outline: none;
-}
-
-.c4:focus {
-  border: none;
-  outline: none;
 }
 
 .c0 {
@@ -665,7 +629,6 @@ exports[`MenuGroup - menu customization 1`] = `
   color: #BFB2FF;
   font-size: 0.875rem;
   font-weight: 400;
-  border: none;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -686,7 +649,6 @@ exports[`MenuGroup - menu customization 1`] = `
 
 .c2 button,
 .c2 a {
-  border: none;
   border-left-width: 10px;
   border-left-style: solid;
   border-left-color: transparent;
@@ -709,16 +671,6 @@ exports[`MenuGroup - menu customization 1`] = `
   color: #9785F2;
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
-}
-
-.c2:active {
-  border: none;
-  outline: none;
-}
-
-.c2:focus {
-  border: none;
-  outline: none;
 }
 
 .c0 {
@@ -909,7 +861,6 @@ exports[`MenuGroup 1`] = `
   color: #4C535B;
   font-size: 0.875rem;
   font-weight: 400;
-  border: none;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -930,7 +881,6 @@ exports[`MenuGroup 1`] = `
 
 .c2 button,
 .c2 a {
-  border: none;
   border-left-width: 4px;
   border-left-style: solid;
   border-left-color: transparent;
@@ -953,16 +903,6 @@ exports[`MenuGroup 1`] = `
   color: #C1C6CC;
   -webkit-transition: color 150ms cubic-bezier(0.86,0,0.07,1);
   transition: color 150ms cubic-bezier(0.86,0,0.07,1);
-}
-
-.c2:active {
-  border: none;
-  outline: none;
-}
-
-.c2:focus {
-  border: none;
-  outline: none;
 }
 
 .c0 {

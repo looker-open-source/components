@@ -80,7 +80,6 @@ export const MenuItemListItem = styled(Li)<MenuListItemProps>`
   ${space}
   ${typography}
 
-  border: none;
   align-items: center;
   display: flex;
   flex-wrap: wrap;
@@ -92,7 +91,6 @@ export const MenuItemListItem = styled(Li)<MenuListItemProps>`
 
   button,
   a {
-    border: none;
     border-left-width: ${({ itemStyle }) => itemStyle.marker.size}px;
     border-left-style: solid;
     border-left-color: ${({ itemStyle, current }) =>
@@ -118,29 +116,4 @@ export const MenuItemListItem = styled(Li)<MenuListItemProps>`
       ${props =>
         `${props.theme.transitions.durationQuick} ${props.theme.easings.ease}`};
   }
-
-  &:active {
-    border: none;
-    outline: none;
-  }
-
-  &:focus {
-    border: none;
-    outline: none;
-  }
 `
-
-/*
-
-  ${props =>
-    props.focusVisible &&
-    `box-shadow: 0 0 0 0.15rem ${rgba(
-      props.theme.colors.palette.purple300,
-      0.25
-    )};`}
-
-
-  &:focus {
-    border: none;
-    outline: none;
-  } */
