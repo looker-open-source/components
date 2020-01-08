@@ -73,6 +73,10 @@ exports[`A FieldSelect 1`] = `
   padding-right: calc(2 * .25rem + 1rem);
 }
 
+.c5 .c6 {
+  cursor: default;
+}
+
 .c0 {
   margin-bottom: 0.5rem;
   display: -webkit-box;
@@ -125,6 +129,7 @@ exports[`A FieldSelect 1`] = `
           aria-autocomplete="both"
           className="c3 c4 c5"
           onClick={[Function]}
+          onMouseDown={[Function]}
           width="100%"
         >
           <input
@@ -236,6 +241,10 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   padding-right: calc(2 * .25rem + 1rem);
 }
 
+.c6 .c7 {
+  cursor: default;
+}
+
 .c0 {
   margin-bottom: 0.5rem;
   display: -webkit-box;
@@ -314,6 +323,7 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
           aria-autocomplete="both"
           className="c4 c5 c6"
           onClick={[Function]}
+          onMouseDown={[Function]}
           width="100%"
         >
           <input
@@ -432,6 +442,10 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   padding-right: calc(2 * .25rem + 1rem);
 }
 
+.c6 .c7 {
+  cursor: default;
+}
+
 .c0 {
   margin-bottom: 0.5rem;
   display: -webkit-box;
@@ -507,6 +521,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
           aria-autocomplete="both"
           className="c4 c5 c6"
           onClick={[Function]}
+          onMouseDown={[Function]}
           width="100%"
         >
           <input
@@ -607,6 +622,10 @@ exports[`A required FieldSelect 1`] = `
   padding-right: calc(2 * .25rem + 1rem);
 }
 
+.c6 .c7 {
+  cursor: default;
+}
+
 .c0 {
   margin-bottom: 0.5rem;
   display: -webkit-box;
@@ -671,6 +690,7 @@ exports[`A required FieldSelect 1`] = `
           aria-autocomplete="both"
           className="c4 c5 c6"
           onClick={[Function]}
+          onMouseDown={[Function]}
           width="100%"
         >
           <input
@@ -764,6 +784,10 @@ exports[`FieldSelect supports labelWeight 1`] = `
   padding-right: calc(2 * .25rem + 1rem);
 }
 
+.c5 .c6 {
+  cursor: default;
+}
+
 .c0 {
   margin-bottom: 0.5rem;
   display: -webkit-box;
@@ -816,6 +840,7 @@ exports[`FieldSelect supports labelWeight 1`] = `
           aria-autocomplete="both"
           className="c3 c4 c5"
           onClick={[Function]}
+          onMouseDown={[Function]}
           width="100%"
         >
           <input

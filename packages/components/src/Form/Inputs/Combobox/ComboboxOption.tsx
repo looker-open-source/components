@@ -108,7 +108,14 @@ export const ComboboxOptionDetail = styled.div`
 `
 
 const ComboboxOptionInternal = forwardRef(function ComboboxOption(
-  { children, label, value, onClick, ...props }: ComboboxOptionProps,
+  {
+    children,
+    label,
+    value,
+    onClick,
+    onMouseEnter,
+    ...props
+  }: ComboboxOptionProps,
   forwardedRef: Ref<HTMLLIElement>
 ) {
   const {
@@ -151,7 +158,13 @@ const ComboboxOptionInternal = forwardRef(function ComboboxOption(
     transition && transition(ComboboxActionType.SELECT_WITH_CLICK, { option })
   }
 
+  function handleMouseEnter() {
+    const option = { label, value }
+    transition && transition(ComboboxActionType.NAVIGATE, { option })
+  }
+
   const wrappedOnClick = useWrapEvent(handleClick, onClick)
+  const wrappedOnMouseEnter = useWrapEvent(handleMouseEnter, onMouseEnter)
 
   return (
     <OptionContext.Provider value={{ label, value }}>
@@ -166,6 +179,7 @@ const ComboboxOptionInternal = forwardRef(function ComboboxOption(
         // onBlur will work as intended
         tabIndex={-1}
         onClick={wrappedOnClick}
+        onMouseEnter={wrappedOnMouseEnter}
       >
         <ComboboxOptionDetail>
           {isCurrent && <Icon name="Check" mr="xxsmall" size={16} />}
@@ -196,11 +210,6 @@ export const ComboboxOption = styled(ComboboxOptionInternal)`
     background-color: ${props =>
       props.theme.colors.semanticColors.primary.lighter};
     color:  ${props => props.theme.colors.semanticColors.primary.darker};
-  }
-
-  &:hover:not([aria-selected='true']) {
-    background-color: ${props =>
-      props.theme.colors.semanticColors.primary.lighter};
   }
 `
 

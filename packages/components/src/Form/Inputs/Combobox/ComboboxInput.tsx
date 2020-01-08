@@ -81,6 +81,7 @@ export const ComboboxInputInternal = forwardRef(function ComboboxInput(
 
     // wrapped events
     onClick,
+    onMouseDown,
     onClear,
     onChange,
     onKeyDown,
@@ -201,6 +202,9 @@ export const ComboboxInputInternal = forwardRef(function ComboboxInput(
       selectOnClickRef.current = false
       inputElement && inputElement.select()
     }
+  }
+
+  function handleMouseDown() {
     if (state === ComboboxState.IDLE) {
       // Opening a closed list
       transition &&
@@ -225,6 +229,7 @@ export const ComboboxInputInternal = forwardRef(function ComboboxInput(
 
   const wrappedOnClear = useWrapEvent(handleClear, onClear)
   const wrappedOnClick = useWrapEvent(handleClick, onClick)
+  const wrappedOnMouseDown = useWrapEvent(handleMouseDown, onMouseDown)
   const wrappedOnBlur = useWrapEvent(handleBlur, onBlur)
   const wrappedOnFocus = useWrapEvent(handleFocus, onFocus)
   const wrappedOnChange = useWrapEvent(handleChange, onChange)
@@ -236,7 +241,8 @@ export const ComboboxInputInternal = forwardRef(function ComboboxInput(
       ref={ref}
       value={inputValue}
       readOnly={readOnly}
-      onMouseDown={wrappedOnClick}
+      onClick={wrappedOnClick}
+      onMouseDown={wrappedOnMouseDown}
       onClear={wrappedOnClear}
       onBlur={wrappedOnBlur}
       onFocus={wrappedOnFocus}
@@ -280,7 +286,7 @@ export const ComboboxInput = styled(ComboboxInputInternal)`
   padding-right: calc(2 * ${indicatorPadding} + ${indicatorSize});
 
   ${InputText} {
-    cursor: ${props => (props.selectOnClick ? 'text' : 'default')};
+    cursor: ${props => (props.readOnly ? 'default' : 'text')};
   }
 `
 
