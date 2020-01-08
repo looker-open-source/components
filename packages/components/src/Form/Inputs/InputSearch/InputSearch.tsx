@@ -55,6 +55,10 @@ export interface InputSearchProps extends InputTextProps {
    */
   hideControls?: boolean
   /**
+   * overrides the internal logic that shows the clear icon when there's a value
+   */
+  showClear?: boolean
+  /**
    * adds text when input value in not empty
    */
   summary?: string
@@ -76,8 +80,6 @@ export interface InputSearchProps extends InputTextProps {
 const InputSearchComponent = forwardRef(
   (
     {
-      hideControls = false,
-
       onChange,
       onClear,
       onClick,
@@ -88,7 +90,10 @@ const InputSearchComponent = forwardRef(
       onMouseOver,
       onMouseUp,
 
+      children,
       className,
+      hideControls = false,
+      showClear,
       summary,
       value: controlledValue = '',
 
@@ -128,7 +133,7 @@ const InputSearchComponent = forwardRef(
     const controls = !hideControls && (
       <InputSearchControls
         onClear={handleClear}
-        showClear={inputValue.length > 0}
+        showClear={showClear || inputValue.length > 0}
         summary={summary}
       />
     )
@@ -152,6 +157,7 @@ const InputSearchComponent = forwardRef(
         {...omit(props, inputPropKeys)}
         {...mouseHandlers}
       >
+        {children}
         <InputText
           onChange={handleChange}
           value={inputValue}
@@ -187,7 +193,7 @@ export const InputSearch = styled(InputSearchComponent)`
 
   ${InputText} {
     border: none;
-    width: 100%;
+    flex: 1;
     appearance: none;
     background: transparent;
     box-shadow: none;

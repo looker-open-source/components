@@ -1,9 +1,10 @@
 import React, { FormEvent, forwardRef, Ref, useState } from 'react'
 import styled from 'styled-components'
+import { height, MaxHeightProps } from 'styled-system'
 
-import { useControlWarn, useForkedRef, useCallbackRef } from '../../../utils'
-import { Flex } from '../../../Layout'
+import { useControlWarn } from '../../../utils'
 import { InputText } from '../InputText'
+import { InputSearch, InputSearchProps } from '../InputSearch'
 
 interface ChipProps {
   value: string
@@ -28,13 +29,22 @@ export const Chip = styled(ChipInternal)`
  * but also allows (validated) user inputs to be stored as 'chips' (see the Chip element)
  */
 
-interface InputChipProps {
-  name: string
-  placeholder?: string
+interface InputChipProps
+  extends MaxHeightProps,
+    Omit<InputSearchProps, 'value' | 'onChange' | 'height'> {
   values: string[]
   onChange: (emails: string[]) => void
+  /**
+   * for controlling the input text
+   */
   inputValue?: string
+  /**
+   * callback when the input text changes (use with inputValue to control the input text)
+   */
   onInputChange?: (value: string) => void
+  /**
+   * for checking each value before converting to a chip
+   */
   validate?: (value: string) => boolean
 }
 
@@ -68,7 +78,7 @@ function getValuesFromInput(
   }
 }
 
-export const InputChip = forwardRef(
+export const InputChipInternal = forwardRef(
   (
     {
       values,
@@ -78,16 +88,13 @@ export const InputChip = forwardRef(
       validate,
       ...props
     }: InputChipProps,
-    forwardedRef: Ref<HTMLInputElement>
+    ref: Ref<HTMLInputElement>
   ) => {
     const isControlled = useControlWarn({
       controllingProps: ['onInputChange', 'inputValue'],
       isControlledCheck: () => controlledInputValue !== undefined,
       name: 'InputChip',
     })
-
-    const [element, callbackRef] = useCallbackRef()
-    const ref = useForkedRef(forwardedRef, callbackRef)
 
     const [uncontrolledInputValue, setInputValue] = useState('')
     const inputValue =
@@ -101,7 +108,6 @@ export const InputChip = forwardRef(
         values,
         validate
       )
-
       onChange(newValues)
       if (!isControlled) {
         setInputValue(newInputValue)
@@ -153,8 +159,12 @@ export const InputChip = forwardRef(
       onInputChange && onInputChange(newValue)
     }
 
-    function handleClick() {
-      element.focus()
+    function handleClear() {
+      onChange([])
+      if (!isControlled) {
+        setInputValue('')
+      }
+      onInputChange && onInputChange('')
     }
 
     const chips = values.map(value => {
@@ -165,34 +175,31 @@ export const InputChip = forwardRef(
     })
 
     return (
-      <Flex
-        name={props.name}
-        minHeight="28px"
-        width="100%"
-        flexWrap="wrap"
-        border="1px solid"
-        borderColor="palette.charcoal300"
-        borderRadius="5px"
-        onClick={handleClick}
+      <InputSearch
+        ref={ref}
+        height="auto"
+        value={inputValue}
+        onChange={handleInputChange}
+        onBlur={handleBlur}
+        onKeyDown={handleKeyDown}
+        showClear={values.length > 0}
+        onClear={handleClear}
+        {...props}
       >
         {chips}
-        <InputText
-          ref={ref}
-          value={inputValue}
-          onChange={handleInputChange}
-          placeholder={props.placeholder}
-          border="0"
-          // Input should be full width if there are no values; otherwise, narrow the input to stay on one line
-          width={values.length < 1 ? '100%' : '35%'}
-          style={{ margin: '1px' }} // Special case to align within InputChip
-          focusStyle={{
-            border: '0',
-            outline: 'none',
-          }}
-          onBlur={handleBlur}
-          onKeyDown={handleKeyDown}
-        />
-      </Flex>
+      </InputSearch>
     )
   }
 )
+
+InputChipInternal.displayName = 'InputChipInternal'
+
+export const InputChip = styled(InputChipInternal)`
+  ${height}
+  flex-wrap: wrap;
+
+  ${InputText} {
+    min-width: 25%;
+    margin: 1px;
+  }
+`
