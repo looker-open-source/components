@@ -97,7 +97,7 @@
     "ttypescript": "^1.5.8",
     "typescript": "^3.7.4",
     "typescript-plugin-styled-components": "^1.4.3",
-    "webpack": "^4.41.4"
+    "webpack": "^4.41.5"
   },
   "lint-staged": {
     "**/*.ts?(x)": [
