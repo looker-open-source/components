@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { height, MaxHeightProps } from 'styled-system'
 
 import { useControlWarn } from '../../../utils'
+import { IconButton } from '../../../Button'
 import { InputText } from '../InputText'
 import { InputSearch, InputSearchProps } from '../InputSearch'
 
@@ -14,7 +15,7 @@ interface ChipProps {
 function ChipInternal({ onDelete, value, ...props }: ChipProps) {
   return (
     <div {...props}>
-      {value} <span onClick={onDelete}>(x)</span>
+      {value} <IconButton icon="Close" label="Remove" onClick={onDelete} />
     </div>
   )
 }
@@ -48,7 +49,7 @@ interface InputChipProps
   validate?: (value: string) => boolean
 }
 
-function getValuesFromInput(
+function getUpdatedValues(
   inputValue: string,
   currentValues: string[],
   validate?: (value: string) => boolean
@@ -103,7 +104,7 @@ export const InputChipInternal = forwardRef(
         : uncontrolledInputValue
 
     function updateValues() {
-      const { newValues, newInputValue } = getValuesFromInput(
+      const { newValues, newInputValue } = getUpdatedValues(
         inputValue,
         values,
         validate
@@ -144,7 +145,7 @@ export const InputChipInternal = forwardRef(
       let newValue = value
       // If the last character is a comma, update the values
       if (value[value.length - 1] === ',') {
-        const { newValues, newInputValue } = getValuesFromInput(
+        const { newValues, newInputValue } = getUpdatedValues(
           value,
           values,
           validate
