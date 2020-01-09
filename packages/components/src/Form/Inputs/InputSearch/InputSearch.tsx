@@ -66,6 +66,7 @@ export interface InputSearchProps extends InputTextProps {
    * handle when the user clicks the x icon button to clear the value
    */
   onClear?: (e: MouseEvent<HTMLButtonElement>) => void
+  defaultValue?: string
   value?: string
 
   onClick?: (e: MouseEvent<HTMLDivElement>) => void
@@ -92,6 +93,7 @@ const InputSearchComponent = forwardRef(
 
       children,
       className,
+      defaultValue,
       hideControls = false,
       showClear,
       summary,
@@ -104,9 +106,11 @@ const InputSearchComponent = forwardRef(
     const isControlled = useControlWarn({
       controllingProps: ['onChange', 'onClear', 'value'],
       isControlledCheck: () => onChange !== undefined,
-      name: 'ButtonGroup',
+      name: 'InputSearch',
     })
-    const [uncontrolledValue, setValue] = useState(controlledValue)
+    const [uncontrolledValue, setValue] = useState(
+      defaultValue || controlledValue
+    )
     const inputValue = isControlled ? controlledValue : uncontrolledValue
 
     const internalRef = useRef<null | HTMLInputElement>(null)

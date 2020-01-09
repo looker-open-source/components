@@ -26,7 +26,11 @@
 
 import 'jest-styled-components'
 import React from 'react'
-import { mountWithTheme, assertSnapshot } from '@looker/components-test-utils'
+import {
+  mountWithTheme,
+  assertSnapshot,
+  renderWithTheme,
+} from '@looker/components-test-utils'
 import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
 import { render, fireEvent } from '@testing-library/react'
@@ -88,4 +92,12 @@ test('InputSearch onClear can be updated by user', () => {
   const inputButton = getByRole('button')
   inputButton && fireEvent.click(inputButton)
   expect(onClear).toHaveBeenCalled()
+})
+
+test('InputSearch accepts a defaultValue', () => {
+  const { getByPlaceholderText } = renderWithTheme(
+    <InputSearch defaultValue="replace me" placeholder="type here" />
+  )
+  const input = getByPlaceholderText('type here')
+  expect(input).toHaveValue('replace me')
 })
