@@ -1,0 +1,39 @@
+---
+title: Chip
+propsOf: Chip
+---
+
+`Chip` has its default values as size small and background color as purple. The styles can be updated for size, color, and it has a option to apply a `rounded` border.
+
+## Chip Sizes
+
+```jsx
+<Flex alignItems="center" justifyContent="space-around">
+  <Chip size="small">Small</Chip>
+  <Chip size="medium">Medium</Chip>
+  <Chip size="large">Large</Chip>
+</Flex>
+```
+
+## Chip Intent
+
+```jsx
+<Flex alignItems="center" justifyContent="space-around">
+  <Chip intent="plain">Plain</Chip>
+  <Chip intent="positive">Positive</Chip>
+  <Chip intent="info">Info</Chip>
+  <Chip intent="neutral">Neutral</Chip>
+  <Chip intent="warning">Warning</Chip>
+  <Chip intent="critical">Critical</Chip>
+</Flex>
+```
+
+## Chip Options
+
+### Rounded
+
+Ends of Chip are fully-rounded instead of just receiving a slight radius without `rounded` property.
+
+```jsx
+<Chip rounded>Rounded Chip</Chip>
+```
