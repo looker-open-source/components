@@ -80,7 +80,7 @@ export interface ButtonBaseProps
   focusVisible?: boolean
 
   /**
-   * If true, the button will fill 100% of its container.
+   * If true, the button's width will be set to 100%.
    */
   fullWidth?: boolean
 }
