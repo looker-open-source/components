@@ -37,6 +37,7 @@ const StaticConfirm: React.FC = () => {
         alert('You did something')
         close()
       }}
+      width={['10rem', '20rem', '30rem']}
     >
       {open => (
         <Button onClick={open} mr="small">
