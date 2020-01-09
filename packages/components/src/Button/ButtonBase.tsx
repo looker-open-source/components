@@ -78,6 +78,11 @@ export interface ButtonBaseProps
   color?: ButtonColors
 
   focusVisible?: boolean
+
+  /**
+   * If true, the button will fill 100% of its container.
+   */
+  fullWidth?: boolean
 }
 
 export interface ButtonProps extends ButtonBaseProps, ButtonIconProps {
@@ -99,6 +104,8 @@ export const buttonCSS = css<ButtonBaseProps>`
         0.25
       )};
   `}
+
+  ${props => props.fullWidth && `width: 100%;`}
 
   align-items: center;
   border-radius: ${radii[CustomizableButtonAttributes.borderRadius]};

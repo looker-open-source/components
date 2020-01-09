@@ -83,6 +83,16 @@ test('Button validates all sizes', () => {
   expect(getByText('large button')).toMatchSnapshot()
 })
 
+test('Button can be full width', () => {
+  const { getByText } = render(
+    <ThemeProvider theme={theme}>
+      <Button fullWidth>Full Width</Button>
+    </ThemeProvider>
+  )
+
+  expect(getByText('Full Width')).toMatchSnapshot()
+})
+
 test('Button Focus: renders outline when tabbing into focus, but not when clicking', () => {
   const { getByText } = render(
     <ThemeProvider theme={theme}>
