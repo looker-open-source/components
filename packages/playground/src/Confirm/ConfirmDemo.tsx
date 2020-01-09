@@ -37,7 +37,7 @@ const StaticConfirm: React.FC = () => {
         alert('You did something')
         close()
       }}
-      width={['10rem', '20rem', '30rem']}
+      width={['10rem', '20rem', '30rem', '40rem']}
     >
       {open => (
         <Button onClick={open} mr="small">
@@ -57,6 +57,7 @@ const RichConfirm: React.FC = () => {
         alert('Now you know.')
         close()
       }}
+      width={['10rem', '20rem', '30rem', '40rem']}
     >
       {open => <Button onClick={open}>Do something fancy</Button>}
     </Confirm>
