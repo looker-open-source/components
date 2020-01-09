@@ -1,8 +1,8 @@
-import React, { FormEvent, forwardRef, Ref, useState } from 'react'
+import React, { FormEvent, forwardRef, Ref } from 'react'
 import styled from 'styled-components'
 import { height, MaxHeightProps } from 'styled-system'
 
-import { useControlWarn } from '../../../utils'
+import { useControllableState } from '../../../utils'
 import { IconButton } from '../../../Button'
 import { InputText } from '../InputText'
 import { InputSearch, InputSearchProps } from '../InputSearch'
@@ -32,9 +32,17 @@ export const Chip = styled(ChipInternal)`
 
 interface InputChipProps
   extends MaxHeightProps,
-    Omit<InputSearchProps, 'value' | 'onChange' | 'height'> {
+    Omit<InputSearchProps, 'value' | 'defaultValue' | 'onChange' | 'height'> {
+  /**
+   * InputChip is a controlled component since unlike native inputs,
+   * you can't easily access the current value via dom API
+   */
   values: string[]
-  onChange: (emails: string[]) => void
+  /**
+   * InputChip is a controlled component since unlike native inputs,
+   * you can't easily access the current value via dom API
+   */
+  onChange: (values: string[]) => void
   /**
    * for controlling the input text
    */
@@ -74,8 +82,8 @@ function getUpdatedValues(
 
   // Save valid values and keep invalid ones in the input
   return {
-    newInputValue: invalidValues.join(', '),
-    newValues: [...currentValues, ...validValues],
+    updatedInputValue: invalidValues.join(', '),
+    updatedValues: validValues.length && [...currentValues, ...validValues],
   }
 }
 
@@ -91,29 +99,25 @@ export const InputChipInternal = forwardRef(
     }: InputChipProps,
     ref: Ref<HTMLInputElement>
   ) => {
-    const isControlled = useControlWarn({
-      controllingProps: ['onInputChange', 'inputValue'],
-      isControlledCheck: () => controlledInputValue !== undefined,
-      name: 'InputChip',
-    })
+    const [inputValue, setInputValue] = useControllableState(
+      '',
+      controlledInputValue,
+      onInputChange,
+      ['inputValue', 'onInputChange'],
+      'InputChip'
+    )
 
-    const [uncontrolledInputValue, setInputValue] = useState('')
-    const inputValue =
-      isControlled && controlledInputValue !== undefined
-        ? controlledInputValue
-        : uncontrolledInputValue
-
-    function updateValues() {
-      const { newValues, newInputValue } = getUpdatedValues(
-        inputValue,
+    function updateValues(newInputValue?: string) {
+      const { updatedValues, updatedInputValue } = getUpdatedValues(
+        newInputValue || inputValue,
         values,
         validate
       )
-      onChange(newValues)
-      if (!isControlled) {
-        setInputValue(newInputValue)
+      if (updatedValues) {
+        onChange(updatedValues)
       }
-      onInputChange && onInputChange(newInputValue)
+
+      setInputValue(updatedInputValue)
     }
 
     function handleDeleteChip(value: string) {
@@ -142,30 +146,17 @@ export const InputChipInternal = forwardRef(
 
     function handleInputChange(e: FormEvent<HTMLInputElement>) {
       const { value } = e.currentTarget
-      let newValue = value
       // If the last character is a comma, update the values
       if (value[value.length - 1] === ',') {
-        const { newValues, newInputValue } = getUpdatedValues(
-          value,
-          values,
-          validate
-        )
-        onChange(newValues)
-        newValue = newInputValue
+        updateValues(value)
+      } else {
+        setInputValue(value)
       }
-
-      if (!isControlled) {
-        setInputValue(newValue)
-      }
-      onInputChange && onInputChange(newValue)
     }
 
     function handleClear() {
       onChange([])
-      if (!isControlled) {
-        setInputValue('')
-      }
-      onInputChange && onInputChange('')
+      setInputValue('')
     }
 
     const chips = values.map(value => {

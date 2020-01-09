@@ -140,12 +140,13 @@ test('new values are validated', () => {
   )
   const input = getByPlaceholderText('type here')
   fireEvent.change(input, { target: { value: 'tag2,' } })
-  expect(onChangeMock).toHaveBeenCalledTimes(1)
-  expect(onChangeMock).toHaveBeenCalledWith([])
+  // onChange is not called if there are now new valid values
+  expect(onChangeMock).not.toHaveBeenCalled()
+  // invalid value remains in the input
   expect(input).toHaveValue('tag2')
 
   fireEvent.change(input, { target: { value: 'tag1,' } })
-  expect(onChangeMock).toHaveBeenCalledTimes(2)
+  expect(onChangeMock).toHaveBeenCalledTimes(1)
   expect(onChangeMock).toHaveBeenCalledWith(['tag1'])
   expect(input).toHaveValue('')
 })
