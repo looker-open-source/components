@@ -48,7 +48,6 @@ export const InputSearchControls: FC<InputSearchControlsProps> = ({
       label="Clear Field"
       onClick={onClear}
       tabIndex={-1}
-      tooltipPlacement="left"
     />
   )
 
