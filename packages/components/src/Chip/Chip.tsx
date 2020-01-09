@@ -27,9 +27,6 @@
 import {
   color,
   reset,
-  SizeLarge,
-  SizeMedium,
-  SizeSmall,
   space,
   SpaceProps,
   typography,
@@ -37,72 +34,14 @@ import {
 } from '@looker/design-tokens'
 import React, { ReactNode, FC } from 'react'
 import styled from 'styled-components'
-import { variant } from 'styled-system'
-
-export type ChipSizes = SizeSmall | SizeMedium | SizeLarge
 
 export interface ChipProps
   extends SpaceProps,
     CompatibleHTMLProps<HTMLSpanElement> {
   children: ReactNode
-  /**
-   *  @default `default`
-   **/
-  intent?:
-    | 'warning'
-    | 'positive'
-    | 'critical'
-    | 'info'
-    | 'neutral'
-    | 'plain'
-    | 'default'
-
-  /**
-   *  @default false
-   **/
-  rounded?: boolean
-
-  /**
-   * Defines the size of Chip diameter.
-   * @default "medium"
-   */
-  size?: ChipSizes
+  onDelete?: boolean
 }
 
-/* eslint-disable sort-keys */
-const size = variant({
-  prop: 'size',
-  variants: {
-    small: {
-      fontSize: 'xxsmall',
-      lineHeight: '16px',
-      px: 'xxsmall',
-    },
-    medium: {
-      fontSize: 'xsmall',
-      lineHeight: '24px',
-      px: 'xsmall',
-    },
-    large: {
-      fontSize: 'medium',
-      lineHeight: '32px',
-      px: 'xsmall',
-    },
-  },
-})
-
-const intent = variant({
-  prop: 'intent',
-  variants: {
-    critical: { bg: 'palette.red500', color: 'palette.white' },
-    default: { bg: 'palette.purple500', color: 'palette.white' },
-    info: { bg: 'palette.blue500', color: 'palette.white' },
-    neutral: { bg: 'palette.charcoal500', color: 'palette.white' },
-    plain: { bg: 'palette.white', color: 'palette.purple500' },
-    positive: { bg: 'palette.green500', color: 'palette.white' },
-    warning: { bg: 'palette.yellow500', color: 'palette.white' },
-  },
-})
 const ChipLayout: FC<ChipProps> = ({ children, ...props }) => {
   return <span {...props}>{children}</span>
 }
@@ -113,15 +52,13 @@ export const Chip = styled(ChipLayout).attrs({ fontWeight: 'semiBold' })`
   ${color}
   ${space}
   ${typography}
-  ${size}
-  ${intent}
 
-  display: inline-flex;
-  border-radius: ${props =>
-    props.rounded ? '50px' : props.theme.radii.medium};
+  align-items: center;
+  border-radius: ${props => props.theme.radii.medium};
+  color: 'palette.purple500';
+  display: flex;
+  font-size: 'xsmall';
+  justify-items: center;
+  min-width: '44px';
+  max-width: '320px';
 `
-
-Chip.defaultProps = {
-  intent: 'default',
-  size: 'medium',
-}
