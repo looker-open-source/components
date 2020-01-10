@@ -44,7 +44,12 @@ export const DiscardChangesDialog: FC<DiscardChangesProps> = ({
   isOpen,
 }) => {
   return (
-    <Dialog isOpen={isOpen} onClose={closeDialog} width={'30rem'}>
+    <Dialog
+      isOpen={isOpen}
+      onClose={closeDialog}
+      width={'30rem'}
+      testId="discard-changes-dialog"
+    >
       <ModalHeader headerIcon="Warning" headerIconColor="palette.red500">
         Discard Changes?
       </ModalHeader>

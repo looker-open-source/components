@@ -125,7 +125,13 @@ export const ConfirmationDialog: FC<ConfirmationDialogProps> = ({
   }, [onChange, ref])
 
   return (
-    <Dialog isOpen={isOpen} onClose={onCancel} ref={ref} {...props}>
+    <Dialog
+      isOpen={isOpen}
+      onClose={onCancel}
+      ref={ref}
+      {...props}
+      testId="confirmation-dialog"
+    >
       <ModalHeader>{title}</ModalHeader>
       <ModalContent innerProps={{ py: 'none' }}>
         {typeof message === 'string' ? (

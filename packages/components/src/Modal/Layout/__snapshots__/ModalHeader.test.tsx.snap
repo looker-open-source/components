@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ModalHeader 1`] = `
-.c7 {
+.c6 {
   width: 22px;
   height: 22px;
   -webkit-align-items: center;
@@ -14,7 +14,7 @@ exports[`ModalHeader 1`] = `
   display: inline-flex;
 }
 
-.c3 {
+.c2 {
   width: 28px;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -44,56 +44,41 @@ exports[`ModalHeader 1`] = `
   padding: 0rem;
 }
 
-.c3[disabled] {
+.c2[disabled] {
   cursor: default;
   -webkit-filter: grayscale(0.3);
   filter: grayscale(0.3);
   opacity: 0.25;
 }
 
-.c1 {
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c4 {
+.c3 {
   background: transparent;
   border: 1px solid transparent;
   color: #939BA5;
 }
 
-.c4:active,
-.c4.active {
+.c3:active,
+.c3.active {
   background: #F5F6F7;
   border-color: #F5F6F7;
   color: #4C535B;
 }
 
-.c4:hover,
-.c4:focus,
-.c4.hover {
+.c3:hover,
+.c3:focus,
+.c3.hover {
   background: #FBFBFC;
   border-color: #FBFBFC;
   color: #4C535B;
 }
 
-.c4[disabled]:hover,
-.c4[disabled]:active,
-.c4[disabled]:focus {
+.c3[disabled]:hover,
+.c3[disabled]:active,
+.c3[disabled]:focus {
   color: #939BA5;
 }
 
-.c2 {
+.c1 {
   font-weight: 600;
   line-height: 1.75rem;
   font-size: 1.125rem;
@@ -101,7 +86,7 @@ exports[`ModalHeader 1`] = `
   color: #262D33;
 }
 
-.c6 {
+.c5 {
   position: absolute;
   height: 1px;
   width: 1px;
@@ -110,7 +95,7 @@ exports[`ModalHeader 1`] = `
   clip: rect(1px,1px,1px,1px);
 }
 
-.c5 svg {
+.c4 svg {
   pointer-events: none;
 }
 
@@ -118,59 +103,71 @@ exports[`ModalHeader 1`] = `
   padding: 1.25rem;
   padding-right: 2rem;
   padding-left: 2rem;
+  display: grid;
+  grid-template-columns: [icon] auto [text] 1fr [close] auto;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 <header
   className="c0"
 >
-  <div
+  <h3
     className="c1"
+    fontSize="large"
+    fontWeight="semiBold"
+    style={
+      Object {
+        "gridArea": "text",
+      }
+    }
   >
-    <h3
-      className="c2"
-      fontSize="large"
-      fontWeight="semiBold"
+    The Heading for a Dialog
+  </h3>
+  <button
+    className="c2 c3 c4"
+    color="neutral"
+    onBlur={[Function]}
+    onFocus={[Function]}
+    onKeyUp={[Function]}
+    onMouseOut={[Function]}
+    onMouseOver={[Function]}
+    size="small"
+    style={
+      Object {
+        "gridArea": "close",
+      }
+    }
+    tabIndex={-1}
+    width={28}
+  >
+    <div
+      className="c5"
     >
-      The Heading for a Dialog
-    </h3>
-    <button
-      className="c3 c4 c5"
-      color="neutral"
-      onBlur={[Function]}
-      onFocus={[Function]}
-      onKeyUp={[Function]}
-      onMouseOut={[Function]}
-      onMouseOver={[Function]}
-      size="small"
-      tabIndex={-1}
-      width={28}
+      Close
+    </div>
+    <div
+      aria-hidden={true}
+      className="c6 "
+      size={22}
     >
-      <div
-        className="c6"
+      <svg
+        fill="currentColor"
+        height="100%"
+        viewBox="0 0 24 24"
+        width="100%"
       >
-        Close
-      </div>
-      <div
-        aria-hidden={true}
-        className="c7 "
-        size={22}
-      >
-        <svg
+        <title>
+          Close
+        </title>
+        <path
+          d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"
           fill="currentColor"
-          height="100%"
-          viewBox="0 0 24 24"
-          width="100%"
-        >
-          <title>
-            Close
-          </title>
-          <path
-            d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"
-            fill="currentColor"
-          />
-        </svg>
-      </div>
-    </button>
-  </div>
+        />
+      </svg>
+    </div>
+  </button>
 </header>
 `;

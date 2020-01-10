@@ -30,11 +30,12 @@ import { DialogSurface } from './DialogSurface'
 
 interface DialogProps extends ModalProps {
   children: ReactNode
+  testId?: string
 }
 
 export const Dialog = forwardRef(
   (
-    { width, children, surfaceStyles, ...props }: DialogProps,
+    { width, children, surfaceStyles, testId, ...props }: DialogProps,
     ref: Ref<HTMLDivElement>
   ) => {
     const surface = (animationState: string) => (
@@ -43,6 +44,7 @@ export const Dialog = forwardRef(
         className={animationState}
         width={width}
         ref={ref}
+        data-testid={testId}
       >
         {children}
       </DialogSurface>

@@ -51,8 +51,8 @@ afterEach(() => {
   optionalProps.onCancel.mockClear()
 })
 
-test('<Confirm/> with defaults', () => {
-  const { getByText, queryByText } = renderWithTheme(
+test('<Confirm/> confirm button closes modal and calls onConfirm callback', () => {
+  const { getByText, queryByTestId } = renderWithTheme(
     <Confirm {...requiredProps}>
       {open => <Button onClick={open}>Do Something</Button>}
     </Confirm>
@@ -61,18 +61,25 @@ test('<Confirm/> with defaults', () => {
   const opener = getByText('Do Something')
   fireEvent.click(opener)
 
-  const button = getByText('Confirm')
+  const confirmButton = getByText('Confirm')
 
+  expect(queryByTestId('confirmation-dialog')).toBeVisible()
+  expect(queryByTestId('discard-changes-dialog')).not.toBeInTheDocument()
   expect(getByText(requiredProps.title)).toBeVisible()
   expect(getByText(requiredProps.message)).toBeVisible()
-  expect(button).toHaveStyle(`background: ${semanticColors.primary.main}`)
+  expect(confirmButton).toHaveStyle(
+    `background: ${semanticColors.primary.main}`
+  )
 
-  fireEvent.click(button)
+  fireEvent.click(confirmButton)
   expect(requiredProps.onConfirm).toHaveBeenCalledTimes(1)
-
-  fireEvent.click(getByText('Cancel'))
-  expect(queryByText(requiredProps.title)).toBeNull()
+  expect(queryByTestId('confirmation-dialog')).not.toBeInTheDocument()
+  expect(queryByTestId('discard-changes-dialog')).not.toBeInTheDocument()
 })
+
+test('<Confirm /> cancel button closes modal and calls onCancel callback by default', () => {})
+
+test('<Confirm /> cancel button renders "discard changes modal" when protectChanges is true', () => {})
 
 test('<Confirm/> with custom props', () => {
   const { getByText } = renderWithTheme(
@@ -87,9 +94,7 @@ test('<Confirm/> with custom props', () => {
   const button = getByText(optionalProps.confirmLabel || '')
   expect(button).toHaveStyle(`background: ${semanticColors.danger.main}`)
 
-  fireEvent.click(getByText(optionalProps.cancelLabel || ''))
   fireEvent.click(button)
 
   expect(requiredProps.onConfirm).toHaveBeenCalledTimes(1)
-  expect(optionalProps.onCancel).toHaveBeenCalledTimes(1)
 })
