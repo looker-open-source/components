@@ -33,8 +33,9 @@ import {
   CompatibleHTMLProps,
   TypographyProps,
 } from '@looker/design-tokens'
-import React, { ReactNode, forwardRef, Ref } from 'react'
+import React, { ReactNode, forwardRef, Ref, useState } from 'react'
 import styled from 'styled-components'
+import { rgba } from 'polished'
 import { IconButton } from '../Button'
 
 export interface ChipProps
@@ -43,8 +44,8 @@ export interface ChipProps
     TypographyProps {
   children: ReactNode
   disabled?: boolean
-  close: () => void
-  onClick?: () => void
+  focusVisible?: boolean
+  onDelete: () => void
 }
 
 const ChipLabel = styled.span`
@@ -54,31 +55,64 @@ const ChipLabel = styled.span`
 `
 
 const ChipJSX = forwardRef((props: ChipProps, ref: Ref<HTMLSpanElement>) => {
-  const { children, disabled = false, ...restProps } = props
+  const {
+    children,
+    disabled = false,
+    onBlur,
+    onDelete,
+    onKeyUp,
+    onKeyDown,
+    ...restProps
+  } = props
 
-  const onClick = () => {
-    if (!disabled) {
-      onClick && onClick()
+  const [isFocusVisible, setFocusVisible] = useState(false)
+
+  const handleOnKeyUp = (event: React.KeyboardEvent<HTMLSpanElement>) => {
+    setFocusVisible(true)
+    onKeyUp && onKeyUp(event)
+  }
+
+  const handleOnBlur = (event: React.FocusEvent<HTMLSpanElement>) => {
+    setFocusVisible(false)
+    onBlur && onBlur(event)
+  }
+
+  const handleOnKeyDown = (event: React.FocusEvent<HTMLSpanElement>) => {
+    setFocusVisible(false)
+    if (event.keyCode === 8 || event.keyCode === 13) {
+      onDelete && onDelete()
     }
   }
 
-  const handleClose = () => {
-    // eslint-disable-next-line no-console
-    console.log('foo')
+  const handleDelete = () => {
+    if (!disabled) {
+      onDelete && onDelete()
+    }
+    setFocusVisible(false)
   }
 
   return (
-    <span onClick={onClick} {...restProps} ref={ref}>
+    <span
+      focusVisible={isFocusVisible}
+      onKeyUp={handleOnKeyUp}
+      onKeyDown={handleOnKeyDown}
+      onBlur={handleOnBlur}
+      tabIndex={1}
+      {...restProps}
+      ref={ref}
+    >
       <ChipLabel>{children}</ChipLabel>
-      <IconButton
-        onClick={handleClose}
-        disabled={disabled}
-        ml="xsmall"
-        icon="Close"
-        size="xxsmall"
-        color="primary"
-        label="Close"
-      />
+      {onDelete && !disabled && (
+        <IconButton
+          onClick={handleDelete}
+          disabled={disabled}
+          ml="xsmall"
+          icon="Close"
+          size="xxsmall"
+          color="primary"
+          label="Close"
+        />
+      )}
     </span>
   )
 })
@@ -112,7 +146,15 @@ export const Chip = styled(ChipJSX)`
 
   &:focus {
     background-color: ${props => props.theme.colors.palette.purple200};
+    outline: none;
   }
+
+  ${props =>
+    props.focusVisible &&
+    `box-shadow: 0 0 0 0.15rem ${rgba(
+      props.theme.colors.palette.purple300,
+      0.25
+    )};`};
 
   &:hover {
     background-color: ${props => props.theme.colors.palette.purple100};
