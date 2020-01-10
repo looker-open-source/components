@@ -37,8 +37,9 @@ import styled from 'styled-components'
 import { IconButton } from '../Button'
 
 export interface ChipProps
-  extends SpaceProps,
-    CompatibleHTMLProps<HTMLSpanElement> {
+  extends Omit<CompatibleHTMLProps<HTMLSpanElement>, 'type'>,
+    SpaceProps,
+    TypographyProps {
   children: ReactNode
   disabled?: boolean
   onClick?: () => void
@@ -96,8 +97,12 @@ const ChipStyle = styled.span.attrs({ fontWeight: 'semiBold' })`
 const ChipJSX = forwardRef((props: ChipProps, ref: Ref<HTMLSpanElement>) => {
   const { children, disabled = false, ...restProps } = props
 
+  const onClick = () => {
+    onClick && onClick()
+  }
+
   return (
-    <ChipStyle disabled={disabled} {...restProps} ref={ref}>
+    <ChipStyle disabled={disabled} onClick={onClick} {...restProps} ref={ref}>
       <ChipLabel>{children}</ChipLabel>
       <IconButton
         ml="xsmall"
