@@ -61,7 +61,7 @@ export interface ManagedModalProps {
    * You can also specify `auto` if you want the Surface to auto-size to its content.
    * @default auto
    */
-  width?: string
+  width?: string | string[]
 }
 
 export interface ModalProps extends ManagedModalProps {

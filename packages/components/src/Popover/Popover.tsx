@@ -200,11 +200,13 @@ function useVerticalSpace(
   // Set height to the larger, popper will take care of flipping as needed
   const max = Math.max(spaceTop, spaceBottom)
 
+  const windowHeight = typeof window !== `undefined` ? window.innerHeight : 50
+
   // If the height of the overlay will be 50px or less,
   // it's too small to scroll
   // Popper will awkwardly move the overlay to try to fit in the window
   // but that's better than squishing it so small.
-  return max > 50 ? max : window.innerHeight
+  return max > 50 ? max : windowHeight
 }
 
 function useOpenWithoutElement(isOpen: boolean, element: HTMLElement | null) {

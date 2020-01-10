@@ -170,6 +170,7 @@ export function useTooltip({
               flipVariationsByContent: true,
             },
             preventOverflow: {
+              boundariesElement: 'window',
               padding: 0,
             },
           }}
