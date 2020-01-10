@@ -32,69 +32,168 @@ import { semanticColors } from '@looker/design-tokens'
 import { Button } from '../../Button'
 import { Confirm } from './Confirm'
 
-const requiredProps = {
+const modalProps = {
   message: 'Foo',
+  onCancel: jest.fn(),
+  onChange: jest.fn(),
   onConfirm: jest.fn(),
   title: 'Bar',
 }
 
+const buttonColor: 'danger' = 'danger'
+const cancelColor: 'primary' = 'primary'
+
 const optionalProps = {
+  buttonColor,
+  cancelColor,
   cancelLabel: "Don't Delete",
   confirmLabel: 'Delete',
   message: 'This is permanent',
-  onCancel: jest.fn(),
   title: 'Delete the thing?',
 }
 
 afterEach(() => {
-  requiredProps.onConfirm.mockClear()
-  optionalProps.onCancel.mockClear()
+  jest.clearAllMocks()
 })
 
-test('<Confirm/> confirm button closes modal and calls onConfirm callback', () => {
-  const { getByText, queryByTestId } = renderWithTheme(
-    <Confirm {...requiredProps}>
-      {open => <Button onClick={open}>Do Something</Button>}
-    </Confirm>
-  )
+describe('Modal rendering', () => {
+  test('Rendering <Confirm /> required props', () => {
+    const { getByText, queryByTestId } = renderWithTheme(
+      <Confirm {...modalProps}>
+        {open => <Button onClick={open}>Do Something</Button>}
+      </Confirm>
+    )
 
-  const opener = getByText('Do Something')
-  fireEvent.click(opener)
+    // open modal
+    const opener = getByText('Do Something')
+    fireEvent.click(opener)
 
-  const confirmButton = getByText('Confirm')
+    // verify prop rendering
+    expect(queryByTestId('confirmation-dialog')).toBeVisible()
+    expect(getByText(modalProps.title)).toBeVisible()
+    expect(getByText(modalProps.message)).toBeVisible()
 
-  expect(queryByTestId('confirmation-dialog')).toBeVisible()
-  expect(queryByTestId('discard-changes-dialog')).not.toBeInTheDocument()
-  expect(getByText(requiredProps.title)).toBeVisible()
-  expect(getByText(requiredProps.message)).toBeVisible()
-  expect(confirmButton).toHaveStyle(
-    `background: ${semanticColors.primary.main}`
-  )
+    const confirmButton = getByText('Confirm')
+    expect(confirmButton).toHaveStyle(
+      `background: ${semanticColors.primary.main}`
+    )
+  })
 
-  fireEvent.click(confirmButton)
-  expect(requiredProps.onConfirm).toHaveBeenCalledTimes(1)
-  expect(queryByTestId('confirmation-dialog')).not.toBeInTheDocument()
-  expect(queryByTestId('discard-changes-dialog')).not.toBeInTheDocument()
+  test('Rendering <Confirm /> optional props', () => {
+    const { getByText } = renderWithTheme(
+      <Confirm {...modalProps} {...optionalProps}>
+        {open => <Button onClick={open}>Do Something</Button>}
+      </Confirm>
+    )
+
+    // open modal
+    const opener = getByText('Do Something')
+    fireEvent.click(opener)
+
+    // verify prop rendering
+    const confirmButton = getByText(optionalProps.confirmLabel)
+    expect(confirmButton).toHaveStyle(
+      `background: ${semanticColors.danger.main}`
+    )
+
+    const cancelButton = getByText(optionalProps.cancelLabel)
+    expect(cancelButton).toHaveStyle(`color: ${semanticColors.primary.main}`)
+
+    expect(getByText(optionalProps.title)).toBeVisible()
+    expect(getByText(optionalProps.message)).toBeVisible()
+  })
 })
 
-test('<Confirm /> cancel button closes modal and calls onCancel callback by default', () => {})
+describe('Confirm button behavior', () => {
+  test('<Confirm/> confirm button closes modal and calls onConfirm callback', () => {
+    const { getByText, queryByTestId } = renderWithTheme(
+      <Confirm {...modalProps}>
+        {open => <Button onClick={open}>Do Something</Button>}
+      </Confirm>
+    )
 
-test('<Confirm /> cancel button renders "discard changes modal" when protectChanges is true', () => {})
+    // Open modal
+    const opener = getByText('Do Something')
+    fireEvent.click(opener)
 
-test('<Confirm/> with custom props', () => {
-  const { getByText } = renderWithTheme(
-    <Confirm {...requiredProps} {...optionalProps} buttonColor="danger">
-      {open => <Button onClick={open}>Do Something</Button>}
-    </Confirm>
-  )
+    expect(queryByTestId('confirmation-dialog')).toBeVisible()
+    expect(queryByTestId('discard-changes-dialog')).not.toBeInTheDocument()
 
-  const opener = getByText('Do Something')
-  fireEvent.click(opener)
+    // Click confirm button
+    const confirmButton = getByText('Confirm')
+    fireEvent.click(confirmButton)
 
-  const button = getByText(optionalProps.confirmLabel || '')
-  expect(button).toHaveStyle(`background: ${semanticColors.danger.main}`)
+    expect(modalProps.onConfirm).toHaveBeenCalledTimes(1)
+    expect(queryByTestId('confirmation-dialog')).not.toBeInTheDocument()
+    expect(queryByTestId('discard-changes-dialog')).not.toBeInTheDocument()
+  })
+})
 
-  fireEvent.click(button)
+describe('Close modal without saving changes', () => {
+  test('<Confirm /> cancel button closes modal and calls onCancel callback by default', () => {
+    const { getByText, queryByTestId } = renderWithTheme(
+      <Confirm {...modalProps}>
+        {open => <Button onClick={open}>Do Something</Button>}
+      </Confirm>
+    )
 
-  expect(requiredProps.onConfirm).toHaveBeenCalledTimes(1)
+    // open confirm dialog
+    const opener = getByText('Do Something')
+    fireEvent.click(opener)
+
+    expect(queryByTestId('confirmation-dialog')).toBeVisible()
+    expect(queryByTestId('discard-changes-dialog')).not.toBeInTheDocument()
+
+    // close confirm dialog without submitting
+    const cancelButton = getByText('Cancel')
+    fireEvent.click(cancelButton)
+    expect(modalProps.onConfirm).not.toHaveBeenCalled()
+    expect(modalProps.onCancel).toHaveBeenCalledTimes(1)
+
+    expect(queryByTestId('confirmation-dialog')).not.toBeInTheDocument()
+    expect(queryByTestId('discard-changes-dialog')).not.toBeInTheDocument()
+  })
+
+  test('<Confirm /> cancel button renders "discard changes modal" when protectChanges is true', () => {
+    const FormInput = (
+      <>
+        <label htmlFor="form-input">Form Input</label>
+        <input type="text" id="form-input" />
+      </>
+    )
+
+    const { getByText, queryByTestId, getByLabelText } = renderWithTheme(
+      <Confirm {...modalProps} message={FormInput} protectChanges={true}>
+        {open => <Button onClick={open}>Do Something</Button>}
+      </Confirm>
+    )
+
+    // open confirm dialog with form input inside
+    const opener = getByText('Do Something')
+    fireEvent.click(opener)
+
+    expect(queryByTestId('confirmation-dialog')).toBeVisible()
+    expect(queryByTestId('discard-changes-dialog')).not.toBeInTheDocument()
+
+    // change form input value and try to close
+    const input = getByLabelText('Form Input')
+    fireEvent.change(input)
+    expect(modalProps.onChange).toHaveBeenCalledTimes(1)
+
+    const cancelButton = getByText('Cancel')
+    fireEvent.click(cancelButton)
+    expect(modalProps.onCancel).not.toHaveBeenCalled()
+
+    // confirmation dialog should be replaced by confirm close dialog
+    expect(queryByTestId('confirmation-dialog')).not.toBeInTheDocument()
+    expect(queryByTestId('discard-changes-dialog')).toBeVisible()
+
+    // confirm modal close
+    const confirmCloseButton = getByText('Discard Changes')
+    fireEvent.click(confirmCloseButton)
+
+    expect(modalProps.onCancel).toHaveBeenCalledTimes(1)
+    expect(queryByTestId('confirmation-dialog')).not.toBeInTheDocument()
+    expect(queryByTestId('discard-changes-dialog')).not.toBeInTheDocument()
+  })
 })
