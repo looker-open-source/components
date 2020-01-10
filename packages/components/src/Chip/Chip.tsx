@@ -31,17 +31,19 @@ import {
   SpaceProps,
   typography,
   CompatibleHTMLProps,
+  TypographyProps,
 } from '@looker/design-tokens'
 import React, { ReactNode, forwardRef, Ref } from 'react'
 import styled from 'styled-components'
 import { IconButton } from '../Button'
 
 export interface ChipProps
-  extends Omit<CompatibleHTMLProps<HTMLSpanElement>, 'type'>,
+  extends CompatibleHTMLProps<HTMLSpanElement>,
     SpaceProps,
     TypographyProps {
   children: ReactNode
   disabled?: boolean
+  close: () => void
   onClick?: () => void
 }
 
@@ -51,7 +53,39 @@ const ChipLabel = styled.span`
   white-space: nowrap;
 `
 
-const ChipStyle = styled.span.attrs({ fontWeight: 'semiBold' })`
+const ChipJSX = forwardRef((props: ChipProps, ref: Ref<HTMLSpanElement>) => {
+  const { children, disabled = false, ...restProps } = props
+
+  const onClick = () => {
+    if (!disabled) {
+      onClick && onClick()
+    }
+  }
+
+  const handleClose = () => {
+    // eslint-disable-next-line no-console
+    console.log('foo')
+  }
+
+  return (
+    <span onClick={onClick} {...restProps} ref={ref}>
+      <ChipLabel>{children}</ChipLabel>
+      <IconButton
+        onClick={handleClose}
+        disabled={disabled}
+        ml="xsmall"
+        icon="Close"
+        size="xxsmall"
+        color="primary"
+        label="Close"
+      />
+    </span>
+  )
+})
+
+ChipJSX.displayName = 'ChipJSX'
+
+export const Chip = styled(ChipJSX)`
   ${reset}
 
   ${color}
@@ -60,10 +94,6 @@ const ChipStyle = styled.span.attrs({ fontWeight: 'semiBold' })`
   ${IconButton}{
     background-color: transparent;
     flex-shrink: 0;
-    &:disabled {
-      color: ${props => props.theme.colors.palette.charcoal400};
-      background-color: ${props => props.theme.colors.palette.charcoal100};
-    }
   }
 
   align-items: center;
@@ -88,38 +118,18 @@ const ChipStyle = styled.span.attrs({ fontWeight: 'semiBold' })`
     background-color: ${props => props.theme.colors.palette.purple100};
   }
 
-  &:disabled {
-    color: ${props => props.theme.colors.palette.charcoal400};
-    background-color: ${props => props.theme.colors.palette.charcoal100};
-  }
+  ${props =>
+    props.disabled &&
+    `color: ${props.theme.colors.palette.charcoal400};
+    background-color: ${props.theme.colors.palette.charcoal100};
+    &:hover {
+      background-color: ${props.theme.colors.palette.charcoal100};
+    }
+    `}
 `
 
-const ChipJSX = forwardRef((props: ChipProps, ref: Ref<HTMLSpanElement>) => {
-  const { children, disabled = false, ...restProps } = props
-
-  const onClick = () => {
-    onClick && onClick()
-  }
-
-  return (
-    <ChipStyle disabled={disabled} onClick={onClick} {...restProps} ref={ref}>
-      <ChipLabel>{children}</ChipLabel>
-      <IconButton
-        ml="xsmall"
-        icon="Close"
-        size="xxsmall"
-        color="primary"
-        label="Close"
-      />
-    </ChipStyle>
-  )
-})
-
-ChipJSX.displayName = 'ChipJSX'
-
-export const Chip = styled(ChipJSX)``
-
 Chip.defaultProps = {
+  fontWeight: 'semiBold',
   px: 'xsmall',
   py: 'xxsmall',
 }
