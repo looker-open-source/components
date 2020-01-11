@@ -31,7 +31,6 @@ import {
   FieldCheckbox,
   FieldText,
   Heading,
-  DialogManager,
 } from '@looker/components'
 
 export const ProtectedModalDemo: React.FC = () => {
@@ -46,15 +45,6 @@ export const ProtectedModalDemo: React.FC = () => {
       >
         {open => <Button onClick={open}>Open Confirm form</Button>}
       </Confirm>
-      <DialogManager
-        title="Please enter your information"
-        content={<UserForm />}
-        onConfirm={() => alert('Saved')}
-        width="500px"
-        protectChanges
-      >
-        {open => <Button onClick={open}>Open DialogManager form</Button>}
-      </DialogManager>
     </>
   )
 }
