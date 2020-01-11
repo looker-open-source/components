@@ -62,7 +62,7 @@ type ButtonColors = keyof SemanticColors
 
 export interface IconButtonProps
   extends Omit<CompatibleHTMLProps<HTMLButtonElement>, 'children' | 'type'>,
-    ButtonBaseProps,
+    Omit<ButtonBaseProps, 'fullWidth'>,
     IconButtonVariantProps,
     PseudoProps,
     SpaceProps {
