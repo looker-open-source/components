@@ -24,7 +24,13 @@
 
  */
 
-import React, { FC, ReactElement, useEffect, useRef } from 'react'
+import React, {
+  FC,
+  ReactElement,
+  useEffect,
+  useRef,
+  SyntheticEvent,
+} from 'react'
 import { SemanticColors } from '@looker/design-tokens'
 import isFunction from 'lodash/isFunction'
 import { Button, ButtonTransparent } from '../../Button'
@@ -82,7 +88,7 @@ export interface ConfirmationDialogProps extends ConfirmationProps {
   /**
    * Callback to fire if any form input children change.
    */
-  onChange?: () => void
+  onChange?: (e: Event) => void
 }
 
 export const ConfirmationDialog: FC<ConfirmationDialogProps> = ({
@@ -104,9 +110,9 @@ export const ConfirmationDialog: FC<ConfirmationDialogProps> = ({
     /**
      * watch for changes to any input elements within the dialog content
      */
-    const changeListener = () => {
+    const changeListener: EventListener = (e: Event) => {
       if (isFunction(onChange)) {
-        onChange()
+        onChange(e)
       }
     }
 

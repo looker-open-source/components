@@ -24,7 +24,7 @@
 
  */
 
-import React, { FC, ReactNode, useState } from 'react'
+import React, { FC, ReactNode, useState, SyntheticEvent } from 'react'
 import isFunction from 'lodash/isFunction'
 import { useToggle } from '../../utils/useToggle'
 import { ConfirmationDialog, ConfirmationProps } from './ConfirmationDialog'
@@ -43,7 +43,7 @@ export interface ConfirmProps extends Omit<ConfirmationProps, 'onCancel'> {
   /**
    * Callback attached to any input elements within the modal.
    */
-  onChange?: () => void
+  onChange?: (e: Event) => void
   /**
    * Callback fires if props.protectChanges === true and user closes modal without pressing confirm.
    */
@@ -95,10 +95,10 @@ export function useConfirm({
     setClosed()
   }
 
-  const handleChange = () => {
+  const handleChange = (e: Event) => {
     setDialogState(DialogStates.unsaved)
     if (isFunction(onChange)) {
-      onChange()
+      onChange(e)
     }
   }
 
