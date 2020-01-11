@@ -24,13 +24,7 @@
 
  */
 
-import React, {
-  FC,
-  ReactElement,
-  useEffect,
-  useRef,
-  SyntheticEvent,
-} from 'react'
+import React, { FC, ReactElement, useEffect, useRef } from 'react'
 import { SemanticColors } from '@looker/design-tokens'
 import isFunction from 'lodash/isFunction'
 import { Button, ButtonTransparent } from '../../Button'
