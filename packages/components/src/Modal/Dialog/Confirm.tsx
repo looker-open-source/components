@@ -24,7 +24,7 @@
 
  */
 
-import React, { FC, ReactNode, useState, SyntheticEvent } from 'react'
+import React, { FC, ReactNode, useState } from 'react'
 import isFunction from 'lodash/isFunction'
 import { useToggle } from '../../utils/useToggle'
 import { ConfirmationDialog, ConfirmationProps } from './ConfirmationDialog'
