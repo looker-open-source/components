@@ -63,7 +63,7 @@ export function useKeyDown() {
     optionsRef,
     state,
     transition,
-    autocompletePropRef,
+    autoCompletePropRef,
     persistSelectionRef,
     readOnlyPropRef,
   } = useContext(ComboboxContext)
@@ -96,7 +96,7 @@ export function useKeyDown() {
             : -1
           const atBottom = index === options.length - 1
           if (atBottom) {
-            if (autocompletePropRef && autocompletePropRef.current) {
+            if (autoCompletePropRef && autoCompletePropRef.current) {
               // Go back to the value the user has typed because we are
               // auto-completing and they need to be able to get back to what
               // they had typed w/o having to backspace out.
@@ -136,7 +136,7 @@ export function useKeyDown() {
             ? findIndex(options, navigationOption)
             : -1
           if (index === 0) {
-            if (autocompletePropRef && autocompletePropRef.current) {
+            if (autoCompletePropRef && autoCompletePropRef.current) {
               // Go back to the value the user has typed because we are
               // auto-completing and they need to be able to get back to what
               // they had typed w/o having to backspace out.

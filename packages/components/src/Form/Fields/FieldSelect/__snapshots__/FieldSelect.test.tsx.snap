@@ -122,7 +122,7 @@ exports[`A FieldSelect 1`] = `
         width="100%"
       >
         <div
-          aria-autocomplete="both"
+          aria-autoComplete="both"
           className="c3 c4 c5"
           onClick={[Function]}
           width="100%"
@@ -311,7 +311,7 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
         width="100%"
       >
         <div
-          aria-autocomplete="both"
+          aria-autoComplete="both"
           className="c4 c5 c6"
           onClick={[Function]}
           width="100%"
@@ -504,7 +504,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
         width="100%"
       >
         <div
-          aria-autocomplete="both"
+          aria-autoComplete="both"
           className="c4 c5 c6"
           onClick={[Function]}
           width="100%"
@@ -645,7 +645,7 @@ exports[`A required FieldSelect 1`] = `
       aria-hidden="true"
       className="c2"
     >
-       
+
       *
     </span>
   </label>
@@ -668,7 +668,7 @@ exports[`A required FieldSelect 1`] = `
         width="100%"
       >
         <div
-          aria-autocomplete="both"
+          aria-autoComplete="both"
           className="c4 c5 c6"
           onClick={[Function]}
           width="100%"
@@ -813,7 +813,7 @@ exports[`FieldSelect supports labelWeight 1`] = `
         width="100%"
       >
         <div
-          aria-autocomplete="both"
+          aria-autoComplete="both"
           className="c3 c4 c5"
           onClick={[Function]}
           width="100%"

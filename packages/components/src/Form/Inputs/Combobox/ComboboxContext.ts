@@ -39,7 +39,7 @@ export interface ComboboxContextProps {
   state?: ComboboxState
   transition?: ComboboxTransition
   listboxId?: string
-  autocompletePropRef?: MutableRefObject<boolean>
+  autoCompletePropRef?: MutableRefObject<boolean>
   persistSelectionRef?: MutableRefObject<boolean>
   readOnlyPropRef?: MutableRefObject<boolean>
   isVisible?: boolean
