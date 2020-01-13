@@ -48,79 +48,7 @@ export interface ChipProps
   onDelete?: () => void
 }
 
-const ChipLabel = styled.span`
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-`
-
-const ChipJSX = forwardRef((props: ChipProps, ref: Ref<HTMLSpanElement>) => {
-  const {
-    children,
-    disabled = false,
-    onBlur,
-    onDelete,
-    onKeyUp,
-    onKeyDown,
-    ...restProps
-  } = props
-
-  const [isFocusVisible, setFocusVisible] = useState(false)
-
-  const handleOnKeyUp = (event: React.KeyboardEvent<HTMLSpanElement>) => {
-    setFocusVisible(true)
-    onKeyUp && onKeyUp(event)
-  }
-
-  const handleOnBlur = (event: React.FocusEvent<HTMLSpanElement>) => {
-    setFocusVisible(false)
-    onBlur && onBlur(event)
-  }
-
-  const handleOnKeyDown = (event: React.KeyboardEvent<HTMLSpanElement>) => {
-    setFocusVisible(false)
-    if (event.keyCode === 8) {
-      onDelete && onDelete()
-    }
-    onKeyDown && onKeyDown(event)
-  }
-
-  const handleDelete = () => {
-    if (!disabled) {
-      onDelete && onDelete()
-    }
-    setFocusVisible(false)
-  }
-
-  return (
-    <span
-      focusVisible={isFocusVisible}
-      onKeyUp={handleOnKeyUp}
-      onKeyDown={handleOnKeyDown}
-      onBlur={handleOnBlur}
-      tabIndex={disabled ? undefined : 0}
-      {...restProps}
-      ref={ref}
-    >
-      <ChipLabel>{children}</ChipLabel>
-      {onDelete && !disabled && (
-        <IconButton
-          onClick={handleDelete}
-          disabled={disabled}
-          ml="xsmall"
-          icon="Close"
-          size="xxsmall"
-          color="primary"
-          label="Close"
-        />
-      )}
-    </span>
-  )
-})
-
-ChipJSX.displayName = 'ChipJSX'
-
-export const Chip = styled(ChipJSX)`
+const ChipStyle = styled.span<ChipProps>`
   ${reset}
 
   ${color}
@@ -170,6 +98,81 @@ export const Chip = styled(ChipJSX)`
     }
     `}
 `
+
+const ChipLabel = styled.span`
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+`
+
+const ChipJSX = forwardRef((props: ChipProps, ref: Ref<HTMLSpanElement>) => {
+  const {
+    children,
+    disabled,
+    onBlur,
+    onDelete,
+    onKeyUp,
+    onKeyDown,
+    ...restProps
+  } = props
+
+  const [isFocusVisible, setFocusVisible] = useState(false)
+
+  const handleOnKeyUp = (event: React.KeyboardEvent<HTMLSpanElement>) => {
+    setFocusVisible(true)
+    onKeyUp && onKeyUp(event)
+  }
+
+  const handleOnBlur = (event: React.FocusEvent<HTMLSpanElement>) => {
+    setFocusVisible(false)
+    onBlur && onBlur(event)
+  }
+
+  const handleOnKeyDown = (event: React.KeyboardEvent<HTMLSpanElement>) => {
+    setFocusVisible(false)
+    if (event.keyCode === 8) {
+      onDelete && onDelete()
+    }
+    onKeyDown && onKeyDown(event)
+    setFocusVisible(false)
+  }
+
+  const handleDelete = () => {
+    if (!disabled) {
+      onDelete && onDelete()
+    }
+    setFocusVisible(false)
+  }
+
+  return (
+    <ChipStyle
+      focusVisible={isFocusVisible}
+      onKeyUp={handleOnKeyUp}
+      onKeyDown={handleOnKeyDown}
+      onBlur={handleOnBlur}
+      tabIndex={disabled ? undefined : 0}
+      {...restProps}
+      ref={ref}
+    >
+      <ChipLabel>{children}</ChipLabel>
+      {onDelete && !disabled && (
+        <IconButton
+          onClick={handleDelete}
+          disabled={disabled}
+          ml="xsmall"
+          icon="Close"
+          size="xxsmall"
+          color="primary"
+          label="Close"
+        />
+      )}
+    </ChipStyle>
+  )
+})
+
+ChipJSX.displayName = 'ChipJSX'
+
+export const Chip = styled(ChipJSX)``
 
 Chip.defaultProps = {
   fontWeight: 'semiBold',
