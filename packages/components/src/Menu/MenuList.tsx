@@ -115,7 +115,7 @@ export const MenuListInternal = forwardRef(
             tabIndex={-1}
             role="menu"
             id={id}
-            aria-labelledby={`button-${id}`}
+            aria-labelledby={id && `button-${id}`}
             {...props}
           >
             {children}
