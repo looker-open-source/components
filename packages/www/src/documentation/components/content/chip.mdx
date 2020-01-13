@@ -7,23 +7,18 @@ propsOf: Chip
 
 ## Chip
 
-The `Chip` component offeres a closing and a disabled options also onClick capability.
-
-```jsx
-<Flex alignItems="center" justifyContent="space-around">
-  <Chip>first chip</Chip>
-  <Chip>this is a very long text that shows the word wrapping in a chip</Chip>
-  <Chip disabled>disabled chip</Chip>
-</Flex>
-```
-
-## Adding a onDelete
+The `Chip` component is a compact element that can be set as `disabled` and has `onDelete` availabel, it can be triggered by clicking or `onKeyDown` backspace.
 
 ```jsx
 ;() => {
   const alertTrigger = () => alert('hello')
   return (
     <Flex alignItems="center" justifyContent="space-around">
+      <Chip>first chip</Chip>
+      <Chip>
+        this is a very long text that shows the word wrapping in a chip
+      </Chip>
+      <Chip disabled>disabled chip</Chip>
       <Chip onDelete={alertTrigger}>clickable</Chip>
     </Flex>
   )

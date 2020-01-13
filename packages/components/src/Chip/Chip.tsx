@@ -45,7 +45,7 @@ export interface ChipProps
   children: ReactNode
   disabled?: boolean
   focusVisible?: boolean
-  onDelete: () => void
+  onDelete?: () => void
 }
 
 const ChipLabel = styled.span`
@@ -77,11 +77,12 @@ const ChipJSX = forwardRef((props: ChipProps, ref: Ref<HTMLSpanElement>) => {
     onBlur && onBlur(event)
   }
 
-  const handleOnKeyDown = (event: React.FocusEvent<HTMLSpanElement>) => {
+  const handleOnKeyDown = (event: React.KeyboardEvent<HTMLSpanElement>) => {
     setFocusVisible(false)
-    if (event.keyCode === 8 || event.keyCode === 13) {
+    if (event.keyCode === 8) {
       onDelete && onDelete()
     }
+    onKeyDown && onKeyDown(event)
   }
 
   const handleDelete = () => {
@@ -97,7 +98,7 @@ const ChipJSX = forwardRef((props: ChipProps, ref: Ref<HTMLSpanElement>) => {
       onKeyUp={handleOnKeyUp}
       onKeyDown={handleOnKeyDown}
       onBlur={handleOnBlur}
-      tabIndex={1}
+      tabIndex={disabled ? undefined : 0}
       {...restProps}
       ref={ref}
     >
@@ -144,6 +145,10 @@ export const Chip = styled(ChipJSX)`
     margin-left: ${props => props.theme.space.xxsmall};
   }
 
+  &:hover {
+    background-color: ${props => props.theme.colors.palette.purple100};
+  }
+
   &:focus {
     background-color: ${props => props.theme.colors.palette.purple200};
     outline: none;
@@ -155,10 +160,6 @@ export const Chip = styled(ChipJSX)`
       props.theme.colors.palette.purple300,
       0.25
     )};`};
-
-  &:hover {
-    background-color: ${props => props.theme.colors.palette.purple100};
-  }
 
   ${props =>
     props.disabled &&
