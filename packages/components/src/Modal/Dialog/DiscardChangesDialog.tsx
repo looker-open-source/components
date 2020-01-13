@@ -54,12 +54,10 @@ export const DiscardChangesDialog: FC<DiscardChangesProps> = ({
         Discard Changes?
       </ModalHeader>
       <ModalContent innerProps={{ py: 'none' }}>
-        <MessageGrid>
-          <Paragraph>
-            Are you sure you want to close the dialog? Unsaved changes will be
-            lost.
-          </Paragraph>
-        </MessageGrid>
+        <Paragraph>
+          Are you sure you want to close the dialog? Unsaved changes will be
+          lost.
+        </Paragraph>
       </ModalContent>
       <ModalFooter>
         <ButtonTransparent onClick={closeDialog} color="danger">
@@ -72,9 +70,3 @@ export const DiscardChangesDialog: FC<DiscardChangesProps> = ({
     </Dialog>
   )
 }
-
-const MessageGrid = styled.div`
-  display: grid;
-  grid-gap: 1rem;
-  grid-template-columns: auto 1fr;
-`
