@@ -24,15 +24,13 @@ import { GlobalStyle } from '@looker/components'
 import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
 
-import { SelectDemo } from './Select/SelectDemo'
-import { ConfirmDemo } from './Confirm/ConfirmDemo'
+import { CanCloseDialogManagerDemo } from './Confirm/CanCloseDialogManagerDemo'
 const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <>
         <GlobalStyle />
-        <SelectDemo />
-        <ConfirmDemo />
+        <CanCloseDialogManagerDemo />
       </>
     </ThemeProvider>
   )

@@ -5,88 +5,42 @@ github: Modal
 
 import { Props } from '../../../Shared'
 
-Modals are temporary overlays that offer contextual information or require user input/confirmation. Modals block interactions with the application until being explicitly dismissed. They can be used for lightweight tasks or hosting heavier temporary content.
+A Modal is a container for content that should sit above or aside the primary content. They are temporary overlays that offer contextual information or require user input/confirmation while blocking interactions with the application until being explicitly dismissed.
 
-At its most basic, a Modal is a container for content that should sit above or aside the primary content.
+# Variants
 
-Currently we provide two kinds of Modals: [`Dialog`](/src-documentation-components-dialog) and [`Drawer`](/src-documentation-components-drawer). These components can used on their own or in combination with layout helpers designed expressly for use with modals, specifically: [`ModalHeader`](/#!/ModalHeader), [`ModalContent`](/#!/ModalContent) and [`ModalFooter`](/#!/ModalFooter).
+There are primarily two kinds of Modals: [`Dialog`](/components/modals/dialog) which overlays the entire screen, and [`Drawer`](/components/modals/drawer) which is attached to the side of the screen. The most common use case (a user confirmation dialog) can be helpfully rendered with the [`Confirm`](/components/modals/confirm) component.
 
-Modals can have a single child. If a child is specified it will automatically be assigned on an `onClick` event that triggers the modal to open.
+# Custom Styling
 
-## Styling
+Modals are assembled of two primary pieces: `ModalBackdrop`, the semi-opaque full-screen overlay; and a ModalSurface, which renders the revelant content.
 
-Modals are assembled of two primary pieces a Backdrop (`ModalBackdrop`) and a Surface (`SurfaceBase`).
-
-### ModalBackdrop
+## ModalBackdrop
 
 This provides the backdrop behind Modal containers. It can be customized via the `backdrop` property. These must be a CSSProperty compatible key / value paired object.
 
 ```jsx
 <DialogManager
   backdrop={{ background: 'purple', opacity: 1 }}
-  content={
-    <React.Fragment>
-      Stuff and text <a href="#">Focus attention here...</a>
-    </React.Fragment>
-  }
+  content={<React.Fragment>Stuff and text</React.Fragment>}
 >
   {onClick => <Button onClick={onClick}>Purple Backdrop</Button>}
 </DialogManager>
 ```
 
-### ModalSurface
+## ModalSurface
 
 `ModalSurface` provides the container that contains the content. It can be customized via the `surfaceStyles` property. These must be a CSSProperty compatible key / value paired object.
 
 ```jsx
-<DialogManager
+<ModalSurface
   surfaceStyles={{ background: 'pink', borderRadius: 0, padding: '3rem' }}
-  content={
-    <React.Fragment>
-      Stuff and text <a href="#">Focus attention here...</a>
-    </React.Fragment>
-  }
 >
-  {onClick => <Button onClick={onClick}>Pink Surface, No Radiae</Button>}
-</DialogManager>
+  Stuff and text
+</ModalSurface>
 ```
 
-## ModalContext
-
-`ModalContext` is a [React Context](https://reactjs.org/docs/context.html) that provides access to functionality without requiring the developer to explicitly manage the Modal's state. The context provides access to the following methods:
-
-- `close`
-- `enableFocusTrap` and `disableFocusTrap`
-- `enableScrollLock` and `disableScrollLock`
-
-As well as the following values:
-
-- `scrollLockEnabled`
-- `focusTrapEnabled`
-
-The `close` method simply allows you to close the Modal or Popover.
-
-The other methods and values above are for rare use when the modal behaviors of focus trap and scroll lock are interfering with the desired behavior. For example a popover from another library nested inside of a `@looker/components` Popover or Modal.
-
-```js static
-import React, { useContext } from 'react'
-import { Button, ModalContext } from '@looker/components'
-
-export function ModalContextDemo() {
-  return (
-    <ModalContext.Consumer>
-      {({ close }) => <Button onClick={close}>Close!</Button>}
-    </ModalContext.Consumer>
-  )
-}
-
-export function ModalUseContextDemo() {
-  const { close } = useContext(ModalContext)
-  return <Button onClick={close}>Close!</Button>
-}
-```
-
-### ModalContent
+## ModalContent
 
 <Props of="ModalContent" />
 
@@ -95,23 +49,18 @@ Using the `ModalContent` component quickly gives your content consistent spacing
 ModalContent supports all [`Box`](/src-documentation-components-box) properties.
 
 ```jsx
-<Box height="10rem" display="flex" bg="white" p="large">
-  <ModalContent>
-    <Box height="2rem" bg="rebeccapurple" />
-    <Paragraph>Scroll down here...</Paragraph>
-  </ModalContent>
-</Box>
+<ModalContent>
+  <Box height="2rem" bg="rebeccapurple" />
+</ModalContent>
 ```
-
-### Content Overflows
 
 If content overflows the component's height an visual indicator of content that extends beyond the visible edges is added (border on top and shadow on the bottom).
 
 ```jsx
 <Box height="10rem" display="flex" bg="white" p="large">
   <ModalContent>
-    <Box height="6rem" bg="rebeccapurple" />
     <Paragraph>Scroll down here...</Paragraph>
+    <Box height="6rem" bg="rebeccapurple" />
   </ModalContent>
 </Box>
 ```
@@ -126,6 +75,16 @@ ModalHeader supports all [`Box`](/src-documentation-components-box) properties.
 
 ```jsx
 <ModalHeader>This is a ModalHeader</ModalHeader>
+```
+
+`ModalHeader` also accepts an optional `headerIcon` prop which can be used to communicate context or intent of the modal. For example: if you need the user to confirm a destructive action, it can be helpful to render an eyecatching warning icon next to the title text:
+
+```jsx
+<ModalHeader
+  headerIcon={<Icon name="Warning" color="palette.red500" size={22} />}
+>
+  Delete user account? This cannot be undone.
+</ModalHeader>
 ```
 
 ## ModalFooter
@@ -184,4 +143,39 @@ ModalFooter supports all [`Box`](/src-documentation-components-box) properties.
     Cancel
   </ButtonTransparent>
 </ModalFooter>
+```
+
+# ModalContext
+
+`ModalContext` is a [React Context](https://reactjs.org/docs/context.html) that provides access to functionality without requiring the developer to explicitly manage the Modal's state. The context provides access to the following methods:
+
+- `close`
+- `enableFocusTrap` and `disableFocusTrap`
+- `enableScrollLock` and `disableScrollLock`
+
+As well as the following values:
+
+- `scrollLockEnabled`
+- `focusTrapEnabled`
+
+The `close` method simply allows you to close the Modal or Popover.
+
+The other methods and values above are for rare use when the modal behaviors of focus trap and scroll lock are interfering with the desired behavior. For example a popover from another library nested inside of a `@looker/components` Popover or Modal.
+
+```js static
+import React, { useContext } from 'react'
+import { Button, ModalContext } from '@looker/components'
+
+export function ModalContextDemo() {
+  return (
+    <ModalContext.Consumer>
+      {({ close }) => <Button onClick={close}>Close!</Button>}
+    </ModalContext.Consumer>
+  )
+}
+
+export function ModalUseContextDemo() {
+  const { close } = useContext(ModalContext)
+  return <Button onClick={close}>Close!</Button>
+}
 ```

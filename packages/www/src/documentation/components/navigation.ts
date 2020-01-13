@@ -116,7 +116,7 @@ const components: NavigationSection = {
       title: 'Modal',
       path: 'modals',
       children: [
-        { title: 'Overview', path: '' },
+        { title: 'Layout and Styling', path: '' },
         { title: 'Confirm', path: 'confirm' },
         { title: 'Dialog', path: 'dialog' },
         { title: 'Drawer', path: 'drawer' },
