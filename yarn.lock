@@ -14039,10 +14039,10 @@ pinkie@^2.0.0:
   resolved "https://registry.yarnpkg.com/pinkie/-/pinkie-2.0.4.tgz#72556b80cfa0d48a974e80e77248e80ed4f7f870"
   integrity sha1-clVrgM+g1IqXToDnckjoDtT3+HA=
 
-pino-colada@^1.5.0:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/pino-colada/-/pino-colada-1.5.0.tgz#9b50833800d80cde26aa06ba648e501f96f20fb2"
-  integrity sha512-jLnusV/haztZvjaRTZHQ/z7ixvFyC9EBE/lI10ldp/EWC5sMArjNQ0UhRgOEhwHyrgfmCWttKOLO3VNFRBWT2A==
+pino-colada@^1.5.1:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/pino-colada/-/pino-colada-1.5.1.tgz#d2cdc0d21c8a6926796650ded52b17efbea6de92"
+  integrity sha512-ILWTUUu3WbAXqI+d3AwQlKosfUfdzoSD4/JnIfXB0wYLJskL2uQarJvU+Jsc5Jvo9E9mkUD/f7NAtXDCGQiJ6Q==
   dependencies:
     chalk "^2.0.1"
     fast-json-parse "^1.0.2"
