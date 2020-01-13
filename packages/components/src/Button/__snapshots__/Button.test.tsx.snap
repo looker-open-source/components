@@ -71,7 +71,7 @@ exports[`Button Focus: renders outline when tabbing into focus, but not when cli
 
 exports[`Button Focus: renders outline when tabbing into focus, but not when clicking 2`] = `
 <button
-  class="sc-bxivhb fNCodC sc-ifAKCX sc-EHOje kAurnO"
+  class="sc-bxivhb deKSKn sc-ifAKCX sc-EHOje kAurnO"
 >
   focus
 </button>
@@ -79,7 +79,6 @@ exports[`Button Focus: renders outline when tabbing into focus, but not when cli
 
 exports[`Button can be full width 1`] = `
 .c0 {
-  width: 100%;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -105,6 +104,7 @@ exports[`Button can be full width 1`] = `
   height: 36px;
   padding-left: 1rem;
   padding-right: 1rem;
+  width: 100%;
 }
 
 .c0[disabled] {
