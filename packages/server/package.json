@@ -2,7 +2,7 @@
   "name": "server",
   "private": true,
   "license": "MIT",
-  "version": "0.7.10",
+  "version": "0.7.12",
   "main": "index.ts",
   "repository": {
     "type": "git",
@@ -30,7 +30,7 @@
     "express-pino-logger": "^4.0.0",
     "node-env-run": "^3.0.2",
     "nodemon": "^2.0.1",
-    "pino-colada": "^1.5.0",
-    "ts-node": "^8.5.4"
+    "pino-colada": "^1.5.1",
+    "ts-node": "^8.6.2"
   }
 }

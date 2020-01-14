@@ -141,13 +141,13 @@ export const ComboboxInternal = forwardRef(function Combobox(
 
   const buttonRef = useRef<HTMLButtonElement>(null)
 
-  // When <ComboboxInput autocomplete={false} /> we don't want cycle back to
+  // When <ComboboxInput autoComplete={false} /> we don't want cycle back to
   // the user's value while navigating (because it's always the user's value),
   // but we need to know this in useKeyDown which is far away from the prop
   // here, so we do something sneaky and write it to this ref on context so we
   // can use it anywhere else 😛. Another new trick for me and I'm excited
   // about this one too!
-  const autocompletePropRef = useRef(true)
+  const autoCompletePropRef = useRef(true)
   const readOnlyPropRef = useRef(false)
 
   const persistSelectionRef = useRef(false)
@@ -188,7 +188,7 @@ export const ComboboxInternal = forwardRef(function Combobox(
   }, [isVisible, isVisibleRef, onOpen, onClose, option])
 
   const context = {
-    autocompletePropRef,
+    autoCompletePropRef,
     buttonRef,
     data,
     inputCallbackRef,

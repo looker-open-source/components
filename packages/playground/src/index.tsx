@@ -25,12 +25,14 @@ import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
 
 import { SelectDemo } from './Select/SelectDemo'
+import { ConfirmDemo } from './Confirm/ConfirmDemo'
 const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <>
         <GlobalStyle />
         <SelectDemo />
+        <ConfirmDemo />
       </>
     </ThemeProvider>
   )

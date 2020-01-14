@@ -46,7 +46,8 @@ import { ComboboxContext } from './ComboboxContext'
 import { getComboboxText } from './ComboboxOption'
 import { ComboboxActionType, ComboboxState } from './state'
 
-export interface ComboboxInputProps extends InputSearchProps {
+export interface ComboboxInputProps
+  extends Omit<InputSearchProps, 'autoComplete'> {
   /**
    * If true, when the user clicks inside the text box the current value will
    * be selected. Use this if the user is likely to delete all the text anyway
@@ -67,7 +68,7 @@ export interface ComboboxInputProps extends InputSearchProps {
    * But if your input is more like a normal `<input type="text"/>`, then leave
    * the `true` default.
    */
-  autocomplete?: boolean
+  autoComplete?: boolean
 }
 
 export const ComboboxInputInternal = forwardRef(function ComboboxInput(
@@ -76,7 +77,7 @@ export const ComboboxInputInternal = forwardRef(function ComboboxInput(
     selectOnClick = false,
 
     // updates the value in the input when navigating w/ the keyboard
-    autocomplete = true,
+    autoComplete = true,
     readOnly = false,
 
     // wrapped events
@@ -107,7 +108,7 @@ export const ComboboxInputInternal = forwardRef(function ComboboxInput(
     state,
     transition,
     listboxId,
-    autocompletePropRef,
+    autoCompletePropRef,
     persistSelectionRef,
     readOnlyPropRef,
     openOnFocus,
@@ -130,10 +131,10 @@ export const ComboboxInputInternal = forwardRef(function ComboboxInput(
   const isInputting = useRef(false)
 
   useLayoutEffect(() => {
-    if (autocompletePropRef) autocompletePropRef.current = autocomplete
+    if (autoCompletePropRef) autoCompletePropRef.current = autoComplete
     if (readOnlyPropRef) readOnlyPropRef.current = readOnly
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [autocomplete, readOnly])
+  }, [autoComplete, readOnly])
 
   function handleClear() {
     contextOnChange && contextOnChange()
@@ -217,7 +218,7 @@ export const ComboboxInputInternal = forwardRef(function ComboboxInput(
   let inputOption = contextInputValue !== undefined ? contextInputValue : option
 
   if (
-    autocomplete &&
+    autoComplete &&
     (state === ComboboxState.NAVIGATING || state === ComboboxState.INTERACTING)
   ) {
     // When idle, we don't have a navigationOption on ArrowUp/Down
@@ -249,6 +250,7 @@ export const ComboboxInputInternal = forwardRef(function ComboboxInput(
       onChange={wrappedOnChange}
       onKeyDown={wrappedOnKeyDown}
       id={listboxId}
+      autoComplete="off"
       aria-autocomplete="both"
       aria-activedescendant={
         navigationOption

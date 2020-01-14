@@ -126,13 +126,14 @@ exports[`A FieldSelect 1`] = `
         width="100%"
       >
         <div
-          aria-autocomplete="both"
           className="c3 c4 c5"
           onClick={[Function]}
           onMouseDown={[Function]}
           width="100%"
         >
           <input
+            aria-autocomplete="both"
+            autoComplete="off"
             className="c6 c7"
             id="listbox-thumbs-up"
             onBlur={[Function]}
@@ -320,13 +321,14 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
         width="100%"
       >
         <div
-          aria-autocomplete="both"
           className="c4 c5 c6"
           onClick={[Function]}
           onMouseDown={[Function]}
           width="100%"
         >
           <input
+            aria-autocomplete="both"
+            autoComplete="off"
             className="c7 c8"
             id="listbox-thumbs-up"
             onBlur={[Function]}
@@ -518,13 +520,14 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
         width="100%"
       >
         <div
-          aria-autocomplete="both"
           className="c4 c5 c6"
           onClick={[Function]}
           onMouseDown={[Function]}
           width="100%"
         >
           <input
+            aria-autocomplete="both"
+            autoComplete="off"
             className="c7 c8"
             id="listbox-thumbs-up"
             onBlur={[Function]}
@@ -687,13 +690,14 @@ exports[`A required FieldSelect 1`] = `
         width="100%"
       >
         <div
-          aria-autocomplete="both"
           className="c4 c5 c6"
           onClick={[Function]}
           onMouseDown={[Function]}
           width="100%"
         >
           <input
+            aria-autocomplete="both"
+            autoComplete="off"
             className="c7 c8"
             id="listbox-thumbs-up"
             onBlur={[Function]}
@@ -837,13 +841,14 @@ exports[`FieldSelect supports labelWeight 1`] = `
         width="100%"
       >
         <div
-          aria-autocomplete="both"
           className="c3 c4 c5"
           onClick={[Function]}
           onMouseDown={[Function]}
           width="100%"
         >
           <input
+            aria-autocomplete="both"
+            autoComplete="off"
             className="c6 c7"
             id="listbox-thumbs-up"
             onBlur={[Function]}

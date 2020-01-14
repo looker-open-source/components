@@ -80,6 +80,7 @@ test('Should trigger onChange handler', () => {
         id="thumbs-up"
         value="foobar"
         onChange={handleChange}
+        options={[{ label: 'Foobar', value: 'foobar' }]}
       />
     </ThemeProvider>
   )

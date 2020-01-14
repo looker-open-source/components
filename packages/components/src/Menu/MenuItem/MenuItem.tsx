@@ -33,7 +33,7 @@ import {
   TypographyProps,
 } from '@looker/design-tokens'
 import { IconNames } from '@looker/icons'
-import React, { FC, ReactNode, useContext } from 'react'
+import React, { FC, ReactNode, useContext, useState } from 'react'
 import { Icon } from '../../Icon'
 import { MenuItemStyleContext } from '../MenuContext'
 import { MenuItemButton } from './MenuItemButton'
@@ -149,18 +149,38 @@ export interface MenuItemProps
 
 export const MenuItem: FC<MenuItemProps> = props => {
   const {
-    current,
     children,
-    detail,
-    icon,
-    customizationProps: propCustomizations,
-    onClick,
-    itemRole,
-    href,
-    target,
     compact: propCompact,
+    customizationProps: propCustomizations,
+    current,
+    detail,
+    href,
+    icon,
+    itemRole,
+    onBlur,
+    onClick,
+    onKeyUp,
+    target,
     ...remainingProps
   } = props
+
+  const [isFocusVisible, setFocusVisible] = useState(false)
+
+  const handleOnKeyUp = (event: React.KeyboardEvent<HTMLLIElement>) => {
+    setFocusVisible(true)
+    onKeyUp && onKeyUp(event)
+  }
+
+  const handleOnBlur = (event: React.FocusEvent<HTMLLIElement>) => {
+    setFocusVisible(false)
+    onBlur && onBlur(event)
+  }
+
+  const handleOnClick = (event: React.MouseEvent<HTMLLIElement>) => {
+    setFocusVisible(false)
+    onClick && onClick(event)
+  }
+
   const { customizationProps, compact } = useMenuItemStyleContext({
     compact: propCompact,
     customizationProps: propCustomizations,
@@ -183,17 +203,20 @@ export const MenuItem: FC<MenuItemProps> = props => {
 
   return (
     <MenuItemListItem
-      current={current}
-      itemStyle={style}
       aria-current={current && 'page'}
-      onClick={onClick}
+      onClick={handleOnClick}
+      current={current}
+      focusVisible={isFocusVisible}
+      itemStyle={style}
+      onKeyUp={handleOnKeyUp}
+      onBlur={handleOnBlur}
       {...listItemProps}
       {...outerProps}
     >
       <MenuItemButton
         as={itemRole === 'link' ? 'a' : 'button'}
-        role="menuitem"
         href={href}
+        role="menuitem"
         target={target}
         {...clickTargetProps}
       >
