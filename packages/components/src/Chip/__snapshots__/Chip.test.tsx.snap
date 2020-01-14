@@ -2,6 +2,13 @@
 
 exports[`Chip renders correctly 1`] = `
 .c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   padding-top: 0.25rem;
@@ -43,15 +50,6 @@ exports[`Chip renders correctly 1`] = `
 .c1:focus {
   background-color: #BFB2FF;
   outline: none;
-}
-
-.c1:disabled {
-  color: #939BA5;
-  background-color: #F5F6F7;
-}
-
-.c1:disabled:hover {
-  background-color: #F5F6F7;
 }
 
 .c2 {
@@ -77,7 +75,18 @@ exports[`Chip renders correctly 1`] = `
 `;
 
 exports[`Chip renders disabled 1`] = `
+.c3 + .c0 {
+  margin-left: 0.25rem;
+}
+
 .c1 {
+  border: 0;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   padding-top: 0.25rem;
@@ -99,9 +108,11 @@ exports[`Chip renders disabled 1`] = `
   margin-bottom: 0.25rem;
   max-width: 320px;
   min-width: 44px;
+  color: #939BA5;
+  background-color: #F5F6F7;
 }
 
-.c1 .c3 {
+.c1 .c4 {
   background-color: transparent;
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
@@ -121,12 +132,7 @@ exports[`Chip renders disabled 1`] = `
   outline: none;
 }
 
-.c1:disabled {
-  color: #939BA5;
-  background-color: #F5F6F7;
-}
-
-.c1:disabled:hover {
+.c1:hover {
   background-color: #F5F6F7;
 }
 
