@@ -5,32 +5,43 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [UNRELEASED]
+## [0.7.12] - 2010-01-13
+
+### Fixed
+
+- `MenuList` would get a bad value for the attribute`aria-labelledby` when used without `Menu`.
+- `InputText` - `autoComplete` not being passed down to `input`
+
+## [0.7.11] - 2020-01-09
 
 ### Added
 
 - `hoverDisclosureRef` prop on `Menu` allows the `MenuDisclosure` only to be shown when the element in question is hovered over.
 - `Select` now renders a custom component instead of the native `select`. This allows for new features including `isFilterable` / `onFilter` to allow the user to filter through options, and `isClearable` to allow the user to clear out the value.
-- New component and its tests `Chip`
+- New component `Chip` and its tests
+- `Menu` now supports `hoverDisclosureRef` prop so that `MenuDisclosure` is only shown when the element in question is hovered over.
+- `Select` now renders a custom component instead of the native `select`.
+  - Allows for new features including `isFilterable` / `onFilter` to allow the user to filter through options, and `isClearable` to allow the user to clear out the value.
+  - Uses experimental `ComboBox` components (more info on this soon!)
 
-### Changes
+### Changed
 
--
+- Lots of minor dependency updates (gatsby-\*, typescript, etc.)
+- `MenuItem` now supports focusVisible behavior
 
 ### Fixed
 
-- update tooltip to not use parent CSS config
-- update MenuItem to only show focus on keyboard navigation
-- update test to respond to the change
+- `Dialog` / `DialogManager` TS interfaces correct to properly reflect support for responsive sizes
+- `Tooltip` will no longer inherit `white-space`, `text-transform` or `word-break` behaviors of the component it uses for positioning calculation
 
-## [0.7.10]
+## [0.7.10] - 2019-12-20
 
 ### Added
 
 - Proxy Server package
   - New documentation: getting started with local data fetching
 
-### Changes
+### Changed
 
 - `Button` sizes updated to match design specifications
 - `Confirm` secondary button color now defaults to `neutral`
@@ -46,13 +57,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Documentation
   - Links between `Dialog` and `Confirm`
 
-## [0.7.8] - 2018-12-16
+## [0.7.8] - 2019-12-16
 
 ### Changed
 
 - `ModalManager` (and it's derived `DialogManager` & `DrawerManager`) now support a `onClose` callback that will be called when the modal is closed.
 
-### Bug Fixes
+### Fixed
 
 - Correct issue `ModalManager` `surfaceStyles` had `minWidth` and `maxWidth` properties that were difficult to override on an instance.
 - Correct usage of `textTransform` in documentation and updated related test suite

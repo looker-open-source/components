@@ -1,7 +1,7 @@
 {
   "name": "@looker/components",
   "license": "MIT",
-  "version": "0.7.10",
+  "version": "0.7.12",
   "main": "dist/cjs/index.js",
   "types": "dist/types/index.d.ts",
   "module": "dist/esm/index.js",
@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@looker/design-tokens": "^0.7.10",
-    "@looker/icons": "^0.7.10",
+    "@looker/icons": "^0.7.11",
     "@types/react-transition-group": "^4.2.3",
     "@types/styled-system": "^5.1.4",
     "d3-color": "^1.4.0",

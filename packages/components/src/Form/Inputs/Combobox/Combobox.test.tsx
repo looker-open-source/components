@@ -143,7 +143,7 @@ describe('Keyboard navigation', () => {
     expect(queryByRole('listbox')).not.toBeInTheDocument()
   })
 
-  test('arrows and enter with autocomplete = false', () => {
+  test('arrows and enter with autoComplete = false', () => {
     const {
       getAllByRole,
       getByRole,
@@ -151,7 +151,7 @@ describe('Keyboard navigation', () => {
       getByTestId,
     } = renderWithTheme(
       <Combobox id="with-options" openOnFocus>
-        <ComboboxInput data-testid="select-input" autocomplete={false} />
+        <ComboboxInput data-testid="select-input" autoComplete={false} />
         <ComboboxList>
           <ComboboxOption label="Foo" value="101" />
           <ComboboxOption label="Bar" value="102" />

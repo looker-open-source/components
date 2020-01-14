@@ -64,7 +64,19 @@ export interface InputTextProps
    *
    * @default 'text'
    */
-  type?: 'number' | 'password' | 'text' | 'search'
+  type?:
+    | 'date'
+    | 'datetime-local'
+    | 'email'
+    | 'month'
+    | 'number'
+    | 'password'
+    | 'search'
+    | 'tel'
+    | 'text'
+    | 'time'
+    | 'url'
+    | 'week'
 }
 
 const InputComponent = forwardRef(
