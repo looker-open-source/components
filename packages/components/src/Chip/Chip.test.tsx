@@ -23,12 +23,12 @@ test('Chip onDelete renders correctly', () => {
   )
 
   fireEvent.click(getByRole('button'))
-  expect(onDeleteTrigger).toHaveBeenCalled()
+  expect(onDeleteTrigger).toHaveBeenCalledTimes(1)
 
   fireEvent.keyDown(getByRole('button'), {
     charCode: 8,
     code: 8,
     key: 'Backspace',
   })
-  expect(onDeleteTrigger).toHaveBeenCalled()
+  expect(onDeleteTrigger).toHaveBeenCalledTimes(2)
 })

@@ -89,14 +89,15 @@ const ChipStyle = styled.span<ChipProps>`
       0.25
     )};`};
 
-  ${props =>
-    props.disabled &&
-    `color: ${props.theme.colors.palette.charcoal400};
-    background-color: ${props.theme.colors.palette.charcoal100};
+  &:disabled {
+
+    color: ${props => props.theme.colors.palette.charcoal400};
+    background-color: ${props => props.theme.colors.palette.charcoal100};
+
     &:hover {
-      background-color: ${props.theme.colors.palette.charcoal100};
+      background-color: ${props => props.theme.colors.palette.charcoal100};
     }
-    `}
+  }
 `
 
 const ChipLabel = styled.span`
@@ -146,24 +147,25 @@ const ChipJSX = forwardRef((props: ChipProps, ref: Ref<HTMLSpanElement>) => {
 
   return (
     <ChipStyle
+      disabled={disabled}
       focusVisible={isFocusVisible}
-      onKeyUp={handleOnKeyUp}
-      onKeyDown={handleOnKeyDown}
       onBlur={handleOnBlur}
+      onKeyDown={handleOnKeyDown}
+      onKeyUp={handleOnKeyUp}
+      ref={ref}
       tabIndex={disabled ? undefined : 0}
       {...restProps}
-      ref={ref}
     >
       <ChipLabel>{children}</ChipLabel>
       {onDelete && !disabled && (
         <IconButton
-          onClick={handleDelete}
-          disabled={disabled}
-          ml="xsmall"
-          icon="Close"
-          size="xxsmall"
           color="primary"
+          disabled={disabled}
+          icon="Close"
           label="Close"
+          ml="xsmall"
+          onClick={handleDelete}
+          size="xxsmall"
         />
       )}
     </ChipStyle>
