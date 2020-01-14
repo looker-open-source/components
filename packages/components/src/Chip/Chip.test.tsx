@@ -16,18 +16,20 @@ test('Chip renders disabled', () => {
 test('Chip onDelete renders correctly', () => {
   const onDeleteTrigger = jest.fn()
 
-  const { getByRole } = renderWithTheme(
+  const { getByTestId, getByRole } = renderWithTheme(
     <ThemeProvider theme={theme}>
-      <Chip onDelete={onDeleteTrigger}>clickable</Chip>
+      <Chip onDelete={onDeleteTrigger} data-testid="chip">
+        clickable
+      </Chip>
     </ThemeProvider>
   )
 
   fireEvent.click(getByRole('button'))
   expect(onDeleteTrigger).toHaveBeenCalledTimes(1)
 
-  fireEvent.keyDown(getByRole('button'), {
-    charCode: 8,
-    code: 8,
+  const chip = getByTestId('chip')
+
+  fireEvent.keyDown(chip, {
     key: 'Backspace',
   })
   expect(onDeleteTrigger).toHaveBeenCalledTimes(2)

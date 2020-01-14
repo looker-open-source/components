@@ -89,15 +89,15 @@ const ChipStyle = styled.span<ChipProps>`
       0.25
     )};`};
 
-  &:disabled {
+  ${props =>
+    props.disabled &&
+    `color: ${props.theme.colors.palette.charcoal400};
+      background-color: ${props.theme.colors.palette.charcoal100};
 
-    color: ${props => props.theme.colors.palette.charcoal400};
-    background-color: ${props => props.theme.colors.palette.charcoal100};
-
-    &:hover {
-      background-color: ${props => props.theme.colors.palette.charcoal100};
-    }
-  }
+      &:hover {
+        background-color: ${props.theme.colors.palette.charcoal100};
+      }
+    `}
 `
 
 const ChipLabel = styled.span`
@@ -131,7 +131,7 @@ const ChipJSX = forwardRef((props: ChipProps, ref: Ref<HTMLSpanElement>) => {
 
   const handleOnKeyDown = (event: React.KeyboardEvent<HTMLSpanElement>) => {
     setFocusVisible(false)
-    if (event.keyCode === 8) {
+    if (event.key === 'Backspace') {
       onDelete && onDelete()
     }
     onKeyDown && onKeyDown(event)
