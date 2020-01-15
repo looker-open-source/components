@@ -1,8 +1,6 @@
 import { assertSnapshot, renderWithTheme } from '@looker/components-test-utils'
 import React from 'react'
-import { ThemeProvider } from 'styled-components'
 import { fireEvent } from '@testing-library/react'
-import { theme } from '@looker/design-tokens'
 import { Chip } from './Chip'
 
 test('Chip renders correctly', () => {
@@ -17,11 +15,9 @@ test('Chip onDelete renders correctly', () => {
   const onDeleteTrigger = jest.fn()
 
   const { getByTestId, getByRole } = renderWithTheme(
-    <ThemeProvider theme={theme}>
-      <Chip onDelete={onDeleteTrigger} data-testid="chip">
-        clickable
-      </Chip>
-    </ThemeProvider>
+    <Chip onDelete={onDeleteTrigger} data-testid="chip">
+      clickable
+    </Chip>
   )
 
   fireEvent.click(getByRole('button'))

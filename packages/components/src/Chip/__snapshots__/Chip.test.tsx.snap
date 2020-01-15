@@ -2,13 +2,6 @@
 
 exports[`Chip renders correctly 1`] = `
 .c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   padding-top: 0.25rem;
@@ -80,13 +73,6 @@ exports[`Chip renders disabled 1`] = `
 }
 
 .c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   padding-top: 0.25rem;
