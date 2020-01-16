@@ -5,11 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [UNRELEASED]
+
+### Fixed
+
+- `MenuItem` update for the use of `ItemRole=link` no text-decoration on hover or focus
+
 ## [07.13] - 2020-01-16
 
 ### Added
 
-- `Chip` component (more `Chip`-related features coming soon)
+- `Chip` component (more `Chip`-related fe atures coming soon)
 
 ### Fixed
 

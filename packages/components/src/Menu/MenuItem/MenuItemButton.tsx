@@ -51,4 +51,10 @@ export const MenuItemButton = styled.button<MenuItemButtonProps>`
   outline: none;
   text-align: left;
   text-decoration: none;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    color: inherit;
+  }
 `
