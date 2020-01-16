@@ -14,7 +14,7 @@ import { Banner } from '@looker/components'
 
 Dialogs break out of the standard application flow and UI to present new information or required actions.
 
-# Standard Use
+## Standard Use
 
 `Dialog` requires that the developer manages state by assigning `true` or `false` to the `isOpen` prop.
 
@@ -35,7 +35,7 @@ Dialogs break out of the standard application flow and UI to present new informa
 }
 ```
 
-# DialogManager
+## DialogManager
 
 DialogManager gives an easy way to compose a Dialog without the need to manage open/close state.
 
@@ -52,7 +52,34 @@ DialogManager gives an easy way to compose a Dialog without the need to manage o
 </DialogManager>
 ```
 
-# Advanced Use: Protect Unsaved User Changes
+## Props: width and maxWidth
+
+All variants of Dialog allow you to override content `width` and `max-width` style to suit your content. We support responsive width arrays an well as static strings.
+
+```jsx
+<DialogManager
+  content={
+    <ModalContent>
+      <Heading>
+        Resize your browser to watch maxWidth adjust accordingly
+      </Heading>
+      <Paragraph>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et eros
+        sed nisi pellentesque vulputate ac eu augue. Sed commodo sagittis neque,
+        vel vulputate massa.
+      </Paragraph>
+    </ModalContent>
+  }
+  /**
+   * Responsive array values are passed from smallest to largest breakpoints:
+   */
+  maxWidth={['90vw', '60vw', '500px', '800px']}
+>
+  {open => <Button onClick={open}>Open responsive width modal</Button>}
+</DialogManager>
+```
+
+## Advanced Use: Protect Unsaved User Changes
 
 If your dialog content includes form inputs it's entirely possible that the user could unintentionally close the dialog and lose their unsaved changes. With careful management of dialog and form state, you can add a second stage dialog to alert the user to unsaved changes and protect them from losing their work.
 

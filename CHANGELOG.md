@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changes
 
+- Adds responsive maxWidth prop support for `ModalSurface` and all consumers
 - `ConfirmationDialog` uses `ConfirmLayout` to render modal content
 - `ModalHeader` accepts a new headerIcon prop to render next to the title content
 - `ModalManager` children prop is now optional
