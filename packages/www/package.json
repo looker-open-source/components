@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.7.12",
   "dependencies": {
-    "@mdx-js/mdx": "^1.5.3",
+    "@mdx-js/mdx": "^1.5.4",
     "@mdx-js/react": "^1.5.4",
     "@reach/router": "^1.2.1",
     "@types/react-helmet": "^5.0.15",
