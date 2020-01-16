@@ -18,8 +18,16 @@
  SOFTWARE.
  */
 
-import React, { MouseEvent } from 'react'
-import { Button, Divider, Box, Select, FieldSelect } from '@looker/components'
+import React, { MouseEvent, useState } from 'react'
+import {
+  Button,
+  Divider,
+  Box,
+  Select,
+  FieldSelect,
+  ModalContent,
+  Dialog,
+} from '@looker/components'
 
 const options = [
   { label: 'Apples', value: '1' },
@@ -29,7 +37,7 @@ const options = [
   { label: 'Kiwis', value: '5' },
 ]
 
-export function SelectDemo() {
+function SelectContent() {
   const [value, setValue] = React.useState()
   const [searchTerm, setSearchTerm] = React.useState('')
   const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
@@ -100,5 +108,27 @@ export function SelectDemo() {
         validationMessage={{ message: 'An error message', type: 'error' }}
       />
     </Box>
+  )
+}
+
+const ModalInner = () => {
+  return (
+    <ModalContent>
+      <SelectContent />
+    </ModalContent>
+  )
+}
+
+export const SelectDemo = () => {
+  const [isOpen, setOpen] = useState(false)
+  const handleClick = () => setOpen(true)
+  const handleClose = () => setOpen(false)
+  return (
+    <>
+      <Dialog isOpen={isOpen} onClose={handleClose}>
+        <ModalInner />
+      </Dialog>
+      <Button onClick={handleClick}>Open</Button>
+    </>
   )
 }
