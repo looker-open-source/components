@@ -2276,10 +2276,10 @@
     npmlog "^4.1.2"
     write-file-atomic "^2.3.0"
 
-"@looker/sdk@^0.2.0-beta.27":
-  version "0.2.0-beta.27"
-  resolved "https://registry.yarnpkg.com/@looker/sdk/-/sdk-0.2.0-beta.27.tgz#0c1383eb73c9c97ab50e569d86ddcc0f16f9e50a"
-  integrity sha512-SiGakHUbJ7xX/G4eX2Js2cb7EresKb7sxiCwwh7uKEh3ycKgR4Ajm7LT777Ta37NRAdg4O0tFec1p53Jux5A2g==
+"@looker/sdk@^0.2.0-beta.28":
+  version "0.2.0-beta.28"
+  resolved "https://registry.yarnpkg.com/@looker/sdk/-/sdk-0.2.0-beta.28.tgz#77cdb0f8afcd9901d5efc08b378821fc6d328b63"
+  integrity sha512-9TOlVHroWmzMi8RTa+otVvI4qS9zrIbda0giOzTGdqzEzpOa8Ubsp4dauCDus7Vy/GhwIgQK5B5OMahd3RDw4A==
   dependencies:
     "@types/ini" "^1.3.30"
     "@types/node" "^12.12.6"
