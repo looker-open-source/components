@@ -139,6 +139,7 @@ const components: NavigationSection = {
         { title: 'Badge', path: 'badge' },
         { title: 'Banner', path: 'banner' },
         { title: 'Card', path: 'card' },
+        { title: 'Chip', path: 'chip' },
         { title: 'ColorWheel', path: 'color-wheel' },
         { title: 'Divider', path: 'divider' },
         { title: 'Icon', path: 'icon' },
