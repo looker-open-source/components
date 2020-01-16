@@ -3,27 +3,9 @@ import styled from 'styled-components'
 import { height, MaxHeightProps } from 'styled-system'
 
 import { useControllableState } from '../../../utils'
-import { IconButton } from '../../../Button'
+import { Chip } from '../../../Chip'
 import { InputText } from '../InputText'
 import { InputSearch, InputSearchProps } from '../InputSearch'
-
-interface ChipProps {
-  value: string
-  onDelete?: () => void
-}
-
-function ChipInternal({ onDelete, value, ...props }: ChipProps) {
-  return (
-    <div {...props}>
-      {value} <IconButton icon="Close" label="Remove" onClick={onDelete} />
-    </div>
-  )
-}
-
-export const Chip = styled(ChipInternal)`
-  border: 1px solid;
-  display: inline-block;
-`
 
 /**
  * InputChip is a component that appears to be a regular text input,
@@ -163,19 +145,23 @@ export const InputChipInternal = forwardRef(
       function onChipDelete() {
         handleDeleteChip(value)
       }
-      return <Chip onDelete={onChipDelete} value={value} key={value} />
+      return (
+        <Chip onDelete={onChipDelete} key={value}>
+          {value}
+        </Chip>
+      )
     })
 
     return (
       <InputSearch
         ref={ref}
-        height="auto"
         value={inputValue}
         onChange={handleInputChange}
         onBlur={handleBlur}
         onKeyDown={handleKeyDown}
         showClear={values.length > 0}
         onClear={handleClear}
+        p="xxsmall"
         {...props}
       >
         {chips}
@@ -187,7 +173,6 @@ export const InputChipInternal = forwardRef(
 InputChipInternal.displayName = 'InputChipInternal'
 
 export const InputChip = styled(InputChipInternal)`
-  ${height}
   flex-wrap: wrap;
 
   ${InputText} {

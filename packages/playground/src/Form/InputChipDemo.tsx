@@ -51,7 +51,11 @@ export function InputChipDemo() {
         onChange={handleChange}
         onInputChange={handleInputChange}
         validationType="error"
-        summary={`${values.length} items`}
+        summary={
+          values.length
+            ? `${values.length} item${values.length > 1 ? 's' : ''}`
+            : ''
+        }
       />
     </Box>
   )
