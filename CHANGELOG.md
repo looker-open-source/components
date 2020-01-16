@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - create Chip component with test coverage
 
+### Fixed
+
+- A `Select` used inside of a `Dialog` would intermittently lose focus and fail to update when clicking on an option.
+
 ## [0.7.12] - 2010-01-13
 
 ### Fixed

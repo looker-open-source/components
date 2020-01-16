@@ -30,11 +30,19 @@ import { ModalContext } from '../Modal/ModalContext'
 import { useToggle } from './useToggle'
 import { useCallbackRef } from './useCallbackRef'
 
+function checkFocusLost() {
+  // If focused landed on body or nothing, return it to previous element
+  // otherwise it's probably already on something useful/intentional
+  return document.activeElement
+    ? document.activeElement.tagName === 'BODY'
+    : true
+}
+
 export function useFocusTrap(
   enabled = true,
   keepFocusWithin?: HTMLElement | null
 ) {
-  const trap = useRef<FocusTrap>()
+  const trapRef = useRef<FocusTrap>()
 
   const [newElement, callbackRef] = useCallbackRef()
   // If the keepFocusWithin is passed in arguments, use that instead of the new element
@@ -48,7 +56,7 @@ export function useFocusTrap(
       const autoFocusElement = element.querySelector(
         '[data-autofocus="true"]'
       ) as HTMLElement
-      trap.current = createFocusTrap(element, {
+      trapRef.current = createFocusTrap(element, {
         clickOutsideDeactivates: true,
         escapeDeactivates: false,
         fallbackFocus: element,
@@ -57,14 +65,16 @@ export function useFocusTrap(
       })
       disableFocusTrap && disableFocusTrap()
       // Wait for any other focus trap to complete deactivation
-      window.setTimeout(() => trap.current && trap.current.activate(), 0)
+      window.setTimeout(() => trapRef.current && trapRef.current.activate(), 0)
     } else {
-      trap.current && trap.current.deactivate()
+      trapRef.current &&
+        trapRef.current.deactivate({ returnFocus: checkFocusLost() })
       enableFocusTrap && enableFocusTrap()
     }
 
     return () => {
-      trap.current && trap.current.deactivate()
+      trapRef.current &&
+        trapRef.current.deactivate({ returnFocus: checkFocusLost() })
     }
   }, [value, element, disableFocusTrap, enableFocusTrap, setOff])
 
@@ -74,5 +84,6 @@ export function useFocusTrap(
     element: element || null,
     enable: setOn,
     isEnabled: value,
+    trapRef,
   }
 }

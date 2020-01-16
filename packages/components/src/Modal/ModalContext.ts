@@ -24,7 +24,8 @@
 
  */
 
-import { createContext } from 'react'
+import { createContext, MutableRefObject } from 'react'
+import { FocusTrap } from 'focus-trap'
 
 export interface ModalContextProps {
   closeModal?: () => void
@@ -33,6 +34,7 @@ export interface ModalContextProps {
   enableFocusTrap?: () => void
   disableFocusTrap?: () => void
   focusTrapEnabled?: boolean
+  focusTrapRef?: MutableRefObject<FocusTrap | undefined>
   scrollLockEnabled?: boolean
 }
 
