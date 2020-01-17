@@ -33,7 +33,7 @@ import {
 
 import { IconNames } from '@looker/icons'
 import styled from 'styled-components'
-import React, { FC, useContext } from 'react'
+import React, { FC, ReactNode, useContext } from 'react'
 
 import { IconButton } from '../../Button'
 import { Flex } from '../../Layout'
@@ -47,7 +47,7 @@ export interface ModalHeaderProps
    * Specify an icon to be used for close. Defaults to `Close`
    */
   closeIcon?: IconNames
-  children: string
+  children: ReactNode
 }
 
 export const ModalHeader: FC<ModalHeaderProps> = ({
