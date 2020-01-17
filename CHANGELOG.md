@@ -5,7 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.7.12] - 2010-01-13
+## [07.13] - 2020-01-16
+
+### Added
+
+- `Chip` component (more `Chip`-related features coming soon)
+
+### Fixed
+
+- `Select` used inside of a `Dialog` would intermittently lose focus and fail to update when clicking on an option.
+
+## [0.7.12] - 2020-01-13
 
 ### Fixed
 
@@ -16,10 +26,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- `Menu` now supports `hoverDisclosureRef` prop so that `MenuDisclosure` is only shown when the element in question is hovered over.
-- `Select` now renders a custom component instead of the native `select`.
-  - Allows for new features including `isFilterable` / `onFilter` to allow the user to filter through options, and `isClearable` to allow the user to clear out the value.
-  - Uses experimental `ComboBox` components (more info on this soon!)
+- Menu now supports hoverDisclosureRef prop so that MenuDisclosure is only shown when the element in question is hovered over.
+- Select now renders a custom component instead of the native select.
+  - Allows for new features including isFilterable / onFilter to allow the user to filter through options, and isClearable to allow the user to clear out the value.
+  - Uses experimental ComboBox components (more info on this soon!)
 
 ### Changed
 

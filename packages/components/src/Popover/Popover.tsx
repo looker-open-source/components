@@ -347,7 +347,10 @@ export function usePopover({
     enable: enableFocusTrap,
     isEnabled: focusTrapEnabled,
     disable: disableFocusTrap,
+    trapRef: focusTrapRef,
   } = useFocusTrap(controlledIsOpen && focusTrap)
+
+  const { focusTrapRef: parentFocusTrapRef } = React.useContext(ModalContext)
 
   const [newTriggerElement, callbackRef] = useCallbackRef()
   // If the triggerElement is passed in props, use that instead of the new element
@@ -368,10 +371,23 @@ export function usePopover({
   const verticalSpace = useVerticalSpace(element, pin, propsPlacement, isOpen)
   const openWithoutElem = useOpenWithoutElement(isOpen, element)
 
+  useEffect(() => {
+    if (isOpen) {
+      if (focusTrap) {
+        // this will disable any parent focus trap
+        enableFocusTrap()
+      } else {
+        // need to manually disable any parent focus trap
+        parentFocusTrapRef &&
+          parentFocusTrapRef.current &&
+          parentFocusTrapRef.current.deactivate({ returnFocus: false })
+      }
+    }
+  }, [focusTrap, parentFocusTrapRef, isOpen, enableFocusTrap])
+
   function handleOpen(event: SyntheticEvent) {
     setOpen(true)
     enableScrollLock()
-    enableFocusTrap()
     event.stopPropagation()
     event.preventDefault()
   }
@@ -391,6 +407,7 @@ export function usePopover({
         enableFocusTrap,
         enableScrollLock,
         focusTrapEnabled,
+        focusTrapRef,
         scrollLockEnabled,
       }}
     >

@@ -1,0 +1,26 @@
+---
+title: Chip
+propsOf: Chip
+---
+
+`Chip`
+
+## Chip
+
+The `Chip` component is a compact element that can be set as `disabled` and has `onDelete` availabel, it can be triggered by clicking or `onKeyDown` backspace.
+
+```jsx
+;() => {
+  const alertTrigger = () => alert('hello')
+  return (
+    <Flex alignItems="center" justifyContent="space-around">
+      <Chip>first chip</Chip>
+      <Chip>
+        this is a very long text that shows the word wrapping in a chip
+      </Chip>
+      <Chip disabled>disabled chip</Chip>
+      <Chip onDelete={alertTrigger}>deletable</Chip>
+    </Flex>
+  )
+}
+```
