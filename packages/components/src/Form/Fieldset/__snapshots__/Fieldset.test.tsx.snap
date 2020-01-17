@@ -2,9 +2,9 @@
 
 exports[`Fieldset with left aligned legend 1`] = `
 .c5 {
+  border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
-  border-radius: 0.25rem;
   height: 36px;
   padding-left: 0.75rem;
   padding-right: 0.75rem;

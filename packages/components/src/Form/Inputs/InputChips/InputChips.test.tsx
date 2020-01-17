@@ -28,12 +28,12 @@ import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { fireEvent } from '@testing-library/react'
 
-import { InputChip } from './InputChip'
+import { InputChips } from './InputChips'
 
 test('values are added on Enter keydown', () => {
   const onChangeMock = jest.fn()
   const { getByPlaceholderText } = renderWithTheme(
-    <InputChip onChange={onChangeMock} values={[]} placeholder="type here" />
+    <InputChips onChange={onChangeMock} values={[]} placeholder="type here" />
   )
   const input = getByPlaceholderText('type here')
   fireEvent.change(input, { target: { value: 'tag1' } })
@@ -48,7 +48,7 @@ test('values are added on Enter keydown', () => {
 test('values are added when a comma is last character entered', () => {
   const onChangeMock = jest.fn()
   const { getByPlaceholderText } = renderWithTheme(
-    <InputChip onChange={onChangeMock} values={[]} placeholder="type here" />
+    <InputChips onChange={onChangeMock} values={[]} placeholder="type here" />
   )
   const input = getByPlaceholderText('type here')
   // values not yet added if user pastes comma separated list
@@ -65,7 +65,7 @@ test('values are added when a comma is last character entered', () => {
 test('values are added on blur', () => {
   const onChangeMock = jest.fn()
   const { getByPlaceholderText } = renderWithTheme(
-    <InputChip onChange={onChangeMock} values={[]} placeholder="type here" />
+    <InputChips onChange={onChangeMock} values={[]} placeholder="type here" />
   )
   const input = getByPlaceholderText('type here')
   fireEvent.change(input, { target: { value: 'tag1' } })
@@ -80,7 +80,7 @@ test('values are added on blur', () => {
 test('new values are appended to existing values', () => {
   const onChangeMock = jest.fn()
   const { getByPlaceholderText } = renderWithTheme(
-    <InputChip
+    <InputChips
       onChange={onChangeMock}
       values={['tag1']}
       placeholder="type here"
@@ -96,7 +96,7 @@ test('new values are appended to existing values', () => {
 test('values are removed on backspace keydown', () => {
   const onChangeMock = jest.fn()
   const { getByPlaceholderText } = renderWithTheme(
-    <InputChip
+    <InputChips
       onChange={onChangeMock}
       values={['tag1']}
       placeholder="type here"
@@ -118,9 +118,9 @@ test('values are removed on backspace keydown', () => {
 test('values are removed by clicking remove on the chip', () => {
   const onChangeMock = jest.fn()
   const { getByText } = renderWithTheme(
-    <InputChip onChange={onChangeMock} values={['tag1']} />
+    <InputChips onChange={onChangeMock} values={['tag1']} />
   )
-  const remove = getByText('Remove')
+  const remove = getByText('Delete')
 
   fireEvent.click(remove)
   expect(onChangeMock).toHaveBeenCalledTimes(1)
@@ -131,7 +131,7 @@ test('new values are validated', () => {
   const onChangeMock = jest.fn()
   const validate = jest.fn(value => value === 'tag1')
   const { getByPlaceholderText } = renderWithTheme(
-    <InputChip
+    <InputChips
       onChange={onChangeMock}
       values={[]}
       placeholder="type here"

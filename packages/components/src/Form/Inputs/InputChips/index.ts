@@ -24,4 +24,4 @@
 
  */
 
-export * from './InputChip'
+export * from './InputChips'

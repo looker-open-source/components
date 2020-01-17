@@ -6,12 +6,12 @@ exports[`A FieldSelect 1`] = `
 }
 
 .c7 {
+  border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
-  border-radius: 0.25rem;
   height: 36px;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
+  padding-left: 0;
+  padding-right: 0;
   padding-top: 0rem;
   padding-bottom: 0rem;
   font-size: 0.875rem;
@@ -42,11 +42,14 @@ exports[`A FieldSelect 1`] = `
 }
 
 .c3 {
+  border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
-  border-radius: 0.25rem;
   width: 100%;
-  height: 36px;
+  padding-left: 0.75rem;
+  padding-right: 0.25rem;
+  padding-top: 2px;
+  padding-bottom: 2px;
   font-size: 0.875rem;
 }
 
@@ -75,12 +78,15 @@ exports[`A FieldSelect 1`] = `
 
 .c4 .c6 {
   border: none;
-  width: 100%;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   background: transparent;
   box-shadow: none;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  height: calc(36px - 5px);
 }
 
 .c4 .c6::-webkit-search-decoration,
@@ -155,7 +161,6 @@ exports[`A FieldSelect 1`] = `
         <div
           className="c3 c4 c5"
           fontSize="small"
-          height="36px"
           onClick={[Function]}
           onMouseDown={[Function]}
           width="100%"
@@ -186,12 +191,12 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
 }
 
 .c8 {
+  border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
-  border-radius: 0.25rem;
   height: 36px;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
+  padding-left: 0;
+  padding-right: 0;
   padding-top: 0rem;
   padding-bottom: 0rem;
   font-size: 0.875rem;
@@ -222,22 +227,28 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
 }
 
 .c4 {
+  border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
-  border-radius: 0.25rem;
   width: 100%;
-  height: 36px;
+  padding-left: 0.75rem;
+  padding-right: 0.25rem;
+  padding-top: 2px;
+  padding-bottom: 2px;
   font-size: 0.875rem;
 }
 
 .c10 .c7 {
   border: none;
-  width: 100%;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   background: transparent;
   box-shadow: none;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  height: calc(36px - 5px);
 }
 
 .c10 .c7::-webkit-search-decoration,
@@ -285,12 +296,15 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
 
 .c5 .c7 {
   border: none;
-  width: 100%;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   background: transparent;
   box-shadow: none;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  height: calc(36px - 5px);
 }
 
 .c5 .c7::-webkit-search-decoration,
@@ -391,7 +405,6 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
         <div
           className="c4 c5 c6"
           fontSize="small"
-          height="36px"
           onClick={[Function]}
           onMouseDown={[Function]}
           width="100%"
@@ -429,12 +442,12 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
 }
 
 .c8 {
+  border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
-  border-radius: 0.25rem;
   height: 36px;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
+  padding-left: 0;
+  padding-right: 0;
   padding-top: 0rem;
   padding-bottom: 0rem;
   font-size: 0.875rem;
@@ -465,22 +478,28 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
 }
 
 .c4 {
+  border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
-  border-radius: 0.25rem;
   width: 100%;
-  height: 36px;
+  padding-left: 0.75rem;
+  padding-right: 0.25rem;
+  padding-top: 2px;
+  padding-bottom: 2px;
   font-size: 0.875rem;
 }
 
 .c10 .c7 {
   border: none;
-  width: 100%;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   background: transparent;
   box-shadow: none;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  height: calc(36px - 5px);
 }
 
 .c10 .c7::-webkit-search-decoration,
@@ -528,12 +547,15 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
 
 .c5 .c7 {
   border: none;
-  width: 100%;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   background: transparent;
   box-shadow: none;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  height: calc(36px - 5px);
 }
 
 .c5 .c7::-webkit-search-decoration,
@@ -631,7 +653,6 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
         <div
           className="c4 c5 c6"
           fontSize="small"
-          height="36px"
           onClick={[Function]}
           onMouseDown={[Function]}
           width="100%"
@@ -669,12 +690,12 @@ exports[`A required FieldSelect 1`] = `
 }
 
 .c8 {
+  border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
-  border-radius: 0.25rem;
   height: 36px;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
+  padding-left: 0;
+  padding-right: 0;
   padding-top: 0rem;
   padding-bottom: 0rem;
   font-size: 0.875rem;
@@ -705,11 +726,14 @@ exports[`A required FieldSelect 1`] = `
 }
 
 .c4 {
+  border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
-  border-radius: 0.25rem;
   width: 100%;
-  height: 36px;
+  padding-left: 0.75rem;
+  padding-right: 0.25rem;
+  padding-top: 2px;
+  padding-bottom: 2px;
   font-size: 0.875rem;
 }
 
@@ -738,12 +762,15 @@ exports[`A required FieldSelect 1`] = `
 
 .c5 .c7 {
   border: none;
-  width: 100%;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   background: transparent;
   box-shadow: none;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  height: calc(36px - 5px);
 }
 
 .c5 .c7::-webkit-search-decoration,
@@ -830,7 +857,6 @@ exports[`A required FieldSelect 1`] = `
         <div
           className="c4 c5 c6"
           fontSize="small"
-          height="36px"
           onClick={[Function]}
           onMouseDown={[Function]}
           width="100%"
@@ -861,12 +887,12 @@ exports[`FieldSelect supports labelWeight 1`] = `
 }
 
 .c7 {
+  border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
-  border-radius: 0.25rem;
   height: 36px;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
+  padding-left: 0;
+  padding-right: 0;
   padding-top: 0rem;
   padding-bottom: 0rem;
   font-size: 0.875rem;
@@ -897,11 +923,14 @@ exports[`FieldSelect supports labelWeight 1`] = `
 }
 
 .c3 {
+  border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
-  border-radius: 0.25rem;
   width: 100%;
-  height: 36px;
+  padding-left: 0.75rem;
+  padding-right: 0.25rem;
+  padding-top: 2px;
+  padding-bottom: 2px;
   font-size: 0.875rem;
 }
 
@@ -930,12 +959,15 @@ exports[`FieldSelect supports labelWeight 1`] = `
 
 .c4 .c6 {
   border: none;
-  width: 100%;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   background: transparent;
   box-shadow: none;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  height: calc(36px - 5px);
 }
 
 .c4 .c6::-webkit-search-decoration,
@@ -1010,7 +1042,6 @@ exports[`FieldSelect supports labelWeight 1`] = `
         <div
           className="c3 c4 c5"
           fontSize="small"
-          height="36px"
           onClick={[Function]}
           onMouseDown={[Function]}
           width="100%"

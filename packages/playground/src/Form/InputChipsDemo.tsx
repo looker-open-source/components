@@ -23,12 +23,12 @@ import {
   Divider,
   Flex,
   Box,
-  InputChip,
+  InputChips,
   InputSearch,
   InputText,
 } from '@looker/components'
 
-export function InputChipDemo() {
+export function InputChipsDemo() {
   const [values, setValues] = React.useState<string[]>(['hello'])
   const [inputValue, setInputValue] = React.useState('hi')
   function handleChange(vals: string[]) {
@@ -40,7 +40,7 @@ export function InputChipDemo() {
   return (
     <Box m="xlarge">
       <Flex alignItems="flex-start">
-        <InputChip
+        <InputChips
           width={300}
           name="FOO"
           values={values}
@@ -53,7 +53,7 @@ export function InputChipDemo() {
       </Flex>
       <Divider my="large" />
       <Flex>
-        <InputChip
+        <InputChips
           width={300}
           name="BAR"
           values={values}

@@ -2,12 +2,12 @@
 
 exports[`InputSearch default 1`] = `
 .c3 {
+  border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
-  border-radius: 0.25rem;
   height: 36px;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
+  padding-left: 0;
+  padding-right: 0;
   padding-top: 0rem;
   padding-bottom: 0rem;
   font-size: 0.875rem;
@@ -38,21 +38,23 @@ exports[`InputSearch default 1`] = `
 }
 
 .c0 {
+  border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
-  border-radius: 0.25rem;
-  height: 36px;
+  padding-left: 0.75rem;
+  padding-right: 0.25rem;
+  padding-top: 2px;
+  padding-bottom: 2px;
   font-size: 0.875rem;
 }
 
 .c4 {
-  height: 100%;
+  height: calc(36px - 5px);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  margin-left: 0.25rem;
-  margin-right: 0.25rem;
+  margin-left: auto;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -84,12 +86,15 @@ exports[`InputSearch default 1`] = `
 
 .c1 .c2 {
   border: none;
-  width: 100%;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   background: transparent;
   box-shadow: none;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  height: calc(36px - 5px);
 }
 
 .c1 .c2::-webkit-search-decoration,
@@ -104,7 +109,6 @@ exports[`InputSearch default 1`] = `
 <div
   className="c0 c1"
   fontSize="small"
-  height="36px"
   onClick={[Function]}
 >
   <input
@@ -116,7 +120,7 @@ exports[`InputSearch default 1`] = `
   <div
     className="c4"
     display="flex"
-    height="100%"
+    height="calc(36px - 5px)"
   />
 </div>
 `;

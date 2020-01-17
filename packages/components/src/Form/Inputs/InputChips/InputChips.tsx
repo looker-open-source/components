@@ -8,20 +8,20 @@ import { InputText } from '../InputText'
 import { InputSearch, InputSearchProps } from '../InputSearch'
 
 /**
- * InputChip is a component that appears to be a regular text input,
+ * InputChips is a component that appears to be a regular text input,
  * but also allows (validated) user inputs to be stored as 'chips' (see the Chip element)
  */
 
-interface InputChipProps
+interface InputChipsProps
   extends MaxHeightProps,
     Omit<InputSearchProps, 'value' | 'defaultValue' | 'onChange'> {
   /**
-   * InputChip is a controlled component since unlike native inputs,
+   * InputChips is a controlled component since unlike native inputs,
    * you can't easily access the current value via dom API
    */
   values: string[]
   /**
-   * InputChip is a controlled component since unlike native inputs,
+   * InputChips is a controlled component since unlike native inputs,
    * you can't easily access the current value via dom API
    */
   onChange: (values: string[]) => void
@@ -69,7 +69,7 @@ function getUpdatedValues(
   }
 }
 
-export const InputChipInternal = forwardRef(
+export const InputChipsInternal = forwardRef(
   (
     {
       values,
@@ -78,7 +78,7 @@ export const InputChipInternal = forwardRef(
       onInputChange,
       validate,
       ...props
-    }: InputChipProps,
+    }: InputChipsProps,
     ref: Ref<HTMLInputElement>
   ) => {
     const [inputValue, setInputValue] = useControllableState(
@@ -86,7 +86,7 @@ export const InputChipInternal = forwardRef(
       controlledInputValue,
       onInputChange,
       ['inputValue', 'onInputChange'],
-      'InputChip'
+      'InputChips'
     )
 
     function updateValues(newInputValue?: string) {
@@ -169,9 +169,9 @@ export const InputChipInternal = forwardRef(
   }
 )
 
-InputChipInternal.displayName = 'InputChipInternal'
+InputChipsInternal.displayName = 'InputChipsInternal'
 
-export const InputChip = styled(InputChipInternal)`
+export const InputChips = styled(InputChipsInternal)`
   align-items: flex-start;
   flex-wrap: wrap;
 
@@ -180,6 +180,6 @@ export const InputChip = styled(InputChipInternal)`
     padding-left: ${props => props.theme.space.xsmall};
   }
 `
-InputChip.defaultProps = {
+InputChips.defaultProps = {
   px: 'xxsmall',
 }

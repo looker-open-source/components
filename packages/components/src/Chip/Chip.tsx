@@ -162,7 +162,7 @@ const ChipJSX = forwardRef((props: ChipProps, ref: Ref<HTMLSpanElement>) => {
           color="primary"
           disabled={disabled}
           icon="Close"
-          label="Close"
+          label="Delete"
           ml="xsmall"
           onClick={handleDelete}
           size="xxsmall"

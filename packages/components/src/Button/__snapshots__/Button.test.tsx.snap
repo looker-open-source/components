@@ -64,6 +64,7 @@ exports[`Button Focus: renders outline when tabbing into focus, but not when cli
 
 <button
   class="c0 c1"
+  type="button"
 >
   focus
 </button>
@@ -72,6 +73,7 @@ exports[`Button Focus: renders outline when tabbing into focus, but not when cli
 exports[`Button Focus: renders outline when tabbing into focus, but not when clicking 2`] = `
 <button
   class="sc-bxivhb byEMEJ sc-ifAKCX sc-EHOje kAurnO"
+  type="button"
 >
   focus
 </button>
@@ -142,6 +144,7 @@ exports[`Button disable 1`] = `
 <button
   class="c0 c1"
   disabled=""
+  type="button"
 >
   disabled
 </button>
@@ -213,6 +216,7 @@ exports[`Button validates all sizes 1`] = `
 
 <button
   class="c0 c1"
+  type="button"
 >
   xsmall button
 </button>
@@ -282,6 +286,7 @@ exports[`Button validates all sizes 2`] = `
 
 <button
   class="c0 c1"
+  type="button"
 >
   small button
 </button>
@@ -351,6 +356,7 @@ exports[`Button validates all sizes 3`] = `
 
 <button
   class="c0 c1"
+  type="button"
 >
   medium button
 </button>
@@ -420,6 +426,7 @@ exports[`Button validates all sizes 4`] = `
 
 <button
   class="c0 c1"
+  type="button"
 >
   large button
 </button>
@@ -490,6 +497,7 @@ exports[`Button works with color danger 1`] = `
 <button
   class="c0 c1"
   color="danger"
+  type="button"
 >
   danger
 </button>

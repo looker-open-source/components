@@ -100,6 +100,7 @@ exports[`IconButton accepts color 1`] = `
   onMouseOut={[Function]}
   onMouseOver={[Function]}
   size="xsmall"
+  type="button"
   width={24}
 >
   <div
@@ -231,6 +232,7 @@ exports[`IconButton accepts events 1`] = `
   onMouseOut={[Function]}
   onMouseOver={[Function]}
   size="xsmall"
+  type="button"
   width={24}
 >
   <div
@@ -362,6 +364,7 @@ exports[`IconButton accepts events 2`] = `
   onMouseOut={[Function]}
   onMouseOver={[Function]}
   size="xsmall"
+  type="button"
   width={24}
 >
   <div
@@ -493,6 +496,7 @@ exports[`IconButton allows for ARIA attributes 1`] = `
   onMouseOut={[Function]}
   onMouseOver={[Function]}
   size="xsmall"
+  type="button"
   width={24}
 >
   <div
@@ -623,6 +627,7 @@ exports[`IconButton default 1`] = `
   onMouseOut={[Function]}
   onMouseOver={[Function]}
   size="xsmall"
+  type="button"
   width={24}
 >
   <div
@@ -774,6 +779,7 @@ exports[`IconButton outline 1`] = `
   onMouseOut={[Function]}
   onMouseOver={[Function]}
   size="xsmall"
+  type="button"
   width={24}
 >
   <div
@@ -904,6 +910,7 @@ exports[`IconButton renders focus ring on tab input but not on click 1`] = `
   onMouseOut={[Function]}
   onMouseOver={[Function]}
   size="xsmall"
+  type="button"
   width={24}
 >
   <div
@@ -1034,6 +1041,7 @@ exports[`IconButton renders focus ring on tab input but not on click 2`] = `
   onMouseOut={[Function]}
   onMouseOver={[Function]}
   size="xsmall"
+  type="button"
   width={24}
 >
   <div
@@ -1164,6 +1172,7 @@ exports[`IconButton resized 1`] = `
   onMouseOut={[Function]}
   onMouseOver={[Function]}
   size="large"
+  type="button"
   width={44}
 >
   <div
