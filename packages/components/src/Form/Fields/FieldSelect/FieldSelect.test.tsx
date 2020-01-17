@@ -85,7 +85,7 @@ test('Should trigger onChange handler', () => {
     </ThemeProvider>
   )
 
-  wrapper.find('input').simulate('click')
+  wrapper.find('input').simulate('mousedown')
   wrapper
     .find('li')
     .at(0)

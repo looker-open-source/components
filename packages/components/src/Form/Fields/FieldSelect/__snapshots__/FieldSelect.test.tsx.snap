@@ -100,6 +100,10 @@ exports[`A FieldSelect 1`] = `
   padding-right: calc(2 * .25rem + 1rem);
 }
 
+.c5 .c6 {
+  cursor: default;
+}
+
 .c0 {
   margin-bottom: 0.5rem;
   display: -webkit-box;
@@ -153,6 +157,7 @@ exports[`A FieldSelect 1`] = `
           fontSize="small"
           height="36px"
           onClick={[Function]}
+          onMouseDown={[Function]}
           width="100%"
         >
           <input
@@ -305,6 +310,10 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   padding-right: calc(2 * .25rem + 1rem);
 }
 
+.c6 .c7 {
+  cursor: default;
+}
+
 .c0 {
   margin-bottom: 0.5rem;
   display: -webkit-box;
@@ -384,6 +393,7 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
           fontSize="small"
           height="36px"
           onClick={[Function]}
+          onMouseDown={[Function]}
           width="100%"
         >
           <input
@@ -543,6 +553,10 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   padding-right: calc(2 * .25rem + 1rem);
 }
 
+.c6 .c7 {
+  cursor: default;
+}
+
 .c0 {
   margin-bottom: 0.5rem;
   display: -webkit-box;
@@ -619,6 +633,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
           fontSize="small"
           height="36px"
           onClick={[Function]}
+          onMouseDown={[Function]}
           width="100%"
         >
           <input
@@ -748,6 +763,10 @@ exports[`A required FieldSelect 1`] = `
   padding-right: calc(2 * .25rem + 1rem);
 }
 
+.c6 .c7 {
+  cursor: default;
+}
+
 .c0 {
   margin-bottom: 0.5rem;
   display: -webkit-box;
@@ -813,6 +832,7 @@ exports[`A required FieldSelect 1`] = `
           fontSize="small"
           height="36px"
           onClick={[Function]}
+          onMouseDown={[Function]}
           width="100%"
         >
           <input
@@ -935,6 +955,10 @@ exports[`FieldSelect supports labelWeight 1`] = `
   padding-right: calc(2 * .25rem + 1rem);
 }
 
+.c5 .c6 {
+  cursor: default;
+}
+
 .c0 {
   margin-bottom: 0.5rem;
   display: -webkit-box;
@@ -988,6 +1012,7 @@ exports[`FieldSelect supports labelWeight 1`] = `
           fontSize="small"
           height="36px"
           onClick={[Function]}
+          onMouseDown={[Function]}
           width="100%"
         >
           <input

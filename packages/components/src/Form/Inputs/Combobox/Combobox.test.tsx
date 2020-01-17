@@ -47,7 +47,7 @@ describe('<Combobox/> with children', () => {
     )
 
     const input = getByTestId('select-input')
-    fireEvent.click(input)
+    fireEvent.mouseDown(input)
 
     const foo = getByText('Foo')
     expect(getByText('Foo')).toBeInTheDocument()
