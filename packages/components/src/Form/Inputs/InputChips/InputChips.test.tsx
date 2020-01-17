@@ -129,6 +129,9 @@ test('values are removed by clicking remove on the chip', () => {
 
 test('new values are validated', () => {
   const onChangeMock = jest.fn()
+  const onInvalidMock = jest.fn()
+  const onDuplicateMock = jest.fn()
+
   const validate = jest.fn(value => value === 'tag1')
   const { getByPlaceholderText } = renderWithTheme(
     <InputChips
@@ -136,6 +139,8 @@ test('new values are validated', () => {
       values={[]}
       placeholder="type here"
       validate={validate}
+      onInvalid={onInvalidMock}
+      onDuplicate={onDuplicateMock}
     />
   )
   const input = getByPlaceholderText('type here')
@@ -144,9 +149,30 @@ test('new values are validated', () => {
   expect(onChangeMock).not.toHaveBeenCalled()
   // invalid value remains in the input
   expect(input).toHaveValue('tag2')
+  expect(onInvalidMock).toHaveBeenCalledWith(['tag2'])
 
   fireEvent.change(input, { target: { value: 'tag1,' } })
   expect(onChangeMock).toHaveBeenCalledTimes(1)
   expect(onChangeMock).toHaveBeenCalledWith(['tag1'])
   expect(input).toHaveValue('')
+})
+
+test('duplicate values are not added', () => {
+  const onChangeMock = jest.fn()
+  const onDuplicateMock = jest.fn()
+
+  const { getByPlaceholderText } = renderWithTheme(
+    <InputChips
+      onChange={onChangeMock}
+      values={['tag1']}
+      placeholder="type here"
+      onDuplicate={onDuplicateMock}
+    />
+  )
+  const input = getByPlaceholderText('type here')
+
+  fireEvent.change(input, { target: { value: 'tag1,' } })
+  expect(onChangeMock).toHaveBeenCalledTimes(0)
+  expect(onDuplicateMock).toHaveBeenCalledWith(['tag1'])
+  expect(input).toHaveValue('tag1')
 })
