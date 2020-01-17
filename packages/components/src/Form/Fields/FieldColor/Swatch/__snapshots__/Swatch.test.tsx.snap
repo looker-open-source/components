@@ -2,50 +2,62 @@
 
 exports[`Default Swatch 1`] = `
 .c0 {
-  border: 1px solid;
-  border-color: #C1C6CC;
-  border-radius: 0.25rem;
+  width: 36px;
+  height: 36px;
+  border-color: #DEE1E5;
   background-color: white;
-  width: 28px;
-  height: 28px;
+  margin-top: auto;
+}
+
+.c0:hover {
+  border-color: #C1C6CC;
 }
 
 <div
   className="c0"
-  height="28px"
-  width="28px"
+  color="white"
+  height="36px"
+  width="36px"
 />
 `;
 
 exports[`Swatch with hex value passed 1`] = `
 .c0 {
-  border: 1px solid;
-  border-color: #C1C6CC;
-  border-radius: 0.25rem;
+  width: 36px;
+  height: 36px;
+  border-color: #DEE1E5;
   background-color: #4c6670;
-  width: 28px;
-  height: 28px;
+  margin-top: auto;
+}
+
+.c0:hover {
+  border-color: #C1C6CC;
 }
 
 <div
   className="c0"
-  height="28px"
-  width="28px"
+  color="#4c6670"
+  height="36px"
+  width="36px"
 />
 `;
 
 exports[`Swatch with width and height set 1`] = `
 .c0 {
-  border: 1px solid;
-  border-color: #C1C6CC;
-  border-radius: 0.25rem;
-  background-color: blue;
   width: 50px;
   height: 25px;
+  border-color: #DEE1E5;
+  background-color: blue;
+  margin-top: auto;
+}
+
+.c0:hover {
+  border-color: #C1C6CC;
 }
 
 <div
   className="c0"
+  color="blue"
   height="25px"
   width="50px"
 />

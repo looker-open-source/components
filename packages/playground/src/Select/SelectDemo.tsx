@@ -18,15 +18,15 @@
  SOFTWARE.
  */
 
-import React, { MouseEvent, useState } from 'react'
+import React, { MouseEvent } from 'react'
 import {
   Button,
+  Dialog,
   Divider,
   Box,
   Select,
   FieldSelect,
   ModalContent,
-  Dialog,
 } from '@looker/components'
 
 const options = [
@@ -120,7 +120,7 @@ const ModalInner = () => {
 }
 
 export const SelectDemo = () => {
-  const [isOpen, setOpen] = useState(false)
+  const [isOpen, setOpen] = React.useState(false)
   const handleClick = () => setOpen(true)
   const handleClose = () => setOpen(false)
   return (
