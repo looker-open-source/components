@@ -2,13 +2,6 @@
 
 exports[`MenuItem - current + marker 1`] = `
 .c2 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   color: #262D33;
   margin-right: 0.5rem;
   width: 20px;
@@ -24,13 +17,6 @@ exports[`MenuItem - current + marker 1`] = `
 }
 
 .c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   padding-bottom: 0.75rem;
   padding-left: 1rem;
   padding-right: 1rem;
@@ -154,13 +140,6 @@ exports[`MenuItem - current + marker 1`] = `
 
 exports[`MenuItem - current 1`] = `
 .c2 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   color: #262D33;
   margin-right: 0.5rem;
   width: 20px;
@@ -176,13 +155,6 @@ exports[`MenuItem - current 1`] = `
 }
 
 .c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   padding-bottom: 0.75rem;
   padding-left: 1rem;
   padding-right: 1rem;
@@ -306,13 +278,6 @@ exports[`MenuItem - current 1`] = `
 
 exports[`MenuItem - detail 1`] = `
 .c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   padding-bottom: 0.75rem;
   padding-left: 1rem;
   padding-right: 1rem;
@@ -347,13 +312,6 @@ exports[`MenuItem - detail 1`] = `
 }
 
 .c2 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   color: #C1C6CC;
   padding-left: 1.25rem;
   margin-left: auto;
@@ -438,13 +396,6 @@ exports[`MenuItem - detail 1`] = `
 
 exports[`MenuItem - icon 1`] = `
 .c2 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   color: #C1C6CC;
   margin-right: 0.5rem;
   width: 20px;
@@ -460,13 +411,6 @@ exports[`MenuItem - icon 1`] = `
 }
 
 .c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   padding-bottom: 0.75rem;
   padding-left: 1rem;
   padding-right: 1rem;
@@ -590,13 +534,6 @@ exports[`MenuItem - icon 1`] = `
 
 exports[`MenuItem - with customizations 1`] = `
 .c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   padding-bottom: 0.75rem;
   padding-left: 1rem;
   padding-right: 1rem;
@@ -690,13 +627,6 @@ exports[`MenuItem - with customizations 1`] = `
 
 exports[`MenuItem - with single customization 1`] = `
 .c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   padding-bottom: 0.75rem;
   padding-left: 1rem;
   padding-right: 1rem;
@@ -790,13 +720,6 @@ exports[`MenuItem - with single customization 1`] = `
 
 exports[`MenuItem 1`] = `
 .c1 {
-  border: 0;
-  box-sizing: border-box;
-  font: inherit;
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
   padding-bottom: 0.75rem;
   padding-left: 1rem;
   padding-right: 1rem;
