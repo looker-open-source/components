@@ -14,7 +14,10 @@ import { InputSearch, InputSearchProps } from '../InputSearch'
 
 interface InputChipsProps
   extends MaxHeightProps,
-    Omit<InputSearchProps, 'value' | 'defaultValue' | 'onChange'> {
+    Omit<
+      InputSearchProps,
+      'value' | 'defaultValue' | 'onChange' | 'onInvalid'
+    > {
   /**
    * InputChips is a controlled component since unlike native inputs,
    * you can't easily access the current value via dom API
@@ -37,6 +40,14 @@ interface InputChipsProps
    * for checking each value before converting to a chip
    */
   validate?: (value: string) => boolean
+  /**
+   * callback when values fail validation
+   */
+  onInvalid?: (values: string[]) => void
+  /**
+   * callback when values are duplicates
+   */
+  onDuplicate?: (values: string[]) => void
 }
 
 function getUpdatedValues(
@@ -44,7 +55,9 @@ function getUpdatedValues(
   currentValues: string[],
   validate?: (value: string) => boolean
 ) {
+  const duplicateValues: string[] = []
   const invalidValues: string[] = []
+  const unusedValues: string[] = []
   const validValues: string[] = []
 
   // Values may be separated by ',' '\t' and ' '
@@ -52,21 +65,18 @@ function getUpdatedValues(
   inputValues.forEach((val: string) => {
     if (val.trim() === '') return
     // Make sure each value is valid and doesn't already exist
-    if (
-      (validate && !validate(val)) ||
-      (currentValues && currentValues.includes(val))
-    ) {
+    if (validate && !validate(val)) {
+      unusedValues.push(val)
       return invalidValues.push(val)
+    } else if (currentValues && currentValues.includes(val)) {
+      unusedValues.push(val)
+      return duplicateValues.push(val)
     } else {
       return validValues.push(val)
     }
   })
 
-  // Save valid values and keep invalid ones in the input
-  return {
-    updatedInputValue: invalidValues.join(', '),
-    updatedValues: validValues.length && [...currentValues, ...validValues],
-  }
+  return { duplicateValues, invalidValues, unusedValues, validValues }
 }
 
 export const InputChipsInternal = forwardRef(
@@ -77,6 +87,8 @@ export const InputChipsInternal = forwardRef(
       inputValue: controlledInputValue,
       onInputChange,
       validate,
+      onInvalid,
+      onDuplicate,
       ...props
     }: InputChipsProps,
     ref: Ref<HTMLInputElement>
@@ -90,13 +102,25 @@ export const InputChipsInternal = forwardRef(
     )
 
     function updateValues(newInputValue?: string) {
-      const { updatedValues, updatedInputValue } = getUpdatedValues(
-        newInputValue || inputValue,
-        values,
-        validate
-      )
+      const {
+        duplicateValues,
+        invalidValues,
+        unusedValues,
+        validValues,
+      } = getUpdatedValues(newInputValue || inputValue, values, validate)
+
+      // Save valid values and keep invalid ones in the input
+      const updatedInputValue = unusedValues.join(', ')
+      const updatedValues = validValues.length && [...values, ...validValues]
       if (updatedValues) {
         onChange(updatedValues)
+      }
+
+      if (invalidValues.length > 0) {
+        onInvalid && onInvalid(invalidValues)
+      }
+      if (duplicateValues.length > 0) {
+        onDuplicate && onDuplicate(duplicateValues)
       }
 
       setInputValue(updatedInputValue)

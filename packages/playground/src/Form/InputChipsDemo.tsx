@@ -19,56 +19,74 @@
  */
 
 import React from 'react'
-import {
-  Divider,
-  Flex,
-  Box,
-  InputChips,
-  InputSearch,
-  InputText,
-} from '@looker/components'
+import { Divider, Box, InputChips, Paragraph } from '@looker/components'
+
+const emailValidator = new RegExp(
+  /^(([^<>()[\]\\.,:\s@"]+(\.[^<>()[\]\\.,:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+)
 
 export function InputChipsDemo() {
-  const [values, setValues] = React.useState<string[]>(['hello'])
-  const [inputValue, setInputValue] = React.useState('hi')
+  const [values, setValues] = React.useState<string[]>(['apples'])
+  const [values2, setValues2] = React.useState<string[]>(['bananas'])
+  const [values3, setValues3] = React.useState<string[]>(['someone@looker.com'])
+  const [inputValue, setInputValue] = React.useState('oranges')
+  const [invalid, setInvalid] = React.useState('')
+  const [duplicate, setDuplicate] = React.useState('')
+
   function handleChange(vals: string[]) {
     setValues(vals)
+  }
+  function handleChange2(vals: string[]) {
+    setValues2(vals)
+  }
+  function handleChange3(vals: string[]) {
+    setInvalid('')
+    setDuplicate('')
+    setValues3(vals)
   }
   function handleInputChange(value: string) {
     setInputValue(value)
   }
+  function handleInvalid(values: string[]) {
+    setInvalid(`Invalid email: ${values.join(', ')}`)
+  }
+  function handleDuplicate(values: string[]) {
+    setDuplicate(`Duplicate email: ${values.join(', ')}`)
+  }
   return (
     <Box m="xlarge">
-      <Flex alignItems="flex-start">
-        <InputChips
-          width={300}
-          name="FOO"
-          values={values}
-          inputValue={inputValue}
-          onChange={handleChange}
-          onInputChange={handleInputChange}
-          summary="Hello?"
-        />
-        <InputText />
-      </Flex>
+      <InputChips
+        width={300}
+        values={values}
+        onChange={handleChange}
+        placeholder="Uncontrolled input text"
+      />
       <Divider my="large" />
-      <Flex>
-        <InputChips
-          width={300}
-          name="BAR"
-          values={values}
-          inputValue={inputValue}
-          onChange={handleChange}
-          onInputChange={handleInputChange}
-          validationType="error"
-          summary={
-            values.length
-              ? `${values.length} item${values.length > 1 ? 's' : ''}`
-              : ''
-          }
-        />
-        <InputSearch width={300} summary="foobar" />
-      </Flex>
+      <InputChips
+        width={300}
+        values={values2}
+        inputValue={inputValue}
+        onChange={handleChange2}
+        onInputChange={handleInputChange}
+        summary={
+          values.length
+            ? `${values.length} item${values.length > 1 ? 's' : ''}`
+            : ''
+        }
+      />
+      <Divider my="large" />
+      <InputChips
+        width={400}
+        values={values3}
+        onChange={handleChange3}
+        placeholder="Email validation"
+        validate={val => emailValidator.test(val)}
+        onInvalid={handleInvalid}
+        onDuplicate={handleDuplicate}
+      />
+      <Paragraph>
+        {invalid} {duplicate}
+      </Paragraph>
     </Box>
   )
 }
