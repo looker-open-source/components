@@ -27,6 +27,8 @@
 import {
   color,
   reset,
+  layout,
+  LayoutProps,
   space,
   SpaceProps,
   typography,
@@ -40,6 +42,7 @@ import { IconButton } from '../Button'
 
 export interface ChipProps
   extends CompatibleHTMLProps<HTMLSpanElement>,
+    LayoutProps,
     SpaceProps,
     TypographyProps {
   children: ReactNode
@@ -52,6 +55,7 @@ const ChipStyle = styled.span<ChipProps>`
   ${reset}
 
   ${color}
+  ${layout}
   ${space}
   ${typography}
   ${IconButton}{
@@ -64,11 +68,7 @@ const ChipStyle = styled.span<ChipProps>`
   border-radius: 4px;
   color: ${props => props.theme.colors.palette.purple500};
   display: flex;
-  font-size: ${props => props.theme.fontSizes.xsmall};
   justify-items: center;
-  margin-bottom: ${props => props.theme.space.xxsmall};
-  max-width: 320px;
-  min-width: 44px;
   & + & {
     margin-left: ${props => props.theme.space.xxsmall};
   }
@@ -177,7 +177,11 @@ ChipJSX.displayName = 'ChipJSX'
 export const Chip = styled(ChipJSX)``
 
 Chip.defaultProps = {
+  fontSize: 'xsmall',
   fontWeight: 'semiBold',
+  maxWidth: 320,
+  mb: 'xxsmall',
+  minWidth: 44,
   px: 'xsmall',
   py: 'xxsmall',
 }

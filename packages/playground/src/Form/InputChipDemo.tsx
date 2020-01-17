@@ -19,7 +19,14 @@
  */
 
 import React from 'react'
-import { Divider, Box, InputChip } from '@looker/components'
+import {
+  Divider,
+  Flex,
+  Box,
+  InputChip,
+  InputSearch,
+  InputText,
+} from '@looker/components'
 
 export function InputChipDemo() {
   const [values, setValues] = React.useState<string[]>(['hello'])
@@ -32,7 +39,7 @@ export function InputChipDemo() {
   }
   return (
     <Box m="xlarge">
-      <form>
+      <Flex alignItems="flex-start">
         <InputChip
           width={300}
           name="FOO"
@@ -40,23 +47,28 @@ export function InputChipDemo() {
           inputValue={inputValue}
           onChange={handleChange}
           onInputChange={handleInputChange}
+          summary="Hello?"
         />
-      </form>
+        <InputText />
+      </Flex>
       <Divider my="large" />
-      <InputChip
-        width={300}
-        name="FOO"
-        values={values}
-        inputValue={inputValue}
-        onChange={handleChange}
-        onInputChange={handleInputChange}
-        validationType="error"
-        summary={
-          values.length
-            ? `${values.length} item${values.length > 1 ? 's' : ''}`
-            : ''
-        }
-      />
+      <Flex>
+        <InputChip
+          width={300}
+          name="BAR"
+          values={values}
+          inputValue={inputValue}
+          onChange={handleChange}
+          onInputChange={handleInputChange}
+          validationType="error"
+          summary={
+            values.length
+              ? `${values.length} item${values.length > 1 ? 's' : ''}`
+              : ''
+          }
+        />
+        <InputSearch width={300} summary="foobar" />
+      </Flex>
     </Box>
   )
 }

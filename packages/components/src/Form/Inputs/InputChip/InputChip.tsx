@@ -1,6 +1,6 @@
 import React, { FormEvent, forwardRef, Ref } from 'react'
 import styled from 'styled-components'
-import { height, MaxHeightProps } from 'styled-system'
+import { MaxHeightProps } from 'styled-system'
 
 import { useControllableState } from '../../../utils'
 import { Chip } from '../../../Chip'
@@ -14,7 +14,7 @@ import { InputSearch, InputSearchProps } from '../InputSearch'
 
 interface InputChipProps
   extends MaxHeightProps,
-    Omit<InputSearchProps, 'value' | 'defaultValue' | 'onChange' | 'height'> {
+    Omit<InputSearchProps, 'value' | 'defaultValue' | 'onChange'> {
   /**
    * InputChip is a controlled component since unlike native inputs,
    * you can't easily access the current value via dom API
@@ -146,7 +146,7 @@ export const InputChipInternal = forwardRef(
         handleDeleteChip(value)
       }
       return (
-        <Chip onDelete={onChipDelete} key={value}>
+        <Chip onDelete={onChipDelete} key={value} mb={1} mt={2} ml="xxsmall">
           {value}
         </Chip>
       )
@@ -161,7 +161,6 @@ export const InputChipInternal = forwardRef(
         onKeyDown={handleKeyDown}
         showClear={values.length > 0}
         onClear={handleClear}
-        p="xxsmall"
         {...props}
       >
         {chips}
@@ -173,10 +172,14 @@ export const InputChipInternal = forwardRef(
 InputChipInternal.displayName = 'InputChipInternal'
 
 export const InputChip = styled(InputChipInternal)`
+  align-items: flex-start;
   flex-wrap: wrap;
 
   ${InputText} {
     min-width: 25%;
-    margin: 1px;
+    padding-left: ${props => props.theme.space.xsmall};
   }
 `
+InputChip.defaultProps = {
+  px: 'xxsmall',
+}

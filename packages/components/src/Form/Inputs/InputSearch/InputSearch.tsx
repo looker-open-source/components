@@ -139,6 +139,7 @@ const InputSearchComponent = forwardRef(
         onClear={handleClear}
         showClear={showClear || inputValue.length > 0}
         summary={summary}
+        height={`calc(${inputTextDefaults.height} - 5px)`}
       />
     )
 
@@ -166,6 +167,7 @@ const InputSearchComponent = forwardRef(
           onChange={handleChange}
           value={inputValue}
           focusStyle={{ outline: 'none' }}
+          px="0"
           {...pick(props, inputPropKeys)}
           ref={ref}
         />
@@ -197,10 +199,11 @@ export const InputSearch = styled(InputSearchComponent)`
 
   ${InputText} {
     border: none;
-    flex: 1;
     appearance: none;
     background: transparent;
     box-shadow: none;
+    flex: 1;
+    height: calc(${inputTextDefaults.height} - 5px);
 
     &::-webkit-search-decoration,
     &::-webkit-search-cancel-button,
@@ -212,5 +215,7 @@ export const InputSearch = styled(InputSearchComponent)`
 `
 
 InputSearch.defaultProps = {
-  ...inputTextDefaults,
+  ...omit(inputTextDefaults, 'height'),
+  pr: 'xxsmall',
+  py: 2,
 }

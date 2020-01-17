@@ -158,11 +158,9 @@ export const InputText = styled(InputComponent).attrs(
 `
 
 export const inputTextDefaults = {
+  ...CustomizableInputTextAttributes,
   border: 'solid 1px',
   borderColor: 'palette.charcoal200',
-  borderRadius: CustomizableInputTextAttributes.borderRadius,
-  fontSize: CustomizableInputTextAttributes.fontSize,
-  height: CustomizableInputTextAttributes.height,
 }
 
 InputText.defaultProps = {
