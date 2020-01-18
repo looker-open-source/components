@@ -1,8 +1,8 @@
-import React, { FormEvent, forwardRef, Ref } from 'react'
+import React, { FormEvent, forwardRef, Ref, useState } from 'react'
 import styled from 'styled-components'
 import { MaxHeightProps } from 'styled-system'
 
-import { useControllableState } from '../../../utils'
+import { useControlWarn } from '../../../utils'
 import { Chip } from '../../../Chip'
 import { InputText } from '../InputText'
 import { InputSearch, InputSearchProps } from '../InputSearch'
@@ -93,13 +93,22 @@ export const InputChipsInternal = forwardRef(
     }: InputChipsProps,
     ref: Ref<HTMLInputElement>
   ) => {
-    const [inputValue, setInputValue] = useControllableState(
-      '',
-      controlledInputValue,
-      onInputChange,
-      ['inputValue', 'onInputChange'],
-      'InputChips'
-    )
+    const isControlled = useControlWarn({
+      controllingProps: ['inputValue', 'onInputChange'],
+      isControlledCheck: () =>
+        controlledInputValue !== undefined && onInputChange !== undefined,
+      name: 'InputChips',
+    })
+
+    const [uncontrolledValue, setUncontrolledValue] = useState('')
+    const inputValue = isControlled ? controlledInputValue : uncontrolledValue
+
+    const setInputValue = (val: string) => {
+      if (!isControlled) {
+        setUncontrolledValue(val)
+      }
+      onInputChange && onInputChange(val)
+    }
 
     function updateValues(newInputValue?: string) {
       const {
@@ -107,7 +116,12 @@ export const InputChipsInternal = forwardRef(
         invalidValues,
         unusedValues,
         validValues,
-      } = getUpdatedValues(newInputValue || inputValue, values, validate)
+      } = getUpdatedValues(
+        // TypeScript can't tell that inputValue won't be undefined
+        newInputValue || (inputValue as string),
+        values,
+        validate
+      )
 
       // Save valid values and keep invalid ones in the input
       const updatedInputValue = unusedValues.join(', ')

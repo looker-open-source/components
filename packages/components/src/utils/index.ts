@@ -26,7 +26,6 @@
 
 export * from './GlobalStyle'
 export * from './useControlWarn'
-export * from './useControllableState'
 export * from './useCallbackRef'
 export * from './useFocusTrap'
 export * from './useForkedRef'
