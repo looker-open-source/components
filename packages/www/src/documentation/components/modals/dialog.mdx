@@ -54,7 +54,13 @@ DialogManager gives an easy way to compose a Dialog without the need to manage o
 
 ## Props: width and maxWidth
 
-All variants of Dialog allow you to override content `width` and `max-width` style to suit your content. We support responsive width arrays an well as static strings.
+All variants of Dialog allow you to override `width` and `max-width` styles to suit your content. By default, `width` is unassigned so that Dialog Surface will conform to the width of its content. At the same time, `maxWidth` constrains the Dialog surface's width to be no larger than the specified value.
+
+`maxWidth` defaults to one of three sizes depending on the responsive breakpoint of the page (`['90vw', '90vw', '600px']`).
+
+With those constraints in mind, if you want a variable-width Dialog that renders complex content you should use `maxWidth`. If your Dialog content must be a specific predefined width, assign values to both props (or else `maxWidth` [will take priority](https://css-tricks.com/tale-width-max-width/)).
+
+The props accept responsive width arrays an well as static strings.
 
 ```jsx
 <DialogManager
