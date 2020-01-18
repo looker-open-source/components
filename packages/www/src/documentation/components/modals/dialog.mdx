@@ -107,7 +107,7 @@ If your dialog content includes form inputs it's entirely possible that the user
       // has unsaved changes: keep dialog open and update state to reflect attempt at closing the form
       setIsCancellingInput(true)
     } else {
-      // no unsaved changes: close the form
+      // no unsaved changes: close the dialog
       setIsOpen(false)
     }
   }
@@ -139,7 +139,7 @@ If your dialog content includes form inputs it's entirely possible that the user
         onClose={handleCancel}
         width="500px"
       >
-        <ConfirmationDialogContent
+        <ConfirmLayout
           title="Edit Account Information"
           message={
             <form>
@@ -170,7 +170,7 @@ If your dialog content includes form inputs it's entirely possible that the user
         onClose={handleConfirmClose}
         width="500px"
       >
-        <ConfirmationDialogContent
+        <ConfirmLayout
           title="Discard Changes?"
           titleIcon={<Icon name="Warning" color="palette.red500" size={22} />}
           message="Are you sure you want to close the dialog? Unsaved changes will be lost."

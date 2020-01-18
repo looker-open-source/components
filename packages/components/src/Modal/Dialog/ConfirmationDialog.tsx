@@ -28,7 +28,7 @@ import React, { FC, useCallback, ReactElement } from 'react'
 import { SemanticColors } from '@looker/design-tokens'
 import { Button, ButtonTransparent } from '../../Button'
 import { ManagedModalProps } from '../Modal'
-import { Dialog, ConfirmationDialogContent } from '.'
+import { Dialog, ConfirmLayout } from '.'
 
 export type ConfirmationCallback = (close: () => void) => void
 
@@ -111,7 +111,7 @@ export const ConfirmationDialog: FC<ConfirmationDialogProps> = ({
 
   return (
     <Dialog isOpen={isOpen} onClose={cancel} {...props}>
-      <ConfirmationDialogContent
+      <ConfirmLayout
         title={title}
         message={message}
         primaryButton={

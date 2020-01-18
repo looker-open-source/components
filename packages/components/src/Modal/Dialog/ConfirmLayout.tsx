@@ -5,7 +5,7 @@ import { IconProps } from '../../Icon'
 import { Paragraph } from '../../Text'
 import { ModalContent, ModalFooter, ModalHeader } from '../Layout'
 
-interface ConfirmationDialogContentProps {
+interface ConfirmLayoutProps {
   /**
    * Header content
    */
@@ -28,7 +28,7 @@ interface ConfirmationDialogContentProps {
   secondaryButton: ReactElement<ButtonProps>
 }
 
-export const ConfirmationDialogContent: FC<ConfirmationDialogContentProps> = ({
+export const ConfirmLayout: FC<ConfirmLayoutProps> = ({
   secondaryButton,
   primaryButton,
   message,

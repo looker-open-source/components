@@ -33,7 +33,7 @@ import React, {
   SetStateAction,
 } from 'react'
 import {
-  ConfirmationDialogContent,
+  ConfirmLayout,
   ButtonTransparent,
   Button,
   DialogManager,
@@ -130,7 +130,7 @@ export const CanCloseDialogManagerDemo: React.FC = () => {
       {/* Fallback "discard changes" dialog */}
       <DialogManager
         content={
-          <ConfirmationDialogContent
+          <ConfirmLayout
             title="Discard Changes?"
             titleIcon={<Icon name="Warning" color="palette.red500" size={22} />}
             message="Are you sure you want to close the dialog? Unsaved changes will be
@@ -172,7 +172,7 @@ const UserForm: FC<UserFormProps> = ({
   }
 
   return (
-    <ConfirmationDialogContent
+    <ConfirmLayout
       title="Edit Account Information"
       message={
         <form>

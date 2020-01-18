@@ -9,11 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- New modal component: `ConfirmationDialogContent` for laying out standard user confirmation dialog content
+- New modal component: `ConfirmLayout` for laying out standard user confirmation dialog content
 
 ### Changes
 
-- `ConfirmationDialog` uses `ConfirmationDialogContent` to render modal content
+- `ConfirmationDialog` uses `ConfirmLayout` to render modal content
 - `ModalHeader` accepts a new headerIcon prop to render next to the title content
 - `ModalManager` children prop is now optional
 - Updated `ModalSurface` prop from `surfaceStyle` to `surfaceStyles` in order to make the modal and DialogManager apis consistent

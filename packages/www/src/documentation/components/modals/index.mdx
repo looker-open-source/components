@@ -7,11 +7,9 @@ import { Props } from '../../../Shared'
 
 A Modal is a container for content that should sit above or aside the primary content. They are temporary overlays that offer contextual information or require user input/confirmation while blocking interactions with the application until being explicitly dismissed.
 
-# Variants
+## Variants & Terminology
 
 There are primarily two kinds of Modals: [`Dialog`](/components/modals/dialog) which overlays the entire screen, and [`Drawer`](/components/modals/drawer) which is attached to the side of the screen. The most common use case (a user confirmation dialog) can be helpfully rendered with the [`Confirm`](/components/modals/confirm) component.
-
-# Custom Styling
 
 Modals are assembled of two primary pieces: `ModalBackdrop`, the semi-opaque full-screen overlay; and a ModalSurface, which renders the revelant content.
 
@@ -145,7 +143,7 @@ ModalFooter supports all [`Box`](/src-documentation-components-box) properties.
 </ModalFooter>
 ```
 
-# ModalContext
+## ModalContext
 
 `ModalContext` is a [React Context](https://reactjs.org/docs/context.html) that provides access to functionality without requiring the developer to explicitly manage the Modal's state. The context provides access to the following methods:
 

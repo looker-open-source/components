@@ -72,10 +72,10 @@ If you want more control over markup and state, we provide a custom hook that re
 }
 ```
 
-# ConfirmationDialogContent
+# ConfirmLayout
 
 We've found that most Dialogs involve the same common elements: Title, Message, a primary action (usually "Confirm"), and a secondary action (usually "Cancel").
-To help standardize that layout, we created the `ConfirmationDialogContent` component for composing the relevant pieces. This is handy if you need something like Confirm in a separate context (e.g. when you need to lay out surface content for use in [`DialogManager`](/components/modals/dialog#dialogmanager)).
+To help standardize that layout, we created the `ConfirmLayout` component for composing the relevant pieces. This is handy if you need something like Confirm in a separate context (e.g. when you need to lay out surface content for use in [`DialogManager`](/components/modals/dialog#dialogmanager)).
 
 ```jsx
 ;() => {
@@ -87,7 +87,7 @@ To help standardize that layout, we created the `ConfirmationDialogContent` comp
   }
 
   return (
-    <ConfirmationDialogContent
+    <ConfirmLayout
       title="Discard Changes?"
       titleIcon={<Icon name="Warning" color="palette.red500" size={22} />}
       message="Are you sure you want to close the dialog? Unsaved changes will be lost."
