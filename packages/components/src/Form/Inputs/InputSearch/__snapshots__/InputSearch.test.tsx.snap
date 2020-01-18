@@ -49,7 +49,7 @@ exports[`InputSearch default 1`] = `
 }
 
 .c4 {
-  height: calc(36px - 5px);
+  height: calc(36px - 6px);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -94,7 +94,7 @@ exports[`InputSearch default 1`] = `
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  height: calc(36px - 5px);
+  height: calc(36px - 6px);
 }
 
 .c1 .c2::-webkit-search-decoration,
@@ -120,7 +120,7 @@ exports[`InputSearch default 1`] = `
   <div
     className="c4"
     display="flex"
-    height="calc(36px - 5px)"
+    height="calc(36px - 6px)"
   />
 </div>
 `;

@@ -86,7 +86,7 @@ exports[`A FieldSelect 1`] = `
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  height: calc(36px - 5px);
+  height: calc(36px - 6px);
 }
 
 .c4 .c6::-webkit-search-decoration,
@@ -248,7 +248,7 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  height: calc(36px - 5px);
+  height: calc(36px - 6px);
 }
 
 .c10 .c7::-webkit-search-decoration,
@@ -304,7 +304,7 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  height: calc(36px - 5px);
+  height: calc(36px - 6px);
 }
 
 .c5 .c7::-webkit-search-decoration,
@@ -499,7 +499,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  height: calc(36px - 5px);
+  height: calc(36px - 6px);
 }
 
 .c10 .c7::-webkit-search-decoration,
@@ -555,7 +555,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  height: calc(36px - 5px);
+  height: calc(36px - 6px);
 }
 
 .c5 .c7::-webkit-search-decoration,
@@ -770,7 +770,7 @@ exports[`A required FieldSelect 1`] = `
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  height: calc(36px - 5px);
+  height: calc(36px - 6px);
 }
 
 .c5 .c7::-webkit-search-decoration,
@@ -967,7 +967,7 @@ exports[`FieldSelect supports labelWeight 1`] = `
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  height: calc(36px - 5px);
+  height: calc(36px - 6px);
 }
 
 .c4 .c6::-webkit-search-decoration,
