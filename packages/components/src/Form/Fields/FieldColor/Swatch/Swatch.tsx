@@ -35,6 +35,7 @@ import {
   WidthProps,
 } from 'styled-system'
 import {
+  CustomizableInputTextAttributes,
   inputTextDefaults,
   inputTextDisabled,
   inputTextHover,
@@ -70,6 +71,6 @@ export const Swatch = styled.div<SwatchProps>`
 Swatch.defaultProps = {
   borderColor: inputTextDefaults.borderColor,
   color: 'white',
-  height: inputTextDefaults.height,
-  width: inputTextDefaults.height,
+  height: CustomizableInputTextAttributes.height,
+  width: CustomizableInputTextAttributes.height,
 }

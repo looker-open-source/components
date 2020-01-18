@@ -37,6 +37,7 @@ import React, {
 import styled from 'styled-components'
 import { inputPropKeys } from '../InputProps'
 import {
+  CustomizableInputTextAttributes,
   InputText,
   InputTextProps,
   inputTextDefaults,
@@ -48,6 +49,8 @@ import {
 import { useControlWarn, useForkedRef, useWrapEvent } from '../../../utils'
 import { Box } from '../../../Layout'
 import { InputSearchControls } from './InputSearchControls'
+
+const getHeight = () => `calc(${CustomizableInputTextAttributes.height} - 6px)`
 
 export interface InputSearchProps extends InputTextProps {
   /**
@@ -139,7 +142,7 @@ const InputSearchComponent = forwardRef(
         onClear={handleClear}
         showClear={showClear || inputValue.length > 0}
         summary={summary}
-        height={`calc(${inputTextDefaults.height} - 5px)`}
+        height={getHeight()}
       />
     )
 
@@ -203,7 +206,11 @@ export const InputSearch = styled(InputSearchComponent)`
     background: transparent;
     box-shadow: none;
     flex: 1;
-    height: calc(${inputTextDefaults.height} - 5px);
+    /* Subtracting 6 pixels for vertical padding and border
+    Setting height this way instead of on the parent div allows
+    InputChip to expand vertically as needed
+    min-height doesn't work because then height: 100% on the children is ignored */
+    height: ${getHeight()};
 
     &::-webkit-search-decoration,
     &::-webkit-search-cancel-button,
@@ -215,7 +222,8 @@ export const InputSearch = styled(InputSearchComponent)`
 `
 
 InputSearch.defaultProps = {
-  ...omit(inputTextDefaults, 'height'),
+  ...omit(CustomizableInputTextAttributes, 'height'),
+  ...inputTextDefaults,
   pr: 'xxsmall',
   py: 2,
 }

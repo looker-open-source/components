@@ -170,7 +170,7 @@ export const InputChipsInternal = forwardRef(
         handleDeleteChip(value)
       }
       return (
-        <Chip onDelete={onChipDelete} key={value} mb={1} mt={2} ml="xxsmall">
+        <Chip onDelete={onChipDelete} key={value} mb={1} mt={1} ml="xxsmall">
           {value}
         </Chip>
       )
