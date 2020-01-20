@@ -16,7 +16,7 @@
     "develop": "node-env-run src --exec nodemon | pino-colada"
   },
   "dependencies": {
-    "@looker/sdk": "^0.2.0-beta.28",
+    "@looker/sdk": "^0.2.0-beta.29",
     "@types/node-fetch": "^2.5.4",
     "dotenv": "^8.2.0",
     "node-fetch": "^2.6.0"
