@@ -9,13 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- `MenuItem` update for the use of `ItemRole=link` no text-decoration on hover or focus
+- updated use-case where itemRole="link" interacted poorly with CSS stylesheet in applying :hover and :focus pseudo-styles
 
 ## [07.13] - 2020-01-16
 
 ### Added
 
-- `Chip` component (more `Chip`-related fe atures coming soon)
+- `Chip` component (more `Chip`-related features coming soon)
 
 ### Fixed
 
