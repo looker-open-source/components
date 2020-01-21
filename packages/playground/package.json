@@ -16,6 +16,7 @@
   "dependencies": {
     "@looker/components": "^0.7.13",
     "@looker/design-tokens": "^0.7.10",
+    "lodash": "^4.17.15",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "styled-components": "^4.4.1"

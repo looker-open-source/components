@@ -2,17 +2,17 @@
 
 exports[`A Label 1`] = `
 .c0 {
-  color: #262D33;
+  color: #343C42;
   margin-right: 0.5rem;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   font-weight: 600;
   display: inline-block;
 }
 
 <label
   className="c0"
-  color="palette.charcoal800"
-  fontSize="small"
+  color="palette.charcoal700"
+  fontSize="xsmall"
   fontWeight="semiBold"
   htmlFor="party"
 >
@@ -22,17 +22,17 @@ exports[`A Label 1`] = `
 
 exports[`Label supports fontWeight 1`] = `
 .c0 {
-  color: #262D33;
+  color: #343C42;
   margin-right: 0.5rem;
   font-weight: 400;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   display: inline-block;
 }
 
 <label
   className="c0"
-  color="palette.charcoal800"
-  fontSize="small"
+  color="palette.charcoal700"
+  fontSize="xsmall"
   fontWeight="normal"
   htmlFor="party"
 >

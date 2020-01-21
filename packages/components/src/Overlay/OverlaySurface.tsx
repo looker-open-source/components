@@ -130,7 +130,7 @@ OverlaySurface.displayName = 'OverlaySurface'
 
 const Outer = styled.div<{ zIndex?: number }>`
   ${reset};
-  animation: ${fadeIn} 0.2s linear;
+  animation: ${fadeIn} 150ms ease-in;
   overflow: visible;
   padding: ${props => props.theme.space.xsmall};
   z-index: ${props => props.zIndex};

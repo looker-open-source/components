@@ -27,10 +27,8 @@
 import React, { FC, useCallback, ReactElement } from 'react'
 import { SemanticColors } from '@looker/design-tokens'
 import { Button, ButtonTransparent } from '../../Button'
-import { Paragraph } from '../../Text'
-import { ModalContent, ModalFooter, ModalHeader } from '../Layout'
 import { ManagedModalProps } from '../Modal'
-import { Dialog } from './Dialog'
+import { Dialog, ConfirmLayout } from '.'
 
 export type ConfirmationCallback = (close: () => void) => void
 
@@ -113,22 +111,20 @@ export const ConfirmationDialog: FC<ConfirmationDialogProps> = ({
 
   return (
     <Dialog isOpen={isOpen} onClose={cancel} {...props}>
-      <ModalHeader>{title}</ModalHeader>
-      <ModalContent innerProps={{ py: 'none' }}>
-        {typeof message === 'string' ? (
-          <Paragraph>{message}</Paragraph>
-        ) : (
-          message
-        )}
-      </ModalContent>
-      <ModalFooter>
-        <Button onClick={confirm} color={buttonColor}>
-          {confirmLabel}
-        </Button>
-        <ButtonTransparent color={cancelColor} onClick={cancel}>
-          {cancelLabel}
-        </ButtonTransparent>
-      </ModalFooter>
+      <ConfirmLayout
+        title={title}
+        message={message}
+        primaryButton={
+          <Button onClick={confirm} color={buttonColor}>
+            {confirmLabel}
+          </Button>
+        }
+        secondaryButton={
+          <ButtonTransparent color={cancelColor} onClick={cancel}>
+            {cancelLabel}
+          </ButtonTransparent>
+        }
+      />
     </Dialog>
   )
 }

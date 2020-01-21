@@ -42,8 +42,8 @@ import {
 } from '@looker/design-tokens'
 
 export const CustomizableLabelAttributes: CustomizableAttributes = {
-  color: 'palette.charcoal800',
-  fontSize: 'small',
+  color: 'palette.charcoal700',
+  fontSize: 'xsmall',
   fontWeight: 'semiBold',
 }
 

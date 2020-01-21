@@ -164,7 +164,7 @@ const SelectComponent = forwardRef(
           readOnly={!isFilterable}
           onChange={handleInputChange}
           hideControls={!isClearable}
-          selectOnClick
+          selectOnClick={isFilterable}
           ref={ref}
         />
         {!disabled && (
