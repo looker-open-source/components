@@ -47,8 +47,7 @@ const DateTimeLayout: FC<DateTimeProps> = ({
   ...props
 }) => {
   const now = new Date(Date.now())
-  const date = now.toLocaleDateString(location, options)
-  return <span {...props}>{date}</span>
+  return <span {...props}>{now.toLocaleDateString(location, options)}</span>
 }
 
 export const DateTime = styled(DateTimeLayout)`
