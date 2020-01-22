@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - New modal component: `ConfirmLayout` for laying out standard user confirmation dialog content
+- New component: `Date-Time`
 
 ### Changes
 

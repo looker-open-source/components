@@ -24,42 +24,40 @@
 
  */
 
-export * from './Avatar'
-export * from './Badge'
-export * from './Banner'
-export * from './Button'
-export * from './Card'
-export * from './Chip'
-export * from './DateTime'
-export * from './Divider'
-export * from './Form'
-export * from './Icon'
-export * from './Layout'
-export * from './Link'
-export * from './List'
-export * from './Menu'
-export * from './Modal'
-export * from './Popover'
-export * from './Spinner'
-export * from './Sidebar'
-export * from './Table'
-export * from './Tabs'
-export * from './Tooltip'
-export * from './Text'
-export * from './VisuallyHidden'
-export * from './utils'
-
-/** Provided here for backwards compatibility.
- * @TODO - Remove before 1.0
- **/
-
-export {
-  palette,
-  radii,
-  semanticColors,
-  SemanticColor,
-  SemanticColors,
-  SpacingSizes,
-  theme,
-  Theme,
+import {
+  reset,
+  space,
+  SpaceProps,
+  typography,
+  CompatibleHTMLProps,
 } from '@looker/design-tokens'
+import React, { FC } from 'react'
+import styled from 'styled-components'
+
+export interface DateTimeProps
+  extends SpaceProps,
+    CompatibleHTMLProps<HTMLSpanElement> {
+  location?: string
+  options?: {}
+}
+
+const DateTimeLayout: FC<DateTimeProps> = ({
+  location = undefined,
+  options = { day: 'numeric', month: 'long', weekday: 'long', year: 'numeric' },
+  ...props
+}) => {
+  const now = new Date(Date.now())
+  const date = now.toLocaleDateString(location, options)
+  return <span {...props}>{date}</span>
+}
+
+export const DateTime = styled(DateTimeLayout)`
+  ${reset}
+
+  ${space}
+  ${typography}
+
+  display: inline-flex;
+`
+
+DateTime.defaultProps = {}
