@@ -68,7 +68,7 @@ const ValidationMessageBase = styled.div.attrs(
   ${reset}
   ${props =>
     props.type === 'error'
-      ? `color: ${props.theme.colors.palette.red700};`
+      ? `color: ${props.theme.colors.palette.red500};`
       : ''}
   ${layout}
   ${space}

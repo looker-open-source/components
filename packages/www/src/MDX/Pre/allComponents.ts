@@ -41,9 +41,11 @@ import {
   CardContent,
   CardMedia,
   Checkbox,
+  Chip,
   Code,
   ColorWheel,
   Confirm,
+  ConfirmLayout,
   Dialog,
   DialogManager,
   Divider,
@@ -81,6 +83,7 @@ import {
   ModalContext,
   ModalFooter,
   ModalHeader,
+  ModalSurface,
   Paragraph,
   Popover,
   PopoverContent,
@@ -111,6 +114,7 @@ import {
 import { palette } from '@looker/design-tokens'
 
 import styled, { ThemeProvider } from 'styled-components'
+import isEqual from 'lodash/isEqual'
 import { useState } from 'react'
 
 export const allComponents = {
@@ -118,6 +122,8 @@ export const allComponents = {
 
   styled,
   ThemeProvider,
+
+  isEqual,
 
   palette,
   AvatarCombo,
@@ -136,9 +142,11 @@ export const allComponents = {
   CardContent,
   CardMedia,
   Checkbox,
+  Chip,
   Code,
   ColorWheel,
   Confirm,
+  ConfirmLayout,
   Dialog,
   DialogManager,
   Divider,
@@ -176,6 +184,7 @@ export const allComponents = {
   ModalContext,
   ModalFooter,
   ModalHeader,
+  ModalSurface,
   Paragraph,
   Popover,
   PopoverContent,

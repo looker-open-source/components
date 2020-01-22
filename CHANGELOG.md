@@ -5,30 +5,47 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [UNRELEASED]
+## UNRELEASED
 
 ### Added
-
 - `Button` now has a `fullWidth` prop that will set the button's width to 100%, filling its parent container.
+- New modal component: `ConfirmLayout` for laying out standard user confirmation dialog content
 
 ### Changes
 
--
+- `ConfirmationDialog` uses `ConfirmLayout` to render modal content
+- `ModalHeader` accepts a new headerIcon prop to render next to the title content
+- `ModalManager` children prop is now optional
+- Updated `ModalSurface` prop from `surfaceStyle` to `surfaceStyles` in order to make the modal and DialogManager apis consistent
+- Edited modal documentation for clarity
+
+## [07.13] - 2020-01-16
+
+### Added
+
+- `Chip` component (more `Chip`-related features coming soon)
 
 ### Fixed
 
--
+- `Select` used inside of a `Dialog` would intermittently lose focus and fail to update when clicking on an option.
+
+## [0.7.12] - 2020-01-13
+
+### Fixed
+
+- `MenuList` would get a bad value for the attribute`aria-labelledby` when used without `Menu`.
+- `InputText` - `autoComplete` not being passed down to `input`
 
 ## [0.7.11] - 2020-01-09
 
 ### Added
 
-- `Menu` now supports `hoverDisclosureRef` prop so that `MenuDisclosure` is only shown when the element in question is hovered over.
-- `Select` now renders a custom component instead of the native `select`.
-  - Allows for new features including `isFilterable` / `onFilter` to allow the user to filter through options, and `isClearable` to allow the user to clear out the value.
-  - Uses experimental `ComboBox` components (more info on this soon!)
+- Menu now supports hoverDisclosureRef prop so that MenuDisclosure is only shown when the element in question is hovered over.
+- Select now renders a custom component instead of the native select.
+  - Allows for new features including isFilterable / onFilter to allow the user to filter through options, and isClearable to allow the user to clear out the value.
+  - Uses experimental ComboBox components (more info on this soon!)
 
-### Changes
+### Changed
 
 - Lots of minor dependency updates (gatsby-\*, typescript, etc.)
 - `MenuItem` now supports focusVisible behavior
@@ -45,7 +62,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Proxy Server package
   - New documentation: getting started with local data fetching
 
-### Changes
+### Changed
 
 - `Button` sizes updated to match design specifications
 - `Confirm` secondary button color now defaults to `neutral`
@@ -67,7 +84,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `ModalManager` (and it's derived `DialogManager` & `DrawerManager`) now support a `onClose` callback that will be called when the modal is closed.
 
-### Bug Fixes
+### Fixed
 
 - Correct issue `ModalManager` `surfaceStyles` had `minWidth` and `maxWidth` properties that were difficult to override on an instance.
 - Correct usage of `textTransform` in documentation and updated related test suite

@@ -7,14 +7,16 @@ github: Modal/Dialog/Dialog
 import { Banner } from '@looker/components'
 
 <Banner intent="warning">
-  Dialog provides a general purpose (empty) modal overlay. Most likely you'll
-  find <a href="/components/modals/confirm">Confirm</a> more useful to drive
-  specific user action.
+  Dialog provides a general purpose (empty & unstyled) modal overlay.{' '}
+  <a href="/components/modals/confirm">Confirm</a> will likely be more useful if
+  your intent is to render a standard user confirmation dialog.
 </Banner>
 
-Dialogs inform users about a task and can contain critical information, require decisions, or involve multiple tasks.
+Dialogs break out of the standard application flow and UI to present new information or required actions.
 
-`Dialog` requires that the developer manages the whether the Dialog is visible or not by assigning `true` or `false` to the `isOpen` prop
+# Standard Use
+
+`Dialog` requires that the developer manages state by assigning `true` or `false` to the `isOpen` prop.
 
 ```jsx
 ;() => {
@@ -33,9 +35,9 @@ Dialogs inform users about a task and can contain critical information, require 
 }
 ```
 
-## DialogManager
+# DialogManager
 
-DialogManager gives an easy way to compose a Dialog without the need to manage state.
+DialogManager gives an easy way to compose a Dialog without the need to manage open/close state.
 
 ```jsx
 <DialogManager
@@ -48,4 +50,143 @@ DialogManager gives an easy way to compose a Dialog without the need to manage s
 >
   {onClick => <Button onClick={onClick}>Open Dialog </Button>}
 </DialogManager>
+```
+
+# Advanced Use: Protect Unsaved User Changes
+
+If your dialog content includes form inputs it's entirely possible that the user could unintentionally close the dialog and lose their unsaved changes. With careful management of dialog and form state, you can add a second stage dialog to alert the user to unsaved changes and protect them from losing their work.
+
+```jsx
+;() => {
+  /**
+   * Track form input state, and create helper function to compare updated state to default state
+   */
+  const defaultFormData = {
+    name: '',
+  }
+  const [formData, setFormData] = useState(defaultFormData)
+
+  const hasUnsavedChanges = () => {
+    if (isEqual(formData, defaultFormData)) {
+      return false
+    } else {
+      return true
+    }
+  }
+
+  const handleInputChange = e => {
+    const { name, value } = e.target
+    setFormData({ ...formData, [name]: value })
+  }
+
+  /**
+   * Track dialog state: open, close, or cancelling input
+   */
+  const [isCancellingInput, setIsCancellingInput] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
+  const handleDialogOpen = () => {
+    setIsOpen(true)
+  }
+
+  /**
+   * Create callbacks for the various actions:
+   * - save
+   * - cancel
+   * - confirm close (e.g. "Yes I want to discard my changes and close the dialog")
+   * - reset form (e.g. "Don't close, let me continue editing")
+   */
+
+  const handleSave = () => {
+    alert('Saved!') // dispatch side effect
+    setIsOpen(false) // close dialog
+    setFormData(defaultFormData) // reset form state
+  }
+
+  const handleCancel = () => {
+    if (hasUnsavedChanges()) {
+      // has unsaved changes: keep dialog open and update state to reflect attempt at closing the form
+      setIsCancellingInput(true)
+    } else {
+      // no unsaved changes: close the dialog
+      setIsOpen(false)
+    }
+  }
+
+  const handleConfirmClose = () => {
+    // "Yes I want to discard my changes and close the dialog"
+    setIsOpen(false) // close form
+    setIsCancellingInput(false) // reset modal state
+    setFormData(defaultFormData) // reset form state
+  }
+
+  const handleDialogReset = () => {
+    setIsCancellingInput(false) // take me back to dialog #1
+  }
+
+  /**
+   * Render the two dialogs and associated content
+   */
+
+  return (
+    <>
+      {/* Trigger dialog open*/}
+      <Button onClick={handleDialogOpen}>Open user form</Button>
+      {/*
+        Dialog #1: User information input
+      */}
+      <Dialog
+        isOpen={isOpen && !isCancellingInput}
+        onClose={handleCancel}
+        width="500px"
+      >
+        <ConfirmLayout
+          title="Edit Account Information"
+          message={
+            <form>
+              <Heading as="h3" mb="small">
+                Step 1: Enter User Information:
+              </Heading>
+              <FieldText
+                name="name"
+                label="Name"
+                onChange={handleInputChange}
+                value={formData.name}
+              />
+              <Heading as="h3">
+                Step 2: Click <strong>Cancel</strong> to trigger fallback
+                dialog:
+              </Heading>
+            </form>
+          }
+          primaryButton={<Button onClick={handleSave}>Save</Button>}
+          secondaryButton={
+            <ButtonTransparent onClick={handleCancel}>Cancel</ButtonTransparent>
+          }
+        />
+      </Dialog>
+      {/* Dialog #2: fallback "discard changes" dialog */}
+      <Dialog
+        isOpen={isOpen && isCancellingInput}
+        onClose={handleConfirmClose}
+        width="500px"
+      >
+        <ConfirmLayout
+          title="Discard Changes?"
+          titleIcon={<Icon name="Warning" color="palette.red500" size={22} />}
+          message="Are you sure you want to close the dialog? Unsaved changes will be lost."
+          primaryButton={
+            <ButtonTransparent onClick={handleConfirmClose} color="danger">
+              Discard Changes
+            </ButtonTransparent>
+          }
+          secondaryButton={
+            <ButtonTransparent onClick={handleDialogReset} color="neutral">
+              Go Back
+            </ButtonTransparent>
+          }
+        />
+      </Dialog>
+    </>
+  )
+}
 ```

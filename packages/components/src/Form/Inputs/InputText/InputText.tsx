@@ -48,8 +48,8 @@ import { InputProps, inputPropKeys } from '../InputProps'
 export const CustomizableInputTextAttributes: CustomizableAttributes = {
   borderRadius: 'medium',
   fontSize: 'small',
-  height: '28px',
-  px: 'xsmall',
+  height: '36px',
+  px: 'small',
   py: 'none',
 }
 
@@ -64,7 +64,19 @@ export interface InputTextProps
    *
    * @default 'text'
    */
-  type?: 'number' | 'password' | 'text' | 'search'
+  type?:
+    | 'date'
+    | 'datetime-local'
+    | 'email'
+    | 'month'
+    | 'number'
+    | 'password'
+    | 'search'
+    | 'tel'
+    | 'text'
+    | 'time'
+    | 'url'
+    | 'week'
 }
 
 const InputComponent = forwardRef(
@@ -81,17 +93,36 @@ const InputComponent = forwardRef(
 )
 InputComponent.displayName = 'InputComponent'
 
-export const inputTextStyles = css<InputTextProps>`
-  background: ${props =>
-    props.validationType === 'error'
-      ? props.theme.colors.palette.red000
-      : props.disabled
-      ? props.theme.colors.palette.charcoal100
-      : props.theme.colors.palette.white};
+export const inputTextHover = css`
+  border-color: ${props => props.theme.colors.palette.charcoal300};
+`
+export const inputTextFocus = css`
+  border-color: ${props => props.theme.colors.palette.purple300};
+  box-shadow: 0 0 0 2px ${props => props.theme.colors.palette.purple100};
+  outline: none;
+`
+export const inputTextDisabled = css`
+  background: ${props => props.theme.colors.palette.charcoal100};
+  color: ${props => props.theme.colors.palette.charcoal400};
+  &:hover {
+    border-color: ${props => props.theme.colors.palette.charcoal200};
+  }
+`
+
+export const inputTextValidation = css<InputTextProps>`
   ${props =>
-    props.disabled
-      ? `color: ${props.theme.colors.palette.charcoal400};
-          border-color: ${props.theme.colors.palette.charcoal200};`
+    props.validationType === 'error'
+      ? `
+      border-color: ${props.theme.colors.palette.red400};
+      &:hover {
+        border-color: ${props.theme.colors.palette.red500};
+      }
+      &:focus,
+      :focus-within {
+        border-color: ${props.theme.colors.palette.red500};
+        box-shadow: 0 0 0 2px ${props.theme.colors.palette.red100};
+      }
+      `
       : ''}
 `
 
@@ -108,14 +139,33 @@ export const InputText = styled(InputComponent).attrs(
   ${space}
   ${typography}
   ${pseudoClasses}
-  ${inputTextStyles}
+
+  color: ${props => props.theme.colors.palette.charcoal700};
+
+  &:hover {
+    ${inputTextHover}
+  }
+
+  &:focus {
+    ${inputTextFocus}
+  }
+
+  &:disabled  {
+    ${inputTextDisabled}
+  }
+
+  ${inputTextValidation}
 `
 
-InputText.defaultProps = {
+export const inputTextDefaults = {
   border: 'solid 1px',
-  borderColor: 'palette.charcoal300',
+  borderColor: 'palette.charcoal200',
   borderRadius: CustomizableInputTextAttributes.borderRadius,
   fontSize: CustomizableInputTextAttributes.fontSize,
   height: CustomizableInputTextAttributes.height,
+}
+
+InputText.defaultProps = {
+  ...inputTextDefaults,
   type: 'text',
 }

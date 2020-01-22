@@ -80,11 +80,12 @@ test('Should trigger onChange handler', () => {
         id="thumbs-up"
         value="foobar"
         onChange={handleChange}
+        options={[{ label: 'Foobar', value: 'foobar' }]}
       />
     </ThemeProvider>
   )
 
-  wrapper.find('input').simulate('click')
+  wrapper.find('input').simulate('mousedown')
   wrapper
     .find('li')
     .at(0)

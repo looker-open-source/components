@@ -35,7 +35,7 @@ import React, {
 import { ManagedModalProps } from '../Modal'
 
 export interface ModalManagerProps extends ManagedModalProps {
-  children: (onClick: () => void, ref: RefObject<any>) => ReactNode
+  children?: (onClick: () => void, ref: RefObject<any>) => ReactNode
   /**
    * Content that will be placed inside the Modal
    * @required
@@ -101,7 +101,7 @@ export abstract class ModalManager extends Component<
     return (
       <>
         {this.renderModal(content, modalProps)}
-        {children(this.open, this.triggerRef)}
+        {children && children(this.open, this.triggerRef)}
       </>
     )
   }

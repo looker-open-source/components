@@ -27,6 +27,7 @@
 import React, { forwardRef, Ref, FormEvent } from 'react'
 import styled from 'styled-components'
 import { CustomizableAttributes } from '@looker/design-tokens'
+import { ListItem } from '../../../List'
 import { ValidationType } from '../../ValidationMessage'
 import {
   Combobox,
@@ -119,7 +120,8 @@ const SelectComponent = forwardRef(
     ref: Ref<HTMLInputElement>
   ) => {
     const optionValue = getOption(value, options)
-    const defaultOptionValue = getOption(defaultValue, options)
+    const defaultOptionValue =
+      getOption(defaultValue, options) || (options && options[0])
 
     function handleChange(option?: ComboboxOptionObject) {
       const newValue = option ? option.value : ''
@@ -158,11 +160,11 @@ const SelectComponent = forwardRef(
         <ComboboxInput
           {...inputProps}
           {...ariaProps}
-          autocomplete={false}
+          autoComplete={false}
           readOnly={!isFilterable}
           onChange={handleInputChange}
           hideControls={!isClearable}
-          selectOnClick
+          selectOnClick={isFilterable}
           ref={ref}
         />
         {!disabled && (
@@ -172,11 +174,9 @@ const SelectComponent = forwardRef(
                 <ComboboxOption {...option} key={index} />
               ))
             ) : (
-              <ComboboxOption
-                value=""
-                label="No options"
-                color="palette.charcoal400"
-              />
+              <ListItem fontSize="small" px="medium" py="xxsmall">
+                No options
+              </ListItem>
             )}
           </ComboboxList>
         )}

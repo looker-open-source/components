@@ -1,0 +1,145 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Chip renders correctly 1`] = `
+.c1 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  font-weight: 600;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #F3F2FF;
+  border-radius: 4px;
+  color: #4F2ABA;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 0.75rem;
+  justify-items: center;
+  margin-bottom: 0.25rem;
+  max-width: 320px;
+  min-width: 44px;
+}
+
+.c1 .c3 {
+  background-color: transparent;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c1 + .c0 {
+  margin-left: 0.25rem;
+}
+
+.c1:hover {
+  background-color: #E8E5FF;
+}
+
+.c1:focus {
+  background-color: #BFB2FF;
+  outline: none;
+}
+
+.c2 {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+<span
+  className="c0 c1 "
+  fontWeight="semiBold"
+  onBlur={[Function]}
+  onKeyDown={[Function]}
+  onKeyUp={[Function]}
+  tabIndex={0}
+>
+  <span
+    className="c2"
+  >
+    chip
+  </span>
+</span>
+`;
+
+exports[`Chip renders disabled 1`] = `
+.c3 + .c0 {
+  margin-left: 0.25rem;
+}
+
+.c1 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  font-weight: 600;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #F3F2FF;
+  border-radius: 4px;
+  color: #4F2ABA;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 0.75rem;
+  justify-items: center;
+  margin-bottom: 0.25rem;
+  max-width: 320px;
+  min-width: 44px;
+  color: #939BA5;
+  background-color: #F5F6F7;
+}
+
+.c1 .c4 {
+  background-color: transparent;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c1 + .c0 {
+  margin-left: 0.25rem;
+}
+
+.c1:hover {
+  background-color: #E8E5FF;
+}
+
+.c1:focus {
+  background-color: #BFB2FF;
+  outline: none;
+}
+
+.c1:hover {
+  background-color: #F5F6F7;
+}
+
+.c2 {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+<span
+  className="c0 c1 "
+  disabled={true}
+  fontWeight="semiBold"
+  onBlur={[Function]}
+  onKeyDown={[Function]}
+  onKeyUp={[Function]}
+>
+  <span
+    className="c2"
+  >
+    chip
+  </span>
+</span>
+`;

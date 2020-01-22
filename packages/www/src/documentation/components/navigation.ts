@@ -116,7 +116,7 @@ const components: NavigationSection = {
       title: 'Modal',
       path: 'modals',
       children: [
-        { title: 'Overview', path: '' },
+        { title: 'Layout and Styling', path: '' },
         { title: 'Confirm', path: 'confirm' },
         { title: 'Dialog', path: 'dialog' },
         { title: 'Drawer', path: 'drawer' },
@@ -139,6 +139,7 @@ const components: NavigationSection = {
         { title: 'Badge', path: 'badge' },
         { title: 'Banner', path: 'banner' },
         { title: 'Card', path: 'card' },
+        { title: 'Chip', path: 'chip' },
         { title: 'ColorWheel', path: 'color-wheel' },
         { title: 'Divider', path: 'divider' },
         { title: 'Icon', path: 'icon' },

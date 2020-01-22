@@ -2,7 +2,7 @@
 
 exports[`An error message 1`] = `
 .c0 {
-  color: #990F14;
+  color: #CC1F36;
   margin-right: 0.5rem;
   margin-top: 0.5rem;
   font-size: 0.75rem;

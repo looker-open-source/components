@@ -4,9 +4,11 @@ propsOf: Confirm
 github: Modal/Dialog/DialogManager
 ---
 
-## Confirm
+Confirm provides a helpful composition of modal components to drive the most common use case: driving user action to confirm or cancel a specific outcome.
 
-A render-props version, for use in class components.
+# Standard Use
+
+Confirm makes use of the render prop pattern to provide `open` and `close` functions to be called when needed.
 
 ```jsx
 <Confirm
@@ -42,9 +44,9 @@ Updating color and text of the button
 </Confirm>
 ```
 
-## useConfirm
+# useConfirm
 
-A custom hook that returns the opener function and rendered confirmation dialog. The following example is a complex usage to illustrate how the opener can be called from another hook.
+If you want more control over markup and state, we provide a custom hook that returns the opener function and rendered confirmation dialog. The following example illustrates how the opener can be called outside the Confirm component.
 
 ```jsx
 ;() => {
@@ -52,7 +54,8 @@ A custom hook that returns the opener function and rendered confirmation dialog.
     alert('You deleted it')
     close()
   }
-  const [confirmation, confirm] = useConfirm({
+
+  const [confirmationDialog, openDialog] = useConfirm({
     confirmLabel: 'Yes, Delete all',
     buttonColor: 'danger',
     title: `Delete all`,
@@ -62,66 +65,43 @@ A custom hook that returns the opener function and rendered confirmation dialog.
 
   return (
     <>
-      {confirmation}
-      <ButtonOutline onClick={confirm}>useConfirm</ButtonOutline>
+      {confirmationDialog}
+      <ButtonOutline onClick={openDialog}>useConfirm</ButtonOutline>
     </>
   )
 }
 ```
 
-## Rich Message Content
+# ConfirmLayout
 
-In addition to strings, `Confirm` also supports passing in a react component for the message content. This allows for richer formatting and fine-grained control of the message.
+We've found that most Dialogs involve the same common elements: Title, Message, a primary action (usually "Confirm"), and a secondary action (usually "Cancel").
+To help standardize that layout, we created the `ConfirmLayout` component for composing the relevant pieces. This is handy if you need something like Confirm in a separate context (e.g. when you need to lay out surface content for use in [`DialogManager`](/components/modals/dialog#dialogmanager)).
 
 ```jsx
 ;() => {
-  /*
-   * import { Confirm, Flex, FlexItem, Icon, Paragraph, Link } from '@looker/components'
-   * import styled from 'styled-components'
-   */
-
-  const RichMessage = () => (
-    <Flex>
-      <FlexItem>
-        <Icon
-          mr="large"
-          name="CircleInfoOutline"
-          size="80px"
-          color="palette.purple400"
-        />
-      </FlexItem>
-      <FlexItem>
-        <Paragraph>
-          Canadians say "sorry" so often that{' '}
-          <strong>in 2009 a law was passed</strong> declaring that an apology
-          cannot be used as an admission of guilt.
-        </Paragraph>
-        <Paragraph mt="xsmall" variant="subdued" fontSize="small">
-          <cite>
-            SOURCE:{' '}
-            <Link
-              href="https://www.theloop.ca/canadians-love-to-say-sorry-so-much-we-had-to-make-this-law/"
-              target="_blank"
-            >
-              the loop
-            </Link>
-          </cite>
-        </Paragraph>
-      </FlexItem>
-    </Flex>
-  )
+  function handleConfirm() {
+    alert('Changes discarded')
+  }
+  function handleCancel() {
+    alert('Went back')
+  }
 
   return (
-    <Confirm
-      title="Did you know?"
-      message={<RichMessage />}
-      onConfirm={close => {
-        alert('Now you know.')
-        close()
-      }}
-    >
-      {open => <Button onClick={open}>Do something fancy</Button>}
-    </Confirm>
+    <ConfirmLayout
+      title="Discard Changes?"
+      titleIcon={<Icon name="Warning" color="palette.red500" size={22} />}
+      message="Are you sure you want to close the dialog? Unsaved changes will be lost."
+      primaryButton={
+        <Button onClick={handleConfirm} color="danger">
+          Discard Changes
+        </Button>
+      }
+      secondaryButton={
+        <ButtonTransparent onClick={handleCancel} color="neutral">
+          Go Back
+        </ButtonTransparent>
+      }
+    />
   )
 }
 ```
