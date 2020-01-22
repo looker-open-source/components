@@ -10,9 +10,9 @@ exports[`A FieldText 1`] = `
 }
 
 .c2 {
+  border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
-  border-radius: 0.25rem;
   height: 36px;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
@@ -91,9 +91,9 @@ exports[`A FieldText with an error validation aligned to the left 1`] = `
 }
 
 .c3 {
+  border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
-  border-radius: 0.25rem;
   height: 36px;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
@@ -216,9 +216,9 @@ exports[`A FieldText with an error validation aligned to the right 1`] = `
 }
 
 .c3 {
+  border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
-  border-radius: 0.25rem;
   height: 36px;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
@@ -338,9 +338,9 @@ exports[`A required FieldText 1`] = `
 }
 
 .c3 {
+  border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
-  border-radius: 0.25rem;
   height: 36px;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
@@ -431,9 +431,9 @@ exports[`FieldText supports labelWeight 1`] = `
 }
 
 .c2 {
+  border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
-  border-radius: 0.25rem;
   height: 36px;
   padding-left: 0.75rem;
   padding-right: 0.75rem;

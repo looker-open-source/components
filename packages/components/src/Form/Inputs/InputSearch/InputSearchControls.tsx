@@ -34,12 +34,14 @@ export interface InputSearchControlsProps {
   summary?: string
   showClear: boolean
   onClear: (e: MouseEvent<HTMLButtonElement>) => void
+  height?: string
 }
 
 export const InputSearchControls: FC<InputSearchControlsProps> = ({
   onClear,
   showClear,
   summary,
+  height,
 }) => {
   const clear = (
     <IconButton
@@ -53,16 +55,16 @@ export const InputSearchControls: FC<InputSearchControlsProps> = ({
 
   const separator = (
     <Box
+      borderRight={`1px solid ${palette.charcoal200}`}
+      height="1.5rem"
       style={{
-        borderRight: `1px solid ${palette.charcoal200}`,
         pointerEvents: 'none',
       }}
-      height="1.5rem"
     />
   )
 
   return (
-    <Box mx="xxsmall" height="100%" display="flex" alignItems="center">
+    <Box height={height} display="flex" alignItems="center" ml="auto">
       {summary && (
         <Text
           pr="xsmall"

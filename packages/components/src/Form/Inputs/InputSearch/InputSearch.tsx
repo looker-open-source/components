@@ -24,6 +24,7 @@
 
  */
 
+import * as CSS from 'csstype'
 import omit from 'lodash/omit'
 import pick from 'lodash/pick'
 import React, {
@@ -35,8 +36,10 @@ import React, {
   useRef,
 } from 'react'
 import styled from 'styled-components'
+import { ResponsiveValue, TLengthStyledSystem } from 'styled-system'
 import { inputPropKeys } from '../InputProps'
 import {
+  CustomizableInputTextAttributes,
   InputText,
   InputTextProps,
   inputTextDefaults,
@@ -49,11 +52,27 @@ import { useControlWarn, useForkedRef, useWrapEvent } from '../../../utils'
 import { Box } from '../../../Layout'
 import { InputSearchControls } from './InputSearchControls'
 
+const getHeight = (
+  py?: ResponsiveValue<CSS.PaddingProperty<TLengthStyledSystem>>
+) => {
+  /* Subtracting vertical padding and border from input text height
+  Setting height this way instead of on the parent div allows
+  InputChip to expand vertically as needed
+  min-height doesn't work because then height: 100% on the children is ignored */
+  const verticalSpace =
+    typeof py === 'number' ? `${((py || 0) + 1) * 2}px` : `(${py} * 2) - 2px`
+  return `calc(${CustomizableInputTextAttributes.height} - ${verticalSpace})`
+}
+
 export interface InputSearchProps extends InputTextProps {
   /**
    * hides clear button and summary text
    */
   hideControls?: boolean
+  /**
+   * overrides the internal logic that shows the clear icon when there's a value
+   */
+  showClear?: boolean
   /**
    * adds text when input value in not empty
    */
@@ -62,6 +81,7 @@ export interface InputSearchProps extends InputTextProps {
    * handle when the user clicks the x icon button to clear the value
    */
   onClear?: (e: MouseEvent<HTMLButtonElement>) => void
+  defaultValue?: string
   value?: string
 
   onClick?: (e: MouseEvent<HTMLDivElement>) => void
@@ -76,8 +96,6 @@ export interface InputSearchProps extends InputTextProps {
 const InputSearchComponent = forwardRef(
   (
     {
-      hideControls = false,
-
       onChange,
       onClear,
       onClick,
@@ -88,7 +106,11 @@ const InputSearchComponent = forwardRef(
       onMouseOver,
       onMouseUp,
 
+      children,
       className,
+      defaultValue,
+      hideControls = false,
+      showClear,
       summary,
       value: controlledValue = '',
 
@@ -99,9 +121,11 @@ const InputSearchComponent = forwardRef(
     const isControlled = useControlWarn({
       controllingProps: ['onChange', 'onClear', 'value'],
       isControlledCheck: () => onChange !== undefined,
-      name: 'ButtonGroup',
+      name: 'InputSearch',
     })
-    const [uncontrolledValue, setValue] = useState(controlledValue)
+    const [uncontrolledValue, setValue] = useState(
+      defaultValue || controlledValue
+    )
     const inputValue = isControlled ? controlledValue : uncontrolledValue
 
     const internalRef = useRef<null | HTMLInputElement>(null)
@@ -128,8 +152,9 @@ const InputSearchComponent = forwardRef(
     const controls = !hideControls && (
       <InputSearchControls
         onClear={handleClear}
-        showClear={inputValue.length > 0}
+        showClear={showClear || inputValue.length > 0}
         summary={summary}
+        height={getHeight(props.py)}
       />
     )
 
@@ -152,10 +177,12 @@ const InputSearchComponent = forwardRef(
         {...omit(props, inputPropKeys)}
         {...mouseHandlers}
       >
+        {children}
         <InputText
           onChange={handleChange}
           value={inputValue}
           focusStyle={{ outline: 'none' }}
+          px="0"
           {...pick(props, inputPropKeys)}
           ref={ref}
         />
@@ -187,10 +214,12 @@ export const InputSearch = styled(InputSearchComponent)`
 
   ${InputText} {
     border: none;
-    width: 100%;
     appearance: none;
     background: transparent;
     box-shadow: none;
+    flex: 1;
+
+    height: ${props => getHeight(props.py)};
 
     &::-webkit-search-decoration,
     &::-webkit-search-cancel-button,
@@ -202,5 +231,8 @@ export const InputSearch = styled(InputSearchComponent)`
 `
 
 InputSearch.defaultProps = {
+  ...omit(CustomizableInputTextAttributes, 'height'),
   ...inputTextDefaults,
+  pr: 'xxsmall',
+  py: 2,
 }

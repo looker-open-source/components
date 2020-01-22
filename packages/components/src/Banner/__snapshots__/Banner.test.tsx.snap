@@ -234,6 +234,7 @@ exports[`Dismissable banner 1`] = `
         "padding": "1px",
       }
     }
+    type="button"
     width={28}
   >
     <div

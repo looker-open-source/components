@@ -24,14 +24,13 @@ import { GlobalStyle } from '@looker/components'
 import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
 
-import { DialogMaxWidthDemo } from './Dialog/DialogMaxWidthDemo'
+import { InputChipsDemo } from './Form/InputChipsDemo'
+
 const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
-      <>
-        <GlobalStyle />
-        <DialogMaxWidthDemo />
-      </>
+      <GlobalStyle />
+      <InputChipsDemo />
     </ThemeProvider>
   )
 }

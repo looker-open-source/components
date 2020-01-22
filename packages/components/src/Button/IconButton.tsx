@@ -195,4 +195,4 @@ export const IconButton = styled(IconButtonComponent)<IconButtonProps>`
   }
 `
 
-IconButton.defaultProps = { color: 'neutral' }
+IconButton.defaultProps = { color: 'neutral', type: 'button' }
