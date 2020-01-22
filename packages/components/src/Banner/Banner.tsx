@@ -125,7 +125,7 @@ export const Banner = forwardRef(
       >
         {icon}
         <VisuallyHidden>{accessibilityLabel}</VisuallyHidden>
-        <div>{children}</div>
+        <Flex flex="auto">{children}</Flex>
         {dismissable && (
           <IconButton
             ml="auto"
