@@ -58,7 +58,7 @@ describe('<Select/> with options', () => {
     expect(input).toBeVisible()
 
     act(() => {
-      fireEvent.click(input)
+      fireEvent.mouseDown(input)
     })
 
     // const foo = getByText('FOO')

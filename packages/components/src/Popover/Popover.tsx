@@ -446,7 +446,7 @@ export function usePopover({
             >
               <Box
                 maxHeight={`calc(${verticalSpace - 10}px - 1rem)`}
-                overflowY="scroll"
+                overflowY="auto"
                 borderRadius="inherit"
               >
                 {content}

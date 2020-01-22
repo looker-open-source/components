@@ -92,10 +92,10 @@ exports[`A FieldRadio 1`] = `
 }
 
 .c3 {
-  color: #262D33;
+  color: #343C42;
   margin-right: 0.5rem;
   font-weight: 600;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   display: inline-block;
 }
 
@@ -111,8 +111,8 @@ exports[`A FieldRadio 1`] = `
 >
   <label
     className="c2 c3"
-    color="palette.charcoal800"
-    fontSize="small"
+    color="palette.charcoal700"
+    fontSize="xsmall"
     fontWeight="semiBold"
     htmlFor="thumbs-up"
   >
@@ -234,10 +234,10 @@ exports[`A FieldRadio checked 1`] = `
 }
 
 .c3 {
-  color: #262D33;
+  color: #343C42;
   margin-right: 0.5rem;
   font-weight: 600;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   display: inline-block;
 }
 
@@ -258,8 +258,8 @@ exports[`A FieldRadio checked 1`] = `
 >
   <label
     className="c2 c3"
-    color="palette.charcoal800"
-    fontSize="small"
+    color="palette.charcoal700"
+    fontSize="xsmall"
     fontWeight="semiBold"
     htmlFor="thumbs-up"
   >
@@ -363,10 +363,10 @@ exports[`A FieldRadio with label aligned left 1`] = `
 }
 
 .c3 {
-  color: #262D33;
+  color: #343C42;
   margin-right: 0.5rem;
   font-weight: 600;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   display: inline-block;
 }
 
@@ -387,8 +387,8 @@ exports[`A FieldRadio with label aligned left 1`] = `
 >
   <label
     className="c2 c3"
-    color="palette.charcoal800"
-    fontSize="small"
+    color="palette.charcoal700"
+    fontSize="xsmall"
     fontWeight="semiBold"
     htmlFor="thumbs-up"
   >

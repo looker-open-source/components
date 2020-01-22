@@ -27,6 +27,7 @@
 import React, { CSSProperties } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import { CSSObject, FlattenSimpleInterpolation } from 'styled-components'
+import { ResponsiveValue } from 'styled-system'
 import { useFocusTrap, useScrollLock } from '../utils'
 import { ModalBackdrop } from './ModalBackdrop'
 import { ModalPortal } from './ModalPortal'
@@ -61,7 +62,8 @@ export interface ManagedModalProps {
    * You can also specify `auto` if you want the Surface to auto-size to its content.
    * @default auto
    */
-  width?: string | string[]
+  width?: ResponsiveValue<string>
+  maxWidth?: ResponsiveValue<string>
 }
 
 export interface ModalProps extends ManagedModalProps {

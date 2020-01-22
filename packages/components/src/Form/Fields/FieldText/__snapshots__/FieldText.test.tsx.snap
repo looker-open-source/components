@@ -2,24 +2,43 @@
 
 exports[`A FieldText 1`] = `
 .c1 {
-  color: #262D33;
+  color: #343C42;
   margin-right: 0.5rem;
   font-weight: 600;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   display: inline-block;
 }
 
 .c2 {
   border: solid 1px;
-  border-color: #C1C6CC;
+  border-color: #DEE1E5;
   border-radius: 0.25rem;
-  height: 28px;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  height: 36px;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
   font-size: 0.875rem;
-  background: #FFFFFF;
+  color: #343C42;
+}
+
+.c2:hover {
+  border-color: #C1C6CC;
+}
+
+.c2:focus {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c2:disabled {
+  background: #F5F6F7;
+  color: #939BA5;
+}
+
+.c2:disabled:hover {
+  border-color: #DEE1E5;
 }
 
 .c0 {
@@ -38,8 +57,8 @@ exports[`A FieldText 1`] = `
 >
   <label
     className="c1"
-    color="palette.charcoal800"
-    fontSize="small"
+    color="palette.charcoal700"
+    fontSize="xsmall"
     fontWeight="semiBold"
     htmlFor="thumbs-up"
   >
@@ -64,24 +83,54 @@ exports[`A FieldText 1`] = `
 
 exports[`A FieldText with an error validation aligned to the left 1`] = `
 .c1 {
-  color: #262D33;
+  color: #343C42;
   margin-right: 0.5rem;
   font-weight: 600;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   display: inline-block;
 }
 
 .c3 {
   border: solid 1px;
-  border-color: #C1C6CC;
+  border-color: #DEE1E5;
   border-radius: 0.25rem;
-  height: 28px;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  height: 36px;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
   font-size: 0.875rem;
-  background: #FFF2F4;
+  color: #343C42;
+  border-color: #ED3B53;
+}
+
+.c3:hover {
+  border-color: #C1C6CC;
+}
+
+.c3:focus {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c3:disabled {
+  background: #F5F6F7;
+  color: #939BA5;
+}
+
+.c3:disabled:hover {
+  border-color: #DEE1E5;
+}
+
+.c3:hover {
+  border-color: #CC1F36;
+}
+
+.c3:focus,
+.c3:focus-within {
+  border-color: #CC1F36;
+  box-shadow: 0 0 0 2px #FFE5E9;
 }
 
 .c0 {
@@ -115,7 +164,7 @@ exports[`A FieldText with an error validation aligned to the left 1`] = `
 }
 
 .c4 {
-  color: #990F14;
+  color: #CC1F36;
   margin-right: 0.5rem;
   margin-top: 0.5rem;
   font-size: 0.75rem;
@@ -126,8 +175,8 @@ exports[`A FieldText with an error validation aligned to the left 1`] = `
 >
   <label
     className="c1"
-    color="palette.charcoal800"
-    fontSize="small"
+    color="palette.charcoal700"
+    fontSize="xsmall"
     fontWeight="semiBold"
     htmlFor="thumbs-up"
   >
@@ -159,24 +208,54 @@ exports[`A FieldText with an error validation aligned to the left 1`] = `
 
 exports[`A FieldText with an error validation aligned to the right 1`] = `
 .c1 {
-  color: #262D33;
+  color: #343C42;
   margin-right: 0.5rem;
   font-weight: 600;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   display: inline-block;
 }
 
 .c3 {
   border: solid 1px;
-  border-color: #C1C6CC;
+  border-color: #DEE1E5;
   border-radius: 0.25rem;
-  height: 28px;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  height: 36px;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
   font-size: 0.875rem;
-  background: #FFF2F4;
+  color: #343C42;
+  border-color: #ED3B53;
+}
+
+.c3:hover {
+  border-color: #C1C6CC;
+}
+
+.c3:focus {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c3:disabled {
+  background: #F5F6F7;
+  color: #939BA5;
+}
+
+.c3:disabled:hover {
+  border-color: #DEE1E5;
+}
+
+.c3:hover {
+  border-color: #CC1F36;
+}
+
+.c3:focus,
+.c3:focus-within {
+  border-color: #CC1F36;
+  box-shadow: 0 0 0 2px #FFE5E9;
 }
 
 .c0 {
@@ -206,7 +285,7 @@ exports[`A FieldText with an error validation aligned to the right 1`] = `
 }
 
 .c4 {
-  color: #990F14;
+  color: #CC1F36;
   margin-right: 0.5rem;
   margin-top: 0.5rem;
   margin-left: 0.5rem;
@@ -218,8 +297,8 @@ exports[`A FieldText with an error validation aligned to the right 1`] = `
 >
   <label
     className="c1"
-    color="palette.charcoal800"
-    fontSize="small"
+    color="palette.charcoal700"
+    fontSize="xsmall"
     fontWeight="semiBold"
     htmlFor="thumbs-up"
   >
@@ -251,24 +330,43 @@ exports[`A FieldText with an error validation aligned to the right 1`] = `
 
 exports[`A required FieldText 1`] = `
 .c1 {
-  color: #262D33;
+  color: #343C42;
   margin-right: 0.5rem;
   font-weight: 600;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   display: inline-block;
 }
 
 .c3 {
   border: solid 1px;
-  border-color: #C1C6CC;
+  border-color: #DEE1E5;
   border-radius: 0.25rem;
-  height: 28px;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  height: 36px;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
   font-size: 0.875rem;
-  background: #FFFFFF;
+  color: #343C42;
+}
+
+.c3:hover {
+  border-color: #C1C6CC;
+}
+
+.c3:focus {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c3:disabled {
+  background: #F5F6F7;
+  color: #939BA5;
+}
+
+.c3:disabled:hover {
+  border-color: #DEE1E5;
 }
 
 .c0 {
@@ -291,8 +389,8 @@ exports[`A required FieldText 1`] = `
 >
   <label
     className="c1"
-    color="palette.charcoal800"
-    fontSize="small"
+    color="palette.charcoal700"
+    fontSize="xsmall"
     fontWeight="semiBold"
     htmlFor="thumbs-up"
   >
@@ -325,24 +423,43 @@ exports[`A required FieldText 1`] = `
 
 exports[`FieldText supports labelWeight 1`] = `
 .c1 {
-  color: #262D33;
+  color: #343C42;
   margin-right: 0.5rem;
   font-weight: 400;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   display: inline-block;
 }
 
 .c2 {
   border: solid 1px;
-  border-color: #C1C6CC;
+  border-color: #DEE1E5;
   border-radius: 0.25rem;
-  height: 28px;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  height: 36px;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
   font-size: 0.875rem;
-  background: #FFFFFF;
+  color: #343C42;
+}
+
+.c2:hover {
+  border-color: #C1C6CC;
+}
+
+.c2:focus {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c2:disabled {
+  background: #F5F6F7;
+  color: #939BA5;
+}
+
+.c2:disabled:hover {
+  border-color: #DEE1E5;
 }
 
 .c0 {
@@ -361,8 +478,8 @@ exports[`FieldText supports labelWeight 1`] = `
 >
   <label
     className="c1"
-    color="palette.charcoal800"
-    fontSize="small"
+    color="palette.charcoal700"
+    fontSize="xsmall"
     fontWeight="normal"
     htmlFor="thumbs-up"
   >

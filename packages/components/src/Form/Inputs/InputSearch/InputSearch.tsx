@@ -37,10 +37,13 @@ import React, {
 import styled from 'styled-components'
 import { inputPropKeys } from '../InputProps'
 import {
-  CustomizableInputTextAttributes,
   InputText,
   InputTextProps,
-  inputTextStyles,
+  inputTextDefaults,
+  inputTextDisabled,
+  inputTextFocus,
+  inputTextHover,
+  inputTextValidation,
 } from '../InputText'
 import { useControlWarn, useForkedRef, useWrapEvent } from '../../../utils'
 import { Box } from '../../../Layout'
@@ -168,19 +171,26 @@ export const InputSearch = styled(InputSearchComponent)`
   align-items: center;
   display: flex;
   position: relative;
+  background-color: ${props => props.theme.colors.palette.white};
 
-  ${inputTextStyles}
+  &:hover {
+    ${inputTextHover}
+  }
 
   &:focus-within {
-    border-color: transparent;
-    outline: 5px auto -webkit-focus-ring-color;
+    ${inputTextFocus}
   }
+
+  ${props => (props.disabled ? inputTextDisabled : '')}
+
+  ${inputTextValidation}
 
   ${InputText} {
     border: none;
     width: 100%;
     appearance: none;
     background: transparent;
+    box-shadow: none;
 
     &::-webkit-search-decoration,
     &::-webkit-search-cancel-button,
@@ -192,7 +202,5 @@ export const InputSearch = styled(InputSearchComponent)`
 `
 
 InputSearch.defaultProps = {
-  border: '1px solid',
-  borderColor: 'palette.charcoal300',
-  borderRadius: CustomizableInputTextAttributes.borderRadius,
+  ...inputTextDefaults,
 }

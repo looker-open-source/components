@@ -40,6 +40,7 @@ import ReactDOMServer from 'react-dom/server'
 import styled from 'styled-components'
 import { useForkedRef, useWrapEvent } from '../../../utils'
 import { InputSearch, InputSearchProps } from '../InputSearch'
+import { InputText } from '../InputText'
 import { makeHash, useBlur, useKeyDown } from './helpers'
 import { ComboboxContext } from './ComboboxContext'
 import { getComboboxText } from './ComboboxOption'
@@ -81,6 +82,7 @@ export const ComboboxInputInternal = forwardRef(function ComboboxInput(
 
     // wrapped events
     onClick,
+    onMouseDown,
     onClear,
     onChange,
     onKeyDown,
@@ -201,6 +203,9 @@ export const ComboboxInputInternal = forwardRef(function ComboboxInput(
       selectOnClickRef.current = false
       inputElement && inputElement.select()
     }
+  }
+
+  function handleMouseDown() {
     if (state === ComboboxState.IDLE) {
       // Opening a closed list
       transition &&
@@ -225,6 +230,7 @@ export const ComboboxInputInternal = forwardRef(function ComboboxInput(
 
   const wrappedOnClear = useWrapEvent(handleClear, onClear)
   const wrappedOnClick = useWrapEvent(handleClick, onClick)
+  const wrappedOnMouseDown = useWrapEvent(handleMouseDown, onMouseDown)
   const wrappedOnBlur = useWrapEvent(handleBlur, onBlur)
   const wrappedOnFocus = useWrapEvent(handleFocus, onFocus)
   const wrappedOnChange = useWrapEvent(handleChange, onChange)
@@ -237,6 +243,7 @@ export const ComboboxInputInternal = forwardRef(function ComboboxInput(
       value={inputValue}
       readOnly={readOnly}
       onClick={wrappedOnClick}
+      onMouseDown={wrappedOnMouseDown}
       onClear={wrappedOnClear}
       onBlur={wrappedOnBlur}
       onFocus={wrappedOnFocus}
@@ -279,6 +286,10 @@ export const ComboboxInput = styled(ComboboxInputInternal)`
   background-position: right ${indicatorPadding} center, 0 0;
   background-size: ${indicatorSize}, 100%;
   padding-right: calc(2 * ${indicatorPadding} + ${indicatorSize});
+
+  ${InputText} {
+    cursor: ${props => (props.readOnly ? 'default' : 'text')};
+  }
 `
 
 ComboboxInput.defaultProps = {

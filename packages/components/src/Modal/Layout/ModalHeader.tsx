@@ -24,6 +24,9 @@
 
  */
 
+import React, { FC, useContext, ReactElement } from 'react'
+import { IconNames } from '@looker/icons'
+import styled from 'styled-components'
 import {
   SpaceProps,
   space,
@@ -31,47 +34,53 @@ import {
   reset,
 } from '@looker/design-tokens'
 
-import { IconNames } from '@looker/icons'
-import styled from 'styled-components'
-import React, { FC, useContext } from 'react'
-
+import { Icon, IconProps } from '../../Icon'
 import { IconButton } from '../../Button'
-import { Flex } from '../../Layout'
 import { Heading } from '../../Text'
 import { ModalContext } from '../ModalContext'
 
 export interface ModalHeaderProps
   extends SpaceProps,
     CompatibleHTMLProps<HTMLElement> {
+  children: string | string[]
   /**
    * Specify an icon to be used for close. Defaults to `Close`
    */
   closeIcon?: IconNames
-  children: string | string[]
+  /**
+   * Render an icon next to the title text
+   */
+  headerIcon?: ReactElement<IconProps>
 }
 
 export const ModalHeader: FC<ModalHeaderProps> = ({
   children,
   closeIcon = 'Close',
+  headerIcon,
   ...props
 }) => {
   const { closeModal } = useContext(ModalContext)
 
   return (
     <Header {...props}>
-      <Flex justifyContent="space-between" alignItems="center">
-        <Heading as="h3" mr="xlarge" fontWeight="semiBold">
-          {children}
-        </Heading>
-        <IconButton
-          tabIndex={-1}
-          color="neutral"
-          size="small"
-          onClick={closeModal}
-          label="Close"
-          icon={closeIcon}
-        />
-      </Flex>
+      {headerIcon && <HeaderIconWrapper>{headerIcon}</HeaderIconWrapper>}
+      <Heading
+        as="h3"
+        mr="xlarge"
+        fontWeight="semiBold"
+        style={{ gridArea: 'text' }}
+      >
+        {children}
+      </Heading>
+      <IconButton
+        tabIndex={-1}
+        color="neutral"
+        size="small"
+        onClick={closeModal}
+        label="Close"
+        icon={closeIcon}
+        style={{ gridArea: 'close' }}
+      />
     </Header>
   )
 }
@@ -79,6 +88,9 @@ export const ModalHeader: FC<ModalHeaderProps> = ({
 const Header = styled.header<SpaceProps>`
   ${reset}
   ${space}
+  display: grid;
+  grid-template-columns: [icon] auto [text] 1fr [close] auto;
+  align-items: center;
 `
 
 Header.defaultProps = {
@@ -86,3 +98,11 @@ Header.defaultProps = {
   pr: 'medium',
   px: 'xlarge',
 }
+
+const HeaderIconWrapper = styled.div`
+  grid-area: icon;
+  padding-right: 0.5rem;
+  ${Icon} {
+    display: block;
+  }
+`

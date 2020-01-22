@@ -46,7 +46,7 @@ export interface ModalSurfaceProps
     BoxShadowProps,
     BackgroundColorProps,
     LayoutProps {
-  surfaceStyle?: CSSObject
+  surfaceStyles?: CSSObject
   anchor?: 'right'
   animationState?: string
 }
@@ -101,7 +101,7 @@ export const ModalSurface: FC<ModalSurfaceProps> = ({
       <Style
         className={`surface-overflow ${className}`}
         tabIndex={-1}
-        surfaceStyle={style as CSSObject}
+        surfaceStyles={style as CSSObject}
         {...props}
       />
     </HotKeys>
@@ -126,7 +126,7 @@ const Style = styled.div<ModalSurfaceProps>`
   position: relative;
   transition: transform ${surfaceTransition}, opacity ${surfaceTransition};
 
-  ${props => props.surfaceStyle};
+  ${props => props.surfaceStyles};
 
   &:focus {
     outline: none;
@@ -139,5 +139,5 @@ Style.defaultProps = {
   boxShadow: 3,
   color: 'palette.charcoal900',
   maxHeight: '90vh',
-  maxWidth: '90vw',
+  maxWidth: ['90vw', '90vw', '600px'],
 }
