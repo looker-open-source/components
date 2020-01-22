@@ -42,7 +42,7 @@ import { ModalContext } from '../ModalContext'
 export interface ModalHeaderProps
   extends SpaceProps,
     CompatibleHTMLProps<HTMLElement> {
-  children: string
+  children: string | string[]
   /**
    * Specify an icon to be used for close. Defaults to `Close`
    */
