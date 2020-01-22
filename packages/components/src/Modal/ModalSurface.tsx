@@ -139,5 +139,5 @@ Style.defaultProps = {
   boxShadow: 3,
   color: 'palette.charcoal900',
   maxHeight: '90vh',
-  maxWidth: '90vw',
+  maxWidth: ['90vw', '90vw', '600px'],
 }
