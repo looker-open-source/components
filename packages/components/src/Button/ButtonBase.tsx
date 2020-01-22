@@ -171,4 +171,4 @@ export const ButtonBase = styled(ButtonJSX)<ButtonProps>`
   ${buttonIcon}
 `
 
-ButtonBase.defaultProps = { size: 'medium', type: 'button' }
+ButtonBase.defaultProps = { size: 'medium' }

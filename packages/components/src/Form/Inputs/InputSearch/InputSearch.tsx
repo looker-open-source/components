@@ -24,6 +24,7 @@
 
  */
 
+import * as CSS from 'csstype'
 import omit from 'lodash/omit'
 import pick from 'lodash/pick'
 import React, {
@@ -35,6 +36,7 @@ import React, {
   useRef,
 } from 'react'
 import styled from 'styled-components'
+import { ResponsiveValue, TLengthStyledSystem } from 'styled-system'
 import { inputPropKeys } from '../InputProps'
 import {
   CustomizableInputTextAttributes,
@@ -50,7 +52,17 @@ import { useControlWarn, useForkedRef, useWrapEvent } from '../../../utils'
 import { Box } from '../../../Layout'
 import { InputSearchControls } from './InputSearchControls'
 
-const getHeight = () => `calc(${CustomizableInputTextAttributes.height} - 6px)`
+const getHeight = (
+  py?: ResponsiveValue<CSS.PaddingProperty<TLengthStyledSystem>>
+) => {
+  /* Subtracting vertical padding and border from input text height
+  Setting height this way instead of on the parent div allows
+  InputChip to expand vertically as needed
+  min-height doesn't work because then height: 100% on the children is ignored */
+  const verticalSpace =
+    typeof py === 'number' ? `${((py || 0) + 1) * 2}px` : `(${py} * 2) - 2px`
+  return `calc(${CustomizableInputTextAttributes.height} - ${verticalSpace})`
+}
 
 export interface InputSearchProps extends InputTextProps {
   /**
@@ -142,7 +154,7 @@ const InputSearchComponent = forwardRef(
         onClear={handleClear}
         showClear={showClear || inputValue.length > 0}
         summary={summary}
-        height={getHeight()}
+        height={getHeight(props.py)}
       />
     )
 
@@ -206,11 +218,8 @@ export const InputSearch = styled(InputSearchComponent)`
     background: transparent;
     box-shadow: none;
     flex: 1;
-    /* Subtracting 6 pixels for vertical padding and border
-    Setting height this way instead of on the parent div allows
-    InputChip to expand vertically as needed
-    min-height doesn't work because then height: 100% on the children is ignored */
-    height: ${getHeight()};
+
+    height: ${props => getHeight(props.py)};
 
     &::-webkit-search-decoration,
     &::-webkit-search-cancel-button,
