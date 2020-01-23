@@ -56,7 +56,7 @@
     "@types/enzyme": "^3.10.4",
     "@types/jest": "^24.9.0",
     "@types/node": "^13.1.8",
-    "@types/react-test-renderer": "^16.9.0",
+    "@types/react-test-renderer": "^16.9.2",
     "@typescript-eslint/eslint-plugin": "^2.17.0",
     "@typescript-eslint/parser": "^2.17.0",
     "babel-core": "^7.0.0-bridge",
