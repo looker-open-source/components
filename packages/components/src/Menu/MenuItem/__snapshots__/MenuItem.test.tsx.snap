@@ -43,6 +43,13 @@ exports[`MenuItem - current + marker 1`] = `
   text-decoration: none;
 }
 
+.c1:hover,
+.c1:focus {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: inherit;
+}
+
 .c4:hover .c3 {
   color: #C1C6CC;
 }
@@ -174,6 +181,13 @@ exports[`MenuItem - current 1`] = `
   text-decoration: none;
 }
 
+.c1:hover,
+.c1:focus {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: inherit;
+}
+
 .c4:hover .c3 {
   color: #C1C6CC;
 }
@@ -288,6 +302,13 @@ exports[`MenuItem - detail 1`] = `
   text-align: left;
   -webkit-text-decoration: none;
   text-decoration: none;
+}
+
+.c1:hover,
+.c1:focus {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: inherit;
 }
 
 .c2 {
@@ -416,6 +437,13 @@ exports[`MenuItem - icon 1`] = `
   text-decoration: none;
 }
 
+.c1:hover,
+.c1:focus {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: inherit;
+}
+
 .c0 {
   background-color: #FFFFFF;
   color: #4C535B;
@@ -532,6 +560,13 @@ exports[`MenuItem - with customizations 1`] = `
   text-decoration: none;
 }
 
+.c1:hover,
+.c1:focus {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: inherit;
+}
+
 .c0 {
   background-color: #BFB2FF;
   color: #1E1047;
@@ -618,6 +653,13 @@ exports[`MenuItem - with single customization 1`] = `
   text-decoration: none;
 }
 
+.c1:hover,
+.c1:focus {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: inherit;
+}
+
 .c0 {
   background-color: #4F2ABA;
   color: #262D33;
@@ -702,6 +744,13 @@ exports[`MenuItem 1`] = `
   text-align: left;
   -webkit-text-decoration: none;
   text-decoration: none;
+}
+
+.c1:hover,
+.c1:focus {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: inherit;
 }
 
 .c0 {

@@ -20,6 +20,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated `ModalSurface` prop from `surfaceStyle` to `surfaceStyles` in order to make the modal and DialogManager apis consistent
 - Edited modal documentation for clarity
 
+### Fixed
+
+- updated use-case where itemRole="link" interacted poorly with CSS stylesheet in applying :hover and :focus pseudo-styles
+
 ## [07.13] - 2020-01-16
 
 ### Added
