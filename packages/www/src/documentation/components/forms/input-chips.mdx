@@ -1,0 +1,145 @@
+---
+title: InputChips
+github: Form/InputChips/InputChips.tsx
+propsOf: InputChips
+figma: file/2MG6DoSjk4IaLnjjFCnKFf/Forms
+---
+
+The `InputChips` component takes an array of strings (`values`) and renders them each as a
+deletable [`Chip`](/components/content/chip) inside a text box.
+The input value is converted to chip values as the user types via the <strong>comma</strong> or <strong>enter</strong> keys, or on blur.
+The `values` and `onChange` props are required – `InputChips` is a controlled component.
+
+`InputChips` also supports `summary` and `hideControls`, similar to [`InputSearch`](input-search).
+
+```js
+;() => {
+  function ExampleInputChips({ values: initialValues = [], hideControls }) {
+    const [values, setValues] = React.useState(initialValues)
+    function handleChange(newValues) {
+      setValues(newValues)
+    }
+    return (
+      <InputChips
+        placeholder="Enter multiple values"
+        summary={values.length > 0 && `You've entered ${values.length} items`}
+        values={values}
+        onChange={handleChange}
+        hideControls={hideControls}
+      />
+    )
+  }
+  return (
+    <>
+      <ExampleInputChips />
+      <Divider my="medium" />
+      <ExampleInputChips values={['mango', 'kiwi']} />
+      <Divider my="medium" />
+      <ExampleInputChips values={[]} hideControls />
+    </>
+  )
+}
+```
+
+## Controlled Input Value
+
+The `inputValue` and `onInputChange` props allow control of the typed value (`onClear` is optional).
+
+```js
+;() => {
+  const [values, setValues] = React.useState([])
+  const [inputValue, setInputValue] = React.useState('')
+  const [confirmation, confirm] = useConfirm({
+    message: 'Are you sure you want to clear all values?',
+    onConfirm: closeConfirm => {
+      setValues([])
+      setInputValue('')
+      closeConfirm()
+    },
+    title: 'Please Confirm',
+  })
+
+  function handleChange(newValues) {
+    setValues(newValues)
+  }
+  function handleInputChange(newValue) {
+    setInputValue(newValue)
+  }
+  function handleClear() {
+    confirm()
+  }
+  return (
+    <>
+      <InputChips
+        placeholder="Enter multiple values"
+        summary={values.length > 0 && `You've entered ${values.length} items`}
+        values={values}
+        inputValue={inputValue}
+        onChange={handleChange}
+        onInputChange={handleInputChange}
+        onClear={handleClear}
+        mb="small"
+      />
+      {inputValue !== '' && (
+        <Paragraph>
+          You are typing: <strong>{inputValue}</strong>
+        </Paragraph>
+      )}
+      {confirmation}
+    </>
+  )
+}
+```
+
+## Validation
+
+If a duplicate value is entered, it will not be added to the values list.
+The optional `validate` prop is a function returning a boolean that is called for each value that is entered.
+If it returns false, the value is not added. `onInvalid` and `onDuplicate` are optional handlers for when
+invalid and duplicate values are entered.
+
+```js
+;() => {
+  const emailValidator = new RegExp(
+    /^(([^<>()\[\]\\.,:\s@"]+(\.[^<>()\[\]\\.,:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+  )
+  const [values, setValues] = React.useState([])
+  const [invalidValue, setInvalidValue] = React.useState('')
+  const [duplicateValue, setDuplicateValue] = React.useState('')
+
+  function handleChange(newValues) {
+    setValues(newValues)
+    setInvalidValue('')
+    setDuplicateValue('')
+  }
+  function validate(valueToValidate) {
+    return emailValidator.test(valueToValidate)
+  }
+  function handleInvalid(invalidValue) {
+    setInvalidValue(invalidValue)
+  }
+  function handleDuplicate(duplicateValue) {
+    setDuplicateValue(duplicateValue)
+  }
+  return (
+    <>
+      <InputChips
+        placeholder="Enter email addresses"
+        values={values}
+        validate={validate}
+        onChange={handleChange}
+        onInvalid={handleInvalid}
+        onDuplicate={handleDuplicate}
+        mb="small"
+      />
+      <Paragraph>
+        {invalidValue !== ''
+          ? `You entered an invalid email: ${invalidValue}`
+          : duplicateValue !== ''
+          ? `${duplicateValue} has already been entered`
+          : ''}
+      </Paragraph>
+    </>
+  )
+}
+```

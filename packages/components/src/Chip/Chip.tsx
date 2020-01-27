@@ -39,11 +39,14 @@ import React, { ReactNode, forwardRef, Ref, useState } from 'react'
 import styled from 'styled-components'
 import { rgba } from 'polished'
 import { IconButton } from '../Button'
+import { Text, TextProps } from '../Text'
+import { TruncateProps, truncate } from '../Text/truncate'
 
 export interface ChipProps
   extends CompatibleHTMLProps<HTMLSpanElement>,
     LayoutProps,
     SpaceProps,
+    TruncateProps,
     TypographyProps {
   children: ReactNode
   disabled?: boolean
@@ -100,20 +103,20 @@ const ChipStyle = styled.span<ChipProps>`
     `}
 `
 
-const ChipLabel = styled.span`
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
+const ChipLabel = styled(Text)<TextProps & TruncateProps>`
+  ${truncate}
 `
 
 const ChipJSX = forwardRef((props: ChipProps, ref: Ref<HTMLSpanElement>) => {
   const {
     children,
     disabled,
+    fontSize,
     onBlur,
     onDelete,
     onKeyUp,
     onKeyDown,
+    truncate,
     ...restProps
   } = props
 
@@ -156,7 +159,9 @@ const ChipJSX = forwardRef((props: ChipProps, ref: Ref<HTMLSpanElement>) => {
       tabIndex={disabled ? undefined : 0}
       {...restProps}
     >
-      <ChipLabel>{children}</ChipLabel>
+      <ChipLabel fontSize={fontSize} truncate={truncate}>
+        {children}
+      </ChipLabel>
       {onDelete && !disabled && (
         <IconButton
           color="primary"
@@ -179,9 +184,11 @@ export const Chip = styled(ChipJSX)``
 Chip.defaultProps = {
   fontSize: 'xsmall',
   fontWeight: 'semiBold',
+  height: 28,
   maxWidth: 320,
   mb: 'xxsmall',
   minWidth: 44,
   px: 'xsmall',
   py: 'xxsmall',
+  truncate: true,
 }
