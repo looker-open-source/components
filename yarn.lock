@@ -7335,7 +7335,7 @@ eslint-loader@^3.0.3:
     object-hash "^2.0.1"
     schema-utils "^2.6.1"
 
-eslint-mdx@^1.6.5, eslint-mdx@^1.6.8:
+eslint-mdx@^1.6.8:
   version "1.6.8"
   resolved "https://registry.yarnpkg.com/eslint-mdx/-/eslint-mdx-1.6.8.tgz#7ef43676497dcab08e741d66fa7cea52b3fa6b0d"
   integrity sha512-2ySBt+w1P2iZeYGNJwagvD5KCmRPySWIxwXfI+yUpnodQWx5lBRYDZvuac9dB1LqAxgEVbNW/fNqth5+2+N4Yg==
