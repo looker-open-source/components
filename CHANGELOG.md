@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## UNRELEASED
 
 ### Added
+
 - `Button` now has a `fullWidth` prop that will set the button's width to 100%, filling its parent container.
 - New modal component: `ConfirmLayout` for laying out standard user confirmation dialog content
 
@@ -19,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `ModalManager` children prop is now optional
 - Updated `ModalSurface` prop from `surfaceStyle` to `surfaceStyles` in order to make the modal and DialogManager apis consistent
 - Edited modal documentation for clarity
+- `Banner` children are now wrapped in `<Box display="auto">` so they will expand to the full available width.
 
 ### Fixed
 
