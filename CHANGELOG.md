@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `Button` now has a `fullWidth` prop that will set the button's width to 100%, filling its parent container.
 - New modal component: `ConfirmLayout` for laying out standard user confirmation dialog content
+- New `InputChips` component displays multiple inputted values as `Chip`s inside a text box
 
 ### Changes
 
