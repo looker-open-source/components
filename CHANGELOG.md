@@ -5,22 +5,38 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## UNRELEASED
+
+
+### Added
+
+- New components: `Dates` `DateTime` `Times`
+
+## [0.7.14] - 2020-01-27
 
 ### Added
 
 - New modal component: `ConfirmLayout` for laying out standard user confirmation dialog content
-- New component: `Date-Time`
+- `Button` now has a `fullWidth` prop that will set the button's width to 100%, filling its parent container.
+- `ConfirmLayout` - new modal for laying out standard user confirmation dialog content
+- `InputChips` displays multiple values as `Chip`s inside a text box
+
 
 ### Changes
 
+- `Banner` children are now wrapped in `<Box display="auto">` so they will expand to the full available width.
 - `ConfirmationDialog` uses `ConfirmLayout` to render modal content
 - `ModalHeader` accepts a new headerIcon prop to render next to the title content
 - `ModalManager` children prop is now optional
-- Updated `ModalSurface` prop from `surfaceStyle` to `surfaceStyles` in order to make the modal and DialogManager apis consistent
+- `ModalSurface`
+  - all consumers now support a responsive `maxWidth` prop
+  - `surfaceStyle` renamed to `surfaceStyles` in order to make the modal and DialogManager consistent
 - Edited modal documentation for clarity
 
-## [07.13] - 2020-01-16
+### Fixed
+
+- `MenuItem` improved for use-case where itemRole="link" interacted poorly with unrelated CSS in applying :hover and :focus pseudo-styles
+
+## [0.7.13] - 2020-01-16
 
 ### Added
 

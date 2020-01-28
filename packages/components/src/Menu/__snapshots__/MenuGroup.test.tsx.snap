@@ -52,6 +52,13 @@ exports[`MenuGroup - JSX label 1`] = `
   text-decoration: none;
 }
 
+.c5:hover,
+.c5:focus {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: inherit;
+}
+
 .c4 {
   background-color: #FFFFFF;
   color: #4C535B;
@@ -242,6 +249,13 @@ exports[`MenuGroup - label 1`] = `
   text-decoration: none;
 }
 
+.c5:hover,
+.c5:focus {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: inherit;
+}
+
 .c4 {
   background-color: #FFFFFF;
   color: #4C535B;
@@ -428,6 +442,13 @@ exports[`MenuGroup - labelProps & labelStyles 1`] = `
   text-decoration: none;
 }
 
+.c5:hover,
+.c5:focus {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: inherit;
+}
+
 .c4 {
   background-color: #FFFFFF;
   color: #4C535B;
@@ -612,6 +633,13 @@ exports[`MenuGroup - menu customization 1`] = `
   text-align: left;
   -webkit-text-decoration: none;
   text-decoration: none;
+}
+
+.c3:hover,
+.c3:focus {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: inherit;
 }
 
 .c6:hover .c5 {
@@ -854,6 +882,13 @@ exports[`MenuGroup 1`] = `
   text-align: left;
   -webkit-text-decoration: none;
   text-decoration: none;
+}
+
+.c3:hover,
+.c3:focus {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: inherit;
 }
 
 .c2 {

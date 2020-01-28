@@ -24,27 +24,4 @@
 
  */
 
-import React, { FC } from 'react'
-import { Modal, ModalProps } from '../Modal'
-import { DialogSurface } from './DialogSurface'
-
-export const Dialog: FC<ModalProps> = ({
-  width,
-  children,
-  surfaceStyles,
-  maxWidth,
-  ...props
-}) => {
-  const surface = (animationState: string) => (
-    <DialogSurface
-      style={surfaceStyles}
-      className={animationState}
-      width={width}
-      maxWidth={maxWidth}
-    >
-      {children}
-    </DialogSurface>
-  )
-
-  return <Modal {...props} render={surface} />
-}
+export * from './InputChips'

@@ -2,6 +2,10 @@
 
 exports[`Chip renders correctly 1`] = `
 .c1 {
+  height: 28px;
+  max-width: 320px;
+  min-width: 44px;
+  margin-bottom: 0.25rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   padding-top: 0.25rem;
@@ -18,11 +22,7 @@ exports[`Chip renders correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  font-size: 0.75rem;
   justify-items: center;
-  margin-bottom: 0.25rem;
-  max-width: 320px;
-  min-width: 44px;
 }
 
 .c1 .c3 {
@@ -46,14 +46,17 @@ exports[`Chip renders correctly 1`] = `
 }
 
 .c2 {
-  text-overflow: ellipsis;
-  overflow: hidden;
+  font-size: 0.75rem;
+  line-height: 1rem;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 <span
   className="c0 c1 "
   fontWeight="semiBold"
+  height={28}
   onBlur={[Function]}
   onKeyDown={[Function]}
   onKeyUp={[Function]}
@@ -61,6 +64,7 @@ exports[`Chip renders correctly 1`] = `
 >
   <span
     className="c2"
+    fontSize="xsmall"
   >
     chip
   </span>
@@ -73,6 +77,10 @@ exports[`Chip renders disabled 1`] = `
 }
 
 .c1 {
+  height: 28px;
+  max-width: 320px;
+  min-width: 44px;
+  margin-bottom: 0.25rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   padding-top: 0.25rem;
@@ -89,11 +97,7 @@ exports[`Chip renders disabled 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  font-size: 0.75rem;
   justify-items: center;
-  margin-bottom: 0.25rem;
-  max-width: 320px;
-  min-width: 44px;
   color: #939BA5;
   background-color: #F5F6F7;
 }
@@ -123,21 +127,25 @@ exports[`Chip renders disabled 1`] = `
 }
 
 .c2 {
-  text-overflow: ellipsis;
-  overflow: hidden;
+  font-size: 0.75rem;
+  line-height: 1rem;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 <span
   className="c0 c1 "
   disabled={true}
   fontWeight="semiBold"
+  height={28}
   onBlur={[Function]}
   onKeyDown={[Function]}
   onKeyUp={[Function]}
 >
   <span
     className="c2"
+    fontSize="xsmall"
   >
     chip
   </span>

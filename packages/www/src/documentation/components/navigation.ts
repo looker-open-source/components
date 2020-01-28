@@ -79,6 +79,10 @@ const components: NavigationSection = {
           path: 'fields',
         },
         {
+          title: 'InputChips',
+          path: 'input-chips',
+        },
+        {
           title: 'InputHidden',
           path: 'input-hidden',
         },

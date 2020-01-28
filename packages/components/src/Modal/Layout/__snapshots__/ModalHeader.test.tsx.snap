@@ -141,6 +141,7 @@ exports[`ModalHeader 1`] = `
       }
     }
     tabIndex={-1}
+    type="button"
     width={28}
   >
     <div

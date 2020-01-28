@@ -1,6 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Confirmation banner 1`] = `
+.c2 {
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+}
+
 .c0 {
   border-radius: 0.25rem;
   background-color: #e0ffe7;
@@ -39,7 +45,9 @@ exports[`Confirmation banner 1`] = `
   <div
     className="c1"
   />
-  <div>
+  <div
+    className="c2"
+  >
     Confirmation
   </div>
 </div>
@@ -61,7 +69,7 @@ exports[`Dismissable banner 1`] = `
   display: inline-flex;
 }
 
-.c6 {
+.c7 {
   width: 22px;
   height: 22px;
   -webkit-align-items: center;
@@ -74,7 +82,7 @@ exports[`Dismissable banner 1`] = `
   display: inline-flex;
 }
 
-.c3 {
+.c4 {
   width: 28px;
   -webkit-align-items: center;
   -webkit-box-align: center;
@@ -105,11 +113,17 @@ exports[`Dismissable banner 1`] = `
   margin-left: auto;
 }
 
-.c3[disabled] {
+.c4[disabled] {
   cursor: default;
   -webkit-filter: grayscale(0.3);
   filter: grayscale(0.3);
   opacity: 0.25;
+}
+
+.c3 {
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
 }
 
 .c0 {
@@ -133,30 +147,30 @@ exports[`Dismissable banner 1`] = `
   display: flex;
 }
 
-.c4 {
+.c5 {
   background: transparent;
   border: 1px solid transparent;
   color: #939BA5;
 }
 
-.c4:active,
-.c4.active {
+.c5:active,
+.c5.active {
   background: #F5F6F7;
   border-color: #F5F6F7;
   color: #4C535B;
 }
 
-.c4:hover,
-.c4:focus,
-.c4.hover {
+.c5:hover,
+.c5:focus,
+.c5.hover {
   background: #FBFBFC;
   border-color: #FBFBFC;
   color: #4C535B;
 }
 
-.c4[disabled]:hover,
-.c4[disabled]:active,
-.c4[disabled]:focus {
+.c5[disabled]:hover,
+.c5[disabled]:active,
+.c5[disabled]:focus {
   color: #939BA5;
 }
 
@@ -169,15 +183,15 @@ exports[`Dismissable banner 1`] = `
   clip: rect(1px,1px,1px,1px);
 }
 
-.c5 {
+.c6 {
   margin-left: auto;
 }
 
-.c5:hover {
+.c6:hover {
   background: none;
 }
 
-.c5 svg {
+.c6 svg {
   pointer-events: none;
 }
 
@@ -193,6 +207,7 @@ exports[`Dismissable banner 1`] = `
     style={
       Object {
         "flexBasis": "20px",
+        "flexShrink": 0,
       }
     }
   >
@@ -216,12 +231,14 @@ exports[`Dismissable banner 1`] = `
   >
     Info
   </div>
-  <div>
+  <div
+    className="c3"
+  >
     Info!
   </div>
   <button
     aria-hidden={true}
-    className="c3 c4 c5"
+    className="c4 c5 c6"
     color="neutral"
     onBlur={[Function]}
     onFocus={[Function]}
@@ -234,6 +251,7 @@ exports[`Dismissable banner 1`] = `
         "padding": "1px",
       }
     }
+    type="button"
     width={28}
   >
     <div
@@ -243,7 +261,7 @@ exports[`Dismissable banner 1`] = `
     </div>
     <div
       aria-hidden={true}
-      className="c6 "
+      className="c7 "
       size={22}
     >
       <svg
@@ -279,6 +297,12 @@ exports[`Error banner 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+}
+
+.c3 {
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
 }
 
 .c0 {
@@ -323,6 +347,7 @@ exports[`Error banner 1`] = `
     style={
       Object {
         "flexBasis": "20px",
+        "flexShrink": 0,
       }
     }
   >
@@ -346,7 +371,9 @@ exports[`Error banner 1`] = `
   >
     Error
   </div>
-  <div>
+  <div
+    className="c3"
+  >
     Error
   </div>
 </div>
@@ -366,6 +393,12 @@ exports[`Info banner 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+}
+
+.c3 {
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
 }
 
 .c0 {
@@ -410,6 +443,7 @@ exports[`Info banner 1`] = `
     style={
       Object {
         "flexBasis": "20px",
+        "flexShrink": 0,
       }
     }
   >
@@ -433,7 +467,9 @@ exports[`Info banner 1`] = `
   >
     Info
   </div>
-  <div>
+  <div
+    className="c3"
+  >
     Info
   </div>
 </div>
@@ -453,6 +489,12 @@ exports[`Warning banner 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+}
+
+.c3 {
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
 }
 
 .c0 {
@@ -497,6 +539,7 @@ exports[`Warning banner 1`] = `
     style={
       Object {
         "flexBasis": "20px",
+        "flexShrink": 0,
       }
     }
   >
@@ -520,7 +563,9 @@ exports[`Warning banner 1`] = `
   >
     Warning
   </div>
-  <div>
+  <div
+    className="c3"
+  >
     Warning
   </div>
 </div>

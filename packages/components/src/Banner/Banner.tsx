@@ -31,6 +31,7 @@ import {
 } from '@looker/design-tokens'
 import React, { forwardRef, Ref } from 'react'
 import { IconButton } from '../Button'
+import { Box } from '../Layout/Box'
 import { Icon } from '../Icon'
 import { Flex } from '../Layout/Flex'
 import { VisuallyHidden } from '../VisuallyHidden'
@@ -60,7 +61,7 @@ const getBannerIntentStyling = (intent: BannerIntent) => {
   const iconProps = {
     mr: 'small',
     size: 20,
-    style: { flexBasis: '20px' },
+    style: { flexBasis: '20px', flexShrink: 0 },
   }
 
   switch (intent) {
@@ -125,7 +126,7 @@ export const Banner = forwardRef(
       >
         {icon}
         <VisuallyHidden>{accessibilityLabel}</VisuallyHidden>
-        <div>{children}</div>
+        <Box flex="auto">{children}</Box>
         {dismissable && (
           <IconButton
             ml="auto"

@@ -27,6 +27,8 @@
 import {
   color,
   reset,
+  layout,
+  LayoutProps,
   space,
   SpaceProps,
   typography,
@@ -37,10 +39,14 @@ import React, { ReactNode, forwardRef, Ref, useState } from 'react'
 import styled from 'styled-components'
 import { rgba } from 'polished'
 import { IconButton } from '../Button'
+import { Text, TextProps } from '../Text'
+import { TruncateProps, truncate } from '../Text/truncate'
 
 export interface ChipProps
   extends CompatibleHTMLProps<HTMLSpanElement>,
+    LayoutProps,
     SpaceProps,
+    TruncateProps,
     TypographyProps {
   children: ReactNode
   disabled?: boolean
@@ -52,6 +58,7 @@ const ChipStyle = styled.span<ChipProps>`
   ${reset}
 
   ${color}
+  ${layout}
   ${space}
   ${typography}
   ${IconButton}{
@@ -64,11 +71,7 @@ const ChipStyle = styled.span<ChipProps>`
   border-radius: 4px;
   color: ${props => props.theme.colors.palette.purple500};
   display: flex;
-  font-size: ${props => props.theme.fontSizes.xsmall};
   justify-items: center;
-  margin-bottom: ${props => props.theme.space.xxsmall};
-  max-width: 320px;
-  min-width: 44px;
   & + & {
     margin-left: ${props => props.theme.space.xxsmall};
   }
@@ -100,20 +103,20 @@ const ChipStyle = styled.span<ChipProps>`
     `}
 `
 
-const ChipLabel = styled.span`
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
+const ChipLabel = styled(Text)<TextProps & TruncateProps>`
+  ${truncate}
 `
 
 const ChipJSX = forwardRef((props: ChipProps, ref: Ref<HTMLSpanElement>) => {
   const {
     children,
     disabled,
+    fontSize,
     onBlur,
     onDelete,
     onKeyUp,
     onKeyDown,
+    truncate,
     ...restProps
   } = props
 
@@ -156,13 +159,15 @@ const ChipJSX = forwardRef((props: ChipProps, ref: Ref<HTMLSpanElement>) => {
       tabIndex={disabled ? undefined : 0}
       {...restProps}
     >
-      <ChipLabel>{children}</ChipLabel>
+      <ChipLabel fontSize={fontSize} truncate={truncate}>
+        {children}
+      </ChipLabel>
       {onDelete && !disabled && (
         <IconButton
           color="primary"
           disabled={disabled}
           icon="Close"
-          label="Close"
+          label="Delete"
           ml="xsmall"
           onClick={handleDelete}
           size="xxsmall"
@@ -177,7 +182,13 @@ ChipJSX.displayName = 'ChipJSX'
 export const Chip = styled(ChipJSX)``
 
 Chip.defaultProps = {
+  fontSize: 'xsmall',
   fontWeight: 'semiBold',
+  height: 28,
+  maxWidth: 320,
+  mb: 'xxsmall',
+  minWidth: 44,
   px: 'xsmall',
   py: 'xxsmall',
+  truncate: true,
 }

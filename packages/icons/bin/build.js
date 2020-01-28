@@ -3,17 +3,17 @@
  MIT License
 
  Copyright (c) 2019 Looker Data Sciences, Inc.
- 
+
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
  in the Software without restriction, including without limitation the rights
  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  copies of the Software, and to permit persons to whom the Software is
  furnished to do so, subject to the following conditions:
- 
+
  The above copyright notice and this permission notice shall be included in all
  copies or substantial portions of the Software.
- 
+
  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -30,6 +30,7 @@ const globPromise = util.promisify(require('glob'))
 const mkdir = util.promisify(require('fs').mkdir)
 const rimrafPromise = util.promisify(require('rimraf'))
 const writeFile = util.promisify(require('fs').writeFile)
+const rename = util.promisify(require('fs').rename)
 const path = require('path')
 const ora = require('ora')
 
@@ -78,20 +79,11 @@ async function convertSVGToComponent() {
   }
 }
 
-async function generateGlyphIndexFile() {
-  function generateGlyphFileIndexModule(componentNames) {
-    return (
-      componentNames
-        .map(name => {
-          return `export { default as ${name} } from './${name}'`
-        })
-        .join('\n') + '\n'
-    )
-  }
-  const basenames = await getBasenames(iconGlyphPath, iconGlyphFileExtension)
-  await writeFile(
-    path.join(iconGlyphPath, 'index.ts'),
-    generateGlyphFileIndexModule(basenames)
+async function renameGlyphIndexFile() {
+  // Rename auto-generated index from `.tsx` to `.ts`
+  await rename(
+    path.join(iconGlyphPath, 'index.tsx'),
+    path.join(iconGlyphPath, 'index.ts')
   )
 }
 
@@ -122,7 +114,7 @@ async function run() {
   await convertSVGToComponent()
   spinner.color = 'green'
   spinner.text = 'Exporting Glyphs and generating Typescript interfaces...'
-  await generateGlyphIndexFile()
+  await renameGlyphIndexFile()
   await generateIconNameFile()
   spinner.color = 'blue'
   spinner.succeed('Done building icons!')

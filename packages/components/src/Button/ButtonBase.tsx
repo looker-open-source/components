@@ -82,6 +82,10 @@ export interface ButtonBaseProps
 
 export interface ButtonProps extends ButtonBaseProps, ButtonIconProps {
   size?: ButtonSizes
+  /**
+   * If true, the button's width will be set to 100%.
+   */
+  fullWidth?: boolean
 }
 
 export const buttonCSS = css<ButtonBaseProps>`
@@ -124,6 +128,7 @@ export const buttonCSS = css<ButtonBaseProps>`
 
 const ButtonOuter = styled.button<ButtonProps>`
   ${buttonCSS}
+  ${props => props.fullWidth && `width: 100%;`}
 `
 
 const ButtonJSX = forwardRef(
