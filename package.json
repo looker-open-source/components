@@ -58,7 +58,7 @@
     "@types/node": "^13.5.0",
     "@types/react-test-renderer": "^16.9.2",
     "@typescript-eslint/eslint-plugin": "^2.17.0",
-    "@typescript-eslint/parser": "^2.17.0",
+    "@typescript-eslint/parser": "^2.18.0",
     "babel-core": "^7.0.0-bridge",
     "babel-loader": "^8.0.5",
     "babel-plugin-styled-components": "^1.10.7",
