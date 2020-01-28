@@ -24,14 +24,36 @@
 
  */
 
-export * from './Checkbox'
-export * from './Combobox'
-export * from './InputChips'
-export * from './InputDate'
-export * from './InputHidden'
-export * from './InputSearch'
-export * from './InputText'
-export * from './Radio'
-export * from './Select'
-export * from './Slider'
-export * from './ToggleSwitch'
+import { SizeLarge, SizeMedium, SizeSmall } from '@looker/design-tokens'
+import { variant } from 'styled-system'
+
+export type CalendarSize = SizeSmall | SizeMedium | SizeLarge
+
+/* eslint-disable sort-keys */
+export const calendarSizeMap = {
+  small: 28,
+  medium: 36,
+  large: 44,
+}
+
+/* eslint-disable sort-keys */
+export const calendarSize = variant({
+  prop: 'size',
+  variants: {
+    small: {
+      fontSize: 'small',
+      height: `${calendarSizeMap.small}px`,
+      width: `${calendarSizeMap.small}px`,
+    },
+    medium: {
+      fontSize: 'medium',
+      height: `${calendarSizeMap.medium}px`,
+      width: `${calendarSizeMap.medium}px`,
+    },
+    large: {
+      fontSize: 'xlarge',
+      height: `${calendarSizeMap.large}px`,
+      width: `${calendarSizeMap.large}px`,
+    },
+  },
+})
