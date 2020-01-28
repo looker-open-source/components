@@ -24,6 +24,27 @@
 
  */
 
-export * from './IconList'
-export * from './DateTimeFormat'
-export * from './CalendarPropTable'
+import React from 'react'
+import { fireEvent } from '@testing-library/react'
+import { renderWithTheme } from '@looker/components-test-utils'
+
+import { InputDate } from './InputDate'
+
+afterEach(() => {
+  jest.clearAllMocks()
+})
+
+test('calls onChange prop when a day is clicked', () => {
+  const mockProps = {
+    defaultValue: new Date('June 3, 2019'),
+    onChange: jest.fn(),
+  }
+  const { getByText } = renderWithTheme(<InputDate {...mockProps} />)
+  expect(mockProps.onChange).toHaveBeenCalledTimes(0)
+
+  const date = getByText('15') // the 15th day of the month
+  fireEvent.click(date)
+  expect(mockProps.onChange).toHaveBeenCalledWith(
+    new Date('June 15, 2019 12:00:00 PM')
+  )
+})

@@ -27,6 +27,7 @@
 export * from './Checkbox'
 export * from './Combobox'
 export * from './InputChips'
+export * from './InputDate'
 export * from './InputHidden'
 export * from './InputSearch'
 export * from './InputText'

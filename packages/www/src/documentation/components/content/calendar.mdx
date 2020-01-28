@@ -1,0 +1,26 @@
+---
+title: Calendar
+github: Calendar
+propsOf: Calendar
+---
+
+import { Banner } from '@looker/components'
+import { CalendarPropTable } from './demos'
+
+<Banner>
+  If you need an interactive date picker, please use{' '}
+  <a href="/components/forms/input-date">InputDate</a> or InputDateRange
+  instead.
+</Banner>
+
+`Calendar` is a stateless component which renders a standard calendar month. It accepts a limited amount of props, and is the foundation of our more useful [`InputDate`](/components/forms/input-date) and `InputDateRange` components.
+
+```jsx
+<Calendar />
+```
+
+## Props
+
+`Calendar` shares many of the same props as `InputDate`. Please [view those docs](/components/forms/input-date) for interactive examples. But if you wish to use Calendar to build fully custom experiences, the following props are available for you:
+
+<CalendarPropTable />

@@ -25,3 +25,4 @@
  */
 
 export * from './FormValidationDemo'
+export * from './InputDateLocales'
