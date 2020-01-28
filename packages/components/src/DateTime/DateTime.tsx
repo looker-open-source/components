@@ -34,20 +34,41 @@ import {
 import React, { FC } from 'react'
 import styled from 'styled-components'
 
+export interface DateTimeFormate {
+  weekday?: string
+  year?: string
+  month?: string
+  day?: string
+  hour?: string
+  minute?: string
+  second?: string
+  timeZoneName?: string
+}
+
 export interface DateTimeProps
   extends SpaceProps,
     CompatibleHTMLProps<HTMLSpanElement> {
+  moment?: any
   location?: string
-  options?: {}
+  options?: DateTimeFormate
 }
 
 const DateTimeLayout: FC<DateTimeProps> = ({
-  location = undefined,
-  options = { day: 'numeric', month: 'long', weekday: 'long', year: 'numeric' },
+  moment = new Date(Date.now()),
+  location,
+  options = {
+    day: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+    month: 'long',
+    second: 'numeric',
+    timeZoneName: 'short',
+    weekday: 'long',
+    year: 'numeric',
+  },
   ...props
 }) => {
-  const now = new Date(Date.now())
-  return <span {...props}>{now.toLocaleDateString(location, options)}</span>
+  return <span {...props}>{moment.toLocaleDateString(location, options)}</span>
 }
 
 export const DateTime = styled(DateTimeLayout)`

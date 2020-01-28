@@ -24,6 +24,52 @@
 
  */
 
-export * from './Dates'
-export * from './DateTime'
-export * from './Times'
+import {
+  reset,
+  space,
+  SpaceProps,
+  typography,
+  CompatibleHTMLProps,
+} from '@looker/design-tokens'
+import React, { FC } from 'react'
+import styled from 'styled-components'
+
+export interface DatesFormate {
+  weekday?: string
+  year?: string
+  month?: string
+  day?: string
+}
+
+export interface DatesProps
+  extends SpaceProps,
+    CompatibleHTMLProps<HTMLSpanElement> {
+  moment?: any
+  location?: string
+  options?: DatesFormate
+}
+
+const DatesLayout: FC<DatesProps> = ({
+  moment = new Date(Date.now()),
+  location,
+  options = {
+    day: 'numeric',
+    month: 'long',
+    weekday: 'long',
+    year: 'numeric',
+  },
+  ...props
+}) => {
+  return <span {...props}>{moment.toLocaleDateString(location, options)}</span>
+}
+
+export const Dates = styled(DatesLayout)`
+  ${reset}
+
+  ${space}
+  ${typography}
+
+  display: inline-flex;
+`
+
+Dates.defaultProps = {}

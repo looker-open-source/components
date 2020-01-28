@@ -11,6 +11,36 @@ exports[`DateTime renders 1`] = `
 <span
   className="c0"
 >
-  Wednesday, January 22, 2020
+  Tuesday, January 28, 2020, 11:59:58 AM PST
+</span>
+`;
+
+exports[`Dates renders 1`] = `
+.c0 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+<span
+  className="c0"
+>
+  Tuesday, January 28, 2020
+</span>
+`;
+
+exports[`Times renders 1`] = `
+.c0 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+<span
+  className="c0"
+>
+  11:59:58 AM PST
 </span>
 `;

@@ -24,6 +24,52 @@
 
  */
 
-export * from './Dates'
-export * from './DateTime'
-export * from './Times'
+import {
+  reset,
+  space,
+  SpaceProps,
+  typography,
+  CompatibleHTMLProps,
+} from '@looker/design-tokens'
+import React, { FC } from 'react'
+import styled from 'styled-components'
+
+export interface TimesFormate {
+  hour?: string
+  minute?: string
+  second?: string
+  sZoneName?: string
+}
+
+export interface TimesProps
+  extends SpaceProps,
+    CompatibleHTMLProps<HTMLSpanElement> {
+  moment?: any
+  location?: string
+  options?: TimesFormate
+}
+
+const TimesLayout: FC<TimesProps> = ({
+  moment = new Date(Date.now()),
+  location,
+  options = {
+    hour: 'numeric',
+    minute: 'numeric',
+    second: 'numeric',
+    timeZoneName: 'short',
+  },
+  ...props
+}) => {
+  return <span {...props}>{moment.toLocaleTimeString(location, options)}</span>
+}
+
+export const Times = styled(TimesLayout)`
+  ${reset}
+
+  ${space}
+  ${typography}
+
+  display: inline-flex;
+`
+
+Times.defaultProps = {}
