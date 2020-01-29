@@ -31,14 +31,16 @@ import { CaretDown } from '@looker/icons'
 import React, {
   FormEvent,
   forwardRef,
+  MouseEvent as ReactMouseEvent,
   useLayoutEffect,
   useRef,
   useContext,
   Ref,
+  useCallback,
 } from 'react'
 import ReactDOMServer from 'react-dom/server'
 import styled from 'styled-components'
-import { useForkedRef, useWrapEvent } from '../../../utils'
+import { useMouseDownClick, useForkedRef, useWrapEvent } from '../../../utils'
 import { InputSearch, InputSearchProps } from '../InputSearch'
 import { InputText } from '../InputText'
 import { makeHash, useBlur, useKeyDown } from './helpers'
@@ -198,22 +200,44 @@ export const ComboboxInputInternal = forwardRef(function ComboboxInput(
     }
   }
 
-  function handleClick() {
+  const selectText = useCallback(() => {
     if (selectOnClickRef.current) {
       selectOnClickRef.current = false
       inputElement && inputElement.select()
     }
-  }
+  }, [inputElement])
 
-  function handleMouseDown() {
-    if (state === ComboboxState.IDLE) {
-      // Opening a closed list
-      transition &&
-        transition(ComboboxActionType.FOCUS, {
-          persistSelection: persistSelectionRef && persistSelectionRef.current,
-        })
-    }
-  }
+  const handleMouseDownClick = useCallback(
+    (e: ReactMouseEvent<HTMLElement>) => {
+      console.log(e.type)
+      if (state === ComboboxState.IDLE) {
+        // Opening a closed list
+        transition &&
+          transition(ComboboxActionType.FOCUS, {
+            persistSelection:
+              persistSelectionRef && persistSelectionRef.current,
+          })
+      }
+      if (e.type === 'click') {
+        selectText()
+      }
+    },
+    [persistSelectionRef, state, selectText, transition]
+  )
+
+  const handleMouseUp = useCallback(
+    (e: MouseEvent) => {
+      if (e.target === inputElement) {
+        selectText()
+      }
+    },
+    [inputElement, selectText]
+  )
+
+  const {
+    onMouseDown: handleMouseDown,
+    onClick: handleClick,
+  } = useMouseDownClick(handleMouseDownClick, handleMouseUp)
 
   let inputOption = contextInputValue !== undefined ? contextInputValue : option
 
