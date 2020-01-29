@@ -9,7 +9,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- New components: `Dates` `DateTime` `Times`
+- New component `DateTime` plus documentation and tests
+
+
+## [0.7.15] - 2020-01-28
+
+### Added
+
+- `useMouseDownClick` hook supports testing frameworks and scenarios where the user triggers just a "click" event and not it's proceeding "mousedown" event.
+
+### Fixed
+
+- `Select` Addressed issue where co-located `Select`s width acted undesireably
+
 
 ## [0.7.14] - 2020-01-27
 
