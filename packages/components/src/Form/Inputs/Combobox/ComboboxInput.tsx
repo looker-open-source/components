@@ -209,7 +209,6 @@ export const ComboboxInputInternal = forwardRef(function ComboboxInput(
 
   const handleMouseDownClick = useCallback(
     (e: ReactMouseEvent<HTMLElement>) => {
-      console.log(e.type)
       if (state === ComboboxState.IDLE) {
         // Opening a closed list
         transition &&
