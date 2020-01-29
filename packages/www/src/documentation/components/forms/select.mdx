@@ -78,7 +78,6 @@ the user to delete the current value.
       value={value}
       onChange={handleChange}
       onFilter={handleFilter}
-      width={300}
     />
   )
 }
@@ -97,7 +96,6 @@ A name and ID can be specified in the `<Select />` component. Names are importan
     { value: 'gouda', label: 'Gouda' },
     { value: 'swiss', label: 'Swiss' },
   ]}
-  width={300}
 />
 ```
 
@@ -114,6 +112,7 @@ Use the disable property to make an input field uneditable.
       { value: 'gouda', label: 'Gouda' },
       { value: 'swiss', label: 'Swiss' },
     ]}
+    flex={1}
   />
   <Select
     defaultValue="gouda"
@@ -124,6 +123,7 @@ Use the disable property to make an input field uneditable.
       { value: 'swiss', label: 'Swiss' },
     ]}
     ml="large"
+    flex={1}
   />
 </Flex>
 ```
@@ -142,6 +142,7 @@ To allow the user to clear the `Select`'s value, add the `isClearable` prop.
       { value: 'gouda', label: 'Gouda' },
       { value: 'swiss', label: 'Swiss' },
     ]}
+    flex={1}
   />
   <Select
     placeholder="Value can be cleared"
@@ -152,6 +153,7 @@ To allow the user to clear the `Select`'s value, add the `isClearable` prop.
       { value: 'swiss', label: 'Swiss' },
     ]}
     ml="large"
+    flex={1}
   />
 </Flex>
 ```

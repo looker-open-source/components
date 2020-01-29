@@ -62,6 +62,23 @@ describe('<Combobox/> with children', () => {
     expect(handleChange).toHaveBeenCalledWith({ label: 'Foo', value: '101' })
   })
 
+  test('Opens on click', () => {
+    const { getByText, getByPlaceholderText, queryByText } = renderWithTheme(
+      <Combobox>
+        <ComboboxInput placeholder="Type here" />
+        <ComboboxList>
+          <ComboboxOption label="Foo" value="101" />
+          <ComboboxOption label="Bar" value="102" />
+        </ComboboxList>
+      </Combobox>
+    )
+    expect(queryByText('Foo')).not.toBeInTheDocument()
+
+    const input = getByPlaceholderText('Type here')
+    fireEvent.click(input)
+    expect(getByText('Foo')).toBeInTheDocument()
+  })
+
   test('with openOnFocus', () => {
     const { getByRole, queryByRole, getByTestId } = renderWithTheme(
       <Combobox id="with-options" openOnFocus>
@@ -79,6 +96,7 @@ describe('<Combobox/> with children', () => {
     expect(getByRole('listbox')).toBeInTheDocument()
   })
 })
+
 describe('Keyboard navigation', () => {
   const arrowDown = {
     key: 'ArrowDown',
