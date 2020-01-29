@@ -40,6 +40,7 @@ import {
 import React, { forwardRef, useRef, useState, Ref, useEffect } from 'react'
 import styled from 'styled-components'
 import { useID, useCallbackRef, useForkedRef } from '../../../utils'
+import { Box } from '../../../Layout/Box'
 import { useFocusManagement } from './helpers'
 import { useReducerMachine, ComboboxActionType, ComboboxState } from './state'
 import { ComboboxContext, defaultData } from './ComboboxContext'
@@ -208,7 +209,7 @@ export const ComboboxInternal = forwardRef(function Combobox(
 
   return (
     <ComboboxContext.Provider value={context}>
-      <div
+      <Box
         display="inline-block"
         {...rest}
         ref={ref}
@@ -218,7 +219,7 @@ export const ComboboxInternal = forwardRef(function Combobox(
         aria-expanded={context.isVisible}
       >
         {children}
-      </div>
+      </Box>
     </ComboboxContext.Provider>
   )
 })
@@ -231,5 +232,3 @@ export const Combobox = styled(ComboboxInternal)`
   ${position}
   ${space}
 `
-
-Combobox.defaultProps = { width: '100%' }

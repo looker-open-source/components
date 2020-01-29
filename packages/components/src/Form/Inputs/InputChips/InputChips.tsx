@@ -214,6 +214,7 @@ export const InputChips = styled(InputChipsInternal)`
   flex-wrap: wrap;
 
   ${InputText} {
+    width: auto;
     min-width: 25%;
     padding-left: ${props => props.theme.space.xsmall};
   }

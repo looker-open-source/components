@@ -219,6 +219,7 @@ export const InputSearch = styled(InputSearchComponent)`
     box-shadow: none;
     flex: 1;
 
+    width: 100%;
     height: ${props => getHeight(props.py)};
 
     &::-webkit-search-decoration,
