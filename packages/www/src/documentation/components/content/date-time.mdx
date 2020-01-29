@@ -8,17 +8,21 @@ propsOf: DateTime
 The `DateTime` component will return a string with a language sensitive representation of the date and time. The specific moment can be specified or the default value will be assumed according to the default locale.
 
 ```jsx
-<Flex justifyContent='space-around' alignItems='center'>
-  <DateTime/>
+<Flex justifyContent="space-around" alignItems="center">
+  <DateTime />
 </Flex>
 ```
 
 ## HideDate HideTime
 
 ```jsx
-<Flex justifyContent='space-around' alignItems='center'>
-  <span><DateTime hideTime/></span>
-  <span><DateTime hideDate/></span>
+<Flex justifyContent="space-around" alignItems="center">
+  <span>
+    <DateTime hideTime />
+  </span>
+  <span>
+    <DateTime hideDate />
+  </span>
 </Flex>
 ```
 
@@ -29,9 +33,13 @@ Pass the Date desired as children and the locale as prop.
 [list supported locales](https://docs.looker.com/admin-options/settings/users#locale)
 
 ```jsx
-<Flex justifyContent='space-around' alignItems='center'>
-  <span><DateTime>{new Date(Date.UTC(2011, 1, 3, 5, 6, 2))}</DateTime></span>
-  <span><DateTime locale='ar-EG'/></span>
+<Flex justifyContent="space-around" alignItems="center">
+  <span>
+    <DateTime>{new Date(Date.UTC(2011, 1, 3, 5, 6, 2))}</DateTime>
+  </span>
+  <span>
+    <DateTime locale="ar-EG" />
+  </span>
 </Flex>
 ```
 
@@ -40,39 +48,51 @@ Pass the Date desired as children and the locale as prop.
 TimeZone needs to be a specific string based on the [IANA standard](https://www.iana.org/time-zone)
 
 ```jsx
-<Flex justifyContent='space-around' alignItems='center'>
-  <span><DateTime timeZone='Asia/Kolkata'/></span>
+<Flex justifyContent="space-around" alignItems="center">
+  <span>
+    <DateTime timeZone="Asia/Kolkata" />
+  </span>
 </Flex>
 ```
 
 ## Styles
 
 `Short` will have the date represented just as numbers.
+
 ```jsx
-<Flex justifyContent='space-around' alignItems='center'>
-  <span><DateTime style='short'/></span>
+<Flex justifyContent="space-around" alignItems="center">
+  <span>
+    <DateTime style="short" />
+  </span>
 </Flex>
 ```
 
 `Medium` is the default size. It will display the three first letters of the month
 
 ```jsx
-<Flex justifyContent='space-around' alignItems='center'>
-  <span><DateTime /></span>
+<Flex justifyContent="space-around" alignItems="center">
+  <span>
+    <DateTime />
+  </span>
 </Flex>
 ```
 
 `Long` displayes a complete month name and the shorten version of the timeZone
+
 ```jsx
-<Flex justifyContent='space-around' alignItems='center'>
-  <span><DateTime style='long'/></span>
+<Flex justifyContent="space-around" alignItems="center">
+  <span>
+    <DateTime style="long" />
+  </span>
 </Flex>
 ```
 
 `Full` displayes the day of the week and the timeZone
+
 ```jsx
-<Flex justifyContent='space-around' alignItems='center'>
-  <span><DateTime style='full'/></span>
+<Flex justifyContent="space-around" alignItems="center">
+  <span>
+    <DateTime style="full" />
+  </span>
 </Flex>
 ```
-
