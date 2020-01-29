@@ -24,60 +24,37 @@
 
  */
 
-import {
-  reset,
-  space,
-  SpaceProps,
-  typography,
-  CompatibleHTMLProps,
-} from '@looker/design-tokens'
 import React, { FC } from 'react'
-import styled from 'styled-components'
 
-export interface DateTimeFormate {
-  weekday?: string
-  year?: string
-  month?: string
-  day?: string
-  hour?: string
-  minute?: string
-  second?: string
-  timeZoneName?: string
+export interface DateTimeProps {
+  children?: Date
+  hideDate?: boolean
+  hideTime?: boolean
+  locale?: string
+  timeZone?: string
+  style?: 'short' | 'medium' | 'long' | 'full'
 }
 
-export interface DateTimeProps
-  extends SpaceProps,
-    CompatibleHTMLProps<HTMLSpanElement> {
-  moment?: any
-  location?: string
-  options?: DateTimeFormate
-}
-
-const DateTimeLayout: FC<DateTimeProps> = ({
-  moment = new Date(Date.now()),
-  location,
-  options = {
-    day: 'numeric',
-    hour: 'numeric',
-    minute: 'numeric',
-    month: 'long',
-    second: 'numeric',
-    timeZoneName: 'short',
-    weekday: 'long',
-    year: 'numeric',
-  },
-  ...props
+export const DateTime: FC<DateTimeProps> = ({
+  children = new Date(Date.now()),
+  hideDate,
+  hideTime,
+  locale,
+  timeZone,
+  style,
 }) => {
-  return <span {...props}>{moment.toLocaleDateString(location, options)}</span>
+  const timeStyle = hideTime ? undefined : style
+  const dateStyle = hideDate ? undefined : style
+  // const TimeZone = timeZone ?
+  const format = children.toLocaleDateString(locale, {
+    dateStyle,
+    timeStyle,
+    timeZone,
+  })
+
+  return <>{format}</>
 }
 
-export const DateTime = styled(DateTimeLayout)`
-  ${reset}
-
-  ${space}
-  ${typography}
-
-  display: inline-flex;
-`
-
-DateTime.defaultProps = {}
+DateTime.defaultProps = {
+  style: 'medium',
+}

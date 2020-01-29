@@ -8,147 +8,40 @@ propsOf: DateTime
 The `DateTime` component will return a string with a language sensitive representation of the date and time. The specific moment can be specified or the default value will be assumed according to the default locale.
 
 ```jsx
-  <DateTime/>
-```
-
-Also there are two complementares components `Dates` and `Times`
-
-## Dates Times
-
-```jsx
 <Flex justifyContent="space-around" alignItems="center">
-  <Dates/>
-  <Times/>
+  <DateTime/>
 </Flex>
 ```
 
-## Options
+## HideDate HideTime
 
-### specifing location
+```jsx
+<Flex justifyContent="space-around" alignItems="center">
+  <DateTime hideTime/>
+  <DateTime hideDate/>
+</Flex>
+```
+
+## Specify locale and Date
+
+Pass the Date desired as children and the locale as prop.
 
 [list supported locales](https://docs.looker.com/admin-options/settings/users#locale)
 
 ```jsx
 <Flex justifyContent="space-around" alignItems="center">
-  <DateTime location="de-DE"/>
-  <Dates location="ar-EG"/>
-  <Times location="smj-SE"/>
+  <DateTime locale='en-us'>{new Date(Date.UTC(2011, 1, 3, 5, 6, 2))}</DateTime>
+  <DateTime locale="ar-EG">{new Date(Date.UTC(2011, 1, 3, 5, 6, 2))}</DateTime>
 </Flex>
 ```
 
-### specifing moment
+## Styles
 
 ```jsx
 <Flex justifyContent="space-around" alignItems="center">
-  <DateTime moment={new Date(Date.UTC(2001, 1, 3, 5, 6, 2))} options={{ weekday: 'short', month: "long", day: "numeric", hour: "numeric", minute: "numeric", timeZoneName: "short" }} />
-  <Dates moment={new Date(Date.UTC(1983, 5, 6, 2, 4, 7))} options={{ weekday: 'long', month: "long", day: "numeric"}}/>
-  <Times moment={new Date(Date.UTC(1784, 11, 24, 8, 9, 1))} options={{ hour: "numeric", minute: "numeric", timeZoneName: "short"}}/>
-</Flex>
-```
-
-
-Options for styling the components all styles are available on `DateTime` and some are also available for `Dates` or `Times`.
-
-### weekday
-
-Available on DateTime and Dates
-
-"long" (e.g., Thursday)
-
-"short" (e.g., Thu)
-
-"narrow" (e.g., T)
-
-`note:` Two weekdays may have the same narrow style for some locales - Tuesday and Thursday narrow style are represented by the charecter T.
-
-```jsx
-<Flex justifyContent="space-around" alignItems="center">
-  <DateTime options={{ weekday: "long"}} />
-  <Dates options={{ weekday: "short"}} />
-  <Dates options={{ weekday: "narrow"}} />
-</Flex>
-```
-
-### Year
-
-Available on DateTime and Dates
-
-"numeric" (e.g., 2012)
-
-"2-digit" (e.g., 12)
-
-```jsx
-<Flex justifyContent="space-around" alignItems="center">
-  <DateTime options={{year: "numeric"}} />
-  <Dates options={{year: "2-digit"}} />
-</Flex>
-```
-
-### month
-
-Available on DateTime and Dates
-
-"long" (e.g., March)
-
-"short" (e.g., Mar)
-
-"2-digit" (e.g., 02)
-
-"numeric" (e.g., 2)
-
-"narrow" (e.g., M)
-
-`note:` . Two months may have the same narrow style for some locales - March and May narrow style are represented by the charecter M.
-
-```jsx
-<Flex justifyContent="space-around" alignItems="center">
-  <DateTime options={{month: "long"}} />
-  <Dates options={{month: "short"}} />
-  <DateTime options={{month: "2-digit"}} />
-  <Dates options={{month: "numeric"}} />
-  <DateTime options={{month: "narrow"}} />
-</Flex>
-```
-
-### Day
-
-Available on DateTime and Dates
-
-"numeric" (e.g., 5)
-
-"2-digit" (e.g., 05)
-
-```jsx
-<Flex justifyContent="space-around" alignItems="center">
-  <DateTime moment={new Date(Date.UTC(2011, 1, 3, 5, 6, 2))} options={{day: "numeric"}} />
-  <Dates moment={new Date(Date.UTC(2011, 1, 3, 5, 6, 2))} options={{day: "2-digit"}} />
-</Flex>
-```
-
-### Hour
-
-Available on DateTime and Times
-
-"2-digit" (e.g., 01)
-
-"numeric" (e.g., 1)
-
-```jsx
-<Flex justifyContent="space-around" alignItems="center">
-  <Times moment={new Date(Date.UTC(2011, 1, 3, 5, 6, 2))} options={{hour: "numeric"}} />
-  <DateTime moment={new Date(Date.UTC(2005, 6, 8, 1, 4, 7))} options={{hour: "2-digit"}} />
-</Flex>
-```
-
-### timeZoneName
-
-"short" (e.g., GMT+1)
-
-"long" (e.g., British Summer Time)
-
-```jsx
-<Flex justifyContent="space-around" alignItems="center">
-  <DateTime options={{ year: "numeric" , month: "long", day: "numeric", hour: "numeric", minute: "numeric", timeZoneName: "short"}} />
-  <Times options={{timeZoneName: "long"}} />
+  <DateTime style="short"/>
+  <DateTime />
+  <DateTime style="long"/>
+  <DateTime style="full"/>
 </Flex>
 ```
