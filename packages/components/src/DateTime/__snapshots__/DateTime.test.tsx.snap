@@ -1,46 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DateTime renders 1`] = `
-.c0 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-}
+exports[`DateTime displays timeZone if one is passed 1`] = `"January 30, 2020 at 3:28:01 AM GMT+5:30"`;
 
-<span
-  className="c0"
->
-  Tuesday, January 28, 2020, 11:59:58 AM PST
-</span>
-`;
+exports[`DateTime renders 1`] = `"Jan 29, 2020, 1:58:01 PM"`;
 
-exports[`Dates renders 1`] = `
-.c0 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-}
+exports[`DateTime renders if style is passed 1`] = `"1/29/20, 1:58 PM"`;
 
-<span
-  className="c0"
->
-  Tuesday, January 28, 2020
-</span>
-`;
+exports[`DateTime renders if style is passed 2`] = `"January 29, 2020 at 1:58:01 PM PST"`;
 
-exports[`Times renders 1`] = `
-.c0 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-}
+exports[`DateTime renders if style is passed 3`] = `"Wednesday, January 29, 2020 at 1:58:01 PM Pacific Standard Time"`;
 
-<span
-  className="c0"
->
-  11:59:58 AM PST
-</span>
-`;
+exports[`DateTime renders only date 1`] = `"1:58:01 PM"`;
+
+exports[`DateTime renders only time 1`] = `"Jan 29, 2020"`;
+
+exports[`DateTime renders when passing specific Date as children 1`] = `"Feb 2, 2011, 9:06:02 PM"`;
+
+exports[`DateTime renders when passing specific locale 1`] = `"Jan 29, 2020, 1:58:01 PM"`;

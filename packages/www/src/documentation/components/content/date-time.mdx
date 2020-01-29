@@ -17,8 +17,8 @@ The `DateTime` component will return a string with a language sensitive represen
 
 ```jsx
 <Flex justifyContent='space-around' alignItems='center'>
-  <DateTime hideTime/>
-  <DateTime hideDate/>
+  <span><DateTime hideTime/></span>
+  <span><DateTime hideDate/></span>
 </Flex>
 ```
 
@@ -30,20 +30,8 @@ Pass the Date desired as children and the locale as prop.
 
 ```jsx
 <Flex justifyContent='space-around' alignItems='center'>
-  <DateTime locale='en-us'>{new Date(Date.UTC(2011, 1, 3, 5, 6, 2))}</DateTime>
-  <DateTime locale='ar-EG'>{new Date(Date.UTC(2011, 1, 3, 5, 6, 2))}</DateTime>
-</Flex>
-```
-
-## Styles
-
-```jsx
-<Flex justifyContent='space-around' alignItems='center'>
-  <DateTime timeZone='America/New_York'/>
-  <DateTime style='short'/>
-  <DateTime />
-  <DateTime style='long'/>
-  <DateTime style='full'/>
+  <span><DateTime>{new Date(Date.UTC(2011, 1, 3, 5, 6, 2))}</DateTime></span>
+  <span><DateTime locale='ar-EG'/></span>
 </Flex>
 ```
 
@@ -53,8 +41,38 @@ TimeZone needs to be a specific string based on the [IANA standard](https://www.
 
 ```jsx
 <Flex justifyContent='space-around' alignItems='center'>
-  <DateTime timeZone='America/New_York'/>
-  <DateTime timeZone='Asia/Shanghai'/>
-  <DateTime timeZone='Asia/Kolkata'/>
+  <span><DateTime timeZone='Asia/Kolkata'/></span>
 </Flex>
 ```
+
+## Styles
+
+`Short` will have the date represented just as numbers.
+```jsx
+<Flex justifyContent='space-around' alignItems='center'>
+  <span><DateTime style='short'/></span>
+</Flex>
+```
+
+`Medium` is the default size. It will display the three first letters of the month
+
+```jsx
+<Flex justifyContent='space-around' alignItems='center'>
+  <span><DateTime /></span>
+</Flex>
+```
+
+`Long` displayes a complete month name and the shorten version of the timeZone
+```jsx
+<Flex justifyContent='space-around' alignItems='center'>
+  <span><DateTime style='long'/></span>
+</Flex>
+```
+
+`Full` displayes the day of the week and the timeZone
+```jsx
+<Flex justifyContent='space-around' alignItems='center'>
+  <span><DateTime style='full'/></span>
+</Flex>
+```
+

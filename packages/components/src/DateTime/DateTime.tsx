@@ -26,31 +26,50 @@
 
 import React, { FC } from 'react'
 
-export interface DateTimeProps {
+type FormatStyles = 'short' | 'medium' | 'long' | 'full'
+
+export interface DateTimeProps extends Intl.DateTimeFormatOptions {
   children?: Date
+  dateStyle?: FormatStyles
   hideDate?: boolean
   hideTime?: boolean
   locale?: string
+  style?: FormatStyles
+  timeStyle?: FormatStyles
   timeZone?: string
-  style?: 'short' | 'medium' | 'long' | 'full'
+}
+
+export interface ExtendedDateTimeFormatOptions
+  extends Intl.DateTimeFormatOptions {
+  dateStyle?: FormatStyles
+  timeStyle?: FormatStyles
 }
 
 export const DateTime: FC<DateTimeProps> = ({
   children = new Date(Date.now()),
+  dateStyle,
   hideDate,
   hideTime,
   locale,
-  timeZone,
   style,
+  timeStyle,
+  timeZone,
 }) => {
-  const timeStyle = hideTime ? undefined : style
-  const dateStyle = hideDate ? undefined : style
-  // const TimeZone = timeZone ?
-  const format = children.toLocaleDateString(locale, {
+  const options: ExtendedDateTimeFormatOptions = {
     dateStyle,
     timeStyle,
     timeZone,
-  })
+  }
+
+  options.dateStyle = hideDate ? undefined : style
+  options.timeStyle = hideTime ? undefined : style
+
+  if (timeZone) {
+    options.dateStyle = 'long'
+    options.timeStyle = 'long'
+  }
+
+  const format = children.toLocaleDateString(locale, options)
 
   return <>{format}</>
 }
