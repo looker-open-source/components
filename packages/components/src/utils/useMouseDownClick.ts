@@ -63,7 +63,7 @@ export function useMouseDownClick<E extends HTMLElement>(
     return () => {
       document.removeEventListener('mouseup', handleMouseUp)
     }
-  }, [])
+  }, [handleMouseUp])
 
   return {
     onClick: useCallback(
