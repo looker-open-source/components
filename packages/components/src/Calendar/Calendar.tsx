@@ -7,7 +7,6 @@ import { reset } from '@looker/design-tokens'
 import { LocaleCodes } from './calendar-types'
 import { CalendarSize, calendarSize } from './calendar-size'
 import { CalendarContext } from './CalendarContext'
-
 import { CalendarNav } from './CalendarNav'
 
 // Import required data for all supported locales
