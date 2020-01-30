@@ -6,7 +6,9 @@ import styled from 'styled-components'
 import { reset } from '@looker/design-tokens'
 import { LocaleCodes } from './calendar-types'
 import { CalendarSize, calendarSize } from './calendar-size'
-import { CalendarNavWithSize } from './CalendarNav'
+import { CalendarContext } from './CalendarContext'
+
+import { CalendarNav } from './CalendarNav'
 
 // Import required data for all supported locales
 import 'moment/locale/ar'
@@ -31,10 +33,10 @@ interface CalendarProps {
   selectedDates?: Date | Date[]
   onDayClick?: (day: Date) => void
   className?: string
-  size?: CalendarSize
+  size: CalendarSize
 }
 
-const BlankComponent: FC = () => null
+const NoopComponent: FC = () => null
 
 const InternalCalendar: FC<CalendarProps> = ({
   locale = LocaleCodes.En,
@@ -43,18 +45,19 @@ const InternalCalendar: FC<CalendarProps> = ({
   className,
   size,
 }) => {
-  const CalendarNav = CalendarNavWithSize(size)
   return (
-    <DayPicker
-      className={className}
-      selectedDays={selectedDates}
-      localeUtils={MomentLocaleUtils}
-      locale={locale}
-      showOutsideDays={true}
-      onDayClick={onDayClick}
-      navbarElement={CalendarNav}
-      captionElement={BlankComponent}
-    />
+    <CalendarContext.Provider value={size}>
+      <DayPicker
+        className={className}
+        selectedDays={selectedDates}
+        localeUtils={MomentLocaleUtils}
+        locale={locale}
+        showOutsideDays={true}
+        onDayClick={onDayClick}
+        navbarElement={CalendarNav}
+        captionElement={NoopComponent}
+      />
+    </CalendarContext.Provider>
   )
 }
 
