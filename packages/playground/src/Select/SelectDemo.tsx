@@ -37,7 +37,7 @@ const options = [
   { label: 'Kiwis', value: '5' },
 ]
 
-function SelectContent() {
+export function SelectContent() {
   const [value, setValue] = React.useState()
   const [searchTerm, setSearchTerm] = React.useState('')
   const handleClick = (e: MouseEvent<HTMLButtonElement>) => {

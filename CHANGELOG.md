@@ -5,11 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+
 ## [UNRELEASED]
 
 ### Added
 
 - New component `DateTime` plus documentation and tests
+
+## [0.7.16] - 2020-01-30
+
+### Fixed
+
+- `Select` - Addressed integration test issue where events happen fast enough to reveal state change issue
 
 
 ## [0.7.15] - 2020-01-28

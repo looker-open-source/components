@@ -147,6 +147,7 @@ export const stateChart: StateChart = {
         [ComboboxActionType.BLUR]: ComboboxState.IDLE,
         [ComboboxActionType.ESCAPE]: ComboboxState.IDLE,
         [ComboboxActionType.NAVIGATE]: ComboboxState.NAVIGATING,
+        [ComboboxActionType.SELECT_WITH_CLICK]: ComboboxState.IDLE,
         [ComboboxActionType.SELECT_WITH_KEYBOARD]: ComboboxState.IDLE,
         [ComboboxActionType.SELECT_SILENT]: ComboboxState.IDLE,
         [ComboboxActionType.INTERACT]: ComboboxState.INTERACTING,
