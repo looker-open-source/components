@@ -30,12 +30,10 @@ type FormatStyles = 'short' | 'medium' | 'long' | 'full'
 
 export interface DateTimeProps extends Intl.DateTimeFormatOptions {
   children?: Date
-  dateStyle?: FormatStyles
   hideDate?: boolean
   hideTime?: boolean
   locale?: string
   style?: FormatStyles
-  timeStyle?: FormatStyles
   timeZone?: string
 }
 
@@ -55,23 +53,25 @@ export const DateTime: FC<DateTimeProps> = ({
   timeStyle,
   timeZone,
 }) => {
-  const options: ExtendedDateTimeFormatOptions = {
-    dateStyle,
-    timeStyle,
-    timeZone,
-  }
+  // const options: ExtendedDateTimeFormatOptions = {
+  //   dateStyle,
+  //   timeStyle,
+  //   timeZone,
+  // }
 
-  options.dateStyle = hideDate ? undefined : style
-  options.timeStyle = hideTime ? undefined : style
+  dateStyle = hideDate ? undefined : style
+  timeStyle = hideTime ? undefined : style
 
   if (timeZone) {
-    options.dateStyle = 'long'
-    options.timeStyle = 'long'
+    dateStyle = 'long'
+    timeStyle = 'long'
   }
 
-  const format = children.toLocaleDateString(locale, options)
-
-  return <>{format}</>
+  return (
+    <>
+      {children.toLocaleDateString(locale, { dateStyle, timeStyle, timeZone })}
+    </>
+  )
 }
 
 DateTime.defaultProps = {
