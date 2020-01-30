@@ -6,7 +6,7 @@ import styled from 'styled-components'
 import { reset } from '@looker/design-tokens'
 import { LocaleCodes } from './calendar-types'
 import { CalendarSize, calendarSize } from './calendar-size'
-import { CalendarNav } from './CalendarNav'
+import { CalendarNavWithSize } from './CalendarNav'
 
 // Import required data for all supported locales
 import 'moment/locale/ar'
@@ -41,7 +41,9 @@ const InternalCalendar: FC<CalendarProps> = ({
   onDayClick,
   selectedDates,
   className,
+  size,
 }) => {
+  const CalendarNav = CalendarNavWithSize(size)
   return (
     <DayPicker
       className={className}
@@ -59,10 +61,6 @@ const InternalCalendar: FC<CalendarProps> = ({
 /* stylelint-disable max-nesting-depth */
 export const Calendar = styled<FC<CalendarProps>>(InternalCalendar)`
   ${reset}
-  .DayPicker-Caption,
-  .DayPicker-Caption > div {
-    font-size: calc(${props => calendarSize(props).fontSize} + 0.25rem);
-  }
 
   .DayPicker-Body {
     display: grid;
