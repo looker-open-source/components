@@ -1,19 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DateTime displays timeZone if one is passed 1`] = `"February 3, 2011 at 10:36:02 AM GMT+5:30"`;
+exports[`DateFormat renders only date 1`] = `"Feb 2, 2011"`;
 
 exports[`DateTime renders 1`] = `"Feb 2, 2011, 9:06:02 PM"`;
 
-exports[`DateTime renders if style is passed 1`] = `"2/2/11, 9:06 PM"`;
+exports[`DateTimeFormat displays timeZone prop if one is passed 1`] = `"Feb 3, 2011, 10:36:02 AM"`;
 
-exports[`DateTime renders if style is passed 2`] = `"February 2, 2011 at 9:06:02 PM PST"`;
+exports[`DateTimeFormat renders format prop full if one is passed 1`] = `"Wednesday, February 2, 2011 at 9:06:02 PM Pacific Standard Time"`;
 
-exports[`DateTime renders if style is passed 3`] = `"Wednesday, February 2, 2011 at 9:06:02 PM Pacific Standard Time"`;
+exports[`DateTimeFormat renders format prop long if one is passed 1`] = `"February 2, 2011 at 9:06:02 PM PST"`;
 
-exports[`DateTime renders only date 1`] = `"10:05:29 AM"`;
+exports[`DateTimeFormat renders format prop short if one is passed 1`] = `"2/2/11, 9:06 PM"`;
 
-exports[`DateTime renders only time 1`] = `"Feb 2, 2011"`;
+exports[`DateTimeFormat renders when passing specific locale 1`] = `"Feb 2, 2011, 9:06:02 PM"`;
 
-exports[`DateTime renders when passing specific Date as children 1`] = `"Feb 2, 2011, 9:06:02 PM"`;
-
-exports[`DateTime renders when passing specific locale 1`] = `"Feb 2, 2011, 9:06:02 PM"`;
+exports[`TimeFormat renders only time 1`] = `"9:06:02 PM"`;

@@ -1,55 +1,63 @@
 import { assertSnapshot } from '@looker/components-test-utils'
 import React from 'react'
-import { DateTime } from './DateTime'
+import { DateFormat } from './DateFormat'
+import { DateTimeFormat } from './DateTimeFormat'
+import { TimeFormat } from './TimeFormat'
 
 test('DateTime renders', () => {
-  assertSnapshot(<DateTime>{new Date(Date.UTC(2011, 1, 3, 5, 6, 2))}</DateTime>)
-})
-
-test('DateTime renders only date', () => {
-  assertSnapshot(<DateTime hideDate />)
-})
-
-test('DateTime renders only time', () => {
   assertSnapshot(
-    <DateTime hideTime>{new Date(Date.UTC(2011, 1, 3, 5, 6, 2))}</DateTime>
+    <DateTimeFormat>{new Date(Date.UTC(2011, 1, 3, 5, 6, 2))}</DateTimeFormat>
   )
 })
 
-test('DateTime renders when passing specific Date as children', () => {
-  assertSnapshot(<DateTime>{new Date(Date.UTC(2011, 1, 3, 5, 6, 2))}</DateTime>)
+test('DateFormat renders only date', () => {
+  assertSnapshot(
+    <DateFormat>{new Date(Date.UTC(2011, 1, 3, 5, 6, 2))}</DateFormat>
+  )
 })
 
-test('DateTime renders when passing specific locale', () => {
+test('TimeFormat renders only time', () => {
   assertSnapshot(
-    <DateTime locale="ar-EG">
+    <TimeFormat>{new Date(Date.UTC(2011, 1, 3, 5, 6, 2))}</TimeFormat>
+  )
+})
+
+test('DateTimeFormat renders when passing specific locale', () => {
+  assertSnapshot(
+    <DateTimeFormat locale="ar-EG">
       {new Date(Date.UTC(2011, 1, 3, 5, 6, 2))}
-    </DateTime>
+    </DateTimeFormat>
   )
 })
 
-test('DateTime displays timeZone if one is passed', () => {
+test('DateTimeFormat displays timeZone prop if one is passed', () => {
   assertSnapshot(
-    <DateTime timeZone="Asia/Kolkata">
+    <DateTimeFormat timeZone="Asia/Kolkata">
       {new Date(Date.UTC(2011, 1, 3, 5, 6, 2))}
-    </DateTime>
+    </DateTimeFormat>
   )
 })
 
-test('DateTime renders if style is passed', () => {
+test('DateTimeFormat renders format prop short if one is passed', () => {
   assertSnapshot(
-    <DateTime style="short">{new Date(Date.UTC(2011, 1, 3, 5, 6, 2))}</DateTime>
+    <DateTimeFormat format="short">
+      {new Date(Date.UTC(2011, 1, 3, 5, 6, 2))}
+    </DateTimeFormat>
   )
 })
 
-test('DateTime renders if style is passed', () => {
+test('DateTimeFormat renders format prop long if one is passed', () => {
   assertSnapshot(
-    <DateTime style="long">{new Date(Date.UTC(2011, 1, 3, 5, 6, 2))}</DateTime>
+    <DateTimeFormat format="long">
+      {new Date(Date.UTC(2011, 1, 3, 5, 6, 2))}
+    </DateTimeFormat>
   )
 })
 
-test('DateTime renders if style is passed', () => {
+test('DateTimeFormat renders format prop full if one is passed', () => {
   assertSnapshot(
-    <DateTime style="full">{new Date(Date.UTC(2011, 1, 3, 5, 6, 2))}</DateTime>
+    <DateTimeFormat format="full">
+      {new Date(Date.UTC(2011, 1, 3, 5, 6, 2))}
+    </DateTimeFormat>
   )
 })

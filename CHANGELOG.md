@@ -9,8 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- New component `DateTime` plus documentation and tests
-
+- New components `Date` `DateTime` `Time` plus documentation and tests
 
 ## [0.7.15] - 2020-01-28
 
@@ -22,7 +21,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `Select` Addressed issue where co-located `Select`s width acted undesireably
 
-
 ## [0.7.14] - 2020-01-27
 
 ### Added
@@ -31,7 +29,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Button` now has a `fullWidth` prop that will set the button's width to 100%, filling its parent container.
 - `ConfirmLayout` - new modal for laying out standard user confirmation dialog content
 - `InputChips` displays multiple values as `Chip`s inside a text box
-
 
 ### Changes
 

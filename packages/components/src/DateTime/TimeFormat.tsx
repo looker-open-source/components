@@ -24,6 +24,9 @@
 
  */
 
-export * from './DateFormat'
-export * from './DateTimeFormat'
-export * from './TimeFormat'
+import React, { FC } from 'react'
+import { DateTimeFormatProps, DateTimeFormat } from './DateTimeFormat'
+
+export const TimeFormat: FC<DateTimeFormatProps> = props => (
+  <DateTimeFormat {...props} date={false} />
+)

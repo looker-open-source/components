@@ -26,54 +26,50 @@
 
 import React, { FC } from 'react'
 
-type FormatStyles = 'short' | 'medium' | 'long' | 'full'
+type DateFormats = 'short' | 'medium' | 'long' | 'full'
 
-export interface DateTimeProps extends Intl.DateTimeFormatOptions {
+export interface DateTimeFormatProps {
   children?: Date
-  hideDate?: boolean
-  hideTime?: boolean
+  format?: DateFormats
   locale?: string
-  style?: FormatStyles
   timeZone?: string
 }
 
-export interface ExtendedDateTimeFormatOptions
-  extends Intl.DateTimeFormatOptions {
-  dateStyle?: FormatStyles
-  timeStyle?: FormatStyles
+interface DateTimeFormatExtensionProps extends DateTimeFormatProps {
+  date?: boolean
+  time?: boolean
 }
 
-export const DateTime: FC<DateTimeProps> = ({
+interface ExtendedDateTimeFormatOptions extends Intl.DateTimeFormatOptions {
+  dateStyle?: DateFormats
+  timeStyle?: DateFormats
+}
+
+export const DateTimeFormat: FC<DateTimeFormatExtensionProps> = ({
   children = new Date(Date.now()),
-  dateStyle,
-  hideDate,
-  hideTime,
+  date,
+  format,
   locale,
-  style,
-  timeStyle,
+  time,
+
   timeZone,
 }) => {
-  // const options: ExtendedDateTimeFormatOptions = {
-  //   dateStyle,
-  //   timeStyle,
-  //   timeZone,
-  // }
-
-  dateStyle = hideDate ? undefined : style
-  timeStyle = hideTime ? undefined : style
-
-  if (timeZone) {
-    dateStyle = 'long'
-    timeStyle = 'long'
+  const options: ExtendedDateTimeFormatOptions = {
+    dateStyle: date ? format : undefined,
+    timeStyle: time ? format : undefined,
+    timeZone,
   }
 
-  return (
-    <>
-      {children.toLocaleDateString(locale, { dateStyle, timeStyle, timeZone })}
-    </>
-  )
+  try {
+    const formatted = children.toLocaleDateString(locale, options)
+    return <>{formatted}</>
+  } catch (error) {
+    return <>{error}</>
+  }
 }
 
-DateTime.defaultProps = {
-  style: 'medium',
+DateTimeFormat.defaultProps = {
+  date: true,
+  format: 'medium',
+  time: true,
 }
