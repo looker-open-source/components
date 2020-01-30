@@ -1,9 +1,9 @@
 ---
-title: DateTime
-propsOf: DateTime
+title: DateTimeFormat
+propsOf: DateTimeFormat
 ---
 
-## DateTime
+## DateTimeFormat
 
 The `DateTimeFormat` component will return a string with a language sensitive representation of the date and time. The specific moment can be specified as children or the default value will be assumed according to the default locale.
 
@@ -25,7 +25,7 @@ Use this component to show only the Date.
 
 ## TimeFormat
 
-Use this component to show only the Date.
+Use this component to show only the Time.
 
 ```jsx
 <Flex justifyContent="space-around" alignItems="center">
@@ -66,27 +66,37 @@ When adding the timeZone the format will be long - look below for details on for
 
 ## Format
 
+\* medium is the default format if not otherwise specificied.
+
 ```jsx
 <Table>
   <TableHead>
     <TableRow>
-      <TableHeaderCell>SHORT</TableHeaderCell>
-      <TableHeaderCell>MEDIUM - default</TableHeaderCell>
-      <TableHeaderCell>LONG</TableHeaderCell>
-      <TableHeaderCell>FULL</TableHeaderCell>
+      <TableHeaderCell>Format</TableHeaderCell>
+      <TableHeaderCell>output</TableHeaderCell>
     </TableRow>
   </TableHead>
   <TableBody>
     <TableRow>
+      <TableDataCell>Short</TableDataCell>
       <TableDataCell>
         <DateTimeFormat format="short" />
       </TableDataCell>
+    </TableRow>
+    <TableRow>
+      <TableDataCell>Medium *</TableDataCell>
       <TableDataCell>
         <DateTimeFormat />
       </TableDataCell>
+    </TableRow>
+    <TableRow>
+      <TableDataCell>Long</TableDataCell>
       <TableDataCell>
         <DateTimeFormat format="long" />
       </TableDataCell>
+    </TableRow>
+    <TableRow>
+      <TableDataCell>Full</TableDataCell>
       <TableDataCell>
         <DateTimeFormat format="full" />
       </TableDataCell>
