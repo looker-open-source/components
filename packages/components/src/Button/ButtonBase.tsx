@@ -161,6 +161,7 @@ const ButtonJSX = forwardRef(
         onBlur={handleOnBlur}
         {...restProps}
         ref={ref}
+        aria-label="Reset calendar nav"
       >
         {iconBefore && <ButtonIcon name={iconBefore} />}
         {children}

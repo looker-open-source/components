@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import DayPicker from 'react-day-picker'
 import 'react-day-picker/lib/style.css'
 import MomentLocaleUtils from 'react-day-picker/moment'
@@ -32,7 +32,7 @@ interface CalendarProps {
   selectedDates?: Date | Date[]
   onDayClick?: (day: Date) => void
   className?: string
-  size: CalendarSize
+  size?: CalendarSize
 }
 
 const NoopComponent: FC = () => null
@@ -44,13 +44,20 @@ const InternalCalendar: FC<CalendarProps> = ({
   className,
   size,
 }) => {
+  const [viewMonth, setViewMonth] = useState(new Date())
+
+  const onNavClick = (month: Date) => {
+    setViewMonth(month)
+  }
+
   return (
-    <CalendarContext.Provider value={size}>
+    <CalendarContext.Provider value={{ onNavClick, size }}>
       <DayPicker
         className={className}
         selectedDays={selectedDates}
         localeUtils={MomentLocaleUtils}
         locale={locale}
+        month={viewMonth}
         showOutsideDays={true}
         onDayClick={onDayClick}
         navbarElement={CalendarNav}

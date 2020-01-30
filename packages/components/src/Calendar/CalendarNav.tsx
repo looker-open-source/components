@@ -1,8 +1,7 @@
 import React, { FC, useContext, SyntheticEvent } from 'react'
 import { NavbarElementProps } from 'react-day-picker'
 import styled from 'styled-components'
-import isFunction from 'lodash/isFunction'
-import { IconButton } from '../Button'
+import { IconButton, ButtonTransparent } from '../Button'
 import { Heading } from '../Text'
 import { CalendarSize } from './calendar-size'
 import { CalendarContext } from './CalendarContext'
@@ -26,24 +25,23 @@ export const CalendarNav: FC<NavbarElementProps> = ({
   labels,
   showPreviousButton,
   showNextButton,
-  onNextClick,
-  onPreviousClick,
-  ...rest
+  nextMonth,
+  previousMonth,
 }) => {
-  const size = useContext(CalendarContext)
+  const { size, onNavClick } = useContext(CalendarContext)
 
   const handleNextClick = (e: SyntheticEvent<HTMLButtonElement>) => {
     e.preventDefault()
-    if (isFunction(onNextClick)) {
-      onNextClick()
-    }
+    onNavClick(nextMonth)
   }
 
   const handlePreviousClick = (e: SyntheticEvent<HTMLButtonElement>) => {
     e.preventDefault()
-    if (isFunction(onPreviousClick)) {
-      onPreviousClick()
-    }
+    onNavClick(previousMonth)
+  }
+
+  const handleLabelClick = () => {
+    onNavClick(new Date())
   }
 
   return (
@@ -59,9 +57,12 @@ export const CalendarNav: FC<NavbarElementProps> = ({
           />
         )}
       </div>
-      <Heading as={headingSizeMap(size)}>
-        {localeUtils.formatMonthTitle(month)}
-      </Heading>
+      <ButtonTransparent onClick={handleLabelClick} color="neutral">
+        <Heading as={headingSizeMap(size)}>
+          {localeUtils.formatMonthTitle(month)}
+        </Heading>
+      </ButtonTransparent>
+
       <div>
         {showNextButton && (
           <IconButton
