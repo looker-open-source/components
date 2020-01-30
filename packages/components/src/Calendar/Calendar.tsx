@@ -5,7 +5,7 @@ import MomentLocaleUtils from 'react-day-picker/moment'
 import styled from 'styled-components'
 import { reset } from '@looker/design-tokens'
 import { LocaleCodes } from './calendar-types'
-import { CalendarSize, calendarSize } from './calendar-size'
+import { CalendarSize, calendarSize, calendarSpacing } from './calendar-size'
 import { CalendarContext } from './CalendarContext'
 import { CalendarNav } from './CalendarNav'
 
@@ -63,20 +63,28 @@ const InternalCalendar: FC<CalendarProps> = ({
 /* stylelint-disable max-nesting-depth */
 export const Calendar = styled<FC<CalendarProps>>(InternalCalendar)`
   ${reset}
+  ${calendarSpacing}
 
+  .DayPicker-wrapper {
+    padding: 0;
+  }
+  .DayPicker-Month {
+    padding: 0;
+    margin: 0;
+  }
   .DayPicker-Body {
     display: grid;
-    grid-template-rows: repeat(6, ${props => calendarSize(props).height});
+    grid-template-rows: repeat(6, auto);
     grid-gap: 2px;
   }
   .DayPicker-Week,
   .DayPicker-WeekdaysRow {
     display: grid;
-    grid-template-columns: repeat(7, ${props => calendarSize(props).width});
+    grid-template-columns: repeat(7, auto);
     grid-gap: 2px;
-    font-size: ${props => calendarSize(props).fontSize};
   }
   .DayPicker-Day {
+    ${calendarSize}
     line-height: 1;
     padding: 0;
     display: grid;

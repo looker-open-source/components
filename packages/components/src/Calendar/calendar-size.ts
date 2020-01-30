@@ -30,10 +30,10 @@ import { variant } from 'styled-system'
 export type CalendarSize = SizeSmall | SizeMedium | SizeLarge
 
 /* eslint-disable sort-keys */
-export const calendarSizeMap = {
+export const daySizeMap = {
   small: 28,
   medium: 36,
-  large: 44,
+  large: 46,
 }
 
 /* eslint-disable sort-keys */
@@ -42,18 +42,33 @@ export const calendarSize = variant({
   variants: {
     small: {
       fontSize: 'small',
-      height: `${calendarSizeMap.small}px`,
-      width: `${calendarSizeMap.small}px`,
+      height: `${daySizeMap.small}px`,
+      width: `${daySizeMap.small}px`,
     },
     medium: {
       fontSize: 'medium',
-      height: `${calendarSizeMap.medium}px`,
-      width: `${calendarSizeMap.medium}px`,
+      height: `${daySizeMap.medium}px`,
+      width: `${daySizeMap.medium}px`,
     },
     large: {
       fontSize: 'xlarge',
-      height: `${calendarSizeMap.large}px`,
-      width: `${calendarSizeMap.large}px`,
+      height: `${daySizeMap.large}px`,
+      width: `${daySizeMap.large}px`,
+    },
+  },
+})
+
+export const calendarSpacing = variant({
+  prop: 'size',
+  variants: {
+    small: {
+      p: 'small',
+    },
+    medium: {
+      p: 'medium',
+    },
+    large: {
+      p: 'large',
     },
   },
 })
