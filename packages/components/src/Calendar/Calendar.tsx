@@ -81,7 +81,6 @@ export const Calendar = styled<FC<CalendarProps>>(InternalCalendar)`
   }
   .DayPicker-Body {
     display: grid;
-    grid-template-rows: repeat(6, auto);
     grid-gap: 8px;
   }
   .DayPicker-Week,
