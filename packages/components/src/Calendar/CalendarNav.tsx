@@ -9,7 +9,7 @@ import { CalendarContext } from './CalendarContext'
 const headingSizeMap = (size?: CalendarSize) => {
   switch (size) {
     case 'small':
-      return 'h4'
+      return 'h5'
     case 'medium':
       return 'h3'
     case 'large':
@@ -58,7 +58,7 @@ export const CalendarNav: FC<NavbarElementProps> = ({
         )}
       </div>
       <ButtonTransparent onClick={handleLabelClick} color="neutral">
-        <Heading as={headingSizeMap(size)}>
+        <Heading as={headingSizeMap(size)} fontWeight="semiBold">
           {localeUtils.formatMonthTitle(month)}
         </Heading>
       </ButtonTransparent>

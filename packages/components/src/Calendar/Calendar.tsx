@@ -82,13 +82,13 @@ export const Calendar = styled<FC<CalendarProps>>(InternalCalendar)`
   .DayPicker-Body {
     display: grid;
     grid-template-rows: repeat(6, auto);
-    grid-gap: 2px;
+    grid-gap: 8px;
   }
   .DayPicker-Week,
   .DayPicker-WeekdaysRow {
     display: grid;
     grid-template-columns: repeat(7, auto);
-    grid-gap: 2px;
+    grid-gap: 8px;
   }
   .DayPicker-Day {
     ${calendarSize}
@@ -98,6 +98,11 @@ export const Calendar = styled<FC<CalendarProps>>(InternalCalendar)`
     align-items: center;
     justify-items: center;
     border: 1px solid transparent;
+    transition: background-color 110ms linear;
+    color: ${({ theme }) => theme.colors.palette.charcoal700};
+    &.DayPicker-Day--outside {
+      color: ${({ theme }) => theme.colors.palette.charcoal300};
+    }
     &--today {
       color: ${({ theme }) => theme.colors.semanticColors.primary.main};
     }
@@ -111,8 +116,8 @@ export const Calendar = styled<FC<CalendarProps>>(InternalCalendar)`
       }
     }
     &:focus {
+      border-width: 2px;
       border-color: ${props => props.theme.colors.palette.purple300};
-      box-shadow: 0 0 0 2px ${props => props.theme.colors.palette.purple100};
       outline: none;
     }
   }
@@ -126,6 +131,7 @@ export const Calendar = styled<FC<CalendarProps>>(InternalCalendar)`
       &:hover {
         background-color: ${({ theme }) =>
           theme.colors.semanticColors.primary.light};
+        color: ${({ theme }) => theme.colors.semanticColors.primary.main};
       }
     }
   }

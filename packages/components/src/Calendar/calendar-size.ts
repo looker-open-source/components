@@ -31,7 +31,7 @@ export type CalendarSize = SizeSmall | SizeMedium | SizeLarge
 
 /* eslint-disable sort-keys */
 export const daySizeMap = {
-  small: 28,
+  small: 32,
   medium: 36,
   large: 46,
 }
