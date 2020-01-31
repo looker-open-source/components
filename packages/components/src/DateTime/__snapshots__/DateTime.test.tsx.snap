@@ -4,11 +4,11 @@ exports[`DateFormat renders only date 1`] = `"Jan 25, 1988"`;
 
 exports[`DateTime renders 1`] = `"Jan 25, 1988, 11:58:03 AM"`;
 
-exports[`DateTimeFormat displays timeZone prop if one is passed 1`] = `"Jan 26, 1988, 1:28:03 AM"`;
+exports[`DateTimeFormat displays timeZone prop if one is passed 1`] = `"Jan 25, 1988, 5:28:03 PM"`;
 
-exports[`DateTimeFormat renders format prop full if one is passed 1`] = `"Monday, January 25, 1988 at 11:58:03 AM Pacific Standard Time"`;
+exports[`DateTimeFormat renders format prop full if one is passed 1`] = `"Monday, January 25, 1988 at 11:58:03 AM Coordinated Universal Time"`;
 
-exports[`DateTimeFormat renders format prop long if one is passed 1`] = `"January 25, 1988 at 11:58:03 AM PST"`;
+exports[`DateTimeFormat renders format prop long if one is passed 1`] = `"January 25, 1988 at 11:58:03 AM UTC"`;
 
 exports[`DateTimeFormat renders format prop short if one is passed 1`] = `"1/25/88, 11:58 AM"`;
 
