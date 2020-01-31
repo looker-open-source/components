@@ -51,15 +51,25 @@ test('values are added when a comma is last character entered', () => {
     <InputChips onChange={onChangeMock} values={[]} placeholder="type here" />
   )
   const input = getByPlaceholderText('type here')
-  // values not yet added if user pastes comma separated list
-  fireEvent.change(input, { target: { value: 'tag1,tag2' } })
-  expect(onChangeMock).not.toHaveBeenCalled()
 
-  // if the last character is a comma, values are added
-  fireEvent.change(input, { target: { value: 'tag1,tag2,' } })
+  // if the last character entered is a comma, values are added
+  fireEvent.change(input, { target: { value: 'tag1,' } })
   expect(onChangeMock).toHaveBeenCalledTimes(1)
-  expect(onChangeMock).toHaveBeenCalledWith(['tag1', 'tag2'])
+  expect(onChangeMock).toHaveBeenCalledWith(['tag1'])
   expect(input).toHaveValue('')
+})
+
+test('values are added when pasting', () => {
+  const onChangeMock = jest.fn()
+  const { getByPlaceholderText } = renderWithTheme(
+    <InputChips onChange={onChangeMock} values={[]} placeholder="type here" />
+  )
+  const input = getByPlaceholderText('type here')
+  fireEvent.paste(input)
+  // If a paste is detected before the value change
+  // no need for the last character to be a comma
+  fireEvent.change(input, { target: { value: 'tag1, tag2' } })
+  expect(onChangeMock).toHaveBeenCalledWith(['tag1', 'tag2'])
 })
 
 test('values are added on blur', () => {
@@ -151,7 +161,8 @@ test('new values are validated', () => {
   expect(input).toHaveValue('tag2')
   expect(onInvalidMock).toHaveBeenCalledWith(['tag2'])
 
-  fireEvent.change(input, { target: { value: 'tag1,' } })
+  // value should be trimmed before validation
+  fireEvent.change(input, { target: { value: ' tag1,' } })
   expect(onChangeMock).toHaveBeenCalledTimes(1)
   expect(onChangeMock).toHaveBeenCalledWith(['tag1'])
   expect(input).toHaveValue('')
@@ -171,7 +182,8 @@ test('duplicate values are not added', () => {
   )
   const input = getByPlaceholderText('type here')
 
-  fireEvent.change(input, { target: { value: 'tag1,' } })
+  // value should be trimmed before validation
+  fireEvent.change(input, { target: { value: ' tag1,' } })
   expect(onChangeMock).toHaveBeenCalledTimes(0)
   expect(onDuplicateMock).toHaveBeenCalledWith(['tag1'])
   expect(input).toHaveValue('tag1')
