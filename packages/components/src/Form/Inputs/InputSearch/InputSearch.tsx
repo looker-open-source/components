@@ -35,6 +35,7 @@ import React, {
   useState,
   useRef,
 } from 'react'
+import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
 import { ResponsiveValue, TLengthStyledSystem } from 'styled-system'
 import { inputPropKeys } from '../InputProps'
@@ -118,6 +119,7 @@ const InputSearchComponent = forwardRef(
     }: InputSearchProps,
     forwardedRef: Ref<HTMLInputElement>
   ) => {
+    const { t } = useTranslation()
     const isControlled = useControlWarn({
       controllingProps: ['onChange', 'onClear', 'value'],
       isControlledCheck: () => onChange !== undefined,
@@ -171,6 +173,8 @@ const InputSearchComponent = forwardRef(
     // 12/17/2019 removing type="search" since React doesn't support onSearch yet
     // resulting in undetectable changes that effect the value
 
+    const placeholder = props.placeholder || t('Search')
+
     return (
       <Box
         className={className}
@@ -185,6 +189,7 @@ const InputSearchComponent = forwardRef(
           px="0"
           {...pick(props, inputPropKeys)}
           ref={ref}
+          placeholder={placeholder}
         />
         {controls}
       </Box>

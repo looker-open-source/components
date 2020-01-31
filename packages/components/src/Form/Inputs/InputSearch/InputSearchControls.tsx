@@ -25,6 +25,7 @@
  */
 
 import React, { FC, MouseEvent } from 'react'
+import { useTranslation } from 'react-i18next'
 import { palette } from '@looker/design-tokens'
 import { Box } from '../../../Layout/Box'
 import { IconButton } from '../../../Button'
@@ -43,11 +44,13 @@ export const InputSearchControls: FC<InputSearchControlsProps> = ({
   summary,
   height,
 }) => {
+  const { t } = useTranslation()
+
   const clear = (
     <IconButton
       size="xsmall"
-      icon="Close"
-      label="Clear Field"
+      icon={t('Close')}
+      label={t('Clear Field')}
       onClick={onClear}
       tabIndex={-1}
     />

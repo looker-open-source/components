@@ -20,17 +20,34 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { GlobalStyle } from '@looker/components'
+import { Box, ButtonToggle, ButtonItem, InputSearch } from '@looker/components'
 import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
-
-import { SelectContent } from './Select/SelectDemo'
+import i18n from './i18n'
 
 const App: React.FC = () => {
+  const [language, setLanguage] = React.useState('en')
+
+  const handleLanguageChange = (language: string) => {
+    setLanguage(language)
+    i18n.changeLanguage(language)
+  }
+
   return (
     <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <SelectContent />
+      <Box maxWidth="20rem" p="xlarge">
+        <ButtonToggle
+          value={language}
+          onChange={handleLanguageChange}
+          mb="large"
+        >
+          <ButtonItem value="en">English</ButtonItem>
+          <ButtonItem value="es">Spanish</ButtonItem>
+          <ButtonItem value="pr">Portuguese</ButtonItem>
+        </ButtonToggle>
+
+        <InputSearch />
+      </Box>
     </ThemeProvider>
   )
 }

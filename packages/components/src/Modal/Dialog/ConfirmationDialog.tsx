@@ -25,6 +25,7 @@
  */
 
 import React, { FC, useCallback, ReactElement } from 'react'
+import { useTranslation } from 'react-i18next'
 import { SemanticColors } from '@looker/design-tokens'
 import { Button, ButtonTransparent } from '../../Button'
 import { ManagedModalProps } from '../Modal'
@@ -85,9 +86,9 @@ export interface ConfirmationDialogProps extends ConfirmationProps {
 }
 
 export const ConfirmationDialog: FC<ConfirmationDialogProps> = ({
-  cancelLabel = 'Cancel',
+  cancelLabel,
   close,
-  confirmLabel = 'Confirm',
+  confirmLabel,
   buttonColor = 'primary',
   cancelColor = 'neutral',
   isOpen = false,
@@ -97,6 +98,11 @@ export const ConfirmationDialog: FC<ConfirmationDialogProps> = ({
   title,
   ...props
 }) => {
+  const { t } = useTranslation()
+
+  cancelLabel = cancelLabel || t('Cancel')
+  confirmLabel = confirmLabel || t('Confirm')
+
   const confirm = useCallback(() => {
     onConfirm(close)
   }, [close, onConfirm])
