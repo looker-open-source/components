@@ -24,6 +24,8 @@
 
  */
 
+process.env.TZ = 'UTC'
+
 module.exports = {
   automock: false,
   moduleDirectories: ['./node_modules', './packages'],
