@@ -63,16 +63,17 @@ function getUpdatedValues(
   // Values may be separated by ',' '\t' and ' '
   const inputValues: string[] = inputValue.split(/[,\t]+/)
   inputValues.forEach((val: string) => {
-    if (val.trim() === '') return
+    const trimmedValue = val.trim()
+    if (trimmedValue === '') return
     // Make sure each value is valid and doesn't already exist
-    if (validate && !validate(val)) {
-      unusedValues.push(val)
-      return invalidValues.push(val)
-    } else if (currentValues && currentValues.includes(val)) {
-      unusedValues.push(val)
-      return duplicateValues.push(val)
+    if (validate && !validate(trimmedValue)) {
+      unusedValues.push(trimmedValue)
+      return invalidValues.push(trimmedValue)
+    } else if (currentValues && currentValues.includes(trimmedValue)) {
+      unusedValues.push(trimmedValue)
+      return duplicateValues.push(trimmedValue)
     } else {
-      return validValues.push(val)
+      return validValues.push(trimmedValue)
     }
   })
 
@@ -164,11 +165,19 @@ export const InputChipsInternal = forwardRef(
       }
     }
 
+    const isPasting = React.useRef(false)
+    function handlePaste() {
+      isPasting.current = true
+    }
+
     function handleInputChange(e: FormEvent<HTMLInputElement>) {
       const { value } = e.currentTarget
       // If the last character is a comma, update the values
-      if (value[value.length - 1] === ',') {
+      // Or, if the user pastes content, we assume that the final value is complete
+      // even if there's no comma at the end
+      if (isPasting.current || value[value.length - 1] === ',') {
         updateValues(value)
+        isPasting.current = false
       } else {
         setInputValue(value)
       }
@@ -199,6 +208,7 @@ export const InputChipsInternal = forwardRef(
         onKeyDown={handleKeyDown}
         showClear={values.length > 0}
         onClear={handleClear}
+        onPaste={handlePaste}
         {...props}
       >
         {chips}
