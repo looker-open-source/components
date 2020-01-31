@@ -96,6 +96,10 @@ export interface ComboboxOptionProps
    *     🍎 <ComboboxOptionText />
    *   </ComboboxOption>
    */
+  /**
+   * adds text when input value in not empty
+   * @i18n 'recommended'
+   */
   children?: React.ReactNode
 }
 

@@ -44,6 +44,10 @@ export type BadgeSizes = SizeSmall | SizeMedium | SizeLarge
 export interface BadgeProps
   extends SpaceProps,
     CompatibleHTMLProps<HTMLSpanElement> {
+  /**
+   * adds text when input value in not empty
+   * @i18n 'recommended'
+   */
   children: ReactNode
   /**
    *  @default `default`

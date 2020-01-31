@@ -48,6 +48,10 @@ export interface ChipProps
     SpaceProps,
     TruncateProps,
     TypographyProps {
+  /**
+   * adds text when input value in not empty
+   * @i18n 'recommended'
+   */
   children: ReactNode
   disabled?: boolean
   focusVisible?: boolean

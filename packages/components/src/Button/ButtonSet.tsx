@@ -57,6 +57,10 @@ export interface ButtonGroupOrToggleProps<
   /**
    * One or more ButtonItem
    */
+  /**
+   * adds text when input value in not empty
+   * @i18n 'recommended'
+   */
   children: ReactNode
   /**
    * Value for controlling the component
