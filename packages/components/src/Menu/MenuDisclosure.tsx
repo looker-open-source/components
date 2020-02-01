@@ -42,6 +42,10 @@ export interface MenuDisclosureProps {
    * onClick, onBlur, onFocus, onMouseOver, onMouseOut and disabled
    * unable to enforce typing of props https://github.com/DefinitelyTyped/DefinitelyTyped/issues/34713
    */
+  /**
+   * adds text when input value in not empty
+   * @i18n 'recommended'
+   */
   children: JSX.Element
   tooltip?: string
   tooltipPlacement?: Placement

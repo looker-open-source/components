@@ -30,6 +30,10 @@ import { SpaceProps, space, reset } from '@looker/design-tokens'
 import omit from 'lodash/omit'
 
 export interface TabPanelsProps extends SpaceProps {
+  /**
+   * adds text when input value in not empty
+   * @i18n 'recommended'
+   */
   children: JSX.Element[]
   selectedIndex?: number
   onSelectTab?: (index: number) => void

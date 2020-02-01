@@ -58,6 +58,10 @@ export interface SurfaceStyleProps extends BorderProps, BoxShadowProps {
 export interface OverlaySurfaceProps extends SurfaceStyleProps {
   arrow?: boolean
   arrowProps: PopperArrowProps
+  /**
+   * adds text when input value in not empty
+   * @i18n 'recommended'
+   */
   children: ReactNode
   eventHandlers?: DOMAttributes<{}>
   placement: Placement

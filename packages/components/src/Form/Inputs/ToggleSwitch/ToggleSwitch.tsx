@@ -61,6 +61,10 @@ export interface KnobProps {
 }
 
 interface KnobContainerBaseProps extends KnobProps, PseudoProps {
+  /**
+   * adds text when input value in not empty
+   * @i18n 'recommended'
+   */
   children: ReactNode
 }
 

@@ -42,6 +42,10 @@ import { ModalContext } from '../ModalContext'
 export interface ModalHeaderProps
   extends SpaceProps,
     CompatibleHTMLProps<HTMLElement> {
+  /**
+   * adds text when input value in not empty
+   * @i18n 'recommended'
+   */
   children: string | string[]
   /**
    * Specify an icon to be used for close. Defaults to `Close`

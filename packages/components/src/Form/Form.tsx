@@ -95,6 +95,10 @@ export const Form = forwardRef(
 Form.displayName = 'Form'
 
 export interface ChildProp {
+  /**
+   * adds text when input value in not empty
+   * @i18n 'recommended'
+   */
   children?: JSX.Element
 }
 
