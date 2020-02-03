@@ -24,13 +24,17 @@
 
  */
 
-export * from './useControlWarn'
-export * from './useCallbackRef'
-export * from './useFocusTrap'
-export * from './useForkedRef'
-export * from './useHovered'
-export * from './useID'
-export * from './useMouseDownClick'
-export * from './useScrollLock'
-export * from './useToggle'
-export * from './useWrapEvent'
+import { NavigationSection } from '../../Layout'
+
+const navigation: NavigationSection = {
+  title: 'Utilities',
+  path: 'utilities',
+  children: [
+    {
+      title: 'GlobalStyle',
+      path: 'globalstyle',
+    },
+  ],
+}
+
+export default navigation
