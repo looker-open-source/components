@@ -1,0 +1,27 @@
+---
+title: GlobalStyle
+---
+
+import { Banner } from '@looker/components'
+
+This component provides a basic set of styles to enable Looker Components. While not strictly required, failing to import this component will degrade the appearance of some components.
+
+`GlobalStyle` will apply style broadly and may have impacts on other content. In the future we will provide a way to scope the GlobalStyle to only apply to HTML output by `@looker/components` but for the time-being the assumption is that the CSS applied is narrow in it's behavior and should have limited side-effects.
+
+It's composed of two primary pieces:
+
+## Default Font
+
+The GlobalStyle component will assign the theme's "brand" font family ('Open Sans' in Looker's default theme) broadly across all components except a few that explicitly specify something different (`<Code>` for example leverages what's specified in theme.font.code)
+
+<Banner>
+  Note that the `GlobalStyle` component will not load any fonts specified. Refer
+  to the <a href="/getting-started">Getting Started</a> documentation for font
+  import recommendations.
+</Banner>
+
+## CSS Reset
+
+- Apply CSS' `box-sizing: border-box` to all elements
+- Sets base font-size to 16px (true for all modern browsers but helps establish a consistent baseline)
+- Broadly resets basic element styles so that cross-browser styling is consistent.

@@ -29,6 +29,27 @@ rm -R node_modules/@types/react-native
 echo '@types/react-native' > .yarnclean
 ```
 
+## Setup
+
+`@looker/components` expects two prerequisites to exist for the complete styling to be applied:
+
+### GlobalStyle
+
+At the top-most level of the usage of `@looker/components` you need to load the `<GlobalStyle />` component. This will inject a simple CSS reset as well as basic font assignment. [GlobalStyle documentation &rarr;](/utilities/globalstyle)
+
+### Web Font Loading
+
+Users may not have the `@looker/components` default font, Open Sans, installed on their computers so we recommend importing the font to ensure that content is rendered with the proper font-face.
+
+The simplest way to accomplish this is via Google's hosted CDN:
+
+```html static
+<link
+  href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap"
+  rel="stylesheet"
+/>
+```
+
 ## Using a Component
 
 Now that we have `@looker/components` installed we can start using them in our application. To get things started import some components:
