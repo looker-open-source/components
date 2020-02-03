@@ -24,7 +24,6 @@
 
  */
 
-export * from './GlobalStyle'
 export * from './useControlWarn'
 export * from './useCallbackRef'
 export * from './useFocusTrap'

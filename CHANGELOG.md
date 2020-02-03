@@ -12,6 +12,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - New components `Date` `DateTime` `Time` plus documentation and tests
 
+### Changed
+
+- `GlobalStyle` no longer imports fonts from Google Fonts CDN.
+  - Updated documentation to reflect how to import fonts
+  - Added documentation for `GlobalStyle` under a new "Utilities" section
+
 ## [0.7.17] - 2020-01-31
 
 ### Added
@@ -37,7 +43,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- `Select` Addressed issue where co-located `Select`s width acted undesireably
+- `Select` Addressed issue where co-located `Select`s width acted undesirably
 
 ## [0.7.14] - 2020-01-27
 
@@ -48,7 +54,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `ConfirmLayout` - new modal for laying out standard user confirmation dialog content
 - `InputChips` displays multiple values as `Chip`s inside a text box
 
-### Changes
+### Changed
 
 - `Banner` children are now wrapped in `<Box display="auto">` so they will expand to the full available width.
 - `ConfirmationDialog` uses `ConfirmLayout` to render modal content

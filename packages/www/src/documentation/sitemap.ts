@@ -30,12 +30,14 @@ import gettingStarted from './getting-started/navigation'
 import principles from './principles/navigation'
 import components from './components/navigation'
 import system from './system/navigation'
+import utilities from './utilities/navigation'
 
 const sitemap: NavigationSection[] = [
   gettingStarted,
   principles,
   system,
   components,
+  utilities,
 ]
 
 export default sitemap
