@@ -145,6 +145,7 @@ const components: NavigationSection = {
         { title: 'Card', path: 'card' },
         { title: 'Chip', path: 'chip' },
         { title: 'ColorWheel', path: 'color-wheel' },
+        { title: 'DateTimeFormat', path: 'date-time-format' },
         { title: 'Divider', path: 'divider' },
         { title: 'Icon', path: 'icon' },
         { title: 'List', path: 'list' },

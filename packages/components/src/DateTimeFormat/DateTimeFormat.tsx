@@ -24,5 +24,52 @@
 
  */
 
-export * from './IconList'
-export * from './DateTimeFormat'
+import React, { FC } from 'react'
+
+type DateFormats = 'short' | 'medium' | 'long' | 'full'
+
+export interface DateTimeFormatProps {
+  children?: Date
+  format?: DateFormats
+  locale?: string
+  timeZone?: string
+}
+
+interface DateTimeFormatExtensionProps extends DateTimeFormatProps {
+  date?: boolean
+  time?: boolean
+}
+
+interface ExtendedDateTimeFormatOptions extends Intl.DateTimeFormatOptions {
+  dateStyle?: DateFormats
+  timeStyle?: DateFormats
+}
+
+export const DateTimeFormat: FC<DateTimeFormatExtensionProps> = ({
+  children = new Date(Date.now()),
+  date,
+  format,
+  locale,
+  time,
+
+  timeZone,
+}) => {
+  const options: ExtendedDateTimeFormatOptions = {
+    dateStyle: date ? format : undefined,
+    timeStyle: time ? format : undefined,
+    timeZone,
+  }
+
+  try {
+    const formatted = children.toLocaleDateString(locale, options)
+    return <>{formatted}</>
+  } catch (error) {
+    return <>{error}</>
+  }
+}
+
+DateTimeFormat.defaultProps = {
+  date: true,
+  format: 'medium',
+  time: true,
+}
