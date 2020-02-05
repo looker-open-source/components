@@ -18,14 +18,51 @@
  SOFTWARE.
  */
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import some from 'lodash/some'
+import every from 'lodash/every'
 import { Checkbox, Label, List, ListItem } from '@looker/components'
 
 export const MixedStateCheckboxDemo = () => {
   const [parentCheckboxState, setParentCheckboxState] = useState<
     true | false | 'mixed'
   >(false)
-  const handleParentClick = () => setParentCheckboxState(!parentCheckboxState)
+
+  const [appleCheckboxState, setAppleCheckboxState] = useState<boolean>(false)
+  const [bananaCheckboxState, setBananaCheckboxState] = useState<boolean>(false)
+  const [avocadoCheckboxState, setAvocadoCheckboxState] = useState<boolean>(
+    false
+  )
+
+  const handleParentClick = () => {
+    const newState = parentCheckboxState !== true
+    setParentCheckboxState(newState)
+    setAppleCheckboxState(newState)
+    setBananaCheckboxState(newState)
+    setAvocadoCheckboxState(newState)
+  }
+
+  const handleAppleClick = () => setAppleCheckboxState(!appleCheckboxState)
+  const handleBananaClick = () => setBananaCheckboxState(!bananaCheckboxState)
+  const handleAvocadoClick = () =>
+    setAvocadoCheckboxState(!avocadoCheckboxState)
+
+  const subBoxes = [
+    { setState: setAppleCheckboxState, state: appleCheckboxState },
+    { setState: setBananaCheckboxState, state: bananaCheckboxState },
+    { setState: setAvocadoCheckboxState, state: avocadoCheckboxState },
+  ]
+
+  useEffect(() => {
+    if (every(subBoxes, ['state', true])) {
+      setParentCheckboxState(true)
+    } else if (some(subBoxes, ['state', true])) {
+      setParentCheckboxState('mixed')
+    } else {
+      setParentCheckboxState(false)
+    }
+  }, [appleCheckboxState, bananaCheckboxState, avocadoCheckboxState, subBoxes])
+
   return (
     <>
       <List p="large">
@@ -48,8 +85,8 @@ export const MixedStateCheckboxDemo = () => {
                 id="fruit-apple"
                 name="fruit"
                 value="apple"
-                onChange={handleParentClick}
-                checked={parentCheckboxState}
+                onChange={handleAppleClick}
+                checked={appleCheckboxState}
               />
               <Label htmlFor="fruit-apple" fontSize="large">
                 🍏
@@ -60,8 +97,8 @@ export const MixedStateCheckboxDemo = () => {
                 id="fruit-banana"
                 name="fruit"
                 value="apple"
-                onChange={handleParentClick}
-                checked={parentCheckboxState}
+                onChange={handleBananaClick}
+                checked={bananaCheckboxState}
               />
               <Label htmlFor="fruit-banana" fontSize="large">
                 🍌
@@ -72,8 +109,8 @@ export const MixedStateCheckboxDemo = () => {
                 id="fruit-avocado"
                 name="fruit"
                 value="apple"
-                onChange={handleParentClick}
-                checked={parentCheckboxState}
+                onChange={handleAvocadoClick}
+                checked={avocadoCheckboxState}
               />
               <Label htmlFor="fruit-avocado" fontSize="large">
                 🥑

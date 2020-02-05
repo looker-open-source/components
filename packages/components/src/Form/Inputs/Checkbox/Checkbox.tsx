@@ -74,11 +74,11 @@ const CheckMarkMixed = () => {
     >
       <g
         stroke="currentColor"
-        strokeWidth="3"
+        strokeWidth="2"
         fill="none"
         strokeLinecap="round"
       >
-        <line x1="5" y1="5" x2="11" y2="11"></line>
+        <line x1="5" y1="8" x2="11" y2="8"></line>
       </g>
     </svg>
   )
