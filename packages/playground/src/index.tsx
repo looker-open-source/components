@@ -24,13 +24,13 @@ import { GlobalStyle } from '@looker/components'
 import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
 
-import { SelectContent } from './Select/SelectDemo'
+import { MixedStateCheckboxDemo } from './Checkbox/MixedStateCheckboxDemo'
 
 const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <SelectContent />
+      <MixedStateCheckboxDemo />
     </ThemeProvider>
   )
 }
