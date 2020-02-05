@@ -18,24 +18,10 @@
  SOFTWARE.
  */
 
+import { assertSnapshot } from '@looker/components-test-utils'
 import React from 'react'
-import ReactDOM from 'react-dom'
-import { InlineInputText } from '@looker/components'
-import { theme } from '@looker/design-tokens'
-import { ThemeProvider } from 'styled-components'
+import { InlineInputText } from './InlineInputText'
 
-const App: React.FC = () => {
-  return (
-    <ThemeProvider theme={theme}>
-      <InlineInputText title="type here..." />
-    </ThemeProvider>
-  )
-}
-
-/**
- * This is the binding site for the playground. If you want to edit the
- * primary application, do your work in App.tsx instead.
- */
-document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(<App />, document.getElementById('container'))
+test('InlineInputText renders an input with the correct styling', () => {
+  assertSnapshot(<InlineInputText title="type something" />)
 })
