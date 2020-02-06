@@ -8,6 +8,7 @@
     "@reach/router": "^1.3.1",
     "@types/react-helmet": "^5.0.15",
     "copy-text-to-clipboard": "^2.1.1",
+    "eslint-mdx": "^1.6.8",
     "eslint-plugin-mdx": "^1.6.8",
     "gatsby": "^2.19.12",
     "gatsby-image": "^2.2.40",
@@ -47,7 +48,7 @@
     "typescript": "^3.7.5"
   },
   "scripts": {
-    "lint": "eslint . --ext mdx",
+    "lint": "eslint . --ext mdx --config package.json --no-eslintrc   ",
     "build": "gatsby build && echo \"components.looker.com\" > public/CNAME",
     "deploy": "yarn build && gh-pages -d public -r https://$GITHUB_TOKEN@github.com/looker-open-source/components.git",
     "develop": "gatsby develop",
@@ -59,5 +60,16 @@
     "type": "git",
     "url": "https://github.com/looker-open-source/components",
     "directory": "packages/www"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@looker/eslint-config",
+      "plugin:mdx/recommended"
+    ],
+    "rules": {
+      "mdx/no-unescaped-entities": "off",
+      "sort-keys": "off",
+      "@typescript-eslint/no-explicit-any": "off"
+    }
   }
 }
