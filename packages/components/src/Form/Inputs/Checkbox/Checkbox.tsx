@@ -116,7 +116,7 @@ const CheckboxContainer = styled.div<CheckboxContainerProps>`
   }
   ${FauxCheckbox} {
     ${({ theme, checked, branded }) => {
-      /* NOTE: `checked=true` and `checked='mixed'` are treated the in this code block */
+      /* NOTE: `checked=true` and `checked='mixed'` are treated the same in this code block */
       const inputColor = branded
         ? theme.colors.semanticColors.primary.main
         : theme.colors.semanticColors.primary.linkColor
