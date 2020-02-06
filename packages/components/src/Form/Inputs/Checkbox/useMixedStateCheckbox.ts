@@ -3,14 +3,14 @@ import some from 'lodash/some'
 import every from 'lodash/every'
 import { MixedBoolean } from './Checkbox'
 
-export interface CheckboxMetaState {
+export interface CheckboxTreeAction {
   state: MixedBoolean
   setState: Dispatch<SetStateAction<MixedBoolean>>
 }
 
 export interface CheckboxTree {
-  parent: CheckboxMetaState
-  children: CheckboxMetaState[]
+  parent: CheckboxTreeAction
+  children: CheckboxTreeAction[]
 }
 
 export function useMixedStateCheckbox({ parent, children }: CheckboxTree) {
