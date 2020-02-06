@@ -42,6 +42,10 @@ test('Checkbox checked set to false', () => {
   assertSnapshot(<Checkbox checked={false} />)
 })
 
+test('Checkbox checked set to mixed', () => {
+  assertSnapshot(<Checkbox checked="mixed" />)
+})
+
 test('Checkbox with name and id', () => {
   assertSnapshot(<Checkbox name="Chuck" id="Chucky" />)
 })

@@ -34,11 +34,16 @@ import {
   InputProps,
   inputPropKeys,
 } from '../InputProps'
-import { inputColor } from '../style'
+
+export type MixedBoolean = true | false | 'mixed'
+
+interface CheckboxContainerProps extends CheckboxRadioContainerProps {
+  checked?: MixedBoolean
+}
 
 export interface CheckboxProps
-  extends CheckboxRadioContainerProps,
-    Omit<InputProps, 'type'> {}
+  extends Omit<InputProps, 'type' | 'checked'>,
+    CheckboxContainerProps {}
 
 const CheckMark = () => {
   return (
@@ -60,6 +65,27 @@ const CheckMark = () => {
   )
 }
 
+const CheckMarkMixed = () => {
+  return (
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g
+        stroke="currentColor"
+        strokeWidth="2"
+        fill="none"
+        strokeLinecap="round"
+      >
+        <line x1="5" y1="8" x2="11" y2="8"></line>
+      </g>
+    </svg>
+  )
+}
+
 const FauxCheckbox = styled.div`
   ${reset}
   position: relative;
@@ -73,7 +99,7 @@ const FauxCheckbox = styled.div`
   align-items: center;
 `
 
-const CheckboxContainer = styled.div<CheckboxRadioContainerProps>`
+const CheckboxContainer = styled.div<CheckboxContainerProps>`
   ${reset}
   position: relative;
   display: inline-block;
@@ -89,13 +115,19 @@ const CheckboxContainer = styled.div<CheckboxRadioContainerProps>`
     z-index: 1;
   }
   ${FauxCheckbox} {
-    background: ${props => props.theme.colors.palette.white};
-  }
-  input[type='checkbox']:checked {
-    & + ${FauxCheckbox} {
-      color: #fff;
-      ${inputColor}
-    }
+    ${({ theme, checked, branded }) => {
+      /* NOTE: `checked=true` and `checked='mixed'` are treated the same in this code block */
+      const inputColor = branded
+        ? theme.colors.semanticColors.primary.main
+        : theme.colors.semanticColors.primary.linkColor
+      return `
+        background: ${checked ? inputColor : theme.colors.palette.white};
+        border-color: ${
+          checked ? inputColor : theme.colors.palette.charcoal200
+        };
+          `
+    }}
+    color: ${({ theme }) => theme.colors.palette.white};
   }
   input[type='checkbox']:focus {
     & + ${FauxCheckbox} {
@@ -117,11 +149,18 @@ const CheckboxInput = styled.input.attrs({ type: 'checkbox' })`
 
 const CheckboxComponent = forwardRef(
   (props: CheckboxProps, ref: Ref<HTMLInputElement>) => {
+    const { checked, ...restProps } = props
     return (
-      <CheckboxContainer {...omit(props, inputPropKeys)}>
-        <CheckboxInput {...pick(props, inputPropKeys)} ref={ref} />
+      <CheckboxContainer {...omit(props, inputPropKeys)} checked={checked}>
+        <CheckboxInput
+          {...pick(restProps, inputPropKeys)}
+          ref={ref}
+          checked={checked === true}
+          role="checkbox"
+          aria-checked={checked}
+        />
         <FauxCheckbox>
-          <CheckMark />
+          {checked === 'mixed' ? <CheckMarkMixed /> : <CheckMark />}
         </FauxCheckbox>
       </CheckboxContainer>
     )
