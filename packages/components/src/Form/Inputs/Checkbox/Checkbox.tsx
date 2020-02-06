@@ -37,7 +37,7 @@ import {
 } from '../InputProps'
 
 interface CheckboxContainerProps extends CheckboxRadioContainerProps {
-  checked: MixedBoolean
+  checked?: MixedBoolean
 }
 
 export interface CheckboxProps
