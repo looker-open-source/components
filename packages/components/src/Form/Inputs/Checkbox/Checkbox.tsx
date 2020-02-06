@@ -29,7 +29,7 @@ import pick from 'lodash/pick'
 import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
 import { reset, space } from '@looker/design-tokens'
-import { MixedStateBoolean } from '../../../utils'
+import { MixedBoolean } from '../../../utils'
 import {
   CheckboxRadioContainerProps,
   InputProps,
@@ -37,7 +37,7 @@ import {
 } from '../InputProps'
 
 interface CheckboxContainerProps extends CheckboxRadioContainerProps {
-  checked: MixedStateBoolean
+  checked: MixedBoolean
 }
 
 export interface CheckboxProps
@@ -115,6 +115,7 @@ const CheckboxContainer = styled.div<CheckboxContainerProps>`
   }
   ${FauxCheckbox} {
     ${({ theme, checked, branded }) => {
+      /* NOTE: `checked=true` and `checked='mixed'` are treated the in this code block */
       const inputColor = branded
         ? theme.colors.semanticColors.primary.main
         : theme.colors.semanticColors.primary.linkColor
