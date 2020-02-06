@@ -29,12 +29,13 @@ import pick from 'lodash/pick'
 import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
 import { reset, space } from '@looker/design-tokens'
-import { MixedBoolean } from '../../../utils'
 import {
   CheckboxRadioContainerProps,
   InputProps,
   inputPropKeys,
 } from '../InputProps'
+
+export type MixedBoolean = true | false | 'mixed'
 
 interface CheckboxContainerProps extends CheckboxRadioContainerProps {
   checked?: MixedBoolean
@@ -155,6 +156,8 @@ const CheckboxComponent = forwardRef(
           {...pick(restProps, inputPropKeys)}
           ref={ref}
           checked={checked === true}
+          role="checkbox"
+          aria-checked={checked}
         />
         <FauxCheckbox>
           {checked === 'mixed' ? <CheckMarkMixed /> : <CheckMark />}

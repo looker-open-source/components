@@ -1,8 +1,7 @@
 import { useEffect, Dispatch, SetStateAction } from 'react'
 import some from 'lodash/some'
 import every from 'lodash/every'
-
-export type MixedBoolean = true | false | 'mixed'
+import { MixedBoolean } from './Checkbox'
 
 export interface CheckboxMetaState {
   state: MixedBoolean
