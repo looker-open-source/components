@@ -41,12 +41,8 @@ exports[`Checkbox checked set to false 1`] = `
 
 .c0 .c1 {
   background: #FFFFFF;
-}
-
-.c0 input[type='checkbox']:checked + .c1 {
-  color: #fff;
-  background: #0087e1;
-  border-color: #0087e1;
+  border-color: #DEE1E5;
+  color: #FFFFFF;
 }
 
 .c0 input[type='checkbox']:focus + .c1 {
@@ -57,7 +53,22 @@ exports[`Checkbox checked set to false 1`] = `
   opacity: 0.5;
 }
 
+.c3 .c1 {
+  background: #0087e1;
+  border-color: #0087e1;
+  color: #FFFFFF;
+}
+
+.c3 input[type='checkbox']:focus + .c1 {
+  box-shadow: 0 0 .5px 1px #C1C6CC;
+}
+
+.c3 input[type='checkbox']:disabled + .c1 {
+  opacity: 0.5;
+}
+
 <div
+  checked={false}
   className="c0 "
 >
   <input
@@ -109,6 +120,20 @@ exports[`Checkbox checked set to true 1`] = `
   align-items: center;
 }
 
+.c3 .c1 {
+  background: #FFFFFF;
+  border-color: #DEE1E5;
+  color: #FFFFFF;
+}
+
+.c3 input[type='checkbox']:focus + .c1 {
+  box-shadow: 0 0 .5px 1px #C1C6CC;
+}
+
+.c3 input[type='checkbox']:disabled + .c1 {
+  opacity: 0.5;
+}
+
 .c0 {
   position: relative;
   display: inline-block;
@@ -127,13 +152,9 @@ exports[`Checkbox checked set to true 1`] = `
 }
 
 .c0 .c1 {
-  background: #FFFFFF;
-}
-
-.c0 input[type='checkbox']:checked + .c1 {
-  color: #fff;
   background: #0087e1;
   border-color: #0087e1;
+  color: #FFFFFF;
 }
 
 .c0 input[type='checkbox']:focus + .c1 {
@@ -145,6 +166,7 @@ exports[`Checkbox checked set to true 1`] = `
 }
 
 <div
+  checked={true}
   className="c0 "
 >
   <input
@@ -215,12 +237,8 @@ exports[`Checkbox default 1`] = `
 
 .c0 .c1 {
   background: #FFFFFF;
-}
-
-.c0 input[type='checkbox']:checked + .c1 {
-  color: #fff;
-  background: #0087e1;
-  border-color: #0087e1;
+  border-color: #DEE1E5;
+  color: #FFFFFF;
 }
 
 .c0 input[type='checkbox']:focus + .c1 {
@@ -235,6 +253,7 @@ exports[`Checkbox default 1`] = `
   className="c0 "
 >
   <input
+    checked={false}
     className=""
     type="checkbox"
   />
@@ -301,12 +320,8 @@ exports[`Checkbox should accept disabled 1`] = `
 
 .c0 .c1 {
   background: #FFFFFF;
-}
-
-.c0 input[type='checkbox']:checked + .c1 {
-  color: #fff;
-  background: #0087e1;
-  border-color: #0087e1;
+  border-color: #DEE1E5;
+  color: #FFFFFF;
 }
 
 .c0 input[type='checkbox']:focus + .c1 {
@@ -317,10 +332,25 @@ exports[`Checkbox should accept disabled 1`] = `
   opacity: 0.5;
 }
 
+.c3 .c1 {
+  background: #0087e1;
+  border-color: #0087e1;
+  color: #FFFFFF;
+}
+
+.c3 input[type='checkbox']:focus + .c1 {
+  box-shadow: 0 0 .5px 1px #C1C6CC;
+}
+
+.c3 input[type='checkbox']:disabled + .c1 {
+  opacity: 0.5;
+}
+
 <div
   className="c0 "
 >
   <input
+    checked={false}
     className=""
     disabled={true}
     type="checkbox"
@@ -388,12 +418,8 @@ exports[`Checkbox with aria-describedby 1`] = `
 
 .c0 .c1 {
   background: #FFFFFF;
-}
-
-.c0 input[type='checkbox']:checked + .c1 {
-  color: #fff;
-  background: #0087e1;
-  border-color: #0087e1;
+  border-color: #DEE1E5;
+  color: #FFFFFF;
 }
 
 .c0 input[type='checkbox']:focus + .c1 {
@@ -404,11 +430,26 @@ exports[`Checkbox with aria-describedby 1`] = `
   opacity: 0.5;
 }
 
+.c3 .c1 {
+  background: #0087e1;
+  border-color: #0087e1;
+  color: #FFFFFF;
+}
+
+.c3 input[type='checkbox']:focus + .c1 {
+  box-shadow: 0 0 .5px 1px #C1C6CC;
+}
+
+.c3 input[type='checkbox']:disabled + .c1 {
+  opacity: 0.5;
+}
+
 <div
   className="c0 "
 >
   <input
     aria-describedby="some-id"
+    checked={false}
     className=""
     type="checkbox"
   />
@@ -475,12 +516,8 @@ exports[`Checkbox with name and id 1`] = `
 
 .c0 .c1 {
   background: #FFFFFF;
-}
-
-.c0 input[type='checkbox']:checked + .c1 {
-  color: #fff;
-  background: #0087e1;
-  border-color: #0087e1;
+  border-color: #DEE1E5;
+  color: #FFFFFF;
 }
 
 .c0 input[type='checkbox']:focus + .c1 {
@@ -491,10 +528,25 @@ exports[`Checkbox with name and id 1`] = `
   opacity: 0.5;
 }
 
+.c3 .c1 {
+  background: #0087e1;
+  border-color: #0087e1;
+  color: #FFFFFF;
+}
+
+.c3 input[type='checkbox']:focus + .c1 {
+  box-shadow: 0 0 .5px 1px #C1C6CC;
+}
+
+.c3 input[type='checkbox']:disabled + .c1 {
+  opacity: 0.5;
+}
+
 <div
   className="c0 "
 >
   <input
+    checked={false}
     className=""
     id="Chucky"
     name="Chuck"
