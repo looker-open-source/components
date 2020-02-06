@@ -72,8 +72,10 @@ exports[`Checkbox checked set to false 1`] = `
   className="c0 "
 >
   <input
+    aria-checked={false}
     checked={false}
     className=""
+    role="checkbox"
     type="checkbox"
   />
   <div
@@ -170,8 +172,10 @@ exports[`Checkbox checked set to mixed 1`] = `
   className="c0 "
 >
   <input
+    aria-checked="mixed"
     checked={false}
     className=""
+    role="checkbox"
     type="checkbox"
   />
   <div
@@ -274,8 +278,10 @@ exports[`Checkbox checked set to true 1`] = `
   className="c0 "
 >
   <input
+    aria-checked={true}
     checked={true}
     className=""
+    role="checkbox"
     type="checkbox"
   />
   <div
@@ -359,6 +365,7 @@ exports[`Checkbox default 1`] = `
   <input
     checked={false}
     className=""
+    role="checkbox"
     type="checkbox"
   />
   <div
@@ -457,6 +464,7 @@ exports[`Checkbox should accept disabled 1`] = `
     checked={false}
     className=""
     disabled={true}
+    role="checkbox"
     type="checkbox"
   />
   <div
@@ -555,6 +563,7 @@ exports[`Checkbox with aria-describedby 1`] = `
     aria-describedby="some-id"
     checked={false}
     className=""
+    role="checkbox"
     type="checkbox"
   />
   <div
@@ -654,6 +663,7 @@ exports[`Checkbox with name and id 1`] = `
     className=""
     id="Chucky"
     name="Chuck"
+    role="checkbox"
     type="checkbox"
   />
   <div
