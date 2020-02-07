@@ -27,7 +27,11 @@
 import { WidthProperty } from 'csstype'
 import React, { FunctionComponent } from 'react'
 import styled, { css } from 'styled-components'
-import { ResponsiveValue, TLengthStyledSystem } from 'styled-system'
+import {
+  ResponsiveValue,
+  TLengthStyledSystem,
+  TextColorProps,
+} from 'styled-system'
 import {
   CustomizableAttributes,
   FontSizes,
@@ -66,6 +70,10 @@ export interface FieldProps {
    * Determines where to place the validation message in relation to the input.
    */
   alignValidationMessage?: FormControlDirections
+  /**
+   * notes and details added to the top right corner of the field
+   */
+  detail?: string
   /**
    * Id of the input element to match a label to.
    */
@@ -119,8 +127,9 @@ const RequiredStar = styled(props => (
     *
   </span>
 ))`
-  color: ${props => props.theme.colors.semanticColors.danger.darker};
+  color: ${props => props.theme.colors.palette.red500};
 `
+
 const handleHorizontalAlignment = (props: FieldProps) => {
   const { alignLabel, labelWidth } = props
   const width = labelWidth || CustomizableFieldAttributes.labelWidth
@@ -170,6 +179,7 @@ const getValidationMessageAlignment = (
 const FieldComponent: FunctionComponent<FieldProps> = ({
   alignValidationMessage,
   children,
+  detail,
   id,
   label,
   labelFontSize,
@@ -178,11 +188,17 @@ const FieldComponent: FunctionComponent<FieldProps> = ({
   validationMessage,
   ...props
 }) => {
+  console.log('detail: ', detail)
+  console.log('label: ', label)
+
   return (
     <FormControl mb="xsmall" {...props}>
       <Label htmlFor={id} fontWeight={labelFontWeight} fontSize={labelFontSize}>
         {label}
         {required && <RequiredStar />}
+      </Label>
+      <Label fontSize="xsmall" color="#707781">
+        {detail}
       </Label>
       <FormControl
         alignLabel={getValidationMessageAlignment(alignValidationMessage)}
@@ -205,3 +221,5 @@ export const Field = styled(FieldComponent)`
     ${handleHorizontalAlignment}
   }
 `
+
+// {props.theme.colors.palette.charcoal500}

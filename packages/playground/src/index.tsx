@@ -20,17 +20,14 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { GlobalStyle } from '@looker/components'
+import { FieldText } from '@looker/components'
 import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
-
-import { SelectContent } from './Select/SelectDemo'
 
 const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <SelectContent />
+      <FieldText required detail="0/50" label="First Name" name="firstName" />
     </ThemeProvider>
   )
 }
