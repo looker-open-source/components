@@ -25,6 +25,7 @@
  */
 
 module.exports = {
+  root: true,
   extends: ['@looker/eslint-config', 'plugin:mdx/recommended'],
   rules: {
     'mdx/no-unescaped-entities': 'off',
