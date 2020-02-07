@@ -20,14 +20,15 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { FieldText } from '@looker/components'
+import { Field, FieldText } from '@looker/components'
 import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
 
 const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
-      <FieldText required detail="0/50" label="First Name" name="firstName" />
+      <Field required detail="0/50" label="First" />
+      <FieldText required detail="0/50" label="First" name="firstName" />
     </ThemeProvider>
   )
 }

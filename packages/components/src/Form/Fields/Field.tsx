@@ -27,11 +27,7 @@
 import { WidthProperty } from 'csstype'
 import React, { FunctionComponent } from 'react'
 import styled, { css } from 'styled-components'
-import {
-  ResponsiveValue,
-  TLengthStyledSystem,
-  TextColorProps,
-} from 'styled-system'
+import { ResponsiveValue, TLengthStyledSystem } from 'styled-system'
 import {
   CustomizableAttributes,
   FontSizes,
@@ -43,6 +39,7 @@ import pick from 'lodash/pick'
 import { FlexItem } from '../../Layout/FlexItem'
 import { FormControl, FormControlDirections } from '../FormControl/FormControl'
 import { Label } from '../Label/Label'
+import { Text } from '../../Text/Text'
 import {
   ValidationMessage,
   ValidationMessageProps,
@@ -197,9 +194,7 @@ const FieldComponent: FunctionComponent<FieldProps> = ({
         {label}
         {required && <RequiredStar />}
       </Label>
-      <Label fontSize="xsmall" color="#707781">
-        {detail}
-      </Label>
+      <Text fontSize="xsmall">{detail}</Text>
       <FormControl
         alignLabel={getValidationMessageAlignment(alignValidationMessage)}
         mb="xsmall"
@@ -221,5 +216,3 @@ export const Field = styled(FieldComponent)`
     ${handleHorizontalAlignment}
   }
 `
-
-// {props.theme.colors.palette.charcoal500}
