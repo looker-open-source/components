@@ -2263,10 +2263,29 @@
     npmlog "^4.1.2"
     write-file-atomic "^2.3.0"
 
-"@looker/eslint-config@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@looker/eslint-config/-/eslint-config-1.0.4.tgz#ef1d555cd53706853c3cb2027ecc6c67675eaafc"
-  integrity sha512-E5i5y4O2nHzkXkJPIKtd5e/7dKW6/fZI1qAxxhYKom0eGJJBJbkVbRO47l3mlu4QgD8oS12YrWvLFKagtxRQOw==
+"@looker/eslint-config@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@looker/eslint-config/-/eslint-config-1.0.5.tgz#6d886ff5cde19ee8543f63c2a27798a1527d0b89"
+  integrity sha512-TQKDEmLaNHbI+ZOs+vc/4GpF3GX8nonoD21mbaDlpQiyhQPjwIOsxwxw8p8dpBq3YRcwa87sAJ3eiCWxQJtwRw==
+  dependencies:
+    "@typescript-eslint/eslint-plugin" "^2.19.0"
+    "@typescript-eslint/parser" "^2.19.0"
+    eslint "^6.8.0"
+    eslint-config-prettier "^6.7.0"
+    eslint-config-standard "^14.1.0"
+    eslint-plugin-import "^2.20.1"
+    eslint-plugin-node "^11.0.0"
+    eslint-plugin-prettier "^3.1.2"
+    eslint-plugin-promise "^4.2.1"
+    eslint-plugin-react "^7.18.3"
+    eslint-plugin-react-hooks "^2.3.0"
+    eslint-plugin-standard "^4.0.1"
+    prettier "^1.19.1"
+    stylelint "^13.0.0"
+    stylelint-config-recommended "^3.0.0"
+    stylelint-config-styled-components "^0.1.1"
+    stylelint-processor-styled-components "^1.9.0"
+    typescript "^3.7.5"
 
 "@looker/prettier-config@^1.0.1":
   version "1.0.1"
@@ -3269,7 +3288,7 @@
     regexpp "^3.0.0"
     tsutils "^3.17.1"
 
-"@typescript-eslint/eslint-plugin@^2.18.0":
+"@typescript-eslint/eslint-plugin@^2.19.0":
   version "2.19.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-2.19.0.tgz#bf743448a4633e4b52bee0c40148ba072ab3adbd"
   integrity sha512-u7IcQ9qwsB6U806LupZmINRnQjC+RJyv36sV/ugaFWMHTbFm/hlLTRx3gGYJgHisxcGSTnf+I/fPDieRMhPSQQ==
@@ -3298,7 +3317,7 @@
     "@typescript-eslint/typescript-estree" "2.19.0"
     eslint-scope "^5.0.0"
 
-"@typescript-eslint/parser@^2.11.0", "@typescript-eslint/parser@^2.18.0":
+"@typescript-eslint/parser@^2.11.0":
   version "2.18.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-2.18.0.tgz#d5f7fc1839abd4a985394e40e9d2454bd56aeb1f"
   integrity sha512-SJJPxFMEYEWkM6pGfcnjLU+NJIPo+Ko1QrCBL+i0+zV30ggLD90huEmMMhKLHBpESWy9lVEeWlQibweNQzyc+A==
@@ -3306,6 +3325,16 @@
     "@types/eslint-visitor-keys" "^1.0.0"
     "@typescript-eslint/experimental-utils" "2.18.0"
     "@typescript-eslint/typescript-estree" "2.18.0"
+    eslint-visitor-keys "^1.1.0"
+
+"@typescript-eslint/parser@^2.19.0":
+  version "2.19.0"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-2.19.0.tgz#912160d9425395d09857dcd5382352bc98be11ae"
+  integrity sha512-s0jZoxAWjHnuidbbN7aA+BFVXn4TCcxEVGPV8lWMxZglSs3NRnFFAlL+aIENNmzB2/1jUJuySi6GiM6uACPmpg==
+  dependencies:
+    "@types/eslint-visitor-keys" "^1.0.0"
+    "@typescript-eslint/experimental-utils" "2.19.0"
+    "@typescript-eslint/typescript-estree" "2.19.0"
     eslint-visitor-keys "^1.1.0"
 
 "@typescript-eslint/typescript-estree@2.18.0":
@@ -7338,7 +7367,7 @@ escodegen@^1.11.1:
   optionalDependencies:
     source-map "~0.6.1"
 
-eslint-config-prettier@^6.10.0:
+eslint-config-prettier@^6.7.0:
   version "6.10.0"
   resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-6.10.0.tgz#7b15e303bf9c956875c948f6b21500e48ded6a7f"
   integrity sha512-AtndijGte1rPILInUdHjvKEGbIV06NuvPrqlIEaEaWtbtvJh464mDeyGMdZEQMsGvC0ZVkiex1fSNcC4HAbRGg==
@@ -7375,17 +7404,6 @@ eslint-loader@^2.2.1:
     object-assign "^4.0.1"
     object-hash "^1.1.4"
     rimraf "^2.6.1"
-
-eslint-loader@^3.0.3:
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/eslint-loader/-/eslint-loader-3.0.3.tgz#e018e3d2722381d982b1201adb56819c73b480ca"
-  integrity sha512-+YRqB95PnNvxNp1HEjQmvf9KNvCin5HXYYseOXVC2U0KEcw4IkQ2IQEBG46j7+gW39bMzeu0GsUhVbBY3Votpw==
-  dependencies:
-    fs-extra "^8.1.0"
-    loader-fs-cache "^1.0.2"
-    loader-utils "^1.2.3"
-    object-hash "^2.0.1"
-    schema-utils "^2.6.1"
 
 eslint-mdx@^1.6.8:
   version "1.6.8"
@@ -11925,7 +11943,7 @@ load-json-file@^5.3.0:
     strip-bom "^3.0.0"
     type-fest "^0.3.0"
 
-loader-fs-cache@^1.0.0, loader-fs-cache@^1.0.2:
+loader-fs-cache@^1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/loader-fs-cache/-/loader-fs-cache-1.0.2.tgz#54cedf6b727e1779fd8f01205f05f6e88706f086"
   integrity sha512-70IzT/0/L+M20jUlEqZhZyArTU6VKLRTYRDAYN26g4jfzpJqjipLL3/hgYpySqI9PwsVRHHFja0LfEmsx9X2Cw==
@@ -13492,11 +13510,6 @@ object-hash@^1.1.4:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/object-hash/-/object-hash-1.3.1.tgz#fde452098a951cb145f039bb7d455449ddc126df"
   integrity sha512-OSuu/pU4ENM9kmREg0BdNrUDIl1heYa4mBZacJc+vVWz4GtAwu7jO8s4AIt2aGRUTqxykpWzI3Oqnsm13tTMDA==
-
-object-hash@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/object-hash/-/object-hash-2.0.1.tgz#cef18a0c940cc60aa27965ecf49b782cbf101d96"
-  integrity sha512-HgcGMooY4JC2PBt9sdUdJ6PMzpin+YtY3r/7wg0uTifP+HJWW8rammseSEHuyt0UeShI183UGssCJqm1bJR7QA==
 
 object-inspect@^1.7.0:
   version "1.7.0"
@@ -16463,14 +16476,6 @@ schema-utils@^1.0.0:
     ajv "^6.1.0"
     ajv-errors "^1.0.0"
     ajv-keywords "^3.1.0"
-
-schema-utils@^2.6.1:
-  version "2.6.1"
-  resolved "https://registry.yarnpkg.com/schema-utils/-/schema-utils-2.6.1.tgz#eb78f0b945c7bcfa2082b3565e8db3548011dc4f"
-  integrity sha512-0WXHDs1VDJyo+Zqs9TKLKyD/h7yDpHUhEFsM2CzkICFdoX1av+GBq/J2xRTFfsQO5kBfhZzANf2VcIm84jqDbg==
-  dependencies:
-    ajv "^6.10.2"
-    ajv-keywords "^3.4.1"
 
 scroll-behavior@^0.9.10:
   version "0.9.10"
