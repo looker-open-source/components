@@ -11,10 +11,7 @@ import styled from 'styled-components'
 export interface ActionListHeaderProps
   extends BorderProps,
     ColorProps,
-    SpaceProps {
-  // TODO: Figure out what actual props needs to be passed in
-  pizza?: string
-}
+    SpaceProps {}
 
 export const ActionListHeader = styled.div<ActionListHeaderProps>`
   ${color}
