@@ -25,7 +25,7 @@
  */
 
 import { WidthProperty } from 'csstype'
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, ReactNode } from 'react'
 import styled, { css } from 'styled-components'
 import { ResponsiveValue, TLengthStyledSystem } from 'styled-system'
 import {
@@ -40,10 +40,12 @@ import { FlexItem } from '../../Layout/FlexItem'
 import { FormControl, FormControlDirections } from '../FormControl/FormControl'
 import { Label } from '../Label/Label'
 import { Text } from '../../Text/Text'
+import { Paragraph } from '../../Text/Paragraph'
 import {
   ValidationMessage,
   ValidationMessageProps,
 } from '../ValidationMessage/ValidationMessage'
+import { Flex } from '../../Layout'
 
 type ResponsiveSpaceValue = ResponsiveValue<TLengthStyledSystem>
 
@@ -67,10 +69,14 @@ export interface FieldProps {
    * Determines where to place the validation message in relation to the input.
    */
   alignValidationMessage?: FormControlDirections
+  /*
+   * optional extra description
+   */
+  description?: ReactNode
   /**
    * notes and details added to the top right corner of the field
    */
-  detail?: string
+  detail?: ReactNode
   /**
    * Id of the input element to match a label to.
    */
@@ -106,6 +112,8 @@ export interface FieldProps {
 export const fieldPropKeys = [
   'alignLabel',
   'alignValidationMessage',
+  'description',
+  'detail',
   'id',
   'label',
   'labelFontSize',
@@ -176,6 +184,7 @@ const getValidationMessageAlignment = (
 const FieldComponent: FunctionComponent<FieldProps> = ({
   alignValidationMessage,
   children,
+  description,
   detail,
   id,
   label,
@@ -185,16 +194,19 @@ const FieldComponent: FunctionComponent<FieldProps> = ({
   validationMessage,
   ...props
 }) => {
-  console.log('detail: ', detail)
-  console.log('label: ', label)
-
   return (
     <FormControl mb="xsmall" {...props}>
-      <Label htmlFor={id} fontWeight={labelFontWeight} fontSize={labelFontSize}>
-        {label}
-        {required && <RequiredStar />}
-      </Label>
-      <Text fontSize="xsmall">{detail}</Text>
+      <Flex alignItems="left" justifyContent="space-between">
+        <Label
+          htmlFor={id}
+          fontWeight={labelFontWeight}
+          fontSize={labelFontSize}
+        >
+          {label}
+          {required && <RequiredStar />}
+        </Label>
+        {detail && <Text fontSize="xsmall">{detail}</Text>}
+      </Flex>
       <FormControl
         alignLabel={getValidationMessageAlignment(alignValidationMessage)}
         mb="xsmall"
@@ -207,6 +219,11 @@ const FieldComponent: FunctionComponent<FieldProps> = ({
           />
         ) : null}
       </FormControl>
+      {description && (
+        <Paragraph mt="none" fontSize="xsmall">
+          {description}
+        </Paragraph>
+      )}
     </FormControl>
   )
 }

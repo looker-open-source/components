@@ -27,8 +27,14 @@ import { ThemeProvider } from 'styled-components'
 const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
-      <Field required detail="0/50" label="First" />
-      <FieldText required detail="0/50" label="First" name="firstName" />
+      <Field required description="description" detail="0/50" label="First" />
+      <FieldText
+        required
+        description="description"
+        detail="0/50"
+        label="First"
+        name="firstName"
+      />
     </ThemeProvider>
   )
 }
