@@ -5,23 +5,30 @@ import {
   ColorProps,
   space,
   SpaceProps,
+  typography,
+  TypographyProps,
 } from '@looker/design-tokens'
 import styled from 'styled-components'
 
 export interface ActionListHeaderProps
   extends BorderProps,
     ColorProps,
-    SpaceProps {}
+    SpaceProps,
+    TypographyProps {}
 
 export const ActionListHeader = styled.div<ActionListHeaderProps>`
   ${color}
   ${border}
   ${space}
+  ${typography}
 `
 
 ActionListHeader.defaultProps = {
   backgroundColor: 'palette.white',
   borderBottom: 'solid 1px',
   borderColor: 'palette.charcoal200',
-  p: 'small',
+  color: 'palette.charcoal900',
+  fontSize: 'xsmall',
+  fontWeight: 'semiBold',
+  py: 'small',
 }
