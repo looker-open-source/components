@@ -1,31 +1,27 @@
-import {
-  color,
-  ColorProps,
-  typography,
-  TypographyProps,
-} from '@looker/design-tokens'
+import { typography, TypographyProps } from '@looker/design-tokens'
 import styled from 'styled-components'
 import { ActionListHeader } from './ActionListHeader/ActionListHeader'
+import { ActionListItem } from './ActionListItem'
 
-export interface ActionListProps extends ColorProps, TypographyProps {
+export interface ActionListProps extends TypographyProps {
   columns: string[]
 }
 
 export const ActionList = styled.div<ActionListProps>`
-  /* TODO: Actually figure out width */
-  width: 100%;
-  ${color}
   ${typography}
 
+  width: 100%;
+
   ${ActionListHeader} {
+    display: grid;
+    grid-template-columns: ${props => props.columns};
+  }
+  ${ActionListItem} {
     display: grid;
     grid-template-columns: ${props => props.columns};
   }
 `
 
 ActionList.defaultProps = {
-  color: 'palette.charcoal900',
   fontFamily: 'brand',
-  fontSize: 'xsmall',
-  fontWeight: 'semiBold',
 }
