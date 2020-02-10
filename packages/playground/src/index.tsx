@@ -20,17 +20,19 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { GlobalStyle } from '@looker/components'
+import { InputText } from '@looker/components'
 import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
-
-import { MixedStateCheckboxDemo } from './Checkbox/MixedStateCheckboxDemo'
 
 const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <MixedStateCheckboxDemo />
+      <InputText
+        iconAfter="Check"
+        iconBefore="GearOutline"
+        prefix="$"
+        suffix="%"
+      />
     </ThemeProvider>
   )
 }

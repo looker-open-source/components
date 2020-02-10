@@ -41,9 +41,13 @@ import {
   reset,
   color,
 } from '@looker/design-tokens'
+import { IconNames } from '@looker/icons'
 import React, { forwardRef, Ref } from 'react'
 import styled, { css } from 'styled-components'
 import { InputProps, inputPropKeys } from '../InputProps'
+import { Flex } from '../../../Layout/Flex/Flex'
+import { Icon } from '../../../Icon/Icon'
+import { Text } from '../../../Text/Text'
 
 export const CustomizableInputTextAttributes: CustomizableAttributes = {
   borderRadius: 'medium',
@@ -60,6 +64,10 @@ export interface InputTextProps
     SpaceProps,
     TypographyProps,
     Omit<InputProps, 'type'> {
+  iconAfter?: IconNames
+  iconBefore?: IconNames
+  prefix?: string
+  suffix?: string
   /**
    *
    * @default 'text'
@@ -80,14 +88,30 @@ export interface InputTextProps
 }
 
 const InputComponent = forwardRef(
-  ({ type = 'text', ...props }: InputTextProps, ref: Ref<HTMLInputElement>) => {
+  (
+    {
+      type = 'text',
+      iconAfter,
+      iconBefore,
+      prefix,
+      suffix,
+      ...props
+    }: InputTextProps,
+    ref: Ref<HTMLInputElement>
+  ) => {
     return (
-      <input
-        {...pick(omit(props, 'color', 'height', 'width'), inputPropKeys)}
-        type={type}
-        className={props.className}
-        ref={ref}
-      />
+      <Flex alignItems="left" justifyContent="flex-start">
+        {prefix && <Text fontSize="small">{prefix}</Text>}
+        {iconBefore && <Icon name={iconBefore} size={20} />}
+        <input
+          {...pick(omit(props, 'color', 'height', 'width'), inputPropKeys)}
+          type={type}
+          className={props.className}
+          ref={ref}
+        />
+        {iconAfter && <Icon name={iconAfter} size={20} />}
+        {suffix && <Text fontSize="small">{suffix}</Text>}
+      </Flex>
     )
   }
 )
