@@ -28,7 +28,7 @@
     "@looker/design-tokens": "^0.7.15",
     "@looker/icons": "^0.7.18",
     "@types/react-transition-group": "^4.2.3",
-    "@types/styled-system": "^5.1.5",
+    "@types/styled-system": "^5.1.6",
     "d3-color": "^1.4.0",
     "d3-hsv": "^0.1.0",
     "focus-trap": "^5.1.0",
