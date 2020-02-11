@@ -2288,10 +2288,12 @@
     stylelint-processor-styled-components "^1.9.0"
     typescript "^3.7.5"
 
-"@looker/prettier-config@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@looker/prettier-config/-/prettier-config-1.0.1.tgz#5194f929043760ca029aff09cfd5b18c4d4c4a3a"
-  integrity sha512-PKgkNkmHjbtyFL232TxtuVpPv7O5b3OyVpclHuO8muvBkHGWP4P9Y4Sp/ivM2cOMOxGmBxZkv37v57vEEYoKEQ==
+"@looker/prettier-config@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@looker/prettier-config/-/prettier-config-1.0.6.tgz#c43b14fa11bb5b29311c8b14d8264b3fa9f11871"
+  integrity sha512-r/zg5nVAQLgw0e0mIJiPFhCt5kqSv8AP81bK8DA8KrHVB/kttT9KdBhNZCIWL9ugpbik2AGLe1xwD7tprRifJQ==
+  dependencies:
+    prettier ">=1.19.1"
 
 "@looker/sdk@^0.2.0-beta.29":
   version "0.2.0-beta.29"
@@ -14931,7 +14933,7 @@ prettier-linter-helpers@^1.0.0:
   dependencies:
     fast-diff "^1.1.2"
 
-prettier@^1.17.1, prettier@^1.19.1:
+prettier@>=1.19.1, prettier@^1.17.1, prettier@^1.19.1:
   version "1.19.1"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.19.1.tgz#f7d7f5ff8a9cd872a7be4ca142095956a60797cb"
   integrity sha512-s7PoyDv/II1ObgQunCbB9PdLmUcBZcnWOcxDh7O0N/UwDEsHyqkW+Qh28jW+mVuCdx7gLB0BotYI1Y6uI9iyew==
