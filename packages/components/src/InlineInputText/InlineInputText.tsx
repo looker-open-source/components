@@ -36,20 +36,19 @@ export const InlineInputText: FC<ExpandingTitleInputProps> = ({ title }) => {
 
   return (
     <Container>
-      <InnerInput onChange={handleTitleChange} value={titleChange} />
+      <Input onChange={handleTitleChange} value={titleChange} />
       <HiddenText>{titleChange}</HiddenText>
     </Container>
   )
 }
 
-const InnerInput = styled(InputText)`
+const Input = styled.input.attrs({ type: 'text' })`
   ${typography};
 
   background: transparent;
   border: none;
   border-bottom: 1px dashed;
   border-radius: 0;
-  height: 32px;
 
   :focus,
   :hover {
@@ -72,7 +71,7 @@ const Container = styled.div`
   height: ${props => props.theme.space.xxlarge};
   justify-content: center;
 
-  ${InnerInput} {
+  ${Input} {
     border-bottom-color: #262d33;
     color: #262d33;
     padding: 0 8px;
