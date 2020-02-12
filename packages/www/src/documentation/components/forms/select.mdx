@@ -99,6 +99,47 @@ A name and ID can be specified in the `<Select />` component. Names are importan
 />
 ```
 
+## Groups
+
+Options can be grouped with a `title` string.
+
+```jsx
+<Select
+  options={[
+    {
+      options: [
+        { value: 'cheddar', label: 'Cheddar' },
+        { value: 'gouda', label: 'Gouda' },
+        { value: 'swiss', label: 'Swiss' },
+      ],
+      title: 'CHEESES',
+    },
+    {
+      options: [
+        { value: 'grape', label: 'Grapes' },
+        { value: 'apple', label: 'Apples' },
+        { value: 'strawberries', label: 'Strawberries' },
+      ],
+      title: 'FRUITS',
+    },
+  ]}
+/>
+```
+
+## Descriptions
+
+Options can have a `description` property.
+
+```jsx
+<Select
+  options={[
+    { value: 'cheddar', label: 'Cheddar', description: 'Popular in the US' },
+    { value: 'gouda', label: 'Gouda', description: 'Dutch sheeps milk' },
+    { value: 'swiss', label: 'Swiss', description: 'Full of holes' },
+  ]}
+/>
+```
+
 ## Disabled Property
 
 Use the disable property to make an input field uneditable.
