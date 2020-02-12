@@ -34,48 +34,94 @@ import { Select } from './Select'
 
 afterEach(cleanup)
 
-describe('<Select/> with options', () => {
-  test('with handleChange', () => {
-    const options = [{ value: 'FOO' }, { value: 'BAR' }]
-    const handleChange = jest.fn()
-    const {
-      // getAllByRole,
-      queryByText,
-      getByText,
-      getByPlaceholderText,
-    } = renderWithTheme(
-      <Select
-        options={options}
-        id="with-options"
-        placeholder="Search"
-        onChange={handleChange}
-      />
-    )
-    expect(queryByText('FOO')).not.toBeInTheDocument()
-    expect(queryByText('BAR')).not.toBeInTheDocument()
+describe('<Select/>', () => {
+  describe('with options', () => {
+    test('with handleChange', () => {
+      const options = [{ value: 'FOO' }, { value: 'BAR' }]
+      const handleChange = jest.fn()
+      const {
+        // getAllByRole,
+        queryByText,
+        getByText,
+        getByPlaceholderText,
+      } = renderWithTheme(
+        <Select
+          options={options}
+          id="with-options"
+          placeholder="Search"
+          onChange={handleChange}
+        />
+      )
+      expect(queryByText('FOO')).not.toBeInTheDocument()
+      expect(queryByText('BAR')).not.toBeInTheDocument()
 
-    const input = getByPlaceholderText('Search')
-    expect(input).toBeVisible()
+      const input = getByPlaceholderText('Search')
+      expect(input).toBeVisible()
 
-    act(() => {
-      fireEvent.mouseDown(input)
+      act(() => {
+        fireEvent.mouseDown(input)
+      })
+
+      // const foo = getByText('FOO')
+      const bar = getByText('BAR')
+
+      // Clicking on the options should fire onBlur on the input and
+      // trigger the state transition that allows in an updated input value.
+      // It doesn't, and the following doesn't work to fake it, so we can't test input value.
+      // act(() => {
+      // getAllByRole('option')[0].focus()
+      // input.blur()
+      // })
+      fireEvent.click(bar)
+      // fireEvent.click(foo)
+
+      expect(handleChange).toHaveBeenCalledTimes(1)
+      // expect(handleChange).toHaveBeenCalledWith({ value: 'FOO' })
+      expect(handleChange).toHaveBeenCalledWith('BAR')
     })
+  })
 
-    // const foo = getByText('FOO')
-    const bar = getByText('BAR')
+  describe('with options groups', () => {
+    test('renders group titles', () => {
+      const options = [
+        {
+          options: [{ value: 'BAR' }, { value: 'BAZ' }],
+          title: 'FOO',
+        },
+        {
+          options: [{ value: 'something' }],
+          title: 'OTHER',
+        },
+      ]
+      const handleChange = jest.fn()
+      const { getByText, getByPlaceholderText } = renderWithTheme(
+        <Select
+          options={options}
+          id="with-options"
+          placeholder="Search"
+          onChange={handleChange}
+        />
+      )
 
-    // Clicking on the options should fire onBlur on the input and
-    // trigger the state transition that allows in an updated input value.
-    // It doesn't, and the following doesn't work to fake it, so we can't test input value.
-    // act(() => {
-    // getAllByRole('option')[0].focus()
-    // input.blur()
-    // })
-    fireEvent.click(bar)
-    // fireEvent.click(foo)
+      const input = getByPlaceholderText('Search')
+      expect(input).toBeVisible()
 
-    expect(handleChange).toHaveBeenCalledTimes(1)
-    // expect(handleChange).toHaveBeenCalledWith({ value: 'FOO' })
-    expect(handleChange).toHaveBeenCalledWith('BAR')
+      act(() => {
+        fireEvent.mouseDown(input)
+      })
+
+      const foo = getByText('FOO')
+      const other = getByText('OTHER')
+      const bar = getByText('BAR')
+
+      expect(foo).toBeInTheDocument()
+      expect(other).toBeInTheDocument()
+
+      fireEvent.click(foo)
+      fireEvent.click(bar)
+
+      expect(handleChange).toHaveBeenCalledTimes(1)
+      expect(handleChange).toHaveBeenCalledWith('BAR')
+    })
   })
 })

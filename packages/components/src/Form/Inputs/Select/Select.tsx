@@ -218,7 +218,7 @@ const SelectComponent = forwardRef(
               options.map((option: SelectOptionProps, index: number) => {
                 const optionAsGroup = option as SelectOptionGroupProps
                 return optionAsGroup.title ? (
-                  <SelectOptionGroup {...optionAsGroup} />
+                  <SelectOptionGroup key={index} {...optionAsGroup} />
                 ) : (
                   renderOption(option as ComboboxOptionObject, index)
                 )
