@@ -20,7 +20,7 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { InlineInputText } from '@looker/components'
+import { InlineInputText, Paragraph } from '@looker/components'
 import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
 
@@ -28,6 +28,10 @@ const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <InlineInputText title="type here..." />
+      <Paragraph>---------</Paragraph>
+      <InlineInputText simple title="type here..." />
+      <Paragraph>---------</Paragraph>
+      <InlineInputText />
     </ThemeProvider>
   )
 }

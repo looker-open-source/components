@@ -21,14 +21,17 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
 import { typography } from '@looker/design-tokens'
-import { InputText } from '../Form'
 import { Text } from '../Text'
 
-interface ExpandingTitleInputProps {
+interface InlineInputTextProps {
   title: string
+  simple?: boolean
 }
 
-export const InlineInputText: FC<ExpandingTitleInputProps> = ({ title }) => {
+export const InlineInputText: FC<InlineInputTextProps> = ({
+  title = 'Add a title',
+  simple = false,
+}) => {
   const [titleChange, setTitleChange] = React.useState(title)
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTitleChange(event.currentTarget.value)
@@ -36,27 +39,41 @@ export const InlineInputText: FC<ExpandingTitleInputProps> = ({ title }) => {
 
   return (
     <Container>
-      <Input onChange={handleTitleChange} value={titleChange} />
+      <Input onChange={handleTitleChange} simple={simple} value={titleChange} />
       <HiddenText>{titleChange}</HiddenText>
     </Container>
   )
 }
 
-const Input = styled.input.attrs({ type: 'text' })`
+const Input = styled.input.attrs({ type: 'text' })<InlineInputTextProps>`
   ${typography};
 
   background: transparent;
   border: none;
   border-bottom: 1px dashed;
-  border-radius: 0;
+  border-bottom-color: ${props => props.theme.colors.palette.charcoal300};
+  padding: 0 8px;
+  font-size: ${props => props.theme.fontSizes.xlarge};
+  font-weight: ${props => props.theme.fontWeights.normal};
 
   :focus,
   :hover {
     outline: none;
-    border: none;
-    box-shadow: none;
-    border-bottom: 1px solid;
+    border-bottom-color: ${props => props.theme.colors.palette.purple400};
+    background-color: ${props => props.theme.colors.palette.charcoal100};
   }
+
+  :focus {
+    border-bottom: 1px solid;
+    border-bottom-color: ${props => props.theme.colors.palette.purple400};
+  }
+
+  ${props =>
+    props.simple &&
+    `background: transparent;
+    border: none;
+    border-bottom: none;
+  `};
 `
 
 const HiddenText = styled(Text)`
@@ -70,14 +87,6 @@ const Container = styled.div`
   flex-direction: column;
   height: ${props => props.theme.space.xxlarge};
   justify-content: center;
-
-  ${Input} {
-    border-bottom-color: #262d33;
-    color: #262d33;
-    padding: 0 8px;
-    font-size: ${props => props.theme.fontSizes.xlarge};
-    font-weight: ${props => props.theme.fontWeights.normal};
-  }
 
   ${HiddenText} {
     padding: 0 8px;
