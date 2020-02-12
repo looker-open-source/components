@@ -139,6 +139,8 @@ export const ComboboxList = styled(ComboboxListInternal)`
   ${typography}
   ${space}
   list-style-type: none;
+  padding: 0;
+  margin: 0;
 `
 
 ComboboxList.defaultProps = {
