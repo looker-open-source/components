@@ -24,16 +24,19 @@
 
  */
 
-import React, { forwardRef, Ref, FormEvent } from 'react'
+import React, { forwardRef, Ref, FormEvent, ReactNode } from 'react'
 import styled from 'styled-components'
 import { CustomizableAttributes } from '@looker/design-tokens'
+import { Box } from '../../../Layout'
 import { ListItem } from '../../../List'
+import { Heading } from '../../../Text'
 import { ValidationType } from '../../ValidationMessage'
 import {
   Combobox,
   ComboboxInput,
   ComboboxList,
   ComboboxOption,
+  comboboxOptionGrid,
   ComboboxOptionObject,
   ComboboxProps,
   getComboboxText,
@@ -47,18 +50,12 @@ export const CustomizableSelectAttributes: CustomizableAttributes = {
   py: 'none',
 }
 
-export type OptionsType<OptionType> = OptionType[]
-
-export interface GroupType<OptionType> {
-  options: OptionsType<OptionType>
-  [key: string]: any
+export interface SelectOptionGroupProps {
+  options: ComboboxOptionObject[]
+  title: string | ReactNode
 }
 
-export type GroupedOptionsType<UnionOptionType> = Array<
-  GroupType<UnionOptionType>
->
-
-export type SelectOptionProps = ComboboxOptionObject
+export type SelectOptionProps = ComboboxOptionObject | SelectOptionGroupProps
 
 export interface SelectProps
   extends Omit<ComboboxProps, 'value' | 'defaultValue' | 'onChange'> {
@@ -96,9 +93,57 @@ export interface SelectProps
   onChange?: (value: string) => void
 }
 
-function getOption(value?: string, options?: SelectOptionProps[]) {
-  return value ? { label: getComboboxText(value, options), value } : undefined
+function flattenOptions(options: SelectOptionProps[]) {
+  return options.reduce(
+    (acc: ComboboxOptionObject[], option: SelectOptionProps) => {
+      const optionAsGroup = option as SelectOptionGroupProps
+      if (optionAsGroup.title) {
+        return [...acc, ...optionAsGroup.options]
+      }
+      return [...acc, option as ComboboxOptionObject]
+    },
+    []
+  )
 }
+
+function getOption(value?: string, options?: SelectOptionProps[]) {
+  const flattenedOptions = options && flattenOptions(options)
+  return value
+    ? { label: getComboboxText(value, flattenedOptions), value }
+    : undefined
+}
+
+function getFirstOption(options: SelectOptionProps[]): ComboboxOptionObject {
+  const optionAsGroup = options[0] as SelectOptionGroupProps
+  if (optionAsGroup.title) return optionAsGroup.options[0]
+  return options[0] as ComboboxOptionObject
+}
+
+const renderOption = (option: ComboboxOptionObject, index: number) => (
+  <ComboboxOption {...option} key={index} />
+)
+
+const SelectOptionGroupTitle = styled(Heading)`
+  ${comboboxOptionGrid}
+`
+
+SelectOptionGroupTitle.defaultProps = {
+  fontSize: 'xxsmall',
+  fontWeight: 'semiBold',
+  px: 'xsmall',
+  py: 'xxsmall',
+  variant: 'subdued',
+}
+
+const SelectOptionGroup = ({ options, title }: SelectOptionGroupProps) => (
+  <Box py="xxsmall">
+    <SelectOptionGroupTitle>
+      <span />
+      {title}
+    </SelectOptionGroupTitle>
+    {options.map(renderOption)}
+  </Box>
+)
 
 const SelectComponent = forwardRef(
   (
@@ -121,7 +166,7 @@ const SelectComponent = forwardRef(
   ) => {
     const optionValue = getOption(value, options)
     const defaultOptionValue =
-      getOption(defaultValue, options) || (options && options[0])
+      getOption(defaultValue, options) || (options && getFirstOption(options))
 
     function handleChange(option?: ComboboxOptionObject) {
       const newValue = option ? option.value : ''
@@ -170,9 +215,14 @@ const SelectComponent = forwardRef(
         {!disabled && (
           <ComboboxList persistSelection {...ariaProps}>
             {options && options.length > 0 ? (
-              options.map((option, index: number) => (
-                <ComboboxOption {...option} key={index} />
-              ))
+              options.map((option: SelectOptionProps, index: number) => {
+                const optionAsGroup = option as SelectOptionGroupProps
+                return optionAsGroup.title ? (
+                  <SelectOptionGroup {...optionAsGroup} />
+                ) : (
+                  renderOption(option as ComboboxOptionObject, index)
+                )
+              })
             ) : (
               <ListItem fontSize="small" px="medium" py="xxsmall">
                 No options

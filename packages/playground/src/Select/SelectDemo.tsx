@@ -37,6 +37,14 @@ const options = [
   { label: 'Kiwis', value: '5' },
 ]
 
+const optionsWithGroups = [
+  { options, title: 'FRUITS' },
+  {
+    options: [{ label: 'Honda', value: 'honda' }],
+    title: 'CARS',
+  },
+]
+
 export function SelectContent() {
   const [value, setValue] = React.useState()
   const [searchTerm, setSearchTerm] = React.useState('')
@@ -101,7 +109,7 @@ export function SelectContent() {
       <FieldSelect
         label="Error"
         width={300}
-        options={options}
+        options={optionsWithGroups}
         aria-label="Fruits"
         placeholder="Select One"
         defaultValue="1"
