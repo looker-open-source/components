@@ -81,15 +81,17 @@ describe('<Select/>', () => {
     })
   })
 
-  describe('with options groups', () => {
-    test('renders group titles', () => {
+  describe('option variations', () => {
+    test('renders option descriptions and group titles', () => {
       const options = [
         {
           options: [{ value: 'BAR' }, { value: 'BAZ' }],
           title: 'FOO',
         },
         {
-          options: [{ value: 'something' }],
+          options: [
+            { description: 'A description for something', value: 'something' },
+          ],
           title: 'OTHER',
         },
       ]
@@ -112,16 +114,19 @@ describe('<Select/>', () => {
 
       const foo = getByText('FOO')
       const other = getByText('OTHER')
-      const bar = getByText('BAR')
+      const desc = getByText('A description for something')
 
       expect(foo).toBeInTheDocument()
       expect(other).toBeInTheDocument()
+      expect(desc).toBeInTheDocument()
 
+      // A click on a title shouldn't do anything
       fireEvent.click(foo)
-      fireEvent.click(bar)
+      // Description is part of the option so the click triggers change
+      fireEvent.click(desc)
 
       expect(handleChange).toHaveBeenCalledTimes(1)
-      expect(handleChange).toHaveBeenCalledWith('BAR')
+      expect(handleChange).toHaveBeenCalledWith('something')
     })
   })
 })

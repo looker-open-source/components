@@ -29,7 +29,7 @@ import styled from 'styled-components'
 import { CustomizableAttributes } from '@looker/design-tokens'
 import { Box } from '../../../Layout'
 import { ListItem } from '../../../List'
-import { Heading } from '../../../Text'
+import { Heading, Paragraph } from '../../../Text'
 import { ValidationType } from '../../ValidationMessage'
 import {
   Combobox,
@@ -38,6 +38,7 @@ import {
   ComboboxOption,
   comboboxOptionGrid,
   ComboboxOptionObject,
+  ComboboxOptionText,
   ComboboxProps,
   getComboboxText,
 } from '../Combobox'
@@ -50,12 +51,16 @@ export const CustomizableSelectAttributes: CustomizableAttributes = {
   py: 'none',
 }
 
+export interface SelectOptionObject extends ComboboxOptionObject {
+  description?: string | ReactNode
+}
+
 export interface SelectOptionGroupProps {
-  options: ComboboxOptionObject[]
+  options: SelectOptionObject[]
   title: string | ReactNode
 }
 
-export type SelectOptionProps = ComboboxOptionObject | SelectOptionGroupProps
+export type SelectOptionProps = SelectOptionObject | SelectOptionGroupProps
 
 export interface SelectProps
   extends Omit<ComboboxProps, 'value' | 'defaultValue' | 'onChange'> {
@@ -95,12 +100,12 @@ export interface SelectProps
 
 function flattenOptions(options: SelectOptionProps[]) {
   return options.reduce(
-    (acc: ComboboxOptionObject[], option: SelectOptionProps) => {
+    (acc: SelectOptionObject[], option: SelectOptionProps) => {
       const optionAsGroup = option as SelectOptionGroupProps
       if (optionAsGroup.title) {
         return [...acc, ...optionAsGroup.options]
       }
-      return [...acc, option as ComboboxOptionObject]
+      return [...acc, option as SelectOptionObject]
     },
     []
   )
@@ -113,15 +118,29 @@ function getOption(value?: string, options?: SelectOptionProps[]) {
     : undefined
 }
 
-function getFirstOption(options: SelectOptionProps[]): ComboboxOptionObject {
+function getFirstOption(options: SelectOptionProps[]): SelectOptionObject {
   const optionAsGroup = options[0] as SelectOptionGroupProps
   if (optionAsGroup.title) return optionAsGroup.options[0]
-  return options[0] as ComboboxOptionObject
+  return options[0] as SelectOptionObject
 }
 
-const renderOption = (option: ComboboxOptionObject, index: number) => (
-  <ComboboxOption {...option} key={index} />
-)
+const renderOption = (option: SelectOptionObject, index: number) => {
+  if (option.description) {
+    return (
+      <ComboboxOption {...option} key={index} py="xxsmall">
+        <Box>
+          <Heading fontSize="small" fontWeight="semiBold" pb="xxsmall">
+            <ComboboxOptionText />
+          </Heading>
+          <Paragraph variant="subdued" fontSize="small">
+            {option.description}
+          </Paragraph>
+        </Box>
+      </ComboboxOption>
+    )
+  }
+  return <ComboboxOption {...option} key={index} />
+}
 
 const SelectOptionGroupTitle = styled(Heading)`
   ${comboboxOptionGrid}
@@ -168,7 +187,7 @@ const SelectComponent = forwardRef(
     const defaultOptionValue =
       getOption(defaultValue, options) || (options && getFirstOption(options))
 
-    function handleChange(option?: ComboboxOptionObject) {
+    function handleChange(option?: SelectOptionObject) {
       const newValue = option ? option.value : ''
       onChange && onChange(newValue)
       onFilter && onFilter('')
@@ -220,7 +239,7 @@ const SelectComponent = forwardRef(
                 return optionAsGroup.title ? (
                   <SelectOptionGroup key={index} {...optionAsGroup} />
                 ) : (
-                  renderOption(option as ComboboxOptionObject, index)
+                  renderOption(option as SelectOptionObject, index)
                 )
               })
             ) : (
