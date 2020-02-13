@@ -24,9 +24,16 @@
 
  */
 
-import React, { useState, ChangeEvent, FormEvent, forwardRef, Ref } from 'react'
+import React, {
+  useRef,
+  useState,
+  ChangeEvent,
+  FormEvent,
+  forwardRef,
+  Ref,
+} from 'react'
 import styled from 'styled-components'
-import uuid from 'uuid/v4'
+import { useID, useControlWarn } from '../../../utils'
 import { usePopover, PopoverContent } from '../../../Popover'
 import { InputText, InputTextProps } from '../../Inputs/InputText'
 import { Field, FieldProps, omitFieldProps, pickFieldProps } from '../Field'
@@ -57,8 +64,8 @@ export interface FieldColorProps
    * If true, hides input and only show color swatch.
    */
   hideInput?: boolean
-
   value?: string
+  defaultValue?: string
 }
 
 const createEventWithHSVValue = (
@@ -74,35 +81,62 @@ const createEventWithHSVValue = (
   } as ChangeEvent<HTMLInputElement>
 }
 
+function getColorFromText(text?: string) {
+  return text && isValidColor(text) ? str2simpleHsv(text) : undefined
+}
+
 export const FieldColorComponent = forwardRef(
   (
     {
       alignValidationMessage,
       hideInput,
-      id = uuid(),
+      id,
+      onChange,
+      value: controlledValue,
+      defaultValue,
       ...props
     }: FieldColorProps,
     ref: Ref<HTMLInputElement>
   ) => {
-    const validationMessage = useFormContext(props)
+    const isControlled = useControlWarn({
+      controllingProps: ['onChange', 'value'],
+      isControlledCheck: () => onChange !== undefined,
+      name: 'ButtonGroup',
+    })
+
+    const colorFromProps = getColorFromText(controlledValue)
+    const defaultColorFromProps = getColorFromText(defaultValue)
+
     const initialWhite = polarbrightness2hsv(white())
-    const initialValue =
-      props.value && isValidColor(props.value)
-        ? str2simpleHsv(props.value)
-        : initialWhite
+    const initialValue = colorFromProps
+      ? controlledValue
+      : defaultColorFromProps
+      ? defaultValue
+      : ''
+    const initialColor = colorFromProps || defaultColorFromProps || initialWhite
 
-    const [color, setColor] = useState<SimpleHSV>(initialValue)
-    const [inputTextValue, setInputTextValue] = useState(props.value || '')
+    const [color, setColor] = useState<SimpleHSV>(initialColor)
+    const [value, setValue] = useState(initialValue)
 
-    const callOnChange = (newColor: SimpleHSV) => {
-      if (!props.onChange || !newColor) return
-      props.onChange(createEventWithHSVValue(newColor))
+    // If there's been an external change, update the input text value
+    const isInputting = useRef(false)
+    if (controlledValue && value !== controlledValue && !isInputting.current) {
+      setValue(controlledValue)
+    }
+
+    const colorToUse = isControlled ? colorFromProps || initialWhite : color
+
+    const updateColor = (newColor: SimpleHSV) => {
+      if (onChange) {
+        onChange(createEventWithHSVValue(newColor))
+      } else {
+        setColor(newColor)
+      }
     }
 
     const setColorState = (newColor: SimpleHSV) => {
-      setColor(newColor)
-      newColor && setInputTextValue(simpleHSVtoFormattedColorString(newColor))
-      callOnChange(newColor)
+      newColor && setValue(simpleHSVtoFormattedColorString(newColor))
+      updateColor(newColor)
     }
 
     const handleColorChange = (hs: HueSaturation) =>
@@ -110,34 +144,42 @@ export const FieldColorComponent = forwardRef(
 
     const handleSliderChange = (event: FormEvent<HTMLInputElement>) =>
       setColorState({
-        ...color,
+        ...colorToUse,
         v: Number(event.currentTarget.value) / 100,
       })
 
     const handleInputTextChange = (event: FormEvent<HTMLInputElement>) => {
-      const value = event.currentTarget.value
-      setInputTextValue(value)
+      isInputting.current = true
+      const newValue = event.currentTarget.value
+      setValue(newValue)
 
       const newColor =
-        !value || !isValidColor(value) ? initialWhite : str2simpleHsv(value)
-      setColor(newColor)
-      callOnChange(newColor)
+        !newValue || !isValidColor(newValue)
+          ? initialWhite
+          : str2simpleHsv(newValue)
+      updateColor(newColor)
+
+      window.requestAnimationFrame(() => {
+        isInputting.current = false
+      })
     }
+    const inputID = useID(id)
+    const validationMessage = useFormContext(props)
 
     const content = (
       <PopoverContent display="flex" flexDirection="column">
         <ColorWheel
           size={colorWheelSize}
-          hue={color.h}
-          saturation={color.s}
-          value={color.v}
+          hue={colorToUse.h}
+          saturation={colorToUse.s}
+          value={colorToUse.v}
           onColorChange={handleColorChange}
         />
         <LuminositySlider
           min={0}
           max={100}
           step={1}
-          value={color.v * 100}
+          value={colorToUse.v * 100}
           width={colorWheelSize}
           onChange={handleSliderChange}
         />
@@ -148,7 +190,7 @@ export const FieldColorComponent = forwardRef(
 
     return (
       <Field
-        id={id}
+        id={inputID}
         validationMessage={validationMessage}
         alignValidationMessage={alignValidationMessage || 'bottom'}
         {...pickFieldProps(props)}
@@ -156,7 +198,7 @@ export const FieldColorComponent = forwardRef(
         <FormControl alignLabel="left">
           <Swatch
             ref={triggerRef}
-            color={hsv2hex(color)}
+            color={hsv2hex(colorToUse)}
             borderRadius={hideInput ? 'medium' : 'none'}
             borderTopLeftRadius="medium"
             borderBottomLeftRadius="medium"
@@ -169,14 +211,14 @@ export const FieldColorComponent = forwardRef(
           {!hideInput && (
             <InputText
               {...omitFieldProps(props)}
-              id={id}
+              id={inputID}
               ref={ref}
               borderRadius="none"
               borderTopRightRadius="medium"
               borderBottomRightRadius="medium"
               validationType={validationMessage && validationMessage.type}
               onChange={handleInputTextChange}
-              value={inputTextValue}
+              value={value}
             />
           )}
         </FormControl>
