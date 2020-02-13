@@ -54,6 +54,7 @@ exports[`A FieldSelect 1`] = `
 }
 
 .c4 {
+  box-sizing: border-box;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -262,6 +263,7 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
 }
 
 .c5 {
+  box-sizing: border-box;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -514,6 +516,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
 }
 
 .c5 {
+  box-sizing: border-box;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -740,6 +743,7 @@ exports[`A required FieldSelect 1`] = `
 }
 
 .c5 {
+  box-sizing: border-box;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -937,6 +941,7 @@ exports[`FieldSelect supports labelWeight 1`] = `
 }
 
 .c4 {
+  box-sizing: border-box;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;

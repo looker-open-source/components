@@ -184,8 +184,10 @@ const SelectComponent = forwardRef(
     ref: Ref<HTMLInputElement>
   ) => {
     const optionValue = getOption(value, options)
-    const defaultOptionValue =
-      getOption(defaultValue, options) || (options && getFirstOption(options))
+    const nullDefault = (isClearable || placeholder) && !defaultValue
+    const defaultOptionValue = nullDefault
+      ? undefined
+      : getOption(defaultValue, options) || (options && getFirstOption(options))
 
     function handleChange(option?: SelectOptionObject) {
       const newValue = option ? option.value : ''
