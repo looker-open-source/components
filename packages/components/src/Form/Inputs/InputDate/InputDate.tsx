@@ -16,6 +16,7 @@ interface InputDateProps
     BorderProps {
   defaultValue?: Date
   onChange?: (date?: Date) => void
+  onValidationFail?: (value: string) => void
   locale?: LocaleCodes
 }
 
@@ -56,6 +57,7 @@ export const InputDate: FC<InputDateProps> = ({
   defaultValue,
   locale = Locales.English,
   validationType,
+  onValidationFail,
 }) => {
   const [selectedDate, setSelectedDate] = useState(defaultValue)
   const [validDate, setValidDate] = useState(validationType !== 'error')
@@ -95,7 +97,11 @@ export const InputDate: FC<InputDateProps> = ({
   const handleValidation = (e: SyntheticEvent<HTMLInputElement>) => {
     const value = (e.target as HTMLInputElement).value
     // is valid if text input is blank or parseDateFromString returns a date object
-    setValidDate(value.length === 0 || !!parseDateFromString(value, locale))
+    const isValid = value.length === 0 || !!parseDateFromString(value, locale)
+    setValidDate(isValid)
+    if (!isValid && isFunction(onValidationFail)) {
+      onValidationFail(value)
+    }
   }
 
   // navigate next/previous months in the calendar

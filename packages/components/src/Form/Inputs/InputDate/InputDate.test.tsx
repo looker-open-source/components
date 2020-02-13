@@ -56,16 +56,49 @@ test('calls onChange prop when a day is clicked', () => {
   )
 })
 
+test('updates text input value when day is clicked', () => {
+  const mockProps = {
+    onChange: jest.fn(),
+  }
+  const { getByText, getByTestId } = renderWithTheme(
+    <InputDate {...mockProps} />
+  )
+  expect(mockProps.onChange).not.toHaveBeenCalled()
+
+  const input = getByTestId('text-input') as HTMLInputElement
+  expect(input.value).toEqual('')
+
+  const date = getByText('15') // the 15th day of the month
+  fireEvent.click(date)
+
+  expect(input.value).toEqual('02/15/2020')
+})
+
 test('fills TextInput with defaultValue', () => {
   const mockProps = {
     defaultValue: new Date('June 3, 2019'),
     onChange: jest.fn(),
   }
-  const { queryByTestId } = renderWithTheme(<InputDate {...mockProps} />)
-  const input = queryByTestId('text-input') as HTMLInputElement
+  const { getByTestId } = renderWithTheme(<InputDate {...mockProps} />)
+  const input = getByTestId('text-input') as HTMLInputElement
   expect(input.value).toEqual('06/03/2019')
 })
 
-test('validates text input to match expected date format', () => {})
+test('validates text input to match localized date format', () => {
+  const mockProps = {
+    defaultValue: new Date('June 3, 2019'),
+    onValidationFail: jest.fn(),
+  }
+  const { getByTestId } = renderWithTheme(<InputDate {...mockProps} />)
+  const input = getByTestId('text-input') as HTMLInputElement
 
-test('updates text input value when day is clicked', () => {})
+  fireEvent.change(input, { target: { value: '6/3/2019' } })
+  fireEvent.blur(input) // validate on blur
+
+  expect(mockProps.onValidationFail).not.toHaveBeenCalled()
+
+  fireEvent.change(input, { target: { value: 'not-a-valid-date' } })
+  fireEvent.blur(input) // validate on blur
+
+  expect(mockProps.onValidationFail).toHaveBeenCalledTimes(1)
+})
