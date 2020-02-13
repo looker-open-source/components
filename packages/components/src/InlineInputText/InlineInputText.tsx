@@ -24,8 +24,8 @@ import { typography } from '@looker/design-tokens'
 import { Text } from '../Text'
 
 interface InlineInputTextProps {
-  title: string
   simple?: boolean
+  title?: string
 }
 
 export const InlineInputText: FC<InlineInputTextProps> = ({
@@ -73,6 +73,14 @@ const Input = styled.input.attrs({ type: 'text' })<InlineInputTextProps>`
     `background: transparent;
     border: none;
     border-bottom: none;
+    :hover {
+      border-bottom: 1px dashed;
+      border-bottom-color: ${props.theme.colors.palette.purple400};
+    }
+    :focus {
+      border-bottom: 1px solid;
+      border-bottom-color: ${props.theme.colors.palette.purple400};
+    }
   `};
 `
 
