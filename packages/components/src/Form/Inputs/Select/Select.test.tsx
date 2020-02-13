@@ -44,12 +44,7 @@ describe('<Select/>', () => {
       getByText,
       getByPlaceholderText,
     } = renderWithTheme(
-      <Select
-        options={options}
-        id="with-options"
-        placeholder="Search"
-        onChange={handleChange}
-      />
+      <Select options={options} placeholder="Search" onChange={handleChange} />
     )
     expect(queryByText('FOO')).not.toBeInTheDocument()
     expect(queryByText('BAR')).not.toBeInTheDocument()
@@ -93,12 +88,7 @@ describe('<Select/>', () => {
     ]
     const handleChange = jest.fn()
     const { getByText, getByPlaceholderText } = renderWithTheme(
-      <Select
-        options={options}
-        id="with-options"
-        placeholder="Search"
-        onChange={handleChange}
-      />
+      <Select options={options} placeholder="Search" onChange={handleChange} />
     )
 
     const input = getByPlaceholderText('Search')
@@ -131,12 +121,7 @@ describe('<Select/>', () => {
       { label: 'Bar', value: 'BAR' },
     ]
     const { getByPlaceholderText } = renderWithTheme(
-      <Select
-        options={options}
-        id="with-options"
-        placeholder="Search"
-        defaultValue="BAR"
-      />
+      <Select options={options} placeholder="Search" defaultValue="BAR" />
     )
 
     const input = getByPlaceholderText('Search')
@@ -147,7 +132,7 @@ describe('<Select/>', () => {
   test('placeholder, no defaultValue', () => {
     const options = [{ value: 'FOO' }, { value: 'BAR' }]
     const { getByPlaceholderText } = renderWithTheme(
-      <Select options={options} id="with-options" placeholder="Search" />
+      <Select options={options} placeholder="Search" />
     )
 
     const input = getByPlaceholderText('Search')
@@ -158,12 +143,7 @@ describe('<Select/>', () => {
   test('isClearable, no defaultValue', () => {
     const options = [{ value: 'FOO' }, { value: 'BAR' }]
     const { getByTestId } = renderWithTheme(
-      <Select
-        options={options}
-        id="with-options"
-        isClearable
-        data-testid="wrapper"
-      />
+      <Select options={options} isClearable data-testid="wrapper" />
     )
 
     const input = getByTestId('wrapper').querySelector('input')
@@ -177,11 +157,29 @@ describe('<Select/>', () => {
       { label: 'Bar', value: 'BAR' },
     ]
     const { getByTestId } = renderWithTheme(
-      <Select options={options} id="with-options" data-testid="wrapper" />
+      <Select options={options} data-testid="wrapper" />
     )
 
     const input = getByTestId('wrapper').querySelector('input')
     // should default to first option
     expect(input).toHaveValue('Foo')
+  })
+
+  test('no options', () => {
+    const handleChange = jest.fn()
+    const { getByPlaceholderText, getByText } = renderWithTheme(
+      <Select placeholder="Search" onChange={handleChange} />
+    )
+
+    const input = getByPlaceholderText('Search')
+
+    act(() => {
+      fireEvent.mouseDown(input)
+    })
+
+    const noOptions = getByText('No options')
+    fireEvent.click(noOptions)
+
+    expect(handleChange).not.toHaveBeenCalled()
   })
 })
