@@ -28,10 +28,7 @@ import 'jest-styled-components'
 import '@testing-library/jest-dom/extend-expect'
 import React from 'react'
 import { fireEvent } from '@testing-library/react'
-import {
-  assertSnapshotShallow,
-  renderWithTheme,
-} from '@looker/components-test-utils'
+import { renderWithTheme } from '@looker/components-test-utils'
 import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
 
@@ -39,10 +36,6 @@ import { Button } from '../../../Button'
 import { FieldColor } from './FieldColor'
 
 describe('FieldColor', () => {
-  test('Default render', () => {
-    assertSnapshotShallow(<FieldColor />)
-  })
-
   test('with hidden input', () => {
     const { queryByRole } = renderWithTheme(
       <FieldColor value="yellow" hideInput />
@@ -61,15 +54,16 @@ describe('FieldColor', () => {
     expect(getByDisplayValue('blue')).toBeInTheDocument()
   })
 
-  const FieldColorValidationMessage = () => {
-    return (
-      <ThemeProvider theme={theme}>
-        <FieldColor validationMessage={{ message: 'Error!', type: 'error' }} />
-      </ThemeProvider>
-    )
-  }
-
   test('with a validation message', () => {
+    const FieldColorValidationMessage = () => {
+      return (
+        <ThemeProvider theme={theme}>
+          <FieldColor
+            validationMessage={{ message: 'Error!', type: 'error' }}
+          />
+        </ThemeProvider>
+      )
+    }
     const { queryByText } = renderWithTheme(<FieldColorValidationMessage />)
     expect(queryByText('Error!')).toBeInTheDocument()
   })
