@@ -1,17 +1,13 @@
 import React, { FC, useState, SyntheticEvent } from 'react'
 import styled from 'styled-components'
+import format from 'date-fns/format'
 import isFunction from 'lodash/isFunction'
 import isValid from 'date-fns/isValid'
 import parse from 'date-fns/parse'
 import { BorderProps, SpaceProps } from '@looker/design-tokens'
 import { InputText } from '../InputText'
 import { Calendar } from '../../../Calendar'
-import {
-  LocaleCodes,
-  Locales,
-  dateFnLocaleMap,
-  formatDateString,
-} from '../../../utils'
+import { LocaleCodes, Locales, dateFnLocaleMap } from '../../../utils'
 import { InputProps } from '../InputProps'
 
 interface InputDateProps
@@ -24,7 +20,16 @@ interface InputDateProps
   className?: string
 }
 
-const formatYearFromDate = (date: Date): number => {
+export const formatDateString = (
+  date: Date = new Date(),
+  locale: LocaleCodes
+): string => {
+  return format(date, 'P', {
+    locale: dateFnLocaleMap[locale],
+  })
+}
+
+const formatYear = (date: Date): number => {
   const year = date.getFullYear()
   if (year < 100) {
     // convert 2-digit year (2/2/20) to 4-digit year (2/2/2020)
@@ -42,7 +47,7 @@ const parseDateFromString = (value: string, locale: Locales): Date | false => {
     locale: dateFnLocaleMap[locale],
   })
 
-  parsedValue.setFullYear(formatYearFromDate(parsedValue))
+  parsedValue.setFullYear(formatYear(parsedValue))
 
   return isValid(parsedValue) && parsedValue
 }
@@ -53,14 +58,14 @@ export const InputDate: FC<InputDateProps> = ({
   locale = Locales.English,
   validationType,
 }) => {
-  const [validDate, setValidDate] = useState(validationType !== 'error')
   const [selectedDate, setSelectedDate] = useState(defaultValue)
+  const [validDate, setValidDate] = useState(validationType !== 'error')
   const [textInputValue, setTextInputValue] = useState(
     selectedDate ? formatDateString(selectedDate, locale) : ''
   )
   const [viewMonth, setViewMonth] = useState(defaultValue)
 
-  const handleChange = (date?: Date) => {
+  const handleDateChange = (date?: Date) => {
     setValidDate(true)
     setSelectedDate(date)
     setViewMonth(date)
@@ -71,7 +76,7 @@ export const InputDate: FC<InputDateProps> = ({
 
   const handleDayClick = (date: Date) => {
     setTextInputValue(formatDateString(date, locale))
-    handleChange(date)
+    handleDateChange(date)
   }
 
   const handleTextInputChange = (e: SyntheticEvent<HTMLInputElement>) => {
@@ -79,20 +84,22 @@ export const InputDate: FC<InputDateProps> = ({
     setTextInputValue(value)
 
     if (value.length === 0) {
-      handleChange()
+      handleDateChange()
     } else {
       const parsedValue = parseDateFromString(value, locale)
       if (parsedValue) {
-        handleChange(parsedValue)
+        handleDateChange(parsedValue)
       }
     }
   }
 
   const handleValidation = (e: SyntheticEvent<HTMLInputElement>) => {
     const value = (e.target as HTMLInputElement).value
+    // is valid if text input is blank or parseDateFromString returns a date object
     setValidDate(value.length === 0 || !!parseDateFromString(value, locale))
   }
 
+  // navigate next/previous months in the calendar
   const handleNavClick = (month: Date) => {
     setViewMonth(month)
   }

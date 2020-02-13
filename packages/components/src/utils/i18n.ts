@@ -1,4 +1,3 @@
-import format from 'date-fns/format'
 import ar from 'date-fns/locale/ar-SA'
 import de from 'date-fns/locale/de'
 import en from 'date-fns/locale/en-US'
@@ -74,13 +73,4 @@ export const dateFnLocaleMap = {
   [Locales.Swedish]: sv,
   [Locales.Chinese]: zhCn,
   [Locales.ChineseTaiwan]: zhTw,
-}
-
-export const formatDateString = (
-  date: Date = new Date(),
-  locale: LocaleCodes
-) => {
-  return format(date, 'P', {
-    locale: dateFnLocaleMap[locale],
-  })
 }
