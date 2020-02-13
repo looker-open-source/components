@@ -17,11 +17,10 @@ interface InputDateProps
   defaultValue?: Date
   onChange?: (date?: Date) => void
   locale?: LocaleCodes
-  className?: string
 }
 
 export const formatDateString = (
-  date: Date = new Date(),
+  date: Date = new Date(Date.now()), // specify Date.now for easy test mocks
   locale: LocaleCodes
 ): string => {
   return format(date, 'P', {
@@ -115,6 +114,7 @@ export const InputDate: FC<InputDateProps> = ({
           onChange={handleTextInputChange}
           validationType={renderedValidationType}
           onBlur={handleValidation}
+          data-testid="text-input"
         />
       </InputTextWrapper>
       <CalendarWrapper>

@@ -30,7 +30,14 @@ import { renderWithTheme } from '@looker/components-test-utils'
 
 import { InputDate } from './InputDate'
 
+const realDateNow = Date.now.bind(global.Date)
+
+beforeEach(() => {
+  global.Date.now = jest.fn(() => 1580517818172)
+})
+
 afterEach(() => {
+  global.Date.now = realDateNow // reset Date.now mock
   jest.clearAllMocks()
 })
 
@@ -40,7 +47,7 @@ test('calls onChange prop when a day is clicked', () => {
     onChange: jest.fn(),
   }
   const { getByText } = renderWithTheme(<InputDate {...mockProps} />)
-  expect(mockProps.onChange).toHaveBeenCalledTimes(0)
+  expect(mockProps.onChange).not.toHaveBeenCalled()
 
   const date = getByText('15') // the 15th day of the month
   fireEvent.click(date)
@@ -48,3 +55,17 @@ test('calls onChange prop when a day is clicked', () => {
     new Date('June 15, 2019 12:00:00 PM')
   )
 })
+
+test('fills TextInput with defaultValue', () => {
+  const mockProps = {
+    defaultValue: new Date('June 3, 2019'),
+    onChange: jest.fn(),
+  }
+  const { queryByTestId } = renderWithTheme(<InputDate {...mockProps} />)
+  const input = queryByTestId('text-input') as HTMLInputElement
+  expect(input.value).toEqual('06/03/2019')
+})
+
+test('validates text input to match expected date format', () => {})
+
+test('updates text input value when day is clicked', () => {})
