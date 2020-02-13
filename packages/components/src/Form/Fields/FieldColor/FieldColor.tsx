@@ -98,6 +98,9 @@ export const FieldColorComponent = forwardRef(
     }: FieldColorProps,
     ref: Ref<HTMLInputElement>
   ) => {
+    const inputID = useID(id)
+    const validationMessage = useFormContext(props)
+
     const isControlled = useControlWarn({
       controllingProps: ['onChange', 'value'],
       isControlledCheck: () => onChange !== undefined,
@@ -163,8 +166,6 @@ export const FieldColorComponent = forwardRef(
         isInputting.current = false
       })
     }
-    const inputID = useID(id)
-    const validationMessage = useFormContext(props)
 
     const content = (
       <PopoverContent display="flex" flexDirection="column">
