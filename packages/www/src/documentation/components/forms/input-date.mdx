@@ -101,7 +101,9 @@ If you handle form validation externally (such as treating this date field as re
   return (
     <Popover
       content={
-        <InputDate defaultValue={selectedDate} onChange={setSelectedDate} />
+        <Box p="small">
+          <InputDate defaultValue={selectedDate} onChange={setSelectedDate} />
+        </Box>
       }
     >
       {(onClick, ref, className) => (
