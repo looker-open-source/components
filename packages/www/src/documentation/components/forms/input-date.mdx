@@ -6,29 +6,7 @@ github: Form/Inputs/InputDate.tsx
 
 import { InputDateLocales } from './demos'
 
-`InputDate` provides a simple calendar view and functionality to select a single date, which can be used as a form input or filter.
-
-## Prop: size
-
-We support three sizes: `small`, **`medium (default)`**, and `large`. The font and grid are sized accordingly.
-
-```jsx
-;() => {
-  const [value, setValue] = useState('medium')
-  return (
-    <>
-      <div>
-        <ButtonToggle value={value} onChange={setValue}>
-          <ButtonItem>small</ButtonItem>
-          <ButtonItem>medium</ButtonItem>
-          <ButtonItem>large</ButtonItem>
-        </ButtonToggle>
-      </div>
-      <InputDate size={value} />
-    </>
-  )
-}
-```
+`InputDate` provides a text input and calendar to select a single date, which can be used as a form input or filter.
 
 ## Prop: defaultValue
 

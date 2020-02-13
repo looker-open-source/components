@@ -72,4 +72,5 @@ const TableKey = styled.div`
   color: ${({ theme }) => theme.colors.palette.charcoal600};
   font-weight: bold;
   padding: 0.5rem;
+  margin-bottom: 2rem;
 `
