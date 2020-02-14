@@ -37,7 +37,7 @@ const App: React.FC = () => {
         <InlineInputText value="type here..." />
       </Heading>
       <Paragraph>---------</Paragraph>
-      <InlineInputText simple value="type here..." />
+      <InlineInputText underlineOnlyOnHover value="type here..." />
       <Paragraph>---------</Paragraph>
       <Paragraph fontSize="small" variant="subdued" textTransform="uppercase">
         <InlineInputText value="Descriptive text" />

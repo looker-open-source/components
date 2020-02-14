@@ -28,13 +28,19 @@ import { inputPropKeys, InputProps } from '../Form/Inputs/InputProps'
 interface InlineInputTextProps
   extends TypographyProps,
     Omit<InputProps, 'type'> {
-  simple?: boolean
+  underlineOnlyOnHover?: boolean
   value?: string
 }
 
 export const InlineInputTextInternal = forwardRef(
   (
-    { className, onChange, simple, value, ...props }: InlineInputTextProps,
+    {
+      className,
+      onChange,
+      underlineOnlyOnHover,
+      value,
+      ...props
+    }: InlineInputTextProps,
     ref: Ref<HTMLInputElement>
   ) => {
     const [valueChange, setValueChange] = React.useState(value || '')
@@ -45,11 +51,13 @@ export const InlineInputTextInternal = forwardRef(
       setValueChange(event.currentTarget.value)
     }
 
+    const handleChange = isFunction(onChange) ? onChange : handleValueChange
+
     return (
       <span className={className}>
         <Input
-          onChange={handleValueChange}
-          simple={simple}
+          onChange={handleChange}
+          underlineOnlyOnHover={underlineOnlyOnHover}
           value={displayValue}
           ref={ref}
           size={1}
@@ -67,7 +75,10 @@ const Input = styled.input.attrs({ type: 'text' })<InlineInputTextProps>`
   background: transparent;
   border: none;
   border-bottom: 1px dashed;
-  border-bottom-color: ${props => props.theme.colors.palette.charcoal300};
+  border-bottom-color: ${props =>
+    props.underlineOnlyOnHover
+      ? 'transparent'
+      : props.theme.colors.palette.charcoal300};
   padding: 0 ${props => props.theme.space.xsmall};
   font: inherit;
   color: inherit;
@@ -85,21 +96,6 @@ const Input = styled.input.attrs({ type: 'text' })<InlineInputTextProps>`
     border-bottom: 1px solid;
     border-bottom-color: ${props => props.theme.colors.palette.purple400};
   }
-
-  ${props =>
-    props.simple &&
-    `background: transparent;
-    border: none;
-    border-bottom: none;
-    :hover {
-      border-bottom: 1px dashed;
-      border-bottom-color: ${props.theme.colors.palette.purple400};
-    }
-    :focus {
-      border-bottom: 1px solid;
-      border-bottom-color: ${props.theme.colors.palette.purple400};
-    }
-  `};
 `
 
 const HiddenText = styled.span`
