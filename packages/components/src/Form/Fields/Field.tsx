@@ -46,6 +46,7 @@ import {
   ValidationMessageProps,
 } from '../ValidationMessage/ValidationMessage'
 import { Flex } from '../../Layout'
+import { InputColor, InputText, Select } from '../Inputs'
 
 type ResponsiveSpaceValue = ResponsiveValue<TLengthStyledSystem>
 
@@ -107,6 +108,11 @@ export interface FieldProps {
    * Holds the type of validation (error, warning, etc.) and corresponding message.
    */
   validationMessage?: ValidationMessageProps
+  /**
+   *
+   * Specify the width of the field and stuff... (TODO BETTER TEXT HERE)
+   */
+  width?: ResponsiveSpaceValue
 }
 
 export const fieldPropKeys = [
@@ -120,6 +126,7 @@ export const fieldPropKeys = [
   'labelFontWeight',
   'labelWidth',
   'validationMessage',
+  'width',
 ]
 
 export const pickFieldProps = (props: FieldProps) =>
@@ -192,6 +199,7 @@ const FieldComponent: FunctionComponent<FieldProps> = ({
   labelFontWeight,
   required,
   validationMessage,
+  width,
   ...props
 }) => {
   return (
@@ -229,7 +237,15 @@ const FieldComponent: FunctionComponent<FieldProps> = ({
 }
 
 export const Field = styled(FieldComponent)`
+  width: ${props => props.width};
+
+  ${InputText}, ${InputColor}, ${Select} {
+    width: 100%;
+  }
+
   ${Label} {
     ${handleHorizontalAlignment}
   }
 `
+
+Field.defaultProps = { width: '13rem' }

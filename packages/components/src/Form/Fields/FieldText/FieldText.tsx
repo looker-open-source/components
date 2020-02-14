@@ -49,7 +49,6 @@ const FieldTextComponent = forwardRef(
           id={id}
           validationType={validationMessage && validationMessage.type}
           ref={ref}
-          width="100%"
         />
       </Field>
     )
