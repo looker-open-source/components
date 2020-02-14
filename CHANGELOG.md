@@ -11,13 +11,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - new component `InlineInputText` plus documentations and test
 
-- New components `Date` `DateTime` `Time` plus documentation and tests
+## [0.7.18] - 2020-02-11
+
+### Added
+
+- `Checkbox` now supports `checked='mixed'` (indeterminate state)
+- `Date`, `DateTime`, `Time` new date and time formatting components
 
 ### Changed
 
+- Moved ESLint, TSConfig, Prettier & StyleLint to [@looker/eslint-config](https://www.npmjs.com/package/@looker/eslint-config)
 - `GlobalStyle` no longer imports fonts from Google Fonts CDN.
   - Updated documentation to reflect how to import fonts
   - Added documentation for `GlobalStyle` under a new "Utilities" section
+
+### Fixed
+
+- Corrected links to source in documentation
+- `Swatch` border style when used directly (not via `FieldColor`)
 
 ## [0.7.17] - 2020-01-31
 

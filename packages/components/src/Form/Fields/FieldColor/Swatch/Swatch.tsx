@@ -23,7 +23,7 @@
  SOFTWARE.
 
  */
-
+import omit from 'lodash/omit'
 import styled from 'styled-components'
 import { CompatibleHTMLProps, reset } from '@looker/design-tokens'
 import {
@@ -69,8 +69,8 @@ export const Swatch = styled.div<SwatchProps>`
 `
 
 Swatch.defaultProps = {
-  borderColor: inputTextDefaults.borderColor,
+  ...inputTextDefaults,
+  ...omit(CustomizableInputTextAttributes, 'fontSize'),
   color: 'white',
-  height: CustomizableInputTextAttributes.height,
   width: CustomizableInputTextAttributes.height,
 }

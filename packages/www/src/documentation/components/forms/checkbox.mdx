@@ -1,14 +1,36 @@
 ---
 title: Checkbox
 propsOf: Checkbox
-github: Form/Inputs/Checkbox/Checkbox
+github: Form/Inputs/Checkbox/Checkbox.tsx
 figma: file/2MG6DoSjk4IaLnjjFCnKFf/Forms
 ---
 
 The `<Checkbox />` component renders a single checkbox element on the page, with no accompanying label. It is generally used to construct higher-order components like the `<FieldCheckbox />`. If you are building a form, you probably want to use `<FieldCheckbox />` instead as it provides label support.
 
+## Checked Property
+
+The `<Checkbox />` component can be rendered in three different states: checked, unchecked, and "mixed". In addition to the standard boolean, rendering a "mixed" value can be used to indicate that only a fraction of related sub-options have been selected.
+
 ```jsx
-<Checkbox />
+<Checkbox checked={true} />
+<Checkbox checked='mixed' />
+<Checkbox checked={false} />
+```
+
+## onChange Property
+
+`Checkbox` accepts an onChange callback, which can be used for toggling checkbox state.
+
+```jsx
+;() => {
+  const [checked, setChecked] = React.useState(true)
+  const handleChange = () => setChecked(!checked)
+  return (
+    <>
+      <Checkbox checked={checked} onChange={handleChange} />
+    </>
+  )
+}
 ```
 
 ## Branded Property
@@ -16,7 +38,85 @@ The `<Checkbox />` component renders a single checkbox element on the page, with
 The `branded` property turns the background to the theme's primary color when checked.
 
 ```jsx
-<Checkbox branded />
+<Checkbox branded checked />
+<Checkbox branded checked="mixed" />
+```
+
+## Advanced Use: Controlling parent/child mixed states
+
+Using a mixed state checkbox can be used to establish a parent and child relationship between multiple options. This is an advanced use and will likely require bespoke state management. In an attempt to facilitate a standard UX, we've create a hook and state pattern.
+
+This may not be sufficient for your own use case, but it may provide a good starting point and reference for how it should work.
+
+```jsx
+;() => {
+  // Set up local state and child change handlers
+  const [parentState, setParentState] = useState(false)
+  const [appleState, setAppleState] = useState(false)
+  const [bananaState, setBananaState] = useState(true)
+  const handleAppleChange = () => setAppleState(!appleState)
+  const handleBananaChange = () => setBananaState(!bananaState)
+
+  // Establish checkbox hierarchy for use in custom hook
+  const fruitTree = {
+    parent: {
+      setState: setParentState,
+      state: parentState,
+    },
+    children: [
+      { setState: setAppleState, state: appleState },
+      { setState: setBananaState, state: bananaState },
+    ],
+  }
+
+  // Sync parent/child states and get provided parent change handler
+  const handleParentChange = useMixedStateCheckbox(fruitTree)
+
+  return (
+    <List>
+      <ListItem>
+        <Checkbox
+          id="fruit-parent"
+          name="fruit"
+          value="all-fruit"
+          onChange={handleParentChange}
+          checked={parentState}
+        />
+        <Label htmlFor="fruit-parent" fontSize="medium">
+          All Fruit
+        </Label>
+      </ListItem>
+      <ListItem>
+        <List pl="large">
+          <ListItem>
+            <Checkbox
+              id="fruit-apple"
+              name="fruit"
+              value="apple"
+              onChange={handleAppleChange}
+              checked={appleState}
+            />
+            <Label htmlFor="fruit-apple" fontSize="large">
+              🍏
+            </Label>
+          </ListItem>
+          <ListItem>
+            <Checkbox
+              id="fruit-banana"
+              name="fruit"
+              value="apple"
+              onChange={handleBananaChange}
+              checked={bananaState}
+            />
+            <Label htmlFor="fruit-banana" fontSize="large">
+              🍌
+            </Label>
+          </ListItem>
+        </List>
+      </ListItem>
+    </List>
+  )
+}
 ```
 
 ## Name and ID
@@ -27,22 +127,13 @@ A name and ID can be specified in the `<Checkbox />` component. Names are import
 <Checkbox name="someName" id="someId" />
 ```
 
-## Checked Property
-
-The `<Checkbox />` component accepts the `checked` property, which sets the checkbox as either selected or not.
-
-```jsx
-<Checkbox checked={true} onChange={() => {}} readOnly />
-<Checkbox checked={false} onChange={() => {}} readOnly />
-```
-
 ## Disabled Property
 
 Use the disable property to gray out the checkbox, making it unclickable.
 
 ```jsx
 <Checkbox disabled />
-<Checkbox disabled checked onChange={() => {}} />
+<Checkbox disabled checked />
 ```
 
 ## Accessibility

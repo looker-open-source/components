@@ -151,6 +151,7 @@ const components: NavigationSection = {
         { title: 'InlineInputText', path: 'inline-input-text' },
         { title: 'List', path: 'list' },
         { title: 'Spinner', path: 'spinner' },
+        { title: 'Swatch', path: 'swatch' },
         { title: 'Table', path: 'table' },
         { title: 'Tabs', path: 'tabs' },
         { title: 'VisuallyHidden', path: 'visually-hidden' },

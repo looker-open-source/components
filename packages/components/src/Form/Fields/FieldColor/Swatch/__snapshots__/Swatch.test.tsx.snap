@@ -4,7 +4,9 @@ exports[`Default Swatch 1`] = `
 .c0 {
   width: 36px;
   height: 36px;
+  border: solid 1px;
   border-color: #DEE1E5;
+  border-radius: 0.25rem;
   background-color: white;
   margin-top: auto;
 }
@@ -25,7 +27,9 @@ exports[`Swatch with hex value passed 1`] = `
 .c0 {
   width: 36px;
   height: 36px;
+  border: solid 1px;
   border-color: #DEE1E5;
+  border-radius: 0.25rem;
   background-color: #4c6670;
   margin-top: auto;
 }
@@ -46,7 +50,9 @@ exports[`Swatch with width and height set 1`] = `
 .c0 {
   width: 50px;
   height: 25px;
+  border: solid 1px;
   border-color: #DEE1E5;
+  border-radius: 0.25rem;
   background-color: blue;
   margin-top: auto;
 }

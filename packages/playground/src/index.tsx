@@ -24,14 +24,13 @@ import { InlineInputText, Paragraph } from '@looker/components'
 import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
 
+import { MixedStateCheckboxDemo } from './Checkbox/MixedStateCheckboxDemo'
+
 const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
-      <InlineInputText title="type here..." />
-      <Paragraph>---------</Paragraph>
-      <InlineInputText simple title="type here..." />
-      <Paragraph>---------</Paragraph>
-      <InlineInputText />
+      <GlobalStyle />
+      <MixedStateCheckboxDemo />
     </ThemeProvider>
   )
 }
