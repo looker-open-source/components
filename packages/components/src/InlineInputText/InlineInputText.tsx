@@ -20,6 +20,7 @@
 
 import pick from 'lodash/omit'
 import React, { forwardRef, Ref } from 'react'
+import isFunction from 'lodash/isFunction'
 import styled from 'styled-components'
 import { typography, TypographyProps } from '@looker/design-tokens'
 import { inputPropKeys, InputProps } from '../Form/Inputs/InputProps'
@@ -33,25 +34,28 @@ interface InlineInputTextProps
 
 export const InlineInputTextInternal = forwardRef(
   (
-    { value, simple, className, ...props }: InlineInputTextProps,
+    { className, onChange, simple, value, ...props }: InlineInputTextProps,
     ref: Ref<HTMLInputElement>
   ) => {
-    const [titleChange, setTitleChange] = React.useState(value || '')
-    const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-      setTitleChange(event.currentTarget.value)
+    const [valueChange, setValueChange] = React.useState(value || '')
+
+    const displayValue = isFunction(onChange) ? value : valueChange
+
+    const handleValueChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      setValueChange(event.currentTarget.value)
     }
 
     return (
       <span className={className}>
         <Input
-          onChange={handleTitleChange}
+          onChange={handleValueChange}
           simple={simple}
-          value={titleChange}
+          value={displayValue}
           ref={ref}
           size={1}
           {...pick(props, inputPropKeys)}
         />
-        <HiddenText>{titleChange}</HiddenText>
+        <HiddenText>{displayValue}</HiddenText>
       </span>
     )
   }
