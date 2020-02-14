@@ -23,6 +23,7 @@ import {
   Button,
   Dialog,
   Divider,
+  Label,
   Box,
   Select,
   FieldSelect,
@@ -30,6 +31,7 @@ import {
   ComboboxOptionObject,
   SelectOptionProps,
   SelectOptionGroupProps,
+  Flex,
 } from '@looker/components'
 
 const options = [
@@ -101,19 +103,34 @@ export function SelectContent() {
   }, [searchTerm])
   return (
     <Box m="xlarge">
-      <Select
-        width={300}
-        mb="medium"
-        options={newOptions}
-        aria-label="Fruits"
-        placeholder="Controlled, searchable, clearable"
-        isClearable
-        value={value}
-        onChange={handleChange}
-        onFilter={handleFilter}
-        isFilterable
-        mr="small"
-      />
+      <Label>
+        Use alignSelf="flex-start" to avoid filling height as a flex child
+      </Label>
+      <Flex>
+        <Flex
+          height={200}
+          width={200}
+          bg="palette.charcoal300"
+          alignItems="center"
+          justifyContent="center"
+          mr="small"
+        >
+          200 x 200
+        </Flex>
+        <Select
+          width={300}
+          mb="medium"
+          options={newOptions}
+          aria-label="Fruits"
+          placeholder="Controlled, searchable, clearable"
+          isClearable
+          value={value}
+          onChange={handleChange}
+          onFilter={handleFilter}
+          isFilterable
+          alignSelf="flex-start"
+        />
+      </Flex>
       <Box>
         <Button mt="medium" mr="small" data-fruit="5" onClick={handleClick}>
           Kiwis

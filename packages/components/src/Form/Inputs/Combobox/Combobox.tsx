@@ -27,10 +27,17 @@
 // Much of the following is pulled from https://github.com/reach/reach-ui
 // because their work is fantastic (but is not in TypeScript)
 
+import {
+  CompatibleHTMLProps,
+  FlexboxProps,
+  LayoutProps,
+  TypographyProps,
+  SpaceProps,
+} from '@looker/design-tokens'
 import React, { forwardRef, useRef, useState, Ref, useEffect } from 'react'
 import styled from 'styled-components'
 import { useID, useCallbackRef, useForkedRef } from '../../../utils'
-import { Box, BoxProps } from '../../../Layout/Box'
+import { Box } from '../../../Layout/Box'
 import { useFocusManagement } from './helpers'
 import { useReducerMachine, ComboboxActionType, ComboboxState } from './state'
 import { ComboboxContext, defaultData } from './ComboboxContext'
@@ -63,10 +70,14 @@ export function useControlledCombobox(initialValue = '') {
 }
 
 export interface ComboboxProps
-  extends Omit<
-    BoxProps,
-    'size' | 'readOnly' | 'onChange' | 'value' | 'defaultValue'
-  > {
+  extends FlexboxProps,
+    Omit<LayoutProps, 'size'>,
+    SpaceProps,
+    TypographyProps,
+    Omit<
+      CompatibleHTMLProps<HTMLDivElement>,
+      'readOnly' | 'onChange' | 'value' | 'defaultValue'
+    > {
   /**
    * If true, the popover opens when focus is on the text box.
    */
@@ -198,12 +209,12 @@ export const ComboboxInternal = forwardRef(function Combobox(
     <ComboboxContext.Provider value={context}>
       <Box
         display="inline-block"
+        {...rest}
         ref={ref}
         role="combobox"
         aria-haspopup="listbox"
         aria-owns={listboxId}
         aria-expanded={context.isVisible}
-        {...rest}
       >
         {children}
       </Box>
@@ -214,3 +225,7 @@ export const ComboboxInternal = forwardRef(function Combobox(
 ComboboxInternal.displayName = 'ComboboxInternal'
 
 export const Combobox = styled(ComboboxInternal)``
+
+Combobox.defaultProps = {
+  display: 'flex',
+}

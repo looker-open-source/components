@@ -195,7 +195,6 @@ const InputSearchComponent = forwardRef(
 InputSearchComponent.displayName = 'InputSearchComponent'
 
 export const InputSearch = styled(InputSearchComponent)`
-  box-sizing: border-box;
   align-items: center;
   display: flex;
   position: relative;

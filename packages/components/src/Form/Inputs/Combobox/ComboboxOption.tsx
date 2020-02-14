@@ -194,8 +194,8 @@ ComboboxOptionInternal.displayName = 'ComboboxOptionInternal'
 
 export const comboboxOptionGrid = css`
   display: grid;
-  grid-gap: 4px;
-  grid-template-columns: 16px 1fr;
+  grid-gap: ${props => props.theme.space.xxsmall};
+  grid-template-columns: ${props => props.theme.space.medium} 1fr;
 `
 
 export const ComboboxOption = styled(ComboboxOptionInternal)`
