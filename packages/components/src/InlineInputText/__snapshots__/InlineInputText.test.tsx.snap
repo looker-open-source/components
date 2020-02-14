@@ -46,7 +46,7 @@ exports[`InlineInputText renders an input with the correct styling 1`] = `
   justify-content: center;
 }
 
-<div
+<span
   className="c0"
 >
   <input
@@ -62,5 +62,5 @@ exports[`InlineInputText renders an input with the correct styling 1`] = `
   >
     
   </span>
-</div>
+</span>
 `;

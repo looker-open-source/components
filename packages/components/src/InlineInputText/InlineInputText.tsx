@@ -42,7 +42,7 @@ export const InlineInputTextInternal = forwardRef(
     }
 
     return (
-      <div className={className}>
+      <span className={className}>
         <Input
           onChange={handleTitleChange}
           simple={simple}
@@ -52,7 +52,7 @@ export const InlineInputTextInternal = forwardRef(
           {...pick(props, inputPropKeys)}
         />
         <HiddenText>{titleChange}</HiddenText>
-      </div>
+      </span>
     )
   }
 )
