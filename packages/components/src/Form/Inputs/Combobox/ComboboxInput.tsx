@@ -217,6 +217,9 @@ export const ComboboxInputInternal = forwardRef(function ComboboxInput(
             persistSelection:
               persistSelectionRef && persistSelectionRef.current,
           })
+      } else {
+        // Closing an opened list
+        transition && transition(ComboboxActionType.ESCAPE)
       }
       if (e.type === 'click') {
         selectText()
