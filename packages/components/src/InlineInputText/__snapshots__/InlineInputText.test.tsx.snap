@@ -1,58 +1,35 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`InlineInputText renders an input with the correct styling 1`] = `
-.c2 {
-  border-radius: 0.25rem;
-  border: solid 1px;
-  border-color: #DEE1E5;
-  height: 36px;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-  padding-top: 0rem;
-  padding-bottom: 0rem;
-  font-size: 0.875rem;
-  color: #343C42;
-  font-size: 0.875rem;
+.c1 {
   background: transparent;
   border: none;
   border-bottom: 1px dashed;
-  border-radius: 0;
-  height: 32px;
+  border-bottom-color: #C1C6CC;
+  padding: 0 0.5rem;
+  font: inherit;
+  color: inherit;
+  text-transform: inherit;
+  width: 100%;
 }
 
-.c2:hover {
-  border-color: #C1C6CC;
-}
-
-.c2:focus {
-  border-color: #9785F2;
-  box-shadow: 0 0 0 2px #E8E5FF;
+.c1:focus,
+.c1:hover {
   outline: none;
+  border-bottom-color: #6C43E0;
+  background-color: #F5F6F7;
 }
 
-.c2:disabled {
-  background: #F5F6F7;
-  color: #939BA5;
-}
-
-.c2:disabled:hover {
-  border-color: #DEE1E5;
-}
-
-.c2:focus,
-.c2:hover {
-  outline: none;
-  border: none;
-  box-shadow: none;
+.c1:focus {
   border-bottom: 1px solid;
+  border-bottom-color: #6C43E0;
 }
 
-.c4 {
-  font-size: 1rem;
-  line-height: 1.5rem;
+.c2 {
   height: 0;
   overflow: hidden;
   white-space: pre-wrap;
+  padding: 0 calc(0.5rem + 1px);
 }
 
 .c0 {
@@ -63,39 +40,27 @@ exports[`InlineInputText renders an input with the correct styling 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  height: 2.5rem;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
 }
 
-.c0 .c1 {
-  border-bottom-color: #262d33;
-  color: #262d33;
-}
-
-.c0 .c1,
-.c0 .c3 {
-  padding: 0 8px;
-  font-size: 1.375rem;
-  font-weight: 400;
-}
-
 <div
   className="c0"
 >
   <input
-    className="c1 c2"
+    className="c1"
     onChange={[Function]}
+    size={1}
+    title="type something"
     type="text"
-    value="type something"
+    value=""
   />
   <span
-    className="c3 c4"
-    fontSize="medium"
+    className="c2"
   >
-    type something
+    
   </span>
 </div>
 `;

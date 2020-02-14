@@ -18,43 +18,57 @@
  SOFTWARE.
  */
 
-import React, { FC } from 'react'
+import pick from 'lodash/omit'
+import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
-import { typography } from '@looker/design-tokens'
-import { Text } from '../Text'
+import { typography, TypographyProps } from '@looker/design-tokens'
+import { inputPropKeys, InputProps } from '../Form/Inputs/InputProps'
 
-interface InlineInputTextProps {
+interface InlineInputTextProps
+  extends TypographyProps,
+    Omit<InputProps, 'type'> {
   simple?: boolean
-  title?: string
+  value?: string
 }
 
-export const InlineInputText: FC<InlineInputTextProps> = ({
-  title = 'Add a title',
-  simple = false,
-}) => {
-  const [titleChange, setTitleChange] = React.useState(title)
-  const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setTitleChange(event.currentTarget.value)
+export const InlineInputTextInternal = forwardRef(
+  (
+    { value, simple, className, ...props }: InlineInputTextProps,
+    ref: Ref<HTMLInputElement>
+  ) => {
+    const [titleChange, setTitleChange] = React.useState(value || '')
+    const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      setTitleChange(event.currentTarget.value)
+    }
+
+    return (
+      <div className={className}>
+        <Input
+          onChange={handleTitleChange}
+          simple={simple}
+          value={titleChange}
+          ref={ref}
+          size={1}
+          {...pick(props, inputPropKeys)}
+        />
+        <HiddenText>{titleChange}</HiddenText>
+      </div>
+    )
   }
+)
 
-  return (
-    <Container>
-      <Input onChange={handleTitleChange} simple={simple} value={titleChange} />
-      <HiddenText>{titleChange}</HiddenText>
-    </Container>
-  )
-}
+InlineInputTextInternal.displayName = 'InlineInputTextInternal'
 
 const Input = styled.input.attrs({ type: 'text' })<InlineInputTextProps>`
-  ${typography};
-
   background: transparent;
   border: none;
   border-bottom: 1px dashed;
   border-bottom-color: ${props => props.theme.colors.palette.charcoal300};
-  padding: 0 8px;
-  font-size: ${props => props.theme.fontSizes.xlarge};
-  font-weight: ${props => props.theme.fontWeights.normal};
+  padding: 0 ${props => props.theme.space.xsmall};
+  font: inherit;
+  color: inherit;
+  text-transform: inherit;
+  width: 100%;
 
   :focus,
   :hover {
@@ -84,21 +98,18 @@ const Input = styled.input.attrs({ type: 'text' })<InlineInputTextProps>`
   `};
 `
 
-const HiddenText = styled(Text)`
+const HiddenText = styled.span`
   height: 0;
   overflow: hidden;
   white-space: pre-wrap;
+  /* Adding 1px more of padding solves a horizontal scrolling issue */
+  padding: 0 calc(${props => props.theme.space.xsmall} + 1px);
 `
 
-const Container = styled.div`
+export const InlineInputText = styled(InlineInputTextInternal)`
+  ${typography}
+
   display: inline-flex;
   flex-direction: column;
-  height: ${props => props.theme.space.xxlarge};
   justify-content: center;
-
-  ${HiddenText} {
-    padding: 0 8px;
-    font-size: ${props => props.theme.fontSizes.xlarge};
-    font-weight: ${props => props.theme.fontWeights.normal};
-  }
 `

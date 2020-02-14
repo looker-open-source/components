@@ -20,17 +20,28 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { InlineInputText, Paragraph } from '@looker/components'
+import {
+  Heading,
+  InlineInputText,
+  Paragraph,
+  GlobalStyle,
+} from '@looker/components'
 import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
-
-import { MixedStateCheckboxDemo } from './Checkbox/MixedStateCheckboxDemo'
 
 const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <MixedStateCheckboxDemo />
+      <Heading fontSize="large" fontWeight="semiBold">
+        <InlineInputText value="type here..." />
+      </Heading>
+      <Paragraph>---------</Paragraph>
+      <InlineInputText simple value="type here..." />
+      <Paragraph>---------</Paragraph>
+      <Paragraph fontSize="small" variant="subdued" textTransform="uppercase">
+        <InlineInputText value="Descriptive text" />
+      </Paragraph>
     </ThemeProvider>
   )
 }
