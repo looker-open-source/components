@@ -239,7 +239,10 @@ const FieldComponent: FunctionComponent<FieldProps> = ({
 export const Field = styled(FieldComponent)`
   width: ${props => props.width};
 
-  ${InputText},
+  ${InputText} {
+    width: 100%;
+  }
+
   ${Select} {
     width: 100%;
   }
