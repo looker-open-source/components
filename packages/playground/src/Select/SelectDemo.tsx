@@ -40,6 +40,26 @@ const options = [
   { label: 'Oranges', value: '3' },
   { label: 'Pineapples', value: '4' },
   { label: 'Kiwis', value: '5' },
+  { label: 'Apples2', value: '12' },
+  { label: 'Bananas2', value: '22' },
+  { label: 'Oranges2', value: '32' },
+  { label: 'Pineapples2', value: '42' },
+  { label: 'Kiwis3', value: '52' },
+  { label: 'Apples3', value: '13' },
+  { label: 'Bananas3', value: '23' },
+  { label: 'Oranges3', value: '33' },
+  { label: 'Pineapples3', value: '43' },
+  { label: 'Kiwis3', value: '53' },
+  { label: 'Apples4', value: '14' },
+  { label: 'Bananas4', value: '24' },
+  { label: 'Oranges4', value: '34' },
+  { label: 'Pineapples4', value: '44' },
+  { label: 'Kiwis4', value: '54' },
+  { label: 'Apples5', value: '15' },
+  { label: 'Bananas5', value: '25' },
+  { label: 'Oranges5', value: '35' },
+  { label: 'Pineapples5', value: '45' },
+  { label: 'Kiwis5', value: '55' },
 ]
 
 const optionsWithGroups = [
@@ -165,6 +185,15 @@ export function SelectContent() {
         defaultValue="1"
       />
       <FieldSelect
+        label="Error"
+        width={300}
+        options={options}
+        aria-label="Fruits"
+        placeholder="Select One"
+        defaultValue="1"
+        validationMessage={{ message: 'An error message', type: 'error' }}
+      />
+      <FieldSelect
         label="Disabled"
         width={300}
         mb="medium"
@@ -173,15 +202,6 @@ export function SelectContent() {
         placeholder="Select One"
         disabled
         defaultValue="1"
-      />
-      <FieldSelect
-        label="Error"
-        width={300}
-        options={options}
-        aria-label="Fruits"
-        placeholder="Select One"
-        defaultValue="1"
-        validationMessage={{ message: 'An error message', type: 'error' }}
       />
     </Box>
   )
@@ -204,7 +224,9 @@ export const SelectDemo = () => {
       <Dialog isOpen={isOpen} onClose={handleClose}>
         <ModalInner />
       </Dialog>
-      <Button onClick={handleClick}>Open</Button>
+      <Button onClick={handleClick} m="large">
+        Open
+      </Button>
     </>
   )
 }
