@@ -28,9 +28,9 @@ const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <InlineInputText title="type here..." />
-      <Paragraph> </Paragraph>
-      <InlineInputText simple title="type here" />
-      <Paragraph> </Paragraph>
+      <Paragraph>---------</Paragraph>
+      <InlineInputText simple title="type here..." />
+      <Paragraph>---------</Paragraph>
       <InlineInputText />
     </ThemeProvider>
   )
