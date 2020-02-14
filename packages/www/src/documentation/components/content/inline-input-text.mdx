@@ -5,17 +5,21 @@ propsOf: InlineInputText
 
 ## InlineInputText
 
-Input styled to have underline follow the input. We have a placeholder for `title` in case nothing is provided.
+Input styled to have underline follow the input.
 
 ```jsx
 <Flex alignItems="center" justifyContent="space-around">
-  <InlineInputText />
-  <InlineInputText title="Type here..." />
+  <Heading>
+    <InlineInputText value="Type here..." />
+  </Heading>
+  <Paragraph variant="subdued">
+    <InlineInputText value="Type here..." />
+  </Paragraph>
 </Flex>
 ```
 
 Using the prop `simple` the input won't be as visible until hover or focus
 
 ```jsx
-<InlineInputText simple title="Type here..." />
+<InlineInputText simple value="Type here..." />
 ```
