@@ -17,29 +17,3 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
  */
-
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { InlineInputText, Paragraph } from '@looker/components'
-import { theme } from '@looker/design-tokens'
-import { ThemeProvider } from 'styled-components'
-
-const App: React.FC = () => {
-  return (
-    <ThemeProvider theme={theme}>
-      <InlineInputText title="type here..." />
-      <Paragraph> </Paragraph>
-      <InlineInputText simple title="type here" />
-      <Paragraph> </Paragraph>
-      <InlineInputText />
-    </ThemeProvider>
-  )
-}
-
-/**
- * This is the binding site for the playground. If you want to edit the
- * primary application, do your work in App.tsx instead.
- */
-document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(<App />, document.getElementById('container'))
-})
