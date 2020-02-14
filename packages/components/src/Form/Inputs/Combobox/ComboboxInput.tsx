@@ -29,6 +29,7 @@
 
 import React, {
   FormEvent,
+  FocusEvent,
   forwardRef,
   MouseEvent as ReactMouseEvent,
   useLayoutEffect,
@@ -178,8 +179,10 @@ export const ComboboxInputInternal = forwardRef(function ComboboxInput(
     })
   }
 
-  function handleFocus() {
-    if (selectOnClick) {
+  function handleFocus(e: FocusEvent<HTMLInputElement>) {
+    if (readOnly) {
+      e.currentTarget.selectionEnd = e.currentTarget.selectionStart
+    } else if (selectOnClick) {
       selectOnClickRef.current = true
     }
 
