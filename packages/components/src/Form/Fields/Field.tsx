@@ -46,7 +46,7 @@ import {
   ValidationMessageProps,
 } from '../ValidationMessage/ValidationMessage'
 import { Flex } from '../../Layout'
-import { InputColor, InputText, Select } from '../Inputs'
+import { InputText, Select } from '../Inputs'
 
 type ResponsiveSpaceValue = ResponsiveValue<TLengthStyledSystem>
 
@@ -204,7 +204,7 @@ const FieldComponent: FunctionComponent<FieldProps> = ({
 }) => {
   return (
     <FormControl mb="xsmall" {...props}>
-      <Flex alignItems="left" justifyContent="space-between">
+      <Flex alignItems="left" justifyContent="space-between" width={width}>
         <Label
           htmlFor={id}
           fontWeight={labelFontWeight}
@@ -239,7 +239,8 @@ const FieldComponent: FunctionComponent<FieldProps> = ({
 export const Field = styled(FieldComponent)`
   width: ${props => props.width};
 
-  ${InputText}, ${InputColor}, ${Select} {
+  ${InputText},
+  ${Select} {
     width: 100%;
   }
 
