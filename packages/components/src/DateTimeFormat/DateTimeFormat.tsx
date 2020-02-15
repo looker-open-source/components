@@ -40,7 +40,8 @@ interface DateTimeFormatExtensionProps extends DateTimeFormatProps {
   time?: boolean
 }
 
-interface ExtendedDateTimeFormatOptions extends Intl.DateTimeFormatOptions {
+export interface ExtendedDateTimeFormatOptions
+  extends Intl.DateTimeFormatOptions {
   dateStyle?: DateFormats
   timeStyle?: DateFormats
 }

@@ -24,8 +24,8 @@
 
  */
 
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const PATHS = {
   app: path.join(__dirname, 'src/index.tsx'),
@@ -52,6 +52,10 @@ module.exports = {
       {
         loader: 'babel-loader',
         test: /\.tsx?$/,
+      },
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
       },
     ],
   },
