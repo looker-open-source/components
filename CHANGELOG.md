@@ -7,7 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [UNRELEASED]
 
+### Added
+
+- `Select` now supports grouped options with a `title` and option `description`, as well as `BoxProps` for layout styling.
 - New components: `InputDate`, `Calendar`
+
+### Changed
+
+- `Select` now only defaults to the first option if neither `placeholder` nor `isClearable` is defined.
+
+### Fixed
+
+- `Select` styling issues when `GlobalStyle` is not used, missing down caret icon in documentation
 
 ## [0.7.18] - 2020-02-11
 

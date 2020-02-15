@@ -15,6 +15,7 @@ The `<Select />` component renders a single menu on the page, with no accompanyi
       { value: 'gouda', label: 'Gouda' },
       { value: 'swiss', label: 'Swiss' },
     ]}
+    mr="small"
   />
   <Select
     options={[
@@ -23,8 +24,9 @@ The `<Select />` component renders a single menu on the page, with no accompanyi
       { value: 'swiss', label: 'Swiss' },
     ]}
     defaultValue="gouda"
+    mr="small"
   />
-  <Select placeholder="awesome!" />
+  <Select placeholder="awesome!" mr="small" />
   <Select
     defaultValue="Some Value"
     options={[
@@ -95,6 +97,47 @@ A name and ID can be specified in the `<Select />` component. Names are importan
     { value: 'cheddar', label: 'Cheddar' },
     { value: 'gouda', label: 'Gouda' },
     { value: 'swiss', label: 'Swiss' },
+  ]}
+/>
+```
+
+## Groups
+
+Options can be grouped under a `title`.
+
+```jsx
+<Select
+  options={[
+    {
+      options: [
+        { value: 'cheddar', label: 'Cheddar' },
+        { value: 'gouda', label: 'Gouda' },
+        { value: 'swiss', label: 'Swiss' },
+      ],
+      title: 'CHEESES',
+    },
+    {
+      options: [
+        { value: 'grape', label: 'Grapes' },
+        { value: 'apple', label: 'Apples' },
+        { value: 'strawberries', label: 'Strawberries' },
+      ],
+      title: 'FRUITS',
+    },
+  ]}
+/>
+```
+
+## Descriptions
+
+Options can have a `description` property.
+
+```jsx
+<Select
+  options={[
+    { value: 'cheddar', label: 'Cheddar', description: 'Popular in the US' },
+    { value: 'gouda', label: 'Gouda', description: 'Dutch sheeps milk' },
+    { value: 'swiss', label: 'Swiss', description: 'Full of holes' },
   ]}
 />
 ```

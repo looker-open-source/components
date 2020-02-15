@@ -34,8 +34,8 @@ import { Select } from './Select'
 
 afterEach(cleanup)
 
-describe('<Select/> with options', () => {
-  test('with handleChange', () => {
+describe('<Select/>', () => {
+  test('with options and handleChange', () => {
     const options = [{ value: 'FOO' }, { value: 'BAR' }]
     const handleChange = jest.fn()
     const {
@@ -44,12 +44,7 @@ describe('<Select/> with options', () => {
       getByText,
       getByPlaceholderText,
     } = renderWithTheme(
-      <Select
-        options={options}
-        id="with-options"
-        placeholder="Search"
-        onChange={handleChange}
-      />
+      <Select options={options} placeholder="Search" onChange={handleChange} />
     )
     expect(queryByText('FOO')).not.toBeInTheDocument()
     expect(queryByText('BAR')).not.toBeInTheDocument()
@@ -77,5 +72,114 @@ describe('<Select/> with options', () => {
     expect(handleChange).toHaveBeenCalledTimes(1)
     // expect(handleChange).toHaveBeenCalledWith({ value: 'FOO' })
     expect(handleChange).toHaveBeenCalledWith('BAR')
+  })
+  test('with option descriptions and group titles', () => {
+    const options = [
+      {
+        options: [{ value: 'BAR' }, { value: 'BAZ' }],
+        title: 'FOO',
+      },
+      {
+        options: [
+          { description: 'A description for something', value: 'something' },
+        ],
+        title: 'OTHER',
+      },
+    ]
+    const handleChange = jest.fn()
+    const { getByText, getByPlaceholderText } = renderWithTheme(
+      <Select options={options} placeholder="Search" onChange={handleChange} />
+    )
+
+    const input = getByPlaceholderText('Search')
+    expect(input).toBeVisible()
+
+    act(() => {
+      fireEvent.mouseDown(input)
+    })
+
+    const foo = getByText('FOO')
+    const other = getByText('OTHER')
+    const desc = getByText('A description for something')
+
+    expect(foo).toBeInTheDocument()
+    expect(other).toBeInTheDocument()
+    expect(desc).toBeInTheDocument()
+
+    // A click on a title shouldn't do anything
+    fireEvent.click(foo)
+    // Description is part of the option so the click triggers change
+    fireEvent.click(desc)
+
+    expect(handleChange).toHaveBeenCalledTimes(1)
+    expect(handleChange).toHaveBeenCalledWith('something')
+  })
+
+  test('defaultValue', () => {
+    const options = [
+      { label: 'Foo', value: 'FOO' },
+      { label: 'Bar', value: 'BAR' },
+    ]
+    const { getByPlaceholderText } = renderWithTheme(
+      <Select options={options} placeholder="Search" defaultValue="BAR" />
+    )
+
+    const input = getByPlaceholderText('Search')
+    // should not default to first option
+    expect(input).toHaveValue('Bar')
+  })
+
+  test('placeholder, no defaultValue', () => {
+    const options = [{ value: 'FOO' }, { value: 'BAR' }]
+    const { getByPlaceholderText } = renderWithTheme(
+      <Select options={options} placeholder="Search" />
+    )
+
+    const input = getByPlaceholderText('Search')
+    // should not default to first option
+    expect(input).toHaveValue('')
+  })
+
+  test('isClearable, no defaultValue', () => {
+    const options = [{ value: 'FOO' }, { value: 'BAR' }]
+    const { getByTestId } = renderWithTheme(
+      <Select options={options} isClearable data-testid="wrapper" />
+    )
+
+    const input = getByTestId('wrapper').querySelector('input')
+    // should not default to first option
+    expect(input).not.toHaveValue()
+  })
+
+  test('default to first option', () => {
+    const options = [
+      { label: 'Foo', value: 'FOO' },
+      { label: 'Bar', value: 'BAR' },
+    ]
+    const { getByTestId } = renderWithTheme(
+      <Select options={options} data-testid="wrapper" />
+    )
+
+    const input = getByTestId('wrapper').querySelector('input')
+    // should default to first option
+    expect(input).toHaveValue('Foo')
+  })
+
+  test('no options', () => {
+    const handleChange = jest.fn()
+    const { getByPlaceholderText, getByText } = renderWithTheme(
+      <Select placeholder="Search" onChange={handleChange} />
+    )
+
+    const input = getByPlaceholderText('Search')
+
+    act(() => {
+      fireEvent.mouseDown(input)
+    })
+
+    const noOptions = getByText('No options')
+    fireEvent.click(noOptions)
+
+    expect(handleChange).not.toHaveBeenCalled()
   })
 })

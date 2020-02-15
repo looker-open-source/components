@@ -62,7 +62,7 @@ describe('<Combobox/> with children', () => {
     expect(handleChange).toHaveBeenCalledWith({ label: 'Foo', value: '101' })
   })
 
-  test('Opens on click', () => {
+  test('Opens and closes on click', () => {
     const { getByText, getByPlaceholderText, queryByText } = renderWithTheme(
       <Combobox>
         <ComboboxInput placeholder="Type here" />
@@ -77,6 +77,9 @@ describe('<Combobox/> with children', () => {
     const input = getByPlaceholderText('Type here')
     fireEvent.click(input)
     expect(getByText('Foo')).toBeInTheDocument()
+
+    fireEvent.click(input)
+    expect(queryByText('Foo')).not.toBeInTheDocument()
   })
 
   test('with openOnFocus', () => {

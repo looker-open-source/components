@@ -23,10 +23,15 @@ import {
   Button,
   Dialog,
   Divider,
+  Label,
   Box,
   Select,
   FieldSelect,
   ModalContent,
+  ComboboxOptionObject,
+  SelectOptionProps,
+  SelectOptionGroupProps,
+  Flex,
 } from '@looker/components'
 
 const options = [
@@ -36,6 +41,48 @@ const options = [
   { label: 'Pineapples', value: '4' },
   { label: 'Kiwis', value: '5' },
 ]
+
+const optionsWithGroups = [
+  { options, title: 'FRUITS' },
+  {
+    options: [
+      { label: 'Honda', value: 'honda' },
+      { label: 'Toyota', value: 'toyota' },
+    ],
+    title: 'CARS',
+  },
+]
+
+const optionsWithDescriptions = options.map((option: ComboboxOptionObject) => ({
+  ...option,
+  description: `${option.label} are the best ever!`,
+}))
+
+function checkOption(option: ComboboxOptionObject, searchTerm: string) {
+  return (
+    option.label &&
+    option.label.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1
+  )
+}
+
+function optionReducer(searchTerm: string) {
+  return (acc: SelectOptionProps[], option: SelectOptionProps) => {
+    const optionAsGroup = option as SelectOptionGroupProps
+    if (optionAsGroup.title) {
+      const filteredGroupOptions = optionAsGroup.options.filter(option =>
+        checkOption(option, searchTerm)
+      )
+      if (filteredGroupOptions.length > 0) {
+        return [...acc, { ...optionAsGroup, options: filteredGroupOptions }]
+      }
+      return acc
+    }
+    if (checkOption(option as ComboboxOptionObject, searchTerm)) {
+      return [...acc, option]
+    }
+    return acc
+  }
+}
 
 export function SelectContent() {
   const [value, setValue] = React.useState()
@@ -51,26 +98,39 @@ export function SelectContent() {
     setSearchTerm(term)
   }
   const newOptions = React.useMemo(() => {
-    if (searchTerm === '') return options
-    return options.filter((option: { label: string; value: string }) => {
-      return option.label.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1
-    })
+    if (searchTerm === '') return optionsWithGroups
+    return optionsWithGroups.reduce(optionReducer(searchTerm), [])
   }, [searchTerm])
   return (
     <Box m="xlarge">
-      <Select
-        width={300}
-        mb="medium"
-        options={newOptions}
-        aria-label="Fruits"
-        placeholder="Controlled, searchable, clearable"
-        isClearable
-        value={value}
-        onChange={handleChange}
-        onFilter={handleFilter}
-        isFilterable
-        mr="small"
-      />
+      <Label>
+        Use alignSelf="flex-start" to avoid filling height as a flex child
+      </Label>
+      <Flex>
+        <Flex
+          height={200}
+          width={200}
+          bg="palette.charcoal300"
+          alignItems="center"
+          justifyContent="center"
+          mr="small"
+        >
+          200 x 200
+        </Flex>
+        <Select
+          width={300}
+          mb="medium"
+          options={newOptions}
+          aria-label="Fruits"
+          placeholder="Controlled, searchable, clearable"
+          isClearable
+          value={value}
+          onChange={handleChange}
+          onFilter={handleFilter}
+          isFilterable
+          alignSelf="flex-start"
+        />
+      </Flex>
       <Box>
         <Button mt="medium" mr="small" data-fruit="5" onClick={handleClick}>
           Kiwis
@@ -85,6 +145,22 @@ export function SelectContent() {
         width={300}
         mb="medium"
         options={options}
+        aria-label="Fruits"
+        defaultValue="1"
+      />
+      <FieldSelect
+        label="Groups"
+        width={300}
+        mb="medium"
+        options={optionsWithGroups}
+        aria-label="Fruits"
+        defaultValue="1"
+      />
+      <FieldSelect
+        label="Descriptions"
+        width={300}
+        mb="medium"
+        options={optionsWithDescriptions}
         aria-label="Fruits"
         defaultValue="1"
       />
