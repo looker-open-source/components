@@ -321,7 +321,7 @@ function usePopoverToggle(
 
     if (isOpen) {
       document.addEventListener('mousedown', handleMouseDown, true)
-      if (mouseDownTarget.current === null) {
+      if (!mouseDownTarget.current) {
         document.addEventListener('click', handleClickOutside, true)
       }
     } else if (mouseDownTarget.current) {
