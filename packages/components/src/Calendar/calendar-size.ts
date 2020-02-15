@@ -24,6 +24,51 @@
 
  */
 
-export * from './IconList'
-export * from './DateTimeFormat'
-export * from './CalendarPropTable'
+import { SizeLarge, SizeMedium, SizeSmall } from '@looker/design-tokens'
+import { variant } from 'styled-system'
+
+export type CalendarSize = SizeSmall | SizeMedium | SizeLarge
+
+/* eslint-disable sort-keys */
+export const daySizeMap = {
+  small: 32,
+  medium: 36,
+  large: 46,
+}
+
+/* eslint-disable sort-keys */
+export const calendarSize = variant({
+  prop: 'size',
+  variants: {
+    small: {
+      fontSize: 'small',
+      height: `${daySizeMap.small}px`,
+      width: `${daySizeMap.small}px`,
+    },
+    medium: {
+      fontSize: 'medium',
+      height: `${daySizeMap.medium}px`,
+      width: `${daySizeMap.medium}px`,
+    },
+    large: {
+      fontSize: 'xlarge',
+      height: `${daySizeMap.large}px`,
+      width: `${daySizeMap.large}px`,
+    },
+  },
+})
+
+export const calendarSpacing = variant({
+  prop: 'size',
+  variants: {
+    small: {
+      p: 'small',
+    },
+    medium: {
+      p: 'medium',
+    },
+    large: {
+      p: 'large',
+    },
+  },
+})
