@@ -3,6 +3,8 @@ import {
   BorderProps,
   color,
   ColorProps,
+  flexbox,
+  FlexboxProps,
   space,
   SpaceProps,
   typography,
@@ -13,14 +15,18 @@ import styled from 'styled-components'
 export interface ActionListHeaderProps
   extends BorderProps,
     ColorProps,
+    FlexboxProps,
     SpaceProps,
     TypographyProps {}
 
 export const ActionListHeader = styled.div<ActionListHeaderProps>`
   ${color}
   ${border}
+  ${flexbox}
   ${space}
   ${typography}
+
+  display: flex;
 `
 
 ActionListHeader.defaultProps = {

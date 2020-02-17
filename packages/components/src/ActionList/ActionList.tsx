@@ -1,7 +1,6 @@
 import { typography, TypographyProps } from '@looker/design-tokens'
 import styled from 'styled-components'
-import { ActionListHeader } from './ActionListHeader/ActionListHeader'
-import { ActionListItem } from './ActionListItem'
+import { ActionListRowContainer } from './ActionListRowContainer'
 
 export interface ActionListProps extends TypographyProps {
   columns: string[]
@@ -10,13 +9,7 @@ export interface ActionListProps extends TypographyProps {
 export const ActionList = styled.div<ActionListProps>`
   ${typography}
 
-  width: 100%;
-
-  ${ActionListHeader} {
-    display: grid;
-    grid-template-columns: ${props => props.columns};
-  }
-  ${ActionListItem} {
+  ${ActionListRowContainer} {
     display: grid;
     grid-template-columns: ${props => props.columns};
   }
