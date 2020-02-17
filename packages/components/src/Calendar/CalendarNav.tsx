@@ -2,6 +2,7 @@ import React, { FC, useContext, SyntheticEvent } from 'react'
 import { NavbarElementProps } from 'react-day-picker'
 import styled from 'styled-components'
 import noop from 'lodash/noop'
+import { Tooltip } from '../Tooltip'
 import { IconButton, ButtonTransparent } from '../Button'
 import { Heading } from '../Text'
 import { CalendarSize } from './calendar-size'
@@ -62,15 +63,22 @@ export const CalendarNav: FC<NavbarElementProps> = ({
           />
         )}
       </NextButtonWrapper>
-      <ButtonTransparent
-        onClick={handleLabelClick}
-        color="neutral"
-        aria-label="View today"
-      >
-        <Heading as={headingSizeMap(size)} fontWeight="semiBold">
-          {localeUtils.formatMonthTitle(month, locale)}
-        </Heading>
-      </ButtonTransparent>
+
+      <Tooltip content="View Current Month">
+        {(eventHandlers, ref) => (
+          <ButtonTransparent
+            ref={ref}
+            {...eventHandlers}
+            onClick={handleLabelClick}
+            color="neutral"
+            aria-label="View today"
+          >
+            <Heading as={headingSizeMap(size)} fontWeight="semiBold">
+              {localeUtils.formatMonthTitle(month, locale)}
+            </Heading>
+          </ButtonTransparent>
+        )}
+      </Tooltip>
 
       <PrevButtonWrapper>
         {showNextButton && (
