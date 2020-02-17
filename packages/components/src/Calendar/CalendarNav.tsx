@@ -71,7 +71,6 @@ export const CalendarNav: FC<NavbarElementProps> = ({
             {...eventHandlers}
             onClick={handleLabelClick}
             color="neutral"
-            aria-label="View today"
           >
             <Heading as={headingSizeMap(size)} fontWeight="semiBold">
               {localeUtils.formatMonthTitle(month, locale)}
