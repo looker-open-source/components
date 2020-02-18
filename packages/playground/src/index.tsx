@@ -20,28 +20,16 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {
-  Heading,
-  InlineInputText,
-  Paragraph,
-  GlobalStyle,
-} from '@looker/components'
+import { GlobalStyle } from '@looker/components'
 import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
+import { SelectDemo } from './Select/SelectDemo'
 
 const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <Heading fontSize="large" fontWeight="semiBold">
-        <InlineInputText value="type here..." />
-      </Heading>
-      <Paragraph>---------</Paragraph>
-      <InlineInputText underlineOnlyOnHover value="type here..." />
-      <Paragraph>---------</Paragraph>
-      <Paragraph fontSize="small" variant="subdued" textTransform="uppercase">
-        <InlineInputText value="Descriptive text" />
-      </Paragraph>
+      <SelectDemo />
     </ThemeProvider>
   )
 }

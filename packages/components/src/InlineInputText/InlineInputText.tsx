@@ -79,7 +79,7 @@ const Input = styled.input.attrs({ type: 'text' })<InlineInputTextProps>`
     props.underlineOnlyOnHover
       ? 'transparent'
       : props.theme.colors.palette.charcoal300};
-  padding: 0 ${props => props.theme.space.xsmall};
+  padding: 0;
   font: inherit;
   color: inherit;
   text-transform: inherit;
@@ -101,8 +101,7 @@ const HiddenText = styled.span`
   height: 0;
   overflow: hidden;
   white-space: pre-wrap;
-  /* Adding 1px more of padding solves a horizontal scrolling issue */
-  padding: 0 calc(${props => props.theme.space.xsmall} + 1px);
+  padding: 0 1px;
 `
 
 export const InlineInputText = styled(InlineInputTextInternal)`

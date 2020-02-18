@@ -29,12 +29,9 @@
 
 import {
   CompatibleHTMLProps,
-  layout,
+  FlexboxProps,
   LayoutProps,
-  position,
   TypographyProps,
-  reset,
-  space,
   SpaceProps,
 } from '@looker/design-tokens'
 import React, { forwardRef, useRef, useState, Ref, useEffect } from 'react'
@@ -73,7 +70,8 @@ export function useControlledCombobox(initialValue = '') {
 }
 
 export interface ComboboxProps
-  extends Omit<LayoutProps, 'size'>,
+  extends FlexboxProps,
+    Omit<LayoutProps, 'size'>,
     SpaceProps,
     TypographyProps,
     Omit<
@@ -226,9 +224,8 @@ export const ComboboxInternal = forwardRef(function Combobox(
 
 ComboboxInternal.displayName = 'ComboboxInternal'
 
-export const Combobox = styled(ComboboxInternal)`
-  ${reset}
-  ${layout}
-  ${position}
-  ${space}
-`
+export const Combobox = styled(ComboboxInternal)``
+
+Combobox.defaultProps = {
+  display: 'flex',
+}

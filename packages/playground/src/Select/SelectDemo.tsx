@@ -23,10 +23,15 @@ import {
   Button,
   Dialog,
   Divider,
+  Label,
   Box,
   Select,
   FieldSelect,
   ModalContent,
+  ComboboxOptionObject,
+  SelectOptionProps,
+  SelectOptionGroupProps,
+  Flex,
 } from '@looker/components'
 
 const options = [
@@ -35,7 +40,69 @@ const options = [
   { label: 'Oranges', value: '3' },
   { label: 'Pineapples', value: '4' },
   { label: 'Kiwis', value: '5' },
+  { label: 'Apples2', value: '12' },
+  { label: 'Bananas2', value: '22' },
+  { label: 'Oranges2', value: '32' },
+  { label: 'Pineapples2', value: '42' },
+  { label: 'Kiwis3', value: '52' },
+  { label: 'Apples3', value: '13' },
+  { label: 'Bananas3', value: '23' },
+  { label: 'Oranges3', value: '33' },
+  { label: 'Pineapples3', value: '43' },
+  { label: 'Kiwis3', value: '53' },
+  { label: 'Apples4', value: '14' },
+  { label: 'Bananas4', value: '24' },
+  { label: 'Oranges4', value: '34' },
+  { label: 'Pineapples4', value: '44' },
+  { label: 'Kiwis4', value: '54' },
+  { label: 'Apples5', value: '15' },
+  { label: 'Bananas5', value: '25' },
+  { label: 'Oranges5', value: '35' },
+  { label: 'Pineapples5', value: '45' },
+  { label: 'Kiwis5', value: '55' },
 ]
+
+const optionsWithGroups = [
+  { options, title: 'FRUITS' },
+  {
+    options: [
+      { label: 'Honda', value: 'honda' },
+      { label: 'Toyota', value: 'toyota' },
+    ],
+    title: 'CARS',
+  },
+]
+
+const optionsWithDescriptions = options.map((option: ComboboxOptionObject) => ({
+  ...option,
+  description: `${option.label} are the best ever!`,
+}))
+
+function checkOption(option: ComboboxOptionObject, searchTerm: string) {
+  return (
+    option.label &&
+    option.label.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1
+  )
+}
+
+function optionReducer(searchTerm: string) {
+  return (acc: SelectOptionProps[], option: SelectOptionProps) => {
+    const optionAsGroup = option as SelectOptionGroupProps
+    if (optionAsGroup.title) {
+      const filteredGroupOptions = optionAsGroup.options.filter(option =>
+        checkOption(option, searchTerm)
+      )
+      if (filteredGroupOptions.length > 0) {
+        return [...acc, { ...optionAsGroup, options: filteredGroupOptions }]
+      }
+      return acc
+    }
+    if (checkOption(option as ComboboxOptionObject, searchTerm)) {
+      return [...acc, option]
+    }
+    return acc
+  }
+}
 
 export function SelectContent() {
   const [value, setValue] = React.useState()
@@ -51,26 +118,39 @@ export function SelectContent() {
     setSearchTerm(term)
   }
   const newOptions = React.useMemo(() => {
-    if (searchTerm === '') return options
-    return options.filter((option: { label: string; value: string }) => {
-      return option.label.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1
-    })
+    if (searchTerm === '') return optionsWithGroups
+    return optionsWithGroups.reduce(optionReducer(searchTerm), [])
   }, [searchTerm])
   return (
     <Box m="xlarge">
-      <Select
-        width={300}
-        mb="medium"
-        options={newOptions}
-        aria-label="Fruits"
-        placeholder="Controlled, searchable, clearable"
-        isClearable
-        value={value}
-        onChange={handleChange}
-        onFilter={handleFilter}
-        isFilterable
-        mr="small"
-      />
+      <Label>
+        Use alignSelf="flex-start" to avoid filling height as a flex child
+      </Label>
+      <Flex>
+        <Flex
+          height={200}
+          width={200}
+          bg="palette.charcoal300"
+          alignItems="center"
+          justifyContent="center"
+          mr="small"
+        >
+          200 x 200
+        </Flex>
+        <Select
+          width={300}
+          mb="medium"
+          options={newOptions}
+          aria-label="Fruits"
+          placeholder="Controlled, searchable, clearable"
+          isClearable
+          value={value}
+          onChange={handleChange}
+          onFilter={handleFilter}
+          isFilterable
+          alignSelf="flex-start"
+        />
+      </Flex>
       <Box>
         <Button mt="medium" mr="small" data-fruit="5" onClick={handleClick}>
           Kiwis
@@ -89,13 +169,19 @@ export function SelectContent() {
         defaultValue="1"
       />
       <FieldSelect
-        label="Disabled"
+        label="Groups"
         width={300}
         mb="medium"
-        options={options}
+        options={optionsWithGroups}
         aria-label="Fruits"
-        placeholder="Select One"
-        disabled
+        defaultValue="1"
+      />
+      <FieldSelect
+        label="Descriptions"
+        width={300}
+        mb="medium"
+        options={optionsWithDescriptions}
+        aria-label="Fruits"
         defaultValue="1"
       />
       <FieldSelect
@@ -106,6 +192,16 @@ export function SelectContent() {
         placeholder="Select One"
         defaultValue="1"
         validationMessage={{ message: 'An error message', type: 'error' }}
+      />
+      <FieldSelect
+        label="Disabled"
+        width={300}
+        mb="medium"
+        options={options}
+        aria-label="Fruits"
+        placeholder="Select One"
+        disabled
+        defaultValue="1"
       />
     </Box>
   )
@@ -128,7 +224,9 @@ export const SelectDemo = () => {
       <Dialog isOpen={isOpen} onClose={handleClose}>
         <ModalInner />
       </Dialog>
-      <Button onClick={handleClick}>Open</Button>
+      <Button onClick={handleClick} m="large">
+        Open
+      </Button>
     </>
   )
 }

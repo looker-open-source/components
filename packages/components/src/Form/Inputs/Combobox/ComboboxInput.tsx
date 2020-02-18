@@ -27,9 +27,9 @@
 // Much of the following is pulled from https://github.com/reach/reach-ui
 // because their work is fantastic (but is not in TypeScript)
 
-import { CaretDown } from '@looker/icons'
 import React, {
   FormEvent,
+  FocusEvent,
   forwardRef,
   MouseEvent as ReactMouseEvent,
   useLayoutEffect,
@@ -38,7 +38,6 @@ import React, {
   Ref,
   useCallback,
 } from 'react'
-import ReactDOMServer from 'react-dom/server'
 import styled from 'styled-components'
 import { useMouseDownClick, useForkedRef, useWrapEvent } from '../../../utils'
 import { InputSearch, InputSearchProps } from '../InputSearch'
@@ -180,8 +179,10 @@ export const ComboboxInputInternal = forwardRef(function ComboboxInput(
     })
   }
 
-  function handleFocus() {
-    if (selectOnClick) {
+  function handleFocus(e: FocusEvent<HTMLInputElement>) {
+    if (readOnly) {
+      e.currentTarget.selectionEnd = e.currentTarget.selectionStart
+    } else if (selectOnClick) {
       selectOnClickRef.current = true
     }
 
@@ -216,6 +217,9 @@ export const ComboboxInputInternal = forwardRef(function ComboboxInput(
             persistSelection:
               persistSelectionRef && persistSelectionRef.current,
           })
+      } else {
+        // Closing an opened list
+        transition && transition(ComboboxActionType.ESCAPE)
       }
       if (e.type === 'click') {
         selectText()
@@ -286,9 +290,19 @@ export const ComboboxInputInternal = forwardRef(function ComboboxInput(
 
 ComboboxInputInternal.displayName = 'ComboboxInputInternal'
 
-const indicatorRaw = ReactDOMServer.renderToString(<CaretDown />)
-  .replace(/1em/g, '24')
-  .replace('data-reactroot=""', 'xmlns="http://www.w3.org/2000/svg"')
+const indicatorRaw = `
+<svg
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M7.41 8L12 12.58 16.59 8 18 9.41l-6 6-6-6L7.41 8z"
+    fill="currentColor"
+  />
+</svg>`
 const indicatorSize = '1rem'
 const indicatorPadding = '.25rem'
 const indicatorPrefix = 'data:image/svg+xml;base64,'

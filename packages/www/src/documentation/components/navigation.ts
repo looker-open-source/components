@@ -83,6 +83,10 @@ const components: NavigationSection = {
           path: 'input-chips',
         },
         {
+          title: 'InputDate',
+          path: 'input-date',
+        },
+        {
           title: 'InputHidden',
           path: 'input-hidden',
         },
@@ -143,6 +147,7 @@ const components: NavigationSection = {
         { title: 'Badge', path: 'badge' },
         { title: 'Banner', path: 'banner' },
         { title: 'Card', path: 'card' },
+        { title: 'Calendar', path: 'calendar' },
         { title: 'Chip', path: 'chip' },
         { title: 'ColorWheel', path: 'color-wheel' },
         { title: 'DateTimeFormat', path: 'date-time-format' },

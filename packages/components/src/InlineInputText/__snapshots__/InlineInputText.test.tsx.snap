@@ -21,8 +21,7 @@ exports[`InlineInputText renders an input with the correct styling 1`] = `
 }
 
 .c1:focus {
-  border-bottom: 1px solid;
-  border-bottom-color: #6C43E0;
+  border-bottom-style: solid;
 }
 
 .c2 {

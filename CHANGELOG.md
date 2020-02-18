@@ -11,6 +11,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - new component `InlineInputText` plus documentations and test
 
+- `Select` now supports grouped options with a `title` and option `description`, as well as `BoxProps` for layout styling.
+- New components: `InputDate`, `Calendar`
+
+### Changed
+
+- `Select` now only defaults to the first option if neither `placeholder` nor `isClearable` is defined.
+
+### Fixed
+
+- `Select` styling issues when `GlobalStyle` is not used, missing down caret icon in documentation
+- `usePopover`, when the toggle was a mousedown event, would open just before the "click outside" listener was able to close any prior popovers. If both popovers were inside a `Modal`, the closing popover would re-enable the parent scroll lock, and the one that just opened would be un-scrollable. This especially affected multiple `Select`s inside a `Modal`.
+
 ## [0.7.18] - 2020-02-11
 
 ### Added
