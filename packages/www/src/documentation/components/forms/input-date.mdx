@@ -8,7 +8,7 @@ import { InputDateLocales } from './demos'
 
 `InputDate` provides a text input and calendar to select a single date, which can be used as a form input or filter.
 
-## Prop: defaultValue
+## Default Value
 
 `InputDate` can be initialized with a default selected date.
 
@@ -16,7 +16,7 @@ import { InputDateLocales } from './demos'
 <InputDate defaultValue={new Date('June 3, 2019')} />
 ```
 
-## Prop: onChange
+## Change Event
 
 `InputDate` accepts a single event callback: `onDayClick`. The handler will receive a javascript `Date` object.
 
@@ -40,7 +40,7 @@ import { InputDateLocales } from './demos'
 }
 ```
 
-## Prop: locale
+## Internationalization
 
 `InputDate` comes with a range of supported language formats, which will automatically update month/day translations, as well as the appropriate first day of the week. Simply pass in the two-character locale code and everything will be formatted accordingly.
 
@@ -48,7 +48,9 @@ import { InputDateLocales } from './demos'
 
 <InputDateLocales />
 
-## Prop: validationType
+## Date Validation
+
+### validationType
 
 If you handle form validation externally (such as treating this date field as required), `InputDate` accepts the `validationType` prop to render an error state.
 
@@ -56,7 +58,7 @@ If you handle form validation externally (such as treating this date field as re
 <InputDate validationType="error" />
 ```
 
-## Prop: onValidationFail
+### onValidationFail
 
 `InputDate` has built-in validation to verify that users enter a valid date string when manually typing into the provided textarea. If you wish to build into this validation, you can pass an `onValidationFail` callback which will fire on blur if the text value does not match expected localized format.
 
@@ -91,9 +93,9 @@ If you handle form validation externally (such as treating this date field as re
 }
 ```
 
-## Recipe: Dashboard Filter UI
+## Composing InputDate in a Popover
 
-`InputDate` can be combined with [Popover](/components/overlays/popover), [Button](/components/actions/button), and [DateFormat](/components/content/date-time-format) to render this common filter UI pattern found within the Looker app.
+A common UI pattern is to combine `InputDate` with [Popover](/components/overlays/popover), [Button](/components/actions/button), and [DateFormat](/components/content/date-time-format). This enables the full calendar functionality without having to take up so much space on the page.
 
 ```jsx
 ;() => {
