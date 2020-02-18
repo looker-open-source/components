@@ -58,7 +58,7 @@
     "@types/react-resize-detector": "^4.2.0",
     "@types/styled-components": "^4.4.1",
     "@types/uuid": "^3.4.7",
-    "csstype": "^2.6.8",
+    "csstype": "^2.6.9",
     "enzyme": "^3.11.0",
     "jest-styled-components": "^6.3.4",
     "react": "^16.12.0",
