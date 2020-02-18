@@ -98,24 +98,44 @@ const InputComponent = forwardRef(
       ...props
     }: InputTextProps,
     ref: Ref<HTMLInputElement>
-  ) => {
-    return (
-      <Flex alignItems="left" justifyContent="flex-start">
-        {prefix && <Text fontSize="small">{prefix}</Text>}
+  ) => (
+    <InputWrapper>
+      <InputBeforeWrapper>
         {iconBefore && <Icon name={iconBefore} size={20} />}
-        <input
-          {...pick(omit(props, 'color', 'height', 'width'), inputPropKeys)}
-          type={type}
-          className={props.className}
-          ref={ref}
-        />
-        {iconAfter && <Icon name={iconAfter} size={20} />}
+        {prefix && <Text fontSize="small">{prefix}</Text>}
+      </InputBeforeWrapper>
+      <input
+        {...pick(omit(props, 'color', 'height', 'width'), inputPropKeys)}
+        type={type}
+        className={props.className}
+        ref={ref}
+      />
+      <InputAfterWrapper>
         {suffix && <Text fontSize="small">{suffix}</Text>}
-      </Flex>
-    )
-  }
+        {iconAfter && <Icon name={iconAfter} size={20} />}
+      </InputAfterWrapper>
+    </InputWrapper>
+  )
 )
-InputComponent.displayName = 'InputComponent'
+
+export const InputBeforeWrapper = styled(Flex)``
+export const InputAfterWrapper = styled(Flex)``
+
+export const InputWrapper = styled(Flex)`
+  justify-content: space-between;
+  align-items: center;
+  height: 36px;
+  padding: 0px 12px;
+  position: relative;
+  border: 1px solid;
+  border-color: ${props => props.theme.colors.palette.charcoal200};
+  border-radius: 4px;
+  input {
+    width: 100%;
+  }
+  &:focus-within {
+  }
+`
 
 export const inputTextHover = css`
   border-color: ${props => props.theme.colors.palette.charcoal300};
@@ -182,8 +202,7 @@ export const InputText = styled(InputComponent).attrs(
 `
 
 export const inputTextDefaults = {
-  border: 'solid 1px',
-  borderColor: 'palette.charcoal200',
+  border: 'none',
 }
 
 InputText.defaultProps = {
@@ -191,3 +210,18 @@ InputText.defaultProps = {
   ...inputTextDefaults,
   type: 'text',
 }
+
+InputComponent.displayName = 'InputComponent'
+
+/* <Flex alignItems="left" justifyContent="flex-start">
+{prefix && <Text fontSize="small">{prefix}</Text>}
+{iconBefore && <Icon name={iconBefore} size={20} />}
+<input
+  {...pick(omit(props, 'color', 'height', 'width'), inputPropKeys)}
+  type={type}
+  className={props.className}
+  ref={ref}
+/>
+{iconAfter && <Icon name={iconAfter} size={20} />}
+{suffix && <Text fontSize="small">{suffix}</Text>}
+</Flex> */
