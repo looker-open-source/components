@@ -303,8 +303,8 @@ const indicatorRaw = `
     fill="currentColor"
   />
 </svg>`
-const indicatorSize = '1rem'
-const indicatorPadding = '.25rem'
+export const indicatorSize = '1rem'
+export const indicatorPadding = '.25rem'
 const indicatorPrefix = 'data:image/svg+xml;base64,'
 export const selectIndicatorBG = (color: string) =>
   typeof window !== 'undefined' &&

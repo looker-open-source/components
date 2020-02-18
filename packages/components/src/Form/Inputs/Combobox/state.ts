@@ -83,6 +83,14 @@ export interface ComboboxData {
   lastActionType?: ComboboxActionType
 }
 
+export interface ComboboxMultiData extends Omit<ComboboxData, 'option'> {
+  /**
+   * Multi uses both inputValue (typed) and inputValues  (entered chips)
+   */
+  inputValues: string[]
+  options: ComboboxOptionObject[]
+}
+
 export interface ComboboxAction {
   type: ComboboxActionType
   state: ComboboxState
@@ -94,7 +102,15 @@ export interface ComboboxActionPayload {
   inputValue?: string
 }
 
+export interface ComboboxMultiActionPayload
+  extends Omit<ComboboxActionPayload, 'option'> {
+  options?: ComboboxOptionObject[]
+  inputValues?: string[]
+}
+
 export type ComboboxActionWithPayload = ComboboxAction & ComboboxActionPayload
+export type ComboboxMultiActionWithPayload = ComboboxAction &
+  ComboboxMultiActionPayload
 
 export interface StateChart {
   initial: ComboboxState
@@ -105,9 +121,9 @@ export interface StateChart {
   }
 }
 
-export type ComboboxTransition = (
+export type ComboboxTransition<TPayload = ComboboxActionPayload> = (
   action: ComboboxActionType,
-  payload?: ComboboxActionPayload
+  payload?: TPayload
 ) => void
 
 export const stateChart: StateChart = {
@@ -184,8 +200,8 @@ const findNavigationValue = (
 }
 
 const reducer: Reducer<ComboboxData, ComboboxActionWithPayload> = (
-  data: ComboboxData,
-  action: ComboboxActionWithPayload
+  data,
+  action
 ) => {
   const nextState = { ...data, lastActionType: action.type }
   switch (action.type) {
@@ -243,6 +259,78 @@ const reducer: Reducer<ComboboxData, ComboboxActionWithPayload> = (
   }
 }
 
+const reducerMulti: Reducer<
+  ComboboxMultiData,
+  ComboboxMultiActionWithPayload
+> = (data, action) => {
+  const nextState = { ...data, lastActionType: action.type }
+  switch (action.type) {
+    case ComboboxActionType.CHANGE:
+    case ComboboxActionType.CHANGE_SILENT:
+      return {
+        ...nextState,
+        inputValue: action.inputValue,
+        inputValues: action.inputValues || [],
+        navigationOption: undefined,
+      }
+    case ComboboxActionType.NAVIGATE:
+      return {
+        ...nextState,
+        navigationOption: findNavigationValue(nextState, action),
+      }
+    case ComboboxActionType.CLEAR:
+      return {
+        ...nextState,
+        inputValue: '',
+        inputValues: [],
+        navigationOption: undefined,
+        options: [],
+      }
+    case ComboboxActionType.BLUR:
+    case ComboboxActionType.ESCAPE:
+      return {
+        ...nextState,
+        inputValue: '',
+        inputValues: data.options.map(option => getComboboxText(option)),
+        navigationOption: undefined,
+      }
+    case ComboboxActionType.SELECT_WITH_CLICK:
+    case ComboboxActionType.SELECT_SILENT:
+      return {
+        ...nextState,
+        inputValue: '',
+        inputValues: data.options
+          ? data.options.map(option => getComboboxText(option))
+          : [],
+        navigationOption: undefined,
+        options: action.options || [],
+      }
+    case ComboboxActionType.SELECT_WITH_KEYBOARD:
+      return {
+        ...nextState,
+        inputValue: '',
+        inputValues: [
+          ...(nextState.options.map(option => getComboboxText(option)) || []),
+          getComboboxText(data.navigationOption),
+        ],
+        navigationOption: undefined,
+        ...(data.navigationOption
+          ? { options: [...nextState.options, data.navigationOption] }
+          : {}),
+      }
+    case ComboboxActionType.INTERACT:
+      return nextState
+    case ComboboxActionType.FOCUS:
+      return {
+        ...nextState,
+        navigationOption: findNavigationValue(nextState, action),
+      }
+
+    default:
+      throw new Error(`Unknown action ${action.type}`)
+  }
+}
+
 // This manages transitions between states with a built in reducer to manage
 // the data that goes with those transitions.
 export function useReducerMachine(
@@ -254,6 +342,33 @@ export function useReducerMachine(
   function transition(
     action: ComboboxActionType,
     payload: ComboboxActionPayload = {}
+  ) {
+    const currentState = stateChart.states[state]
+    const nextState = currentState.on[action]
+    if (!nextState) {
+      // eslint-disable-next-line no-console
+      console.warn(`Unknown action "${action}" for state "${state}"`)
+      return
+    }
+    dispatch({ state, type: action, ...payload })
+    setState(nextState)
+  }
+
+  return [state, data, transition]
+}
+export function useReducerMultiMachine(
+  initialData: ComboboxMultiData
+): [
+  ComboboxState,
+  ComboboxMultiData,
+  ComboboxTransition<ComboboxMultiActionPayload>
+] {
+  const [state, setState] = useState(stateChart.initial)
+  const [data, dispatch] = useReducer(reducerMulti, initialData)
+
+  function transition(
+    action: ComboboxActionType,
+    payload: ComboboxMultiActionPayload = { inputValues: [], options: [] }
   ) {
     const currentState = stateChart.states[state]
     const nextState = currentState.on[action]

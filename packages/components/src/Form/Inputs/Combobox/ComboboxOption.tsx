@@ -47,8 +47,14 @@ import styled, { css } from 'styled-components'
 import { useWrapEvent } from '../../../utils'
 import { Icon } from '../../../Icon'
 import { makeHash } from './helpers'
-import { OptionContext, ComboboxContext } from './ComboboxContext'
-import { ComboboxActionType } from './state'
+import {
+  OptionContext,
+  ComboboxContext,
+  ComboboxMultiContext,
+} from './ComboboxContext'
+import { ComboboxActionType, ComboboxData, ComboboxMultiData } from './state'
+import { OnComboboxChange } from './Combobox'
+import { OnComboboxMultiChange } from './ComboboxMulti'
 
 export interface ComboboxOptionObject {
   /**
@@ -118,12 +124,15 @@ const ComboboxOptionInternal = forwardRef(function ComboboxOption(
   }: ComboboxOptionProps,
   forwardedRef: Ref<HTMLLIElement>
 ) {
-  const {
-    data: { option: contextOption, navigationOption },
-    onChange,
-    transition,
-    optionsRef,
-  } = useContext(ComboboxContext)
+  const context = useContext(ComboboxContext)
+  const contextMulti = useContext(ComboboxMultiContext)
+  const contextToUse = context.transition ? context : contextMulti
+  const { data, onChange, transition, optionsRef } = contextToUse
+  const { navigationOption } = data
+
+  const contextOption = (data as ComboboxData).option
+  const contextOptions = (data as ComboboxMultiData).options
+  const options = contextOption ? [contextOption] : contextOptions || []
 
   const indexRef = useRef<number>(-1)
 
@@ -154,8 +163,21 @@ const ComboboxOptionInternal = forwardRef(function ComboboxOption(
 
   function handleClick() {
     const option = { label, value }
-    onChange && onChange(option)
-    transition && transition(ComboboxActionType.SELECT_WITH_CLICK, { option })
+    if (context.transition) {
+      if (onChange) {
+        ;(onChange as OnComboboxChange)(option)
+      }
+      transition && transition(ComboboxActionType.SELECT_WITH_CLICK, { option })
+    } else {
+      const newOptions = [...options, option]
+      if (onChange) {
+        ;(onChange as OnComboboxMultiChange)(newOptions)
+      }
+      transition &&
+        transition(ComboboxActionType.SELECT_WITH_CLICK, {
+          options: newOptions,
+        })
+    }
   }
 
   function handleMouseEnter() {

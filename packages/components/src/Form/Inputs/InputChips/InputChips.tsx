@@ -12,7 +12,7 @@ import { InputSearch, InputSearchProps } from '../InputSearch'
  * but also allows (validated) user inputs to be stored as 'chips' (see the Chip element)
  */
 
-interface InputChipsProps
+export interface InputChipsProps
   extends MaxHeightProps,
     Omit<
       InputSearchProps,

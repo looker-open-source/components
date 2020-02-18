@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2020 Looker Data Sciences, Inc.
+ Copyright (c) 2019 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -27,34 +27,35 @@
 // Much of the following is pulled from https://github.com/reach/reach-ui
 // because their work is fantastic (but is not in TypeScript)
 
-import {
-  CompatibleHTMLProps,
-  FlexboxProps,
-  LayoutProps,
-  TypographyProps,
-  SpaceProps,
-} from '@looker/design-tokens'
+import some from 'lodash/some'
+import every from 'lodash/every'
 import React, { forwardRef, useRef, useState, Ref, useEffect } from 'react'
 import styled from 'styled-components'
 import { useID, useCallbackRef, useForkedRef } from '../../../utils'
 import { Box } from '../../../Layout/Box'
 import { useFocusManagement } from './helpers'
-import { useReducerMachine, ComboboxActionType, ComboboxState } from './state'
-import { ComboboxContext, defaultData } from './ComboboxContext'
+import {
+  useReducerMultiMachine,
+  ComboboxActionType,
+  ComboboxMultiData,
+} from './state'
+import { ComboboxMultiContext, defaultMultiData } from './ComboboxContext'
 import { ComboboxOptionObject, getComboboxText } from './ComboboxOption'
+import { ComboboxBaseProps, getIsVisible } from './Combobox'
 
-const visibleStates = [
-  ComboboxState.SUGGESTING,
-  ComboboxState.NAVIGATING,
-  ComboboxState.INTERACTING,
-]
+function compareOptions(
+  optionsA: ComboboxOptionObject[],
+  optionsB: ComboboxOptionObject[],
+  compare: typeof some | typeof every
+) {
+  return compare(optionsA, optionA =>
+    optionsB.find(optionB => optionA.value === optionB.value)
+  )
+}
 
-export const getIsVisible = (state: ComboboxState) =>
-  visibleStates.includes(state)
+export type OnComboboxMultiChange = (options: ComboboxOptionObject[]) => void
 
-export type OnComboboxChange = (option?: ComboboxOptionObject) => void
-
-export function useControlledCombobox(initialValue = '') {
+export function useControlledComboboxMulti(initialValue = '') {
   const [value, setOption] = useState(initialValue)
   function handleChange(option: ComboboxOptionObject) {
     setOption(option.value)
@@ -68,46 +69,30 @@ export function useControlledCombobox(initialValue = '') {
     value,
   }
 }
-
-export interface ComboboxBaseProps
-  extends FlexboxProps,
-    Omit<LayoutProps, 'size'>,
-    SpaceProps,
-    TypographyProps,
-    Omit<
-      CompatibleHTMLProps<HTMLDivElement>,
-      'readOnly' | 'onChange' | 'value' | 'defaultValue'
-    > {
-  /**
-   * If true, the popover opens when focus is on the text box.
-   */
-  openOnFocus?: boolean
-}
-
-export interface ComboboxProps extends ComboboxBaseProps {
+interface ComboboxMultiProps extends ComboboxBaseProps {
   /**
    * Called when an option is selected (not when user types – use ComboboxInput.onChange for that)
    */
-  onChange?: OnComboboxChange
+  onChange?: OnComboboxMultiChange
   /**
    * The current option (controlled)
    */
-  value?: ComboboxOptionObject
+  values?: ComboboxOptionObject[]
   /**
    * The initial option (uncontrolled)
    */
-  defaultValue?: ComboboxOptionObject
+  defaultValues?: ComboboxOptionObject[]
   /**
    * Called when the suggestion list closes, whether via blur, escape or selection
    */
-  onClose?: (option?: ComboboxOptionObject) => void
+  onClose?: (options?: ComboboxOptionObject[]) => void
   /**
    * Called when the suggestion list opens, whether via typing, click, or focus
    */
-  onOpen?: (option?: ComboboxOptionObject) => void
+  onOpen?: (options?: ComboboxOptionObject[]) => void
 }
 
-export const ComboboxInternal = forwardRef(function Combobox(
+export const ComboboxMultiInternal = forwardRef(function Combobox(
   {
     // opens the list when the input receives focused (but only if there are
     // items in the list)
@@ -115,13 +100,13 @@ export const ComboboxInternal = forwardRef(function Combobox(
 
     children,
     onChange,
-    value,
-    defaultValue,
+    values,
+    defaultValues,
     onClose,
     onOpen,
 
     ...rest
-  }: ComboboxProps,
+  }: ComboboxMultiProps,
   forwardedRef: Ref<HTMLDivElement>
 ) {
   // We store the values of all the ComboboxOptions on this ref. This makes it
@@ -153,21 +138,28 @@ export const ComboboxInternal = forwardRef(function Combobox(
   const readOnlyPropRef = useRef(false)
 
   const persistSelectionRef = useRef(false)
-  const initialValue = value || defaultValue
-  const initialData = initialValue
-    ? { inputValue: getComboboxText(initialValue), option: initialValue }
-    : {}
+  const initialValues = values || defaultValues
+  const initialData: ComboboxMultiData = {
+    inputValues: initialValues
+      ? initialValues.map(initialVal => getComboboxText(initialVal))
+      : [],
+    options: initialValues || [],
+  }
 
-  const [state, data, transition] = useReducerMachine({
-    ...defaultData,
+  const [state, data, transition] = useReducerMultiMachine({
+    ...defaultMultiData,
     ...initialData,
   })
-  const { option } = data
+  const { options } = data
 
-  if (value !== undefined && (!option || option.value !== value.value)) {
+  if (
+    values !== undefined &&
+    (options.length === 0 || compareOptions(options, values, every))
+  ) {
     transition &&
       transition(ComboboxActionType.SELECT_SILENT, {
-        option: value,
+        inputValues: values.map(val => getComboboxText(val)),
+        options: values,
       })
   }
 
@@ -181,13 +173,13 @@ export const ComboboxInternal = forwardRef(function Combobox(
 
   useEffect(() => {
     if (isVisible && !isVisibleRef.current) {
-      onOpen && onOpen(option)
+      onOpen && onOpen(options)
       isVisibleRef.current = true
     } else if (!isVisible && isVisibleRef.current) {
-      onClose && onClose(option)
+      onClose && onClose(options)
       isVisibleRef.current = false
     }
-  }, [isVisible, isVisibleRef, onOpen, onClose, option])
+  }, [isVisible, isVisibleRef, onOpen, onClose, options])
 
   const context = {
     autoCompletePropRef,
@@ -209,7 +201,7 @@ export const ComboboxInternal = forwardRef(function Combobox(
   }
 
   return (
-    <ComboboxContext.Provider value={context}>
+    <ComboboxMultiContext.Provider value={context}>
       <Box
         display="inline-block"
         {...rest}
@@ -221,14 +213,14 @@ export const ComboboxInternal = forwardRef(function Combobox(
       >
         {children}
       </Box>
-    </ComboboxContext.Provider>
+    </ComboboxMultiContext.Provider>
   )
 })
 
-ComboboxInternal.displayName = 'ComboboxInternal'
+ComboboxMultiInternal.displayName = 'ComboboxMultiInternal'
 
-export const Combobox = styled(ComboboxInternal)``
+export const ComboboxMulti = styled(ComboboxMultiInternal)``
 
-Combobox.defaultProps = {
+ComboboxMulti.defaultProps = {
   display: 'flex',
 }

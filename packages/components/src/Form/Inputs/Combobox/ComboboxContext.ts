@@ -23,21 +23,34 @@
  SOFTWARE.
 
  */
+
+import omit from 'lodash/omit'
 import { createContext, RefObject, Ref, MutableRefObject } from 'react'
-import { ComboboxData, ComboboxTransition, ComboboxState } from './state'
+import {
+  ComboboxData,
+  ComboboxMultiData,
+  ComboboxTransition,
+  ComboboxState,
+  ComboboxMultiActionPayload,
+} from './state'
 import { ComboboxOptionObject } from './ComboboxOption'
 import { OnComboboxChange } from './Combobox'
+import { OnComboboxMultiChange } from './ComboboxMulti'
 
-export interface ComboboxContextProps {
-  data: ComboboxData
+export interface ComboboxContextProps<
+  TData = ComboboxData,
+  TChange = OnComboboxChange,
+  TTransition = ComboboxTransition
+> {
+  data: TData
   inputCallbackRef?: Ref<HTMLInputElement>
   inputElement?: HTMLInputElement | null
   wrapperElement?: HTMLDivElement | null
   popoverRef?: RefObject<HTMLDivElement>
-  onChange?: OnComboboxChange
+  onChange?: TChange
   optionsRef?: MutableRefObject<ComboboxOptionObject[]>
   state?: ComboboxState
-  transition?: ComboboxTransition
+  transition?: TTransition
   listboxId?: string
   autoCompletePropRef?: MutableRefObject<boolean>
   persistSelectionRef?: MutableRefObject<boolean>
@@ -45,6 +58,12 @@ export interface ComboboxContextProps {
   isVisible?: boolean
   openOnFocus?: boolean
 }
+
+export type ComboboxMultiContextProps = ComboboxContextProps<
+  ComboboxMultiData,
+  OnComboboxMultiChange,
+  ComboboxTransition<ComboboxMultiActionPayload>
+>
 
 export const defaultData: ComboboxData = {
   // the value the user has typed, we derived this also when the developer is
@@ -57,8 +76,18 @@ export const defaultData: ComboboxData = {
   option: undefined,
 }
 
+export const defaultMultiData: ComboboxMultiData = {
+  ...omit(defaultData, 'option'),
+  inputValues: [],
+  options: [],
+}
+
 export const ComboboxContext = createContext<ComboboxContextProps>({
   data: defaultData,
+})
+
+export const ComboboxMultiContext = createContext<ComboboxMultiContextProps>({
+  data: defaultMultiData,
 })
 
 // Allows us to put the option's value on context so that ComboboxOptionText

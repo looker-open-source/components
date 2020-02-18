@@ -38,7 +38,7 @@ import {
 import React, { forwardRef, Ref, useContext, useLayoutEffect } from 'react'
 import styled from 'styled-components'
 import { PopoverContent, usePopover } from '../../../Popover'
-import { ComboboxContext } from './ComboboxContext'
+import { ComboboxContext, ComboboxMultiContext } from './ComboboxContext'
 import { useKeyDown, useBlur } from './helpers'
 import { ComboboxActionType } from './state'
 
@@ -60,7 +60,7 @@ export interface ComboboxListProps
   persistSelection?: boolean
 }
 
-export const ComboboxListInternal = forwardRef(function ComboboxList(
+const ComboboxListInternal = forwardRef(function ComboboxList(
   {
     // when true, and the list opens again, the option with a matching value will be
     // automatically highlighted.
@@ -69,6 +69,9 @@ export const ComboboxListInternal = forwardRef(function ComboboxList(
   }: ComboboxListProps,
   forwardedRef: Ref<HTMLUListElement>
 ) {
+  const context = useContext(ComboboxContext)
+  const contextMulti = useContext(ComboboxMultiContext)
+  const contextToUse = context.transition ? context : contextMulti
   const {
     persistSelectionRef,
     transition,
@@ -76,7 +79,7 @@ export const ComboboxListInternal = forwardRef(function ComboboxList(
     isVisible,
     optionsRef,
     popoverRef,
-  } = useContext(ComboboxContext)
+  } = contextToUse
 
   if (persistSelection) {
     if (persistSelectionRef) persistSelectionRef.current = true
