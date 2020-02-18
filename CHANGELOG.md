@@ -9,16 +9,35 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- New components `Date` `DateTime` `Time` plus documentation and tests
+- `Select` now supports grouped options with a `title` and option `description`, as well as `BoxProps` for layout styling.
+- New components: `InputDate`, `Calendar`
 
 ### Changed
 
+- `Select` now only defaults to the first option if neither `placeholder` nor `isClearable` is defined.
+
+### Fixed
+
+- `Select` styling issues when `GlobalStyle` is not used, missing down caret icon in documentation
+- `usePopover`, when the toggle was a mousedown event, would open just before the "click outside" listener was able to close any prior popovers. If both popovers were inside a `Modal`, the closing popover would re-enable the parent scroll lock, and the one that just opened would be un-scrollable. This especially affected multiple `Select`s inside a `Modal`.
+
+## [0.7.18] - 2020-02-11
+
+### Added
+
+- `Checkbox` now supports `checked='mixed'` (indeterminate state)
+- `Date`, `DateTime`, `Time` new date and time formatting components
+
+### Changed
+
+- Moved ESLint, TSConfig, Prettier & StyleLint to [@looker/eslint-config](https://www.npmjs.com/package/@looker/eslint-config)
 - `GlobalStyle` no longer imports fonts from Google Fonts CDN.
   - Updated documentation to reflect how to import fonts
   - Added documentation for `GlobalStyle` under a new "Utilities" section
 
 ### Fixed
 
+- Corrected links to source in documentation
 - `Swatch` border style when used directly (not via `FieldColor`)
 
 ## [0.7.17] - 2020-01-31

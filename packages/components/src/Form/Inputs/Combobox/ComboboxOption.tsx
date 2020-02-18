@@ -43,7 +43,7 @@ import {
 } from '@looker/design-tokens'
 import omit from 'lodash/omit'
 import React, { forwardRef, useEffect, useRef, useContext, Ref } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { useWrapEvent } from '../../../utils'
 import { Icon } from '../../../Icon'
 import { makeHash } from './helpers'
@@ -192,6 +192,12 @@ const ComboboxOptionInternal = forwardRef(function ComboboxOption(
 
 ComboboxOptionInternal.displayName = 'ComboboxOptionInternal'
 
+export const comboboxOptionGrid = css`
+  display: grid;
+  grid-gap: ${props => props.theme.space.xxsmall};
+  grid-template-columns: ${props => props.theme.space.medium} 1fr;
+`
+
 export const ComboboxOption = styled(ComboboxOptionInternal)`
   ${reset}
   ${color}
@@ -201,9 +207,7 @@ export const ComboboxOption = styled(ComboboxOptionInternal)`
   ${typography}
   cursor: default;
   align-items: flex-start;
-  display: grid;
-  grid-gap: 4px;
-  grid-template-columns: 16px 1fr;
+  ${comboboxOptionGrid}
   outline: none;
 
   &[aria-selected='true'] {

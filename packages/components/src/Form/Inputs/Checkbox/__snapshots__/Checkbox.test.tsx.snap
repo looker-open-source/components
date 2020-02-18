@@ -41,12 +41,8 @@ exports[`Checkbox checked set to false 1`] = `
 
 .c0 .c1 {
   background: #FFFFFF;
-}
-
-.c0 input[type='checkbox']:checked + .c1 {
-  color: #fff;
-  background: #0087e1;
-  border-color: #0087e1;
+  border-color: #DEE1E5;
+  color: #FFFFFF;
 }
 
 .c0 input[type='checkbox']:focus + .c1 {
@@ -57,12 +53,29 @@ exports[`Checkbox checked set to false 1`] = `
   opacity: 0.5;
 }
 
+.c3 .c1 {
+  background: #0087e1;
+  border-color: #0087e1;
+  color: #FFFFFF;
+}
+
+.c3 input[type='checkbox']:focus + .c1 {
+  box-shadow: 0 0 .5px 1px #C1C6CC;
+}
+
+.c3 input[type='checkbox']:disabled + .c1 {
+  opacity: 0.5;
+}
+
 <div
+  checked={false}
   className="c0 "
 >
   <input
+    aria-checked={false}
     checked={false}
     className=""
+    role="checkbox"
     type="checkbox"
   />
   <div
@@ -82,6 +95,112 @@ exports[`Checkbox checked set to false 1`] = `
         strokeLinejoin="round"
         strokeWidth="2"
       />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Checkbox checked set to mixed 1`] = `
+.c2 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: solid 1px #DEE1E5;
+  border-radius: 0.125rem;
+  color: transparent;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c3 .c1 {
+  background: #FFFFFF;
+  border-color: #DEE1E5;
+  color: #FFFFFF;
+}
+
+.c3 input[type='checkbox']:focus + .c1 {
+  box-shadow: 0 0 .5px 1px #C1C6CC;
+}
+
+.c3 input[type='checkbox']:disabled + .c1 {
+  opacity: 0.5;
+}
+
+.c0 {
+  position: relative;
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  margin: 3px;
+  vertical-align: middle;
+}
+
+.c0 input[type='checkbox'] {
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.c0 .c1 {
+  background: #0087e1;
+  border-color: #0087e1;
+  color: #FFFFFF;
+}
+
+.c0 input[type='checkbox']:focus + .c1 {
+  box-shadow: 0 0 .5px 1px #C1C6CC;
+}
+
+.c0 input[type='checkbox']:disabled + .c1 {
+  opacity: 0.5;
+}
+
+<div
+  checked="mixed"
+  className="c0 "
+>
+  <input
+    aria-checked="mixed"
+    checked={false}
+    className=""
+    role="checkbox"
+    type="checkbox"
+  />
+  <div
+    className="c1 c2"
+  >
+    <svg
+      fill="none"
+      height="16"
+      viewBox="0 0 16 16"
+      width="16"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeWidth="2"
+      >
+        <line
+          x1="5"
+          x2="11"
+          y1="8"
+          y2="8"
+        />
+      </g>
     </svg>
   </div>
 </div>
@@ -109,6 +228,20 @@ exports[`Checkbox checked set to true 1`] = `
   align-items: center;
 }
 
+.c3 .c1 {
+  background: #FFFFFF;
+  border-color: #DEE1E5;
+  color: #FFFFFF;
+}
+
+.c3 input[type='checkbox']:focus + .c1 {
+  box-shadow: 0 0 .5px 1px #C1C6CC;
+}
+
+.c3 input[type='checkbox']:disabled + .c1 {
+  opacity: 0.5;
+}
+
 .c0 {
   position: relative;
   display: inline-block;
@@ -127,13 +260,9 @@ exports[`Checkbox checked set to true 1`] = `
 }
 
 .c0 .c1 {
-  background: #FFFFFF;
-}
-
-.c0 input[type='checkbox']:checked + .c1 {
-  color: #fff;
   background: #0087e1;
   border-color: #0087e1;
+  color: #FFFFFF;
 }
 
 .c0 input[type='checkbox']:focus + .c1 {
@@ -145,11 +274,14 @@ exports[`Checkbox checked set to true 1`] = `
 }
 
 <div
+  checked={true}
   className="c0 "
 >
   <input
+    aria-checked={true}
     checked={true}
     className=""
+    role="checkbox"
     type="checkbox"
   />
   <div
@@ -215,12 +347,8 @@ exports[`Checkbox default 1`] = `
 
 .c0 .c1 {
   background: #FFFFFF;
-}
-
-.c0 input[type='checkbox']:checked + .c1 {
-  color: #fff;
-  background: #0087e1;
-  border-color: #0087e1;
+  border-color: #DEE1E5;
+  color: #FFFFFF;
 }
 
 .c0 input[type='checkbox']:focus + .c1 {
@@ -235,7 +363,9 @@ exports[`Checkbox default 1`] = `
   className="c0 "
 >
   <input
+    checked={false}
     className=""
+    role="checkbox"
     type="checkbox"
   />
   <div
@@ -301,12 +431,8 @@ exports[`Checkbox should accept disabled 1`] = `
 
 .c0 .c1 {
   background: #FFFFFF;
-}
-
-.c0 input[type='checkbox']:checked + .c1 {
-  color: #fff;
-  background: #0087e1;
-  border-color: #0087e1;
+  border-color: #DEE1E5;
+  color: #FFFFFF;
 }
 
 .c0 input[type='checkbox']:focus + .c1 {
@@ -317,12 +443,28 @@ exports[`Checkbox should accept disabled 1`] = `
   opacity: 0.5;
 }
 
+.c3 .c1 {
+  background: #0087e1;
+  border-color: #0087e1;
+  color: #FFFFFF;
+}
+
+.c3 input[type='checkbox']:focus + .c1 {
+  box-shadow: 0 0 .5px 1px #C1C6CC;
+}
+
+.c3 input[type='checkbox']:disabled + .c1 {
+  opacity: 0.5;
+}
+
 <div
   className="c0 "
 >
   <input
+    checked={false}
     className=""
     disabled={true}
+    role="checkbox"
     type="checkbox"
   />
   <div
@@ -388,12 +530,8 @@ exports[`Checkbox with aria-describedby 1`] = `
 
 .c0 .c1 {
   background: #FFFFFF;
-}
-
-.c0 input[type='checkbox']:checked + .c1 {
-  color: #fff;
-  background: #0087e1;
-  border-color: #0087e1;
+  border-color: #DEE1E5;
+  color: #FFFFFF;
 }
 
 .c0 input[type='checkbox']:focus + .c1 {
@@ -404,12 +542,28 @@ exports[`Checkbox with aria-describedby 1`] = `
   opacity: 0.5;
 }
 
+.c3 .c1 {
+  background: #0087e1;
+  border-color: #0087e1;
+  color: #FFFFFF;
+}
+
+.c3 input[type='checkbox']:focus + .c1 {
+  box-shadow: 0 0 .5px 1px #C1C6CC;
+}
+
+.c3 input[type='checkbox']:disabled + .c1 {
+  opacity: 0.5;
+}
+
 <div
   className="c0 "
 >
   <input
     aria-describedby="some-id"
+    checked={false}
     className=""
+    role="checkbox"
     type="checkbox"
   />
   <div
@@ -475,12 +629,8 @@ exports[`Checkbox with name and id 1`] = `
 
 .c0 .c1 {
   background: #FFFFFF;
-}
-
-.c0 input[type='checkbox']:checked + .c1 {
-  color: #fff;
-  background: #0087e1;
-  border-color: #0087e1;
+  border-color: #DEE1E5;
+  color: #FFFFFF;
 }
 
 .c0 input[type='checkbox']:focus + .c1 {
@@ -491,13 +641,29 @@ exports[`Checkbox with name and id 1`] = `
   opacity: 0.5;
 }
 
+.c3 .c1 {
+  background: #0087e1;
+  border-color: #0087e1;
+  color: #FFFFFF;
+}
+
+.c3 input[type='checkbox']:focus + .c1 {
+  box-shadow: 0 0 .5px 1px #C1C6CC;
+}
+
+.c3 input[type='checkbox']:disabled + .c1 {
+  opacity: 0.5;
+}
+
 <div
   className="c0 "
 >
   <input
+    checked={false}
     className=""
     id="Chucky"
     name="Chuck"
+    role="checkbox"
     type="checkbox"
   />
   <div

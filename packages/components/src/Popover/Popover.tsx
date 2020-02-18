@@ -247,24 +247,30 @@ function usePopoverToggle(
     isControlled && controlledSetOpen ? controlledSetOpen : uncontrolledSetOpen
 
   useEffect(() => {
-    function handleMouseDown(event: MouseEvent) {
-      mouseDownTarget.current = event.target
-    }
-
-    function handleClickOutside(event: MouseEvent) {
+    function checkCloseAndStopEvent(event: MouseEvent) {
       if (canClose && !canClose()) return
-      // User clicked inside the Popover surface/portal
-      if (portalElement && portalElement.contains(event.target as Node)) {
-        return
+
+      // Check if the click started in (or on top of) the popover
+      // If so, don't close the popover even if the user has dragged
+      // outside the popover as this is preferable to a bug where another
+      // component triggers a scroll animation resulting in an
+      // unintentional drag, which closes the popover
+      if (portalElement && mouseDownTarget.current) {
+        const relationship = portalElement.compareDocumentPosition(
+          mouseDownTarget.current as Node
+        )
+        if (
+          relationship === Node.DOCUMENT_POSITION_FOLLOWING ||
+          relationship ===
+            Node.DOCUMENT_POSITION_FOLLOWING +
+              Node.DOCUMENT_POSITION_CONTAINED_BY
+        ) {
+          return
+        }
       }
 
-      if (
-        portalElement &&
-        mouseDownTarget.current &&
-        portalElement.compareDocumentPosition(
-          mouseDownTarget.current as Node
-        ) === Node.DOCUMENT_POSITION_FOLLOWING
-      ) {
+      // User clicked inside the Popover surface/portal
+      if (portalElement && portalElement.contains(event.target as Node)) {
         return
       }
 
@@ -295,17 +301,38 @@ function usePopoverToggle(
 
       event.stopPropagation()
     }
+
+    function handleMouseDown(event: MouseEvent) {
+      mouseDownTarget.current = event.target
+      checkCloseAndStopEvent(event)
+    }
+
+    function handleClickOutside(event: MouseEvent) {
+      checkCloseAndStopEvent(event)
+    }
+
+    function handleMouseUp() {
+      window.requestAnimationFrame(() => {
+        mouseDownTarget.current = null
+        document.removeEventListener('click', handleClickOutside, true)
+        document.removeEventListener('mouseup', handleMouseUp, true)
+      })
+    }
+
     if (isOpen) {
       document.addEventListener('mousedown', handleMouseDown, true)
+      if (!mouseDownTarget.current) {
+        document.addEventListener('click', handleClickOutside, true)
+      }
+    } else if (mouseDownTarget.current) {
       document.addEventListener('click', handleClickOutside, true)
-    } else {
-      document.removeEventListener('mousedown', handleMouseDown, true)
-      document.removeEventListener('click', handleClickOutside, true)
+      document.addEventListener('mouseup', handleMouseUp, true)
     }
 
     return () => {
       document.removeEventListener('mousedown', handleMouseDown, true)
       document.removeEventListener('click', handleClickOutside, true)
+      document.removeEventListener('mouseup', handleMouseUp, true)
     }
   }, [
     canClose,

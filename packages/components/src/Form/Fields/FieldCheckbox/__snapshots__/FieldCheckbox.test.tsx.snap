@@ -134,9 +134,11 @@ exports[`A FieldCheckbox 1`] = `
         className="c5 "
       >
         <input
+          checked={false}
           className=""
           id="thumbs-up"
           name="thumbsUp"
+          role="checkbox"
           type="checkbox"
         />
         <div
@@ -219,6 +221,7 @@ exports[`A FieldCheckbox with checked value 1`] = `
   color: #fff;
   background: #0087e1;
   border-color: #0087e1;
+  color: #FFFFFF;
 }
 
 .c5 input[type='checkbox']:focus + .c6 {
@@ -298,10 +301,12 @@ exports[`A FieldCheckbox with checked value 1`] = `
         className="c5 "
       >
         <input
+          aria-checked={true}
           checked={true}
           className=""
           id="thumbs-up"
           name="thumbsUp"
+          role="checkbox"
           type="checkbox"
         />
         <div
@@ -378,12 +383,19 @@ exports[`A required FieldCheckbox 1`] = `
 
 .c6 .c7 {
   background: #FFFFFF;
+  border-color: #DEE1E5;
+  color: #FFFFFF;
+}
+
+.c5 input[type='checkbox']:focus + .c6 {
+  box-shadow: 0 0 .5px 1px #C1C6CC;
 }
 
 .c6 input[type='checkbox']:checked + .c7 {
   color: #fff;
   background: #0087e1;
   border-color: #0087e1;
+  color: #FFFFFF;
 }
 
 .c6 input[type='checkbox']:focus + .c7 {
@@ -474,10 +486,12 @@ exports[`A required FieldCheckbox 1`] = `
         className="c6 "
       >
         <input
+          checked={false}
           className=""
           id="thumbs-up"
           name="thumbsUp"
           required={true}
+          role="checkbox"
           type="checkbox"
         />
         <div

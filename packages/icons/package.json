@@ -1,7 +1,7 @@
 {
   "name": "@looker/icons",
   "license": "MIT",
-  "version": "0.7.15",
+  "version": "0.7.18",
   "main": "dist/cjs/index.js",
   "types": "dist/types/index.d.ts",
   "module": "dist/esm/index.js",
@@ -33,7 +33,7 @@
     "glob": "^7.1.6",
     "lodash": "^4.17.15",
     "ora": "^4.0.3",
-    "rimraf": "^3.0.1"
+    "rimraf": "^3.0.2"
   },
-  "gitHead": "05b63c793e74648ca4ada0d1bb9d4cc278256778"
+  "gitHead": "6824d04c5c7c42fbf87e5ceb1172f5de59b6dfdd"
 }

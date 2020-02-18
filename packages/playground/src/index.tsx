@@ -24,10 +24,8 @@ import { GlobalStyle, Field, FieldText } from '@looker/components'
 import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
 
-const App: React.FC = () => {
-  return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
+import { SelectDemo } from './Select/SelectDemo'
+
       <Field required description="description" detail="0/50" label="First" />
       <FieldText
         required
