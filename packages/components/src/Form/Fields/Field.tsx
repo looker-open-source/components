@@ -251,5 +251,3 @@ export const Field = styled(FieldComponent)`
     ${handleHorizontalAlignment}
   }
 `
-
-Field.defaultProps = { width: '13rem' }

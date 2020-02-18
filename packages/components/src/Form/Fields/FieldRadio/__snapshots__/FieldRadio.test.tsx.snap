@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`A FieldRadio 1`] = `
-.c7 {
+.c8 {
   position: relative;
   width: 100%;
   height: 100%;
@@ -12,7 +12,7 @@ exports[`A FieldRadio 1`] = `
   transition: background-color 25ms linear,border-color 25ms linear, box-shadow 25ms linear;
 }
 
-.c5 {
+.c6 {
   position: relative;
   display: inline-block;
   width: 1rem;
@@ -21,7 +21,7 @@ exports[`A FieldRadio 1`] = `
   vertical-align: middle;
 }
 
-.c5 input[type='radio'] {
+.c6 input[type='radio'] {
   opacity: 0;
   position: absolute;
   width: 100%;
@@ -29,16 +29,16 @@ exports[`A FieldRadio 1`] = `
   z-index: 1;
 }
 
-.c5 .c6 {
+.c6 .c7 {
   background: #FFFFFF;
 }
 
-.c5 input[type='radio']:checked + .c6 {
+.c6 input[type='radio']:checked + .c7 {
   background: #0087e1;
   border-color: #0087e1;
 }
 
-.c5 input[type='radio']:checked + .c6::after {
+.c6 input[type='radio']:checked + .c7::after {
   content: '';
   position: absolute;
   background: #fff;
@@ -49,12 +49,27 @@ exports[`A FieldRadio 1`] = `
   right: calc(50% - 3px);
 }
 
-.c5 input[type='radio']:focus + .c6 {
+.c6 input[type='radio']:focus + .c7 {
   box-shadow: 0 0 .5px 1px #C1C6CC;
 }
 
-.c5 input[type='radio']:disabled + .c6 {
+.c6 input[type='radio']:disabled + .c7 {
   opacity: 0.5;
+}
+
+.c2 {
+  -webkit-align-items: left;
+  -webkit-box-align: left;
+  -ms-flex-align: left;
+  align-items: left;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c0 {
@@ -76,7 +91,7 @@ exports[`A FieldRadio 1`] = `
   align-items: baseline;
 }
 
-.c4 {
+.c5 {
   margin-bottom: 0.5rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -91,7 +106,7 @@ exports[`A FieldRadio 1`] = `
   align-items: baseline;
 }
 
-.c3 {
+.c4 {
   color: #343C42;
   margin-right: 0.5rem;
   font-weight: 600;
@@ -99,7 +114,15 @@ exports[`A FieldRadio 1`] = `
   display: inline-block;
 }
 
-.c1 .c2 {
+.c1 .c9 {
+  width: 100%;
+}
+
+.c1 .c10 {
+  width: 100%;
+}
+
+.c1 .c3 {
   text-align: left;
   width: 20%;
   margin-right: 0;
@@ -109,23 +132,27 @@ exports[`A FieldRadio 1`] = `
 <div
   className="c0 c1 "
 >
-  <label
-    className="c2 c3"
-    color="palette.charcoal700"
-    fontSize="xsmall"
-    fontWeight="semiBold"
-    htmlFor="thumbs-up"
-  >
-    👍
-  </label>
   <div
-    className="c4"
+    className="c2"
+  >
+    <label
+      className="c3 c4"
+      color="palette.charcoal700"
+      fontSize="xsmall"
+      fontWeight="semiBold"
+      htmlFor="thumbs-up"
+    >
+      👍
+    </label>
+  </div>
+  <div
+    className="c5"
   >
     <div
       className=""
     >
       <div
-        className="c5 "
+        className="c6 "
       >
         <input
           className=""
@@ -134,7 +161,7 @@ exports[`A FieldRadio 1`] = `
           type="radio"
         />
         <div
-          className="c6 c7"
+          className="c7 c8"
         />
       </div>
     </div>
@@ -143,7 +170,7 @@ exports[`A FieldRadio 1`] = `
 `;
 
 exports[`A FieldRadio checked 1`] = `
-.c7 {
+.c8 {
   position: relative;
   width: 100%;
   height: 100%;
@@ -154,7 +181,7 @@ exports[`A FieldRadio checked 1`] = `
   transition: background-color 25ms linear,border-color 25ms linear, box-shadow 25ms linear;
 }
 
-.c5 {
+.c6 {
   position: relative;
   display: inline-block;
   width: 1rem;
@@ -163,7 +190,7 @@ exports[`A FieldRadio checked 1`] = `
   vertical-align: middle;
 }
 
-.c5 input[type='radio'] {
+.c6 input[type='radio'] {
   opacity: 0;
   position: absolute;
   width: 100%;
@@ -171,16 +198,16 @@ exports[`A FieldRadio checked 1`] = `
   z-index: 1;
 }
 
-.c5 .c6 {
+.c6 .c7 {
   background: #FFFFFF;
 }
 
-.c5 input[type='radio']:checked + .c6 {
+.c6 input[type='radio']:checked + .c7 {
   background: #0087e1;
   border-color: #0087e1;
 }
 
-.c5 input[type='radio']:checked + .c6::after {
+.c6 input[type='radio']:checked + .c7::after {
   content: '';
   position: absolute;
   background: #fff;
@@ -191,12 +218,27 @@ exports[`A FieldRadio checked 1`] = `
   right: calc(50% - 3px);
 }
 
-.c5 input[type='radio']:focus + .c6 {
+.c6 input[type='radio']:focus + .c7 {
   box-shadow: 0 0 .5px 1px #C1C6CC;
 }
 
-.c5 input[type='radio']:disabled + .c6 {
+.c6 input[type='radio']:disabled + .c7 {
   opacity: 0.5;
+}
+
+.c2 {
+  -webkit-align-items: left;
+  -webkit-box-align: left;
+  -ms-flex-align: left;
+  align-items: left;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c0 {
@@ -218,7 +260,7 @@ exports[`A FieldRadio checked 1`] = `
   align-items: baseline;
 }
 
-.c4 {
+.c5 {
   margin-bottom: 0.5rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -233,7 +275,7 @@ exports[`A FieldRadio checked 1`] = `
   align-items: baseline;
 }
 
-.c3 {
+.c4 {
   color: #343C42;
   margin-right: 0.5rem;
   font-weight: 600;
@@ -241,14 +283,22 @@ exports[`A FieldRadio checked 1`] = `
   display: inline-block;
 }
 
-.c1 .c2 {
+.c1 .c10 {
+  width: 100%;
+}
+
+.c1 .c11 {
+  width: 100%;
+}
+
+.c1 .c3 {
   text-align: left;
   width: 20%;
   margin-right: 0;
   margin-left: 0.5rem;
 }
 
-.c8 .c2 {
+.c9 .c3 {
   text-align: right;
   width: 20%;
 }
@@ -256,23 +306,27 @@ exports[`A FieldRadio checked 1`] = `
 <div
   className="c0 c1 "
 >
-  <label
-    className="c2 c3"
-    color="palette.charcoal700"
-    fontSize="xsmall"
-    fontWeight="semiBold"
-    htmlFor="thumbs-up"
-  >
-    👍
-  </label>
   <div
-    className="c4"
+    className="c2"
+  >
+    <label
+      className="c3 c4"
+      color="palette.charcoal700"
+      fontSize="xsmall"
+      fontWeight="semiBold"
+      htmlFor="thumbs-up"
+    >
+      👍
+    </label>
+  </div>
+  <div
+    className="c5"
   >
     <div
       className=""
     >
       <div
-        className="c5 "
+        className="c6 "
       >
         <input
           checked={true}
@@ -282,7 +336,7 @@ exports[`A FieldRadio checked 1`] = `
           type="radio"
         />
         <div
-          className="c6 c7"
+          className="c7 c8"
         />
       </div>
     </div>
@@ -291,7 +345,7 @@ exports[`A FieldRadio checked 1`] = `
 `;
 
 exports[`A FieldRadio with label aligned left 1`] = `
-.c6 {
+.c7 {
   position: relative;
   width: 100%;
   height: 100%;
@@ -302,7 +356,7 @@ exports[`A FieldRadio with label aligned left 1`] = `
   transition: background-color 25ms linear,border-color 25ms linear, box-shadow 25ms linear;
 }
 
-.c4 {
+.c5 {
   position: relative;
   display: inline-block;
   width: 1rem;
@@ -311,7 +365,7 @@ exports[`A FieldRadio with label aligned left 1`] = `
   vertical-align: middle;
 }
 
-.c4 input[type='radio'] {
+.c5 input[type='radio'] {
   opacity: 0;
   position: absolute;
   width: 100%;
@@ -319,16 +373,16 @@ exports[`A FieldRadio with label aligned left 1`] = `
   z-index: 1;
 }
 
-.c4 .c5 {
+.c5 .c6 {
   background: #FFFFFF;
 }
 
-.c4 input[type='radio']:checked + .c5 {
+.c5 input[type='radio']:checked + .c6 {
   background: #0087e1;
   border-color: #0087e1;
 }
 
-.c4 input[type='radio']:checked + .c5::after {
+.c5 input[type='radio']:checked + .c6::after {
   content: '';
   position: absolute;
   background: #fff;
@@ -339,12 +393,27 @@ exports[`A FieldRadio with label aligned left 1`] = `
   right: calc(50% - 3px);
 }
 
-.c4 input[type='radio']:focus + .c5 {
+.c5 input[type='radio']:focus + .c6 {
   box-shadow: 0 0 .5px 1px #C1C6CC;
 }
 
-.c4 input[type='radio']:disabled + .c5 {
+.c5 input[type='radio']:disabled + .c6 {
   opacity: 0.5;
+}
+
+.c2 {
+  -webkit-align-items: left;
+  -webkit-box-align: left;
+  -ms-flex-align: left;
+  align-items: left;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c0 {
@@ -362,7 +431,7 @@ exports[`A FieldRadio with label aligned left 1`] = `
   align-items: baseline;
 }
 
-.c3 {
+.c4 {
   color: #343C42;
   margin-right: 0.5rem;
   font-weight: 600;
@@ -370,14 +439,22 @@ exports[`A FieldRadio with label aligned left 1`] = `
   display: inline-block;
 }
 
-.c7 .c2 {
+.c8 .c3 {
   text-align: left;
   width: 20%;
   margin-right: 0;
   margin-left: 0.5rem;
 }
 
-.c1 .c2 {
+.c1 .c9 {
+  width: 100%;
+}
+
+.c1 .c10 {
+  width: 100%;
+}
+
+.c1 .c3 {
   text-align: right;
   width: 20%;
 }
@@ -385,15 +462,19 @@ exports[`A FieldRadio with label aligned left 1`] = `
 <div
   className="c0 c1 "
 >
-  <label
-    className="c2 c3"
-    color="palette.charcoal700"
-    fontSize="xsmall"
-    fontWeight="semiBold"
-    htmlFor="thumbs-up"
+  <div
+    className="c2"
   >
-    👍
-  </label>
+    <label
+      className="c3 c4"
+      color="palette.charcoal700"
+      fontSize="xsmall"
+      fontWeight="semiBold"
+      htmlFor="thumbs-up"
+    >
+      👍
+    </label>
+  </div>
   <div
     className="c0"
   >
@@ -401,7 +482,7 @@ exports[`A FieldRadio with label aligned left 1`] = `
       className=""
     >
       <div
-        className="c4 "
+        className="c5 "
       >
         <input
           className=""
@@ -410,7 +491,7 @@ exports[`A FieldRadio with label aligned left 1`] = `
           type="radio"
         />
         <div
-          className="c5 c6"
+          className="c6 c7"
         />
       </div>
     </div>

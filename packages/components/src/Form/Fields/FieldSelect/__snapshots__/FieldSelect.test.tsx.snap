@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`A FieldSelect 1`] = `
-.c2 {
+.c4 {
   display: inline-block;
 }
 
-.c3 {
+.c6 {
   border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
@@ -17,7 +17,7 @@ exports[`A FieldSelect 1`] = `
   font-size: 0.875rem;
 }
 
-.c7 {
+.c10 {
   border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
@@ -30,30 +30,45 @@ exports[`A FieldSelect 1`] = `
   color: #343C42;
 }
 
-.c7:focus {
+.c10:focus {
   outline: none;
 }
 
-.c7:hover {
+.c10:hover {
   border-color: #C1C6CC;
 }
 
-.c7:focus {
+.c10:focus {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
-.c7:disabled {
+.c10:disabled {
   background: #F5F6F7;
   color: #939BA5;
 }
 
-.c7:disabled:hover {
+.c10:disabled:hover {
   border-color: #DEE1E5;
 }
 
-.c4 {
+.c2 {
+  -webkit-align-items: left;
+  -webkit-box-align: left;
+  -ms-flex-align: left;
+  align-items: left;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c7 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -66,17 +81,17 @@ exports[`A FieldSelect 1`] = `
   background-color: #FFFFFF;
 }
 
-.c4:hover {
+.c7:hover {
   border-color: #C1C6CC;
 }
 
-.c4:focus-within {
+.c7:focus-within {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
-.c4 .c6 {
+.c7 .c9 {
   border: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -90,16 +105,16 @@ exports[`A FieldSelect 1`] = `
   height: calc(36px - 6px);
 }
 
-.c4 .c6::-webkit-search-decoration,
-.c4 .c6::-webkit-search-cancel-button,
-.c4 .c6::-webkit-search-results-button,
-.c4 .c6::-webkit-search-results-decoration {
+.c7 .c9::-webkit-search-decoration,
+.c7 .c9::-webkit-search-cancel-button,
+.c7 .c9::-webkit-search-results-button,
+.c7 .c9::-webkit-search-results-decoration {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }
 
-.c5 {
+.c8 {
   background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+Q2FyZXQgRG93bjwvdGl0bGU+PHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OCAxNi41OSA4IDE4IDkuNDFsLTYgNi02LTZMNy40MSA4eiIgZmlsbD0iIzcwNzc4MSI+PC9wYXRoPjwvc3ZnPg==');
   background-repeat: no-repeat,repeat;
   background-position: right .25rem center,0 0;
@@ -107,7 +122,7 @@ exports[`A FieldSelect 1`] = `
   padding-right: calc(2 * .25rem + 1rem);
 }
 
-.c5 .c6 {
+.c8 .c9 {
   cursor: default;
 }
 
@@ -122,7 +137,7 @@ exports[`A FieldSelect 1`] = `
   flex-direction: column;
 }
 
-.c1 {
+.c3 {
   color: #343C42;
   margin-right: 0.5rem;
   font-weight: 600;
@@ -130,18 +145,30 @@ exports[`A FieldSelect 1`] = `
   display: inline-block;
 }
 
+.c1 .c9 {
+  width: 100%;
+}
+
+.c1 .c5 {
+  width: 100%;
+}
+
 <div
-  className="c0 "
+  className="c0 c1 "
 >
-  <label
-    className="c1"
-    color="palette.charcoal700"
-    fontSize="xsmall"
-    fontWeight="semiBold"
-    htmlFor="thumbs-up"
+  <div
+    className="c2"
   >
-    👍
-  </label>
+    <label
+      className="c3"
+      color="palette.charcoal700"
+      fontSize="xsmall"
+      fontWeight="semiBold"
+      htmlFor="thumbs-up"
+    >
+      👍
+    </label>
+  </div>
   <div
     className="c0"
   >
@@ -152,14 +179,14 @@ exports[`A FieldSelect 1`] = `
         aria-expanded={false}
         aria-haspopup="listbox"
         aria-owns="listbox-thumbs-up"
-        className="c2 "
+        className="c4 c5 "
         display="inline-block"
         id="thumbs-up"
         name="thumbsUp"
         role="combobox"
       >
         <div
-          className="c3 c4 c5"
+          className="c6 c7 c8"
           fontSize="small"
           onClick={[Function]}
           onMouseDown={[Function]}
@@ -168,7 +195,7 @@ exports[`A FieldSelect 1`] = `
           <input
             aria-autocomplete="both"
             autoComplete="off"
-            className="c6 c7"
+            className="c9 c10"
             id="listbox-thumbs-up"
             onBlur={[Function]}
             onChange={[Function]}
@@ -186,11 +213,11 @@ exports[`A FieldSelect 1`] = `
 `;
 
 exports[`A FieldSelect with an error validation aligned to the left 1`] = `
-.c3 {
+.c5 {
   display: inline-block;
 }
 
-.c4 {
+.c7 {
   border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
@@ -202,7 +229,7 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   font-size: 0.875rem;
 }
 
-.c8 {
+.c11 {
   border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
@@ -215,30 +242,45 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   color: #343C42;
 }
 
-.c8:focus {
+.c11:focus {
   outline: none;
 }
 
-.c8:hover {
+.c11:hover {
   border-color: #C1C6CC;
 }
 
-.c8:focus {
+.c11:focus {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
-.c8:disabled {
+.c11:disabled {
   background: #F5F6F7;
   color: #939BA5;
 }
 
-.c8:disabled:hover {
+.c11:disabled:hover {
   border-color: #DEE1E5;
 }
 
-.c10 .c7 {
+.c2 {
+  -webkit-align-items: left;
+  -webkit-box-align: left;
+  -ms-flex-align: left;
+  align-items: left;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c13 .c10 {
   border: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -252,16 +294,16 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   height: calc(36px - 6px);
 }
 
-.c10 .c7::-webkit-search-decoration,
-.c10 .c7::-webkit-search-cancel-button,
-.c10 .c7::-webkit-search-results-button,
-.c10 .c7::-webkit-search-results-decoration {
+.c13 .c10::-webkit-search-decoration,
+.c13 .c10::-webkit-search-cancel-button,
+.c13 .c10::-webkit-search-results-button,
+.c13 .c10::-webkit-search-results-decoration {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }
 
-.c5 {
+.c8 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -275,27 +317,27 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   border-color: #ED3B53;
 }
 
-.c5:hover {
+.c8:hover {
   border-color: #C1C6CC;
 }
 
-.c5:focus-within {
+.c8:focus-within {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
-.c5:hover {
+.c8:hover {
   border-color: #CC1F36;
 }
 
-.c5:focus,
-.c5:focus-within {
+.c8:focus,
+.c8:focus-within {
   border-color: #CC1F36;
   box-shadow: 0 0 0 2px #FFE5E9;
 }
 
-.c5 .c7 {
+.c8 .c10 {
   border: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -309,16 +351,16 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   height: calc(36px - 6px);
 }
 
-.c5 .c7::-webkit-search-decoration,
-.c5 .c7::-webkit-search-cancel-button,
-.c5 .c7::-webkit-search-results-button,
-.c5 .c7::-webkit-search-results-decoration {
+.c8 .c10::-webkit-search-decoration,
+.c8 .c10::-webkit-search-cancel-button,
+.c8 .c10::-webkit-search-results-button,
+.c8 .c10::-webkit-search-results-decoration {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }
 
-.c6 {
+.c9 {
   background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+Q2FyZXQgRG93bjwvdGl0bGU+PHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OCAxNi41OSA4IDE4IDkuNDFsLTYgNi02LTZMNy40MSA4eiIgZmlsbD0iIzcwNzc4MSI+PC9wYXRoPjwvc3ZnPg==');
   background-repeat: no-repeat,repeat;
   background-position: right .25rem center,0 0;
@@ -326,7 +368,7 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   padding-right: calc(2 * .25rem + 1rem);
 }
 
-.c6 .c7 {
+.c9 .c10 {
   cursor: default;
 }
 
@@ -341,7 +383,7 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   flex-direction: column;
 }
 
-.c2 {
+.c4 {
   margin-bottom: 0.5rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -360,7 +402,7 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   align-items: baseline;
 }
 
-.c1 {
+.c3 {
   color: #343C42;
   margin-right: 0.5rem;
   font-weight: 600;
@@ -368,27 +410,39 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   display: inline-block;
 }
 
-.c9 {
+.c12 {
   color: #CC1F36;
   margin-right: 0.5rem;
   margin-top: 0.5rem;
   font-size: 0.75rem;
 }
 
+.c1 .c10 {
+  width: 100%;
+}
+
+.c1 .c6 {
+  width: 100%;
+}
+
 <div
-  className="c0 "
+  className="c0 c1 "
 >
-  <label
-    className="c1"
-    color="palette.charcoal700"
-    fontSize="xsmall"
-    fontWeight="semiBold"
-    htmlFor="thumbs-up"
-  >
-    👍
-  </label>
   <div
     className="c2"
+  >
+    <label
+      className="c3"
+      color="palette.charcoal700"
+      fontSize="xsmall"
+      fontWeight="semiBold"
+      htmlFor="thumbs-up"
+    >
+      👍
+    </label>
+  </div>
+  <div
+    className="c4"
   >
     <div
       className=""
@@ -397,14 +451,14 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
         aria-expanded={false}
         aria-haspopup="listbox"
         aria-owns="listbox-thumbs-up"
-        className="c3 "
+        className="c5 c6 "
         display="inline-block"
         id="thumbs-up"
         name="thumbsUp"
         role="combobox"
       >
         <div
-          className="c4 c5 c6"
+          className="c7 c8 c9"
           fontSize="small"
           onClick={[Function]}
           onMouseDown={[Function]}
@@ -413,7 +467,7 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
           <input
             aria-autocomplete="both"
             autoComplete="off"
-            className="c7 c8"
+            className="c10 c11"
             id="listbox-thumbs-up"
             onBlur={[Function]}
             onChange={[Function]}
@@ -427,7 +481,7 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
       </div>
     </div>
     <div
-      className="c9"
+      className="c12"
       fontSize="xsmall"
       type="error"
     >
@@ -438,11 +492,11 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
 `;
 
 exports[`A FieldSelect with an error validation aligned to the right 1`] = `
-.c3 {
+.c5 {
   display: inline-block;
 }
 
-.c4 {
+.c7 {
   border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
@@ -454,7 +508,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   font-size: 0.875rem;
 }
 
-.c8 {
+.c11 {
   border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
@@ -467,30 +521,45 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   color: #343C42;
 }
 
-.c8:focus {
+.c11:focus {
   outline: none;
 }
 
-.c8:hover {
+.c11:hover {
   border-color: #C1C6CC;
 }
 
-.c8:focus {
+.c11:focus {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
-.c8:disabled {
+.c11:disabled {
   background: #F5F6F7;
   color: #939BA5;
 }
 
-.c8:disabled:hover {
+.c11:disabled:hover {
   border-color: #DEE1E5;
 }
 
-.c10 .c7 {
+.c2 {
+  -webkit-align-items: left;
+  -webkit-box-align: left;
+  -ms-flex-align: left;
+  align-items: left;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c13 .c10 {
   border: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -504,16 +573,16 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   height: calc(36px - 6px);
 }
 
-.c10 .c7::-webkit-search-decoration,
-.c10 .c7::-webkit-search-cancel-button,
-.c10 .c7::-webkit-search-results-button,
-.c10 .c7::-webkit-search-results-decoration {
+.c13 .c10::-webkit-search-decoration,
+.c13 .c10::-webkit-search-cancel-button,
+.c13 .c10::-webkit-search-results-button,
+.c13 .c10::-webkit-search-results-decoration {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }
 
-.c5 {
+.c8 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -527,27 +596,27 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   border-color: #ED3B53;
 }
 
-.c5:hover {
+.c8:hover {
   border-color: #C1C6CC;
 }
 
-.c5:focus-within {
+.c8:focus-within {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
-.c5:hover {
+.c8:hover {
   border-color: #CC1F36;
 }
 
-.c5:focus,
-.c5:focus-within {
+.c8:focus,
+.c8:focus-within {
   border-color: #CC1F36;
   box-shadow: 0 0 0 2px #FFE5E9;
 }
 
-.c5 .c7 {
+.c8 .c10 {
   border: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -561,16 +630,16 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   height: calc(36px - 6px);
 }
 
-.c5 .c7::-webkit-search-decoration,
-.c5 .c7::-webkit-search-cancel-button,
-.c5 .c7::-webkit-search-results-button,
-.c5 .c7::-webkit-search-results-decoration {
+.c8 .c10::-webkit-search-decoration,
+.c8 .c10::-webkit-search-cancel-button,
+.c8 .c10::-webkit-search-results-button,
+.c8 .c10::-webkit-search-results-decoration {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }
 
-.c6 {
+.c9 {
   background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+Q2FyZXQgRG93bjwvdGl0bGU+PHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OCAxNi41OSA4IDE4IDkuNDFsLTYgNi02LTZMNy40MSA4eiIgZmlsbD0iIzcwNzc4MSI+PC9wYXRoPjwvc3ZnPg==');
   background-repeat: no-repeat,repeat;
   background-position: right .25rem center,0 0;
@@ -578,7 +647,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   padding-right: calc(2 * .25rem + 1rem);
 }
 
-.c6 .c7 {
+.c9 .c10 {
   cursor: default;
 }
 
@@ -593,7 +662,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   flex-direction: column;
 }
 
-.c2 {
+.c4 {
   margin-bottom: 0.5rem;
   display: -webkit-box;
   display: -webkit-flex;
@@ -608,7 +677,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   align-items: baseline;
 }
 
-.c1 {
+.c3 {
   color: #343C42;
   margin-right: 0.5rem;
   font-weight: 600;
@@ -616,7 +685,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   display: inline-block;
 }
 
-.c9 {
+.c12 {
   color: #CC1F36;
   margin-right: 0.5rem;
   margin-top: 0.5rem;
@@ -624,20 +693,32 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   font-size: 0.75rem;
 }
 
+.c1 .c10 {
+  width: 100%;
+}
+
+.c1 .c6 {
+  width: 100%;
+}
+
 <div
-  className="c0 "
+  className="c0 c1 "
 >
-  <label
-    className="c1"
-    color="palette.charcoal700"
-    fontSize="xsmall"
-    fontWeight="semiBold"
-    htmlFor="thumbs-up"
-  >
-    👍
-  </label>
   <div
     className="c2"
+  >
+    <label
+      className="c3"
+      color="palette.charcoal700"
+      fontSize="xsmall"
+      fontWeight="semiBold"
+      htmlFor="thumbs-up"
+    >
+      👍
+    </label>
+  </div>
+  <div
+    className="c4"
   >
     <div
       className=""
@@ -646,14 +727,14 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
         aria-expanded={false}
         aria-haspopup="listbox"
         aria-owns="listbox-thumbs-up"
-        className="c3 "
+        className="c5 c6 "
         display="inline-block"
         id="thumbs-up"
         name="thumbsUp"
         role="combobox"
       >
         <div
-          className="c4 c5 c6"
+          className="c7 c8 c9"
           fontSize="small"
           onClick={[Function]}
           onMouseDown={[Function]}
@@ -662,7 +743,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
           <input
             aria-autocomplete="both"
             autoComplete="off"
-            className="c7 c8"
+            className="c10 c11"
             id="listbox-thumbs-up"
             onBlur={[Function]}
             onChange={[Function]}
@@ -676,7 +757,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
       </div>
     </div>
     <div
-      className="c9"
+      className="c12"
       fontSize="xsmall"
       type="error"
     >
@@ -687,11 +768,11 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
 `;
 
 exports[`A required FieldSelect 1`] = `
-.c3 {
+.c5 {
   display: inline-block;
 }
 
-.c4 {
+.c7 {
   border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
@@ -703,7 +784,7 @@ exports[`A required FieldSelect 1`] = `
   font-size: 0.875rem;
 }
 
-.c8 {
+.c11 {
   border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
@@ -716,30 +797,45 @@ exports[`A required FieldSelect 1`] = `
   color: #343C42;
 }
 
-.c8:focus {
+.c11:focus {
   outline: none;
 }
 
-.c8:hover {
+.c11:hover {
   border-color: #C1C6CC;
 }
 
-.c8:focus {
+.c11:focus {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
-.c8:disabled {
+.c11:disabled {
   background: #F5F6F7;
   color: #939BA5;
 }
 
-.c8:disabled:hover {
+.c11:disabled:hover {
   border-color: #DEE1E5;
 }
 
-.c5 {
+.c2 {
+  -webkit-align-items: left;
+  -webkit-box-align: left;
+  -ms-flex-align: left;
+  align-items: left;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c8 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -752,17 +848,17 @@ exports[`A required FieldSelect 1`] = `
   background-color: #FFFFFF;
 }
 
-.c5:hover {
+.c8:hover {
   border-color: #C1C6CC;
 }
 
-.c5:focus-within {
+.c8:focus-within {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
-.c5 .c7 {
+.c8 .c10 {
   border: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -776,16 +872,16 @@ exports[`A required FieldSelect 1`] = `
   height: calc(36px - 6px);
 }
 
-.c5 .c7::-webkit-search-decoration,
-.c5 .c7::-webkit-search-cancel-button,
-.c5 .c7::-webkit-search-results-button,
-.c5 .c7::-webkit-search-results-decoration {
+.c8 .c10::-webkit-search-decoration,
+.c8 .c10::-webkit-search-cancel-button,
+.c8 .c10::-webkit-search-results-button,
+.c8 .c10::-webkit-search-results-decoration {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }
 
-.c6 {
+.c9 {
   background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+Q2FyZXQgRG93bjwvdGl0bGU+PHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OCAxNi41OSA4IDE4IDkuNDFsLTYgNi02LTZMNy40MSA4eiIgZmlsbD0iIzcwNzc4MSI+PC9wYXRoPjwvc3ZnPg==');
   background-repeat: no-repeat,repeat;
   background-position: right .25rem center,0 0;
@@ -793,7 +889,7 @@ exports[`A required FieldSelect 1`] = `
   padding-right: calc(2 * .25rem + 1rem);
 }
 
-.c6 .c7 {
+.c9 .c10 {
   cursor: default;
 }
 
@@ -808,7 +904,7 @@ exports[`A required FieldSelect 1`] = `
   flex-direction: column;
 }
 
-.c1 {
+.c3 {
   color: #343C42;
   margin-right: 0.5rem;
   font-weight: 600;
@@ -816,29 +912,41 @@ exports[`A required FieldSelect 1`] = `
   display: inline-block;
 }
 
-.c2 {
-  color: #990F14;
+.c4 {
+  color: #CC1F36;
+}
+
+.c1 .c10 {
+  width: 100%;
+}
+
+.c1 .c6 {
+  width: 100%;
 }
 
 <div
-  className="c0 "
+  className="c0 c1 "
 >
-  <label
-    className="c1"
-    color="palette.charcoal700"
-    fontSize="xsmall"
-    fontWeight="semiBold"
-    htmlFor="thumbs-up"
+  <div
+    className="c2"
   >
-    👍
-    <span
-      aria-hidden="true"
-      className="c2"
+    <label
+      className="c3"
+      color="palette.charcoal700"
+      fontSize="xsmall"
+      fontWeight="semiBold"
+      htmlFor="thumbs-up"
     >
-       
-      *
-    </span>
-  </label>
+      👍
+      <span
+        aria-hidden="true"
+        className="c4"
+      >
+         
+        *
+      </span>
+    </label>
+  </div>
   <div
     className="c0"
   >
@@ -849,7 +957,7 @@ exports[`A required FieldSelect 1`] = `
         aria-expanded={false}
         aria-haspopup="listbox"
         aria-owns="listbox-thumbs-up"
-        className="c3 "
+        className="c5 c6 "
         display="inline-block"
         id="thumbs-up"
         name="thumbsUp"
@@ -857,7 +965,7 @@ exports[`A required FieldSelect 1`] = `
         role="combobox"
       >
         <div
-          className="c4 c5 c6"
+          className="c7 c8 c9"
           fontSize="small"
           onClick={[Function]}
           onMouseDown={[Function]}
@@ -866,7 +974,7 @@ exports[`A required FieldSelect 1`] = `
           <input
             aria-autocomplete="both"
             autoComplete="off"
-            className="c7 c8"
+            className="c10 c11"
             id="listbox-thumbs-up"
             onBlur={[Function]}
             onChange={[Function]}
@@ -884,11 +992,11 @@ exports[`A required FieldSelect 1`] = `
 `;
 
 exports[`FieldSelect supports labelWeight 1`] = `
-.c2 {
+.c4 {
   display: inline-block;
 }
 
-.c3 {
+.c6 {
   border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
@@ -900,7 +1008,7 @@ exports[`FieldSelect supports labelWeight 1`] = `
   font-size: 0.875rem;
 }
 
-.c7 {
+.c10 {
   border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
@@ -913,30 +1021,45 @@ exports[`FieldSelect supports labelWeight 1`] = `
   color: #343C42;
 }
 
-.c7:focus {
+.c10:focus {
   outline: none;
 }
 
-.c7:hover {
+.c10:hover {
   border-color: #C1C6CC;
 }
 
-.c7:focus {
+.c10:focus {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
-.c7:disabled {
+.c10:disabled {
   background: #F5F6F7;
   color: #939BA5;
 }
 
-.c7:disabled:hover {
+.c10:disabled:hover {
   border-color: #DEE1E5;
 }
 
-.c4 {
+.c2 {
+  -webkit-align-items: left;
+  -webkit-box-align: left;
+  -ms-flex-align: left;
+  align-items: left;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c7 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -949,17 +1072,17 @@ exports[`FieldSelect supports labelWeight 1`] = `
   background-color: #FFFFFF;
 }
 
-.c4:hover {
+.c7:hover {
   border-color: #C1C6CC;
 }
 
-.c4:focus-within {
+.c7:focus-within {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
-.c4 .c6 {
+.c7 .c9 {
   border: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -973,16 +1096,16 @@ exports[`FieldSelect supports labelWeight 1`] = `
   height: calc(36px - 6px);
 }
 
-.c4 .c6::-webkit-search-decoration,
-.c4 .c6::-webkit-search-cancel-button,
-.c4 .c6::-webkit-search-results-button,
-.c4 .c6::-webkit-search-results-decoration {
+.c7 .c9::-webkit-search-decoration,
+.c7 .c9::-webkit-search-cancel-button,
+.c7 .c9::-webkit-search-results-button,
+.c7 .c9::-webkit-search-results-decoration {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }
 
-.c5 {
+.c8 {
   background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+Q2FyZXQgRG93bjwvdGl0bGU+PHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OCAxNi41OSA4IDE4IDkuNDFsLTYgNi02LTZMNy40MSA4eiIgZmlsbD0iIzcwNzc4MSI+PC9wYXRoPjwvc3ZnPg==');
   background-repeat: no-repeat,repeat;
   background-position: right .25rem center,0 0;
@@ -990,7 +1113,7 @@ exports[`FieldSelect supports labelWeight 1`] = `
   padding-right: calc(2 * .25rem + 1rem);
 }
 
-.c5 .c6 {
+.c8 .c9 {
   cursor: default;
 }
 
@@ -1005,7 +1128,7 @@ exports[`FieldSelect supports labelWeight 1`] = `
   flex-direction: column;
 }
 
-.c1 {
+.c3 {
   color: #343C42;
   margin-right: 0.5rem;
   font-weight: 400;
@@ -1013,18 +1136,30 @@ exports[`FieldSelect supports labelWeight 1`] = `
   display: inline-block;
 }
 
+.c1 .c9 {
+  width: 100%;
+}
+
+.c1 .c5 {
+  width: 100%;
+}
+
 <div
-  className="c0 "
+  className="c0 c1 "
 >
-  <label
-    className="c1"
-    color="palette.charcoal700"
-    fontSize="xsmall"
-    fontWeight="normal"
-    htmlFor="thumbs-up"
+  <div
+    className="c2"
   >
-    👍
-  </label>
+    <label
+      className="c3"
+      color="palette.charcoal700"
+      fontSize="xsmall"
+      fontWeight="normal"
+      htmlFor="thumbs-up"
+    >
+      👍
+    </label>
+  </div>
   <div
     className="c0"
   >
@@ -1035,14 +1170,14 @@ exports[`FieldSelect supports labelWeight 1`] = `
         aria-expanded={false}
         aria-haspopup="listbox"
         aria-owns="listbox-thumbs-up"
-        className="c2 "
+        className="c4 c5 "
         display="inline-block"
         id="thumbs-up"
         name="thumbsUp"
         role="combobox"
       >
         <div
-          className="c3 c4 c5"
+          className="c6 c7 c8"
           fontSize="small"
           onClick={[Function]}
           onMouseDown={[Function]}
@@ -1051,7 +1186,7 @@ exports[`FieldSelect supports labelWeight 1`] = `
           <input
             aria-autocomplete="both"
             autoComplete="off"
-            className="c6 c7"
+            className="c9 c10"
             id="listbox-thumbs-up"
             onBlur={[Function]}
             onChange={[Function]}
