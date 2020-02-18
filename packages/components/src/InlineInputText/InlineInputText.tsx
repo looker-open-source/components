@@ -93,8 +93,7 @@ const Input = styled.input.attrs({ type: 'text' })<InlineInputTextProps>`
   }
 
   :focus {
-    border-bottom: 1px solid;
-    border-bottom-color: ${props => props.theme.colors.palette.purple400};
+    border-bottom-style: solid;
   }
 `
 
