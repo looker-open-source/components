@@ -20,7 +20,7 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-// import { GlobalStyle } from '@looker/components'
+import { GlobalStyle } from '@looker/components'
 import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
 
@@ -30,6 +30,7 @@ import { ActionListDemo } from './ActionList/ActionListDemo'
 const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
+      <GlobalStyle />
       <ActionListDemo />
     </ThemeProvider>
   )

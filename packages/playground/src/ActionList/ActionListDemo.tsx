@@ -32,8 +32,16 @@ import { ActionListItems } from '../../../components/src/ActionList/ActionListIt
 import { ActionListItem } from '../../../components/src/ActionList/ActionListItem'
 import { ActionListItemColumn } from '../../../components/src/ActionList/ActionListItemColumn'
 import { ActionListItemActions } from '../../../components/src/ActionList/ActionListItemActions'
+import { ActionListItemAction } from '../../../components/src/ActionList/ActionListItemAction'
 import { ActionListRowContainer } from '../../../components/src/ActionList/ActionListRowContainer'
 import { ActionListRowOptionsContainer } from '../../../components/src/ActionList/ActionListRowOptionsContainer'
+import {
+  Menu,
+  MenuDisclosure,
+  MenuList,
+  MenuItem,
+} from '../../../components/src/Menu'
+import { Button } from '../../../components/src/Button'
 
 const data = [
   {
@@ -85,7 +93,13 @@ export const ActionListDemo: FC = () => {
               <ActionListItemColumn>{members}</ActionListItemColumn>
             </ActionListRowContainer>
             <ActionListRowOptionsContainer>
-              <ActionListItemActions></ActionListItemActions>
+              <ActionListItemActions>
+                <ActionListItemAction icon="Group">Edit</ActionListItemAction>
+                <ActionListItemAction icon="Edit">Rename</ActionListItemAction>
+                <ActionListItemAction icon="CircleRemove">
+                  Remove
+                </ActionListItemAction>
+              </ActionListItemActions>
             </ActionListRowOptionsContainer>
           </ActionListItem>
         ))}
