@@ -33,7 +33,7 @@ const ActionListItemInternal = (props: ActionListItemProps) => {
 
   return (
     <ActionListItemContext.Provider value={context}>
-      <div className={props.className} ref={actionListItemRef}>
+      <div className={props.className} ref={actionListItemRef} tabIndex={0}>
         {props.children}
       </div>
     </ActionListItemContext.Provider>
