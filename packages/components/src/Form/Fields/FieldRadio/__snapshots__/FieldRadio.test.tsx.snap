@@ -124,7 +124,6 @@ exports[`A FieldRadio 1`] = `
 
 .c1 .c3 {
   text-align: left;
-  width: 20%;
   margin-right: 0;
   margin-left: 0.5rem;
 }
@@ -293,14 +292,12 @@ exports[`A FieldRadio checked 1`] = `
 
 .c1 .c3 {
   text-align: left;
-  width: 20%;
   margin-right: 0;
   margin-left: 0.5rem;
 }
 
 .c9 .c3 {
   text-align: right;
-  width: 20%;
 }
 
 <div
@@ -441,7 +438,6 @@ exports[`A FieldRadio with label aligned left 1`] = `
 
 .c8 .c3 {
   text-align: left;
-  width: 20%;
   margin-right: 0;
   margin-left: 0.5rem;
 }
@@ -456,7 +452,6 @@ exports[`A FieldRadio with label aligned left 1`] = `
 
 .c1 .c3 {
   text-align: right;
-  width: 20%;
 }
 
 <div

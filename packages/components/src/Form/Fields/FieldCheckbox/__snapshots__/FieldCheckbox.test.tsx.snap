@@ -49,12 +49,8 @@ exports[`A FieldCheckbox 1`] = `
 
 .c5 .c6 {
   background: #FFFFFF;
-}
-
-.c5 input[type='checkbox']:checked + .c6 {
-  color: #fff;
-  background: #0087e1;
-  border-color: #0087e1;
+  border-color: #DEE1E5;
+  color: #FFFFFF;
 }
 
 .c5 input[type='checkbox']:focus + .c6 {
@@ -105,7 +101,6 @@ exports[`A FieldCheckbox 1`] = `
 
 .c1 .c3 {
   text-align: right;
-  width: 20%;
 }
 
 <div
@@ -196,6 +191,20 @@ exports[`A FieldCheckbox with checked value 1`] = `
   align-items: center;
 }
 
+.c8 .c6 {
+  background: #FFFFFF;
+  border-color: #DEE1E5;
+  color: #FFFFFF;
+}
+
+.c8 input[type='checkbox']:focus + .c6 {
+  box-shadow: 0 0 .5px 1px #C1C6CC;
+}
+
+.c8 input[type='checkbox']:disabled + .c6 {
+  opacity: 0.5;
+}
+
 .c5 {
   position: relative;
   display: inline-block;
@@ -214,11 +223,6 @@ exports[`A FieldCheckbox with checked value 1`] = `
 }
 
 .c5 .c6 {
-  background: #FFFFFF;
-}
-
-.c5 input[type='checkbox']:checked + .c6 {
-  color: #fff;
   background: #0087e1;
   border-color: #0087e1;
   color: #FFFFFF;
@@ -262,17 +266,16 @@ exports[`A FieldCheckbox with checked value 1`] = `
   align-items: baseline;
 }
 
-.c1 .c8 {
+.c1 .c9 {
   width: 100%;
 }
 
-.c1 .c9 {
+.c1 .c10 {
   width: 100%;
 }
 
 .c1 .c3 {
   text-align: right;
-  width: 20%;
 }
 
 <div
@@ -298,6 +301,7 @@ exports[`A FieldCheckbox with checked value 1`] = `
       className=""
     >
       <div
+        checked={true}
         className="c5 "
       >
         <input
@@ -387,22 +391,25 @@ exports[`A required FieldCheckbox 1`] = `
   color: #FFFFFF;
 }
 
-.c5 input[type='checkbox']:focus + .c6 {
-  box-shadow: 0 0 .5px 1px #C1C6CC;
-}
-
-.c6 input[type='checkbox']:checked + .c7 {
-  color: #fff;
-  background: #0087e1;
-  border-color: #0087e1;
-  color: #FFFFFF;
-}
-
 .c6 input[type='checkbox']:focus + .c7 {
   box-shadow: 0 0 .5px 1px #C1C6CC;
 }
 
 .c6 input[type='checkbox']:disabled + .c7 {
+  opacity: 0.5;
+}
+
+.c9 .c7 {
+  background: #0087e1;
+  border-color: #0087e1;
+  color: #FFFFFF;
+}
+
+.c9 input[type='checkbox']:focus + .c7 {
+  box-shadow: 0 0 .5px 1px #C1C6CC;
+}
+
+.c9 input[type='checkbox']:disabled + .c7 {
   opacity: 0.5;
 }
 
@@ -440,17 +447,16 @@ exports[`A required FieldCheckbox 1`] = `
   color: #CC1F36;
 }
 
-.c1 .c9 {
+.c1 .c10 {
   width: 100%;
 }
 
-.c1 .c10 {
+.c1 .c11 {
   width: 100%;
 }
 
 .c1 .c3 {
   text-align: right;
-  width: 20%;
 }
 
 <div

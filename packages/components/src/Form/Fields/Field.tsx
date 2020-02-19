@@ -24,7 +24,6 @@
 
  */
 
-import { WidthProperty } from 'csstype'
 import React, { FunctionComponent, ReactNode } from 'react'
 import styled, { css } from 'styled-components'
 import { ResponsiveValue, TLengthStyledSystem } from 'styled-system'
@@ -53,7 +52,6 @@ type ResponsiveSpaceValue = ResponsiveValue<TLengthStyledSystem>
 export interface CustomizableFieldAttributesInterface
   extends CustomizableAttributes {
   labelMargin: SpacingSizes
-  labelWidth: ResponsiveValue<WidthProperty<TLengthStyledSystem>>
 }
 
 export const CustomizableFieldAttributes: CustomizableFieldAttributesInterface = {

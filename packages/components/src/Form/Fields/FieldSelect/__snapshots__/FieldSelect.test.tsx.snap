@@ -2,7 +2,10 @@
 
 exports[`A FieldSelect 1`] = `
 .c4 {
-  display: inline-block;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c6 {
@@ -15,6 +18,21 @@ exports[`A FieldSelect 1`] = `
   padding-top: 2px;
   padding-bottom: 2px;
   font-size: 0.875rem;
+}
+
+.c2 {
+  -webkit-align-items: left;
+  -webkit-box-align: left;
+  -ms-flex-align: left;
+  align-items: left;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c10 {
@@ -51,21 +69,6 @@ exports[`A FieldSelect 1`] = `
 
 .c10:disabled:hover {
   border-color: #DEE1E5;
-}
-
-.c2 {
-  -webkit-align-items: left;
-  -webkit-box-align: left;
-  -ms-flex-align: left;
-  align-items: left;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .c7 {
@@ -115,7 +118,7 @@ exports[`A FieldSelect 1`] = `
 }
 
 .c8 {
-  background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+Q2FyZXQgRG93bjwvdGl0bGU+PHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OCAxNi41OSA4IDE4IDkuNDFsLTYgNi02LTZMNy40MSA4eiIgZmlsbD0iIzcwNzc4MSI+PC9wYXRoPjwvc3ZnPg==');
+  background-image: url('data:image/svg+xml;base64,CjxzdmcKICB3aWR0aD0iMjQiCiAgaGVpZ2h0PSIyNCIKICB2aWV3Qm94PSIwIDAgMjQgMjQiCiAgZmlsbD0ibm9uZSIKICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCj4KICA8cGF0aAogICAgZD0iTTcuNDEgOEwxMiAxMi41OCAxNi41OSA4IDE4IDkuNDFsLTYgNi02LTZMNy40MSA4eiIKICAgIGZpbGw9IiM3MDc3ODEiCiAgLz4KPC9zdmc+');
   background-repeat: no-repeat,repeat;
   background-position: right .25rem center,0 0;
   background-size: 1rem,100%;
@@ -180,7 +183,7 @@ exports[`A FieldSelect 1`] = `
         aria-haspopup="listbox"
         aria-owns="listbox-thumbs-up"
         className="c4 c5 "
-        display="inline-block"
+        display="flex"
         id="thumbs-up"
         name="thumbsUp"
         role="combobox"
@@ -214,7 +217,10 @@ exports[`A FieldSelect 1`] = `
 
 exports[`A FieldSelect with an error validation aligned to the left 1`] = `
 .c5 {
-  display: inline-block;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c7 {
@@ -227,6 +233,21 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   padding-top: 2px;
   padding-bottom: 2px;
   font-size: 0.875rem;
+}
+
+.c2 {
+  -webkit-align-items: left;
+  -webkit-box-align: left;
+  -ms-flex-align: left;
+  align-items: left;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c11 {
@@ -263,21 +284,6 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
 
 .c11:disabled:hover {
   border-color: #DEE1E5;
-}
-
-.c2 {
-  -webkit-align-items: left;
-  -webkit-box-align: left;
-  -ms-flex-align: left;
-  align-items: left;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .c13 .c10 {
@@ -361,7 +367,7 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
 }
 
 .c9 {
-  background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+Q2FyZXQgRG93bjwvdGl0bGU+PHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OCAxNi41OSA4IDE4IDkuNDFsLTYgNi02LTZMNy40MSA4eiIgZmlsbD0iIzcwNzc4MSI+PC9wYXRoPjwvc3ZnPg==');
+  background-image: url('data:image/svg+xml;base64,CjxzdmcKICB3aWR0aD0iMjQiCiAgaGVpZ2h0PSIyNCIKICB2aWV3Qm94PSIwIDAgMjQgMjQiCiAgZmlsbD0ibm9uZSIKICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCj4KICA8cGF0aAogICAgZD0iTTcuNDEgOEwxMiAxMi41OCAxNi41OSA4IDE4IDkuNDFsLTYgNi02LTZMNy40MSA4eiIKICAgIGZpbGw9IiM3MDc3ODEiCiAgLz4KPC9zdmc+');
   background-repeat: no-repeat,repeat;
   background-position: right .25rem center,0 0;
   background-size: 1rem,100%;
@@ -452,7 +458,7 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
         aria-haspopup="listbox"
         aria-owns="listbox-thumbs-up"
         className="c5 c6 "
-        display="inline-block"
+        display="flex"
         id="thumbs-up"
         name="thumbsUp"
         role="combobox"
@@ -493,7 +499,10 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
 
 exports[`A FieldSelect with an error validation aligned to the right 1`] = `
 .c5 {
-  display: inline-block;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c7 {
@@ -506,6 +515,21 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   padding-top: 2px;
   padding-bottom: 2px;
   font-size: 0.875rem;
+}
+
+.c2 {
+  -webkit-align-items: left;
+  -webkit-box-align: left;
+  -ms-flex-align: left;
+  align-items: left;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c11 {
@@ -542,21 +566,6 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
 
 .c11:disabled:hover {
   border-color: #DEE1E5;
-}
-
-.c2 {
-  -webkit-align-items: left;
-  -webkit-box-align: left;
-  -ms-flex-align: left;
-  align-items: left;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .c13 .c10 {
@@ -640,7 +649,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
 }
 
 .c9 {
-  background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+Q2FyZXQgRG93bjwvdGl0bGU+PHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OCAxNi41OSA4IDE4IDkuNDFsLTYgNi02LTZMNy40MSA4eiIgZmlsbD0iIzcwNzc4MSI+PC9wYXRoPjwvc3ZnPg==');
+  background-image: url('data:image/svg+xml;base64,CjxzdmcKICB3aWR0aD0iMjQiCiAgaGVpZ2h0PSIyNCIKICB2aWV3Qm94PSIwIDAgMjQgMjQiCiAgZmlsbD0ibm9uZSIKICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCj4KICA8cGF0aAogICAgZD0iTTcuNDEgOEwxMiAxMi41OCAxNi41OSA4IDE4IDkuNDFsLTYgNi02LTZMNy40MSA4eiIKICAgIGZpbGw9IiM3MDc3ODEiCiAgLz4KPC9zdmc+');
   background-repeat: no-repeat,repeat;
   background-position: right .25rem center,0 0;
   background-size: 1rem,100%;
@@ -728,7 +737,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
         aria-haspopup="listbox"
         aria-owns="listbox-thumbs-up"
         className="c5 c6 "
-        display="inline-block"
+        display="flex"
         id="thumbs-up"
         name="thumbsUp"
         role="combobox"
@@ -769,7 +778,10 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
 
 exports[`A required FieldSelect 1`] = `
 .c5 {
-  display: inline-block;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c7 {
@@ -782,6 +794,21 @@ exports[`A required FieldSelect 1`] = `
   padding-top: 2px;
   padding-bottom: 2px;
   font-size: 0.875rem;
+}
+
+.c2 {
+  -webkit-align-items: left;
+  -webkit-box-align: left;
+  -ms-flex-align: left;
+  align-items: left;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c11 {
@@ -818,21 +845,6 @@ exports[`A required FieldSelect 1`] = `
 
 .c11:disabled:hover {
   border-color: #DEE1E5;
-}
-
-.c2 {
-  -webkit-align-items: left;
-  -webkit-box-align: left;
-  -ms-flex-align: left;
-  align-items: left;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .c8 {
@@ -882,7 +894,7 @@ exports[`A required FieldSelect 1`] = `
 }
 
 .c9 {
-  background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+Q2FyZXQgRG93bjwvdGl0bGU+PHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OCAxNi41OSA4IDE4IDkuNDFsLTYgNi02LTZMNy40MSA4eiIgZmlsbD0iIzcwNzc4MSI+PC9wYXRoPjwvc3ZnPg==');
+  background-image: url('data:image/svg+xml;base64,CjxzdmcKICB3aWR0aD0iMjQiCiAgaGVpZ2h0PSIyNCIKICB2aWV3Qm94PSIwIDAgMjQgMjQiCiAgZmlsbD0ibm9uZSIKICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCj4KICA8cGF0aAogICAgZD0iTTcuNDEgOEwxMiAxMi41OCAxNi41OSA4IDE4IDkuNDFsLTYgNi02LTZMNy40MSA4eiIKICAgIGZpbGw9IiM3MDc3ODEiCiAgLz4KPC9zdmc+');
   background-repeat: no-repeat,repeat;
   background-position: right .25rem center,0 0;
   background-size: 1rem,100%;
@@ -958,7 +970,7 @@ exports[`A required FieldSelect 1`] = `
         aria-haspopup="listbox"
         aria-owns="listbox-thumbs-up"
         className="c5 c6 "
-        display="inline-block"
+        display="flex"
         id="thumbs-up"
         name="thumbsUp"
         required={true}
@@ -993,7 +1005,10 @@ exports[`A required FieldSelect 1`] = `
 
 exports[`FieldSelect supports labelWeight 1`] = `
 .c4 {
-  display: inline-block;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c6 {
@@ -1006,6 +1021,21 @@ exports[`FieldSelect supports labelWeight 1`] = `
   padding-top: 2px;
   padding-bottom: 2px;
   font-size: 0.875rem;
+}
+
+.c2 {
+  -webkit-align-items: left;
+  -webkit-box-align: left;
+  -ms-flex-align: left;
+  align-items: left;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c10 {
@@ -1042,21 +1072,6 @@ exports[`FieldSelect supports labelWeight 1`] = `
 
 .c10:disabled:hover {
   border-color: #DEE1E5;
-}
-
-.c2 {
-  -webkit-align-items: left;
-  -webkit-box-align: left;
-  -ms-flex-align: left;
-  align-items: left;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .c7 {
@@ -1106,7 +1121,7 @@ exports[`FieldSelect supports labelWeight 1`] = `
 }
 
 .c8 {
-  background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+Q2FyZXQgRG93bjwvdGl0bGU+PHBhdGggZD0iTTcuNDEgOEwxMiAxMi41OCAxNi41OSA4IDE4IDkuNDFsLTYgNi02LTZMNy40MSA4eiIgZmlsbD0iIzcwNzc4MSI+PC9wYXRoPjwvc3ZnPg==');
+  background-image: url('data:image/svg+xml;base64,CjxzdmcKICB3aWR0aD0iMjQiCiAgaGVpZ2h0PSIyNCIKICB2aWV3Qm94PSIwIDAgMjQgMjQiCiAgZmlsbD0ibm9uZSIKICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCj4KICA8cGF0aAogICAgZD0iTTcuNDEgOEwxMiAxMi41OCAxNi41OSA4IDE4IDkuNDFsLTYgNi02LTZMNy40MSA4eiIKICAgIGZpbGw9IiM3MDc3ODEiCiAgLz4KPC9zdmc+');
   background-repeat: no-repeat,repeat;
   background-position: right .25rem center,0 0;
   background-size: 1rem,100%;
@@ -1171,7 +1186,7 @@ exports[`FieldSelect supports labelWeight 1`] = `
         aria-haspopup="listbox"
         aria-owns="listbox-thumbs-up"
         className="c4 c5 "
-        display="inline-block"
+        display="flex"
         id="thumbs-up"
         name="thumbsUp"
         role="combobox"

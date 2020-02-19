@@ -118,7 +118,6 @@ exports[`A FieldToggleSwitch 1`] = `
 
 .c1 .c3 {
   text-align: left;
-  width: 20%;
   margin-right: 0;
   margin-left: 0.5rem;
 }
@@ -289,14 +288,12 @@ exports[`A FieldToggleSwitch turned on 1`] = `
 
 .c1 .c3 {
   text-align: left;
-  width: 20%;
   margin-right: 0;
   margin-left: 0.5rem;
 }
 
 .c10 .c3 {
   text-align: right;
-  width: 20%;
 }
 
 <div
@@ -452,7 +449,6 @@ exports[`A FieldToggleSwitch with label aligned left 1`] = `
 
 .c10 .c3 {
   text-align: left;
-  width: 20%;
   margin-right: 0;
   margin-left: 0.5rem;
 }
@@ -467,7 +463,6 @@ exports[`A FieldToggleSwitch with label aligned left 1`] = `
 
 .c1 .c3 {
   text-align: right;
-  width: 20%;
 }
 
 <div
