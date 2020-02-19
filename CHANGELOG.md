@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- new component `InlineInputText` plus documentations and test
+
 - `Select` now supports grouped options with a `title` and option `description`, as well as `BoxProps` for layout styling.
 - New components: `InputDate`, `Calendar`
 
