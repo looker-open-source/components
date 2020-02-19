@@ -1,10 +1,11 @@
 import styled from 'styled-components'
-import React, { useContext } from 'react'
+import React, { ReactNode, useContext } from 'react'
 import { Icon } from '../Icon'
-import { Menu, MenuDisclosure, MenuItem, MenuList } from '../Menu'
+import { Menu, MenuDisclosure, MenuList } from '../Menu'
 import { ActionListItemContext } from './ActionListItem'
 
 export interface ActionListItemActionsProps {
+  children?: ReactNode
   className?: string
 }
 
@@ -16,15 +17,7 @@ const ActionListItemActionsInternal = (props: ActionListItemActionsProps) => {
       <MenuDisclosure>
         <Icon className={props.className} name="DotsVert" size={36} />
       </MenuDisclosure>
-      {/*
-        Leaving placeholder MenuItem elements in for now
-        Final iteration will instead render props.children
-      */}
-      <MenuList>
-        <MenuItem>Gouda</MenuItem>
-        <MenuItem>American</MenuItem>
-        <MenuItem>Swiss</MenuItem>
-      </MenuList>
+      <MenuList>{props.children}</MenuList>
     </Menu>
   )
 }

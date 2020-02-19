@@ -9,6 +9,8 @@ export interface ActionListProps extends TypographyProps {
 export const ActionList = styled.div<ActionListProps>`
   ${typography}
 
+  width: 100%;
+
   ${ActionListRowContainer} {
     display: grid;
     grid-template-columns: ${props => props.columns};
