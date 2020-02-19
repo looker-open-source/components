@@ -55,6 +55,9 @@ export enum ComboboxActionType {
   // Used for the setting the initial value
   CHANGE_SILENT = 'CHANGE_SILENT',
 
+  // Used for ComboboxMultiInput when the InputChips registered entered values (comma, enter)
+  ENTER_VALUES = 'ENTER_VALUES',
+
   // User is navigating w/ the keyboard
   NAVIGATE = 'NAVIGATE',
 
@@ -102,9 +105,7 @@ export interface ComboboxActionPayload {
   inputValue?: string
 }
 
-export interface ComboboxMultiActionPayload
-  extends Omit<ComboboxActionPayload, 'option'> {
-  options?: ComboboxOptionObject[]
+export interface ComboboxMultiActionPayload extends ComboboxActionPayload {
   inputValues?: string[]
 }
 
@@ -135,6 +136,7 @@ export const stateChart: StateChart = {
         [ComboboxActionType.CLEAR]: ComboboxState.IDLE,
         [ComboboxActionType.CHANGE]: ComboboxState.SUGGESTING,
         [ComboboxActionType.CHANGE_SILENT]: ComboboxState.IDLE,
+        [ComboboxActionType.ENTER_VALUES]: ComboboxState.IDLE,
         [ComboboxActionType.FOCUS]: ComboboxState.SUGGESTING,
         [ComboboxActionType.NAVIGATE]: ComboboxState.NAVIGATING,
         [ComboboxActionType.SELECT_SILENT]: ComboboxState.IDLE,
@@ -144,6 +146,7 @@ export const stateChart: StateChart = {
       on: {
         [ComboboxActionType.CHANGE]: ComboboxState.SUGGESTING,
         [ComboboxActionType.CHANGE_SILENT]: ComboboxState.SUGGESTING,
+        [ComboboxActionType.ENTER_VALUES]: ComboboxState.IDLE,
         [ComboboxActionType.FOCUS]: ComboboxState.SUGGESTING,
         [ComboboxActionType.NAVIGATE]: ComboboxState.NAVIGATING,
         [ComboboxActionType.CLEAR]: ComboboxState.IDLE,
@@ -158,6 +161,7 @@ export const stateChart: StateChart = {
       on: {
         [ComboboxActionType.CHANGE]: ComboboxState.SUGGESTING,
         [ComboboxActionType.CHANGE_SILENT]: ComboboxState.NAVIGATING,
+        [ComboboxActionType.ENTER_VALUES]: ComboboxState.IDLE,
         [ComboboxActionType.FOCUS]: ComboboxState.SUGGESTING,
         [ComboboxActionType.CLEAR]: ComboboxState.IDLE,
         [ComboboxActionType.BLUR]: ComboboxState.IDLE,
@@ -173,6 +177,7 @@ export const stateChart: StateChart = {
       on: {
         [ComboboxActionType.CHANGE]: ComboboxState.SUGGESTING,
         [ComboboxActionType.CHANGE_SILENT]: ComboboxState.SUGGESTING,
+        [ComboboxActionType.ENTER_VALUES]: ComboboxState.IDLE,
         [ComboboxActionType.FOCUS]: ComboboxState.SUGGESTING,
         [ComboboxActionType.BLUR]: ComboboxState.IDLE,
         [ComboboxActionType.ESCAPE]: ComboboxState.IDLE,
@@ -187,13 +192,16 @@ export const stateChart: StateChart = {
 // When we open a list, set the navigation option to the option in the input, if
 // it's in the list, then it'll automatically be highlighted.
 const findNavigationValue = (
-  state: ComboboxData,
+  state: ComboboxData | ComboboxMultiData,
   action: ComboboxActionPayload
 ) => {
   if (action.option) {
     return action.option
   } else if (action.persistSelection) {
-    return state.option
+    const singularState = state as ComboboxData
+    return singularState.option
+      ? singularState.option
+      : (state as ComboboxMultiData).options[0]
   } else {
     return undefined
   }
@@ -270,6 +278,13 @@ const reducerMulti: Reducer<
       return {
         ...nextState,
         inputValue: action.inputValue,
+        inputValues: nextState.inputValues,
+        navigationOption: undefined,
+      }
+    case ComboboxActionType.ENTER_VALUES:
+      return {
+        ...nextState,
+        inputValue: action.inputValue,
         inputValues: action.inputValues || [],
         navigationOption: undefined,
       }
@@ -291,7 +306,6 @@ const reducerMulti: Reducer<
       return {
         ...nextState,
         inputValue: '',
-        inputValues: data.options.map(option => getComboboxText(option)),
         navigationOption: undefined,
       }
     case ComboboxActionType.SELECT_WITH_CLICK:
@@ -299,24 +313,26 @@ const reducerMulti: Reducer<
       return {
         ...nextState,
         inputValue: '',
-        inputValues: data.options
-          ? data.options.map(option => getComboboxText(option))
-          : [],
+        inputValues: [...nextState.inputValues, getComboboxText(action.option)],
         navigationOption: undefined,
-        options: action.options || [],
+        options: [
+          ...nextState.options,
+          ...(action.option ? [action.option] : []),
+        ],
       }
     case ComboboxActionType.SELECT_WITH_KEYBOARD:
       return {
         ...nextState,
         inputValue: '',
         inputValues: [
-          ...(nextState.options.map(option => getComboboxText(option)) || []),
+          ...nextState.inputValues,
           getComboboxText(data.navigationOption),
         ],
         navigationOption: undefined,
-        ...(data.navigationOption
-          ? { options: [...nextState.options, data.navigationOption] }
-          : {}),
+        options: [
+          ...nextState.options,
+          ...(data.navigationOption ? [data.navigationOption] : []),
+        ],
       }
     case ComboboxActionType.INTERACT:
       return nextState

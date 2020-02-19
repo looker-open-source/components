@@ -1,4 +1,10 @@
-import React, { FormEvent, forwardRef, Ref, useState } from 'react'
+import React, {
+  FormEvent,
+  forwardRef,
+  KeyboardEvent,
+  Ref,
+  useState,
+} from 'react'
 import styled from 'styled-components'
 import { MaxHeightProps } from 'styled-system'
 
@@ -85,6 +91,7 @@ export const InputChipsInternal = forwardRef(
     {
       values,
       onChange,
+      onKeyDown,
       inputValue: controlledInputValue,
       onInputChange,
       validate,
@@ -150,7 +157,7 @@ export const InputChipsInternal = forwardRef(
       updateValues()
     }
 
-    function handleKeyDown(e: React.KeyboardEvent) {
+    function handleKeyDown(e: KeyboardEvent<HTMLInputElement>) {
       switch (e.key) {
         // Remove items via backspace
         case 'Backspace':
@@ -163,6 +170,7 @@ export const InputChipsInternal = forwardRef(
           // Update values when the user hits return
           updateValues()
       }
+      onKeyDown && onKeyDown(e)
     }
 
     const isPasting = React.useRef(false)

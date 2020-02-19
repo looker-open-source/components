@@ -138,6 +138,7 @@ const ComboboxOptionInternal = forwardRef(function ComboboxOption(
 
   useEffect(() => {
     const option = { label, value }
+    console.log(optionsRef)
     const optionsRefCurrent = optionsRef && optionsRef.current
     if (optionsRefCurrent) {
       // Was this option already in the list?
@@ -163,21 +164,15 @@ const ComboboxOptionInternal = forwardRef(function ComboboxOption(
 
   function handleClick() {
     const option = { label, value }
-    if (context.transition) {
-      if (onChange) {
+    if (onChange) {
+      if (context.transition) {
         ;(onChange as OnComboboxChange)(option)
-      }
-      transition && transition(ComboboxActionType.SELECT_WITH_CLICK, { option })
-    } else {
-      const newOptions = [...options, option]
-      if (onChange) {
+      } else {
+        const newOptions = [...options, option]
         ;(onChange as OnComboboxMultiChange)(newOptions)
       }
-      transition &&
-        transition(ComboboxActionType.SELECT_WITH_CLICK, {
-          options: newOptions,
-        })
     }
+    transition && transition(ComboboxActionType.SELECT_WITH_CLICK, { option })
   }
 
   function handleMouseEnter() {

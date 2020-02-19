@@ -75,14 +75,6 @@ export function useKeyDown() {
         // Don't scroll the page
         event.preventDefault()
 
-        // If the developer didn't render any options, there's no point in
-        // trying to navigate--but seriously what the heck? Give us some
-        // options fam.
-        // TODO: Circle back to see if this check is necessary
-        // if (!options || options.length === 0) {
-        //   return
-        // }
-
         if (state === ComboboxState.IDLE) {
           // Opening a closed list
           transition &&

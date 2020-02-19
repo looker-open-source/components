@@ -164,7 +164,7 @@ export const ComboboxMultiInputInternal = forwardRef(
     const handleValuesChange = useCallback(
       (values: string[]) => {
         transition &&
-          transition(ComboboxActionType.CHANGE, { inputValues: values })
+          transition(ComboboxActionType.ENTER_VALUES, { inputValues: values })
       },
       [transition]
     )

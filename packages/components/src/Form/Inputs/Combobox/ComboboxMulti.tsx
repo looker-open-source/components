@@ -55,18 +55,23 @@ function compareOptions(
 
 export type OnComboboxMultiChange = (options: ComboboxOptionObject[]) => void
 
-export function useControlledComboboxMulti(initialValue = '') {
-  const [value, setOption] = useState(initialValue)
-  function handleChange(option: ComboboxOptionObject) {
-    setOption(option.value)
+export function useControlledComboboxMulti(
+  initialValues: string[] = [],
+  initialInputValue = ''
+) {
+  const [values, setValues] = useState(initialValues)
+  const [inputValue, setInputValue] = useState(initialInputValue)
+  function handleChange(options: ComboboxOptionObject[]) {
+    setValues(options.map(option => option.value))
   }
   function handleInputChange(e: React.FormEvent<HTMLInputElement>) {
-    setOption(e.currentTarget.value)
+    setInputValue(e.currentTarget.value)
   }
   return {
     inputProps: { onChange: handleInputChange },
+    inputValue,
     onChange: handleChange,
-    value,
+    values,
   }
 }
 interface ComboboxMultiProps extends ComboboxBaseProps {
