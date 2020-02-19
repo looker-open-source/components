@@ -7,16 +7,21 @@ import {
   SpaceProps,
 } from '@looker/design-tokens'
 import styled from 'styled-components'
-import { ReactNode } from 'react'
+import React, { ReactNode } from 'react'
 
 export interface ActionListItemProps
   extends BorderProps,
     ColorProps,
     SpaceProps {
   children?: ReactNode
+  className?: string
 }
 
-export const ActionListItem = styled.div<ActionListItemProps>`
+const ActionListItemInternal = (props: ActionListItemProps) => {
+  return <div className={props.className}>{props.children}</div>
+}
+
+export const ActionListItem = styled(ActionListItemInternal)`
   ${border}
   ${space}
   ${color}
