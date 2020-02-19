@@ -158,6 +158,7 @@ export const InputChipsInternal = forwardRef(
     }
 
     function handleKeyDown(e: KeyboardEvent<HTMLInputElement>) {
+      onKeyDown && onKeyDown(e)
       switch (e.key) {
         // Remove items via backspace
         case 'Backspace':
@@ -170,7 +171,6 @@ export const InputChipsInternal = forwardRef(
           // Update values when the user hits return
           updateValues()
       }
-      onKeyDown && onKeyDown(e)
     }
 
     const isPasting = React.useRef(false)

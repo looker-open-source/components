@@ -29,8 +29,10 @@
 
 import findIndex from 'lodash/findIndex'
 import { KeyboardEvent, useContext, useLayoutEffect } from 'react'
-import { ComboboxActionType, ComboboxState } from './state'
-import { ComboboxContext } from './ComboboxContext'
+import { ComboboxActionType, ComboboxState, ComboboxMultiData } from './state'
+import { ComboboxContext, ComboboxMultiContext } from './ComboboxContext'
+import { OnComboboxMultiChange } from './ComboboxMulti'
+import { OnComboboxChange } from './Combobox'
 
 // Move focus back to the input if we start navigating w/ the
 // keyboard after focus has moved to any focus-able content in
@@ -57,8 +59,11 @@ export function useFocusManagement(
 // We want the same events when the input or the popup have focus (HOW COOL ARE
 // HOOKS BTW?) This is probably the hairiest piece but it's not bad.
 export function useKeyDown() {
+  const context = useContext(ComboboxContext)
+  const contextMulti = useContext(ComboboxMultiContext)
+  const contextToUse = context.transition ? context : contextMulti
   const {
-    data: { navigationOption },
+    data,
     onChange,
     optionsRef,
     state,
@@ -66,7 +71,22 @@ export function useKeyDown() {
     autoCompletePropRef,
     persistSelectionRef,
     readOnlyPropRef,
-  } = useContext(ComboboxContext)
+  } = contextToUse
+  const { navigationOption } = data
+
+  function checkOnChange() {
+    if (onChange) {
+      if (context.transition) {
+        ;(onChange as OnComboboxChange)(navigationOption)
+      } else {
+        const newOptions = [
+          ...(data as ComboboxMultiData).options,
+          ...(navigationOption ? [navigationOption] : []),
+        ]
+        ;(onChange as OnComboboxMultiChange)(newOptions)
+      }
+    }
+  }
 
   return function handleKeyDown(event: KeyboardEvent<HTMLDivElement>) {
     const options = optionsRef ? optionsRef.current : []
@@ -171,7 +191,7 @@ export function useKeyDown() {
           state === ComboboxState.NAVIGATING &&
           navigationOption !== undefined
         ) {
-          onChange && onChange(navigationOption)
+          checkOnChange()
           transition && transition(ComboboxActionType.SELECT_WITH_KEYBOARD)
         }
         break
@@ -183,7 +203,7 @@ export function useKeyDown() {
         ) {
           // don't want to submit forms
           event.preventDefault()
-          onChange && onChange(navigationOption)
+          checkOnChange()
           transition && transition(ComboboxActionType.SELECT_WITH_KEYBOARD)
         }
         break

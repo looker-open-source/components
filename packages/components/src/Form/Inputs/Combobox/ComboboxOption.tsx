@@ -138,7 +138,6 @@ const ComboboxOptionInternal = forwardRef(function ComboboxOption(
 
   useEffect(() => {
     const option = { label, value }
-    console.log(optionsRef)
     const optionsRefCurrent = optionsRef && optionsRef.current
     if (optionsRefCurrent) {
       // Was this option already in the list?
@@ -160,7 +159,7 @@ const ComboboxOptionInternal = forwardRef(function ComboboxOption(
   }, [value, label, optionsRef])
 
   const isActive = navigationOption && navigationOption.value === value
-  const isCurrent = contextOption && contextOption.value === value
+  const isCurrent = options.find(option => option.value === value)
 
   function handleClick() {
     const option = { label, value }

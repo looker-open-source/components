@@ -30,9 +30,18 @@ import {
 } from '@looker/components'
 
 export function ComboboxDemo() {
+  const [option, setOption] = React.useState({ value: 'Bananas' })
+  function handleChange(newOption: any) {
+    setOption(newOption)
+  }
+  // const [options, setOptions] = React.useState([{ value: 'Bananas' }])
+  // function handleMultiChange(newOptions: any) {
+  //   setOptions(newOptions)
+  // }
+
   return (
     <Box p="large">
-      <Combobox width={300} mb="medium">
+      <Combobox width={300} mb="medium" value={option} onChange={handleChange}>
         <ComboboxInput />
         <ComboboxList>
           <ComboboxOption value="Apples" />
