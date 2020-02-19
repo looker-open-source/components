@@ -6,7 +6,7 @@ exports[`InlineInputText renders an input with the correct styling 1`] = `
   border: none;
   border-bottom: 1px dashed;
   border-bottom-color: #C1C6CC;
-  padding: 0 0.5rem;
+  padding: 0;
   font: inherit;
   color: inherit;
   text-transform: inherit;
@@ -28,7 +28,7 @@ exports[`InlineInputText renders an input with the correct styling 1`] = `
   height: 0;
   overflow: hidden;
   white-space: pre-wrap;
-  padding: 0 calc(0.5rem + 1px);
+  padding: 0 1px;
 }
 
 .c0 {
