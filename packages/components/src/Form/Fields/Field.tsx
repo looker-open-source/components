@@ -58,7 +58,6 @@ export interface CustomizableFieldAttributesInterface
 
 export const CustomizableFieldAttributes: CustomizableFieldAttributesInterface = {
   labelMargin: 'xsmall',
-  labelWidth: '20%',
 }
 
 export interface FieldProps {

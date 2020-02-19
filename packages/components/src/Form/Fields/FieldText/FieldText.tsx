@@ -58,4 +58,4 @@ const FieldTextComponent = forwardRef(
 FieldTextComponent.displayName = 'FieldTextComponent'
 
 export const FieldText = styled(FieldTextComponent)``
-Field.defaultProps = { width: '13rem' }
+FieldText.defaultProps = { width: '13rem' }
