@@ -7,7 +7,15 @@ import {
   SpaceProps,
 } from '@looker/design-tokens'
 import styled from 'styled-components'
-import React, { ReactNode } from 'react'
+import React, { createContext, ReactNode, RefObject, useRef } from 'react'
+
+export interface ActionListContextProps {
+  actionListItemRef: RefObject<HTMLElement> | undefined
+}
+
+export const ActionListItemContext = createContext<ActionListContextProps>({
+  actionListItemRef: undefined,
+})
 
 export interface ActionListItemProps
   extends BorderProps,
@@ -18,7 +26,18 @@ export interface ActionListItemProps
 }
 
 const ActionListItemInternal = (props: ActionListItemProps) => {
-  return <div className={props.className}>{props.children}</div>
+  const actionListItemRef = useRef<HTMLDivElement>(null)
+  const context = {
+    actionListItemRef,
+  }
+
+  return (
+    <ActionListItemContext.Provider value={context}>
+      <div className={props.className} ref={actionListItemRef}>
+        {props.children}
+      </div>
+    </ActionListItemContext.Provider>
+  )
 }
 
 export const ActionListItem = styled(ActionListItemInternal)`

@@ -1,15 +1,18 @@
 import styled from 'styled-components'
-import React from 'react'
+import React, { useContext } from 'react'
 import { Icon } from '../Icon'
 import { Menu, MenuDisclosure, MenuItem, MenuList } from '../Menu'
+import { ActionListItemContext } from './ActionListItem'
 
 export interface ActionListItemActionsProps {
   className?: string
 }
 
 const ActionListItemActionsInternal = (props: ActionListItemActionsProps) => {
+  const context = useContext(ActionListItemContext)
+
   return (
-    <Menu>
+    <Menu hoverDisclosureRef={context.actionListItemRef}>
       <MenuDisclosure>
         <Icon className={props.className} name="DotsVert" size={36} />
       </MenuDisclosure>
