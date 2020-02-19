@@ -1,0 +1,45 @@
+---
+title: InlineInputText
+propsOf: InlineInputText
+---
+
+## InlineInputText
+
+Input styled to have underline follow the input.
+
+```jsx
+<Flex alignItems="center" justifyContent="space-around">
+  <Heading>
+    <InlineInputText value="Type here..." />
+  </Heading>
+  <Paragraph variant="subdued">
+    <InlineInputText value="Type here..." />
+  </Paragraph>
+</Flex>
+```
+
+Using the prop `simple` the input won't be as visible until hover or focus
+
+```jsx
+<InlineInputText simple value="Type here..." />
+```
+
+Using external value.
+
+```jsx
+;() => {
+  const [value, setValue] = React.useState('Type here...')
+  const onChange = e => {
+    setValue(e.currentTarget.value)
+  }
+  const onClick = e => {
+    setValue('You clicked the button')
+  }
+  return (
+    <Flex alignItems="center" justifyContent="space-around">
+      <InlineInputText value={value} onChange={onChange} />
+      <Button onClick={onClick}>Click Me</Button>
+    </Flex>
+  )
+}
+```
