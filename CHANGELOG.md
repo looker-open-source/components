@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `Select` now supports grouped options with a `title` and option `description`, as well as `BoxProps` for layout styling.
 - New components: `InputDate`, `Calendar`
+- Documentation added to the icons package README that describes the recommended way to name icons.
 
 ### Changed
 
