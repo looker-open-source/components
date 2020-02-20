@@ -107,7 +107,7 @@ export interface FieldProps {
   validationMessage?: ValidationMessageProps
   /**
    *
-   * Specify the width of the field and stuff... (TODO BETTER TEXT HERE)
+   * Specify the width of the FieldText if different then 13rem
    */
   width?: ResponsiveSpaceValue
 }
