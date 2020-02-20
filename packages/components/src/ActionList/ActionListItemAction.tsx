@@ -1,17 +1,22 @@
+import { CompatibleHTMLProps } from '@looker/design-tokens'
 import { IconNames } from '@looker/icons'
 import React, { ReactNode } from 'react'
 import { MenuItem } from '../Menu/'
 
-export interface ActionListItemActionProps {
+export interface ActionListItemActionProps
+  extends CompatibleHTMLProps<HTMLElement> {
   children?: ReactNode
   detail?: ReactNode
   icon?: IconNames
-  /*
-    @default 'button'
-  */
   itemRole?: 'button' | 'link'
 }
 
 export const ActionListItemAction = (props: ActionListItemActionProps) => {
-  return <MenuItem {...props} itemRole="button" p={0}></MenuItem>
+  const { children, detail, icon, itemRole, onClick } = props
+
+  return (
+    <MenuItem detail={detail} icon={icon} itemRole={itemRole} onClick={onClick}>
+      {children}
+    </MenuItem>
+  )
 }

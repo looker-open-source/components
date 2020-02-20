@@ -35,13 +35,6 @@ import { ActionListItemActions } from '../../../components/src/ActionList/Action
 import { ActionListItemAction } from '../../../components/src/ActionList/ActionListItemAction'
 import { ActionListRowContainer } from '../../../components/src/ActionList/ActionListRowContainer'
 import { ActionListRowOptionsContainer } from '../../../components/src/ActionList/ActionListRowOptionsContainer'
-import {
-  Menu,
-  MenuDisclosure,
-  MenuList,
-  MenuItem,
-} from '../../../components/src/Menu'
-import { Button } from '../../../components/src/Button'
 
 const data = [
   {
@@ -85,7 +78,7 @@ export const ActionListDemo: FC = () => {
       </ActionListHeader>
       <ActionListItems>
         {data.map(({ id, groupName, roles, members }) => (
-          <ActionListItem key={id}>
+          <ActionListItem key={id} onClick={() => alert(`Row clicked`)}>
             <ActionListRowContainer>
               <ActionListItemColumn primaryKey>{id}</ActionListItemColumn>
               <ActionListItemColumn>{groupName}</ActionListItemColumn>
@@ -94,9 +87,22 @@ export const ActionListDemo: FC = () => {
             </ActionListRowContainer>
             <ActionListRowOptionsContainer>
               <ActionListItemActions>
-                <ActionListItemAction icon="Group">Edit</ActionListItemAction>
-                <ActionListItemAction icon="Edit">Rename</ActionListItemAction>
-                <ActionListItemAction icon="CircleRemove">
+                <ActionListItemAction
+                  icon="Group"
+                  onClick={() => alert('Edited!')}
+                >
+                  Edit
+                </ActionListItemAction>
+                <ActionListItemAction
+                  icon="Edit"
+                  onClick={() => alert('Renamed!')}
+                >
+                  Rename
+                </ActionListItemAction>
+                <ActionListItemAction
+                  icon="CircleRemove"
+                  onClick={() => alert('Removed!')}
+                >
                   Remove
                 </ActionListItemAction>
               </ActionListItemActions>
