@@ -16,7 +16,3 @@ export const ActionList = styled.div<ActionListProps>`
     grid-template-columns: ${props => props.columns};
   }
 `
-
-ActionList.defaultProps = {
-  fontFamily: 'brand',
-}

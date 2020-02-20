@@ -5,6 +5,7 @@ import {
   ColorProps,
   space,
   SpaceProps,
+  CompatibleHTMLProps,
 } from '@looker/design-tokens'
 import styled from 'styled-components'
 import React, { createContext, ReactNode, RefObject, useRef } from 'react'
@@ -20,21 +21,43 @@ export const ActionListItemContext = createContext<ActionListContextProps>({
 export interface ActionListItemProps
   extends BorderProps,
     ColorProps,
+    CompatibleHTMLProps<HTMLElement>,
     SpaceProps {
   children?: ReactNode
   className?: string
 }
 
 const ActionListItemInternal = (props: ActionListItemProps) => {
+  const { children, className, onClick } = props
+
   const actionListItemRef = useRef<HTMLDivElement>(null)
   const context = {
     actionListItemRef,
   }
 
+  const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    if (!event.defaultPrevented) {
+      onClick && onClick(event)
+    }
+  }
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    const isEventFromChild = event.currentTarget !== event.target
+    if (event.keyCode === 13 && !isEventFromChild) {
+      event.currentTarget.click()
+    }
+  }
+
   return (
     <ActionListItemContext.Provider value={context}>
-      <div className={props.className} ref={actionListItemRef} tabIndex={0}>
-        {props.children}
+      <div
+        className={className}
+        onClick={handleClick}
+        onKeyDown={handleKeyDown}
+        ref={actionListItemRef}
+        tabIndex={0}
+      >
+        {children}
       </div>
     </ActionListItemContext.Provider>
   )
@@ -46,10 +69,16 @@ export const ActionListItem = styled(ActionListItemInternal)`
   ${color}
 
   display: flex;
+
+  &:focus,
+  &:hover {
+    outline: none;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04), 0 2px 12px rgba(0, 0, 0, 0.11);
+  }
 `
 
 ActionListItem.defaultProps = {
-  backgroundColor: 'palette.white',
+  backgroundColor: 'palette.transparent',
   borderBottom: 'solid 1px',
   borderColor: 'palette.charcoal200',
 }

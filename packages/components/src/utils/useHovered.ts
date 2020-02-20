@@ -60,7 +60,9 @@ export function useHovered(
     setIsHovered(true)
   }
   function handleMouseLeave() {
-    setIsHovered(false)
+    window.requestAnimationFrame(() => {
+      setIsHovered(false)
+    })
   }
 
   useEffect(() => {
@@ -68,11 +70,15 @@ export function useHovered(
     if (node) {
       node.addEventListener('mouseleave', handleMouseLeave)
       node.addEventListener('mouseenter', handleMouseEnter)
+      node.addEventListener('blur', handleMouseLeave)
+      node.addEventListener('focus', handleMouseEnter)
     }
     return () => {
       if (node) {
         node.removeEventListener('mouseleave', handleMouseLeave)
         node.removeEventListener('mouseenter', handleMouseEnter)
+        node.removeEventListener('blur', handleMouseLeave)
+        node.removeEventListener('focus', handleMouseEnter)
       }
     }
   }, [element])
