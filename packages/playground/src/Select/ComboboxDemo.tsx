@@ -61,7 +61,7 @@ export function ComboboxDemo() {
         </ComboboxList>
       </Combobox>
       <ComboboxMulti width={300} values={options} onChange={handleMultiChange}>
-        <ComboboxMultiInput values={values} onChange={handleInputMultiChange} />
+        <ComboboxMultiInput />
         <ComboboxList>
           <ComboboxMultiOption value="Apples" />
           <ComboboxMultiOption value="Oranges" />

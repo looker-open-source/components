@@ -1,17 +1,12 @@
-import React, {
-  FormEvent,
-  forwardRef,
-  KeyboardEvent,
-  Ref,
-  useState,
-} from 'react'
+import React, { forwardRef, KeyboardEvent, Ref, useState } from 'react'
 import styled from 'styled-components'
-import { MaxHeightProps } from 'styled-system'
 
 import { useControlWarn } from '../../../utils'
-import { Chip } from '../../../Chip'
-import { InputText } from '../InputText'
-import { InputSearch, InputSearchProps } from '../InputSearch'
+import {
+  InputChipsBase,
+  InputChipsCommonProps,
+  InputChipsInputValueControlProps,
+} from './InputChipsBase'
 
 /**
  * InputChips is a component that appears to be a regular text input,
@@ -19,29 +14,8 @@ import { InputSearch, InputSearchProps } from '../InputSearch'
  */
 
 export interface InputChipsProps
-  extends MaxHeightProps,
-    Omit<
-      InputSearchProps,
-      'value' | 'defaultValue' | 'onChange' | 'onInvalid'
-    > {
-  /**
-   * InputChips is a controlled component since unlike native inputs,
-   * you can't easily access the current value via dom API
-   */
-  values: string[]
-  /**
-   * InputChips is a controlled component since unlike native inputs,
-   * you can't easily access the current value via dom API
-   */
-  onChange: (values: string[]) => void
-  /**
-   * for controlling the input text
-   */
-  inputValue?: string
-  /**
-   * callback when the input text changes (use with inputValue to control the input text)
-   */
-  onInputChange?: (value: string) => void
+  extends Omit<InputChipsCommonProps, 'onInvalid'>,
+    Partial<InputChipsInputValueControlProps> {
   /**
    * for checking each value before converting to a chip
    */
@@ -109,7 +83,9 @@ export const InputChipsInternal = forwardRef(
     })
 
     const [uncontrolledValue, setUncontrolledValue] = useState('')
-    const inputValue = isControlled ? controlledInputValue : uncontrolledValue
+    const inputValue = isControlled
+      ? controlledInputValue || ''
+      : uncontrolledValue
 
     const setInputValue = (val: string) => {
       if (!isControlled) {
@@ -148,28 +124,17 @@ export const InputChipsInternal = forwardRef(
       setInputValue(updatedInputValue)
     }
 
-    function handleDeleteChip(value: string) {
-      const newValues = values.filter(v => value !== v)
-      onChange(newValues)
-    }
-
     function handleBlur() {
       updateValues()
     }
 
     function handleKeyDown(e: KeyboardEvent<HTMLInputElement>) {
       onKeyDown && onKeyDown(e)
-      switch (e.key) {
-        // Remove items via backspace
-        case 'Backspace':
-          // If we hit backspace and there is no text left to delete, remove the last entry instead
-          inputValue === '' && handleDeleteChip(values[values.length - 1])
-          break
-        case 'Enter':
-          // Don't submit a form if there is one
-          e.preventDefault()
-          // Update values when the user hits return
-          updateValues()
+      if (e.key === 'Enter') {
+        // Don't submit a form if there is one
+        e.preventDefault()
+        // Update values when the user hits return
+        updateValues()
       }
     }
 
@@ -178,8 +143,7 @@ export const InputChipsInternal = forwardRef(
       isPasting.current = true
     }
 
-    function handleInputChange(e: FormEvent<HTMLInputElement>) {
-      const { value } = e.currentTarget
+    function handleInputChange(value: string) {
       // If the last character is a comma, update the values
       // Or, if the user pastes content, we assume that the final value is complete
       // even if there's no comma at the end
@@ -191,52 +155,22 @@ export const InputChipsInternal = forwardRef(
       }
     }
 
-    function handleClear() {
-      onChange([])
-      setInputValue('')
-    }
-
-    const chips = values.map(value => {
-      function onChipDelete() {
-        handleDeleteChip(value)
-      }
-      return (
-        <Chip onDelete={onChipDelete} key={value} mb={1} mt={1} ml="xxsmall">
-          {value}
-        </Chip>
-      )
-    })
-
     return (
-      <InputSearch
+      <InputChipsBase
         ref={ref}
-        value={inputValue}
-        onChange={handleInputChange}
+        values={values}
+        onChange={onChange}
+        inputValue={inputValue}
+        onInputChange={handleInputChange}
         onBlur={handleBlur}
         onKeyDown={handleKeyDown}
-        showClear={values.length > 0}
-        onClear={handleClear}
         onPaste={handlePaste}
         {...props}
-      >
-        {chips}
-      </InputSearch>
+      />
     )
   }
 )
 
 InputChipsInternal.displayName = 'InputChipsInternal'
 
-export const InputChips = styled(InputChipsInternal)`
-  align-items: flex-start;
-  flex-wrap: wrap;
-
-  ${InputText} {
-    width: auto;
-    min-width: 25%;
-    padding-left: ${props => props.theme.space.xsmall};
-  }
-`
-InputChips.defaultProps = {
-  px: 'xxsmall',
-}
+export const InputChips = styled(InputChipsInternal)``

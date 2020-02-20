@@ -23,29 +23,34 @@
  SOFTWARE.
 
  */
+import { Context, useContext, useLayoutEffect } from 'react'
+import { ComboboxInputProps } from '../ComboboxInput'
+import { ComboboxMultiInputProps } from '../ComboboxMultiInput'
+import {
+  ComboboxContextProps,
+  ComboboxMultiContextProps,
+} from '../ComboboxContext'
 
-import { useLayoutEffect } from 'react'
-import { useCallbackRef } from '../../../../utils'
-import { ComboboxActionType } from './state'
+export function useInputPropRefs<
+  TProps extends
+    | ComboboxInputProps
+    | ComboboxMultiInputProps = ComboboxInputProps,
+  TContext extends
+    | ComboboxContextProps
+    | ComboboxMultiContextProps = ComboboxContextProps
+>(
+  { autoComplete = false, readOnly = false }: TProps,
+  context: Context<TContext>
+) {
+  const { autoCompletePropRef, readOnlyPropRef } = useContext(context)
 
-// Move focus back to the input if we start navigating w/ the
-// keyboard after focus has moved to any focus-able content in
-// the popup.
-
-export function useFocusManagement(lastActionType?: ComboboxActionType) {
-  const [inputElement, inputCallbackRef] = useCallbackRef<HTMLInputElement>()
-  // useLayoutEffect so that the cursor goes to the end of the input instead
-  // of awkwardly at the beginning, unclear to my why ...
   useLayoutEffect(() => {
-    if (
-      lastActionType === ComboboxActionType.NAVIGATE ||
-      lastActionType === ComboboxActionType.ESCAPE ||
-      lastActionType === ComboboxActionType.SELECT_WITH_CLICK
-    ) {
-      inputElement && inputElement.focus()
-    }
+    if (autoCompletePropRef) autoCompletePropRef.current = autoComplete
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [lastActionType])
+  }, [autoComplete])
 
-  return { inputCallbackRef, inputElement }
+  useLayoutEffect(() => {
+    if (readOnlyPropRef) readOnlyPropRef.current = readOnly
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [readOnly])
 }

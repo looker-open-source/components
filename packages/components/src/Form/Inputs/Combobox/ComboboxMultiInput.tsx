@@ -28,36 +28,26 @@
 // because their work is fantastic (but is not in TypeScript)
 
 import isEqual from 'lodash/isEqual'
-import React, {
-  forwardRef,
-  useLayoutEffect,
-  useRef,
-  useContext,
-  Ref,
-  useCallback,
-} from 'react'
+import React, { forwardRef, useRef, useContext, Ref, useCallback } from 'react'
 import styled from 'styled-components'
 import { useForkedRef, useWrapEvent } from '../../../utils'
-import { InputChips, InputChipsProps } from '../InputChips'
-import { InputText } from '../InputText'
-import { ComboboxMultiContext } from './ComboboxContext'
 import {
-  ComboboxInputPropsCommon,
-  indicatorPadding,
-  indicatorSize,
-  selectIndicatorBG,
-} from './ComboboxInput'
+  InputChipsBase,
+  InputChipsCommonProps,
+  InputChipsInputValueControlProps,
+} from '../InputChips'
+import { ComboboxMultiContext } from './ComboboxContext'
+import { ComboboxInputPropsCommon, comboboxStyles } from './ComboboxInput'
 import { getComboboxText } from './utils/getComboboxText'
 import { makeHash } from './utils/makeHash'
 import { ComboboxActionType, ComboboxState } from './utils/state'
 import { useInputEvents } from './utils/useInputEvents'
+import { useInputPropRefs } from './utils/useInputPropRefs'
 
 export interface ComboboxMultiInputProps
-  extends Omit<InputChipsProps, 'autoComplete' | 'values' | 'onChange'>,
-    ComboboxInputPropsCommon {
-  values?: string[]
-  onChange?: (values: string[]) => void
-}
+  extends Omit<InputChipsCommonProps, 'autoComplete'>,
+    Partial<InputChipsInputValueControlProps>,
+    ComboboxInputPropsCommon {}
 
 export const ComboboxMultiInputInternal = forwardRef(
   (props: ComboboxMultiInputProps, forwardedRef: Ref<HTMLInputElement>) => {
@@ -89,23 +79,13 @@ export const ComboboxMultiInputInternal = forwardRef(
       state,
       transition,
       id,
-      autoCompletePropRef,
-      readOnlyPropRef,
     } = useContext(ComboboxMultiContext)
 
-    const ref = useForkedRef<HTMLInputElement>(inputCallbackRef, forwardedRef)
-
-    const isControlled = controlledValues !== undefined
-
-    useLayoutEffect(() => {
-      if (autoCompletePropRef) autoCompletePropRef.current = autoComplete
-      if (readOnlyPropRef) readOnlyPropRef.current = readOnly
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [autoComplete, readOnly])
+    useInputPropRefs(props, ComboboxMultiContext)
 
     function handleClear() {
-      contextOnChange && contextOnChange([])
       transition && transition(ComboboxActionType.CLEAR)
+      contextOnChange && contextOnChange([])
     }
 
     const handleInputValueChange = useCallback(
@@ -163,6 +143,7 @@ export const ComboboxMultiInputInternal = forwardRef(
       }
     }
 
+    const isControlled = controlledValues !== undefined
     // [*]... and when controlled, we don't trigger handleValueChange as the user
     // types, instead the developer controls it with the normal input onChange
     // prop
@@ -179,6 +160,7 @@ export const ComboboxMultiInputInternal = forwardRef(
       [handleInputValueChange, isControlled]
     )
 
+    // called when user removes chips from the input
     const handleChange = useCallback(
       (values: string[]) => {
         isInputting.current = true
@@ -197,7 +179,7 @@ export const ComboboxMultiInputInternal = forwardRef(
         ? contextInputValues
         : options.map(option => getComboboxText(option))
 
-    let inputValue = contextInputValue
+    let inputValue = contextInputValue || ''
 
     if (
       autoComplete &&
@@ -227,16 +209,18 @@ export const ComboboxMultiInputInternal = forwardRef(
 
     const inputEvents = useInputEvents(props, ComboboxMultiContext)
 
+    const ref = useForkedRef<HTMLInputElement>(inputCallbackRef, forwardedRef)
+
     return (
-      <InputChips
+      <InputChipsBase
         {...rest}
         {...inputEvents}
         ref={ref}
-        values={inputValues}
-        inputValue={inputValue}
         readOnly={readOnly}
-        onClear={wrappedOnClear}
+        values={inputValues}
         onChange={wrappedOnChange}
+        onClear={wrappedOnClear}
+        inputValue={inputValue}
         onInputChange={wrappedOnInputChange}
         id={`listbox-${id}`}
         autoComplete="off"
@@ -254,20 +238,7 @@ export const ComboboxMultiInputInternal = forwardRef(
 ComboboxMultiInputInternal.displayName = 'ComboboxMultiInputInternal'
 
 export const ComboboxMultiInput = styled(ComboboxMultiInputInternal)`
-  background-image: ${props => {
-    const color = props.disabled
-      ? props.theme.colors.palette.charcoal300
-      : props.theme.colors.palette.charcoal500
-    return selectIndicatorBG(color)
-  }};
-  background-repeat: no-repeat, repeat;
-  background-position: right ${indicatorPadding} center, 0 0;
-  background-size: ${indicatorSize}, 100%;
-  padding-right: calc(2 * ${indicatorPadding} + ${indicatorSize});
-
-  ${InputText} {
-    cursor: ${props => (props.readOnly ? 'default' : 'text')};
-  }
+  ${comboboxStyles}
 `
 
 ComboboxMultiInput.defaultProps = {

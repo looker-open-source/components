@@ -182,7 +182,7 @@ const InputSearchComponent = forwardRef(
           onChange={handleChange}
           value={inputValue}
           focusStyle={{ outline: 'none' }}
-          px="0"
+          pr="0"
           {...pick(props, inputPropKeys)}
           ref={ref}
         />
@@ -197,7 +197,6 @@ InputSearchComponent.displayName = 'InputSearchComponent'
 export const InputSearch = styled(InputSearchComponent)`
   align-items: center;
   display: flex;
-  position: relative;
   background-color: ${props => props.theme.colors.palette.white};
 
   &:hover {
@@ -232,7 +231,7 @@ export const InputSearch = styled(InputSearchComponent)`
 `
 
 InputSearch.defaultProps = {
-  ...omit(CustomizableInputTextAttributes, 'height'),
+  ...omit(CustomizableInputTextAttributes, ['height', 'px']),
   ...inputTextDefaults,
   pr: 'xxsmall',
   py: 2,

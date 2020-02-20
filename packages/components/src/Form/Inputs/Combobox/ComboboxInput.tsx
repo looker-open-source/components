@@ -27,23 +27,17 @@
 // Much of the following is pulled from https://github.com/reach/reach-ui
 // because their work is fantastic (but is not in TypeScript)
 
-import React, {
-  FormEvent,
-  forwardRef,
-  useLayoutEffect,
-  useRef,
-  useContext,
-  Ref,
-} from 'react'
-import styled from 'styled-components'
+import React, { FormEvent, forwardRef, useRef, useContext, Ref } from 'react'
+import styled, { css } from 'styled-components'
 import { useForkedRef, useWrapEvent } from '../../../utils'
 import { InputSearch, InputSearchProps } from '../InputSearch'
 import { InputText } from '../InputText'
 import { ComboboxContext } from './ComboboxContext'
 import { getComboboxText } from './utils/getComboboxText'
 import { makeHash } from './utils/makeHash'
-import { useInputEvents } from './utils/useInputEvents'
 import { ComboboxActionType, ComboboxState } from './utils/state'
+import { useInputEvents } from './utils/useInputEvents'
+import { useInputPropRefs } from './utils/useInputPropRefs'
 
 export interface ComboboxInputPropsCommon {
   /**
@@ -88,6 +82,7 @@ export const ComboboxInputInternal = forwardRef(function ComboboxInput(
     value: controlledValue,
     ...rest
   } = props
+
   const {
     data: { navigationOption, option, inputValue: contextInputValue },
     onChange: contextOnChange,
@@ -95,19 +90,13 @@ export const ComboboxInputInternal = forwardRef(function ComboboxInput(
     state,
     transition,
     id,
-    autoCompletePropRef,
-    readOnlyPropRef,
   } = useContext(ComboboxContext)
+
+  useInputPropRefs(props, ComboboxContext)
 
   const ref = useForkedRef<HTMLInputElement>(inputCallbackRef, forwardedRef)
 
   const isControlled = controlledValue !== undefined
-
-  useLayoutEffect(() => {
-    if (autoCompletePropRef) autoCompletePropRef.current = autoComplete
-    if (readOnlyPropRef) readOnlyPropRef.current = readOnly
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [autoComplete, readOnly])
 
   function handleClear() {
     contextOnChange && contextOnChange()
@@ -217,7 +206,7 @@ export const selectIndicatorBG = (color: string) =>
     indicatorRaw.replace('currentColor', color)
   )}')`
 
-export const ComboboxInput = styled(ComboboxInputInternal)`
+export const comboboxStyles = css<ComboboxInputProps>`
   background-image: ${props => {
     const color = props.disabled
       ? props.theme.colors.palette.charcoal300
@@ -232,6 +221,10 @@ export const ComboboxInput = styled(ComboboxInputInternal)`
   ${InputText} {
     cursor: ${props => (props.readOnly ? 'default' : 'text')};
   }
+`
+
+export const ComboboxInput = styled(ComboboxInputInternal)`
+  ${comboboxStyles}
 `
 
 ComboboxInput.defaultProps = {

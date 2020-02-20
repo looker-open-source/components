@@ -110,7 +110,8 @@ export const ComboboxMultiInternal = forwardRef(
 
     if (
       values !== undefined &&
-      (options.length === 0 || !compareOptions(options, values, every))
+      (options.length !== values.length ||
+        !compareOptions(options, values, every))
     ) {
       transition &&
         transition(ComboboxActionType.SELECT_SILENT, {
