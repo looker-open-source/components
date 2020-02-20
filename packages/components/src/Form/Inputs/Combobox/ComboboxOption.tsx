@@ -53,9 +53,8 @@ import {
   ComboboxContextProps,
   ComboboxMultiContextProps,
 } from './ComboboxContext'
+import { ComboboxCallback, ComboboxMultiCallback } from './types'
 import { ComboboxActionType, ComboboxMultiData } from './utils/state'
-import { OnComboboxChange } from './Combobox'
-import { OnComboboxMultiChange } from './ComboboxMulti'
 import { getComboboxText } from './utils/getComboboxText'
 import {
   ComboboxOptionStatuses,
@@ -108,9 +107,9 @@ export function useOptionEvents<
     const option = { label, value }
     if (onChange) {
       if (options) {
-        ;(onChange as OnComboboxMultiChange)([...options, option])
+        ;(onChange as ComboboxMultiCallback)([...options, option])
       } else {
-        ;(onChange as OnComboboxChange)(option)
+        ;(onChange as ComboboxCallback)(option)
       }
     }
     transition && transition(ComboboxActionType.SELECT_WITH_CLICK, { option })

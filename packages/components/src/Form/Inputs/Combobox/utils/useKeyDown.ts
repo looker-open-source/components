@@ -29,8 +29,7 @@
 import findIndex from 'lodash/findIndex'
 import { KeyboardEvent, useContext } from 'react'
 import { ComboboxContext, ComboboxMultiContext } from '../ComboboxContext'
-import { OnComboboxMultiChange } from '../ComboboxMulti'
-import { OnComboboxChange } from '../Combobox'
+import { ComboboxMultiCallback, ComboboxCallback } from '../types'
 import { ComboboxActionType, ComboboxState, ComboboxMultiData } from './state'
 
 // We want the same events when the input or the popup have focus (HOW COOL ARE
@@ -54,13 +53,13 @@ export function useKeyDown() {
   function checkOnChange() {
     if (onChange) {
       if (context.transition) {
-        ;(onChange as OnComboboxChange)(navigationOption)
+        ;(onChange as ComboboxCallback)(navigationOption)
       } else {
         const newOptions = [
           ...(data as ComboboxMultiData).options,
           ...(navigationOption ? [navigationOption] : []),
         ]
-        ;(onChange as OnComboboxMultiChange)(newOptions)
+        ;(onChange as ComboboxMultiCallback)(newOptions)
       }
     }
   }

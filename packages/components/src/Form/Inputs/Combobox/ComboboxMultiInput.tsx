@@ -121,7 +121,7 @@ export const ComboboxMultiInputInternal = forwardRef(
       inputElement,
       state,
       transition,
-      listboxId,
+      id,
       autoCompletePropRef,
       persistSelectionRef,
       readOnlyPropRef,
@@ -353,7 +353,7 @@ export const ComboboxMultiInputInternal = forwardRef(
         onChange={wrappedOnChange}
         onInputChange={wrappedOnInputChange}
         onKeyDown={wrappedOnKeyDown}
-        id={listboxId}
+        id={`listbox-${id}`}
         autoComplete="off"
         aria-autocomplete="both"
         aria-activedescendant={

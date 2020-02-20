@@ -33,13 +33,15 @@ import {
   ComboboxState,
   ComboboxMultiActionPayload,
 } from './utils/state'
-import { ComboboxOptionObject } from './ComboboxOption'
-import { OnComboboxChange } from './Combobox'
-import { OnComboboxMultiChange } from './ComboboxMulti'
+import {
+  ComboboxCallback,
+  ComboboxMultiCallback,
+  ComboboxOptionObject,
+} from './types'
 
 export interface ComboboxContextProps<
   TData = ComboboxData,
-  TChange = OnComboboxChange,
+  TChange = ComboboxCallback,
   TTransition = ComboboxTransition
 > {
   data: TData
@@ -51,7 +53,7 @@ export interface ComboboxContextProps<
   optionsRef?: MutableRefObject<ComboboxOptionObject[]>
   state?: ComboboxState
   transition?: TTransition
-  listboxId?: string
+  id?: string
   autoCompletePropRef?: MutableRefObject<boolean>
   persistSelectionRef?: MutableRefObject<boolean>
   readOnlyPropRef?: MutableRefObject<boolean>
@@ -61,7 +63,7 @@ export interface ComboboxContextProps<
 
 export type ComboboxMultiContextProps = ComboboxContextProps<
   ComboboxMultiData,
-  OnComboboxMultiChange,
+  ComboboxMultiCallback,
   ComboboxTransition<ComboboxMultiActionPayload>
 >
 
