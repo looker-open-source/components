@@ -29,9 +29,7 @@
 
 import isEqual from 'lodash/isEqual'
 import React, {
-  FocusEvent,
   forwardRef,
-  MouseEvent as ReactMouseEvent,
   useLayoutEffect,
   useRef,
   useContext,
@@ -39,110 +37,65 @@ import React, {
   useCallback,
 } from 'react'
 import styled from 'styled-components'
-import { useMouseDownClick, useForkedRef, useWrapEvent } from '../../../utils'
+import { useForkedRef, useWrapEvent } from '../../../utils'
 import { InputChips, InputChipsProps } from '../InputChips'
 import { InputText } from '../InputText'
-import { makeHash } from './utils/makeHash'
-import { useBlur } from './utils/useBlur'
-import { useKeyDown } from './utils/useKeyDown'
 import { ComboboxMultiContext } from './ComboboxContext'
 import {
+  ComboboxInputPropsCommon,
   indicatorPadding,
   indicatorSize,
   selectIndicatorBG,
 } from './ComboboxInput'
 import { getComboboxText } from './utils/getComboboxText'
+import { makeHash } from './utils/makeHash'
 import { ComboboxActionType, ComboboxState } from './utils/state'
+import { useInputEvents } from './utils/useInputEvents'
 
 export interface ComboboxMultiInputProps
-  extends Omit<InputChipsProps, 'autoComplete' | 'values' | 'onChange'> {
-  /**
-   * If true, when the user clicks inside the text box the current value will
-   * be selected. Use this if the user is likely to delete all the text anyway
-   * (like the URL bar in browsers).
-   *
-   * However, if the user is likely to want to tweak the value, leave this
-   * false, like a google search--the user is likely wanting to edit their
-   * search, not replace it completely.
-   */
-  selectOnClick?: boolean
-  /**
-   * Determines if the value in the input changes or not as the user navigates
-   * with the keyboard. If true, the value changes, if false the value doesn't
-   * change.
-   *
-   * Set this to false when you don't really need the value from the input but
-   * want to populate some other state (like the recipient selector in an email client).
-   * But if your input is more like a normal `<input type="text"/>`, then leave
-   * the `true` default.
-   */
-  autoComplete?: boolean
+  extends Omit<InputChipsProps, 'autoComplete' | 'values' | 'onChange'>,
+    ComboboxInputPropsCommon {
   values?: string[]
   onChange?: (values: string[]) => void
 }
 
 export const ComboboxMultiInputInternal = forwardRef(
-  function ComboboxMultiInput(
-    {
-      // highlights all the text in the box on click when true
-      selectOnClick = false,
-
+  (props: ComboboxMultiInputProps, forwardedRef: Ref<HTMLInputElement>) => {
+    const {
       // updates the value in the input when navigating w/ the keyboard
       autoComplete = true,
       readOnly = false,
 
       // wrapped events
-      onClick,
-      onMouseDown,
       onClear,
       onChange,
       onInputChange,
-      onKeyDown,
-      onBlur,
-      onFocus,
 
       // might be controlled
       values: controlledValues,
       inputValue: controlledInputValue,
-      ...props
-    }: ComboboxMultiInputProps,
-    forwardedRef: Ref<HTMLInputElement>
-  ) {
+      ...rest
+    } = props
+
     const {
       data: {
         navigationOption,
         options,
-        lastActionType,
         inputValue: contextInputValue,
         inputValues: contextInputValues,
       },
       onChange: contextOnChange,
       inputCallbackRef,
-      inputElement,
       state,
       transition,
       id,
       autoCompletePropRef,
-      persistSelectionRef,
       readOnlyPropRef,
-      openOnFocus,
     } = useContext(ComboboxMultiContext)
 
     const ref = useForkedRef<HTMLInputElement>(inputCallbackRef, forwardedRef)
 
-    // Because we close the List on blur, we need to track if the blur is
-    // caused by clicking inside the list, and if so, don't close the List.
-    const selectOnClickRef = useRef(false)
-
-    const handleKeyDown = useKeyDown()
-
-    const handleBlur = useBlur()
-
     const isControlled = controlledValues !== undefined
-
-    // Need to determine whether the updated value come from change event on the input
-    // or from a new value prop (controlled)
-    const isInputting = useRef(false)
 
     useLayoutEffect(() => {
       if (autoCompletePropRef) autoCompletePropRef.current = autoComplete
@@ -171,6 +124,9 @@ export const ComboboxMultiInputInternal = forwardRef(
       [transition]
     )
 
+    // Need to determine whether the updated value come from change event on the input
+    // or from a new value prop (controlled)
+    const isInputting = useRef(false)
     // If they are controlling the value we still need to do our transitions, so
     // we have this derived state to emulate onChange of the input as we receive
     // new `value`s ...[*]
@@ -236,70 +192,6 @@ export const ComboboxMultiInputInternal = forwardRef(
       [handleValuesChange, isControlled]
     )
 
-    function handleFocus(e: FocusEvent<HTMLInputElement>) {
-      if (readOnly) {
-        e.currentTarget.selectionEnd = e.currentTarget.selectionStart
-      } else if (selectOnClick) {
-        selectOnClickRef.current = true
-      }
-
-      // If we select an option with click, useFocusManagement will focus the
-      // input, in those cases we don't want to cause the menu to open back up,
-      // so we guard behind these states
-      if (
-        openOnFocus &&
-        lastActionType !== ComboboxActionType.SELECT_WITH_CLICK &&
-        lastActionType !== ComboboxActionType.NAVIGATE
-      ) {
-        transition &&
-          transition(ComboboxActionType.FOCUS, {
-            persistSelection:
-              persistSelectionRef && persistSelectionRef.current,
-          })
-      }
-    }
-
-    const selectText = useCallback(() => {
-      if (selectOnClickRef.current) {
-        selectOnClickRef.current = false
-        inputElement && inputElement.select()
-      }
-    }, [inputElement])
-
-    const handleMouseDownClick = useCallback(
-      (e: ReactMouseEvent<HTMLElement>) => {
-        if (state === ComboboxState.IDLE) {
-          // Opening a closed list
-          transition &&
-            transition(ComboboxActionType.FOCUS, {
-              persistSelection:
-                persistSelectionRef && persistSelectionRef.current,
-            })
-        } else {
-          // Closing an opened list
-          transition && transition(ComboboxActionType.ESCAPE)
-        }
-        if (e.type === 'click') {
-          selectText()
-        }
-      },
-      [persistSelectionRef, state, selectText, transition]
-    )
-
-    const handleMouseUp = useCallback(
-      (e: MouseEvent) => {
-        if (e.target === inputElement) {
-          selectText()
-        }
-      },
-      [inputElement, selectText]
-    )
-
-    const {
-      onMouseDown: handleMouseDown,
-      onClick: handleClick,
-    } = useMouseDownClick(handleMouseDownClick, handleMouseUp)
-
     const inputValues =
       contextInputValues !== undefined
         ? contextInputValues
@@ -318,10 +210,6 @@ export const ComboboxMultiInputInternal = forwardRef(
     }
 
     const wrappedOnClear = useWrapEvent(handleClear, onClear)
-    const wrappedOnClick = useWrapEvent(handleClick, onClick)
-    const wrappedOnMouseDown = useWrapEvent(handleMouseDown, onMouseDown)
-    const wrappedOnBlur = useWrapEvent(handleBlur, onBlur)
-    const wrappedOnFocus = useWrapEvent(handleFocus, onFocus)
     const wrappedOnChange = useCallback(
       (values: string[]) => {
         handleChange(values)
@@ -336,23 +224,20 @@ export const ComboboxMultiInputInternal = forwardRef(
       },
       [handleInputChange, onInputChange]
     )
-    const wrappedOnKeyDown = useWrapEvent(handleKeyDown, onKeyDown)
+
+    const inputEvents = useInputEvents(props, ComboboxMultiContext)
 
     return (
       <InputChips
-        {...props}
+        {...rest}
+        {...inputEvents}
         ref={ref}
         values={inputValues}
         inputValue={inputValue}
         readOnly={readOnly}
-        onClick={wrappedOnClick}
-        onMouseDown={wrappedOnMouseDown}
         onClear={wrappedOnClear}
-        onBlur={wrappedOnBlur}
-        onFocus={wrappedOnFocus}
         onChange={wrappedOnChange}
         onInputChange={wrappedOnInputChange}
-        onKeyDown={wrappedOnKeyDown}
         id={`listbox-${id}`}
         autoComplete="off"
         aria-autocomplete="both"
