@@ -41,6 +41,7 @@ import {
   reset,
   color,
 } from '@looker/design-tokens'
+import { ResponsiveValue, TLengthStyledSystem } from 'styled-system'
 import { IconNames } from '@looker/icons'
 import React, { forwardRef, Ref } from 'react'
 import styled, { css } from 'styled-components'
@@ -48,6 +49,8 @@ import { InputProps, inputPropKeys } from '../InputProps'
 import { Flex } from '../../../Layout/Flex/Flex'
 import { Icon } from '../../../Icon/Icon'
 import { Text } from '../../../Text/Text'
+
+type ResponsiveSpaceValue = ResponsiveValue<TLengthStyledSystem>
 
 export const CustomizableInputTextAttributes: CustomizableAttributes = {
   borderRadius: 'medium',
@@ -85,6 +88,7 @@ export interface InputTextProps
     | 'time'
     | 'url'
     | 'week'
+  width?: ResponsiveSpaceValue
 }
 
 const InputComponent = forwardRef(
@@ -95,11 +99,12 @@ const InputComponent = forwardRef(
       iconBefore,
       prefix,
       suffix,
+      width,
       ...props
     }: InputTextProps,
     ref: Ref<HTMLInputElement>
   ) => (
-    <InputWrapper>
+    <InputWrapper width={width}>
       <InputIconStyle>
         {iconBefore && <Icon name={iconBefore} size={20} />}
       </InputIconStyle>
@@ -122,40 +127,49 @@ const InputComponent = forwardRef(
   )
 )
 
-export const InputIconStyle = styled(Flex)``
-//  padding: 0px 12px;
-// export const InputAfterWrapper = styled(Flex)``
-// export const InputPrefixWrapper = styled(Flex)``
-// export const InputSuffixWrapper = styled(Flex)``
-
 export const InputWrapper = styled(Flex)`
   justify-content: space-between;
   align-items: center;
   height: 36px;
   position: relative;
+  padding-left: 12px;
   border: 1px solid;
   border-color: ${props => props.theme.colors.palette.charcoal200};
   border-radius: 4px;
+  background: ${props => props.theme.colors.palette.white};
   input {
     width: 100%;
+    background: transparent;
+    outline: none;
+    &:focus {
+      border-color: transparent;
+      box-shadow: none;
+    }
   }
-  &:focus-within {
+  &:focus,
+  :focus-within {
+    border-color: ${props => props.theme.colors.palette.purple300};
+    box-shadow: 0 0 0 2px ${props => props.theme.colors.palette.purple100};
+    outline: none;
+  }
+
+  &:hover {
+    border-color: ${props => props.theme.colors.palette.charcoal300};
+  }
+
+  &:disabled {
+    background: ${props => props.theme.colors.palette.charcoal100};
+    color: ${props => props.theme.colors.palette.charcoal400};
+    &:hover {
+      border-color: ${props => props.theme.colors.palette.charcoal200};
+    }
   }
 `
 
-export const inputTextHover = css`
-  border-color: ${props => props.theme.colors.palette.charcoal300};
-`
-export const inputTextFocus = css`
-  border-color: ${props => props.theme.colors.palette.purple300};
-  box-shadow: 0 0 0 2px ${props => props.theme.colors.palette.purple100};
-  outline: none;
-`
-export const inputTextDisabled = css`
-  background: ${props => props.theme.colors.palette.charcoal100};
+export const InputIconStyle = styled(Flex)`
   color: ${props => props.theme.colors.palette.charcoal400};
-  &:hover {
-    border-color: ${props => props.theme.colors.palette.charcoal200};
+  & + & {
+    padding: 0 12px;
   }
 `
 
@@ -192,29 +206,19 @@ export const InputText = styled(InputComponent).attrs(
 
   color: ${props => props.theme.colors.palette.charcoal700};
 
-  &:hover {
-    ${inputTextHover}
-  }
-
-  &:focus {
-    ${inputTextFocus}
-  }
-
-  &:disabled  {
-    ${inputTextDisabled}
-  }
-
   ${inputTextValidation}
 `
 
-export const inputTextDefaults = {
-  border: 'none',
-}
+// export const inputTextDefaults = {
+//   border: 'none',
+//   width: '13rem',
+// }
 
 InputText.defaultProps = {
   ...CustomizableInputTextAttributes,
-  ...inputTextDefaults,
+  border: 'none',
   type: 'text',
+  width: '13rem',
 }
 
 InputComponent.displayName = 'InputComponent'
