@@ -41,9 +41,13 @@ import {
   reset,
   color,
 } from '@looker/design-tokens'
+import { IconNames } from '@looker/icons'
 import React, { forwardRef, Ref } from 'react'
 import styled, { css } from 'styled-components'
 import { InputProps, inputPropKeys } from '../InputProps'
+import { Flex } from '../../../Layout/Flex/Flex'
+import { Icon } from '../../../Icon/Icon'
+import { Text } from '../../../Text/Text'
 
 export const CustomizableInputTextAttributes: CustomizableAttributes = {
   borderRadius: 'medium',
@@ -60,6 +64,10 @@ export interface InputTextProps
     SpaceProps,
     TypographyProps,
     Omit<InputProps, 'type'> {
+  iconAfter?: IconNames
+  iconBefore?: IconNames
+  prefix?: string
+  suffix?: string
   /**
    *
    * @default 'text'
@@ -80,18 +88,60 @@ export interface InputTextProps
 }
 
 const InputComponent = forwardRef(
-  ({ type = 'text', ...props }: InputTextProps, ref: Ref<HTMLInputElement>) => {
-    return (
+  (
+    {
+      type = 'text',
+      iconAfter,
+      iconBefore,
+      prefix,
+      suffix,
+      ...props
+    }: InputTextProps,
+    ref: Ref<HTMLInputElement>
+  ) => (
+    <InputWrapper>
+      <InputIconStyle>
+        {iconBefore && <Icon name={iconBefore} size={20} />}
+      </InputIconStyle>
+      <InputIconStyle>
+        {prefix && <Text fontSize="small">{prefix}</Text>}
+      </InputIconStyle>
       <input
         {...pick(omit(props, 'color', 'height', 'width'), inputPropKeys)}
         type={type}
         className={props.className}
         ref={ref}
       />
-    )
-  }
+      <InputIconStyle>
+        {suffix && <Text fontSize="small">{suffix}</Text>}
+      </InputIconStyle>
+      <InputIconStyle>
+        {iconAfter && <Icon name={iconAfter} size={20} />}
+      </InputIconStyle>
+    </InputWrapper>
+  )
 )
-InputComponent.displayName = 'InputComponent'
+
+export const InputIconStyle = styled(Flex)``
+//  padding: 0px 12px;
+// export const InputAfterWrapper = styled(Flex)``
+// export const InputPrefixWrapper = styled(Flex)``
+// export const InputSuffixWrapper = styled(Flex)``
+
+export const InputWrapper = styled(Flex)`
+  justify-content: space-between;
+  align-items: center;
+  height: 36px;
+  position: relative;
+  border: 1px solid;
+  border-color: ${props => props.theme.colors.palette.charcoal200};
+  border-radius: 4px;
+  input {
+    width: 100%;
+  }
+  &:focus-within {
+  }
+`
 
 export const inputTextHover = css`
   border-color: ${props => props.theme.colors.palette.charcoal300};
@@ -158,8 +208,7 @@ export const InputText = styled(InputComponent).attrs(
 `
 
 export const inputTextDefaults = {
-  border: 'solid 1px',
-  borderColor: 'palette.charcoal200',
+  border: 'none',
 }
 
 InputText.defaultProps = {
@@ -167,3 +216,5 @@ InputText.defaultProps = {
   ...inputTextDefaults,
   type: 'text',
 }
+
+InputComponent.displayName = 'InputComponent'

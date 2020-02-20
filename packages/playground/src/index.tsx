@@ -20,7 +20,7 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { GlobalStyle, Field, FieldText } from '@looker/components'
+import { GlobalStyle, InputText } from '@looker/components'
 import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
 
@@ -28,21 +28,11 @@ const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <Field required description="description" detail="0/50" label="First" />
-      <FieldText
-        required
-        description="description"
-        detail="0/50"
-        label="First"
-        name="firstName"
-      />
-      <FieldText
-        width="480px"
-        required
-        description="description"
-        detail="0/50"
-        label="First"
-        name="firstName"
+      <InputText
+        iconAfter="Check"
+        iconBefore="GearOutline"
+        prefix="$"
+        suffix="%"
       />
     </ThemeProvider>
   )
