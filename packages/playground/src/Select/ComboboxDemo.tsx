@@ -24,6 +24,7 @@ import {
   Combobox,
   ComboboxMulti,
   ComboboxMultiInput,
+  ComboboxMultiOption,
   ComboboxOption,
   ComboboxList,
   ComboboxInput,
@@ -34,10 +35,18 @@ export function ComboboxDemo() {
   function handleChange(newOption: any) {
     setOption(newOption)
   }
-  // const [options, setOptions] = React.useState([{ value: 'Bananas' }])
-  // function handleMultiChange(newOptions: any) {
-  //   setOptions(newOptions)
-  // }
+  const [options, setOptions] = React.useState([{ value: 'Bananas' }])
+  function handleMultiChange(newOptions: any) {
+    setOptions(newOptions)
+  }
+  // const [values, setValues] = React.useState(['Bananas'])
+  function handleInputMultiChange(newValues: string[]) {
+    const lastValue = newValues[newValues.length - 1]
+    if (!options.find(option => option.value === lastValue)) {
+      setOptions([...options, { value: lastValue }])
+    }
+  }
+  const values = options.map(option => option.value)
 
   return (
     <Box p="large">
@@ -51,14 +60,14 @@ export function ComboboxDemo() {
           <ComboboxOption value="Pineapples" />
         </ComboboxList>
       </Combobox>
-      <ComboboxMulti width={300}>
-        <ComboboxMultiInput />
+      <ComboboxMulti width={300} values={options} onChange={handleMultiChange}>
+        <ComboboxMultiInput values={values} onChange={handleInputMultiChange} />
         <ComboboxList>
-          <ComboboxOption value="Apples" />
-          <ComboboxOption value="Oranges" />
-          <ComboboxOption value="Grapes" />
-          <ComboboxOption value="Bananas" />
-          <ComboboxOption value="Pineapples" />
+          <ComboboxMultiOption value="Apples" />
+          <ComboboxMultiOption value="Oranges" />
+          <ComboboxMultiOption value="Grapes" />
+          <ComboboxMultiOption value="Bananas" />
+          <ComboboxMultiOption value="Pineapples" />
         </ComboboxList>
       </ComboboxMulti>
     </Box>

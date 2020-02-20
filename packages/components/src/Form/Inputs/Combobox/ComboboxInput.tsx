@@ -42,10 +42,12 @@ import styled from 'styled-components'
 import { useMouseDownClick, useForkedRef, useWrapEvent } from '../../../utils'
 import { InputSearch, InputSearchProps } from '../InputSearch'
 import { InputText } from '../InputText'
-import { makeHash, useBlur, useKeyDown } from './helpers'
+import { makeHash } from './utils/makeHash'
+import { useBlur } from './utils/useBlur'
+import { useKeyDown } from './utils/useKeyDown'
 import { ComboboxContext } from './ComboboxContext'
-import { getComboboxText } from './ComboboxOption'
-import { ComboboxActionType, ComboboxState } from './state'
+import { ComboboxActionType, ComboboxState } from './utils/state'
+import { getComboboxText } from './utils/getComboboxText'
 
 export interface ComboboxInputProps
   extends Omit<InputSearchProps, 'autoComplete'> {

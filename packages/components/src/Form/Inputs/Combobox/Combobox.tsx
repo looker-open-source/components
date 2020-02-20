@@ -38,10 +38,15 @@ import React, { forwardRef, useRef, useState, Ref, useEffect } from 'react'
 import styled from 'styled-components'
 import { useID, useCallbackRef, useForkedRef } from '../../../utils'
 import { Box } from '../../../Layout/Box'
-import { useFocusManagement } from './helpers'
-import { useReducerMachine, ComboboxActionType, ComboboxState } from './state'
+import { useFocusManagement } from './utils/useFocusManagement'
+import {
+  useReducerMachine,
+  ComboboxActionType,
+  ComboboxState,
+} from './utils/state'
 import { ComboboxContext, defaultData } from './ComboboxContext'
-import { ComboboxOptionObject, getComboboxText } from './ComboboxOption'
+import { ComboboxOptionObject } from './ComboboxOption'
+import { getComboboxText } from './utils/getComboboxText'
 
 const visibleStates = [
   ComboboxState.SUGGESTING,

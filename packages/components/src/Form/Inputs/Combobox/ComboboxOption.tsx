@@ -42,19 +42,26 @@ import {
   TypographyProps,
 } from '@looker/design-tokens'
 import omit from 'lodash/omit'
-import React, { forwardRef, useEffect, useRef, useContext, Ref } from 'react'
+import React, { Context, forwardRef, useContext, Ref } from 'react'
 import styled, { css } from 'styled-components'
 import { useWrapEvent } from '../../../utils'
 import { Icon } from '../../../Icon'
-import { makeHash } from './helpers'
+import { makeHash } from './utils/makeHash'
 import {
   OptionContext,
   ComboboxContext,
-  ComboboxMultiContext,
+  ComboboxContextProps,
+  ComboboxMultiContextProps,
 } from './ComboboxContext'
-import { ComboboxActionType, ComboboxData, ComboboxMultiData } from './state'
+import { ComboboxActionType, ComboboxMultiData } from './utils/state'
 import { OnComboboxChange } from './Combobox'
 import { OnComboboxMultiChange } from './ComboboxMulti'
+import { getComboboxText } from './utils/getComboboxText'
+import {
+  ComboboxOptionStatuses,
+  useOptionStatus,
+} from './utils/useOptionStatus'
+import { useAddOptionToContext } from './utils/useAddOptionToContext'
 
 export interface ComboboxOptionObject {
   /**
@@ -65,21 +72,6 @@ export interface ComboboxOptionObject {
    * The value to match against when suggesting.
    */
   value: string
-}
-
-export function getComboboxText(
-  value?: string | ComboboxOptionObject,
-  options?: ComboboxOptionObject[]
-): string {
-  if (!value) return ''
-  if (typeof value === 'string') {
-    if (options && options.length > 0) {
-      const currentOption = options.find(option => option.value === value)
-      return getComboboxText(currentOption)
-    }
-    return value
-  }
-  return value.label || value.value
 }
 
 export interface ComboboxOptionProps
@@ -105,70 +97,20 @@ export interface ComboboxOptionProps
   children?: React.ReactNode
 }
 
-export const ComboboxOptionDetail = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 20px;
-  height: 20px;
-`
-
-const ComboboxOptionInternal = forwardRef(function ComboboxOption(
-  {
-    children,
-    label,
-    value,
-    onClick,
-    onMouseEnter,
-    ...props
-  }: ComboboxOptionProps,
-  forwardedRef: Ref<HTMLLIElement>
-) {
-  const context = useContext(ComboboxContext)
-  const contextMulti = useContext(ComboboxMultiContext)
-  const contextToUse = context.transition ? context : contextMulti
-  const { data, onChange, transition, optionsRef } = contextToUse
-  const { navigationOption } = data
-
-  const contextOption = (data as ComboboxData).option
-  const contextOptions = (data as ComboboxMultiData).options
-  const options = contextOption ? [contextOption] : contextOptions || []
-
-  const indexRef = useRef<number>(-1)
-
-  useEffect(() => {
-    const option = { label, value }
-    const optionsRefCurrent = optionsRef && optionsRef.current
-    if (optionsRefCurrent) {
-      // Was this option already in the list?
-      // If so, re-insert it at the same spot
-      if (indexRef.current > -1) {
-        optionsRefCurrent.splice(indexRef.current, 0, option)
-      } else {
-        optionsRefCurrent.push(option)
-      }
-    }
-    return () => {
-      // Delete option from the array but save the index so it can be re-inserted there
-      if (optionsRefCurrent) {
-        const index = optionsRefCurrent.indexOf(option)
-        indexRef.current = index
-        optionsRefCurrent.splice(index, 1)
-      }
-    }
-  }, [value, label, optionsRef])
-
-  const isActive = navigationOption && navigationOption.value === value
-  const isCurrent = options.find(option => option.value === value)
+export function useOptionEvents<
+  CProps extends ComboboxContextProps | ComboboxMultiContextProps
+>(context: Context<CProps>, props: ComboboxOptionProps) {
+  const { label, value, onClick, onMouseEnter } = props
+  const { data, onChange, transition } = useContext(context)
+  const { options } = data as ComboboxMultiData
 
   function handleClick() {
     const option = { label, value }
     if (onChange) {
-      if (context.transition) {
-        ;(onChange as OnComboboxChange)(option)
+      if (options) {
+        ;(onChange as OnComboboxMultiChange)([...options, option])
       } else {
-        const newOptions = [...options, option]
-        ;(onChange as OnComboboxMultiChange)(newOptions)
+        ;(onChange as OnComboboxChange)(option)
       }
     }
     transition && transition(ComboboxActionType.SELECT_WITH_CLICK, { option })
@@ -179,13 +121,35 @@ const ComboboxOptionInternal = forwardRef(function ComboboxOption(
     transition && transition(ComboboxActionType.NAVIGATE, { option })
   }
 
-  const wrappedOnClick = useWrapEvent(handleClick, onClick)
-  const wrappedOnMouseEnter = useWrapEvent(handleMouseEnter, onMouseEnter)
+  return {
+    onClick: useWrapEvent(handleClick, onClick),
+    onMouseEnter: useWrapEvent(handleMouseEnter, onMouseEnter),
+  }
+}
 
-  return (
+export const ComboboxOptionDetail = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+`
+
+export const ComboboxOptionWrapper = forwardRef(
+  (
+    {
+      children,
+      isActive,
+      isSelected,
+      label,
+      value,
+      ...rest
+    }: ComboboxOptionProps & ComboboxOptionStatuses,
+    forwardedRef: Ref<HTMLLIElement>
+  ) => (
     <OptionContext.Provider value={{ label, value }}>
       <li
-        {...omit(props, 'color')}
+        {...omit(rest, 'color')}
         ref={forwardedRef}
         id={String(makeHash(value))}
         role="option"
@@ -194,17 +158,42 @@ const ComboboxOptionInternal = forwardRef(function ComboboxOption(
         // element can be `document.activeElement` and then our focus checks in
         // onBlur will work as intended
         tabIndex={-1}
-        onClick={wrappedOnClick}
-        onMouseEnter={wrappedOnMouseEnter}
       >
         <ComboboxOptionDetail>
-          {isCurrent && <Icon name="Check" mr="xxsmall" size={16} />}
+          {isSelected && <Icon name="Check" mr="xxsmall" size={16} />}
         </ComboboxOptionDetail>
         {children || <ComboboxOptionText />}
       </li>
     </OptionContext.Provider>
   )
-})
+)
+
+ComboboxOptionWrapper.displayName = 'ComboboxOptionWrapper'
+
+const ComboboxOptionInternal = forwardRef(
+  (props: ComboboxOptionProps, forwardedRef: Ref<HTMLLIElement>) => {
+    const { label, value } = props
+
+    useAddOptionToContext<ComboboxContextProps>(ComboboxContext, value, label)
+    const optionEvents = useOptionEvents<ComboboxContextProps>(
+      ComboboxContext,
+      props
+    )
+    const statuses = useOptionStatus<ComboboxContextProps>(
+      ComboboxContext,
+      value
+    )
+
+    return (
+      <ComboboxOptionWrapper
+        {...props}
+        {...optionEvents}
+        {...statuses}
+        ref={forwardedRef}
+      />
+    )
+  }
+)
 
 ComboboxOptionInternal.displayName = 'ComboboxOptionInternal'
 
@@ -214,7 +203,7 @@ export const comboboxOptionGrid = css`
   grid-template-columns: ${props => props.theme.space.medium} 1fr;
 `
 
-export const ComboboxOption = styled(ComboboxOptionInternal)`
+export const comboboxOptionStyle = css`
   ${reset}
   ${color}
   ${flexbox}
@@ -233,13 +222,18 @@ export const ComboboxOption = styled(ComboboxOptionInternal)`
   }
 `
 
-ComboboxOption.defaultProps = {
+export const ComboboxOption = styled(ComboboxOptionInternal)`
+  ${comboboxOptionStyle}
+`
+export const comboboxOptionDefaultProps: Partial<ComboboxOptionProps> = {
   color: 'palette.charcoal700',
   display: 'flex',
   fontSize: 'small',
   px: 'xsmall',
   py: 'xxsmall',
 }
+
+ComboboxOption.defaultProps = comboboxOptionDefaultProps
 
 // ComboboxOptionText
 

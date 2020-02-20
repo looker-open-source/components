@@ -42,15 +42,17 @@ import styled from 'styled-components'
 import { useMouseDownClick, useForkedRef, useWrapEvent } from '../../../utils'
 import { InputChips, InputChipsProps } from '../InputChips'
 import { InputText } from '../InputText'
-import { makeHash, useBlur, useKeyDown } from './helpers'
+import { makeHash } from './utils/makeHash'
+import { useBlur } from './utils/useBlur'
+import { useKeyDown } from './utils/useKeyDown'
 import { ComboboxMultiContext } from './ComboboxContext'
 import {
   indicatorPadding,
   indicatorSize,
   selectIndicatorBG,
 } from './ComboboxInput'
-import { getComboboxText } from './ComboboxOption'
-import { ComboboxActionType, ComboboxState } from './state'
+import { getComboboxText } from './utils/getComboboxText'
+import { ComboboxActionType, ComboboxState } from './utils/state'
 
 export interface ComboboxMultiInputProps
   extends Omit<InputChipsProps, 'autoComplete' | 'values' | 'onChange'> {

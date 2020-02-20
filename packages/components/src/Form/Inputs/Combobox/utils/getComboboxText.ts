@@ -1,8 +1,10 @@
+import { ComboboxOptionObject } from '../ComboboxOption'
+
 /*
 
  MIT License
 
- Copyright (c) 2020 Looker Data Sciences, Inc.
+ Copyright (c) 2019 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -24,11 +26,17 @@
 
  */
 
-export * from './Combobox'
-export * from './ComboboxMulti'
-export * from './ComboboxMultiInput'
-export * from './ComboboxMultiOption'
-export * from './ComboboxContext'
-export * from './ComboboxInput'
-export * from './ComboboxList'
-export * from './ComboboxOption'
+export function getComboboxText(
+  value?: string | ComboboxOptionObject,
+  options?: ComboboxOptionObject[]
+): string {
+  if (!value) return ''
+  if (typeof value === 'string') {
+    if (options && options.length > 0) {
+      const currentOption = options.find(option => option.value === value)
+      return getComboboxText(currentOption)
+    }
+    return value
+  }
+  return value.label || value.value
+}

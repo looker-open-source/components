@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2020 Looker Data Sciences, Inc.
+ Copyright (c) 2019 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -24,11 +24,33 @@
 
  */
 
-export * from './Combobox'
-export * from './ComboboxMulti'
-export * from './ComboboxMultiInput'
-export * from './ComboboxMultiOption'
-export * from './ComboboxContext'
-export * from './ComboboxInput'
-export * from './ComboboxList'
-export * from './ComboboxOption'
+import { Context, useContext } from 'react'
+import {
+  ComboboxContextProps,
+  ComboboxMultiContextProps,
+} from '../ComboboxContext'
+import { ComboboxData, ComboboxMultiData } from './state'
+
+export interface ComboboxOptionStatuses {
+  isActive: boolean
+  isSelected: boolean
+}
+
+export function useOptionStatus<
+  CProps extends ComboboxContextProps | ComboboxMultiContextProps
+>(context: Context<CProps>, value: string): ComboboxOptionStatuses {
+  const { data } = useContext(context)
+  const { navigationOption } = data
+  const isActive = navigationOption ? navigationOption.value === value : false
+
+  const contextOption = (data as ComboboxData).option
+  const contextOptions = (data as ComboboxMultiData).options
+  const options = contextOption ? [contextOption] : contextOptions || []
+  const isSelected =
+    options.find(option => option.value === value) !== undefined
+
+  return {
+    isActive,
+    isSelected,
+  }
+}

@@ -28,7 +28,8 @@
 // because their work is fantastic (but is not in TypeScript)
 
 import { Reducer, useReducer, useState } from 'react'
-import { ComboboxOptionObject, getComboboxText } from './ComboboxOption'
+import { ComboboxOptionObject } from '../ComboboxOption'
+import { getComboboxText } from './getComboboxText'
 
 export enum ComboboxState {
   // Nothing going on, waiting for the user to type or use the arrow keys
@@ -107,6 +108,8 @@ export interface ComboboxActionPayload {
 
 export interface ComboboxMultiActionPayload extends ComboboxActionPayload {
   inputValues?: string[]
+  // only for SELECT_SILENT
+  options?: ComboboxOptionObject[]
 }
 
 export type ComboboxActionWithPayload = ComboboxAction & ComboboxActionPayload
@@ -313,12 +316,11 @@ const reducerMulti: Reducer<
       return {
         ...nextState,
         inputValue: '',
-        inputValues: [...nextState.inputValues, getComboboxText(action.option)],
+        inputValues: action.options
+          ? action.options.map(option => getComboboxText(option))
+          : [],
         navigationOption: undefined,
-        options: [
-          ...nextState.options,
-          ...(action.option ? [action.option] : []),
-        ],
+        options: action.options || [],
       }
     case ComboboxActionType.SELECT_WITH_KEYBOARD:
       return {

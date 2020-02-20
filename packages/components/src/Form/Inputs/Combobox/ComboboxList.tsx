@@ -39,8 +39,9 @@ import React, { forwardRef, Ref, useContext, useLayoutEffect } from 'react'
 import styled from 'styled-components'
 import { PopoverContent, usePopover } from '../../../Popover'
 import { ComboboxContext, ComboboxMultiContext } from './ComboboxContext'
-import { useKeyDown, useBlur } from './helpers'
-import { ComboboxActionType } from './state'
+import { useBlur } from './utils/useBlur'
+import { useKeyDown } from './utils/useKeyDown'
+import { ComboboxActionType } from './utils/state'
 
 export interface ComboboxListProps
   extends SpaceProps,

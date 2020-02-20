@@ -33,15 +33,16 @@ import React, { forwardRef, useRef, useState, Ref, useEffect } from 'react'
 import styled from 'styled-components'
 import { useID, useCallbackRef, useForkedRef } from '../../../utils'
 import { Box } from '../../../Layout/Box'
-import { useFocusManagement } from './helpers'
+import { useFocusManagement } from './utils/useFocusManagement'
 import {
   useReducerMultiMachine,
   ComboboxActionType,
   ComboboxMultiData,
-} from './state'
+} from './utils/state'
 import { ComboboxMultiContext, defaultMultiData } from './ComboboxContext'
-import { ComboboxOptionObject, getComboboxText } from './ComboboxOption'
+import { ComboboxOptionObject } from './ComboboxOption'
 import { ComboboxBaseProps, getIsVisible } from './Combobox'
+import { getComboboxText } from './utils/getComboboxText'
 
 function compareOptions(
   optionsA: ComboboxOptionObject[],
@@ -159,7 +160,7 @@ export const ComboboxMultiInternal = forwardRef(function Combobox(
 
   if (
     values !== undefined &&
-    (options.length === 0 || compareOptions(options, values, every))
+    (options.length === 0 || !compareOptions(options, values, every))
   ) {
     transition &&
       transition(ComboboxActionType.SELECT_SILENT, {

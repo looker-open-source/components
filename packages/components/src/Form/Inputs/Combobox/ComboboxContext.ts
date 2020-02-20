@@ -32,7 +32,7 @@ import {
   ComboboxTransition,
   ComboboxState,
   ComboboxMultiActionPayload,
-} from './state'
+} from './utils/state'
 import { ComboboxOptionObject } from './ComboboxOption'
 import { OnComboboxChange } from './Combobox'
 import { OnComboboxMultiChange } from './ComboboxMulti'
