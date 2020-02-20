@@ -24,8 +24,7 @@
 
  */
 
-import { WidthProperty } from 'csstype'
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, ReactNode } from 'react'
 import styled, { css } from 'styled-components'
 import { ResponsiveValue, TLengthStyledSystem } from 'styled-system'
 import {
@@ -39,22 +38,24 @@ import pick from 'lodash/pick'
 import { FlexItem } from '../../Layout/FlexItem'
 import { FormControl, FormControlDirections } from '../FormControl/FormControl'
 import { Label } from '../Label/Label'
+import { Text } from '../../Text/Text'
+import { Paragraph } from '../../Text/Paragraph'
 import {
   ValidationMessage,
   ValidationMessageProps,
 } from '../ValidationMessage/ValidationMessage'
+import { Flex } from '../../Layout'
+import { InputText, Select } from '../Inputs'
 
 type ResponsiveSpaceValue = ResponsiveValue<TLengthStyledSystem>
 
 export interface CustomizableFieldAttributesInterface
   extends CustomizableAttributes {
   labelMargin: SpacingSizes
-  labelWidth: ResponsiveValue<WidthProperty<TLengthStyledSystem>>
 }
 
 export const CustomizableFieldAttributes: CustomizableFieldAttributesInterface = {
   labelMargin: 'xsmall',
-  labelWidth: '20%',
 }
 
 export interface FieldProps {
@@ -66,6 +67,14 @@ export interface FieldProps {
    * Determines where to place the validation message in relation to the input.
    */
   alignValidationMessage?: FormControlDirections
+  /*
+   * optional extra description
+   */
+  description?: ReactNode
+  /**
+   * notes and details added to the top right corner of the field
+   */
+  detail?: ReactNode
   /**
    * Id of the input element to match a label to.
    */
@@ -96,17 +105,25 @@ export interface FieldProps {
    * Holds the type of validation (error, warning, etc.) and corresponding message.
    */
   validationMessage?: ValidationMessageProps
+  /**
+   *
+   * Specify the width of the FieldText if different then 13rem
+   */
+  width?: ResponsiveSpaceValue
 }
 
 export const fieldPropKeys = [
   'alignLabel',
   'alignValidationMessage',
+  'description',
+  'detail',
   'id',
   'label',
   'labelFontSize',
   'labelFontWeight',
   'labelWidth',
   'validationMessage',
+  'width',
 ]
 
 export const pickFieldProps = (props: FieldProps) =>
@@ -119,8 +136,9 @@ const RequiredStar = styled(props => (
     *
   </span>
 ))`
-  color: ${props => props.theme.colors.semanticColors.danger.darker};
+  color: ${props => props.theme.colors.palette.red500};
 `
+
 const handleHorizontalAlignment = (props: FieldProps) => {
   const { alignLabel, labelWidth } = props
   const width = labelWidth || CustomizableFieldAttributes.labelWidth
@@ -170,20 +188,30 @@ const getValidationMessageAlignment = (
 const FieldComponent: FunctionComponent<FieldProps> = ({
   alignValidationMessage,
   children,
+  description,
+  detail,
   id,
   label,
   labelFontSize,
   labelFontWeight,
   required,
   validationMessage,
+  width,
   ...props
 }) => {
   return (
     <FormControl mb="xsmall" {...props}>
-      <Label htmlFor={id} fontWeight={labelFontWeight} fontSize={labelFontSize}>
-        {label}
-        {required && <RequiredStar />}
-      </Label>
+      <Flex alignItems="left" justifyContent="space-between" width={width}>
+        <Label
+          htmlFor={id}
+          fontWeight={labelFontWeight}
+          fontSize={labelFontSize}
+        >
+          {label}
+          {required && <RequiredStar />}
+        </Label>
+        {detail && <Text fontSize="xsmall">{detail}</Text>}
+      </Flex>
       <FormControl
         alignLabel={getValidationMessageAlignment(alignValidationMessage)}
         mb="xsmall"
@@ -196,11 +224,26 @@ const FieldComponent: FunctionComponent<FieldProps> = ({
           />
         ) : null}
       </FormControl>
+      {description && (
+        <Paragraph mt="none" fontSize="xsmall">
+          {description}
+        </Paragraph>
+      )}
     </FormControl>
   )
 }
 
 export const Field = styled(FieldComponent)`
+  width: ${props => props.width};
+
+  ${InputText} {
+    width: 100%;
+  }
+
+  ${Select} {
+    width: 100%;
+  }
+
   ${Label} {
     ${handleHorizontalAlignment}
   }
