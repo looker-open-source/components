@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InlineInputText renders an input with the correct styling 1`] = `
+.c1 {
+  background: transparent;
+  border: none;
+  border-bottom: 1px dashed;
+  border-bottom-color: #C1C6CC;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  text-transform: inherit;
+  width: 100%;
+}
+
+.c1:focus,
+.c1:hover {
+  outline: none;
+  border-bottom-color: #6C43E0;
+  background-color: #F5F6F7;
+}
+
+.c1:focus {
+  border-bottom-style: solid;
+}
+
+.c2 {
+  height: 0;
+  overflow: hidden;
+  white-space: pre-wrap;
+  padding: 0 1px;
+}
+
+.c0 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+<span
+  className="c0"
+>
+  <input
+    className="c1"
+    onChange={[Function]}
+    size={1}
+    title="type something"
+    type="text"
+    value=""
+  />
+  <span
+    className="c2"
+  >
+    
+  </span>
+</span>
+`;

@@ -153,6 +153,7 @@ const components: NavigationSection = {
         { title: 'DateTimeFormat', path: 'date-time-format' },
         { title: 'Divider', path: 'divider' },
         { title: 'Icon', path: 'icon' },
+        { title: 'InlineInputText', path: 'inline-input-text' },
         { title: 'List', path: 'list' },
         { title: 'Spinner', path: 'spinner' },
         { title: 'Swatch', path: 'swatch' },
