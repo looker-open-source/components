@@ -39,7 +39,7 @@ import { ComboboxActionType, ComboboxState } from './utils/state'
 import { useInputEvents } from './utils/useInputEvents'
 import { useInputPropRefs } from './utils/useInputPropRefs'
 
-export interface ComboboxInputPropsCommon {
+export interface ComboboxInputCommonProps {
   /**
    * If true, when the user clicks inside the text box the current value will
    * be selected. Use this if the user is likely to delete all the text anyway
@@ -65,7 +65,7 @@ export interface ComboboxInputPropsCommon {
 
 export interface ComboboxInputProps
   extends Omit<InputSearchProps, 'autoComplete'>,
-    ComboboxInputPropsCommon {}
+    ComboboxInputCommonProps {}
 
 export const ComboboxInputInternal = forwardRef(function ComboboxInput(
   props: ComboboxInputProps,
@@ -206,7 +206,7 @@ export const selectIndicatorBG = (color: string) =>
     indicatorRaw.replace('currentColor', color)
   )}')`
 
-export const comboboxStyles = css<ComboboxInputProps>`
+export const comboboxStyles = css<{ disabled?: boolean; readOnly?: boolean }>`
   background-image: ${props => {
     const color = props.disabled
       ? props.theme.colors.palette.charcoal300

@@ -5,7 +5,8 @@ import { useControlWarn } from '../../../utils'
 import {
   InputChipsBase,
   InputChipsCommonProps,
-  InputChipsInputValueControlProps,
+  InputChipsControlProps,
+  InputChipsInputControlProps,
 } from './InputChipsBase'
 
 /**
@@ -15,7 +16,8 @@ import {
 
 export interface InputChipsProps
   extends Omit<InputChipsCommonProps, 'onInvalid'>,
-    Partial<InputChipsInputValueControlProps> {
+    InputChipsControlProps,
+    Partial<InputChipsInputControlProps> {
   /**
    * for checking each value before converting to a chip
    */

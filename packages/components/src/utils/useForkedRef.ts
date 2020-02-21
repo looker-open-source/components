@@ -46,9 +46,6 @@ function assignRef<E extends HTMLElement>(ref: RefToFork<E>, value: E | null) {
 
 export function useForkedRef<E extends HTMLElement>(...refs: RefToFork<E>[]) {
   return useMemo(() => {
-    if (refs.every((ref: RefToFork<E>) => !ref)) {
-      return null
-    }
     return (node: E | null) => {
       refs.forEach(ref => {
         assignRef(ref, node)

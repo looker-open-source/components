@@ -6,7 +6,7 @@ import { Chip } from '../../../Chip'
 import { InputText } from '../InputText'
 import { InputSearch, InputSearchProps } from '../InputSearch'
 
-export interface InputChipsInputValueControlProps {
+export interface InputChipsInputControlProps {
   /**
    * for controlling the input text
    */
@@ -17,9 +17,7 @@ export interface InputChipsInputValueControlProps {
   onInputChange: (value: string) => void
 }
 
-export interface InputChipsCommonProps
-  extends Omit<InputSearchProps, 'value' | 'defaultValue' | 'onChange'>,
-    MaxHeightProps {
+export interface InputChipsControlProps {
   /**
    * InputChips is a controlled component since unlike native inputs,
    * you can't easily access the current value via dom API
@@ -32,9 +30,14 @@ export interface InputChipsCommonProps
   onChange: (values: string[]) => void
 }
 
+export interface InputChipsCommonProps
+  extends Omit<InputSearchProps, 'value' | 'defaultValue' | 'onChange'>,
+    MaxHeightProps {}
+
 export interface InputChipsBaseProps
   extends InputChipsCommonProps,
-    InputChipsInputValueControlProps {}
+    InputChipsControlProps,
+    InputChipsInputControlProps {}
 
 export const InputChipsBaseInternal = forwardRef(
   (
@@ -45,7 +48,7 @@ export const InputChipsBaseInternal = forwardRef(
       inputValue,
       onInputChange,
       ...props
-    }: InputChipsBaseProps & InputChipsInputValueControlProps,
+    }: InputChipsBaseProps & InputChipsInputControlProps,
     ref: Ref<HTMLInputElement>
   ) => {
     function handleDeleteChip(value: string) {

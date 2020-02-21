@@ -27,17 +27,16 @@
 // Much of the following is pulled from https://github.com/reach/reach-ui
 // because their work is fantastic (but is not in TypeScript)
 
-import isEqual from 'lodash/isEqual'
 import React, { forwardRef, useRef, useContext, Ref, useCallback } from 'react'
 import styled from 'styled-components'
 import { useForkedRef, useWrapEvent } from '../../../utils'
 import {
   InputChipsBase,
   InputChipsCommonProps,
-  InputChipsInputValueControlProps,
+  InputChipsInputControlProps,
 } from '../InputChips'
 import { ComboboxMultiContext } from './ComboboxContext'
-import { ComboboxInputPropsCommon, comboboxStyles } from './ComboboxInput'
+import { ComboboxInputCommonProps, comboboxStyles } from './ComboboxInput'
 import { getComboboxText } from './utils/getComboboxText'
 import { makeHash } from './utils/makeHash'
 import { ComboboxActionType, ComboboxState } from './utils/state'
@@ -46,8 +45,8 @@ import { useInputPropRefs } from './utils/useInputPropRefs'
 
 export interface ComboboxMultiInputProps
   extends Omit<InputChipsCommonProps, 'autoComplete'>,
-    Partial<InputChipsInputValueControlProps>,
-    ComboboxInputPropsCommon {}
+    ComboboxInputCommonProps,
+    Partial<InputChipsInputControlProps> {}
 
 export const ComboboxMultiInputInternal = forwardRef(
   (props: ComboboxMultiInputProps, forwardedRef: Ref<HTMLInputElement>) => {
@@ -58,11 +57,9 @@ export const ComboboxMultiInputInternal = forwardRef(
 
       // wrapped events
       onClear,
-      onChange,
       onInputChange,
 
       // might be controlled
-      values: controlledValues,
       inputValue: controlledInputValue,
       ...rest
     } = props
@@ -88,18 +85,20 @@ export const ComboboxMultiInputInternal = forwardRef(
       contextOnChange && contextOnChange([])
     }
 
+    // only called when user removes chips from the input
+    function handleChange(values: string[]) {
+      transition &&
+        transition(ComboboxActionType.CHANGE_VALUES, { inputValues: values })
+      const newOptions = options.filter(
+        option => values.indexOf(getComboboxText(option)) > -1
+      )
+      contextOnChange && contextOnChange(newOptions)
+    }
+
     const handleInputValueChange = useCallback(
       (value: string) => {
         transition &&
           transition(ComboboxActionType.CHANGE, { inputValue: value })
-      },
-      [transition]
-    )
-
-    const handleValuesChange = useCallback(
-      (values: string[]) => {
-        transition &&
-          transition(ComboboxActionType.ENTER_VALUES, { inputValues: values })
       },
       [transition]
     )
@@ -110,22 +109,6 @@ export const ComboboxMultiInputInternal = forwardRef(
     // If they are controlling the value we still need to do our transitions, so
     // we have this derived state to emulate onChange of the input as we receive
     // new `value`s ...[*]
-    if (
-      controlledValues !== undefined &&
-      contextInputValues &&
-      !isEqual(controlledValues, contextInputValues)
-    ) {
-      if (isInputting.current) {
-        handleValuesChange(controlledValues)
-      } else {
-        // this is most likely the initial value so we want to
-        // update the value without transitioning to suggesting
-        transition &&
-          transition(ComboboxActionType.CHANGE_SILENT, {
-            inputValues: controlledValues,
-          })
-      }
-    }
     if (
       controlledInputValue !== undefined &&
       contextInputValue &&
@@ -143,7 +126,7 @@ export const ComboboxMultiInputInternal = forwardRef(
       }
     }
 
-    const isControlled = controlledValues !== undefined
+    const isControlled = controlledInputValue !== undefined
     // [*]... and when controlled, we don't trigger handleValueChange as the user
     // types, instead the developer controls it with the normal input onChange
     // prop
@@ -158,20 +141,6 @@ export const ComboboxMultiInputInternal = forwardRef(
         })
       },
       [handleInputValueChange, isControlled]
-    )
-
-    // called when user removes chips from the input
-    const handleChange = useCallback(
-      (values: string[]) => {
-        isInputting.current = true
-        if (!isControlled) {
-          handleValuesChange(values)
-        }
-        requestAnimationFrame(() => {
-          isInputting.current = false
-        })
-      },
-      [handleValuesChange, isControlled]
     )
 
     const inputValues =
@@ -192,13 +161,6 @@ export const ComboboxMultiInputInternal = forwardRef(
     }
 
     const wrappedOnClear = useWrapEvent(handleClear, onClear)
-    const wrappedOnChange = useCallback(
-      (values: string[]) => {
-        handleChange(values)
-        onChange && onChange(values)
-      },
-      [handleChange, onChange]
-    )
     const wrappedOnInputChange = useCallback(
       (value: string) => {
         handleInputChange(value)
@@ -218,7 +180,7 @@ export const ComboboxMultiInputInternal = forwardRef(
         ref={ref}
         readOnly={readOnly}
         values={inputValues}
-        onChange={wrappedOnChange}
+        onChange={handleChange}
         onClear={wrappedOnClear}
         inputValue={inputValue}
         onInputChange={wrappedOnInputChange}

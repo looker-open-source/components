@@ -57,7 +57,7 @@ export enum ComboboxActionType {
   CHANGE_SILENT = 'CHANGE_SILENT',
 
   // Used for ComboboxMultiInput when the InputChips registered entered values (comma, enter)
-  ENTER_VALUES = 'ENTER_VALUES',
+  CHANGE_VALUES = 'CHANGE_VALUES',
 
   // User is navigating w/ the keyboard
   NAVIGATE = 'NAVIGATE',
@@ -139,7 +139,7 @@ export const stateChart: StateChart = {
         [ComboboxActionType.CLEAR]: ComboboxState.IDLE,
         [ComboboxActionType.CHANGE]: ComboboxState.SUGGESTING,
         [ComboboxActionType.CHANGE_SILENT]: ComboboxState.IDLE,
-        [ComboboxActionType.ENTER_VALUES]: ComboboxState.IDLE,
+        [ComboboxActionType.CHANGE_VALUES]: ComboboxState.IDLE,
         [ComboboxActionType.FOCUS]: ComboboxState.SUGGESTING,
         [ComboboxActionType.NAVIGATE]: ComboboxState.NAVIGATING,
         [ComboboxActionType.SELECT_SILENT]: ComboboxState.IDLE,
@@ -149,7 +149,7 @@ export const stateChart: StateChart = {
       on: {
         [ComboboxActionType.CHANGE]: ComboboxState.SUGGESTING,
         [ComboboxActionType.CHANGE_SILENT]: ComboboxState.SUGGESTING,
-        [ComboboxActionType.ENTER_VALUES]: ComboboxState.IDLE,
+        [ComboboxActionType.CHANGE_VALUES]: ComboboxState.IDLE,
         [ComboboxActionType.FOCUS]: ComboboxState.SUGGESTING,
         [ComboboxActionType.NAVIGATE]: ComboboxState.NAVIGATING,
         [ComboboxActionType.CLEAR]: ComboboxState.IDLE,
@@ -164,7 +164,7 @@ export const stateChart: StateChart = {
       on: {
         [ComboboxActionType.CHANGE]: ComboboxState.SUGGESTING,
         [ComboboxActionType.CHANGE_SILENT]: ComboboxState.NAVIGATING,
-        [ComboboxActionType.ENTER_VALUES]: ComboboxState.IDLE,
+        [ComboboxActionType.CHANGE_VALUES]: ComboboxState.IDLE,
         [ComboboxActionType.FOCUS]: ComboboxState.SUGGESTING,
         [ComboboxActionType.CLEAR]: ComboboxState.IDLE,
         [ComboboxActionType.BLUR]: ComboboxState.IDLE,
@@ -180,7 +180,7 @@ export const stateChart: StateChart = {
       on: {
         [ComboboxActionType.CHANGE]: ComboboxState.SUGGESTING,
         [ComboboxActionType.CHANGE_SILENT]: ComboboxState.SUGGESTING,
-        [ComboboxActionType.ENTER_VALUES]: ComboboxState.IDLE,
+        [ComboboxActionType.CHANGE_VALUES]: ComboboxState.IDLE,
         [ComboboxActionType.FOCUS]: ComboboxState.SUGGESTING,
         [ComboboxActionType.BLUR]: ComboboxState.IDLE,
         [ComboboxActionType.ESCAPE]: ComboboxState.IDLE,
@@ -284,12 +284,16 @@ const reducerMulti: Reducer<
         inputValues: nextState.inputValues,
         navigationOption: undefined,
       }
-    case ComboboxActionType.ENTER_VALUES:
+    case ComboboxActionType.CHANGE_VALUES:
       return {
         ...nextState,
-        inputValue: action.inputValue,
         inputValues: action.inputValues || [],
         navigationOption: undefined,
+        options: nextState.options.filter(
+          option =>
+            action.inputValues &&
+            action.inputValues.indexOf(getComboboxText(option)) > -1
+        ),
       }
     case ComboboxActionType.NAVIGATE:
       return {
@@ -312,6 +316,16 @@ const reducerMulti: Reducer<
         navigationOption: undefined,
       }
     case ComboboxActionType.SELECT_WITH_CLICK:
+      return {
+        ...nextState,
+        inputValue: '',
+        inputValues: [...nextState.inputValues, getComboboxText(action.option)],
+        navigationOption: undefined,
+        options: [
+          ...nextState.options,
+          ...(action.option ? [action.option] : []),
+        ],
+      }
     case ComboboxActionType.SELECT_SILENT:
       return {
         ...nextState,

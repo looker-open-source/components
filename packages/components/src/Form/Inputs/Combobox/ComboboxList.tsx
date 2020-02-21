@@ -36,7 +36,7 @@ import {
   TypographyProps,
 } from '@looker/design-tokens'
 import React, { forwardRef, Ref, useContext, useLayoutEffect } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { PopoverContent, usePopover } from '../../../Popover'
 import { ComboboxContext, ComboboxMultiContext } from './ComboboxContext'
 import { useBlur } from './utils/useBlur'
@@ -61,90 +61,109 @@ export interface ComboboxListProps
   persistSelection?: boolean
 }
 
-const ComboboxListInternal = forwardRef(function ComboboxList(
-  {
-    // when true, and the list opens again, the option with a matching value will be
-    // automatically highlighted.
-    persistSelection = false,
-    ...props
-  }: ComboboxListProps,
-  forwardedRef: Ref<HTMLUListElement>
-) {
-  const context = useContext(ComboboxContext)
-  const contextMulti = useContext(ComboboxMultiContext)
-  const contextToUse = context.transition ? context : contextMulti
-  const {
-    persistSelectionRef,
-    transition,
-    wrapperElement,
-    isVisible,
-    optionsRef,
-    popoverRef,
-  } = contextToUse
+interface ComboboxListInternalProps extends ComboboxListProps {
+  isMulti: boolean
+}
 
-  if (persistSelection) {
-    if (persistSelectionRef) persistSelectionRef.current = true
-  }
+const ComboboxListInternal = forwardRef(
+  (
+    {
+      // when true, and the list opens again, the option with a matching value will be
+      // automatically highlighted.
+      persistSelection = false,
+      isMulti,
+      ...props
+    }: ComboboxListInternalProps,
+    forwardedRef: Ref<HTMLUListElement>
+  ) => {
+    const context = useContext(ComboboxContext)
+    const contextMulti = useContext(ComboboxMultiContext)
+    const contextToUse = isMulti ? contextMulti : context
+    const {
+      persistSelectionRef,
+      transition,
+      wrapperElement,
+      isVisible,
+      optionsRef,
+      popoverRef,
+    } = contextToUse
 
-  // WEIRD? Reset the options ref every render so that they are always
-  // accurate and ready for keyboard navigation handlers. Using layout
-  // effect to schedule this effect before the ComboboxOptions push into
-  // the array
-  useLayoutEffect(() => {
-    if (optionsRef) optionsRef.current = []
-    return () => {
+    if (persistSelection) {
+      if (persistSelectionRef) persistSelectionRef.current = true
+    }
+
+    // WEIRD? Reset the options ref every render so that they are always
+    // accurate and ready for keyboard navigation handlers. Using layout
+    // effect to schedule this effect before the ComboboxOptions push into
+    // the array
+    useLayoutEffect(() => {
       if (optionsRef) optionsRef.current = []
+      return () => {
+        if (optionsRef) optionsRef.current = []
+      }
+      // Without isVisible in the dependency array,
+      // updated options won't go into the optionsRef array
+    }, [optionsRef, isVisible])
+
+    const handleKeyDown = useKeyDown()
+    const handleBlur = useBlur()
+    const width = wrapperElement
+      ? wrapperElement.getBoundingClientRect().width
+      : 'auto'
+
+    const content = (
+      <PopoverContent
+        width={width}
+        onKeyDown={handleKeyDown}
+        onBlur={handleBlur}
+        ref={popoverRef}
+        p="none"
+      >
+        <ul {...props} ref={forwardedRef} role="listbox" tabIndex={-1} />
+      </PopoverContent>
+    )
+
+    const setOpen = (isOpen: boolean) => {
+      if (!isOpen) {
+        transition && transition(ComboboxActionType.BLUR)
+      }
     }
-    // Without isVisible in the dependency array,
-    // updated options won't go into the optionsRef array
-  }, [optionsRef, isVisible])
 
-  const handleKeyDown = useKeyDown()
-  const handleBlur = useBlur()
-  const width = wrapperElement
-    ? wrapperElement.getBoundingClientRect().width
-    : 'auto'
-
-  const content = (
-    <PopoverContent
-      width={width}
-      onKeyDown={handleKeyDown}
-      onBlur={handleBlur}
-      ref={popoverRef}
-      p="none"
-    >
-      <ul {...props} ref={forwardedRef} role="listbox" tabIndex={-1} />
-    </PopoverContent>
-  )
-
-  const setOpen = (isOpen: boolean) => {
-    if (!isOpen) {
-      transition && transition(ComboboxActionType.BLUR)
-    }
+    const { popover } = usePopover({
+      arrow: false,
+      content,
+      focusTrap: false,
+      isOpen: isVisible,
+      placement: 'bottom',
+      setOpen,
+      triggerElement: wrapperElement,
+      triggerToggle: false,
+    })
+    return popover || null
   }
-
-  const { popover } = usePopover({
-    arrow: false,
-    content,
-    focusTrap: false,
-    isOpen: isVisible,
-    placement: 'bottom',
-    setOpen,
-    triggerElement: wrapperElement,
-    triggerToggle: false,
-  })
-  return popover || null
-})
+)
 
 ComboboxListInternal.displayName = 'ComboboxListInternal'
 
-export const ComboboxList = styled(ComboboxListInternal)`
+const comboboxListStyles = css`
   ${reset}
   ${typography}
   ${space}
   list-style-type: none;
   padding: 0;
   margin: 0;
+`
+
+export const ComboboxList = styled(ComboboxListInternal).attrs({
+  isMulti: false,
+})`
+  ${comboboxListStyles}
+`
+
+export const ComboboxMultiList = styled(ComboboxListInternal).attrs({
+  isMulti: true,
+})`
+  ${comboboxListStyles}
 `
 
 ComboboxList.defaultProps = {

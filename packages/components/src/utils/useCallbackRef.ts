@@ -7,7 +7,7 @@ import { useForkedRef } from './useForkedRef'
 
 export function useCallbackRef<T extends HTMLElement = HTMLElement>(
   forwardedRef?: Ref<T>
-): [T | null, ((node: T | null) => void) | null] {
+): [T | null, (node: T | null) => void] {
   const [currentElement, setCurrentElement] = useState<T | null>(null)
   const callbackRef = useCallback((node: T | null) => {
     setCurrentElement(node)
