@@ -80,7 +80,6 @@ export const defaultData: ComboboxData = {
 
 export const defaultMultiData: ComboboxMultiData = {
   ...omit(defaultData, 'option'),
-  inputValues: [],
   options: [],
 }
 

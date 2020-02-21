@@ -145,13 +145,13 @@ const ComboboxListInternal = forwardRef(
 
 ComboboxListInternal.displayName = 'ComboboxListInternal'
 
-const comboboxListStyles = css`
+const comboboxListStyles = css<ComboboxListInternalProps>`
   ${reset}
   ${typography}
   ${space}
   list-style-type: none;
-  padding: 0;
   margin: 0;
+  padding: ${props => (props.isMulti ? props.theme.space.xsmall : 0)} 0;
 `
 
 export const ComboboxList = styled(ComboboxListInternal).attrs({

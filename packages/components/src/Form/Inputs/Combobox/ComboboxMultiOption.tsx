@@ -29,22 +29,28 @@
 
 import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
+import { CheckboxContainer, FauxCheckbox, CheckMark } from '../Checkbox'
 import {
   ComboboxMultiContext,
   ComboboxMultiContextProps,
 } from './ComboboxContext'
 import {
   comboboxOptionDefaultProps,
+  ComboboxOptionDetail,
   ComboboxOptionProps,
   comboboxOptionStyle,
   ComboboxOptionWrapper,
-  useOptionEvents,
+  ComboboxOptionText,
 } from './ComboboxOption'
 import { useAddOptionToContext } from './utils/useAddOptionToContext'
 import { useOptionStatus } from './utils/useOptionStatus'
+import { useOptionEvents } from './utils/useOptionEvents'
 
 const ComboboxMultiOptionInternal = forwardRef(
-  (props: ComboboxOptionProps, forwardedRef: Ref<HTMLLIElement>) => {
+  (
+    { children, ...props }: ComboboxOptionProps,
+    forwardedRef: Ref<HTMLLIElement>
+  ) => {
     const { label, value } = props
 
     useAddOptionToContext<ComboboxMultiContextProps>(
@@ -53,10 +59,10 @@ const ComboboxMultiOptionInternal = forwardRef(
       label
     )
     const optionEvents = useOptionEvents<ComboboxMultiContextProps>(
-      ComboboxMultiContext,
-      props
+      props,
+      ComboboxMultiContext
     )
-    const statuses = useOptionStatus<ComboboxMultiContextProps>(
+    const { isActive, isSelected } = useOptionStatus<ComboboxMultiContextProps>(
       ComboboxMultiContext,
       value
     )
@@ -65,9 +71,18 @@ const ComboboxMultiOptionInternal = forwardRef(
       <ComboboxOptionWrapper
         {...props}
         {...optionEvents}
-        {...statuses}
         ref={forwardedRef}
-      />
+        aria-selected={isActive}
+      >
+        <ComboboxOptionDetail>
+          <CheckboxContainer checked={isSelected} branded>
+            <FauxCheckbox>
+              <CheckMark />
+            </FauxCheckbox>
+          </CheckboxContainer>
+        </ComboboxOptionDetail>
+        {children || <ComboboxOptionText />}
+      </ComboboxOptionWrapper>
     )
   }
 )
@@ -76,6 +91,9 @@ ComboboxMultiOptionInternal.displayName = 'ComboboxMultiOptionInternal'
 
 export const ComboboxMultiOption = styled(ComboboxMultiOptionInternal)`
   ${comboboxOptionStyle}
+  grid-template-columns: ${props => props.theme.space.xlarge} 1fr;
 `
 
-ComboboxMultiOption.defaultProps = comboboxOptionDefaultProps
+ComboboxMultiOption.defaultProps = {
+  ...comboboxOptionDefaultProps,
+}

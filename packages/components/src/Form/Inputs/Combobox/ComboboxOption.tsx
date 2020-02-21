@@ -42,24 +42,18 @@ import {
   TypographyProps,
 } from '@looker/design-tokens'
 import omit from 'lodash/omit'
-import React, { Context, forwardRef, useContext, Ref } from 'react'
+import React, { forwardRef, useContext, Ref } from 'react'
 import styled, { css } from 'styled-components'
-import { useWrapEvent } from '../../../utils'
 import { Icon } from '../../../Icon'
 import { makeHash } from './utils/makeHash'
 import {
   OptionContext,
   ComboboxContext,
   ComboboxContextProps,
-  ComboboxMultiContextProps,
 } from './ComboboxContext'
-import { ComboboxCallback, ComboboxMultiCallback } from './types'
-import { ComboboxActionType, ComboboxMultiData } from './utils/state'
 import { getComboboxText } from './utils/getComboboxText'
-import {
-  ComboboxOptionStatuses,
-  useOptionStatus,
-} from './utils/useOptionStatus'
+import { useOptionEvents } from './utils/useOptionEvents'
+import { useOptionStatus } from './utils/useOptionStatus'
 import { useAddOptionToContext } from './utils/useAddOptionToContext'
 
 export interface ComboboxOptionObject {
@@ -96,54 +90,9 @@ export interface ComboboxOptionProps
   children?: React.ReactNode
 }
 
-export function useOptionEvents<
-  CProps extends ComboboxContextProps | ComboboxMultiContextProps
->(context: Context<CProps>, props: ComboboxOptionProps) {
-  const { label, value, onClick, onMouseEnter } = props
-  const { data, onChange, transition } = useContext(context)
-  const { options } = data as ComboboxMultiData
-
-  function handleClick() {
-    const option = { label, value }
-    if (onChange) {
-      if (options) {
-        ;(onChange as ComboboxMultiCallback)([...options, option])
-      } else {
-        ;(onChange as ComboboxCallback)(option)
-      }
-    }
-    transition && transition(ComboboxActionType.SELECT_WITH_CLICK, { option })
-  }
-
-  function handleMouseEnter() {
-    const option = { label, value }
-    transition && transition(ComboboxActionType.NAVIGATE, { option })
-  }
-
-  return {
-    onClick: useWrapEvent(handleClick, onClick),
-    onMouseEnter: useWrapEvent(handleMouseEnter, onMouseEnter),
-  }
-}
-
-export const ComboboxOptionDetail = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 20px;
-  height: 20px;
-`
-
 export const ComboboxOptionWrapper = forwardRef(
   (
-    {
-      children,
-      isActive,
-      isSelected,
-      label,
-      value,
-      ...rest
-    }: ComboboxOptionProps & ComboboxOptionStatuses,
+    { children, label, value, ...rest }: ComboboxOptionProps,
     forwardedRef: Ref<HTMLLIElement>
   ) => (
     <OptionContext.Provider value={{ label, value }}>
@@ -152,16 +101,12 @@ export const ComboboxOptionWrapper = forwardRef(
         ref={forwardedRef}
         id={String(makeHash(value))}
         role="option"
-        aria-selected={isActive}
         // without this the menu will close from `onBlur`, but with it the
         // element can be `document.activeElement` and then our focus checks in
         // onBlur will work as intended
         tabIndex={-1}
       >
-        <ComboboxOptionDetail>
-          {isSelected && <Icon name="Check" mr="xxsmall" size={16} />}
-        </ComboboxOptionDetail>
-        {children || <ComboboxOptionText />}
+        {children}
       </li>
     </OptionContext.Provider>
   )
@@ -170,15 +115,18 @@ export const ComboboxOptionWrapper = forwardRef(
 ComboboxOptionWrapper.displayName = 'ComboboxOptionWrapper'
 
 const ComboboxOptionInternal = forwardRef(
-  (props: ComboboxOptionProps, forwardedRef: Ref<HTMLLIElement>) => {
+  (
+    { children, ...props }: ComboboxOptionProps,
+    forwardedRef: Ref<HTMLLIElement>
+  ) => {
     const { label, value } = props
 
     useAddOptionToContext<ComboboxContextProps>(ComboboxContext, value, label)
     const optionEvents = useOptionEvents<ComboboxContextProps>(
-      ComboboxContext,
-      props
+      props,
+      ComboboxContext
     )
-    const statuses = useOptionStatus<ComboboxContextProps>(
+    const { isActive, isSelected } = useOptionStatus<ComboboxContextProps>(
       ComboboxContext,
       value
     )
@@ -187,14 +135,26 @@ const ComboboxOptionInternal = forwardRef(
       <ComboboxOptionWrapper
         {...props}
         {...optionEvents}
-        {...statuses}
         ref={forwardedRef}
-      />
+        aria-selected={isActive}
+      >
+        <ComboboxOptionDetail>
+          {isSelected && <Icon name="Check" mr={0} />}
+        </ComboboxOptionDetail>
+        {children || <ComboboxOptionText />}
+      </ComboboxOptionWrapper>
     )
   }
 )
 
 ComboboxOptionInternal.displayName = 'ComboboxOptionInternal'
+
+export const ComboboxOptionDetail = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: ${props => props.theme.space.large};
+`
 
 export const comboboxOptionGrid = css`
   display: grid;

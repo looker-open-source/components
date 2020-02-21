@@ -65,12 +65,7 @@ export const ComboboxMultiInputInternal = forwardRef(
     } = props
 
     const {
-      data: {
-        navigationOption,
-        options,
-        inputValue: contextInputValue,
-        inputValues: contextInputValues,
-      },
+      data: { navigationOption, options, inputValue: contextInputValue },
       onChange: contextOnChange,
       inputCallbackRef,
       state,
@@ -143,13 +138,9 @@ export const ComboboxMultiInputInternal = forwardRef(
       [handleInputValueChange, isControlled]
     )
 
-    const inputValues =
-      contextInputValues !== undefined
-        ? contextInputValues
-        : options.map(option => getComboboxText(option))
+    const inputValues = options.map(option => getComboboxText(option))
 
     let inputValue = contextInputValue || ''
-
     if (
       autoComplete &&
       (state === ComboboxState.NAVIGATING ||

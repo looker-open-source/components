@@ -48,7 +48,6 @@ import {
   useComboboxRefs,
   useOpenCloseCallbacks,
 } from './Combobox'
-import { getComboboxText } from './utils/getComboboxText'
 
 function compareOptions(
   optionsA: ComboboxOptionObject[],
@@ -96,9 +95,6 @@ export const ComboboxMultiInternal = forwardRef(
 
     const initialValues = values || defaultValues
     const initialData: ComboboxMultiData = {
-      inputValues: initialValues
-        ? initialValues.map(initialVal => getComboboxText(initialVal))
-        : [],
       options: initialValues || [],
     }
 
@@ -115,7 +111,6 @@ export const ComboboxMultiInternal = forwardRef(
     ) {
       transition &&
         transition(ComboboxActionType.SELECT_SILENT, {
-          inputValues: values.map(val => getComboboxText(val)),
           options: values,
         })
     }

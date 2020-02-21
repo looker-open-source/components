@@ -45,7 +45,7 @@ export interface CheckboxProps
   extends Omit<InputProps, 'type' | 'checked'>,
     CheckboxContainerProps {}
 
-const CheckMark = () => {
+export const CheckMark = () => {
   return (
     <svg
       width="16"
@@ -86,7 +86,7 @@ const CheckMarkMixed = () => {
   )
 }
 
-const FauxCheckbox = styled.div`
+export const FauxCheckbox = styled.div`
   ${reset}
   position: relative;
   width: 100%;
@@ -99,7 +99,7 @@ const FauxCheckbox = styled.div`
   align-items: center;
 `
 
-const CheckboxContainer = styled.div<CheckboxContainerProps>`
+export const CheckboxContainer = styled.div<CheckboxContainerProps>`
   ${reset}
   position: relative;
   display: inline-block;

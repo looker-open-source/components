@@ -27,6 +27,8 @@
 // Much of the following is pulled from https://github.com/reach/reach-ui
 // because their work is fantastic (but is not in TypeScript)
 
+import isEqual from 'lodash/isEqual'
+import xorWith from 'lodash/xorWith'
 import { Reducer, useReducer, useState } from 'react'
 import { ComboboxOptionObject } from '../ComboboxOption'
 import { getComboboxText } from './getComboboxText'
@@ -91,7 +93,6 @@ export interface ComboboxMultiData extends Omit<ComboboxData, 'option'> {
   /**
    * Multi uses both inputValue (typed) and inputValues  (entered chips)
    */
-  inputValues: string[]
   options: ComboboxOptionObject[]
 }
 
@@ -107,6 +108,7 @@ export interface ComboboxActionPayload {
 }
 
 export interface ComboboxMultiActionPayload extends ComboboxActionPayload {
+  // for when user removes chips directly
   inputValues?: string[]
   // only for SELECT_SILENT
   options?: ComboboxOptionObject[]
@@ -281,13 +283,11 @@ const reducerMulti: Reducer<
       return {
         ...nextState,
         inputValue: action.inputValue,
-        inputValues: nextState.inputValues,
         navigationOption: undefined,
       }
     case ComboboxActionType.CHANGE_VALUES:
       return {
         ...nextState,
-        inputValues: action.inputValues || [],
         navigationOption: undefined,
         options: nextState.options.filter(
           option =>
@@ -304,7 +304,6 @@ const reducerMulti: Reducer<
       return {
         ...nextState,
         inputValue: '',
-        inputValues: [],
         navigationOption: undefined,
         options: [],
       }
@@ -319,20 +318,17 @@ const reducerMulti: Reducer<
       return {
         ...nextState,
         inputValue: '',
-        inputValues: [...nextState.inputValues, getComboboxText(action.option)],
         navigationOption: undefined,
-        options: [
-          ...nextState.options,
-          ...(action.option ? [action.option] : []),
-        ],
+        options: xorWith(
+          nextState.options,
+          action.option ? [action.option] : [],
+          isEqual
+        ),
       }
     case ComboboxActionType.SELECT_SILENT:
       return {
         ...nextState,
         inputValue: '',
-        inputValues: action.options
-          ? action.options.map(option => getComboboxText(option))
-          : [],
         navigationOption: undefined,
         options: action.options || [],
       }
@@ -340,15 +336,12 @@ const reducerMulti: Reducer<
       return {
         ...nextState,
         inputValue: '',
-        inputValues: [
-          ...nextState.inputValues,
-          getComboboxText(data.navigationOption),
-        ],
         navigationOption: undefined,
-        options: [
-          ...nextState.options,
-          ...(data.navigationOption ? [data.navigationOption] : []),
-        ],
+        options: xorWith(
+          nextState.options,
+          data.navigationOption ? [data.navigationOption] : [],
+          isEqual
+        ),
       }
     case ComboboxActionType.INTERACT:
       return nextState
