@@ -24,6 +24,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Select` styling issues when `GlobalStyle` is not used, missing down caret icon in documentation
 - `usePopover`, when the toggle was a mousedown event, would open just before the "click outside" listener was able to close any prior popovers. If both popovers were inside a `Modal`, the closing popover would re-enable the parent scroll lock, and the one that just opened would be un-scrollable. This especially affected multiple `Select`s inside a `Modal`.
 
+## [0.7.19] - 2020-02-20
+
+### Added
+
+- Added components that make up an Action List:
+  - `ActionList` - sits at the top of the Action List hierarchy
+  - `ActionListHeader` - contains subcontainers in the header
+  - `ActionListHeaderColumn` - acts as a parent to actual header labels
+  - `ActionListItems` - contains rows of the Action List
+  - `ActionListItemColumn` - equivalent to a cell in the Action List
+  - `ActionListItem` - represents a data row in the Action List
+  - `ActionListItemActions` - renders a `Menu`, with a `MenuDisclosure`, DotsVert `IconButton` and `MenuList`
+  - `ActionListItemAction` - proxy to `MenuItem`
+  - `ActionListRowContainer` - contains header or list item cells
+  - `ActionListRowOptionsContainer` - container that creates a set amount of space for the `ActionListItemActions` button in each row
+  - `ActionListDemo` - example composition of Action List components
+
+### Changed
+
+- `IconButton` - tooltip callbacks no longer override passed in callbacks
+- `Menu` - renamed isHovered variable to showDisclosure to make this prop's use alongside `MenuDisclosure` more obvious
+- `MenuContext` - renamed isHovered property to showDisclosure
+- `MenuDisclosure` - now has focus and blur handlers, which allows for tab-traversal to hidden `MenuDisclosure`
+- `Tooltip` - uses window.requestAnimationFrame() method to prevent a potential issue where mouse-leaving an element (via a tooltip in its children) does not trigger mouseleave event
+
 ## [0.7.18] - 2020-02-11
 
 ### Added
