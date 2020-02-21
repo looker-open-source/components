@@ -41,6 +41,18 @@ import { TooltipContent } from './TooltipContent'
 import { mouseEventSimulator } from './tooltip.test.helpers'
 
 describe('Tooltip', () => {
+  let rafSpy: jest.SpyInstance<number, [FrameRequestCallback]>
+
+  beforeEach(() => {
+    rafSpy = jest
+      .spyOn(window, 'requestAnimationFrame')
+      .mockImplementation((cb: any) => cb())
+  })
+
+  afterEach(() => {
+    rafSpy.mockRestore()
+  })
+
   test('snapshot', () => {
     assertSnapshotShallow(
       <Tooltip content="Hello world" isOpen>
