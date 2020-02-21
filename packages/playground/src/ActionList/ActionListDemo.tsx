@@ -25,16 +25,18 @@
  */
 
 import React, { FC } from 'react'
-import { ActionList } from '../../../components/src/ActionList/ActionList'
-import { ActionListHeader } from '../../../components/src/ActionList/ActionListHeader/ActionListHeader'
-import { ActionListHeaderColumn } from '../../../components/src/ActionList/ActionListHeader/ActionListHeaderColumn'
-import { ActionListItems } from '../../../components/src/ActionList/ActionListItems'
-import { ActionListItem } from '../../../components/src/ActionList/ActionListItem'
-import { ActionListItemColumn } from '../../../components/src/ActionList/ActionListItemColumn'
-import { ActionListItemActions } from '../../../components/src/ActionList/ActionListItemActions'
-import { ActionListItemAction } from '../../../components/src/ActionList/ActionListItemAction'
-import { ActionListRowContainer } from '../../../components/src/ActionList/ActionListRowContainer'
-import { ActionListRowOptionsContainer } from '../../../components/src/ActionList/ActionListRowOptionsContainer'
+import {
+  ActionList,
+  ActionListItem,
+  ActionListItems,
+  ActionListItemColumn,
+  ActionListItemAction,
+  ActionListItemActions,
+  ActionListRowContainer,
+  ActionListRowOptionsContainer,
+  ActionListHeader,
+  ActionListHeaderColumn,
+} from '../../../components/src/ActionList'
 
 const data = [
   {
