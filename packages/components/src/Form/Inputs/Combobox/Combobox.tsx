@@ -34,34 +34,21 @@ import {
   TypographyProps,
   SpaceProps,
 } from '@looker/design-tokens'
-import React, { forwardRef, useRef, Ref, useEffect } from 'react'
+import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
-import { useID, useCallbackRef } from '../../../utils'
+import { useID } from '../../../utils'
 import { Box } from '../../../Layout/Box'
 import { useFocusManagement } from './utils/useFocusManagement'
 import {
   ComboboxCallback,
   ComboboxMultiCallback,
   ComboboxOptionObject,
-  MaybeComboboxOptionObject,
-  ComboboxOptionType,
 } from './types'
-import {
-  useReducerMachine,
-  ComboboxActionType,
-  ComboboxState,
-} from './utils/state'
+import { useReducerMachine, ComboboxActionType } from './utils/state'
 import { ComboboxContext, defaultData } from './ComboboxContext'
 import { getComboboxText } from './utils/getComboboxText'
-
-const visibleStates = [
-  ComboboxState.SUGGESTING,
-  ComboboxState.NAVIGATING,
-  ComboboxState.INTERACTING,
-]
-
-export const getIsVisible = (state: ComboboxState) =>
-  visibleStates.includes(state)
+import { useComboboxRefs } from './utils/useComboboxRefs'
+import { useComboboxToggle } from './utils/useComboboxToggle'
 
 export interface ComboboxBaseProps
   extends FlexboxProps,
@@ -105,58 +92,6 @@ export interface ComboboxProps extends ComboboxBaseProps, ComboboxCommonProps {
   defaultValue?: ComboboxOptionObject
 }
 
-export function useComboboxRefs() {
-  // We store the values of all the ComboboxOptions on this ref. This makes it
-  // possible to perform the keyboard navigation from the input on the list. We
-  // manipulate this array through context so that we don't have to enforce a
-  // parent/child relationship between ComboboxList and ComboboxOption with
-  // cloneElement or fall back to DOM traversal. It's a new trick for me and
-  // I'm pretty excited about it.
-  const optionsRef = useRef<ComboboxOptionObject[]>([])
-
-  const popoverRef = useRef<HTMLDivElement>(null)
-
-  // When <ComboboxInput autoComplete={false} /> we don't want cycle back to
-  // the user's value while navigating (because it's always the user's value),
-  // but we need to know this in useKeyDown which is far away from the prop
-  // here, so we do something sneaky and write it to this ref on context so we
-  // can use it anywhere else 😛. Another new trick for me and I'm excited
-  // about this one too!
-  const autoCompletePropRef = useRef(true)
-  const readOnlyPropRef = useRef(false)
-
-  const persistSelectionRef = useRef(false)
-  return {
-    autoCompletePropRef,
-    optionsRef,
-    persistSelectionRef,
-    popoverRef,
-    readOnlyPropRef,
-  }
-}
-
-// Detect when to call onOpen and onClose
-export function useOpenCloseCallbacks<
-  TOption extends ComboboxOptionType = MaybeComboboxOptionObject
->(
-  isVisible: boolean,
-  onOpen?: ComboboxCallback<TOption>,
-  onClose?: ComboboxCallback<TOption>,
-  option?: TOption
-) {
-  const isVisibleRef = useRef(isVisible)
-
-  useEffect(() => {
-    if (isVisible && !isVisibleRef.current) {
-      onOpen && onOpen(option)
-      isVisibleRef.current = true
-    } else if (!isVisible && isVisibleRef.current) {
-      onClose && onClose(option)
-      isVisibleRef.current = false
-    }
-  }, [isVisible, isVisibleRef, onOpen, onClose, option])
-}
-
 export const ComboboxInternal = forwardRef(
   (
     {
@@ -175,9 +110,6 @@ export const ComboboxInternal = forwardRef(
     }: ComboboxProps,
     forwardedRef: Ref<HTMLDivElement>
   ) => {
-    // Need this to get the menu width
-    const [wrapperElement, ref] = useCallbackRef<HTMLDivElement>(forwardedRef)
-
     const initialValue = value || defaultValue
     const initialData = initialValue
       ? { inputValue: getComboboxText(initialValue), option: initialValue }
@@ -200,10 +132,10 @@ export const ComboboxInternal = forwardRef(
 
     const id = useID(propsID)
 
-    const isVisible = getIsVisible(state)
-    useOpenCloseCallbacks(isVisible, onOpen, onClose, option)
+    const isVisible = useComboboxToggle(state, onOpen, onClose, option)
 
-    const commonRefs = useComboboxRefs()
+    const { ref, ...commonRefs } = useComboboxRefs(forwardedRef)
+
     const context = {
       ...commonRefs,
       ...focusManagement,
@@ -214,7 +146,6 @@ export const ComboboxInternal = forwardRef(
       openOnFocus,
       state,
       transition,
-      wrapperElement,
     }
 
     return (

@@ -31,7 +31,7 @@ import some from 'lodash/some'
 import every from 'lodash/every'
 import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
-import { useID, useCallbackRef } from '../../../utils'
+import { useID } from '../../../utils'
 import { useFocusManagement } from './utils/useFocusManagement'
 import { ComboboxMultiCallback, ComboboxOptionObject } from './types'
 import {
@@ -44,10 +44,9 @@ import {
   ComboboxBaseProps,
   ComboboxCommonProps,
   ComboboxWrapper,
-  getIsVisible,
-  useComboboxRefs,
-  useOpenCloseCallbacks,
 } from './Combobox'
+import { useComboboxRefs } from './utils/useComboboxRefs'
+import { useComboboxToggle } from './utils/useComboboxToggle'
 
 function compareOptions(
   optionsA: ComboboxOptionObject[],
@@ -90,9 +89,6 @@ export const ComboboxMultiInternal = forwardRef(
     }: ComboboxMultiProps,
     forwardedRef: Ref<HTMLDivElement>
   ) => {
-    // Need this to get the menu width
-    const [wrapperElement, ref] = useCallbackRef<HTMLDivElement>(forwardedRef)
-
     const initialValues = values || defaultValues
     const initialData: ComboboxMultiData = {
       options: initialValues || [],
@@ -119,15 +115,9 @@ export const ComboboxMultiInternal = forwardRef(
 
     const id = useID(propsID)
 
-    const isVisible = getIsVisible(state)
-    useOpenCloseCallbacks<ComboboxOptionObject[]>(
-      isVisible,
-      onOpen,
-      onClose,
-      options
-    )
+    const isVisible = useComboboxToggle(state, onOpen, onClose, options)
 
-    const commonRefs = useComboboxRefs()
+    const { ref, ...commonRefs } = useComboboxRefs(forwardedRef)
     const context = {
       ...commonRefs,
       ...focusManagement,
@@ -138,7 +128,6 @@ export const ComboboxMultiInternal = forwardRef(
       openOnFocus,
       state,
       transition,
-      wrapperElement,
     }
 
     return (
