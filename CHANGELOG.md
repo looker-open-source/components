@@ -25,6 +25,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Select` styling issues when `GlobalStyle` is not used, missing down caret icon in documentation
 - `usePopover`, when the toggle was a mousedown event, would open just before the "click outside" listener was able to close any prior popovers. If both popovers were inside a `Modal`, the closing popover would re-enable the parent scroll lock, and the one that just opened would be un-scrollable. This especially affected multiple `Select`s inside a `Modal`.
 
+## [0.7.19] - 2020-02-24
+
+### Fixed
+
+- `Tooltip` added requestAnimationFrame call so that useHovered's state change happens before the tooltip unmounts (i.e. before the tooltip is no longer a child of its parent and thus does not trigger "mouseleave" event handlers on the parent)
+- `useHovered` added blur and focus event handlers so that when an Action List row is focused via tabbing, the MenuDisclosure would reveal the hidden IconButton for said row
+- `useHovered` added requestAnimationFrame call so that tabbing from an Action List row onto a button doesn't remove focus before tabbing and focusing onto the Actions button
+- `MenuDisclosure` added handleFocus and handleBlur event handlers, which are passed down to `MenuDisclosure` child
+- `MenuDisclosure` added "focused" state
+  - If focused is true, `MenuDisclosure` child is being focused on and should be rendered it by `MenuDisclosure`
+- `IconButton` changed props to include onFocus and onBlur
+- `IconButton` added useWrapEvent calls to apply both event handlers from useTooltip and event handlers from a parent MenuDisclosure
+
 ## [0.7.18] - 2020-02-11
 
 ### Added
