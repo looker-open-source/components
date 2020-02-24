@@ -38,8 +38,13 @@ function getCurrentNode(
 
 // Get the current hover state of an element
 // Recommended to be used with useCallbackRef
+/**
+ * @param hoverElement DOM node that should have hover behavior
+ * @param focusEvents Add focus and blur events to follow hover behavior for keyboard navigation @default true
+ */
 export function useHovered(
-  hoverElement?: HTMLElement | null | RefObject<HTMLElement>
+  hoverElement?: HTMLElement | null | RefObject<HTMLElement>,
+  focusEvents = true
 ): [boolean, (node: HTMLElement | null) => void] {
   const [newElement, callbackRef] = useCallbackRef()
   const element =
@@ -70,8 +75,10 @@ export function useHovered(
     if (node) {
       node.addEventListener('mouseleave', handleMouseLeave)
       node.addEventListener('mouseenter', handleMouseEnter)
-      node.addEventListener('blur', handleMouseLeave)
-      node.addEventListener('focus', handleMouseEnter)
+      if (focusEvents) {
+        node.addEventListener('blur', handleMouseLeave)
+        node.addEventListener('focus', handleMouseEnter)
+      }
     }
     return () => {
       if (node) {
@@ -81,7 +88,7 @@ export function useHovered(
         node.removeEventListener('focus', handleMouseEnter)
       }
     }
-  }, [element])
+  }, [element, focusEvents])
 
   return [isHovered, callbackRef]
 }
