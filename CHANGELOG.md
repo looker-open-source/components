@@ -5,19 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [UNRELEASED]
+## [0.7.19] - 2020-02-24
 
 ### Added
 
-- new component `InlineInputText` plus documentations and test
-
+- `InlineInputText` component
 - `Select` now supports grouped options with a `title` and option `description`, as well as `BoxProps` for layout styling.
-- New components: `InputDate`, `Calendar`
-- Documentation added to the icons package README that describes the recommended way to name icons.
+- `InputDate` and `Calendar` components
+- Download icon
+- Documentation in the icons package README that describes the recommended way to name icons
 
 ### Changed
 
 - `Select` now only defaults to the first option if neither `placeholder` nor `isClearable` is defined.
+- Removed images with unknown ownership in documentation
 
 ### Fixed
 
