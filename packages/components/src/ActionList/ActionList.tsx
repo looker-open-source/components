@@ -13,6 +13,6 @@ export const ActionList = styled.div<ActionListProps>`
 
   ${ActionListRowContainer} {
     display: grid;
-    grid-template-columns: ${props => props.columns};
+    grid-template-columns: ${props => props.columns.join(' ')};
   }
 `
