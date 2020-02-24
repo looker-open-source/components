@@ -27,7 +27,7 @@
 import { CustomizableAttributes } from '@looker/design-tokens'
 import { TextAlignProperty } from 'csstype'
 import { Placement } from 'popper.js'
-import React, { useState, Ref, FC, ReactNode } from 'react'
+import React, { useState, Ref, FC, ReactNode, useEffect, useRef } from 'react'
 import { Popper } from 'react-popper'
 import { ModalContext } from '../Modal'
 import { useCallbackRef } from '../utils'
@@ -128,6 +128,7 @@ export function useTooltip({
     if (canClose && !canClose()) return
     setIsOpen(false)
   }
+  const requestId = useRef(0)
 
   const handleMouseOut = (event: React.MouseEvent) => {
     if (!isOpen) return
@@ -145,10 +146,18 @@ export function useTooltip({
       return
     }
 
-    window.requestAnimationFrame(() => {
-      handleClose()
+    requestId.current = window.requestAnimationFrame(() => {
+      if (!element) {
+        handleClose()
+      }
     })
   }
+
+  useEffect(() => {
+    return () => {
+      window.cancelAnimationFrame(requestId.current)
+    }
+  }, [])
 
   const eventHandlers = {
     onBlur: handleClose,
