@@ -6,7 +6,6 @@ import {
   space,
   SpaceProps,
   CompatibleHTMLProps,
-  theme,
 } from '@looker/design-tokens'
 import styled from 'styled-components'
 import React, { createContext, ReactNode, RefObject, useRef } from 'react'
