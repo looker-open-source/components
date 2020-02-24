@@ -6,6 +6,7 @@ import {
   space,
   SpaceProps,
   CompatibleHTMLProps,
+  theme,
 } from '@looker/design-tokens'
 import styled from 'styled-components'
 import React, { createContext, ReactNode, RefObject, useRef } from 'react'
@@ -73,7 +74,11 @@ export const ActionListItem = styled(ActionListItemInternal)`
   &:focus,
   &:hover {
     outline: none;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04), 0 2px 12px rgba(0, 0, 0, 0.11);
+    box-shadow: ${({ theme, onClick }) => {
+      if (onClick) {
+        return theme.shadows[2]
+      }
+    }};
   }
 `
 
