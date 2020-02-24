@@ -145,7 +145,9 @@ export function useTooltip({
       return
     }
 
-    handleClose()
+    window.requestAnimationFrame(() => {
+      handleClose()
+    })
   }
 
   const eventHandlers = {
