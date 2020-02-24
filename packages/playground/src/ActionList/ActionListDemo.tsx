@@ -80,35 +80,40 @@ export const ActionListDemo: FC = () => {
       </ActionListHeader>
       <ActionListItems>
         {data.map(({ id, groupName, roles, members }) => (
-          <ActionListItem key={id} onClick={() => alert(`Row clicked`)}>
+          <ActionListItem
+            key={id}
+            onClick={() => alert(`Row clicked`)}
+            options={
+              <ActionListRowOptionsContainer>
+                <ActionListItemActions>
+                  <ActionListItemAction
+                    icon="Group"
+                    onClick={() => alert('Edited!')}
+                  >
+                    Edit
+                  </ActionListItemAction>
+                  <ActionListItemAction
+                    icon="Edit"
+                    onClick={() => alert('Renamed!')}
+                  >
+                    Rename
+                  </ActionListItemAction>
+                  <ActionListItemAction
+                    icon="CircleRemove"
+                    onClick={() => alert('Removed!')}
+                  >
+                    Remove
+                  </ActionListItemAction>
+                </ActionListItemActions>
+              </ActionListRowOptionsContainer>
+            }
+          >
             <ActionListRowContainer>
               <ActionListItemColumn primaryKey>{id}</ActionListItemColumn>
               <ActionListItemColumn>{groupName}</ActionListItemColumn>
               <ActionListItemColumn>{roles}</ActionListItemColumn>
               <ActionListItemColumn>{members}</ActionListItemColumn>
             </ActionListRowContainer>
-            <ActionListRowOptionsContainer>
-              <ActionListItemActions>
-                <ActionListItemAction
-                  icon="Group"
-                  onClick={() => alert('Edited!')}
-                >
-                  Edit
-                </ActionListItemAction>
-                <ActionListItemAction
-                  icon="Edit"
-                  onClick={() => alert('Renamed!')}
-                >
-                  Rename
-                </ActionListItemAction>
-                <ActionListItemAction
-                  icon="CircleRemove"
-                  onClick={() => alert('Removed!')}
-                >
-                  Remove
-                </ActionListItemAction>
-              </ActionListItemActions>
-            </ActionListRowOptionsContainer>
           </ActionListItem>
         ))}
       </ActionListItems>

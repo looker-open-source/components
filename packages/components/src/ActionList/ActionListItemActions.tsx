@@ -1,8 +1,7 @@
 import styled from 'styled-components'
-import React, { ReactNode, useContext } from 'react'
+import React, { ReactNode } from 'react'
 import { IconButton } from '../Button/IconButton'
 import { Menu, MenuDisclosure, MenuList } from '../Menu'
-import { ActionListItemContext } from './ActionListItem'
 
 export interface ActionListItemActionsProps {
   children?: ReactNode
@@ -10,15 +9,13 @@ export interface ActionListItemActionsProps {
 }
 
 const ActionListItemActionsInternal = (props: ActionListItemActionsProps) => {
-  const context = useContext(ActionListItemContext)
-
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault()
   }
 
   return (
     <div onClick={handleClick}>
-      <Menu hoverDisclosureRef={context.actionListItemRef}>
+      <Menu>
         <MenuDisclosure>
           <IconButton
             className={props.className}
