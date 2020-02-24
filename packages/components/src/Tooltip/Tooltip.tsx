@@ -147,7 +147,7 @@ export function useTooltip({
     }
 
     requestId.current = window.requestAnimationFrame(() => {
-      if (!element) {
+      if (element) {
         handleClose()
       }
     })
