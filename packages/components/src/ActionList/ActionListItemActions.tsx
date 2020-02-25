@@ -9,7 +9,7 @@ export interface ActionListItemActionsProps {
 }
 
 export const OptionsWrapper = styled.div<{ menuOpen?: boolean }>`
-  visibility: ${props => (props.menuOpen ? 'visible' : 'hidden')};
+  opacity: ${props => (props.menuOpen ? '100%' : '0')};
   display: flex;
   align-items: center;
 `

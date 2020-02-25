@@ -83,7 +83,7 @@ export const ActionListItem = styled(ActionListItemInternal)`
       }
     }};
     ${OptionsWrapper} {
-      visibility: visible;
+      opacity: 100%;
     }
   }
 `
