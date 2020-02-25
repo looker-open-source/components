@@ -3,11 +3,16 @@ import {
   BorderProps,
   color,
   ColorProps,
+  flexbox,
+  FlexboxProps,
+  layout,
+  LayoutProps,
   space,
   SpaceProps,
   CompatibleHTMLProps,
 } from '@looker/design-tokens'
 import styled from 'styled-components'
+import { grid, GridProps } from 'styled-system'
 import React, { createContext, ReactNode, RefObject } from 'react'
 import { OptionsWrapper } from './ActionListItemActions'
 
@@ -23,6 +28,9 @@ export interface ActionListItemProps
   extends BorderProps,
     ColorProps,
     CompatibleHTMLProps<HTMLElement>,
+    FlexboxProps,
+    GridProps,
+    LayoutProps,
     SpaceProps {
   children?: ReactNode
   options?: ReactNode
@@ -61,8 +69,9 @@ export const ActionListItem = styled(ActionListItemInternal)`
   ${border}
   ${space}
   ${color}
-
-  display: flex;
+  ${flexbox}
+  ${grid}
+  ${layout}
 
   &:focus,
   &:hover,
@@ -83,4 +92,5 @@ ActionListItem.defaultProps = {
   backgroundColor: 'palette.transparent',
   borderBottom: 'solid 1px',
   borderColor: 'palette.charcoal200',
+  display: 'flex',
 }
