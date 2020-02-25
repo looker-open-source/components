@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "@svgr/babel-plugin-add-jsx-attribute": "^5.0.1",
-    "@svgr/cli": "^5.1.0",
+    "@svgr/cli": "^5.2.0",
     "@types/glob": "^7.1.1",
     "@types/rimraf": "^2.0.3",
     "glob": "^7.1.6",
