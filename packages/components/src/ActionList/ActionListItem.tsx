@@ -8,7 +8,8 @@ import {
   CompatibleHTMLProps,
 } from '@looker/design-tokens'
 import styled from 'styled-components'
-import React, { createContext, ReactNode, RefObject, useRef } from 'react'
+import React, { createContext, ReactNode, RefObject } from 'react'
+import { OptionsWrapper } from './ActionListItemActions'
 
 export interface ActionListContextProps {
   actionListItemRef: RefObject<HTMLElement> | undefined
@@ -24,16 +25,12 @@ export interface ActionListItemProps
     CompatibleHTMLProps<HTMLElement>,
     SpaceProps {
   children?: ReactNode
+  options?: ReactNode
   className?: string
 }
 
 const ActionListItemInternal = (props: ActionListItemProps) => {
   const { children, className, onClick } = props
-
-  const actionListItemRef = useRef<HTMLDivElement>(null)
-  const context = {
-    actionListItemRef,
-  }
 
   const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
     if (!event.defaultPrevented) {
@@ -49,17 +46,14 @@ const ActionListItemInternal = (props: ActionListItemProps) => {
   }
 
   return (
-    <ActionListItemContext.Provider value={context}>
-      <div
-        className={className}
-        onClick={handleClick}
-        onKeyDown={handleKeyDown}
-        ref={actionListItemRef}
-        tabIndex={0}
-      >
-        {children}
-      </div>
-    </ActionListItemContext.Provider>
+    <div
+      className={className}
+      onClick={handleClick}
+      onKeyDown={handleKeyDown}
+      tabIndex={0}
+    >
+      {children}
+    </div>
   )
 }
 
@@ -71,13 +65,17 @@ export const ActionListItem = styled(ActionListItemInternal)`
   display: flex;
 
   &:focus,
-  &:hover {
+  &:hover,
+  &:focus-within {
     outline: none;
     box-shadow: ${({ theme, onClick }) => {
       if (onClick) {
         return theme.shadows[2]
       }
     }};
+    ${OptionsWrapper} {
+      visibility: visible;
+    }
   }
 `
 

@@ -60,9 +60,7 @@ export function useHovered(
     setIsHovered(true)
   }
   function handleMouseLeave() {
-    window.requestAnimationFrame(() => {
-      setIsHovered(false)
-    })
+    setIsHovered(false)
   }
 
   useEffect(() => {

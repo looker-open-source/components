@@ -83,7 +83,12 @@ export const ActionListDemo: FC = () => {
           <ActionListItem key={id} onClick={() => alert(`Row clicked`)}>
             <ActionListRowContainer>
               <ActionListItemColumn primaryKey>{id}</ActionListItemColumn>
-              <ActionListItemColumn>{groupName}</ActionListItemColumn>
+              <ActionListItemColumn>
+                {groupName}
+                <div>
+                  <a href="https://google.com">Google</a>
+                </div>
+              </ActionListItemColumn>
               <ActionListItemColumn>{roles}</ActionListItemColumn>
               <ActionListItemColumn>{members}</ActionListItemColumn>
             </ActionListRowContainer>
