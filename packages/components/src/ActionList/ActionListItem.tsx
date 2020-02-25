@@ -9,6 +9,7 @@ import {
 } from '@looker/design-tokens'
 import styled from 'styled-components'
 import React, { createContext, ReactNode, RefObject } from 'react'
+import { OptionsWrapper } from './ActionListItemActions'
 
 export interface ActionListContextProps {
   actionListItemRef: RefObject<HTMLElement> | undefined
@@ -29,7 +30,7 @@ export interface ActionListItemProps
 }
 
 const ActionListItemInternal = (props: ActionListItemProps) => {
-  const { children, className, onClick, options } = props
+  const { children, className, onClick } = props
 
   const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
     if (!event.defaultPrevented) {
@@ -52,16 +53,9 @@ const ActionListItemInternal = (props: ActionListItemProps) => {
       tabIndex={0}
     >
       {children}
-      {options && <OptionsWrapper>{options}</OptionsWrapper>}
     </div>
   )
 }
-
-const OptionsWrapper = styled.div`
-  visibility: hidden;
-  display: flex;
-  align-items: center;
-`
 
 export const ActionListItem = styled(ActionListItemInternal)`
   ${border}
