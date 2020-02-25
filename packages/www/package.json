@@ -1,7 +1,7 @@
 {
   "name": "www",
   "private": true,
-  "version": "0.7.19",
+  "version": "0.7.20",
   "dependencies": {
     "@mdx-js/mdx": "^1.5.5",
     "@mdx-js/react": "^1.5.5",
@@ -32,7 +32,7 @@
     "react-live": "^2.2.2"
   },
   "devDependencies": {
-    "@looker/components": "^0.7.19",
+    "@looker/components": "^0.7.20",
     "@looker/design-tokens": "^0.7.15",
     "@looker/icons": "^0.7.19",
     "@types/react": "^16.9.19",
