@@ -32,7 +32,6 @@ import React, {
   RefObject,
   Ref,
   SyntheticEvent,
-  useRef,
 } from 'react'
 import { Popper } from 'react-popper'
 import { Box } from '../Layout'
@@ -236,7 +235,9 @@ function usePopoverToggle(
   triggerElement: HTMLElement | null
 ): [boolean, (value: boolean) => void] {
   const [uncontrolledIsOpen, uncontrolledSetOpen] = useState(controlledIsOpen)
-  const mouseDownTarget = useRef<EventTarget | null>()
+  const [mouseDownTarget, setMouseDownTarget] = useState<EventTarget | null>(
+    null
+  )
   const isControlled = useControlWarn({
     controllingProps: ['setOpen'],
     isControlledCheck: () => controlledSetOpen !== undefined,
@@ -255,9 +256,9 @@ function usePopoverToggle(
       // outside the popover as this is preferable to a bug where another
       // component triggers a scroll animation resulting in an
       // unintentional drag, which closes the popover
-      if (portalElement && mouseDownTarget.current) {
+      if (portalElement && mouseDownTarget) {
         const relationship = portalElement.compareDocumentPosition(
-          mouseDownTarget.current as Node
+          mouseDownTarget as Node
         )
         if (
           relationship === Node.DOCUMENT_POSITION_FOLLOWING ||
@@ -303,7 +304,7 @@ function usePopoverToggle(
     }
 
     function handleMouseDown(event: MouseEvent) {
-      mouseDownTarget.current = event.target
+      setMouseDownTarget(event.target)
       checkCloseAndStopEvent(event)
     }
 
@@ -312,20 +313,16 @@ function usePopoverToggle(
     }
 
     function handleMouseUp() {
-      window.requestAnimationFrame(() => {
-        mouseDownTarget.current = null
-        document.removeEventListener('click', handleClickOutside, true)
-        document.removeEventListener('mouseup', handleMouseUp, true)
-      })
+      setMouseDownTarget(null)
     }
 
     if (isOpen) {
       document.addEventListener('mousedown', handleMouseDown, true)
-      if (!mouseDownTarget.current) {
-        document.addEventListener('click', handleClickOutside, true)
-      }
-    } else if (mouseDownTarget.current) {
       document.addEventListener('click', handleClickOutside, true)
+    } else if (mouseDownTarget) {
+      // popover was closed via mousedown, but still need to cancel next click
+      document.addEventListener('click', handleClickOutside, true)
+      // and then cleanup mouseDownTarget
       document.addEventListener('mouseup', handleMouseUp, true)
     }
 
@@ -342,6 +339,7 @@ function usePopoverToggle(
     triggerElement,
     portalElement,
     triggerToggle,
+    mouseDownTarget,
   ])
 
   return [isOpen, setOpen]
