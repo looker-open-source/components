@@ -13,16 +13,8 @@ import {
 } from '@looker/design-tokens'
 import styled from 'styled-components'
 import { grid, GridProps } from 'styled-system'
-import React, { createContext, ReactNode, RefObject } from 'react'
+import React, { ReactNode } from 'react'
 import { OptionsWrapper } from './ActionListItemActions'
-
-export interface ActionListContextProps {
-  actionListItemRef: RefObject<HTMLElement> | undefined
-}
-
-export const ActionListItemContext = createContext<ActionListContextProps>({
-  actionListItemRef: undefined,
-})
 
 export interface ActionListItemProps
   extends BorderProps,
