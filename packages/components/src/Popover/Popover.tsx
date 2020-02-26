@@ -310,6 +310,7 @@ function usePopoverToggle(
 
     function handleClickOutside(event: MouseEvent) {
       checkCloseAndStopEvent(event)
+      setMouseDownTarget(null)
     }
 
     function handleMouseUp() {
