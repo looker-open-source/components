@@ -136,8 +136,8 @@ describe('Keyboard navigation', () => {
 
     const items = getAllByRole('option')
     expect(input).toHaveValue('')
-    expect(items[0]).not.toHaveAttribute('aria-selected')
-    expect(items[1]).not.toHaveAttribute('aria-selected')
+    expect(items[0]).toHaveAttribute('aria-selected', 'false')
+    expect(items[1]).toHaveAttribute('aria-selected', 'false')
 
     fireEvent.keyDown(input, arrowDown)
     expect(input).toHaveValue('Foo')
