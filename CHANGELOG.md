@@ -67,7 +67,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `ActionList` - sits at the top of the Action List hierarchy
   - `ActionListHeader` - contains subcontainers in the header
   - `ActionListHeaderColumn` - acts as a parent to actual header labels
-  - `ActionListItems` - contains rows of the Action List
   - `ActionListItemColumn` - equivalent to a cell in the Action List
   - `ActionListItem` - represents a data row in the Action List
   - `ActionListItemActions` - renders a `Menu`, with a `MenuDisclosure`, DotsVert `IconButton` and `MenuList`
@@ -82,7 +81,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Menu` - renamed isHovered variable to showDisclosure to make this prop's use alongside `MenuDisclosure` more obvious
 - `MenuContext` - renamed isHovered property to showDisclosure
 - `MenuDisclosure` - now has focus and blur handlers, which allows for tab-traversal to hidden `MenuDisclosure`
-- `Tooltip` - uses window.requestAnimationFrame() method to prevent a potential issue where mouse-leaving an element (via a tooltip in its children) does not trigger mouseleave event
 
 ## [0.7.18] - 2020-02-11
 
