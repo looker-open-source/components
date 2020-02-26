@@ -50,7 +50,7 @@ const ActionListItemInternal = (props: ActionListItemProps) => {
       className={className}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
-      tabIndex={0}
+      tabIndex={onClick ? 0 : undefined}
     >
       {children}
     </div>
