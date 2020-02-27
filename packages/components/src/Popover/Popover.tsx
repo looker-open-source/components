@@ -220,6 +220,15 @@ function useOpenWithoutElement(isOpen: boolean, element: HTMLElement | null) {
   return openWithoutElem
 }
 
+function isNodeInOrAfter(nodeA: Node, nodeB: Node) {
+  const relationship = nodeA.compareDocumentPosition(nodeB)
+  return (
+    relationship === Node.DOCUMENT_POSITION_FOLLOWING ||
+    relationship ===
+      Node.DOCUMENT_POSITION_FOLLOWING + Node.DOCUMENT_POSITION_CONTAINED_BY
+  )
+}
+
 function usePopoverToggle(
   {
     isOpen: controlledIsOpen = false,
@@ -257,21 +266,16 @@ function usePopoverToggle(
       // component triggers a scroll animation resulting in an
       // unintentional drag, which closes the popover
       if (portalElement && mouseDownTarget) {
-        const relationship = portalElement.compareDocumentPosition(
-          mouseDownTarget as Node
-        )
-        if (
-          relationship === Node.DOCUMENT_POSITION_FOLLOWING ||
-          relationship ===
-            Node.DOCUMENT_POSITION_FOLLOWING +
-              Node.DOCUMENT_POSITION_CONTAINED_BY
-        ) {
+        if (isNodeInOrAfter(portalElement, mouseDownTarget as Node)) {
           return
         }
       }
 
       // User clicked inside the Popover surface/portal
-      if (portalElement && portalElement.contains(event.target as Node)) {
+      if (
+        portalElement &&
+        isNodeInOrAfter(portalElement, event.target as Node)
+      ) {
         return
       }
 
@@ -301,6 +305,7 @@ function usePopoverToggle(
       }
 
       event.stopPropagation()
+      event.preventDefault()
     }
 
     function handleMouseDown(event: MouseEvent) {
