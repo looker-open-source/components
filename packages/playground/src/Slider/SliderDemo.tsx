@@ -98,13 +98,6 @@ export const SliderDemo = () => {
           <Slider
             min={0}
             max={5}
-            value={value3}
-            size="xsmall"
-            onChange={onChange3}
-          />
-          <Slider
-            min={0}
-            max={5}
             value={value4}
             size="small"
             onChange={onChange4}
@@ -128,14 +121,6 @@ export const SliderDemo = () => {
       <Card height="auto">
         <CardContent>
           <Heading pt="large">Branded Sizes:</Heading>
-          <Slider
-            min={0}
-            max={5}
-            value={value7}
-            size="xsmall"
-            onChange={onChange7}
-            branded
-          />
           <Slider
             min={0}
             max={5}

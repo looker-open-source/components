@@ -111,25 +111,25 @@ const SliderInternal = forwardRef(
         onMouseDown={handleUnfocus}
         data-testid="container"
       >
+        <SliderValueWrapper
+          offsetPercent={fillPercent}
+          valueSpacing={valueSpacing}
+        >
+          <SliderValue
+            fontSize={fontSize}
+            knobSize={knobSize}
+            branded={branded}
+            disabled={disabled}
+          >
+            <SliderValueContent>{displayValue}</SliderValueContent>
+          </SliderValue>
+        </SliderValueWrapper>
         <SliderTrack knobSize={knobSize} trackHeight={trackHeight}>
           <SliderFill
             offsetPercent={fillPercent}
             branded={branded}
             disabled={disabled}
           />
-          <SliderValueWrapper
-            offsetPercent={fillPercent}
-            valueSpacing={valueSpacing}
-          >
-            <SliderValue
-              fontSize={fontSize}
-              knobSize={knobSize}
-              branded={branded}
-              disabled={disabled}
-            >
-              <SliderValueContent>{displayValue}</SliderValueContent>
-            </SliderValue>
-          </SliderValueWrapper>
         </SliderTrack>
         <SliderInput
           branded={branded}
@@ -267,15 +267,6 @@ interface SliderValueProps extends SliderInputProps, FontSizeProps {
 
 const SliderValue = styled.div<SliderValueProps>`
   ${fontSize}
-  background: ${({ theme }) => theme.colors.palette.white};
-  border: 2px solid
-    ${({ theme: { colors }, branded, disabled }) =>
-      disabled
-        ? 'currentColor'
-        : branded
-        ? colors.semanticColors.primary.main
-        : colors.palette.blue500};
-  border-radius: ${({ theme }) => theme.radii.medium};
   color: ${({ theme: { colors }, branded, disabled }) =>
     disabled
       ? colors.palette.charcoal700
@@ -283,43 +274,9 @@ const SliderValue = styled.div<SliderValueProps>`
       ? colors.semanticColors.primary.main
       : colors.palette.blue500};
   left: -50%;
-  font-weight: 600;
   line-height: 1;
-  padding: ${({ theme: { space } }) => `${space.xxsmall} ${space.xsmall}`};
   position: relative;
   user-select: none;
-  &::before {
-    /* "word bubble" stem */
-    background: ${({ theme }) => theme.colors.palette.white};
-    border: 2px solid
-      ${({ theme: { colors }, branded, disabled }) =>
-        disabled
-          ? 'currentColor'
-          : branded
-          ? colors.semanticColors.primary.main
-          : colors.palette.blue500};
-    border-bottom: none;
-    border-right: none;
-    content: ' ';
-    height: 8px;
-    left: 50%;
-    margin-left: -4px;
-    position: absolute;
-    transform: rotate(45deg);
-    top: -6px;
-    width: 8px;
-  }
-  &::after {
-    /* mask out border overshoot on "word bubble" stem */
-    background: ${({ theme }) => theme.colors.palette.white};
-    content: ' ';
-    height: 3px;
-    left: 10%;
-    margin: 0 auto;
-    position: absolute;
-    top: 0;
-    width: 80%;
-  }
 `
 
 const SliderValueContent = styled.span`
@@ -332,16 +289,13 @@ interface SliderValueWrapperProps {
 }
 
 const SliderValueWrapper = styled.div<SliderValueWrapperProps>`
-  display: grid;
-  justify-items: center;
-  left: calc(${({ offsetPercent }) => offsetPercent}%);
+  text-align: center;
+  left: ${({ offsetPercent }) => offsetPercent}%;
   position: absolute;
   top: ${({ valueSpacing }) => valueSpacing};
 `
 
-export const Slider = styled(SliderInternal).attrs(props => ({
-  mb: props.theme.space.xxlarge,
-}))<SliderProps>`
+export const Slider = styled(SliderInternal)<SliderProps>`
   ${reset}
   ${space}
   ${width}
@@ -349,4 +303,4 @@ export const Slider = styled(SliderInternal).attrs(props => ({
 `
 
 SliderInternal.displayName = 'Slider'
-Slider.defaultProps = { width: '100%' }
+Slider.defaultProps = { mt: 'large', width: '100%' }

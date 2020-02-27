@@ -55,10 +55,9 @@ If you'd like to read and control the input value externally, `Slider` accepts a
 
 # Sizes
 
-`Slider` comes in four sizes, which can be specified in the `size` prop:
+`Slider` comes in three sizes, which can be specified in the `size` prop:
 
 ```jsx
-<Slider size="xsmall" value={2} />
 <Slider size="small" value={4} />
 <Slider size="medium" value={6} />
 <Slider size="large" value={8} />
@@ -69,7 +68,6 @@ If you'd like to read and control the input value externally, `Slider` accepts a
 In addition to the standard blue default color scheme, `Slider` provides an alternate `branded` color which uses brand colors specified <a href="http://localhost:8000/getting-started/theme">our standard Theme object.</a>
 
 ```jsx
-<Slider size="xsmall" value={2} branded />
 <Slider size="small" value={4} branded />
 <Slider size="medium" value={6} branded />
 <Slider size="large" value={8} branded />
@@ -97,7 +95,6 @@ You can customize the appearance by modifying the `theme.colors.semanticColors.p
 
   return (
     <ThemeProvider theme={myTheme}>
-      <Slider size="xsmall" value={2} branded />
       <Slider size="small" value={4} branded />
       <Slider size="medium" value={6} branded />
       <Slider size="large" value={8} branded />

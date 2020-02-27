@@ -28,12 +28,11 @@ import {
   SizeLarge,
   SizeMedium,
   SizeSmall,
-  SizeXSmall,
   FontSizes,
 } from '@looker/design-tokens'
 import { variant } from 'styled-system'
 
-export type SliderSizes = SizeXSmall | SizeSmall | SizeMedium | SizeLarge
+export type SliderSizes = SizeSmall | SizeMedium | SizeLarge
 
 export interface SliderSizeProps {
   /**
@@ -59,29 +58,23 @@ interface SliderSizeMap {
 const sliderSizeMap: SliderSizeMap = {
   prop: 'size',
   variants: {
-    xsmall: {
-      knobSize: 14,
-      trackHeight: 4,
-      fontSize: 'xsmall',
-      valueSpacing: '1rem',
-    },
     small: {
-      knobSize: 18,
-      trackHeight: 6,
-      fontSize: 'small',
-      valueSpacing: '1.3rem',
+      knobSize: 12,
+      trackHeight: 3,
+      fontSize: 'xsmall',
+      valueSpacing: '-.9rem',
     },
     medium: {
-      knobSize: 24,
-      trackHeight: 10,
-      fontSize: 'medium',
-      valueSpacing: '1.65rem',
+      knobSize: 16,
+      trackHeight: 4,
+      fontSize: 'small',
+      valueSpacing: '-1rem',
     },
     large: {
-      knobSize: 32,
-      trackHeight: 12,
-      fontSize: 'large',
-      valueSpacing: '1.9rem',
+      knobSize: 18,
+      trackHeight: 6,
+      fontSize: 'medium',
+      valueSpacing: '-1.15rem',
     },
   },
 }
