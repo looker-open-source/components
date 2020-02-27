@@ -122,7 +122,7 @@ const SliderInternal = forwardRef(
             branded={branded}
             disabled={disabled}
           >
-            <SliderValueContent>{displayValue}</SliderValueContent>
+            {displayValue}
           </SliderValue>
         </SliderValueWrapper>
         <SliderTrack knobSize={knobSize} trackHeight={trackHeight}>
@@ -163,6 +163,7 @@ interface SliderInputProps {
 const sliderThumbCss = css<SliderInputProps>`
   border-radius: 100%;
   cursor: pointer;
+  transition: transform 0.25s;
   ${({ theme: { colors }, branded, knobSize, isFocused }) => css`
     border: 3px solid
       ${branded ? colors.semanticColors.primary.main : colors.palette.blue500};
@@ -211,6 +212,20 @@ const SliderInput = styled.input.attrs({ type: 'range' })<SliderInputProps>`
 
   &:focus {
     outline: none;
+  }
+
+  &:hover {
+    &::-webkit-slider-thumb {
+      transform: scale3d(1.25, 1.25, 1);
+    }
+
+    &::-moz-range-thumb {
+      transform: scale3d(1.25, 1.25, 1);
+    }
+
+    &::-ms-thumb {
+      transform: scale3d(1.25, 1.25, 1);
+    }
   }
 
   &:disabled {
@@ -277,10 +292,6 @@ const SliderValue = styled.div<SliderValueProps>`
   line-height: 1;
   user-select: none;
   transform: translate(-35%);
-`
-
-const SliderValueContent = styled.span`
-  position: relative;
 `
 
 interface SliderValueWrapperProps {
