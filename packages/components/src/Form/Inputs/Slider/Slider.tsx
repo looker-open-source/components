@@ -82,7 +82,7 @@ const SliderInternal = forwardRef(
       ? boundSliderValue(value)
       : boundSliderValue(internalValue)
 
-    const fillPercent = ((displayValue - min) / (max - min)) * 100
+    const fillPercent = (displayValue - min) / (max - min)
 
     const { knobSize, trackHeight, fontSize, valueSpacing } = sliderSize({
       size,
@@ -114,6 +114,7 @@ const SliderInternal = forwardRef(
         <SliderValueWrapper
           offsetPercent={fillPercent}
           valueSpacing={valueSpacing}
+          knobSize={knobSize}
         >
           <SliderValue
             fontSize={fontSize}
@@ -257,7 +258,7 @@ const SliderFill = styled.div<ControlProps>`
       : branded
       ? lighten(0.1, colors.semanticColors.primary.main)
       : colors.palette.blue400};
-  width: ${({ offsetPercent }) => offsetPercent}%;
+  width: ${({ offsetPercent }) => offsetPercent * 100}%;
   border-radius: ${({ theme }) => theme.radii.small};
 `
 
@@ -273,10 +274,9 @@ const SliderValue = styled.div<SliderValueProps>`
       : branded
       ? colors.semanticColors.primary.main
       : colors.palette.blue500};
-  left: -50%;
   line-height: 1;
-  position: relative;
   user-select: none;
+  transform: translate(-35%);
 `
 
 const SliderValueContent = styled.span`
@@ -286,11 +286,15 @@ const SliderValueContent = styled.span`
 interface SliderValueWrapperProps {
   valueSpacing: string
   offsetPercent: number
+  knobSize: number
 }
 
 const SliderValueWrapper = styled.div<SliderValueWrapperProps>`
   text-align: center;
-  left: ${({ offsetPercent }) => offsetPercent}%;
+  left: calc(
+    ${({ offsetPercent, knobSize }) =>
+      `((100% - ${knobSize}px) * ${offsetPercent}) + ${knobSize / 2}px`}
+  );
   position: absolute;
   top: ${({ valueSpacing }) => valueSpacing};
 `
