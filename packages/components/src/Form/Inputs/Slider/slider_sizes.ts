@@ -61,20 +61,20 @@ const sliderSizeMap: SliderSizeMap = {
     small: {
       knobSize: 12,
       trackHeight: 3,
-      fontSize: 'xsmall',
-      valueSpacing: '-.9rem',
+      fontSize: 'xxsmall',
+      valueSpacing: '-0.75rem',
     },
     medium: {
       knobSize: 16,
       trackHeight: 4,
-      fontSize: 'small',
-      valueSpacing: '-1rem',
+      fontSize: 'xsmall',
+      valueSpacing: '-0.85rem',
     },
     large: {
       knobSize: 18,
       trackHeight: 6,
-      fontSize: 'medium',
-      valueSpacing: '-1.15rem',
+      fontSize: 'small',
+      valueSpacing: '-1rem',
     },
   },
 }
