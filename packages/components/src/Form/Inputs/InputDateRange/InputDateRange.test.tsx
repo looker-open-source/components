@@ -101,8 +101,8 @@ test('updates text input value when day is clicked', () => {
 
   const fromInput = getByTestId('date-from-text-input') as HTMLInputElement
   const toInput = getByTestId('date-to-text-input') as HTMLInputElement
-  const startDate = getAllByText('2')[0] // the 2nd day of the month
-  const endDate = getAllByText('15')[0] // the 15th day of the month
+  const startDate = getAllByText('2')[0] // the 2nd day of the month (left calendar)
+  const endDate = getAllByText('15')[1] // the 15th day of the month (right calendar)
 
   expect(fromInput.value).toEqual('')
   expect(toInput.value).toEqual('')
@@ -115,7 +115,7 @@ test('updates text input value when day is clicked', () => {
   fireEvent.click(endDate)
 
   expect(fromInput.value).toEqual('02/02/2020')
-  expect(toInput.value).toEqual('02/15/2020')
+  expect(toInput.value).toEqual('03/15/2020')
 })
 
 test('fills TextInputs with defaultValue', () => {
