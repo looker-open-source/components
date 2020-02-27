@@ -27,9 +27,10 @@
 import React, { forwardRef, Ref, SyntheticEvent, useState } from 'react'
 import isFunction from 'lodash/isFunction'
 import styled, { css } from 'styled-components'
+import { lighten, rgba } from 'polished'
 import { reset, space, SpaceProps } from '@looker/design-tokens'
 import { WidthProps, width, fontSize, FontSizeProps } from 'styled-system'
-import { lighten } from 'polished'
+
 import { InputProps } from '../InputProps'
 import { SliderSizeProps, sliderSize } from './slider_sizes'
 
@@ -163,18 +164,25 @@ interface SliderInputProps {
 const sliderThumbCss = css<SliderInputProps>`
   border-radius: 100%;
   cursor: pointer;
-  transition: transform 0.25s;
-  ${({ theme: { colors }, branded, knobSize, isFocused }) => css`
-    border: 3px solid
-      ${branded ? colors.semanticColors.primary.main : colors.palette.blue500};
-    height: ${knobSize}px;
-    width: ${knobSize}px;
-    background: ${colors.palette.white};
-    ${isFocused &&
-      `box-shadow: 0 0 6px ${
-        branded ? colors.semanticColors.primary.dark : colors.palette.blue700
-      };`}
-  `}
+  transition: transform 0.25s, border 0.25s, box-shadow 0.25s;
+  ${({ theme: { colors }, branded, knobSize, isFocused }) => {
+    const brandedFocusRing = rgba(colors.semanticColors.primary.main, 0.2)
+    const unbrandedFocusRing = rgba(colors.palette.blue400, 0.2)
+    return css`
+      border: 3px solid
+        ${branded ? colors.semanticColors.primary.main : colors.palette.blue500};
+      height: ${knobSize}px;
+      width: ${knobSize}px;
+      background: ${colors.palette.white};
+      ${isFocused &&
+        `box-shadow: 0 0 0 3px ${
+          branded ? brandedFocusRing : unbrandedFocusRing
+        };
+        transform: scale3d(1.25, 1.25, 1);
+        border-width: 4px;
+      `}
+    `
+  }}
 `
 
 const SliderInput = styled.input.attrs({ type: 'range' })<SliderInputProps>`

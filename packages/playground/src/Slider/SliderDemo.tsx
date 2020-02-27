@@ -37,11 +37,9 @@ import styled from 'styled-components'
 export const SliderDemo = () => {
   const [value1, setValue1] = useState(8)
   const [value2, setValue2] = useState(500)
-  const [value3, setValue3] = useState(1)
   const [value4, setValue4] = useState(2)
   const [value5, setValue5] = useState(3)
   const [value6, setValue6] = useState(1)
-  const [value7, setValue7] = useState(2)
   const [value8, setValue8] = useState(3)
   const [value9, setValue9] = useState(1)
   const [value10, setValue10] = useState(2)
@@ -57,11 +55,9 @@ export const SliderDemo = () => {
   }
   const onChange1 = handleEvent(setValue1)
   const onChange2 = handleEvent(setValue2)
-  const onChange3 = handleEvent(setValue3)
   const onChange4 = handleEvent(setValue4)
   const onChange5 = handleEvent(setValue5)
   const onChange6 = handleEvent(setValue6)
-  const onChange7 = handleEvent(setValue7)
   const onChange8 = handleEvent(setValue8)
   const onChange9 = handleEvent(setValue9)
   const onChange10 = handleEvent(setValue10)
