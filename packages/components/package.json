@@ -44,7 +44,7 @@
     "react-resize-detector": "^4.2.1",
     "react-transition-group": "^4.3.0",
     "styled-system": "^5.1.5",
-    "uuid": "^3.4.0"
+    "uuid": "^7.0.1"
   },
   "devDependencies": {
     "@looker/components-test-utils": "^0.7.15",
