@@ -27,7 +27,7 @@
 import React, { forwardRef, Ref, SyntheticEvent, useState } from 'react'
 import isFunction from 'lodash/isFunction'
 import styled, { css } from 'styled-components'
-import { lighten, rgba } from 'polished'
+import { rgba } from 'polished'
 import { reset, space, SpaceProps } from '@looker/design-tokens'
 import { WidthProps, width, fontSize, FontSizeProps } from 'styled-system'
 
@@ -161,28 +161,30 @@ interface SliderInputProps {
   branded?: boolean
 }
 
+const sliderThumbFocusCss = css<SliderInputProps>`
+  ${({ theme: { colors }, branded }) => {
+    const brandedFocusRing = rgba(colors.semanticColors.primary.main, 0.2)
+    const unbrandedFocusRing = rgba(colors.palette.blue400, 0.2)
+    return css`
+      box-shadow: 0 0 0 3px ${branded ? brandedFocusRing : unbrandedFocusRing};
+      transform: scale3d(1.25, 1.25, 1);
+      border-width: 4px;
+    `
+  }}
+`
+
 const sliderThumbCss = css<SliderInputProps>`
   border-radius: 100%;
   cursor: pointer;
   transition: transform 0.25s, border 0.25s, box-shadow 0.25s;
-  ${({ theme: { colors }, branded, knobSize, isFocused }) => {
-    const brandedFocusRing = rgba(colors.semanticColors.primary.main, 0.2)
-    const unbrandedFocusRing = rgba(colors.palette.blue400, 0.2)
-    return css`
-      border: 3px solid
-        ${branded ? colors.semanticColors.primary.main : colors.palette.blue500};
-      height: ${knobSize}px;
-      width: ${knobSize}px;
-      background: ${colors.palette.white};
-      ${isFocused &&
-        `box-shadow: 0 0 0 3px ${
-          branded ? brandedFocusRing : unbrandedFocusRing
-        };
-        transform: scale3d(1.25, 1.25, 1);
-        border-width: 4px;
-      `}
-    `
-  }}
+  ${({ theme: { colors }, branded, knobSize, isFocused }) => css`
+    border: 3px solid
+      ${branded ? colors.semanticColors.primary.main : colors.palette.blue500};
+    height: ${knobSize}px;
+    width: ${knobSize}px;
+    background: ${colors.palette.white};
+    ${isFocused && sliderThumbFocusCss}
+  `}
 `
 
 const SliderInput = styled.input.attrs({ type: 'range' })<SliderInputProps>`
@@ -220,33 +222,44 @@ const SliderInput = styled.input.attrs({ type: 'range' })<SliderInputProps>`
 
   &:focus {
     outline: none;
+    &::-webkit-slider-thumb {
+      ${sliderThumbFocusCss}
+    }
+
+    &::-moz-range-thumb {
+      ${sliderThumbFocusCss}
+    }
+
+    &::-ms-thumb {
+      ${sliderThumbFocusCss}
+    }
   }
 
   &:hover {
     &::-webkit-slider-thumb {
-      transform: scale3d(1.25, 1.25, 1);
+      transform: scale3d(1.15, 1.15, 1);
     }
 
     &::-moz-range-thumb {
-      transform: scale3d(1.25, 1.25, 1);
+      transform: scale3d(1.15, 1.15, 1);
     }
 
     &::-ms-thumb {
-      transform: scale3d(1.25, 1.25, 1);
+      transform: scale3d(1.15, 1.15, 1);
     }
   }
 
   &:disabled {
     &::-webkit-slider-thumb {
-      border-color: ${({ theme }) => theme.colors.palette.charcoal600};
+      border-color: ${({ theme }) => theme.colors.palette.charcoal500};
       cursor: default;
     }
     &::-moz-range-thumb {
-      border-color: ${({ theme }) => theme.colors.palette.charcoal600};
+      border-color: ${({ theme }) => theme.colors.palette.charcoal500};
       cursor: default;
     }
     &::-ms-thumb {
-      border-color: ${({ theme }) => theme.colors.palette.charcoal600};
+      border-color: ${({ theme }) => theme.colors.palette.charcoal500};
       cursor: default;
     }
   }
@@ -279,7 +292,7 @@ const SliderFill = styled.div<ControlProps>`
     disabled
       ? colors.palette.charcoal400
       : branded
-      ? lighten(0.1, colors.semanticColors.primary.main)
+      ? colors.semanticColors.primary.main
       : colors.palette.blue400};
   width: ${({ offsetPercent }) => offsetPercent * 100}%;
   border-radius: ${({ theme }) => theme.radii.small};
