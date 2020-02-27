@@ -170,7 +170,7 @@ const sliderThumbFocusCss = css<SliderInputProps>`
     )
     return css`
       box-shadow: 0 0 0 3px ${branded ? brandedFocusRing : unbrandedFocusRing};
-      transform: scale3d(1.25, 1.25, 1);
+      transform: scale3d(1.15, 1.15, 1);
       border-width: 4px;
     `
   }}
