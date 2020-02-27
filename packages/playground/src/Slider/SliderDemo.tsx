@@ -64,9 +64,9 @@ export const SliderDemo = () => {
   const onChange11 = handleEvent(setValue11)
 
   return (
-    <DemoGrid>
+    <DemoWrapper>
       <Card height="auto">
-        <CardContent>
+        <CardContent p="xxlarge">
           <Heading>Min: 0, Max: 11</Heading>
           <Slider
             min={0}
@@ -88,91 +88,97 @@ export const SliderDemo = () => {
           <Slider min={0} max={1} value={1000} />
         </CardContent>
       </Card>
-      <Card height="auto">
-        <CardContent>
-          <Heading pt="large">Default Sizes:</Heading>
-          <Slider
-            min={0}
-            max={5}
-            value={value4}
-            size="small"
-            onChange={onChange4}
-          />
-          <Slider
-            min={0}
-            max={5}
-            value={value5}
-            size="medium"
-            onChange={onChange5}
-          />
-          <Slider
-            min={0}
-            max={5}
-            value={value6}
-            size="large"
-            onChange={onChange6}
-          />
-        </CardContent>
-      </Card>
-      <Card height="auto">
-        <CardContent>
-          <Heading pt="large">Branded Sizes:</Heading>
-          <Slider
-            min={0}
-            max={5}
-            value={value8}
-            size="small"
-            onChange={onChange8}
-            branded
-          />
-          <Slider
-            min={0}
-            max={5}
-            value={value9}
-            size="medium"
-            onChange={onChange9}
-            branded
-          />
-          <Slider
-            min={0}
-            max={5}
-            value={value10}
-            size="large"
-            onChange={onChange10}
-            branded
-          />
-        </CardContent>
-      </Card>
-      <Card height="auto">
-        <CardContent>
-          <Heading pt="large">Disabled:</Heading>
+      <DemoGrid>
+        <Card height="auto">
+          <CardContent p="xxlarge">
+            <Heading pt="large">Default Sizes:</Heading>
+            <Slider
+              min={0}
+              max={5}
+              value={value4}
+              size="small"
+              onChange={onChange4}
+            />
+            <Slider
+              min={0}
+              max={5}
+              value={value5}
+              size="medium"
+              onChange={onChange5}
+            />
+            <Slider
+              min={0}
+              max={5}
+              value={value6}
+              size="large"
+              onChange={onChange6}
+            />
+          </CardContent>
+        </Card>
+        <Card height="auto">
+          <CardContent p="xxlarge">
+            <Heading pt="large">Branded Sizes:</Heading>
+            <Slider
+              min={0}
+              max={5}
+              value={value8}
+              size="small"
+              onChange={onChange8}
+              branded
+            />
+            <Slider
+              min={0}
+              max={5}
+              value={value9}
+              size="medium"
+              onChange={onChange9}
+              branded
+            />
+            <Slider
+              min={0}
+              max={5}
+              value={value10}
+              size="large"
+              onChange={onChange10}
+              branded
+            />
+          </CardContent>
+        </Card>
+        <Card height="auto">
+          <CardContent p="xxlarge">
+            <Heading pt="large">Disabled:</Heading>
 
-          <Slider
-            min={0}
-            max={5}
-            value={value11}
-            onChange={onChange11}
-            disabled
-          />
-          <Heading pt="large">Uncontrolled:</Heading>
-          <Slider min={0} max={5} />
-        </CardContent>
-      </Card>
-      <Card height="auto">
-        <CardContent>
-          <Heading pt="large">Ref Forwarding:</Heading>
-          <Slider min={0} max={5} ref={sliderRef} />
-          <p>Ref Value: {sliderRef.current && sliderRef.current.value}</p>
-        </CardContent>
-      </Card>
-    </DemoGrid>
+            <Slider
+              min={0}
+              max={5}
+              value={value11}
+              onChange={onChange11}
+              disabled
+            />
+            <Heading pt="large">Uncontrolled:</Heading>
+            <Slider min={0} max={5} />
+          </CardContent>
+        </Card>
+        <Card height="auto">
+          <CardContent p="xxlarge">
+            <Heading pt="large">Ref Forwarding:</Heading>
+            <Slider min={0} max={5} ref={sliderRef} />
+            <p>Ref Value: {sliderRef.current && sliderRef.current.value}</p>
+          </CardContent>
+        </Card>
+      </DemoGrid>
+    </DemoWrapper>
   )
 }
+
+const DemoWrapper = styled.div`
+  max-width: 1200px;
+  margin: 2rem auto;
+`
 
 const DemoGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 1rem;
-  max-width: 1200px;
-  margin: 2rem auto;
+  margin-top: 1rem;
 `

@@ -164,7 +164,10 @@ interface SliderInputProps {
 const sliderThumbFocusCss = css<SliderInputProps>`
   ${({ theme: { colors }, branded }) => {
     const brandedFocusRing = rgba(colors.semanticColors.primary.main, 0.2)
-    const unbrandedFocusRing = rgba(colors.palette.blue400, 0.2)
+    const unbrandedFocusRing = rgba(
+      colors.semanticColors.primary.linkColor,
+      0.2
+    )
     return css`
       box-shadow: 0 0 0 3px ${branded ? brandedFocusRing : unbrandedFocusRing};
       transform: scale3d(1.25, 1.25, 1);
@@ -176,10 +179,12 @@ const sliderThumbFocusCss = css<SliderInputProps>`
 const sliderThumbCss = css<SliderInputProps>`
   border-radius: 100%;
   cursor: pointer;
-  transition: transform 0.25s, border 0.25s, box-shadow 0.25s;
+  transition: transform 0.25s, box-shadow 0.25s;
   ${({ theme: { colors }, branded, knobSize, isFocused }) => css`
     border: 3px solid
-      ${branded ? colors.semanticColors.primary.main : colors.palette.blue500};
+      ${branded
+        ? colors.semanticColors.primary.main
+        : colors.semanticColors.primary.linkColor};
     height: ${knobSize}px;
     width: ${knobSize}px;
     background: ${colors.palette.white};
@@ -293,7 +298,7 @@ const SliderFill = styled.div<ControlProps>`
       ? colors.palette.charcoal400
       : branded
       ? colors.semanticColors.primary.main
-      : colors.palette.blue400};
+      : colors.semanticColors.primary.linkColor};
   width: ${({ offsetPercent }) => offsetPercent * 100}%;
   border-radius: ${({ theme }) => theme.radii.small};
 `
@@ -309,7 +314,7 @@ const SliderValue = styled.div<SliderValueProps>`
       ? colors.palette.charcoal700
       : branded
       ? colors.semanticColors.primary.main
-      : colors.palette.blue500};
+      : colors.semanticColors.primary.linkColor};
   line-height: 1;
   user-select: none;
   transform: translate(-35%);
