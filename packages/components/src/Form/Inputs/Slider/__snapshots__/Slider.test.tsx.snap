@@ -4,7 +4,7 @@ exports[`renders focus styles on keypress 1`] = `
 .c0 {
   background: transparent;
   display: block;
-  height: 30px;
+  height: 22px;
   position: relative;
   width: 100%;
   -webkit-appearance: none;
@@ -14,31 +14,52 @@ exports[`renders focus styles on keypress 1`] = `
   -webkit-appearance: none;
   border-radius: 100%;
   cursor: pointer;
+  -webkit-transition: -webkit-transform 0.25s,box-shadow 0.25s;
+  -webkit-transition: transform 0.25s,box-shadow 0.25s;
+  transition: transform 0.25s,box-shadow 0.25s;
   border: 3px solid #0087e1;
-  height: 24px;
-  width: 24px;
+  height: 16px;
+  width: 16px;
   background: #FFFFFF;
-  box-shadow: 0 0 6px #00418c;
+  box-shadow: 0 0 0 3px rgba(0,135,225,0.2);
+  -webkit-transform: scale3d(1.15,1.15,1);
+  -ms-transform: scale3d(1.15,1.15,1);
+  transform: scale3d(1.15,1.15,1);
+  border-width: 4px;
 }
 
 .c0::-moz-range-thumb {
   border-radius: 100%;
   cursor: pointer;
+  -webkit-transition: -webkit-transform 0.25s,box-shadow 0.25s;
+  -webkit-transition: transform 0.25s,box-shadow 0.25s;
+  transition: transform 0.25s,box-shadow 0.25s;
   border: 3px solid #0087e1;
-  height: 24px;
-  width: 24px;
+  height: 16px;
+  width: 16px;
   background: #FFFFFF;
-  box-shadow: 0 0 6px #00418c;
+  box-shadow: 0 0 0 3px rgba(0,135,225,0.2);
+  -webkit-transform: scale3d(1.15,1.15,1);
+  -ms-transform: scale3d(1.15,1.15,1);
+  transform: scale3d(1.15,1.15,1);
+  border-width: 4px;
 }
 
 .c0::-ms-thumb {
   border-radius: 100%;
   cursor: pointer;
+  -webkit-transition: -webkit-transform 0.25s,box-shadow 0.25s;
+  -webkit-transition: transform 0.25s,box-shadow 0.25s;
+  transition: transform 0.25s,box-shadow 0.25s;
   border: 3px solid #0087e1;
-  height: 24px;
-  width: 24px;
+  height: 16px;
+  width: 16px;
   background: #FFFFFF;
-  box-shadow: 0 0 6px #00418c;
+  box-shadow: 0 0 0 3px rgba(0,135,225,0.2);
+  -webkit-transform: scale3d(1.15,1.15,1);
+  -ms-transform: scale3d(1.15,1.15,1);
+  transform: scale3d(1.15,1.15,1);
+  border-width: 4px;
 }
 
 .c0::-ms-track {
@@ -57,18 +78,60 @@ exports[`renders focus styles on keypress 1`] = `
   outline: none;
 }
 
+.c0:focus::-webkit-slider-thumb {
+  box-shadow: 0 0 0 3px rgba(0,135,225,0.2);
+  -webkit-transform: scale3d(1.15,1.15,1);
+  -ms-transform: scale3d(1.15,1.15,1);
+  transform: scale3d(1.15,1.15,1);
+  border-width: 4px;
+}
+
+.c0:focus::-moz-range-thumb {
+  box-shadow: 0 0 0 3px rgba(0,135,225,0.2);
+  -webkit-transform: scale3d(1.15,1.15,1);
+  -ms-transform: scale3d(1.15,1.15,1);
+  transform: scale3d(1.15,1.15,1);
+  border-width: 4px;
+}
+
+.c0:focus::-ms-thumb {
+  box-shadow: 0 0 0 3px rgba(0,135,225,0.2);
+  -webkit-transform: scale3d(1.15,1.15,1);
+  -ms-transform: scale3d(1.15,1.15,1);
+  transform: scale3d(1.15,1.15,1);
+  border-width: 4px;
+}
+
+.c0:hover::-webkit-slider-thumb {
+  -webkit-transform: scale3d(1.15,1.15,1);
+  -ms-transform: scale3d(1.15,1.15,1);
+  transform: scale3d(1.15,1.15,1);
+}
+
+.c0:hover::-moz-range-thumb {
+  -webkit-transform: scale3d(1.15,1.15,1);
+  -ms-transform: scale3d(1.15,1.15,1);
+  transform: scale3d(1.15,1.15,1);
+}
+
+.c0:hover::-ms-thumb {
+  -webkit-transform: scale3d(1.15,1.15,1);
+  -ms-transform: scale3d(1.15,1.15,1);
+  transform: scale3d(1.15,1.15,1);
+}
+
 .c0:disabled::-webkit-slider-thumb {
-  border-color: #4C535B;
+  border-color: #707781;
   cursor: default;
 }
 
 .c0:disabled::-moz-range-thumb {
-  border-color: #4C535B;
+  border-color: #707781;
   cursor: default;
 }
 
 .c0:disabled::-ms-thumb {
-  border-color: #4C535B;
+  border-color: #707781;
   cursor: default;
 }
 
