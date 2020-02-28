@@ -43,7 +43,7 @@ export const InputDateRangeDemo: FC = () => {
           </SelectedDateWrapper>
         </HeadingGrid>
 
-        <InputDateRange onChange={handleRangeChange} m="small" />
+        <InputDateRange onChange={handleRangeChange} />
       </div>
       <div>
         <HeadingGrid>
@@ -90,7 +90,6 @@ export const InputDateRangeDemo: FC = () => {
             onChange={setLocalizedDate}
             locale={locale as LocaleCodes}
             key={locale}
-            m="small"
           />
         </div>
       </div>
@@ -98,10 +97,7 @@ export const InputDateRangeDemo: FC = () => {
         <HeadingGrid>
           <Heading as="h1">defaultValue</Heading>
         </HeadingGrid>
-        <InputDateRange
-          defaultValue={{ from: startDate, to: endDate }}
-          m="small"
-        />
+        <InputDateRange defaultValue={{ from: startDate, to: endDate }} />
       </div>
     </DemoWrapper>
   )

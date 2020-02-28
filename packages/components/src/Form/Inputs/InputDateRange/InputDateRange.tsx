@@ -22,6 +22,7 @@ import {
   Locales,
   formatDateString,
   parseDateFromString,
+  useID,
 } from '../../../utils'
 
 interface InputDateRangeProps {
@@ -97,6 +98,7 @@ export const InputDateRange: FC<InputDateRangeProps> = ({
     formatDateString(dateRange.from, locale)
   )
   const [validFromDate, setValidFromDate] = useState(validationType !== 'error')
+  const fromID = useID()
 
   /*
    * TO State
@@ -105,6 +107,7 @@ export const InputDateRange: FC<InputDateRangeProps> = ({
     formatDateString(dateRange.to, locale)
   )
   const [validToDate, setValidToDate] = useState(validationType !== 'error')
+  const toID = useID()
 
   /*
    * Combine state into one easily traversable object
@@ -232,7 +235,7 @@ export const InputDateRange: FC<InputDateRangeProps> = ({
     <InputDateRangeWrapper>
       <MultiCalendarLayout px="small">
         <InputTextWrapper active={activeDateInput === 'from'}>
-          <InputLabel active={activeDateInput === 'from'} htmlFor="date-from">
+          <InputLabel active={activeDateInput === 'from'} htmlFor={fromID}>
             From:
           </InputLabel>
           <InputText
@@ -244,13 +247,13 @@ export const InputDateRange: FC<InputDateRangeProps> = ({
             onChange={handleTextInputChange}
             onBlur={handleValidation}
             data-testid="date-from-text-input"
-            id="date-from"
+            id={fromID}
             onFocus={partial(handleTextInputFocus, 'from')}
             validationType={!inputs.from.isValid ? 'error' : undefined}
           />
         </InputTextWrapper>
         <InputTextWrapper active={activeDateInput === 'to'}>
-          <InputLabel active={activeDateInput === 'to'} htmlFor="date-from">
+          <InputLabel active={activeDateInput === 'to'} htmlFor={toID}>
             To:
           </InputLabel>
           <InputText
@@ -262,7 +265,7 @@ export const InputDateRange: FC<InputDateRangeProps> = ({
             onChange={handleTextInputChange}
             onBlur={handleValidation}
             data-testid="date-to-text-input"
-            id="date-to"
+            id={toID}
             onFocus={partial(handleTextInputFocus, 'to')}
             validationType={!inputs.to.isValid ? 'error' : undefined}
           />
