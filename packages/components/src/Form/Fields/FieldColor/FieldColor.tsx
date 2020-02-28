@@ -24,7 +24,14 @@
 
  */
 
-import React, { useState, ChangeEvent, FormEvent, forwardRef, Ref } from 'react'
+import React, {
+  useState,
+  ChangeEvent,
+  FormEvent,
+  forwardRef,
+  Ref,
+  useEffect,
+} from 'react'
 import styled from 'styled-components'
 import uuid from 'uuid/v4'
 import { usePopover, PopoverContent } from '../../../Popover'
@@ -93,6 +100,15 @@ export const FieldColorComponent = forwardRef(
 
     const [color, setColor] = useState<SimpleHSV>(initialValue)
     const [inputTextValue, setInputTextValue] = useState(props.value || '')
+    const [isFocused, setIsFocused] = useState(false)
+
+    const handleFocus = () => setIsFocused(true)
+    const handleBlur = () => setIsFocused(false)
+
+    useEffect(() => {
+      props.value && setColor(str2simpleHsv(props.value))
+      !isFocused && setInputTextValue(props.value || '')
+    }, [isFocused, props.value])
 
     const callOnChange = (newColor: SimpleHSV) => {
       if (!props.onChange || !newColor) return
@@ -177,6 +193,8 @@ export const FieldColorComponent = forwardRef(
               validationType={validationMessage && validationMessage.type}
               onChange={handleInputTextChange}
               value={inputTextValue}
+              onFocus={handleFocus}
+              onBlur={handleBlur}
             />
           )}
         </FormControl>

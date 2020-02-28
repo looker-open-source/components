@@ -19,26 +19,28 @@
  */
 
 import React from 'react'
-import ReactDOM from 'react-dom'
-import { GlobalStyle } from '@looker/components'
-import { theme } from '@looker/design-tokens'
-import { ThemeProvider } from 'styled-components'
+import { Box, FieldColor, Select, Swatch } from '@looker/components'
 
-import { FieldColorDemo } from './Form/FieldColorDemo'
+export function FieldColorDemo() {
+  const [color, setColor] = React.useState('red')
 
-const App: React.FC = () => {
+  function handleChange(value: string) {
+    setColor(value)
+  }
+
+  function handleColorChange(e: React.FormEvent<HTMLInputElement>) {
+    setColor(e.currentTarget.value)
+  }
+
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <FieldColorDemo />
-    </ThemeProvider>
+    <Box>
+      <Select
+        options={[{ value: 'green' }, { value: 'purple' }, { value: 'red' }]}
+        defaultValue="red"
+        onChange={handleChange}
+      />
+      <FieldColor value={color} onChange={handleColorChange} />
+      <Swatch color={color} />
+    </Box>
   )
 }
-
-/**
- * This is the binding site for the playground. If you want to edit the
- * primary application, do your work in App.tsx instead.
- */
-document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(<App />, document.getElementById('container'))
-})
