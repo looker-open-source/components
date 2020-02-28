@@ -66,6 +66,7 @@ export const Swatch = styled.div<SwatchProps>`
 
   background-color: ${props => props.color};
   margin-top: auto;
+  flex-shrink: 0;
 `
 
 Swatch.defaultProps = {

@@ -98,36 +98,29 @@ export const FieldColorComponent = forwardRef(
     }: FieldColorProps,
     ref: Ref<HTMLInputElement>
   ) => {
-    const inputID = useID(id)
-    const validationMessage = useFormContext(props)
-
     const isControlled = useControlWarn({
       controllingProps: ['onChange', 'value'],
       isControlledCheck: () => onChange !== undefined,
-      name: 'ButtonGroup',
+      name: 'FieldColor',
     })
 
-    const colorFromProps = getColorFromText(controlledValue)
-    const defaultColorFromProps = getColorFromText(defaultValue)
+    const whiteHSV = polarbrightness2hsv(white())
+    const colorFromProps =
+      getColorFromText(controlledValue || defaultValue) || whiteHSV
 
-    const initialWhite = polarbrightness2hsv(white())
-    const initialValue = colorFromProps
-      ? controlledValue
-      : defaultColorFromProps
-      ? defaultValue
-      : ''
-    const initialColor = colorFromProps || defaultColorFromProps || initialWhite
+    const [color, setColor] = useState<SimpleHSV>(colorFromProps)
+    const [value, setValue] = useState(defaultValue || '')
 
-    const [color, setColor] = useState<SimpleHSV>(initialColor)
-    const [value, setValue] = useState(initialValue)
-
-    // If there's been an external change, update the input text value
+    // If there's been an external change in the color, update the input value
+    // except when the user is manually typing a color string (isInputting.current === true)
+    // since onChange will have been called with #ffffff until the typed value is a valid color
+    // and updating the input text with that would interfere with typing
     const isInputting = useRef(false)
     if (controlledValue && value !== controlledValue && !isInputting.current) {
       setValue(controlledValue)
     }
 
-    const colorToUse = isControlled ? colorFromProps || initialWhite : color
+    const colorToUse = isControlled ? colorFromProps || whiteHSV : color
 
     const updateColor = (newColor: SimpleHSV) => {
       if (onChange) {
@@ -158,7 +151,7 @@ export const FieldColorComponent = forwardRef(
 
       const newColor =
         !newValue || !isValidColor(newValue)
-          ? initialWhite
+          ? whiteHSV
           : str2simpleHsv(newValue)
       updateColor(newColor)
 
@@ -166,6 +159,8 @@ export const FieldColorComponent = forwardRef(
         isInputting.current = false
       })
     }
+    const inputID = useID(id)
+    const validationMessage = useFormContext(props)
 
     const content = (
       <PopoverContent display="flex" flexDirection="column">

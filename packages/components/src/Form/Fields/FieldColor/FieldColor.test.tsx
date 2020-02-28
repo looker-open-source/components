@@ -28,7 +28,10 @@ import 'jest-styled-components'
 import '@testing-library/jest-dom/extend-expect'
 import React from 'react'
 import { fireEvent } from '@testing-library/react'
-import { renderWithTheme } from '@looker/components-test-utils'
+import {
+  assertSnapshotShallow,
+  renderWithTheme,
+} from '@looker/components-test-utils'
 import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
 
@@ -36,11 +39,15 @@ import { Button } from '../../../Button'
 import { FieldColor } from './FieldColor'
 
 describe('FieldColor', () => {
+  test('Default render', () => {
+    assertSnapshotShallow(<FieldColor />)
+  })
+
   test('with hidden input', () => {
-    const { queryByRole } = renderWithTheme(
+    const { queryByDisplayValue } = renderWithTheme(
       <FieldColor value="yellow" hideInput />
     )
-    expect(queryByRole('input')).not.toBeInTheDocument()
+    expect(queryByDisplayValue('yellow')).not.toBeInTheDocument()
   })
 
   test('starts with a named color value', () => {
@@ -48,22 +55,21 @@ describe('FieldColor', () => {
     expect(getByDisplayValue('green')).toBeInTheDocument()
   })
 
-  test('starts with a named color value', () => {
+  test('responds to input value change', () => {
     const { getByDisplayValue } = renderWithTheme(<FieldColor value="green" />)
     fireEvent.change(getByDisplayValue('green'), { target: { value: 'blue' } })
     expect(getByDisplayValue('blue')).toBeInTheDocument()
   })
 
+  const FieldColorValidationMessage = () => {
+    return (
+      <ThemeProvider theme={theme}>
+        <FieldColor validationMessage={{ message: 'Error!', type: 'error' }} />
+      </ThemeProvider>
+    )
+  }
+
   test('with a validation message', () => {
-    const FieldColorValidationMessage = () => {
-      return (
-        <ThemeProvider theme={theme}>
-          <FieldColor
-            validationMessage={{ message: 'Error!', type: 'error' }}
-          />
-        </ThemeProvider>
-      )
-    }
     const { queryByText } = renderWithTheme(<FieldColorValidationMessage />)
     expect(queryByText('Error!')).toBeInTheDocument()
   })
