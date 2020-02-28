@@ -31,7 +31,7 @@
   },
   "devDependencies": {
     "@types/lodash": "^4.14.149",
-    "@types/styled-components": "^4.4.1",
+    "@types/styled-components": "^5.0.1",
     "@types/styled-system": "^5.1.5",
     "csstype": "^2.6.9",
     "lodash": "^4.17.15",
