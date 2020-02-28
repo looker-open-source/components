@@ -1,4 +1,4 @@
-import React, { FC, useState, SyntheticEvent } from 'react'
+import React, { FC, useState, SyntheticEvent, useEffect } from 'react'
 import { RangeModifier } from 'react-day-picker'
 import styled from 'styled-components'
 import isFunction from 'lodash/isFunction'
@@ -27,6 +27,7 @@ import {
 } from '../../../utils'
 
 interface InputDateRangeProps {
+  value?: RangeModifier
   defaultValue?: RangeModifier
   onChange?: (range?: Partial<RangeModifier>) => void
   onValidationFail?: (value: string) => void
@@ -67,17 +68,18 @@ const chooseDateToSet = (
 }
 
 export const InputDateRange: FC<InputDateRangeProps> = ({
-  onChange,
   defaultValue = {},
   locale = Locales.English,
+  onChange,
   onValidationFail,
   validationType,
+  value,
 }) => {
   /*
    * JOINT State
    */
   const [dateRange, setDateRange] = useState<Partial<RangeModifier>>(
-    defaultValue
+    value || defaultValue
   )
 
   // toggle between selecting start and end dates
@@ -131,6 +133,15 @@ export const InputDateRange: FC<InputDateRangeProps> = ({
   /*
    * Set up necessary callbacks
    */
+
+  useEffect(() => {
+    if (value) {
+      setDateRange(value)
+      value.from && inputs.from.setValue(formatDateString(value.from, locale))
+      value.to && inputs.to.setValue(formatDateString(value.to, locale))
+    }
+  }, [inputs.from, inputs.to, locale, value])
+
   const toggleActiveDateInput = () => {
     if (activeDateInput === 'from') {
       setActiveDateInput('to')

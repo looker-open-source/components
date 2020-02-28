@@ -6,6 +6,9 @@ import {
   LocaleCodes,
   DateFormat,
   InputDateRange,
+  Popover,
+  Button,
+  Box,
 } from '@looker/components'
 
 export const InputDateRangeDemo: FC = () => {
@@ -25,6 +28,15 @@ export const InputDateRangeDemo: FC = () => {
   const handleLocaleChange = (val: any) => {
     setLocale(val)
     setLocalizedDate('')
+  }
+
+  const [controlledDateRange, setControlledDateRange] = useState<any>()
+
+  function handleNextWeekClick() {
+    setControlledDateRange({
+      from: new Date('03/02/2020'),
+      to: new Date('03/09/2020'),
+    })
   }
 
   return (
@@ -92,6 +104,42 @@ export const InputDateRangeDemo: FC = () => {
             key={locale}
           />
         </div>
+      </div>
+      <div>
+        <HeadingGrid>
+          <Heading as="h1">Controlled Component</Heading>
+        </HeadingGrid>
+        <Popover
+          content={
+            <Box p="small">
+              <Button onClick={handleNextWeekClick}>Next Week</Button>
+              <Box mt="large">
+                <InputDateRange
+                  value={controlledDateRange}
+                  onChange={setControlledDateRange}
+                />
+              </Box>
+            </Box>
+          }
+        >
+          {(onClick, ref, className) => (
+            <Button
+              aria-haspopup="true"
+              onClick={onClick}
+              ref={ref}
+              className={className}
+            >
+              {controlledDateRange ? (
+                <>
+                  <DateFormat>{controlledDateRange.from}</DateFormat> &mdash;
+                  <DateFormat>{controlledDateRange.to}</DateFormat>
+                </>
+              ) : (
+                'Click To Select Date'
+              )}
+            </Button>
+          )}
+        </Popover>
       </div>
       <div>
         <HeadingGrid>
