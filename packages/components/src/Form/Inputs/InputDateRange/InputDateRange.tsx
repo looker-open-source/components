@@ -6,13 +6,8 @@ import partial from 'lodash/partial'
 import min from 'lodash/min'
 import max from 'lodash/max'
 import values from 'lodash/values'
-import {
-  border,
-  BorderProps,
-  SpaceProps,
-  color,
-  space,
-} from '@looker/design-tokens'
+import { border, SpaceProps, color, space } from '@looker/design-tokens'
+import { ValidationType } from '../../ValidationMessage'
 
 import {
   InputText,
@@ -28,16 +23,13 @@ import {
   formatDateString,
   parseDateFromString,
 } from '../../../utils'
-import { InputProps } from '../InputProps'
 
-interface InputDateRangeProps
-  extends Omit<InputProps, 'defaultValue' | 'onChange'>,
-    SpaceProps,
-    BorderProps {
+interface InputDateRangeProps {
   defaultValue?: RangeModifier
   onChange?: (range?: Partial<RangeModifier>) => void
   onValidationFail?: (value: string) => void
   locale?: LocaleCodes
+  validationType?: ValidationType
 }
 
 type Endpoint = 'to' | 'from'
