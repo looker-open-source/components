@@ -14,6 +14,7 @@ import {
   inputTextHover,
   inputTextFocus,
   inputTextDefaults,
+  inputTextValidation,
   CustomizableInputTextAttributes,
 } from '../InputText'
 import { Calendar } from '../../../Calendar'
@@ -234,7 +235,10 @@ export const InputDateRange: FC<InputDateRangeProps> = ({
   return (
     <InputDateRangeWrapper>
       <MultiCalendarLayout px="small">
-        <InputTextWrapper active={activeDateInput === 'from'}>
+        <InputTextWrapper
+          active={activeDateInput === 'from'}
+          validationType={inputs.from.isValid ? undefined : 'error'}
+        >
           <InputLabel active={activeDateInput === 'from'} htmlFor={fromID}>
             From:
           </InputLabel>
@@ -249,10 +253,12 @@ export const InputDateRange: FC<InputDateRangeProps> = ({
             data-testid="date-from-text-input"
             id={fromID}
             onFocus={partial(handleTextInputFocus, 'from')}
-            validationType={!inputs.from.isValid ? 'error' : undefined}
           />
         </InputTextWrapper>
-        <InputTextWrapper active={activeDateInput === 'to'}>
+        <InputTextWrapper
+          active={activeDateInput === 'to'}
+          validationType={inputs.to.isValid ? undefined : 'error'}
+        >
           <InputLabel active={activeDateInput === 'to'} htmlFor={toID}>
             To:
           </InputLabel>
@@ -267,7 +273,6 @@ export const InputDateRange: FC<InputDateRangeProps> = ({
             data-testid="date-to-text-input"
             id={toID}
             onFocus={partial(handleTextInputFocus, 'to')}
-            validationType={!inputs.to.isValid ? 'error' : undefined}
           />
         </InputTextWrapper>
       </MultiCalendarLayout>
@@ -328,7 +333,7 @@ const MultiCalendarLayout = styled.div<SpaceProps>`
 const InputTextWrapper = styled.div.attrs({
   ...inputTextDefaults,
   ...CustomizableInputTextAttributes,
-})<{ active: boolean }>`
+})<{ active: boolean; validationType?: 'error' }>`
   ${border}
   ${color}
   display: grid;
@@ -343,6 +348,8 @@ const InputTextWrapper = styled.div.attrs({
   &:focus-within {
     ${inputTextFocus}
   }
+
+  ${inputTextValidation}
 
   ${InputText} {
     border: none;
