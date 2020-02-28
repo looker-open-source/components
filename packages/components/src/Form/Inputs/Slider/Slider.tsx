@@ -27,9 +27,10 @@
 import React, { forwardRef, Ref, SyntheticEvent, useState } from 'react'
 import isFunction from 'lodash/isFunction'
 import styled, { css } from 'styled-components'
+import { rgba } from 'polished'
 import { reset, space, SpaceProps } from '@looker/design-tokens'
 import { WidthProps, width, fontSize, FontSizeProps } from 'styled-system'
-import { lighten } from 'polished'
+
 import { InputProps } from '../InputProps'
 import { SliderSizeProps, sliderSize } from './slider_sizes'
 
@@ -82,7 +83,7 @@ const SliderInternal = forwardRef(
       ? boundSliderValue(value)
       : boundSliderValue(internalValue)
 
-    const fillPercent = ((displayValue - min) / (max - min)) * 100
+    const fillPercent = (displayValue - min) / (max - min)
 
     const { knobSize, trackHeight, fontSize, valueSpacing } = sliderSize({
       size,
@@ -111,25 +112,26 @@ const SliderInternal = forwardRef(
         onMouseDown={handleUnfocus}
         data-testid="container"
       >
+        <SliderValueWrapper
+          offsetPercent={fillPercent}
+          valueSpacing={valueSpacing}
+          knobSize={knobSize}
+        >
+          <SliderValue
+            fontSize={fontSize}
+            knobSize={knobSize}
+            branded={branded}
+            disabled={disabled}
+          >
+            {displayValue}
+          </SliderValue>
+        </SliderValueWrapper>
         <SliderTrack knobSize={knobSize} trackHeight={trackHeight}>
           <SliderFill
             offsetPercent={fillPercent}
             branded={branded}
             disabled={disabled}
           />
-          <SliderValueWrapper
-            offsetPercent={fillPercent}
-            valueSpacing={valueSpacing}
-          >
-            <SliderValue
-              fontSize={fontSize}
-              knobSize={knobSize}
-              branded={branded}
-              disabled={disabled}
-            >
-              <SliderValueContent>{displayValue}</SliderValueContent>
-            </SliderValue>
-          </SliderValueWrapper>
         </SliderTrack>
         <SliderInput
           branded={branded}
@@ -159,19 +161,34 @@ interface SliderInputProps {
   branded?: boolean
 }
 
+const sliderThumbFocusCss = css<SliderInputProps>`
+  ${({ theme: { colors }, branded }) => {
+    const brandedFocusRing = rgba(colors.semanticColors.primary.main, 0.2)
+    const unbrandedFocusRing = rgba(
+      colors.semanticColors.primary.linkColor,
+      0.2
+    )
+    return css`
+      box-shadow: 0 0 0 3px ${branded ? brandedFocusRing : unbrandedFocusRing};
+      transform: scale3d(1.15, 1.15, 1);
+      border-width: 4px;
+    `
+  }}
+`
+
 const sliderThumbCss = css<SliderInputProps>`
   border-radius: 100%;
   cursor: pointer;
+  transition: transform 0.25s, box-shadow 0.25s;
   ${({ theme: { colors }, branded, knobSize, isFocused }) => css`
     border: 3px solid
-      ${branded ? colors.semanticColors.primary.main : colors.palette.blue500};
+      ${branded
+        ? colors.semanticColors.primary.main
+        : colors.semanticColors.primary.linkColor};
     height: ${knobSize}px;
     width: ${knobSize}px;
     background: ${colors.palette.white};
-    ${isFocused &&
-      `box-shadow: 0 0 6px ${
-        branded ? colors.semanticColors.primary.dark : colors.palette.blue700
-      };`}
+    ${isFocused && sliderThumbFocusCss}
   `}
 `
 
@@ -210,19 +227,44 @@ const SliderInput = styled.input.attrs({ type: 'range' })<SliderInputProps>`
 
   &:focus {
     outline: none;
+    &::-webkit-slider-thumb {
+      ${sliderThumbFocusCss}
+    }
+
+    &::-moz-range-thumb {
+      ${sliderThumbFocusCss}
+    }
+
+    &::-ms-thumb {
+      ${sliderThumbFocusCss}
+    }
+  }
+
+  &:hover {
+    &::-webkit-slider-thumb {
+      transform: scale3d(1.15, 1.15, 1);
+    }
+
+    &::-moz-range-thumb {
+      transform: scale3d(1.15, 1.15, 1);
+    }
+
+    &::-ms-thumb {
+      transform: scale3d(1.15, 1.15, 1);
+    }
   }
 
   &:disabled {
     &::-webkit-slider-thumb {
-      border-color: ${({ theme }) => theme.colors.palette.charcoal600};
+      border-color: ${({ theme }) => theme.colors.palette.charcoal500};
       cursor: default;
     }
     &::-moz-range-thumb {
-      border-color: ${({ theme }) => theme.colors.palette.charcoal600};
+      border-color: ${({ theme }) => theme.colors.palette.charcoal500};
       cursor: default;
     }
     &::-ms-thumb {
-      border-color: ${({ theme }) => theme.colors.palette.charcoal600};
+      border-color: ${({ theme }) => theme.colors.palette.charcoal500};
       cursor: default;
     }
   }
@@ -255,9 +297,9 @@ const SliderFill = styled.div<ControlProps>`
     disabled
       ? colors.palette.charcoal400
       : branded
-      ? lighten(0.1, colors.semanticColors.primary.main)
-      : colors.palette.blue400};
-  width: ${({ offsetPercent }) => offsetPercent}%;
+      ? colors.semanticColors.primary.main
+      : colors.semanticColors.primary.linkColor};
+  width: ${({ offsetPercent }) => offsetPercent * 100}%;
   border-radius: ${({ theme }) => theme.radii.small};
 `
 
@@ -267,81 +309,34 @@ interface SliderValueProps extends SliderInputProps, FontSizeProps {
 
 const SliderValue = styled.div<SliderValueProps>`
   ${fontSize}
-  background: ${({ theme }) => theme.colors.palette.white};
-  border: 2px solid
-    ${({ theme: { colors }, branded, disabled }) =>
-      disabled
-        ? 'currentColor'
-        : branded
-        ? colors.semanticColors.primary.main
-        : colors.palette.blue500};
-  border-radius: ${({ theme }) => theme.radii.medium};
   color: ${({ theme: { colors }, branded, disabled }) =>
     disabled
       ? colors.palette.charcoal700
       : branded
       ? colors.semanticColors.primary.main
-      : colors.palette.blue500};
-  left: -50%;
-  font-weight: 600;
+      : colors.semanticColors.primary.linkColor};
   line-height: 1;
-  padding: ${({ theme: { space } }) => `${space.xxsmall} ${space.xsmall}`};
-  position: relative;
   user-select: none;
-  &::before {
-    /* "word bubble" stem */
-    background: ${({ theme }) => theme.colors.palette.white};
-    border: 2px solid
-      ${({ theme: { colors }, branded, disabled }) =>
-        disabled
-          ? 'currentColor'
-          : branded
-          ? colors.semanticColors.primary.main
-          : colors.palette.blue500};
-    border-bottom: none;
-    border-right: none;
-    content: ' ';
-    height: 8px;
-    left: 50%;
-    margin-left: -4px;
-    position: absolute;
-    transform: rotate(45deg);
-    top: -6px;
-    width: 8px;
-  }
-  &::after {
-    /* mask out border overshoot on "word bubble" stem */
-    background: ${({ theme }) => theme.colors.palette.white};
-    content: ' ';
-    height: 3px;
-    left: 10%;
-    margin: 0 auto;
-    position: absolute;
-    top: 0;
-    width: 80%;
-  }
-`
-
-const SliderValueContent = styled.span`
-  position: relative;
+  transform: translate(-35%);
 `
 
 interface SliderValueWrapperProps {
   valueSpacing: string
   offsetPercent: number
+  knobSize: number
 }
 
 const SliderValueWrapper = styled.div<SliderValueWrapperProps>`
-  display: grid;
-  justify-items: center;
-  left: calc(${({ offsetPercent }) => offsetPercent}%);
+  text-align: center;
+  left: calc(
+    ${({ offsetPercent, knobSize }) =>
+      `((100% - ${knobSize}px) * ${offsetPercent}) + ${knobSize / 2}px`}
+  );
   position: absolute;
   top: ${({ valueSpacing }) => valueSpacing};
 `
 
-export const Slider = styled(SliderInternal).attrs(props => ({
-  mb: props.theme.space.xxlarge,
-}))<SliderProps>`
+export const Slider = styled(SliderInternal)<SliderProps>`
   ${reset}
   ${space}
   ${width}
@@ -349,4 +344,4 @@ export const Slider = styled(SliderInternal).attrs(props => ({
 `
 
 SliderInternal.displayName = 'Slider'
-Slider.defaultProps = { width: '100%' }
+Slider.defaultProps = { mt: 'large', width: '100%' }
