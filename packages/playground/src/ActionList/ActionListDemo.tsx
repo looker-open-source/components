@@ -27,6 +27,7 @@
 import React, { FC } from 'react'
 import {
   ActionList,
+  ActionListColumns,
   ActionListItem,
   ActionListItemColumn,
   ActionListItemAction,
@@ -39,35 +40,63 @@ import {
 
 const data = [
   {
-    groupName: 'Jakubowski, Osinski and Armstrong',
+    groupName: 'GLoogker',
     id: 1,
     members: 131,
     roles: 'Engineering',
   },
   {
-    groupName: 'Hintz, Mayer and Hettinger',
+    groupName: 'FaceLook',
     id: 2,
     members: 180,
     roles: 'Legal',
   },
-  { groupName: 'Grady-Koelpin', id: 3, members: 96, roles: 'Human Resources' },
+  { groupName: 'Lookersoft', id: 3, members: 96, roles: 'Human Resources' },
   {
-    groupName: 'Leuschke Inc',
+    groupName: 'NetfLooks',
     id: 4,
     members: 43,
     roles: 'Business Development',
   },
   {
-    groupName: 'Prosacco, Stanton and Bailey',
+    groupName: 'Apple (but Looker)',
     id: 5,
     members: 46,
     roles: 'Services',
   },
 ]
 
+const columns: ActionListColumns = [
+  {
+    children: data.map(datum => datum.id),
+    id: 'id',
+    primaryKey: true,
+    type: 'number',
+    widthPercent: 10,
+  },
+  {
+    children: data.map(datum => datum.groupName),
+    id: 'groupName',
+    type: 'string',
+    widthPercent: 30,
+  },
+  {
+    children: data.map(datum => datum.roles),
+    id: 'roles',
+    type: 'string',
+    widthPercent: 30,
+  },
+  {
+    children: data.map(datum => datum.members),
+    id: 'members',
+    type: 'number',
+    widthPercent: 30,
+  },
+]
+
 export const ActionListDemo: FC = () => {
   return (
-    <ActionList columns={['10%', '30%', '30%', '30%']}>
+    <ActionList columns={columns}>
       <ActionListHeader>
         <ActionListRowContainer>
           <ActionListHeaderColumn>ID</ActionListHeaderColumn>
@@ -82,10 +111,8 @@ export const ActionListDemo: FC = () => {
           <ActionListRowContainer>
             <ActionListItemColumn primaryKey>{id}</ActionListItemColumn>
             <ActionListItemColumn>
-              {groupName}
-              <div>
-                <a href="https://google.com">Google</a>
-              </div>
+              <div>{groupName}</div>
+              <a href="https://google.com">Website</a>
             </ActionListItemColumn>
             <ActionListItemColumn>{roles}</ActionListItemColumn>
             <ActionListItemColumn>{members}</ActionListItemColumn>

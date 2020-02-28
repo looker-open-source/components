@@ -8,15 +8,13 @@ export interface ActionListItemActionProps
   children?: ReactNode
   detail?: ReactNode
   icon?: IconNames
-  itemRole?: 'button' | 'link'
+  role?: 'button' | 'link'
 }
 
-export const ActionListItemAction = (props: ActionListItemActionProps) => {
-  const { children, detail, icon, itemRole, onClick } = props
-
-  return (
-    <MenuItem detail={detail} icon={icon} itemRole={itemRole} onClick={onClick}>
-      {children}
-    </MenuItem>
-  )
-}
+/**
+ * MenuItem may undergo a refactor soon. Creating a proxy in the form of ActionListItemAction
+ * allows us to adapt to any changes to MenuItem or its interface.
+ * */
+export const ActionListItemAction = (props: ActionListItemActionProps) => (
+  <MenuItem {...props} />
+)

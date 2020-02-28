@@ -1,35 +1,9 @@
-import {
-  border,
-  BorderProps,
-  color,
-  ColorProps,
-  flexbox,
-  FlexboxProps,
-  layout,
-  LayoutProps,
-  space,
-  SpaceProps,
-  CompatibleHTMLProps,
-} from '@looker/design-tokens'
+import { CompatibleHTMLProps } from '@looker/design-tokens'
 import styled from 'styled-components'
-import { grid, GridProps } from 'styled-system'
-import React, { ReactNode } from 'react'
+import React from 'react'
 import { OptionsWrapper } from './ActionListItemActions'
 
-export interface ActionListItemProps
-  extends BorderProps,
-    ColorProps,
-    CompatibleHTMLProps<HTMLElement>,
-    FlexboxProps,
-    GridProps,
-    LayoutProps,
-    SpaceProps {
-  children?: ReactNode
-  options?: ReactNode
-  className?: string
-}
-
-const ActionListItemInternal = (props: ActionListItemProps) => {
+const ActionListItemInternal = (props: CompatibleHTMLProps<HTMLDivElement>) => {
   const { children, className, onClick } = props
 
   const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
@@ -58,31 +32,21 @@ const ActionListItemInternal = (props: ActionListItemProps) => {
 }
 
 export const ActionListItem = styled(ActionListItemInternal)`
-  ${border}
-  ${space}
-  ${color}
-  ${flexbox}
-  ${grid}
-  ${layout}
+  border-bottom: solid 1px ${props => props.theme.colors.palette.charcoal200};
+  display: flex;
 
   &:focus,
   &:hover,
   &:focus-within {
+    box-shadow: ${({ theme, onClick }) => onClick && theme.shadows[2]};
     outline: none;
-    box-shadow: ${({ theme, onClick }) => {
-      if (onClick) {
-        return theme.shadows[2]
-      }
-    }};
+
+    /* Hovered ActionListItem needs z-index: 1 and non-static position */
+    position: relative;
+    z-index: 1;
+
     ${OptionsWrapper} {
       opacity: 100%;
     }
   }
 `
-
-ActionListItem.defaultProps = {
-  backgroundColor: 'palette.transparent',
-  borderBottom: 'solid 1px',
-  borderColor: 'palette.charcoal200',
-  display: 'flex',
-}

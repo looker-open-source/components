@@ -14,7 +14,7 @@ export const OptionsWrapper = styled.div<{ menuOpen?: boolean }>`
   align-items: center;
 `
 
-const ActionListItemActionsInternal = ({
+export const ActionListItemActions = ({
   children,
   className,
 }: ActionListItemActionsProps) => {
@@ -44,7 +44,3 @@ const ActionListItemActionsInternal = ({
     </div>
   )
 }
-
-export const ActionListItemActions = styled(ActionListItemActionsInternal)`
-  cursor: pointer;
-`

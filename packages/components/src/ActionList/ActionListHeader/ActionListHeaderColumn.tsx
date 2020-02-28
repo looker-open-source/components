@@ -1,10 +1,5 @@
-import { space, SpaceProps } from '@looker/design-tokens'
 import styled from 'styled-components'
 
-export const ActionListHeaderColumn = styled.div<SpaceProps>`
-  ${space}
+export const ActionListHeaderColumn = styled.div`
+  padding: ${props => props.theme.space.small};
 `
-
-ActionListHeaderColumn.defaultProps = {
-  px: 'small',
-}
