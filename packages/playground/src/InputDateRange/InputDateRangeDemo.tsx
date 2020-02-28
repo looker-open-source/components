@@ -54,8 +54,43 @@ export const InputDateRangeDemo: FC = () => {
             )}
           </SelectedDateWrapper>
         </HeadingGrid>
-
         <InputDateRange onChange={handleRangeChange} />
+      </div>
+      <div>
+        <HeadingGrid>
+          <Heading as="h1">Controlled Component</Heading>
+        </HeadingGrid>
+        <Popover
+          content={
+            <Box p="small">
+              <Button onClick={handleNextWeekClick}>Next Week</Button>
+              <Box mt="large">
+                <InputDateRange
+                  value={controlledDateRange}
+                  onChange={setControlledDateRange}
+                />
+              </Box>
+            </Box>
+          }
+        >
+          {(onClick, ref, className) => (
+            <Button
+              aria-haspopup="true"
+              onClick={onClick}
+              ref={ref}
+              className={className}
+            >
+              {controlledDateRange ? (
+                <>
+                  <DateFormat>{controlledDateRange.from}</DateFormat> &mdash;
+                  <DateFormat>{controlledDateRange.to}</DateFormat>
+                </>
+              ) : (
+                'Click To Select Date'
+              )}
+            </Button>
+          )}
+        </Popover>
       </div>
       <div>
         <HeadingGrid>
@@ -104,42 +139,6 @@ export const InputDateRangeDemo: FC = () => {
             key={locale}
           />
         </div>
-      </div>
-      <div>
-        <HeadingGrid>
-          <Heading as="h1">Controlled Component</Heading>
-        </HeadingGrid>
-        <Popover
-          content={
-            <Box p="small">
-              <Button onClick={handleNextWeekClick}>Next Week</Button>
-              <Box mt="large">
-                <InputDateRange
-                  value={controlledDateRange}
-                  onChange={setControlledDateRange}
-                />
-              </Box>
-            </Box>
-          }
-        >
-          {(onClick, ref, className) => (
-            <Button
-              aria-haspopup="true"
-              onClick={onClick}
-              ref={ref}
-              className={className}
-            >
-              {controlledDateRange ? (
-                <>
-                  <DateFormat>{controlledDateRange.from}</DateFormat> &mdash;
-                  <DateFormat>{controlledDateRange.to}</DateFormat>
-                </>
-              ) : (
-                'Click To Select Date'
-              )}
-            </Button>
-          )}
-        </Popover>
       </div>
       <div>
         <HeadingGrid>

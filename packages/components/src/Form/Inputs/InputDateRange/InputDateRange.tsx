@@ -139,6 +139,7 @@ export const InputDateRange: FC<InputDateRangeProps> = ({
       setDateRange(value)
       value.from && inputs.from.setValue(formatDateString(value.from, locale))
       value.to && inputs.to.setValue(formatDateString(value.to, locale))
+      value.from && setViewMonth(value.from)
     }
   }, [inputs.from, inputs.to, locale, value])
 
