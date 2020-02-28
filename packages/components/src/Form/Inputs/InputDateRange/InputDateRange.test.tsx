@@ -118,7 +118,7 @@ test('updates text input value when day is clicked', () => {
   expect(toInput.value).toEqual('03/15/2020')
 })
 
-test('fills TextInputs with defaultValue', () => {
+test('defaultValue prop fills TextInputs with correct dates', () => {
   const mockProps = {
     defaultValue: {
       from: new Date('June 3, 2019'),
@@ -132,6 +132,31 @@ test('fills TextInputs with defaultValue', () => {
 
   expect(fromInput.value).toEqual('06/03/2019')
   expect(toInput.value).toEqual('06/09/2019')
+})
+
+test('defaultValue highlights the correct dates in the Calendar', () => {
+  const mockProps = {
+    defaultValue: {
+      from: new Date('June 3, 2019'),
+      to: new Date('June 5, 2019'),
+    },
+    onChange: jest.fn(),
+  }
+  const { getByLabelText } = renderWithTheme(<InputDateRange {...mockProps} />)
+
+  const dayOne = getByLabelText('Mon Jun 3, 2019')
+  const dayTwo = getByLabelText('Tue Jun 4, 2019')
+  const dayThree = getByLabelText('Wed Jun 5, 2019')
+
+  const dayBefore = getByLabelText('Sun Jun 2, 2019')
+  const dayAfter = getByLabelText('Thu Jun 6, 2019')
+
+  expect(dayOne.getAttribute('aria-selected')).toEqual('true')
+  expect(dayTwo.getAttribute('aria-selected')).toEqual('true')
+  expect(dayThree.getAttribute('aria-selected')).toEqual('true')
+
+  expect(dayBefore.getAttribute('aria-selected')).toEqual('false')
+  expect(dayAfter.getAttribute('aria-selected')).toEqual('false')
 })
 
 test('validates FROM text input to match localized date format', () => {
