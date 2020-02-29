@@ -68,6 +68,25 @@ const chooseDateToSet = (
   return activeDateInput
 }
 
+const isDateRangeInView = (
+  dateRange: Partial<RangeModifier>,
+  viewMonth: Date
+) => {
+  if (!dateRange.from || !dateRange.to) {
+    return false
+  }
+  const monthOneTimestamp = viewMonth.getTime()
+  const monthTwoTimestamp = transformMonth(viewMonth, 2).getTime()
+  const fromTimestamp = dateRange.from.getTime()
+  const toTimestamp = dateRange.to.getTime()
+
+  if (fromTimestamp < monthOneTimestamp || toTimestamp >= monthTwoTimestamp) {
+    return false
+  }
+
+  return true
+}
+
 export const InputDateRange: FC<InputDateRangeProps> = ({
   defaultValue = {},
   locale = Locales.English,
@@ -87,12 +106,16 @@ export const InputDateRange: FC<InputDateRangeProps> = ({
   const [activeDateInput, setActiveDateInput] = useState<Endpoint>('from')
 
   // Calendar 1 view
-  const [viewMonth, setViewMonth] = useState(
-    defaultValue ? defaultValue.from : undefined
+  const [viewMonth, setViewMonth] = useState<Date>(
+    value && value.from
+      ? value.from
+      : defaultValue && defaultValue.from
+      ? defaultValue.from
+      : new Date()
   )
 
   // Calendar 2 view
-  const viewNextMonth = viewMonth ? new Date(viewMonth) : new Date()
+  const viewNextMonth = new Date(viewMonth)
   viewNextMonth.setMonth(viewNextMonth.getMonth() + 1)
 
   /*
@@ -141,7 +164,9 @@ export const InputDateRange: FC<InputDateRangeProps> = ({
       setDateRange(value)
       value.from && inputs.from.setValue(formatDateString(value.from, locale))
       value.to && inputs.to.setValue(formatDateString(value.to, locale))
-      value.from && setViewMonth(value.from)
+      value.from &&
+        !isDateRangeInView(value, viewMonth) &&
+        setViewMonth(value.from)
     }
 
     // render a console warning if developers pass in a value without a change listener
