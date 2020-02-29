@@ -204,9 +204,12 @@ const findNavigationValue = (
     return action.option
   } else if (action.persistSelection) {
     const singularState = state as ComboboxData
+    const multiState = state as ComboboxMultiData
     return singularState.option
       ? singularState.option
-      : (state as ComboboxMultiData).options[0]
+      : multiState.options
+      ? multiState.options[0]
+      : undefined
   } else {
     return undefined
   }
