@@ -69,14 +69,20 @@ export interface FieldColorProps
 }
 
 const createEventWithHSVValue = (
-  color: SimpleHSV
+  color: SimpleHSV | string
 ): ChangeEvent<HTMLInputElement> => {
   return {
     currentTarget: {
-      value: simpleHSVtoFormattedColorString(color),
+      value:
+        typeof color === 'string'
+          ? color
+          : simpleHSVtoFormattedColorString(color),
     },
     target: {
-      value: simpleHSVtoFormattedColorString(color),
+      value:
+        typeof color === 'string'
+          ? color
+          : simpleHSVtoFormattedColorString(color),
     },
   } as ChangeEvent<HTMLInputElement>
 }
@@ -124,7 +130,7 @@ export const FieldColorComponent = forwardRef(
       }
     }, [isFocused, value, inputTextValue])
 
-    const callOnChange = (newColor: SimpleHSV) => {
+    const callOnChange = (newColor: SimpleHSV | string) => {
       if (!onChange || !newColor) return
       onChange(createEventWithHSVValue(newColor))
     }
@@ -145,11 +151,12 @@ export const FieldColorComponent = forwardRef(
       })
 
     const handleInputTextChange = (event: FormEvent<HTMLInputElement>) => {
-      setInputTextValue(event.currentTarget.value)
+      const newValue = event.currentTarget.value
+      setInputTextValue(newValue)
 
-      const newColor = getColorFromText(event.currentTarget.value)
-      callOnChange(newColor)
-      setColor(newColor)
+      const isValid = isValidColor(newValue)
+      callOnChange(isValid ? newValue : initialWhite)
+      setColor(getColorFromText(event.currentTarget.value))
     }
 
     const content = (
@@ -176,7 +183,7 @@ export const FieldColorComponent = forwardRef(
 
     return (
       <Field
-        id={id}
+        id={inputID}
         validationMessage={validationMessage}
         alignValidationMessage={alignValidationMessage || 'bottom'}
         {...pickFieldProps(props)}

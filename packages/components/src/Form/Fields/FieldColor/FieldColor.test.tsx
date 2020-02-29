@@ -57,7 +57,9 @@ describe('FieldColor', () => {
 
   test('responds to input value change', () => {
     const { getByDisplayValue } = renderWithTheme(<FieldColor value="green" />)
-    fireEvent.change(getByDisplayValue('green'), { target: { value: 'blue' } })
+    const input = getByDisplayValue('green')
+    input.focus()
+    fireEvent.change(input, { target: { value: 'blue' } })
     expect(getByDisplayValue('blue')).toBeInTheDocument()
   })
 
@@ -82,8 +84,8 @@ describe('FieldColor', () => {
     const input = getByLabelText('Background Color')
     fireEvent.change(input, { target: { value: '#FFFF00' } })
     expect(onChangeMock).toHaveBeenCalledWith({
-      currentTarget: { value: '#ffff00' },
-      target: { value: '#ffff00' },
+      currentTarget: { value: '#FFFF00' },
+      target: { value: '#FFFF00' },
     })
   })
 
