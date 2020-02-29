@@ -19,7 +19,7 @@
  */
 
 import React from 'react'
-import { Box, FieldColor, Select, Swatch } from '@looker/components'
+import { Box, FieldColor, FieldSelect } from '@looker/components'
 
 export function FieldColorDemo() {
   const [color, setColor] = React.useState('red')
@@ -33,14 +33,13 @@ export function FieldColorDemo() {
   }
 
   return (
-    <Box>
-      <Select
+    <Box p="large" width={300}>
+      <FieldSelect
         options={[{ value: 'green' }, { value: 'purple' }, { value: 'red' }]}
         defaultValue="red"
         onChange={handleChange}
       />
       <FieldColor value={color} onChange={handleColorChange} />
-      <Swatch color={color} />
     </Box>
   )
 }

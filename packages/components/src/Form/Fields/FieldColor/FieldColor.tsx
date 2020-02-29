@@ -25,15 +25,15 @@
  */
 
 import React, {
-  useRef,
   useState,
   ChangeEvent,
   FormEvent,
   forwardRef,
   Ref,
+  useEffect,
 } from 'react'
 import styled from 'styled-components'
-import { useID, useControlWarn } from '../../../utils'
+import { useID, useWrapEvent } from '../../../utils'
 import { usePopover, PopoverContent } from '../../../Popover'
 import { InputText, InputTextProps } from '../../Inputs/InputText'
 import { Field, FieldProps, omitFieldProps, pickFieldProps } from '../Field'
@@ -82,7 +82,8 @@ const createEventWithHSVValue = (
 }
 
 function getColorFromText(text?: string) {
-  return text && isValidColor(text) ? str2simpleHsv(text) : undefined
+  const initialWhite = polarbrightness2hsv(white())
+  return text && isValidColor(text) ? str2simpleHsv(text) : initialWhite
 }
 
 export const FieldColorComponent = forwardRef(
@@ -92,47 +93,46 @@ export const FieldColorComponent = forwardRef(
       hideInput,
       id,
       onChange,
-      value: controlledValue,
+      onFocus,
+      onBlur,
+      value,
       defaultValue,
       ...props
     }: FieldColorProps,
     ref: Ref<HTMLInputElement>
   ) => {
-    const isControlled = useControlWarn({
-      controllingProps: ['onChange', 'value'],
-      isControlledCheck: () => onChange !== undefined,
-      name: 'FieldColor',
-    })
+    const inputID = useID(id)
+    const validationMessage = useFormContext(props)
+    const initialWhite = polarbrightness2hsv(white())
+    const initialColor = getColorFromText(value || defaultValue)
 
-    const whiteHSV = polarbrightness2hsv(white())
-    const colorFromProps =
-      getColorFromText(controlledValue || defaultValue) || whiteHSV
+    const [color, setColor] = useState<SimpleHSV>(initialColor)
+    const [inputTextValue, setInputTextValue] = useState(
+      value || defaultValue || ''
+    )
+    const [isFocused, setIsFocused] = useState(false)
 
-    const [color, setColor] = useState<SimpleHSV>(colorFromProps)
-    const [value, setValue] = useState(defaultValue || '')
+    const handleFocus = () => setIsFocused(true)
+    const handleBlur = () => setIsFocused(false)
+    const wrappedOnFocus = useWrapEvent(handleFocus, onFocus)
+    const wrappedOnBlur = useWrapEvent(handleBlur, onBlur)
 
-    // If there's been an external change in the color, update the input value
-    // except when the user is manually typing a color string (isInputting.current === true)
-    // since onChange will have been called with #ffffff until the typed value is a valid color
-    // and updating the input text with that would interfere with typing
-    const isInputting = useRef(false)
-    if (controlledValue && value !== controlledValue && !isInputting.current) {
-      setValue(controlledValue)
-    }
-
-    const colorToUse = isControlled ? colorFromProps || whiteHSV : color
-
-    const updateColor = (newColor: SimpleHSV) => {
-      if (onChange) {
-        onChange(createEventWithHSVValue(newColor))
-      } else {
-        setColor(newColor)
+    useEffect(() => {
+      if (value && value !== inputTextValue) {
+        setColor(str2simpleHsv(value))
+        !isFocused && setInputTextValue(value)
       }
+    }, [isFocused, value, inputTextValue])
+
+    const callOnChange = (newColor: SimpleHSV) => {
+      if (!onChange || !newColor) return
+      onChange(createEventWithHSVValue(newColor))
     }
 
     const setColorState = (newColor: SimpleHSV) => {
-      newColor && setValue(simpleHSVtoFormattedColorString(newColor))
-      updateColor(newColor)
+      setColor(newColor)
+      newColor && setInputTextValue(simpleHSVtoFormattedColorString(newColor))
+      callOnChange(newColor)
     }
 
     const handleColorChange = (hs: HueSaturation) =>
@@ -140,42 +140,32 @@ export const FieldColorComponent = forwardRef(
 
     const handleSliderChange = (event: FormEvent<HTMLInputElement>) =>
       setColorState({
-        ...colorToUse,
+        ...color,
         v: Number(event.currentTarget.value) / 100,
       })
 
     const handleInputTextChange = (event: FormEvent<HTMLInputElement>) => {
-      isInputting.current = true
-      const newValue = event.currentTarget.value
-      setValue(newValue)
+      setInputTextValue(event.currentTarget.value)
 
-      const newColor =
-        !newValue || !isValidColor(newValue)
-          ? whiteHSV
-          : str2simpleHsv(newValue)
-      updateColor(newColor)
-
-      window.requestAnimationFrame(() => {
-        isInputting.current = false
-      })
+      const newColor = getColorFromText(event.currentTarget.value)
+      callOnChange(newColor)
+      setColor(newColor)
     }
-    const inputID = useID(id)
-    const validationMessage = useFormContext(props)
 
     const content = (
       <PopoverContent display="flex" flexDirection="column">
         <ColorWheel
           size={colorWheelSize}
-          hue={colorToUse.h}
-          saturation={colorToUse.s}
-          value={colorToUse.v}
+          hue={color.h}
+          saturation={color.s}
+          value={color.v}
           onColorChange={handleColorChange}
         />
         <LuminositySlider
           min={0}
           max={100}
           step={1}
-          value={colorToUse.v * 100}
+          value={color.v * 100}
           width={colorWheelSize}
           onChange={handleSliderChange}
         />
@@ -186,7 +176,7 @@ export const FieldColorComponent = forwardRef(
 
     return (
       <Field
-        id={inputID}
+        id={id}
         validationMessage={validationMessage}
         alignValidationMessage={alignValidationMessage || 'bottom'}
         {...pickFieldProps(props)}
@@ -194,7 +184,7 @@ export const FieldColorComponent = forwardRef(
         <FormControl alignLabel="left">
           <Swatch
             ref={triggerRef}
-            color={hsv2hex(colorToUse)}
+            color={hsv2hex(color)}
             borderRadius={hideInput ? 'medium' : 'none'}
             borderTopLeftRadius="medium"
             borderBottomLeftRadius="medium"
@@ -214,7 +204,9 @@ export const FieldColorComponent = forwardRef(
               borderBottomRightRadius="medium"
               validationType={validationMessage && validationMessage.type}
               onChange={handleInputTextChange}
-              value={value}
+              value={inputTextValue}
+              onFocus={wrappedOnFocus}
+              onBlur={wrappedOnBlur}
             />
           )}
         </FormControl>
