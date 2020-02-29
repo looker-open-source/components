@@ -58,7 +58,7 @@ export enum ComboboxActionType {
   // Used for the setting the initial value
   CHANGE_SILENT = 'CHANGE_SILENT',
 
-  // Used for ComboboxMultiInput when the InputChips registered entered values (comma, enter)
+  // Used for ComboboxMultiInput when the ComboboxMultiInput has chips removed
   CHANGE_VALUES = 'CHANGE_VALUES',
 
   // User is navigating w/ the keyboard

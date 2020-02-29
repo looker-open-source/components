@@ -67,120 +67,121 @@ export interface ComboboxInputProps
   extends Omit<InputSearchProps, 'autoComplete'>,
     ComboboxInputCommonProps {}
 
-export const ComboboxInputInternal = forwardRef(function ComboboxInput(
-  props: ComboboxInputProps,
-  forwardedRef: Ref<HTMLInputElement>
-) {
-  const {
-    // updates the value in the input when navigating w/ the keyboard
-    autoComplete = true,
-    readOnly = false,
-    // wrapped events
-    onClear,
-    onChange,
-    // might be controlled
-    value: controlledValue,
-    ...rest
-  } = props
+export const ComboboxInputInternal = forwardRef(
+  (props: ComboboxInputProps, forwardedRef: Ref<HTMLInputElement>) => {
+    const {
+      // updates the value in the input when navigating w/ the keyboard
+      autoComplete = true,
+      readOnly = false,
+      // wrapped events
+      onClear,
+      onChange,
+      // might be controlled
+      value: controlledValue,
+      ...rest
+    } = props
 
-  const {
-    data: { navigationOption, option, inputValue: contextInputValue },
-    onChange: contextOnChange,
-    inputCallbackRef,
-    state,
-    transition,
-    id,
-  } = useContext(ComboboxContext)
+    const {
+      data: { navigationOption, option, inputValue: contextInputValue },
+      onChange: contextOnChange,
+      inputCallbackRef,
+      state,
+      transition,
+      id,
+    } = useContext(ComboboxContext)
 
-  useInputPropRefs(props, ComboboxContext)
+    useInputPropRefs(props, ComboboxContext)
 
-  const ref = useForkedRef<HTMLInputElement>(inputCallbackRef, forwardedRef)
+    const ref = useForkedRef<HTMLInputElement>(inputCallbackRef, forwardedRef)
 
-  const isControlled = controlledValue !== undefined
+    const isControlled = controlledValue !== undefined
 
-  function handleClear() {
-    contextOnChange && contextOnChange()
-    transition && transition(ComboboxActionType.CLEAR)
-  }
-
-  function handleValueChange(value: string) {
-    transition && transition(ComboboxActionType.CHANGE, { inputValue: value })
-  }
-
-  // Need to determine whether the updated value come from change event on the input
-  // or from a new value prop (controlled)
-  const isInputting = useRef(false)
-  // If they are controlling the value we still need to do our transitions, so
-  // we have this derived state to emulate onChange of the input as we receive
-  // new `value`s ...[*]
-  if (
-    controlledValue !== undefined &&
-    contextInputValue &&
-    controlledValue !== contextInputValue
-  ) {
-    if (isInputting.current) {
-      handleValueChange(controlledValue)
-    } else {
-      // this is most likely the initial value so we want to
-      // update the value without transitioning to suggesting
-      transition &&
-        transition(ComboboxActionType.CHANGE_SILENT, {
-          inputValue: controlledValue,
-        })
+    function handleClear() {
+      contextOnChange && contextOnChange()
+      transition && transition(ComboboxActionType.CLEAR)
     }
-  }
 
-  // [*]... and when controlled, we don't trigger handleValueChange as the user
-  // types, instead the developer controls it with the normal input onChange
-  // prop
-  function handleChange(event: FormEvent<HTMLInputElement>) {
-    isInputting.current = true
-    if (!isControlled) {
-      handleValueChange(event.currentTarget.value)
+    function handleValueChange(value: string) {
+      transition && transition(ComboboxActionType.CHANGE, { inputValue: value })
     }
-    requestAnimationFrame(() => {
-      isInputting.current = false
-    })
-  }
 
-  let inputOption = contextInputValue !== undefined ? contextInputValue : option
-
-  if (
-    autoComplete &&
-    (state === ComboboxState.NAVIGATING || state === ComboboxState.INTERACTING)
-  ) {
-    // When idle, we don't have a navigationOption on ArrowUp/Down
-    inputOption =
-      navigationOption ||
-      (controlledValue !== undefined ? controlledValue : option)
-  }
-  const inputValue = getComboboxText(inputOption)
-
-  const wrappedOnClear = useWrapEvent(handleClear, onClear)
-  const wrappedOnChange = useWrapEvent(handleChange, onChange)
-
-  const inputEvents = useInputEvents(props, ComboboxContext)
-
-  return (
-    <InputSearch
-      {...rest}
-      {...inputEvents}
-      ref={ref}
-      value={inputValue}
-      readOnly={readOnly}
-      onClear={wrappedOnClear}
-      onChange={wrappedOnChange}
-      id={`listbox-${id}`}
-      autoComplete="off"
-      aria-autocomplete="both"
-      aria-activedescendant={
-        navigationOption
-          ? String(makeHash(navigationOption ? navigationOption.value : ''))
-          : undefined
+    // Need to determine whether the updated value come from change event on the input
+    // or from a new value prop (controlled)
+    const isInputting = useRef(false)
+    // If they are controlling the value we still need to do our transitions, so
+    // we have this derived state to emulate onChange of the input as we receive
+    // new `value`s ...[*]
+    if (
+      controlledValue !== undefined &&
+      contextInputValue &&
+      controlledValue !== contextInputValue
+    ) {
+      if (isInputting.current) {
+        handleValueChange(controlledValue)
+      } else {
+        // this is most likely the initial value so we want to
+        // update the value without transitioning to suggesting
+        transition &&
+          transition(ComboboxActionType.CHANGE_SILENT, {
+            inputValue: controlledValue,
+          })
       }
-    />
-  )
-})
+    }
+
+    // [*]... and when controlled, we don't trigger handleValueChange as the user
+    // types, instead the developer controls it with the normal input onChange
+    // prop
+    function handleChange(event: FormEvent<HTMLInputElement>) {
+      isInputting.current = true
+      if (!isControlled) {
+        handleValueChange(event.currentTarget.value)
+      }
+      requestAnimationFrame(() => {
+        isInputting.current = false
+      })
+    }
+
+    let inputOption =
+      contextInputValue !== undefined ? contextInputValue : option
+
+    if (
+      autoComplete &&
+      (state === ComboboxState.NAVIGATING ||
+        state === ComboboxState.INTERACTING)
+    ) {
+      // When idle, we don't have a navigationOption on ArrowUp/Down
+      inputOption =
+        navigationOption ||
+        (controlledValue !== undefined ? controlledValue : option)
+    }
+    const inputValue = getComboboxText(inputOption)
+
+    const wrappedOnClear = useWrapEvent(handleClear, onClear)
+    const wrappedOnChange = useWrapEvent(handleChange, onChange)
+
+    const inputEvents = useInputEvents(props, ComboboxContext)
+
+    return (
+      <InputSearch
+        {...rest}
+        {...inputEvents}
+        ref={ref}
+        value={inputValue}
+        readOnly={readOnly}
+        onClear={wrappedOnClear}
+        onChange={wrappedOnChange}
+        id={`listbox-${id}`}
+        autoComplete="off"
+        aria-autocomplete="both"
+        aria-activedescendant={
+          navigationOption
+            ? String(makeHash(navigationOption ? navigationOption.value : ''))
+            : undefined
+        }
+      />
+    )
+  }
+)
 
 ComboboxInputInternal.displayName = 'ComboboxInputInternal'
 
