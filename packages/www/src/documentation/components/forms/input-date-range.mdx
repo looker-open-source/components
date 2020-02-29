@@ -8,9 +8,33 @@ import { InputDateRangeLocales } from './demos'
 
 `InputDateRange` provides an interface to select to a date range, either through the calendar interface or text input boxes.
 
+## Value
+
+`InputDateRange` can receive a value from an outside source and will update accordingly.
+
+```jsx
+;() => {
+  const [value, setValue] = useState()
+  const handleButtonClick = () => {
+    setValue({ from: new Date('Feb 1, 2020'), to: new Date('Feb 29, 2020') })
+  }
+  const handleChange = dateRange => {
+    setValue(dateRange)
+  }
+  return (
+    <>
+      <Box mb="medium">
+        <Button onClick={handleButtonClick}>Select February 2020</Button>
+      </Box>
+      <InputDateRange value={value} onChange={handleChange} />
+    </>
+  )
+}
+```
+
 ## Default Value
 
-`InputDateRange` can be initialized with a default selected date range.
+`InputDateRange` can be initialized with a default selected date range, for use in uncontrolled form.
 
 ```jsx
 <InputDateRange

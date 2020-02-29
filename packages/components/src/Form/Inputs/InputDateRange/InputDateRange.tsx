@@ -5,6 +5,7 @@ import isFunction from 'lodash/isFunction'
 import partial from 'lodash/partial'
 import min from 'lodash/min'
 import max from 'lodash/max'
+import isEqual from 'lodash/isEqual'
 import values from 'lodash/values'
 import { border, SpaceProps, color, space } from '@looker/design-tokens'
 import { ValidationType } from '../../ValidationMessage'
@@ -135,13 +136,23 @@ export const InputDateRange: FC<InputDateRangeProps> = ({
    */
 
   useEffect(() => {
-    if (value) {
+    // controlled component: update state when value changes externally
+    if (value && !isEqual(value, dateRange)) {
       setDateRange(value)
       value.from && inputs.from.setValue(formatDateString(value.from, locale))
       value.to && inputs.to.setValue(formatDateString(value.to, locale))
       value.from && setViewMonth(value.from)
     }
-  }, [inputs.from, inputs.to, locale, value])
+
+    // render a console warning if developers pass in a value without a change listener
+    if (value && !onChange) {
+      // eslint-disable-next-line no-console
+      console.error(
+        'Warning: Failed prop type: You provided a `value` prop to <InputDateRange /> without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultValue` instead. Otherwise, please provide an `onChange` callback.'
+      )
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [inputs.from, inputs.to, value, onChange])
 
   const toggleActiveDateInput = () => {
     if (activeDateInput === 'from') {

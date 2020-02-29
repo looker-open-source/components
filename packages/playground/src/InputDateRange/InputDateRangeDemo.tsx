@@ -86,7 +86,7 @@ export const InputDateRangeDemo: FC = () => {
                   <DateFormat>{controlledDateRange.to}</DateFormat>
                 </>
               ) : (
-                'Click To Select Date'
+                'Select Dates'
               )}
             </Button>
           )}
