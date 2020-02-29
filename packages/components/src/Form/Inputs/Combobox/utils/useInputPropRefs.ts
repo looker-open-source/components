@@ -39,7 +39,7 @@ export function useInputPropRefs<
     | ComboboxContextProps
     | ComboboxMultiContextProps = ComboboxContextProps
 >(
-  { autoComplete = false, readOnly = false }: TProps,
+  { autoComplete = true, readOnly = false }: TProps,
   context: Context<TContext>
 ) {
   const { autoCompletePropRef, readOnlyPropRef } = useContext(context)
