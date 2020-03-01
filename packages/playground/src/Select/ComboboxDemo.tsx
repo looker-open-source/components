@@ -32,19 +32,19 @@ import {
 } from '@looker/components'
 
 export function ComboboxDemo() {
-  // const [option, setOption] = React.useState({ value: 'Bananas' })
-  // function handleChange(newOption: any) {
-  //   setOption(newOption)
-  // }
-  // const [options, setOptions] = React.useState([{ value: 'Bananas' }])
-  // function handleMultiChange(newOptions: any) {
-  //   setOptions(newOptions)
-  // }
+  const [option, setOption] = React.useState({ value: 'Bananas' })
+  function handleChange(newOption: any) {
+    setOption(newOption)
+  }
+  const [options, setOptions] = React.useState([{ value: 'Bananas' }])
+  function handleMultiChange(newOptions: any) {
+    setOptions(newOptions)
+  }
 
   return (
     <Box p="large">
-      {/* <Combobox width={300} mb="medium" value={option} onChange={handleChange}> */}
-      <Combobox width={300} mb="medium">
+      <Combobox width={300} mb="medium" value={option} onChange={handleChange}>
+        {/* <Combobox width={300} mb="medium"> */}
         <ComboboxInput />
         <ComboboxList>
           <ComboboxOption value="Apples" />
@@ -54,8 +54,8 @@ export function ComboboxDemo() {
           <ComboboxOption value="Pineapples" />
         </ComboboxList>
       </Combobox>
-      {/* <ComboboxMulti width={300} values={options} onChange={handleMultiChange}> */}
-      <ComboboxMulti width={300}>
+      <ComboboxMulti width={300} values={options} onChange={handleMultiChange}>
+        {/* <ComboboxMulti width={300}> */}
         <ComboboxMultiInput onClear={() => console.log('CLEAR')} />
         <ComboboxMultiList>
           <ComboboxMultiOption value="Apples" />

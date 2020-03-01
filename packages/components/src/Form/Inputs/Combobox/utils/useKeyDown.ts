@@ -27,6 +27,7 @@
 // Much of the following is pulled from https://github.com/reach/reach-ui
 // because their work is fantastic (but is not in TypeScript)
 import findIndex from 'lodash/findIndex'
+import xorWith from 'lodash/xorWith'
 import { KeyboardEvent, useContext } from 'react'
 import { ComboboxContext, ComboboxMultiContext } from '../ComboboxContext'
 import { ComboboxMultiCallback, ComboboxCallback } from '../types'
@@ -55,10 +56,11 @@ export function useKeyDown() {
       if (context.transition) {
         ;(onChange as ComboboxCallback)(navigationOption)
       } else {
-        const newOptions = [
-          ...(data as ComboboxMultiData).options,
-          ...(navigationOption ? [navigationOption] : []),
-        ]
+        const newOptions = xorWith(
+          (data as ComboboxMultiData).options,
+          navigationOption ? [navigationOption] : [],
+          (o1, o2) => o1.value === o2.value
+        )
         ;(onChange as ComboboxMultiCallback)(newOptions)
       }
     }

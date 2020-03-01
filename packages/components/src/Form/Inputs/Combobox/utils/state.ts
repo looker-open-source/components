@@ -27,7 +27,6 @@
 // Much of the following is pulled from https://github.com/reach/reach-ui
 // because their work is fantastic (but is not in TypeScript)
 
-import isEqual from 'lodash/isEqual'
 import xorWith from 'lodash/xorWith'
 import { Reducer, useReducer, useState } from 'react'
 import { ComboboxOptionObject } from '../ComboboxOption'
@@ -325,7 +324,7 @@ const reducerMulti: Reducer<
         options: xorWith(
           nextState.options,
           action.option ? [action.option] : [],
-          isEqual
+          (o1, o2) => o1.value === o2.value
         ),
       }
     case ComboboxActionType.SELECT_SILENT:
@@ -343,7 +342,7 @@ const reducerMulti: Reducer<
         options: xorWith(
           nextState.options,
           data.navigationOption ? [data.navigationOption] : [],
-          isEqual
+          (o1, o2) => o1.value === o2.value
         ),
       }
     case ComboboxActionType.INTERACT:

@@ -24,6 +24,7 @@
 
  */
 
+import xorWith from 'lodash/xorWith'
 import { Context, useContext } from 'react'
 import { useWrapEvent } from '../../../../utils'
 import {
@@ -45,7 +46,9 @@ export function useOptionEvents<
     const option = { label, value }
     if (onChange) {
       if (options) {
-        ;(onChange as ComboboxMultiCallback)([...options, option])
+        ;(onChange as ComboboxMultiCallback)(
+          xorWith(options, [option], (o1, o2) => o1.value === o2.value)
+        )
       } else {
         ;(onChange as ComboboxCallback)(option)
       }
