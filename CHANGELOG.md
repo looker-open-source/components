@@ -14,6 +14,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Changed
 
 - `Slider` component style updates
+- `InputDate` now supports controlled component behavior
+
+## Fixed
+
+- `InputDate` and `InputDateRange` test mocks
 
 ## [0.7.22] - 2020-02-27
 

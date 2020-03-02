@@ -5,21 +5,19 @@ import isEqual from 'lodash/isEqual'
 import { BorderProps, SpaceProps } from '@looker/design-tokens'
 import { InputText } from '../InputText'
 import { Calendar } from '../../../Calendar'
+import { ValidationType } from '../../ValidationMessage'
 import {
   LocaleCodes,
   Locales,
   formatDateString,
   parseDateFromString,
 } from '../../../utils'
-import { InputProps } from '../InputProps'
 
-interface InputDateProps
-  extends Omit<InputProps, 'defaultValue' | 'onChange'>,
-    SpaceProps,
-    BorderProps {
+interface InputDateProps extends SpaceProps, BorderProps {
   defaultValue?: Date
   value?: Date
   onChange?: (date?: Date) => void
+  validationType?: ValidationType
   onValidationFail?: (value: string) => void
   locale?: LocaleCodes
 }
@@ -106,7 +104,10 @@ export const InputDate: FC<InputDateProps> = ({
     if (value && !isEqual(value, selectedDate)) {
       setSelectedDate(value)
       value && setTextInputValue(formatDateString(value, locale))
-      value && !isDateInView(value, viewMonth) && setViewMonth(value)
+      value &&
+        viewMonth &&
+        !isDateInView(value, viewMonth) &&
+        setViewMonth(value)
     }
 
     // render a console warning if developers pass in a value without a change listener

@@ -74,6 +74,16 @@ test('updates text input value when day is clicked', () => {
   expect(input.value).toEqual('02/15/2020')
 })
 
+test('fills TextInput with value, and updates when props.value changes', () => {
+  const mockProps = {
+    onChange: jest.fn(),
+    value: new Date('June 3, 2019'),
+  }
+  const { getByTestId } = renderWithTheme(<InputDate {...mockProps} />)
+  const input = getByTestId('text-input') as HTMLInputElement
+  expect(input.value).toEqual('06/03/2019')
+})
+
 test('fills TextInput with defaultValue', () => {
   const mockProps = {
     defaultValue: new Date('June 3, 2019'),
