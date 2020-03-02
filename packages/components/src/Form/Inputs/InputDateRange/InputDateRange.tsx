@@ -111,7 +111,7 @@ export const InputDateRange: FC<InputDateRangeProps> = ({
       ? value.from
       : defaultValue && defaultValue.from
       ? defaultValue.from
-      : new Date()
+      : new Date(Date.now())
   )
 
   // Calendar 2 view

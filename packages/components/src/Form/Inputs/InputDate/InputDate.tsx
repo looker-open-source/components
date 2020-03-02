@@ -34,7 +34,9 @@ export const InputDate: FC<InputDateProps> = ({
   const [textInputValue, setTextInputValue] = useState(
     selectedDate ? formatDateString(selectedDate, locale) : ''
   )
-  const [viewMonth, setViewMonth] = useState(defaultValue)
+  const [viewMonth, setViewMonth] = useState<Date | undefined>(
+    defaultValue || new Date(Date.now())
+  )
 
   const handleDateChange = (date?: Date) => {
     setValidDate(true)
