@@ -37,56 +37,108 @@ const columns: ActionListColumns = [
   },
 ]
 
-const actionListWithoutClickHandlers = (
-  <ActionList columns={columns}>
-    <ActionListHeader>
-      <ActionListRowContainer>
-        <ActionListHeaderColumn>ID</ActionListHeaderColumn>
-        <ActionListHeaderColumn>Name</ActionListHeaderColumn>
-        <ActionListHeaderColumn>Role</ActionListHeaderColumn>
-      </ActionListRowContainer>
-      <ActionListRowOptionsContainer />
-    </ActionListHeader>
-    <ActionListItems>
-      <ActionListItem>
-        <ActionListRowContainer>
-          <ActionListItemColumn>1</ActionListItemColumn>
-          <ActionListItemColumn>Richard Garfield</ActionListItemColumn>
-          <ActionListItemColumn>Game Designer</ActionListItemColumn>
-        </ActionListRowContainer>
-        <ActionListRowOptionsContainer>
-          <ActionListItemActions>
-            <ActionListItemAction icon="Group">
-              Some Action
-            </ActionListItemAction>
-          </ActionListItemActions>
-        </ActionListRowOptionsContainer>
-      </ActionListItem>
-    </ActionListItems>
-  </ActionList>
-)
-
 describe('<ActionList />: General Layout', () => {
+  let rafSpy: jest.SpyInstance<number, [FrameRequestCallback]>
+
+  beforeEach(() => {
+    rafSpy = jest
+      .spyOn(window, 'requestAnimationFrame')
+      .mockImplementation((cb: any) => cb())
+  })
+
+  afterEach(() => {
+    rafSpy.mockRestore()
+  })
+
   test('Renders a header row and a list item row', () => {
-    const { getByText } = renderWithTheme(actionListWithoutClickHandlers)
+    const { getByText } = renderWithTheme(
+      <ActionList columns={columns}>
+        <ActionListHeader>
+          <ActionListRowContainer>
+            <ActionListHeaderColumn>ID</ActionListHeaderColumn>
+            <ActionListHeaderColumn>Name</ActionListHeaderColumn>
+            <ActionListHeaderColumn>Role</ActionListHeaderColumn>
+          </ActionListRowContainer>
+          <ActionListRowOptionsContainer />
+        </ActionListHeader>
+        <ActionListItems>
+          <ActionListItem>
+            <ActionListRowContainer>
+              <ActionListItemColumn>1</ActionListItemColumn>
+              <ActionListItemColumn>Richard Garfield</ActionListItemColumn>
+              <ActionListItemColumn>Game Designer</ActionListItemColumn>
+            </ActionListRowContainer>
+            <ActionListRowOptionsContainer>
+              <ActionListItemActions>
+                <ActionListItemAction icon="Group">
+                  Some Action
+                </ActionListItemAction>
+              </ActionListItemActions>
+            </ActionListRowOptionsContainer>
+          </ActionListItem>
+        </ActionListItems>
+      </ActionList>
+    )
 
-    const idHeaderColumn = getByText('ID')
-    expect(idHeaderColumn).toBeInTheDocument()
+    expect(getByText('ID')).toBeInTheDocument()
+    expect(getByText('Name')).toBeInTheDocument()
+    expect(getByText('Role')).toBeInTheDocument()
+    expect(getByText('1')).toBeInTheDocument()
+    expect(getByText('Richard Garfield')).toBeInTheDocument()
+    expect(getByText('Game Designer')).toBeInTheDocument()
+  })
 
-    const nameHeaderColumn = getByText('Name')
-    expect(nameHeaderColumn).toBeInTheDocument()
+  test('Shows and hides Actions button on mouse enter and leave', () => {
+    const { getByRole, getByText, queryByRole } = renderWithTheme(
+      <ActionList columns={columns}>
+        <ActionListHeader>
+          <ActionListRowContainer>
+            <ActionListHeaderColumn>ID</ActionListHeaderColumn>
+            <ActionListHeaderColumn>Name</ActionListHeaderColumn>
+            <ActionListHeaderColumn>Role</ActionListHeaderColumn>
+          </ActionListRowContainer>
+          <ActionListRowOptionsContainer />
+        </ActionListHeader>
+        <ActionListItems>
+          <ActionListItem>
+            <ActionListRowContainer>
+              <ActionListItemColumn>1</ActionListItemColumn>
+              <ActionListItemColumn>Richard Garfield</ActionListItemColumn>
+              <ActionListItemColumn>Game Designer</ActionListItemColumn>
+            </ActionListRowContainer>
+            <ActionListRowOptionsContainer>
+              <ActionListItemActions>
+                <ActionListItemAction icon="Group">
+                  Some Action
+                </ActionListItemAction>
+              </ActionListItemActions>
+            </ActionListRowOptionsContainer>
+          </ActionListItem>
+        </ActionListItems>
+      </ActionList>
+    )
 
-    const roleHeaderColumn = getByText('Role')
-    expect(roleHeaderColumn).toBeInTheDocument()
+    const listItemId = getByText('1')
 
-    const idListItemColumn = getByText('1')
-    expect(idListItemColumn).toBeInTheDocument()
+    fireEvent(
+      listItemId,
+      new MouseEvent('mouseenter', {
+        bubbles: true,
+        cancelable: true,
+      })
+    )
 
-    const nameListItemColumn = getByText('Richard Garfield')
-    expect(nameListItemColumn).toBeInTheDocument()
+    getByRole('button')
 
-    const roleListItemColumn = getByText('Game Designer')
-    expect(roleListItemColumn).toBeInTheDocument()
+    fireEvent(
+      listItemId,
+      new MouseEvent('mouseleave', {
+        bubbles: true,
+        cancelable: true,
+      })
+    )
+
+    expect(queryByRole('button')).not.toBeInTheDocument()
   })
 
   test('Shows and hides Actions menu on button click', () => {
@@ -117,6 +169,16 @@ describe('<ActionList />: General Layout', () => {
           </ActionListItem>
         </ActionListItems>
       </ActionList>
+    )
+
+    const listItemId = getByText('1')
+
+    fireEvent(
+      listItemId,
+      new MouseEvent('mouseenter', {
+        bubbles: true,
+        cancelable: true,
+      })
     )
 
     const listItemButton = getByRole('button')
@@ -165,13 +227,22 @@ describe('<ActionList />: General Layout', () => {
       </ActionList>
     )
 
-    const nameListItemColumn = getByText('Richard Garfield')
+    const listItemName = getByText('Richard Garfield')
 
     expect(handleListItemClick.mock.calls.length).toBe(0)
-    fireEvent.click(nameListItemColumn)
+    fireEvent.click(listItemName)
     expect(handleListItemClick.mock.calls.length).toBe(1)
 
+    fireEvent(
+      listItemName,
+      new MouseEvent('mouseenter', {
+        bubbles: true,
+        cancelable: true,
+      })
+    )
+
     const listItemButton = getByRole('button')
+
     fireEvent.click(listItemButton)
     expect(handleListItemClick.mock.calls.length).toBe(1)
 
