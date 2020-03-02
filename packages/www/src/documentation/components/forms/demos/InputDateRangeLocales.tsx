@@ -2,14 +2,14 @@ import React, { useState } from 'react'
 import toPairs from 'lodash/toPairs'
 import styled from 'styled-components'
 import {
-  InputDate,
+  InputDateRange,
   Select,
   LocaleCodes,
   Locales,
   Label,
 } from '@looker/components'
 
-export const InputDateLocales = () => {
+export const InputDateRangeLocales = () => {
   const [locale, setLocale] = useState('en')
 
   const handleLocaleChange = (val: string) => {
@@ -19,7 +19,7 @@ export const InputDateLocales = () => {
   return (
     <DemoWrapper>
       <SelectWrapper>
-        <Label htmlFor="locale-picker" fontSize="medium">
+        <Label htmlFor="locale-picker" fontSize="medium" mb="small">
           Select locale
         </Label>
         <Select
@@ -32,7 +32,7 @@ export const InputDateLocales = () => {
           id="locale-picker"
         />
       </SelectWrapper>
-      <InputDate key={locale} locale={locale as LocaleCodes} />
+      <InputDateRange key={locale} locale={locale as LocaleCodes} />
     </DemoWrapper>
   )
 }
@@ -40,6 +40,7 @@ export const InputDateLocales = () => {
 const SelectWrapper = styled.div`
   border-bottom: 1px solid ${({ theme }) => theme.colors.palette.charcoal300};
   padding: ${({ theme }) => theme.space.small} 0;
+  margin-bottom: ${({ theme }) => theme.space.large};
 `
 
 const DemoWrapper = styled.div`

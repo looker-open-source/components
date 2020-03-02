@@ -87,6 +87,10 @@ const components: NavigationSection = {
           path: 'input-date',
         },
         {
+          title: 'InputDateRange',
+          path: 'input-date-range',
+        },
+        {
           title: 'InputHidden',
           path: 'input-hidden',
         },

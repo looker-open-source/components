@@ -4,7 +4,7 @@ github: Calendar
 propsOf: Calendar
 ---
 
-import { Banner } from '@looker/components'
+import { Banner, Code } from '@looker/components'
 import { CalendarPropTable } from './demos'
 
 <Banner>
@@ -43,6 +43,40 @@ We support three sizes: `small`, **`medium (default)`**, and `large`. The font a
       </div>
       <Calendar size={value} />
     </>
+  )
+}
+```
+
+## Navigation Callbacks
+
+We support four different callbacks to hook into various navigation events:
+
+- <Code>onNextClick</Code>: the user clicked the right arrow
+- <Code>onPrevClick</Code>: the user clicked the right arrow
+- <Code>
+    onNowClick
+  </Code>: the user clicked the month label to return to the current month
+- <Code>
+    onMonthChange
+  </Code>: the user navigated to a new month (could be through any mouse or keyboard interaction)
+
+```jsx
+;() => {
+  const onNextClick = date =>
+    alert(`Clicked "Next" (${date.getMonth() + 1}/${date.getFullYear()})`)
+  const onNowClick = date =>
+    alert(`Clicked "Now" (${date.getMonth() + 1}/${date.getFullYear()})`)
+  const onPrevClick = date =>
+    alert(`Clicked "Prev" (${date.getMonth() + 1}/${date.getFullYear()})`)
+  const onMonthChange = date =>
+    alert(`Month Changed (${date.getMonth() + 1}/${date.getFullYear()})`)
+  return (
+    <Calendar
+      onNextClick={onNextClick}
+      onNowClick={onNowClick}
+      onPrevClick={onPrevClick}
+      onMonthChange={onMonthChange}
+    />
   )
 }
 ```

@@ -26,3 +26,4 @@
 
 export * from './FormValidationDemo'
 export * from './InputDateLocales'
+export * from './InputDateRangeLocales'

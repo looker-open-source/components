@@ -11,13 +11,13 @@ import { CalendarContext } from './CalendarContext'
 const headingSizeMap = (size?: CalendarSize) => {
   switch (size) {
     case 'small':
-      return 'h5'
+      return 'h6'
     case 'medium':
-      return 'h3'
+      return 'h5'
     case 'large':
-      return 'h2'
+      return 'h4'
     default:
-      return 'h3'
+      return 'h5'
   }
 }
 
@@ -31,23 +31,25 @@ export const CalendarNav: FC<NavbarElementProps> = ({
 }) => {
   const {
     size,
-    onNavClick = noop,
+    onNowClick = noop,
+    onNextClick = noop,
+    onPrevClick = noop,
     showPreviousButton,
     showNextButton,
   } = useContext(CalendarContext)
 
   const handleNextClick = (e: SyntheticEvent<HTMLButtonElement>) => {
     e.preventDefault()
-    onNavClick(nextMonth)
+    onNextClick(nextMonth)
   }
 
   const handlePreviousClick = (e: SyntheticEvent<HTMLButtonElement>) => {
     e.preventDefault()
-    onNavClick(previousMonth)
+    onPrevClick(previousMonth)
   }
 
   const handleLabelClick = () => {
-    onNavClick(new Date(Date.now())) // specify Date.now() to facilitate testing mocks
+    onNowClick(new Date(Date.now())) // specify Date.now() to facilitate testing mocks
   }
 
   return (
