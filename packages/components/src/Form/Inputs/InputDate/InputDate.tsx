@@ -1,6 +1,7 @@
-import React, { FC, useState, SyntheticEvent } from 'react'
+import React, { FC, useState, SyntheticEvent, useEffect } from 'react'
 import styled from 'styled-components'
 import isFunction from 'lodash/isFunction'
+import isEqual from 'lodash/isEqual'
 import { BorderProps, SpaceProps } from '@looker/design-tokens'
 import { InputText } from '../InputText'
 import { Calendar } from '../../../Calendar'
@@ -17,9 +18,25 @@ interface InputDateProps
     SpaceProps,
     BorderProps {
   defaultValue?: Date
+  value?: Date
   onChange?: (date?: Date) => void
   onValidationFail?: (value: string) => void
   locale?: LocaleCodes
+}
+
+const isDateInView = (value: Date, viewMonth: Date) => {
+  if (!value) {
+    return false
+  }
+
+  if (
+    value.getFullYear() === viewMonth.getFullYear() &&
+    value.getMonth() === viewMonth.getMonth()
+  ) {
+    return true
+  }
+
+  return false
 }
 
 export const InputDate: FC<InputDateProps> = ({
@@ -28,13 +45,14 @@ export const InputDate: FC<InputDateProps> = ({
   locale = Locales.English,
   validationType,
   onValidationFail,
+  value,
 }) => {
-  const [selectedDate, setSelectedDate] = useState(defaultValue)
+  const [selectedDate, setSelectedDate] = useState(value || defaultValue)
   const [validDate, setValidDate] = useState(validationType !== 'error')
   const [textInputValue, setTextInputValue] = useState(
     selectedDate ? formatDateString(selectedDate, locale) : ''
   )
-  const [viewMonth, setViewMonth] = useState(defaultValue)
+  const [viewMonth, setViewMonth] = useState(value || defaultValue)
 
   const handleDateChange = (date?: Date) => {
     setValidDate(true)
@@ -80,6 +98,24 @@ export const InputDate: FC<InputDateProps> = ({
   }
 
   const renderedValidationType = !validDate ? 'error' : undefined
+
+  useEffect(() => {
+    // controlled component: update state when value changes externally
+    if (value && !isEqual(value, selectedDate)) {
+      setSelectedDate(value)
+      value && setTextInputValue(formatDateString(value, locale))
+      value && !isDateInView(value, viewMonth) && setViewMonth(value)
+    }
+
+    // render a console warning if developers pass in a value without a change listener
+    if (value && !onChange) {
+      // eslint-disable-next-line no-console
+      console.error(
+        'Warning: Failed prop type: You provided a `value` prop to <InputDate /> without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultValue` instead. Otherwise, please provide an `onChange` callback.'
+      )
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [textInputValue, value, onChange])
 
   return (
     <InputDateWrapper>

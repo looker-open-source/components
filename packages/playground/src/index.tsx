@@ -24,7 +24,6 @@ import { GlobalStyle } from '@looker/components'
 import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
 
-import { InputDateRangeDemo } from './InputDateRange/InputDateRangeDemo'
 import { InputDateDemo } from './InputDate/InputDateDemo'
 
 const App: React.FC = () => {
@@ -32,7 +31,6 @@ const App: React.FC = () => {
     <ThemeProvider theme={theme}>
       <>
         <GlobalStyle />
-        <InputDateRangeDemo />
         <InputDateDemo />
       </>
     </ThemeProvider>
