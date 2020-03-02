@@ -19,6 +19,7 @@
  */
 export * from './ActionList'
 export * from './ActionListItem'
+export * from './ActionListItems'
 export * from './ActionListItemAction'
 export * from './ActionListItemActions'
 export * from './ActionListItemColumn'

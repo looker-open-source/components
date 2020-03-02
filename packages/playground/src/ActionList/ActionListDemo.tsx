@@ -29,6 +29,7 @@ import {
   ActionList,
   ActionListColumns,
   ActionListItem,
+  ActionListItems,
   ActionListItemColumn,
   ActionListItemAction,
   ActionListItemActions,
@@ -106,41 +107,43 @@ export const ActionListDemo: FC = () => {
         </ActionListRowContainer>
         <ActionListRowOptionsContainer />
       </ActionListHeader>
-      {data.map(({ id, groupName, roles, members }) => (
-        <ActionListItem key={id} onClick={() => alert(`Row clicked`)}>
-          <ActionListRowContainer>
-            <ActionListItemColumn>{id}</ActionListItemColumn>
-            <ActionListItemColumn>
-              <div>{groupName}</div>
-              <a href="https://google.com">Website</a>
-            </ActionListItemColumn>
-            <ActionListItemColumn>{roles}</ActionListItemColumn>
-            <ActionListItemColumn>{members}</ActionListItemColumn>
-          </ActionListRowContainer>
-          <ActionListRowOptionsContainer>
-            <ActionListItemActions>
-              <ActionListItemAction
-                icon="Group"
-                onClick={() => alert('Edited!')}
-              >
-                Edit
-              </ActionListItemAction>
-              <ActionListItemAction
-                icon="Edit"
-                onClick={() => alert('Renamed!')}
-              >
-                Rename
-              </ActionListItemAction>
-              <ActionListItemAction
-                icon="CircleRemove"
-                onClick={() => alert('Removed!')}
-              >
-                Remove
-              </ActionListItemAction>
-            </ActionListItemActions>
-          </ActionListRowOptionsContainer>
-        </ActionListItem>
-      ))}
+      <ActionListItems>
+        {data.map(({ id, groupName, roles, members }) => (
+          <ActionListItem key={id} onClick={() => alert(`Row clicked`)}>
+            <ActionListRowContainer>
+              <ActionListItemColumn>{id}</ActionListItemColumn>
+              <ActionListItemColumn>
+                <div>{groupName}</div>
+                <a href="https://google.com">Website</a>
+              </ActionListItemColumn>
+              <ActionListItemColumn>{roles}</ActionListItemColumn>
+              <ActionListItemColumn>{members}</ActionListItemColumn>
+            </ActionListRowContainer>
+            <ActionListRowOptionsContainer>
+              <ActionListItemActions>
+                <ActionListItemAction
+                  icon="Group"
+                  onClick={() => alert('Edited!')}
+                >
+                  Edit
+                </ActionListItemAction>
+                <ActionListItemAction
+                  icon="Edit"
+                  onClick={() => alert('Renamed!')}
+                >
+                  Rename
+                </ActionListItemAction>
+                <ActionListItemAction
+                  icon="CircleRemove"
+                  onClick={() => alert('Removed!')}
+                >
+                  Remove
+                </ActionListItemAction>
+              </ActionListItemActions>
+            </ActionListRowOptionsContainer>
+          </ActionListItem>
+        ))}
+      </ActionListItems>
     </ActionList>
   )
 }

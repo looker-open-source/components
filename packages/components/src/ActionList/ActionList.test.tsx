@@ -5,6 +5,7 @@ import {
   ActionList,
   ActionListHeader,
   ActionListHeaderColumn,
+  ActionListItems,
   ActionListItem,
   ActionListItemColumn,
   ActionListItemActions,
@@ -46,18 +47,22 @@ const actionListWithoutClickHandlers = (
       </ActionListRowContainer>
       <ActionListRowOptionsContainer />
     </ActionListHeader>
-    <ActionListItem>
-      <ActionListRowContainer>
-        <ActionListItemColumn>1</ActionListItemColumn>
-        <ActionListItemColumn>Richard Garfield</ActionListItemColumn>
-        <ActionListItemColumn>Game Designer</ActionListItemColumn>
-      </ActionListRowContainer>
-      <ActionListRowOptionsContainer>
-        <ActionListItemActions>
-          <ActionListItemAction icon="Group">Some Action</ActionListItemAction>
-        </ActionListItemActions>
-      </ActionListRowOptionsContainer>
-    </ActionListItem>
+    <ActionListItems>
+      <ActionListItem>
+        <ActionListRowContainer>
+          <ActionListItemColumn>1</ActionListItemColumn>
+          <ActionListItemColumn>Richard Garfield</ActionListItemColumn>
+          <ActionListItemColumn>Game Designer</ActionListItemColumn>
+        </ActionListRowContainer>
+        <ActionListRowOptionsContainer>
+          <ActionListItemActions>
+            <ActionListItemAction icon="Group">
+              Some Action
+            </ActionListItemAction>
+          </ActionListItemActions>
+        </ActionListRowOptionsContainer>
+      </ActionListItem>
+    </ActionListItems>
   </ActionList>
 )
 
@@ -95,20 +100,22 @@ describe('<ActionList />: General Layout', () => {
           </ActionListRowContainer>
           <ActionListRowOptionsContainer />
         </ActionListHeader>
-        <ActionListItem>
-          <ActionListRowContainer>
-            <ActionListItemColumn>1</ActionListItemColumn>
-            <ActionListItemColumn>Richard Garfield</ActionListItemColumn>
-            <ActionListItemColumn>Game Designer</ActionListItemColumn>
-          </ActionListRowContainer>
-          <ActionListRowOptionsContainer>
-            <ActionListItemActions>
-              <ActionListItemAction icon="Group">
-                Some Action
-              </ActionListItemAction>
-            </ActionListItemActions>
-          </ActionListRowOptionsContainer>
-        </ActionListItem>
+        <ActionListItems>
+          <ActionListItem>
+            <ActionListRowContainer>
+              <ActionListItemColumn>1</ActionListItemColumn>
+              <ActionListItemColumn>Richard Garfield</ActionListItemColumn>
+              <ActionListItemColumn>Game Designer</ActionListItemColumn>
+            </ActionListRowContainer>
+            <ActionListRowOptionsContainer>
+              <ActionListItemActions>
+                <ActionListItemAction icon="Group">
+                  Some Action
+                </ActionListItemAction>
+              </ActionListItemActions>
+            </ActionListRowOptionsContainer>
+          </ActionListItem>
+        </ActionListItems>
       </ActionList>
     )
 
@@ -139,20 +146,22 @@ describe('<ActionList />: General Layout', () => {
           </ActionListRowContainer>
           <ActionListRowOptionsContainer />
         </ActionListHeader>
-        <ActionListItem onClick={handleListItemClick}>
-          <ActionListRowContainer>
-            <ActionListItemColumn>1</ActionListItemColumn>
-            <ActionListItemColumn>Richard Garfield</ActionListItemColumn>
-            <ActionListItemColumn>Game Designer</ActionListItemColumn>
-          </ActionListRowContainer>
-          <ActionListRowOptionsContainer>
-            <ActionListItemActions>
-              <ActionListItemAction icon="Group" onClick={handleActionClick}>
-                Some Action
-              </ActionListItemAction>
-            </ActionListItemActions>
-          </ActionListRowOptionsContainer>
-        </ActionListItem>
+        <ActionListItems>
+          <ActionListItem onClick={handleListItemClick}>
+            <ActionListRowContainer>
+              <ActionListItemColumn>1</ActionListItemColumn>
+              <ActionListItemColumn>Richard Garfield</ActionListItemColumn>
+              <ActionListItemColumn>Game Designer</ActionListItemColumn>
+            </ActionListRowContainer>
+            <ActionListRowOptionsContainer>
+              <ActionListItemActions>
+                <ActionListItemAction icon="Group" onClick={handleActionClick}>
+                  Some Action
+                </ActionListItemAction>
+              </ActionListItemActions>
+            </ActionListRowOptionsContainer>
+          </ActionListItem>
+        </ActionListItems>
       </ActionList>
     )
 
