@@ -131,7 +131,13 @@ const InputSearchComponent = forwardRef(
     const internalRef = useRef<null | HTMLInputElement>(null)
     const ref = useForkedRef<HTMLInputElement>(internalRef, forwardedRef)
 
-    const focusInput = () => internalRef.current && internalRef.current.focus()
+    function handleMouseDown() {
+      // set focus to input on mousedown of container
+      // need requestAnimationFrame here due to browser updating focus _after_ mousedown is called
+      window.requestAnimationFrame(() => {
+        internalRef.current && internalRef.current.focus()
+      })
+    }
 
     const handleClear = (e: MouseEvent<HTMLButtonElement>) => {
       setValue('')
@@ -159,8 +165,8 @@ const InputSearchComponent = forwardRef(
     )
 
     const mouseHandlers = {
-      onClick: useWrapEvent(focusInput, onClick),
-      onMouseDown,
+      onClick,
+      onMouseDown: useWrapEvent(handleMouseDown, onMouseDown),
       onMouseEnter,
       onMouseLeave,
       onMouseOut,

@@ -104,7 +104,7 @@ exports[`InputSearch default 1`] = `
 <div
   className="c0 c1"
   fontSize="small"
-  onClick={[Function]}
+  onMouseDown={[Function]}
 >
   <input
     className="c2 c3 c4"
