@@ -151,6 +151,12 @@ export const inputTextDisabled = css`
   }
 `
 
+// if statement to set up the value of padding inside input.
+// if prefix add x px
+// if before add x px
+// if after add x px
+// if suffix add x px
+
 export const InputWrapper = styled.div`
   align-items: center;
   border: 1px solid;
