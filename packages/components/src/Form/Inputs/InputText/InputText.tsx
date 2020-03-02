@@ -56,7 +56,7 @@ export const CustomizableInputTextAttributes: CustomizableAttributes = {
   borderRadius: 'medium',
   fontSize: 'small',
   height: '36px',
-  px: 'small',
+  px: 'none',
   py: 'none',
 }
 
@@ -105,68 +105,79 @@ const InputComponent = forwardRef(
     ref: Ref<HTMLInputElement>
   ) => (
     <InputWrapper width={width}>
-      <InputIconStyle>
-        {iconBefore && <Icon name={iconBefore} size={20} />}
-      </InputIconStyle>
-      <InputIconStyle>
-        {prefix && <Text fontSize="small">{prefix}</Text>}
-      </InputIconStyle>
+      {iconBefore && (
+        <InputIconStyle>
+          <Icon name={iconBefore} size={20} />
+        </InputIconStyle>
+      )}
+      {prefix && (
+        <InputIconStyle>
+          <Text fontSize="small">{prefix}</Text>
+        </InputIconStyle>
+      )}
       <input
         {...pick(omit(props, 'color', 'height', 'width'), inputPropKeys)}
         type={type}
         className={props.className}
         ref={ref}
       />
-      <InputIconStyle>
-        {suffix && <Text fontSize="small">{suffix}</Text>}
-      </InputIconStyle>
-      <InputIconStyle>
-        {iconAfter && <Icon name={iconAfter} size={20} />}
-      </InputIconStyle>
+      {suffix && (
+        <InputIconStyle>
+          <Text fontSize="small">{suffix}</Text>
+        </InputIconStyle>
+      )}
+      {iconAfter && (
+        <InputIconStyle>
+          <Icon name={iconAfter} size={20} />
+        </InputIconStyle>
+      )}
     </InputWrapper>
   )
 )
 
-export const InputWrapper = styled(Flex)`
-  justify-content: space-between;
+export const inputTextHover = css`
+  border-color: ${props => props.theme.colors.palette.charcoal300};
+`
+export const inputTextFocus = css`
+  border-color: ${props => props.theme.colors.palette.purple300};
+  box-shadow: 0 0 0 2px ${props => props.theme.colors.palette.purple100};
+  outline: none;
+`
+export const inputTextDisabled = css`
+  background: ${props => props.theme.colors.palette.charcoal100};
+  color: ${props => props.theme.colors.palette.charcoal400};
+  &:hover {
+    border-color: ${props => props.theme.colors.palette.charcoal200};
+  }
+`
+
+export const InputWrapper = styled.div`
   align-items: center;
-  height: 36px;
-  position: relative;
-  padding-left: 12px;
   border: 1px solid;
   border-color: ${props => props.theme.colors.palette.charcoal200};
   border-radius: 4px;
-  background: ${props => props.theme.colors.palette.white};
+  display: inline-block;
   input {
-    width: 100%;
-    background: transparent;
     outline: none;
-    &:focus {
-      border-color: transparent;
-      box-shadow: none;
-    }
+    padding: 0 12px;
+    width: 100%;
+  }
+  &:hover {
+    ${inputTextHover}
   }
   &:focus,
   :focus-within {
-    border-color: ${props => props.theme.colors.palette.purple300};
-    box-shadow: 0 0 0 2px ${props => props.theme.colors.palette.purple100};
-    outline: none;
+    ${inputTextFocus}
   }
-
-  &:hover {
-    border-color: ${props => props.theme.colors.palette.charcoal300};
-  }
-
   &:disabled {
-    background: ${props => props.theme.colors.palette.charcoal100};
-    color: ${props => props.theme.colors.palette.charcoal400};
-    &:hover {
-      border-color: ${props => props.theme.colors.palette.charcoal200};
-    }
+    ${inputTextDisabled}
   }
 `
 
 export const InputIconStyle = styled(Flex)`
+  position: absolute;
+  pointer-events: none;
+  left: 0;
   color: ${props => props.theme.colors.palette.charcoal400};
   & + & {
     padding: 0 12px;
@@ -209,16 +220,15 @@ export const InputText = styled(InputComponent).attrs(
   ${inputTextValidation}
 `
 
-// export const inputTextDefaults = {
-//   border: 'none',
-//   width: '13rem',
-// }
+export const inputTextDefaults = {
+  border: 'none',
+  width: '174px',
+}
 
 InputText.defaultProps = {
   ...CustomizableInputTextAttributes,
-  border: 'none',
+  ...inputTextDefaults,
   type: 'text',
-  width: '13rem',
 }
 
 InputComponent.displayName = 'InputComponent'
