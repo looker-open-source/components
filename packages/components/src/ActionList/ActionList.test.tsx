@@ -11,10 +11,33 @@ import {
   ActionListItemAction,
   ActionListRowContainer,
   ActionListRowOptionsContainer,
+  ActionListColumns,
 } from '.'
 
+const columns: ActionListColumns = [
+  {
+    children: 'test',
+    id: 'id',
+    primaryKey: true,
+    type: 'number',
+    widthPercent: 10,
+  },
+  {
+    children: 'test',
+    id: 'name',
+    type: 'string',
+    widthPercent: 45,
+  },
+  {
+    children: 'test',
+    id: 'role',
+    type: 'string',
+    widthPercent: 45,
+  },
+]
+
 const actionListWithoutClickHandlers = (
-  <ActionList columns={['10%', '45%', '45%']}>
+  <ActionList columns={columns}>
     <ActionListHeader>
       <ActionListRowContainer>
         <ActionListHeaderColumn>ID</ActionListHeaderColumn>
@@ -25,7 +48,7 @@ const actionListWithoutClickHandlers = (
     </ActionListHeader>
     <ActionListItem>
       <ActionListRowContainer>
-        <ActionListItemColumn primaryKey>1</ActionListItemColumn>
+        <ActionListItemColumn>1</ActionListItemColumn>
         <ActionListItemColumn>Richard Garfield</ActionListItemColumn>
         <ActionListItemColumn>Game Designer</ActionListItemColumn>
       </ActionListRowContainer>
@@ -63,7 +86,7 @@ describe('<ActionList />: General Layout', () => {
 
   test('Shows and hides Actions menu on button click', () => {
     const { getByRole, getByText, queryByText } = renderWithTheme(
-      <ActionList columns={['10%', '45%', '45%']}>
+      <ActionList columns={columns}>
         <ActionListHeader>
           <ActionListRowContainer>
             <ActionListHeaderColumn>ID</ActionListHeaderColumn>
@@ -74,7 +97,7 @@ describe('<ActionList />: General Layout', () => {
         </ActionListHeader>
         <ActionListItem>
           <ActionListRowContainer>
-            <ActionListItemColumn primaryKey>1</ActionListItemColumn>
+            <ActionListItemColumn>1</ActionListItemColumn>
             <ActionListItemColumn>Richard Garfield</ActionListItemColumn>
             <ActionListItemColumn>Game Designer</ActionListItemColumn>
           </ActionListRowContainer>
@@ -107,7 +130,7 @@ describe('<ActionList />: General Layout', () => {
     const handleActionClick = jest.fn()
 
     const { getByText, getByRole } = renderWithTheme(
-      <ActionList columns={['10%', '45%', '45%']}>
+      <ActionList columns={columns}>
         <ActionListHeader>
           <ActionListRowContainer>
             <ActionListHeaderColumn>ID</ActionListHeaderColumn>
@@ -118,7 +141,7 @@ describe('<ActionList />: General Layout', () => {
         </ActionListHeader>
         <ActionListItem onClick={handleListItemClick}>
           <ActionListRowContainer>
-            <ActionListItemColumn primaryKey>1</ActionListItemColumn>
+            <ActionListItemColumn>1</ActionListItemColumn>
             <ActionListItemColumn>Richard Garfield</ActionListItemColumn>
             <ActionListItemColumn>Game Designer</ActionListItemColumn>
           </ActionListRowContainer>

@@ -109,7 +109,7 @@ export const ActionListDemo: FC = () => {
       {data.map(({ id, groupName, roles, members }) => (
         <ActionListItem key={id} onClick={() => alert(`Row clicked`)}>
           <ActionListRowContainer>
-            <ActionListItemColumn primaryKey>{id}</ActionListItemColumn>
+            <ActionListItemColumn>{id}</ActionListItemColumn>
             <ActionListItemColumn>
               <div>{groupName}</div>
               <a href="https://google.com">Website</a>
