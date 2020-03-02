@@ -1,10 +1,22 @@
 import { CompatibleHTMLProps } from '@looker/design-tokens'
 import styled from 'styled-components'
-import React from 'react'
-import { OptionsWrapper } from './ActionListItemActions'
+import React, { createContext, RefObject, useRef } from 'react'
+
+export interface ActionListContextProps {
+  actionListItemRef: RefObject<HTMLElement> | undefined
+}
+
+export const ActionListItemContext = createContext<ActionListContextProps>({
+  actionListItemRef: undefined,
+})
 
 const ActionListItemInternal = (props: CompatibleHTMLProps<HTMLDivElement>) => {
   const { children, className, onClick } = props
+
+  const actionListItemRef = useRef<HTMLDivElement>(null)
+  const context = {
+    actionListItemRef,
+  }
 
   const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
     if (!event.defaultPrevented) {
@@ -20,14 +32,17 @@ const ActionListItemInternal = (props: CompatibleHTMLProps<HTMLDivElement>) => {
   }
 
   return (
-    <div
-      className={className}
-      onClick={handleClick}
-      onKeyDown={handleKeyDown}
-      tabIndex={onClick ? 0 : undefined}
-    >
-      {children}
-    </div>
+    <ActionListItemContext.Provider value={context}>
+      <div
+        className={className}
+        onClick={handleClick}
+        onKeyDown={handleKeyDown}
+        ref={actionListItemRef}
+        tabIndex={onClick ? 0 : undefined}
+      >
+        {children}
+      </div>
+    </ActionListItemContext.Provider>
   )
 }
 
@@ -36,17 +51,12 @@ export const ActionListItem = styled(ActionListItemInternal)`
   display: flex;
 
   &:focus,
-  &:hover,
-  &:focus-within {
+  &:hover {
     box-shadow: ${({ theme, onClick }) => onClick && theme.shadows[2]};
     outline: none;
 
     /* Hovered ActionListItem needs z-index: 1 and non-static position */
     position: relative;
     z-index: 1;
-
-    ${OptionsWrapper} {
-      opacity: 100%;
-    }
   }
 `
