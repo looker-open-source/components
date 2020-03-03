@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Changed
 
+- `FieldColor` state can now be fully controlled.
 - `Slider` component style updates
 - `InputDate` now supports controlled component behavior
 

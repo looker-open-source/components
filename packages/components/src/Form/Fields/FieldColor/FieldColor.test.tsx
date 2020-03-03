@@ -35,52 +35,96 @@ import {
 import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
 
+import { Button } from '../../../Button'
 import { FieldColor } from './FieldColor'
 
-test('Default FieldColor', () => {
-  assertSnapshotShallow(<FieldColor />)
-})
+describe('FieldColor', () => {
+  test('Default render', () => {
+    assertSnapshotShallow(<FieldColor />)
+  })
 
-test('FieldColor with hidden input', () => {
-  const { queryByRole } = renderWithTheme(
-    <FieldColor value="yellow" hideInput />
-  )
-  expect(queryByRole('input')).not.toBeInTheDocument()
-})
+  test('with hidden input', () => {
+    const { queryByDisplayValue } = renderWithTheme(
+      <FieldColor value="yellow" hideInput />
+    )
+    expect(queryByDisplayValue('yellow')).not.toBeInTheDocument()
+  })
 
-test('FieldColor starts with a named color value', () => {
-  const { getByDisplayValue } = renderWithTheme(<FieldColor value="green" />)
-  expect(getByDisplayValue('green')).toBeInTheDocument()
-})
+  test('starts with a named color value', () => {
+    const { getByDisplayValue } = renderWithTheme(<FieldColor value="green" />)
+    expect(getByDisplayValue('green')).toBeInTheDocument()
+  })
 
-test('FieldColor starts with a named color value', () => {
-  const { getByDisplayValue } = renderWithTheme(<FieldColor value="green" />)
-  fireEvent.change(getByDisplayValue('green'), { target: { value: 'blue' } })
-  expect(getByDisplayValue('blue')).toBeInTheDocument()
-})
+  test('responds to input value change', () => {
+    const { getByDisplayValue } = renderWithTheme(<FieldColor value="green" />)
+    const input = getByDisplayValue('green')
+    input.focus()
+    fireEvent.change(input, { target: { value: 'blue' } })
+    expect(getByDisplayValue('blue')).toBeInTheDocument()
+  })
 
-const FieldColorValidationMessage = () => {
-  return (
-    <ThemeProvider theme={theme}>
-      <FieldColor validationMessage={{ message: 'Error!', type: 'error' }} />
-    </ThemeProvider>
-  )
-}
+  const FieldColorValidationMessage = () => {
+    return (
+      <ThemeProvider theme={theme}>
+        <FieldColor validationMessage={{ message: 'Error!', type: 'error' }} />
+      </ThemeProvider>
+    )
+  }
 
-test('FieldColor with a validation message', () => {
-  const { queryByText } = renderWithTheme(<FieldColorValidationMessage />)
-  expect(queryByText('Error!')).toBeInTheDocument()
-})
+  test('with a validation message', () => {
+    const { queryByText } = renderWithTheme(<FieldColorValidationMessage />)
+    expect(queryByText('Error!')).toBeInTheDocument()
+  })
 
-test('FieldColor with an onChange', () => {
-  const onChangeMock = jest.fn()
-  const { getByLabelText } = renderWithTheme(
-    <FieldColor onChange={onChangeMock} label="Background Color" />
-  )
-  const input = getByLabelText('Background Color')
-  fireEvent.change(input, { target: { value: '#FFFF00' } })
-  expect(onChangeMock).toHaveBeenCalledWith({
-    currentTarget: { value: '#ffff00' },
-    target: { value: '#ffff00' },
+  test('with an onChange', () => {
+    const onChangeMock = jest.fn()
+    const { getByLabelText } = renderWithTheme(
+      <FieldColor onChange={onChangeMock} label="Background Color" />
+    )
+    const input = getByLabelText('Background Color')
+    fireEvent.change(input, { target: { value: '#FFFF00' } })
+    expect(onChangeMock).toHaveBeenCalledWith({
+      currentTarget: { value: '#FFFF00' },
+      target: { value: '#FFFF00' },
+    })
+  })
+
+  test('with a defaultValue', () => {
+    const { getByLabelText } = renderWithTheme(
+      <FieldColor defaultValue="purple" label="Background Color" />
+    )
+    const input = getByLabelText('Background Color')
+    expect(input).toHaveValue('purple')
+  })
+
+  test('with controlled state', () => {
+    function Wrapper() {
+      const [value, setValue] = React.useState('')
+      function handleClick() {
+        setValue('yellow')
+      }
+      function handleChange(e: React.FormEvent<HTMLInputElement>) {
+        setValue(e.currentTarget.value)
+      }
+      return (
+        <>
+          <Button onClick={handleClick}>Turn yellow</Button>
+          <FieldColor
+            value={value}
+            onChange={handleChange}
+            placeholder="Select a color"
+          />
+        </>
+      )
+    }
+    const { getByText, getByPlaceholderText } = renderWithTheme(<Wrapper />)
+
+    const button = getByText('Turn yellow')
+    const input = getByPlaceholderText('Select a color')
+    expect(input).toHaveValue('')
+    fireEvent.click(button)
+    expect(input).toHaveValue('yellow')
+    fireEvent.change(input, { target: { value: 'purple' } })
+    expect(input).toHaveValue('purple')
   })
 })

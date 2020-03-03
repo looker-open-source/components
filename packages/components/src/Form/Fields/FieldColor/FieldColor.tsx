@@ -24,9 +24,16 @@
 
  */
 
-import React, { useState, ChangeEvent, FormEvent, forwardRef, Ref } from 'react'
+import React, {
+  useState,
+  ChangeEvent,
+  FormEvent,
+  forwardRef,
+  Ref,
+  useEffect,
+} from 'react'
 import styled from 'styled-components'
-import uuid from 'uuid/v4'
+import { useID, useWrapEvent } from '../../../utils'
 import { usePopover, PopoverContent } from '../../../Popover'
 import { InputText, InputTextProps } from '../../Inputs/InputText'
 import { Field, FieldProps, omitFieldProps, pickFieldProps } from '../Field'
@@ -57,21 +64,32 @@ export interface FieldColorProps
    * If true, hides input and only show color swatch.
    */
   hideInput?: boolean
-
   value?: string
+  defaultValue?: string
 }
 
 const createEventWithHSVValue = (
-  color: SimpleHSV
+  color: SimpleHSV | string
 ): ChangeEvent<HTMLInputElement> => {
   return {
     currentTarget: {
-      value: simpleHSVtoFormattedColorString(color),
+      value:
+        typeof color === 'string'
+          ? color
+          : simpleHSVtoFormattedColorString(color),
     },
     target: {
-      value: simpleHSVtoFormattedColorString(color),
+      value:
+        typeof color === 'string'
+          ? color
+          : simpleHSVtoFormattedColorString(color),
     },
   } as ChangeEvent<HTMLInputElement>
+}
+
+function getColorFromText(text?: string) {
+  const initialWhite = polarbrightness2hsv(white())
+  return text && isValidColor(text) ? str2simpleHsv(text) : initialWhite
 }
 
 export const FieldColorComponent = forwardRef(
@@ -79,24 +97,42 @@ export const FieldColorComponent = forwardRef(
     {
       alignValidationMessage,
       hideInput,
-      id = uuid(),
+      id,
+      onChange,
+      onFocus,
+      onBlur,
+      value,
+      defaultValue,
       ...props
     }: FieldColorProps,
     ref: Ref<HTMLInputElement>
   ) => {
+    const inputID = useID(id)
     const validationMessage = useFormContext(props)
     const initialWhite = polarbrightness2hsv(white())
-    const initialValue =
-      props.value && isValidColor(props.value)
-        ? str2simpleHsv(props.value)
-        : initialWhite
+    const initialColor = getColorFromText(value || defaultValue)
 
-    const [color, setColor] = useState<SimpleHSV>(initialValue)
-    const [inputTextValue, setInputTextValue] = useState(props.value || '')
+    const [color, setColor] = useState<SimpleHSV>(initialColor)
+    const [inputTextValue, setInputTextValue] = useState(
+      value || defaultValue || ''
+    )
+    const [isFocused, setIsFocused] = useState(false)
 
-    const callOnChange = (newColor: SimpleHSV) => {
-      if (!props.onChange || !newColor) return
-      props.onChange(createEventWithHSVValue(newColor))
+    const handleFocus = () => setIsFocused(true)
+    const handleBlur = () => setIsFocused(false)
+    const wrappedOnFocus = useWrapEvent(handleFocus, onFocus)
+    const wrappedOnBlur = useWrapEvent(handleBlur, onBlur)
+
+    useEffect(() => {
+      if (value && value !== inputTextValue) {
+        setColor(str2simpleHsv(value))
+        !isFocused && setInputTextValue(value)
+      }
+    }, [isFocused, value, inputTextValue])
+
+    const callOnChange = (newColor: SimpleHSV | string) => {
+      if (!onChange || !newColor) return
+      onChange(createEventWithHSVValue(newColor))
     }
 
     const setColorState = (newColor: SimpleHSV) => {
@@ -115,13 +151,12 @@ export const FieldColorComponent = forwardRef(
       })
 
     const handleInputTextChange = (event: FormEvent<HTMLInputElement>) => {
-      const value = event.currentTarget.value
-      setInputTextValue(value)
+      const newValue = event.currentTarget.value
+      setInputTextValue(newValue)
 
-      const newColor =
-        !value || !isValidColor(value) ? initialWhite : str2simpleHsv(value)
-      setColor(newColor)
-      callOnChange(newColor)
+      const isValid = isValidColor(newValue)
+      callOnChange(isValid ? newValue : initialWhite)
+      setColor(getColorFromText(event.currentTarget.value))
     }
 
     const content = (
@@ -148,7 +183,7 @@ export const FieldColorComponent = forwardRef(
 
     return (
       <Field
-        id={id}
+        id={inputID}
         validationMessage={validationMessage}
         alignValidationMessage={alignValidationMessage || 'bottom'}
         {...pickFieldProps(props)}
@@ -169,7 +204,7 @@ export const FieldColorComponent = forwardRef(
           {!hideInput && (
             <InputText
               {...omitFieldProps(props)}
-              id={id}
+              id={inputID}
               ref={ref}
               borderRadius="none"
               borderTopRightRadius="medium"
@@ -177,6 +212,8 @@ export const FieldColorComponent = forwardRef(
               validationType={validationMessage && validationMessage.type}
               onChange={handleInputTextChange}
               value={inputTextValue}
+              onFocus={wrappedOnFocus}
+              onBlur={wrappedOnBlur}
             />
           )}
         </FormControl>
