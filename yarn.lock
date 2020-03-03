@@ -2254,10 +2254,10 @@
   dependencies:
     prettier ">=1.19.1"
 
-"@looker/sdk@^0.2.0-beta.29":
-  version "0.2.0-beta.29"
-  resolved "https://registry.yarnpkg.com/@looker/sdk/-/sdk-0.2.0-beta.29.tgz#2767fd771ec12c322313ce93558e84c0b7b68c90"
-  integrity sha512-gzzvnFJj6nuGReljfxIIhiAJkSodTXQsoiYJx31BXaU0JDaaky0P6BlKbYvV7B+41l/+hF/2ZXHzdT8+PL0QNA==
+"@looker/sdk@^0.2.0-beta.31":
+  version "0.2.0-beta.31"
+  resolved "https://registry.yarnpkg.com/@looker/sdk/-/sdk-0.2.0-beta.31.tgz#e4d39c3f21bf36ffeac5b97701c84c6fc577a510"
+  integrity sha512-AQTLm17r5B/8dRQcksO81hjmVQlGl9M9R0+YkMlcr2olHRFfD/GShr6+6Am3D+hO7QpSvKKi2dVT3ViP+gUPlw==
   dependencies:
     "@types/ini" "^1.3.30"
     "@types/node" "^12.12.6"
