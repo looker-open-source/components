@@ -49,7 +49,7 @@ describe('<ComboboxMulti/> with values', () => {
           { label: 'Qux', value: '104' },
         ]}
       >
-        <ComboboxMultiInput data-testid="select-input" />
+        <ComboboxMultiInput placeholder="Type here" />
         <ComboboxMultiList>
           <ComboboxMultiOption label="Foo" value="101" onClick={handleClick} />
           <ComboboxMultiOption label="Bar" value="102" onClick={handleClick} />
@@ -65,8 +65,12 @@ describe('<ComboboxMulti/> with values', () => {
   })
 
   test('Adds new values to existing', () => {
-    const { getByText, getAllByText, getByTestId } = renderComboboxMulti()
-    const input = getByTestId('select-input')
+    const {
+      getByText,
+      getAllByText,
+      getByPlaceholderText,
+    } = renderComboboxMulti()
+    const input = getByPlaceholderText('Type here')
     fireEvent.mouseDown(input)
 
     const foo = getByText('Foo')
@@ -89,9 +93,9 @@ describe('<ComboboxMulti/> with values', () => {
     ])
   })
 
-  test('Removes existing values', () => {
-    const { getAllByText, getByTestId } = renderComboboxMulti()
-    const input = getByTestId('select-input')
+  test('Removes existing values via option click', () => {
+    const { getAllByText, getByPlaceholderText } = renderComboboxMulti()
+    const input = getByPlaceholderText('Type here')
     fireEvent.mouseDown(input)
 
     const bar = getAllByText('Bar')[0]
@@ -101,5 +105,13 @@ describe('<ComboboxMulti/> with values', () => {
     expect(handleClick).toHaveBeenCalledTimes(1)
     expect(handleChange).toHaveBeenCalledTimes(1)
     expect(handleChange).toHaveBeenCalledWith([{ label: 'Qux', value: '104' }])
+  })
+
+  test('Removes existing values via chip delete', () => {
+    const { getAllByRole } = renderComboboxMulti()
+
+    const removeChip = getAllByRole('button')[1]
+    fireEvent.click(removeChip)
+    expect(handleChange).toHaveBeenCalledWith([{ label: 'Bar', value: '102' }])
   })
 })
