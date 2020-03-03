@@ -41,7 +41,6 @@ import {
   reset,
   color,
 } from '@looker/design-tokens'
-import { ResponsiveValue, TLengthStyledSystem } from 'styled-system'
 import { IconNames } from '@looker/icons'
 import React, { forwardRef, Ref } from 'react'
 import styled, { css } from 'styled-components'
@@ -49,8 +48,6 @@ import { InputProps, inputPropKeys } from '../InputProps'
 import { Flex } from '../../../Layout/Flex/Flex'
 import { Icon } from '../../../Icon/Icon'
 import { Text } from '../../../Text/Text'
-
-type ResponsiveSpaceValue = ResponsiveValue<TLengthStyledSystem>
 
 export const CustomizableInputTextAttributes: CustomizableAttributes = {
   borderRadius: 'medium',
@@ -88,7 +85,6 @@ export interface InputTextProps
     | 'time'
     | 'url'
     | 'week'
-  width?: ResponsiveSpaceValue
 }
 
 const InputComponent = forwardRef(
@@ -103,36 +99,41 @@ const InputComponent = forwardRef(
       ...props
     }: InputTextProps,
     ref: Ref<HTMLInputElement>
-  ) => (
-    <InputWrapper width={width}>
-      {iconBefore && (
-        <InputIconStyle>
-          <Icon name={iconBefore} size={20} />
-        </InputIconStyle>
-      )}
-      {prefix && (
-        <InputIconStyle>
-          <Text fontSize="small">{prefix}</Text>
-        </InputIconStyle>
-      )}
-      <input
+  ) => {
+    const input = (
+      <StyledInput
         {...pick(omit(props, 'color', 'height', 'width'), inputPropKeys)}
         type={type}
-        className={props.className}
         ref={ref}
       />
-      {suffix && (
-        <InputIconStyle>
-          <Text fontSize="small">{suffix}</Text>
-        </InputIconStyle>
-      )}
-      {iconAfter && (
-        <InputIconStyle>
-          <Icon name={iconAfter} size={20} />
-        </InputIconStyle>
-      )}
-    </InputWrapper>
-  )
+    )
+
+    return (
+      <InputWrapper width={width}>
+        {iconBefore && (
+          <InputIconStyle>
+            <Icon name={iconBefore} size={20} />
+          </InputIconStyle>
+        )}
+        {prefix && (
+          <InputIconStyle>
+            <Text fontSize="small">{prefix}</Text>
+          </InputIconStyle>
+        )}
+        {input}
+        {suffix && (
+          <InputIconStyle>
+            <Text fontSize="small">{suffix}</Text>
+          </InputIconStyle>
+        )}
+        {iconAfter && (
+          <InputIconStyle>
+            <Icon name={iconAfter} size={20} />
+          </InputIconStyle>
+        )}
+      </InputWrapper>
+    )
+  }
 )
 
 export const inputTextHover = css`
@@ -156,18 +157,15 @@ export const inputTextDisabled = css`
 // if before add x px
 // if after add x px
 // if suffix add x px
-
-export const InputWrapper = styled.div`
-  align-items: center;
+const StyledInput = styled.input`
   border: 1px solid;
   border-color: ${props => props.theme.colors.palette.charcoal200};
   border-radius: 4px;
   display: inline-block;
-  input {
-    outline: none;
-    padding: 0 12px;
-    width: 100%;
-  }
+  height: 36px;
+  outline: none;
+  padding: 0 12px;
+  width: 100%;
   &:hover {
     ${inputTextHover}
   }
@@ -177,6 +175,14 @@ export const InputWrapper = styled.div`
   }
   &:disabled {
     ${inputTextDisabled}
+  }
+`
+
+export const InputWrapper = styled(Flex)`
+  align-items: center;
+  position: relative;
+  input {
+    /* padding logic */
   }
 `
 
