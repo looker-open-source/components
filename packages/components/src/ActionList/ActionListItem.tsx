@@ -55,8 +55,10 @@ export const ActionListItem = styled(ActionListItemInternal)`
     box-shadow: ${({ theme, onClick }) => onClick && theme.shadows[2]};
     outline: none;
 
-    /* Hovered ActionListItem needs z-index: 1 and non-static position */
+    /**
+      The hovered ActionListItem needs to sit above its siblings (otherwise the bottom box-shadow is covered up).
+      Using position relative to paint it above static siblings.
+     */
     position: relative;
-    z-index: 1;
   }
 `
