@@ -57,7 +57,7 @@
     "@types/react-day-picker": "^5.3.0",
     "@types/react-resize-detector": "^4.2.0",
     "@types/styled-components": "^4.4.1",
-    "@types/uuid": "^3.4.7",
+    "@types/uuid": "^7.0.0",
     "csstype": "^2.6.9",
     "enzyme": "^3.11.0",
     "jest-styled-components": "^6.3.4",
