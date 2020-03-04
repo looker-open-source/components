@@ -38,60 +38,60 @@ import {
   ActionListHeader,
   ActionListHeaderColumn,
 } from '../../../components/src/ActionList'
+import { Paragraph } from '../../../components/src/Text'
+import { Icon } from '../../../components/src/Icon'
+import { Flex } from '../../../components/src/Layout'
 
 const data = [
   {
-    groupName: 'GLoogker',
-    id: 1,
-    members: 131,
-    roles: 'Engineering',
+    lastSuccessfulBuild: '1-22-20 33:33:33',
+    longPdtName: 'LR$A4YAL158075992_user_daily_query_activity',
+    model: 'looker_ext',
+    pdtName: 'bg_looker_app_db',
+    persistanceType: 'datagroup_trigger',
+    status: 'Success',
   },
   {
-    groupName: 'FaceLook',
-    id: 2,
-    members: 180,
-    roles: 'Legal',
-  },
-  { groupName: 'Lookersoft', id: 3, members: 96, roles: 'Human Resources' },
-  {
-    groupName: 'NetfLooks',
-    id: 4,
-    members: 43,
-    roles: 'Business Development',
-  },
-  {
-    groupName: 'Apple (but Looker)',
-    id: 5,
-    members: 46,
-    roles: 'Services',
+    lastSuccessfulBuild: '1-22-20 33:33:33',
+    longPdtName: 'LR$A4YAL158075992_user_daily_query_activity',
+    model: 'looker_ext',
+    pdtName: 'bg_looker_app_db',
+    persistanceType: 'datagroup_trigger',
+    status: 'Failed',
   },
 ]
 
 const columns: ActionListColumns = [
   {
-    children: data.map(datum => datum.id),
-    id: 'id',
+    children: 'test',
+    id: 'pdt_name',
     primaryKey: true,
-    type: 'number',
-    widthPercent: 10,
-  },
-  {
-    children: data.map(datum => datum.groupName),
-    id: 'groupName',
     type: 'string',
-    widthPercent: 30,
+    widthPercent: 27,
   },
   {
-    children: data.map(datum => datum.roles),
-    id: 'roles',
+    children: 'test',
+    id: 'status',
     type: 'string',
-    widthPercent: 30,
+    widthPercent: 13,
   },
   {
-    children: data.map(datum => datum.members),
-    id: 'members',
-    type: 'number',
-    widthPercent: 30,
+    children: 'test',
+    id: 'model',
+    type: 'string',
+    widthPercent: 20,
+  },
+  {
+    children: 'test',
+    id: 'persistance_type',
+    type: 'string',
+    widthPercent: 20,
+  },
+  {
+    children: 'test',
+    id: 'last_successful_build',
+    type: 'string',
+    widthPercent: 20,
   },
 ]
 
@@ -100,49 +100,80 @@ export const ActionListDemo: FC = () => {
     <ActionList columns={columns}>
       <ActionListHeader>
         <ActionListRowContainer>
-          <ActionListHeaderColumn>ID</ActionListHeaderColumn>
-          <ActionListHeaderColumn>Group Name</ActionListHeaderColumn>
-          <ActionListHeaderColumn>Roles</ActionListHeaderColumn>
-          <ActionListHeaderColumn>Members</ActionListHeaderColumn>
+          <ActionListHeaderColumn>PDT Name</ActionListHeaderColumn>
+          <ActionListHeaderColumn>Status</ActionListHeaderColumn>
+          <ActionListHeaderColumn>Model</ActionListHeaderColumn>
+          <ActionListHeaderColumn>Persistance Type</ActionListHeaderColumn>
+          <ActionListHeaderColumn>Last Successful Build</ActionListHeaderColumn>
         </ActionListRowContainer>
         <ActionListRowOptionsContainer />
       </ActionListHeader>
       <ActionListItems>
-        {data.map(({ id, groupName, roles, members }) => (
-          <ActionListItem key={id} onClick={() => alert(`Row clicked`)}>
-            <ActionListRowContainer>
-              <ActionListItemColumn>{id}</ActionListItemColumn>
-              <ActionListItemColumn>
-                <div>{groupName}</div>
-                <a href="https://google.com">Website</a>
-              </ActionListItemColumn>
-              <ActionListItemColumn>{roles}</ActionListItemColumn>
-              <ActionListItemColumn>{members}</ActionListItemColumn>
-            </ActionListRowContainer>
-            <ActionListRowOptionsContainer>
-              <ActionListItemActions>
-                <ActionListItemAction
-                  icon="Group"
-                  onClick={() => alert('Edited!')}
-                >
-                  Edit
-                </ActionListItemAction>
-                <ActionListItemAction
-                  icon="Edit"
-                  onClick={() => alert('Renamed!')}
-                >
-                  Rename
-                </ActionListItemAction>
-                <ActionListItemAction
-                  icon="CircleRemove"
-                  onClick={() => alert('Removed!')}
-                >
-                  Remove
-                </ActionListItemAction>
-              </ActionListItemActions>
-            </ActionListRowOptionsContainer>
-          </ActionListItem>
-        ))}
+        {data.map(
+          ({
+            lastSuccessfulBuild,
+            longPdtName,
+            model,
+            pdtName,
+            persistanceType,
+            status,
+          }) => (
+            <ActionListItem key={pdtName} onClick={() => alert(`Row clicked`)}>
+              <ActionListRowContainer>
+                <ActionListItemColumn>
+                  <Paragraph fontSize="xsmall">{pdtName}</Paragraph>
+                  <Paragraph fontSize="xsmall" variant="subdued" truncate>
+                    {longPdtName}
+                  </Paragraph>
+                </ActionListItemColumn>
+                <ActionListItemColumn>
+                  <Paragraph fontSize="xsmall">
+                    <Flex alignItems="center">
+                      <Icon
+                        name={
+                          status === 'Success' ? 'ArrowDropUp' : 'ArrowDropDown'
+                        }
+                        color={
+                          status === 'Success'
+                            ? 'palette.green300'
+                            : 'palette.red300'
+                        }
+                        mr="5px"
+                        size={24}
+                      />
+                      {status}
+                    </Flex>
+                  </Paragraph>
+                </ActionListItemColumn>
+                <ActionListItemColumn>{model}</ActionListItemColumn>
+                <ActionListItemColumn>{persistanceType}</ActionListItemColumn>
+                <ActionListItemColumn>
+                  {lastSuccessfulBuild}
+                </ActionListItemColumn>
+              </ActionListRowContainer>
+              <ActionListRowOptionsContainer>
+                <ActionListItemActions>
+                  <ActionListItemAction onClick={() => alert('Go to LookML!')}>
+                    Go to LookML
+                  </ActionListItemAction>
+                  <ActionListItemAction onClick={() => alert('PDT Details!')}>
+                    PDT Details
+                  </ActionListItemAction>
+                  <ActionListItemAction
+                    onClick={() => alert('Recent Build Events!')}
+                  >
+                    Recent Build Events
+                  </ActionListItemAction>
+                  <ActionListItemAction
+                    onClick={() => alert('Recent Trigger Events!')}
+                  >
+                    Recent Trigger Events
+                  </ActionListItemAction>
+                </ActionListItemActions>
+              </ActionListRowOptionsContainer>
+            </ActionListItem>
+          )
+        )}
       </ActionListItems>
     </ActionList>
   )
