@@ -29,7 +29,7 @@
     "@looker/icons": "^0.7.19",
     "@types/moment": "^2.13.0",
     "@types/react-transition-group": "^4.2.4",
-    "@types/styled-system": "^5.1.5",
+    "@types/styled-system": "^5.1.8",
     "d3-color": "^1.4.0",
     "d3-hsv": "^0.1.0",
     "date-fns": "^2.10.0",
