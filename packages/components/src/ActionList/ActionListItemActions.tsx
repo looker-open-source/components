@@ -14,7 +14,7 @@ export const ActionListItemActions = ({
 }: ActionListItemActionsProps) => {
   const context = useContext(ActionListItemContext)
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    event.preventDefault()
+    event.stopPropagation()
   }
 
   return (

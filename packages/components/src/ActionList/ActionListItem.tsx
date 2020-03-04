@@ -19,9 +19,7 @@ const ActionListItemInternal = (props: CompatibleHTMLProps<HTMLDivElement>) => {
   }
 
   const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    if (!event.defaultPrevented) {
-      onClick && onClick(event)
-    }
+    onClick && onClick(event)
   }
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {

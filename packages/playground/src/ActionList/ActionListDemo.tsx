@@ -41,21 +41,27 @@ import {
 import { Paragraph } from '../../../components/src/Text'
 import { Icon } from '../../../components/src/Icon'
 import { Flex } from '../../../components/src/Layout'
+import { Link } from '../../../components/src/Link'
 
 const data = [
   {
+    error: undefined,
     lastSuccessfulBuild: '1-22-20 33:33:33',
-    longPdtName: 'LR$A4YAL158075992_user_daily_query_activity',
-    model: 'looker_ext',
-    pdtName: 'bg_looker_app_db',
+    longPdtName: 'LR$B2DS91230SL_something_something_dark_side',
+    model: 'model_uno',
+    pdtName: 'my_great_pdt_name',
     persistanceType: 'datagroup_trigger',
     status: 'Success',
   },
   {
+    error: {
+      link: 'https://google.com',
+      message: 'Build Error',
+    },
     lastSuccessfulBuild: '1-22-20 33:33:33',
-    longPdtName: 'LR$A4YAL158075992_user_daily_query_activity',
-    model: 'looker_ext',
-    pdtName: 'bg_looker_app_db',
+    longPdtName: 'LR$A4YAL15807AQ2_something_something_evil',
+    model: 'model_uno',
+    pdtName: 'my_other_great_pdt_name',
     persistanceType: 'datagroup_trigger',
     status: 'Failed',
   },
@@ -111,6 +117,7 @@ export const ActionListDemo: FC = () => {
       <ActionListItems>
         {data.map(
           ({
+            error,
             lastSuccessfulBuild,
             longPdtName,
             model,
@@ -127,23 +134,33 @@ export const ActionListDemo: FC = () => {
                   </Paragraph>
                 </ActionListItemColumn>
                 <ActionListItemColumn>
-                  <Paragraph fontSize="xsmall">
-                    <Flex alignItems="center">
-                      <Icon
-                        name={
-                          status === 'Success' ? 'ArrowDropUp' : 'ArrowDropDown'
-                        }
-                        color={
-                          status === 'Success'
-                            ? 'palette.green300'
-                            : 'palette.red300'
-                        }
-                        mr="5px"
-                        size={24}
-                      />
-                      {status}
-                    </Flex>
-                  </Paragraph>
+                  <Flex alignItems="center">
+                    <Icon
+                      name={
+                        status === 'Success' ? 'ArrowDropUp' : 'ArrowDropDown'
+                      }
+                      color={
+                        status === 'Success'
+                          ? 'palette.green300'
+                          : 'palette.red300'
+                      }
+                      mr="5px"
+                      size={24}
+                    />
+                    <div>
+                      <Paragraph fontSize="xsmall">{status}</Paragraph>
+                      {error ? (
+                        <Link
+                          onClick={(
+                            event: React.MouseEvent<HTMLAnchorElement>
+                          ) => event.stopPropagation()}
+                          href={error.link}
+                        >
+                          {error.message}
+                        </Link>
+                      ) : null}
+                    </div>
+                  </Flex>
                 </ActionListItemColumn>
                 <ActionListItemColumn>{model}</ActionListItemColumn>
                 <ActionListItemColumn>{persistanceType}</ActionListItemColumn>
