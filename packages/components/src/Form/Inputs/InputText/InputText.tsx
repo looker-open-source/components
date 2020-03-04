@@ -42,12 +42,13 @@ import {
   color,
 } from '@looker/design-tokens'
 import { IconNames } from '@looker/icons'
-import React, { forwardRef, Ref } from 'react'
+import React, { forwardRef, Ref, useRef } from 'react'
 import styled, { css } from 'styled-components'
 import { InputProps, inputPropKeys } from '../InputProps'
 import { Flex } from '../../../Layout/Flex/Flex'
 import { Icon } from '../../../Icon/Icon'
 import { Text } from '../../../Text/Text'
+import { useForkedRef } from '../../../utils'
 
 export const CustomizableInputTextAttributes: CustomizableAttributes = {
   borderRadius: 'medium',
@@ -98,9 +99,23 @@ const InputComponent = forwardRef(
       className,
       ...props
     }: InputTextProps,
-    ref: Ref<HTMLInputElement>
+    forwardedRef: Ref<HTMLInputElement>
   ) => {
-    const moveFocusToInput = () => ref && ref.focus()
+    if (iconBefore && prefix) {
+      // eslint-disable-next-line no-console
+      console.warn(`Only use IconBefore or Prefix not both at the same time. `)
+      return null
+    }
+
+    if (iconAfter && suffix) {
+      // eslint-disable-next-line no-console
+      console.warn(`Only use IconAfter or Suffix not both at the same time. `)
+      return null
+    }
+
+    const internalRef = useRef<null | HTMLInputElement>(null)
+    const ref = useForkedRef<HTMLInputElement>(internalRef, forwardedRef)
+    const focusInput = () => internalRef.current && internalRef.current.focus()
 
     const before = iconBefore ? (
       <InputIconStyle>
@@ -122,17 +137,16 @@ const InputComponent = forwardRef(
       </InputIconStyle>
     ) : null
 
-    if (before) {
+    if ((before && after) || before || after) {
       return (
-        <InputLayout className={className} onClick={moveFocusToInput}>
+        <InputLayout className={className} onClick={focusInput}>
           {before}
-
           <input
             {...pick(omit(props, 'color', 'height', 'width'), inputPropKeys)}
+            className={className}
             type={type}
             ref={ref}
           />
-
           {after}
         </InputLayout>
       )
@@ -191,7 +205,7 @@ const StyledInput = styled.input`
 
 export const InputLayout = styled.div`
   ${shared}
-
+  background-color: ${props => props.theme.colors.palette.white};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -202,6 +216,7 @@ export const InputLayout = styled.div`
 
 export const InputIconStyle = styled(Flex)`
   pointer-events: none;
+  padding: 0 10px;
   color: ${props => props.theme.colors.palette.charcoal400};
 `
 
