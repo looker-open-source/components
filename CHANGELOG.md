@@ -10,13 +10,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Added
 
 - `InputDateRange` component
+- New icons `Function`, `ArrowRight`, `IdeDimension`, `IdeDimensionGroup`, `IdeParameter`, `NotificationBellOn`, `NotificationBellOff`
 
 ## Changed
 
 - `FieldColor` state can now be fully controlled.
 - `Slider` component style updates
 - `InputDate` now supports controlled component behavior
-
+- Icon `CaretDown` optically centered
 ## Fixed
 
 - `InputDate` and `InputDateRange` test mocks
