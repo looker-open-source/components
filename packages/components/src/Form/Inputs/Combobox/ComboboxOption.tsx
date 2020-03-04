@@ -45,16 +45,19 @@ import omit from 'lodash/omit'
 import React, { forwardRef, useContext, Ref } from 'react'
 import styled, { css } from 'styled-components'
 import { Icon } from '../../../Icon'
+import { ReplaceText, Text } from '../../../Text'
 import { makeHash } from './utils/makeHash'
 import {
   OptionContext,
   ComboboxContext,
   ComboboxContextProps,
+  ComboboxMultiContext,
 } from './ComboboxContext'
 import { getComboboxText } from './utils/getComboboxText'
 import { useOptionEvents } from './utils/useOptionEvents'
 import { useOptionStatus } from './utils/useOptionStatus'
 import { useAddOptionToContext } from './utils/useAddOptionToContext'
+import { ComboboxData, ComboboxMultiData } from './utils/state'
 
 export interface ComboboxOptionObject {
   /**
@@ -67,8 +70,17 @@ export interface ComboboxOptionObject {
   value: string
 }
 
+export interface HighlightTextProps {
+  /**
+   * Highlight the matching option text as the user types into the input
+   * @default true
+   */
+  highlightText?: boolean
+}
+
 export interface ComboboxOptionProps
   extends ComboboxOptionObject,
+    HighlightTextProps,
     ColorProps,
     FlexboxProps,
     LayoutProps,
@@ -116,7 +128,7 @@ ComboboxOptionWrapper.displayName = 'ComboboxOptionWrapper'
 
 const ComboboxOptionInternal = forwardRef(
   (
-    { children, ...props }: ComboboxOptionProps,
+    { children, highlightText = true, ...props }: ComboboxOptionProps,
     forwardedRef: Ref<HTMLLIElement>
   ) => {
     const { label, value } = props
@@ -141,7 +153,7 @@ const ComboboxOptionInternal = forwardRef(
         <ComboboxOptionDetail>
           {isSelected && <Icon name="Check" mr={0} />}
         </ComboboxOptionDetail>
-        {children || <ComboboxOptionText />}
+        {children || <ComboboxOptionText highlightText={highlightText} />}
       </ComboboxOptionWrapper>
     )
   }
@@ -194,15 +206,54 @@ export const comboboxOptionDefaultProps: Partial<ComboboxOptionProps> = {
 
 ComboboxOption.defaultProps = comboboxOptionDefaultProps
 
-// ComboboxOptionText
+export function ComboboxOptionTextInternal({
+  highlightText = true,
+  ...props
+}: CompatibleHTMLProps<HTMLSpanElement> & HighlightTextProps) {
+  const context = useContext(ComboboxContext)
+  const contextMulti = useContext(ComboboxMultiContext)
+  const contextToUse = context.transition ? context : contextMulti
 
-// We don't forwardRef or spread props because we render multiple spans or null,
-// should be fine 🤙
-export function ComboboxOptionTextInternal(
-  props: CompatibleHTMLProps<HTMLSpanElement>
-) {
+  const { data } = contextToUse
+  const { inputValue } = data
+  const contextOption = (data as ComboboxData).option
+  const options = contextOption
+    ? [contextOption]
+    : (data as ComboboxMultiData).options
+  const optionTexts = options ? options.map(opt => getComboboxText(opt)) : []
+
   const option = useContext(OptionContext)
-  return <span {...props}>{getComboboxText(option)}</span>
+  const text = getComboboxText(option)
+
+  if (
+    !highlightText ||
+    !inputValue ||
+    inputValue === '' ||
+    // inputValue is reflecting a currently selected option
+    // highlighting it would be weird
+    (text === inputValue && optionTexts.indexOf(text) > -1)
+  ) {
+    return <span {...props}>{text}</span>
+  }
+  return (
+    <span {...props}>
+      <ReplaceText
+        match={inputValue}
+        replace={(str, index) => (
+          <Text
+            fontWeight="semiBold"
+            fontSize="small"
+            textDecoration="underline"
+            key={index}
+          >
+            {str}
+          </Text>
+        )}
+      >
+        {text}
+      </ReplaceText>
+    </span>
+  )
 }
 
 export const ComboboxOptionText = styled(ComboboxOptionTextInternal)``

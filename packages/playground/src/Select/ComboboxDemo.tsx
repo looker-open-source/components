@@ -30,6 +30,7 @@ import {
   ComboboxList,
   ComboboxInput,
 } from '@looker/components'
+import { Heading } from '@looker/components/dist/esm'
 
 export function ComboboxDemo() {
   const [option, setOption] = React.useState({ value: 'Bananas' })
@@ -43,8 +44,8 @@ export function ComboboxDemo() {
 
   return (
     <Box p="large">
+      <Heading>Controlled</Heading>
       <Combobox width={300} mb="medium" value={option} onChange={handleChange}>
-        {/* <Combobox width={300} mb="medium"> */}
         <ComboboxInput />
         <ComboboxList>
           <ComboboxOption value="Apples" />
@@ -54,8 +55,38 @@ export function ComboboxDemo() {
           <ComboboxOption value="Pineapples" />
         </ComboboxList>
       </Combobox>
-      <ComboboxMulti width={300} values={options} onChange={handleMultiChange}>
-        {/* <ComboboxMulti width={300}> */}
+      <ComboboxMulti
+        width={300}
+        mb="medium"
+        values={options}
+        onChange={handleMultiChange}
+      >
+        <ComboboxMultiInput onClear={() => console.log('CLEAR')} />
+        <ComboboxMultiList>
+          <ComboboxMultiOption value="Apples" />
+          <ComboboxMultiOption value="Oranges" />
+          <ComboboxMultiOption value="Grapes" />
+          <ComboboxMultiOption value="Bananas" />
+          <ComboboxMultiOption value="Pineapples" />
+        </ComboboxMultiList>
+      </ComboboxMulti>
+      <Heading>Uncontrolled</Heading>
+      <Combobox width={300} mb="medium">
+        <ComboboxInput />
+        <ComboboxList>
+          <ComboboxOption value="Apples" />
+          <ComboboxOption value="Oranges" />
+          <ComboboxOption value="Grapes" />
+          <ComboboxOption value="Bananas" />
+          <ComboboxOption value="Pineapples" />
+          <ComboboxOption
+            value=""
+            label="Create New Option"
+            highlightText={false}
+          />
+        </ComboboxList>
+      </Combobox>
+      <ComboboxMulti width={300}>
         <ComboboxMultiInput onClear={() => console.log('CLEAR')} />
         <ComboboxMultiList>
           <ComboboxMultiOption value="Apples" />

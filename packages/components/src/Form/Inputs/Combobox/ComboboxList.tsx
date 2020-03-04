@@ -48,7 +48,7 @@ export interface ComboboxListProps
     TypographyProps,
     CompatibleHTMLProps<HTMLUListElement> {
   /**
-   * Defaults to false. When true and the list is opened, if an option's value
+   * When true and the list is opened, if an option's value
    * matches the value in the input, it will automatically be highlighted and
    * be the starting point for any keyboard navigation of the list.
    *
@@ -57,6 +57,7 @@ export interface ComboboxListProps
    * arbitrary value into the input, so if the only valid values for the input
    * are from the list, your app will need to do that validation on blur or
    * submit of the form.
+   * @default false
    */
   persistSelection?: boolean
 }
@@ -88,6 +89,9 @@ const ComboboxListInternal = forwardRef(
       popoverRef,
     } = contextToUse
 
+    if (persistSelection) {
+      if (persistSelectionRef) persistSelectionRef.current = true
+    }
     if (persistSelection) {
       if (persistSelectionRef) persistSelectionRef.current = true
     }

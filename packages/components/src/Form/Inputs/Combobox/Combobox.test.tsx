@@ -107,6 +107,42 @@ describe('<Combobox/> with children', () => {
     expect(queryByText('Foo')).not.toBeInTheDocument()
   })
 
+  // Testing same behavior on both Combobox and ComboboxMulti
+  test.each([
+    [
+      'Combobox',
+      <Combobox key="combobox">
+        <ComboboxInput placeholder="Type here" />
+        <ComboboxList>
+          <ComboboxOption label="Foo" value="101" />
+          <ComboboxOption label="Bar" value="102" />
+        </ComboboxList>
+      </Combobox>,
+    ],
+    [
+      'ComboboxMulti',
+      <ComboboxMulti key="combobox-multi">
+        <ComboboxMultiInput placeholder="Type here" />
+        <ComboboxMultiList>
+          <ComboboxMultiOption label="Foo" value="101" />
+          <ComboboxMultiOption label="Bar" value="102" />
+        </ComboboxMultiList>
+      </ComboboxMulti>,
+    ],
+  ])('Highlights typed text', (_, jsx) => {
+    const { getByText, getByPlaceholderText } = renderWithTheme(jsx)
+
+    const input = getByPlaceholderText('Type here')
+    fireEvent.focus(input)
+    fireEvent.change(input, { target: { value: 'oo' } })
+    expect(getByText('oo')).toHaveStyle(
+      'font-weight: 600; text-decoration: underline'
+    )
+    expect(getByText('Bar')).not.toHaveStyle(
+      'font-weight: 600; text-decoration: underline'
+    )
+  })
+
   test.each([
     [
       'Combobox',
