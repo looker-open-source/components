@@ -95,44 +95,57 @@ const InputComponent = forwardRef(
       iconBefore,
       prefix,
       suffix,
-      width,
+      className,
       ...props
     }: InputTextProps,
     ref: Ref<HTMLInputElement>
   ) => {
-    const input = (
-      <StyledInput
-        {...pick(omit(props, 'color', 'height', 'width'), inputPropKeys)}
-        type={type}
-        ref={ref}
-      />
-    )
+    const moveFocusToInput = () => ref && ref.focus()
 
-    return (
-      <InputWrapper width={width}>
-        {iconBefore && (
-          <InputIconStyle>
-            <Icon name={iconBefore} size={20} />
-          </InputIconStyle>
-        )}
-        {prefix && (
-          <InputIconStyle>
-            <Text fontSize="small">{prefix}</Text>
-          </InputIconStyle>
-        )}
-        {input}
-        {suffix && (
-          <InputIconStyle>
-            <Text fontSize="small">{suffix}</Text>
-          </InputIconStyle>
-        )}
-        {iconAfter && (
-          <InputIconStyle>
-            <Icon name={iconAfter} size={20} />
-          </InputIconStyle>
-        )}
-      </InputWrapper>
-    )
+    const before = iconBefore ? (
+      <InputIconStyle>
+        <Icon name={iconBefore} size={20} />
+      </InputIconStyle>
+    ) : prefix ? (
+      <InputIconStyle>
+        <Text fontSize="small">{prefix}</Text>
+      </InputIconStyle>
+    ) : null
+
+    const after = iconAfter ? (
+      <InputIconStyle>
+        <Icon name={iconAfter} size={20} />
+      </InputIconStyle>
+    ) : suffix ? (
+      <InputIconStyle>
+        <Text fontSize="small">{suffix}</Text>
+      </InputIconStyle>
+    ) : null
+
+    if (before) {
+      return (
+        <InputLayout className={className} onClick={moveFocusToInput}>
+          {before}
+
+          <input
+            {...pick(omit(props, 'color', 'height', 'width'), inputPropKeys)}
+            type={type}
+            ref={ref}
+          />
+
+          {after}
+        </InputLayout>
+      )
+    } else {
+      return (
+        <StyledInput
+          {...pick(omit(props, 'color', 'height', 'width'), inputPropKeys)}
+          className={className}
+          type={type}
+          ref={ref}
+        />
+      )
+    }
   }
 )
 
@@ -151,13 +164,7 @@ export const inputTextDisabled = css`
     border-color: ${props => props.theme.colors.palette.charcoal200};
   }
 `
-
-// if statement to set up the value of padding inside input.
-// if prefix add x px
-// if before add x px
-// if after add x px
-// if suffix add x px
-const StyledInput = styled.input`
+const shared = css`
   border: 1px solid;
   border-color: ${props => props.theme.colors.palette.charcoal200};
   border-radius: 4px;
@@ -178,22 +185,24 @@ const StyledInput = styled.input`
   }
 `
 
-export const InputWrapper = styled(Flex)`
+const StyledInput = styled.input`
+  ${shared}
+`
+
+export const InputLayout = styled.div`
+  ${shared}
+
+  display: flex;
   align-items: center;
-  position: relative;
+  justify-content: center;
   input {
-    /* padding logic */
+    flex: 1;
   }
 `
 
 export const InputIconStyle = styled(Flex)`
-  position: absolute;
   pointer-events: none;
-  left: 0;
   color: ${props => props.theme.colors.palette.charcoal400};
-  & + & {
-    padding: 0 12px;
-  }
 `
 
 export const inputTextValidation = css<InputTextProps>`
