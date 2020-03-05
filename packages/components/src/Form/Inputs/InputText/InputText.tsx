@@ -137,7 +137,7 @@ const InputComponent = forwardRef(
       </InputIconStyle>
     ) : null
 
-    if ((before && after) || before || after) {
+    if (before || after) {
       return (
         <InputLayout className={className} onClick={focusInput}>
           {before}
@@ -184,8 +184,6 @@ const shared = css`
   border-radius: 4px;
   display: inline-block;
   height: 36px;
-  outline: none;
-  padding: 0 12px;
   width: 100%;
   &:hover {
     ${inputTextHover}
@@ -199,25 +197,32 @@ const shared = css`
   }
 `
 
+export const InputLayout = styled.div`
+  ${shared}
+  align-items: center;
+  background-color: ${props => props.theme.colors.palette.white};
+  display: flex;
+  border-color: ${props => props.theme.colors.palette.charcoal200};
+  justify-content: space-evenly;
+  padding: 0;
+  input {
+    border: none;
+    flex: 1;
+    height: 100%;
+    width: 100%;
+    outline: none;
+    padding: 0;
+  }
+`
+
 const StyledInput = styled.input`
   ${shared}
 `
 
-export const InputLayout = styled.div`
-  ${shared}
-  background-color: ${props => props.theme.colors.palette.white};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  input {
-    flex: 1;
-  }
-`
-
 export const InputIconStyle = styled(Flex)`
-  pointer-events: none;
-  padding: 0 10px;
   color: ${props => props.theme.colors.palette.charcoal400};
+  padding: 0 12px;
+  pointer-events: none;
 `
 
 export const inputTextValidation = css<InputTextProps>`
@@ -257,7 +262,7 @@ export const InputText = styled(InputComponent).attrs(
 `
 
 export const inputTextDefaults = {
-  border: 'none',
+  padding: '0 12px',
   width: '174px',
 }
 
