@@ -131,8 +131,9 @@ const CheckboxContainer = styled.div<CheckboxContainerProps>`
   }
   input[type='checkbox']:focus {
     & + ${FauxCheckbox} {
-      box-shadow: ${props =>
-        `0 0 .5px 1px ${props.theme.colors.semanticColors.primary.borderColor}`};
+      border-color: ${props => props.theme.colors.palette.purple300};
+      box-shadow: 0 0 0 2px ${props => props.theme.colors.palette.purple100};
+      outline: none;
     }
   }
   input[type='checkbox']:disabled {
