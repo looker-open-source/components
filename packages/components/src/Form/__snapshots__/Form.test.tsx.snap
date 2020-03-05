@@ -1,38 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Form with one child 1`] = `
-.c5 {
-  border-radius: 0.25rem;
-  border: solid 1px;
-  border-color: #DEE1E5;
-  height: 36px;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-  padding-top: 0rem;
-  padding-bottom: 0rem;
-  font-size: 0.875rem;
-  color: #343C42;
-}
-
-.c5:hover {
-  border-color: #C1C6CC;
-}
-
-.c5:focus {
-  border-color: #9785F2;
-  box-shadow: 0 0 0 2px #E8E5FF;
-  outline: none;
-}
-
-.c5:disabled {
-  background: #F5F6F7;
-  color: #939BA5;
-}
-
-.c5:disabled:hover {
-  border-color: #DEE1E5;
-}
-
 .c2 {
   width: 13rem;
   -webkit-align-items: left;
@@ -47,6 +15,48 @@ exports[`Form with one child 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+}
+
+.c4 {
+  border: 1px solid;
+  border-color: #DEE1E5;
+  border-radius: 4px;
+  display: inline-block;
+  height: 36px;
+  width: 100%;
+}
+
+.c4:hover {
+  border-color: #C1C6CC;
+}
+
+.c4:focus,
+.c4:focus-within {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c4:disabled {
+  background: #F5F6F7;
+  color: #939BA5;
+}
+
+.c4:disabled:hover {
+  border-color: #DEE1E5;
+}
+
+.c6 {
+  border-radius: 0.25rem;
+  height: 36px;
+  width: 174px;
+  padding-left: 0rem;
+  padding-right: 0rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  padding: 0 8px;
+  font-size: 0.875rem;
+  color: #343C42;
 }
 
 .c0 {
@@ -72,11 +82,11 @@ exports[`Form with one child 1`] = `
   width: 13rem;
 }
 
-.c1 .c4 {
+.c1 .c5 {
   width: 100%;
 }
 
-.c1 .c6 {
+.c1 .c7 {
   width: 100%;
 }
 
@@ -107,7 +117,7 @@ exports[`Form with one child 1`] = `
         className=""
       >
         <input
-          className="c4 c5 "
+          className="c4 c5 c6 "
           id="text-field"
           name="name"
           type="text"

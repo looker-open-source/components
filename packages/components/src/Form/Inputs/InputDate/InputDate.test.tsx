@@ -71,7 +71,7 @@ test('updates text input value when day is clicked', () => {
   const date = getByText('15') // the 15th day of the month
   fireEvent.click(date)
 
-  expect(input.value).toEqual('02/15/2020')
+  expect(input.value).toEqual('03/15/2020')
 })
 
 test('fills TextInput with defaultValue', () => {

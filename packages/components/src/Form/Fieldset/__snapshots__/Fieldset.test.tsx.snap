@@ -1,38 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Fieldset with left aligned legend 1`] = `
-.c8 {
-  border-radius: 0.25rem;
-  border: solid 1px;
-  border-color: #DEE1E5;
-  height: 36px;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-  padding-top: 0rem;
-  padding-bottom: 0rem;
-  font-size: 0.875rem;
-  color: #343C42;
-}
-
-.c8:hover {
-  border-color: #C1C6CC;
-}
-
-.c8:focus {
-  border-color: #9785F2;
-  box-shadow: 0 0 0 2px #E8E5FF;
-  outline: none;
-}
-
-.c8:disabled {
-  background: #F5F6F7;
-  color: #939BA5;
-}
-
-.c8:disabled:hover {
-  border-color: #DEE1E5;
-}
-
 .c5 {
   width: 13rem;
   -webkit-align-items: left;
@@ -47,6 +15,48 @@ exports[`Fieldset with left aligned legend 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+}
+
+.c7 {
+  border: 1px solid;
+  border-color: #DEE1E5;
+  border-radius: 4px;
+  display: inline-block;
+  height: 36px;
+  width: 100%;
+}
+
+.c7:hover {
+  border-color: #C1C6CC;
+}
+
+.c7:focus,
+.c7:focus-within {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c7:disabled {
+  background: #F5F6F7;
+  color: #939BA5;
+}
+
+.c7:disabled:hover {
+  border-color: #DEE1E5;
+}
+
+.c9 {
+  border-radius: 0.25rem;
+  height: 36px;
+  width: 174px;
+  padding-left: 0rem;
+  padding-right: 0rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  padding: 0 8px;
+  font-size: 0.875rem;
+  color: #343C42;
 }
 
 .c1 {
@@ -87,11 +97,11 @@ exports[`Fieldset with left aligned legend 1`] = `
   width: 13rem;
 }
 
-.c4 .c7 {
+.c4 .c8 {
   width: 100%;
 }
 
-.c4 .c9 {
+.c4 .c10 {
   width: 100%;
 }
 
@@ -151,7 +161,7 @@ exports[`Fieldset with left aligned legend 1`] = `
             className=""
           >
             <input
-              className="c7 c8 "
+              className="c7 c8 c9 "
               id="text-1"
               name="name1"
               type="text"
@@ -183,7 +193,7 @@ exports[`Fieldset with left aligned legend 1`] = `
             className=""
           >
             <input
-              className="c7 c8 "
+              className="c7 c8 c9 "
               id="text-2"
               name="name2"
               type="text"
@@ -215,7 +225,7 @@ exports[`Fieldset with left aligned legend 1`] = `
             className=""
           >
             <input
-              className="c7 c8 "
+              className="c7 c8 c9 "
               id="text-3"
               name="nam3"
               type="text"

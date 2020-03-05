@@ -118,21 +118,21 @@ const InputComponent = forwardRef(
     const focusInput = () => internalRef.current && internalRef.current.focus()
 
     const before = iconBefore ? (
-      <InputIconStyle>
+      <InputIconStyle paddingRight="8px">
         <Icon name={iconBefore} size={20} />
       </InputIconStyle>
     ) : prefix ? (
-      <InputIconStyle>
+      <InputIconStyle paddingRight="8px">
         <Text fontSize="small">{prefix}</Text>
       </InputIconStyle>
     ) : null
 
     const after = iconAfter ? (
-      <InputIconStyle>
+      <InputIconStyle paddingLeft="8px">
         <Icon name={iconAfter} size={20} />
       </InputIconStyle>
     ) : suffix ? (
-      <InputIconStyle>
+      <InputIconStyle paddingLeft="8px">
         <Text fontSize="small">{suffix}</Text>
       </InputIconStyle>
     ) : null
@@ -221,7 +221,6 @@ const StyledInput = styled.input`
 
 export const InputIconStyle = styled(Flex)`
   color: ${props => props.theme.colors.palette.charcoal400};
-  padding: 0 12px;
   pointer-events: none;
 `
 
@@ -262,7 +261,7 @@ export const InputText = styled(InputComponent).attrs(
 `
 
 export const inputTextDefaults = {
-  padding: '0 12px',
+  padding: '0 8px',
   width: '174px',
 }
 
