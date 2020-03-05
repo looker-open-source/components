@@ -30,13 +30,19 @@
 import React, { forwardRef, useRef, useContext, Ref, useCallback } from 'react'
 import styled from 'styled-components'
 import { useForkedRef, useWrapEvent } from '../../../utils'
+import { Flex } from '../../../Layout'
 import {
   InputChipsBase,
   InputChipsCommonProps,
   InputChipsInputControlProps,
 } from '../InputChips'
+import { InputSearchControls } from '../InputSearch'
 import { ComboboxMultiContext } from './ComboboxContext'
-import { ComboboxInputCommonProps, comboboxStyles } from './ComboboxInput'
+import {
+  ComboboxInputCommonProps,
+  comboboxStyles,
+  comboboxPaddingRight,
+} from './ComboboxInput'
 import { getComboboxText } from './utils/getComboboxText'
 import { makeHash } from './utils/makeHash'
 import { ComboboxActionType, ComboboxState } from './utils/state'
@@ -192,6 +198,15 @@ ComboboxMultiInputInternal.displayName = 'ComboboxMultiInputInternal'
 
 export const ComboboxMultiInput = styled(ComboboxMultiInputInternal)`
   ${comboboxStyles}
+  padding-right: 0;
+
+  ${Flex} {
+    padding-right: calc(${props => props.theme.space.xlarge} * 2);
+  }
+
+  ${InputSearchControls} {
+    right: ${comboboxPaddingRight};
+  }
 `
 
 ComboboxMultiInput.defaultProps = {

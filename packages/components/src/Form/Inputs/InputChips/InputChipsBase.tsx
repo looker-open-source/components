@@ -3,8 +3,13 @@ import styled from 'styled-components'
 import { MaxHeightProps } from 'styled-system'
 
 import { Chip } from '../../../Chip'
+import { Flex } from '../../../Layout'
 import { InputText } from '../InputText'
-import { InputSearch, InputSearchProps } from '../InputSearch'
+import {
+  InputSearch,
+  InputSearchProps,
+  InputSearchControls,
+} from '../InputSearch'
 
 export interface InputChipsInputControlProps {
   /**
@@ -31,7 +36,10 @@ export interface InputChipsControlProps {
 }
 
 export interface InputChipsCommonProps
-  extends Omit<InputSearchProps, 'value' | 'defaultValue' | 'onChange'>,
+  extends Omit<
+      InputSearchProps,
+      'value' | 'defaultValue' | 'onChange' | 'summary'
+    >,
     MaxHeightProps {}
 
 export interface InputChipsBaseProps
@@ -103,11 +111,23 @@ export const InputChipsBaseInternal = forwardRef(
 InputChipsBaseInternal.displayName = 'InputChipsBaseInternal'
 
 export const InputChipsBase = styled(InputChipsBaseInternal)`
-  align-items: flex-start;
-  flex-wrap: wrap;
+  position: relative;
+
+  ${Flex} {
+    flex: 1;
+    height: 100%;
+    overflow: auto;
+    padding-right: ${props => props.theme.space.xlarge};
+  }
 
   ${InputText} {
     width: auto;
     min-width: 25%;
+  }
+
+  ${InputSearchControls} {
+    position: absolute;
+    top: 2;
+    right: 0;
   }
 `

@@ -57,6 +57,7 @@ export function ComboboxDemo() {
       </Combobox>
       <ComboboxMulti
         width={300}
+        maxHeight={75}
         mb="medium"
         values={options}
         onChange={handleMultiChange}

@@ -30,7 +30,11 @@
 import React, { FormEvent, forwardRef, useRef, useContext, Ref } from 'react'
 import styled, { css } from 'styled-components'
 import { useForkedRef, useWrapEvent } from '../../../utils'
-import { InputSearch, InputSearchProps } from '../InputSearch'
+import {
+  InputSearch,
+  InputSearchControls,
+  InputSearchProps,
+} from '../InputSearch'
 import { InputText } from '../InputText'
 import { ComboboxContext } from './ComboboxContext'
 import { getComboboxText } from './utils/getComboboxText'
@@ -199,13 +203,17 @@ const indicatorRaw = `
   />
 </svg>`
 export const indicatorSize = '1rem'
-export const indicatorPadding = '.25rem'
+export const indicatorPadding = '.5rem'
+export const comboboxPaddingRight = `calc(2 * ${indicatorPadding} + ${indicatorSize})`
+
 const indicatorPrefix = 'data:image/svg+xml;base64,'
 export const selectIndicatorBG = (color: string) =>
   typeof window !== 'undefined' &&
   `url('${indicatorPrefix}${window.btoa(
     indicatorRaw.replace('currentColor', color)
   )}')`
+
+const bgPosition = `right ${indicatorPadding} top calc(${indicatorPadding} + 2px), 0 0`
 
 export const comboboxStyles = css<{ disabled?: boolean; readOnly?: boolean }>`
   background-image: ${props => {
@@ -215,12 +223,22 @@ export const comboboxStyles = css<{ disabled?: boolean; readOnly?: boolean }>`
     return selectIndicatorBG(color)
   }};
   background-repeat: no-repeat, repeat;
-  background-position: right ${indicatorPadding} center, 0 0;
+  background-position: ${bgPosition};
   background-size: ${indicatorSize}, 100%;
-  padding-right: calc(2 * ${indicatorPadding} + ${indicatorSize});
+  padding-right: ${comboboxPaddingRight};
 
   ${InputText} {
     cursor: ${props => (props.readOnly ? 'default' : 'text')};
+  }
+
+  ${InputSearchControls} {
+    &::after {
+      content: ' ';
+      border-right: 1px solid ${props => props.theme.colors.palette.charcoal200};
+      height: 1.5rem;
+      width: ${props => props.theme.space.xsmall};
+      pointer-events: none;
+    }
   }
 `
 

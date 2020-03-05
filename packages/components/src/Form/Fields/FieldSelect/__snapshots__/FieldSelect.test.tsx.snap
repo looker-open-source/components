@@ -8,17 +8,6 @@ exports[`A FieldSelect 1`] = `
   display: flex;
 }
 
-.c6 {
-  border-radius: 0.25rem;
-  border: solid 1px;
-  border-color: #DEE1E5;
-  width: 100%;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  padding-right: 0.25rem;
-  font-size: 0.875rem;
-}
-
 .c2 {
   -webkit-align-items: left;
   -webkit-box-align: left;
@@ -71,10 +60,6 @@ exports[`A FieldSelect 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   background-color: #FFFFFF;
 }
 
@@ -114,13 +99,21 @@ exports[`A FieldSelect 1`] = `
 .c8 {
   background-image: url('data:image/svg+xml;base64,CjxzdmcKICB3aWR0aD0iMjQiCiAgaGVpZ2h0PSIyNCIKICB2aWV3Qm94PSIwIDAgMjQgMjQiCiAgZmlsbD0ibm9uZSIKICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCj4KICA8cGF0aAogICAgZD0iTTcuNDEgOC41ODk4NEwxMiAxMy4xNjk4TDE2LjU5IDguNTg5ODRMMTggOS45OTk4NEwxMiAxNS45OTk4TDYgOS45OTk4NEw3LjQxIDguNTg5ODRaIgogICAgZmlsbD0iIzcwNzc4MSIKICAvPgo8L3N2Zz4=');
   background-repeat: no-repeat,repeat;
-  background-position: right .25rem center,0 0;
+  background-position: right .5rem top calc(.5rem + 2px), 0 0;
   background-size: 1rem,100%;
-  padding-right: calc(2 * .25rem + 1rem);
+  padding-right: calc(2 * .5rem + 1rem);
 }
 
 .c8 .c10 {
   cursor: default;
+}
+
+.c8 .c11::after {
+  content: ' ';
+  border-right: 1px solid #DEE1E5;
+  height: 1.5rem;
+  width: 0.5rem;
+  pointer-events: none;
 }
 
 .c0 {
@@ -217,17 +210,6 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   display: flex;
 }
 
-.c7 {
-  border-radius: 0.25rem;
-  border: solid 1px;
-  border-color: #DEE1E5;
-  width: 100%;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  padding-right: 0.25rem;
-  font-size: 0.875rem;
-}
-
 .c2 {
   -webkit-align-items: left;
   -webkit-box-align: left;
@@ -303,10 +285,6 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   background-color: #FFFFFF;
   border-color: #ED3B53;
 }
@@ -357,13 +335,21 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
 .c9 {
   background-image: url('data:image/svg+xml;base64,CjxzdmcKICB3aWR0aD0iMjQiCiAgaGVpZ2h0PSIyNCIKICB2aWV3Qm94PSIwIDAgMjQgMjQiCiAgZmlsbD0ibm9uZSIKICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCj4KICA8cGF0aAogICAgZD0iTTcuNDEgOC41ODk4NEwxMiAxMy4xNjk4TDE2LjU5IDguNTg5ODRMMTggOS45OTk4NEwxMiAxNS45OTk4TDYgOS45OTk4NEw3LjQxIDguNTg5ODRaIgogICAgZmlsbD0iIzcwNzc4MSIKICAvPgo8L3N2Zz4=');
   background-repeat: no-repeat,repeat;
-  background-position: right .25rem center,0 0;
+  background-position: right .5rem top calc(.5rem + 2px), 0 0;
   background-size: 1rem,100%;
-  padding-right: calc(2 * .25rem + 1rem);
+  padding-right: calc(2 * .5rem + 1rem);
 }
 
 .c9 .c11 {
   cursor: default;
+}
+
+.c9 .c14::after {
+  content: ' ';
+  border-right: 1px solid #DEE1E5;
+  height: 1.5rem;
+  width: 0.5rem;
+  pointer-events: none;
 }
 
 .c0 {
@@ -493,17 +479,6 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   display: flex;
 }
 
-.c7 {
-  border-radius: 0.25rem;
-  border: solid 1px;
-  border-color: #DEE1E5;
-  width: 100%;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  padding-right: 0.25rem;
-  font-size: 0.875rem;
-}
-
 .c2 {
   -webkit-align-items: left;
   -webkit-box-align: left;
@@ -579,10 +554,6 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   background-color: #FFFFFF;
   border-color: #ED3B53;
 }
@@ -633,13 +604,21 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
 .c9 {
   background-image: url('data:image/svg+xml;base64,CjxzdmcKICB3aWR0aD0iMjQiCiAgaGVpZ2h0PSIyNCIKICB2aWV3Qm94PSIwIDAgMjQgMjQiCiAgZmlsbD0ibm9uZSIKICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCj4KICA8cGF0aAogICAgZD0iTTcuNDEgOC41ODk4NEwxMiAxMy4xNjk4TDE2LjU5IDguNTg5ODRMMTggOS45OTk4NEwxMiAxNS45OTk4TDYgOS45OTk4NEw3LjQxIDguNTg5ODRaIgogICAgZmlsbD0iIzcwNzc4MSIKICAvPgo8L3N2Zz4=');
   background-repeat: no-repeat,repeat;
-  background-position: right .25rem center,0 0;
+  background-position: right .5rem top calc(.5rem + 2px), 0 0;
   background-size: 1rem,100%;
-  padding-right: calc(2 * .25rem + 1rem);
+  padding-right: calc(2 * .5rem + 1rem);
 }
 
 .c9 .c11 {
   cursor: default;
+}
+
+.c9 .c14::after {
+  content: ' ';
+  border-right: 1px solid #DEE1E5;
+  height: 1.5rem;
+  width: 0.5rem;
+  pointer-events: none;
 }
 
 .c0 {
@@ -766,17 +745,6 @@ exports[`A required FieldSelect 1`] = `
   display: flex;
 }
 
-.c7 {
-  border-radius: 0.25rem;
-  border: solid 1px;
-  border-color: #DEE1E5;
-  width: 100%;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  padding-right: 0.25rem;
-  font-size: 0.875rem;
-}
-
 .c2 {
   -webkit-align-items: left;
   -webkit-box-align: left;
@@ -829,10 +797,6 @@ exports[`A required FieldSelect 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   background-color: #FFFFFF;
 }
 
@@ -872,13 +836,21 @@ exports[`A required FieldSelect 1`] = `
 .c9 {
   background-image: url('data:image/svg+xml;base64,CjxzdmcKICB3aWR0aD0iMjQiCiAgaGVpZ2h0PSIyNCIKICB2aWV3Qm94PSIwIDAgMjQgMjQiCiAgZmlsbD0ibm9uZSIKICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCj4KICA8cGF0aAogICAgZD0iTTcuNDEgOC41ODk4NEwxMiAxMy4xNjk4TDE2LjU5IDguNTg5ODRMMTggOS45OTk4NEwxMiAxNS45OTk4TDYgOS45OTk4NEw3LjQxIDguNTg5ODRaIgogICAgZmlsbD0iIzcwNzc4MSIKICAvPgo8L3N2Zz4=');
   background-repeat: no-repeat,repeat;
-  background-position: right .25rem center,0 0;
+  background-position: right .5rem top calc(.5rem + 2px), 0 0;
   background-size: 1rem,100%;
-  padding-right: calc(2 * .25rem + 1rem);
+  padding-right: calc(2 * .5rem + 1rem);
 }
 
 .c9 .c11 {
   cursor: default;
+}
+
+.c9 .c12::after {
+  content: ' ';
+  border-right: 1px solid #DEE1E5;
+  height: 1.5rem;
+  width: 0.5rem;
+  pointer-events: none;
 }
 
 .c0 {
@@ -930,7 +902,7 @@ exports[`A required FieldSelect 1`] = `
         aria-hidden="true"
         className="c4"
       >
-         
+
         *
       </span>
     </label>
@@ -987,17 +959,6 @@ exports[`FieldSelect supports labelWeight 1`] = `
   display: flex;
 }
 
-.c6 {
-  border-radius: 0.25rem;
-  border: solid 1px;
-  border-color: #DEE1E5;
-  width: 100%;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  padding-right: 0.25rem;
-  font-size: 0.875rem;
-}
-
 .c2 {
   -webkit-align-items: left;
   -webkit-box-align: left;
@@ -1050,10 +1011,6 @@ exports[`FieldSelect supports labelWeight 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   background-color: #FFFFFF;
 }
 
@@ -1093,13 +1050,21 @@ exports[`FieldSelect supports labelWeight 1`] = `
 .c8 {
   background-image: url('data:image/svg+xml;base64,CjxzdmcKICB3aWR0aD0iMjQiCiAgaGVpZ2h0PSIyNCIKICB2aWV3Qm94PSIwIDAgMjQgMjQiCiAgZmlsbD0ibm9uZSIKICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCj4KICA8cGF0aAogICAgZD0iTTcuNDEgOC41ODk4NEwxMiAxMy4xNjk4TDE2LjU5IDguNTg5ODRMMTggOS45OTk4NEwxMiAxNS45OTk4TDYgOS45OTk4NEw3LjQxIDguNTg5ODRaIgogICAgZmlsbD0iIzcwNzc4MSIKICAvPgo8L3N2Zz4=');
   background-repeat: no-repeat,repeat;
-  background-position: right .25rem center,0 0;
+  background-position: right .5rem top calc(.5rem + 2px), 0 0;
   background-size: 1rem,100%;
-  padding-right: calc(2 * .25rem + 1rem);
+  padding-right: calc(2 * .5rem + 1rem);
 }
 
 .c8 .c10 {
   cursor: default;
+}
+
+.c8 .c11::after {
+  content: ' ';
+  border-right: 1px solid #DEE1E5;
+  height: 1.5rem;
+  width: 0.5rem;
+  pointer-events: none;
 }
 
 .c0 {
