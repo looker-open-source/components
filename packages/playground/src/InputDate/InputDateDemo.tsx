@@ -1,11 +1,14 @@
 import React, { FC, useState } from 'react'
 import styled from 'styled-components'
 import {
+  Button,
+  Box,
   InputDate,
   Select,
   Heading,
   LocaleCodes,
   DateFormat,
+  Popover,
 } from '@looker/components'
 
 export const InputDateDemo: FC = () => {
@@ -18,6 +21,12 @@ export const InputDateDemo: FC = () => {
     setLocalizedDate('')
   }
 
+  const [controlledDate, setControlledDate] = useState<any>()
+
+  function handleNextWeekClick() {
+    setControlledDate(new Date('03/09/2020'))
+  }
+
   return (
     <DemoWrapper>
       <div>
@@ -27,8 +36,42 @@ export const InputDateDemo: FC = () => {
             Selected: {date && new Intl.DateTimeFormat().format(date)}
           </SelectedDateWrapper>
         </HeadingGrid>
-
         <InputDate onChange={setDate} m="small" />
+      </div>
+      <div>
+        <HeadingGrid>
+          <Heading as="h1">Controlled Component</Heading>
+        </HeadingGrid>
+        <Popover
+          content={
+            <Box p="small">
+              <Button onClick={handleNextWeekClick}>Next Week</Button>
+              <Box mt="large">
+                <InputDate
+                  value={controlledDate}
+                  onChange={setControlledDate}
+                />
+              </Box>
+            </Box>
+          }
+        >
+          {(onClick, ref, className) => (
+            <Button
+              aria-haspopup="true"
+              onClick={onClick}
+              ref={ref}
+              className={className}
+            >
+              {controlledDate ? (
+                <>
+                  <DateFormat>{controlledDate}</DateFormat>
+                </>
+              ) : (
+                'Select Dates'
+              )}
+            </Button>
+          )}
+        </Popover>
       </div>
       <div>
         <HeadingGrid>

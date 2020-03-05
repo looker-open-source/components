@@ -1,3 +1,7 @@
+import format from 'date-fns/format'
+import isValid from 'date-fns/isValid'
+import parse from 'date-fns/parse'
+
 import ar from 'date-fns/locale/ar-SA'
 import de from 'date-fns/locale/de'
 import en from 'date-fns/locale/en-US'
@@ -73,4 +77,43 @@ export const dateFnLocaleMap = {
   [Locales.Swedish]: sv,
   [Locales.Chinese]: zhCn,
   [Locales.ChineseTaiwan]: zhTw,
+}
+
+export const formatDateString = (
+  date?: Date,
+  locale: LocaleCodes = Locales.English
+): string | '' => {
+  if (!date) {
+    return ''
+  }
+
+  return format(date, 'P', {
+    locale: dateFnLocaleMap[locale],
+  })
+}
+
+export const formatYear = (date: Date): number => {
+  const year = date.getFullYear()
+  if (year < 100) {
+    // convert 2-digit year (2/2/20) to 4-digit year (2/2/2020)
+    return year + 2000
+  } else if (year < 1000) {
+    // convert 3-digit partial-year (2/2/201) to 4-digit year (2/2/2010)
+    return parseInt(`${year}0`)
+  }
+  return year
+}
+
+export const parseDateFromString = (
+  value: string,
+  locale: Locales
+): Date | false => {
+  // Date format 'P' represents localized dates in date-fns
+  const parsedValue = parse(value, 'P', new Date(), {
+    locale: dateFnLocaleMap[locale],
+  })
+
+  parsedValue.setFullYear(formatYear(parsedValue))
+
+  return isValid(parsedValue) && parsedValue
 }

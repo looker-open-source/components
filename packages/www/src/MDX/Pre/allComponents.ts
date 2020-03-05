@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2019 Looker Data Sciences, Inc.
+ Copyright (c) 2020 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -70,6 +70,7 @@ import {
   InlineInputText,
   InputChips,
   InputDate,
+  InputDateRange,
   InputHidden,
   InputSearch,
   InputText,
@@ -180,6 +181,7 @@ export const allComponents = {
   InlineInputText,
   InputChips,
   InputDate,
+  InputDateRange,
   InputHidden,
   InputSearch,
   InputText,

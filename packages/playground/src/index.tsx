@@ -1,6 +1,6 @@
 /*
  MIT License
- Copyright (c) 2019 Looker Data Sciences, Inc.
+ Copyright (c) 2020 Looker Data Sciences, Inc.
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
  in the Software without restriction, including without limitation the rights
@@ -20,20 +20,19 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { GlobalStyle, InputText } from '@looker/components'
+import { GlobalStyle } from '@looker/components'
 import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
+
+import { InputDateDemo } from './InputDate/InputDateDemo'
 
 const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <InputText
-        iconAfter="Check"
-        iconBefore="GearOutline"
-        prefix="$"
-        suffix="%"
-      />
+      <>
+        <GlobalStyle />
+        <InputDateDemo />
+      </>
     </ThemeProvider>
   )
 }

@@ -1,8 +1,10 @@
 import React, { FC } from 'react'
-import DayPicker from 'react-day-picker'
+import DayPicker, { RangeModifier } from 'react-day-picker'
 import 'react-day-picker/lib/style.css'
 import MomentLocaleUtils from 'react-day-picker/moment'
 import styled from 'styled-components'
+import has from 'lodash/has'
+import { mix } from 'polished'
 import { reset } from '@looker/design-tokens'
 import { LocaleCodes } from '../utils/i18n'
 import { inputTextFocus } from '../Form/Inputs/InputText'
@@ -30,13 +32,16 @@ import 'moment/locale/zh-tw'
 
 interface CalendarProps {
   locale?: LocaleCodes
-  selectedDates?: Date | Date[]
+  selectedDates?: Date | Date[] | RangeModifier
   onDayClick?: (day: Date) => void
   className?: string
   size?: CalendarSize
   showNextButton?: boolean
   showPreviousButton?: boolean
-  onNavClick?: (date: Date) => void
+  onNextClick?: (date: Date) => void
+  onNowClick?: (date: Date) => void
+  onPrevClick?: (date: Date) => void
+  onMonthChange?: (month: Date) => void
   viewMonth?: Date
 }
 
@@ -49,16 +54,29 @@ const InternalCalendar: FC<CalendarProps> = ({
   size,
   showNextButton = true,
   showPreviousButton = true,
-  onNavClick,
+  onMonthChange,
+  onNextClick,
+  onNowClick,
+  onPrevClick,
   viewMonth,
   selectedDates,
 }) => {
+  const renderDateRange = selectedDates && has(selectedDates, 'from')
+  const modifiers = renderDateRange ? selectedDates : {}
+
   return (
     <CalendarContext.Provider
-      value={{ onNavClick, showNextButton, showPreviousButton, size }}
+      value={{
+        onNextClick,
+        onNowClick,
+        onPrevClick,
+        showNextButton,
+        showPreviousButton,
+        size,
+      }}
     >
       <DayPicker
-        className={className}
+        className={`${renderDateRange && 'render-date-range'} ${className}`}
         selectedDays={selectedDates}
         localeUtils={MomentLocaleUtils}
         locale={locale}
@@ -67,12 +85,14 @@ const InternalCalendar: FC<CalendarProps> = ({
         onDayClick={onDayClick}
         navbarElement={CalendarNav}
         captionElement={NoopComponent}
+        modifiers={modifiers}
+        onMonthChange={onMonthChange}
       />
     </CalendarContext.Provider>
   )
 }
 
-/* stylelint-disable max-nesting-depth */
+/* stylelint-disable max-nesting-depth, no-descending-specificity */
 export const Calendar = styled<FC<CalendarProps>>(InternalCalendar)`
   ${reset}
   ${calendarSpacing}
@@ -91,13 +111,12 @@ export const Calendar = styled<FC<CalendarProps>>(InternalCalendar)`
   }
   .DayPicker-Body {
     display: grid;
-    grid-gap: 8px;
+    grid-gap: 1px;
   }
   .DayPicker-Week,
   .DayPicker-WeekdaysRow {
     display: grid;
     grid-template-columns: repeat(7, auto);
-    grid-gap: 8px;
   }
   .DayPicker-Day {
     ${calendarSize}
@@ -128,6 +147,51 @@ export const Calendar = styled<FC<CalendarProps>>(InternalCalendar)`
       border-width: 2px;
       border-color: ${props => props.theme.colors.palette.purple300};
       outline: none;
+    }
+  }
+
+  /*
+   * Date range style overrides
+   */
+  &.render-date-range {
+    .DayPicker-Day--selected {
+      &.DayPicker-Day--outside,
+      &:not(.DayPicker-Day--to):not(.DayPicker-Day--from) {
+        background-color: ${({ theme }) =>
+          theme.colors.semanticColors.primary.light};
+        color: ${({ theme }) =>
+          mix(
+            0.65,
+            theme.colors.semanticColors.primary.light,
+            theme.colors.semanticColors.neutral.altText
+          )};
+      }
+      &:not(.DayPicker-Day--to):not(.DayPicker-Day--from):not(.DayPicker-Day--outside) {
+        color: ${({ theme }) => theme.colors.semanticColors.neutral.altText};
+      }
+      border-radius: 0;
+      &:not(.DayPicker-Day--from) {
+        &:first-child {
+          ${({ theme: { radii } }) => `
+            border-top-left-radius: ${radii.medium};
+            border-bottom-left-radius: ${radii.medium};`}
+        }
+      }
+      &:not(.DayPicker-Day--to) {
+        &:last-child {
+          ${({ theme: { radii } }) => `
+            border-top-right-radius: ${radii.medium};
+            border-bottom-right-radius: ${radii.medium};`}
+        }
+      }
+    }
+    .DayPicker-Day--from {
+      border-top-left-radius: 50%;
+      border-bottom-left-radius: 50%;
+    }
+    .DayPicker-Day--to {
+      border-top-right-radius: 50%;
+      border-bottom-right-radius: 50%;
     }
   }
 

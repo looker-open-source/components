@@ -32,7 +32,7 @@ export const InputDateLocales = () => {
           id="locale-picker"
         />
       </SelectWrapper>
-      <InputDate locale={locale as LocaleCodes} />
+      <InputDate key={locale} locale={locale as LocaleCodes} />
     </DemoWrapper>
   )
 }

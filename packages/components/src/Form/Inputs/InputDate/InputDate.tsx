@@ -1,55 +1,40 @@
-import React, { FC, useState, SyntheticEvent } from 'react'
+import React, { FC, useState, SyntheticEvent, useEffect } from 'react'
 import styled from 'styled-components'
-import format from 'date-fns/format'
 import isFunction from 'lodash/isFunction'
-import isValid from 'date-fns/isValid'
-import parse from 'date-fns/parse'
+import isEqual from 'lodash/isEqual'
 import { BorderProps, SpaceProps } from '@looker/design-tokens'
 import { InputText } from '../InputText'
 import { Calendar } from '../../../Calendar'
-import { LocaleCodes, Locales, dateFnLocaleMap } from '../../../utils'
-import { InputProps } from '../InputProps'
+import { ValidationType } from '../../ValidationMessage'
+import {
+  LocaleCodes,
+  Locales,
+  formatDateString,
+  parseDateFromString,
+} from '../../../utils'
 
-interface InputDateProps
-  extends Omit<InputProps, 'defaultValue' | 'onChange'>,
-    SpaceProps,
-    BorderProps {
+interface InputDateProps extends SpaceProps, BorderProps {
   defaultValue?: Date
+  value?: Date
   onChange?: (date?: Date) => void
+  validationType?: ValidationType
   onValidationFail?: (value: string) => void
   locale?: LocaleCodes
 }
 
-export const formatDateString = (
-  date: Date = new Date(Date.now()), // specify Date.now for easy test mocks
-  locale: LocaleCodes
-): string => {
-  return format(date, 'P', {
-    locale: dateFnLocaleMap[locale],
-  })
-}
-
-const formatYear = (date: Date): number => {
-  const year = date.getFullYear()
-  if (year < 100) {
-    // convert 2-digit year (2/2/20) to 4-digit year (2/2/2020)
-    return year + 2000
-  } else if (year < 1000) {
-    // convert 3-digit partial-year (2/2/201) to 4-digit year (2/2/2010)
-    return parseInt(`${year}0`)
+const isDateInView = (value: Date, viewMonth: Date) => {
+  if (!value) {
+    return false
   }
-  return year
-}
 
-const parseDateFromString = (value: string, locale: Locales): Date | false => {
-  // Date format 'P' represents localized dates in date-fns
-  const parsedValue = parse(value, 'P', new Date(), {
-    locale: dateFnLocaleMap[locale],
-  })
+  if (
+    value.getFullYear() === viewMonth.getFullYear() &&
+    value.getMonth() === viewMonth.getMonth()
+  ) {
+    return true
+  }
 
-  parsedValue.setFullYear(formatYear(parsedValue))
-
-  return isValid(parsedValue) && parsedValue
+  return false
 }
 
 export const InputDate: FC<InputDateProps> = ({
@@ -58,13 +43,16 @@ export const InputDate: FC<InputDateProps> = ({
   locale = Locales.English,
   validationType,
   onValidationFail,
+  value,
 }) => {
-  const [selectedDate, setSelectedDate] = useState(defaultValue)
+  const [selectedDate, setSelectedDate] = useState(value || defaultValue)
   const [validDate, setValidDate] = useState(validationType !== 'error')
   const [textInputValue, setTextInputValue] = useState(
     selectedDate ? formatDateString(selectedDate, locale) : ''
   )
-  const [viewMonth, setViewMonth] = useState(defaultValue)
+  const [viewMonth, setViewMonth] = useState<Date | undefined>(
+    defaultValue || new Date(Date.now())
+  )
 
   const handleDateChange = (date?: Date) => {
     setValidDate(true)
@@ -111,11 +99,35 @@ export const InputDate: FC<InputDateProps> = ({
 
   const renderedValidationType = !validDate ? 'error' : undefined
 
+  useEffect(() => {
+    // controlled component: update state when value changes externally
+    if (value && !isEqual(value, selectedDate)) {
+      setSelectedDate(value)
+      value && setTextInputValue(formatDateString(value, locale))
+      value &&
+        viewMonth &&
+        !isDateInView(value, viewMonth) &&
+        setViewMonth(value)
+    }
+
+    // render a console warning if developers pass in a value without a change listener
+    if (value && !onChange) {
+      // eslint-disable-next-line no-console
+      console.error(
+        'Warning: Failed prop type: You provided a `value` prop to <InputDate /> without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultValue` instead. Otherwise, please provide an `onChange` callback.'
+      )
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [textInputValue, value, onChange])
+
   return (
     <InputDateWrapper>
       <InputTextWrapper>
         <InputText
-          placeholder={`Date (${formatDateString(undefined, locale)})`}
+          placeholder={`Date (${formatDateString(
+            new Date(Date.now()),
+            locale
+          )})`}
           value={textInputValue}
           onChange={handleTextInputChange}
           validationType={renderedValidationType}
@@ -129,7 +141,9 @@ export const InputDate: FC<InputDateProps> = ({
           onDayClick={handleDayClick}
           locale={locale}
           viewMonth={viewMonth}
-          onNavClick={handleNavClick}
+          onNowClick={handleNavClick}
+          onNextClick={handleNavClick}
+          onPrevClick={handleNavClick}
         />
       </CalendarWrapper>
     </InputDateWrapper>

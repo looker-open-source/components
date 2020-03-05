@@ -127,7 +127,7 @@ exports[`A FieldSelect 1`] = `
 }
 
 .c8 {
-  background-image: url('data:image/svg+xml;base64,CjxzdmcKICB3aWR0aD0iMjQiCiAgaGVpZ2h0PSIyNCIKICB2aWV3Qm94PSIwIDAgMjQgMjQiCiAgZmlsbD0ibm9uZSIKICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCj4KICA8cGF0aAogICAgZD0iTTcuNDEgOEwxMiAxMi41OCAxNi41OSA4IDE4IDkuNDFsLTYgNi02LTZMNy40MSA4eiIKICAgIGZpbGw9IiM3MDc3ODEiCiAgLz4KPC9zdmc+');
+  background-image: url('data:image/svg+xml;base64,CjxzdmcKICB3aWR0aD0iMjQiCiAgaGVpZ2h0PSIyNCIKICB2aWV3Qm94PSIwIDAgMjQgMjQiCiAgZmlsbD0ibm9uZSIKICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCj4KICA8cGF0aAogICAgZD0iTTcuNDEgOC41ODk4NEwxMiAxMy4xNjk4TDE2LjU5IDguNTg5ODRMMTggOS45OTk4NEwxMiAxNS45OTk4TDYgOS45OTk4NEw3LjQxIDguNTg5ODRaIgogICAgZmlsbD0iIzcwNzc4MSIKICAvPgo8L3N2Zz4=');
   background-repeat: no-repeat,repeat;
   background-position: right .25rem center,0 0;
   background-size: 1rem,100%;
@@ -385,7 +385,7 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
 }
 
 .c9 {
-  background-image: url('data:image/svg+xml;base64,CjxzdmcKICB3aWR0aD0iMjQiCiAgaGVpZ2h0PSIyNCIKICB2aWV3Qm94PSIwIDAgMjQgMjQiCiAgZmlsbD0ibm9uZSIKICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCj4KICA8cGF0aAogICAgZD0iTTcuNDEgOEwxMiAxMi41OCAxNi41OSA4IDE4IDkuNDFsLTYgNi02LTZMNy40MSA4eiIKICAgIGZpbGw9IiM3MDc3ODEiCiAgLz4KPC9zdmc+');
+  background-image: url('data:image/svg+xml;base64,CjxzdmcKICB3aWR0aD0iMjQiCiAgaGVpZ2h0PSIyNCIKICB2aWV3Qm94PSIwIDAgMjQgMjQiCiAgZmlsbD0ibm9uZSIKICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCj4KICA8cGF0aAogICAgZD0iTTcuNDEgOC41ODk4NEwxMiAxMy4xNjk4TDE2LjU5IDguNTg5ODRMMTggOS45OTk4NEwxMiAxNS45OTk4TDYgOS45OTk4NEw3LjQxIDguNTg5ODRaIgogICAgZmlsbD0iIzcwNzc4MSIKICAvPgo8L3N2Zz4=');
   background-repeat: no-repeat,repeat;
   background-position: right .25rem center,0 0;
   background-size: 1rem,100%;
@@ -676,7 +676,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
 }
 
 .c9 {
-  background-image: url('data:image/svg+xml;base64,CjxzdmcKICB3aWR0aD0iMjQiCiAgaGVpZ2h0PSIyNCIKICB2aWV3Qm94PSIwIDAgMjQgMjQiCiAgZmlsbD0ibm9uZSIKICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCj4KICA8cGF0aAogICAgZD0iTTcuNDEgOEwxMiAxMi41OCAxNi41OSA4IDE4IDkuNDFsLTYgNi02LTZMNy40MSA4eiIKICAgIGZpbGw9IiM3MDc3ODEiCiAgLz4KPC9zdmc+');
+  background-image: url('data:image/svg+xml;base64,CjxzdmcKICB3aWR0aD0iMjQiCiAgaGVpZ2h0PSIyNCIKICB2aWV3Qm94PSIwIDAgMjQgMjQiCiAgZmlsbD0ibm9uZSIKICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCj4KICA8cGF0aAogICAgZD0iTTcuNDEgOC41ODk4NEwxMiAxMy4xNjk4TDE2LjU5IDguNTg5ODRMMTggOS45OTk4NEwxMiAxNS45OTk4TDYgOS45OTk4NEw3LjQxIDguNTg5ODRaIgogICAgZmlsbD0iIzcwNzc4MSIKICAvPgo8L3N2Zz4=');
   background-repeat: no-repeat,repeat;
   background-position: right .25rem center,0 0;
   background-size: 1rem,100%;
@@ -930,7 +930,7 @@ exports[`A required FieldSelect 1`] = `
 }
 
 .c9 {
-  background-image: url('data:image/svg+xml;base64,CjxzdmcKICB3aWR0aD0iMjQiCiAgaGVpZ2h0PSIyNCIKICB2aWV3Qm94PSIwIDAgMjQgMjQiCiAgZmlsbD0ibm9uZSIKICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCj4KICA8cGF0aAogICAgZD0iTTcuNDEgOEwxMiAxMi41OCAxNi41OSA4IDE4IDkuNDFsLTYgNi02LTZMNy40MSA4eiIKICAgIGZpbGw9IiM3MDc3ODEiCiAgLz4KPC9zdmc+');
+  background-image: url('data:image/svg+xml;base64,CjxzdmcKICB3aWR0aD0iMjQiCiAgaGVpZ2h0PSIyNCIKICB2aWV3Qm94PSIwIDAgMjQgMjQiCiAgZmlsbD0ibm9uZSIKICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCj4KICA8cGF0aAogICAgZD0iTTcuNDEgOC41ODk4NEwxMiAxMy4xNjk4TDE2LjU5IDguNTg5ODRMMTggOS45OTk4NEwxMiAxNS45OTk4TDYgOS45OTk4NEw3LjQxIDguNTg5ODRaIgogICAgZmlsbD0iIzcwNzc4MSIKICAvPgo8L3N2Zz4=');
   background-repeat: no-repeat,repeat;
   background-position: right .25rem center,0 0;
   background-size: 1rem,100%;
@@ -1166,7 +1166,7 @@ exports[`FieldSelect supports labelWeight 1`] = `
 }
 
 .c8 {
-  background-image: url('data:image/svg+xml;base64,CjxzdmcKICB3aWR0aD0iMjQiCiAgaGVpZ2h0PSIyNCIKICB2aWV3Qm94PSIwIDAgMjQgMjQiCiAgZmlsbD0ibm9uZSIKICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCj4KICA8cGF0aAogICAgZD0iTTcuNDEgOEwxMiAxMi41OCAxNi41OSA4IDE4IDkuNDFsLTYgNi02LTZMNy40MSA4eiIKICAgIGZpbGw9IiM3MDc3ODEiCiAgLz4KPC9zdmc+');
+  background-image: url('data:image/svg+xml;base64,CjxzdmcKICB3aWR0aD0iMjQiCiAgaGVpZ2h0PSIyNCIKICB2aWV3Qm94PSIwIDAgMjQgMjQiCiAgZmlsbD0ibm9uZSIKICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCj4KICA8cGF0aAogICAgZD0iTTcuNDEgOC41ODk4NEwxMiAxMy4xNjk4TDE2LjU5IDguNTg5ODRMMTggOS45OTk4NEwxMiAxNS45OTk4TDYgOS45OTk4NEw3LjQxIDguNTg5ODRaIgogICAgZmlsbD0iIzcwNzc4MSIKICAvPgo8L3N2Zz4=');
   background-repeat: no-repeat,repeat;
   background-position: right .25rem center,0 0;
   background-size: 1rem,100%;

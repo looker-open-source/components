@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2019 Looker Data Sciences, Inc.
+ Copyright (c) 2020 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -33,7 +33,7 @@ export type CalendarSize = SizeSmall | SizeMedium | SizeLarge
 export const daySizeMap = {
   small: 32,
   medium: 36,
-  large: 46,
+  large: 44,
 }
 
 /* eslint-disable sort-keys */
@@ -41,17 +41,17 @@ export const calendarSize = variant({
   prop: 'size',
   variants: {
     small: {
-      fontSize: 'small',
+      fontSize: 'xsmall',
       height: `${daySizeMap.small}px`,
       width: `${daySizeMap.small}px`,
     },
     medium: {
-      fontSize: 'medium',
+      fontSize: 'small',
       height: `${daySizeMap.medium}px`,
       width: `${daySizeMap.medium}px`,
     },
     large: {
-      fontSize: 'xlarge',
+      fontSize: 'medium',
       height: `${daySizeMap.large}px`,
       width: `${daySizeMap.large}px`,
     },
