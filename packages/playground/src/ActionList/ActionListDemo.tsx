@@ -37,11 +37,11 @@ import {
   ActionListRowOptionsContainer,
   ActionListHeader,
   ActionListHeaderColumn,
-} from '../../../components/src/ActionList'
-import { Paragraph } from '../../../components/src/Text'
-import { Icon } from '../../../components/src/Icon'
-import { Flex } from '../../../components/src/Layout'
-import { Link } from '../../../components/src/Link'
+  Paragraph,
+  Icon,
+  Flex,
+  Link,
+} from '@looker/components'
 
 const data = [
   {
@@ -69,32 +69,32 @@ const data = [
 
 const columns: ActionListColumns = [
   {
-    children: 'test',
+    children: 'PDT Name',
     id: 'pdt_name',
     primaryKey: true,
     type: 'string',
     widthPercent: 27,
   },
   {
-    children: 'test',
+    children: 'Status',
     id: 'status',
     type: 'string',
     widthPercent: 13,
   },
   {
-    children: 'test',
+    children: 'Model',
     id: 'model',
     type: 'string',
     widthPercent: 20,
   },
   {
-    children: 'test',
+    children: 'Persistance Type',
     id: 'persistance_type',
     type: 'string',
     widthPercent: 20,
   },
   {
-    children: 'test',
+    children: 'Last Successful Build',
     id: 'last_successful_build',
     type: 'string',
     widthPercent: 20,
@@ -106,11 +106,9 @@ export const ActionListDemo: FC = () => {
     <ActionList columns={columns}>
       <ActionListHeader>
         <ActionListRowContainer>
-          <ActionListHeaderColumn>PDT Name</ActionListHeaderColumn>
-          <ActionListHeaderColumn>Status</ActionListHeaderColumn>
-          <ActionListHeaderColumn>Model</ActionListHeaderColumn>
-          <ActionListHeaderColumn>Persistance Type</ActionListHeaderColumn>
-          <ActionListHeaderColumn>Last Successful Build</ActionListHeaderColumn>
+          {columns.map(({ children, id }) => (
+            <ActionListHeaderColumn key={id}>{children}</ActionListHeaderColumn>
+          ))}
         </ActionListRowContainer>
         <ActionListRowOptionsContainer />
       </ActionListHeader>
