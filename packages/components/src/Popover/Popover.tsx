@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2019 Looker Data Sciences, Inc.
+ Copyright (c) 2020 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -32,7 +32,6 @@ import React, {
   RefObject,
   Ref,
   SyntheticEvent,
-  useRef,
 } from 'react'
 import { Popper } from 'react-popper'
 import { Box } from '../Layout'
@@ -221,6 +220,15 @@ function useOpenWithoutElement(isOpen: boolean, element: HTMLElement | null) {
   return openWithoutElem
 }
 
+function isNodeInOrAfter(nodeA: Node, nodeB: Node) {
+  const relationship = nodeA.compareDocumentPosition(nodeB)
+  return (
+    relationship === Node.DOCUMENT_POSITION_FOLLOWING ||
+    relationship ===
+      Node.DOCUMENT_POSITION_FOLLOWING + Node.DOCUMENT_POSITION_CONTAINED_BY
+  )
+}
+
 function usePopoverToggle(
   {
     isOpen: controlledIsOpen = false,
@@ -236,7 +244,9 @@ function usePopoverToggle(
   triggerElement: HTMLElement | null
 ): [boolean, (value: boolean) => void] {
   const [uncontrolledIsOpen, uncontrolledSetOpen] = useState(controlledIsOpen)
-  const mouseDownTarget = useRef<EventTarget | null>()
+  const [mouseDownTarget, setMouseDownTarget] = useState<EventTarget | null>(
+    null
+  )
   const isControlled = useControlWarn({
     controllingProps: ['setOpen'],
     isControlledCheck: () => controlledSetOpen !== undefined,
@@ -255,22 +265,17 @@ function usePopoverToggle(
       // outside the popover as this is preferable to a bug where another
       // component triggers a scroll animation resulting in an
       // unintentional drag, which closes the popover
-      if (portalElement && mouseDownTarget.current) {
-        const relationship = portalElement.compareDocumentPosition(
-          mouseDownTarget.current as Node
-        )
-        if (
-          relationship === Node.DOCUMENT_POSITION_FOLLOWING ||
-          relationship ===
-            Node.DOCUMENT_POSITION_FOLLOWING +
-              Node.DOCUMENT_POSITION_CONTAINED_BY
-        ) {
+      if (portalElement && mouseDownTarget) {
+        if (isNodeInOrAfter(portalElement, mouseDownTarget as Node)) {
           return
         }
       }
 
       // User clicked inside the Popover surface/portal
-      if (portalElement && portalElement.contains(event.target as Node)) {
+      if (
+        portalElement &&
+        isNodeInOrAfter(portalElement, event.target as Node)
+      ) {
         return
       }
 
@@ -300,32 +305,30 @@ function usePopoverToggle(
       }
 
       event.stopPropagation()
+      event.preventDefault()
     }
 
     function handleMouseDown(event: MouseEvent) {
-      mouseDownTarget.current = event.target
+      setMouseDownTarget(event.target)
       checkCloseAndStopEvent(event)
     }
 
     function handleClickOutside(event: MouseEvent) {
       checkCloseAndStopEvent(event)
+      setMouseDownTarget(null)
     }
 
     function handleMouseUp() {
-      window.requestAnimationFrame(() => {
-        mouseDownTarget.current = null
-        document.removeEventListener('click', handleClickOutside, true)
-        document.removeEventListener('mouseup', handleMouseUp, true)
-      })
+      setMouseDownTarget(null)
     }
 
     if (isOpen) {
       document.addEventListener('mousedown', handleMouseDown, true)
-      if (!mouseDownTarget.current) {
-        document.addEventListener('click', handleClickOutside, true)
-      }
-    } else if (mouseDownTarget.current) {
       document.addEventListener('click', handleClickOutside, true)
+    } else if (mouseDownTarget) {
+      // popover was closed via mousedown, but still need to cancel next click
+      document.addEventListener('click', handleClickOutside, true)
+      // and then cleanup mouseDownTarget
       document.addEventListener('mouseup', handleMouseUp, true)
     }
 
@@ -342,6 +345,7 @@ function usePopoverToggle(
     triggerElement,
     portalElement,
     triggerToggle,
+    mouseDownTarget,
   ])
 
   return [isOpen, setOpen]

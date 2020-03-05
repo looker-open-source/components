@@ -27,18 +27,18 @@
   "dependencies": {
     "lodash": "^4.17.15",
     "polished": "^3.4.4",
-    "styled-system": "^5.1.4"
+    "styled-system": "^5.1.5"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.149",
     "@types/styled-components": "^4.4.1",
     "@types/styled-system": "^5.1.5",
-    "csstype": "^2.6.8",
+    "csstype": "^2.6.9",
     "lodash": "^4.17.15",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
     "styled-components": "^4.4.1",
-    "uuid": "^3.4.0"
+    "uuid": "^7.0.1"
   },
   "peerDependencies": {
     "react": "^16.9.0",

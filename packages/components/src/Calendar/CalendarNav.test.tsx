@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2019 Looker Data Sciences, Inc.
+ Copyright (c) 2020 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -57,7 +57,9 @@ const mockProps: Partial<NavbarElementProps> = {
 }
 
 const mockContext: CalendarContextValue = {
-  onNavClick: jest.fn(),
+  onNextClick: jest.fn(),
+  onNowClick: jest.fn(),
+  onPrevClick: jest.fn(),
   showNextButton: true,
   showPreviousButton: true,
   size: 'medium',
@@ -70,11 +72,11 @@ test('clicking "previous month" calls context.onNavClick with props.previousMont
     </CalendarContext.Provider>
   )
 
-  expect(mockContext.onNavClick).toHaveBeenCalledTimes(0)
+  expect(mockContext.onPrevClick).toHaveBeenCalledTimes(0)
 
   const prev = getByText('Caret Left')
   fireEvent.click(prev)
-  expect(mockContext.onNavClick).toHaveBeenCalledWith(mockProps.previousMonth)
+  expect(mockContext.onPrevClick).toHaveBeenCalledWith(mockProps.previousMonth)
 })
 
 test('clicking "next month" calls context.onNavClick with props.nextMonth', () => {
@@ -84,11 +86,11 @@ test('clicking "next month" calls context.onNavClick with props.nextMonth', () =
     </CalendarContext.Provider>
   )
 
-  expect(mockContext.onNavClick).toHaveBeenCalledTimes(0)
+  expect(mockContext.onNextClick).toHaveBeenCalledTimes(0)
 
   const next = getByText('Caret Right')
   fireEvent.click(next)
-  expect(mockContext.onNavClick).toHaveBeenCalledWith(mockProps.nextMonth)
+  expect(mockContext.onNextClick).toHaveBeenCalledWith(mockProps.nextMonth)
 })
 
 test('clicking label text calls context.onNavClick with Date.now()', () => {
@@ -100,9 +102,9 @@ test('clicking label text calls context.onNavClick with Date.now()', () => {
     </CalendarContext.Provider>
   )
 
-  expect(mockContext.onNavClick).toHaveBeenCalledTimes(0)
+  expect(mockContext.onNowClick).toHaveBeenCalledTimes(0)
 
   const label = getByText('June 2019')
   fireEvent.click(label)
-  expect(mockContext.onNavClick).toHaveBeenCalledWith(new Date(Date.now())) // mocked date.now value
+  expect(mockContext.onNowClick).toHaveBeenCalledWith(new Date(Date.now())) // mocked date.now value
 })

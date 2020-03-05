@@ -4,13 +4,17 @@ import { CalendarSize } from './calendar-size'
 
 export interface CalendarContextValue {
   size?: CalendarSize
-  onNavClick?: (month: Date) => void
+  onNextClick?: (month: Date) => void
+  onNowClick?: (month: Date) => void
+  onPrevClick?: (month: Date) => void
   showNextButton: boolean
   showPreviousButton: boolean
 }
 
 export const CalendarContext = createContext<CalendarContextValue>({
-  onNavClick: noop,
+  onNextClick: noop,
+  onNowClick: noop,
+  onPrevClick: noop,
   showNextButton: true,
   showPreviousButton: true,
   size: 'medium',

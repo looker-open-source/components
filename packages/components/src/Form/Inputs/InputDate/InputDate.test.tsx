@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2019 Looker Data Sciences, Inc.
+ Copyright (c) 2020 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -72,6 +72,16 @@ test('updates text input value when day is clicked', () => {
   fireEvent.click(date)
 
   expect(input.value).toEqual('02/15/2020')
+})
+
+test('fills TextInput with value, and updates when props.value changes', () => {
+  const mockProps = {
+    onChange: jest.fn(),
+    value: new Date('June 3, 2019'),
+  }
+  const { getByTestId } = renderWithTheme(<InputDate {...mockProps} />)
+  const input = getByTestId('text-input') as HTMLInputElement
+  expect(input.value).toEqual('06/03/2019')
 })
 
 test('fills TextInput with defaultValue', () => {

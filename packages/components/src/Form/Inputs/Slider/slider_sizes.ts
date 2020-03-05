@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2019 Looker Data Sciences, Inc.
+ Copyright (c) 2020 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -28,12 +28,11 @@ import {
   SizeLarge,
   SizeMedium,
   SizeSmall,
-  SizeXSmall,
   FontSizes,
 } from '@looker/design-tokens'
 import { variant } from 'styled-system'
 
-export type SliderSizes = SizeXSmall | SizeSmall | SizeMedium | SizeLarge
+export type SliderSizes = SizeSmall | SizeMedium | SizeLarge
 
 export interface SliderSizeProps {
   /**
@@ -59,29 +58,23 @@ interface SliderSizeMap {
 const sliderSizeMap: SliderSizeMap = {
   prop: 'size',
   variants: {
-    xsmall: {
-      knobSize: 14,
+    small: {
+      knobSize: 12,
+      trackHeight: 3,
+      fontSize: 'xxsmall',
+      valueSpacing: '-0.75rem',
+    },
+    medium: {
+      knobSize: 16,
       trackHeight: 4,
       fontSize: 'xsmall',
-      valueSpacing: '1rem',
+      valueSpacing: '-0.85rem',
     },
-    small: {
+    large: {
       knobSize: 18,
       trackHeight: 6,
       fontSize: 'small',
-      valueSpacing: '1.3rem',
-    },
-    medium: {
-      knobSize: 24,
-      trackHeight: 10,
-      fontSize: 'medium',
-      valueSpacing: '1.65rem',
-    },
-    large: {
-      knobSize: 32,
-      trackHeight: 12,
-      fontSize: 'large',
-      valueSpacing: '1.9rem',
+      valueSpacing: '-1rem',
     },
   },
 }

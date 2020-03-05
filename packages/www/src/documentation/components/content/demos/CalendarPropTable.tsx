@@ -47,7 +47,10 @@ export const CalendarPropTable = () => {
           </TableRow>
           <TableRow>
             <TableDataCell pr="large">selectedDates</TableDataCell>
-            <TableDataCell pr="large">Date | Date[]</TableDataCell>
+            <TableDataCell pr="large">
+              <Code>Date</Code> | <Code>Date[]</Code> |{' '}
+              <Code>DateRange (i.e. {`{ from: Date, to: Date }`})</Code>
+            </TableDataCell>
           </TableRow>
           <TableRow>
             <TableDataCell pr="large">size</TableDataCell>
@@ -57,6 +60,56 @@ export const CalendarPropTable = () => {
                 <strong>medium*</strong>
               </Code>
               , <Code>large</Code>
+            </TableDataCell>
+          </TableRow>
+          <TableRow>
+            <TableDataCell pr="large">showNextButton</TableDataCell>
+            <TableDataCell pr="large">
+              One of:{' '}
+              <Code>
+                <strong>true*</strong>
+              </Code>
+              , <Code>false</Code>
+            </TableDataCell>
+          </TableRow>
+          <TableRow>
+            <TableDataCell pr="large">showPreviousButton</TableDataCell>
+            <TableDataCell pr="large">
+              One of:{' '}
+              <Code>
+                <strong>true*</strong>
+              </Code>
+              , <Code>false</Code>
+            </TableDataCell>
+          </TableRow>
+          <TableRow>
+            <TableDataCell pr="large">onNextClick</TableDataCell>
+            <TableDataCell pr="large">
+              <Code>(date: Date) => void</Code>
+            </TableDataCell>
+          </TableRow>
+          <TableRow>
+            <TableDataCell pr="large">onNowClick</TableDataCell>
+            <TableDataCell pr="large">
+              <Code>(date: Date) => void</Code>
+            </TableDataCell>
+          </TableRow>
+          <TableRow>
+            <TableDataCell pr="large">onPrevClick</TableDataCell>
+            <TableDataCell pr="large">
+              <Code>(date: Date) => void</Code>
+            </TableDataCell>
+          </TableRow>
+          <TableRow>
+            <TableDataCell pr="large">onMonthChange</TableDataCell>
+            <TableDataCell pr="large">
+              <Code>(date: Date) => void</Code>
+            </TableDataCell>
+          </TableRow>
+          <TableRow>
+            <TableDataCell pr="large">viewMonth</TableDataCell>
+            <TableDataCell pr="large">
+              <Code>Date</Code>
             </TableDataCell>
           </TableRow>
         </TableBody>

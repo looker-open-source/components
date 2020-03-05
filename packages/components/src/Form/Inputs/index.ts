@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2019 Looker Data Sciences, Inc.
+ Copyright (c) 2020 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -28,6 +28,7 @@ export * from './Checkbox'
 export * from './Combobox'
 export * from './InputChips'
 export * from './InputDate'
+export * from './InputDateRange'
 export * from './InputHidden'
 export * from './InputSearch'
 export * from './InputText'

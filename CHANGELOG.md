@@ -5,22 +5,59 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [UNRELEASED]
+## UNRELEASED
+
+## Added
+
+- `InputDateRange` component
+- New icons `Function`, `ArrowRight`, `IdeDimension`, `IdeDimensionGroup`, `IdeParameter`, `NotificationBellOn`, `NotificationBellOff`
+
+## Changed
+
+- `FieldColor` state can now be fully controlled.
+- `Slider` component style updates
+- `InputDate` now supports controlled component behavior
+- Icon `CaretDown` optically centered
+## Fixed
+
+- `InputDate` and `InputDateRange` test mocks
+
+## [0.7.22] - 2020-02-27
+
+### Fixed
+
+- `usePopover` issue where the next click after a popover closes is canceled – _actual fix_
+
+## [0.7.21] - 2020-02-26
+
+### Fixed
+
+- `usePopover` issue where the next click after a popover closes is canceled
+
+## [0.7.20] - 2020-02-25
+
+### Fixed
+
+- `usePopover` event handlers not getting properly cleaned up
+
+## [0.7.19] - 2020-02-24
 
 ### Added
 
-- new component `InlineInputText` plus documentations and test
-
-- `Select` now supports grouped options with a `title` and option `description`, as well as `BoxProps` for layout styling.
-- New components: `InputDate`, `Calendar`
-- Documentation added to the icons package README that describes the recommended way to name icons.
+- `InlineInputText` component
+- `Select` now supports grouped options with a `title` and option `description`, as well as `FlexboxProps` for layout styling.
+- `InputDate` and `Calendar` components
+- Download icon
+- Documentation in the icons package README that describes the recommended way to name icons
 
 ### Changed
 
 - `Select` now only defaults to the first option if neither `placeholder` nor `isClearable` is defined.
+- Removed images with unknown ownership in documentation
 
 ### Fixed
 
+- Corrected links to source in documentation
 - `Select` styling issues when `GlobalStyle` is not used, missing down caret icon in documentation
 - `usePopover`, when the toggle was a mousedown event, would open just before the "click outside" listener was able to close any prior popovers. If both popovers were inside a `Modal`, the closing popover would re-enable the parent scroll lock, and the one that just opened would be un-scrollable. This especially affected multiple `Select`s inside a `Modal`.
 
