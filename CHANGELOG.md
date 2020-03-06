@@ -32,8 +32,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.7.21] - 2020-02-26
 
-<<<<<<< HEAD
-
 - Updated inputText to supports iconBefore iconAfter & prefix suffix.
 
 - # new component `InlineInputText` plus documentations and test
@@ -45,8 +43,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.7.20] - 2020-02-25
 
 ### Fixed
-
-> > > > > > > 2c7ef5a17604e984776c48dc7cc4c6f1be2b5f0c
 
 - `usePopover` event handlers not getting properly cleaned up
 

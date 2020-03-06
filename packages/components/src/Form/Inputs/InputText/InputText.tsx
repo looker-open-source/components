@@ -54,7 +54,7 @@ export const CustomizableInputTextAttributes: CustomizableAttributes = {
   borderRadius: 'medium',
   fontSize: 'small',
   height: '36px',
-  px: 'none',
+  px: 'small',
   py: 'none',
 }
 
@@ -118,42 +118,41 @@ const InputComponent = forwardRef(
     const focusInput = () => internalRef.current && internalRef.current.focus()
 
     const before = iconBefore ? (
-      <InputIconStyle paddingRight="8px">
+      <InputIconStyle paddingRight="xsmall">
         <Icon name={iconBefore} size={20} />
       </InputIconStyle>
     ) : prefix ? (
-      <InputIconStyle paddingRight="8px">
+      <InputIconStyle paddingRight="xsmall">
         <Text fontSize="small">{prefix}</Text>
       </InputIconStyle>
     ) : null
 
     const after = iconAfter ? (
-      <InputIconStyle paddingLeft="8px">
+      <InputIconStyle paddingLeft="xsmall">
         <Icon name={iconAfter} size={20} />
       </InputIconStyle>
     ) : suffix ? (
-      <InputIconStyle paddingLeft="8px">
+      <InputIconStyle paddingLeft="xsmall">
         <Text fontSize="small">{suffix}</Text>
       </InputIconStyle>
     ) : null
+    const inputProps = pick(
+      omit(props, 'color', 'height', 'width'),
+      inputPropKeys
+    )
 
     if (before || after) {
       return (
         <InputLayout className={className} onClick={focusInput}>
           {before}
-          <input
-            {...pick(omit(props, 'color', 'height', 'width'), inputPropKeys)}
-            className={className}
-            type={type}
-            ref={ref}
-          />
+          <input {...inputProps} type={type} ref={ref} />
           {after}
         </InputLayout>
       )
     } else {
       return (
         <StyledInput
-          {...pick(omit(props, 'color', 'height', 'width'), inputPropKeys)}
+          {...inputProps}
           className={className}
           type={type}
           ref={ref}
@@ -179,12 +178,7 @@ export const inputTextDisabled = css`
   }
 `
 const shared = css`
-  border: 1px solid;
-  border-color: ${props => props.theme.colors.palette.charcoal200};
-  border-radius: 4px;
-  display: inline-block;
   height: 36px;
-  width: 100%;
   &:hover {
     ${inputTextHover}
   }
@@ -192,19 +186,16 @@ const shared = css`
   :focus-within {
     ${inputTextFocus}
   }
-  &:disabled {
-    ${inputTextDisabled}
-  }
 `
 
 export const InputLayout = styled.div`
   ${shared}
   align-items: center;
   background-color: ${props => props.theme.colors.palette.white};
-  display: flex;
-  border-color: ${props => props.theme.colors.palette.charcoal200};
+  display: inline-flex;
   justify-content: space-evenly;
   padding: 0;
+  width: 174px;
   input {
     border: none;
     flex: 1;
@@ -225,6 +216,7 @@ export const InputIconStyle = styled(Flex)`
 `
 
 export const inputTextValidation = css<InputTextProps>`
+  ${props => (props.disabled ? inputTextDisabled : '')}
   ${props =>
     props.validationType === 'error'
       ? `
@@ -261,8 +253,8 @@ export const InputText = styled(InputComponent).attrs(
 `
 
 export const inputTextDefaults = {
-  padding: '0 8px',
-  width: '174px',
+  border: 'solid 1px',
+  borderColor: 'palette.charcoal200',
 }
 
 InputText.defaultProps = {
