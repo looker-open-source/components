@@ -22,6 +22,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `InputDate` and `InputDateRange` test mocks
 
+## [0.7.23] - 2020-03-06
+
+### Added
+
+- `ActionList` and related sub-components - general layout and base functionality added; currently renders a list with data in columns and associated actions at the item level
+
+### Changed
+
+- `IconButton` - tooltip callbacks no longer override passed in callbacks
+- `Menu` - renamed isHovered variable to showDisclosure to make this prop's use alongside `MenuDisclosure` more obvious
+- `MenuContext` - renamed isHovered property to showDisclosure
+- `MenuDisclosure` - now has focus and blur handlers, which allows for tab-traversal to hidden `MenuDisclosure`
+
 ## [0.7.22] - 2020-02-27
 
 ### Fixed

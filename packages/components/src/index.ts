@@ -24,6 +24,7 @@
 
  */
 
+export * from './ActionList'
 export * from './Avatar'
 export * from './Badge'
 export * from './Banner'

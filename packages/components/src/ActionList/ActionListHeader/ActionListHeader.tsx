@@ -24,21 +24,13 @@
 
  */
 
-import { createContext } from 'react'
-import { MenuSharedProps } from './MenuItem'
+import styled from 'styled-components'
+import { ActionListRow } from '../ActionListRow'
 
-export interface MenuContextProps {
-  disabled?: boolean
-  id?: string
-  showDisclosure?: boolean
-  isOpen?: boolean
-  setOpen?: (isOpen: boolean) => void
-  triggerElement?: HTMLElement | null
-  triggerCallbackRef?: (node: HTMLElement | null) => void
-}
-
-const menuContext: MenuContextProps = {}
-const menuItemStyleContext: MenuSharedProps = {}
-
-export const MenuContext = createContext(menuContext)
-export const MenuItemStyleContext = createContext(menuItemStyleContext)
+export const ActionListHeader = styled(ActionListRow)`
+  border: solid 1px ${props => props.theme.colors.palette.charcoal200};
+  color: ${props => props.theme.colors.palette.charcoal900};
+  display: flex;
+  font-size: ${props => props.theme.fontSizes.xsmall};
+  font-weight: ${props => props.theme.fontWeights.semiBold};
+`

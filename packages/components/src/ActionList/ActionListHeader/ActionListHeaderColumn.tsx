@@ -24,21 +24,14 @@
 
  */
 
-import { createContext } from 'react'
-import { MenuSharedProps } from './MenuItem'
+import styled, { css } from 'styled-components'
+import { flexbox } from '@looker/design-tokens'
 
-export interface MenuContextProps {
-  disabled?: boolean
-  id?: string
-  showDisclosure?: boolean
-  isOpen?: boolean
-  setOpen?: (isOpen: boolean) => void
-  triggerElement?: HTMLElement | null
-  triggerCallbackRef?: (node: HTMLElement | null) => void
-}
+export const columnCSS = css`
+  padding: ${props => props.theme.space.small};
+  ${flexbox};
+`
 
-const menuContext: MenuContextProps = {}
-const menuItemStyleContext: MenuSharedProps = {}
-
-export const MenuContext = createContext(menuContext)
-export const MenuItemStyleContext = createContext(menuItemStyleContext)
+export const ActionListHeaderColumn = styled.div`
+  ${columnCSS}
+`

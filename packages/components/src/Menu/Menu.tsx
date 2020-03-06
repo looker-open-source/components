@@ -63,15 +63,15 @@ export const Menu: FC<MenuProps> = ({
   const isControlled = useRef(controlledSetOpen !== undefined)
   const [isOpen, setOpen] = useState(controlledIsOpen)
   const [triggerElement, triggerCallbackRef] = useCallbackRef()
-  const [isHovered] = useHovered(hoverDisclosureRef)
+  const [showDisclosure] = useHovered(hoverDisclosureRef)
   const id = useID(propsID)
 
   const context = {
     disabled,
     id,
-    isHovered,
     isOpen: isControlled.current ? controlledIsOpen : isOpen,
     setOpen: isControlled.current ? controlledSetOpen : setOpen,
+    showDisclosure,
     triggerCallbackRef,
     triggerElement,
   }
