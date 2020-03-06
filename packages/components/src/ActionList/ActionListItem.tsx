@@ -77,7 +77,7 @@ const ActionListItemInternal: FC<ActionListItemProps> = ({
       ref={actionListItemRef}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
-      tabIndex={onClick ? 0 : undefined}
+      tabIndex={0}
     >
       {children}
     </ActionListRow>
