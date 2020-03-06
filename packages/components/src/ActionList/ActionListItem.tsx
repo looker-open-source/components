@@ -63,12 +63,7 @@ const ActionListItemInternal: FC<ActionListItemProps> = ({
     <div onClick={handleMenuClick}>
       <Menu hoverDisclosureRef={actionListItemRef}>
         <MenuDisclosure>
-          <IconButton
-            className={className}
-            icon="DotsVert"
-            label="Actions"
-            size="medium"
-          />
+          <IconButton icon="DotsVert" label="Actions" size="medium" />
         </MenuDisclosure>
         <MenuList>{actions}</MenuList>
       </Menu>
@@ -79,9 +74,9 @@ const ActionListItemInternal: FC<ActionListItemProps> = ({
     <ActionListRow
       className={className}
       secondary={itemActions}
+      ref={actionListItemRef}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
-      ref={actionListItemRef}
       tabIndex={onClick ? 0 : undefined}
     >
       {children}

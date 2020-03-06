@@ -32,31 +32,44 @@ import { columnCSS } from './ActionListHeader/ActionListHeaderColumn'
 interface ActionListItemColumnProps {
   detail?: ReactNode
   indicator?: ReactNode
-  className: string
+  className?: string
 }
 
-const Layout: FC<ActionListItemColumnProps> = ({
+const ActionListItemColumnInnerLayout = styled.div``
+
+const ActionListItemColumnLayout: FC<ActionListItemColumnProps> = ({
   children,
   detail,
   className,
   indicator,
 }) => (
   <div className={className}>
-    {indicator}
-    <div>
+    {indicator && <div>{indicator}</div>}
+    <ActionListItemColumnInnerLayout>
       {children}
       {detail && (
         <Paragraph fontSize="xsmall" variant="subdued" truncate>
           {detail}
         </Paragraph>
       )}
-    </div>
+    </ActionListItemColumnInnerLayout>
   </div>
 )
 
-export const ActionListItemColumn = styled(Layout)`
+export const ActionListItemColumn = styled(ActionListItemColumnLayout)<
+  ActionListItemColumnProps
+>`
   ${columnCSS}
-  display: flex;
   padding-top: ${props => props.theme.space.medium};
   padding-bottom: ${props => props.theme.space.medium};
+
+  display: ${props => (props.indicator ? 'flex' : undefined)};
+
+  overflow: hidden;
+
+  ${ActionListItemColumnInnerLayout} {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 `

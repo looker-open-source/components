@@ -128,5 +128,6 @@ export const ActionList = styled(ActionListLayout)<ActionListProps>`
     display: grid;
     grid-template-columns: ${props =>
       props.columns.map(column => `${column.widthPercent}%`).join(' ')};
+    align-items: center;
   }
 `
