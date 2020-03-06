@@ -32,6 +32,7 @@ import React, {
   RefObject,
   Ref,
   SyntheticEvent,
+  useCallback,
 } from 'react'
 import { Popper } from 'react-popper'
 import { Box } from '../Layout'
@@ -399,6 +400,7 @@ export function usePopover({
     scrollElement,
     element
   )
+
   const verticalSpace = useVerticalSpace(element, pin, propsPlacement, isOpen)
   const openWithoutElem = useOpenWithoutElement(isOpen, element)
 
@@ -428,6 +430,13 @@ export function usePopover({
     setOpen(false)
     onClose && onClose()
   }
+
+  const [containerElement, setContainerElement] = useState<HTMLElement | null>(
+    null
+  )
+  const contentContainerRef = useCallback((node: HTMLInputElement) => {
+    setContainerElement(node)
+  }, [])
 
   const popover = !openWithoutElem && isOpen && (
     <ModalContext.Provider
@@ -479,6 +488,7 @@ export function usePopover({
                 maxHeight={`calc(${verticalSpace - 10}px - 1rem)`}
                 overflowY="auto"
                 borderRadius="inherit"
+                ref={contentContainerRef}
               >
                 {content}
               </Box>
@@ -489,6 +499,7 @@ export function usePopover({
     </ModalContext.Provider>
   )
   return {
+    contentContainerRef: { current: containerElement },
     isOpen,
     open: handleOpen,
     popover,

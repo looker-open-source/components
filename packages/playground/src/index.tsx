@@ -24,14 +24,14 @@ import { GlobalStyle } from '@looker/components'
 import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
 
-import { SortableActionListDemo } from './ActionList/SortableActionListDemo'
+import { InputTimeSelectDemo } from './Form/InputTimeSelectDemo'
 
 const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <>
         <GlobalStyle />
-        <SortableActionListDemo />
+        <InputTimeSelectDemo />
       </>
     </ThemeProvider>
   )

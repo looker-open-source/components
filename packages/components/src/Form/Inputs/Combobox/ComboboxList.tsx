@@ -35,8 +35,15 @@ import {
   typography,
   TypographyProps,
 } from '@looker/design-tokens'
-import React, { forwardRef, Ref, useContext, useLayoutEffect } from 'react'
+import React, {
+  forwardRef,
+  Ref,
+  useContext,
+  useLayoutEffect,
+  useEffect,
+} from 'react'
 import styled, { css } from 'styled-components'
+import once from 'lodash/once'
 import { PopoverContent, usePopover } from '../../../Popover'
 import { ComboboxContext, ComboboxMultiContext } from './ComboboxContext'
 import { useBlur } from './utils/useBlur'
@@ -87,6 +94,8 @@ const ComboboxListInternal = forwardRef(
       isVisible,
       optionsRef,
       popoverRef,
+      setListScrollPosition,
+      setListClientRect,
     } = contextToUse
 
     if (persistSelection) {
@@ -123,7 +132,13 @@ const ComboboxListInternal = forwardRef(
         ref={popoverRef}
         p="none"
       >
-        <ul {...props} ref={forwardedRef} role="listbox" tabIndex={-1} />
+        <ul
+          {...props}
+          ref={forwardedRef}
+          role="listbox"
+          tabIndex={-1}
+          data-testid="combobox-list"
+        />
       </PopoverContent>
     )
 
@@ -133,7 +148,7 @@ const ComboboxListInternal = forwardRef(
       }
     }
 
-    const { popover } = usePopover({
+    const { popover, contentContainerRef } = usePopover({
       arrow: false,
       content,
       focusTrap: false,
@@ -143,6 +158,29 @@ const ComboboxListInternal = forwardRef(
       triggerElement: wrapperElement,
       triggerToggle: false,
     })
+
+    useEffect(() => {
+      const element = contentContainerRef.current
+
+      const setListClientRectOnce = once(element => {
+        setListClientRect && setListClientRect(element.getBoundingClientRect())
+      })
+
+      const scrollListener = () => {
+        if (element) {
+          setListClientRectOnce(element)
+          setListScrollPosition && setListScrollPosition(element.scrollTop)
+        }
+      }
+
+      element && element.addEventListener('scroll', scrollListener)
+
+      return () => {
+        element && element.removeEventListener('scroll', scrollListener)
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [contentContainerRef])
+
     return popover || null
   }
 )
@@ -156,6 +194,7 @@ const comboboxListStyles = css<ComboboxListInternalProps>`
   list-style-type: none;
   margin: 0;
   padding: ${props => (props.isMulti ? props.theme.space.xsmall : 0)} 0;
+  max-height: 30rem;
 `
 
 export const ComboboxList = styled(ComboboxListInternal).attrs({

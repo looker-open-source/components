@@ -34,7 +34,7 @@ import {
   TypographyProps,
   SpaceProps,
 } from '@looker/design-tokens'
-import React, { forwardRef, Ref } from 'react'
+import React, { forwardRef, Ref, useState } from 'react'
 import styled from 'styled-components'
 import { useID } from '../../../utils'
 import { Box } from '../../../Layout/Box'
@@ -136,14 +136,21 @@ export const ComboboxInternal = forwardRef(
 
     const { ref, ...commonRefs } = useComboboxRefs(forwardedRef)
 
+    const [listScrollPosition, setListScrollPosition] = useState(0)
+    const [listClientRect, setListClientRect] = useState<DOMRect>()
+
     const context = {
       ...commonRefs,
       ...focusManagement,
       data,
       id,
       isVisible,
+      listClientRect,
+      listScrollPosition,
       onChange,
       openOnFocus,
+      setListClientRect,
+      setListScrollPosition,
       state,
       transition,
     }

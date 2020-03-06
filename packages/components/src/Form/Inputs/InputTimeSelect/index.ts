@@ -24,41 +24,4 @@
 
  */
 
-import styled from 'styled-components'
-import React, { forwardRef, Ref, ElementType } from 'react'
-import {
-  CompatibleHTMLProps,
-  cursor,
-  CursorProps,
-  flexbox,
-  FlexboxProps,
-  pseudoClasses,
-  PseudoProps,
-  userSelect,
-  UserSelectProps,
-} from '@looker/design-tokens'
-import { layoutCSS, LayoutComponentProps } from '../layout'
-
-export interface BoxProps
-  extends CompatibleHTMLProps<HTMLElement>,
-    LayoutComponentProps,
-    FlexboxProps,
-    PseudoProps,
-    CursorProps,
-    UserSelectProps {
-  as?: ElementType
-}
-
-export const BoxStyle = styled.div<BoxProps>`
-  ${layoutCSS}
-  ${pseudoClasses}
-  ${userSelect}
-  ${flexbox}
-  ${cursor}
-`
-
-export const Box = forwardRef((props: BoxProps, ref: Ref<HTMLDivElement>) => {
-  return <BoxStyle {...props} ref={ref} />
-})
-
-Box.displayName = 'Box'
+export * from './InputTimeSelect'

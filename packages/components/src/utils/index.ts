@@ -25,6 +25,7 @@
  */
 
 export * from './useControlWarn'
+export * from './useReadOnlyWarn'
 export * from './useCallbackRef'
 export * from './useFocusTrap'
 export * from './useForkedRef'

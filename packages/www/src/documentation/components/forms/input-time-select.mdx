@@ -1,0 +1,124 @@
+---
+title: InputTimeSelect
+propsOf: InputTimeSelect
+github: Form/Inputs/InputTimeSelect/InputTimeSelect.tsx
+---
+
+import { InputDateLocales } from './demos'
+
+`InputDate` provides a text input and calendar to select a single date, which can be used as a form input or filter.
+
+## Default Value
+
+`InputDate` can be initialized with a default selected date.
+
+```jsx
+<InputDate defaultValue={new Date('June 3, 2019')} />
+```
+
+## Change Event
+
+`InputDate` accepts a single event callback: `onChange`. The handler will receive a javascript `Date` object.
+
+```jsx
+;() => {
+  const [selectedDate, setSelectedDate] = useState(new Date())
+  const handleChange = date => {
+    setSelectedDate(date)
+  }
+  return (
+    <Flex>
+      <InputDate onChange={handleChange} defaultValue={selectedDate} />
+      <Box borderLeft="1px solid #ccc" pl="large">
+        <Heading mt="medium">Selected:</Heading>{' '}
+        <Text variant="secondary">
+          <DateFormat>{selectedDate}</DateFormat>
+        </Text>
+      </Box>
+    </Flex>
+  )
+}
+```
+
+## Internationalization
+
+`InputDate` comes with a range of supported language formats, which will automatically update month/day translations, as well as the appropriate first day of the week. Simply pass in the two-character locale code and everything will be formatted accordingly.
+
+**Default: `en`**
+
+<InputDateLocales />
+
+## Date Validation
+
+### validationType
+
+If you handle form validation externally (such as treating this date field as required), `InputDate` accepts the `validationType` prop to render an error state.
+
+```jsx
+<InputDate validationType="error" />
+```
+
+### onValidationFail
+
+`InputDate` has built-in validation to verify that users enter a valid date string when manually typing into the provided textarea. If you wish to build into this validation, you can pass an `onValidationFail` callback which will fire on blur if the text value does not match expected localized format.
+
+```jsx
+;() => {
+  const [isValid, setIsValid] = useState(true)
+  const handleChange = () => setIsValid(true)
+  const handleValidationFail = () => setIsValid(false)
+
+  const message = isValid ? 'Valid Input' : 'Invalid Input'
+  const textVariant = isValid ? 'default' : 'critical'
+
+  return (
+    <Flex>
+      <div>
+        <InputDate
+          onChange={handleChange}
+          onValidationFail={handleValidationFail}
+        />
+      </div>
+      <Box borderLeft="1px solid #ccc" pl="large">
+        <Text variant="secondary">
+          INSTRUCTIONS: Try typing an invalid date string (ex:
+          'not/a/valid/date') and clicking or tabbing away to trigger blur
+          event.
+        </Text>
+        <Heading mt="medium">Result:</Heading>
+        <Text variant={textVariant}>{message}</Text>
+      </Box>
+    </Flex>
+  )
+}
+```
+
+## Composing InputDate in a Popover
+
+A common UI pattern is to combine `InputDate` with [Popover](/components/overlays/popover), [Button](/components/actions/button), and [DateFormat](/components/content/date-time-format). This enables the full calendar functionality without having to take up so much space on the page.
+
+```jsx
+;() => {
+  const [selectedDate, setSelectedDate] = useState(new Date(Date.now()))
+  return (
+    <Popover
+      content={
+        <Box p="small">
+          <InputDate defaultValue={selectedDate} onChange={setSelectedDate} />
+        </Box>
+      }
+    >
+      {(onClick, ref, className) => (
+        <Button
+          aria-haspopup="true"
+          onClick={onClick}
+          ref={ref}
+          className={className}
+        >
+          <DateFormat>{selectedDate}</DateFormat>
+        </Button>
+      )}
+    </Popover>
+  )
+}
+```
