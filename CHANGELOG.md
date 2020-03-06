@@ -24,16 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Added components and helper functions that make up an Action List:
-  - `ActionList` - sits at the top of the Action List hierarchy
-  - `ActionListHeader` - contains subcontainers in the header
-  - `ActionListHeaderColumn` - acts as a parent to actual header labels
-  - `generate` - function that produces a generated `ActionListHeader` with `ActionListHeaderColumns`
-  - `ActionListItemColumn` - equivalent to a cell in the Action List
-  - `ActionListItem` - represents a data row in the Action List
-  - `ActionListItemAction` - proxy to `MenuItem`
-  - `ActionListRow` - layout component that renders a container for cells and a container for a row supplementary (i.e. the actions button)
-  - `ActionListDemo` - example composition of Action List components
+- `ActionList` and related sub-components - general layout and base functionality added; currently renders a list with data in columns and associated actions at the item level
 
 ### Changed
 
