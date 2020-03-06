@@ -24,8 +24,14 @@
 
  */
 
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import { flexbox } from '@looker/design-tokens'
+
+export const columnCSS = css`
+  padding: ${props => props.theme.space.small};
+  ${flexbox};
+`
 
 export const ActionListHeaderColumn = styled.div`
-  padding: ${props => props.theme.space.small};
+  ${columnCSS}
 `

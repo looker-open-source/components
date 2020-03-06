@@ -24,9 +24,39 @@
 
  */
 
+import React, { FC, ReactNode } from 'react'
 import styled from 'styled-components'
+import { Paragraph } from '../'
+import { columnCSS } from './ActionListHeader/ActionListHeaderColumn'
 
-export const ActionListItemColumn = styled.div`
-  font-weight: ${props => props.theme.fontWeights.normal};
-  padding: ${props => props.theme.space.medium + ' ' + props.theme.space.small};
+interface ActionListItemColumnProps {
+  detail?: ReactNode
+  indicator?: ReactNode
+  className: string
+}
+
+const Layout: FC<ActionListItemColumnProps> = ({
+  children,
+  detail,
+  className,
+  indicator,
+}) => (
+  <div className={className}>
+    {indicator}
+    <div>
+      {children}
+      {detail && (
+        <Paragraph fontSize="xsmall" variant="subdued" truncate>
+          {detail}
+        </Paragraph>
+      )}
+    </div>
+  </div>
+)
+
+export const ActionListItemColumn = styled(Layout)`
+  ${columnCSS}
+  display: flex;
+  padding-top: ${props => props.theme.space.medium};
+  padding-bottom: ${props => props.theme.space.medium};
 `

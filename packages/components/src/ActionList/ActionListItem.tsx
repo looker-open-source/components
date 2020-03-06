@@ -26,26 +26,30 @@
 
 import { CompatibleHTMLProps } from '@looker/design-tokens'
 import styled from 'styled-components'
-import React, { createContext, RefObject, useRef } from 'react'
+import React, { FC, ReactNode, useRef } from 'react'
+import { IconButton } from '../Button/IconButton'
+import { Menu, MenuDisclosure, MenuList } from '../Menu'
+import { ActionListRow } from './ActionListRow'
 
-export interface ActionListContextProps {
-  actionListItemRef: RefObject<HTMLElement> | undefined
+export interface ActionListItemProps
+  extends CompatibleHTMLProps<HTMLDivElement> {
+  actions?: ReactNode
 }
 
-export const ActionListItemContext = createContext<ActionListContextProps>({
-  actionListItemRef: undefined,
-})
-
-const ActionListItemInternal = (props: CompatibleHTMLProps<HTMLDivElement>) => {
-  const { children, className, onClick } = props
-
+const ActionListItemInternal: FC<ActionListItemProps> = ({
+  children,
+  actions,
+  onClick,
+  className,
+}) => {
   const actionListItemRef = useRef<HTMLDivElement>(null)
-  const context = {
-    actionListItemRef,
-  }
 
   const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
     onClick && onClick(event)
+  }
+
+  const handleMenuClick = (event: React.MouseEvent<HTMLElement>) => {
+    event.stopPropagation()
   }
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
@@ -55,18 +59,33 @@ const ActionListItemInternal = (props: CompatibleHTMLProps<HTMLDivElement>) => {
     }
   }
 
+  const itemActions = actions && (
+    <div onClick={handleMenuClick}>
+      <Menu hoverDisclosureRef={actionListItemRef}>
+        <MenuDisclosure>
+          <IconButton
+            className={className}
+            icon="DotsVert"
+            label="Actions"
+            size="medium"
+          />
+        </MenuDisclosure>
+        <MenuList>{actions}</MenuList>
+      </Menu>
+    </div>
+  )
+
   return (
-    <ActionListItemContext.Provider value={context}>
-      <div
-        className={className}
-        onClick={handleClick}
-        onKeyDown={handleKeyDown}
-        ref={actionListItemRef}
-        tabIndex={onClick ? 0 : undefined}
-      >
-        {children}
-      </div>
-    </ActionListItemContext.Provider>
+    <ActionListRow
+      className={className}
+      secondary={itemActions}
+      onClick={handleClick}
+      onKeyDown={handleKeyDown}
+      ref={actionListItemRef}
+      tabIndex={onClick ? 0 : undefined}
+    >
+      {children}
+    </ActionListRow>
   )
 }
 

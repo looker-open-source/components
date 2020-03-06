@@ -29,17 +29,9 @@ import {
   ActionList,
   ActionListColumns,
   ActionListItem,
-  ActionListItems,
   ActionListItemColumn,
   ActionListItemAction,
-  ActionListItemActions,
-  ActionListRowContainer,
-  ActionListRowOptionsContainer,
-  ActionListHeader,
-  ActionListHeaderColumn,
-  Paragraph,
   Icon,
-  Flex,
   Link,
 } from '@looker/components'
 
@@ -101,95 +93,78 @@ const columns: ActionListColumns = [
   },
 ]
 
+const MyActions = () => (
+  <>
+    <ActionListItemAction onClick={() => alert(`Go to LookML!`)}>
+      Go to LookML
+    </ActionListItemAction>
+    <ActionListItemAction onClick={() => alert(`PDT Details!`)}>
+      PDT Details
+    </ActionListItemAction>
+    <ActionListItemAction onClick={() => alert('Recent Build Events!')}>
+      Recent Build Events
+    </ActionListItemAction>
+    <ActionListItemAction onClick={() => alert('Recent Trigger Events!')}>
+      Recent Trigger Events
+    </ActionListItemAction>
+  </>
+)
+
 export const ActionListDemo: FC = () => {
+  const items = data.map(
+    ({
+      error,
+      lastSuccessfulBuild,
+      longPdtName,
+      model,
+      pdtName,
+      persistanceType,
+      status,
+    }) => (
+      <ActionListItem
+        key={pdtName}
+        onClick={() => alert(`Row clicked`)}
+        actions={<MyActions />}
+      >
+        <ActionListItemColumn detail={longPdtName}>
+          {pdtName}
+        </ActionListItemColumn>
+        <ActionListItemColumn
+          detail={
+            error ? (
+              <Link
+                onClick={(event: React.MouseEvent<HTMLAnchorElement>) =>
+                  event.stopPropagation()
+                }
+                href={error.link}
+              >
+                {error.message}
+              </Link>
+            ) : null
+          }
+          indicator={
+            <Icon
+              name={status === 'Success' ? 'ArrowDropUp' : 'ArrowDropDown'}
+              color={
+                status === 'Success' ? 'palette.green300' : 'palette.red300'
+              }
+              mr="small"
+              size={24}
+            />
+          }
+        >
+          {status}
+        </ActionListItemColumn>
+        <ActionListItemColumn>{model}</ActionListItemColumn>
+        <ActionListItemColumn>{persistanceType}</ActionListItemColumn>
+        <ActionListItemColumn>{lastSuccessfulBuild}</ActionListItemColumn>
+      </ActionListItem>
+    )
+  )
+
   return (
-    <ActionList columns={columns}>
-      <ActionListHeader>
-        <ActionListRowContainer>
-          {columns.map(({ children, id }) => (
-            <ActionListHeaderColumn key={id}>{children}</ActionListHeaderColumn>
-          ))}
-        </ActionListRowContainer>
-        <ActionListRowOptionsContainer />
-      </ActionListHeader>
-      <ActionListItems>
-        {data.map(
-          ({
-            error,
-            lastSuccessfulBuild,
-            longPdtName,
-            model,
-            pdtName,
-            persistanceType,
-            status,
-          }) => (
-            <ActionListItem key={pdtName} onClick={() => alert(`Row clicked`)}>
-              <ActionListRowContainer>
-                <ActionListItemColumn>
-                  <Paragraph fontSize="xsmall">{pdtName}</Paragraph>
-                  <Paragraph fontSize="xsmall" variant="subdued" truncate>
-                    {longPdtName}
-                  </Paragraph>
-                </ActionListItemColumn>
-                <ActionListItemColumn>
-                  <Flex alignItems="center">
-                    <Icon
-                      name={
-                        status === 'Success' ? 'ArrowDropUp' : 'ArrowDropDown'
-                      }
-                      color={
-                        status === 'Success'
-                          ? 'palette.green300'
-                          : 'palette.red300'
-                      }
-                      mr="5px"
-                      size={24}
-                    />
-                    <div>
-                      <Paragraph fontSize="xsmall">{status}</Paragraph>
-                      {error ? (
-                        <Link
-                          onClick={(
-                            event: React.MouseEvent<HTMLAnchorElement>
-                          ) => event.stopPropagation()}
-                          href={error.link}
-                        >
-                          {error.message}
-                        </Link>
-                      ) : null}
-                    </div>
-                  </Flex>
-                </ActionListItemColumn>
-                <ActionListItemColumn>{model}</ActionListItemColumn>
-                <ActionListItemColumn>{persistanceType}</ActionListItemColumn>
-                <ActionListItemColumn>
-                  {lastSuccessfulBuild}
-                </ActionListItemColumn>
-              </ActionListRowContainer>
-              <ActionListRowOptionsContainer>
-                <ActionListItemActions>
-                  <ActionListItemAction onClick={() => alert('Go to LookML!')}>
-                    Go to LookML
-                  </ActionListItemAction>
-                  <ActionListItemAction onClick={() => alert('PDT Details!')}>
-                    PDT Details
-                  </ActionListItemAction>
-                  <ActionListItemAction
-                    onClick={() => alert('Recent Build Events!')}
-                  >
-                    Recent Build Events
-                  </ActionListItemAction>
-                  <ActionListItemAction
-                    onClick={() => alert('Recent Trigger Events!')}
-                  >
-                    Recent Trigger Events
-                  </ActionListItemAction>
-                </ActionListItemActions>
-              </ActionListRowOptionsContainer>
-            </ActionListItem>
-          )
-        )}
-      </ActionListItems>
+    <ActionList header={<p>foobar</p>} columns={columns}>
+      {items}
     </ActionList>
   )
 }

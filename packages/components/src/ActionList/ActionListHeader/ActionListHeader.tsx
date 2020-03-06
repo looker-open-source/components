@@ -25,8 +25,9 @@
  */
 
 import styled from 'styled-components'
+import { ActionListRow } from '../ActionListRow'
 
-export const ActionListHeader = styled.div`
+export const ActionListHeader = styled(ActionListRow)`
   border: solid 1px ${props => props.theme.colors.palette.charcoal200};
   color: ${props => props.theme.colors.palette.charcoal900};
   display: flex;

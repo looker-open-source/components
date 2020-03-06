@@ -79,30 +79,17 @@ describe('<ActionList />: General Layout', () => {
   test('Renders a header row and a list item row', () => {
     const { getByText } = renderWithTheme(
       <ActionList columns={columns}>
-        <ActionListHeader>
-          <ActionListRowContainer>
-            <ActionListHeaderColumn>ID</ActionListHeaderColumn>
-            <ActionListHeaderColumn>Name</ActionListHeaderColumn>
-            <ActionListHeaderColumn>Role</ActionListHeaderColumn>
-          </ActionListRowContainer>
-          <ActionListRowOptionsContainer />
-        </ActionListHeader>
-        <ActionListItems>
-          <ActionListItem>
-            <ActionListRowContainer>
-              <ActionListItemColumn>1</ActionListItemColumn>
-              <ActionListItemColumn>Richard Garfield</ActionListItemColumn>
-              <ActionListItemColumn>Game Designer</ActionListItemColumn>
-            </ActionListRowContainer>
-            <ActionListRowOptionsContainer>
-              <ActionListItemActions>
-                <ActionListItemAction icon="Group">
-                  Some Action
-                </ActionListItemAction>
-              </ActionListItemActions>
-            </ActionListRowOptionsContainer>
-          </ActionListItem>
-        </ActionListItems>
+        <ActionListItem
+          actions={
+            <ActionListItemAction icon="Group">
+              Some Action
+            </ActionListItemAction>
+          }
+        >
+          <ActionListItemColumn>1</ActionListItemColumn>
+          <ActionListItemColumn>Richard Garfield</ActionListItemColumn>
+          <ActionListItemColumn>Game Designer</ActionListItemColumn>
+        </ActionListItem>
       </ActionList>
     )
 

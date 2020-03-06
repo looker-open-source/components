@@ -25,10 +25,14 @@
  */
 
 import styled, { css } from 'styled-components'
-import { ReactNode } from 'react'
-import { ActionListHeaderColumn } from './ActionListHeader'
+import React, { FC, ReactNode } from 'react'
+import {
+  ActionListHeader,
+  ActionListHeaderColumn,
+  generateActionListHeaderColumns,
+} from './ActionListHeader'
 import { ActionListItemColumn } from './ActionListItemColumn'
-import { ActionListRowContainer } from './ActionListRowContainer'
+import { ActionListRowColumns } from './ActionListRow'
 
 export type ActionListColumns = ActionListColumn[]
 export interface ActionListColumn {
@@ -52,6 +56,34 @@ export interface ActionListColumn {
 
 export interface ActionListProps {
   columns: ActionListColumns
+  className?: string
+  /**
+   * default: true
+   */
+  header?: boolean | ReactNode
+}
+
+export const ActionListLayout: FC<ActionListProps> = ({
+  className,
+  header = true,
+  children,
+  columns,
+}) => {
+  const actionListHeader =
+    header === true ? (
+      <ActionListHeader>
+        {generateActionListHeaderColumns(columns)}
+      </ActionListHeader>
+    ) : header === false ? null : (
+      <ActionListHeader>{header}</ActionListHeader>
+    )
+
+  return (
+    <div className={className}>
+      {actionListHeader}
+      <div>{children}</div>
+    </div>
+  )
 }
 
 const textAlignRightCSS = css<ActionListProps>`
@@ -87,12 +119,12 @@ const primaryKeyColumnCSS = css<ActionListProps>`
     )}
 `
 
-export const ActionList = styled.div<ActionListProps>`
+export const ActionList = styled(ActionListLayout)<ActionListProps>`
   ${textAlignRightCSS}
 
   ${primaryKeyColumnCSS}
 
-  ${ActionListRowContainer} {
+  ${ActionListRowColumns} {
     display: grid;
     grid-template-columns: ${props =>
       props.columns.map(column => `${column.widthPercent}%`).join(' ')};
