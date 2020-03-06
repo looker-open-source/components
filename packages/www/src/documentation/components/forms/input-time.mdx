@@ -4,4 +4,58 @@ propsOf: InputTime
 github: Form/Inputs/InputTime/InputTime.tsx
 ---
 
-`InputTime` will provide an HTML5-standard time picking experience. Coming soon.
+`InputTime` provides a themable HTML5-equivalent time picking experience.
+
+```js
+<InputTime />
+```
+
+## Value and defaultValue
+
+Just like [InputTimeSelect](./input-time-select), this component accepts and returns a 24-hour formatted time string as it's value.
+
+```js
+<InputTime defaultValue="14:34" />
+```
+
+## Time Format
+
+`InputTime` can display either a 12-hour or 24-hour time selecting interface. If not specified, it defaults to 12-hour time.
+
+```js
+<>
+  <InputTime format="12h" defaultValue="14:34" />
+  <InputTime format="24h" defaultValue="14:34" />
+</>
+```
+
+## Controlled Component
+
+`InputTime` accepts a value and onChange listener for the standard controlled component pattern.
+
+```js
+;() => {
+  const [value, setValue] = useState('12:00')
+  const handle1400Click = () => setValue('14:00')
+  const handle1515Click = () => setValue('15:15')
+  const handle1632Click = () => setValue('16:32')
+
+  return (
+    <>
+      <Button mr="small" onClick={handle1400Click}>
+        2:00pm
+      </Button>
+      <Button mr="small" onClick={handle1515Click}>
+        3:15pm
+      </Button>
+      <Button mr="small" onClick={handle1632Click}>
+        4:32pm
+      </Button>
+      <Flex mt="large" alignItems="center">
+        <InputTime value={value} mr="small" />
+        Selected: {value}
+      </Flex>
+    </>
+  )
+}
+```

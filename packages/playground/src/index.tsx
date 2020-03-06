@@ -26,15 +26,19 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { ComponentsProvider, GlobalStyle } from '@looker/components'
-import { ActionListDemo } from './ActionList/ActionListDemo'
+import { GlobalStyle } from '@looker/components'
+import { theme } from '@looker/design-tokens'
+import { ThemeProvider } from 'styled-components'
+import { InputTimeDemo } from './Form/InputTimeDemo'
 
 const App: React.FC = () => {
   return (
-    <ComponentsProvider>
-      <GlobalStyle />
-      <ActionListDemo />
-    </ComponentsProvider>
+    <ThemeProvider theme={theme}>
+      <>
+        <GlobalStyle />
+        <InputTimeDemo />
+      </>
+    </ThemeProvider>
   )
 }
 
