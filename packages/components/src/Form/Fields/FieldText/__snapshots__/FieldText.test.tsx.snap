@@ -26,12 +26,7 @@ exports[`A FieldText 1`] = `
 }
 
 .c4 {
-  border: 1px solid;
-  border-color: #DEE1E5;
-  border-radius: 4px;
-  display: inline-block;
   height: 36px;
-  width: 100%;
 }
 
 .c4:hover {
@@ -45,24 +40,15 @@ exports[`A FieldText 1`] = `
   outline: none;
 }
 
-.c4:disabled {
-  background: #F5F6F7;
-  color: #939BA5;
-}
-
-.c4:disabled:hover {
-  border-color: #DEE1E5;
-}
-
 .c6 {
   border-radius: 0.25rem;
+  border: solid 1px;
+  border-color: #DEE1E5;
   height: 36px;
-  width: 174px;
-  padding-left: 0rem;
-  padding-right: 0rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
-  padding: 0 8px;
   font-size: 0.875rem;
   color: #343C42;
 }
@@ -150,12 +136,7 @@ exports[`A FieldText with an error validation aligned to the left 1`] = `
 }
 
 .c5 {
-  border: 1px solid;
-  border-color: #DEE1E5;
-  border-radius: 4px;
-  display: inline-block;
   height: 36px;
-  width: 100%;
 }
 
 .c5:hover {
@@ -169,24 +150,15 @@ exports[`A FieldText with an error validation aligned to the left 1`] = `
   outline: none;
 }
 
-.c5:disabled {
-  background: #F5F6F7;
-  color: #939BA5;
-}
-
-.c5:disabled:hover {
-  border-color: #DEE1E5;
-}
-
 .c7 {
   border-radius: 0.25rem;
+  border: solid 1px;
+  border-color: #DEE1E5;
   height: 36px;
-  width: 174px;
-  padding-left: 0rem;
-  padding-right: 0rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
-  padding: 0 8px;
   font-size: 0.875rem;
   color: #343C42;
   border-color: #ED3B53;
@@ -318,12 +290,7 @@ exports[`A FieldText with an error validation aligned to the right 1`] = `
 }
 
 .c5 {
-  border: 1px solid;
-  border-color: #DEE1E5;
-  border-radius: 4px;
-  display: inline-block;
   height: 36px;
-  width: 100%;
 }
 
 .c5:hover {
@@ -337,24 +304,15 @@ exports[`A FieldText with an error validation aligned to the right 1`] = `
   outline: none;
 }
 
-.c5:disabled {
-  background: #F5F6F7;
-  color: #939BA5;
-}
-
-.c5:disabled:hover {
-  border-color: #DEE1E5;
-}
-
 .c7 {
   border-radius: 0.25rem;
+  border: solid 1px;
+  border-color: #DEE1E5;
   height: 36px;
-  width: 174px;
-  padding-left: 0rem;
-  padding-right: 0rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
-  padding: 0 8px;
   font-size: 0.875rem;
   color: #343C42;
   border-color: #ED3B53;
@@ -483,12 +441,7 @@ exports[`A required FieldText 1`] = `
 }
 
 .c5 {
-  border: 1px solid;
-  border-color: #DEE1E5;
-  border-radius: 4px;
-  display: inline-block;
   height: 36px;
-  width: 100%;
 }
 
 .c5:hover {
@@ -502,24 +455,15 @@ exports[`A required FieldText 1`] = `
   outline: none;
 }
 
-.c5:disabled {
-  background: #F5F6F7;
-  color: #939BA5;
-}
-
-.c5:disabled:hover {
-  border-color: #DEE1E5;
-}
-
 .c7 {
   border-radius: 0.25rem;
+  border: solid 1px;
+  border-color: #DEE1E5;
   height: 36px;
-  width: 174px;
-  padding-left: 0rem;
-  padding-right: 0rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
-  padding: 0 8px;
   font-size: 0.875rem;
   color: #343C42;
 }
@@ -619,12 +563,7 @@ exports[`FieldText supports labelWeight 1`] = `
 }
 
 .c4 {
-  border: 1px solid;
-  border-color: #DEE1E5;
-  border-radius: 4px;
-  display: inline-block;
   height: 36px;
-  width: 100%;
 }
 
 .c4:hover {
@@ -638,24 +577,15 @@ exports[`FieldText supports labelWeight 1`] = `
   outline: none;
 }
 
-.c4:disabled {
-  background: #F5F6F7;
-  color: #939BA5;
-}
-
-.c4:disabled:hover {
-  border-color: #DEE1E5;
-}
-
 .c6 {
   border-radius: 0.25rem;
+  border: solid 1px;
+  border-color: #DEE1E5;
   height: 36px;
-  width: 174px;
-  padding-left: 0rem;
-  padding-right: 0rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
-  padding: 0 8px;
   font-size: 0.875rem;
   color: #343C42;
 }

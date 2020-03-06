@@ -10,12 +10,13 @@ exports[`A FieldSelect 1`] = `
 
 .c6 {
   border-radius: 0.25rem;
+  border: solid 1px;
+  border-color: #DEE1E5;
   width: 100%;
-  padding-left: 0rem;
+  padding-left: 0.75rem;
   padding-right: 0.25rem;
   padding-top: 2px;
   padding-bottom: 2px;
-  padding: 0 8px;
   font-size: 0.875rem;
 }
 
@@ -35,12 +36,7 @@ exports[`A FieldSelect 1`] = `
 }
 
 .c9 {
-  border: 1px solid;
-  border-color: #DEE1E5;
-  border-radius: 4px;
-  display: inline-block;
   height: 36px;
-  width: 100%;
 }
 
 .c9:hover {
@@ -54,24 +50,15 @@ exports[`A FieldSelect 1`] = `
   outline: none;
 }
 
-.c9:disabled {
-  background: #F5F6F7;
-  color: #939BA5;
-}
-
-.c9:disabled:hover {
-  border-color: #DEE1E5;
-}
-
 .c11 {
   border-radius: 0.25rem;
+  border: solid 1px;
+  border-color: #DEE1E5;
   height: 36px;
-  width: 174px;
   padding-left: 0;
   padding-right: 0;
   padding-top: 0rem;
   padding-bottom: 0rem;
-  padding: 0 8px;
   font-size: 0.875rem;
   color: #343C42;
 }
@@ -234,12 +221,13 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
 
 .c7 {
   border-radius: 0.25rem;
+  border: solid 1px;
+  border-color: #DEE1E5;
   width: 100%;
-  padding-left: 0rem;
+  padding-left: 0.75rem;
   padding-right: 0.25rem;
   padding-top: 2px;
   padding-bottom: 2px;
-  padding: 0 8px;
   font-size: 0.875rem;
 }
 
@@ -259,12 +247,7 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
 }
 
 .c10 {
-  border: 1px solid;
-  border-color: #DEE1E5;
-  border-radius: 4px;
-  display: inline-block;
   height: 36px;
-  width: 100%;
 }
 
 .c10:hover {
@@ -278,24 +261,15 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   outline: none;
 }
 
-.c10:disabled {
-  background: #F5F6F7;
-  color: #939BA5;
-}
-
-.c10:disabled:hover {
-  border-color: #DEE1E5;
-}
-
 .c12 {
   border-radius: 0.25rem;
+  border: solid 1px;
+  border-color: #DEE1E5;
   height: 36px;
-  width: 174px;
   padding-left: 0;
   padding-right: 0;
   padding-top: 0rem;
   padding-bottom: 0rem;
-  padding: 0 8px;
   font-size: 0.875rem;
   color: #343C42;
 }
@@ -525,12 +499,13 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
 
 .c7 {
   border-radius: 0.25rem;
+  border: solid 1px;
+  border-color: #DEE1E5;
   width: 100%;
-  padding-left: 0rem;
+  padding-left: 0.75rem;
   padding-right: 0.25rem;
   padding-top: 2px;
   padding-bottom: 2px;
-  padding: 0 8px;
   font-size: 0.875rem;
 }
 
@@ -550,12 +525,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
 }
 
 .c10 {
-  border: 1px solid;
-  border-color: #DEE1E5;
-  border-radius: 4px;
-  display: inline-block;
   height: 36px;
-  width: 100%;
 }
 
 .c10:hover {
@@ -569,24 +539,15 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   outline: none;
 }
 
-.c10:disabled {
-  background: #F5F6F7;
-  color: #939BA5;
-}
-
-.c10:disabled:hover {
-  border-color: #DEE1E5;
-}
-
 .c12 {
   border-radius: 0.25rem;
+  border: solid 1px;
+  border-color: #DEE1E5;
   height: 36px;
-  width: 174px;
   padding-left: 0;
   padding-right: 0;
   padding-top: 0rem;
   padding-bottom: 0rem;
-  padding: 0 8px;
   font-size: 0.875rem;
   color: #343C42;
 }
@@ -813,12 +774,13 @@ exports[`A required FieldSelect 1`] = `
 
 .c7 {
   border-radius: 0.25rem;
+  border: solid 1px;
+  border-color: #DEE1E5;
   width: 100%;
-  padding-left: 0rem;
+  padding-left: 0.75rem;
   padding-right: 0.25rem;
   padding-top: 2px;
   padding-bottom: 2px;
-  padding: 0 8px;
   font-size: 0.875rem;
 }
 
@@ -838,12 +800,7 @@ exports[`A required FieldSelect 1`] = `
 }
 
 .c10 {
-  border: 1px solid;
-  border-color: #DEE1E5;
-  border-radius: 4px;
-  display: inline-block;
   height: 36px;
-  width: 100%;
 }
 
 .c10:hover {
@@ -857,24 +814,15 @@ exports[`A required FieldSelect 1`] = `
   outline: none;
 }
 
-.c10:disabled {
-  background: #F5F6F7;
-  color: #939BA5;
-}
-
-.c10:disabled:hover {
-  border-color: #DEE1E5;
-}
-
 .c12 {
   border-radius: 0.25rem;
+  border: solid 1px;
+  border-color: #DEE1E5;
   height: 36px;
-  width: 174px;
   padding-left: 0;
   padding-right: 0;
   padding-top: 0rem;
   padding-bottom: 0rem;
-  padding: 0 8px;
   font-size: 0.875rem;
   color: #343C42;
 }
@@ -1049,12 +997,13 @@ exports[`FieldSelect supports labelWeight 1`] = `
 
 .c6 {
   border-radius: 0.25rem;
+  border: solid 1px;
+  border-color: #DEE1E5;
   width: 100%;
-  padding-left: 0rem;
+  padding-left: 0.75rem;
   padding-right: 0.25rem;
   padding-top: 2px;
   padding-bottom: 2px;
-  padding: 0 8px;
   font-size: 0.875rem;
 }
 
@@ -1074,12 +1023,7 @@ exports[`FieldSelect supports labelWeight 1`] = `
 }
 
 .c9 {
-  border: 1px solid;
-  border-color: #DEE1E5;
-  border-radius: 4px;
-  display: inline-block;
   height: 36px;
-  width: 100%;
 }
 
 .c9:hover {
@@ -1093,24 +1037,15 @@ exports[`FieldSelect supports labelWeight 1`] = `
   outline: none;
 }
 
-.c9:disabled {
-  background: #F5F6F7;
-  color: #939BA5;
-}
-
-.c9:disabled:hover {
-  border-color: #DEE1E5;
-}
-
 .c11 {
   border-radius: 0.25rem;
+  border: solid 1px;
+  border-color: #DEE1E5;
   height: 36px;
-  width: 174px;
   padding-left: 0;
   padding-right: 0;
   padding-top: 0rem;
   padding-bottom: 0rem;
-  padding: 0 8px;
   font-size: 0.875rem;
   color: #343C42;
 }

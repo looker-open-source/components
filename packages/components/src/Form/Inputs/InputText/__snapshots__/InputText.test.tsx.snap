@@ -2,12 +2,7 @@
 
 exports[`InputText default 1`] = `
 .c0 {
-  border: 1px solid;
-  border-color: #DEE1E5;
-  border-radius: 4px;
-  display: inline-block;
   height: 36px;
-  width: 100%;
 }
 
 .c0:hover {
@@ -21,24 +16,15 @@ exports[`InputText default 1`] = `
   outline: none;
 }
 
-.c0:disabled {
-  background: #F5F6F7;
-  color: #939BA5;
-}
-
-.c0:disabled:hover {
-  border-color: #DEE1E5;
-}
-
 .c1 {
   border-radius: 0.25rem;
+  border: solid 1px;
+  border-color: #DEE1E5;
   height: 36px;
-  width: 174px;
-  padding-left: 0rem;
-  padding-right: 0rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
-  padding: 0 8px;
   font-size: 0.875rem;
   color: #343C42;
 }
@@ -51,12 +37,7 @@ exports[`InputText default 1`] = `
 
 exports[`InputText should accept disabled 1`] = `
 .c0 {
-  border: 1px solid;
-  border-color: #DEE1E5;
-  border-radius: 4px;
-  display: inline-block;
   height: 36px;
-  width: 100%;
 }
 
 .c0:hover {
@@ -70,26 +51,23 @@ exports[`InputText should accept disabled 1`] = `
   outline: none;
 }
 
-.c0:disabled {
+.c1 {
+  border-radius: 0.25rem;
+  border: solid 1px;
+  border-color: #DEE1E5;
+  height: 36px;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  font-size: 0.875rem;
+  color: #343C42;
   background: #F5F6F7;
   color: #939BA5;
 }
 
-.c0:disabled:hover {
+.c1:hover {
   border-color: #DEE1E5;
-}
-
-.c1 {
-  border-radius: 0.25rem;
-  height: 36px;
-  width: 174px;
-  padding-left: 0rem;
-  padding-right: 0rem;
-  padding-top: 0rem;
-  padding-bottom: 0rem;
-  padding: 0 8px;
-  font-size: 0.875rem;
-  color: #343C42;
 }
 
 <input
@@ -101,12 +79,7 @@ exports[`InputText should accept disabled 1`] = `
 
 exports[`InputText should accept readOnly 1`] = `
 .c0 {
-  border: 1px solid;
-  border-color: #DEE1E5;
-  border-radius: 4px;
-  display: inline-block;
   height: 36px;
-  width: 100%;
 }
 
 .c0:hover {
@@ -120,24 +93,15 @@ exports[`InputText should accept readOnly 1`] = `
   outline: none;
 }
 
-.c0:disabled {
-  background: #F5F6F7;
-  color: #939BA5;
-}
-
-.c0:disabled:hover {
-  border-color: #DEE1E5;
-}
-
 .c1 {
   border-radius: 0.25rem;
+  border: solid 1px;
+  border-color: #DEE1E5;
   height: 36px;
-  width: 174px;
-  padding-left: 0rem;
-  padding-right: 0rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
-  padding: 0 8px;
   font-size: 0.875rem;
   color: #343C42;
 }
@@ -151,12 +115,7 @@ exports[`InputText should accept readOnly 1`] = `
 
 exports[`InputText should accept required 1`] = `
 .c0 {
-  border: 1px solid;
-  border-color: #DEE1E5;
-  border-radius: 4px;
-  display: inline-block;
   height: 36px;
-  width: 100%;
 }
 
 .c0:hover {
@@ -170,24 +129,15 @@ exports[`InputText should accept required 1`] = `
   outline: none;
 }
 
-.c0:disabled {
-  background: #F5F6F7;
-  color: #939BA5;
-}
-
-.c0:disabled:hover {
-  border-color: #DEE1E5;
-}
-
 .c1 {
   border-radius: 0.25rem;
+  border: solid 1px;
+  border-color: #DEE1E5;
   height: 36px;
-  width: 174px;
-  padding-left: 0rem;
-  padding-right: 0rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
-  padding: 0 8px;
   font-size: 0.875rem;
   color: #343C42;
 }
@@ -201,12 +151,7 @@ exports[`InputText should accept required 1`] = `
 
 exports[`InputText with a placeholder 1`] = `
 .c0 {
-  border: 1px solid;
-  border-color: #DEE1E5;
-  border-radius: 4px;
-  display: inline-block;
   height: 36px;
-  width: 100%;
 }
 
 .c0:hover {
@@ -220,24 +165,15 @@ exports[`InputText with a placeholder 1`] = `
   outline: none;
 }
 
-.c0:disabled {
-  background: #F5F6F7;
-  color: #939BA5;
-}
-
-.c0:disabled:hover {
-  border-color: #DEE1E5;
-}
-
 .c1 {
   border-radius: 0.25rem;
+  border: solid 1px;
+  border-color: #DEE1E5;
   height: 36px;
-  width: 174px;
-  padding-left: 0rem;
-  padding-right: 0rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
-  padding: 0 8px;
   font-size: 0.875rem;
   color: #343C42;
 }
@@ -251,12 +187,7 @@ exports[`InputText with a placeholder 1`] = `
 
 exports[`InputText with a value 1`] = `
 .c0 {
-  border: 1px solid;
-  border-color: #DEE1E5;
-  border-radius: 4px;
-  display: inline-block;
   height: 36px;
-  width: 100%;
 }
 
 .c0:hover {
@@ -270,24 +201,15 @@ exports[`InputText with a value 1`] = `
   outline: none;
 }
 
-.c0:disabled {
-  background: #F5F6F7;
-  color: #939BA5;
-}
-
-.c0:disabled:hover {
-  border-color: #DEE1E5;
-}
-
 .c1 {
   border-radius: 0.25rem;
+  border: solid 1px;
+  border-color: #DEE1E5;
   height: 36px;
-  width: 174px;
-  padding-left: 0rem;
-  padding-right: 0rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
-  padding: 0 8px;
   font-size: 0.875rem;
   color: #343C42;
 }
@@ -301,12 +223,7 @@ exports[`InputText with a value 1`] = `
 
 exports[`InputText with an error validation 1`] = `
 .c0 {
-  border: 1px solid;
-  border-color: #DEE1E5;
-  border-radius: 4px;
-  display: inline-block;
   height: 36px;
-  width: 100%;
 }
 
 .c0:hover {
@@ -320,24 +237,15 @@ exports[`InputText with an error validation 1`] = `
   outline: none;
 }
 
-.c0:disabled {
-  background: #F5F6F7;
-  color: #939BA5;
-}
-
-.c0:disabled:hover {
-  border-color: #DEE1E5;
-}
-
 .c1 {
   border-radius: 0.25rem;
+  border: solid 1px;
+  border-color: #DEE1E5;
   height: 36px;
-  width: 174px;
-  padding-left: 0rem;
-  padding-right: 0rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
-  padding: 0 8px;
   font-size: 0.875rem;
   color: #343C42;
   border-color: #ED3B53;
@@ -361,12 +269,7 @@ exports[`InputText with an error validation 1`] = `
 
 exports[`InputText with aria-describedby 1`] = `
 .c0 {
-  border: 1px solid;
-  border-color: #DEE1E5;
-  border-radius: 4px;
-  display: inline-block;
   height: 36px;
-  width: 100%;
 }
 
 .c0:hover {
@@ -380,24 +283,15 @@ exports[`InputText with aria-describedby 1`] = `
   outline: none;
 }
 
-.c0:disabled {
-  background: #F5F6F7;
-  color: #939BA5;
-}
-
-.c0:disabled:hover {
-  border-color: #DEE1E5;
-}
-
 .c1 {
   border-radius: 0.25rem;
+  border: solid 1px;
+  border-color: #DEE1E5;
   height: 36px;
-  width: 174px;
-  padding-left: 0rem;
-  padding-right: 0rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
-  padding: 0 8px;
   font-size: 0.875rem;
   color: #343C42;
 }
@@ -411,12 +305,7 @@ exports[`InputText with aria-describedby 1`] = `
 
 exports[`InputText with name and id 1`] = `
 .c0 {
-  border: 1px solid;
-  border-color: #DEE1E5;
-  border-radius: 4px;
-  display: inline-block;
   height: 36px;
-  width: 100%;
 }
 
 .c0:hover {
@@ -430,24 +319,15 @@ exports[`InputText with name and id 1`] = `
   outline: none;
 }
 
-.c0:disabled {
-  background: #F5F6F7;
-  color: #939BA5;
-}
-
-.c0:disabled:hover {
-  border-color: #DEE1E5;
-}
-
 .c1 {
   border-radius: 0.25rem;
+  border: solid 1px;
+  border-color: #DEE1E5;
   height: 36px;
-  width: 174px;
-  padding-left: 0rem;
-  padding-right: 0rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
-  padding: 0 8px;
   font-size: 0.875rem;
   color: #343C42;
 }

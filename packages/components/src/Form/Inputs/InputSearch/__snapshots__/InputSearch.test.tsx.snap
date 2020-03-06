@@ -2,12 +2,7 @@
 
 exports[`InputSearch default 1`] = `
 .c2 {
-  border: 1px solid;
-  border-color: #DEE1E5;
-  border-radius: 4px;
-  display: inline-block;
   height: 36px;
-  width: 100%;
 }
 
 .c2:hover {
@@ -21,24 +16,15 @@ exports[`InputSearch default 1`] = `
   outline: none;
 }
 
-.c2:disabled {
-  background: #F5F6F7;
-  color: #939BA5;
-}
-
-.c2:disabled:hover {
-  border-color: #DEE1E5;
-}
-
 .c4 {
   border-radius: 0.25rem;
+  border: solid 1px;
+  border-color: #DEE1E5;
   height: 36px;
-  width: 174px;
   padding-left: 0;
   padding-right: 0;
   padding-top: 0rem;
   padding-bottom: 0rem;
-  padding: 0 8px;
   font-size: 0.875rem;
   color: #343C42;
 }
@@ -49,12 +35,12 @@ exports[`InputSearch default 1`] = `
 
 .c0 {
   border-radius: 0.25rem;
-  width: 174px;
-  padding-left: 0rem;
+  border: solid 1px;
+  border-color: #DEE1E5;
+  padding-left: 0.75rem;
   padding-right: 0.25rem;
   padding-top: 2px;
   padding-bottom: 2px;
-  padding: 0 8px;
   font-size: 0.875rem;
 }
 
@@ -121,7 +107,6 @@ exports[`InputSearch default 1`] = `
   className="c0 c1"
   fontSize="small"
   onClick={[Function]}
-  width="174px"
 >
   <input
     className="c2 c3 c4"

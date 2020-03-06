@@ -18,12 +18,7 @@ exports[`Form with one child 1`] = `
 }
 
 .c4 {
-  border: 1px solid;
-  border-color: #DEE1E5;
-  border-radius: 4px;
-  display: inline-block;
   height: 36px;
-  width: 100%;
 }
 
 .c4:hover {
@@ -37,24 +32,15 @@ exports[`Form with one child 1`] = `
   outline: none;
 }
 
-.c4:disabled {
-  background: #F5F6F7;
-  color: #939BA5;
-}
-
-.c4:disabled:hover {
-  border-color: #DEE1E5;
-}
-
 .c6 {
   border-radius: 0.25rem;
+  border: solid 1px;
+  border-color: #DEE1E5;
   height: 36px;
-  width: 174px;
-  padding-left: 0rem;
-  padding-right: 0rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
-  padding: 0 8px;
   font-size: 0.875rem;
   color: #343C42;
 }
