@@ -194,10 +194,10 @@ export const InputLayout = styled.div`
   background-color: ${props => props.theme.colors.palette.white};
   display: inline-flex;
   justify-content: space-evenly;
-  padding: 0;
   width: 174px;
   input {
     border: none;
+    background: transparent;
     flex: 1;
     height: 100%;
     width: 100%;
@@ -216,7 +216,6 @@ export const InputIconStyle = styled(Flex)`
 `
 
 export const inputTextValidation = css<InputTextProps>`
-  ${props => (props.disabled ? inputTextDisabled : '')}
   ${props =>
     props.validationType === 'error'
       ? `
@@ -234,10 +233,19 @@ export const inputTextValidation = css<InputTextProps>`
 `
 
 export const InputText = styled(InputComponent).attrs(
-  (props: InputTextProps) => ({
-    px: props.px || props.p || CustomizableInputTextAttributes.px,
-    py: props.py || props.p || CustomizableInputTextAttributes.py,
-  })
+  (props: InputTextProps) => {
+    const padding: SpaceProps = {
+      px: props.px || props.p || CustomizableInputTextAttributes.px,
+      py: props.py || props.p || CustomizableInputTextAttributes.py,
+    }
+    if (props.prefix || props.iconBefore) {
+      padding.pl = 'xsmall'
+    }
+    if (props.suffix || props.iconAfter) {
+      padding.pr = 'xsmall'
+    }
+    return padding
+  }
 )<InputTextProps>`
   ${reset}
   ${border}
@@ -248,6 +256,8 @@ export const InputText = styled(InputComponent).attrs(
   ${pseudoClasses}
 
   color: ${props => props.theme.colors.palette.charcoal700};
+
+  ${props => (props.disabled ? inputTextDisabled : '')}
 
   ${inputTextValidation}
 `
