@@ -26,7 +26,7 @@
 
 import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
-import uuid from 'uuid/v4'
+import { v4 as uuid } from 'uuid'
 import { useFormContext } from '../../Form'
 import { InputText, InputTextProps } from '../../Inputs/InputText/InputText'
 import { Field, FieldProps, omitFieldProps, pickFieldProps } from '../Field'
