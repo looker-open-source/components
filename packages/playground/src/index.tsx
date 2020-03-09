@@ -24,13 +24,13 @@ import { GlobalStyle } from '@looker/components'
 import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
 
-import { InputDateDemo } from './InputDate/InputDateDemo'
+import { ComboboxDemo } from './Select/ComboboxDemo'
 
 const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <InputDateDemo />
+      <ComboboxDemo />
     </ThemeProvider>
   )
 }
