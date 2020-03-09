@@ -50,7 +50,9 @@ exports[`Radio checked set to false 1`] = `
 }
 
 .c0 input[type='radio']:focus + .c1 {
-  box-shadow: 0 0 .5px 1px #C1C6CC;
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
 }
 
 .c0 input[type='radio']:disabled + .c1 {
@@ -121,7 +123,9 @@ exports[`Radio checked set to true 1`] = `
 }
 
 .c0 input[type='radio']:focus + .c1 {
-  box-shadow: 0 0 .5px 1px #C1C6CC;
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
 }
 
 .c0 input[type='radio']:disabled + .c1 {
@@ -192,7 +196,9 @@ exports[`Radio default 1`] = `
 }
 
 .c0 input[type='radio']:focus + .c1 {
-  box-shadow: 0 0 .5px 1px #C1C6CC;
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
 }
 
 .c0 input[type='radio']:disabled + .c1 {
@@ -262,7 +268,9 @@ exports[`Radio should accept disabled 1`] = `
 }
 
 .c0 input[type='radio']:focus + .c1 {
-  box-shadow: 0 0 .5px 1px #C1C6CC;
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
 }
 
 .c0 input[type='radio']:disabled + .c1 {
@@ -333,7 +341,9 @@ exports[`Radio with aria-describedby 1`] = `
 }
 
 .c0 input[type='radio']:focus + .c1 {
-  box-shadow: 0 0 .5px 1px #C1C6CC;
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
 }
 
 .c0 input[type='radio']:disabled + .c1 {
@@ -404,7 +414,9 @@ exports[`Radio with name and id 1`] = `
 }
 
 .c0 input[type='radio']:focus + .c1 {
-  box-shadow: 0 0 .5px 1px #C1C6CC;
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
 }
 
 .c0 input[type='radio']:disabled + .c1 {

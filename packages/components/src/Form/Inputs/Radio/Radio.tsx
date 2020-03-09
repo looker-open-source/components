@@ -87,6 +87,7 @@ const RadioContainer = styled.div<CheckboxRadioContainerProps>`
       right: calc(50% - ${dotSize / 2}px);
     }
   }
+
   input[type='radio']:focus {
     & + ${FauxRadio} {
       border-color: ${props => props.theme.colors.palette.purple300};

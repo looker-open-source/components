@@ -54,7 +54,9 @@ exports[`A FieldCheckbox 1`] = `
 }
 
 .c5 input[type='checkbox']:focus + .c6 {
-  box-shadow: 0 0 .5px 1px #C1C6CC;
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
 }
 
 .c5 input[type='checkbox']:disabled + .c6 {
@@ -198,7 +200,9 @@ exports[`A FieldCheckbox with checked value 1`] = `
 }
 
 .c8 input[type='checkbox']:focus + .c6 {
-  box-shadow: 0 0 .5px 1px #C1C6CC;
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
 }
 
 .c8 input[type='checkbox']:disabled + .c6 {
@@ -229,7 +233,9 @@ exports[`A FieldCheckbox with checked value 1`] = `
 }
 
 .c5 input[type='checkbox']:focus + .c6 {
-  box-shadow: 0 0 .5px 1px #C1C6CC;
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
 }
 
 .c5 input[type='checkbox']:disabled + .c6 {
@@ -392,7 +398,9 @@ exports[`A required FieldCheckbox 1`] = `
 }
 
 .c6 input[type='checkbox']:focus + .c7 {
-  box-shadow: 0 0 .5px 1px #C1C6CC;
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
 }
 
 .c6 input[type='checkbox']:disabled + .c7 {
@@ -406,7 +414,9 @@ exports[`A required FieldCheckbox 1`] = `
 }
 
 .c9 input[type='checkbox']:focus + .c7 {
-  box-shadow: 0 0 .5px 1px #C1C6CC;
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
 }
 
 .c9 input[type='checkbox']:disabled + .c7 {
