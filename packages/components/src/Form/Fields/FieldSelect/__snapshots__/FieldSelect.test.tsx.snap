@@ -35,7 +35,22 @@ exports[`A FieldSelect 1`] = `
   display: flex;
 }
 
-.c10 {
+.c9 {
+  height: 36px;
+}
+
+.c9:hover {
+  border-color: #C1C6CC;
+}
+
+.c9:focus,
+.c9:focus-within {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c11 {
   border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
@@ -48,27 +63,8 @@ exports[`A FieldSelect 1`] = `
   color: #343C42;
 }
 
-.c10:focus {
+.c11:focus {
   outline: none;
-}
-
-.c10:hover {
-  border-color: #C1C6CC;
-}
-
-.c10:focus {
-  border-color: #9785F2;
-  box-shadow: 0 0 0 2px #E8E5FF;
-  outline: none;
-}
-
-.c10:disabled {
-  background: #F5F6F7;
-  color: #939BA5;
-}
-
-.c10:disabled:hover {
-  border-color: #DEE1E5;
 }
 
 .c7 {
@@ -94,7 +90,7 @@ exports[`A FieldSelect 1`] = `
   outline: none;
 }
 
-.c7 .c9 {
+.c7 .c10 {
   border: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -108,10 +104,10 @@ exports[`A FieldSelect 1`] = `
   height: calc(36px - 6px);
 }
 
-.c7 .c9::-webkit-search-decoration,
-.c7 .c9::-webkit-search-cancel-button,
-.c7 .c9::-webkit-search-results-button,
-.c7 .c9::-webkit-search-results-decoration {
+.c7 .c10::-webkit-search-decoration,
+.c7 .c10::-webkit-search-cancel-button,
+.c7 .c10::-webkit-search-results-button,
+.c7 .c10::-webkit-search-results-decoration {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -125,7 +121,7 @@ exports[`A FieldSelect 1`] = `
   padding-right: calc(2 * .25rem + 1rem);
 }
 
-.c8 .c9 {
+.c8 .c10 {
   cursor: default;
 }
 
@@ -148,7 +144,7 @@ exports[`A FieldSelect 1`] = `
   display: inline-block;
 }
 
-.c1 .c9 {
+.c1 .c10 {
   width: 100%;
 }
 
@@ -198,7 +194,7 @@ exports[`A FieldSelect 1`] = `
           <input
             aria-autocomplete="both"
             autoComplete="off"
-            className="c9 c10"
+            className="c9 c10 c11"
             id="listbox-thumbs-up"
             onBlur={[Function]}
             onChange={[Function]}
@@ -250,7 +246,22 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   display: flex;
 }
 
-.c11 {
+.c10 {
+  height: 36px;
+}
+
+.c10:hover {
+  border-color: #C1C6CC;
+}
+
+.c10:focus,
+.c10:focus-within {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c12 {
   border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
@@ -263,30 +274,11 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   color: #343C42;
 }
 
-.c11:focus {
+.c12:focus {
   outline: none;
 }
 
-.c11:hover {
-  border-color: #C1C6CC;
-}
-
-.c11:focus {
-  border-color: #9785F2;
-  box-shadow: 0 0 0 2px #E8E5FF;
-  outline: none;
-}
-
-.c11:disabled {
-  background: #F5F6F7;
-  color: #939BA5;
-}
-
-.c11:disabled:hover {
-  border-color: #DEE1E5;
-}
-
-.c13 .c10 {
+.c14 .c11 {
   border: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -300,10 +292,10 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   height: calc(36px - 6px);
 }
 
-.c13 .c10::-webkit-search-decoration,
-.c13 .c10::-webkit-search-cancel-button,
-.c13 .c10::-webkit-search-results-button,
-.c13 .c10::-webkit-search-results-decoration {
+.c14 .c11::-webkit-search-decoration,
+.c14 .c11::-webkit-search-cancel-button,
+.c14 .c11::-webkit-search-results-button,
+.c14 .c11::-webkit-search-results-decoration {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -343,7 +335,7 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   box-shadow: 0 0 0 2px #FFE5E9;
 }
 
-.c8 .c10 {
+.c8 .c11 {
   border: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -357,10 +349,10 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   height: calc(36px - 6px);
 }
 
-.c8 .c10::-webkit-search-decoration,
-.c8 .c10::-webkit-search-cancel-button,
-.c8 .c10::-webkit-search-results-button,
-.c8 .c10::-webkit-search-results-decoration {
+.c8 .c11::-webkit-search-decoration,
+.c8 .c11::-webkit-search-cancel-button,
+.c8 .c11::-webkit-search-results-button,
+.c8 .c11::-webkit-search-results-decoration {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -374,7 +366,7 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   padding-right: calc(2 * .25rem + 1rem);
 }
 
-.c9 .c10 {
+.c9 .c11 {
   cursor: default;
 }
 
@@ -416,14 +408,14 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   display: inline-block;
 }
 
-.c12 {
+.c13 {
   color: #CC1F36;
   margin-right: 0.5rem;
   margin-top: 0.5rem;
   font-size: 0.75rem;
 }
 
-.c1 .c10 {
+.c1 .c11 {
   width: 100%;
 }
 
@@ -473,7 +465,7 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
           <input
             aria-autocomplete="both"
             autoComplete="off"
-            className="c10 c11"
+            className="c10 c11 c12"
             id="listbox-thumbs-up"
             onBlur={[Function]}
             onChange={[Function]}
@@ -487,7 +479,7 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
       </div>
     </div>
     <div
-      className="c12"
+      className="c13"
       fontSize="xsmall"
       type="error"
     >
@@ -532,7 +524,22 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   display: flex;
 }
 
-.c11 {
+.c10 {
+  height: 36px;
+}
+
+.c10:hover {
+  border-color: #C1C6CC;
+}
+
+.c10:focus,
+.c10:focus-within {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c12 {
   border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
@@ -545,30 +552,11 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   color: #343C42;
 }
 
-.c11:focus {
+.c12:focus {
   outline: none;
 }
 
-.c11:hover {
-  border-color: #C1C6CC;
-}
-
-.c11:focus {
-  border-color: #9785F2;
-  box-shadow: 0 0 0 2px #E8E5FF;
-  outline: none;
-}
-
-.c11:disabled {
-  background: #F5F6F7;
-  color: #939BA5;
-}
-
-.c11:disabled:hover {
-  border-color: #DEE1E5;
-}
-
-.c13 .c10 {
+.c14 .c11 {
   border: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -582,10 +570,10 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   height: calc(36px - 6px);
 }
 
-.c13 .c10::-webkit-search-decoration,
-.c13 .c10::-webkit-search-cancel-button,
-.c13 .c10::-webkit-search-results-button,
-.c13 .c10::-webkit-search-results-decoration {
+.c14 .c11::-webkit-search-decoration,
+.c14 .c11::-webkit-search-cancel-button,
+.c14 .c11::-webkit-search-results-button,
+.c14 .c11::-webkit-search-results-decoration {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -625,7 +613,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   box-shadow: 0 0 0 2px #FFE5E9;
 }
 
-.c8 .c10 {
+.c8 .c11 {
   border: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -639,10 +627,10 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   height: calc(36px - 6px);
 }
 
-.c8 .c10::-webkit-search-decoration,
-.c8 .c10::-webkit-search-cancel-button,
-.c8 .c10::-webkit-search-results-button,
-.c8 .c10::-webkit-search-results-decoration {
+.c8 .c11::-webkit-search-decoration,
+.c8 .c11::-webkit-search-cancel-button,
+.c8 .c11::-webkit-search-results-button,
+.c8 .c11::-webkit-search-results-decoration {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -656,7 +644,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   padding-right: calc(2 * .25rem + 1rem);
 }
 
-.c9 .c10 {
+.c9 .c11 {
   cursor: default;
 }
 
@@ -694,7 +682,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   display: inline-block;
 }
 
-.c12 {
+.c13 {
   color: #CC1F36;
   margin-right: 0.5rem;
   margin-top: 0.5rem;
@@ -702,7 +690,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   font-size: 0.75rem;
 }
 
-.c1 .c10 {
+.c1 .c11 {
   width: 100%;
 }
 
@@ -752,7 +740,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
           <input
             aria-autocomplete="both"
             autoComplete="off"
-            className="c10 c11"
+            className="c10 c11 c12"
             id="listbox-thumbs-up"
             onBlur={[Function]}
             onChange={[Function]}
@@ -766,7 +754,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
       </div>
     </div>
     <div
-      className="c12"
+      className="c13"
       fontSize="xsmall"
       type="error"
     >
@@ -811,7 +799,22 @@ exports[`A required FieldSelect 1`] = `
   display: flex;
 }
 
-.c11 {
+.c10 {
+  height: 36px;
+}
+
+.c10:hover {
+  border-color: #C1C6CC;
+}
+
+.c10:focus,
+.c10:focus-within {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c12 {
   border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
@@ -824,27 +827,8 @@ exports[`A required FieldSelect 1`] = `
   color: #343C42;
 }
 
-.c11:focus {
+.c12:focus {
   outline: none;
-}
-
-.c11:hover {
-  border-color: #C1C6CC;
-}
-
-.c11:focus {
-  border-color: #9785F2;
-  box-shadow: 0 0 0 2px #E8E5FF;
-  outline: none;
-}
-
-.c11:disabled {
-  background: #F5F6F7;
-  color: #939BA5;
-}
-
-.c11:disabled:hover {
-  border-color: #DEE1E5;
 }
 
 .c8 {
@@ -870,7 +854,7 @@ exports[`A required FieldSelect 1`] = `
   outline: none;
 }
 
-.c8 .c10 {
+.c8 .c11 {
   border: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -884,10 +868,10 @@ exports[`A required FieldSelect 1`] = `
   height: calc(36px - 6px);
 }
 
-.c8 .c10::-webkit-search-decoration,
-.c8 .c10::-webkit-search-cancel-button,
-.c8 .c10::-webkit-search-results-button,
-.c8 .c10::-webkit-search-results-decoration {
+.c8 .c11::-webkit-search-decoration,
+.c8 .c11::-webkit-search-cancel-button,
+.c8 .c11::-webkit-search-results-button,
+.c8 .c11::-webkit-search-results-decoration {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -901,7 +885,7 @@ exports[`A required FieldSelect 1`] = `
   padding-right: calc(2 * .25rem + 1rem);
 }
 
-.c9 .c10 {
+.c9 .c11 {
   cursor: default;
 }
 
@@ -928,7 +912,7 @@ exports[`A required FieldSelect 1`] = `
   color: #CC1F36;
 }
 
-.c1 .c10 {
+.c1 .c11 {
   width: 100%;
 }
 
@@ -986,7 +970,7 @@ exports[`A required FieldSelect 1`] = `
           <input
             aria-autocomplete="both"
             autoComplete="off"
-            className="c10 c11"
+            className="c10 c11 c12"
             id="listbox-thumbs-up"
             onBlur={[Function]}
             onChange={[Function]}
@@ -1038,7 +1022,22 @@ exports[`FieldSelect supports labelWeight 1`] = `
   display: flex;
 }
 
-.c10 {
+.c9 {
+  height: 36px;
+}
+
+.c9:hover {
+  border-color: #C1C6CC;
+}
+
+.c9:focus,
+.c9:focus-within {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c11 {
   border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
@@ -1051,27 +1050,8 @@ exports[`FieldSelect supports labelWeight 1`] = `
   color: #343C42;
 }
 
-.c10:focus {
+.c11:focus {
   outline: none;
-}
-
-.c10:hover {
-  border-color: #C1C6CC;
-}
-
-.c10:focus {
-  border-color: #9785F2;
-  box-shadow: 0 0 0 2px #E8E5FF;
-  outline: none;
-}
-
-.c10:disabled {
-  background: #F5F6F7;
-  color: #939BA5;
-}
-
-.c10:disabled:hover {
-  border-color: #DEE1E5;
 }
 
 .c7 {
@@ -1097,7 +1077,7 @@ exports[`FieldSelect supports labelWeight 1`] = `
   outline: none;
 }
 
-.c7 .c9 {
+.c7 .c10 {
   border: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -1111,10 +1091,10 @@ exports[`FieldSelect supports labelWeight 1`] = `
   height: calc(36px - 6px);
 }
 
-.c7 .c9::-webkit-search-decoration,
-.c7 .c9::-webkit-search-cancel-button,
-.c7 .c9::-webkit-search-results-button,
-.c7 .c9::-webkit-search-results-decoration {
+.c7 .c10::-webkit-search-decoration,
+.c7 .c10::-webkit-search-cancel-button,
+.c7 .c10::-webkit-search-results-button,
+.c7 .c10::-webkit-search-results-decoration {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -1128,7 +1108,7 @@ exports[`FieldSelect supports labelWeight 1`] = `
   padding-right: calc(2 * .25rem + 1rem);
 }
 
-.c8 .c9 {
+.c8 .c10 {
   cursor: default;
 }
 
@@ -1151,7 +1131,7 @@ exports[`FieldSelect supports labelWeight 1`] = `
   display: inline-block;
 }
 
-.c1 .c9 {
+.c1 .c10 {
   width: 100%;
 }
 
@@ -1201,7 +1181,7 @@ exports[`FieldSelect supports labelWeight 1`] = `
           <input
             aria-autocomplete="both"
             autoComplete="off"
-            className="c9 c10"
+            className="c9 c10 c11"
             id="listbox-thumbs-up"
             onBlur={[Function]}
             onChange={[Function]}

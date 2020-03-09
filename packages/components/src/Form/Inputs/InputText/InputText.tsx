@@ -41,9 +41,14 @@ import {
   reset,
   color,
 } from '@looker/design-tokens'
-import React, { forwardRef, Ref } from 'react'
+import { IconNames } from '@looker/icons'
+import React, { forwardRef, Ref, useRef } from 'react'
 import styled, { css } from 'styled-components'
 import { InputProps, inputPropKeys } from '../InputProps'
+import { Flex } from '../../../Layout/Flex/Flex'
+import { Icon } from '../../../Icon/Icon'
+import { Text } from '../../../Text/Text'
+import { useForkedRef } from '../../../utils'
 
 export const CustomizableInputTextAttributes: CustomizableAttributes = {
   borderRadius: 'medium',
@@ -60,6 +65,10 @@ export interface InputTextProps
     SpaceProps,
     TypographyProps,
     Omit<InputProps, 'type'> {
+  iconAfter?: IconNames
+  iconBefore?: IconNames
+  prefix?: string
+  suffix?: string
   /**
    *
    * @default 'text'
@@ -80,18 +89,78 @@ export interface InputTextProps
 }
 
 const InputComponent = forwardRef(
-  ({ type = 'text', ...props }: InputTextProps, ref: Ref<HTMLInputElement>) => {
-    return (
-      <input
-        {...pick(omit(props, 'color', 'height', 'width'), inputPropKeys)}
-        type={type}
-        className={props.className}
-        ref={ref}
-      />
+  (
+    {
+      type = 'text',
+      iconAfter,
+      iconBefore,
+      prefix,
+      suffix,
+      className,
+      ...props
+    }: InputTextProps,
+    forwardedRef: Ref<HTMLInputElement>
+  ) => {
+    if (iconBefore && prefix) {
+      // eslint-disable-next-line no-console
+      console.warn(`Only use IconBefore or Prefix not both at the same time. `)
+      return null
+    }
+
+    if (iconAfter && suffix) {
+      // eslint-disable-next-line no-console
+      console.warn(`Only use IconAfter or Suffix not both at the same time. `)
+      return null
+    }
+
+    const internalRef = useRef<null | HTMLInputElement>(null)
+    const ref = useForkedRef<HTMLInputElement>(internalRef, forwardedRef)
+    const focusInput = () => internalRef.current && internalRef.current.focus()
+
+    const before = iconBefore ? (
+      <InputIconStyle paddingRight="xsmall">
+        <Icon name={iconBefore} size={20} />
+      </InputIconStyle>
+    ) : prefix ? (
+      <InputIconStyle paddingRight="xsmall">
+        <Text fontSize="small">{prefix}</Text>
+      </InputIconStyle>
+    ) : null
+
+    const after = iconAfter ? (
+      <InputIconStyle paddingLeft="xsmall">
+        <Icon name={iconAfter} size={20} />
+      </InputIconStyle>
+    ) : suffix ? (
+      <InputIconStyle paddingLeft="xsmall">
+        <Text fontSize="small">{suffix}</Text>
+      </InputIconStyle>
+    ) : null
+    const inputProps = pick(
+      omit(props, 'color', 'height', 'width'),
+      inputPropKeys
     )
+
+    if (before || after) {
+      return (
+        <InputLayout className={className} onClick={focusInput}>
+          {before}
+          <input {...inputProps} type={type} ref={ref} />
+          {after}
+        </InputLayout>
+      )
+    } else {
+      return (
+        <StyledInput
+          {...inputProps}
+          className={className}
+          type={type}
+          ref={ref}
+        />
+      )
+    }
   }
 )
-InputComponent.displayName = 'InputComponent'
 
 export const inputTextHover = css`
   border-color: ${props => props.theme.colors.palette.charcoal300};
@@ -107,6 +176,43 @@ export const inputTextDisabled = css`
   &:hover {
     border-color: ${props => props.theme.colors.palette.charcoal200};
   }
+`
+const shared = css`
+  height: 36px;
+  &:hover {
+    ${inputTextHover}
+  }
+  &:focus,
+  :focus-within {
+    ${inputTextFocus}
+  }
+`
+
+export const InputLayout = styled.div`
+  ${shared}
+  align-items: center;
+  background-color: ${props => props.theme.colors.palette.white};
+  display: inline-flex;
+  justify-content: space-evenly;
+  width: 174px;
+  input {
+    border: none;
+    background: transparent;
+    flex: 1;
+    height: 100%;
+    width: 100%;
+    outline: none;
+    padding: 0;
+  }
+`
+
+const StyledInput = styled.input`
+  ${shared}
+`
+
+export const InputIconStyle = styled(Flex)`
+  color: ${props => props.theme.colors.palette.charcoal400};
+  pointer-events: none;
 `
 
 export const inputTextValidation = css<InputTextProps>`
@@ -127,10 +233,19 @@ export const inputTextValidation = css<InputTextProps>`
 `
 
 export const InputText = styled(InputComponent).attrs(
-  (props: InputTextProps) => ({
-    px: props.px || props.p || CustomizableInputTextAttributes.px,
-    py: props.py || props.p || CustomizableInputTextAttributes.py,
-  })
+  (props: InputTextProps) => {
+    const padding: SpaceProps = {
+      px: props.px || props.p || CustomizableInputTextAttributes.px,
+      py: props.py || props.p || CustomizableInputTextAttributes.py,
+    }
+    if (props.prefix || props.iconBefore) {
+      padding.pl = 'xsmall'
+    }
+    if (props.suffix || props.iconAfter) {
+      padding.pr = 'xsmall'
+    }
+    return padding
+  }
 )<InputTextProps>`
   ${reset}
   ${border}
@@ -142,17 +257,7 @@ export const InputText = styled(InputComponent).attrs(
 
   color: ${props => props.theme.colors.palette.charcoal700};
 
-  &:hover {
-    ${inputTextHover}
-  }
-
-  &:focus {
-    ${inputTextFocus}
-  }
-
-  &:disabled  {
-    ${inputTextDisabled}
-  }
+  ${props => (props.disabled ? inputTextDisabled : '')}
 
   ${inputTextValidation}
 `
@@ -167,3 +272,5 @@ InputText.defaultProps = {
   ...inputTextDefaults,
   type: 'text',
 }
+
+InputComponent.displayName = 'InputComponent'

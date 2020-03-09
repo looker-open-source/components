@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Added
 
+- updated `InputText` and its tests to support IconBefore, IconAfter, Prefix, Suffix.
 - `InputDateRange` component
 - New icons `Function`, `ArrowRight`, `IdeDimension`, `IdeDimensionGroup`, `IdeParameter`, `NotificationBellOn`, `NotificationBellOff`
 
@@ -18,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Slider` component style updates
 - `InputDate` now supports controlled component behavior
 - Icon `CaretDown` optically centered
+
 ## Fixed
 
 - `InputDate` and `InputDateRange` test mocks
@@ -42,6 +44,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `usePopover` issue where the next click after a popover closes is canceled – _actual fix_
 
 ## [0.7.21] - 2020-02-26
+
+- Updated inputText to supports iconBefore iconAfter & prefix suffix.
+
+- # new component `InlineInputText` plus documentations and test
 
 ### Fixed
 
