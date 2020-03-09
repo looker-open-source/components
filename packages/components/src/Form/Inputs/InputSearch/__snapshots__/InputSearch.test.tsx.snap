@@ -1,6 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`InputSearch default 1`] = `
+.c0 {
+  border-radius: 0.25rem;
+  border: solid 1px;
+  border-color: #DEE1E5;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 0.25rem;
+  font-size: 0.875rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .c2 {
   height: 36px;
 }
@@ -31,24 +45,6 @@ exports[`InputSearch default 1`] = `
 
 .c4:focus {
   outline: none;
-}
-
-.c0 {
-  border-radius: 0.25rem;
-  border: solid 1px;
-  border-color: #DEE1E5;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  padding-right: 0.25rem;
-  font-size: 0.875rem;
-}
-
-.c5 {
-  height: calc(36px - 6px);
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .c1 {
@@ -102,11 +98,6 @@ exports[`InputSearch default 1`] = `
     onChange={[Function]}
     type="text"
     value=""
-  />
-  <div
-    className="c5"
-    display="flex"
-    height="calc(36px - 6px)"
   />
 </div>
 `;

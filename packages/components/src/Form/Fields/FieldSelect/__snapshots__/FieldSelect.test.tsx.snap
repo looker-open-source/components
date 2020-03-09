@@ -23,6 +23,21 @@ exports[`A FieldSelect 1`] = `
   display: flex;
 }
 
+.c6 {
+  border-radius: 0.25rem;
+  border: solid 1px;
+  border-color: #DEE1E5;
+  width: 100%;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 0.25rem;
+  font-size: 0.875rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .c9 {
   height: 36px;
 }
@@ -99,7 +114,7 @@ exports[`A FieldSelect 1`] = `
 .c8 {
   background-image: url('data:image/svg+xml;base64,CjxzdmcKICB3aWR0aD0iMjQiCiAgaGVpZ2h0PSIyNCIKICB2aWV3Qm94PSIwIDAgMjQgMjQiCiAgZmlsbD0ibm9uZSIKICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCj4KICA8cGF0aAogICAgZD0iTTcuNDEgOC41ODk4NEwxMiAxMy4xNjk4TDE2LjU5IDguNTg5ODRMMTggOS45OTk4NEwxMiAxNS45OTk4TDYgOS45OTk4NEw3LjQxIDguNTg5ODRaIgogICAgZmlsbD0iIzcwNzc4MSIKICAvPgo8L3N2Zz4=');
   background-repeat: no-repeat,repeat;
-  background-position: right .5rem top calc(.5rem + 2px), 0 0;
+  background-position: right .5rem top calc(.5rem + 2px),0 0;
   background-size: 1rem,100%;
   padding-right: calc(2 * .5rem + 1rem);
 }
@@ -108,7 +123,7 @@ exports[`A FieldSelect 1`] = `
   cursor: default;
 }
 
-.c8 .c11::after {
+.c8 .c12::after {
   content: ' ';
   border-right: 1px solid #DEE1E5;
   height: 1.5rem;
@@ -225,6 +240,21 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   display: flex;
 }
 
+.c7 {
+  border-radius: 0.25rem;
+  border: solid 1px;
+  border-color: #DEE1E5;
+  width: 100%;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 0.25rem;
+  font-size: 0.875rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .c10 {
   height: 36px;
 }
@@ -335,7 +365,7 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
 .c9 {
   background-image: url('data:image/svg+xml;base64,CjxzdmcKICB3aWR0aD0iMjQiCiAgaGVpZ2h0PSIyNCIKICB2aWV3Qm94PSIwIDAgMjQgMjQiCiAgZmlsbD0ibm9uZSIKICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCj4KICA8cGF0aAogICAgZD0iTTcuNDEgOC41ODk4NEwxMiAxMy4xNjk4TDE2LjU5IDguNTg5ODRMMTggOS45OTk4NEwxMiAxNS45OTk4TDYgOS45OTk4NEw3LjQxIDguNTg5ODRaIgogICAgZmlsbD0iIzcwNzc4MSIKICAvPgo8L3N2Zz4=');
   background-repeat: no-repeat,repeat;
-  background-position: right .5rem top calc(.5rem + 2px), 0 0;
+  background-position: right .5rem top calc(.5rem + 2px),0 0;
   background-size: 1rem,100%;
   padding-right: calc(2 * .5rem + 1rem);
 }
@@ -344,7 +374,7 @@ exports[`A FieldSelect with an error validation aligned to the left 1`] = `
   cursor: default;
 }
 
-.c9 .c14::after {
+.c9 .c15::after {
   content: ' ';
   border-right: 1px solid #DEE1E5;
   height: 1.5rem;
@@ -494,6 +524,21 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   display: flex;
 }
 
+.c7 {
+  border-radius: 0.25rem;
+  border: solid 1px;
+  border-color: #DEE1E5;
+  width: 100%;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 0.25rem;
+  font-size: 0.875rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .c10 {
   height: 36px;
 }
@@ -604,7 +649,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
 .c9 {
   background-image: url('data:image/svg+xml;base64,CjxzdmcKICB3aWR0aD0iMjQiCiAgaGVpZ2h0PSIyNCIKICB2aWV3Qm94PSIwIDAgMjQgMjQiCiAgZmlsbD0ibm9uZSIKICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCj4KICA8cGF0aAogICAgZD0iTTcuNDEgOC41ODk4NEwxMiAxMy4xNjk4TDE2LjU5IDguNTg5ODRMMTggOS45OTk4NEwxMiAxNS45OTk4TDYgOS45OTk4NEw3LjQxIDguNTg5ODRaIgogICAgZmlsbD0iIzcwNzc4MSIKICAvPgo8L3N2Zz4=');
   background-repeat: no-repeat,repeat;
-  background-position: right .5rem top calc(.5rem + 2px), 0 0;
+  background-position: right .5rem top calc(.5rem + 2px),0 0;
   background-size: 1rem,100%;
   padding-right: calc(2 * .5rem + 1rem);
 }
@@ -613,7 +658,7 @@ exports[`A FieldSelect with an error validation aligned to the right 1`] = `
   cursor: default;
 }
 
-.c9 .c14::after {
+.c9 .c15::after {
   content: ' ';
   border-right: 1px solid #DEE1E5;
   height: 1.5rem;
@@ -760,6 +805,21 @@ exports[`A required FieldSelect 1`] = `
   display: flex;
 }
 
+.c7 {
+  border-radius: 0.25rem;
+  border: solid 1px;
+  border-color: #DEE1E5;
+  width: 100%;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 0.25rem;
+  font-size: 0.875rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .c10 {
   height: 36px;
 }
@@ -836,7 +896,7 @@ exports[`A required FieldSelect 1`] = `
 .c9 {
   background-image: url('data:image/svg+xml;base64,CjxzdmcKICB3aWR0aD0iMjQiCiAgaGVpZ2h0PSIyNCIKICB2aWV3Qm94PSIwIDAgMjQgMjQiCiAgZmlsbD0ibm9uZSIKICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCj4KICA8cGF0aAogICAgZD0iTTcuNDEgOC41ODk4NEwxMiAxMy4xNjk4TDE2LjU5IDguNTg5ODRMMTggOS45OTk4NEwxMiAxNS45OTk4TDYgOS45OTk4NEw3LjQxIDguNTg5ODRaIgogICAgZmlsbD0iIzcwNzc4MSIKICAvPgo8L3N2Zz4=');
   background-repeat: no-repeat,repeat;
-  background-position: right .5rem top calc(.5rem + 2px), 0 0;
+  background-position: right .5rem top calc(.5rem + 2px),0 0;
   background-size: 1rem,100%;
   padding-right: calc(2 * .5rem + 1rem);
 }
@@ -845,7 +905,7 @@ exports[`A required FieldSelect 1`] = `
   cursor: default;
 }
 
-.c9 .c12::after {
+.c9 .c13::after {
   content: ' ';
   border-right: 1px solid #DEE1E5;
   height: 1.5rem;
@@ -902,7 +962,7 @@ exports[`A required FieldSelect 1`] = `
         aria-hidden="true"
         className="c4"
       >
-
+         
         *
       </span>
     </label>
@@ -968,6 +1028,21 @@ exports[`FieldSelect supports labelWeight 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c6 {
+  border-radius: 0.25rem;
+  border: solid 1px;
+  border-color: #DEE1E5;
+  width: 100%;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 0.25rem;
+  font-size: 0.875rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1050,7 +1125,7 @@ exports[`FieldSelect supports labelWeight 1`] = `
 .c8 {
   background-image: url('data:image/svg+xml;base64,CjxzdmcKICB3aWR0aD0iMjQiCiAgaGVpZ2h0PSIyNCIKICB2aWV3Qm94PSIwIDAgMjQgMjQiCiAgZmlsbD0ibm9uZSIKICB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCj4KICA8cGF0aAogICAgZD0iTTcuNDEgOC41ODk4NEwxMiAxMy4xNjk4TDE2LjU5IDguNTg5ODRMMTggOS45OTk4NEwxMiAxNS45OTk4TDYgOS45OTk4NEw3LjQxIDguNTg5ODRaIgogICAgZmlsbD0iIzcwNzc4MSIKICAvPgo8L3N2Zz4=');
   background-repeat: no-repeat,repeat;
-  background-position: right .5rem top calc(.5rem + 2px), 0 0;
+  background-position: right .5rem top calc(.5rem + 2px),0 0;
   background-size: 1rem,100%;
   padding-right: calc(2 * .5rem + 1rem);
 }
@@ -1059,7 +1134,7 @@ exports[`FieldSelect supports labelWeight 1`] = `
   cursor: default;
 }
 
-.c8 .c11::after {
+.c8 .c12::after {
   content: ' ';
   border-right: 1px solid #DEE1E5;
   height: 1.5rem;

@@ -29,8 +29,8 @@ import {
   ComboboxOption,
   ComboboxList,
   ComboboxInput,
+  Heading,
 } from '@looker/components'
-import { Heading } from '@looker/components/dist/esm'
 
 export function ComboboxDemo() {
   const [option, setOption] = React.useState({ value: 'Bananas' })
