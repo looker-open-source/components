@@ -12,13 +12,13 @@ import {
 } from '@looker/components'
 
 export const InputDateDemo: FC = () => {
-  const [date, setDate] = useState()
-  const [localizedDate, setLocalizedDate] = useState()
+  const [date, setDate] = useState<Date | undefined>()
+  const [localizedDate, setLocalizedDate] = useState<Date | undefined>()
   const [locale, setLocale] = useState('ko')
 
   const handleLocaleChange = (val: any) => {
     setLocale(val)
-    setLocalizedDate('')
+    setLocalizedDate(undefined)
   }
 
   const [controlledDate, setControlledDate] = useState<any>()

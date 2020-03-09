@@ -62,7 +62,7 @@ export function ComboboxDemo() {
         values={options}
         onChange={handleMultiChange}
       >
-        <ComboboxMultiInput onClear={() => console.log('CLEAR')} />
+        <ComboboxMultiInput onClear={() => alert('CLEAR')} />
         <ComboboxMultiList>
           <ComboboxMultiOption value="Apples" />
           <ComboboxMultiOption value="Oranges" />
@@ -88,7 +88,7 @@ export function ComboboxDemo() {
         </ComboboxList>
       </Combobox>
       <ComboboxMulti width={300}>
-        <ComboboxMultiInput onClear={() => console.log('CLEAR')} />
+        <ComboboxMultiInput onClear={() => alert('CLEAR')} />
         <ComboboxMultiList>
           <ComboboxMultiOption value="Apples" />
           <ComboboxMultiOption value="Oranges" />
