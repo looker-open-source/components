@@ -44,7 +44,7 @@ import React, { forwardRef, Ref } from 'react'
 import { Placement } from 'popper.js'
 import { Icon } from '../Icon'
 import { useTooltip } from '../Tooltip'
-import { useForkedRef } from '../utils'
+import { useForkedRef, useWrapEvent } from '../utils'
 import { VisuallyHidden } from '../VisuallyHidden'
 import { ButtonBaseProps, buttonCSS } from './ButtonBase'
 import { ButtonTransparent } from './ButtonTransparent'
@@ -119,27 +119,42 @@ const IconButtonComponent = forwardRef(
       color,
       tooltipDisabled,
       tooltipPlacement,
+      onFocus: propsOnFocus,
+      onBlur: propsOnBlur,
+      onMouseOver: propsOnMouseOver,
+      onMouseOut: propsOnMouseOut,
       ...rest
     } = props
 
-    const tooltip = useTooltip({
+    const {
+      ref,
+      tooltip,
+      eventHandlers: { onFocus, onBlur, onMouseOver, onMouseOut },
+    } = useTooltip({
       content: label,
       disabled: tooltipDisabled,
       placement: tooltipPlacement,
     })
 
-    const actualRef = useForkedRef<HTMLButtonElement>(forwardRef, tooltip.ref)
+    const eventHandlers = {
+      onBlur: useWrapEvent(onBlur, propsOnBlur),
+      onFocus: useWrapEvent(onFocus, propsOnFocus),
+      onMouseOut: useWrapEvent(onMouseOut, propsOnMouseOut),
+      onMouseOver: useWrapEvent(onMouseOver, propsOnMouseOver),
+    }
+
+    const actualRef = useForkedRef<HTMLButtonElement>(forwardRef, ref)
 
     return (
       <>
-        {tooltip.tooltip}
+        {tooltip}
         <ButtonTransparent
           ref={actualRef}
           color={color}
           p="none"
           size={size}
           width={buttonSizeMap[size]}
-          {...tooltip.eventHandlers}
+          {...eventHandlers}
           {...rest}
         >
           <VisuallyHidden>{label}</VisuallyHidden>

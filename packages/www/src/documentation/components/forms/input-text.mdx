@@ -11,6 +11,29 @@ The `<InputText />` component renders a single text input element on the page, w
 <InputText />
 ```
 
+`InputText` supports iconBefore iconAfter & prefix suffix. Add an icon or character(s) to the begining and/or end of your `InputText`.
+If both `IconBefore` and `Prefix`, or `IcanAfter` and `Suffix` is passed an warning will appear in the console and the `inputText` won't be displayed.
+
+```jsx
+<Box mb="small">
+  <InputText prefix="$"/>
+</Box>
+<Box mb="small">
+  <InputText iconBefore="GearOutline"/>
+</Box>
+<Box mb="small">
+  <InputText suffix="%"/>
+</Box>
+<Box mb="small">
+  <InputText iconAfter="Check"/>
+</Box>
+<InputText
+  iconAfter="Check"
+  prefix="$"
+  width='480px'
+/>
+```
+
 ## Name and ID
 
 A name and ID can be specified in the `<InputText />` component. Names are important if the input is used in the context of a form, in which case a name is required for the value of the input to be captured.

@@ -38,10 +38,10 @@ function getCurrentNode(
 
 // Get the current hover state of an element
 // Recommended to be used with useCallbackRef
-export function useHovered(
-  hoverElement?: HTMLElement | null | RefObject<HTMLElement>
-): [boolean, (node: HTMLElement | null) => void] {
-  const [newElement, callbackRef] = useCallbackRef()
+export function useHovered<E extends HTMLElement = HTMLElement>(
+  hoverElement?: E | null | RefObject<E>
+): [boolean, ((node: E | null) => void) | null] {
+  const [newElement, callbackRef] = useCallbackRef<E>()
   const element =
     typeof hoverElement === 'undefined' ? newElement : hoverElement
 
@@ -56,23 +56,39 @@ export function useHovered(
   // isHovered defaults to true
   const [isHovered, setIsHovered] = useState(hoverElement === undefined)
 
-  function handleMouseEnter() {
-    setIsHovered(true)
-  }
-  function handleMouseLeave() {
-    setIsHovered(false)
-  }
-
   useEffect(() => {
+    function handleMouseEnter() {
+      setIsHovered(true)
+    }
+    function handleMouseLeave() {
+      window.requestAnimationFrame(() => {
+        const node = getCurrentNode(element) as Node
+
+        const relationship = node.compareDocumentPosition(
+          document.activeElement as Node
+        )
+
+        const activeElementIsChildOfNode =
+          relationship ===
+          Node.DOCUMENT_POSITION_FOLLOWING + Node.DOCUMENT_POSITION_CONTAINED_BY
+
+        if (!activeElementIsChildOfNode) setIsHovered(false)
+      })
+    }
+
     const node = getCurrentNode(element)
     if (node) {
       node.addEventListener('mouseleave', handleMouseLeave)
       node.addEventListener('mouseenter', handleMouseEnter)
+      node.addEventListener('focusout', handleMouseLeave)
+      node.addEventListener('focusin', handleMouseEnter)
     }
     return () => {
       if (node) {
         node.removeEventListener('mouseleave', handleMouseLeave)
         node.removeEventListener('mouseenter', handleMouseEnter)
+        node.removeEventListener('focusout', handleMouseLeave)
+        node.removeEventListener('focusin', handleMouseEnter)
       }
     }
   }, [element])

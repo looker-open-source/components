@@ -31,6 +31,7 @@ import React, {
   Children,
   useContext,
   useCallback,
+  useState,
 } from 'react'
 import { Placement } from 'popper.js'
 import { useTooltip } from '../Tooltip'
@@ -67,29 +68,44 @@ export const MenuDisclosure: FC<MenuDisclosureProps> = ({
   const {
     disabled,
     id,
-    isHovered,
+    showDisclosure,
     isOpen,
     setOpen,
     triggerElement,
     triggerCallbackRef,
   } = useContext(MenuContext)
 
-  const { eventHandlers, tooltip: renderedTooltip } = useTooltip({
+  const {
+    eventHandlers: { onFocus, onBlur, ...eventHandlers },
+    tooltip: renderedTooltip,
+  } = useTooltip({
     content: tooltip,
     disabled: isOpen,
     placement: tooltipPlacement || 'top',
     triggerElement,
   })
 
+  const [focused, setFocused] = useState(false)
+  function handleFocus() {
+    setFocused(true)
+    onFocus()
+  }
+  function handleBlur() {
+    setFocused(false)
+    onBlur()
+  }
+
   const handleClick = useCallback(() => {
     setOpen && setOpen(!isOpen)
   }, [setOpen, isOpen])
 
-  if (!isHovered && !isOpen) return null
+  if (!showDisclosure && !isOpen && !focused) return null
 
   const allCallbacks = {
     ...(tooltip ? eventHandlers : {}),
+    onBlur: handleBlur,
     onClick: handleClick,
+    onFocus: handleFocus,
   }
 
   const cloned = Children.map(children, (child: JSX.Element) => {
