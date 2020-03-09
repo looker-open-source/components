@@ -129,7 +129,6 @@ exports[`A FieldCheckbox 1`] = `
         className="c5 "
       >
         <input
-          checked={false}
           className=""
           id="thumbs-up"
           name="thumbsUp"
@@ -305,9 +304,8 @@ exports[`A FieldCheckbox with checked value 1`] = `
         className="c5 "
       >
         <input
-          aria-checked={true}
-          checked={true}
           className=""
+          defaultChecked={true}
           id="thumbs-up"
           name="thumbsUp"
           role="checkbox"
@@ -492,7 +490,6 @@ exports[`A required FieldCheckbox 1`] = `
         className="c6 "
       >
         <input
-          checked={false}
           className=""
           id="thumbs-up"
           name="thumbsUp"
