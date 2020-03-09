@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2020 Looker Data Sciences, Inc.
+ Copyright (c) 2019 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -26,31 +26,30 @@
 
 // Much of the following is pulled from https://github.com/reach/reach-ui
 // because their work is fantastic (but is not in TypeScript)
+import { useContext } from 'react'
+import { ComboboxContext } from '../ComboboxContext'
+import { ComboboxActionType, ComboboxState } from './state'
 
-import { Ref, useMemo, MutableRefObject } from 'react'
+export function useBlur() {
+  const { state, transition, popoverRef, inputElement } = useContext(
+    ComboboxContext
+  )
 
-export type RefToFork<E> = Ref<E> | MutableRefObject<E> | undefined
-
-function assignRef<E extends HTMLElement>(ref: RefToFork<E>, value: E | null) {
-  if (!ref) return
-  if (typeof ref === 'function') {
-    ref(value)
-  } else {
-    try {
-      ;(ref as MutableRefObject<E | null>).current = value
-    } catch (error) {
-      throw new Error(`Cannot assign value "${value}" to ref "${ref}"`)
-    }
+  return function handleBlur() {
+    requestAnimationFrame(() => {
+      // we on want to close only if focus rests outside the select
+      const popoverCurrent = popoverRef ? popoverRef.current : null
+      if (document.activeElement !== inputElement && popoverCurrent) {
+        if (popoverCurrent && popoverCurrent.contains(document.activeElement)) {
+          // focus landed inside the select, keep it open
+          if (state !== ComboboxState.INTERACTING) {
+            transition && transition(ComboboxActionType.INTERACT)
+          }
+        } else {
+          // focus landed outside the select, close it.
+          transition && transition(ComboboxActionType.BLUR)
+        }
+      }
+    })
   }
-}
-
-export function useForkedRef<E extends HTMLElement>(...refs: RefToFork<E>[]) {
-  return useMemo(() => {
-    return (node: E | null) => {
-      refs.forEach(ref => {
-        assignRef(ref, node)
-      })
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, refs)
 }

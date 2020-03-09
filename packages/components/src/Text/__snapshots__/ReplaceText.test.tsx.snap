@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReplaceText globally replaces a case-insensitive string with JSX 1`] = `
+<div>
+  Some 
+  <span>
+    LONG
+  </span>
+   text that is 
+  <span>
+    long
+  </span>
+   and this is how 
+  <span>
+    long
+  </span>
+   it is.
+</div>
+`;

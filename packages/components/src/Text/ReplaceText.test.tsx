@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2020 Looker Data Sciences, Inc.
+ Copyright (c) 2019 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -24,5 +24,22 @@
 
  */
 
-export * from './InputSearch'
-export * from './InputSearchControls'
+import React from 'react'
+import { renderWithTheme } from '@looker/components-test-utils'
+import { ReplaceText } from './ReplaceText'
+
+describe('ReplaceText', () => {
+  test('globally replaces a case-insensitive string with JSX', () => {
+    const { container } = renderWithTheme(
+      <div>
+        <ReplaceText
+          match="long"
+          replace={(text, index) => <span key={index}>{text}</span>}
+        >
+          Some LONG text that is long and this is how long it is.
+        </ReplaceText>
+      </div>
+    )
+    expect(container.firstChild).toMatchSnapshot()
+  })
+})

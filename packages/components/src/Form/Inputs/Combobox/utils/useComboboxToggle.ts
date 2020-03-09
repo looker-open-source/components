@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2020 Looker Data Sciences, Inc.
+ Copyright (c) 2019 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -27,30 +27,43 @@
 // Much of the following is pulled from https://github.com/reach/reach-ui
 // because their work is fantastic (but is not in TypeScript)
 
-import { Ref, useMemo, MutableRefObject } from 'react'
+import { useRef, useEffect } from 'react'
+import {
+  ComboboxCallback,
+  MaybeComboboxOptionObject,
+  ComboboxOptionType,
+} from '../types'
+import { ComboboxState } from '../utils/state'
 
-export type RefToFork<E> = Ref<E> | MutableRefObject<E> | undefined
+const visibleStates = [
+  ComboboxState.SUGGESTING,
+  ComboboxState.NAVIGATING,
+  ComboboxState.INTERACTING,
+]
+export const getIsVisible = (state: ComboboxState) =>
+  visibleStates.includes(state)
 
-function assignRef<E extends HTMLElement>(ref: RefToFork<E>, value: E | null) {
-  if (!ref) return
-  if (typeof ref === 'function') {
-    ref(value)
-  } else {
-    try {
-      ;(ref as MutableRefObject<E | null>).current = value
-    } catch (error) {
-      throw new Error(`Cannot assign value "${value}" to ref "${ref}"`)
+// Detect when to call onOpen and onClose
+export function useComboboxToggle<
+  TOption extends ComboboxOptionType = MaybeComboboxOptionObject
+>(
+  state: ComboboxState,
+  onOpen?: ComboboxCallback<TOption>,
+  onClose?: ComboboxCallback<TOption>,
+  option?: TOption
+) {
+  const isVisible = getIsVisible(state)
+  const isVisibleRef = useRef(isVisible)
+
+  useEffect(() => {
+    if (isVisible && !isVisibleRef.current) {
+      onOpen && onOpen(option)
+      isVisibleRef.current = true
+    } else if (!isVisible && isVisibleRef.current) {
+      onClose && onClose(option)
+      isVisibleRef.current = false
     }
-  }
-}
+  }, [isVisible, isVisibleRef, onOpen, onClose, option])
 
-export function useForkedRef<E extends HTMLElement>(...refs: RefToFork<E>[]) {
-  return useMemo(() => {
-    return (node: E | null) => {
-      refs.forEach(ref => {
-        assignRef(ref, node)
-      })
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, refs)
+  return isVisible
 }

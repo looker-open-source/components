@@ -27,7 +27,7 @@
 import { CompatibleHTMLProps } from '@looker/design-tokens'
 import styled from 'styled-components'
 import React, { FC, ReactNode, useRef } from 'react'
-import { IconButton } from '../Button/IconButton'
+import { IconButton } from '../Button'
 import { Menu, MenuDisclosure, MenuList } from '../Menu'
 import { ActionListRow } from './ActionListRow'
 

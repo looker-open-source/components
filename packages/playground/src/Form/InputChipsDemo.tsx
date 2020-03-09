@@ -68,11 +68,6 @@ export function InputChipsDemo() {
         inputValue={inputValue}
         onChange={handleChange2}
         onInputChange={handleInputChange}
-        summary={
-          values.length
-            ? `${values.length} item${values.length > 1 ? 's' : ''}`
-            : ''
-        }
       />
       <Divider my="large" />
       <InputChips

@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2020 Looker Data Sciences, Inc.
+ Copyright (c) 2019 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -23,6 +23,34 @@
  SOFTWARE.
 
  */
+import { Context, useContext, useLayoutEffect } from 'react'
+import { ComboboxInputProps } from '../ComboboxInput'
+import { ComboboxMultiInputProps } from '../ComboboxMultiInput'
+import {
+  ComboboxContextProps,
+  ComboboxMultiContextProps,
+} from '../ComboboxContext'
 
-export * from './InputSearch'
-export * from './InputSearchControls'
+export function useInputPropRefs<
+  TProps extends
+    | ComboboxInputProps
+    | ComboboxMultiInputProps = ComboboxInputProps,
+  TContext extends
+    | ComboboxContextProps
+    | ComboboxMultiContextProps = ComboboxContextProps
+>(
+  { autoComplete = true, readOnly = false }: TProps,
+  context: Context<TContext>
+) {
+  const { autoCompletePropRef, readOnlyPropRef } = useContext(context)
+
+  useLayoutEffect(() => {
+    if (autoCompletePropRef) autoCompletePropRef.current = autoComplete
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [autoComplete])
+
+  useLayoutEffect(() => {
+    if (readOnlyPropRef) readOnlyPropRef.current = readOnly
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [readOnly])
+}

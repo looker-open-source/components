@@ -49,7 +49,7 @@ import {
   inputTextValidation,
 } from '../InputText'
 import { useControlWarn, useForkedRef, useWrapEvent } from '../../../utils'
-import { Box } from '../../../Layout'
+import { Flex } from '../../../Layout'
 import { InputSearchControls } from './InputSearchControls'
 
 const getHeight = (
@@ -131,7 +131,13 @@ const InputSearchComponent = forwardRef(
     const internalRef = useRef<null | HTMLInputElement>(null)
     const ref = useForkedRef<HTMLInputElement>(internalRef, forwardedRef)
 
-    const focusInput = () => internalRef.current && internalRef.current.focus()
+    function handleMouseDown() {
+      // set focus to input on mousedown of container
+      // need requestAnimationFrame here due to browser updating focus _after_ mousedown is called
+      window.requestAnimationFrame(() => {
+        internalRef.current && internalRef.current.focus()
+      })
+    }
 
     const handleClear = (e: MouseEvent<HTMLButtonElement>) => {
       setValue('')
@@ -155,12 +161,13 @@ const InputSearchComponent = forwardRef(
         showClear={showClear || inputValue.length > 0}
         summary={summary}
         height={getHeight(props.py)}
+        disabled={props.disabled}
       />
     )
 
     const mouseHandlers = {
-      onClick: useWrapEvent(focusInput, onClick),
-      onMouseDown,
+      onClick,
+      onMouseDown: useWrapEvent(handleMouseDown, onMouseDown),
       onMouseEnter,
       onMouseLeave,
       onMouseOut,
@@ -171,23 +178,33 @@ const InputSearchComponent = forwardRef(
     // 12/17/2019 removing type="search" since React doesn't support onSearch yet
     // resulting in undetectable changes that effect the value
 
+    const input = (
+      <InputText
+        onChange={handleChange}
+        value={inputValue}
+        focusStyle={{ outline: 'none' }}
+        pr="0"
+        {...pick(props, inputPropKeys)}
+        ref={ref}
+      />
+    )
+
     return (
-      <Box
+      <Flex
         className={className}
         {...omit(props, inputPropKeys)}
         {...mouseHandlers}
       >
-        {children}
-        <InputText
-          onChange={handleChange}
-          value={inputValue}
-          focusStyle={{ outline: 'none' }}
-          px="0"
-          {...pick(props, inputPropKeys)}
-          ref={ref}
-        />
+        {children ? (
+          <Flex alignItems="flex-start" flexWrap="wrap">
+            {children}
+            {input}
+          </Flex>
+        ) : (
+          input
+        )}
         {controls}
-      </Box>
+      </Flex>
     )
   }
 )
@@ -196,8 +213,6 @@ InputSearchComponent.displayName = 'InputSearchComponent'
 
 export const InputSearch = styled(InputSearchComponent)`
   align-items: center;
-  display: flex;
-  position: relative;
   background-color: ${props => props.theme.colors.palette.white};
 
   &:hover {
@@ -232,7 +247,7 @@ export const InputSearch = styled(InputSearchComponent)`
 `
 
 InputSearch.defaultProps = {
-  ...omit(CustomizableInputTextAttributes, 'height'),
+  ...omit(CustomizableInputTextAttributes, ['height', 'px']),
   ...inputTextDefaults,
   pr: 'xxsmall',
   py: 2,

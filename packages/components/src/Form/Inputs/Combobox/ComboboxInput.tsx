@@ -27,28 +27,23 @@
 // Much of the following is pulled from https://github.com/reach/reach-ui
 // because their work is fantastic (but is not in TypeScript)
 
-import React, {
-  FormEvent,
-  FocusEvent,
-  forwardRef,
-  MouseEvent as ReactMouseEvent,
-  useLayoutEffect,
-  useRef,
-  useContext,
-  Ref,
-  useCallback,
-} from 'react'
-import styled from 'styled-components'
-import { useMouseDownClick, useForkedRef, useWrapEvent } from '../../../utils'
-import { InputSearch, InputSearchProps } from '../InputSearch'
+import React, { FormEvent, forwardRef, useRef, useContext, Ref } from 'react'
+import styled, { css } from 'styled-components'
+import { useForkedRef, useWrapEvent } from '../../../utils'
+import {
+  InputSearch,
+  InputSearchControls,
+  InputSearchProps,
+} from '../InputSearch'
 import { InputText } from '../InputText'
-import { makeHash, useBlur, useKeyDown } from './helpers'
 import { ComboboxContext } from './ComboboxContext'
-import { getComboboxText } from './ComboboxOption'
-import { ComboboxActionType, ComboboxState } from './state'
+import { getComboboxText } from './utils/getComboboxText'
+import { makeHash } from './utils/makeHash'
+import { ComboboxActionType, ComboboxState } from './utils/state'
+import { useInputEvents } from './utils/useInputEvents'
+import { useInputPropRefs } from './utils/useInputPropRefs'
 
-export interface ComboboxInputProps
-  extends Omit<InputSearchProps, 'autoComplete'> {
+export interface ComboboxInputCommonProps {
   /**
    * If true, when the user clicks inside the text box the current value will
    * be selected. Use this if the user is likely to delete all the text anyway
@@ -72,221 +67,125 @@ export interface ComboboxInputProps
   autoComplete?: boolean
 }
 
-export const ComboboxInputInternal = forwardRef(function ComboboxInput(
-  {
-    // highlights all the text in the box on click when true
-    selectOnClick = false,
+export interface ComboboxInputProps
+  extends Omit<InputSearchProps, 'autoComplete'>,
+    ComboboxInputCommonProps {}
 
-    // updates the value in the input when navigating w/ the keyboard
-    autoComplete = true,
-    readOnly = false,
+export const ComboboxInputInternal = forwardRef(
+  (props: ComboboxInputProps, forwardedRef: Ref<HTMLInputElement>) => {
+    const {
+      // updates the value in the input when navigating w/ the keyboard
+      autoComplete = true,
+      readOnly = false,
+      // wrapped events
+      onClear,
+      onChange,
+      // might be controlled
+      value: controlledValue,
+      ...rest
+    } = props
 
-    // wrapped events
-    onClick,
-    onMouseDown,
-    onClear,
-    onChange,
-    onKeyDown,
-    onBlur,
-    onFocus,
+    const {
+      data: { navigationOption, option, inputValue: contextInputValue },
+      onChange: contextOnChange,
+      inputCallbackRef,
+      state,
+      transition,
+      id,
+    } = useContext(ComboboxContext)
 
-    // might be controlled
-    value: controlledValue,
-    ...props
-  }: ComboboxInputProps,
-  forwardedRef: Ref<HTMLInputElement>
-) {
-  const {
-    data: {
-      navigationOption,
-      option,
-      lastActionType,
-      inputValue: contextInputValue,
-    },
-    onChange: contextOnChange,
-    inputCallbackRef,
-    inputElement,
-    state,
-    transition,
-    listboxId,
-    autoCompletePropRef,
-    persistSelectionRef,
-    readOnlyPropRef,
-    openOnFocus,
-  } = useContext(ComboboxContext)
+    useInputPropRefs(props, ComboboxContext)
 
-  const ref = useForkedRef<HTMLInputElement>(inputCallbackRef, forwardedRef)
+    const ref = useForkedRef<HTMLInputElement>(inputCallbackRef, forwardedRef)
 
-  // Because we close the List on blur, we need to track if the blur is
-  // caused by clicking inside the list, and if so, don't close the List.
-  const selectOnClickRef = useRef(false)
+    const isControlled = controlledValue !== undefined
 
-  const handleKeyDown = useKeyDown()
-
-  const handleBlur = useBlur()
-
-  const isControlled = controlledValue !== undefined
-
-  // Need to determine whether the updated value come from change event on the input
-  // or from a new value prop (controlled)
-  const isInputting = useRef(false)
-
-  useLayoutEffect(() => {
-    if (autoCompletePropRef) autoCompletePropRef.current = autoComplete
-    if (readOnlyPropRef) readOnlyPropRef.current = readOnly
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [autoComplete, readOnly])
-
-  function handleClear() {
-    contextOnChange && contextOnChange()
-    transition && transition(ComboboxActionType.CLEAR)
-  }
-
-  function handleValueChange(value: string) {
-    transition && transition(ComboboxActionType.CHANGE, { inputValue: value })
-  }
-
-  // If they are controlling the value we still need to do our transitions, so
-  // we have this derived state to emulate onChange of the input as we receive
-  // new `value`s ...[*]
-  if (
-    controlledValue !== undefined &&
-    contextInputValue &&
-    controlledValue !== contextInputValue
-  ) {
-    if (isInputting.current) {
-      handleValueChange(controlledValue)
-    } else {
-      // this is most likely the initial value so we want to
-      // update the value without transitioning to suggesting
-      transition &&
-        transition(ComboboxActionType.CHANGE_SILENT, {
-          inputValue: controlledValue,
-        })
-    }
-  }
-
-  // [*]... and when controlled, we don't trigger handleValueChange as the user
-  // types, instead the developer controls it with the normal input onChange
-  // prop
-  function handleChange(event: FormEvent<HTMLInputElement>) {
-    isInputting.current = true
-    if (!isControlled) {
-      handleValueChange(event.currentTarget.value)
-    }
-    requestAnimationFrame(() => {
-      isInputting.current = false
-    })
-  }
-
-  function handleFocus(e: FocusEvent<HTMLInputElement>) {
-    if (readOnly) {
-      e.currentTarget.selectionEnd = e.currentTarget.selectionStart
-    } else if (selectOnClick) {
-      selectOnClickRef.current = true
+    function handleClear() {
+      contextOnChange && contextOnChange()
+      transition && transition(ComboboxActionType.CLEAR)
     }
 
-    // If we select an option with click, useFocusManagement will focus the
-    // input, in those cases we don't want to cause the menu to open back up,
-    // so we guard behind these states
+    function handleValueChange(value: string) {
+      transition && transition(ComboboxActionType.CHANGE, { inputValue: value })
+    }
+
+    // Need to determine whether the updated value come from change event on the input
+    // or from a new value prop (controlled)
+    const isInputting = useRef(false)
+    // If they are controlling the value we still need to do our transitions, so
+    // we have this derived state to emulate onChange of the input as we receive
+    // new `value`s ...[*]
     if (
-      openOnFocus &&
-      lastActionType !== ComboboxActionType.SELECT_WITH_CLICK &&
-      lastActionType !== ComboboxActionType.NAVIGATE
+      controlledValue !== undefined &&
+      contextInputValue &&
+      controlledValue !== contextInputValue
     ) {
-      transition &&
-        transition(ComboboxActionType.FOCUS, {
-          persistSelection: persistSelectionRef && persistSelectionRef.current,
-        })
-    }
-  }
-
-  const selectText = useCallback(() => {
-    if (selectOnClickRef.current) {
-      selectOnClickRef.current = false
-      inputElement && inputElement.select()
-    }
-  }, [inputElement])
-
-  const handleMouseDownClick = useCallback(
-    (e: ReactMouseEvent<HTMLElement>) => {
-      if (state === ComboboxState.IDLE) {
-        // Opening a closed list
-        transition &&
-          transition(ComboboxActionType.FOCUS, {
-            persistSelection:
-              persistSelectionRef && persistSelectionRef.current,
-          })
+      if (isInputting.current) {
+        handleValueChange(controlledValue)
       } else {
-        // Closing an opened list
-        transition && transition(ComboboxActionType.ESCAPE)
+        // this is most likely the initial value so we want to
+        // update the value without transitioning to suggesting
+        transition &&
+          transition(ComboboxActionType.CHANGE_SILENT, {
+            inputValue: controlledValue,
+          })
       }
-      if (e.type === 'click') {
-        selectText()
+    }
+
+    // [*]... and when controlled, we don't trigger handleValueChange as the user
+    // types, instead the developer controls it with the normal input onChange
+    // prop
+    function handleChange(event: FormEvent<HTMLInputElement>) {
+      isInputting.current = true
+      if (!isControlled) {
+        handleValueChange(event.currentTarget.value)
       }
-    },
-    [persistSelectionRef, state, selectText, transition]
-  )
+      requestAnimationFrame(() => {
+        isInputting.current = false
+      })
+    }
 
-  const handleMouseUp = useCallback(
-    (e: MouseEvent) => {
-      if (e.target === inputElement) {
-        selectText()
-      }
-    },
-    [inputElement, selectText]
-  )
+    let inputOption =
+      contextInputValue !== undefined ? contextInputValue : option
 
-  const {
-    onMouseDown: handleMouseDown,
-    onClick: handleClick,
-  } = useMouseDownClick(handleMouseDownClick, handleMouseUp)
+    if (
+      autoComplete &&
+      (state === ComboboxState.NAVIGATING ||
+        state === ComboboxState.INTERACTING)
+    ) {
+      // When idle, we don't have a navigationOption on ArrowUp/Down
+      inputOption =
+        navigationOption ||
+        (controlledValue !== undefined ? controlledValue : option)
+    }
+    const inputValue = getComboboxText(inputOption)
 
-  let inputOption = contextInputValue !== undefined ? contextInputValue : option
+    const wrappedOnClear = useWrapEvent(handleClear, onClear)
+    const wrappedOnChange = useWrapEvent(handleChange, onChange)
 
-  if (
-    autoComplete &&
-    (state === ComboboxState.NAVIGATING || state === ComboboxState.INTERACTING)
-  ) {
-    // When idle, we don't have a navigationOption on ArrowUp/Down
-    inputOption =
-      navigationOption ||
-      (controlledValue !== undefined ? controlledValue : option)
+    const inputEvents = useInputEvents(props, ComboboxContext)
+
+    return (
+      <InputSearch
+        {...rest}
+        {...inputEvents}
+        ref={ref}
+        value={inputValue}
+        readOnly={readOnly}
+        onClear={wrappedOnClear}
+        onChange={wrappedOnChange}
+        id={`listbox-${id}`}
+        autoComplete="off"
+        aria-autocomplete="both"
+        aria-activedescendant={
+          navigationOption
+            ? String(makeHash(navigationOption ? navigationOption.value : ''))
+            : undefined
+        }
+      />
+    )
   }
-  const inputValue = getComboboxText(inputOption)
-
-  const wrappedOnClear = useWrapEvent(handleClear, onClear)
-  const wrappedOnClick = useWrapEvent(handleClick, onClick)
-  const wrappedOnMouseDown = useWrapEvent(handleMouseDown, onMouseDown)
-  const wrappedOnBlur = useWrapEvent(handleBlur, onBlur)
-  const wrappedOnFocus = useWrapEvent(handleFocus, onFocus)
-  const wrappedOnChange = useWrapEvent(handleChange, onChange)
-  const wrappedOnKeyDown = useWrapEvent(handleKeyDown, onKeyDown)
-
-  return (
-    <InputSearch
-      {...props}
-      ref={ref}
-      value={inputValue}
-      readOnly={readOnly}
-      onClick={wrappedOnClick}
-      onMouseDown={wrappedOnMouseDown}
-      onClear={wrappedOnClear}
-      onBlur={wrappedOnBlur}
-      onFocus={wrappedOnFocus}
-      onChange={wrappedOnChange}
-      onKeyDown={wrappedOnKeyDown}
-      id={listboxId}
-      autoComplete="off"
-      aria-autocomplete="both"
-      aria-activedescendant={
-        navigationOption
-          ? String(makeHash(navigationOption ? navigationOption.value : ''))
-          : undefined
-      }
-    />
-  )
-})
+)
 
 ComboboxInputInternal.displayName = 'ComboboxInputInternal'
 
@@ -303,8 +202,10 @@ const indicatorRaw = `
     fill="currentColor"
   />
 </svg>`
-const indicatorSize = '1rem'
-const indicatorPadding = '.25rem'
+export const indicatorSize = '1rem'
+export const indicatorPadding = '.5rem'
+export const comboboxPaddingRight = `calc(2 * ${indicatorPadding} + ${indicatorSize})`
+
 const indicatorPrefix = 'data:image/svg+xml;base64,'
 export const selectIndicatorBG = (color: string) =>
   typeof window !== 'undefined' &&
@@ -312,7 +213,9 @@ export const selectIndicatorBG = (color: string) =>
     indicatorRaw.replace('currentColor', color)
   )}')`
 
-export const ComboboxInput = styled(ComboboxInputInternal)`
+const bgPosition = `right ${indicatorPadding} top calc(${indicatorPadding} + 2px), 0 0`
+
+export const comboboxStyles = css<{ disabled?: boolean; readOnly?: boolean }>`
   background-image: ${props => {
     const color = props.disabled
       ? props.theme.colors.palette.charcoal300
@@ -320,13 +223,27 @@ export const ComboboxInput = styled(ComboboxInputInternal)`
     return selectIndicatorBG(color)
   }};
   background-repeat: no-repeat, repeat;
-  background-position: right ${indicatorPadding} center, 0 0;
+  background-position: ${bgPosition};
   background-size: ${indicatorSize}, 100%;
-  padding-right: calc(2 * ${indicatorPadding} + ${indicatorSize});
+  padding-right: ${comboboxPaddingRight};
 
   ${InputText} {
     cursor: ${props => (props.readOnly ? 'default' : 'text')};
   }
+
+  ${InputSearchControls} {
+    &::after {
+      content: ' ';
+      border-right: 1px solid ${props => props.theme.colors.palette.charcoal200};
+      height: 1.5rem;
+      width: ${props => props.theme.space.xsmall};
+      pointer-events: none;
+    }
+  }
+`
+
+export const ComboboxInput = styled(ComboboxInputInternal)`
+  ${comboboxStyles}
 `
 
 ComboboxInput.defaultProps = {
