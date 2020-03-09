@@ -5,37 +5,30 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## UNRELEASED
+## [0.7.23] - 2020-03-09
 
 ## Added
 
-- updated `InputText` and its tests to support IconBefore, IconAfter, Prefix, Suffix.
+- `ActionList` and related sub-components - general layout and base functionality added; currently renders a list with data in columns and associated actions at the item level
+- `InputText` now supports `iconBefore`, `iconAfter`, `prefix`, `suffix` properties
 - `InputDateRange` component
-- New icons `Function`, `ArrowRight`, `IdeDimension`, `IdeDimensionGroup`, `IdeParameter`, `NotificationBellOn`, `NotificationBellOff`
+- Icons `ArrowRight`, `Function`, `IdeDimension`, `IdeDimensionGroup`, `IdeParameter`, `NotificationBellOff`, `NotificationBellOn`
 
 ## Changed
 
 - `FieldColor` state can now be fully controlled.
-- `Slider` component style updates
-- `InputDate` now supports controlled component behavior
 - Icon `CaretDown` optically centered
+- `IconButton` tooltip callbacks no longer override passed in callbacks
+- `InputChips` no longer supports summary prop, and style updates to allow vertical scrolling
+- `InputDate` now supports controlled component behavior
+- `Menu` renamed isHovered variable to showDisclosure to make this prop's use alongside `MenuDisclosure` more obvious
+- `MenuContext` renamed isHovered property to showDisclosure
+- `MenuDisclosure` now has focus and blur handlers, which allows for tab-traversal to hidden `MenuDisclosure`
+- `Slider` component style updates
 
 ## Fixed
 
 - `InputDate` and `InputDateRange` test mocks
-
-## [0.7.23] - 2020-03-06
-
-### Added
-
-- `ActionList` and related sub-components - general layout and base functionality added; currently renders a list with data in columns and associated actions at the item level
-
-### Changed
-
-- `IconButton` - tooltip callbacks no longer override passed in callbacks
-- `Menu` - renamed isHovered variable to showDisclosure to make this prop's use alongside `MenuDisclosure` more obvious
-- `MenuContext` - renamed isHovered property to showDisclosure
-- `MenuDisclosure` - now has focus and blur handlers, which allows for tab-traversal to hidden `MenuDisclosure`
 
 ## [0.7.22] - 2020-02-27
 
