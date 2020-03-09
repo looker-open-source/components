@@ -7,9 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## UNRELEASED
 
-## Fixed
+## Changed
 
-- `Checkbox` supports `defaultChecked` property. Using `defaultChecked` serves as a workaround to a bug where using the `checked` property without an `onChange` produces a React error.
+- `Checkbox` supports `defaultChecked` property.
 
 ## [0.7.23] - 2020-03-09
 
