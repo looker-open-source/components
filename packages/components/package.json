@@ -1,7 +1,7 @@
 {
   "name": "@looker/components",
   "license": "MIT",
-  "version": "0.7.22",
+  "version": "0.7.23",
   "main": "dist/cjs/index.js",
   "types": "dist/types/index.d.ts",
   "module": "dist/esm/index.js",
@@ -25,8 +25,8 @@
     "develop-playground": "ttsc --project tsconfig.build.json --watch --module es2015 --target es6 --outDir dist/esm"
   },
   "dependencies": {
-    "@looker/design-tokens": "^0.7.15",
-    "@looker/icons": "^0.7.19",
+    "@looker/design-tokens": "^0.7.23",
+    "@looker/icons": "^0.7.23",
     "@types/moment": "^2.13.0",
     "@types/react-transition-group": "^4.2.4",
     "@types/styled-system": "^5.1.5",
@@ -47,7 +47,7 @@
     "uuid": "^7.0.1"
   },
   "devDependencies": {
-    "@looker/components-test-utils": "^0.7.15",
+    "@looker/components-test-utils": "^0.7.23",
     "@testing-library/jest-dom": "^5.1.1",
     "@testing-library/react": "^9.4.1",
     "@types/d3-color": "^1.2.2",
