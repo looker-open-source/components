@@ -227,8 +227,8 @@ exports[`A FieldCheckbox with checked value 1`] = `
 }
 
 .c5 .c6 {
-  background: #0087e1;
-  border-color: #0087e1;
+  background: #6C43E0;
+  border-color: #6C43E0;
   color: #FFFFFF;
 }
 
@@ -408,8 +408,8 @@ exports[`A required FieldCheckbox 1`] = `
 }
 
 .c9 .c7 {
-  background: #0087e1;
-  border-color: #0087e1;
+  background: #6C43E0;
+  border-color: #6C43E0;
   color: #FFFFFF;
 }
 

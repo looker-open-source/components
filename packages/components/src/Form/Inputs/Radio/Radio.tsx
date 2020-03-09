@@ -34,7 +34,6 @@ import {
   InputProps,
   inputPropKeys,
 } from '../InputProps'
-import { inputColor } from '../style'
 
 export interface RadioProps
   extends CheckboxRadioContainerProps,
@@ -74,7 +73,8 @@ const RadioContainer = styled.div<CheckboxRadioContainerProps>`
   }
   input[type='radio']:checked {
     & + ${FauxRadio} {
-      ${inputColor}
+      background: ${props => props.theme.colors.palette.purple400};
+      border-color: ${props => props.theme.colors.palette.purple400};
     }
     & + ${/* sc-selector */ FauxRadio}::after {
       content: '';

@@ -34,8 +34,8 @@ exports[`A FieldRadio 1`] = `
 }
 
 .c6 input[type='radio']:checked + .c7 {
-  background: #0087e1;
-  border-color: #0087e1;
+  background: #6C43E0;
+  border-color: #6C43E0;
 }
 
 .c6 input[type='radio']:checked + .c7::after {
@@ -204,8 +204,8 @@ exports[`A FieldRadio checked 1`] = `
 }
 
 .c6 input[type='radio']:checked + .c7 {
-  background: #0087e1;
-  border-color: #0087e1;
+  background: #6C43E0;
+  border-color: #6C43E0;
 }
 
 .c6 input[type='radio']:checked + .c7::after {
@@ -379,8 +379,8 @@ exports[`A FieldRadio with label aligned left 1`] = `
 }
 
 .c5 input[type='radio']:checked + .c6 {
-  background: #0087e1;
-  border-color: #0087e1;
+  background: #6C43E0;
+  border-color: #6C43E0;
 }
 
 .c5 input[type='radio']:checked + .c6::after {

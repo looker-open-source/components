@@ -56,8 +56,8 @@ exports[`Checkbox checked set to false 1`] = `
 }
 
 .c3 .c1 {
-  background: #0087e1;
-  border-color: #0087e1;
+  background: #6C43E0;
+  border-color: #6C43E0;
   color: #FFFFFF;
 }
 
@@ -160,8 +160,8 @@ exports[`Checkbox checked set to mixed 1`] = `
 }
 
 .c0 .c1 {
-  background: #0087e1;
-  border-color: #0087e1;
+  background: #6C43E0;
+  border-color: #6C43E0;
   color: #FFFFFF;
 }
 
@@ -270,8 +270,8 @@ exports[`Checkbox checked set to true 1`] = `
 }
 
 .c0 .c1 {
-  background: #0087e1;
-  border-color: #0087e1;
+  background: #6C43E0;
+  border-color: #6C43E0;
   color: #FFFFFF;
 }
 
@@ -460,8 +460,8 @@ exports[`Checkbox should accept disabled 1`] = `
 }
 
 .c3 .c1 {
-  background: #0087e1;
-  border-color: #0087e1;
+  background: #6C43E0;
+  border-color: #6C43E0;
   color: #FFFFFF;
 }
 
@@ -563,8 +563,8 @@ exports[`Checkbox with aria-describedby 1`] = `
 }
 
 .c3 .c1 {
-  background: #0087e1;
-  border-color: #0087e1;
+  background: #6C43E0;
+  border-color: #6C43E0;
   color: #FFFFFF;
 }
 
@@ -666,8 +666,8 @@ exports[`Checkbox with name and id 1`] = `
 }
 
 .c3 .c1 {
-  background: #0087e1;
-  border-color: #0087e1;
+  background: #6C43E0;
+  border-color: #6C43E0;
   color: #FFFFFF;
 }
 

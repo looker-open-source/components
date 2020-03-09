@@ -115,11 +115,9 @@ const CheckboxContainer = styled.div<CheckboxContainerProps>`
     z-index: 1;
   }
   ${FauxCheckbox} {
-    ${({ theme, checked, branded }) => {
+    ${({ theme, checked }) => {
       /* NOTE: `checked=true` and `checked='mixed'` are treated the same in this code block */
-      const inputColor = branded
-        ? theme.colors.semanticColors.primary.main
-        : theme.colors.semanticColors.primary.linkColor
+      const inputColor = theme.colors.palette.purple400
       return `
         background: ${checked ? inputColor : theme.colors.palette.white};
         border-color: ${
