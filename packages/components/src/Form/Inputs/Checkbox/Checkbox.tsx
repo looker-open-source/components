@@ -151,11 +151,14 @@ const CheckboxComponent = forwardRef(
   (props: CheckboxProps, ref: Ref<HTMLInputElement>) => {
     const { checked, ...restProps } = props
     return (
-      <CheckboxContainer {...omit(props, inputPropKeys)} checked={checked}>
+      <CheckboxContainer
+        {...omit(props, inputPropKeys)}
+        checked={checked || restProps.defaultChecked}
+      >
         <CheckboxInput
           {...pick(restProps, inputPropKeys)}
           ref={ref}
-          checked={checked === true}
+          checked={checked === undefined ? undefined : checked === true}
           role="checkbox"
           aria-checked={checked}
         />
