@@ -40,7 +40,6 @@ export interface SliderProps
     Omit<InputProps, 'type'>,
     SliderSizeProps {
   'aria-labelledby'?: string
-  branded?: boolean
   max?: number
   min?: number
   step?: number
@@ -50,7 +49,6 @@ export interface SliderProps
 const SliderInternal = forwardRef(
   (
     {
-      branded,
       min = 0,
       max = 10,
       value = 0,
@@ -120,21 +118,15 @@ const SliderInternal = forwardRef(
           <SliderValue
             fontSize={fontSize}
             knobSize={knobSize}
-            branded={branded}
             disabled={disabled}
           >
             {displayValue}
           </SliderValue>
         </SliderValueWrapper>
         <SliderTrack knobSize={knobSize} trackHeight={trackHeight}>
-          <SliderFill
-            offsetPercent={fillPercent}
-            branded={branded}
-            disabled={disabled}
-          />
+          <SliderFill offsetPercent={fillPercent} disabled={disabled} />
         </SliderTrack>
         <SliderInput
-          branded={branded}
           disabled={disabled}
           id={id}
           isFocused={isFocused}
@@ -158,18 +150,13 @@ const SliderInternal = forwardRef(
 interface SliderInputProps {
   knobSize: number
   isFocused?: boolean
-  branded?: boolean
 }
 
 const sliderThumbFocusCss = css<SliderInputProps>`
-  ${({ theme: { colors }, branded }) => {
-    const brandedFocusRing = rgba(colors.semanticColors.primary.main, 0.2)
-    const unbrandedFocusRing = rgba(
-      colors.semanticColors.primary.linkColor,
-      0.2
-    )
+  ${({ theme: { colors } }) => {
+    const focusRing = rgba(colors.semanticColors.primary.main, 0.2)
     return css`
-      box-shadow: 0 0 0 3px ${branded ? brandedFocusRing : unbrandedFocusRing};
+      box-shadow: 0 0 0 3px ${focusRing};
       transform: scale3d(1.15, 1.15, 1);
       border-width: 4px;
     `
@@ -180,11 +167,8 @@ const sliderThumbCss = css<SliderInputProps>`
   border-radius: 100%;
   cursor: pointer;
   transition: transform 0.25s, box-shadow 0.25s;
-  ${({ theme: { colors }, branded, knobSize, isFocused }) => css`
-    border: 3px solid
-      ${branded
-        ? colors.semanticColors.primary.main
-        : colors.semanticColors.primary.linkColor};
+  ${({ theme: { colors }, knobSize, isFocused }) => css`
+    border: 3px solid ${colors.semanticColors.primary.main};
     height: ${knobSize}px;
     width: ${knobSize}px;
     background: ${colors.palette.white};
@@ -288,17 +272,12 @@ const SliderTrack = styled.div<SliderTrackProps>`
 interface ControlProps {
   offsetPercent: number
   disabled?: boolean
-  branded?: boolean
 }
 
 const SliderFill = styled.div<ControlProps>`
   height: 100%;
-  background: ${({ theme: { colors }, branded, disabled }) =>
-    disabled
-      ? colors.palette.charcoal400
-      : branded
-      ? colors.semanticColors.primary.main
-      : colors.semanticColors.primary.linkColor};
+  background: ${({ theme: { colors }, disabled }) =>
+    disabled ? colors.palette.charcoal400 : colors.semanticColors.primary.main};
   width: ${({ offsetPercent }) => offsetPercent * 100}%;
   border-radius: ${({ theme }) => theme.radii.small};
 `
@@ -309,12 +288,8 @@ interface SliderValueProps extends SliderInputProps, FontSizeProps {
 
 const SliderValue = styled.div<SliderValueProps>`
   ${fontSize}
-  color: ${({ theme: { colors }, branded, disabled }) =>
-    disabled
-      ? colors.palette.charcoal700
-      : branded
-      ? colors.semanticColors.primary.main
-      : colors.semanticColors.primary.linkColor};
+  color: ${({ theme: { colors }, disabled }) =>
+    disabled ? colors.palette.charcoal700 : colors.semanticColors.primary.main};
   line-height: 1;
   user-select: none;
   transform: translate(-35%);
