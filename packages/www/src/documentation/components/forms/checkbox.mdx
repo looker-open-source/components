@@ -35,15 +35,6 @@ The `<Checkbox />` component can be rendered in three different states: checked,
 }
 ```
 
-## Branded Property
-
-The `branded` property turns the background to the theme's primary color when checked.
-
-```jsx
-<Checkbox branded defaultChecked />
-<Checkbox branded checked="mixed" onChange={() => {}} />
-```
-
 ## Advanced Use: Controlling parent/child mixed states
 
 Using a mixed state checkbox can be used to establish a parent and child relationship between multiple options. This is an advanced use and will likely require bespoke state management. In an attempt to facilitate a standard UX, we've create a hook and state pattern.

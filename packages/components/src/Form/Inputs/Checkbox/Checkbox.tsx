@@ -28,16 +28,12 @@ import omit from 'lodash/omit'
 import pick from 'lodash/pick'
 import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
-import { reset, space } from '@looker/design-tokens'
-import {
-  CheckboxRadioContainerProps,
-  InputProps,
-  inputPropKeys,
-} from '../InputProps'
+import { reset, space, SpaceProps } from '@looker/design-tokens'
+import { InputProps, inputPropKeys } from '../InputProps'
 
 export type MixedBoolean = true | false | 'mixed'
 
-interface CheckboxContainerProps extends CheckboxRadioContainerProps {
+interface CheckboxContainerProps extends SpaceProps {
   checked?: MixedBoolean
 }
 
@@ -115,11 +111,9 @@ export const CheckboxContainer = styled.div<CheckboxContainerProps>`
     z-index: 1;
   }
   ${FauxCheckbox} {
-    ${({ theme, checked, branded }) => {
+    ${({ theme, checked }) => {
       /* NOTE: `checked=true` and `checked='mixed'` are treated the same in this code block */
-      const inputColor = branded
-        ? theme.colors.semanticColors.primary.main
-        : theme.colors.semanticColors.primary.linkColor
+      const inputColor = theme.colors.palette.purple400
       return `
         background: ${checked ? inputColor : theme.colors.palette.white};
         border-color: ${
@@ -131,8 +125,9 @@ export const CheckboxContainer = styled.div<CheckboxContainerProps>`
   }
   input[type='checkbox']:focus {
     & + ${FauxCheckbox} {
-      box-shadow: ${props =>
-        `0 0 .5px 1px ${props.theme.colors.semanticColors.primary.borderColor}`};
+      border-color: ${props => props.theme.colors.palette.purple300};
+      box-shadow: 0 0 0 2px ${props => props.theme.colors.palette.purple100};
+      outline: none;
     }
   }
   input[type='checkbox']:disabled {

@@ -24,7 +24,7 @@
 
  */
 
-import { CompatibleHTMLProps, SpaceProps } from '@looker/design-tokens'
+import { CompatibleHTMLProps } from '@looker/design-tokens'
 import { ValidationType } from '../ValidationMessage'
 
 export interface InputProps extends CompatibleHTMLProps<HTMLInputElement> {
@@ -72,7 +72,3 @@ export const inputPropKeys = [
   'aria-describedby',
   'aria-labelledby',
 ]
-
-export interface CheckboxRadioContainerProps extends SpaceProps {
-  branded?: boolean
-}
