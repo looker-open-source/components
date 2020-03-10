@@ -68,7 +68,6 @@ exports[`Checkbox checked set to false 1`] = `
 }
 
 <div
-  checked={false}
   className="c0 "
 >
   <input
@@ -363,7 +362,6 @@ exports[`Checkbox default 1`] = `
   className="c0 "
 >
   <input
-    checked={false}
     className=""
     role="checkbox"
     type="checkbox"
@@ -461,7 +459,6 @@ exports[`Checkbox should accept disabled 1`] = `
   className="c0 "
 >
   <input
-    checked={false}
     className=""
     disabled={true}
     role="checkbox"
@@ -561,7 +558,6 @@ exports[`Checkbox with aria-describedby 1`] = `
 >
   <input
     aria-describedby="some-id"
-    checked={false}
     className=""
     role="checkbox"
     type="checkbox"
@@ -659,7 +655,6 @@ exports[`Checkbox with name and id 1`] = `
   className="c0 "
 >
   <input
-    checked={false}
     className=""
     id="Chucky"
     name="Chuck"
