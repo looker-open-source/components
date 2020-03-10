@@ -43,14 +43,14 @@ export interface TabPanelsProps extends FlexboxProps, LayoutProps, SpaceProps {
   onSelectTab?: (index: number) => void
 }
 
-interface TabPanelLayoutProps extends FlexboxProps, LayoutProps, SpaceProps {}
+interface TabPanelsLayoutProps extends FlexboxProps, LayoutProps, SpaceProps {}
 
 export const TabPanels: FC<TabPanelsProps> = ({
   children,
   selectedIndex,
   ...props
 }) => {
-  const tabPanelLayoutProps = omit(props, 'onSelectTab')
+  const tabPanelsLayoutProps = omit(props, 'onSelectTab')
 
   const clonedChildren = Children.map(
     children,
@@ -61,10 +61,10 @@ export const TabPanels: FC<TabPanelsProps> = ({
     }
   )
 
-  return <Layout {...tabPanelLayoutProps}>{clonedChildren}</Layout>
+  return <Layout {...tabPanelsLayoutProps}>{clonedChildren}</Layout>
 }
 
-const Layout = styled.div<TabPanelLayoutProps>`
+const Layout = styled.div<TabPanelsLayoutProps>`
   ${reset}
   ${flexbox}
   ${layout}
