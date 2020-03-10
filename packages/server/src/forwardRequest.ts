@@ -46,7 +46,7 @@ const session = new NodeSession(settings)
 
 const forwardRequest = async (req: Request) => {
   const endpoint = req.url.replace('/api/', '')
-  const apiUrl = `${settings.base_url}/api/${settings.api_version}/${endpoint}`
+  const apiUrl = `${settings.base_url}/api/3.1/${endpoint}`
   const sessionHeaders = await session.login()
 
   const response = await fetch(apiUrl, {
