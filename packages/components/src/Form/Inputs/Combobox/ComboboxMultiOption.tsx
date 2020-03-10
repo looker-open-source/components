@@ -75,7 +75,7 @@ const ComboboxMultiOptionInternal = forwardRef(
         aria-selected={isActive}
       >
         <ComboboxOptionDetail>
-          <CheckboxContainer checked={isSelected} branded>
+          <CheckboxContainer checked={isSelected}>
             <FauxCheckbox>
               <CheckMark />
             </FauxCheckbox>

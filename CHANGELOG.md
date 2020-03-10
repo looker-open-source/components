@@ -5,18 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## UNRELEASED
+
+### Changed
+
+- `Radio` & `Checkbox` no longer support `branded` property, use theme's key color (default: purple) and have design-spec focus rings
+
 ## [0.7.23] - 2020-03-09
 
-## Added
+### Added
 
 - `ActionList` and related sub-components - general layout and base functionality added; currently renders a list with data in columns and associated actions at the item level
 - `InputText` now supports `iconBefore`, `iconAfter`, `prefix`, `suffix` properties
 - `InputDateRange` component
 - Icons `ArrowRight`, `Function`, `IdeDimension`, `IdeDimensionGroup`, `IdeParameter`, `NotificationBellOff`, `NotificationBellOn`
 
-## Changed
+### Changed
 
-- update focus on Radio and Checkbox components.
 - `FieldColor` state can now be fully controlled.
 - Icon `CaretDown` optically centered
 - `IconButton` tooltip callbacks no longer override passed in callbacks
@@ -27,7 +32,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `MenuDisclosure` now has focus and blur handlers, which allows for tab-traversal to hidden `MenuDisclosure`
 - `Slider` component style updates
 
-## Fixed
+### Fixed
 
 - `InputDate` and `InputDateRange` test mocks
 

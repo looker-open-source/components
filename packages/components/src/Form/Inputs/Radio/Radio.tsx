@@ -28,16 +28,10 @@ import omit from 'lodash/omit'
 import pick from 'lodash/pick'
 import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
-import { reset, space } from '@looker/design-tokens'
-import {
-  CheckboxRadioContainerProps,
-  InputProps,
-  inputPropKeys,
-} from '../InputProps'
+import { reset, space, SpaceProps } from '@looker/design-tokens'
+import { InputProps, inputPropKeys } from '../InputProps'
 
-export interface RadioProps
-  extends CheckboxRadioContainerProps,
-    Omit<InputProps, 'type'> {}
+export interface RadioProps extends SpaceProps, Omit<InputProps, 'type'> {}
 
 const FauxRadio = styled.div`
   ${reset}
@@ -53,7 +47,7 @@ const FauxRadio = styled.div`
 
 const dotSize = 6
 
-const RadioContainer = styled.div<CheckboxRadioContainerProps>`
+const RadioContainer = styled.div<SpaceProps>`
   ${reset}
   position: relative;
   display: inline-block;
