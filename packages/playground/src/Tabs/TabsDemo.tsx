@@ -19,7 +19,7 @@ export const TabsDemo: FC = () => (
         <TabPanel>
           <div
             style={{
-              backgroundColor: 'coral',
+              backgroundColor: 'lightblue',
               height: '100%',
             }}
           ></div>
@@ -28,7 +28,7 @@ export const TabsDemo: FC = () => (
           <div
             style={{
               backgroundColor: 'coral',
-              height: '300px',
+              height: '200px',
               width: '100%',
             }}
           ></div>

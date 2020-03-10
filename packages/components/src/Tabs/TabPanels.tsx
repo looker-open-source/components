@@ -50,7 +50,7 @@ export const TabPanels: FC<TabPanelsProps> = ({
   selectedIndex,
   ...props
 }) => {
-  const styleProps = omit(props, 'onSelectTab')
+  const tabPanelLayoutProps = omit(props, 'onSelectTab')
 
   const clonedChildren = Children.map(
     children,
@@ -61,7 +61,7 @@ export const TabPanels: FC<TabPanelsProps> = ({
     }
   )
 
-  return <Layout {...styleProps}>{clonedChildren}</Layout>
+  return <Layout {...tabPanelLayoutProps}>{clonedChildren}</Layout>
 }
 
 const Layout = styled.div<TabPanelLayoutProps>`
