@@ -26,21 +26,31 @@
 
 import React, { Children, cloneElement, FC } from 'react'
 import styled from 'styled-components'
-import { SpaceProps, space, reset } from '@looker/design-tokens'
+import {
+  FlexboxProps,
+  LayoutProps,
+  SpaceProps,
+  flexbox,
+  layout,
+  space,
+  reset,
+} from '@looker/design-tokens'
 import omit from 'lodash/omit'
 
-export interface TabPanelsProps extends SpaceProps {
+export interface TabPanelsProps extends FlexboxProps, LayoutProps, SpaceProps {
   children: JSX.Element[]
   selectedIndex?: number
   onSelectTab?: (index: number) => void
 }
+
+interface TabPanelLayoutProps extends FlexboxProps, LayoutProps, SpaceProps {}
 
 export const TabPanels: FC<TabPanelsProps> = ({
   children,
   selectedIndex,
   ...props
 }) => {
-  const spaceProps = omit(props, 'onSelectTab')
+  const styleProps = omit(props, 'onSelectTab')
 
   const clonedChildren = Children.map(
     children,
@@ -51,11 +61,13 @@ export const TabPanels: FC<TabPanelsProps> = ({
     }
   )
 
-  return <Layout {...spaceProps}>{clonedChildren}</Layout>
+  return <Layout {...styleProps}>{clonedChildren}</Layout>
 }
 
-const Layout = styled.div<SpaceProps>`
+const Layout = styled.div<TabPanelLayoutProps>`
   ${reset}
+  ${flexbox}
+  ${layout}
   ${space}
 `
 
