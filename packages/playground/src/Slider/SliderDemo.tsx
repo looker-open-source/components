@@ -40,9 +40,6 @@ export const SliderDemo = () => {
   const [value4, setValue4] = useState(2)
   const [value5, setValue5] = useState(3)
   const [value6, setValue6] = useState(1)
-  const [value8, setValue8] = useState(3)
-  const [value9, setValue9] = useState(1)
-  const [value10, setValue10] = useState(2)
   const [value11, setValue11] = useState(3)
 
   const sliderRef = useRef<HTMLInputElement>(null)
@@ -58,9 +55,6 @@ export const SliderDemo = () => {
   const onChange4 = handleEvent(setValue4)
   const onChange5 = handleEvent(setValue5)
   const onChange6 = handleEvent(setValue6)
-  const onChange8 = handleEvent(setValue8)
-  const onChange9 = handleEvent(setValue9)
-  const onChange10 = handleEvent(setValue10)
   const onChange11 = handleEvent(setValue11)
 
   return (
@@ -112,35 +106,6 @@ export const SliderDemo = () => {
               value={value6}
               size="large"
               onChange={onChange6}
-            />
-          </CardContent>
-        </Card>
-        <Card height="auto">
-          <CardContent p="xxlarge">
-            <Heading pt="large">Branded Sizes:</Heading>
-            <Slider
-              min={0}
-              max={5}
-              value={value8}
-              size="small"
-              onChange={onChange8}
-              branded
-            />
-            <Slider
-              min={0}
-              max={5}
-              value={value9}
-              size="medium"
-              onChange={onChange9}
-              branded
-            />
-            <Slider
-              min={0}
-              max={5}
-              value={value10}
-              size="large"
-              onChange={onChange10}
-              branded
             />
           </CardContent>
         </Card>
