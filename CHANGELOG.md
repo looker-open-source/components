@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - `Radio` & `Checkbox` no longer support `branded` property, use theme's key color (default: purple) and have design-spec focus rings
+- `Checkbox` supports `defaultChecked` property.
 
 ## [0.7.23] - 2020-03-09
 

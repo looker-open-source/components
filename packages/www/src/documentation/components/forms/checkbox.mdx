@@ -11,10 +11,12 @@ The `<Checkbox />` component renders a single checkbox element on the page, with
 
 The `<Checkbox />` component can be rendered in three different states: checked, unchecked, and "mixed". In addition to the standard boolean, rendering a "mixed" value can be used to indicate that only a fraction of related sub-options have been selected.
 
+**Note:** The "mixed" value is only available to the `checked` property and not available to `defaultChecked` property.
+
 ```jsx
-<Checkbox checked={true} />
-<Checkbox checked='mixed' />
-<Checkbox checked={false} />
+<Checkbox defaultChecked />
+<Checkbox defaultChecked={false} />
+<Checkbox checked='mixed' onChange={() => {}} />
 ```
 
 ## onChange Property
