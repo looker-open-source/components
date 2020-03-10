@@ -53,14 +53,16 @@ import { Flex } from '../../../Layout'
 import { InputSearchControls } from './InputSearchControls'
 
 const getHeight = (
-  py?: ResponsiveValue<CSS.PaddingProperty<TLengthStyledSystem>>
+  py?: ResponsiveValue<CSS.PaddingProperty<TLengthStyledSystem | symbol>>
 ) => {
   /* Subtracting vertical padding and border from input text height
   Setting height this way instead of on the parent div allows
   InputChip to expand vertically as needed
   min-height doesn't work because then height: 100% on the children is ignored */
   const verticalSpace =
-    typeof py === 'number' ? `${((py || 0) + 1) * 2}px` : `(${py} * 2) - 2px`
+    typeof py === 'number'
+      ? `${((py || 0) + 1) * 2}px`
+      : `(${String(py)} * 2) - 2px`
   return `calc(${CustomizableInputTextAttributes.height} - ${verticalSpace})`
 }
 
