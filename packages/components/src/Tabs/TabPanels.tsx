@@ -39,14 +39,14 @@ import omit from 'lodash/omit'
 
 export interface TabPanelsProps extends FlexboxProps, LayoutProps, SpaceProps {
   children: JSX.Element[]
+  className?: string
   selectedIndex?: number
   onSelectTab?: (index: number) => void
 }
 
-interface TabPanelsLayoutProps extends FlexboxProps, LayoutProps, SpaceProps {}
-
-export const TabPanels: FC<TabPanelsProps> = ({
+const Layout: FC<TabPanelsProps> = ({
   children,
+  className,
   selectedIndex,
   ...props
 }) => {
@@ -61,14 +61,18 @@ export const TabPanels: FC<TabPanelsProps> = ({
     }
   )
 
-  return <Layout {...tabPanelsLayoutProps}>{clonedChildren}</Layout>
+  return (
+    <div className={className} {...tabPanelsLayoutProps}>
+      {clonedChildren}
+    </div>
+  )
 }
 
-const Layout = styled.div<TabPanelsLayoutProps>`
+export const TabPanels = styled(Layout)`
   ${reset}
   ${flexbox}
   ${layout}
   ${space}
 `
 
-Layout.defaultProps = { pt: 'large' }
+TabPanels.defaultProps = { pt: 'large' }
