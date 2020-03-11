@@ -81,7 +81,7 @@ const optionsWithDescriptions = options.map((option: ComboboxOptionObject) => ({
 function checkOption(option: ComboboxOptionObject, searchTerm: string) {
   return (
     option.label &&
-    option.label.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1
+    option.label.toLowerCase().includes(searchTerm.toLowerCase())
   )
 }
 

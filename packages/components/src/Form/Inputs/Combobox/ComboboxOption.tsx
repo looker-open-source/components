@@ -231,7 +231,7 @@ export function ComboboxOptionTextInternal({
     inputValue === '' ||
     // inputValue is reflecting a currently selected option
     // highlighting it would be weird
-    (text === inputValue && optionTexts.indexOf(text) > -1)
+    (text === inputValue && optionTexts.includes(text))
   ) {
     return <span {...props}>{text}</span>
   }

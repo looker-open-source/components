@@ -104,7 +104,7 @@ export const InputChipsInternal = forwardRef(
         validValues,
       } = getUpdatedValues(
         // TypeScript can't tell that inputValue won't be undefined
-        newInputValue || (inputValue as string),
+        newInputValue || inputValue,
         values,
         validate
       )
@@ -149,7 +149,7 @@ export const InputChipsInternal = forwardRef(
       // If the last character is a comma, update the values
       // Or, if the user pastes content, we assume that the final value is complete
       // even if there's no comma at the end
-      if (isPasting.current || value[value.length - 1] === ',') {
+      if (isPasting.current || value.endsWith(',')) {
         updateValues(value)
         isPasting.current = false
       } else {
