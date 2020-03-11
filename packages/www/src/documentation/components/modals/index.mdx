@@ -5,13 +5,15 @@ github: Modal
 
 import { Props } from '../../../Shared'
 
-A Modal is a container for content that should sit above or aside the primary content. They are temporary overlays that offer contextual information or require user input/confirmation while blocking interactions with the application until being explicitly dismissed.
+A Modal is a container for content that sits above the application's content. They are temporary overlays that offer contextual information or require user input/confirmation while blocking interactions with the application until being explicitly dismissed.
 
 ## Variants & Terminology
 
-There are primarily two kinds of Modals: [`Dialog`](/components/modals/dialog) which overlays the entire screen, and [`Drawer`](/components/modals/drawer) which is attached to the side of the screen. The most common use case (a user confirmation dialog) can be helpfully rendered with the [`Confirm`](/components/modals/confirm) component.
+Modals come in two variants: [`Dialog`](/components/modals/dialog) which overlays the entire screen; and [`Drawer`](/components/modals/drawer) which is attached to the side of the screen.
 
-Modals are assembled of two primary pieces: `ModalBackdrop`, the semi-opaque full-screen overlay; and a ModalSurface, which renders the revelant content.
+Modals are assembled of two pieces an overlay and a surface. The `ModalBackdrop` component is the semi-opaque full-screen overlay to signals the rest of the application is inaccessible. The `ModalSurface` component sits on top of the overlay and renders the  relevant content.
+
+The most common pattern for a `Dialog` is the [`Confirm`](/components/modals/confirm) pattern.
 
 ## ModalBackdrop
 
