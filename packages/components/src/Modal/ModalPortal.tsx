@@ -55,7 +55,11 @@ export const ModalPortal = forwardRef(
     }, [el])
 
     const content = (
-      <InvisiBox ref={ref} zIndex={CustomizableModalAttributes.zIndex}>
+      <InvisiBox
+        ref={ref}
+        tabIndex={-1}
+        zIndex={CustomizableModalAttributes.zIndex}
+      >
         {children}
       </InvisiBox>
     )

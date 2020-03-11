@@ -32,13 +32,15 @@ import {
   MenuDisclosure,
   MenuList,
   MenuItem,
-  ModalContext,
+  Dialog,
   MenuGroup,
   Paragraph,
   Card,
   Flex,
   IconButton,
+  MenuContext,
 } from '@looker/components'
+import { FlexItem } from '@looker/components/src'
 const FancyMenuItem = ({
   text,
   current,
@@ -46,10 +48,10 @@ const FancyMenuItem = ({
   text: string
   current?: boolean
 }) => {
-  const { closeModal } = useContext(ModalContext)
+  const { setOpen } = useContext(MenuContext)
   const handleClick = () => {
     alert(`You picked ${text}`)
-    closeModal && closeModal()
+    setOpen && setOpen(false)
   }
   return (
     <MenuItem icon="FavoriteOutline" onClick={handleClick} current={current}>
@@ -60,30 +62,54 @@ const FancyMenuItem = ({
 
 const HoverMenu = () => {
   const hoverRef = React.useRef<HTMLDivElement>(null)
+  const [modalIsOpen, setOpen] = React.useState(false)
+  function openModal() {
+    setOpen(true)
+  }
+  function closeModal() {
+    setOpen(false)
+  }
   return (
     <Card ref={hoverRef} p="large" raised height="auto">
       <Flex justifyContent="space-between">
-        <Paragraph>
+        <FlexItem flex={1}>
           Hovering in this card will show the button that triggers the menu.
-        </Paragraph>
-        <Menu hoverDisclosureRef={hoverRef}>
-          <MenuDisclosure>
-            <IconButton
-              icon="DotsVert"
-              label="More Options"
-              aria-haspopup="true"
-            />
-          </MenuDisclosure>
-          <MenuList compact>
-            <FancyMenuItem text="Gouda" />
-            <FancyMenuItem text="Swiss" current />
-            <MenuGroup compact={false}>
-              <FancyMenuItem text="Gouda w/ Space" />
-              <FancyMenuItem text="Swiss w/ Space" />
-            </MenuGroup>
-          </MenuList>
-        </Menu>
+        </FlexItem>
+        <FlexItem>
+          <Menu hoverDisclosureRef={hoverRef}>
+            <MenuContext.Consumer>
+              {({ showDisclosure, isOpen }) =>
+                (showDisclosure || isOpen) && (
+                  <IconButton
+                    icon="AddAlerts"
+                    label="Add Alert"
+                    mr="small"
+                    onClick={openModal}
+                  />
+                )
+              }
+            </MenuContext.Consumer>
+            <MenuDisclosure>
+              <IconButton
+                icon="DotsVert"
+                label="More Options"
+                aria-haspopup="true"
+              />
+            </MenuDisclosure>
+            <MenuList compact>
+              <FancyMenuItem text="Gouda" />
+              <FancyMenuItem text="Swiss" current />
+              <MenuGroup compact={false}>
+                <FancyMenuItem text="Gouda w/ Space" />
+                <FancyMenuItem text="Swiss w/ Space" />
+              </MenuGroup>
+            </MenuList>
+          </Menu>
+        </FlexItem>
       </Flex>
+      <Dialog isOpen={modalIsOpen} onClose={closeModal}>
+        <Box p="large">Alert icon should be hidden now.</Box>
+      </Dialog>
     </Card>
   )
 }

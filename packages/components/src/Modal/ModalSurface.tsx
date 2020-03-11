@@ -100,7 +100,6 @@ export const ModalSurface: FC<ModalSurfaceProps> = ({
     >
       <Style
         className={`surface-overflow ${className}`}
-        tabIndex={-1}
         surfaceStyles={style as CSSObject}
         {...props}
       />
