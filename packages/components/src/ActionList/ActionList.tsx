@@ -25,7 +25,7 @@
  */
 
 import styled, { css } from 'styled-components'
-import React, { FC, ReactNode } from 'react'
+import React, { createContext, FC, ReactNode } from 'react'
 import {
   ActionListHeader,
   ActionListHeaderColumn,
@@ -52,6 +52,12 @@ export interface ActionListColumn {
    * Determines how much of a row's width this column should take up
    */
   widthPercent?: number
+  /**
+   * Determines whether a column is sortable (i.e. whether a column's header can be clicked to perform a sort)
+   * @default false
+   */
+  canSort?: boolean
+  sortDirection?: 'asc' | 'desc'
 }
 
 export interface ActionListProps {
