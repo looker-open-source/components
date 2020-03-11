@@ -24,6 +24,8 @@
 
  */
 
+import some from 'lodash/some'
+import isFunction from 'lodash/isFunction'
 import styled, { css } from 'styled-components'
 import {
   CompatibleHTMLProps,
@@ -126,37 +128,28 @@ const IconButtonComponent = forwardRef(
       ...rest
     } = props
 
+    // any of the hover/focus handlers being present disables built-in tooltip
+    const hasOuterTooltip = some(
+      [propsOnFocus, propsOnBlur, propsOnMouseOver, propsOnMouseOut],
+      isFunction
+    )
+
     const {
       ref,
       tooltip,
       eventHandlers: { onFocus, onBlur, onMouseOver, onMouseOut },
     } = useTooltip({
       content: label,
-      disabled: tooltipDisabled,
+      disabled: tooltipDisabled || hasOuterTooltip,
       placement: tooltipPlacement,
     })
 
-    const hasOuterTooltip =
-      (propsOnFocus && onFocus.toString() === propsOnFocus.toString()) ||
-      (propsOnBlur && onBlur.toString() === propsOnBlur.toString()) ||
-      (propsOnMouseOut &&
-        onMouseOut.toString() === propsOnMouseOut.toString()) ||
-      (propsOnMouseOver &&
-        onMouseOver.toString() === propsOnMouseOver.toString())
-
-    const eventHandlers = hasOuterTooltip
-      ? {
-          onBlur: propsOnBlur,
-          onFocus: propsOnFocus,
-          onMouseOut: propsOnMouseOut,
-          onMouseOver: propsOnMouseOver,
-        }
-      : {
-          onBlur: useWrapEvent(onBlur, propsOnBlur),
-          onFocus: useWrapEvent(onFocus, propsOnFocus),
-          onMouseOut: useWrapEvent(onMouseOut, propsOnMouseOut),
-          onMouseOver: useWrapEvent(onMouseOver, propsOnMouseOver),
-        }
+    const eventHandlers = {
+      onBlur: useWrapEvent(onBlur, propsOnBlur),
+      onFocus: useWrapEvent(onFocus, propsOnFocus),
+      onMouseOut: useWrapEvent(onMouseOut, propsOnMouseOut),
+      onMouseOver: useWrapEvent(onMouseOver, propsOnMouseOver),
+    }
 
     const actualRef = useForkedRef<HTMLButtonElement>(forwardRef, ref)
 
