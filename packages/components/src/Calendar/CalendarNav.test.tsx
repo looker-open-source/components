@@ -35,10 +35,12 @@ import { CalendarNav } from './CalendarNav'
 const realDateNow = Date.now.bind(global.Date)
 
 beforeEach(() => {
+  /* eslint-disable-next-line @typescript-eslint/unbound-method */
   global.Date.now = jest.fn(() => 1580517818172)
 })
 
 afterEach(() => {
+  /* eslint-disable-next-line @typescript-eslint/unbound-method */
   global.Date.now = realDateNow // reset Date.now mock
   jest.clearAllMocks()
 })

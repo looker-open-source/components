@@ -82,9 +82,6 @@ export abstract class ModalManager extends Component<
     super(props)
     this.state = { isOpen: false }
     this.triggerRef = createRef()
-
-    this.close = this.close.bind(this)
-    this.open = this.open.bind(this)
   }
 
   public componentDidMount() {
@@ -106,7 +103,7 @@ export abstract class ModalManager extends Component<
     )
   }
 
-  public open(event?: SyntheticEvent) {
+  public open = (event?: SyntheticEvent) => {
     if (event && this.props.stopPropagation) {
       event.stopPropagation()
 
@@ -119,7 +116,7 @@ export abstract class ModalManager extends Component<
     this.setState({ isOpen: true })
   }
 
-  public close() {
+  public close = () => {
     if (this.props.canClose && !this.props.canClose()) return
     this.props.onClose && this.props.onClose()
     this.setState({ isOpen: false })

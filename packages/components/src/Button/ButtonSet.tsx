@@ -109,7 +109,7 @@ export const ButtonSet = forwardRef(
           ? {
               selected: isToggle
                 ? value === childValue
-                : value.indexOf(childValue) > -1,
+                : value.includes(childValue),
             }
           : { selected: childProps.selected }),
         ...(disabled ? { disabled } : {}),

@@ -294,7 +294,7 @@ const reducerMulti: Reducer<
         options: nextState.options.filter(
           option =>
             action.inputValues &&
-            action.inputValues.indexOf(getComboboxText(option)) > -1
+            action.inputValues.includes(getComboboxText(option))
         ),
       }
     case ComboboxActionType.NAVIGATE:

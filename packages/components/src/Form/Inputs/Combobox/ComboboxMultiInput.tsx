@@ -90,8 +90,8 @@ export const ComboboxMultiInputInternal = forwardRef(
     function handleChange(values: string[]) {
       transition &&
         transition(ComboboxActionType.CHANGE_VALUES, { inputValues: values })
-      const newOptions = options.filter(
-        option => values.indexOf(getComboboxText(option)) > -1
+      const newOptions = options.filter(option =>
+        values.includes(getComboboxText(option))
       )
       contextOnChange && contextOnChange(newOptions)
     }
