@@ -136,12 +136,27 @@ const IconButtonComponent = forwardRef(
       placement: tooltipPlacement,
     })
 
-    const eventHandlers = {
-      onBlur: useWrapEvent(onBlur, propsOnBlur),
-      onFocus: useWrapEvent(onFocus, propsOnFocus),
-      onMouseOut: useWrapEvent(onMouseOut, propsOnMouseOut),
-      onMouseOver: useWrapEvent(onMouseOver, propsOnMouseOver),
-    }
+    const hasOuterTooltip =
+      (propsOnFocus && onFocus.toString() === propsOnFocus.toString()) ||
+      (propsOnBlur && onBlur.toString() === propsOnBlur.toString()) ||
+      (propsOnMouseOut &&
+        onMouseOut.toString() === propsOnMouseOut.toString()) ||
+      (propsOnMouseOver &&
+        onMouseOver.toString() === propsOnMouseOver.toString())
+
+    const eventHandlers = hasOuterTooltip
+      ? {
+          onBlur: propsOnBlur,
+          onFocus: propsOnFocus,
+          onMouseOut: propsOnMouseOut,
+          onMouseOver: propsOnMouseOver,
+        }
+      : {
+          onBlur: useWrapEvent(onBlur, propsOnBlur),
+          onFocus: useWrapEvent(onFocus, propsOnFocus),
+          onMouseOut: useWrapEvent(onMouseOut, propsOnMouseOut),
+          onMouseOver: useWrapEvent(onMouseOver, propsOnMouseOver),
+        }
 
     const actualRef = useForkedRef<HTMLButtonElement>(forwardRef, ref)
 
