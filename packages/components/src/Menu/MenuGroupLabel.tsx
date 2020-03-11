@@ -41,6 +41,7 @@ interface MenuGroupLabelProps
 export const MenuGroupLabel: FC<MenuGroupLabelProps> = ({
   labelContent,
   labelStyles,
+  fontSize,
   ...props
 }) => {
   const labelShimRef: RefObject<any> = useRef()
@@ -56,7 +57,7 @@ export const MenuGroupLabel: FC<MenuGroupLabelProps> = ({
       */}
       <div ref={labelShimRef} style={{ height: '0' }} />
       <Heading
-        fontSize="small"
+        fontSize={fontSize || 'small'}
         as="h2"
         px="medium"
         py="xsmall"

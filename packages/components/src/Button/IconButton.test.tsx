@@ -29,6 +29,7 @@ import React from 'react'
 import noop from 'lodash/noop'
 import { assertSnapshot, renderWithTheme } from '@looker/components-test-utils'
 import { fireEvent } from '@testing-library/react'
+import { Tooltip } from '../Tooltip'
 import { IconButton } from './IconButton'
 
 test('IconButton default', () => {
@@ -112,4 +113,26 @@ test('IconButton tooltipDisabled actually disables tooltip', () => {
   fireEvent.mouseOver(getByTitle('Favorite'))
   const notTooltip = container.querySelector('p') // Get Tooltip content
   expect(notTooltip).toBeNull()
+})
+
+test('IconButton built-in tooltip defers to outer tooltip', () => {
+  const tooltip = 'Add to favorites'
+  const label = 'Mark as my Favorite'
+  const { getByText, getByTitle } = renderWithTheme(
+    <Tooltip content={tooltip}>
+      {(eventHandlers, ref) => (
+        <IconButton
+          tooltipDisabled
+          label={label}
+          icon="Favorite"
+          {...eventHandlers}
+          ref={ref}
+        />
+      )}
+    </Tooltip>
+  )
+
+  fireEvent.mouseOver(getByTitle('Favorite'))
+  expect(getByText(tooltip)).toBeInTheDocument()
+  expect(getByText(label)).toHaveStyle('height: 1px')
 })

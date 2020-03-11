@@ -2285,10 +2285,10 @@
   dependencies:
     prettier ">=1.19.1"
 
-"@looker/sdk@^0.2.0-beta.29":
-  version "0.2.0-beta.29"
-  resolved "https://registry.yarnpkg.com/@looker/sdk/-/sdk-0.2.0-beta.29.tgz#2767fd771ec12c322313ce93558e84c0b7b68c90"
-  integrity sha512-gzzvnFJj6nuGReljfxIIhiAJkSodTXQsoiYJx31BXaU0JDaaky0P6BlKbYvV7B+41l/+hF/2ZXHzdT8+PL0QNA==
+"@looker/sdk@^0.2.0-beta.32":
+  version "0.2.0-beta.32"
+  resolved "https://registry.yarnpkg.com/@looker/sdk/-/sdk-0.2.0-beta.32.tgz#8d99e39a048fc9e438d8517af5fe59d790aff9b3"
+  integrity sha512-57AKJPJIuMahVVGWvrpaO5WwzvONNpYV/Gyvqd2l9SrNMFJroktsqCjhhOg4txkAVYIufVJ/xTRKkM4DKxAeYQ==
   dependencies:
     "@types/ini" "^1.3.30"
     "@types/node" "^12.12.6"
@@ -3203,12 +3203,12 @@
     "@types/react-native" "*"
     csstype "^2.2.0"
 
-"@types/styled-system@^5.1.5":
-  version "5.1.5"
-  resolved "https://registry.yarnpkg.com/@types/styled-system/-/styled-system-5.1.5.tgz#91c46bdc72f09a4d13b215695687ce35382ccad8"
-  integrity sha512-jYTj774fMiRZ7YgmQK6WxiHSI+ket6WqHPQQEq7CURkVqOI6YWUHKqn0WcLwrqQ+fPHYQt9DdoJb7ydZBMmFwQ==
+"@types/styled-system@^5.1.9":
+  version "5.1.9"
+  resolved "https://registry.yarnpkg.com/@types/styled-system/-/styled-system-5.1.9.tgz#8baac8f6eca9e0bd5768c175ca5ce1f2d6f61ade"
+  integrity sha512-QlWv6tmQV8dqk8s+LSLb9QAtmuQEnfv4f8lKKZkMgDqRFVmxJDBwEw0u4zhpxp56u0hdR+TCIk9dGfOw3TkCoQ==
   dependencies:
-    csstype "^2.6.4"
+    csstype "^2.6.9"
 
 "@types/testing-library__dom@*":
   version "6.11.0"
@@ -6320,7 +6320,7 @@ cssstyle@^2.0.0:
   dependencies:
     cssom "~0.3.6"
 
-csstype@^2.2.0, csstype@^2.5.7, csstype@^2.6.4, csstype@^2.6.7, csstype@^2.6.9:
+csstype@^2.2.0, csstype@^2.5.7, csstype@^2.6.7, csstype@^2.6.9:
   version "2.6.9"
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.6.9.tgz#05141d0cd557a56b8891394c1911c40c8a98d098"
   integrity sha512-xz39Sb4+OaTsULgUERcCk+TJj8ylkL4aSVDQiX/ksxbELSqwkgt4d4RD7fovIdgJGSuNYqwZEiVjYY5l0ask+Q==
@@ -8745,14 +8745,14 @@ gatsby-plugin-mdx@^1.0.78:
     unist-util-remove "^1.0.3"
     unist-util-visit "^1.4.1"
 
-gatsby-plugin-offline@^3.0.35:
-  version "3.0.35"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-offline/-/gatsby-plugin-offline-3.0.35.tgz#9b074a012599b9a4f3adb9c57ce1d87fdf8d0aad"
-  integrity sha512-ndOnB+onKeiWmVOfc7UCDHJ9lbfvrixdk1U2KwW0nwO3dUvjElBxPTclXFgpzmfZqH2Fb8dx8MqoH+ooR7YdGA==
+gatsby-plugin-offline@^3.0.38:
+  version "3.0.38"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-offline/-/gatsby-plugin-offline-3.0.38.tgz#79c98ebe4057d7cb200c0725fa23795d8ac110e4"
+  integrity sha512-CrKryzyA3ek+JU+YypVyQ/rnSkMJIOq6o80m1+pw7BaGtx+hErZPd0GoPQ5kKxNECVcHXHlewURX3PTMiRsrfA==
   dependencies:
     "@babel/runtime" "^7.7.6"
     cheerio "^1.0.0-rc.3"
-    gatsby-core-utils "^1.0.28"
+    gatsby-core-utils "^1.0.31"
     glob "^7.1.6"
     idb-keyval "^3.2.0"
     lodash "^4.17.15"

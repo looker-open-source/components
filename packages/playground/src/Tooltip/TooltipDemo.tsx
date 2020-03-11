@@ -19,26 +19,21 @@
  */
 
 import React from 'react'
-import ReactDOM from 'react-dom'
-import { GlobalStyle } from '@looker/components'
-import { theme } from '@looker/design-tokens'
-import { ThemeProvider } from 'styled-components'
+import { Box, IconButton, Tooltip } from '@looker/components'
 
-import { MenuDemo } from './Menu/MenuDemo'
-
-const App: React.FC = () => {
+export function TooltipDemo() {
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <MenuDemo />
-    </ThemeProvider>
+    <Box p="xxxlarge">
+      <Tooltip content="Start editing" placement="top">
+        {(eventHandlers, ref) => (
+          <IconButton
+            icon="Edit"
+            label="Edit something"
+            {...eventHandlers}
+            ref={ref}
+          />
+        )}
+      </Tooltip>
+    </Box>
   )
 }
-
-/**
- * This is the binding site for the playground. If you want to edit the
- * primary application, do your work in App.tsx instead.
- */
-document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(<App />, document.getElementById('container'))
-})
