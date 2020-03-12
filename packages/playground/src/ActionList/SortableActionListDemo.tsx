@@ -87,6 +87,7 @@ export const SortableActionListDemo: FC = () => {
     if (targetColumn?.type === 'number') {
       if (sortDirection === 'desc') {
         sortedData.sort((a, b) => b[id] - a[id])
+        targetColumn.sortDirection = 'desc'
       } else {
         sortedData.sort((a, b) => a[id] - b[id])
         targetColumn.sortDirection = 'asc'
