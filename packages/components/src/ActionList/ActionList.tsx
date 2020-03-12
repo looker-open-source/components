@@ -106,17 +106,19 @@ export const ActionListLayout: FC<ActionListProps> = ({
   )
 }
 
-const textAlignRightCSS = css<ActionListProps>`
+const alignRightCSS = css<ActionListProps>`
   ${props =>
-    props.columns.map((column: ActionListColumn, index: number) =>
-      column.type === 'number'
-        ? `
+    props.columns.map(
+      (column: ActionListColumn, index: number) =>
+        `
             ${ActionListItemColumn}:nth-child(${index + 1}),
             ${ActionListHeaderColumn}:nth-child(${index + 1}) {
-              text-align: right;
+              display: flex;
+              flex-direction: ${
+                column.type === 'number' ? 'row-reverse' : 'row'
+              };
             }
           `
-        : ''
     )}
 `
 
@@ -140,7 +142,7 @@ const primaryKeyColumnCSS = css<ActionListProps>`
 `
 
 export const ActionList = styled(ActionListLayout)<ActionListProps>`
-  ${textAlignRightCSS}
+  ${alignRightCSS}
 
   ${primaryKeyColumnCSS}
 

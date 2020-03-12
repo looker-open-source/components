@@ -48,7 +48,7 @@ export const ActionListHeaderColumnLayout: FC<ActionListHeaderColumnProps> = ({
 
   const handleClick = () => {
     if (columnInfo?.canSort && doSort) {
-      if (columnInfo.sortDirection === 'desc') {
+      if (columnInfo?.sortDirection === 'desc') {
         doSort(id, 'asc')
       } else {
         doSort(id, 'desc')
@@ -58,12 +58,15 @@ export const ActionListHeaderColumnLayout: FC<ActionListHeaderColumnProps> = ({
 
   return (
     <div className={className} onClick={handleClick}>
-      {children}
-      {columnInfo?.sortDirection ? (
-        <Icon
-          name={columnInfo.sortDirection === 'asc' ? 'CaretUp' : 'CaretDown'}
-        ></Icon>
-      ) : null}
+      <div style={{ alignItems: 'center', display: 'flex' }}>
+        {children}
+        {columnInfo?.sortDirection ? (
+          <Icon
+            name={columnInfo.sortDirection === 'asc' ? 'CaretUp' : 'CaretDown'}
+            marginLeft="small"
+          ></Icon>
+        ) : null}
+      </div>
     </div>
   )
 }
