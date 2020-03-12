@@ -38,6 +38,10 @@ import { ActionListContext } from './ActionListContext'
 export type ActionListColumns = ActionListColumn[]
 export interface ActionListColumn {
   children: ReactNode
+  /**
+   * A unique identifier for a given column
+   * Note: A column object's id should match a key in your data object template
+   */
   id: string
   /**
    * Determines whether a given column is a primary key or not

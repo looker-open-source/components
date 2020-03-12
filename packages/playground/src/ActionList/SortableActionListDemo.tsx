@@ -75,6 +75,10 @@ export const SortableActionListDemo: FC = () => {
     const sortedData = [...data]
     const targetColumn = columns.find(column => column.id === id)
 
+    // The default sort behavior only allows for one column to appear sorted at a time
+    // Using delete operator to clean out all sortDirection properties in our columns array
+    columns.forEach(column => delete column.sortDirection)
+
     const stringComparator = (stringA: string, stringB: string) => {
       const upperCasedStringA = stringA.toUpperCase()
       const upperCasedStringB = stringB.toUpperCase()
