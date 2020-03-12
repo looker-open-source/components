@@ -7,10 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## UNRELEASED
 
-### Changed
+### [0.7.24] - 2020-03-12
 
-- `Radio` & `Checkbox` no longer support `branded` property, use theme's key color (default: purple) and have design-spec focus rings
+### Added
+
 - `Checkbox` supports `defaultChecked` property.
+- `TabPanels` supports `FlexBoxProps` & `LayoutProps`
+
+## Fixed
+
+- `IconButton` Fixed duplicate Tooltips scenario
+- Reverted to stable version of `react-day-picker`
+- Fix for focusTrap on Modal with no tabbable element
+
+### Removed
+
+- `Checkbox`, `Radio` & `Slider` no longer support `branded` property, use theme's key color (default: purple) and have design-spec focus rings
 
 ## [0.7.23] - 2020-03-09
 
