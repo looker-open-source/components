@@ -25,7 +25,7 @@
  */
 
 import styled, { css } from 'styled-components'
-import React, { createContext, FC, ReactNode } from 'react'
+import React, { FC, ReactNode } from 'react'
 import {
   ActionListHeader,
   ActionListHeaderColumn,
@@ -33,6 +33,7 @@ import {
 } from './ActionListHeader'
 import { ActionListItemColumn } from './ActionListItemColumn'
 import { ActionListRowColumns } from './ActionListRow'
+import { ActionListContext } from './ActionListContext'
 
 export type ActionListColumns = ActionListColumn[]
 export interface ActionListColumn {
@@ -54,6 +55,7 @@ export interface ActionListColumn {
   widthPercent?: number
   /**
    * Determines whether a column is sortable (i.e. whether a column's header can be clicked to perform a sort)
+   * Note: You must provide a doSort callback to the parent <ActionList/> component
    * @default false
    */
   canSort?: boolean
@@ -67,6 +69,10 @@ export interface ActionListProps {
    * default: true
    */
   header?: boolean | ReactNode
+  /**
+   * Sort function provided by the developer
+   */
+  doSort?: (id: string, sortDirection: 'asc' | 'desc') => void
 }
 
 export const ActionListLayout: FC<ActionListProps> = ({
@@ -74,6 +80,7 @@ export const ActionListLayout: FC<ActionListProps> = ({
   header = true,
   children,
   columns,
+  doSort,
 }) => {
   const actionListHeader =
     header === true ? (
@@ -84,11 +91,18 @@ export const ActionListLayout: FC<ActionListProps> = ({
       <ActionListHeader>{header}</ActionListHeader>
     )
 
+  const context = {
+    columns,
+    doSort,
+  }
+
   return (
-    <div className={className}>
-      {actionListHeader}
-      <div>{children}</div>
-    </div>
+    <ActionListContext.Provider value={context}>
+      <div className={className}>
+        {actionListHeader}
+        <div>{children}</div>
+      </div>
+    </ActionListContext.Provider>
   )
 }
 

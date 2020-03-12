@@ -24,14 +24,46 @@
 
  */
 
+import React, { FC, useContext } from 'react'
 import styled, { css } from 'styled-components'
 import { flexbox } from '@looker/design-tokens'
+import { ActionListContext } from '../ActionListContext'
 
 export const columnCSS = css`
   padding: ${props => props.theme.space.small};
   ${flexbox};
 `
 
-export const ActionListHeaderColumn = styled.div`
+export interface ActionListHeaderColumnProps {
+  className?: string
+  id: string
+}
+
+export const ActionListHeaderColumnLayout: FC<ActionListHeaderColumnProps> = ({
+  children,
+  className,
+  id,
+}) => {
+  const { columns, doSort } = useContext(ActionListContext)
+  const columnInfo = columns && columns.find(column => column.id === id)
+
+  const handleClick = () => {
+    if (columnInfo && columnInfo.canSort && doSort) {
+      if (columnInfo.sortDirection && columnInfo.sortDirection === 'desc') {
+        doSort(id, 'asc')
+      } else {
+        doSort(id, 'desc')
+      }
+    }
+  }
+
+  return (
+    <div className={className} onClick={handleClick}>
+      {children}
+    </div>
+  )
+}
+
+export const ActionListHeaderColumn = styled(ActionListHeaderColumnLayout)`
   ${columnCSS}
 `

@@ -24,7 +24,7 @@
 
  */
 
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import {
   ActionList,
   ActionListColumns,
@@ -33,30 +33,21 @@ import {
   ActionListItemAction,
 } from '@looker/components'
 
-const data = [
-  {
-    id: 1,
-    name: 'Lloyd Tabb',
-  },
-  {
-    id: 2,
-    name: 'Ben Porterfield',
-  },
-]
-
 const columns: ActionListColumns = [
   {
+    canSort: true,
     children: 'ID',
     id: 'id',
     primaryKey: true,
-    type: 'string',
-    widthPercent: 50,
+    type: 'number',
+    widthPercent: 20,
   },
   {
+    canSort: true,
     children: 'Name',
     id: 'name',
     type: 'string',
-    widthPercent: 50,
+    widthPercent: 80,
   },
 ]
 
@@ -69,6 +60,51 @@ const MyActions = () => (
 )
 
 export const SortableActionListDemo: FC = () => {
+  const [data, setData] = useState([
+    {
+      id: 1,
+      name: 'Lloyd Tabb',
+    },
+    {
+      id: 2,
+      name: 'Ben Porterfield',
+    },
+  ])
+
+  const doSort = (id: string, sortDirection: 'asc' | 'desc') => {
+    const sortedData = [...data]
+    const targetColumn = columns.find(column => column.id === id)
+
+    const stringComparator = (stringA: string, stringB: string) => {
+      const upperCasedStringA = stringA.toUpperCase()
+      const upperCasedStringB = stringB.toUpperCase()
+
+      if (upperCasedStringA < upperCasedStringB) return -1
+      if (upperCasedStringA > upperCasedStringB) return 1
+      return 0
+    }
+
+    if (targetColumn?.type === 'number') {
+      if (sortDirection === 'desc') {
+        sortedData.sort((a, b) => b[id] - a[id])
+        targetColumn.sortDirection = 'desc'
+      } else {
+        sortedData.sort((a, b) => a[id] - b[id])
+        targetColumn.sortDirection = 'asc'
+      }
+    } else if (targetColumn?.type === 'string') {
+      if (sortDirection === 'desc') {
+        sortedData.sort((a, b) => stringComparator(a[id], b[id]))
+        targetColumn.sortDirection = 'desc'
+      } else {
+        sortedData.sort((a, b) => stringComparator(b[id], a[id]))
+        targetColumn.sortDirection = 'asc'
+      }
+    }
+
+    setData(sortedData)
+  }
+
   const items = data.map(({ id, name }) => (
     <ActionListItem
       key={id}
@@ -80,5 +116,9 @@ export const SortableActionListDemo: FC = () => {
     </ActionListItem>
   ))
 
-  return <ActionList columns={columns}>{items}</ActionList>
+  return (
+    <ActionList columns={columns} doSort={doSort}>
+      {items}
+    </ActionList>
+  )
 }
