@@ -26,12 +26,11 @@
 
 import React, { FC, useContext } from 'react'
 import styled, { css } from 'styled-components'
-import { flexbox } from '@looker/design-tokens'
 import { ActionListContext } from '../ActionListContext'
+import { Icon } from '../..'
 
 export const columnCSS = css`
   padding: ${props => props.theme.space.small};
-  ${flexbox};
 `
 
 export interface ActionListHeaderColumnProps {
@@ -49,7 +48,7 @@ export const ActionListHeaderColumnLayout: FC<ActionListHeaderColumnProps> = ({
 
   const handleClick = () => {
     if (columnInfo?.canSort && doSort) {
-      if (columnInfo?.sortDirection === 'desc') {
+      if (columnInfo.sortDirection === 'desc') {
         doSort(id, 'asc')
       } else {
         doSort(id, 'desc')
@@ -60,6 +59,11 @@ export const ActionListHeaderColumnLayout: FC<ActionListHeaderColumnProps> = ({
   return (
     <div className={className} onClick={handleClick}>
       {children}
+      {columnInfo?.sortDirection ? (
+        <Icon
+          name={columnInfo.sortDirection === 'asc' ? 'CaretUp' : 'CaretDown'}
+        ></Icon>
+      ) : null}
     </div>
   )
 }

@@ -94,10 +94,10 @@ export const SortableActionListDemo: FC = () => {
       }
     } else if (targetColumn?.type === 'string') {
       if (sortDirection === 'desc') {
-        sortedData.sort((a, b) => stringComparator(a[id], b[id]))
+        sortedData.sort((a, b) => stringComparator(b[id], a[id]))
         targetColumn.sortDirection = 'desc'
       } else {
-        sortedData.sort((a, b) => stringComparator(b[id], a[id]))
+        sortedData.sort((a, b) => stringComparator(a[id], b[id]))
         targetColumn.sortDirection = 'asc'
       }
     }
