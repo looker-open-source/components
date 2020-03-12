@@ -45,11 +45,11 @@ export const ActionListHeaderColumnLayout: FC<ActionListHeaderColumnProps> = ({
   id,
 }) => {
   const { columns, doSort } = useContext(ActionListContext)
-  const columnInfo = columns && columns.find(column => column.id === id)
+  const columnInfo = columns?.find(column => column.id === id)
 
   const handleClick = () => {
-    if (columnInfo && columnInfo.canSort && doSort) {
-      if (columnInfo.sortDirection && columnInfo.sortDirection === 'desc') {
+    if (columnInfo?.canSort && doSort) {
+      if (columnInfo?.sortDirection === 'desc') {
         doSort(id, 'asc')
       } else {
         doSort(id, 'desc')
