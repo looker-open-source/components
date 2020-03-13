@@ -57,16 +57,19 @@ export const ActionListHeaderColumnLayout: FC<ActionListHeaderColumnProps> = ({
   }
 
   return (
-    <div className={className} onClick={handleClick}>
-      <div style={{ alignItems: 'center', display: 'flex' }}>
-        {children}
-        {columnInfo?.sortDirection ? (
-          <Icon
-            name={columnInfo.sortDirection === 'asc' ? 'CaretUp' : 'CaretDown'}
-            marginLeft="small"
-          ></Icon>
-        ) : null}
-      </div>
+    <div
+      className={className}
+      onClick={handleClick}
+      style={{ alignItems: 'center', display: 'flex' }}
+    >
+      {children}
+      {columnInfo?.sortDirection ? (
+        <Icon
+          ml={columnInfo.type === 'string' ? 'small' : ''}
+          mr={columnInfo.type === 'number' ? 'small' : ''}
+          name={columnInfo.sortDirection === 'asc' ? 'CaretUp' : 'CaretDown'}
+        ></Icon>
+      ) : null}
     </div>
   )
 }
