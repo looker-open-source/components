@@ -119,6 +119,10 @@ const components: NavigationSection = {
           path: 'slider',
         },
         {
+          title: 'TextArea',
+          path: 'text-area',
+        },
+        {
           title: 'ToggleSwitch',
           path: 'toggle-switch',
         },

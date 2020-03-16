@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## UNRELEASED
 
+### Added
+
+- `TextArea component was created with documentation and tests
+
 ## [0.7.24] - 2020-03-12
 
 ### Added
