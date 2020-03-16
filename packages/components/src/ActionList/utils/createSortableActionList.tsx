@@ -65,7 +65,7 @@ export const createSortableActionList = (
       return 0
     }
 
-    if (targetColumn?.type === 'number') {
+    if (targetColumn && targetColumn.type === 'number') {
       if (sortDirection === 'desc') {
         sortedData.sort((a, b) => b[id] - a[id])
         targetColumn.sortDirection = 'desc'
@@ -73,7 +73,7 @@ export const createSortableActionList = (
         sortedData.sort((a, b) => a[id] - b[id])
         targetColumn.sortDirection = 'asc'
       }
-    } else if (targetColumn?.type === 'string') {
+    } else if (targetColumn && targetColumn.type === 'string') {
       if (sortDirection === 'desc') {
         sortedData.sort((a, b) => stringComparator(b[id], a[id]))
         targetColumn.sortDirection = 'desc'
@@ -82,7 +82,6 @@ export const createSortableActionList = (
         targetColumn.sortDirection = 'asc'
       }
     }
-
     setData(sortedData)
     setColumns(updatedColumns)
   }

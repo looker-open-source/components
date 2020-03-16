@@ -44,11 +44,11 @@ export const ActionListHeaderColumnLayout: FC<ActionListHeaderColumnProps> = ({
   id,
 }) => {
   const { columns, doSort } = useContext(ActionListContext)
-  const columnInfo = columns?.find(column => column.id === id)
+  const columnInfo = columns && columns.find(column => column.id === id)
 
   const handleClick = () => {
-    if (columnInfo?.canSort && doSort) {
-      if (columnInfo?.sortDirection === 'desc') {
+    if (columnInfo && columnInfo.canSort && doSort) {
+      if (columnInfo && columnInfo.sortDirection === 'desc') {
         doSort(id, 'asc')
       } else {
         doSort(id, 'desc')
@@ -63,7 +63,7 @@ export const ActionListHeaderColumnLayout: FC<ActionListHeaderColumnProps> = ({
       style={{ alignItems: 'center', display: 'flex' }}
     >
       {children}
-      {columnInfo?.sortDirection ? (
+      {columnInfo && columnInfo.sortDirection ? (
         <Icon
           ml={columnInfo.type === 'string' ? 'xxsmall' : ''}
           mr={columnInfo.type === 'number' ? 'xxsmall' : ''}
