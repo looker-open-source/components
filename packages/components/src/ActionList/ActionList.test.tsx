@@ -68,9 +68,9 @@ const data = [
 
 const header = (
   <>
-    <ActionListHeaderColumn>Foo</ActionListHeaderColumn>
-    <ActionListHeaderColumn>Bar</ActionListHeaderColumn>
-    <ActionListHeaderColumn>FooBar</ActionListHeaderColumn>
+    <ActionListHeaderColumn id="id">Foo</ActionListHeaderColumn>
+    <ActionListHeaderColumn id="name">Bar</ActionListHeaderColumn>
+    <ActionListHeaderColumn id="type">FooBar</ActionListHeaderColumn>
   </>
 )
 
