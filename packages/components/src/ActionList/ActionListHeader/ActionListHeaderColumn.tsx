@@ -65,8 +65,8 @@ export const ActionListHeaderColumnLayout: FC<ActionListHeaderColumnProps> = ({
       {children}
       {columnInfo?.sortDirection ? (
         <Icon
-          ml={columnInfo.type === 'string' ? 'small' : ''}
-          mr={columnInfo.type === 'number' ? 'small' : ''}
+          ml={columnInfo.type === 'string' ? 'xxsmall' : ''}
+          mr={columnInfo.type === 'number' ? 'xxsmall' : ''}
           name={columnInfo.sortDirection === 'asc' ? 'CaretUp' : 'CaretDown'}
         ></Icon>
       ) : null}
