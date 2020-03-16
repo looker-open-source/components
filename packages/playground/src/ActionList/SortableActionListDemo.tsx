@@ -24,40 +24,8 @@
 
  */
 
-import React, { FC, useState } from 'react'
-import {
-  ActionList,
-  ActionListColumns,
-  ActionListItem,
-  ActionListItemColumn,
-  ActionListItemAction,
-} from '@looker/components'
-
-const columns: ActionListColumns = [
-  {
-    canSort: true,
-    children: 'ID',
-    id: 'id',
-    primaryKey: true,
-    type: 'number',
-    widthPercent: 20,
-  },
-  {
-    canSort: true,
-    children: 'Name',
-    id: 'name',
-    type: 'string',
-    widthPercent: 80,
-  },
-]
-
-const MyActions = () => (
-  <>
-    <ActionListItemAction onClick={() => alert(`You performed an action!`)}>
-      Some Action
-    </ActionListItemAction>
-  </>
-)
+import { FC, useState } from 'react'
+import { ActionListColumns, createSortableActionList } from '@looker/components'
 
 export const SortableActionListDemo: FC = () => {
   const [data, setData] = useState([
@@ -71,58 +39,25 @@ export const SortableActionListDemo: FC = () => {
     },
   ])
 
-  const doSort = (id: string, sortDirection: 'asc' | 'desc') => {
-    const sortedData = [...data]
-    const targetColumn = columns.find(column => column.id === id)
+  // Note: column objects must be tracked using state since their sortDirection properties will change
+  // depending on which column is sorted
+  const [columns, setColumns] = useState<ActionListColumns>([
+    {
+      canSort: true,
+      children: 'ID',
+      id: 'id',
+      primaryKey: true,
+      type: 'number',
+      widthPercent: 20,
+    },
+    {
+      canSort: true,
+      children: 'Name',
+      id: 'name',
+      type: 'string',
+      widthPercent: 80,
+    },
+  ])
 
-    // The default sort behavior only allows for one column to appear sorted at a time
-    // Using delete operator to clean out all sortDirection properties in our columns array
-    columns.forEach(column => delete column.sortDirection)
-
-    const stringComparator = (stringA: string, stringB: string) => {
-      const upperCasedStringA = stringA.toUpperCase()
-      const upperCasedStringB = stringB.toUpperCase()
-
-      if (upperCasedStringA < upperCasedStringB) return -1
-      if (upperCasedStringA > upperCasedStringB) return 1
-      return 0
-    }
-
-    if (targetColumn?.type === 'number') {
-      if (sortDirection === 'desc') {
-        sortedData.sort((a, b) => b[id] - a[id])
-        targetColumn.sortDirection = 'desc'
-      } else {
-        sortedData.sort((a, b) => a[id] - b[id])
-        targetColumn.sortDirection = 'asc'
-      }
-    } else if (targetColumn?.type === 'string') {
-      if (sortDirection === 'desc') {
-        sortedData.sort((a, b) => stringComparator(b[id], a[id]))
-        targetColumn.sortDirection = 'desc'
-      } else {
-        sortedData.sort((a, b) => stringComparator(a[id], b[id]))
-        targetColumn.sortDirection = 'asc'
-      }
-    }
-
-    setData(sortedData)
-  }
-
-  const items = data.map(({ id, name }) => (
-    <ActionListItem
-      key={id}
-      onClick={() => alert(`Row clicked`)}
-      actions={<MyActions />}
-    >
-      <ActionListItemColumn>{id}</ActionListItemColumn>
-      <ActionListItemColumn>{name}</ActionListItemColumn>
-    </ActionListItem>
-  ))
-
-  return (
-    <ActionList columns={columns} doSort={doSort}>
-      {items}
-    </ActionList>
-  )
+  return createSortableActionList(data, setData, columns, setColumns)
 }
