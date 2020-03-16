@@ -38,10 +38,10 @@ function getCurrentNode(
 
 // Get the current hover state of an element
 // Recommended to be used with useCallbackRef
-export function useHovered(
-  hoverElement?: HTMLElement | null | RefObject<HTMLElement>
-): [boolean, (node: HTMLElement | null) => void] {
-  const [newElement, callbackRef] = useCallbackRef()
+export function useHovered<E extends HTMLElement = HTMLElement>(
+  hoverElement?: E | null | RefObject<E>
+): [boolean, ((node: E | null) => void) | null] {
+  const [newElement, callbackRef] = useCallbackRef<E>()
   const element =
     typeof hoverElement === 'undefined' ? newElement : hoverElement
 

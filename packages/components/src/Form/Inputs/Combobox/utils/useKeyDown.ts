@@ -26,39 +26,21 @@
 
 // Much of the following is pulled from https://github.com/reach/reach-ui
 // because their work is fantastic (but is not in TypeScript)
-
 import findIndex from 'lodash/findIndex'
-import { KeyboardEvent, useContext, useLayoutEffect } from 'react'
-import { ComboboxActionType, ComboboxState } from './state'
-import { ComboboxContext } from './ComboboxContext'
-
-// Move focus back to the input if we start navigating w/ the
-// keyboard after focus has moved to any focus-able content in
-// the popup.
-
-export function useFocusManagement(
-  lastActionType?: ComboboxActionType,
-  inputElement?: HTMLInputElement | null
-) {
-  // useLayoutEffect so that the cursor goes to the end of the input instead
-  // of awkwardly at the beginning, unclear to my why ...
-  useLayoutEffect(() => {
-    if (
-      lastActionType === ComboboxActionType.NAVIGATE ||
-      lastActionType === ComboboxActionType.ESCAPE ||
-      lastActionType === ComboboxActionType.SELECT_WITH_CLICK
-    ) {
-      inputElement && inputElement.focus()
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [lastActionType])
-}
+import xorWith from 'lodash/xorWith'
+import { KeyboardEvent, useContext } from 'react'
+import { ComboboxContext, ComboboxMultiContext } from '../ComboboxContext'
+import { ComboboxMultiCallback, ComboboxCallback } from '../types'
+import { ComboboxActionType, ComboboxState, ComboboxMultiData } from './state'
 
 // We want the same events when the input or the popup have focus (HOW COOL ARE
 // HOOKS BTW?) This is probably the hairiest piece but it's not bad.
 export function useKeyDown() {
+  const context = useContext(ComboboxContext)
+  const contextMulti = useContext(ComboboxMultiContext)
+  const contextToUse = context.transition ? context : contextMulti
   const {
-    data: { navigationOption },
+    data,
     onChange,
     optionsRef,
     state,
@@ -66,7 +48,23 @@ export function useKeyDown() {
     autoCompletePropRef,
     persistSelectionRef,
     readOnlyPropRef,
-  } = useContext(ComboboxContext)
+  } = contextToUse
+  const { navigationOption } = data
+
+  function checkOnChange() {
+    if (onChange) {
+      if (context.transition) {
+        ;(onChange as ComboboxCallback)(navigationOption)
+      } else {
+        const newOptions = xorWith(
+          (data as ComboboxMultiData).options,
+          navigationOption ? [navigationOption] : [],
+          (o1, o2) => o1.value === o2.value
+        )
+        ;(onChange as ComboboxMultiCallback)(newOptions)
+      }
+    }
+  }
 
   return function handleKeyDown(event: KeyboardEvent<HTMLDivElement>) {
     const options = optionsRef ? optionsRef.current : []
@@ -74,14 +72,6 @@ export function useKeyDown() {
       case 'ArrowDown': {
         // Don't scroll the page
         event.preventDefault()
-
-        // If the developer didn't render any options, there's no point in
-        // trying to navigate--but seriously what the heck? Give us some
-        // options fam.
-        // TODO: Circle back to see if this check is necessary
-        // if (!options || options.length === 0) {
-        //   return
-        // }
 
         if (state === ComboboxState.IDLE) {
           // Opening a closed list
@@ -179,7 +169,7 @@ export function useKeyDown() {
           state === ComboboxState.NAVIGATING &&
           navigationOption !== undefined
         ) {
-          onChange && onChange(navigationOption)
+          checkOnChange()
           transition && transition(ComboboxActionType.SELECT_WITH_KEYBOARD)
         }
         break
@@ -191,54 +181,11 @@ export function useKeyDown() {
         ) {
           // don't want to submit forms
           event.preventDefault()
-          onChange && onChange(navigationOption)
+          checkOnChange()
           transition && transition(ComboboxActionType.SELECT_WITH_KEYBOARD)
         }
         break
       }
     }
   }
-}
-
-export function useBlur() {
-  const { state, transition, popoverRef, inputElement } = useContext(
-    ComboboxContext
-  )
-
-  return function handleBlur() {
-    requestAnimationFrame(() => {
-      // we on want to close only if focus rests outside the select
-      const popoverCurrent = popoverRef ? popoverRef.current : null
-      if (document.activeElement !== inputElement && popoverCurrent) {
-        if (popoverCurrent && popoverCurrent.contains(document.activeElement)) {
-          // focus landed inside the select, keep it open
-          if (state !== ComboboxState.INTERACTING) {
-            transition && transition(ComboboxActionType.INTERACT)
-          }
-        } else {
-          // focus landed outside the select, close it.
-          transition && transition(ComboboxActionType.BLUR)
-        }
-      }
-    })
-  }
-}
-
-// We don't want to track the active descendant with indexes because nothing is
-// more annoying in a select than having it change values RIGHT AS YOU HIT
-// ENTER. That only happens if you use the index as your data, rather than
-// *your data as your data*. We use this to generate a unique ID based on the
-// value of each item.  This function is short, sweet, and good enough™
-// https://stackoverflow.com/questions/6122571/simple-non-secure-hash-function-for-javascript
-export function makeHash(str: string) {
-  let hash = 0
-  if (str.length === 0) {
-    return hash
-  }
-  for (let i = 0; i < str.length; i++) {
-    const char = str.charCodeAt(i)
-    hash = (hash << 5) - hash + char
-    hash = hash & hash
-  }
-  return hash
 }

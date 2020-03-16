@@ -34,8 +34,8 @@ exports[`A FieldRadio 1`] = `
 }
 
 .c6 input[type='radio']:checked + .c7 {
-  background: #0087e1;
-  border-color: #0087e1;
+  background: #6C43E0;
+  border-color: #6C43E0;
 }
 
 .c6 input[type='radio']:checked + .c7::after {
@@ -50,7 +50,9 @@ exports[`A FieldRadio 1`] = `
 }
 
 .c6 input[type='radio']:focus + .c7 {
-  box-shadow: 0 0 .5px 1px #C1C6CC;
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
 }
 
 .c6 input[type='radio']:disabled + .c7 {
@@ -202,8 +204,8 @@ exports[`A FieldRadio checked 1`] = `
 }
 
 .c6 input[type='radio']:checked + .c7 {
-  background: #0087e1;
-  border-color: #0087e1;
+  background: #6C43E0;
+  border-color: #6C43E0;
 }
 
 .c6 input[type='radio']:checked + .c7::after {
@@ -218,7 +220,9 @@ exports[`A FieldRadio checked 1`] = `
 }
 
 .c6 input[type='radio']:focus + .c7 {
-  box-shadow: 0 0 .5px 1px #C1C6CC;
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
 }
 
 .c6 input[type='radio']:disabled + .c7 {
@@ -375,8 +379,8 @@ exports[`A FieldRadio with label aligned left 1`] = `
 }
 
 .c5 input[type='radio']:checked + .c6 {
-  background: #0087e1;
-  border-color: #0087e1;
+  background: #6C43E0;
+  border-color: #6C43E0;
 }
 
 .c5 input[type='radio']:checked + .c6::after {
@@ -391,7 +395,9 @@ exports[`A FieldRadio with label aligned left 1`] = `
 }
 
 .c5 input[type='radio']:focus + .c6 {
-  box-shadow: 0 0 .5px 1px #C1C6CC;
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
 }
 
 .c5 input[type='radio']:disabled + .c6 {

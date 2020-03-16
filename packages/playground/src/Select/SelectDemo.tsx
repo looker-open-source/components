@@ -81,7 +81,7 @@ const optionsWithDescriptions = options.map((option: ComboboxOptionObject) => ({
 function checkOption(option: ComboboxOptionObject, searchTerm: string) {
   return (
     option.label &&
-    option.label.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1
+    option.label.toLowerCase().includes(searchTerm.toLowerCase())
   )
 }
 
@@ -105,7 +105,7 @@ function optionReducer(searchTerm: string) {
 }
 
 export function SelectContent() {
-  const [value, setValue] = React.useState()
+  const [value, setValue] = React.useState('')
   const [searchTerm, setSearchTerm] = React.useState('')
   const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
     const fruit = e.currentTarget.getAttribute('data-fruit') || ''

@@ -159,8 +159,8 @@ function useVerticalSpace(
 ) {
   const [spaceTop, setSpaceTop] = useState(0)
   const [spaceBottom, setSpaceBottom] = useState(0)
-  const placementIsBottom = placement && placement.indexOf('bottom') > -1
-  const placementIsTop = placement && placement.indexOf('top') > -1
+  const placementIsBottom = placement && placement.includes('bottom')
+  const placementIsTop = placement && placement.includes('top')
 
   useEffect(() => {
     function getVerticalSpace() {

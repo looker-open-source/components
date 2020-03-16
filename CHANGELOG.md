@@ -7,35 +7,47 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## UNRELEASED
 
-## Added
+## [0.7.24] - 2020-03-12
 
-- updated `InputText` and its tests to support IconBefore, IconAfter, Prefix, Suffix.
-- `InputDateRange` component
-- New icons `Function`, `ArrowRight`, `IdeDimension`, `IdeDimensionGroup`, `IdeParameter`, `NotificationBellOn`, `NotificationBellOff`
+### Added
 
-## Changed
-
-- `FieldColor` state can now be fully controlled.
-- `Slider` component style updates
-- `InputDate` now supports controlled component behavior
-- Icon `CaretDown` optically centered
+- `Checkbox` supports `defaultChecked` property.
+- `TabPanels` supports `FlexBoxProps` & `LayoutProps`
 
 ## Fixed
 
-- `InputDate` and `InputDateRange` test mocks
+- `IconButton` Fixed duplicate Tooltips scenario
+- Reverted to stable version of `react-day-picker`
+- Fix for focusTrap on Modal with no tabbable element
 
-## [0.7.23] - 2020-03-06
+### Removed
+
+- `Checkbox`, `Radio` & `Slider` no longer support `branded` property, use theme's key color (default: purple) and have design-spec focus rings
+
+## [0.7.23] - 2020-03-09
 
 ### Added
 
 - `ActionList` and related sub-components - general layout and base functionality added; currently renders a list with data in columns and associated actions at the item level
+- `InputText` now supports `iconBefore`, `iconAfter`, `prefix`, `suffix` properties
+- `InputDateRange` component
+- Icons `ArrowRight`, `Function`, `IdeDimension`, `IdeDimensionGroup`, `IdeParameter`, `NotificationBellOff`, `NotificationBellOn`
 
 ### Changed
 
-- `IconButton` - tooltip callbacks no longer override passed in callbacks
-- `Menu` - renamed isHovered variable to showDisclosure to make this prop's use alongside `MenuDisclosure` more obvious
-- `MenuContext` - renamed isHovered property to showDisclosure
-- `MenuDisclosure` - now has focus and blur handlers, which allows for tab-traversal to hidden `MenuDisclosure`
+- `FieldColor` state can now be fully controlled.
+- Icon `CaretDown` optically centered
+- `IconButton` tooltip callbacks no longer override passed in callbacks
+- `InputChips` no longer supports summary prop, and style updates to allow vertical scrolling
+- `InputDate` now supports controlled component behavior
+- `Menu` renamed isHovered variable to showDisclosure to make this prop's use alongside `MenuDisclosure` more obvious
+- `MenuContext` renamed isHovered property to showDisclosure
+- `MenuDisclosure` now has focus and blur handlers, which allows for tab-traversal to hidden `MenuDisclosure`
+- `Slider` component style updates
+
+### Fixed
+
+- `InputDate` and `InputDateRange` test mocks
 
 ## [0.7.22] - 2020-02-27
 

@@ -25,7 +25,11 @@
  */
 
 export * from './Combobox'
+export * from './ComboboxMulti'
+export * from './ComboboxMultiInput'
+export * from './ComboboxMultiOption'
 export * from './ComboboxContext'
 export * from './ComboboxInput'
 export * from './ComboboxList'
 export * from './ComboboxOption'
+export * from './utils'

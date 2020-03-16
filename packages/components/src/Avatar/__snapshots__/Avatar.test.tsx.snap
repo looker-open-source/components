@@ -99,10 +99,11 @@ exports[`AvatarCombo renders Avatar and its secondary avatar 1`] = `
     >
       JS
     </div>
-    <img
+    <object
       className="c3"
       color="palette.purple400"
-      src="https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank"
+      data="https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank"
+      type="image/png"
     />
   </div>
   <div
@@ -231,10 +232,11 @@ exports[`AvatarCombo renders Avatar initials and secondary with Code icon 1`] = 
     >
       JS
     </div>
-    <img
+    <object
       className="c3"
       color="palette.purple400"
-      src="https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank"
+      data="https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank"
+      type="image/png"
     />
   </div>
   <div
@@ -614,10 +616,11 @@ exports[`AvatarUser shows initials if has broken url as avatar_url 1`] = `
   >
     JS
   </div>
-  <img
+  <object
     className="c2"
     color="palette.purple400"
-    src="https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank"
+    data="https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank"
+    type="image/png"
   />
 </div>
 `;
@@ -697,10 +700,11 @@ exports[`AvatarUser shows user profile picture if it has good avatar_url  1`] = 
   >
     JS
   </div>
-  <img
+  <object
     className="c2"
     color="palette.purple400"
-    src="https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank"
+    data="https://gravatar.lookercdn.com/avatar/e8ebbdf1a64411721503995731?s=156&d=blank"
+    type="image/png"
   />
 </div>
 `;

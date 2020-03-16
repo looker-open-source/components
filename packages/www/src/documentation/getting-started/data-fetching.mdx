@@ -21,13 +21,11 @@ To validate that the proxy server is configured correctly it's helpful to query 
 ```js
 ;() => {
   const [user, setUser] = useState()
-
   function fetchUser() {
     fetch('/api/user')
       .then(response => response.json())
       .then(state => setUser(state))
   }
-
   return (
     <>
       <Button onClick={fetchUser}>Fetch User Data</Button>

@@ -63,46 +63,6 @@ If you'd like to read and control the input value externally, `Slider` accepts a
 <Slider size="large" value={8} />
 ```
 
-# Colors
-
-In addition to the standard blue default color scheme, `Slider` provides an alternate `branded` color which uses brand colors specified <a href="http://localhost:8000/getting-started/theme">our standard Theme object.</a>
-
-```jsx
-<Slider size="small" value={4} branded />
-<Slider size="medium" value={6} branded />
-<Slider size="large" value={8} branded />
-```
-
-You can customize the appearance by modifying the `theme.colors.semanticColors.primary.main` value:
-
-```jsx
-;() => {
-  /**
-   *  import { theme } from '@looker/components'
-   *  import { ThemeProvider } from 'styled-components'
-   **/
-
-  const myTheme = {
-    ...theme,
-    colors: {
-      ...theme.colors,
-      semanticColors: {
-        ...theme.colors.semanticColors,
-        primary: { ...theme.colors.semanticColors.primary, main: '#008930' },
-      },
-    },
-  }
-
-  return (
-    <ThemeProvider theme={myTheme}>
-      <Slider size="small" value={4} branded />
-      <Slider size="medium" value={6} branded />
-      <Slider size="large" value={8} branded />
-    </ThemeProvider>
-  )
-}
-```
-
 # Step
 
 Just like the standard HTML range input, you change the granularity of slider options by using the `step` prop.

@@ -179,6 +179,7 @@ export const toFormattedColorString = (
 ): string => {
   const color = d3color.color(value)
   if (!color) return ''
+  /* eslint-disable-next-line @typescript-eslint/unbound-method */
   if (!color.displayable) return ''
 
   if (format === null) format = recognize(value)

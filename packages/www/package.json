@@ -1,7 +1,7 @@
 {
   "name": "www",
   "private": true,
-  "version": "0.7.22",
+  "version": "0.7.24",
   "dependencies": {
     "@mdx-js/mdx": "^1.5.7",
     "@mdx-js/react": "^1.5.7",
@@ -11,18 +11,18 @@
     "eslint-loader": "^3.0.3",
     "eslint-mdx": "^1.6.8",
     "eslint-plugin-mdx": "^1.6.8",
-    "gatsby": "^2.19.28",
-    "gatsby-image": "^2.2.42",
+    "gatsby": "^2.19.35",
+    "gatsby-image": "^2.2.43",
     "gatsby-plugin-eslint": "^2.0.8",
-    "gatsby-plugin-manifest": "^2.2.42",
-    "gatsby-plugin-mdx": "^1.0.75",
-    "gatsby-plugin-offline": "^3.0.35",
-    "gatsby-plugin-react-helmet": "^3.1.22",
+    "gatsby-plugin-manifest": "^2.2.45",
+    "gatsby-plugin-mdx": "^1.0.78",
+    "gatsby-plugin-offline": "^3.0.38",
+    "gatsby-plugin-react-helmet": "^3.1.23",
     "gatsby-plugin-sharp": "^2.4.5",
-    "gatsby-plugin-styled-components": "^3.1.19",
+    "gatsby-plugin-styled-components": "^3.1.20",
     "gatsby-plugin-typescript": "^2.2.0",
-    "gatsby-remark-images": "^3.1.44",
-    "gatsby-source-filesystem": "^2.1.48",
+    "gatsby-remark-images": "^3.1.47",
+    "gatsby-source-filesystem": "^2.1.51",
     "lodash": "^4.17.15",
     "polished": "^3.4.4",
     "prism-react-renderer": "^1.0.2",
@@ -33,9 +33,9 @@
     "react-live": "^2.2.2"
   },
   "devDependencies": {
-    "@looker/components": "^0.7.22",
-    "@looker/design-tokens": "^0.7.15",
-    "@looker/icons": "^0.7.19",
+    "@looker/components": "^0.7.24",
+    "@looker/design-tokens": "^0.7.24",
+    "@looker/icons": "^0.7.23",
     "@types/react": "^16.9.23",
     "@types/react-copy-to-clipboard": "^4.3.0",
     "@types/react-dom": "^16.9.5",
@@ -43,10 +43,10 @@
     "gh-pages": "^2.2.0",
     "react-transition-group": "4.3.0",
     "styled-components": "^4.4.1",
-    "typescript": "^3.7.5"
+    "typescript": "^3.8.3"
   },
   "scripts": {
-    "lint": "eslint . --ext mdx --config package.json --no-eslintrc   ",
+    "lint": "eslint . --ext mdx --config package.json --no-eslintrc",
     "build": "gatsby build && echo \"components.looker.com\" > public/CNAME",
     "deploy": "yarn build && gh-pages -d public -r https://$GITHUB_TOKEN@github.com/looker-open-source/components.git",
     "develop": "gatsby develop",
@@ -61,13 +61,8 @@
   },
   "eslintConfig": {
     "extends": [
-      "@looker/eslint-config",
+      "@looker/eslint-config/no-type-checking",
       "plugin:mdx/recommended"
-    ],
-    "rules": {
-      "mdx/no-unescaped-entities": "off",
-      "sort-keys": "off",
-      "@typescript-eslint/no-explicit-any": "off"
-    }
+    ]
   }
 }

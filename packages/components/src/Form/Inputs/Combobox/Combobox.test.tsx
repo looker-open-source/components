@@ -28,7 +28,16 @@ import { renderWithTheme } from '@looker/components-test-utils'
 import { cleanup, fireEvent } from '@testing-library/react'
 import React from 'react'
 
-import { Combobox, ComboboxInput, ComboboxList, ComboboxOption } from '.'
+import {
+  Combobox,
+  ComboboxInput,
+  ComboboxList,
+  ComboboxOption,
+  ComboboxMulti,
+  ComboboxMultiInput,
+  ComboboxMultiList,
+  ComboboxMultiOption,
+} from '.'
 
 afterEach(cleanup)
 
@@ -36,9 +45,9 @@ describe('<Combobox/> with children', () => {
   test('Renders children, merges callbacks', () => {
     const handleChange = jest.fn()
     const handleClick = jest.fn()
-    const { getByText, getByTestId } = renderWithTheme(
+    const { getByText, getByPlaceholderText } = renderWithTheme(
       <Combobox onChange={handleChange}>
-        <ComboboxInput data-testid="select-input" />
+        <ComboboxInput placeholder="Type here" />
         <ComboboxList>
           <ComboboxOption label="Foo" value="101" onClick={handleClick} />
           <ComboboxOption label="Bar" value="102" />
@@ -46,7 +55,7 @@ describe('<Combobox/> with children', () => {
       </Combobox>
     )
 
-    const input = getByTestId('select-input')
+    const input = getByPlaceholderText('Type here')
     fireEvent.mouseDown(input)
 
     const foo = getByText('Foo')
@@ -62,15 +71,31 @@ describe('<Combobox/> with children', () => {
     expect(handleChange).toHaveBeenCalledWith({ label: 'Foo', value: '101' })
   })
 
-  test('Opens and closes on click', () => {
-    const { getByText, getByPlaceholderText, queryByText } = renderWithTheme(
-      <Combobox>
+  // Testing same behavior on both Combobox and ComboboxMulti
+  test.each([
+    [
+      'Combobox',
+      <Combobox key="combobox">
         <ComboboxInput placeholder="Type here" />
         <ComboboxList>
           <ComboboxOption label="Foo" value="101" />
           <ComboboxOption label="Bar" value="102" />
         </ComboboxList>
-      </Combobox>
+      </Combobox>,
+    ],
+    [
+      'ComboboxMulti',
+      <ComboboxMulti key="combobox-multi">
+        <ComboboxMultiInput placeholder="Type here" />
+        <ComboboxMultiList>
+          <ComboboxMultiOption label="Foo" value="101" />
+          <ComboboxMultiOption label="Bar" value="102" />
+        </ComboboxMultiList>
+      </ComboboxMulti>,
+    ],
+  ])('Opens and closes on click (%s)', (_, jsx) => {
+    const { getByText, getByPlaceholderText, queryByText } = renderWithTheme(
+      jsx
     )
     expect(queryByText('Foo')).not.toBeInTheDocument()
 
@@ -82,20 +107,71 @@ describe('<Combobox/> with children', () => {
     expect(queryByText('Foo')).not.toBeInTheDocument()
   })
 
-  test('with openOnFocus', () => {
-    const { getByRole, queryByRole, getByTestId } = renderWithTheme(
-      <Combobox id="with-options" openOnFocus>
-        <ComboboxInput data-testid="select-input" />
+  // Testing same behavior on both Combobox and ComboboxMulti
+  test.each([
+    [
+      'Combobox',
+      <Combobox key="combobox">
+        <ComboboxInput placeholder="Type here" />
         <ComboboxList>
           <ComboboxOption label="Foo" value="101" />
           <ComboboxOption label="Bar" value="102" />
         </ComboboxList>
-      </Combobox>
+      </Combobox>,
+    ],
+    [
+      'ComboboxMulti',
+      <ComboboxMulti key="combobox-multi">
+        <ComboboxMultiInput placeholder="Type here" />
+        <ComboboxMultiList>
+          <ComboboxMultiOption label="Foo" value="101" />
+          <ComboboxMultiOption label="Bar" value="102" />
+        </ComboboxMultiList>
+      </ComboboxMulti>,
+    ],
+  ])('Highlights typed text', (_, jsx) => {
+    const { getByText, getByPlaceholderText } = renderWithTheme(jsx)
+
+    const input = getByPlaceholderText('Type here')
+    fireEvent.focus(input)
+    fireEvent.change(input, { target: { value: 'oo' } })
+    expect(getByText('oo')).toHaveStyle(
+      'font-weight: 600; text-decoration: underline'
+    )
+    expect(getByText('Bar')).not.toHaveStyle(
+      'font-weight: 600; text-decoration: underline'
+    )
+  })
+
+  test.each([
+    [
+      'Combobox',
+      <Combobox key="combobox" openOnFocus>
+        <ComboboxInput placeholder="Type here" />
+        <ComboboxList>
+          <ComboboxOption label="Foo" value="101" />
+          <ComboboxOption label="Bar" value="102" />
+        </ComboboxList>
+      </Combobox>,
+    ],
+    [
+      'ComboboxMulti',
+      <ComboboxMulti key="combobox-multi" openOnFocus>
+        <ComboboxMultiInput placeholder="Type here" />
+        <ComboboxMultiList>
+          <ComboboxMultiOption label="Foo" value="101" />
+          <ComboboxMultiOption label="Bar" value="102" />
+        </ComboboxMultiList>
+      </ComboboxMulti>,
+    ],
+  ])('with openOnFocus (%s)', (_, jsx) => {
+    const { getByRole, queryByRole, getByPlaceholderText } = renderWithTheme(
+      jsx
     )
 
     expect(queryByRole('listbox')).not.toBeInTheDocument()
 
-    getByTestId('select-input').focus()
+    getByPlaceholderText('Type here').focus()
     expect(getByRole('listbox')).toBeInTheDocument()
   })
 })
@@ -111,33 +187,47 @@ describe('Keyboard navigation', () => {
     key: 'Enter',
   }
 
-  test('arrows and enter', () => {
-    const {
-      getAllByRole,
-      getByRole,
-      queryByRole,
-      getByTestId,
-    } = renderWithTheme(
-      <Combobox id="with-options" openOnFocus>
-        <ComboboxInput data-testid="select-input" />
+  test.each([
+    [
+      'Combobox',
+      <Combobox id="with-options" openOnFocus key="combobox">
+        <ComboboxInput placeholder="Type here" />
         <ComboboxList>
           <ComboboxOption label="Foo" value="101" />
           <ComboboxOption label="Bar" value="102" />
         </ComboboxList>
-      </Combobox>
-    )
+      </Combobox>,
+    ],
+    [
+      'ComboboxMulti',
+      <ComboboxMulti id="with-options" openOnFocus key="combobox-multi">
+        <ComboboxMultiInput placeholder="Type here" />
+        <ComboboxMultiList>
+          <ComboboxMultiOption label="Foo" value="101" />
+          <ComboboxMultiOption label="Bar" value="102" />
+        </ComboboxMultiList>
+      </ComboboxMulti>,
+    ],
+  ])('arrows and enter (%s)', (name, jsx) => {
+    const {
+      getByText,
+      getAllByRole,
+      getByRole,
+      queryByRole,
+      getByPlaceholderText,
+    } = renderWithTheme(jsx)
 
     expect(queryByRole('listbox')).not.toBeInTheDocument()
 
-    const input = getByTestId('select-input')
+    const input = getByPlaceholderText('Type here')
 
     fireEvent.keyDown(input, arrowDown)
     expect(getByRole('listbox')).toBeInTheDocument()
 
     const items = getAllByRole('option')
     expect(input).toHaveValue('')
-    expect(items[0]).not.toHaveAttribute('aria-selected')
-    expect(items[1]).not.toHaveAttribute('aria-selected')
+    expect(items[0]).toHaveAttribute('aria-selected', 'false')
+    expect(items[1]).toHaveAttribute('aria-selected', 'false')
 
     fireEvent.keyDown(input, arrowDown)
     expect(input).toHaveValue('Foo')
@@ -151,8 +241,8 @@ describe('Keyboard navigation', () => {
 
     fireEvent.keyDown(input, arrowDown)
     expect(input).toHaveValue('')
-    expect(items[0]).not.toHaveAttribute('aria-selected')
-    expect(items[1]).not.toHaveAttribute('aria-selected')
+    expect(items[0]).toHaveAttribute('aria-selected', 'false')
+    expect(items[1]).toHaveAttribute('aria-selected', 'false')
 
     fireEvent.keyDown(input, arrowUp)
     expect(input).toHaveValue('Bar')
@@ -160,8 +250,15 @@ describe('Keyboard navigation', () => {
     expect(items[1]).toHaveAttribute('aria-selected', 'true')
 
     fireEvent.keyDown(input, enter)
-    expect(input).toHaveValue('Bar')
     expect(queryByRole('listbox')).not.toBeInTheDocument()
+
+    if (name === 'Combobox') {
+      // Selected value is the input's value
+      expect(input).toHaveValue('Bar')
+    } else {
+      // Selected value is a chip
+      expect(getByText('Bar')).toBeInTheDocument()
+    }
   })
 
   test('arrows and enter with autoComplete = false', () => {
@@ -169,10 +266,10 @@ describe('Keyboard navigation', () => {
       getAllByRole,
       getByRole,
       queryByRole,
-      getByTestId,
+      getByPlaceholderText,
     } = renderWithTheme(
       <Combobox id="with-options" openOnFocus>
-        <ComboboxInput data-testid="select-input" autoComplete={false} />
+        <ComboboxInput placeholder="Type here" autoComplete={false} />
         <ComboboxList>
           <ComboboxOption label="Foo" value="101" />
           <ComboboxOption label="Bar" value="102" />
@@ -182,15 +279,15 @@ describe('Keyboard navigation', () => {
 
     expect(queryByRole('listbox')).not.toBeInTheDocument()
 
-    const input = getByTestId('select-input')
+    const input = getByPlaceholderText('Type here')
 
     fireEvent.keyDown(input, arrowDown)
     expect(getByRole('listbox')).toBeInTheDocument()
 
     const items = getAllByRole('option')
     expect(input).toHaveValue('')
-    expect(items[0]).not.toHaveAttribute('aria-selected')
-    expect(items[1]).not.toHaveAttribute('aria-selected')
+    expect(items[0]).toHaveAttribute('aria-selected', 'false')
+    expect(items[1]).toHaveAttribute('aria-selected', 'false')
 
     fireEvent.keyDown(input, arrowDown)
     expect(input).toHaveValue('')
