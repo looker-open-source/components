@@ -23,28 +23,49 @@
  SOFTWARE.
 
  */
-import { createContext, RefObject, Ref, MutableRefObject } from 'react'
-import { ComboboxData, ComboboxTransition, ComboboxState } from './state'
-import { ComboboxOptionObject } from './ComboboxOption'
-import { OnComboboxChange } from './Combobox'
 
-export interface ComboboxContextProps {
-  data: ComboboxData
+import omit from 'lodash/omit'
+import { createContext, RefObject, Ref, MutableRefObject } from 'react'
+import {
+  ComboboxData,
+  ComboboxMultiData,
+  ComboboxTransition,
+  ComboboxState,
+  ComboboxMultiActionPayload,
+} from './utils/state'
+import {
+  ComboboxCallback,
+  ComboboxMultiCallback,
+  ComboboxOptionObject,
+} from './types'
+
+export interface ComboboxContextProps<
+  TData = ComboboxData,
+  TChange = ComboboxCallback,
+  TTransition = ComboboxTransition
+> {
+  data: TData
   inputCallbackRef?: Ref<HTMLInputElement>
   inputElement?: HTMLInputElement | null
   wrapperElement?: HTMLDivElement | null
   popoverRef?: RefObject<HTMLDivElement>
-  onChange?: OnComboboxChange
+  onChange?: TChange
   optionsRef?: MutableRefObject<ComboboxOptionObject[]>
   state?: ComboboxState
-  transition?: ComboboxTransition
-  listboxId?: string
+  transition?: TTransition
+  id?: string
   autoCompletePropRef?: MutableRefObject<boolean>
   persistSelectionRef?: MutableRefObject<boolean>
   readOnlyPropRef?: MutableRefObject<boolean>
   isVisible?: boolean
   openOnFocus?: boolean
 }
+
+export type ComboboxMultiContextProps = ComboboxContextProps<
+  ComboboxMultiData,
+  ComboboxMultiCallback,
+  ComboboxTransition<ComboboxMultiActionPayload>
+>
 
 export const defaultData: ComboboxData = {
   // the value the user has typed, we derived this also when the developer is
@@ -57,8 +78,17 @@ export const defaultData: ComboboxData = {
   option: undefined,
 }
 
+export const defaultMultiData: ComboboxMultiData = {
+  ...omit(defaultData, 'option'),
+  options: [],
+}
+
 export const ComboboxContext = createContext<ComboboxContextProps>({
   data: defaultData,
+})
+
+export const ComboboxMultiContext = createContext<ComboboxMultiContextProps>({
+  data: defaultMultiData,
 })
 
 // Allows us to put the option's value on context so that ComboboxOptionText

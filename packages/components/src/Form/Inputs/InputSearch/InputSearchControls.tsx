@@ -23,9 +23,10 @@
  SOFTWARE.
 
  */
-
-import React, { FC, MouseEvent } from 'react'
 import { palette } from '@looker/design-tokens'
+import omit from 'lodash/omit'
+import React, { forwardRef, MouseEvent, Ref } from 'react'
+import styled from 'styled-components'
 import { Box } from '../../../Layout/Box'
 import { IconButton } from '../../../Button'
 import { Text } from '../../../Text'
@@ -35,48 +36,67 @@ export interface InputSearchControlsProps {
   showClear: boolean
   onClear: (e: MouseEvent<HTMLButtonElement>) => void
   height?: string
+  disabled?: boolean
 }
 
-export const InputSearchControls: FC<InputSearchControlsProps> = ({
-  onClear,
-  showClear,
-  summary,
-  height,
-}) => {
-  const clear = (
-    <IconButton
-      size="xsmall"
-      icon="Close"
-      label="Clear Field"
-      onClick={onClear}
-      tabIndex={-1}
-    />
-  )
+export const InputSearchControlsInternal = forwardRef(
+  (
+    {
+      onClear,
+      showClear,
+      summary,
+      disabled,
+      ...props
+    }: InputSearchControlsProps,
+    ref: Ref<HTMLDivElement>
+  ) => {
+    if (!summary && !showClear) return null
 
-  const separator = (
-    <Box
-      borderRight={`1px solid ${palette.charcoal200}`}
-      height="1.5rem"
-      style={{
-        pointerEvents: 'none',
-      }}
-    />
-  )
+    const clear = (
+      <IconButton
+        size="xxsmall"
+        icon="Close"
+        label="Clear Field"
+        onClick={onClear}
+        tabIndex={-1}
+        disabled={disabled}
+      />
+    )
 
-  return (
-    <Box height={height} display="flex" alignItems="center" ml="auto">
-      {summary && (
-        <Text
-          pr="xsmall"
-          variant="subdued"
-          fontSize="small"
-          style={{ whiteSpace: 'nowrap' }}
-        >
-          {summary}
-        </Text>
-      )}
-      {summary && showClear && separator}
-      {showClear && clear}
-    </Box>
-  )
-}
+    const separator = (
+      <Box
+        borderRight={`1px solid ${palette.charcoal200}`}
+        height="1.5rem"
+        style={{
+          pointerEvents: 'none',
+        }}
+      />
+    )
+
+    return (
+      <div {...omit(props, 'height')} ref={ref}>
+        {summary && (
+          <Text
+            pr="xsmall"
+            variant="subdued"
+            fontSize="small"
+            style={{ whiteSpace: 'nowrap' }}
+          >
+            {summary}
+          </Text>
+        )}
+        {summary && showClear && separator}
+        {showClear && clear}
+      </div>
+    )
+  }
+)
+
+InputSearchControlsInternal.displayName = 'InputSearchControlsInternal'
+
+export const InputSearchControls = styled(InputSearchControlsInternal)`
+  height: ${props => props.height};
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+`

@@ -24,6 +24,8 @@
 
  */
 
+import some from 'lodash/some'
+import isFunction from 'lodash/isFunction'
 import styled, { css } from 'styled-components'
 import {
   CompatibleHTMLProps,
@@ -126,13 +128,19 @@ const IconButtonComponent = forwardRef(
       ...rest
     } = props
 
+    // any of the hover/focus handlers being present disables built-in tooltip
+    const hasOuterTooltip = some(
+      [propsOnFocus, propsOnBlur, propsOnMouseOver, propsOnMouseOut],
+      isFunction
+    )
+
     const {
       ref,
       tooltip,
       eventHandlers: { onFocus, onBlur, onMouseOver, onMouseOut },
     } = useTooltip({
       content: label,
-      disabled: tooltipDisabled,
+      disabled: tooltipDisabled || hasOuterTooltip,
       placement: tooltipPlacement,
     })
 

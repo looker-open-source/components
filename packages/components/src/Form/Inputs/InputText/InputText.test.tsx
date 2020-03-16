@@ -31,6 +31,7 @@ import { mountWithTheme, assertSnapshot } from '@looker/components-test-utils'
 import { InputText } from './InputText'
 
 beforeEach(() => {
+  /* eslint-disable-next-line @typescript-eslint/unbound-method */
   global.console.warn = jest.fn()
 })
 

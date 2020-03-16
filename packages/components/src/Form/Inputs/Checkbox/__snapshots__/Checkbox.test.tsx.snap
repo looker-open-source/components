@@ -46,7 +46,9 @@ exports[`Checkbox checked set to false 1`] = `
 }
 
 .c0 input[type='checkbox']:focus + .c1 {
-  box-shadow: 0 0 .5px 1px #C1C6CC;
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
 }
 
 .c0 input[type='checkbox']:disabled + .c1 {
@@ -54,13 +56,15 @@ exports[`Checkbox checked set to false 1`] = `
 }
 
 .c3 .c1 {
-  background: #0087e1;
-  border-color: #0087e1;
+  background: #6C43E0;
+  border-color: #6C43E0;
   color: #FFFFFF;
 }
 
 .c3 input[type='checkbox']:focus + .c1 {
-  box-shadow: 0 0 .5px 1px #C1C6CC;
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
 }
 
 .c3 input[type='checkbox']:disabled + .c1 {
@@ -68,7 +72,6 @@ exports[`Checkbox checked set to false 1`] = `
 }
 
 <div
-  checked={false}
   className="c0 "
 >
   <input
@@ -129,7 +132,9 @@ exports[`Checkbox checked set to mixed 1`] = `
 }
 
 .c3 input[type='checkbox']:focus + .c1 {
-  box-shadow: 0 0 .5px 1px #C1C6CC;
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
 }
 
 .c3 input[type='checkbox']:disabled + .c1 {
@@ -154,13 +159,15 @@ exports[`Checkbox checked set to mixed 1`] = `
 }
 
 .c0 .c1 {
-  background: #0087e1;
-  border-color: #0087e1;
+  background: #6C43E0;
+  border-color: #6C43E0;
   color: #FFFFFF;
 }
 
 .c0 input[type='checkbox']:focus + .c1 {
-  box-shadow: 0 0 .5px 1px #C1C6CC;
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
 }
 
 .c0 input[type='checkbox']:disabled + .c1 {
@@ -235,7 +242,9 @@ exports[`Checkbox checked set to true 1`] = `
 }
 
 .c3 input[type='checkbox']:focus + .c1 {
-  box-shadow: 0 0 .5px 1px #C1C6CC;
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
 }
 
 .c3 input[type='checkbox']:disabled + .c1 {
@@ -260,13 +269,15 @@ exports[`Checkbox checked set to true 1`] = `
 }
 
 .c0 .c1 {
-  background: #0087e1;
-  border-color: #0087e1;
+  background: #6C43E0;
+  border-color: #6C43E0;
   color: #FFFFFF;
 }
 
 .c0 input[type='checkbox']:focus + .c1 {
-  box-shadow: 0 0 .5px 1px #C1C6CC;
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
 }
 
 .c0 input[type='checkbox']:disabled + .c1 {
@@ -352,7 +363,9 @@ exports[`Checkbox default 1`] = `
 }
 
 .c0 input[type='checkbox']:focus + .c1 {
-  box-shadow: 0 0 .5px 1px #C1C6CC;
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
 }
 
 .c0 input[type='checkbox']:disabled + .c1 {
@@ -363,7 +376,6 @@ exports[`Checkbox default 1`] = `
   className="c0 "
 >
   <input
-    checked={false}
     className=""
     role="checkbox"
     type="checkbox"
@@ -436,7 +448,9 @@ exports[`Checkbox should accept disabled 1`] = `
 }
 
 .c0 input[type='checkbox']:focus + .c1 {
-  box-shadow: 0 0 .5px 1px #C1C6CC;
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
 }
 
 .c0 input[type='checkbox']:disabled + .c1 {
@@ -444,13 +458,15 @@ exports[`Checkbox should accept disabled 1`] = `
 }
 
 .c3 .c1 {
-  background: #0087e1;
-  border-color: #0087e1;
+  background: #6C43E0;
+  border-color: #6C43E0;
   color: #FFFFFF;
 }
 
 .c3 input[type='checkbox']:focus + .c1 {
-  box-shadow: 0 0 .5px 1px #C1C6CC;
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
 }
 
 .c3 input[type='checkbox']:disabled + .c1 {
@@ -461,7 +477,6 @@ exports[`Checkbox should accept disabled 1`] = `
   className="c0 "
 >
   <input
-    checked={false}
     className=""
     disabled={true}
     role="checkbox"
@@ -535,7 +550,9 @@ exports[`Checkbox with aria-describedby 1`] = `
 }
 
 .c0 input[type='checkbox']:focus + .c1 {
-  box-shadow: 0 0 .5px 1px #C1C6CC;
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
 }
 
 .c0 input[type='checkbox']:disabled + .c1 {
@@ -543,13 +560,15 @@ exports[`Checkbox with aria-describedby 1`] = `
 }
 
 .c3 .c1 {
-  background: #0087e1;
-  border-color: #0087e1;
+  background: #6C43E0;
+  border-color: #6C43E0;
   color: #FFFFFF;
 }
 
 .c3 input[type='checkbox']:focus + .c1 {
-  box-shadow: 0 0 .5px 1px #C1C6CC;
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
 }
 
 .c3 input[type='checkbox']:disabled + .c1 {
@@ -561,7 +580,6 @@ exports[`Checkbox with aria-describedby 1`] = `
 >
   <input
     aria-describedby="some-id"
-    checked={false}
     className=""
     role="checkbox"
     type="checkbox"
@@ -634,7 +652,9 @@ exports[`Checkbox with name and id 1`] = `
 }
 
 .c0 input[type='checkbox']:focus + .c1 {
-  box-shadow: 0 0 .5px 1px #C1C6CC;
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
 }
 
 .c0 input[type='checkbox']:disabled + .c1 {
@@ -642,13 +662,15 @@ exports[`Checkbox with name and id 1`] = `
 }
 
 .c3 .c1 {
-  background: #0087e1;
-  border-color: #0087e1;
+  background: #6C43E0;
+  border-color: #6C43E0;
   color: #FFFFFF;
 }
 
 .c3 input[type='checkbox']:focus + .c1 {
-  box-shadow: 0 0 .5px 1px #C1C6CC;
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
 }
 
 .c3 input[type='checkbox']:disabled + .c1 {
@@ -659,7 +681,6 @@ exports[`Checkbox with name and id 1`] = `
   className="c0 "
 >
   <input
-    checked={false}
     className=""
     id="Chucky"
     name="Chuck"

@@ -28,17 +28,10 @@ import omit from 'lodash/omit'
 import pick from 'lodash/pick'
 import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
-import { reset, space } from '@looker/design-tokens'
-import {
-  CheckboxRadioContainerProps,
-  InputProps,
-  inputPropKeys,
-} from '../InputProps'
-import { inputColor } from '../style'
+import { reset, space, SpaceProps } from '@looker/design-tokens'
+import { InputProps, inputPropKeys } from '../InputProps'
 
-export interface RadioProps
-  extends CheckboxRadioContainerProps,
-    Omit<InputProps, 'type'> {}
+export interface RadioProps extends SpaceProps, Omit<InputProps, 'type'> {}
 
 const FauxRadio = styled.div`
   ${reset}
@@ -54,7 +47,7 @@ const FauxRadio = styled.div`
 
 const dotSize = 6
 
-const RadioContainer = styled.div<CheckboxRadioContainerProps>`
+const RadioContainer = styled.div<SpaceProps>`
   ${reset}
   position: relative;
   display: inline-block;
@@ -74,7 +67,8 @@ const RadioContainer = styled.div<CheckboxRadioContainerProps>`
   }
   input[type='radio']:checked {
     & + ${FauxRadio} {
-      ${inputColor}
+      background: ${props => props.theme.colors.palette.purple400};
+      border-color: ${props => props.theme.colors.palette.purple400};
     }
     & + ${/* sc-selector */ FauxRadio}::after {
       content: '';
@@ -87,10 +81,12 @@ const RadioContainer = styled.div<CheckboxRadioContainerProps>`
       right: calc(50% - ${dotSize / 2}px);
     }
   }
+
   input[type='radio']:focus {
     & + ${FauxRadio} {
-      box-shadow: ${props =>
-        `0 0 .5px 1px ${props.theme.colors.semanticColors.primary.borderColor}`};
+      border-color: ${props => props.theme.colors.palette.purple300};
+      box-shadow: 0 0 0 2px ${props => props.theme.colors.palette.purple100};
+      outline: none;
     }
   }
   input[type='radio']:disabled {

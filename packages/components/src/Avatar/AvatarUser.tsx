@@ -47,13 +47,13 @@ const AvatarLayout: FC<AvatarUserProps> = ({
           : `${firstInitial}${lastInitial}`}
       </AvatarInitials>
       {user && user.avatar_url && (
-        <AvatarPhoto color={color} src={user.avatar_url} />
+        <AvatarPhoto color={color} type="image/png" data={user.avatar_url} />
       )}
     </div>
   )
 }
 
-const AvatarPhoto = styled.img`
+const AvatarPhoto = styled.object`
   width: 100%;
   height: 100%;
   position: absolute;

@@ -4,6 +4,12 @@ propsOf: Popover
 github: Popover
 ---
 
+Popovers are containers for things like contextual information, menus, and related actions.
+
+## Terminology
+
+Popovers are assembled of two pieces: an overlay and a surface. Unlike [Modals](/components/modals/), the `Popover` overlay is transparent, but it still blocks the application behind it until it is closed, with the exception of [grouped Popovers](#grouped-popovers). The `Popover`'s surface renders the content above the overlay and the rest of the application.
+
 ```jsx
 <Popover
   content={

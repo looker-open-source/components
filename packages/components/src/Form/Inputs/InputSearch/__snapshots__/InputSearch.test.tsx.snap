@@ -1,6 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`InputSearch default 1`] = `
+.c0 {
+  border-radius: 0.25rem;
+  border: solid 1px;
+  border-color: #DEE1E5;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 0.25rem;
+  font-size: 0.875rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .c2 {
   height: 36px;
 }
@@ -21,8 +35,8 @@ exports[`InputSearch default 1`] = `
   border: solid 1px;
   border-color: #DEE1E5;
   height: 36px;
-  padding-left: 0;
-  padding-right: 0;
+  padding-right: 0.75rem;
+  padding-left: 0.75rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
   font-size: 0.875rem;
@@ -33,40 +47,11 @@ exports[`InputSearch default 1`] = `
   outline: none;
 }
 
-.c0 {
-  border-radius: 0.25rem;
-  border: solid 1px;
-  border-color: #DEE1E5;
-  padding-left: 0.75rem;
-  padding-right: 0.25rem;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  font-size: 0.875rem;
-}
-
-.c5 {
-  height: calc(36px - 6px);
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin-left: auto;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
 .c1 {
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  position: relative;
   background-color: #FFFFFF;
 }
 
@@ -106,18 +91,13 @@ exports[`InputSearch default 1`] = `
 <div
   className="c0 c1"
   fontSize="small"
-  onClick={[Function]}
+  onMouseDown={[Function]}
 >
   <input
     className="c2 c3 c4"
     onChange={[Function]}
     type="text"
     value=""
-  />
-  <div
-    className="c5"
-    display="flex"
-    height="calc(36px - 6px)"
   />
 </div>
 `;

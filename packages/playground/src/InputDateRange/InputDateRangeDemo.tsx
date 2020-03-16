@@ -11,14 +11,19 @@ import {
   Box,
 } from '@looker/components'
 
+interface DateRange {
+  from?: Date
+  to?: Date
+}
+
 export const InputDateRangeDemo: FC = () => {
   const startDate = new Date()
   startDate.setDate(9)
   const endDate = new Date()
   endDate.setDate(15)
 
-  const [dateRange, setDateRange] = useState()
-  const [localizedDate, setLocalizedDate] = useState()
+  const [dateRange, setDateRange] = useState<DateRange | undefined>()
+  const [localizedDate, setLocalizedDate] = useState<DateRange | undefined>()
   const [locale, setLocale] = useState('ko')
 
   const handleRangeChange = (range: any) => {
@@ -27,7 +32,7 @@ export const InputDateRangeDemo: FC = () => {
 
   const handleLocaleChange = (val: any) => {
     setLocale(val)
-    setLocalizedDate('')
+    setLocalizedDate(undefined)
   }
 
   const [controlledDateRange, setControlledDateRange] = useState<any>()
@@ -48,8 +53,8 @@ export const InputDateRangeDemo: FC = () => {
             Selected:{' '}
             {dateRange && (
               <>
-                <DateFormat>{dateRange.from}</DateFormat> &mdash;{' '}
-                <DateFormat>{dateRange.to}</DateFormat>
+                <DateFormat>{dateRange?.from}</DateFormat> &mdash;{' '}
+                <DateFormat>{dateRange?.to}</DateFormat>
               </>
             )}
           </SelectedDateWrapper>
@@ -125,9 +130,9 @@ export const InputDateRangeDemo: FC = () => {
             Selected:{' '}
             {localizedDate && (
               <>
-                <DateFormat locale={locale}>{localizedDate.from}</DateFormat>{' '}
+                <DateFormat locale={locale}>{localizedDate?.from}</DateFormat>{' '}
                 &mdash;{' '}
-                <DateFormat locale={locale}>{localizedDate.to}</DateFormat>
+                <DateFormat locale={locale}>{localizedDate?.to}</DateFormat>
               </>
             )}
           </SelectedDateWrapper>
