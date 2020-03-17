@@ -74,8 +74,7 @@ export const ActionListHeaderColumnLayout: FC<ActionListHeaderColumnProps> = ({
 
 export const ActionListHeaderColumn = styled(ActionListHeaderColumnLayout)`
   ${columnCSS}
-
-  display: 'flex';
-  align-items: 'center';
+  display: flex;
+  align-items: center;
   cursor: ${({ canSort }) => canSort && 'pointer'};
 `
