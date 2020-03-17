@@ -67,7 +67,8 @@ const TextAreaLayout: FC<TextAreaProps> = ({
 
 export const TextArea = styled(TextAreaLayout)`
   position: relative;
-  width: 16rem;
+  width: fit-content;
+  height: fit-content;
 
   textarea {
     ${layout}
@@ -78,11 +79,9 @@ export const TextArea = styled(TextAreaLayout)`
     border-color: ${props => props.theme.colors.palette.charcoal200};
     border-radius: ${props => props.theme.radii.medium};
     font-size: ${props => props.theme.fontSizes.small};
-    height: 100%;
     min-height: 6.25rem;
     padding: ${props => props.theme.space.small};
     padding-right: ${props => props.theme.space.xlarge};
-    width: 100%;
 
     &:hover {
       ${inputTextHover}
@@ -105,3 +104,8 @@ export const TextArea = styled(TextAreaLayout)`
 `
 
 TextArea.displayName = 'TextArea'
+
+TextArea.defaultProps = {
+  height: '6.25rem',
+  width: '16rem',
+}

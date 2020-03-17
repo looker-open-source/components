@@ -25,37 +25,19 @@
  */
 
 import React from 'react'
-import {
-  createWithTheme,
-  mountWithTheme,
-  assertSnapshot,
-} from '@looker/components-test-utils'
-import { Label } from '../../Label/Label'
+import { assertSnapshot } from '@looker/components-test-utils'
+
 import { FieldTextArea } from './FieldTextArea'
 
 test('A FieldTextArea', () => {
-  assertSnapshot(<FieldTextArea label="👍" />)
+  assertSnapshot(<FieldTextArea label="this is a label" />)
 })
 
-test('FieldTextArea supports labelWeight', () => {
-  assertSnapshot(<FieldTextArea label="👍" labelFontWeight="normal" />)
-})
-
-test('A required FieldTextArea', () => {
-  const component = createWithTheme(<FieldTextArea label="👍" required />)
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
-})
-
-test('A FieldTextArea with an error validation', () => {
-  const id = 'thumbs-up'
-  const component = mountWithTheme(
+test('A FieldTextArea with a validation message', () => {
+  assertSnapshot(
     <FieldTextArea
-      label="👍"
-      id={id}
+      label="this is a label"
       validationMessage={{ message: 'This is an error', type: 'error' }}
     />
   )
-
-  expect(component.find(Label).props().htmlFor).toEqual(id)
 })

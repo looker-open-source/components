@@ -142,12 +142,15 @@ The `<FieldText />` component is composed of an `<InputText />` component and a 
 
 ## FieldTextArea
 
-<Props of="FieldText" />
+<Props of="FieldTextArea" />
 
 The `<FieldTextArea />` component is composed of an `<TextArea />` component and a `<Label />` component. Using `<FieldTextArea />` allows for rendering validation messages.
 
 ```jsx
-<FieldTextArea label="Tnis is the label" />
+<FieldTextArea
+  label="FieldTexArea Label"
+  validationMessage={{ message: 'Some extra information' }}
+/>
 ```
 
 ### FieldText Validation
