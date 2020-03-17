@@ -60,7 +60,11 @@ export const ActionListHeaderColumnLayout: FC<ActionListHeaderColumnProps> = ({
     <div
       className={className}
       onClick={handleClick}
-      style={{ alignItems: 'center', display: 'flex' }}
+      style={{
+        alignItems: 'center',
+        cursor: columnInfo && columnInfo.canSort ? 'pointer' : 'auto',
+        display: 'flex',
+      }}
     >
       {children}
       {columnInfo && columnInfo.sortDirection ? (
