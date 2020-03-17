@@ -4,8 +4,8 @@ import { ActionListHeaderColumn } from './ActionListHeaderColumn'
 import { ActionListHeader } from './ActionListHeader'
 
 export const generateActionListHeaderColumns = (columns: ActionListColumns) =>
-  columns.map(({ children, id }) => (
-    <ActionListHeaderColumn key={id} id={id}>
+  columns.map(({ canSort, children, id }) => (
+    <ActionListHeaderColumn key={id} id={id} canSort={canSort}>
       {children}
     </ActionListHeaderColumn>
   ))

@@ -27,18 +27,20 @@
 import React, { FC, useContext } from 'react'
 import styled, { css } from 'styled-components'
 import { ActionListContext } from '../ActionListContext'
-import { Icon } from '../..'
+import { Icon } from '../../Icon'
 
 export const columnCSS = css`
   padding: ${props => props.theme.space.small};
 `
 
 export interface ActionListHeaderColumnProps {
+  canSort?: boolean
   className?: string
   id: string
 }
 
 export const ActionListHeaderColumnLayout: FC<ActionListHeaderColumnProps> = ({
+  canSort,
   children,
   className,
   id,
@@ -47,7 +49,7 @@ export const ActionListHeaderColumnLayout: FC<ActionListHeaderColumnProps> = ({
   const columnInfo = columns && columns.find(column => column.id === id)
 
   const handleClick = () => {
-    if (columnInfo && columnInfo.canSort && doSort) {
+    if (canSort && doSort) {
       if (columnInfo && columnInfo.sortDirection === 'desc') {
         doSort(id, 'asc')
       } else {
@@ -57,15 +59,7 @@ export const ActionListHeaderColumnLayout: FC<ActionListHeaderColumnProps> = ({
   }
 
   return (
-    <div
-      className={className}
-      onClick={handleClick}
-      style={{
-        alignItems: 'center',
-        cursor: columnInfo && columnInfo.canSort ? 'pointer' : 'auto',
-        display: 'flex',
-      }}
-    >
+    <div className={className} onClick={handleClick}>
       {children}
       {columnInfo && columnInfo.sortDirection ? (
         <Icon
@@ -80,4 +74,8 @@ export const ActionListHeaderColumnLayout: FC<ActionListHeaderColumnProps> = ({
 
 export const ActionListHeaderColumn = styled(ActionListHeaderColumnLayout)`
   ${columnCSS}
+
+  display: 'flex';
+  align-items: 'center';
+  cursor: ${({ canSort }) => canSort && 'pointer'};
 `
