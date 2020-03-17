@@ -24,6 +24,86 @@
 
  */
 
-import React from 'react'
+import React, { FC } from 'react'
+import styled from 'styled-components'
+import {
+  BorderProps,
+  LayoutProps,
+  SpaceProps,
+  TypographyProps,
+  CompatibleHTMLProps,
+  layout,
+  space,
+  typography,
+} from '@looker/design-tokens'
+import { ValidationType } from '../../ValidationMessage'
+import {
+  inputTextHover,
+  inputTextFocus,
+  inputTextDisabled,
+  inputTextValidation,
+} from '../InputText'
+import { Icon } from '../../../Icon'
 
-export const TextArea = () => <TextArea />
+export interface TextAreaProps
+  extends BorderProps,
+    Omit<LayoutProps, 'size'>,
+    SpaceProps,
+    TypographyProps,
+    CompatibleHTMLProps<HTMLTextAreaElement> {
+  validationType?: ValidationType
+}
+
+const TextAreaLayout: FC<TextAreaProps> = ({
+  className,
+  validationType,
+  ...props
+}) => {
+  return (
+    <div className={className}>
+      <textarea {...props} />
+      {validationType && <Icon name="Warning" color="palette.red500" />}
+    </div>
+  )
+}
+
+export const TextArea = styled(TextAreaLayout)`
+  position: relative;
+  width: 16rem;
+
+  textarea {
+    ${layout}
+    ${space}
+    ${typography}
+
+    border: solid 1px;
+    border-color: ${props => props.theme.colors.palette.charcoal200};
+    border-radius: ${props => props.theme.radii.medium};
+    font-size: ${props => props.theme.fontSizes.small};
+    height: 100%;
+    min-height: 6.25rem;
+    padding: ${props => props.theme.space.small};
+    padding-right: ${props => props.theme.space.xlarge};
+    width: 100%;
+
+    &:hover {
+      ${inputTextHover}
+    }
+    &:focus,
+    :focus-within {
+      ${inputTextFocus}
+    }
+
+    ${inputTextValidation}
+
+    ${props => (props.disabled ? inputTextDisabled : '')}
+  }
+
+  ${Icon} {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+  }
+`
+
+TextArea.displayName = 'TextArea'

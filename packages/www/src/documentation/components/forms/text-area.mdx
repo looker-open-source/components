@@ -4,8 +4,24 @@ github: TextArea
 propsOf: TextArea
 ---
 
-`TextArea` ...
+`TextArea` component offeres a multi-line text editor.
 
 ```jsx
 <TextArea />
+<TextArea
+  label="TexArea Label"
+  validationMessage={{ message: 'Some extra information' }}
+/>
+<TextArea  validationType="error" placeholder="I'm baby seitan vaporware poke marfa edison bulb cliche street art. Cornhole lumbersexual locavore mustache ethical gluten-free blue bottle messenger bag mixtape try-hard skateboard hot chicken. Knausgaard sustainable stumptown, yuccie organic bicycle rights bushwick venmo shoreditch godard 3 wolf moon dreamcatcher put a bird on it tote bag. Hot chicken organic art party fam hoodie chartreuse typewriter direct trade semiotics thundercats kitsch distillery. Slow-carb knausgaard chambray, bicycle rights pug hammock pork belly waistcoat beard cardigan stumptown helvetica hashtag irony. Quinoa palo santo tousled 90's photo booth, blue bottle adaptogen mlkshk tumeric tacos disrupt tattooed." />
+```
+
+Error messeges
+
+```jsx
+<TextArea  validationType="error" />
+<TextArea
+  label="Error Label"
+  validationType="error"
+  validationMessage={{ type: 'error', message: 'This is an error' }}
+/>
 ```
