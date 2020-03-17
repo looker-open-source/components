@@ -84,6 +84,9 @@
     "typescript-plugin-styled-components": "^1.4.4",
     "webpack": "^4.42.0"
   },
+  "resolutions": {
+    "acorn": ">=6.4.1"
+  },
   "lint-staged": {
     "**/*.ts?(x)": [
       "stylelint",
