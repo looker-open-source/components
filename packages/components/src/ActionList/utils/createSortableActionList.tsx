@@ -33,6 +33,15 @@ import {
   ActionListItemAction,
 } from '..'
 
+const stringComparator = (stringA: string, stringB: string) => {
+  const upperCasedStringA = stringA.toUpperCase()
+  const upperCasedStringB = stringB.toUpperCase()
+
+  if (upperCasedStringA < upperCasedStringB) return -1
+  if (upperCasedStringA > upperCasedStringB) return 1
+  return 0
+}
+
 type ActionListData = Record<string, string | number>
 
 export const createSortableActionList = (
@@ -57,36 +66,26 @@ export const createSortableActionList = (
     // The default sort behavior only allows for one column to appear sorted at a time
     // Using delete operator to clean out all sortDirection properties in our columns array
     columns.forEach(column => delete column.sortDirection)
-
-    const stringComparator = (stringA: string, stringB: string) => {
-      const upperCasedStringA = stringA.toUpperCase()
-      const upperCasedStringB = stringB.toUpperCase()
-
-      if (upperCasedStringA < upperCasedStringB) return -1
-      if (upperCasedStringA > upperCasedStringB) return 1
-      return 0
-    }
-
-    if (targetColumn && targetColumn.type === 'number') {
-      if (sortDirection === 'desc') {
-        sortedData.sort((a, b) => (b[id] as number) - (a[id] as number))
-        targetColumn.sortDirection = 'desc'
-      } else {
-        sortedData.sort((a, b) => (a[id] as number) - (b[id] as number))
-        targetColumn.sortDirection = 'asc'
+    if (targetColumn) {
+      if (targetColumn.type === 'number') {
+        if (sortDirection === 'desc') {
+          sortedData.sort((a, b) => (b[id] as number) - (a[id] as number))
+        } else {
+          sortedData.sort((a, b) => (a[id] as number) - (b[id] as number))
+        }
+      } else if (targetColumn.type === 'string') {
+        if (sortDirection === 'desc') {
+          sortedData.sort((a, b) =>
+            stringComparator(b[id] as string, a[id] as string)
+          )
+        } else {
+          sortedData.sort((a, b) =>
+            stringComparator(a[id] as string, b[id] as string)
+          )
+        }
       }
-    } else if (targetColumn && targetColumn.type === 'string') {
-      if (sortDirection === 'desc') {
-        sortedData.sort((a, b) =>
-          stringComparator(b[id] as string, a[id] as string)
-        )
-        targetColumn.sortDirection = 'desc'
-      } else {
-        sortedData.sort((a, b) =>
-          stringComparator(a[id] as string, b[id] as string)
-        )
-        targetColumn.sortDirection = 'asc'
-      }
+
+      targetColumn.sortDirection = sortDirection
     }
     setData(sortedData)
     setColumns(updatedColumns)

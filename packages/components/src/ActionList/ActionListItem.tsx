@@ -91,7 +91,7 @@ export const ActionListItem = styled(ActionListItemInternal)`
   &:focus,
   &:hover {
     box-shadow: ${({ theme, onClick }) => onClick && theme.shadows[2]};
-    cursor: ${({ onClick }) => (onClick ? 'pointer' : null)};
+    cursor: ${({ onClick }) => onClick && 'pointer'};
     outline: none;
 
     /**
