@@ -29,7 +29,7 @@ import { ButtonBase } from './ButtonBase'
 
 export const ButtonOutline = styled(ButtonBase)`
   background: ${({ theme, color = 'primary' }) =>
-    theme.colors.semanticColors[color].white};
+    theme.colors.semanticColors[color].text};
   border: 1px solid
     ${({ theme, color = 'primary' }) =>
       theme.colors.semanticColors[color].borderColor};
@@ -40,7 +40,7 @@ export const ButtonOutline = styled(ButtonBase)`
   &:focus,
   &.hover {
     background: ${({ theme, color = 'primary' }) =>
-      theme.colors.semanticColors[color].white};
+      theme.colors.semanticColors[color].text};
     border-color: ${({ theme, color = 'primary' }) =>
       theme.colors.semanticColors[color].main};
     color: ${({ theme, color = 'primary' }) =>
@@ -62,7 +62,7 @@ export const ButtonOutline = styled(ButtonBase)`
     &:active,
     &:focus {
       background-color: ${({ theme, color = 'primary' }) =>
-        theme.colors.semanticColors[color].white};
+        theme.colors.semanticColors[color].text};
       border-color: ${({ theme, color = 'primary' }) =>
         theme.colors.semanticColors[color].borderColor};
       color: ${({ theme, color = 'primary' }) =>
