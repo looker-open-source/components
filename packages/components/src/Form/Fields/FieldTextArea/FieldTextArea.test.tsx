@@ -24,24 +24,38 @@
 
  */
 
-import 'jest-styled-components'
 import React from 'react'
-import { assertSnapshot } from '@looker/components-test-utils'
+import {
+  createWithTheme,
+  mountWithTheme,
+  assertSnapshot,
+} from '@looker/components-test-utils'
+import { Label } from '../../Label/Label'
+import { FieldTextArea } from './FieldTextArea'
 
-import { TextArea } from './TextArea'
-
-test('TextArea default', () => {
-  assertSnapshot(<TextArea />)
+test('A FieldTextArea', () => {
+  assertSnapshot(<FieldTextArea label="👍" />)
 })
 
-test('TextArea with placeholder', () => {
-  assertSnapshot(<TextArea placeholder="this is a placeholder" />)
+test('FieldTextArea supports labelWeight', () => {
+  assertSnapshot(<FieldTextArea label="👍" labelFontWeight="normal" />)
 })
 
-test('TextArea should accept disabled', () => {
-  assertSnapshot(<TextArea disabled />)
+test('A required FieldTextArea', () => {
+  const component = createWithTheme(<FieldTextArea label="👍" required />)
+  const tree = component.toJSON()
+  expect(tree).toMatchSnapshot()
 })
 
-test('TextArea with an error validation', () => {
-  assertSnapshot(<TextArea validationType="error" />)
+test('A FieldTextArea with an error validation', () => {
+  const id = 'thumbs-up'
+  const component = mountWithTheme(
+    <FieldTextArea
+      label="👍"
+      id={id}
+      validationMessage={{ message: 'This is an error', type: 'error' }}
+    />
+  )
+
+  expect(component.find(Label).props().htmlFor).toEqual(id)
 })

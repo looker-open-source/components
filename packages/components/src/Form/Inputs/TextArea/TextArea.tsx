@@ -58,14 +58,12 @@ const TextAreaLayout: FC<TextAreaProps> = ({
   className,
   validationType,
   ...props
-}) => {
-  return (
-    <div className={className}>
-      <textarea {...props} />
-      {validationType && <Icon name="Warning" color="palette.red500" />}
-    </div>
-  )
-}
+}) => (
+  <div className={className}>
+    <textarea {...props} />
+    {validationType && <Icon name="Warning" color="palette.red500" />}
+  </div>
+)
 
 export const TextArea = styled(TextAreaLayout)`
   position: relative;

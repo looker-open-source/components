@@ -140,6 +140,16 @@ The `<FieldText />` component is composed of an `<InputText />` component and a 
 <FieldText name="requiredField" label="A required field" required />
 ```
 
+## FieldTextArea
+
+<Props of="FieldText" />
+
+The `<FieldTextArea />` component is composed of an `<TextArea />` component and a `<Label />` component. Using `<FieldTextArea />` allows for rendering validation messages.
+
+```jsx
+<FieldTextArea label="Tnis is the label" />
+```
+
 ### FieldText Validation
 
 The `<FieldText />` component accepts `validationMessage` as a property. This is an object with properties `type` and `message`.

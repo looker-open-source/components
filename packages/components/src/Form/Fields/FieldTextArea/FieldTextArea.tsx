@@ -24,24 +24,34 @@
 
  */
 
-import 'jest-styled-components'
-import React from 'react'
-import { assertSnapshot } from '@looker/components-test-utils'
+import React, { FC } from 'react'
+import styled from 'styled-components'
+import { v4 as uuid } from 'uuid'
+import { useFormContext } from '../../Form'
+import { TextArea, TextAreaProps } from '../../Inputs/TextArea'
+import { Field, FieldProps, omitFieldProps, pickFieldProps } from '../Field'
 
-import { TextArea } from './TextArea'
+export interface FieldTextAreaProps extends FieldProps, TextAreaProps {}
 
-test('TextArea default', () => {
-  assertSnapshot(<TextArea />)
-})
+const FieldTextAreaComponent: FC<FieldTextAreaProps> = ({ ...props }) => {
+  const { id = uuid() } = props
+  const validationMessage = useFormContext(props)
+  return (
+    <Field
+      id={id}
+      alignValidationMessage="bottom"
+      validationMessage={validationMessage}
+      {...pickFieldProps(props)}
+    >
+      <TextArea
+        {...omitFieldProps(props)}
+        validationType={validationMessage && validationMessage.type}
+      />
+    </Field>
+  )
+}
 
-test('TextArea with placeholder', () => {
-  assertSnapshot(<TextArea placeholder="this is a placeholder" />)
-})
+FieldTextAreaComponent.displayName = 'FieldTextAreaComponent'
 
-test('TextArea should accept disabled', () => {
-  assertSnapshot(<TextArea disabled />)
-})
-
-test('TextArea with an error validation', () => {
-  assertSnapshot(<TextArea validationType="error" />)
-})
+export const FieldTextArea = styled(FieldTextAreaComponent)``
+FieldTextArea.defaultProps = { width: '13rem' }
