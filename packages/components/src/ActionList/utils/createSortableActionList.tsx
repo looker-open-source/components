@@ -33,9 +33,11 @@ import {
   ActionListItemAction,
 } from '..'
 
+type ActionListData = Record<string, string | number>
+
 export const createSortableActionList = (
-  data: any[],
-  setData: (newData: any[]) => void,
+  data: ActionListData[],
+  setData: (newData: ActionListData[]) => void,
   columns: ActionListColumns,
   setColumns: (newColumns: ActionListColumns) => void
 ) => {
@@ -67,18 +69,22 @@ export const createSortableActionList = (
 
     if (targetColumn && targetColumn.type === 'number') {
       if (sortDirection === 'desc') {
-        sortedData.sort((a, b) => b[id] - a[id])
+        sortedData.sort((a, b) => (b[id] as number) - (a[id] as number))
         targetColumn.sortDirection = 'desc'
       } else {
-        sortedData.sort((a, b) => a[id] - b[id])
+        sortedData.sort((a, b) => (a[id] as number) - (b[id] as number))
         targetColumn.sortDirection = 'asc'
       }
     } else if (targetColumn && targetColumn.type === 'string') {
       if (sortDirection === 'desc') {
-        sortedData.sort((a, b) => stringComparator(b[id], a[id]))
+        sortedData.sort((a, b) =>
+          stringComparator(b[id] as string, a[id] as string)
+        )
         targetColumn.sortDirection = 'desc'
       } else {
-        sortedData.sort((a, b) => stringComparator(a[id], b[id]))
+        sortedData.sort((a, b) =>
+          stringComparator(a[id] as string, b[id] as string)
+        )
         targetColumn.sortDirection = 'asc'
       }
     }
