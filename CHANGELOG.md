@@ -10,9 +10,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.7.24] - 2020-03-12
 
 ### Added
-
+- `ArrowLeft` Icon added
 - `Checkbox` supports `defaultChecked` property.
 - `TabPanels` supports `FlexBoxProps` & `LayoutProps`
+
+### Change
+- `ArrowDropDown` and `ArrowDropUp` Icons renamed to `ArrowUp` and `ArrowDown`
 
 ## Fixed
 
