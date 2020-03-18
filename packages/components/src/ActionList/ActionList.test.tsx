@@ -220,3 +220,35 @@ describe('<ActionList /> : General Layout', () => {
     expect(queryByText('View Profile')).not.toBeInTheDocument()
   })
 })
+
+describe('<ActionList /> : Sorting', () => {
+  let rafSpy: jest.SpyInstance<number, [FrameRequestCallback]>
+
+  beforeEach(() => {
+    rafSpy = jest
+      .spyOn(window, 'requestAnimationFrame')
+      .mockImplementation((cb: any) => cb())
+  })
+
+  afterEach(() => {
+    rafSpy.mockRestore()
+  })
+
+  // const TestSortableActionList = () => {
+  //   const [testData, setTestData] = useState(data)
+  //   const [testColumns, setTestColumns] = useState(columns)
+
+  //   return createSortableActionList(
+  //     testData,
+  //     setTestData,
+  //     testColumns,
+  //     setTestColumns
+  //   )
+  // }
+
+  // test('Preserves all list items on header click', () => {
+  //   const { getByText } = renderWithTheme(
+  //     <ActionList columns={columns}>{items}</ActionList>
+  //   )
+  // })
+})

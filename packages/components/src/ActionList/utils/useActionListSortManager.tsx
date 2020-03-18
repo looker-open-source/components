@@ -24,7 +24,7 @@
 
  */
 
-import React from 'react'
+import React, { useState } from 'react'
 import {
   ActionList,
   ActionListColumns,
@@ -44,12 +44,13 @@ const stringComparator = (stringA: string, stringB: string) => {
 
 type ActionListData = Record<string, string | number>
 
-export const createSortableActionList = (
-  data: ActionListData[],
-  setData: (newData: ActionListData[]) => void,
-  columns: ActionListColumns,
-  setColumns: (newColumns: ActionListColumns) => void
+export const useActionListSortManager = (
+  actionListData: ActionListData[],
+  actionListColumns: ActionListColumns
 ) => {
+  const [data, setData] = useState(actionListData)
+  const [columns, setColumns] = useState(actionListColumns)
+
   const MyActions = () => (
     <>
       <ActionListItemAction onClick={() => alert(`You performed an action!`)}>
@@ -84,7 +85,6 @@ export const createSortableActionList = (
           )
         }
       }
-
       targetColumn.sortDirection = sortDirection
     }
     setData(sortedData)
