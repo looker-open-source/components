@@ -24,11 +24,34 @@
 
  */
 
-export * from './FieldCheckbox'
-export * from './FieldColor'
-export * from './FieldRadio'
-export * from './FieldSelect'
-export * from './FieldText'
-export * from './FieldTextArea'
-export * from './FieldToggleSwitch'
-export * from './Field'
+import React, { FC } from 'react'
+import styled from 'styled-components'
+import { v4 as uuid } from 'uuid'
+import { useFormContext } from '../../Form'
+import { TextArea, TextAreaProps } from '../../Inputs/TextArea'
+import { Field, FieldProps, omitFieldProps, pickFieldProps } from '../Field'
+
+export interface FieldTextAreaProps extends FieldProps, TextAreaProps {}
+
+const FieldTextAreaComponent: FC<FieldTextAreaProps> = ({ ...props }) => {
+  const { id = uuid() } = props
+  const validationMessage = useFormContext(props)
+  return (
+    <Field
+      id={id}
+      alignValidationMessage="bottom"
+      validationMessage={validationMessage}
+      {...pickFieldProps(props)}
+    >
+      <TextArea
+        {...omitFieldProps(props)}
+        validationType={validationMessage && validationMessage.type}
+      />
+    </Field>
+  )
+}
+
+FieldTextAreaComponent.displayName = 'FieldTextAreaComponent'
+
+export const FieldTextArea = styled(FieldTextAreaComponent)``
+FieldTextArea.defaultProps = { width: '13rem' }

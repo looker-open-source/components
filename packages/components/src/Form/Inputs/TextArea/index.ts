@@ -24,11 +24,4 @@
 
  */
 
-export * from './FieldCheckbox'
-export * from './FieldColor'
-export * from './FieldRadio'
-export * from './FieldSelect'
-export * from './FieldText'
-export * from './FieldTextArea'
-export * from './FieldToggleSwitch'
-export * from './Field'
+export * from './TextArea'

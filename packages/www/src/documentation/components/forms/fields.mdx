@@ -140,6 +140,19 @@ The `<FieldText />` component is composed of an `<InputText />` component and a 
 <FieldText name="requiredField" label="A required field" required />
 ```
 
+## FieldTextArea
+
+<Props of="FieldTextArea" />
+
+The `<FieldTextArea />` component is composed of `<TextArea />` and `<Label />` components. Using `<FieldTextArea />` allows for rendering validation messages.
+
+```jsx
+<FieldTextArea
+  label="FieldTextArea Label"
+  validationMessage={{ message: 'Some extra information' }}
+/>
+```
+
 ### FieldText Validation
 
 The `<FieldText />` component accepts `validationMessage` as a property. This is an object with properties `type` and `message`.

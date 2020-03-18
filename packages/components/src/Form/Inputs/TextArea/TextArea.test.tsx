@@ -24,11 +24,24 @@
 
  */
 
-export * from './FieldCheckbox'
-export * from './FieldColor'
-export * from './FieldRadio'
-export * from './FieldSelect'
-export * from './FieldText'
-export * from './FieldTextArea'
-export * from './FieldToggleSwitch'
-export * from './Field'
+import 'jest-styled-components'
+import React from 'react'
+import { assertSnapshot } from '@looker/components-test-utils'
+
+import { TextArea } from './TextArea'
+
+test('TextArea default', () => {
+  assertSnapshot(<TextArea />)
+})
+
+test('TextArea with placeholder', () => {
+  assertSnapshot(<TextArea placeholder="this is a placeholder" />)
+})
+
+test('TextArea should accept disabled', () => {
+  assertSnapshot(<TextArea disabled />)
+})
+
+test('TextArea with an error validation', () => {
+  assertSnapshot(<TextArea validationType="error" />)
+})

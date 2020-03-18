@@ -24,11 +24,21 @@
 
  */
 
-export * from './FieldCheckbox'
-export * from './FieldColor'
-export * from './FieldRadio'
-export * from './FieldSelect'
-export * from './FieldText'
-export * from './FieldTextArea'
-export * from './FieldToggleSwitch'
-export * from './Field'
+import React from 'react'
+import { assertSnapshot } from '@looker/components-test-utils'
+
+import { FieldTextArea } from './FieldTextArea'
+
+test('A FieldTextArea', () => {
+  assertSnapshot(<FieldTextArea id="FieldTextArea" label="this is a label" />)
+})
+
+test('A FieldTextArea with a validation message', () => {
+  assertSnapshot(
+    <FieldTextArea
+      id="errorMessage"
+      label="this is a label"
+      validationMessage={{ message: 'This is an error', type: 'error' }}
+    />
+  )
+})
