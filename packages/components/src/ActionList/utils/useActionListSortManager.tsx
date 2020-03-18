@@ -24,71 +24,34 @@
 
  */
 
-import React, { useState } from 'react'
+import React, { useState, ReactNode } from 'react'
+import { doDefaultSort } from './doDefaultSort'
 import {
   ActionList,
   ActionListColumns,
   ActionListItem,
   ActionListItemColumn,
-  ActionListItemAction,
 } from '..'
 
-const stringComparator = (stringA: string, stringB: string) => {
-  const upperCasedStringA = stringA.toUpperCase()
-  const upperCasedStringB = stringB.toUpperCase()
-
-  if (upperCasedStringA < upperCasedStringB) return -1
-  if (upperCasedStringA > upperCasedStringB) return 1
-  return 0
-}
-
-type ActionListData = Record<string, string | number>
+export type ActionListData = Record<string, string | number>
 
 export const useActionListSortManager = (
   actionListData: ActionListData[],
-  actionListColumns: ActionListColumns
+  actionListColumns: ActionListColumns,
+  generateActions: (item: ActionListData) => ReactNode
 ) => {
   const [data, setData] = useState(actionListData)
   const [columns, setColumns] = useState(actionListColumns)
 
-  const MyActions = () => (
-    <>
-      <ActionListItemAction onClick={() => alert(`You performed an action!`)}>
-        Some Action
-      </ActionListItemAction>
-    </>
-  )
-
   const doSort = (id: string, sortDirection: 'asc' | 'desc') => {
-    const sortedData = [...data]
-    const updatedColumns = [...columns]
-    const targetColumn = updatedColumns.find(column => column.id === id)
-
-    // The default sort behavior only allows for one column to appear sorted at a time
-    // Using delete operator to clean out all sortDirection properties in our columns array
-    columns.forEach(column => delete column.sortDirection)
-    if (targetColumn) {
-      if (targetColumn.type === 'number') {
-        if (sortDirection === 'desc') {
-          sortedData.sort((a, b) => (b[id] as number) - (a[id] as number))
-        } else {
-          sortedData.sort((a, b) => (a[id] as number) - (b[id] as number))
-        }
-      } else if (targetColumn.type === 'string') {
-        if (sortDirection === 'desc') {
-          sortedData.sort((a, b) =>
-            stringComparator(b[id] as string, a[id] as string)
-          )
-        } else {
-          sortedData.sort((a, b) =>
-            stringComparator(a[id] as string, b[id] as string)
-          )
-        }
-      }
-      targetColumn.sortDirection = sortDirection
-    }
+    const { columns: sortedColumns, data: sortedData } = doDefaultSort(
+      data,
+      columns,
+      id,
+      sortDirection
+    )
     setData(sortedData)
-    setColumns(updatedColumns)
+    setColumns(sortedColumns)
   }
 
   const items = data.map(dataObj => {
@@ -98,7 +61,7 @@ export const useActionListSortManager = (
       <ActionListItem
         key={dataObj[assumedPrimaryKey]}
         onClick={() => alert(`Row clicked`)}
-        actions={<MyActions />}
+        actions={generateActions(dataObj)}
       >
         {columns.map(column => (
           <ActionListItemColumn key={column.id}>

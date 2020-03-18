@@ -24,8 +24,13 @@
 
  */
 
-import { FC, useState } from 'react'
-import { ActionListColumns, useActionListSortManager } from '@looker/components'
+import React, { FC, useState } from 'react'
+import {
+  ActionListColumns,
+  ActionListData,
+  ActionListItemAction,
+  useActionListSortManager,
+} from '@looker/components'
 
 export const SortableActionListDemo: FC = () => {
   const data = useState([
@@ -59,5 +64,18 @@ export const SortableActionListDemo: FC = () => {
     },
   ])[0]
 
-  return useActionListSortManager(data, columns)
+  const generateActions = (item: ActionListData) => {
+    return (
+      <>
+        <ActionListItemAction onClick={() => alert(item.id)}>
+          Check id
+        </ActionListItemAction>
+        <ActionListItemAction onClick={() => alert(item.name)}>
+          Check name
+        </ActionListItemAction>
+      </>
+    )
+  }
+
+  return useActionListSortManager(data, columns, generateActions)
 }

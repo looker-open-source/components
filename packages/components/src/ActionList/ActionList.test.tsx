@@ -30,6 +30,7 @@ import { fireEvent } from '@testing-library/react'
 import {
   ActionList,
   ActionListColumns,
+  ActionListData,
   ActionListItem,
   ActionListItemAction,
   ActionListItemColumn,
@@ -107,8 +108,16 @@ const actionListWithNoHeader = (
   </ActionList>
 )
 
+const generateActions = (item: ActionListData) => {
+  return (
+    <ActionListItemAction onClick={() => jest.fn()}>
+      {item.name}
+    </ActionListItemAction>
+  )
+}
+
 const SortableActionListUsingHook: FC = () => {
-  return useActionListSortManager(data, columns)
+  return useActionListSortManager(data, columns, generateActions)
 }
 
 describe('ActionList', () => {
