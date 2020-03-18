@@ -99,7 +99,7 @@ exports[`A FieldTextArea 1`] = `
       color="palette.charcoal700"
       fontSize="xsmall"
       fontWeight="semiBold"
-      htmlFor="545d0623-1550-426e-ae52-a53683fa850f"
+      htmlFor="FieldTextArea"
     >
       this is a label
     </label>
@@ -260,7 +260,7 @@ exports[`A FieldTextArea with a validation message 1`] = `
       color="palette.charcoal700"
       fontSize="xsmall"
       fontWeight="semiBold"
-      htmlFor="9ea5a2c6-2f91-47bb-add7-6757385edd1c"
+      htmlFor="errorMessage"
     >
       this is a label
     </label>

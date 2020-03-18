@@ -30,12 +30,13 @@ import { assertSnapshot } from '@looker/components-test-utils'
 import { FieldTextArea } from './FieldTextArea'
 
 test('A FieldTextArea', () => {
-  assertSnapshot(<FieldTextArea label="this is a label" />)
+  assertSnapshot(<FieldTextArea id="FieldTextArea" label="this is a label" />)
 })
 
 test('A FieldTextArea with a validation message', () => {
   assertSnapshot(
     <FieldTextArea
+      id="errorMessage"
       label="this is a label"
       validationMessage={{ message: 'This is an error', type: 'error' }}
     />
