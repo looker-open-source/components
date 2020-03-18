@@ -24,17 +24,13 @@
 
  */
 
-export * from './Checkbox'
-export * from './Combobox'
-export * from './InlineTextArea'
-export * from './InputChips'
-export * from './InputDate'
-export * from './InputDateRange'
-export * from './InputHidden'
-export * from './InputSearch'
-export * from './InputText'
-export * from './Radio'
-export * from './Select'
-export * from './Slider'
-export * from './TextArea'
-export * from './ToggleSwitch'
+import styled from 'styled-components'
+import { TextArea } from '../TextArea'
+
+// export interface InlineTextAreaProps extends TextAreaProps {}
+
+export const InlineTextArea = styled(TextArea)``
+
+InlineTextArea.displayName = 'TextArea'
+
+TextArea.defaultProps = {}

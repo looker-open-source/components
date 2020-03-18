@@ -24,17 +24,24 @@
 
  */
 
-export * from './Checkbox'
-export * from './Combobox'
-export * from './InlineTextArea'
-export * from './InputChips'
-export * from './InputDate'
-export * from './InputDateRange'
-export * from './InputHidden'
-export * from './InputSearch'
-export * from './InputText'
-export * from './Radio'
-export * from './Select'
-export * from './Slider'
-export * from './TextArea'
-export * from './ToggleSwitch'
+import 'jest-styled-components'
+import React from 'react'
+import { assertSnapshot } from '@looker/components-test-utils'
+
+import { InlineTextArea } from './InlineTextArea'
+
+test('InlineTextArea default', () => {
+  assertSnapshot(<InlineTextArea />)
+})
+
+test('InlineTextArea with placeholder', () => {
+  assertSnapshot(<InlineTextArea placeholder="this is a placeholder" />)
+})
+
+test('InlineTextArea should accept disabled', () => {
+  assertSnapshot(<InlineTextArea disabled />)
+})
+
+test('InlineTextArea with an error validation', () => {
+  assertSnapshot(<InlineTextArea validationType="error" />)
+})

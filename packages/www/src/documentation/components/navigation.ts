@@ -79,6 +79,10 @@ const components: NavigationSection = {
           path: 'fields',
         },
         {
+          title: 'InlineTextArea',
+          path: 'inline-text-area',
+        },
+        {
           title: 'InputChips',
           path: 'input-chips',
         },
