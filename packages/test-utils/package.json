@@ -39,7 +39,7 @@
     "react": "^16.13.0"
   },
   "peerDependencies": {
-    "react": "^16.9.0"
+    "react": "^16.13.0"
   },
   "gitHead": "05b63c793e74648ca4ada0d1bb9d4cc278256778"
 }
