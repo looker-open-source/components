@@ -1,0 +1,367 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InlineTextArea default 1`] = `
+.c0 {
+  position: relative;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.c0 textarea {
+  height: 6.25rem;
+  width: 16rem;
+  border: solid 1px;
+  border-color: #DEE1E5;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  min-height: 6.25rem;
+  padding: 0.75rem;
+  padding-right: 2rem;
+}
+
+.c0 textarea:hover {
+  border-color: #C1C6CC;
+}
+
+.c0 textarea:focus,
+.c0 textarea:focus-within {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c0 .c1 {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+}
+
+.c0 textarea {
+  background-color: transparent;
+  border: none;
+  border-bottom: dashed 1px;
+  border-color: #C1C6CC;
+  height: 1.75rem;
+}
+
+.c0 textarea:hover {
+  background-color: #F5F6F7;
+  border-bottom-color: #6C43E0;
+}
+
+.c0 textarea:focus,
+.c0 textarea:focus-within {
+  border-bottom: solid 1px;
+  border-bottom-color: #6C43E0;
+  box-shadow: none;
+  outline: none;
+}
+
+<div
+  className="c0"
+>
+  <textarea
+    height="6.25rem"
+    width="16rem"
+  />
+</div>
+`;
+
+exports[`InlineTextArea should accept disabled 1`] = `
+.c0 {
+  position: relative;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.c0 textarea {
+  height: 6.25rem;
+  width: 16rem;
+  border: solid 1px;
+  border-color: #DEE1E5;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  min-height: 6.25rem;
+  padding: 0.75rem;
+  padding-right: 2rem;
+  background: #F5F6F7;
+  color: #939BA5;
+}
+
+.c0 textarea:hover {
+  border-color: #C1C6CC;
+}
+
+.c0 textarea:focus,
+.c0 textarea:focus-within {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c0 textarea:hover {
+  border-color: #DEE1E5;
+}
+
+.c0 .c1 {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+}
+
+.c0 textarea {
+  background-color: transparent;
+  border: none;
+  border-bottom: dashed 1px;
+  border-color: #C1C6CC;
+  height: 1.75rem;
+  background: #F5F6F7;
+  color: #939BA5;
+}
+
+.c0 textarea:hover {
+  background-color: #F5F6F7;
+  border-bottom-color: #6C43E0;
+}
+
+.c0 textarea:focus,
+.c0 textarea:focus-within {
+  border-bottom: solid 1px;
+  border-bottom-color: #6C43E0;
+  box-shadow: none;
+  outline: none;
+}
+
+.c0 textarea:hover {
+  border-color: #DEE1E5;
+}
+
+<div
+  className="c0"
+>
+  <textarea
+    disabled={true}
+    height="6.25rem"
+    width="16rem"
+  />
+</div>
+`;
+
+exports[`InlineTextArea with an error validation 1`] = `
+.c1 {
+  color: #CC1F36;
+  width: 1rem;
+  height: 1rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c3 .c2 {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+}
+
+.c4 .c2 {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+}
+
+.c0 {
+  position: relative;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.c0 textarea {
+  height: 6.25rem;
+  width: 16rem;
+  border: solid 1px;
+  border-color: #DEE1E5;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  min-height: 6.25rem;
+  padding: 0.75rem;
+  padding-right: 2rem;
+  border-color: #ED3B53;
+}
+
+.c0 textarea:hover {
+  border-color: #C1C6CC;
+}
+
+.c0 textarea:focus,
+.c0 textarea:focus-within {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c0 textarea:hover {
+  border-color: #CC1F36;
+}
+
+.c0 textarea:focus,
+.c0 textarea:focus-within {
+  border-color: #CC1F36;
+  box-shadow: 0 0 0 2px #FFE5E9;
+}
+
+.c0 .c2 {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+}
+
+.c0 textarea {
+  background-color: transparent;
+  border: none;
+  border-bottom: dashed 1px;
+  border-color: #C1C6CC;
+  height: 1.75rem;
+  border-bottom-color: #ED3B53;
+}
+
+.c0 textarea:hover {
+  background-color: #F5F6F7;
+  border-bottom-color: #6C43E0;
+}
+
+.c0 textarea:focus,
+.c0 textarea:focus-within {
+  border-bottom: solid 1px;
+  border-bottom-color: #6C43E0;
+  box-shadow: none;
+  outline: none;
+}
+
+.c0 textarea:hover {
+  border-bottom-color: #CC1F36;
+}
+
+.c0 textarea:focus,
+.c0 textarea:focus-within {
+  border-bottom-color: #CC1F36;
+  box-shadow: none;
+}
+
+<div
+  className="c0"
+>
+  <textarea
+    height="6.25rem"
+    width="16rem"
+  />
+  <div
+    className="c1 c2 "
+    color="palette.red500"
+    size="1rem"
+  >
+    <svg
+      fill="currentColor"
+      height="100%"
+      viewBox="0 0 22 19"
+      width="100%"
+    >
+      <title>
+        Warning
+      </title>
+      <path
+        d="M0 19h22L11 0 0 19zm12-3h-2v-2h2v2zm0-4h-2V8h2v4z"
+        fill="currentColor"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`InlineTextArea with placeholder 1`] = `
+.c0 {
+  position: relative;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.c0 textarea {
+  height: 6.25rem;
+  width: 16rem;
+  border: solid 1px;
+  border-color: #DEE1E5;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  min-height: 6.25rem;
+  padding: 0.75rem;
+  padding-right: 2rem;
+}
+
+.c0 textarea:hover {
+  border-color: #C1C6CC;
+}
+
+.c0 textarea:focus,
+.c0 textarea:focus-within {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c0 .c1 {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+}
+
+.c0 textarea {
+  background-color: transparent;
+  border: none;
+  border-bottom: dashed 1px;
+  border-color: #C1C6CC;
+  height: 1.75rem;
+}
+
+.c0 textarea:hover {
+  background-color: #F5F6F7;
+  border-bottom-color: #6C43E0;
+}
+
+.c0 textarea:focus,
+.c0 textarea:focus-within {
+  border-bottom: solid 1px;
+  border-bottom-color: #6C43E0;
+  box-shadow: none;
+  outline: none;
+}
+
+<div
+  className="c0"
+>
+  <textarea
+    height="6.25rem"
+    placeholder="this is a placeholder"
+    width="16rem"
+  />
+</div>
+`;

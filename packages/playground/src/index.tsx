@@ -20,17 +20,17 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { GlobalStyle } from '@looker/components'
+import { GlobalStyle, InlineTextArea } from '@looker/components'
 import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
-
-import { MenuDemo } from './Menu/MenuDemo'
 
 const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <MenuDemo />
+      <InlineTextArea />
+      <InlineTextArea disabled />
+      <InlineTextArea validationType="error" />
     </ThemeProvider>
   )
 }
