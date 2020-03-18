@@ -23,7 +23,7 @@ import React, { forwardRef, Ref } from 'react'
 import isFunction from 'lodash/isFunction'
 import styled from 'styled-components'
 import { typography, TypographyProps } from '@looker/design-tokens'
-import { inputPropKeys, InputProps } from '../Form/Inputs/InputProps'
+import { inputPropKeys, InputProps } from '../InputProps'
 
 interface InlineInputTextProps
   extends TypographyProps,
