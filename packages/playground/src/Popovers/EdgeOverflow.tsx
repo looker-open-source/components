@@ -51,7 +51,7 @@ export const EdgeOverflow: FC<Props> = ({
     >
       {(onClick, ref, className) => (
         <ButtonOutline
-          iconAfter="ArrowDropDown"
+          iconAfter="ArrowDown"
           m="xxlarge"
           className={className}
           onClick={onClick}

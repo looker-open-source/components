@@ -50,7 +50,7 @@ export const ContentOverflow: FC = ({ children }) => (
     >
       {(onClick, ref, className) => (
         <ButtonOutline
-          iconAfter="ArrowDropDown"
+          iconAfter="ArrowDown"
           m="xxlarge"
           className={className}
           onClick={onClick}
