@@ -24,7 +24,7 @@
 
  */
 
-import React, { FC, useState } from 'react'
+import React, { FC } from 'react'
 import {
   ActionListColumns,
   ActionListData,
@@ -33,7 +33,7 @@ import {
 } from '@looker/components'
 
 export const SortableActionListDemo: FC = () => {
-  const data = useState([
+  const data = [
     {
       id: 1,
       name: 'Lloyd Tabb',
@@ -42,11 +42,11 @@ export const SortableActionListDemo: FC = () => {
       id: 2,
       name: 'Ben Porterfield',
     },
-  ])[0]
+  ]
 
   // Note: column objects must be tracked using state since their sortDirection properties will change
   // depending on which column is sorted
-  const columns = useState<ActionListColumns>([
+  const columns: ActionListColumns = [
     {
       canSort: true,
       children: 'ID',
@@ -62,7 +62,7 @@ export const SortableActionListDemo: FC = () => {
       type: 'string',
       widthPercent: 80,
     },
-  ])[0]
+  ]
 
   const generateActions = (item: ActionListData) => {
     return (
