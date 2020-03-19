@@ -9,8 +9,11 @@ export const stringComparator = (stringA: string, stringB: string) => {
   return 0
 }
 
+export type ActionListDatum = Record<string, any>
+export type ActionListData = ActionListDatum[]
+
 export const doDefaultSort = (
-  data: Record<string, string | number>[],
+  data: ActionListData,
   columns: ActionListColumns,
   id: string,
   sortDirection: 'asc' | 'desc'

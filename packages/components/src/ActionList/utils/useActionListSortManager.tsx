@@ -26,6 +26,7 @@
 
 import React, { useState, ReactNode } from 'react'
 import { doDefaultSort } from './doDefaultSort'
+import { ActionListDatum, ActionListData } from '.'
 import {
   ActionList,
   ActionListColumns,
@@ -33,12 +34,10 @@ import {
   ActionListItemColumn,
 } from '..'
 
-export type ActionListData = Record<string, string | number>
-
 export const useActionListSortManager = (
-  actionListData: ActionListData[],
+  actionListData: ActionListData,
   actionListColumns: ActionListColumns,
-  generateActions: (item: ActionListData) => ReactNode
+  generateActions: (item: ActionListDatum) => ReactNode
 ) => {
   const [data, setData] = useState(actionListData)
   const [columns, setColumns] = useState(actionListColumns)
