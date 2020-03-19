@@ -30,7 +30,7 @@ import { fireEvent } from '@testing-library/react'
 import {
   ActionList,
   ActionListColumns,
-  ActionListData,
+  ActionListDatum,
   ActionListItem,
   ActionListItemAction,
   ActionListItemColumn,
@@ -108,7 +108,7 @@ const actionListWithNoHeader = (
   </ActionList>
 )
 
-const generateActions = (item: ActionListData) => {
+const generateActions = (item: ActionListDatum) => {
   return (
     <ActionListItemAction onClick={() => jest.fn()}>
       {item.name}

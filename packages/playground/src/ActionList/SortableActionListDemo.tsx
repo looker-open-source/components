@@ -27,7 +27,7 @@
 import React, { FC } from 'react'
 import {
   ActionListColumns,
-  ActionListData,
+  ActionListDatum,
   ActionListItemAction,
   useActionListSortManager,
 } from '@looker/components'
@@ -64,7 +64,7 @@ export const SortableActionListDemo: FC = () => {
     },
   ]
 
-  const generateActions = (item: ActionListData) => {
+  const generateActions = (item: ActionListDatum) => {
     return (
       <>
         <ActionListItemAction onClick={() => alert(item.id)}>
