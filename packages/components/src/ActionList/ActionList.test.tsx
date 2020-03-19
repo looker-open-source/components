@@ -24,22 +24,21 @@
 
  */
 
-import React, { FC } from 'react'
+import React from 'react'
 import { renderWithTheme } from '@looker/components-test-utils'
 import { fireEvent } from '@testing-library/react'
 import {
   ActionList,
   ActionListColumns,
-  ActionListDatum,
   ActionListItem,
   ActionListItemAction,
   ActionListItemColumn,
   ActionListHeaderColumn,
-  useActionListSortManager,
 } from '.'
 
 const columns: ActionListColumns = [
   {
+    canSort: true,
     children: 'ID',
     id: 'id',
     primaryKey: true,
@@ -107,18 +106,6 @@ const actionListWithNoHeader = (
     {items}
   </ActionList>
 )
-
-const generateActions = (item: ActionListDatum) => {
-  return (
-    <ActionListItemAction onClick={() => jest.fn()}>
-      {item.name}
-    </ActionListItemAction>
-  )
-}
-
-const SortableActionListUsingHook: FC = () => {
-  return useActionListSortManager(data, columns, generateActions)
-}
 
 describe('ActionList', () => {
   let rafSpy: jest.SpyInstance<number, [FrameRequestCallback]>
@@ -237,13 +224,31 @@ describe('ActionList', () => {
   })
 
   describe('Sorting', () => {
-    test('Preserves all list items on header click', () => {
-      const { getByText } = renderWithTheme(<SortableActionListUsingHook />)
+    const doSort = jest.fn()
+    const actionListWithSort = (
+      <ActionList columns={columns} doSort={doSort}>
+        {items}
+      </ActionList>
+    )
 
-      expect(getByText('1')).toBeInTheDocument()
-      const idHeaderColumn = getByText('ID')
-      fireEvent.click(idHeaderColumn)
-      expect(getByText('1')).toBeInTheDocument()
+    test('Calls doSort if canSort property is true', () => {
+      const { getByText } = renderWithTheme(actionListWithSort)
+
+      const idColumnHeader = getByText('ID')
+      fireEvent.click(idColumnHeader)
+      expect(doSort.mock.calls.length).toBe(1)
+
+      doSort.mockClear()
+    })
+
+    test('Does not call doSort if canSort property is false', () => {
+      const { getByText } = renderWithTheme(actionListWithSort)
+
+      const nameColumnHeader = getByText('Name')
+      fireEvent.click(nameColumnHeader)
+      expect(doSort.mock.calls.length).toBe(0)
+
+      doSort.mockClear()
     })
   })
 })
