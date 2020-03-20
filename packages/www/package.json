@@ -62,7 +62,6 @@
   },
   "eslintConfig": {
     "extends": [
-      "@looker/eslint-config/no-type-checking",
       "plugin:mdx/recommended"
     ]
   }
