@@ -57,7 +57,7 @@ import { getComboboxText } from './utils/getComboboxText'
 import { useOptionEvents } from './utils/useOptionEvents'
 import { useOptionStatus } from './utils/useOptionStatus'
 import { useAddOptionToContext } from './utils/useAddOptionToContext'
-import { ComboboxData, ComboboxMultiData } from './utils/state'
+import { ComboboxData } from './utils/state'
 
 export interface ComboboxOptionObject {
   /**
@@ -217,10 +217,6 @@ export function ComboboxOptionTextInternal({
   const { data } = contextToUse
   const { inputValue } = data
   const contextOption = (data as ComboboxData).option
-  const options = contextOption
-    ? [contextOption]
-    : (data as ComboboxMultiData).options
-  const optionTexts = options ? options.map(opt => getComboboxText(opt)) : []
 
   const option = useContext(OptionContext)
   const text = getComboboxText(option)
@@ -229,9 +225,9 @@ export function ComboboxOptionTextInternal({
     !highlightText ||
     !inputValue ||
     inputValue === '' ||
-    // inputValue is reflecting a currently selected option
+    // inputValue is reflecting the currently selected option
     // highlighting it would be weird
-    (text === inputValue && optionTexts.includes(text))
+    inputValue === getComboboxText(contextOption)
   ) {
     return <span {...props}>{text}</span>
   }

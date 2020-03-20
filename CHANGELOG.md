@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## UNRELEASED
 
+### Added
+
+- `TextArea` component was created with documentation and tests
+- `FieldTextArea` component was created with documentation and tests
+- `ArrowLeft`, `EditOutline`, `ExploreOutline` Icons added
+
+### Change
+
+- move path for InlineInputText now under Form/Inputs
+- `ArrowDropDown` and `ArrowDropUp` Icons renamed to `ArrowUp` and `ArrowDown`
+- `CacheRefesh` Icon update
+
 ## [0.7.24] - 2020-03-12
 
 ### Added

@@ -143,6 +143,27 @@ describe('<Combobox/> with children', () => {
     )
   })
 
+  test('Does not highlight current selected value', () => {
+    const { getByText, getByPlaceholderText } = renderWithTheme(
+      <Combobox key="combobox" value={{ label: 'Foo', value: '101' }}>
+        <ComboboxInput placeholder="Type here" />
+        <ComboboxList>
+          <ComboboxOption label="Foo" value="101" />
+          <ComboboxOption label="FooBar" value="102" />
+        </ComboboxList>
+      </Combobox>
+    )
+
+    const input = getByPlaceholderText('Type here')
+    fireEvent.click(input)
+    expect(getByText('Foo')).not.toHaveStyle(
+      'font-weight: 600; text-decoration: underline'
+    )
+    expect(getByText('FooBar')).not.toHaveStyle(
+      'font-weight: 600; text-decoration: underline'
+    )
+  })
+
   test.each([
     [
       'Combobox',
