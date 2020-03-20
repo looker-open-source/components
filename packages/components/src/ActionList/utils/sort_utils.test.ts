@@ -24,8 +24,7 @@
 
  */
 
-import { doDefaultActionListStringComparison } from './sort_utils'
-import { doDefaultActionListSort } from '.'
+import { stringComparator, doDefaultActionListSort } from './sort_utils'
 import { ActionListColumns } from '..'
 
 describe('Action List Sort Utils', () => {
@@ -37,9 +36,7 @@ describe('Action List Sort Utils', () => {
       ['', '%(#&@'],
       ['1234', '10000'],
     ].map(values => {
-      expect(
-        doDefaultActionListStringComparison(values[0], values[1])
-      ).toMatchSnapshot()
+      expect(stringComparator(values[0], values[1])).toMatchSnapshot()
     })
   })
 

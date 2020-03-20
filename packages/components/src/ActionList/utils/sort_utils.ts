@@ -1,9 +1,6 @@
 import { ActionListColumns } from '../ActionList'
 
-export const doDefaultActionListStringComparison = (
-  stringA: string,
-  stringB: string
-) => {
+export const stringComparator = (stringA: string, stringB: string) => {
   const upperCasedStringA = stringA.toUpperCase()
   const upperCasedStringB = stringB.toUpperCase()
 
@@ -38,11 +35,11 @@ export const doDefaultActionListSort = (
     } else if (targetColumn.type === 'string') {
       if (sortDirection === 'desc') {
         sortedData.sort((a, b) =>
-          doDefaultActionListStringComparison(b[id] as string, a[id] as string)
+          stringComparator(b[id] as string, a[id] as string)
         )
       } else {
         sortedData.sort((a, b) =>
-          doDefaultActionListStringComparison(a[id] as string, b[id] as string)
+          stringComparator(a[id] as string, b[id] as string)
         )
       }
     }
