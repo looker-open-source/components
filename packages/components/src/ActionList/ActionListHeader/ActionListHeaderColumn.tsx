@@ -23,9 +23,9 @@
  SOFTWARE.
 
  */
-
-import React, { FC, useContext } from 'react'
+import React, { useContext, forwardRef, Ref, ReactNode } from 'react'
 import styled, { css } from 'styled-components'
+import { CompatibleHTMLProps } from '@looker/design-tokens'
 import { ActionListContext } from '../ActionListContext'
 import { Icon } from '../../Icon'
 
@@ -34,45 +34,54 @@ export const columnCSS = css`
 `
 
 export interface ActionListHeaderColumnProps {
-  canSort?: boolean
-  className?: string
+  children?: ReactNode
   id: string
 }
 
-export const ActionListHeaderColumnLayout: FC<ActionListHeaderColumnProps> = ({
-  canSort,
-  children,
-  className,
-  id,
-}) => {
-  const { columns, doSort } = useContext(ActionListContext)
-  const columnInfo = columns && columns.find(column => column.id === id)
+export const ActionListHeaderColumn = forwardRef(
+  ({ children, id }: ActionListHeaderColumnProps, ref: Ref<HTMLDivElement>) => {
+    const { columns, doSort } = useContext(ActionListContext)
+    const columnInfo = columns && columns.find(column => column.id === id)
 
-  const handleClick = () => {
-    if (canSort && doSort) {
-      if (columnInfo && columnInfo.sortDirection === 'desc') {
-        doSort(id, 'asc')
-      } else {
-        doSort(id, 'desc')
+    const handleClick = () => {
+      if (doSort && columnInfo && columnInfo.canSort) {
+        if (columnInfo && columnInfo.sortDirection === 'desc') {
+          doSort(id, 'asc')
+        } else {
+          doSort(id, 'desc')
+        }
       }
     }
-  }
 
-  return (
-    <div className={className} onClick={handleClick}>
-      {children}
-      {columnInfo && columnInfo.sortDirection ? (
-        <Icon
-          ml={columnInfo.type === 'string' ? 'xxsmall' : undefined}
-          mr={columnInfo.type === 'number' ? 'xxsmall' : undefined}
-          name={columnInfo.sortDirection === 'asc' ? 'CaretUp' : 'CaretDown'}
-        ></Icon>
-      ) : null}
-    </div>
-  )
+    return (
+      <ActionListHeaderColumnStyle
+        ref={ref}
+        canSort={columnInfo && columnInfo.canSort}
+        onClick={handleClick}
+      >
+        {children}
+        {columnInfo && columnInfo.sortDirection ? (
+          <Icon
+            ml={columnInfo.type === 'string' ? 'xxsmall' : undefined}
+            mr={columnInfo.type === 'number' ? 'xxsmall' : undefined}
+            name={columnInfo.sortDirection === 'asc' ? 'CaretUp' : 'CaretDown'}
+          ></Icon>
+        ) : null}
+      </ActionListHeaderColumnStyle>
+    )
+  }
+)
+
+ActionListHeaderColumn.displayName = 'ActionListHeaderColumn'
+
+export interface ActionListHeaderColumnStyleProps
+  extends CompatibleHTMLProps<HTMLDivElement> {
+  canSort?: boolean
 }
 
-export const ActionListHeaderColumn = styled(ActionListHeaderColumnLayout)`
+export const ActionListHeaderColumnStyle = styled.div<
+  ActionListHeaderColumnStyleProps
+>`
   ${columnCSS}
   display: flex;
   align-items: center;

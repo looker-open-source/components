@@ -28,12 +28,12 @@ import styled, { css } from 'styled-components'
 import React, { FC, ReactNode } from 'react'
 import {
   ActionListHeader,
-  ActionListHeaderColumn,
   generateActionListHeaderColumns,
 } from './ActionListHeader'
 import { ActionListItemColumn } from './ActionListItemColumn'
 import { ActionListRowColumns } from './ActionListRow'
 import { ActionListContext } from './ActionListContext'
+import { ActionListHeaderColumnStyle } from './ActionListHeader/ActionListHeaderColumn'
 
 export type ActionListColumns = ActionListColumn[]
 export interface ActionListColumn {
@@ -116,7 +116,7 @@ const alignRightCSS = css<ActionListProps>`
       (column: ActionListColumn, index: number) =>
         `
             ${ActionListItemColumn}:nth-child(${index + 1}),
-            ${ActionListHeaderColumn}:nth-child(${index + 1}) {
+            ${ActionListHeaderColumnStyle}:nth-child(${index + 1}) {
               display: flex;
               flex-direction: ${
                 column.type === 'number' ? 'row-reverse' : 'row'
