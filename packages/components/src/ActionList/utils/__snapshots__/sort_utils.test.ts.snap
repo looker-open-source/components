@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Action List Sort Utils doDefaultSort 1`] = `
+exports[`Action List Sort Utils Default sort 1`] = `
 Object {
   "columns": Array [
     Object {
@@ -33,7 +33,7 @@ Object {
 }
 `;
 
-exports[`Action List Sort Utils doDefaultSort 2`] = `
+exports[`Action List Sort Utils Default sort 2`] = `
 Object {
   "columns": Array [
     Object {
@@ -66,7 +66,7 @@ Object {
 }
 `;
 
-exports[`Action List Sort Utils doDefaultSort 3`] = `
+exports[`Action List Sort Utils Default sort 3`] = `
 Object {
   "columns": Array [
     Object {
@@ -99,7 +99,7 @@ Object {
 }
 `;
 
-exports[`Action List Sort Utils doDefaultSort 4`] = `
+exports[`Action List Sort Utils Default sort 4`] = `
 Object {
   "columns": Array [
     Object {
@@ -132,12 +132,12 @@ Object {
 }
 `;
 
-exports[`Action List Sort Utils stringComparitor 1`] = `-1`;
+exports[`Action List Sort Utils Default string comparison 1`] = `-1`;
 
-exports[`Action List Sort Utils stringComparitor 2`] = `0`;
+exports[`Action List Sort Utils Default string comparison 2`] = `0`;
 
-exports[`Action List Sort Utils stringComparitor 3`] = `1`;
+exports[`Action List Sort Utils Default string comparison 3`] = `1`;
 
-exports[`Action List Sort Utils stringComparitor 4`] = `-1`;
+exports[`Action List Sort Utils Default string comparison 4`] = `-1`;
 
-exports[`Action List Sort Utils stringComparitor 5`] = `1`;
+exports[`Action List Sort Utils Default string comparison 5`] = `1`;
