@@ -26,6 +26,7 @@
 
 export * from './Checkbox'
 export * from './Combobox'
+export * from './InlineInputText'
 export * from './InputChips'
 export * from './InputDate'
 export * from './InputDateRange'
@@ -35,4 +36,5 @@ export * from './InputText'
 export * from './Radio'
 export * from './Select'
 export * from './Slider'
+export * from './TextArea'
 export * from './ToggleSwitch'
