@@ -25,8 +25,7 @@
  */
 
 import React, { useState, ReactNode } from 'react'
-import { doDefaultSort } from './doDefaultSort'
-import { ActionListDatum, ActionListData } from '.'
+import { ActionListDatum, ActionListData, doDefaultActionListSort } from '.'
 import {
   ActionList,
   ActionListColumns,
@@ -43,12 +42,10 @@ export const useActionListSortManager = (
   const [columns, setColumns] = useState(actionListColumns)
 
   const doSort = (id: string, sortDirection: 'asc' | 'desc') => {
-    const { columns: sortedColumns, data: sortedData } = doDefaultSort(
-      data,
-      columns,
-      id,
-      sortDirection
-    )
+    const {
+      columns: sortedColumns,
+      data: sortedData,
+    } = doDefaultActionListSort(data, columns, id, sortDirection)
     setData(sortedData)
     setColumns(sortedColumns)
   }

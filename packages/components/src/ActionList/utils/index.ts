@@ -24,5 +24,9 @@
 
  */
 
-export * from './doDefaultSort'
+export {
+  ActionListDatum,
+  ActionListData,
+  doDefaultActionListSort,
+} from './sort_utils'
 export * from './useActionListSortManager'

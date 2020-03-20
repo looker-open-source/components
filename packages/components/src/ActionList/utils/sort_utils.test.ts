@@ -24,11 +24,12 @@
 
  */
 
-import { stringComparator, doDefaultSort } from './doDefaultSort'
+import { doDefaultActionListStringComparison } from './sort_utils'
+import { doDefaultActionListSort } from '.'
 import { ActionListColumns } from '..'
 
 describe('Action List Sort Utils', () => {
-  test('stringComparitor', () => {
+  test('Default string comparison', () => {
     ;[
       ['Animal', 'Crossing'],
       ['MaRiO', 'mario'],
@@ -36,11 +37,13 @@ describe('Action List Sort Utils', () => {
       ['', '%(#&@'],
       ['1234', '10000'],
     ].map(values => {
-      expect(stringComparator(values[0], values[1])).toMatchSnapshot()
+      expect(
+        doDefaultActionListStringComparison(values[0], values[1])
+      ).toMatchSnapshot()
     })
   })
 
-  test('doDefaultSort', () => {
+  test('Default sort', () => {
     const data = [
       {
         id: 1,
@@ -93,7 +96,9 @@ describe('Action List Sort Utils', () => {
     ]
 
     sets.map(({ id, sortDirection }) => {
-      expect(doDefaultSort(data, columns, id, sortDirection)).toMatchSnapshot()
+      expect(
+        doDefaultActionListSort(data, columns, id, sortDirection)
+      ).toMatchSnapshot()
     })
   })
 })

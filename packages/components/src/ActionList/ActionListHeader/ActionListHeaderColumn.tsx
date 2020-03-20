@@ -45,11 +45,7 @@ export const ActionListHeaderColumn = forwardRef(
 
     const handleClick = () => {
       if (doSort && columnInfo && columnInfo.canSort) {
-        if (columnInfo && columnInfo.sortDirection === 'desc') {
-          doSort(id, 'asc')
-        } else {
-          doSort(id, 'desc')
-        }
+        doSort(id, columnInfo.sortDirection === 'asc' ? 'desc' : 'asc')
       }
     }
 
