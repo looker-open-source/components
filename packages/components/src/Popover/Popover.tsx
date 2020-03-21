@@ -33,7 +33,6 @@ import React, {
   Ref,
   SyntheticEvent,
 } from 'react'
-import { Popper } from 'react-popper'
 import { Box } from '../Layout'
 import { ModalPortal, ModalContext } from '../Modal'
 import { OverlaySurface } from '../Overlay/OverlaySurface'
@@ -42,6 +41,7 @@ import {
   useControlWarn,
   useFocusTrap,
   useHovered,
+  usePopper,
   useScrollLock,
 } from '../utils'
 
@@ -431,6 +431,7 @@ export function usePopover({
   }
 
   const [containerElement, contentContainerRef] = useCallbackRef<HTMLElement>()
+  const { targetRef, arrowRef } = usePopper(triggerElement)
 
   const popover = !openWithoutElem && isOpen && (
     <ModalContext.Provider
@@ -446,6 +447,7 @@ export function usePopover({
       }}
     >
       <ModalPortal ref={scrollRef}>
+        {/* <ModalPortal ref={scrollRef}>
         <Popper
           positionFixed
           placement={propsPlacement}
@@ -464,31 +466,33 @@ export function usePopover({
           }}
           referenceElement={element || undefined}
         >
-          {({ ref, style, arrowProps, placement }) => (
-            <OverlaySurface
-              arrow={arrow}
-              arrowProps={arrowProps}
-              placement={placement}
-              ref={ref}
-              style={style}
-              backgroundColor="palette.white"
-              border="1px solid"
-              borderColor="palette.charcoal200"
-              borderRadius="medium"
-              boxShadow={3}
-              color="palette.charcoal900"
-            >
-              <Box
-                maxHeight={`calc(${verticalSpace - 10}px - 1rem)`}
-                overflowY="auto"
-                borderRadius="inherit"
-                ref={contentContainerRef}
-              >
-                {content}
-              </Box>
-            </OverlaySurface>
-          )}
-        </Popper>
+          {({ ref, style, arrowProps, placement }) => ( */}
+        <OverlaySurface
+          arrow={arrow}
+          // arrowProps={arrowProps}
+          arrowProps={{ ref: arrowRef, style: {} } as any}
+          // placement={placement}
+          placement={propsPlacement}
+          ref={targetRef}
+          // style={style}
+          backgroundColor="palette.white"
+          border="1px solid"
+          borderColor="palette.charcoal200"
+          borderRadius="medium"
+          boxShadow={3}
+          color="palette.charcoal900"
+        >
+          <Box
+            maxHeight={`calc(${verticalSpace - 10}px - 1rem)`}
+            overflowY="auto"
+            borderRadius="inherit"
+            ref={contentContainerRef}
+          >
+            {content}
+          </Box>
+        </OverlaySurface>
+        {/* )}
+        </Popper> */}
       </ModalPortal>
     </ModalContext.Provider>
   )

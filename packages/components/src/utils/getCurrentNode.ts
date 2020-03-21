@@ -24,16 +24,19 @@
 
  */
 
-export * from './useControlWarn'
-export * from './useReadOnlyWarn'
-export * from './useCallbackRef'
-export * from './useFocusTrap'
-export * from './useForkedRef'
-export * from './useHovered'
-export * from './useID'
-export * from './useMouseDownClick'
-export * from './usePopper'
-export * from './useScrollLock'
-export * from './useToggle'
-export * from './useWrapEvent'
-export * from './i18n'
+import { RefObject } from 'react'
+
+export type ElementOrRef<E extends HTMLElement = HTMLElement> =
+  | E
+  | null
+  | undefined
+  | RefObject<E>
+
+export function getCurrentNode<E extends HTMLElement = HTMLElement>(
+  elementOrRefObject: ElementOrRef<E>
+): E | null {
+  if (elementOrRefObject === null) return null
+  return (elementOrRefObject as E).addEventListener
+    ? (elementOrRefObject as E)
+    : (elementOrRefObject as RefObject<E>).current
+}
