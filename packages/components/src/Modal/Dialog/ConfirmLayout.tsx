@@ -37,7 +37,9 @@ export const ConfirmLayout: FC<ConfirmLayoutProps> = ({
 }) => {
   return (
     <>
-      <ModalHeader headerIcon={titleIcon}>{title}</ModalHeader>
+      <ModalHeader hideClose headerIcon={titleIcon}>
+        {title}
+      </ModalHeader>
       <ModalContent innerProps={{ py: 'none' }}>
         {typeof message === 'string' ? (
           <Paragraph>{message}</Paragraph>
