@@ -5,25 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## UNRELEASED
+## [0.7.25] - 2020-03-23
 
 ### Added
 
-- `TextArea` component was created with documentation and tests
-- `FieldTextArea` component was created with documentation and tests
+- `ActionList` now supports sorting
 - `ArrowLeft`, `EditOutline`, `ExploreOutline` Icons added
-- `ActionList` supports sorting
+- `FieldTextArea` component was created with documentation and tests
 - `ModalHeader` add support for `iconClose` option
+- `TextArea` component was created with documentation and tests
 
 ### Change
 
-- move path for InlineInputText now under Form/Inputs
-- update InputSearch to display search icon
+- `ActionList` closes Actions menu on `ActionListItemAction` click
 - `ArrowDropDown` and `ArrowDropUp` Icons renamed to `ArrowUp` and `ArrowDown`
 - `CacheRefesh` Icon update
-- `ActionList` closes Actions menu on `ActionListItemAction` click
 - `Confirm` no longer displays a `Close` `IconButton` in the header
-
+- `InputSearch` now has a `Search` icon
 
 ## [0.7.24] - 2020-03-12
 
