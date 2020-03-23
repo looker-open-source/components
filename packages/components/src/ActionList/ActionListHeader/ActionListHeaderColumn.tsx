@@ -24,24 +24,24 @@
 
  */
 import React, { useContext, forwardRef, Ref, ReactNode } from 'react'
-import styled, { css } from 'styled-components'
-import { CompatibleHTMLProps } from '@looker/design-tokens'
+import styled from 'styled-components'
 import { ActionListContext } from '../ActionListContext'
 import { Icon } from '../../Icon'
 
-export const columnCSS = css`
-  padding: ${props => props.theme.space.small};
-`
-
 export interface ActionListHeaderColumnProps {
   children?: ReactNode
+  className?: string
   id: string
 }
 
-export const ActionListHeaderColumn = forwardRef(
-  ({ children, id }: ActionListHeaderColumnProps, ref: Ref<HTMLDivElement>) => {
+const ActionListHeaderColumnLayout = forwardRef(
+  (
+    { className, children, id }: ActionListHeaderColumnProps,
+    ref: Ref<HTMLDivElement>
+  ) => {
     const { columns, doSort } = useContext(ActionListContext)
     const columnInfo = columns && columns.find(column => column.id === id)
+    const canSort = columnInfo && columnInfo.canSort
 
     const handleClick = () => {
       if (doSort && columnInfo && columnInfo.canSort) {
@@ -50,10 +50,11 @@ export const ActionListHeaderColumn = forwardRef(
     }
 
     return (
-      <ActionListHeaderColumnStyle
-        ref={ref}
-        canSort={columnInfo && columnInfo.canSort}
+      <div
+        className={className}
         onClick={handleClick}
+        ref={ref}
+        style={{ cursor: canSort ? 'pointer' : undefined }}
       >
         {children}
         {columnInfo && columnInfo.sortDirection ? (
@@ -63,23 +64,14 @@ export const ActionListHeaderColumn = forwardRef(
             name={columnInfo.sortDirection === 'asc' ? 'CaretUp' : 'CaretDown'}
           ></Icon>
         ) : null}
-      </ActionListHeaderColumnStyle>
+      </div>
     )
   }
 )
 
-ActionListHeaderColumn.displayName = 'ActionListHeaderColumn'
+ActionListHeaderColumnLayout.displayName = 'ActionListHeaderColumnSty;e'
 
-export interface ActionListHeaderColumnStyleProps
-  extends CompatibleHTMLProps<HTMLDivElement> {
-  canSort?: boolean
-}
-
-export const ActionListHeaderColumnStyle = styled.div<
-  ActionListHeaderColumnStyleProps
->`
-  ${columnCSS}
+export const ActionListHeaderColumn = styled(ActionListHeaderColumnLayout)`
   display: flex;
   align-items: center;
-  cursor: ${({ canSort }) => canSort && 'pointer'};
 `
