@@ -26,7 +26,7 @@
 
 import { CompatibleHTMLProps } from '@looker/design-tokens'
 import styled from 'styled-components'
-import React, { FC, ReactNode, useRef, useState } from 'react'
+import React, { FC, ReactNode, useRef } from 'react'
 import { IconButton } from '../Button'
 import { Menu, MenuDisclosure, MenuList } from '../Menu'
 import { ActionListRow } from './ActionListRow'
@@ -59,15 +59,9 @@ const ActionListItemInternal: FC<ActionListItemProps> = ({
     }
   }
 
-  const [isOpen, setOpen] = useState(false)
-
   const itemActions = actions && (
     <div onClick={handleMenuClick}>
-      <Menu
-        isOpen={isOpen}
-        setOpen={setOpen}
-        hoverDisclosureRef={actionListItemRef}
-      >
+      <Menu hoverDisclosureRef={actionListItemRef}>
         <MenuDisclosure>
           <IconButton icon="DotsVert" label="Actions" size="medium" />
         </MenuDisclosure>
