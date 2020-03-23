@@ -49,16 +49,16 @@ export const SortableActionListDemo: FC = () => {
   const columns: ActionListColumns = [
     {
       canSort: true,
-      children: 'ID',
       id: 'id',
       primaryKey: true,
+      title: 'ID',
       type: 'number',
       widthPercent: 20,
     },
     {
       canSort: true,
-      children: 'Name',
       id: 'name',
+      title: 'Name',
       type: 'string',
       widthPercent: 80,
     },
