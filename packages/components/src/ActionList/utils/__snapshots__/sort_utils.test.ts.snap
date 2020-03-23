@@ -5,17 +5,17 @@ Object {
   "columns": Array [
     Object {
       "canSort": true,
-      "children": "ID",
       "id": "id",
       "primaryKey": true,
       "sortDirection": "asc",
+      "title": "ID",
       "type": "number",
       "widthPercent": 20,
     },
     Object {
       "canSort": true,
-      "children": "Name",
       "id": "name",
+      "title": "Name",
       "type": "string",
       "widthPercent": 80,
     },
@@ -38,17 +38,17 @@ Object {
   "columns": Array [
     Object {
       "canSort": true,
-      "children": "ID",
       "id": "id",
       "primaryKey": true,
       "sortDirection": "desc",
+      "title": "ID",
       "type": "number",
       "widthPercent": 20,
     },
     Object {
       "canSort": true,
-      "children": "Name",
       "id": "name",
+      "title": "Name",
       "type": "string",
       "widthPercent": 80,
     },
@@ -71,17 +71,17 @@ Object {
   "columns": Array [
     Object {
       "canSort": true,
-      "children": "ID",
       "id": "id",
       "primaryKey": true,
+      "title": "ID",
       "type": "number",
       "widthPercent": 20,
     },
     Object {
       "canSort": true,
-      "children": "Name",
       "id": "name",
       "sortDirection": "asc",
+      "title": "Name",
       "type": "string",
       "widthPercent": 80,
     },
@@ -104,17 +104,17 @@ Object {
   "columns": Array [
     Object {
       "canSort": true,
-      "children": "ID",
       "id": "id",
       "primaryKey": true,
+      "title": "ID",
       "type": "number",
       "widthPercent": 20,
     },
     Object {
       "canSort": true,
-      "children": "Name",
       "id": "name",
       "sortDirection": "desc",
+      "title": "Name",
       "type": "string",
       "widthPercent": 80,
     },
