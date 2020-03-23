@@ -50,6 +50,7 @@ import {
 } from '../InputText'
 import { useControlWarn, useForkedRef, useWrapEvent } from '../../../utils'
 import { Flex } from '../../../Layout'
+import { Icon } from '../../../Icon'
 import { InputSearchControls } from './InputSearchControls'
 
 const getHeight = (
@@ -71,6 +72,10 @@ export interface InputSearchProps extends InputTextProps {
    * hides clear button and summary text
    */
   hideControls?: boolean
+  /**
+   * hides search Icon
+   */
+  hideSearchIcon?: boolean
   /**
    * overrides the internal logic that shows the clear icon when there's a value
    */
@@ -95,6 +100,11 @@ export interface InputSearchProps extends InputTextProps {
   onMouseUp?: (e: MouseEvent<HTMLDivElement>) => void
 }
 
+export const SearchIcon = styled(Icon)`
+  color: ${props => props.theme.colors.palette.charcoal400};
+  padding-left: ${props => props.theme.space.small};
+`
+
 const InputSearchComponent = forwardRef(
   (
     {
@@ -112,6 +122,7 @@ const InputSearchComponent = forwardRef(
       className,
       defaultValue,
       hideControls = false,
+      hideSearchIcon = false,
       showClear,
       summary,
       value: controlledValue = '',
@@ -197,6 +208,7 @@ const InputSearchComponent = forwardRef(
         {...omit(props, inputPropKeys)}
         {...mouseHandlers}
       >
+        {!hideSearchIcon && <SearchIcon name="Search" size={30} />}
         {children ? (
           <Flex alignItems="flex-start" flexWrap="wrap">
             {children}

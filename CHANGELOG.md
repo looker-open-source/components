@@ -17,9 +17,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Change
 
 - move path for InlineInputText now under Form/Inputs
+- update InputSearch to display search icon
 - `ArrowDropDown` and `ArrowDropUp` Icons renamed to `ArrowUp` and `ArrowDown`
 - `CacheRefesh` Icon update
 - `Confirm` no longer displays a `Close` `IconButton` in the header
+
 
 ## [0.7.24] - 2020-03-12
 
