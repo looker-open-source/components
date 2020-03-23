@@ -27,7 +27,6 @@
 import React, { FC, ReactNode } from 'react'
 import styled from 'styled-components'
 import { Paragraph } from '../'
-import { columnCSS } from './ActionListHeader/ActionListHeaderColumn'
 
 interface ActionListItemColumnProps {
   detail?: ReactNode
@@ -59,13 +58,12 @@ const ActionListItemColumnLayout: FC<ActionListItemColumnProps> = ({
 export const ActionListItemColumn = styled(ActionListItemColumnLayout)<
   ActionListItemColumnProps
 >`
-  ${columnCSS}
+  color: ${props => props.theme.colors.palette.charcoal700};
+  display: ${props => (props.indicator ? 'flex' : undefined)};
+  font-size: ${props => props.theme.fontSizes.xsmall};
+  overflow: hidden;
   padding-top: ${props => props.theme.space.medium};
   padding-bottom: ${props => props.theme.space.medium};
-
-  display: ${props => (props.indicator ? 'flex' : undefined)};
-
-  overflow: hidden;
 
   ${ActionListItemColumnInnerLayout} {
     display: flex;

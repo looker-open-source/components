@@ -24,13 +24,10 @@
 
  */
 
-import styled from 'styled-components'
-import { ActionListRow } from '../ActionListRow'
-
-export const ActionListHeader = styled(ActionListRow)`
-  border-bottom: solid 1px ${props => props.theme.colors.palette.charcoal200};
-  color: ${props => props.theme.colors.palette.charcoal900};
-  display: flex;
-  font-size: ${props => props.theme.fontSizes.xsmall};
-  font-weight: ${props => props.theme.fontWeights.semiBold};
-`
+import {
+  ActionListDatum,
+  ActionListData,
+  doDefaultActionListSort,
+} from './sort_utils'
+export { ActionListDatum, ActionListData, doDefaultActionListSort }
+export * from './useActionListSortManager'

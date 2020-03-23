@@ -28,15 +28,20 @@ import styled, { css } from 'styled-components'
 import React, { FC, ReactNode } from 'react'
 import {
   ActionListHeader,
-  ActionListHeaderColumn,
   generateActionListHeaderColumns,
 } from './ActionListHeader'
 import { ActionListItemColumn } from './ActionListItemColumn'
 import { ActionListRowColumns } from './ActionListRow'
+import { ActionListContext } from './ActionListContext'
+import { ActionListHeaderColumn } from './ActionListHeader/ActionListHeaderColumn'
 
 export type ActionListColumns = ActionListColumn[]
 export interface ActionListColumn {
   children: ReactNode
+  /**
+   * A unique identifier for a given column
+   * Note: A column object's id should match a key in your data object template
+   */
   id: string
   /**
    * Determines whether a given column is a primary key or not
@@ -52,6 +57,13 @@ export interface ActionListColumn {
    * Determines how much of a row's width this column should take up
    */
   widthPercent?: number
+  /**
+   * Determines whether a column is sortable (i.e. whether a column's header can be clicked to perform a sort)
+   * Note: You must provide a doSort callback to the parent <ActionList/> component
+   * @default false
+   */
+  canSort?: boolean
+  sortDirection?: 'asc' | 'desc'
 }
 
 export interface ActionListProps {
@@ -61,6 +73,10 @@ export interface ActionListProps {
    * default: true
    */
   header?: boolean | ReactNode
+  /**
+   * Sort function provided by the developer
+   */
+  doSort?: (id: string, sortDirection: 'asc' | 'desc') => void
 }
 
 export const ActionListLayout: FC<ActionListProps> = ({
@@ -68,6 +84,7 @@ export const ActionListLayout: FC<ActionListProps> = ({
   header = true,
   children,
   columns,
+  doSort,
 }) => {
   const actionListHeader =
     header === true ? (
@@ -78,56 +95,75 @@ export const ActionListLayout: FC<ActionListProps> = ({
       <ActionListHeader>{header}</ActionListHeader>
     )
 
+  const context = {
+    columns,
+    doSort,
+  }
+
   return (
-    <div className={className}>
-      {actionListHeader}
-      <div>{children}</div>
-    </div>
+    <ActionListContext.Provider value={context}>
+      <div className={className}>
+        {actionListHeader}
+        <div>{children}</div>
+      </div>
+    </ActionListContext.Provider>
   )
 }
 
-const textAlignRightCSS = css<ActionListProps>`
-  ${props =>
-    props.columns.map((column: ActionListColumn, index: number) =>
-      column.type === 'number'
-        ? `
-            ${ActionListItemColumn}:nth-child(${index + 1}),
-            ${ActionListHeaderColumn}:nth-child(${index + 1}) {
-              text-align: right;
-            }
-          `
-        : ''
-    )}
-`
+function filterUndefined<T>(t: T | undefined): t is T {
+  return t !== undefined
+}
 
-const primaryKeyColumnCSS = css<ActionListProps>`
-  ${props =>
-    props.columns.map((column: ActionListColumn, index: number) =>
-      column.primaryKey
-        ? `
-          ${ActionListItemColumn}:nth-child(${index + 1}) {
-            color: ${props.theme.colors.palette.charcoal900};
-            font-size: ${props.theme.fontSizes.small};
-          }
-        `
-        : `
-          ${ActionListItemColumn}:nth-child(${index + 1}) {
-            color: ${props.theme.colors.palette.charcoal700};
-            font-size: ${props.theme.fontSizes.xsmall};
+const getPrimaryKeyColumnIndices = (columns: ActionListColumn[]) =>
+  columns
+    .map((column, index) => (column.primaryKey ? index : undefined))
+    .filter(filterUndefined)
+
+const primaryKeyColumnCSS = (columns: number[]) =>
+  css`
+    ${columns.map(
+      column =>
+        css`
+          ${ActionListItemColumn}:nth-child(${column + 1}) {
+            color: ${props => props.theme.colors.palette.charcoal900};
+            font-size: ${props => props.theme.fontSizes.small};
           }
         `
     )}
-`
+  `
+
+const getNumericColumnIndices = (columns: ActionListColumn[]) =>
+  columns
+    .map((column, index) => (column.type === 'number' ? index : undefined))
+    .filter(filterUndefined)
+
+const numericColumnCSS = (columns: number[]) =>
+  css`
+    ${columns.map(
+      column =>
+        css`
+        ${ActionListItemColumn}:nth-child(${column + 1}),
+        ${ActionListHeaderColumn}:nth-child(${column + 1}) {
+          flex-direction: row-reverse
+        }
+      `
+    )}
+  `
 
 export const ActionList = styled(ActionListLayout)<ActionListProps>`
-  ${textAlignRightCSS}
-
-  ${primaryKeyColumnCSS}
-
   ${ActionListRowColumns} {
     display: grid;
     grid-template-columns: ${props =>
       props.columns.map(column => `${column.widthPercent}%`).join(' ')};
     align-items: center;
   }
+
+  ${/* sc-selector */ ActionListItemColumn},
+  ${/* sc-selector */ ActionListHeaderColumn} {
+    display: flex;
+    padding: ${props => props.theme.space.small};
+  }
+
+  ${props => numericColumnCSS(getNumericColumnIndices(props.columns))}
+  ${props => primaryKeyColumnCSS(getPrimaryKeyColumnIndices(props.columns))}
 `
