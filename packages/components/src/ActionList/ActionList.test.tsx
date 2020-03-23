@@ -39,21 +39,21 @@ import {
 const columns: ActionListColumns = [
   {
     canSort: true,
-    children: 'ID',
     id: 'id',
     primaryKey: true,
+    title: 'ID',
     type: 'number',
     widthPercent: 10,
   },
   {
-    children: 'Name',
     id: 'name',
+    title: 'Name',
     type: 'string',
     widthPercent: 45,
   },
   {
-    children: 'Role',
     id: 'role',
+    title: 'Role',
     type: 'string',
     widthPercent: 45,
   },
@@ -218,7 +218,6 @@ describe('ActionList', () => {
       fireEvent.click(viewProfileAction)
       expect(handleActionClick.mock.calls.length).toBe(1)
 
-      fireEvent.click(listItemButton)
       expect(queryByText('View Profile')).not.toBeInTheDocument()
     })
   })
