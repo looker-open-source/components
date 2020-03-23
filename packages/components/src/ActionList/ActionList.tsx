@@ -110,14 +110,14 @@ export const ActionListLayout: FC<ActionListProps> = ({
   )
 }
 
-function filerUndefined<T>(t: T | undefined): t is T {
+function filterUndefined<T>(t: T | undefined): t is T {
   return t !== undefined
 }
 
 const getPrimaryKeyColumnIndices = (columns: ActionListColumn[]) =>
   columns
     .map((column, index) => (column.primaryKey ? index : undefined))
-    .filter(filerUndefined)
+    .filter(filterUndefined)
 
 const primaryKeyColumnCSS = (columns: number[]) =>
   css`
@@ -135,7 +135,7 @@ const primaryKeyColumnCSS = (columns: number[]) =>
 const getNumericColumnIndices = (columns: ActionListColumn[]) =>
   columns
     .map((column, index) => (column.type === 'number' ? index : undefined))
-    .filter(filerUndefined)
+    .filter(filterUndefined)
 
 const numericColumnCSS = (columns: number[]) =>
   css`

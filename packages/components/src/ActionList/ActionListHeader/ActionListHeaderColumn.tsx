@@ -69,7 +69,7 @@ const ActionListHeaderColumnLayout = forwardRef(
   }
 )
 
-ActionListHeaderColumnLayout.displayName = 'ActionListHeaderColumnSty;e'
+ActionListHeaderColumnLayout.displayName = 'ActionListHeaderColumnLayout'
 
 export const ActionListHeaderColumn = styled(ActionListHeaderColumnLayout)`
   display: flex;
