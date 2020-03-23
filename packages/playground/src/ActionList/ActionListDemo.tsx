@@ -61,33 +61,33 @@ const data = [
 
 const columns: ActionListColumns = [
   {
-    children: 'PDT Name',
     id: 'pdt_name',
     primaryKey: true,
+    title: 'PDT Name',
     type: 'string',
     widthPercent: 27,
   },
   {
-    children: 'Status',
     id: 'status',
+    title: 'Status',
     type: 'string',
     widthPercent: 13,
   },
   {
-    children: 'Model',
     id: 'model',
+    title: 'Model',
     type: 'string',
     widthPercent: 20,
   },
   {
-    children: 'Persistance Type',
     id: 'persistance_type',
+    title: 'Persistance Type',
     type: 'string',
     widthPercent: 20,
   },
   {
-    children: 'Last Successful Build',
     id: 'last_successful_build',
+    title: 'Last Successful Build',
     type: 'string',
     widthPercent: 20,
   },
@@ -144,7 +144,7 @@ export const ActionListDemo: FC = () => {
           }
           indicator={
             <Icon
-              name={status === 'Success' ? 'ArrowUp' : 'ArrowDown'}
+              name={status === 'Success' ? 'CircleCheck' : 'CircleCancel'}
               color={
                 status === 'Success' ? 'palette.green300' : 'palette.red300'
               }

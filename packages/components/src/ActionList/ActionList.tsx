@@ -37,7 +37,7 @@ import { ActionListHeaderColumn } from './ActionListHeader/ActionListHeaderColum
 
 export type ActionListColumns = ActionListColumn[]
 export interface ActionListColumn {
-  children: ReactNode
+  title: ReactNode
   /**
    * A unique identifier for a given column
    * Note: A column object's id should match a key in your data object template

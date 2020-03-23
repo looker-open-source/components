@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `TextArea` component was created with documentation and tests
 - `FieldTextArea` component was created with documentation and tests
 - `ArrowLeft`, `EditOutline`, `ExploreOutline` Icons added
+- `ActionList` supports sorting
 - `ModalHeader` add support for `iconClose` option
 
 ### Change
@@ -20,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - update InputSearch to display search icon
 - `ArrowDropDown` and `ArrowDropUp` Icons renamed to `ArrowUp` and `ArrowDown`
 - `CacheRefesh` Icon update
+- `ActionList` closes Actions menu on `ActionListItemAction` click
 - `Confirm` no longer displays a `Close` `IconButton` in the header
 
 
