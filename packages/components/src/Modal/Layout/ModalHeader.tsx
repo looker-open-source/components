@@ -44,6 +44,11 @@ export interface ModalHeaderProps
     CompatibleHTMLProps<HTMLElement> {
   children: string | string[]
   /**
+   * Don't include the "Close" option
+   * @default false
+   */
+  hideClose?: boolean
+  /**
    * Specify an icon to be used for close. Defaults to `Close`
    */
   closeIcon?: IconNames
@@ -56,6 +61,7 @@ export interface ModalHeaderProps
 export const ModalHeader: FC<ModalHeaderProps> = ({
   children,
   closeIcon = 'Close',
+  hideClose,
   headerIcon,
   ...props
 }) => {
@@ -72,15 +78,17 @@ export const ModalHeader: FC<ModalHeaderProps> = ({
       >
         {children}
       </Heading>
-      <IconButton
-        tabIndex={-1}
-        color="neutral"
-        size="small"
-        onClick={closeModal}
-        label="Close"
-        icon={closeIcon}
-        style={{ gridArea: 'close' }}
-      />
+      {!hideClose && (
+        <IconButton
+          tabIndex={-1}
+          color="neutral"
+          size="small"
+          onClick={closeModal}
+          label="Close"
+          icon={closeIcon}
+          style={{ gridArea: 'close' }}
+        />
+      )}
     </Header>
   )
 }
