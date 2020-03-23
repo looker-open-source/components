@@ -144,7 +144,7 @@ export const ActionListDemo: FC = () => {
           }
           indicator={
             <Icon
-              name={status === 'Success' ? 'ArrowDropUp' : 'ArrowDropDown'}
+              name={status === 'Success' ? 'CircleCheck' : 'CircleCancel'}
               color={
                 status === 'Success' ? 'palette.green300' : 'palette.red300'
               }
