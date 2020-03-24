@@ -36,10 +36,10 @@
     "@types/react": "^16.9.25",
     "@types/react-test-renderer": "^16.9.2",
     "@types/styled-components": "^4.4.1",
-    "react": "^16.13.0"
+    "react": "^16.13.1"
   },
   "peerDependencies": {
-    "react": "^16.13.0"
+    "react": "^16.13.1"
   },
   "gitHead": "05b63c793e74648ca4ada0d1bb9d4cc278256778"
 }
