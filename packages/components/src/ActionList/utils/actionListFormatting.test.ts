@@ -24,7 +24,6 @@
 
  */
 
-import isEqual from 'lodash/isEqual'
 import {
   getPrimaryKeyColumnIndices,
   getNumericColumnIndices,
@@ -55,18 +54,10 @@ describe('Action List CSS Utils', () => {
   ]
 
   test('getPrimaryKeyColumnIndices', () => {
-    const isPrimaryKeyIndexArrayCorrect = isEqual(
-      getPrimaryKeyColumnIndices(columns),
-      [0]
-    )
-    expect(isPrimaryKeyIndexArrayCorrect).toBe(true)
+    expect(getPrimaryKeyColumnIndices(columns)).toEqual([0])
   })
 
   test('getNumericColumnIndices', () => {
-    const isNumericColumnIndexArrayCorrect = isEqual(
-      getNumericColumnIndices(columns),
-      [0, 2]
-    )
-    expect(isNumericColumnIndexArrayCorrect).toBe(true)
+    expect(getNumericColumnIndices(columns)).toEqual([0, 2])
   })
 })
