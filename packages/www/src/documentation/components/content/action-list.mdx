@@ -1,0 +1,37 @@
+---
+title: ActionList
+github: ActionList
+propsOf: ActionList
+---
+
+An Action List is a table that allows users to perform a row-level actions. Common use cases might include:
+
+- A user list with each row containing a user's details and a "Delete User" action.
+- A group permissions list with each row containing a group's set of permissions and an "Edit Permissions" action.
+- A query list with each row containing metadata on a recently run query and a "Rerun Query" action.
+
+The `ActionList` component is the main wrapper to other Action List related components. It must receive an array of type `ActionListColumns` in its `columns` prop.
+
+```jsx
+;() => {
+  const columns = [
+    {
+      canSort: true,
+      id: 'id',
+      primaryKey: true,
+      title: 'ID',
+      type: 'number',
+      widthPercent: 20,
+    },
+    {
+      canSort: true,
+      id: 'name',
+      title: 'Name',
+      type: 'string',
+      widthPercent: 80,
+    },
+  ]
+
+  return <div>Hello World</div>
+}
+```
