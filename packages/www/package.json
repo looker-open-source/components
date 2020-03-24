@@ -24,7 +24,7 @@
     "gatsby-remark-images": "^3.1.50",
     "gatsby-source-filesystem": "^2.1.56",
     "lodash": "^4.17.15",
-    "polished": "^3.4.4",
+    "polished": "^3.5.1",
     "prism-react-renderer": "^1.0.2",
     "react": "^16.13.0",
     "react-copy-to-clipboard": "^5.0.2",
