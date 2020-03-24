@@ -24,7 +24,7 @@
 
  */
 
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import React, { FC, ReactNode } from 'react'
 import {
   ActionListHeader,
