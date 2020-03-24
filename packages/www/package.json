@@ -18,7 +18,7 @@
     "gatsby-plugin-mdx": "^1.0.83",
     "gatsby-plugin-offline": "^3.0.41",
     "gatsby-plugin-react-helmet": "^3.1.24",
-    "gatsby-plugin-sharp": "^2.4.13",
+    "gatsby-plugin-sharp": "^2.5.3",
     "gatsby-plugin-styled-components": "^3.1.21",
     "gatsby-plugin-typescript": "^2.2.5",
     "gatsby-remark-images": "^3.1.50",
