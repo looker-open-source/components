@@ -36,7 +36,7 @@
     "@looker/components": "^0.7.25",
     "@looker/design-tokens": "^0.7.24",
     "@looker/icons": "^0.7.25",
-    "@types/react": "^16.9.23",
+    "@types/react": "^16.9.25",
     "@types/react-copy-to-clipboard": "^4.3.0",
     "@types/react-dom": "^16.9.5",
     "d3-hsv": "^0.1.0",
