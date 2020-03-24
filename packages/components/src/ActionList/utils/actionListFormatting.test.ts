@@ -27,13 +27,12 @@
 import {
   getPrimaryKeyColumnIndices,
   getNumericColumnIndices,
-} from './css_utils'
+} from './actionListFormatting'
 import { ActionListColumns } from '..'
 
 describe('Action List CSS Utils', () => {
   const columns: ActionListColumns = [
     {
-      canSort: true,
       id: 'id',
       primaryKey: true,
       title: 'ID',
@@ -41,19 +40,24 @@ describe('Action List CSS Utils', () => {
       widthPercent: 20,
     },
     {
-      canSort: true,
       id: 'name',
       title: 'Name',
       type: 'string',
-      widthPercent: 80,
+      widthPercent: 50,
+    },
+    {
+      id: 'age',
+      title: 'Age',
+      type: 'number',
+      widthPercent: 30,
     },
   ]
 
   test('getPrimaryKeyColumnIndices', () => {
-    expect(getPrimaryKeyColumnIndices(columns)).toMatchSnapshot()
+    expect(getPrimaryKeyColumnIndices(columns)).toBe([0])
   })
 
   test('getNumericColumnIndices', () => {
-    expect(getNumericColumnIndices(columns)).toMatchSnapshot()
+    expect(getNumericColumnIndices(columns)).toBe([0, 2])
   })
 })
