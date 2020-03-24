@@ -54,11 +54,7 @@ import {
   ComboboxContextProps,
   ComboboxMultiContext,
 } from './ComboboxContext'
-import {
-  ComboboxData,
-  ComboboxMultiData,
-  ComboboxActionType,
-} from './utils/state'
+import { ComboboxData, ComboboxActionType } from './utils/state'
 import { getComboboxText } from './utils/getComboboxText'
 import { useOptionEvents } from './utils/useOptionEvents'
 import { useOptionStatus } from './utils/useOptionStatus'
