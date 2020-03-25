@@ -43,7 +43,7 @@ import {
 } from '@looker/design-tokens'
 import { IconNames } from '@looker/icons'
 import React, { forwardRef, Ref } from 'react'
-import { Placement } from 'popper.js'
+import { Placement } from '@popperjs/core'
 import { Icon } from '../Icon'
 import { useTooltip } from '../Tooltip'
 import { useForkedRef, useWrapEvent } from '../utils'

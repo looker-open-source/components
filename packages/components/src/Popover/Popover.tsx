@@ -24,9 +24,10 @@
 
  */
 
-import { Placement } from 'popper.js'
+import { Placement } from '@popperjs/core'
 import React, {
   useEffect,
+  useMemo,
   useState,
   ReactNode,
   RefObject,
@@ -42,7 +43,9 @@ import {
   useFocusTrap,
   useHovered,
   usePopper,
+  UsePopperProps,
   useScrollLock,
+  useForkedRef,
 } from '../utils'
 
 export interface UsePopoverProps {
@@ -429,9 +432,38 @@ export function usePopover({
     setOpen(false)
     onClose && onClose()
   }
+  const usePopperProps = useMemo<UsePopperProps>(
+    () => ({
+      anchor: element,
+      arrow,
+      options: {
+        modifiers: [
+          {
+            enabled: !pin,
+            name: 'flip',
+            options: {
+              flipVariations: true,
+              flipVariationsByContent: true,
+            },
+          },
+          {
+            // No scroll event listener needed (we have useScrollLock)
+            enabled: true,
+            name: 'eventListeners',
+            options: {
+              scroll: false,
+            },
+          },
+        ],
+        placement: propsPlacement,
+      },
+    }),
+    [arrow, element, pin, propsPlacement]
+  )
+  const { arrowProps, placement, style, targetRef } = usePopper(usePopperProps)
+  const ref = useForkedRef(targetRef, focusRef)
 
   const [containerElement, contentContainerRef] = useCallbackRef<HTMLElement>()
-  const { targetRef, arrowRef } = usePopper(triggerElement)
 
   const popover = !openWithoutElem && isOpen && (
     <ModalContext.Provider
@@ -447,34 +479,12 @@ export function usePopover({
       }}
     >
       <ModalPortal ref={scrollRef}>
-        {/* <ModalPortal ref={scrollRef}>
-        <Popper
-          positionFixed
-          placement={propsPlacement}
-          innerRef={focusRef}
-          modifiers={{
-            flip: {
-              behavior: 'flip',
-              enabled: !pin,
-              flipVariations: true,
-              flipVariationsByContent: true,
-            },
-            preventOverflow: {
-              boundariesElement: 'window',
-              padding: 0,
-            },
-          }}
-          referenceElement={element || undefined}
-        >
-          {({ ref, style, arrowProps, placement }) => ( */}
         <OverlaySurface
           arrow={arrow}
-          // arrowProps={arrowProps}
-          arrowProps={{ ref: arrowRef, style: {} } as any}
-          // placement={placement}
-          placement={propsPlacement}
-          ref={targetRef}
-          // style={style}
+          arrowProps={arrowProps}
+          placement={placement}
+          ref={ref}
+          style={style}
           backgroundColor="palette.white"
           border="1px solid"
           borderColor="palette.charcoal200"
@@ -491,8 +501,6 @@ export function usePopover({
             {content}
           </Box>
         </OverlaySurface>
-        {/* )}
-        </Popper> */}
       </ModalPortal>
     </ModalContext.Provider>
   )

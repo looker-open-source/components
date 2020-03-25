@@ -27,34 +27,88 @@
 // Much of the following is pulled from https://github.com/reach/reach-ui
 // because their work is fantastic (but is not in TypeScript)
 
+import concat from 'lodash/concat'
 import merge from 'lodash/merge'
-import { useEffect, useMemo, useRef } from 'react'
-import { createPopper, Instance, Options } from '@popperjs/core'
+import { useEffect, useMemo, useRef, useState, CSSProperties } from 'react'
+import { createPopper, Instance, Options, State } from '@popperjs/core'
 import { ElementOrRef, getCurrentNode } from './getCurrentNode'
 import { useCallbackRef } from './useCallbackRef'
 
-export function usePopper(
-  anchor: ElementOrRef,
-  target?: ElementOrRef,
-  arrow?: boolean,
-  options?: Options
-) {
+export interface UsePopperProps {
+  anchor: ElementOrRef
+  target?: ElementOrRef
+  arrow?: boolean
+  options: Partial<Options> & { placement: Options['placement'] }
+}
+
+export function usePopper({
+  anchor,
+  target,
+  arrow = true,
+  options,
+}: UsePopperProps) {
+  const [styles, setStyles] = useState<State['styles']>({})
+  const [truePlacement, setTruePlacement] = useState(options.placement)
   const popperInstanceRef = useRef<Instance>()
   const [targetElement, targetRef] = useCallbackRef<HTMLElement>()
   const [arrowElement, arrowRef] = useCallbackRef<HTMLElement>()
-  const optionsWithArrow = useMemo(
+
+  // Add arrow modifier to Popper options (unless arrow is false)
+  const mergedOptions = useMemo(
     () =>
-      arrow
-        ? merge(
-            {
-              modifiers: [
-                { name: 'arrow', options: { element: arrowElement } },
-              ],
+      merge(options, {
+        modifiers: concat(options && options.modifiers, [
+          ...(arrow
+            ? [
+                {
+                  name: 'arrow',
+                  options: { element: arrowElement, padding: 5 },
+                },
+              ]
+            : []),
+          {
+            // Don't use popperjs' built-in applyStyles – we'll add to state and apply them the react way
+            enabled: false,
+            name: 'applyStyles',
+          },
+          {
+            // Custom modifier to update truePlacement state
+            enabled: true,
+            fn: ({ state: { placement } }) => {
+              setTruePlacement(placement)
             },
-            options
-          )
-        : options,
-    []
+            name: 'update-placement',
+            phase: 'afterWrite',
+          },
+          {
+            // Custom modifier to update styles state (needs to be separate and after update-placement)
+            enabled: true,
+            fn: ({ state: { styles } }) => {
+              setStyles(styles)
+            },
+            name: 'update-styles',
+            phase: 'afterWrite',
+          },
+          {
+            enabled: true,
+            name: 'preventOverflow',
+            options: {
+              boundariesElement: 'window',
+              // 8px away from edge of window
+              padding: 8,
+            },
+          },
+          {
+            name: 'offset',
+            options: {
+              // 8px away from anchor element
+              offset: [0, 8],
+            },
+          },
+        ]),
+        strategy: 'fixed',
+      }),
+    [arrow, arrowElement, options]
   )
 
   useEffect(() => {
@@ -64,10 +118,16 @@ export function usePopper(
       popperInstanceRef.current = createPopper(
         anchorNode,
         targetNode,
-        optionsWithArrow
+        mergedOptions
       )
     }
-  }, [anchor, target, targetElement, arrow, arrowElement, options])
+  }, [anchor, target, targetElement, arrow, arrowElement, mergedOptions])
 
-  return { arrowRef, popperInstanceRef, targetRef }
+  return {
+    arrowProps: { ref: arrowRef, style: styles.arrow as CSSProperties },
+    placement: truePlacement,
+    popperInstanceRef,
+    style: styles.popper as CSSProperties,
+    targetRef,
+  }
 }

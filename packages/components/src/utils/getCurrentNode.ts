@@ -35,7 +35,7 @@ export type ElementOrRef<E extends HTMLElement = HTMLElement> =
 export function getCurrentNode<E extends HTMLElement = HTMLElement>(
   elementOrRefObject: ElementOrRef<E>
 ): E | null {
-  if (elementOrRefObject === null) return null
+  if (!elementOrRefObject) return null
   return (elementOrRefObject as E).addEventListener
     ? (elementOrRefObject as E)
     : (elementOrRefObject as RefObject<E>).current

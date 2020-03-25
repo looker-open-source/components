@@ -33,7 +33,7 @@ import React, {
   useCallback,
   useState,
 } from 'react'
-import { Placement } from 'popper.js'
+import { Placement } from '@popperjs/core'
 import { useTooltip } from '../Tooltip'
 import { MenuContext } from './MenuContext'
 
