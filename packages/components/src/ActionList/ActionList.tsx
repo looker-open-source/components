@@ -24,7 +24,7 @@
 
  */
 
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import React, { FC, ReactNode } from 'react'
 import {
   ActionListHeader,
@@ -34,6 +34,12 @@ import { ActionListItemColumn } from './ActionListItemColumn'
 import { ActionListRowColumns } from './ActionListRow'
 import { ActionListContext } from './ActionListContext'
 import { ActionListHeaderColumn } from './ActionListHeader/ActionListHeaderColumn'
+import {
+  getPrimaryKeyColumnIndices,
+  primaryKeyColumnCSS,
+  getNumericColumnIndices,
+  numericColumnCSS,
+} from './utils/actionListFormatting'
 
 export type ActionListColumns = ActionListColumn[]
 export interface ActionListColumn {
@@ -109,46 +115,6 @@ export const ActionListLayout: FC<ActionListProps> = ({
     </ActionListContext.Provider>
   )
 }
-
-function filterUndefined<T>(t: T | undefined): t is T {
-  return t !== undefined
-}
-
-const getPrimaryKeyColumnIndices = (columns: ActionListColumn[]) =>
-  columns
-    .map((column, index) => (column.primaryKey ? index : undefined))
-    .filter(filterUndefined)
-
-const primaryKeyColumnCSS = (columns: number[]) =>
-  css`
-    ${columns.map(
-      column =>
-        css`
-          ${ActionListItemColumn}:nth-child(${column + 1}) {
-            color: ${props => props.theme.colors.palette.charcoal900};
-            font-size: ${props => props.theme.fontSizes.small};
-          }
-        `
-    )}
-  `
-
-const getNumericColumnIndices = (columns: ActionListColumn[]) =>
-  columns
-    .map((column, index) => (column.type === 'number' ? index : undefined))
-    .filter(filterUndefined)
-
-const numericColumnCSS = (columns: number[]) =>
-  css`
-    ${columns.map(
-      column =>
-        css`
-        ${ActionListItemColumn}:nth-child(${column + 1}),
-        ${ActionListHeaderColumn}:nth-child(${column + 1}) {
-          flex-direction: row-reverse
-        }
-      `
-    )}
-  `
 
 export const ActionList = styled(ActionListLayout)<ActionListProps>`
   ${ActionListRowColumns} {
