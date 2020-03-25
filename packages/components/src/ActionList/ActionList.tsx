@@ -39,7 +39,7 @@ import {
   primaryKeyColumnCSS,
   getNumericColumnIndices,
   numericColumnCSS,
-} from './utils/css_utils'
+} from './utils/actionListFormatting'
 
 export type ActionListColumns = ActionListColumn[]
 export interface ActionListColumn {

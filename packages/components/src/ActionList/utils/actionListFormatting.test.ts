@@ -24,20 +24,40 @@
 
  */
 
-import React from 'react'
-import { ActionListColumns } from '../ActionList'
-import { ActionListHeaderColumn } from './ActionListHeaderColumn'
-import { ActionListHeader } from './ActionListHeader'
+import {
+  getPrimaryKeyColumnIndices,
+  getNumericColumnIndices,
+} from './actionListFormatting'
+import { ActionListColumns } from '..'
 
-export const generateActionListHeaderColumns = (columns: ActionListColumns) =>
-  columns.map(({ id, title }) => (
-    <ActionListHeaderColumn key={id} id={id}>
-      {title}
-    </ActionListHeaderColumn>
-  ))
+describe('Action List CSS Utils', () => {
+  const columns: ActionListColumns = [
+    {
+      id: 'id',
+      primaryKey: true,
+      title: 'ID',
+      type: 'number',
+      widthPercent: 20,
+    },
+    {
+      id: 'name',
+      title: 'Name',
+      type: 'string',
+      widthPercent: 50,
+    },
+    {
+      id: 'age',
+      title: 'Age',
+      type: 'number',
+      widthPercent: 30,
+    },
+  ]
 
-export const generateActionListHeader = (columns: ActionListColumns) => (
-  <ActionListHeader>
-    {generateActionListHeaderColumns(columns)}
-  </ActionListHeader>
-)
+  test('getPrimaryKeyColumnIndices', () => {
+    expect(getPrimaryKeyColumnIndices(columns)).toEqual([0])
+  })
+
+  test('getNumericColumnIndices', () => {
+    expect(getNumericColumnIndices(columns)).toEqual([0, 2])
+  })
+})
