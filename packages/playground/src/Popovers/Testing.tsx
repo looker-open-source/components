@@ -305,6 +305,7 @@ function MovingTarget() {
         </Paragraph>
       </PopoverContent>
     ),
+    placement: 'right-end',
   })
 
   React.useEffect(() => {
@@ -323,28 +324,37 @@ function MovingTarget() {
     <Box mt="large">
       <Heading>Moving Target</Heading>
       {popover}
-      <Button
+      <Box
         mt={value ? 'xxxlarge' : 'medium'}
+        border="2px solid"
+        width={150}
+        p="small"
+        cursor="pointer"
+        height={value ? 80 : undefined}
         onClick={open}
         ref={ref}
         className={isOpen ? 'active' : ''}
       >
         Open Popover
-      </Button>
+      </Box>
     </Box>
   )
 }
 
 export function TestPopovers() {
   return (
-    <Box m="large">
-      <MenuOpenDialog />
-      <Divider my="large" />
-      <PopoverFocusTrap />
-      <Divider my="large" />
-      <Placement />
-      <Grouped />
-      <MovingTarget />
+    <Box m="large" display="flex">
+      <Box>
+        <MenuOpenDialog />
+        <Divider my="large" />
+        <PopoverFocusTrap />
+        <Divider my="large" />
+        <Placement />
+        <Grouped />
+      </Box>
+      <Box>
+        <MovingTarget />
+      </Box>
     </Box>
   )
 }
