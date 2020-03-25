@@ -180,7 +180,13 @@ export function useTooltip({
     }),
     [arrow, element, propsPlacement]
   )
-  const { arrowProps, placement, style, targetRef } = usePopper(usePopperProps)
+  const {
+    arrowProps,
+    placement,
+    popperInstanceRef,
+    style,
+    targetRef,
+  } = usePopper(usePopperProps)
 
   const ref = useForkedRef(targetRef, surfaceCallbackRef)
 
@@ -210,6 +216,7 @@ export function useTooltip({
 
   return {
     eventHandlers,
+    popperInstanceRef,
     ref: callbackRef,
     tooltip: popper,
   }

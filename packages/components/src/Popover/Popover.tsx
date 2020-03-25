@@ -460,7 +460,14 @@ export function usePopover({
     }),
     [arrow, element, pin, propsPlacement]
   )
-  const { arrowProps, placement, style, targetRef } = usePopper(usePopperProps)
+  const {
+    arrowProps,
+    placement,
+    popperInstanceRef,
+    style,
+    targetRef,
+  } = usePopper(usePopperProps)
+
   const ref = useForkedRef(targetRef, focusRef)
 
   const [containerElement, contentContainerRef] = useCallbackRef<HTMLElement>()
@@ -509,6 +516,7 @@ export function usePopover({
     isOpen,
     open: handleOpen,
     popover,
+    popperInstanceRef,
     ref: callbackRef,
   }
 }

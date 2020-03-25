@@ -27,6 +27,7 @@
 // Much of the following is pulled from https://github.com/reach/reach-ui
 // because their work is fantastic (but is not in TypeScript)
 
+import cloneDeep from 'lodash/cloneDeep'
 import concat from 'lodash/concat'
 import merge from 'lodash/merge'
 import { useEffect, useMemo, useRef, useState, CSSProperties } from 'react'
@@ -74,18 +75,16 @@ export function usePopper({
           {
             // Custom modifier to update truePlacement state
             enabled: true,
-            fn: ({ state: { placement } }) => {
-              setTruePlacement(placement)
-            },
+            fn: ({ state: { placement } }) => setTruePlacement(placement),
             name: 'update-placement',
             phase: 'afterWrite',
           },
           {
             // Custom modifier to update styles state (needs to be separate and after update-placement)
             enabled: true,
-            fn: ({ state: { styles } }) => {
-              setStyles(styles)
-            },
+            fn: ({ state: { styles } }) =>
+              // styles is mutable object, deep clone
+              setStyles(cloneDeep(styles)),
             name: 'update-styles',
             phase: 'afterWrite',
           },

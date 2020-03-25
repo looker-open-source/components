@@ -40,6 +40,8 @@ import {
   Paragraph,
   Popover,
   PopoverContent,
+  usePopover,
+  useToggle,
 } from '@looker/components'
 
 const options = [
@@ -214,6 +216,48 @@ function Placement() {
   )
 }
 
+function MovingTarget() {
+  const { value, toggle } = useToggle()
+
+  const { popover, popperInstanceRef, open, ref, isOpen } = usePopover({
+    content: (
+      <PopoverContent p="large" width="360px">
+        <Paragraph>
+          The anchor is moving around so the Popover position must be updated
+          via popperInstanceRef.current.update.
+        </Paragraph>
+      </PopoverContent>
+    ),
+  })
+
+  React.useEffect(() => {
+    popperInstanceRef.current && popperInstanceRef.current.update()
+  }, [popperInstanceRef, value])
+
+  React.useEffect(() => {
+    const int = setInterval(() => {
+      toggle()
+    }, 6000)
+    return () => {
+      clearInterval(int)
+    }
+  }, [toggle])
+  return (
+    <Box mt="large">
+      <Heading>Moving Target</Heading>
+      {popover}
+      <Button
+        mt={value ? 'xxxlarge' : 'medium'}
+        onClick={open}
+        ref={ref}
+        className={isOpen ? 'active' : ''}
+      >
+        Open Popover
+      </Button>
+    </Box>
+  )
+}
+
 export function TestPopovers() {
   return (
     <Box m="large">
@@ -222,6 +266,7 @@ export function TestPopovers() {
       <PopoverFocusTrap />
       <Divider my="large" />
       <Placement />
+      <MovingTarget />
     </Box>
   )
 }
