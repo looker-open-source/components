@@ -127,7 +127,7 @@ describe('keyboard nav ux', () => {
     // NOTE: Date.now() mocked to 1580517818172 (Feb 01 2020 6:33 am)
     const domList = renderListContent({})
     const selected = domList.querySelector('[aria-selected="true"]')
-    expect(selected).toMatchSnapshot()
+    expect((selected as HTMLElement).textContent).toMatchSnapshot()
   })
 
   test('highlights selected value when list is opened', () => {
@@ -136,12 +136,12 @@ describe('keyboard nav ux', () => {
       value: '14:15',
     })
     const selected = domList.querySelector('[aria-selected="true"]')
-    expect(selected).toMatchSnapshot()
+    expect((selected as HTMLElement).textContent).toMatchSnapshot()
   })
 
   test('highlights closest time to selected value when list is opened but value does not match provided options', () => {
     const domList = renderListContent({ onChange: jest.fn(), value: '16:38' })
     const selected = domList.querySelector('[aria-selected="true"]')
-    expect(selected).toMatchSnapshot()
+    expect((selected as HTMLElement).textContent).toMatchSnapshot()
   })
 })

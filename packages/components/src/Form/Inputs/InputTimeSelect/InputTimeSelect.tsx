@@ -41,21 +41,25 @@ export interface InputTimeSelectProps extends SpaceProps, BorderProps {
   onValidationFail?: (value: string) => void
 }
 
+// if format is `12h`, repeat hours 1-12 twice
 const cycleHourDisplay = (format: formats, hour: number) => {
   if (format === '12h') {
     if (hour === 0) {
-      return 12
+      return 12 // 12:00 am
     } else if (hour > 12) {
-      return hour - 12
+      return hour - 12 // 1:00 pm - 11:00 pm
     }
   }
   return hour
 }
 
+// returns "01", "02", "03" instead of integers 1, 2, 3
 const formatTimeString = (number: number) => {
   return padStart(toString(number), 2, '0')
 }
 
+// human readable value returned based on 12h or 24h formats
+// e.g. instead of 13:45 display "01:45 pm"
 const formatLabel = (format: formats, hour: number, minute: number) => {
   const formattedHour = formatTimeString(cycleHourDisplay(format, hour))
   const formattedMinute = formatTimeString(minute)
@@ -64,11 +68,14 @@ const formatLabel = (format: formats, hour: number, minute: number) => {
   return trim(`${formattedHour}:${formattedMinute} ${period || ''}`)
 }
 
+// generates all values from 0-60 that match provided interval setting
+// e.g. if interval is 15, return [0, 15, 30, 45]
 const generateMinuteIntervals = (interval: intervals) => {
   const minutes = new Array(60 / interval)
   return map(minutes, (_, index) => formatTimeString(index * interval))
 }
 
+// generates all time options based on format and interval settings
 const generateTimes = (format: formats, interval: intervals) => {
   const hours = new Array(24)
   const minutes = generateMinuteIntervals(interval)
@@ -99,7 +106,7 @@ const generateTimes = (format: formats, interval: intervals) => {
 const parseBase10Int = (value: string) =>
   value.length ? parseInt(value, 10) : 0
 
-// takes a non-normalized time value (e.g. 10:13) and rounds it to a valid interval (e.g. 10:15)
+// takes a non-normalized time value (e.g. 10:13) and rounds to the nearest valid interval (e.g. 10:15)
 const matchClosestMinute = (interval: intervals, timeCode?: string) => {
   const minuteOptions = map(generateMinuteIntervals(interval), parseBase10Int)
   const now = new Date(Date.now()) // Include Date.now for easy test mocks

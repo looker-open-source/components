@@ -136,6 +136,7 @@ export const ComboboxInternal = forwardRef(
 
     const { ref, ...commonRefs } = useComboboxRefs(forwardedRef)
 
+    // track and share dom information in context.
     const [listScrollPosition, setListScrollPosition] = useState(0)
     const [listClientRect, setListClientRect] = useState<DOMRect>()
 

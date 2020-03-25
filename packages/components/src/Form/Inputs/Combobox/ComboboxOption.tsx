@@ -70,7 +70,7 @@ export interface ComboboxOptionObject {
    */
   value: string
   /**
-   * Make sure this option is visible in a long menu.
+   * Highlight and Scroll to this option if it appears in a long list.
    */
   scrollIntoView?: boolean
 }
@@ -83,6 +83,8 @@ export interface HighlightTextProps {
   highlightText?: boolean
 }
 
+// calculate an element's visibility relative to the menu scroll position
+// returns `visible`, `above`, or `below`
 const relativeElementVisibility = (
   listElement: HTMLLIElement,
   containerScrollPosition: number,
@@ -91,10 +93,7 @@ const relativeElementVisibility = (
   const { offsetTop } = listElement
   const isAbove = offsetTop < containerScrollPosition
   const isBelow = offsetTop > containerScrollPosition + containerHeight
-  const isVisible = !isAbove && !isBelow
-  return (
-    (isVisible && 'visible') || (isAbove && 'above') || (isBelow && 'below')
-  )
+  return (isAbove && 'above') || (isBelow && 'below') || 'visible'
 }
 
 export interface ComboboxOptionProps
@@ -203,8 +202,10 @@ const ComboboxOptionInternal = forwardRef(
           listScrollPosition,
           listClientRect.height
         )
-        visibility !== 'visible' &&
-          newTriggerElement.scrollIntoView(visibility === 'above') // false scrolls to bottom, true scrolls to top
+        if (visibility !== 'visible') {
+          const attachToTop = visibility === 'above'
+          newTriggerElement.scrollIntoView(attachToTop) // false scrolls to bottom, true scrolls to top
+        }
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [newTriggerElement, isActive])

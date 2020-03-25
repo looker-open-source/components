@@ -160,6 +160,9 @@ const ComboboxListInternal = forwardRef(
     })
 
     useEffect(() => {
+      // track scroll position and menu dom rectangle, and bubble up to context.
+      // used in InputTimeSelect for managing very long lists
+
       const element = contentContainerRef.current
 
       const setListClientRectOnce = once(element => {
