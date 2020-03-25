@@ -28,6 +28,8 @@ import React, { Ref } from 'react'
 import {
   Box,
   Button,
+  ButtonOutline,
+  ButtonTransparent,
   DialogManager,
   Divider,
   FieldSelect,
@@ -216,6 +218,81 @@ function Placement() {
   )
 }
 
+function Grouped() {
+  const groupRef = React.useRef<HTMLDivElement>(null)
+  const content = (
+    <PopoverContent p="large" width="360px">
+      Example Popover text.
+    </PopoverContent>
+  )
+  return (
+    <Box mt="large">
+      <Heading>Grouped Popovers</Heading>
+      <Box display="flex">
+        <Box
+          display="flex"
+          justifyContent="space-around"
+          ref={groupRef}
+          p="large"
+          border="3px solid green"
+        >
+          <Popover content={content} groupedPopoversRef={groupRef}>
+            {(onClick, ref, className) => (
+              <Button
+                aria-haspopup="true"
+                onClick={onClick}
+                ref={ref}
+                className={className}
+              >
+                Instant Click
+              </Button>
+            )}
+          </Popover>
+          <Popover content={content} groupedPopoversRef={groupRef}>
+            {(onClick, ref, className) => (
+              <Button
+                aria-haspopup="true"
+                onClick={onClick}
+                ref={ref}
+                mx="large"
+                className={className}
+              >
+                Instant Click
+              </Button>
+            )}
+          </Popover>
+          <Popover content={content}>
+            {(onClick, ref, className) => (
+              <ButtonOutline
+                aria-haspopup="true"
+                onClick={onClick}
+                ref={ref}
+                className={className}
+              >
+                Defer Click
+              </ButtonOutline>
+            )}
+          </Popover>
+        </Box>
+        <Popover content={content}>
+          {(onClick, ref, className) => (
+            <ButtonTransparent
+              aria-haspopup="true"
+              mx="xlarge"
+              my="large"
+              onClick={onClick}
+              ref={ref}
+              className={className}
+            >
+              Outside Group
+            </ButtonTransparent>
+          )}
+        </Popover>
+      </Box>
+    </Box>
+  )
+}
+
 function MovingTarget() {
   const { value, toggle } = useToggle()
 
@@ -266,6 +343,7 @@ export function TestPopovers() {
       <PopoverFocusTrap />
       <Divider my="large" />
       <Placement />
+      <Grouped />
       <MovingTarget />
     </Box>
   )
