@@ -4,16 +4,31 @@ github: ActionList
 propsOf: ActionList
 ---
 
-An Action List is a table that allows users to perform a row-level actions. Common use cases might include:
+An Action List is a list that allows users to perform row-level actions. Common use cases include:
 
-- A user list with each row containing a user's details and a "Delete User" action.
-- A group permissions list with each row containing a group's set of permissions and an "Edit Permissions" action.
-- A query list with each row containing metadata on a recently run query and a "Rerun Query" action.
+- A list of users with user details and a "Delete User" action on each row
+- A list of groups and their associated permissions with an "Edit Permissions" action on each row
+- A list of recently run queries and a "Rerun Query" action on each row
 
-The `ActionList` component is the main wrapper to other Action List related components. It must receive an array of type `ActionListColumns` in its `columns` prop.
+The `ActionList` component acts as the main wrapper to other Action List related components. It must receive an array of type `ActionListColumns` in its `columns` prop. That array should contain objects that describe the columns in your Action List.
 
 ```jsx
 ;() => {
+  const data = [
+    {
+      id: 6,
+      name: 'LeBron',
+    },
+    {
+      id: 24,
+      name: 'Kobe',
+    },
+    {
+      id: 33,
+      name: 'Shaq',
+    },
+  ]
+
   const columns = [
     {
       canSort: true,
@@ -32,6 +47,28 @@ The `ActionList` component is the main wrapper to other Action List related comp
     },
   ]
 
-  return <div>Hello World</div>
+  const MyActions = () => (
+    <>
+      <ActionListItemAction onClick={() => alert(`Action 1!`)}>
+        Action 1
+      </ActionListItemAction>
+      <ActionListItemAction onClick={() => alert(`Action 2!`)}>
+        Action 2
+      </ActionListItemAction>
+    </>
+  )
+
+  const items = data.map(({ id, name }) => (
+    <ActionListItem
+      key={id}
+      onClick={() => alert(`Row clicked`)}
+      actions={<MyActions />}
+    >
+      <ActionListItemColumn>{id}</ActionListItemColumn>
+      <ActionListItemColumn>{name}</ActionListItemColumn>
+    </ActionListItem>
+  ))
+
+  return <ActionList columns={columns}>{items}</ActionList>
 }
 ```

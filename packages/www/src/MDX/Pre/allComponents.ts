@@ -25,6 +25,10 @@
  */
 
 import {
+  ActionList,
+  ActionListItem,
+  ActionListItemAction,
+  ActionListItemColumn,
   AvatarCombo,
   AvatarIcon,
   AvatarUser,
@@ -138,6 +142,10 @@ export const allComponents = {
   isEqual,
 
   palette,
+  ActionList,
+  ActionListItem,
+  ActionListItemAction,
+  ActionListItemColumn,
   AvatarCombo,
   AvatarIcon,
   AvatarUser,
