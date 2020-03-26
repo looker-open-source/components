@@ -4,34 +4,36 @@ github: ActionList
 propsOf: ActionList
 ---
 
-An Action List is a list that allows users to perform row-level actions. Common use cases include:
+import { Props } from '../../../Shared'
+import { sampleColumns } from './demos'
 
-- A list of users with user details and a "Delete User" action on each row
-- A list of groups and their associated permissions with an "Edit Permissions" action on each row
-- A list of recently run queries and a "Rerun Query" action on each row
+An Action List, like a Table, displays tabular data. However, unlike a Table, an Action List allows you to bake in a set of actions on each row. Common use cases include:
 
-The `ActionList` component acts as the main wrapper to other Action List related components. It must receive an array of type `ActionListColumns` in its `columns` prop. That array should contain objects that describe the columns in your Action List.
+- A list of users with user details and a "Delete This User" action
+- A list of groups and their associated permissions with an "Edit This Group's Permissions" action on each row
+- A list of recently run queries and a "Rerun This Query" action on each row
+
+The `<ActionList>` component acts as the main wrapper to other Action List related components. It must receive an array of type `ActionListColumns` in its `columns` prop. That array should contain objects that describe the columns in your Action List.
 
 ```jsx
 ;() => {
   const data = [
     {
       id: 6,
-      name: 'LeBron',
+      name: 'LeBron James',
     },
     {
       id: 24,
-      name: 'Kobe',
+      name: 'Kobe Bryant',
     },
     {
       id: 33,
-      name: 'Shaq',
+      name: `Shaquille O'Neal`,
     },
   ]
 
   const columns = [
     {
-      canSort: true,
       id: 'id',
       primaryKey: true,
       title: 'ID',
@@ -39,7 +41,6 @@ The `ActionList` component acts as the main wrapper to other Action List related
       widthPercent: 20,
     },
     {
-      canSort: true,
       id: 'name',
       title: 'Name',
       type: 'string',
@@ -49,11 +50,11 @@ The `ActionList` component acts as the main wrapper to other Action List related
 
   const MyActions = () => (
     <>
-      <ActionListItemAction onClick={() => alert(`Action 1!`)}>
-        Action 1
+      <ActionListItemAction onClick={() => alert(`User deleted!`)}>
+        Delete User
       </ActionListItemAction>
-      <ActionListItemAction onClick={() => alert(`Action 2!`)}>
-        Action 2
+      <ActionListItemAction onClick={() => alert(`User edited!`)}>
+        Edit User
       </ActionListItemAction>
     </>
   )
@@ -72,3 +73,42 @@ The `ActionList` component acts as the main wrapper to other Action List related
   return <ActionList columns={columns}>{items}</ActionList>
 }
 ```
+
+## ActionListItem
+
+<Props of="ActionListItem" />
+
+The `<ActionListItem>` component represents a row of data in your Action List. To define actions on a row, pass in `<ActionListItemAction>` elements (usually wrapped in a React.Fragment) into the `actions` prop.
+
+```jsx
+<ActionList
+  columns={[
+    {
+      id: 'id',
+      primaryKey: true,
+      title: 'ID',
+      type: 'number',
+      widthPercent: 20,
+    },
+    {
+      id: 'name',
+      title: 'Name',
+      type: 'string',
+      widthPercent: 80,
+    },
+  ]}
+>
+  <ActionListItem onClick={() => alert(`Row clicked`)}>
+    <ActionListItemColumn>32</ActionListItemColumn>
+    <ActionListItemColumn>Magic Johnson</ActionListItemColumn>
+  </ActionListItem>
+</ActionList>
+```
+
+## ActionListItemColumn
+
+<Props of="ActionListItemColumn" />
+
+## ActionListItemAction
+
+<Props of="ActionListItemAction" />
