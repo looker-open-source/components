@@ -163,23 +163,25 @@ const ComboboxListInternal = forwardRef(
       // track scroll position and menu dom rectangle, and bubble up to context.
       // used in InputTimeSelect for managing very long lists
 
-      const element = contentContainerRef.current
-
-      const setListClientRectOnce = once(element => {
-        setListClientRect && setListClientRect(element.getBoundingClientRect())
+      const setListClientRectOnce = once((containerElement: Element) => {
+        setListClientRect &&
+          setListClientRect(containerElement.getBoundingClientRect())
       })
 
       const scrollListener = () => {
-        if (element) {
-          setListClientRectOnce(element)
-          setListScrollPosition && setListScrollPosition(element.scrollTop)
+        if (contentContainerRef) {
+          setListClientRectOnce(contentContainerRef)
+          setListScrollPosition &&
+            setListScrollPosition(contentContainerRef.scrollTop)
         }
       }
 
-      element && element.addEventListener('scroll', scrollListener)
+      contentContainerRef &&
+        contentContainerRef.addEventListener('scroll', scrollListener)
 
       return () => {
-        element && element.removeEventListener('scroll', scrollListener)
+        contentContainerRef &&
+          contentContainerRef.removeEventListener('scroll', scrollListener)
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [contentContainerRef])
@@ -196,7 +198,7 @@ const comboboxListStyles = css<ComboboxListInternalProps>`
   ${space}
   list-style-type: none;
   margin: 0;
-  padding: ${props => (props.isMulti ? props.theme.space.xsmall : 0)} 0;
+  padding: ${({ isMulti, theme }) => (isMulti ? theme.space.xsmall : 0)} 0;
   max-height: 30rem;
 `
 

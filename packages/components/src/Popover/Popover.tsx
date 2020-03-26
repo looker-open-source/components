@@ -32,7 +32,6 @@ import React, {
   RefObject,
   Ref,
   SyntheticEvent,
-  useCallback,
 } from 'react'
 import { Popper } from 'react-popper'
 import { Box } from '../Layout'
@@ -142,7 +141,7 @@ export interface PopoverProps extends UsePopoverProps {
     /**
      * Used by popper.js to position the OverlaySurface relative to the trigger
      */
-    ref: Ref<any>,
+    ref: Ref<HTMLElement>,
     className?: string
   ) => JSX.Element
 
@@ -431,12 +430,7 @@ export function usePopover({
     onClose && onClose()
   }
 
-  const [containerElement, setContainerElement] = useState<HTMLElement | null>(
-    null
-  )
-  const contentContainerRef = useCallback((node: HTMLInputElement) => {
-    setContainerElement(node)
-  }, [])
+  const [containerElement, contentContainerRef] = useCallbackRef<HTMLElement>()
 
   const popover = !openWithoutElem && isOpen && (
     <ModalContext.Provider
@@ -499,7 +493,7 @@ export function usePopover({
     </ModalContext.Provider>
   )
   return {
-    contentContainerRef: { current: containerElement },
+    contentContainerRef: containerElement,
     isOpen,
     open: handleOpen,
     popover,
