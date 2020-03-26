@@ -141,7 +141,7 @@ export interface PopoverProps extends UsePopoverProps {
     /**
      * Used by popper.js to position the OverlaySurface relative to the trigger
      */
-    ref: Ref<HTMLElement>,
+    ref: Ref<any>,
     className?: string
   ) => JSX.Element
 
@@ -493,7 +493,7 @@ export function usePopover({
     </ModalContext.Provider>
   )
   return {
-    contentContainerRef: containerElement,
+    contentContainer: containerElement,
     isOpen,
     open: handleOpen,
     popover,

@@ -148,7 +148,7 @@ const ComboboxListInternal = forwardRef(
       }
     }
 
-    const { popover, contentContainerRef } = usePopover({
+    const { popover, contentContainer } = usePopover({
       arrow: false,
       content,
       focusTrap: false,
@@ -169,22 +169,22 @@ const ComboboxListInternal = forwardRef(
       })
 
       const scrollListener = () => {
-        if (contentContainerRef) {
-          setListClientRectOnce(contentContainerRef)
+        if (contentContainer) {
+          setListClientRectOnce(contentContainer)
           setListScrollPosition &&
-            setListScrollPosition(contentContainerRef.scrollTop)
+            setListScrollPosition(contentContainer.scrollTop)
         }
       }
 
-      contentContainerRef &&
-        contentContainerRef.addEventListener('scroll', scrollListener)
+      contentContainer &&
+        contentContainer.addEventListener('scroll', scrollListener)
 
       return () => {
-        contentContainerRef &&
-          contentContainerRef.removeEventListener('scroll', scrollListener)
+        contentContainer &&
+          contentContainer.removeEventListener('scroll', scrollListener)
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [contentContainerRef])
+    }, [contentContainer])
 
     return popover || null
   }
