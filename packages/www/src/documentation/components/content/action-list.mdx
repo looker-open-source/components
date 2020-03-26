@@ -53,9 +53,6 @@ The `<ActionList>` component acts as the main wrapper to other Action List relat
       <ActionListItemAction onClick={() => alert(`User deleted!`)}>
         Delete User
       </ActionListItemAction>
-      <ActionListItemAction onClick={() => alert(`User edited!`)}>
-        Edit User
-      </ActionListItemAction>
     </>
   )
 
@@ -78,36 +75,76 @@ The `<ActionList>` component acts as the main wrapper to other Action List relat
 
 <Props of="ActionListItem" />
 
-The `<ActionListItem>` component represents a row of data in your Action List. To define actions on a row, pass in `<ActionListItemAction>` elements (usually wrapped in a React.Fragment) into the `actions` prop.
+The `<ActionListItem>` component represents a row of data in your Action List.
 
-```jsx
-<ActionList
-  columns={[
-    {
-      id: 'id',
-      primaryKey: true,
-      title: 'ID',
-      type: 'number',
-      widthPercent: 20,
-    },
-    {
-      id: 'name',
-      title: 'Name',
-      type: 'string',
-      widthPercent: 80,
-    },
-  ]}
->
-  <ActionListItem onClick={() => alert(`Row clicked`)}>
-    <ActionListItemColumn>32</ActionListItemColumn>
-    <ActionListItemColumn>Magic Johnson</ActionListItemColumn>
-  </ActionListItem>
-</ActionList>
-```
+To define actions on a row, pass in `<ActionListItemAction>` elements (usually wrapped in a React.Fragment) into the `actions` prop.
+
+You can also pass a callback to the `onClick` prop, but note that this callback will not fire when clicking on the Vertical Dots `<IconButton />`.
 
 ## ActionListItemColumn
 
 <Props of="ActionListItemColumn" />
+
+The `<ActionListItemColumn>` component is equivalent to a data cell in your Action List. `<ActionListItemColumn>` elements should always be children of an `<ActionListItem>` element (i.e. each row should contain some number of column elements).
+
+In its simplest form, an `<ActionListItemColumn>` element is will display whatever child elements it has.
+
+You can also create more advanced layouts within your `<ActionListItemColumn>` by utilizing the optional `detail` and `indicator` props.
+
+Passing in a React element into the `detail` prop will display said element underneath any child elements of your `<ActionListItemColumn>`.
+
+Passing in a React element into the `indicator` prop will display said element left of any child elements (and any element passed into the `detail` prop).
+
+```jsx
+;() => {
+  const MyDetail = () => (
+    <Link
+      onClick={event => event.stopPropagation()}
+      href="https://en.wikipedia.org/wiki/Magic_Johnson"
+    >
+      Wikipedia
+    </Link>
+  )
+
+  const MyIndicator = () => (
+    <Flex
+      width="100%"
+      height="100%"
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+    >
+      <Icon
+        name="User"
+        color="palette.purple300"
+        size={24}
+        marginRight="small"
+      />
+    </Flex>
+  )
+
+  return (
+    <ActionList
+      columns={[
+        {
+          id: 'name',
+          title: 'Name',
+          type: 'string',
+          widthPercent: 100,
+        },
+      ]}
+    >
+      <ActionListItem onClick={() => alert(`Row clicked`)}>
+        <ActionListItemColumn detail={<MyDetail />} indicator={<MyIndicator />}>
+          Magic Johnson
+        </ActionListItemColumn>
+      </ActionListItem>
+    </ActionList>
+  )
+}
+```
+
+**Note:** By default, clicking on any element within an `<ActionListItemColumn>` will trigger the `onClick` of the parent `<ActionListItem>`. To prevent this, make sure to include an `event.stopPropagation()` call within your `<ActionListItemColumn>`'s `onClick`.
 
 ## ActionListItemAction
 
