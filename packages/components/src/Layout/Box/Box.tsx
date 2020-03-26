@@ -25,7 +25,6 @@
  */
 
 import styled from 'styled-components'
-import React, { forwardRef, Ref, ElementType } from 'react'
 import {
   CompatibleHTMLProps,
   cursor,
@@ -45,20 +44,12 @@ export interface BoxProps
     FlexboxProps,
     PseudoProps,
     CursorProps,
-    UserSelectProps {
-  as?: ElementType
-}
+    UserSelectProps {}
 
-export const BoxStyle = styled.div<BoxProps>`
+export const Box = styled.div<BoxProps>`
   ${layoutCSS}
   ${pseudoClasses}
   ${userSelect}
   ${flexbox}
   ${cursor}
 `
-
-export const Box = forwardRef((props: BoxProps, ref: Ref<HTMLDivElement>) => {
-  return <BoxStyle {...props} ref={ref} />
-})
-
-Box.displayName = 'Box'
