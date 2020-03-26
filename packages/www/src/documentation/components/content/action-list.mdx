@@ -87,7 +87,7 @@ You can also pass a callback to the `onClick` prop, but note that this callback 
 
 The `<ActionListItemColumn>` component is equivalent to a data cell in your Action List. `<ActionListItemColumn>` elements should always be children of an `<ActionListItem>` element (i.e. each row should contain some number of column elements).
 
-In its simplest form, an `<ActionListItemColumn>` element is will display whatever child elements it has.
+In its simplest form, an `<ActionListItemColumn>` element will display whatever child elements it has.
 
 You can also create more advanced layouts within your `<ActionListItemColumn>` by utilizing the optional `detail` and `indicator` props.
 
@@ -149,3 +149,5 @@ Passing in a React element into the `indicator` prop will display said element l
 ## ActionListItemAction
 
 <Props of="ActionListItemAction" />
+
+The `<ActionListItemAction>` component represents an actionable item on the rows of your Action List. As noted above, you can supply each of your rows with actions by passing `<ActionListItemAction>` elements into the `actions` prop of the parent `<ActionListItem>` element.
