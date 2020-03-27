@@ -29,6 +29,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Change
 
 - `ActionList` closes Actions menu on `ActionListItemAction` click
+- update TextArea to support resized and documentation
+- move path for InlineInputText now under Form/Inputs
 - `ArrowDropDown` and `ArrowDropUp` Icons renamed to `ArrowUp` and `ArrowDown`
 - `CacheRefesh` Icon update
 - `Confirm` no longer displays a `Close` `IconButton` in the header

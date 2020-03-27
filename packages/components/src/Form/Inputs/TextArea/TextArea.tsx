@@ -45,12 +45,17 @@ import {
 } from '../InputText'
 import { Icon } from '../../../Icon'
 
+type TextAreaResize = 'both' | 'horizontal' | 'vertical' | 'none' | boolean
 export interface TextAreaProps
   extends BorderProps,
     Omit<LayoutProps, 'size'>,
     SpaceProps,
     TypographyProps,
     CompatibleHTMLProps<HTMLTextAreaElement> {
+  /**
+   * @default: true
+   */
+  resize?: TextAreaResize
   validationType?: ValidationType
 }
 
@@ -65,6 +70,9 @@ const TextAreaLayout: FC<TextAreaProps> = ({
   </div>
 )
 
+const TextAreaResize = (resize?: TextAreaResize) =>
+  resize === true ? 'both' : resize === false ? 'none' : resize
+
 export const TextArea = styled(TextAreaLayout)`
   position: relative;
   width: fit-content;
@@ -75,6 +83,7 @@ export const TextArea = styled(TextAreaLayout)`
     ${space}
     ${typography}
 
+    resize: ${props => TextAreaResize(props.resize)};
     border: solid 1px;
     border-color: ${(props) => props.theme.colors.palette.charcoal200};
     border-radius: ${(props) => props.theme.radii.medium};
@@ -107,5 +116,6 @@ TextArea.displayName = 'TextArea'
 
 TextArea.defaultProps = {
   height: '6.25rem',
+  resize: true,
   width: '16rem',
 }
