@@ -42,11 +42,11 @@ import {
   TypographyProps,
 } from '@looker/design-tokens'
 import omit from 'lodash/omit'
-import React, { forwardRef, useContext, Ref, useEffect } from 'react'
+import React, { forwardRef, useContext, Ref } from 'react'
 import styled, { css } from 'styled-components'
 import { Icon } from '../../../Icon'
 import { ReplaceText, Text } from '../../../Text'
-import { useCallbackRef } from '../../../utils'
+import { useForkedRef } from '../../../utils'
 import { makeHash } from './utils/makeHash'
 import {
   OptionContext,
@@ -54,11 +54,12 @@ import {
   ComboboxContextProps,
   ComboboxMultiContext,
 } from './ComboboxContext'
-import { ComboboxData, ComboboxActionType } from './utils/state'
+import { ComboboxData } from './utils/state'
 import { getComboboxText } from './utils/getComboboxText'
 import { useOptionEvents } from './utils/useOptionEvents'
 import { useOptionStatus } from './utils/useOptionStatus'
 import { useAddOptionToContext } from './utils/useAddOptionToContext'
+import { useOptionScroll } from './utils/useOptionScroll'
 
 export interface ComboboxOptionObject {
   /**
@@ -81,19 +82,6 @@ export interface HighlightTextProps {
    * @default true
    */
   highlightText?: boolean
-}
-
-// calculate an element's visibility relative to the menu scroll position
-// returns `visible`, `above`, or `below`
-const relativeElementVisibility = (
-  listElement: HTMLLIElement,
-  containerScrollPosition: number,
-  containerHeight = 0
-) => {
-  const { offsetTop } = listElement
-  const isAbove = offsetTop < containerScrollPosition
-  const isBelow = offsetTop > containerScrollPosition + containerHeight
-  return (isAbove && 'above') || (isBelow && 'below') || 'visible'
 }
 
 export interface ComboboxOptionProps
@@ -156,12 +144,6 @@ const ComboboxOptionInternal = forwardRef(
   ) => {
     const { label, value } = props
 
-    const {
-      transition,
-      listScrollPosition = 0,
-      listClientRect = { height: 0 },
-    } = useContext(ComboboxContext)
-
     useAddOptionToContext<ComboboxContextProps>(
       ComboboxContext,
       value,
@@ -177,47 +159,23 @@ const ComboboxOptionInternal = forwardRef(
       value
     )
 
-    /* scroll menu list to specified element on mount */
-    const [newTriggerElement, callbackRef] = useCallbackRef()
-    useEffect(() => {
-      if (scrollIntoView) {
-        if (newTriggerElement) {
-          newTriggerElement.scrollIntoView()
-        }
-        if (!isActive) {
-          transition &&
-            transition(ComboboxActionType.NAVIGATE, {
-              option: { label, value },
-            })
-        }
-      }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [newTriggerElement, scrollIntoView])
-
-    /* scroll menu while keyboard navigating */
-    useEffect(() => {
-      if (isActive && newTriggerElement) {
-        const visibility = relativeElementVisibility(
-          newTriggerElement.parentElement as HTMLLIElement,
-          listScrollPosition,
-          listClientRect.height
-        )
-        if (visibility !== 'visible') {
-          const attachToTop = visibility === 'above'
-          newTriggerElement.scrollIntoView(attachToTop) // false scrolls to bottom, true scrolls to top
-        }
-      }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [newTriggerElement, isActive])
+    const scrollRef = useOptionScroll(
+      ComboboxContext,
+      value,
+      label,
+      scrollIntoView,
+      isActive
+    )
+    const ref = useForkedRef(scrollRef, forwardedRef)
 
     return (
       <ComboboxOptionWrapper
         {...props}
         {...optionEvents}
-        ref={forwardedRef}
+        ref={ref}
         aria-selected={isActive}
       >
-        <ComboboxOptionDetail ref={callbackRef}>
+        <ComboboxOptionDetail>
           {isSelected && <Icon name="Check" mr={0} />}
         </ComboboxOptionDetail>
         {children || <ComboboxOptionText highlightText={highlightText} />}

@@ -29,6 +29,7 @@
 
 import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
+import { useForkedRef } from '../../../utils'
 import { CheckboxContainer, FauxCheckbox, CheckMark } from '../Checkbox'
 import {
   ComboboxMultiContext,
@@ -43,12 +44,18 @@ import {
   ComboboxOptionText,
 } from './ComboboxOption'
 import { useAddOptionToContext } from './utils/useAddOptionToContext'
-import { useOptionStatus } from './utils/useOptionStatus'
 import { useOptionEvents } from './utils/useOptionEvents'
+import { useOptionStatus } from './utils/useOptionStatus'
+import { useOptionScroll } from './utils/useOptionScroll'
 
 const ComboboxMultiOptionInternal = forwardRef(
   (
-    { children, ...props }: ComboboxOptionProps,
+    {
+      children,
+      highlightText = true,
+      scrollIntoView,
+      ...props
+    }: ComboboxOptionProps,
     forwardedRef: Ref<HTMLLIElement>
   ) => {
     const { label, value } = props
@@ -56,7 +63,8 @@ const ComboboxMultiOptionInternal = forwardRef(
     useAddOptionToContext<ComboboxMultiContextProps>(
       ComboboxMultiContext,
       value,
-      label
+      label,
+      scrollIntoView
     )
     const optionEvents = useOptionEvents<ComboboxMultiContextProps>(
       props,
@@ -67,11 +75,20 @@ const ComboboxMultiOptionInternal = forwardRef(
       value
     )
 
+    const scrollRef = useOptionScroll(
+      ComboboxMultiContext,
+      value,
+      label,
+      scrollIntoView,
+      isActive
+    )
+    const ref = useForkedRef(scrollRef, forwardedRef)
+
     return (
       <ComboboxOptionWrapper
         {...props}
         {...optionEvents}
-        ref={forwardedRef}
+        ref={ref}
         aria-selected={isActive}
       >
         <ComboboxOptionDetail>
@@ -81,7 +98,7 @@ const ComboboxMultiOptionInternal = forwardRef(
             </FauxCheckbox>
           </CheckboxContainer>
         </ComboboxOptionDetail>
-        {children || <ComboboxOptionText />}
+        {children || <ComboboxOptionText highlightText={highlightText} />}
       </ComboboxOptionWrapper>
     )
   }

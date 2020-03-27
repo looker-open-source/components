@@ -47,6 +47,7 @@ import {
 } from './Combobox'
 import { useComboboxRefs } from './utils/useComboboxRefs'
 import { useComboboxToggle } from './utils/useComboboxToggle'
+import { useScrollState } from './utils/useScrollState'
 
 function compareOptions(
   optionsA: ComboboxOptionObject[],
@@ -118,9 +119,13 @@ export const ComboboxMultiInternal = forwardRef(
     const isVisible = useComboboxToggle(state, options, onOpen, onClose)
 
     const { ref, ...commonRefs } = useComboboxRefs(forwardedRef)
+
+    const scrollState = useScrollState()
+
     const context = {
       ...commonRefs,
       ...focusManagement,
+      ...scrollState,
       data,
       id,
       isVisible,
