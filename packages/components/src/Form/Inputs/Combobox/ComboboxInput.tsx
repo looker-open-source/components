@@ -101,7 +101,7 @@ export const ComboboxInputInternal = forwardRef(
     const isControlled = controlledValue !== undefined
 
     function handleClear() {
-      contextOnChange && contextOnChange()
+      contextOnChange && contextOnChange(undefined)
       transition && transition(ComboboxActionType.CLEAR)
     }
 

@@ -132,7 +132,7 @@ export const ComboboxInternal = forwardRef(
 
     const id = useID(propsID)
 
-    const isVisible = useComboboxToggle(state, onOpen, onClose, option)
+    const isVisible = useComboboxToggle(state, option, onOpen, onClose)
 
     const { ref, ...commonRefs } = useComboboxRefs(forwardedRef)
 

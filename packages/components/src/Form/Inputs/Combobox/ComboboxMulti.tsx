@@ -58,7 +58,7 @@ function compareOptions(
   )
 }
 
-interface ComboboxMultiProps
+export interface ComboboxMultiProps
   extends ComboboxBaseProps,
     ComboboxCommonProps<ComboboxMultiCallback> {
   /**
@@ -115,7 +115,7 @@ export const ComboboxMultiInternal = forwardRef(
 
     const id = useID(propsID)
 
-    const isVisible = useComboboxToggle(state, onOpen, onClose, options)
+    const isVisible = useComboboxToggle(state, options, onOpen, onClose)
 
     const { ref, ...commonRefs } = useComboboxRefs(forwardedRef)
     const context = {

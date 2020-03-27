@@ -62,8 +62,7 @@ export interface SelectOptionGroupProps {
 
 export type SelectOptionProps = SelectOptionObject | SelectOptionGroupProps
 
-export interface SelectProps
-  extends Omit<ComboboxProps, 'value' | 'defaultValue' | 'onChange'> {
+export interface SelectBaseProps {
   options?: SelectOptionProps[]
   /**
    * Displays an example value or short hint to the user. Should not replace a label.
@@ -84,6 +83,11 @@ export interface SelectProps
   onFilter?: (term: string) => void
 
   validationType?: ValidationType
+}
+
+export interface SelectProps
+  extends Omit<ComboboxProps, 'value' | 'defaultValue' | 'onChange'>,
+    SelectBaseProps {
   /**
    * Value of the current selected option (controlled)
    */
@@ -98,7 +102,7 @@ export interface SelectProps
   onChange?: (value: string) => void
 }
 
-function flattenOptions(options: SelectOptionProps[]) {
+export function flattenOptions(options: SelectOptionProps[]) {
   return options.reduce(
     (acc: SelectOptionObject[], option: SelectOptionProps) => {
       const optionAsGroup = option as SelectOptionGroupProps
@@ -124,18 +128,26 @@ function getFirstOption(options: SelectOptionProps[]): SelectOptionObject {
   return options[0] as SelectOptionObject
 }
 
+export function SelectOptionWithDescription({
+  description,
+}: SelectOptionObject) {
+  return (
+    <Box>
+      <Heading fontSize="small" fontWeight="semiBold" pb="xxsmall">
+        <ComboboxOptionText />
+      </Heading>
+      <Paragraph variant="subdued" fontSize="small">
+        {description}
+      </Paragraph>
+    </Box>
+  )
+}
+
 const renderOption = (option: SelectOptionObject, index: number) => {
   if (option.description) {
     return (
       <ComboboxOption {...option} key={index} py="xxsmall">
-        <Box>
-          <Heading fontSize="small" fontWeight="semiBold" pb="xxsmall">
-            <ComboboxOptionText />
-          </Heading>
-          <Paragraph variant="subdued" fontSize="small">
-            {option.description}
-          </Paragraph>
-        </Box>
+        <SelectOptionWithDescription {...option} />
       </ComboboxOption>
     )
   }
@@ -154,7 +166,10 @@ SelectOptionGroupTitle.defaultProps = {
   variant: 'subdued',
 }
 
-const SelectOptionGroup = ({ options, title }: SelectOptionGroupProps) => (
+export const SelectOptionGroup = ({
+  options,
+  title,
+}: SelectOptionGroupProps) => (
   <Box py="xxsmall">
     <SelectOptionGroupTitle>
       <span />

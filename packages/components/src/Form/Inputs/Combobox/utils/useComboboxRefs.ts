@@ -50,12 +50,14 @@ export function useComboboxRefs(forwardedRef: Ref<HTMLDivElement>) {
   const autoCompletePropRef = useRef(true)
   const readOnlyPropRef = useRef(false)
 
-  const persistSelectionRef = useRef(false)
+  const persistSelectionPropRef = useRef(false)
+  const closeOnSelectPropRef = useRef(true)
 
   return {
     autoCompletePropRef,
+    closeOnSelectPropRef,
     optionsRef,
-    persistSelectionRef,
+    persistSelectionPropRef,
     popoverRef,
     readOnlyPropRef,
     ref,

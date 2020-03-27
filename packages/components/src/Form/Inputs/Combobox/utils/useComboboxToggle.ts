@@ -48,9 +48,9 @@ export function useComboboxToggle<
   TOption extends ComboboxOptionType = MaybeComboboxOptionObject
 >(
   state: ComboboxState,
+  option: TOption,
   onOpen?: ComboboxCallback<TOption>,
-  onClose?: ComboboxCallback<TOption>,
-  option?: TOption
+  onClose?: ComboboxCallback<TOption>
 ) {
   const isVisible = getIsVisible(state)
   const isVisibleRef = useRef(isVisible)

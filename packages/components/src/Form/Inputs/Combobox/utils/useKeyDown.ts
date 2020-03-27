@@ -46,7 +46,7 @@ export function useKeyDown() {
     state,
     transition,
     autoCompletePropRef,
-    persistSelectionRef,
+    persistSelectionPropRef,
     readOnlyPropRef,
   } = contextToUse
   const { navigationOption } = data
@@ -78,7 +78,7 @@ export function useKeyDown() {
           transition &&
             transition(ComboboxActionType.NAVIGATE, {
               persistSelection:
-                persistSelectionRef && persistSelectionRef.current,
+                persistSelectionPropRef && persistSelectionPropRef.current,
             })
         } else {
           const index = navigationOption
@@ -170,7 +170,11 @@ export function useKeyDown() {
           navigationOption !== undefined
         ) {
           checkOnChange()
-          transition && transition(ComboboxActionType.SELECT_WITH_KEYBOARD)
+          transition &&
+            transition(ComboboxActionType.SELECT_WITH_KEYBOARD, {
+              persistSelection:
+                persistSelectionPropRef && persistSelectionPropRef.current,
+            })
         }
         break
       }

@@ -67,6 +67,11 @@ export interface ComboboxListProps
    * @default false
    */
   persistSelection?: boolean
+  /**
+   * Close after an option is selected
+   * @default true
+   */
+  closeOnSelect?: boolean
 }
 
 interface ComboboxListInternalProps extends ComboboxListProps {
@@ -79,6 +84,8 @@ const ComboboxListInternal = forwardRef(
       // when true, and the list opens again, the option with a matching value will be
       // automatically highlighted.
       persistSelection = false,
+      // closes the list after an option is selected
+      closeOnSelect = true,
       isMulti,
       ...props
     }: ComboboxListInternalProps,
@@ -88,7 +95,8 @@ const ComboboxListInternal = forwardRef(
     const contextMulti = useContext(ComboboxMultiContext)
     const contextToUse = isMulti ? contextMulti : context
     const {
-      persistSelectionRef,
+      persistSelectionPropRef,
+      closeOnSelectPropRef,
       transition,
       wrapperElement,
       isVisible,
@@ -99,10 +107,10 @@ const ComboboxListInternal = forwardRef(
     } = contextToUse
 
     if (persistSelection) {
-      if (persistSelectionRef) persistSelectionRef.current = true
+      if (persistSelectionPropRef) persistSelectionPropRef.current = true
     }
-    if (persistSelection) {
-      if (persistSelectionRef) persistSelectionRef.current = true
+    if (!closeOnSelect) {
+      if (closeOnSelectPropRef) closeOnSelectPropRef.current = false
     }
 
     // WEIRD? Reset the options ref every render so that they are always

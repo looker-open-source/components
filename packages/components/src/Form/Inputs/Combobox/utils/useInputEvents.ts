@@ -68,7 +68,7 @@ export function useInputEvents<
     data: { lastActionType },
     inputElement,
     openOnFocus,
-    persistSelectionRef,
+    persistSelectionPropRef,
     state,
     transition,
   } = useContext(context)
@@ -97,7 +97,8 @@ export function useInputEvents<
     ) {
       transition &&
         transition(ComboboxActionType.FOCUS, {
-          persistSelection: persistSelectionRef && persistSelectionRef.current,
+          persistSelection:
+            persistSelectionPropRef && persistSelectionPropRef.current,
         })
     }
   }
@@ -116,7 +117,7 @@ export function useInputEvents<
         transition &&
           transition(ComboboxActionType.FOCUS, {
             persistSelection:
-              persistSelectionRef && persistSelectionRef.current,
+              persistSelectionPropRef && persistSelectionPropRef.current,
           })
       } else {
         // Closing an opened list
@@ -126,7 +127,7 @@ export function useInputEvents<
         selectText()
       }
     },
-    [persistSelectionRef, state, selectText, transition]
+    [persistSelectionPropRef, state, selectText, transition]
   )
 
   const handleMouseUp = useCallback(

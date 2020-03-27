@@ -156,8 +156,8 @@ export const stateChart: StateChart = {
         [ComboboxActionType.CLEAR]: ComboboxState.IDLE,
         [ComboboxActionType.ESCAPE]: ComboboxState.IDLE,
         [ComboboxActionType.BLUR]: ComboboxState.IDLE,
-        [ComboboxActionType.SELECT_WITH_CLICK]: ComboboxState.IDLE,
-        [ComboboxActionType.SELECT_SILENT]: ComboboxState.IDLE,
+        [ComboboxActionType.SELECT_WITH_CLICK]: ComboboxState.SUGGESTING,
+        [ComboboxActionType.SELECT_SILENT]: ComboboxState.SUGGESTING,
         [ComboboxActionType.INTERACT]: ComboboxState.INTERACTING,
       },
     },
@@ -171,9 +171,9 @@ export const stateChart: StateChart = {
         [ComboboxActionType.BLUR]: ComboboxState.IDLE,
         [ComboboxActionType.ESCAPE]: ComboboxState.IDLE,
         [ComboboxActionType.NAVIGATE]: ComboboxState.NAVIGATING,
-        [ComboboxActionType.SELECT_WITH_CLICK]: ComboboxState.IDLE,
-        [ComboboxActionType.SELECT_WITH_KEYBOARD]: ComboboxState.IDLE,
-        [ComboboxActionType.SELECT_SILENT]: ComboboxState.IDLE,
+        [ComboboxActionType.SELECT_WITH_CLICK]: ComboboxState.NAVIGATING,
+        [ComboboxActionType.SELECT_WITH_KEYBOARD]: ComboboxState.NAVIGATING,
+        [ComboboxActionType.SELECT_SILENT]: ComboboxState.NAVIGATING,
         [ComboboxActionType.INTERACT]: ComboboxState.INTERACTING,
       },
     },
@@ -186,8 +186,8 @@ export const stateChart: StateChart = {
         [ComboboxActionType.BLUR]: ComboboxState.IDLE,
         [ComboboxActionType.ESCAPE]: ComboboxState.IDLE,
         [ComboboxActionType.NAVIGATE]: ComboboxState.NAVIGATING,
-        [ComboboxActionType.SELECT_WITH_CLICK]: ComboboxState.IDLE,
-        [ComboboxActionType.SELECT_SILENT]: ComboboxState.IDLE,
+        [ComboboxActionType.SELECT_WITH_CLICK]: ComboboxState.INTERACTING,
+        [ComboboxActionType.SELECT_SILENT]: ComboboxState.INTERACTING,
       },
     },
   },
@@ -207,7 +207,7 @@ const findNavigationValue = (
     return singularState.option
       ? singularState.option
       : multiState.options
-      ? multiState.options[0]
+      ? multiState.options[multiState.options.length - 1]
       : undefined
   } else {
     return undefined
