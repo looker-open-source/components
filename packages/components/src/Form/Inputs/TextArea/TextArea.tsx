@@ -71,7 +71,7 @@ const TextAreaLayout: FC<TextAreaProps> = ({
 )
 
 const TextAreaResize = (resize?: TextAreaResize) =>
-  resize === false ? 'none' : resize === true ? 'both' : resize
+  resize === true ? 'both' : resize === false ? 'none' : resize
 
 export const TextArea = styled(TextAreaLayout)`
   position: relative;
@@ -85,12 +85,12 @@ export const TextArea = styled(TextAreaLayout)`
 
     resize: ${props => TextAreaResize(props.resize)};
     border: solid 1px;
-    border-color: ${(props) => props.theme.colors.palette.charcoal200};
-    border-radius: ${(props) => props.theme.radii.medium};
-    font-size: ${(props) => props.theme.fontSizes.small};
+    border-color: ${props => props.theme.colors.palette.charcoal200};
+    border-radius: ${props => props.theme.radii.medium};
+    font-size: ${props => props.theme.fontSizes.small};
     min-height: 6.25rem;
-    padding: ${(props) => props.theme.space.small};
-    padding-right: ${(props) => props.theme.space.xlarge};
+    padding: ${props => props.theme.space.small};
+    padding-right: ${props => props.theme.space.xlarge};
 
     &:hover {
       ${inputTextHover}
@@ -102,7 +102,7 @@ export const TextArea = styled(TextAreaLayout)`
 
     ${inputTextValidation}
 
-    ${(props) => (props.disabled ? inputTextDisabled : '')}
+    ${props => (props.disabled ? inputTextDisabled : '')}
   }
 
   ${Icon} {
