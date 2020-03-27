@@ -225,7 +225,6 @@ const reducer: Reducer<ComboboxData, ComboboxActionWithPayload> = (
       return {
         ...nextState,
         inputValue: action.inputValue,
-        navigationOption: undefined,
       }
     case ComboboxActionType.NAVIGATE:
       return {
@@ -285,7 +284,6 @@ const reducerMulti: Reducer<
       return {
         ...nextState,
         inputValue: action.inputValue,
-        navigationOption: undefined,
       }
     case ComboboxActionType.CHANGE_VALUES:
       return {

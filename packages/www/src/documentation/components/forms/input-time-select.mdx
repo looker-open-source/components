@@ -1,0 +1,122 @@
+---
+title: InputTimeSelect
+propsOf: InputTimeSelect
+github: Form/Inputs/InputTimeSelect/InputTimeSelect.tsx
+---
+
+`InputTimeSelect` provides a [`Select`](/components/forms/select)-based dropdown UI for picking a 24-hour time value. This is an alternative to [`InputTime`](/components/forms/input-time), which provides an HTML5-standard time picking experience.
+
+The default implementation provides a dropdown list of times in 15-minute increments, formatted in for a 12-hour clock.
+
+```jsx
+<InputTimeSelect />
+```
+
+# Intervals
+
+You can modify the list to increment time in 5, 10, 15, or 30 minute intervals.
+
+```jsx
+<>
+  <Heading as="h3">5-minute</Heading>
+  <InputTimeSelect interval={5} />
+  <Heading as="h3" mt="small">
+    10-minute
+  </Heading>
+  <InputTimeSelect interval={10} />
+  <Heading as="h3" mt="small">
+    15-minute
+  </Heading>
+  <InputTimeSelect interval={15} />
+  <Heading as="h3" mt="small">
+    30-minute
+  </Heading>
+  <InputTimeSelect interval={30} />
+</>
+```
+
+# 12- or 24-hour formatting
+
+Depending on readability preference, the time picker can format the labels in either 12- or 24-hour time. Regardless of label formatting, this component returns a 24-hour time formatted string when changed.
+
+```jsx
+;() => {
+  const [value, setValue] = useState('14:00')
+  return (
+    <>
+      <Heading as="H3">12-hour</Heading>
+      <Flex>
+        <InputTimeSelect format="12h" value={value} onChange={setValue} />
+        <Text
+          variant="secondary"
+          fontWeight="bold"
+          mt="xsmall"
+          ml="small"
+          textTransform="uppercase"
+          fontSize="small"
+        >
+          Selected: {value}
+        </Text>
+      </Flex>
+      <Heading as="H3" mt="small">
+        24-hour
+      </Heading>
+      <Flex>
+        <InputTimeSelect format="24h" value={value} onChange={setValue} />
+        <Text
+          variant="secondary"
+          fontWeight="bold"
+          mt="xsmall"
+          ml="small"
+          textTransform="uppercase"
+          fontSize="small"
+        >
+          Selected: {value}
+        </Text>
+      </Flex>
+    </>
+  )
+}
+```
+
+# Controlled Component
+
+Consistent with all other inputs, `InputTimeSelect` accepts `value` and `onChange` props for use in a controlled form setting.
+
+- `value` accepts a 24-hour formatted time string (e.g. `15:45`)
+- `onChange` returns a 24-hour time string
+
+```jsx
+;() => {
+  const [value, setValue] = useState('14:00')
+  return (
+    <Flex>
+      <InputTimeSelect value={value} onChange={setValue} />
+      <Text
+        variant="secondary"
+        fontWeight="bold"
+        mt="xsmall"
+        ml="small"
+        textTransform="uppercase"
+        fontSize="small"
+      >
+        Selected: {value}
+      </Text>
+    </Flex>
+  )
+}
+```
+
+# DefaultValue
+
+If you don't want to control the form value externally, but still want to listen for changes, you can still pass in an initial `defaultValue`.
+
+```jsx
+;() => {
+  return (
+    <Flex>
+      <InputTimeSelect defaultValue="15:45" />
+    </Flex>
+  )
+}
+```

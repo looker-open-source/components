@@ -200,3 +200,41 @@ To allow the user to clear the `Select`'s value, add the `isClearable` prop.
   />
 </Flex>
 ```
+
+## scrollIntoView for improved UX on a long list of options
+
+If you're rendering a long list which scrolls beyond the max-height of the list, you can leverage the `scrollIntoView` option property to focus the list to a helpful scroll position. Using `scrollIntoView` will also highlight the option, so that keyboard navigation will start from there as well.
+
+When you open the following list, `Mascarpone` will be highlighted and visible at the bottom of the menu:
+
+```jsx
+<Flex justifyContent="space-between">
+  <Select
+    placeholder="Select your cheese of choice..."
+    options={[
+      { value: 'cheddar', label: 'Cheddar' },
+      { value: 'gouda', label: 'Gouda' },
+      { value: 'swiss', label: 'Swiss' },
+      { value: 'string', label: 'String' },
+      { value: 'parmesan', label: 'Parmigiano Reggiano' },
+      { value: 'roquefort', label: 'Roquefort' },
+      { value: 'brie', label: 'Brie' },
+      { value: 'gruyere', label: 'Gruyere' },
+      { value: 'feta', label: 'Feta' },
+      { value: 'mozzarella', label: 'Mozzarella' },
+      { value: 'manchego', label: 'Manchego' },
+      { value: 'gorgonzola', label: 'Gorgonzola' },
+      { value: 'epoisses', label: 'Epoisses' },
+      { value: 'monterey-jack', label: 'Monterey Jack' },
+      { value: 'muenster', label: 'Muenster' },
+      { value: 'provolone', label: 'Provolone' },
+      { value: 'blue', label: 'Blue' },
+      { value: 'camembert', label: 'Camembert' },
+      { value: 'havarti', label: 'Havarti' },
+      { value: 'ricotta', label: 'Ricotta' },
+      { value: 'mascarpone', label: 'Mascarpone', scrollIntoView: true },
+    ]}
+    flex={1}
+  />
+</Flex>
+```

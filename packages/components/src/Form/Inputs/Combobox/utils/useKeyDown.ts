@@ -82,7 +82,7 @@ export function useKeyDown() {
             })
         } else {
           const index = navigationOption
-            ? findIndex(options, navigationOption)
+            ? findIndex(options, ['value', navigationOption.value])
             : -1
           const atBottom = index === options.length - 1
           if (atBottom) {
