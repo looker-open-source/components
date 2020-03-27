@@ -124,6 +124,7 @@ export const InputChipsBase = styled(InputChipsBaseInternal)`
   ${InputText} {
     width: auto;
     min-width: 25%;
+    padding-right: 0;
   }
 
   ${InputSearchControls} {

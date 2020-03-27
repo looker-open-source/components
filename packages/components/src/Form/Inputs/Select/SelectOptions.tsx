@@ -4,6 +4,7 @@ import { Box } from '../../../Layout'
 import { ListItem } from '../../../List'
 import { Heading, Paragraph } from '../../../Text'
 import {
+  ComboboxMultiOption,
   ComboboxOption,
   comboboxOptionGrid,
   ComboboxOptionObject,
@@ -32,6 +33,17 @@ const renderOption = (option: SelectOptionObject, index: number) => {
   return <ComboboxOption {...option} key={index} />
 }
 
+const renderMultiOption = (option: SelectOptionObject, index: number) => {
+  if (option.description) {
+    return (
+      <ComboboxMultiOption {...option} key={index} py="xxsmall">
+        <SelectOptionWithDescription {...option} />
+      </ComboboxMultiOption>
+    )
+  }
+  return <ComboboxMultiOption {...option} key={index} />
+}
+
 export function SelectOptionWithDescription({
   description,
 }: SelectOptionObject) {
@@ -47,8 +59,10 @@ export function SelectOptionWithDescription({
   )
 }
 
-const SelectOptionGroupTitle = styled(Heading)`
+const SelectOptionGroupTitle = styled(Heading)<{ isMulti?: boolean }>`
   ${comboboxOptionGrid}
+  ${({ isMulti, theme }) =>
+    isMulti ? `grid-template-columns: ${theme.space.xlarge} 1fr;` : ''}
 `
 
 SelectOptionGroupTitle.defaultProps = {
@@ -62,28 +76,36 @@ SelectOptionGroupTitle.defaultProps = {
 export const SelectOptionGroup = ({
   options,
   title,
-}: SelectOptionGroupProps) => (
+  isMulti,
+}: SelectOptionGroupProps & { isMulti?: boolean }) => (
   <Box py="xxsmall">
-    <SelectOptionGroupTitle>
+    <SelectOptionGroupTitle isMulti={isMulti}>
       <span />
       {title}
     </SelectOptionGroupTitle>
-    {options.map(renderOption)}
+    {options.map(isMulti ? renderMultiOption : renderOption)}
   </Box>
 )
 
 export interface SelectOptionsProps {
   options?: SelectOptionProps[]
+  isMulti?: boolean
 }
 
-export function SelectOptions({ options }: SelectOptionsProps) {
+export function SelectOptions({ options, isMulti }: SelectOptionsProps) {
   return (
     <>
       {options && options.length > 0 ? (
         options.map((option: SelectOptionProps, index: number) => {
           const optionAsGroup = option as SelectOptionGroupProps
           return optionAsGroup.title ? (
-            <SelectOptionGroup key={index} {...optionAsGroup} />
+            <SelectOptionGroup
+              key={index}
+              {...optionAsGroup}
+              isMulti={isMulti}
+            />
+          ) : isMulti ? (
+            renderMultiOption(option as SelectOptionObject, index)
           ) : (
             renderOption(option as SelectOptionObject, index)
           )

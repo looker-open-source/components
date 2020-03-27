@@ -27,22 +27,18 @@
 import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
 import { CustomizableAttributes } from '@looker/design-tokens'
-import { ListItem } from '../../../List'
 import {
   ComboboxMulti,
   ComboboxMultiInput,
   ComboboxMultiList,
-  ComboboxMultiOption,
   ComboboxMultiProps,
   getComboboxText,
 } from '../Combobox'
 import { flattenOptions, SelectBaseProps } from './Select'
 import {
-  SelectOptionGroup,
   SelectOptionObject,
   SelectOptionProps,
-  SelectOptionWithDescription,
-  SelectOptionGroupProps,
+  SelectOptions,
 } from './SelectOptions'
 
 export const CustomizableSelectMultiAttributes: CustomizableAttributes = {
@@ -80,17 +76,6 @@ function getOptions(
     label: getComboboxText(value, flattenedOptions),
     value,
   }))
-}
-
-const renderOption = (option: SelectOptionObject, index: number) => {
-  if (option.description) {
-    return (
-      <ComboboxMultiOption {...option} key={index} py="xxsmall">
-        <SelectOptionWithDescription {...option} />
-      </ComboboxMultiOption>
-    )
-  }
-  return <ComboboxMultiOption {...option} key={index} />
 }
 
 const SelectMultiComponent = forwardRef(
@@ -168,20 +153,7 @@ const SelectMultiComponent = forwardRef(
             closeOnSelect={false}
             {...ariaProps}
           >
-            {options && options.length > 0 ? (
-              options.map((option: SelectOptionProps, index: number) => {
-                const optionAsGroup = option as SelectOptionGroupProps
-                return optionAsGroup.title ? (
-                  <SelectOptionGroup key={index} {...optionAsGroup} />
-                ) : (
-                  renderOption(option as SelectOptionObject, index)
-                )
-              })
-            ) : (
-              <ListItem fontSize="small" px="medium" py="xxsmall">
-                No options
-              </ListItem>
-            )}
+            <SelectOptions options={options} isMulti />
           </ComboboxMultiList>
         )}
       </ComboboxMulti>
