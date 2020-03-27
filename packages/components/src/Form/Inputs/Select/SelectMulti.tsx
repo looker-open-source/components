@@ -24,7 +24,7 @@
 
  */
 
-import React, { forwardRef, Ref, ReactNode } from 'react'
+import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
 import { CustomizableAttributes } from '@looker/design-tokens'
 import { ListItem } from '../../../List'
@@ -36,14 +36,14 @@ import {
   ComboboxMultiProps,
   getComboboxText,
 } from '../Combobox'
+import { flattenOptions, SelectBaseProps } from './Select'
 import {
-  flattenOptions,
-  SelectBaseProps,
   SelectOptionGroup,
   SelectOptionObject,
   SelectOptionProps,
   SelectOptionWithDescription,
-} from './Select'
+  SelectOptionGroupProps,
+} from './SelectOptions'
 
 export const CustomizableSelectMultiAttributes: CustomizableAttributes = {
   borderRadius: 'medium',
@@ -51,11 +51,6 @@ export const CustomizableSelectMultiAttributes: CustomizableAttributes = {
   height: '28px',
   px: 'xsmall',
   py: 'none',
-}
-
-export interface SelectMultiOptionGroupProps {
-  options: SelectOptionObject[]
-  title: string | ReactNode
 }
 
 export interface SelectMultiProps
@@ -175,7 +170,7 @@ const SelectMultiComponent = forwardRef(
           >
             {options && options.length > 0 ? (
               options.map((option: SelectOptionProps, index: number) => {
-                const optionAsGroup = option as SelectMultiOptionGroupProps
+                const optionAsGroup = option as SelectOptionGroupProps
                 return optionAsGroup.title ? (
                   <SelectOptionGroup key={index} {...optionAsGroup} />
                 ) : (
