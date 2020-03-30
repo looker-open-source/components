@@ -168,6 +168,7 @@ const FieldComponent: FunctionComponent<FieldProps> = ({
   description,
   detail,
   id,
+  inline = false,
   label,
   labelFontSize,
   labelFontWeight,
@@ -210,6 +211,20 @@ const FieldComponent: FunctionComponent<FieldProps> = ({
   )
 }
 
+export const labelAlignment = css<FieldProps>`
+  ${(props) =>
+    props.inline
+      ? `
+        text-align: right;
+        padding-right: ${props.theme.space.small};
+      `
+      : `
+        text-align: top;
+        padding-bottom: ${props.theme.space.xsmall};
+
+      `}
+`
+
 export const Field = styled(FieldComponent)`
   width: ${(props) => props.width};
 
@@ -222,7 +237,8 @@ export const Field = styled(FieldComponent)`
   }
 
   ${Label} {
-    text-align: top;
+    ${labelAlignment}
+
     width: ${(props) =>
       props.labelWidth || CustomizableFieldAttributes.labelWidth};
   }

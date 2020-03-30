@@ -17,6 +17,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - `Share` Icon updated
 
+### Change
+
+- updated Field to remove `alignLabel` and have only default (top) and inline (right) label.
+
 ## [0.7.25] - 2020-03-23
 
 ### Added

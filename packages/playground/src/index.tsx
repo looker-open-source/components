@@ -20,17 +20,36 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { GlobalStyle } from '@looker/components'
+import {
+  GlobalStyle,
+  Flex,
+  FieldCheckbox,
+  FieldToggleSwitch,
+  FieldRadio,
+  FieldText,
+} from '@looker/components'
 import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
 
+<<<<<<< HEAD
 import { TestPopovers } from './Popovers/Testing'
 
+=======
+>>>>>>> update Fields to have inline or default alignemtn only
 const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
+<<<<<<< HEAD
       <TestPopovers />
+=======
+      <Flex pt="large" justifyContent="space-around" alignItems="center">
+        <FieldText label="hello" />
+        <FieldCheckbox label="hello" />
+        <FieldToggleSwitch label="hello" />
+        <FieldRadio label="hello" />
+      </Flex>
+>>>>>>> update Fields to have inline or default alignemtn only
     </ThemeProvider>
   )
 }
