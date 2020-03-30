@@ -207,7 +207,8 @@ const findNavigationValue = (
     return singularState.option
       ? singularState.option
       : multiState.options
-      ? multiState.options[multiState.options.length - 1]
+      ? multiState.navigationOption ||
+        multiState.options[multiState.options.length - 1]
       : undefined
   } else {
     return undefined
@@ -318,7 +319,7 @@ const reducerMulti: Reducer<
       return {
         ...nextState,
         inputValue: '',
-        navigationOption: undefined,
+        navigationOption: findNavigationValue(nextState, action),
         options: xorWith(
           nextState.options,
           action.option ? [action.option] : [],
@@ -336,7 +337,7 @@ const reducerMulti: Reducer<
       return {
         ...nextState,
         inputValue: '',
-        navigationOption: undefined,
+        navigationOption: findNavigationValue(nextState, action),
         options: xorWith(
           nextState.options,
           data.navigationOption ? [data.navigationOption] : [],

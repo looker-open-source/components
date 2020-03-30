@@ -69,6 +69,11 @@ export interface SelectMultiProps
    */
   onChange?: (values?: string[]) => void
   /**
+   * Should the list close after an option is selected
+   * @default false
+   */
+  closeOnSelect?: boolean
+  /**
    * Add an on-the-fly option mirroring the typed text (use when isFilterable = true)
    * When `true`, missingInOptions is used to show/hide and can be included in a custom function
    */
@@ -139,6 +144,7 @@ const SelectMultiComponent = forwardRef(
       'aria-label': ariaLabel,
       'aria-labelledby': ariaLabelledby,
       validationType,
+      closeOnSelect = false,
       showCreate = false,
       createOptionPosition = 'last',
       formatCreateLabel,
@@ -223,7 +229,7 @@ const SelectMultiComponent = forwardRef(
         {!disabled && (
           <ComboboxMultiList
             persistSelection
-            closeOnSelect={false}
+            closeOnSelect={closeOnSelect}
             {...ariaProps}
           >
             {renderCreate('first')}

@@ -48,6 +48,7 @@ export function useKeyDown() {
     autoCompletePropRef,
     persistSelectionPropRef,
     readOnlyPropRef,
+    closeOnSelectPropRef,
   } = contextToUse
   const { navigationOption } = data
 
@@ -63,6 +64,19 @@ export function useKeyDown() {
         )
         ;(onChange as ComboboxMultiCallback)(newOptions)
       }
+    }
+  }
+
+  function selectOption() {
+    checkOnChange()
+    transition &&
+      transition(ComboboxActionType.SELECT_WITH_KEYBOARD, {
+        persistSelection:
+          persistSelectionPropRef && persistSelectionPropRef.current,
+      })
+    if (closeOnSelectPropRef && closeOnSelectPropRef.current) {
+      // Closing an opened list
+      transition && transition(ComboboxActionType.ESCAPE)
     }
   }
 
@@ -169,12 +183,7 @@ export function useKeyDown() {
           state === ComboboxState.NAVIGATING &&
           navigationOption !== undefined
         ) {
-          checkOnChange()
-          transition &&
-            transition(ComboboxActionType.SELECT_WITH_KEYBOARD, {
-              persistSelection:
-                persistSelectionPropRef && persistSelectionPropRef.current,
-            })
+          selectOption()
         }
         break
       }
@@ -185,8 +194,7 @@ export function useKeyDown() {
         ) {
           // don't want to submit forms
           event.preventDefault()
-          checkOnChange()
-          transition && transition(ComboboxActionType.SELECT_WITH_KEYBOARD)
+          selectOption()
         }
         break
       }

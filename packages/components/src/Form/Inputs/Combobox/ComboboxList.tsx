@@ -106,12 +106,10 @@ const ComboboxListInternal = forwardRef(
       setListClientRect,
     } = contextToUse
 
-    if (persistSelection) {
-      if (persistSelectionPropRef) persistSelectionPropRef.current = true
-    }
-    if (!closeOnSelect) {
-      if (closeOnSelectPropRef) closeOnSelectPropRef.current = false
-    }
+    // Update context prop refs
+    if (persistSelectionPropRef)
+      persistSelectionPropRef.current = persistSelection
+    if (closeOnSelectPropRef) closeOnSelectPropRef.current = closeOnSelect
 
     // WEIRD? Reset the options ref every render so that they are always
     // accurate and ready for keyboard navigation handlers. Using layout
