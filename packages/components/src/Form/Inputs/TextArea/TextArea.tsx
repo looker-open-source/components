@@ -71,7 +71,7 @@ const TextAreaLayout: FC<TextAreaProps> = ({
 )
 
 const TextAreaResize = (resize?: TextAreaResize) =>
-  resize === true ? 'both' : resize === false ? 'none' : resize
+  resize === false ? 'none' : resize === true ? 'both' : resize
 
 export const TextArea = styled(TextAreaLayout)`
   position: relative;
