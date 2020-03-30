@@ -24,7 +24,7 @@
 
  */
 
-import React, { forwardRef, ReactNode, Ref } from 'react'
+import React, { forwardRef, KeyboardEvent, ReactNode, Ref } from 'react'
 import styled from 'styled-components'
 import { CustomizableAttributes } from '@looker/design-tokens'
 import {
@@ -83,6 +83,11 @@ export interface SelectMultiProps
    * @default `Create ${inputText}`
    */
   formatCreateLabel?: (inputText: string) => ReactNode
+  /**
+   * Set to false to disable the removal of the last value on backspace key
+   * @default true
+   */
+  removeOnBackspace?: boolean
 }
 
 function getOptions(
@@ -137,6 +142,7 @@ const SelectMultiComponent = forwardRef(
       showCreate = false,
       createOptionPosition = 'last',
       formatCreateLabel,
+      removeOnBackspace = true,
       ...props
     }: SelectMultiProps,
     ref: Ref<HTMLInputElement>
@@ -171,6 +177,15 @@ const SelectMultiComponent = forwardRef(
       disabled,
       placeholder,
       validationType,
+      ...(removeOnBackspace
+        ? {}
+        : {
+            onKeyDown: (e: KeyboardEvent<HTMLInputElement>) => {
+              if (e.currentTarget.value === '' && e.key === 'Backspace') {
+                e.preventDefault()
+              }
+            },
+          }),
     }
 
     function renderCreate(position: 'first' | 'last') {

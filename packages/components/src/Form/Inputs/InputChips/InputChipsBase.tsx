@@ -66,7 +66,7 @@ export const InputChipsBaseInternal = forwardRef(
 
     function handleKeyDown(e: KeyboardEvent<HTMLInputElement>) {
       onKeyDown && onKeyDown(e)
-      if (e.key === 'Backspace') {
+      if (e.key === 'Backspace' && !e.defaultPrevented) {
         // If we hit backspace and there is no text left to delete, remove the last entry instead
         inputValue === '' && handleDeleteChip(values[values.length - 1])
       }

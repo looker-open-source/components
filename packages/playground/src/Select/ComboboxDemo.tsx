@@ -144,6 +144,7 @@ export function ComboboxDemo() {
         showCreate
         createOptionPosition="first"
         formatCreateLabel={formatCreate}
+        removeOnBackspace={false}
       />
       <SelectMulti
         width={300}
