@@ -57,7 +57,19 @@ export const CustomizableFieldAttributes: CustomizableFieldAttributesInterface =
 }
 
 export interface FieldProps {
+<<<<<<< HEAD
   className?: string
+=======
+  /**
+   * Determines where to place the label in relation to the input.
+   * @default false
+   */
+  inline?: boolean
+  /**
+   * Determines where to place the validation message in relation to the input.
+   */
+  alignValidationMessage?: FormControlDirections
+>>>>>>> update Fields to have inline or default alignemtn only
   /*
    * optional extra description
    */
@@ -109,6 +121,11 @@ export interface FieldProps {
 }
 
 export const fieldPropKeys = [
+<<<<<<< HEAD
+=======
+  'inline',
+  'alignValidationMessage',
+>>>>>>> update Fields to have inline or default alignemtn only
   'description',
   'detail',
   'id',
@@ -134,6 +151,26 @@ const RequiredStar = styled((props) => (
   color: ${(props) => props.theme.colors.palette.red500};
 `
 
+<<<<<<< HEAD
+=======
+const getValidationMessageAlignment = (
+  alignValidationMessage?: FormControlDirections
+): FormControlDirections | undefined => {
+  switch (alignValidationMessage) {
+    case 'left':
+      return 'right'
+    case 'right':
+      return 'left'
+    case 'bottom':
+      return 'top'
+    case 'top':
+      return 'bottom'
+    default:
+      return undefined
+  }
+}
+
+>>>>>>> update Fields to have inline or default alignemtn only
 /**
  * `<Field />` allows the rendering of a label (optionally associated with a child input like `<InputText />`),
  * and can render a validation message. Generally, this component is used with form inputs to give user
@@ -191,6 +228,7 @@ export const Field = styled(FieldLayout)`
   }
 
   ${Label} {
+<<<<<<< HEAD
     ${(props) =>
       props.inline
         ? `
@@ -202,5 +240,10 @@ export const Field = styled(FieldLayout)`
 
       `}
     width: ${(props) => props.labelWidth};
+=======
+    text-align: top;
+    width: ${(props) =>
+      props.labelWidth || CustomizableFieldAttributes.labelWidth};
+>>>>>>> update Fields to have inline or default alignemtn only
   }
 `
