@@ -25,7 +25,7 @@
  */
 
 import React, { FunctionComponent, ReactNode } from 'react'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { ResponsiveValue, TLengthStyledSystem } from 'styled-system'
 import {
   CustomizableAttributes,
@@ -61,8 +61,9 @@ export const CustomizableFieldAttributes: CustomizableFieldAttributesInterface =
 export interface FieldProps {
   /**
    * Determines where to place the label in relation to the input.
+   * @default false
    */
-  alignLabel?: FormControlDirections
+  inline?: boolean
   /**
    * Determines where to place the validation message in relation to the input.
    */
@@ -113,7 +114,7 @@ export interface FieldProps {
 }
 
 export const fieldPropKeys = [
-  'alignLabel',
+  'inline',
   'alignValidationMessage',
   'description',
   'detail',
@@ -138,30 +139,6 @@ const RequiredStar = styled((props) => (
 ))`
   color: ${(props) => props.theme.colors.palette.red500};
 `
-
-const handleHorizontalAlignment = (props: FieldProps) => {
-  const { alignLabel, labelWidth } = props
-  const width = labelWidth || CustomizableFieldAttributes.labelWidth
-  switch (alignLabel) {
-    case 'left':
-      return css`
-        text-align: right;
-        width: ${width};
-      `
-    case 'right':
-      return css`
-        text-align: left;
-        width: ${width};
-        margin-right: 0;
-        margin-left: ${(props) =>
-          props.theme.space[CustomizableFieldAttributes.labelMargin]};
-      `
-    case 'bottom':
-    case 'top':
-    default:
-      return ''
-  }
-}
 
 const getValidationMessageAlignment = (
   alignValidationMessage?: FormControlDirections
@@ -245,6 +222,8 @@ export const Field = styled(FieldComponent)`
   }
 
   ${Label} {
-    ${handleHorizontalAlignment}
+    text-align: top;
+    width: ${(props) =>
+      props.labelWidth || CustomizableFieldAttributes.labelWidth};
   }
 `
