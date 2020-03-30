@@ -42,7 +42,7 @@ const FieldRadioComponent = forwardRef(
     return (
       <Field
         id={id}
-        alignLabel="right"
+        inline
         alignValidationMessage="right"
         validationMessage={validationMessage}
         {...pickFieldProps(props)}
