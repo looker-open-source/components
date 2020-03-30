@@ -30,6 +30,7 @@ exports[`A FieldTextArea 1`] = `
 .c4 textarea {
   height: 6.25rem;
   width: 16rem;
+  resize: both;
   border: solid 1px;
   border-color: #DEE1E5;
   border-radius: 0.25rem;
@@ -115,6 +116,7 @@ exports[`A FieldTextArea 1`] = `
       >
         <textarea
           height="6.25rem"
+          resize={true}
           width="16rem"
         />
       </div>
@@ -173,6 +175,7 @@ exports[`A FieldTextArea with a validation message 1`] = `
 .c4 textarea {
   height: 6.25rem;
   width: 16rem;
+  resize: both;
   border: solid 1px;
   border-color: #DEE1E5;
   border-radius: 0.25rem;
@@ -276,6 +279,7 @@ exports[`A FieldTextArea with a validation message 1`] = `
       >
         <textarea
           height="6.25rem"
+          resize={true}
           width="16rem"
         />
         <div
