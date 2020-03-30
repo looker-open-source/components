@@ -24,9 +24,12 @@
 
  */
 
-export * from './Code'
-export * from './CodeBlock'
-export * from './Heading'
-export * from './Paragraph'
-export * from './ReplaceText'
-export * from './Text'
+import React from 'react'
+import { createWithTheme } from '@looker/components-test-utils'
+import { CodeBlock } from './CodeBlock'
+
+test('A default CodeBlock component', () => {
+  const component = createWithTheme(<CodeBlock>Hello</CodeBlock>)
+  const tree = component.toJSON()
+  expect(tree).toMatchSnapshot()
+})
