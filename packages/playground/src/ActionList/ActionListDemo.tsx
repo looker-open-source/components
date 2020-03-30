@@ -148,7 +148,6 @@ export const ActionListDemo: FC = () => {
               color={
                 status === 'Success' ? 'palette.green300' : 'palette.red300'
               }
-              mr="small"
               size={24}
             />
           }
@@ -162,9 +161,5 @@ export const ActionListDemo: FC = () => {
     )
   )
 
-  return (
-    <ActionList header={<p>foobar</p>} columns={columns}>
-      {items}
-    </ActionList>
-  )
+  return <ActionList columns={columns}>{items}</ActionList>
 }
