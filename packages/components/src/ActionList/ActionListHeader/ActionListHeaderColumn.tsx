@@ -23,15 +23,55 @@
  SOFTWARE.
 
  */
+import React, { useContext, forwardRef, Ref, ReactNode } from 'react'
+import styled from 'styled-components'
+import { ActionListContext } from '../ActionListContext'
+import { Icon } from '../../Icon'
 
-import styled, { css } from 'styled-components'
-import { flexbox } from '@looker/design-tokens'
+export interface ActionListHeaderColumnProps {
+  children?: ReactNode
+  className?: string
+  id: string
+}
 
-export const columnCSS = css`
-  padding: ${props => props.theme.space.small};
-  ${flexbox};
-`
+const ActionListHeaderColumnLayout = forwardRef(
+  (
+    { className, children, id }: ActionListHeaderColumnProps,
+    ref: Ref<HTMLDivElement>
+  ) => {
+    const { columns, doSort } = useContext(ActionListContext)
+    const columnInfo = columns && columns.find(column => column.id === id)
+    const canSort = columnInfo && columnInfo.canSort
 
-export const ActionListHeaderColumn = styled.div`
-  ${columnCSS}
+    const handleClick = () => {
+      if (doSort && columnInfo && columnInfo.canSort) {
+        doSort(id, columnInfo.sortDirection === 'asc' ? 'desc' : 'asc')
+      }
+    }
+
+    return (
+      <div
+        className={className}
+        onClick={handleClick}
+        ref={ref}
+        style={{ cursor: canSort ? 'pointer' : undefined }}
+      >
+        {children}
+        {columnInfo && columnInfo.sortDirection ? (
+          <Icon
+            ml={columnInfo.type === 'string' ? 'xxsmall' : undefined}
+            mr={columnInfo.type === 'number' ? 'xxsmall' : undefined}
+            name={columnInfo.sortDirection === 'asc' ? 'CaretUp' : 'CaretDown'}
+          ></Icon>
+        ) : null}
+      </div>
+    )
+  }
+)
+
+ActionListHeaderColumnLayout.displayName = 'ActionListHeaderColumnLayout'
+
+export const ActionListHeaderColumn = styled(ActionListHeaderColumnLayout)`
+  display: flex;
+  align-items: center;
 `

@@ -169,6 +169,7 @@ export const ComboboxInputInternal = forwardRef(
       <InputSearch
         {...rest}
         {...inputEvents}
+        hideSearchIcon
         ref={ref}
         value={inputValue}
         readOnly={readOnly}

@@ -35,8 +35,15 @@ import {
   typography,
   TypographyProps,
 } from '@looker/design-tokens'
-import React, { forwardRef, Ref, useContext, useLayoutEffect } from 'react'
+import React, {
+  forwardRef,
+  Ref,
+  useContext,
+  useLayoutEffect,
+  useEffect,
+} from 'react'
 import styled, { css } from 'styled-components'
+import once from 'lodash/once'
 import { PopoverContent, usePopover } from '../../../Popover'
 import { ComboboxContext, ComboboxMultiContext } from './ComboboxContext'
 import { useBlur } from './utils/useBlur'
@@ -87,6 +94,8 @@ const ComboboxListInternal = forwardRef(
       isVisible,
       optionsRef,
       popoverRef,
+      setListScrollPosition,
+      setListClientRect,
     } = contextToUse
 
     if (persistSelection) {
@@ -123,7 +132,13 @@ const ComboboxListInternal = forwardRef(
         ref={popoverRef}
         p="none"
       >
-        <ul {...props} ref={forwardedRef} role="listbox" tabIndex={-1} />
+        <ul
+          {...props}
+          ref={forwardedRef}
+          role="listbox"
+          tabIndex={-1}
+          data-testid="combobox-list"
+        />
       </PopoverContent>
     )
 
@@ -133,7 +148,7 @@ const ComboboxListInternal = forwardRef(
       }
     }
 
-    const { popover } = usePopover({
+    const { popover, contentContainer } = usePopover({
       arrow: false,
       content,
       focusTrap: false,
@@ -143,6 +158,34 @@ const ComboboxListInternal = forwardRef(
       triggerElement: wrapperElement,
       triggerToggle: false,
     })
+
+    useEffect(() => {
+      // track scroll position and menu dom rectangle, and bubble up to context.
+      // used in InputTimeSelect for managing very long lists
+
+      const setListClientRectOnce = once((containerElement: Element) => {
+        setListClientRect &&
+          setListClientRect(containerElement.getBoundingClientRect())
+      })
+
+      const scrollListener = () => {
+        if (contentContainer) {
+          setListClientRectOnce(contentContainer)
+          setListScrollPosition &&
+            setListScrollPosition(contentContainer.scrollTop)
+        }
+      }
+
+      contentContainer &&
+        contentContainer.addEventListener('scroll', scrollListener)
+
+      return () => {
+        contentContainer &&
+          contentContainer.removeEventListener('scroll', scrollListener)
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [contentContainer])
+
     return popover || null
   }
 )
@@ -155,7 +198,8 @@ const comboboxListStyles = css<ComboboxListInternalProps>`
   ${space}
   list-style-type: none;
   margin: 0;
-  padding: ${props => (props.isMulti ? props.theme.space.xsmall : 0)} 0;
+  padding: ${({ isMulti, theme }) => (isMulti ? theme.space.xsmall : 0)} 0;
+  max-height: 30rem;
 `
 
 export const ComboboxList = styled(ComboboxListInternal).attrs({

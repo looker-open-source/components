@@ -94,6 +94,7 @@ export const InputChipsBaseInternal = forwardRef(
 
     return (
       <InputSearch
+        hideSearchIcon
         ref={ref}
         value={inputValue}
         onChange={handleInputChange}

@@ -40,6 +40,10 @@ test('InputSearch default', () => {
   assertSnapshot(<InputSearch />)
 })
 
+test('InputSearch hideSearchIcon removes the icon', () => {
+  assertSnapshot(<InputSearch hideSearchIcon />)
+})
+
 test('InputSearch displays placeholder', () => {
   const wrapper = mountWithTheme(<InputSearch placeholder="Type your search" />)
   expect(wrapper.props().children.props.placeholder).toEqual('Type your search')
