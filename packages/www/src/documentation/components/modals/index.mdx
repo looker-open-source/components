@@ -24,7 +24,7 @@ This provides the backdrop behind Modal containers. It can be customized via the
   backdrop={{ background: 'purple', opacity: 1 }}
   content={<React.Fragment>Stuff and text</React.Fragment>}
 >
-  {onClick => <Button onClick={onClick}>Purple Backdrop</Button>}
+  {(onClick) => <Button onClick={onClick}>Purple Backdrop</Button>}
 </DialogManager>
 ```
 

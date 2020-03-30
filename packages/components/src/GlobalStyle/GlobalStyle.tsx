@@ -32,7 +32,7 @@ const fonts = css`
   input,
   textarea,
   select {
-    font-family: ${props => props.theme.fonts.brand};
+    font-family: ${(props) => props.theme.fonts.brand};
   }
 `
 
@@ -72,7 +72,7 @@ const reset = css`
   }
 
   body {
-    background-color: ${props => props.theme.colors.palette.white};
+    background-color: ${(props) => props.theme.colors.palette.white};
   }
 `
 

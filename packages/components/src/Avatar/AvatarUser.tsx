@@ -66,10 +66,10 @@ const AvatarPhoto = styled.object`
 const AvatarInitials = styled.div.attrs((props: AvatarUserProps) => ({
   bg: props.color,
 }))`
-  color: ${props => props.theme.colors.palette.white};
+  color: ${(props) => props.theme.colors.palette.white};
 `
 
-export const AvatarUser = styled(AvatarLayout).attrs(props => ({
+export const AvatarUser = styled(AvatarLayout).attrs((props) => ({
   size: props.size || 'small',
 }))`
   ${avatarCSS}

@@ -61,7 +61,7 @@ interface WrapperProps {
 
 const SidebarToggleWrapper = styled.div<WrapperProps>`
   position: relative;
-  margin-top: calc(${props => props.headerHeight} / 2);
+  margin-top: calc(${(props) => props.headerHeight} / 2);
 
   ${IconButton} {
     background: #fff;

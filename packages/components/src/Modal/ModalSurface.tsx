@@ -108,7 +108,7 @@ export const ModalSurface: FC<ModalSurfaceProps> = ({
 }
 
 const surfaceTransition = () => css`
-  ${props =>
+  ${(props) =>
     `${props.theme.transitions.durationModerate} ${props.theme.easings.ease}`}
 `
 
@@ -125,7 +125,7 @@ const Style = styled.div<ModalSurfaceProps>`
   position: relative;
   transition: transform ${surfaceTransition}, opacity ${surfaceTransition};
 
-  ${props => props.surfaceStyles};
+  ${(props) => props.surfaceStyles};
 
   &:focus {
     outline: none;

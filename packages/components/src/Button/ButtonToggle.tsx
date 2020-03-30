@@ -78,7 +78,7 @@ const ButtonToggleFactory = forwardRef(
 export const ButtonToggle = styled<FC<ButtonGroupOrToggleProps<string>>>(
   ButtonToggleFactory
 )`
-  border: solid 1px ${props => props.theme.colors.palette.charcoal200};
+  border: solid 1px ${(props) => props.theme.colors.palette.charcoal200};
 
   ${ButtonItemLabel} {
     position: relative;
@@ -101,7 +101,7 @@ export const ButtonToggle = styled<FC<ButtonGroupOrToggleProps<string>>>(
         display: block;
         height: 20px;
         width: 1px;
-        background: ${props => props.theme.colors.palette.charcoal200};
+        background: ${(props) => props.theme.colors.palette.charcoal200};
         position: absolute;
         left: 0;
         top: 8px;

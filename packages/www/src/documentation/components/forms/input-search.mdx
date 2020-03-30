@@ -39,7 +39,7 @@ The `<InputSearch />` component renders a single search input element. You can a
     searchResults = [],
   }) => {
     const [keywords, setKeywords] = React.useState(value)
-    const onChange = e => {
+    const onChange = (e) => {
       setKeywords(e.currentTarget.value)
     }
     return (

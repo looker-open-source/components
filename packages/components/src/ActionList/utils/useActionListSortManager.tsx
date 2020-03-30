@@ -50,7 +50,7 @@ export const useActionListSortManager = (
     setColumns(sortedColumns)
   }
 
-  const items = data.map(dataObj => {
+  const items = data.map((dataObj) => {
     const assumedPrimaryKey = columns[0].id
 
     return (
@@ -59,7 +59,7 @@ export const useActionListSortManager = (
         onClick={() => alert(`Row clicked`)}
         actions={generateActions(dataObj)}
       >
-        {columns.map(column => (
+        {columns.map((column) => (
           <ActionListItemColumn key={column.id}>
             {dataObj[column.id]}
           </ActionListItemColumn>

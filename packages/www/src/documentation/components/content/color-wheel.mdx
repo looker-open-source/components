@@ -38,14 +38,14 @@ slice of a color wheel, and should be handled outside the color wheel component.
     v: 0.5,
   })
 
-  const handleColorStateChange = hs => {
+  const handleColorStateChange = (hs) => {
     setColor({
       ...hs,
       v: color.v,
     })
   }
 
-  const handleSliderChange = event => {
+  const handleSliderChange = (event) => {
     const value = Number(event.currentTarget.value)
     setColor({ ...color, v: value / 100 })
   }

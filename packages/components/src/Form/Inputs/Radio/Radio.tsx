@@ -38,7 +38,7 @@ const FauxRadio = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
-  border: ${props => `solid 1px ${props.theme.colors.palette.charcoal200}`};
+  border: ${(props) => `solid 1px ${props.theme.colors.palette.charcoal200}`};
   border-radius: 50%;
   color: transparent;
   transition: background-color 25ms linear, border-color 25ms linear,
@@ -63,12 +63,12 @@ const RadioContainer = styled.div<SpaceProps>`
     z-index: 1;
   }
   ${FauxRadio} {
-    background: ${props => props.theme.colors.palette.white};
+    background: ${(props) => props.theme.colors.palette.white};
   }
   input[type='radio']:checked {
     & + ${FauxRadio} {
-      background: ${props => props.theme.colors.palette.purple400};
-      border-color: ${props => props.theme.colors.palette.purple400};
+      background: ${(props) => props.theme.colors.palette.purple400};
+      border-color: ${(props) => props.theme.colors.palette.purple400};
     }
     & + ${/* sc-selector */ FauxRadio}::after {
       content: '';
@@ -84,8 +84,8 @@ const RadioContainer = styled.div<SpaceProps>`
 
   input[type='radio']:focus {
     & + ${FauxRadio} {
-      border-color: ${props => props.theme.colors.palette.purple300};
-      box-shadow: 0 0 0 2px ${props => props.theme.colors.palette.purple100};
+      border-color: ${(props) => props.theme.colors.palette.purple300};
+      box-shadow: 0 0 0 2px ${(props) => props.theme.colors.palette.purple100};
       outline: none;
     }
   }

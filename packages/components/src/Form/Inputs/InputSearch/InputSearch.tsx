@@ -101,8 +101,8 @@ export interface InputSearchProps extends InputTextProps {
 }
 
 export const SearchIcon = styled(Icon)`
-  color: ${props => props.theme.colors.palette.charcoal400};
-  padding-left: ${props => props.theme.space.small};
+  color: ${(props) => props.theme.colors.palette.charcoal400};
+  padding-left: ${(props) => props.theme.space.small};
 `
 
 const InputSearchComponent = forwardRef(
@@ -227,7 +227,7 @@ InputSearchComponent.displayName = 'InputSearchComponent'
 
 export const InputSearch = styled(InputSearchComponent)`
   align-items: center;
-  background-color: ${props => props.theme.colors.palette.white};
+  background-color: ${(props) => props.theme.colors.palette.white};
 
   &:hover {
     ${inputTextHover}
@@ -237,7 +237,7 @@ export const InputSearch = styled(InputSearchComponent)`
     ${inputTextFocus}
   }
 
-  ${props => (props.disabled ? inputTextDisabled : '')}
+  ${(props) => (props.disabled ? inputTextDisabled : '')}
 
   ${inputTextValidation}
 
@@ -249,7 +249,7 @@ export const InputSearch = styled(InputSearchComponent)`
     flex: 1;
 
     width: 100%;
-    height: ${props => getHeight(props.py)};
+    height: ${(props) => getHeight(props.py)};
 
     &::-webkit-search-decoration,
     &::-webkit-search-cancel-button,

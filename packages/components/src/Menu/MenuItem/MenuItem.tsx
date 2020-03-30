@@ -147,7 +147,7 @@ export interface MenuItemProps
   itemRole?: 'link' | 'button'
 }
 
-export const MenuItem: FC<MenuItemProps> = props => {
+export const MenuItem: FC<MenuItemProps> = (props) => {
   const {
     children,
     compact: propCompact,

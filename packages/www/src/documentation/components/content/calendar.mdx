@@ -53,22 +53,20 @@ We support four different callbacks to hook into various navigation events:
 
 - <Code>onNextClick</Code>: the user clicked the right arrow
 - <Code>onPrevClick</Code>: the user clicked the right arrow
-- <Code>
-    onNowClick
-  </Code>: the user clicked the month label to return to the current month
-- <Code>
-    onMonthChange
-  </Code>: the user navigated to a new month (could be through any mouse or keyboard interaction)
+- <Code>onNowClick</Code>: the user clicked the month label to return to the
+  current month
+- <Code>onMonthChange</Code>: the user navigated to a new month (could be
+  through any mouse or keyboard interaction)
 
 ```jsx
 ;() => {
-  const onNextClick = date =>
+  const onNextClick = (date) =>
     alert(`Clicked "Next" (${date.getMonth() + 1}/${date.getFullYear()})`)
-  const onNowClick = date =>
+  const onNowClick = (date) =>
     alert(`Clicked "Now" (${date.getMonth() + 1}/${date.getFullYear()})`)
-  const onPrevClick = date =>
+  const onPrevClick = (date) =>
     alert(`Clicked "Prev" (${date.getMonth() + 1}/${date.getFullYear()})`)
-  const onMonthChange = date =>
+  const onMonthChange = (date) =>
     alert(`Month Changed (${date.getMonth() + 1}/${date.getFullYear()})`)
   return (
     <Calendar

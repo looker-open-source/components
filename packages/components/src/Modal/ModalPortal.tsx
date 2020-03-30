@@ -81,7 +81,7 @@ const InvisiBox = styled.div<{ zIndex?: number }>`
   display: flex;
   justify-content: center;
   pointer-events: none;
-  z-index: ${props => props.zIndex};
+  z-index: ${(props) => props.zIndex};
 
   * {
     pointer-events: auto;

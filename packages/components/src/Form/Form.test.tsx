@@ -61,10 +61,9 @@ test('Form with two invalid children', () => {
   const messages = component.find(ValidationMessage)
 
   expect(messages).toHaveLength(2)
-  expect(messages.map(validationMessage => validationMessage.text())).toEqual([
-    'e1',
-    'e2',
-  ])
+  expect(
+    messages.map((validationMessage) => validationMessage.text())
+  ).toEqual(['e1', 'e2'])
 })
 
 test('Form with one invalid child and a submit button', () => {

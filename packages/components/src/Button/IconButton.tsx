@@ -180,24 +180,24 @@ const outlineCSS = (props: IconButtonProps) => {
 
   return css`
     border: 1px solid
-      ${props => props.theme.colors.semanticColors[color].borderColor};
+      ${(props) => props.theme.colors.semanticColors[color].borderColor};
 
     &:hover,
     &:focus,
     &.hover {
-      border-color: ${props => props.theme.colors.semanticColors[color].main};
+      border-color: ${(props) => props.theme.colors.semanticColors[color].main};
     }
 
     &:active,
     &.active {
-      border-color: ${props => props.theme.colors.semanticColors[color].main};
+      border-color: ${(props) => props.theme.colors.semanticColors[color].main};
     }
 
     &[disabled] {
       &:hover,
       &:active,
       &:focus {
-        border-color: ${props =>
+        border-color: ${(props) =>
           props.theme.colors.semanticColors[color].borderColor};
       }
     }
@@ -208,7 +208,7 @@ export const IconButton = styled(IconButtonComponent)<IconButtonProps>`
   ${reset}
   ${space}
 
-  ${props => props.outline && outlineCSS}
+  ${(props) => props.outline && outlineCSS}
 
   ${pseudoClasses}
   ${({ shape }) => shape === 'round' && 'border-radius: 100%;'}

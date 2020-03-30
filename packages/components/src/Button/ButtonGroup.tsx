@@ -71,7 +71,7 @@ export const ButtonGroup = styled<FC<ButtonGroupOrToggleProps<string[]>>>(
     border-radius: 4px;
 
     + ${ButtonItem} {
-      margin-left: ${props => props.theme.space.xxsmall};
+      margin-left: ${(props) => props.theme.space.xxsmall};
     }
   }
 

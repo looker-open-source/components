@@ -35,8 +35,8 @@ You can use the theme's properties within your custom components:
    **/
 
   const DangerButton = styled(Button)`
-    border-color: ${props => props.theme.colors.palette.red500};
-    background-color: ${props => props.theme.colors.palette.red500};
+    border-color: ${(props) => props.theme.colors.palette.red500};
+    background-color: ${(props) => props.theme.colors.palette.red500};
   `
 
   return (
@@ -64,8 +64,8 @@ You can extend the theme provided by Looker Components by creating a copy and th
   }
 
   const PrettyButton = styled(Button)`
-    border-color: ${props => props.theme.myCustomAttribute};
-    background-color: ${props => props.theme.myCustomAttribute};
+    border-color: ${(props) => props.theme.myCustomAttribute};
+    background-color: ${(props) => props.theme.myCustomAttribute};
   `
 
   return (
@@ -95,8 +95,8 @@ NOTE: You'll also see that `PrettyButton` in the example simply falls back to `B
   }
 
   const PrettyButton = styled(Button)`
-    border-color: ${props => props.theme.myCustomAttribute};
-    background-color: ${props => props.theme.myCustomAttribute};
+    border-color: ${(props) => props.theme.myCustomAttribute};
+    background-color: ${(props) => props.theme.myCustomAttribute};
   `
 
   return (

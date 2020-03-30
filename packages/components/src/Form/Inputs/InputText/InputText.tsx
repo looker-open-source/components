@@ -163,18 +163,18 @@ const InputComponent = forwardRef(
 )
 
 export const inputTextHover = css`
-  border-color: ${props => props.theme.colors.palette.charcoal300};
+  border-color: ${(props) => props.theme.colors.palette.charcoal300};
 `
 export const inputTextFocus = css`
-  border-color: ${props => props.theme.colors.palette.purple300};
-  box-shadow: 0 0 0 2px ${props => props.theme.colors.palette.purple100};
+  border-color: ${(props) => props.theme.colors.palette.purple300};
+  box-shadow: 0 0 0 2px ${(props) => props.theme.colors.palette.purple100};
   outline: none;
 `
 export const inputTextDisabled = css`
-  background: ${props => props.theme.colors.palette.charcoal100};
-  color: ${props => props.theme.colors.palette.charcoal400};
+  background: ${(props) => props.theme.colors.palette.charcoal100};
+  color: ${(props) => props.theme.colors.palette.charcoal400};
   &:hover {
-    border-color: ${props => props.theme.colors.palette.charcoal200};
+    border-color: ${(props) => props.theme.colors.palette.charcoal200};
   }
 `
 const shared = css`
@@ -191,7 +191,7 @@ const shared = css`
 export const InputLayout = styled.div`
   ${shared}
   align-items: center;
-  background-color: ${props => props.theme.colors.palette.white};
+  background-color: ${(props) => props.theme.colors.palette.white};
   display: inline-flex;
   justify-content: space-evenly;
   width: 174px;
@@ -211,12 +211,12 @@ const StyledInput = styled.input`
 `
 
 export const InputIconStyle = styled(Flex)`
-  color: ${props => props.theme.colors.palette.charcoal400};
+  color: ${(props) => props.theme.colors.palette.charcoal400};
   pointer-events: none;
 `
 
 export const inputTextValidation = css<InputTextProps>`
-  ${props =>
+  ${(props) =>
     props.validationType === 'error'
       ? `
       border-color: ${props.theme.colors.palette.red400};
@@ -255,9 +255,9 @@ export const InputText = styled(InputComponent).attrs(
   ${typography}
   ${pseudoClasses}
 
-  color: ${props => props.theme.colors.palette.charcoal700};
+  color: ${(props) => props.theme.colors.palette.charcoal700};
 
-  ${props => (props.disabled ? inputTextDisabled : '')}
+  ${(props) => (props.disabled ? inputTextDisabled : '')}
 
   ${inputTextValidation}
 `

@@ -19,12 +19,12 @@ export const TooltipContent = styled(Paragraph).attrs(
   overflow-wrap: anywhere;
 
   ${Link} {
-    color: ${props => props.theme.colors.palette.blue200};
+    color: ${(props) => props.theme.colors.palette.blue200};
     text-decoration: underline;
 
     &:focus,
     &:hover {
-      color: ${props => props.theme.colors.palette.blue100};
+      color: ${(props) => props.theme.colors.palette.blue100};
     }
   }
 `

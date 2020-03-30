@@ -198,7 +198,7 @@ const matchStringLabelToOption = (
   label?: string
 ) => {
   if (label) {
-    return find(options, o => {
+    return find(options, (o) => {
       return o.label ? o.label.includes(label) : false
     })
   }
@@ -214,7 +214,7 @@ const setScrollIntoView = (
 ) => {
   // CASE 1: scroll currently selected option into view
   if (selectedOption) {
-    return map(options, option =>
+    return map(options, (option) =>
       matchClosestMinute(interval, selectedOption.value) === option.value
         ? { ...option, scrollIntoView: true }
         : option
@@ -223,7 +223,7 @@ const setScrollIntoView = (
 
   // CASE 2: scroll current time into view
   const now = matchClosestMinute(interval)
-  return map(options, option =>
+  return map(options, (option) =>
     option.value === now ? { ...option, scrollIntoView: true } : option
   )
 }
@@ -240,8 +240,9 @@ export const InputTimeSelect: FC<InputTimeSelectProps> = ({
   if (!isValidTime(value) || !isValidTime(defaultValue)) {
     // eslint-disable-next-line no-console
     console.error(
-      `Invalid time (${value ||
-        defaultValue}) passed to <InputTimeSelect />. Value should be formatted as a 24-hour string (e.g. value="02:00" or value="23:15").`
+      `Invalid time (${
+        value || defaultValue
+      }) passed to <InputTimeSelect />. Value should be formatted as a 24-hour string (e.g. value="02:00" or value="23:15").`
     )
   }
 

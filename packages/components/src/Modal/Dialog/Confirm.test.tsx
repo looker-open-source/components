@@ -54,7 +54,7 @@ afterEach(() => {
 test('<Confirm/> with defaults', () => {
   const { getByText, queryByText } = renderWithTheme(
     <Confirm {...requiredProps}>
-      {open => <Button onClick={open}>Do Something</Button>}
+      {(open) => <Button onClick={open}>Do Something</Button>}
     </Confirm>
   )
 
@@ -77,7 +77,7 @@ test('<Confirm/> with defaults', () => {
 test('<Confirm/> with custom props', () => {
   const { getByText } = renderWithTheme(
     <Confirm {...requiredProps} {...optionalProps} buttonColor="danger">
-      {open => <Button onClick={open}>Do Something</Button>}
+      {(open) => <Button onClick={open}>Do Something</Button>}
     </Confirm>
   )
 
