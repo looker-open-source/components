@@ -24,7 +24,7 @@
 
  */
 
-import React, { forwardRef, Ref } from 'react'
+import React, { forwardRef, ReactNode, Ref } from 'react'
 import styled from 'styled-components'
 import { CustomizableAttributes } from '@looker/design-tokens'
 import {
@@ -40,6 +40,10 @@ import {
   SelectOptionProps,
   SelectOptions,
 } from './SelectOptions'
+import {
+  ShowCreateFunction,
+  SelectMultiCreateOption,
+} from './SelectMultiCreateOption'
 
 export const CustomizableSelectMultiAttributes: CustomizableAttributes = {
   borderRadius: 'medium',
@@ -64,6 +68,21 @@ export interface SelectMultiProps
    * Handle an option being selected
    */
   onChange?: (values?: string[]) => void
+  /**
+   * Add an on-the-fly option mirroring the typed text (use when isFilterable = true)
+   * When `true`, missingInOptions is used to show/hide and can be included in a custom function
+   */
+  showCreate?: boolean | ShowCreateFunction
+  /**
+   * Where to add the on-the-fly "Create" option (use with showCreate)
+   * @default 'last'
+   */
+  createOptionPosition?: 'first' | 'last'
+  /**
+   * Format the label of the on-the-fly create option (use with canCreate)
+   * @default `Create ${inputText}`
+   */
+  formatCreateLabel?: (inputText: string) => ReactNode
 }
 
 function getOptions(
@@ -76,6 +95,28 @@ function getOptions(
     label: getComboboxText(value, flattenedOptions),
     value,
   }))
+}
+
+function compareOption(option: { value: string }, value: string) {
+  return getComboboxText(option).toLowerCase() === value.toLowerCase()
+}
+
+// Is a value contained the specified options (logic to show the on-the-fly "Create" option)
+export const missingInOptions: ShowCreateFunction = (
+  currentOptions,
+  options,
+  inputValue
+) => {
+  if (!inputValue) return false
+  if (currentOptions.find(option => compareOption(option, inputValue))) {
+    return false
+  }
+  if (!options) return true
+  return (
+    flattenOptions(options).find(option =>
+      compareOption(option, inputValue)
+    ) === undefined
+  )
 }
 
 const SelectMultiComponent = forwardRef(
@@ -93,6 +134,9 @@ const SelectMultiComponent = forwardRef(
       'aria-label': ariaLabel,
       'aria-labelledby': ariaLabelledby,
       validationType,
+      showCreate = false,
+      createOptionPosition = 'last',
+      formatCreateLabel,
       ...props
     }: SelectMultiProps,
     ref: Ref<HTMLInputElement>
@@ -129,6 +173,20 @@ const SelectMultiComponent = forwardRef(
       validationType,
     }
 
+    function renderCreate(position: 'first' | 'last') {
+      return (
+        isFilterable &&
+        showCreate !== false &&
+        createOptionPosition === position && (
+          <SelectMultiCreateOption
+            options={options}
+            show={showCreate === true ? missingInOptions : showCreate}
+            formatLabel={formatCreateLabel}
+          />
+        )
+      )
+    }
+
     return (
       <ComboboxMulti
         {...props}
@@ -153,7 +211,9 @@ const SelectMultiComponent = forwardRef(
             closeOnSelect={false}
             {...ariaProps}
           >
+            {renderCreate('first')}
             <SelectOptions options={options} isMulti />
+            {renderCreate('last')}
           </ComboboxMultiList>
         )}
       </ComboboxMulti>

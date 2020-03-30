@@ -24,7 +24,45 @@
 
  */
 
-export * from './Select'
-export * from './SelectMulti'
-export * from './SelectMultiCreateOption'
-export * from './SelectOptions'
+import React, { ReactNode, useContext, useMemo } from 'react'
+import {
+  ComboboxMultiContext,
+  ComboboxMultiOption,
+  ComboboxOptionObject,
+} from '../Combobox'
+import { SelectOptionProps } from './SelectOptions'
+
+export type ShowCreateFunction = (
+  currentOptions: ComboboxOptionObject[],
+  options?: SelectOptionProps[],
+  inputValue?: string
+) => boolean
+
+export interface CreateOptionProps {
+  options?: SelectOptionProps[]
+  formatLabel?: (inputText: string) => ReactNode
+  show: ShowCreateFunction
+}
+
+export function SelectMultiCreateOption({
+  options,
+  formatLabel,
+  show,
+}: CreateOptionProps) {
+  const {
+    data: { inputValue, options: currentOptions },
+  } = useContext(ComboboxMultiContext)
+
+  const notInOptions = useMemo(
+    () => show(currentOptions, options, inputValue),
+    [currentOptions, options, inputValue, show]
+  )
+
+  if (!inputValue || !notInOptions) return null
+
+  return (
+    <ComboboxMultiOption value={inputValue} highlightText={false}>
+      {formatLabel ? formatLabel(inputValue) : `Create "${inputValue}"`}
+    </ComboboxMultiOption>
+  )
+}

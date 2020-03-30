@@ -122,6 +122,13 @@ export function ComboboxDemo() {
   function handleMultiChange(newOptions: any) {
     setOptions(newOptions)
   }
+  function formatCreate(inputValue: string) {
+    return (
+      <span>
+        Add fruit: <em>{inputValue}</em>
+      </span>
+    )
+  }
 
   return (
     <Box p="large">
@@ -134,6 +141,9 @@ export function ComboboxDemo() {
         isClearable
         isFilterable
         alignSelf="flex-start"
+        showCreate
+        createOptionPosition="first"
+        formatCreateLabel={formatCreate}
       />
       <SelectMulti
         width={300}
