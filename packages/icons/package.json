@@ -1,7 +1,7 @@
 {
   "name": "@looker/icons",
   "license": "MIT",
-  "version": "0.7.23",
+  "version": "0.7.25",
   "main": "dist/cjs/index.js",
   "types": "dist/types/index.d.ts",
   "module": "dist/esm/index.js",
@@ -27,9 +27,9 @@
   },
   "devDependencies": {
     "@svgr/babel-plugin-add-jsx-attribute": "^5.0.1",
-    "@svgr/cli": "^5.2.0",
+    "@svgr/cli": "^5.3.0",
     "@types/glob": "^7.1.1",
-    "@types/rimraf": "^2.0.3",
+    "@types/rimraf": "^3.0.0",
     "glob": "^7.1.6",
     "lodash": "^4.17.15",
     "ora": "^4.0.3",

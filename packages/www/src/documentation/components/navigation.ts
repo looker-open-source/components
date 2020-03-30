@@ -107,6 +107,10 @@ const components: NavigationSection = {
           path: 'input-text',
         },
         {
+          title: 'InputTimeSelect',
+          path: 'input-time-select',
+        },
+        {
           title: 'Label',
           path: 'label',
         },

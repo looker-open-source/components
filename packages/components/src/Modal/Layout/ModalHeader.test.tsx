@@ -26,9 +26,22 @@
 
 import 'jest-styled-components'
 import React from 'react'
-import { assertSnapshot } from '@looker/components-test-utils'
+import { assertSnapshot, mountWithTheme } from '@looker/components-test-utils'
+import { IconButton } from '../../Button'
 import { ModalHeader } from './ModalHeader'
 
 test('ModalHeader', () => {
   assertSnapshot(<ModalHeader>The Heading for a Dialog</ModalHeader>)
+})
+
+test('ModalHeader with hideClose', () => {
+  const withClose = mountWithTheme(
+    <ModalHeader>The Heading for a Dialog</ModalHeader>
+  )
+  expect(withClose.find(IconButton).exists()).toBeTruthy()
+
+  const withoutClose = mountWithTheme(
+    <ModalHeader hideClose>The Heading for a Dialog</ModalHeader>
+  )
+  expect(withoutClose.find(IconButton).exists()).toBeFalsy()
 })

@@ -38,21 +38,22 @@ import {
 
 const columns: ActionListColumns = [
   {
-    children: 'ID',
+    canSort: true,
     id: 'id',
     primaryKey: true,
+    title: 'ID',
     type: 'number',
     widthPercent: 10,
   },
   {
-    children: 'Name',
     id: 'name',
+    title: 'Name',
     type: 'string',
     widthPercent: 45,
   },
   {
-    children: 'Role',
     id: 'role',
+    title: 'Role',
     type: 'string',
     widthPercent: 45,
   },
@@ -68,9 +69,9 @@ const data = [
 
 const header = (
   <>
-    <ActionListHeaderColumn>Foo</ActionListHeaderColumn>
-    <ActionListHeaderColumn>Bar</ActionListHeaderColumn>
-    <ActionListHeaderColumn>FooBar</ActionListHeaderColumn>
+    <ActionListHeaderColumn id="id">Foo</ActionListHeaderColumn>
+    <ActionListHeaderColumn id="name">Bar</ActionListHeaderColumn>
+    <ActionListHeaderColumn id="type">FooBar</ActionListHeaderColumn>
   </>
 )
 
@@ -106,7 +107,7 @@ const actionListWithNoHeader = (
   </ActionList>
 )
 
-describe('<ActionList /> : General Layout', () => {
+describe('ActionList', () => {
   let rafSpy: jest.SpyInstance<number, [FrameRequestCallback]>
 
   beforeEach(() => {
@@ -119,104 +120,134 @@ describe('<ActionList /> : General Layout', () => {
     rafSpy.mockRestore()
   })
 
-  test('Renders a generated header and list item', () => {
-    const { getByText } = renderWithTheme(actionListWithGeneratedHeader)
+  describe('General Layout', () => {
+    test('Renders a generated header and list item', () => {
+      const { getByText } = renderWithTheme(actionListWithGeneratedHeader)
 
-    expect(getByText('ID')).toBeInTheDocument()
-    expect(getByText('Name')).toBeInTheDocument()
-    expect(getByText('Role')).toBeInTheDocument()
+      expect(getByText('ID')).toBeInTheDocument()
+      expect(getByText('Name')).toBeInTheDocument()
+      expect(getByText('Role')).toBeInTheDocument()
 
-    expect(getByText('1')).toBeInTheDocument()
-    expect(getByText('Richard Garfield')).toBeInTheDocument()
-    expect(getByText('Game Designer')).toBeInTheDocument()
-  })
-
-  test('Renders a provided header and list item', () => {
-    const { getByText, queryByText } = renderWithTheme(
-      actionListWithProvidedHeader
-    )
-
-    expect(queryByText('ID')).not.toBeInTheDocument()
-    expect(queryByText('Name')).not.toBeInTheDocument()
-    expect(queryByText('Role')).not.toBeInTheDocument()
-
-    expect(getByText('Foo')).toBeInTheDocument()
-    expect(getByText('Bar')).toBeInTheDocument()
-    expect(getByText('FooBar')).toBeInTheDocument()
-
-    expect(getByText('1')).toBeInTheDocument()
-    expect(getByText('Richard Garfield')).toBeInTheDocument()
-    expect(getByText('Game Designer')).toBeInTheDocument()
-  })
-
-  test('Renders no header if header prop value is false', () => {
-    const { getByText, queryByText } = renderWithTheme(actionListWithNoHeader)
-
-    expect(queryByText('ID')).not.toBeInTheDocument()
-    expect(queryByText('Name')).not.toBeInTheDocument()
-    expect(queryByText('Role')).not.toBeInTheDocument()
-
-    expect(getByText('1')).toBeInTheDocument()
-    expect(getByText('Richard Garfield')).toBeInTheDocument()
-    expect(getByText('Game Designer')).toBeInTheDocument()
-  })
-
-  test('Renders action menu on button click and handles clicks on list item and action', () => {
-    const handleActionClick = jest.fn()
-    const handleListItemClick = jest.fn()
-
-    const clickableItems = data.map(({ id, name, type }) => {
-      const availableActions = (
-        <>
-          <ActionListItemAction onClick={handleActionClick}>
-            View Profile
-          </ActionListItemAction>
-        </>
-      )
-
-      return (
-        <ActionListItem
-          key={id}
-          actions={availableActions}
-          onClick={handleListItemClick}
-        >
-          <ActionListItemColumn>{id}</ActionListItemColumn>
-          <ActionListItemColumn>{name}</ActionListItemColumn>
-          <ActionListItemColumn>{type}</ActionListItemColumn>
-        </ActionListItem>
-      )
+      expect(getByText('1')).toBeInTheDocument()
+      expect(getByText('Richard Garfield')).toBeInTheDocument()
+      expect(getByText('Game Designer')).toBeInTheDocument()
     })
 
-    const { getByRole, getByText, queryByText } = renderWithTheme(
-      <ActionList columns={columns}>{clickableItems}</ActionList>
-    )
+    test('Renders a provided header and list item', () => {
+      const { getByText, queryByText } = renderWithTheme(
+        actionListWithProvidedHeader
+      )
 
-    const listItemId = getByText('1')
+      expect(queryByText('ID')).not.toBeInTheDocument()
+      expect(queryByText('Name')).not.toBeInTheDocument()
+      expect(queryByText('Role')).not.toBeInTheDocument()
 
-    expect(handleListItemClick.mock.calls.length).toBe(0)
-    fireEvent.click(listItemId)
-    expect(handleListItemClick.mock.calls.length).toBe(1)
+      expect(getByText('Foo')).toBeInTheDocument()
+      expect(getByText('Bar')).toBeInTheDocument()
+      expect(getByText('FooBar')).toBeInTheDocument()
 
-    fireEvent(
-      listItemId,
-      new MouseEvent('mouseenter', {
-        bubbles: true,
-        cancelable: true,
+      expect(getByText('1')).toBeInTheDocument()
+      expect(getByText('Richard Garfield')).toBeInTheDocument()
+      expect(getByText('Game Designer')).toBeInTheDocument()
+    })
+
+    test('Renders no header if header prop value is false', () => {
+      const { getByText, queryByText } = renderWithTheme(actionListWithNoHeader)
+
+      expect(queryByText('ID')).not.toBeInTheDocument()
+      expect(queryByText('Name')).not.toBeInTheDocument()
+      expect(queryByText('Role')).not.toBeInTheDocument()
+
+      expect(getByText('1')).toBeInTheDocument()
+      expect(getByText('Richard Garfield')).toBeInTheDocument()
+      expect(getByText('Game Designer')).toBeInTheDocument()
+    })
+
+    test('Renders action menu on button click and handles clicks on list item and action', () => {
+      const handleActionClick = jest.fn()
+      const handleListItemClick = jest.fn()
+
+      const clickableItems = data.map(({ id, name, type }) => {
+        const availableActions = (
+          <>
+            <ActionListItemAction onClick={handleActionClick}>
+              View Profile
+            </ActionListItemAction>
+          </>
+        )
+
+        return (
+          <ActionListItem
+            key={id}
+            actions={availableActions}
+            onClick={handleListItemClick}
+          >
+            <ActionListItemColumn>{id}</ActionListItemColumn>
+            <ActionListItemColumn>{name}</ActionListItemColumn>
+            <ActionListItemColumn>{type}</ActionListItemColumn>
+          </ActionListItem>
+        )
       })
+
+      const { getByRole, getByText, queryByText } = renderWithTheme(
+        <ActionList columns={columns}>{clickableItems}</ActionList>
+      )
+
+      const listItemId = getByText('1')
+
+      expect(handleListItemClick.mock.calls.length).toBe(0)
+      fireEvent.click(listItemId)
+      expect(handleListItemClick.mock.calls.length).toBe(1)
+
+      fireEvent(
+        listItemId,
+        new MouseEvent('mouseenter', {
+          bubbles: true,
+          cancelable: true,
+        })
+      )
+
+      const listItemButton = getByRole('button')
+      expect(queryByText('View Profile')).not.toBeInTheDocument()
+
+      fireEvent.click(listItemButton)
+      const viewProfileAction = getByText('View Profile')
+      expect(viewProfileAction).toBeInTheDocument()
+
+      expect(handleActionClick.mock.calls.length).toBe(0)
+      fireEvent.click(viewProfileAction)
+      expect(handleActionClick.mock.calls.length).toBe(1)
+
+      expect(queryByText('View Profile')).not.toBeInTheDocument()
+    })
+  })
+
+  describe('Sorting', () => {
+    const doSort = jest.fn()
+    const actionListWithSort = (
+      <ActionList columns={columns} doSort={doSort}>
+        {items}
+      </ActionList>
     )
 
-    const listItemButton = getByRole('button')
-    expect(queryByText('View Profile')).not.toBeInTheDocument()
+    test('Calls doSort if canSort property is true', () => {
+      const { getByText } = renderWithTheme(actionListWithSort)
 
-    fireEvent.click(listItemButton)
-    const viewProfileAction = getByText('View Profile')
-    expect(viewProfileAction).toBeInTheDocument()
+      const idColumnHeader = getByText('ID')
+      fireEvent.click(idColumnHeader)
+      expect(doSort.mock.calls.length).toBe(1)
 
-    expect(handleActionClick.mock.calls.length).toBe(0)
-    fireEvent.click(viewProfileAction)
-    expect(handleActionClick.mock.calls.length).toBe(1)
+      doSort.mockClear()
+    })
 
-    fireEvent.click(listItemButton)
-    expect(queryByText('View Profile')).not.toBeInTheDocument()
+    test('Does not call doSort if canSort property is false', () => {
+      const { getByText } = renderWithTheme(actionListWithSort)
+
+      const nameColumnHeader = getByText('Name')
+      fireEvent.click(nameColumnHeader)
+      expect(doSort.mock.calls.length).toBe(0)
+
+      doSort.mockClear()
+    })
   })
 })

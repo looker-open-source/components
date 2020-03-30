@@ -25,6 +25,7 @@ import {
   formatDateString,
   parseDateFromString,
   useID,
+  useReadOnlyWarn,
 } from '../../../utils'
 
 interface InputDateRangeProps {
@@ -95,6 +96,8 @@ export const InputDateRange: FC<InputDateRangeProps> = ({
   validationType,
   value,
 }) => {
+  useReadOnlyWarn('InputDateRange', value, onChange)
+
   /*
    * JOINT State
    */
@@ -167,14 +170,6 @@ export const InputDateRange: FC<InputDateRangeProps> = ({
       value.from &&
         !isDateRangeInView(value, viewMonth) &&
         setViewMonth(value.from)
-    }
-
-    // render a console warning if developers pass in a value without a change listener
-    if (value && !onChange) {
-      // eslint-disable-next-line no-console
-      console.error(
-        'Warning: Failed prop type: You provided a `value` prop to <InputDateRange /> without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultValue` instead. Otherwise, please provide an `onChange` callback.'
-      )
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inputs.from, inputs.to, value, onChange])

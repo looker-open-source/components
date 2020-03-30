@@ -81,6 +81,8 @@ const statusBackground = (props: StatusProps) => {
   }
 }
 
+const StyledBox = styled(Box)``
+
 const StatusFlag = styled(Paragraph).attrs({ py: 'xsmall' })<StatusProps>`
   ${statusBackground}
   text-transform: capitalize;
@@ -90,7 +92,7 @@ const StatusFlag = styled(Paragraph).attrs({ py: 'xsmall' })<StatusProps>`
     color: ${props => props.theme.colors.palette.charcoal600};
     text-decoration: none;
 
-    ${Box} {
+    ${StyledBox} {
       transform: scale(1.2);
     }
   }

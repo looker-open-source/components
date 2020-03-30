@@ -25,7 +25,14 @@
  */
 
 import omit from 'lodash/omit'
-import { createContext, RefObject, Ref, MutableRefObject } from 'react'
+import {
+  createContext,
+  RefObject,
+  Ref,
+  MutableRefObject,
+  Dispatch,
+  SetStateAction,
+} from 'react'
 import {
   ComboboxData,
   ComboboxMultiData,
@@ -59,6 +66,10 @@ export interface ComboboxContextProps<
   readOnlyPropRef?: MutableRefObject<boolean>
   isVisible?: boolean
   openOnFocus?: boolean
+  listScrollPosition?: number
+  setListScrollPosition?: Dispatch<SetStateAction<number>>
+  listClientRect?: DOMRect
+  setListClientRect?: Dispatch<SetStateAction<DOMRect | undefined>>
 }
 
 export type ComboboxMultiContextProps = ComboboxContextProps<
