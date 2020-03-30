@@ -55,7 +55,7 @@ export const CustomizableSelectMultiAttributes: CustomizableAttributes = {
 
 export interface SelectMultiProps
   extends Omit<ComboboxMultiProps, 'values' | 'defaultValues' | 'onChange'>,
-    SelectBaseProps {
+    Omit<SelectBaseProps, 'isClearable'> {
   /**
    * Values of the current selected option (controlled)
    */
@@ -135,7 +135,6 @@ const SelectMultiComponent = forwardRef(
       options,
       disabled,
       isFilterable,
-      isClearable,
       placeholder,
       onFilter,
       onChange,
@@ -154,10 +153,7 @@ const SelectMultiComponent = forwardRef(
     ref: Ref<HTMLInputElement>
   ) => {
     const optionValues = getOptions(values, options)
-    const nullDefault = (isClearable || placeholder) && !defaultValues
-    const defaultOptionValues = nullDefault
-      ? undefined
-      : getOptions(defaultValues, options)
+    const defaultOptionValues = getOptions(defaultValues, options)
 
     function handleChange(options?: SelectOptionObject[]) {
       const newValues = options && options.map(option => option.value)
@@ -222,7 +218,6 @@ const SelectMultiComponent = forwardRef(
           autoComplete={false}
           readOnly={!isFilterable}
           onInputChange={handleInputChange}
-          hideControls={!isClearable}
           selectOnClick={isFilterable}
           ref={ref}
         />
