@@ -34,14 +34,14 @@ import {
   CompatibleHTMLProps,
   layout,
   space,
-  typography,
+  typography
 } from '@looker/design-tokens'
 import { ValidationType } from '../../ValidationMessage'
 import {
   inputTextHover,
   inputTextFocus,
   inputTextDisabled,
-  inputTextValidation,
+  inputTextValidation
 } from '../InputText'
 import { Icon } from '../../../Icon'
 
@@ -65,7 +65,7 @@ const TextAreaLayout: FC<TextAreaProps> = ({
   ...props
 }) => (
   <div className={className}>
-    <textarea {...props} />
+    <StyledTextArea {...props} />
     {validationType && <Icon name="Warning" color="palette.red500" />}
   </div>
 )
@@ -73,37 +73,38 @@ const TextAreaLayout: FC<TextAreaProps> = ({
 const TextAreaResize = (resize?: TextAreaResize) =>
   resize === false ? 'none' : resize === true ? 'both' : resize
 
+const StyledTextArea = styled.textarea`
+  ${layout}
+  ${space}
+  ${typography}
+
+  resize: ${props => TextAreaResize(props.resize)};
+  border: solid 1px;
+  border-color: ${props => props.theme.colors.palette.charcoal200};
+  border-radius: ${props => props.theme.radii.medium};
+  font-size: ${props => props.theme.fontSizes.small};
+  min-height: 6.25rem;
+  padding: ${props => props.theme.space.small};
+  padding-right: ${props => props.theme.space.xlarge};
+
+  &:hover {
+    ${inputTextHover}
+  }
+  &:focus,
+  :focus-within {
+    ${inputTextFocus}
+  }
+
+  ${inputTextValidation}
+
+  ${props => (props.disabled ? inputTextDisabled : '')}
+
+`
+
 export const TextArea = styled(TextAreaLayout)`
   position: relative;
   width: fit-content;
   height: fit-content;
-
-  textarea {
-    ${layout}
-    ${space}
-    ${typography}
-
-    resize: ${props => TextAreaResize(props.resize)};
-    border: solid 1px;
-    border-color: ${props => props.theme.colors.palette.charcoal200};
-    border-radius: ${props => props.theme.radii.medium};
-    font-size: ${props => props.theme.fontSizes.small};
-    min-height: 6.25rem;
-    padding: ${props => props.theme.space.small};
-    padding-right: ${props => props.theme.space.xlarge};
-
-    &:hover {
-      ${inputTextHover}
-    }
-    &:focus,
-    :focus-within {
-      ${inputTextFocus}
-    }
-
-    ${inputTextValidation}
-
-    ${props => (props.disabled ? inputTextDisabled : '')}
-  }
 
   ${Icon} {
     position: absolute;
@@ -117,5 +118,5 @@ TextArea.displayName = 'TextArea'
 TextArea.defaultProps = {
   height: '6.25rem',
   resize: true,
-  width: '16rem',
+  width: '16rem'
 }
