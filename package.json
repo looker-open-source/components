@@ -84,7 +84,7 @@
     "ttypescript": "^1.5.10",
     "typescript": "^3.8.3",
     "typescript-plugin-styled-components": "^1.4.4",
-    "webpack": "^4.42.0"
+    "webpack": "^4.42.1"
   },
   "resolutions": {
     "sharp": "0.24.0"
