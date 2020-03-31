@@ -36,7 +36,7 @@
     "csstype": "^2.6.9",
     "lodash": "^4.17.15",
     "react": "^16.13.1",
-    "react-dom": "^16.13.0",
+    "react-dom": "^16.13.1",
     "styled-components": "^4.4.1",
     "uuid": "^7.0.2"
   },
