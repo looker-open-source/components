@@ -23,6 +23,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Change
 
+- update TextArea to support resized and documentation
+- move path for InlineInputText now under Form/Inputs
 - `ActionList` closes Actions menu on `ActionListItemAction` click
 - update TextArea to support resized and documentation
 - move path for InlineInputText now under Form/Inputs
