@@ -10,6 +10,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - `InputTimeSelect` component
+- `Board`, `ShareIos` Icon
+
+### Changed
+
+- `Share` Icon updated
 
 ## [0.7.25] - 2020-03-23
 
