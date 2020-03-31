@@ -121,6 +121,10 @@ OverlaySurface.displayName = 'OverlaySurface'
 
 const Outer = styled.div<{ zIndex?: number }>`
   ${reset};
+  /* PopperJS adds position: fixed via the style prop
+  but this fixes an intermittent "flash" of un-positioned tooltip
+  while the PopperJS instance is initializing */
+  position: fixed;
   animation: ${fadeIn} 150ms ease-in;
   overflow: visible;
   z-index: ${props => props.zIndex};
