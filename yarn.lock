@@ -2370,12 +2370,12 @@
     stylelint-processor-styled-components "^1.10.0"
     typescript "^3.8.3"
 
-"@looker/prettier-config@^1.0.6":
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/@looker/prettier-config/-/prettier-config-1.0.6.tgz#c43b14fa11bb5b29311c8b14d8264b3fa9f11871"
-  integrity sha512-r/zg5nVAQLgw0e0mIJiPFhCt5kqSv8AP81bK8DA8KrHVB/kttT9KdBhNZCIWL9ugpbik2AGLe1xwD7tprRifJQ==
+"@looker/prettier-config@^1.0.14":
+  version "1.0.14"
+  resolved "https://registry.yarnpkg.com/@looker/prettier-config/-/prettier-config-1.0.14.tgz#090f21cc8223ac2ac1ed52004e7802eae039a040"
+  integrity sha512-IhCAYzhhNBTV+8cUEErUdOIks2vc8jGTGQduK5/Ww+9MOZbHDw0m0f5LNkWdLX8CB8CVtrNCVgdxEWiST0MHiA==
   dependencies:
-    prettier ">=1.19.1"
+    prettier ">=2.0.2"
 
 "@looker/sdk@^0.2.0-beta.32":
   version "0.2.0-beta.32"
@@ -15352,15 +15352,15 @@ prettier-linter-helpers@^1.0.0:
   dependencies:
     fast-diff "^1.1.2"
 
-prettier@>=1.19.1, prettier@^1.19.1:
-  version "1.19.1"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.19.1.tgz#f7d7f5ff8a9cd872a7be4ca142095956a60797cb"
-  integrity sha512-s7PoyDv/II1ObgQunCbB9PdLmUcBZcnWOcxDh7O0N/UwDEsHyqkW+Qh28jW+mVuCdx7gLB0BotYI1Y6uI9iyew==
-
-"prettier@^2.0.1 || ^1.19.1":
+prettier@>=2.0.2, "prettier@^2.0.1 || ^1.19.1":
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.0.2.tgz#1ba8f3eb92231e769b7fcd7cb73ae1b6b74ade08"
   integrity sha512-5xJQIPT8BraI7ZnaDwSbu5zLrB6vvi8hVV58yHQ+QK64qrY40dULy0HSRlQ2/2IdzeBpjhDkqdcFBnFeDEMVdg==
+
+prettier@^1.19.1:
+  version "1.19.1"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.19.1.tgz#f7d7f5ff8a9cd872a7be4ca142095956a60797cb"
+  integrity sha512-s7PoyDv/II1ObgQunCbB9PdLmUcBZcnWOcxDh7O0N/UwDEsHyqkW+Qh28jW+mVuCdx7gLB0BotYI1Y6uI9iyew==
 
 pretty-bytes@^5.1.0, pretty-bytes@^5.3.0:
   version "5.3.0"
