@@ -60,7 +60,7 @@
     "@types/node": "^13.9.8",
     "@types/react-test-renderer": "^16.9.2",
     "babel-core": "^7.0.0-bridge",
-    "babel-loader": "^8.0.5",
+    "babel-loader": "^8.1.0",
     "babel-plugin-styled-components": "^1.10.7",
     "core-js": "^3.6.4",
     "css-loader": "^3.4.2",
