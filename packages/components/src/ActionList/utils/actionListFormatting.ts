@@ -43,11 +43,11 @@ export const getPrimaryKeyColumnIndices = (columns: ActionListColumn[]) =>
 export const primaryKeyColumnCSS = (columnIndices: number[]) =>
   css`
     ${columnIndices.map(
-      columnIndex =>
+      (columnIndex) =>
         css`
           ${ActionListItemColumn}:nth-child(${columnIndex + 1}) {
-            color: ${props => props.theme.colors.palette.charcoal900};
-            font-size: ${props => props.theme.fontSizes.small};
+            color: ${(props) => props.theme.colors.palette.charcoal900};
+            font-size: ${(props) => props.theme.fontSizes.small};
           }
         `
     )}
@@ -61,7 +61,7 @@ export const getNumericColumnIndices = (columns: ActionListColumn[]) =>
 export const numericColumnCSS = (columnIndices: number[]) =>
   css`
     ${columnIndices.map(
-      columnIndex =>
+      (columnIndex) =>
         css`
         ${ActionListItemColumn}:nth-child(${columnIndex + 1}),
         ${ActionListHeaderColumn}:nth-child(${columnIndex + 1}) {

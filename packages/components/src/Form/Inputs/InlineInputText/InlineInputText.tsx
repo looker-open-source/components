@@ -75,7 +75,7 @@ const Input = styled.input.attrs({ type: 'text' })<InlineInputTextProps>`
   background: transparent;
   border: none;
   border-bottom: 1px dashed;
-  border-bottom-color: ${props =>
+  border-bottom-color: ${(props) =>
     props.underlineOnlyOnHover
       ? 'transparent'
       : props.theme.colors.palette.charcoal300};
@@ -88,8 +88,8 @@ const Input = styled.input.attrs({ type: 'text' })<InlineInputTextProps>`
   :focus,
   :hover {
     outline: none;
-    border-bottom-color: ${props => props.theme.colors.palette.purple400};
-    background-color: ${props => props.theme.colors.palette.charcoal100};
+    border-bottom-color: ${(props) => props.theme.colors.palette.purple400};
+    background-color: ${(props) => props.theme.colors.palette.charcoal100};
   }
 
   :focus {

@@ -94,7 +94,7 @@ export const buttonCSS = css<ButtonBaseProps>`
   ${minWidth}
   ${width}
 
-  ${props =>
+  ${(props) =>
     props.focusVisible &&
     `
     box-shadow: 0 0 0 0.15rem
@@ -128,7 +128,7 @@ export const buttonCSS = css<ButtonBaseProps>`
 
 const ButtonOuter = styled.button<ButtonProps>`
   ${buttonCSS}
-  ${props => props.fullWidth && `width: 100%;`}
+  ${(props) => props.fullWidth && `width: 100%;`}
 `
 
 const ButtonJSX = forwardRef(

@@ -40,7 +40,7 @@ const ActionListHeaderColumnLayout = forwardRef(
     ref: Ref<HTMLDivElement>
   ) => {
     const { columns, doSort } = useContext(ActionListContext)
-    const columnInfo = columns && columns.find(column => column.id === id)
+    const columnInfo = columns && columns.find((column) => column.id === id)
     const canSort = columnInfo && columnInfo.canSort
 
     const handleClick = () => {

@@ -48,7 +48,7 @@ DialogManager gives an easy way to compose a Dialog without the need to manage o
     </ModalContent>
   }
 >
-  {onClick => <Button onClick={onClick}>Open Dialog </Button>}
+  {(onClick) => <Button onClick={onClick}>Open Dialog </Button>}
 </DialogManager>
 ```
 
@@ -81,7 +81,7 @@ The props accept responsive width arrays an well as static strings.
    */
   maxWidth={['90vw', '60vw', '500px', '800px']}
 >
-  {open => <Button onClick={open}>Open responsive width modal</Button>}
+  {(open) => <Button onClick={open}>Open responsive width modal</Button>}
 </DialogManager>
 ```
 
@@ -107,7 +107,7 @@ If your dialog content includes form inputs it's entirely possible that the user
     }
   }
 
-  const handleInputChange = e => {
+  const handleInputChange = (e) => {
     const { name, value } = e.target
     setFormData({ ...formData, [name]: value })
   }

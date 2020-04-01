@@ -46,7 +46,7 @@ const typeFamily: Array<{ weight: FontWeights; value: string }> = [
   { weight: 'bold', value: '700' },
 ]
 
-const tableRows = typeFamily.map(t => {
+const tableRows = typeFamily.map((t) => {
   return (
     <TableRow key={t.weight}>
       <TableDataCell>
@@ -90,7 +90,7 @@ const typeRamp: Array<{ size: FontSizes; px: string; lh: string }> = [
   { size: 'xxsmall', px: '11px', lh: '16px' },
 ]
 
-const tableRows2 = typeRamp.map(t => {
+const tableRows2 = typeRamp.map((t) => {
   return (
     <TableRow key={t.size}>
       <TableDataCell>

@@ -41,7 +41,7 @@ In some cases we may not support the exact presentation or behavior necessary. T
   // import React from 'react'
   // import { Button, ButtonProps } from '@looker/components'
 
-  const logHandler = event => {
+  const logHandler = (event) => {
     /**
      *  Place an actual logging function here.
      *  For our example we'll simply log to the browser console.
@@ -50,7 +50,7 @@ In some cases we may not support the exact presentation or behavior necessary. T
   }
 
   const LoggerButton = ({ onClick, ...props }) => {
-    const handleClick = event => {
+    const handleClick = (event) => {
       logHandler(event)
       if (onClick) onClick(event)
     }

@@ -39,7 +39,7 @@ If you'd like to read and control the input value externally, `Slider` accepts a
 ```jsx
 ;() => {
   const [sliderValue, setSliderValue] = useState(0)
-  const onChange = event => {
+  const onChange = (event) => {
     setSliderValue(event.target.value)
   }
   return (

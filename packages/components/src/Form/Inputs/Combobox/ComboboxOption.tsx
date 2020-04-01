@@ -232,13 +232,13 @@ export const ComboboxOptionDetail = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: ${props => props.theme.space.large};
+  height: ${(props) => props.theme.space.large};
 `
 
 export const comboboxOptionGrid = css`
   display: grid;
-  grid-gap: ${props => props.theme.space.xxsmall};
-  grid-template-columns: ${props => props.theme.space.medium} 1fr;
+  grid-gap: ${(props) => props.theme.space.xxsmall};
+  grid-template-columns: ${(props) => props.theme.space.medium} 1fr;
 `
 
 export const comboboxOptionStyle = css`
@@ -254,9 +254,9 @@ export const comboboxOptionStyle = css`
   outline: none;
 
   &[aria-selected='true'] {
-    background-color: ${props =>
+    background-color: ${(props) =>
       props.theme.colors.semanticColors.primary.lighter};
-    color:  ${props => props.theme.colors.semanticColors.primary.darker};
+    color:  ${(props) => props.theme.colors.semanticColors.primary.darker};
   }
 `
 

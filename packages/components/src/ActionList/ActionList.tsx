@@ -119,17 +119,17 @@ export const ActionListLayout: FC<ActionListProps> = ({
 export const ActionList = styled(ActionListLayout)<ActionListProps>`
   ${ActionListRowColumns} {
     display: grid;
-    grid-template-columns: ${props =>
-      props.columns.map(column => `${column.widthPercent}%`).join(' ')};
+    grid-template-columns: ${(props) =>
+      props.columns.map((column) => `${column.widthPercent}%`).join(' ')};
     align-items: center;
   }
 
   ${/* sc-selector */ ActionListItemColumn},
   ${/* sc-selector */ ActionListHeaderColumn} {
     display: flex;
-    padding: ${props => props.theme.space.small};
+    padding: ${(props) => props.theme.space.small};
   }
 
-  ${props => numericColumnCSS(getNumericColumnIndices(props.columns))}
-  ${props => primaryKeyColumnCSS(getPrimaryKeyColumnIndices(props.columns))}
+  ${(props) => numericColumnCSS(getNumericColumnIndices(props.columns))}
+  ${(props) => primaryKeyColumnCSS(getPrimaryKeyColumnIndices(props.columns))}
 `

@@ -35,7 +35,7 @@ describe('Action List Sort Utils', () => {
       ['Samus', 'Link'],
       ['', '%(#&@'],
       ['1234', '10000'],
-    ].map(values => {
+    ].map((values) => {
       expect(stringComparator(values[0], values[1])).toMatchSnapshot()
     })
   })

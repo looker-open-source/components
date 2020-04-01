@@ -47,7 +47,7 @@ export function useOptionStatus<
   const contextOptions = (data as ComboboxMultiData).options
   const options = contextOption ? [contextOption] : contextOptions || []
   const isSelected =
-    options.find(option => option.value === value) !== undefined
+    options.find((option) => option.value === value) !== undefined
 
   return {
     isActive,

@@ -51,9 +51,9 @@ export const ModalBackdrop = styled.div.attrs((props: ModalBackdropProps) => ({
 
   ${color}
   cursor: default;
-  opacity: ${props => props.opacity || 0.4};
-  transition: opacity ${props => props.theme.transitions.durationSimple};
-  ${props => props.inlineStyle};
+  opacity: ${(props) => props.opacity || 0.4};
+  transition: opacity ${(props) => props.theme.transitions.durationSimple};
+  ${(props) => props.inlineStyle};
 
   bottom: 0;
   left: 0;

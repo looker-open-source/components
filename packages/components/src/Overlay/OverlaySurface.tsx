@@ -127,7 +127,7 @@ const Outer = styled.div<{ zIndex?: number }>`
   position: fixed;
   animation: ${fadeIn} 150ms ease-in;
   overflow: visible;
-  z-index: ${props => props.zIndex};
+  z-index: ${(props) => props.zIndex};
 
   &:focus {
     outline: none;

@@ -66,8 +66,8 @@ const Styled = styled.div<Omit<IconProps, 'name'>>`
   ${space}
   ${layout}
 
-  width: ${props => props.width};
-  height: ${props => props.height};
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
   align-items: center;
   display: inline-flex;
 `

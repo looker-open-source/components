@@ -130,13 +130,13 @@ export const pickFieldProps = (props: FieldProps) =>
   pick(props, [...fieldPropKeys, 'required', 'className'])
 export const omitFieldProps = (props: FieldProps) => omit(props, fieldPropKeys)
 
-const RequiredStar = styled(props => (
+const RequiredStar = styled((props) => (
   <span {...props} aria-hidden="true">
     {' '}
     *
   </span>
 ))`
-  color: ${props => props.theme.colors.palette.red500};
+  color: ${(props) => props.theme.colors.palette.red500};
 `
 
 const handleHorizontalAlignment = (props: FieldProps) => {
@@ -153,7 +153,7 @@ const handleHorizontalAlignment = (props: FieldProps) => {
         text-align: left;
         width: ${width};
         margin-right: 0;
-        margin-left: ${props =>
+        margin-left: ${(props) =>
           props.theme.space[CustomizableFieldAttributes.labelMargin]};
       `
     case 'bottom':
@@ -234,7 +234,7 @@ const FieldComponent: FunctionComponent<FieldProps> = ({
 }
 
 export const Field = styled(FieldComponent)`
-  width: ${props => props.width};
+  width: ${(props) => props.width};
 
   ${InputText} {
     width: 100%;

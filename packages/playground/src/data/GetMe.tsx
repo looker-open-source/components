@@ -27,8 +27,8 @@ export const GetMe = () => {
 
   function fetchUser() {
     fetch('/api/user')
-      .then(response => response.json())
-      .then(state => setUser(state))
+      .then((response) => response.json())
+      .then((state) => setUser(state))
   }
 
   return (

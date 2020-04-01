@@ -117,7 +117,7 @@ export const Badge = styled(BadgeLayout).attrs({ fontWeight: 'semiBold' })`
   ${intent}
 
   display: inline-flex;
-  border-radius: ${props =>
+  border-radius: ${(props) =>
     props.rounded ? '50px' : props.theme.radii.medium};
 `
 

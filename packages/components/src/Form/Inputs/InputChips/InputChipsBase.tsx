@@ -60,7 +60,7 @@ export const InputChipsBaseInternal = forwardRef(
     ref: Ref<HTMLInputElement>
   ) => {
     function handleDeleteChip(value: string) {
-      const newValues = values.filter(v => value !== v)
+      const newValues = values.filter((v) => value !== v)
       onChange(newValues)
     }
 
@@ -77,7 +77,7 @@ export const InputChipsBaseInternal = forwardRef(
       onInputChange('')
     }
 
-    const chips = values.map(value => {
+    const chips = values.map((value) => {
       function onChipDelete() {
         handleDeleteChip(value)
       }
@@ -118,7 +118,7 @@ export const InputChipsBase = styled(InputChipsBaseInternal)`
     flex: 1;
     height: 100%;
     overflow: auto;
-    padding-right: ${props => props.theme.space.xlarge};
+    padding-right: ${(props) => props.theme.space.xlarge};
   }
 
   ${InputText} {

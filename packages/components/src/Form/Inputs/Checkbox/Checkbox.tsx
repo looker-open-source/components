@@ -87,8 +87,8 @@ export const FauxCheckbox = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
-  border: ${props => `solid 1px ${props.theme.colors.palette.charcoal200}`};
-  border-radius: ${props => props.theme.radii.small};
+  border: ${(props) => `solid 1px ${props.theme.colors.palette.charcoal200}`};
+  border-radius: ${(props) => props.theme.radii.small};
   color: transparent;
   display: flex;
   justify-content: center;
@@ -125,8 +125,8 @@ export const CheckboxContainer = styled.div<CheckboxContainerProps>`
   }
   input[type='checkbox']:focus {
     & + ${FauxCheckbox} {
-      border-color: ${props => props.theme.colors.palette.purple300};
-      box-shadow: 0 0 0 2px ${props => props.theme.colors.palette.purple100};
+      border-color: ${(props) => props.theme.colors.palette.purple300};
+      box-shadow: 0 0 0 2px ${(props) => props.theme.colors.palette.purple100};
       outline: none;
     }
   }

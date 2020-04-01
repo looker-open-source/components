@@ -90,7 +90,7 @@ export const ComboboxMultiInputInternal = forwardRef(
     function handleChange(values: string[]) {
       transition &&
         transition(ComboboxActionType.CHANGE_VALUES, { inputValues: values })
-      const newOptions = options.filter(option =>
+      const newOptions = options.filter((option) =>
         values.includes(getComboboxText(option))
       )
       contextOnChange && contextOnChange(newOptions)
@@ -144,7 +144,7 @@ export const ComboboxMultiInputInternal = forwardRef(
       [handleInputValueChange, isControlled]
     )
 
-    const inputValues = options.map(option => getComboboxText(option))
+    const inputValues = options.map((option) => getComboboxText(option))
 
     let inputValue = contextInputValue || ''
     if (
@@ -201,7 +201,7 @@ export const ComboboxMultiInput = styled(ComboboxMultiInputInternal)`
   padding-right: 0;
 
   ${Flex} {
-    padding-right: calc(${props => props.theme.space.xlarge} * 2);
+    padding-right: calc(${(props) => props.theme.space.xlarge} * 2);
   }
 
   ${InputSearchControls} {

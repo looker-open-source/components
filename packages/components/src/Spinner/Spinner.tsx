@@ -49,7 +49,7 @@ export interface SpinnerProps
   color?: string
 }
 
-const SpinnerFactory: FC<SpinnerProps> = props => {
+const SpinnerFactory: FC<SpinnerProps> = (props) => {
   const {
     color = 'palette.charcoal900',
     markers = 13,
@@ -58,7 +58,7 @@ const SpinnerFactory: FC<SpinnerProps> = props => {
   } = props
   return (
     <Style {...omit(props, 'color', 'markers', 'markersRadius', 'speed')}>
-      {range(markers).map(i => (
+      {range(markers).map((i) => (
         <SpinnerMarker
           backgroundColor={color}
           key={i}
@@ -77,9 +77,9 @@ const Style = styled.div<SpinnerProps>`
   ${space}
   ${position}
 
-  height: ${props => props.size}px;
+  height: ${(props) => props.size}px;
   position: relative;
-  width: ${props => props.size}px;
+  width: ${(props) => props.size}px;
 `
 
 Style.defaultProps = {

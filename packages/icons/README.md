@@ -16,7 +16,6 @@ Icons are automatically built when starting or publishing the style guide, runni
 
 `yarn workspace @looker/icons build:icons`
 
-
 ### Naming Icons
 
 When adding a new icon, the name given to the icon should aim to be a succinct and semantic representation of the icon's use, not its artwork. For example, `Warning` not `Triangle With Exclamation Point`. While this rule can be broken in some cases, it is the recommended way to name icons as well as something that will be reviewed when submitting new icons.

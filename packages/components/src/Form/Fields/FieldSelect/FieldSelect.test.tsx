@@ -86,10 +86,7 @@ test('Should trigger onChange handler', () => {
   )
 
   wrapper.find('input').simulate('mousedown')
-  wrapper
-    .find('li')
-    .at(0)
-    .simulate('click')
+  wrapper.find('li').at(0).simulate('click')
   expect(handleChange).toHaveBeenCalledTimes(1)
 })
 
