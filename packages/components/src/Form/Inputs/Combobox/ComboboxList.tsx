@@ -154,7 +154,7 @@ const ComboboxListInternal = forwardRef(
       }
     }
 
-    const { popover, contentContainer } = usePopover({
+    const { popover, contentContainer, popperInstanceRef } = usePopover({
       arrow: false,
       content,
       focusTrap: false,
@@ -164,6 +164,13 @@ const ComboboxListInternal = forwardRef(
       triggerElement: wrapperElement,
       triggerToggle: false,
     })
+
+    // For isMulti, we update the popover position when values are added/removed
+    // since it may affect the height of the field
+    const valueLength = isMulti ? contextMulti.data.options.length : 1
+    React.useEffect(() => {
+      popperInstanceRef.current && popperInstanceRef.current.update()
+    }, [popperInstanceRef, valueLength])
 
     useEffect(() => {
       // track scroll position and menu dom rectangle, and bubble up to context.
