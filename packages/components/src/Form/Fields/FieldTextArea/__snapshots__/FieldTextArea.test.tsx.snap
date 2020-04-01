@@ -1,23 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`A FieldTextArea 1`] = `
-.c2 {
-  width: 13rem;
-  -webkit-align-items: left;
-  -webkit-box-align: left;
-  -ms-flex-align: left;
-  align-items: left;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c5 {
+.c4 {
   height: 6.25rem;
   width: 16rem;
   resize: both;
@@ -30,18 +14,18 @@ exports[`A FieldTextArea 1`] = `
   padding-right: 2rem;
 }
 
-.c5:hover {
+.c4:hover {
   border-color: #C1C6CC;
 }
 
-.c5:focus,
-.c5:focus-within {
+.c4:focus,
+.c4:focus-within {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
-.c4 {
+.c3 {
   position: relative;
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -51,82 +35,20 @@ exports[`A FieldTextArea 1`] = `
   height: fit-content;
 }
 
-.c4 .c6 {
+.c3 .c5 {
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
 }
 
-.c0 {
-  margin-bottom: 0.5rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-.c3 {
+.c2 {
   color: #343C42;
-  margin-right: 0.5rem;
   font-weight: 600;
   font-size: 0.75rem;
   display: inline-block;
 }
 
-.c1 {
-  width: 13rem;
-}
-
-.c1 .c7 {
-  width: 100%;
-}
-
-.c1 .c8 {
-  width: 100%;
-}
-
-<div
-  className="c0 c1 "
->
-  <div
-    className="c2"
-    width="13rem"
-  >
-    <label
-      className="c3"
-      color="palette.charcoal700"
-      fontSize="xsmall"
-      fontWeight="semiBold"
-      htmlFor="FieldTextArea"
-    >
-      this is a label
-    </label>
-  </div>
-  <div
-    className="c0"
-  >
-    <div
-      className=""
-    >
-      <div
-        className="c4 "
-      >
-        <textarea
-          className="c5"
-          height="6.25rem"
-          width="16rem"
-        />
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`A FieldTextArea with a validation message 1`] = `
-.c2 {
+.c0 {
   width: 13rem;
   -webkit-align-items: left;
   -webkit-box-align: left;
@@ -140,9 +62,54 @@ exports[`A FieldTextArea with a validation message 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  margin-bottom: 0.5rem;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
-.c6 {
+.c0 .c6 {
+  width: 100%;
+}
+
+.c0 .c7 {
+  width: 100%;
+}
+
+.c0 .c1 {
+  padding-bottom: 0.5rem;
+}
+
+<div
+  className="c0 "
+>
+  <label
+    className="c1 c2"
+    color="palette.charcoal700"
+    fontSize="xsmall"
+    fontWeight="semiBold"
+    htmlFor="FieldTextArea"
+  >
+    this is a label
+  </label>
+  <div
+    className=""
+  >
+    <div
+      className="c3 "
+    >
+      <textarea
+        className="c4"
+        height="6.25rem"
+        width="16rem"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`A FieldTextArea with a validation message 1`] = `
+.c5 {
   color: #CC1F36;
   width: 1rem;
   height: 1rem;
@@ -156,7 +123,7 @@ exports[`A FieldTextArea with a validation message 1`] = `
   display: inline-flex;
 }
 
-.c5 {
+.c4 {
   height: 6.25rem;
   width: 16rem;
   resize: both;
@@ -169,18 +136,18 @@ exports[`A FieldTextArea with a validation message 1`] = `
   padding-right: 2rem;
 }
 
-.c5:hover {
+.c4:hover {
   border-color: #C1C6CC;
 }
 
-.c5:focus,
-.c5:focus-within {
+.c4:focus,
+.c4:focus-within {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
-.c4 {
+.c3 {
   position: relative;
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -190,105 +157,104 @@ exports[`A FieldTextArea with a validation message 1`] = `
   height: fit-content;
 }
 
-.c4 .c7 {
+.c3 .c6 {
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
 }
 
-.c0 {
-  margin-bottom: 0.5rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-.c3 {
+.c2 {
   color: #343C42;
-  margin-right: 0.5rem;
   font-weight: 600;
   font-size: 0.75rem;
   display: inline-block;
 }
 
-.c8 {
+.c7 {
   color: #CC1F36;
   margin-right: 0.5rem;
   margin-top: 0.5rem;
   font-size: 0.75rem;
 }
 
-.c1 {
+.c0 {
   width: 13rem;
+  -webkit-align-items: left;
+  -webkit-box-align: left;
+  -ms-flex-align: left;
+  align-items: left;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 0.5rem;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
-.c1 .c9 {
+.c0 .c8 {
   width: 100%;
 }
 
-.c1 .c10 {
+.c0 .c9 {
   width: 100%;
+}
+
+.c0 .c1 {
+  padding-bottom: 0.5rem;
 }
 
 <div
-  className="c0 c1 "
+  className="c0 "
 >
-  <div
-    className="c2"
-    width="13rem"
+  <label
+    className="c1 c2"
+    color="palette.charcoal700"
+    fontSize="xsmall"
+    fontWeight="semiBold"
+    htmlFor="errorMessage"
   >
-    <label
-      className="c3"
-      color="palette.charcoal700"
-      fontSize="xsmall"
-      fontWeight="semiBold"
-      htmlFor="errorMessage"
-    >
-      this is a label
-    </label>
-  </div>
+    this is a label
+  </label>
   <div
-    className="c0"
+    className=""
   >
     <div
-      className=""
+      className="c3 "
     >
+      <textarea
+        className="c4"
+        height="6.25rem"
+        width="16rem"
+      />
       <div
-        className="c4 "
+        className="c5 c6 "
+        color="palette.red500"
+        size="1rem"
       >
-        <textarea
-          className="c5"
-          height="6.25rem"
-          width="16rem"
-        />
-        <div
-          className="c6 c7 "
-          color="palette.red500"
-          size="1rem"
+        <svg
+          fill="currentColor"
+          height="100%"
+          viewBox="0 0 22 19"
+          width="100%"
         >
-          <svg
+          <title>
+            Warning
+          </title>
+          <path
+            d="M0 19h22L11 0 0 19zm12-3h-2v-2h2v2zm0-4h-2V8h2v4z"
             fill="currentColor"
-            height="100%"
-            viewBox="0 0 22 19"
-            width="100%"
-          >
-            <title>
-              Warning
-            </title>
-            <path
-              d="M0 19h22L11 0 0 19zm12-3h-2v-2h2v2zm0-4h-2V8h2v4z"
-              fill="currentColor"
-            />
-          </svg>
-        </div>
+          />
+        </svg>
       </div>
     </div>
     <div
-      className="c8"
+      className="c7"
       fontSize="xsmall"
       type="error"
     >

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`A FieldRadio 1`] = `
-.c8 {
+.c5 {
   position: relative;
   width: 100%;
   height: 100%;
@@ -12,7 +12,7 @@ exports[`A FieldRadio 1`] = `
   transition: background-color 25ms linear,border-color 25ms linear, box-shadow 25ms linear;
 }
 
-.c6 {
+.c3 {
   position: relative;
   display: inline-block;
   width: 1rem;
@@ -21,7 +21,7 @@ exports[`A FieldRadio 1`] = `
   vertical-align: middle;
 }
 
-.c6 input[type='radio'] {
+.c3 input[type='radio'] {
   opacity: 0;
   position: absolute;
   width: 100%;
@@ -29,16 +29,16 @@ exports[`A FieldRadio 1`] = `
   z-index: 1;
 }
 
-.c6 .c7 {
+.c3 .c4 {
   background: #FFFFFF;
 }
 
-.c6 input[type='radio']:checked + .c7 {
+.c3 input[type='radio']:checked + .c4 {
   background: #6C43E0;
   border-color: #6C43E0;
 }
 
-.c6 input[type='radio']:checked + .c7::after {
+.c3 input[type='radio']:checked + .c4::after {
   content: '';
   position: absolute;
   background: #fff;
@@ -49,17 +49,24 @@ exports[`A FieldRadio 1`] = `
   right: calc(50% - 3px);
 }
 
-.c6 input[type='radio']:focus + .c7 {
+.c3 input[type='radio']:focus + .c4 {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
-.c6 input[type='radio']:disabled + .c7 {
+.c3 input[type='radio']:disabled + .c4 {
   opacity: 0.5;
 }
 
 .c2 {
+  color: #343C42;
+  font-weight: 600;
+  font-size: 0.75rem;
+  display: inline-block;
+}
+
+.c0 {
   -webkit-align-items: left;
   -webkit-box-align: left;
   -ms-flex-align: left;
@@ -72,106 +79,61 @@ exports[`A FieldRadio 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-.c0 {
   margin-bottom: 0.5rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row-reverse;
-  -ms-flex-direction: row-reverse;
-  flex-direction: row-reverse;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  -webkit-align-items: baseline;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
-}
-
-.c5 {
-  margin-bottom: 0.5rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-align-items: baseline;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
 }
 
-.c4 {
-  color: #343C42;
-  margin-right: 0.5rem;
-  font-weight: 600;
-  font-size: 0.75rem;
-  display: inline-block;
-}
-
-.c1 .c9 {
+.c0 .c6 {
   width: 100%;
 }
 
-.c1 .c10 {
+.c0 .c7 {
   width: 100%;
 }
 
-.c1 .c3 {
-  text-align: left;
-  margin-right: 0;
-  margin-left: 0.5rem;
+.c0 .c1 {
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  padding-right: 0.75rem;
 }
 
 <div
-  className="c0 c1 "
+  className="c0 "
 >
-  <div
-    className="c2"
+  <label
+    className="c1 c2"
+    color="palette.charcoal700"
+    fontSize="xsmall"
+    fontWeight="semiBold"
+    htmlFor="thumbs-up"
   >
-    <label
-      className="c3 c4"
-      color="palette.charcoal700"
-      fontSize="xsmall"
-      fontWeight="semiBold"
-      htmlFor="thumbs-up"
-    >
-      👍
-    </label>
-  </div>
+    👍
+  </label>
   <div
-    className="c5"
+    className=""
   >
     <div
-      className=""
+      className="c3 "
     >
+      <input
+        className=""
+        id="thumbs-up"
+        name="thumbsUp"
+        type="radio"
+      />
       <div
-        className="c6 "
-      >
-        <input
-          className=""
-          id="thumbs-up"
-          name="thumbsUp"
-          type="radio"
-        />
-        <div
-          className="c7 c8"
-        />
-      </div>
+        className="c4 c5"
+      />
     </div>
   </div>
 </div>
 `;
 
 exports[`A FieldRadio checked 1`] = `
-.c8 {
+.c5 {
   position: relative;
   width: 100%;
   height: 100%;
@@ -182,7 +144,7 @@ exports[`A FieldRadio checked 1`] = `
   transition: background-color 25ms linear,border-color 25ms linear, box-shadow 25ms linear;
 }
 
-.c6 {
+.c3 {
   position: relative;
   display: inline-block;
   width: 1rem;
@@ -191,7 +153,7 @@ exports[`A FieldRadio checked 1`] = `
   vertical-align: middle;
 }
 
-.c6 input[type='radio'] {
+.c3 input[type='radio'] {
   opacity: 0;
   position: absolute;
   width: 100%;
@@ -199,16 +161,16 @@ exports[`A FieldRadio checked 1`] = `
   z-index: 1;
 }
 
-.c6 .c7 {
+.c3 .c4 {
   background: #FFFFFF;
 }
 
-.c6 input[type='radio']:checked + .c7 {
+.c3 input[type='radio']:checked + .c4 {
   background: #6C43E0;
   border-color: #6C43E0;
 }
 
-.c6 input[type='radio']:checked + .c7::after {
+.c3 input[type='radio']:checked + .c4::after {
   content: '';
   position: absolute;
   background: #fff;
@@ -219,17 +181,24 @@ exports[`A FieldRadio checked 1`] = `
   right: calc(50% - 3px);
 }
 
-.c6 input[type='radio']:focus + .c7 {
+.c3 input[type='radio']:focus + .c4 {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
-.c6 input[type='radio']:disabled + .c7 {
+.c3 input[type='radio']:disabled + .c4 {
   opacity: 0.5;
 }
 
 .c2 {
+  color: #343C42;
+  font-weight: 600;
+  font-size: 0.75rem;
+  display: inline-block;
+}
+
+.c0 {
   -webkit-align-items: left;
   -webkit-box-align: left;
   -ms-flex-align: left;
@@ -242,259 +211,55 @@ exports[`A FieldRadio checked 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-.c0 {
   margin-bottom: 0.5rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row-reverse;
-  -ms-flex-direction: row-reverse;
-  flex-direction: row-reverse;
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  -webkit-align-items: baseline;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
-}
-
-.c5 {
-  margin-bottom: 0.5rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-align-items: baseline;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
 }
 
-.c4 {
-  color: #343C42;
-  margin-right: 0.5rem;
-  font-weight: 600;
-  font-size: 0.75rem;
-  display: inline-block;
-}
-
-.c1 .c10 {
+.c0 .c6 {
   width: 100%;
 }
 
-.c1 .c11 {
+.c0 .c7 {
   width: 100%;
 }
 
-.c1 .c3 {
-  text-align: left;
-  margin-right: 0;
-  margin-left: 0.5rem;
-}
-
-.c9 .c3 {
-  text-align: right;
+.c0 .c1 {
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  padding-right: 0.75rem;
 }
 
 <div
-  className="c0 c1 "
+  className="c0 "
 >
-  <div
-    className="c2"
+  <label
+    className="c1 c2"
+    color="palette.charcoal700"
+    fontSize="xsmall"
+    fontWeight="semiBold"
+    htmlFor="thumbs-up"
   >
-    <label
-      className="c3 c4"
-      color="palette.charcoal700"
-      fontSize="xsmall"
-      fontWeight="semiBold"
-      htmlFor="thumbs-up"
-    >
-      👍
-    </label>
-  </div>
+    👍
+  </label>
   <div
-    className="c5"
+    className=""
   >
     <div
-      className=""
+      className="c3 "
     >
+      <input
+        checked={true}
+        className=""
+        id="thumbs-up"
+        name="thumbsUp"
+        type="radio"
+      />
       <div
-        className="c6 "
-      >
-        <input
-          checked={true}
-          className=""
-          id="thumbs-up"
-          name="thumbsUp"
-          type="radio"
-        />
-        <div
-          className="c7 c8"
-        />
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`A FieldRadio with label aligned left 1`] = `
-.c7 {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  border: solid 1px #DEE1E5;
-  border-radius: 50%;
-  color: transparent;
-  -webkit-transition: background-color 25ms linear,border-color 25ms linear, box-shadow 25ms linear;
-  transition: background-color 25ms linear,border-color 25ms linear, box-shadow 25ms linear;
-}
-
-.c5 {
-  position: relative;
-  display: inline-block;
-  width: 1rem;
-  height: 1rem;
-  margin: 3px;
-  vertical-align: middle;
-}
-
-.c5 input[type='radio'] {
-  opacity: 0;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-}
-
-.c5 .c6 {
-  background: #FFFFFF;
-}
-
-.c5 input[type='radio']:checked + .c6 {
-  background: #6C43E0;
-  border-color: #6C43E0;
-}
-
-.c5 input[type='radio']:checked + .c6::after {
-  content: '';
-  position: absolute;
-  background: #fff;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  top: calc(50% - 3px);
-  right: calc(50% - 3px);
-}
-
-.c5 input[type='radio']:focus + .c6 {
-  border-color: #9785F2;
-  box-shadow: 0 0 0 2px #E8E5FF;
-  outline: none;
-}
-
-.c5 input[type='radio']:disabled + .c6 {
-  opacity: 0.5;
-}
-
-.c2 {
-  -webkit-align-items: left;
-  -webkit-box-align: left;
-  -ms-flex-align: left;
-  align-items: left;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.c0 {
-  margin-bottom: 0.5rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: baseline;
-  -webkit-box-align: baseline;
-  -ms-flex-align: baseline;
-  align-items: baseline;
-}
-
-.c4 {
-  color: #343C42;
-  margin-right: 0.5rem;
-  font-weight: 600;
-  font-size: 0.75rem;
-  display: inline-block;
-}
-
-.c8 .c3 {
-  text-align: left;
-  margin-right: 0;
-  margin-left: 0.5rem;
-}
-
-.c1 .c9 {
-  width: 100%;
-}
-
-.c1 .c10 {
-  width: 100%;
-}
-
-.c1 .c3 {
-  text-align: right;
-}
-
-<div
-  className="c0 c1 "
->
-  <div
-    className="c2"
-  >
-    <label
-      className="c3 c4"
-      color="palette.charcoal700"
-      fontSize="xsmall"
-      fontWeight="semiBold"
-      htmlFor="thumbs-up"
-    >
-      👍
-    </label>
-  </div>
-  <div
-    className="c0"
-  >
-    <div
-      className=""
-    >
-      <div
-        className="c5 "
-      >
-        <input
-          className=""
-          id="thumbs-up"
-          name="thumbsUp"
-          type="radio"
-        />
-        <div
-          className="c6 c7"
-        />
-      </div>
+        className="c4 c5"
+      />
     </div>
   </div>
 </div>
