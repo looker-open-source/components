@@ -24,16 +24,16 @@
 
  */
 
-import { Placement } from 'popper.js'
+import { Placement } from '@popperjs/core'
 import React, {
   useEffect,
+  useMemo,
   useState,
   ReactNode,
   RefObject,
   Ref,
   SyntheticEvent,
 } from 'react'
-import { Popper } from 'react-popper'
 import { Box } from '../Layout'
 import { ModalPortal, ModalContext } from '../Modal'
 import { OverlaySurface } from '../Overlay/OverlaySurface'
@@ -42,7 +42,10 @@ import {
   useControlWarn,
   useFocusTrap,
   useHovered,
+  usePopper,
+  UsePopperProps,
   useScrollLock,
+  useForkedRef,
 } from '../utils'
 
 export interface UsePopoverProps {
@@ -429,6 +432,43 @@ export function usePopover({
     setOpen(false)
     onClose && onClose()
   }
+  const usePopperProps = useMemo<UsePopperProps>(
+    () => ({
+      anchor: element,
+      arrow,
+      options: {
+        modifiers: [
+          {
+            enabled: !pin,
+            name: 'flip',
+            options: {
+              flipVariations: true,
+              flipVariationsByContent: true,
+            },
+          },
+          {
+            // No scroll event listener needed (we have useScrollLock)
+            enabled: true,
+            name: 'eventListeners',
+            options: {
+              scroll: false,
+            },
+          },
+        ],
+        placement: propsPlacement,
+      },
+    }),
+    [arrow, element, pin, propsPlacement]
+  )
+  const {
+    arrowProps,
+    placement,
+    popperInstanceRef,
+    style,
+    targetRef,
+  } = usePopper(usePopperProps)
+
+  const ref = useForkedRef(targetRef, focusRef)
 
   const [containerElement, contentContainerRef] = useCallbackRef<HTMLElement>()
 
@@ -446,49 +486,28 @@ export function usePopover({
       }}
     >
       <ModalPortal ref={scrollRef}>
-        <Popper
-          positionFixed
-          placement={propsPlacement}
-          innerRef={focusRef}
-          modifiers={{
-            flip: {
-              behavior: 'flip',
-              enabled: !pin,
-              flipVariations: true,
-              flipVariationsByContent: true,
-            },
-            preventOverflow: {
-              boundariesElement: 'window',
-              padding: 0,
-            },
-          }}
-          referenceElement={element || undefined}
+        <OverlaySurface
+          arrow={arrow}
+          arrowProps={arrowProps}
+          placement={placement}
+          ref={ref}
+          style={style}
+          backgroundColor="palette.white"
+          border="1px solid"
+          borderColor="palette.charcoal200"
+          borderRadius="medium"
+          boxShadow={3}
+          color="palette.charcoal900"
         >
-          {({ ref, style, arrowProps, placement }) => (
-            <OverlaySurface
-              arrow={arrow}
-              arrowProps={arrowProps}
-              placement={placement}
-              ref={ref}
-              style={style}
-              backgroundColor="palette.white"
-              border="1px solid"
-              borderColor="palette.charcoal200"
-              borderRadius="medium"
-              boxShadow={3}
-              color="palette.charcoal900"
-            >
-              <Box
-                maxHeight={`calc(${verticalSpace - 10}px - 1rem)`}
-                overflowY="auto"
-                borderRadius="inherit"
-                ref={contentContainerRef}
-              >
-                {content}
-              </Box>
-            </OverlaySurface>
-          )}
-        </Popper>
+          <Box
+            maxHeight={`calc(${verticalSpace - 10}px - 1rem)`}
+            overflowY="auto"
+            borderRadius="inherit"
+            ref={contentContainerRef}
+          >
+            {content}
+          </Box>
+        </OverlaySurface>
       </ModalPortal>
     </ModalContext.Provider>
   )
@@ -497,6 +516,7 @@ export function usePopover({
     isOpen,
     open: handleOpen,
     popover,
+    popperInstanceRef,
     ref: callbackRef,
   }
 }
