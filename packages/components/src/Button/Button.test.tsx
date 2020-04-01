@@ -83,6 +83,32 @@ test('Button validates all sizes', () => {
   expect(getByText('large button')).toMatchSnapshot()
 })
 
+test('Button with icon validates all sizes', () => {
+  const { getByText } = render(
+    <ThemeProvider theme={theme}>
+      <>
+        <Button size={'xsmall'} iconBefore={'Account'}>
+          xsmall button
+        </Button>
+        <Button size={'small'} iconBefore={'Account'}>
+          small button
+        </Button>
+        <Button size={'medium'} iconBefore={'Account'}>
+          medium button
+        </Button>
+        <Button size={'large'} iconBefore={'Account'}>
+          large button
+        </Button>
+      </>
+    </ThemeProvider>
+  )
+
+  expect(getByText('xsmall button')).toMatchSnapshot()
+  expect(getByText('small button')).toMatchSnapshot()
+  expect(getByText('medium button')).toMatchSnapshot()
+  expect(getByText('large button')).toMatchSnapshot()
+})
+
 test('Button can be full width', () => {
   const { getByText } = render(
     <ThemeProvider theme={theme}>

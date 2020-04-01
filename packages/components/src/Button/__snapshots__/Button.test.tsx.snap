@@ -495,6 +495,518 @@ exports[`Button validates all sizes 4`] = `
 </button>
 `;
 
+exports[`Button with icon validates all sizes 1`] = `
+.c2 {
+  width: 1rem;
+  height: 1rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-weight: 600;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  line-height: 1;
+  outline: none;
+  -webkit-transition: border 80ms;
+  transition: border 80ms;
+  vertical-align: middle;
+  white-space: nowrap;
+  font-size: 0.75rem;
+  height: 24px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.c0[disabled] {
+  cursor: default;
+  -webkit-filter: grayscale(0.3);
+  filter: grayscale(0.3);
+  opacity: 0.25;
+}
+
+.c1 {
+  background: #6C43E0;
+  border: 1px solid #6C43E0;
+  color: #FFFFFF;
+}
+
+.c1 .c3 {
+  margin-left: -0.125rem;
+  margin-right: 0.25rem;
+  width: 12px;
+  height: 12px;
+}
+
+.c1:active,
+.c1.active {
+  background: #412399;
+  border-color: #412399;
+}
+
+.c1:hover,
+.c1:focus,
+.c1.hover {
+  background: #4F2ABA;
+  border-color: #4F2ABA;
+}
+
+.c1[disabled]:hover,
+.c1[disabled]:active,
+.c1[disabled]:focus {
+  background-color: #6C43E0;
+  border-color: #C1C6CC;
+}
+
+.c4 .c3 {
+  margin-left: -0.25rem;
+  margin-right: 0.5rem;
+  width: 14px;
+  height: 14px;
+}
+
+.c5 .c3 {
+  margin-left: -0.25rem;
+  margin-right: 0.5rem;
+  width: 16px;
+  height: 16px;
+}
+
+.c6 .c3 {
+  margin-left: -0.25rem;
+  margin-right: 0.5rem;
+  width: 18px;
+  height: 18px;
+}
+
+<button
+  class="c0 c1"
+>
+  <div
+    class="c2 c3 "
+  >
+    <svg
+      fill="currentColor"
+      height="100%"
+      viewBox="0 0 24 24"
+      width="100%"
+    >
+      <title>
+        Account
+      </title>
+      <path
+        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM7.07 18.28c.43-.9 3.05-1.78 4.93-1.78s4.51.88 4.93 1.78A7.893 7.893 0 0112 20c-1.86 0-3.57-.64-4.93-1.72zm11.29-1.45c-1.43-1.74-4.9-2.33-6.36-2.33s-4.93.59-6.36 2.33A7.95 7.95 0 014 12c0-4.41 3.59-8 8-8s8 3.59 8 8c0 1.82-.62 3.49-1.64 4.83zM12 6c-1.94 0-3.5 1.56-3.5 3.5S10.06 13 12 13s3.5-1.56 3.5-3.5S13.94 6 12 6zm0 5c-.83 0-1.5-.67-1.5-1.5S11.17 8 12 8s1.5.67 1.5 1.5S12.83 11 12 11z"
+        fill="currentColor"
+      />
+    </svg>
+  </div>
+  xsmall button
+</button>
+`;
+
+exports[`Button with icon validates all sizes 2`] = `
+.c2 {
+  width: 1rem;
+  height: 1rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-weight: 600;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  line-height: 1;
+  outline: none;
+  -webkit-transition: border 80ms;
+  transition: border 80ms;
+  vertical-align: middle;
+  white-space: nowrap;
+  font-size: 0.875rem;
+  height: 28px;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.c0[disabled] {
+  cursor: default;
+  -webkit-filter: grayscale(0.3);
+  filter: grayscale(0.3);
+  opacity: 0.25;
+}
+
+.c4 .c3 {
+  margin-left: -0.125rem;
+  margin-right: 0.25rem;
+  width: 12px;
+  height: 12px;
+}
+
+.c1 {
+  background: #6C43E0;
+  border: 1px solid #6C43E0;
+  color: #FFFFFF;
+}
+
+.c1 .c3 {
+  margin-left: -0.25rem;
+  margin-right: 0.5rem;
+  width: 14px;
+  height: 14px;
+}
+
+.c1:active,
+.c1.active {
+  background: #412399;
+  border-color: #412399;
+}
+
+.c1:hover,
+.c1:focus,
+.c1.hover {
+  background: #4F2ABA;
+  border-color: #4F2ABA;
+}
+
+.c1[disabled]:hover,
+.c1[disabled]:active,
+.c1[disabled]:focus {
+  background-color: #6C43E0;
+  border-color: #C1C6CC;
+}
+
+.c5 .c3 {
+  margin-left: -0.25rem;
+  margin-right: 0.5rem;
+  width: 16px;
+  height: 16px;
+}
+
+.c6 .c3 {
+  margin-left: -0.25rem;
+  margin-right: 0.5rem;
+  width: 18px;
+  height: 18px;
+}
+
+<button
+  class="c0 c1"
+>
+  <div
+    class="c2 c3 "
+  >
+    <svg
+      fill="currentColor"
+      height="100%"
+      viewBox="0 0 24 24"
+      width="100%"
+    >
+      <title>
+        Account
+      </title>
+      <path
+        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM7.07 18.28c.43-.9 3.05-1.78 4.93-1.78s4.51.88 4.93 1.78A7.893 7.893 0 0112 20c-1.86 0-3.57-.64-4.93-1.72zm11.29-1.45c-1.43-1.74-4.9-2.33-6.36-2.33s-4.93.59-6.36 2.33A7.95 7.95 0 014 12c0-4.41 3.59-8 8-8s8 3.59 8 8c0 1.82-.62 3.49-1.64 4.83zM12 6c-1.94 0-3.5 1.56-3.5 3.5S10.06 13 12 13s3.5-1.56 3.5-3.5S13.94 6 12 6zm0 5c-.83 0-1.5-.67-1.5-1.5S11.17 8 12 8s1.5.67 1.5 1.5S12.83 11 12 11z"
+        fill="currentColor"
+      />
+    </svg>
+  </div>
+  small button
+</button>
+`;
+
+exports[`Button with icon validates all sizes 3`] = `
+.c2 {
+  width: 1rem;
+  height: 1rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-weight: 600;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  line-height: 1;
+  outline: none;
+  -webkit-transition: border 80ms;
+  transition: border 80ms;
+  vertical-align: middle;
+  white-space: nowrap;
+  font-size: 1rem;
+  height: 36px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.c0[disabled] {
+  cursor: default;
+  -webkit-filter: grayscale(0.3);
+  filter: grayscale(0.3);
+  opacity: 0.25;
+}
+
+.c4 .c3 {
+  margin-left: -0.125rem;
+  margin-right: 0.25rem;
+  width: 12px;
+  height: 12px;
+}
+
+.c5 .c3 {
+  margin-left: -0.25rem;
+  margin-right: 0.5rem;
+  width: 14px;
+  height: 14px;
+}
+
+.c1 {
+  background: #6C43E0;
+  border: 1px solid #6C43E0;
+  color: #FFFFFF;
+}
+
+.c1 .c3 {
+  margin-left: -0.25rem;
+  margin-right: 0.5rem;
+  width: 16px;
+  height: 16px;
+}
+
+.c1:active,
+.c1.active {
+  background: #412399;
+  border-color: #412399;
+}
+
+.c1:hover,
+.c1:focus,
+.c1.hover {
+  background: #4F2ABA;
+  border-color: #4F2ABA;
+}
+
+.c1[disabled]:hover,
+.c1[disabled]:active,
+.c1[disabled]:focus {
+  background-color: #6C43E0;
+  border-color: #C1C6CC;
+}
+
+.c6 .c3 {
+  margin-left: -0.25rem;
+  margin-right: 0.5rem;
+  width: 18px;
+  height: 18px;
+}
+
+<button
+  class="c0 c1"
+>
+  <div
+    class="c2 c3 "
+  >
+    <svg
+      fill="currentColor"
+      height="100%"
+      viewBox="0 0 24 24"
+      width="100%"
+    >
+      <title>
+        Account
+      </title>
+      <path
+        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM7.07 18.28c.43-.9 3.05-1.78 4.93-1.78s4.51.88 4.93 1.78A7.893 7.893 0 0112 20c-1.86 0-3.57-.64-4.93-1.72zm11.29-1.45c-1.43-1.74-4.9-2.33-6.36-2.33s-4.93.59-6.36 2.33A7.95 7.95 0 014 12c0-4.41 3.59-8 8-8s8 3.59 8 8c0 1.82-.62 3.49-1.64 4.83zM12 6c-1.94 0-3.5 1.56-3.5 3.5S10.06 13 12 13s3.5-1.56 3.5-3.5S13.94 6 12 6zm0 5c-.83 0-1.5-.67-1.5-1.5S11.17 8 12 8s1.5.67 1.5 1.5S12.83 11 12 11z"
+        fill="currentColor"
+      />
+    </svg>
+  </div>
+  medium button
+</button>
+`;
+
+exports[`Button with icon validates all sizes 4`] = `
+.c2 {
+  width: 1rem;
+  height: 1rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c0 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-weight: 600;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  line-height: 1;
+  outline: none;
+  -webkit-transition: border 80ms;
+  transition: border 80ms;
+  vertical-align: middle;
+  white-space: nowrap;
+  font-size: 1.375rem;
+  height: 44px;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+.c0[disabled] {
+  cursor: default;
+  -webkit-filter: grayscale(0.3);
+  filter: grayscale(0.3);
+  opacity: 0.25;
+}
+
+.c4 .c3 {
+  margin-left: -0.125rem;
+  margin-right: 0.25rem;
+  width: 12px;
+  height: 12px;
+}
+
+.c5 .c3 {
+  margin-left: -0.25rem;
+  margin-right: 0.5rem;
+  width: 14px;
+  height: 14px;
+}
+
+.c6 .c3 {
+  margin-left: -0.25rem;
+  margin-right: 0.5rem;
+  width: 16px;
+  height: 16px;
+}
+
+.c1 {
+  background: #6C43E0;
+  border: 1px solid #6C43E0;
+  color: #FFFFFF;
+}
+
+.c1 .c3 {
+  margin-left: -0.25rem;
+  margin-right: 0.5rem;
+  width: 18px;
+  height: 18px;
+}
+
+.c1:active,
+.c1.active {
+  background: #412399;
+  border-color: #412399;
+}
+
+.c1:hover,
+.c1:focus,
+.c1.hover {
+  background: #4F2ABA;
+  border-color: #4F2ABA;
+}
+
+.c1[disabled]:hover,
+.c1[disabled]:active,
+.c1[disabled]:focus {
+  background-color: #6C43E0;
+  border-color: #C1C6CC;
+}
+
+<button
+  class="c0 c1"
+>
+  <div
+    class="c2 c3 "
+  >
+    <svg
+      fill="currentColor"
+      height="100%"
+      viewBox="0 0 24 24"
+      width="100%"
+    >
+      <title>
+        Account
+      </title>
+      <path
+        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM7.07 18.28c.43-.9 3.05-1.78 4.93-1.78s4.51.88 4.93 1.78A7.893 7.893 0 0112 20c-1.86 0-3.57-.64-4.93-1.72zm11.29-1.45c-1.43-1.74-4.9-2.33-6.36-2.33s-4.93.59-6.36 2.33A7.95 7.95 0 014 12c0-4.41 3.59-8 8-8s8 3.59 8 8c0 1.82-.62 3.49-1.64 4.83zM12 6c-1.94 0-3.5 1.56-3.5 3.5S10.06 13 12 13s3.5-1.56 3.5-3.5S13.94 6 12 6zm0 5c-.83 0-1.5-.67-1.5-1.5S11.17 8 12 8s1.5.67 1.5 1.5S12.83 11 12 11z"
+        fill="currentColor"
+      />
+    </svg>
+  </div>
+  large button
+</button>
+`;
+
 exports[`Button works with color danger 1`] = `
 .c0 {
   -webkit-align-items: center;
