@@ -5,11 +5,11 @@ github: Form/Inputs/Select/SelectMulti.tsx
 propsOf: SelectMulti
 ---
 
-The `SelectMulti` component is an extension to the `Select` component that supports multiple selected values and has the following specific features:
+The `SelectMulti` component is an extension of the [`Select`](/components/forms/select) component that supports multiple selected values and has the following specific features:
 
-- Renders in the style of `InputChips`
+- The input field renders an underlying [`InputChips`](/components/forms/input-chips)
+- An on-the-fly "Create" option allows the user to enter custom values (see `showCreate` prop)
 - Option list stays open by default so the user can select multiple options (see `closeOnSelect` prop)
-- An optional on-the-fly create option allows the user to enter custom values (see `showCreate` prop)
 - Values can be cleared individually or all at once (does not use the `Select` component's `isClearable` prop)
 - Aside from `isClearable`, all features of `Select` are supported in `SelectMulti`
 
@@ -30,4 +30,60 @@ The `SelectMulti` component is an extension to the `Select` component that suppo
   ]}
   placeholder="Cheeses"
 />
+```
+
+## Filtering
+
+The `isFilterable` prop allows the user to type in the input, triggering the `onFilter` callback,
+which should be used to narrow the options passed to the `SelectMulti`. Use the `showCreate` prop to allow
+the user to free-form input values.
+
+When `isFilterable` is true, use the `showCreate` prop along with the
+`formatCreateLabel` (defaults to "Create \_\_") and `createOptionPosition` (defaults to last) to allow the user to free-form values.
+
+```jsx
+;() => {
+  const [values, setValues] = React.useState([])
+  const [searchTerm, setSearchTerm] = React.useState('')
+
+  function handleChange(newValues) {
+    setValues(newValues)
+  }
+  function handleFilter(term) {
+    setSearchTerm(term)
+  }
+
+  const newOptions = React.useMemo(() => {
+    const options = [
+      { value: 'Apples' },
+      { value: 'Bananas' },
+      { value: 'Oranges' },
+      { value: 'Pineapples' },
+      { value: 'Kiwis' },
+    ]
+    if (searchTerm === '') return options
+    return options.filter((option) => {
+      return option.value.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1
+    })
+  }, [searchTerm])
+
+  function formatCreateLabel(inputValue) {
+    return `Add new fruit: ${inputValue}`
+  }
+
+  return (
+    <SelectMulti
+      options={newOptions}
+      aria-label="Fruits"
+      placeholder="Controlled, searchable, creatable"
+      isFilterable
+      values={values}
+      onChange={handleChange}
+      onFilter={handleFilter}
+      showCreate
+      formatCreateLabel={formatCreateLabel}
+      createOptionPosition="first"
+    />
+  )
+}
 ```

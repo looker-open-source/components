@@ -79,11 +79,6 @@ export interface SelectMultiProps
    */
   showCreate?: boolean | ShowCreateFunction
   /**
-   * Where to add the on-the-fly "Create" option (use with showCreate)
-   * @default 'last'
-   */
-  createOptionPosition?: 'first' | 'last'
-  /**
    * Format the label of the on-the-fly create option (use with canCreate)
    * @default `Create ${inputText}`
    */
@@ -140,12 +135,12 @@ const SelectMultiComponent = forwardRef(
       onChange,
       values,
       defaultValues,
+      noOptionsLabel,
       'aria-label': ariaLabel,
       'aria-labelledby': ariaLabelledby,
       validationType,
       closeOnSelect = false,
       showCreate = false,
-      createOptionPosition = 'last',
       formatCreateLabel,
       removeOnBackspace = true,
       ...props
@@ -190,19 +185,14 @@ const SelectMultiComponent = forwardRef(
           }),
     }
 
-    function renderCreate(position: 'first' | 'last') {
-      return (
-        isFilterable &&
-        showCreate !== false &&
-        createOptionPosition === position && (
-          <SelectMultiCreateOption
-            options={options}
-            show={showCreate === true ? missingInOptions : showCreate}
-            formatLabel={formatCreateLabel}
-          />
-        )
-      )
-    }
+    const createOption =
+      isFilterable && showCreate !== false ? (
+        <SelectMultiCreateOption
+          options={options}
+          show={showCreate === true ? missingInOptions : showCreate}
+          formatLabel={formatCreateLabel}
+        />
+      ) : null
 
     return (
       <ComboboxMulti
@@ -227,9 +217,13 @@ const SelectMultiComponent = forwardRef(
             closeOnSelect={closeOnSelect}
             {...ariaProps}
           >
-            {renderCreate('first')}
-            <SelectOptions options={options} isMulti />
-            {renderCreate('last')}
+            <SelectOptions
+              options={options}
+              isMulti
+              noOptionsLabel={noOptionsLabel}
+              hideNoOptions={createOption !== null}
+            />
+            {createOption}
           </ComboboxMultiList>
         )}
       </ComboboxMulti>

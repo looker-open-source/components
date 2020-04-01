@@ -90,31 +90,38 @@ export const SelectOptionGroup = ({
 export interface SelectOptionsProps {
   options?: SelectOptionProps[]
   isMulti?: boolean
+  hideNoOptions?: boolean
+  noOptionsLabel?: string
 }
 
-export function SelectOptions({ options, isMulti }: SelectOptionsProps) {
+export function SelectOptions({
+  options,
+  isMulti,
+  hideNoOptions,
+  noOptionsLabel = 'No options',
+}: SelectOptionsProps) {
   return (
     <>
-      {options && options.length > 0 ? (
-        options.map((option: SelectOptionProps, index: number) => {
-          const optionAsGroup = option as SelectOptionGroupProps
-          return optionAsGroup.title ? (
-            <SelectOptionGroup
-              key={index}
-              {...optionAsGroup}
-              isMulti={isMulti}
-            />
-          ) : isMulti ? (
-            renderMultiOption(option as SelectOptionObject, index)
-          ) : (
-            renderOption(option as SelectOptionObject, index)
-          )
-        })
-      ) : (
-        <ListItem fontSize="small" px="medium" py="xxsmall">
-          No options
-        </ListItem>
-      )}
+      {options && options.length > 0
+        ? options.map((option: SelectOptionProps, index: number) => {
+            const optionAsGroup = option as SelectOptionGroupProps
+            return optionAsGroup.title ? (
+              <SelectOptionGroup
+                key={index}
+                {...optionAsGroup}
+                isMulti={isMulti}
+              />
+            ) : isMulti ? (
+              renderMultiOption(option as SelectOptionObject, index)
+            ) : (
+              renderOption(option as SelectOptionObject, index)
+            )
+          })
+        : !hideNoOptions && (
+            <ListItem fontSize="small" px="medium" py="xxsmall">
+              {noOptionsLabel}
+            </ListItem>
+          )}
     </>
   )
 }

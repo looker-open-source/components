@@ -141,7 +141,6 @@ export function ComboboxDemo() {
         isFilterable
         alignSelf="flex-start"
         showCreate
-        createOptionPosition="first"
         formatCreateLabel={formatCreate}
         removeOnBackspace={false}
       />

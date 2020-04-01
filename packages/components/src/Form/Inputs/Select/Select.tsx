@@ -69,6 +69,11 @@ export interface SelectBaseProps {
    * or the menu opens with a pre-populated value
    */
   onFilter?: (term: string) => void
+  /**
+   * Text to show when there are no available options
+   * @default 'No options'
+   */
+  noOptionsLabel?: string
 
   validationType?: ValidationType
 }
@@ -128,6 +133,7 @@ const SelectComponent = forwardRef(
       onChange,
       value,
       defaultValue,
+      noOptionsLabel,
       'aria-label': ariaLabel,
       'aria-labelledby': ariaLabelledby,
       validationType,
@@ -187,7 +193,7 @@ const SelectComponent = forwardRef(
         />
         {!disabled && (
           <ComboboxList persistSelection {...ariaProps}>
-            <SelectOptions options={options} />
+            <SelectOptions options={options} noOptionsLabel={noOptionsLabel} />
           </ComboboxList>
         )}
       </Combobox>

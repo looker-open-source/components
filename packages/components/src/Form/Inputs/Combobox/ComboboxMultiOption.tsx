@@ -54,8 +54,9 @@ const ComboboxMultiOptionInternal = forwardRef(
       children,
       highlightText = true,
       scrollIntoView,
+      hideCheckMark,
       ...props
-    }: ComboboxOptionProps,
+    }: ComboboxOptionProps & { hideCheckMark?: boolean },
     forwardedRef: Ref<HTMLLIElement>
   ) => {
     const { label, value } = props
@@ -92,11 +93,13 @@ const ComboboxMultiOptionInternal = forwardRef(
         aria-selected={isActive}
       >
         <ComboboxOptionDetail>
-          <CheckboxContainer checked={isSelected}>
-            <FauxCheckbox>
-              <CheckMark />
-            </FauxCheckbox>
-          </CheckboxContainer>
+          {!hideCheckMark && (
+            <CheckboxContainer checked={isSelected}>
+              <FauxCheckbox>
+                <CheckMark />
+              </FauxCheckbox>
+            </CheckboxContainer>
+          )}
         </ComboboxOptionDetail>
         {children || <ComboboxOptionText highlightText={highlightText} />}
       </ComboboxOptionWrapper>
@@ -108,7 +111,8 @@ ComboboxMultiOptionInternal.displayName = 'ComboboxMultiOptionInternal'
 
 export const ComboboxMultiOption = styled(ComboboxMultiOptionInternal)`
   ${comboboxOptionStyle}
-  grid-template-columns: ${(props) => props.theme.space.xlarge} 1fr;
+  grid-template-columns: ${(props) =>
+    props.hideCheckMark ? 0 : props.theme.space.xlarge} 1fr;
 `
 
 ComboboxMultiOption.defaultProps = {

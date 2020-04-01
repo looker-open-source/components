@@ -61,7 +61,7 @@ export function SelectMultiCreateOption({
   if (!inputValue || !notInOptions) return null
 
   return (
-    <ComboboxMultiOption value={inputValue} highlightText={false}>
+    <ComboboxMultiOption value={inputValue} highlightText={false} hideCheckMark>
       {formatLabel ? formatLabel(inputValue) : `Create "${inputValue}"`}
     </ComboboxMultiOption>
   )

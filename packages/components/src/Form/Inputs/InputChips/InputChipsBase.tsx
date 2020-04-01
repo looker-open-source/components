@@ -129,7 +129,7 @@ export const InputChipsBase = styled(InputChipsBaseInternal)`
 
   ${InputSearchControls} {
     position: absolute;
-    top: 2;
+    top: 2px;
     right: 0;
   }
 `
