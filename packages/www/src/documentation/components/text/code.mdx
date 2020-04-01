@@ -15,7 +15,9 @@ Renders a inline level `<code />` element on the page.
 
 ## CodeBlock
 
-A `CodeBlock` is a dedicated container for multiple lines of source code.
+A `CodeBlock` is a dedicated container for multiple lines of source code. It produces un-styled code with whitespace preserved.
+
+NOTE: Currently, this component doesn't support syntax highlighting.
 
 ```jsx
 ;() => {
@@ -23,6 +25,7 @@ A `CodeBlock` is a dedicated container for multiple lines of source code.
 
 if (lookMa != fauxCode) {
   // Some stuff could happen here.
+  // This comment is really long and should force the container to scroll to the side in most cases.
 } else {
   // or it could happen here...
 }`

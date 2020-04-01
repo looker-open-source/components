@@ -6,16 +6,21 @@ exports[`A default CodeBlock component 1`] = `
   font-size: 0.875rem;
   line-height: 1.25rem;
   padding: 1rem;
+}
+
+.c1 {
   border: 1px solid;
   border-color: #DEE1E5;
   overflow-y: scroll;
 }
 
 <pre
-  className="c0"
+  className="c0 c1"
   fontFamily="code"
   fontSize="small"
 >
-  Hello
+  <code>
+    Hello
+  </code>
 </pre>
 `;
