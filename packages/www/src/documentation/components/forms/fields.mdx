@@ -10,17 +10,15 @@ import { Props } from '../../../Shared'
 
 <Props of="FieldCheckbox" />
 
-The `<FieldCheckbox />` component is composed of a `<Checkbox />` component and a `<Label />` component. Using `<FieldCheckbox />` allows for rendering validation messages. By default, the label will render to the left of the checkbox, which is the recommended convention, however this is adjustable with the `alignLabel` property.
+The `<FieldCheckbox />` component is composed of a `<Checkbox />` component and a `<Label />` component. Using `<FieldCheckbox />` allows for rendering validation messages.
 
 ```jsx
 <FieldCheckbox name="box" label="Box" />
-<FieldCheckbox name="box-2" label="Box 2" alignLabel="left" />
 <FieldCheckbox name="requiredField" label="A required field" required />
 <FieldCheckbox
   name="normal-label"
   label="Normal Label"
   labelFontWeight="normal"
-  alignLabel="right"
 />
 ```
 

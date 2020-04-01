@@ -43,7 +43,6 @@ const FieldCheckboxComponent = forwardRef(
       <Field
         id={id}
         inline
-        alignValidationMessage="right"
         validationMessage={validationMessage}
         {...pickFieldProps(props)}
       >

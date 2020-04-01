@@ -39,7 +39,6 @@ const FieldTextAreaComponent: FC<FieldTextAreaProps> = ({ ...props }) => {
   return (
     <Field
       id={id}
-      alignValidationMessage="bottom"
       validationMessage={validationMessage}
       {...pickFieldProps(props)}
     >
