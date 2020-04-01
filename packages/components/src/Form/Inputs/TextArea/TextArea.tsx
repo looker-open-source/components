@@ -98,7 +98,6 @@ const StyledTextArea = styled.textarea<TextAreaProps>`
   ${inputTextValidation}
 
   ${props => (props.disabled ? inputTextDisabled : '')}
-
 `
 
 export const TextArea = styled(TextAreaLayout)`
