@@ -34,14 +34,14 @@ import {
   CompatibleHTMLProps,
   layout,
   space,
-  typography
+  typography,
 } from '@looker/design-tokens'
 import { ValidationType } from '../../ValidationMessage'
 import {
   inputTextHover,
   inputTextFocus,
   inputTextDisabled,
-  inputTextValidation
+  inputTextValidation,
 } from '../InputText'
 import { Icon } from '../../../Icon'
 
@@ -73,7 +73,7 @@ const TextAreaLayout: FC<TextAreaProps> = ({
 const TextAreaResize = (resize?: TextAreaResize) =>
   resize === false ? 'none' : resize === true ? 'both' : resize
 
-const StyledTextArea = styled.textarea`
+const StyledTextArea = styled.textarea<TextAreaProps>`
   ${layout}
   ${space}
   ${typography}
@@ -118,5 +118,5 @@ TextArea.displayName = 'TextArea'
 TextArea.defaultProps = {
   height: '6.25rem',
   resize: true,
-  width: '16rem'
+  width: '16rem',
 }

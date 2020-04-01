@@ -17,17 +17,7 @@ exports[`A FieldTextArea 1`] = `
   display: flex;
 }
 
-.c4 {
-  position: relative;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-}
-
-.c4 textarea {
+.c5 {
   height: 6.25rem;
   width: 16rem;
   resize: both;
@@ -40,18 +30,28 @@ exports[`A FieldTextArea 1`] = `
   padding-right: 2rem;
 }
 
-.c4 textarea:hover {
+.c5:hover {
   border-color: #C1C6CC;
 }
 
-.c4 textarea:focus,
-.c4 textarea:focus-within {
+.c5:focus,
+.c5:focus-within {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
-.c4 .c5 {
+.c4 {
+  position: relative;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.c4 .c6 {
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
@@ -80,11 +80,11 @@ exports[`A FieldTextArea 1`] = `
   width: 13rem;
 }
 
-.c1 .c6 {
+.c1 .c7 {
   width: 100%;
 }
 
-.c1 .c7 {
+.c1 .c8 {
   width: 100%;
 }
 
@@ -115,8 +115,8 @@ exports[`A FieldTextArea 1`] = `
         className="c4 "
       >
         <textarea
+          className="c5"
           height="6.25rem"
-          resize={true}
           width="16rem"
         />
       </div>
@@ -142,7 +142,7 @@ exports[`A FieldTextArea with a validation message 1`] = `
   display: flex;
 }
 
-.c5 {
+.c6 {
   color: #CC1F36;
   width: 1rem;
   height: 1rem;
@@ -156,10 +156,28 @@ exports[`A FieldTextArea with a validation message 1`] = `
   display: inline-flex;
 }
 
-.c8 .c6 {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
+.c5 {
+  height: 6.25rem;
+  width: 16rem;
+  resize: both;
+  border: solid 1px;
+  border-color: #DEE1E5;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  min-height: 6.25rem;
+  padding: 0.75rem;
+  padding-right: 2rem;
+}
+
+.c5:hover {
+  border-color: #C1C6CC;
+}
+
+.c5:focus,
+.c5:focus-within {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
 }
 
 .c4 {
@@ -172,42 +190,7 @@ exports[`A FieldTextArea with a validation message 1`] = `
   height: fit-content;
 }
 
-.c4 textarea {
-  height: 6.25rem;
-  width: 16rem;
-  resize: both;
-  border: solid 1px;
-  border-color: #DEE1E5;
-  border-radius: 0.25rem;
-  font-size: 0.875rem;
-  min-height: 6.25rem;
-  padding: 0.75rem;
-  padding-right: 2rem;
-  border-color: #ED3B53;
-}
-
-.c4 textarea:hover {
-  border-color: #C1C6CC;
-}
-
-.c4 textarea:focus,
-.c4 textarea:focus-within {
-  border-color: #9785F2;
-  box-shadow: 0 0 0 2px #E8E5FF;
-  outline: none;
-}
-
-.c4 textarea:hover {
-  border-color: #CC1F36;
-}
-
-.c4 textarea:focus,
-.c4 textarea:focus-within {
-  border-color: #CC1F36;
-  box-shadow: 0 0 0 2px #FFE5E9;
-}
-
-.c4 .c6 {
+.c4 .c7 {
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
@@ -232,7 +215,7 @@ exports[`A FieldTextArea with a validation message 1`] = `
   display: inline-block;
 }
 
-.c7 {
+.c8 {
   color: #CC1F36;
   margin-right: 0.5rem;
   margin-top: 0.5rem;
@@ -278,12 +261,12 @@ exports[`A FieldTextArea with a validation message 1`] = `
         className="c4 "
       >
         <textarea
+          className="c5"
           height="6.25rem"
-          resize={true}
           width="16rem"
         />
         <div
-          className="c5 c6 "
+          className="c6 c7 "
           color="palette.red500"
           size="1rem"
         >
@@ -305,7 +288,7 @@ exports[`A FieldTextArea with a validation message 1`] = `
       </div>
     </div>
     <div
-      className="c7"
+      className="c8"
       fontSize="xsmall"
       type="error"
     >
