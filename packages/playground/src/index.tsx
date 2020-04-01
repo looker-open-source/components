@@ -35,9 +35,9 @@ const App: React.FC = () => {
   )
 }
 
-/**
- * This is the binding site for the playground. If you want to edit the
- * primary application, do your work in App.tsx instead.
+/*
+  This is the binding site for the playground. If you want to edit the
+  primary application, do your work in App.tsx instead.
  */
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(<App />, document.getElementById('container'))
