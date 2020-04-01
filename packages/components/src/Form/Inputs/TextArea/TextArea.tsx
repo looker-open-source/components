@@ -78,14 +78,14 @@ const StyledTextArea = styled.textarea<TextAreaProps>`
   ${space}
   ${typography}
 
-  resize: ${props => TextAreaResize(props.resize)};
+  resize: ${(props) => TextAreaResize(props.resize)};
   border: solid 1px;
-  border-color: ${props => props.theme.colors.palette.charcoal200};
-  border-radius: ${props => props.theme.radii.medium};
-  font-size: ${props => props.theme.fontSizes.small};
+  border-color: ${(props) => props.theme.colors.palette.charcoal200};
+  border-radius: ${(props) => props.theme.radii.medium};
+  font-size: ${(props) => props.theme.fontSizes.small};
   min-height: 6.25rem;
-  padding: ${props => props.theme.space.small};
-  padding-right: ${props => props.theme.space.xlarge};
+  padding: ${(props) => props.theme.space.small};
+  padding-right: ${(props) => props.theme.space.xlarge};
 
   &:hover {
     ${inputTextHover}
@@ -97,7 +97,7 @@ const StyledTextArea = styled.textarea<TextAreaProps>`
 
   ${inputTextValidation}
 
-  ${props => (props.disabled ? inputTextDisabled : '')}
+  ${(props) => (props.disabled ? inputTextDisabled : '')}
 `
 
 export const TextArea = styled(TextAreaLayout)`
