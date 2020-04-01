@@ -95,7 +95,6 @@ function getColorFromText(text?: string) {
 export const FieldColorComponent = forwardRef(
   (
     {
-      alignValidationMessage,
       hideInput,
       id,
       onChange,
@@ -185,7 +184,6 @@ export const FieldColorComponent = forwardRef(
       <Field
         id={inputID}
         validationMessage={validationMessage}
-        alignValidationMessage={alignValidationMessage || 'bottom'}
         {...pickFieldProps(props)}
       >
         <FormControl alignLabel="left">

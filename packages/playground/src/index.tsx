@@ -37,9 +37,23 @@ const App: React.FC = () => {
       <GlobalStyle />
       <Flex pt="large" justifyContent="space-around" alignItems="center">
         <FieldText label="hello" />
-        <FieldCheckbox label="hello" inline />
+        <FieldText inline label="hello" />
+        <FieldCheckbox label="hello" />
         <FieldToggleSwitch label="hello" />
         <FieldRadio label="hello" />
+      </Flex>
+      <Flex pt="large" justifyContent="space-around" alignItems="center">
+        <FieldText
+          label="hello"
+          detail="5/50"
+          validationMessage={{ message: 'validation Message', type: 'error' }}
+        />
+        <FieldText
+          inline
+          label="hello"
+          detail="5/50"
+          validationMessage={{ message: 'validation Message', type: 'error' }}
+        />
       </Flex>
     </ThemeProvider>
   )
