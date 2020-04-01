@@ -25,7 +25,7 @@
  */
 
 import React, { FunctionComponent, ReactNode } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { ResponsiveValue, TLengthStyledSystem } from 'styled-system'
 import {
   CustomizableAttributes,
@@ -162,13 +162,15 @@ const getValidationMessageAlignment = (
  * and can render a validation message. Generally, this component is used with form inputs to give user
  * feedback about the status of the input values.
  */
+
+//   inline = false,
+
 const FieldComponent: FunctionComponent<FieldProps> = ({
   alignValidationMessage,
   children,
   description,
   detail,
   id,
-  inline = false,
   label,
   labelFontSize,
   labelFontWeight,
