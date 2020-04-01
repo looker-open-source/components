@@ -24,7 +24,7 @@
 
  */
 
-import { Placement } from 'popper.js'
+import { Placement } from '@popperjs/core'
 import React, {
   Component,
   createRef,

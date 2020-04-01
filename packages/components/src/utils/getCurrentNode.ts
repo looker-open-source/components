@@ -24,18 +24,19 @@
 
  */
 
-// c.f. https://github.com/FezVrasta/popper.js#how-to-use-popperjs-in-jest
+import { RefObject } from 'react'
 
-/* eslint disable */
-import PopperJs from 'popper.js'
+export type ElementOrRef<E extends HTMLElement = HTMLElement> =
+  | E
+  | null
+  | undefined
+  | RefObject<E>
 
-export default class Popper {
-  static placements = PopperJs.placements
-
-  constructor() {
-    return {
-      destroy: () => {},
-      scheduleUpdate: () => {},
-    }
-  }
+export function getCurrentNode<E extends HTMLElement = HTMLElement>(
+  elementOrRefObject: ElementOrRef<E>
+): E | null {
+  if (!elementOrRefObject) return null
+  return (elementOrRefObject as E).addEventListener
+    ? (elementOrRefObject as E)
+    : (elementOrRefObject as RefObject<E>).current
 }
