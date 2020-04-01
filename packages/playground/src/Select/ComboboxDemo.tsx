@@ -138,7 +138,6 @@ export function ComboboxDemo() {
         options={selectOptions}
         aria-label="Fruits"
         placeholder="Controlled, searchable, clearable"
-        isClearable
         isFilterable
         alignSelf="flex-start"
         showCreate
@@ -151,9 +150,7 @@ export function ComboboxDemo() {
         mb="medium"
         options={selectGroups}
         aria-label="Fruits"
-        placeholder="Controlled, searchable, clearable"
-        isClearable
-        isFilterable
+        placeholder="Fruit Groups"
         alignSelf="flex-start"
       />
       <Heading>Controlled</Heading>

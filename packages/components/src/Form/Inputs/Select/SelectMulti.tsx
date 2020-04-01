@@ -101,7 +101,7 @@ function getOptions(
 ): SelectOptionObject[] | undefined {
   if (!values) return undefined
   const flattenedOptions = options && flattenOptions(options)
-  return values.map(value => ({
+  return values.map((value) => ({
     label: getComboboxText(value, flattenedOptions),
     value,
   }))
@@ -118,12 +118,12 @@ export const missingInOptions: ShowCreateFunction = (
   inputValue
 ) => {
   if (!inputValue) return false
-  if (currentOptions.find(option => compareOption(option, inputValue))) {
+  if (currentOptions.find((option) => compareOption(option, inputValue))) {
     return false
   }
   if (!options) return true
   return (
-    flattenOptions(options).find(option =>
+    flattenOptions(options).find((option) =>
       compareOption(option, inputValue)
     ) === undefined
   )
@@ -156,7 +156,7 @@ const SelectMultiComponent = forwardRef(
     const defaultOptionValues = getOptions(defaultValues, options)
 
     function handleChange(options?: SelectOptionObject[]) {
-      const newValues = options && options.map(option => option.value)
+      const newValues = options && options.map((option) => option.value)
       onChange && onChange(newValues)
       onFilter && onFilter('')
     }
