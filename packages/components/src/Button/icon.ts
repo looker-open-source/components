@@ -76,6 +76,7 @@ export const iconSizes = (props: ButtonProps) => {
     case 'large':
       iconSize = 18
       break
+    case 'medium':
     default:
       iconSize = 16
   }
