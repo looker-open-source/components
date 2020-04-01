@@ -215,7 +215,7 @@ export const InputIconStyle = styled(Flex)`
   pointer-events: none;
 `
 
-export const inputTextValidation = css<InputTextProps>`
+export const inputTextValidation = css<{ validationType?: 'error' }>`
   ${(props) =>
     props.validationType === 'error'
       ? `
