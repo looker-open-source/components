@@ -61,7 +61,6 @@ test('A FieldCheckbox with an error validation aligned to the bottom', () => {
       name="thumbsUp"
       id="thumbs-up"
       validationMessage={{ message: 'This is an error', type: 'error' }}
-      alignValidationMessage="bottom"
     />
   )
   expect(component.find(Label).props().htmlFor).toEqual(

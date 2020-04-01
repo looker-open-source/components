@@ -97,7 +97,6 @@ test('A FieldText with an error validation aligned to the bottom', () => {
       name="thumbsUp"
       id={id}
       validationMessage={{ message: 'This is an error', type: 'error' }}
-      alignValidationMessage="bottom"
     />
   )
 
@@ -112,7 +111,6 @@ test('A FieldText with an error validation aligned to the left', () => {
       name="thumbsUp"
       id={id}
       validationMessage={{ message: 'This is an error', type: 'error' }}
-      alignValidationMessage="left"
     />
   )
   const tree = component.toJSON()
@@ -127,7 +125,6 @@ test("A FieldText htmlFor attribute references input's name", () => {
       name="thumbsUp"
       id={id}
       validationMessage={{ message: 'This is an error', type: 'error' }}
-      alignValidationMessage="left"
     />
   )
 
@@ -141,7 +138,6 @@ test('A FieldText with an error validation aligned to the right', () => {
       name="thumbsUp"
       id="thumbs-up"
       validationMessage={{ message: 'This is an error', type: 'error' }}
-      alignValidationMessage="right"
     />
   )
   const tree = component.toJSON()
