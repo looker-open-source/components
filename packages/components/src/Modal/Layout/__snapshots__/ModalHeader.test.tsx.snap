@@ -57,6 +57,11 @@ exports[`ModalHeader 1`] = `
   color: #939BA5;
 }
 
+.c3 .c7 {
+  width: 14px;
+  height: 14px;
+}
+
 .c3:active,
 .c3.active {
   background: #F5F6F7;

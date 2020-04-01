@@ -42,6 +42,11 @@ exports[`ButtonTransparent Focus: renders outline when tabbing into focus, but n
   color: #6C43E0;
 }
 
+.c1 .c2 {
+  width: 16px;
+  height: 16px;
+}
+
 .c1:active,
 .c1.active {
   background: #E8E5FF;
@@ -72,7 +77,7 @@ exports[`ButtonTransparent Focus: renders outline when tabbing into focus, but n
 
 exports[`ButtonTransparent Focus: renders outline when tabbing into focus, but not when clicking 2`] = `
 <button
-  class="sc-bxivhb deKSKn sc-ifAKCX sc-EHOje YuRpY"
+  class="sc-bxivhb deKSKn sc-ifAKCX sc-EHOje kFWnwj"
 >
   focus
 </button>
@@ -118,6 +123,11 @@ exports[`ButtonTransparent has the correct style 1`] = `
   background: transparent;
   border: 1px solid transparent;
   color: #6C43E0;
+}
+
+.c1 .c2 {
+  width: 16px;
+  height: 16px;
 }
 
 .c1:active,
