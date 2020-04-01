@@ -73,7 +73,7 @@ const CodeSandbox = ({
         theme={prismTheme}
         code={code}
         language={language}
-        transformCode={code => transformCode(code)}
+        transformCode={(code) => transformCode(code)}
       >
         <LivePreviewWrapper>
           <LiveConsumer>

@@ -23,7 +23,7 @@ export const InputDateLocales = () => {
           Select locale
         </Label>
         <Select
-          options={toPairs(Locales).map(locale => ({
+          options={toPairs(Locales).map((locale) => ({
             label: `${locale[0]} (${locale[1]})`,
             value: locale[1],
           }))}

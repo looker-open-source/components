@@ -67,32 +67,32 @@ const ChipStyle = styled.span<ChipProps>`
   }
 
   align-items: center;
-  background-color: ${props => props.theme.colors.palette.purple000};
+  background-color: ${(props) => props.theme.colors.palette.purple000};
   border-radius: 4px;
-  color: ${props => props.theme.colors.palette.purple500};
+  color: ${(props) => props.theme.colors.palette.purple500};
   display: flex;
   justify-items: center;
   & + & {
-    margin-left: ${props => props.theme.space.xxsmall};
+    margin-left: ${(props) => props.theme.space.xxsmall};
   }
 
   &:hover {
-    background-color: ${props => props.theme.colors.palette.purple100};
+    background-color: ${(props) => props.theme.colors.palette.purple100};
   }
 
   &:focus {
-    background-color: ${props => props.theme.colors.palette.purple200};
+    background-color: ${(props) => props.theme.colors.palette.purple200};
     outline: none;
   }
 
-  ${props =>
+  ${(props) =>
     props.focusVisible &&
     `box-shadow: 0 0 0 0.15rem ${rgba(
       props.theme.colors.palette.purple300,
       0.25
     )};`};
 
-  ${props =>
+  ${(props) =>
     props.disabled &&
     `color: ${props.theme.colors.palette.charcoal400};
       background-color: ${props.theme.colors.palette.charcoal100};

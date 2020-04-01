@@ -335,11 +335,11 @@ It supports an optional `label` prop to place a heading above the `MenuItem`s. W
 
   const [keywordSearch, setKeywordSearch] = React.useState('')
 
-  const handleChange = event => setKeywordSearch(event.currentTarget.value)
+  const handleChange = (event) => setKeywordSearch(event.currentTarget.value)
 
   const handleClear = () => setKeywordSearch('')
 
-  const searchResults = defaultCheeses.filter(cheese =>
+  const searchResults = defaultCheeses.filter((cheese) =>
     cheese.toLowerCase().includes(keywordSearch.toLowerCase())
   )
 
@@ -358,7 +358,7 @@ It supports an optional `label` prop to place a heading above the `MenuItem`s. W
           menuRef={menuRef}
         />
         <MenuGroup label="cheeses">
-          {searchResults.map(cheese => (
+          {searchResults.map((cheese) => (
             <MenuItem itemRole="link" href={`#${cheese}`} key={cheese}>
               {cheese.toUpperCase()}
             </MenuItem>

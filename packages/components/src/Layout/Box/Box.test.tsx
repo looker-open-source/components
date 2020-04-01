@@ -139,7 +139,7 @@ describe('Box', () => {
     })
 
     test('any prop can be passed to Box', () => {
-      const BoxAsInput: FC<{ type?: string }> = props => (
+      const BoxAsInput: FC<{ type?: string }> = (props) => (
         <Box as="input" {...props} />
       )
       const boxAsCheckbox = mountWithTheme(<BoxAsInput type="checkbox" />)

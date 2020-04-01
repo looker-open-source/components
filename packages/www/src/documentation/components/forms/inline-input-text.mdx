@@ -30,10 +30,10 @@ Using external value.
 ```jsx
 ;() => {
   const [value, setValue] = React.useState('Type here...')
-  const onChange = e => {
+  const onChange = (e) => {
     setValue(e.currentTarget.value)
   }
-  const onClick = e => {
+  const onClick = (e) => {
     setValue('You clicked the button')
   }
   return (

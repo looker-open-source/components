@@ -63,21 +63,21 @@ const TabStyle = styled.button<TabProps>`
 
   background: transparent;
   border-bottom: 3px solid;
-  border-bottom-color: ${props =>
+  border-bottom-color: ${(props) =>
     props.selected ? props.theme.colors.palette.purple400 : 'transparent'};
   border-radius: 0;
-  color: ${props =>
+  color: ${(props) =>
     props.selected
       ? props.theme.colors.palette.charcoal800
       : props.theme.colors.palette.charcoal500};
   cursor: pointer;
 
   & + & {
-    margin-left: ${props => props.theme.space.xlarge};
+    margin-left: ${(props) => props.theme.space.xlarge};
   }
 
   &:active {
-    border-bottom-color: ${props =>
+    border-bottom-color: ${(props) =>
       props.selected
         ? props.theme.colors.palette.purple400
         : props.theme.colors.palette.charcoal400};
@@ -92,7 +92,7 @@ const TabStyle = styled.button<TabProps>`
     outline: none;
   }
 
-  ${props =>
+  ${(props) =>
     props.focusVisible &&
     `box-shadow: 0 0 0 0.15rem ${rgba(
       props.theme.colors.palette.purple300,
@@ -100,7 +100,7 @@ const TabStyle = styled.button<TabProps>`
     )};`};
 
   &:hover {
-    border-bottom-color: ${props =>
+    border-bottom-color: ${(props) =>
       props.selected
         ? props.theme.colors.palette.purple400
         : props.theme.colors.palette.charcoal300};
@@ -108,7 +108,7 @@ const TabStyle = styled.button<TabProps>`
 
   &:disabled {
     cursor: default;
-    color: ${props => props.theme.colors.palette.charcoal300};
+    color: ${(props) => props.theme.colors.palette.charcoal300};
     border-bottom-color: transparent;
   }
 `

@@ -76,7 +76,7 @@ const defaultVariant = (color: SemanticColor) => css`
 `
 
 const outlineVariant = (color: SemanticColor) => css`
-  background: ${props => props.theme.colors.palette.white};
+  background: ${(props) => props.theme.colors.palette.white};
   border: 1px solid ${color.borderColor};
   color: ${color.main};
 
@@ -90,7 +90,7 @@ const outlineVariant = (color: SemanticColor) => css`
   &:hover,
   &:focus,
   &.hover {
-    background: ${props => props.theme.colors.palette.white};
+    background: ${(props) => props.theme.colors.palette.white};
     border-color: ${color.main};
     color: ${color.darker};
   }
@@ -99,7 +99,7 @@ const outlineVariant = (color: SemanticColor) => css`
     &:hover,
     &:active,
     &:focus {
-      background-color: ${props => props.theme.colors.palette.white};
+      background-color: ${(props) => props.theme.colors.palette.white};
       border-color: ${color.borderColor};
       color: ${color.main};
     }
@@ -107,8 +107,8 @@ const outlineVariant = (color: SemanticColor) => css`
 `
 
 const transparentVariant = (color: SemanticColor) => css`
-  background: ${props => props.theme.colors.palette.transparent};
-  border: 1px solid ${props => props.theme.colors.palette.transparent};
+  background: ${(props) => props.theme.colors.palette.transparent};
+  border: 1px solid ${(props) => props.theme.colors.palette.transparent};
   color: ${color.main};
 
   &:active,
@@ -130,8 +130,8 @@ const transparentVariant = (color: SemanticColor) => css`
     &:hover,
     &:active,
     &:focus {
-      background-color: ${props => props.theme.colors.palette.transparent};
-      border-color: ${props => props.theme.colors.palette.transparent};
+      background-color: ${(props) => props.theme.colors.palette.transparent};
+      border-color: ${(props) => props.theme.colors.palette.transparent};
       color: ${color.main};
     }
   }

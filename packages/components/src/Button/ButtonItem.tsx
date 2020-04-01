@@ -51,16 +51,16 @@ export const ButtonItemLabel = styled.label<ButtonItemProps>`
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  padding: 0 ${props => props.theme.space.small};
+  padding: 0 ${(props) => props.theme.space.small};
   user-select: none;
   border-radius: 4px;
-  background: ${props =>
+  background: ${(props) =>
     props.selected
       ? `hsla(${
           parseToHsl(props.theme.colors.palette.purple400).hue
         }, 100%, 98%, 1)`
       : 'transparent'};
-  border-color: ${props =>
+  border-color: ${(props) =>
     props.selected
       ? `hsla(${
           parseToHsl(props.theme.colors.palette.purple400).hue
@@ -68,10 +68,11 @@ export const ButtonItemLabel = styled.label<ButtonItemProps>`
       : `hsla(${
           parseToHsl(props.theme.colors.palette.purple400).hue
         }, 25%, 90%, 1)`};
-  transition: background ${props => props.theme.transitions.durationQuick} ease;
+  transition: background ${(props) => props.theme.transitions.durationQuick}
+    ease;
 
   &:hover {
-    background: ${props =>
+    background: ${(props) =>
       !props.selected
         ? `hsla(${
             parseToHsl(props.theme.colors.palette.purple400).hue
@@ -80,23 +81,23 @@ export const ButtonItemLabel = styled.label<ButtonItemProps>`
   }
 
   &:active {
-    background: ${props =>
+    background: ${(props) =>
       `hsla(${
         parseToHsl(props.theme.colors.palette.purple400).hue
       }, 50%, 96%, 0.9)`};
   }
 
   &:focus-within {
-    box-shadow: ${props =>
+    box-shadow: ${(props) =>
       `0 0 .5px 1px ${props.theme.colors.palette.purple200}`};
   }
 
   ${ButtonItemLabelText} {
-    color: ${props => props.theme.colors.palette.charcoal600};
+    color: ${(props) => props.theme.colors.palette.charcoal600};
   }
 
   input:checked + ${ButtonItemLabelText} {
-    color: ${props => props.theme.colors.palette.purple400};
+    color: ${(props) => props.theme.colors.palette.purple400};
 
     /* stylelint-disable */
     text-shadow: -0.025ex 0 currentColor, 0.025ex 0 currentColor;

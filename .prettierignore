@@ -1,0 +1,4 @@
+packages/**/dist/
+packages/icons/src/generated/
+packages/www/.cache
+packages/www/public

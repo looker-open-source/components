@@ -12,7 +12,7 @@ The `ToggleSwitch` component is essentially a decorated checkbox that is either 
 ```jsx
 ;() => {
   const [on, setOn] = React.useState(false)
-  const handleChange = event => setOn(event.target.checked)
+  const handleChange = (event) => setOn(event.target.checked)
   return (
     <Label htmlFor="switch">
       Toggle Switch

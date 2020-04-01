@@ -53,8 +53,8 @@ function compareOptions(
   optionsB: ComboboxOptionObject[],
   compare: typeof some | typeof every
 ) {
-  return compare(optionsA, optionA =>
-    optionsB.find(optionB => optionA.value === optionB.value)
+  return compare(optionsA, (optionA) =>
+    optionsB.find((optionB) => optionA.value === optionB.value)
   )
 }
 

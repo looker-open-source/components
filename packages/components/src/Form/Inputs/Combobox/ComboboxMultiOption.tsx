@@ -91,7 +91,7 @@ ComboboxMultiOptionInternal.displayName = 'ComboboxMultiOptionInternal'
 
 export const ComboboxMultiOption = styled(ComboboxMultiOptionInternal)`
   ${comboboxOptionStyle}
-  grid-template-columns: ${props => props.theme.space.xlarge} 1fr;
+  grid-template-columns: ${(props) => props.theme.space.xlarge} 1fr;
 `
 
 ComboboxMultiOption.defaultProps = {

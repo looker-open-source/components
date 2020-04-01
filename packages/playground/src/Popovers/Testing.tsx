@@ -145,7 +145,7 @@ function MenuOpenDialog() {
               </ModalContent>
             }
           >
-            {onClick => <MenuItem onClick={onClick}>Open Modal</MenuItem>}
+            {(onClick) => <MenuItem onClick={onClick}>Open Modal</MenuItem>}
           </DialogManager>
         </MenuList>
       </Menu>

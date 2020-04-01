@@ -43,7 +43,7 @@ const content = (
 test('Drawer Hidden', () => {
   assertSnapshot(
     <DrawerManager content={content}>
-      {onClick => <a onClick={onClick}>🥑</a>}
+      {(onClick) => <a onClick={onClick}>🥑</a>}
     </DrawerManager>
   )
 })

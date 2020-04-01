@@ -44,17 +44,17 @@ export interface CardProps
 }
 
 const cardTransition = () => css`
-  ${props =>
+  ${(props) =>
     `${props.theme.transitions.durationQuick} ${props.theme.easings.ease}`}
 `
 
 const raised = (props: CardProps) =>
   props.raised &&
   css`
-    box-shadow: ${props => props.theme.shadows[1]};
+    box-shadow: ${(props) => props.theme.shadows[1]};
 
     &:hover {
-      box-shadow: ${props => props.theme.shadows[2]};
+      box-shadow: ${(props) => props.theme.shadows[2]};
     }
   `
 
@@ -65,7 +65,7 @@ export const Card = styled.div<CardProps>`
   transition: border ${cardTransition}, box-shadow ${cardTransition};
 
   &:hover {
-    border-color: ${props => props.theme.colors.palette.charcoal400};
+    border-color: ${(props) => props.theme.colors.palette.charcoal400};
   }
 
   ${raised}

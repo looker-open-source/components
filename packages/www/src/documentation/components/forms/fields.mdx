@@ -181,7 +181,7 @@ The `<FieldToggleSwitch />` component is composed of a `<ToggleSwitch />` compon
 ```jsx
 ;() => {
   const [on, setOn] = React.useState(false)
-  const onChange = e => {
+  const onChange = (e) => {
     setOn(e.target.checked)
   }
   return (

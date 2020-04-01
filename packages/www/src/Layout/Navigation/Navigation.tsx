@@ -46,7 +46,7 @@ const Navigation: FC<NavigationProps> = ({ sitemap, headerHeight }) => (
       <Location>
         {({ location }) => (
           <LocationContext.Provider value={location.pathname}>
-            {sitemap.map(chapter => (
+            {sitemap.map((chapter) => (
               <Section key={chapter.path} section={chapter} />
             ))}
           </LocationContext.Provider>
@@ -61,26 +61,26 @@ const SidebarNavWrapper = styled(Box)`
 `
 
 const StyledSidebar = styled(Sidebar)<SidebarProps>`
-  background: ${props => lighten(0.6, props.theme.colors.palette.purple000)};
+  background: ${(props) => lighten(0.6, props.theme.colors.palette.purple000)};
   height: 100%;
 
   /* stylelint-disable max-nesting-depth */
   h2 {
-    color: ${props => props.theme.colors.palette.purple700};
+    color: ${(props) => props.theme.colors.palette.purple700};
   }
 
   ${SidebarGroup} {
-    border-bottom: solid 1px ${props => props.theme.colors.palette.purple100};
+    border-bottom: solid 1px ${(props) => props.theme.colors.palette.purple100};
     cursor: pointer;
-    padding: ${props =>
+    padding: ${(props) =>
       `${props.theme.space.xsmall} ${props.theme.space.large}`};
     ${SidebarGroup} {
       border: none;
-      padding: ${props => `${props.theme.space.xxsmall} 0`};
+      padding: ${(props) => `${props.theme.space.xxsmall} 0`};
 
       h2 {
-        color: ${props => props.theme.colors.palette.charcoal500};
-        font-size: ${props => props.theme.fontSizes.xsmall};
+        color: ${(props) => props.theme.colors.palette.charcoal500};
+        font-size: ${(props) => props.theme.fontSizes.xsmall};
         text-transform: uppercase;
       }
 
@@ -91,12 +91,12 @@ const StyledSidebar = styled(Sidebar)<SidebarProps>`
 
     a {
       border-radius: 4px;
-      font-size: ${props => props.theme.fontSizes.small};
-      padding: ${props =>
+      font-size: ${(props) => props.theme.fontSizes.small};
+      padding: ${(props) =>
         `${props.theme.space.xsmall} ${props.theme.space.small}`};
 
       &:hover {
-        background-color: ${props => props.theme.colors.palette.purple000};
+        background-color: ${(props) => props.theme.colors.palette.purple000};
       }
     }
     /* stylelint-enable max-nesting-depth */

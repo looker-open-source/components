@@ -290,7 +290,7 @@ const reducerMulti: Reducer<
         ...nextState,
         navigationOption: undefined,
         options: nextState.options.filter(
-          option =>
+          (option) =>
             action.inputValues &&
             action.inputValues.includes(getComboboxText(option))
         ),

@@ -142,7 +142,7 @@ test('new values are validated', () => {
   const onInvalidMock = jest.fn()
   const onDuplicateMock = jest.fn()
 
-  const validate = jest.fn(value => value === 'tag1')
+  const validate = jest.fn((value) => value === 'tag1')
   const { getByPlaceholderText } = renderWithTheme(
     <InputChips
       onChange={onChangeMock}

@@ -14,12 +14,12 @@ Confirm makes use of the render prop pattern to provide `open` and `close` funct
 <Confirm
   title="Confirm Something"
   message="Is this what you want to do?"
-  onConfirm={close => {
+  onConfirm={(close) => {
     alert('You did something')
     close()
   }}
 >
-  {open => <Button onClick={open}>Do Something</Button>}
+  {(open) => <Button onClick={open}>Do Something</Button>}
 </Confirm>
 ```
 
@@ -31,12 +31,12 @@ Updating color and text of the button
   buttonColor="danger"
   title="Delete Something"
   message="Is this what you want to do?"
-  onConfirm={close => {
+  onConfirm={(close) => {
     alert('You deleted something')
     close()
   }}
 >
-  {open => (
+  {(open) => (
     <Button color="danger" onClick={open}>
       Delete
     </Button>

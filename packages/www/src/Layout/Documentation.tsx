@@ -121,15 +121,15 @@ const DocumentationLayout = (props: DocQuery) => {
 export default DocumentationLayout
 
 const Meta = styled.div`
-  background: ${props => props.theme.colors.palette.charcoal000};
+  background: ${(props) => props.theme.colors.palette.charcoal000};
   height: 100vh;
   overflow-y: auto;
-  padding: ${props => props.theme.space.large};
+  padding: ${(props) => props.theme.space.large};
   position: sticky;
   top: 0;
   width: 17rem;
 
-  @media screen and (max-width: ${props => props.theme.breakpoints[3]}) {
+  @media screen and (max-width: ${(props) => props.theme.breakpoints[3]}) {
     display: none;
   }
 `

@@ -66,7 +66,7 @@ const SpacingTable = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   margin: 2rem 0;
   & > div {
-    border-right: 1px solid ${props => props.theme.colors.palette.charcoal200};
+    border-right: 1px solid ${(props) => props.theme.colors.palette.charcoal200};
     &:last-child {
       border-right: none;
     }

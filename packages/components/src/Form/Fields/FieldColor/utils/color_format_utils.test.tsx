@@ -192,7 +192,7 @@ const matches: ColorSet[] = [
 
 test('conversion table tests', () => {
   // enum iteration includes string name AND int position. strip int
-  const keys = Object.keys(ColorHelper.ColorFormat).filter(key =>
+  const keys = Object.keys(ColorHelper.ColorFormat).filter((key) =>
     isNaN(parseInt(key, 10))
   )
   // for each enum type
@@ -201,7 +201,7 @@ test('conversion table tests', () => {
       ColorHelper.ColorFormat[key as keyof typeof ColorHelper.ColorFormat]
     const formatName = ColorHelper.ColorFormat[index].toLocaleLowerCase()
 
-    matches.forEach(set => {
+    matches.forEach((set) => {
       const source = set[formatName]
       // check each match
       // only test if source is assigned
@@ -305,7 +305,7 @@ test('converts rgba to hsva and back', () => {
 })
 
 test('converts all web color names to rgb, hex, and back', () => {
-  Object.keys(namedColors).forEach(key => {
+  Object.keys(namedColors).forEach((key) => {
     const rgb = ColorHelper.toFormattedColorString(
       key,
       ColorHelper.ColorFormat.RGBI
@@ -334,7 +334,7 @@ test('converts all web color names to rgb, hex, and back', () => {
 
 test('converts white variants to hsv', () => {
   const set = matches[MatchColor.white]
-  const keys = Object.keys(ColorHelper.ColorFormat).filter(key =>
+  const keys = Object.keys(ColorHelper.ColorFormat).filter((key) =>
     isNaN(parseInt(key, 10))
   )
   keys.forEach((_, index) => {
@@ -354,7 +354,7 @@ test('converts white variants to hsv', () => {
 
 test('converts red variants to hsv', () => {
   const set = matches[MatchColor.red]
-  const keys = Object.keys(ColorHelper.ColorFormat).filter(key =>
+  const keys = Object.keys(ColorHelper.ColorFormat).filter((key) =>
     isNaN(parseInt(key, 10))
   )
   keys.forEach((_, index) => {
@@ -374,7 +374,7 @@ test('converts red variants to hsv', () => {
 
 test('converts green variants to hsv', () => {
   const set = matches[MatchColor.green]
-  const keys = Object.keys(ColorHelper.ColorFormat).filter(key =>
+  const keys = Object.keys(ColorHelper.ColorFormat).filter((key) =>
     isNaN(parseInt(key, 10))
   )
   keys.forEach((_, index) => {
@@ -394,7 +394,7 @@ test('converts green variants to hsv', () => {
 
 test('converts black variants to hsv', () => {
   const set = matches[MatchColor.black]
-  const keys = Object.keys(ColorHelper.ColorFormat).filter(key =>
+  const keys = Object.keys(ColorHelper.ColorFormat).filter((key) =>
     isNaN(parseInt(key, 10))
   )
   keys.forEach((_, index) => {
@@ -415,7 +415,7 @@ test('converts black variants to hsv', () => {
 const hsvToStringTest = (matcher: MatchColor) => {
   const set = matches[matcher]
   const hsv = ColorHelper.toHSV(set.name)
-  const keys = Object.keys(ColorHelper.ColorFormat).filter(key =>
+  const keys = Object.keys(ColorHelper.ColorFormat).filter((key) =>
     isNaN(parseInt(key, 10))
   )
   keys.forEach((key, index) => {
@@ -434,8 +434,8 @@ const hsvToStringTest = (matcher: MatchColor) => {
 }
 
 test('converts hsv to color string variants', () => {
-  const keys = Object.keys(MatchColor).filter(key => isNaN(parseInt(key, 10)))
-  keys.forEach(key => {
+  const keys = Object.keys(MatchColor).filter((key) => isNaN(parseInt(key, 10)))
+  keys.forEach((key) => {
     const target = MatchColor[key as keyof typeof MatchColor]
     hsvToStringTest(target)
   })

@@ -89,7 +89,7 @@ function optionReducer(searchTerm: string) {
   return (acc: SelectOptionProps[], option: SelectOptionProps) => {
     const optionAsGroup = option as SelectOptionGroupProps
     if (optionAsGroup.title) {
-      const filteredGroupOptions = optionAsGroup.options.filter(option =>
+      const filteredGroupOptions = optionAsGroup.options.filter((option) =>
         checkOption(option, searchTerm)
       )
       if (filteredGroupOptions.length > 0) {

@@ -217,7 +217,7 @@ export const selectIndicatorBG = (color: string) =>
 const bgPosition = `right ${indicatorPadding} top calc(${indicatorPadding} + 2px), 0 0`
 
 export const comboboxStyles = css<{ disabled?: boolean; readOnly?: boolean }>`
-  background-image: ${props => {
+  background-image: ${(props) => {
     const color = props.disabled
       ? props.theme.colors.palette.charcoal300
       : props.theme.colors.palette.charcoal500
@@ -229,15 +229,16 @@ export const comboboxStyles = css<{ disabled?: boolean; readOnly?: boolean }>`
   padding-right: ${comboboxPaddingRight};
 
   ${InputText} {
-    cursor: ${props => (props.readOnly ? 'default' : 'text')};
+    cursor: ${(props) => (props.readOnly ? 'default' : 'text')};
   }
 
   ${InputSearchControls} {
     &::after {
       content: ' ';
-      border-right: 1px solid ${props => props.theme.colors.palette.charcoal200};
+      border-right: 1px solid
+        ${(props) => props.theme.colors.palette.charcoal200};
       height: 1.5rem;
-      width: ${props => props.theme.space.xsmall};
+      width: ${(props) => props.theme.space.xsmall};
       pointer-events: none;
     }
   }

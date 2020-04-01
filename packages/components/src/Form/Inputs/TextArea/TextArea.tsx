@@ -105,6 +105,7 @@ export const TextArea = styled(TextAreaLayout)`
   width: fit-content;
   height: fit-content;
 
+
   ${Icon} {
     position: absolute;
     top: 0.5rem;

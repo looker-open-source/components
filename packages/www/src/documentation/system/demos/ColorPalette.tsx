@@ -72,7 +72,7 @@ const figmaColorToRgba = (color: {
 const checkContrast = (color: FigmaColor) => {
   const groupName = color.name
 
-  const swatchList: FigmaSwatchProps[] = color.children.map(swatch => {
+  const swatchList: FigmaSwatchProps[] = color.children.map((swatch) => {
     // Extract text layer and get color
     const docLabel = swatch.children.find((obj: any) => obj.name === 'label')
     const labelColor = figmaColorToRgba(docLabel.fills[0].color)
@@ -186,7 +186,7 @@ export class ColorPalette extends Component<
   }
 
   public render() {
-    const swatches = this.state.swatches.map(swatchList =>
+    const swatches = this.state.swatches.map((swatchList) =>
       renderSwatch(swatchList)
     )
 
