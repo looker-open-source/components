@@ -81,14 +81,10 @@ export const iconSizes = (props: ButtonProps) => {
       iconSize = 16
   }
 
-  if (props.iconBefore || props.iconAfter) {
-    return css`
-      width: ${iconSize}px;
-      height: ${iconSize}px;
-    `
-  } else {
-    return false
-  }
+  return css`
+    width: ${iconSize}px;
+    height: ${iconSize}px;
+  `
 }
 
 export const ButtonIcon = styled(Icon)``
