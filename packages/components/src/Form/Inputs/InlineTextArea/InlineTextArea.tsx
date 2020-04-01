@@ -24,58 +24,39 @@
 
  */
 
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
+import {
+  // InputTextProps,
+  inputTextDisabled,
+  inputTextValidation,
+} from '../InputText'
 import { TextArea } from '../TextArea'
-import { InputTextProps } from '../InputText'
-
+import { inlineInputCSS } from '../../../InlineInputText'
 // export interface InlineTextAreaProps extends TextAreaProps {}
-export const inputTextDisabled = css`
-  background: ${props => props.theme.colors.palette.charcoal100};
-  color: ${props => props.theme.colors.palette.charcoal400};
-  &:hover {
-    border-color: ${props => props.theme.colors.palette.charcoal200};
-  }
-`
-
-export const inputTextValidation = css<InputTextProps>`
-  ${props =>
-    props.validationType === 'error'
-      ? `
-      border-bottom-color: ${props.theme.colors.palette.red400};
-      &:hover {
-        border-bottom-color: ${props.theme.colors.palette.red500};
-      }
-      &:focus,
-      :focus-within {
-        border-bottom-color: ${props.theme.colors.palette.red500};
-        box-shadow: none;
-      }
-      `
-      : ''}
-`
 
 export const InlineTextArea = styled(TextArea)`
-  textarea {
+  ${inlineInputCSS}
+  /* textarea {
     background-color: transparent;
     border: none;
     border-bottom: dashed 1px;
-    border-color: ${props => props.theme.colors.palette.charcoal300};
+    border-color: ${(props) => props.theme.colors.palette.charcoal300};
     height: 1.75rem;
 
     &:hover {
-      background-color: ${props => props.theme.colors.palette.charcoal100};
-      border-bottom-color: ${props => props.theme.colors.palette.purple400};
+      background-color: ${(props) => props.theme.colors.palette.charcoal100};
+      border-bottom-color: ${(props) => props.theme.colors.palette.purple400};
     }
     &:focus,
     :focus-within {
       border-bottom: solid 1px;
-      border-bottom-color: ${props => props.theme.colors.palette.purple400};
+      border-bottom-color: ${(props) => props.theme.colors.palette.purple400};
       box-shadow: none;
       outline: none;
     }
     ${inputTextValidation}
-    ${props => (props.disabled ? inputTextDisabled : '')}
-  }
+    ${(props) => (props.disabled ? inputTextDisabled : '')}
+  } */
 `
 
 InlineTextArea.displayName = 'TextArea'

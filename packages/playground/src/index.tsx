@@ -18,22 +18,82 @@
  SOFTWARE.
  */
 
-import React from 'react'
+import React, { FC } from 'react'
 import ReactDOM from 'react-dom'
-import { GlobalStyle, InlineTextArea } from '@looker/components'
+import {
+  GlobalStyle,
+  InlineInputText,
+  InlineTextArea,
+  Paragraph,
+  ParagraphProps,
+} from '@looker/components'
 import { theme } from '@looker/design-tokens'
-import { ThemeProvider } from 'styled-components'
+import styled, { ThemeProvider } from 'styled-components'
+
+const teapot = `I'm a little teapot
+Short and stout
+Here is my handle
+Here is my spout
+
+When I get all steamed up / Hear me shout / "Tip me over and pour me out!"`
+
+const MyParagraph: FC<ParagraphProps> = (props) => (
+  <Paragraph
+    fontSize="xlarge"
+    fontWeight="semiBold"
+    color="palette.purple300"
+    {...props}
+  />
+)
 
 const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <InlineTextArea />
-      <InlineTextArea disabled />
-      <InlineTextArea validationType="error" />
+
+      <LayoutGrid>
+        <MyParagraph style={{ whiteSpace: 'pre-wrap' }}>{teapot}</MyParagraph>
+        <MyParagraph truncate>{teapot}</MyParagraph>
+
+        <MyParagraph>
+          <InlineTextArea defaultValue={teapot} />
+        </MyParagraph>
+        <MyParagraph>
+          <InlineInputText value={teapot} />
+        </MyParagraph>
+
+        <MyParagraph>
+          <InlineTextArea underlineOnlyOnHover defaultValue={teapot} />
+        </MyParagraph>
+        <MyParagraph>
+          <InlineInputText underlineOnlyOnHover value={teapot} />
+        </MyParagraph>
+
+        <MyParagraph>
+          <InlineTextArea disabled defaultValue={teapot} />
+        </MyParagraph>
+        <MyParagraph>
+          <InlineInputText disabled value={teapot} />
+        </MyParagraph>
+
+        <MyParagraph>
+          <InlineTextArea validationType="error" defaultValue={teapot} />
+        </MyParagraph>
+        <MyParagraph>
+          <InlineInputText validationType value={teapot} />
+        </MyParagraph>
+      </LayoutGrid>
     </ThemeProvider>
   )
 }
+
+const LayoutGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 2rem;
+  align-items: center;
+  padding: 2rem;
+`
 
 /**
  * This is the binding site for the playground. If you want to edit the

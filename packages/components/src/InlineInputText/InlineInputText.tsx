@@ -21,7 +21,7 @@
 import pick from 'lodash/omit'
 import React, { forwardRef, Ref } from 'react'
 import isFunction from 'lodash/isFunction'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { typography, TypographyProps } from '@looker/design-tokens'
 import { inputPropKeys, InputProps } from '../Form/Inputs/InputProps'
 
@@ -71,14 +71,11 @@ export const InlineInputTextInternal = forwardRef(
 
 InlineInputTextInternal.displayName = 'InlineInputTextInternal'
 
-const Input = styled.input.attrs({ type: 'text' })<InlineInputTextProps>`
+export const inlineInputCSS = css`
   background: transparent;
   border: none;
   border-bottom: 1px dashed;
-  border-bottom-color: ${props =>
-    props.underlineOnlyOnHover
-      ? 'transparent'
-      : props.theme.colors.palette.charcoal300};
+
   padding: 0;
   font: inherit;
   color: inherit;
@@ -95,6 +92,15 @@ const Input = styled.input.attrs({ type: 'text' })<InlineInputTextProps>`
   :focus {
     border-bottom-style: solid;
   }
+`
+
+const Input = styled.input.attrs({ type: 'text' })<InlineInputTextProps>`
+  ${inlineInputCSS}
+
+  border-bottom-color: ${props =>
+    props.underlineOnlyOnHover
+      ? 'transparent'
+      : props.theme.colors.palette.charcoal300};
 `
 
 const HiddenText = styled.span`
