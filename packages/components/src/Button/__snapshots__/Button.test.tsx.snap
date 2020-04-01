@@ -71,7 +71,7 @@ exports[`Button Focus: renders outline when tabbing into focus, but not when cli
 
 exports[`Button Focus: renders outline when tabbing into focus, but not when clicking 2`] = `
 <button
-  class="sc-bxivhb deKSKn sc-ifAKCX sc-EHOje kAurnO"
+  class="sc-bxivhb deKSKn sc-ifAKCX sc-EHOje jgIVXP"
 >
   focus
 </button>
