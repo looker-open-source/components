@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`A default CodeBlock component 1`] = `
+.c0 {
+  font-family: 'Monaco','Menlo','Ubuntu Mono','Consolas','source-code-pro',monospace;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  padding: 1rem;
+}
+
+.c1 {
+  border: 1px solid;
+  border-color: #DEE1E5;
+  overflow-y: scroll;
+}
+
+<pre
+  className="c0 c1"
+  fontFamily="code"
+  fontSize="small"
+>
+  <code>
+    Hello
+  </code>
+</pre>
+`;
