@@ -1,7 +1,42 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Form with one child 1`] = `
+.c3 {
+  height: 36px;
+}
+
+.c3:hover {
+  border-color: #C1C6CC;
+}
+
+.c3:focus,
+.c3:focus-within {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c5 {
+  border-radius: 0.25rem;
+  border: solid 1px;
+  border-color: #DEE1E5;
+  height: 36px;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  font-size: 0.875rem;
+  color: #343C42;
+}
+
 .c2 {
+  color: #343C42;
+  font-weight: 600;
+  font-size: 0.75rem;
+  display: inline-block;
+}
+
+.c0 {
   width: 13rem;
   -webkit-align-items: left;
   -webkit-box-align: left;
@@ -15,100 +50,48 @@ exports[`Form with one child 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-
-.c4 {
-  height: 36px;
-}
-
-.c4:hover {
-  border-color: #C1C6CC;
-}
-
-.c4:focus,
-.c4:focus-within {
-  border-color: #9785F2;
-  box-shadow: 0 0 0 2px #E8E5FF;
-  outline: none;
-}
-
-.c6 {
-  border-radius: 0.25rem;
-  border: solid 1px;
-  border-color: #DEE1E5;
-  height: 36px;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-  padding-top: 0rem;
-  padding-bottom: 0rem;
-  font-size: 0.875rem;
-  color: #343C42;
-}
-
-.c0 {
   margin-bottom: 0.5rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
 }
 
-.c3 {
-  color: #343C42;
-  margin-right: 0.5rem;
-  font-weight: 600;
-  font-size: 0.75rem;
-  display: inline-block;
-}
-
-.c1 {
-  width: 13rem;
-}
-
-.c1 .c5 {
+.c0 .c4 {
   width: 100%;
 }
 
-.c1 .c7 {
+.c0 .c6 {
   width: 100%;
+}
+
+.c0 .c1 {
+  padding-bottom: 0.5rem;
 }
 
 <form
   className=""
 >
   <div
-    className="c0 c1 "
+    className="c0 "
   >
-    <div
-      className="c2"
-      width="13rem"
+    <label
+      className="c1 c2"
+      color="palette.charcoal700"
+      fontSize="xsmall"
+      fontWeight="semiBold"
+      htmlFor="text-field"
     >
-      <label
-        className="c3"
-        color="palette.charcoal700"
-        fontSize="xsmall"
-        fontWeight="semiBold"
-        htmlFor="text-field"
-      >
-        label
-      </label>
-    </div>
+      label
+    </label>
     <div
-      className="c0"
+      className=""
     >
-      <div
-        className=""
-      >
-        <input
-          className="c4 c5 c6 "
-          id="text-field"
-          name="name"
-          type="text"
-        />
-      </div>
+      <input
+        className="c3 c4 c5 "
+        id="text-field"
+        name="name"
+        type="text"
+      />
     </div>
   </div>
 </form>
