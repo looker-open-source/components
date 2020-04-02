@@ -44,6 +44,7 @@ import {
   ValidationMessageProps,
 } from '../ValidationMessage/ValidationMessage'
 import { InputText, Select } from '../Inputs'
+import { Flex } from '../../Layout'
 
 type ResponsiveSpaceValue = ResponsiveValue<TLengthStyledSystem>
 
@@ -75,6 +76,11 @@ export interface FieldProps {
    * @default false
    */
   inline?: boolean
+  /**
+   * Determines where to place the label in relation to the input only for FieldRadio, FiraldCheckbox and FieldToggleSwitch.
+   * @default false
+   */
+  inlineLeft?: boolean
   /**
    * Defines the label for the field.
    */
@@ -146,6 +152,7 @@ const FieldLayout: FunctionComponent<FieldProps> = ({
   description,
   detail,
   id,
+  inline,
   label,
   labelFontSize,
   labelFontWeight,
@@ -154,24 +161,39 @@ const FieldLayout: FunctionComponent<FieldProps> = ({
 }) => {
   return (
     <div className={className}>
-      <Label htmlFor={id} fontWeight={labelFontWeight} fontSize={labelFontSize}>
-        {label}
-        {required && <RequiredStar />}
-      </Label>
-      {detail && <Text fontSize="xsmall">{detail}</Text>}
+      <Flex justifyContent="space-between">
+        <Label
+          htmlFor={id}
+          fontWeight={labelFontWeight}
+          fontSize={labelFontSize}
+        >
+          {label}
+          {required && <RequiredStar />}
+        </Label>
+        {detail && !inline && <FieldDetail>{detail}</FieldDetail>}
+      </Flex>
       <FlexItem>
-        {children}
+        <Flex>
+          {children}
+          {detail && inline && <FieldDetail>{detail}</FieldDetail>}
+        </Flex>
         {validationMessage ? (
           <ValidationMessage {...validationMessage} />
         ) : null}
         {description && (
-          <Paragraph mt="none" fontSize="xsmall">
+          <Paragraph mt="xsmall" fontSize="xsmall">
             {description}
           </Paragraph>
         )}
       </FlexItem>
     </div>
   )
+}
+
+const FieldDetail = styled(Text)``
+
+FieldDetail.defaultProps = {
+  fontSize: 'xsmall',
 }
 
 export const Field = styled(FieldLayout)`
@@ -183,7 +205,7 @@ export const Field = styled(FieldLayout)`
   flex-direction: ${(props) => (props.inline ? 'row' : 'column')};
 
   ${InputText} {
-    width: 100%;
+    width: ${(props) => props.width};
   }
 
   ${Select} {
@@ -191,6 +213,7 @@ export const Field = styled(FieldLayout)`
   }
 
   ${Label} {
+    width: max-content;
     ${(props) =>
       props.inline
         ? `
@@ -201,6 +224,21 @@ export const Field = styled(FieldLayout)`
         padding-bottom: ${props.theme.space.xsmall};
 
       `}
-    width: ${(props) => props.labelWidth};
+    ${(props) =>
+      props.inlineLeft &&
+      `
+          align-self: center;
+          padding-left: ${props.width};
+      `}
+  }
+  ${FieldDetail} {
+    ${(props) =>
+      props.inline &&
+      `
+        align-self: center;
+        padding-left: ${props.theme.space.small};
+      `}
   }
 `
+
+// width: max-content; || ${(props) => props.labelWidth};

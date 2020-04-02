@@ -43,7 +43,7 @@ const FieldToggleSwitchComponent = forwardRef(
     return (
       <Field
         id={id}
-        inline
+        inlineLeft
         validationMessage={validationMessage}
         {...pickFieldProps(props)}
       >

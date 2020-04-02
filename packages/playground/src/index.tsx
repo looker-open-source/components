@@ -27,6 +27,8 @@ import {
   FieldToggleSwitch,
   FieldRadio,
   FieldText,
+  FieldTextArea,
+  FieldSelect,
 } from '@looker/components'
 import { theme } from '@looker/design-tokens'
 import { ThemeProvider } from 'styled-components'
@@ -35,26 +37,160 @@ const App: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <Flex pt="large" justifyContent="space-around" alignItems="center">
-        <FieldText label="hello" />
-        <FieldText inline label="hello" />
-        <FieldCheckbox label="hello" />
-        <FieldToggleSwitch label="hello" />
-        <FieldRadio label="hello" />
+      <Flex pt="large" justifyContent="space-evenly" alignItems="center">
+        <FieldText label="Text Input" placeholder="placeholder" />
+        <FieldText inline label="Text Input" placeholder="placeholder" />
       </Flex>
-      <Flex pt="large" justifyContent="space-around" alignItems="center">
+
+      <Flex pt="large" justifyContent="space-evenly" alignItems="center">
+        <FieldText disabled label="Text Input" placeholder="placeholder" />
         <FieldText
-          label="hello"
-          detail="5/50"
+          disabled
+          inline
+          label="Text Input"
+          placeholder="placeholder"
+        />
+      </Flex>
+
+      <Flex pt="large" justifyContent="space-evenly" alignItems="center">
+        <FieldText label="Text Input" placeholder="placeholder" required />
+        <FieldText
+          inline
+          label="Text Input"
+          placeholder="placeholder"
+          required
+        />
+      </Flex>
+
+      <Flex pt="large" justifyContent="space-evenly" alignItems="center">
+        <FieldText
+          description="no vegetables allowed"
+          label="Text Input"
+          placeholder="placeholder"
+        />
+        <FieldText
+          description="no vegetables allowed"
+          inline
+          label="Text Input"
+          placeholder="placeholder"
+        />
+      </Flex>
+
+      <Flex pt="large" justifyContent="space-evenly" alignItems="center">
+        <FieldText
+          label="Label"
+          required
           validationMessage={{ message: 'validation Message', type: 'error' }}
         />
         <FieldText
           inline
-          label="hello"
-          detail="5/50"
+          label="Label"
+          required
           validationMessage={{ message: 'validation Message', type: 'error' }}
         />
       </Flex>
+
+      <Flex pt="large" justifyContent="space-evenly" alignItems="center">
+        <FieldText label="Label" prefix="$" />
+        <FieldText inline label="Label" prefix="$" />
+      </Flex>
+      <Flex pt="large" justifyContent="space-evenly" alignItems="center">
+        <FieldText label="Label" iconBefore="GearOutline" />
+        <FieldText inline label="Label" iconBefore="GearOutline" />
+      </Flex>
+      <Flex pt="large" justifyContent="space-evenly" alignItems="center">
+        <FieldText label="Label" suffix="%" />
+        <FieldText inline label="Label" suffix="%" />
+      </Flex>
+      <Flex pt="large" justifyContent="space-evenly" alignItems="center">
+        <FieldText label="Label" iconAfter="Check" />
+        <FieldText inline label="Label" iconAfter="Check" />
+      </Flex>
+      <Flex pt="large" justifyContent="space-evenly" alignItems="center">
+        <FieldText label="Label" prefix="$" iconAfter="Check" />
+        <FieldText inline label="Label" prefix="$" iconAfter="Check" />
+      </Flex>
+      <Flex pt="large" justifyContent="space-evenly" alignItems="center">
+        <FieldText label="hello" detail="5/50" placeholder="placeholder" />
+        <FieldText
+          inline
+          label="hello"
+          detail="5/50"
+          placeholder="placeholder"
+        />
+      </Flex>
+      <Flex pt="large" justifyContent="space-evenly" alignItems="center">
+        <FieldTextArea label="Text Area" placeholder="placeholder" />
+        <FieldTextArea inline label="Text Area" placeholder="placeholder" />
+      </Flex>
+      <Flex pt="large" justifyContent="space-evenly" alignItems="center">
+        <FieldTextArea
+          label="Text Area"
+          placeholder="placeholder"
+          validationMessage={{ message: 'validation Message', type: 'error' }}
+        />
+        <FieldTextArea
+          inline
+          label="Text Area"
+          placeholder="placeholder"
+          validationMessage={{ message: 'validation Message', type: 'error' }}
+        />
+      </Flex>
+      <Flex pt="large" justifyContent="space-evenly" alignItems="center">
+        <FieldSelect
+          label="Label"
+          placeholder="placeholder"
+          options={[
+            { label: 'Cheddar', value: 'cheddar' },
+            { label: 'Gouda', value: 'gouda' },
+            { label: 'Swiss', value: 'swiss' },
+          ]}
+        />
+        <FieldSelect
+          inline
+          label="Label"
+          placeholder="placeholder"
+          options={[
+            { label: 'Cheddar', value: 'cheddar' },
+            { label: 'Gouda', value: 'gouda' },
+            { label: 'Swiss', value: 'swiss' },
+          ]}
+        />
+      </Flex>
+      <Flex pt="large" justifyContent="space-evenly" alignItems="center">
+        <FieldSelect
+          label="Label"
+          placeholder="placeholder"
+          options={[
+            { label: 'Cheddar', value: 'cheddar' },
+            { label: 'Gouda', value: 'gouda' },
+            { label: 'Swiss', value: 'swiss' },
+          ]}
+          validationMessage={{ message: 'validation Message', type: 'error' }}
+        />
+        <FieldSelect
+          inline
+          label="Label"
+          placeholder="placeholder"
+          options={[
+            { label: 'Cheddar', value: 'cheddar' },
+            { label: 'Gouda', value: 'gouda' },
+            { label: 'Swiss', value: 'swiss' },
+          ]}
+          validationMessage={{ message: 'validation Message', type: 'error' }}
+        />
+      </Flex>
+
+      <Flex pt="large" justifyContent="space-evenly" alignItems="center">
+        <FieldCheckbox label="hello" />
+        <FieldToggleSwitch label="hello" />
+        <FieldRadio label="hello" />
+      </Flex>
+      <div>
+        <br />
+        <br />
+        <br />
+      </div>
     </ThemeProvider>
   )
 }
