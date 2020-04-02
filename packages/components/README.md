@@ -8,9 +8,9 @@ This package provides a series of components that implement Looker's Design Syst
 
 To get started add the Looker Components NPM package:
 
-`npm install @looker/component`
+`npm install @looker/components`
 
-yarn: `yarn add @looker/component`
+yarn: `yarn add @looker/components`
 
 You'll also need to satisfy `@looker/components` peer dependencies - Lodash, React, & Styled Components:
 
