@@ -45,7 +45,7 @@ export function getFirstOption(
   options: SelectOptionProps[]
 ): SelectOptionObject {
   const optionAsGroup = options[0] as SelectOptionGroupProps
-  if (optionAsGroup.title) return optionAsGroup.options[0]
+  if (optionAsGroup && optionAsGroup.title) return optionAsGroup.options[0]
   return options[0] as SelectOptionObject
 }
 
