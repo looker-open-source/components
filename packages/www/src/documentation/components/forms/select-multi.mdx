@@ -12,23 +12,38 @@ The `SelectMulti` component is an extension of the [`Select`](/components/forms/
 - Option list stays open by default so the user can select multiple options (see [`closeOnSelect`](#closeonselect) prop)
 - Values can be cleared individually or all at once (does not use the `Select` component's `isClearable` prop)
 
-## Basic
-
 ```jsx
-<SelectMulti
-  options={[
-    { value: 'Cheddar' },
-    { value: 'Gouda' },
-    { value: 'Swiss' },
-    { value: 'Feta' },
-    { value: 'Mascarpone' },
-    { value: 'Brie' },
-    { value: 'Mozzarella' },
-    { value: 'Cotija' },
-    { value: 'Pepperjack' },
-  ]}
-  placeholder="Cheeses"
-/>
+<Flex justifyContent="space-between" alignItems="flex-start">
+  <SelectMulti
+    options={[
+      { value: 'Cheddar' },
+      { value: 'Gouda' },
+      { value: 'Swiss' },
+      { value: 'Feta' },
+      { value: 'Mascarpone' },
+      { value: 'Brie' },
+      { value: 'Mozzarella' },
+      { value: 'Cotija' },
+      { value: 'Pepperjack' },
+    ]}
+    placeholder="Cheeses"
+    flex={1}
+    mr="medium"
+  />
+  <SelectMulti
+    options={[
+      { value: '0', label: 'Sunday' },
+      { value: '1', label: 'Monday' },
+      { value: '2', label: 'Tuesday' },
+      { value: '3', label: 'Wednesday' },
+      { value: '4', label: 'Thursday' },
+      { value: '5', label: 'Friday' },
+      { value: '6', label: 'Saturday' },
+    ]}
+    defaultValues={['1']}
+    flex={1}
+  />
+</Flex>
 ```
 
 ## showCreate
@@ -36,7 +51,7 @@ The `SelectMulti` component is an extension of the [`Select`](/components/forms/
 As with `Select`, the `isFilterable` prop allows the user to type in the input, triggering the `onFilter` callback,
 which should be used to narrow the options passed to the `SelectMulti`.
 
-When `isFilterable` is true, use the `showCreate` prop along with the `formatCreateLabel`(defaults to "Create \_\_")
+When `isFilterable` is true, use the `showCreate` prop along with the `formatCreateLabel`(defaults to 'Create "[input value]"')
 to allow the user to free-form values.
 
 ```jsx
