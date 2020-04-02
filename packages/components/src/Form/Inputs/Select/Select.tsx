@@ -36,8 +36,8 @@ import {
 } from '../Combobox'
 import {
   SelectOptionObject,
-  SelectOptionProps,
   SelectOptions,
+  SelectOptionsBaseProps,
 } from './SelectOptions'
 import { getOption, getFirstOption } from './utils/options'
 
@@ -49,16 +49,8 @@ export const CustomizableSelectAttributes: CustomizableAttributes = {
   py: 'none',
 }
 
-export interface SelectBaseProps {
-  options?: SelectOptionProps[]
-  /**
-   * Displays an example value or short hint to the user. Should not replace a label.
-   */
+export interface SelectBaseProps extends SelectOptionsBaseProps {
   placeholder?: string
-  /**
-   * The user can type in the input (default false to mimic traditional select tag)
-   */
-  isFilterable?: boolean
   /**
    * The user can clear the current value by clicking an x icon button
    */
@@ -68,11 +60,6 @@ export interface SelectBaseProps {
    * or the menu opens with a pre-populated value
    */
   onFilter?: (term: string) => void
-  /**
-   * Text to show when there are no available options
-   * @default 'No options'
-   */
-  noOptionsLabel?: string
 
   validationType?: ValidationType
 }

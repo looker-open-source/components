@@ -24,7 +24,7 @@
 
  */
 
-import React, { forwardRef, KeyboardEvent, ReactNode, Ref } from 'react'
+import React, { forwardRef, KeyboardEvent, Ref } from 'react'
 import styled from 'styled-components'
 import { CustomizableAttributes } from '@looker/design-tokens'
 import {
@@ -34,8 +34,11 @@ import {
   ComboboxMultiProps,
 } from '../Combobox'
 import { SelectBaseProps } from './Select'
-import { SelectOptionObject, SelectOptions } from './SelectOptions'
-import { SelectMultiCreateOption } from './SelectMultiCreateOption'
+import {
+  SelectMultiOptionsBaseProps,
+  SelectOptionObject,
+  SelectOptions,
+} from './SelectOptions'
 import { getOptions } from './utils/options'
 
 export const CustomizableSelectMultiAttributes: CustomizableAttributes = {
@@ -48,7 +51,8 @@ export const CustomizableSelectMultiAttributes: CustomizableAttributes = {
 
 export interface SelectMultiProps
   extends Omit<ComboboxMultiProps, 'values' | 'defaultValues' | 'onChange'>,
-    Omit<SelectBaseProps, 'isClearable'> {
+    Omit<SelectBaseProps, 'isClearable'>,
+    SelectMultiOptionsBaseProps {
   /**
    * Values of the current selected option (controlled)
    */
@@ -67,16 +71,6 @@ export interface SelectMultiProps
    */
   closeOnSelect?: boolean
   /**
-   * Add an on-the-fly option mirroring the typed text (use when isFilterable = true)
-   * When `true`, missingInOptions is used to show/hide and can be included in a custom function
-   */
-  showCreate?: boolean
-  /**
-   * Format the label of the on-the-fly create option (use with canCreate)
-   * @default `Create ${inputText}`
-   */
-  formatCreateLabel?: (inputText: string) => ReactNode
-  /**
    * Set to false to disable the removal of the last value on backspace key
    * @default true
    */
@@ -88,7 +82,7 @@ const SelectMultiComponent = forwardRef(
     {
       options,
       disabled,
-      isFilterable,
+      isFilterable = false,
       placeholder,
       onFilter,
       onChange,
@@ -144,13 +138,6 @@ const SelectMultiComponent = forwardRef(
           }),
     }
 
-    const createOption = isFilterable && showCreate && (
-      <SelectMultiCreateOption
-        options={options}
-        formatLabel={formatCreateLabel}
-      />
-    )
-
     return (
       <ComboboxMulti
         {...props}
@@ -177,10 +164,11 @@ const SelectMultiComponent = forwardRef(
             <SelectOptions
               options={options}
               isMulti
+              isFilterable={isFilterable}
               noOptionsLabel={noOptionsLabel}
-              hideNoOptions={createOption !== null}
+              showCreate={isFilterable && showCreate}
+              formatCreateLabel={formatCreateLabel}
             />
-            {createOption}
           </ComboboxMultiList>
         )}
       </ComboboxMulti>
