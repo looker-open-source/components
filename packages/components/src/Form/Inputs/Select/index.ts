@@ -26,5 +26,4 @@
 
 export * from './Select'
 export * from './SelectMulti'
-export * from './SelectMultiCreateOption'
 export * from './SelectOptions'

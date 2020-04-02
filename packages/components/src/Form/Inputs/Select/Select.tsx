@@ -33,14 +33,13 @@ import {
   ComboboxInput,
   ComboboxList,
   ComboboxProps,
-  getComboboxText,
 } from '../Combobox'
 import {
-  SelectOptionGroupProps,
   SelectOptionObject,
   SelectOptionProps,
   SelectOptions,
 } from './SelectOptions'
+import { getOption, getFirstOption } from './utils/options'
 
 export const CustomizableSelectAttributes: CustomizableAttributes = {
   borderRadius: 'medium',
@@ -93,32 +92,6 @@ export interface SelectProps
    * Handle an option being selected
    */
   onChange?: (value: string) => void
-}
-
-export function flattenOptions(options: SelectOptionProps[]) {
-  return options.reduce(
-    (acc: SelectOptionObject[], option: SelectOptionProps) => {
-      const optionAsGroup = option as SelectOptionGroupProps
-      if (optionAsGroup.title) {
-        return [...acc, ...optionAsGroup.options]
-      }
-      return [...acc, option as SelectOptionObject]
-    },
-    []
-  )
-}
-
-function getOption(value?: string, options?: SelectOptionProps[]) {
-  const flattenedOptions = options && flattenOptions(options)
-  return value
-    ? { label: getComboboxText(value, flattenedOptions), value }
-    : undefined
-}
-
-function getFirstOption(options: SelectOptionProps[]): SelectOptionObject {
-  const optionAsGroup = options[0] as SelectOptionGroupProps
-  if (optionAsGroup.title) return optionAsGroup.options[0]
-  return options[0] as SelectOptionObject
 }
 
 const SelectComponent = forwardRef(

@@ -32,18 +32,11 @@ import {
   ComboboxMultiInput,
   ComboboxMultiList,
   ComboboxMultiProps,
-  getComboboxText,
 } from '../Combobox'
-import { flattenOptions, SelectBaseProps } from './Select'
-import {
-  SelectOptionObject,
-  SelectOptionProps,
-  SelectOptions,
-} from './SelectOptions'
-import {
-  ShowCreateFunction,
-  SelectMultiCreateOption,
-} from './SelectMultiCreateOption'
+import { SelectBaseProps } from './Select'
+import { SelectOptionObject, SelectOptions } from './SelectOptions'
+import { SelectMultiCreateOption } from './SelectMultiCreateOption'
+import { getOptions } from './utils/options'
 
 export const CustomizableSelectMultiAttributes: CustomizableAttributes = {
   borderRadius: 'medium',
@@ -77,7 +70,7 @@ export interface SelectMultiProps
    * Add an on-the-fly option mirroring the typed text (use when isFilterable = true)
    * When `true`, missingInOptions is used to show/hide and can be included in a custom function
    */
-  showCreate?: boolean | ShowCreateFunction
+  showCreate?: boolean
   /**
    * Format the label of the on-the-fly create option (use with canCreate)
    * @default `Create ${inputText}`
@@ -88,40 +81,6 @@ export interface SelectMultiProps
    * @default true
    */
   removeOnBackspace?: boolean
-}
-
-function getOptions(
-  values?: string[],
-  options?: SelectOptionProps[]
-): SelectOptionObject[] | undefined {
-  if (!values) return undefined
-  const flattenedOptions = options && flattenOptions(options)
-  return values.map((value) => ({
-    label: getComboboxText(value, flattenedOptions),
-    value,
-  }))
-}
-
-function compareOption(option: { value: string }, value: string) {
-  return getComboboxText(option).toLowerCase() === value.toLowerCase()
-}
-
-// Is a value contained the specified options (logic to show the on-the-fly "Create" option)
-export const missingInOptions: ShowCreateFunction = (
-  currentOptions,
-  options,
-  inputValue
-) => {
-  if (!inputValue) return false
-  if (currentOptions.find((option) => compareOption(option, inputValue))) {
-    return false
-  }
-  if (!options) return true
-  return (
-    flattenOptions(options).find((option) =>
-      compareOption(option, inputValue)
-    ) === undefined
-  )
 }
 
 const SelectMultiComponent = forwardRef(
@@ -185,14 +144,12 @@ const SelectMultiComponent = forwardRef(
           }),
     }
 
-    const createOption =
-      isFilterable && showCreate !== false ? (
-        <SelectMultiCreateOption
-          options={options}
-          show={showCreate === true ? missingInOptions : showCreate}
-          formatLabel={formatCreateLabel}
-        />
-      ) : null
+    const createOption = isFilterable && showCreate && (
+      <SelectMultiCreateOption
+        options={options}
+        formatLabel={formatCreateLabel}
+      />
+    )
 
     return (
       <ComboboxMulti

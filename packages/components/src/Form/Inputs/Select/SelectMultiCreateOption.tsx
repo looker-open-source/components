@@ -31,6 +31,7 @@ import {
   ComboboxOptionObject,
 } from '../Combobox'
 import { SelectOptionProps } from './SelectOptions'
+import { missingInOptions } from './utils/options'
 
 export type ShowCreateFunction = (
   currentOptions: ComboboxOptionObject[],
@@ -41,21 +42,19 @@ export type ShowCreateFunction = (
 export interface CreateOptionProps {
   options?: SelectOptionProps[]
   formatLabel?: (inputText: string) => ReactNode
-  show: ShowCreateFunction
 }
 
 export function SelectMultiCreateOption({
   options,
   formatLabel,
-  show,
 }: CreateOptionProps) {
   const {
     data: { inputValue, options: currentOptions },
   } = useContext(ComboboxMultiContext)
 
   const notInOptions = useMemo(
-    () => show(currentOptions, options, inputValue),
-    [currentOptions, options, inputValue, show]
+    () => missingInOptions(currentOptions, options, inputValue),
+    [currentOptions, options, inputValue]
   )
 
   if (!inputValue || !notInOptions) return null

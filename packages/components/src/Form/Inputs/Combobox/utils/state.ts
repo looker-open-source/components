@@ -150,7 +150,7 @@ export const stateChart: StateChart = {
       on: {
         [ComboboxActionType.CHANGE]: ComboboxState.SUGGESTING,
         [ComboboxActionType.CHANGE_SILENT]: ComboboxState.SUGGESTING,
-        [ComboboxActionType.CHANGE_VALUES]: ComboboxState.IDLE,
+        [ComboboxActionType.CHANGE_VALUES]: ComboboxState.SUGGESTING,
         [ComboboxActionType.FOCUS]: ComboboxState.SUGGESTING,
         [ComboboxActionType.NAVIGATE]: ComboboxState.NAVIGATING,
         [ComboboxActionType.CLEAR]: ComboboxState.IDLE,
@@ -165,7 +165,7 @@ export const stateChart: StateChart = {
       on: {
         [ComboboxActionType.CHANGE]: ComboboxState.SUGGESTING,
         [ComboboxActionType.CHANGE_SILENT]: ComboboxState.NAVIGATING,
-        [ComboboxActionType.CHANGE_VALUES]: ComboboxState.IDLE,
+        [ComboboxActionType.CHANGE_VALUES]: ComboboxState.NAVIGATING,
         [ComboboxActionType.FOCUS]: ComboboxState.SUGGESTING,
         [ComboboxActionType.CLEAR]: ComboboxState.IDLE,
         [ComboboxActionType.BLUR]: ComboboxState.IDLE,
@@ -181,7 +181,7 @@ export const stateChart: StateChart = {
       on: {
         [ComboboxActionType.CHANGE]: ComboboxState.SUGGESTING,
         [ComboboxActionType.CHANGE_SILENT]: ComboboxState.SUGGESTING,
-        [ComboboxActionType.CHANGE_VALUES]: ComboboxState.IDLE,
+        [ComboboxActionType.CHANGE_VALUES]: ComboboxState.INTERACTING,
         [ComboboxActionType.FOCUS]: ComboboxState.SUGGESTING,
         [ComboboxActionType.BLUR]: ComboboxState.IDLE,
         [ComboboxActionType.ESCAPE]: ComboboxState.IDLE,
