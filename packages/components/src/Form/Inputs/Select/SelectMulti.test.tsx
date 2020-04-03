@@ -160,4 +160,61 @@ describe('SelectMulti', () => {
       await wait()
     })
   })
+
+  describe('closeOnSelect', () => {
+    test('false by default', async () => {
+      const { getByText, getAllByText, getByPlaceholderText } = renderWithTheme(
+        <SelectMulti options={basicOptions} placeholder="Search" />
+      )
+
+      const input = getByPlaceholderText('Search')
+      act(() => {
+        fireEvent.mouseDown(input)
+      })
+
+      const foo = getByText('Foo')
+      const bar = getByText('Bar')
+
+      expect(foo).toBeVisible()
+      expect(bar).toBeVisible()
+
+      act(() => {
+        fireEvent.click(bar)
+      })
+      expect(foo).toBeVisible()
+      expect(getAllByText('Bar')).toHaveLength(2)
+      // Resolves "act" warning
+      await wait()
+    })
+
+    test('true', async () => {
+      const { getByText, queryByText, getByPlaceholderText } = renderWithTheme(
+        <SelectMulti
+          options={basicOptions}
+          placeholder="Search"
+          closeOnSelect
+        />
+      )
+
+      const input = getByPlaceholderText('Search')
+      act(() => {
+        fireEvent.mouseDown(input)
+      })
+
+      const bar = getByText('Bar')
+
+      expect(getByText('Foo')).toBeVisible()
+      expect(bar).toBeVisible()
+
+      act(() => {
+        fireEvent.click(bar)
+      })
+      // Bar is now a chip
+      expect(getByText('Bar')).toBeVisible()
+      // list has closed
+      expect(queryByText('Foo')).not.toBeInTheDocument()
+      // Resolves "act" warning
+      await wait()
+    })
+  })
 })
