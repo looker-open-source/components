@@ -122,3 +122,44 @@ With the `closeOnSelect` prop, the option list closes after an option is selecte
   closeOnSelect
 />
 ```
+
+## removeOnBackspace
+
+The `removeOnBackspace` prop defaults to true.
+When set to false, hitting the `Backspace` key while focused in the input will not remove values.
+
+```jsx
+;() => {
+  const [searchTerm, setSearchTerm] = React.useState('')
+  function handleFilter(term) {
+    setSearchTerm(term)
+  }
+
+  const newOptions = React.useMemo(() => {
+    const options = [
+      { value: 'Cheddar' },
+      { value: 'Gouda' },
+      { value: 'Swiss' },
+      { value: 'Feta' },
+      { value: 'Mascarpone' },
+      { value: 'Brie' },
+      { value: 'Mozzarella' },
+      { value: 'Cotija' },
+      { value: 'Pepperjack' },
+    ]
+    if (searchTerm === '') return options
+    return options.filter((option) => {
+      return option.value.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1
+    })
+  }, [searchTerm])
+  return (
+    <SelectMulti
+      options={newOptions}
+      isFilterable
+      onFilter={handleFilter}
+      defaultValues={['Swiss', 'Brie']}
+      removeOnBackspace={false}
+    />
+  )
+}
+```
