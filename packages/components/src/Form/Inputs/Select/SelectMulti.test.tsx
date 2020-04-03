@@ -172,22 +172,21 @@ describe('SelectMulti', () => {
         fireEvent.mouseDown(input)
       })
 
-      const foo = getByText('Foo')
       const bar = getByText('Bar')
 
-      expect(foo).toBeVisible()
+      expect(getByText('Foo')).toBeVisible()
       expect(bar).toBeVisible()
 
       act(() => {
         fireEvent.click(bar)
       })
-      expect(foo).toBeVisible()
+      expect(getByText('Foo')).toBeVisible()
       expect(getAllByText('Bar')).toHaveLength(2)
       // Resolves "act" warning
       await wait()
     })
 
-    test('true', async () => {
+    test('true', () => {
       const { getByText, queryByText, getByPlaceholderText } = renderWithTheme(
         <SelectMulti
           options={basicOptions}
@@ -213,8 +212,65 @@ describe('SelectMulti', () => {
       expect(getByText('Bar')).toBeVisible()
       // list has closed
       expect(queryByText('Foo')).not.toBeInTheDocument()
-      // Resolves "act" warning
-      await wait()
+    })
+
+    describe('removeOnBackspace', () => {
+      test('true by default', () => {
+        const {
+          getByText,
+          getByPlaceholderText,
+          queryByText,
+        } = renderWithTheme(
+          <SelectMulti
+            options={basicOptions}
+            defaultValues={['FOO', 'BAR']}
+            placeholder="Search"
+          />
+        )
+
+        const input = getByPlaceholderText('Search')
+
+        expect(getByText('Foo')).toBeVisible()
+        expect(getByText('Bar')).toBeVisible()
+
+        act(() => {
+          fireEvent.keyDown(input, {
+            key: 'Backspace',
+          })
+        })
+
+        expect(getByText('Foo')).toBeVisible()
+        expect(queryByText('Bar')).not.toBeInTheDocument()
+      })
+
+      test('false', () => {
+        const {
+          getByText,
+          getByPlaceholderText,
+          queryByText,
+        } = renderWithTheme(
+          <SelectMulti
+            options={basicOptions}
+            defaultValues={['FOO', 'BAR']}
+            placeholder="Search"
+            removeOnBackspace={false}
+          />
+        )
+
+        const input = getByPlaceholderText('Search')
+
+        expect(getByText('Foo')).toBeVisible()
+        expect(getByText('Bar')).toBeVisible()
+
+        act(() => {
+          fireEvent.keyDown(input, {
+            key: 'Backspace',
+          })
+        })
+
+        expect(getByText('Foo')).toBeVisible()
+        expect(queryByText('Bar')).toBeVisible()
+      })
     })
   })
 })
