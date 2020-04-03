@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- update documentation forFiledset to include Label and Legend
 - `Share` Icon updated
 
 ## [0.7.25] - 2020-03-23
