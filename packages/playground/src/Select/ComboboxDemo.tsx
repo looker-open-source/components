@@ -30,88 +30,7 @@ import {
   ComboboxList,
   ComboboxInput,
   Heading,
-  SelectMulti,
 } from '@looker/components'
-
-const selectOptions = [
-  { label: 'Apples', value: '1' },
-  { label: 'Bananas', value: '2' },
-  { label: 'Oranges', value: '3' },
-  { label: 'Pineapples', value: '4' },
-  { label: 'Kiwis', value: '5' },
-  { label: 'Apples2', value: '12' },
-  { label: 'Bananas2', value: '22' },
-  { label: 'Oranges2', value: '32' },
-  { label: 'Pineapples2', value: '42' },
-  { label: 'Kiwis2', value: '52' },
-  { label: 'Apples3', value: '13' },
-  { label: 'Bananas3', value: '23' },
-  { label: 'Oranges3', value: '33' },
-  { label: 'Pineapples3', value: '43' },
-  { label: 'Kiwis3', value: '53' },
-  { label: 'Apples4', value: '14' },
-  { label: 'Bananas4', value: '24' },
-  { label: 'Oranges4', value: '34' },
-  { label: 'Pineapples4', value: '44' },
-  { label: 'Kiwis4', value: '54' },
-  { label: 'Apples5', value: '15' },
-  { label: 'Bananas5', value: '25' },
-  { label: 'Oranges5', value: '35' },
-  { label: 'Pineapples5', value: '45' },
-  { label: 'Kiwis5', value: '55' },
-]
-const selectGroups = [
-  {
-    options: [
-      { label: 'Apples', value: '1' },
-      { label: 'Bananas', value: '2' },
-      { label: 'Oranges', value: '3' },
-      { label: 'Pineapples', value: '4' },
-      { label: 'Kiwis', value: '5' },
-    ],
-    title: 'Fruits',
-  },
-  {
-    options: [
-      { label: 'Apples2', value: '12' },
-      { label: 'Bananas2', value: '22' },
-      { label: 'Oranges2', value: '32' },
-      { label: 'Pineapples2', value: '42' },
-      { label: 'Kiwis2', value: '52' },
-    ],
-    title: 'Fruits 2',
-  },
-  {
-    options: [
-      { label: 'Apples3', value: '13' },
-      { label: 'Bananas3', value: '23' },
-      { label: 'Oranges3', value: '33' },
-      { label: 'Pineapples3', value: '43' },
-      { label: 'Kiwis3', value: '53' },
-    ],
-    title: 'Fruits 3',
-  },
-  {
-    options: [
-      { label: 'Apples4', value: '14' },
-      { label: 'Bananas4', value: '24' },
-      { label: 'Oranges4', value: '34' },
-      { label: 'Pineapples4', value: '44' },
-      { label: 'Kiwis4', value: '54' },
-    ],
-    title: 'Fruits 4',
-  },
-  {
-    options: [
-      { label: 'Apples5', value: '15' },
-      { label: 'Bananas5', value: '25' },
-      { label: 'Oranges5', value: '35' },
-      { label: 'Pineapples5', value: '45' },
-      { label: 'Kiwis5', value: '55' },
-    ],
-    title: 'Fruits 5',
-  },
-]
 
 export function ComboboxDemo() {
   const [option, setOption] = React.useState({ value: 'Bananas' })
@@ -122,36 +41,9 @@ export function ComboboxDemo() {
   function handleMultiChange(newOptions: any) {
     setOptions(newOptions)
   }
-  function formatCreate(inputValue: string) {
-    return (
-      <span>
-        Add fruit: <em>{inputValue}</em>
-      </span>
-    )
-  }
 
   return (
     <Box p="large">
-      <SelectMulti
-        width={300}
-        mb="medium"
-        options={selectOptions}
-        aria-label="Fruits"
-        placeholder="Controlled, searchable, clearable"
-        isFilterable
-        alignSelf="flex-start"
-        showCreate
-        formatCreateLabel={formatCreate}
-        removeOnBackspace={false}
-      />
-      <SelectMulti
-        width={300}
-        mb="medium"
-        options={selectGroups}
-        aria-label="Fruits"
-        placeholder="Fruit Groups"
-        alignSelf="flex-start"
-      />
       <Heading>Controlled</Heading>
       <Combobox width={300} mb="medium" value={option} onChange={handleChange}>
         <ComboboxInput />
