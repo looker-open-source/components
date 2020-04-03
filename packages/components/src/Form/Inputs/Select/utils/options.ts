@@ -50,7 +50,7 @@ export function getFirstOption(
 }
 
 // Is a value contained the specified options (logic to show the on-the-fly "Create" option)
-export function missingInOptions(
+export function notInOptions(
   currentOptions: ComboboxOptionObject[],
   options?: SelectOptionProps[],
   inputValue?: string

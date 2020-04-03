@@ -32,6 +32,11 @@ import { SelectMulti } from './SelectMulti'
 
 afterEach(cleanup)
 
+const basicOptions = [
+  { label: 'Foo', value: 'FOO' },
+  { label: 'Bar', value: 'BAR' },
+]
+
 describe('SelectMulti', () => {
   test('values', () => {
     const options = [
@@ -92,16 +97,10 @@ describe('SelectMulti', () => {
   })
 
   describe('showCreate', () => {
-    test('adds create option', async () => {
-      const options = [
-        { label: 'Foo', value: 'FOO' },
-        { label: 'Bar', value: 'BAR' },
-        { label: 'Baz', value: 'BAZ' },
-        { label: 'Qux', value: 'QUX' },
-      ]
-      const { getByText, getByPlaceholderText } = renderWithTheme(
+    test('create option replaces "No options"', async () => {
+      const { getByText, getByPlaceholderText, queryByText } = renderWithTheme(
         <SelectMulti
-          options={options}
+          defaultValues={['test value']}
           placeholder="Search"
           isFilterable
           showCreate
@@ -115,6 +114,48 @@ describe('SelectMulti', () => {
       })
 
       expect(getByText('Create "some text"')).toBeVisible()
+      expect(queryByText('No options')).not.toBeInTheDocument()
+
+      act(() => {
+        fireEvent.focus(input)
+        fireEvent.change(input, { target: { value: 'test value' } })
+      })
+
+      // create option doesn't show if inputValue is already in current values
+      expect(getByText('No options')).toBeVisible()
+      expect(queryByText('Create "test value"')).not.toBeInTheDocument()
+      // Resolves "act" warning
+      await wait()
+    })
+
+    test('custom label, checks options', async () => {
+      const { getByText, getByPlaceholderText, queryByText } = renderWithTheme(
+        <SelectMulti
+          options={basicOptions}
+          placeholder="Search"
+          isFilterable
+          showCreate
+          formatCreateLabel={(inputValue: string) =>
+            `${inputValue} CREATE LABEL`
+          }
+        />
+      )
+
+      const input = getByPlaceholderText('Search')
+      act(() => {
+        fireEvent.focus(input)
+        fireEvent.change(input, { target: { value: 'some text' } })
+      })
+
+      expect(getByText('some text CREATE LABEL')).toBeVisible()
+
+      act(() => {
+        fireEvent.focus(input)
+        fireEvent.change(input, { target: { value: 'foo' } })
+      })
+
+      // create option doesn't show if inputValue is in options
+      expect(queryByText('foo CREATE LABEL')).not.toBeInTheDocument()
       // Resolves "act" warning
       await wait()
     })

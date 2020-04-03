@@ -11,7 +11,7 @@ import {
   ComboboxOptionObject,
   ComboboxOptionText,
 } from '../Combobox'
-import { missingInOptions } from './utils/options'
+import { notInOptions } from './utils/options'
 
 export interface SelectOptionObject extends ComboboxOptionObject {
   description?: string | ReactNode
@@ -108,7 +108,7 @@ export interface SelectOptionsBaseProps {
 export interface SelectMultiOptionsBaseProps {
   /**
    * Add an on-the-fly option mirroring the typed text (use when isFilterable = true)
-   * When `true`, missingInOptions is used to show/hide and can be included in a custom function
+   * When `true`, notInOptions is used to show/hide and can be included in a custom function
    */
   showCreate?: boolean
   /**
@@ -188,7 +188,7 @@ function SelectMultiCreateOption({
   } = useContext(ComboboxMultiContext)
 
   const shouldShow = useMemo(() => {
-    return missingInOptions(currentOptions, options, inputValue)
+    return notInOptions(currentOptions, options, inputValue)
   }, [currentOptions, options, inputValue])
 
   if (!inputValue) return null
