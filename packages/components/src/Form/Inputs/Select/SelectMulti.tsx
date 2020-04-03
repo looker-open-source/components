@@ -162,11 +162,11 @@ const SelectMultiComponent = forwardRef(
             {...ariaProps}
           >
             <SelectOptions
-              options={options}
               isMulti
+              options={options}
               isFilterable={isFilterable}
               noOptionsLabel={noOptionsLabel}
-              showCreate={isFilterable && showCreate}
+              showCreate={showCreate}
               formatCreateLabel={formatCreateLabel}
             />
           </ComboboxMultiList>

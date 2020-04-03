@@ -242,6 +242,27 @@ describe('Select / SelectMulti', () => {
 })
 
 describe('Select', () => {
+  test('value', () => {
+    const options = [
+      { label: 'Foo', value: 'FOO' },
+      { label: 'Bar', value: 'BAR' },
+    ]
+    const { getByPlaceholderText, queryByRole } = renderWithTheme(
+      <Select
+        options={options}
+        placeholder="Search"
+        value="BAR"
+        onChange={jest.fn()}
+      />
+    )
+
+    const input = getByPlaceholderText('Search')
+    // should not default to first option
+    expect(input).toHaveValue('Bar')
+    // verify that clear all icon button is not show (isClearable not set)
+    expect(queryByRole('button')).not.toBeInTheDocument()
+  })
+
   test('defaultValue', () => {
     const options = [
       { label: 'Foo', value: 'FOO' },
@@ -254,6 +275,33 @@ describe('Select', () => {
     const input = getByPlaceholderText('Search')
     // should not default to first option
     expect(input).toHaveValue('Bar')
+  })
+
+  test('isClearable', () => {
+    const handleChange = jest.fn()
+    const options = [
+      { label: 'Foo', value: 'FOO' },
+      { label: 'Bar', value: 'BAR' },
+    ]
+    const { getByPlaceholderText, getByRole } = renderWithTheme(
+      <Select
+        options={options}
+        placeholder="Search"
+        defaultValue="BAR"
+        onChange={handleChange}
+        isClearable
+      />
+    )
+
+    const input = getByPlaceholderText('Search')
+    expect(input).toHaveValue('Bar')
+
+    const clearButton = getByRole('button')
+    act(() => {
+      fireEvent.click(clearButton)
+    })
+    expect(input).toHaveValue('')
+    expect(handleChange).toHaveBeenCalledWith('')
   })
 
   test('placeholder, no defaultValue', () => {

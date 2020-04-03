@@ -143,25 +143,30 @@ export function SelectOptions({
       options={options}
       formatLabel={formatCreateLabel}
       noOptions={noOptions}
+      key="create"
     />
   )
+
   return (
     <>
       {options && options.length > 0
-        ? options.map((option: SelectOptionProps, index: number) => {
-            const optionAsGroup = option as SelectOptionGroupProps
-            return optionAsGroup.title ? (
-              <SelectOptionGroup
-                key={index}
-                {...optionAsGroup}
-                isMulti={isMulti}
-              />
-            ) : isMulti ? (
-              renderMultiOption(option as SelectOptionObject, index)
-            ) : (
-              renderOption(option as SelectOptionObject, index)
-            )
-          })
+        ? [
+            ...options.map((option: SelectOptionProps, index: number) => {
+              const optionAsGroup = option as SelectOptionGroupProps
+              return optionAsGroup.title ? (
+                <SelectOptionGroup
+                  key={index}
+                  {...optionAsGroup}
+                  isMulti={isMulti}
+                />
+              ) : isMulti ? (
+                renderMultiOption(option as SelectOptionObject, index)
+              ) : (
+                renderOption(option as SelectOptionObject, index)
+              )
+            }),
+            createOption,
+          ]
         : createOption || noOptions}
     </>
   )
