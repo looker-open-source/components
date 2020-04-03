@@ -24,9 +24,8 @@
 
  */
 
-import React, { FunctionComponent, ReactNode } from 'react'
+import React, { FunctionComponent } from 'react'
 import styled from 'styled-components'
-import { ResponsiveValue, TLengthStyledSystem } from 'styled-system'
 import {
   CustomizableAttributes,
   FontSizes,
@@ -36,52 +35,23 @@ import {
 import omit from 'lodash/omit'
 import pick from 'lodash/pick'
 import { Label } from '../Label/Label'
-import { Text } from '../../Text/Text'
-import { Paragraph } from '../../Text/Paragraph'
 import {
   ValidationMessage,
   ValidationMessageProps,
 } from '../ValidationMessage/ValidationMessage'
-import { InputText, Select } from '../Inputs'
-
-type ResponsiveSpaceValue = ResponsiveValue<TLengthStyledSystem>
 
 export interface CustomizableFieldAttributesInterface
   extends CustomizableAttributes {
   labelMargin: SpacingSizes
 }
 
-export const CustomizableFieldAttributes: CustomizableFieldAttributesInterface = {
-  labelMargin: 'xsmall',
-}
-
-export interface FieldProps {
+export interface FieldInlineProps {
   className?: string
-  /*
-   * optional extra description
-   */
-  description?: ReactNode
-  /**
-   * notes and details added to the top right corner of the field
-   */
-  detail?: ReactNode
-  /**
-   * Id of the input element to match a label to.
-   */
-  id?: string
-  /**
-   * Determines where to place the label in relation to the input.
-   * @default false
-   */
-  inline?: boolean
+  disabled?: boolean
   /**
    * Defines the label for the field.
    */
   label?: string
-  /**
-   * Specifies for horizontally aligned labels how much space to take up.
-   */
-  labelWidth?: ResponsiveSpaceValue
   /**
    * Specifies the fontWeight of the internal Label.
    * TODO - Deprecate usage in HT, then here.
@@ -100,18 +70,9 @@ export interface FieldProps {
    * Holds the type of validation (error, warning, etc.) and corresponding message.
    */
   validationMessage?: ValidationMessageProps
-  /**
-   *
-   * Specify the width of the FieldText if different then 13rem
-   */
-  width?: ResponsiveSpaceValue
 }
 
 export const fieldPropKeys = [
-  'description',
-  'detail',
-  'id',
-  'inline',
   'label',
   'labelFontSize',
   'labelFontWeight',
@@ -120,9 +81,10 @@ export const fieldPropKeys = [
   'width',
 ]
 
-export const pickFieldProps = (props: FieldProps) =>
+export const pickFieldProps = (props: FieldInlineProps) =>
   pick(props, [...fieldPropKeys, 'required', 'className'])
-export const omitFieldProps = (props: FieldProps) => omit(props, fieldPropKeys)
+export const omitFieldProps = (props: FieldInlineProps) =>
+  omit(props, fieldPropKeys)
 
 const RequiredStar = styled((props) => (
   <span {...props} aria-hidden="true">
@@ -139,108 +101,75 @@ const RequiredStar = styled((props) => (
  * feedback about the status of the input values.
  */
 
-const FieldLayout: FunctionComponent<FieldProps> = ({
+const FieldInlineLayout: FunctionComponent<FieldInlineProps> = ({
   className,
   children,
-  description,
-  detail,
-  id,
   label,
   labelFontSize,
   labelFontWeight,
   required,
   validationMessage,
 }) => {
-  const fieldDescription = description && (
-    <Paragraph mt="xsmall" fontSize="xsmall">
-      {description}
-    </Paragraph>
-  )
-
   return (
     <div className={className}>
-      <Label htmlFor={id} fontWeight={labelFontWeight} fontSize={labelFontSize}>
+      <Label fontWeight={labelFontWeight} fontSize={labelFontSize}>
         {label}
         {required && <RequiredStar />}
       </Label>
-      {detail && <FieldDetail>{detail}</FieldDetail>}
       <InputArea>{children}</InputArea>
       <MessageArea>
-        {validationMessage && <ValidationMessage {...validationMessage} />}
-        {fieldDescription}
+        {validationMessage ? (
+          <ValidationMessage {...validationMessage} />
+        ) : null}
       </MessageArea>
     </div>
   )
 }
 
-const FieldDetail = styled(Text)``
-
-FieldDetail.defaultProps = {
-  fontSize: 'xsmall',
-}
+/**
+ * TODO:
+ *
+ * FieldInline grid layout  - ? why there is extra space on grid around "icon"
+ * Disable validation on FieldRadio (that's silly) -done
+ * Radio, ToggleSwitch & Checkbox disabled style - Label isn't respond to style when disabled
+ * All Input should have red border on error
+ * FieldTextArea label position
+ *
+ */
 
 const InputArea = styled.div``
 const MessageArea = styled.div``
 
-export const Field = styled(FieldLayout)`
-  width: ${(props) => props.width};
-  align-items: left;
-  justify-content: space-between;
-  margin-bottom: ${(props) => props.theme.space.xsmall};
-
+export const FieldInline = styled(FieldInlineLayout)`
+  align-items: center;
   display: grid;
-  grid-template-areas: ${(props) =>
-    props.inline
-      ? '"label input detail" ". messages messages"'
-      : '"label detail" "input input" "messages messages"'};
+  grid-template-areas: 'input label' '. messages';
 
   ${InputArea} {
-    display: flex;
     grid-area: input;
-  }
-
-  ${MessageArea} {
-    grid-area: messages;
-  }
-
-  ${InputText} {
-    width: ${(props) => props.width};
-  }
-
-  ${Select} {
-    width: 100%;
   }
 
   ${Label} {
     grid-area: label;
-
+    padding-left: ${(props) => props.theme.space.small};
     ${(props) =>
-      props.inline
-        ? `
-        width: 150px;
-        align-self: center;
-        padding-right: ${props.theme.space.small};
-        text-align: right;
-      `
-        : `
-        padding-bottom: ${props.theme.space.xsmall};
-
-      `}
-  }
-  ${FieldDetail} {
-    grid-area: detail;
-    justify-self: end;
-
-    ${(props) =>
-      props.inline &&
-      `
-        align-self: center;
-        padding-left: ${props.theme.space.small};
-      `}
+      props.disabled && `color: ${props.theme.colors.palette.charcoal500};`}
   }
 
-  ${ValidationMessage} {
-    margin-right: ${(props) => props.theme.space.xsmall};
-    margin-top: ${(props) => props.theme.space.xsmall};
+  ${MessageArea} {
+    grid-area: messages;
+    padding-left: ${(props) => props.theme.space.small};
+
+    border-color: ${(props) => props.theme.colors.palette.red400};
+    &:hover {
+      border-color: ${(props) => props.theme.colors.palette.red500};
+    }
+    &:focus,
+    :focus-within {
+      border-color: ${(props) => props.theme.colors.palette.red500};
+      box-shadow: 0 0 0 2px ${(props) => props.theme.colors.palette.red100};
+    }
   }
+
+  ${ValidationMessage}
 `

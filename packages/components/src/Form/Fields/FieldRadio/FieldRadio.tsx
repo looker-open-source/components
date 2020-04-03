@@ -29,34 +29,32 @@ import styled from 'styled-components'
 import { v4 as uuid } from 'uuid'
 import { useFormContext } from '../../Form'
 import { Radio, RadioProps } from '../../Inputs/Radio/Radio'
-import { Field, FieldProps, omitFieldProps, pickFieldProps } from '../Field'
+import {
+  FieldInline,
+  FieldInlineProps,
+  pickFieldProps,
+  omitFieldProps,
+} from '../FieldInline'
 
 export interface FieldRadioProps
   extends RadioProps,
-    Omit<FieldProps, 'description' | 'detail'> {}
+    Omit<FieldInlineProps, 'validationMessage'> {}
 
-const FieldRadioComponent = forwardRef(
+const FieldRadioLayout = forwardRef(
   (props: FieldRadioProps, ref: Ref<HTMLInputElement>) => {
     const validationMessage = useFormContext(props)
     const { id = uuid() } = props
     return (
-      <Field
-        id={id}
-        inlineLeft
+      <FieldInline
         validationMessage={validationMessage}
         {...pickFieldProps(props)}
       >
-        <Radio
-          {...omitFieldProps(props)}
-          id={id}
-          validationType={validationMessage && validationMessage.type}
-          ref={ref}
-        />
-      </Field>
+        <Radio {...omitFieldProps(props)} id={id} ref={ref} />
+      </FieldInline>
     )
   }
 )
 
-FieldRadioComponent.displayName = 'FieldRadioComponent'
+FieldRadioLayout.displayName = 'FieldRadioLayout'
 
-export const FieldRadio = styled(FieldRadioComponent)``
+export const FieldRadio = styled(FieldRadioLayout)``

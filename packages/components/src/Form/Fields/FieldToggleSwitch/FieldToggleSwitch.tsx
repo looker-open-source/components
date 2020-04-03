@@ -32,18 +32,23 @@ import {
   ToggleSwitch,
   ToggleSwitchProps,
 } from '../../Inputs/ToggleSwitch/ToggleSwitch'
-import { Field, FieldProps, omitFieldProps, pickFieldProps } from '../Field'
+import {
+  FieldInline,
+  FieldInlineProps,
+  omitFieldProps,
+  pickFieldProps,
+} from '../FieldInline'
 
-export interface FieldToggleSwitchProps extends FieldProps, ToggleSwitchProps {}
+export interface FieldToggleSwitchProps
+  extends FieldInlineProps,
+    ToggleSwitchProps {}
 
-const FieldToggleSwitchComponent = forwardRef(
+const FieldToggleSwitchLayout = forwardRef(
   (props: FieldToggleSwitchProps, ref: Ref<HTMLInputElement>) => {
     const validationMessage = useFormContext(props)
     const { id = uuid() } = props
     return (
-      <Field
-        id={id}
-        inlineLeft
+      <FieldInline
         validationMessage={validationMessage}
         {...pickFieldProps(props)}
       >
@@ -53,11 +58,11 @@ const FieldToggleSwitchComponent = forwardRef(
           validationType={validationMessage && validationMessage.type}
           ref={ref}
         />
-      </Field>
+      </FieldInline>
     )
   }
 )
 
-FieldToggleSwitchComponent.displayName = 'FieldToggleSwitchComponent'
+FieldToggleSwitchLayout.displayName = 'FieldToggleSwitchLayout'
 
-export const FieldToggleSwitch = styled(FieldToggleSwitchComponent)``
+export const FieldToggleSwitch = styled(FieldToggleSwitchLayout)``

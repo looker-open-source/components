@@ -132,7 +132,8 @@ export const CheckboxContainer = styled.div<CheckboxContainerProps>`
   }
   input[type='checkbox']:disabled {
     & + ${FauxCheckbox} {
-      opacity: 0.5;
+      background: ${(props) => props.theme.colors.palette.charcoal100};
+      border-color: ${(props) => props.theme.colors.palette.charcoal200};
     }
   }
   ${space}

@@ -21,6 +21,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import {
+  Box,
   GlobalStyle,
   Flex,
   FieldCheckbox,
@@ -81,12 +82,16 @@ const App: React.FC = () => {
           label="Label"
           required
           validationMessage={{ message: 'validation Message', type: 'error' }}
+          description="A special kind of thing..."
+          detail="What?"
         />
         <FieldText
           inline
           label="Label"
           required
           validationMessage={{ message: 'validation Message', type: 'error' }}
+          description="A special kind of thing..."
+          detail="What?"
         />
       </Flex>
 
@@ -181,16 +186,32 @@ const App: React.FC = () => {
         />
       </Flex>
 
-      <Flex pt="large" justifyContent="space-evenly" alignItems="center">
-        <FieldCheckbox label="hello" />
-        <FieldToggleSwitch label="hello" />
-        <FieldRadio label="hello" />
+      <Flex>
+        <Box p="xlarge">
+          <FieldCheckbox label="Checkbox" />
+          <FieldCheckbox
+            required
+            label="Checkbox"
+            validationMessage={{ message: 'validation Message', type: 'error' }}
+          />
+          <FieldCheckbox disabled label="Checkbox" />
+          <FieldCheckbox required label="Checkbox" />
+        </Box>
+        <Box p="xlarge">
+          <FieldRadio label="Radio" />
+          <FieldRadio disabled label="Radio" />
+        </Box>
+        <Box p="xlarge">
+          <FieldToggleSwitch label="Toggle Switch" />
+          <FieldToggleSwitch
+            required
+            label="Toggle Switch"
+            validationMessage={{ message: 'validation Message', type: 'error' }}
+          />
+          <FieldToggleSwitch disabled label="Toggle Switch" />
+          <FieldToggleSwitch required label="Toggle Switch" />
+        </Box>
       </Flex>
-      <div>
-        <br />
-        <br />
-        <br />
-      </div>
     </ThemeProvider>
   )
 }
