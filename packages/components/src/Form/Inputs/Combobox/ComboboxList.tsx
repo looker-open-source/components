@@ -168,7 +168,7 @@ const ComboboxListInternal = forwardRef(
     // For isMulti, we update the popover position when values are added/removed
     // since it may affect the height of the field
     const valueLength = isMulti ? contextMulti.data.options.length : 1
-    React.useEffect(() => {
+    useEffect(() => {
       popperInstanceRef.current && popperInstanceRef.current.update()
     }, [popperInstanceRef, valueLength])
 
