@@ -114,7 +114,6 @@ const SelectMultiComponent = forwardRef(
     }
 
     function handleClose() {
-      // when the list closes, the input's value reverts to the current option
       onFilter && onFilter('')
     }
 
