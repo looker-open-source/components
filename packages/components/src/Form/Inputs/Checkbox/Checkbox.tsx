@@ -134,6 +134,7 @@ export const CheckboxContainer = styled.div<CheckboxContainerProps>`
     & + ${FauxCheckbox} {
       background: ${(props) => props.theme.colors.palette.charcoal100};
       border-color: ${(props) => props.theme.colors.palette.charcoal200};
+      color: ${({ theme }) => theme.colors.palette.charcoal100};
     }
   }
   ${space}

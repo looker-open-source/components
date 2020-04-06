@@ -29,12 +29,8 @@ import styled from 'styled-components'
 import { v4 as uuid } from 'uuid'
 import { useFormContext } from '../../Form'
 import { Checkbox, CheckboxProps } from '../../Inputs/Checkbox/Checkbox'
-import {
-  FieldInline,
-  FieldInlineProps,
-  omitFieldProps,
-  pickFieldProps,
-} from '../FieldInline'
+import { omitFieldProps, pickFieldProps } from '../Field'
+import { FieldInline, FieldInlineProps } from '../FieldInline'
 
 export interface FieldCheckboxProps extends CheckboxProps, FieldInlineProps {}
 

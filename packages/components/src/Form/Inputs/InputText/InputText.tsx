@@ -177,8 +177,12 @@ export const inputTextDisabled = css`
     border-color: ${(props) => props.theme.colors.palette.charcoal200};
   }
 `
+
+export const inputHeight = '36px'
+
 const shared = css`
-  height: 36px;
+  height: ${inputHeight};
+
   &:hover {
     ${inputTextHover}
   }

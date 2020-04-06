@@ -32,12 +32,8 @@ import {
   ToggleSwitch,
   ToggleSwitchProps,
 } from '../../Inputs/ToggleSwitch/ToggleSwitch'
-import {
-  FieldInline,
-  FieldInlineProps,
-  omitFieldProps,
-  pickFieldProps,
-} from '../FieldInline'
+import { omitFieldProps, pickFieldProps } from '../Field'
+import { FieldInline, FieldInlineProps } from '../FieldInline'
 
 export interface FieldToggleSwitchProps
   extends FieldInlineProps,

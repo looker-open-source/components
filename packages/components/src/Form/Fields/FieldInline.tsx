@@ -32,8 +32,6 @@ import {
   FontWeights,
   SpacingSizes,
 } from '@looker/design-tokens'
-import omit from 'lodash/omit'
-import pick from 'lodash/pick'
 import { Label } from '../Label/Label'
 import {
   ValidationMessage,
@@ -72,20 +70,6 @@ export interface FieldInlineProps {
   validationMessage?: ValidationMessageProps
 }
 
-export const fieldPropKeys = [
-  'label',
-  'labelFontSize',
-  'labelFontWeight',
-  'labelWidth',
-  'validationMessage',
-  'width',
-]
-
-export const pickFieldProps = (props: FieldInlineProps) =>
-  pick(props, [...fieldPropKeys, 'required', 'className'])
-export const omitFieldProps = (props: FieldInlineProps) =>
-  omit(props, fieldPropKeys)
-
 const RequiredStar = styled((props) => (
   <span {...props} aria-hidden="true">
     {' '}
@@ -111,8 +95,8 @@ const FieldInlineLayout: FunctionComponent<FieldInlineProps> = ({
   validationMessage,
 }) => {
   return (
-    <div className={className}>
-      <Label fontWeight={labelFontWeight} fontSize={labelFontSize}>
+    <label className={className}>
+      <Label as="span" fontWeight={labelFontWeight} fontSize={labelFontSize}>
         {label}
         {required && <RequiredStar />}
       </Label>
@@ -122,7 +106,7 @@ const FieldInlineLayout: FunctionComponent<FieldInlineProps> = ({
           <ValidationMessage {...validationMessage} />
         ) : null}
       </MessageArea>
-    </div>
+    </label>
   )
 }
 
@@ -130,7 +114,7 @@ const FieldInlineLayout: FunctionComponent<FieldInlineProps> = ({
  * TODO:
  *
  * FieldInline grid layout  - ? why there is extra space on grid around "icon"
- * Disable validation on FieldRadio (that's silly) -done
+ * Disable validation on FieldRadio (that's silly) - done
  * Radio, ToggleSwitch & Checkbox disabled style - Label isn't respond to style when disabled
  * All Input should have red border on error
  * FieldTextArea label position
@@ -144,6 +128,7 @@ export const FieldInline = styled(FieldInlineLayout)`
   align-items: center;
   display: grid;
   grid-template-areas: 'input label' '. messages';
+  grid-template-columns: repeat(3, max-content);
 
   ${InputArea} {
     grid-area: input;
@@ -151,24 +136,16 @@ export const FieldInline = styled(FieldInlineLayout)`
 
   ${Label} {
     grid-area: label;
+    font-weight: normal;
     padding-left: ${(props) => props.theme.space.small};
-    ${(props) =>
-      props.disabled && `color: ${props.theme.colors.palette.charcoal500};`}
+
+    color: ${({ theme, disabled }) =>
+      disabled && theme.colors.palette.charcoal500};
   }
 
   ${MessageArea} {
     grid-area: messages;
     padding-left: ${(props) => props.theme.space.small};
-
-    border-color: ${(props) => props.theme.colors.palette.red400};
-    &:hover {
-      border-color: ${(props) => props.theme.colors.palette.red500};
-    }
-    &:focus,
-    :focus-within {
-      border-color: ${(props) => props.theme.colors.palette.red500};
-      box-shadow: 0 0 0 2px ${(props) => props.theme.colors.palette.red100};
-    }
   }
 
   ${ValidationMessage}

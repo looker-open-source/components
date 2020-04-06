@@ -42,7 +42,7 @@ import {
   ValidationMessage,
   ValidationMessageProps,
 } from '../ValidationMessage/ValidationMessage'
-import { InputText, Select } from '../Inputs'
+import { InputText, inputHeight, Select } from '../Inputs'
 
 type ResponsiveSpaceValue = ResponsiveValue<TLengthStyledSystem>
 
@@ -121,7 +121,7 @@ export const fieldPropKeys = [
 ]
 
 export const pickFieldProps = (props: FieldProps) =>
-  pick(props, [...fieldPropKeys, 'required', 'className'])
+  pick(props, [...fieldPropKeys, 'disabled', 'required', 'className'])
 export const omitFieldProps = (props: FieldProps) => omit(props, fieldPropKeys)
 
 const RequiredStar = styled((props) => (
@@ -217,10 +217,12 @@ export const Field = styled(FieldLayout)`
     ${(props) =>
       props.inline
         ? `
+      text-align: right;
+      line-height: ${inputHeight};
+      justify-self: end;
+      height: ${inputHeight};
+      padding-right: ${props.theme.space.small};
         width: 150px;
-        align-self: center;
-        padding-right: ${props.theme.space.small};
-        text-align: right;
       `
         : `
         padding-bottom: ${props.theme.space.xsmall};

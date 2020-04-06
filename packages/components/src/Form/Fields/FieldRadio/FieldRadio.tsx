@@ -29,12 +29,8 @@ import styled from 'styled-components'
 import { v4 as uuid } from 'uuid'
 import { useFormContext } from '../../Form'
 import { Radio, RadioProps } from '../../Inputs/Radio/Radio'
-import {
-  FieldInline,
-  FieldInlineProps,
-  pickFieldProps,
-  omitFieldProps,
-} from '../FieldInline'
+import { omitFieldProps, pickFieldProps } from '../Field'
+import { FieldInline, FieldInlineProps } from '../FieldInline'
 
 export interface FieldRadioProps
   extends RadioProps,

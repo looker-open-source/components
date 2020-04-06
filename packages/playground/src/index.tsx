@@ -78,24 +78,6 @@ const App: React.FC = () => {
       </Flex>
 
       <Flex pt="large" justifyContent="space-evenly" alignItems="center">
-        <FieldText
-          label="Label"
-          required
-          validationMessage={{ message: 'validation Message', type: 'error' }}
-          description="A special kind of thing..."
-          detail="What?"
-        />
-        <FieldText
-          inline
-          label="Label"
-          required
-          validationMessage={{ message: 'validation Message', type: 'error' }}
-          description="A special kind of thing..."
-          detail="What?"
-        />
-      </Flex>
-
-      <Flex pt="large" justifyContent="space-evenly" alignItems="center">
         <FieldText label="Label" prefix="$" />
         <FieldText inline label="Label" prefix="$" />
       </Flex>
@@ -137,8 +119,26 @@ const App: React.FC = () => {
         <FieldTextArea
           inline
           label="Text Area"
+          required
           placeholder="placeholder"
           validationMessage={{ message: 'validation Message', type: 'error' }}
+        />
+      </Flex>
+      <Flex pt="large" justifyContent="space-evenly" alignItems="center">
+        <FieldText
+          label="Label"
+          required
+          validationMessage={{ message: 'validation Message', type: 'error' }}
+          description="A special kind of thing..."
+          detail="What?"
+        />
+        <FieldText
+          inline
+          label="Label"
+          required
+          validationMessage={{ message: 'validation Message', type: 'error' }}
+          description="A special kind of thing..."
+          detail="What?"
         />
       </Flex>
       <Flex pt="large" justifyContent="space-evenly" alignItems="center">
