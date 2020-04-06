@@ -210,7 +210,7 @@ const InputSearchComponent = forwardRef(
       >
         {!hideSearchIcon && <SearchIcon name="Search" size={30} />}
         {children ? (
-          <Flex alignItems="flex-start" flexWrap="wrap">
+          <Flex alignContent="flex-start" flexWrap="wrap">
             {children}
             {input}
           </Flex>

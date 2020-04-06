@@ -113,10 +113,10 @@ InputChipsBaseInternal.displayName = 'InputChipsBaseInternal'
 
 export const InputChipsBase = styled(InputChipsBaseInternal)`
   position: relative;
+  align-items: stretch;
 
   ${Flex} {
     flex: 1;
-    height: 100%;
     overflow: auto;
     padding-right: ${(props) => props.theme.space.xlarge};
   }
