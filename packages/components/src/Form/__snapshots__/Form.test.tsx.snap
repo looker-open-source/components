@@ -1,22 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Form with one child 1`] = `
-.c3 {
+.c4 {
   height: 36px;
 }
 
-.c3:hover {
+.c4:hover {
   border-color: #C1C6CC;
 }
 
-.c3:focus,
-.c3:focus-within {
+.c4:focus,
+.c4:focus-within {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
-.c5 {
+.c6 {
   border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
@@ -46,26 +46,44 @@ exports[`Form with one child 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  margin-bottom: 0.5rem;
+  display: grid;
+  grid-template-areas: "label detail" "input input" "messages messages";
+}
+
+.c0 .c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  margin-bottom: 0.5rem;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
+  grid-area: input;
 }
 
-.c0 .c4 {
-  width: 100%;
+.c0 .c7 {
+  grid-area: messages;
 }
 
-.c0 .c6 {
+.c0 .c5 {
+  width: 13rem;
+}
+
+.c0 .c9 {
   width: 100%;
 }
 
 .c0 .c1 {
+  grid-area: label;
   padding-bottom: 0.5rem;
+}
+
+.c0 .c10 {
+  grid-area: detail;
+  justify-self: end;
+}
+
+.c0 .c8 {
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 <form
@@ -84,15 +102,18 @@ exports[`Form with one child 1`] = `
       label
     </label>
     <div
-      className=""
+      className="c3 "
     >
       <input
-        className="c3 c4 c5 "
+        className="c4 c5 c6 "
         id="text-field"
         name="name"
         type="text"
       />
     </div>
+    <div
+      className="c7 "
+    />
   </div>
 </form>
 `;

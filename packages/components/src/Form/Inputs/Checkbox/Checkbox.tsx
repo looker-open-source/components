@@ -30,11 +30,13 @@ import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
 import { reset, space, SpaceProps } from '@looker/design-tokens'
 import { InputProps, inputPropKeys } from '../InputProps'
+import { ValidationType } from '../../ValidationMessage'
 
 export type MixedBoolean = true | false | 'mixed'
 
 interface CheckboxContainerProps extends SpaceProps {
   checked?: MixedBoolean
+  validationType?: ValidationType
 }
 
 export interface CheckboxProps
@@ -110,6 +112,7 @@ export const CheckboxContainer = styled.div<CheckboxContainerProps>`
     height: 100%;
     z-index: 1;
   }
+
   ${FauxCheckbox} {
     ${({ theme, checked }) => {
       /* NOTE: `checked=true` and `checked='mixed'` are treated the same in this code block */
@@ -122,6 +125,20 @@ export const CheckboxContainer = styled.div<CheckboxContainerProps>`
           `
     }}
     color: ${({ theme }) => theme.colors.palette.white};
+    ${(props) =>
+      props.validationType === 'error'
+        ? `
+      border-color: ${props.theme.colors.palette.red400};
+      &:hover {
+        border-color: ${props.theme.colors.palette.red500};
+      }
+      &:focus,
+      :focus-within {
+        border-color: ${props.theme.colors.palette.red500};
+        box-shadow: 0 0 0 2px ${props.theme.colors.palette.red100};
+      }
+      `
+        : ''}
   }
   input[type='checkbox']:focus {
     & + ${FauxCheckbox} {

@@ -1,22 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Fieldset with left aligned legend 1`] = `
-.c6 {
+.c7 {
   height: 36px;
 }
 
-.c6:hover {
+.c7:hover {
   border-color: #C1C6CC;
 }
 
-.c6:focus,
-.c6:focus-within {
+.c7:focus,
+.c7:focus-within {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
-.c8 {
+.c9 {
   border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
@@ -46,26 +46,44 @@ exports[`Fieldset with left aligned legend 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  margin-bottom: 0.5rem;
+  display: grid;
+  grid-template-areas: "label detail" "input input" "messages messages";
+}
+
+.c3 .c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  margin-bottom: 0.5rem;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
+  grid-area: input;
 }
 
-.c3 .c7 {
-  width: 100%;
+.c3 .c10 {
+  grid-area: messages;
 }
 
-.c3 .c9 {
+.c3 .c8 {
+  width: 13rem;
+}
+
+.c3 .c12 {
   width: 100%;
 }
 
 .c3 .c4 {
+  grid-area: label;
   padding-bottom: 0.5rem;
+}
+
+.c3 .c13 {
+  grid-area: detail;
+  justify-self: end;
+}
+
+.c3 .c11 {
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 .c1 {
@@ -128,15 +146,18 @@ exports[`Fieldset with left aligned legend 1`] = `
           One
         </label>
         <div
-          className=""
+          className="c6 "
         >
           <input
-            className="c6 c7 c8 "
+            className="c7 c8 c9 "
             id="text-1"
             name="name1"
             type="text"
           />
         </div>
+        <div
+          className="c10 "
+        />
       </div>
       <div
         className="c3 "
@@ -151,15 +172,18 @@ exports[`Fieldset with left aligned legend 1`] = `
           two
         </label>
         <div
-          className=""
+          className="c6 "
         >
           <input
-            className="c6 c7 c8 "
+            className="c7 c8 c9 "
             id="text-2"
             name="name2"
             type="text"
           />
         </div>
+        <div
+          className="c10 "
+        />
       </div>
       <div
         className="c3 "
@@ -174,15 +198,18 @@ exports[`Fieldset with left aligned legend 1`] = `
           three
         </label>
         <div
-          className=""
+          className="c6 "
         >
           <input
-            className="c6 c7 c8 "
+            className="c7 c8 c9 "
             id="text-3"
             name="nam3"
             type="text"
           />
         </div>
+        <div
+          className="c10 "
+        />
       </div>
     </div>
   </div>

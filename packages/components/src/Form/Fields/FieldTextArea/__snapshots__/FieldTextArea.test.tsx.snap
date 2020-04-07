@@ -2,30 +2,6 @@
 
 exports[`A FieldTextArea 1`] = `
 .c4 {
-  height: 6.25rem;
-  width: 16rem;
-  resize: both;
-  border: solid 1px;
-  border-color: #DEE1E5;
-  border-radius: 0.25rem;
-  font-size: 0.875rem;
-  min-height: 6.25rem;
-  padding: 0.75rem;
-  padding-right: 2rem;
-}
-
-.c4:hover {
-  border-color: #C1C6CC;
-}
-
-.c4:focus,
-.c4:focus-within {
-  border-color: #9785F2;
-  box-shadow: 0 0 0 2px #E8E5FF;
-  outline: none;
-}
-
-.c3 {
   position: relative;
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -35,10 +11,34 @@ exports[`A FieldTextArea 1`] = `
   height: fit-content;
 }
 
-.c3 .c5 {
+.c4 .c6 {
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
+}
+
+.c4 textarea {
+  height: 6.25rem;
+  width: 16rem;
+  resize: both;
+  border: solid 1px;
+  border-color: #DEE1E5;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  min-height: 6.25rem;
+  padding: 0.5rem 0.75rem;
+  padding-right: 2rem;
+}
+
+.c4 textarea:hover {
+  border-color: #C1C6CC;
+}
+
+.c4 textarea:focus,
+.c4 textarea:focus-within {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
 }
 
 .c2 {
@@ -58,26 +58,44 @@ exports[`A FieldTextArea 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  margin-bottom: 0.5rem;
+  display: grid;
+  grid-template-areas: "label detail" "input input" "messages messages";
+}
+
+.c0 .c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  margin-bottom: 0.5rem;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
+  grid-area: input;
 }
 
-.c0 .c6 {
-  width: 100%;
+.c0 .c5 {
+  grid-area: messages;
 }
 
 .c0 .c7 {
+  width: 13rem;
+}
+
+.c0 .c9 {
   width: 100%;
 }
 
 .c0 .c1 {
+  grid-area: label;
   padding-bottom: 0.5rem;
+}
+
+.c0 .c10 {
+  grid-area: detail;
+  justify-self: end;
+}
+
+.c0 .c8 {
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 <div
@@ -93,18 +111,17 @@ exports[`A FieldTextArea 1`] = `
     this is a label
   </label>
   <div
-    className=""
+    className="c3 "
   >
     <div
-      className="c3 "
+      className="c4 "
     >
-      <textarea
-        className="c4"
-        height="6.25rem"
-        width="16rem"
-      />
+      <textarea />
     </div>
   </div>
+  <div
+    className="c5 "
+  />
 </div>
 `;
 
@@ -123,31 +140,13 @@ exports[`A FieldTextArea with a validation message 1`] = `
   display: inline-flex;
 }
 
+.c10 .c6 {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+}
+
 .c4 {
-  height: 6.25rem;
-  width: 16rem;
-  resize: both;
-  border: solid 1px;
-  border-color: #DEE1E5;
-  border-radius: 0.25rem;
-  font-size: 0.875rem;
-  min-height: 6.25rem;
-  padding: 0.75rem;
-  padding-right: 2rem;
-}
-
-.c4:hover {
-  border-color: #C1C6CC;
-}
-
-.c4:focus,
-.c4:focus-within {
-  border-color: #9785F2;
-  box-shadow: 0 0 0 2px #E8E5FF;
-  outline: none;
-}
-
-.c3 {
   position: relative;
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -157,10 +156,45 @@ exports[`A FieldTextArea with a validation message 1`] = `
   height: fit-content;
 }
 
-.c3 .c6 {
+.c4 .c6 {
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
+}
+
+.c4 textarea {
+  height: 6.25rem;
+  width: 16rem;
+  resize: both;
+  border: solid 1px;
+  border-color: #DEE1E5;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  min-height: 6.25rem;
+  padding: 0.5rem 0.75rem;
+  padding-right: 2rem;
+  border-color: #ED3B53;
+}
+
+.c4 textarea:hover {
+  border-color: #C1C6CC;
+}
+
+.c4 textarea:focus,
+.c4 textarea:focus-within {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c4 textarea:hover {
+  border-color: #CC1F36;
+}
+
+.c4 textarea:focus,
+.c4 textarea:focus-within {
+  border-color: #CC1F36;
+  box-shadow: 0 0 0 2px #FFE5E9;
 }
 
 .c2 {
@@ -170,11 +204,9 @@ exports[`A FieldTextArea with a validation message 1`] = `
   display: inline-block;
 }
 
-.c7 {
-  color: #CC1F36;
-  margin-right: 0.5rem;
-  margin-top: 0.5rem;
+.c9 {
   font-size: 0.75rem;
+  color: #CC1F36;
 }
 
 .c0 {
@@ -187,26 +219,44 @@ exports[`A FieldTextArea with a validation message 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  margin-bottom: 0.5rem;
+  display: grid;
+  grid-template-areas: "label detail" "input input" "messages messages";
+}
+
+.c0 .c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  margin-bottom: 0.5rem;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
+  grid-area: input;
 }
 
-.c0 .c8 {
-  width: 100%;
+.c0 .c7 {
+  grid-area: messages;
 }
 
-.c0 .c9 {
+.c0 .c11 {
+  width: 13rem;
+}
+
+.c0 .c12 {
   width: 100%;
 }
 
 .c0 .c1 {
+  grid-area: label;
   padding-bottom: 0.5rem;
+}
+
+.c0 .c13 {
+  grid-area: detail;
+  justify-self: end;
+}
+
+.c0 .c8 {
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 <div
@@ -222,16 +272,12 @@ exports[`A FieldTextArea with a validation message 1`] = `
     this is a label
   </label>
   <div
-    className=""
+    className="c3 "
   >
     <div
-      className="c3 "
+      className="c4 "
     >
-      <textarea
-        className="c4"
-        height="6.25rem"
-        width="16rem"
-      />
+      <textarea />
       <div
         className="c5 c6 "
         color="palette.red500"
@@ -253,10 +299,12 @@ exports[`A FieldTextArea with a validation message 1`] = `
         </svg>
       </div>
     </div>
+  </div>
+  <div
+    className="c7 "
+  >
     <div
-      className="c7"
-      fontSize="xsmall"
-      type="error"
+      className="c8 c9"
     >
       This is an error
     </div>

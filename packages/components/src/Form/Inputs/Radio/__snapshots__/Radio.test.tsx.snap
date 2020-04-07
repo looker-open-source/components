@@ -56,7 +56,8 @@ exports[`Radio checked set to false 1`] = `
 }
 
 .c0 input[type='radio']:disabled + .c1 {
-  opacity: 0.5;
+  background: #F5F6F7;
+  border-color: #DEE1E5;
 }
 
 <div
@@ -129,7 +130,8 @@ exports[`Radio checked set to true 1`] = `
 }
 
 .c0 input[type='radio']:disabled + .c1 {
-  opacity: 0.5;
+  background: #F5F6F7;
+  border-color: #DEE1E5;
 }
 
 <div
@@ -202,7 +204,8 @@ exports[`Radio default 1`] = `
 }
 
 .c0 input[type='radio']:disabled + .c1 {
-  opacity: 0.5;
+  background: #F5F6F7;
+  border-color: #DEE1E5;
 }
 
 <div
@@ -274,7 +277,8 @@ exports[`Radio should accept disabled 1`] = `
 }
 
 .c0 input[type='radio']:disabled + .c1 {
-  opacity: 0.5;
+  background: #F5F6F7;
+  border-color: #DEE1E5;
 }
 
 <div
@@ -347,7 +351,8 @@ exports[`Radio with aria-describedby 1`] = `
 }
 
 .c0 input[type='radio']:disabled + .c1 {
-  opacity: 0.5;
+  background: #F5F6F7;
+  border-color: #DEE1E5;
 }
 
 <div
@@ -420,7 +425,8 @@ exports[`Radio with name and id 1`] = `
 }
 
 .c0 input[type='radio']:disabled + .c1 {
-  opacity: 0.5;
+  background: #F5F6F7;
+  border-color: #DEE1E5;
 }
 
 <div

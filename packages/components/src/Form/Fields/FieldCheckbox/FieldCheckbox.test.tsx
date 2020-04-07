@@ -26,44 +26,30 @@
 
 import 'jest-styled-components'
 import React from 'react'
-import { createWithTheme, mountWithTheme } from '@looker/components-test-utils'
-import { Label } from '../../Label/Label'
+import { assertSnapshot } from '@looker/components-test-utils'
 import { FieldCheckbox } from './FieldCheckbox'
 
 test('A FieldCheckbox', () => {
-  const component = createWithTheme(
-    <FieldCheckbox label="👍" name="thumbsUp" id="thumbs-up" />
-  )
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
+  assertSnapshot(<FieldCheckbox label="👍" />)
 })
 
 test('A FieldCheckbox with checked value', () => {
-  const component = createWithTheme(
-    <FieldCheckbox label="👍" name="thumbsUp" id="thumbs-up" defaultChecked />
-  )
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
+  assertSnapshot(<FieldCheckbox label="👍" defaultChecked />)
 })
 
 test('A required FieldCheckbox', () => {
-  const component = createWithTheme(
-    <FieldCheckbox label="👍" name="thumbsUp" id="thumbs-up" required />
-  )
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot()
+  assertSnapshot(<FieldCheckbox label="👍" required />)
+})
+
+test('A disabled FieldCheckbox', () => {
+  assertSnapshot(<FieldCheckbox label="👍" disabled />)
 })
 
 test('A FieldCheckbox with an error validation aligned to the bottom', () => {
-  const component = mountWithTheme(
+  assertSnapshot(
     <FieldCheckbox
       label="👍"
-      name="thumbsUp"
-      id="thumbs-up"
       validationMessage={{ message: 'This is an error', type: 'error' }}
     />
-  )
-  expect(component.find(Label).props().htmlFor).toEqual(
-    component.find('input').props().id
   )
 })

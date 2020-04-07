@@ -8,22 +8,22 @@ exports[`A FieldText 1`] = `
   display: inline-block;
 }
 
-.c3 {
+.c4 {
   height: 36px;
 }
 
-.c3:hover {
+.c4:hover {
   border-color: #C1C6CC;
 }
 
-.c3:focus,
-.c3:focus-within {
+.c4:focus,
+.c4:focus-within {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
-.c5 {
+.c6 {
   border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
@@ -46,26 +46,44 @@ exports[`A FieldText 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  margin-bottom: 0.5rem;
+  display: grid;
+  grid-template-areas: "label detail" "input input" "messages messages";
+}
+
+.c0 .c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  margin-bottom: 0.5rem;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
+  grid-area: input;
 }
 
-.c0 .c4 {
-  width: 100%;
+.c0 .c7 {
+  grid-area: messages;
 }
 
-.c0 .c6 {
+.c0 .c5 {
+  width: 13rem;
+}
+
+.c0 .c9 {
   width: 100%;
 }
 
 .c0 .c1 {
+  grid-area: label;
   padding-bottom: 0.5rem;
+}
+
+.c0 .c10 {
+  grid-area: detail;
+  justify-self: end;
+}
+
+.c0 .c8 {
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 <div
@@ -81,255 +99,22 @@ exports[`A FieldText 1`] = `
     👍
   </label>
   <div
-    className=""
+    className="c3 "
   >
     <input
-      className="c3 c4 c5 "
+      className="c4 c5 c6 "
       id="thumbs-up"
       name="thumbsUp"
       type="text"
     />
   </div>
+  <div
+    className="c7 "
+  />
 </div>
 `;
 
 exports[`A FieldText with an error validation aligned to the left 1`] = `
-.c2 {
-  color: #343C42;
-  font-weight: 600;
-  font-size: 0.75rem;
-  display: inline-block;
-}
-
-.c3 {
-  height: 36px;
-}
-
-.c3:hover {
-  border-color: #C1C6CC;
-}
-
-.c3:focus,
-.c3:focus-within {
-  border-color: #9785F2;
-  box-shadow: 0 0 0 2px #E8E5FF;
-  outline: none;
-}
-
-.c5 {
-  border-radius: 0.25rem;
-  border: solid 1px;
-  border-color: #DEE1E5;
-  height: 36px;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-  padding-top: 0rem;
-  padding-bottom: 0rem;
-  font-size: 0.875rem;
-  color: #343C42;
-  border-color: #ED3B53;
-}
-
-.c5:hover {
-  border-color: #CC1F36;
-}
-
-.c5:focus,
-.c5:focus-within {
-  border-color: #CC1F36;
-  box-shadow: 0 0 0 2px #FFE5E9;
-}
-
-.c6 {
-  color: #CC1F36;
-  margin-right: 0.5rem;
-  margin-top: 0.5rem;
-  font-size: 0.75rem;
-}
-
-.c0 {
-  width: 13rem;
-  -webkit-align-items: left;
-  -webkit-box-align: left;
-  -ms-flex-align: left;
-  align-items: left;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin-bottom: 0.5rem;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-.c0 .c4 {
-  width: 100%;
-}
-
-.c0 .c7 {
-  width: 100%;
-}
-
-.c0 .c1 {
-  padding-bottom: 0.5rem;
-}
-
-<div
-  className="c0 "
->
-  <label
-    className="c1 c2"
-    color="palette.charcoal700"
-    fontSize="xsmall"
-    fontWeight="semiBold"
-    htmlFor="thumbs-up"
-  >
-    👍
-  </label>
-  <div
-    className=""
-  >
-    <input
-      className="c3 c4 c5 "
-      id="thumbs-up"
-      name="thumbsUp"
-      type="text"
-    />
-    <div
-      className="c6"
-      fontSize="xsmall"
-      type="error"
-    >
-      This is an error
-    </div>
-  </div>
-</div>
-`;
-
-exports[`A FieldText with an error validation aligned to the right 1`] = `
-.c2 {
-  color: #343C42;
-  font-weight: 600;
-  font-size: 0.75rem;
-  display: inline-block;
-}
-
-.c3 {
-  height: 36px;
-}
-
-.c3:hover {
-  border-color: #C1C6CC;
-}
-
-.c3:focus,
-.c3:focus-within {
-  border-color: #9785F2;
-  box-shadow: 0 0 0 2px #E8E5FF;
-  outline: none;
-}
-
-.c5 {
-  border-radius: 0.25rem;
-  border: solid 1px;
-  border-color: #DEE1E5;
-  height: 36px;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-  padding-top: 0rem;
-  padding-bottom: 0rem;
-  font-size: 0.875rem;
-  color: #343C42;
-  border-color: #ED3B53;
-}
-
-.c5:hover {
-  border-color: #CC1F36;
-}
-
-.c5:focus,
-.c5:focus-within {
-  border-color: #CC1F36;
-  box-shadow: 0 0 0 2px #FFE5E9;
-}
-
-.c6 {
-  color: #CC1F36;
-  margin-right: 0.5rem;
-  margin-top: 0.5rem;
-  font-size: 0.75rem;
-}
-
-.c0 {
-  width: 13rem;
-  -webkit-align-items: left;
-  -webkit-box-align: left;
-  -ms-flex-align: left;
-  align-items: left;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin-bottom: 0.5rem;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-.c0 .c4 {
-  width: 100%;
-}
-
-.c0 .c7 {
-  width: 100%;
-}
-
-.c0 .c1 {
-  padding-bottom: 0.5rem;
-}
-
-<div
-  className="c0 "
->
-  <label
-    className="c1 c2"
-    color="palette.charcoal700"
-    fontSize="xsmall"
-    fontWeight="semiBold"
-    htmlFor="thumbs-up"
-  >
-    👍
-  </label>
-  <div
-    className=""
-  >
-    <input
-      className="c3 c4 c5 "
-      id="thumbs-up"
-      name="thumbsUp"
-      type="text"
-    />
-    <div
-      className="c6"
-      fontSize="xsmall"
-      type="error"
-    >
-      This is an error
-    </div>
-  </div>
-</div>
-`;
-
-exports[`A required FieldText 1`] = `
 .c2 {
   color: #343C42;
   font-weight: 600;
@@ -363,6 +148,278 @@ exports[`A required FieldText 1`] = `
   padding-bottom: 0rem;
   font-size: 0.875rem;
   color: #343C42;
+  border-color: #ED3B53;
+}
+
+.c6:hover {
+  border-color: #CC1F36;
+}
+
+.c6:focus,
+.c6:focus-within {
+  border-color: #CC1F36;
+  box-shadow: 0 0 0 2px #FFE5E9;
+}
+
+.c9 {
+  font-size: 0.75rem;
+  color: #CC1F36;
+}
+
+.c0 {
+  width: 13rem;
+  -webkit-align-items: left;
+  -webkit-box-align: left;
+  -ms-flex-align: left;
+  align-items: left;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  display: grid;
+  grid-template-areas: "label detail" "input input" "messages messages";
+}
+
+.c0 .c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  grid-area: input;
+}
+
+.c0 .c7 {
+  grid-area: messages;
+}
+
+.c0 .c5 {
+  width: 13rem;
+}
+
+.c0 .c10 {
+  width: 100%;
+}
+
+.c0 .c1 {
+  grid-area: label;
+  padding-bottom: 0.5rem;
+}
+
+.c0 .c11 {
+  grid-area: detail;
+  justify-self: end;
+}
+
+.c0 .c8 {
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+<div
+  className="c0 "
+>
+  <label
+    className="c1 c2"
+    color="palette.charcoal700"
+    fontSize="xsmall"
+    fontWeight="semiBold"
+    htmlFor="thumbs-up"
+  >
+    👍
+  </label>
+  <div
+    className="c3 "
+  >
+    <input
+      className="c4 c5 c6 "
+      id="thumbs-up"
+      name="thumbsUp"
+      type="text"
+    />
+  </div>
+  <div
+    className="c7 "
+  >
+    <div
+      className="c8 c9"
+    >
+      This is an error
+    </div>
+  </div>
+</div>
+`;
+
+exports[`A FieldText with an error validation aligned to the right 1`] = `
+.c2 {
+  color: #343C42;
+  font-weight: 600;
+  font-size: 0.75rem;
+  display: inline-block;
+}
+
+.c4 {
+  height: 36px;
+}
+
+.c4:hover {
+  border-color: #C1C6CC;
+}
+
+.c4:focus,
+.c4:focus-within {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c6 {
+  border-radius: 0.25rem;
+  border: solid 1px;
+  border-color: #DEE1E5;
+  height: 36px;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  font-size: 0.875rem;
+  color: #343C42;
+  border-color: #ED3B53;
+}
+
+.c6:hover {
+  border-color: #CC1F36;
+}
+
+.c6:focus,
+.c6:focus-within {
+  border-color: #CC1F36;
+  box-shadow: 0 0 0 2px #FFE5E9;
+}
+
+.c9 {
+  font-size: 0.75rem;
+  color: #CC1F36;
+}
+
+.c0 {
+  width: 13rem;
+  -webkit-align-items: left;
+  -webkit-box-align: left;
+  -ms-flex-align: left;
+  align-items: left;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  display: grid;
+  grid-template-areas: "label detail" "input input" "messages messages";
+}
+
+.c0 .c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  grid-area: input;
+}
+
+.c0 .c7 {
+  grid-area: messages;
+}
+
+.c0 .c5 {
+  width: 13rem;
+}
+
+.c0 .c10 {
+  width: 100%;
+}
+
+.c0 .c1 {
+  grid-area: label;
+  padding-bottom: 0.5rem;
+}
+
+.c0 .c11 {
+  grid-area: detail;
+  justify-self: end;
+}
+
+.c0 .c8 {
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+<div
+  className="c0 "
+>
+  <label
+    className="c1 c2"
+    color="palette.charcoal700"
+    fontSize="xsmall"
+    fontWeight="semiBold"
+    htmlFor="thumbs-up"
+  >
+    👍
+  </label>
+  <div
+    className="c3 "
+  >
+    <input
+      className="c4 c5 c6 "
+      id="thumbs-up"
+      name="thumbsUp"
+      type="text"
+    />
+  </div>
+  <div
+    className="c7 "
+  >
+    <div
+      className="c8 c9"
+    >
+      This is an error
+    </div>
+  </div>
+</div>
+`;
+
+exports[`A required FieldText 1`] = `
+.c2 {
+  color: #343C42;
+  font-weight: 600;
+  font-size: 0.75rem;
+  display: inline-block;
+}
+
+.c5 {
+  height: 36px;
+}
+
+.c5:hover {
+  border-color: #C1C6CC;
+}
+
+.c5:focus,
+.c5:focus-within {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c7 {
+  border-radius: 0.25rem;
+  border: solid 1px;
+  border-color: #DEE1E5;
+  height: 36px;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  font-size: 0.875rem;
+  color: #343C42;
 }
 
 .c3 {
@@ -379,26 +436,44 @@ exports[`A required FieldText 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  margin-bottom: 0.5rem;
+  display: grid;
+  grid-template-areas: "label detail" "input input" "messages messages";
+}
+
+.c0 .c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  margin-bottom: 0.5rem;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
+  grid-area: input;
 }
 
-.c0 .c5 {
-  width: 100%;
+.c0 .c8 {
+  grid-area: messages;
 }
 
-.c0 .c7 {
+.c0 .c6 {
+  width: 13rem;
+}
+
+.c0 .c10 {
   width: 100%;
 }
 
 .c0 .c1 {
+  grid-area: label;
   padding-bottom: 0.5rem;
+}
+
+.c0 .c11 {
+  grid-area: detail;
+  justify-self: end;
+}
+
+.c0 .c9 {
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 <div
@@ -421,16 +496,19 @@ exports[`A required FieldText 1`] = `
     </span>
   </label>
   <div
-    className=""
+    className="c4 "
   >
     <input
-      className="c4 c5 c6 "
+      className="c5 c6 c7 "
       id="thumbs-up"
       name="thumbsUp"
       required={true}
       type="text"
     />
   </div>
+  <div
+    className="c8 "
+  />
 </div>
 `;
 
@@ -442,22 +520,22 @@ exports[`FieldText supports labelWeight 1`] = `
   display: inline-block;
 }
 
-.c3 {
+.c4 {
   height: 36px;
 }
 
-.c3:hover {
+.c4:hover {
   border-color: #C1C6CC;
 }
 
-.c3:focus,
-.c3:focus-within {
+.c4:focus,
+.c4:focus-within {
   border-color: #9785F2;
   box-shadow: 0 0 0 2px #E8E5FF;
   outline: none;
 }
 
-.c5 {
+.c6 {
   border-radius: 0.25rem;
   border: solid 1px;
   border-color: #DEE1E5;
@@ -480,26 +558,44 @@ exports[`FieldText supports labelWeight 1`] = `
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  margin-bottom: 0.5rem;
+  display: grid;
+  grid-template-areas: "label detail" "input input" "messages messages";
+}
+
+.c0 .c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  margin-bottom: 0.5rem;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
+  grid-area: input;
 }
 
-.c0 .c4 {
-  width: 100%;
+.c0 .c7 {
+  grid-area: messages;
 }
 
-.c0 .c6 {
+.c0 .c5 {
+  width: 13rem;
+}
+
+.c0 .c9 {
   width: 100%;
 }
 
 .c0 .c1 {
+  grid-area: label;
   padding-bottom: 0.5rem;
+}
+
+.c0 .c10 {
+  grid-area: detail;
+  justify-self: end;
+}
+
+.c0 .c8 {
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 <div
@@ -515,14 +611,17 @@ exports[`FieldText supports labelWeight 1`] = `
     👍
   </label>
   <div
-    className=""
+    className="c3 "
   >
     <input
-      className="c3 c4 c5 "
+      className="c4 c5 c6 "
       id="thumbs-up"
       name="thumbsUp"
       type="text"
     />
   </div>
+  <div
+    className="c7 "
+  />
 </div>
 `;
