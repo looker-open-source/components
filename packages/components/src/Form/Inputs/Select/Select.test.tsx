@@ -104,14 +104,18 @@ describe('Select / SelectMulti', () => {
 
   const groupedOptions = [
     {
+      label: 'FOO',
       options: [{ value: 'BAR' }, { value: 'BAZ' }],
-      title: 'FOO',
     },
     {
+      label: 'OTHER',
       options: [
         { description: 'A description for something', value: 'something' },
       ],
-      title: 'OTHER',
+    },
+    // label is not required
+    {
+      options: [{ value: 'FOO' }, { value: 'QUX' }],
     },
   ]
 
@@ -138,7 +142,7 @@ describe('Select / SelectMulti', () => {
         />
       ),
     ],
-  ])('with option descriptions and group titles (%s)', async (name, getJSX) => {
+  ])('with option descriptions and group labels (%s)', async (name, getJSX) => {
     const handleChange = jest.fn()
     const { getByText, getByPlaceholderText } = renderWithTheme(
       getJSX(handleChange)

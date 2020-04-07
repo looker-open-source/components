@@ -103,26 +103,32 @@ A name and ID can be specified in the `<Select />` component. Names are importan
 
 ## Groups
 
-Options can be grouped under a `title`.
+Options can be organized into groups, with an optional `label`.
 
 ```jsx
 <Select
   options={[
     {
+      label: 'CHEESES',
       options: [
         { value: 'cheddar', label: 'Cheddar' },
         { value: 'gouda', label: 'Gouda' },
         { value: 'swiss', label: 'Swiss' },
       ],
-      title: 'CHEESES',
     },
     {
+      label: 'FRUITS',
       options: [
         { value: 'grape', label: 'Grapes' },
         { value: 'apple', label: 'Apples' },
         { value: 'strawberries', label: 'Strawberries' },
       ],
-      title: 'FRUITS',
+    },
+    {
+      options: [
+        { value: 'pizza', label: 'Pizza' },
+        { value: 'hamburgers', label: 'Hamburgers' },
+      ],
     },
   ]}
 />
