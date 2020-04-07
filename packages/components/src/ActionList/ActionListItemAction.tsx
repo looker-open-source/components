@@ -32,6 +32,7 @@ import { MenuItem, MenuContext } from '../Menu'
 export interface ActionListItemActionProps
   extends CompatibleHTMLProps<HTMLElement> {
   children?: ReactNode
+  color?: 'danger'
   detail?: ReactNode
   icon?: IconNames
   role?: 'button' | 'link'

@@ -201,6 +201,12 @@ export const MenuItem: FC<MenuItemProps> = (props) => {
     pt: pt || py || p || compact ? 'xxsmall' : 'small',
   }
 
+  if (props.color === 'danger') {
+    const dangerColor = '#cc1f36'
+    outerProps.color = dangerColor
+    style.hover.color = dangerColor
+  }
+
   return (
     <MenuItemListItem
       aria-current={current && 'page'}
