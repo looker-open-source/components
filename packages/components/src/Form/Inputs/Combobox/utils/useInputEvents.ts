@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2019 Looker Data Sciences, Inc.
+ Copyright (c) 2020 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -43,6 +43,20 @@ import { ComboboxActionType, ComboboxState } from './state'
 import { useBlur } from './useBlur'
 import { useKeyDown } from './useKeyDown'
 
+// Walks up the dom tree from an element to a containingAncestor checking for a button
+// Used for determining whether a mousedown/click should toggle the option list
+function checkForButton(
+  element: Element,
+  containingAncestor: Element
+): boolean {
+  if (element === containingAncestor) return false
+  if (!element.parentElement) return false
+  if (element.tagName === 'BUTTON') {
+    return true
+  }
+  return checkForButton(element.parentElement, containingAncestor)
+}
+
 export function useInputEvents<
   TProps extends
     | ComboboxInputProps
@@ -68,7 +82,7 @@ export function useInputEvents<
     data: { lastActionType },
     inputElement,
     openOnFocus,
-    persistSelectionRef,
+    persistSelectionPropRef,
     state,
     transition,
   } = useContext(context)
@@ -97,7 +111,8 @@ export function useInputEvents<
     ) {
       transition &&
         transition(ComboboxActionType.FOCUS, {
-          persistSelection: persistSelectionRef && persistSelectionRef.current,
+          persistSelection:
+            persistSelectionPropRef && persistSelectionPropRef.current,
         })
     }
   }
@@ -111,12 +126,18 @@ export function useInputEvents<
 
   const handleMouseDownClick = useCallback(
     (e: ReactMouseEvent<HTMLElement>) => {
+      // Without this, when clicking on a "clear" or "remove value" icon button
+      // the list will flash open & closed (if closed)
+      // or unnecessarily close (if open)
+      if (checkForButton(e.target as Element, e.currentTarget as Element)) {
+        return
+      }
       if (state === ComboboxState.IDLE) {
         // Opening a closed list
         transition &&
           transition(ComboboxActionType.FOCUS, {
             persistSelection:
-              persistSelectionRef && persistSelectionRef.current,
+              persistSelectionPropRef && persistSelectionPropRef.current,
           })
       } else {
         // Closing an opened list
@@ -126,7 +147,7 @@ export function useInputEvents<
         selectText()
       }
     },
-    [persistSelectionRef, state, selectText, transition]
+    [persistSelectionPropRef, state, selectText, transition]
   )
 
   const handleMouseUp = useCallback(

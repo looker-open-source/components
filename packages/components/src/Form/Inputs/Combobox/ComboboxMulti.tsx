@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2019 Looker Data Sciences, Inc.
+ Copyright (c) 2020 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -47,6 +47,7 @@ import {
 } from './Combobox'
 import { useComboboxRefs } from './utils/useComboboxRefs'
 import { useComboboxToggle } from './utils/useComboboxToggle'
+import { useScrollState } from './utils/useScrollState'
 
 function compareOptions(
   optionsA: ComboboxOptionObject[],
@@ -58,7 +59,7 @@ function compareOptions(
   )
 }
 
-interface ComboboxMultiProps
+export interface ComboboxMultiProps
   extends ComboboxBaseProps,
     ComboboxCommonProps<ComboboxMultiCallback> {
   /**
@@ -115,12 +116,16 @@ export const ComboboxMultiInternal = forwardRef(
 
     const id = useID(propsID)
 
-    const isVisible = useComboboxToggle(state, onOpen, onClose, options)
+    const isVisible = useComboboxToggle(state, options, onOpen, onClose)
 
     const { ref, ...commonRefs } = useComboboxRefs(forwardedRef)
+
+    const scrollState = useScrollState()
+
     const context = {
       ...commonRefs,
       ...focusManagement,
+      ...scrollState,
       data,
       id,
       isVisible,

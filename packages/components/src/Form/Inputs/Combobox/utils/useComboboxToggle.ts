@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2019 Looker Data Sciences, Inc.
+ Copyright (c) 2020 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -48,9 +48,9 @@ export function useComboboxToggle<
   TOption extends ComboboxOptionType = MaybeComboboxOptionObject
 >(
   state: ComboboxState,
+  option: TOption,
   onOpen?: ComboboxCallback<TOption>,
-  onClose?: ComboboxCallback<TOption>,
-  option?: TOption
+  onClose?: ComboboxCallback<TOption>
 ) {
   const isVisible = getIsVisible(state)
   const isVisibleRef = useRef(isVisible)

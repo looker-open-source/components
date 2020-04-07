@@ -62,7 +62,8 @@ export interface ComboboxContextProps<
   transition?: TTransition
   id?: string
   autoCompletePropRef?: MutableRefObject<boolean>
-  persistSelectionRef?: MutableRefObject<boolean>
+  persistSelectionPropRef?: MutableRefObject<boolean>
+  closeOnSelectPropRef?: MutableRefObject<boolean>
   readOnlyPropRef?: MutableRefObject<boolean>
   isVisible?: boolean
   openOnFocus?: boolean
