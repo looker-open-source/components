@@ -25,27 +25,50 @@
  */
 
 import { renderWithTheme } from '@looker/components-test-utils'
-import { act, cleanup, fireEvent } from '@testing-library/react'
+import { act, cleanup, fireEvent, wait } from '@testing-library/react'
 import React from 'react'
 
 import { Select } from './Select'
+import { SelectMulti } from './SelectMulti'
 // for the requestAnimationFrame in handleBlur (not working currently)
 // jest.useFakeTimers()
 
 afterEach(cleanup)
 
-describe('<Select/>', () => {
-  test('with options and handleChange', () => {
-    const options = [{ value: 'FOO' }, { value: 'BAR' }]
+describe('Select / SelectMulti', () => {
+  const options = [{ value: 'FOO' }, { value: 'BAR' }]
+
+  test.each([
+    [
+      'Select',
+      (onChange: () => void) => (
+        <Select
+          options={options}
+          placeholder="Search"
+          onChange={onChange}
+          key="select"
+        />
+      ),
+    ],
+    [
+      'SelectMulti',
+      (onChange: () => void) => (
+        <SelectMulti
+          options={options}
+          placeholder="Search"
+          onChange={onChange}
+          key="select-multi"
+        />
+      ),
+    ],
+  ])('with options and handleChange (%s)', async (name, getJSX) => {
     const handleChange = jest.fn()
     const {
       // getAllByRole,
       queryByText,
       getByText,
       getByPlaceholderText,
-    } = renderWithTheme(
-      <Select options={options} placeholder="Search" onChange={handleChange} />
-    )
+    } = renderWithTheme(getJSX(handleChange))
     expect(queryByText('FOO')).not.toBeInTheDocument()
     expect(queryByText('BAR')).not.toBeInTheDocument()
 
@@ -66,29 +89,59 @@ describe('<Select/>', () => {
     // getAllByRole('option')[0].focus()
     // input.blur()
     // })
-    fireEvent.click(bar)
+    act(() => {
+      fireEvent.click(bar)
+    })
     // fireEvent.click(foo)
 
     expect(handleChange).toHaveBeenCalledTimes(1)
     // expect(handleChange).toHaveBeenCalledWith({ value: 'FOO' })
-    expect(handleChange).toHaveBeenCalledWith('BAR')
+    const onChangeArg = name === 'SelectMulti' ? ['BAR'] : 'BAR'
+    expect(handleChange).toHaveBeenCalledWith(onChangeArg)
+    // Resolves "act" warning
+    await wait()
   })
-  test('with option descriptions and group titles', () => {
-    const options = [
-      {
-        options: [{ value: 'BAR' }, { value: 'BAZ' }],
-        title: 'FOO',
-      },
-      {
-        options: [
-          { description: 'A description for something', value: 'something' },
-        ],
-        title: 'OTHER',
-      },
-    ]
+
+  const groupedOptions = [
+    {
+      options: [{ value: 'BAR' }, { value: 'BAZ' }],
+      title: 'FOO',
+    },
+    {
+      options: [
+        { description: 'A description for something', value: 'something' },
+      ],
+      title: 'OTHER',
+    },
+  ]
+
+  test.each([
+    [
+      'Select',
+      (onChange: () => void) => (
+        <Select
+          options={groupedOptions}
+          placeholder="Search"
+          onChange={onChange}
+          key="select"
+        />
+      ),
+    ],
+    [
+      'SelectMulti',
+      (onChange: () => void) => (
+        <SelectMulti
+          options={groupedOptions}
+          placeholder="Search"
+          onChange={onChange}
+          key="select-multi"
+        />
+      ),
+    ],
+  ])('with option descriptions and group titles (%s)', async (name, getJSX) => {
     const handleChange = jest.fn()
     const { getByText, getByPlaceholderText } = renderWithTheme(
-      <Select options={options} placeholder="Search" onChange={handleChange} />
+      getJSX(handleChange)
     )
 
     const input = getByPlaceholderText('Search')
@@ -112,7 +165,102 @@ describe('<Select/>', () => {
     fireEvent.click(desc)
 
     expect(handleChange).toHaveBeenCalledTimes(1)
-    expect(handleChange).toHaveBeenCalledWith('something')
+
+    const onChangeArg = name === 'SelectMulti' ? ['something'] : 'something'
+    expect(handleChange).toHaveBeenCalledWith(onChangeArg)
+    // Resolves "act" warning
+    await wait()
+  })
+
+  describe('no options', () => {
+    test.each([
+      [
+        'Select',
+        (onChange: () => void) => (
+          <Select placeholder="Search" onChange={onChange} key="select" />
+        ),
+      ],
+      [
+        'SelectMulti',
+        (onChange: () => void) => (
+          <SelectMulti
+            placeholder="Search"
+            onChange={onChange}
+            key="select-multi"
+          />
+        ),
+      ],
+    ])('label does nothing when clicked (%s)', async (_, getJSX) => {
+      const handleChange = jest.fn()
+      const { getByPlaceholderText, getByText } = renderWithTheme(
+        getJSX(handleChange)
+      )
+
+      const input = getByPlaceholderText('Search')
+
+      act(() => {
+        fireEvent.mouseDown(input)
+      })
+
+      const noOptions = getByText('No options')
+      fireEvent.click(noOptions)
+
+      expect(handleChange).not.toHaveBeenCalled()
+      // Resolves "act" warning
+      await wait()
+    })
+
+    const label = 'Your search returned no results'
+    test.each([
+      [
+        'Select',
+        <Select placeholder="Search" noOptionsLabel={label} key="select" />,
+      ],
+      [
+        'SelectMulti',
+        <SelectMulti
+          placeholder="Search"
+          noOptionsLabel={label}
+          key="select-multi"
+        />,
+      ],
+    ])('custom label text (%s)', async (_, jsx) => {
+      const { getByPlaceholderText, queryByText } = renderWithTheme(jsx)
+
+      const input = getByPlaceholderText('Search')
+
+      act(() => {
+        fireEvent.mouseDown(input)
+      })
+
+      const noOptions = queryByText(label)
+      expect(noOptions).toBeVisible()
+      // Resolves "act" warning
+      await wait()
+    })
+  })
+})
+
+describe('Select', () => {
+  test('value', () => {
+    const options = [
+      { label: 'Foo', value: 'FOO' },
+      { label: 'Bar', value: 'BAR' },
+    ]
+    const { getByPlaceholderText, queryByRole } = renderWithTheme(
+      <Select
+        options={options}
+        placeholder="Search"
+        value="BAR"
+        onChange={jest.fn()}
+      />
+    )
+
+    const input = getByPlaceholderText('Search')
+    // should not default to first option
+    expect(input).toHaveValue('Bar')
+    // verify that clear all icon button is not show (isClearable not set)
+    expect(queryByRole('button')).not.toBeInTheDocument()
   })
 
   test('defaultValue', () => {
@@ -127,6 +275,33 @@ describe('<Select/>', () => {
     const input = getByPlaceholderText('Search')
     // should not default to first option
     expect(input).toHaveValue('Bar')
+  })
+
+  test('isClearable', () => {
+    const handleChange = jest.fn()
+    const options = [
+      { label: 'Foo', value: 'FOO' },
+      { label: 'Bar', value: 'BAR' },
+    ]
+    const { getByPlaceholderText, getByRole } = renderWithTheme(
+      <Select
+        options={options}
+        placeholder="Search"
+        defaultValue="BAR"
+        onChange={handleChange}
+        isClearable
+      />
+    )
+
+    const input = getByPlaceholderText('Search')
+    expect(input).toHaveValue('Bar')
+
+    const clearButton = getByRole('button')
+    act(() => {
+      fireEvent.click(clearButton)
+    })
+    expect(input).toHaveValue('')
+    expect(handleChange).toHaveBeenCalledWith('')
   })
 
   test('placeholder, no defaultValue', () => {
@@ -163,23 +338,5 @@ describe('<Select/>', () => {
     const input = getByTestId('wrapper').querySelector('input')
     // should default to first option
     expect(input).toHaveValue('Foo')
-  })
-
-  test('no options', () => {
-    const handleChange = jest.fn()
-    const { getByPlaceholderText, getByText } = renderWithTheme(
-      <Select placeholder="Search" onChange={handleChange} />
-    )
-
-    const input = getByPlaceholderText('Search')
-
-    act(() => {
-      fireEvent.mouseDown(input)
-    })
-
-    const noOptions = getByText('No options')
-    fireEvent.click(noOptions)
-
-    expect(handleChange).not.toHaveBeenCalled()
   })
 })

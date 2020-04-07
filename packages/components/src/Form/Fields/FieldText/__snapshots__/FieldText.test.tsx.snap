@@ -1,13 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`A FieldText 1`] = `
-.c2 {
-  color: #343C42;
-  font-weight: 600;
-  font-size: 0.75rem;
-  display: inline-block;
-}
-
+exports[`A FieldText disabled  with label inline 1`] = `
 .c4 {
   height: 36px;
 }
@@ -34,6 +27,40 @@ exports[`A FieldText 1`] = `
   padding-bottom: 0rem;
   font-size: 0.875rem;
   color: #343C42;
+  background: #F5F6F7;
+  color: #939BA5;
+}
+
+.c6:hover {
+  border-color: #DEE1E5;
+}
+
+.c2 {
+  color: #343C42;
+  font-weight: 600;
+  font-size: 0.75rem;
+  display: inline-block;
+}
+
+.c8 .c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  grid-area: input;
+}
+
+.c8 .c7 {
+  grid-area: messages;
+}
+
+.c8 .c5 {
+  width: 13rem;
+}
+
+.c8 .c1 {
+  grid-area: label;
+  padding-bottom: 0.5rem;
 }
 
 .c0 {
@@ -48,7 +75,7 @@ exports[`A FieldText 1`] = `
   justify-content: space-between;
   margin-bottom: 0.5rem;
   display: grid;
-  grid-template-areas: "label detail" "input input" "messages messages";
+  grid-template-areas: "label input detail" ". messages messages";
 }
 
 .c0 .c3 {
@@ -67,21 +94,30 @@ exports[`A FieldText 1`] = `
   width: 13rem;
 }
 
-.c0 .c9 {
+.c0 .c10 {
   width: 100%;
 }
 
 .c0 .c1 {
   grid-area: label;
-  padding-bottom: 0.5rem;
+  text-align: right;
+  line-height: 36px;
+  justify-self: end;
+  height: 36px;
+  padding-right: 0.75rem;
+  width: 150px;
 }
 
-.c0 .c10 {
+.c0 .c11 {
   grid-area: detail;
   justify-self: end;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  padding-left: 0.75rem;
 }
 
-.c0 .c8 {
+.c0 .c9 {
   margin-right: 0.5rem;
   margin-top: 0.5rem;
 }
@@ -94,7 +130,7 @@ exports[`A FieldText 1`] = `
     color="palette.charcoal700"
     fontSize="xsmall"
     fontWeight="semiBold"
-    htmlFor="thumbs-up"
+    htmlFor="e7e1e343-b1d4-4a50-b23b-6b1d0670a6a5"
   >
     👍
   </label>
@@ -103,8 +139,8 @@ exports[`A FieldText 1`] = `
   >
     <input
       className="c4 c5 c6 "
-      id="thumbs-up"
-      name="thumbsUp"
+      disabled={true}
+      id="e7e1e343-b1d4-4a50-b23b-6b1d0670a6a5"
       type="text"
     />
   </div>
@@ -114,14 +150,7 @@ exports[`A FieldText 1`] = `
 </div>
 `;
 
-exports[`A FieldText with an error validation aligned to the left 1`] = `
-.c2 {
-  color: #343C42;
-  font-weight: 600;
-  font-size: 0.75rem;
-  display: inline-block;
-}
-
+exports[`A FieldText disabled with default label 1`] = `
 .c4 {
   height: 36px;
 }
@@ -148,22 +177,19 @@ exports[`A FieldText with an error validation aligned to the left 1`] = `
   padding-bottom: 0rem;
   font-size: 0.875rem;
   color: #343C42;
-  border-color: #ED3B53;
+  background: #F5F6F7;
+  color: #939BA5;
 }
 
 .c6:hover {
-  border-color: #CC1F36;
+  border-color: #DEE1E5;
 }
 
-.c6:focus,
-.c6:focus-within {
-  border-color: #CC1F36;
-  box-shadow: 0 0 0 2px #FFE5E9;
-}
-
-.c9 {
+.c2 {
+  color: #343C42;
+  font-weight: 600;
   font-size: 0.75rem;
-  color: #CC1F36;
+  display: inline-block;
 }
 
 .c0 {
@@ -211,113 +237,12 @@ exports[`A FieldText with an error validation aligned to the left 1`] = `
   justify-self: end;
 }
 
-.c0 .c8 {
+.c0 .c9 {
   margin-right: 0.5rem;
   margin-top: 0.5rem;
 }
 
-<div
-  className="c0 "
->
-  <label
-    className="c1 c2"
-    color="palette.charcoal700"
-    fontSize="xsmall"
-    fontWeight="semiBold"
-    htmlFor="thumbs-up"
-  >
-    👍
-  </label>
-  <div
-    className="c3 "
-  >
-    <input
-      className="c4 c5 c6 "
-      id="thumbs-up"
-      name="thumbsUp"
-      type="text"
-    />
-  </div>
-  <div
-    className="c7 "
-  >
-    <div
-      className="c8 c9"
-    >
-      This is an error
-    </div>
-  </div>
-</div>
-`;
-
-exports[`A FieldText with an error validation aligned to the right 1`] = `
-.c2 {
-  color: #343C42;
-  font-weight: 600;
-  font-size: 0.75rem;
-  display: inline-block;
-}
-
-.c4 {
-  height: 36px;
-}
-
-.c4:hover {
-  border-color: #C1C6CC;
-}
-
-.c4:focus,
-.c4:focus-within {
-  border-color: #9785F2;
-  box-shadow: 0 0 0 2px #E8E5FF;
-  outline: none;
-}
-
-.c6 {
-  border-radius: 0.25rem;
-  border: solid 1px;
-  border-color: #DEE1E5;
-  height: 36px;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-  padding-top: 0rem;
-  padding-bottom: 0rem;
-  font-size: 0.875rem;
-  color: #343C42;
-  border-color: #ED3B53;
-}
-
-.c6:hover {
-  border-color: #CC1F36;
-}
-
-.c6:focus,
-.c6:focus-within {
-  border-color: #CC1F36;
-  box-shadow: 0 0 0 2px #FFE5E9;
-}
-
-.c9 {
-  font-size: 0.75rem;
-  color: #CC1F36;
-}
-
-.c0 {
-  width: 13rem;
-  -webkit-align-items: left;
-  -webkit-box-align: left;
-  -ms-flex-align: left;
-  align-items: left;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  margin-bottom: 0.5rem;
-  display: grid;
-  grid-template-areas: "label detail" "input input" "messages messages";
-}
-
-.c0 .c3 {
+.c8 .c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -325,31 +250,22 @@ exports[`A FieldText with an error validation aligned to the right 1`] = `
   grid-area: input;
 }
 
-.c0 .c7 {
+.c8 .c7 {
   grid-area: messages;
 }
 
-.c0 .c5 {
+.c8 .c5 {
   width: 13rem;
 }
 
-.c0 .c10 {
-  width: 100%;
-}
-
-.c0 .c1 {
+.c8 .c1 {
   grid-area: label;
-  padding-bottom: 0.5rem;
-}
-
-.c0 .c11 {
-  grid-area: detail;
+  text-align: right;
+  line-height: 36px;
   justify-self: end;
-}
-
-.c0 .c8 {
-  margin-right: 0.5rem;
-  margin-top: 0.5rem;
+  height: 36px;
+  padding-right: 0.75rem;
+  width: 150px;
 }
 
 <div
@@ -360,7 +276,7 @@ exports[`A FieldText with an error validation aligned to the right 1`] = `
     color="palette.charcoal700"
     fontSize="xsmall"
     fontWeight="semiBold"
-    htmlFor="thumbs-up"
+    htmlFor="f5db46c5-9ac2-445c-9f3a-767e4f6ebed0"
   >
     👍
   </label>
@@ -369,31 +285,18 @@ exports[`A FieldText with an error validation aligned to the right 1`] = `
   >
     <input
       className="c4 c5 c6 "
-      id="thumbs-up"
-      name="thumbsUp"
+      disabled={true}
+      id="f5db46c5-9ac2-445c-9f3a-767e4f6ebed0"
       type="text"
     />
   </div>
   <div
     className="c7 "
-  >
-    <div
-      className="c8 c9"
-    >
-      This is an error
-    </div>
-  </div>
+  />
 </div>
 `;
 
-exports[`A required FieldText 1`] = `
-.c2 {
-  color: #343C42;
-  font-weight: 600;
-  font-size: 0.75rem;
-  display: inline-block;
-}
-
+exports[`A FieldText required  with label inline 1`] = `
 .c5 {
   height: 36px;
 }
@@ -420,6 +323,168 @@ exports[`A required FieldText 1`] = `
   padding-bottom: 0rem;
   font-size: 0.875rem;
   color: #343C42;
+}
+
+.c2 {
+  color: #343C42;
+  font-weight: 600;
+  font-size: 0.75rem;
+  display: inline-block;
+}
+
+.c3 {
+  color: #CC1F36;
+}
+
+.c9 .c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  grid-area: input;
+}
+
+.c9 .c8 {
+  grid-area: messages;
+}
+
+.c9 .c6 {
+  width: 13rem;
+}
+
+.c9 .c1 {
+  grid-area: label;
+  padding-bottom: 0.5rem;
+}
+
+.c0 {
+  width: 13rem;
+  -webkit-align-items: left;
+  -webkit-box-align: left;
+  -ms-flex-align: left;
+  align-items: left;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  display: grid;
+  grid-template-areas: "label input detail" ". messages messages";
+}
+
+.c0 .c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  grid-area: input;
+}
+
+.c0 .c8 {
+  grid-area: messages;
+}
+
+.c0 .c6 {
+  width: 13rem;
+}
+
+.c0 .c11 {
+  width: 100%;
+}
+
+.c0 .c1 {
+  grid-area: label;
+  text-align: right;
+  line-height: 36px;
+  justify-self: end;
+  height: 36px;
+  padding-right: 0.75rem;
+  width: 150px;
+}
+
+.c0 .c12 {
+  grid-area: detail;
+  justify-self: end;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  padding-left: 0.75rem;
+}
+
+.c0 .c10 {
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+<div
+  className="c0 "
+>
+  <label
+    className="c1 c2"
+    color="palette.charcoal700"
+    fontSize="xsmall"
+    fontWeight="semiBold"
+    htmlFor="2b74d04e-ec0a-4d38-8a3c-df66a7bc7eba"
+  >
+    👍
+    <span
+      aria-hidden="true"
+      className="c3"
+    >
+       
+      *
+    </span>
+  </label>
+  <div
+    className="c4 "
+  >
+    <input
+      className="c5 c6 c7 "
+      id="2b74d04e-ec0a-4d38-8a3c-df66a7bc7eba"
+      required={true}
+      type="text"
+    />
+  </div>
+  <div
+    className="c8 "
+  />
+</div>
+`;
+
+exports[`A FieldText required with default label 1`] = `
+.c5 {
+  height: 36px;
+}
+
+.c5:hover {
+  border-color: #C1C6CC;
+}
+
+.c5:focus,
+.c5:focus-within {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c7 {
+  border-radius: 0.25rem;
+  border: solid 1px;
+  border-color: #DEE1E5;
+  height: 36px;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  font-size: 0.875rem;
+  color: #343C42;
+}
+
+.c2 {
+  color: #343C42;
+  font-weight: 600;
+  font-size: 0.75rem;
+  display: inline-block;
 }
 
 .c3 {
@@ -457,7 +522,7 @@ exports[`A required FieldText 1`] = `
   width: 13rem;
 }
 
-.c0 .c10 {
+.c0 .c11 {
   width: 100%;
 }
 
@@ -466,14 +531,40 @@ exports[`A required FieldText 1`] = `
   padding-bottom: 0.5rem;
 }
 
-.c0 .c11 {
+.c0 .c12 {
   grid-area: detail;
   justify-self: end;
 }
 
-.c0 .c9 {
+.c0 .c10 {
   margin-right: 0.5rem;
   margin-top: 0.5rem;
+}
+
+.c9 .c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  grid-area: input;
+}
+
+.c9 .c8 {
+  grid-area: messages;
+}
+
+.c9 .c6 {
+  width: 13rem;
+}
+
+.c9 .c1 {
+  grid-area: label;
+  text-align: right;
+  line-height: 36px;
+  justify-self: end;
+  height: 36px;
+  padding-right: 0.75rem;
+  width: 150px;
 }
 
 <div
@@ -484,7 +575,7 @@ exports[`A required FieldText 1`] = `
     color="palette.charcoal700"
     fontSize="xsmall"
     fontWeight="semiBold"
-    htmlFor="thumbs-up"
+    htmlFor="b639fc57-6938-4c11-8bfd-8081b94ad5eb"
   >
     👍
     <span
@@ -500,8 +591,7 @@ exports[`A required FieldText 1`] = `
   >
     <input
       className="c5 c6 c7 "
-      id="thumbs-up"
-      name="thumbsUp"
+      id="b639fc57-6938-4c11-8bfd-8081b94ad5eb"
       required={true}
       type="text"
     />
@@ -512,14 +602,7 @@ exports[`A required FieldText 1`] = `
 </div>
 `;
 
-exports[`FieldText supports labelWeight 1`] = `
-.c2 {
-  color: #343C42;
-  font-weight: 400;
-  font-size: 0.75rem;
-  display: inline-block;
-}
-
+exports[`A FieldText with default label 1`] = `
 .c4 {
   height: 36px;
 }
@@ -546,6 +629,13 @@ exports[`FieldText supports labelWeight 1`] = `
   padding-bottom: 0rem;
   font-size: 0.875rem;
   color: #343C42;
+}
+
+.c2 {
+  color: #343C42;
+  font-weight: 600;
+  font-size: 0.75rem;
+  display: inline-block;
 }
 
 .c0 {
@@ -605,8 +695,8 @@ exports[`FieldText supports labelWeight 1`] = `
     className="c1 c2"
     color="palette.charcoal700"
     fontSize="xsmall"
-    fontWeight="normal"
-    htmlFor="thumbs-up"
+    fontWeight="semiBold"
+    htmlFor="3062aa2c-56b8-4758-850b-ba1fff0a90f5"
   >
     👍
   </label>
@@ -615,13 +705,1123 @@ exports[`FieldText supports labelWeight 1`] = `
   >
     <input
       className="c4 c5 c6 "
-      id="thumbs-up"
-      name="thumbsUp"
+      id="3062aa2c-56b8-4758-850b-ba1fff0a90f5"
       type="text"
     />
   </div>
   <div
     className="c7 "
   />
+</div>
+`;
+
+exports[`A FieldText with description and with default label 1`] = `
+.c4 {
+  height: 36px;
+}
+
+.c4:hover {
+  border-color: #C1C6CC;
+}
+
+.c4:focus,
+.c4:focus-within {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c6 {
+  border-radius: 0.25rem;
+  border: solid 1px;
+  border-color: #DEE1E5;
+  height: 36px;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  font-size: 0.875rem;
+  color: #343C42;
+}
+
+.c2 {
+  color: #343C42;
+  font-weight: 600;
+  font-size: 0.75rem;
+  display: inline-block;
+}
+
+.c8 {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  margin-top: 0.5rem;
+}
+
+.c0 {
+  width: 13rem;
+  -webkit-align-items: left;
+  -webkit-box-align: left;
+  -ms-flex-align: left;
+  align-items: left;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  display: grid;
+  grid-template-areas: "label detail" "input input" "messages messages";
+}
+
+.c0 .c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  grid-area: input;
+}
+
+.c0 .c7 {
+  grid-area: messages;
+}
+
+.c0 .c5 {
+  width: 13rem;
+}
+
+.c0 .c11 {
+  width: 100%;
+}
+
+.c0 .c1 {
+  grid-area: label;
+  padding-bottom: 0.5rem;
+}
+
+.c0 .c12 {
+  grid-area: detail;
+  justify-self: end;
+}
+
+.c0 .c10 {
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.c9 .c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  grid-area: input;
+}
+
+.c9 .c7 {
+  grid-area: messages;
+}
+
+.c9 .c5 {
+  width: 13rem;
+}
+
+.c9 .c1 {
+  grid-area: label;
+  text-align: right;
+  line-height: 36px;
+  justify-self: end;
+  height: 36px;
+  padding-right: 0.75rem;
+  width: 150px;
+}
+
+<div
+  className="c0 "
+>
+  <label
+    className="c1 c2"
+    color="palette.charcoal700"
+    fontSize="xsmall"
+    fontWeight="semiBold"
+    htmlFor="ed003538-2569-4def-b144-ccd3595bc720"
+  >
+    Text Input
+  </label>
+  <div
+    className="c3 "
+  >
+    <input
+      className="c4 c5 c6 "
+      id="ed003538-2569-4def-b144-ccd3595bc720"
+      placeholder="placeholder"
+      type="text"
+    />
+  </div>
+  <div
+    className="c7 "
+  >
+    <p
+      className="c8"
+      fontSize="xsmall"
+    >
+      no vegetables allowed
+    </p>
+  </div>
+</div>
+`;
+
+exports[`A FieldText with description and with label inline 1`] = `
+.c4 {
+  height: 36px;
+}
+
+.c4:hover {
+  border-color: #C1C6CC;
+}
+
+.c4:focus,
+.c4:focus-within {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c6 {
+  border-radius: 0.25rem;
+  border: solid 1px;
+  border-color: #DEE1E5;
+  height: 36px;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  font-size: 0.875rem;
+  color: #343C42;
+}
+
+.c2 {
+  color: #343C42;
+  font-weight: 600;
+  font-size: 0.75rem;
+  display: inline-block;
+}
+
+.c8 {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  margin-top: 0.5rem;
+}
+
+.c9 .c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  grid-area: input;
+}
+
+.c9 .c7 {
+  grid-area: messages;
+}
+
+.c9 .c5 {
+  width: 13rem;
+}
+
+.c9 .c1 {
+  grid-area: label;
+  padding-bottom: 0.5rem;
+}
+
+.c0 {
+  width: 13rem;
+  -webkit-align-items: left;
+  -webkit-box-align: left;
+  -ms-flex-align: left;
+  align-items: left;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  display: grid;
+  grid-template-areas: "label input detail" ". messages messages";
+}
+
+.c0 .c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  grid-area: input;
+}
+
+.c0 .c7 {
+  grid-area: messages;
+}
+
+.c0 .c5 {
+  width: 13rem;
+}
+
+.c0 .c11 {
+  width: 100%;
+}
+
+.c0 .c1 {
+  grid-area: label;
+  text-align: right;
+  line-height: 36px;
+  justify-self: end;
+  height: 36px;
+  padding-right: 0.75rem;
+  width: 150px;
+}
+
+.c0 .c12 {
+  grid-area: detail;
+  justify-self: end;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  padding-left: 0.75rem;
+}
+
+.c0 .c10 {
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+<div
+  className="c0 "
+>
+  <label
+    className="c1 c2"
+    color="palette.charcoal700"
+    fontSize="xsmall"
+    fontWeight="semiBold"
+    htmlFor="0b087d5b-30f8-4bdc-8314-9b376b88197c"
+  >
+    Text Input
+  </label>
+  <div
+    className="c3 "
+  >
+    <input
+      className="c4 c5 c6 "
+      id="0b087d5b-30f8-4bdc-8314-9b376b88197c"
+      placeholder="placeholder"
+      type="text"
+    />
+  </div>
+  <div
+    className="c7 "
+  >
+    <p
+      className="c8"
+      fontSize="xsmall"
+    >
+      no vegetables allowed
+    </p>
+  </div>
+</div>
+`;
+
+exports[`A FieldText with detail and  with label inline 1`] = `
+.c6 {
+  height: 36px;
+}
+
+.c6:hover {
+  border-color: #C1C6CC;
+}
+
+.c6:focus,
+.c6:focus-within {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c8 {
+  border-radius: 0.25rem;
+  border: solid 1px;
+  border-color: #DEE1E5;
+  height: 36px;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  font-size: 0.875rem;
+  color: #343C42;
+}
+
+.c2 {
+  color: #343C42;
+  font-weight: 600;
+  font-size: 0.75rem;
+  display: inline-block;
+}
+
+.c4 {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.c10 .c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  grid-area: input;
+}
+
+.c10 .c9 {
+  grid-area: messages;
+}
+
+.c10 .c7 {
+  width: 13rem;
+}
+
+.c10 .c1 {
+  grid-area: label;
+  padding-bottom: 0.5rem;
+}
+
+.c10 .c3 {
+  grid-area: detail;
+  justify-self: end;
+}
+
+.c0 {
+  width: 13rem;
+  -webkit-align-items: left;
+  -webkit-box-align: left;
+  -ms-flex-align: left;
+  align-items: left;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  display: grid;
+  grid-template-areas: "label input detail" ". messages messages";
+}
+
+.c0 .c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  grid-area: input;
+}
+
+.c0 .c9 {
+  grid-area: messages;
+}
+
+.c0 .c7 {
+  width: 13rem;
+}
+
+.c0 .c12 {
+  width: 100%;
+}
+
+.c0 .c1 {
+  grid-area: label;
+  text-align: right;
+  line-height: 36px;
+  justify-self: end;
+  height: 36px;
+  padding-right: 0.75rem;
+  width: 150px;
+}
+
+.c0 .c3 {
+  grid-area: detail;
+  justify-self: end;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  padding-left: 0.75rem;
+}
+
+.c0 .c11 {
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+<div
+  className="c0 "
+>
+  <label
+    className="c1 c2"
+    color="palette.charcoal700"
+    fontSize="xsmall"
+    fontWeight="semiBold"
+    htmlFor="9a26b821-075d-4c50-bbd5-b0cbb26293ec"
+  >
+    hello
+  </label>
+  <span
+    className="c3 c4"
+    fontSize="xsmall"
+  >
+    5/50
+  </span>
+  <div
+    className="c5 "
+  >
+    <input
+      className="c6 c7 c8 "
+      id="9a26b821-075d-4c50-bbd5-b0cbb26293ec"
+      placeholder="placeholder"
+      type="text"
+    />
+  </div>
+  <div
+    className="c9 "
+  />
+</div>
+`;
+
+exports[`A FieldText with detail and with default label 1`] = `
+.c6 {
+  height: 36px;
+}
+
+.c6:hover {
+  border-color: #C1C6CC;
+}
+
+.c6:focus,
+.c6:focus-within {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c8 {
+  border-radius: 0.25rem;
+  border: solid 1px;
+  border-color: #DEE1E5;
+  height: 36px;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  font-size: 0.875rem;
+  color: #343C42;
+}
+
+.c2 {
+  color: #343C42;
+  font-weight: 600;
+  font-size: 0.75rem;
+  display: inline-block;
+}
+
+.c4 {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.c0 {
+  width: 13rem;
+  -webkit-align-items: left;
+  -webkit-box-align: left;
+  -ms-flex-align: left;
+  align-items: left;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  display: grid;
+  grid-template-areas: "label detail" "input input" "messages messages";
+}
+
+.c0 .c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  grid-area: input;
+}
+
+.c0 .c9 {
+  grid-area: messages;
+}
+
+.c0 .c7 {
+  width: 13rem;
+}
+
+.c0 .c12 {
+  width: 100%;
+}
+
+.c0 .c1 {
+  grid-area: label;
+  padding-bottom: 0.5rem;
+}
+
+.c0 .c3 {
+  grid-area: detail;
+  justify-self: end;
+}
+
+.c0 .c11 {
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.c10 .c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  grid-area: input;
+}
+
+.c10 .c9 {
+  grid-area: messages;
+}
+
+.c10 .c7 {
+  width: 13rem;
+}
+
+.c10 .c1 {
+  grid-area: label;
+  text-align: right;
+  line-height: 36px;
+  justify-self: end;
+  height: 36px;
+  padding-right: 0.75rem;
+  width: 150px;
+}
+
+.c10 .c3 {
+  grid-area: detail;
+  justify-self: end;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  padding-left: 0.75rem;
+}
+
+<div
+  className="c0 "
+>
+  <label
+    className="c1 c2"
+    color="palette.charcoal700"
+    fontSize="xsmall"
+    fontWeight="semiBold"
+    htmlFor="494fd1bb-cc72-44c6-8e0e-02ca9ff690e5"
+  >
+    hello
+  </label>
+  <span
+    className="c3 c4"
+    fontSize="xsmall"
+  >
+    5/50
+  </span>
+  <div
+    className="c5 "
+  >
+    <input
+      className="c6 c7 c8 "
+      id="494fd1bb-cc72-44c6-8e0e-02ca9ff690e5"
+      placeholder="placeholder"
+      type="text"
+    />
+  </div>
+  <div
+    className="c9 "
+  />
+</div>
+`;
+
+exports[`A FieldText with label inline 1`] = `
+.c4 {
+  height: 36px;
+}
+
+.c4:hover {
+  border-color: #C1C6CC;
+}
+
+.c4:focus,
+.c4:focus-within {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c6 {
+  border-radius: 0.25rem;
+  border: solid 1px;
+  border-color: #DEE1E5;
+  height: 36px;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  font-size: 0.875rem;
+  color: #343C42;
+}
+
+.c2 {
+  color: #343C42;
+  font-weight: 600;
+  font-size: 0.75rem;
+  display: inline-block;
+}
+
+.c8 .c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  grid-area: input;
+}
+
+.c8 .c7 {
+  grid-area: messages;
+}
+
+.c8 .c5 {
+  width: 13rem;
+}
+
+.c8 .c1 {
+  grid-area: label;
+  padding-bottom: 0.5rem;
+}
+
+.c0 {
+  width: 13rem;
+  -webkit-align-items: left;
+  -webkit-box-align: left;
+  -ms-flex-align: left;
+  align-items: left;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  display: grid;
+  grid-template-areas: "label input detail" ". messages messages";
+}
+
+.c0 .c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  grid-area: input;
+}
+
+.c0 .c7 {
+  grid-area: messages;
+}
+
+.c0 .c5 {
+  width: 13rem;
+}
+
+.c0 .c10 {
+  width: 100%;
+}
+
+.c0 .c1 {
+  grid-area: label;
+  text-align: right;
+  line-height: 36px;
+  justify-self: end;
+  height: 36px;
+  padding-right: 0.75rem;
+  width: 150px;
+}
+
+.c0 .c11 {
+  grid-area: detail;
+  justify-self: end;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  padding-left: 0.75rem;
+}
+
+.c0 .c9 {
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+<div
+  className="c0 "
+>
+  <label
+    className="c1 c2"
+    color="palette.charcoal700"
+    fontSize="xsmall"
+    fontWeight="semiBold"
+    htmlFor="2ae781ec-f1f3-4cb2-9118-9d9f2dc4fbd1"
+  >
+    👍
+  </label>
+  <div
+    className="c3 "
+  >
+    <input
+      className="c4 c5 c6 "
+      id="2ae781ec-f1f3-4cb2-9118-9d9f2dc4fbd1"
+      type="text"
+    />
+  </div>
+  <div
+    className="c7 "
+  />
+</div>
+`;
+
+exports[`A FieldText with validationMessage and  with label inline 1`] = `
+.c4 {
+  height: 36px;
+}
+
+.c4:hover {
+  border-color: #C1C6CC;
+}
+
+.c4:focus,
+.c4:focus-within {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c6 {
+  border-radius: 0.25rem;
+  border: solid 1px;
+  border-color: #DEE1E5;
+  height: 36px;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  font-size: 0.875rem;
+  color: #343C42;
+  border-color: #ED3B53;
+}
+
+.c6:hover {
+  border-color: #CC1F36;
+}
+
+.c6:focus,
+.c6:focus-within {
+  border-color: #CC1F36;
+  box-shadow: 0 0 0 2px #FFE5E9;
+}
+
+.c2 {
+  color: #343C42;
+  font-weight: 600;
+  font-size: 0.75rem;
+  display: inline-block;
+}
+
+.c9 {
+  font-size: 0.75rem;
+  color: #CC1F36;
+}
+
+.c10 .c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  grid-area: input;
+}
+
+.c10 .c7 {
+  grid-area: messages;
+}
+
+.c10 .c5 {
+  width: 13rem;
+}
+
+.c10 .c1 {
+  grid-area: label;
+  padding-bottom: 0.5rem;
+}
+
+.c10 .c8 {
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.c0 {
+  width: 13rem;
+  -webkit-align-items: left;
+  -webkit-box-align: left;
+  -ms-flex-align: left;
+  align-items: left;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  display: grid;
+  grid-template-areas: "label input detail" ". messages messages";
+}
+
+.c0 .c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  grid-area: input;
+}
+
+.c0 .c7 {
+  grid-area: messages;
+}
+
+.c0 .c5 {
+  width: 13rem;
+}
+
+.c0 .c11 {
+  width: 100%;
+}
+
+.c0 .c1 {
+  grid-area: label;
+  text-align: right;
+  line-height: 36px;
+  justify-self: end;
+  height: 36px;
+  padding-right: 0.75rem;
+  width: 150px;
+}
+
+.c0 .c12 {
+  grid-area: detail;
+  justify-self: end;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  padding-left: 0.75rem;
+}
+
+.c0 .c8 {
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+<div
+  className="c0 "
+>
+  <label
+    className="c1 c2"
+    color="palette.charcoal700"
+    fontSize="xsmall"
+    fontWeight="semiBold"
+    htmlFor="e1996297-3be0-4760-b38a-f5f4ce428058"
+  >
+    hello
+  </label>
+  <div
+    className="c3 "
+  >
+    <input
+      className="c4 c5 c6 "
+      id="e1996297-3be0-4760-b38a-f5f4ce428058"
+      placeholder="placeholder"
+      type="text"
+    />
+  </div>
+  <div
+    className="c7 "
+  >
+    <div
+      className="c8 c9"
+    >
+      validation Message
+    </div>
+  </div>
+</div>
+`;
+
+exports[`A FieldText with validationMessage and with default label 1`] = `
+.c4 {
+  height: 36px;
+}
+
+.c4:hover {
+  border-color: #C1C6CC;
+}
+
+.c4:focus,
+.c4:focus-within {
+  border-color: #9785F2;
+  box-shadow: 0 0 0 2px #E8E5FF;
+  outline: none;
+}
+
+.c6 {
+  border-radius: 0.25rem;
+  border: solid 1px;
+  border-color: #DEE1E5;
+  height: 36px;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  font-size: 0.875rem;
+  color: #343C42;
+  border-color: #ED3B53;
+}
+
+.c6:hover {
+  border-color: #CC1F36;
+}
+
+.c6:focus,
+.c6:focus-within {
+  border-color: #CC1F36;
+  box-shadow: 0 0 0 2px #FFE5E9;
+}
+
+.c2 {
+  color: #343C42;
+  font-weight: 600;
+  font-size: 0.75rem;
+  display: inline-block;
+}
+
+.c9 {
+  font-size: 0.75rem;
+  color: #CC1F36;
+}
+
+.c0 {
+  width: 13rem;
+  -webkit-align-items: left;
+  -webkit-box-align: left;
+  -ms-flex-align: left;
+  align-items: left;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  display: grid;
+  grid-template-areas: "label detail" "input input" "messages messages";
+}
+
+.c0 .c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  grid-area: input;
+}
+
+.c0 .c7 {
+  grid-area: messages;
+}
+
+.c0 .c5 {
+  width: 13rem;
+}
+
+.c0 .c11 {
+  width: 100%;
+}
+
+.c0 .c1 {
+  grid-area: label;
+  padding-bottom: 0.5rem;
+}
+
+.c0 .c12 {
+  grid-area: detail;
+  justify-self: end;
+}
+
+.c0 .c8 {
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.c10 .c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  grid-area: input;
+}
+
+.c10 .c7 {
+  grid-area: messages;
+}
+
+.c10 .c5 {
+  width: 13rem;
+}
+
+.c10 .c1 {
+  grid-area: label;
+  text-align: right;
+  line-height: 36px;
+  justify-self: end;
+  height: 36px;
+  padding-right: 0.75rem;
+  width: 150px;
+}
+
+.c10 .c8 {
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+<div
+  className="c0 "
+>
+  <label
+    className="c1 c2"
+    color="palette.charcoal700"
+    fontSize="xsmall"
+    fontWeight="semiBold"
+    htmlFor="bf665332-0ae4-4bcd-8bc0-44ed914146be"
+  >
+    hello
+  </label>
+  <div
+    className="c3 "
+  >
+    <input
+      className="c4 c5 c6 "
+      id="bf665332-0ae4-4bcd-8bc0-44ed914146be"
+      placeholder="placeholder"
+      type="text"
+    />
+  </div>
+  <div
+    className="c7 "
+  >
+    <div
+      className="c8 c9"
+    >
+      validation Message
+    </div>
+  </div>
 </div>
 `;

@@ -1,0 +1,165 @@
+---
+title: SelectMulti
+figma: file/2MG6DoSjk4IaLnjjFCnKFf/Forms
+github: Form/Inputs/Select/SelectMulti.tsx
+propsOf: SelectMulti
+---
+
+The `SelectMulti` component is an extension of the [`Select`](/components/forms/select) component that supports multiple selected values and has the following specific features:
+
+- The input field renders an underlying [`InputChips`](/components/forms/input-chips)
+- An on-the-fly "Create" option allows the user to enter custom values (see [`showCreate`](#showcreate) prop)
+- Option list stays open by default so the user can select multiple options (see [`closeOnSelect`](#closeonselect) prop)
+- Values can be cleared individually or all at once (does not use the `Select` component's `isClearable` prop)
+
+```jsx
+<Flex justifyContent="space-between" alignItems="flex-start">
+  <SelectMulti
+    options={[
+      { value: 'Cheddar' },
+      { value: 'Gouda' },
+      { value: 'Swiss' },
+      { value: 'Feta' },
+      { value: 'Mascarpone' },
+      { value: 'Brie' },
+      { value: 'Mozzarella' },
+      { value: 'Cotija' },
+      { value: 'Pepperjack' },
+    ]}
+    placeholder="Cheeses"
+    flex={1}
+    mr="medium"
+  />
+  <SelectMulti
+    options={[
+      { value: '0', label: 'Sunday' },
+      { value: '1', label: 'Monday' },
+      { value: '2', label: 'Tuesday' },
+      { value: '3', label: 'Wednesday' },
+      { value: '4', label: 'Thursday' },
+      { value: '5', label: 'Friday' },
+      { value: '6', label: 'Saturday' },
+    ]}
+    defaultValues={['1']}
+    flex={1}
+  />
+</Flex>
+```
+
+## showCreate
+
+As with `Select`, the `isFilterable` prop allows the user to type in the input, triggering the `onFilter` callback,
+which should be used to narrow the options passed to the `SelectMulti`.
+
+When `isFilterable` is true, use the `showCreate` prop along with the `formatCreateLabel`(defaults to 'Create "[input value]"')
+to allow the user to free-form values.
+
+```jsx
+;() => {
+  const [values, setValues] = React.useState([])
+  const [searchTerm, setSearchTerm] = React.useState('')
+
+  function handleChange(newValues) {
+    setValues(newValues)
+  }
+  function handleFilter(term) {
+    setSearchTerm(term)
+  }
+
+  const newOptions = React.useMemo(() => {
+    const options = [
+      { value: 'Apples' },
+      { value: 'Bananas' },
+      { value: 'Oranges' },
+      { value: 'Pineapples' },
+      { value: 'Kiwis' },
+    ]
+    if (searchTerm === '') return options
+    return options.filter((option) => {
+      return option.value.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1
+    })
+  }, [searchTerm])
+
+  function formatCreateLabel(inputValue) {
+    return `Add new fruit: ${inputValue}`
+  }
+
+  return (
+    <SelectMulti
+      options={newOptions}
+      aria-label="Fruits"
+      placeholder="Controlled, searchable, creatable"
+      isFilterable
+      values={values}
+      onChange={handleChange}
+      onFilter={handleFilter}
+      showCreate
+      formatCreateLabel={formatCreateLabel}
+      createOptionPosition="first"
+    />
+  )
+}
+```
+
+## closeOnSelect
+
+With the `closeOnSelect` prop, the option list closes after an option is selected.
+
+```jsx
+<SelectMulti
+  options={[
+    { value: 'Cheddar' },
+    { value: 'Gouda' },
+    { value: 'Swiss' },
+    { value: 'Feta' },
+    { value: 'Mascarpone' },
+    { value: 'Brie' },
+    { value: 'Mozzarella' },
+    { value: 'Cotija' },
+    { value: 'Pepperjack' },
+  ]}
+  defaultValues={['Swiss', 'Brie']}
+  closeOnSelect
+/>
+```
+
+## removeOnBackspace
+
+The `removeOnBackspace` prop defaults to true.
+When set to false, hitting the `Backspace` key while focused in the input will not remove values.
+
+```jsx
+;() => {
+  const [searchTerm, setSearchTerm] = React.useState('')
+  function handleFilter(term) {
+    setSearchTerm(term)
+  }
+
+  const newOptions = React.useMemo(() => {
+    const options = [
+      { value: 'Cheddar' },
+      { value: 'Gouda' },
+      { value: 'Swiss' },
+      { value: 'Feta' },
+      { value: 'Mascarpone' },
+      { value: 'Brie' },
+      { value: 'Mozzarella' },
+      { value: 'Cotija' },
+      { value: 'Pepperjack' },
+    ]
+    if (searchTerm === '') return options
+    return options.filter((option) => {
+      return option.value.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1
+    })
+  }, [searchTerm])
+  return (
+    <SelectMulti
+      options={newOptions}
+      isFilterable
+      onFilter={handleFilter}
+      defaultValues={['Swiss', 'Brie']}
+      removeOnBackspace={false}
+    />
+  )
+}
+```

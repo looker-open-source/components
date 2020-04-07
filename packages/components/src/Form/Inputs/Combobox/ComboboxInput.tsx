@@ -27,6 +27,7 @@
 // Much of the following is pulled from https://github.com/reach/reach-ui
 // because their work is fantastic (but is not in TypeScript)
 
+import btoa from 'btoa'
 import React, { FormEvent, forwardRef, useRef, useContext, Ref } from 'react'
 import styled, { css } from 'styled-components'
 import { useForkedRef, useWrapEvent } from '../../../utils'
@@ -101,7 +102,7 @@ export const ComboboxInputInternal = forwardRef(
     const isControlled = controlledValue !== undefined
 
     function handleClear() {
-      contextOnChange && contextOnChange()
+      contextOnChange && contextOnChange(undefined)
       transition && transition(ComboboxActionType.CLEAR)
     }
 
@@ -209,8 +210,7 @@ export const comboboxPaddingRight = `calc(2 * ${indicatorPadding} + ${indicatorS
 
 const indicatorPrefix = 'data:image/svg+xml;base64,'
 export const selectIndicatorBG = (color: string) =>
-  typeof window !== 'undefined' &&
-  `url('${indicatorPrefix}${window.btoa(
+  `url('${indicatorPrefix}${btoa(
     indicatorRaw.replace('currentColor', color)
   )}')`
 

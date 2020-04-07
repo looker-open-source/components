@@ -120,6 +120,9 @@ export function usePopper({
         mergedOptions
       )
     }
+    return () => {
+      popperInstanceRef.current && popperInstanceRef.current.destroy()
+    }
   }, [anchor, target, targetElement, arrow, arrowElement, mergedOptions])
 
   return {

@@ -24,24 +24,22 @@
 
  */
 
-import React, { forwardRef, Ref, FormEvent, ReactNode } from 'react'
+import React, { forwardRef, Ref, FormEvent } from 'react'
 import styled from 'styled-components'
 import { CustomizableAttributes } from '@looker/design-tokens'
-import { Box } from '../../../Layout'
-import { ListItem } from '../../../List'
-import { Heading, Paragraph } from '../../../Text'
 import { ValidationType } from '../../ValidationMessage'
 import {
   Combobox,
   ComboboxInput,
   ComboboxList,
-  ComboboxOption,
-  comboboxOptionGrid,
-  ComboboxOptionObject,
-  ComboboxOptionText,
   ComboboxProps,
-  getComboboxText,
 } from '../Combobox'
+import {
+  SelectOptionObject,
+  SelectOptions,
+  SelectOptionsBaseProps,
+} from './SelectOptions'
+import { getOption, getFirstOption } from './utils/options'
 
 export const CustomizableSelectAttributes: CustomizableAttributes = {
   borderRadius: 'medium',
@@ -51,28 +49,8 @@ export const CustomizableSelectAttributes: CustomizableAttributes = {
   py: 'none',
 }
 
-export interface SelectOptionObject extends ComboboxOptionObject {
-  description?: string | ReactNode
-}
-
-export interface SelectOptionGroupProps {
-  options: SelectOptionObject[]
-  title: string | ReactNode
-}
-
-export type SelectOptionProps = SelectOptionObject | SelectOptionGroupProps
-
-export interface SelectProps
-  extends Omit<ComboboxProps, 'value' | 'defaultValue' | 'onChange'> {
-  options?: SelectOptionProps[]
-  /**
-   * Displays an example value or short hint to the user. Should not replace a label.
-   */
+export interface SelectBaseProps extends SelectOptionsBaseProps {
   placeholder?: string
-  /**
-   * The user can type in the input (default false to mimic traditional select tag)
-   */
-  isFilterable?: boolean
   /**
    * The user can clear the current value by clicking an x icon button
    */
@@ -84,6 +62,11 @@ export interface SelectProps
   onFilter?: (term: string) => void
 
   validationType?: ValidationType
+}
+
+export interface SelectProps
+  extends Omit<ComboboxProps, 'value' | 'defaultValue' | 'onChange'>,
+    SelectBaseProps {
   /**
    * Value of the current selected option (controlled)
    */
@@ -98,72 +81,6 @@ export interface SelectProps
   onChange?: (value: string) => void
 }
 
-function flattenOptions(options: SelectOptionProps[]) {
-  return options.reduce(
-    (acc: SelectOptionObject[], option: SelectOptionProps) => {
-      const optionAsGroup = option as SelectOptionGroupProps
-      if (optionAsGroup.title) {
-        return [...acc, ...optionAsGroup.options]
-      }
-      return [...acc, option as SelectOptionObject]
-    },
-    []
-  )
-}
-
-function getOption(value?: string, options?: SelectOptionProps[]) {
-  const flattenedOptions = options && flattenOptions(options)
-  return value
-    ? { label: getComboboxText(value, flattenedOptions), value }
-    : undefined
-}
-
-function getFirstOption(options: SelectOptionProps[]): SelectOptionObject {
-  const optionAsGroup = options[0] as SelectOptionGroupProps
-  if (optionAsGroup.title) return optionAsGroup.options[0]
-  return options[0] as SelectOptionObject
-}
-
-const renderOption = (option: SelectOptionObject, index: number) => {
-  if (option.description) {
-    return (
-      <ComboboxOption {...option} key={index} py="xxsmall">
-        <Box>
-          <Heading fontSize="small" fontWeight="semiBold" pb="xxsmall">
-            <ComboboxOptionText />
-          </Heading>
-          <Paragraph variant="subdued" fontSize="small">
-            {option.description}
-          </Paragraph>
-        </Box>
-      </ComboboxOption>
-    )
-  }
-  return <ComboboxOption {...option} key={index} />
-}
-
-const SelectOptionGroupTitle = styled(Heading)`
-  ${comboboxOptionGrid}
-`
-
-SelectOptionGroupTitle.defaultProps = {
-  fontSize: 'xxsmall',
-  fontWeight: 'semiBold',
-  px: 'xsmall',
-  py: 'xxsmall',
-  variant: 'subdued',
-}
-
-const SelectOptionGroup = ({ options, title }: SelectOptionGroupProps) => (
-  <Box py="xxsmall">
-    <SelectOptionGroupTitle>
-      <span />
-      {title}
-    </SelectOptionGroupTitle>
-    {options.map(renderOption)}
-  </Box>
-)
-
 const SelectComponent = forwardRef(
   (
     {
@@ -176,6 +93,7 @@ const SelectComponent = forwardRef(
       onChange,
       value,
       defaultValue,
+      noOptionsLabel,
       'aria-label': ariaLabel,
       'aria-labelledby': ariaLabelledby,
       validationType,
@@ -235,20 +153,7 @@ const SelectComponent = forwardRef(
         />
         {!disabled && (
           <ComboboxList persistSelection {...ariaProps}>
-            {options && options.length > 0 ? (
-              options.map((option: SelectOptionProps, index: number) => {
-                const optionAsGroup = option as SelectOptionGroupProps
-                return optionAsGroup.title ? (
-                  <SelectOptionGroup key={index} {...optionAsGroup} />
-                ) : (
-                  renderOption(option as SelectOptionObject, index)
-                )
-              })
-            ) : (
-              <ListItem fontSize="small" px="medium" py="xxsmall">
-                No options
-              </ListItem>
-            )}
+            <SelectOptions options={options} noOptionsLabel={noOptionsLabel} />
           </ComboboxList>
         )}
       </Combobox>

@@ -123,6 +123,10 @@ const components: NavigationSection = {
           path: 'select',
         },
         {
+          title: 'SelectMulti',
+          path: 'select-multi',
+        },
+        {
           title: 'Slider',
           path: 'slider',
         },

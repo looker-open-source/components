@@ -25,3 +25,5 @@
  */
 
 export * from './Select'
+export * from './SelectMulti'
+export * from './SelectOptions'

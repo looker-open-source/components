@@ -150,14 +150,14 @@ export const stateChart: StateChart = {
       on: {
         [ComboboxActionType.CHANGE]: ComboboxState.SUGGESTING,
         [ComboboxActionType.CHANGE_SILENT]: ComboboxState.SUGGESTING,
-        [ComboboxActionType.CHANGE_VALUES]: ComboboxState.IDLE,
+        [ComboboxActionType.CHANGE_VALUES]: ComboboxState.SUGGESTING,
         [ComboboxActionType.FOCUS]: ComboboxState.SUGGESTING,
         [ComboboxActionType.NAVIGATE]: ComboboxState.NAVIGATING,
         [ComboboxActionType.CLEAR]: ComboboxState.IDLE,
         [ComboboxActionType.ESCAPE]: ComboboxState.IDLE,
         [ComboboxActionType.BLUR]: ComboboxState.IDLE,
-        [ComboboxActionType.SELECT_WITH_CLICK]: ComboboxState.IDLE,
-        [ComboboxActionType.SELECT_SILENT]: ComboboxState.IDLE,
+        [ComboboxActionType.SELECT_WITH_CLICK]: ComboboxState.SUGGESTING,
+        [ComboboxActionType.SELECT_SILENT]: ComboboxState.SUGGESTING,
         [ComboboxActionType.INTERACT]: ComboboxState.INTERACTING,
       },
     },
@@ -165,15 +165,15 @@ export const stateChart: StateChart = {
       on: {
         [ComboboxActionType.CHANGE]: ComboboxState.SUGGESTING,
         [ComboboxActionType.CHANGE_SILENT]: ComboboxState.NAVIGATING,
-        [ComboboxActionType.CHANGE_VALUES]: ComboboxState.IDLE,
+        [ComboboxActionType.CHANGE_VALUES]: ComboboxState.NAVIGATING,
         [ComboboxActionType.FOCUS]: ComboboxState.SUGGESTING,
         [ComboboxActionType.CLEAR]: ComboboxState.IDLE,
         [ComboboxActionType.BLUR]: ComboboxState.IDLE,
         [ComboboxActionType.ESCAPE]: ComboboxState.IDLE,
         [ComboboxActionType.NAVIGATE]: ComboboxState.NAVIGATING,
-        [ComboboxActionType.SELECT_WITH_CLICK]: ComboboxState.IDLE,
-        [ComboboxActionType.SELECT_WITH_KEYBOARD]: ComboboxState.IDLE,
-        [ComboboxActionType.SELECT_SILENT]: ComboboxState.IDLE,
+        [ComboboxActionType.SELECT_WITH_CLICK]: ComboboxState.NAVIGATING,
+        [ComboboxActionType.SELECT_WITH_KEYBOARD]: ComboboxState.NAVIGATING,
+        [ComboboxActionType.SELECT_SILENT]: ComboboxState.NAVIGATING,
         [ComboboxActionType.INTERACT]: ComboboxState.INTERACTING,
       },
     },
@@ -181,13 +181,13 @@ export const stateChart: StateChart = {
       on: {
         [ComboboxActionType.CHANGE]: ComboboxState.SUGGESTING,
         [ComboboxActionType.CHANGE_SILENT]: ComboboxState.SUGGESTING,
-        [ComboboxActionType.CHANGE_VALUES]: ComboboxState.IDLE,
+        [ComboboxActionType.CHANGE_VALUES]: ComboboxState.INTERACTING,
         [ComboboxActionType.FOCUS]: ComboboxState.SUGGESTING,
         [ComboboxActionType.BLUR]: ComboboxState.IDLE,
         [ComboboxActionType.ESCAPE]: ComboboxState.IDLE,
         [ComboboxActionType.NAVIGATE]: ComboboxState.NAVIGATING,
-        [ComboboxActionType.SELECT_WITH_CLICK]: ComboboxState.IDLE,
-        [ComboboxActionType.SELECT_SILENT]: ComboboxState.IDLE,
+        [ComboboxActionType.SELECT_WITH_CLICK]: ComboboxState.INTERACTING,
+        [ComboboxActionType.SELECT_SILENT]: ComboboxState.INTERACTING,
       },
     },
   },
@@ -207,7 +207,8 @@ const findNavigationValue = (
     return singularState.option
       ? singularState.option
       : multiState.options
-      ? multiState.options[0]
+      ? multiState.navigationOption ||
+        multiState.options[multiState.options.length - 1]
       : undefined
   } else {
     return undefined
@@ -318,7 +319,7 @@ const reducerMulti: Reducer<
       return {
         ...nextState,
         inputValue: '',
-        navigationOption: undefined,
+        navigationOption: findNavigationValue(nextState, action),
         options: xorWith(
           nextState.options,
           action.option ? [action.option] : [],
@@ -336,7 +337,7 @@ const reducerMulti: Reducer<
       return {
         ...nextState,
         inputValue: '',
-        navigationOption: undefined,
+        navigationOption: findNavigationValue(nextState, action),
         options: xorWith(
           nextState.options,
           data.navigationOption ? [data.navigationOption] : [],

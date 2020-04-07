@@ -24,22 +24,17 @@
 
  */
 
-import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { ReplaceText } from './ReplaceText'
+import { useState } from 'react'
 
-describe('ReplaceText', () => {
-  test('globally replaces a case-insensitive string with JSX', () => {
-    const { container } = renderWithTheme(
-      <div>
-        <ReplaceText
-          match="long"
-          replace={(text, index) => <span key={index}>{text}</span>}
-        >
-          Some LONG text that is long and this is how long it is.
-        </ReplaceText>
-      </div>
-    )
-    expect(container.firstChild).toMatchSnapshot()
-  })
-})
+export function useScrollState() {
+  // track and share dom information in context.
+  const [listScrollPosition, setListScrollPosition] = useState(0)
+  const [listClientRect, setListClientRect] = useState<DOMRect>()
+
+  return {
+    listClientRect,
+    listScrollPosition,
+    setListClientRect,
+    setListScrollPosition,
+  }
+}

@@ -34,7 +34,7 @@ import {
   TypographyProps,
   SpaceProps,
 } from '@looker/design-tokens'
-import React, { forwardRef, Ref, useState } from 'react'
+import React, { forwardRef, Ref } from 'react'
 import styled from 'styled-components'
 import { useID } from '../../../utils'
 import { Box } from '../../../Layout/Box'
@@ -49,6 +49,7 @@ import { ComboboxContext, defaultData } from './ComboboxContext'
 import { getComboboxText } from './utils/getComboboxText'
 import { useComboboxRefs } from './utils/useComboboxRefs'
 import { useComboboxToggle } from './utils/useComboboxToggle'
+import { useScrollState } from './utils/useScrollState'
 
 export interface ComboboxBaseProps
   extends FlexboxProps,
@@ -132,26 +133,21 @@ export const ComboboxInternal = forwardRef(
 
     const id = useID(propsID)
 
-    const isVisible = useComboboxToggle(state, onOpen, onClose, option)
+    const isVisible = useComboboxToggle(state, option, onOpen, onClose)
 
     const { ref, ...commonRefs } = useComboboxRefs(forwardedRef)
 
-    // track and share dom information in context.
-    const [listScrollPosition, setListScrollPosition] = useState(0)
-    const [listClientRect, setListClientRect] = useState<DOMRect>()
+    const scrollState = useScrollState()
 
     const context = {
       ...commonRefs,
       ...focusManagement,
+      ...scrollState,
       data,
       id,
       isVisible,
-      listClientRect,
-      listScrollPosition,
       onChange,
       openOnFocus,
-      setListClientRect,
-      setListScrollPosition,
       state,
       transition,
     }

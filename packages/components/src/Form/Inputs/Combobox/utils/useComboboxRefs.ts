@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2019 Looker Data Sciences, Inc.
+ Copyright (c) 2020 Looker Data Sciences, Inc.
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -50,12 +50,14 @@ export function useComboboxRefs(forwardedRef: Ref<HTMLDivElement>) {
   const autoCompletePropRef = useRef(true)
   const readOnlyPropRef = useRef(false)
 
-  const persistSelectionRef = useRef(false)
+  const persistSelectionPropRef = useRef(false)
+  const closeOnSelectPropRef = useRef(true)
 
   return {
     autoCompletePropRef,
+    closeOnSelectPropRef,
     optionsRef,
-    persistSelectionRef,
+    persistSelectionPropRef,
     popoverRef,
     readOnlyPropRef,
     ref,

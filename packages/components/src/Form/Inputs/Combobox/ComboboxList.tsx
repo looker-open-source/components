@@ -67,6 +67,11 @@ export interface ComboboxListProps
    * @default false
    */
   persistSelection?: boolean
+  /**
+   * Close after an option is selected
+   * @default true
+   */
+  closeOnSelect?: boolean
 }
 
 interface ComboboxListInternalProps extends ComboboxListProps {
@@ -79,6 +84,8 @@ const ComboboxListInternal = forwardRef(
       // when true, and the list opens again, the option with a matching value will be
       // automatically highlighted.
       persistSelection = false,
+      // closes the list after an option is selected
+      closeOnSelect = true,
       isMulti,
       ...props
     }: ComboboxListInternalProps,
@@ -88,7 +95,8 @@ const ComboboxListInternal = forwardRef(
     const contextMulti = useContext(ComboboxMultiContext)
     const contextToUse = isMulti ? contextMulti : context
     const {
-      persistSelectionRef,
+      persistSelectionPropRef,
+      closeOnSelectPropRef,
       transition,
       wrapperElement,
       isVisible,
@@ -98,12 +106,10 @@ const ComboboxListInternal = forwardRef(
       setListClientRect,
     } = contextToUse
 
-    if (persistSelection) {
-      if (persistSelectionRef) persistSelectionRef.current = true
-    }
-    if (persistSelection) {
-      if (persistSelectionRef) persistSelectionRef.current = true
-    }
+    // Update context prop refs
+    if (persistSelectionPropRef)
+      persistSelectionPropRef.current = persistSelection
+    if (closeOnSelectPropRef) closeOnSelectPropRef.current = closeOnSelect
 
     // WEIRD? Reset the options ref every render so that they are always
     // accurate and ready for keyboard navigation handlers. Using layout
@@ -148,7 +154,7 @@ const ComboboxListInternal = forwardRef(
       }
     }
 
-    const { popover, contentContainer } = usePopover({
+    const { popover, contentContainer, popperInstanceRef } = usePopover({
       arrow: false,
       content,
       focusTrap: false,
@@ -158,6 +164,13 @@ const ComboboxListInternal = forwardRef(
       triggerElement: wrapperElement,
       triggerToggle: false,
     })
+
+    // For isMulti, we update the popover position when values are added/removed
+    // since it may affect the height of the field
+    const valueLength = isMulti ? contextMulti.data.options.length : 1
+    useEffect(() => {
+      popperInstanceRef.current && popperInstanceRef.current.update()
+    }, [popperInstanceRef, valueLength])
 
     useEffect(() => {
       // track scroll position and menu dom rectangle, and bubble up to context.
