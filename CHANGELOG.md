@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- `SelectMulti` component
 - `CodeBlock` component
 - `InputTimeSelect` component
 - `Board`, `ShareAlt` Icon
@@ -16,6 +17,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - `Share` Icon updated
+
+### Fixed
+
+- `Select` runtime error with no options, defaultValue or placeholder
 
 ## [0.7.25] - 2020-03-23
 
