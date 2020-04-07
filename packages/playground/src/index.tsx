@@ -111,6 +111,24 @@ const App: React.FC = () => {
         <FieldTextArea inline label="Text Area" placeholder="placeholder" />
       </Flex>
       <Flex pt="large" justifyContent="space-evenly" alignItems="center">
+        <FieldTextArea label="Text Area" placeholder="placeholder" disabled />
+        <FieldTextArea
+          inline
+          label="Text Area"
+          placeholder="placeholder"
+          disabled
+        />
+      </Flex>
+      <Flex pt="large" justifyContent="space-evenly" alignItems="center">
+        <FieldTextArea label="Text Area" placeholder="placeholder" required />
+        <FieldTextArea
+          inline
+          label="Text Area"
+          required
+          placeholder="placeholder"
+        />
+      </Flex>
+      <Flex pt="large" justifyContent="space-evenly" alignItems="center">
         <FieldTextArea
           label="Text Area"
           placeholder="placeholder"
