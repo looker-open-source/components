@@ -4,28 +4,28 @@ github: ActionList
 propsOf: ActionList
 ---
 
-import { Props } from '../../../Shared'
-An Action List, like a Table, displays tabular data. However, unlike a Table, an Action List allows you to bake in a set of actions on each row. Common use cases include:
+The `<ActionList>` component, like `<Table>`, displays tabular data. However, unlike a `<Table>`, an `<ActionList>` allows you to bake in a set of actions on each row. Common use cases include:
+
 - A list of users with user details and a "Delete This User" action
 - A list of groups and their associated permissions with an "Edit This Group's Permissions" action on each row
 - A list of recently run queries and a "Rerun This Query" action on each row
 
-The `<ActionList>` component acts as the main wrapper to other Action List related components. It must receive an array of type `ActionListColumns` in its `columns` prop. That array should contain objects that describe the columns in your Action List.
+The `<ActionList>` component acts as the main wrapper to other `<ActionList>`-related components. It must receive an array of type `ActionListColumns` in its `columns` prop. That array should contain objects that describe the columns in your `<ActionList>`.
 
 ```jsx
 ;() => {
   const data = [
     {
       id: 6,
-      name: 'LeBron James',
+      name: 'Gouda',
     },
     {
       id: 24,
-      name: 'Kobe Bryant',
+      name: 'Pepper Jack',
     },
     {
       id: 33,
-      name: `Shaquille O'Neal`,
+      name: `Swiss`,
     },
   ]
 
@@ -47,8 +47,8 @@ The `<ActionList>` component acts as the main wrapper to other Action List relat
 
   const MyActions = () => (
     <>
-      <ActionListItemAction onClick={() => alert(`User deleted!`)}>
-        Delete User
+      <ActionListItemAction onClick={() => alert(`Cheese selected!`)}>
+        Select Cheese
       </ActionListItemAction>
     </>
   )
@@ -97,7 +97,7 @@ Passing in a React element into the `indicator` prop will display said element l
   const MyDetail = () => (
     <Link
       onClick={(event) => event.stopPropagation()}
-      href="https://en.wikipedia.org/wiki/Magic_Johnson"
+      href="https://en.wikipedia.org/wiki/Cheddar_cheese"
     >
       Wikipedia
     </Link>
@@ -133,7 +133,7 @@ Passing in a React element into the `indicator` prop will display said element l
     >
       <ActionListItem onClick={() => alert(`Row clicked`)}>
         <ActionListItemColumn detail={<MyDetail />} indicator={<MyIndicator />}>
-          Magic Johnson
+          Cheddar
         </ActionListItemColumn>
       </ActionListItem>
     </ActionList>
@@ -148,3 +148,7 @@ Passing in a React element into the `indicator` prop will display said element l
 <Props of="ActionListItemAction" />
 
 The `<ActionListItemAction>` component represents an actionable item on the rows of your Action List. As noted above, you can supply each of your rows with actions by passing `<ActionListItemAction>` elements into the `actions` prop of the parent `<ActionListItem>` element.
+
+## Sorting an Action List
+
+<i>Coming Soon...</i>
